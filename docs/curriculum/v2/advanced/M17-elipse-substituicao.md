@@ -85,7 +85,7 @@
    **hidden_prompt**: "user answers 'I want to' / 'I'd like to' with elided verb"
    **hint_pt**: "Q: 'Will you come?' A: 'I'd like to, but I have a conflict that evening.'"
    **hint_en**: "Q: 'Will you come?' A: 'I'd like to, but I have a conflict that evening.'"
-   **example_pass**: Q: 'Will you come?' A: 'I'd like to, but I have a conflict that evening.' | I will if you will. | She likes jazz, and so do I.
+   **example_pass**: Q: 'Will you come?' A: 'I'd like to, but I have a conflict that evening.' | I want to — that's the one. | Honestly, I want to sums it up.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -94,7 +94,7 @@
    **hidden_prompt**: "user uses 'I can't / I won't' with elided verb"
    **hint_pt**: "Q: 'Are you applying?' A: 'I should, but I keep putting it off.'"
    **hint_en**: "Q: 'Are you applying?' A: 'I should, but I keep putting it off.'"
-   **example_pass**: Q: 'Are you applying?' A: 'I should, but I keep putting it off.' | I haven't read it, but my sister has. | He said he'd come, but he didn't.
+   **example_pass**: I can't — that's the one. | Honestly, I can't sums it up. | Yeah, I can't for sure.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -103,7 +103,7 @@
    **hidden_prompt**: "user uses 'I meant to / I tried to'"
    **hint_pt**: "Q: 'Did you reply to the email?' A: 'I meant to. The day got away from me.'"
    **hint_en**: "Q: 'Did you reply to the email?' A: 'I meant to. The day got away from me.'"
-   **example_pass**: Q: 'Did you reply to the email?' A: 'I meant to. The day got away from me.' | Do you want some? — Yes, please. | Some students passed; others didn't.
+   **example_pass**: Q: 'Did you reply to the email?' A: 'I meant to. The day got away from me.' | I meant to — that's the one. | Honestly, I meant to sums it up.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Ellipsis, fluently dropped." once obj_3 lands.
@@ -140,7 +140,7 @@
    **hidden_prompt**: "user replies with elliptical 'I meant to / I tried to'"
    **hint_pt**: "I meant to, but I got distracted by another one halfway through."
    **hint_en**: "I meant to, but I got distracted by another one halfway through."
-   **example_pass**: I meant to, but I got distracted by another one halfway through. | I will if you will. | She likes jazz, and so do I.
+   **example_pass**: I meant to, but I got distracted by another one halfway through. | I meant to — that's the one. | Honestly, I meant to sums it up.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -238,7 +238,7 @@
    **hidden_prompt**: "user uses 'I think so / I believe so / I suppose so'"
    **hint_pt**: "Q: 'Will the package arrive Monday?' A: 'I believe so — the tracking suggested two more days.'"
    **hint_en**: "Q: 'Will the package arrive Monday?' A: 'I believe so — the tracking suggested two more days.'"
-   **example_pass**: Q: 'Will the package arrive Monday?' A: 'I believe so — the tracking suggested two more days.' | I will if you will. | She likes jazz, and so do I.
+   **example_pass**: Q: 'Will the package arrive Monday?' A: 'I believe so — the tracking suggested two more days.' | I think so — that's the one. | Honestly, I think so sums it up.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -247,7 +247,7 @@
    **hidden_prompt**: "user uses 'I don't think so / I hope not / I expect not'"
    **hint_pt**: "Q: 'Will the meeting get cancelled again?' A: 'I hope not — we've already rescheduled twice.'"
    **hint_en**: "Q: 'Will the meeting get cancelled again?' A: 'I hope not — we've already rescheduled twice.'"
-   **example_pass**: Q: 'Will the meeting get cancelled again?' A: 'I hope not — we've already rescheduled twice.' | I haven't read it, but my sister has. | He said he'd come, but he didn't.
+   **example_pass**: Q: 'Will the meeting get cancelled again?' A: 'I hope not — we've already rescheduled twice.' | I hope not — that's the one. | Honestly, I hope not sums it up.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -256,7 +256,7 @@
    **hidden_prompt**: "user uses 'I'm afraid so'"
    **hint_pt**: "Q: 'Did the project get delayed again?' A: 'I'm afraid so. We lost the lead engineer last week.'"
    **hint_en**: "Q: 'Did the project get delayed again?' A: 'I'm afraid so. We lost the lead engineer last week.'"
-   **example_pass**: Q: 'Did the project get delayed again?' A: 'I'm afraid so. We lost the lead engineer last week.' | Do you want some? — Yes, please. | Some students passed; others didn't.
+   **example_pass**: Q: 'Did the project get delayed again?' A: 'I'm afraid so. We lost the lead engineer last week.' | I'm afraid so — that's the one. | Honestly, I'm afraid so sums it up.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Substitution, conversation lubricated." once obj_3 lands.
@@ -293,7 +293,7 @@
    **hidden_prompt**: "user uses 'I believe so' or 'I think so'"
    **hint_pt**: "I believe so — the legal review wrapped up yesterday."
    **hint_en**: "I believe so — the legal review wrapped up yesterday."
-   **example_pass**: I believe so — the legal review wrapped up yesterday. | I will if you will. | She likes jazz, and so do I.
+   **example_pass**: I believe so — the legal review wrapped up yesterday. | I think so — that's the one. | Honestly, I think so sums it up.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -302,7 +302,7 @@
    **hidden_prompt**: "user uses 'I hope not / I'm afraid so'"
    **hint_pt**: "Though I'm afraid there's still one signature missing from the executive sponsor — we may slip by a day."
    **hint_en**: "Though I'm afraid there's still one signature missing from the executive sponsor — we may slip by a day."
-   **example_pass**: Though I'm afraid there's still one signature missing from the executive sponsor — we may slip by a day. | I haven't read it, but my sister has. | He said he'd come, but he didn't.
+   **example_pass**: I hope not — that's the one. | Honestly, I hope not sums it up. | Yeah, I hope not for sure.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -454,7 +454,7 @@
    **hidden_prompt**: "user uses 'the other one' or another substitution"
    **hint_pt**: "The other one looks like it was made for someone slightly taller — the proportions are off."
    **hint_en**: "The other one looks like it was made for someone slightly taller — the proportions are off."
-   **example_pass**: The other one looks like it was made for someone slightly taller — the proportions are off. | I haven't read it, but my sister has. | He said he'd come, but he didn't.
+   **example_pass**: The other one looks like it was made for someone slightly taller — the proportions are off. | The other one — that's the one. | Honestly, the other one sums it up.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -545,7 +545,7 @@
    **hidden_prompt**: "user uses 'did the same' to echo action"
    **hint_pt**: "My brother went vegetarian last year, and my sister-in-law did the same a few months later."
    **hint_en**: "My brother went vegetarian last year, and my sister-in-law did the same a few months later."
-   **example_pass**: My brother went vegetarian last year, and my sister-in-law did the same a few months later. | I will if you will. | She likes jazz, and so do I. | She quit smoking in January, and her partner did the same by March. | He moved abroad in his thirties, and his sister did the same a few years later. | I switched to the new system at the start of the year, and most of the team did the same within a month.
+   **example_pass**: My brother went vegetarian last year, and my sister-in-law did the same a few months later. | She quit smoking in January, and her partner did the same by March. | He moved abroad in his thirties, and his sister did the same a few years later. | I switched to the new system at the start of the year, and most of the team did the same within a month.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -554,7 +554,7 @@
    **hidden_prompt**: "user uses 'did so' formally"
    **hint_pt**: "The chief executive resigned in March. The chief financial officer did so two weeks later, citing personal reasons."
    **hint_en**: "The chief executive resigned in March. The chief financial officer did so two weeks later, citing personal reasons."
-   **example_pass**: The chief executive resigned in March. The chief financial officer did so two weeks later, citing personal reasons. | I haven't read it, but my sister has. | He said he'd come, but he didn't. | The first witness took the stand in the morning, and the second did so shortly after the lunch break. | She submitted her notice on Friday; two of her senior reports did so by the following Monday. | He retired in the autumn; his deputy did so just before the new year.
+   **example_pass**: The chief executive resigned in March. The chief financial officer did so two weeks later, citing personal reasons. | The first witness took the stand in the morning, and the second did so shortly after the lunch break. | She submitted her notice on Friday; two of her senior reports did so by the following Monday. | He retired in the autumn; his deputy did so just before the new year.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -563,7 +563,7 @@
    **hidden_prompt**: "user uses 'do likewise'"
    **hint_pt**: "If I were you, I'd switch to the new system this quarter — the early adopters have, and the rest will need to do likewise by year-end."
    **hint_en**: "If I were you, I'd switch to the new system this quarter — the early adopters have, and the rest will need to do likewise by year-end."
-   **example_pass**: If I were you, I'd switch to the new system this quarter — the early adopters have, and the rest will need to do likewise by year-end. | Do you want some? — Yes, please. | Some students passed; others didn't. | Half the industry has adopted the new standard. The rest will need to do likewise within eighteen months. | The senior team made the difficult call to take a pay cut, and we asked the rest of leadership to do likewise. | Several of our peers have publicly committed to the goal. We've quietly decided to do likewise.
+   **example_pass**: If I were you, I'd switch to the new system this quarter — the early adopters have, and the rest will need to do likewise by year-end. | Half the industry has adopted the new standard. The rest will need to do likewise within eighteen months. | The senior team made the difficult call to take a pay cut, and we asked the rest of leadership to do likewise. | Several of our peers have publicly committed to the goal. We've quietly decided to do likewise.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Do-substitutes, register-tuned." once obj_3 lands.
@@ -609,7 +609,7 @@
    **hidden_prompt**: "user uses 'do so' or 'did so'"
    **hint_pt**: "Two of my friends had been thinking of doing so for months — my switch seemed to give them permission."
    **hint_en**: "Two of my friends had been thinking of doing so for months — my switch seemed to give them permission."
-   **example_pass**: Two of my friends had been thinking of doing so for months — my switch seemed to give them permission. | I haven't read it, but my sister has. | He said he'd come, but he didn't. | Her colleague had been considering doing so since the previous quarter; the announcement simply forced the timing. | He did so quietly, without making any public announcement; most people didn't notice for weeks. | She did so reluctantly, but the alternative was worse — and she knew it before anyone else in the room.
+   **example_pass**: He did so quietly, without making any public announcement; most people didn't notice for weeks. | She did so reluctantly, but the alternative was worse — and she knew it before anyone else in the room. | I had to do so in the end.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -709,7 +709,7 @@
    **hidden_prompt**: "user echoes positive past with 'So did I / So was I'"
    **hint_pt**: "Q: 'I loved the trip to Lisbon.' A: 'So did I — it was the best vacation I've taken in years.'"
    **hint_en**: "Q: 'I loved the trip to Lisbon.' A: 'So did I — it was the best vacation I've taken in years.'"
-   **example_pass**: Q: 'I loved the trip to Lisbon.' A: 'So did I — it was the best vacation I've taken in years.' | I haven't read it, but my sister has. | He said he'd come, but he didn't. | Q: 'I loved the Lisbon trip.' A: 'So did I — best vacation I've taken in years.' | Q: 'I was completely shocked by the result.' A: 'So was I — nobody saw it coming.' | Q: 'I missed the last train.' A: 'So did I — we ended up sharing a taxi.' | Q: 'I was exhausted after that week.' A: 'So was I — I slept for nearly twelve hours on Saturday.'
+   **example_pass**: Q: 'I loved the trip to Lisbon.' A: 'So did I — it was the best vacation I've taken in years.' | Q: 'I loved the Lisbon trip.' A: 'So did I — best vacation I've taken in years.' | Q: 'I was completely shocked by the result.' A: 'So was I — nobody saw it coming.' | Q: 'I missed the last train.' A: 'So did I — we ended up sharing a taxi.' | Q: 'I was exhausted after that week.' A: 'So was I — I slept for nearly twelve hours on Saturday.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -755,7 +755,7 @@
    **hidden_prompt**: "user echoes with 'Neither do I'"
    **hint_pt**: "Neither do I — the first hour belongs to me, not to whoever wrote at 6 a.m."
    **hint_en**: "Neither do I — the first hour belongs to me, not to whoever wrote at 6 a.m."
-   **example_pass**: Neither do I — the first hour belongs to me, not to whoever wrote at 6 a.m. | I will if you will. | She likes jazz, and so do I. | Neither do I — the first hour belongs to me, not to whoever wrote at six in the morning. | Neither do I — I learned years ago that checking email before nine just rewires the whole day. | Neither do I — though I'll admit I cheat occasionally on Monday mornings. | Neither do I — and the best part is that nobody seems to notice or care.
+   **example_pass**: Neither do I — the first hour belongs to me, not to whoever wrote at 6 a.m. | Neither do I — the first hour belongs to me, not to whoever wrote at six in the morning. | Neither do I — I learned years ago that checking email before nine just rewires the whole day. | Neither do I — though I'll admit I cheat occasionally on Monday mornings. | Neither do I — and the best part is that nobody seems to notice or care.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -764,7 +764,7 @@
    **hidden_prompt**: "user uses 'So do I' for another preference"
    **hint_pt**: "I always read for twenty minutes before bed — and so do I, even when the day was a wreck."
    **hint_en**: "I always read for twenty minutes before bed — and so do I, even when the day was a wreck."
-   **example_pass**: I always read for twenty minutes before bed — and so do I, even when the day was a wreck. | I haven't read it, but my sister has. | He said he'd come, but he didn't. | I always read for twenty minutes before bed — and so do I, even on the nights I'm exhausted. | I keep a single notebook for everything — so do I, and I'm convinced it's saved me hours of looking for things. | I take the long way home most evenings — so do I, even when I'm running late. | I write the day's plan on paper before I touch the laptop — so do I, and the habit has changed how the morning feels.
+   **example_pass**: I always read for twenty minutes before bed — and so do I, even when the day was a wreck. | I always read for twenty minutes before bed — and so do I, even on the nights I'm exhausted. | I keep a single notebook for everything — so do I, and I'm convinced it's saved me hours of looking for things. | I take the long way home most evenings — so do I, even when I'm running late. | I write the day's plan on paper before I touch the laptop — so do I, and the habit has changed how the morning feels.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3

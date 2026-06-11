@@ -241,9 +241,6 @@
             "hidden_prompt": "user asks Charlotte more about her school walk",
             "hint_en": "What changed at your school?",
             "examples_pass": [
-              "What changed at your school?",
-              "Exhausted from the trip, we slept for ten hours.",
-              "Knowing the risks, he proceeded carefully.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -478,9 +475,6 @@
             "hidden_prompt": "user asks Charlotte more about the bookshop",
             "hint_en": "Does the monk still work there?",
             "examples_pass": [
-              "Does the monk still work there?",
-              "Exhausted from the trip, we slept for ten hours.",
-              "Knowing the risks, he proceeded carefully.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -852,12 +846,9 @@
             "hint_en": "Having been warned about the traffic, I left an hour earlier.",
             "examples_pass": [
               "Having been warned about the traffic, I left an hour earlier.",
-              "Surprised by the news, she sat down quietly.",
-              "Walking through the park, I noticed the autumn colours.",
               "Having been warned about the traffic, I left an hour earlier than usual.",
               "Having been told about the budget cuts in advance, the team had time to prepare.",
-              "Having been informed of the changes, the client had no grounds for complaint.",
-              "Having been briefed by legal, I knew exactly which questions to avoid."
+              "Having been informed of the changes, the client had no grounds for complaint."
             ],
             "examples_fail": [
               "finished (bare participle, no clause)",
@@ -948,9 +939,6 @@
             "hidden_prompt": "user asks Charlotte about her mentor's edits",
             "hint_en": "What did she edit out?",
             "examples_pass": [
-              "What did she edit out?",
-              "Exhausted from the trip, we slept for ten hours.",
-              "Knowing the risks, he proceeded carefully.",
               "And you?",
               "What about you?",
               "How about yourself?",

@@ -219,8 +219,6 @@
             "hint_en": "It cannot be denied that adaptation will be uneven across industries.",
             "examples_pass": [
               "It cannot be denied that adaptation will be uneven across industries.",
-              "The project is said to have been delayed.",
-              "She had her car repaired last week.",
               "It cannot be denied that the system has been failing quietly for years.",
               "It cannot be denied that the original framework no longer fits the data.",
               "It cannot be denied that public trust has eroded significantly over the past decade."
@@ -627,8 +625,8 @@
             "hint_en": "I'm having my apartment painted next week.",
             "examples_pass": [
               "I'm having my apartment painted next week.",
-              "The contract was signed by both parties.",
-              "Mistakes were made during the process."
+              "I had to get in the end.",
+              "Someone needs to get eventually."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -676,8 +674,8 @@
             "hint_en": "I need to have my passport renewed before the trip.",
             "examples_pass": [
               "I need to have my passport renewed before the trip.",
-              "The project is said to have been delayed.",
-              "She had her car repaired last week."
+              "I'm getting — that's the one.",
+              "Honestly, I'm getting sums it up."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -691,9 +689,9 @@
             "hidden_prompt": "user asks Charlotte more about her bike",
             "hint_en": "Was the service worth it?",
             "examples_pass": [
-              "Was the service worth it?",
-              "The contract was signed by both parties.",
-              "Mistakes were made during the process."
+              "What about her bike?",
+              "And her bike — what do you think?",
+              "Her bike — that's the one."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -1119,8 +1117,8 @@
             "hint_en": "I'm having our own contracts reviewed in case we need to move quickly.",
             "examples_pass": [
               "I'm having our own contracts reviewed in case we need to move quickly.",
-              "The project is said to have been delayed.",
-              "She had her car repaired last week."
+              "I'm having — that's the one.",
+              "Honestly, I'm having sums it up."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",

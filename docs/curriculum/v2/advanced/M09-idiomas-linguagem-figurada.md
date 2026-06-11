@@ -99,7 +99,7 @@
    **hidden_prompt**: "user uses 'You hit the nail on the head' or similar"
    **hint_pt**: "Your analyst hit the nail on the head with that diagnosis."
    **hint_en**: "Your analyst hit the nail on the head with that diagnosis."
-   **example_pass**: Your analyst hit the nail on the head with that diagnosis. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment.
+   **example_pass**: You hit the nail on the head — that's the one. | Honestly, You hit the nail on the head sums it up. | Yeah, You hit the nail on the head for sure.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
@@ -108,7 +108,7 @@
    **hidden_prompt**: "user uses 'the elephant in the room'"
    **hint_pt**: "The elephant in the room is that nobody trusts the new system."
    **hint_en**: "The elephant in the room is that nobody trusts the new system."
-   **example_pass**: The elephant in the room is that nobody trusts the new system. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately.
+   **example_pass**: The elephant in the room is that nobody trusts the new system. | The elephant in the room — that's the one. | Honestly, the elephant in the room sums it up.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
@@ -117,7 +117,7 @@
    **hidden_prompt**: "user uses 'tip of the iceberg' or 'read between the lines'"
    **hint_pt**: "What surfaced last week is just the tip of the iceberg."
    **hint_en**: "What surfaced last week is just the tip of the iceberg."
-   **example_pass**: What surfaced last week is just the tip of the iceberg. | That comment really rubbed me the wrong way. | Don't throw in the towel just yet.
+   **example_pass**: What surfaced last week is just the tip of the iceberg. | Tip of the iceberg — that's the one. | Honestly, tip of the iceberg sums it up.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Idiomatic instinct, sharp." once obj_3 lands.
@@ -154,7 +154,7 @@
    **hidden_prompt**: "user uses an idiom like 'just the tip of the iceberg' or 'elephant in the room'"
    **hint_pt**: "Compensation might be the tip of the iceberg — the real story is usually managers."
    **hint_en**: "Compensation might be the tip of the iceberg — the real story is usually managers."
-   **example_pass**: Compensation might be the tip of the iceberg — the real story is usually managers. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment.
+   **example_pass**: Elephant in the room — that's the one. | Honestly, elephant in the room sums it up. | Yeah, elephant in the room for sure.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
@@ -270,7 +270,7 @@
    **hidden_prompt**: "user uses 'cost an arm and a leg'"
    **hint_pt**: "The apartment renovation cost an arm and a leg, but we love it."
    **hint_en**: "The apartment renovation cost an arm and a leg, but we love it."
-   **example_pass**: The apartment renovation cost an arm and a leg, but we love it. | That comment really rubbed me the wrong way. | Don't throw in the towel just yet. | That renovation cost us an arm and a leg, but the kitchen is finally usable. | The new logistics software costs an arm and a leg and barely does what the old one did. | The wedding cost an arm and a leg — but we'd do it again. | Living in central Paris cost us an arm and a leg, but the year was worth every euro.
+   **example_pass**: The apartment renovation cost an arm and a leg, but we love it. | The wedding cost an arm and a leg — but we'd do it again. | I had to cost an arm and a leg in the end.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Body idioms, fully integrated." once obj_3 lands.
@@ -316,7 +316,7 @@
    **hidden_prompt**: "user uses 'cold feet' or 'pulling my leg' or another body idiom"
    **hint_pt**: "I'd had cold feet about it for months — kept thinking I'd be giving up too much."
    **hint_en**: "I'd had cold feet about it for months — kept thinking I'd be giving up too much."
-   **example_pass**: I'd had cold feet about it for months — kept thinking I'd be giving up too much. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately. | I'd had cold feet about it for months — kept thinking I'd be giving up too much to take the role. | He got cold feet about the move the week before we were supposed to sign the lease. | She had cold feet right up until the morning of, and then went through with it without flinching. | I'd had cold feet on every major decision in my twenties — turns out instinct was usually right anyway.
+   **example_pass**: I'd had cold feet about it for months — kept thinking I'd be giving up too much. | I'd had cold feet about it for months — kept thinking I'd be giving up too much to take the role. | He got cold feet about the move the week before we were supposed to sign the lease. | She had cold feet right up until the morning of, and then went through with it without flinching. | I'd had cold feet on every major decision in my twenties — turns out instinct was usually right anyway.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
@@ -405,7 +405,7 @@
    **hidden_prompt**: "user uses 'a piece of cake'"
    **hint_pt**: "The migration turned out to be a piece of cake compared to what we feared."
    **hint_en**: "The migration turned out to be a piece of cake compared to what we feared."
-   **example_pass**: The migration turned out to be a piece of cake compared to what we feared. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment. | The migration turned out to be a piece of cake compared to what we'd feared. | After last quarter's launch, this one is going to be a piece of cake. | Once you understand the structure, the rest of the exam is a piece of cake. | The interview was a piece of cake — they basically offered me the role on the spot.
+   **example_pass**: The migration turned out to be a piece of cake compared to what we feared. | The migration turned out to be a piece of cake compared to what we'd feared. | After last quarter's launch, this one is going to be a piece of cake. | Once you understand the structure, the rest of the exam is a piece of cake. | The interview was a piece of cake — they basically offered me the role on the spot.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
@@ -414,7 +414,7 @@
    **hidden_prompt**: "user uses 'spilled the beans' or 'spill the beans'"
    **hint_pt**: "Someone in marketing spilled the beans about the rebrand a week early."
    **hint_en**: "Someone in marketing spilled the beans about the rebrand a week early."
-   **example_pass**: Someone in marketing spilled the beans about the rebrand a week early. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately. | Someone in marketing spilled the beans about the rebrand a week before the announcement. | She spilled the beans about her engagement before she meant to. | Don't spill the beans about the surprise party — it's taken weeks to plan. | He spilled the beans about the layoffs to a journalist, and the story broke that evening.
+   **example_pass**: Someone in marketing spilled the beans about the rebrand a week early. | Someone in marketing spilled the beans about the rebrand a week before the announcement. | She spilled the beans about her engagement before she meant to. | Don't spill the beans about the surprise party — it's taken weeks to plan. | He spilled the beans about the layoffs to a journalist, and the story broke that evening.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
@@ -423,7 +423,7 @@
    **hidden_prompt**: "user uses 'grain of salt' or 'tough nut to crack'"
    **hint_pt**: "Take the optimistic projections with a grain of salt — they always slip."
    **hint_en**: "Take the optimistic projections with a grain of salt — they always slip."
-   **example_pass**: Take the optimistic projections with a grain of salt — they always slip. | That comment really rubbed me the wrong way. | Don't throw in the towel just yet. | Take their optimistic projections with a grain of salt — they've missed three quarters in a row. | That client is a tough nut to crack, but the contract is worth the patience. | You should take her recommendation with a grain of salt — she's been wrong about him before. | The regulatory team is a tough nut to crack, but we'll get there with the right framing.
+   **example_pass**: Take the optimistic projections with a grain of salt — they always slip. | Take their optimistic projections with a grain of salt — they've missed three quarters in a row. | That client is a tough nut to crack, but the contract is worth the patience. | You should take her recommendation with a grain of salt — she's been wrong about him before. | The regulatory team is a tough nut to crack, but we'll get there with the right framing.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Food idioms, properly served." once obj_3 lands.
@@ -460,7 +460,7 @@
    **hidden_prompt**: "user uses 'spilled the beans' or similar"
    **hint_pt**: "Whoever spilled the beans must have known the timing would hit hard."
    **hint_en**: "Whoever spilled the beans must have known the timing would hit hard."
-   **example_pass**: Whoever spilled the beans must have known the timing would hit hard. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment. | Someone in marketing spilled the beans about the rebrand a week before the announcement. | She spilled the beans about her engagement before she meant to. | Don't spill the beans about the surprise party — it's taken weeks to plan. | He spilled the beans about the layoffs to a journalist, and the story broke that evening.
+   **example_pass**: Whoever spilled the beans must have known the timing would hit hard. | Someone in marketing spilled the beans about the rebrand a week before the announcement. | She spilled the beans about her engagement before she meant to. | He spilled the beans about the layoffs to a journalist, and the story broke that evening.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
@@ -469,7 +469,7 @@
    **hidden_prompt**: "user uses 'grain of salt' or 'tough nut' or 'piece of cake'"
    **hint_pt**: "Containing it will be no piece of cake — once the numbers are out, you can't un-leak them."
    **hint_en**: "Containing it will be no piece of cake — once the numbers are out, you can't un-leak them."
-   **example_pass**: Containing it will be no piece of cake — once the numbers are out, you can't un-leak them. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately. | The migration turned out to be a piece of cake compared to what we'd feared. | After last quarter's launch, this one is going to be a piece of cake. | Once you understand the structure, the rest of the exam is a piece of cake. | The interview was a piece of cake — they basically offered me the role on the spot.
+   **example_pass**: Containing it will be no piece of cake — once the numbers are out, you can't un-leak them. | The migration turned out to be a piece of cake compared to what we'd feared. | After last quarter's launch, this one is going to be a piece of cake. | Once you understand the structure, the rest of the exam is a piece of cake. | The interview was a piece of cake — they basically offered me the role on the spot.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
@@ -558,7 +558,7 @@
    **hidden_prompt**: "user uses 'kill two birds with one stone'"
    **hint_pt**: "If we record the demo and the training in one session, we kill two birds with one stone."
    **hint_en**: "If we record the demo and the training in one session, we kill two birds with one stone."
-   **example_pass**: If we record the demo and the training in one session, we kill two birds with one stone. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment. | If we record the keynote and the training in the same day, we kill two birds with one stone. | By bundling the audit and the strategy review, we'll kill two birds with one stone. | We can kill two birds with one stone by combining the customer interviews with the user research. | Visiting my family on the way to the conference let me kill two birds with one stone.
+   **example_pass**: If we record the demo and the training in one session, we kill two birds with one stone. | If we record the keynote and the training in the same day, we kill two birds with one stone. | By bundling the audit and the strategy review, we'll kill two birds with one stone. | We can kill two birds with one stone by combining the customer interviews with the user research. | Visiting my family on the way to the conference let me kill two birds with one stone.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
@@ -567,7 +567,7 @@
    **hidden_prompt**: "user uses 'the ball is in X's court' or 'on the same page'"
    **hint_pt**: "We're on the same page internally — now the ball is in the client's court."
    **hint_en**: "We're on the same page internally — now the ball is in the client's court."
-   **example_pass**: We're on the same page internally — now the ball is in the client's court. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately. | Once I sent the proposal, the ball was in their court for almost two weeks. | Make sure the leadership team is on the same page before the announcement goes out. | The ball is now firmly in their court, and we'll see how serious they really are.
+   **example_pass**: We're on the same page internally — now the ball is in the client's court. | Make sure the leadership team is on the same page before the announcement goes out. | On the same page — that's the one.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
@@ -576,7 +576,7 @@
    **hidden_prompt**: "user uses 'play it by ear'"
    **hint_pt**: "For the launch event, we'll play it by ear and see how the audience reacts."
    **hint_en**: "For the launch event, we'll play it by ear and see how the audience reacts."
-   **example_pass**: For the launch event, we'll play it by ear and see how the audience reacts. | That comment really rubbed me the wrong way. | Don't throw in the towel just yet. | We'll play it by ear during the launch and adjust the messaging as we see how people react. | Let's just play it by ear — too many plans this early tend to fall apart anyway. | She decided to play it by ear with the new client rather than scripting every meeting. | We had no agenda for the offsite, and we played the whole thing by ear.
+   **example_pass**: For the launch event, we'll play it by ear and see how the audience reacts. | We'll play it by ear during the launch and adjust the messaging as we see how people react. | Let's just play it by ear — too many plans this early tend to fall apart anyway. | She decided to play it by ear with the new client rather than scripting every meeting.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Strategic idiom in flow." once obj_3 lands.
@@ -613,7 +613,7 @@
    **hidden_prompt**: "user uses 'the ball is in X's court' or 'on the same page'"
    **hint_pt**: "Now the ball is in my team's court — we'll review and come back with edits by Wednesday."
    **hint_en**: "Now the ball is in my team's court — we'll review and come back with edits by Wednesday."
-   **example_pass**: Now the ball is in my team's court — we'll review and come back with edits by Wednesday. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment. | We're on the same page internally — now the ball is in the client's court. | Once I sent the proposal, the ball was in their court for almost two weeks. | Make sure the leadership team is on the same page before the announcement goes out. | The ball is now firmly in their court, and we'll see how serious they really are.
+   **example_pass**: We're on the same page internally — now the ball is in the client's court. | Make sure the leadership team is on the same page before the announcement goes out. | On the same page — that's the one.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
@@ -622,7 +622,7 @@
    **hidden_prompt**: "user uses 'kill two birds' or 'play it by ear'"
    **hint_pt**: "We can kill two birds with one stone by reviewing the brief during our existing standup."
    **hint_en**: "We can kill two birds with one stone by reviewing the brief during our existing standup."
-   **example_pass**: We can kill two birds with one stone by reviewing the brief during our existing standup. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately. | We'll play it by ear during the launch and adjust the messaging as we see how people react. | Let's just play it by ear — too many plans this early tend to fall apart anyway. | She decided to play it by ear with the new client rather than scripting every meeting. | We had no agenda for the offsite, and we played the whole thing by ear.
+   **example_pass**: We can kill two birds with one stone by reviewing the brief during our existing standup. | We'll play it by ear during the launch and adjust the messaging as we see how people react. | Let's just play it by ear — too many plans this early tend to fall apart anyway. | She decided to play it by ear with the new client rather than scripting every meeting.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
@@ -631,7 +631,7 @@
    **hidden_prompt**: "user asks Charlotte about priorities"
    **hint_pt**: "What's the highest priority for you?"
    **hint_en**: "What's the highest priority for you?"
-   **example_pass**: What's the highest priority for you? | That comment really rubbed me the wrong way. | Don't throw in the towel just yet. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Handoff cleanly framed." once obj_3 lands.
@@ -710,7 +710,7 @@
    **hidden_prompt**: "user uses 'crystal clear'"
    **hint_pt**: "The new policy on remote work is crystal clear — three days a week, no exceptions."
    **hint_en**: "The new policy on remote work is crystal clear — three days a week, no exceptions."
-   **example_pass**: The new policy on remote work is crystal clear — three days a week, no exceptions. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment. | The CEO's instructions on the new policy are crystal clear — three days a week in office, no exceptions. | Let me be crystal clear: we will not compromise on the security review. | The deadline was crystal clear from the first message, and yet half the team missed it. | Her position on the matter is crystal clear — she's said it in every meeting for the last six months.
+   **example_pass**: The new policy on remote work is crystal clear — three days a week, no exceptions. | The CEO's instructions on the new policy are crystal clear — three days a week in office, no exceptions. | Let me be crystal clear: we will not compromise on the security review. | The deadline was crystal clear from the first message, and yet half the team missed it. | Her position on the matter is crystal clear — she's said it in every meeting for the last six months.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
@@ -719,7 +719,7 @@
    **hidden_prompt**: "user uses 'low-hanging fruit'"
    **hint_pt**: "We started with the low-hanging fruit and saw a 10% lift in two weeks."
    **hint_en**: "We started with the low-hanging fruit and saw a 10% lift in two weeks."
-   **example_pass**: We started with the low-hanging fruit and saw a 10% lift in two weeks. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately. | We started with the low-hanging fruit and saw a measurable lift within two weeks. | Before we tackle the hard problems, let's at least pick the low-hanging fruit. | The first round of changes was all low-hanging fruit; the harder calls come next. | Improving the onboarding flow is the low-hanging fruit nobody's bothered to pick yet.
+   **example_pass**: We started with the low-hanging fruit and saw a 10% lift in two weeks. | We started with the low-hanging fruit and saw a measurable lift within two weeks. | Before we tackle the hard problems, let's at least pick the low-hanging fruit. | The first round of changes was all low-hanging fruit; the harder calls come next. | Improving the onboarding flow is the low-hanging fruit nobody's bothered to pick yet.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
@@ -728,7 +728,7 @@
    **hidden_prompt**: "user uses 'double-edged sword' or 'blessing in disguise'"
    **hint_pt**: "Being acquired was a blessing in disguise — losing autonomy hurt, but the resources accelerated everything."
    **hint_en**: "Being acquired was a blessing in disguise — losing autonomy hurt, but the resources accelerated everything."
-   **example_pass**: Being acquired was a blessing in disguise — losing autonomy hurt, but the resources accelerated everything. | That comment really rubbed me the wrong way. | Don't throw in the towel just yet. | The acquisition turned out to be a blessing in disguise — painful at the time, but it forced us to focus. | Remote work has been a double-edged sword: flexibility on one side, isolation on the other. | Missing that funding round was a blessing in disguise; the company we became was leaner and clearer. | Success on that scale is a double-edged sword — the expectations now are almost impossible to meet.
+   **example_pass**: Being acquired was a blessing in disguise — losing autonomy hurt, but the resources accelerated everything. | The acquisition turned out to be a blessing in disguise — painful at the time, but it forced us to focus. | Remote work has been a double-edged sword: flexibility on one side, isolation on the other. | Missing that funding round was a blessing in disguise; the company we became was leaner and clearer. | Success on that scale is a double-edged sword — the expectations now are almost impossible to meet.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Modern figurative, sharp." once obj_3 lands.
@@ -765,7 +765,7 @@
    **hidden_prompt**: "user uses 'blessing in disguise'"
    **hint_pt**: "Getting laid off in 2020 turned out to be a blessing in disguise — I started the consulting work I'd been afraid to try."
    **hint_en**: "Getting laid off in 2020 turned out to be a blessing in disguise — I started the consulting work I'd been afraid to try."
-   **example_pass**: Getting laid off in 2020 turned out to be a blessing in disguise — I started the consulting work I'd been afraid to try. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment. | The acquisition turned out to be a blessing in disguise — painful at the time, but it forced us to focus. | Remote work has been a double-edged sword: flexibility on one side, isolation on the other. | Missing that funding round was a blessing in disguise; the company we became was leaner and clearer. | Success on that scale is a double-edged sword — the expectations now are almost impossible to meet.
+   **example_pass**: Getting laid off in 2020 turned out to be a blessing in disguise — I started the consulting work I'd been afraid to try. | The acquisition turned out to be a blessing in disguise — painful at the time, but it forced us to focus. | Missing that funding round was a blessing in disguise; the company we became was leaner and clearer.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
@@ -774,7 +774,7 @@
    **hidden_prompt**: "user uses 'double-edged sword' or 'crystal clear' or another metaphor"
    **hint_pt**: "Independence is a double-edged sword — full agency, but also full responsibility for finding the next project."
    **hint_en**: "Independence is a double-edged sword — full agency, but also full responsibility for finding the next project."
-   **example_pass**: Independence is a double-edged sword — full agency, but also full responsibility for finding the next project. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately. | The CEO's instructions on the new policy are crystal clear — three days a week in office, no exceptions. | Let me be crystal clear: we will not compromise on the security review. | The deadline was crystal clear from the first message, and yet half the team missed it. | Her position on the matter is crystal clear — she's said it in every meeting for the last six months.
+   **example_pass**: Independence is a double-edged sword — full agency, but also full responsibility for finding the next project. | The CEO's instructions on the new policy are crystal clear — three days a week in office, no exceptions. | Let me be crystal clear: we will not compromise on the security review. | The deadline was crystal clear from the first message, and yet half the team missed it. | Her position on the matter is crystal clear — she's said it in every meeting for the last six months.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3

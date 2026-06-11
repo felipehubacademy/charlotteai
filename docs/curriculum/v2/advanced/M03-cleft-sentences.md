@@ -599,7 +599,7 @@
    **hidden_prompt**: "user uses 'It wasn't until X that Y'"
    **hint_pt**: "It wasn't until I lost a friend that I started replying to texts on the same day."
    **hint_en**: "It wasn't until I lost a friend that I started replying to texts on the same day."
-   **example_pass**: It wasn't until I lost a friend that I started replying to texts on the same day. | It was her dedication that impressed me most. | What I really value is honest feedback. | It wasn't until I left the country that I really appreciated how much it had shaped me. | It wasn't until I quit that I realised how unhappy the job had been making me. | It wasn't until I changed manager that I started enjoying my work again. | It wasn't until my forties that I finally learned to take real holidays.
+   **example_pass**: It wasn't until X that Y — that's the one. | Honestly, It wasn't until X that Y sums it up. | Yeah, It wasn't until X that Y for sure.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
@@ -608,7 +608,7 @@
    **hidden_prompt**: "user uses another 'It wasn't until' cleft"
    **hint_pt**: "It wasn't until I tried therapy that I noticed how angry I was."
    **hint_en**: "It wasn't until I tried therapy that I noticed how angry I was."
-   **example_pass**: It wasn't until I tried therapy that I noticed how angry I was. | It was in 2010 that we first met. | What surprised me was his calm reaction. | It wasn't until I left the country that I really appreciated how much it had shaped me. | It wasn't until I quit that I realised how unhappy the job had been making me. | It wasn't until I changed manager that I started enjoying my work again. | It wasn't until my forties that I finally learned to take real holidays.
+   **example_pass**: It wasn't until I tried therapy that I noticed how angry I was. | It wasn't until I left the country that I really appreciated how much it had shaped me. | It wasn't until I quit that I realised how unhappy the job had been making me. | It wasn't until I changed manager that I started enjoying my work again. | It wasn't until my forties that I finally learned to take real holidays.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
@@ -771,7 +771,7 @@
    **hidden_prompt**: "user asks Charlotte about her teacher"
    **hint_pt**: "Who was the teacher?"
    **hint_en**: "Who was the teacher?"
-   **example_pass**: Who was the teacher? | It is the silence that bothers me, not the noise. | All I want is a quiet weekend. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Self-portrait, in clefts." once obj_3 lands.

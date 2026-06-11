@@ -125,8 +125,6 @@
             "hint_en": "It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening.",
             "examples_pass": [
               "It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening.",
-              "Honestly, that's a total game-changer.",
-              "I'm not gonna lie, it threw me off completely.",
               "She's, you know, the sort of manager who reads the room before saying anything herself.",
               "It's, you know, one of those situations where the right answer is also the least convenient one.",
               "He's, you know, brilliant — but in a way that takes a while to notice."
@@ -144,8 +142,6 @@
             "hint_en": "I mean, the project wasn't bad — it just wasn't what anyone hoped it would be.",
             "examples_pass": [
               "I mean, the project wasn't bad — it just wasn't what anyone hoped it would be.",
-              "That's super interesting, actually.",
-              "To be fair, it could've gone either way.",
               "I mean, she's a strong candidate, but she's clearly being courted by three other companies.",
               "I mean, we could push the launch back, but then we'd lose the entire holiday window.",
               "I mean, the data is good — the question is whether anyone in leadership is going to actually act on it."
@@ -163,7 +159,6 @@
             "hint_en": "It's sort of one of those situations where there isn't a right answer, just a less wrong one.",
             "examples_pass": [
               "It's sort of one of those situations where there isn't a right answer, just a less wrong one.",
-              "I'm low-key obsessed with that show.",
               "It's kind of a big deal, ngl.",
               "She kind of inherited the role without anyone formally giving it to her.",
               "It was kind of a strange meeting — friendly on the surface, but no one really said what they meant.",
@@ -199,8 +194,6 @@
             "hint_en": "I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive.",
             "examples_pass": [
               "I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive.",
-              "Honestly, that's a total game-changer.",
-              "I'm not gonna lie, it threw me off completely.",
               "I mean, the project wasn't bad — it just wasn't what anyone hoped it would be.",
               "I mean, she's a strong candidate, but she's clearly being courted by three other companies.",
               "I mean, we could push the launch back, but then we'd lose the entire holiday window.",
@@ -219,8 +212,6 @@
             "hint_en": "It's sort of the design version of compound interest — small wrong calls in the first week add up by the third.",
             "examples_pass": [
               "It's sort of the design version of compound interest — small wrong calls in the first week add up by the third.",
-              "That's super interesting, actually.",
-              "To be fair, it could've gone either way.",
               "It's kind of one of those situations where the right answer is also the most uncomfortable one.",
               "It's sort of like managing a team — you don't really know what works until you try it on a real project.",
               "It's kind of frustrating, honestly — we keep ending up in the same conversation in slightly different rooms."
@@ -456,9 +447,9 @@
             "hidden_prompt": "user asks Charlotte about the book",
             "hint_en": "Are you actually enjoying it?",
             "examples_pass": [
-              "Are you actually enjoying it?",
-              "I'm low-key obsessed with that show.",
-              "It's kind of a big deal, ngl."
+              "What about the book?",
+              "And the book — what do you think?",
+              "The book — that's the one."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -580,8 +571,8 @@
             "hint_en": "Right — go on. Mm-hm, I'm following.",
             "examples_pass": [
               "Right — go on. Mm-hm, I'm following.",
-              "Honestly, that's a total game-changer.",
-              "I'm not gonna lie, it threw me off completely."
+              "Yeah — that's the one.",
+              "Honestly, yeah sums it up."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -596,8 +587,8 @@
             "hint_en": "Really? In the middle of the meeting? No way.",
             "examples_pass": [
               "Really? In the middle of the meeting? No way.",
-              "That's super interesting, actually.",
-              "To be fair, it could've gone either way."
+              "Oh — that's the one.",
+              "Honestly, oh sums it up."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -612,8 +603,8 @@
             "hint_en": "Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now.",
             "examples_pass": [
               "Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now.",
-              "I'm low-key obsessed with that show.",
-              "It's kind of a big deal, ngl."
+              "Okay — that's the one.",
+              "Honestly, okay sums it up."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -644,9 +635,9 @@
             "hidden_prompt": "user uses backchannel and short reaction",
             "hint_en": "Oh no. Right — and you'd already been waiting how long?",
             "examples_pass": [
-              "Oh no. Right — and you'd already been waiting how long?",
-              "Honestly, that's a total game-changer.",
-              "I'm not gonna lie, it threw me off completely."
+              "Backchannel and short reaction — that's the one.",
+              "Honestly, backchannel and short reaction sums it up.",
+              "Yeah, backchannel and short reaction for sure."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -661,8 +652,8 @@
             "hint_en": "No way. She actually opened it in front of the whole queue?",
             "examples_pass": [
               "No way. She actually opened it in front of the whole queue?",
-              "That's super interesting, actually.",
-              "To be fair, it could've gone either way."
+              "No way — that's the one.",
+              "Honestly, no way sums it up."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -795,7 +786,7 @@
             "examples_pass": [
               "Honestly, I've stopped reading her emails carefully — they're so dense that the actual decision usually requires a follow-up phone call.",
               "Honestly, that's a total game-changer.",
-              "I'm not gonna lie, it threw me off completely."
+              "Honestly — that's the one."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -810,8 +801,8 @@
             "hint_en": "To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it.",
             "examples_pass": [
               "To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it.",
-              "That's super interesting, actually.",
-              "To be fair, it could've gone either way."
+              "To be fair, it could've gone either way.",
+              "To be fair — that's the one."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -826,8 +817,8 @@
             "hint_en": "Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision.",
             "examples_pass": [
               "Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision.",
-              "I'm low-key obsessed with that show.",
-              "It's kind of a big deal, ngl."
+              "Look — that's the one.",
+              "Honestly, Look sums it up."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -860,7 +851,7 @@
             "examples_pass": [
               "Honestly, the longer you wait, the harder it'll be — the disengagement starts to feel mutual once enough weeks pass.",
               "Honestly, that's a total game-changer.",
-              "I'm not gonna lie, it threw me off completely."
+              "Honestly — that's the one."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -1002,8 +993,8 @@
             "hint_en": "Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks.",
             "examples_pass": [
               "Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks.",
-              "Honestly, that's a total game-changer.",
-              "I'm not gonna lie, it threw me off completely."
+              "The thing is — that's the one.",
+              "Honestly, The thing is sums it up."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -1018,8 +1009,8 @@
             "hint_en": "I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions.",
             "examples_pass": [
               "I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions.",
-              "That's super interesting, actually.",
-              "To be fair, it could've gone either way."
+              "I'll tell you what — that's the one.",
+              "Honestly, I'll tell you what sums it up."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -1034,8 +1025,8 @@
             "hint_en": "I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet.",
             "examples_pass": [
               "I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet.",
-              "I'm low-key obsessed with that show.",
-              "It's kind of a big deal, ngl."
+              "I don't know about you, but — that's the one.",
+              "Honestly, I don't know about you, but sums it up."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -1067,8 +1058,8 @@
             "hint_en": "Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there.",
             "examples_pass": [
               "Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there.",
-              "Honestly, that's a total game-changer.",
-              "I'm not gonna lie, it threw me off completely."
+              "Here's the thing — that's the one.",
+              "Honestly, Here's the thing sums it up."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -1084,7 +1075,7 @@
             "examples_pass": [
               "I'll tell you what — exit interviews almost never tell you the real story. The honest answers are in the second job they take, six months later.",
               "I don't know about you, but the patterns I'm seeing point to a deeper culture issue, not a tooling one.",
-              "Here's the thing — people don't leave roles, they leave the version of themselves the role forces them to become."
+              "I'll tell you what — that's the one."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",

@@ -462,7 +462,7 @@
    **hidden_prompt**: "user asks Charlotte more about her grandmother"
    **hint_pt**: "What did she study?"
    **hint_en**: "What did she study?"
-   **example_pass**: What did she study? | Seldom have I encountered such generosity. | Little did I know what was coming next. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 **Closing cue**: Charlotte closes with "Layered lives, properly framed." once obj_3 lands.
@@ -750,7 +750,7 @@
    **hidden_prompt**: "user uses 'In no way' or 'At no time' + inversion"
    **hint_pt**: "In no way does this campaign reflect our values."
    **hint_en**: "In no way does this campaign reflect our values."
-   **example_pass**: In no way does this campaign reflect our values. | Never have I seen such a beautiful sunset. | Rarely does she complain about her workload. | At no time has the company agreed to those terms in writing. | At no time did the team commit to a Q3 launch date. | At no time has the regulator approved that interpretation of the policy. | At no time were we informed of the change in ownership.
+   **example_pass**: In no way does this campaign reflect our values. | At no time has the company agreed to those terms in writing. | At no time did the team commit to a Q3 launch date. | At no time has the regulator approved that interpretation of the policy. | At no time were we informed of the change in ownership.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 2. **id**: 2

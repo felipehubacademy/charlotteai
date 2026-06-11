@@ -158,9 +158,9 @@
             "hidden_prompt": "user uses dis- or mis- correctly",
             "hint_en": "From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.'",
             "examples_pass": [
-              "From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.'",
-              "His thoughtfulness made the gesture unforgettable.",
-              "A meaningful collaboration produced remarkable results."
+              "Dis- — that's the one.",
+              "Honestly, dis- sums it up.",
+              "Yeah, dis- for sure."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -192,8 +192,8 @@
             "hint_en": "Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'.",
             "examples_pass": [
               "Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'.",
-              "Her unwavering commitment was truly inspirational.",
-              "The misunderstanding led to widespread misinformation."
+              "Unresponsible — that's the one.",
+              "Honestly, unresponsible sums it up."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -377,13 +377,9 @@
             "hidden_prompt": "user uses -ship or -hood form",
             "hint_en": "From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'",
             "examples_pass": [
-              "From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'",
-              "His thoughtfulness made the gesture unforgettable.",
-              "A meaningful collaboration produced remarkable results.",
-              "From 'partner' → 'partnership': Their partnership lasted ten years and survived two industries.",
-              "From 'friend' → 'friendship': Our friendship has outlasted three different cities and two careers each.",
-              "From 'leader' → 'leadership': Her leadership turned the company around within a single year.",
-              "From 'neighbour' → 'neighbourhood': The neighbourhood changed completely in the decade after we moved in."
+              "-ship — that's the one.",
+              "Honestly, -ship sums it up.",
+              "Yeah, -ship for sure."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -415,8 +411,6 @@
             "hint_en": "Try: 'The decision to expand was followed by a measurable improvement in team performance.'",
             "examples_pass": [
               "Try: 'The decision to expand was followed by a measurable improvement in team performance.'",
-              "Her unwavering commitment was truly inspirational.",
-              "The misunderstanding led to widespread misinformation.",
               "Try: 'The decision to expand was followed by a measurable improvement in team performance over the next two quarters.'",
               "Try: 'The decision turned out to be costly, but the performance metrics eventually justified it.'",
               "Try: 'Her decision to delay the launch protected the long-term performance of the brand.'",
@@ -435,8 +429,6 @@
             "hint_en": "Then: 'Subsequent growth outpaced that of competitors over the same period.'",
             "examples_pass": [
               "Then: 'Subsequent growth outpaced that of competitors over the same period.'",
-              "Industrialisation transformed the countryside dramatically.",
-              "The reorganisation was both costly and disruptive.",
               "Then: 'The company's growth in that region was largely driven by a single key partnership.'",
               "Then: 'Growth slowed in the second half of the year, but margins improved considerably.'",
               "Then: 'Growth came in waves, with each new market opening producing its own distinct rhythm.'"
@@ -641,8 +633,8 @@
             "hint_en": "Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'.",
             "examples_pass": [
               "Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'.",
-              "Her unwavering commitment was truly inspirational.",
-              "The misunderstanding led to widespread misinformation."
+              "Relyable — that's the one.",
+              "Honestly, relyable sums it up."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -789,9 +781,9 @@
             "hidden_prompt": "user uses a closed compound (one word)",
             "hint_en": "The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock.",
             "examples_pass": [
-              "The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock.",
-              "Her unwavering commitment was truly inspirational.",
-              "The misunderstanding led to widespread misinformation."
+              "A closed compound (one word) — that's the one.",
+              "Honestly, a closed compound (one word) sums it up.",
+              "Yeah, a closed compound (one word) for sure."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -805,9 +797,9 @@
             "hidden_prompt": "user uses a hyphenated compound before noun",
             "hint_en": "A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works.",
             "examples_pass": [
-              "A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works.",
-              "Industrialisation transformed the countryside dramatically.",
-              "The reorganisation was both costly and disruptive."
+              "A hyphenated compound before noun — that's how I'd put it.",
+              "As you said: a hyphenated compound before noun.",
+              "A hyphenated compound before noun, plain and simple."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -821,9 +813,9 @@
             "hidden_prompt": "user uses an open compound (two separate words)",
             "hint_en": "She walked into the post office, paid in exact change, and left without saying a word.",
             "examples_pass": [
-              "She walked into the post office, paid in exact change, and left without saying a word.",
-              "His thoughtfulness made the gesture unforgettable.",
-              "A meaningful collaboration produced remarkable results."
+              "An open compound (two separate words) — that's how I'd put it.",
+              "As you said: an open compound (two separate words).",
+              "An open compound (two separate words), plain and simple."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -855,8 +847,8 @@
             "hint_en": "Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.'",
             "examples_pass": [
               "Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.'",
-              "Her unwavering commitment was truly inspirational.",
-              "The misunderstanding led to widespread misinformation."
+              "State-of-the-art — that's the one.",
+              "Honestly, state-of-the-art sums it up."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -886,9 +878,9 @@
             "hidden_prompt": "user asks Charlotte about a specific compound she's unsure of",
             "hint_en": "Anything else you're unsure about?",
             "examples_pass": [
-              "Anything else you're unsure about?",
-              "His thoughtfulness made the gesture unforgettable.",
-              "A meaningful collaboration produced remarkable results."
+              "A specific compound she's unsure of — that's how I'd put it.",
+              "As you said: a specific compound she's unsure of.",
+              "A specific compound she's unsure of, plain and simple."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -1001,8 +993,6 @@
             "hint_en": "I'll message you the details once the venue is confirmed.",
             "examples_pass": [
               "I'll message you the details once the venue is confirmed.",
-              "Her unwavering commitment was truly inspirational.",
-              "The misunderstanding led to widespread misinformation.",
               "She messaged me at midnight just to say the show had been wonderful.",
               "He hardly ever messages first, but he always responds within minutes.",
               "Can you message the team and ask them to log off early today?"
@@ -1020,8 +1010,6 @@
             "hint_en": "She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile.",
             "examples_pass": [
               "She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile.",
-              "Industrialisation transformed the countryside dramatically.",
-              "The reorganisation was both costly and disruptive.",
               "He gifted his old guitar to a younger cousin who actually had time to play it.",
               "They gifted the new hires hand-written notes on their first day, which set the tone perfectly.",
               "She gifted the painting back to the artist when she found out it was the last one he had."
@@ -1039,8 +1027,6 @@
             "hint_en": "I screenshotted the conversation just in case anyone needed proof of the timeline.",
             "examples_pass": [
               "I screenshotted the conversation just in case anyone needed proof of the timeline.",
-              "His thoughtfulness made the gesture unforgettable.",
-              "A meaningful collaboration produced remarkable results.",
               "He screenshotted the press release the second it went live and sent it to half the office.",
               "She screenshotted the chart and dropped it into the deck without asking permission.",
               "I screenshotted the error and sent it to support before I forgot what I had been doing."
@@ -1075,12 +1061,8 @@
             "hint_en": "She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb.",
             "examples_pass": [
               "She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb.",
-              "Her unwavering commitment was truly inspirational.",
-              "The misunderstanding led to widespread misinformation.",
               "She probably laughed at 'send a text message' — natives just say 'I'll text you' these days.",
-              "Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'.",
-              "Conversion makes English faster: 'message me' instead of 'send me a message'; 'mic me' instead of 'attach a microphone'.",
-              "I had to retrain myself: 'I'll WhatsApp you', 'I'll Slack you', 'I'll DM you' — all verbs now, all from nouns."
+              "Text — that's the one."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",

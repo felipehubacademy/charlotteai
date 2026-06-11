@@ -97,7 +97,7 @@
    **hidden_prompt**: "user uses 'First / Second / Most importantly'"
    **hint_pt**: "First, libraries close measurable literacy gaps in underserved communities. Second, they remain the most cost-effective public learning infrastructure. Most importantly, they offer something no algorithm can — a space without commercial intent."
    **hint_en**: "First, libraries close measurable literacy gaps in underserved communities. Second, they remain the most cost-effective public learning infrastructure. Most importantly, they offer something no algorithm can — a space without commercial intent."
-   **example_pass**: First, libraries close measurable literacy gaps in underserved communities. Second, they remain the most cost-effective public learning infrastructure. Most importantly, they offer something no algorithm can — a space without commercial intent. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data. | First, the policy reduces measurable inequality. Second, it pays for itself within a decade. Most importantly, it restores public trust in institutions that have been quietly losing it for years. | First, the team has the technical capability. Second, the market is ready. Most importantly, the timing aligns with a regulatory window that won't last. | First, the data is consistent. Second, the methodology is sound. Most importantly, the implications hold up under hostile scrutiny. | First, the proposal is fundable. Second, it's achievable. Most importantly, it solves a problem the current alternatives don't even acknowledge.
+   **example_pass**: First, libraries close measurable literacy gaps in underserved communities. Second, they remain the most cost-effective public learning infrastructure. Most importantly, they offer something no algorithm can — a space without commercial intent. | First, the policy reduces measurable inequality. Second, it pays for itself within a decade. Most importantly, it restores public trust in institutions that have been quietly losing it for years. | First, the team has the technical capability. Second, the market is ready. Most importantly, the timing aligns with a regulatory window that won't last. | First, the data is consistent. Second, the methodology is sound. Most importantly, the implications hold up under hostile scrutiny. | First, the proposal is fundable. Second, it's achievable. Most importantly, it solves a problem the current alternatives don't even acknowledge.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -106,7 +106,7 @@
    **hidden_prompt**: "user uses 'The evidence is unambiguous' or similar"
    **hint_pt**: "The evidence is unambiguous: the question is not whether to fund them, but how generously."
    **hint_en**: "The evidence is unambiguous: the question is not whether to fund them, but how generously."
-   **example_pass**: The evidence is unambiguous: the question is not whether to fund them, but how generously. | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously. | The evidence is unambiguous: the question is no longer whether to act, but how generously. | The data leaves little room for doubt — the harder question is what to do with the conclusion. | The evidence is unambiguous, even if the political implications remain uncomfortable. | The case is no longer in dispute among researchers — what remains is the question of implementation.
+   **example_pass**: The evidence is unambiguous: the question is not whether to fund them, but how generously. | The evidence is unambiguous: the question is no longer whether to act, but how generously. | The evidence is unambiguous, even if the political implications remain uncomfortable.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Case built, three pillars." once obj_3 lands.
@@ -152,7 +152,7 @@
    **hidden_prompt**: "user uses 'First / Second / Most importantly'"
    **hint_pt**: "First, every published trial — Iceland, Belgium, New Zealand — has reported sustained or improved productivity. Second, the recruitment advantage in a tight labour market is undeniable. Most importantly, exhausted people make worse decisions, and we make a lot of decisions."
    **hint_en**: "First, every published trial — Iceland, Belgium, New Zealand — has reported sustained or improved productivity. Second, the recruitment advantage in a tight labour market is undeniable. Most importantly, exhausted people make worse decisions, and we make a lot of decisions."
-   **example_pass**: First, every published trial — Iceland, Belgium, New Zealand — has reported sustained or improved productivity. Second, the recruitment advantage in a tight labour market is undeniable. Most importantly, exhausted people make worse decisions, and we make a lot of decisions. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data. | First, the policy reduces measurable inequality. Second, it pays for itself within a decade. Most importantly, it restores public trust in institutions that have been quietly losing it for years. | First, the team has the technical capability. Second, the market is ready. Most importantly, the timing aligns with a regulatory window that won't last. | First, the data is consistent. Second, the methodology is sound. Most importantly, the implications hold up under hostile scrutiny. | First, the proposal is fundable. Second, it's achievable. Most importantly, it solves a problem the current alternatives don't even acknowledge.
+   **example_pass**: First, every published trial — Iceland, Belgium, New Zealand — has reported sustained or improved productivity. Second, the recruitment advantage in a tight labour market is undeniable. Most importantly, exhausted people make worse decisions, and we make a lot of decisions. | First, the policy reduces measurable inequality. Second, it pays for itself within a decade. Most importantly, it restores public trust in institutions that have been quietly losing it for years. | First, the team has the technical capability. Second, the market is ready. Most importantly, the timing aligns with a regulatory window that won't last. | First, the data is consistent. Second, the methodology is sound. Most importantly, the implications hold up under hostile scrutiny. | First, the proposal is fundable. Second, it's achievable. Most importantly, it solves a problem the current alternatives don't even acknowledge.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -258,7 +258,7 @@
    **hidden_prompt**: "user uses 'It would be a mistake to' or 'The deeper question is'"
    **hint_pt**: "It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose."
    **hint_en**: "It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose."
-   **example_pass**: It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose. | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose. | The deeper question is — that's the one. | Honestly, The deeper question is sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Objections answered, position strengthened." once obj_3 lands.
@@ -304,7 +304,7 @@
    **hidden_prompt**: "user uses 'The deeper question is' or 'It would be a mistake to assume'"
    **hint_pt**: "The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us."
    **hint_en**: "The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us."
-   **example_pass**: The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us. | The deeper question is — that's the one. | Honestly, The deeper question is sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -448,7 +448,7 @@
    **hidden_prompt**: "user uses anaphora"
    **hint_pt**: "Try: 'We are here because rights are not granted, they are demanded. We are here because patience has limits. We are here because no one is coming to do this for us.'"
    **hint_en**: "Try: 'We are here because rights are not granted, they are demanded. We are here because patience has limits. We are here because no one is coming to do this for us.'"
-   **example_pass**: Try: 'We are here because rights are not granted, they are demanded. We are here because patience has limits. We are here because no one is coming to do this for us.' | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now.
+   **example_pass**: Anaphora — that's the one. | Honestly, anaphora sums it up. | Yeah, anaphora for sure.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -457,7 +457,7 @@
    **hidden_prompt**: "user uses antithesis"
    **hint_pt**: "Then drop in: 'Accessibility is not charity — it is justice taking the form of a ramp, a captioned line, an opened door.'"
    **hint_en**: "Then drop in: 'Accessibility is not charity — it is justice taking the form of a ramp, a captioned line, an opened door.'"
-   **example_pass**: Then drop in: 'Accessibility is not charity — it is justice taking the form of a ramp, a captioned line, an opened door.' | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data.
+   **example_pass**: Antithesis — that's the one. | Honestly, antithesis sums it up. | Yeah, antithesis for sure.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -466,7 +466,7 @@
    **hidden_prompt**: "user uses tricolon"
    **hint_pt**: "Close with: 'Today we listen, tomorrow we organise, every day after that we demand.'"
    **hint_en**: "Close with: 'Today we listen, tomorrow we organise, every day after that we demand.'"
-   **example_pass**: Close with: 'Today we listen, tomorrow we organise, every day after that we demand.' | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously.
+   **example_pass**: Tricolon — that's the one. | Honestly, tricolon sums it up. | Yeah, tricolon for sure.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Opener drafted, rhetorically structured." once obj_3 lands.
@@ -546,7 +546,7 @@
    **hidden_prompt**: "user uses 'which led to' or 'which caused'"
    **hint_pt**: "Interest rates rose, which led to higher mortgage costs."
    **hint_en**: "Interest rates rose, which led to higher mortgage costs."
-   **example_pass**: Interest rates rose, which led to higher mortgage costs. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now.
+   **example_pass**: Interest rates rose, which led to higher mortgage costs. | Which led to — that's the one. | Honestly, which led to sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -564,7 +564,7 @@
    **hidden_prompt**: "user uses 'From this it follows that' or 'As a result'"
    **hint_pt**: "From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters."
    **hint_en**: "From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters."
-   **example_pass**: From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters. | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously.
+   **example_pass**: From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters. | As a result — that's the one. | Honestly, As a result sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Chain forged, conclusion landed." once obj_3 lands.
@@ -601,7 +601,7 @@
    **hidden_prompt**: "user opens chain with cause and 'which led to / which in turn'"
    **hint_pt**: "The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance."
    **hint_en**: "The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance."
-   **example_pass**: The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now.
+   **example_pass**: The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance. | Which led to — that's the one. | Honestly, which led to sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -610,7 +610,7 @@
    **hidden_prompt**: "user adds 'which in turn' link or two"
    **hint_pt**: "Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources."
    **hint_en**: "Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources."
-   **example_pass**: Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data.
+   **example_pass**: Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources. | Which in turn — that's the one. | Honestly, which in turn sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -619,7 +619,7 @@
    **hidden_prompt**: "user uses 'From this it follows' or 'As a result' or 'The deeper cause is'"
    **hint_pt**: "From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention."
    **hint_en**: "From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention."
-   **example_pass**: From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention. | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously.
+   **example_pass**: From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention. | As a result — that's the one. | Honestly, As a result sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Causal chain, fully landed." once obj_3 lands.
@@ -700,7 +700,7 @@
    **hidden_prompt**: "user uses 'What is at stake is' or 'The stakes could not be higher'"
    **hint_pt**: "What is at stake is not the pace of innovation, but the choice of whose interests guide it."
    **hint_en**: "What is at stake is not the pace of innovation, but the choice of whose interests guide it."
-   **example_pass**: What is at stake is not the pace of innovation, but the choice of whose interests guide it. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now.
+   **example_pass**: What is at stake is not the pace of innovation, but the choice of whose interests guide it. | What is at stake is — that's the one. | Honestly, What is at stake is sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -709,7 +709,7 @@
    **hidden_prompt**: "user uses 'The choice before us is clear'"
    **hint_pt**: "The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible."
    **hint_en**: "The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible."
-   **example_pass**: The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data.
+   **example_pass**: The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible. | The choice before us is clear — that's the one. | Honestly, The choice before us is clear sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -718,7 +718,7 @@
    **hidden_prompt**: "user uses 'If we fail to' or 'Should we fail to'"
    **hint_pt**: "If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping."
    **hint_en**: "If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping."
-   **example_pass**: If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping. | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously.
+   **example_pass**: If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping. | If we fail to — that's the one. | Honestly, If we fail to sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Conclusion architecture, landed." once obj_3 lands.
@@ -756,7 +756,7 @@
    **hidden_prompt**: "user uses 'What is at stake is' or stakes phrase"
    **hint_pt**: "What is at stake is not turnout, but whether we still believe collective decisions can change anything."
    **hint_en**: "What is at stake is not turnout, but whether we still believe collective decisions can change anything."
-   **example_pass**: What is at stake is not turnout, but whether we still believe collective decisions can change anything. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now.
+   **example_pass**: What is at stake is not turnout, but whether we still believe collective decisions can change anything. | What is at stake is — that's the one. | Honestly, What is at stake is sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -765,7 +765,7 @@
    **hidden_prompt**: "user uses 'The choice before us is clear'"
    **hint_pt**: "The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors."
    **hint_en**: "The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors."
-   **example_pass**: The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data.
+   **example_pass**: The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors. | The choice before us is clear — that's the one. | Honestly, The choice before us is clear sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -774,7 +774,7 @@
    **hidden_prompt**: "user uses 'If we fail to' or call-to-action"
    **hint_pt**: "If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled."
    **hint_en**: "If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled."
-   **example_pass**: If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled. | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously.
+   **example_pass**: If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled. | If we fail to — that's the one. | Honestly, If we fail to sums it up.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Speech closed, persuasion complete." once obj_3 lands.

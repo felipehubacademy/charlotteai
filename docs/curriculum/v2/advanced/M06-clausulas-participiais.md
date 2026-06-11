@@ -159,7 +159,7 @@
    **hidden_prompt**: "user asks Charlotte more about her school walk"
    **hint_pt**: "What changed at your school?"
    **hint_en**: "What changed at your school?"
-   **example_pass**: What changed at your school? | Exhausted from the trip, we slept for ten hours. | Knowing the risks, he proceeded carefully. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Vignettes, properly opened." once obj_3 lands.
@@ -312,7 +312,7 @@
    **hidden_prompt**: "user asks Charlotte more about the bookshop"
    **hint_pt**: "Does the monk still work there?"
    **hint_en**: "Does the monk still work there?"
-   **example_pass**: Does the monk still work there? | Exhausted from the trip, we slept for ten hours. | Knowing the risks, he proceeded carefully. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Places and people, opened in passive." once obj_3 lands.
@@ -552,7 +552,7 @@
    **hidden_prompt**: "user uses 'Having been told/warned/informed'"
    **hint_pt**: "Having been warned about the traffic, I left an hour earlier."
    **hint_en**: "Having been warned about the traffic, I left an hour earlier."
-   **example_pass**: Having been warned about the traffic, I left an hour earlier. | Surprised by the news, she sat down quietly. | Walking through the park, I noticed the autumn colours. | Having been warned about the traffic, I left an hour earlier than usual. | Having been told about the budget cuts in advance, the team had time to prepare. | Having been informed of the changes, the client had no grounds for complaint. | Having been briefed by legal, I knew exactly which questions to avoid.
+   **example_pass**: Having been warned about the traffic, I left an hour earlier. | Having been warned about the traffic, I left an hour earlier than usual. | Having been told about the budget cuts in advance, the team had time to prepare. | Having been informed of the changes, the client had no grounds for complaint.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 3. **id**: 3
@@ -616,7 +616,7 @@
    **hidden_prompt**: "user asks Charlotte about her mentor's edits"
    **hint_pt**: "What did she edit out?"
    **hint_en**: "What did she edit out?"
-   **example_pass**: What did she edit out? | Exhausted from the trip, we slept for ten hours. | Knowing the risks, he proceeded carefully. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Inheritance, in passive voice." once obj_3 lands.

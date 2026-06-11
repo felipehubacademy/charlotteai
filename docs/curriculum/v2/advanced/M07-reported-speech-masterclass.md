@@ -752,7 +752,7 @@
    **hidden_prompt**: "user uses 'According to' or 'allegedly' or 'apparently'"
    **hint_pt**: "According to a colleague, three teams are being merged."
    **hint_en**: "According to a colleague, three teams are being merged."
-   **example_pass**: According to a colleague, three teams are being merged. | She told me she was going to leave the next day. | He claimed he had finished the work earlier. | According to a colleague, three teams are quietly being merged into a single org. | Apparently, two senior partners have already given notice, though it hasn't been announced yet. | According to people close to the negotiation, the deal nearly fell apart on the final night. | Allegedly, the executive approved the transfer without informing the rest of the board.
+   **example_pass**: According to a colleague, three teams are being merged. | According to a colleague, three teams are quietly being merged into a single org. | Apparently, two senior partners have already given notice, though it hasn't been announced yet. | According to people close to the negotiation, the deal nearly fell apart on the final night. | Allegedly, the executive approved the transfer without informing the rest of the board.
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2

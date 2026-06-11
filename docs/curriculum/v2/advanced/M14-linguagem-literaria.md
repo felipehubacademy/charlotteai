@@ -104,7 +104,7 @@
    **hidden_prompt**: "user uses 'X is Y' metaphor, not cliché"
    **hint_pt**: "Hope is the rent you pay to live with yourself through bad years."
    **hint_en**: "Hope is the rent you pay to live with yourself through bad years."
-   **example_pass**: Hope is the rent you pay to live with yourself through bad years. | Time slipped through my fingers, grain by quiet grain. | The forest whispered secrets only the trees remembered. | Memory is the editor that no longer answers to the writer who hired her. | Ambition is a house you build for the version of you who arrives last. | Patience is the quietest currency, and the most undervalued.
+   **example_pass**: X is Y — that's the one. | Honestly, X is Y sums it up. | Yeah, X is Y for sure.
    **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 **Closing cue**: Charlotte closes with "Three fresh images. Cliché avoided." once obj_3 lands.
@@ -141,7 +141,7 @@
    **hidden_prompt**: "user opens metaphor 'attention is the new oil'"
    **hint_pt**: "Attention is the new oil — and we are quietly running the same playbook on it."
    **hint_en**: "Attention is the new oil — and we are quietly running the same playbook on it."
-   **example_pass**: Attention is the new oil — and we are quietly running the same playbook on it. | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light. | Attention is the new oil — and we are quietly running the same extractive playbook on it. | Drilling deeper into private spaces, refining cruder feeds into more potent ones, pumping the surplus into political markets and consumer ones alike. | And like every oil age before it, the externalities — the climate, the wars, the costs we do not yet name — are quietly accumulating elsewhere. | Attention is the new commons, fenced off field by field, with each new app another act of enclosure.
+   **example_pass**: Attention is the new oil — and we are quietly running the same playbook on it. | Attention is the new oil — and we are quietly running the same extractive playbook on it. | Attention is the new oil — that's the one.
    **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
@@ -294,7 +294,7 @@
    **hidden_prompt**: "user revises 'office was empty' with personification"
    **hint_pt**: "Try: 'The office held its breath in the absence of anyone to hold it for.'"
    **hint_en**: "Try: 'The office held its breath in the absence of anyone to hold it for.'"
-   **example_pass**: Try: 'The office held its breath in the absence of anyone to hold it for.' | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light. | And: 'The overhead lights kept their nightly vigil over no one in particular. The clock, indifferent as always, announced eight in red.' | Try: 'The empty desks sat with the kind of patient silence that only well-used rooms ever learn.' | And: 'The vending machine hummed its small monologue into the dark, addressing nobody in particular.'
+   **example_pass**: Office was empty — that's the one. | Honestly, office was empty sums it up. | Yeah, office was empty for sure.
    **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
@@ -448,7 +448,7 @@
    **hidden_prompt**: "user replaces 'went' / 'sat down' with vivid verbs"
    **hint_pt**: "Try: 'She pushed through the door of the café and slid into the booth by the window.'"
    **hint_en**: "Try: 'She pushed through the door of the café and slid into the booth by the window.'"
-   **example_pass**: Try: 'She pushed through the door of the café and slid into the booth by the window.' | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light. | Then: 'In the corner, a man in a grey overcoat was hunched over his phone, thumb scrolling slowly enough to suggest he wasn't reading anything.' | Try: 'He drifted past the counter and folded himself into the booth in the back, ordering nothing.' | Then: 'Two tables over, a woman in a faded red coat was writing in a small black notebook, looking up only when the door opened.'
+   **example_pass**: Went — that's the one. | Honestly, went sums it up. | Yeah, went for sure.
    **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
@@ -457,7 +457,7 @@
    **hidden_prompt**: "user adds specific detail to 'a man'"
    **hint_pt**: "Then: 'In the corner, a man in a grey overcoat was hunched over his phone, thumb scrolling slowly enough to suggest he wasn't reading anything.'"
    **hint_en**: "Then: 'In the corner, a man in a grey overcoat was hunched over his phone, thumb scrolling slowly enough to suggest he wasn't reading anything.'"
-   **example_pass**: Then: 'In the corner, a man in a grey overcoat was hunched over his phone, thumb scrolling slowly enough to suggest he wasn't reading anything.' | The city sighed under the weight of its own ambition. | Hope flickered, fragile as a candle in the wind. | Try: 'She pushed through the door of the café and slid into the booth by the window.' | Try: 'He drifted past the counter and folded himself into the booth in the back, ordering nothing.' | Then: 'Two tables over, a woman in a faded red coat was writing in a small black notebook, looking up only when the door opened.'
+   **example_pass**: Then: 'In the corner, a man in a grey overcoat was hunched over his phone, thumb scrolling slowly enough to suggest he wasn't reading anything.' | A man — that's the one. | Honestly, a man sums it up.
    **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 3. **id**: 3

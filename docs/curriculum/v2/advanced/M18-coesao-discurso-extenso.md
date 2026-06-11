@@ -101,7 +101,7 @@
    **hidden_prompt**: "user uses 'That' for emotional or temporal distance"
    **hint_pt**: "First: 'We laid off forty percent of the team in 2008.' Follow: 'That decision still shapes how we think about hiring.'"
    **hint_en**: "First: 'We laid off forty percent of the team in 2008.' Follow: 'That decision still shapes how we think about hiring.'"
-   **example_pass**: First: 'We laid off forty percent of the team in 2008.' Follow: 'That decision still shapes how we think about hiring.' | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions. | We laid off forty percent of the team in 2008. That decision still shapes how we think about hiring today. | She walked away from her career at thirty-two. That choice took her a decade to fully understand. | He missed his father's last call. That regret has stayed with him for almost twenty years. | They sold the company at the peak of the cycle. That sale set up the next two decades of their lives.
+   **example_pass**: First: 'We laid off forty percent of the team in 2008.' Follow: 'That decision still shapes how we think about hiring.' | We laid off forty percent of the team in 2008. That decision still shapes how we think about hiring today. | She walked away from her career at thirty-two. That choice took her a decade to fully understand. | He missed his father's last call. That regret has stayed with him for almost twenty years. | They sold the company at the peak of the cycle. That sale set up the next two decades of their lives.
    **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "Demonstratives threading." once obj_3 lands.
@@ -138,7 +138,7 @@
    **hidden_prompt**: "user adds 'These three problems' or similar"
    **hint_pt**: "Try: 'These three pressures reinforce one another in ways the leadership team hasn't yet acknowledged.'"
    **hint_en**: "Try: 'These three pressures reinforce one another in ways the leadership team hasn't yet acknowledged.'"
-   **example_pass**: Try: 'These three pressures reinforce one another in ways the leadership team hasn't yet acknowledged.' | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations. | Try: 'These risks compound rather than offset — and the cost of inaction grows with each quarter we delay.' | Try: 'These changes, taken together, mark a more decisive shift in strategy than any single announcement has signalled.' | Try: 'These trends, taken in isolation, look manageable; taken together, they tell a more difficult story.'
+   **example_pass**: These three problems — that's the one. | Honestly, These three problems sums it up. | Yeah, These three problems for sure.
    **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
@@ -245,7 +245,7 @@
    **hidden_prompt**: "user uses 'the laptop' or 'the machine'"
    **hint_pt**: "Second: 'The laptop was an upgrade she had been postponing for three years.'"
    **hint_en**: "Second: 'The laptop was an upgrade she had been postponing for three years.'"
-   **example_pass**: Second: 'The laptop was an upgrade she had been postponing for three years.' | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift. | The laptop was an upgrade she had been postponing for nearly three years. | The camera turned out to be heavier than she'd expected, but the image quality made up for it. | The car barely had room for our suitcases, but it handled the mountain roads beautifully. | The machine took a full forty-five minutes to set up before she could even open her first email.
+   **example_pass**: Second: 'The laptop was an upgrade she had been postponing for three years.' | The laptop was an upgrade she had been postponing for nearly three years. | The machine took a full forty-five minutes to set up before she could even open her first email.
    **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
@@ -254,7 +254,7 @@
    **hidden_prompt**: "user uses 'the device' or 'the new machine'"
    **hint_pt**: "Third: 'The new machine has kept her at her desk for hours longer than the old one ever did.'"
    **hint_en**: "Third: 'The new machine has kept her at her desk for hours longer than the old one ever did.'"
-   **example_pass**: Third: 'The new machine has kept her at her desk for hours longer than the old one ever did.' | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions. | The new machine has kept her at her desk for hours longer than the old one ever did. | The device replaced three older items in her bag and saved her almost a kilogram of weight. | The new vehicle has been on every motorway in the region within a single month. | The new model has none of the quirks of the previous generation, but also none of the charm.
+   **example_pass**: Third: 'The new machine has kept her at her desk for hours longer than the old one ever did.' | The new machine has kept her at her desk for hours longer than the old one ever did. | The device replaced three older items in her bag and saved her almost a kilogram of weight.
    **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "Chain woven, no repetition." once obj_3 lands.
@@ -291,7 +291,7 @@
    **hidden_prompt**: "user replaces some 'CEO' with synonym or descriptive variant"
    **hint_pt**: "Try: 'The CEO announced the merger. The chief executive said it would close in March.'"
    **hint_en**: "Try: 'The CEO announced the merger. The chief executive said it would close in March.'"
-   **example_pass**: Try: 'The CEO announced the merger. The chief executive said it would close in March.' | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations. | Try: 'The founder addressed the team in the morning. The outgoing CEO spoke separately to the press in the afternoon.' | Try: 'The chief executive opened the call. The company's longest-serving leader closed it on a quieter note.' | Try: 'The CEO took the questions. The company's most public face, as always, became its first line of defence.'
+   **example_pass**: Try: 'The CEO announced the merger. The chief executive said it would close in March.' | Try: 'The founder addressed the team in the morning. The outgoing CEO spoke separately to the press in the afternoon.' | Try: 'The CEO took the questions. The company's most public face, as always, became its first line of defence.'
    **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
@@ -300,7 +300,7 @@
    **hidden_prompt**: "user uses 'he/she' and 'the executive'"
    **hint_pt**: "Continue: 'She refused to take questions. The executive walked out before the press could press further.'"
    **hint_en**: "Continue: 'She refused to take questions. The executive walked out before the press could press further.'"
-   **example_pass**: Continue: 'She refused to take questions. The executive walked out before the press could press further.' | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift. | Continue: 'He answered briefly. The executive then deferred the rest of the conversation to the company's general counsel.' | Continue: 'She acknowledged the question. The executive then offered a careful, two-sentence answer and moved on.' | Continue: 'He paused. The executive looked around the room before answering in a tone nobody had heard him use before.'
+   **example_pass**: Continue: 'She refused to take questions. The executive walked out before the press could press further.' | The findings, taken together, point to a structural shift. | Continue: 'He answered briefly. The executive then deferred the rest of the conversation to the company's general counsel.' | Continue: 'She acknowledged the question. The executive then offered a careful, two-sentence answer and moved on.' | Continue: 'He paused. The executive looked around the room before answering in a tone nobody had heard him use before.'
    **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
@@ -309,7 +309,7 @@
    **hidden_prompt**: "user asks Charlotte about her own draft style"
    **hint_pt**: "Why does this trip you up?"
    **hint_en**: "Why does this trip you up?"
-   **example_pass**: Why does this trip you up? | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "Repetition replaced, prose breathes." once obj_3 lands.
@@ -389,7 +389,7 @@
    **hidden_prompt**: "user uses 'the former offers / has / provides'"
    **hint_pt**: "Two cities: São Paulo and Rio. The former offers a denser professional ecosystem."
    **hint_en**: "Two cities: São Paulo and Rio. The former offers a denser professional ecosystem."
-   **example_pass**: Two cities: São Paulo and Rio. The former offers a denser professional ecosystem. | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations. | Between São Paulo and Rio, the former offers a denser professional ecosystem. | Between the two candidates, the former has the technical depth, while the latter has the operational instinct. | Between the conservative and aggressive forecasts, the former is more politically defensible internally. | Of the two approaches, the former is more expensive but considerably more robust.
+   **example_pass**: Two cities: São Paulo and Rio. The former offers a denser professional ecosystem. | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations. | Between São Paulo and Rio, the former offers a denser professional ecosystem. | Between the two candidates, the former has the technical depth, while the latter has the operational instinct.
    **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
@@ -398,7 +398,7 @@
    **hidden_prompt**: "user uses 'the latter offers / has / provides'"
    **hint_pt**: "The latter, by contrast, offers a sense of place that comes from coastline rather than skyline."
    **hint_en**: "The latter, by contrast, offers a sense of place that comes from coastline rather than skyline."
-   **example_pass**: The latter, by contrast, offers a sense of place that comes from coastline rather than skyline. | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift. | The latter approach is faster but will require significantly more rework downstream. | The latter strategy carries less risk but also less upside in almost every scenario. | The latter option saves time now but creates a maintenance burden for years to come.
+   **example_pass**: Has — that's the one. | Honestly, has sums it up. | Yeah, has for sure.
    **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
@@ -750,7 +750,7 @@
    **hidden_prompt**: "user names which 'she' said it"
    **hint_pt**: "Try: 'The CEO told the head of legal that the deal would close.'"
    **hint_en**: "Try: 'The CEO told the head of legal that the deal would close.'"
-   **example_pass**: Try: 'The CEO told the head of legal that the deal would close.' | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations.
+   **example_pass**: She — that's the one. | Honestly, she sums it up. | Yeah, she for sure.
    **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2

@@ -94,7 +94,7 @@
    **hidden_prompt**: "user uses 'bring about' for causation"
    **hint_pt**: "Decades of activism brought about the legal recognition that nobody had thought possible."
    **hint_en**: "Decades of activism brought about the legal recognition that nobody had thought possible."
-   **example_pass**: Decades of activism brought about the legal recognition that nobody had thought possible. | I need to come up with a better plan. | We should put off the meeting until next week.
+   **example_pass**: Bring about — that's the one. | Honestly, bring about sums it up. | Yeah, bring about for sure.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -103,7 +103,7 @@
    **hidden_prompt**: "user uses 'come round' for visit or persuasion"
    **hint_pt**: "She came round eventually — sceptical at first, then quietly convinced after the third presentation."
    **hint_en**: "She came round eventually — sceptical at first, then quietly convinced after the third presentation."
-   **example_pass**: She came round eventually — sceptical at first, then quietly convinced after the third presentation. | She finally got over her fear of public speaking. | I can't put up with this noise anymore.
+   **example_pass**: I had to come round in the end. | Someone needs to come round eventually. | We decided to come round.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -149,7 +149,7 @@
    **hidden_prompt**: "user uses 'brought about' for outcome"
    **hint_pt**: "What brought about the shift was probably the talent leaving — once people quit, the policy followed."
    **hint_en**: "What brought about the shift was probably the talent leaving — once people quit, the policy followed."
-   **example_pass**: What brought about the shift was probably the talent leaving — once people quit, the policy followed. | I need to come up with a better plan. | We should put off the meeting until next week.
+   **example_pass**: What brought about the shift was probably the talent leaving — once people quit, the policy followed. | Brought about — that's the one. | Honestly, brought about sums it up.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -158,7 +158,7 @@
    **hidden_prompt**: "user uses 'come round' or 'bring round'"
    **hint_pt**: "Senior leadership came round slowly — they had to lose two key hires before the policy really moved."
    **hint_en**: "Senior leadership came round slowly — they had to lose two key hires before the policy really moved."
-   **example_pass**: Senior leadership came round slowly — they had to lose two key hires before the policy really moved. | She finally got over her fear of public speaking. | I can't put up with this noise anymore.
+   **example_pass**: I had to come round in the end. | Someone needs to come round eventually. | We decided to come round.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -302,7 +302,7 @@
    **hidden_prompt**: "user uses 'gloss over' to describe coverage gap"
    **hint_pt**: "Each version probably glossed over the angles inconvenient to its own audience."
    **hint_en**: "Each version probably glossed over the angles inconvenient to its own audience."
-   **example_pass**: Each version probably glossed over the angles inconvenient to its own audience. | I need to come up with a better plan. | We should put off the meeting until next week.
+   **example_pass**: Gloss over — that's the one. | Honestly, gloss over sums it up. | Yeah, gloss over for sure.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -311,7 +311,7 @@
    **hidden_prompt**: "user uses 'X crops up' for recurring elements"
    **hint_pt**: "The same two facts probably crop up in all three, but framed in completely different ways."
    **hint_en**: "The same two facts probably crop up in all three, but framed in completely different ways."
-   **example_pass**: The same two facts probably crop up in all three, but framed in completely different ways. | She finally got over her fear of public speaking. | I can't put up with this noise anymore.
+   **example_pass**: X crops up — that's the one. | Honestly, X crops up sums it up. | Yeah, X crops up for sure.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -400,7 +400,7 @@
    **hidden_prompt**: "user uses 'X lived up to / failed to live up to'"
    **hint_pt**: "The new product lived up to its launch promises — the team finally delivered something the press release didn't have to lie about."
    **hint_en**: "The new product lived up to its launch promises — the team finally delivered something the press release didn't have to lie about."
-   **example_pass**: The new product lived up to its launch promises — the team finally delivered something the press release didn't have to lie about. | I need to come up with a better plan. | We should put off the meeting until next week.
+   **example_pass**: X lived up to — that's the one. | Honestly, X lived up to sums it up. | Yeah, X lived up to for sure.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -409,7 +409,7 @@
    **hidden_prompt**: "user uses 'X fell through'"
    **hint_pt**: "The partnership fell through over a single clause neither side would move on."
    **hint_en**: "The partnership fell through over a single clause neither side would move on."
-   **example_pass**: The partnership fell through over a single clause neither side would move on. | She finally got over her fear of public speaking. | I can't put up with this noise anymore.
+   **example_pass**: X fell through — that's the one. | Honestly, X fell through sums it up. | Yeah, X fell through for sure.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -570,7 +570,7 @@
    **hidden_prompt**: "user uses 'shake off' or 'bear out'"
    **hint_pt**: "I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out."
    **hint_en**: "I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out."
-   **example_pass**: I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out. | Let's get down to business and stop wasting time. | He turned down the offer without hesitation. | It took me a long time to shake off the disappointment of that interview, even after I found a better role. | The data eventually bore out exactly what the senior engineer had been quietly saying for months. | She couldn't shake off the suspicion that something was wrong, and the audit later bore her out.
+   **example_pass**: I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out. | It took me a long time to shake off the disappointment of that interview, even after I found a better role. | She couldn't shake off the suspicion that something was wrong, and the audit later bore her out.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Interpersonal phrasals, sharp." once obj_3 lands.
@@ -607,7 +607,7 @@
    **hidden_prompt**: "user uses 'talk down to' to validate"
    **hint_pt**: "People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement."
    **hint_en**: "People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement."
-   **example_pass**: People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement. | I need to come up with a better plan. | We should put off the meeting until next week. | People who talk down to others rarely see it — the people they patronise don't push back, so silence reads as agreement. | Talking down to people is rarely deliberate — it's almost always a blind spot rather than a strategy. | He talks down to nearly everyone outside his core circle, and the cost is invisible to him but visible to everyone else. | Once you notice yourself being talked down to, the relationship rarely recovers — even if the other person never realises.
+   **example_pass**: People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement. | People who talk down to others rarely see it — the people they patronise don't push back, so silence reads as agreement. | Talk down to — that's the one.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -616,7 +616,7 @@
    **hidden_prompt**: "user uses 'wear/wore down' for cumulative effect"
    **hint_pt**: "Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up."
    **hint_en**: "Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up."
-   **example_pass**: Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up. | She finally got over her fear of public speaking. | I can't put up with this noise anymore. | Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up quietly. | Constant micro-criticism wore me down over the course of a single project; I left the company a few months after it ended. | Working with an indecisive client gradually wore down our project lead until she stopped pushing back at all. | The cumulative effect of those weekly meetings wore the team down in ways nobody acknowledged until people started leaving.
+   **example_pass**: Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up. | Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up quietly. | Working with an indecisive client gradually wore down our project lead until she stopped pushing back at all.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -704,7 +704,7 @@
    **hidden_prompt**: "user uses 'X stems from Y'"
    **hint_pt**: "Most of the team's friction stems from a single unresolved ownership question from the first month."
    **hint_en**: "Most of the team's friction stems from a single unresolved ownership question from the first month."
-   **example_pass**: Most of the team's friction stems from a single unresolved ownership question from the first month. | I need to come up with a better plan. | We should put off the meeting until next week.
+   **example_pass**: X stems from Y — that's the one. | Honestly, X stems from Y sums it up. | Yeah, X stems from Y for sure.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -713,7 +713,7 @@
    **hidden_prompt**: "user uses 'X amounts to Y'"
    **hint_pt**: "Stripped of jargon, the new strategy amounts to doing exactly what we did last year, more carefully."
    **hint_en**: "Stripped of jargon, the new strategy amounts to doing exactly what we did last year, more carefully."
-   **example_pass**: Stripped of jargon, the new strategy amounts to doing exactly what we did last year, more carefully. | She finally got over her fear of public speaking. | I can't put up with this noise anymore.
+   **example_pass**: X amounts to Y — that's the one. | Honestly, X amounts to Y sums it up. | Yeah, X amounts to Y for sure.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -722,7 +722,7 @@
    **hidden_prompt**: "user uses 'water + X + down' or 'watered down'"
    **hint_pt**: "By the time the policy made it through legal review, it had been watered down to the point of being symbolic."
    **hint_en**: "By the time the policy made it through legal review, it had been watered down to the point of being symbolic."
-   **example_pass**: By the time the policy made it through legal review, it had been watered down to the point of being symbolic. | Let's get down to business and stop wasting time. | He turned down the offer without hesitation.
+   **example_pass**: By the time the policy made it through legal review, it had been watered down to the point of being symbolic. | Watered down — that's the one. | Honestly, watered down sums it up.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Analytical phrasals, three for three." once obj_3 lands.
@@ -759,7 +759,7 @@
    **hidden_prompt**: "user uses 'stems from' for analytical origin"
    **hint_pt**: "My hypothesis is that it stems from how the targets get set — too much top-down, too little capacity input."
    **hint_en**: "My hypothesis is that it stems from how the targets get set — too much top-down, too little capacity input."
-   **example_pass**: My hypothesis is that it stems from how the targets get set — too much top-down, too little capacity input. | I need to come up with a better plan. | We should put off the meeting until next week.
+   **example_pass**: My hypothesis is that it stems from how the targets get set — too much top-down, too little capacity input. | Stems from — that's the one. | Honestly, stems from sums it up.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -768,7 +768,7 @@
    **hidden_prompt**: "user uses 'amount to' or 'water down'"
    **hint_pt**: "The current process amounts to manufacturing failure: numbers that nobody believes get adopted, then everyone is surprised when they aren't hit."
    **hint_en**: "The current process amounts to manufacturing failure: numbers that nobody believes get adopted, then everyone is surprised when they aren't hit."
-   **example_pass**: The current process amounts to manufacturing failure: numbers that nobody believes get adopted, then everyone is surprised when they aren't hit. | She finally got over her fear of public speaking. | I can't put up with this noise anymore.
+   **example_pass**: Amount to — that's the one. | Honestly, amount to sums it up. | Yeah, amount to for sure.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3

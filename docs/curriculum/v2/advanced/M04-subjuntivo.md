@@ -597,7 +597,7 @@
    **hidden_prompt**: "user uses 'Be that as it may' or 'Come what may' in a reply"
    **hint_pt**: "Come what may, I'm not stopping until I can read novels in English."
    **hint_en**: "Come what may, I'm not stopping until I can read novels in English."
-   **example_pass**: Come what may, I'm not stopping until I can read novels in English. | It is essential that he be present at the meeting. | I wish I were able to help you more.
+   **example_pass**: Come what may, I'm not stopping until I can read novels in English. | I had to Come what may in the end. | Someone needs to Come what may eventually.
    **example_fail**: important (bare adjective, no clause) | It is important that he comes (indicative, not subjunctive) | He arrived late (off-topic, no subjunctive trigger)
 
 2. **id**: 2
@@ -606,7 +606,7 @@
    **hidden_prompt**: "user uses 'Suffice it to say' or 'lest + subjunctive'"
    **hint_pt**: "Suffice it to say, the grammar still surprises me weekly."
    **hint_en**: "Suffice it to say, the grammar still surprises me weekly."
-   **example_pass**: Suffice it to say, the grammar still surprises me weekly. | I suggest that she take a break. | If I were in your position, I would speak up.
+   **example_pass**: Suffice it to say, the grammar still surprises me weekly. | Suffice it to say — that's the one. | Honestly, Suffice it to say sums it up.
    **example_fail**: important (bare adjective, no clause) | It is important that he comes (indicative, not subjunctive) | He arrived late (off-topic, no subjunctive trigger)
 
 3. **id**: 3
@@ -712,7 +712,7 @@
    **hidden_prompt**: "user uses 'Be that as it may' / 'Come what may' / 'Suffice it to say'"
    **hint_pt**: "Be that as it may, the launch happens Monday."
    **hint_en**: "Be that as it may, the launch happens Monday."
-   **example_pass**: Be that as it may, the launch happens Monday. | It is crucial that they arrive on time. | I demand that he apologise immediately.
+   **example_pass**: Be that as it may, the launch happens Monday. | I had to Come what may in the end. | Someone needs to Come what may eventually.
    **example_fail**: important (bare adjective, no clause) | It is important that he comes (indicative, not subjunctive) | He arrived late (off-topic, no subjunctive trigger)
 
 **Closing cue**: Charlotte closes with "Subjunctive range full." once obj_3 lands.

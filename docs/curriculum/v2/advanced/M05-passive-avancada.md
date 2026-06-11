@@ -148,7 +148,7 @@
    **hidden_prompt**: "user uses another impersonal passive or 'It cannot be denied'"
    **hint_pt**: "It cannot be denied that adaptation will be uneven across industries."
    **hint_en**: "It cannot be denied that adaptation will be uneven across industries."
-   **example_pass**: It cannot be denied that adaptation will be uneven across industries. | The project is said to have been delayed. | She had her car repaired last week. | It cannot be denied that the system has been failing quietly for years. | It cannot be denied that the original framework no longer fits the data. | It cannot be denied that public trust has eroded significantly over the past decade.
+   **example_pass**: It cannot be denied that adaptation will be uneven across industries. | It cannot be denied that the system has been failing quietly for years. | It cannot be denied that the original framework no longer fits the data. | It cannot be denied that public trust has eroded significantly over the past decade.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
@@ -407,7 +407,7 @@
    **hidden_prompt**: "user uses 'I'm having' or 'I need to have/get'"
    **hint_pt**: "I'm having my apartment painted next week."
    **hint_en**: "I'm having my apartment painted next week."
-   **example_pass**: I'm having my apartment painted next week. | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_pass**: I'm having my apartment painted next week. | I had to get in the end. | Someone needs to get eventually.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Services tallied." once obj_3 lands.
@@ -453,7 +453,7 @@
    **hidden_prompt**: "user uses 'I'm getting' or 'I need to have'"
    **hint_pt**: "I need to have my passport renewed before the trip."
    **hint_en**: "I need to have my passport renewed before the trip."
-   **example_pass**: I need to have my passport renewed before the trip. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_pass**: I need to have my passport renewed before the trip. | I'm getting — that's the one. | Honestly, I'm getting sums it up.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
@@ -462,7 +462,7 @@
    **hidden_prompt**: "user asks Charlotte more about her bike"
    **hint_pt**: "Was the service worth it?"
    **hint_en**: "Was the service worth it?"
-   **example_pass**: Was the service worth it? | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_pass**: What about her bike? | And her bike — what do you think? | Her bike — that's the one.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Logistics, sorted." once obj_3 lands.
@@ -757,7 +757,7 @@
    **hidden_prompt**: "user uses 'I'm having' or 'I need to have'"
    **hint_pt**: "I'm having our own contracts reviewed in case we need to move quickly."
    **hint_en**: "I'm having our own contracts reviewed in case we need to move quickly."
-   **example_pass**: I'm having our own contracts reviewed in case we need to move quickly. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_pass**: I'm having our own contracts reviewed in case we need to move quickly. | I'm having — that's the one. | Honestly, I'm having sums it up.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3

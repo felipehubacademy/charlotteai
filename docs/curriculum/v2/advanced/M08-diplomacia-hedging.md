@@ -143,7 +143,7 @@
    **hidden_prompt**: "user uses 'I was wondering if / I was hoping' to open"
    **hint_pt**: "I was wondering if you could give me feedback on my proposal before Friday."
    **hint_en**: "I was wondering if you could give me feedback on my proposal before Friday."
-   **example_pass**: I was wondering if you could give me feedback on my proposal before Friday. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_pass**: I was wondering if you could give me feedback on my proposal before Friday. | I was hoping — that's the one. | Honestly, I was hoping sums it up.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
@@ -297,7 +297,7 @@
    **hidden_prompt**: "user uses 'It might be worth' or 'You might want to'"
    **hint_pt**: "It might be worth clarifying who the primary audience is."
    **hint_en**: "It might be worth clarifying who the primary audience is."
-   **example_pass**: It might be worth clarifying who the primary audience is. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_pass**: It might be worth clarifying who the primary audience is. | It might be worth — that's the one. | Honestly, It might be worth sums it up.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
@@ -450,7 +450,7 @@
    **hidden_prompt**: "user uses 'With respect' or 'I take your point but' or 'I'm not entirely'"
    **hint_pt**: "With respect, the productivity data hasn't really shown that."
    **hint_en**: "With respect, the productivity data hasn't really shown that."
-   **example_pass**: With respect, the productivity data hasn't really shown that. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_pass**: With respect, the productivity data hasn't really shown that. | With respect — that's the one. | Honestly, With respect sums it up.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
@@ -603,7 +603,7 @@
    **hidden_prompt**: "user uses 'One might say' or 'In a sense'"
    **hint_pt**: "In a sense, focus matters more than hours."
    **hint_en**: "In a sense, focus matters more than hours."
-   **example_pass**: In a sense, focus matters more than hours. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach. | In a sense, every successful company has to reinvent itself at least once a decade. | One might say that the founder's greatest skill is knowing when to step out of the way. | In a sense, this is less a strategy question and more a question of identity. | One could argue that the team learned more from the failed launch than from any of the successful ones.
+   **example_pass**: In a sense, focus matters more than hours. | In a sense, every successful company has to reinvent itself at least once a decade. | One might say that the founder's greatest skill is knowing when to step out of the way. | In a sense, this is less a strategy question and more a question of identity.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
@@ -612,7 +612,7 @@
    **hidden_prompt**: "user uses 'It could be argued' or 'Arguably'"
    **hint_pt**: "Arguably, the four-day week works only in certain industries."
    **hint_en**: "Arguably, the four-day week works only in certain industries."
-   **example_pass**: Arguably, the four-day week works only in certain industries. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point. | Arguably, the best decisions this company has made were the ones we almost didn't make. | Arguably, the most important hire of the year was the one nobody noticed at the time. | Arguably, the policy is more about signalling than about actual enforcement. | Arguably, the real innovation here is the business model, not the technology.
+   **example_pass**: Arguably, the four-day week works only in certain industries. | Arguably, the best decisions this company has made were the ones we almost didn't make. | Arguably, the most important hire of the year was the one nobody noticed at the time. | Arguably, the policy is more about signalling than about actual enforcement. | Arguably, the real innovation here is the business model, not the technology.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
@@ -702,7 +702,7 @@
    **hidden_prompt**: "user uses 'roughly', 'about', or 'give or take'"
    **hint_pt**: "Roughly thirty people came, give or take a few."
    **hint_en**: "Roughly thirty people came, give or take a few."
-   **example_pass**: Roughly thirty people came, give or take a few. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_pass**: Roughly thirty people came, give or take a few. | I had to give in the end. | Someone needs to give eventually.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
@@ -711,7 +711,7 @@
    **hidden_prompt**: "user uses 'sort of' or 'kind of'"
    **hint_pt**: "I'm sort of relieved and sort of disappointed."
    **hint_en**: "I'm sort of relieved and sort of disappointed."
-   **example_pass**: I'm sort of relieved and sort of disappointed. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_pass**: I'm sort of relieved and sort of disappointed. | Sort of — that's the one. | Honestly, sort of sums it up.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
@@ -720,7 +720,7 @@
    **hidden_prompt**: "user uses 'more or less' or 'somewhat'"
    **hint_pt**: "More or less, the year went as planned."
    **hint_en**: "More or less, the year went as planned."
-   **example_pass**: More or less, the year went as planned. | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_pass**: More or less, the year went as planned. | More — that's the one. | Honestly, more sums it up.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Imprecision, native-level." once obj_3 lands.
@@ -757,7 +757,7 @@
    **hidden_prompt**: "user uses 'roughly', 'about', or 'give or take' for numbers"
    **hint_pt**: "I had about twelve, give or take the ones that got cancelled."
    **hint_en**: "I had about twelve, give or take the ones that got cancelled."
-   **example_pass**: I had about twelve, give or take the ones that got cancelled. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_pass**: I had about twelve, give or take the ones that got cancelled. | I had to give in the end. | Someone needs to give eventually.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
@@ -766,7 +766,7 @@
    **hidden_prompt**: "user uses 'sort of' or 'kind of' for feeling"
    **hint_pt**: "I'm sort of fried but sort of proud of what we got done."
    **hint_en**: "I'm sort of fried but sort of proud of what we got done."
-   **example_pass**: I'm sort of fried but sort of proud of what we got done. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_pass**: I'm sort of fried but sort of proud of what we got done. | Sort of — that's the one. | Honestly, sort of sums it up.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
@@ -775,7 +775,7 @@
    **hidden_prompt**: "user uses 'more or less' for summary"
    **hint_pt**: "More or less, the week went the way I planned."
    **hint_en**: "More or less, the week went the way I planned."
-   **example_pass**: More or less, the week went the way I planned. | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_pass**: More or less, the week went the way I planned. | More — that's the one. | Honestly, more sums it up.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Casual register, properly vague." once obj_3 lands.

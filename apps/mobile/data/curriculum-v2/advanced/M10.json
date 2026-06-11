@@ -450,8 +450,6 @@
             "hint_en": "There's something to that. That said, 'most' is doing a lot of work in that sentence.",
             "examples_pass": [
               "There's something to that. That said, 'most' is doing a lot of work in that sentence.",
-              "On the one hand, it's expensive; on the other hand, it lasts forever.",
-              "Having said that, there are still some concerns.",
               "The launch went well overall. That said, the support volume tells a more complicated story.",
               "I agree with most of the analysis. That said, I'd be careful about the framing in the public version.",
               "The team is talented. That said, they've never operated at this scale before.",
@@ -470,8 +468,6 @@
             "hint_en": "Then again, every major shift looked total in advance and partial in retrospect.",
             "examples_pass": [
               "Then again, every major shift looked total in advance and partial in retrospect.",
-              "As a matter of fact, I had the same experience.",
-              "To put it differently, we need a fresh approach.",
               "He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship.",
               "She gives generously. Mind you, she also keeps detailed records of every favour she's done.",
               "The product is genuinely innovative. Mind you, it's also five years too early for the market.",
@@ -690,8 +686,8 @@
             "hint_en": "Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them.",
             "examples_pass": [
               "Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them.",
-              "As a matter of fact, I had the same experience.",
-              "To put it differently, we need a fresh approach."
+              "I had to Put differently in the end.",
+              "Someone needs to Put differently eventually."
             ],
             "examples_fail": [
               "and (bare connector, no discourse marker)",
@@ -1129,8 +1125,6 @@
             "hint_en": "On balance, the year was harder than the last one but more meaningful.",
             "examples_pass": [
               "On balance, the year was harder than the last one but more meaningful.",
-              "On the one hand, it's expensive; on the other hand, it lasts forever.",
-              "Having said that, there are still some concerns.",
               "All things considered, leaving that job a year earlier than planned was the right call.",
               "All things considered, the quarter went better than the leading indicators had suggested.",
               "All things considered, the move abroad gave the family far more than it cost.",
@@ -1149,8 +1143,6 @@
             "hint_en": "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are.",
             "examples_pass": [
               "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are.",
-              "As a matter of fact, I had the same experience.",
-              "To put it differently, we need a fresh approach.",
               "The launch went well overall. That said, the support volume tells a more complicated story.",
               "I agree with most of the analysis. That said, I'd be careful about the framing in the public version.",
               "The team is talented. That said, they've never operated at this scale before.",

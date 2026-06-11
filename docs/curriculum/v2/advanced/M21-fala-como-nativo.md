@@ -85,7 +85,7 @@
    **hidden_prompt**: "user adds one 'you know' to sound casual"
    **hint_pt**: "It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening."
    **hint_en**: "It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening."
-   **example_pass**: It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening. | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely. | She's, you know, the sort of manager who reads the room before saying anything herself. | It's, you know, one of those situations where the right answer is also the least convenient one. | He's, you know, brilliant — but in a way that takes a while to notice.
+   **example_pass**: It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening. | She's, you know, the sort of manager who reads the room before saying anything herself. | It's, you know, one of those situations where the right answer is also the least convenient one. | He's, you know, brilliant — but in a way that takes a while to notice.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -94,7 +94,7 @@
    **hidden_prompt**: "user opens or pivots with 'I mean'"
    **hint_pt**: "I mean, the project wasn't bad — it just wasn't what anyone hoped it would be."
    **hint_en**: "I mean, the project wasn't bad — it just wasn't what anyone hoped it would be."
-   **example_pass**: I mean, the project wasn't bad — it just wasn't what anyone hoped it would be. | That's super interesting, actually. | To be fair, it could've gone either way. | I mean, she's a strong candidate, but she's clearly being courted by three other companies. | I mean, we could push the launch back, but then we'd lose the entire holiday window. | I mean, the data is good — the question is whether anyone in leadership is going to actually act on it.
+   **example_pass**: I mean, the project wasn't bad — it just wasn't what anyone hoped it would be. | I mean, she's a strong candidate, but she's clearly being courted by three other companies. | I mean, we could push the launch back, but then we'd lose the entire holiday window. | I mean, the data is good — the question is whether anyone in leadership is going to actually act on it.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -103,7 +103,7 @@
    **hidden_prompt**: "user uses 'kind of' or 'sort of' to soften"
    **hint_pt**: "It's sort of one of those situations where there isn't a right answer, just a less wrong one."
    **hint_en**: "It's sort of one of those situations where there isn't a right answer, just a less wrong one."
-   **example_pass**: It's sort of one of those situations where there isn't a right answer, just a less wrong one. | I'm low-key obsessed with that show. | It's kind of a big deal, ngl. | She kind of inherited the role without anyone formally giving it to her. | It was kind of a strange meeting — friendly on the surface, but no one really said what they meant. | He's sort of running the team now, even though nobody has officially announced it.
+   **example_pass**: It's sort of one of those situations where there isn't a right answer, just a less wrong one. | It's kind of a big deal, ngl. | She kind of inherited the role without anyone formally giving it to her. | It was kind of a strange meeting — friendly on the surface, but no one really said what they meant. | He's sort of running the team now, even though nobody has officially announced it.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Fillers, strategically placed." once obj_3 lands.
@@ -140,7 +140,7 @@
    **hidden_prompt**: "user uses 'I mean' or 'you know' once"
    **hint_pt**: "I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive."
    **hint_en**: "I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive."
-   **example_pass**: I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive. | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely. | I mean, the project wasn't bad — it just wasn't what anyone hoped it would be. | I mean, she's a strong candidate, but she's clearly being courted by three other companies. | I mean, we could push the launch back, but then we'd lose the entire holiday window. | I mean, the data is good — the question is whether anyone in leadership is going to actually act on it.
+   **example_pass**: I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive. | I mean, the project wasn't bad — it just wasn't what anyone hoped it would be. | I mean, she's a strong candidate, but she's clearly being courted by three other companies. | I mean, we could push the launch back, but then we'd lose the entire holiday window. | I mean, the data is good — the question is whether anyone in leadership is going to actually act on it.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -149,7 +149,7 @@
    **hidden_prompt**: "user uses 'kind of' or 'sort of' softener"
    **hint_pt**: "It's sort of the design version of compound interest — small wrong calls in the first week add up by the third."
    **hint_en**: "It's sort of the design version of compound interest — small wrong calls in the first week add up by the third."
-   **example_pass**: It's sort of the design version of compound interest — small wrong calls in the first week add up by the third. | That's super interesting, actually. | To be fair, it could've gone either way. | It's kind of one of those situations where the right answer is also the most uncomfortable one. | It's sort of like managing a team — you don't really know what works until you try it on a real project. | It's kind of frustrating, honestly — we keep ending up in the same conversation in slightly different rooms.
+   **example_pass**: It's sort of the design version of compound interest — small wrong calls in the first week add up by the third. | It's kind of one of those situations where the right answer is also the most uncomfortable one. | It's sort of like managing a team — you don't really know what works until you try it on a real project. | It's kind of frustrating, honestly — we keep ending up in the same conversation in slightly different rooms.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -311,7 +311,7 @@
    **hidden_prompt**: "user asks Charlotte about the book"
    **hint_pt**: "Are you actually enjoying it?"
    **hint_en**: "Are you actually enjoying it?"
-   **example_pass**: Are you actually enjoying it? | I'm low-key obsessed with that show. | It's kind of a big deal, ngl.
+   **example_pass**: What about the book? | And the book — what do you think? | The book — that's the one.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Tags, native rhythm." once obj_3 lands.
@@ -392,7 +392,7 @@
    **hidden_prompt**: "user produces 'mm-hm' or 'right' or 'yeah'"
    **hint_pt**: "Right — go on. Mm-hm, I'm following."
    **hint_en**: "Right — go on. Mm-hm, I'm following."
-   **example_pass**: Right — go on. Mm-hm, I'm following. | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely.
+   **example_pass**: Right — go on. Mm-hm, I'm following. | Yeah — that's the one. | Honestly, yeah sums it up.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -401,7 +401,7 @@
    **hidden_prompt**: "user produces 'really?' or 'no way' or 'oh'"
    **hint_pt**: "Really? In the middle of the meeting? No way."
    **hint_en**: "Really? In the middle of the meeting? No way."
-   **example_pass**: Really? In the middle of the meeting? No way. | That's super interesting, actually. | To be fair, it could've gone either way.
+   **example_pass**: Really? In the middle of the meeting? No way. | Oh — that's the one. | Honestly, oh sums it up.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -410,7 +410,7 @@
    **hidden_prompt**: "user produces 'gotcha' / 'I see' / 'okay'"
    **hint_pt**: "Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now."
    **hint_en**: "Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now."
-   **example_pass**: Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now. | I'm low-key obsessed with that show. | It's kind of a big deal, ngl.
+   **example_pass**: Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now. | Okay — that's the one. | Honestly, okay sums it up.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Backchannels, listening signalled." once obj_3 lands.
@@ -447,7 +447,7 @@
    **hidden_prompt**: "user uses backchannel and short reaction"
    **hint_pt**: "Oh no. Right — and you'd already been waiting how long?"
    **hint_en**: "Oh no. Right — and you'd already been waiting how long?"
-   **example_pass**: Oh no. Right — and you'd already been waiting how long? | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely.
+   **example_pass**: Backchannel and short reaction — that's the one. | Honestly, backchannel and short reaction sums it up. | Yeah, backchannel and short reaction for sure.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -456,7 +456,7 @@
    **hidden_prompt**: "user produces 'no way' or 'really?' at a turn in the story"
    **hint_pt**: "No way. She actually opened it in front of the whole queue?"
    **hint_en**: "No way. She actually opened it in front of the whole queue?"
-   **example_pass**: No way. She actually opened it in front of the whole queue? | That's super interesting, actually. | To be fair, it could've gone either way.
+   **example_pass**: No way. She actually opened it in front of the whole queue? | No way — that's the one. | Honestly, no way sums it up.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -545,7 +545,7 @@
    **hidden_prompt**: "user opens with 'Honestly' or 'To be honest'"
    **hint_pt**: "Honestly, I've stopped reading her emails carefully — they're so dense that the actual decision usually requires a follow-up phone call."
    **hint_en**: "Honestly, I've stopped reading her emails carefully — they're so dense that the actual decision usually requires a follow-up phone call."
-   **example_pass**: Honestly, I've stopped reading her emails carefully — they're so dense that the actual decision usually requires a follow-up phone call. | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely.
+   **example_pass**: Honestly, I've stopped reading her emails carefully — they're so dense that the actual decision usually requires a follow-up phone call. | Honestly, that's a total game-changer. | Honestly — that's the one.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -554,7 +554,7 @@
    **hidden_prompt**: "user opens with 'To be fair'"
    **hint_pt**: "To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it."
    **hint_en**: "To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it."
-   **example_pass**: To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it. | That's super interesting, actually. | To be fair, it could've gone either way.
+   **example_pass**: To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it. | To be fair, it could've gone either way. | To be fair — that's the one.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -563,7 +563,7 @@
    **hidden_prompt**: "user opens with 'No offence' or 'Look'"
    **hint_pt**: "Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision."
    **hint_en**: "Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision."
-   **example_pass**: Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision. | I'm low-key obsessed with that show. | It's kind of a big deal, ngl.
+   **example_pass**: Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision. | Look — that's the one. | Honestly, Look sums it up.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Openers, priming the listener." once obj_3 lands.
@@ -600,7 +600,7 @@
    **hidden_prompt**: "user opens with 'Honestly' or 'To be fair' to suggest something"
    **hint_pt**: "Honestly, the longer you wait, the harder it'll be — the disengagement starts to feel mutual once enough weeks pass."
    **hint_en**: "Honestly, the longer you wait, the harder it'll be — the disengagement starts to feel mutual once enough weeks pass."
-   **example_pass**: Honestly, the longer you wait, the harder it'll be — the disengagement starts to feel mutual once enough weeks pass. | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely.
+   **example_pass**: Honestly, the longer you wait, the harder it'll be — the disengagement starts to feel mutual once enough weeks pass. | Honestly, that's a total game-changer. | Honestly — that's the one.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -697,7 +697,7 @@
    **hidden_prompt**: "user opens with 'The thing is' or 'Here's the thing'"
    **hint_pt**: "Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks."
    **hint_en**: "Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks."
-   **example_pass**: Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks. | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely.
+   **example_pass**: Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks. | The thing is — that's the one. | Honestly, The thing is sums it up.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -706,7 +706,7 @@
    **hidden_prompt**: "user opens with 'I'll tell you what'"
    **hint_pt**: "I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions."
    **hint_en**: "I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions."
-   **example_pass**: I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions. | That's super interesting, actually. | To be fair, it could've gone either way.
+   **example_pass**: I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions. | I'll tell you what — that's the one. | Honestly, I'll tell you what sums it up.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -715,7 +715,7 @@
    **hidden_prompt**: "user opens with 'I don't know about you, but'"
    **hint_pt**: "I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet."
    **hint_en**: "I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet."
-   **example_pass**: I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet. | I'm low-key obsessed with that show. | It's kind of a big deal, ngl.
+   **example_pass**: I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet. | I don't know about you, but — that's the one. | Honestly, I don't know about you, but sums it up.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Native openers, conversation set. C2 native fluency, complete." once obj_3 lands.
@@ -752,7 +752,7 @@
    **hidden_prompt**: "user replies with native opener like 'Here's the thing'"
    **hint_pt**: "Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there."
    **hint_en**: "Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there."
-   **example_pass**: Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there. | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely.
+   **example_pass**: Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there. | Here's the thing — that's the one. | Honestly, Here's the thing sums it up.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -761,7 +761,7 @@
    **hidden_prompt**: "user uses 'I'll tell you what' or 'I don't know about you, but'"
    **hint_pt**: "I'll tell you what — exit interviews almost never tell you the real story. The honest answers are in the second job they take, six months later."
    **hint_en**: "I'll tell you what — exit interviews almost never tell you the real story. The honest answers are in the second job they take, six months later."
-   **example_pass**: I'll tell you what — exit interviews almost never tell you the real story. The honest answers are in the second job they take, six months later. | I don't know about you, but the patterns I'm seeing point to a deeper culture issue, not a tooling one. | Here's the thing — people don't leave roles, they leave the version of themselves the role forces them to become.
+   **example_pass**: I'll tell you what — exit interviews almost never tell you the real story. The honest answers are in the second job they take, six months later. | I don't know about you, but the patterns I'm seeing point to a deeper culture issue, not a tooling one. | I'll tell you what — that's the one.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3

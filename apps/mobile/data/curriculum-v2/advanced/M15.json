@@ -131,9 +131,9 @@
             "hidden_prompt": "user uses 'bring about' for causation",
             "hint_en": "Decades of activism brought about the legal recognition that nobody had thought possible.",
             "examples_pass": [
-              "Decades of activism brought about the legal recognition that nobody had thought possible.",
-              "I need to come up with a better plan.",
-              "We should put off the meeting until next week."
+              "Bring about — that's the one.",
+              "Honestly, bring about sums it up.",
+              "Yeah, bring about for sure."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -147,9 +147,9 @@
             "hidden_prompt": "user uses 'come round' for visit or persuasion",
             "hint_en": "She came round eventually — sceptical at first, then quietly convinced after the third presentation.",
             "examples_pass": [
-              "She came round eventually — sceptical at first, then quietly convinced after the third presentation.",
-              "She finally got over her fear of public speaking.",
-              "I can't put up with this noise anymore."
+              "I had to come round in the end.",
+              "Someone needs to come round eventually.",
+              "We decided to come round."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -197,8 +197,8 @@
             "hint_en": "What brought about the shift was probably the talent leaving — once people quit, the policy followed.",
             "examples_pass": [
               "What brought about the shift was probably the talent leaving — once people quit, the policy followed.",
-              "I need to come up with a better plan.",
-              "We should put off the meeting until next week."
+              "Brought about — that's the one.",
+              "Honestly, brought about sums it up."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -212,9 +212,9 @@
             "hidden_prompt": "user uses 'come round' or 'bring round'",
             "hint_en": "Senior leadership came round slowly — they had to lose two key hires before the policy really moved.",
             "examples_pass": [
-              "Senior leadership came round slowly — they had to lose two key hires before the policy really moved.",
-              "She finally got over her fear of public speaking.",
-              "I can't put up with this noise anymore."
+              "I had to come round in the end.",
+              "Someone needs to come round eventually.",
+              "We decided to come round."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -410,9 +410,9 @@
             "hidden_prompt": "user uses 'gloss over' to describe coverage gap",
             "hint_en": "Each version probably glossed over the angles inconvenient to its own audience.",
             "examples_pass": [
-              "Each version probably glossed over the angles inconvenient to its own audience.",
-              "I need to come up with a better plan.",
-              "We should put off the meeting until next week."
+              "Gloss over — that's the one.",
+              "Honestly, gloss over sums it up.",
+              "Yeah, gloss over for sure."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -426,9 +426,9 @@
             "hidden_prompt": "user uses 'X crops up' for recurring elements",
             "hint_en": "The same two facts probably crop up in all three, but framed in completely different ways.",
             "examples_pass": [
-              "The same two facts probably crop up in all three, but framed in completely different ways.",
-              "She finally got over her fear of public speaking.",
-              "I can't put up with this noise anymore."
+              "X crops up — that's the one.",
+              "Honestly, X crops up sums it up.",
+              "Yeah, X crops up for sure."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -559,9 +559,9 @@
             "hidden_prompt": "user uses 'X lived up to / failed to live up to'",
             "hint_en": "The new product lived up to its launch promises — the team finally delivered something the press release didn't have to lie about.",
             "examples_pass": [
-              "The new product lived up to its launch promises — the team finally delivered something the press release didn't have to lie about.",
-              "I need to come up with a better plan.",
-              "We should put off the meeting until next week."
+              "X lived up to — that's the one.",
+              "Honestly, X lived up to sums it up.",
+              "Yeah, X lived up to for sure."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -575,9 +575,9 @@
             "hidden_prompt": "user uses 'X fell through'",
             "hint_en": "The partnership fell through over a single clause neither side would move on.",
             "examples_pass": [
-              "The partnership fell through over a single clause neither side would move on.",
-              "She finally got over her fear of public speaking.",
-              "I can't put up with this noise anymore."
+              "X fell through — that's the one.",
+              "Honestly, X fell through sums it up.",
+              "Yeah, X fell through for sure."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -811,10 +811,7 @@
             "hint_en": "I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out.",
             "examples_pass": [
               "I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out.",
-              "Let's get down to business and stop wasting time.",
-              "He turned down the offer without hesitation.",
               "It took me a long time to shake off the disappointment of that interview, even after I found a better role.",
-              "The data eventually bore out exactly what the senior engineer had been quietly saying for months.",
               "She couldn't shake off the suspicion that something was wrong, and the audit later bore her out."
             ],
             "examples_fail": [
@@ -847,12 +844,8 @@
             "hint_en": "People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement.",
             "examples_pass": [
               "People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement.",
-              "I need to come up with a better plan.",
-              "We should put off the meeting until next week.",
               "People who talk down to others rarely see it — the people they patronise don't push back, so silence reads as agreement.",
-              "Talking down to people is rarely deliberate — it's almost always a blind spot rather than a strategy.",
-              "He talks down to nearly everyone outside his core circle, and the cost is invisible to him but visible to everyone else.",
-              "Once you notice yourself being talked down to, the relationship rarely recovers — even if the other person never realises."
+              "Talk down to — that's the one."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -867,12 +860,8 @@
             "hint_en": "Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up.",
             "examples_pass": [
               "Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up.",
-              "She finally got over her fear of public speaking.",
-              "I can't put up with this noise anymore.",
               "Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up quietly.",
-              "Constant micro-criticism wore me down over the course of a single project; I left the company a few months after it ended.",
-              "Working with an indecisive client gradually wore down our project lead until she stopped pushing back at all.",
-              "The cumulative effect of those weekly meetings wore the team down in ways nobody acknowledged until people started leaving."
+              "Working with an indecisive client gradually wore down our project lead until she stopped pushing back at all."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -1002,9 +991,9 @@
             "hidden_prompt": "user uses 'X stems from Y'",
             "hint_en": "Most of the team's friction stems from a single unresolved ownership question from the first month.",
             "examples_pass": [
-              "Most of the team's friction stems from a single unresolved ownership question from the first month.",
-              "I need to come up with a better plan.",
-              "We should put off the meeting until next week."
+              "X stems from Y — that's the one.",
+              "Honestly, X stems from Y sums it up.",
+              "Yeah, X stems from Y for sure."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -1018,9 +1007,9 @@
             "hidden_prompt": "user uses 'X amounts to Y'",
             "hint_en": "Stripped of jargon, the new strategy amounts to doing exactly what we did last year, more carefully.",
             "examples_pass": [
-              "Stripped of jargon, the new strategy amounts to doing exactly what we did last year, more carefully.",
-              "She finally got over her fear of public speaking.",
-              "I can't put up with this noise anymore."
+              "X amounts to Y — that's the one.",
+              "Honestly, X amounts to Y sums it up.",
+              "Yeah, X amounts to Y for sure."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -1035,8 +1024,8 @@
             "hint_en": "By the time the policy made it through legal review, it had been watered down to the point of being symbolic.",
             "examples_pass": [
               "By the time the policy made it through legal review, it had been watered down to the point of being symbolic.",
-              "Let's get down to business and stop wasting time.",
-              "He turned down the offer without hesitation."
+              "Watered down — that's the one.",
+              "Honestly, watered down sums it up."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -1068,8 +1057,8 @@
             "hint_en": "My hypothesis is that it stems from how the targets get set — too much top-down, too little capacity input.",
             "examples_pass": [
               "My hypothesis is that it stems from how the targets get set — too much top-down, too little capacity input.",
-              "I need to come up with a better plan.",
-              "We should put off the meeting until next week."
+              "Stems from — that's the one.",
+              "Honestly, stems from sums it up."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",
@@ -1083,9 +1072,9 @@
             "hidden_prompt": "user uses 'amount to' or 'water down'",
             "hint_en": "The current process amounts to manufacturing failure: numbers that nobody believes get adopted, then everyone is surprised when they aren't hit.",
             "examples_pass": [
-              "The current process amounts to manufacturing failure: numbers that nobody believes get adopted, then everyone is surprised when they aren't hit.",
-              "She finally got over her fear of public speaking.",
-              "I can't put up with this noise anymore."
+              "Amount to — that's the one.",
+              "Honestly, amount to sums it up.",
+              "Yeah, amount to for sure."
             ],
             "examples_fail": [
               "give (bare verb, no phrasal)",

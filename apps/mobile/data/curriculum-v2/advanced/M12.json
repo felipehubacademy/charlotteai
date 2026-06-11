@@ -164,8 +164,6 @@
             "hint_en": "The emergence of large language models has accelerated debates about the future of knowledge work.",
             "examples_pass": [
               "The emergence of large language models has accelerated debates about the future of knowledge work.",
-              "These results have important implications for further research.",
-              "The methodology employed in this investigation is comprehensive.",
               "The emergence of large language models has accelerated long-running debates about the future of knowledge work.",
               "An increase in workplace flexibility has produced measurable gains in retention across multiple sectors.",
               "The emergence of agentic AI systems raises questions that existing regulatory frameworks were not designed to address.",
@@ -201,12 +199,9 @@
             "hint_en": "Try: 'The increase in corporate cybersecurity spending has accelerated in each of the past five years.'",
             "examples_pass": [
               "Try: 'The increase in corporate cybersecurity spending has accelerated in each of the past five years.'",
-              "The findings suggest a significant correlation between the two variables.",
-              "This study aims to examine the underlying mechanisms.",
               "The increase in corporate cybersecurity spending has accelerated in each of the past five years.",
               "The rise in remote work has fundamentally reshaped urban housing demand in major capitals.",
-              "A marked rise in regulatory scrutiny has changed how every major bank now plans its expansion.",
-              "The decline in print readership has been documented across every developed economy."
+              "A marked rise in regulatory scrutiny has changed how every major bank now plans its expansion."
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -221,12 +216,8 @@
             "hint_en": "If you want to bring in the cause, you could add: 'driven in part by the emergence of new threat vectors and a shift towards remote work.'",
             "examples_pass": [
               "If you want to bring in the cause, you could add: 'driven in part by the emergence of new threat vectors and a shift towards remote work.'",
-              "Subsequent analysis revealed inconsistencies in the dataset.",
-              "The data indicate a notable shift in consumer behaviour.",
               "The emergence of large language models has accelerated long-running debates about the future of knowledge work.",
-              "An increase in workplace flexibility has produced measurable gains in retention across multiple sectors.",
-              "The emergence of agentic AI systems raises questions that existing regulatory frameworks were not designed to address.",
-              "An increase in cross-border data flows has outpaced the legal infrastructure intended to govern them."
+              "The emergence of agentic AI systems raises questions that existing regulatory frameworks were not designed to address."
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -387,12 +378,8 @@
             "hint_en": "From 'I argue that the model fails' → 'This paper argues that the existing model fails to account for non-linear effects.'",
             "examples_pass": [
               "From 'I argue that the model fails' → 'This paper argues that the existing model fails to account for non-linear effects.'",
-              "Subsequent analysis revealed inconsistencies in the dataset.",
-              "The data indicate a notable shift in consumer behaviour.",
               "This paper argues that the existing model fails to account for non-linear network effects.",
-              "The present study examines how migration policy interacts with labour market outcomes in mid-sized cities.",
-              "This paper contends that the conventional framework overstates the role of individual incentives.",
-              "The present study investigates the long-term effects of remote schooling on adolescent social development."
+              "The present study examines how migration policy interacts with labour market outcomes in mid-sized cities."
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -444,12 +431,8 @@
             "hint_en": "Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.'",
             "examples_pass": [
               "Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.'",
-              "The findings suggest a significant correlation between the two variables.",
-              "This study aims to examine the underlying mechanisms.",
-              "The data indicate that women in the sample earned roughly eighteen percent less for equivalent work.",
-              "The evidence suggests that the intervention's effect persists for at least two years following treatment.",
-              "The data demonstrate a consistent pattern across all four cohorts studied.",
-              "The evidence indicates a measurable, though modest, effect on long-term cognitive performance."
+              "The data suggest — that's the one.",
+              "Honestly, The data suggest sums it up."
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -464,8 +447,6 @@
             "hint_en": "And: 'A plausible explanation is that the temporal proximity between task and response strengthens the cognitive link between effort and outcome.'",
             "examples_pass": [
               "And: 'A plausible explanation is that the temporal proximity between task and response strengthens the cognitive link between effort and outcome.'",
-              "Subsequent analysis revealed inconsistencies in the dataset.",
-              "The data indicate a notable shift in consumer behaviour.",
               "A plausible explanation is that the temporal proximity between task and response strengthens the cognitive link.",
               "This may be attributed to a shift in consumer preferences that pre-dates the period under examination.",
               "A plausible explanation is that the underlying mechanism is more sensitive to context than earlier models assumed.",
@@ -605,10 +586,6 @@
             "hidden_prompt": "user uses 'This suggests that' or 'The data indicate'",
             "hint_en": "From 'The policy worked' → 'The data suggest that the policy contributed to the observed improvement.'",
             "examples_pass": [
-              "From 'The policy worked' → 'The data suggest that the policy contributed to the observed improvement.'",
-              "The findings suggest a significant correlation between the two variables.",
-              "This study aims to examine the underlying mechanisms.",
-              "The data suggest that the policy played a measurable role in the observed improvement.",
               "This suggests that the underlying mechanism may differ from what previous models have assumed.",
               "The data indicate that the effect is larger in younger cohorts than in older ones.",
               "This suggests that the relationship between the two variables is mediated by a third, previously unmeasured factor."
@@ -625,10 +602,6 @@
             "hidden_prompt": "user uses 'The evidence supports' or 'There is strong reason to believe'",
             "hint_en": "From 'It's true that...' → 'The accumulated evidence supports the conclusion that...'",
             "examples_pass": [
-              "From 'It's true that...' → 'The accumulated evidence supports the conclusion that...'",
-              "Subsequent analysis revealed inconsistencies in the dataset.",
-              "The data indicate a notable shift in consumer behaviour.",
-              "The accumulated evidence supports the conclusion that the original framework requires revision.",
               "There is strong reason to believe that the observed effect is not an artefact of measurement.",
               "The evidence supports the broader claim that early interventions yield disproportionate returns.",
               "There is strong reason to believe that the policy's intended mechanism is not the one actually driving outcomes."
@@ -645,10 +618,6 @@
             "hidden_prompt": "user uses 'It is conceivable that' or 'A possible interpretation is'",
             "hint_en": "From 'Maybe X causes Y' → 'It is conceivable, though not yet established, that X plays a causal role in Y.'",
             "examples_pass": [
-              "From 'Maybe X causes Y' → 'It is conceivable, though not yet established, that X plays a causal role in Y.'",
-              "These results have important implications for further research.",
-              "The methodology employed in this investigation is comprehensive.",
-              "It is conceivable, though not yet established, that the variable plays a causal role.",
               "A possible interpretation is that the observed pattern reflects survivorship rather than treatment effect.",
               "It is conceivable that the relationship is mediated by factors the current dataset does not capture.",
               "A possible interpretation is that the apparent improvement reflects a regression to the mean."
@@ -682,13 +651,9 @@
             "hidden_prompt": "user replaces 'prove' with appropriate hedge",
             "hint_en": "Try: 'Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.'",
             "examples_pass": [
-              "Try: 'Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.'",
-              "The findings suggest a significant correlation between the two variables.",
-              "This study aims to examine the underlying mechanisms.",
-              "Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.",
               "The data suggests that the policy played a contributing — though not necessarily decisive — role in the observed improvement.",
-              "Our results indicate that the effect is consistent with the proposed mechanism, though further work is required to establish causation.",
-              "The evidence supports a tentative conclusion that the intervention contributed to the outcome, though the magnitude remains uncertain."
+              "Prove — that's the one.",
+              "Honestly, prove sums it up."
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -703,8 +668,6 @@
             "hint_en": "And: 'It should be noted that the effect was modest and may not generalise to roles requiring extensive in-person collaboration.'",
             "examples_pass": [
               "And: 'It should be noted that the effect was modest and may not generalise to roles requiring extensive in-person collaboration.'",
-              "Subsequent analysis revealed inconsistencies in the dataset.",
-              "The data indicate a notable shift in consumer behaviour.",
               "It should be noted that the effect was modest and may not generalise to roles requiring extensive in-person collaboration.",
               "It should be noted that the sample was limited to a single industry, which constrains the broader applicability of the findings.",
               "This finding is consistent with earlier work suggesting that the effect is moderated by team size.",
@@ -861,13 +824,9 @@
             "hidden_prompt": "user uses 'X (year) argues / contends / suggests that'",
             "hint_en": "Williams (2019) argues that the existing framework underestimates contextual factors.",
             "examples_pass": [
-              "Williams (2019) argues that the existing framework underestimates contextual factors.",
-              "Subsequent analysis revealed inconsistencies in the dataset.",
-              "The data indicate a notable shift in consumer behaviour.",
-              "Williams (2019) argues that the existing framework underestimates the role of contextual factors.",
               "Lee (2022) contends that the data have been systematically misinterpreted in the policy debate.",
               "Müller (2021) suggests that the relationship is more nuanced than the earlier literature implied.",
-              "Patel (2020) argues that the original methodology was never suited to longitudinal claims."
+              "Contends — that's the one."
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -919,12 +878,8 @@
             "hint_en": "Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.'",
             "examples_pass": [
               "Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.'",
-              "The findings suggest a significant correlation between the two variables.",
-              "This study aims to examine the underlying mechanisms.",
               "Smith (2020) argues that early feedback has a measurable effect on subsequent performance across a range of tasks.",
-              "According to Patel (2021), the intervention was most effective in early-stage cases of the condition.",
-              "Müller (2019) contends that the underlying mechanism is more sensitive to context than previously assumed.",
-              "According to the OECD (2022), the gap has narrowed in most member countries over the past decade."
+              "Smith (2020) argues that — that's the one."
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -939,8 +894,6 @@
             "hint_en": "Then: 'Building on Smith's (2020) framework, the present study examines whether the effect persists in longer-cycle creative tasks.'",
             "examples_pass": [
               "Then: 'Building on Smith's (2020) framework, the present study examines whether the effect persists in longer-cycle creative tasks.'",
-              "Subsequent analysis revealed inconsistencies in the dataset.",
-              "The data indicate a notable shift in consumer behaviour.",
               "Building on Smith's (2020) framework, the present study examines whether the effect persists in longer-cycle creative tasks.",
               "Extending the model proposed by Müller (2019), this paper introduces a new measure of cognitive flexibility.",
               "The present study extends earlier work by including cross-border variation in the underlying data.",
@@ -1098,8 +1051,6 @@
             "hint_en": "By contrast, longitudinal studies in similar populations show a weaker effect over time.",
             "examples_pass": [
               "By contrast, longitudinal studies in similar populations show a weaker effect over time.",
-              "Subsequent analysis revealed inconsistencies in the dataset.",
-              "The data indicate a notable shift in consumer behaviour.",
               "By contrast, longitudinal studies in similar populations have shown a weaker effect over time.",
               "However, the same effect was not observed in the control population.",
               "By contrast, earlier studies relying on cross-sectional data reached the opposite conclusion.",
@@ -1154,12 +1105,9 @@
             "hint_en": "Try: 'This reduction in anxiety, while substantial, was not uniform across subgroups.'",
             "examples_pass": [
               "Try: 'This reduction in anxiety, while substantial, was not uniform across subgroups.'",
-              "The findings suggest a significant correlation between the two variables.",
-              "This study aims to examine the underlying mechanisms.",
               "This reduction in anxiety, while substantial, was not uniform across subgroups.",
               "This effect persisted across all four cohorts examined in the longitudinal data.",
-              "This finding raises a further question about how the effect varies across socioeconomic groups.",
-              "This pattern is consistent with the broader literature on long-term policy impact."
+              "This finding raises a further question about how the effect varies across socioeconomic groups."
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -1174,12 +1122,8 @@
             "hint_en": "Or, if you're contrasting: 'By contrast, depressive symptoms showed only a marginal change over the same period.'",
             "examples_pass": [
               "Or, if you're contrasting: 'By contrast, depressive symptoms showed only a marginal change over the same period.'",
-              "Subsequent analysis revealed inconsistencies in the dataset.",
-              "The data indicate a notable shift in consumer behaviour.",
               "By contrast, longitudinal studies in similar populations have shown a weaker effect over time.",
-              "However, the same effect was not observed in the control population.",
-              "By contrast, earlier studies relying on cross-sectional data reached the opposite conclusion.",
-              "However, the methodology used in the present study differs from earlier work in two important respects."
+              "By contrast, earlier studies relying on cross-sectional data reached the opposite conclusion."
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",

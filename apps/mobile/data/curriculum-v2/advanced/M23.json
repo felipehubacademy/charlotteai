@@ -123,7 +123,7 @@
             "examples_pass": [
               "Dear Ms. Costa, I hope this email finds you well. I'm reaching out to ask whether...",
               "I hope this email finds you well.",
-              "Please find attached the revised proposal for your review."
+              "I hope this email finds you well — that's how I'd put it."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -138,8 +138,8 @@
             "hint_en": "Hi Marta, Hope you're doing well. Just wanted to ask if...",
             "examples_pass": [
               "Hi Marta, Hope you're doing well. Just wanted to ask if...",
-              "I would appreciate your feedback at your earliest convenience.",
-              "Thank you in advance for your kind cooperation."
+              "Hi Marta, Hope you're doing well — that's how I'd put it.",
+              "As you said: Hi Marta, Hope you're doing well."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -153,9 +153,9 @@
             "hidden_prompt": "user writes casual opener like 'Hey João, Quick favour?'",
             "hint_en": "Hey João! Quick favour — can you...?",
             "examples_pass": [
-              "Hey João! Quick favour — can you...?",
-              "I look forward to hearing from you soon.",
-              "Should you require further clarification, please don't hesitate to ask."
+              "Hey João, Quick favour? — that's how I'd put it.",
+              "As you said: Hey João, Quick favour?.",
+              "Hey João, Quick favour?, plain and simple."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -219,8 +219,8 @@
             "hint_en": "Close with 'Kind regards' followed by your full name and title. Avoid 'Best' — too casual for first contact at that level.",
             "examples_pass": [
               "Close with 'Kind regards' followed by your full name and title. Avoid 'Best' — too casual for first contact at that level.",
-              "I look forward to hearing from you soon.",
-              "Should you require further clarification, please don't hesitate to ask."
+              "Kind regards — that's the one.",
+              "Honestly, Kind regards sums it up."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -331,9 +331,9 @@
             "hidden_prompt": "user writes 'I am writing to apply for [position]'",
             "hint_en": "I am writing to apply for the Senior Marketing Manager position advertised on LinkedIn.",
             "examples_pass": [
-              "I am writing to apply for the Senior Marketing Manager position advertised on LinkedIn.",
-              "I hope this email finds you well.",
-              "Please find attached the revised proposal for your review."
+              "I am writing to apply for [position] — that's how I'd put it.",
+              "As you said: I am writing to apply for [position].",
+              "I am writing to apply for [position], plain and simple."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -364,8 +364,8 @@
             "hint_en": "I would welcome the opportunity to discuss how my approach to marketing aligns with your team's growth goals.",
             "examples_pass": [
               "I would welcome the opportunity to discuss how my approach to marketing aligns with your team's growth goals.",
-              "I look forward to hearing from you soon.",
-              "Should you require further clarification, please don't hesitate to ask."
+              "I would welcome the opportunity to discuss — that's how I'd put it.",
+              "As you said: I would welcome the opportunity to discuss."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -429,8 +429,8 @@
             "hint_en": "I would welcome the opportunity to discuss how I could contribute to your next phase of growth.",
             "examples_pass": [
               "I would welcome the opportunity to discuss how I could contribute to your next phase of growth.",
-              "I look forward to hearing from you soon.",
-              "Should you require further clarification, please don't hesitate to ask."
+              "I would welcome the opportunity — that's how I'd put it.",
+              "As you said: I would welcome the opportunity."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -561,8 +561,6 @@
             "hint_en": "Spearheaded the migration from monolith to microservices, cutting deployment time from days to hours.",
             "examples_pass": [
               "Spearheaded the migration from monolith to microservices, cutting deployment time from days to hours.",
-              "I would appreciate your feedback at your earliest convenience.",
-              "Thank you in advance for your kind cooperation.",
               "Drove the launch of the new product line, generating $8M in first-year revenue and three follow-on enterprise contracts.",
               "Spearheaded the company's expansion into the Latin American market, growing revenue from zero to $5M in eighteen months.",
               "Drove the redesign of the customer support workflow, reducing average ticket resolution time by 47%."
@@ -772,8 +770,8 @@
             "hint_en": "Just following up on the proposal I sent on Tuesday — wondering if you've had a chance to review it.",
             "examples_pass": [
               "Just following up on the proposal I sent on Tuesday — wondering if you've had a chance to review it.",
-              "I hope this email finds you well.",
-              "Please find attached the revised proposal for your review."
+              "Just following up on the proposal — that's how I'd put it.",
+              "As you said: just following up on the proposal."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -787,9 +785,9 @@
             "hidden_prompt": "user uses 'just checking in on the application'",
             "hint_en": "Just checking in on the Senior Designer application I submitted two weeks ago. Any update on next steps would be appreciated.",
             "examples_pass": [
-              "Just checking in on the Senior Designer application I submitted two weeks ago. Any update on next steps would be appreciated.",
-              "I would appreciate your feedback at your earliest convenience.",
-              "Thank you in advance for your kind cooperation."
+              "Just checking in on the application — that's how I'd put it.",
+              "As you said: just checking in on the application.",
+              "Just checking in on the application, plain and simple."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -804,8 +802,8 @@
             "hint_en": "Following up on our conversation last Friday — happy to share the case studies we discussed if useful.",
             "examples_pass": [
               "Following up on our conversation last Friday — happy to share the case studies we discussed if useful.",
-              "I look forward to hearing from you soon.",
-              "Should you require further clarification, please don't hesitate to ask."
+              "Following up on our conversation — that's how I'd put it.",
+              "As you said: following up on our conversation."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -837,8 +835,8 @@
             "hint_en": "Three weeks is the perfect window for a soft follow-up. Open with 'Just following up on my email from earlier this month'.",
             "examples_pass": [
               "Three weeks is the perfect window for a soft follow-up. Open with 'Just following up on my email from earlier this month'.",
-              "I hope this email finds you well.",
-              "Please find attached the revised proposal for your review."
+              "Just following up — that's the one.",
+              "Honestly, just following up sums it up."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -852,9 +850,9 @@
             "hidden_prompt": "user suggests adding a value-add reason",
             "hint_en": "Add a reason to re-engage — something like 'I came across a case study that might interest you' or 'Just released something relevant'.",
             "examples_pass": [
-              "Add a reason to re-engage — something like 'I came across a case study that might interest you' or 'Just released something relevant'.",
-              "I would appreciate your feedback at your earliest convenience.",
-              "Thank you in advance for your kind cooperation."
+              "Adding a value-add reason — that's the one.",
+              "Honestly, adding a value-add reason sums it up.",
+              "Yeah, adding a value-add reason for sure."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -869,8 +867,8 @@
             "hint_en": "Close with 'No rush on my end — just wanted to keep the conversation open'. Gives them an easy yes or easy out.",
             "examples_pass": [
               "Close with 'No rush on my end — just wanted to keep the conversation open'. Gives them an easy yes or easy out.",
-              "I look forward to hearing from you soon.",
-              "Should you require further clarification, please don't hesitate to ask."
+              "No rush on my end — that's the one.",
+              "Honestly, no rush on my end sums it up."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -998,8 +996,8 @@
             "hint_en": "Unfortunately, the leadership team has decided to postpone the project until next year. I know this isn't the news anyone wanted, and I'm happy to discuss what this means for next steps.",
             "examples_pass": [
               "Unfortunately, the leadership team has decided to postpone the project until next year. I know this isn't the news anyone wanted, and I'm happy to discuss what this means for next steps.",
-              "I would appreciate your feedback at your earliest convenience.",
-              "Thank you in advance for your kind cooperation."
+              "Unfortunately — that's the one.",
+              "Honestly, unfortunately sums it up."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",
@@ -1062,9 +1060,9 @@
             "hidden_prompt": "user suggests adding a brief honest reason",
             "hint_en": "Give a real but brief reason — 'we're at capacity through Q3' or 'we're shifting focus on internal work this year'. Honesty preserves trust.",
             "examples_pass": [
-              "Give a real but brief reason — 'we're at capacity through Q3' or 'we're shifting focus on internal work this year'. Honesty preserves trust.",
-              "I would appreciate your feedback at your earliest convenience.",
-              "Thank you in advance for your kind cooperation."
+              "Adding a brief honest reason — that's the one.",
+              "Honestly, adding a brief honest reason sums it up.",
+              "Yeah, adding a brief honest reason for sure."
             ],
             "examples_fail": [
               "ok (bare reply, no email register)",

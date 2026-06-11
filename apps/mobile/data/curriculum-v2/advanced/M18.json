@@ -161,8 +161,6 @@
             "hint_en": "First: 'We laid off forty percent of the team in 2008.' Follow: 'That decision still shapes how we think about hiring.'",
             "examples_pass": [
               "First: 'We laid off forty percent of the team in 2008.' Follow: 'That decision still shapes how we think about hiring.'",
-              "These developments, far from being isolated, reflect a broader trend.",
-              "The argument, although compelling, rests on shaky assumptions.",
               "We laid off forty percent of the team in 2008. That decision still shapes how we think about hiring today.",
               "She walked away from her career at thirty-two. That choice took her a decade to fully understand.",
               "He missed his father's last call. That regret has stayed with him for almost twenty years.",
@@ -197,12 +195,9 @@
             "hidden_prompt": "user adds 'These three problems' or similar",
             "hint_en": "Try: 'These three pressures reinforce one another in ways the leadership team hasn't yet acknowledged.'",
             "examples_pass": [
-              "Try: 'These three pressures reinforce one another in ways the leadership team hasn't yet acknowledged.'",
-              "The project, which we launched last year, has exceeded all expectations.",
-              "This approach, as mentioned earlier, has clear limitations.",
-              "Try: 'These risks compound rather than offset — and the cost of inaction grows with each quarter we delay.'",
-              "Try: 'These changes, taken together, mark a more decisive shift in strategy than any single announcement has signalled.'",
-              "Try: 'These trends, taken in isolation, look manageable; taken together, they tell a more difficult story.'"
+              "These three problems — that's the one.",
+              "Honestly, These three problems sums it up.",
+              "Yeah, These three problems for sure."
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -379,11 +374,7 @@
             "hint_en": "Second: 'The laptop was an upgrade she had been postponing for three years.'",
             "examples_pass": [
               "Second: 'The laptop was an upgrade she had been postponing for three years.'",
-              "Such challenges, however significant, can be overcome with planning.",
-              "The findings, taken together, point to a structural shift.",
               "The laptop was an upgrade she had been postponing for nearly three years.",
-              "The camera turned out to be heavier than she'd expected, but the image quality made up for it.",
-              "The car barely had room for our suitcases, but it handled the mountain roads beautifully.",
               "The machine took a full forty-five minutes to set up before she could even open her first email."
             ],
             "examples_fail": [
@@ -399,12 +390,8 @@
             "hint_en": "Third: 'The new machine has kept her at her desk for hours longer than the old one ever did.'",
             "examples_pass": [
               "Third: 'The new machine has kept her at her desk for hours longer than the old one ever did.'",
-              "These developments, far from being isolated, reflect a broader trend.",
-              "The argument, although compelling, rests on shaky assumptions.",
               "The new machine has kept her at her desk for hours longer than the old one ever did.",
-              "The device replaced three older items in her bag and saved her almost a kilogram of weight.",
-              "The new vehicle has been on every motorway in the region within a single month.",
-              "The new model has none of the quirks of the previous generation, but also none of the charm."
+              "The device replaced three older items in her bag and saved her almost a kilogram of weight."
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -436,10 +423,7 @@
             "hint_en": "Try: 'The CEO announced the merger. The chief executive said it would close in March.'",
             "examples_pass": [
               "Try: 'The CEO announced the merger. The chief executive said it would close in March.'",
-              "The project, which we launched last year, has exceeded all expectations.",
-              "This approach, as mentioned earlier, has clear limitations.",
               "Try: 'The founder addressed the team in the morning. The outgoing CEO spoke separately to the press in the afternoon.'",
-              "Try: 'The chief executive opened the call. The company's longest-serving leader closed it on a quieter note.'",
               "Try: 'The CEO took the questions. The company's most public face, as always, became its first line of defence.'"
             ],
             "examples_fail": [
@@ -455,7 +439,6 @@
             "hint_en": "Continue: 'She refused to take questions. The executive walked out before the press could press further.'",
             "examples_pass": [
               "Continue: 'She refused to take questions. The executive walked out before the press could press further.'",
-              "Such challenges, however significant, can be overcome with planning.",
               "The findings, taken together, point to a structural shift.",
               "Continue: 'He answered briefly. The executive then deferred the rest of the conversation to the company's general counsel.'",
               "Continue: 'She acknowledged the question. The executive then offered a careful, two-sentence answer and moved on.'",
@@ -473,9 +456,6 @@
             "hidden_prompt": "user asks Charlotte about her own draft style",
             "hint_en": "Why does this trip you up?",
             "examples_pass": [
-              "Why does this trip you up?",
-              "These developments, far from being isolated, reflect a broader trend.",
-              "The argument, although compelling, rests on shaky assumptions.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -599,9 +579,7 @@
               "The project, which we launched last year, has exceeded all expectations.",
               "This approach, as mentioned earlier, has clear limitations.",
               "Between São Paulo and Rio, the former offers a denser professional ecosystem.",
-              "Between the two candidates, the former has the technical depth, while the latter has the operational instinct.",
-              "Between the conservative and aggressive forecasts, the former is more politically defensible internally.",
-              "Of the two approaches, the former is more expensive but considerably more robust."
+              "Between the two candidates, the former has the technical depth, while the latter has the operational instinct."
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -615,12 +593,9 @@
             "hidden_prompt": "user uses 'the latter offers / has / provides'",
             "hint_en": "The latter, by contrast, offers a sense of place that comes from coastline rather than skyline.",
             "examples_pass": [
-              "The latter, by contrast, offers a sense of place that comes from coastline rather than skyline.",
-              "Such challenges, however significant, can be overcome with planning.",
-              "The findings, taken together, point to a structural shift.",
-              "The latter approach is faster but will require significantly more rework downstream.",
-              "The latter strategy carries less risk but also less upside in almost every scenario.",
-              "The latter option saves time now but creates a maintenance burden for years to come."
+              "Has — that's the one.",
+              "Honestly, has sums it up.",
+              "Yeah, has for sure."
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -1129,9 +1104,9 @@
             "hidden_prompt": "user names which 'she' said it",
             "hint_en": "Try: 'The CEO told the head of legal that the deal would close.'",
             "examples_pass": [
-              "Try: 'The CEO told the head of legal that the deal would close.'",
-              "The project, which we launched last year, has exceeded all expectations.",
-              "This approach, as mentioned earlier, has clear limitations."
+              "She — that's the one.",
+              "Honestly, she sums it up.",
+              "Yeah, she for sure."
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",

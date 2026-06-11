@@ -252,7 +252,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses 'It is X that' + hedge"
    **hint_pt**: "It is increasingly accepted that the standard five-day week reflects historical accident more than productive necessity, though it could be argued that the four-day alternative has yet to prove itself outside knowledge work."
    **hint_en**: "It is increasingly accepted that the standard five-day week reflects historical accident more than productive necessity, though it could be argued that the four-day alternative has yet to prove itself outside knowledge work."
-   **example_pass**: It is increasingly accepted that the standard five-day week reflects historical accident more than productive necessity, though it could be argued that the four-day alternative has yet to prove itself outside knowledge work. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_pass**: It is X that — that's the one. | Honestly, It is X that sums it up. | Yeah, It is X that for sure.
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3

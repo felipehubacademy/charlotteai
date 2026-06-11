@@ -92,7 +92,7 @@
    **hidden_prompt**: "user uses 'record' both as noun and verb"
    **hint_pt**: "We need to record a new podcast episode this afternoon — last week's record came out unusable because of the construction noise."
    **hint_en**: "We need to record a new podcast episode this afternoon — last week's record came out unusable because of the construction noise."
-   **example_pass**: We need to record a new podcast episode this afternoon — last week's record came out unusable because of the construction noise. | The third thing I noticed was the silence. | I'd rather not discuss it right now. | We need to record a new podcast episode this afternoon — last week's record came out unusable because of construction noise. | She holds the company record for fastest project launch, and she's about to break her own record again this quarter. | He records every meeting, and his personal record now exceeds three thousand hours of footage. | We'll record the conversation, but the record will only be shared with the leadership team.
+   **example_pass**: We need to record a new podcast episode this afternoon — last week's record came out unusable because of the construction noise. | We need to record a new podcast episode this afternoon — last week's record came out unusable because of construction noise. | She holds the company record for fastest project launch, and she's about to break her own record again this quarter. | He records every meeting, and his personal record now exceeds three thousand hours of footage. | We'll record the conversation, but the record will only be shared with the leadership team.
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
@@ -101,7 +101,7 @@
    **hidden_prompt**: "user uses 'develop' and 'development' with correct stress"
    **hint_pt**: "It takes weeks to develop a new feature, but the development of the whole platform took years."
    **hint_en**: "It takes weeks to develop a new feature, but the development of the whole platform took years."
-   **example_pass**: It takes weeks to develop a new feature, but the development of the whole platform took years. | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'. | She develops talent in a way that makes the development of any new hire feel almost effortless. | We're developing the next version quietly, and the development team is working in two-week sprints. | He develops product strategy for a living, but the development of his own career has been anything but strategic.
+   **example_pass**: It takes weeks to develop a new feature, but the development of the whole platform took years. | She develops talent in a way that makes the development of any new hire feel almost effortless. | We're developing the next version quietly, and the development team is working in two-week sprints. | He develops product strategy for a living, but the development of his own career has been anything but strategic.
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Stress, deliberately placed." once obj_3 lands.
@@ -156,7 +156,7 @@
    **hidden_prompt**: "user asks Charlotte if 'comfortable' has a fast-speech reduction"
    **hint_pt**: "Do natives still say all four syllables of 'comfortable'?"
    **hint_en**: "Do natives still say all four syllables of 'comfortable'?"
-   **example_pass**: Do natives still say all four syllables of 'comfortable'? | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: Do natives still say all four syllables of 'comfortable'? | He pronounces 'comfortable' as three syllables. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Stress patterns, traded openly." once obj_3 lands.
@@ -244,7 +244,7 @@
    **hidden_prompt**: "user uses contractions and weak 'to'"
    **hint_pt**: "I'm going to the conference tomorrow — I'll catch the early train, and I should be there by ten."
    **hint_en**: "I'm going to the conference tomorrow — I'll catch the early train, and I should be there by ten."
-   **example_pass**: I'm going to the conference tomorrow — I'll catch the early train, and I should be there by ten. | The third thing I noticed was the silence. | I'd rather not discuss it right now. | I'm gonna head to the conference tomorrow — I'll catch the early train, and I should be there by ten. | She's gonna ask you about the budget — better to have the numbers ready before the meeting. | We've got to ship by Friday, and there's no room left to negotiate that deadline. | I'm gonna grab a coffee on the way — you want me to bring you anything?
+   **example_pass**: I'm going to the conference tomorrow — I'll catch the early train, and I should be there by ten. | I'm gonna head to the conference tomorrow — I'll catch the early train, and I should be there by ten. | She's gonna ask you about the budget — better to have the numbers ready before the meeting. | We've got to ship by Friday, and there's no room left to negotiate that deadline. | I'm gonna grab a coffee on the way — you want me to bring you anything?
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
@@ -405,7 +405,7 @@
    **hidden_prompt**: "user produces 'doncha / didja / wouldja' or similar"
    **hint_pt**: "Didja get the email I sent on Tuesday? I never heard back."
    **hint_en**: "Didja get the email I sent on Tuesday? I never heard back."
-   **example_pass**: Didja get the email I sent on Tuesday? I never heard back. | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'. | Wouldja mind closing the door on your way out? | Doncha think it's a bit early to call the year a success? | Whaddya doing this weekend? We might head out to the lake if the weather holds.
+   **example_pass**: Didja get the email I sent on Tuesday? I never heard back. | Wouldja mind closing the door on your way out? | Doncha think it's a bit early to call the year a success?
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Connected speech, sounding native." once obj_3 lands.
@@ -557,7 +557,7 @@
    **hidden_prompt**: "user produces 'really' or 'sure' with sceptical falling pitch"
    **hint_pt**: "When he said he'd be there by ten, I just said 'sure' — flat and falling — and he heard the doubt in two syllables."
    **hint_en**: "When he said he'd be there by ten, I just said 'sure' — flat and falling — and he heard the doubt in two syllables."
-   **example_pass**: When he said he'd be there by ten, I just said 'sure' — flat and falling — and he heard the doubt in two syllables. | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'.
+   **example_pass**: When he said he'd be there by ten, I just said 'sure' — flat and falling — and he heard the doubt in two syllables. | Sure — that's the one. | Honestly, sure sums it up.
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Pitch, doing semantic work." once obj_3 lands.
@@ -594,7 +594,7 @@
    **hidden_prompt**: "user describes genuine 'fine' intonation"
    **hint_pt**: "Genuine 'fine' is short, medium pitch, neutral — like reporting the weather. No emotional weight."
    **hint_en**: "Genuine 'fine' is short, medium pitch, neutral — like reporting the weather. No emotional weight."
-   **example_pass**: Genuine 'fine' is short, medium pitch, neutral — like reporting the weather. No emotional weight. | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night.
+   **example_pass**: Genuine 'fine' is short, medium pitch, neutral — like reporting the weather. No emotional weight. | Fine — that's the one. | Honestly, fine sums it up.
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
@@ -603,7 +603,7 @@
    **hidden_prompt**: "user describes passive-aggressive 'fine' intonation"
    **hint_pt**: "Passive-aggressive 'fine' is longer, falling pitch, slightly clipped — it means 'this conversation is over and you've lost'."
    **hint_en**: "Passive-aggressive 'fine' is longer, falling pitch, slightly clipped — it means 'this conversation is over and you've lost'."
-   **example_pass**: Passive-aggressive 'fine' is longer, falling pitch, slightly clipped — it means 'this conversation is over and you've lost'. | The third thing I noticed was the silence. | I'd rather not discuss it right now.
+   **example_pass**: Passive-aggressive 'fine' is longer, falling pitch, slightly clipped — it means 'this conversation is over and you've lost'. | Fine — that's the one. | Honestly, fine sums it up.
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
@@ -691,7 +691,7 @@
    **hidden_prompt**: "user uses 'I'd've / he'd've / we'd've'"
    **hint_pt**: "I'd've called you sooner if I'd known you were back in town — your number wasn't in my phone anymore."
    **hint_en**: "I'd've called you sooner if I'd known you were back in town — your number wasn't in my phone anymore."
-   **example_pass**: I'd've called you sooner if I'd known you were back in town — your number wasn't in my phone anymore. | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night. | He'd've taken the job if the timing had been a year earlier. | We'd've gone to the event, but the weather made the whole trip impossible. | She'd've helped if you'd just asked — she's more generous than people realise.
+   **example_pass**: I'd've called you sooner if I'd known you were back in town — your number wasn't in my phone anymore. | He'd've taken the job if the timing had been a year earlier. | We'd've gone to the event, but the weather made the whole trip impossible. | She'd've helped if you'd just asked — she's more generous than people realise.
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
@@ -709,7 +709,7 @@
    **hidden_prompt**: "user produces 'going to / want to / got to' as gonna/wanna/gotta"
    **hint_pt**: "I'm gonna grab a coffee — you wanna come with me, or you've gotta finish that email first?"
    **hint_en**: "I'm gonna grab a coffee — you wanna come with me, or you've gotta finish that email first?"
-   **example_pass**: I'm gonna grab a coffee — you wanna come with me, or you've gotta finish that email first? | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: I had to got to in the end. | Someone needs to got to eventually. | We decided to got to.
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Contracted and dropped, C2 pronunciation closing." once obj_3 lands.
@@ -746,7 +746,7 @@
    **hidden_prompt**: "user replies with 'I've / we've / it's' contractions"
    **hint_pt**: "I've been at it since six this morning — there's a deadline I shouldn'ta agreed to, and now I'm paying the price."
    **hint_en**: "I've been at it since six this morning — there's a deadline I shouldn'ta agreed to, and now I'm paying the price."
-   **example_pass**: I've been at it since six this morning — there's a deadline I shouldn'ta agreed to, and now I'm paying the price. | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night. | It's been one of those mornings — I've already missed two calls and we've barely started the actual work. | I've been thinking about it all week — it's the kind of decision that doesn't get easier the longer you wait on it. | We've been at this since dawn, and it's looking like we'll be here well past dinner.
+   **example_pass**: I've been at it since six this morning — there's a deadline I shouldn'ta agreed to, and now I'm paying the price. | It's been one of those mornings — I've already missed two calls and we've barely started the actual work. | I've been thinking about it all week — it's the kind of decision that doesn't get easier the longer you wait on it. | We've been at this since dawn, and it's looking like we'll be here well past dinner.
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
@@ -755,7 +755,7 @@
    **hidden_prompt**: "user uses 'gonna / wanna / gotta'"
    **hint_pt**: "I'm gonna call it a day in about an hour — wanna grab a drink if you're around?"
    **hint_en**: "I'm gonna call it a day in about an hour — wanna grab a drink if you're around?"
-   **example_pass**: I'm gonna call it a day in about an hour — wanna grab a drink if you're around? | The third thing I noticed was the silence. | I'd rather not discuss it right now. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: I'm gonna call it a day in about an hour — wanna grab a drink if you're around? | I had to gonna in the end. | Someone needs to gonna eventually.
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
@@ -764,7 +764,7 @@
    **hidden_prompt**: "user asks Charlotte casually about her own day"
    **hint_pt**: "How's your day been?"
    **hint_en**: "How's your day been?"
-   **example_pass**: How's your day been? | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Casual register, pronunciation aligned." once obj_3 lands.

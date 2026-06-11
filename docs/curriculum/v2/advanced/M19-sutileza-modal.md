@@ -152,7 +152,7 @@
    **hidden_prompt**: "user uses 'must' for strongest inference or 'should' for expectation"
    **hint_pt**: "If it's been three nights running, something must have changed in her routine — and whatever it is, she should be exhausted by now."
    **hint_en**: "If it's been three nights running, something must have changed in her routine — and whatever it is, she should be exhausted by now."
-   **example_pass**: If it's been three nights running, something must have changed in her routine — and whatever it is, she should be exhausted by now. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_pass**: If it's been three nights running, something must have changed in her routine — and whatever it is, she should be exhausted by now. | Must — that's the one. | Honestly, must sums it up.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
@@ -295,7 +295,7 @@
    **hidden_prompt**: "user uses 'might well / could well / may well'"
    **hint_pt**: "It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb."
    **hint_en**: "It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb."
-   **example_pass**: It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb. | He must have forgotten about the meeting. | She might have been delayed by traffic. | She might well decide to take the offer, despite all her hesitation up to this point. | The committee may well reject the proposal — the political winds have shifted since the original submission. | Given the trajectory, the company might well announce a pivot before the end of the quarter.
+   **example_pass**: It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb. | She might well decide to take the offer, despite all her hesitation up to this point. | The committee may well reject the proposal — the political winds have shifted since the original submission. | Given the trajectory, the company might well announce a pivot before the end of the quarter.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
@@ -600,7 +600,7 @@
    **hidden_prompt**: "user uses 'is likely to / is unlikely to'"
    **hint_pt**: "If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline."
    **hint_en**: "If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline."
-   **example_pass**: If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline. | He must have forgotten about the meeting. | She might have been delayed by traffic. | Given the leading indicators, adoption is likely to plateau before the end of the year. | The fundraise is unlikely to close at the original valuation, given the broader market conditions. | She's likely to leave by the end of the quarter unless something changes in how the team is run.
+   **example_pass**: If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline. | Given the leading indicators, adoption is likely to plateau before the end of the year. | The fundraise is unlikely to close at the original valuation, given the broader market conditions.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
@@ -609,7 +609,7 @@
    **hidden_prompt**: "user uses 'is/are bound to'"
    **hint_pt**: "And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays."
    **hint_en**: "And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays."
-   **example_pass**: And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays. | They could have been trying to reach us. | It can't have been easy for them. | With the surplus they've accumulated, the company is bound to announce a dividend by year-end. | Given the data we've already seen, the regulator is bound to require additional disclosures. | She was bound to take that job offer — the alternative would have meant moving back home. | The market is bound to react sharply to the announcement, regardless of how it's framed.
+   **example_pass**: And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays. | With the surplus they've accumulated, the company is bound to announce a dividend by year-end. | Given the data we've already seen, the regulator is bound to require additional disclosures. | The market is bound to react sharply to the announcement, regardless of how it's framed.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3

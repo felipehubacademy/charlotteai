@@ -136,12 +136,8 @@
             "hint_en": "Positively, I'd say she's assertive — she states her view clearly without apology.",
             "examples_pass": [
               "Positively, I'd say she's assertive — she states her view clearly without apology.",
-              "I'd like to express my sincere appreciation for your support.",
-              "The dude totally nailed it, no kidding.",
               "Positively framed, she's assertive — she names what she sees clearly and without apology.",
-              "Positively, you'd say he's direct — willing to say what others are only thinking.",
-              "Generously read, she's confident and decisive in moments when the team needs someone to be.",
-              "Positively, I'd describe her as forthright — she doesn't dress up her opinions, and the team trusts her for it."
+              "Generously read, she's confident and decisive in moments when the team needs someone to be."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -156,12 +152,8 @@
             "hint_en": "Negatively, someone less generous might call her aggressive or pushy.",
             "examples_pass": [
               "Negatively, someone less generous might call her aggressive or pushy.",
-              "It would be a pleasure to make your acquaintance.",
-              "Yeah, that was pretty awesome, gotta say.",
               "Negatively framed, someone less generous would call her aggressive — even domineering at times.",
-              "The unkind version of the same trait is pushy — and she occasionally tips into that.",
-              "Less charitably, he's bossy and refuses to let anyone else lead a conversation.",
-              "Read uncharitably, the same behaviour comes across as overbearing rather than confident."
+              "The unkind version of the same trait is pushy — and she occasionally tips into that."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -176,11 +168,8 @@
             "hint_en": "He's thrifty rather than stingy — the difference is whether he resents spending or just thinks before doing it.",
             "examples_pass": [
               "He's thrifty rather than stingy — the difference is whether he resents spending or just thinks before doing it.",
-              "May I request your assistance with this matter?",
-              "Honestly, it was a complete disaster, mate.",
               "He's thrifty rather than stingy — the difference is whether he resents the money or simply thinks before spending it.",
               "She's frugal in a principled way, not cheap in a small-minded one.",
-              "There's a difference between being economical and being miserly, and he sits squarely on the right side of it.",
               "Calling him cheap would be unfair; he's careful with money in the way someone who once didn't have any tends to be."
             ],
             "examples_fail": [
@@ -213,11 +202,8 @@
             "hint_en": "If you admire it, she's probably more assertive than aggressive — direct without making you feel attacked.",
             "examples_pass": [
               "If you admire it, she's probably more assertive than aggressive — direct without making you feel attacked.",
-              "I'd like to express my sincere appreciation for your support.",
-              "The dude totally nailed it, no kidding.",
               "Charitably, you'd describe him as self-assured rather than arrogant — he simply doesn't perform humility.",
-              "Positively, she's confident in the kind of way that makes everyone in the room slightly braver.",
-              "The flattering version of the same trait is decisive — moving forward while others are still talking."
+              "Assertive — that's the one."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -232,8 +218,6 @@
             "hint_en": "If it's exhausting, the line you're feeling is between assertive and pushy — when directness stops leaving room for the other person.",
             "examples_pass": [
               "If it's exhausting, the line you're feeling is between assertive and pushy — when directness stops leaving room for the other person.",
-              "It would be a pleasure to make your acquaintance.",
-              "Yeah, that was pretty awesome, gotta say.",
               "Less charitably, the line you're feeling is between assertive and pushy — when directness stops leaving room for the other person.",
               "Read uncharitably, he comes across as cocky rather than confident — too sure of himself for the room.",
               "The unkind version of the same behaviour is domineering — taking up all the available space.",
@@ -371,8 +355,6 @@
             "hint_en": "Informal: 'We'll start the audit Monday.' Formal: 'We will commence the audit on Monday.'",
             "examples_pass": [
               "Informal: 'We'll start the audit Monday.' Formal: 'We will commence the audit on Monday.'",
-              "I'd like to express my sincere appreciation for your support.",
-              "The dude totally nailed it, no kidding.",
               "Formal: 'We will commence the audit on Monday.' Informal: 'We'll kick the audit off Monday.'",
               "Formal: 'The committee will commence its review on the first of the month.' Informal: 'The committee starts on the first.'",
               "Formal: 'Operations are scheduled to commence at six.' Informal: 'We kick off at six.'",
@@ -391,8 +373,6 @@
             "hint_en": "Informal: 'We need to find out what happened.' Formal: 'We need to ascertain what happened.'",
             "examples_pass": [
               "Informal: 'We need to find out what happened.' Formal: 'We need to ascertain what happened.'",
-              "It would be a pleasure to make your acquaintance.",
-              "Yeah, that was pretty awesome, gotta say.",
               "Formal: 'We must ascertain the precise sequence of events.' Informal: 'We need to figure out what actually happened.'",
               "Formal: 'It is necessary to ascertain the projected cost.' Informal: 'We need to find out how much this is going to cost.'",
               "Formal: 'Ascertain who authorised the original transaction.' Informal: 'Find out who signed off on this.'",
@@ -411,8 +391,6 @@
             "hint_en": "Informal: 'The data shows the trend.' Formal: 'The data demonstrates the trend.'",
             "examples_pass": [
               "Informal: 'The data shows the trend.' Formal: 'The data demonstrates the trend.'",
-              "May I request your assistance with this matter?",
-              "Honestly, it was a complete disaster, mate.",
               "Formal: 'The data demonstrate a clear directional trend.' Informal: 'The data shows the trend clearly.'",
               "Formal: 'This demonstrates the unusual diligence she brings to the work.' Informal: 'It just shows how careful she is.'",
               "Formal: 'The figures demonstrate the validity of the original hypothesis.' Informal: 'These numbers prove the point.'",
@@ -448,8 +426,6 @@
             "hint_en": "Try: 'We will commence the new programme and investigate the feedback we received.'",
             "examples_pass": [
               "Try: 'We will commence the new programme and investigate the feedback we received.'",
-              "I'd like to express my sincere appreciation for your support.",
-              "The dude totally nailed it, no kidding.",
               "Formal: 'We will commence the audit on Monday.' Informal: 'We'll kick the audit off Monday.'",
               "Formal: 'The committee will commence its review on the first of the month.' Informal: 'The committee starts on the first.'",
               "Formal: 'Operations are scheduled to commence at six.' Informal: 'We kick off at six.'",
@@ -614,8 +590,8 @@
             "hint_en": "Direct: 'His mother died last month.' Softened: 'His mother passed away last month.'",
             "examples_pass": [
               "Direct: 'His mother died last month.' Softened: 'His mother passed away last month.'",
-              "I'd like to express my sincere appreciation for your support.",
-              "The dude totally nailed it, no kidding."
+              "Died — that's the one.",
+              "Honestly, died sums it up."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -630,8 +606,8 @@
             "hint_en": "Direct: 'He's unemployed right now.' Softened: 'He's between jobs at the moment.'",
             "examples_pass": [
               "Direct: 'He's unemployed right now.' Softened: 'He's between jobs at the moment.'",
-              "It would be a pleasure to make your acquaintance.",
-              "Yeah, that was pretty awesome, gotta say."
+              "Unemployed — that's the one.",
+              "Honestly, unemployed sums it up."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -646,8 +622,8 @@
             "hint_en": "Direct: 'Five people were fired last week.' Softened: 'Five people were let go last week.'",
             "examples_pass": [
               "Direct: 'Five people were fired last week.' Softened: 'Five people were let go last week.'",
-              "May I request your assistance with this matter?",
-              "Honestly, it was a complete disaster, mate."
+              "Fired — that's the one.",
+              "Honestly, fired sums it up."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -678,9 +654,9 @@
             "hidden_prompt": "user uses 'passed away' / 'sorry for your loss' framing",
             "hint_en": "Keep it simple — 'I was so sorry to hear about your father's passing' is a warm, standard phrase.",
             "examples_pass": [
-              "Keep it simple — 'I was so sorry to hear about your father's passing' is a warm, standard phrase.",
-              "I'd like to express my sincere appreciation for your support.",
-              "The dude totally nailed it, no kidding."
+              "Passed away — that's the one.",
+              "Honestly, passed away sums it up.",
+              "Yeah, passed away for sure."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -694,9 +670,9 @@
             "hidden_prompt": "user uses 'survived by' or 'in our thoughts' or another euphemism",
             "hint_en": "If you want to mention specifics, something like: 'I know he meant the world to you, and you'll be in my thoughts as you navigate this.'",
             "examples_pass": [
-              "If you want to mention specifics, something like: 'I know he meant the world to you, and you'll be in my thoughts as you navigate this.'",
-              "It would be a pleasure to make your acquaintance.",
-              "Yeah, that was pretty awesome, gotta say."
+              "Survived by — that's the one.",
+              "Honestly, survived by sums it up.",
+              "Yeah, survived by for sure."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -831,12 +807,8 @@
             "hint_en": "The food at that new place is not half bad — I'll be going back.",
             "examples_pass": [
               "The food at that new place is not half bad — I'll be going back.",
-              "I'd like to express my sincere appreciation for your support.",
-              "The dude totally nailed it, no kidding.",
               "The food at that place is not half bad — I'll happily go back.",
-              "Honestly, the new product line isn't bad at all — better than most of the reviews would suggest.",
-              "The restaurant wasn't half bad, considering how skeptical I was walking in.",
-              "Their offer wasn't bad — better than I'd been expecting given the market."
+              "Not bad — that's the one."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -851,8 +823,6 @@
             "hint_en": "Finishing the project a week early was no small feat with a team this size.",
             "examples_pass": [
               "Finishing the project a week early was no small feat with a team this size.",
-              "It would be a pleasure to make your acquaintance.",
-              "Yeah, that was pretty awesome, gotta say.",
               "Launching three markets in a single quarter is no mean achievement, especially given the conditions.",
               "Bringing the budget in under target two years in a row is no small feat.",
               "Keeping the team together through that transition was no mean achievement on her part."
@@ -907,12 +877,8 @@
             "hint_en": "Not without its moments — got through three deadlines and only one of them tried to kill me.",
             "examples_pass": [
               "Not without its moments — got through three deadlines and only one of them tried to kill me.",
-              "I'd like to express my sincere appreciation for your support.",
-              "The dude totally nailed it, no kidding.",
-              "The food at that place is not half bad — I'll happily go back.",
-              "Honestly, the new product line isn't bad at all — better than most of the reviews would suggest.",
-              "The restaurant wasn't half bad, considering how skeptical I was walking in.",
-              "Their offer wasn't bad — better than I'd been expecting given the market."
+              "Not bad — that's the one.",
+              "Honestly, not bad sums it up."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -927,12 +893,8 @@
             "hint_en": "Finishing the redesign in a week was no small feat — and I wouldn't say no to a quiet weekend now.",
             "examples_pass": [
               "Finishing the redesign in a week was no small feat — and I wouldn't say no to a quiet weekend now.",
-              "It would be a pleasure to make your acquaintance.",
-              "Yeah, that was pretty awesome, gotta say.",
               "Finishing the project a week early was no small feat with a team this size.",
-              "Launching three markets in a single quarter is no mean achievement, especially given the conditions.",
-              "Bringing the budget in under target two years in a row is no small feat.",
-              "Keeping the team together through that transition was no mean achievement on her part."
+              "Bringing the budget in under target two years in a row is no small feat."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -947,8 +909,6 @@
             "hint_en": "What was the film?",
             "examples_pass": [
               "What was the film?",
-              "May I request your assistance with this matter?",
-              "Honestly, it was a complete disaster, mate.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -1069,8 +1029,8 @@
             "hint_en": "I would respectfully propose that we revisit the launch timeline, given the readiness of the current build.",
             "examples_pass": [
               "I would respectfully propose that we revisit the launch timeline, given the readiness of the current build.",
-              "I'd like to express my sincere appreciation for your support.",
-              "The dude totally nailed it, no kidding."
+              "Recommend — that's the one.",
+              "Honestly, recommend sums it up."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -1084,9 +1044,9 @@
             "hidden_prompt": "user uses casual register with team: 'we need to push back', etc.",
             "hint_en": "Look, we need to push the launch back — we're not ready, and shipping broken won't help anyone.",
             "examples_pass": [
-              "Look, we need to push the launch back — we're not ready, and shipping broken won't help anyone.",
-              "It would be a pleasure to make your acquaintance.",
-              "Yeah, that was pretty awesome, gotta say."
+              "We need to push back — that's the one.",
+              "Honestly, we need to push back sums it up.",
+              "Yeah, we need to push back for sure."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -1101,8 +1061,8 @@
             "hint_en": "Honestly, I'm scared we're about to ship something half-baked, and I don't know how to say that without looking weak.",
             "examples_pass": [
               "Honestly, I'm scared we're about to ship something half-baked, and I don't know how to say that without looking weak.",
-              "May I request your assistance with this matter?",
-              "Honestly, it was a complete disaster, mate."
+              "Honestly, it was a complete disaster, mate.",
+              "Honestly — that's the one."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -1302,8 +1262,6 @@
             "hint_en": "I actually intend to spend more time studying British English — I'm planning a trip there next year.",
             "examples_pass": [
               "I actually intend to spend more time studying British English — I'm planning a trip there next year.",
-              "It would be a pleasure to make your acquaintance.",
-              "Yeah, that was pretty awesome, gotta say.",
               "I actually intend to spend more time on British English this year — I'm planning a trip there next spring.",
               "I hadn't realised how much my pronunciation had drifted until I listened back to an old recording of myself.",
               "I actually meant to send that yesterday, but the day got away from me completely.",
@@ -1322,8 +1280,6 @@
             "hint_en": "I've gotten more comfortable with both versions now — my speech mixes them, which is probably wrong but feels natural.",
             "examples_pass": [
               "I've gotten more comfortable with both versions now — my speech mixes them, which is probably wrong but feels natural.",
-              "May I request your assistance with this matter?",
-              "Honestly, it was a complete disaster, mate.",
               "I've gotten used to switching registers depending on who I'm speaking to.",
               "I've gotten better at noticing the differences, even if my own speech mixes both.",
               "American English uses 'gotten' where British English mostly uses 'got' — I switch without noticing now.",
@@ -1397,9 +1353,6 @@
             "hidden_prompt": "user asks Charlotte about her preference or strategy",
             "hint_en": "Which version do you write in by default?",
             "examples_pass": [
-              "Which version do you write in by default?",
-              "May I request your assistance with this matter?",
-              "Honestly, it was a complete disaster, mate.",
               "And you?",
               "What about you?",
               "How about yourself?",

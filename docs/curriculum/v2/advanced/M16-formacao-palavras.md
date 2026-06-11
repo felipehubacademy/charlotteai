@@ -107,7 +107,7 @@
    **hidden_prompt**: "user uses dis- or mis- correctly"
    **hint_pt**: "From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.'"
    **hint_en**: "From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.'"
-   **example_pass**: From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.' | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_pass**: Dis- — that's the one. | Honestly, dis- sums it up. | Yeah, dis- for sure.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Prefixes, correctly chosen." once obj_3 lands.
@@ -144,7 +144,7 @@
    **hidden_prompt**: "user replaces 'unresponsible' with 'irresponsible'"
    **hint_pt**: "Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'."
    **hint_en**: "Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'."
-   **example_pass**: Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_pass**: Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'. | Unresponsible — that's the one. | Honestly, unresponsible sums it up.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
@@ -259,7 +259,7 @@
    **hidden_prompt**: "user uses -ship or -hood form"
    **hint_pt**: "From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'"
    **hint_en**: "From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'"
-   **example_pass**: From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.' | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results. | From 'partner' → 'partnership': Their partnership lasted ten years and survived two industries. | From 'friend' → 'friendship': Our friendship has outlasted three different cities and two careers each. | From 'leader' → 'leadership': Her leadership turned the company around within a single year. | From 'neighbour' → 'neighbourhood': The neighbourhood changed completely in the decade after we moved in.
+   **example_pass**: -ship — that's the one. | Honestly, -ship sums it up. | Yeah, -ship for sure.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Abstractions, fitted." once obj_3 lands.
@@ -296,7 +296,7 @@
    **hidden_prompt**: "user uses 'decision' and 'performance'"
    **hint_pt**: "Try: 'The decision to expand was followed by a measurable improvement in team performance.'"
    **hint_en**: "Try: 'The decision to expand was followed by a measurable improvement in team performance.'"
-   **example_pass**: Try: 'The decision to expand was followed by a measurable improvement in team performance.' | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation. | Try: 'The decision to expand was followed by a measurable improvement in team performance over the next two quarters.' | Try: 'The decision turned out to be costly, but the performance metrics eventually justified it.' | Try: 'Her decision to delay the launch protected the long-term performance of the brand.' | Try: 'The decision and its consequences shaped the team's performance for years afterwards.'
+   **example_pass**: Try: 'The decision to expand was followed by a measurable improvement in team performance.' | Try: 'The decision to expand was followed by a measurable improvement in team performance over the next two quarters.' | Try: 'The decision turned out to be costly, but the performance metrics eventually justified it.' | Try: 'Her decision to delay the launch protected the long-term performance of the brand.' | Try: 'The decision and its consequences shaped the team's performance for years afterwards.'
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
@@ -305,7 +305,7 @@
    **hidden_prompt**: "user uses 'growth'"
    **hint_pt**: "Then: 'Subsequent growth outpaced that of competitors over the same period.'"
    **hint_en**: "Then: 'Subsequent growth outpaced that of competitors over the same period.'"
-   **example_pass**: Then: 'Subsequent growth outpaced that of competitors over the same period.' | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive. | Then: 'The company's growth in that region was largely driven by a single key partnership.' | Then: 'Growth slowed in the second half of the year, but margins improved considerably.' | Then: 'Growth came in waves, with each new market opening producing its own distinct rhythm.'
+   **example_pass**: Then: 'Subsequent growth outpaced that of competitors over the same period.' | Then: 'The company's growth in that region was largely driven by a single key partnership.' | Then: 'Growth slowed in the second half of the year, but margins improved considerably.' | Then: 'Growth came in waves, with each new market opening producing its own distinct rhythm.'
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
@@ -449,7 +449,7 @@
    **hidden_prompt**: "user corrects 'relyable' to 'reliable'"
    **hint_pt**: "Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'."
    **hint_en**: "Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'."
-   **example_pass**: Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_pass**: Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'. | Relyable — that's the one. | Honestly, relyable sums it up.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
@@ -547,7 +547,7 @@
    **hidden_prompt**: "user uses a closed compound (one word)"
    **hint_pt**: "The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock."
    **hint_en**: "The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock."
-   **example_pass**: The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_pass**: A closed compound (one word) — that's the one. | Honestly, a closed compound (one word) sums it up. | Yeah, a closed compound (one word) for sure.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
@@ -556,7 +556,7 @@
    **hidden_prompt**: "user uses a hyphenated compound before noun"
    **hint_pt**: "A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works."
    **hint_en**: "A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works."
-   **example_pass**: A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works. | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_pass**: A hyphenated compound before noun — that's how I'd put it. | As you said: a hyphenated compound before noun. | A hyphenated compound before noun, plain and simple.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
@@ -565,7 +565,7 @@
    **hidden_prompt**: "user uses an open compound (two separate words)"
    **hint_pt**: "She walked into the post office, paid in exact change, and left without saying a word."
    **hint_en**: "She walked into the post office, paid in exact change, and left without saying a word."
-   **example_pass**: She walked into the post office, paid in exact change, and left without saying a word. | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_pass**: An open compound (two separate words) — that's how I'd put it. | As you said: an open compound (two separate words). | An open compound (two separate words), plain and simple.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Compounds, properly spaced." once obj_3 lands.
@@ -602,7 +602,7 @@
    **hidden_prompt**: "user corrects to 'state-of-the-art' when before noun"
    **hint_pt**: "Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.'"
    **hint_en**: "Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.'"
-   **example_pass**: Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.' | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_pass**: Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.' | State-of-the-art — that's the one. | Honestly, state-of-the-art sums it up.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
@@ -620,7 +620,7 @@
    **hidden_prompt**: "user asks Charlotte about a specific compound she's unsure of"
    **hint_pt**: "Anything else you're unsure about?"
    **hint_en**: "Anything else you're unsure about?"
-   **example_pass**: Anything else you're unsure about? | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_pass**: A specific compound she's unsure of — that's how I'd put it. | As you said: a specific compound she's unsure of. | A specific compound she's unsure of, plain and simple.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Spacing audit, complete." once obj_3 lands.
@@ -700,7 +700,7 @@
    **hidden_prompt**: "user uses 'message' as verb"
    **hint_pt**: "I'll message you the details once the venue is confirmed."
    **hint_en**: "I'll message you the details once the venue is confirmed."
-   **example_pass**: I'll message you the details once the venue is confirmed. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation. | She messaged me at midnight just to say the show had been wonderful. | He hardly ever messages first, but he always responds within minutes. | Can you message the team and ask them to log off early today?
+   **example_pass**: I'll message you the details once the venue is confirmed. | She messaged me at midnight just to say the show had been wonderful. | He hardly ever messages first, but he always responds within minutes. | Can you message the team and ask them to log off early today?
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
@@ -709,7 +709,7 @@
    **hidden_prompt**: "user uses 'gift' as verb"
    **hint_pt**: "She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile."
    **hint_en**: "She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile."
-   **example_pass**: She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile. | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive. | He gifted his old guitar to a younger cousin who actually had time to play it. | They gifted the new hires hand-written notes on their first day, which set the tone perfectly. | She gifted the painting back to the artist when she found out it was the last one he had.
+   **example_pass**: She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile. | He gifted his old guitar to a younger cousin who actually had time to play it. | They gifted the new hires hand-written notes on their first day, which set the tone perfectly. | She gifted the painting back to the artist when she found out it was the last one he had.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
@@ -718,7 +718,7 @@
    **hidden_prompt**: "user uses 'screenshot' as verb"
    **hint_pt**: "I screenshotted the conversation just in case anyone needed proof of the timeline."
    **hint_en**: "I screenshotted the conversation just in case anyone needed proof of the timeline."
-   **example_pass**: I screenshotted the conversation just in case anyone needed proof of the timeline. | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results. | He screenshotted the press release the second it went live and sent it to half the office. | She screenshotted the chart and dropped it into the deck without asking permission. | I screenshotted the error and sent it to support before I forgot what I had been doing.
+   **example_pass**: I screenshotted the conversation just in case anyone needed proof of the timeline. | He screenshotted the press release the second it went live and sent it to half the office. | She screenshotted the chart and dropped it into the deck without asking permission. | I screenshotted the error and sent it to support before I forgot what I had been doing.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Conversions, fully fluent." once obj_3 lands.
@@ -755,7 +755,7 @@
    **hidden_prompt**: "user suggests 'text' as verb"
    **hint_pt**: "She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb."
    **hint_en**: "She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb."
-   **example_pass**: She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation. | She probably laughed at 'send a text message' — natives just say 'I'll text you' these days. | Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. | Conversion makes English faster: 'message me' instead of 'send me a message'; 'mic me' instead of 'attach a microphone'. | I had to retrain myself: 'I'll WhatsApp you', 'I'll Slack you', 'I'll DM you' — all verbs now, all from nouns.
+   **example_pass**: She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb. | She probably laughed at 'send a text message' — natives just say 'I'll text you' these days. | Text — that's the one.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2

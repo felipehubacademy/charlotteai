@@ -237,9 +237,6 @@
             "hidden_prompt": "user asks Charlotte about her own pivot",
             "hint_en": "What pivot shaped you?",
             "examples_pass": [
-              "What pivot shaped you?",
-              "Had we bought that apartment, we'd own it outright today.",
-              "If I weren't so cautious, I would have invested earlier.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -374,9 +371,9 @@
             "hidden_prompt": "user uses another 'if I weren't' or 'if he/she weren't'",
             "hint_en": "If my dad weren't so private, we'd have heard the story years ago.",
             "examples_pass": [
-              "If my dad weren't so private, we'd have heard the story years ago.",
-              "If I hadn't moved to São Paulo, I wouldn't have met my partner today.",
-              "I'd be debt-free now if I had saved more in my twenties."
+              "If he — that's the one.",
+              "Honestly, if he sums it up.",
+              "Yeah, if he for sure."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -455,9 +452,9 @@
             "hidden_prompt": "user asks Charlotte more about her planner trait",
             "hint_en": "Do you regret it?",
             "examples_pass": [
-              "Do you regret it?",
-              "Had we bought that apartment, we'd own it outright today.",
-              "If I weren't so cautious, I would have invested earlier."
+              "What about her planner trait?",
+              "And her planner trait — what do you think?",
+              "Her planner trait — that's the one."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -830,7 +827,6 @@
             "hint_en": "Were the budget approved, we could launch in Q3.",
             "examples_pass": [
               "Were the budget approved, we could launch in Q3.",
-              "Had we bought that apartment, we'd own it outright today.",
               "If I weren't so cautious, I would have invested earlier.",
               "Were I to relocate next year, I'd take the job in Berlin without hesitating.",
               "Should the funding come through, we'd be ready to break ground by spring.",
@@ -866,13 +862,9 @@
             "hidden_prompt": "user uses 'Should you' or 'Were I to'",
             "hint_en": "Should the agenda allow, we'd be glad to attend.",
             "examples_pass": [
-              "Should the agenda allow, we'd be glad to attend.",
-              "If I had studied harder, I would have a better job today.",
-              "Had I accepted that offer, I'd be earning much more right now.",
               "Were I to relocate next year, I'd take the job in Berlin without hesitating.",
-              "Should the funding come through, we'd be ready to break ground by spring.",
-              "Were the project approved tomorrow, the team could begin within the same week.",
-              "Should the conditions shift, we'd revisit the entire plan from scratch."
+              "Were I to — that's the one.",
+              "Honestly, Were I to sums it up."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -1067,11 +1059,7 @@
             "hint_en": "Provided that the team agrees, we'll move forward Monday.",
             "examples_pass": [
               "Provided that the team agrees, we'll move forward Monday.",
-              "Had we bought that apartment, we'd own it outright today.",
-              "If I weren't so cautious, I would have invested earlier.",
-              "Provided we hit the milestones, the next tranche releases automatically.",
               "Unless something changes drastically, we'll close the round by end of month.",
-              "As long as the data holds up, I'm comfortable scaling the experiment.",
               "Unless legal flags something, we ship Friday."
             ],
             "examples_fail": [
@@ -1104,8 +1092,6 @@
             "hint_en": "Without that constraint, I'd open a small bookstore.",
             "examples_pass": [
               "Without that constraint, I'd open a small bookstore.",
-              "If I had studied harder, I would have a better job today.",
-              "Had I accepted that offer, I'd be earning much more right now.",
               "Without that single conversation, I'd never have applied for the role at all.",
               "But for the generosity of one mentor, the entire project would have fallen apart.",
               "Without my sister's encouragement, I'd still be in the same dead-end job.",
@@ -1124,8 +1110,6 @@
             "hint_en": "Provided that I could still travel, I'd happily live above the shop.",
             "examples_pass": [
               "Provided that I could still travel, I'd happily live above the shop.",
-              "If I hadn't moved to São Paulo, I wouldn't have met my partner today.",
-              "I'd be debt-free now if I had saved more in my twenties.",
               "Provided that I could still write every morning, I'd happily live anywhere quieter.",
               "As long as the team holds together, the strategy will work itself out over time.",
               "Unless something changes drastically, I'm staying put for at least another year.",

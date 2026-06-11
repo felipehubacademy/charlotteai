@@ -293,7 +293,7 @@
    **hidden_prompt**: "user uses 'That said' or 'Mind you' or 'Granted'"
    **hint_pt**: "There's something to that. That said, 'most' is doing a lot of work in that sentence."
    **hint_en**: "There's something to that. That said, 'most' is doing a lot of work in that sentence."
-   **example_pass**: There's something to that. That said, 'most' is doing a lot of work in that sentence. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns. | The launch went well overall. That said, the support volume tells a more complicated story. | I agree with most of the analysis. That said, I'd be careful about the framing in the public version. | The team is talented. That said, they've never operated at this scale before. | The proposal is bold. That said, it needs a much tighter budget to be credible.
+   **example_pass**: There's something to that. That said, 'most' is doing a lot of work in that sentence. | The launch went well overall. That said, the support volume tells a more complicated story. | I agree with most of the analysis. That said, I'd be careful about the framing in the public version. | The team is talented. That said, they've never operated at this scale before. | The proposal is bold. That said, it needs a much tighter budget to be credible.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
@@ -302,7 +302,7 @@
    **hidden_prompt**: "user uses 'Then again' or 'Mind you' or 'Admittedly'"
    **hint_pt**: "Then again, every major shift looked total in advance and partial in retrospect."
    **hint_en**: "Then again, every major shift looked total in advance and partial in retrospect."
-   **example_pass**: Then again, every major shift looked total in advance and partial in retrospect. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach. | He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship. | She gives generously. Mind you, she also keeps detailed records of every favour she's done. | The product is genuinely innovative. Mind you, it's also five years too early for the market. | The team delivered. Mind you, three of them have already given notice.
+   **example_pass**: Then again, every major shift looked total in advance and partial in retrospect. | He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship. | She gives generously. Mind you, she also keeps detailed records of every favour she's done. | The product is genuinely innovative. Mind you, it's also five years too early for the market. | The team delivered. Mind you, three of them have already given notice.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
@@ -454,7 +454,7 @@
    **hidden_prompt**: "user uses 'To put it another way' or 'Put differently'"
    **hint_pt**: "Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them."
    **hint_en**: "Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them."
-   **example_pass**: Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_pass**: Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them. | I had to Put differently in the end. | Someone needs to Put differently eventually.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
@@ -749,7 +749,7 @@
    **hidden_prompt**: "user uses 'On balance / On the whole / All things considered'"
    **hint_pt**: "On balance, the year was harder than the last one but more meaningful."
    **hint_en**: "On balance, the year was harder than the last one but more meaningful."
-   **example_pass**: On balance, the year was harder than the last one but more meaningful. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns. | All things considered, leaving that job a year earlier than planned was the right call. | All things considered, the quarter went better than the leading indicators had suggested. | All things considered, the move abroad gave the family far more than it cost. | All things considered, we should be proud of how the team handled an impossible year.
+   **example_pass**: On balance, the year was harder than the last one but more meaningful. | All things considered, leaving that job a year earlier than planned was the right call. | All things considered, the quarter went better than the leading indicators had suggested. | All things considered, the move abroad gave the family far more than it cost. | All things considered, we should be proud of how the team handled an impossible year.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
@@ -758,7 +758,7 @@
    **hidden_prompt**: "user uses 'Granted / That said' + 'Above all / Not least'"
    **hint_pt**: "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are."
    **hint_en**: "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are."
-   **example_pass**: Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach. | The launch went well overall. That said, the support volume tells a more complicated story. | I agree with most of the analysis. That said, I'd be careful about the framing in the public version. | The team is talented. That said, they've never operated at this scale before. | The proposal is bold. That said, it needs a much tighter budget to be credible.
+   **example_pass**: Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are. | The launch went well overall. That said, the support volume tells a more complicated story. | I agree with most of the analysis. That said, I'd be careful about the framing in the public version. | The team is talented. That said, they've never operated at this scale before. | The proposal is bold. That said, it needs a much tighter budget to be credible.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
