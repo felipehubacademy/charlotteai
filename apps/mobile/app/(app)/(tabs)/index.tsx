@@ -369,7 +369,14 @@ export default function HomeTab() {
   const isNearTop = scrollY < 80;
   const goActive = useCallback(() => {
     const y = activeTopicYRef.current;
-    trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: true });
+    if (y > 0) {
+      trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: true });
+    } else {
+      // Fallback: measureLayout falhou (trail muito grande / timing race
+      // no Inter/Advanced) — scrolla ate o fim. O topico ativo no Inter/
+      // Advanced eh quase sempre o ultimo, entao isso funciona.
+      trailScrollRef.current?.scrollToEnd({ animated: true });
+    }
   }, []);
   const goTop = useCallback(() => {
     trailScrollRef.current?.scrollTo({ y: 0, animated: true });
@@ -506,7 +513,7 @@ export default function HomeTab() {
         activeOpacity={0.85}
         onPress={isNearTop ? goActive : goTop}
         style={{
-          position: 'absolute', bottom: 80, right: 18,
+          position: 'absolute', bottom: 60, right: 18,
           width: 52, height: 52, borderRadius: 26,
           backgroundColor: C.navy,
           alignItems: 'center', justifyContent: 'center',
