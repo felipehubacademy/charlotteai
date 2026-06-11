@@ -369,14 +369,7 @@ export default function HomeTab() {
   const isNearTop = scrollY < 80;
   const goActive = useCallback(() => {
     const y = activeTopicYRef.current;
-    if (y > 0) {
-      trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: true });
-    } else {
-      // Fallback: measureLayout falhou (trail muito grande / timing race
-      // no Inter/Advanced) — scrolla ate o fim. O topico ativo no Inter/
-      // Advanced eh quase sempre o ultimo, entao isso funciona.
-      trailScrollRef.current?.scrollToEnd({ animated: true });
-    }
+    trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: true });
   }, []);
   const goTop = useCallback(() => {
     trailScrollRef.current?.scrollTo({ y: 0, animated: true });
@@ -503,34 +496,30 @@ export default function HomeTab() {
           level={level}
           showBanner={false}
           onCurrentTopicRef={handleCurrentTopicRef}
-          onActiveModuleY={(y) => {
-            // Backup direto via onLayout — mais confiavel que measureLayout pra
-            // trails grandes (Inter/Advanced). Salva no ref pra goActive usar.
-            if (y > 0) activeTopicYRef.current = y;
-          }}
           useV2={profile?.beta_features?.includes('curriculum_v2') ?? false}
         />
       </ScrollView>
 
-      {/* FAB scroll toggle: SEMPRE visivel. No topo -> ir pro topico ativo;
-          embaixo -> voltar pro topo. */}
-      <TouchableOpacity
-        activeOpacity={0.85}
-        onPress={isNearTop ? goActive : goTop}
-        style={{
-          position: 'absolute', bottom: 60, right: 18,
-          width: 52, height: 52, borderRadius: 26,
-          backgroundColor: C.navy,
-          alignItems: 'center', justifyContent: 'center',
-          shadowColor: '#000', shadowOpacity: 0.25, shadowRadius: 10,
-          shadowOffset: { width: 0, height: 4 }, elevation: 8,
-        }}
-        accessibilityLabel={isNearTop ? 'Ir para tópico atual' : 'Voltar ao topo'}
-      >
-        {isNearTop
-          ? <ArrowDown size={22} color="#FFF" weight="bold" />
-          : <ArrowUp size={22} color="#FFF" weight="bold" />}
-      </TouchableOpacity>
+      {/* FAB scroll toggle: no topo → ir pro topico ativo; embaixo → voltar pro topo */}
+      {activeTopicY > 200 && (
+        <TouchableOpacity
+          activeOpacity={0.85}
+          onPress={isNearTop ? goActive : goTop}
+          style={{
+            position: 'absolute', bottom: 80, right: 18,
+            width: 52, height: 52, borderRadius: 26,
+            backgroundColor: C.navy,
+            alignItems: 'center', justifyContent: 'center',
+            shadowColor: '#000', shadowOpacity: 0.25, shadowRadius: 10,
+            shadowOffset: { width: 0, height: 4 }, elevation: 8,
+          }}
+          accessibilityLabel={isNearTop ? 'Ir para tópico atual' : 'Voltar ao topo'}
+        >
+          {isNearTop
+            ? <ArrowDown size={22} color="#FFF" weight="bold" />
+            : <ArrowUp size={22} color="#FFF" weight="bold" />}
+        </TouchableOpacity>
+      )}
 
       <NewLayoutWelcomeSheet
         visible={showWelcomeSheet}

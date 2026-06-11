@@ -281,7 +281,7 @@ function LessonRow({
 
 // ── Module card ───────────────────────────────────────────────────────────────
 function ModuleCard({
-  data, accent, expanded, onToggle, onStartLesson, isPt, isCurrentModule, onRef, onLayoutY,
+  data, accent, expanded, onToggle, onStartLesson, isPt, isCurrentModule, onRef,
 }: {
   data:           ModuleData;
   accent:         string;
@@ -291,7 +291,6 @@ function ModuleCard({
   isPt:           boolean;
   isCurrentModule: boolean;
   onRef?:         (r: View | null) => void;
-  onLayoutY?:     (y: number) => void;
 }) {
   const isDone   = data.state === 'done';
   const isActive = data.state === 'active';
@@ -309,7 +308,6 @@ function ModuleCard({
     <View
       ref={onRef as any}
       collapsable={false}
-      onLayout={onLayoutY ? (e) => onLayoutY(e.nativeEvent.layout.y) : undefined}
       style={{
         marginHorizontal: 20, marginBottom: 14,
         backgroundColor: C.card,
@@ -397,13 +395,11 @@ interface TrailContentProps {
   level:              TrailLevel;
   showBanner?:        boolean;
   onCurrentTopicRef?: (node: View | null) => void;
-  /** Reporta posicao Y do modulo ativo via onLayout (mais confiavel que measureLayout). */
-  onActiveModuleY?:   (y: number) => void;
   useV2?:             boolean;   // when true, loads modules from curriculum-v2
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
-export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY, useV2 }: TrailContentProps) {
+export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailContentProps) {
   const isPt    = level === 'Novice';
   const accent  = LEVEL_COLOR[level];
 
@@ -760,7 +756,6 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
                   onCurrentTopicRef(r);
                 }
               } : undefined}
-              onLayoutY={i === activeIdx && onActiveModuleY ? onActiveModuleY : undefined}
             />
           </React.Fragment>
         );
