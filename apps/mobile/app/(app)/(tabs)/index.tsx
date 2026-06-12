@@ -369,7 +369,12 @@ export default function HomeTab() {
   const isNearTop = scrollY < 80;
   const goActive = useCallback(() => {
     const y = activeTopicYRef.current;
-    trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: true });
+    if (y > 0) {
+      trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: true });
+    } else {
+      // Sem ativo (nivel todo done) — scrolla pro fim do trail.
+      trailScrollRef.current?.scrollToEnd({ animated: true });
+    }
   }, []);
   const goTop = useCallback(() => {
     trailScrollRef.current?.scrollTo({ y: 0, animated: true });
@@ -505,26 +510,26 @@ export default function HomeTab() {
         />
       </ScrollView>
 
-      {/* FAB scroll toggle: no topo → ir pro topico ativo; embaixo → voltar pro topo */}
-      {activeTopicY > 200 && (
-        <TouchableOpacity
-          activeOpacity={0.85}
-          onPress={isNearTop ? goActive : goTop}
-          style={{
-            position: 'absolute', bottom: 80, right: 18,
-            width: 52, height: 52, borderRadius: 26,
-            backgroundColor: C.navy,
-            alignItems: 'center', justifyContent: 'center',
-            shadowColor: '#000', shadowOpacity: 0.25, shadowRadius: 10,
-            shadowOffset: { width: 0, height: 4 }, elevation: 8,
-          }}
-          accessibilityLabel={isNearTop ? 'Ir para tópico atual' : 'Voltar ao topo'}
-        >
-          {isNearTop
-            ? <ArrowDown size={22} color="#FFF" weight="bold" />
-            : <ArrowUp size={22} color="#FFF" weight="bold" />}
-        </TouchableOpacity>
-      )}
+      {/* FAB scroll toggle: SEMPRE visivel.
+          No topo → ir pro topico ativo (ou fim do trail se nao houver).
+          Embaixo → voltar pro topo. */}
+      <TouchableOpacity
+        activeOpacity={0.85}
+        onPress={isNearTop ? goActive : goTop}
+        style={{
+          position: 'absolute', bottom: 80, right: 18,
+          width: 52, height: 52, borderRadius: 26,
+          backgroundColor: C.navy,
+          alignItems: 'center', justifyContent: 'center',
+          shadowColor: '#000', shadowOpacity: 0.25, shadowRadius: 10,
+          shadowOffset: { width: 0, height: 4 }, elevation: 8,
+        }}
+        accessibilityLabel={isNearTop ? 'Ir para tópico atual' : 'Voltar ao topo'}
+      >
+        {isNearTop
+          ? <ArrowDown size={22} color="#FFF" weight="bold" />
+          : <ArrowUp size={22} color="#FFF" weight="bold" />}
+      </TouchableOpacity>
 
       <NewLayoutWelcomeSheet
         visible={showWelcomeSheet}
