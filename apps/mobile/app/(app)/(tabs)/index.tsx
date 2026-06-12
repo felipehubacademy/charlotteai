@@ -361,18 +361,26 @@ export default function HomeTab() {
   const trailScrolledRef = useRef(false);
   // FAB scroll: toggle entre topo e topico ativo
   const [scrollY, setScrollY] = useState(0);
+  // ContentHeight do ScrollView — pra goActive scrollar pro fim de forma
+  // explicita quando nao tem topico ativo (Inter/Advanced fully done).
+  // scrollToEnd as vezes nao move visualmente — usar scrollTo com Y real
+  // do contentSize eh garantido.
+  const contentHeightRef = useRef<number>(0);
   // STATE (nao ref) — ref nao dispara re-render, FAB nao aparecia ate
   // o user rolar manualmente. Com state, mudanca dispara re-render e
   // o conditional do FAB reavalia assim que o trail mede a posicao.
   const [activeTopicY, setActiveTopicY] = useState(0);
   const activeTopicYRef = useRef<number>(0);
   const isNearTop = scrollY < 80;
-  // goActive: se o modulo ativo reportou Y via onLayout (TrailContent), vai
-  // pra la. Se nao houver ativo (nivel todo done), scrolla pro fim.
-  const goActive = useCallback(() => {
+  // goDown: se ha modulo ativo (Novice/em-progresso), vai pra la. Senao
+  // (nivel 100% done), scrolla pro Y explicito do contentHeight — mais
+  // confiavel que scrollToEnd que as vezes nao move visualmente.
+  const goDown = useCallback(() => {
     const y = activeTopicYRef.current;
     if (y > 0) {
       trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: true });
+    } else if (contentHeightRef.current > 0) {
+      trailScrollRef.current?.scrollTo({ y: contentHeightRef.current, animated: true });
     } else {
       trailScrollRef.current?.scrollToEnd({ animated: true });
     }
@@ -491,6 +499,7 @@ export default function HomeTab() {
       <ScrollView
         ref={trailScrollRef}
         style={{ flex: 1 }}
+        onContentSizeChange={(_w, h) => { contentHeightRef.current = h; }}
         contentContainerStyle={{ paddingTop: 24, paddingBottom: 40 }}
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={32}
@@ -516,7 +525,7 @@ export default function HomeTab() {
           Embaixo → voltar pro topo. */}
       <TouchableOpacity
         activeOpacity={0.85}
-        onPress={isNearTop ? goActive : goTop}
+        onPress={isNearTop ? goDown : goTop}
         style={{
           position: 'absolute', bottom: 80, right: 18,
           width: 52, height: 52, borderRadius: 26,
