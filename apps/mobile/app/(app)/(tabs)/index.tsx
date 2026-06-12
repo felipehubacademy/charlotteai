@@ -361,33 +361,38 @@ export default function HomeTab() {
   const trailScrolledRef = useRef(false);
   // FAB scroll: toggle entre topo e topico ativo
   const [scrollY, setScrollY] = useState(0);
-  // ContentHeight do ScrollView — pra goActive scrollar pro fim de forma
-  // explicita quando nao tem topico ativo (Inter/Advanced fully done).
-  // scrollToEnd as vezes nao move visualmente — usar scrollTo com Y real
-  // do contentSize eh garantido.
-  const contentHeightRef = useRef<number>(0);
   // STATE (nao ref) — ref nao dispara re-render, FAB nao aparecia ate
   // o user rolar manualmente. Com state, mudanca dispara re-render e
   // o conditional do FAB reavalia assim que o trail mede a posicao.
   const [activeTopicY, setActiveTopicY] = useState(0);
   const activeTopicYRef = useRef<number>(0);
   const isNearTop = scrollY < 80;
-  // goDown: se ha modulo ativo (Novice/em-progresso), vai pra la. Senao
-  // (nivel 100% done), scrolla pro Y explicito do contentHeight — mais
-  // confiavel que scrollToEnd que as vezes nao move visualmente.
+  // goDown: se ha modulo ativo (em-progresso), vai pra la. Senao (nivel
+  // 100% done), scrolla pro fundo absoluto via Y gigante — RN clampa pro
+  // max real, independente de medida de contentHeight estar atualizada.
   const goDown = useCallback(() => {
     const y = activeTopicYRef.current;
     if (y > 0) {
       trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: true });
-    } else if (contentHeightRef.current > 0) {
-      trailScrollRef.current?.scrollTo({ y: contentHeightRef.current, animated: true });
     } else {
-      trailScrollRef.current?.scrollToEnd({ animated: true });
+      trailScrollRef.current?.scrollTo({ y: 100000, animated: true });
     }
   }, []);
   const goTop = useCallback(() => {
     trailScrollRef.current?.scrollTo({ y: 0, animated: true });
   }, []);
+
+  // Reset de scroll-state ao trocar de nivel (dropdown ou promocao).
+  // Sem isso: activeTopicYRef segura o Y do nivel anterior (ex: Novice
+  // ativo em Y=500), e scrollY fica stale -> isNearTop errado -> FAB
+  // chama a funcao errada / scrolla pro lugar errado.
+  useEffect(() => {
+    activeTopicYRef.current = 0;
+    trailScrolledRef.current = false;
+    setActiveTopicY(0);
+    setScrollY(0);
+    trailScrollRef.current?.scrollTo({ y: 0, animated: false });
+  }, [level]);
 
 
   const tryScroll = useCallback((node: any, attempt = 0) => {
@@ -499,7 +504,6 @@ export default function HomeTab() {
       <ScrollView
         ref={trailScrollRef}
         style={{ flex: 1 }}
-        onContentSizeChange={(_w, h) => { contentHeightRef.current = h; }}
         contentContainerStyle={{ paddingTop: 24, paddingBottom: 40 }}
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={32}
