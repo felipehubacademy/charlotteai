@@ -367,14 +367,11 @@ export default function HomeTab() {
   const [activeTopicY, setActiveTopicY] = useState(0);
   const activeTopicYRef = useRef<number>(0);
   const isNearTop = scrollY < 80;
+  // Simplificado: down = fim do trail, up = topo. Sempre funciona em
+  // todos os niveis. Pra topico ativo no meio (Novice), usuario nao chega
+  // direto via FAB — trade-off em troca de garantia de movimento.
   const goActive = useCallback(() => {
-    const y = activeTopicYRef.current;
-    if (y > 0) {
-      trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: true });
-    } else {
-      // Sem ativo (nivel todo done) — scrolla pro fim do trail.
-      trailScrollRef.current?.scrollToEnd({ animated: true });
-    }
+    trailScrollRef.current?.scrollToEnd({ animated: true });
   }, []);
   const goTop = useCallback(() => {
     trailScrollRef.current?.scrollTo({ y: 0, animated: true });
