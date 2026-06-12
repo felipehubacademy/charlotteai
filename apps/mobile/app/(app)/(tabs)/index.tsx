@@ -382,17 +382,18 @@ export default function HomeTab() {
     trailScrollRef.current?.scrollTo({ y: 0, animated: true });
   }, []);
 
-  // Reset de scroll-state ao trocar de nivel (dropdown ou promocao).
-  // Sem isso: activeTopicYRef segura o Y do nivel anterior (ex: Novice
-  // ativo em Y=500), e scrollY fica stale -> isNearTop errado -> FAB
-  // chama a funcao errada / scrolla pro lugar errado.
-  useEffect(() => {
+  // Reset SINCRONO de scroll-state quando o usuario troca de nivel pelo
+  // dropdown. Feito no handler (antes do novo render) pra NAO entrar em
+  // race com o onLayout do modulo ativo do novo nivel — se fosse num
+  // useEffect([level]), o effect poderia rodar DEPOIS do onLayout e zerar
+  // o Y recem-medido. Aqui zera antes, e o onLayout do novo nivel repopula.
+  const handleLevelChange = useCallback((lvl: UserLevel) => {
     activeTopicYRef.current = 0;
     trailScrolledRef.current = false;
     setActiveTopicY(0);
     setScrollY(0);
-    trailScrollRef.current?.scrollTo({ y: 0, animated: false });
-  }, [level]);
+    setSelectedLevel(lvl);
+  }, []);
 
 
   const tryScroll = useCallback((node: any, attempt = 0) => {
@@ -492,7 +493,7 @@ export default function HomeTab() {
             userId={userId}
             level={level}
             currentLevel={currentLevel}
-            onLevelChange={setSelectedLevel}
+            onLevelChange={handleLevelChange}
             useV2={profile?.beta_features?.includes('curriculum_v2') ?? false}
             flush
           />
