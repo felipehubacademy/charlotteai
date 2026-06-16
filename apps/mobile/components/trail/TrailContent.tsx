@@ -400,11 +400,14 @@ interface TrailContentProps {
   /** Backup do measureLayout — onLayout reporta y do modulo ativo direto.
    *  Pra trails grandes (Inter/Advanced) onde measureLayout falha silencioso. */
   onActiveModuleY?:   (y: number) => void;
+  /** Sinaliza ao pai se a trilha esta finalizada (nenhum modulo ativo).
+   *  Fonte de verdade pro FAB decidir "down = fim" vs "down = modulo ativo". */
+  onTrailFinished?:   (finished: boolean) => void;
   useV2?:             boolean;   // when true, loads modules from curriculum-v2
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
-export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY, useV2 }: TrailContentProps) {
+export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY, onTrailFinished, useV2 }: TrailContentProps) {
   const isPt    = level === 'Novice';
   const accent  = LEVEL_COLOR[level];
 
@@ -618,6 +621,14 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
     () => moduleData.findIndex(m => m.state === 'active'),
     [moduleData],
   );
+
+  // Reporta ao pai se a trilha esta finalizada: ha modulos carregados mas
+  // nenhum esta 'active' (todos 'done'). Fonte de verdade pro FAB — evita
+  // inferir "fim" a partir de um Y de modulo ativo que pode estar obsoleto.
+  useEffect(() => {
+    if (!onTrailFinished) return;
+    onTrailFinished(moduleData.length > 0 && activeIdx === -1);
+  }, [activeIdx, moduleData.length, onTrailFinished]);
 
   // Expansion state — auto-expand active module on mount / when active changes
   const [expandedIdx, setExpandedIdx] = useState<number | null>(null);

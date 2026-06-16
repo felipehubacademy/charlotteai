@@ -366,16 +366,28 @@ export default function HomeTab() {
   // o conditional do FAB reavalia assim que o trail mede a posicao.
   const [activeTopicY, setActiveTopicY] = useState(0);
   const activeTopicYRef = useRef<number>(0);
+  // Trilha finalizada (nenhum modulo ativo) — reportado pelo TrailContent.
+  // Fonte de verdade pro goDown: evita usar um activeTopicYRef obsoleto que
+  // sobra quando o user conclui a trilha na mesma sessao (mesmo nivel, sem
+  // passar pelo handleLevelChange que zeraria o ref).
+  const trailFinishedRef = useRef(false);
   const isNearTop = scrollY < 80;
-  // goDown: se ha modulo ativo (em-progresso), vai pra la. Senao (nivel
-  // 100% done), scrolla pro fundo absoluto via Y gigante — RN clampa pro
-  // max real, independente de medida de contentHeight estar atualizada.
+  // goDown:
+  //  - trilha em andamento → para no modulo ativo (onde a trilha esta);
+  //  - trilha finalizada    → rola ate o final (scrollToEnd nativo).
   const goDown = useCallback(() => {
+    const sv = trailScrollRef.current;
+    if (!sv) return;
+    if (trailFinishedRef.current) {
+      sv.scrollToEnd({ animated: true });
+      return;
+    }
     const y = activeTopicYRef.current;
     if (y > 0) {
-      trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: true });
+      sv.scrollTo({ y: Math.max(0, y - 24), animated: true });
     } else {
-      trailScrollRef.current?.scrollTo({ y: 100000, animated: true });
+      // Em andamento mas Y ainda nao medido (raro) — fallback pro fim.
+      sv.scrollToEnd({ animated: true });
     }
   }, []);
   const goTop = useCallback(() => {
@@ -389,6 +401,7 @@ export default function HomeTab() {
   // o Y recem-medido. Aqui zera antes, e o onLayout do novo nivel repopula.
   const handleLevelChange = useCallback((lvl: UserLevel) => {
     activeTopicYRef.current = 0;
+    trailFinishedRef.current = false;
     trailScrolledRef.current = false;
     setActiveTopicY(0);
     setScrollY(0);
@@ -520,6 +533,12 @@ export default function HomeTab() {
             // Backup via onLayout — confiavel pra Inter/Advanced onde
             // measureLayout (tryScroll) as vezes falha silencioso.
             if (y > 0) activeTopicYRef.current = y;
+          }}
+          onTrailFinished={(finished) => {
+            trailFinishedRef.current = finished;
+            // Limpa o Y do (ex-)modulo ativo ao finalizar — assim mesmo que o
+            // goDown caia no ramo de andamento, nao usa posicao obsoleta.
+            if (finished) activeTopicYRef.current = 0;
           }}
           useV2={profile?.beta_features?.includes('curriculum_v2') ?? false}
         />
