@@ -23,7 +23,7 @@ import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
 // Advanced nao bumpa de level (terminal), entao precisa de flag externa.
 // SecureStore (encryptado) — userId fica embutido na chave pra
 // multi-account safety.
-const GRAD_SEEN_KEY = (userId: string) => `graduation_seen_v1_${userId.replace(/-/g, '')}`;
+const GRAD_SEEN_KEY = (userId: string) => `graduation_seen_v2_${userId.replace(/-/g, '')}`;
 
 const GRADUATION_VIDEO_URL =
   'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/promotion-videos/graduation-final.mp4';
