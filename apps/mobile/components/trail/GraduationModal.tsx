@@ -23,7 +23,7 @@ import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
 // Advanced nao bumpa de level (terminal), entao precisa de flag externa.
 // SecureStore (encryptado) — userId fica embutido na chave pra
 // multi-account safety.
-const GRAD_SEEN_KEY = (userId: string) => `graduation_seen_v3_${userId.replace(/-/g, '')}`;
+const GRAD_SEEN_KEY = (userId: string) => `graduation_seen_v4_${userId.replace(/-/g, '')}`;
 
 const GRADUATION_VIDEO_URL =
   'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/promotion-videos/graduation-final.mp4';
@@ -130,9 +130,12 @@ export function GraduationModal({ event, onClose }: Props) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [alreadySeen, setAlreadySeen] = useState<boolean | null>(null);
 
-  // Check SecureStore flag. Se ja viu -> onClose imediato. Se primeira vez,
-  // MARCA SEEN IMEDIATAMENTE (nao espera autoClose) — assim mesmo se aluno
-  // crasha/sai antes do video acabar, proximo boot nao re-dispara.
+  // Check SecureStore flag. Se ja viu -> onClose imediato. Senao, mostra.
+  // NAO marca seen aqui (no mount) — so apos o video tocar e dispensar
+  // (ver markSeen no autoClose). Antes marcava no mount, mas se o modal
+  // montasse sem mostrar (race de chaining), marcava "visto" sem o aluno
+  // ver -> graduation nunca mais aparecia. Re-fire em crash (raro) eh
+  // menos pior que nunca mostrar a formatura.
   useEffect(() => {
     if (!event || !userId) return;
     let cancelled = false;
@@ -143,12 +146,14 @@ export function GraduationModal({ event, onClose }: Props) {
         onClose();
       } else {
         setAlreadySeen(false);
-        // Marca seen JA — robusto contra crashes/exits.
-        SecureStore.setItemAsync(GRAD_SEEN_KEY(userId), 'true').catch(() => {});
       }
     });
     return () => { cancelled = true; };
   }, [event, userId, onClose]);
+
+  const markSeen = useCallback(() => {
+    if (userId) SecureStore.setItemAsync(GRAD_SEEN_KEY(userId), 'true').catch(() => {});
+  }, [userId]);
 
   const useVideo = !!event && !videoFailed && alreadySeen === false;
 
@@ -163,10 +168,11 @@ export function GraduationModal({ event, onClose }: Props) {
       videoPlayer?.pause();
       videoPlayer?.replace(null);
     } catch {}
+    markSeen(); // marca visto SO depois que o video tocou ate o fim
     Animated.timing(fade, { toValue: 0, duration: 800, useNativeDriver: true }).start(() => {
       onClose();
     });
-  }, [fade, onClose, videoPlayer]);
+  }, [fade, onClose, videoPlayer, markSeen]);
 
   useEffect(() => {
     if (!useVideo || !videoPlayer) return;
@@ -274,7 +280,7 @@ export function GraduationModal({ event, onClose }: Props) {
               You completed the entire Charlotte program. C1–C2 Advanced.
             </AppText>
             <TouchableOpacity
-              onPress={onClose}
+              onPress={() => { markSeen(); onClose(); }}
               activeOpacity={0.85}
               style={{
                 backgroundColor: '#F59E0B', borderRadius: 14,
