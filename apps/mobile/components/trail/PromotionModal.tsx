@@ -245,11 +245,12 @@ export function PromotionModal({ event, onClose }: Props) {
           <View style={{ flex: 1, overflow: 'hidden' }}>
             <VideoView
               player={videoPlayer}
-              style={{ width: '100%', height: '100%' }}
-              // contain: personagem inteira visivel (igual graduation). Os
-              // videos ja foram cropados no ffmpeg (sem glitch), entao nao
-              // precisa mais de cover+scale. Barras letterbox somem porque
-              // o bg casa exato com o fundo cinza do video.
+              // 104% width + offset esquerdo: empurra as bordas de superficie
+              // do expo-video (artefato de 1-2px na lateral, visivel como
+              // linha verde) pra fora da area visivel. overflow:hidden clipa.
+              // contentFit=contain mantem personagem inteira; o leve enlarge
+              // (4%) so reduz as barras letterbox, nao corta bracos/pes.
+              style={{ width: '104%', height: '100%', marginLeft: '-2%' }}
               contentFit="contain"
               nativeControls={false}
               allowsFullscreen={false}

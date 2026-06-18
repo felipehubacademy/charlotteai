@@ -230,7 +230,9 @@ export function GraduationModal({ event, onClose }: Props) {
           <View style={{ flex: 1, overflow: 'hidden' }}>
             <VideoView
               player={videoPlayer}
-              style={{ width: '100%', height: '100%' }}
+              // 104% + offset: empurra borda de superficie do expo-video
+              // (artefato lateral) pra fora da area visivel. Ver PromotionModal.
+              style={{ width: '104%', height: '100%', marginLeft: '-2%' }}
               contentFit="contain"
               nativeControls={false}
               allowsFullscreen={false}
