@@ -551,7 +551,7 @@ export default function HomeTab() {
         activeOpacity={0.85}
         onPress={isNearTop ? goDown : goTop}
         style={{
-          position: 'absolute', bottom: 80, right: 18,
+          position: 'absolute', bottom: 60, right: 18,
           width: 52, height: 52, borderRadius: 26,
           backgroundColor: C.navy,
           alignItems: 'center', justifyContent: 'center',
