@@ -219,11 +219,12 @@ export function GraduationModal({ event, onClose }: Props) {
     <Modal visible transparent animationType="none" onRequestClose={onClose}>
       {useVideo ? (
         // FULLSCREEN — Charlotte centralizada com aspect ratio preservado
-        // (contain). Bracos levantados nao cortam. Bg cinza claro casa com
-        // o fundo do video.
+        // (contain). Bracos levantados nao cortam. Bg EXATO do fundo do
+        // video (#D9D5D4) faz as barras letterbox (topo/fundo) sumirem —
+        // parece um video fullscreen sem emenda.
         <Animated.View style={{
           flex: 1,
-          backgroundColor: '#F4F3FA',
+          backgroundColor: '#D9D5D4',
           opacity: fade,
         }}>
           <View style={{ flex: 1, overflow: 'hidden' }}>

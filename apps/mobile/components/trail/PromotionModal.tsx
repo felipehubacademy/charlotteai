@@ -239,20 +239,18 @@ export function PromotionModal({ event, onClose }: Props) {
         // final do video. Sem texto/botao (audio narra tudo, modelo Duolingo).
         <Animated.View style={{
           flex: 1,
-          backgroundColor: '#F4F3FA', // mesmo cinza claro do fundo do video
+          backgroundColor: '#D9D5D4', // bg EXATO do fundo do video (sem emenda)
           opacity: fade,
         }}>
           <View style={{ flex: 1, overflow: 'hidden' }}>
             <VideoView
               player={videoPlayer}
-              style={{
-                width: '100%', height: '100%',
-                // Pequeno zoom + shift pra direita esconde a linha preta
-                // vertical da esquerda (artifact do Aurora). Mantem pes e
-                // cabeca visiveis porque video eh portrait e zoom eh suave.
-                transform: [{ scale: 1.06 }, { translateX: 12 }],
-              }}
-              contentFit="cover"
+              style={{ width: '100%', height: '100%' }}
+              // contain: personagem inteira visivel (igual graduation). Os
+              // videos ja foram cropados no ffmpeg (sem glitch), entao nao
+              // precisa mais de cover+scale. Barras letterbox somem porque
+              // o bg casa exato com o fundo cinza do video.
+              contentFit="contain"
               nativeControls={false}
               allowsFullscreen={false}
               allowsPictureInPicture={false}
