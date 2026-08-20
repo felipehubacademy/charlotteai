@@ -115,7 +115,7 @@
    **hidden_prompt**: "user introduces the kitchen with 'This is my kitchen' or 'My kitchen is + adjective'"
    **hint_pt**: "This is my kitchen."
    **hint_en**: "This is my kitchen."
-   **example_pass**: This is my kitchen. | My kitchen is small. | Here is my kitchen.
+   **example_pass**: This is my kitchen. | Here is my kitchen.
    **example_fail**: Kitchen (bare noun) | Small (bare adjective) | Cook (off-topic)
 
 2. **id**: 2
@@ -356,7 +356,7 @@
    **hidden_prompt**: "user states number of windows with 'There is one window' or 'There are + number + windows'"
    **hint_pt**: "There are two windows."
    **hint_en**: "There are two windows."
-   **example_pass**: There are two windows. | There is one window. | There are three windows.
+   **example_pass**: There are two windows. | There is one window.
    **example_fail**: Two (bare number) | Windows (bare noun) | There is two windows (wrong agreement)
 
 3. **id**: 3
@@ -524,7 +524,7 @@
    **hidden_prompt**: "user states number of chairs with 'I've got + number + chairs' or 'There are + number + chairs'"
    **hint_pt**: "I've got six chairs."
    **hint_en**: "I've got six chairs."
-   **example_pass**: I've got six chairs. | There are four chairs. | I have two chairs.
+   **example_pass**: I've got six chairs. | I have two chairs.
    **example_fail**: Six (bare number) | Chairs (bare noun) | Yes (no count given)
 
 2. **id**: 2
@@ -878,7 +878,7 @@
    **hidden_prompt**: "user introduces home with 'Welcome to my home', 'My house is + adjective', or 'This is my house'"
    **hint_pt**: "Welcome to my home."
    **hint_en**: "Welcome to my home."
-   **example_pass**: Welcome to my home. | This is my house. | My house is big.
+   **example_pass**: Welcome to my home. | This is my house.
    **example_fail**: Welcome (incomplete) | Home (bare noun) | Hi (no intro structure)
 
 2. **id**: 2
@@ -887,7 +887,7 @@
    **hidden_prompt**: "user mentions number of rooms or items with 'There are + number + bedrooms/rooms/chairs/etc.' or 'I've got + number'"
    **hint_pt**: "There are three bedrooms."
    **hint_en**: "There are three bedrooms."
-   **example_pass**: There are three bedrooms. | I've got two bathrooms. | There are four chairs.
+   **example_pass**: There are three bedrooms. | I've got two bathrooms.
    **example_fail**: Three (bare number) | Bedrooms (bare noun) | Big house (no count + structure)
 
 3. **id**: 3

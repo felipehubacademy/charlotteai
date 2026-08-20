@@ -128,8 +128,6 @@
             "hint_en": "The case for sustained public library funding rests on three independent grounds.",
             "examples_pass": [
               "The case for sustained public library funding rests on three independent grounds.",
-              "While some argue that X, the evidence clearly suggests otherwise.",
-              "It is precisely for this reason that we must act now.",
               "The case for a four-day workweek is stronger than the conventional debate would suggest.",
               "The case for early intervention is supported by both economic and developmental evidence.",
               "The case for transparency in this domain becomes harder to argue against with every passing scandal."
@@ -198,12 +196,9 @@
             "hint_en": "The case for piloting a four-day workweek rests on what we already know about attention and output.",
             "examples_pass": [
               "The case for piloting a four-day workweek rests on what we already know about attention and output.",
-              "While some argue that X, the evidence clearly suggests otherwise.",
-              "It is precisely for this reason that we must act now.",
               "The case for sustained public library funding rests on three independent grounds.",
               "The case for a four-day workweek is stronger than the conventional debate would suggest.",
-              "The case for early intervention is supported by both economic and developmental evidence.",
-              "The case for transparency in this domain becomes harder to argue against with every passing scandal."
+              "The case for early intervention is supported by both economic and developmental evidence."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -236,8 +231,6 @@
             "hint_en": "What's the loudest objection in your team?",
             "examples_pass": [
               "What's the loudest objection in your team?",
-              "The implications of inaction are simply too serious to ignore.",
-              "We owe it to future generations to take this seriously.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -355,12 +348,9 @@
             "hint_en": "Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project.",
             "examples_pass": [
               "Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project.",
-              "While some argue that X, the evidence clearly suggests otherwise.",
-              "It is precisely for this reason that we must act now.",
-              "By contrast, longitudinal studies in similar populations have shown a weaker effect over time.",
-              "However, the same effect was not observed in the control population.",
-              "By contrast, earlier studies relying on cross-sectional data reached the opposite conclusion.",
-              "However, the methodology used in the present study differs from earlier work in two important respects."
+              "Some may object that the timeline is too aggressive. However, every quarter of delay compounds the very costs the objection is worried about.",
+              "Some may object that the sample is too small. However, the effect size is large enough to survive even a conservative reweighting.",
+              "Some may object that public appetite is lacking. However, support rises sharply once the concrete trade-offs are actually explained."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -375,8 +365,6 @@
             "hint_en": "Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries.",
             "examples_pass": [
               "Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries.",
-              "Far from being a luxury, education is a fundamental right.",
-              "One could easily counter that argument by pointing to the data.",
               "Critics might argue the evidence is mixed, but this overlooks the convergence across three independent trials.",
               "Critics might argue the policy is too expensive, but this overlooks the long-term cost of doing nothing.",
               "Critics might argue that the model is unrealistic, but this overlooks decades of similar dynamics in adjacent fields.",
@@ -395,8 +383,9 @@
             "hint_en": "It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose.",
             "examples_pass": [
               "It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose.",
-              "The deeper question is — that's the one.",
-              "Honestly, The deeper question is sums it up."
+              "It would be a mistake to treat this as a purely technical problem. The deeper question is who gets to decide what counts as acceptable risk.",
+              "It would be a mistake to read the delay as caution. The deeper question is whether caution has quietly become an excuse.",
+              "The deeper question is not whether we can afford to act, but whether we can afford the world that inaction leaves behind."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -428,7 +417,6 @@
             "hint_en": "Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same.",
             "examples_pass": [
               "Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same.",
-              "While some argue that X, the evidence clearly suggests otherwise.",
               "It is precisely for this reason that we must act now.",
               "Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access.",
               "Critics might argue the evidence is preliminary, but this overlooks the convergence of findings across three independent studies.",
@@ -447,9 +435,7 @@
             "hidden_prompt": "user uses 'The deeper question is' or 'It would be a mistake to assume'",
             "hint_en": "The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us.",
             "examples_pass": [
-              "The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us.",
-              "The deeper question is — that's the one.",
-              "Honestly, The deeper question is sums it up."
+              "The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -464,8 +450,6 @@
             "hint_en": "What's your next push?",
             "examples_pass": [
               "What's your next push?",
-              "The implications of inaction are simply too serious to ignore.",
-              "We owe it to future generations to take this seriously.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -586,7 +570,6 @@
             "hint_en": "We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future.",
             "examples_pass": [
               "We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future.",
-              "While some argue that X, the evidence clearly suggests otherwise.",
               "It is precisely for this reason that we must act now."
             ],
             "examples_fail": [
@@ -601,9 +584,7 @@
             "hidden_prompt": "user uses parallel opposing structure",
             "hint_en": "The cost of acting is high. The cost of waiting is higher.",
             "examples_pass": [
-              "The cost of acting is high. The cost of waiting is higher.",
-              "Far from being a luxury, education is a fundamental right.",
-              "One could easily counter that argument by pointing to the data."
+              "The cost of acting is high. The cost of waiting is higher."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -617,9 +598,7 @@
             "hidden_prompt": "user uses three parallel clauses",
             "hint_en": "We can adapt, we can mitigate, or we can ask our children to forgive us.",
             "examples_pass": [
-              "We can adapt, we can mitigate, or we can ask our children to forgive us.",
-              "The implications of inaction are simply too serious to ignore.",
-              "We owe it to future generations to take this seriously."
+              "We can adapt, we can mitigate, or we can ask our children to forgive us."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -650,9 +629,7 @@
             "hidden_prompt": "user uses anaphora",
             "hint_en": "Try: 'We are here because rights are not granted, they are demanded. We are here because patience has limits. We are here because no one is coming to do this for us.'",
             "examples_pass": [
-              "Anaphora — that's the one.",
-              "Honestly, anaphora sums it up.",
-              "Yeah, anaphora for sure."
+              "Try: 'We are here because rights are not granted, they are demanded. We are here because patience has limits. We are here because no one is coming to do this for us.'"
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -666,9 +643,7 @@
             "hidden_prompt": "user uses antithesis",
             "hint_en": "Then drop in: 'Accessibility is not charity — it is justice taking the form of a ramp, a captioned line, an opened door.'",
             "examples_pass": [
-              "Antithesis — that's the one.",
-              "Honestly, antithesis sums it up.",
-              "Yeah, antithesis for sure."
+              "Then drop in: 'Accessibility is not charity — it is justice taking the form of a ramp, a captioned line, an opened door.'"
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -682,9 +657,7 @@
             "hidden_prompt": "user uses tricolon",
             "hint_en": "Close with: 'Today we listen, tomorrow we organise, every day after that we demand.'",
             "examples_pass": [
-              "Tricolon — that's the one.",
-              "Honestly, tricolon sums it up.",
-              "Yeah, tricolon for sure."
+              "Close with: 'Today we listen, tomorrow we organise, every day after that we demand.'"
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -800,9 +773,7 @@
             "hidden_prompt": "user uses 'which led to' or 'which caused'",
             "hint_en": "Interest rates rose, which led to higher mortgage costs.",
             "examples_pass": [
-              "Interest rates rose, which led to higher mortgage costs.",
-              "Which led to — that's the one.",
-              "Honestly, which led to sums it up."
+              "Interest rates rose, which led to higher mortgage costs."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -816,9 +787,7 @@
             "hidden_prompt": "user uses 'which in turn + verb'",
             "hint_en": "...which in turn cooled the housing market, which in turn slowed construction hiring.",
             "examples_pass": [
-              "...which in turn cooled the housing market, which in turn slowed construction hiring.",
-              "Far from being a luxury, education is a fundamental right.",
-              "One could easily counter that argument by pointing to the data."
+              "...which in turn cooled the housing market, which in turn slowed construction hiring."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -832,9 +801,7 @@
             "hidden_prompt": "user uses 'From this it follows that' or 'As a result'",
             "hint_en": "From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters.",
             "examples_pass": [
-              "From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters.",
-              "As a result — that's the one.",
-              "Honestly, As a result sums it up."
+              "From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -865,9 +832,7 @@
             "hidden_prompt": "user opens chain with cause and 'which led to / which in turn'",
             "hint_en": "The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance.",
             "examples_pass": [
-              "The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance.",
-              "Which led to — that's the one.",
-              "Honestly, which led to sums it up."
+              "The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -881,9 +846,7 @@
             "hidden_prompt": "user adds 'which in turn' link or two",
             "hint_en": "Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources.",
             "examples_pass": [
-              "Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources.",
-              "Which in turn — that's the one.",
-              "Honestly, which in turn sums it up."
+              "Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -897,9 +860,7 @@
             "hidden_prompt": "user uses 'From this it follows' or 'As a result' or 'The deeper cause is'",
             "hint_en": "From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention.",
             "examples_pass": [
-              "From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention.",
-              "As a result — that's the one.",
-              "Honestly, As a result sums it up."
+              "From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -1014,9 +975,7 @@
             "hidden_prompt": "user uses 'What is at stake is' or 'The stakes could not be higher'",
             "hint_en": "What is at stake is not the pace of innovation, but the choice of whose interests guide it.",
             "examples_pass": [
-              "What is at stake is not the pace of innovation, but the choice of whose interests guide it.",
-              "What is at stake is — that's the one.",
-              "Honestly, What is at stake is sums it up."
+              "What is at stake is not the pace of innovation, but the choice of whose interests guide it."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -1030,9 +989,7 @@
             "hidden_prompt": "user uses 'The choice before us is clear'",
             "hint_en": "The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible.",
             "examples_pass": [
-              "The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible.",
-              "The choice before us is clear — that's the one.",
-              "Honestly, The choice before us is clear sums it up."
+              "The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -1046,9 +1003,7 @@
             "hidden_prompt": "user uses 'If we fail to' or 'Should we fail to'",
             "hint_en": "If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping.",
             "examples_pass": [
-              "If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping.",
-              "If we fail to — that's the one.",
-              "Honestly, If we fail to sums it up."
+              "If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -1080,9 +1035,7 @@
             "hidden_prompt": "user uses 'What is at stake is' or stakes phrase",
             "hint_en": "What is at stake is not turnout, but whether we still believe collective decisions can change anything.",
             "examples_pass": [
-              "What is at stake is not turnout, but whether we still believe collective decisions can change anything.",
-              "What is at stake is — that's the one.",
-              "Honestly, What is at stake is sums it up."
+              "What is at stake is not turnout, but whether we still believe collective decisions can change anything."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -1096,9 +1049,7 @@
             "hidden_prompt": "user uses 'The choice before us is clear'",
             "hint_en": "The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors.",
             "examples_pass": [
-              "The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors.",
-              "The choice before us is clear — that's the one.",
-              "Honestly, The choice before us is clear sums it up."
+              "The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",
@@ -1112,9 +1063,7 @@
             "hidden_prompt": "user uses 'If we fail to' or call-to-action",
             "hint_en": "If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled.",
             "examples_pass": [
-              "If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled.",
-              "If we fail to — that's the one.",
-              "Honestly, If we fail to sums it up."
+              "If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled."
             ],
             "examples_fail": [
               "yes (bare agreement, no argumentation)",

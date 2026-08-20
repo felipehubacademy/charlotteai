@@ -113,7 +113,7 @@
    **hidden_prompt**: "user uses 'I saw/did/had + something' (irregular past)"
    **hint_pt**: "I saw the beach."
    **hint_en**: "I saw the beach."
-   **example_pass**: I saw the beach. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: I saw the beach.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -177,7 +177,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Cool story!" quando obj_3 baterem.
@@ -355,7 +355,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Daily check done!" quando obj_3 baterem.
@@ -532,7 +532,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Lots happening!" quando obj_3 baterem.
@@ -692,7 +692,7 @@
    **hidden_prompt**: "user uses 'I read + something'"
    **hint_pt**: "I read the news."
    **hint_en**: "I read the news."
-   **example_pass**: I read the news. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: I read the news.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
@@ -710,7 +710,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Same form, different time!" quando obj_3 baterem.
@@ -869,7 +869,7 @@
    **hidden_prompt**: "user starts with 'I went/had/made + something'"
    **hint_pt**: "I went to Italy."
    **hint_en**: "I went to Italy."
-   **example_pass**: I went to Italy. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: I went to Italy.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
@@ -887,7 +887,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Memorable!" quando obj_3 baterem.

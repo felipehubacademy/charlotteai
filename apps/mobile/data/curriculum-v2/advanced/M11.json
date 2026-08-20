@@ -202,8 +202,7 @@
             "hint_en": "If you admire it, she's probably more assertive than aggressive — direct without making you feel attacked.",
             "examples_pass": [
               "If you admire it, she's probably more assertive than aggressive — direct without making you feel attacked.",
-              "Charitably, you'd describe him as self-assured rather than arrogant — he simply doesn't perform humility.",
-              "Assertive — that's the one."
+              "Charitably, you'd describe him as self-assured rather than arrogant — he simply doesn't perform humility."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -235,14 +234,7 @@
             "hidden_prompt": "user asks Charlotte which side she's actually on",
             "hint_en": "Which version feels closer to true?",
             "examples_pass": [
-              "Which version feels closer to true?",
-              "May I request your assistance with this matter?",
-              "Honestly, it was a complete disaster, mate.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "Which version feels closer to true?"
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -444,8 +436,6 @@
             "hint_en": "If you want it even more formal, 'investigate' becomes 'ascertain the substance of the feedback'.",
             "examples_pass": [
               "If you want it even more formal, 'investigate' becomes 'ascertain the substance of the feedback'.",
-              "It would be a pleasure to make your acquaintance.",
-              "Yeah, that was pretty awesome, gotta say.",
               "Even more formal: 'investigate' becomes 'ascertain the substance of the feedback received.'",
               "Push it further: 'inform' becomes 'apprise the board of the latest developments.'",
               "Push it further: 'discuss' becomes 'deliberate on the matter at the next available opportunity.'",
@@ -463,14 +453,7 @@
             "hidden_prompt": "user asks Charlotte how formal the document needs to be",
             "hint_en": "How formal is the audience?",
             "examples_pass": [
-              "How formal is the audience?",
-              "May I request your assistance with this matter?",
-              "Honestly, it was a complete disaster, mate.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "How formal is the audience?"
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -589,9 +572,7 @@
             "hidden_prompt": "user uses 'passed away' or similar for 'died'",
             "hint_en": "Direct: 'His mother died last month.' Softened: 'His mother passed away last month.'",
             "examples_pass": [
-              "Direct: 'His mother died last month.' Softened: 'His mother passed away last month.'",
-              "Died — that's the one.",
-              "Honestly, died sums it up."
+              "Direct: 'His mother died last month.' Softened: 'His mother passed away last month.'"
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -605,9 +586,7 @@
             "hidden_prompt": "user uses 'between jobs' for 'unemployed'",
             "hint_en": "Direct: 'He's unemployed right now.' Softened: 'He's between jobs at the moment.'",
             "examples_pass": [
-              "Direct: 'He's unemployed right now.' Softened: 'He's between jobs at the moment.'",
-              "Unemployed — that's the one.",
-              "Honestly, unemployed sums it up."
+              "Direct: 'He's unemployed right now.' Softened: 'He's between jobs at the moment.'"
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -621,9 +600,7 @@
             "hidden_prompt": "user uses 'let go' or 'laid off' for 'fired'",
             "hint_en": "Direct: 'Five people were fired last week.' Softened: 'Five people were let go last week.'",
             "examples_pass": [
-              "Direct: 'Five people were fired last week.' Softened: 'Five people were let go last week.'",
-              "Fired — that's the one.",
-              "Honestly, fired sums it up."
+              "Direct: 'Five people were fired last week.' Softened: 'Five people were let go last week.'"
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -654,9 +631,7 @@
             "hidden_prompt": "user uses 'passed away' / 'sorry for your loss' framing",
             "hint_en": "Keep it simple — 'I was so sorry to hear about your father's passing' is a warm, standard phrase.",
             "examples_pass": [
-              "Passed away — that's the one.",
-              "Honestly, passed away sums it up.",
-              "Yeah, passed away for sure."
+              "Keep it simple — 'I was so sorry to hear about your father's passing' is a warm, standard phrase."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -670,9 +645,7 @@
             "hidden_prompt": "user uses 'survived by' or 'in our thoughts' or another euphemism",
             "hint_en": "If you want to mention specifics, something like: 'I know he meant the world to you, and you'll be in my thoughts as you navigate this.'",
             "examples_pass": [
-              "Survived by — that's the one.",
-              "Honestly, survived by sums it up.",
-              "Yeah, survived by for sure."
+              "If you want to mention specifics, something like: 'I know he meant the world to you, and you'll be in my thoughts as you navigate this.'"
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -686,9 +659,7 @@
             "hidden_prompt": "user asks Charlotte if she's close to the friend",
             "hint_en": "How close are you to her?",
             "examples_pass": [
-              "How close are you to her?",
-              "May I request your assistance with this matter?",
-              "Honestly, it was a complete disaster, mate."
+              "How close are you to her?"
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -807,8 +778,7 @@
             "hint_en": "The food at that new place is not half bad — I'll be going back.",
             "examples_pass": [
               "The food at that new place is not half bad — I'll be going back.",
-              "The food at that place is not half bad — I'll happily go back.",
-              "Not bad — that's the one."
+              "The food at that place is not half bad — I'll happily go back."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -840,8 +810,6 @@
             "hint_en": "The view from the room was not exactly disappointing — it overlooked the whole bay.",
             "examples_pass": [
               "The view from the room was not exactly disappointing — it overlooked the whole bay.",
-              "May I request your assistance with this matter?",
-              "Honestly, it was a complete disaster, mate.",
               "The view from the hotel was not exactly disappointing — it overlooked the entire bay.",
               "Her feedback wasn't exactly gentle, but it was exactly what the team needed.",
               "The conversation wasn't exactly easy, but we both came out of it better aligned.",
@@ -876,9 +844,7 @@
             "hidden_prompt": "user uses 'not bad' / 'not without' / 'not exactly'",
             "hint_en": "Not without its moments — got through three deadlines and only one of them tried to kill me.",
             "examples_pass": [
-              "Not without its moments — got through three deadlines and only one of them tried to kill me.",
-              "Not bad — that's the one.",
-              "Honestly, not bad sums it up."
+              "Not without its moments — got through three deadlines and only one of them tried to kill me."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -908,12 +874,7 @@
             "hidden_prompt": "user asks Charlotte more about the film",
             "hint_en": "What was the film?",
             "examples_pass": [
-              "What was the film?",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "What was the film?"
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -1028,9 +989,7 @@
             "hidden_prompt": "user uses formal register: 'respectfully propose', 'recommend', etc.",
             "hint_en": "I would respectfully propose that we revisit the launch timeline, given the readiness of the current build.",
             "examples_pass": [
-              "I would respectfully propose that we revisit the launch timeline, given the readiness of the current build.",
-              "Recommend — that's the one.",
-              "Honestly, recommend sums it up."
+              "I would respectfully propose that we revisit the launch timeline, given the readiness of the current build."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -1044,9 +1003,7 @@
             "hidden_prompt": "user uses casual register with team: 'we need to push back', etc.",
             "hint_en": "Look, we need to push the launch back — we're not ready, and shipping broken won't help anyone.",
             "examples_pass": [
-              "We need to push back — that's the one.",
-              "Honestly, we need to push back sums it up.",
-              "Yeah, we need to push back for sure."
+              "Look, we need to push the launch back — we're not ready, and shipping broken won't help anyone."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -1060,9 +1017,7 @@
             "hidden_prompt": "user uses intimate register: 'honestly', 'I'm scared', etc.",
             "hint_en": "Honestly, I'm scared we're about to ship something half-baked, and I don't know how to say that without looking weak.",
             "examples_pass": [
-              "Honestly, I'm scared we're about to ship something half-baked, and I don't know how to say that without looking weak.",
-              "Honestly, it was a complete disaster, mate.",
-              "Honestly — that's the one."
+              "Honestly, I'm scared we're about to ship something half-baked, and I don't know how to say that without looking weak."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -1093,9 +1048,7 @@
             "hidden_prompt": "user uses formal-professional register",
             "hint_en": "I appreciate the opportunity to share my view. My primary concern is that the current build hasn't completed a full regression cycle, which puts the launch quality at risk.",
             "examples_pass": [
-              "I appreciate the opportunity to share my view. My primary concern is that the current build hasn't completed a full regression cycle, which puts the launch quality at risk.",
-              "I'd like to express my sincere appreciation for your support.",
-              "The dude totally nailed it, no kidding."
+              "I appreciate the opportunity to share my view. My primary concern is that the current build hasn't completed a full regression cycle, which puts the launch quality at risk."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -1109,9 +1062,7 @@
             "hidden_prompt": "user shifts to casual register with a peer",
             "hint_en": "Honestly? We're nowhere near ready. The tests are still failing and we're pretending they're flaky. I told the boss diplomatically. I'm telling you straight.",
             "examples_pass": [
-              "Honestly? We're nowhere near ready. The tests are still failing and we're pretending they're flaky. I told the boss diplomatically. I'm telling you straight.",
-              "It would be a pleasure to make your acquaintance.",
-              "Yeah, that was pretty awesome, gotta say."
+              "Honestly? We're nowhere near ready. The tests are still failing and we're pretending they're flaky. I told the boss diplomatically. I'm telling you straight."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -1125,9 +1076,7 @@
             "hidden_prompt": "user shifts to intimate register with friend",
             "hint_en": "I'm not sleeping. Every time I close my eyes I see the bug list. I keep thinking — if it fails publicly, that's me, not the team.",
             "examples_pass": [
-              "I'm not sleeping. Every time I close my eyes I see the bug list. I keep thinking — if it fails publicly, that's me, not the team.",
-              "May I request your assistance with this matter?",
-              "Honestly, it was a complete disaster, mate."
+              "I'm not sleeping. Every time I close my eyes I see the bug list. I keep thinking — if it fails publicly, that's me, not the team."
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",
@@ -1242,8 +1191,6 @@
             "hint_en": "I always pause when I hear 'flat' instead of 'apartment'. And 'pavement' instead of 'sidewalk' threw me off the first time.",
             "examples_pass": [
               "I always pause when I hear 'flat' instead of 'apartment'. And 'pavement' instead of 'sidewalk' threw me off the first time.",
-              "I'd like to express my sincere appreciation for your support.",
-              "The dude totally nailed it, no kidding.",
               "I still pause when I hear 'flat' instead of 'apartment', or 'pavement' instead of 'sidewalk'.",
               "It took me a while to get used to 'lift' instead of 'elevator' and 'queue' instead of 'line'.",
               "Saying 'lorry' instead of 'truck' still feels strange to me, even after two years in London.",
@@ -1315,8 +1262,6 @@
             "hint_en": "I default to American English because that's what my schoolbooks used, but I've gotten more flexible after working with British colleagues.",
             "examples_pass": [
               "I default to American English because that's what my schoolbooks used, but I've gotten more flexible after working with British colleagues.",
-              "I'd like to express my sincere appreciation for your support.",
-              "The dude totally nailed it, no kidding.",
               "I lean British because of the writers I grew up reading — but my speech is a mix that probably annoys both camps.",
               "I prefer American English in conversation and British English in writing — I'm not sure why, but it feels right.",
               "I default to American because most of my colleagues are American — but my instincts are quietly British."
@@ -1334,8 +1279,6 @@
             "hint_en": "Honestly, 'realise' still catches me — in Portuguese 'realizar' means 'to carry out', but in English it usually means 'to understand'. I've to consciously pause.",
             "examples_pass": [
               "Honestly, 'realise' still catches me — in Portuguese 'realizar' means 'to carry out', but in English it usually means 'to understand'. I've to consciously pause.",
-              "It would be a pleasure to make your acquaintance.",
-              "Yeah, that was pretty awesome, gotta say.",
               "Honestly, 'realise' still catches me — in Portuguese 'realizar' means 'to carry out', but in English it usually means 'to understand'.",
               "'Eventually' was a long one for me — in Portuguese 'eventualmente' means 'occasionally', but in English it means 'in the end'.",
               "'Pretend' tripped me up for years — 'pretender' in Portuguese means 'to intend', but in English it means 'to fake'.",
@@ -1353,11 +1296,7 @@
             "hidden_prompt": "user asks Charlotte about her preference or strategy",
             "hint_en": "Which version do you write in by default?",
             "examples_pass": [
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "Which version do you write in by default?"
             ],
             "examples_fail": [
               "good (neutral word, no register marking)",

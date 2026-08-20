@@ -103,7 +103,7 @@
    **hidden_prompt**: "user uses 'kind of' or 'sort of' to soften"
    **hint_pt**: "It's sort of one of those situations where there isn't a right answer, just a less wrong one."
    **hint_en**: "It's sort of one of those situations where there isn't a right answer, just a less wrong one."
-   **example_pass**: It's sort of one of those situations where there isn't a right answer, just a less wrong one. | It's kind of a big deal, ngl. | She kind of inherited the role without anyone formally giving it to her. | It was kind of a strange meeting — friendly on the surface, but no one really said what they meant. | He's sort of running the team now, even though nobody has officially announced it.
+   **example_pass**: It's sort of one of those situations where there isn't a right answer, just a less wrong one. | She kind of inherited the role without anyone formally giving it to her. | It was kind of a strange meeting — friendly on the surface, but no one really said what they meant. | He's sort of running the team now, even though nobody has officially announced it.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Fillers, strategically placed." once obj_3 lands.
@@ -158,7 +158,7 @@
    **hidden_prompt**: "user asks Charlotte what specifically broke"
    **hint_pt**: "What was the one decision that did it?"
    **hint_en**: "What was the one decision that did it?"
-   **example_pass**: What was the one decision that did it? | I'm low-key obsessed with that show. | It's kind of a big deal, ngl. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What was the one decision that did it? | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Fillers carry register." once obj_3 lands.
@@ -238,7 +238,7 @@
    **hidden_prompt**: "user adds rising tag for genuine agreement-seeking"
    **hint_pt**: "She's the strongest writer on the team, isn't she? The way she frames an argument is in a different category."
    **hint_en**: "She's the strongest writer on the team, isn't she? The way she frames an argument is in a different category."
-   **example_pass**: She's the strongest writer on the team, isn't she? The way she frames an argument is in a different category. | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely.
+   **example_pass**: She's the strongest writer on the team, isn't she? The way she frames an argument is in a different category. | I'm not gonna lie, it threw me off completely.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -247,7 +247,7 @@
    **hidden_prompt**: "user adds tag for confirming a fact"
    **hint_pt**: "You haven't met the new product manager yet, have you? She started two weeks ago and seems to be everywhere at once."
    **hint_en**: "You haven't met the new product manager yet, have you? She started two weeks ago and seems to be everywhere at once."
-   **example_pass**: You haven't met the new product manager yet, have you? She started two weeks ago and seems to be everywhere at once. | That's super interesting, actually. | To be fair, it could've gone either way.
+   **example_pass**: You haven't met the new product manager yet, have you? She started two weeks ago and seems to be everywhere at once.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -256,7 +256,7 @@
    **hidden_prompt**: "user adds tag that softly challenges or pushes back"
    **hint_pt**: "We probably should have flagged this sooner, shouldn't we? — even if nobody likes to admit it now."
    **hint_en**: "We probably should have flagged this sooner, shouldn't we? — even if nobody likes to admit it now."
-   **example_pass**: We probably should have flagged this sooner, shouldn't we? — even if nobody likes to admit it now. | I'm low-key obsessed with that show. | It's kind of a big deal, ngl.
+   **example_pass**: We probably should have flagged this sooner, shouldn't we? — even if nobody likes to admit it now.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Tags, doing pragmatic work." once obj_3 lands.
@@ -293,7 +293,7 @@
    **hidden_prompt**: "user replies with a tag question"
    **hint_pt**: "Six, I think. Although we sometimes started at six-thirty when the host couldn't get there earlier, didn't we?"
    **hint_en**: "Six, I think. Although we sometimes started at six-thirty when the host couldn't get there earlier, didn't we?"
-   **example_pass**: Six, I think. Although we sometimes started at six-thirty when the host couldn't get there earlier, didn't we? | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely.
+   **example_pass**: Six, I think. Although we sometimes started at six-thirty when the host couldn't get there earlier, didn't we? | I'm not gonna lie, it threw me off completely.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -302,7 +302,7 @@
    **hidden_prompt**: "user adds another tag"
    **hint_pt**: "You're reading the new one this month, aren't you? The one with the unreliable narrator everyone's been arguing about."
    **hint_en**: "You're reading the new one this month, aren't you? The one with the unreliable narrator everyone's been arguing about."
-   **example_pass**: You're reading the new one this month, aren't you? The one with the unreliable narrator everyone's been arguing about. | That's super interesting, actually. | To be fair, it could've gone either way.
+   **example_pass**: You're reading the new one this month, aren't you? The one with the unreliable narrator everyone's been arguing about.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -392,7 +392,7 @@
    **hidden_prompt**: "user produces 'mm-hm' or 'right' or 'yeah'"
    **hint_pt**: "Right — go on. Mm-hm, I'm following."
    **hint_en**: "Right — go on. Mm-hm, I'm following."
-   **example_pass**: Right — go on. Mm-hm, I'm following. | Yeah — that's the one. | Honestly, yeah sums it up.
+   **example_pass**: Right — go on. Mm-hm, I'm following.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -401,7 +401,7 @@
    **hidden_prompt**: "user produces 'really?' or 'no way' or 'oh'"
    **hint_pt**: "Really? In the middle of the meeting? No way."
    **hint_en**: "Really? In the middle of the meeting? No way."
-   **example_pass**: Really? In the middle of the meeting? No way. | Oh — that's the one. | Honestly, oh sums it up.
+   **example_pass**: Really? In the middle of the meeting? No way.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -410,7 +410,7 @@
    **hidden_prompt**: "user produces 'gotcha' / 'I see' / 'okay'"
    **hint_pt**: "Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now."
    **hint_en**: "Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now."
-   **example_pass**: Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now. | Okay — that's the one. | Honestly, okay sums it up.
+   **example_pass**: Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Backchannels, listening signalled." once obj_3 lands.
@@ -447,7 +447,7 @@
    **hidden_prompt**: "user uses backchannel and short reaction"
    **hint_pt**: "Oh no. Right — and you'd already been waiting how long?"
    **hint_en**: "Oh no. Right — and you'd already been waiting how long?"
-   **example_pass**: Backchannel and short reaction — that's the one. | Honestly, backchannel and short reaction sums it up. | Yeah, backchannel and short reaction for sure.
+   **example_pass**: Oh no. Right — and you'd already been waiting how long?
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -456,7 +456,7 @@
    **hidden_prompt**: "user produces 'no way' or 'really?' at a turn in the story"
    **hint_pt**: "No way. She actually opened it in front of the whole queue?"
    **hint_en**: "No way. She actually opened it in front of the whole queue?"
-   **example_pass**: No way. She actually opened it in front of the whole queue? | No way — that's the one. | Honestly, no way sums it up.
+   **example_pass**: No way. She actually opened it in front of the whole queue?
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -465,7 +465,7 @@
    **hidden_prompt**: "user asks short closing question"
    **hint_pt**: "Did you make the flight?"
    **hint_en**: "Did you make the flight?"
-   **example_pass**: Did you make the flight? | I'm low-key obsessed with that show. | It's kind of a big deal, ngl.
+   **example_pass**: Did you make the flight?
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Story heard, story honoured." once obj_3 lands.
@@ -545,7 +545,7 @@
    **hidden_prompt**: "user opens with 'Honestly' or 'To be honest'"
    **hint_pt**: "Honestly, I've stopped reading her emails carefully — they're so dense that the actual decision usually requires a follow-up phone call."
    **hint_en**: "Honestly, I've stopped reading her emails carefully — they're so dense that the actual decision usually requires a follow-up phone call."
-   **example_pass**: Honestly, I've stopped reading her emails carefully — they're so dense that the actual decision usually requires a follow-up phone call. | Honestly, that's a total game-changer. | Honestly — that's the one.
+   **example_pass**: Honestly, I've stopped reading her emails carefully — they're so dense that the actual decision usually requires a follow-up phone call.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -554,7 +554,7 @@
    **hidden_prompt**: "user opens with 'To be fair'"
    **hint_pt**: "To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it."
    **hint_en**: "To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it."
-   **example_pass**: To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it. | To be fair, it could've gone either way. | To be fair — that's the one.
+   **example_pass**: To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -563,7 +563,7 @@
    **hidden_prompt**: "user opens with 'No offence' or 'Look'"
    **hint_pt**: "Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision."
    **hint_en**: "Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision."
-   **example_pass**: Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision. | Look — that's the one. | Honestly, Look sums it up.
+   **example_pass**: Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Openers, priming the listener." once obj_3 lands.
@@ -600,7 +600,7 @@
    **hidden_prompt**: "user opens with 'Honestly' or 'To be fair' to suggest something"
    **hint_pt**: "Honestly, the longer you wait, the harder it'll be — the disengagement starts to feel mutual once enough weeks pass."
    **hint_en**: "Honestly, the longer you wait, the harder it'll be — the disengagement starts to feel mutual once enough weeks pass."
-   **example_pass**: Honestly, the longer you wait, the harder it'll be — the disengagement starts to feel mutual once enough weeks pass. | Honestly, that's a total game-changer. | Honestly — that's the one.
+   **example_pass**: Honestly, the longer you wait, the harder it'll be — the disengagement starts to feel mutual once enough weeks pass.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -609,7 +609,7 @@
    **hidden_prompt**: "user uses another pragmatic opener"
    **hint_pt**: "Look, the opening question matters more than the script — something like 'I've noticed something, and I want to understand what's going on' opens space."
    **hint_en**: "Look, the opening question matters more than the script — something like 'I've noticed something, and I want to understand what's going on' opens space."
-   **example_pass**: Look, the opening question matters more than the script — something like 'I've noticed something, and I want to understand what's going on' opens space. | That's super interesting, actually. | To be fair, it could've gone either way.
+   **example_pass**: Look, the opening question matters more than the script — something like 'I've noticed something, and I want to understand what's going on' opens space.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -618,7 +618,7 @@
    **hidden_prompt**: "user asks Charlotte what she suspects is going on"
    **hint_pt**: "What do you think is actually going on?"
    **hint_en**: "What do you think is actually going on?"
-   **example_pass**: What do you think is actually going on? | I'm low-key obsessed with that show. | It's kind of a big deal, ngl.
+   **example_pass**: What do you think is actually going on?
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Difficult conversation, openers in place." once obj_3 lands.
@@ -697,7 +697,7 @@
    **hidden_prompt**: "user opens with 'The thing is' or 'Here's the thing'"
    **hint_pt**: "Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks."
    **hint_en**: "Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks."
-   **example_pass**: Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks. | The thing is — that's the one. | Honestly, The thing is sums it up.
+   **example_pass**: Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -706,7 +706,7 @@
    **hidden_prompt**: "user opens with 'I'll tell you what'"
    **hint_pt**: "I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions."
    **hint_en**: "I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions."
-   **example_pass**: I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions. | I'll tell you what — that's the one. | Honestly, I'll tell you what sums it up.
+   **example_pass**: I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -715,7 +715,7 @@
    **hidden_prompt**: "user opens with 'I don't know about you, but'"
    **hint_pt**: "I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet."
    **hint_en**: "I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet."
-   **example_pass**: I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet. | I don't know about you, but — that's the one. | Honestly, I don't know about you, but sums it up.
+   **example_pass**: I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Native openers, conversation set. C2 native fluency, complete." once obj_3 lands.
@@ -752,7 +752,7 @@
    **hidden_prompt**: "user replies with native opener like 'Here's the thing'"
    **hint_pt**: "Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there."
    **hint_en**: "Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there."
-   **example_pass**: Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there. | Here's the thing — that's the one. | Honestly, Here's the thing sums it up.
+   **example_pass**: Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -761,7 +761,7 @@
    **hidden_prompt**: "user uses 'I'll tell you what' or 'I don't know about you, but'"
    **hint_pt**: "I'll tell you what — exit interviews almost never tell you the real story. The honest answers are in the second job they take, six months later."
    **hint_en**: "I'll tell you what — exit interviews almost never tell you the real story. The honest answers are in the second job they take, six months later."
-   **example_pass**: I'll tell you what — exit interviews almost never tell you the real story. The honest answers are in the second job they take, six months later. | I don't know about you, but the patterns I'm seeing point to a deeper culture issue, not a tooling one. | I'll tell you what — that's the one.
+   **example_pass**: I'll tell you what — exit interviews almost never tell you the real story. The honest answers are in the second job they take, six months later. | I don't know about you, but the patterns I'm seeing point to a deeper culture issue, not a tooling one.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -770,7 +770,7 @@
    **hidden_prompt**: "user asks Charlotte what pattern she's seeing"
    **hint_pt**: "What's the pattern you keep seeing?"
    **hint_en**: "What's the pattern you keep seeing?"
-   **example_pass**: What's the pattern you keep seeing? | That's super interesting, actually. | To be fair, it could've gone either way.
+   **example_pass**: What's the pattern you keep seeing?
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Native fluency, closing C2." once obj_3 lands.

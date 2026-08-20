@@ -182,7 +182,7 @@
    **hidden_prompt**: "user asks Charlotte with 'How about you?' or 'And you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you? | What about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Same vibes!" quando obj_3 baterem.
@@ -304,7 +304,7 @@
    **hidden_prompt**: "user asks 'Do you have any + noun?' or 'Is there any + noun?'"
    **hint_pt**: "Do you have any apples?"
    **hint_en**: "Do you have any apples?"
-   **example_pass**: Do you have any apples? | And you? | How about you?
+   **example_pass**: Do you have any apples?
    **example_fail**: Yes I do (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Got the fridge map!" quando obj_3 baterem.
@@ -341,6 +341,8 @@
    **hidden_prompt**: "AFTER Charlotte asks 'Got any snacks?', user replies with 'Yes, I have some + noun' or 'I have some + noun'. SOME = afirmativa."
    **hint_pt**: "Yes, I have some cookies."
    **hint_en**: "Yes, I have some cookies."
+   **example_pass**: Yes, I have some cookies.
+   **example_fail**: Yes (single word, no structure) | I don't know (off-topic) | (silence / gibberish)
 
 2. **id**: 2
    **label_pt**: "Responder o que NÃO tem (Charlotte perguntou sobre algo especifico)"
@@ -348,6 +350,8 @@
    **hidden_prompt**: "AFTER Charlotte's follow-up question (e.g. 'Chocolate?' or 'Any [specific food]?'), user replies with 'I don't have any + noun'. ANY = negativa. Different turn from obj 1."
    **hint_pt**: "I don't have any chocolate."
    **hint_en**: "I don't have any chocolate."
+   **example_pass**: I don't have any chocolate.
+   **example_fail**: Yes (single word, no structure) | I don't know (off-topic) | (silence / gibberish)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte (devolver a pergunta)"
@@ -355,7 +359,7 @@
    **hidden_prompt**: "AFTER objs 1 e 2 met, user asks Charlotte 'Do you have any + noun?' or 'How about you?'. CRITICAL: Charlotte MUST NOT ask 'how about you?' or 'do you have any?' to the student first — wait for the student to ask back."
    **hint_pt**: "Do you have any snacks?"
    **hint_en**: "Do you have any snacks?"
-   **example_pass**: Do you have any snacks? | And you? | How about you?
+   **example_pass**: Do you have any snacks?
    **example_fail**: Yes I do (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Snack swap!" quando obj_3 baterem.
@@ -459,7 +463,7 @@
    **hidden_prompt**: "user asks 'How many + plural countable + are there/do you have?'"
    **hint_pt**: "How many apples are there?"
    **hint_en**: "How many apples are there?"
-   **example_pass**: How many apples are there? | And you? | How about you?
+   **example_pass**: How many apples are there?
    **example_fail**: I have two (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
@@ -468,7 +472,7 @@
    **hidden_prompt**: "user asks 'How much + uncountable + do you have?'"
    **hint_pt**: "How much milk do you have?"
    **hint_en**: "How much milk do you have?"
-   **example_pass**: How much milk do you have? | And you? | How about you?
+   **example_pass**: How much milk do you have?
    **example_fail**: It's cheap (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 3. **id**: 3
@@ -477,7 +481,7 @@
    **hidden_prompt**: "user asks 'How much is + item?' or 'How much does it cost?'"
    **hint_pt**: "How much is the coffee?"
    **hint_en**: "How much is the coffee?"
-   **example_pass**: How much is the coffee? | And you? | How about you?
+   **example_pass**: How much is the coffee?
    **example_fail**: It's cheap (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Great shopping skills!" quando obj_3 baterem.
@@ -514,7 +518,7 @@
    **hidden_prompt**: "user asks 'How many + plural countable?'"
    **hint_pt**: "How many eggs?"
    **hint_en**: "How many eggs?"
-   **example_pass**: How many eggs? | And you? | How about you?
+   **example_pass**: How many eggs?
    **example_fail**: I have two (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
@@ -523,7 +527,7 @@
    **hidden_prompt**: "user asks 'How much + uncountable?'"
    **hint_pt**: "How much bread?"
    **hint_en**: "How much bread?"
-   **example_pass**: How much bread? | And you? | How about you?
+   **example_pass**: How much bread?
    **example_fail**: It's cheap (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 3. **id**: 3
@@ -532,7 +536,7 @@
    **hidden_prompt**: "user asks 'How much is + item?' or 'How much does + item + cost?'"
    **hint_pt**: "How much is the cheese?"
    **hint_en**: "How much is the cheese?"
-   **example_pass**: How much is the cheese? | And you? | How about you?
+   **example_pass**: How much is the cheese?
    **example_fail**: It's cheap (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Shopping list complete!" quando obj_3 baterem.
@@ -637,7 +641,7 @@
    **hidden_prompt**: "user orders food with 'I'd like + food' or 'Can I have + food'"
    **hint_pt**: "I'd like a pizza, please."
    **hint_en**: "I'd like a pizza, please."
-   **example_pass**: I'd like a pizza, please. | I can swim. | I can speak English.
+   **example_pass**: I'd like a pizza, please.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
@@ -646,7 +650,7 @@
    **hidden_prompt**: "user orders drink with 'I'd like + drink' or 'Can I have + drink'"
    **hint_pt**: "I'd like a glass of water."
    **hint_en**: "I'd like a glass of water."
-   **example_pass**: I'd like a glass of water. | I can swim. | I can speak English.
+   **example_pass**: I'd like a glass of water.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 3. **id**: 3
@@ -655,7 +659,7 @@
    **hidden_prompt**: "user asks 'Can I have the bill, please?' or 'Could I have the check?'"
    **hint_pt**: "Can I have the bill, please?"
    **hint_en**: "Can I have the bill, please?"
-   **example_pass**: Can I have the bill, please? | And you? | How about you?
+   **example_pass**: Can I have the bill, please?
    **example_fail**: I do that too (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 **Closing cue**: Charlotte fecha com "Coming right up!" quando obj_3 baterem.
@@ -692,7 +696,7 @@
    **hidden_prompt**: "user orders with 'I'd like + food' or 'Can I have + food'"
    **hint_pt**: "I'd like a burger."
    **hint_en**: "I'd like a burger."
-   **example_pass**: I'd like a burger. | I can swim. | I can speak English.
+   **example_pass**: I'd like a burger.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
@@ -701,7 +705,7 @@
    **hidden_prompt**: "user orders a drink with 'I'd like + drink'"
    **hint_pt**: "I'd like a Coke."
    **hint_en**: "I'd like a Coke."
-   **example_pass**: I'd like a Coke. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I'd like a Coke.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
@@ -710,7 +714,7 @@
    **hidden_prompt**: "user asks total with 'How much is it?' or 'How much in total?'"
    **hint_pt**: "How much is it?"
    **hint_en**: "How much is it?"
-   **example_pass**: How much is it? | And you? | How about you?
+   **example_pass**: How much is it?
    **example_fail**: It's cheap (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 **Closing cue**: Charlotte encerra com "Order placed!" quando obj_3 baterem.
@@ -814,7 +818,7 @@
    **hidden_prompt**: "user orders with 'I'd like + food/drink'"
    **hint_pt**: "I'd like a sandwich."
    **hint_en**: "I'd like a sandwich."
-   **example_pass**: I'd like a sandwich. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I'd like a sandwich.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -823,7 +827,7 @@
    **hidden_prompt**: "user asks 'How much is + item?'"
    **hint_pt**: "How much is the sandwich?"
    **hint_en**: "How much is the sandwich?"
-   **example_pass**: How much is the sandwich? | And you? | How about you?
+   **example_pass**: How much is the sandwich?
    **example_fail**: It's cheap (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 3. **id**: 3
@@ -832,7 +836,7 @@
    **hidden_prompt**: "user asks 'Can I have the bill?'"
    **hint_pt**: "Can I have the bill, please?"
    **hint_en**: "Can I have the bill, please?"
-   **example_pass**: Can I have the bill, please? | And you? | How about you?
+   **example_pass**: Can I have the bill, please?
    **example_fail**: I do that too (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 **Closing cue**: Charlotte fecha com "Thanks — come again!" quando obj_3 baterem.
@@ -869,7 +873,7 @@
    **hidden_prompt**: "user states food with 'I have some + food' or 'I'd like + food'"
    **hint_pt**: "I have some pasta."
    **hint_en**: "I have some pasta."
-   **example_pass**: I have some pasta. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I have some pasta.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -887,7 +891,7 @@
    **hidden_prompt**: "user asks 'How much/many + noun?' or 'How much is it?'"
    **hint_pt**: "How much pasta?"
    **hint_en**: "How much pasta?"
-   **example_pass**: How much pasta? | And you? | How about you?
+   **example_pass**: How much pasta?
    **example_fail**: It's cheap (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 **Closing cue**: Charlotte encerra com "Bon appétit!" quando obj_3 baterem.

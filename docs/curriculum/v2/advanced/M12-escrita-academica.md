@@ -86,7 +86,7 @@
    **hidden_prompt**: "user uses 'The rise of + noun phrase' to open"
    **hint_pt**: "The rise of remote work has transformed how organisations think about office space."
    **hint_en**: "The rise of remote work has transformed how organisations think about office space."
-   **example_pass**: The rise of remote work has transformed how organisations think about office space. | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms. | The rise of remote work has fundamentally altered how organisations think about real estate. | The rise of generative AI has destabilised assumptions across knowledge work and creative industries. | The rise of subscription-based business models has reshaped almost every consumer category. | The rise of short-form video has reordered media consumption among audiences under thirty.
+   **example_pass**: The rise of remote work has transformed how organisations think about office space. | The rise of remote work has fundamentally altered how organisations think about real estate. | The rise of generative AI has destabilised assumptions across knowledge work and creative industries. | The rise of subscription-based business models has reshaped almost every consumer category. | The rise of short-form video has reordered media consumption among audiences under thirty.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
@@ -159,7 +159,7 @@
    **hidden_prompt**: "user asks Charlotte what the paper actually argues"
    **hint_pt**: "What does the paper actually claim?"
    **hint_en**: "What does the paper actually claim?"
-   **example_pass**: What does the paper actually claim? | These results have important implications for further research. | The methodology employed in this investigation is comprehensive. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What does the paper actually claim?
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Opener academically pitched." once obj_3 lands.
@@ -240,7 +240,7 @@
    **hidden_prompt**: "user uses 'It is widely accepted/held/argued that + clause'"
    **hint_pt**: "From 'Most experts agree exercise helps' → 'It is widely accepted that regular exercise improves cognitive function.'"
    **hint_en**: "From 'Most experts agree exercise helps' → 'It is widely accepted that regular exercise improves cognitive function.'"
-   **example_pass**: From 'Most experts agree exercise helps' → 'It is widely accepted that regular exercise improves cognitive function.' | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms. | It is widely accepted that regular exercise improves both cardiovascular and cognitive outcomes. | It is widely held that early-stage mentorship has disproportionate effects on long-term career trajectory. | It is widely argued that the existing tax framework was not designed for an internet economy. | It is widely accepted that the original methodology suffers from significant selection bias.
+   **example_pass**: From 'Most experts agree exercise helps' → 'It is widely accepted that regular exercise improves cognitive function.' | It is widely accepted that regular exercise improves both cardiovascular and cognitive outcomes. | It is widely held that early-stage mentorship has disproportionate effects on long-term career trajectory. | It is widely argued that the existing tax framework was not designed for an internet economy. | It is widely accepted that the original methodology suffers from significant selection bias.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
@@ -258,7 +258,7 @@
    **hidden_prompt**: "user uses 'The data suggest / The evidence indicates + clause'"
    **hint_pt**: "From 'I found that women earned less for the same work' → 'The data indicate that women in the sample earned 18% less for equivalent work.'"
    **hint_en**: "From 'I found that women earned less for the same work' → 'The data indicate that women in the sample earned 18% less for equivalent work.'"
-   **example_pass**: From 'I found that women earned less for the same work' → 'The data indicate that women in the sample earned 18% less for equivalent work.' | These results have important implications for further research. | The methodology employed in this investigation is comprehensive. | The data indicate that women in the sample earned roughly eighteen percent less for equivalent work. | The evidence suggests that the intervention's effect persists for at least two years following treatment. | The data demonstrate a consistent pattern across all four cohorts studied. | The evidence indicates a measurable, though modest, effect on long-term cognitive performance.
+   **example_pass**: From 'I found that women earned less for the same work' → 'The data indicate that women in the sample earned 18% less for equivalent work.' | The data indicate that women in the sample earned roughly eighteen percent less for equivalent work. | The evidence suggests that the intervention's effect persists for at least two years following treatment. | The data demonstrate a consistent pattern across all four cohorts studied. | The evidence indicates a measurable, though modest, effect on long-term cognitive performance.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Voice depersonalised, claims preserved." once obj_3 lands.
@@ -295,7 +295,7 @@
    **hidden_prompt**: "user uses 'The data suggest' or 'The findings indicate' or 'It is observed that'"
    **hint_pt**: "Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.'"
    **hint_en**: "Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.'"
-   **example_pass**: Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.' | The data suggest — that's the one. | Honestly, The data suggest sums it up.
+   **example_pass**: Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.'
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
@@ -313,7 +313,7 @@
    **hidden_prompt**: "user asks Charlotte how strong the evidence actually is"
    **hint_pt**: "How strong is the evidence — is this from a study or your classroom?"
    **hint_en**: "How strong is the evidence — is this from a study or your classroom?"
-   **example_pass**: How strong is the evidence — is this from a study or your classroom? | These results have important implications for further research. | The methodology employed in this investigation is comprehensive. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: How strong is the evidence — is this from a study or your classroom?
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Paragraph academically dressed." once obj_3 lands.
@@ -393,7 +393,7 @@
    **hidden_prompt**: "user uses 'This suggests that' or 'The data indicate'"
    **hint_pt**: "From 'The policy worked' → 'The data suggest that the policy contributed to the observed improvement.'"
    **hint_en**: "From 'The policy worked' → 'The data suggest that the policy contributed to the observed improvement.'"
-   **example_pass**: This suggests that the underlying mechanism may differ from what previous models have assumed. | The data indicate that the effect is larger in younger cohorts than in older ones. | This suggests that the relationship between the two variables is mediated by a third, previously unmeasured factor.
+   **example_pass**: From 'The policy worked' → 'The data suggest that the policy contributed to the observed improvement.' | This suggests that the underlying mechanism may differ from what previous models have assumed. | The data indicate that the effect is larger in younger cohorts than in older ones. | This suggests that the relationship between the two variables is mediated by a third, previously unmeasured factor.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
@@ -402,7 +402,7 @@
    **hidden_prompt**: "user uses 'The evidence supports' or 'There is strong reason to believe'"
    **hint_pt**: "From 'It's true that...' → 'The accumulated evidence supports the conclusion that...'"
    **hint_en**: "From 'It's true that...' → 'The accumulated evidence supports the conclusion that...'"
-   **example_pass**: There is strong reason to believe that the observed effect is not an artefact of measurement. | The evidence supports the broader claim that early interventions yield disproportionate returns. | There is strong reason to believe that the policy's intended mechanism is not the one actually driving outcomes.
+   **example_pass**: From 'It's true that...' → 'The accumulated evidence supports the conclusion that...' | There is strong reason to believe that the observed effect is not an artefact of measurement. | The evidence supports the broader claim that early interventions yield disproportionate returns. | There is strong reason to believe that the policy's intended mechanism is not the one actually driving outcomes.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 3. **id**: 3
@@ -411,7 +411,7 @@
    **hidden_prompt**: "user uses 'It is conceivable that' or 'A possible interpretation is'"
    **hint_pt**: "From 'Maybe X causes Y' → 'It is conceivable, though not yet established, that X plays a causal role in Y.'"
    **hint_en**: "From 'Maybe X causes Y' → 'It is conceivable, though not yet established, that X plays a causal role in Y.'"
-   **example_pass**: A possible interpretation is that the observed pattern reflects survivorship rather than treatment effect. | It is conceivable that the relationship is mediated by factors the current dataset does not capture. | A possible interpretation is that the apparent improvement reflects a regression to the mean.
+   **example_pass**: From 'Maybe X causes Y' → 'It is conceivable, though not yet established, that X plays a causal role in Y.' | A possible interpretation is that the observed pattern reflects survivorship rather than treatment effect. | It is conceivable that the relationship is mediated by factors the current dataset does not capture. | A possible interpretation is that the apparent improvement reflects a regression to the mean.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Confidence calibrated, honestly." once obj_3 lands.
@@ -448,7 +448,7 @@
    **hidden_prompt**: "user replaces 'prove' with appropriate hedge"
    **hint_pt**: "Try: 'Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.'"
    **hint_en**: "Try: 'Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.'"
-   **example_pass**: The data suggests that the policy played a contributing — though not necessarily decisive — role in the observed improvement. | Prove — that's the one. | Honestly, prove sums it up.
+   **example_pass**: Try: 'Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.' | The data suggests that the policy played a contributing — though not necessarily decisive — role in the observed improvement.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
@@ -466,7 +466,7 @@
    **hidden_prompt**: "user asks Charlotte how big the effect was"
    **hint_pt**: "How big was the effect, actually?"
    **hint_en**: "How big was the effect, actually?"
-   **example_pass**: How big was the effect, actually? | These results have important implications for further research. | The methodology employed in this investigation is comprehensive. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: How big was the effect, actually?
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Claim accurate, hedge fitting." once obj_3 lands.
@@ -545,7 +545,7 @@
    **hidden_prompt**: "user uses 'According to X (year), + claim'"
    **hint_pt**: "According to Patel (2021), the intervention was most effective in early-stage cases."
    **hint_en**: "According to Patel (2021), the intervention was most effective in early-stage cases."
-   **example_pass**: According to Patel (2021), the intervention was most effective in early-stage cases. | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms. | According to Patel (2021), the intervention was most effective for early-stage participants. | According to Müller (2019), the underlying mechanism is more sensitive to context than previously assumed. | According to Santos and Rivera (2023), the policy's impact varied substantially across regions. | According to the OECD (2022), the gap has narrowed in most member countries over the past decade.
+   **example_pass**: According to Patel (2021), the intervention was most effective in early-stage cases. | According to Patel (2021), the intervention was most effective for early-stage participants. | According to Müller (2019), the underlying mechanism is more sensitive to context than previously assumed. | According to Santos and Rivera (2023), the policy's impact varied substantially across regions. | According to the OECD (2022), the gap has narrowed in most member countries over the past decade.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
@@ -554,7 +554,7 @@
    **hidden_prompt**: "user uses 'X (year) argues / contends / suggests that'"
    **hint_pt**: "Williams (2019) argues that the existing framework underestimates contextual factors."
    **hint_en**: "Williams (2019) argues that the existing framework underestimates contextual factors."
-   **example_pass**: Lee (2022) contends that the data have been systematically misinterpreted in the policy debate. | Müller (2021) suggests that the relationship is more nuanced than the earlier literature implied. | Contends — that's the one.
+   **example_pass**: Williams (2019) argues that the existing framework underestimates contextual factors. | Lee (2022) contends that the data have been systematically misinterpreted in the policy debate. | Müller (2021) suggests that the relationship is more nuanced than the earlier literature implied.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 3. **id**: 3
@@ -563,7 +563,7 @@
    **hidden_prompt**: "user uses 'Building on + prior work, + this study'"
    **hint_pt**: "Building on Müller's (2022) work, this analysis introduces a new measure of cognitive flexibility."
    **hint_en**: "Building on Müller's (2022) work, this analysis introduces a new measure of cognitive flexibility."
-   **example_pass**: Building on Müller's (2022) work, this analysis introduces a new measure of cognitive flexibility. | These results have important implications for further research. | The methodology employed in this investigation is comprehensive. | Building on Müller's (2022) framework, this analysis introduces a new measure of cognitive flexibility. | Building on the work of Santos (2019), we extend the model to include cross-border variation. | Building on earlier findings, the present study examines whether the effect persists over longer periods. | Building on a decade of literature, this paper reframes the central question as one of measurement rather than mechanism.
+   **example_pass**: Building on Müller's (2022) work, this analysis introduces a new measure of cognitive flexibility. | Building on Müller's (2022) framework, this analysis introduces a new measure of cognitive flexibility. | Building on the work of Santos (2019), we extend the model to include cross-border variation. | Building on earlier findings, the present study examines whether the effect persists over longer periods. | Building on a decade of literature, this paper reframes the central question as one of measurement rather than mechanism.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Citations academically placed." once obj_3 lands.
@@ -600,7 +600,7 @@
    **hidden_prompt**: "user uses 'Smith (2020) argues that' or 'According to Smith (2020)'"
    **hint_pt**: "Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.'"
    **hint_en**: "Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.'"
-   **example_pass**: Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.' | Smith (2020) argues that early feedback has a measurable effect on subsequent performance across a range of tasks. | Smith (2020) argues that — that's the one.
+   **example_pass**: Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.' | Smith (2020) argues that early feedback has a measurable effect on subsequent performance across a range of tasks.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
@@ -618,7 +618,7 @@
    **hidden_prompt**: "user asks Charlotte what other citations she's using"
    **hint_pt**: "What other sources are you weaving in?"
    **hint_en**: "What other sources are you weaving in?"
-   **example_pass**: What other sources are you weaving in? | These results have important implications for further research. | The methodology employed in this investigation is comprehensive. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What other sources are you weaving in?
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Literature review, properly framed." once obj_3 lands.
@@ -698,7 +698,7 @@
    **hidden_prompt**: "user uses 'This finding / This pattern / This observation' + main"
    **hint_pt**: "This finding raises a related question about how the effect varies by income level."
    **hint_en**: "This finding raises a related question about how the effect varies by income level."
-   **example_pass**: This finding raises a related question about how the effect varies by income level. | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms. | This finding raises a further question about how the effect varies across socioeconomic groups. | This pattern is consistent with the broader literature on long-term policy impact. | This observation challenges the conventional assumption that the effect is uniformly distributed. | This finding warrants further investigation, particularly in populations that were not represented in the original sample.
+   **example_pass**: This finding raises a related question about how the effect varies by income level. | This finding raises a further question about how the effect varies across socioeconomic groups. | This pattern is consistent with the broader literature on long-term policy impact. | This observation challenges the conventional assumption that the effect is uniformly distributed. | This finding warrants further investigation, particularly in populations that were not represented in the original sample.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
@@ -716,7 +716,7 @@
    **hidden_prompt**: "user uses 'Taken together, + these + noun'"
    **hint_pt**: "Taken together, these results suggest the relationship is real but moderated by context."
    **hint_en**: "Taken together, these results suggest the relationship is real but moderated by context."
-   **example_pass**: Taken together, these results suggest the relationship is real but moderated by context. | These results have important implications for further research. | The methodology employed in this investigation is comprehensive. | Taken together, the findings point to a more complex picture than the original hypothesis allowed for. | Taken together, these observations imply that the policy's effect operates through multiple mechanisms. | Taken together, the evidence supports a more cautious interpretation of the earlier literature.
+   **example_pass**: Taken together, these results suggest the relationship is real but moderated by context. | Taken together, the findings point to a more complex picture than the original hypothesis allowed for. | Taken together, these observations imply that the policy's effect operates through multiple mechanisms. | Taken together, the evidence supports a more cautious interpretation of the earlier literature.
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Paragraphs threaded." once obj_3 lands.
@@ -771,7 +771,7 @@
    **hidden_prompt**: "user asks Charlotte how she plans to end the discussion"
    **hint_pt**: "How are you planning to land the conclusion?"
    **hint_en**: "How are you planning to land the conclusion?"
-   **example_pass**: How are you planning to land the conclusion? | These results have important implications for further research. | The methodology employed in this investigation is comprehensive. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: How are you planning to land the conclusion?
    **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Discussion threaded, C2 opener landed." once obj_3 lands.

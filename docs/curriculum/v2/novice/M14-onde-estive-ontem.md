@@ -116,7 +116,7 @@
    **hidden_prompt**: "user states past state with 'I was + adjective' (tired/happy/busy/sad)"
    **hint_pt**: "I was tired."
    **hint_en**: "I was tired."
-   **example_pass**: I was tired. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: I was tired.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
@@ -125,7 +125,7 @@
    **hidden_prompt**: "user states 'My + family member + was + place/state' or 'They were + place/state'"
    **hint_pt**: "My sister was at school."
    **hint_en**: "My sister was at school."
-   **example_pass**: My sister was at school. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: My sister was at school.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 **Closing cue**: Charlotte fecha com "Got the picture!" quando obj_3 baterem.
@@ -162,7 +162,7 @@
    **hidden_prompt**: "user says 'It was + adjective' (great/tiring/long/short)"
    **hint_pt**: "It was great."
    **hint_en**: "It was great."
-   **example_pass**: It was great. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: It was great.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
@@ -171,7 +171,7 @@
    **hidden_prompt**: "user says 'I was at + place'"
    **hint_pt**: "I was at work."
    **hint_en**: "I was at work."
-   **example_pass**: I was at work. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: I was at work.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
@@ -180,7 +180,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Where were you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Yesterday vibes!" quando obj_3 baterem.
@@ -284,7 +284,7 @@
    **hidden_prompt**: "user corrects with 'No, I wasn't at + place'"
    **hint_pt**: "No, I wasn't at the gym."
    **hint_en**: "No, I wasn't at the gym."
-   **example_pass**: No, I wasn't at the gym. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: No, I wasn't at the gym.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
@@ -293,7 +293,7 @@
    **hidden_prompt**: "user says 'I wasn't + adjective' (tired, happy, busy)"
    **hint_pt**: "I wasn't busy."
    **hint_en**: "I wasn't busy."
-   **example_pass**: I wasn't busy. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: I wasn't busy.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
@@ -302,7 +302,7 @@
    **hidden_prompt**: "user says 'He/She wasn't + place' or 'They weren't + place'"
    **hint_pt**: "My sister wasn't home."
    **hint_en**: "My sister wasn't home."
-   **example_pass**: My sister wasn't home. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: My sister wasn't home.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 **Closing cue**: Charlotte fecha com "Set straight!" quando obj_3 baterem.
@@ -339,7 +339,7 @@
    **hidden_prompt**: "user says 'No, I wasn't at + place'"
    **hint_pt**: "No, I wasn't at home."
    **hint_en**: "No, I wasn't at home."
-   **example_pass**: No, I wasn't at home. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: No, I wasn't at home.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
@@ -348,7 +348,7 @@
    **hidden_prompt**: "user says 'I wasn't + adjective'"
    **hint_pt**: "I wasn't happy."
    **hint_en**: "I wasn't happy."
-   **example_pass**: I wasn't happy. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: I wasn't happy.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
@@ -357,7 +357,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Were you at home?'"
    **hint_pt**: "Were you home?"
    **hint_en**: "Were you home?"
-   **example_pass**: Were you home? | And you? | How about you?
+   **example_pass**: Were you home?
    **example_fail**: Yes I was (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Yesterday's mysteries solved!" quando obj_3 baterem.
@@ -461,7 +461,7 @@
    **hidden_prompt**: "user answers 'It was + adjective' (great/tiring/relaxing/busy)"
    **hint_pt**: "It was great!"
    **hint_en**: "It was great!"
-   **example_pass**: It was great. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: It was great.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
@@ -470,7 +470,7 @@
    **hidden_prompt**: "user asks 'How was yours?' or 'Were you busy?'"
    **hint_pt**: "How was yours?"
    **hint_en**: "How was yours?"
-   **example_pass**: How was yours? | And you? | How about you?
+   **example_pass**: How was yours?
    **example_fail**: It was great (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 3. **id**: 3
@@ -479,7 +479,7 @@
    **hidden_prompt**: "user asks 'Where were you?' or 'Where were you on Sunday?'"
    **hint_pt**: "Where were you?"
    **hint_en**: "Where were you?"
-   **example_pass**: Where were you? | And you? | How about you?
+   **example_pass**: Where were you?
    **example_fail**: I was at home (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte fecha com "Loved catching up!" quando obj_3 baterem.
@@ -516,7 +516,7 @@
    **hidden_prompt**: "user says 'I was at + place'"
    **hint_pt**: "I was at home."
    **hint_en**: "I was at home."
-   **example_pass**: I was at home. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: I was at home.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
@@ -525,7 +525,7 @@
    **hidden_prompt**: "user asks 'Where were you?'"
    **hint_pt**: "Where were you?"
    **hint_en**: "Where were you?"
-   **example_pass**: Where were you? | And you? | How about you?
+   **example_pass**: Where were you?
    **example_fail**: I was at home (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 3. **id**: 3
@@ -534,7 +534,7 @@
    **hidden_prompt**: "user asks 'How was your day/weekend?'"
    **hint_pt**: "How was your weekend?"
    **hint_en**: "How was your weekend?"
-   **example_pass**: How was your weekend? | And you? | How about you?
+   **example_pass**: How was your weekend?
    **example_fail**: It was great (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Weekend recap done!" quando obj_3 baterem.
@@ -638,7 +638,7 @@
    **hidden_prompt**: "user uses 'I was + place + X ago' or 'last year'"
    **hint_pt**: "I was in Rio a year ago."
    **hint_en**: "I was in Rio a year ago."
-   **example_pass**: I was in Rio a year ago. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: I was in Rio a year ago.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
@@ -647,7 +647,7 @@
    **hidden_prompt**: "user uses 'I was + state/place + last week/last month'"
    **hint_pt**: "I was on vacation last week."
    **hint_en**: "I was on vacation last week."
-   **example_pass**: I was on vacation last week. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: I was on vacation last week.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
@@ -656,7 +656,7 @@
    **hidden_prompt**: "user uses 'I was + state/place + in + year'"
    **hint_pt**: "I was in school in 2010."
    **hint_en**: "I was in school in 2010."
-   **example_pass**: I was in school in 2010. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: I was in school in 2010.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 **Closing cue**: Charlotte fecha com "Timeline locked in!" quando obj_3 baterem.
@@ -693,7 +693,7 @@
    **hidden_prompt**: "user says 'I was + place/state + in 2020'"
    **hint_pt**: "I was at university in 2020."
    **hint_en**: "I was at university in 2020."
-   **example_pass**: I was at university in 2020. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: I was at university in 2020.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
@@ -711,7 +711,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Where were you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Great timeline!" quando obj_3 baterem.
@@ -816,7 +816,7 @@
    **hidden_prompt**: "user says 'It was + adjective' or 'Life was + adjective'"
    **hint_pt**: "Life was simple."
    **hint_en**: "Life was simple."
-   **example_pass**: Life was simple. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: Life was simple.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
@@ -825,7 +825,7 @@
    **hidden_prompt**: "user says 'I was in + place' or 'We were in + place'"
    **hint_pt**: "I was in a small town."
    **hint_en**: "I was in a small town."
-   **example_pass**: I was in a small town. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: I was in a small town.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
@@ -834,7 +834,7 @@
    **hidden_prompt**: "user says 'My family was + adj' or 'My friends were + adj'"
    **hint_pt**: "My family was big and happy."
    **hint_en**: "My family was big and happy."
-   **example_pass**: My family was big and happy. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: My family was big and happy.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 **Closing cue**: Charlotte fecha com "Sweet memories!" quando obj_3 baterem.
@@ -871,7 +871,7 @@
    **hidden_prompt**: "user says 'I was + adj/state + 10 years ago'"
    **hint_pt**: "I was younger."
    **hint_en**: "I was younger."
-   **example_pass**: I was younger. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: I was younger.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
@@ -880,7 +880,7 @@
    **hidden_prompt**: "user says 'I was + place' or 'I was + role (student, etc.)'"
    **hint_pt**: "I was a student."
    **hint_en**: "I was a student."
-   **example_pass**: I was a student. | I was at the park yesterday. | We were at home last night.
+   **example_pass**: I was a student.
    **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
@@ -889,7 +889,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Were you the same?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Time changes us!" quando obj_3 baterem.

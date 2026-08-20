@@ -121,9 +121,7 @@
             "hidden_prompt": "user uses 'It was/is + person + who + clause'",
             "hint_en": "It was my mother who taught me to cook.",
             "examples_pass": [
-              "It was my mother who taught me to cook.",
-              "It was her dedication that impressed me most.",
-              "What I really value is honest feedback."
+              "It was my mother who taught me to cook."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -137,9 +135,7 @@
             "hidden_prompt": "user uses 'It was + time + that + clause'",
             "hint_en": "It was in college that I discovered my passion for writing.",
             "examples_pass": [
-              "It was in college that I discovered my passion for writing.",
-              "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction."
+              "It was in college that I discovered my passion for writing."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -153,9 +149,7 @@
             "hidden_prompt": "user uses 'It was at/in + place + that + clause'",
             "hint_en": "It was at a coffee shop in Lisbon that we first spoke.",
             "examples_pass": [
-              "It was at a coffee shop in Lisbon that we first spoke.",
-              "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend."
+              "It was at a coffee shop in Lisbon that we first spoke."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -186,9 +180,7 @@
             "hidden_prompt": "user uses 'It was + person + who + clause'",
             "hint_en": "It was a small founding team of three who built it.",
             "examples_pass": [
-              "It was a small founding team of three who built it.",
-              "It was her dedication that impressed me most.",
-              "What I really value is honest feedback."
+              "It was a small founding team of three who built it."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -202,9 +194,7 @@
             "hidden_prompt": "user uses 'It was + time + that + clause'",
             "hint_en": "It was over a weekend in 2019 that we finished the first version.",
             "examples_pass": [
-              "It was over a weekend in 2019 that we finished the first version.",
-              "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction."
+              "It was over a weekend in 2019 that we finished the first version."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -218,9 +208,7 @@
             "hidden_prompt": "user asks Charlotte a probing question back",
             "hint_en": "What do you want to know next?",
             "examples_pass": [
-              "What do you want to know next?",
-              "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend."
+              "What do you want to know next?"
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -335,9 +323,7 @@
             "hidden_prompt": "user uses 'What I need is + noun'",
             "hint_en": "What I need is a clear deadline and less micromanagement.",
             "examples_pass": [
-              "What I need is a clear deadline and less micromanagement.",
-              "It was her dedication that impressed me most.",
-              "What I really value is honest feedback."
+              "What I need is a clear deadline and less micromanagement."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -351,9 +337,7 @@
             "hidden_prompt": "user uses 'What surprised me was + element'",
             "hint_en": "What surprised me was how calm she stayed under pressure.",
             "examples_pass": [
-              "What surprised me was how calm she stayed under pressure.",
-              "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction."
+              "What surprised me was how calm she stayed under pressure."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -367,9 +351,7 @@
             "hidden_prompt": "user uses 'What I did was + base form'",
             "hint_en": "What I did was step away from the screen for an hour.",
             "examples_pass": [
-              "What I did was step away from the screen for an hour.",
-              "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend."
+              "What I did was step away from the screen for an hour."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -400,9 +382,7 @@
             "hidden_prompt": "user uses 'What I need is + noun/clause'",
             "hint_en": "What I need is two hours of uninterrupted focus.",
             "examples_pass": [
-              "What I need is two hours of uninterrupted focus.",
-              "It was her dedication that impressed me most.",
-              "What I really value is honest feedback."
+              "What I need is two hours of uninterrupted focus."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -416,9 +396,7 @@
             "hidden_prompt": "user uses 'What surprised/struck me was + element'",
             "hint_en": "What surprised me was how much I missed silence.",
             "examples_pass": [
-              "What surprised me was how much I missed silence.",
-              "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction."
+              "What surprised me was how much I missed silence."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -432,9 +410,7 @@
             "hidden_prompt": "user asks Charlotte what she needs",
             "hint_en": "What's missing from yours?",
             "examples_pass": [
-              "What's missing from yours?",
-              "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend."
+              "What's missing from yours?"
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -552,9 +528,7 @@
             "hidden_prompt": "user uses 'All I want is + noun/clause'",
             "hint_en": "All I want is a Friday without meetings.",
             "examples_pass": [
-              "All I want is a Friday without meetings.",
-              "It was her dedication that impressed me most.",
-              "What I really value is honest feedback."
+              "All I want is a Friday without meetings."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -568,9 +542,7 @@
             "hidden_prompt": "user uses 'All I did was + base form'",
             "hint_en": "All I did was ask one honest question.",
             "examples_pass": [
-              "All I did was ask one honest question.",
-              "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction."
+              "All I did was ask one honest question."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -584,9 +556,7 @@
             "hidden_prompt": "user uses 'All he/she/they did was + base form'",
             "hint_en": "All my boss did was nod and walk away.",
             "examples_pass": [
-              "All my boss did was nod and walk away.",
-              "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend."
+              "All my boss did was nod and walk away."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -617,9 +587,7 @@
             "hidden_prompt": "user uses 'All I want is + noun/clause'",
             "hint_en": "All I want is to feel less rushed in the mornings.",
             "examples_pass": [
-              "All I want is to feel less rushed in the mornings.",
-              "It was her dedication that impressed me most.",
-              "What I really value is honest feedback."
+              "All I want is to feel less rushed in the mornings."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -633,9 +601,7 @@
             "hidden_prompt": "user uses 'All I did was + base'",
             "hint_en": "All I did was start setting my alarm twenty minutes earlier.",
             "examples_pass": [
-              "All I did was start setting my alarm twenty minutes earlier.",
-              "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction."
+              "All I did was start setting my alarm twenty minutes earlier."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -649,9 +615,7 @@
             "hidden_prompt": "user asks Charlotte for one specific change she made",
             "hint_en": "What did you actually change?",
             "examples_pass": [
-              "What did you actually change?",
-              "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend."
+              "What did you actually change?"
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -767,8 +731,6 @@
             "hint_en": "It wasn't until I changed jobs that I understood how unhappy I had been.",
             "examples_pass": [
               "It wasn't until I changed jobs that I understood how unhappy I had been.",
-              "It was her dedication that impressed me most.",
-              "What I really value is honest feedback.",
               "It wasn't until I read the whole report that I understood what they were proposing.",
               "It wasn't until I started teaching that I really learned the material myself.",
               "It wasn't until the third meeting that anyone admitted the project was in trouble.",
@@ -787,8 +749,6 @@
             "hint_en": "It wasn't until 30 that I learned to cook properly.",
             "examples_pass": [
               "It wasn't until 30 that I learned to cook properly.",
-              "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction.",
               "It wasn't until my forties that I learned how to take a real holiday.",
               "It wasn't until last winter that the doctor finally gave me a proper diagnosis.",
               "It wasn't until 2018 that the company turned its first real profit.",
@@ -807,8 +767,6 @@
             "hint_en": "It wasn't until last week that my brother told me the whole story.",
             "examples_pass": [
               "It wasn't until last week that my brother told me the whole story.",
-              "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend.",
               "It wasn't until I read the whole report that I understood what they were proposing.",
               "It wasn't until I started teaching that I really learned the material myself.",
               "It wasn't until the third meeting that anyone admitted the project was in trouble.",
@@ -843,9 +801,7 @@
             "hidden_prompt": "user uses 'It wasn't until X that Y'",
             "hint_en": "It wasn't until I lost a friend that I started replying to texts on the same day.",
             "examples_pass": [
-              "It wasn't until X that Y — that's the one.",
-              "Honestly, It wasn't until X that Y sums it up.",
-              "Yeah, It wasn't until X that Y for sure."
+              "It wasn't until I lost a friend that I started replying to texts on the same day."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -878,8 +834,6 @@
             "hint_en": "What flipped the switch on sleep for you?",
             "examples_pass": [
               "What flipped the switch on sleep for you?",
-              "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -1000,8 +954,6 @@
             "hint_en": "The reason I started running is that my back wouldn't stop hurting.",
             "examples_pass": [
               "The reason I started running is that my back wouldn't stop hurting.",
-              "It was her dedication that impressed me most.",
-              "What I really value is honest feedback.",
               "The reason I left wasn't the salary — it was the silence after every difficult question.",
               "The reason this is taking so long is that no two people have agreed on the brief.",
               "The reason she's so good at this is that she's done it for fifteen years quietly.",
@@ -1020,8 +972,6 @@
             "hint_en": "The thing that kept me going was a single email from a stranger.",
             "examples_pass": [
               "The thing that kept me going was a single email from a stranger.",
-              "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction.",
               "The thing that kept me going through that year was a single line my therapist said.",
               "The thing that broke the team wasn't workload — it was the lack of honest feedback.",
               "The thing that finally made the difference was hiring one senior engineer.",
@@ -1040,8 +990,6 @@
             "hint_en": "The time when I felt most myself was the year I lived alone in Lisbon.",
             "examples_pass": [
               "The time when I felt most myself was the year I lived alone in Lisbon.",
-              "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend.",
               "The time when I felt most alive was the year I lived above a bakery in Lisbon.",
               "The place where I think most clearly is a small park near my old apartment.",
               "The moment when everything shifted was the morning I finally said no.",
@@ -1077,8 +1025,6 @@
             "hint_en": "The reason I write every morning is that I think better when nobody's watching.",
             "examples_pass": [
               "The reason I write every morning is that I think better when nobody's watching.",
-              "It was her dedication that impressed me most.",
-              "What I really value is honest feedback.",
               "The reason I left wasn't the salary — it was the silence after every difficult question.",
               "The reason she's so good at this is that she's been doing it quietly for fifteen years.",
               "The reason the project failed is that nobody owned the integration layer end-to-end.",
@@ -1097,8 +1043,6 @@
             "hint_en": "The thing that changed me most was my first proper failure.",
             "examples_pass": [
               "The thing that changed me most was my first proper failure.",
-              "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction.",
               "The thing that kept me going through that year was a single line my therapist said.",
               "The thing that broke the team wasn't workload — it was the lack of honest feedback.",
               "The thing that finally made the difference was hiring one senior engineer.",
@@ -1116,6 +1060,7 @@
             "hidden_prompt": "user asks Charlotte about her teacher",
             "hint_en": "Who was the teacher?",
             "examples_pass": [
+              "Who was the teacher?",
               "And you?",
               "What about you?",
               "How about yourself?",

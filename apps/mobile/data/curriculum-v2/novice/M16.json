@@ -178,9 +178,7 @@
             "hint_pt": "I saw the beach.",
             "hint_en": "I saw the beach.",
             "examples_pass": [
-              "I saw the beach.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "I saw the beach."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -267,9 +265,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -533,9 +529,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -796,9 +790,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1026,9 +1018,7 @@
             "hint_pt": "I read the news.",
             "hint_en": "I read the news.",
             "examples_pass": [
-              "I read the news.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "I read the news."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -1062,9 +1052,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1289,9 +1277,7 @@
             "hint_pt": "I went to Italy.",
             "hint_en": "I went to Italy.",
             "examples_pass": [
-              "I went to Italy.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "I went to Italy."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -1325,9 +1311,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",

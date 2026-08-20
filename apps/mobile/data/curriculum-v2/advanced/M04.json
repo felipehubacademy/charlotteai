@@ -123,8 +123,6 @@
             "hint_en": "I suggest that the proposal be reviewed by an external auditor.",
             "examples_pass": [
               "I suggest that the proposal be reviewed by an external auditor.",
-              "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more.",
               "I suggest that the new policy be reviewed by an external advisor before rollout.",
               "I would suggest that every proposal be circulated at least 48 hours in advance.",
               "I propose that the draft be sent to legal for one final check.",
@@ -143,8 +141,6 @@
             "hint_en": "I recommend that the team adopt a stricter review process.",
             "examples_pass": [
               "I recommend that the team adopt a stricter review process.",
-              "I suggest that she take a break.",
-              "If I were in your position, I would speak up.",
               "I recommend that the team adopt a stricter code-review cadence.",
               "I recommend that we hire a fractional CFO before the next fundraise.",
               "Our legal counsel recommends that the company disclose the incident promptly.",
@@ -163,8 +159,6 @@
             "hint_en": "I insist that every member be informed before the vote.",
             "examples_pass": [
               "I insist that every member be informed before the vote.",
-              "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately.",
               "I insist that every team member be present for the postmortem on Friday.",
               "The board demands that every transaction over fifty thousand be approved in writing.",
               "I insist that the contract be reviewed by our lawyer before we sign anything.",
@@ -200,8 +194,6 @@
             "hint_en": "I recommend that every candidate be interviewed by at least three panel members.",
             "examples_pass": [
               "I recommend that every candidate be interviewed by at least three panel members.",
-              "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more.",
               "I suggest that the policy be reviewed by an external advisor before rollout.",
               "I propose that every senior hire spend their first week in customer support.",
               "Our legal team recommends that the disclosure be made before the press cycle picks it up."
@@ -219,8 +211,6 @@
             "hint_en": "I also propose that hiring criteria be made public on the company website.",
             "examples_pass": [
               "I also propose that hiring criteria be made public on the company website.",
-              "I suggest that she take a break.",
-              "If I were in your position, I would speak up.",
               "I recommend that every candidate be interviewed by at least three panel members.",
               "I suggest that the policy be reviewed by an external advisor before rollout.",
               "I propose that every senior hire spend their first week in customer support.",
@@ -239,8 +229,6 @@
             "hint_en": "Will you bring it to a vote?",
             "examples_pass": [
               "Will you bring it to a vote?",
-              "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -358,8 +346,6 @@
             "hint_en": "It is essential that every employee receive proper training.",
             "examples_pass": [
               "It is essential that every employee receive proper training.",
-              "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more.",
               "It is essential that every new hire receive proper onboarding within the first week.",
               "It is essential that the leadership team be aligned before we communicate externally.",
               "It is essential that every user be informed before we change the pricing model.",
@@ -378,8 +364,6 @@
             "hint_en": "It is vital that confidential data be protected at all times.",
             "examples_pass": [
               "It is vital that confidential data be protected at all times.",
-              "I suggest that she take a break.",
-              "If I were in your position, I would speak up.",
               "It is vital that confidential information be handled with extreme care.",
               "It is vital that the timeline be respected by every department involved.",
               "It is vital that customer feedback be incorporated into the next iteration.",
@@ -398,8 +382,6 @@
             "hint_en": "It is imperative that the process remain transparent.",
             "examples_pass": [
               "It is imperative that the process remain transparent.",
-              "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately.",
               "It is imperative that the process remain transparent at every stage.",
               "It is imperative that every employee complete the compliance training by month-end.",
               "It is imperative that the source code never be shared outside the company network.",
@@ -435,8 +417,6 @@
             "hint_en": "It is essential that every voice be heard in team decisions.",
             "examples_pass": [
               "It is essential that every voice be heard in team decisions.",
-              "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more.",
               "It is essential that every voice be heard during team decisions, not just the loudest ones.",
               "It is crucial that feedback be given respectfully and in private, not in a group setting.",
               "It is vital that the leadership team be aligned before the announcement is communicated externally.",
@@ -455,8 +435,6 @@
             "hint_en": "It is crucial that feedback be given respectfully and in private.",
             "examples_pass": [
               "It is crucial that feedback be given respectfully and in private.",
-              "I suggest that she take a break.",
-              "If I were in your position, I would speak up.",
               "It is essential that every voice be heard during team decisions, not just the loudest ones.",
               "It is crucial that feedback be given respectfully and in private, not in a group setting.",
               "It is vital that the leadership team be aligned before the announcement is communicated externally.",
@@ -475,8 +453,6 @@
             "hint_en": "What would you add?",
             "examples_pass": [
               "What would you add?",
-              "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -592,9 +568,7 @@
             "hidden_prompt": "user uses 'I wish I/he/she/it were + element'",
             "hint_en": "I wish I were better at saying no.",
             "examples_pass": [
-              "I wish I were better at saying no.",
-              "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more."
+              "I wish I were better at saying no."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -608,9 +582,7 @@
             "hidden_prompt": "user uses 'If I were you, I would + base'",
             "hint_en": "If I were you, I'd take the longer view.",
             "examples_pass": [
-              "If I were you, I'd take the longer view.",
-              "I suggest that she take a break.",
-              "If I were in your position, I would speak up."
+              "If I were you, I'd take the longer view."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -624,9 +596,7 @@
             "hidden_prompt": "user uses 'X acts/talks/looks as if + subject + were'",
             "hint_en": "He talks as if he were already in charge.",
             "examples_pass": [
-              "He talks as if he were already in charge.",
-              "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately."
+              "He talks as if he were already in charge."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -657,9 +627,7 @@
             "hidden_prompt": "user uses 'I wish I were + element'",
             "hint_en": "I wish I were less attached to my phone.",
             "examples_pass": [
-              "I wish I were less attached to my phone.",
-              "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more."
+              "I wish I were less attached to my phone."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -673,9 +641,7 @@
             "hidden_prompt": "user uses 'If I were + element/person'",
             "hint_en": "If I were braver, I'd already have deleted the apps.",
             "examples_pass": [
-              "If I were braver, I'd already have deleted the apps.",
-              "I suggest that she take a break.",
-              "If I were in your position, I would speak up."
+              "If I were braver, I'd already have deleted the apps."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -689,9 +655,7 @@
             "hidden_prompt": "user asks Charlotte if she's tried becoming a morning person",
             "hint_en": "Have you tried becoming one?",
             "examples_pass": [
-              "Have you tried becoming one?",
-              "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately."
+              "Have you tried becoming one?"
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -806,9 +770,7 @@
             "hidden_prompt": "user uses 'Be that as it may, + clause'",
             "hint_en": "Be that as it may, the deadline is non-negotiable.",
             "examples_pass": [
-              "Be that as it may, the deadline is non-negotiable.",
-              "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more."
+              "Be that as it may, the deadline is non-negotiable."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -822,9 +784,7 @@
             "hidden_prompt": "user uses 'Come what may, + clause'",
             "hint_en": "Come what may, I'll see this through to the end.",
             "examples_pass": [
-              "Come what may, I'll see this through to the end.",
-              "I suggest that she take a break.",
-              "If I were in your position, I would speak up."
+              "Come what may, I'll see this through to the end."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -838,9 +798,7 @@
             "hidden_prompt": "user uses 'Suffice it to say...' or 'lest + subjunctive'",
             "hint_en": "Suffice it to say, the meeting did not go well.",
             "examples_pass": [
-              "Suffice it to say, the meeting did not go well.",
-              "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately."
+              "Suffice it to say, the meeting did not go well."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -887,9 +845,7 @@
             "hidden_prompt": "user uses 'Suffice it to say' or 'lest + subjunctive'",
             "hint_en": "Suffice it to say, the grammar still surprises me weekly.",
             "examples_pass": [
-              "Suffice it to say, the grammar still surprises me weekly.",
-              "Suffice it to say — that's the one.",
-              "Honestly, Suffice it to say sums it up."
+              "Suffice it to say, the grammar still surprises me weekly."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -903,9 +859,7 @@
             "hidden_prompt": "user asks Charlotte how she keeps her own English sharp",
             "hint_en": "How do you keep yours sharp?",
             "examples_pass": [
-              "How do you keep yours sharp?",
-              "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately."
+              "How do you keep yours sharp?"
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -1014,9 +968,7 @@
             "hidden_prompt": "user uses 'suggest/recommend/insist that + subject + base'",
             "hint_en": "I recommend that the proposal be revised before the next meeting.",
             "examples_pass": [
-              "I recommend that the proposal be revised before the next meeting.",
-              "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more."
+              "I recommend that the proposal be revised before the next meeting."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -1030,9 +982,7 @@
             "hidden_prompt": "user uses 'If I/he/she were' or 'I wish I were'",
             "hint_en": "If I were in charge, I'd cancel half the meetings.",
             "examples_pass": [
-              "If I were in charge, I'd cancel half the meetings.",
-              "I suggest that she take a break.",
-              "If I were in your position, I would speak up."
+              "If I were in charge, I'd cancel half the meetings."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -1079,9 +1029,7 @@
             "hidden_prompt": "user uses 'I would recommend that + subject + base'",
             "hint_en": "I would recommend that we establish clearer ownership for each deliverable.",
             "examples_pass": [
-              "I would recommend that we establish clearer ownership for each deliverable.",
-              "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more."
+              "I would recommend that we establish clearer ownership for each deliverable."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -1095,9 +1043,7 @@
             "hidden_prompt": "user uses 'If I were... I would'",
             "hint_en": "If I were her manager, I'd ask a direct question before assuming intent.",
             "examples_pass": [
-              "If I were her manager, I'd ask a direct question before assuming intent.",
-              "I suggest that she take a break.",
-              "If I were in your position, I would speak up."
+              "If I were her manager, I'd ask a direct question before assuming intent."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -1111,9 +1057,7 @@
             "hidden_prompt": "user asks Charlotte how she'd open the conversation",
             "hint_en": "How would you open it?",
             "examples_pass": [
-              "How would you open it?",
-              "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately."
+              "How would you open it?"
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",

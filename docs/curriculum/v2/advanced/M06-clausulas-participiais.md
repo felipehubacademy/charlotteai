@@ -86,7 +86,7 @@
    **hidden_prompt**: "user uses '-ing clause + main clause with same subject'"
    **hint_pt**: "Walking to work this morning, I realised I'd left my laptop at home."
    **hint_en**: "Walking to work this morning, I realised I'd left my laptop at home."
-   **example_pass**: Walking to work this morning, I realised I'd left my laptop at home. | Having finished the report, I sent it to my boss. | Built in 1900, the house still stands strong. | Walking through the old neighbourhood, I realised how much had changed. | Reading her resignation letter, I understood why she had been so quiet for weeks. | Driving back from the airport, I started planning the next trip. | Reviewing the numbers on the train, I knew the meeting would not go well.
+   **example_pass**: Walking to work this morning, I realised I'd left my laptop at home. | Walking through the old neighbourhood, I realised how much had changed. | Reading her resignation letter, I understood why she had been so quiet for weeks. | Driving back from the airport, I started planning the next trip. | Reviewing the numbers on the train, I knew the meeting would not go well.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 2. **id**: 2
@@ -95,7 +95,7 @@
    **hidden_prompt**: "user uses '-ing clause' for ongoing background"
    **hint_pt**: "Sitting in the café, I overheard a strange conversation."
    **hint_en**: "Sitting in the café, I overheard a strange conversation."
-   **example_pass**: Sitting in the café, I overheard a strange conversation. | Surprised by the news, she sat down quietly. | Walking through the park, I noticed the autumn colours. | Sitting in the back of the room, I noticed details the others had missed. | Standing on the balcony, I watched the entire neighbourhood wake up. | Waiting for the train, I overheard the most extraordinary conversation. | Working from a café that morning, I lost track of time entirely.
+   **example_pass**: Sitting in the café, I overheard a strange conversation. | Sitting in the back of the room, I noticed details the others had missed. | Standing on the balcony, I watched the entire neighbourhood wake up. | Waiting for the train, I overheard the most extraordinary conversation. | Working from a café that morning, I lost track of time entirely.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 3. **id**: 3
@@ -104,7 +104,7 @@
    **hidden_prompt**: "user uses '-ing clause' as causal"
    **hint_pt**: "Knowing she was tired, I offered to drive."
    **hint_en**: "Knowing she was tired, I offered to drive."
-   **example_pass**: Knowing she was tired, I offered to drive. | Exhausted from the trip, we slept for ten hours. | Knowing the risks, he proceeded carefully. | Knowing how stubborn he is, I sent the email and didn't expect a reply. | Realising the deadline had shifted, I cancelled my evening plans. | Sensing the tension in the room, she changed her approach entirely. | Understanding the stakes, she chose her words very carefully.
+   **example_pass**: Knowing she was tired, I offered to drive. | Knowing how stubborn he is, I sent the email and didn't expect a reply. | Realising the deadline had shifted, I cancelled my evening plans. | Sensing the tension in the room, she changed her approach entirely. | Understanding the stakes, she chose her words very carefully.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Three openings, three compressions." once obj_3 lands.
@@ -141,7 +141,7 @@
    **hidden_prompt**: "user uses '-ing clause + main clause'"
    **hint_pt**: "Walking through my neighbourhood, I noticed three new cafés had appeared."
    **hint_en**: "Walking through my neighbourhood, I noticed three new cafés had appeared."
-   **example_pass**: Walking through my neighbourhood, I noticed three new cafés had appeared. | Having finished the report, I sent it to my boss. | Built in 1900, the house still stands strong. | Walking through my old neighbourhood, I noticed three new cafés that hadn't been there last year. | Crossing the bridge that morning, I realised I hadn't done that walk in nearly a decade. | Reading her email on the train, I understood why the team had been so quiet for weeks. | Driving back from the airport, I started planning the next trip before I'd even unpacked.
+   **example_pass**: Walking through my neighbourhood, I noticed three new cafés had appeared. | Walking through my old neighbourhood, I noticed three new cafés that hadn't been there last year. | Crossing the bridge that morning, I realised I hadn't done that walk in nearly a decade. | Reading her email on the train, I understood why the team had been so quiet for weeks. | Driving back from the airport, I started planning the next trip before I'd even unpacked.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 2. **id**: 2
@@ -150,7 +150,7 @@
    **hidden_prompt**: "user uses another participle clause"
    **hint_pt**: "Crossing the bridge, I realised I hadn't done that walk in years."
    **hint_en**: "Crossing the bridge, I realised I hadn't done that walk in years."
-   **example_pass**: Crossing the bridge, I realised I hadn't done that walk in years. | Surprised by the news, she sat down quietly. | Walking through the park, I noticed the autumn colours. | Walking through my old neighbourhood, I noticed three new cafés that hadn't been there last year. | Crossing the bridge that morning, I realised I hadn't done that walk in nearly a decade. | Reading her email on the train, I understood why the team had been so quiet for weeks. | Driving back from the airport, I started planning the next trip before I'd even unpacked.
+   **example_pass**: Crossing the bridge, I realised I hadn't done that walk in years. | Walking through my old neighbourhood, I noticed three new cafés that hadn't been there last year. | Crossing the bridge that morning, I realised I hadn't done that walk in nearly a decade. | Reading her email on the train, I understood why the team had been so quiet for weeks. | Driving back from the airport, I started planning the next trip before I'd even unpacked.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 3. **id**: 3
@@ -159,7 +159,7 @@
    **hidden_prompt**: "user asks Charlotte more about her school walk"
    **hint_pt**: "What changed at your school?"
    **hint_en**: "What changed at your school?"
-   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What changed at your school?
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Vignettes, properly opened." once obj_3 lands.
@@ -239,7 +239,7 @@
    **hidden_prompt**: "user uses 'Built/Made/Designed + by/in + clause + main'"
    **hint_pt**: "Built in 1872, the old town hall still hosts weekly markets."
    **hint_en**: "Built in 1872, the old town hall still hosts weekly markets."
-   **example_pass**: Built in 1872, the old town hall still hosts weekly markets. | Having finished the report, I sent it to my boss. | Built in 1900, the house still stands strong. | Built in the 1920s, the building still has all its original woodwork. | Designed by a young architect from Lisbon, the museum opened to immediate acclaim. | Made entirely by hand in a small village, each instrument carries the maker's signature. | Founded in 1948 by three university friends, the company still operates from the same address.
+   **example_pass**: Built in 1872, the old town hall still hosts weekly markets. | Built in the 1920s, the building still has all its original woodwork. | Designed by a young architect from Lisbon, the museum opened to immediate acclaim. | Made entirely by hand in a small village, each instrument carries the maker's signature. | Founded in 1948 by three university friends, the company still operates from the same address.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 2. **id**: 2
@@ -248,7 +248,7 @@
    **hidden_prompt**: "user uses 'Born + place/time, + main clause'"
    **hint_pt**: "Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms."
    **hint_en**: "Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms."
-   **example_pass**: Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms. | Surprised by the news, she sat down quietly. | Walking through the park, I noticed the autumn colours. | Born in Recife and raised in São Paulo, she carries traces of both cities in her speech. | Born in the middle of a snowstorm, she's been told the story every winter of her life. | Born in a small fishing town and educated in Paris, he moves between worlds with ease. | Born just after the war, my grandfather grew up with stories nobody wanted to tell twice.
+   **example_pass**: Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms. | Born in Recife and raised in São Paulo, she carries traces of both cities in her speech. | Born in the middle of a snowstorm, she's been told the story every winter of her life. | Born in a small fishing town and educated in Paris, he moves between worlds with ease. | Born just after the war, my grandfather grew up with stories nobody wanted to tell twice.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 3. **id**: 3
@@ -257,7 +257,7 @@
    **hidden_prompt**: "user uses another past participle opener"
    **hint_pt**: "Surrounded by trees on three sides, the cabin is invisible from the road."
    **hint_en**: "Surrounded by trees on three sides, the cabin is invisible from the road."
-   **example_pass**: Surrounded by trees on three sides, the cabin is invisible from the road. | Exhausted from the trip, we slept for ten hours. | Knowing the risks, he proceeded carefully. | Tucked between two larger buildings, the bookshop is easy to miss the first time. | Surrounded by olive trees, the small house has been in the family for four generations. | Written in a single weekend, the script went on to win three awards. | Hidden in a folder nobody had opened in years, the document settled the entire dispute.
+   **example_pass**: Surrounded by trees on three sides, the cabin is invisible from the road. | Tucked between two larger buildings, the bookshop is easy to miss the first time. | Surrounded by olive trees, the small house has been in the family for four generations. | Written in a single weekend, the script went on to win three awards. | Hidden in a folder nobody had opened in years, the document settled the entire dispute.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Compressions, descriptive grade." once obj_3 lands.
@@ -294,7 +294,7 @@
    **hidden_prompt**: "user uses 'Past participle clause, + main'"
    **hint_pt**: "Built in the 1930s, my building has the kind of doors they don't make anymore."
    **hint_en**: "Built in the 1930s, my building has the kind of doors they don't make anymore."
-   **example_pass**: Built in the 1930s, my building has the kind of doors they don't make anymore. | Having finished the report, I sent it to my boss. | Built in 1900, the house still stands strong. | Built in the 1930s, my building has the kind of doors they simply don't make anymore. | Raised on her grandmother's stories, my daughter now tells better ones than I do. | Tucked between two larger buildings, the small bookshop is easy to miss the first time. | Written in a single weekend, the script went on to win three awards over the following year.
+   **example_pass**: Built in the 1930s, my building has the kind of doors they don't make anymore. | Built in the 1930s, my building has the kind of doors they simply don't make anymore. | Raised on her grandmother's stories, my daughter now tells better ones than I do. | Tucked between two larger buildings, the small bookshop is easy to miss the first time. | Written in a single weekend, the script went on to win three awards over the following year.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 2. **id**: 2
@@ -303,7 +303,7 @@
    **hidden_prompt**: "user uses another past participle compression"
    **hint_pt**: "Raised on her grandmother's stories, my daughter now tells better ones than I do."
    **hint_en**: "Raised on her grandmother's stories, my daughter now tells better ones than I do."
-   **example_pass**: Raised on her grandmother's stories, my daughter now tells better ones than I do. | Surprised by the news, she sat down quietly. | Walking through the park, I noticed the autumn colours. | Built in the 1930s, my building has the kind of doors they simply don't make anymore. | Tucked between two larger buildings, the small bookshop is easy to miss the first time. | Written in a single weekend, the script went on to win three awards over the following year.
+   **example_pass**: Raised on her grandmother's stories, my daughter now tells better ones than I do. | Built in the 1930s, my building has the kind of doors they simply don't make anymore. | Tucked between two larger buildings, the small bookshop is easy to miss the first time. | Written in a single weekend, the script went on to win three awards over the following year.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 3. **id**: 3
@@ -312,7 +312,7 @@
    **hidden_prompt**: "user asks Charlotte more about the bookshop"
    **hint_pt**: "Does the monk still work there?"
    **hint_en**: "Does the monk still work there?"
-   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: Does the monk still work there?
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Places and people, opened in passive." once obj_3 lands.
@@ -391,7 +391,7 @@
    **hidden_prompt**: "user uses 'Having + past participle + main clause'"
    **hint_pt**: "Having finished my morning run, I felt ready for the meeting."
    **hint_en**: "Having finished my morning run, I felt ready for the meeting."
-   **example_pass**: Having finished my morning run, I felt ready for the meeting. | Having finished the report, I sent it to my boss. | Built in 1900, the house still stands strong. | Having finished the report, I finally allowed myself a proper weekend. | Having reviewed every option, the board chose the safest path forward. | Having lived in three different countries, she finds it hard to call any one place home. | Having spent a year on the project, none of us were willing to walk away from it.
+   **example_pass**: Having finished my morning run, I felt ready for the meeting. | Having finished the report, I finally allowed myself a proper weekend. | Having reviewed every option, the board chose the safest path forward. | Having lived in three different countries, she finds it hard to call any one place home. | Having spent a year on the project, none of us were willing to walk away from it.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 2. **id**: 2
@@ -400,7 +400,7 @@
    **hidden_prompt**: "user uses 'Having + past participle' for long experience"
    **hint_pt**: "Having worked from home for two years, I forgot how loud offices are."
    **hint_en**: "Having worked from home for two years, I forgot how loud offices are."
-   **example_pass**: Having worked from home for two years, I forgot how loud offices are. | Surprised by the news, she sat down quietly. | Walking through the park, I noticed the autumn colours. | Having worked in finance for twenty years, she could spot a bad deal from a single slide. | Having taught at three universities, he had stopped being surprised by anything students said. | Having lived through two recessions, my father trusts very little in the markets. | Having raised three children largely on her own, she could handle almost anything.
+   **example_pass**: Having worked from home for two years, I forgot how loud offices are. | Having worked in finance for twenty years, she could spot a bad deal from a single slide. | Having taught at three universities, he had stopped being surprised by anything students said. | Having lived through two recessions, my father trusts very little in the markets. | Having raised three children largely on her own, she could handle almost anything.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 3. **id**: 3
@@ -409,7 +409,7 @@
    **hidden_prompt**: "user uses 'Having said that, + clause'"
    **hint_pt**: "I disagree with him on most things. Having said that, he's a good colleague."
    **hint_en**: "I disagree with him on most things. Having said that, he's a good colleague."
-   **example_pass**: I disagree with him on most things. Having said that, he's a good colleague. | Exhausted from the trip, we slept for ten hours. | Knowing the risks, he proceeded carefully. | The data is encouraging. Having said that, we should still be cautious with the rollout. | I admire her ambition. Having said that, she takes on far too much at once. | The product is well-designed. Having said that, the onboarding is genuinely confusing. | I trust the team. Having said that, I'd still like a second pair of eyes on the contract.
+   **example_pass**: I disagree with him on most things. Having said that, he's a good colleague. | The data is encouraging. Having said that, we should still be cautious with the rollout. | I admire her ambition. Having said that, she takes on far too much at once. | The product is well-designed. Having said that, the onboarding is genuinely confusing. | I trust the team. Having said that, I'd still like a second pair of eyes on the contract.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Sequenced and shaded." once obj_3 lands.
@@ -446,7 +446,7 @@
    **hidden_prompt**: "user uses 'Having + past participle + clause'"
    **hint_pt**: "Having managed people for ten years, I finally learned to stop solving for them."
    **hint_en**: "Having managed people for ten years, I finally learned to stop solving for them."
-   **example_pass**: Having managed people for ten years, I finally learned to stop solving for them. | Having finished the report, I sent it to my boss. | Built in 1900, the house still stands strong. | Having managed people for ten years, I finally learned to stop solving problems for them. | Having worked from home for three years, I forgot how loud open offices really are. | Having raised three children largely on her own, she could handle almost anything thrown at her. | Having lived through two recessions, my father trusts very little in market commentary.
+   **example_pass**: Having managed people for ten years, I finally learned to stop solving for them. | Having managed people for ten years, I finally learned to stop solving problems for them. | Having worked from home for three years, I forgot how loud open offices really are. | Having raised three children largely on her own, she could handle almost anything thrown at her. | Having lived through two recessions, my father trusts very little in market commentary.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 2. **id**: 2
@@ -455,7 +455,7 @@
    **hidden_prompt**: "user uses 'Having said that, + clause'"
    **hint_pt**: "Having said that, every team still finds a way to surprise me."
    **hint_en**: "Having said that, every team still finds a way to surprise me."
-   **example_pass**: Having said that, every team still finds a way to surprise me. | Surprised by the news, she sat down quietly. | Walking through the park, I noticed the autumn colours. | The data is encouraging. Having said that, we should still be cautious with the rollout. | I admire her ambition. Having said that, she takes on far too much at once. | The product is well-designed. Having said that, the onboarding is genuinely confusing. | I trust the team. Having said that, I'd still like a second pair of eyes on the contract.
+   **example_pass**: Having said that, every team still finds a way to surprise me. | The data is encouraging. Having said that, we should still be cautious with the rollout. | I admire her ambition. Having said that, she takes on far too much at once. | The product is well-designed. Having said that, the onboarding is genuinely confusing. | I trust the team. Having said that, I'd still like a second pair of eyes on the contract.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 3. **id**: 3
@@ -464,7 +464,7 @@
    **hidden_prompt**: "user asks Charlotte for one specific student lesson"
    **hint_pt**: "What did students teach you?"
    **hint_en**: "What did students teach you?"
-   **example_pass**: What did students teach you? | Exhausted from the trip, we slept for ten hours. | Knowing the risks, he proceeded carefully. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What did students teach you?
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Experience, properly placed." once obj_3 lands.
@@ -543,7 +543,7 @@
    **hidden_prompt**: "user uses 'Having been raised/educated/taught + clause'"
    **hint_pt**: "Having been raised by two musicians, I can't imagine a quiet house."
    **hint_en**: "Having been raised by two musicians, I can't imagine a quiet house."
-   **example_pass**: Having been raised by two musicians, I can't imagine a quiet house. | Having finished the report, I sent it to my boss. | Built in 1900, the house still stands strong. | Having been raised in a bilingual household, she switches between languages without noticing. | Having been educated entirely abroad, he sometimes struggles with cultural references at home. | Having been taught by a famously demanding professor, I learned to write very, very carefully. | Having been brought up in a small town, she still finds large cities slightly overwhelming.
+   **example_pass**: Having been raised by two musicians, I can't imagine a quiet house. | Having been raised in a bilingual household, she switches between languages without noticing. | Having been educated entirely abroad, he sometimes struggles with cultural references at home. | Having been taught by a famously demanding professor, I learned to write very, very carefully. | Having been brought up in a small town, she still finds large cities slightly overwhelming.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 2. **id**: 2
@@ -561,7 +561,7 @@
    **hidden_prompt**: "user uses 'Having been + past participle' for repeated event"
    **hint_pt**: "Having been overlooked at three previous companies, she finally spoke up at this one."
    **hint_en**: "Having been overlooked at three previous companies, she finally spoke up at this one."
-   **example_pass**: Having been overlooked at three previous companies, she finally spoke up at this one. | Exhausted from the trip, we slept for ten hours. | Knowing the risks, he proceeded carefully. | Having been overlooked for promotion twice, she finally asked the question directly. | Having been turned down at three labs, he began to question whether the field was right for him. | Having been let down before, she didn't really expect a reply this time either. | Having been criticised in every previous review, he came in genuinely surprised by the praise.
+   **example_pass**: Having been overlooked at three previous companies, she finally spoke up at this one. | Having been overlooked for promotion twice, she finally asked the question directly. | Having been turned down at three labs, he began to question whether the field was right for him. | Having been let down before, she didn't really expect a reply this time either. | Having been criticised in every previous review, he came in genuinely surprised by the praise.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Passive past, present self." once obj_3 lands.
@@ -598,7 +598,7 @@
    **hidden_prompt**: "user uses 'Having been + past participle + by + person'"
    **hint_pt**: "Having been taught patience by my grandfather, I find rushing strange."
    **hint_en**: "Having been taught patience by my grandfather, I find rushing strange."
-   **example_pass**: Having been taught patience by my grandfather, I find rushing strange. | Having finished the report, I sent it to my boss. | Built in 1900, the house still stands strong. | Having been taught patience by my grandfather, I find a lot of modern hurry slightly strange. | Having been pushed too hard early in my own career, I now coach my team much more gently. | Having been raised in a bilingual household, she still switches between languages without noticing. | Having been told the same story by three different people, I finally started to believe it.
+   **example_pass**: Having been taught patience by my grandfather, I find rushing strange. | Having been taught patience by my grandfather, I find a lot of modern hurry slightly strange. | Having been pushed too hard early in my own career, I now coach my team much more gently. | Having been raised in a bilingual household, she still switches between languages without noticing. | Having been told the same story by three different people, I finally started to believe it.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 2. **id**: 2
@@ -607,7 +607,7 @@
    **hidden_prompt**: "user uses another 'Having been + past participle'"
    **hint_pt**: "Having been pushed too hard early on, I now coach my team gently."
    **hint_en**: "Having been pushed too hard early on, I now coach my team gently."
-   **example_pass**: Having been pushed too hard early on, I now coach my team gently. | Surprised by the news, she sat down quietly. | Walking through the park, I noticed the autumn colours. | Having been taught patience by my grandfather, I find a lot of modern hurry slightly strange. | Having been pushed too hard early in my own career, I now coach my team much more gently. | Having been raised in a bilingual household, she still switches between languages without noticing. | Having been told the same story by three different people, I finally started to believe it.
+   **example_pass**: Having been pushed too hard early on, I now coach my team gently. | Having been taught patience by my grandfather, I find a lot of modern hurry slightly strange. | Having been pushed too hard early in my own career, I now coach my team much more gently. | Having been raised in a bilingual household, she still switches between languages without noticing. | Having been told the same story by three different people, I finally started to believe it.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 3. **id**: 3
@@ -616,7 +616,7 @@
    **hidden_prompt**: "user asks Charlotte about her mentor's edits"
    **hint_pt**: "What did she edit out?"
    **hint_en**: "What did she edit out?"
-   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What did she edit out?
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Inheritance, in passive voice." once obj_3 lands.
@@ -695,7 +695,7 @@
    **hidden_prompt**: "user uses 'the X + -ing'"
    **hint_pt**: "The woman standing at the bar gave me a long look."
    **hint_en**: "The woman standing at the bar gave me a long look."
-   **example_pass**: The woman standing at the bar gave me a long look. | Having finished the report, I sent it to my boss. | Built in 1900, the house still stands strong. | The man sitting alone at the bar barely looked up the whole evening. | The woman organising the conference managed three crises before lunch. | The candidate interviewing for the role asked sharper questions than anyone else on the panel. | The team designing the new product has more autonomy than any group I've worked with.
+   **example_pass**: The woman standing at the bar gave me a long look. | The man sitting alone at the bar barely looked up the whole evening. | The woman organising the conference managed three crises before lunch. | The candidate interviewing for the role asked sharper questions than anyone else on the panel. | The team designing the new product has more autonomy than any group I've worked with.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 2. **id**: 2
@@ -704,7 +704,7 @@
    **hidden_prompt**: "user uses 'the X + past participle'"
    **hint_pt**: "The letter sent last week never reached him."
    **hint_en**: "The letter sent last week never reached him."
-   **example_pass**: The letter sent last week never reached him. | Surprised by the news, she sat down quietly. | Walking through the park, I noticed the autumn colours. | The letter sent last Tuesday still hasn't received a reply. | The proposal submitted in March was finally approved last week. | The candidate selected for the role had been quietly recommended by three previous managers. | The article published yesterday has already changed the tone of the debate.
+   **example_pass**: The letter sent last week never reached him. | The letter sent last Tuesday still hasn't received a reply. | The proposal submitted in March was finally approved last week. | The candidate selected for the role had been quietly recommended by three previous managers. | The article published yesterday has already changed the tone of the debate.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 3. **id**: 3
@@ -713,7 +713,7 @@
    **hidden_prompt**: "user uses 'With + noun + -ing/-ed, + main clause'"
    **hint_pt**: "With my hands shaking, I signed the agreement."
    **hint_en**: "With my hands shaking, I signed the agreement."
-   **example_pass**: With my hands shaking, I signed the agreement. | Exhausted from the trip, we slept for ten hours. | Knowing the risks, he proceeded carefully. | With the deadline approaching, the whole team stayed late three nights in a row. | With my hands trembling, I signed the agreement without reading it twice. | With the market shifting underneath us, every assumption had to be re-examined. | With everything packed and the keys returned, the apartment finally felt like someone else's.
+   **example_pass**: With my hands shaking, I signed the agreement. | With the deadline approaching, the whole team stayed late three nights in a row. | With my hands trembling, I signed the agreement without reading it twice. | With the market shifting underneath us, every assumption had to be re-examined. | With everything packed and the keys returned, the apartment finally felt like someone else's.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Compressions, sharp and clear." once obj_3 lands.
@@ -750,7 +750,7 @@
    **hidden_prompt**: "user uses past participle reduced relative for scene"
    **hint_pt**: "The park, lit only by a single streetlight, is where I called my mother."
    **hint_en**: "The park, lit only by a single streetlight, is where I called my mother."
-   **example_pass**: The park, lit only by a single streetlight, is where I called my mother. | Having finished the report, I sent it to my boss. | Built in 1900, the house still stands strong. | The park, lit only by a single streetlight, is where I called my mother to tell her I had quit. | The café, run by the same family for three generations, still felt exactly as it had when I was a student. | The bookshop, hidden behind an unmarked door, has been there since before either of us was born. | The garden, overgrown after years of neglect, was where my grandfather taught me everything he knew about patience.
+   **example_pass**: The park, lit only by a single streetlight, is where I called my mother. | The park, lit only by a single streetlight, is where I called my mother to tell her I had quit. | The café, run by the same family for three generations, still felt exactly as it had when I was a student. | The bookshop, hidden behind an unmarked door, has been there since before either of us was born. | The garden, overgrown after years of neglect, was where my grandfather taught me everything he knew about patience.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 2. **id**: 2
@@ -759,7 +759,7 @@
    **hidden_prompt**: "user uses 'With + noun + -ing/-ed'"
    **hint_pt**: "With my heart pounding, I told her the news."
    **hint_en**: "With my heart pounding, I told her the news."
-   **example_pass**: With my heart pounding, I told her the news. | Surprised by the news, she sat down quietly. | Walking through the park, I noticed the autumn colours. | With the deadline approaching, the whole team stayed late three nights in a row. | With my hands trembling, I signed the agreement without reading it twice. | With the market shifting underneath us, every assumption had to be re-examined. | With everything packed and the keys returned, the apartment finally felt like someone else's.
+   **example_pass**: With my heart pounding, I told her the news. | With the deadline approaching, the whole team stayed late three nights in a row. | With my hands trembling, I signed the agreement without reading it twice. | With the market shifting underneath us, every assumption had to be re-examined. | With everything packed and the keys returned, the apartment finally felt like someone else's.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 3. **id**: 3
@@ -768,7 +768,7 @@
    **hidden_prompt**: "user asks Charlotte who she called"
    **hint_pt**: "Who did you call?"
    **hint_en**: "Who did you call?"
-   **example_pass**: Who did you call? | Exhausted from the trip, we slept for ten hours. | Knowing the risks, he proceeded carefully. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: Who did you call?
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 **Closing cue**: Charlotte closes with "Scenes compressed, edges intact." once obj_3 lands.

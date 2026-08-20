@@ -110,7 +110,7 @@
    **hidden_prompt**: "user uses 'That's great!' / 'That's amazing!' / 'Wow!'"
    **hint_pt**: "That's amazing!"
    **hint_en**: "That's amazing!"
-   **example_pass**: That's amazing. | Wow, that's cool! | Oh nice, sounds great.
+   **example_pass**: That's amazing.
    **example_fail**: Ok (no reaction) | Yes (single word) | Bye (off-intent)
 
 2. **id**: 2
@@ -165,7 +165,7 @@
    **hidden_prompt**: "user reacts with interest filler"
    **hint_pt**: "Really? What happened?"
    **hint_en**: "Really? What happened?"
-   **example_pass**: Really? What happened. | Wow, that's cool! | Oh nice, sounds great.
+   **example_pass**: Really? What happened.
    **example_fail**: Ok (no reaction) | Yes (single word) | Bye (off-intent)
 
 2. **id**: 2
@@ -288,7 +288,7 @@
    **hidden_prompt**: "user reacts with 'No way!' or 'Seriously?'"
    **hint_pt**: "No way! Seriously?"
    **hint_en**: "No way! Seriously?"
-   **example_pass**: No way! Seriously. | Wow, that's cool! | Oh nice, sounds great.
+   **example_pass**: No way! Seriously.
    **example_fail**: Ok (no reaction) | Yes (single word) | Bye (off-intent)
 
 2. **id**: 2
@@ -306,7 +306,7 @@
    **hidden_prompt**: "user reacts with surprise to third news"
    **hint_pt**: "Get out! That's incredible!"
    **hint_en**: "Get out! That's incredible!"
-   **example_pass**: Get out! That's incredible. | Wow, that's cool! | Oh nice, sounds great.
+   **example_pass**: Get out! That's incredible.
    **example_fail**: Ok (no reaction) | Yes (single word) | Bye (off-intent)
 
 **Closing cue**: Charlotte fecha com "I told you it was crazy!" quando obj_3 bater.
@@ -343,7 +343,7 @@
    **hidden_prompt**: "user reacts with surprise"
    **hint_pt**: "No way! Really?"
    **hint_en**: "No way! Really?"
-   **example_pass**: No way! Really. | Wow, that's cool! | Oh nice, sounds great.
+   **example_pass**: No way! Really.
    **example_fail**: Ok (no reaction) | Yes (single word) | Bye (off-intent)
 
 2. **id**: 2
@@ -361,7 +361,7 @@
    **hidden_prompt**: "user gives final reaction"
    **hint_pt**: "That's awesome!"
    **hint_en**: "That's awesome!"
-   **example_pass**: That's awesome. | Wow, that's cool! | Oh nice, sounds great.
+   **example_pass**: That's awesome.
    **example_fail**: Ok (no reaction) | Yes (single word) | Bye (off-intent)
 
 **Closing cue**: Charlotte fecha com "Cool story, right?" quando obj_3 bater.
@@ -648,6 +648,8 @@
    **hidden_prompt**: "after Charlotte's FIRST bad news (broken phone), user reacts with ANY empathy chunk — accept 'Oh no', 'That sucks', 'That's a shame', 'What a shame', 'Bummer', 'I'm sorry', 'How sad', etc. Match if user shows any empathy reaction to the first piece of bad news."
    **hint_pt**: "Oh no, that sucks!"
    **hint_en**: "Oh no, that sucks!"
+   **example_pass**: Oh no, that sucks!
+   **example_fail**: Yes (single word, no structure) | I don't know (off-topic) | (silence / gibberish)
 
 2. **id**: 2
    **label_pt**: "Reagir à segunda notícia (gato doente)"
@@ -655,6 +657,8 @@
    **hidden_prompt**: "after Charlotte's SECOND bad news (sick cat), user reacts again with ANY empathy chunk — accept 'I'm so sorry', 'That's awful', 'That's terrible', 'Poor thing', 'Oh no', 'What a shame', etc. Same phrase as obj 1 is OK — counts if reacting to a NEW piece of bad news."
    **hint_pt**: "I'm so sorry to hear that."
    **hint_en**: "I'm so sorry to hear that."
+   **example_pass**: I'm so sorry to hear that.
+   **example_fail**: Yes (single word, no structure) | I don't know (off-topic) | (silence / gibberish)
 
 3. **id**: 3
    **label_pt**: "Reagir à terceira notícia (perdeu deadline)"
@@ -662,6 +666,8 @@
    **hidden_prompt**: "after Charlotte's THIRD bad news (missed deadline), user reacts again with ANY empathy chunk — accept ANY empathy expression including 'What a shame', 'That's tough', 'Oh no', 'I'm sorry', 'That sucks', etc. Repeating the SAME phrase from previous turns is fine — the objective is reacting empathically to the third news, not using a unique phrase."
    **hint_pt**: "What a shame!"
    **hint_en**: "What a shame!"
+   **example_pass**: What a shame!
+   **example_fail**: Yes (single word, no structure) | I don't know (off-topic) | (silence / gibberish)
 
 **Closing cue**: Charlotte fecha com "Thanks for listening. Things will get better." quando obj_3 bater.
 
@@ -831,6 +837,8 @@
    **hidden_prompt**: "AFTER Charlotte gives time, user changes topic with 'By the way' + a different simple question (about Charlotte's day, the weather, hunger, etc) using present simple only."
    **hint_pt**: "By the way, are you hungry?"
    **hint_en**: "By the way, are you hungry?"
+   **example_pass**: By the way, are you hungry?
+   **example_fail**: Yes (single word, no structure) | I don't know (off-topic) | (silence / gibberish)
 
 3. **id**: 3
    **label_pt**: "Voltar ao tópico com 'Anyway'"
@@ -838,6 +846,8 @@
    **hidden_prompt**: "AFTER Charlotte responds, user returns to ORIGINAL topic (food) with 'Anyway' + answer. Use present simple: 'Anyway, my favorite is X'."
    **hint_pt**: "Anyway, my favorite is pizza."
    **hint_en**: "Anyway, my favorite is pizza."
+   **example_pass**: Anyway, my favorite is pizza.
+   **example_fail**: Yes (single word, no structure) | I don't know (off-topic) | (silence / gibberish)
 
 **Closing cue**: Charlotte fecha com "Conversation managed!" quando obj_3 bater.
 

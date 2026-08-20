@@ -103,7 +103,7 @@
    **hidden_prompt**: "user uses 'I meant to / I tried to'"
    **hint_pt**: "Q: 'Did you reply to the email?' A: 'I meant to. The day got away from me.'"
    **hint_en**: "Q: 'Did you reply to the email?' A: 'I meant to. The day got away from me.'"
-   **example_pass**: Q: 'Did you reply to the email?' A: 'I meant to. The day got away from me.' | I meant to — that's the one. | Honestly, I meant to sums it up.
+   **example_pass**: Q: 'Did you reply to the email?' A: 'I meant to. The day got away from me.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Ellipsis, fluently dropped." once obj_3 lands.
@@ -140,7 +140,7 @@
    **hidden_prompt**: "user replies with elliptical 'I meant to / I tried to'"
    **hint_pt**: "I meant to, but I got distracted by another one halfway through."
    **hint_en**: "I meant to, but I got distracted by another one halfway through."
-   **example_pass**: I meant to, but I got distracted by another one halfway through. | I meant to — that's the one. | Honestly, I meant to sums it up.
+   **example_pass**: I meant to, but I got distracted by another one halfway through.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -158,7 +158,7 @@
    **hidden_prompt**: "user asks Charlotte if she finished hers"
    **hint_pt**: "Did you finish yours?"
    **hint_en**: "Did you finish yours?"
-   **example_pass**: Did you finish yours? | Do you want some? — Yes, please. | Some students passed; others didn't.
+   **example_pass**: Did you finish yours?
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Casual ellipsis, native rhythm." once obj_3 lands.
@@ -238,7 +238,7 @@
    **hidden_prompt**: "user uses 'I think so / I believe so / I suppose so'"
    **hint_pt**: "Q: 'Will the package arrive Monday?' A: 'I believe so — the tracking suggested two more days.'"
    **hint_en**: "Q: 'Will the package arrive Monday?' A: 'I believe so — the tracking suggested two more days.'"
-   **example_pass**: Q: 'Will the package arrive Monday?' A: 'I believe so — the tracking suggested two more days.' | I think so — that's the one. | Honestly, I think so sums it up.
+   **example_pass**: Q: 'Will the package arrive Monday?' A: 'I believe so — the tracking suggested two more days.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -247,7 +247,7 @@
    **hidden_prompt**: "user uses 'I don't think so / I hope not / I expect not'"
    **hint_pt**: "Q: 'Will the meeting get cancelled again?' A: 'I hope not — we've already rescheduled twice.'"
    **hint_en**: "Q: 'Will the meeting get cancelled again?' A: 'I hope not — we've already rescheduled twice.'"
-   **example_pass**: Q: 'Will the meeting get cancelled again?' A: 'I hope not — we've already rescheduled twice.' | I hope not — that's the one. | Honestly, I hope not sums it up.
+   **example_pass**: Q: 'Will the meeting get cancelled again?' A: 'I hope not — we've already rescheduled twice.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -256,7 +256,7 @@
    **hidden_prompt**: "user uses 'I'm afraid so'"
    **hint_pt**: "Q: 'Did the project get delayed again?' A: 'I'm afraid so. We lost the lead engineer last week.'"
    **hint_en**: "Q: 'Did the project get delayed again?' A: 'I'm afraid so. We lost the lead engineer last week.'"
-   **example_pass**: Q: 'Did the project get delayed again?' A: 'I'm afraid so. We lost the lead engineer last week.' | I'm afraid so — that's the one. | Honestly, I'm afraid so sums it up.
+   **example_pass**: Q: 'Did the project get delayed again?' A: 'I'm afraid so. We lost the lead engineer last week.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Substitution, conversation lubricated." once obj_3 lands.
@@ -293,7 +293,7 @@
    **hidden_prompt**: "user uses 'I believe so' or 'I think so'"
    **hint_pt**: "I believe so — the legal review wrapped up yesterday."
    **hint_en**: "I believe so — the legal review wrapped up yesterday."
-   **example_pass**: I believe so — the legal review wrapped up yesterday. | I think so — that's the one. | Honestly, I think so sums it up.
+   **example_pass**: I believe so — the legal review wrapped up yesterday.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -302,7 +302,7 @@
    **hidden_prompt**: "user uses 'I hope not / I'm afraid so'"
    **hint_pt**: "Though I'm afraid there's still one signature missing from the executive sponsor — we may slip by a day."
    **hint_en**: "Though I'm afraid there's still one signature missing from the executive sponsor — we may slip by a day."
-   **example_pass**: I hope not — that's the one. | Honestly, I hope not sums it up. | Yeah, I hope not for sure.
+   **example_pass**: Though I'm afraid there's still one signature missing from the executive sponsor — we may slip by a day.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -311,7 +311,7 @@
    **hidden_prompt**: "user asks Charlotte if she'll attend the kickoff"
    **hint_pt**: "Will you be at the kickoff?"
    **hint_en**: "Will you be at the kickoff?"
-   **example_pass**: Will you be at the kickoff? | Do you want some? — Yes, please. | Some students passed; others didn't.
+   **example_pass**: Will you be at the kickoff?
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Substitutes carry the conversation." once obj_3 lands.
@@ -390,7 +390,7 @@
    **hidden_prompt**: "user uses 'a/the + adjective + one'"
    **hint_pt**: "Q: 'Which book?' A: 'The blue one on the second shelf — the one I lent you last summer.'"
    **hint_en**: "Q: 'Which book?' A: 'The blue one on the second shelf — the one I lent you last summer.'"
-   **example_pass**: Q: 'Which book?' A: 'The blue one on the second shelf — the one I lent you last summer.' | I will if you will. | She likes jazz, and so do I.
+   **example_pass**: Q: 'Which book?' A: 'The blue one on the second shelf — the one I lent you last summer.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -408,7 +408,7 @@
    **hidden_prompt**: "user uses 'those of + reference'"
    **hint_pt**: "Our findings differ from those of the original 2018 study in two important respects."
    **hint_en**: "Our findings differ from those of the original 2018 study in two important respects."
-   **example_pass**: Our findings differ from those of the original 2018 study in two important respects. | Do you want some? — Yes, please. | Some students passed; others didn't.
+   **example_pass**: Our findings differ from those of the original 2018 study in two important respects.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Substitution, smoothly placed." once obj_3 lands.
@@ -445,7 +445,7 @@
    **hidden_prompt**: "user uses 'the + adj + one'"
    **hint_pt**: "Honestly, I'd take the navy one — the cut sits better at the shoulders."
    **hint_en**: "Honestly, I'd take the navy one — the cut sits better at the shoulders."
-   **example_pass**: Honestly, I'd take the navy one — the cut sits better at the shoulders. | I will if you will. | She likes jazz, and so do I.
+   **example_pass**: Honestly, I'd take the navy one — the cut sits better at the shoulders.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -454,7 +454,7 @@
    **hidden_prompt**: "user uses 'the other one' or another substitution"
    **hint_pt**: "The other one looks like it was made for someone slightly taller — the proportions are off."
    **hint_en**: "The other one looks like it was made for someone slightly taller — the proportions are off."
-   **example_pass**: The other one looks like it was made for someone slightly taller — the proportions are off. | The other one — that's the one. | Honestly, the other one sums it up.
+   **example_pass**: The other one looks like it was made for someone slightly taller — the proportions are off.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -463,7 +463,7 @@
    **hidden_prompt**: "user asks Charlotte's preference"
    **hint_pt**: "Which one do you keep coming back to?"
    **hint_en**: "Which one do you keep coming back to?"
-   **example_pass**: Which one do you keep coming back to? | Do you want some? — Yes, please. | Some students passed; others didn't.
+   **example_pass**: Which one do you keep coming back to?
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Substitution flows like English flows." once obj_3 lands.
@@ -600,7 +600,7 @@
    **hidden_prompt**: "user describes their change, with possible echo"
    **hint_pt**: "I cut my caffeine in half last spring. My partner did the same a few weeks later — sympathy headaches, mostly."
    **hint_en**: "I cut my caffeine in half last spring. My partner did the same a few weeks later — sympathy headaches, mostly."
-   **example_pass**: I cut my caffeine in half last spring. My partner did the same a few weeks later — sympathy headaches, mostly. | I will if you will. | She likes jazz, and so do I. | I stopped working on Sundays last quarter. Two of my colleagues did the same within a month. | I switched to longer-form deep work in the mornings. Half the team did the same once they saw it working. | I moved my standing call to Friday afternoons. My counterpart did the same the following week without us discussing it.
+   **example_pass**: I cut my caffeine in half last spring. My partner did the same a few weeks later — sympathy headaches, mostly. | I stopped working on Sundays last quarter. Two of my colleagues did the same within a month. | I switched to longer-form deep work in the mornings. Half the team did the same once they saw it working. | I moved my standing call to Friday afternoons. My counterpart did the same the following week without us discussing it.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -609,7 +609,7 @@
    **hidden_prompt**: "user uses 'do so' or 'did so'"
    **hint_pt**: "Two of my friends had been thinking of doing so for months — my switch seemed to give them permission."
    **hint_en**: "Two of my friends had been thinking of doing so for months — my switch seemed to give them permission."
-   **example_pass**: He did so quietly, without making any public announcement; most people didn't notice for weeks. | She did so reluctantly, but the alternative was worse — and she knew it before anyone else in the room. | I had to do so in the end.
+   **example_pass**: Two of my friends had been thinking of doing so for months — my switch seemed to give them permission. | He did so quietly, without making any public announcement; most people didn't notice for weeks. | She did so reluctantly, but the alternative was worse — and she knew it before anyone else in the room. | I had to do so in the end.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -618,7 +618,7 @@
    **hidden_prompt**: "user asks Charlotte if anyone copied her four-day week"
    **hint_pt**: "Who copied your four-day week?"
    **hint_en**: "Who copied your four-day week?"
-   **example_pass**: Who copied your four-day week? | Do you want some? — Yes, please. | Some students passed; others didn't. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: Who copied your four-day week? | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Echoes, registered correctly." once obj_3 lands.
@@ -700,7 +700,7 @@
    **hidden_prompt**: "user echoes positive with 'So + aux + I'"
    **hint_pt**: "Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get anything done.'"
    **hint_en**: "Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get anything done.'"
-   **example_pass**: Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get anything done.' | I will if you will. | She likes jazz, and so do I. | Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get any real work done.' | Q: 'I love that new podcast.' A: 'So do I — I've already recommended it to half the team.' | Q: 'I usually skip breakfast.' A: 'So do I, though my doctor keeps telling me to stop.' | Q: 'I really enjoyed the conference.' A: 'So did I — the second day in particular was excellent.'
+   **example_pass**: Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get anything done.' | Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get any real work done.' | Q: 'I love that new podcast.' A: 'So do I — I've already recommended it to half the team.' | Q: 'I usually skip breakfast.' A: 'So do I, though my doctor keeps telling me to stop.' | Q: 'I really enjoyed the conference.' A: 'So did I — the second day in particular was excellent.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -718,7 +718,7 @@
    **hidden_prompt**: "user echoes negative with 'Neither / Nor + aux + I'"
    **hint_pt**: "Q: 'I haven't been to that restaurant yet.' A: 'Neither have I — let's go this weekend.'"
    **hint_en**: "Q: 'I haven't been to that restaurant yet.' A: 'Neither have I — let's go this weekend.'"
-   **example_pass**: Q: 'I haven't been to that restaurant yet.' A: 'Neither have I — let's go this weekend.' | Do you want some? — Yes, please. | Some students passed; others didn't. | Q: 'I don't usually drink coffee in the afternoon.' A: 'Nor do I, but today is a special case.' | Q: 'I haven't read his new book.' A: 'Neither have I, though everyone keeps recommending it.' | Q: 'I wouldn't move back to the city now.' A: 'Nor would I — we've finally settled into a good rhythm here.'
+   **example_pass**: Q: 'I haven't been to that restaurant yet.' A: 'Neither have I — let's go this weekend.' | Q: 'I don't usually drink coffee in the afternoon.' A: 'Nor do I, but today is a special case.' | Q: 'I haven't read his new book.' A: 'Neither have I, though everyone keeps recommending it.' | Q: 'I wouldn't move back to the city now.' A: 'Nor would I — we've finally settled into a good rhythm here.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Echoes match, registers tune. C2 ellipsis complete." once obj_3 lands.
@@ -773,7 +773,7 @@
    **hidden_prompt**: "user asks Charlotte for one more habit"
    **hint_pt**: "What else do you protect?"
    **hint_en**: "What else do you protect?"
-   **example_pass**: What else do you protect? | Do you want some? — Yes, please. | Some students passed; others didn't. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What else do you protect? | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Habits matched, echoes tuned." once obj_3 lands.

@@ -84,7 +84,7 @@
    **hidden_prompt**: "user uses 'Never have I + past participle'"
    **hint_pt**: "Never have I tasted coffee that good."
    **hint_en**: "Never have I tasted coffee that good."
-   **example_pass**: Never have I tasted coffee that good. | Never have I seen such a beautiful sunset. | Rarely does she complain about her workload. | Never have I felt so out of place at a conference. | Never have I read a novel that landed with such precision. | Never have I worked with a team this aligned from day one. | Never in my life have I tasted a wine quite like that.
+   **example_pass**: Never have I tasted coffee that good. | Never have I felt so out of place at a conference. | Never have I read a novel that landed with such precision. | Never have I worked with a team this aligned from day one. | Never in my life have I tasted a wine quite like that.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 2. **id**: 2
@@ -93,7 +93,7 @@
    **hidden_prompt**: "user uses 'Rarely/Seldom + auxiliary + subject + base'"
    **hint_pt**: "Rarely do I feel this prepared for a meeting."
    **hint_en**: "Rarely do I feel this prepared for a meeting."
-   **example_pass**: Rarely do I feel this prepared for a meeting. | Not only did he finish on time, but he also exceeded the target. | Hardly had we arrived when the storm broke. | Seldom does an opportunity like this come along twice in one career. | Rarely do I see a candidate this prepared on a first interview. | Seldom have I encountered a regulation written this clearly. | Rarely does a single conversation change my mind, but that one did.
+   **example_pass**: Rarely do I feel this prepared for a meeting. | Seldom does an opportunity like this come along twice in one career. | Rarely do I see a candidate this prepared on a first interview. | Seldom have I encountered a regulation written this clearly. | Rarely does a single conversation change my mind, but that one did.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 3. **id**: 3
@@ -102,7 +102,7 @@
    **hidden_prompt**: "user uses 'Hardly ever + auxiliary + subject'"
    **hint_pt**: "Hardly ever does my dog sleep through a thunderstorm."
    **hint_en**: "Hardly ever does my dog sleep through a thunderstorm."
-   **example_pass**: Hardly ever does my dog sleep through a thunderstorm. | Seldom have I encountered such generosity. | Little did I know what was coming next. | Hardly ever do I take calls before nine in the morning. | Hardly ever does my brother return a text within the same week. | Hardly ever have I seen a launch this smooth. | Hardly ever does the team disagree this loudly in front of the client.
+   **example_pass**: Hardly ever does my dog sleep through a thunderstorm. | Hardly ever do I take calls before nine in the morning. | Hardly ever does my brother return a text within the same week. | Hardly ever have I seen a launch this smooth. | Hardly ever does the team disagree this loudly in front of the client.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 **Closing cue**: Charlotte closes with "Frontings tuned." once obj_3 lands.
@@ -139,7 +139,7 @@
    **hidden_prompt**: "user uses 'Never have I + past participle'"
    **hint_pt**: "Never have I cried so much at a film."
    **hint_en**: "Never have I cried so much at a film."
-   **example_pass**: Never have I cried so much at a film. | Never have I seen such a beautiful sunset. | Rarely does she complain about her workload. | Never have I felt so out of place at a conference. | Never have I read a novel that landed with such precision. | Never have I worked with a team this aligned from day one. | Never in my life have I tasted a wine quite like that.
+   **example_pass**: Never have I cried so much at a film. | Never have I felt so out of place at a conference. | Never have I read a novel that landed with such precision. | Never have I worked with a team this aligned from day one. | Never in my life have I tasted a wine quite like that.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 2. **id**: 2
@@ -148,7 +148,7 @@
    **hidden_prompt**: "user uses 'Rarely/Seldom + auxiliary + subject'"
    **hint_pt**: "Rarely do strangers make me feel that welcome."
    **hint_en**: "Rarely do strangers make me feel that welcome."
-   **example_pass**: Rarely do strangers make me feel that welcome. | Not only did he finish on time, but he also exceeded the target. | Hardly had we arrived when the storm broke. | Seldom does an opportunity like this come along twice in one career. | Rarely do I see a candidate this prepared on a first interview. | Seldom have I encountered a regulation written this clearly. | Rarely does a single conversation change my mind, but that one did.
+   **example_pass**: Rarely do strangers make me feel that welcome. | Seldom does an opportunity like this come along twice in one career. | Rarely do I see a candidate this prepared on a first interview. | Seldom have I encountered a regulation written this clearly. | Rarely does a single conversation change my mind, but that one did.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 3. **id**: 3
@@ -157,7 +157,7 @@
    **hidden_prompt**: "user asks Charlotte for her rarest moment"
    **hint_pt**: "What's your rarest?"
    **hint_en**: "What's your rarest?"
-   **example_pass**: What's your rarest? | Seldom have I encountered such generosity. | Little did I know what was coming next. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What's your rarest?
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 **Closing cue**: Charlotte closes with "Emphasis carries weight." once obj_3 lands.
@@ -236,7 +236,7 @@
    **hidden_prompt**: "user uses 'Hardly had I + past participle + when + past simple'"
    **hint_pt**: "Hardly had I started my coffee when my boss called."
    **hint_en**: "Hardly had I started my coffee when my boss called."
-   **example_pass**: Hardly had I started my coffee when my boss called. | Never have I seen such a beautiful sunset. | Rarely does she complain about her workload.
+   **example_pass**: Hardly had I started my coffee when my boss called.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 2. **id**: 2
@@ -245,7 +245,7 @@
    **hidden_prompt**: "user uses 'No sooner had I + past participle + than + past simple'"
    **hint_pt**: "No sooner had I unpacked than the rain started."
    **hint_en**: "No sooner had I unpacked than the rain started."
-   **example_pass**: No sooner had I unpacked than the rain started. | Not only did he finish on time, but he also exceeded the target. | Hardly had we arrived when the storm broke.
+   **example_pass**: No sooner had I unpacked than the rain started.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 3. **id**: 3
@@ -254,7 +254,7 @@
    **hidden_prompt**: "user uses 'Scarcely had I + past participle + when + past simple'"
    **hint_pt**: "Scarcely had I closed my laptop when the deadline shifted."
    **hint_en**: "Scarcely had I closed my laptop when the deadline shifted."
-   **example_pass**: Scarcely had I closed my laptop when the deadline shifted. | Seldom have I encountered such generosity. | Little did I know what was coming next.
+   **example_pass**: Scarcely had I closed my laptop when the deadline shifted.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 **Closing cue**: Charlotte closes with "Cascade narrated." once obj_3 lands.
@@ -291,7 +291,7 @@
    **hidden_prompt**: "user uses 'No sooner had I + past participle + than + past simple'"
    **hint_pt**: "No sooner had I left the house than I realised I'd forgotten my keys."
    **hint_en**: "No sooner had I left the house than I realised I'd forgotten my keys."
-   **example_pass**: No sooner had I left the house than I realised I'd forgotten my keys. | Never have I seen such a beautiful sunset. | Rarely does she complain about her workload.
+   **example_pass**: No sooner had I left the house than I realised I'd forgotten my keys.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 2. **id**: 2
@@ -300,7 +300,7 @@
    **hidden_prompt**: "user uses 'Hardly had I + past participle + when + past simple'"
    **hint_pt**: "Hardly had I turned back when it started pouring."
    **hint_en**: "Hardly had I turned back when it started pouring."
-   **example_pass**: Hardly had I turned back when it started pouring. | Not only did he finish on time, but he also exceeded the target. | Hardly had we arrived when the storm broke.
+   **example_pass**: Hardly had I turned back when it started pouring.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 3. **id**: 3
@@ -309,7 +309,7 @@
    **hidden_prompt**: "user asks Charlotte how her writing went after the doorbell"
    **hint_pt**: "Did you ever get back to writing?"
    **hint_en**: "Did you ever get back to writing?"
-   **example_pass**: Did you ever get back to writing? | Seldom have I encountered such generosity. | Little did I know what was coming next.
+   **example_pass**: Did you ever get back to writing?
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 **Closing cue**: Charlotte closes with "Day mapped, sentence by sentence." once obj_3 lands.
@@ -389,7 +389,7 @@
    **hidden_prompt**: "user uses 'Not only + does/is + subject + base, but + subject + also'"
    **hint_pt**: "Not only is she fluent in three languages, but she also teaches them."
    **hint_en**: "Not only is she fluent in three languages, but she also teaches them."
-   **example_pass**: Not only is she fluent in three languages, but she also teaches them. | Never have I seen such a beautiful sunset. | Rarely does she complain about her workload. | Not only is the design elegant, but it's also far cheaper to manufacture. | Not only is she a brilliant engineer, but she's also a patient teacher. | Not only is the app faster, but it also uses a fraction of the battery. | Not only is the proposal bold, but it's also remarkably well-budgeted.
+   **example_pass**: Not only is she fluent in three languages, but she also teaches them. | Not only is the design elegant, but it's also far cheaper to manufacture. | Not only is she a brilliant engineer, but she's also a patient teacher. | Not only is the app faster, but it also uses a fraction of the battery. | Not only is the proposal bold, but it's also remarkably well-budgeted.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 2. **id**: 2
@@ -398,7 +398,7 @@
    **hidden_prompt**: "user uses 'Not only did + subject + base, but + subject + also'"
    **hint_pt**: "Not only did we hit the target, but we also exceeded it by 20%."
    **hint_en**: "Not only did we hit the target, but we also exceeded it by 20%."
-   **example_pass**: Not only did we hit the target, but we also exceeded it by 20%. | Not only did he finish on time, but he also exceeded the target. | Hardly had we arrived when the storm broke. | Not only did we ship on time, but we also came in under budget. | Not only did the campaign exceed targets, but it also won an industry award. | Not only did she resign, but she also took half the team with her. | Not only did I miss the flight, but I also lost my passport in the process.
+   **example_pass**: Not only did we hit the target, but we also exceeded it by 20%. | Not only did we ship on time, but we also came in under budget. | Not only did the campaign exceed targets, but it also won an industry award. | Not only did she resign, but she also took half the team with her. | Not only did I miss the flight, but I also lost my passport in the process.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 3. **id**: 3
@@ -407,7 +407,7 @@
    **hidden_prompt**: "user uses 'Not until + clause + did + subject + base'"
    **hint_pt**: "Not until I left the city did I appreciate the quiet."
    **hint_en**: "Not until I left the city did I appreciate the quiet."
-   **example_pass**: Not until I left the city did I appreciate the quiet. | Seldom have I encountered such generosity. | Little did I know what was coming next. | Not until I moved abroad did I realise how much my city had shaped me. | Not until the audit started did anyone notice the missing entries. | Not until I read it a third time did the argument fully land. | Not until she walked away did the team understand what she'd been holding together.
+   **example_pass**: Not until I left the city did I appreciate the quiet. | Not until I moved abroad did I realise how much my city had shaped me. | Not until the audit started did anyone notice the missing entries. | Not until I read it a third time did the argument fully land. | Not until she walked away did the team understand what she'd been holding together.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 **Closing cue**: Charlotte closes with "Layers exposed." once obj_3 lands.
@@ -444,7 +444,7 @@
    **hidden_prompt**: "user uses 'Not only + inverted aux + subject + base, but + subject'"
    **hint_pt**: "Not only did my dad teach himself English, but he also learned coding at 60."
    **hint_en**: "Not only did my dad teach himself English, but he also learned coding at 60."
-   **example_pass**: Not only did my dad teach himself English, but he also learned coding at 60. | Never have I seen such a beautiful sunset. | Rarely does she complain about her workload. | Not only did my mother raise three kids alone, but she also went back to school in her fifties. | Not only did the team ship on time, but they also delivered above scope. | Not only is the new policy fairer, but it's also significantly easier to administer. | Not only did he apologise publicly, but he also rebuilt the relationship over the following year.
+   **example_pass**: Not only did my dad teach himself English, but he also learned coding at 60. | Not only did my mother raise three kids alone, but she also went back to school in her fifties. | Not only did the team ship on time, but they also delivered above scope. | Not only is the new policy fairer, but it's also significantly easier to administer. | Not only did he apologise publicly, but he also rebuilt the relationship over the following year.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 2. **id**: 2
@@ -453,7 +453,7 @@
    **hidden_prompt**: "user uses 'Not until + clause + did + subject + base'"
    **hint_pt**: "Not until I had my own kid did I understand how much they did."
    **hint_en**: "Not until I had my own kid did I understand how much they did."
-   **example_pass**: Not until I had my own kid did I understand how much they did. | Not only did he finish on time, but he also exceeded the target. | Hardly had we arrived when the storm broke. | Not until I moved abroad did I realise how much my city had shaped me. | Not until the audit started did anyone notice the missing entries. | Not until I read it a third time did the argument fully land. | Not until she walked away did the team understand what she'd been holding together.
+   **example_pass**: Not until I had my own kid did I understand how much they did. | Not until I moved abroad did I realise how much my city had shaped me. | Not until the audit started did anyone notice the missing entries. | Not until I read it a third time did the argument fully land. | Not until she walked away did the team understand what she'd been holding together.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 3. **id**: 3
@@ -462,7 +462,7 @@
    **hidden_prompt**: "user asks Charlotte more about her grandmother"
    **hint_pt**: "What did she study?"
    **hint_en**: "What did she study?"
-   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What did she study?
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 **Closing cue**: Charlotte closes with "Layered lives, properly framed." once obj_3 lands.
@@ -542,7 +542,7 @@
    **hidden_prompt**: "user uses 'Only after/when + clause + did + subject + base'"
    **hint_pt**: "Only after I quit did I realise how much that job was costing me."
    **hint_en**: "Only after I quit did I realise how much that job was costing me."
-   **example_pass**: Only after I quit did I realise how much that job was costing me. | Never have I seen such a beautiful sunset. | Rarely does she complain about her workload. | Only after I left the company did I realise how exhausted I had been. | Only when the numbers came in did the board start taking the warning seriously. | Only after losing the contract did we understand what our weak spot was. | Only when she stopped explaining herself did people finally start listening.
+   **example_pass**: Only after I quit did I realise how much that job was costing me. | Only after I left the company did I realise how exhausted I had been. | Only when the numbers came in did the board start taking the warning seriously. | Only after losing the contract did we understand what our weak spot was. | Only when she stopped explaining herself did people finally start listening.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 2. **id**: 2
@@ -551,7 +551,7 @@
    **hidden_prompt**: "user uses 'Only by + -ing + auxiliary + subject + base'"
    **hint_pt**: "Only by saying no a hundred times did I learn to protect my time."
    **hint_en**: "Only by saying no a hundred times did I learn to protect my time."
-   **example_pass**: Only by saying no a hundred times did I learn to protect my time. | Not only did he finish on time, but he also exceeded the target. | Hardly had we arrived when the storm broke. | Only by saying no for an entire quarter did I get any real work done. | Only by rebuilding the team from scratch did we recover from that year. | Only by automating the routine work did the senior engineers find time to think. | Only by talking to actual customers did we discover where the product was failing.
+   **example_pass**: Only by saying no a hundred times did I learn to protect my time. | Only by saying no for an entire quarter did I get any real work done. | Only by rebuilding the team from scratch did we recover from that year. | Only by automating the routine work did the senior engineers find time to think. | Only by talking to actual customers did we discover where the product was failing.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 3. **id**: 3
@@ -560,7 +560,7 @@
    **hidden_prompt**: "user uses 'Little did I know/realise/imagine + that-clause'"
    **hint_pt**: "Little did I know that conversation would change my career."
    **hint_en**: "Little did I know that conversation would change my career."
-   **example_pass**: Little did I know that conversation would change my career. | Seldom have I encountered such generosity. | Little did I know what was coming next. | Little did I know that the casual coffee would turn into a job offer. | Little did I realise how much that one decision would shape the next decade. | Little did we imagine the company would be acquired within a year. | Little did I suspect that the quietest member of the team would become its strongest leader.
+   **example_pass**: Little did I know that conversation would change my career. | Little did I know that the casual coffee would turn into a job offer. | Little did I realise how much that one decision would shape the next decade. | Little did we imagine the company would be acquired within a year. | Little did I suspect that the quietest member of the team would become its strongest leader.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 **Closing cue**: Charlotte closes with "Hindsight, made dramatic." once obj_3 lands.
@@ -597,7 +597,7 @@
    **hidden_prompt**: "user uses 'Only + phrase + auxiliary + subject + base'"
    **hint_pt**: "Only after losing a friend did I start texting people back the same day."
    **hint_en**: "Only after losing a friend did I start texting people back the same day."
-   **example_pass**: Only after losing a friend did I start texting people back the same day. | Never have I seen such a beautiful sunset. | Rarely does she complain about her workload. | Only after I lost a close friend did I start replying to messages the same day. | Only when the company nearly folded did the founders finally agree on a strategy. | Only after working with her for a year did I understand how she actually made decisions. | Only when the audit revealed the gap did anyone take the warnings seriously.
+   **example_pass**: Only after losing a friend did I start texting people back the same day. | Only after I lost a close friend did I start replying to messages the same day. | Only when the company nearly folded did the founders finally agree on a strategy. | Only after working with her for a year did I understand how she actually made decisions. | Only when the audit revealed the gap did anyone take the warnings seriously.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 2. **id**: 2
@@ -606,7 +606,7 @@
    **hidden_prompt**: "user uses 'Little did I know + that-clause'"
    **hint_pt**: "Little did I know that one email would lead to a new career."
    **hint_en**: "Little did I know that one email would lead to a new career."
-   **example_pass**: Little did I know that one email would lead to a new career. | Not only did he finish on time, but he also exceeded the target. | Hardly had we arrived when the storm broke. | Little did I know that the casual coffee would turn into a job offer. | Little did I realise how much that one decision would shape the next decade. | Little did we imagine the company would be acquired within a year. | Little did I suspect that the quietest member of the team would become its strongest leader.
+   **example_pass**: Little did I know that one email would lead to a new career. | Little did I know that the casual coffee would turn into a job offer. | Little did I realise how much that one decision would shape the next decade. | Little did we imagine the company would be acquired within a year. | Little did I suspect that the quietest member of the team would become its strongest leader.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 3. **id**: 3
@@ -615,7 +615,7 @@
    **hidden_prompt**: "user asks Charlotte for her own example"
    **hint_pt**: "What's your foreshadowing moment?"
    **hint_en**: "What's your foreshadowing moment?"
-   **example_pass**: What's your foreshadowing moment? | Seldom have I encountered such generosity. | Little did I know what was coming next. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What's your foreshadowing moment?
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 **Closing cue**: Charlotte closes with "Hindsight, well dressed." once obj_3 lands.
@@ -695,7 +695,7 @@
    **hidden_prompt**: "user uses 'Under no circumstances + should/must + subject + base'"
    **hint_pt**: "Under no circumstances should staff share passwords."
    **hint_en**: "Under no circumstances should staff share passwords."
-   **example_pass**: Under no circumstances should staff share passwords. | Never have I seen such a beautiful sunset. | Rarely does she complain about her workload. | Under no circumstances should sensitive client data leave the company network. | Under no circumstances must production code be deployed without review. | Under no circumstances should we negotiate against ourselves before the counteroffer arrives. | Under no circumstances will we compromise on the safety standards.
+   **example_pass**: Under no circumstances should staff share passwords. | Under no circumstances should sensitive client data leave the company network. | Under no circumstances must production code be deployed without review. | Under no circumstances should we negotiate against ourselves before the counteroffer arrives. | Under no circumstances will we compromise on the safety standards.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 2. **id**: 2
@@ -704,7 +704,7 @@
    **hidden_prompt**: "user uses 'On no account + may/must + subject + base'"
    **hint_pt**: "On no account may client data leave the secure server."
    **hint_en**: "On no account may client data leave the secure server."
-   **example_pass**: On no account may client data leave the secure server. | Not only did he finish on time, but he also exceeded the target. | Hardly had we arrived when the storm broke. | On no account must this document be shared outside the working group. | On no account should the keys be stored alongside the encrypted backup. | On no account may the design files be sent to external vendors without approval. | On no account are interns to handle live customer accounts unsupervised.
+   **example_pass**: On no account may client data leave the secure server. | On no account must this document be shared outside the working group. | On no account should the keys be stored alongside the encrypted backup. | On no account may the design files be sent to external vendors without approval. | On no account are interns to handle live customer accounts unsupervised.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 3. **id**: 3
@@ -713,7 +713,7 @@
    **hidden_prompt**: "user uses 'At no time + did/has + subject + base/past participle'"
    **hint_pt**: "At no time has the company authorised such a deduction."
    **hint_en**: "At no time has the company authorised such a deduction."
-   **example_pass**: At no time has the company authorised such a deduction. | Seldom have I encountered such generosity. | Little did I know what was coming next. | At no time has the company agreed to those terms in writing. | At no time did the team commit to a Q3 launch date. | At no time has the regulator approved that interpretation of the policy. | At no time were we informed of the change in ownership.
+   **example_pass**: At no time has the company authorised such a deduction. | At no time has the company agreed to those terms in writing. | At no time did the team commit to a Q3 launch date. | At no time has the regulator approved that interpretation of the policy. | At no time were we informed of the change in ownership.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 **Closing cue**: Charlotte closes with "Policy drafted, properly stern." once obj_3 lands.
@@ -759,7 +759,7 @@
    **hidden_prompt**: "user uses 'Under no circumstances + modal + subject'"
    **hint_pt**: "Under no circumstances will we accept responsibility for content we didn't approve."
    **hint_en**: "Under no circumstances will we accept responsibility for content we didn't approve."
-   **example_pass**: Under no circumstances will we accept responsibility for content we didn't approve. | Not only did he finish on time, but he also exceeded the target. | Hardly had we arrived when the storm broke. | Under no circumstances should sensitive client data leave the company network. | Under no circumstances must production code be deployed without review. | Under no circumstances should we negotiate against ourselves before the counteroffer arrives. | Under no circumstances will we compromise on the safety standards.
+   **example_pass**: Under no circumstances will we accept responsibility for content we didn't approve. | Under no circumstances should sensitive client data leave the company network. | Under no circumstances must production code be deployed without review. | Under no circumstances should we negotiate against ourselves before the counteroffer arrives. | Under no circumstances will we compromise on the safety standards.
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 3. **id**: 3
@@ -768,7 +768,7 @@
    **hidden_prompt**: "user asks Charlotte for advice on tone"
    **hint_pt**: "Too strong, or about right?"
    **hint_en**: "Too strong, or about right?"
-   **example_pass**: Too strong, or about right? | Seldom have I encountered such generosity. | Little did I know what was coming next. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: Too strong, or about right?
    **example_fail**: never seen (bare fragment, no inversion) | I have never seen such a thing (no inversion, simple present perfect) | I saw something interesting (off-topic, no negative adverb)
 
 **Closing cue**: Charlotte closes with "Defended in formal English." once obj_3 lands.

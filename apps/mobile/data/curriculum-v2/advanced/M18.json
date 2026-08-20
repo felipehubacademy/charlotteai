@@ -121,8 +121,6 @@
             "hint_en": "First: 'Two of our top engineers gave notice last week.' Follow: 'This loss leaves a gap nobody on the bench is ready to fill.'",
             "examples_pass": [
               "First: 'Two of our top engineers gave notice last week.' Follow: 'This loss leaves a gap nobody on the bench is ready to fill.'",
-              "The project, which we launched last year, has exceeded all expectations.",
-              "This approach, as mentioned earlier, has clear limitations.",
               "Two of our top engineers gave notice last week. This loss leaves a gap nobody on the bench is ready to fill.",
               "The board rejected the original proposal in February. This decision pushed the entire strategy back two quarters.",
               "Our largest customer renewed for three years on Friday. This commitment changes the company's runway entirely.",
@@ -141,8 +139,6 @@
             "hint_en": "First: 'The report flagged three risks: regulatory, financial, and reputational.' Follow: 'These risks will need to be addressed before the launch can proceed.'",
             "examples_pass": [
               "First: 'The report flagged three risks: regulatory, financial, and reputational.' Follow: 'These risks will need to be addressed before the launch can proceed.'",
-              "Such challenges, however significant, can be overcome with planning.",
-              "The findings, taken together, point to a structural shift.",
               "The report flagged three risks: regulatory, financial, and reputational. These risks will need to be addressed before the launch can proceed.",
               "We made five hires in two months. These additions have already shifted the rhythm of the engineering team.",
               "The audit raised four issues. These findings will require a coordinated response from finance and legal.",
@@ -195,9 +191,7 @@
             "hidden_prompt": "user adds 'These three problems' or similar",
             "hint_en": "Try: 'These three pressures reinforce one another in ways the leadership team hasn't yet acknowledged.'",
             "examples_pass": [
-              "These three problems — that's the one.",
-              "Honestly, These three problems sums it up.",
-              "Yeah, These three problems for sure."
+              "Try: 'These three pressures reinforce one another in ways the leadership team hasn't yet acknowledged.'"
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -212,8 +206,6 @@
             "hint_en": "And close with: 'This combination of pressures rarely resolves itself — addressing one in isolation tends to make the others worse.'",
             "examples_pass": [
               "And close with: 'This combination of pressures rarely resolves itself — addressing one in isolation tends to make the others worse.'",
-              "Such challenges, however significant, can be overcome with planning.",
-              "The findings, taken together, point to a structural shift.",
               "Two of our top engineers gave notice last week. This loss leaves a gap nobody on the bench is ready to fill.",
               "The board rejected the original proposal in February. This decision pushed the entire strategy back two quarters.",
               "Our largest customer renewed for three years on Friday. This commitment changes the company's runway entirely.",
@@ -231,14 +223,7 @@
             "hidden_prompt": "user asks Charlotte where the paragraph is going",
             "hint_en": "Where does the paragraph land?",
             "examples_pass": [
-              "Where does the paragraph land?",
-              "These developments, far from being isolated, reflect a broader trend.",
-              "The argument, although compelling, rests on shaky assumptions.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "Where does the paragraph land?"
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -354,8 +339,6 @@
             "hint_en": "First sentence with the specific noun: 'She bought a MacBook in October — the new one with the dark grey finish.'",
             "examples_pass": [
               "First sentence with the specific noun: 'She bought a MacBook in October — the new one with the dark grey finish.'",
-              "The project, which we launched last year, has exceeded all expectations.",
-              "This approach, as mentioned earlier, has clear limitations.",
               "She bought a MacBook in October — the new one with the dark grey finish she'd been waiting almost a year for.",
               "I picked up a Sony camera for the trip — a small mirrorless model that fits easily into a day bag.",
               "He drove home in a battered Toyota Hilux — the kind of vehicle that wears its decade of work without apology.",
@@ -439,7 +422,6 @@
             "hint_en": "Continue: 'She refused to take questions. The executive walked out before the press could press further.'",
             "examples_pass": [
               "Continue: 'She refused to take questions. The executive walked out before the press could press further.'",
-              "The findings, taken together, point to a structural shift.",
               "Continue: 'He answered briefly. The executive then deferred the rest of the conversation to the company's general counsel.'",
               "Continue: 'She acknowledged the question. The executive then offered a careful, two-sentence answer and moved on.'",
               "Continue: 'He paused. The executive looked around the room before answering in a tone nobody had heard him use before.'"
@@ -456,11 +438,7 @@
             "hidden_prompt": "user asks Charlotte about her own draft style",
             "hint_en": "Why does this trip you up?",
             "examples_pass": [
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "Why does this trip you up?"
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -576,8 +554,6 @@
             "hint_en": "Two cities: São Paulo and Rio. The former offers a denser professional ecosystem.",
             "examples_pass": [
               "Two cities: São Paulo and Rio. The former offers a denser professional ecosystem.",
-              "The project, which we launched last year, has exceeded all expectations.",
-              "This approach, as mentioned earlier, has clear limitations.",
               "Between São Paulo and Rio, the former offers a denser professional ecosystem.",
               "Between the two candidates, the former has the technical depth, while the latter has the operational instinct."
             ],
@@ -593,9 +569,7 @@
             "hidden_prompt": "user uses 'the latter offers / has / provides'",
             "hint_en": "The latter, by contrast, offers a sense of place that comes from coastline rather than skyline.",
             "examples_pass": [
-              "Has — that's the one.",
-              "Honestly, has sums it up.",
-              "Yeah, has for sure."
+              "The latter, by contrast, offers a sense of place that comes from coastline rather than skyline."
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -610,8 +584,6 @@
             "hint_en": "Such trade-offs make the choice less about cities than about which version of one's own life one is willing to live.",
             "examples_pass": [
               "Such trade-offs make the choice less about cities than about which version of one's own life one is willing to live.",
-              "These developments, far from being isolated, reflect a broader trend.",
-              "The argument, although compelling, rests on shaky assumptions.",
               "Such patterns rarely emerge by accident — there's almost always a single decision somewhere upstream.",
               "Such concerns deserve a more careful response than the one the company issued last week.",
               "Such an approach has worked well for us in markets where regulation is mature and predictable."
@@ -646,8 +618,6 @@
             "hint_en": "The former tends to favour markets where competitive position is still up for grabs and capital is patient.",
             "examples_pass": [
               "The former tends to favour markets where competitive position is still up for grabs and capital is patient.",
-              "The project, which we launched last year, has exceeded all expectations.",
-              "This approach, as mentioned earlier, has clear limitations.",
               "The former offers more upside but considerably more execution risk over the long run.",
               "The former works best when the team has deep operational expertise; the latter, when the market is moving quickly.",
               "The former requires significant upfront investment but pays back over a longer horizon."
@@ -665,8 +635,6 @@
             "hint_en": "The latter tends to suit moments when the underlying assets are strong but the operating model is straining under its own complexity.",
             "examples_pass": [
               "The latter tends to suit moments when the underlying assets are strong but the operating model is straining under its own complexity.",
-              "Such challenges, however significant, can be overcome with planning.",
-              "The findings, taken together, point to a structural shift.",
               "The latter requires less capital but more patience — sometimes considerably more than founders expect.",
               "The latter is the more conservative choice — slower returns, but considerably less downside.",
               "The latter offers a cleaner narrative but a harder execution path on every dimension that matters."
@@ -683,14 +651,7 @@
             "hidden_prompt": "user asks Charlotte which moment her business is in",
             "hint_en": "Which moment are you in?",
             "examples_pass": [
-              "Which moment are you in?",
-              "These developments, far from being isolated, reflect a broader trend.",
-              "The argument, although compelling, rests on shaky assumptions.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "Which moment are you in?"
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -804,8 +765,6 @@
             "hint_en": "First: 'The interview lasted ninety minutes.' Follow: 'That length was deliberate — the panel wanted to see how she handled fatigue.'",
             "examples_pass": [
               "First: 'The interview lasted ninety minutes.' Follow: 'That length was deliberate — the panel wanted to see how she handled fatigue.'",
-              "The project, which we launched last year, has exceeded all expectations.",
-              "This approach, as mentioned earlier, has clear limitations.",
               "The interview lasted ninety minutes. That length was deliberate — the panel wanted to see how she handled fatigue.",
               "She started a single conversation with the client at the launch event. That conversation eventually became a three-year contract.",
               "We made one small change to the onboarding flow. That tweak ended up doubling our conversion rate.",
@@ -824,8 +783,6 @@
             "hint_en": "First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.'",
             "examples_pass": [
               "First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.'",
-              "Such challenges, however significant, can be overcome with planning.",
-              "The findings, taken together, point to a structural shift.",
               "We launched the new product in June. The launch went more smoothly than any in the previous three years.",
               "She joined the company in February. Her first project shipped within six weeks.",
               "The board reviewed the strategy in March. The review surfaced three concerns we hadn't fully anticipated.",
@@ -844,8 +801,6 @@
             "hint_en": "Wrong order: 'A clear winner emerged from the discussion.' Better: 'The discussion produced a clear winner.'",
             "examples_pass": [
               "Wrong order: 'A clear winner emerged from the discussion.' Better: 'The discussion produced a clear winner.'",
-              "These developments, far from being isolated, reflect a broader trend.",
-              "The argument, although compelling, rests on shaky assumptions.",
               "Wrong order: 'A clear winner emerged from the discussion.' Better: 'The discussion produced a clear winner by the end of the afternoon.'",
               "Wrong order: 'An unexpected pattern was observed in the data.' Better: 'The data revealed an unexpected pattern after the second round of analysis.'",
               "Wrong order: 'A significant cost was incurred by the decision.' Better: 'The decision created a significant cost that won't be visible until next quarter.'",
@@ -881,8 +836,6 @@
             "hint_en": "Try: 'The new strategy produced significant gains.'",
             "examples_pass": [
               "Try: 'The new strategy produced significant gains.'",
-              "The project, which we launched last year, has exceeded all expectations.",
-              "This approach, as mentioned earlier, has clear limitations.",
               "Try: 'The new strategy produced significant gains.' (subject is the old, known information.)",
               "Then: 'These gains required a complete restructuring of the sales team.' (the new info is what follows.)",
               "Try: 'The decision proved costly.' (subject is the old information; cost is the new.)",
@@ -901,8 +854,6 @@
             "hint_en": "Then: 'These gains required a complete restructuring of the sales team.'",
             "examples_pass": [
               "Then: 'These gains required a complete restructuring of the sales team.'",
-              "Such challenges, however significant, can be overcome with planning.",
-              "The findings, taken together, point to a structural shift.",
               "Try: 'The new strategy produced significant gains.' (subject is the old, known information.)",
               "Then: 'These gains required a complete restructuring of the sales team.' (the new info is what follows.)",
               "Try: 'The decision proved costly.' (subject is the old information; cost is the new.)",
@@ -920,14 +871,7 @@
             "hidden_prompt": "user asks Charlotte why she defaulted to passive",
             "hint_en": "What made you reach for passive first?",
             "examples_pass": [
-              "What made you reach for passive first?",
-              "These developments, far from being isolated, reflect a broader trend.",
-              "The argument, although compelling, rests on shaky assumptions.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "What made you reach for passive first?"
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -1039,9 +983,7 @@
             "hidden_prompt": "user bridges with definite article + inferable noun",
             "hint_en": "First: 'We rented a flat in central Lisbon. The landlord was rarely there.' (Bridging — 'the landlord' inferred to belong to the flat.)",
             "examples_pass": [
-              "First: 'We rented a flat in central Lisbon. The landlord was rarely there.' (Bridging — 'the landlord' inferred to belong to the flat.)",
-              "The project, which we launched last year, has exceeded all expectations.",
-              "This approach, as mentioned earlier, has clear limitations."
+              "First: 'We rented a flat in central Lisbon. The landlord was rarely there.' (Bridging — 'the landlord' inferred to belong to the flat.)"
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -1055,9 +997,7 @@
             "hidden_prompt": "user names the referent instead of 'she / he / it'",
             "hint_en": "Ambiguous: 'Anna spoke to her mother, and she was angry.' Disambiguated: 'Anna spoke to her mother — Anna was angry, though her mother seemed to know why before Anna said a word.'",
             "examples_pass": [
-              "Ambiguous: 'Anna spoke to her mother, and she was angry.' Disambiguated: 'Anna spoke to her mother — Anna was angry, though her mother seemed to know why before Anna said a word.'",
-              "Such challenges, however significant, can be overcome with planning.",
-              "The findings, taken together, point to a structural shift."
+              "Ambiguous: 'Anna spoke to her mother, and she was angry.' Disambiguated: 'Anna spoke to her mother — Anna was angry, though her mother seemed to know why before Anna said a word.'"
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -1071,9 +1011,7 @@
             "hidden_prompt": "user bridges via inference",
             "hint_en": "First: 'I drove to the lake for the weekend. The water was warmer than expected.' (Bridging — 'the water' = the lake's water, inferred.)",
             "examples_pass": [
-              "First: 'I drove to the lake for the weekend. The water was warmer than expected.' (Bridging — 'the water' = the lake's water, inferred.)",
-              "These developments, far from being isolated, reflect a broader trend.",
-              "The argument, although compelling, rests on shaky assumptions."
+              "First: 'I drove to the lake for the weekend. The water was warmer than expected.' (Bridging — 'the water' = the lake's water, inferred.)"
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -1104,9 +1042,7 @@
             "hidden_prompt": "user names which 'she' said it",
             "hint_en": "Try: 'The CEO told the head of legal that the deal would close.'",
             "examples_pass": [
-              "She — that's the one.",
-              "Honestly, she sums it up.",
-              "Yeah, she for sure."
+              "Try: 'The CEO told the head of legal that the deal would close.'"
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -1120,9 +1056,7 @@
             "hidden_prompt": "user names referents",
             "hint_en": "Continue: 'The two disagreed on the timeline. Now the decision rests with the executive team.'",
             "examples_pass": [
-              "Continue: 'The two disagreed on the timeline. Now the decision rests with the executive team.'",
-              "Such challenges, however significant, can be overcome with planning.",
-              "The findings, taken together, point to a structural shift."
+              "Continue: 'The two disagreed on the timeline. Now the decision rests with the executive team.'"
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",
@@ -1136,9 +1070,7 @@
             "hidden_prompt": "user asks Charlotte why she'd left it ambiguous",
             "hint_en": "Was the ambiguity deliberate?",
             "examples_pass": [
-              "Was the ambiguity deliberate?",
-              "These developments, far from being isolated, reflect a broader trend.",
-              "The argument, although compelling, rests on shaky assumptions."
+              "Was the ambiguity deliberate?"
             ],
             "examples_fail": [
               "this (bare pronoun, no cohesive chain)",

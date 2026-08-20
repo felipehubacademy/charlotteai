@@ -104,7 +104,7 @@
    **hidden_prompt**: "user states past action with 'I + verb-ed' (worked, played, watched, etc.)"
    **hint_pt**: "I worked yesterday."
    **hint_en**: "I worked yesterday."
-   **example_pass**: I worked yesterday. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_pass**: I worked yesterday.
    **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 2. **id**: 2
@@ -113,7 +113,7 @@
    **hidden_prompt**: "user says another 'I + verb-ed'"
    **hint_pt**: "I watched a movie."
    **hint_en**: "I watched a movie."
-   **example_pass**: I watched a movie. | Yesterday I worked all day. | I watched TV last night.
+   **example_pass**: I watched a movie.
    **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 3. **id**: 3
@@ -122,7 +122,7 @@
    **hidden_prompt**: "user says 'He/She + verb-ed' (no -s in past)"
    **hint_pt**: "She studied for hours."
    **hint_en**: "She studied for hours."
-   **example_pass**: She studied for hours. | Yesterday I worked all day. | I watched TV last night.
+   **example_pass**: She studied for hours.
    **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 **Closing cue**: Charlotte fecha com "Productive day!" quando obj_3 baterem.
@@ -159,7 +159,7 @@
    **hidden_prompt**: "user states 'I + verb-ed'"
    **hint_pt**: "I worked."
    **hint_en**: "I worked."
-   **example_pass**: I worked. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_pass**: I worked.
    **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 2. **id**: 2
@@ -168,7 +168,7 @@
    **hidden_prompt**: "user states another 'I + verb-ed'"
    **hint_pt**: "I called my sister."
    **hint_en**: "I called my sister."
-   **example_pass**: I called my sister. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_pass**: I called my sister.
    **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 3. **id**: 3
@@ -177,7 +177,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What did you do?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Yesterday recap done!" quando obj_3 baterem.
@@ -354,7 +354,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What did you try?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Spelled it right!" quando obj_3 baterem.
@@ -458,7 +458,7 @@
    **hidden_prompt**: "user uses 'I + verb-ed + yesterday'"
    **hint_pt**: "I visited my friend yesterday."
    **hint_en**: "I visited my friend yesterday."
-   **example_pass**: I visited my friend yesterday. | Yesterday I worked all day. | I watched TV last night.
+   **example_pass**: I visited my friend yesterday.
    **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 2. **id**: 2
@@ -467,7 +467,7 @@
    **hidden_prompt**: "user uses 'I + verb-ed + last week/month'"
    **hint_pt**: "I traveled last week."
    **hint_en**: "I traveled last week."
-   **example_pass**: I traveled last week. | Yesterday I worked all day. | I watched TV last night.
+   **example_pass**: I traveled last week.
    **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 3. **id**: 3
@@ -476,7 +476,7 @@
    **hidden_prompt**: "user uses 'I + verb-ed + X ago'"
    **hint_pt**: "I called her two days ago."
    **hint_en**: "I called her two days ago."
-   **example_pass**: I called her two days ago. | Yesterday I worked all day. | I watched TV last night.
+   **example_pass**: I called her two days ago.
    **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 **Closing cue**: Charlotte fecha com "Time-anchored!" quando obj_3 baterem.
@@ -513,7 +513,7 @@
    **hidden_prompt**: "user uses 'I + verb-ed + last weekend'"
    **hint_pt**: "I visited my parents last weekend."
    **hint_en**: "I visited my parents last weekend."
-   **example_pass**: I visited my parents last weekend. | Yesterday I worked all day. | I watched TV last night.
+   **example_pass**: I visited my parents last weekend.
    **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 2. **id**: 2
@@ -531,7 +531,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Past activities mapped!" quando obj_3 baterem.
@@ -708,7 +708,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Weekend done!" quando obj_3 baterem.
@@ -812,7 +812,7 @@
    **hidden_prompt**: "user states 'I + verb-ed + (time)' for morning/start"
    **hint_pt**: "I worked all morning."
    **hint_en**: "I worked all morning."
-   **example_pass**: I worked all morning. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_pass**: I worked all morning.
    **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 2. **id**: 2
@@ -821,7 +821,7 @@
    **hidden_prompt**: "user states another 'I + verb-ed' for afternoon/middle"
    **hint_pt**: "I called my mother."
    **hint_en**: "I called my mother."
-   **example_pass**: I called my mother. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_pass**: I called my mother.
    **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 3. **id**: 3
@@ -830,7 +830,7 @@
    **hidden_prompt**: "user states another 'I + verb-ed' for evening/end"
    **hint_pt**: "I cooked dinner."
    **hint_en**: "I cooked dinner."
-   **example_pass**: I cooked dinner. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_pass**: I cooked dinner.
    **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 **Closing cue**: Charlotte fecha com "Full day captured!" quando obj_3 baterem.
@@ -867,7 +867,7 @@
    **hidden_prompt**: "user uses 'I + verb-ed' for morning action"
    **hint_pt**: "I worked."
    **hint_en**: "I worked."
-   **example_pass**: I worked. | Yesterday I worked all day. | I watched TV last night.
+   **example_pass**: I worked.
    **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 2. **id**: 2
@@ -876,7 +876,7 @@
    **hidden_prompt**: "user uses another 'I + verb-ed'"
    **hint_pt**: "I watched a movie."
    **hint_en**: "I watched a movie."
-   **example_pass**: I watched a movie. | Yesterday I worked all day. | I watched TV last night.
+   **example_pass**: I watched a movie.
    **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 3. **id**: 3
@@ -885,7 +885,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Yesterday on the books!" quando obj_3 baterem.

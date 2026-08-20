@@ -478,9 +478,7 @@
             "hint_pt": "I'm from Brazil.",
             "hint_en": "I'm from Brazil.",
             "examples_pass": [
-              "I'm from Brazil.",
-              "I'm from São Paulo.",
-              "I am from Portugal."
+              "I'm from Brazil."
             ],
             "examples_fail": [
               "Brazil (bare place)",
@@ -636,9 +634,7 @@
             "hint_pt": "I'm from Brazil!",
             "hint_en": "I'm from Brazil!",
             "examples_pass": [
-              "I'm from Brazil!",
-              "I'm from São Paulo.",
-              "I am from Portugal."
+              "I'm from Brazil!"
             ],
             "examples_fail": [
               "Brazil (bare place)",
@@ -670,9 +666,7 @@
             "hint_pt": "I'm from Brazil.",
             "hint_en": "I'm from Brazil.",
             "examples_pass": [
-              "I'm from Brazil.",
-              "I'm from São Paulo.",
-              "I am from Portugal."
+              "I'm from Brazil."
             ],
             "examples_fail": [
               "Brazil (bare place)",

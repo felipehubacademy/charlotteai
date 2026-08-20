@@ -127,9 +127,7 @@
             "hidden_prompt": "user uses 'X must be / must have + past participle'",
             "hint_en": "Three voicemails and no reply since Tuesday — he must be either ill or off the grid. There's no third explanation that fits.",
             "examples_pass": [
-              "Three voicemails and no reply since Tuesday — he must be either ill or off the grid. There's no third explanation that fits.",
-              "He must have forgotten about the meeting.",
-              "She might have been delayed by traffic."
+              "Three voicemails and no reply since Tuesday — he must be either ill or off the grid. There's no third explanation that fits."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -143,9 +141,7 @@
             "hidden_prompt": "user uses 'will + base' for high-confidence present prediction",
             "hint_en": "That'll be the courier — he comes at almost exactly this time every Wednesday.",
             "examples_pass": [
-              "That'll be the courier — he comes at almost exactly this time every Wednesday.",
-              "They could have been trying to reach us.",
-              "It can't have been easy for them."
+              "That'll be the courier — he comes at almost exactly this time every Wednesday."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -159,9 +155,7 @@
             "hidden_prompt": "user uses 'should + base' for expected outcome",
             "hint_en": "Her train should be pulling in any minute now, assuming nothing's gone wrong on the line.",
             "examples_pass": [
-              "Her train should be pulling in any minute now, assuming nothing's gone wrong on the line.",
-              "He may well have misunderstood the instructions.",
-              "She might possibly have changed her mind."
+              "Her train should be pulling in any minute now, assuming nothing's gone wrong on the line."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -192,9 +186,7 @@
             "hidden_prompt": "user uses 'might / could / must' to theorise",
             "hint_en": "She might have a deadline. Or she could be looking after someone who needs the light on.",
             "examples_pass": [
-              "She might have a deadline. Or she could be looking after someone who needs the light on.",
-              "He must have forgotten about the meeting.",
-              "She might have been delayed by traffic."
+              "She might have a deadline. Or she could be looking after someone who needs the light on."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -208,9 +200,7 @@
             "hidden_prompt": "user uses 'must' for strongest inference or 'should' for expectation",
             "hint_en": "If it's been three nights running, something must have changed in her routine — and whatever it is, she should be exhausted by now.",
             "examples_pass": [
-              "If it's been three nights running, something must have changed in her routine — and whatever it is, she should be exhausted by now.",
-              "Must — that's the one.",
-              "Honestly, must sums it up."
+              "If it's been three nights running, something must have changed in her routine — and whatever it is, she should be exhausted by now."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -224,9 +214,7 @@
             "hidden_prompt": "user asks Charlotte if she knows her neighbour",
             "hint_en": "Do you know her well enough to knock?",
             "examples_pass": [
-              "Do you know her well enough to knock?",
-              "He may well have misunderstood the instructions.",
-              "She might possibly have changed her mind."
+              "Do you know her well enough to knock?"
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -339,8 +327,6 @@
             "hint_en": "Given how the conversation has been going, the negotiation might well end this week.",
             "examples_pass": [
               "Given how the conversation has been going, the negotiation might well end this week.",
-              "He must have forgotten about the meeting.",
-              "She might have been delayed by traffic.",
               "Given how the negotiation has been progressing, it might well close before the weekend.",
               "She might well decide to take the offer, despite all her hesitation up to now.",
               "The team might well finish ahead of schedule if the next phase goes as smoothly as the first.",
@@ -359,8 +345,6 @@
             "hint_en": "If oil prices stay high for another quarter, inflation could well force another rate hike before year-end.",
             "examples_pass": [
               "If oil prices stay high for another quarter, inflation could well force another rate hike before year-end.",
-              "They could have been trying to reach us.",
-              "It can't have been easy for them.",
               "If oil prices stay this high for another quarter, inflation could well force another rate hike before year-end.",
               "This new product could well be the one that finally breaks through internationally.",
               "She could well end up running the entire division within two or three years.",
@@ -379,8 +363,6 @@
             "hint_en": "The committee may well reject the proposal — the political winds have shifted since the original submission.",
             "examples_pass": [
               "The committee may well reject the proposal — the political winds have shifted since the original submission.",
-              "He may well have misunderstood the instructions.",
-              "She might possibly have changed her mind.",
               "The court may well rule in favour of the plaintiff, given the precedent set last year.",
               "The board may well take a more conservative position once they have the audit findings in hand.",
               "The regulator may well request additional disclosures before approving the merger."
@@ -432,8 +414,6 @@
             "hint_en": "And if that's the case, we may well find ourselves under pressure to follow within six weeks — or risk looking like we don't share their pricing power.",
             "examples_pass": [
               "And if that's the case, we may well find ourselves under pressure to follow within six weeks — or risk looking like we don't share their pricing power.",
-              "They could have been trying to reach us.",
-              "It can't have been easy for them.",
               "We could well end up with a much larger problem on our hands by mid-quarter if nobody acts now.",
               "She may well outlast all of us at this company — she's been here longer than any single product line.",
               "He might well be the right person for the role, even if his profile doesn't match the standard template."
@@ -451,8 +431,6 @@
             "hint_en": "Has your team modelled the move yet?",
             "examples_pass": [
               "Has your team modelled the move yet?",
-              "He may well have misunderstood the instructions.",
-              "She might possibly have changed her mind.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -572,9 +550,7 @@
             "hidden_prompt": "user uses 'X ought to + base'",
             "hint_en": "If the error was ours, we ought to take responsibility publicly — even if the legal team prefers we say less.",
             "examples_pass": [
-              "If the error was ours, we ought to take responsibility publicly — even if the legal team prefers we say less.",
-              "He must have forgotten about the meeting.",
-              "She might have been delayed by traffic."
+              "If the error was ours, we ought to take responsibility publicly — even if the legal team prefers we say less."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -588,9 +564,7 @@
             "hidden_prompt": "user uses 'X shall + base' in contractual register",
             "hint_en": "The supplier shall deliver no later than the fifteenth of each month; any delay shall be reported in writing within twenty-four hours.",
             "examples_pass": [
-              "The supplier shall deliver no later than the fifteenth of each month; any delay shall be reported in writing within twenty-four hours.",
-              "They could have been trying to reach us.",
-              "It can't have been easy for them."
+              "The supplier shall deliver no later than the fifteenth of each month; any delay shall be reported in writing within twenty-four hours."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -604,9 +578,7 @@
             "hidden_prompt": "user uses 'X would + base' for past habit",
             "hint_en": "When my father retired, he would walk the same five-kilometre loop every morning at six — rain, snow, anything but ice.",
             "examples_pass": [
-              "When my father retired, he would walk the same five-kilometre loop every morning at six — rain, snow, anything but ice.",
-              "He may well have misunderstood the instructions.",
-              "She might possibly have changed her mind."
+              "When my father retired, he would walk the same five-kilometre loop every morning at six — rain, snow, anything but ice."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -637,9 +609,7 @@
             "hidden_prompt": "user uses 'X shall + base'",
             "hint_en": "The contractor shall maintain professional liability insurance throughout the duration of this engagement, with coverage no less than five hundred thousand euros.",
             "examples_pass": [
-              "The contractor shall maintain professional liability insurance throughout the duration of this engagement, with coverage no less than five hundred thousand euros.",
-              "He must have forgotten about the meeting.",
-              "She might have been delayed by traffic."
+              "The contractor shall maintain professional liability insurance throughout the duration of this engagement, with coverage no less than five hundred thousand euros."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -653,9 +623,7 @@
             "hidden_prompt": "user uses 'X ought to + base'",
             "hint_en": "Beyond the contract, both parties ought to communicate openly about delays — even when no specific clause requires it.",
             "examples_pass": [
-              "Beyond the contract, both parties ought to communicate openly about delays — even when no specific clause requires it.",
-              "They could have been trying to reach us.",
-              "It can't have been easy for them."
+              "Beyond the contract, both parties ought to communicate openly about delays — even when no specific clause requires it."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -669,9 +637,7 @@
             "hidden_prompt": "user uses 'X would + base' for past habit",
             "hint_en": "My old mentor would always start contracts by asking what the other party most feared — that question shaped every clause after.",
             "examples_pass": [
-              "My old mentor would always start contracts by asking what the other party most feared — that question shaped every clause after.",
-              "He may well have misunderstood the instructions.",
-              "She might possibly have changed her mind."
+              "My old mentor would always start contracts by asking what the other party most feared — that question shaped every clause after."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -784,8 +750,6 @@
             "hint_en": "With the surplus they've accumulated, the company is bound to announce a dividend by year-end.",
             "examples_pass": [
               "With the surplus they've accumulated, the company is bound to announce a dividend by year-end.",
-              "He must have forgotten about the meeting.",
-              "She might have been delayed by traffic.",
               "Given the data we've already seen, the regulator is bound to require additional disclosures.",
               "She was bound to take that job offer — the alternative would have meant moving back home.",
               "The market is bound to react sharply to the announcement, regardless of how it's framed."
@@ -803,8 +767,6 @@
             "hint_en": "We were supposed to finalise the design last Friday, but the client added two new requirements at the eleventh hour.",
             "examples_pass": [
               "We were supposed to finalise the design last Friday, but the client added two new requirements at the eleventh hour.",
-              "They could have been trying to reach us.",
-              "It can't have been easy for them.",
               "We were supposed to finalise the design last Friday, but the client added two new requirements at the last moment.",
               "She was supposed to be on vacation this week, but she's been answering emails from the airport.",
               "The launch was supposed to happen in May, but it's been pushed back to August twice already.",
@@ -823,8 +785,6 @@
             "hint_en": "Given the current market sentiment, the regulator is unlikely to approve the merger before the spring at the earliest.",
             "examples_pass": [
               "Given the current market sentiment, the regulator is unlikely to approve the merger before the spring at the earliest.",
-              "He may well have misunderstood the instructions.",
-              "She might possibly have changed her mind.",
               "Given the current market sentiment, the regulator is unlikely to approve the merger before spring at the earliest.",
               "The team is likely to push back if we don't involve them in the decision from the beginning.",
               "She's unlikely to accept the role unless the compensation package is substantially improved.",
@@ -893,8 +853,6 @@
             "hint_en": "What specifically was supposed to be ready?",
             "examples_pass": [
               "What specifically was supposed to be ready?",
-              "He may well have misunderstood the instructions.",
-              "She might possibly have changed her mind.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -1008,9 +966,7 @@
             "hidden_prompt": "user uses 'X might have to + base'",
             "hint_en": "If the conference loses a major sponsor, we might have to scale back the venue and reduce the speaker honorariums.",
             "examples_pass": [
-              "If the conference loses a major sponsor, we might have to scale back the venue and reduce the speaker honorariums.",
-              "He must have forgotten about the meeting.",
-              "She might have been delayed by traffic."
+              "If the conference loses a major sponsor, we might have to scale back the venue and reduce the speaker honorariums."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -1024,9 +980,7 @@
             "hidden_prompt": "user uses 'X would have to + base'",
             "hint_en": "If we wanted to enter the German market by Q1, we would have to register the local entity by the end of this month.",
             "examples_pass": [
-              "If we wanted to enter the German market by Q1, we would have to register the local entity by the end of this month.",
-              "They could have been trying to reach us.",
-              "It can't have been easy for them."
+              "If we wanted to enter the German market by Q1, we would have to register the local entity by the end of this month."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -1040,9 +994,7 @@
             "hidden_prompt": "user uses 'X is/are going to have to + base'",
             "hint_en": "Given the new accessibility standards, every team is going to have to retrain their designers within six months — there's no version where this doesn't apply to us.",
             "examples_pass": [
-              "Given the new accessibility standards, every team is going to have to retrain their designers within six months — there's no version where this doesn't apply to us.",
-              "He may well have misunderstood the instructions.",
-              "She might possibly have changed her mind."
+              "Given the new accessibility standards, every team is going to have to retrain their designers within six months — there's no version where this doesn't apply to us."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -1073,9 +1025,7 @@
             "hidden_prompt": "user uses 'might have to + base'",
             "hint_en": "If we close ten to twenty percent below target, we might have to delay the planned hiring by a quarter — uncomfortable but survivable.",
             "examples_pass": [
-              "If we close ten to twenty percent below target, we might have to delay the planned hiring by a quarter — uncomfortable but survivable.",
-              "He must have forgotten about the meeting.",
-              "She might have been delayed by traffic."
+              "If we close ten to twenty percent below target, we might have to delay the planned hiring by a quarter — uncomfortable but survivable."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -1089,9 +1039,7 @@
             "hidden_prompt": "user uses 'would have to + base'",
             "hint_en": "If we close more than thirty percent below, we would have to revisit the entire two-year plan — at that point, the strategy isn't the same business.",
             "examples_pass": [
-              "If we close more than thirty percent below, we would have to revisit the entire two-year plan — at that point, the strategy isn't the same business.",
-              "They could have been trying to reach us.",
-              "It can't have been easy for them."
+              "If we close more than thirty percent below, we would have to revisit the entire two-year plan — at that point, the strategy isn't the same business."
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",
@@ -1105,9 +1053,7 @@
             "hidden_prompt": "user asks Charlotte where the line of acceptable is",
             "hint_en": "Where's your line of acceptable?",
             "examples_pass": [
-              "Where's your line of acceptable?",
-              "He may well have misunderstood the instructions.",
-              "She might possibly have changed her mind."
+              "Where's your line of acceptable?"
             ],
             "examples_fail": [
               "must (bare modal, no nuance)",

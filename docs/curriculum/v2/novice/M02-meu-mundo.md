@@ -115,7 +115,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states an age using 'I am' or 'I'm' + a number (any number 1-100) + 'years old' — number can be digit or spelled out"
    **hint_pt**: "I'm twenty years old!"
    **hint_en**: "I'm twenty years old!"
-   **example_pass**: I'm twenty years old! | I am 18 years old. | I'm thirty years old.
+   **example_pass**: I'm twenty years old! | I am 18 years old.
    **example_fail**: Twenty (bare number) | I have 20 years (wrong verb — PT translation) | I'm old (no number)
 
 2. **id**: 2
@@ -325,7 +325,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states age with 'I'm + number + years old' or 'I am + number' — number 20+"
    **hint_pt**: "I'm twenty-five."
    **hint_en**: "I'm twenty-five."
-   **example_pass**: I'm twenty-five. | I'm thirty years old. | I am forty.
+   **example_pass**: I'm twenty-five. | I am forty.
    **example_fail**: Twenty-five (bare number) | I'm ten (under 20) | I have 25 years (wrong verb)
 
 2. **id**: 2
@@ -447,7 +447,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin with 'I'm from + country name' — any country counts, must be a country (not just a city or 'here')"
    **hint_pt**: "I'm from Brazil!"
    **hint_en**: "I'm from Brazil!"
-   **example_pass**: I'm from Brazil! | I am from Japan. | I'm from the United States.
+   **example_pass**: I'm from Brazil!
    **example_fail**: Brazil (bare country) | I'm from here (no country) | I'm Brazilian (nationality, not origin)
 
 2. **id**: 2
@@ -457,7 +457,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hint_pt**: "Where are you from?"
    **hint_en**: "Where are you from?"
    
-   **example_pass**: Where are you from? | And you? | How about you?
+   **example_pass**: Where are you from? | How about you?
    **example_fail**: I'm from Brazil (statement) | Yes (single word) | Where were you from? (wrong tense) | What's your name? (off-intent)
 
 **Closing cue**: Charlotte fecha com "Nice meeting you! Have a great conference." quando obj_2 baterem.
@@ -492,7 +492,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin with 'I'm from + country name'"
    **hint_pt**: "I'm from Brazil."
    **hint_en**: "I'm from Brazil."
-   **example_pass**: I'm from Brazil. | I am from Japan. | I'm from the United States.
+   **example_pass**: I'm from Brazil.
    **example_fail**: Brazil (bare country) | From Brazil (no subject + verb) | I'm Brazilian (nationality, not origin)
 
 2. **id**: 2
@@ -502,7 +502,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hint_pt**: "Where are you from?"
    **hint_en**: "Where are you from?"
    
-   **example_pass**: Where are you from? | And you? | How about you?
+   **example_pass**: Where are you from? | How about you?
    **example_fail**: I'm from Brazil (statement) | Yes (single word) | Where were you from? (wrong tense) | What's your name? (off-intent)
 
 3. **id**: 3
@@ -624,7 +624,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin with 'I'm from + country name' — must be country, not nationality (Brazil not Brazilian)"
    **hint_pt**: "I'm from Brazil."
    **hint_en**: "I'm from Brazil."
-   **example_pass**: I'm from Brazil. | I am from Japan. | I'm from the United States.
+   **example_pass**: I'm from Brazil.
    **example_fail**: Brazil (bare country) | I'm from Brazilian (nationality, not country) | I'm Brazilian (nationality structure)
 
 **Closing cue**: Charlotte fecha com "Nice! You got nationality vs country down." quando obj_2 baterem.
@@ -668,7 +668,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin with 'I'm from + country'"
    **hint_pt**: "I'm from Brazil."
    **hint_en**: "I'm from Brazil."
-   **example_pass**: I'm from Brazil. | I am from Japan. | I'm from the United States.
+   **example_pass**: I'm from Brazil.
    **example_fail**: Brazil (bare country) | I'm Brazilian (nationality) | From Brazil (no subject + verb)
 
 3. **id**: 3
@@ -678,7 +678,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hint_pt**: "Are you American?"
    **hint_en**: "Are you American?"
    
-   **example_pass**: Are you American? | What's your nationality? | And you?
+   **example_pass**: Are you American? | What's your nationality?
    **example_fail**: I'm Brazilian (statement) | Yes (single word) | Were you American? (wrong tense) | Where do you live? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Cool! Great intro round." quando obj_3 baterem.

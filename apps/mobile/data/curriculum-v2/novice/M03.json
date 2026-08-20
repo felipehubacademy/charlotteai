@@ -194,7 +194,6 @@
             "hint_en": "My father is American.",
             "examples_pass": [
               "My father is American.",
-              "My father is fifty-five.",
               "My dad is from Brazil."
             ],
             "examples_fail": [
@@ -247,7 +246,6 @@
             "hint_en": "My mother is Maria.",
             "examples_pass": [
               "My mother is Maria.",
-              "My mother is fifty.",
               "My mom is Brazilian."
             ],
             "examples_fail": [
@@ -476,9 +474,7 @@
             "hint_pt": "Have you got any?",
             "hint_en": "Have you got any?",
             "examples_pass": [
-              "Have you got any?",
-              "And you?",
-              "How about you?"
+              "Have you got any?"
             ],
             "examples_fail": [
               "Yes I have (statement)",
@@ -547,9 +543,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -739,9 +733,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -810,9 +802,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1073,9 +1063,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1248,7 +1236,6 @@
             "hint_en": "My father is American.",
             "examples_pass": [
               "My father is American.",
-              "My father is fifty-five.",
               "My dad is John."
             ],
             "examples_fail": [
@@ -1265,6 +1252,7 @@
             "hint_pt": "My sister is twenty. / My friend is from Italy.",
             "hint_en": "My sister is twenty. / My friend is from Italy.",
             "examples_pass": [
+              "My sister is twenty. / My friend is from Italy.",
               "My sister is twenty.",
               "My friend is from Italy.",
               "My husband is John."
@@ -1319,8 +1307,7 @@
             "hint_en": "My father is fifty-five.",
             "examples_pass": [
               "My father is fifty-five.",
-              "My dad is John.",
-              "My father is American."
+              "My dad is John."
             ],
             "examples_fail": [
               "Father (bare noun)",

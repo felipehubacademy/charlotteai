@@ -203,9 +203,7 @@
             "hint_pt": "Which gate is it, please?",
             "hint_en": "Which gate is it, please?",
             "examples_pass": [
-              "Which gate is it, please?",
-              "And you?",
-              "How about you?"
+              "Which gate is it, please?"
             ],
             "examples_fail": [
               "This one (statement)",
@@ -274,9 +272,7 @@
             "hint_pt": "How early should I arrive?",
             "hint_en": "How early should I arrive?",
             "examples_pass": [
-              "How early should I arrive?",
-              "And you?",
-              "How about you?"
+              "How early should I arrive?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -292,9 +288,7 @@
             "hint_pt": "Do you travel a lot?",
             "hint_en": "Do you travel a lot?",
             "examples_pass": [
-              "Do you travel a lot?",
-              "And you?",
-              "How about you?"
+              "Do you travel a lot?"
             ],
             "examples_fail": [
               "Yes I do (statement)",
@@ -482,9 +476,7 @@
             "hint_pt": "Is breakfast included?",
             "hint_en": "Is breakfast included?",
             "examples_pass": [
-              "Is breakfast included?",
-              "And you?",
-              "How about you?"
+              "Is breakfast included?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -500,9 +492,7 @@
             "hint_pt": "What time is check-out tomorrow?",
             "hint_en": "What time is check-out tomorrow?",
             "examples_pass": [
-              "What time is check-out tomorrow?",
-              "And you?",
-              "How about you?"
+              "What time is check-out tomorrow?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -571,9 +561,7 @@
             "hint_pt": "What about you?",
             "hint_en": "What about you?",
             "examples_pass": [
-              "What about you?",
-              "And you?",
-              "How about you?"
+              "What about you?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -776,9 +764,7 @@
             "hint_pt": "Is it far from here?",
             "hint_en": "Is it far from here?",
             "examples_pass": [
-              "Is it far from here?",
-              "And you?",
-              "How about you?"
+              "Is it far from here?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -848,7 +834,6 @@
             "hint_en": "How about you?",
             "examples_pass": [
               "How about you?",
-              "And you?",
               "What about you?"
             ],
             "examples_fail": [
@@ -1060,9 +1045,7 @@
             "hint_pt": "Do you have something for the pain?",
             "hint_en": "Do you have something for the pain?",
             "examples_pass": [
-              "Do you have something for the pain?",
-              "And you?",
-              "How about you?"
+              "Do you have something for the pain?"
             ],
             "examples_fail": [
               "Yes I do (statement)",
@@ -1131,9 +1114,7 @@
             "hint_pt": "What do you do?",
             "hint_en": "What do you do?",
             "examples_pass": [
-              "What do you do?",
-              "And you?",
-              "How about you?"
+              "What do you do?"
             ],
             "examples_fail": [
               "I work here (statement)",
@@ -1404,9 +1385,7 @@
             "hint_pt": "Any tips?",
             "hint_en": "Any tips?",
             "examples_pass": [
-              "Any tips?",
-              "And you?",
-              "How about you?"
+              "Any tips?"
             ],
             "examples_fail": [
               "I do that too (statement)",

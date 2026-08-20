@@ -197,9 +197,7 @@
             "hint_pt": "I think it will rain tomorrow.",
             "hint_en": "I think it will rain tomorrow.",
             "examples_pass": [
-              "I think it will rain tomorrow.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I think it will rain tomorrow."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -215,9 +213,7 @@
             "hint_pt": "She will love the party.",
             "hint_en": "She will love the party.",
             "examples_pass": [
-              "She will love the party.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "She will love the party."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -233,9 +229,7 @@
             "hint_pt": "I will be 30 next year.",
             "hint_en": "I will be 30 next year.",
             "examples_pass": [
-              "I will be 30 next year.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I will be 30 next year."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -268,9 +262,7 @@
             "hint_pt": "I'll travel next year.",
             "hint_en": "I'll travel next year.",
             "examples_pass": [
-              "I'll travel next year.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll travel next year."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -286,9 +278,7 @@
             "hint_pt": "My sister will move to NYC.",
             "hint_en": "My sister will move to NYC.",
             "examples_pass": [
-              "My sister will move to NYC.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "My sister will move to NYC."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -304,9 +294,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -491,9 +479,7 @@
             "hint_pt": "I'll get it!",
             "hint_en": "I'll get it!",
             "examples_pass": [
-              "I'll get it.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll get it."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -509,9 +495,7 @@
             "hint_pt": "I'll call you later.",
             "hint_en": "I'll call you later.",
             "examples_pass": [
-              "I'll call you later.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll call you later."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -562,9 +546,7 @@
             "hint_pt": "I'll help you.",
             "hint_en": "I'll help you.",
             "examples_pass": [
-              "I'll help you.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll help you."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -580,9 +562,7 @@
             "hint_pt": "I'll be there at five.",
             "hint_en": "I'll be there at five.",
             "examples_pass": [
-              "I'll be there at five.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll be there at five."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -771,9 +751,7 @@
             "hint_pt": "I'm going to travel next week.",
             "hint_en": "I'm going to travel next week.",
             "examples_pass": [
-              "I'm going to travel next week.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to travel next week."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -789,9 +767,7 @@
             "hint_pt": "I'll get it!",
             "hint_en": "I'll get it!",
             "examples_pass": [
-              "I'll get it.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll get it."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -807,9 +783,7 @@
             "hint_pt": "I think it'll rain.",
             "hint_en": "I think it'll rain.",
             "examples_pass": [
-              "I think it'll rain.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I think it'll rain."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -842,9 +816,7 @@
             "hint_pt": "I'm going to study tonight.",
             "hint_en": "I'm going to study tonight.",
             "examples_pass": [
-              "I'm going to study tonight.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to study tonight."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -860,9 +832,7 @@
             "hint_pt": "I'll help if you need.",
             "hint_en": "I'll help if you need.",
             "examples_pass": [
-              "I'll help if you need.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll help if you need."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -878,9 +848,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1049,9 +1017,7 @@
             "hint_pt": "Sure, I'll help.",
             "hint_en": "Sure, I'll help.",
             "examples_pass": [
-              "Sure, I'll help.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "Sure, I'll help."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1067,9 +1033,7 @@
             "hint_pt": "I'll be there at five.",
             "hint_en": "I'll be there at five.",
             "examples_pass": [
-              "I'll be there at five.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll be there at five."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1085,9 +1049,7 @@
             "hint_pt": "Will you bring snacks?",
             "hint_en": "Will you bring snacks?",
             "examples_pass": [
-              "Will you bring snacks?",
-              "And you?",
-              "How about you?"
+              "Will you bring snacks?"
             ],
             "examples_fail": [
               "Yes I will (statement)",
@@ -1120,9 +1082,7 @@
             "hint_pt": "Yes, I'll come.",
             "hint_en": "Yes, I'll come.",
             "examples_pass": [
-              "Yes, I'll come.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "Yes, I'll come."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1138,9 +1098,7 @@
             "hint_pt": "I'll bring a cake.",
             "hint_en": "I'll bring a cake.",
             "examples_pass": [
-              "I'll bring a cake.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll bring a cake."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1156,9 +1114,7 @@
             "hint_pt": "Will you need help setting up?",
             "hint_en": "Will you need help setting up?",
             "examples_pass": [
-              "Will you need help setting up?",
-              "And you?",
-              "How about you?"
+              "Will you need help setting up?"
             ],
             "examples_fail": [
               "Yes I will (statement)",
@@ -1339,9 +1295,7 @@
             "hint_pt": "I'm going to travel next month.",
             "hint_en": "I'm going to travel next month.",
             "examples_pass": [
-              "I'm going to travel next month.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to travel next month."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1357,9 +1311,7 @@
             "hint_pt": "I think it will be fun.",
             "hint_en": "I think it will be fun.",
             "examples_pass": [
-              "I think it will be fun.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I think it will be fun."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1375,9 +1327,7 @@
             "hint_pt": "I'll help you pack.",
             "hint_en": "I'll help you pack.",
             "examples_pass": [
-              "I'll help you pack.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll help you pack."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1410,9 +1360,7 @@
             "hint_pt": "I'm going to learn Spanish.",
             "hint_en": "I'm going to learn Spanish.",
             "examples_pass": [
-              "I'm going to learn Spanish.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to learn Spanish."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1446,9 +1394,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1633,9 +1579,7 @@
             "hint_pt": "It's going to rain tomorrow.",
             "hint_en": "It's going to rain tomorrow.",
             "examples_pass": [
-              "It's going to rain tomorrow.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "It's going to rain tomorrow."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1722,9 +1666,7 @@
             "hint_pt": "What about you?",
             "hint_en": "What about you?",
             "examples_pass": [
-              "What about you?",
-              "And you?",
-              "How about you?"
+              "What about you?"
             ],
             "examples_fail": [
               "I do that too (statement)",

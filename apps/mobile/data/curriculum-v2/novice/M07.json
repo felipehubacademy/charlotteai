@@ -163,9 +163,7 @@
             "hint_pt": "I can swim.",
             "hint_en": "I can swim.",
             "examples_pass": [
-              "I can swim.",
-              "I can swim.",
-              "I can speak English."
+              "I can swim."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -181,9 +179,7 @@
             "hint_pt": "I can cook Italian food.",
             "hint_en": "I can cook Italian food.",
             "examples_pass": [
-              "I can cook Italian food.",
-              "I can swim.",
-              "I can speak English."
+              "I can cook Italian food."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -199,9 +195,7 @@
             "hint_pt": "My sister can dance very well.",
             "hint_en": "My sister can dance very well.",
             "examples_pass": [
-              "My sister can dance very well.",
-              "I can swim.",
-              "I can speak English."
+              "My sister can dance very well."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -234,8 +228,6 @@
             "hint_pt": "I can speak English.",
             "hint_en": "I can speak English.",
             "examples_pass": [
-              "I can speak English.",
-              "I can swim.",
               "I can speak English."
             ],
             "examples_fail": [
@@ -252,9 +244,7 @@
             "hint_pt": "I can play soccer.",
             "hint_en": "I can play soccer.",
             "examples_pass": [
-              "I can play soccer.",
-              "I can swim.",
-              "I can speak English."
+              "I can play soccer."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -270,9 +260,7 @@
             "hint_pt": "What can you do?",
             "hint_en": "What can you do?",
             "examples_pass": [
-              "What can you do?",
-              "And you?",
-              "How about you?"
+              "What can you do?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -429,9 +417,7 @@
             "hint_pt": "I can't ride a bike.",
             "hint_en": "I can't ride a bike.",
             "examples_pass": [
-              "I can't ride a bike.",
-              "I can swim.",
-              "I can speak English."
+              "I can't ride a bike."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -447,9 +433,7 @@
             "hint_pt": "I can't speak French.",
             "hint_en": "I can't speak French.",
             "examples_pass": [
-              "I can't speak French.",
-              "I can swim.",
-              "I can speak English."
+              "I can't speak French."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -465,9 +449,7 @@
             "hint_pt": "My father can't cook.",
             "hint_en": "My father can't cook.",
             "examples_pass": [
-              "My father can't cook.",
-              "I can swim.",
-              "I can speak English."
+              "My father can't cook."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -500,9 +482,7 @@
             "hint_pt": "I can't dance.",
             "hint_en": "I can't dance.",
             "examples_pass": [
-              "I can't dance.",
-              "I can swim.",
-              "I can speak English."
+              "I can't dance."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -537,7 +517,6 @@
             "hint_en": "How about you?",
             "examples_pass": [
               "How about you?",
-              "And you?",
               "What about you?"
             ],
             "examples_fail": [
@@ -694,9 +673,7 @@
             "hint_pt": "Can you swim?",
             "hint_en": "Can you swim?",
             "examples_pass": [
-              "Can you swim?",
-              "And you?",
-              "How about you?"
+              "Can you swim?"
             ],
             "examples_fail": [
               "Yes I can (statement)",
@@ -712,9 +689,7 @@
             "hint_pt": "Can you cook?",
             "hint_en": "Can you cook?",
             "examples_pass": [
-              "Can you cook?",
-              "And you?",
-              "How about you?"
+              "Can you cook?"
             ],
             "examples_fail": [
               "Yes I can (statement)",
@@ -730,9 +705,7 @@
             "hint_pt": "Can your friend dance?",
             "hint_en": "Can your friend dance?",
             "examples_pass": [
-              "Can your friend dance?",
-              "And you?",
-              "How about you?"
+              "Can your friend dance?"
             ],
             "examples_fail": [
               "Yes I can (statement)",
@@ -967,8 +940,6 @@
             "hint_pt": "I can speak English.",
             "hint_en": "I can speak English.",
             "examples_pass": [
-              "I can speak English.",
-              "I can swim.",
               "I can speak English."
             ],
             "examples_fail": [
@@ -985,9 +956,7 @@
             "hint_pt": "I can play soccer.",
             "hint_en": "I can play soccer.",
             "examples_pass": [
-              "I can play soccer.",
-              "I can swim.",
-              "I can speak English."
+              "I can play soccer."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -1003,9 +972,7 @@
             "hint_pt": "I can cook well.",
             "hint_en": "I can cook well.",
             "examples_pass": [
-              "I can cook well.",
-              "I can swim.",
-              "I can speak English."
+              "I can cook well."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -1038,9 +1005,7 @@
             "hint_pt": "I can speak Portuguese.",
             "hint_en": "I can speak Portuguese.",
             "examples_pass": [
-              "I can speak Portuguese.",
-              "I can swim.",
-              "I can speak English."
+              "I can speak Portuguese."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -1056,9 +1021,7 @@
             "hint_pt": "I can play the piano.",
             "hint_en": "I can play the piano.",
             "examples_pass": [
-              "I can play the piano.",
-              "I can swim.",
-              "I can speak English."
+              "I can play the piano."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -1075,7 +1038,6 @@
             "hint_en": "How about you?",
             "examples_pass": [
               "How about you?",
-              "And you?",
               "What about you?"
             ],
             "examples_fail": [
@@ -1231,8 +1193,6 @@
             "hint_pt": "I can speak English.",
             "hint_en": "I can speak English.",
             "examples_pass": [
-              "I can speak English.",
-              "I can swim.",
               "I can speak English."
             ],
             "examples_fail": [
@@ -1249,9 +1209,7 @@
             "hint_pt": "I can't play the piano.",
             "hint_en": "I can't play the piano.",
             "examples_pass": [
-              "I can't play the piano.",
-              "I can swim.",
-              "I can speak English."
+              "I can't play the piano."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -1267,9 +1225,7 @@
             "hint_pt": "Can you sing?",
             "hint_en": "Can you sing?",
             "examples_pass": [
-              "Can you sing?",
-              "And you?",
-              "How about you?"
+              "Can you sing?"
             ],
             "examples_fail": [
               "Yes I can (statement)",
@@ -1302,9 +1258,7 @@
             "hint_pt": "I can swim.",
             "hint_en": "I can swim.",
             "examples_pass": [
-              "I can swim.",
-              "I can swim.",
-              "I can speak English."
+              "I can swim."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -1320,9 +1274,7 @@
             "hint_pt": "I can't drive.",
             "hint_en": "I can't drive.",
             "examples_pass": [
-              "I can't drive.",
-              "I can swim.",
-              "I can speak English."
+              "I can't drive."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -1338,9 +1290,7 @@
             "hint_pt": "Can you cook?",
             "hint_en": "Can you cook?",
             "examples_pass": [
-              "Can you cook?",
-              "And you?",
-              "How about you?"
+              "Can you cook?"
             ],
             "examples_fail": [
               "Yes I can (statement)",

@@ -109,7 +109,7 @@
    **hidden_prompt**: "user states what they want with 'I'd like to buy + item' or 'I'm looking for + item'"
    **hint_pt**: "I'd like to buy a shirt."
    **hint_en**: "I'd like to buy a shirt."
-   **example_pass**: I'd like to buy a shirt. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I'd like to buy a shirt.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -118,7 +118,7 @@
    **hidden_prompt**: "user asks 'Where is/are + item?' or 'Where can I find + item?'"
    **hint_pt**: "Where are the shirts?"
    **hint_en**: "Where are the shirts?"
-   **example_pass**: Where are the shirts? | And you? | How about you?
+   **example_pass**: Where are the shirts?
    **example_fail**: I do that too (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 3. **id**: 3
@@ -127,7 +127,7 @@
    **hidden_prompt**: "user asks 'Can I try this on?' or 'Can I try on + item?'"
    **hint_pt**: "Can I try this on?"
    **hint_en**: "Can I try this on?"
-   **example_pass**: Can I try this on? | And you? | How about you?
+   **example_pass**: Can I try this on?
    **example_fail**: I do that too (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 **Closing cue**: Charlotte fecha com "Of course! Right this way." quando obj_3 baterem.
@@ -164,7 +164,7 @@
    **hidden_prompt**: "user says 'I'm looking for + item' or 'I'd like to buy + item'"
    **hint_pt**: "I'm looking for shoes."
    **hint_en**: "I'm looking for shoes."
-   **example_pass**: I'm looking for shoes. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I'm looking for shoes.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -182,7 +182,7 @@
    **hidden_prompt**: "user asks 'How much is it?' or 'How much are they?'"
    **hint_pt**: "How much is it?"
    **hint_en**: "How much is it?"
-   **example_pass**: How much is it? | And you? | How about you?
+   **example_pass**: How much is it?
    **example_fail**: It's cheap (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 **Closing cue**: Charlotte encerra com "Adding to your cart!" quando obj_3 baterem.
@@ -287,7 +287,7 @@
    **hidden_prompt**: "user uses 'this + singular' or 'these + plural' for close items"
    **hint_pt**: "I like this shirt."
    **hint_en**: "I like this shirt."
-   **example_pass**: I like this shirt. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: I like this shirt.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
@@ -296,7 +296,7 @@
    **hidden_prompt**: "user uses 'that + singular' or 'those + plural' for far items"
    **hint_pt**: "Those pants look great."
    **hint_en**: "Those pants look great."
-   **example_pass**: Those pants look great. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: Those pants look great.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -305,7 +305,7 @@
    **hidden_prompt**: "user asks 'How much is this/that?' or 'How much are these/those?'"
    **hint_pt**: "How much is this?"
    **hint_en**: "How much is this?"
-   **example_pass**: How much is this? | And you? | How about you?
+   **example_pass**: How much is this?
    **example_fail**: It's cheap (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Great picks!" quando obj_3 baterem.
@@ -342,7 +342,7 @@
    **hidden_prompt**: "user uses 'this/that + singular noun + is + adjective'"
    **hint_pt**: "This dress is nice."
    **hint_en**: "This dress is nice."
-   **example_pass**: This dress is nice. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: This dress is nice.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
@@ -360,7 +360,7 @@
    **hidden_prompt**: "user picks one with 'I'd like this/that one' or 'I prefer these/those'"
    **hint_pt**: "I'd like this one."
    **hint_en**: "I'd like this one."
-   **example_pass**: I'd like this one. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I'd like this one.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 **Closing cue**: Charlotte encerra com "Great choice!" quando obj_3 baterem.
@@ -464,7 +464,7 @@
    **hidden_prompt**: "user asks 'Where is/are + item?'"
    **hint_pt**: "Where is the cashier?"
    **hint_en**: "Where is the cashier?"
-   **example_pass**: Where is the cashier? | And you? | How about you?
+   **example_pass**: Where is the cashier?
    **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
@@ -537,7 +537,7 @@
    **hidden_prompt**: "user asks 'How about your area?' or 'Where is + place + in your area?'"
    **hint_pt**: "How about your area?"
    **hint_en**: "How about your area?"
-   **example_pass**: How about your area? | And you? | What about you?
+   **example_pass**: How about your area? | What about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Cool layout!" quando obj_3 baterem.
@@ -641,7 +641,7 @@
    **hidden_prompt**: "user asks 'How much is the total?' or 'How much is it?'"
    **hint_pt**: "How much is it?"
    **hint_en**: "How much is it?"
-   **example_pass**: How much is it? | And you? | How about you?
+   **example_pass**: How much is it?
    **example_fail**: It's cheap (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
@@ -659,7 +659,7 @@
    **hidden_prompt**: "user asks 'Can I have a receipt?' or 'Could I have the receipt?'"
    **hint_pt**: "Can I have a receipt?"
    **hint_en**: "Can I have a receipt?"
-   **example_pass**: Can I have a receipt? | And you? | How about you?
+   **example_pass**: Can I have a receipt?
    **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Thanks — come back soon!" quando obj_3 baterem.
@@ -705,7 +705,7 @@
    **hidden_prompt**: "user asks 'How much is the total?' or 'What's the total?'"
    **hint_pt**: "What's the total?"
    **hint_en**: "What's the total?"
-   **example_pass**: What's the total? | And you? | How about you?
+   **example_pass**: What's the total?
    **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 3. **id**: 3
@@ -714,7 +714,7 @@
    **hidden_prompt**: "user asks 'Can you send the receipt?' or 'Can I have a receipt?'"
    **hint_pt**: "Can you send the receipt?"
    **hint_en**: "Can you send the receipt?"
-   **example_pass**: Can you send the receipt? | And you? | How about you?
+   **example_pass**: Can you send the receipt?
    **example_fail**: Yes I can (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "All set!" quando obj_3 baterem.
@@ -818,7 +818,7 @@
    **hidden_prompt**: "user says 'I'd like to buy + item' or 'I'm looking for + item'"
    **hint_pt**: "I'd like to buy a shirt."
    **hint_en**: "I'd like to buy a shirt."
-   **example_pass**: I'd like to buy a shirt. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I'd like to buy a shirt.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -836,7 +836,7 @@
    **hidden_prompt**: "user asks 'How much is it?' AND 'Can I pay with...?' or just chooses payment method"
    **hint_pt**: "How much is it? I'll pay with credit card."
    **hint_en**: "How much is it? I'll pay with credit card."
-   **example_pass**: How much is it? I'll pay with credit card? | And you? | How about you?
+   **example_pass**: How much is it? I'll pay with credit card?
    **example_fail**: It's cheap (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 **Closing cue**: Charlotte fecha com "Thanks — enjoy!" quando obj_3 baterem.
@@ -891,7 +891,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Did you buy anything?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you? | What about you?
    **example_fail**: Me too (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 **Closing cue**: Charlotte encerra com "Cool finds!" quando obj_3 baterem.

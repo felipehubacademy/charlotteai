@@ -270,7 +270,6 @@
             "hint_en": "How about you?",
             "examples_pass": [
               "How about you?",
-              "And you?",
               "What about you?"
             ],
             "examples_fail": [
@@ -428,9 +427,7 @@
             "hint_pt": "Did you work?",
             "hint_en": "Did you work?",
             "examples_pass": [
-              "Did you work?",
-              "And you?",
-              "How about you?"
+              "Did you work?"
             ],
             "examples_fail": [
               "Yes I did (statement)",
@@ -446,9 +443,7 @@
             "hint_pt": "Did you eat lunch?",
             "hint_en": "Did you eat lunch?",
             "examples_pass": [
-              "Did you eat lunch?",
-              "And you?",
-              "How about you?"
+              "Did you eat lunch?"
             ],
             "examples_fail": [
               "Yes I did (statement)",
@@ -464,9 +459,7 @@
             "hint_pt": "Did your friend come?",
             "hint_en": "Did your friend come?",
             "examples_pass": [
-              "Did your friend come?",
-              "And you?",
-              "How about you?"
+              "Did your friend come?"
             ],
             "examples_fail": [
               "Yes I did (statement)",
@@ -517,9 +510,7 @@
             "hint_pt": "Did you travel?",
             "hint_en": "Did you travel?",
             "examples_pass": [
-              "Did you travel?",
-              "And you?",
-              "How about you?"
+              "Did you travel?"
             ],
             "examples_fail": [
               "Yes I did (statement)",
@@ -535,9 +526,7 @@
             "hint_pt": "Did you cook?",
             "hint_en": "Did you cook?",
             "examples_pass": [
-              "Did you cook?",
-              "And you?",
-              "How about you?"
+              "Did you cook?"
             ],
             "examples_fail": [
               "Yes I did (statement)",
@@ -696,9 +685,7 @@
             "hint_pt": "Where did you go?",
             "hint_en": "Where did you go?",
             "examples_pass": [
-              "Where did you go?",
-              "And you?",
-              "How about you?"
+              "Where did you go?"
             ],
             "examples_fail": [
               "I went home (statement)",
@@ -714,9 +701,7 @@
             "hint_pt": "What did you do?",
             "hint_en": "What did you do?",
             "examples_pass": [
-              "What did you do?",
-              "And you?",
-              "How about you?"
+              "What did you do?"
             ],
             "examples_fail": [
               "I went out (statement)",
@@ -732,9 +717,7 @@
             "hint_pt": "When did you come back?",
             "hint_en": "When did you come back?",
             "examples_pass": [
-              "When did you come back?",
-              "And you?",
-              "How about you?"
+              "When did you come back?"
             ],
             "examples_fail": [
               "Yesterday (statement)",
@@ -767,9 +750,7 @@
             "hint_pt": "Where did you go?",
             "hint_en": "Where did you go?",
             "examples_pass": [
-              "Where did you go?",
-              "And you?",
-              "How about you?"
+              "Where did you go?"
             ],
             "examples_fail": [
               "I went home (statement)",
@@ -785,9 +766,7 @@
             "hint_pt": "Who did you go with?",
             "hint_en": "Who did you go with?",
             "examples_pass": [
-              "Who did you go with?",
-              "And you?",
-              "How about you?"
+              "Who did you go with?"
             ],
             "examples_fail": [
               "It's me (statement)",
@@ -803,9 +782,7 @@
             "hint_pt": "How long did you stay?",
             "hint_en": "How long did you stay?",
             "examples_pass": [
-              "How long did you stay?",
-              "And you?",
-              "How about you?"
+              "How long did you stay?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -1067,7 +1044,6 @@
             "hint_en": "How about you?",
             "examples_pass": [
               "How about you?",
-              "And you?",
               "What about you?"
             ],
             "examples_fail": [
@@ -1258,9 +1234,7 @@
             "hint_pt": "Did you have fun?",
             "hint_en": "Did you have fun?",
             "examples_pass": [
-              "Did you have fun?",
-              "And you?",
-              "How about you?"
+              "Did you have fun?"
             ],
             "examples_fail": [
               "Yes I did (statement)",
@@ -1329,9 +1303,7 @@
             "hint_pt": "Did you go out?",
             "hint_en": "Did you go out?",
             "examples_pass": [
-              "Did you go out?",
-              "And you?",
-              "How about you?"
+              "Did you go out?"
             ],
             "examples_fail": [
               "Yes I did (statement)",

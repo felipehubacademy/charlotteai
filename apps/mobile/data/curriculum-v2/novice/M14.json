@@ -181,9 +181,7 @@
             "hint_pt": "I was tired.",
             "hint_en": "I was tired.",
             "examples_pass": [
-              "I was tired.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "I was tired."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -199,9 +197,7 @@
             "hint_pt": "My sister was at school.",
             "hint_en": "My sister was at school.",
             "examples_pass": [
-              "My sister was at school.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "My sister was at school."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -234,9 +230,7 @@
             "hint_pt": "It was great.",
             "hint_en": "It was great.",
             "examples_pass": [
-              "It was great.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "It was great."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -252,9 +246,7 @@
             "hint_pt": "I was at work.",
             "hint_en": "I was at work.",
             "examples_pass": [
-              "I was at work.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "I was at work."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -270,9 +262,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -426,9 +416,7 @@
             "hint_pt": "No, I wasn't at the gym.",
             "hint_en": "No, I wasn't at the gym.",
             "examples_pass": [
-              "No, I wasn't at the gym.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "No, I wasn't at the gym."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -444,9 +432,7 @@
             "hint_pt": "I wasn't busy.",
             "hint_en": "I wasn't busy.",
             "examples_pass": [
-              "I wasn't busy.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "I wasn't busy."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -462,9 +448,7 @@
             "hint_pt": "My sister wasn't home.",
             "hint_en": "My sister wasn't home.",
             "examples_pass": [
-              "My sister wasn't home.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "My sister wasn't home."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -497,9 +481,7 @@
             "hint_pt": "No, I wasn't at home.",
             "hint_en": "No, I wasn't at home.",
             "examples_pass": [
-              "No, I wasn't at home.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "No, I wasn't at home."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -515,9 +497,7 @@
             "hint_pt": "I wasn't happy.",
             "hint_en": "I wasn't happy.",
             "examples_pass": [
-              "I wasn't happy.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "I wasn't happy."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -533,9 +513,7 @@
             "hint_pt": "Were you home?",
             "hint_en": "Were you home?",
             "examples_pass": [
-              "Were you home?",
-              "And you?",
-              "How about you?"
+              "Were you home?"
             ],
             "examples_fail": [
               "Yes I was (statement)",
@@ -691,9 +669,7 @@
             "hint_pt": "It was great!",
             "hint_en": "It was great!",
             "examples_pass": [
-              "It was great.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "It was great."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -709,9 +685,7 @@
             "hint_pt": "How was yours?",
             "hint_en": "How was yours?",
             "examples_pass": [
-              "How was yours?",
-              "And you?",
-              "How about you?"
+              "How was yours?"
             ],
             "examples_fail": [
               "It was great (statement)",
@@ -727,9 +701,7 @@
             "hint_pt": "Where were you?",
             "hint_en": "Where were you?",
             "examples_pass": [
-              "Where were you?",
-              "And you?",
-              "How about you?"
+              "Where were you?"
             ],
             "examples_fail": [
               "I was at home (statement)",
@@ -762,9 +734,7 @@
             "hint_pt": "I was at home.",
             "hint_en": "I was at home.",
             "examples_pass": [
-              "I was at home.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "I was at home."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -780,9 +750,7 @@
             "hint_pt": "Where were you?",
             "hint_en": "Where were you?",
             "examples_pass": [
-              "Where were you?",
-              "And you?",
-              "How about you?"
+              "Where were you?"
             ],
             "examples_fail": [
               "I was at home (statement)",
@@ -798,9 +766,7 @@
             "hint_pt": "How was your weekend?",
             "hint_en": "How was your weekend?",
             "examples_pass": [
-              "How was your weekend?",
-              "And you?",
-              "How about you?"
+              "How was your weekend?"
             ],
             "examples_fail": [
               "It was great (statement)",
@@ -954,9 +920,7 @@
             "hint_pt": "I was in Rio a year ago.",
             "hint_en": "I was in Rio a year ago.",
             "examples_pass": [
-              "I was in Rio a year ago.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "I was in Rio a year ago."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -972,9 +936,7 @@
             "hint_pt": "I was on vacation last week.",
             "hint_en": "I was on vacation last week.",
             "examples_pass": [
-              "I was on vacation last week.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "I was on vacation last week."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -990,9 +952,7 @@
             "hint_pt": "I was in school in 2010.",
             "hint_en": "I was in school in 2010.",
             "examples_pass": [
-              "I was in school in 2010.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "I was in school in 2010."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -1025,9 +985,7 @@
             "hint_pt": "I was at university in 2020.",
             "hint_en": "I was at university in 2020.",
             "examples_pass": [
-              "I was at university in 2020.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "I was at university in 2020."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -1061,9 +1019,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1220,9 +1176,7 @@
             "hint_pt": "Life was simple.",
             "hint_en": "Life was simple.",
             "examples_pass": [
-              "Life was simple.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "Life was simple."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -1238,9 +1192,7 @@
             "hint_pt": "I was in a small town.",
             "hint_en": "I was in a small town.",
             "examples_pass": [
-              "I was in a small town.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "I was in a small town."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -1256,9 +1208,7 @@
             "hint_pt": "My family was big and happy.",
             "hint_en": "My family was big and happy.",
             "examples_pass": [
-              "My family was big and happy.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "My family was big and happy."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -1291,9 +1241,7 @@
             "hint_pt": "I was younger.",
             "hint_en": "I was younger.",
             "examples_pass": [
-              "I was younger.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "I was younger."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -1309,9 +1257,7 @@
             "hint_pt": "I was a student.",
             "hint_en": "I was a student.",
             "examples_pass": [
-              "I was a student.",
-              "I was at the park yesterday.",
-              "We were at home last night."
+              "I was a student."
             ],
             "examples_fail": [
               "Park (bare noun)",
@@ -1327,9 +1273,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",

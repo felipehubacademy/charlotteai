@@ -160,9 +160,7 @@
             "hint_pt": "I worked yesterday.",
             "hint_en": "I worked yesterday.",
             "examples_pass": [
-              "I worked yesterday.",
-              "I had pizza for lunch.",
-              "Yesterday I ate a sandwich."
+              "I worked yesterday."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -178,9 +176,7 @@
             "hint_pt": "I watched a movie.",
             "hint_en": "I watched a movie.",
             "examples_pass": [
-              "I watched a movie.",
-              "Yesterday I worked all day.",
-              "I watched TV last night."
+              "I watched a movie."
             ],
             "examples_fail": [
               "Yesterday (no verb)",
@@ -196,9 +192,7 @@
             "hint_pt": "She studied for hours.",
             "hint_en": "She studied for hours.",
             "examples_pass": [
-              "She studied for hours.",
-              "Yesterday I worked all day.",
-              "I watched TV last night."
+              "She studied for hours."
             ],
             "examples_fail": [
               "Yesterday (no verb)",
@@ -231,9 +225,7 @@
             "hint_pt": "I worked.",
             "hint_en": "I worked.",
             "examples_pass": [
-              "I worked.",
-              "I had pizza for lunch.",
-              "Yesterday I ate a sandwich."
+              "I worked."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -249,9 +241,7 @@
             "hint_pt": "I called my sister.",
             "hint_en": "I called my sister.",
             "examples_pass": [
-              "I called my sister.",
-              "I had pizza for lunch.",
-              "Yesterday I ate a sandwich."
+              "I called my sister."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -267,9 +257,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -530,9 +518,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -686,9 +672,7 @@
             "hint_pt": "I visited my friend yesterday.",
             "hint_en": "I visited my friend yesterday.",
             "examples_pass": [
-              "I visited my friend yesterday.",
-              "Yesterday I worked all day.",
-              "I watched TV last night."
+              "I visited my friend yesterday."
             ],
             "examples_fail": [
               "Yesterday (no verb)",
@@ -704,9 +688,7 @@
             "hint_pt": "I traveled last week.",
             "hint_en": "I traveled last week.",
             "examples_pass": [
-              "I traveled last week.",
-              "Yesterday I worked all day.",
-              "I watched TV last night."
+              "I traveled last week."
             ],
             "examples_fail": [
               "Yesterday (no verb)",
@@ -722,9 +704,7 @@
             "hint_pt": "I called her two days ago.",
             "hint_en": "I called her two days ago.",
             "examples_pass": [
-              "I called her two days ago.",
-              "Yesterday I worked all day.",
-              "I watched TV last night."
+              "I called her two days ago."
             ],
             "examples_fail": [
               "Yesterday (no verb)",
@@ -757,9 +737,7 @@
             "hint_pt": "I visited my parents last weekend.",
             "hint_en": "I visited my parents last weekend.",
             "examples_pass": [
-              "I visited my parents last weekend.",
-              "Yesterday I worked all day.",
-              "I watched TV last night."
+              "I visited my parents last weekend."
             ],
             "examples_fail": [
               "Yesterday (no verb)",
@@ -793,9 +771,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1071,9 +1047,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1227,9 +1201,7 @@
             "hint_pt": "I worked all morning.",
             "hint_en": "I worked all morning.",
             "examples_pass": [
-              "I worked all morning.",
-              "I had pizza for lunch.",
-              "Yesterday I ate a sandwich."
+              "I worked all morning."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -1245,9 +1217,7 @@
             "hint_pt": "I called my mother.",
             "hint_en": "I called my mother.",
             "examples_pass": [
-              "I called my mother.",
-              "I had pizza for lunch.",
-              "Yesterday I ate a sandwich."
+              "I called my mother."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -1263,9 +1233,7 @@
             "hint_pt": "I cooked dinner.",
             "hint_en": "I cooked dinner.",
             "examples_pass": [
-              "I cooked dinner.",
-              "I had pizza for lunch.",
-              "Yesterday I ate a sandwich."
+              "I cooked dinner."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -1298,9 +1266,7 @@
             "hint_pt": "I worked.",
             "hint_en": "I worked.",
             "examples_pass": [
-              "I worked.",
-              "Yesterday I worked all day.",
-              "I watched TV last night."
+              "I worked."
             ],
             "examples_fail": [
               "Yesterday (no verb)",
@@ -1316,9 +1282,7 @@
             "hint_pt": "I watched a movie.",
             "hint_en": "I watched a movie.",
             "examples_pass": [
-              "I watched a movie.",
-              "Yesterday I worked all day.",
-              "I watched TV last night."
+              "I watched a movie."
             ],
             "examples_fail": [
               "Yesterday (no verb)",
@@ -1334,9 +1298,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",

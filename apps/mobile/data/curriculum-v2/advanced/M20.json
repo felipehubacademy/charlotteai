@@ -121,8 +121,6 @@
             "hint_en": "She studied photography in Paris before she ever took a single photograph that satisfied her — and what fascinates her now is photographic memory.",
             "examples_pass": [
               "She studied photography in Paris before she ever took a single photograph that satisfied her — and what fascinates her now is photographic memory.",
-              "I think the weather will improve tomorrow.",
-              "She thoroughly enjoyed the performance last night.",
               "He develops new products quickly, but the development of each one rests on years of prior research.",
               "She presents in a way that makes the presentation feel inevitable — every slide present at exactly the right moment.",
               "I record one episode each week, but the recording process takes far longer than the actual record itself suggests."
@@ -192,8 +190,6 @@
             "hint_en": "For me it's 'develop' — I'd always stress the first syllable until I noticed natives go to the second: deVELop.",
             "examples_pass": [
               "For me it's 'develop' — I'd always stress the first syllable until I noticed natives go to the second: deVELop.",
-              "I think the weather will improve tomorrow.",
-              "She thoroughly enjoyed the performance last night.",
               "'Comfortable' tripped me up for years — I'd say 'com-FOR-table' until I realised it's compressed to 'COMF-ta-bul'.",
               "'Vegetable' took me a long time — it's three syllables in fast speech: 'VEJ-ta-bul', not four.",
               "'Necessary' was the one I kept missing — stress lands on the first syllable, not the second."
@@ -211,8 +207,6 @@
             "hint_en": "And the suffix matters too — 'PHO-tograph' becomes 'pho-TO-graphy'. The stress migrates with the ending.",
             "examples_pass": [
               "And the suffix matters too — 'PHO-tograph' becomes 'pho-TO-graphy'. The stress migrates with the ending.",
-              "The third thing I noticed was the silence.",
-              "I'd rather not discuss it right now.",
               "I noticed the pattern eventually — adding '-ic' usually moves the stress to the syllable just before it: 'photoGRAPHic', 'eleCTRIc'.",
               "Two-syllable nouns usually take stress on the first; two-syllable verbs on the second: 'REcord' (n.) vs. 're-CORD' (v.).",
               "Stress generally falls on the root, not the prefix — 'unCOMfortable', 'reCONsider' — and that one small shift changes how natural you sound."
@@ -229,13 +223,7 @@
             "hidden_prompt": "user asks Charlotte if 'comfortable' has a fast-speech reduction",
             "hint_en": "Do natives still say all four syllables of 'comfortable'?",
             "examples_pass": [
-              "Do natives still say all four syllables of 'comfortable'?",
-              "He pronounces 'comfortable' as three syllables.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "Do natives still say all four syllables of 'comfortable'?"
             ],
             "examples_fail": [
               "th (bare phoneme, no word)",
@@ -349,8 +337,6 @@
             "hint_en": "She left a note on the kitchen table — 'BACK in an HOUR, kettle's STILL warm.'",
             "examples_pass": [
               "She left a note on the kitchen table — 'BACK in an HOUR, kettle's STILL warm.'",
-              "I think the weather will improve tomorrow.",
-              "She thoroughly enjoyed the performance last night.",
               "She left a note on the kitchen table — 'BACK in an HOUR, kettle's STILL warm, DON'T eat the cake.'",
               "I sent the email, but the REPLY hasn't come yet — and the deadline's at NOON tomorrow.",
               "The MEETING was at three; the DECISION came at five; the EMAIL went out by six.",
@@ -387,8 +373,6 @@
             "hint_en": "We've been talking about this for months, but nobody's actually had the conversation with the team that needs to happen.",
             "examples_pass": [
               "We've been talking about this for months, but nobody's actually had the conversation with the team that needs to happen.",
-              "He pronounces 'comfortable' as three syllables.",
-              "The word 'colonel' sounds like 'kernel'.",
               "Look, I KNOW it's a stretch, but the TEAM has handled tougher launches than this one, and they'll handle this one too.",
               "Honestly, the PRODUCT is fine, the MARKETING is fine, the TIMING is what's off — and that's the one thing we can't easily fix.",
               "The MEETING is at three, the DECISION needs to be made by five, and the ANNOUNCEMENT goes out by tomorrow morning."
@@ -423,8 +407,6 @@
             "hint_en": "What helped me most was reading aloud with podcasts — copying the way native speakers stress only two or three words per sentence and let the rest blur.",
             "examples_pass": [
               "What helped me most was reading aloud with podcasts — copying the way native speakers stress only two or three words per sentence and let the rest blur.",
-              "I think the weather will improve tomorrow.",
-              "She thoroughly enjoyed the performance last night.",
               "What helped me most was reading aloud with podcasts — copying the way native speakers stress only two or three words per sentence.",
               "I started shadowing audio: replaying the same sentence three or four times and matching the rhythm exactly.",
               "I recorded myself reading the same paragraph twice a week for a year — the comparison was the most useful feedback I ever got.",
@@ -443,8 +425,6 @@
             "hint_en": "And I started practising contractions deliberately — saying 'I'm' instead of 'I am' even in writing, just to feel the weight shift.",
             "examples_pass": [
               "And I started practising contractions deliberately — saying 'I'm' instead of 'I am' even in writing, just to feel the weight shift.",
-              "The third thing I noticed was the silence.",
-              "I'd rather not discuss it right now.",
               "I started reading poetry aloud — the meter forced me to feel the difference between stressed and unstressed syllables.",
               "I noticed that listening to native speakers at 0.75x speed actually helped me hear the rhythm more clearly.",
               "I started copying the way native speakers reduced 'and' to 'n' — 'rock 'n' roll', 'fish 'n' chips' — and it changed how connected my speech felt."
@@ -461,14 +441,7 @@
             "hidden_prompt": "user asks Charlotte for a recommended audio source",
             "hint_en": "Which audio sources do you recommend most?",
             "examples_pass": [
-              "Which audio sources do you recommend most?",
-              "He pronounces 'comfortable' as three syllables.",
-              "The word 'colonel' sounds like 'kernel'.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "Which audio sources do you recommend most?"
             ],
             "examples_fail": [
               "th (bare phoneme, no word)",
@@ -584,8 +557,6 @@
             "hint_en": "I found out about it on Friday — three days before everyone else heard a word about it.",
             "examples_pass": [
               "I found out about it on Friday — three days before everyone else heard a word about it.",
-              "I think the weather will improve tomorrow.",
-              "She thoroughly enjoyed the performance last night.",
               "She picked it up at the airport and brought it home on the last flight of the night.",
               "I called her up about an hour ago, but she hadn't checked her phone since the meeting started.",
               "He worked it out on the back of an envelope in about ten minutes, and the answer turned out to be exactly right."
@@ -603,8 +574,6 @@
             "hint_en": "She'll be here in an hour or so, I imagine — and I think we should wait.",
             "examples_pass": [
               "She'll be here in an hour or so, I imagine — and I think we should wait.",
-              "The third thing I noticed was the silence.",
-              "I'd rather not discuss it right now.",
               "I saw a really interesting article about it, and I sent it over earlier today.",
               "He drew a clear line between the two ideas, and the audience finally understood the distinction.",
               "Go on and ask her — she'll appreciate the honesty more than the silence."
@@ -655,8 +624,6 @@
             "hint_en": "For me it was 'gonna' and 'wanna' — I'd been carefully pronouncing 'going to' and 'want to', and natives were always saying 'gonna' and 'wanna' instead.",
             "examples_pass": [
               "For me it was 'gonna' and 'wanna' — I'd been carefully pronouncing 'going to' and 'want to', and natives were always saying 'gonna' and 'wanna' instead.",
-              "I think the weather will improve tomorrow.",
-              "She thoroughly enjoyed the performance last night.",
               "For me it was 'gonna' and 'wanna' — I'd been carefully pronouncing 'going to' and 'want to' while natives were always saying 'gonna' and 'wanna'.",
               "What surprised me was how often natives drop the final '-t' and '-d' in connected speech.",
               "I was surprised by how much function words disappear — 'I'm gonna go to the store' becomes almost 'm'gonna go t'th'store'.",
@@ -675,8 +642,6 @@
             "hint_en": "And 'what are you doing' compresses to something close to 'whatcha doin' — without the 't' of 'what' and without the 'g' of 'doing'.",
             "examples_pass": [
               "And 'what are you doing' compresses to something close to 'whatcha doin' — without the 't' of 'what' and without the 'g' of 'doing'.",
-              "The third thing I noticed was the silence.",
-              "I'd rather not discuss it right now.",
               "And 'do you want to' becomes 'd'ya wanna' — the 't' practically disappears.",
               "And 'should have' becomes 'should've' — and in fast speech, almost 'shouldta'.",
               "And 'going to have to' becomes 'gonna hafta' — three reductions in a single phrase."
@@ -693,14 +658,7 @@
             "hidden_prompt": "user asks Charlotte how to practise connected speech",
             "hint_en": "How do you practise this without sounding fake?",
             "examples_pass": [
-              "How do you practise this without sounding fake?",
-              "He pronounces 'comfortable' as three syllables.",
-              "The word 'colonel' sounds like 'kernel'.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "How do you practise this without sounding fake?"
             ],
             "examples_fail": [
               "th (bare phoneme, no word)",
@@ -812,9 +770,7 @@
             "hidden_prompt": "user produces yes/no question with rising intonation",
             "hint_en": "Have you spoken to her about it yet? — make sure the pitch climbs on 'yet'.",
             "examples_pass": [
-              "Have you spoken to her about it yet? — make sure the pitch climbs on 'yet'.",
-              "I think the weather will improve tomorrow.",
-              "She thoroughly enjoyed the performance last night."
+              "Have you spoken to her about it yet? — make sure the pitch climbs on 'yet'."
             ],
             "examples_fail": [
               "th (bare phoneme, no word)",
@@ -828,9 +784,7 @@
             "hidden_prompt": "user produces a list with correct intonation",
             "hint_en": "I need to pick up coffee, milk, eggs, and bread before the store closes — bread is the falling beat.",
             "examples_pass": [
-              "I need to pick up coffee, milk, eggs, and bread before the store closes — bread is the falling beat.",
-              "The third thing I noticed was the silence.",
-              "I'd rather not discuss it right now."
+              "I need to pick up coffee, milk, eggs, and bread before the store closes — bread is the falling beat."
             ],
             "examples_fail": [
               "th (bare phoneme, no word)",
@@ -844,9 +798,7 @@
             "hidden_prompt": "user produces 'really' or 'sure' with sceptical falling pitch",
             "hint_en": "When he said he'd be there by ten, I just said 'sure' — flat and falling — and he heard the doubt in two syllables.",
             "examples_pass": [
-              "When he said he'd be there by ten, I just said 'sure' — flat and falling — and he heard the doubt in two syllables.",
-              "Sure — that's the one.",
-              "Honestly, sure sums it up."
+              "When he said he'd be there by ten, I just said 'sure' — flat and falling — and he heard the doubt in two syllables."
             ],
             "examples_fail": [
               "th (bare phoneme, no word)",
@@ -877,9 +829,7 @@
             "hidden_prompt": "user describes genuine 'fine' intonation",
             "hint_en": "Genuine 'fine' is short, medium pitch, neutral — like reporting the weather. No emotional weight.",
             "examples_pass": [
-              "Genuine 'fine' is short, medium pitch, neutral — like reporting the weather. No emotional weight.",
-              "Fine — that's the one.",
-              "Honestly, fine sums it up."
+              "Genuine 'fine' is short, medium pitch, neutral — like reporting the weather. No emotional weight."
             ],
             "examples_fail": [
               "th (bare phoneme, no word)",
@@ -893,9 +843,7 @@
             "hidden_prompt": "user describes passive-aggressive 'fine' intonation",
             "hint_en": "Passive-aggressive 'fine' is longer, falling pitch, slightly clipped — it means 'this conversation is over and you've lost'.",
             "examples_pass": [
-              "Passive-aggressive 'fine' is longer, falling pitch, slightly clipped — it means 'this conversation is over and you've lost'.",
-              "Fine — that's the one.",
-              "Honestly, fine sums it up."
+              "Passive-aggressive 'fine' is longer, falling pitch, slightly clipped — it means 'this conversation is over and you've lost'."
             ],
             "examples_fail": [
               "th (bare phoneme, no word)",
@@ -909,9 +857,7 @@
             "hidden_prompt": "user asks Charlotte for the third meaning",
             "hint_en": "What's the third meaning you noticed?",
             "examples_pass": [
-              "What's the third meaning you noticed?",
-              "He pronounces 'comfortable' as three syllables.",
-              "The word 'colonel' sounds like 'kernel'."
+              "What's the third meaning you noticed?"
             ],
             "examples_fail": [
               "th (bare phoneme, no word)",
@@ -1045,8 +991,6 @@
             "hint_en": "We need to finish the firs' draft by Friday — nex' week is too late, the regulator's pushed the deadline forward.",
             "examples_pass": [
               "We need to finish the firs' draft by Friday — nex' week is too late, the regulator's pushed the deadline forward.",
-              "The third thing I noticed was the silence.",
-              "I'd rather not discuss it right now.",
               "I sen' her an email aroun' lunchtime, but I haven't hear' back yet.",
               "We mus' have miss' that detail somewhere — let's go back through the contract once more.",
               "I'll fin' the file and sen' it across before the en' of the day."
@@ -1063,6 +1007,7 @@
             "hidden_prompt": "user produces 'going to / want to / got to' as gonna/wanna/gotta",
             "hint_en": "I'm gonna grab a coffee — you wanna come with me, or you've gotta finish that email first?",
             "examples_pass": [
+              "I'm gonna grab a coffee — you wanna come with me, or you've gotta finish that email first?",
               "I had to got to in the end.",
               "Someone needs to got to eventually.",
               "We decided to got to."
@@ -1129,11 +1074,7 @@
             "hidden_prompt": "user asks Charlotte casually about her own day",
             "hint_en": "How's your day been?",
             "examples_pass": [
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "How's your day been?"
             ],
             "examples_fail": [
               "th (bare phoneme, no word)",

@@ -170,7 +170,6 @@
             "hint_en": "This is my kitchen.",
             "examples_pass": [
               "This is my kitchen.",
-              "My kitchen is small.",
               "Here is my kitchen."
             ],
             "examples_fail": [
@@ -524,8 +523,7 @@
             "hint_en": "There are two windows.",
             "examples_pass": [
               "There are two windows.",
-              "There is one window.",
-              "There are three windows."
+              "There is one window."
             ],
             "examples_fail": [
               "Two (bare number)",
@@ -769,7 +767,6 @@
             "hint_en": "I've got six chairs.",
             "examples_pass": [
               "I've got six chairs.",
-              "There are four chairs.",
               "I have two chairs."
             ],
             "examples_fail": [
@@ -1297,8 +1294,7 @@
             "hint_en": "Welcome to my home.",
             "examples_pass": [
               "Welcome to my home.",
-              "This is my house.",
-              "My house is big."
+              "This is my house."
             ],
             "examples_fail": [
               "Welcome (incomplete)",
@@ -1315,8 +1311,7 @@
             "hint_en": "There are three bedrooms.",
             "examples_pass": [
               "There are three bedrooms.",
-              "I've got two bathrooms.",
-              "There are four chairs."
+              "I've got two bathrooms."
             ],
             "examples_fail": [
               "Three (bare number)",

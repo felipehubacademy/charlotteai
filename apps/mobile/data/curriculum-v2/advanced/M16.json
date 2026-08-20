@@ -126,9 +126,7 @@
             "hidden_prompt": "user negates adjective with un- or in-",
             "hint_en": "From 'The candidate seems qualified.' → 'The candidate seems unqualified, given the role's requirements.'",
             "examples_pass": [
-              "From 'The candidate seems qualified.' → 'The candidate seems unqualified, given the role's requirements.'",
-              "Her unwavering commitment was truly inspirational.",
-              "The misunderstanding led to widespread misinformation."
+              "From 'The candidate seems qualified.' → 'The candidate seems unqualified, given the role's requirements.'"
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -142,9 +140,7 @@
             "hidden_prompt": "user negates with ir- or il- correctly",
             "hint_en": "From 'The decision was reversible.' → 'The decision was irreversible — once it was signed, there was no going back.'",
             "examples_pass": [
-              "From 'The decision was reversible.' → 'The decision was irreversible — once it was signed, there was no going back.'",
-              "Industrialisation transformed the countryside dramatically.",
-              "The reorganisation was both costly and disruptive."
+              "From 'The decision was reversible.' → 'The decision was irreversible — once it was signed, there was no going back.'"
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -158,9 +154,7 @@
             "hidden_prompt": "user uses dis- or mis- correctly",
             "hint_en": "From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.'",
             "examples_pass": [
-              "Dis- — that's the one.",
-              "Honestly, dis- sums it up.",
-              "Yeah, dis- for sure."
+              "From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.'"
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -191,9 +185,7 @@
             "hidden_prompt": "user replaces 'unresponsible' with 'irresponsible'",
             "hint_en": "Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'.",
             "examples_pass": [
-              "Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'.",
-              "Unresponsible — that's the one.",
-              "Honestly, unresponsible sums it up."
+              "Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -207,9 +199,7 @@
             "hidden_prompt": "user uses another prefix-formed negation",
             "hint_en": "And his approach to clients was unprofessional — late replies, missed details. The pattern was hard to ignore.",
             "examples_pass": [
-              "And his approach to clients was unprofessional — late replies, missed details. The pattern was hard to ignore.",
-              "Industrialisation transformed the countryside dramatically.",
-              "The reorganisation was both costly and disruptive."
+              "And his approach to clients was unprofessional — late replies, missed details. The pattern was hard to ignore."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -223,9 +213,7 @@
             "hidden_prompt": "user asks Charlotte if he ever changed",
             "hint_en": "Did he ever change?",
             "examples_pass": [
-              "Did he ever change?",
-              "His thoughtfulness made the gesture unforgettable.",
-              "A meaningful collaboration produced remarkable results."
+              "Did he ever change?"
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -338,8 +326,6 @@
             "hint_en": "From 'They decided to expand' → 'The decision to expand was made unanimously.'",
             "examples_pass": [
               "From 'They decided to expand' → 'The decision to expand was made unanimously.'",
-              "Her unwavering commitment was truly inspirational.",
-              "The misunderstanding led to widespread misinformation.",
               "From 'decided' → 'decision': The decision to expand was made unanimously by the board.",
               "From 'invest' → 'investment': The investment in early-stage research is finally beginning to show results.",
               "From 'arrived' → 'arrival': His arrival shifted the dynamic of the entire meeting.",
@@ -358,8 +344,6 @@
             "hint_en": "From 'She was kind to the new hires' → 'Her kindness to the new hires set the tone for their entire onboarding.'",
             "examples_pass": [
               "From 'She was kind to the new hires' → 'Her kindness to the new hires set the tone for their entire onboarding.'",
-              "Industrialisation transformed the countryside dramatically.",
-              "The reorganisation was both costly and disruptive.",
               "From 'kind' → 'kindness': Her kindness to the new hires set the tone for the rest of the year.",
               "From 'creative' → 'creativity': The team's creativity carried the campaign through a difficult market.",
               "From 'patient' → 'patience': His patience with even the most difficult clients is genuinely unusual.",
@@ -377,9 +361,7 @@
             "hidden_prompt": "user uses -ship or -hood form",
             "hint_en": "From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'",
             "examples_pass": [
-              "-ship — that's the one.",
-              "Honestly, -ship sums it up.",
-              "Yeah, -ship for sure."
+              "From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'"
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -446,8 +428,6 @@
             "hint_en": "Who is the audience — internal board or shareholders?",
             "examples_pass": [
               "Who is the audience — internal board or shareholders?",
-              "His thoughtfulness made the gesture unforgettable.",
-              "A meaningful collaboration produced remarkable results.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -567,9 +547,7 @@
             "hidden_prompt": "user forms -able or -ible adjective",
             "hint_en": "From 'predict' → 'predictable'. From 'access' → 'accessible'. Use both: 'The system is both predictable and accessible.'",
             "examples_pass": [
-              "From 'predict' → 'predictable'. From 'access' → 'accessible'. Use both: 'The system is both predictable and accessible.'",
-              "Her unwavering commitment was truly inspirational.",
-              "The misunderstanding led to widespread misinformation."
+              "From 'predict' → 'predictable'. From 'access' → 'accessible'. Use both: 'The system is both predictable and accessible.'"
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -583,9 +561,7 @@
             "hidden_prompt": "user forms -ise or -ify verb",
             "hint_en": "From 'standard' → 'standardise'. 'We need to standardise the process before we can scale.'",
             "examples_pass": [
-              "From 'standard' → 'standardise'. 'We need to standardise the process before we can scale.'",
-              "Industrialisation transformed the countryside dramatically.",
-              "The reorganisation was both costly and disruptive."
+              "From 'standard' → 'standardise'. 'We need to standardise the process before we can scale.'"
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -599,9 +575,7 @@
             "hidden_prompt": "user forms -ous or -ful adjective",
             "hint_en": "From 'mystery' → 'mysterious'. 'Her sudden departure was mysterious enough to spark every rumour in the office.'",
             "examples_pass": [
-              "From 'mystery' → 'mysterious'. 'Her sudden departure was mysterious enough to spark every rumour in the office.'",
-              "His thoughtfulness made the gesture unforgettable.",
-              "A meaningful collaboration produced remarkable results."
+              "From 'mystery' → 'mysterious'. 'Her sudden departure was mysterious enough to spark every rumour in the office.'"
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -632,9 +606,7 @@
             "hidden_prompt": "user corrects 'relyable' to 'reliable'",
             "hint_en": "Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'.",
             "examples_pass": [
-              "Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'.",
-              "Relyable — that's the one.",
-              "Honestly, relyable sums it up."
+              "Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -648,9 +620,7 @@
             "hidden_prompt": "user offers another -able or -ible derivation",
             "hint_en": "Same pattern: 'predict' becomes 'predictable', 'apply' becomes 'applicable' — same y→i rule when applicable.",
             "examples_pass": [
-              "Same pattern: 'predict' becomes 'predictable', 'apply' becomes 'applicable' — same y→i rule when applicable.",
-              "Industrialisation transformed the countryside dramatically.",
-              "The reorganisation was both costly and disruptive."
+              "Same pattern: 'predict' becomes 'predictable', 'apply' becomes 'applicable' — same y→i rule when applicable."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -664,9 +634,7 @@
             "hidden_prompt": "user asks Charlotte who she's describing",
             "hint_en": "Who are you describing as reliable?",
             "examples_pass": [
-              "Who are you describing as reliable?",
-              "His thoughtfulness made the gesture unforgettable.",
-              "A meaningful collaboration produced remarkable results."
+              "Who are you describing as reliable?"
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -781,9 +749,7 @@
             "hidden_prompt": "user uses a closed compound (one word)",
             "hint_en": "The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock.",
             "examples_pass": [
-              "A closed compound (one word) — that's the one.",
-              "Honestly, a closed compound (one word) sums it up.",
-              "Yeah, a closed compound (one word) for sure."
+              "The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -797,6 +763,7 @@
             "hidden_prompt": "user uses a hyphenated compound before noun",
             "hint_en": "A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works.",
             "examples_pass": [
+              "A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works.",
               "A hyphenated compound before noun — that's how I'd put it.",
               "As you said: a hyphenated compound before noun.",
               "A hyphenated compound before noun, plain and simple."
@@ -813,6 +780,7 @@
             "hidden_prompt": "user uses an open compound (two separate words)",
             "hint_en": "She walked into the post office, paid in exact change, and left without saying a word.",
             "examples_pass": [
+              "She walked into the post office, paid in exact change, and left without saying a word.",
               "An open compound (two separate words) — that's how I'd put it.",
               "As you said: an open compound (two separate words).",
               "An open compound (two separate words), plain and simple."
@@ -846,9 +814,7 @@
             "hidden_prompt": "user corrects to 'state-of-the-art' when before noun",
             "hint_en": "Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.'",
             "examples_pass": [
-              "Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.'",
-              "State-of-the-art — that's the one.",
-              "Honestly, state-of-the-art sums it up."
+              "Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.'"
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -862,9 +828,7 @@
             "hidden_prompt": "user confirms closed vs open compounds",
             "hint_en": "'Smartphone' is correctly closed, and 'post office' is correctly open — those two were already right.",
             "examples_pass": [
-              "'Smartphone' is correctly closed, and 'post office' is correctly open — those two were already right.",
-              "Industrialisation transformed the countryside dramatically.",
-              "The reorganisation was both costly and disruptive."
+              "'Smartphone' is correctly closed, and 'post office' is correctly open — those two were already right."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -878,6 +842,7 @@
             "hidden_prompt": "user asks Charlotte about a specific compound she's unsure of",
             "hint_en": "Anything else you're unsure about?",
             "examples_pass": [
+              "Anything else you're unsure about?",
               "A specific compound she's unsure of — that's how I'd put it.",
               "As you said: a specific compound she's unsure of.",
               "A specific compound she's unsure of, plain and simple."
@@ -1061,8 +1026,7 @@
             "hint_en": "She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb.",
             "examples_pass": [
               "She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb.",
-              "She probably laughed at 'send a text message' — natives just say 'I'll text you' these days.",
-              "Text — that's the one."
+              "She probably laughed at 'send a text message' — natives just say 'I'll text you' these days."
             ],
             "examples_fail": [
               "happy (bare root, no derivation)",
@@ -1077,8 +1041,6 @@
             "hint_en": "Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. Conversion makes English faster.",
             "examples_pass": [
               "Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. Conversion makes English faster.",
-              "Industrialisation transformed the countryside dramatically.",
-              "The reorganisation was both costly and disruptive.",
               "She probably laughed at 'send a text message' — natives just say 'I'll text you' these days.",
               "Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'.",
               "Conversion makes English faster: 'message me' instead of 'send me a message'; 'mic me' instead of 'attach a microphone'.",
@@ -1097,8 +1059,6 @@
             "hint_en": "How old is your daughter?",
             "examples_pass": [
               "How old is your daughter?",
-              "His thoughtfulness made the gesture unforgettable.",
-              "A meaningful collaboration produced remarkable results.",
               "And you?",
               "What about you?",
               "How about yourself?",

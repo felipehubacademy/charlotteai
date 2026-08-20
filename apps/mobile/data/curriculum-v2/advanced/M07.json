@@ -127,9 +127,7 @@
             "hidden_prompt": "user uses 'X apologised for + -ing'",
             "hint_en": "He apologised for sending the email to the wrong list.",
             "examples_pass": [
-              "He apologised for sending the email to the wrong list.",
-              "She told me she was going to leave the next day.",
-              "He claimed he had finished the work earlier."
+              "He apologised for sending the email to the wrong list."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -143,9 +141,7 @@
             "hidden_prompt": "user uses 'X accused Y of + -ing'",
             "hint_en": "She accused him of taking credit for her work.",
             "examples_pass": [
-              "She accused him of taking credit for her work.",
-              "They mentioned that they were considering the offer.",
-              "She admitted that she had made a mistake."
+              "She accused him of taking credit for her work."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -159,9 +155,7 @@
             "hidden_prompt": "user uses 'X congratulated Y on + noun/-ing'",
             "hint_en": "The whole team congratulated her on winning the award.",
             "examples_pass": [
-              "The whole team congratulated her on winning the award.",
-              "He insisted that he had nothing to do with it.",
-              "My boss asked whether I had completed the report."
+              "The whole team congratulated her on winning the award."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -192,9 +186,7 @@
             "hidden_prompt": "user uses 'I would have + reported verb + preposition + -ing'",
             "hint_en": "I would have apologised for any role in the misunderstanding, then asked for evidence.",
             "examples_pass": [
-              "I would have apologised for any role in the misunderstanding, then asked for evidence.",
-              "She told me she was going to leave the next day.",
-              "He claimed he had finished the work earlier."
+              "I would have apologised for any role in the misunderstanding, then asked for evidence."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -208,9 +200,7 @@
             "hidden_prompt": "user uses another reporting verb + preposition + -ing",
             "hint_en": "I'd blame the lack of clear ownership for situations like this.",
             "examples_pass": [
-              "I'd blame the lack of clear ownership for situations like this.",
-              "They mentioned that they were considering the offer.",
-              "She admitted that she had made a mistake."
+              "I'd blame the lack of clear ownership for situations like this."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -224,9 +214,7 @@
             "hidden_prompt": "user asks Charlotte what she actually did",
             "hint_en": "What did you actually do?",
             "examples_pass": [
-              "What did you actually do?",
-              "He insisted that he had nothing to do with it.",
-              "My boss asked whether I had completed the report."
+              "What did you actually do?"
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -337,9 +325,7 @@
             "hidden_prompt": "user uses 'X admitted + -ing'",
             "hint_en": "I have to admit losing track of time during that meeting.",
             "examples_pass": [
-              "I have to admit losing track of time during that meeting.",
-              "She told me she was going to leave the next day.",
-              "He claimed he had finished the work earlier."
+              "I have to admit losing track of time during that meeting."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -353,9 +339,7 @@
             "hidden_prompt": "user uses 'X denied + -ing'",
             "hint_en": "She denied having seen the email at all.",
             "examples_pass": [
-              "She denied having seen the email at all.",
-              "They mentioned that they were considering the offer.",
-              "She admitted that she had made a mistake."
+              "She denied having seen the email at all."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -369,9 +353,7 @@
             "hidden_prompt": "user uses 'I suggest + -ing'",
             "hint_en": "I suggest taking a break before we decide anything.",
             "examples_pass": [
-              "I suggest taking a break before we decide anything.",
-              "He insisted that he had nothing to do with it.",
-              "My boss asked whether I had completed the report."
+              "I suggest taking a break before we decide anything."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -402,9 +384,7 @@
             "hidden_prompt": "user uses 'I'd admit/I admit + -ing'",
             "hint_en": "I have to admit checking my phone first thing in the morning.",
             "examples_pass": [
-              "I have to admit checking my phone first thing in the morning.",
-              "She told me she was going to leave the next day.",
-              "He claimed he had finished the work earlier."
+              "I have to admit checking my phone first thing in the morning."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -418,9 +398,7 @@
             "hidden_prompt": "user uses 'I suggest/recommend + -ing'",
             "hint_en": "I'd suggest leaving the phone in another room for the first hour.",
             "examples_pass": [
-              "I'd suggest leaving the phone in another room for the first hour.",
-              "They mentioned that they were considering the offer.",
-              "She admitted that she had made a mistake."
+              "I'd suggest leaving the phone in another room for the first hour."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -434,9 +412,7 @@
             "hidden_prompt": "user asks Charlotte why Mondays changed",
             "hint_en": "What changed about Mondays?",
             "examples_pass": [
-              "What changed about Mondays?",
-              "He insisted that he had nothing to do with it.",
-              "My boss asked whether I had completed the report."
+              "What changed about Mondays?"
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -550,9 +526,7 @@
             "hidden_prompt": "user uses 'X promised to + base'",
             "hint_en": "My manager promised to give me feedback by Friday.",
             "examples_pass": [
-              "My manager promised to give me feedback by Friday.",
-              "She told me she was going to leave the next day.",
-              "He claimed he had finished the work earlier."
+              "My manager promised to give me feedback by Friday."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -566,9 +540,7 @@
             "hidden_prompt": "user uses 'X refused to + base'",
             "hint_en": "The customer refused to pay until the issue was fixed.",
             "examples_pass": [
-              "The customer refused to pay until the issue was fixed.",
-              "They mentioned that they were considering the offer.",
-              "She admitted that she had made a mistake."
+              "The customer refused to pay until the issue was fixed."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -582,9 +554,7 @@
             "hidden_prompt": "user uses 'X offered to + base'",
             "hint_en": "My neighbour offered to water the plants while we're away.",
             "examples_pass": [
-              "My neighbour offered to water the plants while we're away.",
-              "He insisted that he had nothing to do with it.",
-              "My boss asked whether I had completed the report."
+              "My neighbour offered to water the plants while we're away."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -615,9 +585,7 @@
             "hidden_prompt": "user uses 'I promised to + base' or 'agreed to + base'",
             "hint_en": "I promised to call my mother every Sunday, and so far I've kept it.",
             "examples_pass": [
-              "I promised to call my mother every Sunday, and so far I've kept it.",
-              "She told me she was going to leave the next day.",
-              "He claimed he had finished the work earlier."
+              "I promised to call my mother every Sunday, and so far I've kept it."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -631,9 +599,7 @@
             "hidden_prompt": "user uses 'I refused to + base'",
             "hint_en": "I refused to take work calls after eight PM, and it changed my evenings.",
             "examples_pass": [
-              "I refused to take work calls after eight PM, and it changed my evenings.",
-              "They mentioned that they were considering the offer.",
-              "She admitted that she had made a mistake."
+              "I refused to take work calls after eight PM, and it changed my evenings."
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -647,9 +613,7 @@
             "hidden_prompt": "user asks Charlotte why she delayed the appointment",
             "hint_en": "Why did you delay?",
             "examples_pass": [
-              "Why did you delay?",
-              "He insisted that he had nothing to do with it.",
-              "My boss asked whether I had completed the report."
+              "Why did you delay?"
             ],
             "examples_fail": [
               "she said (bare reporting, no backshift)",
@@ -761,8 +725,6 @@
             "hint_en": "My boss warned me not to commit to that timeline.",
             "examples_pass": [
               "My boss warned me not to commit to that timeline.",
-              "She told me she was going to leave the next day.",
-              "He claimed he had finished the work earlier.",
               "My mentor warned me not to take on too much in my first year.",
               "She warned the team about the risk of underestimating the competitor's pace.",
               "He warned me not to make any irreversible commitments before the audit cleared.",
@@ -781,8 +743,6 @@
             "hint_en": "My sister talked me into trying the new restaurant.",
             "examples_pass": [
               "My sister talked me into trying the new restaurant.",
-              "They mentioned that they were considering the offer.",
-              "She admitted that she had made a mistake.",
               "She finally persuaded the board to fund the second phase.",
               "He talked me into taking the longer route, and I'm glad he did.",
               "My sister persuaded our parents to spend a winter in Lisbon.",
@@ -801,8 +761,6 @@
             "hint_en": "Our mentor discouraged us from rushing the launch.",
             "examples_pass": [
               "Our mentor discouraged us from rushing the launch.",
-              "He insisted that he had nothing to do with it.",
-              "My boss asked whether I had completed the report.",
               "Our mentor discouraged us from raising more capital than we actually needed.",
               "She discouraged the team from making any structural changes during the launch window.",
               "He discouraged me from accepting the first offer without negotiating.",
@@ -838,8 +796,6 @@
             "hint_en": "My old boss talked me into applying for a role I thought was too senior.",
             "examples_pass": [
               "My old boss talked me into applying for a role I thought was too senior.",
-              "She told me she was going to leave the next day.",
-              "He claimed he had finished the work earlier.",
               "My old boss talked me into applying for a role I'd already convinced myself was too senior.",
               "She talked me into giving the talk despite my long-standing aversion to public speaking.",
               "He persuaded me to spend the weekend reading the report — and it turned out to matter enormously.",
@@ -858,8 +814,6 @@
             "hint_en": "A friend warned me against committing to anything in my first month.",
             "examples_pass": [
               "A friend warned me against committing to anything in my first month.",
-              "They mentioned that they were considering the offer.",
-              "She admitted that she had made a mistake.",
               "A friend warned me against committing to anything in my first month at the new company.",
               "My mentor warned me about taking on too much, but I didn't listen until it was almost too late.",
               "Legal warned me not to put anything in writing until the contract had been countersigned.",
@@ -878,8 +832,6 @@
             "hint_en": "Where did you go?",
             "examples_pass": [
               "Where did you go?",
-              "He insisted that he had nothing to do with it.",
-              "My boss asked whether I had completed the report.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -997,8 +949,6 @@
             "hint_en": "According to the financial filing, profits doubled in the third quarter.",
             "examples_pass": [
               "According to the financial filing, profits doubled in the third quarter.",
-              "She told me she was going to leave the next day.",
-              "He claimed he had finished the work earlier.",
               "According to the internal report, the issue had been flagged twice before it became public.",
               "According to the latest filing, the company's revenue grew by eighteen percent year-over-year.",
               "According to two people close to the negotiations, the deal nearly fell apart on the final night.",
@@ -1017,8 +967,6 @@
             "hint_en": "The accountant allegedly transferred funds to a personal account.",
             "examples_pass": [
               "The accountant allegedly transferred funds to a personal account.",
-              "They mentioned that they were considering the offer.",
-              "She admitted that she had made a mistake.",
               "The executive allegedly approved the transfers without informing the board.",
               "The supplier allegedly inflated the invoices over a period of three years.",
               "The candidate allegedly withheld key details about his previous role.",
@@ -1037,8 +985,6 @@
             "hint_en": "Apparently, two board members have already resigned.",
             "examples_pass": [
               "Apparently, two board members have already resigned.",
-              "He insisted that he had nothing to do with it.",
-              "My boss asked whether I had completed the report.",
               "Apparently, two senior partners have already submitted their notice.",
               "Reportedly, the negotiations broke down over a single non-financial clause.",
               "Apparently, the founder had been planning this exit for nearly a year.",
@@ -1092,8 +1038,6 @@
             "hint_en": "Reportedly, leadership wants the announcement done before Friday.",
             "examples_pass": [
               "Reportedly, leadership wants the announcement done before Friday.",
-              "They mentioned that they were considering the offer.",
-              "She admitted that she had made a mistake.",
               "Reportedly, leadership wants the announcement done before Friday, but nobody has confirmed that publicly.",
               "It's understood that the CFO has been quietly opposed to the move for some time.",
               "Word is that the founder is preparing for a much larger restructure in the new year.",
@@ -1112,8 +1056,6 @@
             "hint_en": "Where did you hear it?",
             "examples_pass": [
               "Where did you hear it?",
-              "He insisted that he had nothing to do with it.",
-              "My boss asked whether I had completed the report.",
               "And you?",
               "What about you?",
               "How about yourself?",

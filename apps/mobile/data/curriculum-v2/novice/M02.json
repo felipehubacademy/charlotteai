@@ -168,8 +168,7 @@
             "hint_en": "I'm twenty years old!",
             "examples_pass": [
               "I'm twenty years old!",
-              "I am 18 years old.",
-              "I'm thirty years old."
+              "I am 18 years old."
             ],
             "examples_fail": [
               "Twenty (bare number)",
@@ -466,7 +465,6 @@
             "hint_en": "I'm twenty-five.",
             "examples_pass": [
               "I'm twenty-five.",
-              "I'm thirty years old.",
               "I am forty."
             ],
             "examples_fail": [
@@ -657,9 +655,7 @@
             "hint_pt": "I'm from Brazil!",
             "hint_en": "I'm from Brazil!",
             "examples_pass": [
-              "I'm from Brazil!",
-              "I am from Japan.",
-              "I'm from the United States."
+              "I'm from Brazil!"
             ],
             "examples_fail": [
               "Brazil (bare country)",
@@ -676,7 +672,6 @@
             "hint_en": "Where are you from?",
             "examples_pass": [
               "Where are you from?",
-              "And you?",
               "How about you?"
             ],
             "examples_fail": [
@@ -711,9 +706,7 @@
             "hint_pt": "I'm from Brazil.",
             "hint_en": "I'm from Brazil.",
             "examples_pass": [
-              "I'm from Brazil.",
-              "I am from Japan.",
-              "I'm from the United States."
+              "I'm from Brazil."
             ],
             "examples_fail": [
               "Brazil (bare country)",
@@ -730,7 +723,6 @@
             "hint_en": "Where are you from?",
             "examples_pass": [
               "Where are you from?",
-              "And you?",
               "How about you?"
             ],
             "examples_fail": [
@@ -924,9 +916,7 @@
             "hint_pt": "I'm from Brazil.",
             "hint_en": "I'm from Brazil.",
             "examples_pass": [
-              "I'm from Brazil.",
-              "I am from Japan.",
-              "I'm from the United States."
+              "I'm from Brazil."
             ],
             "examples_fail": [
               "Brazil (bare country)",
@@ -977,9 +967,7 @@
             "hint_pt": "I'm from Brazil.",
             "hint_en": "I'm from Brazil.",
             "examples_pass": [
-              "I'm from Brazil.",
-              "I am from Japan.",
-              "I'm from the United States."
+              "I'm from Brazil."
             ],
             "examples_fail": [
               "Brazil (bare country)",
@@ -996,8 +984,7 @@
             "hint_en": "Are you American?",
             "examples_pass": [
               "Are you American?",
-              "What's your nationality?",
-              "And you?"
+              "What's your nationality?"
             ],
             "examples_fail": [
               "I'm Brazilian (statement)",

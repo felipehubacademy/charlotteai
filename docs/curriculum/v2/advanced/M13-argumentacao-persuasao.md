@@ -161,7 +161,7 @@
    **hidden_prompt**: "user asks Charlotte what objection she expects"
    **hint_pt**: "What's the loudest objection in your team?"
    **hint_en**: "What's the loudest objection in your team?"
-   **example_pass**: What's the loudest objection in your team? | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What's the loudest objection in your team? | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Argument constructed, climax delivered." once obj_3 lands.
@@ -249,7 +249,7 @@
    **hidden_prompt**: "user uses 'Critics might argue... but this overlooks...'"
    **hint_pt**: "Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries."
    **hint_en**: "Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries."
-   **example_pass**: Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data. | Critics might argue the evidence is mixed, but this overlooks the convergence across three independent trials. | Critics might argue the policy is too expensive, but this overlooks the long-term cost of doing nothing. | Critics might argue that the model is unrealistic, but this overlooks decades of similar dynamics in adjacent fields. | Critics might argue the timing is wrong, but this overlooks how rarely the right timing presents itself in retrospect.
+   **example_pass**: Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries. | Critics might argue the evidence is mixed, but this overlooks the convergence across three independent trials. | Critics might argue the policy is too expensive, but this overlooks the long-term cost of doing nothing. | Critics might argue that the model is unrealistic, but this overlooks decades of similar dynamics in adjacent fields. | Critics might argue the timing is wrong, but this overlooks how rarely the right timing presents itself in retrospect.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -295,7 +295,7 @@
    **hidden_prompt**: "user uses 'Critics might argue / Some may object / this overlooks'"
    **hint_pt**: "Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same."
    **hint_en**: "Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same."
-   **example_pass**: Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now. | Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. | Critics might argue the evidence is preliminary, but this overlooks the convergence of findings across three independent studies. | Critics might argue the policy is too expensive, but this overlooks the long-term cost of continued inaction. | Critics might argue the model is unrealistic, but this overlooks how similar dynamics have played out in adjacent fields.
+   **example_pass**: Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same. | It is precisely for this reason that we must act now. | Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. | Critics might argue the evidence is preliminary, but this overlooks the convergence of findings across three independent studies. | Critics might argue the policy is too expensive, but this overlooks the long-term cost of continued inaction. | Critics might argue the model is unrealistic, but this overlooks how similar dynamics have played out in adjacent fields.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -304,7 +304,7 @@
    **hidden_prompt**: "user uses 'The deeper question is' or 'It would be a mistake to assume'"
    **hint_pt**: "The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us."
    **hint_en**: "The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us."
-   **example_pass**: The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us. | The deeper question is — that's the one. | Honestly, The deeper question is sums it up.
+   **example_pass**: The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -313,7 +313,7 @@
    **hidden_prompt**: "user asks Charlotte what objection she'd raise next"
    **hint_pt**: "What's your next push?"
    **hint_en**: "What's your next push?"
-   **example_pass**: What's your next push? | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What's your next push? | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Refutation under pressure." once obj_3 lands.
@@ -393,7 +393,7 @@
    **hidden_prompt**: "user uses repeated word/phrase at clause beginnings"
    **hint_pt**: "We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future."
    **hint_en**: "We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future."
-   **example_pass**: We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now.
+   **example_pass**: We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future. | It is precisely for this reason that we must act now.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -402,7 +402,7 @@
    **hidden_prompt**: "user uses parallel opposing structure"
    **hint_pt**: "The cost of acting is high. The cost of waiting is higher."
    **hint_en**: "The cost of acting is high. The cost of waiting is higher."
-   **example_pass**: The cost of acting is high. The cost of waiting is higher. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data.
+   **example_pass**: The cost of acting is high. The cost of waiting is higher.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -411,7 +411,7 @@
    **hidden_prompt**: "user uses three parallel clauses"
    **hint_pt**: "We can adapt, we can mitigate, or we can ask our children to forgive us."
    **hint_en**: "We can adapt, we can mitigate, or we can ask our children to forgive us."
-   **example_pass**: We can adapt, we can mitigate, or we can ask our children to forgive us. | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously.
+   **example_pass**: We can adapt, we can mitigate, or we can ask our children to forgive us.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Rhetorical devices, sharp." once obj_3 lands.
@@ -448,7 +448,7 @@
    **hidden_prompt**: "user uses anaphora"
    **hint_pt**: "Try: 'We are here because rights are not granted, they are demanded. We are here because patience has limits. We are here because no one is coming to do this for us.'"
    **hint_en**: "Try: 'We are here because rights are not granted, they are demanded. We are here because patience has limits. We are here because no one is coming to do this for us.'"
-   **example_pass**: Anaphora — that's the one. | Honestly, anaphora sums it up. | Yeah, anaphora for sure.
+   **example_pass**: Try: 'We are here because rights are not granted, they are demanded. We are here because patience has limits. We are here because no one is coming to do this for us.'
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -457,7 +457,7 @@
    **hidden_prompt**: "user uses antithesis"
    **hint_pt**: "Then drop in: 'Accessibility is not charity — it is justice taking the form of a ramp, a captioned line, an opened door.'"
    **hint_en**: "Then drop in: 'Accessibility is not charity — it is justice taking the form of a ramp, a captioned line, an opened door.'"
-   **example_pass**: Antithesis — that's the one. | Honestly, antithesis sums it up. | Yeah, antithesis for sure.
+   **example_pass**: Then drop in: 'Accessibility is not charity — it is justice taking the form of a ramp, a captioned line, an opened door.'
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -466,7 +466,7 @@
    **hidden_prompt**: "user uses tricolon"
    **hint_pt**: "Close with: 'Today we listen, tomorrow we organise, every day after that we demand.'"
    **hint_en**: "Close with: 'Today we listen, tomorrow we organise, every day after that we demand.'"
-   **example_pass**: Tricolon — that's the one. | Honestly, tricolon sums it up. | Yeah, tricolon for sure.
+   **example_pass**: Close with: 'Today we listen, tomorrow we organise, every day after that we demand.'
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Opener drafted, rhetorically structured." once obj_3 lands.
@@ -546,7 +546,7 @@
    **hidden_prompt**: "user uses 'which led to' or 'which caused'"
    **hint_pt**: "Interest rates rose, which led to higher mortgage costs."
    **hint_en**: "Interest rates rose, which led to higher mortgage costs."
-   **example_pass**: Interest rates rose, which led to higher mortgage costs. | Which led to — that's the one. | Honestly, which led to sums it up.
+   **example_pass**: Interest rates rose, which led to higher mortgage costs.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -555,7 +555,7 @@
    **hidden_prompt**: "user uses 'which in turn + verb'"
    **hint_pt**: "...which in turn cooled the housing market, which in turn slowed construction hiring."
    **hint_en**: "...which in turn cooled the housing market, which in turn slowed construction hiring."
-   **example_pass**: ...which in turn cooled the housing market, which in turn slowed construction hiring. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data.
+   **example_pass**: ...which in turn cooled the housing market, which in turn slowed construction hiring.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -564,7 +564,7 @@
    **hidden_prompt**: "user uses 'From this it follows that' or 'As a result'"
    **hint_pt**: "From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters."
    **hint_en**: "From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters."
-   **example_pass**: From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters. | As a result — that's the one. | Honestly, As a result sums it up.
+   **example_pass**: From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Chain forged, conclusion landed." once obj_3 lands.
@@ -601,7 +601,7 @@
    **hidden_prompt**: "user opens chain with cause and 'which led to / which in turn'"
    **hint_pt**: "The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance."
    **hint_en**: "The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance."
-   **example_pass**: The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance. | Which led to — that's the one. | Honestly, which led to sums it up.
+   **example_pass**: The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -610,7 +610,7 @@
    **hidden_prompt**: "user adds 'which in turn' link or two"
    **hint_pt**: "Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources."
    **hint_en**: "Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources."
-   **example_pass**: Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources. | Which in turn — that's the one. | Honestly, which in turn sums it up.
+   **example_pass**: Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -619,7 +619,7 @@
    **hidden_prompt**: "user uses 'From this it follows' or 'As a result' or 'The deeper cause is'"
    **hint_pt**: "From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention."
    **hint_en**: "From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention."
-   **example_pass**: From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention. | As a result — that's the one. | Honestly, As a result sums it up.
+   **example_pass**: From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Causal chain, fully landed." once obj_3 lands.
@@ -700,7 +700,7 @@
    **hidden_prompt**: "user uses 'What is at stake is' or 'The stakes could not be higher'"
    **hint_pt**: "What is at stake is not the pace of innovation, but the choice of whose interests guide it."
    **hint_en**: "What is at stake is not the pace of innovation, but the choice of whose interests guide it."
-   **example_pass**: What is at stake is not the pace of innovation, but the choice of whose interests guide it. | What is at stake is — that's the one. | Honestly, What is at stake is sums it up.
+   **example_pass**: What is at stake is not the pace of innovation, but the choice of whose interests guide it.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -709,7 +709,7 @@
    **hidden_prompt**: "user uses 'The choice before us is clear'"
    **hint_pt**: "The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible."
    **hint_en**: "The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible."
-   **example_pass**: The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible. | The choice before us is clear — that's the one. | Honestly, The choice before us is clear sums it up.
+   **example_pass**: The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -718,7 +718,7 @@
    **hidden_prompt**: "user uses 'If we fail to' or 'Should we fail to'"
    **hint_pt**: "If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping."
    **hint_en**: "If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping."
-   **example_pass**: If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping. | If we fail to — that's the one. | Honestly, If we fail to sums it up.
+   **example_pass**: If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Conclusion architecture, landed." once obj_3 lands.
@@ -756,7 +756,7 @@
    **hidden_prompt**: "user uses 'What is at stake is' or stakes phrase"
    **hint_pt**: "What is at stake is not turnout, but whether we still believe collective decisions can change anything."
    **hint_en**: "What is at stake is not turnout, but whether we still believe collective decisions can change anything."
-   **example_pass**: What is at stake is not turnout, but whether we still believe collective decisions can change anything. | What is at stake is — that's the one. | Honestly, What is at stake is sums it up.
+   **example_pass**: What is at stake is not turnout, but whether we still believe collective decisions can change anything.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -765,7 +765,7 @@
    **hidden_prompt**: "user uses 'The choice before us is clear'"
    **hint_pt**: "The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors."
    **hint_en**: "The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors."
-   **example_pass**: The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors. | The choice before us is clear — that's the one. | Honestly, The choice before us is clear sums it up.
+   **example_pass**: The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -774,7 +774,7 @@
    **hidden_prompt**: "user uses 'If we fail to' or call-to-action"
    **hint_pt**: "If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled."
    **hint_en**: "If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled."
-   **example_pass**: If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled. | If we fail to — that's the one. | Honestly, If we fail to sums it up.
+   **example_pass**: If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Speech closed, persuasion complete." once obj_3 lands.

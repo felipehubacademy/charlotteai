@@ -113,7 +113,7 @@
    **hidden_prompt**: "user makes weather prediction with 'I think it will + verb base' or 'It will + verb base'"
    **hint_pt**: "I think it will rain tomorrow."
    **hint_en**: "I think it will rain tomorrow."
-   **example_pass**: I think it will rain tomorrow. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I think it will rain tomorrow.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -122,7 +122,7 @@
    **hidden_prompt**: "user predicts with 'She/He/They will + base'"
    **hint_pt**: "She will love the party."
    **hint_en**: "She will love the party."
-   **example_pass**: She will love the party. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: She will love the party.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -131,7 +131,7 @@
    **hidden_prompt**: "user predicts with 'I will + base + future time'"
    **hint_pt**: "I will be 30 next year."
    **hint_en**: "I will be 30 next year."
-   **example_pass**: I will be 30 next year. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I will be 30 next year.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Fortune teller!" quando obj_3 baterem.
@@ -168,7 +168,7 @@
    **hidden_prompt**: "user uses 'I will/I'll + base + time'"
    **hint_pt**: "I'll travel next year."
    **hint_en**: "I'll travel next year."
-   **example_pass**: I'll travel next year. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll travel next year.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -177,7 +177,7 @@
    **hidden_prompt**: "user uses 'X will + base'"
    **hint_pt**: "My sister will move to NYC."
    **hint_en**: "My sister will move to NYC."
-   **example_pass**: My sister will move to NYC. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: My sister will move to NYC.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -186,7 +186,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Future glimpsed!" quando obj_3 baterem.
@@ -297,7 +297,7 @@
    **hidden_prompt**: "user reacts with 'I'll + verb base' (get it, answer, help, etc.)"
    **hint_pt**: "I'll get it!"
    **hint_en**: "I'll get it!"
-   **example_pass**: I'll get it. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll get it.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -306,7 +306,7 @@
    **hidden_prompt**: "user makes a promise with 'I promise I'll + base' or 'I'll + base'"
    **hint_pt**: "I'll call you later."
    **hint_en**: "I'll call you later."
-   **example_pass**: I'll call you later. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll call you later.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -352,7 +352,7 @@
    **hidden_prompt**: "user uses 'I'll help' or 'I'll + base'"
    **hint_pt**: "I'll help you."
    **hint_en**: "I'll help you."
-   **example_pass**: I'll help you. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll help you.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -361,7 +361,7 @@
    **hidden_prompt**: "user uses 'I promise I'll + base' or 'I'll + base'"
    **hint_pt**: "I'll be there at five."
    **hint_en**: "I'll be there at five."
-   **example_pass**: I'll be there at five. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll be there at five.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -478,7 +478,7 @@
    **hidden_prompt**: "user uses 'I'm going to + base' for a planned event"
    **hint_pt**: "I'm going to travel next week."
    **hint_en**: "I'm going to travel next week."
-   **example_pass**: I'm going to travel next week. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to travel next week.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -487,7 +487,7 @@
    **hidden_prompt**: "user uses 'I'll + base' for spontaneous reaction"
    **hint_pt**: "I'll get it!"
    **hint_en**: "I'll get it!"
-   **example_pass**: I'll get it. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll get it.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -496,7 +496,7 @@
    **hidden_prompt**: "user uses 'I think + will + base' for prediction"
    **hint_pt**: "I think it'll rain."
    **hint_en**: "I think it'll rain."
-   **example_pass**: I think it'll rain. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I think it'll rain.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Choice mastered!" quando obj_3 baterem.
@@ -533,7 +533,7 @@
    **hidden_prompt**: "user uses 'I'm going to + base'"
    **hint_pt**: "I'm going to study tonight."
    **hint_en**: "I'm going to study tonight."
-   **example_pass**: I'm going to study tonight. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to study tonight.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -542,7 +542,7 @@
    **hidden_prompt**: "user uses 'I'll + base'"
    **hint_pt**: "I'll help if you need."
    **hint_en**: "I'll help if you need."
-   **example_pass**: I'll help if you need. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll help if you need.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -551,7 +551,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Two-tense mastery!" quando obj_3 baterem.
@@ -658,7 +658,7 @@
    **hidden_prompt**: "user accepts with 'I'll + base'"
    **hint_pt**: "Sure, I'll help."
    **hint_en**: "Sure, I'll help."
-   **example_pass**: Sure, I'll help. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: Sure, I'll help.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -667,7 +667,7 @@
    **hidden_prompt**: "user makes promise with 'I'll + base'"
    **hint_pt**: "I'll be there at five."
    **hint_en**: "I'll be there at five."
-   **example_pass**: I'll be there at five. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll be there at five.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -676,7 +676,7 @@
    **hidden_prompt**: "user asks 'Will you + base?'"
    **hint_pt**: "Will you bring snacks?"
    **hint_en**: "Will you bring snacks?"
-   **example_pass**: Will you bring snacks? | And you? | How about you?
+   **example_pass**: Will you bring snacks?
    **example_fail**: Yes I will (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Teamwork!" quando obj_3 baterem.
@@ -713,7 +713,7 @@
    **hidden_prompt**: "user accepts with 'I'll come' or 'Yes, I will'"
    **hint_pt**: "Yes, I'll come."
    **hint_en**: "Yes, I'll come."
-   **example_pass**: Yes, I'll come. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: Yes, I'll come.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -722,7 +722,7 @@
    **hidden_prompt**: "user uses 'I'll bring + something'"
    **hint_pt**: "I'll bring a cake."
    **hint_en**: "I'll bring a cake."
-   **example_pass**: I'll bring a cake. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll bring a cake.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -731,7 +731,7 @@
    **hidden_prompt**: "user asks 'Will you + base?' or 'What else?'"
    **hint_pt**: "Will you need help setting up?"
    **hint_en**: "Will you need help setting up?"
-   **example_pass**: Will you need help setting up? | And you? | How about you?
+   **example_pass**: Will you need help setting up?
    **example_fail**: Yes I will (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Best friend!" quando obj_3 baterem.
@@ -840,7 +840,7 @@
    **hidden_prompt**: "user uses 'I'm going to + base + time'"
    **hint_pt**: "I'm going to travel next month."
    **hint_en**: "I'm going to travel next month."
-   **example_pass**: I'm going to travel next month. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to travel next month.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -849,7 +849,7 @@
    **hidden_prompt**: "user uses 'I think + will' or 'It will + base'"
    **hint_pt**: "I think it will be fun."
    **hint_en**: "I think it will be fun."
-   **example_pass**: I think it will be fun. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I think it will be fun.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -858,7 +858,7 @@
    **hidden_prompt**: "user uses 'I'll + base' as offer"
    **hint_pt**: "I'll help you pack."
    **hint_en**: "I'll help you pack."
-   **example_pass**: I'll help you pack. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll help you pack.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Future verbs mastered!" quando obj_3 baterem.
@@ -895,7 +895,7 @@
    **hidden_prompt**: "user uses 'I'm going to + base'"
    **hint_pt**: "I'm going to learn Spanish."
    **hint_en**: "I'm going to learn Spanish."
-   **example_pass**: I'm going to learn Spanish. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to learn Spanish.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -913,7 +913,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Future mapped!" quando obj_3 baterem.
@@ -1028,7 +1028,7 @@
    **hidden_prompt**: "user uses 'going to' or 'will' for forecast"
    **hint_pt**: "It's going to rain tomorrow."
    **hint_en**: "It's going to rain tomorrow."
-   **example_pass**: It's going to rain tomorrow. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: It's going to rain tomorrow.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -1092,7 +1092,7 @@
    **hidden_prompt**: "user asks Charlotte"
    **hint_pt**: "What about you?"
    **hint_en**: "What about you?"
-   **example_pass**: What about you? | And you? | How about you?
+   **example_pass**: What about you?
    **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Weather preferences shared!" quando obj_3 bater.

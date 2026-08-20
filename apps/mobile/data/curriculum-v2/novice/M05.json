@@ -208,9 +208,7 @@
             "hint_pt": "I go to work.",
             "hint_en": "I go to work.",
             "examples_pass": [
-              "I go to work.",
-              "I live in Brazil.",
-              "I work at a school."
+              "I go to work."
             ],
             "examples_fail": [
               "Brazil (bare noun)",
@@ -261,9 +259,7 @@
             "hint_pt": "I have toast and coffee.",
             "hint_en": "I have toast and coffee.",
             "examples_pass": [
-              "I have toast and coffee.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "I have toast and coffee."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -279,9 +275,7 @@
             "hint_pt": "I go to work at eight.",
             "hint_en": "I go to work at eight.",
             "examples_pass": [
-              "I go to work at eight.",
-              "I live in Brazil.",
-              "I work at a school."
+              "I go to work at eight."
             ],
             "examples_fail": [
               "Brazil (bare noun)",
@@ -435,9 +429,7 @@
             "hint_pt": "I work in an office.",
             "hint_en": "I work in an office.",
             "examples_pass": [
-              "I work in an office.",
-              "I live in Brazil.",
-              "I work at a school."
+              "I work in an office."
             ],
             "examples_fail": [
               "Brazil (bare noun)",
@@ -453,9 +445,7 @@
             "hint_pt": "I study English.",
             "hint_en": "I study English.",
             "examples_pass": [
-              "I study English.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "I study English."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -471,9 +461,7 @@
             "hint_pt": "I work with great people.",
             "hint_en": "I work with great people.",
             "examples_pass": [
-              "I work with great people.",
-              "I live in Brazil.",
-              "I work at a school."
+              "I work with great people."
             ],
             "examples_fail": [
               "Brazil (bare noun)",
@@ -506,9 +494,7 @@
             "hint_pt": "I work in a hospital.",
             "hint_en": "I work in a hospital.",
             "examples_pass": [
-              "I work in a hospital.",
-              "I live in Brazil.",
-              "I work at a school."
+              "I work in a hospital."
             ],
             "examples_fail": [
               "Brazil (bare noun)",
@@ -524,9 +510,7 @@
             "hint_pt": "I study English.",
             "hint_en": "I study English.",
             "examples_pass": [
-              "I study English.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "I study English."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -542,9 +526,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -769,9 +751,7 @@
             "hint_pt": "I have toast and coffee.",
             "hint_en": "I have toast and coffee.",
             "examples_pass": [
-              "I have toast and coffee.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "I have toast and coffee."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -805,9 +785,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -997,9 +975,7 @@
             "hint_pt": "I come home at six.",
             "hint_en": "I come home at six.",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "I come home at six."
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1068,9 +1044,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1614,9 +1588,7 @@
             "hint_pt": "What about you?",
             "hint_en": "What about you?",
             "examples_pass": [
-              "What about you?",
-              "And you?",
-              "How about you?"
+              "What about you?"
             ],
             "examples_fail": [
               "I do that too (statement)",

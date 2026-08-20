@@ -108,7 +108,7 @@
    **hidden_prompt**: "user gives advice with 'You should + base'"
    **hint_pt**: "You should rest."
    **hint_en**: "You should rest."
-   **example_pass**: You should rest. | You should rest. | You shouldn't drink so much coffee.
+   **example_pass**: You should rest.
    **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 2. **id**: 2
@@ -117,7 +117,7 @@
    **hidden_prompt**: "user advises against with 'You shouldn't + base'"
    **hint_pt**: "You shouldn't work so much."
    **hint_en**: "You shouldn't work so much."
-   **example_pass**: You shouldn't work so much. | You should rest. | You shouldn't drink so much coffee.
+   **example_pass**: You shouldn't work so much.
    **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 3. **id**: 3
@@ -126,7 +126,7 @@
    **hidden_prompt**: "user gives another advice with should/shouldn't"
    **hint_pt**: "You should take a vacation."
    **hint_en**: "You should take a vacation."
-   **example_pass**: You should take a vacation. | You should rest. | You shouldn't drink so much coffee.
+   **example_pass**: You should take a vacation.
    **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 **Closing cue**: Charlotte fecha com "Wise advice!" quando obj_3 baterem.
@@ -163,7 +163,7 @@
    **hidden_prompt**: "user uses 'You should + base'"
    **hint_pt**: "You should practice every day."
    **hint_en**: "You should practice every day."
-   **example_pass**: You should practice every day. | You should rest. | You shouldn't drink so much coffee.
+   **example_pass**: You should practice every day.
    **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 2. **id**: 2
@@ -172,7 +172,7 @@
    **hidden_prompt**: "user uses 'You shouldn't + base'"
    **hint_pt**: "You shouldn't translate everything."
    **hint_en**: "You shouldn't translate everything."
-   **example_pass**: You shouldn't translate everything. | You should rest. | You shouldn't drink so much coffee.
+   **example_pass**: You shouldn't translate everything.
    **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 3. **id**: 3
@@ -181,7 +181,7 @@
    **hidden_prompt**: "user asks 'What should I + base?' or 'Any other tips?'"
    **hint_pt**: "What should I do too?"
    **hint_en**: "What should I do too?"
-   **example_pass**: What should I do too? | And you? | How about you?
+   **example_pass**: What should I do too?
    **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Great advice exchange!" quando obj_3 baterem.
@@ -359,7 +359,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you? | What about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Long to-do list!" quando obj_3 baterem.
@@ -537,7 +537,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you? | What about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Weekend freedom!" quando obj_3 baterem.
@@ -642,7 +642,7 @@
    **hidden_prompt**: "user asks 'Should I + base?'"
    **hint_pt**: "Should I see a doctor?"
    **hint_en**: "Should I see a doctor?"
-   **example_pass**: Should I see a doctor? | And you? | How about you?
+   **example_pass**: Should I see a doctor?
    **example_fail**: Yes you should (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
@@ -651,7 +651,7 @@
    **hidden_prompt**: "user asks 'Do I have to + base?'"
    **hint_pt**: "Do I have to bring my ID?"
    **hint_en**: "Do I have to bring my ID?"
-   **example_pass**: Do I have to bring my ID? | And you? | How about you?
+   **example_pass**: Do I have to bring my ID?
    **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
@@ -660,7 +660,7 @@
    **hidden_prompt**: "user asks another should or have to question"
    **hint_pt**: "Should I call her?"
    **hint_en**: "Should I call her?"
-   **example_pass**: Should I call her? | And you? | How about you?
+   **example_pass**: Should I call her?
    **example_fail**: Yes you should (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "All questions covered!" quando obj_3 baterem.
@@ -697,7 +697,7 @@
    **hidden_prompt**: "user asks 'Should I + base?'"
    **hint_pt**: "Should I take a vacation?"
    **hint_en**: "Should I take a vacation?"
-   **example_pass**: Should I take a vacation? | And you? | How about you?
+   **example_pass**: Should I take a vacation?
    **example_fail**: Yes you should (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
@@ -706,7 +706,7 @@
    **hidden_prompt**: "user asks 'Do I have to + base?'"
    **hint_pt**: "Do I have to study every day?"
    **hint_en**: "Do I have to study every day?"
-   **example_pass**: Do I have to study every day? | And you? | How about you?
+   **example_pass**: Do I have to study every day?
    **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
@@ -715,7 +715,7 @@
    **hidden_prompt**: "user asks another should/have to question"
    **hint_pt**: "Should I learn another language?"
    **hint_en**: "Should I learn another language?"
-   **example_pass**: Should I learn another language? | And you? | How about you?
+   **example_pass**: Should I learn another language?
    **example_fail**: Yes you should (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Advisor session done!" quando obj_3 baterem.
@@ -819,7 +819,7 @@
    **hidden_prompt**: "user gives advice with 'You should + base'"
    **hint_pt**: "You should rest."
    **hint_en**: "You should rest."
-   **example_pass**: You should rest. | You should rest. | You shouldn't drink so much coffee.
+   **example_pass**: You should rest.
    **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 2. **id**: 2
@@ -892,7 +892,7 @@
    **hidden_prompt**: "user uses 'You should + base' for Charlotte"
    **hint_pt**: "You should take time off."
    **hint_en**: "You should take time off."
-   **example_pass**: You should take time off. | You should rest. | You shouldn't drink so much coffee.
+   **example_pass**: You should take time off.
    **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 **Closing cue**: Charlotte encerra com "Real-life talk!" quando obj_3 baterem.

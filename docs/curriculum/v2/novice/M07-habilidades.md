@@ -109,7 +109,7 @@
    **hidden_prompt**: "user states an ability with 'I can + verb base' (swim, cook, drive, speak, dance, sing, play, etc.)"
    **hint_pt**: "I can swim."
    **hint_en**: "I can swim."
-   **example_pass**: I can swim. | I can swim. | I can speak English.
+   **example_pass**: I can swim.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
@@ -118,7 +118,7 @@
    **hidden_prompt**: "user states another ability with 'I can + verb base'"
    **hint_pt**: "I can cook Italian food."
    **hint_en**: "I can cook Italian food."
-   **example_pass**: I can cook Italian food. | I can swim. | I can speak English.
+   **example_pass**: I can cook Italian food.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 3. **id**: 3
@@ -127,7 +127,7 @@
    **hidden_prompt**: "user states someone else's ability with 'He/She/My brother/etc. can + verb base'"
    **hint_pt**: "My sister can dance very well."
    **hint_en**: "My sister can dance very well."
-   **example_pass**: My sister can dance very well. | I can swim. | I can speak English.
+   **example_pass**: My sister can dance very well.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 **Closing cue**: Charlotte fecha com "Talented!" quando obj_3 baterem.
@@ -164,7 +164,7 @@
    **hidden_prompt**: "user states ability with 'I can + verb base'"
    **hint_pt**: "I can speak English."
    **hint_en**: "I can speak English."
-   **example_pass**: I can speak English. | I can swim. | I can speak English.
+   **example_pass**: I can speak English.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
@@ -173,7 +173,7 @@
    **hidden_prompt**: "user states another ability with 'I can + verb base'"
    **hint_pt**: "I can play soccer."
    **hint_en**: "I can play soccer."
-   **example_pass**: I can play soccer. | I can swim. | I can speak English.
+   **example_pass**: I can play soccer.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 3. **id**: 3
@@ -182,7 +182,7 @@
    **hidden_prompt**: "user asks 'What can you do?' or 'How about you?' or 'Can you + verb?'"
    **hint_pt**: "What can you do?"
    **hint_en**: "What can you do?"
-   **example_pass**: What can you do? | And you? | How about you?
+   **example_pass**: What can you do?
    **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "We've got skills!" quando obj_3 baterem.
@@ -287,7 +287,7 @@
    **hidden_prompt**: "user states inability with 'I can't + verb base'"
    **hint_pt**: "I can't ride a bike."
    **hint_en**: "I can't ride a bike."
-   **example_pass**: I can't ride a bike. | I can swim. | I can speak English.
+   **example_pass**: I can't ride a bike.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
@@ -296,7 +296,7 @@
    **hidden_prompt**: "user states another inability with 'I can't + verb base'"
    **hint_pt**: "I can't speak French."
    **hint_en**: "I can't speak French."
-   **example_pass**: I can't speak French. | I can swim. | I can speak English.
+   **example_pass**: I can't speak French.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 3. **id**: 3
@@ -305,7 +305,7 @@
    **hidden_prompt**: "user states someone else's inability with 'He/She can't + verb base'"
    **hint_pt**: "My father can't cook."
    **hint_en**: "My father can't cook."
-   **example_pass**: My father can't cook. | I can swim. | I can speak English.
+   **example_pass**: My father can't cook.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 **Closing cue**: Charlotte fecha com "Honest! Room to grow." quando obj_3 baterem.
@@ -342,7 +342,7 @@
    **hidden_prompt**: "user says 'I can't + verb base'"
    **hint_pt**: "I can't dance."
    **hint_en**: "I can't dance."
-   **example_pass**: I can't dance. | I can swim. | I can speak English.
+   **example_pass**: I can't dance.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
@@ -360,7 +360,7 @@
    **hidden_prompt**: "user asks 'What can't you do?' or 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you? | What about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Same boat!" quando obj_3 baterem.
@@ -464,7 +464,7 @@
    **hidden_prompt**: "user asks 'Can you + verb base?' to Charlotte"
    **hint_pt**: "Can you swim?"
    **hint_en**: "Can you swim?"
-   **example_pass**: Can you swim? | And you? | How about you?
+   **example_pass**: Can you swim?
    **example_fail**: Yes I can (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
@@ -473,7 +473,7 @@
    **hidden_prompt**: "user asks another 'Can you + verb base?'"
    **hint_pt**: "Can you cook?"
    **hint_en**: "Can you cook?"
-   **example_pass**: Can you cook? | And you? | How about you?
+   **example_pass**: Can you cook?
    **example_fail**: Yes I can (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
@@ -482,7 +482,7 @@
    **hidden_prompt**: "user asks 'Can + 3rd person + verb base?'"
    **hint_pt**: "Can your friend dance?"
    **hint_en**: "Can your friend dance?"
-   **example_pass**: Can your friend dance? | And you? | How about you?
+   **example_pass**: Can your friend dance?
    **example_fail**: Yes I can (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Fun quiz!" quando obj_3 baterem.
@@ -643,7 +643,7 @@
    **hidden_prompt**: "user states a language with 'I can speak + language' (no article)"
    **hint_pt**: "I can speak English."
    **hint_en**: "I can speak English."
-   **example_pass**: I can speak English. | I can swim. | I can speak English.
+   **example_pass**: I can speak English.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
@@ -652,7 +652,7 @@
    **hidden_prompt**: "user states 'I can play + sport' (no article) or 'I can play the + instrument' (with article)"
    **hint_pt**: "I can play soccer."
    **hint_en**: "I can play soccer."
-   **example_pass**: I can play soccer. | I can swim. | I can speak English.
+   **example_pass**: I can play soccer.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 3. **id**: 3
@@ -661,7 +661,7 @@
    **hidden_prompt**: "user states another ability with 'I can + verb base' (cook, dance, sing, draw, etc.)"
    **hint_pt**: "I can cook well."
    **hint_en**: "I can cook well."
-   **example_pass**: I can cook well. | I can swim. | I can speak English.
+   **example_pass**: I can cook well.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 **Closing cue**: Charlotte fecha com "Talented!" quando obj_3 baterem.
@@ -698,7 +698,7 @@
    **hidden_prompt**: "user states 'I can speak + language' (no article)"
    **hint_pt**: "I can speak Portuguese."
    **hint_en**: "I can speak Portuguese."
-   **example_pass**: I can speak Portuguese. | I can swim. | I can speak English.
+   **example_pass**: I can speak Portuguese.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
@@ -707,7 +707,7 @@
    **hidden_prompt**: "user states 'I can play + sport' or 'I can play the + instrument'"
    **hint_pt**: "I can play the piano."
    **hint_en**: "I can play the piano."
-   **example_pass**: I can play the piano. | I can swim. | I can speak English.
+   **example_pass**: I can play the piano.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 3. **id**: 3
@@ -716,7 +716,7 @@
    **hidden_prompt**: "user asks Charlotte 'Can you + verb' or 'What can you do?' or 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you? | What about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Awesome skills!" quando obj_3 baterem.
@@ -820,7 +820,7 @@
    **hidden_prompt**: "user states ability with 'I can + verb base'"
    **hint_pt**: "I can speak English."
    **hint_en**: "I can speak English."
-   **example_pass**: I can speak English. | I can swim. | I can speak English.
+   **example_pass**: I can speak English.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
@@ -829,7 +829,7 @@
    **hidden_prompt**: "user states inability with 'I can't + verb base'"
    **hint_pt**: "I can't play the piano."
    **hint_en**: "I can't play the piano."
-   **example_pass**: I can't play the piano. | I can swim. | I can speak English.
+   **example_pass**: I can't play the piano.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 3. **id**: 3
@@ -838,7 +838,7 @@
    **hidden_prompt**: "user asks 'Can you + verb base?' to Charlotte"
    **hint_pt**: "Can you sing?"
    **hint_en**: "Can you sing?"
-   **example_pass**: Can you sing? | And you? | How about you?
+   **example_pass**: Can you sing?
    **example_fail**: Yes I can (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "What a portrait!" quando obj_3 baterem.
@@ -875,7 +875,7 @@
    **hidden_prompt**: "user states 'I can + verb base'"
    **hint_pt**: "I can swim."
    **hint_en**: "I can swim."
-   **example_pass**: I can swim. | I can swim. | I can speak English.
+   **example_pass**: I can swim.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
@@ -884,7 +884,7 @@
    **hidden_prompt**: "user states 'I can't + verb base'"
    **hint_pt**: "I can't drive."
    **hint_en**: "I can't drive."
-   **example_pass**: I can't drive. | I can swim. | I can speak English.
+   **example_pass**: I can't drive.
    **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 3. **id**: 3
@@ -893,7 +893,7 @@
    **hidden_prompt**: "user asks 'Can you + verb?' to Charlotte"
    **hint_pt**: "Can you cook?"
    **hint_en**: "Can you cook?"
-   **example_pass**: Can you cook? | And you? | How about you?
+   **example_pass**: Can you cook?
    **example_fail**: Yes I can (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Skill swap complete!" quando obj_3 baterem.

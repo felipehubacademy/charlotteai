@@ -125,8 +125,6 @@
             "hint_en": "Never have I tasted coffee that good.",
             "examples_pass": [
               "Never have I tasted coffee that good.",
-              "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload.",
               "Never have I felt so out of place at a conference.",
               "Never have I read a novel that landed with such precision.",
               "Never have I worked with a team this aligned from day one.",
@@ -145,8 +143,6 @@
             "hint_en": "Rarely do I feel this prepared for a meeting.",
             "examples_pass": [
               "Rarely do I feel this prepared for a meeting.",
-              "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke.",
               "Seldom does an opportunity like this come along twice in one career.",
               "Rarely do I see a candidate this prepared on a first interview.",
               "Seldom have I encountered a regulation written this clearly.",
@@ -165,8 +161,6 @@
             "hint_en": "Hardly ever does my dog sleep through a thunderstorm.",
             "examples_pass": [
               "Hardly ever does my dog sleep through a thunderstorm.",
-              "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next.",
               "Hardly ever do I take calls before nine in the morning.",
               "Hardly ever does my brother return a text within the same week.",
               "Hardly ever have I seen a launch this smooth.",
@@ -202,8 +196,6 @@
             "hint_en": "Never have I cried so much at a film.",
             "examples_pass": [
               "Never have I cried so much at a film.",
-              "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload.",
               "Never have I felt so out of place at a conference.",
               "Never have I read a novel that landed with such precision.",
               "Never have I worked with a team this aligned from day one.",
@@ -222,8 +214,6 @@
             "hint_en": "Rarely do strangers make me feel that welcome.",
             "examples_pass": [
               "Rarely do strangers make me feel that welcome.",
-              "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke.",
               "Seldom does an opportunity like this come along twice in one career.",
               "Rarely do I see a candidate this prepared on a first interview.",
               "Seldom have I encountered a regulation written this clearly.",
@@ -241,14 +231,7 @@
             "hidden_prompt": "user asks Charlotte for her rarest moment",
             "hint_en": "What's your rarest?",
             "examples_pass": [
-              "What's your rarest?",
-              "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "What's your rarest?"
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -360,9 +343,7 @@
             "hidden_prompt": "user uses 'Hardly had I + past participle + when + past simple'",
             "hint_en": "Hardly had I started my coffee when my boss called.",
             "examples_pass": [
-              "Hardly had I started my coffee when my boss called.",
-              "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload."
+              "Hardly had I started my coffee when my boss called."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -376,9 +357,7 @@
             "hidden_prompt": "user uses 'No sooner had I + past participle + than + past simple'",
             "hint_en": "No sooner had I unpacked than the rain started.",
             "examples_pass": [
-              "No sooner had I unpacked than the rain started.",
-              "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke."
+              "No sooner had I unpacked than the rain started."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -392,9 +371,7 @@
             "hidden_prompt": "user uses 'Scarcely had I + past participle + when + past simple'",
             "hint_en": "Scarcely had I closed my laptop when the deadline shifted.",
             "examples_pass": [
-              "Scarcely had I closed my laptop when the deadline shifted.",
-              "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next."
+              "Scarcely had I closed my laptop when the deadline shifted."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -425,9 +402,7 @@
             "hidden_prompt": "user uses 'No sooner had I + past participle + than + past simple'",
             "hint_en": "No sooner had I left the house than I realised I'd forgotten my keys.",
             "examples_pass": [
-              "No sooner had I left the house than I realised I'd forgotten my keys.",
-              "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload."
+              "No sooner had I left the house than I realised I'd forgotten my keys."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -441,9 +416,7 @@
             "hidden_prompt": "user uses 'Hardly had I + past participle + when + past simple'",
             "hint_en": "Hardly had I turned back when it started pouring.",
             "examples_pass": [
-              "Hardly had I turned back when it started pouring.",
-              "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke."
+              "Hardly had I turned back when it started pouring."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -457,9 +430,7 @@
             "hidden_prompt": "user asks Charlotte how her writing went after the doorbell",
             "hint_en": "Did you ever get back to writing?",
             "examples_pass": [
-              "Did you ever get back to writing?",
-              "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next."
+              "Did you ever get back to writing?"
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -575,8 +546,6 @@
             "hint_en": "Not only is she fluent in three languages, but she also teaches them.",
             "examples_pass": [
               "Not only is she fluent in three languages, but she also teaches them.",
-              "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload.",
               "Not only is the design elegant, but it's also far cheaper to manufacture.",
               "Not only is she a brilliant engineer, but she's also a patient teacher.",
               "Not only is the app faster, but it also uses a fraction of the battery.",
@@ -595,8 +564,6 @@
             "hint_en": "Not only did we hit the target, but we also exceeded it by 20%.",
             "examples_pass": [
               "Not only did we hit the target, but we also exceeded it by 20%.",
-              "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke.",
               "Not only did we ship on time, but we also came in under budget.",
               "Not only did the campaign exceed targets, but it also won an industry award.",
               "Not only did she resign, but she also took half the team with her.",
@@ -615,8 +582,6 @@
             "hint_en": "Not until I left the city did I appreciate the quiet.",
             "examples_pass": [
               "Not until I left the city did I appreciate the quiet.",
-              "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next.",
               "Not until I moved abroad did I realise how much my city had shaped me.",
               "Not until the audit started did anyone notice the missing entries.",
               "Not until I read it a third time did the argument fully land.",
@@ -652,8 +617,6 @@
             "hint_en": "Not only did my dad teach himself English, but he also learned coding at 60.",
             "examples_pass": [
               "Not only did my dad teach himself English, but he also learned coding at 60.",
-              "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload.",
               "Not only did my mother raise three kids alone, but she also went back to school in her fifties.",
               "Not only did the team ship on time, but they also delivered above scope.",
               "Not only is the new policy fairer, but it's also significantly easier to administer.",
@@ -672,8 +635,6 @@
             "hint_en": "Not until I had my own kid did I understand how much they did.",
             "examples_pass": [
               "Not until I had my own kid did I understand how much they did.",
-              "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke.",
               "Not until I moved abroad did I realise how much my city had shaped me.",
               "Not until the audit started did anyone notice the missing entries.",
               "Not until I read it a third time did the argument fully land.",
@@ -691,11 +652,7 @@
             "hidden_prompt": "user asks Charlotte more about her grandmother",
             "hint_en": "What did she study?",
             "examples_pass": [
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "What did she study?"
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -811,8 +768,6 @@
             "hint_en": "Only after I quit did I realise how much that job was costing me.",
             "examples_pass": [
               "Only after I quit did I realise how much that job was costing me.",
-              "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload.",
               "Only after I left the company did I realise how exhausted I had been.",
               "Only when the numbers came in did the board start taking the warning seriously.",
               "Only after losing the contract did we understand what our weak spot was.",
@@ -831,8 +786,6 @@
             "hint_en": "Only by saying no a hundred times did I learn to protect my time.",
             "examples_pass": [
               "Only by saying no a hundred times did I learn to protect my time.",
-              "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke.",
               "Only by saying no for an entire quarter did I get any real work done.",
               "Only by rebuilding the team from scratch did we recover from that year.",
               "Only by automating the routine work did the senior engineers find time to think.",
@@ -851,8 +804,6 @@
             "hint_en": "Little did I know that conversation would change my career.",
             "examples_pass": [
               "Little did I know that conversation would change my career.",
-              "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next.",
               "Little did I know that the casual coffee would turn into a job offer.",
               "Little did I realise how much that one decision would shape the next decade.",
               "Little did we imagine the company would be acquired within a year.",
@@ -888,8 +839,6 @@
             "hint_en": "Only after losing a friend did I start texting people back the same day.",
             "examples_pass": [
               "Only after losing a friend did I start texting people back the same day.",
-              "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload.",
               "Only after I lost a close friend did I start replying to messages the same day.",
               "Only when the company nearly folded did the founders finally agree on a strategy.",
               "Only after working with her for a year did I understand how she actually made decisions.",
@@ -908,8 +857,6 @@
             "hint_en": "Little did I know that one email would lead to a new career.",
             "examples_pass": [
               "Little did I know that one email would lead to a new career.",
-              "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke.",
               "Little did I know that the casual coffee would turn into a job offer.",
               "Little did I realise how much that one decision would shape the next decade.",
               "Little did we imagine the company would be acquired within a year.",
@@ -927,14 +874,7 @@
             "hidden_prompt": "user asks Charlotte for her own example",
             "hint_en": "What's your foreshadowing moment?",
             "examples_pass": [
-              "What's your foreshadowing moment?",
-              "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "What's your foreshadowing moment?"
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -1050,8 +990,6 @@
             "hint_en": "Under no circumstances should staff share passwords.",
             "examples_pass": [
               "Under no circumstances should staff share passwords.",
-              "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload.",
               "Under no circumstances should sensitive client data leave the company network.",
               "Under no circumstances must production code be deployed without review.",
               "Under no circumstances should we negotiate against ourselves before the counteroffer arrives.",
@@ -1070,8 +1008,6 @@
             "hint_en": "On no account may client data leave the secure server.",
             "examples_pass": [
               "On no account may client data leave the secure server.",
-              "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke.",
               "On no account must this document be shared outside the working group.",
               "On no account should the keys be stored alongside the encrypted backup.",
               "On no account may the design files be sent to external vendors without approval.",
@@ -1090,8 +1026,6 @@
             "hint_en": "At no time has the company authorised such a deduction.",
             "examples_pass": [
               "At no time has the company authorised such a deduction.",
-              "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next.",
               "At no time has the company agreed to those terms in writing.",
               "At no time did the team commit to a Q3 launch date.",
               "At no time has the regulator approved that interpretation of the policy.",
@@ -1145,8 +1079,6 @@
             "hint_en": "Under no circumstances will we accept responsibility for content we didn't approve.",
             "examples_pass": [
               "Under no circumstances will we accept responsibility for content we didn't approve.",
-              "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke.",
               "Under no circumstances should sensitive client data leave the company network.",
               "Under no circumstances must production code be deployed without review.",
               "Under no circumstances should we negotiate against ourselves before the counteroffer arrives.",
@@ -1164,14 +1096,7 @@
             "hidden_prompt": "user asks Charlotte for advice on tone",
             "hint_en": "Too strong, or about right?",
             "examples_pass": [
-              "Too strong, or about right?",
-              "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "Too strong, or about right?"
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",

@@ -164,9 +164,7 @@
             "hint_pt": "You should rest.",
             "hint_en": "You should rest.",
             "examples_pass": [
-              "You should rest.",
-              "You should rest.",
-              "You shouldn't drink so much coffee."
+              "You should rest."
             ],
             "examples_fail": [
               "Rest (no 'you should')",
@@ -182,9 +180,7 @@
             "hint_pt": "You shouldn't work so much.",
             "hint_en": "You shouldn't work so much.",
             "examples_pass": [
-              "You shouldn't work so much.",
-              "You should rest.",
-              "You shouldn't drink so much coffee."
+              "You shouldn't work so much."
             ],
             "examples_fail": [
               "Rest (no 'you should')",
@@ -200,9 +196,7 @@
             "hint_pt": "You should take a vacation.",
             "hint_en": "You should take a vacation.",
             "examples_pass": [
-              "You should take a vacation.",
-              "You should rest.",
-              "You shouldn't drink so much coffee."
+              "You should take a vacation."
             ],
             "examples_fail": [
               "Rest (no 'you should')",
@@ -235,9 +229,7 @@
             "hint_pt": "You should practice every day.",
             "hint_en": "You should practice every day.",
             "examples_pass": [
-              "You should practice every day.",
-              "You should rest.",
-              "You shouldn't drink so much coffee."
+              "You should practice every day."
             ],
             "examples_fail": [
               "Rest (no 'you should')",
@@ -253,9 +245,7 @@
             "hint_pt": "You shouldn't translate everything.",
             "hint_en": "You shouldn't translate everything.",
             "examples_pass": [
-              "You shouldn't translate everything.",
-              "You should rest.",
-              "You shouldn't drink so much coffee."
+              "You shouldn't translate everything."
             ],
             "examples_fail": [
               "Rest (no 'you should')",
@@ -271,9 +261,7 @@
             "hint_pt": "What should I do too?",
             "hint_en": "What should I do too?",
             "examples_pass": [
-              "What should I do too?",
-              "And you?",
-              "How about you?"
+              "What should I do too?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -540,7 +528,6 @@
             "hint_en": "How about you?",
             "examples_pass": [
               "How about you?",
-              "And you?",
               "What about you?"
             ],
             "examples_fail": [
@@ -806,7 +793,6 @@
             "hint_en": "How about you?",
             "examples_pass": [
               "How about you?",
-              "And you?",
               "What about you?"
             ],
             "examples_fail": [
@@ -966,9 +952,7 @@
             "hint_pt": "Should I see a doctor?",
             "hint_en": "Should I see a doctor?",
             "examples_pass": [
-              "Should I see a doctor?",
-              "And you?",
-              "How about you?"
+              "Should I see a doctor?"
             ],
             "examples_fail": [
               "Yes you should (statement)",
@@ -984,9 +968,7 @@
             "hint_pt": "Do I have to bring my ID?",
             "hint_en": "Do I have to bring my ID?",
             "examples_pass": [
-              "Do I have to bring my ID?",
-              "And you?",
-              "How about you?"
+              "Do I have to bring my ID?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -1002,9 +984,7 @@
             "hint_pt": "Should I call her?",
             "hint_en": "Should I call her?",
             "examples_pass": [
-              "Should I call her?",
-              "And you?",
-              "How about you?"
+              "Should I call her?"
             ],
             "examples_fail": [
               "Yes you should (statement)",
@@ -1037,9 +1017,7 @@
             "hint_pt": "Should I take a vacation?",
             "hint_en": "Should I take a vacation?",
             "examples_pass": [
-              "Should I take a vacation?",
-              "And you?",
-              "How about you?"
+              "Should I take a vacation?"
             ],
             "examples_fail": [
               "Yes you should (statement)",
@@ -1055,9 +1033,7 @@
             "hint_pt": "Do I have to study every day?",
             "hint_en": "Do I have to study every day?",
             "examples_pass": [
-              "Do I have to study every day?",
-              "And you?",
-              "How about you?"
+              "Do I have to study every day?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -1073,9 +1049,7 @@
             "hint_pt": "Should I learn another language?",
             "hint_en": "Should I learn another language?",
             "examples_pass": [
-              "Should I learn another language?",
-              "And you?",
-              "How about you?"
+              "Should I learn another language?"
             ],
             "examples_fail": [
               "Yes you should (statement)",
@@ -1229,9 +1203,7 @@
             "hint_pt": "You should rest.",
             "hint_en": "You should rest.",
             "examples_pass": [
-              "You should rest.",
-              "You should rest.",
-              "You shouldn't drink so much coffee."
+              "You should rest."
             ],
             "examples_fail": [
               "Rest (no 'you should')",
@@ -1336,9 +1308,7 @@
             "hint_pt": "You should take time off.",
             "hint_en": "You should take time off.",
             "examples_pass": [
-              "You should take time off.",
-              "You should rest.",
-              "You shouldn't drink so much coffee."
+              "You should take time off."
             ],
             "examples_fail": [
               "Rest (no 'you should')",

@@ -136,7 +136,7 @@
    **hidden_prompt**: "user mentions another morning activity with 'I + verb + ...' (any base form verb: study, go, drink, eat, etc.)"
    **hint_pt**: "I go to work."
    **hint_en**: "I go to work."
-   **example_pass**: I go to work. | I live in Brazil. | I work at a school.
+   **example_pass**: I go to work.
    **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 **Closing cue**: Charlotte fecha com "Nice morning!" quando obj_3 baterem.
@@ -182,7 +182,7 @@
    **hidden_prompt**: "user mentions breakfast with 'I have + food/drink' or 'I eat/drink + something'"
    **hint_pt**: "I have toast and coffee."
    **hint_en**: "I have toast and coffee."
-   **example_pass**: I have toast and coffee. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: I have toast and coffee.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -191,7 +191,7 @@
    **hidden_prompt**: "user mentions another morning activity with 'I + verb + ...'"
    **hint_pt**: "I go to work at eight."
    **hint_en**: "I go to work at eight."
-   **example_pass**: I go to work at eight. | I live in Brazil. | I work at a school.
+   **example_pass**: I go to work at eight.
    **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 **Closing cue**: Charlotte encerra com "Sounds like a great morning routine!" quando obj_3 baterem.
@@ -295,7 +295,7 @@
    **hidden_prompt**: "user says where they work or study with 'I work in/at + place' or 'I study at + place'"
    **hint_pt**: "I work in an office."
    **hint_en**: "I work in an office."
-   **example_pass**: I work in an office. | I live in Brazil. | I work at a school.
+   **example_pass**: I work in an office.
    **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 2. **id**: 2
@@ -304,7 +304,7 @@
    **hidden_prompt**: "user says what they study/do with 'I study + subject' or 'I + verb in present simple'"
    **hint_pt**: "I study English."
    **hint_en**: "I study English."
-   **example_pass**: I study English. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: I study English.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -313,7 +313,7 @@
    **hidden_prompt**: "user mentions colleagues/classmates with 'I work with + people' or 'We work/study together'"
    **hint_pt**: "I work with great people."
    **hint_en**: "I work with great people."
-   **example_pass**: I work with great people. | I live in Brazil. | I work at a school.
+   **example_pass**: I work with great people.
    **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 **Closing cue**: Charlotte fecha com "Sounds like a busy week!" quando obj_3 baterem.
@@ -350,7 +350,7 @@
    **hidden_prompt**: "user states workplace with 'I work in/at + place'"
    **hint_pt**: "I work in a hospital."
    **hint_en**: "I work in a hospital."
-   **example_pass**: I work in a hospital. | I live in Brazil. | I work at a school.
+   **example_pass**: I work in a hospital.
    **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 2. **id**: 2
@@ -359,7 +359,7 @@
    **hidden_prompt**: "user states what they study with 'I study + subject/language' or 'I study at + place'"
    **hint_pt**: "I study English."
    **hint_en**: "I study English."
-   **example_pass**: I study English. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: I study English.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -368,7 +368,7 @@
    **hidden_prompt**: "user asks Charlotte about her work with 'how about you', 'and yours', or 'and you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Cool! Sounds good." quando obj_3 baterem.
@@ -527,7 +527,7 @@
    **hidden_prompt**: "user describes breakfast with 'I have + food/drink' or 'I eat/drink + something'"
    **hint_pt**: "I have toast and coffee."
    **hint_en**: "I have toast and coffee."
-   **example_pass**: I have toast and coffee. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: I have toast and coffee.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
@@ -545,7 +545,7 @@
    **hidden_prompt**: "user asks Charlotte about her food with 'how about you' or 'and you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Nice! Food talk is the best." quando obj_3 baterem.
@@ -667,7 +667,7 @@
    **hidden_prompt**: "user states return time with 'I come home at + time' or 'I come back at + time'"
    **hint_pt**: "I come home at six."
    **hint_en**: "I come home at six."
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: I come home at six.
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense — past)
 
 **Closing cue**: Charlotte fecha com "Got it. Busy days!" quando obj_3 baterem.
@@ -722,7 +722,7 @@
    **hidden_prompt**: "user asks Charlotte with 'how about you', 'and you', or 'where do you go'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Nice! Lots of places to be." quando obj_3 baterem.
@@ -1079,7 +1079,7 @@
    **hidden_prompt**: "user asks Charlotte about her favorite day or time"
    **hint_pt**: "What about you?"
    **hint_en**: "What about you?"
-   **example_pass**: What about you? | And you? | How about you?
+   **example_pass**: What about you?
    **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Time and days, sorted!" quando obj_3 bater.

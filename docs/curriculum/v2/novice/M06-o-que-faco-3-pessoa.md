@@ -113,7 +113,7 @@
    **hidden_prompt**: "user states sibling's workplace with 'He/She works in/at + place' — uses 3rd person -s correctly"
    **hint_pt**: "He works in an office."
    **hint_en**: "He works in an office."
-   **example_pass**: He works in an office. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: He works in an office.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
@@ -122,7 +122,7 @@
    **hidden_prompt**: "user states what sibling studies with 'He/She studies + subject' — 3rd person -ies"
    **hint_pt**: "She studies English."
    **hint_en**: "She studies English."
-   **example_pass**: She studies English. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: She studies English.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -131,7 +131,7 @@
    **hidden_prompt**: "user mentions another activity with 'He/She + verb-s + ...' (any 3rd person -s verb)"
    **hint_pt**: "He goes to the gym."
    **hint_en**: "He goes to the gym."
-   **example_pass**: He goes to the gym. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: He goes to the gym.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 **Closing cue**: Charlotte fecha com "Sounds great!" quando obj_3 baterem.
@@ -168,7 +168,7 @@
    **hidden_prompt**: "user states what their sister/friend does with 'She works/studies/goes/lives/etc.'"
    **hint_pt**: "She works in a school."
    **hint_en**: "She works in a school."
-   **example_pass**: She works in a school. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: She works in a school.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
@@ -177,7 +177,7 @@
    **hidden_prompt**: "user mentions another activity with 'She + verb-s + ...' — 3rd person -s correct"
    **hint_pt**: "She drinks coffee every morning."
    **hint_en**: "She drinks coffee every morning."
-   **example_pass**: She drinks coffee every morning. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: She drinks coffee every morning.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -186,7 +186,7 @@
    **hidden_prompt**: "user asks Charlotte with 'how about you' or 'and you' or 'what do you do'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you? | What about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Cool family!" quando obj_3 baterem.
@@ -299,7 +299,7 @@
    **hidden_prompt**: "user states something a family member doesn't do with 'He/She doesn't + verb base'"
    **hint_pt**: "My sister doesn't eat meat."
    **hint_en**: "My sister doesn't eat meat."
-   **example_pass**: My sister doesn't eat meat. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: My sister doesn't eat meat.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -354,7 +354,7 @@
    **hidden_prompt**: "user says 'He/She doesn't + verb base'"
    **hint_pt**: "My father doesn't drink coffee."
    **hint_en**: "My father doesn't drink coffee."
-   **example_pass**: My father doesn't drink coffee. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: My father doesn't drink coffee.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -363,7 +363,7 @@
    **hidden_prompt**: "user asks Charlotte what she doesn't do with 'how about you' or 'and you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you? | What about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Nice insights!" quando obj_3 baterem.
@@ -467,7 +467,7 @@
    **hidden_prompt**: "user asks Charlotte a yes/no question with 'Do you + verb base...?'"
    **hint_pt**: "Do you work?"
    **hint_en**: "Do you work?"
-   **example_pass**: Do you work? | And you? | How about you?
+   **example_pass**: Do you work?
    **example_fail**: Yes I do (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
@@ -476,7 +476,7 @@
    **hidden_prompt**: "user asks another yes/no question with 'Do you + verb base'"
    **hint_pt**: "Do you drink coffee?"
    **hint_en**: "Do you drink coffee?"
-   **example_pass**: Do you drink coffee? | And you? | How about you?
+   **example_pass**: Do you drink coffee?
    **example_fail**: Yes I do (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 3. **id**: 3
@@ -485,7 +485,7 @@
    **hidden_prompt**: "user asks about someone with 'Does + 3rd person + verb base?'"
    **hint_pt**: "Does your friend speak Portuguese?"
    **hint_en**: "Does your friend speak Portuguese?"
-   **example_pass**: Does your friend speak Portuguese? | And you? | How about you?
+   **example_pass**: Does your friend speak Portuguese?
    **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Great questions!" quando obj_3 baterem.
@@ -644,7 +644,7 @@
    **hidden_prompt**: "user asks Charlotte where she works with 'Where do you + verb base'"
    **hint_pt**: "Where do you work?"
    **hint_en**: "Where do you work?"
-   **example_pass**: Where do you work? | And you? | How about you?
+   **example_pass**: Where do you work?
    **example_fail**: I live here (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
@@ -653,7 +653,7 @@
    **hidden_prompt**: "user asks when Charlotte does something with 'When do you + verb' or 'What time do you + verb'"
    **hint_pt**: "When do you have lunch?"
    **hint_en**: "When do you have lunch?"
-   **example_pass**: When do you have lunch? | And you? | How about you?
+   **example_pass**: When do you have lunch?
    **example_fail**: Yesterday (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 3. **id**: 3
@@ -662,7 +662,7 @@
    **hidden_prompt**: "user asks about someone with WH + does + 3rd person + verb base"
    **hint_pt**: "Where does your friend live?"
    **hint_en**: "Where does your friend live?"
-   **example_pass**: Where does your friend live? | And you? | How about you?
+   **example_pass**: Where does your friend live?
    **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Great interview!" quando obj_3 baterem.
@@ -699,7 +699,7 @@
    **hidden_prompt**: "user asks 'Where do you + verb' (live, work, study, eat, etc.)"
    **hint_pt**: "Where do you live?"
    **hint_en**: "Where do you live?"
-   **example_pass**: Where do you live? | And you? | How about you?
+   **example_pass**: Where do you live?
    **example_fail**: I live here (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
@@ -708,7 +708,7 @@
    **hidden_prompt**: "user asks 'What do you + verb' or 'What does + 3rd person + verb'"
    **hint_pt**: "What do you study?"
    **hint_en**: "What do you study?"
-   **example_pass**: What do you study? | And you? | How about you?
+   **example_pass**: What do you study?
    **example_fail**: I work here (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 3. **id**: 3
@@ -717,7 +717,7 @@
    **hidden_prompt**: "user asks 'When do you + verb' or 'How do you + verb'"
    **hint_pt**: "When do you wake up?"
    **hint_en**: "When do you wake up?"
-   **example_pass**: When do you wake up? | And you? | How about you?
+   **example_pass**: When do you wake up?
    **example_fail**: Yesterday (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Loved your questions!" quando obj_3 baterem.
@@ -821,7 +821,7 @@
    **hidden_prompt**: "user states what friend does with 'He/She + verb-s + ...' (3rd person -s)"
    **hint_pt**: "He works in a bank."
    **hint_en**: "He works in a bank."
-   **example_pass**: He works in a bank. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: He works in a bank.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
@@ -830,7 +830,7 @@
    **hidden_prompt**: "user states what friend doesn't do with 'He/She doesn't + verb base'"
    **hint_pt**: "She doesn't drink coffee."
    **hint_en**: "She doesn't drink coffee."
-   **example_pass**: She doesn't drink coffee. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: She doesn't drink coffee.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -839,7 +839,7 @@
    **hidden_prompt**: "user asks question about Charlotte's friend with 'Does + your friend + verb base?'"
    **hint_pt**: "Does your friend work too?"
    **hint_en**: "Does your friend work too?"
-   **example_pass**: Does your friend work too? | And you? | How about you?
+   **example_pass**: Does your friend work too?
    **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Awesome storytelling!" quando obj_3 baterem.
@@ -876,7 +876,7 @@
    **hidden_prompt**: "user states activity with 'He/She + verb-s'"
    **hint_pt**: "My brother studies music."
    **hint_en**: "My brother studies music."
-   **example_pass**: My brother studies music. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: My brother studies music.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
@@ -885,7 +885,7 @@
    **hidden_prompt**: "user states negative with 'He/She doesn't + verb base'"
    **hint_pt**: "He doesn't watch TV."
    **hint_en**: "He doesn't watch TV."
-   **example_pass**: He doesn't watch TV. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: He doesn't watch TV.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -894,7 +894,7 @@
    **hidden_prompt**: "user asks Charlotte about someone with 'Does your + person + verb?'"
    **hint_pt**: "Does your friend live nearby?"
    **hint_en**: "Does your friend live nearby?"
-   **example_pass**: Does your friend live nearby? | And you? | How about you?
+   **example_pass**: Does your friend live nearby?
    **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Loved this chat!" quando obj_3 baterem.

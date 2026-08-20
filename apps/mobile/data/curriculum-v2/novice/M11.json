@@ -163,9 +163,7 @@
             "hint_pt": "I'd like to buy a shirt.",
             "hint_en": "I'd like to buy a shirt.",
             "examples_pass": [
-              "I'd like to buy a shirt.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I'd like to buy a shirt."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -181,9 +179,7 @@
             "hint_pt": "Where are the shirts?",
             "hint_en": "Where are the shirts?",
             "examples_pass": [
-              "Where are the shirts?",
-              "And you?",
-              "How about you?"
+              "Where are the shirts?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -199,9 +195,7 @@
             "hint_pt": "Can I try this on?",
             "hint_en": "Can I try this on?",
             "examples_pass": [
-              "Can I try this on?",
-              "And you?",
-              "How about you?"
+              "Can I try this on?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -234,9 +228,7 @@
             "hint_pt": "I'm looking for shoes.",
             "hint_en": "I'm looking for shoes.",
             "examples_pass": [
-              "I'm looking for shoes.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I'm looking for shoes."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -270,9 +262,7 @@
             "hint_pt": "How much is it?",
             "hint_en": "How much is it?",
             "examples_pass": [
-              "How much is it?",
-              "And you?",
-              "How about you?"
+              "How much is it?"
             ],
             "examples_fail": [
               "It's cheap (statement)",
@@ -433,9 +423,7 @@
             "hint_pt": "I like this shirt.",
             "hint_en": "I like this shirt.",
             "examples_pass": [
-              "I like this shirt.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "I like this shirt."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -451,9 +439,7 @@
             "hint_pt": "Those pants look great.",
             "hint_en": "Those pants look great.",
             "examples_pass": [
-              "Those pants look great.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "Those pants look great."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -469,9 +455,7 @@
             "hint_pt": "How much is this?",
             "hint_en": "How much is this?",
             "examples_pass": [
-              "How much is this?",
-              "And you?",
-              "How about you?"
+              "How much is this?"
             ],
             "examples_fail": [
               "It's cheap (statement)",
@@ -504,9 +488,7 @@
             "hint_pt": "This dress is nice.",
             "hint_en": "This dress is nice.",
             "examples_pass": [
-              "This dress is nice.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "This dress is nice."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -540,9 +522,7 @@
             "hint_pt": "I'd like this one.",
             "hint_en": "I'd like this one.",
             "examples_pass": [
-              "I'd like this one.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I'd like this one."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -698,9 +678,7 @@
             "hint_pt": "Where is the cashier?",
             "hint_en": "Where is the cashier?",
             "examples_pass": [
-              "Where is the cashier?",
-              "And you?",
-              "How about you?"
+              "Where is the cashier?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -806,7 +784,6 @@
             "hint_en": "How about your area?",
             "examples_pass": [
               "How about your area?",
-              "And you?",
               "What about you?"
             ],
             "examples_fail": [
@@ -961,9 +938,7 @@
             "hint_pt": "How much is it?",
             "hint_en": "How much is it?",
             "examples_pass": [
-              "How much is it?",
-              "And you?",
-              "How about you?"
+              "How much is it?"
             ],
             "examples_fail": [
               "It's cheap (statement)",
@@ -997,9 +972,7 @@
             "hint_pt": "Can I have a receipt?",
             "hint_en": "Can I have a receipt?",
             "examples_pass": [
-              "Can I have a receipt?",
-              "And you?",
-              "How about you?"
+              "Can I have a receipt?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -1050,9 +1023,7 @@
             "hint_pt": "What's the total?",
             "hint_en": "What's the total?",
             "examples_pass": [
-              "What's the total?",
-              "And you?",
-              "How about you?"
+              "What's the total?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -1068,9 +1039,7 @@
             "hint_pt": "Can you send the receipt?",
             "hint_en": "Can you send the receipt?",
             "examples_pass": [
-              "Can you send the receipt?",
-              "And you?",
-              "How about you?"
+              "Can you send the receipt?"
             ],
             "examples_fail": [
               "Yes I can (statement)",
@@ -1225,9 +1194,7 @@
             "hint_pt": "I'd like to buy a shirt.",
             "hint_en": "I'd like to buy a shirt.",
             "examples_pass": [
-              "I'd like to buy a shirt.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I'd like to buy a shirt."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -1261,9 +1228,7 @@
             "hint_pt": "How much is it? I'll pay with credit card.",
             "hint_en": "How much is it? I'll pay with credit card.",
             "examples_pass": [
-              "How much is it? I'll pay with credit card?",
-              "And you?",
-              "How about you?"
+              "How much is it? I'll pay with credit card?"
             ],
             "examples_fail": [
               "It's cheap (statement)",
@@ -1333,7 +1298,6 @@
             "hint_en": "How about you?",
             "examples_pass": [
               "How about you?",
-              "And you?",
               "What about you?"
             ],
             "examples_fail": [

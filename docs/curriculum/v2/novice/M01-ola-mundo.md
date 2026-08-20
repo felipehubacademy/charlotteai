@@ -337,7 +337,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin using 'I'm from + place'"
    **hint_pt**: "I'm from Brazil."
    **hint_en**: "I'm from Brazil."
-   **example_pass**: I'm from Brazil. | I'm from São Paulo. | I am from Portugal.
+   **example_pass**: I'm from Brazil.
    **example_fail**: Brazil (bare place) | I'm Brazilian (nationality, not origin structure) | From Brazil (no subject + verb)
 
 **Closing cue**: Charlotte encerra com "Nice — great to meet you!" quando obj_3 baterem.
@@ -440,7 +440,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states their origin using 'I'm from + place' — city or country both count"
    **hint_pt**: "I'm from Brazil!"
    **hint_en**: "I'm from Brazil!"
-   **example_pass**: I'm from Brazil! | I'm from São Paulo. | I am from Portugal.
+   **example_pass**: I'm from Brazil!
    **example_fail**: Brazil (bare place) | I'm Brazilian (nationality, not origin structure) | From Brazil (no subject + verb)
 
 **Closing cue**: Charlotte fecha com "Cool! Have a great flight." quando obj_1 baterem.
@@ -471,7 +471,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin with 'I'm from + place'"
    **hint_pt**: "I'm from Brazil."
    **hint_en**: "I'm from Brazil."
-   **example_pass**: I'm from Brazil. | I'm from São Paulo. | I am from Portugal.
+   **example_pass**: I'm from Brazil.
    **example_fail**: Brazil (bare place) | I'm Brazilian (nationality, not origin) | From Brazil (no subject + verb)
 
 2. **id**: 2

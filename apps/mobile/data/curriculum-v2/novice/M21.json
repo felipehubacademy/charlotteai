@@ -160,9 +160,7 @@
             "hint_pt": "If it rains, I'll stay home.",
             "hint_en": "If it rains, I'll stay home.",
             "examples_pass": [
-              "If it rains, I'll stay home.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If it rains, I'll stay home."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -178,9 +176,7 @@
             "hint_pt": "If it's sunny, I'll go to the park.",
             "hint_en": "If it's sunny, I'll go to the park.",
             "examples_pass": [
-              "If it's sunny, I'll go to the park.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If it's sunny, I'll go to the park."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -196,9 +192,7 @@
             "hint_pt": "If my friend calls, we'll meet up.",
             "hint_en": "If my friend calls, we'll meet up.",
             "examples_pass": [
-              "If my friend calls, we'll meet up.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If my friend calls, we'll meet up."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -231,9 +225,7 @@
             "hint_pt": "If it rains, I'll stay in.",
             "hint_en": "If it rains, I'll stay in.",
             "examples_pass": [
-              "If it rains, I'll stay in.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If it rains, I'll stay in."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -249,9 +241,7 @@
             "hint_pt": "If I have time, I'll call you.",
             "hint_en": "If I have time, I'll call you.",
             "examples_pass": [
-              "If I have time, I'll call you.",
-              "If it rains, I stay home.",
-              "If I have time, I'll go."
+              "If I have time, I'll call you."
             ],
             "examples_fail": [
               "Rain (no if-clause)",
@@ -267,9 +257,7 @@
             "hint_pt": "What will you do if it rains?",
             "hint_en": "What will you do if it rains?",
             "examples_pass": [
-              "What will you do if it rains?",
-              "And you?",
-              "How about you?"
+              "What will you do if it rains?"
             ],
             "examples_fail": [
               "I'll travel (statement)",
@@ -423,9 +411,7 @@
             "hint_pt": "If I have time, I'll exercise.",
             "hint_en": "If I have time, I'll exercise.",
             "examples_pass": [
-              "If I have time, I'll exercise.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If I have time, I'll exercise."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -441,9 +427,7 @@
             "hint_pt": "If I save money, I'll travel.",
             "hint_en": "If I save money, I'll travel.",
             "examples_pass": [
-              "If I save money, I'll travel.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If I save money, I'll travel."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -459,9 +443,7 @@
             "hint_pt": "If I feel tired, I'll rest.",
             "hint_en": "If I feel tired, I'll rest.",
             "examples_pass": [
-              "If I feel tired, I'll rest.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If I feel tired, I'll rest."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -494,9 +476,7 @@
             "hint_pt": "If the weather is nice, I'll go to the beach.",
             "hint_en": "If the weather is nice, I'll go to the beach.",
             "examples_pass": [
-              "If the weather is nice, I'll go to the beach.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If the weather is nice, I'll go to the beach."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -512,9 +492,7 @@
             "hint_pt": "If my friends call, I'll meet them.",
             "hint_en": "If my friends call, I'll meet them.",
             "examples_pass": [
-              "If my friends call, I'll meet them.",
-              "If it rains, I stay home.",
-              "If I have time, I'll go."
+              "If my friends call, I'll meet them."
             ],
             "examples_fail": [
               "Rain (no if-clause)",
@@ -530,9 +508,7 @@
             "hint_pt": "What will you do if it rains?",
             "hint_en": "What will you do if it rains?",
             "examples_pass": [
-              "What will you do if it rains?",
-              "And you?",
-              "How about you?"
+              "What will you do if it rains?"
             ],
             "examples_fail": [
               "I'll travel (statement)",
@@ -689,9 +665,7 @@
             "hint_pt": "If you need help, I'll come.",
             "hint_en": "If you need help, I'll come.",
             "examples_pass": [
-              "If you need help, I'll come.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If you need help, I'll come."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -707,9 +681,7 @@
             "hint_pt": "If you're hungry, I'll bring food.",
             "hint_en": "If you're hungry, I'll bring food.",
             "examples_pass": [
-              "If you're hungry, I'll bring food.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If you're hungry, I'll bring food."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -725,9 +697,7 @@
             "hint_pt": "If you have time, we'll grab coffee.",
             "hint_en": "If you have time, we'll grab coffee.",
             "examples_pass": [
-              "If you have time, we'll grab coffee.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If you have time, we'll grab coffee."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -760,9 +730,7 @@
             "hint_pt": "If you're sad, I'll listen.",
             "hint_en": "If you're sad, I'll listen.",
             "examples_pass": [
-              "If you're sad, I'll listen.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If you're sad, I'll listen."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -778,9 +746,7 @@
             "hint_pt": "If you need company, I'll come over.",
             "hint_en": "If you need company, I'll come over.",
             "examples_pass": [
-              "If you need company, I'll come over.",
-              "If it rains, I stay home.",
-              "If I have time, I'll go."
+              "If you need company, I'll come over."
             ],
             "examples_fail": [
               "Rain (no if-clause)",
@@ -796,9 +762,7 @@
             "hint_pt": "What will you do if I'm late?",
             "hint_en": "What will you do if I'm late?",
             "examples_pass": [
-              "What will you do if I'm late?",
-              "And you?",
-              "How about you?"
+              "What will you do if I'm late?"
             ],
             "examples_fail": [
               "I'll travel (statement)",
@@ -955,9 +919,7 @@
             "hint_pt": "I'll go out unless it rains.",
             "hint_en": "I'll go out unless it rains.",
             "examples_pass": [
-              "I'll go out unless it rains.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll go out unless it rains."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -991,9 +953,7 @@
             "hint_pt": "Unless I'm too tired, I'll exercise.",
             "hint_en": "Unless I'm too tired, I'll exercise.",
             "examples_pass": [
-              "Unless I'm too tired, I'll exercise.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "Unless I'm too tired, I'll exercise."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1026,9 +986,7 @@
             "hint_pt": "Yes, I'll come unless I'm sick.",
             "hint_en": "Yes, I'll come unless I'm sick.",
             "examples_pass": [
-              "Yes, I'll come unless I'm sick.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "Yes, I'll come unless I'm sick."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1044,9 +1002,7 @@
             "hint_pt": "I'll bring snacks unless you have enough.",
             "hint_en": "I'll bring snacks unless you have enough.",
             "examples_pass": [
-              "I'll bring snacks unless you have enough.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll bring snacks unless you have enough."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1062,9 +1018,7 @@
             "hint_pt": "Will you come unless it's late?",
             "hint_en": "Will you come unless it's late?",
             "examples_pass": [
-              "Will you come unless it's late?",
-              "And you?",
-              "How about you?"
+              "Will you come unless it's late?"
             ],
             "examples_fail": [
               "Yes I will (statement)",
@@ -1221,9 +1175,7 @@
             "hint_pt": "If I save enough, I'll buy a car.",
             "hint_en": "If I save enough, I'll buy a car.",
             "examples_pass": [
-              "If I save enough, I'll buy a car.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If I save enough, I'll buy a car."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1239,9 +1191,7 @@
             "hint_pt": "I'll go unless it rains.",
             "hint_en": "I'll go unless it rains.",
             "examples_pass": [
-              "I'll go unless it rains.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll go unless it rains."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1257,9 +1207,7 @@
             "hint_pt": "What will you do if it rains?",
             "hint_en": "What will you do if it rains?",
             "examples_pass": [
-              "What will you do if it rains?",
-              "And you?",
-              "How about you?"
+              "What will you do if it rains?"
             ],
             "examples_fail": [
               "I'll travel (statement)",
@@ -1292,9 +1240,7 @@
             "hint_pt": "If I have time, I'll visit my family.",
             "hint_en": "If I have time, I'll visit my family.",
             "examples_pass": [
-              "If I have time, I'll visit my family.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "If I have time, I'll visit my family."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1310,9 +1256,7 @@
             "hint_pt": "I'll work out unless I'm too tired.",
             "hint_en": "I'll work out unless I'm too tired.",
             "examples_pass": [
-              "I'll work out unless I'm too tired.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'll work out unless I'm too tired."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1328,9 +1272,7 @@
             "hint_pt": "What will you do this weekend?",
             "hint_en": "What will you do this weekend?",
             "examples_pass": [
-              "What will you do this weekend?",
-              "And you?",
-              "How about you?"
+              "What will you do this weekend?"
             ],
             "examples_fail": [
               "I'll travel (statement)",

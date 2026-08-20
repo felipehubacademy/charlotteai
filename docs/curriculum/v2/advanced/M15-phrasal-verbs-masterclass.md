@@ -103,7 +103,7 @@
    **hidden_prompt**: "user uses 'come round' for visit or persuasion"
    **hint_pt**: "She came round eventually — sceptical at first, then quietly convinced after the third presentation."
    **hint_en**: "She came round eventually — sceptical at first, then quietly convinced after the third presentation."
-   **example_pass**: I had to come round in the end. | Someone needs to come round eventually. | We decided to come round.
+   **example_pass**: She came round eventually — sceptical at first, then quietly convinced after the third presentation. | I had to come round in the end. | Someone needs to come round eventually. | We decided to come round.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -112,7 +112,7 @@
    **hidden_prompt**: "user uses 'bring + person + round' for persuasion"
    **hint_pt**: "I'll bring the rest of the team round to the new direction by the end of the quarter."
    **hint_en**: "I'll bring the rest of the team round to the new direction by the end of the quarter."
-   **example_pass**: I'll bring the rest of the team round to the new direction by the end of the quarter. | Let's get down to business and stop wasting time. | He turned down the offer without hesitation.
+   **example_pass**: I'll bring the rest of the team round to the new direction by the end of the quarter.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Phrasal nuance, located." once obj_3 lands.
@@ -158,7 +158,7 @@
    **hidden_prompt**: "user uses 'come round' or 'bring round'"
    **hint_pt**: "Senior leadership came round slowly — they had to lose two key hires before the policy really moved."
    **hint_en**: "Senior leadership came round slowly — they had to lose two key hires before the policy really moved."
-   **example_pass**: I had to come round in the end. | Someone needs to come round eventually. | We decided to come round.
+   **example_pass**: Senior leadership came round slowly — they had to lose two key hires before the policy really moved. | I had to come round in the end. | Someone needs to come round eventually. | We decided to come round.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -167,7 +167,7 @@
    **hidden_prompt**: "user asks Charlotte who was the last holdout"
    **hint_pt**: "Who was the last to come round?"
    **hint_en**: "Who was the last to come round?"
-   **example_pass**: Who was the last to come round? | Let's get down to business and stop wasting time. | He turned down the offer without hesitation.
+   **example_pass**: Who was the last to come round?
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Three phrasals, three turns." once obj_3 lands.
@@ -247,7 +247,7 @@
    **hidden_prompt**: "user uses 'gloss over + noun'"
    **hint_pt**: "The press release glossed over the layoffs and led with the new office opening."
    **hint_en**: "The press release glossed over the layoffs and led with the new office opening."
-   **example_pass**: The press release glossed over the layoffs and led with the new office opening. | I need to come up with a better plan. | We should put off the meeting until next week.
+   **example_pass**: The press release glossed over the layoffs and led with the new office opening.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -256,7 +256,7 @@
    **hidden_prompt**: "user uses 'X crops up + frequency'"
    **hint_pt**: "His name crops up in every conversation about regional sales — even ones he wasn't part of."
    **hint_en**: "His name crops up in every conversation about regional sales — even ones he wasn't part of."
-   **example_pass**: His name crops up in every conversation about regional sales — even ones he wasn't part of. | She finally got over her fear of public speaking. | I can't put up with this noise anymore.
+   **example_pass**: His name crops up in every conversation about regional sales — even ones he wasn't part of.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -265,7 +265,7 @@
    **hidden_prompt**: "user uses 'single X out for + reason'"
    **hint_pt**: "The board singled out the engineering team for the smooth rollout."
    **hint_en**: "The board singled out the engineering team for the smooth rollout."
-   **example_pass**: The board singled out the engineering team for the smooth rollout. | Let's get down to business and stop wasting time. | He turned down the offer without hesitation.
+   **example_pass**: The board singled out the engineering team for the smooth rollout.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Attention phrasals, placed." once obj_3 lands.
@@ -311,7 +311,7 @@
    **hidden_prompt**: "user uses 'X crops up' for recurring elements"
    **hint_pt**: "The same two facts probably crop up in all three, but framed in completely different ways."
    **hint_en**: "The same two facts probably crop up in all three, but framed in completely different ways."
-   **example_pass**: X crops up — that's the one. | Honestly, X crops up sums it up. | Yeah, X crops up for sure.
+   **example_pass**: The same two facts probably crop up in all three, but framed in completely different ways.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -320,7 +320,7 @@
    **hidden_prompt**: "user asks Charlotte who got singled out across coverages"
    **hint_pt**: "Was anyone singled out across all three?"
    **hint_en**: "Was anyone singled out across all three?"
-   **example_pass**: Was anyone singled out across all three? | Let's get down to business and stop wasting time. | He turned down the offer without hesitation.
+   **example_pass**: Was anyone singled out across all three?
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Coverage parsed, phrasally." once obj_3 lands.
@@ -400,7 +400,7 @@
    **hidden_prompt**: "user uses 'X lived up to / failed to live up to'"
    **hint_pt**: "The new product lived up to its launch promises — the team finally delivered something the press release didn't have to lie about."
    **hint_en**: "The new product lived up to its launch promises — the team finally delivered something the press release didn't have to lie about."
-   **example_pass**: X lived up to — that's the one. | Honestly, X lived up to sums it up. | Yeah, X lived up to for sure.
+   **example_pass**: The new product lived up to its launch promises — the team finally delivered something the press release didn't have to lie about.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -409,7 +409,7 @@
    **hidden_prompt**: "user uses 'X fell through'"
    **hint_pt**: "The partnership fell through over a single clause neither side would move on."
    **hint_en**: "The partnership fell through over a single clause neither side would move on."
-   **example_pass**: X fell through — that's the one. | Honestly, X fell through sums it up. | Yeah, X fell through for sure.
+   **example_pass**: The partnership fell through over a single clause neither side would move on.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -418,7 +418,7 @@
    **hidden_prompt**: "user uses 'iron out + issues' or 'tide over + period'"
    **hint_pt**: "We spent a week ironing out the integration bugs, and a bridge contract tided the team over until the next funding tranche."
    **hint_en**: "We spent a week ironing out the integration bugs, and a bridge contract tided the team over until the next funding tranche."
-   **example_pass**: We spent a week ironing out the integration bugs, and a bridge contract tided the team over until the next funding tranche. | Let's get down to business and stop wasting time. | He turned down the offer without hesitation.
+   **example_pass**: We spent a week ironing out the integration bugs, and a bridge contract tided the team over until the next funding tranche.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Project phrasals, fluent." once obj_3 lands.
@@ -455,7 +455,7 @@
    **hidden_prompt**: "user uses 'live up to + expectations'"
    **hint_pt**: "Not living up to a public promise is the hardest thing to recover from — trust is the slowest thing to rebuild."
    **hint_en**: "Not living up to a public promise is the hardest thing to recover from — trust is the slowest thing to rebuild."
-   **example_pass**: Not living up to a public promise is the hardest thing to recover from — trust is the slowest thing to rebuild. | I need to come up with a better plan. | We should put off the meeting until next week.
+   **example_pass**: Not living up to a public promise is the hardest thing to recover from — trust is the slowest thing to rebuild.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -464,7 +464,7 @@
    **hidden_prompt**: "user uses 'iron out + issues'"
    **hint_pt**: "The path back is usually quiet — iron out the technical issues, deliver a single boring quarter, and let the noise die."
    **hint_en**: "The path back is usually quiet — iron out the technical issues, deliver a single boring quarter, and let the noise die."
-   **example_pass**: The path back is usually quiet — iron out the technical issues, deliver a single boring quarter, and let the noise die. | She finally got over her fear of public speaking. | I can't put up with this noise anymore.
+   **example_pass**: The path back is usually quiet — iron out the technical issues, deliver a single boring quarter, and let the noise die.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -473,7 +473,7 @@
    **hidden_prompt**: "user asks Charlotte how the team was tided over"
    **hint_pt**: "How did you tide the team over financially?"
    **hint_en**: "How did you tide the team over financially?"
-   **example_pass**: How did you tide the team over financially? | Let's get down to business and stop wasting time. | He turned down the offer without hesitation.
+   **example_pass**: How did you tide the team over financially?
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Quarter survived, phrasally." once obj_3 lands.
@@ -552,7 +552,7 @@
    **hidden_prompt**: "user uses 'X talks down to + person'"
    **hint_pt**: "He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot."
    **hint_en**: "He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot."
-   **example_pass**: He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot. | I need to come up with a better plan. | We should put off the meeting until next week. | He doesn't realise he talks down to people who haven't been in the industry as long as he has. | Nobody enjoys being talked down to by someone half their experience. | She has a habit of talking down to junior colleagues, even when she doesn't mean to. | He talks down to almost everyone outside his core circle, which limits him in ways he doesn't see.
+   **example_pass**: He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot. | He doesn't realise he talks down to people who haven't been in the industry as long as he has. | Nobody enjoys being talked down to by someone half their experience. | She has a habit of talking down to junior colleagues, even when she doesn't mean to. | He talks down to almost everyone outside his core circle, which limits him in ways he doesn't see.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -561,7 +561,7 @@
    **hidden_prompt**: "user uses 'X wore + person + down'"
    **hint_pt**: "Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items."
    **hint_en**: "Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items."
-   **example_pass**: Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items. | She finally got over her fear of public speaking. | I can't put up with this noise anymore. | Three years of negotiating with that supplier wore me down in ways I didn't fully notice at the time. | The constant criticism in those meetings wore down even the most resilient people on the team. | Working with such an indecisive client gradually wore down our project lead. | Two consecutive launches wore the team down to the point where everyone needed time off.
+   **example_pass**: Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items. | Three years of negotiating with that supplier wore me down in ways I didn't fully notice at the time. | The constant criticism in those meetings wore down even the most resilient people on the team. | Working with such an indecisive client gradually wore down our project lead. | Two consecutive launches wore the team down to the point where everyone needed time off.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -607,7 +607,7 @@
    **hidden_prompt**: "user uses 'talk down to' to validate"
    **hint_pt**: "People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement."
    **hint_en**: "People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement."
-   **example_pass**: People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement. | People who talk down to others rarely see it — the people they patronise don't push back, so silence reads as agreement. | Talk down to — that's the one.
+   **example_pass**: People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement. | People who talk down to others rarely see it — the people they patronise don't push back, so silence reads as agreement.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -625,7 +625,7 @@
    **hidden_prompt**: "user asks Charlotte if she shook it off after leaving"
    **hint_pt**: "Have you shaken it off, now that you're out?"
    **hint_en**: "Have you shaken it off, now that you're out?"
-   **example_pass**: Have you shaken it off, now that you're out? | Let's get down to business and stop wasting time. | He turned down the offer without hesitation. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: Have you shaken it off, now that you're out? | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Hard relationships, phrasally named." once obj_3 lands.
@@ -704,7 +704,7 @@
    **hidden_prompt**: "user uses 'X stems from Y'"
    **hint_pt**: "Most of the team's friction stems from a single unresolved ownership question from the first month."
    **hint_en**: "Most of the team's friction stems from a single unresolved ownership question from the first month."
-   **example_pass**: X stems from Y — that's the one. | Honestly, X stems from Y sums it up. | Yeah, X stems from Y for sure.
+   **example_pass**: Most of the team's friction stems from a single unresolved ownership question from the first month.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -713,7 +713,7 @@
    **hidden_prompt**: "user uses 'X amounts to Y'"
    **hint_pt**: "Stripped of jargon, the new strategy amounts to doing exactly what we did last year, more carefully."
    **hint_en**: "Stripped of jargon, the new strategy amounts to doing exactly what we did last year, more carefully."
-   **example_pass**: X amounts to Y — that's the one. | Honestly, X amounts to Y sums it up. | Yeah, X amounts to Y for sure.
+   **example_pass**: Stripped of jargon, the new strategy amounts to doing exactly what we did last year, more carefully.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -722,7 +722,7 @@
    **hidden_prompt**: "user uses 'water + X + down' or 'watered down'"
    **hint_pt**: "By the time the policy made it through legal review, it had been watered down to the point of being symbolic."
    **hint_en**: "By the time the policy made it through legal review, it had been watered down to the point of being symbolic."
-   **example_pass**: By the time the policy made it through legal review, it had been watered down to the point of being symbolic. | Watered down — that's the one. | Honestly, watered down sums it up.
+   **example_pass**: By the time the policy made it through legal review, it had been watered down to the point of being symbolic.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Analytical phrasals, three for three." once obj_3 lands.
@@ -759,7 +759,7 @@
    **hidden_prompt**: "user uses 'stems from' for analytical origin"
    **hint_pt**: "My hypothesis is that it stems from how the targets get set — too much top-down, too little capacity input."
    **hint_en**: "My hypothesis is that it stems from how the targets get set — too much top-down, too little capacity input."
-   **example_pass**: My hypothesis is that it stems from how the targets get set — too much top-down, too little capacity input. | Stems from — that's the one. | Honestly, stems from sums it up.
+   **example_pass**: My hypothesis is that it stems from how the targets get set — too much top-down, too little capacity input.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -768,7 +768,7 @@
    **hidden_prompt**: "user uses 'amount to' or 'water down'"
    **hint_pt**: "The current process amounts to manufacturing failure: numbers that nobody believes get adopted, then everyone is surprised when they aren't hit."
    **hint_en**: "The current process amounts to manufacturing failure: numbers that nobody believes get adopted, then everyone is surprised when they aren't hit."
-   **example_pass**: Amount to — that's the one. | Honestly, amount to sums it up. | Yeah, amount to for sure.
+   **example_pass**: The current process amounts to manufacturing failure: numbers that nobody believes get adopted, then everyone is surprised when they aren't hit.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -777,7 +777,7 @@
    **hidden_prompt**: "user asks Charlotte where she would intervene"
    **hint_pt**: "Where would you intervene first?"
    **hint_en**: "Where would you intervene first?"
-   **example_pass**: Where would you intervene first? | Let's get down to business and stop wasting time. | He turned down the offer without hesitation.
+   **example_pass**: Where would you intervene first?
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Diagnosis, phrasally precise." once obj_3 lands.

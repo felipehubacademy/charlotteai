@@ -128,7 +128,7 @@
    **hidden_prompt**: "user says something about their father with 'My father is + age/nationality/adjective'"
    **hint_pt**: "My father is American."
    **hint_en**: "My father is American."
-   **example_pass**: My father is American. | My father is fifty-five. | My dad is from Brazil.
+   **example_pass**: My father is American. | My dad is from Brazil.
    **example_fail**: Father (bare noun) | American (bare adjective) | He is American (no 'my father')
 
 3. **id**: 3
@@ -174,7 +174,7 @@
    **hidden_prompt**: "user says something about their mother with 'My mother is + name/age/nationality'"
    **hint_pt**: "My mother is Maria."
    **hint_en**: "My mother is Maria."
-   **example_pass**: My mother is Maria. | My mother is fifty. | My mom is Brazilian.
+   **example_pass**: My mother is Maria. | My mom is Brazilian.
    **example_fail**: Maria (bare name) | Mother (bare noun) | She is Maria (no 'my mother')
 
 2. **id**: 2
@@ -314,7 +314,7 @@
    **hidden_prompt**: "user asks Charlotte about siblings with 'Have you got + brothers/sisters', 'how about you', or 'and you'"
    **hint_pt**: "Have you got any?"
    **hint_en**: "Have you got any?"
-   **example_pass**: Have you got any? | And you? | How about you?
+   **example_pass**: Have you got any?
    **example_fail**: Yes I have (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Nice! Family map done." quando obj_3 baterem.
@@ -369,7 +369,7 @@
    **hidden_prompt**: "user asks Charlotte about her family with 'Have you got + member', 'how about you', or 'and you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Cool! Same here." quando obj_3 baterem.
@@ -491,7 +491,7 @@
    **hidden_prompt**: "user asks Charlotte back with 'Are you married', 'have you got children', 'how about you', or 'and you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Nice family setup!" quando obj_3 baterem.
@@ -546,7 +546,7 @@
    **hidden_prompt**: "user asks Charlotte back with 'how about you', 'and you', or 'are you married'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Cool! Nice catching up." quando obj_3 baterem.
@@ -723,7 +723,7 @@
    **hidden_prompt**: "user asks Charlotte about her best friend with 'who's your best friend', 'and yours', or 'how about you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Nice! Friends are everything." quando obj_3 baterem.
@@ -836,7 +836,7 @@
    **hidden_prompt**: "user introduces father with 'My father is + name/age/nationality'"
    **hint_pt**: "My father is American."
    **hint_en**: "My father is American."
-   **example_pass**: My father is American. | My father is fifty-five. | My dad is John.
+   **example_pass**: My father is American. | My dad is John.
    **example_fail**: Father (bare noun) | American (bare adjective) | He is American (no 'my father')
 
 3. **id**: 3
@@ -845,7 +845,7 @@
    **hidden_prompt**: "user introduces another close person with 'My + brother/sister/son/daughter/friend/husband/wife + is + name/age/nationality/something' — any of these family/friend roles count"
    **hint_pt**: "My sister is twenty. / My friend is from Italy."
    **hint_en**: "My sister is twenty. / My friend is from Italy."
-   **example_pass**: My sister is twenty. | My friend is from Italy. | My husband is John.
+   **example_pass**: My sister is twenty. / My friend is from Italy. | My sister is twenty. | My friend is from Italy. | My husband is John.
    **example_fail**: Sister (bare noun) | Twenty (bare number) | She is twenty (no possessive + family role)
 
 **Closing cue**: Charlotte fecha com "What a lovely family!" quando obj_3 baterem.
@@ -891,7 +891,7 @@
    **hidden_prompt**: "user introduces father with 'My father is + name/age/nationality'"
    **hint_pt**: "My father is fifty-five."
    **hint_en**: "My father is fifty-five."
-   **example_pass**: My father is fifty-five. | My dad is John. | My father is American.
+   **example_pass**: My father is fifty-five. | My dad is John.
    **example_fail**: Father (bare noun) | Fifty-five (bare number) | He is fifty-five (no 'my father')
 
 3. **id**: 3

@@ -160,9 +160,7 @@
             "hint_pt": "I'm going to travel.",
             "hint_en": "I'm going to travel.",
             "examples_pass": [
-              "I'm going to travel.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to travel."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -178,9 +176,7 @@
             "hint_pt": "I'm going to study English.",
             "hint_en": "I'm going to study English.",
             "examples_pass": [
-              "I'm going to study English.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to study English."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -196,9 +192,7 @@
             "hint_pt": "My sister is going to visit me.",
             "hint_en": "My sister is going to visit me.",
             "examples_pass": [
-              "My sister is going to visit me.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "My sister is going to visit me."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -231,9 +225,7 @@
             "hint_pt": "I'm going to relax.",
             "hint_en": "I'm going to relax.",
             "examples_pass": [
-              "I'm going to relax.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to relax."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -249,9 +241,7 @@
             "hint_pt": "I'm going to see friends.",
             "hint_en": "I'm going to see friends.",
             "examples_pass": [
-              "I'm going to see friends.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to see friends."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -267,9 +257,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -426,9 +414,7 @@
             "hint_pt": "No, I'm not going to the gym.",
             "hint_en": "No, I'm not going to the gym.",
             "examples_pass": [
-              "No, I'm not going to the gym.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "No, I'm not going to the gym."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -444,9 +430,7 @@
             "hint_pt": "I'm not going to eat out.",
             "hint_en": "I'm not going to eat out.",
             "examples_pass": [
-              "I'm not going to eat out.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm not going to eat out."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -462,9 +446,7 @@
             "hint_pt": "My sister isn't going to come.",
             "hint_en": "My sister isn't going to come.",
             "examples_pass": [
-              "My sister isn't going to come.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "My sister isn't going to come."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -497,9 +479,7 @@
             "hint_pt": "I'm not going to work.",
             "hint_en": "I'm not going to work.",
             "examples_pass": [
-              "I'm not going to work.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm not going to work."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -515,9 +495,7 @@
             "hint_pt": "I'm not going to clean.",
             "hint_en": "I'm not going to clean.",
             "examples_pass": [
-              "I'm not going to clean.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm not going to clean."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -533,9 +511,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -694,9 +670,7 @@
             "hint_pt": "Are you going to travel?",
             "hint_en": "Are you going to travel?",
             "examples_pass": [
-              "Are you going to travel?",
-              "And you?",
-              "How about you?"
+              "Are you going to travel?"
             ],
             "examples_fail": [
               "Yes I am (statement)",
@@ -712,9 +686,7 @@
             "hint_pt": "Are you going to study?",
             "hint_en": "Are you going to study?",
             "examples_pass": [
-              "Are you going to study?",
-              "And you?",
-              "How about you?"
+              "Are you going to study?"
             ],
             "examples_fail": [
               "Yes I am (statement)",
@@ -730,9 +702,7 @@
             "hint_pt": "What are you going to do?",
             "hint_en": "What are you going to do?",
             "examples_pass": [
-              "What are you going to do?",
-              "And you?",
-              "How about you?"
+              "What are you going to do?"
             ],
             "examples_fail": [
               "I'm reading (statement)",
@@ -765,9 +735,7 @@
             "hint_pt": "Are you going to travel?",
             "hint_en": "Are you going to travel?",
             "examples_pass": [
-              "Are you going to travel?",
-              "And you?",
-              "How about you?"
+              "Are you going to travel?"
             ],
             "examples_fail": [
               "Yes I am (statement)",
@@ -783,9 +751,7 @@
             "hint_pt": "Are you going to study?",
             "hint_en": "Are you going to study?",
             "examples_pass": [
-              "Are you going to study?",
-              "And you?",
-              "How about you?"
+              "Are you going to study?"
             ],
             "examples_fail": [
               "Yes I am (statement)",
@@ -801,9 +767,7 @@
             "hint_pt": "Where are you going to go?",
             "hint_en": "Where are you going to go?",
             "examples_pass": [
-              "Where are you going to go?",
-              "And you?",
-              "How about you?"
+              "Where are you going to go?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -957,9 +921,7 @@
             "hint_pt": "I'm going to work tomorrow.",
             "hint_en": "I'm going to work tomorrow.",
             "examples_pass": [
-              "I'm going to work tomorrow.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to work tomorrow."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -975,9 +937,7 @@
             "hint_pt": "I'm going to travel next week.",
             "hint_en": "I'm going to travel next week.",
             "examples_pass": [
-              "I'm going to travel next week.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to travel next week."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -993,9 +953,7 @@
             "hint_pt": "I'm going to finish in two days.",
             "hint_en": "I'm going to finish in two days.",
             "examples_pass": [
-              "I'm going to finish in two days.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to finish in two days."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1028,9 +986,7 @@
             "hint_pt": "Tomorrow I'm going to study.",
             "hint_en": "Tomorrow I'm going to study.",
             "examples_pass": [
-              "Tomorrow I'm going to study.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "Tomorrow I'm going to study."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1046,9 +1002,7 @@
             "hint_pt": "This weekend I'm going to relax.",
             "hint_en": "This weekend I'm going to relax.",
             "examples_pass": [
-              "This weekend I'm going to relax.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "This weekend I'm going to relax."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1064,9 +1018,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1223,9 +1175,7 @@
             "hint_pt": "I'm going to study tomorrow.",
             "hint_en": "I'm going to study tomorrow.",
             "examples_pass": [
-              "I'm going to study tomorrow.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to study tomorrow."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1241,9 +1191,7 @@
             "hint_pt": "I'm not going to work this weekend.",
             "hint_en": "I'm not going to work this weekend.",
             "examples_pass": [
-              "I'm not going to work this weekend.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm not going to work this weekend."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1259,9 +1207,7 @@
             "hint_pt": "Are you going to travel?",
             "hint_en": "Are you going to travel?",
             "examples_pass": [
-              "Are you going to travel?",
-              "And you?",
-              "How about you?"
+              "Are you going to travel?"
             ],
             "examples_fail": [
               "Yes I am (statement)",
@@ -1294,9 +1240,7 @@
             "hint_pt": "I'm going to take a vacation next month.",
             "hint_en": "I'm going to take a vacation next month.",
             "examples_pass": [
-              "I'm going to take a vacation next month.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to take a vacation next month."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1312,9 +1256,7 @@
             "hint_pt": "I'm not going to work overtime.",
             "hint_en": "I'm not going to work overtime.",
             "examples_pass": [
-              "I'm not going to work overtime.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm not going to work overtime."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1330,9 +1272,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1518,9 +1458,7 @@
             "hint_pt": "What are you doing later?",
             "hint_en": "What are you doing later?",
             "examples_pass": [
-              "What are you doing later?",
-              "And you?",
-              "How about you?"
+              "What are you doing later?"
             ],
             "examples_fail": [
               "I'm reading (statement)",
@@ -1536,9 +1474,7 @@
             "hint_pt": "I'm going to work after coffee.",
             "hint_en": "I'm going to work after coffee.",
             "examples_pass": [
-              "I'm going to work after coffee.",
-              "I'm going to travel tomorrow.",
-              "I will study tonight."
+              "I'm going to work after coffee."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -1607,9 +1543,7 @@
             "hint_pt": "What time are you going to start?",
             "hint_en": "What time are you going to start?",
             "examples_pass": [
-              "What time are you going to start?",
-              "And you?",
-              "How about you?"
+              "What time are you going to start?"
             ],
             "examples_fail": [
               "I do that too (statement)",

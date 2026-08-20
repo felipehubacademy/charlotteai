@@ -136,9 +136,7 @@
             "hidden_prompt": "user uses 'You hit the nail on the head' or similar",
             "hint_en": "Your analyst hit the nail on the head with that diagnosis.",
             "examples_pass": [
-              "You hit the nail on the head — that's the one.",
-              "Honestly, You hit the nail on the head sums it up.",
-              "Yeah, You hit the nail on the head for sure."
+              "Your analyst hit the nail on the head with that diagnosis."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -152,9 +150,7 @@
             "hidden_prompt": "user uses 'the elephant in the room'",
             "hint_en": "The elephant in the room is that nobody trusts the new system.",
             "examples_pass": [
-              "The elephant in the room is that nobody trusts the new system.",
-              "The elephant in the room — that's the one.",
-              "Honestly, the elephant in the room sums it up."
+              "The elephant in the room is that nobody trusts the new system."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -168,9 +164,7 @@
             "hidden_prompt": "user uses 'tip of the iceberg' or 'read between the lines'",
             "hint_en": "What surfaced last week is just the tip of the iceberg.",
             "examples_pass": [
-              "What surfaced last week is just the tip of the iceberg.",
-              "Tip of the iceberg — that's the one.",
-              "Honestly, tip of the iceberg sums it up."
+              "What surfaced last week is just the tip of the iceberg."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -201,9 +195,7 @@
             "hidden_prompt": "user uses an idiom like 'just the tip of the iceberg' or 'elephant in the room'",
             "hint_en": "Compensation might be the tip of the iceberg — the real story is usually managers.",
             "examples_pass": [
-              "Elephant in the room — that's the one.",
-              "Honestly, elephant in the room sums it up.",
-              "Yeah, elephant in the room for sure."
+              "Compensation might be the tip of the iceberg — the real story is usually managers."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -233,9 +225,7 @@
             "hidden_prompt": "user asks Charlotte what her instinct says",
             "hint_en": "What does your gut say?",
             "examples_pass": [
-              "What does your gut say?",
-              "That comment really rubbed me the wrong way.",
-              "Don't throw in the towel just yet."
+              "What does your gut say?"
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -461,14 +451,7 @@
             "hidden_prompt": "user asks Charlotte how her parents took it",
             "hint_en": "How did your parents take it?",
             "examples_pass": [
-              "How did your parents take it?",
-              "That comment really rubbed me the wrong way.",
-              "Don't throw in the towel just yet.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "How did your parents take it?"
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -689,14 +672,7 @@
             "hidden_prompt": "user asks Charlotte how HR is responding",
             "hint_en": "How is HR handling it?",
             "examples_pass": [
-              "How is HR handling it?",
-              "That comment really rubbed me the wrong way.",
-              "Don't throw in the towel just yet.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "How is HR handling it?"
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -830,8 +806,7 @@
             "hint_en": "We're on the same page internally — now the ball is in the client's court.",
             "examples_pass": [
               "We're on the same page internally — now the ball is in the client's court.",
-              "Make sure the leadership team is on the same page before the announcement goes out.",
-              "On the same page — that's the one."
+              "Make sure the leadership team is on the same page before the announcement goes out."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -879,9 +854,9 @@
             "hidden_prompt": "user uses 'the ball is in X's court' or 'on the same page'",
             "hint_en": "Now the ball is in my team's court — we'll review and come back with edits by Wednesday.",
             "examples_pass": [
+              "Now the ball is in my team's court — we'll review and come back with edits by Wednesday.",
               "We're on the same page internally — now the ball is in the client's court.",
-              "Make sure the leadership team is on the same page before the announcement goes out.",
-              "On the same page — that's the one."
+              "Make sure the leadership team is on the same page before the announcement goes out."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -912,11 +887,7 @@
             "hidden_prompt": "user asks Charlotte about priorities",
             "hint_en": "What's the highest priority for you?",
             "examples_pass": [
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "What's the highest priority for you?"
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -1130,14 +1101,7 @@
             "hidden_prompt": "user asks Charlotte what gave her clarity",
             "hint_en": "What made it crystal clear it was time?",
             "examples_pass": [
-              "What made it crystal clear it was time?",
-              "That comment really rubbed me the wrong way.",
-              "Don't throw in the towel just yet.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "What made it crystal clear it was time?"
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",

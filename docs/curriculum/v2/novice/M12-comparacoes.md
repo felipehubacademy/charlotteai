@@ -106,7 +106,7 @@
    **hidden_prompt**: "user compares people with 'X is + adj-er + than + Y' (taller, older, younger, etc.)"
    **hint_pt**: "I'm taller than my sister."
    **hint_en**: "I'm taller than my sister."
-   **example_pass**: I'm taller than my sister. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: I'm taller than my sister.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 2. **id**: 2
@@ -115,7 +115,7 @@
    **hidden_prompt**: "user compares with 'X is + adj-er + than + Y' (cheaper, bigger, faster, etc.)"
    **hint_pt**: "This phone is cheaper than that one."
    **hint_en**: "This phone is cheaper than that one."
-   **example_pass**: This phone is cheaper than that one. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: This phone is cheaper than that one.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 3. **id**: 3
@@ -124,7 +124,7 @@
    **hidden_prompt**: "user makes another comparison with -er + than"
    **hint_pt**: "Summer is hotter than winter."
    **hint_en**: "Summer is hotter than winter."
-   **example_pass**: Summer is hotter than winter. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: Summer is hotter than winter.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 **Closing cue**: Charlotte fecha com "Nice comparisons!" quando obj_3 baterem.
@@ -161,7 +161,7 @@
    **hidden_prompt**: "user compares cities with 'X is + adj-er + than Y'"
    **hint_pt**: "São Paulo is bigger than Rio."
    **hint_en**: "São Paulo is bigger than Rio."
-   **example_pass**: São Paulo is bigger than Rio. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: São Paulo is bigger than Rio.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 2. **id**: 2
@@ -170,7 +170,7 @@
    **hidden_prompt**: "user compares possessions with 'X is + adj-er + than Y'"
    **hint_pt**: "My phone is older than my laptop."
    **hint_en**: "My phone is older than my laptop."
-   **example_pass**: My phone is older than my laptop. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: My phone is older than my laptop.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 3. **id**: 3
@@ -179,7 +179,7 @@
    **hidden_prompt**: "user asks Charlotte 'How about you?' or 'Which is + adj-er for you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Same and different!" quando obj_3 baterem.
@@ -283,7 +283,7 @@
    **hidden_prompt**: "user compares with 'X is more interesting than Y'"
    **hint_pt**: "This book is more interesting than that one."
    **hint_en**: "This book is more interesting than that one."
-   **example_pass**: This book is more interesting than that one. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: This book is more interesting than that one.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 2. **id**: 2
@@ -292,7 +292,7 @@
    **hidden_prompt**: "user compares with 'X is more + long adj + than Y'"
    **hint_pt**: "São Paulo is more expensive than Recife."
    **hint_en**: "São Paulo is more expensive than Recife."
-   **example_pass**: São Paulo is more expensive than Recife. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: São Paulo is more expensive than Recife.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 3. **id**: 3
@@ -301,7 +301,7 @@
    **hidden_prompt**: "user makes a personal comparison with 'more + adj + than'"
    **hint_pt**: "I'm more patient than my friend."
    **hint_en**: "I'm more patient than my friend."
-   **example_pass**: I'm more patient than my friend. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: I'm more patient than my friend.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 **Closing cue**: Charlotte fecha com "Thoughtful comparisons!" quando obj_3 baterem.
@@ -338,7 +338,7 @@
    **hidden_prompt**: "user compares with 'X is more + long adj + than Y'"
    **hint_pt**: "Books are more interesting than movies."
    **hint_en**: "Books are more interesting than movies."
-   **example_pass**: Books are more interesting than movies. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: Books are more interesting than movies.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 2. **id**: 2
@@ -347,7 +347,7 @@
    **hidden_prompt**: "user compares places with 'X is more + adj + than Y'"
    **hint_pt**: "Rio is more beautiful than São Paulo."
    **hint_en**: "Rio is more beautiful than São Paulo."
-   **example_pass**: Rio is more beautiful than São Paulo. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: Rio is more beautiful than São Paulo.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 3. **id**: 3
@@ -356,7 +356,7 @@
    **hidden_prompt**: "user asks Charlotte 'How about you?' or 'Which is more + adj for you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Great chat!" quando obj_3 baterem.
@@ -460,7 +460,7 @@
    **hidden_prompt**: "user compares with 'X is better than Y'"
    **hint_pt**: "Coffee is better than tea."
    **hint_en**: "Coffee is better than tea."
-   **example_pass**: Coffee is better than tea. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: Coffee is better than tea.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 2. **id**: 2
@@ -469,7 +469,7 @@
    **hidden_prompt**: "user compares with 'X is worse than Y'"
    **hint_pt**: "Mondays are worse than Fridays."
    **hint_en**: "Mondays are worse than Fridays."
-   **example_pass**: Mondays are worse than Fridays. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: Mondays are worse than Fridays.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 3. **id**: 3
@@ -478,7 +478,7 @@
    **hidden_prompt**: "user compares with 'I have more + noun + than Y'"
    **hint_pt**: "I have more books than my brother."
    **hint_en**: "I have more books than my brother."
-   **example_pass**: I have more books than my brother. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: I have more books than my brother.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 **Closing cue**: Charlotte fecha com "Strong opinions!" quando obj_3 baterem.
@@ -515,7 +515,7 @@
    **hidden_prompt**: "user compares with 'This week is better/worse than last week'"
    **hint_pt**: "This week is better than last week."
    **hint_en**: "This week is better than last week."
-   **example_pass**: This week is better than last week. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: This week is better than last week.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 2. **id**: 2
@@ -524,7 +524,7 @@
    **hidden_prompt**: "user uses 'more + noun + than' for comparison"
    **hint_pt**: "I have more time today."
    **hint_en**: "I have more time today."
-   **example_pass**: I have more time today. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: I have more time today.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 3. **id**: 3
@@ -533,7 +533,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Better or worse?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Solid chat!" quando obj_3 baterem.
@@ -637,7 +637,7 @@
    **hidden_prompt**: "user uses 'much + comparative' (much taller, much better, much more expensive)"
    **hint_pt**: "This is much better."
    **hint_en**: "This is much better."
-   **example_pass**: This is much better. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: This is much better.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 2. **id**: 2
@@ -646,7 +646,7 @@
    **hidden_prompt**: "user uses 'a little + comparative' (a little smaller, a little cheaper)"
    **hint_pt**: "It's a little cheaper."
    **hint_en**: "It's a little cheaper."
-   **example_pass**: It's a little cheaper. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: It's a little cheaper.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 3. **id**: 3
@@ -655,7 +655,7 @@
    **hidden_prompt**: "user uses 'a bit + comparative'"
    **hint_pt**: "I'm a bit older than her."
    **hint_en**: "I'm a bit older than her."
-   **example_pass**: I'm a bit older than her. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: I'm a bit older than her.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 **Closing cue**: Charlotte fecha com "Nuanced!" quando obj_3 baterem.
@@ -692,7 +692,7 @@
    **hidden_prompt**: "user uses 'much + comparative'"
    **hint_pt**: "Today is much hotter."
    **hint_en**: "Today is much hotter."
-   **example_pass**: Today is much hotter. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: Today is much hotter.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 2. **id**: 2
@@ -701,7 +701,7 @@
    **hidden_prompt**: "user uses 'a little + comparative'"
    **hint_pt**: "My coffee is a little stronger today."
    **hint_en**: "My coffee is a little stronger today."
-   **example_pass**: My coffee is a little stronger today. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: My coffee is a little stronger today.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 3. **id**: 3
@@ -710,7 +710,7 @@
    **hidden_prompt**: "user asks 'How about you?' or similar"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Subtle observations!" quando obj_3 baterem.
@@ -815,7 +815,7 @@
    **hidden_prompt**: "user uses short adj + -er + than"
    **hint_pt**: "I'm taller than my sister."
    **hint_en**: "I'm taller than my sister."
-   **example_pass**: I'm taller than my sister. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: I'm taller than my sister.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 2. **id**: 2
@@ -824,7 +824,7 @@
    **hidden_prompt**: "user uses 'more + long adj + than'"
    **hint_pt**: "This is more interesting than that."
    **hint_en**: "This is more interesting than that."
-   **example_pass**: This is more interesting than that. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: This is more interesting than that.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 3. **id**: 3
@@ -833,7 +833,7 @@
    **hidden_prompt**: "user uses 'better/worse/more + than'"
    **hint_pt**: "Today is better than yesterday."
    **hint_en**: "Today is better than yesterday."
-   **example_pass**: Today is better than yesterday. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: Today is better than yesterday.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 **Closing cue**: Charlotte fecha com "Comparison master!" quando obj_3 baterem.
@@ -870,7 +870,7 @@
    **hidden_prompt**: "user uses short adj -er + than"
    **hint_pt**: "Coffee is cheaper than wine."
    **hint_en**: "Coffee is cheaper than wine."
-   **example_pass**: Coffee is cheaper than wine. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: Coffee is cheaper than wine.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 2. **id**: 2
@@ -879,7 +879,7 @@
    **hidden_prompt**: "user uses 'more + long adj + than'"
    **hint_pt**: "My job is more difficult now."
    **hint_en**: "My job is more difficult now."
-   **example_pass**: My job is more difficult now. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: My job is more difficult now.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 3. **id**: 3
@@ -888,7 +888,7 @@
    **hidden_prompt**: "user uses better/worse/more + than"
    **hint_pt**: "My life is better today."
    **hint_en**: "My life is better today."
-   **example_pass**: My life is better today. | Pizza is better than salad. | My house is bigger than yours.
+   **example_pass**: My life is better today.
    **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 **Closing cue**: Charlotte encerra com "All comparison types covered!" quando obj_3 baterem.

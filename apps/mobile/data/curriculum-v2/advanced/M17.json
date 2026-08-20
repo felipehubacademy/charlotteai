@@ -125,8 +125,8 @@
             "hint_en": "Q: 'Will you come?' A: 'I'd like to, but I have a conflict that evening.'",
             "examples_pass": [
               "Q: 'Will you come?' A: 'I'd like to, but I have a conflict that evening.'",
-              "I want to — that's the one.",
-              "Honestly, I want to sums it up."
+              "Q: 'Are you joining the trip?' A: 'I want to, but the dates clash with a deadline.'",
+              "Q: 'Will you speak at the panel?' A: 'I hope to, if my flight lands on time.'"
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -140,9 +140,9 @@
             "hidden_prompt": "user uses 'I can't / I won't' with elided verb",
             "hint_en": "Q: 'Are you applying?' A: 'I should, but I keep putting it off.'",
             "examples_pass": [
-              "I can't — that's the one.",
-              "Honestly, I can't sums it up.",
-              "Yeah, I can't for sure."
+              "Q: 'Are you applying?' A: 'I should, but I keep putting it off.'",
+              "Q: 'Will you fix the bug tonight?' A: 'I can't, the servers are down for maintenance.'",
+              "Q: 'Are you coming to the reunion?' A: 'I won't, sadly — I'll be abroad that week.'"
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -156,9 +156,7 @@
             "hidden_prompt": "user uses 'I meant to / I tried to'",
             "hint_en": "Q: 'Did you reply to the email?' A: 'I meant to. The day got away from me.'",
             "examples_pass": [
-              "Q: 'Did you reply to the email?' A: 'I meant to. The day got away from me.'",
-              "I meant to — that's the one.",
-              "Honestly, I meant to sums it up."
+              "Q: 'Did you reply to the email?' A: 'I meant to. The day got away from me.'"
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -189,9 +187,7 @@
             "hidden_prompt": "user replies with elliptical 'I meant to / I tried to'",
             "hint_en": "I meant to, but I got distracted by another one halfway through.",
             "examples_pass": [
-              "I meant to, but I got distracted by another one halfway through.",
-              "I meant to — that's the one.",
-              "Honestly, I meant to sums it up."
+              "I meant to, but I got distracted by another one halfway through."
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -221,9 +217,7 @@
             "hidden_prompt": "user asks Charlotte if she finished hers",
             "hint_en": "Did you finish yours?",
             "examples_pass": [
-              "Did you finish yours?",
-              "Do you want some? — Yes, please.",
-              "Some students passed; others didn't."
+              "Did you finish yours?"
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -338,9 +332,7 @@
             "hidden_prompt": "user uses 'I think so / I believe so / I suppose so'",
             "hint_en": "Q: 'Will the package arrive Monday?' A: 'I believe so — the tracking suggested two more days.'",
             "examples_pass": [
-              "Q: 'Will the package arrive Monday?' A: 'I believe so — the tracking suggested two more days.'",
-              "I think so — that's the one.",
-              "Honestly, I think so sums it up."
+              "Q: 'Will the package arrive Monday?' A: 'I believe so — the tracking suggested two more days.'"
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -354,9 +346,7 @@
             "hidden_prompt": "user uses 'I don't think so / I hope not / I expect not'",
             "hint_en": "Q: 'Will the meeting get cancelled again?' A: 'I hope not — we've already rescheduled twice.'",
             "examples_pass": [
-              "Q: 'Will the meeting get cancelled again?' A: 'I hope not — we've already rescheduled twice.'",
-              "I hope not — that's the one.",
-              "Honestly, I hope not sums it up."
+              "Q: 'Will the meeting get cancelled again?' A: 'I hope not — we've already rescheduled twice.'"
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -370,9 +360,7 @@
             "hidden_prompt": "user uses 'I'm afraid so'",
             "hint_en": "Q: 'Did the project get delayed again?' A: 'I'm afraid so. We lost the lead engineer last week.'",
             "examples_pass": [
-              "Q: 'Did the project get delayed again?' A: 'I'm afraid so. We lost the lead engineer last week.'",
-              "I'm afraid so — that's the one.",
-              "Honestly, I'm afraid so sums it up."
+              "Q: 'Did the project get delayed again?' A: 'I'm afraid so. We lost the lead engineer last week.'"
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -403,9 +391,7 @@
             "hidden_prompt": "user uses 'I believe so' or 'I think so'",
             "hint_en": "I believe so — the legal review wrapped up yesterday.",
             "examples_pass": [
-              "I believe so — the legal review wrapped up yesterday.",
-              "I think so — that's the one.",
-              "Honestly, I think so sums it up."
+              "I believe so — the legal review wrapped up yesterday."
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -419,9 +405,7 @@
             "hidden_prompt": "user uses 'I hope not / I'm afraid so'",
             "hint_en": "Though I'm afraid there's still one signature missing from the executive sponsor — we may slip by a day.",
             "examples_pass": [
-              "I hope not — that's the one.",
-              "Honestly, I hope not sums it up.",
-              "Yeah, I hope not for sure."
+              "Though I'm afraid there's still one signature missing from the executive sponsor — we may slip by a day."
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -435,9 +419,7 @@
             "hidden_prompt": "user asks Charlotte if she'll attend the kickoff",
             "hint_en": "Will you be at the kickoff?",
             "examples_pass": [
-              "Will you be at the kickoff?",
-              "Do you want some? — Yes, please.",
-              "Some students passed; others didn't."
+              "Will you be at the kickoff?"
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -549,9 +531,7 @@
             "hidden_prompt": "user uses 'a/the + adjective + one'",
             "hint_en": "Q: 'Which book?' A: 'The blue one on the second shelf — the one I lent you last summer.'",
             "examples_pass": [
-              "Q: 'Which book?' A: 'The blue one on the second shelf — the one I lent you last summer.'",
-              "I will if you will.",
-              "She likes jazz, and so do I."
+              "Q: 'Which book?' A: 'The blue one on the second shelf — the one I lent you last summer.'"
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -581,9 +561,7 @@
             "hidden_prompt": "user uses 'those of + reference'",
             "hint_en": "Our findings differ from those of the original 2018 study in two important respects.",
             "examples_pass": [
-              "Our findings differ from those of the original 2018 study in two important respects.",
-              "Do you want some? — Yes, please.",
-              "Some students passed; others didn't."
+              "Our findings differ from those of the original 2018 study in two important respects."
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -614,9 +592,7 @@
             "hidden_prompt": "user uses 'the + adj + one'",
             "hint_en": "Honestly, I'd take the navy one — the cut sits better at the shoulders.",
             "examples_pass": [
-              "Honestly, I'd take the navy one — the cut sits better at the shoulders.",
-              "I will if you will.",
-              "She likes jazz, and so do I."
+              "Honestly, I'd take the navy one — the cut sits better at the shoulders."
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -630,9 +606,7 @@
             "hidden_prompt": "user uses 'the other one' or another substitution",
             "hint_en": "The other one looks like it was made for someone slightly taller — the proportions are off.",
             "examples_pass": [
-              "The other one looks like it was made for someone slightly taller — the proportions are off.",
-              "The other one — that's the one.",
-              "Honestly, the other one sums it up."
+              "The other one looks like it was made for someone slightly taller — the proportions are off."
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -646,9 +620,7 @@
             "hidden_prompt": "user asks Charlotte's preference",
             "hint_en": "Which one do you keep coming back to?",
             "examples_pass": [
-              "Which one do you keep coming back to?",
-              "Do you want some? — Yes, please.",
-              "Some students passed; others didn't."
+              "Which one do you keep coming back to?"
             ],
             "examples_fail": [
               "yes I do (bare response, no ellipsis context)",
@@ -838,8 +810,6 @@
             "hint_en": "I cut my caffeine in half last spring. My partner did the same a few weeks later — sympathy headaches, mostly.",
             "examples_pass": [
               "I cut my caffeine in half last spring. My partner did the same a few weeks later — sympathy headaches, mostly.",
-              "I will if you will.",
-              "She likes jazz, and so do I.",
               "I stopped working on Sundays last quarter. Two of my colleagues did the same within a month.",
               "I switched to longer-form deep work in the mornings. Half the team did the same once they saw it working.",
               "I moved my standing call to Friday afternoons. My counterpart did the same the following week without us discussing it."
@@ -856,6 +826,7 @@
             "hidden_prompt": "user uses 'do so' or 'did so'",
             "hint_en": "Two of my friends had been thinking of doing so for months — my switch seemed to give them permission.",
             "examples_pass": [
+              "Two of my friends had been thinking of doing so for months — my switch seemed to give them permission.",
               "He did so quietly, without making any public announcement; most people didn't notice for weeks.",
               "She did so reluctantly, but the alternative was worse — and she knew it before anyone else in the room.",
               "I had to do so in the end."
@@ -873,8 +844,6 @@
             "hint_en": "Who copied your four-day week?",
             "examples_pass": [
               "Who copied your four-day week?",
-              "Do you want some? — Yes, please.",
-              "Some students passed; others didn't.",
               "And you?",
               "What about you?",
               "How about yourself?",
@@ -999,8 +968,6 @@
             "hint_en": "Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get anything done.'",
             "examples_pass": [
               "Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get anything done.'",
-              "I will if you will.",
-              "She likes jazz, and so do I.",
               "Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get any real work done.'",
               "Q: 'I love that new podcast.' A: 'So do I — I've already recommended it to half the team.'",
               "Q: 'I usually skip breakfast.' A: 'So do I, though my doctor keeps telling me to stop.'",
@@ -1037,8 +1004,6 @@
             "hint_en": "Q: 'I haven't been to that restaurant yet.' A: 'Neither have I — let's go this weekend.'",
             "examples_pass": [
               "Q: 'I haven't been to that restaurant yet.' A: 'Neither have I — let's go this weekend.'",
-              "Do you want some? — Yes, please.",
-              "Some students passed; others didn't.",
               "Q: 'I don't usually drink coffee in the afternoon.' A: 'Nor do I, but today is a special case.'",
               "Q: 'I haven't read his new book.' A: 'Neither have I, though everyone keeps recommending it.'",
               "Q: 'I wouldn't move back to the city now.' A: 'Nor would I — we've finally settled into a good rhythm here.'"
@@ -1109,8 +1074,6 @@
             "hint_en": "What else do you protect?",
             "examples_pass": [
               "What else do you protect?",
-              "Do you want some? — Yes, please.",
-              "Some students passed; others didn't.",
               "And you?",
               "What about you?",
               "How about yourself?",

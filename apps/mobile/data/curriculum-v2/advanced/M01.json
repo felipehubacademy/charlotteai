@@ -121,8 +121,6 @@
             "hint_en": "If I had taken that internship, I'd be working in tech now.",
             "examples_pass": [
               "If I had taken that internship, I'd be working in tech now.",
-              "If I had studied harder, I would have a better job today.",
-              "Had I accepted that offer, I'd be earning much more right now.",
               "If I had picked the other offer, I'd be living in Berlin right now.",
               "If I had finished that degree, I would be running a lab today.",
               "Had I committed to that startup, I'd probably be a founder by now.",
@@ -141,8 +139,6 @@
             "hint_en": "If I had stayed in Rio, I wouldn't know my partner today.",
             "examples_pass": [
               "If I had stayed in Rio, I wouldn't know my partner today.",
-              "If I hadn't moved to São Paulo, I wouldn't have met my partner today.",
-              "I'd be debt-free now if I had saved more in my twenties.",
               "If I hadn't left São Paulo, I'd still be running the same shop today.",
               "Had I picked the other path, I'd be living an entirely different life right now.",
               "If I weren't so attached to routine, I would have moved abroad years ago.",
@@ -161,8 +157,6 @@
             "hint_en": "I'd be financially independent now if I'd started investing earlier.",
             "examples_pass": [
               "I'd be financially independent now if I'd started investing earlier.",
-              "Had we bought that apartment, we'd own it outright today.",
-              "If I weren't so cautious, I would have invested earlier.",
               "I'd be running my own firm now if I had started saving in my twenties.",
               "I'd be in much better health today if I had taken sleep seriously a decade ago.",
               "We'd be debt-free now if we had bought the apartment instead of renting.",
@@ -198,8 +192,6 @@
             "hint_en": "If I hadn't moved abroad, I wouldn't speak three languages today.",
             "examples_pass": [
               "If I hadn't moved abroad, I wouldn't speak three languages today.",
-              "If I had studied harder, I would have a better job today.",
-              "Had I accepted that offer, I'd be earning much more right now.",
               "If I had picked the other offer, I'd be living in Berlin right now.",
               "If I had finished that degree, I would be running a lab today.",
               "Had I committed to that startup, I'd probably be a founder by now.",
@@ -218,8 +210,6 @@
             "hint_en": "If I had stayed, I'd probably still be in the same job.",
             "examples_pass": [
               "If I had stayed, I'd probably still be in the same job.",
-              "If I hadn't moved to São Paulo, I wouldn't have met my partner today.",
-              "I'd be debt-free now if I had saved more in my twenties.",
               "If I hadn't left São Paulo, I'd still be running the same shop today.",
               "Had I picked the other path, I'd be living an entirely different life right now.",
               "If I weren't so attached to routine, I would have moved abroad years ago.",
@@ -237,11 +227,7 @@
             "hidden_prompt": "user asks Charlotte about her own pivot",
             "hint_en": "What pivot shaped you?",
             "examples_pass": [
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "What pivot shaped you?"
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -355,9 +341,7 @@
             "hidden_prompt": "user uses 'If I weren't + adj/noun, I would have + past participle'",
             "hint_en": "If I weren't so cautious, I would have invested earlier.",
             "examples_pass": [
-              "If I weren't so cautious, I would have invested earlier.",
-              "If I had studied harder, I would have a better job today.",
-              "Had I accepted that offer, I'd be earning much more right now."
+              "If I weren't so cautious, I would have invested earlier."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -371,9 +355,7 @@
             "hidden_prompt": "user uses another 'if I weren't' or 'if he/she weren't'",
             "hint_en": "If my dad weren't so private, we'd have heard the story years ago.",
             "examples_pass": [
-              "If he — that's the one.",
-              "Honestly, if he sums it up.",
-              "Yeah, if he for sure."
+              "If my dad weren't so private, we'd have heard the story years ago."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -387,9 +369,7 @@
             "hidden_prompt": "user starts with the past result clause",
             "hint_en": "She'd have called you back if she weren't so anxious.",
             "examples_pass": [
-              "She'd have called you back if she weren't so anxious.",
-              "Had we bought that apartment, we'd own it outright today.",
-              "If I weren't so cautious, I would have invested earlier."
+              "She'd have called you back if she weren't so anxious."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -420,9 +400,7 @@
             "hidden_prompt": "user uses 'If I weren't + trait, I would have + past participle'",
             "hint_en": "If I weren't so risk-averse, I would have started my own business.",
             "examples_pass": [
-              "If I weren't so risk-averse, I would have started my own business.",
-              "If I had studied harder, I would have a better job today.",
-              "Had I accepted that offer, I'd be earning much more right now."
+              "If I weren't so risk-averse, I would have started my own business."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -436,9 +414,7 @@
             "hidden_prompt": "user adds another mixed conditional or counterpoint",
             "hint_en": "But if I weren't this careful, I might have lost everything.",
             "examples_pass": [
-              "But if I weren't this careful, I might have lost everything.",
-              "If I hadn't moved to São Paulo, I wouldn't have met my partner today.",
-              "I'd be debt-free now if I had saved more in my twenties."
+              "But if I weren't this careful, I might have lost everything."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -452,9 +428,9 @@
             "hidden_prompt": "user asks Charlotte more about her planner trait",
             "hint_en": "Do you regret it?",
             "examples_pass": [
+              "Do you regret it?",
               "What about her planner trait?",
-              "And her planner trait — what do you think?",
-              "Her planner trait — that's the one."
+              "And her planner trait — what do you think?"
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -572,9 +548,7 @@
             "hidden_prompt": "user uses 'Had I + past participle, I would have + past participle'",
             "hint_en": "Had I started earlier, I would have finished by now.",
             "examples_pass": [
-              "Had I started earlier, I would have finished by now.",
-              "If I had studied harder, I would have a better job today.",
-              "Had I accepted that offer, I'd be earning much more right now."
+              "Had I started earlier, I would have finished by now."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -588,9 +562,7 @@
             "hidden_prompt": "user uses 'Had he/she + past participle'",
             "hint_en": "Had she taken the bus, she'd have made it on time.",
             "examples_pass": [
-              "Had she taken the bus, she'd have made it on time.",
-              "If I hadn't moved to São Paulo, I wouldn't have met my partner today.",
-              "I'd be debt-free now if I had saved more in my twenties."
+              "Had she taken the bus, she'd have made it on time."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -604,9 +576,7 @@
             "hidden_prompt": "user uses 'Had + subject + past participle, would + base now'",
             "hint_en": "Had we bought the apartment, we'd own it outright today.",
             "examples_pass": [
-              "Had we bought the apartment, we'd own it outright today.",
-              "Had we bought that apartment, we'd own it outright today.",
-              "If I weren't so cautious, I would have invested earlier."
+              "Had we bought the apartment, we'd own it outright today."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -637,9 +607,7 @@
             "hidden_prompt": "user uses 'Had I + past participle, I would have'",
             "hint_en": "Had I trusted my instincts, I would have left that job sooner.",
             "examples_pass": [
-              "Had I trusted my instincts, I would have left that job sooner.",
-              "If I had studied harder, I would have a better job today.",
-              "Had I accepted that offer, I'd be earning much more right now."
+              "Had I trusted my instincts, I would have left that job sooner."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -653,9 +621,7 @@
             "hidden_prompt": "user uses another inverted form",
             "hint_en": "Had I been kinder to myself, I'd have rested instead of pushing on.",
             "examples_pass": [
-              "Had I been kinder to myself, I'd have rested instead of pushing on.",
-              "If I hadn't moved to São Paulo, I wouldn't have met my partner today.",
-              "I'd be debt-free now if I had saved more in my twenties."
+              "Had I been kinder to myself, I'd have rested instead of pushing on."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -669,9 +635,7 @@
             "hidden_prompt": "user asks Charlotte what she'd say to her younger self",
             "hint_en": "What would you tell yours?",
             "examples_pass": [
-              "What would you tell yours?",
-              "Had we bought that apartment, we'd own it outright today.",
-              "If I weren't so cautious, I would have invested earlier."
+              "What would you tell yours?"
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -787,8 +751,6 @@
             "hint_en": "Were I to lead the project, I would restructure the team first.",
             "examples_pass": [
               "Were I to lead the project, I would restructure the team first.",
-              "If I had studied harder, I would have a better job today.",
-              "Had I accepted that offer, I'd be earning much more right now.",
               "Were I to start over today, I would build something simpler from day one.",
               "Were I to step into that role, I'd restructure the reporting lines immediately.",
               "Were we to enter the European market, we would have to localise far more than we expect.",
@@ -807,8 +769,6 @@
             "hint_en": "Should you require further details, I'm happy to elaborate.",
             "examples_pass": [
               "Should you require further details, I'm happy to elaborate.",
-              "If I hadn't moved to São Paulo, I wouldn't have met my partner today.",
-              "I'd be debt-free now if I had saved more in my twenties.",
               "Should you need additional context, I'm available all week.",
               "Should the funding fall through, we have a backup plan ready.",
               "Should the timeline shift, please let me know as early as possible.",
@@ -827,8 +787,6 @@
             "hint_en": "Were the budget approved, we could launch in Q3.",
             "examples_pass": [
               "Were the budget approved, we could launch in Q3.",
-              "If I weren't so cautious, I would have invested earlier.",
-              "Were I to relocate next year, I'd take the job in Berlin without hesitating.",
               "Should the funding come through, we'd be ready to break ground by spring.",
               "Were the project approved tomorrow, the team could begin within the same week.",
               "Should the conditions shift, we'd revisit the entire plan from scratch."
@@ -862,9 +820,7 @@
             "hidden_prompt": "user uses 'Should you' or 'Were I to'",
             "hint_en": "Should the agenda allow, we'd be glad to attend.",
             "examples_pass": [
-              "Were I to relocate next year, I'd take the job in Berlin without hesitating.",
-              "Were I to — that's the one.",
-              "Honestly, Were I to sums it up."
+              "Should the agenda allow, we'd be glad to attend."
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -879,9 +835,6 @@
             "hint_en": "Were the meeting moved to Wednesday, we could send two representatives.",
             "examples_pass": [
               "Were the meeting moved to Wednesday, we could send two representatives.",
-              "If I hadn't moved to São Paulo, I wouldn't have met my partner today.",
-              "I'd be debt-free now if I had saved more in my twenties.",
-              "Were I to relocate next year, I'd take the job in Berlin without hesitating.",
               "Should the funding come through, we'd be ready to break ground by spring.",
               "Were the project approved tomorrow, the team could begin within the same week.",
               "Should the conditions shift, we'd revisit the entire plan from scratch."
@@ -898,14 +851,7 @@
             "hidden_prompt": "user asks Charlotte for an alternative or detail",
             "hint_en": "Would Tuesday afternoon work?",
             "examples_pass": [
-              "Would Tuesday afternoon work?",
-              "Had we bought that apartment, we'd own it outright today.",
-              "If I weren't so cautious, I would have invested earlier.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "Would Tuesday afternoon work?"
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -1017,14 +963,7 @@
             "hidden_prompt": "user uses 'Suppose + clause' for hypothetical",
             "hint_en": "Suppose you had a free year — where would you go?",
             "examples_pass": [
-              "Suppose you had a free year — where would you go?",
-              "If I had studied harder, I would have a better job today.",
-              "Had I accepted that offer, I'd be earning much more right now.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "Suppose you had a free year — where would you go?"
             ],
             "examples_fail": [
               "internship (bare word, no structure)",
@@ -1039,8 +978,6 @@
             "hint_en": "But for that scholarship, I wouldn't have finished college.",
             "examples_pass": [
               "But for that scholarship, I wouldn't have finished college.",
-              "If I hadn't moved to São Paulo, I wouldn't have met my partner today.",
-              "I'd be debt-free now if I had saved more in my twenties.",
               "But for that one mentor, I wouldn't have finished the program at all.",
               "But for a stroke of luck, we would have missed the entire opportunity.",
               "But for her intervention, the contract would never have been signed.",
@@ -1127,14 +1064,7 @@
             "hidden_prompt": "user asks Charlotte her own answer",
             "hint_en": "Suppose the same for you — what then?",
             "examples_pass": [
-              "Suppose the same for you — what then?",
-              "Had we bought that apartment, we'd own it outright today.",
-              "If I weren't so cautious, I would have invested earlier.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "Suppose the same for you — what then?"
             ],
             "examples_fail": [
               "internship (bare word, no structure)",

@@ -165,9 +165,7 @@
             "hint_pt": "I'm studying English.",
             "hint_en": "I'm studying English.",
             "examples_pass": [
-              "I'm studying English.",
-              "I'm working right now.",
-              "I am studying at the moment."
+              "I'm studying English."
             ],
             "examples_fail": [
               "Working (no subject + 'am')",
@@ -183,9 +181,7 @@
             "hint_pt": "My sister is cooking.",
             "hint_en": "My sister is cooking.",
             "examples_pass": [
-              "My sister is cooking.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "My sister is cooking."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -236,9 +232,7 @@
             "hint_pt": "I'm reading.",
             "hint_en": "I'm reading.",
             "examples_pass": [
-              "I'm reading.",
-              "I'm working right now.",
-              "I am studying at the moment."
+              "I'm reading."
             ],
             "examples_fail": [
               "Working (no subject + 'am')",
@@ -254,9 +248,7 @@
             "hint_pt": "My brother is sleeping.",
             "hint_en": "My brother is sleeping.",
             "examples_pass": [
-              "My brother is sleeping.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "My brother is sleeping."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -272,9 +264,7 @@
             "hint_pt": "What are you doing?",
             "hint_en": "What are you doing?",
             "examples_pass": [
-              "What are you doing?",
-              "And you?",
-              "How about you?"
+              "What are you doing?"
             ],
             "examples_fail": [
               "I'm reading (statement)",
@@ -426,7 +416,15 @@
             "label_en": "Reply to Charlotte's 'Are you working?'",
             "hidden_prompt": "AFTER Charlotte's opening 'Are you working right now?', user replies with 'I'm not + verb-ing' (negative present continuous, 1st person).",
             "hint_pt": "I'm not working today.",
-            "hint_en": "I'm not working today."
+            "hint_en": "I'm not working today.",
+            "examples_pass": [
+              "I'm not working today."
+            ],
+            "examples_fail": [
+              "Yes (single word, no structure)",
+              "I don't know (off-topic)",
+              "(silence / gibberish)"
+            ]
           },
           {
             "id": 2,
@@ -434,7 +432,15 @@
             "label_en": "Tell about a family member (after Charlotte's 2nd question)",
             "hidden_prompt": "AFTER Charlotte asks about a family member ('Your sister?', 'Your brother?', etc.), user states 'He/She isn't + verb-ing'. Different person from obj 1.",
             "hint_pt": "My sister isn't studying.",
-            "hint_en": "My sister isn't studying."
+            "hint_en": "My sister isn't studying.",
+            "examples_pass": [
+              "My sister isn't studying."
+            ],
+            "examples_fail": [
+              "Yes (single word, no structure)",
+              "I don't know (off-topic)",
+              "(silence / gibberish)"
+            ]
           },
           {
             "id": 3,
@@ -442,7 +448,15 @@
             "label_en": "Tell about the group (after Charlotte's 3rd question)",
             "hidden_prompt": "AFTER Charlotte asks about group activity, user states 'We aren't + verb-ing' (1st plural). Different person from obj 1 and 2.",
             "hint_pt": "We aren't eating.",
-            "hint_en": "We aren't eating."
+            "hint_en": "We aren't eating.",
+            "examples_pass": [
+              "We aren't eating."
+            ],
+            "examples_fail": [
+              "Yes (single word, no structure)",
+              "I don't know (off-topic)",
+              "(silence / gibberish)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Got it!\" quando obj_3 baterem.",
@@ -467,7 +481,15 @@
             "label_en": "Answer Charlotte's opening question",
             "hidden_prompt": "AFTER Charlotte's opening 'What's NOT happening right now?', user replies with 'I'm not + verb-ing'.",
             "hint_pt": "I'm not working.",
-            "hint_en": "I'm not working."
+            "hint_en": "I'm not working.",
+            "examples_pass": [
+              "I'm not working."
+            ],
+            "examples_fail": [
+              "Yes (single word, no structure)",
+              "I don't know (off-topic)",
+              "(silence / gibberish)"
+            ]
           },
           {
             "id": 2,
@@ -475,7 +497,15 @@
             "label_en": "Tell about a family member",
             "hidden_prompt": "AFTER Charlotte's follow-up about another person ('Sister?', 'Brother?', etc.), user says 'He/She isn't + verb-ing'.",
             "hint_pt": "My brother isn't sleeping.",
-            "hint_en": "My brother isn't sleeping."
+            "hint_en": "My brother isn't sleeping.",
+            "examples_pass": [
+              "My brother isn't sleeping."
+            ],
+            "examples_fail": [
+              "Yes (single word, no structure)",
+              "I don't know (off-topic)",
+              "(silence / gibberish)"
+            ]
           },
           {
             "id": 3,
@@ -485,9 +515,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -643,9 +671,7 @@
             "hint_pt": "What are you doing?",
             "hint_en": "What are you doing?",
             "examples_pass": [
-              "What are you doing?",
-              "And you?",
-              "How about you?"
+              "What are you doing?"
             ],
             "examples_fail": [
               "I'm reading (statement)",
@@ -661,9 +687,7 @@
             "hint_pt": "Are you working?",
             "hint_en": "Are you working?",
             "examples_pass": [
-              "Are you working?",
-              "And you?",
-              "How about you?"
+              "Are you working?"
             ],
             "examples_fail": [
               "Yes I am (statement)",
@@ -679,9 +703,7 @@
             "hint_pt": "Is your friend working?",
             "hint_en": "Is your friend working?",
             "examples_pass": [
-              "Is your friend working?",
-              "And you?",
-              "How about you?"
+              "Is your friend working?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -714,9 +736,7 @@
             "hint_pt": "What are you doing?",
             "hint_en": "What are you doing?",
             "examples_pass": [
-              "What are you doing?",
-              "And you?",
-              "How about you?"
+              "What are you doing?"
             ],
             "examples_fail": [
               "I'm reading (statement)",
@@ -732,9 +752,7 @@
             "hint_pt": "Are you at home?",
             "hint_en": "Are you at home?",
             "examples_pass": [
-              "Are you at home?",
-              "And you?",
-              "How about you?"
+              "Are you at home?"
             ],
             "examples_fail": [
               "Yes I am (statement)",
@@ -750,9 +768,7 @@
             "hint_pt": "Is your sister sleeping?",
             "hint_en": "Is your sister sleeping?",
             "examples_pass": [
-              "Is your sister sleeping?",
-              "And you?",
-              "How about you?"
+              "Is your sister sleeping?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -906,9 +922,7 @@
             "hint_pt": "I'm working from home this week.",
             "hint_en": "I'm working from home this week.",
             "examples_pass": [
-              "I'm working from home this week.",
-              "I'm working right now.",
-              "I am studying at the moment."
+              "I'm working from home this week."
             ],
             "examples_fail": [
               "Working (no subject + 'am')",
@@ -924,9 +938,7 @@
             "hint_pt": "I'm studying English right now.",
             "hint_en": "I'm studying English right now.",
             "examples_pass": [
-              "I'm studying English right now.",
-              "I'm working right now.",
-              "I am studying at the moment."
+              "I'm studying English right now."
             ],
             "examples_fail": [
               "Working (no subject + 'am')",
@@ -942,9 +954,7 @@
             "hint_pt": "My friend is traveling this month.",
             "hint_en": "My friend is traveling this month.",
             "examples_pass": [
-              "My friend is traveling this month.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "My friend is traveling this month."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -977,9 +987,7 @@
             "hint_pt": "I'm studying for an exam this week.",
             "hint_en": "I'm studying for an exam this week.",
             "examples_pass": [
-              "I'm studying for an exam this week.",
-              "I'm working right now.",
-              "I am studying at the moment."
+              "I'm studying for an exam this week."
             ],
             "examples_fail": [
               "Working (no subject + 'am')",
@@ -995,9 +1003,7 @@
             "hint_pt": "I'm having lunch right now.",
             "hint_en": "I'm having lunch right now.",
             "examples_pass": [
-              "I'm having lunch right now.",
-              "I'm working right now.",
-              "I am studying at the moment."
+              "I'm having lunch right now."
             ],
             "examples_fail": [
               "Working (no subject + 'am')",
@@ -1013,9 +1019,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1189,9 +1193,7 @@
             "hint_pt": "I'm studying English right now.",
             "hint_en": "I'm studying English right now.",
             "examples_pass": [
-              "I'm studying English right now.",
-              "I'm working right now.",
-              "I am studying at the moment."
+              "I'm studying English right now."
             ],
             "examples_fail": [
               "Working (no subject + 'am')",
@@ -1207,9 +1209,7 @@
             "hint_pt": "I usually drink coffee, but today I'm drinking tea.",
             "hint_en": "I usually drink coffee, but today I'm drinking tea.",
             "examples_pass": [
-              "I usually drink coffee, but today I'm drinking tea.",
-              "I'm working right now.",
-              "I am studying at the moment."
+              "I usually drink coffee, but today I'm drinking tea."
             ],
             "examples_fail": [
               "Working (no subject + 'am')",
@@ -1260,9 +1260,7 @@
             "hint_pt": "I'm drinking tea today.",
             "hint_en": "I'm drinking tea today.",
             "examples_pass": [
-              "I'm drinking tea today.",
-              "I'm working right now.",
-              "I am studying at the moment."
+              "I'm drinking tea today."
             ],
             "examples_fail": [
               "Working (no subject + 'am')",
@@ -1278,9 +1276,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",

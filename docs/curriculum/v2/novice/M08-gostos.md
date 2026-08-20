@@ -109,7 +109,7 @@
    **hidden_prompt**: "user states love with 'I love + noun' (food, music, place, person, activity)"
    **hint_pt**: "I love coffee."
    **hint_en**: "I love coffee."
-   **example_pass**: I love coffee. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I love coffee.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -118,7 +118,7 @@
    **hidden_prompt**: "user states dislike with 'I hate + noun'"
    **hint_pt**: "I hate Mondays."
    **hint_en**: "I hate Mondays."
-   **example_pass**: I hate Mondays. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I hate Mondays.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
@@ -127,7 +127,7 @@
    **hidden_prompt**: "user states 3rd person preference with 'He/She/My + person + likes/loves/hates + noun' (3rd person -s)"
    **hint_pt**: "My sister loves dogs."
    **hint_en**: "My sister loves dogs."
-   **example_pass**: My sister loves dogs. | I love pizza. | My favorite food is sushi.
+   **example_pass**: My sister loves dogs.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 **Closing cue**: Charlotte fecha com "Interesting tastes!" quando obj_3 baterem.
@@ -164,7 +164,7 @@
    **hidden_prompt**: "user says 'I love + noun'"
    **hint_pt**: "I love pizza."
    **hint_en**: "I love pizza."
-   **example_pass**: I love pizza. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I love pizza.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -173,7 +173,7 @@
    **hidden_prompt**: "user says 'I hate + noun'"
    **hint_pt**: "I hate traffic."
    **hint_en**: "I hate traffic."
-   **example_pass**: I hate traffic. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I hate traffic.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
@@ -182,7 +182,7 @@
    **hidden_prompt**: "user asks Charlotte with 'how about you' or 'and you' or 'what do you love/hate'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Love this taste exchange!" quando obj_3 baterem.
@@ -286,7 +286,7 @@
    **hidden_prompt**: "user states activity with 'I love + verb-ing' (reading, cooking, dancing, etc.)"
    **hint_pt**: "I love reading."
    **hint_en**: "I love reading."
-   **example_pass**: I love reading. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I love reading.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -295,7 +295,7 @@
    **hidden_prompt**: "user states 'I hate + verb-ing'"
    **hint_pt**: "I hate waking up early."
    **hint_en**: "I hate waking up early."
-   **example_pass**: I hate waking up early. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I hate waking up early.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
@@ -304,7 +304,7 @@
    **hidden_prompt**: "user states 3rd person with 'He/She likes/loves + verb-ing'"
    **hint_pt**: "My brother loves playing soccer."
    **hint_en**: "My brother loves playing soccer."
-   **example_pass**: My brother loves playing soccer. | I love pizza. | My favorite food is sushi.
+   **example_pass**: My brother loves playing soccer.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 **Closing cue**: Charlotte fecha com "Cool hobbies!" quando obj_3 baterem.
@@ -341,7 +341,7 @@
    **hidden_prompt**: "user says 'I love + verb-ing'"
    **hint_pt**: "I love cooking."
    **hint_en**: "I love cooking."
-   **example_pass**: I love cooking. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I love cooking.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -350,7 +350,7 @@
    **hidden_prompt**: "user says 'I like + verb-ing'"
    **hint_pt**: "I like dancing."
    **hint_en**: "I like dancing."
-   **example_pass**: I like dancing. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I like dancing.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
@@ -359,7 +359,7 @@
    **hidden_prompt**: "user asks 'What do you like doing?' or 'How about you?' or 'Do you like + verb-ing?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Awesome — hobbies match!" quando obj_3 baterem.
@@ -464,7 +464,7 @@
    **hidden_prompt**: "user states 'I love him' or 'I love her' referring to a person"
    **hint_pt**: "I love her."
    **hint_en**: "I love her."
-   **example_pass**: I love her. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I love her.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -473,7 +473,7 @@
    **hidden_prompt**: "user states 'She/He calls me' or 'visits me' or 'helps me' — using 'me' as object"
    **hint_pt**: "She calls me every day."
    **hint_en**: "She calls me every day."
-   **example_pass**: She calls me every day. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: She calls me every day.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -519,7 +519,7 @@
    **hidden_prompt**: "user says 'I love him' or 'I love her'"
    **hint_pt**: "I love him."
    **hint_en**: "I love him."
-   **example_pass**: I love him. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I love him.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -528,7 +528,7 @@
    **hidden_prompt**: "user says 'She/He + verb + me' (calls me, helps me, visits me)"
    **hint_pt**: "He helps me a lot."
    **hint_en**: "He helps me a lot."
-   **example_pass**: He helps me a lot. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: He helps me a lot.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
@@ -537,7 +537,7 @@
    **hidden_prompt**: "AFTER objs 1 e 2 met, user asks Charlotte 'how about you?' or 'and you?'. CRITICAL: Charlotte MUST NOT ask 'how about you?' or 'and you?' to the student first — wait for the student to ask back."
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Beautiful bonds!" quando obj_3 baterem.
@@ -643,7 +643,7 @@
    **hidden_prompt**: "user states music preference with 'I love + genre + music' (pop, rock, classical, jazz, etc.)"
    **hint_pt**: "I love pop music."
    **hint_en**: "I love pop music."
-   **example_pass**: I love pop music. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I love pop music.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -652,7 +652,7 @@
    **hidden_prompt**: "user states movie preference with 'I like + genre + movies' (action, comedy, horror, etc.)"
    **hint_pt**: "I like action movies."
    **hint_en**: "I like action movies."
-   **example_pass**: I like action movies. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I like action movies.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
@@ -661,7 +661,7 @@
    **hidden_prompt**: "user states cultural dislike with 'I hate + noun' (horror movies, slow songs, etc.)"
    **hint_pt**: "I hate horror movies."
    **hint_en**: "I hate horror movies."
-   **example_pass**: I hate horror movies. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I hate horror movies.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 **Closing cue**: Charlotte fecha com "Cool tastes!" quando obj_3 baterem.
@@ -698,7 +698,7 @@
    **hidden_prompt**: "user states music with 'I love/like + genre + music'"
    **hint_pt**: "I love rock music."
    **hint_en**: "I love rock music."
-   **example_pass**: I love rock music. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I love rock music.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
@@ -707,7 +707,7 @@
    **hidden_prompt**: "user states 'I like/love + genre + movies/books'"
    **hint_pt**: "I love comedy movies."
    **hint_en**: "I love comedy movies."
-   **example_pass**: I love comedy movies. | I love pizza. | My favorite food is sushi.
+   **example_pass**: I love comedy movies.
    **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
@@ -716,7 +716,7 @@
    **hidden_prompt**: "user asks Charlotte with 'how about you' or 'and you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Fun culture talk!" quando obj_3 baterem.
@@ -838,7 +838,7 @@
    **hidden_prompt**: "user states 'He/She prefers + X' (3rd person -s)"
    **hint_pt**: "My sister prefers coffee."
    **hint_en**: "My sister prefers coffee."
-   **example_pass**: My sister prefers coffee. | She works at a hospital. | He lives in São Paulo.
+   **example_pass**: My sister prefers coffee.
    **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 **Closing cue**: Charlotte fecha com "Clear preferences!" quando obj_3 baterem.
@@ -893,7 +893,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'And you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Great choices!" quando obj_3 baterem.

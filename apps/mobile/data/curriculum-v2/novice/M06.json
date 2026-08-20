@@ -169,9 +169,7 @@
             "hint_pt": "He works in an office.",
             "hint_en": "He works in an office.",
             "examples_pass": [
-              "He works in an office.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "He works in an office."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -187,9 +185,7 @@
             "hint_pt": "She studies English.",
             "hint_en": "She studies English.",
             "examples_pass": [
-              "She studies English.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "She studies English."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -205,9 +201,7 @@
             "hint_pt": "He goes to the gym.",
             "hint_en": "He goes to the gym.",
             "examples_pass": [
-              "He goes to the gym.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "He goes to the gym."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -240,9 +234,7 @@
             "hint_pt": "She works in a school.",
             "hint_en": "She works in a school.",
             "examples_pass": [
-              "She works in a school.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "She works in a school."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -258,9 +250,7 @@
             "hint_pt": "She drinks coffee every morning.",
             "hint_en": "She drinks coffee every morning.",
             "examples_pass": [
-              "She drinks coffee every morning.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "She drinks coffee every morning."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -277,7 +267,6 @@
             "hint_en": "How about you?",
             "examples_pass": [
               "How about you?",
-              "And you?",
               "What about you?"
             ],
             "examples_fail": [
@@ -452,9 +441,7 @@
             "hint_pt": "My sister doesn't eat meat.",
             "hint_en": "My sister doesn't eat meat.",
             "examples_pass": [
-              "My sister doesn't eat meat.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "My sister doesn't eat meat."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -523,9 +510,7 @@
             "hint_pt": "My father doesn't drink coffee.",
             "hint_en": "My father doesn't drink coffee.",
             "examples_pass": [
-              "My father doesn't drink coffee.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "My father doesn't drink coffee."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -542,7 +527,6 @@
             "hint_en": "How about you?",
             "examples_pass": [
               "How about you?",
-              "And you?",
               "What about you?"
             ],
             "examples_fail": [
@@ -699,9 +683,7 @@
             "hint_pt": "Do you work?",
             "hint_en": "Do you work?",
             "examples_pass": [
-              "Do you work?",
-              "And you?",
-              "How about you?"
+              "Do you work?"
             ],
             "examples_fail": [
               "Yes I do (statement)",
@@ -717,9 +699,7 @@
             "hint_pt": "Do you drink coffee?",
             "hint_en": "Do you drink coffee?",
             "examples_pass": [
-              "Do you drink coffee?",
-              "And you?",
-              "How about you?"
+              "Do you drink coffee?"
             ],
             "examples_fail": [
               "Yes I do (statement)",
@@ -735,9 +715,7 @@
             "hint_pt": "Does your friend speak Portuguese?",
             "hint_en": "Does your friend speak Portuguese?",
             "examples_pass": [
-              "Does your friend speak Portuguese?",
-              "And you?",
-              "How about you?"
+              "Does your friend speak Portuguese?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -963,9 +941,7 @@
             "hint_pt": "Where do you work?",
             "hint_en": "Where do you work?",
             "examples_pass": [
-              "Where do you work?",
-              "And you?",
-              "How about you?"
+              "Where do you work?"
             ],
             "examples_fail": [
               "I live here (statement)",
@@ -981,9 +957,7 @@
             "hint_pt": "When do you have lunch?",
             "hint_en": "When do you have lunch?",
             "examples_pass": [
-              "When do you have lunch?",
-              "And you?",
-              "How about you?"
+              "When do you have lunch?"
             ],
             "examples_fail": [
               "Yesterday (statement)",
@@ -999,9 +973,7 @@
             "hint_pt": "Where does your friend live?",
             "hint_en": "Where does your friend live?",
             "examples_pass": [
-              "Where does your friend live?",
-              "And you?",
-              "How about you?"
+              "Where does your friend live?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -1034,9 +1006,7 @@
             "hint_pt": "Where do you live?",
             "hint_en": "Where do you live?",
             "examples_pass": [
-              "Where do you live?",
-              "And you?",
-              "How about you?"
+              "Where do you live?"
             ],
             "examples_fail": [
               "I live here (statement)",
@@ -1052,9 +1022,7 @@
             "hint_pt": "What do you study?",
             "hint_en": "What do you study?",
             "examples_pass": [
-              "What do you study?",
-              "And you?",
-              "How about you?"
+              "What do you study?"
             ],
             "examples_fail": [
               "I work here (statement)",
@@ -1070,9 +1038,7 @@
             "hint_pt": "When do you wake up?",
             "hint_en": "When do you wake up?",
             "examples_pass": [
-              "When do you wake up?",
-              "And you?",
-              "How about you?"
+              "When do you wake up?"
             ],
             "examples_fail": [
               "Yesterday (statement)",
@@ -1228,9 +1194,7 @@
             "hint_pt": "He works in a bank.",
             "hint_en": "He works in a bank.",
             "examples_pass": [
-              "He works in a bank.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "He works in a bank."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -1246,9 +1210,7 @@
             "hint_pt": "She doesn't drink coffee.",
             "hint_en": "She doesn't drink coffee.",
             "examples_pass": [
-              "She doesn't drink coffee.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "She doesn't drink coffee."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -1264,9 +1226,7 @@
             "hint_pt": "Does your friend work too?",
             "hint_en": "Does your friend work too?",
             "examples_pass": [
-              "Does your friend work too?",
-              "And you?",
-              "How about you?"
+              "Does your friend work too?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -1299,9 +1259,7 @@
             "hint_pt": "My brother studies music.",
             "hint_en": "My brother studies music.",
             "examples_pass": [
-              "My brother studies music.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "My brother studies music."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -1317,9 +1275,7 @@
             "hint_pt": "He doesn't watch TV.",
             "hint_en": "He doesn't watch TV.",
             "examples_pass": [
-              "He doesn't watch TV.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "He doesn't watch TV."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -1335,9 +1291,7 @@
             "hint_pt": "Does your friend live nearby?",
             "hint_en": "Does your friend live nearby?",
             "examples_pass": [
-              "Does your friend live nearby?",
-              "And you?",
-              "How about you?"
+              "Does your friend live nearby?"
             ],
             "examples_fail": [
               "I do that too (statement)",

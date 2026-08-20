@@ -124,8 +124,6 @@
             "hint_en": "The rise of remote work has transformed how organisations think about office space.",
             "examples_pass": [
               "The rise of remote work has transformed how organisations think about office space.",
-              "The findings suggest a significant correlation between the two variables.",
-              "This study aims to examine the underlying mechanisms.",
               "The rise of remote work has fundamentally altered how organisations think about real estate.",
               "The rise of generative AI has destabilised assumptions across knowledge work and creative industries.",
               "The rise of subscription-based business models has reshaped almost every consumer category.",
@@ -231,14 +229,7 @@
             "hidden_prompt": "user asks Charlotte what the paper actually argues",
             "hint_en": "What does the paper actually claim?",
             "examples_pass": [
-              "What does the paper actually claim?",
-              "These results have important implications for further research.",
-              "The methodology employed in this investigation is comprehensive.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "What does the paper actually claim?"
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -358,8 +349,6 @@
             "hint_en": "From 'Most experts agree exercise helps' → 'It is widely accepted that regular exercise improves cognitive function.'",
             "examples_pass": [
               "From 'Most experts agree exercise helps' → 'It is widely accepted that regular exercise improves cognitive function.'",
-              "The findings suggest a significant correlation between the two variables.",
-              "This study aims to examine the underlying mechanisms.",
               "It is widely accepted that regular exercise improves both cardiovascular and cognitive outcomes.",
               "It is widely held that early-stage mentorship has disproportionate effects on long-term career trajectory.",
               "It is widely argued that the existing tax framework was not designed for an internet economy.",
@@ -394,8 +383,6 @@
             "hint_en": "From 'I found that women earned less for the same work' → 'The data indicate that women in the sample earned 18% less for equivalent work.'",
             "examples_pass": [
               "From 'I found that women earned less for the same work' → 'The data indicate that women in the sample earned 18% less for equivalent work.'",
-              "These results have important implications for further research.",
-              "The methodology employed in this investigation is comprehensive.",
               "The data indicate that women in the sample earned roughly eighteen percent less for equivalent work.",
               "The evidence suggests that the intervention's effect persists for at least two years following treatment.",
               "The data demonstrate a consistent pattern across all four cohorts studied.",
@@ -430,9 +417,7 @@
             "hidden_prompt": "user uses 'The data suggest' or 'The findings indicate' or 'It is observed that'",
             "hint_en": "Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.'",
             "examples_pass": [
-              "Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.'",
-              "The data suggest — that's the one.",
-              "Honestly, The data suggest sums it up."
+              "Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.'"
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -464,14 +449,7 @@
             "hidden_prompt": "user asks Charlotte how strong the evidence actually is",
             "hint_en": "How strong is the evidence — is this from a study or your classroom?",
             "examples_pass": [
-              "How strong is the evidence — is this from a study or your classroom?",
-              "These results have important implications for further research.",
-              "The methodology employed in this investigation is comprehensive.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "How strong is the evidence — is this from a study or your classroom?"
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -586,6 +564,7 @@
             "hidden_prompt": "user uses 'This suggests that' or 'The data indicate'",
             "hint_en": "From 'The policy worked' → 'The data suggest that the policy contributed to the observed improvement.'",
             "examples_pass": [
+              "From 'The policy worked' → 'The data suggest that the policy contributed to the observed improvement.'",
               "This suggests that the underlying mechanism may differ from what previous models have assumed.",
               "The data indicate that the effect is larger in younger cohorts than in older ones.",
               "This suggests that the relationship between the two variables is mediated by a third, previously unmeasured factor."
@@ -602,6 +581,7 @@
             "hidden_prompt": "user uses 'The evidence supports' or 'There is strong reason to believe'",
             "hint_en": "From 'It's true that...' → 'The accumulated evidence supports the conclusion that...'",
             "examples_pass": [
+              "From 'It's true that...' → 'The accumulated evidence supports the conclusion that...'",
               "There is strong reason to believe that the observed effect is not an artefact of measurement.",
               "The evidence supports the broader claim that early interventions yield disproportionate returns.",
               "There is strong reason to believe that the policy's intended mechanism is not the one actually driving outcomes."
@@ -618,6 +598,7 @@
             "hidden_prompt": "user uses 'It is conceivable that' or 'A possible interpretation is'",
             "hint_en": "From 'Maybe X causes Y' → 'It is conceivable, though not yet established, that X plays a causal role in Y.'",
             "examples_pass": [
+              "From 'Maybe X causes Y' → 'It is conceivable, though not yet established, that X plays a causal role in Y.'",
               "A possible interpretation is that the observed pattern reflects survivorship rather than treatment effect.",
               "It is conceivable that the relationship is mediated by factors the current dataset does not capture.",
               "A possible interpretation is that the apparent improvement reflects a regression to the mean."
@@ -651,9 +632,8 @@
             "hidden_prompt": "user replaces 'prove' with appropriate hedge",
             "hint_en": "Try: 'Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.'",
             "examples_pass": [
-              "The data suggests that the policy played a contributing — though not necessarily decisive — role in the observed improvement.",
-              "Prove — that's the one.",
-              "Honestly, prove sums it up."
+              "Try: 'Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.'",
+              "The data suggests that the policy played a contributing — though not necessarily decisive — role in the observed improvement."
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -685,14 +665,7 @@
             "hidden_prompt": "user asks Charlotte how big the effect was",
             "hint_en": "How big was the effect, actually?",
             "examples_pass": [
-              "How big was the effect, actually?",
-              "These results have important implications for further research.",
-              "The methodology employed in this investigation is comprehensive.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "How big was the effect, actually?"
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -805,8 +778,6 @@
             "hint_en": "According to Patel (2021), the intervention was most effective in early-stage cases.",
             "examples_pass": [
               "According to Patel (2021), the intervention was most effective in early-stage cases.",
-              "The findings suggest a significant correlation between the two variables.",
-              "This study aims to examine the underlying mechanisms.",
               "According to Patel (2021), the intervention was most effective for early-stage participants.",
               "According to Müller (2019), the underlying mechanism is more sensitive to context than previously assumed.",
               "According to Santos and Rivera (2023), the policy's impact varied substantially across regions.",
@@ -824,9 +795,9 @@
             "hidden_prompt": "user uses 'X (year) argues / contends / suggests that'",
             "hint_en": "Williams (2019) argues that the existing framework underestimates contextual factors.",
             "examples_pass": [
+              "Williams (2019) argues that the existing framework underestimates contextual factors.",
               "Lee (2022) contends that the data have been systematically misinterpreted in the policy debate.",
-              "Müller (2021) suggests that the relationship is more nuanced than the earlier literature implied.",
-              "Contends — that's the one."
+              "Müller (2021) suggests that the relationship is more nuanced than the earlier literature implied."
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -841,8 +812,6 @@
             "hint_en": "Building on Müller's (2022) work, this analysis introduces a new measure of cognitive flexibility.",
             "examples_pass": [
               "Building on Müller's (2022) work, this analysis introduces a new measure of cognitive flexibility.",
-              "These results have important implications for further research.",
-              "The methodology employed in this investigation is comprehensive.",
               "Building on Müller's (2022) framework, this analysis introduces a new measure of cognitive flexibility.",
               "Building on the work of Santos (2019), we extend the model to include cross-border variation.",
               "Building on earlier findings, the present study examines whether the effect persists over longer periods.",
@@ -878,8 +847,7 @@
             "hint_en": "Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.'",
             "examples_pass": [
               "Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.'",
-              "Smith (2020) argues that early feedback has a measurable effect on subsequent performance across a range of tasks.",
-              "Smith (2020) argues that — that's the one."
+              "Smith (2020) argues that early feedback has a measurable effect on subsequent performance across a range of tasks."
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -911,14 +879,7 @@
             "hidden_prompt": "user asks Charlotte what other citations she's using",
             "hint_en": "What other sources are you weaving in?",
             "examples_pass": [
-              "What other sources are you weaving in?",
-              "These results have important implications for further research.",
-              "The methodology employed in this investigation is comprehensive.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "What other sources are you weaving in?"
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",
@@ -1031,8 +992,6 @@
             "hint_en": "This finding raises a related question about how the effect varies by income level.",
             "examples_pass": [
               "This finding raises a related question about how the effect varies by income level.",
-              "The findings suggest a significant correlation between the two variables.",
-              "This study aims to examine the underlying mechanisms.",
               "This finding raises a further question about how the effect varies across socioeconomic groups.",
               "This pattern is consistent with the broader literature on long-term policy impact.",
               "This observation challenges the conventional assumption that the effect is uniformly distributed.",
@@ -1069,8 +1028,6 @@
             "hint_en": "Taken together, these results suggest the relationship is real but moderated by context.",
             "examples_pass": [
               "Taken together, these results suggest the relationship is real but moderated by context.",
-              "These results have important implications for further research.",
-              "The methodology employed in this investigation is comprehensive.",
               "Taken together, the findings point to a more complex picture than the original hypothesis allowed for.",
               "Taken together, these observations imply that the policy's effect operates through multiple mechanisms.",
               "Taken together, the evidence supports a more cautious interpretation of the earlier literature."
@@ -1137,14 +1094,7 @@
             "hidden_prompt": "user asks Charlotte how she plans to end the discussion",
             "hint_en": "How are you planning to land the conclusion?",
             "examples_pass": [
-              "How are you planning to land the conclusion?",
-              "These results have important implications for further research.",
-              "The methodology employed in this investigation is comprehensive.",
-              "And you?",
-              "What about you?",
-              "How about yourself?",
-              "Same for you?",
-              "What's your take on it?"
+              "How are you planning to land the conclusion?"
             ],
             "examples_fail": [
               "important (bare adjective, casual register)",

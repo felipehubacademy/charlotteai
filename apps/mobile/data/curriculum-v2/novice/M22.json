@@ -271,9 +271,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -537,9 +535,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -800,9 +796,7 @@
             "hint_pt": "How does your friend act?",
             "hint_en": "How does your friend act?",
             "examples_pass": [
-              "How does your friend act?",
-              "And you?",
-              "How about you?"
+              "How does your friend act?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -1066,9 +1060,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",

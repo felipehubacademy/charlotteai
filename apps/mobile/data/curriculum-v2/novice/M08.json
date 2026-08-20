@@ -163,9 +163,7 @@
             "hint_pt": "I love coffee.",
             "hint_en": "I love coffee.",
             "examples_pass": [
-              "I love coffee.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I love coffee."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -181,9 +179,7 @@
             "hint_pt": "I hate Mondays.",
             "hint_en": "I hate Mondays.",
             "examples_pass": [
-              "I hate Mondays.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I hate Mondays."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -199,9 +195,7 @@
             "hint_pt": "My sister loves dogs.",
             "hint_en": "My sister loves dogs.",
             "examples_pass": [
-              "My sister loves dogs.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "My sister loves dogs."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -234,9 +228,7 @@
             "hint_pt": "I love pizza.",
             "hint_en": "I love pizza.",
             "examples_pass": [
-              "I love pizza.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I love pizza."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -252,9 +244,7 @@
             "hint_pt": "I hate traffic.",
             "hint_en": "I hate traffic.",
             "examples_pass": [
-              "I hate traffic.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I hate traffic."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -270,9 +260,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -428,9 +416,7 @@
             "hint_pt": "I love reading.",
             "hint_en": "I love reading.",
             "examples_pass": [
-              "I love reading.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I love reading."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -446,9 +432,7 @@
             "hint_pt": "I hate waking up early.",
             "hint_en": "I hate waking up early.",
             "examples_pass": [
-              "I hate waking up early.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I hate waking up early."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -464,9 +448,7 @@
             "hint_pt": "My brother loves playing soccer.",
             "hint_en": "My brother loves playing soccer.",
             "examples_pass": [
-              "My brother loves playing soccer.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "My brother loves playing soccer."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -499,9 +481,7 @@
             "hint_pt": "I love cooking.",
             "hint_en": "I love cooking.",
             "examples_pass": [
-              "I love cooking.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I love cooking."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -517,9 +497,7 @@
             "hint_pt": "I like dancing.",
             "hint_en": "I like dancing.",
             "examples_pass": [
-              "I like dancing.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I like dancing."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -535,9 +513,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -696,9 +672,7 @@
             "hint_pt": "I love her.",
             "hint_en": "I love her.",
             "examples_pass": [
-              "I love her.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I love her."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -714,9 +688,7 @@
             "hint_pt": "She calls me every day.",
             "hint_en": "She calls me every day.",
             "examples_pass": [
-              "She calls me every day.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "She calls me every day."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -767,9 +739,7 @@
             "hint_pt": "I love him.",
             "hint_en": "I love him.",
             "examples_pass": [
-              "I love him.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I love him."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -785,9 +755,7 @@
             "hint_pt": "He helps me a lot.",
             "hint_en": "He helps me a lot.",
             "examples_pass": [
-              "He helps me a lot.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "He helps me a lot."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -803,9 +771,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -967,9 +933,7 @@
             "hint_pt": "I love pop music.",
             "hint_en": "I love pop music.",
             "examples_pass": [
-              "I love pop music.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I love pop music."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -985,9 +949,7 @@
             "hint_pt": "I like action movies.",
             "hint_en": "I like action movies.",
             "examples_pass": [
-              "I like action movies.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I like action movies."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -1003,9 +965,7 @@
             "hint_pt": "I hate horror movies.",
             "hint_en": "I hate horror movies.",
             "examples_pass": [
-              "I hate horror movies.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I hate horror movies."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -1038,9 +998,7 @@
             "hint_pt": "I love rock music.",
             "hint_en": "I love rock music.",
             "examples_pass": [
-              "I love rock music.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I love rock music."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -1056,9 +1014,7 @@
             "hint_pt": "I love comedy movies.",
             "hint_en": "I love comedy movies.",
             "examples_pass": [
-              "I love comedy movies.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I love comedy movies."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -1074,9 +1030,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1266,9 +1220,7 @@
             "hint_pt": "My sister prefers coffee.",
             "hint_en": "My sister prefers coffee.",
             "examples_pass": [
-              "My sister prefers coffee.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "My sister prefers coffee."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -1337,9 +1289,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",

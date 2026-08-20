@@ -99,7 +99,7 @@
    **hidden_prompt**: "user uses 'You hit the nail on the head' or similar"
    **hint_pt**: "Your analyst hit the nail on the head with that diagnosis."
    **hint_en**: "Your analyst hit the nail on the head with that diagnosis."
-   **example_pass**: You hit the nail on the head — that's the one. | Honestly, You hit the nail on the head sums it up. | Yeah, You hit the nail on the head for sure.
+   **example_pass**: Your analyst hit the nail on the head with that diagnosis.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
@@ -108,7 +108,7 @@
    **hidden_prompt**: "user uses 'the elephant in the room'"
    **hint_pt**: "The elephant in the room is that nobody trusts the new system."
    **hint_en**: "The elephant in the room is that nobody trusts the new system."
-   **example_pass**: The elephant in the room is that nobody trusts the new system. | The elephant in the room — that's the one. | Honestly, the elephant in the room sums it up.
+   **example_pass**: The elephant in the room is that nobody trusts the new system.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
@@ -117,7 +117,7 @@
    **hidden_prompt**: "user uses 'tip of the iceberg' or 'read between the lines'"
    **hint_pt**: "What surfaced last week is just the tip of the iceberg."
    **hint_en**: "What surfaced last week is just the tip of the iceberg."
-   **example_pass**: What surfaced last week is just the tip of the iceberg. | Tip of the iceberg — that's the one. | Honestly, tip of the iceberg sums it up.
+   **example_pass**: What surfaced last week is just the tip of the iceberg.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Idiomatic instinct, sharp." once obj_3 lands.
@@ -154,7 +154,7 @@
    **hidden_prompt**: "user uses an idiom like 'just the tip of the iceberg' or 'elephant in the room'"
    **hint_pt**: "Compensation might be the tip of the iceberg — the real story is usually managers."
    **hint_en**: "Compensation might be the tip of the iceberg — the real story is usually managers."
-   **example_pass**: Elephant in the room — that's the one. | Honestly, elephant in the room sums it up. | Yeah, elephant in the room for sure.
+   **example_pass**: Compensation might be the tip of the iceberg — the real story is usually managers.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
@@ -172,7 +172,7 @@
    **hidden_prompt**: "user asks Charlotte what her instinct says"
    **hint_pt**: "What does your gut say?"
    **hint_en**: "What does your gut say?"
-   **example_pass**: What does your gut say? | That comment really rubbed me the wrong way. | Don't throw in the towel just yet.
+   **example_pass**: What does your gut say?
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Diagnosis, idiomatically grounded." once obj_3 lands.
@@ -325,7 +325,7 @@
    **hidden_prompt**: "user asks Charlotte how her parents took it"
    **hint_pt**: "How did your parents take it?"
    **hint_en**: "How did your parents take it?"
-   **example_pass**: How did your parents take it? | That comment really rubbed me the wrong way. | Don't throw in the towel just yet. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: How did your parents take it?
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Hard moments, idiomatically held." once obj_3 lands.
@@ -478,7 +478,7 @@
    **hidden_prompt**: "user asks Charlotte how HR is responding"
    **hint_pt**: "How is HR handling it?"
    **hint_en**: "How is HR handling it?"
-   **example_pass**: How is HR handling it? | That comment really rubbed me the wrong way. | Don't throw in the towel just yet. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: How is HR handling it?
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Crisis chat, food-idiomatic." once obj_3 lands.
@@ -567,7 +567,7 @@
    **hidden_prompt**: "user uses 'the ball is in X's court' or 'on the same page'"
    **hint_pt**: "We're on the same page internally — now the ball is in the client's court."
    **hint_en**: "We're on the same page internally — now the ball is in the client's court."
-   **example_pass**: We're on the same page internally — now the ball is in the client's court. | Make sure the leadership team is on the same page before the announcement goes out. | On the same page — that's the one.
+   **example_pass**: We're on the same page internally — now the ball is in the client's court. | Make sure the leadership team is on the same page before the announcement goes out.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
@@ -613,7 +613,7 @@
    **hidden_prompt**: "user uses 'the ball is in X's court' or 'on the same page'"
    **hint_pt**: "Now the ball is in my team's court — we'll review and come back with edits by Wednesday."
    **hint_en**: "Now the ball is in my team's court — we'll review and come back with edits by Wednesday."
-   **example_pass**: We're on the same page internally — now the ball is in the client's court. | Make sure the leadership team is on the same page before the announcement goes out. | On the same page — that's the one.
+   **example_pass**: Now the ball is in my team's court — we'll review and come back with edits by Wednesday. | We're on the same page internally — now the ball is in the client's court. | Make sure the leadership team is on the same page before the announcement goes out.
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
@@ -631,7 +631,7 @@
    **hidden_prompt**: "user asks Charlotte about priorities"
    **hint_pt**: "What's the highest priority for you?"
    **hint_en**: "What's the highest priority for you?"
-   **example_pass**: And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What's the highest priority for you?
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Handoff cleanly framed." once obj_3 lands.
@@ -783,7 +783,7 @@
    **hidden_prompt**: "user asks Charlotte what gave her clarity"
    **hint_pt**: "What made it crystal clear it was time?"
    **hint_en**: "What made it crystal clear it was time?"
-   **example_pass**: What made it crystal clear it was time? | That comment really rubbed me the wrong way. | Don't throw in the towel just yet. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
+   **example_pass**: What made it crystal clear it was time?
    **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "C1 closing — figurative breath." once obj_3 lands.

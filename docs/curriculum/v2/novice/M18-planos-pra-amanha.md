@@ -104,7 +104,7 @@
    **hidden_prompt**: "user uses 'I'm going to + verb base' for a plan"
    **hint_pt**: "I'm going to travel."
    **hint_en**: "I'm going to travel."
-   **example_pass**: I'm going to travel. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to travel.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -113,7 +113,7 @@
    **hidden_prompt**: "user uses another 'I'm going to + base'"
    **hint_pt**: "I'm going to study English."
    **hint_en**: "I'm going to study English."
-   **example_pass**: I'm going to study English. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to study English.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -122,7 +122,7 @@
    **hidden_prompt**: "user uses 'He/She is going to + base'"
    **hint_pt**: "My sister is going to visit me."
    **hint_en**: "My sister is going to visit me."
-   **example_pass**: My sister is going to visit me. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: My sister is going to visit me.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Big week ahead!" quando obj_3 baterem.
@@ -159,7 +159,7 @@
    **hidden_prompt**: "user uses 'I'm going to + verb base'"
    **hint_pt**: "I'm going to relax."
    **hint_en**: "I'm going to relax."
-   **example_pass**: I'm going to relax. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to relax.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -168,7 +168,7 @@
    **hidden_prompt**: "user uses another 'I'm going to'"
    **hint_pt**: "I'm going to see friends."
    **hint_en**: "I'm going to see friends."
-   **example_pass**: I'm going to see friends. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to see friends.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -177,7 +177,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What are you going to do?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Sounds great!" quando obj_3 baterem.
@@ -282,7 +282,7 @@
    **hidden_prompt**: "user uses 'I'm not going to + verb base'"
    **hint_pt**: "No, I'm not going to the gym."
    **hint_en**: "No, I'm not going to the gym."
-   **example_pass**: No, I'm not going to the gym. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: No, I'm not going to the gym.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -291,7 +291,7 @@
    **hidden_prompt**: "user uses another 'I'm not going to + base'"
    **hint_pt**: "I'm not going to eat out."
    **hint_en**: "I'm not going to eat out."
-   **example_pass**: I'm not going to eat out. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm not going to eat out.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -300,7 +300,7 @@
    **hidden_prompt**: "user uses 'He/She isn't going to + base'"
    **hint_pt**: "My sister isn't going to come."
    **hint_en**: "My sister isn't going to come."
-   **example_pass**: My sister isn't going to come. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: My sister isn't going to come.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Plans clear!" quando obj_3 baterem.
@@ -337,7 +337,7 @@
    **hidden_prompt**: "user uses 'I'm not going to + verb base'"
    **hint_pt**: "I'm not going to work."
    **hint_en**: "I'm not going to work."
-   **example_pass**: I'm not going to work. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm not going to work.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -346,7 +346,7 @@
    **hidden_prompt**: "user uses another 'I'm not going to'"
    **hint_pt**: "I'm not going to clean."
    **hint_en**: "I'm not going to clean."
-   **example_pass**: I'm not going to clean. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm not going to clean.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -355,7 +355,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Anti-plans set!" quando obj_3 baterem.
@@ -460,7 +460,7 @@
    **hidden_prompt**: "user asks 'Are you going to + verb base?'"
    **hint_pt**: "Are you going to travel?"
    **hint_en**: "Are you going to travel?"
-   **example_pass**: Are you going to travel? | And you? | How about you?
+   **example_pass**: Are you going to travel?
    **example_fail**: Yes I am (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
@@ -469,7 +469,7 @@
    **hidden_prompt**: "user asks another 'Are you going to + base?'"
    **hint_pt**: "Are you going to study?"
    **hint_en**: "Are you going to study?"
-   **example_pass**: Are you going to study? | And you? | How about you?
+   **example_pass**: Are you going to study?
    **example_fail**: Yes I am (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
@@ -478,7 +478,7 @@
    **hidden_prompt**: "user asks WH + 'are you going to + base?'"
    **hint_pt**: "What are you going to do?"
    **hint_en**: "What are you going to do?"
-   **example_pass**: What are you going to do? | And you? | How about you?
+   **example_pass**: What are you going to do?
    **example_fail**: I'm reading (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Curious mind!" quando obj_3 baterem.
@@ -515,7 +515,7 @@
    **hidden_prompt**: "user asks 'Are you going to + verb base?'"
    **hint_pt**: "Are you going to travel?"
    **hint_en**: "Are you going to travel?"
-   **example_pass**: Are you going to travel? | And you? | How about you?
+   **example_pass**: Are you going to travel?
    **example_fail**: Yes I am (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
@@ -524,7 +524,7 @@
    **hidden_prompt**: "user asks another going to question"
    **hint_pt**: "Are you going to study?"
    **hint_en**: "Are you going to study?"
-   **example_pass**: Are you going to study? | And you? | How about you?
+   **example_pass**: Are you going to study?
    **example_fail**: Yes I am (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
@@ -533,7 +533,7 @@
    **hidden_prompt**: "user asks WH + going to"
    **hint_pt**: "Where are you going to go?"
    **hint_en**: "Where are you going to go?"
-   **example_pass**: Where are you going to go? | And you? | How about you?
+   **example_pass**: Where are you going to go?
    **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Plan reveal complete!" quando obj_3 baterem.
@@ -637,7 +637,7 @@
    **hidden_prompt**: "user uses 'I'm going to + verb base + tomorrow'"
    **hint_pt**: "I'm going to work tomorrow."
    **hint_en**: "I'm going to work tomorrow."
-   **example_pass**: I'm going to work tomorrow. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to work tomorrow.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -646,7 +646,7 @@
    **hidden_prompt**: "user uses 'I'm going to + base + next week/month'"
    **hint_pt**: "I'm going to travel next week."
    **hint_en**: "I'm going to travel next week."
-   **example_pass**: I'm going to travel next week. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to travel next week.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -655,7 +655,7 @@
    **hidden_prompt**: "user uses 'I'm going to + base + in X days' or 'soon'"
    **hint_pt**: "I'm going to finish in two days."
    **hint_en**: "I'm going to finish in two days."
-   **example_pass**: I'm going to finish in two days. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to finish in two days.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Schedule packed!" quando obj_3 baterem.
@@ -692,7 +692,7 @@
    **hidden_prompt**: "user uses going to + tomorrow"
    **hint_pt**: "Tomorrow I'm going to study."
    **hint_en**: "Tomorrow I'm going to study."
-   **example_pass**: Tomorrow I'm going to study. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: Tomorrow I'm going to study.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -701,7 +701,7 @@
    **hidden_prompt**: "user uses going to with these markers"
    **hint_pt**: "This weekend I'm going to relax."
    **hint_en**: "This weekend I'm going to relax."
-   **example_pass**: This weekend I'm going to relax. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: This weekend I'm going to relax.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -710,7 +710,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Calendar synced!" quando obj_3 baterem.
@@ -815,7 +815,7 @@
    **hidden_prompt**: "user uses 'I'm going to + base + time'"
    **hint_pt**: "I'm going to study tomorrow."
    **hint_en**: "I'm going to study tomorrow."
-   **example_pass**: I'm going to study tomorrow. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to study tomorrow.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -824,7 +824,7 @@
    **hidden_prompt**: "user uses 'I'm not going to + base'"
    **hint_pt**: "I'm not going to work this weekend."
    **hint_en**: "I'm not going to work this weekend."
-   **example_pass**: I'm not going to work this weekend. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm not going to work this weekend.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -833,7 +833,7 @@
    **hidden_prompt**: "user asks 'Are you going to + base?' or WH"
    **hint_pt**: "Are you going to travel?"
    **hint_en**: "Are you going to travel?"
-   **example_pass**: Are you going to travel? | And you? | How about you?
+   **example_pass**: Are you going to travel?
    **example_fail**: Yes I am (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Future mapped!" quando obj_3 baterem.
@@ -870,7 +870,7 @@
    **hidden_prompt**: "user uses 'I'm going to + base + time'"
    **hint_pt**: "I'm going to take a vacation next month."
    **hint_en**: "I'm going to take a vacation next month."
-   **example_pass**: I'm going to take a vacation next month. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to take a vacation next month.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -879,7 +879,7 @@
    **hidden_prompt**: "user uses 'I'm not going to + base'"
    **hint_pt**: "I'm not going to work overtime."
    **hint_en**: "I'm not going to work overtime."
-   **example_pass**: I'm not going to work overtime. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm not going to work overtime.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -888,7 +888,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Solid month ahead!" quando obj_3 baterem.
@@ -1006,7 +1006,7 @@
    **hidden_prompt**: "user asks 'What are you doing?' or 'Could you repeat?'"
    **hint_pt**: "What are you doing later?"
    **hint_en**: "What are you doing later?"
-   **example_pass**: What are you doing later? | And you? | How about you?
+   **example_pass**: What are you doing later?
    **example_fail**: I'm reading (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
@@ -1015,7 +1015,7 @@
    **hidden_prompt**: "user uses formal 'I'm going to'"
    **hint_pt**: "I'm going to work after coffee."
    **hint_en**: "I'm going to work after coffee."
-   **example_pass**: I'm going to work after coffee. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'm going to work after coffee.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Cool, let's go!" quando obj_3 bater.
@@ -1070,7 +1070,7 @@
    **hidden_prompt**: "user asks Charlotte more"
    **hint_pt**: "What time are you going to start?"
    **hint_en**: "What time are you going to start?"
-   **example_pass**: What time are you going to start? | And you? | How about you?
+   **example_pass**: What time are you going to start?
    **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "OK, see ya tomorrow!" quando obj_3 bater.

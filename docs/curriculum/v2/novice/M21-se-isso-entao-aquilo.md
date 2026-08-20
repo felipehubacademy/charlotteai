@@ -104,7 +104,7 @@
    **hidden_prompt**: "user uses 'If it rains, I'll + base'"
    **hint_pt**: "If it rains, I'll stay home."
    **hint_en**: "If it rains, I'll stay home."
-   **example_pass**: If it rains, I'll stay home. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If it rains, I'll stay home.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -113,7 +113,7 @@
    **hidden_prompt**: "user uses another 'If + present, will + base'"
    **hint_pt**: "If it's sunny, I'll go to the park."
    **hint_en**: "If it's sunny, I'll go to the park."
-   **example_pass**: If it's sunny, I'll go to the park. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If it's sunny, I'll go to the park.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -122,7 +122,7 @@
    **hidden_prompt**: "user uses 'If + present, will + base' for a plan"
    **hint_pt**: "If my friend calls, we'll meet up."
    **hint_en**: "If my friend calls, we'll meet up."
-   **example_pass**: If my friend calls, we'll meet up. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If my friend calls, we'll meet up.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Flexible plans!" quando obj_3 baterem.
@@ -159,7 +159,7 @@
    **hidden_prompt**: "user uses 'If it + verb, I'll + base' (about weather)"
    **hint_pt**: "If it rains, I'll stay in."
    **hint_en**: "If it rains, I'll stay in."
-   **example_pass**: If it rains, I'll stay in. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If it rains, I'll stay in.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -168,7 +168,7 @@
    **hidden_prompt**: "user uses another conditional"
    **hint_pt**: "If I have time, I'll call you."
    **hint_en**: "If I have time, I'll call you."
-   **example_pass**: If I have time, I'll call you. | If it rains, I stay home. | If I have time, I'll go.
+   **example_pass**: If I have time, I'll call you.
    **example_fail**: Rain (no if-clause) | I stay home (no condition) | If (incomplete)
 
 3. **id**: 3
@@ -177,7 +177,7 @@
    **hidden_prompt**: "user asks 'What will you do if...?'"
    **hint_pt**: "What will you do if it rains?"
    **hint_en**: "What will you do if it rains?"
-   **example_pass**: What will you do if it rains? | And you? | How about you?
+   **example_pass**: What will you do if it rains?
    **example_fail**: I'll travel (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Plan B ready!" quando obj_3 baterem.
@@ -281,7 +281,7 @@
    **hidden_prompt**: "user uses 'If I have time, I'll + base'"
    **hint_pt**: "If I have time, I'll exercise."
    **hint_en**: "If I have time, I'll exercise."
-   **example_pass**: If I have time, I'll exercise. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If I have time, I'll exercise.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -290,7 +290,7 @@
    **hidden_prompt**: "user uses 'If I have/save money, I'll + base'"
    **hint_pt**: "If I save money, I'll travel."
    **hint_en**: "If I save money, I'll travel."
-   **example_pass**: If I save money, I'll travel. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If I save money, I'll travel.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -299,7 +299,7 @@
    **hidden_prompt**: "user uses 'If I feel + adj, I'll + base'"
    **hint_pt**: "If I feel tired, I'll rest."
    **hint_en**: "If I feel tired, I'll rest."
-   **example_pass**: If I feel tired, I'll rest. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If I feel tired, I'll rest.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Realistic plans!" quando obj_3 baterem.
@@ -336,7 +336,7 @@
    **hidden_prompt**: "user uses 'If X, I'll + base'"
    **hint_pt**: "If the weather is nice, I'll go to the beach."
    **hint_en**: "If the weather is nice, I'll go to the beach."
-   **example_pass**: If the weather is nice, I'll go to the beach. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If the weather is nice, I'll go to the beach.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -345,7 +345,7 @@
    **hidden_prompt**: "user uses another conditional"
    **hint_pt**: "If my friends call, I'll meet them."
    **hint_en**: "If my friends call, I'll meet them."
-   **example_pass**: If my friends call, I'll meet them. | If it rains, I stay home. | If I have time, I'll go.
+   **example_pass**: If my friends call, I'll meet them.
    **example_fail**: Rain (no if-clause) | I stay home (no condition) | If (incomplete)
 
 3. **id**: 3
@@ -354,7 +354,7 @@
    **hidden_prompt**: "user asks Charlotte 'What will you do if...?'"
    **hint_pt**: "What will you do if it rains?"
    **hint_en**: "What will you do if it rains?"
-   **example_pass**: What will you do if it rains? | And you? | How about you?
+   **example_pass**: What will you do if it rains?
    **example_fail**: I'll travel (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Flexible weekend!" quando obj_3 baterem.
@@ -459,7 +459,7 @@
    **hidden_prompt**: "user uses 'If you need + something, I'll + base'"
    **hint_pt**: "If you need help, I'll come."
    **hint_en**: "If you need help, I'll come."
-   **example_pass**: If you need help, I'll come. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If you need help, I'll come.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -468,7 +468,7 @@
    **hidden_prompt**: "user uses another 'If you + present, I'll + base'"
    **hint_pt**: "If you're hungry, I'll bring food."
    **hint_en**: "If you're hungry, I'll bring food."
-   **example_pass**: If you're hungry, I'll bring food. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If you're hungry, I'll bring food.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -477,7 +477,7 @@
    **hidden_prompt**: "user uses 'If you have time, we'll + base'"
    **hint_pt**: "If you have time, we'll grab coffee."
    **hint_en**: "If you have time, we'll grab coffee."
-   **example_pass**: If you have time, we'll grab coffee. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If you have time, we'll grab coffee.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Such a kind friend!" quando obj_3 baterem.
@@ -514,7 +514,7 @@
    **hidden_prompt**: "user uses 'If you + present, I'll + base'"
    **hint_pt**: "If you're sad, I'll listen."
    **hint_en**: "If you're sad, I'll listen."
-   **example_pass**: If you're sad, I'll listen. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If you're sad, I'll listen.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -523,7 +523,7 @@
    **hidden_prompt**: "user uses another conditional offer"
    **hint_pt**: "If you need company, I'll come over."
    **hint_en**: "If you need company, I'll come over."
-   **example_pass**: If you need company, I'll come over. | If it rains, I stay home. | If I have time, I'll go.
+   **example_pass**: If you need company, I'll come over.
    **example_fail**: Rain (no if-clause) | I stay home (no condition) | If (incomplete)
 
 3. **id**: 3
@@ -532,7 +532,7 @@
    **hidden_prompt**: "user asks 'What will you do if I...?'"
    **hint_pt**: "What will you do if I'm late?"
    **hint_en**: "What will you do if I'm late?"
-   **example_pass**: What will you do if I'm late? | And you? | How about you?
+   **example_pass**: What will you do if I'm late?
    **example_fail**: I'll travel (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Real friendship!" quando obj_3 baterem.
@@ -637,7 +637,7 @@
    **hidden_prompt**: "user uses 'I'll + base + unless + present'"
    **hint_pt**: "I'll go out unless it rains."
    **hint_en**: "I'll go out unless it rains."
-   **example_pass**: I'll go out unless it rains. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll go out unless it rains.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -655,7 +655,7 @@
    **hidden_prompt**: "user uses 'Unless + present, I'll + base'"
    **hint_pt**: "Unless I'm too tired, I'll exercise."
    **hint_en**: "Unless I'm too tired, I'll exercise."
-   **example_pass**: Unless I'm too tired, I'll exercise. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: Unless I'm too tired, I'll exercise.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Unless covered!" quando obj_3 baterem.
@@ -692,7 +692,7 @@
    **hidden_prompt**: "user uses 'Yes, I'll + base + unless + present'"
    **hint_pt**: "Yes, I'll come unless I'm sick."
    **hint_en**: "Yes, I'll come unless I'm sick."
-   **example_pass**: Yes, I'll come unless I'm sick. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: Yes, I'll come unless I'm sick.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -701,7 +701,7 @@
    **hidden_prompt**: "user uses another 'I'll + base + unless'"
    **hint_pt**: "I'll bring snacks unless you have enough."
    **hint_en**: "I'll bring snacks unless you have enough."
-   **example_pass**: I'll bring snacks unless you have enough. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll bring snacks unless you have enough.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -710,7 +710,7 @@
    **hidden_prompt**: "user asks Charlotte 'What will you do if...?'"
    **hint_pt**: "Will you come unless it's late?"
    **hint_en**: "Will you come unless it's late?"
-   **example_pass**: Will you come unless it's late? | And you? | How about you?
+   **example_pass**: Will you come unless it's late?
    **example_fail**: Yes I will (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Plans set!" quando obj_3 baterem.
@@ -815,7 +815,7 @@
    **hidden_prompt**: "user uses 'If + present, I'll + base'"
    **hint_pt**: "If I save enough, I'll buy a car."
    **hint_en**: "If I save enough, I'll buy a car."
-   **example_pass**: If I save enough, I'll buy a car. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If I save enough, I'll buy a car.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -824,7 +824,7 @@
    **hidden_prompt**: "user uses 'I'll + base + unless + present'"
    **hint_pt**: "I'll go unless it rains."
    **hint_en**: "I'll go unless it rains."
-   **example_pass**: I'll go unless it rains. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll go unless it rains.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -833,7 +833,7 @@
    **hidden_prompt**: "user asks 'What will you do if...?'"
    **hint_pt**: "What will you do if it rains?"
    **hint_en**: "What will you do if it rains?"
-   **example_pass**: What will you do if it rains? | And you? | How about you?
+   **example_pass**: What will you do if it rains?
    **example_fail**: I'll travel (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Conditional master!" quando obj_3 baterem.
@@ -870,7 +870,7 @@
    **hidden_prompt**: "user uses 'If X, I'll + base'"
    **hint_pt**: "If I have time, I'll visit my family."
    **hint_en**: "If I have time, I'll visit my family."
-   **example_pass**: If I have time, I'll visit my family. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: If I have time, I'll visit my family.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
@@ -879,7 +879,7 @@
    **hidden_prompt**: "user uses 'I'll + base + unless + present'"
    **hint_pt**: "I'll work out unless I'm too tired."
    **hint_en**: "I'll work out unless I'm too tired."
-   **example_pass**: I'll work out unless I'm too tired. | I'm going to travel tomorrow. | I will study tonight.
+   **example_pass**: I'll work out unless I'm too tired.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -888,7 +888,7 @@
    **hidden_prompt**: "user asks 'What will you do if...?'"
    **hint_pt**: "What will you do this weekend?"
    **hint_en**: "What will you do this weekend?"
-   **example_pass**: What will you do this weekend? | And you? | How about you?
+   **example_pass**: What will you do this weekend?
    **example_fail**: I'll travel (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Week planned!" quando obj_3 baterem.

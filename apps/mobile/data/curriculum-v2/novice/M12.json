@@ -165,9 +165,7 @@
             "hint_pt": "I'm taller than my sister.",
             "hint_en": "I'm taller than my sister.",
             "examples_pass": [
-              "I'm taller than my sister.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "I'm taller than my sister."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -183,9 +181,7 @@
             "hint_pt": "This phone is cheaper than that one.",
             "hint_en": "This phone is cheaper than that one.",
             "examples_pass": [
-              "This phone is cheaper than that one.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "This phone is cheaper than that one."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -201,9 +197,7 @@
             "hint_pt": "Summer is hotter than winter.",
             "hint_en": "Summer is hotter than winter.",
             "examples_pass": [
-              "Summer is hotter than winter.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "Summer is hotter than winter."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -236,9 +230,7 @@
             "hint_pt": "São Paulo is bigger than Rio.",
             "hint_en": "São Paulo is bigger than Rio.",
             "examples_pass": [
-              "São Paulo is bigger than Rio.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "São Paulo is bigger than Rio."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -254,9 +246,7 @@
             "hint_pt": "My phone is older than my laptop.",
             "hint_en": "My phone is older than my laptop.",
             "examples_pass": [
-              "My phone is older than my laptop.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "My phone is older than my laptop."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -272,9 +262,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -428,9 +416,7 @@
             "hint_pt": "This book is more interesting than that one.",
             "hint_en": "This book is more interesting than that one.",
             "examples_pass": [
-              "This book is more interesting than that one.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "This book is more interesting than that one."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -446,9 +432,7 @@
             "hint_pt": "São Paulo is more expensive than Recife.",
             "hint_en": "São Paulo is more expensive than Recife.",
             "examples_pass": [
-              "São Paulo is more expensive than Recife.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "São Paulo is more expensive than Recife."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -464,9 +448,7 @@
             "hint_pt": "I'm more patient than my friend.",
             "hint_en": "I'm more patient than my friend.",
             "examples_pass": [
-              "I'm more patient than my friend.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "I'm more patient than my friend."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -499,9 +481,7 @@
             "hint_pt": "Books are more interesting than movies.",
             "hint_en": "Books are more interesting than movies.",
             "examples_pass": [
-              "Books are more interesting than movies.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "Books are more interesting than movies."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -517,9 +497,7 @@
             "hint_pt": "Rio is more beautiful than São Paulo.",
             "hint_en": "Rio is more beautiful than São Paulo.",
             "examples_pass": [
-              "Rio is more beautiful than São Paulo.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "Rio is more beautiful than São Paulo."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -535,9 +513,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -693,9 +669,7 @@
             "hint_pt": "Coffee is better than tea.",
             "hint_en": "Coffee is better than tea.",
             "examples_pass": [
-              "Coffee is better than tea.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "Coffee is better than tea."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -711,9 +685,7 @@
             "hint_pt": "Mondays are worse than Fridays.",
             "hint_en": "Mondays are worse than Fridays.",
             "examples_pass": [
-              "Mondays are worse than Fridays.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "Mondays are worse than Fridays."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -729,9 +701,7 @@
             "hint_pt": "I have more books than my brother.",
             "hint_en": "I have more books than my brother.",
             "examples_pass": [
-              "I have more books than my brother.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "I have more books than my brother."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -764,9 +734,7 @@
             "hint_pt": "This week is better than last week.",
             "hint_en": "This week is better than last week.",
             "examples_pass": [
-              "This week is better than last week.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "This week is better than last week."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -782,9 +750,7 @@
             "hint_pt": "I have more time today.",
             "hint_en": "I have more time today.",
             "examples_pass": [
-              "I have more time today.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "I have more time today."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -800,9 +766,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -957,9 +921,7 @@
             "hint_pt": "This is much better.",
             "hint_en": "This is much better.",
             "examples_pass": [
-              "This is much better.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "This is much better."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -975,9 +937,7 @@
             "hint_pt": "It's a little cheaper.",
             "hint_en": "It's a little cheaper.",
             "examples_pass": [
-              "It's a little cheaper.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "It's a little cheaper."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -993,9 +953,7 @@
             "hint_pt": "I'm a bit older than her.",
             "hint_en": "I'm a bit older than her.",
             "examples_pass": [
-              "I'm a bit older than her.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "I'm a bit older than her."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -1028,9 +986,7 @@
             "hint_pt": "Today is much hotter.",
             "hint_en": "Today is much hotter.",
             "examples_pass": [
-              "Today is much hotter.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "Today is much hotter."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -1046,9 +1002,7 @@
             "hint_pt": "My coffee is a little stronger today.",
             "hint_en": "My coffee is a little stronger today.",
             "examples_pass": [
-              "My coffee is a little stronger today.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "My coffee is a little stronger today."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -1064,9 +1018,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1224,9 +1176,7 @@
             "hint_pt": "I'm taller than my sister.",
             "hint_en": "I'm taller than my sister.",
             "examples_pass": [
-              "I'm taller than my sister.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "I'm taller than my sister."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -1242,9 +1192,7 @@
             "hint_pt": "This is more interesting than that.",
             "hint_en": "This is more interesting than that.",
             "examples_pass": [
-              "This is more interesting than that.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "This is more interesting than that."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -1260,9 +1208,7 @@
             "hint_pt": "Today is better than yesterday.",
             "hint_en": "Today is better than yesterday.",
             "examples_pass": [
-              "Today is better than yesterday.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "Today is better than yesterday."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -1295,9 +1241,7 @@
             "hint_pt": "Coffee is cheaper than wine.",
             "hint_en": "Coffee is cheaper than wine.",
             "examples_pass": [
-              "Coffee is cheaper than wine.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "Coffee is cheaper than wine."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -1313,9 +1257,7 @@
             "hint_pt": "My job is more difficult now.",
             "hint_en": "My job is more difficult now.",
             "examples_pass": [
-              "My job is more difficult now.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "My job is more difficult now."
             ],
             "examples_fail": [
               "Better (bare adjective)",
@@ -1331,9 +1273,7 @@
             "hint_pt": "My life is better today.",
             "hint_en": "My life is better today.",
             "examples_pass": [
-              "My life is better today.",
-              "Pizza is better than salad.",
-              "My house is bigger than yours."
+              "My life is better today."
             ],
             "examples_fail": [
               "Better (bare adjective)",

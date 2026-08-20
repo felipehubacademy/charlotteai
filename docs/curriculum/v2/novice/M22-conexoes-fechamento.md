@@ -179,7 +179,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Connector confidence!" quando obj_3 baterem.
@@ -357,7 +357,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Why?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Smart connections!" quando obj_3 baterem.
@@ -534,7 +534,7 @@
    **hidden_prompt**: "user asks Charlotte 'How does X act?'"
    **hint_pt**: "How does your friend act?"
    **hint_en**: "How does your friend act?"
-   **example_pass**: How does your friend act? | And you? | How about you?
+   **example_pass**: How does your friend act?
    **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Adverb art!" quando obj_3 baterem.
@@ -712,7 +712,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | And you? | What about you?
+   **example_pass**: How about you?
    **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Life's nuances!" quando obj_3 baterem.

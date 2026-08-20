@@ -161,9 +161,7 @@
             "hint_pt": "My brother is the tallest.",
             "hint_en": "My brother is the tallest.",
             "examples_pass": [
-              "My brother is the tallest.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "My brother is the tallest."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -179,9 +177,7 @@
             "hint_pt": "This is the cheapest store.",
             "hint_en": "This is the cheapest store.",
             "examples_pass": [
-              "This is the cheapest store.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "This is the cheapest store."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -197,9 +193,7 @@
             "hint_pt": "It's the hottest day of the year.",
             "hint_en": "It's the hottest day of the year.",
             "examples_pass": [
-              "It's the hottest day of the year.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "It's the hottest day of the year."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -232,9 +226,7 @@
             "hint_pt": "I'm the oldest in my family.",
             "hint_en": "I'm the oldest in my family.",
             "examples_pass": [
-              "I'm the oldest in my family.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "I'm the oldest in my family."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -250,9 +242,7 @@
             "hint_pt": "São Paulo is the biggest city.",
             "hint_en": "São Paulo is the biggest city.",
             "examples_pass": [
-              "São Paulo is the biggest city.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "São Paulo is the biggest city."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -268,9 +258,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -424,9 +412,7 @@
             "hint_pt": "Yoga is the most interesting hobby.",
             "hint_en": "Yoga is the most interesting hobby.",
             "examples_pass": [
-              "Yoga is the most interesting hobby.",
-              "The best meal was pasta.",
-              "Pizza is the best food."
+              "Yoga is the most interesting hobby."
             ],
             "examples_fail": [
               "Pasta (bare noun)",
@@ -442,9 +428,7 @@
             "hint_pt": "Rome is the most beautiful city.",
             "hint_en": "Rome is the most beautiful city.",
             "examples_pass": [
-              "Rome is the most beautiful city.",
-              "The best meal was pasta.",
-              "Pizza is the best food."
+              "Rome is the most beautiful city."
             ],
             "examples_fail": [
               "Pasta (bare noun)",
@@ -460,9 +444,7 @@
             "hint_pt": "She is the most patient person.",
             "hint_en": "She is the most patient person.",
             "examples_pass": [
-              "She is the most patient person.",
-              "The best meal was pasta.",
-              "Pizza is the best food."
+              "She is the most patient person."
             ],
             "examples_fail": [
               "Pasta (bare noun)",
@@ -495,9 +477,7 @@
             "hint_pt": "My phone is the most expensive.",
             "hint_en": "My phone is the most expensive.",
             "examples_pass": [
-              "My phone is the most expensive.",
-              "The best meal was pasta.",
-              "Pizza is the best food."
+              "My phone is the most expensive."
             ],
             "examples_fail": [
               "Pasta (bare noun)",
@@ -513,9 +493,7 @@
             "hint_pt": "Travel is the most exciting thing.",
             "hint_en": "Travel is the most exciting thing.",
             "examples_pass": [
-              "Travel is the most exciting thing.",
-              "The best meal was pasta.",
-              "Pizza is the best food."
+              "Travel is the most exciting thing."
             ],
             "examples_fail": [
               "Pasta (bare noun)",
@@ -531,9 +509,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -689,9 +665,7 @@
             "hint_pt": "This is the best pizza in town.",
             "hint_en": "This is the best pizza in town.",
             "examples_pass": [
-              "This is the best pizza in town.",
-              "The best meal was pasta.",
-              "Pizza is the best food."
+              "This is the best pizza in town."
             ],
             "examples_fail": [
               "Pasta (bare noun)",
@@ -707,9 +681,7 @@
             "hint_pt": "Mondays are the worst.",
             "hint_en": "Mondays are the worst.",
             "examples_pass": [
-              "Mondays are the worst.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "Mondays are the worst."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -725,9 +697,7 @@
             "hint_pt": "She has the most talent.",
             "hint_en": "She has the most talent.",
             "examples_pass": [
-              "She has the most talent.",
-              "The best meal was pasta.",
-              "Pizza is the best food."
+              "She has the most talent."
             ],
             "examples_fail": [
               "Pasta (bare noun)",
@@ -760,9 +730,7 @@
             "hint_pt": "The best meal was pasta.",
             "hint_en": "The best meal was pasta.",
             "examples_pass": [
-              "The best meal was pasta.",
-              "The best meal was pasta.",
-              "Pizza is the best food."
+              "The best meal was pasta."
             ],
             "examples_fail": [
               "Pasta (bare noun)",
@@ -778,9 +746,7 @@
             "hint_pt": "The worst day was Monday.",
             "hint_en": "The worst day was Monday.",
             "examples_pass": [
-              "The worst day was Monday.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "The worst day was Monday."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -796,9 +762,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -955,9 +919,7 @@
             "hint_pt": "I live on the third floor.",
             "hint_en": "I live on the third floor.",
             "examples_pass": [
-              "I live on the third floor.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "I live on the third floor."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -991,9 +953,7 @@
             "hint_pt": "My birthday is on the fifteenth.",
             "hint_en": "My birthday is on the fifteenth.",
             "examples_pass": [
-              "My birthday is on the fifteenth.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "My birthday is on the fifteenth."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -1044,9 +1004,7 @@
             "hint_pt": "This is my second coffee.",
             "hint_en": "This is my second coffee.",
             "examples_pass": [
-              "This is my second coffee.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "This is my second coffee."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -1062,9 +1020,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",
@@ -1218,9 +1174,7 @@
             "hint_pt": "My brother is the tallest.",
             "hint_en": "My brother is the tallest.",
             "examples_pass": [
-              "My brother is the tallest.",
-              "She works at a hospital.",
-              "He lives in São Paulo."
+              "My brother is the tallest."
             ],
             "examples_fail": [
               "Work (no subject + -s)",
@@ -1236,9 +1190,7 @@
             "hint_pt": "This is the best coffee.",
             "hint_en": "This is the best coffee.",
             "examples_pass": [
-              "This is the best coffee.",
-              "The best meal was pasta.",
-              "Pizza is the best food."
+              "This is the best coffee."
             ],
             "examples_fail": [
               "Pasta (bare noun)",
@@ -1289,9 +1241,7 @@
             "hint_pt": "The best trip was Italy.",
             "hint_en": "The best trip was Italy.",
             "examples_pass": [
-              "The best trip was Italy.",
-              "The best meal was pasta.",
-              "Pizza is the best food."
+              "The best trip was Italy."
             ],
             "examples_fail": [
               "Pasta (bare noun)",
@@ -1325,9 +1275,7 @@
             "hint_pt": "How about you?",
             "hint_en": "How about you?",
             "examples_pass": [
-              "How about you?",
-              "And you?",
-              "What about you?"
+              "How about you?"
             ],
             "examples_fail": [
               "Me too (statement)",

@@ -273,7 +273,6 @@
             "hint_en": "How about you?",
             "examples_pass": [
               "How about you?",
-              "And you?",
               "What about you?"
             ],
             "examples_fail": [
@@ -466,9 +465,7 @@
             "hint_pt": "Do you have any apples?",
             "hint_en": "Do you have any apples?",
             "examples_pass": [
-              "Do you have any apples?",
-              "And you?",
-              "How about you?"
+              "Do you have any apples?"
             ],
             "examples_fail": [
               "Yes I do (statement)",
@@ -499,7 +496,15 @@
             "label_en": "Answer what snacks you have",
             "hidden_prompt": "AFTER Charlotte asks 'Got any snacks?', user replies with 'Yes, I have some + noun' or 'I have some + noun'. SOME = afirmativa.",
             "hint_pt": "Yes, I have some cookies.",
-            "hint_en": "Yes, I have some cookies."
+            "hint_en": "Yes, I have some cookies.",
+            "examples_pass": [
+              "Yes, I have some cookies."
+            ],
+            "examples_fail": [
+              "Yes (single word, no structure)",
+              "I don't know (off-topic)",
+              "(silence / gibberish)"
+            ]
           },
           {
             "id": 2,
@@ -507,7 +512,15 @@
             "label_en": "Say what you DON'T have (in response to Charlotte's follow-up)",
             "hidden_prompt": "AFTER Charlotte's follow-up question (e.g. 'Chocolate?' or 'Any [specific food]?'), user replies with 'I don't have any + noun'. ANY = negativa. Different turn from obj 1.",
             "hint_pt": "I don't have any chocolate.",
-            "hint_en": "I don't have any chocolate."
+            "hint_en": "I don't have any chocolate.",
+            "examples_pass": [
+              "I don't have any chocolate."
+            ],
+            "examples_fail": [
+              "Yes (single word, no structure)",
+              "I don't know (off-topic)",
+              "(silence / gibberish)"
+            ]
           },
           {
             "id": 3,
@@ -517,9 +530,7 @@
             "hint_pt": "Do you have any snacks?",
             "hint_en": "Do you have any snacks?",
             "examples_pass": [
-              "Do you have any snacks?",
-              "And you?",
-              "How about you?"
+              "Do you have any snacks?"
             ],
             "examples_fail": [
               "Yes I do (statement)",
@@ -675,9 +686,7 @@
             "hint_pt": "How many apples are there?",
             "hint_en": "How many apples are there?",
             "examples_pass": [
-              "How many apples are there?",
-              "And you?",
-              "How about you?"
+              "How many apples are there?"
             ],
             "examples_fail": [
               "I have two (statement)",
@@ -693,9 +702,7 @@
             "hint_pt": "How much milk do you have?",
             "hint_en": "How much milk do you have?",
             "examples_pass": [
-              "How much milk do you have?",
-              "And you?",
-              "How about you?"
+              "How much milk do you have?"
             ],
             "examples_fail": [
               "It's cheap (statement)",
@@ -711,9 +718,7 @@
             "hint_pt": "How much is the coffee?",
             "hint_en": "How much is the coffee?",
             "examples_pass": [
-              "How much is the coffee?",
-              "And you?",
-              "How about you?"
+              "How much is the coffee?"
             ],
             "examples_fail": [
               "It's cheap (statement)",
@@ -746,9 +751,7 @@
             "hint_pt": "How many eggs?",
             "hint_en": "How many eggs?",
             "examples_pass": [
-              "How many eggs?",
-              "And you?",
-              "How about you?"
+              "How many eggs?"
             ],
             "examples_fail": [
               "I have two (statement)",
@@ -764,9 +767,7 @@
             "hint_pt": "How much bread?",
             "hint_en": "How much bread?",
             "examples_pass": [
-              "How much bread?",
-              "And you?",
-              "How about you?"
+              "How much bread?"
             ],
             "examples_fail": [
               "It's cheap (statement)",
@@ -782,9 +783,7 @@
             "hint_pt": "How much is the cheese?",
             "hint_en": "How much is the cheese?",
             "examples_pass": [
-              "How much is the cheese?",
-              "And you?",
-              "How about you?"
+              "How much is the cheese?"
             ],
             "examples_fail": [
               "It's cheap (statement)",
@@ -941,9 +940,7 @@
             "hint_pt": "I'd like a pizza, please.",
             "hint_en": "I'd like a pizza, please.",
             "examples_pass": [
-              "I'd like a pizza, please.",
-              "I can swim.",
-              "I can speak English."
+              "I'd like a pizza, please."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -959,9 +956,7 @@
             "hint_pt": "I'd like a glass of water.",
             "hint_en": "I'd like a glass of water.",
             "examples_pass": [
-              "I'd like a glass of water.",
-              "I can swim.",
-              "I can speak English."
+              "I'd like a glass of water."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -977,9 +972,7 @@
             "hint_pt": "Can I have the bill, please?",
             "hint_en": "Can I have the bill, please?",
             "examples_pass": [
-              "Can I have the bill, please?",
-              "And you?",
-              "How about you?"
+              "Can I have the bill, please?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -1012,9 +1005,7 @@
             "hint_pt": "I'd like a burger.",
             "hint_en": "I'd like a burger.",
             "examples_pass": [
-              "I'd like a burger.",
-              "I can swim.",
-              "I can speak English."
+              "I'd like a burger."
             ],
             "examples_fail": [
               "Swim (no 'I can')",
@@ -1030,9 +1021,7 @@
             "hint_pt": "I'd like a Coke.",
             "hint_en": "I'd like a Coke.",
             "examples_pass": [
-              "I'd like a Coke.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I'd like a Coke."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -1048,9 +1037,7 @@
             "hint_pt": "How much is it?",
             "hint_en": "How much is it?",
             "examples_pass": [
-              "How much is it?",
-              "And you?",
-              "How about you?"
+              "How much is it?"
             ],
             "examples_fail": [
               "It's cheap (statement)",
@@ -1206,9 +1193,7 @@
             "hint_pt": "I'd like a sandwich.",
             "hint_en": "I'd like a sandwich.",
             "examples_pass": [
-              "I'd like a sandwich.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I'd like a sandwich."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -1224,9 +1209,7 @@
             "hint_pt": "How much is the sandwich?",
             "hint_en": "How much is the sandwich?",
             "examples_pass": [
-              "How much is the sandwich?",
-              "And you?",
-              "How about you?"
+              "How much is the sandwich?"
             ],
             "examples_fail": [
               "It's cheap (statement)",
@@ -1242,9 +1225,7 @@
             "hint_pt": "Can I have the bill, please?",
             "hint_en": "Can I have the bill, please?",
             "examples_pass": [
-              "Can I have the bill, please?",
-              "And you?",
-              "How about you?"
+              "Can I have the bill, please?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -1277,9 +1258,7 @@
             "hint_pt": "I have some pasta.",
             "hint_en": "I have some pasta.",
             "examples_pass": [
-              "I have some pasta.",
-              "I love pizza.",
-              "My favorite food is sushi."
+              "I have some pasta."
             ],
             "examples_fail": [
               "Pizza (bare noun)",
@@ -1313,9 +1292,7 @@
             "hint_pt": "How much pasta?",
             "hint_en": "How much pasta?",
             "examples_pass": [
-              "How much pasta?",
-              "And you?",
-              "How about you?"
+              "How much pasta?"
             ],
             "examples_fail": [
               "It's cheap (statement)",
