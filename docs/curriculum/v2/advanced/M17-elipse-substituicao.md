@@ -85,7 +85,7 @@
    **hidden_prompt**: "user answers 'I want to' / 'I'd like to' with elided verb"
    **hint_pt**: "Q: 'Will you come?' A: 'I'd like to, but I have a conflict that evening.'"
    **hint_en**: "Q: 'Will you come?' A: 'I'd like to, but I have a conflict that evening.'"
-   **example_pass**: Q: 'Will you come?' A: 'I'd like to, but I have a conflict that evening.' | I want to — that's the one. | Honestly, I want to sums it up.
+   **example_pass**: Q: 'Will you come?' A: 'I'd like to, but I have a conflict that evening.' | Q: 'Are you joining the trip?' A: 'I want to, but the dates clash with a deadline.' | Q: 'Will you speak at the panel?' A: 'I hope to, if my flight lands on time.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -94,7 +94,7 @@
    **hidden_prompt**: "user uses 'I can't / I won't' with elided verb"
    **hint_pt**: "Q: 'Are you applying?' A: 'I should, but I keep putting it off.'"
    **hint_en**: "Q: 'Are you applying?' A: 'I should, but I keep putting it off.'"
-   **example_pass**: I can't — that's the one. | Honestly, I can't sums it up. | Yeah, I can't for sure.
+   **example_pass**: Q: 'Are you applying?' A: 'I should, but I keep putting it off.' | Q: 'Will you fix the bug tonight?' A: 'I can't, the servers are down for maintenance.' | Q: 'Are you coming to the reunion?' A: 'I won't, sadly — I'll be abroad that week.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3

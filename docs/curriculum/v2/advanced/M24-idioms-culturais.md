@@ -106,7 +106,7 @@
    **hidden_prompt**: "user uses 'cold shoulder'"
    **hint_pt**: "My brother gave me the cold shoulder for two weeks after our argument — finally we talked it out."
    **hint_en**: "My brother gave me the cold shoulder for two weeks after our argument — finally we talked it out."
-   **example_pass**: My brother gave me the cold shoulder for two weeks after our argument — finally we talked it out. | Cold shoulder — that's the one. | Honestly, cold shoulder sums it up.
+   **example_pass**: My brother gave me the cold shoulder for two weeks after our argument — finally we talked it out. | Ever since I forgot her birthday, my sister has given me the cold shoulder at every family dinner. | The whole department gave the new manager the cold shoulder until he proved he'd actually listen.
    **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 3. **id**: 3

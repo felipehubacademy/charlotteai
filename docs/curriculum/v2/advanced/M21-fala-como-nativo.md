@@ -311,7 +311,7 @@
    **hidden_prompt**: "user asks Charlotte about the book"
    **hint_pt**: "Are you actually enjoying it?"
    **hint_en**: "Are you actually enjoying it?"
-   **example_pass**: What about the book? | And the book — what do you think? | The book — that's the one.
+   **example_pass**: Are you actually enjoying it? | Would you actually recommend it, or are you just powering through? | Is it living up to all the hype people keep giving it? | And you? | What about you?
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Tags, native rhythm." once obj_3 lands.

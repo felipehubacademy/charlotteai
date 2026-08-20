@@ -88,7 +88,7 @@
    **hidden_prompt**: "user uses 'The case for + noun/-ing'"
    **hint_pt**: "The case for sustained public library funding rests on three independent grounds."
    **hint_en**: "The case for sustained public library funding rests on three independent grounds."
-   **example_pass**: The case for sustained public library funding rests on three independent grounds. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now. | The case for a four-day workweek is stronger than the conventional debate would suggest. | The case for early intervention is supported by both economic and developmental evidence. | The case for transparency in this domain becomes harder to argue against with every passing scandal.
+   **example_pass**: The case for sustained public library funding rests on three independent grounds. | The case for a four-day workweek is stronger than the conventional debate would suggest. | The case for early intervention is supported by both economic and developmental evidence. | The case for transparency in this domain becomes harder to argue against with every passing scandal.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -143,7 +143,7 @@
    **hidden_prompt**: "user uses 'The case for + noun/-ing'"
    **hint_pt**: "The case for piloting a four-day workweek rests on what we already know about attention and output."
    **hint_en**: "The case for piloting a four-day workweek rests on what we already know about attention and output."
-   **example_pass**: The case for piloting a four-day workweek rests on what we already know about attention and output. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now. | The case for sustained public library funding rests on three independent grounds. | The case for a four-day workweek is stronger than the conventional debate would suggest. | The case for early intervention is supported by both economic and developmental evidence. | The case for transparency in this domain becomes harder to argue against with every passing scandal.
+   **example_pass**: The case for piloting a four-day workweek rests on what we already know about attention and output. | The case for sustained public library funding rests on three independent grounds. | The case for a four-day workweek is stronger than the conventional debate would suggest. | The case for early intervention is supported by both economic and developmental evidence.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -240,7 +240,7 @@
    **hidden_prompt**: "user uses 'Some may object that... However...'"
    **hint_pt**: "Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project."
    **hint_en**: "Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project."
-   **example_pass**: Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now. | By contrast, longitudinal studies in similar populations have shown a weaker effect over time. | However, the same effect was not observed in the control population. | By contrast, earlier studies relying on cross-sectional data reached the opposite conclusion. | However, the methodology used in the present study differs from earlier work in two important respects.
+   **example_pass**: Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project. | Some may object that the timeline is too aggressive. However, every quarter of delay compounds the very costs the objection is worried about. | Some may object that the sample is too small. However, the effect size is large enough to survive even a conservative reweighting. | Some may object that public appetite is lacking. However, support rises sharply once the concrete trade-offs are actually explained.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -258,7 +258,7 @@
    **hidden_prompt**: "user uses 'It would be a mistake to' or 'The deeper question is'"
    **hint_pt**: "It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose."
    **hint_en**: "It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose."
-   **example_pass**: It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose. | The deeper question is — that's the one. | Honestly, The deeper question is sums it up.
+   **example_pass**: It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose. | It would be a mistake to treat this as a purely technical problem. The deeper question is who gets to decide what counts as acceptable risk. | It would be a mistake to read the delay as caution. The deeper question is whether caution has quietly become an excuse. | The deeper question is not whether we can afford to act, but whether we can afford the world that inaction leaves behind.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Objections answered, position strengthened." once obj_3 lands.

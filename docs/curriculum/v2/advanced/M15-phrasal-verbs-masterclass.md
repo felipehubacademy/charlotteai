@@ -94,7 +94,7 @@
    **hidden_prompt**: "user uses 'bring about' for causation"
    **hint_pt**: "Decades of activism brought about the legal recognition that nobody had thought possible."
    **hint_en**: "Decades of activism brought about the legal recognition that nobody had thought possible."
-   **example_pass**: Bring about — that's the one. | Honestly, bring about sums it up. | Yeah, bring about for sure.
+   **example_pass**: Decades of activism brought about the legal recognition that nobody had thought possible. | The merger brought about sweeping changes that no one on the old board had anticipated. | A single viral post can bring about a shift in public opinion overnight. | Nothing but sustained pressure will bring about real reform in an institution this entrenched.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -149,7 +149,7 @@
    **hidden_prompt**: "user uses 'brought about' for outcome"
    **hint_pt**: "What brought about the shift was probably the talent leaving — once people quit, the policy followed."
    **hint_en**: "What brought about the shift was probably the talent leaving — once people quit, the policy followed."
-   **example_pass**: What brought about the shift was probably the talent leaving — once people quit, the policy followed. | Brought about — that's the one. | Honestly, brought about sums it up.
+   **example_pass**: What brought about the shift was probably the talent leaving — once people quit, the policy followed. | What really brought about the change was the budget cut, not any grand strategy. | The reorganisation was brought about by pressure from investors, not by internal consensus. | Losing that contract brought about a rethink of the entire sales model.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -302,7 +302,7 @@
    **hidden_prompt**: "user uses 'gloss over' to describe coverage gap"
    **hint_pt**: "Each version probably glossed over the angles inconvenient to its own audience."
    **hint_en**: "Each version probably glossed over the angles inconvenient to its own audience."
-   **example_pass**: Gloss over — that's the one. | Honestly, gloss over sums it up. | Yeah, gloss over for sure.
+   **example_pass**: Each version probably glossed over the angles inconvenient to its own audience. | The report glossed over the safety concerns and led with the profit figures. | Reviewers tend to gloss over the flaws in a product they already want to like. | You can't just gloss over the funding gap and hope nobody notices.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
