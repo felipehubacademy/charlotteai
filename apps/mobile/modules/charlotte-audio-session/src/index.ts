@@ -95,6 +95,23 @@ const CharlotteAudioSession = {
   },
 
   /**
+   * true quando a rota de audio atual eh um dispositivo Bluetooth (AirPods,
+   * fones BT, etc). Nesses casos o mic vira o HFP do fone — qualidade baixa
+   * (8kHz) que degrada o reconhecimento de fala. Usado para exibir uma dica
+   * visual ("fale proximo ao iPhone" / "remova os AirPods") antes de
+   * exercicios de fala. iOS: rota reportada como "BluetoothHFP:...",
+   * "BluetoothA2DP:...", "BluetoothLE:...". Android: "bluetooth*:...".
+   */
+  isUsingBluetoothMic(): boolean {
+    try {
+      const route = (Native.getCurrentRoute() || '').toLowerCase();
+      return route.includes('bluetooth');
+    } catch {
+      return false;
+    }
+  },
+
+  /**
    * Listener pra mudancas de rota de audio. Usado pra logging/analytics.
    * O modulo nativo JA re-aplica speaker override automaticamente — este
    * listener nao precisa fazer nada. Util pra debug.
