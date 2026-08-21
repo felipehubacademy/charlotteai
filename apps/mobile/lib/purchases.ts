@@ -7,14 +7,14 @@
  *  2. Identificar o usuário (login/logout)
  *  3. Buscar offerings (planos disponíveis)
  *  4. Comprar / restaurar compras
- *  5. Verificar entitlement "premium" localmente
+ *  5. Verificar entitlement "Premium" localmente
  *  6. Sincronizar status com Supabase após compra/restauração
  *
  * Product IDs (configurados no App Store Connect + RevenueCat):
  *   com.hubacademy.charlotte.monthly  — R$ 29,90/mês  (7-day trial)
  *   com.hubacademy.charlotte.yearly   — R$ 199,90/ano (7-day trial)
  *
- * Entitlement ID: "premium"
+ * Entitlement ID: "Premium" (confirmado no dashboard RevenueCat 2026-08-21)
  * Offering ID:    "default"
  */
 

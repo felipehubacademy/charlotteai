@@ -95,6 +95,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     'expo-updates',
     'expo-video',
     'expo-web-browser',
+    // Fix Xcode 16 build error ('memory' file not found) pro react-native-webrtc.
+    // Idempotente (marker guard), afeta so o target react-native-webrtc.
+    './plugins/withWebRTCXcode16Fix',
     './plugins/with-incallmanager-ringback',
     [
       'expo-build-properties',
