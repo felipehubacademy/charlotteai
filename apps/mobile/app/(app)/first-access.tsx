@@ -1,8 +1,9 @@
 import { useState, useRef } from 'react';
 import {
   View, TextInput, TouchableOpacity,
-  KeyboardAvoidingView, Platform, ScrollView,
+   Platform, ScrollView,
 } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Lock, Eye, EyeSlash, CheckCircle, WarningCircle } from 'phosphor-react-native';

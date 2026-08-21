@@ -50,6 +50,7 @@ import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { checkLevelPromotion, promoteUserLevel, NEXT_LEVEL } from '@/lib/levelPromotion';
 import PromotionModal from '@/components/ui/PromotionModal';
+import BluetoothMicHint from '@/components/BluetoothMicHint';
 import { supabase } from '@/lib/supabase';
 
 // ── Color helper — rgba() for Android hex+alpha compatibility ──
@@ -1907,6 +1908,9 @@ export default function LearnSessionScreen() {
                           ? (isPortuguese ? 'Solte para parar' : 'Release to stop')
                           : (isPortuguese ? 'Segure para falar' : 'Hold to speak')}
                       </AppText>
+                      {!isRec && (
+                        <BluetoothMicHint level={level} style={{ marginTop: 14, marginHorizontal: 0, maxWidth: 320 }} />
+                      )}
                     </View>
                   );
                 })()}

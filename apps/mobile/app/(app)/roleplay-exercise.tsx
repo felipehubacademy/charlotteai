@@ -12,8 +12,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View, TouchableOpacity, StatusBar, ActivityIndicator,
-  KeyboardAvoidingView, Platform, ScrollView, Animated, PanResponder,
+   Platform, ScrollView, Animated, PanResponder,
 } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams, useFocusEffect } from 'expo-router';
 import { ArrowLeft, Microphone, X as XIcon, CheckCircle, Lightbulb, Trophy, ArrowsClockwise } from 'phosphor-react-native';

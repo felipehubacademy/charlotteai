@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import {
   View, ScrollView, TouchableOpacity, TextInput,
-  KeyboardAvoidingView, Platform, ActivityIndicator,
+   Platform, ActivityIndicator,
   Animated, Pressable,
 } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import {
@@ -20,6 +21,7 @@ import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import Constants from 'expo-constants';
 import { useAudioRecorder, RecordingPresets, RecordingOptions, IOSOutputFormat, AudioQuality } from 'expo-audio';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
+import BluetoothMicHint from '@/components/BluetoothMicHint';
 
 // ── Palette ────────────────────────────────────────────────────
 const C = {
@@ -693,6 +695,9 @@ export default function LearnPronunciationScreen() {
             paddingBottom: Platform.OS === 'ios' ? 28 : 20,
             backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border,
           }}>
+            {exerciseType === 'repeat' && (
+              <BluetoothMicHint level={userLevel} style={{ marginHorizontal: 0 }} />
+            )}
             {exerciseType === 'repeat' ? (
               <Pressable
                 onPressIn={startRecording}

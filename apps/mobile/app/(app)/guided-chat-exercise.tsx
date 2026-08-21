@@ -14,8 +14,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View, TouchableOpacity, StatusBar, ActivityIndicator,
-  KeyboardAvoidingView, Platform, TextInput, Animated,
+   Platform, TextInput, Animated,
 } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { setAudioModeAsync, setIsAudioActiveAsync } from 'expo-audio';
 import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';
 import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';

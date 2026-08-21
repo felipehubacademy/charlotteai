@@ -12,8 +12,9 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import {
   View, TextInput, TouchableOpacity, ActivityIndicator,
-  ScrollView, Platform, Alert, KeyboardAvoidingView,
+  ScrollView, Platform, Alert, 
 } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import {

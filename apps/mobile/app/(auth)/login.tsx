@@ -3,11 +3,12 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
+  
   Platform,
   ScrollView,
   Image,
 } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {

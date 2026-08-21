@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   View, ScrollView, TouchableOpacity, TextInput,
-  KeyboardAvoidingView, Platform, Animated,
+   Platform, Animated,
   ActivityIndicator, Pressable,
 } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { ArrowLeft, CheckCircle, XCircle, Trophy, Star, ArrowRight, SpeakerHigh } from 'phosphor-react-native';

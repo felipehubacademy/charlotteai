@@ -5,9 +5,10 @@
 
 import React, { useCallback, useState, useMemo, useEffect, useRef } from 'react';
 import {
-  Alert, View, TouchableOpacity, KeyboardAvoidingView, Platform, Modal,
+  Alert, View, TouchableOpacity,  Platform, Modal,
   Pressable, Animated, Easing, ScrollView, Dimensions, StatusBar,
 } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { Question, X, ClockCounterClockwise, XCircle, CaretRight, Trash, Plus } from 'phosphor-react-native';
 import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
