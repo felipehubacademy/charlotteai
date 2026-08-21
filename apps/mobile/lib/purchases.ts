@@ -179,6 +179,22 @@ export async function restorePurchases(): Promise<RestoreResult> {
   }
 }
 
+// ── Manage subscription ───────────────────────────────────────────────────────
+// Abre a tela nativa de gerenciamento de assinatura da loja (App Store /
+// Google Play), onde o usuario pode cancelar/trocar o plano. Requisito da
+// App Store 3.1.2 para apps de assinatura auto-renovavel. O cancelamento em si
+// eh feito pela loja; o RevenueCat webhook + sync no foreground refletem o
+// novo estado no app (status 'cancelled', acesso mantido ate expires_at).
+export async function openManageSubscriptions(): Promise<{ ok: boolean }> {
+  try {
+    await Purchases.showManageSubscriptions();
+    return { ok: true };
+  } catch (e) {
+    console.warn('[purchases] openManageSubscriptions error:', e);
+    return { ok: false };
+  }
+}
+
 // ── Sync to Supabase ──────────────────────────────────────────────────────────
 // Called after purchase/restore and on app foreground — keeps DB in sync com RC.
 // RevenueCat webhook também faz isso server-side, mas este é o sync client-side

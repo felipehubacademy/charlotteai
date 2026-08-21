@@ -13,6 +13,7 @@ import {
   SignOut, ShieldCheck, CheckCircle, Microphone, FileText,
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
   CaretRight, Play, SpeakerHigh, Vibrate, ChatCircleText,
+  CreditCard,
 } from 'phosphor-react-native';
 import {
   loadAudioPreferences,
@@ -25,7 +26,7 @@ import { openLink } from '@/lib/openLink';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
-import { restorePurchases } from '@/lib/purchases';
+import { restorePurchases, openManageSubscriptions } from '@/lib/purchases';
 import { getLiveVoiceStatus, LiveVoiceStatus } from '@/lib/liveVoiceUsage';
 import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
@@ -317,6 +318,21 @@ export default function ProfileTab() {
     );
   };
 
+  const handleManageSubscription = async () => {
+    const r = await openManageSubscriptions();
+    if (r.ok) return;
+    // Fallback: abrir a pagina de assinaturas da loja direto.
+    const url = Platform.OS === 'ios'
+      ? 'https://apps.apple.com/account/subscriptions'
+      : 'https://play.google.com/store/account/subscriptions';
+    Linking.openURL(url).catch(() => {
+      Alert.alert(
+        isPt ? 'Não foi possível abrir' : 'Could not open',
+        isPt ? 'Abra a loja de apps e gerencie a assinatura por lá.' : 'Open your app store and manage the subscription there.',
+      );
+    });
+  };
+
   const handleSignOut = () => {
     Alert.alert(
       isPt ? 'Sair da conta' : 'Sign out',
@@ -518,6 +534,12 @@ export default function ProfileTab() {
           <>
             <SectionTitle label={isPt ? 'Assinatura' : 'Subscription'} />
             <SettingGroup>
+              <SettingRow
+                icon={<CreditCard size={18} color={C.navyMid} weight="regular" />}
+                label={isPt ? 'Gerenciar assinatura' : 'Manage subscription'}
+                onPress={handleManageSubscription}
+                chevron
+              />
               <SettingRow
                 icon={restoringPurchases
                   ? <ActivityIndicator size={18} color={C.navyMid} />
