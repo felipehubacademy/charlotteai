@@ -959,6 +959,12 @@ export default function LiveVoiceModal({
           callStartedAtRef.current = new Date().toISOString();
         }
 
+        // Belt-and-suspenders: reafirma a preferencia de speaker AGORA que a
+        // conexao abriu — nesse ponto o WebRTC ADM ja rodou setConfiguration
+        // (que pode ter limpado o override do speaker, ex: cabo USB plugado
+        // no inicio da call). Idempotente se ja estava no speaker.
+        CharlotteAudioSession.setSpeakerOn(isSpeakerRef.current).catch(() => { /* silencioso */ });
+
         const greeting = getRandomGreeting(userLevel);
         // Hint de idioma:
         //  - Inter/Advanced -> 'en' (sempre ingles)

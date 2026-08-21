@@ -165,10 +165,17 @@ public class CharlotteAudioSessionModule: Module {
       NSLog("[CharlotteAudioSession] route change reason=\(reasonRaw) outputs=\(outputs)")
       self.sendEvent("onRouteChange", ["reason": reasonRaw, "outputs": outputs])
 
-      // Replica Jitsi audioSessionDidChangeRoute: so reage a essas razoes.
+      // Razoes que exigem reafirmar o speaker. Alem das 3 do Jitsi
+      // (device plug/unplug), incluimos categoryChange/override/
+      // routeConfigurationChange: quando o WebRTC ADM ativa a sessao
+      // (setConfiguration) com um cabo USB JA plugado no inicio da call,
+      // a route change chega com reason=.categoryChange/.override — que
+      // antes caia no default e o force-speaker NUNCA rodava (cabo no
+      // inicio = falha; plugar durante = funcionava). Agora reafirmamos.
       let external: Bool
       switch reason {
-      case .newDeviceAvailable, .oldDeviceUnavailable, .noSuitableRouteForCategory:
+      case .newDeviceAvailable, .oldDeviceUnavailable, .noSuitableRouteForCategory,
+           .categoryChange, .override, .routeConfigurationChange:
         external = true
       default:
         external = false
