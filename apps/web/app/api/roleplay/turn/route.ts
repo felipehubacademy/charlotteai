@@ -264,6 +264,16 @@ Rules:
   (the system tracks this — repeating it is OK but unnecessary).
 - Multiple objectives can be marked in the SAME turn only if the student's
   message clearly satisfies each one.
+- SEQUENTIAL SIMILAR OBJECTIVES (important): when two or more PENDING
+  objectives practice the SAME grammar structure (e.g. all three are
+  "someone who + clause", or all are "I wish I + past", or all are the
+  same phrasal-verb pattern) and differ only in topic/detail, mark them
+  IN ORDER as the student produces valid utterances of that structure.
+  The Nth valid utterance of the shared structure satisfies the Nth
+  lowest-id pending objective in that group. NEVER leave a valid
+  structural utterance unmarked just because it doesn't match a specific
+  topic detail of one obj — near-identical objs are just reps. Do NOT
+  stall marking obj 1 waiting for a "perfect" match.
 - When ALL objectives are met: celebrate warmly AND naturally ask ONE
   follow-up question to keep conversation feeling alive (the student
   won't continue — a result card pops up — but this lets the conversation

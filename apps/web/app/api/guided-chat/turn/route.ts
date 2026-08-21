@@ -277,6 +277,20 @@ Rules:
 - An objective already met in a PRIOR turn must NOT appear again.
 - Multiple objectives can be marked in the SAME turn only if the student's
   message clearly satisfies each one.
+- SEQUENTIAL SIMILAR OBJECTIVES (important): when two or more PENDING
+  objectives practice the SAME grammar structure (e.g. all three are
+  "someone who + clause", or all are "I wish I + past", or all are the
+  same phrasal-verb pattern) and differ only in topic/detail, mark them
+  IN ORDER as the student produces valid utterances of that structure.
+  The Nth valid utterance of the shared structure satisfies the Nth
+  lowest-id pending objective in that group. NEVER leave a valid
+  structural utterance unmarked just because it doesn't match a specific
+  topic detail of one obj — the pedagogical goal is producing the
+  structure, and near-identical objs are just reps. Example: three objs
+  all "describe someone who + present simple". Student: "My father is
+  someone who believes in me." → mark obj 1. Next: "I have a friend who
+  helps me." → mark obj 2. Next: "I have a sister who encourages me." →
+  mark obj 3. Do NOT stall marking obj 1 waiting for a "perfect" match.
 - When ALL objectives are met: celebrate warmly AND naturally ask ONE
   follow-up question to keep chat feeling alive (the student won't reply
   — a result card pops up — but this lets it feel like a real conversation
