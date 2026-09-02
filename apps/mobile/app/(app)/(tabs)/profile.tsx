@@ -352,6 +352,8 @@ export default function ProfileTab() {
     if (!isActive)                             return { text: isPt ? 'Inativa'       : 'Inactive',      color: C.error };
     if (isInstitutional)                       return { text: isPt ? 'Institucional' : 'Institutional', color: C.greenDark };
     if (subscriptionStatus === 'active')       return { text: isPt ? 'Ativa'         : 'Active',        color: C.greenDark };
+    // 'cancelled' = auto-renew desligado mas acesso valido ate expires_at.
+    if (subscriptionStatus === 'cancelled')    return { text: isPt ? 'Ativa · cancelada' : 'Active · cancelling', color: '#B45309' };
     if (subscriptionStatus === 'trial')        return { text: 'Trial',                                  color: '#1D4ED8' };
     if (subscriptionStatus === 'expired')      return { text: isPt ? 'Expirada'      : 'Expired',       color: C.error };
     return                                            { text: isPt ? 'Sem acesso'    : 'No access',     color: C.error };
