@@ -98,6 +98,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     // Fix Xcode 16 build error ('memory' file not found) pro react-native-webrtc.
     // Idempotente (marker guard), afeta so o target react-native-webrtc.
     './plugins/withWebRTCXcode16Fix',
+    // Linka ReplayKit no app target: o withWebRTCXcode16Fix desliga os modulos
+    // do react-native-webrtc, o que mata o autolink da ReplayKit e quebra o
+    // link (Undefined _OBJC_CLASS_$_RPSystemBroadcastPickerView). Precisa vir
+    // DEPOIS do withWebRTCXcode16Fix.
+    './plugins/withReplayKitFramework',
     './plugins/with-incallmanager-ringback',
     [
       'expo-build-properties',
