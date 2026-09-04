@@ -349,8 +349,10 @@ export default function ProfileTab() {
   const isInstitutional    = !!profile?.is_institutional;
 
   const accessLabel = (() => {
-    if (!isActive)                             return { text: isPt ? 'Inativa'       : 'Inactive',      color: C.error };
+    // Institucional tem acesso garantido — checar ANTES de is_active (senao
+    // um institucional com is_active=false aparecia como "Inativa").
     if (isInstitutional)                       return { text: isPt ? 'Institucional' : 'Institutional', color: C.greenDark };
+    if (!isActive)                             return { text: isPt ? 'Inativa'       : 'Inactive',      color: C.error };
     if (subscriptionStatus === 'active')       return { text: isPt ? 'Ativa'         : 'Active',        color: C.greenDark };
     // 'cancelled' = auto-renew desligado mas acesso valido ate expires_at.
     if (subscriptionStatus === 'cancelled')    return { text: isPt ? 'Ativa · cancelada' : 'Active · cancelling', color: '#B45309' };

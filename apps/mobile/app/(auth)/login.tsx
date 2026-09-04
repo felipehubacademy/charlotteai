@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { router } from 'expo-router';
+import Constants from 'expo-constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   Envelope,
@@ -216,7 +217,7 @@ export default function LoginScreen() {
           </TouchableOpacity>
 
           <AppText style={{ color: C.navyLight, fontSize: 11, textAlign: 'center', marginTop: 32, opacity: 0.5 }}>
-            Charlotte v1.0 · All rights reserved
+            Charlotte v{Constants.expoConfig?.version ?? '1.0.0'} · All rights reserved
           </AppText>
 
         </ScrollView>
