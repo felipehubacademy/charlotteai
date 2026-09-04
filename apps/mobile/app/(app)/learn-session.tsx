@@ -1351,7 +1351,7 @@ export default function LearnSessionScreen() {
         </TouchableOpacity>
         {/* Titulo absoluto — centraliza na largura TOTAL do header, nao
             entre o arrow e o badge. pointerEvents:none deixa toques passarem. */}
-        <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
+        <View pointerEvents="none" style={{ position: 'absolute', left: 100, right: 100, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
           {params.reviewId && (
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4,
               backgroundColor: C.violetBg, borderRadius: 8,
@@ -1362,7 +1362,7 @@ export default function LearnSessionScreen() {
               </AppText>
             </View>
           )}
-          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '70%', textAlign: 'center' }} numberOfLines={1}>
+          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '100%', textAlign: 'center' }} numberOfLines={1}>
             {topicTitle}
           </AppText>
           {!!tenseTag && !params.reviewId && (
