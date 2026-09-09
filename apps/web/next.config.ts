@@ -8,7 +8,6 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   outputFileTracingIncludes: {
-    '/api/tts/file': ['./public/tts/**/*.mp3'],
     // ffmpeg-static ships the platform binary under node_modules; must be
     // copied into the serverless bundle so fluent-ffmpeg can spawn it.
     '/api/pronunciation': ['./node_modules/ffmpeg-static/ffmpeg'],
