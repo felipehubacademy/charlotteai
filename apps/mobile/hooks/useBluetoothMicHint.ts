@@ -9,6 +9,7 @@
 // Re-checa em mudancas de rota (conectar/desconectar AirPods durante a tela).
 
 import { useEffect, useState } from 'react';
+import { AppState } from 'react-native';
 import CharlotteAudioSession from '../modules/charlotte-audio-session/src';
 
 export function useBluetoothMicHint(active: boolean = true): { showHint: boolean } {
@@ -29,8 +30,22 @@ export function useBluetoothMicHint(active: boolean = true): { showHint: boolean
     };
 
     check();
+
+    // Em telas sem Live Voice ativo (ex: Pronuncia), o onRouteChange do
+    // CharlotteAudioSession NAO dispara (so emite quando a session esta ativa).
+    // Por isso poll leve + re-check ao voltar do background: cobre conectar/
+    // desconectar AirPods enquanto a tela esta aberta.
     const sub = CharlotteAudioSession.addRouteChangeListener(check);
-    return () => sub.remove();
+    const poll = setInterval(check, 2000);
+    const appSub = AppState.addEventListener('change', (s) => {
+      if (s === 'active') check();
+    });
+
+    return () => {
+      sub.remove();
+      clearInterval(poll);
+      appSub.remove();
+    };
   }, [active]);
 
   return { showHint };

@@ -39,6 +39,7 @@ interface CharlotteAudioSessionNative {
   playRingback(): Promise<boolean>;
   stopRingback(): Promise<void>;
   getCurrentRoute(): string;
+  isBluetoothMicAvailable?(): boolean;
   addListener<E extends keyof Events>(eventName: E, listener: Events[E]): EventSubscription;
 }
 
@@ -103,6 +104,17 @@ const CharlotteAudioSession = {
    * "BluetoothA2DP:...", "BluetoothLE:...". Android: "bluetooth*:...".
    */
   isUsingBluetoothMic(): boolean {
+    // Preferimos isBluetoothMicAvailable() nativo (iOS): usa availableInputs,
+    // que detecta AirPods/headset HFP mesmo com a sessao idle (fora do Live
+    // Voice) — a rota de saida sozinha nao mostra o BT quando nada esta
+    // tocando. Fallback pro parse da rota (Android / builds sem a funcao).
+    try {
+      if (typeof Native.isBluetoothMicAvailable === 'function') {
+        return Native.isBluetoothMicAvailable();
+      }
+    } catch {
+      /* cai no fallback abaixo */
+    }
     try {
       const route = (Native.getCurrentRoute() || '').toLowerCase();
       return route.includes('bluetooth');

@@ -31,7 +31,7 @@ import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import { requestRecordingPermissionsAsync, setAudioModeAsync } from 'expo-audio';
 import { RTCPeerConnection, mediaDevices } from 'react-native-webrtc';
 import CharlotteAudioSession from 'charlotte-audio-session';
-import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Pause, ArrowCounterClockwise, ArrowLeft, ChatCircle, ClosedCaptioning } from 'phosphor-react-native';
+import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Headphones, Pause, ArrowCounterClockwise, ArrowLeft, ChatCircle, ClosedCaptioning } from 'phosphor-react-native';
 import { ScrollView } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import * as SecureStore from 'expo-secure-store';
@@ -268,6 +268,11 @@ export default function LiveVoiceModal({
   const [status, setStatus] = React.useState<ConnectionStatus>('idle');
   const [isMuted, setIsMuted] = React.useState(false);
   const [isSpeaker, setIsSpeaker] = React.useState(true);
+  // Rota real de saida: true quando ha fone (AirPods/BT/com fio). Sincronizado
+  // com o CharlotteAudioSession via listener — antes o icone do botao nao
+  // atualizava quando a rota mudava sozinha (tirar AirPods → voltava pro
+  // speaker mas o icone ficava travado).
+  const [onHeadphones, setOnHeadphones] = React.useState(false);
   const [errorMsg, setErrorMsg] = React.useState('');
   const [charlotteSpeaking, setCharlotteSpeaking] = React.useState(false);
   const [userSpeaking, setUserSpeaking] = React.useState(false);
@@ -1533,6 +1538,26 @@ export default function LiveVoiceModal({
     });
   }, []);
 
+  // Sincroniza o icone do botao com a rota de audio REAL. O nativo re-roteia
+  // sozinho (ex: forca speaker ao tirar AirPods); sem isto o icone ficava
+  // preso no estado anterior. Deriva de getCurrentRoute (portType:portName).
+  const syncRouteState = React.useCallback(() => {
+    try {
+      const r = (CharlotteAudioSession.getCurrentRoute() || '').toLowerCase();
+      const headphones = r.includes('bluetooth') || r.includes('headphone');
+      const onSpk = r.includes('speaker'); // builtInSpeaker
+      setOnHeadphones(headphones);
+      setIsSpeaker(onSpk);
+      isSpeakerRef.current = onSpk;
+    } catch { /* noop */ }
+  }, []);
+
+  React.useEffect(() => {
+    syncRouteState();
+    const sub = CharlotteAudioSession.addRouteChangeListener(syncRouteState);
+    return () => sub.remove();
+  }, [syncRouteState]);
+
   const handleResume = React.useCallback(async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     const remaining = await loadPool();
@@ -2009,9 +2034,11 @@ export default function LiveVoiceModal({
                 <TouchableOpacity
                   onPress={handleSpeakerToggle}
                   pressRetentionOffset={{ top: 20, bottom: 20, left: 20, right: 20 }}
-                  accessibilityLabel={isSpeaker
-                    ? (userLevel === 'Novice' ? 'Usar fone de ouvido / Switch to earpiece' : 'Switch to earpiece')
-                    : (userLevel === 'Novice' ? 'Usar alto-falante / Switch to speaker' : 'Switch to speaker')}
+                  accessibilityLabel={onHeadphones
+                    ? (userLevel === 'Novice' ? 'Áudio nos fones — tocar para alto-falante / Audio on headphones — tap for speaker' : 'Audio on headphones — tap for speaker')
+                    : isSpeaker
+                      ? (userLevel === 'Novice' ? 'Usar fone de ouvido / Switch to earpiece' : 'Switch to earpiece')
+                      : (userLevel === 'Novice' ? 'Usar alto-falante / Switch to speaker' : 'Switch to speaker')}
                   accessibilityRole="button"
                   style={{
                     width: 64, height: 64, borderRadius: 32,
@@ -2021,9 +2048,11 @@ export default function LiveVoiceModal({
                     alignItems: 'center', justifyContent: 'center',
                   }}
                 >
-                  {isSpeaker
-                    ? <SpeakerHigh size={24} color="#3D8800" weight="regular" />
-                    : <Ear        size={24} color="rgba(22,21,58,0.65)" weight="regular" />
+                  {onHeadphones
+                    ? <Headphones size={24} color="rgba(22,21,58,0.65)" weight="regular" />
+                    : isSpeaker
+                      ? <SpeakerHigh size={24} color="#3D8800" weight="regular" />
+                      : <Ear         size={24} color="rgba(22,21,58,0.65)" weight="regular" />
                   }
                 </TouchableOpacity>
               </View>

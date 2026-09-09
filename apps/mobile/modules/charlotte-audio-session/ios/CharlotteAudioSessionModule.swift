@@ -59,7 +59,13 @@ public class CharlotteAudioSessionModule: Module {
       // primeiro audio track binda — ref RTCAudioSession.mm configureWebRTCSession.
       // Chamar setConfiguration do nosso lado racea contra o ADM e causava
       // -12981 "Invalid parameter" + !pri loop subsequente.
-      if self.preferSpeaker {
+      // So forcamos speaker se NAO houver fone (AirPods/BT/com fio) na rota.
+      // Antes forcavamos incondicionalmente, o que jogava o audio pro speaker
+      // mesmo com AirPods conectados (usuario tinha que tocar o botao pra ir
+      // pros fones). O guard hasHeadphoneRoute() respeita os fones e mantem o
+      // fix do cabo USB (cabo != fone → continua forcando speaker). O observer
+      // de rota re-aplica a mesma logica em mudancas subsequentes.
+      if self.preferSpeaker && !self.hasHeadphoneRoute() {
         do {
           try session.overrideOutputAudioPort(.speaker)
         } catch {
@@ -142,6 +148,33 @@ public class CharlotteAudioSessionModule: Module {
       let outputs = route.outputs.map { "\($0.portType.rawValue):\($0.portName)" }
       return outputs.joined(separator: ",")
     }
+
+    // true se ha um mic Bluetooth (AirPods/headset) disponivel OU ja em uso.
+    // `availableInputs` reflete headsets HFP conectados independente da rota de
+    // saida ativa e mesmo com a sessao idle — por isso funciona no hint da
+    // Pronuncia (onde CharlotteAudioSession nao esta ativo). Fallback pra
+    // currentRoute cobre quando o audio ja esta roteando pra BT. Usado pelo
+    // BluetoothMicHint pra avisar que o mic HFP (~8kHz) degrada o ASR.
+    Function("isBluetoothMicAvailable") { () -> Bool in
+      let session = AVAudioSession.sharedInstance()
+      if let inputs = session.availableInputs,
+         inputs.contains(where: { $0.portType == .bluetoothHFP }) {
+        return true
+      }
+      return session.currentRoute.outputs.contains {
+        $0.portType == .bluetoothA2DP || $0.portType == .bluetoothHFP || $0.portType == .bluetoothLE
+      }
+    }
+  }
+
+  // Fones (AirPods/BT/com fio) presentes na rota de saida atual. Se sim, NAO
+  // forcamos speaker no start() — o usuario quer ouvir pelos fones. Espelha a
+  // checagem `hasHeadphones` do route observer pra manter consistencia.
+  private func hasHeadphoneRoute() -> Bool {
+    return AVAudioSession.sharedInstance().currentRoute.outputs.contains {
+      $0.portType == .headphones || $0.portType == .bluetoothA2DP ||
+      $0.portType == .bluetoothHFP || $0.portType == .bluetoothLE
+    }
   }
 
   // MARK: - Observers
@@ -185,7 +218,8 @@ public class CharlotteAudioSessionModule: Module {
       guard external, self.preferSpeaker else { return }
 
       let hasHeadphones = currentRoute.outputs.contains {
-        $0.portType == .headphones || $0.portType == .bluetoothA2DP || $0.portType == .bluetoothHFP
+        $0.portType == .headphones || $0.portType == .bluetoothA2DP ||
+        $0.portType == .bluetoothHFP || $0.portType == .bluetoothLE
       }
       let isOnSpeaker = currentRoute.outputs.contains { $0.portType == .builtInSpeaker }
 
