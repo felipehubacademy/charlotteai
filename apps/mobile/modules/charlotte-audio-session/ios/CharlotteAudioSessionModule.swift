@@ -34,17 +34,19 @@ public class CharlotteAudioSessionModule: Module {
       // O WebRTC ADM le este singleton quando o primeiro track ativa e chama
       // setConfiguration:active:YES sozinho. Nao tocamos setConfiguration em
       // start() pra evitar race condition que causava -12981 + !pri loop.
-      // mode = .voiceChat (2026-09-09): antes .videoChat. A prioridade de mic
-      // no iOS 26 (evita -12981/!pri "Disallowing recording") vem daqui —
-      // .voiceChat da mic priority ainda mais alta que .videoChat — e do
-      // .playAndRecord, NAO da chave voip do UIBackgroundModes (removida por
-      // rejeicao da Apple, Guideline 2.5.4; nao tinha VoIP em background).
+      // mode = .videoChat: MANTIDO. O build 115 tentou .voiceChat (achando que
+      // daria mais prioridade de mic), mas isso QUEBROU o toggle de earpiece —
+      // com .voiceChat o overrideOutputAudioPort(.none) nao roteia pro receiver.
+      // Revertido pra .videoChat, que respeita o toggle earpiece/speaker. A
+      // prioridade de mic no iOS 26 (evita -12981/!pri "Disallowing recording")
+      // vem do .playAndRecord + modo de chamada (videoChat tambem eh de chamada),
+      // NAO da chave voip do UIBackgroundModes (removida por rejeicao Apple 2.5.4).
       let cfg = RTCAudioSessionConfiguration.webRTC()
       cfg.category = AVAudioSession.Category.playAndRecord.rawValue
-      cfg.mode = AVAudioSession.Mode.voiceChat.rawValue
+      cfg.mode = AVAudioSession.Mode.videoChat.rawValue
       cfg.categoryOptions = [.allowBluetooth, .allowBluetoothA2DP, .defaultToSpeaker]
       RTCAudioSessionConfiguration.setWebRTC(cfg)
-      NSLog("[CharlotteAudioSession] webRTC singleton seeded (playAndRecord+voiceChat+spk+bt+a2dp)")
+      NSLog("[CharlotteAudioSession] webRTC singleton seeded (playAndRecord+videoChat+spk+bt+a2dp)")
     }
 
     AsyncFunction("start") { (preferSpeakerInput: Bool) -> Bool in
