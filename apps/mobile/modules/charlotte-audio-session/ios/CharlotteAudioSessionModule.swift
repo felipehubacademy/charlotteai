@@ -24,6 +24,12 @@ public class CharlotteAudioSessionModule: Module {
   private var preferSpeaker: Bool = true
   private var isActive: Bool = false
   private var ringbackPlayer: AVAudioPlayer?
+  // Fila serial p/ as chamadas de overrideOutputAudioPort dos observers. Elas
+  // fazem IPC com o servidor de audio e podem BLOQUEAR; rodando na main thread
+  // (queue: .main dos observers) sob enxurrada de route changes isso trava a UI
+  // (Sentry "App Hanging 2000ms" em RTCAudioSession.overrideOutputAudioPort ->
+  // installObservers). Serial garante ordem + zero contencao concorrente.
+  private let routeQueue = DispatchQueue(label: "com.charlotte.audiosession.route")
 
   public func definition() -> ModuleDefinition {
     Name("CharlotteAudioSession")
@@ -229,11 +235,14 @@ public class CharlotteAudioSessionModule: Module {
 
       // Cabo USB / Lightning DAC: portType == .usbAudio (não eh headphone real).
       if !isOnSpeaker && !hasHeadphones {
-        let rtc = RTCAudioSession.sharedInstance()
-        rtc.lockForConfiguration()
-        try? rtc.overrideOutputAudioPort(.speaker)
-        rtc.unlockForConfiguration()
-        NSLog("[CharlotteAudioSession] route forced→speaker")
+        // Off-main: overrideOutputAudioPort faz IPC e pode bloquear (ver routeQueue).
+        self.routeQueue.async {
+          let rtc = RTCAudioSession.sharedInstance()
+          rtc.lockForConfiguration()
+          try? rtc.overrideOutputAudioPort(.speaker)
+          rtc.unlockForConfiguration()
+          NSLog("[CharlotteAudioSession] route forced→speaker")
+        }
       }
     }
 
@@ -249,10 +258,12 @@ public class CharlotteAudioSessionModule: Module {
       NSLog("[CharlotteAudioSession] interruption type=\(typeRaw)")
 
       if type == .ended, self.preferSpeaker {
-        let rtc = RTCAudioSession.sharedInstance()
-        rtc.lockForConfiguration()
-        try? rtc.overrideOutputAudioPort(.speaker)
-        rtc.unlockForConfiguration()
+        self.routeQueue.async {
+          let rtc = RTCAudioSession.sharedInstance()
+          rtc.lockForConfiguration()
+          try? rtc.overrideOutputAudioPort(.speaker)
+          rtc.unlockForConfiguration()
+        }
       }
       self.sendEvent("onInterruption", ["type": typeRaw])
     }
