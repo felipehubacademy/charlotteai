@@ -36,12 +36,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       // Status bar: dark icons (time, wifi, battery) on light backgrounds
       UIViewControllerBasedStatusBarAppearance: false,
       UIStatusBarStyle: 'UIStatusBarStyleDarkContent',
-      // Live Voice: precisamos de VoIP priority pra session ganhar arbitragem
-      // de primary em iOS 26. Sem isso, playAndRecord eh "sessao regular" de
-      // baixa prioridade → audiomxd rejeita recording (!pri / -15685 /
-      // "Disallowing recording... session is output-only").
-      // Ref: https://developer.apple.com/forums/thread/774784 (Apple DTS)
-      UIBackgroundModes: ['audio', 'voip'],
+      // Background audio: TTS/Live Voice continua tocando com a tela apagada.
+      // 'voip' REMOVIDO (2026-09-09): a Apple rejeitou (Guideline 2.5.4) — o app
+      // nao tem servico VoIP em background (Live Voice eh foreground, sem
+      // CallKit/PushKit). A prioridade de gravacao no iOS 26 vem do
+      // mode=.voiceChat + .playAndRecord no CharlotteAudioSession, NAO da chave
+      // voip do UIBackgroundModes (que so controla keep-alive/background).
+      UIBackgroundModes: ['audio'],
     },
   },
   android: {
@@ -86,7 +87,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         (f: { $?: { 'android:name'?: string } }) => f.$?.['android:name'] === 'android.hardware.telephony'
       );
       if (!hasEntry) {
-        manifest['uses-feature'].push({ $: { 'android:name': 'android.hardware.telephony', 'android:required': 'true' } });
+        manifest['uses-feature'].push({ $: { 'android:name': 'android.hardware.telephony', 'android:required': 'false' } });
       }
       return c;
     })) as unknown as string,
