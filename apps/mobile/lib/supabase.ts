@@ -32,6 +32,14 @@ if (!supabaseUrl || !supabaseAnonKey) {
 
 const CHUNK_SIZE = 1800;
 
+// Acessibilidade do Keychain p/ o token de auth. O default (WHEN_UNLOCKED)
+// RECUSA a escrita com o device bloqueado — o auto-refresh do Supabase que cai
+// com a tela travada dava errSecInteractionNotAllowed ("User interaction is not
+// allowed", visto no Sentry). AFTER_FIRST_UNLOCK deixa o token gravavel/legivel
+// apos o 1o unlock pos-boot (mesmo bloqueando depois) — modo recomendado p/
+// tokens que renovam em background. Sem migracao: o proximo write faz upgrade.
+const KEYCHAIN_OPTS = { keychainAccessible: SecureStore.AFTER_FIRST_UNLOCK };
+
 let _keychainQueue: Promise<unknown> = Promise.resolve();
 function _enqueue<T>(fn: () => Promise<T>): Promise<T> {
   const result = (_keychainQueue = _keychainQueue.then(fn, fn)) as Promise<T>;
@@ -76,15 +84,15 @@ const ExpoSecureStoreAdapter = {
         // 2. Write chunks sequentially
         for (let i = 0; i < chunks.length; i++) {
           await SecureStore.deleteItemAsync(`${key}.__chunk${i}`).catch(() => {});
-          await SecureStore.setItemAsync(`${key}.__chunk${i}`, chunks[i]);
+          await SecureStore.setItemAsync(`${key}.__chunk${i}`, chunks[i], KEYCHAIN_OPTS);
         }
         // 3. Write count last — a missing count means getItem returns null
         //    rather than assembling from partial chunks
         await SecureStore.deleteItemAsync(`${key}.__chunks`).catch(() => {});
-        await SecureStore.setItemAsync(`${key}.__chunks`, String(chunks.length));
+        await SecureStore.setItemAsync(`${key}.__chunks`, String(chunks.length), KEYCHAIN_OPTS);
       } else {
         await SecureStore.deleteItemAsync(key).catch(() => {});
-        await SecureStore.setItemAsync(key, value);
+        await SecureStore.setItemAsync(key, value, KEYCHAIN_OPTS);
       }
     }),
 
