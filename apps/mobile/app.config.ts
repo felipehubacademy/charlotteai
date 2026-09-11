@@ -36,13 +36,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       // Status bar: dark icons (time, wifi, battery) on light backgrounds
       UIViewControllerBasedStatusBarAppearance: false,
       UIStatusBarStyle: 'UIStatusBarStyleDarkContent',
-      // Background audio: TTS/Live Voice continua tocando com a tela apagada.
-      // 'voip' REMOVIDO (2026-09-09): a Apple rejeitou (Guideline 2.5.4) — o app
-      // nao tem servico VoIP em background (Live Voice eh foreground, sem
-      // CallKit/PushKit). A prioridade de gravacao no iOS 26 vem do
-      // mode=.voiceChat + .playAndRecord no CharlotteAudioSession, NAO da chave
-      // voip do UIBackgroundModes (que so controla keep-alive/background).
-      UIBackgroundModes: ['audio'],
+      // SEM UIBackgroundModes. 'voip' removido (build 114) e 'audio' removido
+      // (build 119) — ambos rejeitados pela Apple na Guideline 2.5.4: o app nao
+      // tem audio persistente NEM VoIP em background. Live Voice/TTS/Pronuncia
+      // sao features de FOREGROUND (sem CallKit/PushKit); ao ir pra background
+      // a conversa encerra. A prioridade de gravacao no iOS 26 vem do
+      // mode=.voiceChat + .playAndRecord no CharlotteAudioSession (sessao de
+      // audio, independente de UIBackgroundModes). Push (FCM) nao precisa disso.
     },
   },
   android: {
