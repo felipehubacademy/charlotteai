@@ -89,6 +89,74 @@ Hub Academy - Charlotte IA
     return { subject, html, text };
   }
 
+  // Template de aviso de nova versao disponivel na loja
+  static getReleaseUpdateTemplate(nome: string | null): EmailTemplate {
+    const ola = nome ? `Olá, ${nome}!` : 'Olá!';
+    const appStore = 'https://apps.apple.com/app/id6760943273';
+    const playStore = 'https://play.google.com/store/apps/details?id=com.hubacademy.charlotte';
+    const subject = 'Uma nova versão da Charlotte já está disponível';
+
+    const html = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nova versão da Charlotte</title>
+      </head>
+      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h1 style="color: #16153A; font-size: 26px; margin: 0;">Nova versão disponível</h1>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+          <h2 style="color: #333; margin-top: 0;">${ola}</h2>
+          <p>Acabamos de lançar uma atualização da Charlotte com melhorias importantes:</p>
+          <ul style="padding-left: 20px;">
+            <li>Conversa por voz mais estável (roteamento de áudio, fones e AirPods)</li>
+            <li>Correções de desempenho e estabilidade</li>
+            <li>Melhorias no feedback de pronúncia</li>
+          </ul>
+          <p>Atualize agora para ter a melhor experiência.</p>
+        </div>
+
+        <div style="text-align: center; margin: 28px 0;">
+          <a href="${appStore}"
+             style="background: #16153A; color: #fff; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; margin: 6px;">
+            Atualizar no iPhone
+          </a>
+          <a href="${playStore}"
+             style="background: #16153A; color: #fff; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; margin: 6px;">
+            Atualizar no Android
+          </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; font-size: 12px; color: #999;">
+          <p>Este é um email automático. Não responda a esta mensagem.</p>
+          <p>Hub Academy - Charlotte IA</p>
+        </div>
+      </body>
+      </html>
+    `;
+
+    const text = `Nova versão da Charlotte disponível
+
+${ola}
+
+Acabamos de lançar uma atualização da Charlotte com melhorias importantes:
+- Conversa por voz mais estável (roteamento de áudio, fones e AirPods)
+- Correções de desempenho e estabilidade
+- Melhorias no feedback de pronúncia
+
+Atualize agora:
+iPhone: ${appStore}
+Android: ${playStore}
+
+Hub Academy - Charlotte IA`;
+
+    return { subject, html, text };
+  }
+
   // Enviar email usando Resend
   static async sendEmail(to: string, template: EmailTemplate): Promise<boolean> {
     try {
