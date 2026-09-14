@@ -13,6 +13,11 @@ interface MetricsResponse {
     totalNonInstitutional: number;
   };
   retention: { d1: number | null; d7: number | null; d30: number | null };
+  appVersions: {
+    latestRuntime: string; total: number; onLatest: number; reported: number;
+    unknown: number; unknownActive30d: number; onLatestPct: number;
+    byPlatform: { ios: number; android: number };
+  };
   openai: {
     tableMissing: boolean; totalCost: number; callCount: number; costPerActiveSub: number;
     byEndpoint: Array<{ endpoint: string; cost: number; calls: number; tokens: number }>;
@@ -683,6 +688,37 @@ export default function MetricsPage() {
         </div>
         <div className="col-3"><KpiCard label="Renovações 7d" value={g?.revenue.renewals7d} ctx="próximas renovações" delay={420} tip="Assinaturas que renovam (e cobram) nos próximos 7 dias." /></div>
       </div>
+
+      {g?.appVersions && (
+        <>
+          <Sec>Adoção do App (versão 1.1.0)</Sec>
+          <div className="adm-grid" style={{ marginBottom: 20 }}>
+            <div className="col-3">
+              <KpiCard label="No 1.1.0 (up to date)" value={g.appVersions.onLatest}
+                display={`${g.appVersions.onLatest} · ${g.appVersions.onLatestPct.toFixed(0)}%`}
+                ctx={`iOS ${g.appVersions.byPlatform.ios} · Android ${g.appVersions.byPlatform.android}`}
+                accent={g.appVersions.onLatestPct >= 50 ? 'var(--ok)' : undefined} delay={0}
+                tip="Usuários rodando o binário novo (runtime 2.0.0 = build 119+). Só reporta quem já atualizou pela loja e abriu o app." />
+            </div>
+            <div className="col-3">
+              <KpiCard label="A atualizar (ativos 30d)" value={g.appVersions.unknownActive30d}
+                ctx="ativos, ainda em versão antiga" delay={80}
+                accent={g.appVersions.unknownActive30d > 0 ? 'var(--warn)' : undefined}
+                tip="Abriram o app nos últimos 30 dias mas não reportam runtime 2.0.0 — provavelmente ainda no binário antigo. Alvo do aviso de atualização." />
+            </div>
+            <div className="col-3">
+              <KpiCard label="Reportando versão" value={g.appVersions.reported}
+                ctx={`de ${g.appVersions.total} usuários`} delay={160}
+                tip="Quantos já reportaram versão. Cresce conforme a base atualiza para o binário novo (o tracking só roda no runtime 2.0.0)." />
+            </div>
+            <div className="col-3">
+              <KpiCard label="Sem dado de versão" value={g.appVersions.unknown}
+                ctx="binário antigo ou inativos" delay={240}
+                tip="Nunca reportaram versão: no binário antigo (não recebe o código de tracking) ou não abriram o app desde o release." />
+            </div>
+          </div>
+        </>
+      )}
 
       {g?.mrrHealth && (
         <>

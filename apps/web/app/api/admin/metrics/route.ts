@@ -81,6 +81,10 @@ export async function GET(req: NextRequest) {
     trial_ends_at: string | null;
     placement_test_done: boolean;
     expo_push_token: string | null;
+    runtime_version: string | null;
+    app_version: string | null;
+    app_platform: string | null;
+    last_seen_at: string | null;
   };
   type PracticeRow = { user_id: string; created_at: string; xp_earned: number | null };
   type PracticeWideRow = { user_id: string; created_at: string };
@@ -144,7 +148,7 @@ export async function GET(req: NextRequest) {
   }
 
   const [usersRes, practicesRangeRes, practicesWideRes, progressRes, usageRes, notifRes, placementRes] = await Promise.all([
-    supabase.from('charlotte_users').select('id, email, name, created_at, charlotte_level, is_institutional, subscription_status, subscription_product, subscription_expires_at, trial_ends_at, placement_test_done, expo_push_token'),
+    supabase.from('charlotte_users').select('id, email, name, created_at, charlotte_level, is_institutional, subscription_status, subscription_product, subscription_expires_at, trial_ends_at, placement_test_done, expo_push_token, runtime_version, app_version, app_platform, last_seen_at'),
     supabase.from('charlotte_practices').select('user_id, created_at, xp_earned').gte('created_at', from.toISOString()).lte('created_at', to.toISOString()),
     supabase.from('charlotte_practices').select('user_id, created_at').gte('created_at', d90.toISOString()),
     supabase.from('charlotte_progress').select('user_id, streak_days, total_xp'),
@@ -774,8 +778,32 @@ export async function GET(req: NextRequest) {
   }
 
   // ─────────────────────────────────────────────────────────────────────────
+  // ── Adocao da versao do app (release 1.1.0 / runtime 2.0.0) ────────────────
+  // runtime_version = '2.0.0' => binario novo (build 119+, "up to date").
+  // null => reportou de versao antiga da loja OU ainda nao abriu no binario novo.
+  const LATEST_RUNTIME = '2.0.0';
+  const d30ms = Date.now() - 30 * 86400 * 1000;
+  const appOnLatest = users.filter(u => u.runtime_version === LATEST_RUNTIME);
+  const appReported = users.filter(u => !!u.runtime_version);
+  const appUnknownActive = users.filter(u =>
+    !u.runtime_version && u.last_seen_at && new Date(u.last_seen_at).getTime() >= d30ms);
+  const appVersions = {
+    latestRuntime: LATEST_RUNTIME,
+    total: users.length,
+    onLatest: appOnLatest.length,
+    reported: appReported.length,
+    unknown: users.length - appReported.length,
+    unknownActive30d: appUnknownActive.length,
+    onLatestPct: users.length ? round2((appOnLatest.length / users.length) * 100) : 0,
+    byPlatform: {
+      ios:     appOnLatest.filter(u => u.app_platform === 'ios').length,
+      android: appOnLatest.filter(u => u.app_platform === 'android').length,
+    },
+  };
+
   return NextResponse.json({
     range: { from: from.toISOString(), to: to.toISOString(), days },
+    appVersions,
     revenue: {
       mrr: round2(mrr),
       arr: round2(arr),
