@@ -24,6 +24,7 @@ import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greet
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
 import { splashGate } from '@/lib/splashGate';
+import { getAppVersionFields } from '@/lib/appVersion';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { ArrowDown, ArrowUp } from 'phosphor-react-native';
 import { TrailContent } from '@/components/trail/TrailContent';
@@ -264,7 +265,7 @@ export default function HomeTab() {
     if (!userId) return;
     identifyUser(userId, level);
     track('app_open');
-    supabase.from('charlotte_users').update({ last_seen_at: new Date().toISOString() }).eq('id', userId).then(() => {});
+    supabase.from('charlotte_users').update({ last_seen_at: new Date().toISOString(), ...getAppVersionFields() }).eq('id', userId).then(() => {});
     setLoading(true);
     fetchData().finally(() => setLoading(false));
   }, [userId]); // eslint-disable-line
