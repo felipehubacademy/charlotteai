@@ -1,4 +1,6 @@
 export const dynamic = 'force-dynamic';
+// 105 envios sequenciais pelo Graph podem passar de 60s — evita timeout parcial.
+export const maxDuration = 300;
 
 /**
  * app/api/admin/release-broadcast/route.ts
