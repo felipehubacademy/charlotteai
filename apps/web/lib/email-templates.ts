@@ -4,7 +4,7 @@
 const SMART_LINK = 'https://charlotte.hubacademybr.com/open?mode=invite';
 const AVATAR_URL = 'https://charlotte.hubacademybr.com/charlotte-avatar.png';
 
-function base(content: string): string {
+function base(content: string, footerExtra = ''): string {
   return `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -39,9 +39,10 @@ function base(content: string): string {
         <tr>
           <td align="center">
             <p style="margin:0;font-size:12px;color:#86868b;line-height:1.7;">
-              Charlotte &mdash; Hub Academy<br>
+              Charlotte &mdash; Hub Academy Ltda<br>
               Este &eacute; um email autom&aacute;tico. N&atilde;o responda a esta mensagem.
             </p>
+            ${footerExtra}
           </td>
         </tr>
 
@@ -202,11 +203,14 @@ function storeBadges(appStoreUrl: string, playUrl: string): string {
 
 // ── 6. Nova versão disponível (release update) ─────────────────────────────────
 
-export function releaseUpdateTemplate(opts: { name?: string | null }) {
+export function releaseUpdateTemplate(opts: { name?: string | null; unsubscribeUrl?: string }) {
   const appStore  = 'https://apps.apple.com/app/id6760943273';
   const playStore = 'https://play.google.com/store/apps/details?id=com.hubacademy.charlotte';
   const ola = opts.name ? `Olá, ${opts.name}!` : 'Olá!';
   const subject = 'Uma nova versão da Charlotte já está disponível';
+  const unsubscribe = opts.unsubscribeUrl
+    ? `<p style="margin:12px 0 0;font-size:12px;color:#86868b;line-height:1.7;">Não quer mais receber novidades? <a href="${opts.unsubscribeUrl}" style="color:#86868b;text-decoration:underline;">Descadastrar</a>.</p>`
+    : '';
   const html = base(`
     ${h1('Nova versão disponível')}
     ${p(`${ola}<br>Acabamos de lançar uma grande atualização da Charlotte:`)}
@@ -219,6 +223,6 @@ export function releaseUpdateTemplate(opts: { name?: string | null }) {
     ])}
     ${p('Atualize agora para ter a melhor experiência.')}
     ${storeBadges(appStore, playStore)}
-  `);
+  `, unsubscribe);
   return { subject, html };
 }

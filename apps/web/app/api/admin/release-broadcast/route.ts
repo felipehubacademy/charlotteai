@@ -21,6 +21,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 // reset de senha / signup / welcome. Template no padrao usual do projeto.
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
 import { releaseUpdateTemplate } from '@/lib/email-templates';
+import { unsubscribeUrl } from '@/lib/unsubscribe';
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
@@ -40,6 +41,7 @@ interface Row {
   name: string | null;
   email: string | null;
   expo_push_token: string | null;
+  marketing_opt_out: boolean | null;
 }
 
 export async function POST(req: NextRequest) {
@@ -61,9 +63,17 @@ export async function POST(req: NextRequest) {
     const hasCreds = !!(process.env.AZURE_TENANT_ID && process.env.AZURE_CLIENT_ID && process.env.AZURE_CLIENT_SECRET);
     let test: unknown = 'nenhum (passe { to } para testar 1 envio)';
     if (body?.to) {
-      const tpl = releaseUpdateTemplate({ name: 'Teste' });
+      // Usa o id real do usuario (se existir) pra o link de descadastro funcionar de verdade.
+      const supabase = getSupabaseAdmin();
+      const res = await supabase
+        .from('charlotte_users').select('id, name').eq('email', body.to).maybeSingle();
+      const u = res.data as { id: string; name: string | null } | null;
+      const tpl = releaseUpdateTemplate({
+        name: u?.name ?? 'Teste',
+        unsubscribeUrl: u?.id ? unsubscribeUrl(u.id) : undefined,
+      });
       const ok = await graphSendEmail({ to: body.to, subject: tpl.subject, html: tpl.html });
-      test = { ok };
+      test = { ok, unsubUserId: u?.id ?? null };
     }
     return NextResponse.json({ diag: true, provider, hasCreds, test });
   }
@@ -99,14 +109,16 @@ export async function POST(req: NextRequest) {
   // ── Audiencia ──────────────────────────────────────────────────────────────
   const { data, error } = await supabase
     .from('charlotte_users')
-    .select('id, name, email, expo_push_token');
+    .select('id, name, email, expo_push_token, marketing_opt_out');
   if (error) {
     return NextResponse.json({ error: `Falha ao buscar usuarios: ${error.message}` }, { status: 500 });
   }
   const rows = (data ?? []) as Row[];
 
   const pushRows = rows.filter(r => r.expo_push_token?.startsWith('ExponentPushToken['));
-  const emailRows = rows.filter(r => !!r.email);
+  // Marketing: exclui quem pediu descadastro (LGPD). Push nao e afetado.
+  const emailRows = rows.filter(r => !!r.email && !r.marketing_opt_out);
+  const emailOptedOut = rows.filter(r => !!r.email && r.marketing_opt_out).length;
 
   if (dryRun) {
     return NextResponse.json({
@@ -114,6 +126,7 @@ export async function POST(req: NextRequest) {
       totalUsers: rows.length,
       wouldPush: channels.includes('push') ? pushRows.length : 0,
       wouldEmail: channels.includes('email') ? emailRows.length : 0,
+      emailOptedOut,
     });
   }
 
@@ -169,7 +182,7 @@ export async function POST(req: NextRequest) {
   if (channels.includes('email')) {
     let sent = 0, errors = 0;
     for (const r of emailRows) {
-      const tpl = releaseUpdateTemplate({ name: r.name });
+      const tpl = releaseUpdateTemplate({ name: r.name, unsubscribeUrl: unsubscribeUrl(r.id) });
       const ok = await graphSendEmail({ to: r.email!, subject: tpl.subject, html: tpl.html });
       if (ok) sent++; else errors++;
     }
