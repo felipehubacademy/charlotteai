@@ -25,7 +25,7 @@ const LOG_TYPE = 'release_update';
 
 const PUSH_TITLE = 'Charlotte atualizada';
 const PUSH_BODY =
-  'Uma nova versao ja esta disponivel com melhorias na conversa por voz e estabilidade. Atualize pela App Store ou Google Play.';
+  'Uma nova versão já está disponível com melhorias na conversa por voz e estabilidade. Atualize pela App Store ou Google Play.';
 
 function checkAuth(req: NextRequest) {
   const auth = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
@@ -49,6 +49,20 @@ export async function POST(req: NextRequest) {
   const channels: string[] = Array.isArray(body?.channels) && body.channels.length
     ? body.channels
     : ['push', 'email'];
+
+  // ── Diagnostico de email (nao envia em massa) ──────────────────────────────
+  // { diag:true }            -> so reporta se a chave/remetente estao configurados
+  // { diag:true, to:"x@y" }  -> tenta 1 envio e devolve o erro cru do provedor
+  if (body?.diag === true) {
+    const hasKey = !!process.env.RESEND_API_KEY;
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Charlotte <noreply@hubacademybr.com>';
+    let test: unknown = 'nenhum (passe { to } para testar 1 envio)';
+    if (body?.to) {
+      const tpl = SimpleEmailService.getReleaseUpdateTemplate('Teste');
+      test = await SimpleEmailService.sendEmailDetailed(body.to, tpl);
+    }
+    return NextResponse.json({ diag: true, hasKey, fromEmail, test });
+  }
 
   const supabase = getSupabaseAdmin();
 

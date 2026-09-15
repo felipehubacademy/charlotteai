@@ -157,6 +157,27 @@ Hub Academy - Charlotte IA`;
     return { subject, html, text };
   }
 
+  // Versao de diagnostico: devolve o erro cru do provedor em vez de so um boolean.
+  static async sendEmailDetailed(
+    to: string,
+    template: EmailTemplate,
+  ): Promise<{ ok: boolean; error?: string }> {
+    try {
+      const apiKey = process.env.RESEND_API_KEY;
+      const fromEmail =
+        process.env.RESEND_FROM_EMAIL || 'Charlotte <noreply@hubacademybr.com>';
+      if (!apiKey) return { ok: false, error: 'RESEND_API_KEY ausente no ambiente' };
+      const resend = new Resend(apiKey);
+      const { error } = await resend.emails.send({
+        from: fromEmail, to, subject: template.subject, html: template.html, text: template.text,
+      });
+      if (error) return { ok: false, error: `${(error as any)?.name ?? ''}: ${(error as any)?.message ?? JSON.stringify(error)}` };
+      return { ok: true };
+    } catch (e) {
+      return { ok: false, error: `exception: ${e instanceof Error ? e.message : String(e)}` };
+    }
+  }
+
   // Enviar email usando Resend
   static async sendEmail(to: string, template: EmailTemplate): Promise<boolean> {
     try {
