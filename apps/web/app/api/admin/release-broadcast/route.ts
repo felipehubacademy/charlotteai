@@ -64,6 +64,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ diag: true, hasKey, fromEmail, test });
   }
 
+  // ── TRAVA DURA: qualquer ENVIO real exige { confirm:true } explicito. ───────
+  // dryRun continua liberado (so conta) e diag ja retornou acima. Isso impede
+  // que body malformado / chamada acidental / deploy antigo dispare broadcast.
+  if (!dryRun && body?.confirm !== true) {
+    return NextResponse.json({
+      skipped: true,
+      reason: 'Bloqueado: envio exige { confirm: true } explicito. NADA foi enviado.',
+    });
+  }
+
   const supabase = getSupabaseAdmin();
 
   // ── Guarda de idempotencia: nao reenviar se ja houve release_update < 24h ──
