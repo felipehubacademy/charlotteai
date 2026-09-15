@@ -44,6 +44,7 @@ interface Row {
   email: string | null;
   expo_push_token: string | null;
   marketing_opt_out: boolean | null;
+  email_bounced: boolean | null;
 }
 
 export async function POST(req: NextRequest) {
@@ -111,16 +112,17 @@ export async function POST(req: NextRequest) {
   // ── Audiencia ──────────────────────────────────────────────────────────────
   const { data, error } = await supabase
     .from('charlotte_users')
-    .select('id, name, email, expo_push_token, marketing_opt_out');
+    .select('id, name, email, expo_push_token, marketing_opt_out, email_bounced');
   if (error) {
     return NextResponse.json({ error: `Falha ao buscar usuarios: ${error.message}` }, { status: 500 });
   }
   const rows = (data ?? []) as Row[];
 
   const pushRows = rows.filter(r => r.expo_push_token?.startsWith('ExponentPushToken['));
-  // Marketing: exclui quem pediu descadastro (LGPD). Push nao e afetado.
-  const emailRows = rows.filter(r => !!r.email && !r.marketing_opt_out);
+  // Marketing: exclui descadastrados (LGPD) e emails que ja deram bounce. Push nao e afetado.
+  const emailRows = rows.filter(r => !!r.email && !r.marketing_opt_out && !r.email_bounced);
   const emailOptedOut = rows.filter(r => !!r.email && r.marketing_opt_out).length;
+  const emailBounced = rows.filter(r => !!r.email && r.email_bounced).length;
 
   if (dryRun) {
     return NextResponse.json({
@@ -129,6 +131,7 @@ export async function POST(req: NextRequest) {
       wouldPush: channels.includes('push') ? pushRows.length : 0,
       wouldEmail: channels.includes('email') ? emailRows.length : 0,
       emailOptedOut,
+      emailBounced,
     });
   }
 

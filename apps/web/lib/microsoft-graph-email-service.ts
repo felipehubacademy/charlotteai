@@ -96,3 +96,29 @@ export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
     return false;
   }
 }
+
+// ── Leitura de bounces (NDRs) da caixa da Charlotte ────────────────────────────
+// Le mensagens recentes de "postmaster/Microsoft Exchange" (falha de entrega) e
+// devolve todos os emails achados no corpo. Requer permissao Mail.Read no app.
+export async function listBounceRecipients(sinceIso: string): Promise<{ scanned: number; emails: string[] }> {
+  const token = await getAccessToken();
+  const url = `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(FROM_EMAIL)}/messages`
+    + `?$select=subject,from,receivedDateTime,body&$top=200`
+    + `&$filter=${encodeURIComponent(`receivedDateTime ge ${sinceIso}`)}`;
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+  if (!res.ok) throw new Error(`Graph read ${res.status}: ${await res.text()}`);
+  const json = await res.json();
+  const msgs: any[] = json.value ?? [];
+  const RE = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+  const emails = new Set<string>();
+  for (const m of msgs) {
+    const from = (m.from?.emailAddress?.address ?? '').toLowerCase();
+    const subj = (m.subject ?? '').toLowerCase();
+    const isNdr = from.includes('postmaster') || from.includes('microsoftexchange')
+      || subj.startsWith('undeliverable') || subj.includes('possível entregar') || subj.includes('possivel entregar');
+    if (!isNdr) continue;
+    const body: string = m.body?.content ?? '';
+    for (const e of body.match(RE) ?? []) emails.add(e.toLowerCase());
+  }
+  return { scanned: msgs.length, emails: [...emails] };
+}
