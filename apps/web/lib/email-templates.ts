@@ -187,14 +187,15 @@ function features(items: string[]): string {
 }
 
 function storeBadges(appStoreUrl: string, playUrl: string): string {
-  const APP  = 'https://charlotte.hubacademybr.com/images/store-badges/app-store-pt.png';
-  const PLAY = 'https://charlotte.hubacademybr.com/images/store-badges/google-play-pt.png';
+  // Badges recortados justos (mesma altura visual); larguras proporcionais.
+  const APP  = 'https://charlotte.hubacademybr.com/images/store-badges/app-store-badge.png';
+  const PLAY = 'https://charlotte.hubacademybr.com/images/store-badges/google-play-badge.png';
   return `<table cellpadding="0" cellspacing="0" style="margin:32px auto 0;"><tr>
-    <td style="padding:0 5px;">
-      <a href="${appStoreUrl}"><img src="${APP}" alt="Baixar na App Store" width="129" height="44" style="display:block;border:0;height:44px;width:129px;" /></a>
+    <td style="padding:0 5px;" valign="middle">
+      <a href="${appStoreUrl}"><img src="${APP}" alt="Baixar na App Store" width="132" height="44" style="display:block;border:0;height:44px;width:132px;" /></a>
     </td>
-    <td style="padding:0 5px;">
-      <a href="${playUrl}"><img src="${PLAY}" alt="Dispon&iacute;vel no Google Play" width="114" height="44" style="display:block;border:0;height:44px;width:114px;" /></a>
+    <td style="padding:0 5px;" valign="middle">
+      <a href="${playUrl}"><img src="${PLAY}" alt="Dispon&iacute;vel no Google Play" width="148" height="44" style="display:block;border:0;height:44px;width:148px;" /></a>
     </td>
   </tr></table>`;
 }
