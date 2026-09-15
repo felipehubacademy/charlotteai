@@ -176,3 +176,48 @@ export function subscriptionExpiredTemplate(opts: {
   `);
   return { subject, html };
 }
+
+// ── Helpers extras: lista de novidades + badges das lojas ──────────────────────
+
+function features(items: string[]): string {
+  const lis = items
+    .map(i => `<li style="margin:0 0 12px;padding-left:4px;">${i}</li>`)
+    .join('');
+  return `<ul style="margin:24px auto;padding:0 0 0 22px;max-width:400px;font-size:16px;color:#515154;line-height:1.55;text-align:left;">${lis}</ul>`;
+}
+
+function storeBadges(appStoreUrl: string, playUrl: string): string {
+  const APP  = 'https://charlotte.hubacademybr.com/images/store-badges/app-store-pt.png';
+  const PLAY = 'https://charlotte.hubacademybr.com/images/store-badges/google-play-pt.png';
+  return `<table cellpadding="0" cellspacing="0" style="margin:32px auto 0;"><tr>
+    <td style="padding:0 5px;">
+      <a href="${appStoreUrl}"><img src="${APP}" alt="Baixar na App Store" width="129" height="44" style="display:block;border:0;height:44px;width:129px;" /></a>
+    </td>
+    <td style="padding:0 5px;">
+      <a href="${playUrl}"><img src="${PLAY}" alt="Dispon&iacute;vel no Google Play" width="114" height="44" style="display:block;border:0;height:44px;width:114px;" /></a>
+    </td>
+  </tr></table>`;
+}
+
+// ── 6. Nova versão disponível (release update) ─────────────────────────────────
+
+export function releaseUpdateTemplate(opts: { name?: string | null }) {
+  const appStore  = 'https://apps.apple.com/app/id6760943273';
+  const playStore = 'https://play.google.com/store/apps/details?id=com.hubacademy.charlotte';
+  const ola = opts.name ? `Olá, ${opts.name}!` : 'Olá!';
+  const subject = 'Uma nova versão da Charlotte já está disponível';
+  const html = base(`
+    ${h1('Nova versão disponível')}
+    ${p(`${ola}<br>Acabamos de lançar uma grande atualização da Charlotte:`)}
+    ${features([
+      'Nova <strong style="color:#1d1d1f;">trilha de estudos</strong> — do básico ao avançado, no seu ritmo',
+      '<strong style="color:#1d1d1f;">Novo layout</strong>, mais bonito e fácil de usar',
+      'Conversa por voz mais estável (áudio, fones e AirPods)',
+      'Melhorias no feedback de pronúncia',
+      'Correções de desempenho e estabilidade',
+    ])}
+    ${p('Atualize agora para ter a melhor experiência.')}
+    ${storeBadges(appStore, playStore)}
+  `);
+  return { subject, html };
+}

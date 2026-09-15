@@ -17,11 +17,10 @@ export const dynamic = 'force-dynamic';
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { SimpleEmailService } from '@/lib/simple-email-service';
 // Email do projeto vai por Microsoft Graph (Office 365), o MESMO caminho do
-// reset de senha / signup / welcome. Resend (SimpleEmailService.sendEmail) e
-// legado/nao configurado — aqui usamos so o TEMPLATE dele.
+// reset de senha / signup / welcome. Template no padrao usual do projeto.
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
+import { releaseUpdateTemplate } from '@/lib/email-templates';
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
@@ -62,8 +61,8 @@ export async function POST(req: NextRequest) {
     const hasCreds = !!(process.env.AZURE_TENANT_ID && process.env.AZURE_CLIENT_ID && process.env.AZURE_CLIENT_SECRET);
     let test: unknown = 'nenhum (passe { to } para testar 1 envio)';
     if (body?.to) {
-      const tpl = SimpleEmailService.getReleaseUpdateTemplate('Teste');
-      const ok = await graphSendEmail({ to: body.to, subject: tpl.subject, html: tpl.html, text: tpl.text });
+      const tpl = releaseUpdateTemplate({ name: 'Teste' });
+      const ok = await graphSendEmail({ to: body.to, subject: tpl.subject, html: tpl.html });
       test = { ok };
     }
     return NextResponse.json({ diag: true, provider, hasCreds, test });
@@ -170,8 +169,8 @@ export async function POST(req: NextRequest) {
   if (channels.includes('email')) {
     let sent = 0, errors = 0;
     for (const r of emailRows) {
-      const tpl = SimpleEmailService.getReleaseUpdateTemplate(r.name);
-      const ok = await graphSendEmail({ to: r.email!, subject: tpl.subject, html: tpl.html, text: tpl.text });
+      const tpl = releaseUpdateTemplate({ name: r.name });
+      const ok = await graphSendEmail({ to: r.email!, subject: tpl.subject, html: tpl.html });
       if (ok) sent++; else errors++;
     }
     result.email = { sent, errors, targeted: emailRows.length };
