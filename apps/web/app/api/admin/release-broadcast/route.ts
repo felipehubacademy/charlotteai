@@ -18,6 +18,10 @@ export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { SimpleEmailService } from '@/lib/simple-email-service';
+// Email do projeto vai por Microsoft Graph (Office 365), o MESMO caminho do
+// reset de senha / signup / welcome. Resend (SimpleEmailService.sendEmail) e
+// legado/nao configurado — aqui usamos so o TEMPLATE dele.
+import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
@@ -54,14 +58,15 @@ export async function POST(req: NextRequest) {
   // { diag:true }            -> so reporta se a chave/remetente estao configurados
   // { diag:true, to:"x@y" }  -> tenta 1 envio e devolve o erro cru do provedor
   if (body?.diag === true) {
-    const hasKey = !!process.env.RESEND_API_KEY;
-    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Charlotte <noreply@hubacademybr.com>';
+    const provider = 'microsoft-graph';
+    const hasCreds = !!(process.env.AZURE_TENANT_ID && process.env.AZURE_CLIENT_ID && process.env.AZURE_CLIENT_SECRET);
     let test: unknown = 'nenhum (passe { to } para testar 1 envio)';
     if (body?.to) {
       const tpl = SimpleEmailService.getReleaseUpdateTemplate('Teste');
-      test = await SimpleEmailService.sendEmailDetailed(body.to, tpl);
+      const ok = await graphSendEmail({ to: body.to, subject: tpl.subject, html: tpl.html, text: tpl.text });
+      test = { ok };
     }
-    return NextResponse.json({ diag: true, hasKey, fromEmail, test });
+    return NextResponse.json({ diag: true, provider, hasCreds, test });
   }
 
   // ── TRAVA DURA: qualquer ENVIO real exige { confirm:true } explicito. ───────
@@ -166,7 +171,7 @@ export async function POST(req: NextRequest) {
     let sent = 0, errors = 0;
     for (const r of emailRows) {
       const tpl = SimpleEmailService.getReleaseUpdateTemplate(r.name);
-      const ok = await SimpleEmailService.sendEmail(r.email!, tpl);
+      const ok = await graphSendEmail({ to: r.email!, subject: tpl.subject, html: tpl.html, text: tpl.text });
       if (ok) sent++; else errors++;
     }
     result.email = { sent, errors, targeted: emailRows.length };
