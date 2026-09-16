@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-// Carrossel das artes da App Store no hero da home.
+// Carrossel das artes da App Store no hero da home (slide horizontal + auto-play).
 const ARTS = [
   '/images/store/01.png', '/images/store/02.png', '/images/store/03.png',
   '/images/store/04.png', '/images/store/05.png', '/images/store/06.png',
@@ -16,7 +16,7 @@ export default function HeroCarousel() {
 
   const go = (d: number) => setI(v => (v + d + n) % n);
 
-  // Auto-avanço; reinicia a cada mudança/interação.
+  // Rolagem automática; reinicia a cada mudança/interação.
   useEffect(() => {
     if (paused) return;
     const t = setTimeout(() => setI(v => (v + 1) % n), 3800);
@@ -58,6 +58,7 @@ export default function HeroCarousel() {
         filter: 'blur(38px)', borderRadius: '50%', zIndex: 0,
       }} />
 
+      {/* viewport */}
       <div
         style={{
           position: 'relative', width: '100%', aspectRatio: '1290 / 2796',
@@ -68,18 +69,16 @@ export default function HeroCarousel() {
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        {ARTS.map((src, idx) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            key={src} src={src} alt=""
-            draggable={false}
-            style={{
-              position: 'absolute', inset: 0, width: '100%', height: '100%',
-              objectFit: 'cover', opacity: idx === i ? 1 : 0,
-              transition: 'opacity 600ms ease', pointerEvents: 'none',
-            }}
-          />
-        ))}
+        {/* track deslizante */}
+        <div style={{ display: 'flex', height: '100%', transform: `translateX(-${i * 100}%)`, transition: 'transform 600ms cubic-bezier(.4,0,.2,1)' }}>
+          {ARTS.map(src => (
+            <div key={src} style={{ flex: '0 0 100%', height: '100%' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={src} alt="" draggable={false}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', pointerEvents: 'none' }} />
+            </div>
+          ))}
+        </div>
 
         {/* setas */}
         <button aria-label="Anterior" onClick={() => go(-1)} style={{ ...arrowStyle, left: 10 }}>
