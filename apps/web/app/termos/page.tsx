@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import PublicHeader from '@/components/PublicHeader';
+import PublicFooter from '@/components/PublicFooter';
 
 export const metadata: Metadata = {
   title: 'Termos de Uso — Charlotte AI',
@@ -10,30 +12,7 @@ export default function TermosPage() {
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb' }}>
       {/* Header */}
-      <header style={{
-        backgroundColor: '#16153A',
-        padding: '0 24px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        height: 64,
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{
-            backgroundColor: '#A3FF3C',
-            color: '#16153A',
-            fontWeight: 800,
-            fontSize: 15,
-            padding: '4px 10px',
-            borderRadius: 6,
-            letterSpacing: '-0.3px',
-          }}>Charlotte</span>
-          <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13 }}>by Hub Academy</span>
-        </div>
-        <a href="/privacidade" style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, textDecoration: 'none' }}>
-          ← Política de Privacidade
-        </a>
-      </header>
+      <PublicHeader />
 
       {/* Hero */}
       <div style={{ backgroundColor: '#16153A', padding: '48px 24px 56px' }}>
@@ -145,14 +124,7 @@ export default function TermosPage() {
       </main>
 
       {/* Footer */}
-      <footer style={{ backgroundColor: '#16153A', padding: '32px 24px', textAlign: 'center' }}>
-        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, margin: '0 0 8px' }}>
-          © 2026 Hub Academy. Todos os direitos reservados.
-        </p>
-        <a href="/privacidade" style={{ color: '#A3FF3C', fontSize: 13, textDecoration: 'none' }}>
-          ← Política de Privacidade
-        </a>
-      </footer>
+      <PublicFooter />
     </div>
   );
 }

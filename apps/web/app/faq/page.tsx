@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import PublicHeader from '@/components/PublicHeader';
+import PublicFooter from '@/components/PublicFooter';
 
 export const metadata: Metadata = {
   title: 'Perguntas Frequentes — Charlotte AI',
@@ -7,7 +9,6 @@ export const metadata: Metadata = {
 };
 
 const NAVY = '#16153A';
-const LIME = '#A3FF3C';
 
 interface Item { q: string; a: React.ReactNode; }
 interface Section { title: string; items: Item[]; }
@@ -63,13 +64,7 @@ export default function FaqPage() {
         details.faq .ans a { text-decoration: underline; }
       `}</style>
 
-      <header style={{ backgroundColor: NAVY, padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ backgroundColor: LIME, color: NAVY, fontWeight: 800, fontSize: 15, padding: '4px 10px', borderRadius: 6, letterSpacing: '-0.3px' }}>Charlotte</span>
-          <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13 }}>by Hub Academy</span>
-        </div>
-        <a href="mailto:suporte@hubacademybr.com" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 13, textDecoration: 'none' }}>Falar com o suporte →</a>
-      </header>
+      <PublicHeader />
 
       <div style={{ backgroundColor: NAVY, padding: '48px 24px 56px' }}>
         <div style={{ maxWidth: 720, margin: '0 auto' }}>
@@ -100,9 +95,7 @@ export default function FaqPage() {
         </div>
       </div>
 
-      <footer style={{ borderTop: '1px solid #ececf2', padding: '28px 24px', textAlign: 'center' }}>
-        <p style={{ margin: 0, fontSize: 12, color: '#9896b8' }}>Charlotte — Hub Academy Ltda · <a href="/privacidade" style={{ color: '#9896b8' }}>Privacidade</a> · <a href="/termos" style={{ color: '#9896b8' }}>Termos</a></p>
-      </footer>
+      <PublicFooter />
     </div>
   );
 }

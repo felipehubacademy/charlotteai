@@ -429,9 +429,10 @@ export default function Page() {
           <span style={{ fontWeight: 800, fontSize: 13, color: '#16153A' }}>Charlotte</span>
           <span style={{ fontSize: 12, color: '#9896B8' }}>© 2026 Hub Academy Ltda</span>
         </div>
-        <div style={{ display: 'flex', gap: 24 }}>
+        <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
           <a href="/privacidade" style={{ fontSize: 12, color: '#9896B8' }}>Privacidade</a>
           <a href="/termos"      style={{ fontSize: 12, color: '#9896B8' }}>Termos</a>
+          <a href="/faq"         style={{ fontSize: 12, color: '#9896B8' }}>Ajuda</a>
           <a href="mailto:contato@hubacademybr.com" style={{ fontSize: 12, color: '#9896B8' }}>Contato</a>
         </div>
       </footer>

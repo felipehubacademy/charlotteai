@@ -27,21 +27,21 @@ const cardShadow = Platform.select({
 interface Faq { q: string; a: string; }
 
 const FAQ_PT: Faq[] = [
-  { q: 'Como cancelo minha assinatura?', a: 'O cancelamento é feito na loja. iPhone: Ajustes > seu nome > Assinaturas > Charlotte > Cancelar. Android: Google Play > perfil > Pagamentos e assinaturas > Assinaturas > Charlotte > Cancelar. Você mantém o acesso até o fim do período já pago.' },
+  { q: 'Como cancelo minha assinatura?', a: 'O cancelamento é feito na loja.\n\niPhone: Ajustes > seu nome > Assinaturas > Charlotte > Cancelar.\n\nAndroid: Google Play > perfil > Pagamentos e assinaturas > Assinaturas > Charlotte > Cancelar.\n\nVocê mantém o acesso até o fim do período já pago.' },
   { q: 'Cancelei — perco o acesso na hora?', a: 'Não. Ao cancelar, você continua com acesso até o fim do período que já pagou. O acesso só encerra quando a assinatura expira.' },
   { q: 'Como redefino minha senha?', a: 'Na tela de login, toque em "Esqueci minha senha", informe seu email e siga o link enviado.' },
   { q: 'Quais são os planos e preços?', a: 'Teste grátis de 7 dias. Plano Mensal R$ 29,90/mês e Plano Anual R$ 199,90/ano (~R$ 16,66/mês). Os valores exatos aparecem na tela de assinatura do app.' },
   { q: 'Como restauro minha compra?', a: 'Em Perfil > Restaurar compra. Você precisa estar logado na mesma conta da App Store ou Google Play usada na compra.' },
-  { q: 'Como pedir reembolso?', a: 'Os reembolsos são feitos pela loja. iPhone: reportaproblem.apple.com. Android: pela ajuda do Google Play. Se precisar, fale com a gente pelos canais acima.' },
+  { q: 'Como pedir reembolso?', a: 'Os reembolsos são feitos pela loja.\n\niPhone: acesse reportaproblem.apple.com.\n\nAndroid: pela ajuda do Google Play.\n\nSe precisar, fale com a gente pelos canais acima.' },
 ];
 
 const FAQ_EN: Faq[] = [
-  { q: 'How do I cancel my subscription?', a: 'Cancellation is done in the store. iPhone: Settings > your name > Subscriptions > Charlotte > Cancel. Android: Google Play > profile > Payments & subscriptions > Subscriptions > Charlotte > Cancel. You keep access until the end of the period you already paid for.' },
+  { q: 'How do I cancel my subscription?', a: 'Cancellation is done in the store.\n\niPhone: Settings > your name > Subscriptions > Charlotte > Cancel.\n\nAndroid: Google Play > profile > Payments & subscriptions > Subscriptions > Charlotte > Cancel.\n\nYou keep access until the end of the period you already paid for.' },
   { q: 'If I cancel, do I lose access right away?', a: 'No. When you cancel you keep access until the end of the period you already paid for. Access only ends when the subscription expires.' },
   { q: 'How do I reset my password?', a: 'On the login screen, tap "Forgot my password", enter your email and follow the link.' },
   { q: 'What are the plans and prices?', a: '7-day free trial. Monthly R$ 29.90/month and Yearly R$ 199.90/year (~R$ 16.66/month). Exact prices show on the subscription screen in the app.' },
   { q: 'How do I restore my purchase?', a: 'Profile > Restore purchase. You must be signed in to the same App Store or Google Play account used for the purchase.' },
-  { q: 'How do I request a refund?', a: 'Refunds are handled by the store. iPhone: reportaproblem.apple.com. Android: via Google Play help. If you need help, contact us using the channels above.' },
+  { q: 'How do I request a refund?', a: 'Refunds are handled by the store.\n\niPhone: go to reportaproblem.apple.com.\n\nAndroid: via Google Play help.\n\nIf you need help, contact us using the channels above.' },
 ];
 
 function Row({ icon, label, sub, onPress }: { icon: React.ReactNode; label: string; sub?: string; onPress: () => void }) {
