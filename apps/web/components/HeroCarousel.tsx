@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // Carrossel das artes da App Store no hero da home.
 const ARTS = [
@@ -9,14 +9,36 @@ const ARTS = [
 ];
 
 export default function HeroCarousel() {
+  const n = ARTS.length;
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
+  const touchX = useRef<number | null>(null);
 
+  const go = (d: number) => setI(v => (v + d + n) % n);
+
+  // Auto-avanço; reinicia a cada mudança/interação.
   useEffect(() => {
     if (paused) return;
-    const t = setInterval(() => setI(v => (v + 1) % ARTS.length), 3500);
-    return () => clearInterval(t);
-  }, [paused]);
+    const t = setTimeout(() => setI(v => (v + 1) % n), 3800);
+    return () => clearTimeout(t);
+  }, [i, paused, n]);
+
+  const onTouchStart = (e: React.TouchEvent) => { touchX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    touchX.current = null;
+  };
+
+  const arrowStyle: React.CSSProperties = {
+    position: 'absolute', top: '50%', transform: 'translateY(-50%)',
+    width: 36, height: 36, borderRadius: '50%',
+    background: 'rgba(255,255,255,0.92)', border: '1px solid rgba(22,21,58,0.08)',
+    boxShadow: '0 4px 14px rgba(22,21,58,0.18)', cursor: 'pointer',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    zIndex: 3, padding: 0, color: '#16153A',
+  };
 
   return (
     <div
@@ -36,23 +58,36 @@ export default function HeroCarousel() {
         filter: 'blur(38px)', borderRadius: '50%', zIndex: 0,
       }} />
 
-      <div style={{
-        position: 'relative', width: '100%', aspectRatio: '1290 / 2796',
-        borderRadius: 26, overflow: 'hidden',
-        boxShadow: '0 40px 100px rgba(22,21,58,0.22), inset 0 0 0 1px rgba(255,255,255,0.06)',
-        zIndex: 1,
-      }}>
+      <div
+        style={{
+          position: 'relative', width: '100%', aspectRatio: '1290 / 2796',
+          borderRadius: 26, overflow: 'hidden',
+          boxShadow: '0 40px 100px rgba(22,21,58,0.22), inset 0 0 0 1px rgba(255,255,255,0.06)',
+          zIndex: 1,
+        }}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
         {ARTS.map((src, idx) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             key={src} src={src} alt=""
+            draggable={false}
             style={{
               position: 'absolute', inset: 0, width: '100%', height: '100%',
               objectFit: 'cover', opacity: idx === i ? 1 : 0,
-              transition: 'opacity 700ms ease',
+              transition: 'opacity 600ms ease', pointerEvents: 'none',
             }}
           />
         ))}
+
+        {/* setas */}
+        <button aria-label="Anterior" onClick={() => go(-1)} style={{ ...arrowStyle, left: 10 }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+        </button>
+        <button aria-label="Próximo" onClick={() => go(1)} style={{ ...arrowStyle, right: 10 }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+        </button>
       </div>
 
       {/* dots */}
