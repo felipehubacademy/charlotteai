@@ -13,7 +13,7 @@ import {
   SignOut, ShieldCheck, CheckCircle, Microphone, FileText,
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
   CaretRight, Play, SpeakerHigh, Vibrate, ChatCircleText,
-  CreditCard,
+  CreditCard, Lifebuoy,
 } from 'phosphor-react-native';
 import {
   loadAudioPreferences,
@@ -615,6 +615,17 @@ export default function ProfileTab() {
             </SettingGroup>
           </>
         )}
+
+        {/* Help */}
+        <SectionTitle label={isPt ? 'Ajuda' : 'Help'} />
+        <SettingGroup>
+          <SettingRow
+            icon={<Lifebuoy size={18} color={C.navyMid} weight="regular" />}
+            label={isPt ? 'Ajuda e suporte' : 'Help & support'}
+            onPress={() => router.push('/(app)/support' as any)}
+            chevron
+          />
+        </SettingGroup>
 
         {/* Legal */}
         <SectionTitle label="Legal" />
