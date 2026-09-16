@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut } from 'lucide-react';
+import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones } from 'lucide-react';
 
 // ── Design tokens ───────────────────────────────────────────────────────────
 const ADMIN_CSS = `
@@ -605,6 +605,7 @@ const NAV = [
   { section: 'ANALYTICS' },
   { href: '/admin/metrics', icon: BarChart2, label: 'Métricas' },
   { section: 'SISTEMA' },
+  { href: '/admin/support', icon: Headphones, label: 'Suporte' },
   { href: '/admin/notifications', icon: Bell, label: 'Notificações' },
 ];
 
