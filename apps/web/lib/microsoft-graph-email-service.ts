@@ -122,3 +122,40 @@ export async function listBounceRecipients(sinceIso: string): Promise<{ scanned:
   }
   return { scanned: msgs.length, emails: [...emails] };
 }
+
+// ── Leitura de mensagens da caixa (suporte) ────────────────────────────────────
+export interface InboxMessage {
+  id: string;
+  conversationId: string | null;
+  from: string;
+  fromName: string | null;
+  to: string[];
+  subject: string;
+  bodyPreview: string;
+  bodyText: string;
+  receivedDateTime: string;
+}
+
+export async function listInboxMessages(sinceIso: string, top = 100): Promise<InboxMessage[]> {
+  const token = await getAccessToken();
+  const url = `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(FROM_EMAIL)}/messages`
+    + `?$select=id,conversationId,from,toRecipients,subject,bodyPreview,body,receivedDateTime`
+    + `&$top=${top}&$orderby=receivedDateTime desc`
+    + `&$filter=${encodeURIComponent(`receivedDateTime ge ${sinceIso}`)}`;
+  const res = await fetch(url, {
+    headers: { Authorization: `Bearer ${token}`, Prefer: 'outlook.body-content-type="text"' },
+  });
+  if (!res.ok) throw new Error(`Graph read ${res.status}: ${await res.text()}`);
+  const json = await res.json();
+  return (json.value ?? []).map((m: any) => ({
+    id: m.id,
+    conversationId: m.conversationId ?? null,
+    from: (m.from?.emailAddress?.address ?? '').toLowerCase(),
+    fromName: m.from?.emailAddress?.name ?? null,
+    to: (m.toRecipients ?? []).map((r: any) => (r.emailAddress?.address ?? '').toLowerCase()),
+    subject: m.subject ?? '',
+    bodyPreview: m.bodyPreview ?? '',
+    bodyText: m.body?.content ?? m.bodyPreview ?? '',
+    receivedDateTime: m.receivedDateTime ?? '',
+  })) as InboxMessage[];
+}
