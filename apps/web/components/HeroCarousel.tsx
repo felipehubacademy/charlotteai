@@ -16,7 +16,6 @@ export default function HeroCarousel() {
 
   const go = (d: number) => setI(v => (v + d + n) % n);
 
-  // Rolagem automática; reinicia a cada mudança/interação.
   useEffect(() => {
     if (paused) return;
     const t = setTimeout(() => setI(v => (v + 1) % n), 5500);
@@ -31,13 +30,14 @@ export default function HeroCarousel() {
     touchX.current = null;
   };
 
+  // Setas FORA da arte (navy p/ contrastar no fundo claro da home).
   const arrowStyle: React.CSSProperties = {
     position: 'absolute', top: '50%', transform: 'translateY(-50%)',
-    width: 40, height: 40, borderRadius: '50%',
-    background: '#ffffff', border: '1px solid rgba(22,21,58,0.14)',
-    boxShadow: '0 3px 14px rgba(22,21,58,0.40)', cursor: 'pointer',
+    width: 38, height: 38, borderRadius: '50%',
+    background: '#16153A', border: 'none',
+    boxShadow: '0 6px 18px rgba(22,21,58,0.28)', cursor: 'pointer',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    zIndex: 3, padding: 0, color: '#16153A',
+    zIndex: 4, padding: 0, color: '#fff',
   };
 
   return (
@@ -48,43 +48,44 @@ export default function HeroCarousel() {
       onMouseLeave={() => setPaused(false)}
     >
       <style>{`
-        @media (max-width: 768px) { .hero-carousel { max-width: 230px !important; margin-top: 24px !important; } }
+        @media (max-width: 768px) { .hero-carousel { max-width: 230px !important; margin-top: 24px !important; } .hero-carousel .hc-arrow-l { left: -20px !important; } .hero-carousel .hc-arrow-r { right: -20px !important; } }
       `}</style>
 
       {/* glow */}
       <div style={{
-        position: 'absolute', bottom: 4, left: '50%', transform: 'translateX(-50%)',
+        position: 'absolute', bottom: 40, left: '50%', transform: 'translateX(-50%)',
         width: 220, height: 60, background: 'rgba(163,255,60,0.28)',
         filter: 'blur(38px)', borderRadius: '50%', zIndex: 0,
       }} />
 
-      {/* viewport */}
-      <div
-        style={{
-          position: 'relative', width: '100%', aspectRatio: '1290 / 2796',
-          borderRadius: 26, overflow: 'hidden',
-          boxShadow: '0 40px 100px rgba(22,21,58,0.22), inset 0 0 0 1px rgba(255,255,255,0.06)',
-          zIndex: 1,
-        }}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
-      >
-        {/* track deslizante */}
-        <div style={{ display: 'flex', height: '100%', transform: `translateX(-${i * 100}%)`, transition: 'transform 600ms cubic-bezier(.4,0,.2,1)' }}>
-          {ARTS.map(src => (
-            <div key={src} style={{ flex: '0 0 100%', height: '100%' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={src} alt="" draggable={false}
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', pointerEvents: 'none' }} />
-            </div>
-          ))}
+      {/* moldura da arte (sem overflow — deixa as setas saírem pra fora) */}
+      <div style={{ position: 'relative', width: '100%', aspectRatio: '1290 / 2796' }}>
+        {/* viewport com overflow (track deslizante) */}
+        <div
+          style={{
+            position: 'absolute', inset: 0, borderRadius: 26, overflow: 'hidden',
+            boxShadow: '0 40px 100px rgba(22,21,58,0.22), inset 0 0 0 1px rgba(255,255,255,0.06)',
+            zIndex: 1,
+          }}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          <div style={{ display: 'flex', height: '100%', transform: `translateX(-${i * 100}%)`, transition: 'transform 600ms cubic-bezier(.4,0,.2,1)' }}>
+            {ARTS.map(src => (
+              <div key={src} style={{ flex: '0 0 100%', height: '100%' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={src} alt="" draggable={false}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', pointerEvents: 'none' }} />
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* setas */}
-        <button aria-label="Anterior" onClick={() => go(-1)} style={{ ...arrowStyle, left: 10 }}>
+        {/* setas fora da imagem */}
+        <button className="hc-arrow-l" aria-label="Anterior" onClick={() => go(-1)} style={{ ...arrowStyle, left: -52 }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
         </button>
-        <button aria-label="Próximo" onClick={() => go(1)} style={{ ...arrowStyle, right: 10 }}>
+        <button className="hc-arrow-r" aria-label="Próximo" onClick={() => go(1)} style={{ ...arrowStyle, right: -52 }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
         </button>
       </div>
