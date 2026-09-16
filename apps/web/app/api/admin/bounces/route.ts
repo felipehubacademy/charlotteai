@@ -26,6 +26,17 @@ export async function POST(req: NextRequest) {
 
   let body: any = {};
   try { body = await req.json(); } catch {}
+
+  // Identifica QUAL app do Azure esta em uso (pra conceder Mail.Read no certo).
+  // client id e tenant id sao identificadores publicos (nao sao segredo).
+  if (body?.whoami === true) {
+    return NextResponse.json({
+      azureClientId: process.env.AZURE_CLIENT_ID ?? null,
+      azureTenantId: process.env.AZURE_TENANT_ID ?? null,
+      sender: 'charlotte@hubacademybr.com',
+    });
+  }
+
   const apply: boolean = body?.apply === true;
   const since: string = body?.since || new Date(Date.now() - 3 * 3600 * 1000).toISOString();
 
