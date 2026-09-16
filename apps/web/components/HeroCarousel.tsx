@@ -33,9 +33,9 @@ export default function HeroCarousel() {
 
   const arrowStyle: React.CSSProperties = {
     position: 'absolute', top: '50%', transform: 'translateY(-50%)',
-    width: 36, height: 36, borderRadius: '50%',
-    background: 'rgba(255,255,255,0.92)', border: '1px solid rgba(22,21,58,0.08)',
-    boxShadow: '0 4px 14px rgba(22,21,58,0.18)', cursor: 'pointer',
+    width: 40, height: 40, borderRadius: '50%',
+    background: '#ffffff', border: '1px solid rgba(22,21,58,0.14)',
+    boxShadow: '0 3px 14px rgba(22,21,58,0.40)', cursor: 'pointer',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     zIndex: 3, padding: 0, color: '#16153A',
   };
