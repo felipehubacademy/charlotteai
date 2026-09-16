@@ -19,7 +19,7 @@ export default function HeroCarousel() {
   // Rolagem automática; reinicia a cada mudança/interação.
   useEffect(() => {
     if (paused) return;
-    const t = setTimeout(() => setI(v => (v + 1) % n), 3800);
+    const t = setTimeout(() => setI(v => (v + 1) % n), 5500);
     return () => clearTimeout(t);
   }, [i, paused, n]);
 
