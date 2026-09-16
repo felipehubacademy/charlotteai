@@ -366,22 +366,6 @@ export default function LearnSessionScreen() {
     };
   }, []);
 
-  // Loop de pulso do mic ring durante gravacao
-  useEffect(() => {
-    if (pronStatus === 'recording') {
-      micRingAnim.setValue(0);
-      const loop = Animated.loop(
-        Animated.timing(micRingAnim, {
-          toValue: 1, duration: 1400, useNativeDriver: true,
-        })
-      );
-      loop.start();
-      return () => loop.stop();
-    } else {
-      micRingAnim.setValue(0);
-    }
-  }, [pronStatus, micRingAnim]);
-
   // Load saved step on mount (resume mid-topic)
   useEffect(() => {
     if (!resumeKey || stepLoadedRef.current) return;
@@ -442,6 +426,23 @@ export default function LearnSessionScreen() {
   const pronFeedbackAnim = useRef(new Animated.Value(0)).current;
   // on-device ASR transcript (repeat)
   const speechTranscriptRef = useRef('');
+
+  // Loop de pulso do mic ring durante gravacao.
+  // (declarado aqui, apos o useState de pronStatus, para evitar TDZ.)
+  useEffect(() => {
+    if (pronStatus === 'recording') {
+      micRingAnim.setValue(0);
+      const loop = Animated.loop(
+        Animated.timing(micRingAnim, {
+          toValue: 1, duration: 1400, useNativeDriver: true,
+        })
+      );
+      loop.start();
+      return () => loop.stop();
+    } else {
+      micRingAnim.setValue(0);
+    }
+  }, [pronStatus, micRingAnim]);
 
   // ── Speech recognition events (no-op on builds without native module) ──
   useSpeechRecognitionEvent('result', (event) => {
