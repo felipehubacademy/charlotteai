@@ -168,7 +168,7 @@ export default function SignupScreen() {
               Criar conta
             </AppText>
             <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center' }}>
-              7 dias grátis, cancele quando quiser.
+              7 dias grátis, sem cartão de crédito.
             </AppText>
           </View>
 

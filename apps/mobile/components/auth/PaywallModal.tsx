@@ -464,25 +464,20 @@ export function PaywallModal() {
               )
               : (() => {
                   const isYearly = selected.includes('yearly');
-                  const afterLabel = isYearly
-                    ? `depois ${yearlyPrice}/ano`
-                    : `depois ${monthlyPrice}/mês`;
+                  const priceLabel = isYearly
+                    ? `${yearlyPrice}/ano`
+                    : `${monthlyPrice}/mês`;
                   return (
-                    <View style={{ alignItems: 'center', gap: 2 }}>
-                      <AppText style={{ color: C.navy, fontSize: 16, fontWeight: '800' }}>
-                        +7 dias grátis
-                      </AppText>
-                      <AppText style={{ color: C.navy, fontSize: 12, fontWeight: '600', opacity: 0.7 }}>
-                        {afterLabel}
-                      </AppText>
-                    </View>
+                    <AppText style={{ color: C.navy, fontSize: 16, fontWeight: '800' }}>
+                      Assinar — {priceLabel}
+                    </AppText>
                   );
                 })()
             }
           </TouchableOpacity>
 
           <AppText style={{ color: C.muted, fontSize: 11, textAlign: 'center', marginBottom: 24, lineHeight: 16 }}>
-            Ganhe +7 dias grátis ao assinar. Cancele antes e não será cobrado. Renovação automática.
+            Cobrança imediata ao assinar. Renovação automática. Cancele quando quiser.
           </AppText>
 
           {/* Restore */}

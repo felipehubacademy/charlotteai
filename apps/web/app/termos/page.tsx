@@ -66,7 +66,7 @@ export default function TermosPage() {
 
         <Section title="4. Assinaturas e Pagamentos">
           <DataTable rows={[
-            ['Período de teste', 'O Charlotte AI oferece 7 dias de acesso gratuito completo. Ao término, a assinatura é convertida automaticamente em paga, salvo cancelamento antes do encerramento.'],
+            ['Período de teste', 'O Charlotte AI oferece 7 dias de acesso gratuito completo, sem necessidade de cartão de crédito. Não há cobrança automática nem conversão em assinatura sem a sua ação: ao término dos 7 dias, o acesso é interrompido e, para continuar, você escolhe um plano pago (Mensal ou Anual) dentro do app.'],
             ['Cobrança', 'Automática no início de cada período (mensal ou anual) até o cancelamento.'],
             ['Cancelamento', 'A qualquer momento nas configurações da App Store ou Google Play. O acesso permanece ativo até o fim do período pago.'],
             ['Reembolsos', 'Regidos pelas políticas da Apple ou Google. Solicite diretamente nas plataformas.'],
