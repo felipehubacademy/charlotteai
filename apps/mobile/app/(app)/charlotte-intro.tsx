@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { Animated, View, StyleSheet, StatusBar } from 'react-native';
+import { Animated, View, StyleSheet, StatusBar, InteractionManager } from 'react-native';
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 
@@ -17,21 +17,33 @@ export default function CharlotteIntroScreen() {
 
   const player = useVideoPlayer(videoSource, p => {
     p.loop  = false;
-    p.muted = false;
+    // Começa MUDO: o som só liga quando o vídeo de fato renderiza o 1o frame
+    // (evento playingChange). Assim o áudio nunca sai sob o loading nem sob o
+    // cover preto durante a latência do play().
+    p.muted = true;
     // NÃO tocar no init: começaria durante a transição do loading (glitch de
     // "vídeo rodando antes do loading sair"). Play acontece após a tela montar.
   });
 
-  // Só toca DEPOIS que o loading saiu de vez da tela. Se tocasse cedo (350ms),
-  // o áudio da Charlotte começava enquanto o loading ainda estava saindo -> "som
-  // antes dela aparecer". 550ms garante que a tela de loading já desmontou; só
-  // então o play() dispara (áudio + vídeo juntos, e a revelação é rápida).
-  useEffect(() => {
-    const t = setTimeout(() => {
-      try { player.play(); } catch {}
-    }, 550);
-    return () => clearTimeout(t);
-  }, [player]);
+  // O play NÃO pode depender de um timer chutado: a tela de loading (rota `/`,
+  // index.tsx) sai numa transição de navegação, e um setTimeout fixo cai no
+  // meio dela -> o áudio da Charlotte começa enquanto o loading ainda está na
+  // tela. useFocusEffect + InteractionManager.runAfterInteractions só roda
+  // DEPOIS que a transição de rota terminou (loading realmente saiu da tela).
+  // Só então tocamos — áudio e imagem nascem juntos, nunca antes do load sair.
+  useFocusEffect(
+    useCallback(() => {
+      let cancelled = false;
+      const task = InteractionManager.runAfterInteractions(() => {
+        if (cancelled) return;
+        try { player.play(); } catch {}
+      });
+      return () => {
+        cancelled = true;
+        try { (task as { cancel?: () => void })?.cancel?.(); } catch {}
+      };
+    }, [player])
+  );
 
   const navigateWithFade = useCallback(async () => {
     if (doneRef.current) return;
@@ -86,9 +98,10 @@ export default function CharlotteIntroScreen() {
       if (isPlaying) {
         if (!startedRef.current) {
           startedRef.current = true;
-          // Revela o vídeo no instante EXATO em que ele começa a tocar (frames
-          // reais). Reveal curto (140ms) pra imagem e som aparecerem juntos —
-          // sem o áudio "liderar" a Charlotte.
+          // Frames reais começaram a renderizar: liga o som AGORA (junto com a
+          // revelação da imagem) e revela o vídeo. Áudio e Charlotte nascem no
+          // mesmo instante — nunca o som antes.
+          try { player.muted = false; } catch {}
           Animated.timing(fadeOutAnim, { toValue: 0, duration: 140, useNativeDriver: true }).start();
         }
       } else if (startedRef.current) {
