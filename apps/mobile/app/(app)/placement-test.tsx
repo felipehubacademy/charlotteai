@@ -348,9 +348,15 @@ export default function PlacementTestScreen() {
 
   useEffect(() => {
     if (phase !== 'test') return;
-    const q = blockQuestions[qIndex];
-    if (!q || q.kind !== 'listening') return;
+    // Sempre para o áudio da questão anterior ao trocar de questão/página —
+    // inclusive quando a próxima questão NÃO é de listening (senão o áudio
+    // continuava tocando após avançar).
     stopAudio();
+    const q = blockQuestions[qIndex];
+    if (!q || q.kind !== 'listening') {
+      setAudioUri(null);
+      return;
+    }
     const uri = STATIC_AUDIO[q.id] ?? null;
     setAudioUri(uri);
     setAudioLoading(false);
@@ -380,6 +386,9 @@ export default function PlacementTestScreen() {
 
   // handleNext — record answer then advance through blocks
   const handleNext = () => {
+    // Para o áudio da questão atual imediatamente ao avançar (não espera a
+    // animação de saída, que levava ~350ms com o áudio ainda tocando).
+    stopAudio();
     const currentBlock = block;
     const currentBlockQuestions = blockQuestions;
     const isCorrect = selected !== null && selected === currentQ.correctIndex;
