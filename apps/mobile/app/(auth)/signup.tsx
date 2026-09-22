@@ -46,18 +46,26 @@ export default function SignupScreen() {
       await signUp(email.trim().toLowerCase(), password, name.trim());
       setEmailSent(true);
     } catch (e: any) {
-      const msg = (e?.message ?? '') as string;
-      console.error('[Signup] error:', msg);
-      if (msg.toLowerCase().includes('already registered') || msg.toLowerCase().includes('already been registered') || msg.toLowerCase().includes('user already')) {
+      const raw = (e?.message ?? '') as string;
+      const msg = raw.toLowerCase();
+      console.error('[Signup] error:', raw);
+      const has = (...words: string[]) => words.some(w => msg.includes(w));
+      // ORDEM IMPORTA: rate-limit e falha-de-envio contêm a palavra "email"
+      // ("email rate limit exceeded", "Error sending confirmation email"), então
+      // precisam ser testados ANTES do match de e-mail inválido — senão viram
+      // "E-mail inválido" e o usuário acha que digitou errado.
+      if (has('already registered', 'already been registered', 'user already')) {
         setError('Este e-mail já está cadastrado. Faça login.');
-      } else if (msg.toLowerCase().includes('invalid') || msg.toLowerCase().includes('email')) {
-        setError('E-mail inválido.');
-      } else if (msg.toLowerCase().includes('password') || msg.toLowerCase().includes('senha')) {
+      } else if (has('rate limit', 'too many', 'exceeded', 'over_email', 'over_request')) {
+        setError('Muitas tentativas agora. Aguarde alguns minutos e tente de novo.');
+      } else if (has('sending', 'confirmation email', 'smtp', 'send email')) {
+        setError('Não foi possível enviar o e-mail de confirmação agora. Tente novamente em instantes.');
+      } else if (has('invalid format', 'validate email', 'invalid email', 'not a valid')) {
+        setError('E-mail inválido. Confira o endereço.');
+      } else if (has('password', 'senha')) {
         setError('Senha fraca. Use pelo menos 6 caracteres.');
-      } else if (msg.toLowerCase().includes('rate') || msg.toLowerCase().includes('limit')) {
-        setError('Muitas tentativas. Aguarde alguns minutos.');
       } else {
-        setError(msg || 'Erro ao criar conta. Tente novamente.');
+        setError(raw || 'Erro ao criar conta. Tente novamente.');
       }
     } finally {
       setLoading(false);
