@@ -261,17 +261,25 @@ export function PaywallModal() {
     ? `${yearlyPkg.product.currencyCode} ${(yearlyPkg.product.price / 12).toFixed(2).replace('.', ',')}`
     : 'R$ 16,66';
 
-  // Headline personalizada: streak > 0 usa streak, senão usa XP
+  // Headline personalizada. O gancho de streak só faz sentido quando a
+  // sequência já é relevante (>= 3 dias) — "sua sequência de 1 dia está em
+  // risco" não convence ninguém. Abaixo disso, usa o XP acumulado (que sobe
+  // rápido); e se nem XP houver, um apelo neutro de continuidade.
   const firstName = profile?.name?.split(' ')[0] ?? '';
-  const useStreak = streakDays > 0;
+  const useStreak = streakDays >= 3;
+  const useXp     = !useStreak && totalXP >= 50;
 
-  const headline = firstName
-    ? useStreak
-      ? `${firstName}, sua sequência de ${streakDays} ${streakDays === 1 ? 'dia' : 'dias'} está em risco.`
-      : `${firstName}, você acumulou ${totalXP} XP praticando com a Charlotte.`
-    : useStreak
-      ? `Sua sequência de ${streakDays} ${streakDays === 1 ? 'dia' : 'dias'} está em risco.`
-      : `Você acumulou ${totalXP} XP praticando com a Charlotte.`;
+  const streakLine = firstName
+    ? `${firstName}, sua sequência de ${streakDays} dias está em risco.`
+    : `Sua sequência de ${streakDays} dias está em risco.`;
+  const xpLine = firstName
+    ? `${firstName}, você acumulou ${totalXP} XP praticando com a Charlotte.`
+    : `Você acumulou ${totalXP} XP praticando com a Charlotte.`;
+  const neutralLine = firstName
+    ? `${firstName}, continue evoluindo seu inglês com a Charlotte.`
+    : 'Continue evoluindo seu inglês com a Charlotte.';
+
+  const headline = useStreak ? streakLine : useXp ? xpLine : neutralLine;
 
   const subheadline = 'Não deixe tudo isso ir embora. Continue de onde parou.';
 

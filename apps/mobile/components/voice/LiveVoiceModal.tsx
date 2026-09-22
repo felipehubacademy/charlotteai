@@ -811,7 +811,9 @@ export default function LiveVoiceModal({
           response: {
             output_modalities: ['audio'],
             instructions: farewellInstruction,
-            max_output_tokens: 80,
+            // Sem cap de tokens: 80 truncava o áudio da despedida no meio da
+            // frase (a fala tem mais tokens de áudio que a de texto). A própria
+            // instrução ("Say nothing else") já limita ao one-liner.
           },
         });
       }

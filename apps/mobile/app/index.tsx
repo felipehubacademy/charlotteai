@@ -1,23 +1,18 @@
 import { Redirect } from 'expo-router';
 import { useAuth } from '@/hooks/useAuth';
-import { useEffect, useRef } from 'react';
-import { View, Animated, Platform, Image, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import Svg, { Defs, Pattern, Circle, Rect } from 'react-native-svg';
-import { AppText } from '@/components/ui/Text';
 
-// ── Branded loading screen ────────────────────────────────────────────────────
-// Shown while AuthProvider resolves session on cold boot.
-// Uses the same dot-texture background as the ChatBox.
+// ── Loading screen (minimal) ──────────────────────────────────────────────────
+// Mostrada enquanto o AuthProvider resolve a sessão no boot. O SplashOverlay
+// (splash.png "Charlotte AI English Teacher") já cobre a marca por cima nos
+// primeiros ~3s; então aqui NÃO repetimos o avatar/wordmark da Charlotte (evita
+// a "segunda Charlotte" / dois loadings). Fica só o fundo + um spinner discreto,
+// que aparece se o load passar do splash (ex.: rede lenta/offline).
 
 function LoadingScreen() {
-  const fadeIn = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    Animated.timing(fadeIn, { toValue: 1, duration: 500, useNativeDriver: true }).start();
-  }, []);
-
   return (
-    <View style={{ flex: 1, backgroundColor: '#F4F3FA' }}>
+    <View style={{ flex: 1, backgroundColor: '#F4F3FA', alignItems: 'center', justifyContent: 'center' }}>
       {/* Dot texture — same as ChatBox */}
       <Svg style={StyleSheet.absoluteFill}>
         <Defs>
@@ -28,66 +23,7 @@ function LoadingScreen() {
         <Rect width="100%" height="100%" fill="url(#dots)" />
       </Svg>
 
-      <Animated.View style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        opacity: fadeIn,
-      }}>
-        {/* Avatar estático sobre fundo navy para contraste com borda verde */}
-        <View style={{
-          marginBottom: 24,
-          width: 96,
-          height: 96,
-          borderRadius: 48,
-          backgroundColor: '#16153A',
-          borderWidth: 3,
-          borderColor: '#A3FF3C',
-          overflow: 'hidden',
-          ...Platform.select({
-            ios: {
-              shadowColor: '#A3FF3C',
-              shadowOpacity: 0.35,
-              shadowRadius: 16,
-              shadowOffset: { width: 0, height: 0 },
-            },
-            android: { elevation: 6 },
-          }),
-        }}>
-          <Image
-            source={require('../assets/charlotte-avatar.png')}
-            style={{ width: '100%', height: '100%' }}
-            resizeMode="cover"
-          />
-        </View>
-
-        {/* Wordmark */}
-        <AppText style={{
-          fontSize: 26,
-          fontWeight: '800',
-          color: '#16153A',
-          letterSpacing: -0.5,
-          marginBottom: 6,
-        }}>
-          Charlotte
-        </AppText>
-
-        <AppText style={{
-          fontSize: 13,
-          color: '#9896B8',
-          fontWeight: '500',
-          letterSpacing: 0.3,
-        }}>
-          AI English Teacher
-        </AppText>
-
-        {/* Spinner */}
-        <ActivityIndicator
-          size="small"
-          color="#16153A"
-          style={{ marginTop: 32 }}
-        />
-      </Animated.View>
+      <ActivityIndicator size="small" color="#16153A" />
     </View>
   );
 }

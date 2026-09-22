@@ -132,7 +132,10 @@ export default function VocabularyTab() {
       playerRef.current = player;
       player.play();
       await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    } catch { /* silencioso */ } finally {
+    } catch {
+      // Feedback de erro em vez de falha silenciosa (ex.: TTS do servidor fora).
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error).catch(() => {});
+    } finally {
       setTipTtsLoading(false);
     }
   }, [tipTtsLoading, tip.term]);
@@ -241,7 +244,8 @@ export default function VocabularyTab() {
       player.play();
       await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     } catch {
-      /* silencioso */
+      // Feedback de erro em vez de falha silenciosa (ex.: TTS do servidor fora).
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error).catch(() => {});
     } finally {
       setTtsLoading(null);
     }
