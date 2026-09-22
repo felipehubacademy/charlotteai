@@ -1,59 +1,50 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { Animated, View, StyleSheet, StatusBar, InteractionManager } from 'react-native';
+import { Animated, View, StyleSheet, StatusBar } from 'react-native';
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { router, useFocusEffect } from 'expo-router';
+import { router, useNavigation } from 'expo-router';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 
 const videoSource = require('@/assets/charlotte-intro.mp4');
 
+// Trava por SESSÃO do app: a tela pode remontar durante transições / refresh de
+// profile, criando um 2o player que tocava o áudio de novo (inclusive sobre a
+// Home). Isso garante que o vídeo toque no máximo uma vez por launch.
+let introConsumed = false;
+
+const LOG = (...a: unknown[]) => { try { console.log('[intro]', Date.now(), ...a); } catch {} };
+
 export default function CharlotteIntroScreen() {
   const { profile, refreshProfile } = useAuth();
+  const navigation = useNavigation();
   const doneRef    = useRef(false);
-  const startedRef = useRef(false); // true once video has played at least 1 frame
-  // Cobre a tela (preto) no mount pra o vídeo não "aparecer rodando" durante a
-  // transição do loading; revela (0) quando o vídeo começa; volta a 1 no fim.
+  const startedRef = useRef(false); // true once video rendered its 1st real frame
+  const playedRef  = useRef(false); // play() disparado no máximo 1x
+  const canPlayRef = useRef(false); // vira true só quando a transição de rota termina
+  // Cobre a tela (preto) no mount; revela (0) quando o vídeo começa a renderizar.
   const fadeOutAnim = useRef(new Animated.Value(1)).current;
 
   const player = useVideoPlayer(videoSource, p => {
-    p.loop  = false;
-    // Começa MUDO: o som só liga quando o vídeo de fato renderiza o 1o frame
-    // (evento playingChange). Assim o áudio nunca sai sob o loading nem sob o
-    // cover preto durante a latência do play().
-    p.muted = true;
-    // NÃO tocar no init: começaria durante a transição do loading (glitch de
-    // "vídeo rodando antes do loading sair"). Play acontece após a tela montar.
+    p.loop   = false;
+    // MUDO + volume 0 até o 1o frame real. O som só liga quando a Charlotte
+    // aparece de fato — e o play só é liberado depois que o loading sai
+    // (transitionEnd), então nada disso acontece sobre a tela de loading.
+    p.muted  = true;
+    p.volume = 0;
   });
 
-  // O play NÃO pode depender de um timer chutado: a tela de loading (rota `/`,
-  // index.tsx) sai numa transição de navegação, e um setTimeout fixo cai no
-  // meio dela -> o áudio da Charlotte começa enquanto o loading ainda está na
-  // tela. useFocusEffect + InteractionManager.runAfterInteractions só roda
-  // DEPOIS que a transição de rota terminou (loading realmente saiu da tela).
-  // Só então tocamos — áudio e imagem nascem juntos, nunca antes do load sair.
-  useFocusEffect(
-    useCallback(() => {
-      let cancelled = false;
-      const task = InteractionManager.runAfterInteractions(() => {
-        if (cancelled) return;
-        try { player.play(); } catch {}
-      });
-      return () => {
-        cancelled = true;
-        try { (task as { cancel?: () => void })?.cancel?.(); } catch {}
-      };
-    }, [player])
-  );
+  LOG('mount introConsumed=', introConsumed);
 
   const navigateWithFade = useCallback(async () => {
     if (doneRef.current) return;
     doneRef.current = true;
+    LOG('navigateWithFade');
 
     // Fade to black before navigating.
     await new Promise<void>(resolve => {
       Animated.timing(fadeOutAnim, {
         toValue: 1,
-        duration: 600,
+        duration: 500,
         useNativeDriver: true,
       }).start(() => resolve());
     });
@@ -91,21 +82,64 @@ export default function CharlotteIntroScreen() {
     router.replace('/(app)');
   }, [profile?.id, fadeOutAnim]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Remontagem depois que o intro já rodou nesta sessão -> vai direto pra Home
+  // (não cria um 2o player que tocaria o áudio de novo).
   useEffect(() => {
-    // playingChange fires when the player starts or stops.
-    // We detect "ended" by: video was playing (startedRef) and now stopped.
+    if (introConsumed) {
+      LOG('already consumed -> skip to home');
+      doneRef.current = true;
+      router.replace('/(app)');
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // O play só é liberado quando a TRANSIÇÃO de rota termina — ou seja, quando o
+  // loading (rota `/`, index.tsx) realmente saiu da tela. transitionEnd é o
+  // único sinal confiável disso (focus/runAfterInteractions disparam no meio da
+  // transição, com o loading ainda por cima -> áudio vazava sobre o load).
+  useEffect(() => {
+    if (introConsumed) return;
+    const startPlayback = (src: string) => {
+      if (playedRef.current) return;
+      playedRef.current  = true;
+      canPlayRef.current = true;
+      introConsumed      = true;
+      LOG('startPlayback via', src);
+      try { player.play(); } catch {}
+    };
+    // A animação de entrada pode estar no nosso navigator OU no stack pai (raiz).
+    const parent = (navigation as { getParent?: () => unknown }).getParent?.();
+    const navs = [navigation, parent].filter(Boolean) as Array<{
+      addListener: (e: string, cb: (ev: { data?: { closing?: boolean } }) => void) => (() => void);
+    }>;
+    const unsubs = navs.map((n, i) =>
+      n.addListener('transitionEnd', (ev) => {
+        LOG('transitionEnd nav', i, 'closing=', ev?.data?.closing);
+        if (ev?.data?.closing) return;
+        startPlayback('transitionEnd' + i);
+      })
+    );
+    // Fallback: se nenhum transitionEnd vier (ex.: sem animação de transição),
+    // toca depois de uma folga generosa pra o loading já ter saído.
+    const fb = setTimeout(() => startPlayback('fallback'), 1400);
+    return () => { unsubs.forEach(u => { try { u(); } catch {} }); clearTimeout(fb); };
+  }, [navigation, player]);
+
+  useEffect(() => {
+    // playingChange dispara quando o player começa/para.
     const sub = player.addListener('playingChange', ({ isPlaying }) => {
+      LOG('playingChange isPlaying=', isPlaying, 'canPlay=', canPlayRef.current, 'started=', startedRef.current);
       if (isPlaying) {
-        if (!startedRef.current) {
+        // Só revela/dessilencia se a transição já terminou (loading fora). Um
+        // player-fantasma que comece antes disso fica mudo e coberto.
+        if (!startedRef.current && canPlayRef.current) {
           startedRef.current = true;
-          // Frames reais começaram a renderizar: liga o som AGORA (junto com a
-          // revelação da imagem) e revela o vídeo. Áudio e Charlotte nascem no
-          // mesmo instante — nunca o som antes.
-          try { player.muted = false; } catch {}
-          Animated.timing(fadeOutAnim, { toValue: 0, duration: 140, useNativeDriver: true }).start();
+          // 1o frame real com o loading já fora: liga o som e revela juntos.
+          try { player.muted = false; player.volume = 1; } catch {}
+          LOG('reveal + unmute');
+          Animated.timing(fadeOutAnim, { toValue: 0, duration: 160, useNativeDriver: true }).start();
         }
       } else if (startedRef.current) {
-        // Video stopped after having started -> assume it reached the end.
+        // Parou depois de ter começado -> chegou ao fim.
         navigateWithFade();
       }
     });
