@@ -105,11 +105,11 @@ function AuthGuard() {
       target = '/(auth)/reset-password';
     } else if (mustChangePassword) {
       target = '/(app)/first-access';
-    } else if (profile && !profile.placement_test_done) {
-      target = '/(app)/placement-test';
-    } else if (profile && profile.placement_test_done && !profile.first_welcome_done) {
+    } else if (profile && !profile.first_welcome_done) {
+      // Fase 1: placement virou opcional (oferecido na Home). O onboarding
+      // forçado agora é só: boas-vindas → consentimento → home.
       target = '/(app)/charlotte-intro';
-    } else if (profile && profile.placement_test_done && profile.first_welcome_done && !aiConsent) {
+    } else if (profile && profile.first_welcome_done && !aiConsent) {
       // User completed onboarding but hasn't accepted AI consent yet
       target = '/(app)/ai-consent';
     } else if (isAuthenticated && profile) {

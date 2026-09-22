@@ -241,10 +241,11 @@ export default function ProfileTab() {
         { text: isPt ? 'Cancelar' : 'Cancel', style: 'cancel' },
         {
           text: isPt ? 'Refazer' : 'Retake',
-          onPress: async () => {
+          onPress: () => {
             if (!profile?.id) return;
-            await supabase.from('charlotte_users').update({ placement_test_done: false }).eq('id', profile.id);
-            await refreshProfile();
+            // Fase 1: o placement é opcional e navegamos direto (não há mais
+            // gate por placement_test_done). Ao concluir, o teste seta o nível
+            // e placement_test_done=true.
             router.push('/(app)/placement-test');
           },
         },

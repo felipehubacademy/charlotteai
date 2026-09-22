@@ -471,17 +471,14 @@ export default function PlacementTestScreen() {
     try {
       const userId = session?.user?.id;
       if (!userId) throw new Error('Not authenticated');
-      // Start 7-day trial automatically when placement test is completed.
-      const trialEndsAt = new Date();
-      trialEndsAt.setDate(trialEndsAt.getDate() + 7);
+      // Fase 1: placement é opcional e roda DEPOIS do onboarding, então o
+      // trial já foi iniciado no charlotte-intro. Aqui só definimos o nível
+      // e marcamos o placement como feito (para de oferecer o pop na Home).
       const { error } = await supabase
         .from('charlotte_users')
         .update({
           charlotte_level:     assignedLevel,
           placement_test_done: true,
-          subscription_status: 'trial',
-          trial_ends_at:       trialEndsAt.toISOString(),
-          is_active:           true,
         })
         .eq('id', userId);
       if (error) throw error;

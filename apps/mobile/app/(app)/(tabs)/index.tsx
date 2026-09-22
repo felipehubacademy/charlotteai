@@ -35,6 +35,7 @@ import { usePromotion } from '@/lib/curriculum-v2/usePromotion';
 import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
 import { usePromotionPending } from '@/lib/promotionState';
 import { NewLayoutWelcomeSheet } from '@/components/onboarding/NewLayoutWelcomeSheet';
+import { PlacementPromptSheet } from '@/components/onboarding/PlacementPromptSheet';
 
 // Module-level flag — persists for the JS session (like the legacy home screen)
 let _streakSoundPlayedThisSession = false;
@@ -155,6 +156,32 @@ export default function HomeTab() {
     setShowWelcomeSheet(false);
     SecureStore.setItemAsync('NEW_LAYOUT_WELCOME_DONE', '1').catch(() => {});
   }, []);
+
+  // Placement opcional (Fase 1): pop único na Home pra quem ainda não fez o
+  // teste. Aparece só DEPOIS do welcome sheet (não empilha) e é sempre
+  // dispensável. Flag por device em SecureStore.
+  const [showPlacementPrompt, setShowPlacementPrompt] = useState(false);
+  const placementDone = profile?.placement_test_done === true;
+
+  useEffect(() => {
+    if (loading || showWelcomeSheet || placementDone) return;
+    SecureStore.getItemAsync('PLACEMENT_PROMPT_DISMISSED').then(v => {
+      if (!v) {
+        const t = setTimeout(() => setShowPlacementPrompt(true), 800);
+        return () => clearTimeout(t);
+      }
+    }).catch(() => {});
+  }, [loading, showWelcomeSheet, placementDone]);
+
+  const dismissPlacementPrompt = useCallback(() => {
+    setShowPlacementPrompt(false);
+    SecureStore.setItemAsync('PLACEMENT_PROMPT_DISMISSED', '1').catch(() => {});
+  }, []);
+
+  const handleTakePlacement = useCallback(() => {
+    dismissPlacementPrompt();
+    router.push('/(app)/placement-test');
+  }, [dismissPlacementPrompt]);
 
   // Charlotte greeting animado em WebP com alpha. expo-image faz loop nativo
   // e não toca AVAudioSession (substitui expo-video que floodava MediaPlayback
@@ -569,6 +596,13 @@ export default function HomeTab() {
       <NewLayoutWelcomeSheet
         visible={showWelcomeSheet}
         onClose={closeWelcomeSheet}
+      />
+
+      <PlacementPromptSheet
+        visible={showPlacementPrompt}
+        isPt={currentLevel === 'Novice'}
+        onTakeTest={handleTakePlacement}
+        onStartFromZero={dismissPlacementPrompt}
       />
 
       {/* Promotion (level-up) vs Graduation (terminal): renderiza um ou outro

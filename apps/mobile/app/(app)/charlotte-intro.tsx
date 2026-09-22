@@ -42,9 +42,26 @@ export default function CharlotteIntroScreen() {
 
     try {
       if (profile?.id) {
+        // Fase 1: placement virou opcional. Como o trial + nível nasciam no
+        // placement, garantimos aqui (fim do onboarding) que TODO usuário
+        // ganha nível default + 7 dias de trial — com guard pra não
+        // sobrescrever quem já tem nível/assinatura (institucional/pago/placement).
+        const update: Record<string, unknown> = { first_welcome_done: true };
+        if (!profile.charlotte_level) update.charlotte_level = 'Novice';
+        const needsTrial =
+          !profile.is_institutional &&
+          (!profile.subscription_status || profile.subscription_status === 'none') &&
+          !profile.trial_ends_at;
+        if (needsTrial) {
+          const trialEnds = new Date();
+          trialEnds.setDate(trialEnds.getDate() + 7);
+          update.subscription_status = 'trial';
+          update.trial_ends_at       = trialEnds.toISOString();
+          update.is_active           = true;
+        }
         await supabase
           .from('charlotte_users')
-          .update({ first_welcome_done: true })
+          .update(update)
           .eq('id', profile.id);
         // refresh so AuthGuard won't redirect back here
         refreshProfile().catch(() => {});
