@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Animated, View, StyleSheet, StatusBar } from 'react-native';
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { router, useNavigation } from 'expo-router';
+import { router } from 'expo-router';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
+import { splashGate } from '@/lib/splashGate';
 
 const videoSource = require('@/assets/charlotte-intro.mp4');
 
@@ -16,7 +17,6 @@ const LOG = (...a: unknown[]) => { try { console.log('[intro]', Date.now(), ...a
 
 export default function CharlotteIntroScreen() {
   const { profile, refreshProfile } = useAuth();
-  const navigation = useNavigation();
   const doneRef    = useRef(false);
   const startedRef = useRef(false); // true once video rendered its 1st real frame
   const playedRef  = useRef(false); // play() disparado no máximo 1x
@@ -92,37 +92,25 @@ export default function CharlotteIntroScreen() {
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // O play só é liberado quando a TRANSIÇÃO de rota termina — ou seja, quando o
-  // loading (rota `/`, index.tsx) realmente saiu da tela. transitionEnd é o
-  // único sinal confiável disso (focus/runAfterInteractions disparam no meio da
-  // transição, com o loading ainda por cima -> áudio vazava sobre o load).
+  // O play só é liberado quando o SPLASHOVERLAY sai de vez. Esse overlay
+  // (splash.png "Charlotte AI English Teacher", zIndex 9999) cobre a tela por
+  // ~3s e depois faz fade out; enquanto ele está por cima, o intro está montado
+  // EMBAIXO e o áudio do vídeo vazava (áudio não tem z-order). `splashGate`
+  // resolve exatamente quando esse overlay termina o fade — é o "load sair" de
+  // verdade. Antes disso o vídeo fica pausado, mudo e coberto.
   useEffect(() => {
     if (introConsumed) return;
-    const startPlayback = (src: string) => {
-      if (playedRef.current) return;
+    let cancelled = false;
+    splashGate.then(() => {
+      if (cancelled || playedRef.current) return;
       playedRef.current  = true;
       canPlayRef.current = true;
       introConsumed      = true;
-      LOG('startPlayback via', src);
+      LOG('startPlayback via splashGate');
       try { player.play(); } catch {}
-    };
-    // A animação de entrada pode estar no nosso navigator OU no stack pai (raiz).
-    const parent = (navigation as { getParent?: () => unknown }).getParent?.();
-    const navs = [navigation, parent].filter(Boolean) as Array<{
-      addListener: (e: string, cb: (ev: { data?: { closing?: boolean } }) => void) => (() => void);
-    }>;
-    const unsubs = navs.map((n, i) =>
-      n.addListener('transitionEnd', (ev) => {
-        LOG('transitionEnd nav', i, 'closing=', ev?.data?.closing);
-        if (ev?.data?.closing) return;
-        startPlayback('transitionEnd' + i);
-      })
-    );
-    // Fallback: se nenhum transitionEnd vier (ex.: sem animação de transição),
-    // toca depois de uma folga generosa pra o loading já ter saído.
-    const fb = setTimeout(() => startPlayback('fallback'), 1400);
-    return () => { unsubs.forEach(u => { try { u(); } catch {} }); clearTimeout(fb); };
-  }, [navigation, player]);
+    });
+    return () => { cancelled = true; };
+  }, [player]);
 
   useEffect(() => {
     // playingChange dispara quando o player começa/para.
