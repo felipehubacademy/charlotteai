@@ -803,6 +803,7 @@ export default function LearnSessionScreen() {
   };
 
   const handleRetryPron = () => {
+    stopAudio();
     setPronFeedback(null);
     pronFeedbackAnim.setValue(0);
     speechTranscriptRef.current = '';
@@ -813,6 +814,11 @@ export default function LearnSessionScreen() {
   const startRecording = async () => {
     if (recordingRef.current) return;
     if (!currentStep || currentStep.kind !== 'pronunciation') return;
+
+    // Para o áudio de referência se estiver tocando. Antes o mic ficava
+    // desabilitado enquanto a frase tocava (isPlaying), e ao pedir pra repetir
+    // o usuário "não conseguia repetir" se o áudio ainda estava/ficava tocando.
+    stopAudio();
 
     recordingRef.current = true;
     recordingStartRef.current = Date.now();
@@ -1008,6 +1014,7 @@ export default function LearnSessionScreen() {
 
   // ── Advance step ───────────────────────────────────────────
   const handleNext = async () => {
+    stopAudio(); // para o áudio do step atual ao avançar (inclusive pron → grammar)
     setWordOrderPlaced([]);
     setWordOrderPool([]);
     const next = stepIdx + 1;
@@ -1853,8 +1860,7 @@ export default function LearnSessionScreen() {
               {currentStep.phrase.type === 'repeat'
                 && pronStatus !== 'result' && pronStatus !== 'error'
                 && pronStatus !== 'loading_audio' && pronStatus !== 'assessing' && (() => {
-                  const bg = isPlaying ? '#9CA3AF'
-                    : pronStatus === 'recording' ? '#DC2626' : '#7C3AED';
+                  const bg = pronStatus === 'recording' ? '#DC2626' : '#7C3AED';
                   const isRec = pronStatus === 'recording';
                   return (
                     <View style={{ alignItems: 'center', marginTop: 420, marginBottom: 24 }}>
@@ -1884,14 +1890,13 @@ export default function LearnSessionScreen() {
                         ))}
                         <TouchableOpacity
                           activeOpacity={0.85}
-                          onPressIn={isPlaying ? undefined : startRecording}
-                          onPressOut={isPlaying ? undefined : stopRecording}
-                          disabled={isPlaying}
+                          onPressIn={startRecording}
+                          onPressOut={stopRecording}
                           style={{
                             width: 120, height: 120, borderRadius: 60,
                             backgroundColor: bg,
                             alignItems: 'center', justifyContent: 'center',
-                            opacity: isPlaying ? 0.5 : 1,
+                            opacity: 1,
                             shadowColor: bg,
                             shadowOpacity: 0.35, shadowRadius: 18, shadowOffset: { width: 0, height: 8 },
                             elevation: 8,

@@ -189,6 +189,9 @@ export default function VocabReview() {
   const handleRate = useCallback(async (rating: SRRating) => {
     if (!current || !userId) return;
 
+    // Para o áudio da palavra atual ao avançar (evita continuar tocando na próxima).
+    try { playerRef.current?.pause(); } catch { /* ignore */ }
+
     const xp  = XP[rating];
     const next = calcNextReview(rating, {
       easeFactor:   current.ease_factor   ?? 2.5,
