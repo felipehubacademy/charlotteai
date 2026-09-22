@@ -180,7 +180,8 @@ export default function HomeTab() {
 
   const handleTakePlacement = useCallback(() => {
     dismissPlacementPrompt();
-    router.push('/(app)/placement-test');
+    // direct=1: já escolheu fazer o teste no pop → pula o intro do placement.
+    router.push('/(app)/placement-test?direct=1');
   }, [dismissPlacementPrompt]);
 
   // Charlotte greeting animado em WebP com alpha. expo-image faz loop nativo

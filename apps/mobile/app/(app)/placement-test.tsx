@@ -11,7 +11,7 @@ import {
   View, TouchableOpacity, ScrollView,
   ActivityIndicator, Animated, Platform, Dimensions,
 } from 'react-native';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
@@ -298,7 +298,13 @@ export default function PlacementTestScreen() {
   // Reset contador Tier 4 ao iniciar o teste
   useEffect(() => { soundEngine.resetStreak(); }, []);
 
-  const [phase, setPhase]         = useState<Phase>('intro');
+  // `direct=1` (vindo do pop da Home ou do "Refazer teste" no perfil): o usuário
+  // JÁ escolheu fazer o teste, então pulamos o IntroScreen e vamos direto às
+  // questões — sem repetir o chooser "Descobrir meu nível / Começar do zero".
+  const { direct } = useLocalSearchParams<{ direct?: string }>();
+  const startDirect = direct === '1';
+
+  const [phase, setPhase]         = useState<Phase>(startDirect ? 'test' : 'intro');
   const [block, setBlock]         = useState<BlockNum>(1);
   const [blockQuestions, setBlockQuestions] = useState<AnyQuestion[]>(BLOCK1);
   const [qIndex, setQIndex]       = useState(0);
@@ -339,6 +345,12 @@ export default function PlacementTestScreen() {
     setPhase('test');
     slideIn();
   };
+
+  // Entrada animada da 1ª questão quando pulamos o intro (direct=1).
+  useEffect(() => {
+    if (startDirect) slideIn();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Static pre-generated audio hosted on Vercel — instant load, no TTS call at runtime
   const STATIC_AUDIO: Record<number, string> = {
@@ -530,9 +542,10 @@ export default function PlacementTestScreen() {
       saveError={saveError}
       onFinish={() => {
         // Navigate first, then refresh profile in background.
-        // AuthGuard will also see placement_test_done=true → charlotte-intro,
-        // but lastRoute dedup prevents a double push.
-        router.replace('/(app)/charlotte-intro');
+        // Fase 1: vindo do pop da Home ou do "Refazer teste" (direct=1), o
+        // usuário JÁ passou pelas boas-vindas → volta direto pra Home (não
+        // replay do charlotte-intro). Fallback legado: charlotte-intro.
+        router.replace(startDirect ? '/(app)/(tabs)' : '/(app)/charlotte-intro');
         refreshProfile().catch(() => {});
       }}
     />

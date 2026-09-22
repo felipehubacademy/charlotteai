@@ -244,9 +244,9 @@ export default function ProfileTab() {
           onPress: () => {
             if (!profile?.id) return;
             // Fase 1: o placement é opcional e navegamos direto (não há mais
-            // gate por placement_test_done). Ao concluir, o teste seta o nível
-            // e placement_test_done=true.
-            router.push('/(app)/placement-test');
+            // gate por placement_test_done). direct=1 pula o intro (o usuário
+            // já escolheu refazer). Ao concluir, seta nível + placement_test_done.
+            router.push('/(app)/placement-test?direct=1');
           },
         },
       ],
