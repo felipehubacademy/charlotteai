@@ -22,12 +22,14 @@ export default function CharlotteIntroScreen() {
     // "vídeo rodando antes do loading sair"). Play acontece após a tela montar.
   });
 
-  // Toca só depois que a tela está montada/estabilizada (evita começar durante
-  // a transição do loading). iOS às vezes precisa desse play explícito também.
+  // Só toca DEPOIS que o loading saiu de vez da tela. Se tocasse cedo (350ms),
+  // o áudio da Charlotte começava enquanto o loading ainda estava saindo -> "som
+  // antes dela aparecer". 550ms garante que a tela de loading já desmontou; só
+  // então o play() dispara (áudio + vídeo juntos, e a revelação é rápida).
   useEffect(() => {
     const t = setTimeout(() => {
       try { player.play(); } catch {}
-    }, 350);
+    }, 550);
     return () => clearTimeout(t);
   }, [player]);
 
@@ -84,8 +86,10 @@ export default function CharlotteIntroScreen() {
       if (isPlaying) {
         if (!startedRef.current) {
           startedRef.current = true;
-          // Revela o vídeo suavemente quando ele realmente começa a tocar.
-          Animated.timing(fadeOutAnim, { toValue: 0, duration: 350, useNativeDriver: true }).start();
+          // Revela o vídeo no instante EXATO em que ele começa a tocar (frames
+          // reais). Reveal curto (140ms) pra imagem e som aparecerem juntos —
+          // sem o áudio "liderar" a Charlotte.
+          Animated.timing(fadeOutAnim, { toValue: 0, duration: 140, useNativeDriver: true }).start();
         }
       } else if (startedRef.current) {
         // Video stopped after having started -> assume it reached the end.
