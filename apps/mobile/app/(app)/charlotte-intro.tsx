@@ -13,8 +13,6 @@ const videoSource = require('@/assets/charlotte-intro.mp4');
 // Home). Isso garante que o vídeo toque no máximo uma vez por launch.
 let introConsumed = false;
 
-const LOG = (...a: unknown[]) => { try { console.log('[intro]', Date.now(), ...a); } catch {} };
-
 export default function CharlotteIntroScreen() {
   const { profile, refreshProfile } = useAuth();
   const doneRef    = useRef(false);
@@ -27,8 +25,8 @@ export default function CharlotteIntroScreen() {
   const player = useVideoPlayer(videoSource, p => {
     p.loop   = false;
     // MUDO + volume 0 até o 1o frame real. O som só liga quando a Charlotte
-    // aparece de fato — e o play só é liberado depois que o loading sai
-    // (transitionEnd), então nada disso acontece sobre a tela de loading.
+    // aparece de fato — e o play só é liberado depois que o SplashOverlay sai
+    // (splashGate), então nada disso acontece sobre a tela de splash.
     p.muted  = true;
     p.volume = 0;
   });
@@ -38,7 +36,6 @@ export default function CharlotteIntroScreen() {
   const navigateWithFade = useCallback(async () => {
     if (doneRef.current) return;
     doneRef.current = true;
-    LOG('navigateWithFade');
 
     // Fade to black before navigating.
     await new Promise<void>(resolve => {
@@ -86,7 +83,6 @@ export default function CharlotteIntroScreen() {
   // (não cria um 2o player que tocaria o áudio de novo).
   useEffect(() => {
     if (introConsumed) {
-      LOG('already consumed -> skip to home');
       doneRef.current = true;
       router.replace('/(app)');
     }
@@ -106,7 +102,6 @@ export default function CharlotteIntroScreen() {
       playedRef.current  = true;
       canPlayRef.current = true;
       introConsumed      = true;
-      LOG('startPlayback via splashGate');
       try { player.play(); } catch {}
     });
     return () => { cancelled = true; };
@@ -115,15 +110,13 @@ export default function CharlotteIntroScreen() {
   useEffect(() => {
     // playingChange dispara quando o player começa/para.
     const sub = player.addListener('playingChange', ({ isPlaying }) => {
-      LOG('playingChange isPlaying=', isPlaying, 'canPlay=', canPlayRef.current, 'started=', startedRef.current);
       if (isPlaying) {
-        // Só revela/dessilencia se a transição já terminou (loading fora). Um
-        // player-fantasma que comece antes disso fica mudo e coberto.
+        // Só revela/dessilencia se o splash já saiu (canPlay). Um player-fantasma
+        // que comece antes disso fica mudo e coberto.
         if (!startedRef.current && canPlayRef.current) {
           startedRef.current = true;
-          // 1o frame real com o loading já fora: liga o som e revela juntos.
+          // 1o frame real com o splash já fora: liga o som e revela juntos.
           try { player.muted = false; player.volume = 1; } catch {}
-          LOG('reveal + unmute');
           Animated.timing(fadeOutAnim, { toValue: 0, duration: 160, useNativeDriver: true }).start();
         }
       } else if (startedRef.current) {
