@@ -11,19 +11,23 @@ export default function CharlotteIntroScreen() {
   const { profile, refreshProfile } = useAuth();
   const doneRef    = useRef(false);
   const startedRef = useRef(false); // true once video has played at least 1 frame
-  const fadeOutAnim = useRef(new Animated.Value(0)).current;
+  // Cobre a tela (preto) no mount pra o vídeo não "aparecer rodando" durante a
+  // transição do loading; revela (0) quando o vídeo começa; volta a 1 no fim.
+  const fadeOutAnim = useRef(new Animated.Value(1)).current;
 
   const player = useVideoPlayer(videoSource, p => {
     p.loop  = false;
     p.muted = false;
-    p.play();
+    // NÃO tocar no init: começaria durante a transição do loading (glitch de
+    // "vídeo rodando antes do loading sair"). Play acontece após a tela montar.
   });
 
-  // Fix 1: Force play after mount — iOS sometimes needs this after VideoView renders.
+  // Toca só depois que a tela está montada/estabilizada (evita começar durante
+  // a transição do loading). iOS às vezes precisa desse play explícito também.
   useEffect(() => {
     const t = setTimeout(() => {
       try { player.play(); } catch {}
-    }, 300);
+    }, 350);
     return () => clearTimeout(t);
   }, [player]);
 
@@ -78,7 +82,11 @@ export default function CharlotteIntroScreen() {
     // We detect "ended" by: video was playing (startedRef) and now stopped.
     const sub = player.addListener('playingChange', ({ isPlaying }) => {
       if (isPlaying) {
-        startedRef.current = true;
+        if (!startedRef.current) {
+          startedRef.current = true;
+          // Revela o vídeo suavemente quando ele realmente começa a tocar.
+          Animated.timing(fadeOutAnim, { toValue: 0, duration: 350, useNativeDriver: true }).start();
+        }
       } else if (startedRef.current) {
         // Video stopped after having started -> assume it reached the end.
         navigateWithFade();
