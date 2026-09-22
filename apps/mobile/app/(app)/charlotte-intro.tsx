@@ -31,8 +31,6 @@ export default function CharlotteIntroScreen() {
     p.volume = 0;
   });
 
-  LOG('mount introConsumed=', introConsumed);
-
   const navigateWithFade = useCallback(async () => {
     if (doneRef.current) return;
     doneRef.current = true;
