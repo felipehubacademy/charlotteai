@@ -24,7 +24,10 @@ export interface AuthContextType {
   isPasswordRecovery: boolean;  // true when app opened via password reset email link
   clearPasswordRecovery: () => void; // call after reset-password screen handled
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string, name: string) => Promise<void>;
+  // Retorna a sessão criada. Com "Confirm email" LIGADO no Supabase, session
+  // vem null (precisa confirmar). Com auto-confirm, session vem preenchida e o
+  // app entra direto no trial (sem muro de "verifique seu e-mail").
+  signUp: (email: string, password: string, name: string) => Promise<{ session: Session | null }>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
   refreshProfile: () => Promise<void>;
@@ -321,7 +324,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signUp = async (email: string, password: string, name: string) => {
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -333,6 +336,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       },
     });
     if (error) throw error;
+    return { session: data.session };
   };
 
   const signOut = async () => {

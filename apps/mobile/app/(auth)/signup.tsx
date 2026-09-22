@@ -67,8 +67,11 @@ export default function SignupScreen() {
     setError(null);
     setLoading(true);
     try {
-      await signUp(email.trim().toLowerCase(), password, name.trim());
-      setEmailSent(true);
+      const { session } = await signUp(email.trim().toLowerCase(), password, name.trim());
+      // Auto-confirm ligado no Supabase -> já veio sessão: o AuthProvider pega o
+      // login e o AuthGuard leva pro trial. Não mostramos o muro de "verifique
+      // seu e-mail". Sem sessão -> confirmação exigida -> mostra o muro.
+      if (!session) setEmailSent(true);
     } catch (e: any) {
       const raw = (e?.message ?? '') as string;
       const msg = raw.toLowerCase();
