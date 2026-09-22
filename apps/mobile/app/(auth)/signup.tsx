@@ -12,6 +12,7 @@ import {
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
+import { isValidEmailFormat, isDisposableEmail, suggestEmailCorrection } from '@/lib/emailValidation';
 
 const C = {
   bg:        '#F4F3FA',
@@ -32,6 +33,7 @@ export default function SignupScreen() {
   const [loading, setLoading]           = useState(false);
   const [error, setError]               = useState<string | null>(null);
   const [emailSent, setEmailSent]       = useState(false);
+  const [emailSuggestion, setEmailSuggestion] = useState<string | null>(null);
   const emailRef    = useRef<TextInput>(null);
   const passwordRef = useRef<TextInput>(null);
   const { signUp } = useAuth();
@@ -39,6 +41,28 @@ export default function SignupScreen() {
   const handleSignup = async () => {
     if (!name.trim())     { setError('Digite seu nome.'); return; }
     if (!email.trim())    { setError('Digite seu e-mail.'); return; }
+    // Validação forte NA ORIGEM: pega typo/formato/descartável antes de gastar
+    // um envio de e-mail (e antes de deixar entrar endereço que nunca receberá
+    // reset de senha / campanha).
+    if (!isValidEmailFormat(email)) {
+      setError('E-mail inválido. Confira o endereço.');
+      const s = suggestEmailCorrection(email);
+      if (s) setEmailSuggestion(s);
+      return;
+    }
+    if (isDisposableEmail(email)) {
+      setError('Use um e-mail permanente — descartáveis não são aceitos.');
+      return;
+    }
+    // Se há um palpite de typo forte, oferece UMA vez. Se o usuário insistir
+    // (submeter de novo com o mesmo palpite já visível), segue em frente —
+    // evita bloqueio infinito em eventual falso positivo.
+    const suggestion = suggestEmailCorrection(email);
+    if (suggestion && suggestion.toLowerCase() !== email.trim().toLowerCase() && emailSuggestion !== suggestion) {
+      setEmailSuggestion(suggestion);
+      setError(null);
+      return;
+    }
     if (password.length < 6) { setError('A senha deve ter pelo menos 6 caracteres.'); return; }
     setError(null);
     setLoading(true);
@@ -207,7 +231,11 @@ export default function SignupScreen() {
               <TextInput
                 ref={emailRef}
                 value={email}
-                onChangeText={t => { setEmail(t); setError(null); }}
+                onChangeText={t => { setEmail(t); setError(null); setEmailSuggestion(null); }}
+                onBlur={() => {
+                  const s = suggestEmailCorrection(email);
+                  setEmailSuggestion(s && s.toLowerCase() !== email.trim().toLowerCase() ? s : null);
+                }}
                 placeholder="E-mail"
                 placeholderTextColor={C.navyLight}
                 keyboardType="email-address"
@@ -220,6 +248,20 @@ export default function SignupScreen() {
                 style={[inputStyle, { color: C.navy }]}
               />
             </View>
+
+            {/* Correção de typo — "você quis dizer …?" (tap preenche) */}
+            {!!emailSuggestion && (
+              <TouchableOpacity
+                onPress={() => { setEmail(emailSuggestion); setEmailSuggestion(null); setError(null); }}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 2 }}
+              >
+                <AppText style={{ color: C.navyMid, fontSize: 13 }}>Você quis dizer </AppText>
+                <AppText style={{ color: C.navy, fontSize: 13, fontWeight: '700', textDecorationLine: 'underline' }}>
+                  {emailSuggestion}
+                </AppText>
+                <AppText style={{ color: C.navyMid, fontSize: 13 }}>?</AppText>
+              </TouchableOpacity>
+            )}
 
             {/* Senha */}
             <View style={[inputWrap, { borderColor: C.border }]}>

@@ -50,51 +50,76 @@ export interface SendEmailOptions {
   text?: string;
 }
 
+const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+
 export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
-  try {
-    const token = await getAccessToken();
+  const payload = {
+    message: {
+      subject: opts.subject,
+      body: { contentType: 'HTML', content: opts.html },
+      toRecipients: [{ emailAddress: { address: opts.to } }],
+      from: { emailAddress: { address: FROM_EMAIL, name: FROM_NAME } },
+    },
+    saveToSentItems: false,
+  };
 
-    const payload = {
-      message: {
-        subject: opts.subject,
-        body: {
-          contentType: 'HTML',
-          content: opts.html,
-        },
-        toRecipients: [
-          { emailAddress: { address: opts.to } },
-        ],
-        from: {
-          emailAddress: { address: FROM_EMAIL, name: FROM_NAME },
-        },
-      },
-      saveToSentItems: false,
-    };
+  // Retry curto e LIMITADO: este envio roda dentro do Send Email Hook do
+  // Supabase, que tem timeout de poucos segundos — backoff longo estoura o
+  // timeout de qualquer forma. Então: refresh de token no 401 e 1-2 retentativas
+  // curtas em 429/503 (só honra Retry-After quando <= 2s). Throttling sustentado
+  // do O365 continua sendo problema de capacidade/limite, não de retry.
+  const MAX_ATTEMPTS = 3;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    try {
+      const token = await getAccessToken();
+      const res = await fetch(
+        `https://graph.microsoft.com/v1.0/users/${FROM_EMAIL}/sendMail`,
+        {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        }
+      );
 
-    const res = await fetch(
-      `https://graph.microsoft.com/v1.0/users/${FROM_EMAIL}/sendMail`,
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
+      if (res.ok) {
+        console.log(`[Graph] Email enviado para ${opts.to} — "${opts.subject}"`);
+        return true;
       }
-    );
 
-    if (!res.ok) {
-      const err = await res.text();
-      console.error('[Graph] sendMail error:', res.status, err);
+      const status = res.status;
+      const errText = await res.text();
+
+      // Token stale/invalido -> limpa cache e tenta de novo na hora.
+      if (status === 401 && attempt < MAX_ATTEMPTS) {
+        cachedToken = null;
+        tokenExpiresAt = 0;
+        console.warn(`[Graph] sendMail 401 (attempt ${attempt}) — refazendo token`);
+        continue;
+      }
+
+      // Throttling / indisponibilidade transitoria -> backoff curto.
+      if ((status === 429 || status === 503) && attempt < MAX_ATTEMPTS) {
+        const retryAfterSec = Number(res.headers.get('retry-after')) || 0;
+        const waitMs = retryAfterSec > 0 && retryAfterSec <= 2
+          ? retryAfterSec * 1000
+          : Math.min(500 * attempt, 1500);
+        console.warn(`[Graph] sendMail ${status} (attempt ${attempt}) — retry em ${waitMs}ms`);
+        await sleep(waitMs);
+        continue;
+      }
+
+      console.error('[Graph] sendMail error:', status, errText);
+      return false;
+    } catch (e) {
+      if (attempt < MAX_ATTEMPTS) {
+        await sleep(Math.min(500 * attempt, 1500));
+        continue;
+      }
+      console.error('[Graph] sendEmail exception:', e);
       return false;
     }
-
-    console.log(`[Graph] Email enviado para ${opts.to} — "${opts.subject}"`);
-    return true;
-  } catch (e) {
-    console.error('[Graph] sendEmail exception:', e);
-    return false;
   }
+  return false;
 }
 
 // ── Leitura de bounces (NDRs) da caixa da Charlotte ────────────────────────────
