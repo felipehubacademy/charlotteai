@@ -25,10 +25,11 @@ export function OfflineBanner() {
     <Animated.View
       pointerEvents="none"
       style={{
-        // Piso de 44pt: se o inset vier 0 (overlay no nível raiz antes da
-        // medição), ainda assim o banner fica abaixo da Dynamic Island/notch.
+        // Piso de 52pt (+8 = 60pt): se o inset vier 0 por algum motivo, o banner
+        // ainda cai abaixo da Dynamic Island (~59pt) / notch. Quando o inset é
+        // correto (ex.: 62 no 17 Pro Max) ele prevalece.
         position: 'absolute',
-        top: Math.max(insets.top, 44) + 8,
+        top: Math.max(insets.top, 52) + 8,
         left: 0,
         right: 0,
         zIndex: 9999,
