@@ -14,8 +14,7 @@ import Constants from 'expo-constants';
 import { AuthProvider } from '@/components/auth/AuthProvider';
 import { useAuth } from '@/hooks/useAuth';
 import { AI_CONSENT_KEY } from '@/lib/aiConsent';
-// OfflineBanner desativado temporariamente — reimplementar com @react-native-community/netinfo
-// import { OfflineBanner } from '@/components/ui/OfflineBanner';
+import { OfflineBanner } from '@/components/ui/OfflineBanner';
 import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { loadAudioPreferences } from '@/lib/audioPreferences';
@@ -159,6 +158,7 @@ function RootLayout() {
                 <Stack.Screen name="(auth)" />
                 <Stack.Screen name="(app)" />
               </Stack>
+              <OfflineBanner />
               <SplashOverlay />
             </AuthProvider>
           </SafeAreaProvider>
