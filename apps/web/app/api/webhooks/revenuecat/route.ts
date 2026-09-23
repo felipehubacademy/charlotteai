@@ -28,6 +28,12 @@ const WEBHOOK_SECRET = process.env.REVENUECAT_WEBHOOK_SECRET ?? '';
 //   EXPIRATION   = assinatura terminou de fato; acesso revogado
 //   REFUND       = reembolso emitido; acesso revogado imediato
 //   BILLING_ISSUE = falha no pagamento; acesso revogado ate resolver
+// Pacotes de minutos avulsos (consumíveis) — grant em segundos de Live Voice.
+const MINUTE_PACKS: Record<string, number> = {
+  'com.hubacademy.charlotte.minutes10': 10 * 60, //  600 s
+  'com.hubacademy.charlotte.minutes30': 30 * 60, // 1800 s
+};
+
 const ACTIVE_EVENTS     = new Set(['INITIAL_PURCHASE', 'RENEWAL', 'UNCANCELLATION', 'PRODUCT_CHANGE']);
 const CANCELLED_EVENTS  = new Set(['CANCELLATION']);
 const EXPIRED_EVENTS    = new Set(['EXPIRATION', 'REFUND', 'BILLING_ISSUE']);
@@ -57,6 +63,35 @@ export async function POST(req: NextRequest) {
   }
 
   console.log(`[RC webhook] ${eventType} for user ${appUserId}`);
+
+  // ── Compra de minutos avulsos (consumível) ───────────────────────────────
+  // Concede minutos de Live Voice como saldo bônus (não zera no mês). Grant
+  // idempotente por event.id (o webhook pode reenviar). Vale pra TODO usuário
+  // (inclusive institucional — eles também compram avulso).
+  if (eventType === 'NON_RENEWING_PURCHASE') {
+    const productId = event?.product_id as string | undefined;
+    const eventId   = event?.id as string | undefined;
+    const seconds   = productId ? MINUTE_PACKS[productId] : undefined;
+
+    if (!productId || !eventId || !seconds) {
+      return NextResponse.json({ received: true, action: 'ignored_non_renewing', productId });
+    }
+
+    const { data: granted, error: rpcErr } = await supabase.rpc('grant_live_voice_minutes', {
+      p_user_id:    appUserId,
+      p_event_id:   eventId,
+      p_seconds:    seconds,
+      p_product_id: productId,
+    });
+
+    if (rpcErr) {
+      console.error('[RC webhook] grant_live_voice_minutes error:', rpcErr.message);
+      return NextResponse.json({ error: 'grant failed' }, { status: 500 });
+    }
+
+    console.log(`[RC webhook] minutes grant user ${appUserId} +${seconds}s (${productId}) granted=${granted}`);
+    return NextResponse.json({ received: true, eventType, productId, seconds, granted });
+  }
 
   // ── Map event → subscription_status ──────────────────────────────────────
   let subscriptionStatus: string | null = null;

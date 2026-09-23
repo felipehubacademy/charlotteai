@@ -62,11 +62,11 @@ interface LastCall {
 
 function poolStatusLabel(
   isPt: boolean, isLimitReached: boolean, isUnlimited: boolean,
-  used: number, total: number,
+  remainingSec: number,
 ): string {
   if (isLimitReached) return isPt ? 'Limite mensal atingido' : 'Monthly limit reached';
   if (isUnlimited) return isPt ? 'Charlotte disponível · ilimitado' : 'Charlotte available · unlimited';
-  const remainMin = Math.max(0, Math.floor((total - used) / 60));
+  const remainMin = Math.max(0, Math.floor(remainingSec / 60)); // mensal restante + bônus
   return isPt
     ? `Charlotte disponível · ${remainMin} min restantes`
     : `Charlotte available · ${remainMin} min left`;
@@ -456,6 +456,7 @@ export default function LiveVoiceTab() {
 
   const [poolUsed,        setPoolUsed]        = useState(0);
   const [poolTotal,       setPoolTotal]       = useState(POOL_TRIAL_SECONDS); // default; real vem de getLiveVoiceStatus
+  const [poolRemaining,   setPoolRemaining]   = useState(POOL_TRIAL_SECONDS); // mensal restante + bônus
   const [poolUnlimited,   setPoolUnlimited]   = useState(false);
   const [recentCalls,     setRecentCalls]     = useState<LastCall[]>([]);
   const [selectedCall,    setSelectedCall]    = useState<LastCall | null>(null);
@@ -532,6 +533,7 @@ export default function LiveVoiceTab() {
       if (lv) {
         setPoolUsed(lv.secondsUsed);
         setPoolTotal(lv.poolTotal);
+        setPoolRemaining(lv.secondsRemaining);
         setPoolUnlimited(!!lv.isUnlimited);
       }
       setRecentCalls(recentCallsRes?.data ?? []);
@@ -583,7 +585,7 @@ export default function LiveVoiceTab() {
   }, [loadData]);
 
   const startCall = useCallback(() => {
-    if (!poolUnlimited && poolUsed >= poolTotal) return;
+    if (!poolUnlimited && poolRemaining <= 0) return;
     soundEngine.setMuted(true);
     // voiceSFX tem fila propria (setTimeouts disparados em achievements,
     // intro do app, etc) — se algum SFX cair durante a call, ele chama
@@ -592,9 +594,9 @@ export default function LiveVoiceTab() {
     // Mutar aqui zera essa fila.
     voiceSFX.setMuted(true);
     setShowLiveVoice(true);
-  }, [poolUnlimited, poolUsed, poolTotal]);
+  }, [poolUnlimited, poolRemaining]);
 
-  const isLimitReached = !poolUnlimited && poolUsed >= poolTotal;
+  const isLimitReached = !poolUnlimited && poolRemaining <= 0;
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
 
   // Charlotte responsiva — calculada do espaço REAL disponível na tela.
@@ -702,7 +704,7 @@ export default function LiveVoiceTab() {
                   backgroundColor: isLimitReached ? C.red : C.greenDark,
                 }} />
                 <AppText style={{ fontSize: 13, color: C.textMuted, fontWeight: '500' }}>
-                  {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolUsed, poolTotal)}
+                  {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolRemaining)}
                 </AppText>
               </View>
             </View>

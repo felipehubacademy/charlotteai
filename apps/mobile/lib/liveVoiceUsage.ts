@@ -34,10 +34,11 @@ export function getPoolForSubscription(subscriptionStatus?: string | null, isIns
 
 export interface LiveVoiceStatus {
   secondsUsed:      number;
-  secondsRemaining: number;
-  poolTotal:        number;    // pool total para o nível
+  secondsRemaining: number;    // mensal restante + bônus comprado
+  poolTotal:        number;    // pool MENSAL (não inclui bônus)
+  bonusSeconds:     number;    // saldo de minutos avulsos comprados (não zera no mês)
   resetDate:        string;    // 'YYYY-MM-01'
-  isUnlimited?:     boolean;   // true para usuários institucionais
+  isUnlimited?:     boolean;   // legado (ninguém é ilimitado hoje)
 }
 
 // ── Funções públicas ─────────────────────────────────────────────────────────
@@ -59,13 +60,14 @@ export async function getLiveVoiceStatus(_level?: string): Promise<LiveVoiceStat
 
   const { data, error } = await supabase
     .from('charlotte_users')
-    .select('live_voice_seconds_used, live_voice_reset_date, is_institutional, subscription_status')
+    .select('live_voice_seconds_used, live_voice_reset_date, is_institutional, subscription_status, live_voice_bonus_seconds')
     .eq('id', user.id)
     .single();
 
   if (error) throw error;
 
   const poolTotal = getPoolForSubscription(data.subscription_status, data.is_institutional);
+  const bonus     = data.live_voice_bonus_seconds ?? 0;
 
   // Virou o mês → reset
   const needsReset =
@@ -85,8 +87,9 @@ export async function getLiveVoiceStatus(_level?: string): Promise<LiveVoiceStat
 
     return {
       secondsUsed:      0,
-      secondsRemaining: poolTotal,
+      secondsRemaining: poolTotal + bonus, // mensal cheio + bônus (bônus não zera)
       poolTotal,
+      bonusSeconds:     bonus,
       resetDate:        thisMonth,
     };
   }
@@ -94,8 +97,9 @@ export async function getLiveVoiceStatus(_level?: string): Promise<LiveVoiceStat
   const secondsUsed = data.live_voice_seconds_used ?? 0;
   return {
     secondsUsed,
-    secondsRemaining: Math.max(0, poolTotal - secondsUsed),
+    secondsRemaining: Math.max(0, poolTotal - secondsUsed) + bonus,
     poolTotal,
+    bonusSeconds:     bonus,
     resetDate:        data.live_voice_reset_date,
   };
 }
@@ -114,7 +118,7 @@ export async function consumeLiveVoiceSeconds(seconds: number): Promise<void> {
 
   const { data, error: fetchErr } = await supabase
     .from('charlotte_users')
-    .select('live_voice_seconds_used')
+    .select('live_voice_seconds_used, live_voice_bonus_seconds, is_institutional, subscription_status')
     .eq('id', user.id)
     .single();
 
@@ -123,10 +127,20 @@ export async function consumeLiveVoiceSeconds(seconds: number): Promise<void> {
     return;
   }
 
-  const current = data.live_voice_seconds_used ?? 0;
+  // Consome do pool MENSAL primeiro; o que passar sai do saldo BÔNUS comprado.
+  const poolTotal = getPoolForSubscription(data.subscription_status, data.is_institutional);
+  const current   = data.live_voice_seconds_used ?? 0;
+  const bonus     = data.live_voice_bonus_seconds ?? 0;
+  const monthlyAvail = Math.max(0, poolTotal - current);
+  const fromMonthly  = Math.min(rounded, monthlyAvail);
+  const fromBonus    = rounded - fromMonthly;
+
   const { error: updErr } = await supabase
     .from('charlotte_users')
-    .update({ live_voice_seconds_used: current + rounded })
+    .update({
+      live_voice_seconds_used:  current + fromMonthly,
+      live_voice_bonus_seconds: Math.max(0, bonus - fromBonus),
+    })
     .eq('id', user.id);
 
   if (updErr) console.warn('[liveVoiceUsage] consume error:', updErr.message);
