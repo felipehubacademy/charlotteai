@@ -23,7 +23,10 @@ export function AppText({ children, className = '', style, ...props }: AppTextPr
     <Text
       className={`text-textPrimary ${className}`}
       style={[!hasExplicitColor && { color: colors.textPrimary }, style]}
-      maxFontSizeMultiplier={1.3}
+      // Cap de 1.15x: respeita "fonte grande" do sistema o suficiente pra
+      // acessibilidade, mas sem estourar o layout (relato de UI "fora de
+      // proporção" em Samsung com fonte/zoom alto). Caller pode sobrescrever.
+      maxFontSizeMultiplier={1.15}
       {...props}
     >
       {children}
