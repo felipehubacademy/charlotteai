@@ -707,6 +707,44 @@ export default function LiveVoiceTab() {
               </View>
             </View>
 
+            {/* Banner fixo de upsell — só pra NÃO-assinante que esgotou o mês.
+                Fica visível até o pool renovar (dia 1º). Toque -> paywall. */}
+            {isLimitReached && !isSubscriber && (
+              <TouchableOpacity
+                onPress={openPaywall}
+                activeOpacity={0.85}
+                style={{
+                  marginHorizontal: 24, marginBottom: 4,
+                  backgroundColor: '#FFFFFF', borderRadius: 14, padding: 14,
+                  flexDirection: 'row', alignItems: 'center', gap: 12,
+                  borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
+                  shadowColor: 'rgba(22,21,58,0.12)', shadowOpacity: 1, shadowRadius: 8,
+                  shadowOffset: { width: 0, height: 3 }, elevation: 3,
+                }}
+              >
+                <View style={{
+                  width: 38, height: 38, borderRadius: 11,
+                  backgroundColor: 'rgba(61,136,0,0.12)',
+                  alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <Phone size={18} color={C.greenDark} weight="fill" />
+                </View>
+                <View style={{ flex: 1 }}>
+                  <AppText style={{ fontSize: 14, fontWeight: '700', color: C.textWhite }}>
+                    {isPt ? 'Seu tempo acabou este mês' : 'You’re out of time this month'}
+                  </AppText>
+                  <AppText style={{ fontSize: 12, color: C.textDim, marginTop: 2 }}>
+                    {isPt ? 'Assine o Premium para conversar sem parar' : 'Subscribe to Premium to keep talking'}
+                  </AppText>
+                </View>
+                <View style={{ backgroundColor: C.greenDark, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 8 }}>
+                  <AppText style={{ fontSize: 13, fontWeight: '800', color: '#FFFFFF' }}>
+                    {isPt ? 'Assinar' : 'Subscribe'}
+                  </AppText>
+                </View>
+              </TouchableOpacity>
+            )}
+
             {/* Spacer ocupa toda a area entre titulo e CTA — avatar fica em
                 absolute apontado pra Y exata da tela de chamada (continuidade
                 visual na transicao). */}
