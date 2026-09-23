@@ -2,22 +2,25 @@ import { useState, useEffect } from 'react';
 import NetInfo, { NetInfoState } from '@react-native-community/netinfo';
 
 /**
- * Detecta status de rede via @react-native-community/netinfo.
- * Usa a API nativa do iOS/Android — sem fetch, sem false positives.
- * Retorna true quando há conexão com internet (isInternetReachable).
+ * Detecta status de rede via @react-native-community/netinfo (API nativa).
+ * Retorna false SÓ quando não há rede de fato (`isConnected === false` —
+ * modo avião / wifi e dados desligados).
+ *
+ * NÃO usamos `isInternetReachable`: o probe de alcançabilidade dá falso
+ * negativo no simulador e em transições de rede em devices reais, o que
+ * mostraria um banner de "offline" com a internet funcionando (pior que
+ * não avisar). `isConnected` é o sinal duro e confiável do cenário "sem rede".
  */
 export function useNetworkStatus(): boolean {
   const [isOnline, setIsOnline] = useState(true); // otimista no cold start
 
   useEffect(() => {
-    // Checa estado atual imediatamente
     NetInfo.fetch().then((state: NetInfoState) => {
-      setIsOnline(state.isConnected === true && state.isInternetReachable !== false);
+      setIsOnline(state.isConnected !== false);
     });
 
-    // Assina mudanças em tempo real
     const unsubscribe = NetInfo.addEventListener((state: NetInfoState) => {
-      setIsOnline(state.isConnected === true && state.isInternetReachable !== false);
+      setIsOnline(state.isConnected !== false);
     });
 
     return unsubscribe;
