@@ -1,29 +1,29 @@
 // lib/liveVoiceUsage.ts
-// Pool mensal de Live Voice — tiered por nível:
-//   Advanced: 30 min (1 800 s)
-//   Inter:     5 min (300 s)
-//   Novice:    3 min (180 s) — "taste" desbloqueável após módulo 3
-// Reset automático no 1º dia de cada mês.
+// Pool mensal de Live Voice — por ASSINATURA (não mais por nível):
+//   Trial / grátis:          5 min (300 s)
+//   Premium / Institucional: 20 min (1 200 s)
+// Quem esgota: trial -> upsell (assine); premium/inst -> comprar minutos
+// avulsos (IAP, fase futura). Reset automático no 1º dia de cada mês.
 
 import { supabase } from './supabase';
 import { localMonthStartStr } from './dateUtils';
 
 // ── Constantes ──────────────────────────────────────────────────────────────
 
-export const POOL_BY_LEVEL: Record<string, number> = {
-  Advanced: 30 * 60, // 1 800 s
-  Inter:     5 * 60, // 300 s
-  Novice:    3 * 60, // 180 s (taste)
-};
+export const POOL_TRIAL_SECONDS   = 5 * 60;  //   300 s — trial / grátis
+export const POOL_PREMIUM_SECONDS  = 20 * 60; // 1 200 s — premium / institucional
 
-/** Fallback — se nível desconhecido, usa o menor. */
-export const LIVE_VOICE_POOL_SECONDS = 30 * 60; // legado: usado pelo LiveVoiceModal
+/** Fallback legado (usado onde não dá pra saber a assinatura ainda). */
+export const LIVE_VOICE_POOL_SECONDS = POOL_PREMIUM_SECONDS;
 
-/** Sentinel para usuários institucionais — Live Voice ilimitado. */
-export const UNLIMITED_POOL_SECONDS = 999_999;
-
-export function getPoolForLevel(level: string): number {
-  return POOL_BY_LEVEL[level] ?? POOL_BY_LEVEL.Novice;
+/**
+ * Pool por status de assinatura.
+ * Institucional e Premium (subscription ativa) = 20 min; o resto (trial/none) = 5 min.
+ */
+export function getPoolForSubscription(subscriptionStatus?: string | null, isInstitutional?: boolean): number {
+  if (isInstitutional) return POOL_PREMIUM_SECONDS;
+  if (subscriptionStatus === 'active') return POOL_PREMIUM_SECONDS;
+  return POOL_TRIAL_SECONDS;
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -43,10 +43,12 @@ export interface LiveVoiceStatus {
 // ── Funções públicas ─────────────────────────────────────────────────────────
 
 /**
- * Obtém o status atual do pool para o nível informado.
+ * Obtém o status atual do pool. O tamanho do pool agora vem da ASSINATURA
+ * (trial 5 min · premium/institucional 20 min), não do nível.
  * Se o mês mudou desde o último uso, zera o contador automaticamente.
+ * O parâmetro `level` é legado (ignorado no cálculo do pool).
  */
-export async function getLiveVoiceStatus(level?: string): Promise<LiveVoiceStatus> {
+export async function getLiveVoiceStatus(_level?: string): Promise<LiveVoiceStatus> {
   const {
     data: { user },
     error: authErr,
@@ -57,24 +59,13 @@ export async function getLiveVoiceStatus(level?: string): Promise<LiveVoiceStatu
 
   const { data, error } = await supabase
     .from('charlotte_users')
-    .select('live_voice_seconds_used, live_voice_reset_date, charlotte_level, is_institutional')
+    .select('live_voice_seconds_used, live_voice_reset_date, is_institutional, subscription_status')
     .eq('id', user.id)
     .single();
 
   if (error) throw error;
 
-  if (data.is_institutional) {
-    return {
-      secondsUsed:      0,
-      secondsRemaining: UNLIMITED_POOL_SECONDS,
-      poolTotal:        UNLIMITED_POOL_SECONDS,
-      resetDate:        localMonthStartStr(),
-      isUnlimited:      true,
-    };
-  }
-
-  const userLevel = level ?? data.charlotte_level ?? 'Novice';
-  const poolTotal = getPoolForLevel(userLevel);
+  const poolTotal = getPoolForSubscription(data.subscription_status, data.is_institutional);
 
   // Virou o mês → reset
   const needsReset =

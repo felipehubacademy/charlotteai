@@ -38,7 +38,7 @@ import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
 import { useCallTimer } from '@/hooks/useCallTimer';
 import Constants from 'expo-constants';
-import { getLiveVoiceStatus, consumeLiveVoiceSeconds, getPoolForLevel } from '@/lib/liveVoiceUsage';
+import { getLiveVoiceStatus, consumeLiveVoiceSeconds, POOL_PREMIUM_SECONDS } from '@/lib/liveVoiceUsage';
 import { supabase } from '@/lib/supabase';
 import { translationService } from '@/lib/translation-service';
 import { track, trackDuration } from '@/lib/analytics';
@@ -255,6 +255,8 @@ interface LiveVoiceModalProps {
   userLevel: 'Novice' | 'Inter' | 'Advanced';
   userName?: string;
   onXPGained?: (amount: number) => void;
+  /** Dispara quando o pool mensal esgota nesta sessão (pra o upsell). */
+  onLimitReached?: () => void;
 }
 
 export default function LiveVoiceModal({
@@ -263,6 +265,7 @@ export default function LiveVoiceModal({
   userLevel,
   userName = 'Student',
   onXPGained,
+  onLimitReached,
 }: LiveVoiceModalProps) {
   const insets = useSafeAreaInsets();
   const [status, setStatus] = React.useState<ConnectionStatus>('idle');
@@ -279,9 +282,16 @@ export default function LiveVoiceModal({
 
   // ── Pool de minutos ────────────────────────────────────────────────────────
   const [poolLoading, setPoolLoading]             = React.useState(true);
-  const levelPool = getPoolForLevel(userLevel);
-  const [poolRemaining, setPoolRemaining]         = React.useState(levelPool);
+  // Pool total agora vem da ASSINATURA (trial 5 · premium/inst 20), não do
+  // nível. Default 20 (não subestima a mensagem) até o getLiveVoiceStatus abaixo
+  // trazer o valor real.
+  const [levelPool, setLevelPool]                 = React.useState(POOL_PREMIUM_SECONDS);
+  const [poolRemaining, setPoolRemaining]         = React.useState(POOL_PREMIUM_SECONDS);
   const [poolExhausted, setPoolExhausted]         = React.useState(false);
+
+  React.useEffect(() => {
+    getLiveVoiceStatus().then(s => setLevelPool(s.poolTotal)).catch(() => {});
+  }, []);
 
   // ── Inatividade ───────────────────────────────────────────────────────────
   const [inactivityWarning, setInactivityWarning] = React.useState(false);
@@ -829,6 +839,8 @@ export default function LiveVoiceModal({
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
     clearSessionInterval();
     clearInactivityInterval();
+    // Sinaliza pro upsell (a tela mostra o popup depois que o modal fechar).
+    onLimitReached?.();
 
     // Se Charlotte NAO esta falando agora, dispara despedida imediatamente.
     // Se ela ESTA falando (activeResponseIdRef), o handler de response.done

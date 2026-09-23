@@ -20,11 +20,12 @@ import { useAuth } from '@/hooks/useAuth';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { supabase } from '@/lib/supabase';
 import { UserLevel } from '@/lib/levelConfig';
-import { getLiveVoiceStatus, getPoolForLevel, UNLIMITED_POOL_SECONDS } from '@/lib/liveVoiceUsage';
+import { getLiveVoiceStatus, POOL_TRIAL_SECONDS } from '@/lib/liveVoiceUsage';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
+import { LiveVoiceLimitSheet } from '@/components/voice/LiveVoiceLimitSheet';
 
 // ── Palette ───────────────────────────────────────────────────────────────────
 // Tela full navy — todos os elementos em stack sobre o mesmo fundo.
@@ -442,6 +443,9 @@ export default function LiveVoiceTab() {
   const { openPaywall } = usePaywallContext();
   const level   = (profile?.charlotte_level ?? 'Novice') as UserLevel;
   const userId  = profile?.id ?? '';
+  // Assinante = premium pagante (active) ou institucional. Define a copy do
+  // popup de limite (trial -> assinar; assinante -> renova/compra avulsa).
+  const isSubscriber = !!profile?.is_institutional || profile?.subscription_status === 'active';
   const isPt    = level === 'Novice';
   const accent  = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
 
@@ -451,12 +455,14 @@ export default function LiveVoiceTab() {
   const [rank,    setRank]    = useState<number | null>(null);
 
   const [poolUsed,        setPoolUsed]        = useState(0);
-  const [poolTotal,       setPoolTotal]       = useState(getPoolForLevel(level));
+  const [poolTotal,       setPoolTotal]       = useState(POOL_TRIAL_SECONDS); // default; real vem de getLiveVoiceStatus
   const [poolUnlimited,   setPoolUnlimited]   = useState(false);
   const [recentCalls,     setRecentCalls]     = useState<LastCall[]>([]);
   const [selectedCall,    setSelectedCall]    = useState<LastCall | null>(null);
   const [showCallsDrawer, setShowCallsDrawer] = useState(false);
   const [showLiveVoice,   setShowLiveVoice]   = useState(false);
+  const [showLimitSheet,  setShowLimitSheet]  = useState(false);
+  const justHitLimitRef = React.useRef(false); // pool esgotou na chamada atual?
   const [showTranscript,  setShowTranscript]  = useState(false);
   const [showHelp,        setShowHelp]        = useState(false);
   const [loading,         setLoading]         = useState(true);
@@ -748,8 +754,7 @@ export default function LiveVoiceTab() {
 
             {/* ── CTA primário: Conversar com Charlotte ── */}
             <TouchableOpacity
-              onPress={startCall}
-              disabled={isLimitReached}
+              onPress={isLimitReached ? () => setShowLimitSheet(true) : startCall}
               activeOpacity={0.85}
               style={{
                 marginHorizontal: 24,
@@ -801,14 +806,30 @@ export default function LiveVoiceTab() {
           isOpen={showLiveVoice}
           userLevel={level}
           userName={profile?.name ?? 'Student'}
+          onLimitReached={() => { justHitLimitRef.current = true; }}
           onClose={() => {
             setShowLiveVoice(false);
             soundEngine.setMuted(false);
             voiceSFX.setMuted(false);
             loadData();
+            // Se o tempo acabou nesta chamada, mostra o popup de upsell logo
+            // depois que o modal fecha (delay pro fade do modal terminar).
+            if (justHitLimitRef.current) {
+              justHitLimitRef.current = false;
+              setTimeout(() => setShowLimitSheet(true), 400);
+            }
           }}
         />
       )}
+
+      <LiveVoiceLimitSheet
+        visible={showLimitSheet}
+        isPt={isPt}
+        isSubscriber={isSubscriber}
+        poolMin={Math.floor(poolTotal / 60)}
+        onSubscribe={() => { setShowLimitSheet(false); openPaywall(); }}
+        onClose={() => setShowLimitSheet(false)}
+      />
 
       <TranscriptModal
         call={selectedCall}

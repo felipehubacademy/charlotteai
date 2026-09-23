@@ -557,8 +557,8 @@ export default function ProfileTab() {
           </>
         )}
 
-        {/* Usage — Inter and Advanced only */}
-        {voiceUsage !== null && voiceUsage.poolTotal > 0 && level !== 'Novice' && (
+        {/* Usage — todos os perfis (pool por assinatura: trial 5 · premium/inst 20) */}
+        {voiceUsage !== null && voiceUsage.poolTotal > 0 && (
           <>
             <SectionTitle label={isPt ? 'Uso' : 'Usage'} />
             <View style={{
