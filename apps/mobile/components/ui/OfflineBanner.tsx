@@ -13,6 +13,8 @@ export function OfflineBanner() {
   const translateY = useAnimatedValue(-60);
   const isPt = (profile?.charlotte_level ?? 'Novice') === 'Novice';
 
+  useEffect(() => { console.log('[banner] insets.top=', insets.top); }, [insets.top]);
+
   useEffect(() => {
     Animated.spring(translateY, {
       toValue: isOnline ? -60 : 0,
@@ -25,8 +27,10 @@ export function OfflineBanner() {
     <Animated.View
       pointerEvents="none"
       style={{
+        // Piso de 44pt: se o inset vier 0 (overlay no nível raiz antes da
+        // medição), ainda assim o banner fica abaixo da Dynamic Island/notch.
         position: 'absolute',
-        top: insets.top + 8,
+        top: Math.max(insets.top, 44) + 8,
         left: 0,
         right: 0,
         zIndex: 9999,
