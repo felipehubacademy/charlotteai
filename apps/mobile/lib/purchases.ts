@@ -36,6 +36,16 @@ export const ENTITLEMENT_ID = 'Premium';
 export const PRODUCT_MONTHLY = 'com.hubacademy.charlotte.monthly';
 export const PRODUCT_YEARLY  = 'com.hubacademy.charlotte.yearly';
 
+// Minutos avulsos (consumíveis) — offering "minutes" no RevenueCat.
+export const PRODUCT_MINUTES_10  = 'com.hubacademy.charlotte.minutes10';
+export const PRODUCT_MINUTES_30  = 'com.hubacademy.charlotte.minutes30';
+export const MINUTES_OFFERING_ID = 'minutes';
+// Minutos que cada produto concede (espelha o webhook do RevenueCat).
+export const MINUTES_BY_PRODUCT: Record<string, number> = {
+  [PRODUCT_MINUTES_10]: 10,
+  [PRODUCT_MINUTES_30]: 30,
+};
+
 // ── Init ──────────────────────────────────────────────────────────────────────
 export function initPurchases() {
   const apiKey = Platform.OS === 'ios' ? RC_IOS_KEY : RC_ANDROID_KEY;
@@ -149,6 +159,19 @@ export async function purchasePackage(
     const rawCode = e?.code;
     const errorCode = typeof rawCode === 'number' ? rawCode : Number(rawCode);
     return { success: false, errorCode: Number.isFinite(errorCode) ? errorCode : undefined };
+  }
+}
+
+// ── Minutos avulsos (consumíveis) ─────────────────────────────────────────────
+/** Pacotes de minutos do offering "minutes" (vazio se não configurado). */
+export async function getMinutePacks(): Promise<import('react-native-purchases').PurchasesPackage[]> {
+  try {
+    const offerings = await Purchases.getOfferings();
+    const off = offerings.all[MINUTES_OFFERING_ID];
+    return off?.availablePackages ?? [];
+  } catch (e) {
+    console.warn('[purchases] getMinutePacks error:', e);
+    return [];
   }
 }
 

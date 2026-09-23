@@ -868,6 +868,14 @@ export default function LiveVoiceTab() {
         isSubscriber={isSubscriber}
         poolMin={Math.floor(poolTotal / 60)}
         onSubscribe={() => { setShowLimitSheet(false); openPaywall(); }}
+        onPurchased={() => {
+          setShowLimitSheet(false);
+          // O grant dos minutos chega via webhook do RevenueCat (async) —
+          // atualiza o pool algumas vezes até o saldo bônus refletir.
+          loadData();
+          setTimeout(loadData, 2500);
+          setTimeout(loadData, 6000);
+        }}
         onClose={() => setShowLimitSheet(false)}
       />
 
