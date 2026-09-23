@@ -204,29 +204,29 @@ function LessonRow({
           }}>
           {lesson.label}
         </AppText>
-        {/* Subtitulo: oculta quando label ja é o tipo (caso v2). Score sempre aparece se houver. */}
+        {/* Subtitulo: SO score/threshold. Nao exibe label de tipo (ex.: o
+            "SPEAKING" que so aparecia no Listening & Speaking) — os exercicios
+            mostram apenas o titulo, sem sublabel. */}
         {(() => {
           const hasScore = typeof lesson.score === 'number';
-          const labelMatches = lesson.label === (isPt ? cfg.labelPt : cfg.label);
           // Threshold por tipo (sincronizado com useLearnProgressV2)
           const threshold = lesson.type === 'grammar' ? 70 : lesson.type === 'speaking' ? 60 : 100;
           const belowThreshold = hasScore && !isDone && (lesson.score as number) < threshold;
-          if (labelMatches && !hasScore && !belowThreshold) return null;
+          if (!hasScore && !belowThreshold) return null;
           return (
             <AppText style={{
               fontSize: 10, fontWeight: '700',
               color: C.navyLight, letterSpacing: 0.8, marginTop: 2,
               textTransform: 'uppercase',
             }}>
-              {!labelMatches ? (isPt ? cfg.labelPt : cfg.label) : ''}
               {isDone && hasScore && (
                 <AppText style={{ color: scoreColor(lesson.score!) }}>
-                  {`${!labelMatches ? '  ·  ' : ''}${Math.round(lesson.score!)}%`}
+                  {`${Math.round(lesson.score!)}%`}
                 </AppText>
               )}
               {belowThreshold && (
                 <AppText style={{ color: '#D97706' }}>
-                  {`${!labelMatches ? '  ·  ' : ''}${Math.round(lesson.score!)}% — ${isPt ? `precisa ${threshold}%` : `need ${threshold}%`}`}
+                  {`${Math.round(lesson.score!)}% — ${isPt ? `precisa ${threshold}%` : `need ${threshold}%`}`}
                 </AppText>
               )}
             </AppText>
