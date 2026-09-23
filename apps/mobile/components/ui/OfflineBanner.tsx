@@ -13,8 +13,6 @@ export function OfflineBanner() {
   const translateY = useAnimatedValue(-60);
   const isPt = (profile?.charlotte_level ?? 'Novice') === 'Novice';
 
-  useEffect(() => { console.log('[banner] insets.top=', insets.top); }, [insets.top]);
-
   useEffect(() => {
     Animated.spring(translateY, {
       toValue: isOnline ? -60 : 0,
