@@ -843,7 +843,7 @@ export default function LiveVoiceTab() {
         <LiveVoiceModal
           isOpen={showLiveVoice}
           userLevel={level}
-          userName={profile?.name ?? 'Student'}
+          userName={(profile?.name ?? 'Student').trim().split(/\s+/)[0]}
           onLimitReached={() => { justHitLimitRef.current = true; }}
           onClose={() => {
             setShowLiveVoice(false);
