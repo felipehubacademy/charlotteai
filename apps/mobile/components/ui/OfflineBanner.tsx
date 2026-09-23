@@ -10,26 +10,31 @@ export function OfflineBanner() {
   const isOnline = useNetworkStatus();
   const { profile } = useAuth();
   const insets = useSafeAreaInsets();
-  const translateY = useAnimatedValue(-60);
   const isPt = (profile?.charlotte_level ?? 'Novice') === 'Novice';
+
+  // Posição de repouso (visível): abaixo da Dynamic Island/notch. Piso de 52pt
+  // caso o inset venha 0.
+  const topOffset = Math.max(insets.top, 52) + 8;
+  // Posição escondida: sobe o SUFICIENTE pra sair inteiro da tela (topo + altura
+  // do banner + folga). O antigo -60 era menor que o topOffset, então o banner
+  // só encostava atrás do notch em vez de sumir.
+  const HIDDEN = -(topOffset + 56);
+  const translateY = useAnimatedValue(HIDDEN);
 
   useEffect(() => {
     Animated.spring(translateY, {
-      toValue: isOnline ? -60 : 0,
+      toValue: isOnline ? HIDDEN : 0,
       useNativeDriver: true,
       bounciness: 4,
     }).start();
-  }, [isOnline]);
+  }, [isOnline, HIDDEN]);
 
   return (
     <Animated.View
       pointerEvents="none"
       style={{
-        // Piso de 52pt (+8 = 60pt): se o inset vier 0 por algum motivo, o banner
-        // ainda cai abaixo da Dynamic Island (~59pt) / notch. Quando o inset é
-        // correto (ex.: 62 no 17 Pro Max) ele prevalece.
         position: 'absolute',
-        top: Math.max(insets.top, 52) + 8,
+        top: topOffset,
         left: 0,
         right: 0,
         zIndex: 9999,
