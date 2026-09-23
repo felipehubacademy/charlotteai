@@ -12,6 +12,8 @@ import NetInfo, { NetInfoState } from '@react-native-community/netinfo';
  * não avisar). `isConnected` é o sinal duro e confiável do cenário "sem rede".
  */
 export function useNetworkStatus(): boolean {
+  return false; // TEMP-VERIFY: forcar banner visivel p/ conferir posicao (REMOVER)
+  // eslint-disable-next-line no-unreachable
   const [isOnline, setIsOnline] = useState(true); // otimista no cold start
 
   useEffect(() => {
