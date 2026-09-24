@@ -13,7 +13,7 @@ import Svg, { Circle } from 'react-native-svg';
 import { useFocusEffect } from 'expo-router';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { Image } from 'expo-image';
-import { Phone, XCircle, ClockCounterClockwise, CaretRight, Trash, Question, X } from 'phosphor-react-native';
+import { Phone, XCircle, ClockCounterClockwise, CaretRight, Trash, Question, X, Plus, Crown } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
@@ -62,8 +62,9 @@ interface LastCall {
 
 function poolStatusLabel(
   isPt: boolean, isLimitReached: boolean, isUnlimited: boolean,
-  remainingSec: number,
+  remainingSec: number, isKnown: boolean,
 ): string {
+  if (!isKnown) return isPt ? 'Carregando…' : 'Loading…';
   if (isLimitReached) return isPt ? 'Limite mensal atingido' : 'Monthly limit reached';
   if (isUnlimited) return isPt ? 'Charlotte disponível · ilimitado' : 'Charlotte available · unlimited';
   const remainMin = Math.max(0, Math.floor(remainingSec / 60)); // mensal restante + bônus
@@ -458,6 +459,7 @@ export default function LiveVoiceTab() {
   const [poolTotal,       setPoolTotal]       = useState(POOL_TRIAL_SECONDS); // default; real vem de getLiveVoiceStatus
   const [poolRemaining,   setPoolRemaining]   = useState(POOL_TRIAL_SECONDS); // mensal restante + bônus
   const [poolUnlimited,   setPoolUnlimited]   = useState(false);
+  const [poolKnown,       setPoolKnown]       = useState(false); // true após 1 leitura válida (evita mostrar pool trial falso)
   const [recentCalls,     setRecentCalls]     = useState<LastCall[]>([]);
   const [selectedCall,    setSelectedCall]    = useState<LastCall | null>(null);
   const [showCallsDrawer, setShowCallsDrawer] = useState(false);
@@ -489,7 +491,7 @@ export default function LiveVoiceTab() {
           .select('streak_days,total_xp,last_practice_date')
           .eq('user_id', userId)
           .maybeSingle(),
-        getLiveVoiceStatus(level).catch(() => null),
+        getLiveVoiceStatus(level, userId).catch(() => null),
         supabase.from('charlotte_practices')
           .select('xp_earned')
           .eq('user_id', userId)
@@ -535,7 +537,10 @@ export default function LiveVoiceTab() {
         setPoolTotal(lv.poolTotal);
         setPoolRemaining(lv.secondsRemaining);
         setPoolUnlimited(!!lv.isUnlimited);
+        setPoolKnown(true);
       }
+      // Se lv === null a leitura falhou: NÃO sobrescreve com default trial —
+      // mantém poolKnown como está (mostra "carregando" em vez de 5 min falso).
       setRecentCalls(recentCallsRes?.data ?? []);
     } catch { /* silencioso */ } finally {
       setLoading(false);
@@ -585,6 +590,9 @@ export default function LiveVoiceTab() {
   }, [loadData]);
 
   const startCall = useCallback(() => {
+    // Só inicia quando o pool é conhecido e há tempo — nunca com status incerto
+    // (senão daria pra burlar o limite quando a leitura falha).
+    if (!poolKnown) return;
     if (!poolUnlimited && poolRemaining <= 0) return;
     soundEngine.setMuted(true);
     // voiceSFX tem fila propria (setTimeouts disparados em achievements,
@@ -594,9 +602,26 @@ export default function LiveVoiceTab() {
     // Mutar aqui zera essa fila.
     voiceSFX.setMuted(true);
     setShowLiveVoice(true);
-  }, [poolUnlimited, poolRemaining]);
+  }, [poolKnown, poolUnlimited, poolRemaining]);
 
-  const isLimitReached = !poolUnlimited && poolRemaining <= 0;
+  // Só considera "limite atingido" quando o pool é CONHECIDO — enquanto a
+  // leitura não confirma, mostramos "carregando", nunca um limite/pool falso.
+  const isLimitReached = poolKnown && !poolUnlimited && poolRemaining <= 0;
+
+  // CTA primário — 3 estados: carregando (pool ainda incerto) · limite atingido
+  // (assinante -> comprar minutos; trial -> assinar) · normal (conversar).
+  const ctaLabel = !poolKnown
+    ? (isPt ? 'Carregando…' : 'Loading…')
+    : isLimitReached
+      ? (isSubscriber ? (isPt ? 'Comprar minutos' : 'Buy minutes')
+                      : (isPt ? 'Assinar Premium' : 'Subscribe to Premium'))
+      : (isPt ? 'Conversar com Charlotte' : 'Talk with Charlotte');
+  const onCtaPress = !poolKnown
+    ? () => loadData()
+    : isLimitReached
+      ? () => setShowLimitSheet(true)
+      : startCall;
+
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
 
   // Charlotte responsiva — calculada do espaço REAL disponível na tela.
@@ -701,10 +726,10 @@ export default function LiveVoiceTab() {
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 6 }}>
                 <View style={{
                   width: 8, height: 8, borderRadius: 4,
-                  backgroundColor: isLimitReached ? C.red : C.greenDark,
+                  backgroundColor: !poolKnown ? C.textDim : isLimitReached ? C.red : C.greenDark,
                 }} />
                 <AppText style={{ fontSize: 13, color: C.textMuted, fontWeight: '500' }}>
-                  {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolRemaining)}
+                  {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown)}
                 </AppText>
               </View>
             </View>
@@ -792,29 +817,35 @@ export default function LiveVoiceTab() {
               </TouchableOpacity>
             </View>
 
-            {/* ── CTA primário: Conversar com Charlotte ── */}
+            {/* ── CTA primário: conversar / comprar / assinar / carregando ── */}
             <TouchableOpacity
-              onPress={isLimitReached ? () => setShowLimitSheet(true) : startCall}
+              onPress={onCtaPress}
+              disabled={!poolKnown}
               activeOpacity={0.85}
               style={{
                 marginHorizontal: 24,
                 marginBottom: 24,
-                backgroundColor: isLimitReached ? C.navyGhost : accent,
+                backgroundColor: !poolKnown ? C.navyGhost : accent,
                 borderRadius: 16, paddingVertical: 18,
                 flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
-                shadowColor: isLimitReached ? 'transparent' : accent,
+                shadowColor: !poolKnown ? 'transparent' : accent,
                 shadowOffset: { width: 0, height: 6 },
                 shadowOpacity: 0.4, shadowRadius: 14,
                 elevation: 8,
-                opacity: isLimitReached ? 0.5 : 1,
+                opacity: !poolKnown ? 0.6 : 1,
               }}
             >
-              <Phone size={20} color={isLimitReached ? C.textDim : '#FFFFFF'} weight="fill" />
-              <AppText style={{ fontSize: 15, fontWeight: '800', color: isLimitReached ? C.textDim : '#FFFFFF', letterSpacing: 0.3 }}>
-                {isLimitReached
-                  ? (isPt ? 'Limite atingido' : 'Limit reached')
-                  : (isPt ? 'Conversar com Charlotte' : 'Talk with Charlotte')
-                }
+              {!poolKnown ? (
+                <ActivityIndicator size="small" color={C.textDim} />
+              ) : isLimitReached ? (
+                isSubscriber
+                  ? <Plus size={20} color="#FFFFFF" weight="bold" />
+                  : <Crown size={20} color="#FFFFFF" weight="fill" />
+              ) : (
+                <Phone size={20} color="#FFFFFF" weight="fill" />
+              )}
+              <AppText style={{ fontSize: 15, fontWeight: '800', color: !poolKnown ? C.textDim : '#FFFFFF', letterSpacing: 0.3 }}>
+                {ctaLabel}
               </AppText>
             </TouchableOpacity>
 

@@ -48,20 +48,29 @@ export interface LiveVoiceStatus {
  * (trial 5 min · premium/institucional 20 min), não do nível.
  * Se o mês mudou desde o último uso, zera o contador automaticamente.
  * O parâmetro `level` é legado (ignorado no cálculo do pool).
+ *
+ * `userIdArg`: quando informado, evita o `supabase.auth.getUser()` (chamada de
+ * rede que valida o token no servidor e falha em blips de conexão). Como quem
+ * chama já tem o id da sessão, passá-lo aqui deixa a leitura confiável — sem
+ * ele a tela caía num pool trial falso quando o getUser falhava.
  */
-export async function getLiveVoiceStatus(_level?: string): Promise<LiveVoiceStatus> {
-  const {
-    data: { user },
-    error: authErr,
-  } = await supabase.auth.getUser();
-  if (!user || authErr) throw new Error('Not authenticated');
+export async function getLiveVoiceStatus(_level?: string, userIdArg?: string): Promise<LiveVoiceStatus> {
+  let userId = userIdArg;
+  if (!userId) {
+    const {
+      data: { user },
+      error: authErr,
+    } = await supabase.auth.getUser();
+    if (!user || authErr) throw new Error('Not authenticated');
+    userId = user.id;
+  }
 
   const thisMonth = localMonthStartStr();
 
   const { data, error } = await supabase
     .from('charlotte_users')
     .select('live_voice_seconds_used, live_voice_reset_date, is_institutional, subscription_status, live_voice_bonus_seconds')
-    .eq('id', user.id)
+    .eq('id', userId)
     .single();
 
   if (error) throw error;
@@ -81,7 +90,7 @@ export async function getLiveVoiceStatus(_level?: string): Promise<LiveVoiceStat
         live_voice_seconds_used: 0,
         live_voice_reset_date:   thisMonth,
       })
-      .eq('id', user.id);
+      .eq('id', userId);
 
     if (updErr) console.warn('[liveVoiceUsage] reset error:', updErr.message);
 

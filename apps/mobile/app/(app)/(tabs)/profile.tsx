@@ -215,8 +215,9 @@ export default function ProfileTab() {
 
   useFocusEffect(useCallback(() => {
     setNameValue(profile?.name ?? '');
-    getLiveVoiceStatus(level).then(setVoiceUsage).catch(() => {});
-  }, [profile?.name, level]));
+    // Passa o id da sessão pra evitar o auth.getUser() de rede (frágil).
+    getLiveVoiceStatus(level, profile?.id).then(setVoiceUsage).catch(() => {});
+  }, [profile?.name, profile?.id, level]));
 
   const handleSaveName = async () => {
     const trimmed = nameValue.trim();
