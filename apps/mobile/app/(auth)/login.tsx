@@ -22,6 +22,7 @@ import {
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
+import { systemIsPt } from '@/lib/systemLang';
 
 // Light theme
 const C = {
@@ -43,9 +44,11 @@ export default function LoginScreen() {
   const [error, setError]               = useState<string | null>(null);
   const passwordRef                     = useRef<TextInput>(null);
   const { signIn }                      = useAuth();
+  // Auth = sistema: idioma segue o device.
+  const isPt = systemIsPt;
 
   const handleLogin = async () => {
-    if (!email.trim() || !password) { setError('Preencha e-mail e senha.'); return; }
+    if (!email.trim() || !password) { setError(isPt ? 'Preencha e-mail e senha.' : 'Enter your email and password.'); return; }
     setError(null);
     setLoading(true);
     try {
@@ -54,13 +57,13 @@ export default function LoginScreen() {
     } catch (e: any) {
       const msg = e?.message ?? '';
       console.error('[login] signIn error:', { message: msg, name: e?.name, code: e?.code, status: e?.status, raw: e });
-      if (msg.includes('Invalid login credentials')) setError('E-mail ou senha incorretos.');
-      else if (msg.includes('Email not confirmed'))  setError('Confirme seu e-mail antes de entrar.');
+      if (msg.includes('Invalid login credentials')) setError(isPt ? 'E-mail ou senha incorretos.' : 'Incorrect email or password.');
+      else if (msg.includes('Email not confirmed'))  setError(isPt ? 'Confirme seu e-mail antes de entrar.' : 'Confirm your email before signing in.');
       else if (msg.toLowerCase().includes('network') || msg.toLowerCase().includes('fetch')) {
-        setError('Sem conexão com servidor. Cheque internet e tente de novo.');
+        setError(isPt ? 'Sem conexão com servidor. Cheque internet e tente de novo.' : 'No server connection. Check your internet and try again.');
       }
       // Modo debug: mostra mensagem real do supabase pra investigar Android
-      else setError(`Erro: ${msg || 'desconhecido'}`);
+      else setError(`${isPt ? 'Erro' : 'Error'}: ${msg || (isPt ? 'desconhecido' : 'unknown')}`);
     } finally {
       setLoading(false);
     }
@@ -115,7 +118,9 @@ export default function LoginScreen() {
               fontSize: 14, color: C.navyMid, textAlign: 'center',
               lineHeight: 22, maxWidth: 270,
             }}>
-              Pratique inglês com conversas inteligentes e feedback em tempo real.
+              {isPt
+                ? 'Pratique inglês com conversas inteligentes e feedback em tempo real.'
+                : 'Practice English with smart conversations and real-time feedback.'}
             </AppText>
 
           </View>
@@ -129,7 +134,7 @@ export default function LoginScreen() {
               <TextInput
                 value={email}
                 onChangeText={t => { setEmail(t); setError(null); }}
-                placeholder="E-mail"
+                placeholder={isPt ? 'E-mail' : 'Email'}
                 placeholderTextColor={C.navyLight}
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -149,7 +154,7 @@ export default function LoginScreen() {
                 ref={passwordRef}
                 value={password}
                 onChangeText={t => { setPassword(t); setError(null); }}
-                placeholder="Senha"
+                placeholder={isPt ? 'Senha' : 'Password'}
                 placeholderTextColor={C.navyLight}
                 secureTextEntry={!showPassword}
                 autoComplete="password"
@@ -187,7 +192,7 @@ export default function LoginScreen() {
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
               <SignIn size={18} color={C.navy} weight="bold" />
               <AppText style={{ color: C.navy, fontWeight: '800', fontSize: 15 }}>
-                {loading ? 'Entrando...' : 'Entrar'}
+                {loading ? (isPt ? 'Entrando...' : 'Signing in...') : (isPt ? 'Entrar' : 'Sign in')}
               </AppText>
             </View>
           </TouchableOpacity>
@@ -202,7 +207,7 @@ export default function LoginScreen() {
             onPress={() => router.push('/(auth)/signup')}
           >
             <AppText style={{ color: C.navy, fontWeight: '700', fontSize: 15 }}>
-              Criar conta grátis
+              {isPt ? 'Criar conta grátis' : 'Create free account'}
             </AppText>
           </TouchableOpacity>
 
@@ -212,7 +217,7 @@ export default function LoginScreen() {
             onPress={() => router.push('/(auth)/forgot-password')}
           >
             <AppText style={{ color: C.navyMid, fontSize: 13 }}>
-              Esqueceu sua senha?
+              {isPt ? 'Esqueceu sua senha?' : 'Forgot your password?'}
             </AppText>
           </TouchableOpacity>
 

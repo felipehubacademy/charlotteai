@@ -10,6 +10,7 @@ import { Lock, Eye, EyeSlash, CheckCircle, WarningCircle } from 'phosphor-react-
 import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
+import { systemIsPt } from '@/lib/systemLang';
 
 // ── Light theme ───────────────────────────────────────────────
 const C = {
@@ -34,14 +35,15 @@ export default function ChangePasswordScreen() {
   const [error, setError]               = useState<string | null>(null);
   const confirmRef                      = useRef<TextInput>(null);
   const { session }                     = useAuth();
+  const isPt = systemIsPt; // auth = sistema: idioma do device
 
   const handleSave = async () => {
     if (password.length < 8) {
-      setError('A senha deve ter pelo menos 8 caracteres.');
+      setError(isPt ? 'A senha deve ter pelo menos 8 caracteres.' : 'Password must be at least 8 characters.');
       return;
     }
     if (password !== confirm) {
-      setError('As senhas não coincidem.');
+      setError(isPt ? 'As senhas não coincidem.' : 'Passwords don’t match.');
       return;
     }
     setError(null);
@@ -77,8 +79,8 @@ export default function ChangePasswordScreen() {
       const msg = (e?.message ?? '') as string;
       setError(
         msg.includes('different from the old password')
-          ? 'A nova senha deve ser diferente da senha temporária.'
-          : msg || 'Erro ao salvar senha. Tente novamente.'
+          ? (isPt ? 'A nova senha deve ser diferente da senha temporária.' : 'The new password must be different from the temporary one.')
+          : msg || (isPt ? 'Erro ao salvar senha. Tente novamente.' : 'Error saving password. Please try again.')
       );
     } finally {
       console.log('[CP] finally — setLoading(false)');
@@ -108,10 +110,10 @@ export default function ChangePasswordScreen() {
               <Lock size={32} color={C.navy} weight="duotone" />
             </View>
             <AppText style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
-              Crie sua senha
+              {isPt ? 'Crie sua senha' : 'Create your password'}
             </AppText>
             <AppText style={{ fontSize: 14, color: C.navyMid, marginTop: 8, textAlign: 'center', lineHeight: 20 }}>
-              É seu primeiro acesso.{'\n'}Defina uma senha pessoal para continuar.
+              {isPt ? <>É seu primeiro acesso.{'\n'}Defina uma senha pessoal para continuar.</> : <>This is your first login.{'\n'}Set a personal password to continue.</>}
             </AppText>
           </View>
 
@@ -124,7 +126,7 @@ export default function ChangePasswordScreen() {
               <TextInput
                 value={password}
                 onChangeText={t => { setPassword(t); setError(null); }}
-                placeholder="Nova senha"
+                placeholder={isPt ? 'Nova senha' : 'New password'}
                 placeholderTextColor={C.navyLight}
                 secureTextEntry={!showPassword}
                 textContentType="newPassword"
@@ -148,7 +150,7 @@ export default function ChangePasswordScreen() {
                 ref={confirmRef}
                 value={confirm}
                 onChangeText={t => { setConfirm(t); setError(null); }}
-                placeholder="Confirmar senha"
+                placeholder={isPt ? 'Confirmar senha' : 'Confirm password'}
                 placeholderTextColor={C.navyLight}
                 secureTextEntry={!showConfirm}
                 textContentType="newPassword"
@@ -174,7 +176,7 @@ export default function ChangePasswordScreen() {
                   weight={strongEnough ? 'fill' : 'regular'}
                 />
                 <AppText style={{ fontSize: 12, color: strongEnough ? C.greenDark : C.navyLight }}>
-                  Mínimo 8 caracteres
+                  {isPt ? 'Mínimo 8 caracteres' : 'At least 8 characters'}
                 </AppText>
               </View>
               {confirm.length > 0 && (
@@ -185,7 +187,7 @@ export default function ChangePasswordScreen() {
                     weight={matches ? 'fill' : 'regular'}
                   />
                   <AppText style={{ fontSize: 12, color: matches ? C.greenDark : C.red }}>
-                    {matches ? 'Senhas coincidem' : 'Senhas não coincidem'}
+                    {matches ? (isPt ? 'Senhas coincidem' : 'Passwords match') : (isPt ? 'Senhas não coincidem' : 'Passwords don’t match')}
                   </AppText>
                 </View>
               )}
@@ -209,7 +211,7 @@ export default function ChangePasswordScreen() {
             }}
           >
             <AppText style={{ color: C.navy, fontWeight: '700', fontSize: 15 }}>
-              {loading ? 'Salvando...' : 'Salvar e entrar'}
+              {loading ? (isPt ? 'Salvando...' : 'Saving...') : (isPt ? 'Salvar e entrar' : 'Save and continue')}
             </AppText>
           </TouchableOpacity>
 

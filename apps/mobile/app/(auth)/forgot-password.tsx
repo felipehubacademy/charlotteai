@@ -9,6 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Envelope, ArrowLeft, CheckCircle, WarningCircle } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
+import { systemIsPt } from '@/lib/systemLang';
 
 // ── Light theme ───────────────────────────────────────────────
 const C = {
@@ -29,9 +30,10 @@ export default function ForgotPasswordScreen() {
   const [sent, setSent]       = useState(false);
   const [error, setError]     = useState<string | null>(null);
   const { resetPassword }     = useAuth();
+  const isPt = systemIsPt; // auth = sistema: idioma do device
 
   const handleSubmit = async () => {
-    if (!email.trim()) { setError('Digite seu e-mail.'); return; }
+    if (!email.trim()) { setError(isPt ? 'Digite seu e-mail.' : 'Enter your email.'); return; }
     setError(null);
     setLoading(true);
     try {
@@ -41,11 +43,11 @@ export default function ForgotPasswordScreen() {
       const msg = (e?.message ?? '') as string;
       console.error('[ForgotPassword] error:', msg);
       if (msg.toLowerCase().includes('rate') || msg.toLowerCase().includes('limit')) {
-        setError('Muitas tentativas. Aguarde alguns minutos.');
+        setError(isPt ? 'Muitas tentativas. Aguarde alguns minutos.' : 'Too many attempts. Wait a few minutes.');
       } else if (msg.toLowerCase().includes('invalid') || msg.toLowerCase().includes('email')) {
-        setError('E-mail inválido.');
+        setError(isPt ? 'E-mail inválido.' : 'Invalid email.');
       } else {
-        setError(msg || 'Não foi possível enviar o e-mail. Tente novamente.');
+        setError(msg || (isPt ? 'Não foi possível enviar o e-mail. Tente novamente.' : 'We couldn’t send the email. Please try again.'));
       }
     } finally {
       setLoading(false);
@@ -80,10 +82,10 @@ export default function ForgotPasswordScreen() {
               <Envelope size={32} color={C.navy} weight="duotone" />
             </View>
             <AppText style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
-              Recuperar senha
+              {isPt ? 'Recuperar senha' : 'Reset password'}
             </AppText>
             <AppText style={{ fontSize: 14, color: C.navyMid, marginTop: 8, textAlign: 'center', lineHeight: 20 }}>
-              Enviaremos um link de redefinição{'\n'}para o seu e-mail.
+              {isPt ? <>Enviaremos um link de redefinição{'\n'}para o seu e-mail.</> : <>We’ll send a reset link{'\n'}to your email.</>}
             </AppText>
           </View>
 
@@ -97,14 +99,14 @@ export default function ForgotPasswordScreen() {
               }}>
                 <CheckCircle size={44} color={C.greenDark} weight="fill" />
                 <AppText style={{ fontSize: 15, color: C.navy, textAlign: 'center', lineHeight: 22 }}>
-                  E-mail enviado! Verifique sua caixa de entrada.
+                  {isPt ? 'E-mail enviado! Verifique sua caixa de entrada.' : 'Email sent! Check your inbox.'}
                 </AppText>
               </View>
               <TouchableOpacity
                 onPress={() => router.back()}
                 style={{ backgroundColor: C.navy, borderRadius: 14, paddingVertical: 16, alignItems: 'center' }}
               >
-                <AppText style={{ color: '#FFFFFF', fontWeight: '700', fontSize: 15 }}>Voltar ao login</AppText>
+                <AppText style={{ color: '#FFFFFF', fontWeight: '700', fontSize: 15 }}>{isPt ? 'Voltar ao login' : 'Back to login'}</AppText>
               </TouchableOpacity>
             </View>
           ) : (
@@ -116,7 +118,7 @@ export default function ForgotPasswordScreen() {
                 <TextInput
                   value={email}
                   onChangeText={t => { setEmail(t); setError(null); }}
-                  placeholder="E-mail"
+                  placeholder={isPt ? 'E-mail' : 'Email'}
                   placeholderTextColor={C.navyLight}
                   keyboardType="email-address"
                   autoCapitalize="none"
@@ -145,7 +147,7 @@ export default function ForgotPasswordScreen() {
                 }}
               >
                 <AppText style={{ color: C.navy, fontWeight: '700', fontSize: 15 }}>
-                  {loading ? 'Enviando...' : 'Enviar link'}
+                  {loading ? (isPt ? 'Enviando...' : 'Sending...') : (isPt ? 'Enviar link' : 'Send link')}
                 </AppText>
               </TouchableOpacity>
 

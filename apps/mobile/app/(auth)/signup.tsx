@@ -13,6 +13,7 @@ import {
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { isValidEmailFormat, isDisposableEmail, suggestEmailCorrection } from '@/lib/emailValidation';
+import { systemIsPt } from '@/lib/systemLang';
 
 const C = {
   bg:        '#F4F3FA',
@@ -37,21 +38,23 @@ export default function SignupScreen() {
   const emailRef    = useRef<TextInput>(null);
   const passwordRef = useRef<TextInput>(null);
   const { signUp } = useAuth();
+  // Auth = sistema: idioma segue o device (usuario novo ainda nao tem nivel).
+  const isPt = systemIsPt;
 
   const handleSignup = async () => {
-    if (!name.trim())     { setError('Digite seu nome.'); return; }
-    if (!email.trim())    { setError('Digite seu e-mail.'); return; }
+    if (!name.trim())     { setError(isPt ? 'Digite seu nome.' : 'Enter your name.'); return; }
+    if (!email.trim())    { setError(isPt ? 'Digite seu e-mail.' : 'Enter your email.'); return; }
     // Validação forte NA ORIGEM: pega typo/formato/descartável antes de gastar
     // um envio de e-mail (e antes de deixar entrar endereço que nunca receberá
     // reset de senha / campanha).
     if (!isValidEmailFormat(email)) {
-      setError('E-mail inválido. Confira o endereço.');
+      setError(isPt ? 'E-mail inválido. Confira o endereço.' : 'Invalid email. Check the address.');
       const s = suggestEmailCorrection(email);
       if (s) setEmailSuggestion(s);
       return;
     }
     if (isDisposableEmail(email)) {
-      setError('Use um e-mail permanente — descartáveis não são aceitos.');
+      setError(isPt ? 'Use um e-mail permanente — descartáveis não são aceitos.' : 'Use a permanent email — disposable addresses aren’t accepted.');
       return;
     }
     // Se há um palpite de typo forte, oferece UMA vez. Se o usuário insistir
@@ -63,7 +66,7 @@ export default function SignupScreen() {
       setError(null);
       return;
     }
-    if (password.length < 6) { setError('A senha deve ter pelo menos 6 caracteres.'); return; }
+    if (password.length < 6) { setError(isPt ? 'A senha deve ter pelo menos 6 caracteres.' : 'Password must be at least 6 characters.'); return; }
     setError(null);
     setLoading(true);
     try {
@@ -82,17 +85,17 @@ export default function SignupScreen() {
       // precisam ser testados ANTES do match de e-mail inválido — senão viram
       // "E-mail inválido" e o usuário acha que digitou errado.
       if (has('already registered', 'already been registered', 'user already')) {
-        setError('Este e-mail já está cadastrado. Faça login.');
+        setError(isPt ? 'Este e-mail já está cadastrado. Faça login.' : 'This email is already registered. Please log in.');
       } else if (has('rate limit', 'too many', 'exceeded', 'over_email', 'over_request')) {
-        setError('Muitas tentativas agora. Aguarde alguns minutos e tente de novo.');
+        setError(isPt ? 'Muitas tentativas agora. Aguarde alguns minutos e tente de novo.' : 'Too many attempts right now. Wait a few minutes and try again.');
       } else if (has('sending', 'confirmation email', 'smtp', 'send email')) {
-        setError('Não foi possível enviar o e-mail de confirmação agora. Tente novamente em instantes.');
+        setError(isPt ? 'Não foi possível enviar o e-mail de confirmação agora. Tente novamente em instantes.' : 'We couldn’t send the confirmation email right now. Please try again shortly.');
       } else if (has('invalid format', 'validate email', 'invalid email', 'not a valid')) {
-        setError('E-mail inválido. Confira o endereço.');
+        setError(isPt ? 'E-mail inválido. Confira o endereço.' : 'Invalid email. Check the address.');
       } else if (has('password', 'senha')) {
-        setError('Senha fraca. Use pelo menos 6 caracteres.');
+        setError(isPt ? 'Senha fraca. Use pelo menos 6 caracteres.' : 'Weak password. Use at least 6 characters.');
       } else {
-        setError(raw || 'Erro ao criar conta. Tente novamente.');
+        setError(raw || (isPt ? 'Erro ao criar conta. Tente novamente.' : 'Error creating account. Please try again.'));
       }
     } finally {
       setLoading(false);
@@ -134,16 +137,16 @@ export default function SignupScreen() {
 
           {/* Textos */}
           <AppText style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center', letterSpacing: -0.5, marginBottom: 12 }}>
-            Verifique seu e-mail
+            {isPt ? 'Verifique seu e-mail' : 'Check your email'}
           </AppText>
           <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 23, marginBottom: 6 }}>
-            Enviamos um link de confirmação para
+            {isPt ? 'Enviamos um link de confirmação para' : 'We sent a confirmation link to'}
           </AppText>
           <AppText style={{ fontSize: 15, fontWeight: '700', color: C.navy, textAlign: 'center', marginBottom: 20 }}>
             {email}
           </AppText>
           <AppText style={{ fontSize: 14, color: C.navyLight, textAlign: 'center', lineHeight: 21, marginBottom: 48 }}>
-            Clique no link para ativar sua conta.
+            {isPt ? 'Clique no link para ativar sua conta.' : 'Click the link to activate your account.'}
           </AppText>
 
           {/* Botão sólido */}
@@ -156,7 +159,7 @@ export default function SignupScreen() {
             onPress={() => router.replace('/(auth)/login')}
           >
             <AppText style={{ color: C.bg, fontWeight: '800', fontSize: 15 }}>
-              Ir para o login
+              {isPt ? 'Ir para o login' : 'Go to login'}
             </AppText>
           </TouchableOpacity>
 
@@ -200,10 +203,10 @@ export default function SignupScreen() {
               />
             </View>
             <AppText style={{ fontSize: 28, fontWeight: '800', color: C.navy, letterSpacing: -0.5, marginBottom: 4 }}>
-              Criar conta
+              {isPt ? 'Criar conta' : 'Create account'}
             </AppText>
             <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center' }}>
-              7 dias grátis, sem cartão de crédito.
+              {isPt ? '7 dias grátis, sem cartão de crédito.' : '7 days free, no credit card.'}
             </AppText>
           </View>
 
@@ -216,7 +219,7 @@ export default function SignupScreen() {
               <TextInput
                 value={name}
                 onChangeText={t => { setName(t); setError(null); }}
-                placeholder="Seu nome"
+                placeholder={isPt ? 'Seu nome' : 'Your name'}
                 placeholderTextColor={C.navyLight}
                 autoCapitalize="words"
                 autoCorrect={false}
@@ -239,7 +242,7 @@ export default function SignupScreen() {
                   const s = suggestEmailCorrection(email);
                   setEmailSuggestion(s && s.toLowerCase() !== email.trim().toLowerCase() ? s : null);
                 }}
-                placeholder="E-mail"
+                placeholder={isPt ? 'E-mail' : 'Email'}
                 placeholderTextColor={C.navyLight}
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -258,7 +261,7 @@ export default function SignupScreen() {
                 onPress={() => { setEmail(emailSuggestion); setEmailSuggestion(null); setError(null); }}
                 style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 2 }}
               >
-                <AppText style={{ color: C.navyMid, fontSize: 13 }}>Você quis dizer </AppText>
+                <AppText style={{ color: C.navyMid, fontSize: 13 }}>{isPt ? 'Você quis dizer ' : 'Did you mean '}</AppText>
                 <AppText style={{ color: C.navy, fontSize: 13, fontWeight: '700', textDecorationLine: 'underline' }}>
                   {emailSuggestion}
                 </AppText>
@@ -273,7 +276,7 @@ export default function SignupScreen() {
                 ref={passwordRef}
                 value={password}
                 onChangeText={t => { setPassword(t); setError(null); }}
-                placeholder="Senha (mín. 6 caracteres)"
+                placeholder={isPt ? 'Senha (mín. 6 caracteres)' : 'Password (min. 6 characters)'}
                 placeholderTextColor={C.navyLight}
                 secureTextEntry={!showPassword}
                 autoComplete="new-password"
@@ -309,7 +312,7 @@ export default function SignupScreen() {
             }}
           >
             <AppText style={{ color: C.navy, fontWeight: '800', fontSize: 15 }}>
-              {loading ? 'Criando conta...' : 'Criar conta grátis'}
+              {loading ? (isPt ? 'Criando conta...' : 'Creating account...') : (isPt ? 'Criar conta grátis' : 'Create free account')}
             </AppText>
           </TouchableOpacity>
 
@@ -319,7 +322,7 @@ export default function SignupScreen() {
             onPress={() => router.replace('/(auth)/login')}
           >
             <AppText style={{ color: C.navyMid, fontSize: 13 }}>
-              Já tenho uma conta
+              {isPt ? 'Já tenho uma conta' : 'I already have an account'}
             </AppText>
           </TouchableOpacity>
 
