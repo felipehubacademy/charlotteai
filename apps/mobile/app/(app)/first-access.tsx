@@ -10,6 +10,7 @@ import { Lock, Eye, EyeSlash, CheckCircle, WarningCircle } from 'phosphor-react-
 import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
+import { systemIsPt } from '@/lib/systemLang';
 
 const C = {
   bg:        '#F4F3FA',
@@ -30,9 +31,9 @@ export default function FirstAccessScreen() {
   const [loading, setLoading]           = useState(false);
   const [error, setError]               = useState<string | null>(null);
   const confirmRef                      = useRef<TextInput>(null);
-  const { session, refreshProfile, profile } = useAuth();
+  const { session, refreshProfile } = useAuth();
   const userEmail = session?.user?.email ?? '';
-  const isPt = (profile?.charlotte_level ?? 'Novice') === 'Novice';
+  const isPt = systemIsPt; // onboarding = sistema: idioma do device
 
   const handleSave = async () => {
     if (password.length < 8) {
