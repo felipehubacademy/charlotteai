@@ -4,13 +4,13 @@ import { WifiSlash } from 'phosphor-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AppText } from '@/components/ui/Text';
 import { useNetworkStatus } from '@/hooks/useNetworkStatus';
-import { useAuth } from '@/hooks/useAuth';
+import { systemIsPt } from '@/lib/systemLang';
 
 export function OfflineBanner() {
   const isOnline = useNetworkStatus();
-  const { profile } = useAuth();
   const insets = useSafeAreaInsets();
-  const isPt = (profile?.charlotte_level ?? 'Novice') === 'Novice';
+  // Aviso de sistema: idioma segue o device.
+  const isPt = systemIsPt;
 
   // Posição de repouso (visível): abaixo da Dynamic Island/notch. Piso de 52pt
   // caso o inset venha 0.

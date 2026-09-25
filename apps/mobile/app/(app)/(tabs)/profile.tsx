@@ -28,6 +28,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { restorePurchases, openManageSubscriptions } from '@/lib/purchases';
 import { getLiveVoiceStatus, LiveVoiceStatus } from '@/lib/liveVoiceUsage';
+import { systemIsPt } from '@/lib/systemLang';
 import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
 import Constants from 'expo-constants';
@@ -188,7 +189,8 @@ function SectionTitle({ label }: { label: string }) {
 export default function ProfileTab() {
   const { profile, signOut, refreshProfile } = useAuth();
   const level  = (profile?.charlotte_level ?? 'Novice') as UserLevel;
-  const isPt   = level === 'Novice';
+  // Profile = tela de sistema/config: idioma segue o device (nao o nivel).
+  const isPt   = systemIsPt;
 
   const accent   = LEVEL_ACCENT[level];
   const accentBg = LEVEL_ACCENT_BG[level];

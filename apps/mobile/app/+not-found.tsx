@@ -5,6 +5,7 @@ import { router } from 'expo-router';
 import { ArrowLeft, Question } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
+import { systemIsPt } from '@/lib/systemLang';
 
 const C = {
   bg:       '#F4F3FA',
@@ -16,7 +17,7 @@ const C = {
 
 export default function NotFoundScreen() {
   const { profile } = useAuth();
-  const isPt = (profile?.charlotte_level ?? 'Novice') === 'Novice';
+  const isPt = systemIsPt; // pagina de erro = sistema: idioma do device
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'bottom']}>

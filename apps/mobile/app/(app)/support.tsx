@@ -9,6 +9,7 @@ import {
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
+import { systemIsPt } from '@/lib/systemLang';
 
 const SUPPORT_EMAIL = 'suporte@hubacademybr.com';
 // Número do WhatsApp de suporte (formato internacional, só dígitos). Preencher
@@ -72,7 +73,7 @@ function FaqRow({ item, open, onToggle }: { item: Faq; open: boolean; onToggle: 
 
 export default function SupportScreen() {
   const { profile } = useAuth();
-  const isPt = profile?.charlotte_level === 'Novice';
+  const isPt = systemIsPt; // tela de suporte = sistema: idioma do device
   const [open, setOpen] = useState<number | null>(null);
   const faqs = isPt ? FAQ_PT : FAQ_EN;
 

@@ -12,6 +12,7 @@ import {
 } from 'phosphor-react-native';
 import { supabase } from '@/lib/supabase';
 import { AppText } from '@/components/ui/Text';
+import { systemIsPt } from '@/lib/systemLang';
 import { useAuth } from '@/hooks/useAuth';
 
 const C = {
@@ -38,7 +39,7 @@ const cardShadow = Platform.select({
 
 export default function ChangePasswordScreen() {
   const { profile } = useAuth();
-  const isPt = (profile?.charlotte_level ?? 'Novice') === 'Novice';
+  const isPt = systemIsPt; // tela de conta = sistema: idioma do device
 
   const [current,  setCurrent]  = useState('');
   const [newPass,  setNewPass]  = useState('');

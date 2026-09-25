@@ -2,12 +2,14 @@ import { Modal, View, Linking, TouchableOpacity } from 'react-native';
 import { Timer, WhatsappLogo, SignOut } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
+import { systemIsPt } from '@/lib/systemLang';
 
 const WHATSAPP_URL = 'https://wa.me/5500000000000?text=Olá! Quero continuar usando a Charlotte.';
 
 export function TrialExpiredModal() {
   const { profile, hasAccess, signOut } = useAuth();
-  const isPt = (profile?.charlotte_level ?? 'Novice') === 'Novice';
+  // Aviso de assinatura/acesso = sistema: idioma segue o device.
+  const isPt = systemIsPt;
 
   // Mostra se logado mas sem acesso (trial expirado, inativo, ou sem assinatura)
   const visible = !!profile && !hasAccess;
