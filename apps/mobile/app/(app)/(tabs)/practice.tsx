@@ -15,6 +15,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import * as SecureStore from 'expo-secure-store';
 import { useAuth } from '@/hooks/useAuth';
+import { systemIsPt } from '@/lib/systemLang';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { AppText } from '@/components/ui/Text';
 import ChatBox from '@/components/chat/ChatBox';
@@ -73,7 +74,7 @@ export default function PracticeTab() {
   const userLevel = (profile?.charlotte_level ?? 'Novice') as UserLevel;
   const userName  = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
   const userId    = profile?.id ?? '';
-  const isPt      = userLevel === 'Novice';
+  const isPt      = systemIsPt; // chrome da practice: idioma do device
   const accent    = userLevel === 'Novice' ? '#D97706' : userLevel === 'Inter' ? '#7C3AED' : '#0F766E';
 
   // Mode state — vem do URL ?mode=, default 'chat'

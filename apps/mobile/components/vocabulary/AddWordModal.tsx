@@ -16,6 +16,7 @@ import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { X, MagicWand, BookOpen, SpeakerHigh, Check, Plus } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { systemIsPt } from '@/lib/systemLang';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import Constants from 'expo-constants';
@@ -65,7 +66,7 @@ export function AddWordModal({
   const { profile, session } = useAuth();
   const insets = useSafeAreaInsets();
   const level  = profile?.charlotte_level ?? 'Inter';
-  const isPt   = level === 'Novice';
+  const isPt   = systemIsPt; // chrome: idioma do device
 
   const [term,        setTerm]       = useState(initialTerm);
   const [definition,  setDefinition] = useState(initialDefinition);

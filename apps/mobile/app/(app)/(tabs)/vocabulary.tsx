@@ -19,6 +19,7 @@ import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import Constants from 'expo-constants';
 import { AppText } from '@/components/ui/Text';
+import { systemIsPt } from '@/lib/systemLang';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { getTip, TIP_STYLE, Tip } from '@/lib/tips';
@@ -83,7 +84,7 @@ function reviewLabel(nextReview: string | null, isPt: boolean): { label: string;
 export default function VocabularyTab() {
   const { profile, session } = useAuth();
   const level  = profile?.charlotte_level ?? 'Inter';
-  const isPt   = level === 'Novice';
+  const isPt   = systemIsPt; // chrome do vocabulário: idioma do device
   const userId = session?.user?.id;
 
   const levelAccent = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';

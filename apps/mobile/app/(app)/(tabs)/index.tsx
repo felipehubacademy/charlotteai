@@ -13,6 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
 import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
+import { systemIsPt } from '@/lib/systemLang';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
@@ -116,7 +117,7 @@ export default function HomeTab() {
   // o loading do TrailContent que mostra spinner cinza ao trocar de level.
   const promoPending = usePromotionPending();
   const name      = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
-  const isPt      = level === 'Novice';
+  const isPt      = systemIsPt; // chrome da home: idioma do device
   const firstName = name.split(' ')[0] ?? name;
 
   const trialDaysLeft = useMemo(() => {
@@ -601,7 +602,7 @@ export default function HomeTab() {
 
       <PlacementPromptSheet
         visible={showPlacementPrompt}
-        isPt={currentLevel === 'Novice'}
+        isPt={systemIsPt}
         onTakeTest={handleTakePlacement}
         onStartFromZero={dismissPlacementPrompt}
       />
