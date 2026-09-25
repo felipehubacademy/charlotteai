@@ -6,6 +6,7 @@ import {
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
+import { checkGrammarAnswer } from '@/lib/grammarAnswer';
 import {
   ArrowLeft, ArrowRight, CheckCircle, XCircle,
   LightbulbFilament,
@@ -260,23 +261,10 @@ const EXERCISES: Record<string, Record<ExerciseType, Exercise[]>> = {
 
 // ── Answer checking ────────────────────────────────────────────
 
-function normalize(s: string): string {
-  return s.trim().toLowerCase().replace(/[.,!?'"]/g, '').replace(/\s+/g, ' ');
-}
-
+// Corretor compartilhado (lib/grammarAnswer) — aceita contração <-> forma cheia
+// (inclusive "solta" no fill_gap) e trata os tipos de exercício de gramática.
 function checkAnswer(ex: Exercise, userAnswer: string): boolean {
-  const u = normalize(userAnswer);
-  const c = normalize(ex.answer);
-  if (u === c) return true;
-  if (ex.type === 'multiple_choice' || ex.type === 'word_bank') return false;
-  if (ex.type === 'read_answer') {
-    const words = c.split(' ').filter(w => w.length > 2);
-    return words.length > 0 && words.filter(w => u.includes(w)).length >= Math.ceil(words.length * 0.7);
-  }
-  if (ex.type === 'fix_error' && c.length > 10) {
-    return u === c || u.includes(c) || c.includes(u);
-  }
-  return false;
+  return checkGrammarAnswer(ex.type, userAnswer, ex.answer, (ex as { accepts?: string[] }).accepts);
 }
 
 // ── Sequence ────────────────────────────────────────────────────

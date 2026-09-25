@@ -11,6 +11,7 @@ import { ArrowLeft, CheckCircle, XCircle, Trophy, Star, ArrowRight, SpeakerHigh 
 import * as Haptics from 'expo-haptics';
 import { soundEngine } from '@/lib/soundEngine';
 import { systemIsPt } from '@/lib/systemLang';
+import { checkGrammarAnswer } from '@/lib/grammarAnswer';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { AppText } from '@/components/ui/Text';
@@ -242,16 +243,12 @@ function generateCardQuestion(item: SRCardItem): CardQuestion | null {
   }
 }
 
-// ── Normalise for comparison ─────────────────────────────────────────────────
-function normalise(s: string) {
-  return s.trim().toLowerCase().replace(/[''']/g, "'").replace(/\s+/g, ' ');
-}
+// ── Answer check ─────────────────────────────────────────────────────────────
+// Corretor compartilhado (lib/grammarAnswer) — aceita contração <-> forma cheia,
+// inclusive "solta" ('ve lived = have lived). Semântica fix_error = leniência
+// both-ways + contrações, adequada aos cards de revisão (recall de texto).
 function answerIsCorrect(userAnswer: string, expected: string): boolean {
-  const u = normalise(userAnswer);
-  const c = normalise(expected);
-  if (u === c) return true;
-  if (u.includes(c) || c.includes(u)) return true;
-  return false;
+  return checkGrammarAnswer('fix_error', userAnswer, expected);
 }
 
 // ── XP per rating ────────────────────────────────────────────────────────────
