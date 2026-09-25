@@ -21,6 +21,7 @@ import {
   ArrowLeft, MagicWand, SpeakerHigh, Check, Plus,
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { systemIsPt } from '@/lib/systemLang';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import Constants from 'expo-constants';
@@ -65,7 +66,7 @@ export default function AddWordScreen() {
 
   const userId    = session?.user?.id;
   const level     = profile?.charlotte_level ?? 'Inter';
-  const isPt      = level === 'Novice';
+  const isPt      = systemIsPt; // suporte/chrome: idioma do device
   const playerRef = React.useRef<ReturnType<typeof createAudioPlayer> | null>(null);
 
   const [term,        setTerm]       = useState(params.term ?? '');

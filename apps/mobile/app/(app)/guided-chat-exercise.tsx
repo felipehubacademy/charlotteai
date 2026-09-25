@@ -19,6 +19,7 @@ import {
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { setAudioModeAsync, setIsAudioActiveAsync } from 'expo-audio';
 import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';
+import { systemIsPt } from '@/lib/systemLang';
 import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
 import { setPromotionPending } from '@/lib/promotionState';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -70,7 +71,7 @@ export default function GuidedChatExerciseScreen() {
 
   const { profile } = useAuth();
   const userId      = profile?.id;
-  const isPt        = level === 'Novice';
+  const isPt        = systemIsPt; // suporte/chrome: idioma do device
   const insets      = useSafeAreaInsets();
 
   // Load guided-chat definition from v2

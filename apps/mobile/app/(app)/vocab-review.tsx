@@ -26,6 +26,7 @@ import {
 } from 'phosphor-react-native';
 import * as Haptics from 'expo-haptics';
 import { AppText } from '@/components/ui/Text';
+import { systemIsPt } from '@/lib/systemLang';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { calcNextReview, SRRating } from '@/lib/spacedRepetition';
@@ -93,7 +94,7 @@ export default function VocabReview() {
   const { session, profile } = useAuth();
   const userId   = session?.user?.id;
   const level    = profile?.charlotte_level ?? 'Inter';
-  const isPt     = level === 'Novice';
+  const isPt     = systemIsPt; // suporte/chrome: idioma do device
   const insets   = useSafeAreaInsets();
   const levelAccent   = level === 'Novice' ? C.gold   : level === 'Inter' ? '#7C3AED' : '#0F766E';
   const levelAccentBg = level === 'Novice' ? C.goldBg : level === 'Inter' ? '#F5F3FF' : '#F0FDFA';

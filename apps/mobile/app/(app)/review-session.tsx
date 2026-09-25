@@ -10,6 +10,7 @@ import { router } from 'expo-router';
 import { ArrowLeft, CheckCircle, XCircle, Trophy, Star, ArrowRight, SpeakerHigh } from 'phosphor-react-native';
 import * as Haptics from 'expo-haptics';
 import { soundEngine } from '@/lib/soundEngine';
+import { systemIsPt } from '@/lib/systemLang';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { AppText } from '@/components/ui/Text';
@@ -79,7 +80,7 @@ interface CardQuestion {
 function generateVocabCardQuestion(item: SRCardItem): CardQuestion | null {
   const { vocabTerm, vocabDefinition, vocabExample, vocabExampleTranslation, cardType } = item;
   if (!vocabTerm || !vocabDefinition) return null;
-  const isPt = item.userLevel === 'Novice';
+  const isPt = systemIsPt; // suporte/chrome: idioma do device
 
   // Para Novice: definição já está em PT-BR.
   // Exemplo de frase sempre em EN; tradução do exemplo (PT-BR) usada como dica/explicação.
@@ -262,7 +263,7 @@ export default function ReviewSession() {
   const user = session?.user;
   const insets = useSafeAreaInsets();
   const level = (profile?.charlotte_level ?? 'Novice') as TrailLevel;
-  const isPt  = level === 'Novice';
+  const isPt  = systemIsPt; // suporte/chrome: idioma do device
 
   const levelAccent:   string = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
   const levelAccentBg: string = level === 'Novice' ? '#FFFBEB' : level === 'Inter' ? '#F5F3FF' : '#F0FDFA';

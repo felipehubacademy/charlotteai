@@ -19,6 +19,7 @@ import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 import * as SecureStore from 'expo-secure-store';
 import * as Haptics from 'expo-haptics';
 import { soundEngine } from '@/lib/soundEngine';
+import { systemIsPt } from '@/lib/systemLang';
 import { scheduleReviews, markReviewDone, rescheduleReview } from '@/lib/spacedRepetition';
 import { track } from '@/lib/analytics';
 import * as FileSystem from 'expo-file-system/legacy';
@@ -253,7 +254,10 @@ export default function LearnSessionScreen() {
   const { profile, refreshProfile } = useAuth();
   const userId      = profile?.id;
   const userLevel   = (profile?.charlotte_level ?? 'Novice') as string;
-  const isPortuguese = userLevel === 'Novice';
+  // Camada de SUPORTE/chrome (enunciados, feedback, botões) segue o idioma do
+  // DEVICE. O conteúdo pedagógico (dados do exercício em inglês + explicação
+  // gerada no servidor por `userLevel`) NÃO é afetado por esta flag.
+  const isPortuguese = systemIsPt;
   const baseTotalXP = useTotalXP(userId);
   const insets      = useSafeAreaInsets();
   const learnProgress = useLearnProgress(userId, level);

@@ -9,6 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import { ArrowLeft, CheckCircle } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { systemIsPt } from '@/lib/systemLang';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { HomeData, Mission, buildMissions } from '@/lib/missions';
@@ -162,7 +163,7 @@ export default function GoalsScreen() {
   const { profile } = useAuth();
   const level   = (profile?.charlotte_level ?? 'Novice') as UserLevel;
   const userId  = profile?.id ?? '';
-  const isPt    = level === 'Novice';
+  const isPt    = systemIsPt; // suporte/chrome: idioma do device
 
   const [missions,     setMissions]     = useState<Mission[]>([]);
   const [weeklyState,  setWeeklyState]  = useState<WeeklyChallengeState | null>(null);

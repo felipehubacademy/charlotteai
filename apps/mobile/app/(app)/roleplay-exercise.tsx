@@ -23,6 +23,7 @@ import * as Haptics from 'expo-haptics';
 import Constants from 'expo-constants';
 import { createAudioPlayer, setAudioModeAsync, setIsAudioActiveAsync, AudioPlayer, RecordingPresets } from 'expo-audio';
 import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';
+import { systemIsPt } from '@/lib/systemLang';
 
 import { AppText } from '@/components/ui/Text';
 import ChatBox, { Message } from '@/components/chat/ChatBox';
@@ -64,7 +65,7 @@ export default function RolePlayExerciseScreen() {
 
   const { profile } = useAuth();
   const userId      = profile?.id;
-  const isPt        = level === 'Novice';
+  const isPt        = systemIsPt; // suporte/chrome: idioma do device
   const insets      = useSafeAreaInsets();
 
   // ── Load role-play definition from v2 ───────────────────────────

@@ -11,6 +11,7 @@ import {
 } from 'phosphor-react-native';
 import * as SecureStore from 'expo-secure-store';
 import { useAuth } from '@/hooks/useAuth';
+import { systemIsPt } from '@/lib/systemLang';
 import { AppText } from '@/components/ui/Text';
 import { CURRICULUM, TrailLevel, topicHasContent, totalTopics } from '@/data/curriculum';
 import { MODULE_INTROS } from '@/data/moduleIntros';
@@ -58,7 +59,7 @@ export default function LearnTrailScreen() {
   const { profile } = useAuth();
   const level = (profile?.charlotte_level ?? 'Novice') as TrailLevel;
   const userId = profile?.id;
-  const isPortuguese = level === 'Novice';
+  const isPortuguese = systemIsPt; // suporte/chrome: idioma do device
 
   const { progress, loading, refetch, isTopicComplete, isCurrent, isLocked, isIntroDone, saveIntroDone } = useLearnProgress(userId, level);
 

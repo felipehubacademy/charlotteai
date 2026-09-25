@@ -19,6 +19,7 @@ import {
 } from 'phosphor-react-native';
 import * as Haptics from 'expo-haptics';
 import { AppText } from '@/components/ui/Text';
+import { systemIsPt } from '@/lib/systemLang';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 
@@ -78,7 +79,7 @@ export default function MyVocabularyScreen() {
   const { profile, session } = useAuth();
   const insets = useSafeAreaInsets();
   const level  = profile?.charlotte_level ?? 'Inter';
-  const isPt   = level === 'Novice';
+  const isPt   = systemIsPt; // suporte/chrome: idioma do device
   const userId = session?.user?.id;
 
   // Level accent color — matches review-session and home screen
