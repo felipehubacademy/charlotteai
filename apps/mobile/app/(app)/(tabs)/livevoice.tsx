@@ -21,6 +21,7 @@ import { usePaywallContext } from '@/lib/paywallContext';
 import { supabase } from '@/lib/supabase';
 import { UserLevel } from '@/lib/levelConfig';
 import { getLiveVoiceStatus, POOL_TRIAL_SECONDS } from '@/lib/liveVoiceUsage';
+import { systemIsPt } from '@/lib/systemLang';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
@@ -443,11 +444,12 @@ export default function LiveVoiceTab() {
   const { profile }     = useAuth();
   const { openPaywall } = usePaywallContext();
   const level   = (profile?.charlotte_level ?? 'Novice') as UserLevel;
+  // Live Voice é tela de SISTEMA: idioma segue o device (não o nível).
+  const isPt    = systemIsPt;
   const userId  = profile?.id ?? '';
   // Assinante = premium pagante (active) ou institucional. Define a copy do
   // popup de limite (trial -> assinar; assinante -> renova/compra avulsa).
   const isSubscriber = !!profile?.is_institutional || profile?.subscription_status === 'active';
-  const isPt    = level === 'Novice';
   const accent  = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
 
   const [streak,  setStreak]  = useState(0);
@@ -619,7 +621,9 @@ export default function LiveVoiceTab() {
   const onCtaPress = !poolKnown
     ? () => loadData()
     : isLimitReached
-      ? () => setShowLimitSheet(true)
+      // Trial só tem uma ação (assinar) -> vai direto ao paywall, sem o bottom
+      // sheet redundante. Assinante abre o sheet (escolha real de +10/+30 min).
+      ? (isSubscriber ? () => setShowLimitSheet(true) : openPaywall)
       : startCall;
 
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };

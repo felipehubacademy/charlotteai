@@ -18,6 +18,7 @@ import { PurchasesPackage, PurchasesOffering } from 'react-native-purchases';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
+import { systemIsPt } from '@/lib/systemLang';
 import {
   getOffering,
   getOfferingDetailed,
@@ -45,15 +46,18 @@ const C = {
 };
 
 const LOSE_ITEMS = [
-  { icon: <ChatCircleText size={18} color={C.greenDark} weight="fill" />, text: 'Conversas em tempo real com a Charlotte' },
-  { icon: <MicrophoneStage size={18} color={C.greenDark} weight="fill" />, text: 'Chamadas em voz e feedback de pronúncia' },
-  { icon: <Trophy size={18} color={C.greenDark} weight="fill" />, text: 'Lições, exercícios e progresso na trilha' },
+  { icon: <ChatCircleText size={18} color={C.greenDark} weight="fill" />, pt: 'Conversas em tempo real com a Charlotte', en: 'Real-time conversations with Charlotte' },
+  { icon: <MicrophoneStage size={18} color={C.greenDark} weight="fill" />, pt: 'Chamadas em voz e feedback de pronúncia', en: 'Voice calls and pronunciation feedback' },
+  { icon: <Trophy size={18} color={C.greenDark} weight="fill" />, pt: 'Lições, exercícios e progresso na trilha', en: 'Lessons, exercises and progress on the track' },
 ];
 
 export function PaywallModal() {
   const { profile, hasAccess, signOut, refreshProfile } = useAuth();
   const { paywallOpen, closePaywall } = usePaywallContext();
   const insets = useSafeAreaInsets();
+
+  // Paywall = tela de SISTEMA/transacional: idioma segue o device.
+  const isPt = systemIsPt;
 
   const forcedOpen = paywallOpen && !!profile && hasAccess;
   const visible    = (!!profile && !hasAccess) || forcedOpen;
@@ -222,21 +226,29 @@ export function PaywallModal() {
       const isReceiptInUse = r.errorCode === 7;
       Alert.alert(
         isReceiptInUse
-          ? 'Assinatura vinculada a outra conta'
-          : 'Nenhuma assinatura encontrada nesta conta',
+          ? (isPt ? 'Assinatura vinculada a outra conta' : 'Subscription linked to another account')
+          : (isPt ? 'Nenhuma assinatura encontrada nesta conta' : 'No subscription found on this account'),
         isReceiptInUse
-          ? 'Esta conta Apple já tem uma assinatura Charlotte ativa em outro usuário. Entre com a conta Charlotte original ou fale com o suporte.'
-          : 'Não encontramos assinatura Charlotte vinculada a este usuário.\n\nSe você já comprou antes, pode ser que a assinatura esteja em outra conta Charlotte. Entre com a conta original ou fale com o suporte.',
+          ? (isPt
+              ? 'Esta conta Apple já tem uma assinatura Charlotte ativa em outro usuário. Entre com a conta Charlotte original ou fale com o suporte.'
+              : 'This Apple account already has an active Charlotte subscription on another user. Sign in with the original Charlotte account or contact support.')
+          : (isPt
+              ? 'Não encontramos assinatura Charlotte vinculada a este usuário.\n\nSe você já comprou antes, pode ser que a assinatura esteja em outra conta Charlotte. Entre com a conta original ou fale com o suporte.'
+              : 'We couldn’t find a Charlotte subscription linked to this user.\n\nIf you’ve purchased before, it may be on another Charlotte account. Sign in with the original account or contact support.'),
         [
           { text: 'OK' },
           {
-            text: 'Falar com suporte',
+            text: isPt ? 'Falar com suporte' : 'Contact support',
             onPress: () => {
               const subject = encodeURIComponent(
-                isReceiptInUse ? 'Assinatura vinculada a outra conta' : 'Restaurar compra',
+                isReceiptInUse
+                  ? (isPt ? 'Assinatura vinculada a outra conta' : 'Subscription linked to another account')
+                  : (isPt ? 'Restaurar compra' : 'Restore purchase'),
               );
               const body = encodeURIComponent(
-                `Olá! Tentei restaurar minha assinatura no app.\n\nMeu email Charlotte: ${profile?.email ?? ''}\n\nPode me ajudar?`,
+                isPt
+                  ? `Olá! Tentei restaurar minha assinatura no app.\n\nMeu email Charlotte: ${profile?.email ?? ''}\n\nPode me ajudar?`
+                  : `Hi! I tried to restore my subscription in the app.\n\nMy Charlotte email: ${profile?.email ?? ''}\n\nCan you help?`,
               );
               Linking.openURL(`mailto:suporte@hubacademybr.com?subject=${subject}&body=${body}`);
             },
@@ -269,19 +281,21 @@ export function PaywallModal() {
   const useStreak = streakDays >= 3;
   const useXp     = !useStreak && totalXP >= 50;
 
-  const streakLine = firstName
-    ? `${firstName}, sua sequência de ${streakDays} dias está em risco.`
-    : `Sua sequência de ${streakDays} dias está em risco.`;
-  const xpLine = firstName
-    ? `${firstName}, você acumulou ${totalXP} XP praticando com a Charlotte.`
-    : `Você acumulou ${totalXP} XP praticando com a Charlotte.`;
-  const neutralLine = firstName
-    ? `${firstName}, continue evoluindo seu inglês com a Charlotte.`
-    : 'Continue evoluindo seu inglês com a Charlotte.';
+  const streakLine = isPt
+    ? (firstName ? `${firstName}, sua sequência de ${streakDays} dias está em risco.` : `Sua sequência de ${streakDays} dias está em risco.`)
+    : (firstName ? `${firstName}, your ${streakDays}-day streak is at risk.` : `Your ${streakDays}-day streak is at risk.`);
+  const xpLine = isPt
+    ? (firstName ? `${firstName}, você acumulou ${totalXP} XP praticando com a Charlotte.` : `Você acumulou ${totalXP} XP praticando com a Charlotte.`)
+    : (firstName ? `${firstName}, you’ve earned ${totalXP} XP practicing with Charlotte.` : `You’ve earned ${totalXP} XP practicing with Charlotte.`);
+  const neutralLine = isPt
+    ? (firstName ? `${firstName}, continue evoluindo seu inglês com a Charlotte.` : 'Continue evoluindo seu inglês com a Charlotte.')
+    : (firstName ? `${firstName}, keep improving your English with Charlotte.` : 'Keep improving your English with Charlotte.');
 
   const headline = useStreak ? streakLine : useXp ? xpLine : neutralLine;
 
-  const subheadline = 'Não deixe tudo isso ir embora. Continue de onde parou.';
+  const subheadline = isPt
+    ? 'Não deixe tudo isso ir embora. Continue de onde parou.'
+    : 'Don’t let all of this go. Pick up where you left off.';
 
   return (
     <Modal visible={visible} animationType="fade" transparent={false} statusBarTranslucent>
@@ -355,13 +369,13 @@ export function PaywallModal() {
             }),
           }}>
             <AppText style={{ fontSize: 12, fontWeight: '700', color: C.muted, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 2 }}>
-              Você vai perder acesso a
+              {isPt ? 'Você vai perder acesso a' : 'You’ll lose access to'}
             </AppText>
             {LOSE_ITEMS.map((item, i) => (
               <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                 {item.icon}
                 <AppText style={{ color: C.navyMid, fontSize: 14, flex: 1 }}>
-                  {item.text}
+                  {isPt ? item.pt : item.en}
                 </AppText>
               </View>
             ))}
@@ -393,22 +407,22 @@ export function PaywallModal() {
                   paddingHorizontal: 10, paddingVertical: 3,
                 }}>
                   <AppText style={{ color: C.white, fontSize: 11, fontWeight: '800' }}>
-                    MELHOR VALOR
+                    {isPt ? 'MELHOR VALOR' : 'BEST VALUE'}
                   </AppText>
                 </View>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                   <View>
-                    <AppText style={{ color: C.navy, fontSize: 15, fontWeight: '700' }}>Anual</AppText>
+                    <AppText style={{ color: C.navy, fontSize: 15, fontWeight: '700' }}>{isPt ? 'Anual' : 'Yearly'}</AppText>
                     <AppText style={{ color: C.muted, fontSize: 12, marginTop: 2 }}>
-                      {yearlyMonthly}/mês
+                      {yearlyMonthly}{isPt ? '/mês' : '/mo'}
                     </AppText>
                   </View>
                   <View style={{ alignItems: 'flex-end' }}>
                     <AppText style={{ color: C.greenDark, fontSize: 20, fontWeight: '800' }}>
                       {yearlyPrice}
                     </AppText>
-                    <AppText style={{ color: C.muted, fontSize: 11 }}>/ano</AppText>
+                    <AppText style={{ color: C.muted, fontSize: 11 }}>{isPt ? '/ano' : '/yr'}</AppText>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -430,12 +444,12 @@ export function PaywallModal() {
                 }}
               >
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <AppText style={{ color: C.navy, fontSize: 15, fontWeight: '700' }}>Mensal</AppText>
+                  <AppText style={{ color: C.navy, fontSize: 15, fontWeight: '700' }}>{isPt ? 'Mensal' : 'Monthly'}</AppText>
                   <View style={{ alignItems: 'flex-end' }}>
                     <AppText style={{ color: C.navy, fontSize: 20, fontWeight: '800' }}>
                       {monthlyPrice}
                     </AppText>
-                    <AppText style={{ color: C.muted, fontSize: 11 }}>/mês</AppText>
+                    <AppText style={{ color: C.muted, fontSize: 11 }}>{isPt ? '/mês' : '/mo'}</AppText>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -465,7 +479,7 @@ export function PaywallModal() {
                   <ActivityIndicator color={C.navy} />
                   {loading && (
                     <AppText style={{ color: C.navy, fontSize: 14, fontWeight: '700' }}>
-                      Confirmando compra…
+                      {isPt ? 'Confirmando compra…' : 'Confirming purchase…'}
                     </AppText>
                   )}
                 </View>
@@ -473,11 +487,11 @@ export function PaywallModal() {
               : (() => {
                   const isYearly = selected.includes('yearly');
                   const priceLabel = isYearly
-                    ? `${yearlyPrice}/ano`
-                    : `${monthlyPrice}/mês`;
+                    ? `${yearlyPrice}${isPt ? '/ano' : '/yr'}`
+                    : `${monthlyPrice}${isPt ? '/mês' : '/mo'}`;
                   return (
                     <AppText style={{ color: C.navy, fontSize: 16, fontWeight: '800' }}>
-                      Assinar — {priceLabel}
+                      {isPt ? 'Assinar' : 'Subscribe'} — {priceLabel}
                     </AppText>
                   );
                 })()
@@ -485,7 +499,9 @@ export function PaywallModal() {
           </TouchableOpacity>
 
           <AppText style={{ color: C.muted, fontSize: 11, textAlign: 'center', marginBottom: 24, lineHeight: 16 }}>
-            Cobrança imediata ao assinar. Renovação automática. Cancele quando quiser.
+            {isPt
+              ? 'Cobrança imediata ao assinar. Renovação automática. Cancele quando quiser.'
+              : 'Charged immediately on subscribing. Auto-renews. Cancel anytime.'}
           </AppText>
 
           {/* Restore */}
@@ -495,7 +511,7 @@ export function PaywallModal() {
             style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 8, marginBottom: 4 }}
           >
             <ArrowsClockwise size={14} color={C.muted} />
-            <AppText style={{ color: C.muted, fontSize: 13 }}>Restaurar compras</AppText>
+            <AppText style={{ color: C.muted, fontSize: 13 }}>{isPt ? 'Restaurar compras' : 'Restore purchases'}</AppText>
           </TouchableOpacity>
 
           {/* Sign out */}
@@ -504,7 +520,7 @@ export function PaywallModal() {
             style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 8 }}
           >
             <SignOut size={14} color={C.muted} />
-            <AppText style={{ color: C.muted, fontSize: 13 }}>Sair da conta</AppText>
+            <AppText style={{ color: C.muted, fontSize: 13 }}>{isPt ? 'Sair da conta' : 'Sign out'}</AppText>
           </TouchableOpacity>
 
           </View>{/* fim container iPad */}
