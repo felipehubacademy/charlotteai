@@ -22,6 +22,7 @@ import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
+import { systemIsPt } from '@/lib/systemLang';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
 import { soundEngine } from '@/lib/soundEngine';
 import * as Haptics from 'expo-haptics';
@@ -253,33 +254,56 @@ function computeLevel(
   return 'Inter';
 }
 
+// Chrome do resultado = idioma do DEVICE (pt/en por campo). O conteúdo
+// pedagógico (questões/explicações) NÃO é alterado — só esta tela de resumo.
+type Loc = { pt: string; en: string };
 const LEVEL_META: Record<Level, {
-  label: string; tagline: string;
-  description: string; charlotteMessage: string;
+  label: string; tagline: Loc; description: Loc; charlotteMessage: Loc;
 }> = {
   Novice: {
     label: 'Novice',
-    tagline: 'Você está começando sua jornada!',
-    description:
-      'Sem problema — todo expert já foi iniciante. Vou te guiar passo a passo, ' +
-      'com suporte em português, conversas simples e as bases que você precisa para evoluir com confiança.',
-    charlotteMessage: 'Estou aqui para te apoiar em cada etapa. Vamos juntos!',
+    tagline: {
+      pt: 'Você está começando sua jornada!',
+      en: 'You’re starting your journey!',
+    },
+    description: {
+      pt: 'Sem problema — todo expert já foi iniciante. Vou te guiar passo a passo, com conversas simples e as bases que você precisa para evoluir com confiança.',
+      en: 'No worries — every expert was once a beginner. I’ll guide you step by step, with simple conversations and the foundations you need to grow with confidence.',
+    },
+    charlotteMessage: {
+      pt: 'Estou aqui para te apoiar em cada etapa. Vamos juntos!',
+      en: 'I’m here to support you every step of the way. Let’s do this together!',
+    },
   },
   Inter: {
     label: 'Intermediate',
-    tagline: 'You have a solid foundation!',
-    description:
-      "Your English is functional — now let's take it further. I'll challenge you " +
-      "with real conversations, complex grammar, and the nuances that separate good from fluent.",
-    charlotteMessage: "I can't wait to push your English to the next level. Let's go!",
+    tagline: {
+      pt: 'Você tem uma base sólida!',
+      en: 'You have a solid foundation!',
+    },
+    description: {
+      pt: 'Seu inglês é funcional — agora vamos além. Vou te desafiar com conversas reais, gramática mais complexa e as nuances que separam o bom do fluente.',
+      en: "Your English is functional — now let's take it further. I'll challenge you with real conversations, complex grammar, and the nuances that separate good from fluent.",
+    },
+    charlotteMessage: {
+      pt: 'Mal posso esperar para levar seu inglês ao próximo nível. Vamos!',
+      en: "I can't wait to push your English to the next level. Let's go!",
+    },
   },
   Advanced: {
     label: 'Advanced',
-    tagline: 'Your English is impressive!',
-    description:
-      "You're operating at a high level. I'll engage you in sophisticated discussions, " +
-      "sharpen your nuances, and help you reach that native-like fluency you're after.",
-    charlotteMessage: "Let's have some real conversations — I'm excited to work with you.",
+    tagline: {
+      pt: 'Seu inglês é impressionante!',
+      en: 'Your English is impressive!',
+    },
+    description: {
+      pt: 'Você está operando em alto nível. Vou te engajar em discussões sofisticadas, afiar suas nuances e ajudar você a alcançar a fluência quase nativa que busca.',
+      en: "You're operating at a high level. I'll engage you in sophisticated discussions, sharpen your nuances, and help you reach that native-like fluency you're after.",
+    },
+    charlotteMessage: {
+      pt: 'Vamos ter conversas de verdade — estou animada para trabalhar com você.',
+      en: "Let's have some real conversations — I'm excited to work with you.",
+    },
   },
 };
 
@@ -291,7 +315,7 @@ export default function PlacementTestScreen() {
   const { session, refreshProfile, profile } = useAuth();
   const { toggle: toggleAudio, playingMessageId, stop: stopAudio } = useMessageAudioPlayer();
 
-  const firstName = (profile?.name ?? '').split(' ')[0] || 'você';
+  const firstName = (profile?.name ?? '').split(' ')[0] || (systemIsPt ? 'você' : 'you');
 
   const insets = useSafeAreaInsets();
 
@@ -528,7 +552,7 @@ export default function PlacementTestScreen() {
       setPhase('result');
     } catch (e: any) {
       console.error('[PlacementTest] save error:', e);
-      setSaveError('Erro ao salvar resultado. Seu nível foi definido localmente.');
+      setSaveError(systemIsPt ? 'Erro ao salvar resultado. Seu nível foi definido localmente.' : 'Error saving result. Your level was set locally.');
       setPhase('result');
     }
   };
@@ -706,12 +730,12 @@ export default function PlacementTestScreen() {
               fontSize: 17, fontWeight: '800',
               color: currentIsCorrect ? C.greenDark : '#DC2626',
             }}>
-              {currentIsCorrect ? 'Correto!' : 'Não foi dessa vez'}
+              {currentIsCorrect ? (systemIsPt ? 'Correto!' : 'Correct!') : (systemIsPt ? 'Não foi dessa vez' : 'Not this time')}
             </AppText>
           </View>
           {!currentIsCorrect && (
             <AppText style={{ fontSize: 13, color: '#DC2626', marginBottom: 8 }}>
-              {`Resposta certa: "${currentQ.options[currentQ.correctIndex]}"`}
+              {`${systemIsPt ? 'Resposta certa' : 'Correct answer'}: "${currentQ.options[currentQ.correctIndex]}"`}
             </AppText>
           )}
           <AppText style={{
@@ -731,7 +755,7 @@ export default function PlacementTestScreen() {
             }}
           >
             <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFFFFF' }}>
-              Próxima →
+              {systemIsPt ? 'Próxima →' : 'Next →'}
             </AppText>
           </TouchableOpacity>
         </Animated.View>
@@ -871,10 +895,12 @@ function IntroScreen({ firstName, onStart, onSkip }: { firstName: string; onStar
               CHARLOTTE
             </AppText>
             <AppText style={{ fontSize: 17, color: '#FFFFFF', lineHeight: 26, fontWeight: '500' }}>
-              Olá, {firstName}! Qual é o seu nível de inglês?
+              {systemIsPt ? `Olá, ${firstName}! Qual é o seu nível de inglês?` : `Hi, ${firstName}! What’s your English level?`}
             </AppText>
             <AppText style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 23, marginTop: 8 }}>
-              Me responde algumas questões rápidas e eu adapto as conversas e o conteúdo ao seu nível.
+              {systemIsPt
+                ? 'Me responde algumas questões rápidas e eu adapto as conversas e o conteúdo ao seu nível.'
+                : 'Answer a few quick questions and I’ll adapt the conversations and content to your level.'}
             </AppText>
           </View>
         </Animated.View>
@@ -900,10 +926,10 @@ function IntroScreen({ firstName, onStart, onSkip }: { firstName: string; onStar
               borderRadius: 6, paddingHorizontal: 9, paddingVertical: 4,
             }}>
               <AppText style={{ fontSize: 10, fontWeight: '800', color: C.green, letterSpacing: 0.6 }}>
-                RECOMENDADO
+                {systemIsPt ? 'RECOMENDADO' : 'RECOMMENDED'}
               </AppText>
             </View>
-            <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>Descobrir meu nível</AppText>
+            <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>{systemIsPt ? 'Descobrir meu nível' : 'Find my level'}</AppText>
           </TouchableOpacity>
 
           {/* Secundário — começar do zero */}
@@ -917,7 +943,7 @@ function IntroScreen({ firstName, onStart, onSkip }: { firstName: string; onStar
             }}
           >
             <AppText style={{ fontSize: 15, fontWeight: '700', color: C.navyMid }}>
-              Começar do zero
+              {systemIsPt ? 'Começar do zero' : 'Start from scratch'}
             </AppText>
           </TouchableOpacity>
 
@@ -936,7 +962,7 @@ function SavingScreen() {
       <CharlotteAvatar size="xl" />
       <ActivityIndicator size="large" color={C.navy} style={{ marginTop: 24 }} />
       <AppText style={{ marginTop: 14, fontSize: 15, color: C.navyMid, fontWeight: '500' }}>
-        Calculando seu nível...
+        {systemIsPt ? 'Calculando seu nível...' : 'Calculating your level...'}
       </AppText>
     </SafeAreaView>
   );
@@ -951,6 +977,7 @@ function ResultScreen({
 }) {
   const meta   = LEVEL_META[level];
   const insets = useSafeAreaInsets();
+  const L: 'pt' | 'en' = systemIsPt ? 'pt' : 'en'; // resultado no idioma do device
 
   const anim = useRef(new Animated.Value(0)).current;
   useEffect(() => {
@@ -976,7 +1003,7 @@ function ResultScreen({
             </AppText>
           </View>
           <AppText style={{ fontSize: 20, fontWeight: '800', color: '#FFFFFF', textAlign: 'center', lineHeight: 28, marginTop: 12 }}>
-            {meta.tagline}
+            {meta.tagline[L]}
           </AppText>
         </View>
 
@@ -991,7 +1018,7 @@ function ResultScreen({
             }}
           >
             <AppText style={{ fontSize: 15, color: C.navyMid, lineHeight: 24, marginBottom: 24 }}>
-              {meta.description}
+              {meta.description[L]}
             </AppText>
 
             {/* Charlotte quote */}
@@ -1010,7 +1037,7 @@ function ResultScreen({
                 paddingHorizontal: 14, paddingVertical: 12,
               }}>
                 <AppText style={{ fontSize: 14, color: C.navy, fontStyle: 'italic', lineHeight: 22 }}>
-                  "{meta.charlotteMessage}"
+                  "{meta.charlotteMessage[L]}"
                 </AppText>
               </View>
             </View>
@@ -1038,7 +1065,7 @@ function ResultScreen({
                 flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
               }}
             >
-              <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>Começar a aprender</AppText>
+              <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>{systemIsPt ? 'Começar a aprender' : 'Start learning'}</AppText>
               <ArrowRight size={18} color={C.navy} weight="bold" />
             </TouchableOpacity>
           </ScrollView>
