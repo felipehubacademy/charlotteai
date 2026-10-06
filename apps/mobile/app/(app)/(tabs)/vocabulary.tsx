@@ -28,21 +28,21 @@ import { localTodayStr } from '@/lib/dateUtils';
 const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
 const C = {
-  bg:       '#F4F3FA',
+  bg:       '#FAF7F0',
   card:     '#FFFFFF',
-  navy:     '#16153A',
-  navyMid:  '#4B4A72',
-  muted:    '#9896B8',
-  border:   'rgba(22,21,58,0.10)',
-  ghost:    'rgba(22,21,58,0.06)',
-  greenDark:'#3D8800',
-  greenBg:  'rgba(61,136,0,0.08)',
+  navy:     '#16131F',
+  navyMid:  '#4D4858',
+  muted:    '#8A8494',
+  border:   'rgba(22,19,31,0.10)',
+  ghost:    'rgba(22,19,31,0.06)',
+  greenDark:'#5C7300',
+  greenBg:  'rgba(92,115,0,0.08)',
   red:      '#DC2626',
   redBg:    'rgba(220,38,38,0.07)',
   gold:     '#D97706',
   goldBg:   '#FFFBEB',
   inputBg:  '#ECEAF5',
-  shadow:   'rgba(22,21,58,0.08)',
+  shadow:   'rgba(22,19,31,0.08)',
 };
 
 const cardShadow = Platform.select({
@@ -87,7 +87,7 @@ export default function VocabularyTab() {
   const isPt   = systemIsPt; // chrome do vocabulário: idioma do device
   const userId = session?.user?.id;
 
-  const levelAccent = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
+  const levelAccent = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#6B4BFF' : '#0F766E';
 
   const [items,        setItems]        = useState<VocabItem[]>([]);
   const [loading,      setLoading]      = useState(true);
@@ -108,7 +108,7 @@ export default function VocabularyTab() {
     return s.split('-').reduce((acc, p) => acc * 100 + parseInt(p, 10), 0);
   }, []);
   const tip: Tip  = useMemo(() => getTip(level, dateSeed), [level, dateSeed]);
-  const tipStyle  = TIP_STYLE[tip.type] ?? { bg: '#F4F3FA', color: '#16153A' };
+  const tipStyle  = TIP_STYLE[tip.type] ?? { bg: '#FAF7F0', color: '#16131F' };
 
   const TIP_CATEGORY_MAP: Record<string, string> = {
     'word':         'word',
@@ -285,7 +285,7 @@ export default function VocabularyTab() {
 
       {/* Review prompt modal */}
       <Modal visible={showModal} transparent animationType="fade" onRequestClose={() => setShowModal(false)}>
-        <View style={{ flex: 1, backgroundColor: 'rgba(22,21,58,0.5)', alignItems: 'center', justifyContent: 'center', padding: 32 }}>
+        <View style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.5)', alignItems: 'center', justifyContent: 'center', padding: 32 }}>
           <View style={{ backgroundColor: C.card, borderRadius: 24, padding: 28, width: '100%', maxWidth: 340 }}>
             <View style={{
               width: 52, height: 52, borderRadius: 14,
@@ -402,7 +402,7 @@ export default function VocabularyTab() {
         </View>
 
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 2 }}>
-          <AppText style={{ fontSize: 20, fontWeight: '900', color: '#16153A' }}>
+          <AppText style={{ fontSize: 20, fontWeight: '900', color: '#16131F' }}>
             {tip.term}
           </AppText>
           <TouchableOpacity
@@ -413,14 +413,14 @@ export default function VocabularyTab() {
             <SpeakerHigh size={18} color={tipStyle.color} weight="fill" />
           </TouchableOpacity>
         </View>
-        <AppText style={{ fontSize: 13, color: '#4B4A72', lineHeight: 19, marginBottom: 6 }}>
+        <AppText style={{ fontSize: 13, color: '#4D4858', lineHeight: 19, marginBottom: 6 }}>
           {isPt && tip.meaningPt ? tip.meaningPt : tip.meaning}
         </AppText>
         <AppText style={{ fontSize: 12, color: tipStyle.color, fontStyle: 'italic', lineHeight: 18 }}>
           "{tip.example}"
         </AppText>
         {isPt && tip.examplePt && (
-          <AppText style={{ fontSize: 11, color: '#9896B8', marginTop: 2, lineHeight: 16 }}>
+          <AppText style={{ fontSize: 11, color: '#8A8494', marginTop: 2, lineHeight: 16 }}>
             {tip.examplePt}
           </AppText>
         )}

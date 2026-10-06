@@ -9,13 +9,13 @@ const APP_URL = 'https://charlotte.hubacademybr.com';
 
 /** Compartilha streak atual. */
 export async function shareStreak(streakDays: number, _isPt?: boolean): Promise<void> {
-  const message = `🔥 ${streakDays} dias seguidos praticando inglês com Charlotte AI! Quanto tempo você consegue manter? ${APP_URL}`;
+  const message = `${streakDays} dias seguidos praticando inglês com o Queizy! Quanto tempo você consegue manter? ${APP_URL}`;
 
   try {
     await Share.share(
       Platform.OS === 'ios'
         ? { message }
-        : { message, title: 'Charlotte AI' },
+        : { message, title: 'Queizy' },
     );
     track('share_streak', { streakDays });
   } catch { /* cancelado */ }
@@ -27,14 +27,13 @@ export async function shareAchievement(
   rarity: string,
   _isPt?: boolean,
 ): Promise<void> {
-  const emoji = rarity === 'legendary' ? '🏆' : rarity === 'epic' ? '🔥' : rarity === 'rare' ? '🎖️' : '⚡';
-  const message = `${emoji} Desbloqueei "${title}" no Charlotte AI! Aprenda inglês com IA. ${APP_URL}`;
+  const message = `Desbloqueei "${title}" no Queizy! Aprenda inglês com IA. ${APP_URL}`;
 
   try {
     await Share.share(
       Platform.OS === 'ios'
         ? { message }
-        : { message, title: 'Charlotte AI' },
+        : { message, title: 'Queizy' },
     );
     track('share_achievement', { title, rarity });
   } catch { /* cancelado */ }
@@ -42,13 +41,13 @@ export async function shareAchievement(
 
 /** Compartilha XP total. */
 export async function shareXP(totalXP: number, _isPt?: boolean): Promise<void> {
-  const message = `⚡ Já acumulei ${totalXP.toLocaleString()} XP aprendendo inglês com Charlotte AI! ${APP_URL}`;
+  const message = `Já acumulei ${totalXP.toLocaleString()} XP aprendendo inglês com o Queizy! ${APP_URL}`;
 
   try {
     await Share.share(
       Platform.OS === 'ios'
         ? { message }
-        : { message, title: 'Charlotte AI' },
+        : { message, title: 'Queizy' },
     );
   } catch { /* cancelado */ }
 }

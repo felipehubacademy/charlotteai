@@ -72,8 +72,8 @@ export function TopicPills({ isPt, accent, disabled, onSelect }: Props) {
             borderRadius:     18,
             backgroundColor:  '#FFFFFF',
             borderWidth:      1,
-            borderColor:      'rgba(22,21,58,0.10)',
-            shadowColor:      'rgba(22,21,58,0.06)',
+            borderColor:      'rgba(22,19,31,0.10)',
+            shadowColor:      'rgba(22,19,31,0.06)',
             shadowOpacity:    1,
             shadowRadius:     4,
             shadowOffset:     { width: 0, height: 1 },
@@ -84,7 +84,7 @@ export function TopicPills({ isPt, accent, disabled, onSelect }: Props) {
           <View style={{ marginLeft: -2 }}>
             <t.Icon size={15} color={accent} weight="fill" />
           </View>
-          <AppText style={{ fontSize: 13, fontWeight: '600', color: '#16153A' }}>
+          <AppText style={{ fontSize: 13, fontWeight: '600', color: '#16131F' }}>
             {isPt ? t.labelPt : t.labelEn}
           </AppText>
         </TouchableOpacity>

@@ -10,14 +10,14 @@ import { LEVEL_CONFIG, UserLevel, ChatMode } from '@/lib/levelConfig';
 import { localTodayStr } from '@/lib/dateUtils';
 
 // Static color tokens — matches module-level C in index.tsx (not theme-aware by design)
-const greenDark = '#3D8800';
-const greenBg   = '#F0FFD9';
+const greenDark = '#5C7300';
+const greenBg   = '#F8FFE0';
 const gold      = '#F59E0B';
 const orange    = '#FF6B35';
 const blue      = '#60A5FA';
 const blueBg    = '#EFF6FF';
-const pink      = '#F472B6';
-const pinkBg    = '#FDF2F8';
+const pink      = '#FF4F8B';
+const pinkBg    = '#FFEEF4';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 

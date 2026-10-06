@@ -35,16 +35,16 @@ import { LiveVoiceLimitSheet } from '@/components/voice/LiveVoiceLimitSheet';
 // Nomes textWhite/textMuted/textDim mantidos pra evitar refactor massivo,
 // mas os VALORES agora são escuros (legado naming).
 const C = {
-  stage:       '#FAF9FF',  // lavanda muito claro
+  stage:       '#FCFAF5',  // lavanda muito claro
   panel:       '#FFFFFF',
-  navyMid:     '#3B3A5A',
-  navyLight:   'rgba(22,21,58,0.55)',
-  navyGhost:   'rgba(22,21,58,0.08)',
-  textWhite:   '#16153A',  // legado: agora é texto primário escuro
-  textMuted:   '#4B4A72',
-  textDim:     '#9896B8',
-  greenAccent: '#A3FF3C',
-  greenDark:   '#3D8800',
+  navyMid:     '#3A3546',
+  navyLight:   'rgba(22,19,31,0.55)',
+  navyGhost:   'rgba(22,19,31,0.08)',
+  textWhite:   '#16131F',  // legado: agora é texto primário escuro
+  textMuted:   '#4D4858',
+  textDim:     '#8A8494',
+  greenAccent: '#DCFF4A',
+  greenDark:   '#5C7300',
   gold:        '#D97706',
   red:         '#DC2626',
 };
@@ -167,7 +167,7 @@ function CallListItem({ call, isPt, onPress, onDelete }: {
   return (
     <View style={{
       paddingVertical: 14, paddingHorizontal: 4,
-      borderBottomWidth: 1, borderBottomColor: 'rgba(22,21,58,0.06)',
+      borderBottomWidth: 1, borderBottomColor: 'rgba(22,19,31,0.06)',
       flexDirection: 'row', alignItems: 'center', gap: 8,
     }}>
       <TouchableOpacity
@@ -178,18 +178,18 @@ function CallListItem({ call, isPt, onPress, onDelete }: {
       >
         <View style={{ flex: 1 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-            <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16153A' }}>{whenLabel}</AppText>
-            <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,21,58,0.3)' }} />
-            <AppText style={{ fontSize: 12, fontWeight: '600', color: 'rgba(22,21,58,0.55)' }}>{minutes} min</AppText>
+            <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16131F' }}>{whenLabel}</AppText>
+            <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,19,31,0.3)' }} />
+            <AppText style={{ fontSize: 12, fontWeight: '600', color: 'rgba(22,19,31,0.55)' }}>{minutes} min</AppText>
           </View>
           <AppText
-            style={{ fontSize: 13, color: 'rgba(22,21,58,0.7)', lineHeight: 18 }}
+            style={{ fontSize: 13, color: 'rgba(22,19,31,0.7)', lineHeight: 18 }}
             numberOfLines={2}
           >
             {call.summary ?? (isPt ? 'Sem resumo disponível.' : 'No summary available.')}
           </AppText>
         </View>
-        {hasTranscript && <CaretRight size={14} color="rgba(22,21,58,0.3)" weight="bold" />}
+        {hasTranscript && <CaretRight size={14} color="rgba(22,19,31,0.3)" weight="bold" />}
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -266,20 +266,20 @@ function CallsDrawer({ calls, isOpen, onClose, onSelectCall, onDeleteCall, isPt,
         <View style={{
           flexDirection: 'row', alignItems: 'center',
           paddingHorizontal: 18, paddingVertical: 14,
-          borderBottomWidth: 1, borderBottomColor: 'rgba(22,21,58,0.08)',
+          borderBottomWidth: 1, borderBottomColor: 'rgba(22,19,31,0.08)',
         }}>
-          <AppText style={{ fontSize: 15, fontWeight: '800', color: '#16153A', flex: 1 }}>
+          <AppText style={{ fontSize: 15, fontWeight: '800', color: '#16131F', flex: 1 }}>
             {isPt ? 'Conversas anteriores' : 'Previous conversations'}
           </AppText>
           <TouchableOpacity onPress={onClose} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
-            <XCircle size={20} color="rgba(22,21,58,0.3)" weight="fill" />
+            <XCircle size={20} color="rgba(22,19,31,0.3)" weight="fill" />
           </TouchableOpacity>
         </View>
 
         {/* Lista */}
         {calls.length === 0 ? (
           <View style={{ alignItems: 'center', paddingTop: 40, paddingHorizontal: 20 }}>
-            <AppText style={{ color: '#9896B8', fontSize: 13, textAlign: 'center', lineHeight: 19 }}>
+            <AppText style={{ color: '#8A8494', fontSize: 13, textAlign: 'center', lineHeight: 19 }}>
               {isPt ? 'Você ainda não fez nenhuma chamada.' : 'No calls yet.'}
             </AppText>
           </View>
@@ -364,15 +364,15 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
           }}
         >
           {/* Handle */}
-          <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,21,58,0.15)', alignSelf: 'center', marginTop: 10, marginBottom: 14 }} />
+          <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginTop: 10, marginBottom: 14 }} />
 
           {/* Header */}
           <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 24, marginBottom: 16 }}>
-            <AppText style={{ fontSize: 16, fontWeight: '800', color: '#16153A', flex: 1 }}>
+            <AppText style={{ fontSize: 16, fontWeight: '800', color: '#16131F', flex: 1 }}>
               {isPt ? 'Conversa anterior' : 'Previous conversation'}
             </AppText>
             <TouchableOpacity onPress={onClose} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
-              <XCircle size={22} color="rgba(22,21,58,0.3)" weight="fill" />
+              <XCircle size={22} color="rgba(22,19,31,0.3)" weight="fill" />
             </TouchableOpacity>
           </View>
 
@@ -386,13 +386,13 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
             {call.summary && (
               <View style={{
                 backgroundColor: '#F0F0FB', borderRadius: 12, padding: 14,
-                borderLeftWidth: 3, borderLeftColor: '#7C3AED',
+                borderLeftWidth: 3, borderLeftColor: '#6B4BFF',
                 marginBottom: 4,
               }}>
-                <AppText style={{ fontSize: 10, fontWeight: '700', color: '#7C3AED', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>
+                <AppText style={{ fontSize: 10, fontWeight: '700', color: '#6B4BFF', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>
                   {isPt ? 'Resumo' : 'Summary'}
                 </AppText>
-                <AppText style={{ fontSize: 14, color: '#16153A', lineHeight: 20 }}>
+                <AppText style={{ fontSize: 14, color: '#16131F', lineHeight: 20 }}>
                   {call.summary}
                 </AppText>
               </View>
@@ -400,7 +400,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
 
             {turns.length === 0 ? (
               <View style={{ alignItems: 'center', paddingTop: 30, paddingHorizontal: 12 }}>
-                <AppText style={{ color: '#9896B8', fontSize: 14, textAlign: 'center', lineHeight: 20 }}>
+                <AppText style={{ color: '#8A8494', fontSize: 14, textAlign: 'center', lineHeight: 20 }}>
                   {isPt ? 'Transcrição não disponível para esta chamada.' : 'No transcript available for this call.'}
                 </AppText>
               </View>
@@ -412,18 +412,18 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
                     {!isUser && (
                       <Image
                         source={require('@/assets/charlotte-avatar.png')}
-                        style={{ width: 26, height: 26, borderRadius: 13, marginRight: 8, marginTop: 2, flexShrink: 0, backgroundColor: '#16153A' }}
+                        style={{ width: 26, height: 26, borderRadius: 13, marginRight: 8, marginTop: 2, flexShrink: 0, backgroundColor: '#16131F' }}
                       />
                     )}
                     <View style={{
                       maxWidth: '78%',
-                      backgroundColor: isUser ? '#A3FF3C' : '#F4F3FA',
+                      backgroundColor: isUser ? '#DCFF4A' : '#FAF7F0',
                       borderRadius: 16,
                       borderBottomRightRadius: isUser ? 4 : 16,
                       borderBottomLeftRadius: isUser ? 16 : 4,
                       paddingHorizontal: 13, paddingVertical: 9,
                     }}>
-                      <AppText style={{ fontSize: 14, fontWeight: '500', color: '#16153A', lineHeight: 20 }}>
+                      <AppText style={{ fontSize: 14, fontWeight: '500', color: '#16131F', lineHeight: 20 }}>
                         {turn.text}
                       </AppText>
                     </View>
@@ -450,7 +450,7 @@ export default function LiveVoiceTab() {
   // Assinante = premium pagante (active) ou institucional. Define a copy do
   // popup de limite (trial -> assinar; assinante -> renova/compra avulsa).
   const isSubscriber = !!profile?.is_institutional || profile?.subscription_status === 'active';
-  const accent  = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
+  const accent  = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#6B4BFF' : '#0F766E';
 
   const [streak,  setStreak]  = useState(0);
   const [totalXP, setTotalXP] = useState(0);
@@ -700,7 +700,7 @@ export default function LiveVoiceTab() {
             <View style={{
               width: 120, height: 120, borderRadius: 60,
               borderWidth: 3, borderColor: '#F97316',
-              backgroundColor: '#16153A',
+              backgroundColor: '#16131F',
               overflow: 'hidden',
             }}>
               <Image
@@ -748,14 +748,14 @@ export default function LiveVoiceTab() {
                   marginHorizontal: 24, marginBottom: 4,
                   backgroundColor: '#FFFFFF', borderRadius: 14, padding: 14,
                   flexDirection: 'row', alignItems: 'center', gap: 12,
-                  borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
-                  shadowColor: 'rgba(22,21,58,0.12)', shadowOpacity: 1, shadowRadius: 8,
+                  borderWidth: 1, borderColor: 'rgba(22,19,31,0.10)',
+                  shadowColor: 'rgba(22,19,31,0.12)', shadowOpacity: 1, shadowRadius: 8,
                   shadowOffset: { width: 0, height: 3 }, elevation: 3,
                 }}
               >
                 <View style={{
                   width: 38, height: 38, borderRadius: 11,
-                  backgroundColor: 'rgba(61,136,0,0.12)',
+                  backgroundColor: 'rgba(92,115,0,0.12)',
                   alignItems: 'center', justifyContent: 'center',
                 }}>
                   <Phone size={18} color={C.greenDark} weight="fill" />
@@ -795,8 +795,8 @@ export default function LiveVoiceTab() {
                   width: 34, height: 34, borderRadius: 17,
                   backgroundColor: '#FFFFFF',
                   alignItems: 'center', justifyContent: 'center',
-                  borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
-                  shadowColor: 'rgba(22,21,58,0.12)',
+                  borderWidth: 1, borderColor: 'rgba(22,19,31,0.10)',
+                  shadowColor: 'rgba(22,19,31,0.12)',
                   shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
                   elevation: 3,
                 }}
@@ -811,8 +811,8 @@ export default function LiveVoiceTab() {
                   width: 34, height: 34, borderRadius: 17,
                   backgroundColor: '#FFFFFF',
                   alignItems: 'center', justifyContent: 'center',
-                  borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
-                  shadowColor: 'rgba(22,21,58,0.12)',
+                  borderWidth: 1, borderColor: 'rgba(22,19,31,0.10)',
+                  shadowColor: 'rgba(22,19,31,0.12)',
                   shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
                   elevation: 3,
                 }}
@@ -944,7 +944,7 @@ export default function LiveVoiceTab() {
               paddingHorizontal: 24, paddingTop: 18, paddingBottom: 28,
             }}
           >
-            <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,21,58,0.15)', alignSelf: 'center', marginBottom: 16 }} />
+            <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 16 }} />
 
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 14 }}>
               <AppText style={{ fontSize: 17, fontWeight: '800', color: C.textWhite, flex: 1 }}>
@@ -989,7 +989,7 @@ function LVHelpRow({ title, desc }: { title: string; desc: string }) {
       <AppText style={{ fontSize: 14, fontWeight: '800', color: '#1E1D45', marginBottom: 2 }}>
         {title}
       </AppText>
-      <AppText style={{ fontSize: 13, color: '#3B3A5A', lineHeight: 19 }}>
+      <AppText style={{ fontSize: 13, color: '#3A3546', lineHeight: 19 }}>
         {desc}
       </AppText>
     </View>

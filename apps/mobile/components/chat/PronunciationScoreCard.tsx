@@ -10,16 +10,16 @@ import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 // ── Palette ────────────────────────────────────────────────────
 const C = {
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  ghost:     'rgba(22,21,58,0.06)',
-  border:    'rgba(22,21,58,0.10)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  ghost:     'rgba(22,19,31,0.06)',
+  border:    'rgba(22,19,31,0.10)',
 };
 
 const cardShadow = Platform.select({
   ios: {
-    shadowColor: 'rgba(22,21,58,0.10)',
+    shadowColor: 'rgba(22,19,31,0.10)',
     shadowOpacity: 1,
     shadowRadius: 14,
     shadowOffset: { width: 0, height: 3 },
@@ -131,7 +131,7 @@ function MetricsModal({ visible, onClose }: { visible: boolean; onClose: () => v
       <Pressable
         style={{
           flex: 1,
-          backgroundColor: 'rgba(22,21,58,0.55)',
+          backgroundColor: 'rgba(22,19,31,0.55)',
           alignItems: 'center',
           justifyContent: 'center',
           padding: 24,
@@ -385,7 +385,7 @@ export default function PronunciationScoreCard({
 
         {/* Timestamp */}
         <AppText style={{
-          fontSize: 10, color: 'rgba(22,21,58,0.35)',
+          fontSize: 10, color: 'rgba(22,19,31,0.35)',
           marginTop: 4, paddingHorizontal: 4,
         }}>
           {timestamp?.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}

@@ -95,13 +95,13 @@ const TypingIndicator = ({ isAudio = false }: { isAudio?: boolean }) => {
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#F0EFFA', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: 12 }}>
         {isAudio ? (
           <Animated.View style={{ opacity: pulse }}>
-            <Microphone size={16} color="#3D8800" weight="fill" />
+            <Microphone size={16} color="#5C7300" weight="fill" />
           </Animated.View>
         ) : (
           dots.map((dot, i) => (
             <Animated.View
               key={i}
-              style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: 'rgba(22,21,58,0.45)', opacity: dot }}
+              style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: 'rgba(22,19,31,0.45)', opacity: dot }}
             />
           ))
         )}
@@ -115,8 +115,8 @@ const AudioRecordingIndicator = () => (
   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, padding: 14, backgroundColor: '#F0EFFA', borderRadius: 18, borderTopLeftRadius: 0, alignSelf: 'flex-start', marginBottom: 16 }}>
     <CharlotteAvatar size="xs" />
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-      <Microphone size={14} color="#3D8800" weight="fill" />
-      <AppText style={{ color: 'rgba(22,21,58,0.65)', fontSize: 14 }}>Recording...</AppText>
+      <Microphone size={14} color="#5C7300" weight="fill" />
+      <AppText style={{ color: 'rgba(22,19,31,0.65)', fontSize: 14 }}>Recording...</AppText>
     </View>
   </View>
 );
@@ -206,7 +206,7 @@ const MessageBubble: React.FC<{
             paddingHorizontal: 14,
             paddingVertical: 10,
             borderRadius: 20,
-            backgroundColor: isUser ? '#A3FF3C' : '#F0EFFA',
+            backgroundColor: isUser ? '#DCFF4A' : '#F0EFFA',
             borderBottomRightRadius: isUser ? 0 : 20,
             borderBottomLeftRadius: isUser ? 20 : 20,
             borderTopLeftRadius: isUser ? 20 : 0,
@@ -217,12 +217,12 @@ const MessageBubble: React.FC<{
             <View style={{
               flexDirection: 'row', alignItems: 'center', gap: 5,
               marginBottom: 8,
-              backgroundColor: 'rgba(163,255,60,0.12)',
+              backgroundColor: 'rgba(220,255,74,0.12)',
               borderRadius: 8, paddingHorizontal: 8, paddingVertical: 4,
               alignSelf: 'flex-start',
             }}>
-              <SpeakerHigh size={11} color="#3D8800" weight="fill" />
-              <AppText style={{ fontSize: 10, fontWeight: '700', color: '#3D8800', textTransform: 'uppercase', letterSpacing: 0.7 }}>
+              <SpeakerHigh size={11} color="#5C7300" weight="fill" />
+              <AppText style={{ fontSize: 10, fontWeight: '700', color: '#5C7300', textTransform: 'uppercase', letterSpacing: 0.7 }}>
                 Demonstration
               </AppText>
             </View>
@@ -231,7 +231,7 @@ const MessageBubble: React.FC<{
           {/* Text content — hidden for Charlotte's audio responses (shown via "Ver texto") */}
           {!!message.content && !isCharlotteAudio && (
             <AppText
-              style={{ fontSize: 14, lineHeight: 21, color: isUser ? '#16153A' : '#16153A' }}
+              style={{ fontSize: 14, lineHeight: 21, color: isUser ? '#16131F' : '#16131F' }}
             >
               {message.content}
             </AppText>
@@ -244,7 +244,7 @@ const MessageBubble: React.FC<{
                 flexDirection: 'row', alignItems: 'center', gap: 10,
                 width: 170,
                 ...(!isCharlotteAudio && !isDemonstration && message.content
-                  ? { marginTop: 10, paddingTop: 10, borderTopWidth: 1, borderTopColor: 'rgba(22,21,58,0.08)' }
+                  ? { marginTop: 10, paddingTop: 10, borderTopWidth: 1, borderTopColor: 'rgba(22,19,31,0.08)' }
                   : {}),
               }}
             >
@@ -258,12 +258,12 @@ const MessageBubble: React.FC<{
                   padding: 7, borderRadius: 20,
                   backgroundColor: isUser
                     ? 'rgba(0,0,0,0.18)'
-                    : 'rgba(22,21,58,0.12)',
+                    : 'rgba(22,19,31,0.12)',
                 }}
               >
                 {isPlaying
-                  ? <Pause size={14} color={isUser ? '#000' : '#16153A'} weight="fill" />
-                  : <Play  size={14} color={isUser ? '#000' : '#16153A'} weight="fill" />
+                  ? <Pause size={14} color={isUser ? '#000' : '#16131F'} weight="fill" />
+                  : <Play  size={14} color={isUser ? '#000' : '#16131F'} weight="fill" />
                 }
               </TouchableOpacity>
 
@@ -277,14 +277,14 @@ const MessageBubble: React.FC<{
                       borderRadius: 2,
                       backgroundColor: isUser
                         ? `rgba(0,0,0,${0.25 + (i % 3) * 0.1})`
-                        : `rgba(22,21,58,${0.18 + (i % 3) * 0.08})`,
+                        : `rgba(22,19,31,${0.18 + (i % 3) * 0.08})`,
                     }}
                   />
                 ))}
               </View>
 
               <SpeakerHigh size={14}
-                color={isUser ? 'rgba(0,0,0,0.35)' : 'rgba(22,21,58,0.35)'}
+                color={isUser ? 'rgba(0,0,0,0.35)' : 'rgba(22,19,31,0.35)'}
                 weight="regular"
               />
             </View>
@@ -302,10 +302,10 @@ const MessageBubble: React.FC<{
                 style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}
               >
                 {isTranslating
-                  ? <ArrowsClockwise size={12} color="#9896B8" weight="regular" />
-                  : <Globe size={12} color="#4B4A72" weight="regular" />
+                  ? <ArrowsClockwise size={12} color="#8A8494" weight="regular" />
+                  : <Globe size={12} color="#4D4858" weight="regular" />
                 }
-                <AppText style={{ fontSize: 12, color: isTranslating ? '#9896B8' : '#4B4A72' }}>
+                <AppText style={{ fontSize: 12, color: isTranslating ? '#8A8494' : '#4D4858' }}>
                   {isTranslating ? 'Traduzindo...' : 'Traduzir'}
                 </AppText>
               </TouchableOpacity>
@@ -317,8 +317,8 @@ const MessageBubble: React.FC<{
                 onPress={() => onExplainMore(message.content)}
                 style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}
               >
-                <Lightbulb size={12} color="#4B4A72" weight="regular" />
-                <AppText style={{ fontSize: 12, color: '#4B4A72' }}>
+                <Lightbulb size={12} color="#4D4858" weight="regular" />
+                <AppText style={{ fontSize: 12, color: '#4D4858' }}>
                   {isNovice ? 'Me explique melhor' : 'Explain more'}
                 </AppText>
               </TouchableOpacity>
@@ -330,8 +330,8 @@ const MessageBubble: React.FC<{
                 onPress={handleTranscription}
                 style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}
               >
-                <ChatCenteredText size={12} color="#4B4A72" weight="regular" />
-                <AppText style={{ fontSize: 12, color: '#4B4A72' }}>
+                <ChatCenteredText size={12} color="#4D4858" weight="regular" />
+                <AppText style={{ fontSize: 12, color: '#4D4858' }}>
                   {showTranscription
                     ? (userLevel === 'Novice' ? 'Esconder' : 'Hide text')
                     : (userLevel === 'Novice' ? 'Ver texto' : 'Show text')}
@@ -343,13 +343,13 @@ const MessageBubble: React.FC<{
 
         {/* Translation panel — discreto: linha fina + italico, sem box */}
         {showTranslation && (
-          <View style={{ marginTop: 6, paddingTop: 6, borderTopWidth: 1, borderTopColor: 'rgba(22,21,58,0.08)' }}>
+          <View style={{ marginTop: 6, paddingTop: 6, borderTopWidth: 1, borderTopColor: 'rgba(22,19,31,0.08)' }}>
             {isTranslating ? (
-              <AppText style={{ fontSize: 13, color: '#9896B8', fontStyle: 'italic' }}>
+              <AppText style={{ fontSize: 13, color: '#8A8494', fontStyle: 'italic' }}>
                 Traduzindo...
               </AppText>
             ) : (
-              <AppText style={{ fontSize: 13, color: '#4B4A72', fontStyle: 'italic', lineHeight: 19 }}>
+              <AppText style={{ fontSize: 13, color: '#4D4858', fontStyle: 'italic', lineHeight: 19 }}>
                 {translation || 'Tradução não disponível.'}
               </AppText>
             )}
@@ -358,7 +358,7 @@ const MessageBubble: React.FC<{
                 onPress={() => { setTranslation(''); setTranslationError(false); fetchTranslation(); }}
                 style={{ marginTop: 4 }}
               >
-                <AppText style={{ fontSize: 11, color: '#9896B8' }}>Tentar novamente</AppText>
+                <AppText style={{ fontSize: 11, color: '#8A8494' }}>Tentar novamente</AppText>
               </TouchableOpacity>
             )}
           </View>
@@ -366,12 +366,12 @@ const MessageBubble: React.FC<{
 
         {/* Transcription panel */}
         {showTranscription && (
-          <View style={{ marginTop: 8, padding: 12, backgroundColor: '#F4F3FA', borderRadius: 12, borderWidth: 1, borderColor: 'rgba(22,21,58,0.1)' }}>
+          <View style={{ marginTop: 8, padding: 12, backgroundColor: '#FAF7F0', borderRadius: 12, borderWidth: 1, borderColor: 'rgba(22,19,31,0.1)' }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 6 }}>
-              <ChatCenteredText size={12} color="#3D8800" weight="regular" />
-              <AppText style={{ fontSize: 11, color: '#3D8800', fontWeight: '600' }}>Transcription</AppText>
+              <ChatCenteredText size={12} color="#5C7300" weight="regular" />
+              <AppText style={{ fontSize: 11, color: '#5C7300', fontWeight: '600' }}>Transcription</AppText>
             </View>
-            <AppText style={{ fontSize: 14, color: '#16153A' }}>{transcription}</AppText>
+            <AppText style={{ fontSize: 14, color: '#16131F' }}>{transcription}</AppText>
           </View>
         )}
 
@@ -385,19 +385,19 @@ const MessageBubble: React.FC<{
                 onPress={() => openAddWord(term)}
                 style={{
                   flexDirection: 'row', alignItems: 'center', gap: 4,
-                  backgroundColor: 'rgba(61,136,0,0.10)',
+                  backgroundColor: 'rgba(92,115,0,0.10)',
                   borderRadius: 20, paddingHorizontal: 10, paddingVertical: 4,
-                  borderWidth: 1, borderColor: 'rgba(61,136,0,0.20)',
+                  borderWidth: 1, borderColor: 'rgba(92,115,0,0.20)',
                 }}
               >
-                <AppText style={{ fontSize: 12, color: '#3D8800', fontWeight: '600' }}>+ {term}</AppText>
+                <AppText style={{ fontSize: 12, color: '#5C7300', fontWeight: '600' }}>+ {term}</AppText>
               </TouchableOpacity>
             ))}
           </View>
         )}
 
         {/* Timestamp */}
-        <AppText style={{ fontSize: 10, color: 'rgba(22,21,58,0.35)', marginTop: 4, paddingHorizontal: 4, textAlign: isUser ? 'right' : 'left' }}>
+        <AppText style={{ fontSize: 10, color: 'rgba(22,19,31,0.35)', marginTop: 4, paddingHorizontal: 4, textAlign: isUser ? 'right' : 'left' }}>
           {message.timestamp?.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
         </AppText>
       </View>
@@ -418,11 +418,11 @@ const MessageBubble: React.FC<{
               paddingHorizontal: 8, paddingTop: 14, paddingBottom: 24,
             }}
           >
-            <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,21,58,0.15)', alignSelf: 'center', marginBottom: 14 }} />
+            <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 14 }} />
 
             {userLevel !== 'Advanced' && (
               <ActionRow
-                icon={<Globe size={20} color="#4B4A72" weight="regular" />}
+                icon={<Globe size={20} color="#4D4858" weight="regular" />}
                 label={isNovice ? 'Traduzir' : 'Translate'}
                 onPress={() => {
                   setShowActions(false);
@@ -431,7 +431,7 @@ const MessageBubble: React.FC<{
               />
             )}
             <ActionRow
-              icon={<Copy size={20} color="#4B4A72" weight="regular" />}
+              icon={<Copy size={20} color="#4D4858" weight="regular" />}
               label={isNovice ? 'Copiar' : 'Copy'}
               onPress={() => {
                 Clipboard.setString(message.content || '');
@@ -440,7 +440,7 @@ const MessageBubble: React.FC<{
             />
             {mode === 'grammar' && onExplainMore && message.id !== 'welcome-0' && !message.isExplainMore && (
               <ActionRow
-                icon={<Question size={20} color="#4B4A72" weight="regular" />}
+                icon={<Question size={20} color="#4D4858" weight="regular" />}
                 label={isNovice ? 'Me explique melhor' : 'Explain more'}
                 onPress={() => {
                   setShowActions(false);
@@ -449,7 +449,7 @@ const MessageBubble: React.FC<{
               />
             )}
             <ActionRow
-              icon={<X size={20} color="#9896B8" weight="regular" />}
+              icon={<X size={20} color="#8A8494" weight="regular" />}
               label={isNovice ? 'Cancelar' : 'Cancel'}
               onPress={() => setShowActions(false)}
               muted
@@ -476,7 +476,7 @@ function ActionRow({ icon, label, onPress, muted }: {
       }}
     >
       {icon}
-      <AppText style={{ fontSize: 15, fontWeight: '600', color: muted ? '#9896B8' : '#16153A' }}>
+      <AppText style={{ fontSize: 15, fontWeight: '600', color: muted ? '#8A8494' : '#16131F' }}>
         {label}
       </AppText>
     </TouchableOpacity>
@@ -508,11 +508,11 @@ const ChatBox: React.FC<ChatBoxProps> = ({
     if (item.isSeparator) {
       return (
         <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 12, paddingHorizontal: 16 }}>
-          <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(22,21,58,0.08)' }} />
+          <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(22,19,31,0.08)' }} />
           <View style={{ marginHorizontal: 10 }}>
-            <AppText style={{ fontSize: 11, color: '#9896B8' }}>new session</AppText>
+            <AppText style={{ fontSize: 11, color: '#8A8494' }}>new session</AppText>
           </View>
-          <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(22,21,58,0.08)' }} />
+          <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(22,19,31,0.08)' }} />
         </View>
       );
     }
@@ -540,19 +540,19 @@ const ChatBox: React.FC<ChatBoxProps> = ({
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#F4F3FA' }}>
+    <View style={{ flex: 1, backgroundColor: '#FAF7F0' }}>
       {/* Subtle dot texture — like WhatsApp */}
       <Svg style={StyleSheet.absoluteFill}>
         <Defs>
           <Pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-            <Circle cx="2" cy="2" r="1.1" fill="rgba(22,21,58,0.055)" />
+            <Circle cx="2" cy="2" r="1.1" fill="rgba(22,19,31,0.055)" />
           </Pattern>
         </Defs>
         <Rect width="100%" height="100%" fill="url(#dots)" />
       </Svg>
       {historyLoading && (
         <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center', zIndex: 1 }}>
-          <ActivityIndicator size="small" color="#9896B8" />
+          <ActivityIndicator size="small" color="#8A8494" />
         </View>
       )}
       <FlatList
@@ -574,8 +574,8 @@ const ChatBox: React.FC<ChatBoxProps> = ({
             {!!(transcript || finalTranscript) && (
               <View className="bg-primary/10 rounded-xl p-3 mb-4 border border-primary/20">
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 4 }}>
-                  <Microphone size={12} color="#3D8800" weight="fill" />
-                  <AppText className="text-xs font-medium" style={{ color: '#3D8800' }}>Listening...</AppText>
+                  <Microphone size={12} color="#5C7300" weight="fill" />
+                  <AppText className="text-xs font-medium" style={{ color: '#5C7300' }}>Listening...</AppText>
                 </View>
                 <AppText className="text-sm text-white">
                   <AppText className="text-white/50">{transcript}</AppText>

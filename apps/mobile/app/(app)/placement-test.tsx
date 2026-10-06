@@ -32,17 +32,17 @@ const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'htt
 
 // ── Palette ───────────────────────────────────────────────────────────────────
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  border:    'rgba(22,21,58,0.10)',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  border:    'rgba(22,19,31,0.10)',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
   shadow: Platform.select({
     ios: {
-      shadowColor: 'rgba(22,21,58,0.12)',
+      shadowColor: 'rgba(22,19,31,0.12)',
       shadowOpacity: 1,
       shadowRadius: 12,
       shadowOffset: { width: 0, height: 4 },
@@ -607,7 +607,7 @@ export default function PlacementTestScreen() {
             {`${qIndex + 1} / ${blockQuestions.length}`}
           </AppText>
         </View>
-        <View style={{ height: 4, backgroundColor: 'rgba(22,21,58,0.08)', borderRadius: 2, overflow: 'hidden' }}>
+        <View style={{ height: 4, backgroundColor: 'rgba(22,19,31,0.08)', borderRadius: 2, overflow: 'hidden' }}>
           <View style={{ height: 4, width: `${progress * 100}%` as `${number}%`, backgroundColor: C.green, borderRadius: 2 }} />
         </View>
       </View>
@@ -625,11 +625,11 @@ export default function PlacementTestScreen() {
               width: 0, height: 0,
               borderTopWidth: 5, borderTopColor: 'transparent',
               borderBottomWidth: 5, borderBottomColor: 'transparent',
-              borderRightWidth: 7, borderRightColor: 'rgba(22,21,58,0.08)',
+              borderRightWidth: 7, borderRightColor: 'rgba(22,19,31,0.08)',
               marginTop: 10, marginLeft: 2,
             }} />
             <View style={{
-              flex: 1, backgroundColor: 'rgba(22,21,58,0.06)',
+              flex: 1, backgroundColor: 'rgba(22,19,31,0.06)',
               borderRadius: 14, borderTopLeftRadius: 4,
               paddingHorizontal: 14, paddingVertical: 12,
             }}>
@@ -698,7 +698,7 @@ export default function PlacementTestScreen() {
             disabled={selected === null}
             activeOpacity={0.85}
             style={{
-              backgroundColor: selected !== null ? C.navy : 'rgba(22,21,58,0.08)',
+              backgroundColor: selected !== null ? C.navy : 'rgba(22,19,31,0.08)',
               borderRadius: 16, paddingVertical: 16,
               alignItems: 'center',
             }}
@@ -717,7 +717,7 @@ export default function PlacementTestScreen() {
           backgroundColor: currentIsCorrect ? '#EDFFD0' : '#FFF0F0',
           borderTopLeftRadius: 24, borderTopRightRadius: 24,
           borderTopWidth: 1,
-          borderColor: currentIsCorrect ? '#A3FF3C40' : '#DC262640',
+          borderColor: currentIsCorrect ? '#DCFF4A40' : '#DC262640',
           paddingHorizontal: 24, paddingTop: 24,
           paddingBottom: insets.bottom + 20,
           transform: [{ translateY: feedbackTranslateY }],
@@ -786,10 +786,10 @@ function OptionList({
         let borderColor = C.border;
         let bgColor = C.card;
         if (locked) {
-          if (isCorrect)                    { borderColor = C.greenDark; bgColor = 'rgba(61,136,0,0.08)'; }
+          if (isCorrect)                    { borderColor = C.greenDark; bgColor = 'rgba(92,115,0,0.08)'; }
           else if (isSelected && !isCorrect){ borderColor = '#DC2626';   bgColor = 'rgba(220,38,38,0.06)'; }
         } else {
-          if (isSelected) { borderColor = C.green; bgColor = 'rgba(163,255,60,0.10)'; }
+          if (isSelected) { borderColor = C.green; bgColor = 'rgba(220,255,74,0.10)'; }
         }
 
         return (
@@ -856,13 +856,13 @@ function IntroScreen({ firstName, onStart, onSkip }: { firstName: string; onStar
           <Animated.View style={{
             position: 'absolute',
             width: 152, height: 152, borderRadius: 76,
-            backgroundColor: 'rgba(163,255,60,0.08)',
+            backgroundColor: 'rgba(220,255,74,0.08)',
             transform: [{ scale: pulse1 }],
           }} />
           <Animated.View style={{
             position: 'absolute',
             width: 124, height: 124, borderRadius: 62,
-            backgroundColor: 'rgba(163,255,60,0.13)',
+            backgroundColor: 'rgba(220,255,74,0.13)',
             transform: [{ scale: pulse2 }],
           }} />
           <CharlotteAvatar size="xxl" />
@@ -938,7 +938,7 @@ function IntroScreen({ firstName, onStart, onSkip }: { firstName: string; onStar
             activeOpacity={0.85}
             style={{
               borderRadius: 16, paddingVertical: 16, width: '100%',
-              borderWidth: 2, borderColor: 'rgba(22,21,58,0.15)',
+              borderWidth: 2, borderColor: 'rgba(22,19,31,0.15)',
               alignItems: 'center',
             }}
           >
@@ -994,9 +994,9 @@ function ResultScreen({
         <View style={{ alignItems: 'center', paddingTop: 32, paddingBottom: 28, paddingHorizontal: 28 }}>
           <CharlotteAvatar size="xl" />
           <View style={{
-            marginTop: 16, backgroundColor: 'rgba(163,255,60,0.15)',
+            marginTop: 16, backgroundColor: 'rgba(220,255,74,0.15)',
             borderRadius: 100, paddingHorizontal: 18, paddingVertical: 6,
-            borderWidth: 1, borderColor: 'rgba(163,255,60,0.3)',
+            borderWidth: 1, borderColor: 'rgba(220,255,74,0.3)',
           }}>
             <AppText style={{ fontSize: 10, fontWeight: '900', color: C.green, letterSpacing: 2 }}>
               {LEVEL_TAG[level]}
@@ -1028,11 +1028,11 @@ function ResultScreen({
                 width: 0, height: 0,
                 borderTopWidth: 5, borderTopColor: 'transparent',
                 borderBottomWidth: 5, borderBottomColor: 'transparent',
-                borderRightWidth: 7, borderRightColor: 'rgba(22,21,58,0.08)',
+                borderRightWidth: 7, borderRightColor: 'rgba(22,19,31,0.08)',
                 marginTop: 10, marginLeft: 2,
               }} />
               <View style={{
-                flex: 1, backgroundColor: 'rgba(22,21,58,0.06)',
+                flex: 1, backgroundColor: 'rgba(22,19,31,0.06)',
                 borderRadius: 14, borderTopLeftRadius: 4,
                 paddingHorizontal: 14, paddingVertical: 12,
               }}>

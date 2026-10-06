@@ -15,15 +15,15 @@ import { getBadgesForLevel, CatalogEntry } from '@/lib/achievementsCatalog';
 
 // ── Design tokens ──────────────────────────────────────────────────────────────
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  ghost:     'rgba(22,21,58,0.06)',
-  border:    'rgba(22,21,58,0.10)',
-  green:     '#3D8800',
-  greenLight:'#F0FFD9',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  ghost:     'rgba(22,19,31,0.06)',
+  border:    'rgba(22,19,31,0.10)',
+  green:     '#5C7300',
+  greenLight:'#F8FFE0',
 };
 
 const RARITY_COLORS: Record<string, string> = {
@@ -59,7 +59,7 @@ interface ModalBadge {
 }
 
 function AchievementIcon({ category, rarity, size = 22 }: { category: string; rarity: string; size?: number }) {
-  const color = rarity === 'locked' ? 'rgba(22,21,58,0.22)' : (RARITY_COLORS[rarity] ?? '#22C55E');
+  const color = rarity === 'locked' ? 'rgba(22,19,31,0.22)' : (RARITY_COLORS[rarity] ?? '#22C55E');
   switch (category) {
     case 'xp':
     case 'xp_milestone': return <Lightning     size={size} color={color} weight="fill" />;
@@ -159,7 +159,7 @@ export default function AchievementsScreen() {
       >
         <Pressable
           style={{
-            flex: 1, backgroundColor: 'rgba(22,21,58,0.55)',
+            flex: 1, backgroundColor: 'rgba(22,19,31,0.55)',
             alignItems: 'center', justifyContent: 'center',
             paddingHorizontal: 32,
           }}

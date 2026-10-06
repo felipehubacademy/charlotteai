@@ -24,14 +24,14 @@ function a(hex: string, alpha: number): string {
 
 const C = {
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyLight: '#9896B8',
-  ghost:     'rgba(22,21,58,0.06)',
-  border:    'rgba(22,21,58,0.10)',
+  navy:      '#16131F',
+  navyLight: '#8A8494',
+  ghost:     'rgba(22,19,31,0.06)',
+  border:    'rgba(22,19,31,0.10)',
 };
 
 const shadow = Platform.select({
-  ios:     { shadowColor: 'rgba(22,21,58,0.10)', shadowOpacity: 1, shadowRadius: 10, shadowOffset: { width: 0, height: 2 } },
+  ios:     { shadowColor: 'rgba(22,19,31,0.10)', shadowOpacity: 1, shadowRadius: 10, shadowOffset: { width: 0, height: 2 } },
   android: {},
 });
 
@@ -43,7 +43,7 @@ const LEVEL_LABELS: Record<TrailLevel, string> = {
 
 const LEVEL_COLOR: Record<TrailLevel, string> = {
   Novice:   '#D97706',
-  Inter:    '#7C3AED',
+  Inter:    '#6B4BFF',
   Advanced: '#0F766E',
 };
 

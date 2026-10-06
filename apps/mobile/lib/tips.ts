@@ -207,10 +207,10 @@ export const TIPS: Record<string, Tip[]> = {
 };
 
 export const TIP_STYLE: Record<string, { bg: string; color: string }> = {
-  'word':         { bg: '#F0FFD9', color: '#3D8800' },
+  'word':         { bg: '#F8FFE0', color: '#5C7300' },
   'expression':   { bg: '#EFF6FF', color: '#1D4ED8' },
-  'phrasal verb': { bg: '#FDF2F8', color: '#BE185D' },
-  'idiom':        { bg: '#F5F3FF', color: '#6D28D9' },
+  'phrasal verb': { bg: '#FFEEF4', color: '#BE185D' },
+  'idiom':        { bg: '#F1EEFF', color: '#6D28D9' },
 };
 
 export function getTip(level: string, seed: number): Tip {

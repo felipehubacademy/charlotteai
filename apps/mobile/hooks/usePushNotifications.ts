@@ -77,10 +77,10 @@ export function usePushNotifications(userId?: string) {
       // Android notification channel
       if (Platform.OS === 'android') {
         await Notifications.setNotificationChannelAsync('charlotte', {
-          name: 'Charlotte AI',
+          name: 'Queizy',
           importance: Notifications.AndroidImportance.MAX,
           vibrationPattern: [0, 250, 250, 250],
-          lightColor: '#A3FF3C',
+          lightColor: '#DCFF4A',
         });
       }
     };

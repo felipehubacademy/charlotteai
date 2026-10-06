@@ -13,13 +13,13 @@ import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 
 const C = {
-  bg:        '#F4F3FA',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  border:    'rgba(22,21,58,0.10)',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
+  bg:        '#FAF7F0',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  border:    'rgba(22,19,31,0.10)',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
   red:       '#DC2626',
 };
 
@@ -93,7 +93,7 @@ export default function FirstAccessScreen() {
         >
           {/* Icon + title */}
           <View style={{ alignItems: 'center', marginBottom: 36 }}>
-            <View style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: 'rgba(163,255,60,0.12)', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
+            <View style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: 'rgba(220,255,74,0.12)', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
               <Lock size={32} color={C.navy} weight="duotone" />
             </View>
             <AppText style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
@@ -210,9 +210,9 @@ const inputWrap = {
   backgroundColor: '#FFFFFF',
   borderRadius: 14,
   borderWidth: 1,
-  borderColor: 'rgba(22,21,58,0.10)',
+  borderColor: 'rgba(22,19,31,0.10)',
   paddingHorizontal: 16,
   paddingVertical: 15,
 };
 
-const inputStyle = { color: '#16153A', fontSize: 15 };
+const inputStyle = { color: '#16131F', fontSize: 15 };

@@ -86,7 +86,7 @@ export default function SimpleXPCounter({
       >
         <View
           style={{
-            backgroundColor: '#A3FF3C',
+            backgroundColor: '#DCFF4A',
             paddingHorizontal: 6,
             paddingVertical: 2,
             borderRadius: 10,
@@ -103,7 +103,7 @@ export default function SimpleXPCounter({
           height: ringSize,
           borderRadius: ringSize / 2,
           borderWidth: 2.5,
-          borderColor: '#A3FF3C',
+          borderColor: '#DCFF4A',
           alignItems: 'center',
           justifyContent: 'center',
           transform: [{ scale: scaleAnim }],
@@ -119,7 +119,7 @@ export default function SimpleXPCounter({
             justifyContent: 'center',
           }}
         >
-          <AppText style={{ color: '#16153A', fontWeight: '700', fontSize: 13 }}>{currentLevel}</AppText>
+          <AppText style={{ color: '#16131F', fontWeight: '700', fontSize: 13 }}>{currentLevel}</AppText>
         </View>
       </Animated.View>
     </TouchableOpacity>

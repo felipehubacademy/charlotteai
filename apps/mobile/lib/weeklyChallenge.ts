@@ -37,7 +37,7 @@ const CHALLENGE_POOL: WeeklyChallenge[] = [
     title: { pt: 'Maratonista', en: 'Marathon Runner' },
     sub:   { pt: 'Envie 50 mensagens esta semana', en: 'Send 50 messages this week' },
     target: 50, unit: { pt: 'mensagens', en: 'messages' },
-    xpReward: 100, color: '#3D8800', bgColor: '#F0FFD9',
+    xpReward: 100, color: '#5C7300', bgColor: '#F8FFE0',
     // Novice only sends text — lower target so the challenge is achievable
   },
   {
@@ -45,7 +45,7 @@ const CHALLENGE_POOL: WeeklyChallenge[] = [
     title: { pt: 'Cac\u0327ador de XP', en: 'XP Hunter' },
     sub:   { pt: 'Ganhe 500 XP esta semana', en: 'Earn 500 XP this week' },
     target: 500, unit: { pt: 'XP', en: 'XP' },
-    xpReward: 120, color: '#7C3AED', bgColor: '#FAF5FF',
+    xpReward: 120, color: '#6B4BFF', bgColor: '#FAF5FF',
   },
   {
     id: 'streak_5',
@@ -66,7 +66,7 @@ const CHALLENGE_POOL: WeeklyChallenge[] = [
     title: { pt: 'Falante', en: 'Speaker' },
     sub:   { pt: 'Envie 10 mensagens de \u00e1udio', en: 'Send 10 audio messages' },
     target: 10, unit: { pt: '\u00e1udios', en: 'audios' },
-    xpReward: 90, color: '#F472B6', bgColor: '#FDF2F8',
+    xpReward: 90, color: '#FF4F8B', bgColor: '#FFEEF4',
     // Audio messages are only available from Inter onwards
     allowedLevels: ['Inter', 'Advanced'],
   },

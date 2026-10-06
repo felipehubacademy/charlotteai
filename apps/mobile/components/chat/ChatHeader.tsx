@@ -7,13 +7,13 @@ import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 
 const C = {
   bg:        '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  border:    'rgba(22,21,58,0.08)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  border:    'rgba(22,19,31,0.08)',
   green:     '#22C55E',
   orange:    '#F97316',
-  greenDark: '#3D8800',
+  greenDark: '#5C7300',
   gold:      '#EAB308',
 };
 

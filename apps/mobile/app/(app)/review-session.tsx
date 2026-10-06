@@ -22,26 +22,26 @@ import { calcNextReview, SRRating } from '@/lib/spacedRepetition';
 
 // ── Palette ─────────────────────────────────────────────────────────────────
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  navyGhost: 'rgba(22,21,58,0.06)',
-  border:    'rgba(22,21,58,0.10)',
-  green:     '#3D8800',
-  greenDark: '#3D8800',
-  greenBg:   '#F0FFD9',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  navyGhost: 'rgba(22,19,31,0.06)',
+  border:    'rgba(22,19,31,0.10)',
+  green:     '#5C7300',
+  greenDark: '#5C7300',
+  greenBg:   '#F8FFE0',
   red:       '#DC2626',
   redBg:     'rgba(220,38,38,0.07)',
   gold:      '#D97706',
   goldBg:    '#FFFBEB',
-  violet:    '#7C3AED',
-  violetBg:  '#F5F3FF',
+  violet:    '#6B4BFF',
+  violetBg:  '#F1EEFF',
 };
 
 const cardShadow = Platform.select({
-  ios:     { shadowColor: 'rgba(22,21,58,0.10)', shadowOpacity: 1, shadowRadius: 14, shadowOffset: { width: 0, height: 3 } },
+  ios:     { shadowColor: 'rgba(22,19,31,0.10)', shadowOpacity: 1, shadowRadius: 14, shadowOffset: { width: 0, height: 3 } },
   android: { elevation: 3 },
 }) as object;
 
@@ -262,8 +262,8 @@ export default function ReviewSession() {
   const level = (profile?.charlotte_level ?? 'Novice') as TrailLevel;
   const isPt  = systemIsPt; // suporte/chrome: idioma do device
 
-  const levelAccent:   string = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
-  const levelAccentBg: string = level === 'Novice' ? '#FFFBEB' : level === 'Inter' ? '#F5F3FF' : '#F0FDFA';
+  const levelAccent:   string = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#6B4BFF' : '#0F766E';
+  const levelAccentBg: string = level === 'Novice' ? '#FFFBEB' : level === 'Inter' ? '#F1EEFF' : '#F0FDFA';
 
   // Reset contador Tier 4 ao iniciar a sessao
   useEffect(() => { soundEngine.resetStreak(); }, []);

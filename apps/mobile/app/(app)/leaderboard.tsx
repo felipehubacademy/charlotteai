@@ -10,20 +10,20 @@ import { supabase } from '@/lib/supabase';
 
 // ── Design tokens ──────────────────────────────────────────────────────────────
 const C = {
-  bg:       '#F4F3FA',
+  bg:       '#FAF7F0',
   card:     '#FFFFFF',
-  navy:     '#16153A',
-  navyMid:  '#4B4A72',
-  navyLight:'#9896B8',
-  border:   'rgba(22,21,58,0.10)',
-  green:    '#A3FF3C',
+  navy:     '#16131F',
+  navyMid:  '#4D4858',
+  navyLight:'#8A8494',
+  border:   'rgba(22,19,31,0.10)',
+  green:    '#DCFF4A',
 };
 
 const MEDAL_COLORS = ['#D97706', '#64748B', '#B45309'];
 
 const LEVEL_COLOR: Record<string, string> = {
   Novice:   '#D97706',
-  Inter:    '#7C3AED',
+  Inter:    '#6B4BFF',
   Advanced: '#0F766E',
 };
 
@@ -202,7 +202,7 @@ export default function LeaderboardScreen() {
 
         {/* XP badge */}
         <View style={{
-          backgroundColor: isUser ? accent + '26' : 'rgba(22,21,58,0.06)',
+          backgroundColor: isUser ? accent + '26' : 'rgba(22,19,31,0.06)',
           paddingHorizontal: 10,
           paddingVertical: 4,
           borderRadius: 8,

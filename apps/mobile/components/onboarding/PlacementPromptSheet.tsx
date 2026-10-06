@@ -15,11 +15,11 @@ import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { AppText } from '@/components/ui/Text';
 
 const C = {
-  navy:    '#16153A',
-  navyMid: '#3B3A5A',
-  green:   '#A3FF3C',
-  iconBg:  'rgba(124,58,237,0.10)',
-  iconCol: '#7C3AED',
+  navy:    '#16131F',
+  navyMid: '#3A3546',
+  green:   '#DCFF4A',
+  iconBg:  'rgba(107,75,255,0.10)',
+  iconCol: '#6B4BFF',
 };
 
 const SCREEN_H = Dimensions.get('window').height;
@@ -85,7 +85,7 @@ export function PlacementPromptSheet({ visible, isPt, onTakeTest, onStartFromZer
               paddingHorizontal: 24, paddingTop: 16, paddingBottom: 24,
             }}
           >
-            <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,21,58,0.15)', alignSelf: 'center', marginBottom: 18 }} />
+            <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 18 }} />
 
             <View style={{
               width: 48, height: 48, borderRadius: 14, backgroundColor: C.iconBg,

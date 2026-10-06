@@ -42,15 +42,15 @@ const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https:/
 export type VocabCategory = 'word' | 'idiom' | 'phrasal_verb' | 'grammar';
 
 const C = {
-  bg:       '#F4F3FA',
+  bg:       '#FAF7F0',
   card:     '#FFFFFF',
-  navy:     '#16153A',
-  navyMid:  '#4B4A72',
-  muted:    '#9896B8',
-  border:   'rgba(22,21,58,0.10)',
+  navy:     '#16131F',
+  navyMid:  '#4D4858',
+  muted:    '#8A8494',
+  border:   'rgba(22,19,31,0.10)',
   inputBg:  '#ECEAF5',   // mesmo que my-vocabulary
-  greenBg:  'rgba(61,136,0,0.08)',
-  green:    '#3D8800',
+  greenBg:  'rgba(92,115,0,0.08)',
+  green:    '#5C7300',
 };
 
 const CATEGORIES: { key: VocabCategory; labelPt: string; labelEn: string }[] = [
@@ -456,7 +456,7 @@ export default function AddWordScreen() {
             {termStatus === 'cached' && !definition && (
               <View style={{
                 flexDirection: 'row', alignItems: 'center', gap: 8,
-                backgroundColor: 'rgba(22,21,58,0.06)', borderRadius: 10,
+                backgroundColor: 'rgba(22,19,31,0.06)', borderRadius: 10,
                 paddingHorizontal: 12, paddingVertical: 8,
               }}>
                 <Check size={14} color={C.navy} weight="bold" />
@@ -500,7 +500,7 @@ export default function AddWordScreen() {
             {alreadyAdded && (
               <View style={{
                 flexDirection: 'row', alignItems: 'center', gap: 8,
-                backgroundColor: 'rgba(22,21,58,0.06)', borderRadius: 10, paddingHorizontal: 12, paddingVertical: 8,
+                backgroundColor: 'rgba(22,19,31,0.06)', borderRadius: 10, paddingHorizontal: 12, paddingVertical: 8,
               }}>
                 <Check size={14} color={C.navy} weight="bold" />
                 <AppText style={{ fontSize: 13, color: C.navy, fontWeight: '600' }}>

@@ -13,7 +13,7 @@ interface VocabFABProps {
 }
 
 export const VocabFAB = React.forwardRef<any, VocabFABProps>(
-  function VocabFAB({ bottom = 0, right = 20, initialTerm, color = '#3D8800' }, ref) {
+  function VocabFAB({ bottom = 0, right = 20, initialTerm, color = '#5C7300' }, ref) {
     const insets = useSafeAreaInsets();
 
     const open = () => {

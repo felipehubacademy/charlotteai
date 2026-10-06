@@ -20,23 +20,23 @@ import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 
 // ── Palette ────────────────────────────────────────────────────
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  ghost:     'rgba(22,21,58,0.06)',
-  border:    'rgba(22,21,58,0.10)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  ghost:     'rgba(22,19,31,0.06)',
+  border:    'rgba(22,19,31,0.10)',
   gold:      '#D97706',
   goldBg:    '#FFFBEB',
-  greenDark: '#3D8800',
-  greenBg:   '#F0FFD9',
+  greenDark: '#5C7300',
+  greenBg:   '#F8FFE0',
   red:       '#DC2626',
   redBg:     'rgba(220,38,38,0.07)',
 };
 
 const shadow = Platform.select({
-  ios:     { shadowColor: 'rgba(22,21,58,0.10)', shadowOpacity: 1, shadowRadius: 14, shadowOffset: { width: 0, height: 3 } },
+  ios:     { shadowColor: 'rgba(22,19,31,0.10)', shadowOpacity: 1, shadowRadius: 14, shadowOffset: { width: 0, height: 3 } },
   android: { elevation: 3 },
 });
 
@@ -643,7 +643,7 @@ export default function LearnGrammarScreen() {
                     padding: 14, borderRadius: 14, marginBottom: 12,
                     backgroundColor: isCorrect ? C.greenBg : C.redBg,
                     borderWidth: 1,
-                    borderColor: isCorrect ? 'rgba(61,136,0,0.2)' : 'rgba(220,38,38,0.18)',
+                    borderColor: isCorrect ? 'rgba(92,115,0,0.2)' : 'rgba(220,38,38,0.18)',
                   }}>
                     {isCorrect
                       ? <CheckCircle size={20} color={C.greenDark} weight="fill" />
@@ -653,7 +653,7 @@ export default function LearnGrammarScreen() {
                       {isCorrect ? 'Correct!' : 'Not quite…'}
                     </AppText>
                     <View style={{
-                      backgroundColor: isCorrect ? 'rgba(61,136,0,0.12)' : 'rgba(220,38,38,0.10)',
+                      backgroundColor: isCorrect ? 'rgba(92,115,0,0.12)' : 'rgba(220,38,38,0.10)',
                       borderRadius: 20, paddingHorizontal: 8, paddingVertical: 3,
                     }}>
                       <AppText style={{ fontSize: 11, fontWeight: '800', color: isCorrect ? C.greenDark : C.red }}>

@@ -1,4 +1,4 @@
-// SplashOverlay — cobre a tela com splash.png (Charlotte) + spinner por
+// SplashOverlay — cobre a tela com splash.png (logo do Queizy) + spinner por
 // 1200ms minimo. Fade out depois. OTA-safe (puro JS).
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -34,7 +34,7 @@ export function SplashOverlay() {
       pointerEvents="none"
       style={[
         StyleSheet.absoluteFillObject,
-        { opacity, zIndex: 9999, backgroundColor: '#F4F3FA', alignItems: 'center', justifyContent: 'center' },
+        { opacity, zIndex: 9999, backgroundColor: '#FAF7F0', alignItems: 'center', justifyContent: 'center' },
       ]}
     >
       <Image
@@ -43,7 +43,7 @@ export function SplashOverlay() {
         resizeMode="contain"
       />
       <View style={{ position: 'absolute', bottom: '32%', left: 0, right: 0, alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#9896B8" />
+        <ActivityIndicator size="large" color="#8A8494" />
       </View>
     </Animated.View>
   );

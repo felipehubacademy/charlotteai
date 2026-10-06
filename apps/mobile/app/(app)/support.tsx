@@ -17,11 +17,11 @@ const SUPPORT_EMAIL = 'suporte@hubacademybr.com';
 const SUPPORT_WHATSAPP = '';
 
 const C = {
-  bg: '#F4F3FA', card: '#FFFFFF', navy: '#16153A', navyMid: '#4B4A72',
-  navyLight: '#9896B8', border: 'rgba(22,21,58,0.08)', green: '#A3FF3C', greenDark: '#3D8800',
+  bg: '#FAF7F0', card: '#FFFFFF', navy: '#16131F', navyMid: '#4D4858',
+  navyLight: '#8A8494', border: 'rgba(22,19,31,0.08)', green: '#DCFF4A', greenDark: '#5C7300',
 };
 const cardShadow = Platform.select({
-  ios: { shadowColor: 'rgba(22,21,58,0.08)', shadowOpacity: 1, shadowRadius: 12, shadowOffset: { width: 0, height: 3 } },
+  ios: { shadowColor: 'rgba(22,19,31,0.08)', shadowOpacity: 1, shadowRadius: 12, shadowOffset: { width: 0, height: 3 } },
   android: { elevation: 3 },
 }) as object;
 
@@ -77,7 +77,7 @@ export default function SupportScreen() {
   const [open, setOpen] = useState<number | null>(null);
   const faqs = isPt ? FAQ_PT : FAQ_EN;
 
-  const emailUrl = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(isPt ? 'Suporte Charlotte' : 'Charlotte Support')}`;
+  const emailUrl = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(isPt ? 'Suporte Queizy' : 'Queizy Support')}`;
   const waUrl = SUPPORT_WHATSAPP ? `https://wa.me/${SUPPORT_WHATSAPP}` : '';
 
   return (

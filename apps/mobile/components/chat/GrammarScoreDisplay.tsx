@@ -55,7 +55,7 @@ const GrammarScoreDisplay: React.FC<GrammarScoreDisplayProps> = ({
       case 'advanced':     return <Target size={size} color="#a78bfa" weight="fill" />;
       case 'intermediate': return <TrendUp size={size} color="#60a5fa" weight="fill" />;
       case 'simple':       return <Leaf size={size} color="#4ade80" weight="fill" />;
-      default:             return <NotePencil size={size} color="#9896B8" weight="fill" />;
+      default:             return <NotePencil size={size} color="#8A8494" weight="fill" />;
     }
   };
 
@@ -86,7 +86,7 @@ const GrammarScoreDisplay: React.FC<GrammarScoreDisplayProps> = ({
       {/* Header */}
       <View className="flex-row items-center justify-between mb-3">
         <View className="flex-row items-center space-x-2">
-          <BookOpen size={15} color="#A3FF3C" weight="fill" />
+          <BookOpen size={15} color="#DCFF4A" weight="fill" />
           <AppText className="text-primary font-medium text-sm">Grammar Analysis</AppText>
         </View>
         <View className="flex-row items-center space-x-1">
@@ -133,7 +133,7 @@ const GrammarScoreDisplay: React.FC<GrammarScoreDisplayProps> = ({
       {/* Mensagem de encorajamento */}
       <View className="bg-primary/10 rounded-lg p-3 border border-primary/20 mb-3">
         <View className="flex-row items-start space-x-2">
-          <TrendUp size={14} color="#A3FF3C" weight="fill" style={{ marginTop: 2 }} />
+          <TrendUp size={14} color="#DCFF4A" weight="fill" style={{ marginTop: 2 }} />
           <View className="flex-1">
             <AppText className="text-sm text-white/90 leading-relaxed">
               {getEncouragementMessage()}

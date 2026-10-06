@@ -31,7 +31,7 @@ const GRADUATION_VIDEO_URL =
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
 
 // Paleta premium: mais dourado/violeta pra distinguir do level-up regular.
-const CONFETTI_COLORS = ['#FBBF24', '#F59E0B', '#FCD34D', '#7C3AED', '#8B5CF6', '#FFFFFF', '#0EA5E9'];
+const CONFETTI_COLORS = ['#FBBF24', '#F59E0B', '#FCD34D', '#6B4BFF', '#8B5CF6', '#FFFFFF', '#0EA5E9'];
 const CONFETTI_COUNT  = 240;
 
 interface Piece {
@@ -273,7 +273,7 @@ export function GraduationModal({ event, onClose }: Props) {
             }}>
               <GraduationCap size={42} color="#F59E0B" weight="fill" />
             </View>
-            <AppText style={{ fontSize: 24, fontWeight: '900', color: '#16153A', marginBottom: 8, textAlign: 'center' }}>
+            <AppText style={{ fontSize: 24, fontWeight: '900', color: '#16131F', marginBottom: 8, textAlign: 'center' }}>
               You graduated!
             </AppText>
             <AppText style={{ fontSize: 15, fontWeight: '500', color: '#5A5878', textAlign: 'center', lineHeight: 22, marginBottom: 24 }}>

@@ -26,13 +26,13 @@ import { systemIsPt } from '@/lib/systemLang';
 
 // Light theme
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  border:    'rgba(22,21,58,0.10)',
-  green:     '#A3FF3C',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  border:    'rgba(22,19,31,0.10)',
+  green:     '#DCFF4A',
   error:     '#DC2626',
 };
 
@@ -239,7 +239,7 @@ const inputWrap = {
   borderWidth: 1,
   paddingHorizontal: 16,
   paddingVertical: 15,
-  shadowColor: 'rgba(22,21,58,0.06)',
+  shadowColor: 'rgba(22,19,31,0.06)',
   shadowOpacity: 1,
   shadowRadius: 8,
   shadowOffset: { width: 0, height: 2 },

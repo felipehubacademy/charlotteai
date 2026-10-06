@@ -17,17 +17,17 @@ const { width: W } = Dimensions.get('window');
 export const ONBOARDING_KEY = 'onboarding_v3';
 
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  border:    'rgba(22,21,58,0.08)',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  border:    'rgba(22,19,31,0.08)',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
   shadow: Platform.select({
     ios: {
-      shadowColor: 'rgba(22,21,58,0.10)',
+      shadowColor: 'rgba(22,19,31,0.10)',
       shadowOpacity: 1,
       shadowRadius: 16,
       shadowOffset: { width: 0, height: 4 },
@@ -62,7 +62,7 @@ function Dots({ total, active }: { total: number; active: number }) {
             width: i === active ? 20 : 6,
             height: 6,
             borderRadius: 3,
-            backgroundColor: i === active ? C.navy : 'rgba(22,21,58,0.18)',
+            backgroundColor: i === active ? C.navy : 'rgba(22,19,31,0.18)',
           }}
         />
       ))}
@@ -108,13 +108,13 @@ function Slide1() {
         <Animated.View style={{
           position: 'absolute',
           width: 140, height: 140, borderRadius: 70,
-          backgroundColor: 'rgba(163,255,60,0.10)',
+          backgroundColor: 'rgba(220,255,74,0.10)',
           transform: [{ scale: pulse1 }],
         }} />
         <Animated.View style={{
           position: 'absolute',
           width: 116, height: 116, borderRadius: 58,
-          backgroundColor: 'rgba(163,255,60,0.14)',
+          backgroundColor: 'rgba(220,255,74,0.14)',
           transform: [{ scale: pulse2 }],
         }} />
         <CharlotteAvatar size="xxl" />
@@ -215,9 +215,9 @@ function Slide2({ active }: { active: boolean }) {
               {isScore ? (
                 <View style={{
                   flexDirection: 'row', alignItems: 'center', gap: 8,
-                  backgroundColor: 'rgba(163,255,60,0.12)',
+                  backgroundColor: 'rgba(220,255,74,0.12)',
                   borderRadius: 10, paddingHorizontal: 12, paddingVertical: 9,
-                  borderWidth: 1, borderColor: 'rgba(163,255,60,0.25)',
+                  borderWidth: 1, borderColor: 'rgba(220,255,74,0.25)',
                 }}>
                   <CheckCircle size={15} color={C.greenDark} weight="fill" />
                   <View>
@@ -231,7 +231,7 @@ function Slide2({ active }: { active: boolean }) {
                 </View>
               ) : (
                 <View style={{
-                  backgroundColor: isCharlotte ? C.navy : 'rgba(22,21,58,0.07)',
+                  backgroundColor: isCharlotte ? C.navy : 'rgba(22,19,31,0.07)',
                   borderRadius: 14,
                   borderBottomLeftRadius: isCharlotte ? 3 : 14,
                   borderBottomRightRadius: isCharlotte ? 14 : 3,
@@ -320,7 +320,7 @@ function Slide3({ active, selectedGoal, onGoalSelect }: {
         </AppText>
         <AppText style={{
           fontSize: 12, fontWeight: '600', marginTop: 3,
-          color: isSelected ? 'rgba(163,255,60,0.7)' : C.navyLight,
+          color: isSelected ? 'rgba(220,255,74,0.7)' : C.navyLight,
         }}>
           {opt.sub}
         </AppText>

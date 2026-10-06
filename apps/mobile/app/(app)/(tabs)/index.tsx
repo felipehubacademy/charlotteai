@@ -45,17 +45,17 @@ let _streakSoundPlayedThisSession = false;
 let _introPlayedThisJsSession = false;
 
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
+  navy:      '#16131F',
   heroStrip: '#18193D',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  navyGhost: 'rgba(22,21,58,0.06)',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  navyGhost: 'rgba(22,19,31,0.06)',
   orange:    '#FF6B35',
   gold:      '#F59E0B',
-  greenDark: '#3D8800',
-  shadow:    'rgba(22,21,58,0.08)',
+  greenDark: '#5C7300',
+  shadow:    'rgba(22,19,31,0.08)',
 };
 
 const cardShadow = Platform.select({
@@ -517,7 +517,7 @@ export default function HomeTab() {
               />
             </View>
             <View style={{ flex: 1, paddingLeft: 0, paddingVertical: 16, justifyContent: 'center' }}>
-              <View style={{ backgroundColor: '#3B3A5A', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: greetingLoading ? 10 : 12, alignSelf: 'flex-start' }}>
+              <View style={{ backgroundColor: '#3A3546', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: greetingLoading ? 10 : 12, alignSelf: 'flex-start' }}>
                 {greetingLoading || !aiGreeting ? (
                   <TypingDots />
                 ) : (

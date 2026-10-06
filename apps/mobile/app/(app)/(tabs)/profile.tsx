@@ -39,31 +39,31 @@ const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  border:    'rgba(22,21,58,0.08)',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  border:    'rgba(22,19,31,0.08)',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
   error:     '#DC2626',
   inputBg:   '#ECEAF5',
 };
 
 const cardShadow = Platform.select({
-  ios:     { shadowColor: 'rgba(22,21,58,0.08)', shadowOpacity: 1, shadowRadius: 12, shadowOffset: { width: 0, height: 3 } },
+  ios:     { shadowColor: 'rgba(22,19,31,0.08)', shadowOpacity: 1, shadowRadius: 12, shadowOffset: { width: 0, height: 3 } },
   android: { elevation: 3 },
 }) as object;
 
 const LEVEL_ACCENT: Record<UserLevel, string> = {
   Novice:   '#D97706',
-  Inter:    '#7C3AED',
+  Inter:    '#6B4BFF',
   Advanced: '#0F766E',
 };
 const LEVEL_ACCENT_BG: Record<UserLevel, string> = {
   Novice:   '#FFFBEB',
-  Inter:    '#F5F3FF',
+  Inter:    '#F1EEFF',
   Advanced: '#F0FDFA',
 };
 
@@ -145,9 +145,9 @@ function SwitchRow({
       <Switch
         value={value}
         onValueChange={onValueChange}
-        trackColor={{ false: 'rgba(22,21,58,0.15)', true: C.green }}
+        trackColor={{ false: 'rgba(22,19,31,0.15)', true: C.green }}
         thumbColor={Platform.OS === 'android' ? (value ? C.greenDark : '#FFF') : undefined}
-        ios_backgroundColor="rgba(22,21,58,0.15)"
+        ios_backgroundColor="rgba(22,19,31,0.15)"
       />
     </View>
   );
@@ -571,7 +571,7 @@ export default function ProfileTab() {
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 12 }}>
                 <View style={{
                   width: 34, height: 34, borderRadius: 9,
-                  backgroundColor: 'rgba(22,21,58,0.05)',
+                  backgroundColor: 'rgba(22,19,31,0.05)',
                   alignItems: 'center', justifyContent: 'center',
                 }}>
                   <Microphone size={18} color={C.navyMid} weight="regular" />
@@ -588,7 +588,7 @@ export default function ProfileTab() {
                 </View>
               </View>
               {!voiceUsage.isUnlimited && (
-                <View style={{ height: 5, backgroundColor: 'rgba(22,21,58,0.07)', borderRadius: 3, overflow: 'hidden' }}>
+                <View style={{ height: 5, backgroundColor: 'rgba(22,19,31,0.07)', borderRadius: 3, overflow: 'hidden' }}>
                   <View style={{
                     height: 5, borderRadius: 3,
                     backgroundColor: voiceUsage.secondsRemaining < 60 ? C.error : voiceUsage.secondsRemaining < 120 ? '#F97316' : C.greenDark,
@@ -685,7 +685,7 @@ export default function ProfileTab() {
 
         <View style={{ paddingVertical: 28, alignItems: 'center', gap: 4 }}>
           <AppText style={{ fontSize: 11, color: C.navyLight, letterSpacing: 0.2 }}>
-            {`Charlotte AI v${Constants.expoConfig?.version ?? '1.0.0'}`}
+            {`Queizy v${Constants.expoConfig?.version ?? '1.0.0'}`}
           </AppText>
           {profile?.is_admin && (
             <AppText style={{ fontSize: 10, color: C.navyLight, opacity: 0.6, letterSpacing: 0.2 }}>

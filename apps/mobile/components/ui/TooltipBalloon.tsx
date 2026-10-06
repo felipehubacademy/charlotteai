@@ -49,7 +49,7 @@ export function TooltipBalloon({
       style={{
         position:        'absolute',
         left, top, width,
-        backgroundColor: '#16153A',
+        backgroundColor: '#16131F',
         borderRadius:    10,
         paddingHorizontal: 10,
         paddingVertical:   9,
@@ -85,8 +85,8 @@ export function TooltipBalloon({
         style={{
           position: 'absolute',
           ...(arrowDirection === 'down'
-            ? { bottom: -ARROW_SIZE, borderTopWidth: ARROW_SIZE, borderTopColor: '#16153A' }
-            : { top:    -ARROW_SIZE, borderBottomWidth: ARROW_SIZE, borderBottomColor: '#16153A' }),
+            ? { bottom: -ARROW_SIZE, borderTopWidth: ARROW_SIZE, borderTopColor: '#16131F' }
+            : { top:    -ARROW_SIZE, borderBottomWidth: ARROW_SIZE, borderBottomColor: '#16131F' }),
           left: arrowLeft,
           width: 0, height: 0,
           borderLeftWidth:  ARROW_SIZE,

@@ -14,10 +14,10 @@ import { Lightning } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useXPToast } from '@/components/ui/XPToastProvider';
 
-const GREEN_DARK  = '#3D8800';
-const NAVY_LIGHT  = '#9896B8';
-const GREEN_BG    = 'rgba(61,136,0,0.10)';
-const INACTIVE_BG = 'rgba(22,21,58,0.05)';
+const GREEN_DARK  = '#5C7300';
+const NAVY_LIGHT  = '#8A8494';
+const GREEN_BG    = 'rgba(92,115,0,0.10)';
+const INACTIVE_BG = 'rgba(22,19,31,0.05)';
 
 interface AnimatedXPBadgeProps {
   xp: number;

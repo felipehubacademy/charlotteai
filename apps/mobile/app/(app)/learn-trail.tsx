@@ -19,27 +19,27 @@ import { useLearnProgress } from '@/hooks/useLearnProgress';
 
 // ── Palette ────────────────────────────────────────────────────
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  ghost:     'rgba(22,21,58,0.06)',
-  ghostMid:  'rgba(22,21,58,0.12)',
-  border:    'rgba(22,21,58,0.10)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  ghost:     'rgba(22,19,31,0.06)',
+  ghostMid:  'rgba(22,19,31,0.12)',
+  border:    'rgba(22,19,31,0.10)',
   gold:      '#D97706',
   goldBg:    '#FFFBEB',
   goldBorder:'rgba(217,119,6,0.25)',
-  green:     '#3D8800',
-  greenBg:   '#F0FFD9',
-  greenBorder:'rgba(61,136,0,0.25)',
-  violet:    '#7C3AED',
-  violetBg:  '#F5F3FF',
+  green:     '#5C7300',
+  greenBg:   '#F8FFE0',
+  greenBorder:'rgba(92,115,0,0.25)',
+  violet:    '#6B4BFF',
+  violetBg:  '#F1EEFF',
   lockGray:  '#C4C3D4',
 };
 
 const shadow = Platform.select({
-  ios:     { shadowColor: 'rgba(22,21,58,0.10)', shadowOpacity: 1, shadowRadius: 10, shadowOffset: { width: 0, height: 2 } },
+  ios:     { shadowColor: 'rgba(22,19,31,0.10)', shadowOpacity: 1, shadowRadius: 10, shadowOffset: { width: 0, height: 2 } },
   android: {},
 });
 
@@ -51,7 +51,7 @@ const LEVEL_LABELS: Record<TrailLevel, string> = {
 
 const LEVEL_COLOR: Record<TrailLevel, string> = {
   Novice:   '#D97706',
-  Inter:    '#7C3AED',
+  Inter:    '#6B4BFF',
   Advanced: '#0F766E',
 };
 
@@ -246,7 +246,7 @@ export default function LearnTrailScreen() {
                       <View style={{
                         width: 36, height: 36, borderRadius: 10,
                         backgroundColor: introLocked
-                          ? 'rgba(22,21,58,0.05)'
+                          ? 'rgba(22,19,31,0.05)'
                           : done ? C.greenBg : accent + '20',
                         alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                       }}>
@@ -265,7 +265,7 @@ export default function LearnTrailScreen() {
                         </AppText>
                         <View style={{ flexDirection: 'row', gap: 6, marginTop: 5 }}>
                           <View style={{
-                            backgroundColor: introLocked ? 'rgba(22,21,58,0.05)' : accent + '15',
+                            backgroundColor: introLocked ? 'rgba(22,19,31,0.05)' : accent + '15',
                             borderRadius: 6,
                             paddingHorizontal: 7, paddingVertical: 3,
                             flexDirection: 'row', alignItems: 'center', gap: 3,

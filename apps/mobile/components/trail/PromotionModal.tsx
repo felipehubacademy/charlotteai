@@ -26,7 +26,7 @@ const PROMOTION_VIDEO_REMOTE: Record<string, string> = {
 
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
 
-const CONFETTI_COLORS = ['#7C3AED', '#F59E0B', '#10B981', '#EF4444', '#3B82F6', '#EC4899', '#FBBF24'];
+const CONFETTI_COLORS = ['#6B4BFF', '#F59E0B', '#10B981', '#EF4444', '#3B82F6', '#EC4899', '#FBBF24'];
 const CONFETTI_COUNT  = 220;
 
 interface Piece {
@@ -115,7 +115,7 @@ const LEVEL_LABEL: Record<string, string> = {
 };
 
 const LEVEL_COLOR: Record<string, string> = {
-  Inter:    '#7C3AED',
+  Inter:    '#6B4BFF',
   Advanced: '#0F766E',
 };
 
@@ -223,7 +223,7 @@ export function PromotionModal({ event, onClose }: Props) {
   const isPt   = event.toLevel === 'Inter'; // Inter ainda pode ser PT-explanation usuario; melhor pivot por toLevel
   // Idioma do modal: usa o nivel novo para decidir (Novice eh PT; Inter/Advanced EN).
   const labelLvl = LEVEL_LABEL[event.toLevel] ?? event.toLevel;
-  const accent   = LEVEL_COLOR[event.toLevel] ?? '#7C3AED';
+  const accent   = LEVEL_COLOR[event.toLevel] ?? '#6B4BFF';
   const isPortuguese = false; // promovido sempre cruzou pra >= Inter, mostrar EN.
 
   const title    = isPortuguese ? 'Parabéns!' : 'Congratulations!';
@@ -287,7 +287,7 @@ export function PromotionModal({ event, onClose }: Props) {
             }}>
               <Trophy size={42} color={accent} weight="fill" />
             </View>
-            <AppText style={{ fontSize: 24, fontWeight: '900', color: '#16153A', marginBottom: 8, textAlign: 'center' }}>
+            <AppText style={{ fontSize: 24, fontWeight: '900', color: '#16131F', marginBottom: 8, textAlign: 'center' }}>
               {title}
             </AppText>
             <AppText style={{ fontSize: 15, fontWeight: '500', color: '#5A5878', textAlign: 'center', lineHeight: 22, marginBottom: 24 }}>

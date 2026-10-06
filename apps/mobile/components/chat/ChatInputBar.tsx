@@ -13,14 +13,14 @@ import type { RateLimitState } from '@/hooks/useChat';
 // ── Light theme ───────────────────────────────────────────────
 const C = {
   bg:        '#FFFFFF',
-  pill:      '#F4F3FA',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  border:    'rgba(22,21,58,0.09)',
-  topBorder: 'rgba(22,21,58,0.08)',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
+  pill:      '#FAF7F0',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  border:    'rgba(22,19,31,0.09)',
+  topBorder: 'rgba(22,19,31,0.08)',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
   red:       '#DC2626',
 };
 
@@ -295,13 +295,13 @@ export default function ChatInputBar({
         {/* Lock pill */}
         <View style={{
           flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-          backgroundColor: '#F4F3FA', borderRadius: 24, borderWidth: 1,
-          borderColor: 'rgba(22,21,58,0.09)', minHeight: 44,
+          backgroundColor: '#FAF7F0', borderRadius: 24, borderWidth: 1,
+          borderColor: 'rgba(22,19,31,0.09)', minHeight: 44,
           paddingHorizontal: 16, paddingVertical: 10, gap: 8,
         }}>
-          <Lock size={15} color="#9896B8" weight="bold" />
+          <Lock size={15} color="#8A8494" weight="bold" />
           <AppText style={{
-            color: '#4B4A72', fontSize: 14, fontWeight: '600',
+            color: '#4D4858', fontSize: 14, fontWeight: '600',
             ...(Platform.OS === 'ios' ? { fontVariant: ['tabular-nums'] } : { fontFamily: 'monospace' }),
           }}>
             {pillLabel}
@@ -315,11 +315,11 @@ export default function ChatInputBar({
             activeOpacity={0.85}
             style={{
               alignItems: 'center', justifyContent: 'center',
-              backgroundColor: '#16153A', borderRadius: 24,
+              backgroundColor: '#16131F', borderRadius: 24,
               minHeight: 44, paddingHorizontal: 20, paddingVertical: 10,
             }}
           >
-            <AppText style={{ color: '#A3FF3C', fontSize: 14, fontWeight: '700' }}>
+            <AppText style={{ color: '#DCFF4A', fontSize: 14, fontWeight: '700' }}>
               {isNovice ? 'Ativar assinatura' : 'Upgrade your plan'}
             </AppText>
           </TouchableOpacity>
@@ -599,17 +599,17 @@ const styles = {
   pill: {
     flexDirection: 'row' as const,
     alignItems: 'center' as const,
-    backgroundColor: '#F4F3FA',
+    backgroundColor: '#FAF7F0',
     // 9999 → RN clampa em 50% da menor dimensao, garantindo capsule mesmo
     // quando o multiline TextInput cresce no Android.
     borderRadius: 9999,
     borderWidth: 1,
-    borderColor: 'rgba(22,21,58,0.09)',
+    borderColor: 'rgba(22,19,31,0.09)',
     minHeight: 44,
   },
   actionBtn: {
     width: 44, height: 44, borderRadius: 22,
-    backgroundColor: '#A3FF3C',
+    backgroundColor: '#DCFF4A',
     alignItems: 'center' as const,
     justifyContent: 'center' as const,
     flexShrink: 0,

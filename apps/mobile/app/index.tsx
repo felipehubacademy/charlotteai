@@ -5,25 +5,25 @@ import Svg, { Defs, Pattern, Circle, Rect } from 'react-native-svg';
 
 // ── Loading screen (minimal) ──────────────────────────────────────────────────
 // Mostrada enquanto o AuthProvider resolve a sessão no boot. O SplashOverlay
-// (splash.png "Charlotte AI English Teacher") já cobre a marca por cima nos
+// (splash.png, logo do Queizy) já cobre a marca por cima nos
 // primeiros ~3s; então aqui NÃO repetimos o avatar/wordmark da Charlotte (evita
 // a "segunda Charlotte" / dois loadings). Fica só o fundo + um spinner discreto,
 // que aparece se o load passar do splash (ex.: rede lenta/offline).
 
 function LoadingScreen() {
   return (
-    <View style={{ flex: 1, backgroundColor: '#F4F3FA', alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, backgroundColor: '#FAF7F0', alignItems: 'center', justifyContent: 'center' }}>
       {/* Dot texture — same as ChatBox */}
       <Svg style={StyleSheet.absoluteFill}>
         <Defs>
           <Pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-            <Circle cx="2" cy="2" r="1.1" fill="rgba(22,21,58,0.055)" />
+            <Circle cx="2" cy="2" r="1.1" fill="rgba(22,19,31,0.055)" />
           </Pattern>
         </Defs>
         <Rect width="100%" height="100%" fill="url(#dots)" />
       </Svg>
 
-      <ActivityIndicator size="small" color="#16153A" />
+      <ActivityIndicator size="small" color="#16131F" />
     </View>
   );
 }

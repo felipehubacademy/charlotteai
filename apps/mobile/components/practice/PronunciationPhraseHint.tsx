@@ -71,7 +71,7 @@ export function PronunciationPhraseHint({ userLevel, isPt, accent, onPhraseChang
           hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
         >
           <Lightbulb size={13} color={accent} weight="fill" />
-          <AppText style={{ fontSize: 12, fontWeight: '600', color: '#4B4A72' }}>
+          <AppText style={{ fontSize: 12, fontWeight: '600', color: '#4D4858' }}>
             Need an idea?
           </AppText>
         </TouchableOpacity>
@@ -92,8 +92,8 @@ export function PronunciationPhraseHint({ userLevel, isPt, accent, onPhraseChang
           paddingHorizontal: 14,
           paddingVertical:   12,
           borderWidth:      1,
-          borderColor:      'rgba(22,21,58,0.10)',
-          shadowColor:      'rgba(22,21,58,0.06)',
+          borderColor:      'rgba(22,19,31,0.10)',
+          shadowColor:      'rgba(22,19,31,0.06)',
           shadowOpacity:    1,
           shadowRadius:     4,
           shadowOffset:     { width: 0, height: 1 },
@@ -115,13 +115,13 @@ export function PronunciationPhraseHint({ userLevel, isPt, accent, onPhraseChang
             {isNovice ? 'Tente dizer' : 'Try saying'}
           </AppText>
           <AppText
-            style={{ fontSize: 16, fontWeight: '600', color: '#16153A', lineHeight: 22 }}
+            style={{ fontSize: 16, fontWeight: '600', color: '#16131F', lineHeight: 22 }}
           >
             {`"${phrase.text}"`}
           </AppText>
           {isNovice && phrase.hint && (
             <AppText
-              style={{ fontSize: 12, color: 'rgba(22,21,58,0.55)', marginTop: 4, fontStyle: 'italic' }}
+              style={{ fontSize: 12, color: 'rgba(22,19,31,0.55)', marginTop: 4, fontStyle: 'italic' }}
             >
               {phrase.hint}
             </AppText>
@@ -134,12 +134,12 @@ export function PronunciationPhraseHint({ userLevel, isPt, accent, onPhraseChang
             hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             style={{
               width: 28, height: 28, borderRadius: 14,
-              backgroundColor: 'rgba(22,21,58,0.06)',
+              backgroundColor: 'rgba(22,19,31,0.06)',
               alignItems: 'center', justifyContent: 'center',
             }}
             accessibilityLabel={isPt ? 'Outra frase' : 'Another phrase'}
           >
-            <ArrowsClockwise size={13} color="#4B4A72" weight="bold" />
+            <ArrowsClockwise size={13} color="#4D4858" weight="bold" />
           </TouchableOpacity>
           {!isNovice && (
             <TouchableOpacity
@@ -151,7 +151,7 @@ export function PronunciationPhraseHint({ userLevel, isPt, accent, onPhraseChang
               }}
               accessibilityLabel="Dismiss"
             >
-              <X size={12} color="#9896B8" weight="bold" />
+              <X size={12} color="#8A8494" weight="bold" />
             </TouchableOpacity>
           )}
         </View>

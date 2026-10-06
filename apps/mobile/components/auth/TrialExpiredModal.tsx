@@ -20,8 +20,8 @@ export function TrialExpiredModal() {
         <View style={{ backgroundColor: '#1A1939', borderRadius: 20, padding: 28, width: '100%', gap: 20, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }}>
 
           <View style={{ alignItems: 'center', gap: 12 }}>
-            <View style={{ width: 64, height: 64, borderRadius: 32, backgroundColor: 'rgba(163,255,60,0.08)', alignItems: 'center', justifyContent: 'center' }}>
-              <Timer size={30} color="#A3FF3C" weight="duotone" />
+            <View style={{ width: 64, height: 64, borderRadius: 32, backgroundColor: 'rgba(220,255,74,0.08)', alignItems: 'center', justifyContent: 'center' }}>
+              <Timer size={30} color="#DCFF4A" weight="duotone" />
             </View>
             <AppText style={{ fontSize: 20, fontWeight: '700', color: '#fff', textAlign: 'center' }}>
               {isPt ? 'Acesso encerrado' : 'Access expired'}
@@ -35,10 +35,10 @@ export function TrialExpiredModal() {
 
           <TouchableOpacity
             onPress={() => Linking.openURL(WHATSAPP_URL)}
-            style={{ backgroundColor: '#A3FF3C', borderRadius: 14, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+            style={{ backgroundColor: '#DCFF4A', borderRadius: 14, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}
           >
-            <WhatsappLogo size={18} color="#16153A" weight="fill" />
-            <AppText style={{ color: '#16153A', fontWeight: '700', fontSize: 15 }}>
+            <WhatsappLogo size={18} color="#16131F" weight="fill" />
+            <AppText style={{ color: '#16131F', fontWeight: '700', fontSize: 15 }}>
               {isPt ? 'Falar com a equipe' : 'Contact the team'}
             </AppText>
           </TouchableOpacity>

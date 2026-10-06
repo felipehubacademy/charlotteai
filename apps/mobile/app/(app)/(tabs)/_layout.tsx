@@ -12,7 +12,7 @@ import { UserLevel } from '@/lib/levelConfig';
 
 const LEVEL_ACCENT: Record<UserLevel, string> = {
   Novice:   '#D97706',
-  Inter:    '#7C3AED',
+  Inter:    '#6B4BFF',
   Advanced: '#0F766E',
 };
 
@@ -28,10 +28,10 @@ export default function TabLayout() {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarActiveTintColor: accent,
-        tabBarInactiveTintColor: '#9896B8',
+        tabBarInactiveTintColor: '#8A8494',
         tabBarStyle: {
           backgroundColor: '#FFFFFF',
-          borderTopColor: 'rgba(22,21,58,0.08)',
+          borderTopColor: 'rgba(22,19,31,0.08)',
           borderTopWidth: 1,
           height: Platform.OS === 'ios' ? 80 : 44 + insets.bottom,
           paddingTop: Platform.OS === 'ios' ? 8 : 2,
@@ -92,7 +92,7 @@ export default function TabLayout() {
               <View style={{
                 width: sz, height: sz, borderRadius: sz / 2,
                 borderWidth: focused ? 2 : 1.5,
-                borderColor: focused ? accent : '#9896B8',
+                borderColor: focused ? accent : '#8A8494',
                 overflow: 'hidden',
               }}>
                 <Image

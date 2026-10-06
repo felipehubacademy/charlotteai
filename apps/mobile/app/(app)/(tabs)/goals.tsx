@@ -21,14 +21,14 @@ import { localMidnightUTC } from '@/lib/dateUtils';
 const C = {
   bg:        '#F7F6FD',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  navyGhost: 'rgba(22,21,58,0.06)',
-  greenDark: '#3D8800',
-  greenBg:   '#F0FFD9',
-  border:    'rgba(22,21,58,0.10)',
-  shadow:    'rgba(22,21,58,0.08)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  navyGhost: 'rgba(22,19,31,0.06)',
+  greenDark: '#5C7300',
+  greenBg:   '#F8FFE0',
+  border:    'rgba(22,19,31,0.10)',
+  shadow:    'rgba(22,19,31,0.08)',
 };
 
 const isAndroid = Platform.OS === 'android';
@@ -393,7 +393,7 @@ export default function GoalsTab() {
                     </AppText>
 
                     {/* Progress bar */}
-                    <View style={{ height: 8, backgroundColor: 'rgba(22,21,58,0.08)', borderRadius: 4, overflow: 'hidden' }}>
+                    <View style={{ height: 8, backgroundColor: 'rgba(22,19,31,0.08)', borderRadius: 4, overflow: 'hidden' }}>
                       <View style={{
                         height: '100%',
                         width: `${Math.min(100, Math.round((weeklyState.current / weeklyState.challenge.target) * 100))}%` as any,

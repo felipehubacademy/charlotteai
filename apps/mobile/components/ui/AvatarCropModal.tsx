@@ -21,13 +21,13 @@ import { AppText } from '@/components/ui/Text';
 // ─── Theme ────────────────────────────────────────────────────────────────────
 const C = {
   bg:        '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  border:    'rgba(22,21,58,0.10)',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
-  overlay:   'rgba(22,21,58,0.85)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  border:    'rgba(22,19,31,0.10)',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
+  overlay:   'rgba(22,19,31,0.85)',
   error:     '#DC2626',
 };
 
@@ -479,7 +479,7 @@ const styles = StyleSheet.create({
     width: 96,
     height: 96,
     borderRadius: 48,
-    backgroundColor: 'rgba(163,255,60,0.10)',
+    backgroundColor: 'rgba(220,255,74,0.10)',
     borderWidth: 2,
     borderColor: C.green,
     alignItems: 'center',
@@ -511,7 +511,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   pickButtonSecondary: {
-    backgroundColor: 'rgba(22,21,58,0.06)',
+    backgroundColor: 'rgba(22,19,31,0.06)',
   },
   pickButtonText: {
     fontSize: 15,
@@ -558,7 +558,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: 'rgba(22,21,58,0.06)',
+    backgroundColor: 'rgba(22,19,31,0.06)',
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -32,19 +32,19 @@ function a(hex: string, alpha: number): string {
 
 // ── Palette ───────────────────────────────────────────────────────────────────
 const C = {
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
   card:      '#FFFFFF',
   bg:        '#EEEAF3',
-  border:    'rgba(22,21,58,0.06)',
-  borderMid: 'rgba(22,21,58,0.12)',
-  hairline:  'rgba(22,21,58,0.04)',
-  ghost:     'rgba(22,21,58,0.06)',
+  border:    'rgba(22,19,31,0.06)',
+  borderMid: 'rgba(22,19,31,0.12)',
+  hairline:  'rgba(22,19,31,0.04)',
+  ghost:     'rgba(22,19,31,0.06)',
 };
 const LEVEL_COLOR: Record<TrailLevel, string> = {
   Novice:   '#D97706',
-  Inter:    '#7C3AED',
+  Inter:    '#6B4BFF',
   Advanced: '#0F766E',
 };
 
@@ -56,12 +56,12 @@ const NODE_CONFIG: Record<NodeType, {
   color: string; Icon: any; label: string; labelPt: string;
 }> = {
   grammar:  { color: '#D97706', Icon: BookOpen,   label: 'Grammar',     labelPt: 'Gramática'  },
-  speaking: { color: '#7C3AED', Icon: Microphone, label: 'Speaking',    labelPt: 'Pronúncia'  },
-  roleplay: { color: '#3D8800', Icon: Play,        label: 'Role-play',   labelPt: 'Role-play'  },
-  chat:     { color: '#16153A', Icon: ChatCircle,  label: 'Guided Chat', labelPt: 'Chat Guiado' },
+  speaking: { color: '#6B4BFF', Icon: Microphone, label: 'Speaking',    labelPt: 'Pronúncia'  },
+  roleplay: { color: '#5C7300', Icon: Play,        label: 'Role-play',   labelPt: 'Role-play'  },
+  chat:     { color: '#16131F', Icon: ChatCircle,  label: 'Guided Chat', labelPt: 'Chat Guiado' },
 };
 
-const NEXT_GREEN = '#3D8800';
+const NEXT_GREEN = '#5C7300';
 const TOPICS_PER_MODULE = 4;
 
 // ── Domain ────────────────────────────────────────────────────────────────────
@@ -298,10 +298,10 @@ function ModuleCard({
   const isLocked = data.state === 'locked';
 
   const elevation = isActive ? Platform.select({
-    ios:     { shadowColor: 'rgba(22,21,58,0.20)', shadowOpacity: 1, shadowRadius: 24, shadowOffset: { width: 0, height: 8 } },
+    ios:     { shadowColor: 'rgba(22,19,31,0.20)', shadowOpacity: 1, shadowRadius: 24, shadowOffset: { width: 0, height: 8 } },
     android: { elevation: 4 },
   }) : Platform.select({
-    ios:     { shadowColor: 'rgba(22,21,58,0.10)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
+    ios:     { shadowColor: 'rgba(22,19,31,0.10)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
     android: { elevation: 1 },
   });
 
@@ -718,9 +718,9 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
       {isPreview && (
         <View style={{
           marginHorizontal: 20, marginBottom: 16, padding: 14,
-          backgroundColor: 'rgba(124,58,237,0.08)',
+          backgroundColor: 'rgba(107,75,255,0.08)',
           borderRadius: 12,
-          borderWidth: 1, borderColor: 'rgba(124,58,237,0.15)',
+          borderWidth: 1, borderColor: 'rgba(107,75,255,0.15)',
         }}>
           <AppText style={{ fontSize: 13, fontWeight: '700', color: '#5B21B6', marginBottom: 2 }}>
             {isPt ? 'Pré-visualização' : 'Preview'}

@@ -24,14 +24,14 @@ import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  muted:     '#9896B8',
-  border:    'rgba(22,21,58,0.10)',
-  greenDark: '#3D8800',
-  greenBg:   'rgba(61,136,0,0.08)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  muted:     '#8A8494',
+  border:    'rgba(22,19,31,0.10)',
+  greenDark: '#5C7300',
+  greenBg:   'rgba(92,115,0,0.08)',
   red:       '#DC2626',
   redBg:     'rgba(220,38,38,0.07)',
   gold:      '#D97706',
@@ -40,7 +40,7 @@ const C = {
 };
 
 const cardShadow = Platform.select({
-  ios:     { shadowColor: 'rgba(22,21,58,0.08)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
+  ios:     { shadowColor: 'rgba(22,19,31,0.08)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
   android: { elevation: 2 },
 }) as object;
 
@@ -83,7 +83,7 @@ export default function MyVocabularyScreen() {
   const userId = session?.user?.id;
 
   // Level accent color — matches review-session and home screen
-  const levelAccent = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
+  const levelAccent = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#6B4BFF' : '#0F766E';
 
 
   const [items,     setItems]    = useState<VocabItem[]>([]);

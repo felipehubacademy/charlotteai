@@ -5,16 +5,16 @@ import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
 
 const C = {
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  border:    'rgba(22,21,58,0.07)',
-  bg:        '#F4F3FA',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
-  greenBg:   'rgba(163,255,60,0.1)',
-  greenBorder: 'rgba(163,255,60,0.3)',
-  rowBg:     'rgba(22,21,58,0.03)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  border:    'rgba(22,19,31,0.07)',
+  bg:        '#FAF7F0',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
+  greenBg:   'rgba(220,255,74,0.1)',
+  greenBorder: 'rgba(220,255,74,0.3)',
+  rowBg:     'rgba(22,19,31,0.03)',
 };
 
 export interface LeaderboardEntry {
@@ -34,7 +34,7 @@ interface LevelLeaderboardProps {
   refreshTrigger?: number;
 }
 
-const AVATAR_COLORS = ['#A3FF3C', '#60a5fa', '#f472b6', '#fb923c', '#a78bfa'];
+const AVATAR_COLORS = ['#DCFF4A', '#60a5fa', '#ff4f8b', '#fb923c', '#a78bfa'];
 const PODIUM_ICONS: React.ReactNode[] = [
   <Trophy key="1" size={22} color="#facc15" weight="fill" />,
   <Medal key="2" size={20} color="#9ca3af" weight="fill" />,
@@ -57,7 +57,7 @@ const UserAvatar: React.FC<{ entry: LeaderboardEntry; size?: number; isCurrentUs
     borderWidth: isCurrentUser ? 2 : 0,
     borderColor: C.green,
   }}>
-    <AppText style={{ color: '#16153A', fontWeight: '800', fontSize: size * 0.38 }}>
+    <AppText style={{ color: '#16131F', fontWeight: '800', fontSize: size * 0.38 }}>
       {entry.displayName.charAt(0).toUpperCase()}
     </AppText>
   </View>

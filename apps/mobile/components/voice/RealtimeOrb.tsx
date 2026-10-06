@@ -9,9 +9,9 @@ interface RealtimeOrbProps {
 }
 
 const STATUS_COLORS: Record<OrbStatus, { core: string; ring: string; glow: string }> = {
-  disconnected: { core: 'rgba(163,255,60,0.08)', ring: 'rgba(163,255,60,0.3)', glow: 'rgba(163,255,60,0.15)' },
+  disconnected: { core: 'rgba(220,255,74,0.08)', ring: 'rgba(220,255,74,0.3)', glow: 'rgba(220,255,74,0.15)' },
   connecting:   { core: 'rgba(255,165,0,0.15)',  ring: 'rgba(255,165,0,0.4)',  glow: 'rgba(255,165,0,0.2)' },
-  connected:    { core: 'rgba(163,255,60,0.2)',  ring: 'rgba(163,255,60,0.6)', glow: 'rgba(163,255,60,0.3)' },
+  connected:    { core: 'rgba(220,255,74,0.2)',  ring: 'rgba(220,255,74,0.6)', glow: 'rgba(220,255,74,0.3)' },
   error:        { core: 'rgba(239,68,68,0.15)',  ring: 'rgba(239,68,68,0.5)', glow: 'rgba(239,68,68,0.2)' },
 };
 
@@ -123,7 +123,7 @@ export default function RealtimeOrb({ status, size = 112 }: RealtimeOrbProps) {
               width: dotSize,
               height: dotSize,
               borderRadius: dotSize / 2,
-              backgroundColor: status === 'connecting' ? '#FFA500' : '#A3FF3C',
+              backgroundColor: status === 'connecting' ? '#FFA500' : '#DCFF4A',
               opacity: isActive ? particleAnims[i] : 0,
               transform: [{ translateX: tx }, { translateY: ty }],
             }}

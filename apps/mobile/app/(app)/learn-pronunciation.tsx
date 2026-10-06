@@ -25,24 +25,24 @@ import BluetoothMicHint from '@/components/BluetoothMicHint';
 
 // ── Palette ────────────────────────────────────────────────────
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  ghost:     'rgba(22,21,58,0.06)',
-  border:    'rgba(22,21,58,0.10)',
-  violet:    '#7C3AED',
-  violetBg:  '#F5F3FF',
-  greenDark: '#3D8800',
-  greenBg:   '#F0FFD9',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  ghost:     'rgba(22,19,31,0.06)',
+  border:    'rgba(22,19,31,0.10)',
+  violet:    '#6B4BFF',
+  violetBg:  '#F1EEFF',
+  greenDark: '#5C7300',
+  greenBg:   '#F8FFE0',
   red:       '#DC2626',
   redBg:     'rgba(220,38,38,0.07)',
   gold:      '#F59E0B',
 };
 
 const shadow = Platform.select({
-  ios:     { shadowColor: 'rgba(22,21,58,0.10)', shadowOpacity: 1, shadowRadius: 14, shadowOffset: { width: 0, height: 3 } },
+  ios:     { shadowColor: 'rgba(22,19,31,0.10)', shadowOpacity: 1, shadowRadius: 14, shadowOffset: { width: 0, height: 3 } },
   android: { elevation: 3 },
 });
 
@@ -441,7 +441,7 @@ export default function LearnPronunciationScreen() {
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
               <View style={{
                 paddingHorizontal: 10, paddingVertical: 4, borderRadius: 10,
-                backgroundColor: C.violetBg, borderWidth: 1, borderColor: 'rgba(124,58,237,0.2)',
+                backgroundColor: C.violetBg, borderWidth: 1, borderColor: 'rgba(107,75,255,0.2)',
               }}>
                 <AppText style={{ fontSize: 11, fontWeight: '700', color: C.violet }}>
                   {TYPE_LABELS[exerciseType]}
@@ -546,7 +546,7 @@ export default function LearnPronunciationScreen() {
                   flexDirection: 'row', alignItems: 'center', gap: 14,
                   backgroundColor: C.violetBg, borderRadius: 16,
                   paddingHorizontal: 18, paddingVertical: 16, marginBottom: 20,
-                  borderWidth: 1, borderColor: 'rgba(124,58,237,0.15)',
+                  borderWidth: 1, borderColor: 'rgba(107,75,255,0.15)',
                 }}
               >
                 <View style={{
@@ -567,7 +567,7 @@ export default function LearnPronunciationScreen() {
                     {isPlaying ? 'Playing…' : 'Tap to listen'}
                   </AppText>
                 </View>
-                <Headphones size={20} color="rgba(124,58,237,0.45)" weight="regular" />
+                <Headphones size={20} color="rgba(107,75,255,0.45)" weight="regular" />
               </TouchableOpacity>
 
               {/* Spacer — fills space when no result yet */}
@@ -663,7 +663,7 @@ export default function LearnPronunciationScreen() {
                         padding: 12, borderRadius: 12, marginBottom: 10,
                         backgroundColor: listenWriteCorrect ? C.greenBg : C.redBg,
                         borderWidth: 1,
-                        borderColor: listenWriteCorrect ? 'rgba(61,136,0,0.2)' : 'rgba(220,38,38,0.18)',
+                        borderColor: listenWriteCorrect ? 'rgba(92,115,0,0.2)' : 'rgba(220,38,38,0.18)',
                       }}>
                         {listenWriteCorrect
                           ? <CheckCircle size={18} color={C.greenDark} weight="fill" />

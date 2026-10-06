@@ -50,15 +50,15 @@ const GUIDED_CHAT_BUDGET_SEC: Record<V2Level, number> = {
 };
 
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  greenDark: '#3D8800',
-  green:     '#3D8800',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  greenDark: '#5C7300',
+  green:     '#5C7300',
   red:       '#DC2626',
-  border:    'rgba(22,21,58,0.08)',
+  border:    'rgba(22,19,31,0.08)',
 };
 
 export default function GuidedChatExerciseScreen() {
@@ -405,7 +405,7 @@ export default function GuidedChatExerciseScreen() {
           </AppText>
         </View>
         <View style={{
-          backgroundColor: timerWarn ? 'rgba(220,38,38,0.10)' : 'rgba(22,21,58,0.06)',
+          backgroundColor: timerWarn ? 'rgba(220,38,38,0.10)' : 'rgba(22,19,31,0.06)',
           paddingHorizontal: 10, paddingVertical: 5,
           borderRadius: 10, minWidth: 56, alignItems: 'center',
         }}>
@@ -423,7 +423,7 @@ export default function GuidedChatExerciseScreen() {
       <View style={{
         marginHorizontal: 14, marginTop: 6, marginBottom: 10,
         padding: 14, borderRadius: 14,
-        backgroundColor: 'rgba(22,21,58,0.04)',
+        backgroundColor: 'rgba(22,19,31,0.04)',
         borderWidth: 1, borderColor: C.border,
       }}>
         <View style={{
@@ -598,7 +598,7 @@ export default function GuidedChatExerciseScreen() {
               minHeight: 44, maxHeight: 120,
               paddingHorizontal: 14, paddingVertical: 10,
               borderRadius: 22,
-              backgroundColor: 'rgba(22,21,58,0.05)',
+              backgroundColor: 'rgba(22,19,31,0.05)',
               color: C.navy, fontSize: 15, lineHeight: 20,
             }}
           />
@@ -608,7 +608,7 @@ export default function GuidedChatExerciseScreen() {
             style={{
               width: 44, height: 44, borderRadius: 22,
               backgroundColor: (!draft.trim() || isProcessing || sessionComplete)
-                ? 'rgba(22,21,58,0.15)'
+                ? 'rgba(22,19,31,0.15)'
                 : C.green,
               alignItems: 'center', justifyContent: 'center',
             }}
@@ -625,7 +625,7 @@ export default function GuidedChatExerciseScreen() {
       {sessionComplete && (
         <View style={{
           position: 'absolute', top: 0, bottom: 0, left: 0, right: 0,
-          backgroundColor: 'rgba(22,21,58,0.55)',
+          backgroundColor: 'rgba(22,19,31,0.55)',
           alignItems: 'center', justifyContent: 'center', padding: 24,
         }}>
           <View style={{
@@ -636,7 +636,7 @@ export default function GuidedChatExerciseScreen() {
           }}>
             <View style={{
               width: 64, height: 64, borderRadius: 32,
-              backgroundColor: allObjectivesDone ? 'rgba(61,136,0,0.12)' : 'rgba(217,119,6,0.12)',
+              backgroundColor: allObjectivesDone ? 'rgba(92,115,0,0.12)' : 'rgba(217,119,6,0.12)',
               alignItems: 'center', justifyContent: 'center', marginBottom: 16,
             }}>
               <Trophy size={32} color={allObjectivesDone ? C.greenDark : '#B45309'} weight="fill" />
@@ -674,8 +674,8 @@ export default function GuidedChatExerciseScreen() {
               <View style={{
                 width: '100%',
                 padding: 12, borderRadius: 12, marginBottom: 16,
-                backgroundColor: 'rgba(61,136,0,0.08)',
-                borderWidth: 1, borderColor: 'rgba(61,136,0,0.20)',
+                backgroundColor: 'rgba(92,115,0,0.08)',
+                borderWidth: 1, borderColor: 'rgba(92,115,0,0.20)',
               }}>
                 <AppText style={{ fontSize: 13, color: C.navy, lineHeight: 18 }}>
                   {isPt ? gc.recap_pt : gc.recap_en}
@@ -713,7 +713,7 @@ export default function GuidedChatExerciseScreen() {
                 onPress={restartSession}
                 style={{
                   flex: 1, paddingVertical: 14, borderRadius: 14,
-                  backgroundColor: 'rgba(22,21,58,0.06)',
+                  backgroundColor: 'rgba(22,19,31,0.06)',
                   alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8,
                 }}
               >

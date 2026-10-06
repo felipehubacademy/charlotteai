@@ -40,14 +40,14 @@ interface WordTiming {
 // ── Palette ────────────────────────────────────────────────────
 const LEVEL_ACCENT: Record<string, { main: string; light: string }> = {
   Novice:   { main: '#D97706', light: '#FCD34D' },
-  Inter:    { main: '#7C3AED', light: '#A78BFA' },
+  Inter:    { main: '#6B4BFF', light: '#A78BFA' },
   Advanced: { main: '#0F766E', light: '#2DD4BF' },
 };
 
 function buildPalette(level: string) {
   const { main, light } = LEVEL_ACCENT[level] ?? LEVEL_ACCENT.Inter;
   return {
-    bg:           '#16153A',
+    bg:           '#16131F',
     white:        '#FFFFFF',
     wordDim:      'rgba(255,255,255,0.28)',
     wordSpoken:   '#FFFFFF',

@@ -14,7 +14,7 @@ export default function AppLayout() {
   // When the user signs out, isAuthenticated becomes false before AuthGuard
   // can fire router.replace. Returning null here causes a blank white flash.
   // Render a solid background instead so the transition is invisible.
-  if (!isAuthenticated) return <View style={{ flex: 1, backgroundColor: '#F4F3FA' }} />;
+  if (!isAuthenticated) return <View style={{ flex: 1, backgroundColor: '#FAF7F0' }} />;
 
   return (
     <AppErrorBoundary>

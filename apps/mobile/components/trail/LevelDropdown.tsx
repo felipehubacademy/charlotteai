@@ -21,7 +21,7 @@ const LEVEL_SHORT: Record<Level, string> = {
 
 const LEVEL_COLOR: Record<Level, string> = {
   Novice:   '#D97706',
-  Inter:    '#7C3AED',
+  Inter:    '#6B4BFF',
   Advanced: '#0F766E',
 };
 
@@ -29,12 +29,12 @@ const LEVELS: Level[] = ['Novice', 'Inter', 'Advanced'];
 
 const C = {
   card:     '#FFFFFF',
-  navy:     '#16153A',
-  navyDim:  '#9896B8',
-  border:   'rgba(22,21,58,0.08)',
-  divider:  'rgba(22,21,58,0.06)',
-  lockBg:   'rgba(22,21,58,0.06)',
-  shadow:   'rgba(22,21,58,0.35)',
+  navy:     '#16131F',
+  navyDim:  '#8A8494',
+  border:   'rgba(22,19,31,0.08)',
+  divider:  'rgba(22,19,31,0.06)',
+  lockBg:   'rgba(22,19,31,0.06)',
+  shadow:   'rgba(22,19,31,0.35)',
   backdrop: 'rgba(0,0,0,0.18)',
 };
 

@@ -43,15 +43,15 @@ const RECORDING_OPTIONS = {
 };
 
 const C = {
-  bg:          '#F4F3FA',
+  bg:          '#FAF7F0',
   card:        '#FFFFFF',
-  navy:        '#16153A',
-  navyMid:     '#4B4A72',
-  navyLight:   '#9896B8',
-  greenDark:   '#3D8800',
-  green:       '#3D8800',
+  navy:        '#16131F',
+  navyMid:     '#4D4858',
+  navyLight:   '#8A8494',
+  greenDark:   '#5C7300',
+  green:       '#5C7300',
   red:         '#DC2626',
-  border:      'rgba(22,21,58,0.08)',
+  border:      'rgba(22,19,31,0.08)',
 };
 
 // ── Main ──────────────────────────────────────────────────────────
@@ -646,7 +646,7 @@ export default function RolePlayExerciseScreen() {
         </View>
         {/* Timer pill — fica vermelho nos últimos 30s */}
         <View style={{
-          backgroundColor: timerWarn ? 'rgba(220,38,38,0.10)' : 'rgba(22,21,58,0.06)',
+          backgroundColor: timerWarn ? 'rgba(220,38,38,0.10)' : 'rgba(22,19,31,0.06)',
           paddingHorizontal: 10, paddingVertical: 5,
           borderRadius: 10,
           minWidth: 56, alignItems: 'center',
@@ -665,7 +665,7 @@ export default function RolePlayExerciseScreen() {
       <View style={{
         marginHorizontal: 14, marginTop: 6, marginBottom: 10,
         padding: 14, borderRadius: 14,
-        backgroundColor: 'rgba(22,21,58,0.04)',
+        backgroundColor: 'rgba(22,19,31,0.04)',
         borderWidth: 1, borderColor: C.border,
       }}>
         <View style={{
@@ -846,7 +846,7 @@ export default function RolePlayExerciseScreen() {
               transform: [{ scale: micPulse }],
               width: 64, height: 64, borderRadius: 32,
               backgroundColor: (sessionComplete || isProcessing || playingMessageId)
-                ? 'rgba(22,21,58,0.15)'
+                ? 'rgba(22,19,31,0.15)'
                 : (isRecording ? C.red : C.green),
               alignItems: 'center', justifyContent: 'center',
               opacity: (isProcessing || playingMessageId) ? 0.5 : 1,
@@ -866,7 +866,7 @@ export default function RolePlayExerciseScreen() {
       {sessionComplete && (
         <View style={{
           ...StyleSheetAbsoluteFill,
-          backgroundColor: 'rgba(22,21,58,0.55)',
+          backgroundColor: 'rgba(22,19,31,0.55)',
           alignItems: 'center', justifyContent: 'center',
           padding: 24,
         }}>
@@ -878,7 +878,7 @@ export default function RolePlayExerciseScreen() {
           }}>
             <View style={{
               width: 64, height: 64, borderRadius: 32,
-              backgroundColor: allObjectivesDone ? 'rgba(61,136,0,0.12)' : 'rgba(217,119,6,0.12)',
+              backgroundColor: allObjectivesDone ? 'rgba(92,115,0,0.12)' : 'rgba(217,119,6,0.12)',
               alignItems: 'center', justifyContent: 'center', marginBottom: 16,
             }}>
               <Trophy size={32} color={allObjectivesDone ? C.greenDark : '#B45309'} weight="fill" />
@@ -901,7 +901,7 @@ export default function RolePlayExerciseScreen() {
               <View style={{ width: '100%', marginBottom: 16 }}>
                 {!!lastUserTranscript && (
                   <View style={{
-                    backgroundColor: 'rgba(22,21,58,0.06)',
+                    backgroundColor: 'rgba(22,19,31,0.06)',
                     borderRadius: 12, padding: 12, marginBottom: 8,
                   }}>
                     <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navyMid, textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
@@ -916,11 +916,11 @@ export default function RolePlayExerciseScreen() {
                 )}
                 {!allObjectivesDone && rp.objectives[0]?.hint_en && (
                   <View style={{
-                    backgroundColor: 'rgba(124,58,237,0.08)',
+                    backgroundColor: 'rgba(107,75,255,0.08)',
                     borderRadius: 12, padding: 12,
-                    borderWidth: 1, borderColor: 'rgba(124,58,237,0.25)',
+                    borderWidth: 1, borderColor: 'rgba(107,75,255,0.25)',
                   }}>
-                    <AppText style={{ fontSize: 11, fontWeight: '700', color: '#7C3AED', textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
+                    <AppText style={{ fontSize: 11, fontWeight: '700', color: '#6B4BFF', textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
                       {isPt ? 'A resposta era' : 'The answer was'}
                     </AppText>
                     <AppText style={{ fontSize: 16, fontWeight: '700', color: C.navy }}>
@@ -983,7 +983,7 @@ export default function RolePlayExerciseScreen() {
                 onPress={restartSession}
                 style={{
                   flex: 1, paddingVertical: 14, borderRadius: 14,
-                  backgroundColor: 'rgba(22,21,58,0.06)',
+                  backgroundColor: 'rgba(22,19,31,0.06)',
                   alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8,
                 }}
               >

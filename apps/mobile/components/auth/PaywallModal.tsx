@@ -31,16 +31,16 @@ import {
 } from '@/lib/purchases';
 
 const C = {
-  bg:         '#F4F3FA',
+  bg:         '#FAF7F0',
   card:       '#FFFFFF',
-  cardBorder: 'rgba(22,21,58,0.10)',
-  green:      '#A3FF3C',
-  greenDark:  '#3D8800',
-  navy:       '#16153A',
-  navyMid:    '#4B4A72',
+  cardBorder: 'rgba(22,19,31,0.10)',
+  green:      '#DCFF4A',
+  greenDark:  '#5C7300',
+  navy:       '#16131F',
+  navyMid:    '#4D4858',
   white:      '#FFFFFF',
-  muted:      '#9896B8',
-  highlight:  'rgba(163,255,60,0.12)',
+  muted:      '#8A8494',
+  highlight:  'rgba(220,255,74,0.12)',
   lossRed:    '#FF4444',
   lossRedBg:  'rgba(255,68,68,0.08)',
 };
@@ -364,7 +364,7 @@ export function PaywallModal() {
             marginBottom: 28,
             gap: 14,
             ...Platform.select({
-              ios:     { shadowColor: 'rgba(22,21,58,0.08)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
+              ios:     { shadowColor: 'rgba(22,19,31,0.08)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
               android: { elevation: 2 },
             }),
           }}>
@@ -396,7 +396,7 @@ export function PaywallModal() {
                   borderColor: selected.includes('yearly') ? C.greenDark : C.cardBorder,
                   padding: 18,
                   ...Platform.select({
-                    ios:     { shadowColor: 'rgba(22,21,58,0.08)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
+                    ios:     { shadowColor: 'rgba(22,19,31,0.08)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
                     android: { elevation: selected.includes('yearly') ? 0 : 2 },
                   }),
                 }}
@@ -438,7 +438,7 @@ export function PaywallModal() {
                   borderColor: selected.includes('monthly') ? C.greenDark : C.cardBorder,
                   padding: 18,
                   ...Platform.select({
-                    ios:     { shadowColor: 'rgba(22,21,58,0.06)', shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 1 } },
+                    ios:     { shadowColor: 'rgba(22,19,31,0.06)', shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 1 } },
                     android: { elevation: selected.includes('monthly') ? 0 : 1 },
                   }),
                 }}

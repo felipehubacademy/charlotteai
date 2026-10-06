@@ -49,13 +49,13 @@ const MODE_PRACTICE_TYPES: Record<Mode, string[]> = {
 };
 
 const C = {
-  bg:        '#F4F3FA',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  navyGhost: 'rgba(22,21,58,0.06)',
-  border:    'rgba(22,21,58,0.10)',
-  greenAccent: '#A3FF3C',
+  bg:        '#FAF7F0',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  navyGhost: 'rgba(22,19,31,0.06)',
+  border:    'rgba(22,19,31,0.10)',
+  greenAccent: '#DCFF4A',
   red:       '#DC2626',
 };
 
@@ -75,7 +75,7 @@ export default function PracticeTab() {
   const userName  = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
   const userId    = profile?.id ?? '';
   const isPt      = systemIsPt; // chrome da practice: idioma do device
-  const accent    = userLevel === 'Novice' ? '#D97706' : userLevel === 'Inter' ? '#7C3AED' : '#0F766E';
+  const accent    = userLevel === 'Novice' ? '#D97706' : userLevel === 'Inter' ? '#6B4BFF' : '#0F766E';
 
   // Mode state — vem do URL ?mode=, default 'chat'
   const params = useLocalSearchParams<{ mode?: string }>();
@@ -394,7 +394,7 @@ export default function PracticeTab() {
             borderRadius: 22,
             padding: 4,
             borderWidth: 1, borderColor: C.border,
-            shadowColor: 'rgba(22,21,58,0.08)',
+            shadowColor: 'rgba(22,19,31,0.08)',
             shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
             elevation: 2,
           }}>
@@ -405,7 +405,7 @@ export default function PracticeTab() {
               // âmbar = 3+ dias sem praticar. Recentes (0-2) sem dot.
               const dotColor =
                 active || d < 0 ? null
-                : d === 999 ? '#3D8800'      // novo (nunca tentou)
+                : d === 999 ? '#5C7300'      // novo (nunca tentou)
                 : d >= 3    ? '#D97706'      // atrasado
                             : null;
               return (
@@ -473,7 +473,7 @@ export default function PracticeTab() {
                     backgroundColor: '#FFFFFF',
                     alignItems: 'center', justifyContent: 'center',
                     borderWidth: 1, borderColor: C.border,
-                    shadowColor: 'rgba(22,21,58,0.12)',
+                    shadowColor: 'rgba(22,19,31,0.12)',
                     shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
                     elevation: 3,
                   }}
@@ -489,7 +489,7 @@ export default function PracticeTab() {
                     backgroundColor: '#FFFFFF',
                     alignItems: 'center', justifyContent: 'center',
                     borderWidth: 1, borderColor: C.border,
-                    shadowColor: 'rgba(22,21,58,0.12)',
+                    shadowColor: 'rgba(22,19,31,0.12)',
                     shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
                     elevation: 3,
                   }}
@@ -507,7 +507,7 @@ export default function PracticeTab() {
                 backgroundColor: '#FFFFFF',
                 alignItems: 'center', justifyContent: 'center',
                 borderWidth: 1, borderColor: C.border,
-                shadowColor: 'rgba(22,21,58,0.12)',
+                shadowColor: 'rgba(22,19,31,0.12)',
                 shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
                 elevation: 3,
               }}
@@ -607,7 +607,7 @@ export default function PracticeTab() {
               paddingHorizontal: 24, paddingTop: 18, paddingBottom: 28,
             }}
           >
-            <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,21,58,0.15)', alignSelf: 'center', marginBottom: 16 }} />
+            <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 16 }} />
 
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 14 }}>
               <AppText style={{ fontSize: 17, fontWeight: '800', color: C.navy, flex: 1 }}>
@@ -734,7 +734,7 @@ function ChatSessionsDrawer({
         <View style={{
           flexDirection: 'row', alignItems: 'center',
           paddingHorizontal: 18, paddingVertical: 14,
-          borderBottomWidth: 1, borderBottomColor: 'rgba(22,21,58,0.08)',
+          borderBottomWidth: 1, borderBottomColor: 'rgba(22,19,31,0.08)',
         }}>
           <AppText style={{ fontSize: 15, fontWeight: '800', color: C.navy, flex: 1 }}>
             {isPt ? 'Conversas anteriores' : 'Previous conversations'}
@@ -796,9 +796,9 @@ function ChatSessionItem({ session, isPt, isActive, onPress, onDelete }: {
   return (
     <View style={{
       paddingVertical: 14, paddingHorizontal: 4,
-      borderBottomWidth: 1, borderBottomColor: 'rgba(22,21,58,0.06)',
+      borderBottomWidth: 1, borderBottomColor: 'rgba(22,19,31,0.06)',
       flexDirection: 'row', alignItems: 'center', gap: 8,
-      backgroundColor: isActive ? 'rgba(163,255,60,0.10)' : 'transparent',
+      backgroundColor: isActive ? 'rgba(220,255,74,0.10)' : 'transparent',
     }}>
       <TouchableOpacity
         onPress={onPress}
@@ -808,19 +808,19 @@ function ChatSessionItem({ session, isPt, isActive, onPress, onDelete }: {
         <View style={{ flex: 1 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
             <AppText style={{ fontSize: 13, fontWeight: '800', color: C.navy }}>{whenLabel}</AppText>
-            <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,21,58,0.3)' }} />
-            <AppText style={{ fontSize: 12, fontWeight: '600', color: 'rgba(22,21,58,0.55)' }}>
+            <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,19,31,0.3)' }} />
+            <AppText style={{ fontSize: 12, fontWeight: '600', color: 'rgba(22,19,31,0.55)' }}>
               {session.message_count} {isPt ? 'msg' : 'msg'}
             </AppText>
           </View>
           <AppText
-            style={{ fontSize: 13, color: 'rgba(22,21,58,0.7)', lineHeight: 18 }}
+            style={{ fontSize: 13, color: 'rgba(22,19,31,0.7)', lineHeight: 18 }}
             numberOfLines={2}
           >
             {session.summary ?? (isPt ? 'Sem resumo disponível.' : 'No summary available.')}
           </AppText>
         </View>
-        <CaretRight size={14} color="rgba(22,21,58,0.3)" weight="bold" />
+        <CaretRight size={14} color="rgba(22,19,31,0.3)" weight="bold" />
       </TouchableOpacity>
 
       <TouchableOpacity

@@ -87,7 +87,7 @@ export default function CharlotteIntroScreen() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // O play só é liberado quando o SPLASHOVERLAY sai de vez. Esse overlay
-  // (splash.png "Charlotte AI English Teacher", zIndex 9999) cobre a tela por
+  // (splash.png com o logo do Queizy, zIndex 9999) cobre a tela por
   // ~3s e depois faz fade out; enquanto ele está por cima, o intro está montado
   // EMBAIXO e o áudio do vídeo vazava (áudio não tem z-order). `splashGate`
   // resolve exatamente quando esse overlay termina o fade — é o "load sair" de
@@ -134,7 +134,7 @@ export default function CharlotteIntroScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#07071C" translucent />
+      <StatusBar barStyle="light-content" backgroundColor="#0B0910" translucent />
       <VideoView
         player={player}
         style={styles.video}
@@ -154,7 +154,7 @@ export default function CharlotteIntroScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#07071C',
+    backgroundColor: '#0B0910',
   },
   video: {
     flex: 1,

@@ -13,7 +13,7 @@ interface Props {
 }
 
 const LEVEL_COLOR: Record<string, string> = {
-  Inter:    '#7C3AED',
+  Inter:    '#6B4BFF',
   Advanced: '#0F766E',
 };
 
@@ -23,7 +23,7 @@ const LEVEL_LABEL: Record<string, { pt: string; en: string }> = {
 };
 
 export default function PromotionModal({ isOpen, nextLevel, onConfirm }: Props) {
-  const accent = LEVEL_COLOR[nextLevel] ?? '#7C3AED';
+  const accent = LEVEL_COLOR[nextLevel] ?? '#6B4BFF';
   const scaleAnim  = useRef(new Animated.Value(0.7)).current;
   const opacityAnim = useRef(new Animated.Value(0)).current;
 
@@ -48,7 +48,7 @@ export default function PromotionModal({ isOpen, nextLevel, onConfirm }: Props) 
     <Modal visible={isOpen} transparent animationType="fade" statusBarTranslucent>
       <View style={{
         flex: 1,
-        backgroundColor: 'rgba(22,21,58,0.72)',
+        backgroundColor: 'rgba(22,19,31,0.72)',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 32,
@@ -81,20 +81,20 @@ export default function PromotionModal({ isOpen, nextLevel, onConfirm }: Props) 
 
           {/* Headline */}
           <AppText style={{
-            fontSize: 11, fontWeight: '700', color: '#9896B8',
+            fontSize: 11, fontWeight: '700', color: '#8A8494',
             textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: 10,
           }}>
             Nível desbloqueado
           </AppText>
           <AppText style={{
-            fontSize: 32, fontWeight: '900', color: '#16153A',
+            fontSize: 32, fontWeight: '900', color: '#16131F',
             letterSpacing: -1, textAlign: 'center', marginBottom: 8,
             lineHeight: 38,
           }}>
             {labelPt}
           </AppText>
           <AppText style={{
-            fontSize: 14, fontWeight: '500', color: '#9896B8',
+            fontSize: 14, fontWeight: '500', color: '#8A8494',
             letterSpacing: 1, textTransform: 'uppercase', marginBottom: 8,
           }}>
             {labelEn}
@@ -107,7 +107,7 @@ export default function PromotionModal({ isOpen, nextLevel, onConfirm }: Props) 
           }} />
 
           <AppText style={{
-            fontSize: 15, color: '#4B4A72', textAlign: 'center',
+            fontSize: 15, color: '#4D4858', textAlign: 'center',
             lineHeight: 22, marginBottom: 32, fontWeight: '500',
           }}>
             Você completou a trilha com performance suficiente.{'\n'}

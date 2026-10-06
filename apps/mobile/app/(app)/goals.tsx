@@ -19,16 +19,16 @@ import { localMidnightUTC } from '@/lib/dateUtils';
 
 // Static palette — matches module-level C in index.tsx
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  navyGhost: 'rgba(22,21,58,0.06)',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
-  greenBg:   '#F0FFD9',
-  shadow:    'rgba(22,21,58,0.08)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  navyGhost: 'rgba(22,19,31,0.06)',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
+  greenBg:   '#F8FFE0',
+  shadow:    'rgba(22,19,31,0.08)',
 };
 
 const cardShadow = Platform.select({
@@ -324,7 +324,7 @@ export default function GoalsScreen() {
                   </AppText>
 
                   {/* Progress bar */}
-                  <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(22,21,58,0.06)' }}>
+                  <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(22,19,31,0.06)' }}>
                     <View style={{
                       height: 8, borderRadius: 4,
                       backgroundColor: weeklyState.challenge.color,

@@ -7,7 +7,7 @@ import { withAndroidManifest } from '@expo/config-plugins';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: 'Charlotte AI',
+  name: 'Queizy',
   slug: 'charlotte-rn',
   version: '1.1.1',
   orientation: 'portrait',
@@ -16,7 +16,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   splash: {
     image: './assets/splash-bg.png',
     resizeMode: 'cover',
-    backgroundColor: '#F4F3FA',
+    backgroundColor: '#FAF7F0',
   },
   scheme: 'charlotte',
   assetBundlePatterns: ['**/*'],
@@ -27,11 +27,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     // Reativar após regenerar provisioning profile via: eas credentials --platform ios
     infoPlist: {
       NSMicrophoneUsageDescription:
-        'Charlotte uses your microphone to practice English conversation with AI.',
+        'Queizy uses your microphone to practice English conversation with AI.',
       NSCameraUsageDescription:
-        'Charlotte uses your camera so you can set a profile photo.',
+        'Queizy uses your camera so you can set a profile photo.',
       NSPhotoLibraryUsageDescription:
-        'Charlotte uses your photo library so you can set a profile photo.',
+        'Queizy uses your photo library so you can set a profile photo.',
       ITSAppUsesNonExemptEncryption: false,
       // Status bar: dark icons (time, wifi, battery) on light backgrounds
       UIViewControllerBasedStatusBarAppearance: false,
@@ -50,7 +50,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     googleServicesFile: process.env.GOOGLE_SERVICES_JSON ?? './google-services.json',
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
-      backgroundColor: '#16153A',
+      backgroundColor: '#DCFF4A',
     },
     permissions: [
       'RECORD_AUDIO',
@@ -128,14 +128,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         image: './assets/splash-bg.png',
         imageWidth: 480,
         resizeMode: 'cover',
-        backgroundColor: '#F4F3FA',
+        backgroundColor: '#FAF7F0',
       },
     ],
     [
       'expo-notifications',
       {
         icon: './assets/notification-icon.png',
-        color: '#A3FF3C',
+        color: '#DCFF4A',
       },
     ],
     'expo-speech-recognition',

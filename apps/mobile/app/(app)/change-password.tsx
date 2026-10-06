@@ -16,24 +16,24 @@ import { systemIsPt } from '@/lib/systemLang';
 import { useAuth } from '@/hooks/useAuth';
 
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  border:    'rgba(22,21,58,0.08)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  border:    'rgba(22,19,31,0.08)',
   fieldBg:   '#F7F6FD',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
-  greenBg:   'rgba(163,255,60,0.12)',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
+  greenBg:   'rgba(220,255,74,0.12)',
   error:     '#DC2626',
   errorBg:   'rgba(220,38,38,0.08)',
-  accent:    '#7C3AED',          // hero icon tint
-  accentBg:  'rgba(124,58,237,0.10)',
+  accent:    '#6B4BFF',          // hero icon tint
+  accentBg:  'rgba(107,75,255,0.10)',
 };
 
 const cardShadow = Platform.select({
-  ios:     { shadowColor: 'rgba(22,21,58,0.08)', shadowOpacity: 1, shadowRadius: 14, shadowOffset: { width: 0, height: 4 } },
+  ios:     { shadowColor: 'rgba(22,19,31,0.08)', shadowOpacity: 1, shadowRadius: 14, shadowOffset: { width: 0, height: 4 } },
   android: { elevation: 3 },
 }) as object;
 

@@ -52,7 +52,7 @@ export default function CallWave({ state }: CallWaveProps) {
     };
   }, [state]);
 
-  const color = state === 'connecting' ? '#F97316' : '#A3FF3C';
+  const color = state === 'connecting' ? '#F97316' : '#DCFF4A';
   const opacity = state === 'idle' ? 0.18 : 0.85;
 
   return (

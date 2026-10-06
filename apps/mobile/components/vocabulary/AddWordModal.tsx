@@ -39,15 +39,15 @@ export interface AddWordModalProps {
 }
 
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  muted:     '#9896B8',
-  border:    'rgba(22,21,58,0.12)',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
-  greenBg:   'rgba(163,255,60,0.10)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  muted:     '#8A8494',
+  border:    'rgba(22,19,31,0.12)',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
+  greenBg:   'rgba(220,255,74,0.10)',
   inputBg:   '#F0EFF8',
 };
 
@@ -226,7 +226,7 @@ export function AddWordModal({
       >
         {/* Backdrop */}
         <TouchableOpacity
-          style={{ flex: 1, backgroundColor: 'rgba(22,21,58,0.55)' }}
+          style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.55)' }}
           activeOpacity={1}
           onPress={onClose}
         />
@@ -245,7 +245,7 @@ export function AddWordModal({
         }}>
           {/* Handle bar */}
           <View style={{ alignItems: 'center', paddingTop: 12, paddingBottom: 4 }}>
-            <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,21,58,0.12)' }} />
+            <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.12)' }} />
           </View>
 
           {/* Header */}

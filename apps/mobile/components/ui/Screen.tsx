@@ -10,7 +10,7 @@ interface ScreenProps extends ViewProps {
 
 /**
  * Wrapper de tela padrão do app Charlotte.
- * - Background: #16153A (secondary/background)
+ * - Background: #16131F (secondary/background)
  * - SafeAreaView incluído por padrão
  * - Flex-1 para ocupar toda a tela
  */

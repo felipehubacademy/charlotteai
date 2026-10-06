@@ -13,12 +13,12 @@ import { getMinutePacks, purchasePackage, MINUTES_BY_PRODUCT } from '@/lib/purch
 
 const C = {
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
-  border:    'rgba(22,21,58,0.10)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
+  border:    'rgba(22,19,31,0.10)',
   lossRedBg: '#FEE2E2',
   lossRed:   '#DC2626',
 };
@@ -90,7 +90,7 @@ export function LiveVoiceLimitSheet({ visible, isPt, isSubscriber, poolMin, onSu
             transform: [{ translateY }],
           }}
         >
-          <View style={{ alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,21,58,0.12)', marginBottom: 20 }} />
+          <View style={{ alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.12)', marginBottom: 20 }} />
 
           <View style={{ alignItems: 'center' }}>
             <View style={{

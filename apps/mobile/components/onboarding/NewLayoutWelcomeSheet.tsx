@@ -20,13 +20,13 @@ import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { AppText } from '@/components/ui/Text';
 
 const C = {
-  navy:      '#16153A',
-  navyMid:   '#3B3A5A',
-  navyLight: '#9896B8',
-  border:    'rgba(22,21,58,0.10)',
-  green:     '#A3FF3C',
-  iconBg:    'rgba(124,58,237,0.10)',
-  iconColor: '#7C3AED',
+  navy:      '#16131F',
+  navyMid:   '#3A3546',
+  navyLight: '#8A8494',
+  border:    'rgba(22,19,31,0.10)',
+  green:     '#DCFF4A',
+  iconBg:    'rgba(107,75,255,0.10)',
+  iconColor: '#6B4BFF',
 };
 
 interface Tab {
@@ -127,7 +127,7 @@ export function NewLayoutWelcomeSheet({ visible, onClose }: Props) {
             {/* Drag handle */}
             <View style={{
               width: 40, height: 4, borderRadius: 2,
-              backgroundColor: 'rgba(22,21,58,0.15)',
+              backgroundColor: 'rgba(22,19,31,0.15)',
               alignSelf: 'center', marginBottom: 18,
             }} />
 

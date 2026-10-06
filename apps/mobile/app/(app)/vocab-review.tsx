@@ -39,19 +39,19 @@ const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https:/
 
 // ── Palette ──────────────────────────────────────────────────────────────────
 const C = {
-  bg:       '#F4F3FA',
+  bg:       '#FAF7F0',
   card:     '#FFFFFF',
-  navy:     '#16153A',
-  navyMid:  '#4B4A72',
-  navyLight:'#9896B8',
-  ghost:    'rgba(22,21,58,0.06)',
-  border:   'rgba(22,21,58,0.09)',
+  navy:     '#16131F',
+  navyMid:  '#4D4858',
+  navyLight:'#8A8494',
+  ghost:    'rgba(22,19,31,0.06)',
+  border:   'rgba(22,19,31,0.09)',
   red:      '#DC2626',
   redBg:    'rgba(220,38,38,0.08)',
   gold:     '#D97706',
   goldBg:   '#FFFBEB',
-  green:    '#3D8800',
-  greenBg:  'rgba(61,136,0,0.09)',
+  green:    '#5C7300',
+  greenBg:  'rgba(92,115,0,0.09)',
 };
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -62,14 +62,14 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 const CATEGORY_COLORS: Record<string, { color: string; bg: string }> = {
-  word:         { color: '#7C3AED', bg: '#F5F3FF' },
+  word:         { color: '#6B4BFF', bg: '#F1EEFF' },
   idiom:        { color: '#0F766E', bg: '#F0FDFA' },
   phrasal_verb: { color: '#D97706', bg: '#FFFBEB' },
   grammar:      { color: '#DC2626', bg: '#FEF2F2' },
 };
 
 const cardShadow = Platform.select({
-  ios:     { shadowColor: 'rgba(22,21,58,0.14)', shadowOpacity: 1, shadowRadius: 24, shadowOffset: { width: 0, height: 8 } },
+  ios:     { shadowColor: 'rgba(22,19,31,0.14)', shadowOpacity: 1, shadowRadius: 24, shadowOffset: { width: 0, height: 8 } },
   android: { elevation: 8 },
 }) as object;
 
@@ -96,8 +96,8 @@ export default function VocabReview() {
   const level    = profile?.charlotte_level ?? 'Inter';
   const isPt     = systemIsPt; // suporte/chrome: idioma do device
   const insets   = useSafeAreaInsets();
-  const levelAccent   = level === 'Novice' ? C.gold   : level === 'Inter' ? '#7C3AED' : '#0F766E';
-  const levelAccentBg = level === 'Novice' ? C.goldBg : level === 'Inter' ? '#F5F3FF' : '#F0FDFA';
+  const levelAccent   = level === 'Novice' ? C.gold   : level === 'Inter' ? '#6B4BFF' : '#0F766E';
+  const levelAccentBg = level === 'Novice' ? C.goldBg : level === 'Inter' ? '#F1EEFF' : '#F0FDFA';
 
 
   const [cards,    setCards]    = useState<VocabCard[]>([]);

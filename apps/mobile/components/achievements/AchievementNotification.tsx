@@ -58,14 +58,14 @@ async function achievementHaptic(rarity: Achievement['rarity']): Promise<void> {
 }
 
 const C = {
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
-  greenBg:   '#F0FFD9',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  navyLight: '#8A8494',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
+  greenBg:   '#F8FFE0',
   sheet:     '#FFFFFF',
-  border:    'rgba(22,21,58,0.08)',
+  border:    'rgba(22,19,31,0.08)',
 };
 
 const RARITY_COLORS: Record<Achievement['rarity'], string> = {
@@ -239,7 +239,7 @@ export default function AchievementNotification({ achievements, onDismiss, isPt 
       <Animated.View
         style={{
           flex: 1,
-          backgroundColor: 'rgba(22,21,58,0.78)',
+          backgroundColor: 'rgba(22,19,31,0.78)',
           alignItems: 'center',
           justifyContent: 'center',
           opacity: backdropAnim,
@@ -397,14 +397,14 @@ export default function AchievementNotification({ achievements, onDismiss, isPt 
                   onPress={() => shareAchievement(current.title, current.rarity, isPt)}
                   activeOpacity={0.85}
                   style={{
-                    backgroundColor: 'rgba(22,21,58,0.06)',
+                    backgroundColor: 'rgba(22,19,31,0.06)',
                     paddingHorizontal: 16,
                     paddingVertical: 14,
                     borderRadius: 16,
                     alignItems: 'center',
                     justifyContent: 'center',
                     borderWidth: 1,
-                    borderColor: 'rgba(22,21,58,0.08)',
+                    borderColor: 'rgba(22,19,31,0.08)',
                   }}
                 >
                   <ShareNetwork size={18} color={C.navy} weight="bold" />

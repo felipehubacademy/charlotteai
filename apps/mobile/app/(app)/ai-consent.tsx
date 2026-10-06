@@ -24,19 +24,19 @@ import { AI_CONSENT_KEY } from '@/lib/aiConsent';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  muted:     '#9896B8',
-  border:    'rgba(22,21,58,0.08)',
-  green:     '#A3FF3C',
-  greenDark: '#3D8800',
-  greenBg:   'rgba(163,255,60,0.10)',
+  navy:      '#16131F',
+  navyMid:   '#4D4858',
+  muted:     '#8A8494',
+  border:    'rgba(22,19,31,0.08)',
+  green:     '#DCFF4A',
+  greenDark: '#5C7300',
+  greenBg:   'rgba(220,255,74,0.10)',
 };
 
 const cardShadow = Platform.select({
-  ios:     { shadowColor: 'rgba(22,21,58,0.08)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
+  ios:     { shadowColor: 'rgba(22,19,31,0.08)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
   android: { elevation: 2 },
 }) as object;
 

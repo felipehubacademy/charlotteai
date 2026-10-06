@@ -26,19 +26,19 @@ import {
 
 // ── Design tokens ──────────────────────────────────────────────────────────────
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#FAF7F0',
   card:      '#FFFFFF',
-  navy:      '#16153A',
-  navyLight: '#9896B8',
-  ghost:     'rgba(22,21,58,0.06)',
-  border:    'rgba(22,21,58,0.08)',
-  green:     '#3D8800',
-  greenLight:'#F0FFD9',
+  navy:      '#16131F',
+  navyLight: '#8A8494',
+  ghost:     'rgba(22,19,31,0.06)',
+  border:    'rgba(22,19,31,0.08)',
+  green:     '#5C7300',
+  greenLight:'#F8FFE0',
 };
 
 const LEVEL_COLOR: Record<string, string> = {
   Novice:   '#D97706',
-  Inter:    '#7C3AED',
+  Inter:    '#6B4BFF',
   Advanced: '#0F766E',
 };
 
@@ -76,7 +76,7 @@ interface StatsData {
 }
 
 function AchievementIcon({ category, rarity, size = 20 }: { category: string; rarity: string; size?: number }) {
-  const color = rarity === 'locked' ? 'rgba(22,21,58,0.22)' : (RARITY_COLORS[rarity] ?? '#22C55E');
+  const color = rarity === 'locked' ? 'rgba(22,19,31,0.22)' : (RARITY_COLORS[rarity] ?? '#22C55E');
   switch (category) {
     case 'xp':
     case 'xp_milestone': return <Lightning     size={size} color={color} weight="fill" />;
@@ -606,7 +606,7 @@ export default function StatsScreen() {
         return (
           <Modal visible transparent animationType="fade" onRequestClose={() => setBadgeModal(null)}>
             <Pressable
-              style={{ flex: 1, backgroundColor: 'rgba(22,21,58,0.55)', alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 }}
+              style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.55)', alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 }}
               onPress={() => setBadgeModal(null)}
             >
               <Pressable onPress={e => e.stopPropagation()}>

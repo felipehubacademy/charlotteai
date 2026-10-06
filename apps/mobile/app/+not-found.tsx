@@ -8,11 +8,11 @@ import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 
 const C = {
-  bg:       '#F4F3FA',
-  navy:     '#16153A',
-  navyMid:  '#4B4A72',
-  navyLight:'#9896B8',
-  green:    '#A3FF3C',
+  bg:       '#FAF7F0',
+  navy:     '#16131F',
+  navyMid:  '#4D4858',
+  navyLight:'#8A8494',
+  green:    '#DCFF4A',
 };
 
 export default function NotFoundScreen() {
@@ -38,7 +38,7 @@ export default function NotFoundScreen() {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 }}>
         <View style={{
           width: 80, height: 80, borderRadius: 40,
-          backgroundColor: 'rgba(163,255,60,0.12)',
+          backgroundColor: 'rgba(220,255,74,0.12)',
           alignItems: 'center', justifyContent: 'center',
           marginBottom: 24,
         }}>

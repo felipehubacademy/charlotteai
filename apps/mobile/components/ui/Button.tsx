@@ -17,12 +17,12 @@ const variantStyles: Record<Variant, { container: string; text: string; textColo
   primary: {
     container: 'bg-primary active:opacity-80',
     text: 'font-bold',
-    textColor: '#16153A',   // dark navy — NativeWind arbitrary values unreliable in dev
+    textColor: '#16131F',   // dark navy — NativeWind arbitrary values unreliable in dev
   },
   secondary: {
     container: 'bg-surface border border-primary active:opacity-80',
     text: 'font-semibold',
-    textColor: '#A3FF3C',
+    textColor: '#DCFF4A',
   },
   ghost: {
     container: 'active:opacity-60',

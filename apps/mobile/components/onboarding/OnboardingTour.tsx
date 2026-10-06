@@ -22,18 +22,18 @@ interface OnboardingTourProps {
 }
 
 const ICON_SIZE = 48;
-const ICON_BG   = 'rgba(163,255,60,0.12)';
-const ICON_COLOR = '#A3FF3C';
+const ICON_BG   = 'rgba(220,255,74,0.12)';
+const ICON_COLOR = '#DCFF4A';
 
 function buildSteps(isNovice: boolean): OnboardingStep[] {
   return [
     {
       id: 'welcome',
       icon: <Hand size={ICON_SIZE} color={ICON_COLOR} weight="fill" />,
-      title: isNovice ? 'Bem-vindo à Charlotte!' : 'Welcome to Charlotte!',
+      title: isNovice ? 'Bem-vindo ao Queizy!' : 'Welcome to Queizy!',
       description: isNovice
-        ? 'Sua professora de inglês com IA. Vamos explorar como usar o app!'
-        : "Your AI English tutor. Let's explore what you can do!",
+        ? 'A Charlotte é sua professora de inglês com IA. Vamos explorar como usar o app!'
+        : "Charlotte is your AI English tutor. Let's explore what you can do!",
     },
     {
       id: 'text',
