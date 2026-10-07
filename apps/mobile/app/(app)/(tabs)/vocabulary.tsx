@@ -323,7 +323,7 @@ export default function VocabularyTab() {
       <SafeAreaView edges={['top']} style={{ backgroundColor: C.card }}>
         <View style={{
           flexDirection: 'row', alignItems: 'center',
-          paddingHorizontal: 20, paddingVertical: 14, gap: 12,
+          paddingHorizontal: 20, height: 52, gap: 12, // mesma altura do HeaderPills
           borderBottomWidth: 1, borderBottomColor: C.border,
         }}>
           <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
