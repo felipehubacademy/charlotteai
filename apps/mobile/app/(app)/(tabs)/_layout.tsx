@@ -93,10 +93,9 @@ export default function TabLayout() {
             return (
               <TabIcon focused={focused}>
                 {profile?.avatar_url ? (
+                  // Sem borda: a pílula Volt já marca a aba ativa.
                   <View style={{
                     width: sz, height: sz, borderRadius: sz / 2,
-                    borderWidth: focused ? 2 : 1.5,
-                    borderColor: focused ? INK : INACTIVE,
                     overflow: 'hidden',
                   }}>
                     <Image
