@@ -58,7 +58,7 @@ const C = {
   navyGhost: 'rgba(22,19,31,0.06)',
   border:    'rgba(22,19,31,0.10)',
   greenAccent: '#DCFF4A',
-  red:       '#DC2626',
+  red:       '#D12A64',
 };
 
 interface ChatSession {
@@ -818,7 +818,7 @@ function ChatSessionItem({ session, isPt, isActive, onPress, onDelete }: {
           alignItems: 'center', justifyContent: 'center',
         }}
       >
-        <Trash size={16} color="rgba(220,38,38,0.7)" weight="regular" />
+        <Trash size={16} color="rgba(255,79,139,0.7)" weight="regular" />
       </TouchableOpacity>
     </View>
   );

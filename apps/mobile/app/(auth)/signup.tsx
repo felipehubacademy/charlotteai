@@ -23,7 +23,7 @@ const C = {
   navyLight: '#8A8494',
   border:    'rgba(22,19,31,0.10)',
   green:     '#DCFF4A',
-  error:     '#DC2626',
+  error:     '#D12A64',
 };
 
 export default function SignupScreen() {

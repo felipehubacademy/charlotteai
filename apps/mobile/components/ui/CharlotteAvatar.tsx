@@ -81,7 +81,7 @@ export default function CharlotteAvatar({
             borderRadius: statusPx / 2,
             borderWidth: 2,
             borderColor: '#FFFFFF',
-            backgroundColor: isOnline ? '#22C55E' : '#6B7280',
+            backgroundColor: isOnline ? '#2BD97C' : '#8A8494',
           }}
         />
       )}

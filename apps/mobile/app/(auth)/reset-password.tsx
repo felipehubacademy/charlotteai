@@ -21,7 +21,7 @@ const C = {
   border:    'rgba(22,19,31,0.10)',
   green:     '#DCFF4A',
   greenDark: '#08804A',
-  red:       '#DC2626',
+  red:       '#D12A64',
 };
 
 export default function ResetPasswordScreen() {

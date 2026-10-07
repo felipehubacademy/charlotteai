@@ -49,7 +49,7 @@ function Row({ icon, label, sub, onPress }: { icon: React.ReactNode; label: stri
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.7}
       style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 15, paddingHorizontal: 16, gap: 12 }}>
-      <View style={{ width: 34, height: 34, borderRadius: 10, backgroundColor: '#EFF7E4', alignItems: 'center', justifyContent: 'center' }}>{icon}</View>
+      <View style={{ width: 34, height: 34, borderRadius: 10, backgroundColor: '#E3F6EC', alignItems: 'center', justifyContent: 'center' }}>{icon}</View>
       <View style={{ flex: 1 }}>
         <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy }}>{label}</AppText>
         {!!sub && <AppText style={{ fontSize: 12.5, color: C.navyLight, marginTop: 2 }}>{sub}</AppText>}

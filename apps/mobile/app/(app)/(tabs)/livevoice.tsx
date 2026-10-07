@@ -1009,7 +1009,7 @@ export default function LiveVoiceTab() {
 function LVHelpRow({ title, desc }: { title: string; desc: string }) {
   return (
     <View>
-      <AppText style={{ fontSize: 14, fontWeight: '800', color: '#1E1D45', marginBottom: 2 }}>
+      <AppText style={{ fontSize: 14, fontWeight: '800', color: '#16131F', marginBottom: 2 }}>
         {title}
       </AppText>
       <AppText style={{ fontSize: 13, color: '#3A3546', lineHeight: 19 }}>

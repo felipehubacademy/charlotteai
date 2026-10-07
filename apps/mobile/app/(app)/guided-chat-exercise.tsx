@@ -394,10 +394,10 @@ export default function GuidedChatExerciseScreen() {
         backgroundColor: C.card,
       }}>
         <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
-          <ArrowLeft size={22} color={C.navy} />
+          <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1 }}>
-          <AppText style={{ fontSize: 15, fontWeight: '700', color: C.navy }}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
             {gc.persona}
           </AppText>
           <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 1, letterSpacing: 0.6, textTransform: 'uppercase', fontWeight: '600' }}>
@@ -537,7 +537,7 @@ export default function GuidedChatExerciseScreen() {
               backgroundColor: C.navy, borderRadius: 12, padding: 14,
               flexDirection: 'row', gap: 10, alignItems: 'flex-start',
             }}>
-              <Lightbulb size={18} color="#FFD27A" weight="fill" />
+              <Lightbulb size={18} color="#DCFF4A" weight="fill" />
               <View style={{ flex: 1 }}>
                 <AppText style={{ color: '#FFF', fontSize: 14, fontWeight: '600', lineHeight: 18 }}>
                   {interLabel}
@@ -558,7 +558,7 @@ export default function GuidedChatExerciseScreen() {
             backgroundColor: C.navy, borderRadius: 12, padding: 14,
             flexDirection: 'row', gap: 10, alignItems: 'flex-start',
           }}>
-            <Lightbulb size={18} color="#FFD27A" weight="fill" />
+            <Lightbulb size={18} color="#DCFF4A" weight="fill" />
             <View style={{ flex: 1 }}>
               {isPt && pt && (
                 <AppText style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12, lineHeight: 16, marginBottom: 4 }}>

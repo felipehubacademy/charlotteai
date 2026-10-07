@@ -51,7 +51,7 @@ export function OfflineBanner() {
         paddingHorizontal: 16,
         borderRadius: 20,
       }}>
-        <WifiSlash size={14} color="#F87171" weight="fill" />
+        <WifiSlash size={14} color="#FF4F8B" weight="fill" />
         <AppText style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '600' }}>
           {isPt ? 'Sem conexão com a internet' : 'No internet connection'}
         </AppText>
