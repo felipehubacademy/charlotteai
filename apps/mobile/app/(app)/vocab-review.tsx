@@ -93,10 +93,10 @@ function SessionXPPill({ xp }: { xp: number }) {
     floatO.setValue(0);
     Animated.sequence([
       Animated.parallel([
-        Animated.timing(floatO, { toValue: 1, duration: 120, useNativeDriver: true }),
-        Animated.timing(floatY, { toValue: 0, duration: 520, easing: Easing.out(Easing.cubic), useNativeDriver: true }),
+        Animated.timing(floatO, { toValue: 1, duration: 160, useNativeDriver: true }),
+        Animated.timing(floatY, { toValue: 0, duration: 680, easing: Easing.out(Easing.cubic), useNativeDriver: true }),
       ]),
-      Animated.timing(floatO, { toValue: 0, duration: 140, useNativeDriver: true }),
+      Animated.timing(floatO, { toValue: 0, duration: 180, useNativeDriver: true }),
     ]).start();
     let t: ReturnType<typeof setInterval> | null = null;
     const start = setTimeout(() => {
@@ -110,8 +110,8 @@ function SessionXPPill({ xp }: { xp: number }) {
         i++;
         setShown(Math.round(from + ((xp - from) * i) / steps));
         if (i >= steps && t) clearInterval(t);
-      }, 30);
-    }, 480);
+      }, 40);
+    }, 640);
     return () => { clearTimeout(start); if (t) clearInterval(t); };
   }, [xp, scale, floatY, floatO]);
   return (
