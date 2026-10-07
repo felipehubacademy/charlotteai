@@ -562,8 +562,12 @@ export default function HomeTab() {
                 android: { elevation: 2 },
               }),
             }}>
-              <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, lineHeight: 26 }}>
-                {heroTitle}
+              {/* Marca-texto Volt atrás da saudação (texto segue em Tinta —
+                  Volt como cor de texto sobre branco não tem contraste). */}
+              <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, lineHeight: 28 }}>
+                <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, backgroundColor: '#DCFF4A' }}>
+                  {` ${heroTitle} `}
+                </AppText>
               </AppText>
               {greetingLoading || !aiGreeting ? (
                 <View style={{ marginTop: 6 }}><TypingDots /></View>
