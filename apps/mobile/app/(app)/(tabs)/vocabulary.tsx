@@ -7,7 +7,7 @@
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import {
   View, ScrollView, TouchableOpacity, TextInput,
-  ActivityIndicator, Alert, Platform, Modal, Pressable,
+  ActivityIndicator, Alert, Platform, Modal, Pressable, Animated, Easing,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
@@ -271,6 +271,15 @@ export default function VocabularyTab() {
     return true;
   });
 
+  // Detalhe: o fundo escuro aparece em fade (Modal) e só o painel sobe.
+  const sheetY = useRef(new Animated.Value(600)).current;
+  React.useEffect(() => {
+    if (selected) {
+      sheetY.setValue(600);
+      Animated.timing(sheetY, { toValue: 0, duration: 300, easing: Easing.out(Easing.cubic), useNativeDriver: true }).start();
+    }
+  }, [selected, sheetY]);
+
   // Domínio: 5+ acertos seguidos na revisão espaçada = dominada.
   const MASTERED_AT = 5;
   const masteredCount = items.filter(i => (i.repetitions ?? 0) >= MASTERED_AT).length;
@@ -320,14 +329,6 @@ export default function VocabularyTab() {
           <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
             {isPt ? 'Vocabulário' : 'Vocabulary'}
           </AppText>
-          <TouchableOpacity
-            onPress={openAdd}
-            accessibilityLabel={isPt ? 'Adicionar palavra' : 'Add word'}
-            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-            style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: C.ghost, alignItems: 'center', justifyContent: 'center' }}
-          >
-            <Plus size={17} color={C.navy} weight="bold" />
-          </TouchableOpacity>
           <HeaderLogo />
         </View>
       </SafeAreaView>
@@ -340,9 +341,26 @@ export default function VocabularyTab() {
 
         {/* ── Sua coleção + revisão do dia ── */}
         <View style={{ backgroundColor: C.navy, borderRadius: 22, padding: 18 }}>
-          <AppText style={{ fontSize: 11, fontWeight: '800', letterSpacing: 1.4, color: C.volt }}>
-            {isPt ? 'SUA COLEÇÃO' : 'YOUR COLLECTION'}
-          </AppText>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <AppText style={{ flex: 1, fontSize: 11, fontWeight: '800', letterSpacing: 1.4, color: C.volt }}>
+              {isPt ? 'SUA COLEÇÃO' : 'YOUR COLLECTION'}
+            </AppText>
+            <TouchableOpacity
+              onPress={openAdd}
+              accessibilityLabel={isPt ? 'Adicionar palavra' : 'Add word'}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              style={{
+                flexDirection: 'row', alignItems: 'center', gap: 4,
+                backgroundColor: 'rgba(255,255,255,0.10)', borderRadius: 16,
+                paddingHorizontal: 10, paddingVertical: 6,
+              }}
+            >
+              <Plus size={14} color={C.volt} weight="bold" />
+              <AppText style={{ fontSize: 12, fontWeight: '800', color: '#FFFFFF' }}>
+                {isPt ? 'Adicionar' : 'Add'}
+              </AppText>
+            </TouchableOpacity>
+          </View>
           <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 12, marginTop: 6 }}>
             <AppText display style={{ fontSize: 44, fontWeight: '800', color: '#FFFFFF', lineHeight: 46 }}>
               {items.length}
@@ -523,9 +541,10 @@ export default function VocabularyTab() {
       </ScrollView>
 
       {/* ── Detalhe da palavra ── */}
-      <Modal visible={!!selected} transparent animationType="slide" onRequestClose={() => setSelected(null)}>
+      <Modal visible={!!selected} transparent animationType="fade" onRequestClose={() => setSelected(null)}>
         <Pressable style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.35)', justifyContent: 'flex-end' }} onPress={() => setSelected(null)}>
           {selected && (
+            <Animated.View style={{ transform: [{ translateY: sheetY }] }}>
             <Pressable onPress={(e) => e.stopPropagation()} style={{
               backgroundColor: C.card, borderTopLeftRadius: 26, borderTopRightRadius: 26,
               paddingHorizontal: 22, paddingTop: 10, paddingBottom: 34,
@@ -598,6 +617,7 @@ export default function VocabularyTab() {
                 </AppText>
               </TouchableOpacity>
             </Pressable>
+            </Animated.View>
           )}
         </Pressable>
       </Modal>

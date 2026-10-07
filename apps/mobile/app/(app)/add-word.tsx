@@ -12,7 +12,7 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import {
   View, TextInput, TouchableOpacity, ActivityIndicator,
-  ScrollView, Platform, Alert, 
+  ScrollView, Platform, Alert, Keyboard,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -48,9 +48,11 @@ const C = {
   navyMid:  '#4D4858',
   muted:    '#8A8494',
   border:   'rgba(22,19,31,0.10)',
-  inputBg:  '#EDE9E1',   // mesmo que my-vocabulary
-  greenBg:  'rgba(8,128,74,0.08)',
-  green:    '#08804A',
+  hairline: 'rgba(22,19,31,0.06)',
+  ghost:    'rgba(22,19,31,0.06)',
+  volt:     '#DCFF4A',
+  pink:     '#D12A64',
+  pinkBg:   'rgba(255,79,139,0.10)',
 };
 
 const CATEGORIES: { key: VocabCategory; labelPt: string; labelEn: string }[] = [
@@ -243,112 +245,101 @@ export default function AddWordScreen() {
 
   const canSave = !!term.trim() && !!definition.trim() && !saving && !alreadyAdded && termStatus !== 'duplicate' && termStatus !== 'unknown' && suggestion === null;
 
+  const Label = ({ children }: { children: React.ReactNode }) => (
+    <AppText style={{ fontSize: 11, fontWeight: '700', color: C.muted, letterSpacing: 1.1, marginBottom: 8 }}>
+      {children}
+    </AppText>
+  );
+  const fieldStyle = {
+    backgroundColor: C.card, borderRadius: 16, borderWidth: 1, borderColor: C.border,
+    paddingHorizontal: 16, paddingVertical: 14,
+    fontSize: 15, color: C.navy, lineHeight: 22, textAlignVertical: 'top' as const,
+  };
+
   return (
-    <View style={{ flex: 1, backgroundColor: C.card }}>
-      {/* Status bar area + header — tudo branco */}
+    <View style={{ flex: 1, backgroundColor: C.bg }}>
       <SafeAreaView edges={['top']} style={{ backgroundColor: C.card }}>
         <View style={{
           flexDirection: 'row', alignItems: 'center',
           paddingHorizontal: 16, paddingVertical: 14, gap: 12,
           borderBottomWidth: 1, borderBottomColor: C.border,
         }}>
-        <TouchableOpacity
-          onPress={() => router.back()}
-          hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-        >
-          <ArrowLeft size={22} color={C.navy} weight="bold" />
-        </TouchableOpacity>
-        <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
-          {isPt ? 'Adicionar palavra' : 'Add word'}
-        </AppText>
+          <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+            <ArrowLeft size={22} color={C.navy} weight="bold" />
+          </TouchableOpacity>
+          <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
+            {isPt ? 'Nova palavra' : 'New word'}
+          </AppText>
         </View>
       </SafeAreaView>
 
-      {/* Body — fundo lavanda */}
-      <View style={{ flex: 1, backgroundColor: C.bg }}>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={0}
-      >
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={0}>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ padding: 20, gap: 20, paddingBottom: insets.bottom + 100 }}
+          contentContainerStyle={{ padding: 16, gap: 18, paddingBottom: insets.bottom + 150 }}
           showsVerticalScrollIndicator={false}
         >
-          {/* Term */}
-          <View>
-            {/* Label com spinner inline quando checking */}
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8, gap: 6 }}>
-              <AppText style={{ fontSize: 12, fontWeight: '700', color: C.muted, letterSpacing: 0.6 }}>
-                {isPt ? 'TERMO' : 'TERM'}
+          {/* ── Termo: card principal ── */}
+          <View style={{ backgroundColor: C.navy, borderRadius: 22, padding: 18 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+              <AppText style={{ fontSize: 11, fontWeight: '800', letterSpacing: 1.4, color: C.volt }}>
+                {isPt ? 'O QUE VOCÊ QUER APRENDER?' : 'WHAT DO YOU WANT TO LEARN?'}
               </AppText>
-              {termStatus === 'checking' && (
-                <ActivityIndicator size="small" color={C.muted} style={{ marginLeft: 2 }} />
-              )}
+              {termStatus === 'checking' && <ActivityIndicator size="small" color={C.volt} />}
             </View>
-            <View style={{ flexDirection: 'row', gap: 8 }}>
-              {/* Term input — mesmo estilo da search bar do My Vocabulary */}
-              <TextInput
-                value={term}
-                onChangeText={t => { setTerm(t); setAlreadyAdded(false); setTermStatus('idle'); setSuggestion(null); }}
-                placeholder={isPt ? 'ex: take it easy' : 'e.g. take it easy'}
-                placeholderTextColor={C.muted}
+            <TextInput
+              value={term}
+              onChangeText={t => { setTerm(t); setAlreadyAdded(false); setTermStatus('idle'); setSuggestion(null); }}
+              placeholder={isPt ? 'ex: take it easy' : 'e.g. take it easy'}
+              placeholderTextColor="rgba(255,255,255,0.35)"
+              style={{ fontFamily: 'BricolageGrotesque_800ExtraBold', fontSize: 30, color: '#FFFFFF', paddingVertical: 4 }}
+              autoCorrect={false}
+              autoCapitalize="none"
+              returnKeyType="done"
+              onSubmitEditing={() => { Keyboard.dismiss(); handleGenerate(); }}
+            />
+            <View style={{ height: 20, justifyContent: 'center' }}>
+              {phonetic ? <AppText style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>{phonetic}</AppText> : null}
+            </View>
+
+            <View style={{ flexDirection: 'row', gap: 10, marginTop: 10 }}>
+              <TouchableOpacity
+                onPress={() => { Keyboard.dismiss(); handleGenerate(); }}
+                disabled={generating || !term.trim()}
+                activeOpacity={0.85}
                 style={{
-                  flex: 1, backgroundColor: C.inputBg, borderRadius: 12,
-                  paddingHorizontal: 16, paddingVertical: 14,
-                  fontSize: 16, color: C.navy, fontWeight: '500',
+                  flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
+                  backgroundColor: term.trim() ? C.volt : 'rgba(255,255,255,0.10)',
+                  borderRadius: 14, paddingVertical: 12,
                 }}
-                autoCorrect={false}
-                autoCapitalize="none"
-                returnKeyType="done"
-                onSubmitEditing={() => handleGenerate()}
-              />
-              {/* TTS */}
+              >
+                {generating
+                  ? <ActivityIndicator size="small" color={C.navy} />
+                  : <MagicWand size={18} color={term.trim() ? C.navy : 'rgba(255,255,255,0.4)'} weight="fill" />}
+                <AppText style={{ fontSize: 14, fontWeight: '800', color: term.trim() ? C.navy : 'rgba(255,255,255,0.4)' }}>
+                  {isPt ? 'Preencher com IA' : 'Fill in with AI'}
+                </AppText>
+              </TouchableOpacity>
               <TouchableOpacity
                 onPress={handleTts}
                 disabled={ttsLoading || !term.trim()}
+                accessibilityLabel={isPt ? 'Ouvir' : 'Listen'}
                 style={{
-                  width: 52, height: 52, borderRadius: 12,
-                  backgroundColor: C.inputBg,
+                  width: 48, borderRadius: 14,
+                  backgroundColor: 'rgba(255,255,255,0.10)',
                   alignItems: 'center', justifyContent: 'center',
                 }}
               >
                 {ttsLoading
-                  ? <ActivityIndicator size="small" color={C.navy} />
-                  : <SpeakerHigh size={22} color={term.trim() ? C.navy : C.muted} weight="fill" />
-                }
-              </TouchableOpacity>
-              {/* AI enrich */}
-              <TouchableOpacity
-                onPress={() => handleGenerate()}
-                disabled={generating || !term.trim()}
-                style={{
-                  width: 52, height: 52, borderRadius: 12,
-                  backgroundColor: term.trim() ? C.navy : C.inputBg,
-                  alignItems: 'center', justifyContent: 'center',
-                }}
-              >
-                {generating
                   ? <ActivityIndicator size="small" color="#FFFFFF" />
-                  : <MagicWand size={22} color={term.trim() ? '#FFFFFF' : C.muted} weight="fill" />
-                }
+                  : <SpeakerHigh size={20} color={term.trim() ? '#FFFFFF' : 'rgba(255,255,255,0.4)'} weight="fill" />}
               </TouchableOpacity>
-            </View>
-            {/* Fonética — altura fixa reservada para não movimentar o layout */}
-            <View style={{ height: 22, justifyContent: 'center', marginTop: 4, paddingHorizontal: 4 }}>
-              {phonetic ? (
-                <AppText style={{ fontSize: 13, color: C.muted }}>{phonetic}</AppText>
-              ) : null}
             </View>
           </View>
 
-          {/* Category */}
+          {/* ── Categoria ── */}
           <View>
-            <AppText style={{ fontSize: 12, fontWeight: '700', color: C.muted, marginBottom: 8, letterSpacing: 0.6 }}>
-              {isPt ? 'CATEGORIA' : 'CATEGORY'}
-            </AppText>
-            {/* Chips — mesmo padrão navy do My Vocabulary */}
+            <Label>{isPt ? 'CATEGORIA' : 'CATEGORY'}</Label>
             <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
               {CATEGORIES.map(c => {
                 const sel = category === c.key;
@@ -357,12 +348,12 @@ export default function AddWordScreen() {
                     key={c.key}
                     onPress={() => setCategory(c.key)}
                     style={{
-                      paddingHorizontal: 18, paddingVertical: 8, borderRadius: 20,
+                      paddingHorizontal: 14, paddingVertical: 7, borderRadius: 18,
                       backgroundColor: sel ? C.navy : C.card,
                       borderWidth: 1, borderColor: sel ? C.navy : C.border,
                     }}
                   >
-                    <AppText style={{ fontSize: 13, fontWeight: '600', color: sel ? '#FFFFFF' : C.navyMid }}>
+                    <AppText style={{ fontSize: 13, fontWeight: '700', color: sel ? '#FFFFFF' : C.navyMid }}>
                       {isPt ? c.labelPt : c.labelEn}
                     </AppText>
                   </TouchableOpacity>
@@ -371,174 +362,112 @@ export default function AddWordScreen() {
             </View>
           </View>
 
-          {/* Definition */}
+          {/* ── Significado ── */}
           <View>
-            <AppText style={{ fontSize: 12, fontWeight: '700', color: C.muted, marginBottom: 8, letterSpacing: 0.6 }}>
-              {isPt ? 'DEFINIÇÃO (PT-BR)' : 'DEFINITION'}
-            </AppText>
+            <Label>{isPt ? 'SIGNIFICADO' : 'MEANING'}</Label>
             <TextInput
               value={definition}
               onChangeText={setDefinition}
-              placeholder={isPt ? 'O que significa este termo?' : 'What does this term mean?'}
+              placeholder={isPt ? 'O que significa?' : 'What does it mean?'}
               placeholderTextColor={C.muted}
               multiline
-              style={{
-                backgroundColor: C.inputBg, borderRadius: 12,
-                paddingHorizontal: 16, paddingVertical: 14,
-                fontSize: 15, color: C.navy, lineHeight: 22,
-                minHeight: 88, textAlignVertical: 'top',
-              }}
+              style={[fieldStyle, { minHeight: 80 }]}
             />
           </View>
 
-          {/* Example */}
+          {/* ── Exemplo (+ tradução em PT) ── */}
           <View>
-            <AppText style={{ fontSize: 12, fontWeight: '700', color: C.muted, marginBottom: 8, letterSpacing: 0.6 }}>
-              {isPt ? 'EXEMPLO (EN)' : 'EXAMPLE'}
-            </AppText>
-            <TextInput
-              value={example}
-              onChangeText={setExample}
-              placeholder="e.g. Just take it easy — there's no rush."
-              placeholderTextColor={C.muted}
-              multiline
-              style={{
-                backgroundColor: C.inputBg, borderRadius: 12,
-                paddingHorizontal: 16, paddingVertical: 14,
-                fontSize: 15, color: C.navy, lineHeight: 22,
-                minHeight: 72, textAlignVertical: 'top',
-              }}
-            />
-          </View>
-
-          {/* Example translation — Novice only */}
-          {isPt && (
-            <View>
-              <AppText style={{ fontSize: 12, fontWeight: '700', color: C.muted, marginBottom: 8, letterSpacing: 0.6 }}>
-                TRADUÇÃO DO EXEMPLO
-              </AppText>
+            <Label>{isPt ? 'EXEMPLO EM INGLÊS' : 'EXAMPLE'}</Label>
+            <View style={{ backgroundColor: C.card, borderRadius: 16, borderWidth: 1, borderColor: C.border, overflow: 'hidden' }}>
               <TextInput
-                value={exampleTr}
-                onChangeText={setExampleTr}
-                placeholder="Tradução em português..."
+                value={example}
+                onChangeText={setExample}
+                placeholder="e.g. Just take it easy — there's no rush."
                 placeholderTextColor={C.muted}
                 multiline
-                style={{
-                  backgroundColor: C.inputBg, borderRadius: 12,
-                  paddingHorizontal: 16, paddingVertical: 14,
-                  fontSize: 15, color: C.navy, lineHeight: 22,
-                  minHeight: 72, textAlignVertical: 'top',
-                }}
+                style={[fieldStyle, { borderWidth: 0, borderRadius: 0, fontStyle: example ? 'italic' : 'normal', minHeight: 64 }]}
               />
+              {isPt && (
+                <TextInput
+                  value={exampleTr}
+                  onChangeText={setExampleTr}
+                  placeholder="Tradução do exemplo"
+                  placeholderTextColor={C.muted}
+                  multiline
+                  style={[fieldStyle, { borderWidth: 0, borderRadius: 0, borderTopWidth: 1, borderTopColor: C.hairline, fontSize: 13, color: C.navyMid, minHeight: 52 }]}
+                />
+              )}
             </View>
-          )}
-
+          </View>
         </ScrollView>
 
-        {/* Save button — fixed at bottom */}
-        <View style={{
-          position: 'absolute', bottom: insets.bottom + 16, left: 20, right: 20,
-        }}>
-          {/* Zona de status fixa — altura reservada, layout nunca se move */}
-          <View style={{ height: 44, justifyContent: 'center', marginBottom: 8 }}>
-            {termStatus === 'duplicate' && (
-              <View style={{
-                flexDirection: 'row', alignItems: 'center', gap: 8,
-                backgroundColor: 'rgba(217,119,6,0.10)', borderRadius: 10,
-                paddingHorizontal: 12, paddingVertical: 8,
-              }}>
-                <AppText style={{ fontSize: 13, color: '#D97706', fontWeight: '700' }}>!</AppText>
-                <AppText style={{ fontSize: 13, color: '#D97706', fontWeight: '600', flex: 1 }}>
-                  {isPt ? 'Já está no seu vocabulário.' : 'Already in your vocabulary.'}
+        {/* ── Status + salvar (fixo embaixo) ── */}
+        <View style={{ position: 'absolute', bottom: insets.bottom + 16, left: 16, right: 16 }}>
+          <View style={{ minHeight: 40, justifyContent: 'center', marginBottom: 8 }}>
+            {(termStatus === 'duplicate' || alreadyAdded) && (
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.pinkBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9 }}>
+                <Check size={14} color={C.pink} weight="bold" />
+                <AppText style={{ fontSize: 13, color: C.pink, fontWeight: '700', flex: 1 }}>
+                  {isPt ? 'Essa já está na sua coleção.' : 'This one is already in your collection.'}
                 </AppText>
               </View>
             )}
-            {termStatus === 'cached' && !definition && (
-              <View style={{
-                flexDirection: 'row', alignItems: 'center', gap: 8,
-                backgroundColor: 'rgba(22,19,31,0.06)', borderRadius: 10,
-                paddingHorizontal: 12, paddingVertical: 8,
-              }}>
-                <Check size={14} color={C.navy} weight="bold" />
+            {termStatus === 'cached' && !definition && !alreadyAdded && (
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.ghost, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9 }}>
+                <MagicWand size={14} color={C.navy} weight="fill" />
                 <AppText style={{ fontSize: 13, color: C.navy, fontWeight: '600', flex: 1 }}>
-                  {isPt ? 'Definição disponível — toque no botão AI.' : 'Definition ready — tap the AI button.'}
+                  {isPt ? 'Tudo pronto: toque em "Preencher com IA".' : 'Ready: tap "Fill in with AI".'}
                 </AppText>
               </View>
             )}
             {termStatus === 'unknown' && suggestion === null && (
               <AppText style={{ fontSize: 12, color: C.muted, textAlign: 'center' }}>
-                {isPt
-                  ? 'Toque no botão AI para validar o termo antes de salvar.'
-                  : 'Tap the AI button to validate the term before saving.'}
+                {isPt ? 'Toque em "Preencher com IA" para validar a palavra.' : 'Tap "Fill in with AI" to check the word.'}
               </AppText>
             )}
             {suggestion !== null && (
-              <View style={{
-                backgroundColor: 'rgba(220,38,38,0.07)', borderRadius: 10,
-                paddingHorizontal: 12, paddingVertical: 8, flexDirection: 'row', alignItems: 'center', gap: 6,
-              }}>
-                <AppText style={{ fontSize: 13, color: '#DC2626', fontWeight: '600' }}>
-                  {isPt ? 'Não encontrado.' : 'Not found.'}
+              <View style={{ backgroundColor: C.pinkBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+                <AppText style={{ fontSize: 13, color: C.pink, fontWeight: '700' }}>
+                  {isPt ? 'Não encontramos essa palavra.' : "We couldn't find that word."}
                 </AppText>
                 {suggestion ? (
-                  <TouchableOpacity
-                    onPress={() => { setTerm(suggestion); setSuggestion(null); setTermStatus('idle'); handleGenerate(suggestion); }}
-                  >
-                    <AppText style={{ fontSize: 13, color: '#DC2626' }}>
+                  <TouchableOpacity onPress={() => { setTerm(suggestion); setSuggestion(null); setTermStatus('idle'); handleGenerate(suggestion); }}>
+                    <AppText style={{ fontSize: 13, color: C.pink }}>
                       {isPt ? 'Quis dizer ' : 'Did you mean '}
-                      <AppText style={{ fontWeight: '800', textDecorationLine: 'underline' }}>{suggestion}</AppText>
-                      ?
+                      <AppText style={{ fontWeight: '800', textDecorationLine: 'underline', color: C.pink }}>{suggestion}</AppText>?
                     </AppText>
                   </TouchableOpacity>
                 ) : (
-                  <AppText style={{ fontSize: 13, color: '#DC2626' }}>
-                    {isPt ? 'Verifique a ortografia.' : 'Check the spelling.'}
+                  <AppText style={{ fontSize: 13, color: C.pink }}>
+                    {isPt ? 'Confira a grafia.' : 'Check the spelling.'}
                   </AppText>
                 )}
-              </View>
-            )}
-            {alreadyAdded && (
-              <View style={{
-                flexDirection: 'row', alignItems: 'center', gap: 8,
-                backgroundColor: 'rgba(22,19,31,0.06)', borderRadius: 10, paddingHorizontal: 12, paddingVertical: 8,
-              }}>
-                <Check size={14} color={C.navy} weight="bold" />
-                <AppText style={{ fontSize: 13, color: C.navy, fontWeight: '600' }}>
-                  {isPt ? 'Já está no seu vocabulário!' : 'Already in your vocabulary!'}
-                </AppText>
               </View>
             )}
           </View>
           <TouchableOpacity
             onPress={handleSave}
             disabled={!canSave}
-            activeOpacity={0.82}
+            activeOpacity={0.85}
             style={{
-              backgroundColor: canSave ? C.navy : C.inputBg,
+              backgroundColor: canSave ? C.volt : '#EDE9E1',
               borderRadius: 16, paddingVertical: 16,
-              alignItems: 'center', justifyContent: 'center',
-              flexDirection: 'row', gap: 8,
-              ...Platform.select({
-                ios:     { shadowColor: C.navy, shadowOpacity: canSave ? 0.25 : 0, shadowRadius: 12, shadowOffset: { width: 0, height: 4 } },
-                android: { elevation: canSave ? 6 : 0 },
-              }),
+              alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8,
             }}
           >
             {saving
-              ? <ActivityIndicator color="#FFFFFF" />
+              ? <ActivityIndicator color={C.navy} />
               : (
                 <>
-                  <Plus size={20} color="#FFFFFF" weight="bold" />
-                  <AppText style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
-                    {isPt ? 'Salvar palavra' : 'Save word'}
+                  <Plus size={20} color={canSave ? C.navy : C.muted} weight="bold" />
+                  <AppText style={{ color: canSave ? C.navy : C.muted, fontSize: 16, fontWeight: '800' }}>
+                    {isPt ? 'Adicionar à coleção' : 'Add to collection'}
                   </AppText>
                 </>
-              )
-            }
+              )}
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
-      </View>
     </View>
   );
 }
