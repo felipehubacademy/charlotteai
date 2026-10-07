@@ -19,6 +19,7 @@ import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 import { CURRICULUM, TrailLevel } from '@/data/curriculum';
 import { calcNextReview, SRRating } from '@/lib/spacedRepetition';
+import { getLevelAccent, getLevelAccentBg } from '@/lib/levelColors';
 
 // ── Palette ─────────────────────────────────────────────────────────────────
 const C = {
@@ -262,8 +263,8 @@ export default function ReviewSession() {
   const level = (profile?.charlotte_level ?? 'Novice') as TrailLevel;
   const isPt  = systemIsPt; // suporte/chrome: idioma do device
 
-  const levelAccent:   string = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#6B4BFF' : '#0F766E';
-  const levelAccentBg: string = level === 'Novice' ? '#FFFBEB' : level === 'Inter' ? '#F1EEFF' : '#F0FDFA';
+  const levelAccent:   string = getLevelAccent(level);
+  const levelAccentBg: string = getLevelAccentBg(level);
 
   // Reset contador Tier 4 ao iniciar a sessao
   useEffect(() => { soundEngine.resetStreak(); }, []);

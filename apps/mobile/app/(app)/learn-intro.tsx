@@ -25,6 +25,7 @@ import { MODULE_INTROS } from '@/data/moduleIntros';
 import { TrailLevel } from '@/data/curriculum';
 import { useAuth } from '@/hooks/useAuth';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
+import { LEVEL_ACCENT, LEVEL_VIVID } from '@/lib/levelColors';
 
 // ── Config ─────────────────────────────────────────────────────
 const API_BASE_URL =
@@ -38,14 +39,14 @@ interface WordTiming {
 }
 
 // ── Palette ────────────────────────────────────────────────────
-const LEVEL_ACCENT: Record<string, { main: string; light: string }> = {
-  Novice:   { main: '#D97706', light: '#FCD34D' },
-  Inter:    { main: '#6B4BFF', light: '#A78BFA' },
-  Advanced: { main: '#0F766E', light: '#2DD4BF' },
+const LEVEL_ACCENT_INTRO: Record<string, { main: string; light: string }> = {
+  Novice:   { main: LEVEL_ACCENT.Novice,   light: LEVEL_VIVID.Novice },
+  Inter:    { main: LEVEL_ACCENT.Inter,    light: LEVEL_VIVID.Inter },
+  Advanced: { main: LEVEL_ACCENT.Advanced, light: LEVEL_VIVID.Advanced },
 };
 
 function buildPalette(level: string) {
-  const { main, light } = LEVEL_ACCENT[level] ?? LEVEL_ACCENT.Inter;
+  const { main, light } = LEVEL_ACCENT_INTRO[level] ?? LEVEL_ACCENT_INTRO.Inter;
   return {
     bg:           '#16131F',
     white:        '#FFFFFF',

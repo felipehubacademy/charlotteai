@@ -5,6 +5,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Star, ArrowRight, Trophy } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { LEVEL_ACCENT } from '@/lib/levelColors';
 
 interface Props {
   isOpen: boolean;
@@ -12,10 +13,7 @@ interface Props {
   onConfirm: () => void;
 }
 
-const LEVEL_COLOR: Record<string, string> = {
-  Inter:    '#6B4BFF',
-  Advanced: '#0F766E',
-};
+const LEVEL_COLOR = LEVEL_ACCENT;
 
 const LEVEL_LABEL: Record<string, { pt: string; en: string }> = {
   Inter:    { pt: 'Intermediário', en: 'Intermediate' },

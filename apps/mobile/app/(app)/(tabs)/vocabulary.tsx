@@ -24,6 +24,7 @@ import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { getTip, TIP_STYLE, Tip } from '@/lib/tips';
 import { localTodayStr } from '@/lib/dateUtils';
+import { getLevelAccent } from '@/lib/levelColors';
 
 const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -87,7 +88,7 @@ export default function VocabularyTab() {
   const isPt   = systemIsPt; // chrome do vocabulário: idioma do device
   const userId = session?.user?.id;
 
-  const levelAccent = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#6B4BFF' : '#0F766E';
+  const levelAccent = getLevelAccent(level);
 
   const [items,        setItems]        = useState<VocabItem[]>([]);
   const [loading,      setLoading]      = useState(true);

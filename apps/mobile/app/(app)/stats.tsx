@@ -23,6 +23,7 @@ import {
   TOTAL_TOPICS_PER_LEVEL,
   PromotionStatus,
 } from '@/lib/levelPromotion';
+import { LEVEL_ACCENT } from '@/lib/levelColors';
 
 // ── Design tokens ──────────────────────────────────────────────────────────────
 const C = {
@@ -36,11 +37,7 @@ const C = {
   greenLight:'#F8FFE0',
 };
 
-const LEVEL_COLOR: Record<string, string> = {
-  Novice:   '#D97706',
-  Inter:    '#6B4BFF',
-  Advanced: '#0F766E',
-};
+const LEVEL_COLOR = LEVEL_ACCENT;
 
 const RARITY_COLORS: Record<string, string> = {
   common:    '#22C55E',

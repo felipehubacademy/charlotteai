@@ -7,6 +7,7 @@ import { useLocalSearchParams, router } from 'expo-router';
 import { ArrowLeft, Medal, Trophy } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
+import { LEVEL_ACCENT } from '@/lib/levelColors';
 
 // ── Design tokens ──────────────────────────────────────────────────────────────
 const C = {
@@ -21,11 +22,7 @@ const C = {
 
 const MEDAL_COLORS = ['#D97706', '#64748B', '#B45309'];
 
-const LEVEL_COLOR: Record<string, string> = {
-  Novice:   '#D97706',
-  Inter:    '#6B4BFF',
-  Advanced: '#0F766E',
-};
+const LEVEL_COLOR = LEVEL_ACCENT;
 
 type Level = 'Novice' | 'Inter' | 'Advanced';
 

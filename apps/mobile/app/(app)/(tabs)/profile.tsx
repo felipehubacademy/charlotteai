@@ -34,6 +34,7 @@ import AvatarCropModal from '@/components/ui/AvatarCropModal';
 import Constants from 'expo-constants';
 import * as Updates from 'expo-updates';
 import * as SecureStore from 'expo-secure-store';
+import { LEVEL_ACCENT, LEVEL_ACCENT_BG } from '@/lib/levelColors';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -56,16 +57,8 @@ const cardShadow = Platform.select({
   android: { elevation: 3 },
 }) as object;
 
-const LEVEL_ACCENT: Record<UserLevel, string> = {
-  Novice:   '#D97706',
-  Inter:    '#6B4BFF',
-  Advanced: '#0F766E',
-};
-const LEVEL_ACCENT_BG: Record<UserLevel, string> = {
-  Novice:   '#FFFBEB',
-  Inter:    '#F1EEFF',
-  Advanced: '#F0FDFA',
-};
+// LEVEL_ACCENT vem de @/lib/levelColors
+// LEVEL_ACCENT_BG vem de @/lib/levelColors
 
 interface SettingRowProps {
   icon: React.ReactNode;

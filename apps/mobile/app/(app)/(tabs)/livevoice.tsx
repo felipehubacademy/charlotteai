@@ -27,6 +27,7 @@ import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 import { LiveVoiceLimitSheet } from '@/components/voice/LiveVoiceLimitSheet';
+import { getLevelAccent } from '@/lib/levelColors';
 
 // ── Palette ───────────────────────────────────────────────────────────────────
 // Tela full navy — todos os elementos em stack sobre o mesmo fundo.
@@ -450,7 +451,7 @@ export default function LiveVoiceTab() {
   // Assinante = premium pagante (active) ou institucional. Define a copy do
   // popup de limite (trial -> assinar; assinante -> renova/compra avulsa).
   const isSubscriber = !!profile?.is_institutional || profile?.subscription_status === 'active';
-  const accent  = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#6B4BFF' : '#0F766E';
+  const accent  = getLevelAccent(level);
 
   const [streak,  setStreak]  = useState(0);
   const [totalXP, setTotalXP] = useState(0);

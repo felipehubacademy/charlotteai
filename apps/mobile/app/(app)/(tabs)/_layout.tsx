@@ -9,12 +9,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { House, Lightning, Notepad, Rocket, UserCircle, Phone } from 'phosphor-react-native';
 import { useAuth } from '@/hooks/useAuth';
 import { UserLevel } from '@/lib/levelConfig';
+import { LEVEL_ACCENT } from '@/lib/levelColors';
 
-const LEVEL_ACCENT: Record<UserLevel, string> = {
-  Novice:   '#D97706',
-  Inter:    '#6B4BFF',
-  Advanced: '#0F766E',
-};
+// LEVEL_ACCENT vem de @/lib/levelColors
 
 export default function TabLayout() {
   const { profile } = useAuth();

@@ -16,6 +16,7 @@ import { AppText } from '@/components/ui/Text';
 import { CURRICULUM, TrailLevel, topicHasContent, totalTopics } from '@/data/curriculum';
 import { MODULE_INTROS } from '@/data/moduleIntros';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
+import { LEVEL_ACCENT } from '@/lib/levelColors';
 
 // ── Palette ────────────────────────────────────────────────────
 const C = {
@@ -49,11 +50,7 @@ const LEVEL_LABELS: Record<TrailLevel, string> = {
   Advanced: 'Advanced — C1/C2',
 };
 
-const LEVEL_COLOR: Record<TrailLevel, string> = {
-  Novice:   '#D97706',
-  Inter:    '#6B4BFF',
-  Advanced: '#0F766E',
-};
+const LEVEL_COLOR = LEVEL_ACCENT;
 
 export default function LearnTrailScreen() {
   const { profile } = useAuth();

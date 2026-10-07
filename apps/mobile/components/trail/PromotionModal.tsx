@@ -15,6 +15,7 @@ import { AppText } from '@/components/ui/Text';
 import { soundEngine } from '@/lib/soundEngine';
 import { resolvePromotionVideoUriSync } from '@/hooks/usePromotionVideoPrefetch';
 import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
+import { LEVEL_ACCENT } from '@/lib/levelColors';
 
 // URLs dos videos de promocao no Supabase Storage. Pre-fetch eh feito quando
 // o aluno entra na ultima unit do ultimo modulo (guided-chat-exercise via
@@ -114,10 +115,7 @@ const LEVEL_LABEL: Record<string, string> = {
   Advanced: 'Advanced',
 };
 
-const LEVEL_COLOR: Record<string, string> = {
-  Inter:    '#6B4BFF',
-  Advanced: '#0F766E',
-};
+const LEVEL_COLOR = LEVEL_ACCENT;
 
 const shadow = Platform.select({
   ios: { shadowColor: 'rgba(0,0,0,0.2)', shadowOpacity: 1, shadowRadius: 24, shadowOffset: { width: 0, height: 8 } },

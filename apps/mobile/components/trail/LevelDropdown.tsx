@@ -12,6 +12,7 @@ import { View, Text, TouchableOpacity, Modal, Pressable, Platform, LayoutChangeE
 import { CaretDown, Lock } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import type { Level } from '@/lib/curriculum-v2/types';
+import { LEVEL_ACCENT } from '@/lib/levelColors';
 
 const LEVEL_SHORT: Record<Level, string> = {
   Novice:   'Novice',
@@ -19,11 +20,7 @@ const LEVEL_SHORT: Record<Level, string> = {
   Advanced: 'Advanced',
 };
 
-const LEVEL_COLOR: Record<Level, string> = {
-  Novice:   '#D97706',
-  Inter:    '#6B4BFF',
-  Advanced: '#0F766E',
-};
+const LEVEL_COLOR = LEVEL_ACCENT;
 
 const LEVELS: Level[] = ['Novice', 'Inter', 'Advanced'];
 

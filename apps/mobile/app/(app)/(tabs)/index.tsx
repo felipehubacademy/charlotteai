@@ -50,7 +50,7 @@ const C = {
   bg:        '#FAF7F0',
   card:      '#FFFFFF',
   navy:      '#16131F',
-  heroStrip: '#18193D',
+  heroStrip: '#16131F',
   navyMid:   '#4D4858',
   navyLight: '#8A8494',
   navyGhost: 'rgba(22,19,31,0.06)',

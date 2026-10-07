@@ -14,6 +14,7 @@ import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { LevelDropdown } from './LevelDropdown';
 import type { Level } from '@/lib/curriculum-v2/types';
 import { listModules, listModuleSummaries } from '@/lib/curriculum-v2/loader';
+import { LEVEL_ACCENT } from '@/lib/levelColors';
 
 function a(hex: string, alpha: number): string {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -41,11 +42,7 @@ const LEVEL_LABELS: Record<TrailLevel, string> = {
   Advanced: 'Advanced',
 };
 
-const LEVEL_COLOR: Record<TrailLevel, string> = {
-  Novice:   '#D97706',
-  Inter:    '#6B4BFF',
-  Advanced: '#0F766E',
-};
+const LEVEL_COLOR = LEVEL_ACCENT;
 
 interface TrailBannerProps {
   userId: string | undefined;

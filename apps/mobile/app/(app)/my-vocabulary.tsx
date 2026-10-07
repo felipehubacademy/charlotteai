@@ -22,6 +22,7 @@ import { AppText } from '@/components/ui/Text';
 import { systemIsPt } from '@/lib/systemLang';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
+import { getLevelAccent } from '@/lib/levelColors';
 
 const C = {
   bg:        '#FAF7F0',
@@ -83,7 +84,7 @@ export default function MyVocabularyScreen() {
   const userId = session?.user?.id;
 
   // Level accent color — matches review-session and home screen
-  const levelAccent = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#6B4BFF' : '#0F766E';
+  const levelAccent = getLevelAccent(level);
 
 
   const [items,     setItems]    = useState<VocabItem[]>([]);

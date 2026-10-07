@@ -32,6 +32,7 @@ import { Achievement } from '@/lib/types/achievement';
 import { UserLevel } from '@/lib/levelConfig';
 import { supabase } from '@/lib/supabase';
 import { localTodayStr } from '@/lib/dateUtils';
+import { getLevelAccent } from '@/lib/levelColors';
 
 type Mode = 'chat' | 'grammar' | 'pronunciation';
 
@@ -75,7 +76,7 @@ export default function PracticeTab() {
   const userName  = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
   const userId    = profile?.id ?? '';
   const isPt      = systemIsPt; // chrome da practice: idioma do device
-  const accent    = userLevel === 'Novice' ? '#D97706' : userLevel === 'Inter' ? '#6B4BFF' : '#0F766E';
+  const accent    = getLevelAccent(userLevel);
 
   // Mode state — vem do URL ?mode=, default 'chat'
   const params = useLocalSearchParams<{ mode?: string }>();

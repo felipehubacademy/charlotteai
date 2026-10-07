@@ -21,6 +21,7 @@ import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { supabase } from '@/lib/supabase';
+import { LEVEL_ACCENT } from '@/lib/levelColors';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function a(hex: string, alpha: number): string {
@@ -42,11 +43,7 @@ const C = {
   hairline:  'rgba(22,19,31,0.04)',
   ghost:     'rgba(22,19,31,0.06)',
 };
-const LEVEL_COLOR: Record<TrailLevel, string> = {
-  Novice:   '#D97706',
-  Inter:    '#6B4BFF',
-  Advanced: '#0F766E',
-};
+const LEVEL_COLOR = LEVEL_ACCENT;
 
 // ── Node types — fixed cycle per position within module ───────────────────────
 type NodeType = 'grammar' | 'speaking' | 'roleplay' | 'chat';

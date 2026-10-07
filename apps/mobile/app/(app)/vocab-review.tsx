@@ -34,6 +34,7 @@ import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { soundEngine } from '@/lib/soundEngine';
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import Constants from 'expo-constants';
+import { getLevelAccent, getLevelAccentBg } from '@/lib/levelColors';
 
 const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -96,8 +97,8 @@ export default function VocabReview() {
   const level    = profile?.charlotte_level ?? 'Inter';
   const isPt     = systemIsPt; // suporte/chrome: idioma do device
   const insets   = useSafeAreaInsets();
-  const levelAccent   = level === 'Novice' ? C.gold   : level === 'Inter' ? '#6B4BFF' : '#0F766E';
-  const levelAccentBg = level === 'Novice' ? C.goldBg : level === 'Inter' ? '#F1EEFF' : '#F0FDFA';
+  const levelAccent   = getLevelAccent(level);
+  const levelAccentBg = getLevelAccentBg(level);
 
 
   const [cards,    setCards]    = useState<VocabCard[]>([]);
