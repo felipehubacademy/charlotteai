@@ -138,6 +138,7 @@ export function TrailBanner({ userId, level, flush = false, currentLevel, onLeve
             selectedLevel={level as Level}
             currentLevel={(currentLevel ?? level) as Level}
             onSelect={(l) => onLevelChange(l as TrailLevel)}
+            userId={useV2 ? userId : undefined}
           />
         ) : (
           <AppText display style={{ fontSize: 18, fontWeight: '900', color: accent }}>{pct}%</AppText>

@@ -13,6 +13,28 @@ import { CaretDown, Lock } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import type { Level } from '@/lib/curriculum-v2/types';
 import { LEVEL_ACCENT } from '@/lib/levelColors';
+import { QueizyWave } from '@/components/ui/QueizyWave';
+import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
+import { listModules } from '@/lib/curriculum-v2/loader';
+
+// Progresso do nível em miniatura (onda queizy → crazy + %). Montado só com o
+// menu aberto, então as consultas acontecem apenas quando o aluno abre o seletor.
+function LevelProgressMini({ userId, level }: { userId: string; level: Level }) {
+  const { loading, isUnitComplete } = useLearnProgressV2(userId, level);
+  const units = listModules(level).flatMap(m => m.units.map(u => ({ moduleId: m.id, unitId: u.id })));
+  const done  = loading ? 0 : units.filter(u => isUnitComplete(u.moduleId, u.unitId)).length;
+  const pct   = units.length > 0 ? Math.round((done / units.length) * 100) : 0;
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 6 }}>
+      <View style={{ flex: 1 }}>
+        <QueizyWave progress={units.length > 0 ? done / units.length : 0} height={12} strokeWidth={3} />
+      </View>
+      <AppText style={{ fontSize: 11, fontWeight: '800', color: '#4D4858', minWidth: 30, textAlign: 'right' }}>
+        {loading ? '…' : `${pct}%`}
+      </AppText>
+    </View>
+  );
+}
 
 const LEVEL_SHORT: Record<Level, string> = {
   Novice:   'Novice',
@@ -44,11 +66,13 @@ interface Props {
   selectedLevel: Level;
   currentLevel:  Level;       // perfil — limita o que esta liberado
   onSelect:      (level: Level) => void;
+  /** Com userId (trilha v2), cada nível do menu mostra a onda de progresso. */
+  userId?:       string;
 }
 
 const LEVEL_ORDER: Record<Level, number> = { Novice: 0, Inter: 1, Advanced: 2 };
 
-export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) {
+export function LevelDropdown({ selectedLevel, currentLevel, onSelect, userId }: Props) {
   const [open, setOpen]         = useState(false);
   const [anchor, setAnchor]     = useState<{ x: number; y: number; w: number; h: number } | null>(null);
   const [lockedToast, setLockedToast] = useState<Level | null>(null);
@@ -102,7 +126,7 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) 
           onPress={() => setOpen(false)}
         >
           {anchor && (() => {
-            const MENU_W = 220;
+            const MENU_W = userId ? 250 : 220;
             const menuLeft = Math.max(12, Math.min(anchor.x + anchor.w - MENU_W, 9999));
             const caretLeft = anchor.x + anchor.w / 2 - 7 - menuLeft;
             return (
@@ -177,15 +201,18 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) 
                                     }} />
                                   ) : null}
                                 </View>
-                                <Text
-                                  numberOfLines={1}
-                                  style={{
-                                    fontSize:   15,
-                                    fontWeight: isActive ? '900' : '700',
-                                    color:      isLocked ? C.navyDim : color,
-                                  }}>
-                                  {LEVEL_SHORT[lvl]}
-                                </Text>
+                                <View style={{ flex: 1 }}>
+                                  <Text
+                                    numberOfLines={1}
+                                    style={{
+                                      fontSize:   15,
+                                      fontWeight: isActive ? '900' : '700',
+                                      color:      isLocked ? C.navyDim : color,
+                                    }}>
+                                    {LEVEL_SHORT[lvl]}
+                                  </Text>
+                                  {userId && !isLocked && <LevelProgressMini userId={userId} level={lvl} />}
+                                </View>
                               </View>
                             )}
                           </Pressable>

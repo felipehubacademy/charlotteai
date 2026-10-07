@@ -92,12 +92,9 @@ interface ModuleData {
   avgScore:       number | null; // média dos scores das lessons concluídas
 }
 
-// ── Score color ramp ──────────────────────────────────────────────────────────
-function scoreColor(s: number): string {
-  if (s >= 85) return '#15803D';      // green
-  if (s >= 70) return '#B45309';      // muted gold
-  return '#B91C1C';                   // muted red
-}
+// ── Score colors (lógica da marca: abaixo da meta = queizy, passou = crazy) ──
+const SCORE_PASSED = '#08804A'; // Verde Crazy (texto)
+const SCORE_BELOW  = '#D12A64'; // Pink Queizy (texto)
 
 // ── Segmented progress bar (4 segments, type-tinted) ──────────────────────────
 function SegmentedProgress({ lessons, accent }: { lessons: Lesson[]; accent: string }) {
@@ -211,12 +208,12 @@ function LessonRow({
               textTransform: 'uppercase',
             }}>
               {isDone && hasScore && (
-                <AppText style={{ color: scoreColor(lesson.score!) }}>
+                <AppText style={{ color: SCORE_PASSED }}>
                   {`${Math.round(lesson.score!)}%`}
                 </AppText>
               )}
               {belowThreshold && (
-                <AppText style={{ color: '#D97706' }}>
+                <AppText style={{ color: SCORE_BELOW }}>
                   {`${Math.round(lesson.score!)}% — ${isPt ? `precisa ${threshold}%` : `need ${threshold}%`}`}
                 </AppText>
               )}
