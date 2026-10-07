@@ -817,7 +817,7 @@ export default function LiveVoiceModal({
 
     const farewellLine = getRandomFarewell(userLevel, userName);
     const farewellInstruction = userLevel === 'Novice'
-      ? `Diga exatamente isto, com calor e naturalidade, como sua ultima mensagem: "${farewellLine}" Nao diga mais nada alem disso.`
+      ? `Diga exatamente isto, com calor e naturalidade, como sua última mensagem: "${farewellLine}" Não diga mais nada além disso.`
       : `Say exactly this, warmly and naturally, as your last message: "${farewellLine}" Say nothing else.`;
 
     setTimeout(() => {

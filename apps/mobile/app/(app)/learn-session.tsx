@@ -1039,7 +1039,7 @@ export default function LearnSessionScreen() {
     if (params.reviewId) {
       const perfect = sessionErrors === 0;
       return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top', 'left', 'right']}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'left', 'right']}>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 }}>
             {/* Ícone */}
             <View style={{
@@ -1064,7 +1064,7 @@ export default function LearnSessionScreen() {
               </AppText>
             </View>
 
-            <AppText display style={{ fontSize: 24, fontWeight: '900', color: C.navy, marginBottom: 8, letterSpacing: -0.5, textAlign: 'center' }}>
+            <AppText display style={{ fontSize: 30, fontWeight: '800', color: C.navy, marginBottom: 8, textAlign: 'center' }}>
               {perfect
                 ? (isPortuguese ? 'Revisão perfeita!' : 'Perfect review!')
                 : (isPortuguese ? 'Revisão concluída!' : 'Review complete!')}
@@ -1085,10 +1085,10 @@ export default function LearnSessionScreen() {
               <AppText style={{ fontSize: 13, color: perfect ? C.green : C.violet, fontWeight: '600', textAlign: 'center', lineHeight: 20 }}>
                 {perfect
                   ? (isPortuguese
-                    ? 'Excelente! Memoria consolidada — proxima revisao em breve.'
+                    ? 'Excelente! Memória consolidada — próxima revisão em breve.'
                     : 'Excellent! Memory consolidated — next review coming up.')
                   : (isPortuguese
-                    ? `${sessionErrors} erro${sessionErrors > 1 ? 's' : ''} detectado${sessionErrors > 1 ? 's' : ''}. Revisao reagendada para daqui 3 dias.`
+                    ? `${sessionErrors} erro${sessionErrors > 1 ? 's' : ''} detectado${sessionErrors > 1 ? 's' : ''}. Revisão reagendada para daqui a 3 dias.`
                     : `${sessionErrors} mistake${sessionErrors > 1 ? 's' : ''} detected. Review rescheduled for 3 days from now.`)
                 }
               </AppText>
@@ -1125,24 +1125,26 @@ export default function LearnSessionScreen() {
     const hasNextTopic = nextModuleIdx < modules.length && modules[nextModuleIdx]?.topics[nextTopicIdx] !== undefined;
 
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top', 'left', 'right']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'left', 'right']}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 }}>
           <View style={{
-            width: 80, height: 80, borderRadius: 40,
-            backgroundColor: accentBg, borderWidth: 2, borderColor: accent,
+            width: 88, height: 88, borderRadius: 44,
+            backgroundColor: '#DCFF4A',
             alignItems: 'center', justifyContent: 'center', marginBottom: 24,
           }}>
-            <CheckCircle size={40} color={accent} weight="fill" />
+            <CheckCircle size={44} color={C.navy} weight="fill" />
           </View>
-          <AppText display style={{ fontSize: 24, fontWeight: '900', color: C.navy, marginBottom: 8, letterSpacing: -0.5 }}>
+          <AppText display style={{ fontSize: 30, fontWeight: '800', color: C.navy, marginBottom: 8, textAlign: 'center' }}>
             {isPortuguese ? 'Tópico concluído!' : 'Topic complete!'}
           </AppText>
-          <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, marginBottom: 8 }}>
+          <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, marginBottom: 14 }}>
             {topicTitle}
           </AppText>
-          <AppText style={{ fontSize: 13, color: C.navyLight, textAlign: 'center', lineHeight: 20, marginBottom: 32 }}>
-            {sessionXP} {isPortuguese ? 'XP ganhos' : 'XP earned'}
-          </AppText>
+          <View style={{ backgroundColor: C.navy, borderRadius: 20, paddingHorizontal: 14, paddingVertical: 6, marginBottom: 32 }}>
+            <AppText style={{ fontSize: 14, fontWeight: '800', color: '#DCFF4A' }}>
+              +{sessionXP} XP
+            </AppText>
+          </View>
 
           {/* Banner: score < threshold ⇒ proxima atividade nao destrava */}
           {(() => {

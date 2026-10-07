@@ -496,7 +496,7 @@ export default function ReviewSession() {
           </AppText>
           <AppText style={{ fontSize: 15, color: C.navyMid, marginTop: 8, textAlign: 'center', lineHeight: 22 }}>
             {isPt
-              ? 'Nenhuma revisao pendente por agora. Continue praticando!'
+              ? 'Nenhuma revisão pendente por agora. Continue praticando!'
               : 'No reviews due right now. Keep practising!'}
           </AppText>
           <TouchableOpacity
