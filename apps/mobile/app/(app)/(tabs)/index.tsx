@@ -555,22 +555,32 @@ export default function HomeTab() {
           {heroTitle}
         </AppText>
 
-        {/* Fala da Charlotte */}
-        <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8, marginTop: 10 }}>
+        {/* Fala da Charlotte — mensagem de chat: avatar + balão com o rabinho
+            apontando para ela e o nome em cima. */}
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, marginTop: 14 }}>
           <Image
             source={avatarSrc}
-            style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: C.navy }}
+            style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: C.navy }}
             contentFit="cover"
             accessibilityLabel="Charlotte"
           />
-          <View style={{ flex: 1, minHeight: 24, justifyContent: 'center' }}>
-            {greetingLoading || !aiGreeting ? (
-              <TypingDots />
-            ) : (
-              <AppText style={{ fontSize: 13, color: C.navyMid, lineHeight: 19 }}>
-                {aiGreeting}
+          <View style={{ flex: 1 }}>
+            <View style={{
+              backgroundColor: T.card, borderRadius: 16, borderBottomLeftRadius: 4,
+              paddingHorizontal: 12, paddingVertical: 9,
+              borderWidth: 1, borderColor: C.navyGhost,
+            }}>
+              <AppText style={{ fontSize: 11, fontWeight: '800', color: C.navy, marginBottom: 2 }}>
+                Charlotte
               </AppText>
-            )}
+              {greetingLoading || !aiGreeting ? (
+                <TypingDots />
+              ) : (
+                <AppText style={{ fontSize: 13, color: C.navyMid, lineHeight: 19 }}>
+                  {aiGreeting}
+                </AppText>
+              )}
+            </View>
           </View>
         </View>
 
