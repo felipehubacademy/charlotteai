@@ -6,9 +6,11 @@ import React from 'react';
 import { Image } from 'react-native';
 
 export function HeaderLogo({ height = 20 }: { height?: number }) {
+  // Acima de 24pt usa o arquivo grande (até 44pt nítido em 3x).
+  const source = height > 24 ? require('@/assets/logo-lockup.png') : require('@/assets/logo-header.png');
   return (
     <Image
-      source={require('@/assets/logo-header.png')}
+      source={source}
       style={{ height, width: Math.round(height * 86 / 20) }}
       resizeMode="contain"
       accessibilityLabel="Queizy"

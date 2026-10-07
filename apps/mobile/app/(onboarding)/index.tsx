@@ -11,6 +11,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import * as SecureStore from 'expo-secure-store';
 import { ArrowRight, CheckCircle } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { HeaderLogo } from '@/components/ui/HeaderLogo';
+import Svg, { Path } from 'react-native-svg';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 
 const { width: W } = Dimensions.get('window');
@@ -126,21 +128,24 @@ function Slide1() {
         transform: [{ translateY: bubbleY }],
         backgroundColor: C.navy,
         borderRadius: 16,
-        borderBottomLeftRadius: 4,
         paddingHorizontal: 20,
         paddingVertical: 12,
-        marginBottom: 36,
+        marginBottom: 40,
         alignSelf: 'center',
         ...C.shadow,
       }}>
         <AppText style={{ color: C.green, fontSize: 16, fontWeight: '700' }}>
           Oi! Eu sou a Charlotte.
         </AppText>
+        {/* Rabinho do logo Queizy */}
+        <Svg width={18} height={12} viewBox="0 0 18 12" style={{ position: 'absolute', left: 14, bottom: -11 }}>
+          <Path d="M17 0 L0 12 L6 0 Z" fill={C.navy} />
+        </Svg>
       </Animated.View>
 
       {/* Headline */}
       <Animated.View style={{ opacity: headlineO, transform: [{ translateY: headlineY }], alignItems: 'center' }}>
-        <AppText style={{
+        <AppText display style={{
           fontSize: 38, fontWeight: '900', color: C.navy,
           textAlign: 'center', lineHeight: 44, letterSpacing: -1,
           marginBottom: 12,
@@ -248,7 +253,7 @@ function Slide2({ active }: { active: boolean }) {
         })}
       </View>
 
-      <AppText style={{
+      <AppText display style={{
         fontSize: 32, fontWeight: '800', color: C.navy,
         textAlign: 'center', lineHeight: 38, letterSpacing: -0.5, marginBottom: 12,
       }}>
@@ -407,11 +412,12 @@ export default function OnboardingScreen() {
     <Animated.View style={{ flex: 1, backgroundColor: C.bg, opacity: screenO }}>
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
 
-        {/* Top bar — "Entrar" sempre visível */}
+        {/* Top bar — logo à esquerda, "Entrar" sempre visível à direita */}
         <View style={{
-          height: 44, flexDirection: 'row', justifyContent: 'flex-end',
+          height: 44, flexDirection: 'row', justifyContent: 'space-between',
           alignItems: 'center', paddingHorizontal: 20,
         }}>
+          <HeaderLogo />
           <TouchableOpacity onPress={goLogin} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
             <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>Entrar</AppText>
           </TouchableOpacity>

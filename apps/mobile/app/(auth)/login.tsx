@@ -21,6 +21,8 @@ import {
   WarningCircle,
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { HeaderLogo } from '@/components/ui/HeaderLogo';
+import { MarkerText } from '@/components/ui/MarkerText';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 
@@ -83,34 +85,25 @@ export default function LoginScreen() {
           {/* ── Branding ── */}
           <View style={{ alignItems: 'center', marginBottom: 40 }}>
 
-            {/* Avatar */}
-            <View style={{
-              width: 100, height: 100, borderRadius: 50,
-              borderWidth: 3, borderColor: C.green,
-              overflow: 'hidden', marginBottom: 18,
-              backgroundColor: C.navy,
-              shadowColor: C.navy, shadowOpacity: 0.12,
-              shadowRadius: 20, shadowOffset: { width: 0, height: 6 },
-            }}>
-              <Image
-                source={require('@/assets/charlotte-avatar.png')}
-                style={{ width: '100%', height: '100%' }}
-                resizeMode="cover"
-              />
+            {/* Logo Queizy */}
+            <View style={{ marginBottom: 14 }}>
+              <HeaderLogo height={44} />
             </View>
 
-            {/* Charlotte */}
-            <AppText display style={{ fontSize: 34, fontWeight: '800', color: C.navy, letterSpacing: -0.5, marginBottom: 6 }}>
-              Charlotte
-            </AppText>
-
             {/* by Hub Academy — com linhas laterais */}
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 18 }}>
               <View style={{ width: 24, height: 1, backgroundColor: C.navyLight, opacity: 0.35 }} />
               <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyLight, letterSpacing: 0.6 }}>
                 by Hub Academy
               </AppText>
               <View style={{ width: 24, height: 1, backgroundColor: C.navyLight, opacity: 0.35 }} />
+            </View>
+
+            {/* Assinatura da marca */}
+            <View style={{ marginBottom: 8 }}>
+              <MarkerText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, lineHeight: 28, textAlign: 'center' }}>
+                {isPt ? 'Do queizy ao crazy.' : 'From queizy to crazy.'}
+              </MarkerText>
             </View>
 
             {/* Tagline */}
@@ -119,8 +112,8 @@ export default function LoginScreen() {
               lineHeight: 22, maxWidth: 270,
             }}>
               {isPt
-                ? 'Pratique inglês com conversas inteligentes e feedback em tempo real.'
-                : 'Practice English with smart conversations and real-time feedback.'}
+                ? 'Pratique inglês com a Charlotte, com conversas de verdade e correção na hora.'
+                : 'Practice English with Charlotte: real conversations, instant feedback.'}
             </AppText>
 
           </View>
@@ -222,7 +215,7 @@ export default function LoginScreen() {
           </TouchableOpacity>
 
           <AppText style={{ color: C.navyLight, fontSize: 11, textAlign: 'center', marginTop: 32, opacity: 0.5 }}>
-            Charlotte v{Constants.expoConfig?.version ?? '1.0.0'} · All rights reserved
+            Queizy v{Constants.expoConfig?.version ?? '1.0.0'} · {isPt ? 'Todos os direitos reservados' : 'All rights reserved'}
           </AppText>
 
         </ScrollView>
