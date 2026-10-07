@@ -12,7 +12,7 @@ import {
   User, Key, DeviceMobile, GraduationCap, Buildings,
   SignOut, ShieldCheck, CheckCircle, Microphone, FileText,
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
-  CaretRight, Play, SpeakerHigh, Vibrate, ChatCircleText,
+  CaretRight, SpeakerHigh, Vibrate, ChatCircleText,
   CreditCard, Lifebuoy,
 } from 'phosphor-react-native';
 import {
@@ -598,21 +598,6 @@ export default function ProfileTab() {
                   : `Resets ${new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toLocaleDateString('en', { month: 'short', day: 'numeric' })}`}
               </AppText>
             </View>
-          </>
-        )}
-
-        {/* Tour — admin only */}
-        {profile?.is_admin && (
-          <>
-            <SectionTitle label="Admin" />
-            <SettingGroup>
-              <SettingRow
-                icon={<Play size={18} color={C.navyMid} weight="regular" />}
-                label={isPt ? 'Refazer welcome do novo layout' : 'Replay new layout welcome'}
-                onPress={async () => { await SecureStore.deleteItemAsync('NEW_LAYOUT_WELCOME_DONE').catch(() => {}); }}
-                chevron
-              />
-            </SettingGroup>
           </>
         )}
 

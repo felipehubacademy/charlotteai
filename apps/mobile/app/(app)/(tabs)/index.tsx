@@ -37,10 +37,7 @@ import { GraduationModal } from '@/components/trail/GraduationModal';
 import { usePromotion } from '@/lib/curriculum-v2/usePromotion';
 import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
 import { usePromotionPending } from '@/lib/promotionState';
-import { NewLayoutWelcomeSheet } from '@/components/onboarding/NewLayoutWelcomeSheet';
 import { PlacementPromptSheet } from '@/components/onboarding/PlacementPromptSheet';
-import { RebrandNoticeSheet } from '@/components/onboarding/RebrandNoticeSheet';
-import * as Application from 'expo-application';
 
 // Module-level flag — persists for the JS session (like the legacy home screen)
 let _streakSoundPlayedThisSession = false;
@@ -141,73 +138,20 @@ export default function HomeTab() {
   const [refreshing,      setRefreshing]      = useState(false);
   const [aiGreeting,      setAiGreeting]      = useState<string | null>(null);
   const [greetingLoading, setGreetingLoading] = useState(true);
-  const [showWelcomeSheet, setShowWelcomeSheet] = useState(false);
-
-  // Welcome sheet do new layout — aparece 1x por device (flag SecureStore).
-  // Substitui os tours antigos: usuario ja conhece as features, so precisa
-  // saber pra qual tab cada uma migrou.
-  useEffect(() => {
-    if (loading) return;
-    SecureStore.getItemAsync('NEW_LAYOUT_WELCOME_DONE').then(v => {
-      if (!v) {
-        // Pequeno delay pra o conteudo render + auto-scroll settle antes do modal
-        const t = setTimeout(() => setShowWelcomeSheet(true), 700);
-        return () => clearTimeout(t);
-      }
-    }).catch(() => {});
-  }, [loading]);
-
-  const closeWelcomeSheet = useCallback(() => {
-    setShowWelcomeSheet(false);
-    SecureStore.setItemAsync('NEW_LAYOUT_WELCOME_DONE', '1').catch(() => {});
-  }, []);
-
-  // Aviso do rebrand Charlotte → Queizy: 1x por device, só para quem já usava
-  // o app (o flag do welcome do novo layout já existe) e só quando o binário
-  // instalado já se chama Queizy — no build antigo o ícone ainda é o da
-  // Charlotte. Instalação nova marca o flag e pula o aviso.
-  const [showRebrandNotice, setShowRebrandNotice] = useState(false);
-  const [rebrandChecked, setRebrandChecked] = useState(false);
-
-  useEffect(() => {
-    if (loading) return;
-    if (Application.applicationName !== 'Queizy') { setRebrandChecked(true); return; }
-    (async () => {
-      try {
-        const done = await SecureStore.getItemAsync('REBRAND_QUEIZY_NOTICE_DONE');
-        if (done) return;
-        const wasUser = await SecureStore.getItemAsync('NEW_LAYOUT_WELCOME_DONE');
-        if (wasUser) {
-          setTimeout(() => setShowRebrandNotice(true), 700);
-        } else {
-          await SecureStore.setItemAsync('REBRAND_QUEIZY_NOTICE_DONE', 'new-install');
-        }
-      } catch { /* sem aviso */ } finally {
-        setRebrandChecked(true);
-      }
-    })();
-  }, [loading]);
-
-  const closeRebrandNotice = useCallback(() => {
-    setShowRebrandNotice(false);
-    SecureStore.setItemAsync('REBRAND_QUEIZY_NOTICE_DONE', '1').catch(() => {});
-  }, []);
-
   // Placement opcional (Fase 1): pop único na Home pra quem ainda não fez o
-  // teste. Aparece só DEPOIS do welcome sheet e do aviso do rebrand (não
-  // empilha) e é sempre dispensável. Flag por device em SecureStore.
+  // teste. Sempre dispensável. Flag por device em SecureStore.
   const [showPlacementPrompt, setShowPlacementPrompt] = useState(false);
   const placementDone = profile?.placement_test_done === true;
 
   useEffect(() => {
-    if (loading || showWelcomeSheet || !rebrandChecked || showRebrandNotice || placementDone) return;
+    if (loading || placementDone) return;
     SecureStore.getItemAsync('PLACEMENT_PROMPT_DISMISSED').then(v => {
       if (!v) {
         const t = setTimeout(() => setShowPlacementPrompt(true), 800);
         return () => clearTimeout(t);
       }
     }).catch(() => {});
-  }, [loading, showWelcomeSheet, rebrandChecked, showRebrandNotice, placementDone]);
+  }, [loading, placementDone]);
 
   const dismissPlacementPrompt = useCallback(() => {
     setShowPlacementPrompt(false);
@@ -656,16 +600,7 @@ export default function HomeTab() {
           : <ArrowUp size={22} color="#DCFF4A" weight="bold" />}
       </TouchableOpacity>
 
-      <NewLayoutWelcomeSheet
-        visible={showWelcomeSheet}
-        onClose={closeWelcomeSheet}
-      />
 
-      <RebrandNoticeSheet
-        visible={showRebrandNotice}
-        isPt={systemIsPt}
-        onClose={closeRebrandNotice}
-      />
 
       <PlacementPromptSheet
         visible={showPlacementPrompt}

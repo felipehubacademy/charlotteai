@@ -4,7 +4,7 @@
 // só pra quem ainda não fez o placement. Oferece o teste rápido OU começar do
 // zero. Nunca bloqueia — é sempre dispensável.
 //
-// Espelha o NewLayoutWelcomeSheet (backdrop fade + sheet slide up).
+// Backdrop fade + sheet slide up.
 
 import React, { useEffect, useRef, useState } from 'react';
 import {
