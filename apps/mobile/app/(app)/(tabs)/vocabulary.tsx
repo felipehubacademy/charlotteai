@@ -1,31 +1,32 @@
 // app/(app)/(tabs)/vocabulary.tsx
-// Vocabulary tab — Vocabulary of the Day + review prompt modal + searchable word list.
-// On focus: if words are due → modal "X words to review. Review now?"
-//   "Revisar" → /(app)/vocab-review  |  "Ver lista" → dismiss modal, show list
-// Word card: collapsed = term + /phonetic/ + speaker icon, tap → expand full details.
+// Vocabulary tab — coleção do aluno (total + onda de domínio queizy → crazy +
+// revisão do dia), palavra do dia, busca/filtros e lista. Ouvir a palavra:
+// botão em cada linha, na palavra do dia e no detalhe (que também toca a frase
+// de exemplo e tem "ouvir devagar"). Tocar numa linha abre o detalhe.
 
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import {
   View, ScrollView, TouchableOpacity, TextInput,
-  ActivityIndicator, Alert, Platform, Modal,
+  ActivityIndicator, Alert, Platform, Modal, Pressable,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import {
-  MagnifyingGlass, Trash, Plus, SpeakerHigh, SpeakerSlash,
-  BookOpen, ClockCountdown, CheckCircle, CaretDown,
+  MagnifyingGlass, Trash, Plus, SpeakerHigh,
+  BookOpen, CheckCircle,
 } from 'phosphor-react-native';
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import Constants from 'expo-constants';
 import { AppText } from '@/components/ui/Text';
 import { HeaderLogo } from '@/components/ui/HeaderLogo';
+import { MarkerText } from '@/components/ui/MarkerText';
+import { QueizyWave } from '@/components/ui/QueizyWave';
 import { systemIsPt } from '@/lib/systemLang';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
-import { getTip, TIP_STYLE, Tip } from '@/lib/tips';
+import { getTip, Tip } from '@/lib/tips';
 import { localTodayStr } from '@/lib/dateUtils';
-import { getLevelAccent } from '@/lib/levelColors';
 
 const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -45,6 +46,9 @@ const C = {
   goldBg:   '#FFFBEB',
   inputBg:  '#EDE9E1',
   shadow:   'rgba(22,19,31,0.08)',
+  hairline: 'rgba(22,19,31,0.06)',
+  volt:     '#DCFF4A',
+  pink:     '#D12A64',
 };
 
 const cardShadow = Platform.select({
@@ -89,15 +93,14 @@ export default function VocabularyTab() {
   const isPt   = systemIsPt; // chrome do vocabulário: idioma do device
   const userId = session?.user?.id;
 
-  const levelAccent = getLevelAccent(level);
 
   const [items,        setItems]        = useState<VocabItem[]>([]);
   const [loading,      setLoading]      = useState(true);
   const [dueCount,     setDueCount]     = useState(0);
   const [filter,       setFilter]       = useState<VocabCategory>('all');
   const [search,       setSearch]       = useState('');
-  const [expanded,     setExpanded]     = useState<string | null>(null);
-  const [showModal,    setShowModal]    = useState(false);
+  const [selected,     setSelected]     = useState<VocabItem | null>(null);
+  const [playingKey,   setPlayingKey]   = useState<string | null>(null);
   const [ttsLoading,   setTtsLoading]   = useState<string | null>(null);
   const [tipAdded,     setTipAdded]     = useState(false);
   const [addingTip,    setAddingTip]    = useState(false);
@@ -110,7 +113,6 @@ export default function VocabularyTab() {
     return s.split('-').reduce((acc, p) => acc * 100 + parseInt(p, 10), 0);
   }, []);
   const tip: Tip  = useMemo(() => getTip(level, dateSeed), [level, dateSeed]);
-  const tipStyle  = TIP_STYLE[tip.type] ?? { bg: '#FAF7F0', color: '#16131F' };
 
   const TIP_CATEGORY_MAP: Record<string, string> = {
     'word':         'word',
@@ -121,27 +123,6 @@ export default function VocabularyTab() {
   };
 
   const openAdd = () => router.push({ pathname: '/(app)/add-word', params: { source: 'manual' } });
-
-  const handleTipTts = useCallback(async () => {
-    if (tipTtsLoading) return;
-    setTipTtsLoading(true);
-    try {
-      const res = await fetch(`${API_BASE}/api/tts-cached?term=${encodeURIComponent(tip.term.trim())}`);
-      if (!res.ok) throw new Error('TTS fetch failed');
-      const { url } = await res.json();
-      await setAudioModeAsync({ playsInSilentMode: true });
-      try { playerRef.current?.remove(); } catch { /* ignore */ }
-      const player = createAudioPlayer({ uri: url });
-      playerRef.current = player;
-      player.play();
-      await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    } catch {
-      // Feedback de erro em vez de falha silenciosa (ex.: TTS do servidor fora).
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error).catch(() => {});
-    } finally {
-      setTipTtsLoading(false);
-    }
-  }, [tipTtsLoading, tip.term]);
 
   const handleAddTip = useCallback(async () => {
     if (!userId || addingTip) return;
@@ -227,32 +208,40 @@ export default function VocabularyTab() {
     setTipAdded(alreadyAdded);
     const due = srRes.count ?? 0;
     setDueCount(due);
-    if (due > 0) setShowModal(true);
     setLoading(false);
   }, [userId, tip]);
 
   useFocusEffect(useCallback(() => { load(); }, [load]));
 
-  const handleTts = useCallback(async (item: VocabItem) => {
+  // Áudio único da tela: lista, palavra do dia e detalhe. `key` identifica o
+  // que está tocando (para o botão ficar Volt enquanto toca).
+  const playAudio = useCallback(async (key: string, text: string, slow = false) => {
     if (ttsLoading) return;
-    setTtsLoading(item.id);
+    setTtsLoading(key);
     try {
-      const res = await fetch(`${API_BASE}/api/tts-cached?term=${encodeURIComponent(item.term.trim())}`);
+      const res = await fetch(`${API_BASE}/api/tts-cached?term=${encodeURIComponent(text.trim())}`);
       if (!res.ok) throw new Error('TTS fetch failed');
       const { url } = await res.json();
       await setAudioModeAsync({ playsInSilentMode: true });
       try { playerRef.current?.remove(); } catch { /* ignore */ }
       const player = createAudioPlayer({ uri: url });
       playerRef.current = player;
+      if (slow) { try { player.playbackRate = 0.7; } catch { /* ignore */ } }
+      setPlayingKey(key);
+      player.addListener('playbackStatusUpdate', (st: any) => {
+        if (st?.didJustFinish) setPlayingKey(k => (k === key ? null : k));
+      });
       player.play();
       await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     } catch {
-      // Feedback de erro em vez de falha silenciosa (ex.: TTS do servidor fora).
+      setPlayingKey(null);
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error).catch(() => {});
     } finally {
       setTtsLoading(null);
     }
   }, [ttsLoading]);
+
+  const handleTipTts = useCallback(() => playAudio('tip', tip.term), [playAudio, tip.term]);
 
   const handleDelete = useCallback((item: VocabItem) => {
     Alert.alert(
@@ -282,49 +271,44 @@ export default function VocabularyTab() {
     return true;
   });
 
+  // Domínio: 5+ acertos seguidos na revisão espaçada = dominada.
+  const MASTERED_AT = 5;
+  const masteredCount = items.filter(i => (i.repetitions ?? 0) >= MASTERED_AT).length;
+  const reviewMinutes = Math.max(1, Math.ceil((dueCount * 20) / 60));
+
+  const SpeakerButton = ({ k, text, size = 34, slow = false }: { k: string; text: string; size?: number; slow?: boolean }) => {
+    const active = playingKey === k || ttsLoading === k;
+    return (
+      <TouchableOpacity
+        onPress={() => playAudio(k, text, slow)}
+        hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+        accessibilityLabel={isPt ? 'Ouvir' : 'Listen'}
+        style={{
+          width: size, height: size, borderRadius: size / 2,
+          backgroundColor: active ? C.volt : C.ghost,
+          alignItems: 'center', justifyContent: 'center',
+        }}
+      >
+        {ttsLoading === k
+          ? <ActivityIndicator size="small" color={C.navy} />
+          : <SpeakerHigh size={Math.round(size * 0.5)} color={C.navy} weight="fill" />}
+      </TouchableOpacity>
+    );
+  };
+
+  const StrengthDots = ({ reps }: { reps: number }) => (
+    <View style={{ flexDirection: 'row', gap: 3 }}>
+      {Array.from({ length: MASTERED_AT }).map((_, i) => (
+        <View key={i} style={{
+          width: 6, height: 6, borderRadius: 3,
+          backgroundColor: i < Math.min(reps, MASTERED_AT) ? C.greenDark : 'rgba(22,19,31,0.12)',
+        }} />
+      ))}
+    </View>
+  );
+
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
-
-      {/* Review prompt modal */}
-      <Modal visible={showModal} transparent animationType="fade" onRequestClose={() => setShowModal(false)}>
-        <View style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.5)', alignItems: 'center', justifyContent: 'center', padding: 32 }}>
-          <View style={{ backgroundColor: C.card, borderRadius: 24, padding: 28, width: '100%', maxWidth: 340 }}>
-            <View style={{
-              width: 52, height: 52, borderRadius: 14,
-              backgroundColor: `${levelAccent}18`,
-              alignItems: 'center', justifyContent: 'center', marginBottom: 16,
-            }}>
-              <ClockCountdown size={28} color={levelAccent} weight="fill" />
-            </View>
-            <AppText display style={{ fontSize: 20, fontWeight: '900', color: C.navy, marginBottom: 8 }}>
-              {isPt
-                ? `${dueCount} ${dueCount === 1 ? 'palavra para' : 'palavras para'} revisar`
-                : `${dueCount} ${dueCount === 1 ? 'word' : 'words'} to review`}
-            </AppText>
-            <AppText style={{ fontSize: 14, color: C.navyMid, lineHeight: 20, marginBottom: 24 }}>
-              {isPt
-                ? 'Revisar agora mantém as palavras na sua memória por mais tempo.'
-                : 'Reviewing now keeps the words fresh in your long-term memory.'}
-            </AppText>
-            <TouchableOpacity
-              onPress={() => { setShowModal(false); router.push('/(app)/vocab-review'); }}
-              style={{ backgroundColor: levelAccent, borderRadius: 14, paddingVertical: 14, alignItems: 'center', marginBottom: 10 }}
-            >
-              <AppText style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '800' }}>
-                {isPt ? 'Revisar agora' : 'Review now'}
-              </AppText>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => setShowModal(false)}
-              style={{ paddingVertical: 12, alignItems: 'center' }}
-            >
-              <AppText style={{ color: C.navyMid, fontSize: 14, fontWeight: '600' }}>
-                {isPt ? 'Ver lista' : 'See list'}
-              </AppText>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
 
       {/* Header */}
       <SafeAreaView edges={['top']} style={{ backgroundColor: C.card }}>
@@ -336,298 +320,287 @@ export default function VocabularyTab() {
           <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
             {isPt ? 'Vocabulário' : 'Vocabulary'}
           </AppText>
+          <TouchableOpacity
+            onPress={openAdd}
+            accessibilityLabel={isPt ? 'Adicionar palavra' : 'Add word'}
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: C.ghost, alignItems: 'center', justifyContent: 'center' }}
+          >
+            <Plus size={17} color={C.navy} weight="bold" />
+          </TouchableOpacity>
           <HeaderLogo />
         </View>
       </SafeAreaView>
 
-      {/* Revisão pendente — card no topo (saiu do header para o logo entrar) */}
-      {dueCount > 0 && (
-        <TouchableOpacity
-          onPress={() => router.push('/(app)/vocab-review')}
-          activeOpacity={0.85}
-          style={{
-            marginHorizontal: 16, marginTop: 14,
-            backgroundColor: C.card, borderRadius: 18,
-            borderWidth: 1, borderColor: C.border,
-            paddingVertical: 14, paddingHorizontal: 16,
-            flexDirection: 'row', alignItems: 'center', gap: 12,
-          }}
-        >
-          <View style={{
-            width: 40, height: 40, borderRadius: 12,
-            backgroundColor: `${levelAccent}15`,
-            alignItems: 'center', justifyContent: 'center',
-          }}>
-            <ClockCountdown size={22} color={levelAccent} weight="fill" />
-          </View>
-          <View style={{ flex: 1 }}>
-            <AppText display style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>
-              {isPt
-                ? `${dueCount} ${dueCount === 1 ? 'palavra para revisar' : 'palavras para revisar'}`
-                : `${dueCount} ${dueCount === 1 ? 'word to review' : 'words to review'}`}
-            </AppText>
-            <AppText style={{ fontSize: 12, color: C.navyMid, marginTop: 2 }}>
-              {isPt ? 'Revisar agora fixa as palavras na memória.' : 'Reviewing now locks them into memory.'}
-            </AppText>
-          </View>
-          <View style={{ backgroundColor: '#DCFF4A', borderRadius: 10, paddingHorizontal: 12, paddingVertical: 7 }}>
-            <AppText style={{ fontSize: 12, fontWeight: '800', color: '#16131F' }}>
-              {isPt ? 'Revisar' : 'Review'}
-            </AppText>
-          </View>
-        </TouchableOpacity>
-      )}
+      <ScrollView
+        contentContainerStyle={{ padding: 16, paddingBottom: Platform.OS === 'ios' ? 112 : 92 }}
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+      >
 
-      {/* Vocabulary of the Day */}
-      <View style={{
-        marginHorizontal: 16, marginTop: 14, marginBottom: 2,
-        backgroundColor: tipStyle.bg,
-        borderRadius: 18, padding: 16,
-        borderWidth: 1, borderColor: `${tipStyle.color}25`,
-        ...cardShadow,
-      }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-            <AppText style={{ fontSize: 11, fontWeight: '500', color: tipStyle.color, opacity: 0.75 }}>
-              {isPt ? 'Vocabulário do dia' : 'Vocabulary of the day'} ·
+        {/* ── Sua coleção + revisão do dia ── */}
+        <View style={{ backgroundColor: C.navy, borderRadius: 22, padding: 18 }}>
+          <AppText style={{ fontSize: 11, fontWeight: '800', letterSpacing: 1.4, color: C.volt }}>
+            {isPt ? 'SUA COLEÇÃO' : 'YOUR COLLECTION'}
+          </AppText>
+          <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 12, marginTop: 6 }}>
+            <AppText display style={{ fontSize: 44, fontWeight: '800', color: '#FFFFFF', lineHeight: 46 }}>
+              {items.length}
             </AppText>
-            <View style={{
-              backgroundColor: `${tipStyle.color}18`, borderRadius: 8,
-              paddingHorizontal: 8, paddingVertical: 3,
-            }}>
-              <AppText style={{ fontSize: 11, fontWeight: '800', color: tipStyle.color, textTransform: 'capitalize' }}>
-                {tip.type}
-              </AppText>
-            </View>
+            <AppText style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', marginBottom: 6 }}>
+              {isPt
+                ? `${items.length === 1 ? 'palavra' : 'palavras'} · ${masteredCount} ${masteredCount === 1 ? 'dominada' : 'dominadas'}`
+                : `${items.length === 1 ? 'word' : 'words'} · ${masteredCount} mastered`}
+            </AppText>
           </View>
+          <View style={{ marginTop: 12 }}>
+            <QueizyWave
+              progress={items.length > 0 ? masteredCount / items.length : 0}
+              height={14} strokeWidth={4}
+              doneColor="#2BD97C"
+            />
+          </View>
+
           <TouchableOpacity
-            onPress={tipAdded ? undefined : handleAddTip}
-            activeOpacity={tipAdded ? 1 : 0.75}
+            onPress={() => dueCount > 0 && router.push('/(app)/vocab-review')}
+            activeOpacity={dueCount > 0 ? 0.85 : 1}
             style={{
-              flexDirection: 'row', alignItems: 'center', gap: 5,
-              backgroundColor: tipAdded ? `${tipStyle.color}15` : tipStyle.color,
-              borderRadius: 20, paddingHorizontal: 12, paddingVertical: 5,
+              flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 16,
+              backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 14,
+              paddingVertical: 10, paddingHorizontal: 12,
             }}
           >
-            {addingTip ? (
-              <ActivityIndicator size={12} color={tipAdded ? tipStyle.color : '#FFF'} />
-            ) : tipAdded ? (
-              <CheckCircle size={13} color={tipStyle.color} weight="fill" />
-            ) : (
-              <Plus size={13} color="#FFF" weight="bold" />
+            <View style={{ flex: 1 }}>
+              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFFFFF' }}>
+                {dueCount > 0
+                  ? (isPt
+                      ? `${dueCount} ${dueCount === 1 ? 'palavra para revisar' : 'palavras para revisar'} hoje`
+                      : `${dueCount} ${dueCount === 1 ? 'word' : 'words'} to review today`)
+                  : (isPt ? 'Tudo revisado por hoje' : 'All caught up for today')}
+              </AppText>
+              <AppText style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', marginTop: 1 }}>
+                {dueCount > 0
+                  ? `~${reviewMinutes} min`
+                  : (isPt ? 'Volte amanhã para a próxima revisão.' : 'Come back tomorrow for the next review.')}
+              </AppText>
+            </View>
+            {dueCount > 0 && (
+              <View style={{ backgroundColor: C.volt, borderRadius: 12, paddingHorizontal: 14, paddingVertical: 9 }}>
+                <AppText style={{ fontSize: 13, fontWeight: '800', color: C.navy }}>
+                  {isPt ? 'Revisar' : 'Review'}
+                </AppText>
+              </View>
             )}
-            <AppText style={{
-              fontSize: 12, fontWeight: '700',
-              color: tipAdded ? tipStyle.color : '#FFF',
-            }}>
-              {tipAdded
-                ? (isPt ? 'Adicionada' : 'Added')
-                : (isPt ? 'Add vocab' : 'Add vocab')}
+          </TouchableOpacity>
+        </View>
+
+        {/* ── Palavra do dia ── */}
+        <View style={{ backgroundColor: C.card, borderRadius: 20, padding: 16, marginTop: 14, ...cardShadow }}>
+          <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+            <View style={{ flex: 1 }}>
+              <AppText style={{ fontSize: 11, fontWeight: '700', letterSpacing: 1.1, color: C.muted }}>
+                {isPt ? 'PALAVRA DO DIA' : 'WORD OF THE DAY'}
+              </AppText>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 6 }}>
+                <View style={{ flexShrink: 1 }}>
+                  <MarkerText display style={{ fontSize: 26, fontWeight: '800', color: C.navy, lineHeight: 32 }}>
+                    {tip.term}
+                  </MarkerText>
+                </View>
+                <SpeakerButton k="tip" text={tip.term} size={32} />
+              </View>
+            </View>
+            <TouchableOpacity
+              onPress={tipAdded ? undefined : handleAddTip}
+              activeOpacity={tipAdded ? 1 : 0.8}
+              accessibilityLabel={tipAdded ? (isPt ? 'Já está na coleção' : 'Already in your collection') : (isPt ? 'Adicionar à coleção' : 'Add to collection')}
+              style={{
+                width: 36, height: 36, borderRadius: 18,
+                backgroundColor: tipAdded ? C.greenBg : C.navy,
+                alignItems: 'center', justifyContent: 'center',
+              }}
+            >
+              {addingTip
+                ? <ActivityIndicator size="small" color={C.volt} />
+                : tipAdded
+                  ? <CheckCircle size={20} color={C.greenDark} weight="fill" />
+                  : <Plus size={18} color={C.volt} weight="bold" />}
+            </TouchableOpacity>
+          </View>
+          <AppText style={{ fontSize: 14, color: C.navyMid, lineHeight: 20, marginTop: 6 }}>
+            {isPt && tip.meaningPt ? tip.meaningPt : tip.meaning}
+          </AppText>
+          <AppText style={{ fontSize: 13, color: C.navy, fontStyle: 'italic', lineHeight: 19, marginTop: 8 }}>
+            "{tip.example}"
+          </AppText>
+          {isPt && tip.examplePt && (
+            <AppText style={{ fontSize: 12, color: C.muted, marginTop: 2, lineHeight: 17 }}>
+              {tip.examplePt}
             </AppText>
-          </TouchableOpacity>
+          )}
         </View>
 
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 2 }}>
-          <AppText display style={{ fontSize: 20, fontWeight: '900', color: '#16131F' }}>
-            {tip.term}
-          </AppText>
-          <TouchableOpacity
-            onPress={handleTipTts}
-            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-            style={{ opacity: tipTtsLoading ? 0.4 : 1 }}
-          >
-            <SpeakerHigh size={18} color={tipStyle.color} weight="fill" />
-          </TouchableOpacity>
-        </View>
-        <AppText style={{ fontSize: 13, color: '#4D4858', lineHeight: 19, marginBottom: 6 }}>
-          {isPt && tip.meaningPt ? tip.meaningPt : tip.meaning}
-        </AppText>
-        <AppText style={{ fontSize: 12, color: tipStyle.color, fontStyle: 'italic', lineHeight: 18 }}>
-          "{tip.example}"
-        </AppText>
-        {isPt && tip.examplePt && (
-          <AppText style={{ fontSize: 11, color: '#8A8494', marginTop: 2, lineHeight: 16 }}>
-            {tip.examplePt}
-          </AppText>
-        )}
-      </View>
-
-      {/* Search bar */}
-      <View style={{ paddingHorizontal: 16, marginTop: 14, marginBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.inputBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9 }}>
+        {/* ── Busca + filtros ── */}
+        <View style={{ marginTop: 18, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.card, borderRadius: 14, borderWidth: 1, borderColor: C.border, paddingHorizontal: 12, paddingVertical: 9 }}>
           <MagnifyingGlass size={16} color={C.muted} />
           <TextInput
             value={search} onChangeText={setSearch}
-            placeholder={isPt ? 'Buscar palavra...' : 'Search word...'}
+            placeholder={isPt ? 'Buscar na coleção' : 'Search your collection'}
             placeholderTextColor={C.muted}
             style={{ flex: 1, fontSize: 14, color: C.navy }}
             returnKeyType="search"
           />
         </View>
-        {items.length > 0 && (
-          <AppText style={{ fontSize: 12, color: C.muted, flexShrink: 0 }}>
-            {items.length} {isPt ? (items.length === 1 ? 'palavra' : 'palavras') : (items.length === 1 ? 'word' : 'words')}
-          </AppText>
-        )}
-      </View>
-
-      {/* Filter chips */}
-      <ScrollView
-        horizontal showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 2, alignItems: 'center' }}
-        style={{ height: 44, marginBottom: 12, flexGrow: 0, flexShrink: 0 }}
-      >
-        {FILTERS.map((f, idx) => {
-          const sel = filter === f.key;
-          return (
-            <TouchableOpacity
-              key={f.key}
-              onPress={() => setFilter(f.key)}
-              style={{
-                paddingHorizontal: 18, paddingVertical: 8, borderRadius: 20,
-                backgroundColor: sel ? C.navy : C.card,
-                borderWidth: 1, borderColor: sel ? C.navy : C.border,
-                marginRight: idx < FILTERS.length - 1 ? 8 : 0,
-              }}
-            >
-              <AppText style={{ fontSize: 13, fontWeight: '600', color: sel ? '#FFFFFF' : C.navyMid }}>
-                {isPt ? f.labelPt : f.labelEn}
-              </AppText>
-            </TouchableOpacity>
-          );
-        })}
-      </ScrollView>
-
-      {/* List */}
-      {loading ? (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <ActivityIndicator color={C.navy} />
-        </View>
-      ) : filtered.length === 0 ? (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 }}>
-          <BookOpen size={48} color={C.muted} />
-          <AppText style={{ fontSize: 16, fontWeight: '700', color: C.navyMid, marginTop: 16, textAlign: 'center' }}>
-            {items.length === 0
-              ? (isPt ? 'Nenhuma palavra ainda' : 'No words yet')
-              : (isPt ? 'Nenhum resultado' : 'No results')}
-          </AppText>
-          {items.length === 0 && (
-            <AppText style={{ fontSize: 13, color: C.muted, marginTop: 6, textAlign: 'center', lineHeight: 18 }}>
-              {isPt
-                ? 'Adicione palavras enquanto aprende para criar seu dicionário pessoal.'
-                : 'Add words as you learn to build your personal dictionary.'}
-            </AppText>
-          )}
-          {items.length === 0 && (
-            <TouchableOpacity
-              onPress={openAdd}
-              style={{ marginTop: 20, backgroundColor: C.navy, borderRadius: 14, paddingHorizontal: 24, paddingVertical: 12, flexDirection: 'row', alignItems: 'center', gap: 6 }}
-            >
-              <Plus size={16} color="#FFFFFF" weight="bold" />
-              <AppText style={{ color: '#FFFFFF', fontWeight: '700', fontSize: 14 }}>
-                {isPt ? 'Adicionar palavra' : 'Add word'}
-              </AppText>
-            </TouchableOpacity>
-          )}
-        </View>
-      ) : (
         <ScrollView
-          contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: Platform.OS === 'ios' ? 112 : 92, gap: 8 }}
-          showsVerticalScrollIndicator={false}
+          horizontal showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ gap: 8, paddingVertical: 12 }}
+          style={{ flexGrow: 0 }}
         >
-          {filtered.map((item) => {
-            const isOpen = expanded === item.id;
-            const isTtsLoading = ttsLoading === item.id;
-
+          {FILTERS.map(f => {
+            const sel = filter === f.key;
             return (
               <TouchableOpacity
-                key={item.id}
-                onPress={() => setExpanded(isOpen ? null : item.id)}
-                activeOpacity={0.78}
-                style={{ backgroundColor: C.card, borderRadius: 16, overflow: 'hidden', ...cardShadow }}
+                key={f.key}
+                onPress={() => setFilter(f.key)}
+                style={{
+                  paddingHorizontal: 14, paddingVertical: 7, borderRadius: 18,
+                  backgroundColor: sel ? C.navy : C.card,
+                  borderWidth: 1, borderColor: sel ? C.navy : C.border,
+                }}
               >
-                {/* Collapsed row — always visible */}
-                <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 14, gap: 12 }}>
-                  {/* Term only — sem fonética, sem badge de review */}
-                  <AppText style={{ flex: 1, fontSize: 16, fontWeight: '700', color: C.navy }}>{item.term}</AppText>
-
-                  {/* Speaker icon */}
-                  <TouchableOpacity
-                    onPress={() => handleTts(item)}
-                    hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                    style={{ opacity: isTtsLoading ? 0.5 : 1 }}
-                  >
-                    {isTtsLoading
-                      ? <SpeakerSlash size={18} color={C.muted} weight="fill" />
-                      : <SpeakerHigh size={18} color={levelAccent} weight="fill" />
-                    }
-                  </TouchableOpacity>
-
-                  {/* Expand chevron */}
-                  <CaretDown
-                    size={16} color={C.muted} weight="bold"
-                    style={{ transform: [{ rotate: isOpen ? '180deg' : '0deg' }] }}
-                  />
-                </View>
-
-                {/* Expanded content */}
-                {isOpen && (
-                  <View style={{ paddingHorizontal: 16, paddingBottom: 14, gap: 8, borderTopWidth: 1, borderTopColor: C.border }}>
-                    <View style={{ height: 8 }} />
-                    {item.phonetic && (
-                      <AppText style={{ fontSize: 13, color: C.muted, marginTop: -4, marginBottom: 2 }}>{item.phonetic}</AppText>
-                    )}
-                    <AppText style={{ fontSize: 14, color: C.navyMid, lineHeight: 20 }}>
-                      {item.definition}
-                    </AppText>
-                    {item.example && (
-                      <View style={{ backgroundColor: C.ghost, borderRadius: 10, padding: 12 }}>
-                        <AppText style={{ fontSize: 13, color: C.navyMid, fontStyle: 'italic', lineHeight: 19 }}>
-                          "{item.example}"
-                        </AppText>
-                        {item.example_translation && (
-                          <AppText style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>
-                            {item.example_translation}
-                          </AppText>
-                        )}
-                      </View>
-                    )}
-                    {/* Delete */}
-                    <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginTop: 4 }}>
-                      <TouchableOpacity
-                        onPress={() => handleDelete(item)}
-                        hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                        style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}
-                      >
-                        <Trash size={14} color={C.muted} />
-                        <AppText style={{ fontSize: 12, color: C.muted }}>
-                          {isPt ? 'Remover' : 'Remove'}
-                        </AppText>
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                )}
+                <AppText style={{ fontSize: 13, fontWeight: '700', color: sel ? '#FFFFFF' : C.navyMid }}>
+                  {isPt ? f.labelPt : f.labelEn}
+                </AppText>
               </TouchableOpacity>
             );
           })}
         </ScrollView>
-      )}
 
-      {/* FAB — Add word */}
-      <TouchableOpacity
-        onPress={openAdd}
-        style={{
-          position: 'absolute',
-          bottom: 16,
-          right: 20,
-          width: 52, height: 52, borderRadius: 26,
-          backgroundColor: levelAccent,
-          alignItems: 'center', justifyContent: 'center',
-          ...cardShadow,
-        }}
-      >
-        <Plus size={24} color="#FFFFFF" weight="bold" />
-      </TouchableOpacity>
+        {/* ── Lista ── */}
+        {loading ? (
+          <View style={{ paddingVertical: 40, alignItems: 'center' }}>
+            <ActivityIndicator color={C.navy} />
+          </View>
+        ) : filtered.length === 0 ? (
+          <View style={{ alignItems: 'center', paddingVertical: 32, paddingHorizontal: 24 }}>
+            <BookOpen size={40} color={C.muted} />
+            <AppText display style={{ fontSize: 17, fontWeight: '800', color: C.navy, marginTop: 12, textAlign: 'center' }}>
+              {items.length === 0
+                ? (isPt ? 'Sua coleção começa aqui' : 'Your collection starts here')
+                : (isPt ? 'Nenhum resultado' : 'No results')}
+            </AppText>
+            {items.length === 0 && (
+              <AppText style={{ fontSize: 13, color: C.muted, marginTop: 6, textAlign: 'center', lineHeight: 18 }}>
+                {isPt
+                  ? 'Salve palavras enquanto pratica, ou toque no + para adicionar.'
+                  : 'Save words while you practice, or tap + to add one.'}
+              </AppText>
+            )}
+          </View>
+        ) : (
+          <View style={{ backgroundColor: C.card, borderRadius: 20, overflow: 'hidden', ...cardShadow }}>
+            {filtered.map((item, idx) => (
+              <TouchableOpacity
+                key={item.id}
+                onPress={() => setSelected(item)}
+                activeOpacity={0.7}
+                style={{
+                  flexDirection: 'row', alignItems: 'center', gap: 12,
+                  paddingHorizontal: 16, paddingVertical: 13,
+                  borderTopWidth: idx === 0 ? 0 : 1, borderTopColor: C.hairline,
+                }}
+              >
+                <View style={{ flex: 1, minWidth: 0 }}>
+                  <AppText numberOfLines={1} style={{ fontSize: 15, fontWeight: '700', color: C.navy }}>{item.term}</AppText>
+                  <AppText numberOfLines={1} style={{ fontSize: 12, color: C.muted, marginTop: 1 }}>{item.definition}</AppText>
+                </View>
+                <StrengthDots reps={item.repetitions ?? 0} />
+                <SpeakerButton k={item.id} text={item.term} size={32} />
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
+      </ScrollView>
+
+      {/* ── Detalhe da palavra ── */}
+      <Modal visible={!!selected} transparent animationType="slide" onRequestClose={() => setSelected(null)}>
+        <Pressable style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.35)', justifyContent: 'flex-end' }} onPress={() => setSelected(null)}>
+          {selected && (
+            <Pressable onPress={(e) => e.stopPropagation()} style={{
+              backgroundColor: C.card, borderTopLeftRadius: 26, borderTopRightRadius: 26,
+              paddingHorizontal: 22, paddingTop: 10, paddingBottom: 34,
+            }}>
+              <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 18 }} />
+
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                <AppText display style={{ flex: 1, fontSize: 30, fontWeight: '800', color: C.navy, lineHeight: 34 }}>
+                  {selected.term}
+                </AppText>
+                <SpeakerButton k={`d-${selected.id}`} text={selected.term} size={46} />
+              </View>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 6 }}>
+                {selected.phonetic && (
+                  <AppText style={{ fontSize: 14, color: C.muted }}>{selected.phonetic}</AppText>
+                )}
+                <TouchableOpacity
+                  onPress={() => playAudio(`slow-${selected.id}`, selected.term, true)}
+                  style={{ flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12, backgroundColor: playingKey === `slow-${selected.id}` ? C.volt : C.ghost }}
+                >
+                  <SpeakerHigh size={13} color={C.navy} weight="fill" />
+                  <AppText style={{ fontSize: 12, fontWeight: '700', color: C.navy }}>
+                    {isPt ? 'Ouvir devagar' : 'Listen slowly'}
+                  </AppText>
+                </TouchableOpacity>
+              </View>
+
+              {/* Domínio */}
+              <View style={{ marginTop: 18 }}>
+                <QueizyWave progress={Math.min(selected.repetitions ?? 0, MASTERED_AT) / MASTERED_AT} height={14} strokeWidth={4} />
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 6 }}>
+                  <AppText style={{ fontSize: 12, fontWeight: '700', color: (selected.repetitions ?? 0) >= MASTERED_AT ? C.greenDark : C.pink }}>
+                    {(selected.repetitions ?? 0) >= MASTERED_AT
+                      ? (isPt ? 'Dominada' : 'Mastered')
+                      : (isPt ? 'Aprendendo' : 'Learning')}
+                  </AppText>
+                  <AppText style={{ fontSize: 12, color: C.muted }}>
+                    {reviewLabel(selected.next_review_at, isPt).label}
+                  </AppText>
+                </View>
+              </View>
+
+              <AppText style={{ fontSize: 16, color: C.navy, lineHeight: 23, marginTop: 18 }}>
+                {selected.definition}
+              </AppText>
+
+              {selected.example && (
+                <View style={{ backgroundColor: C.bg, borderRadius: 14, padding: 14, marginTop: 14, flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+                  <View style={{ flex: 1 }}>
+                    <AppText style={{ fontSize: 14, color: C.navy, fontStyle: 'italic', lineHeight: 20 }}>
+                      "{selected.example}"
+                    </AppText>
+                    {selected.example_translation && (
+                      <AppText style={{ fontSize: 12, color: C.muted, marginTop: 4, lineHeight: 17 }}>
+                        {selected.example_translation}
+                      </AppText>
+                    )}
+                  </View>
+                  <SpeakerButton k={`ex-${selected.id}`} text={selected.example} size={32} />
+                </View>
+              )}
+
+              <TouchableOpacity
+                onPress={() => { const it = selected; setSelected(null); setTimeout(() => handleDelete(it), 250); }}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'center', marginTop: 22, paddingVertical: 6 }}
+              >
+                <Trash size={15} color={C.muted} />
+                <AppText style={{ fontSize: 13, color: C.muted, fontWeight: '600' }}>
+                  {isPt ? 'Remover da coleção' : 'Remove from collection'}
+                </AppText>
+              </TouchableOpacity>
+            </Pressable>
+          )}
+        </Pressable>
+      </Modal>
     </View>
   );
 }
