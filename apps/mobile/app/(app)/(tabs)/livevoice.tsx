@@ -26,6 +26,7 @@ import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
+import { LiveVoiceWave } from '@/components/voice/LiveVoiceWave';
 import { LiveVoiceLimitSheet } from '@/components/voice/LiveVoiceLimitSheet';
 import { getLevelAccent } from '@/lib/levelColors';
 
@@ -689,25 +690,12 @@ export default function LiveVoiceTab() {
           zIndex: 5,
         }}>
           <View style={{ width: 148, height: 148, alignItems: 'center', justifyContent: 'center' }}>
-            <View style={{
-              position: 'absolute',
-              width: 148, height: 148, borderRadius: 74,
-              borderWidth: 2, borderColor: '#DCFF4A',
-              opacity: 0.55,
-            }} />
-            <View style={{
-              position: 'absolute',
-              width: 132, height: 132, borderRadius: 66,
-              borderWidth: 1.5,
-              borderColor: 'rgba(220,255,74,0.45)',
-            }} />
             {/* Border num View pai: expo-image pode adicionar borderWidth
                 por fora da box, ficando maior que o RN Image do modal.
                 Wrapper de 120 com border 3 garante visual 114px de imagem
                 + 3px frame em cada lado = 120 total, igual ao modal. */}
             <View style={{
               width: 120, height: 120, borderRadius: 60,
-              borderWidth: 3, borderColor: '#DCFF4A',
               backgroundColor: '#16131F',
               overflow: 'hidden',
             }}>
@@ -718,6 +706,19 @@ export default function LiveVoiceTab() {
               />
             </View>
           </View>
+        </View>
+      )}
+
+      {/* Onda da marca abaixo do avatar, na mesma posição da tela de chamada:
+          ondulação leve e neutra ("pronta para falar"). Na chamada ela só
+          ganha cor e passa a seguir a voz. */}
+      {!loading && (
+        <View pointerEvents="none" style={{
+          position: 'absolute', left: 0, right: 0,
+          top: avatarTopOffset + 74 + 56,
+          alignItems: 'center', zIndex: 5,
+        }}>
+          <LiveVoiceWave mode={isLimitReached ? 'idle' : 'connecting'} />
         </View>
       )}
 

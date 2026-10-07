@@ -1,4 +1,5 @@
 // LiveVoiceWave — a onda da marca (queizy → crazy) como visual da conversa.
+//   chamando  → linha neutra com uma ondulação leve indo e voltando
 //   ouvindo   → linha reta e neutra (silêncio)
 //   você fala → onda rosa, irregular (o "queizy")
 //   Charlotte → onda verde, suave e regular (o "crazy")
@@ -9,10 +10,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Svg, { Path } from 'react-native-svg';
 
-type Mode = 'idle' | 'user' | 'charlotte';
+type Mode = 'idle' | 'connecting' | 'user' | 'charlotte';
 
 const COLORS: Record<Mode, string> = {
-  idle:      'rgba(22,19,31,0.18)',
+  idle:       'rgba(22,19,31,0.18)',
+  connecting: 'rgba(22,19,31,0.30)',
   user:      '#FF4F8B',
   charlotte: '#08804A',
 };
@@ -58,7 +60,9 @@ export function LiveVoiceWave({ mode, levelRef, width = 220, height = 38 }: Prop
     // envelope: zero nas pontas, cheio no meio
     const env = Math.sin(Math.PI * u);
     let y = mid;
-    if (mode === 'charlotte') {
+    if (mode === 'connecting') {
+      y = mid + maxAmp * 0.25 * env * Math.sin(u * Math.PI * 4 - t * 4);
+    } else if (mode === 'charlotte') {
       y = mid + maxAmp * amp.current * env * Math.sin(u * Math.PI * 6 - t * 6);
     } else if (mode === 'user') {
       const wobble =

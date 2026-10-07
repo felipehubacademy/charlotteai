@@ -574,8 +574,6 @@ export default function LiveVoiceModal({
           // realmente chegue na UI native — setValue() puro nao propaga
           // depois que o Animated.Value foi tocado por animacao nativa
           // (bug conhecido do RN). Duration 80ms < intervalo 100ms = sem fila.
-          Animated.timing(ringScale,   { toValue: targetScale,   duration: 80, useNativeDriver: true }).start();
-          Animated.timing(ringOpacity, { toValue: targetOpacity, duration: 80, useNativeDriver: true }).start();
 
           // Log mais frequente (5 ticks = 500ms) com scale tambem
           audioLevelLogCounterRef.current = (audioLevelLogCounterRef.current + 1) % 5;
@@ -628,7 +626,6 @@ export default function LiveVoiceModal({
     Animated.timing(ringOpacity, { toValue: 0, duration: 200, useNativeDriver: true }).start();
   }, [status, charlotteSpeaking, isPaused]);
 
-  const ringColor = status === 'connecting' ? 'rgba(22,19,31,0.35)' : '#DCFF4A';
 
   // ── Pool: carregar ao abrir o modal ───────────────────────────────────────
   const loadPool = React.useCallback(async () => {
@@ -1844,37 +1841,11 @@ export default function LiveVoiceModal({
               abaixo, então ligar/desligar caption não muda a posição do avatar. */}
           <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%', height: 360 }}>
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-              {/* Anel pulsante só enquanto conecta — conectado, quem reage à voz
-                  é a onda da marca abaixo do avatar. */}
-              {status === 'connecting' && (
-                <Animated.View style={{
-                  position: 'absolute',
-                  width: 148, height: 148, borderRadius: 74,
-                  borderWidth: 2, borderColor: ringColor,
-                  transform: [{ scale: ringScale }],
-                  opacity: ringOpacity,
-                }} />
-              )}
-              <View style={{
-                position: 'absolute',
-                width: 132, height: 132, borderRadius: 66,
-                borderWidth: 1.5,
-                borderColor: isPaused
-                  ? 'rgba(255,79,139,0.25)'
-                  : status === 'connected'
-                    ? 'rgba(220,255,74,0.45)'
-                    : 'rgba(22,19,31,0.12)',
-              }} />
+              {/* Sem anéis: quem mostra o estado da conversa é a onda abaixo. */}
               <Image
                 source={require('../../assets/charlotte-avatar.png')}
                 style={{
                   width: 120, height: 120, borderRadius: 60,
-                  borderWidth: 3,
-                  borderColor: isPaused
-                    ? '#FF4F8B'
-                    : status === 'connected'
-                      ? '#DCFF4A'
-                      : 'rgba(22,19,31,0.25)',
                   opacity: isPaused ? 0.6 : 1,
                   backgroundColor: '#16131F',
                 }}
@@ -1894,9 +1865,12 @@ export default function LiveVoiceModal({
 
             {/* Onda queizy → crazy: rosa irregular quando você fala, verde
                 suave quando a Charlotte fala, reta no silêncio. */}
-            {status === 'connected' && !isPaused && (
-              <View pointerEvents="none" style={{ position: 'absolute', top: 246, left: 0, right: 0, alignItems: 'center' }}>
-                <LiveVoiceWave mode={charlotteSpeaking ? 'charlotte' : userSpeaking ? 'user' : 'idle'} levelRef={voiceLevelRef} />
+            {(status === 'connected' || status === 'connecting') && !isPaused && (
+              <View pointerEvents="none" style={{ position: 'absolute', top: 236, left: 0, right: 0, alignItems: 'center' }}>
+                <LiveVoiceWave
+                  mode={status === 'connecting' ? 'connecting' : charlotteSpeaking ? 'charlotte' : userSpeaking ? 'user' : 'idle'}
+                  levelRef={voiceLevelRef}
+                />
               </View>
             )}
 
