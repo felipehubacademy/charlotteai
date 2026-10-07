@@ -561,7 +561,8 @@ export default function HomeTab() {
             contentFit="cover"
             accessibilityLabel="Charlotte"
           />
-          <View style={{ flex: 1 }}>
+          {/* Balão do tamanho da fala (não ocupa a largura toda) */}
+          <View style={{ flexShrink: 1, alignItems: 'flex-start', marginRight: 36 }}>
             <View style={{
               backgroundColor: T.card, borderRadius: 16, borderBottomLeftRadius: 4,
               paddingHorizontal: 12, paddingVertical: 9,
