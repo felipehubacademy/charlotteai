@@ -22,7 +22,6 @@ import { useLearnProgress } from '@/hooks/useLearnProgress';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { supabase } from '@/lib/supabase';
 import { LEVEL_ACCENT } from '@/lib/levelColors';
-import { QueizyWave } from '@/components/ui/QueizyWave';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function a(hex: string, alpha: number): string {
@@ -360,11 +359,7 @@ function ModuleCard({
         </View>
 
         {/* Segmented progress bar */}
-        {/* Módulo atual: a onda da marca (queizy → crazy) endireita a cada
-            atividade concluída. Demais módulos: barras segmentadas. */}
-        {!isLocked && (isCurrentModule && !isDone
-          ? <View style={{ marginTop: 14 }}><QueizyWave progress={data.completedCount / Math.max(data.totalCount, 1)} /></View>
-          : <SegmentedProgress lessons={data.lessons} accent={accent} />)}
+        {!isLocked && <SegmentedProgress lessons={data.lessons} accent={accent} />}
       </TouchableOpacity>
 
       {/* Expanded lessons list */}

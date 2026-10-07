@@ -8,6 +8,7 @@ import { View, Platform } from 'react-native';
 import { useFocusEffect } from 'expo-router';
 import { BookOpen } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { QueizyWave } from '@/components/ui/QueizyWave';
 import { CURRICULUM, TrailLevel } from '@/data/curriculum';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
@@ -143,15 +144,18 @@ export function TrailBanner({ userId, level, flush = false, currentLevel, onLeve
         )}
       </View>
       {flush ? (
-        // Home: sem barra — a onda do hero já é a barra de progresso da tela.
-        // O progresso do nível (meta de meses) fica só em texto.
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '600' }}>
-            {completed} {isPortuguese ? 'de' : 'of'} {total} {itemLabel} {isPortuguese ? 'concluídos' : 'completed'}
-          </AppText>
-          <AppText style={{ fontSize: 13, fontWeight: '800', color: accent }}>
-            {pct}%
-          </AppText>
+        // Home: o progresso do nível é a onda da marca — 0% é o "queizy"
+        // (torto, rosa), 100% é o "crazy" (reto, verde).
+        <View>
+          <QueizyWave progress={total > 0 ? completed / total : 0} />
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 6 }}>
+            <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '600' }}>
+              {completed} {isPortuguese ? 'de' : 'of'} {total} {itemLabel} {isPortuguese ? 'concluídos' : 'completed'}
+            </AppText>
+            <AppText style={{ fontSize: 13, fontWeight: '800', color: accent }}>
+              {pct}%
+            </AppText>
+          </View>
         </View>
       ) : (
         <>
