@@ -12,6 +12,7 @@ import {
 import * as SecureStore from 'expo-secure-store';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
+import { QueizyWave } from '@/components/ui/QueizyWave';
 import { AppText } from '@/components/ui/Text';
 import { CURRICULUM, TrailLevel, topicHasContent, totalTopics } from '@/data/curriculum';
 import { MODULE_INTROS } from '@/data/moduleIntros';
@@ -126,9 +127,6 @@ export default function LearnTrailScreen() {
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1, alignItems: 'center' }}>
-          <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1 }}>
-            Charlotte
-          </AppText>
           <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
             {isPortuguese ? 'Trilha de Aprendizado' : 'Learning Trail'}
           </AppText>
@@ -169,9 +167,7 @@ export default function LearnTrailScreen() {
           </View>
 
           {/* Progress bar */}
-          <View style={{ height: 6, backgroundColor: C.ghost, borderRadius: 3, overflow: 'hidden' }}>
-            <View style={{ height: 6, width: `${pct}%` as `${number}%`, backgroundColor: accent, borderRadius: 3 }} />
-          </View>
+          <QueizyWave progress={pct / 100} height={14} strokeWidth={4} />
           <AppText style={{ fontSize: 11, color: C.navyLight, fontWeight: '600', marginTop: 6 }}>
             {completed} {isPortuguese ? 'de' : 'of'} {total} {isPortuguese ? 'tópicos concluídos' : 'topics completed'}
           </AppText>

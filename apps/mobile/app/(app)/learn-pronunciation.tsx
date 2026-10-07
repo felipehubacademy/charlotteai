@@ -16,6 +16,7 @@ import * as Haptics from 'expo-haptics';
 import * as FileSystem from 'expo-file-system/legacy';
 import { useAuth } from '@/hooks/useAuth';
 import { useTotalXP } from '@/hooks/useTotalXP';
+import { QueizyWave } from '@/components/ui/QueizyWave';
 import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import Constants from 'expo-constants';
@@ -416,10 +417,7 @@ export default function LearnPronunciationScreen() {
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1, alignItems: 'center' }}>
-          <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1 }}>
-            Learn with Charlotte
-          </AppText>
-          <AppText style={{ fontSize: 15, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
             Pronunciation
           </AppText>
         </View>
@@ -451,9 +449,7 @@ export default function LearnPronunciationScreen() {
                 {stepIndex + 1} / {PRON_TOTAL}
               </AppText>
             </View>
-            <View style={{ height: 5, backgroundColor: C.ghost, borderRadius: 3, overflow: 'hidden' }}>
-              <View style={{ height: 5, width: `${progress * 100}%` as `${number}%`, backgroundColor: C.violet, borderRadius: 3 }} />
-            </View>
+            <QueizyWave progress={progress} height={14} strokeWidth={4} />
           </View>
 
           {/* ── Session stats ── */}

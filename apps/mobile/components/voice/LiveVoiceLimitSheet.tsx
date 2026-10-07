@@ -19,7 +19,7 @@ const C = {
   green:     '#DCFF4A',
   greenDark: '#08804A',
   border:    'rgba(22,19,31,0.10)',
-  lossRedBg: '#FEE2E2',
+  lossRedBg: '#FFEEF4',
   lossRed:   '#D12A64',
 };
 

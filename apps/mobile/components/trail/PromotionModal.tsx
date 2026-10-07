@@ -11,6 +11,7 @@ import { View, Modal, TouchableOpacity, Animated, Platform, Dimensions, Easing }
 import * as Haptics from 'expo-haptics';
 import { Trophy, ArrowRight } from 'phosphor-react-native';
 import { VideoView, useVideoPlayer } from 'expo-video';
+import { systemIsPt } from '@/lib/systemLang';
 import { AppText } from '@/components/ui/Text';
 import { soundEngine } from '@/lib/soundEngine';
 import { resolvePromotionVideoUriSync } from '@/hooks/usePromotionVideoPrefetch';
@@ -27,7 +28,7 @@ const PROMOTION_VIDEO_REMOTE: Record<string, string> = {
 
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
 
-const CONFETTI_COLORS = ['#6B4BFF', '#F59E0B', '#10B981', '#EF4444', '#3B82F6', '#EC4899', '#FBBF24'];
+const CONFETTI_COLORS = ['#DCFF4A', '#FF4F8B', '#2BD97C', '#6B4BFF', '#16131F', '#FFFFFF'];
 const CONFETTI_COUNT  = 220;
 
 interface Piece {
@@ -218,11 +219,9 @@ export function PromotionModal({ event, onClose }: Props) {
   }, [event]);
 
   if (!event) return null;
-  const isPt   = event.toLevel === 'Inter'; // Inter ainda pode ser PT-explanation usuario; melhor pivot por toLevel
-  // Idioma do modal: usa o nivel novo para decidir (Novice eh PT; Inter/Advanced EN).
+  // Texto de interface: idioma do device.
   const labelLvl = LEVEL_LABEL[event.toLevel] ?? event.toLevel;
-  const accent   = LEVEL_COLOR[event.toLevel] ?? '#6B4BFF';
-  const isPortuguese = false; // promovido sempre cruzou pra >= Inter, mostrar EN.
+  const isPortuguese = systemIsPt;
 
   const title    = isPortuguese ? 'Parabéns!' : 'Congratulations!';
   const subtitle = isPortuguese
@@ -263,7 +262,7 @@ export function PromotionModal({ event, onClose }: Props) {
         // FALLBACK — modal card classico quando nao tem video pro nivel.
         <Animated.View style={{
           flex: 1,
-          backgroundColor: 'rgba(0,0,0,0.55)',
+          backgroundColor: 'rgba(22,19,31,0.55)',
           justifyContent: 'center',
           alignItems: 'center',
           padding: 24,
@@ -279,29 +278,29 @@ export function PromotionModal({ event, onClose }: Props) {
           }, shadow as any]}>
             <View style={{
               width: 80, height: 80, borderRadius: 40,
-              backgroundColor: `${accent}1a`,
+              backgroundColor: '#DCFF4A',
               alignItems: 'center', justifyContent: 'center',
               marginBottom: 20,
             }}>
-              <Trophy size={42} color={accent} weight="fill" />
+              <Trophy size={42} color="#16131F" weight="fill" />
             </View>
             <AppText display style={{ fontSize: 24, fontWeight: '900', color: '#16131F', marginBottom: 8, textAlign: 'center' }}>
               {title}
             </AppText>
-            <AppText style={{ fontSize: 15, fontWeight: '500', color: '#5A5878', textAlign: 'center', lineHeight: 22, marginBottom: 24 }}>
+            <AppText style={{ fontSize: 15, fontWeight: '500', color: '#4D4858', textAlign: 'center', lineHeight: 22, marginBottom: 24 }}>
               {subtitle}
             </AppText>
             <TouchableOpacity
               onPress={onClose}
               activeOpacity={0.85}
               style={{
-                backgroundColor: accent, borderRadius: 14,
+                backgroundColor: '#16131F', borderRadius: 16,
                 paddingVertical: 14, paddingHorizontal: 24,
                 flexDirection: 'row', alignItems: 'center', gap: 8,
                 width: '100%', justifyContent: 'center',
               }}>
-              <AppText style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '800' }}>{cta}</AppText>
-              <ArrowRight size={16} color="#FFFFFF" weight="bold" />
+              <AppText style={{ color: '#DCFF4A', fontSize: 15, fontWeight: '800' }}>{cta}</AppText>
+              <ArrowRight size={16} color="#DCFF4A" weight="bold" />
             </TouchableOpacity>
           </Animated.View>
           {showConfetti && <Confetti />}

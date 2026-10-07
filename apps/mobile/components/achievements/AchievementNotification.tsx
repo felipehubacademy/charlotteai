@@ -63,23 +63,24 @@ const C = {
   navyLight: '#8A8494',
   green:     '#DCFF4A',
   greenDark: '#08804A',
-  greenBg:   '#F8FFE0',
+  greenBg:   '#E3F6EC',
   sheet:     '#FFFFFF',
   border:    'rgba(22,19,31,0.08)',
 };
 
 const RARITY_COLORS: Record<Achievement['rarity'], string> = {
-  common:    '#22C55E',
-  rare:      '#3B82F6',
-  epic:      '#A855F7',
-  legendary: '#EAB308',
+  // Mesma escala de raridade da tela de Conquistas (components/stats/StatsUI).
+  common:    '#08804A',
+  rare:      '#6B4BFF',
+  epic:      '#FF4F8B',
+  legendary: '#DCFF4A',
 };
 
 const RARITY_BG: Record<Achievement['rarity'], string> = {
-  common:    '#F0FFF4',
-  rare:      '#EFF6FF',
-  epic:      '#FAF5FF',
-  legendary: '#FFFBEB',
+  common:    '#E3F6EC',
+  rare:      '#EFECFF',
+  epic:      '#FFEEF4',
+  legendary: '#16131F',
 };
 
 // ── Sparkle particles — varied angles, distances, sizes, shapes ──────────────
@@ -326,8 +327,8 @@ export default function AchievementNotification({ achievements, onDismiss, isPt 
               </View>
 
               {/* Title */}
-              <AppText style={{
-                color: C.navy, fontSize: 22, fontWeight: '900',
+              <AppText display style={{
+                color: C.navy, fontSize: 26, fontWeight: '800',
                 textAlign: 'center', marginBottom: 8,
               }}>
                 {getCatalogTitle(current.type, isPt ?? true) ?? current.title}

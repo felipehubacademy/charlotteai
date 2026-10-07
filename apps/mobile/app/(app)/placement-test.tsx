@@ -18,6 +18,7 @@ import Constants from 'expo-constants';
 import {
   Headphones, Play, Pause, ArrowRight, CheckCircle, XCircle,
 } from 'phosphor-react-native';
+import { QueizyWave } from '@/components/ui/QueizyWave';
 import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { supabase } from '@/lib/supabase';
@@ -595,21 +596,19 @@ export default function PlacementTestScreen() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top']}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
 
       {/* Progress header */}
       <View style={{ paddingHorizontal: 24, paddingTop: 16, paddingBottom: 4 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
           <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navyLight, letterSpacing: 0.5 }}>
-            {`Etapa ${block} de 3`}
+            {systemIsPt ? `Etapa ${block} de 3` : `Step ${block} of 3`}
           </AppText>
           <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyLight }}>
             {`${qIndex + 1} / ${blockQuestions.length}`}
           </AppText>
         </View>
-        <View style={{ height: 4, backgroundColor: 'rgba(22,19,31,0.08)', borderRadius: 2, overflow: 'hidden' }}>
-          <View style={{ height: 4, width: `${progress * 100}%` as `${number}%`, backgroundColor: C.green, borderRadius: 2 }} />
-        </View>
+        <QueizyWave progress={progress} height={14} strokeWidth={4} />
       </View>
 
       {/* Scrollable content */}
@@ -620,18 +619,18 @@ export default function PlacementTestScreen() {
         >
           {/* Charlotte instruction */}
           <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 0, marginBottom: 28 }}>
-            <CharlotteAvatar size="xs" />
+            <CharlotteAvatar size="sm" />
             <View style={{
               width: 0, height: 0,
               borderTopWidth: 5, borderTopColor: 'transparent',
               borderBottomWidth: 5, borderBottomColor: 'transparent',
-              borderRightWidth: 7, borderRightColor: 'rgba(22,19,31,0.08)',
-              marginTop: 10, marginLeft: 2,
+              borderRightWidth: 7, borderRightColor: C.card,
+              marginTop: 10, marginLeft: 4,
             }} />
             <View style={{
-              flex: 1, backgroundColor: 'rgba(22,19,31,0.06)',
-              borderRadius: 14, borderTopLeftRadius: 4,
-              paddingHorizontal: 14, paddingVertical: 12,
+              flex: 1, backgroundColor: C.card,
+              borderRadius: 18, borderTopLeftRadius: 4,
+              paddingHorizontal: 16, paddingVertical: 12,
             }}>
               <AppText style={{ fontSize: 14, color: C.navy, fontWeight: '700', lineHeight: 20 }}>
                 {instructionText}
@@ -649,7 +648,7 @@ export default function PlacementTestScreen() {
             }}>
               <Headphones size={16} color={C.green} weight="duotone" />
               <AppText style={{ flex: 1, fontSize: 13, fontWeight: '600', color: 'rgba(255,255,255,0.65)' }}>
-                {isPlaying ? 'Playing...' : 'Tap to listen'}
+                {isPlaying ? (systemIsPt ? 'Tocando…' : 'Playing…') : (systemIsPt ? 'Toque para ouvir' : 'Tap to listen')}
               </AppText>
               {audioLoading ? (
                 <ActivityIndicator size="small" color={C.green} />
@@ -674,7 +673,7 @@ export default function PlacementTestScreen() {
           )}
 
           {/* Question — large and prominent */}
-          <AppText style={{ fontSize: 22, fontWeight: '700', color: C.navy, lineHeight: 34, marginBottom: 32 }}>
+          <AppText display style={{ fontSize: 26, fontWeight: '800', color: C.navy, lineHeight: 32, marginBottom: 28 }}>
             {currentQ.kind === 'grammar' ? currentQ.question : currentQ.prompt}
           </AppText>
 
@@ -692,7 +691,7 @@ export default function PlacementTestScreen() {
 
       {/* Verificar button — fixed above bottom safe area */}
       {!verified && (
-        <View style={{ paddingHorizontal: 24, paddingBottom: insets.bottom + 16, paddingTop: 12, backgroundColor: C.card }}>
+        <View style={{ paddingHorizontal: 24, paddingBottom: insets.bottom + 16, paddingTop: 12, backgroundColor: C.bg }}>
           <TouchableOpacity
             onPress={handleVerify}
             disabled={selected === null}
@@ -704,7 +703,7 @@ export default function PlacementTestScreen() {
             }}
           >
             <AppText style={{ fontSize: 15, fontWeight: '800', color: selected !== null ? '#FFFFFF' : C.navyLight }}>
-              Verificar
+              {systemIsPt ? 'Verificar' : 'Check'}
             </AppText>
           </TouchableOpacity>
         </View>
@@ -789,7 +788,7 @@ function OptionList({
           if (isCorrect)                    { borderColor = C.greenDark; bgColor = 'rgba(8,128,74,0.08)'; }
           else if (isSelected && !isCorrect){ borderColor = '#D12A64';   bgColor = 'rgba(255,79,139,0.06)'; }
         } else {
-          if (isSelected) { borderColor = C.green; bgColor = 'rgba(220,255,74,0.10)'; }
+          if (isSelected) { borderColor = C.navy; bgColor = '#F1FFB8'; }
         }
 
         return (
@@ -1023,7 +1022,7 @@ function ResultScreen({
 
             {/* Charlotte quote */}
             <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 0 }}>
-              <CharlotteAvatar size="xs" />
+              <CharlotteAvatar size="sm" />
               <View style={{
                 width: 0, height: 0,
                 borderTopWidth: 5, borderTopColor: 'transparent',

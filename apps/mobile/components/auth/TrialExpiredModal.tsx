@@ -4,7 +4,7 @@ import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 
-const WHATSAPP_URL = 'https://wa.me/5500000000000?text=Olá! Quero continuar usando a Charlotte.';
+const WHATSAPP_URL = 'https://wa.me/5500000000000?text=Olá! Quero continuar usando o Queizy.';
 
 export function TrialExpiredModal() {
   const { profile, hasAccess, signOut } = useAuth();
@@ -17,19 +17,19 @@ export function TrialExpiredModal() {
   return (
     <Modal visible={visible} animationType="fade" transparent>
       <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.85)', alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}>
-        <View style={{ backgroundColor: '#1A1939', borderRadius: 20, padding: 28, width: '100%', gap: 20, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }}>
+        <View style={{ backgroundColor: '#16131F', borderRadius: 20, padding: 28, width: '100%', gap: 20, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }}>
 
           <View style={{ alignItems: 'center', gap: 12 }}>
             <View style={{ width: 64, height: 64, borderRadius: 32, backgroundColor: 'rgba(220,255,74,0.08)', alignItems: 'center', justifyContent: 'center' }}>
               <Timer size={30} color="#DCFF4A" weight="duotone" />
             </View>
-            <AppText style={{ fontSize: 20, fontWeight: '700', color: '#fff', textAlign: 'center' }}>
+            <AppText display style={{ fontSize: 22, fontWeight: '800', color: '#fff', textAlign: 'center' }}>
               {isPt ? 'Acesso encerrado' : 'Access expired'}
             </AppText>
             <AppText style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', textAlign: 'center', lineHeight: 20 }}>
               {isPt
-                ? 'Seu período de acesso expirou. Fale com nossa equipe para continuar praticando com a Charlotte.'
-                : 'Your access period has expired. Contact our team to continue practising with Charlotte.'}
+                ? 'Seu período de acesso expirou. Fale com nossa equipe para continuar praticando no Queizy.'
+                : 'Your access period has expired. Contact our team to continue practicing on Queizy.'}
             </AppText>
           </View>
 

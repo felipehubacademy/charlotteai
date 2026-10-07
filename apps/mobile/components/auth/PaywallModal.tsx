@@ -15,6 +15,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Fire, Trophy, MicrophoneStage, ChatCircleText, SignOut, ArrowsClockwise, X } from 'phosphor-react-native';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { PurchasesPackage, PurchasesOffering } from 'react-native-purchases';
+import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
@@ -40,9 +41,9 @@ const C = {
   navyMid:    '#4D4858',
   white:      '#FFFFFF',
   muted:      '#8A8494',
-  highlight:  'rgba(220,255,74,0.12)',
-  lossRed:    '#FF4444',
-  lossRedBg:  'rgba(255,68,68,0.08)',
+  highlight:  '#F1FFB8',
+  lossRed:    '#D12A64',
+  lossRedBg:  'rgba(255,79,139,0.08)',
 };
 
 const LOSE_ITEMS = [
@@ -176,7 +177,7 @@ export function PaywallModal() {
       if (result.errorCode === 7) {
         Alert.alert(
           'Assinatura vinculada a outra conta',
-          'Esta conta Apple já tem uma assinatura Charlotte ativa em outro usuário do app.\n\nEntre com a conta Charlotte que fez a compra original, ou fale com o suporte.',
+          'Esta conta Apple já tem uma assinatura Queizy ativa em outro usuário do app.\n\nEntre com a conta Queizy que fez a compra original, ou fale com o suporte.',
           [
             { text: 'OK' },
             {
@@ -184,7 +185,7 @@ export function PaywallModal() {
               onPress: () => {
                 const subject = encodeURIComponent('Assinatura vinculada a outra conta');
                 const body = encodeURIComponent(
-                  `Olá! Tentei assinar no app mas apareceu mensagem de que minha conta Apple já tem assinatura em outro usuário.\n\nMeu email Charlotte: ${profile?.email ?? ''}\n\nPode me ajudar?`,
+                  `Olá! Tentei assinar no app mas apareceu mensagem de que minha conta Apple já tem assinatura em outro usuário.\n\nMeu e-mail no Queizy: ${profile?.email ?? ''}\n\nPode me ajudar?`,
                 );
                 Linking.openURL(`mailto:suporte@hubacademybr.com?subject=${subject}&body=${body}`);
               },
@@ -230,11 +231,11 @@ export function PaywallModal() {
           : (isPt ? 'Nenhuma assinatura encontrada nesta conta' : 'No subscription found on this account'),
         isReceiptInUse
           ? (isPt
-              ? 'Esta conta Apple já tem uma assinatura Charlotte ativa em outro usuário. Entre com a conta Charlotte original ou fale com o suporte.'
-              : 'This Apple account already has an active Charlotte subscription on another user. Sign in with the original Charlotte account or contact support.')
+              ? 'Esta conta Apple já tem uma assinatura Queizy ativa em outro usuário. Entre com a conta Queizy original ou fale com o suporte.'
+              : 'This Apple account already has an active Queizy subscription on another user. Sign in with the original Queizy account or contact support.')
           : (isPt
-              ? 'Não encontramos assinatura Charlotte vinculada a este usuário.\n\nSe você já comprou antes, pode ser que a assinatura esteja em outra conta Charlotte. Entre com a conta original ou fale com o suporte.'
-              : 'We couldn’t find a Charlotte subscription linked to this user.\n\nIf you’ve purchased before, it may be on another Charlotte account. Sign in with the original account or contact support.'),
+              ? 'Não encontramos assinatura Queizy vinculada a este usuário.\n\nSe você já comprou antes, pode ser que a assinatura esteja em outra conta Queizy. Entre com a conta original ou fale com o suporte.'
+              : 'We couldn’t find a Queizy subscription linked to this user.\n\nIf you’ve purchased before, it may be on another Queizy account. Sign in with the original account or contact support.'),
         [
           { text: 'OK' },
           {
@@ -247,8 +248,8 @@ export function PaywallModal() {
               );
               const body = encodeURIComponent(
                 isPt
-                  ? `Olá! Tentei restaurar minha assinatura no app.\n\nMeu email Charlotte: ${profile?.email ?? ''}\n\nPode me ajudar?`
-                  : `Hi! I tried to restore my subscription in the app.\n\nMy Charlotte email: ${profile?.email ?? ''}\n\nCan you help?`,
+                  ? `Olá! Tentei restaurar minha assinatura no app.\n\nMeu e-mail no Queizy: ${profile?.email ?? ''}\n\nPode me ajudar?`
+                  : `Hi! I tried to restore my subscription in the app.\n\nMy Queizy email: ${profile?.email ?? ''}\n\nCan you help?`,
               );
               Linking.openURL(`mailto:suporte@hubacademybr.com?subject=${subject}&body=${body}`);
             },
@@ -285,11 +286,11 @@ export function PaywallModal() {
     ? (firstName ? `${firstName}, sua sequência de ${streakDays} dias está em risco.` : `Sua sequência de ${streakDays} dias está em risco.`)
     : (firstName ? `${firstName}, your ${streakDays}-day streak is at risk.` : `Your ${streakDays}-day streak is at risk.`);
   const xpLine = isPt
-    ? (firstName ? `${firstName}, você acumulou ${totalXP} XP praticando com a Charlotte.` : `Você acumulou ${totalXP} XP praticando com a Charlotte.`)
-    : (firstName ? `${firstName}, you’ve earned ${totalXP} XP practicing with Charlotte.` : `You’ve earned ${totalXP} XP practicing with Charlotte.`);
+    ? (firstName ? `${firstName}, você acumulou ${totalXP} XP praticando no Queizy.` : `Você acumulou ${totalXP} XP praticando no Queizy.`)
+    : (firstName ? `${firstName}, you’ve earned ${totalXP} XP practicing on Queizy.` : `You’ve earned ${totalXP} XP practicing on Queizy.`);
   const neutralLine = isPt
-    ? (firstName ? `${firstName}, continue evoluindo seu inglês com a Charlotte.` : 'Continue evoluindo seu inglês com a Charlotte.')
-    : (firstName ? `${firstName}, keep improving your English with Charlotte.` : 'Keep improving your English with Charlotte.');
+    ? (firstName ? `${firstName}, continue evoluindo seu inglês no Queizy.` : 'Continue evoluindo seu inglês no Queizy.')
+    : (firstName ? `${firstName}, keep improving your English on Queizy.` : 'Keep improving your English on Queizy.');
 
   const headline = useStreak ? streakLine : useXp ? xpLine : neutralLine;
 
@@ -328,6 +329,10 @@ export function PaywallModal() {
           {/* Container com largura maxima para iPad */}
           <View style={{ width: '100%', maxWidth: 480, paddingHorizontal: 24, alignItems: 'center' }}>
 
+          <View style={{ marginBottom: 28 }}>
+            <HeaderLogo height={30} />
+          </View>
+
           {/* Icone de perda */}
           <View style={{
             width: 64, height: 64, borderRadius: 32,
@@ -342,9 +347,9 @@ export function PaywallModal() {
           </View>
 
           {/* Headline personalizada */}
-          <AppText style={{
-            fontSize: 22, fontWeight: '800', color: C.navy,
-            textAlign: 'center', marginBottom: 10, lineHeight: 30,
+          <AppText display style={{
+            fontSize: 26, fontWeight: '800', color: C.navy,
+            textAlign: 'center', marginBottom: 10, lineHeight: 32,
           }}>
             {headline}
           </AppText>
@@ -359,21 +364,20 @@ export function PaywallModal() {
           <View style={{
             alignSelf: 'stretch',
             backgroundColor: C.card,
-            borderRadius: 16,
+            borderRadius: 20,
             padding: 16,
             marginBottom: 28,
-            gap: 14,
-            ...Platform.select({
-              ios:     { shadowColor: 'rgba(22,19,31,0.08)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
-              android: { elevation: 2 },
-            }),
+            gap: 12,
+            borderWidth: 1, borderColor: C.cardBorder,
           }}>
             <AppText style={{ fontSize: 12, fontWeight: '700', color: C.muted, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 2 }}>
               {isPt ? 'Você vai perder acesso a' : 'You’ll lose access to'}
             </AppText>
             {LOSE_ITEMS.map((item, i) => (
-              <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                {item.icon}
+              <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: '#E3F6EC', alignItems: 'center', justifyContent: 'center' }}>
+                  {item.icon}
+                </View>
                 <AppText style={{ color: C.navyMid, fontSize: 14, flex: 1 }}>
                   {isPt ? item.pt : item.en}
                 </AppText>
@@ -391,9 +395,9 @@ export function PaywallModal() {
                 activeOpacity={0.85}
                 style={{
                   backgroundColor: selected.includes('yearly') ? C.highlight : C.card,
-                  borderRadius: 16,
+                  borderRadius: 20,
                   borderWidth: 2,
-                  borderColor: selected.includes('yearly') ? C.greenDark : C.cardBorder,
+                  borderColor: selected.includes('yearly') ? C.navy : C.cardBorder,
                   padding: 18,
                   ...Platform.select({
                     ios:     { shadowColor: 'rgba(22,19,31,0.08)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
@@ -403,10 +407,10 @@ export function PaywallModal() {
               >
                 <View style={{
                   position: 'absolute', top: -10, right: 16,
-                  backgroundColor: C.greenDark, borderRadius: 10,
+                  backgroundColor: C.navy, borderRadius: 10,
                   paddingHorizontal: 10, paddingVertical: 3,
                 }}>
-                  <AppText style={{ color: C.white, fontSize: 11, fontWeight: '800' }}>
+                  <AppText style={{ color: C.green, fontSize: 11, fontWeight: '800' }}>
                     {isPt ? 'MELHOR VALOR' : 'BEST VALUE'}
                   </AppText>
                 </View>
@@ -419,7 +423,7 @@ export function PaywallModal() {
                     </AppText>
                   </View>
                   <View style={{ alignItems: 'flex-end' }}>
-                    <AppText display style={{ color: C.greenDark, fontSize: 20, fontWeight: '800' }}>
+                    <AppText display style={{ color: C.navy, fontSize: 22, fontWeight: '800' }}>
                       {yearlyPrice}
                     </AppText>
                     <AppText style={{ color: C.muted, fontSize: 11 }}>{isPt ? '/ano' : '/yr'}</AppText>
@@ -432,10 +436,10 @@ export function PaywallModal() {
                 onPress={() => setSelected(monthlyPkg?.product.identifier ?? 'com.hubacademy.charlotte.monthly')}
                 activeOpacity={0.85}
                 style={{
-                  backgroundColor: C.card,
-                  borderRadius: 16,
+                  backgroundColor: selected.includes('monthly') ? C.highlight : C.card,
+                  borderRadius: 20,
                   borderWidth: selected.includes('monthly') ? 2 : 1,
-                  borderColor: selected.includes('monthly') ? C.greenDark : C.cardBorder,
+                  borderColor: selected.includes('monthly') ? C.navy : C.cardBorder,
                   padding: 18,
                   ...Platform.select({
                     ios:     { shadowColor: 'rgba(22,19,31,0.06)', shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 1 } },
@@ -446,7 +450,7 @@ export function PaywallModal() {
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                   <AppText style={{ color: C.navy, fontSize: 15, fontWeight: '700' }}>{isPt ? 'Mensal' : 'Monthly'}</AppText>
                   <View style={{ alignItems: 'flex-end' }}>
-                    <AppText display style={{ color: C.navy, fontSize: 20, fontWeight: '800' }}>
+                    <AppText display style={{ color: C.navy, fontSize: 22, fontWeight: '800' }}>
                       {monthlyPrice}
                     </AppText>
                     <AppText style={{ color: C.muted, fontSize: 11 }}>{isPt ? '/mês' : '/mo'}</AppText>

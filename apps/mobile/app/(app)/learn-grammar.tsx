@@ -15,6 +15,7 @@ import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 import * as Haptics from 'expo-haptics';
 import { useAuth } from '@/hooks/useAuth';
 import { useTotalXP } from '@/hooks/useTotalXP';
+import { QueizyWave } from '@/components/ui/QueizyWave';
 import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 
@@ -27,8 +28,8 @@ const C = {
   navyLight: '#8A8494',
   ghost:     'rgba(22,19,31,0.06)',
   border:    'rgba(22,19,31,0.10)',
-  gold:      '#D12A64',
-  goldBg:    '#FFEEF4',
+  gold:      '#16131F', // Grammar: Tinta sobre Volt claro (igual à sessão da trilha)
+  goldBg:    '#F1FFB8',
   greenDark: '#08804A',
   greenBg:   '#E3F6EC',
   red:       '#D12A64',
@@ -422,10 +423,7 @@ export default function LearnGrammarScreen() {
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1, alignItems: 'center' }}>
-          <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1 }}>
-            Learn with Charlotte
-          </AppText>
-          <AppText style={{ fontSize: 15, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>Grammar</AppText>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>Grammar</AppText>
         </View>
         <TouchableOpacity onPress={() => router.push({ pathname: '/(app)/stats', params: { sessionXP: String(sessionXP), totalXP: String(baseTotalXP + sessionXP), userId: userId ?? '', userLevel: userLevel ?? 'Inter', userName: '' } })} activeOpacity={0.7} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
           <AnimatedXPBadge xp={baseTotalXP + sessionXP} iconSize={13} fontSize={13} padH={10} padV={5} />
@@ -445,7 +443,7 @@ export default function LearnGrammarScreen() {
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
               <View style={{
                 paddingHorizontal: 10, paddingVertical: 4, borderRadius: 10,
-                backgroundColor: C.goldBg, borderWidth: 1, borderColor: 'rgba(255,79,139,0.2)',
+                backgroundColor: C.goldBg, borderWidth: 1, borderColor: 'rgba(22,19,31,0.10)',
               }}>
                 <AppText style={{ fontSize: 11, fontWeight: '700', color: C.gold }}>
                   {exercise ? TYPE_LABELS[exercise.type] : ''}
@@ -455,9 +453,7 @@ export default function LearnGrammarScreen() {
                 {stepIndex + 1} / {GRAMMAR_TOTAL}
               </AppText>
             </View>
-            <View style={{ height: 5, backgroundColor: C.ghost, borderRadius: 3, overflow: 'hidden' }}>
-              <View style={{ height: 5, width: `${progress * 100}%` as `${number}%`, backgroundColor: C.gold, borderRadius: 3 }} />
-            </View>
+            <QueizyWave progress={progress} height={14} strokeWidth={4} />
           </View>
 
           {/* ── Exercise card ── */}

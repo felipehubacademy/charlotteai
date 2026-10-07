@@ -8,6 +8,7 @@
  * (e.g. useChat, useLearnProgress) can trigger a poll after saving XP.
  * No Realtime dependency — polls charlotte.user_achievements on demand.
  */
+import { systemIsPt } from '@/lib/systemLang';
 import React, { createContext, useContext, useCallback, useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useAchievements } from '@/hooks/useAchievements';
@@ -34,7 +35,7 @@ interface AchievementsProviderProps {
 export function AchievementsProvider({ children }: AchievementsProviderProps) {
   const { profile } = useAuth();
   const userId = profile?.id;
-  const isPt = (profile?.charlotte_level ?? 'Novice') === 'Novice';
+  const isPt = systemIsPt; // aviso de conquista = interface: idioma do device
   const { pendingAchievements, dismissAchievement, checkForNewAchievements } = useAchievements(userId);
   const [paused, setPaused] = useState(false);
 

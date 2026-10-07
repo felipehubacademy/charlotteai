@@ -161,8 +161,8 @@ export function TrailBanner({ userId, level, flush = false, currentLevel, onLeve
       ) : (
         <>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-            <View style={{ flex: 1, height: 6, backgroundColor: C.ghost, borderRadius: 3, overflow: 'hidden' }}>
-              <View style={{ height: 6, width: `${pct}%` as `${number}%`, backgroundColor: accent, borderRadius: 3 }} />
+            <View style={{ flex: 1 }}>
+              <QueizyWave progress={pct / 100} height={14} strokeWidth={4} />
             </View>
             {onLevelChange && (
               <AppText style={{ fontSize: 13, fontWeight: '800', color: accent, minWidth: 36, textAlign: 'right' }}>

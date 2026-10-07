@@ -14,6 +14,7 @@ import * as SecureStore from 'expo-secure-store';
 import * as Haptics from 'expo-haptics';
 import { GraduationCap, ArrowRight } from 'phosphor-react-native';
 import { VideoView, useVideoPlayer } from 'expo-video';
+import { systemIsPt } from '@/lib/systemLang';
 import { AppText } from '@/components/ui/Text';
 import { soundEngine } from '@/lib/soundEngine';
 import { useAuth } from '@/hooks/useAuth';
@@ -31,7 +32,7 @@ const GRADUATION_VIDEO_URL =
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
 
 // Paleta premium: mais dourado/violeta pra distinguir do level-up regular.
-const CONFETTI_COLORS = ['#FBBF24', '#F59E0B', '#FCD34D', '#6B4BFF', '#8B5CF6', '#FFFFFF', '#0EA5E9'];
+const CONFETTI_COLORS = ['#DCFF4A', '#FF4F8B', '#2BD97C', '#6B4BFF', '#16131F', '#FFFFFF'];
 const CONFETTI_COUNT  = 240;
 
 interface Piece {
@@ -251,7 +252,7 @@ export function GraduationModal({ event, onClose }: Props) {
         // FALLBACK — modal card classico quando video falhar.
         <Animated.View style={{
           flex: 1,
-          backgroundColor: 'rgba(0,0,0,0.55)',
+          backgroundColor: 'rgba(22,19,31,0.55)',
           justifyContent: 'center',
           alignItems: 'center',
           padding: 24,
@@ -267,31 +268,33 @@ export function GraduationModal({ event, onClose }: Props) {
           }, shadow as any]}>
             <View style={{
               width: 80, height: 80, borderRadius: 40,
-              backgroundColor: 'rgba(251,191,36,0.18)',
+              backgroundColor: '#DCFF4A',
               alignItems: 'center', justifyContent: 'center',
               marginBottom: 20,
             }}>
-              <GraduationCap size={42} color="#F59E0B" weight="fill" />
+              <GraduationCap size={42} color="#16131F" weight="fill" />
             </View>
             <AppText display style={{ fontSize: 24, fontWeight: '900', color: '#16131F', marginBottom: 8, textAlign: 'center' }}>
-              You graduated!
+              {systemIsPt ? 'Você se formou!' : 'You graduated!'}
             </AppText>
-            <AppText style={{ fontSize: 15, fontWeight: '500', color: '#5A5878', textAlign: 'center', lineHeight: 22, marginBottom: 24 }}>
-              You completed the entire Charlotte program. C1–C2 Advanced.
+            <AppText style={{ fontSize: 15, fontWeight: '500', color: '#4D4858', textAlign: 'center', lineHeight: 22, marginBottom: 24 }}>
+              {systemIsPt
+                ? 'Você concluiu todo o programa do Queizy. C1–C2 Advanced.'
+                : 'You completed the entire Queizy program. C1–C2 Advanced.'}
             </AppText>
             <TouchableOpacity
               onPress={() => { markSeen(); onClose(); }}
               activeOpacity={0.85}
               style={{
-                backgroundColor: '#F59E0B', borderRadius: 14,
+                backgroundColor: '#16131F', borderRadius: 16,
                 paddingVertical: 14, paddingHorizontal: 24,
                 flexDirection: 'row', alignItems: 'center', gap: 8,
                 width: '100%', justifyContent: 'center',
               }}>
-              <AppText style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '800' }}>
-                Continue with Charlotte
+              <AppText style={{ color: '#DCFF4A', fontSize: 15, fontWeight: '800' }}>
+                {systemIsPt ? 'Continuar praticando' : 'Keep practicing'}
               </AppText>
-              <ArrowRight size={16} color="#FFFFFF" weight="bold" />
+              <ArrowRight size={16} color="#DCFF4A" weight="bold" />
             </TouchableOpacity>
           </Animated.View>
           {showConfetti && <Confetti />}
