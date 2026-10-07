@@ -29,9 +29,10 @@ const C = {
   ghost:     'rgba(22,19,31,0.06)',
   ghostMid:  'rgba(22,19,31,0.12)',
   border:    'rgba(22,19,31,0.10)',
-  gold:      '#D12A64',
-  goldBg:    '#FFEEF4',
-  goldBorder:'rgba(255,79,139,0.25)',
+  // Chips de conteúdo neutros (trilha calma, igual à da Home).
+  gold:      '#4D4858',
+  goldBg:    'rgba(22,19,31,0.06)',
+  goldBorder:'rgba(22,19,31,0.10)',
   green:     '#08804A',
   greenBg:   '#E3F6EC',
   greenBorder:'rgba(8,128,74,0.25)',
@@ -227,10 +228,10 @@ export default function LearnTrailScreen() {
                       activeOpacity={introLocked ? 1 : 0.75}
                       style={{
                         flexDirection: 'row', alignItems: 'center', gap: 14,
-                        backgroundColor: done ? C.card : introLocked ? C.card : accent + '0E',
+                        backgroundColor: C.card,
                         borderRadius: 14, padding: 14,
-                        borderWidth: introLocked ? 1 : 1.5,
-                        borderColor: introLocked ? C.border : done ? C.border : accent + '35',
+                        borderWidth: 1,
+                        borderColor: C.border,
                         opacity: introLocked ? 0.55 : 1,
                         ...shadow,
                       }}
@@ -274,15 +275,15 @@ export default function LearnTrailScreen() {
                       {/* CTA */}
                       {!introLocked && (
                         <View style={{
-                          backgroundColor: done ? 'transparent' : accent,
+                          backgroundColor: done ? 'transparent' : '#DCFF4A',
                           borderRadius: 10, paddingHorizontal: 12, paddingVertical: 8,
                           borderWidth: done ? 1 : 0, borderColor: accent + '40',
                           flexDirection: 'row', alignItems: 'center', gap: 4,
                         }}>
-                          <AppText style={{ fontSize: 12, fontWeight: '800', color: done ? accent : '#FFF' }}>
+                          <AppText style={{ fontSize: 12, fontWeight: '800', color: done ? accent : C.navy }}>
                             {done ? (isPortuguese ? 'Rever' : 'Review') : (isPortuguese ? 'Começar' : 'Start')}
                           </AppText>
-                          <CaretRight size={12} color={done ? accent : '#FFF'} weight="bold" />
+                          <CaretRight size={12} color={done ? accent : C.navy} weight="bold" />
                         </View>
                       )}
                     </TouchableOpacity>
@@ -360,11 +361,11 @@ export default function LearnTrailScreen() {
                           {topic.pronunciation.length > 0 && (
                             <View style={{
                               flexDirection: 'row', alignItems: 'center', gap: 3,
-                              backgroundColor: C.violetBg, borderRadius: 6,
+                              backgroundColor: C.goldBg, borderRadius: 6,
                               paddingHorizontal: 7, paddingVertical: 3,
                             }}>
-                              <Microphone size={11} color={C.violet} weight="fill" />
-                              <AppText style={{ fontSize: 10, fontWeight: '700', color: C.violet }}>
+                              <Microphone size={11} color={C.gold} weight="fill" />
+                              <AppText style={{ fontSize: 10, fontWeight: '700', color: C.gold }}>
                                 {topic.pronunciation.length} {isPortuguese ? 'pronúncia' : 'pronunc.'}
                               </AppText>
                             </View>
@@ -385,12 +386,12 @@ export default function LearnTrailScreen() {
                       {/* CTA arrow — "Iniciar" se current e não completo, "Rever" se current e já feito */}
                       {!locked && current && hasContent && !complete && (
                         <View style={{
-                          backgroundColor: accent, borderRadius: 10,
+                          backgroundColor: '#DCFF4A', borderRadius: 10,
                           paddingHorizontal: 12, paddingVertical: 8,
                           flexDirection: 'row', alignItems: 'center', gap: 4,
                         }}>
-                          <AppText style={{ fontSize: 12, fontWeight: '800', color: '#FFF' }}>{isPortuguese ? 'Iniciar' : 'Start'}</AppText>
-                          <CaretRight size={12} color="#FFF" weight="bold" />
+                          <AppText style={{ fontSize: 12, fontWeight: '800', color: C.navy }}>{isPortuguese ? 'Iniciar' : 'Start'}</AppText>
+                          <CaretRight size={12} color={C.navy} weight="bold" />
                         </View>
                       )}
                       {!locked && complete && current && hasContent && (
