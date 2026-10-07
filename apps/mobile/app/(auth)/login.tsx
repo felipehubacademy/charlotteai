@@ -112,8 +112,8 @@ export default function LoginScreen() {
               lineHeight: 22, maxWidth: 270,
             }}>
               {isPt
-                ? 'Pratique inglês com a Charlotte, com conversas de verdade e correção na hora.'
-                : 'Practice English with Charlotte: real conversations, instant feedback.'}
+                ? 'Inglês de verdade, com conversa, correção na hora e zero vergonha de errar.'
+                : 'Real English, with real conversations, instant corrections and zero shame in getting it wrong.'}
             </AppText>
 
           </View>
