@@ -75,7 +75,7 @@ const cardShadow = Platform.select({
 
 const XP: Record<SRRating, number> = { hard: 5, ok: 10, easy: 15 };
 
-// ── Selo de XP da sessão: o número sobe contando e o selo dá um pulinho ──────
+// ── Selo de XP total: a cada nota o número sobe contando e o selo dá um pulinho
 function SessionXPPill({ xp }: { xp: number }) {
   const [shown, setShown] = useState(xp);
   const scale = useRef(new Animated.Value(1)).current;
@@ -100,12 +100,12 @@ function SessionXPPill({ xp }: { xp: number }) {
   return (
     <Animated.View style={{
       flexDirection: 'row', alignItems: 'center', gap: 4,
-      backgroundColor: xp > 0 ? '#DCFF4A' : 'rgba(22,19,31,0.06)',
+      backgroundColor: 'rgba(8,128,74,0.10)',
       borderRadius: 14, paddingHorizontal: 9, paddingVertical: 4,
       transform: [{ scale }],
     }}>
-      <Lightning size={13} color="#16131F" weight="fill" />
-      <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16131F', fontVariant: ['tabular-nums'] }}>{shown}</AppText>
+      <Lightning size={13} color="#08804A" weight="fill" />
+      <AppText style={{ fontSize: 13, fontWeight: '800', color: '#08804A', fontVariant: ['tabular-nums'] }}>{shown.toLocaleString()}</AppText>
     </Animated.View>
   );
 }
@@ -142,7 +142,8 @@ export default function VocabReview() {
   // Reset contador Tier 4 ao iniciar a sessao
   useEffect(() => { soundEngine.resetStreak(); }, []);
   const [ratings,  setRatings]  = useState<SRRating[]>([]);
-  const [totalXP,  setTotalXP]  = useState(0);
+  const [totalXP,  setTotalXP]  = useState(0);   // XP desta sessão
+  const [baseXP,   setBaseXP]   = useState<number | null>(null); // XP total do aluno ao abrir
   const [ttsLoading, setTtsLoading] = useState<string | null>(null);
   const [playingKey, setPlayingKey] = useState<string | null>(null);
   const showSRInfo = () => Alert.alert(
@@ -176,6 +177,10 @@ export default function VocabReview() {
         .limit(20);
       setCards(data ?? []);
       setLoading(false);
+      // XP total (mesma fonte do header das abas) — o selo soma a sessão em cima.
+      const { data: prog } = await supabase
+        .from('charlotte_progress').select('total_xp').eq('user_id', userId).maybeSingle();
+      setBaseXP(prog?.total_xp ?? 0);
     })();
   }, [userId]);
 
@@ -463,7 +468,7 @@ export default function VocabReview() {
             <AppText style={{ fontSize: 13, color: C.navyMid, fontVariant: ['tabular-nums'] }}>
               {idx + 1}/{cards.length}
             </AppText>
-            <SessionXPPill xp={totalXP} />
+            {baseXP !== null && <SessionXPPill xp={baseXP + totalXP} />}
           </View>
         </View>
       </SafeAreaView>
