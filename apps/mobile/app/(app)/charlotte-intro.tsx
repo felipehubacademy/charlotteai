@@ -1,55 +1,24 @@
-import React, { useCallback, useEffect, useRef } from 'react';
-import { Animated, View, StyleSheet, StatusBar } from 'react-native';
-import { useVideoPlayer, VideoView } from 'expo-video';
+// Fim do onboarding (rota mantida como 'charlotte-intro' por compatibilidade
+// com o AuthGuard e o placement). O vídeo de apresentação da Charlotte saiu no
+// rebrand Queizy; a tela agora só conclui a configuração da conta e segue
+// direto para a Home: marca first_welcome_done, garante nível default e
+// 7 dias de trial (com guard para não sobrescrever institucional/pago/placement).
+
+import React, { useEffect, useRef } from 'react';
+import { View, ActivityIndicator } from 'react-native';
 import { router } from 'expo-router';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
-import { splashGate } from '@/lib/splashGate';
 
-const videoSource = require('@/assets/charlotte-intro.mp4');
-
-// Trava por SESSÃO do app: a tela pode remontar durante transições / refresh de
-// profile, criando um 2o player que tocava o áudio de novo (inclusive sobre a
-// Home). Isso garante que o vídeo toque no máximo uma vez por launch.
-let introConsumed = false;
-
-export default function CharlotteIntroScreen() {
+export default function OnboardingFinishScreen() {
   const { profile, refreshProfile } = useAuth();
-  const doneRef    = useRef(false);
-  const startedRef = useRef(false); // true once video rendered its 1st real frame
-  const playedRef  = useRef(false); // play() disparado no máximo 1x
-  const canPlayRef = useRef(false); // vira true só quando a transição de rota termina
-  // Cobre a tela (preto) no mount; revela (0) quando o vídeo começa a renderizar.
-  const fadeOutAnim = useRef(new Animated.Value(1)).current;
+  const doneRef = useRef(false);
 
-  const player = useVideoPlayer(videoSource, p => {
-    p.loop   = false;
-    // MUDO + volume 0 até o 1o frame real. O som só liga quando a Charlotte
-    // aparece de fato — e o play só é liberado depois que o SplashOverlay sai
-    // (splashGate), então nada disso acontece sobre a tela de splash.
-    p.muted  = true;
-    p.volume = 0;
-  });
-
-  const navigateWithFade = useCallback(async () => {
-    if (doneRef.current) return;
+  useEffect(() => {
+    if (doneRef.current || !profile?.id) return;
     doneRef.current = true;
-
-    // Fade to black before navigating.
-    await new Promise<void>(resolve => {
-      Animated.timing(fadeOutAnim, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true,
-      }).start(() => resolve());
-    });
-
-    try {
-      if (profile?.id) {
-        // Fase 1: placement virou opcional. Como o trial + nível nasciam no
-        // placement, garantimos aqui (fim do onboarding) que TODO usuário
-        // ganha nível default + 7 dias de trial — com guard pra não
-        // sobrescrever quem já tem nível/assinatura (institucional/pago/placement).
+    (async () => {
+      try {
         const update: Record<string, unknown> = { first_welcome_done: true };
         if (!profile.charlotte_level) update.charlotte_level = 'Novice';
         const needsTrial =
@@ -63,101 +32,19 @@ export default function CharlotteIntroScreen() {
           update.trial_ends_at       = trialEnds.toISOString();
           update.is_active           = true;
         }
-        await supabase
-          .from('charlotte_users')
-          .update(update)
-          .eq('id', profile.id);
-        // refresh so AuthGuard won't redirect back here
+        await supabase.from('charlotte_users').update(update).eq('id', profile.id);
+        // refresh para o AuthGuard não redirecionar de volta pra cá
         refreshProfile().catch(() => {});
+      } catch {
+        // Não crítico
       }
-    } catch {
-      // Non-critical
-    }
-
-    router.replace('/(app)');
-  }, [profile?.id, fadeOutAnim]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Remontagem depois que o intro já rodou nesta sessão -> vai direto pra Home
-  // (não cria um 2o player que tocaria o áudio de novo).
-  useEffect(() => {
-    if (introConsumed) {
-      doneRef.current = true;
       router.replace('/(app)');
-    }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // O play só é liberado quando o SPLASHOVERLAY sai de vez. Esse overlay
-  // (splash.png com o logo do Queizy, zIndex 9999) cobre a tela por
-  // ~3s e depois faz fade out; enquanto ele está por cima, o intro está montado
-  // EMBAIXO e o áudio do vídeo vazava (áudio não tem z-order). `splashGate`
-  // resolve exatamente quando esse overlay termina o fade — é o "load sair" de
-  // verdade. Antes disso o vídeo fica pausado, mudo e coberto.
-  useEffect(() => {
-    if (introConsumed) return;
-    let cancelled = false;
-    splashGate.then(() => {
-      if (cancelled || playedRef.current) return;
-      playedRef.current  = true;
-      canPlayRef.current = true;
-      introConsumed      = true;
-      try { player.play(); } catch {}
-    });
-    return () => { cancelled = true; };
-  }, [player]);
-
-  useEffect(() => {
-    // playingChange dispara quando o player começa/para.
-    const sub = player.addListener('playingChange', ({ isPlaying }) => {
-      if (isPlaying) {
-        // Só revela/dessilencia se o splash já saiu (canPlay). Um player-fantasma
-        // que comece antes disso fica mudo e coberto.
-        if (!startedRef.current && canPlayRef.current) {
-          startedRef.current = true;
-          // 1o frame real com o splash já fora: liga o som e revela juntos.
-          try { player.muted = false; player.volume = 1; } catch {}
-          Animated.timing(fadeOutAnim, { toValue: 0, duration: 160, useNativeDriver: true }).start();
-        }
-      } else if (startedRef.current) {
-        // Parou depois de ter começado -> chegou ao fim.
-        navigateWithFade();
-      }
-    });
-
-    return () => sub.remove();
-  }, [player, navigateWithFade]);
-
-  // Safety fallback: if something prevents the event from firing, navigate after 15s
-  useEffect(() => {
-    const t = setTimeout(navigateWithFade, 15_000);
-    return () => clearTimeout(t);
-  }, [navigateWithFade]);
+    })();
+  }, [profile?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#0B0910" translucent />
-      <VideoView
-        player={player}
-        style={styles.video}
-        contentFit="cover"
-        nativeControls={false}
-        allowsFullscreen={false}
-        allowsPictureInPicture={false}
-      />
-      <Animated.View
-        pointerEvents="none"
-        style={[StyleSheet.absoluteFillObject, { backgroundColor: '#000', opacity: fadeOutAnim }]}
-      />
+    <View style={{ flex: 1, backgroundColor: '#FAF7F0', alignItems: 'center', justifyContent: 'center' }}>
+      <ActivityIndicator color="#16131F" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#0B0910',
-  },
-  video: {
-    flex: 1,
-    width: '100%',
-  },
-});

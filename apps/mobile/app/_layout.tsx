@@ -107,7 +107,7 @@ function AuthGuard() {
       target = '/(app)/first-access';
     } else if (profile && !profile.first_welcome_done) {
       // Fase 1: placement virou opcional (oferecido na Home). O onboarding
-      // forçado agora é só: boas-vindas → consentimento → home.
+      // forçado agora é só: configuração da conta (sem vídeo) → consentimento → home.
       target = '/(app)/charlotte-intro';
     } else if (profile && profile.first_welcome_done && !aiConsent) {
       // User completed onboarding but hasn't accepted AI consent yet

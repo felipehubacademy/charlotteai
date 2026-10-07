@@ -328,21 +328,31 @@ function Slide3({ active, selectedGoal, onGoalSelect }: {
   return (
     <View style={{ width: W, flex: 1, justifyContent: 'center', paddingHorizontal: 28 }}>
 
-      {/* Charlotte + bubble */}
+      {/* Charlotte + balão no mesmo estilo da Home: balão branco com o
+          rabinho do logo apontando para o avatar. */}
       <Animated.View style={{
         opacity: bubbleO,
         transform: [{ translateY: bubbleY }],
-        flexDirection: 'row', alignItems: 'flex-end', gap: 10, marginBottom: 28,
+        flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'center', gap: 8, marginBottom: 32,
       }}>
-        <CharlotteAvatar size="md" />
-        <View style={{
-          backgroundColor: C.navy, borderRadius: 16, borderBottomLeftRadius: 3,
-          paddingHorizontal: 16, paddingVertical: 14, flex: 1,
-          ...C.shadow,
-        }}>
-          <AppText style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700', lineHeight: 24 }}>
-            {isPt ? <>Quanto tempo por dia{'\n'}você quer praticar?</> : <>How much time a day{'\n'}do you want to practice?</>}
-          </AppText>
+        <Image
+          source={require('@/assets/charlotte-avatar.png')}
+          style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: C.navy }}
+          accessibilityLabel="Charlotte"
+        />
+        <View style={{ maxWidth: '80%', marginBottom: 16 }}>
+          <View style={{
+            backgroundColor: C.card, borderRadius: 18,
+            paddingHorizontal: 16, paddingVertical: 13,
+            ...C.shadow,
+          }}>
+            <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, lineHeight: 25 }}>
+              {isPt ? 'Quanto tempo por dia você quer praticar?' : 'How much time a day do you want to practice?'}
+            </AppText>
+          </View>
+          <Svg width={20} height={14} viewBox="0 0 20 14" style={{ position: 'absolute', left: 8, bottom: -13 }}>
+            <Path d="M19 0 L0 14 L7 0 Z" fill={C.card} />
+          </Svg>
         </View>
       </Animated.View>
 
