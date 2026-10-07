@@ -12,6 +12,7 @@ import { router, useFocusEffect } from 'expo-router';
 import { CheckCircle } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { HeaderLogo } from '@/components/ui/HeaderLogo';
+import { getDailyGoal } from '@/lib/dailyGoal';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { HomeData, Mission, buildMissions } from '@/lib/missions';
@@ -41,11 +42,6 @@ const cardShadow = Platform.select({
 
 // ── Daily XP card (movido do Home) ────────────────────────────────────────────
 
-const DAILY_XP_MILESTONES = [100, 200, 350, 500, 750, 1000];
-function getDailyGoal(xp: number): number {
-  for (const m of DAILY_XP_MILESTONES) { if (xp < m) return m; }
-  return Math.ceil((xp + 1) / 500) * 500;
-}
 
 function XPRing({ todayXP, goal }: { todayXP: number; goal: number }) {
   const SIZE = 50, SW = 5;

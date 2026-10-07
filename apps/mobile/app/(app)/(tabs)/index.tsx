@@ -13,7 +13,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
 import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
-import Svg, { Path } from 'react-native-svg';
+import { QueizyWave } from '@/components/ui/QueizyWave';
+import { getDailyGoal } from '@/lib/dailyGoal';
 import { systemIsPt } from '@/lib/systemLang';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
@@ -84,7 +85,7 @@ function TypingDots() {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 3 }}>
       {dots.map((dot, i) => (
-        <Animated.View key={i} style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: 'rgba(22,19,31,0.6)', opacity: dot }} />
+        <Animated.View key={i} style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: 'rgba(22,19,31,0.45)', opacity: dot }} />
       ))}
     </View>
   );
@@ -222,7 +223,13 @@ export default function HomeTab() {
   // Charlotte greeting animado em WebP com alpha. expo-image faz loop nativo
   // e não toca AVAudioSession (substitui expo-video que floodava MediaPlayback
   // events no Live Voice — benchmark 2026-05-15).
-  const greetingSrc = require('@/assets/charlotte-greeting.webp');
+  const avatarSrc = require('@/assets/charlotte-avatar.png');
+  const dailyGoal = getDailyGoal(todayXP);
+  const heroHour  = new Date().getHours();
+  const heroTitle = isPt
+    ? `${heroHour < 12 ? 'Bom dia' : heroHour < 18 ? 'Boa tarde' : 'Boa noite'}, ${firstName}.`
+    : `${heroHour < 12 ? 'Good morning' : heroHour < 18 ? 'Good afternoon' : 'Good evening'}, ${firstName}.`;
+  const todayLabel = new Date().toLocaleDateString(isPt ? 'pt-BR' : 'en-US', { weekday: 'long', day: 'numeric', month: 'short' });
 
   // ── Data fetch ──────────────────────────────────────────────────────────────
   const fetchData = useCallback(async () => {
@@ -538,41 +545,56 @@ export default function HomeTab() {
         isPt={isPt}
       />
 
-      {/* Charlotte hero card — fixed */}
-      <View style={{ marginHorizontal: 20, marginTop: 8 }}>
-        <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
-          {/* Navy strip with bust + chat bubble */}
-          <View style={{ backgroundColor: C.heroStrip, paddingRight: 20, flexDirection: 'row', alignItems: 'center', minHeight: 140 }}>
-            <View style={{ width: 95, height: 132, flexShrink: 0, alignSelf: 'flex-end' }}>
-              <Image
-                source={greetingSrc}
-                style={{ width: 95, height: 132 }}
-                contentFit="contain"
-              />
-            </View>
-            <View style={{ flex: 1, paddingLeft: 0, paddingVertical: 16, justifyContent: 'center' }}>
-              {/* Balão da Charlotte no formato do logo Queizy: Volt sobre Tinta,
-                  cantos arredondados e o rabinho embaixo à esquerda. */}
-              <View style={{ alignSelf: 'flex-start', marginBottom: 10 }}>
-                <View style={{ backgroundColor: '#DCFF4A', borderRadius: 16, paddingHorizontal: 14, paddingVertical: greetingLoading ? 10 : 12 }}>
-                  {greetingLoading || !aiGreeting ? (
-                    <TypingDots />
-                  ) : (
-                    <AppText style={{ fontSize: 14, color: '#16131F', lineHeight: 21, fontWeight: '600' }}>
-                      {aiGreeting}
-                    </AppText>
-                  )}
-                </View>
-                <Svg width={18} height={12} viewBox="0 0 18 12" style={{ position: 'absolute', left: 12, bottom: -11 }}>
-                  <Path d="M17 0 L1 12 L6 0 Z" fill="#DCFF4A" />
-                </Svg>
-              </View>
-            </View>
-          </View>
+      {/* Hero — saudação na fonte da marca + meta do dia como a onda queizy → crazy */}
+      <View style={{ marginHorizontal: 20, marginTop: 16 }}>
+        <AppText style={{ fontSize: 11, fontWeight: '700', letterSpacing: 1.4, color: C.navyLight, textTransform: 'uppercase' }}>
+          {todayLabel}
+        </AppText>
+        <AppText display style={{ fontSize: 32, fontWeight: '800', color: C.navy, lineHeight: 34, marginTop: 4 }}>
+          {heroTitle}
+        </AppText>
 
-          {/* Divider + TrailBanner — zIndex:1 para ficar sobre o overflow da Charlotte */}
-          <View style={{ zIndex: 1, backgroundColor: T.card }}>
-          <View style={{ height: 1, backgroundColor: C.navyGhost }} />
+        {/* Fala da Charlotte */}
+        <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8, marginTop: 10 }}>
+          <Image
+            source={avatarSrc}
+            style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: C.navy }}
+            contentFit="cover"
+            accessibilityLabel="Charlotte"
+          />
+          <View style={{ flex: 1, minHeight: 24, justifyContent: 'center' }}>
+            {greetingLoading || !aiGreeting ? (
+              <TypingDots />
+            ) : (
+              <AppText style={{ fontSize: 13, color: C.navyMid, lineHeight: 19 }}>
+                {aiGreeting}
+              </AppText>
+            )}
+          </View>
+        </View>
+
+        {/* Meta do dia: reto/verde = feito, torto/rosa = falta */}
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => router.push('/(app)/(tabs)/goals')}
+          style={{ marginTop: 14 }}
+          accessibilityLabel={isPt ? `Meta do dia: ${todayXP} de ${dailyGoal} XP` : `Today's goal: ${todayXP} of ${dailyGoal} XP`}
+        >
+          <QueizyWave progress={todayXP / dailyGoal} />
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 4 }}>
+            <AppText style={{ fontSize: 11, fontWeight: '800', color: C.greenDark }}>
+              {isPt ? `${todayXP} / ${dailyGoal} XP hoje` : `${todayXP} / ${dailyGoal} XP today`}
+            </AppText>
+            <AppText style={{ fontSize: 11, fontWeight: '800', color: '#FF4F8B' }}>
+              queizy → crazy
+            </AppText>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      {/* Card do nível */}
+      <View style={{ marginHorizontal: 20, marginTop: 14 }}>
+        <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
           <TrailBanner
             userId={userId}
             level={level}
@@ -581,7 +603,6 @@ export default function HomeTab() {
             useV2={profile?.beta_features?.includes('curriculum_v2') ?? false}
             flush
           />
-          </View>
         </View>
       </View>
 
