@@ -22,7 +22,7 @@ import {
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import {
-  ArrowLeft, SpeakerHigh,
+  ArrowLeft, SpeakerHigh, Lightning,
 } from 'phosphor-react-native';
 import * as Haptics from 'expo-haptics';
 import { AppText } from '@/components/ui/Text';
@@ -75,6 +75,41 @@ const cardShadow = Platform.select({
 
 const XP: Record<SRRating, number> = { hard: 5, ok: 10, easy: 15 };
 
+// ── Selo de XP da sessão: o número sobe contando e o selo dá um pulinho ──────
+function SessionXPPill({ xp }: { xp: number }) {
+  const [shown, setShown] = useState(xp);
+  const scale = useRef(new Animated.Value(1)).current;
+  const prev = useRef(xp);
+  useEffect(() => {
+    const from = prev.current;
+    prev.current = xp;
+    if (xp <= from) { setShown(xp); return; }
+    Animated.sequence([
+      Animated.timing(scale, { toValue: 1.18, duration: 120, useNativeDriver: true }),
+      Animated.spring(scale, { toValue: 1, friction: 4, useNativeDriver: true }),
+    ]).start();
+    const steps = 12;
+    let i = 0;
+    const t = setInterval(() => {
+      i++;
+      setShown(Math.round(from + ((xp - from) * i) / steps));
+      if (i >= steps) clearInterval(t);
+    }, 30);
+    return () => clearInterval(t);
+  }, [xp, scale]);
+  return (
+    <Animated.View style={{
+      flexDirection: 'row', alignItems: 'center', gap: 4,
+      backgroundColor: xp > 0 ? '#DCFF4A' : 'rgba(22,19,31,0.06)',
+      borderRadius: 14, paddingHorizontal: 9, paddingVertical: 4,
+      transform: [{ scale }],
+    }}>
+      <Lightning size={13} color="#16131F" weight="fill" />
+      <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16131F', fontVariant: ['tabular-nums'] }}>{shown}</AppText>
+    </Animated.View>
+  );
+}
+
 // ── Types ─────────────────────────────────────────────────────────────────────
 interface VocabCard {
   id:                  string;
@@ -125,9 +160,6 @@ export default function VocabReview() {
   // Buttons slide-up
   const btnAnim    = useRef(new Animated.Value(60)).current;
   const btnOpac    = useRef(new Animated.Value(0)).current;
-  // XP toast
-  const [xpToast,  setXpToast]  = useState(0);
-  const [showXP,   setShowXP]   = useState(false);
 
   const playerRef = useRef<ReturnType<typeof createAudioPlayer> | null>(null);
 
@@ -236,10 +268,6 @@ export default function VocabReview() {
       rating === 'hard' ? Haptics.ImpactFeedbackStyle.Medium : Haptics.ImpactFeedbackStyle.Light,
     );
 
-    // XP toast
-    setXpToast(xp);
-    setShowXP(true);
-    setTimeout(() => setShowXP(false), 1200);
 
     const newRatings = [...ratings, rating];
     setRatings(newRatings);
@@ -431,22 +459,14 @@ export default function VocabReview() {
           <View style={{ flex: 1, marginHorizontal: 14 }}>
             <QueizyWave progress={cards.length ? idx / cards.length : 0} height={14} strokeWidth={4} />
           </View>
-          <AppText style={{ fontSize: 13, color: C.navyMid, minWidth: 40, textAlign: 'right' }}>
-            {idx + 1}/{cards.length}
-          </AppText>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <AppText style={{ fontSize: 13, color: C.navyMid, fontVariant: ['tabular-nums'] }}>
+              {idx + 1}/{cards.length}
+            </AppText>
+            <SessionXPPill xp={totalXP} />
+          </View>
         </View>
       </SafeAreaView>
-
-      {/* XP toast */}
-      {showXP && (
-        <View style={{
-          position: 'absolute', top: insets.top + 70, right: 20, zIndex: 100,
-          backgroundColor: C.volt, borderRadius: 20,
-          paddingHorizontal: 14, paddingVertical: 6,
-        }}>
-          <AppText style={{ fontSize: 15, fontWeight: '800', color: C.navy }}>+{xpToast} XP</AppText>
-        </View>
-      )}
 
       {/* Card area */}
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20 }}>
