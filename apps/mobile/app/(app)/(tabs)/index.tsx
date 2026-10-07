@@ -13,8 +13,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
 import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
-import { QueizyWave } from '@/components/ui/QueizyWave';
-import { getDailyGoal } from '@/lib/dailyGoal';
 import { systemIsPt } from '@/lib/systemLang';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
@@ -224,7 +222,6 @@ export default function HomeTab() {
   // e não toca AVAudioSession (substitui expo-video que floodava MediaPlayback
   // events no Live Voice — benchmark 2026-05-15).
   const avatarSrc = require('@/assets/charlotte-avatar.png');
-  const dailyGoal = getDailyGoal(todayXP);
   const heroHour  = new Date().getHours();
   const heroTitle = isPt
     ? `${heroHour < 12 ? 'Bom dia' : heroHour < 18 ? 'Boa tarde' : 'Boa noite'}, ${firstName}.`
@@ -546,7 +543,7 @@ export default function HomeTab() {
         isPt={isPt}
       />
 
-      {/* Hero — saudação na fonte da marca + meta do dia como a onda queizy → crazy */}
+      {/* Hero — saudação na fonte da marca + mensagem da Charlotte */}
       <View style={{ marginHorizontal: 20, marginTop: 16 }}>
         <AppText style={{ fontSize: 11, fontWeight: '700', letterSpacing: 1.4, color: C.navyLight, textTransform: 'uppercase' }}>
           {todayLabel}
@@ -584,27 +581,6 @@ export default function HomeTab() {
           </View>
         </View>
 
-        {/* Meta do dia: reto/verde = feito, torto/rosa = falta */}
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => router.push('/(app)/(tabs)/goals')}
-          style={{ marginTop: 14 }}
-          accessibilityLabel={isPt ? `Meta do dia: ${todayXP} de ${dailyGoal} XP` : `Today's goal: ${todayXP} of ${dailyGoal} XP`}
-        >
-          <QueizyWave progress={todayXP / dailyGoal} />
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 4 }}>
-            <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navyMid }}>
-              {todayXP === 0
-                ? (isPt ? 'Pratique para endireitar a onda' : 'Practice to straighten the wave')
-                : todayXP >= dailyGoal
-                ? (isPt ? 'Meta do dia batida' : 'Daily goal done')
-                : (isPt ? `Faltam ${dailyGoal - todayXP} XP para a meta` : `${dailyGoal - todayXP} XP to go`)}
-            </AppText>
-            <AppText style={{ fontSize: 11, fontWeight: '800', color: C.greenDark }}>
-              {todayXP} / {dailyGoal} XP
-            </AppText>
-          </View>
-        </TouchableOpacity>
       </View>
 
       {/* Card do nível */}
