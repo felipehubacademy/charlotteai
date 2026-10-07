@@ -57,7 +57,7 @@ const C = {
   navyLight: '#8A8494',
   greenDark: '#08804A',
   green:     '#08804A',
-  red:       '#DC2626',
+  red:       '#D12A64',
   border:    'rgba(22,19,31,0.08)',
 };
 
@@ -405,7 +405,7 @@ export default function GuidedChatExerciseScreen() {
           </AppText>
         </View>
         <View style={{
-          backgroundColor: timerWarn ? 'rgba(220,38,38,0.10)' : 'rgba(22,19,31,0.06)',
+          backgroundColor: timerWarn ? 'rgba(255,79,139,0.10)' : 'rgba(22,19,31,0.06)',
           paddingHorizontal: 10, paddingVertical: 5,
           borderRadius: 10, minWidth: 56, alignItems: 'center',
         }}>
@@ -489,17 +489,17 @@ export default function GuidedChatExerciseScreen() {
               alignSelf: 'center',
               maxWidth: '82%',
               marginBottom: 12, padding: 12, borderRadius: 14,
-              backgroundColor: 'rgba(217,119,6,0.10)',
-              borderWidth: 1, borderColor: 'rgba(217,119,6,0.30)',
+              backgroundColor: 'rgba(255,79,139,0.10)',
+              borderWidth: 1, borderColor: 'rgba(255,79,139,0.30)',
             }}>
               <AppText style={{
-                fontSize: 10, fontWeight: '700', color: '#B45309',
+                fontSize: 10, fontWeight: '700', color: '#D12A64',
                 letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 6,
               }}>
                 {isPt ? 'Cenário' : 'Scenario'}
               </AppText>
               <AppText style={{
-                fontSize: 13, color: '#92400E', lineHeight: 18,
+                fontSize: 13, color: '#D12A64', lineHeight: 18,
               }}>
                 {(isPt ? gc.intro_pt : gc.intro_en) ?? gc.scenario}
               </AppText>
@@ -636,10 +636,10 @@ export default function GuidedChatExerciseScreen() {
           }}>
             <View style={{
               width: 64, height: 64, borderRadius: 32,
-              backgroundColor: allObjectivesDone ? 'rgba(8,128,74,0.12)' : 'rgba(217,119,6,0.12)',
+              backgroundColor: allObjectivesDone ? 'rgba(8,128,74,0.12)' : 'rgba(255,79,139,0.12)',
               alignItems: 'center', justifyContent: 'center', marginBottom: 16,
             }}>
-              <Trophy size={32} color={allObjectivesDone ? C.greenDark : '#B45309'} weight="fill" />
+              <Trophy size={32} color={allObjectivesDone ? C.greenDark : '#D12A64'} weight="fill" />
             </View>
             <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, marginBottom: 4 }}>
               {allObjectivesDone
@@ -699,7 +699,7 @@ export default function GuidedChatExerciseScreen() {
                 </AppText>
               </View>
               <View style={{ alignItems: 'center' }}>
-                <AppText display style={{ fontSize: 18, fontWeight: '800', color: allObjectivesDone ? C.greenDark : '#B45309' }}>
+                <AppText display style={{ fontSize: 18, fontWeight: '800', color: allObjectivesDone ? C.greenDark : '#D12A64' }}>
                   {Math.round((objectivesDone / objectivesTotal) * 100)}%
                 </AppText>
                 <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>

@@ -45,7 +45,7 @@ export class AppErrorBoundary extends React.Component<
       return (
         <View style={{ flex: 1, backgroundColor: '#FAF7F0', paddingTop: Platform.OS === 'ios' ? 60 : 40 }}>
           <ScrollView contentContainerStyle={{ padding: 24 }}>
-            <AppText display style={{ fontSize: 18, fontWeight: '800', color: '#DC2626', marginBottom: 8 }}>
+            <AppText display style={{ fontSize: 18, fontWeight: '800', color: '#D12A64', marginBottom: 8 }}>
               Algo deu errado
             </AppText>
             <AppText style={{ fontSize: 13, color: '#4D4858', marginBottom: 16, lineHeight: 20 }}>
@@ -53,10 +53,10 @@ export class AppErrorBoundary extends React.Component<
             </AppText>
 
             <View style={{
-              backgroundColor: '#FEF2F2', borderRadius: 10, padding: 14,
-              borderWidth: 1, borderColor: '#FCA5A5', marginBottom: 20,
+              backgroundColor: '#FFEEF4', borderRadius: 10, padding: 14,
+              borderWidth: 1, borderColor: '#FFB3CD', marginBottom: 20,
             }}>
-              <AppText style={{ fontSize: 11, fontFamily: 'monospace', color: '#DC2626', lineHeight: 18 }}>
+              <AppText style={{ fontSize: 11, fontFamily: 'monospace', color: '#D12A64', lineHeight: 18 }}>
                 {this.state.errorMessage}
                 {'\n\n'}
                 {this.state.errorStack.slice(0, 800)}

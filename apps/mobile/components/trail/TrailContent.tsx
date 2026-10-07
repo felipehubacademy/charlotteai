@@ -52,7 +52,7 @@ const TYPE_CYCLE: NodeType[] = ['grammar', 'speaking', 'roleplay', 'chat'];
 const NODE_CONFIG: Record<NodeType, {
   color: string; Icon: any; label: string; labelPt: string;
 }> = {
-  grammar:  { color: '#D97706', Icon: BookOpen,   label: 'Grammar',     labelPt: 'Gramática'  },
+  grammar:  { color: '#D12A64', Icon: BookOpen,   label: 'Grammar',     labelPt: 'Gramática'  },
   speaking: { color: '#6B4BFF', Icon: Microphone, label: 'Speaking',    labelPt: 'Pronúncia'  },
   roleplay: { color: '#08804A', Icon: Play,        label: 'Role-play',   labelPt: 'Role-play'  },
   chat:     { color: '#16131F', Icon: ChatCircle,  label: 'Guided Chat', labelPt: 'Chat Guiado' },
@@ -713,10 +713,10 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
           borderRadius: 12,
           borderWidth: 1, borderColor: 'rgba(107,75,255,0.15)',
         }}>
-          <AppText style={{ fontSize: 13, fontWeight: '700', color: '#5B21B6', marginBottom: 2 }}>
+          <AppText style={{ fontSize: 13, fontWeight: '700', color: '#6B4BFF', marginBottom: 2 }}>
             {isPt ? 'Pré-visualização' : 'Preview'}
           </AppText>
-          <AppText style={{ fontSize: 12, color: '#5B21B6', lineHeight: 17 }}>
+          <AppText style={{ fontSize: 12, color: '#6B4BFF', lineHeight: 17 }}>
             {isPt
               ? 'Você está vendo o curriculum deste nível. Complete o nível atual pra desbloquear as atividades.'
               : 'You are previewing this level. Complete the current level to unlock activities.'}

@@ -22,7 +22,7 @@ const C = {
   topBorder: 'rgba(22,19,31,0.08)',
   green:     '#DCFF4A',
   greenDark: '#08804A',
-  red:       '#DC2626',
+  red:       '#D12A64',
 };
 
 interface ChatInputBarProps {

@@ -20,7 +20,7 @@ const C = {
   greenDark: '#08804A',
   border:    'rgba(22,19,31,0.10)',
   lossRedBg: '#FEE2E2',
-  lossRed:   '#DC2626',
+  lossRed:   '#D12A64',
 };
 
 interface Props {

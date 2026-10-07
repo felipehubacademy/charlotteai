@@ -105,7 +105,7 @@ function TranslatableWord({
           hasTranslation && {
             textDecorationLine: 'underline',
             textDecorationStyle: 'dotted' as any,
-            textDecorationColor: 'rgba(217,119,6,0.55)',
+            textDecorationColor: 'rgba(255,79,139,0.55)',
           },
         ]}
       >

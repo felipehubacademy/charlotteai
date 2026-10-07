@@ -714,10 +714,10 @@ export default function PlacementTestScreen() {
       {verified && (
         <Animated.View style={{
           position: 'absolute', bottom: 0, left: 0, right: 0,
-          backgroundColor: currentIsCorrect ? '#EDFFD0' : '#FFF0F0',
+          backgroundColor: currentIsCorrect ? '#F1FFB8' : '#FFEEF4',
           borderTopLeftRadius: 24, borderTopRightRadius: 24,
           borderTopWidth: 1,
-          borderColor: currentIsCorrect ? '#DCFF4A40' : '#DC262640',
+          borderColor: currentIsCorrect ? '#DCFF4A40' : '#D12A6440',
           paddingHorizontal: 24, paddingTop: 24,
           paddingBottom: insets.bottom + 20,
           transform: [{ translateY: feedbackTranslateY }],
@@ -725,22 +725,22 @@ export default function PlacementTestScreen() {
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 }}>
             {currentIsCorrect
               ? <CheckCircle size={24} color={C.greenDark} weight="fill" />
-              : <XCircle    size={24} color="#DC2626"     weight="fill" />}
+              : <XCircle    size={24} color="#D12A64"     weight="fill" />}
             <AppText style={{
               fontSize: 17, fontWeight: '800',
-              color: currentIsCorrect ? C.greenDark : '#DC2626',
+              color: currentIsCorrect ? C.greenDark : '#D12A64',
             }}>
               {currentIsCorrect ? (systemIsPt ? 'Correto!' : 'Correct!') : (systemIsPt ? 'Não foi dessa vez' : 'Not this time')}
             </AppText>
           </View>
           {!currentIsCorrect && (
-            <AppText style={{ fontSize: 13, color: '#DC2626', marginBottom: 8 }}>
+            <AppText style={{ fontSize: 13, color: '#D12A64', marginBottom: 8 }}>
               {`${systemIsPt ? 'Resposta certa' : 'Correct answer'}: "${currentQ.options[currentQ.correctIndex]}"`}
             </AppText>
           )}
           <AppText style={{
             fontSize: 13,
-            color: currentIsCorrect ? C.greenDark : '#7B2020',
+            color: currentIsCorrect ? C.greenDark : '#D12A64',
             marginBottom: 16,
             lineHeight: 19,
           }}>
@@ -750,7 +750,7 @@ export default function PlacementTestScreen() {
             onPress={handleNext}
             activeOpacity={0.85}
             style={{
-              backgroundColor: currentIsCorrect ? C.greenDark : '#DC2626',
+              backgroundColor: currentIsCorrect ? C.greenDark : '#D12A64',
               borderRadius: 16, paddingVertical: 16, alignItems: 'center',
             }}
           >
@@ -787,7 +787,7 @@ function OptionList({
         let bgColor = C.card;
         if (locked) {
           if (isCorrect)                    { borderColor = C.greenDark; bgColor = 'rgba(8,128,74,0.08)'; }
-          else if (isSelected && !isCorrect){ borderColor = '#DC2626';   bgColor = 'rgba(220,38,38,0.06)'; }
+          else if (isSelected && !isCorrect){ borderColor = '#D12A64';   bgColor = 'rgba(255,79,139,0.06)'; }
         } else {
           if (isSelected) { borderColor = C.green; bgColor = 'rgba(220,255,74,0.10)'; }
         }
@@ -1044,11 +1044,11 @@ function ResultScreen({
 
             {saveError && (
               <View style={{
-                backgroundColor: 'rgba(220,38,38,0.07)', borderRadius: 12,
-                borderWidth: 1, borderColor: 'rgba(220,38,38,0.2)',
+                backgroundColor: 'rgba(255,79,139,0.07)', borderRadius: 12,
+                borderWidth: 1, borderColor: 'rgba(255,79,139,0.2)',
                 padding: 12, marginTop: 20,
               }}>
-                <AppText style={{ fontSize: 13, color: '#DC2626', textAlign: 'center', lineHeight: 20 }}>
+                <AppText style={{ fontSize: 13, color: '#D12A64', textAlign: 'center', lineHeight: 20 }}>
                   {saveError}
                 </AppText>
               </View>

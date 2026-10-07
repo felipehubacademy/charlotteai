@@ -1587,12 +1587,12 @@ export default function LiveVoiceModal({
   }, [loadPool, connect]);
 
   // ── StatusBar: imperativo para funcionar dentro de Modal no Android ─────────
-  // Sempre dark-content sobre bg claro (#FCFAF5), tanto na tela de chamada
+  // Sempre dark-content sobre bg claro (#FAF7F0), tanto na tela de chamada
   // quanto no transcript. Restaura ao fechar.
   React.useEffect(() => {
     StatusBar.setBarStyle('dark-content', true);
     if (Platform.OS === 'android') {
-      const bg = isOpen && !showTranscript ? '#FCFAF5' : '#FFFFFF';
+      const bg = isOpen && !showTranscript ? '#FAF7F0' : '#FFFFFF';
       StatusBar.setBackgroundColor(bg, true);
     }
   }, [isOpen, showTranscript]);
@@ -1747,7 +1747,7 @@ export default function LiveVoiceModal({
         </View>
       ) : (
       <>
-      <View style={{ flex: 1, backgroundColor: '#FCFAF5', paddingTop: insets.top, paddingBottom: insets.bottom }}>
+      <View style={{ flex: 1, backgroundColor: '#FAF7F0', paddingTop: insets.top, paddingBottom: insets.bottom }}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 32, paddingVertical: 24 }}>
 
           {/* Caption toggle (absolute, top-right) */}
@@ -1801,7 +1801,7 @@ export default function LiveVoiceModal({
             )}
             {status === 'error' && (
               <View style={{ alignItems: 'center', gap: 8 }}>
-                <AppText style={{ color: '#ef4444', fontSize: 13, textAlign: 'center', paddingHorizontal: 8 }}>
+                <AppText style={{ color: '#D12A64', fontSize: 13, textAlign: 'center', paddingHorizontal: 8 }}>
                   {errorMsg}
                 </AppText>
                 {!poolExhausted && (
@@ -1812,7 +1812,7 @@ export default function LiveVoiceModal({
                       paddingHorizontal: 20, paddingVertical: 8,
                     }}
                   >
-                    <AppText style={{ color: '#0B0910', fontSize: 13, fontWeight: '700' }}>
+                    <AppText style={{ color: '#16131F', fontSize: 13, fontWeight: '700' }}>
                       {isPtUI ? 'Tentar novamente' : 'Try again'}
                     </AppText>
                   </TouchableOpacity>
@@ -1826,7 +1826,7 @@ export default function LiveVoiceModal({
             {!poolLoading && !poolExhausted && poolRemaining < 120 && (
               <AppText style={{
                 marginTop: 5, fontSize: 12, fontWeight: '500', letterSpacing: 0.2,
-                color: poolRemaining < 60 ? '#ef4444' : '#D12A64',
+                color: poolRemaining < 60 ? '#D12A64' : '#D12A64',
               }}>
                 {isPtUI
                   ? `${poolMins} min restante${poolMins !== 1 ? 's' : ''}`
@@ -1963,8 +1963,8 @@ export default function LiveVoiceModal({
                     shadowOpacity: 0.4, shadowRadius: 12, elevation: 8,
                   }}
                 >
-                  <ArrowCounterClockwise size={20} color="#0B0910" weight="bold" />
-                  <AppText style={{ color: '#0B0910', fontSize: 15, fontWeight: '800' }}>
+                  <ArrowCounterClockwise size={20} color="#16131F" weight="bold" />
+                  <AppText style={{ color: '#16131F', fontSize: 15, fontWeight: '800' }}>
                     {isPtUI ? 'Retomar' : 'Resume'}
                   </AppText>
                 </TouchableOpacity>
@@ -1972,12 +1972,12 @@ export default function LiveVoiceModal({
                   onPress={() => { disconnect(); onClose(); }}
                   style={{
                     width: 56, height: 56, borderRadius: 28,
-                    backgroundColor: 'rgba(239,68,68,0.15)',
-                    borderWidth: 1, borderColor: 'rgba(239,68,68,0.4)',
+                    backgroundColor: 'rgba(255,79,139,0.15)',
+                    borderWidth: 1, borderColor: 'rgba(255,79,139,0.4)',
                     alignItems: 'center', justifyContent: 'center',
                   }}
                 >
-                  <PhoneSlash size={22} color="#ef4444" weight="regular" />
+                  <PhoneSlash size={22} color="#D12A64" weight="regular" />
                 </TouchableOpacity>
               </View>
             </View>
@@ -2011,14 +2011,14 @@ export default function LiveVoiceModal({
                   accessibilityRole="button"
                   style={{
                     width: 64, height: 64, borderRadius: 32,
-                    backgroundColor: isMuted ? 'rgba(239,68,68,0.12)' : 'rgba(22,19,31,0.06)',
+                    backgroundColor: isMuted ? 'rgba(255,79,139,0.12)' : 'rgba(22,19,31,0.06)',
                     borderWidth: 1,
-                    borderColor: isMuted ? 'rgba(239,68,68,0.4)' : 'rgba(22,19,31,0.10)',
+                    borderColor: isMuted ? 'rgba(255,79,139,0.4)' : 'rgba(22,19,31,0.10)',
                     alignItems: 'center', justifyContent: 'center',
                   }}
                 >
                   {isMuted
-                    ? <MicrophoneSlash size={24} color="#ef4444" weight="regular" />
+                    ? <MicrophoneSlash size={24} color="#D12A64" weight="regular" />
                     : <Microphone     size={24} color="rgba(22,19,31,0.65)" weight="regular" />
                   }
                 </TouchableOpacity>
@@ -2031,9 +2031,9 @@ export default function LiveVoiceModal({
                   accessibilityRole="button"
                   style={{
                     width: 64, height: 64, borderRadius: 32,
-                    backgroundColor: '#ef4444',
+                    backgroundColor: '#D12A64',
                     alignItems: 'center', justifyContent: 'center',
-                    shadowColor: '#ef4444',
+                    shadowColor: '#D12A64',
                     shadowOffset: { width: 0, height: 4 },
                     shadowOpacity: 0.5, shadowRadius: 12, elevation: 8,
                   }}

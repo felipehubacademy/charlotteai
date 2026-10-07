@@ -9,7 +9,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
-  View, TouchableOpacity, Animated, ActivityIndicator, Platform, StatusBar,
+  View, TouchableOpacity, Animated, ActivityIndicator, StatusBar,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -25,7 +25,7 @@ import { MODULE_INTROS } from '@/data/moduleIntros';
 import { TrailLevel } from '@/data/curriculum';
 import { useAuth } from '@/hooks/useAuth';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
-import { LEVEL_ACCENT, LEVEL_VIVID } from '@/lib/levelColors';
+import { systemIsPt } from '@/lib/systemLang';
 
 // ── Config ─────────────────────────────────────────────────────
 const API_BASE_URL =
@@ -39,28 +39,20 @@ interface WordTiming {
 }
 
 // ── Palette ────────────────────────────────────────────────────
-const LEVEL_ACCENT_INTRO: Record<string, { main: string; light: string }> = {
-  Novice:   { main: LEVEL_ACCENT.Novice,   light: LEVEL_VIVID.Novice },
-  Inter:    { main: LEVEL_ACCENT.Inter,    light: LEVEL_VIVID.Inter },
-  Advanced: { main: LEVEL_ACCENT.Advanced, light: LEVEL_VIVID.Advanced },
+// Fundo Tinta com destaque Volt (igual em todos os níveis): a palavra falada
+// acende em Volt, como o marca-texto da marca.
+const C = {
+  bg:           '#16131F',
+  white:        '#FFFFFF',
+  wordDim:      'rgba(255,255,255,0.28)',
+  wordSpoken:   '#FFFFFF',
+  wordActive:   '#DCFF4A',
+  whiteAlpha:   'rgba(255,255,255,0.50)',
+  volt:         '#DCFF4A',
+  voltHl:       'rgba(220,255,74,0.10)',
+  voltBorder:   'rgba(220,255,74,0.35)',
+  dotInactive:  'rgba(255,255,255,0.22)',
 };
-
-function buildPalette(level: string) {
-  const { main, light } = LEVEL_ACCENT_INTRO[level] ?? LEVEL_ACCENT_INTRO.Inter;
-  return {
-    bg:           '#16131F',
-    white:        '#FFFFFF',
-    wordDim:      'rgba(255,255,255,0.28)',
-    wordSpoken:   '#FFFFFF',
-    wordActive:   light,
-    whiteAlpha:   'rgba(255,255,255,0.50)',
-    violet:       main,
-    violetLight:  light,
-    violetHl:     main + '38',
-    violetBorder: main + '73',
-    dotInactive:  'rgba(255,255,255,0.22)',
-  };
-}
 
 // ── Main screen ────────────────────────────────────────────────
 export default function LearnIntroScreen() {
@@ -71,8 +63,8 @@ export default function LearnIntroScreen() {
   const mIdx        = parseInt(moduleIndex ?? '0', 10);
   const intro       = MODULE_INTROS[level as TrailLevel]?.[mIdx];
   const slides      = intro?.slides ?? [];
-  const isPortuguese = level === 'Novice';
-  const C           = buildPalette(level);
+  // Botões seguem o idioma do device; o conteúdo dos slides segue o nível.
+  const isPortuguese = systemIsPt;
   const { session } = useAuth();
   const userId      = session?.user?.id ?? '';
   const { saveIntroDone } = useLearnProgress(userId, level as TrailLevel);
@@ -321,7 +313,7 @@ export default function LearnIntroScreen() {
           <View key={i} style={{
             height: 7, width: i === slideIdx ? 28 : 7,
             borderRadius: 4,
-            backgroundColor: i === slideIdx ? C.violet : C.dotInactive,
+            backgroundColor: i === slideIdx ? C.volt : C.dotInactive,
           }} />
         ))}
       </View>
@@ -340,7 +332,7 @@ export default function LearnIntroScreen() {
 
           {/* Label */}
           <AppText style={{
-            fontSize: 11, fontWeight: '800', color: C.violet,
+            fontSize: 11, fontWeight: '800', color: C.volt,
             textTransform: 'uppercase', letterSpacing: 1.8,
             marginBottom: 18, textAlign: 'center',
           }}>
@@ -353,12 +345,12 @@ export default function LearnIntroScreen() {
           {/* Highlight box */}
           {slide.highlight && (
             <View style={{
-              backgroundColor: C.violetHl, borderRadius: 14,
-              borderWidth: 1, borderColor: C.violetBorder,
+              backgroundColor: C.voltHl, borderRadius: 16,
+              borderWidth: 1, borderColor: C.voltBorder,
               paddingHorizontal: 22, paddingVertical: 14,
               alignItems: 'center', marginTop: 28,
             }}>
-              <AppText style={{ fontSize: 15, fontWeight: '700', color: C.violetLight, textAlign: 'center', lineHeight: 24 }}>
+              <AppText style={{ fontSize: 15, fontWeight: '700', color: C.volt, textAlign: 'center', lineHeight: 24 }}>
                 {slide.highlight}
               </AppText>
             </View>
@@ -368,23 +360,19 @@ export default function LearnIntroScreen() {
 
       {/* ── Bottom ── */}
       <View style={{ paddingHorizontal: 28, paddingBottom: 40, gap: 10 }}>
-        {audioLoading && <ActivityIndicator color={C.violet} style={{ marginBottom: 4 }} />}
+        {audioLoading && <ActivityIndicator color={C.volt} style={{ marginBottom: 4 }} />}
 
         <TouchableOpacity
           onPress={handleNext}
           style={{
-            backgroundColor: C.violet, borderRadius: 18, paddingVertical: 17,
+            backgroundColor: C.volt, borderRadius: 18, paddingVertical: 17,
             flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
-            ...Platform.select({
-              ios:     { shadowColor: C.violet, shadowOpacity: 0.4, shadowRadius: 16, shadowOffset: { width: 0, height: 6 } },
-              android: { elevation: 6 },
-            }),
           }}
         >
-          <AppText style={{ fontSize: 16, fontWeight: '800', color: '#FFF' }}>
+          <AppText style={{ fontSize: 16, fontWeight: '800', color: C.bg }}>
             {isLast ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Próximo' : 'Next')}
           </AppText>
-          <ArrowRight size={18} color="#FFF" weight="bold" />
+          <ArrowRight size={18} color={C.bg} weight="bold" />
         </TouchableOpacity>
       </View>
     </SafeAreaView>

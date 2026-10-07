@@ -27,12 +27,12 @@ const C = {
   navyLight: '#8A8494',
   ghost:     'rgba(22,19,31,0.06)',
   border:    'rgba(22,19,31,0.10)',
-  gold:      '#D97706',
-  goldBg:    '#FFFBEB',
+  gold:      '#D12A64',
+  goldBg:    '#FFEEF4',
   greenDark: '#08804A',
-  greenBg:   '#F8FFE0',
-  red:       '#DC2626',
-  redBg:     'rgba(220,38,38,0.07)',
+  greenBg:   '#E3F6EC',
+  red:       '#D12A64',
+  redBg:     'rgba(255,79,139,0.07)',
 };
 
 const shadow = Platform.select({
@@ -445,7 +445,7 @@ export default function LearnGrammarScreen() {
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
               <View style={{
                 paddingHorizontal: 10, paddingVertical: 4, borderRadius: 10,
-                backgroundColor: C.goldBg, borderWidth: 1, borderColor: 'rgba(217,119,6,0.2)',
+                backgroundColor: C.goldBg, borderWidth: 1, borderColor: 'rgba(255,79,139,0.2)',
               }}>
                 <AppText style={{ fontSize: 11, fontWeight: '700', color: C.gold }}>
                   {exercise ? TYPE_LABELS[exercise.type] : ''}
@@ -600,7 +600,7 @@ export default function LearnGrammarScreen() {
                     style={{
                       borderWidth: 1.5, borderColor: C.border, borderRadius: 14,
                       paddingHorizontal: 16, paddingVertical: 14,
-                      fontSize: 16, color: C.navy, backgroundColor: '#FAFAF9',
+                      fontSize: 16, color: C.navy, backgroundColor: '#FAF7F0',
                       minHeight: exercise.type === 'fill_gap' ? 56 : 110,
                       textAlignVertical: 'top',
                     }}
@@ -643,7 +643,7 @@ export default function LearnGrammarScreen() {
                     padding: 14, borderRadius: 14, marginBottom: 12,
                     backgroundColor: isCorrect ? C.greenBg : C.redBg,
                     borderWidth: 1,
-                    borderColor: isCorrect ? 'rgba(8,128,74,0.2)' : 'rgba(220,38,38,0.18)',
+                    borderColor: isCorrect ? 'rgba(8,128,74,0.2)' : 'rgba(255,79,139,0.18)',
                   }}>
                     {isCorrect
                       ? <CheckCircle size={20} color={C.greenDark} weight="fill" />
@@ -653,7 +653,7 @@ export default function LearnGrammarScreen() {
                       {isCorrect ? 'Correct!' : 'Not quite…'}
                     </AppText>
                     <View style={{
-                      backgroundColor: isCorrect ? 'rgba(8,128,74,0.12)' : 'rgba(220,38,38,0.10)',
+                      backgroundColor: isCorrect ? 'rgba(8,128,74,0.12)' : 'rgba(255,79,139,0.10)',
                       borderRadius: 20, paddingHorizontal: 8, paddingVertical: 3,
                     }}>
                       <AppText style={{ fontSize: 11, fontWeight: '800', color: isCorrect ? C.greenDark : C.red }}>

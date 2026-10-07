@@ -33,12 +33,12 @@ const C = {
   ghost:     'rgba(22,19,31,0.06)',
   border:    'rgba(22,19,31,0.10)',
   violet:    '#6B4BFF',
-  violetBg:  '#F1EEFF',
+  violetBg:  '#EFECFF',
   greenDark: '#08804A',
-  greenBg:   '#F8FFE0',
-  red:       '#DC2626',
-  redBg:     'rgba(220,38,38,0.07)',
-  gold:      '#F59E0B',
+  greenBg:   '#E3F6EC',
+  red:       '#D12A64',
+  redBg:     'rgba(255,79,139,0.07)',
+  gold:      '#D12A64',
 };
 
 const shadow = Platform.select({
@@ -121,9 +121,9 @@ function getPronStep(step: number): { phraseIdx: number; mode: ExerciseType } {
 // ── Score helpers ──────────────────────────────────────────────
 
 function scoreColor(s: number) {
-  if (s >= 85) return '#22C55E';
+  if (s >= 85) return '#08804A';
   if (s >= 70) return C.gold;
-  if (s >= 55) return '#FB923C';
+  if (s >= 55) return '#FF4F8B';
   return C.red;
 }
 function scoreLabel(s: number) {
@@ -583,7 +583,7 @@ export default function LearnPronunciationScreen() {
                   style={{
                     borderWidth: 1.5, borderColor: C.border, borderRadius: 14,
                     paddingHorizontal: 16, paddingVertical: 14,
-                    fontSize: 16, color: C.navy, backgroundColor: '#FAFAF9',
+                    fontSize: 16, color: C.navy, backgroundColor: '#FAF7F0',
                     minHeight: 90, textAlignVertical: 'top',
                   }}
                   autoCorrect={false}
@@ -643,7 +643,7 @@ export default function LearnPronunciationScreen() {
                                 <View key={i} style={{
                                   backgroundColor: C.redBg, borderRadius: 8,
                                   paddingHorizontal: 9, paddingVertical: 4,
-                                  borderWidth: 1, borderColor: 'rgba(220,38,38,0.18)',
+                                  borderWidth: 1, borderColor: 'rgba(255,79,139,0.18)',
                                 }}>
                                   <AppText style={{ fontSize: 13, color: C.red, fontWeight: '700' }}>{w.word}</AppText>
                                 </View>
@@ -663,7 +663,7 @@ export default function LearnPronunciationScreen() {
                         padding: 12, borderRadius: 12, marginBottom: 10,
                         backgroundColor: listenWriteCorrect ? C.greenBg : C.redBg,
                         borderWidth: 1,
-                        borderColor: listenWriteCorrect ? 'rgba(8,128,74,0.2)' : 'rgba(220,38,38,0.18)',
+                        borderColor: listenWriteCorrect ? 'rgba(8,128,74,0.2)' : 'rgba(255,79,139,0.18)',
                       }}>
                         {listenWriteCorrect
                           ? <CheckCircle size={18} color={C.greenDark} weight="fill" />
@@ -738,7 +738,7 @@ export default function LearnPronunciationScreen() {
             <Pressable
               onPressOut={stopRecording}
               style={{
-                backgroundColor: '#DC2626', borderRadius: 16, paddingVertical: 15,
+                backgroundColor: '#D12A64', borderRadius: 16, paddingVertical: 15,
                 flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
               }}
             >

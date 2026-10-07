@@ -37,7 +37,7 @@ import { getLevelAccent } from '@/lib/levelColors';
 // Nomes textWhite/textMuted/textDim mantidos pra evitar refactor massivo,
 // mas os VALORES agora são escuros (legado naming).
 const C = {
-  stage:       '#FCFAF5',  // papel bem claro
+  stage:       '#FAF7F0',  // papel bem claro
   panel:       '#FFFFFF',
   navyMid:     '#3A3546',
   navyLight:   'rgba(22,19,31,0.55)',
@@ -47,8 +47,8 @@ const C = {
   textDim:     '#8A8494',
   greenAccent: '#DCFF4A',
   greenDark:   '#08804A',
-  gold:        '#D97706',
-  red:         '#DC2626',
+  gold:        '#D12A64',
+  red:         '#D12A64',
 };
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -210,7 +210,7 @@ function CallListItem({ call, isPt, onPress, onDelete }: {
           alignItems: 'center', justifyContent: 'center',
         }}
       >
-        <Trash size={16} color="rgba(220,38,38,0.7)" weight="regular" />
+        <Trash size={16} color="rgba(255,79,139,0.7)" weight="regular" />
       </TouchableOpacity>
     </View>
   );

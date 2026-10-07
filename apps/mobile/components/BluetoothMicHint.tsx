@@ -28,7 +28,7 @@ export default function BluetoothMicHint({ level = 'Novice', active = true, styl
 
   return (
     <View style={[styles.container, style]}>
-      <Headphones size={18} color="#B45309" weight="fill" />
+      <Headphones size={18} color="#D12A64" weight="fill" />
       <Text style={styles.text}>{message}</Text>
     </View>
   );
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    backgroundColor: '#FEF3C7',
+    backgroundColor: '#FFEEF4',
     borderColor: '#FCD34D',
     borderWidth: 1,
     borderRadius: 12,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 13,
     lineHeight: 18,
-    color: '#92400E',
+    color: '#D12A64',
     fontWeight: '500',
   },
 });

@@ -41,6 +41,7 @@ import { useTotalXP } from '@/hooks/useTotalXP';
 import { AppText } from '@/components/ui/Text';
 import { TranslatableText } from '@/components/ui/TranslatableText';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
+import { QueizyWave } from '@/components/ui/QueizyWave';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
 import {
@@ -79,14 +80,16 @@ const C = {
   navyLight: '#8A8494',
   ghost:     'rgba(22,19,31,0.06)',
   border:    'rgba(22,19,31,0.10)',
-  gold:      '#D97706',
-  goldBg:    '#FFFBEB',
+  // Grammar usa Tinta sobre Volt claro; Speaking usa violeta. Erro = rosa
+  // escuro (a paleta não tem vermelho).
+  gold:      '#16131F',
+  goldBg:    '#F1FFB8',
   green:     '#08804A',
-  greenBg:   '#F8FFE0',
-  red:       '#DC2626',
-  redBg:     'rgba(220,38,38,0.07)',
+  greenBg:   '#E3F6EC',
+  red:       '#D12A64',
+  redBg:     'rgba(255,79,139,0.08)',
   violet:    '#6B4BFF',
-  violetBg:  '#F1EEFF',
+  violetBg:  '#EFECFF',
 };
 
 const shadow = Platform.select({
@@ -1153,11 +1156,11 @@ export default function LearnSessionScreen() {
             return (
               <View style={{
                 width: '100%', maxWidth: 360,
-                backgroundColor: 'rgba(217,119,6,0.08)',
-                borderWidth: 1, borderColor: 'rgba(217,119,6,0.25)',
+                backgroundColor: 'rgba(255,79,139,0.08)',
+                borderWidth: 1, borderColor: 'rgba(255,79,139,0.25)',
                 borderRadius: 16, padding: 18, marginBottom: 20, alignItems: 'center',
               }}>
-                <AppText style={{ fontSize: 14, color: '#92400E', fontWeight: '700', textAlign: 'center', marginBottom: 6 }}>
+                <AppText style={{ fontSize: 14, color: '#D12A64', fontWeight: '700', textAlign: 'center', marginBottom: 6 }}>
                   {isPortuguese
                     ? `Você fez ${c.score}%. Precisa de ${c.threshold}% pra desbloquear ${nextActivityLabel}.`
                     : `You scored ${c.score}%. Need ${c.threshold}% to unlock ${nextActivityLabel}.`}
@@ -1171,7 +1174,7 @@ export default function LearnSessionScreen() {
                     });
                   }}
                   style={{
-                    marginTop: 10, backgroundColor: '#D97706',
+                    marginTop: 10, backgroundColor: '#D12A64',
                     borderRadius: 12, paddingVertical: 11, paddingHorizontal: 22,
                   }}
                 >
@@ -1282,10 +1285,10 @@ export default function LearnSessionScreen() {
         </TouchableOpacity>
       </View>
 
-      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FCFAF5' }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FAF7F0' }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <ScrollView
           ref={scrollRef}
-          style={{ flex: 1, backgroundColor: '#FCFAF5' }}
+          style={{ flex: 1, backgroundColor: '#FAF7F0' }}
           contentContainerStyle={{
             padding: 20,
             // Espaco extra no fim quando o footer (resultado / botao Verificar)
@@ -1314,9 +1317,7 @@ export default function LearnSessionScreen() {
                 {stepIdx + 1} / {totalSteps}
               </AppText>
             </View>
-            <View style={{ height: 8, backgroundColor: C.ghost, borderRadius: 4, overflow: 'hidden' }}>
-              <View style={{ height: 8, width: `${progress * 100}%` as `${number}%`, backgroundColor: accent, borderRadius: 4 }} />
-            </View>
+            <QueizyWave progress={progress} height={14} strokeWidth={4} />
           </View>
 
           {/* ── GRAMMAR (full-screen, no card wrapper) ── */}
@@ -1535,7 +1536,7 @@ export default function LearnSessionScreen() {
                     let trailIcon   = selected ? <CheckCircle size={18} color={accent} weight="fill" /> : null;
                     if (gStatus === 'submitted') {
                       if (isCorrectOpt)                        { borderColor = C.green; bgColor = 'rgba(8,128,74,0.08)';    dotBg = C.green;  dotText = '#FFF'; trailIcon = <CheckCircle size={18} color={C.green} weight="fill" />; }
-                      else if (selected && !isCorrectOpt)      { borderColor = C.red;   bgColor = 'rgba(220,38,38,0.06)';  dotBg = C.red;    dotText = '#FFF'; trailIcon = <XCircle    size={18} color={C.red}   weight="fill" />; }
+                      else if (selected && !isCorrectOpt)      { borderColor = C.red;   bgColor = 'rgba(255,79,139,0.06)';  dotBg = C.red;    dotText = '#FFF'; trailIcon = <XCircle    size={18} color={C.red}   weight="fill" />; }
                       else                                     { borderColor = C.border; bgColor = C.card; dotBg = C.ghost; dotText = C.navyMid; trailIcon = null; }
                     }
                     return (
@@ -1700,7 +1701,7 @@ export default function LearnSessionScreen() {
                     style={{
                       borderWidth: 1.5, borderColor: C.border, borderRadius: 14,
                       paddingHorizontal: 16, paddingVertical: 14,
-                      fontSize: 16, color: C.navy, backgroundColor: '#FAFAF9',
+                      fontSize: 16, color: C.navy, backgroundColor: '#FAF7F0',
                       minHeight: 110,
                       textAlignVertical: 'top',
                     }}
@@ -1758,7 +1759,7 @@ export default function LearnSessionScreen() {
               {currentStep.phrase.type === 'repeat'
                 && pronStatus !== 'result' && pronStatus !== 'error'
                 && pronStatus !== 'loading_audio' && pronStatus !== 'assessing' && (() => {
-                  const bg = pronStatus === 'recording' ? '#DC2626' : '#6B4BFF';
+                  const bg = pronStatus === 'recording' ? '#D12A64' : '#6B4BFF';
                   const isRec = pronStatus === 'recording';
                   return (
                     <View style={{ alignItems: 'center', marginTop: 420, marginBottom: 24 }}>
@@ -1770,7 +1771,7 @@ export default function LearnSessionScreen() {
                             pointerEvents="none"
                             style={{
                               position: 'absolute', width: 120, height: 120, borderRadius: 60,
-                              borderWidth: 2, borderColor: '#DC2626',
+                              borderWidth: 2, borderColor: '#D12A64',
                               opacity: micRingAnim.interpolate({
                                 inputRange: [0, delay, delay + 0.4, 1],
                                 outputRange: [0, 0.55, 0, 0],
@@ -1937,7 +1938,7 @@ export default function LearnSessionScreen() {
                     style={{
                       borderWidth: 1.5, borderColor: C.border, borderRadius: 14,
                       paddingHorizontal: 16, paddingVertical: 14,
-                      fontSize: 16, color: C.navy, backgroundColor: '#FAFAF9',
+                      fontSize: 16, color: C.navy, backgroundColor: '#FAF7F0',
                       minHeight: 80, textAlignVertical: 'top', marginBottom: 16,
                     }}
                     autoCorrect={false} autoCapitalize="none" multiline
@@ -1976,7 +1977,7 @@ export default function LearnSessionScreen() {
         <View style={{
           paddingHorizontal: 20, paddingTop: 12,
           paddingBottom: insets.bottom + 12,
-          backgroundColor: '#FCFAF5',
+          backgroundColor: '#FAF7F0',
         }}>
           {/* ── Grammar ── */}
           {currentStep.kind === 'grammar' && gStatus === 'answering' && (() => {
@@ -1993,8 +1994,8 @@ export default function LearnSessionScreen() {
                   </View>
                 )}
                 {helpExplanation && (
-                  <View style={{ backgroundColor: '#EEF2FF', borderRadius: 12, padding: 12, borderWidth: 1, borderColor: '#C7D2FE' }}>
-                    <AppText style={{ fontSize: 14, color: '#3730A3', lineHeight: 20 }}>{helpExplanation}</AppText>
+                  <View style={{ backgroundColor: '#EFECFF', borderRadius: 12, padding: 12, borderWidth: 1, borderColor: '#D6CCFF' }}>
+                    <AppText style={{ fontSize: 14, color: '#6B4BFF', lineHeight: 20 }}>{helpExplanation}</AppText>
                   </View>
                 )}
                 <View style={{ flexDirection: 'row', gap: 14, alignItems: 'center' }}>
@@ -2046,8 +2047,8 @@ export default function LearnSessionScreen() {
                     disabled={helpLoading}
                     style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, opacity: helpLoading ? 0.5 : 1 }}
                   >
-                    <BookOpen size={16} color="#4F46E5" weight="fill" />
-                    <AppText style={{ fontSize: 13, color: '#4F46E5', fontWeight: '700' }}>
+                    <BookOpen size={16} color="#6B4BFF" weight="fill" />
+                    <AppText style={{ fontSize: 13, color: '#6B4BFF', fontWeight: '700' }}>
                       {helpLoading
                         ? (isPortuguese ? 'Carregando...' : 'Loading...')
                         : helpExplanation
@@ -2109,7 +2110,7 @@ export default function LearnSessionScreen() {
       {currentStep.kind === 'grammar' && gStatus === 'submitted' && isCorrect !== null && (
         <Animated.View style={{
           position: 'absolute', bottom: 0, left: 0, right: 0,
-          backgroundColor: isCorrect ? '#EDFFD0' : '#FFF0F0',
+          backgroundColor: isCorrect ? '#F1FFB8' : '#FFEEF4',
           borderTopLeftRadius: 24, borderTopRightRadius: 24,
           paddingHorizontal: 24, paddingTop: 20,
           paddingBottom: insets.bottom + 20,
@@ -2125,7 +2126,7 @@ export default function LearnSessionScreen() {
                 ? (isPortuguese ? 'Correto!' : 'Correct!')
                 : (isPortuguese ? 'Quase lá…' : 'Almost there…')}
             </AppText>
-            <View style={{ backgroundColor: isCorrect ? 'rgba(8,128,74,0.12)' : 'rgba(220,38,38,0.10)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 4 }}>
+            <View style={{ backgroundColor: isCorrect ? 'rgba(8,128,74,0.12)' : 'rgba(255,79,139,0.10)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 4 }}>
               <AppText style={{ fontSize: 12, fontWeight: '800', color: isCorrect ? C.green : C.red }}>
                 +{!isCorrect ? 0 : currentStep.exercise.type === 'short_write' ? 8 : 10} XP
               </AppText>
@@ -2134,7 +2135,7 @@ export default function LearnSessionScreen() {
 
           {/* Correct answer (wrong only) */}
           {!isCorrect && (
-            <View style={{ padding: 12, backgroundColor: 'rgba(220,38,38,0.07)', borderRadius: 12, marginBottom: 10 }}>
+            <View style={{ padding: 12, backgroundColor: 'rgba(255,79,139,0.07)', borderRadius: 12, marginBottom: 10 }}>
               <AppText style={{ fontSize: 11, fontWeight: '700', color: C.red, textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
                 {isPortuguese ? 'Resposta correta' : 'Correct answer'}
               </AppText>
@@ -2161,7 +2162,7 @@ export default function LearnSessionScreen() {
             <AppText style={{ fontSize: 11, fontWeight: '700', color: isCorrect ? C.green : C.red, textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
               {isPortuguese ? 'Por quê' : 'Why'}
             </AppText>
-            <AppText style={{ fontSize: 13, color: isCorrect ? '#1a3a00' : '#7B2020', lineHeight: 19 }}>
+            <AppText style={{ fontSize: 13, color: isCorrect ? '#08804A' : '#D12A64', lineHeight: 19 }}>
               {currentStep.exercise.explanation}
             </AppText>
           </View>
@@ -2173,7 +2174,7 @@ export default function LearnSessionScreen() {
               activeOpacity={0.8}
               style={{
                 flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6,
-                borderWidth: 1.5, borderColor: 'rgba(220,38,38,0.35)',
+                borderWidth: 1.5, borderColor: 'rgba(255,79,139,0.35)',
                 borderRadius: 12, paddingVertical: 11, marginBottom: 16,
               }}
             >
@@ -2206,11 +2207,11 @@ export default function LearnSessionScreen() {
         const fb = pronFeedback;
         const isCorrectState = fb.state === 'correct';
         const isCloseState   = fb.state === 'close';
-        const panelBg    = isCorrectState ? '#EDFFD0' : isCloseState ? '#FFFBE6' : '#FFF0F0';
-        const panelBorder = isCorrectState ? 'rgba(220,255,74,0.4)' : isCloseState ? 'rgba(245,158,11,0.4)' : 'rgba(220,38,38,0.25)';
-        const textColor   = isCorrectState ? C.green : isCloseState ? '#92400E' : C.red;
-        const btnColor    = isCorrectState ? C.green : isCloseState ? '#D97706' : C.red;
-        const xpBg        = isCorrectState ? 'rgba(8,128,74,0.12)' : isCloseState ? 'rgba(217,119,6,0.12)' : 'rgba(220,38,38,0.10)';
+        const panelBg    = isCorrectState ? '#E3F6EC' : isCloseState ? '#EFECFF' : '#FFEEF4';
+        const panelBorder = isCorrectState ? 'rgba(8,128,74,0.25)' : isCloseState ? 'rgba(107,75,255,0.30)' : 'rgba(255,79,139,0.30)';
+        const textColor   = isCorrectState ? C.green : isCloseState ? C.violet : C.red;
+        const btnColor    = isCorrectState ? C.green : isCloseState ? C.violet : C.red;
+        const xpBg        = isCorrectState ? 'rgba(8,128,74,0.12)' : isCloseState ? 'rgba(107,75,255,0.12)' : 'rgba(255,79,139,0.12)';
         const title       = isCorrectState
           ? (isPortuguese ? 'Correto!' : 'Correct!')
           : isCloseState
@@ -2231,7 +2232,7 @@ export default function LearnSessionScreen() {
               {isCorrectState
                 ? <CheckCircle size={24} color={C.green} weight="fill" />
                 : isCloseState
-                ? <Play size={24} color="#D97706" weight="fill" />
+                ? <Play size={24} color={C.violet} weight="fill" />
                 : <XCircle size={24} color={C.red} weight="fill" />}
               <AppText style={{ fontSize: 17, fontWeight: '800', color: textColor, flex: 1 }}>{title}</AppText>
               <View style={{ backgroundColor: xpBg, borderRadius: 20, paddingHorizontal: 10, paddingVertical: 4 }}>
@@ -2241,14 +2242,14 @@ export default function LearnSessionScreen() {
 
             {/* Feedback message */}
             <View style={{ padding: 12, backgroundColor: 'rgba(22,19,31,0.06)', borderRadius: 12, marginBottom: 14 }}>
-              <AppText style={{ fontSize: 13, color: isCorrectState ? '#1a3a00' : isCloseState ? '#78350F' : '#7B2020', lineHeight: 19 }}>
+              <AppText style={{ fontSize: 13, color: isCorrectState ? '#08804A' : isCloseState ? '#6B4BFF' : '#D12A64', lineHeight: 19 }}>
                 {fb.message}
               </AppText>
             </View>
 
             {/* listen_write: show correct answer when wrong */}
             {currentStep.phrase.type === 'listen_write' && !isCorrectState && (
-              <View style={{ padding: 12, backgroundColor: 'rgba(220,38,38,0.07)', borderRadius: 12, marginBottom: 14 }}>
+              <View style={{ padding: 12, backgroundColor: 'rgba(255,79,139,0.07)', borderRadius: 12, marginBottom: 14 }}>
                 <AppText style={{ fontSize: 11, fontWeight: '700', color: C.red, textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
                   {isPortuguese ? 'Resposta correta' : 'Correct answer'}
                 </AppText>
@@ -2344,7 +2345,7 @@ export default function LearnSessionScreen() {
                   onPress={() => saveExplainRating(-1)}
                   style={{
                     width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center',
-                    backgroundColor: explainRating === -1 ? 'rgba(220,38,38,0.12)' : 'rgba(22,19,31,0.06)',
+                    backgroundColor: explainRating === -1 ? 'rgba(255,79,139,0.12)' : 'rgba(22,19,31,0.06)',
                   }}
                 >
                   <ThumbsDown size={18} color={explainRating === -1 ? C.red : 'rgba(22,19,31,0.35)'} weight={explainRating === -1 ? 'fill' : 'regular'} />

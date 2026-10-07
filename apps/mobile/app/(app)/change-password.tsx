@@ -26,8 +26,8 @@ const C = {
   green:     '#DCFF4A',
   greenDark: '#08804A',
   greenBg:   'rgba(220,255,74,0.12)',
-  error:     '#DC2626',
-  errorBg:   'rgba(220,38,38,0.08)',
+  error:     '#D12A64',
+  errorBg:   'rgba(255,79,139,0.08)',
   accent:    '#6B4BFF',          // hero icon tint
   accentBg:  'rgba(107,75,255,0.10)',
 };
