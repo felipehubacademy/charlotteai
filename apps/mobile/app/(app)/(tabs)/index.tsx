@@ -13,6 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
 import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
+import Svg, { Path } from 'react-native-svg';
 import { systemIsPt } from '@/lib/systemLang';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
@@ -552,21 +553,24 @@ export default function HomeTab() {
           {heroTitle}
         </AppText>
 
-        {/* Fala da Charlotte — mensagem de chat: avatar + balão com o rabinho
-            apontando para ela e o nome em cima. */}
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, marginTop: 14 }}>
+        {/* Fala da Charlotte — balão no formato do logo: largura de balão
+            (2–3 linhas) e rabinho triangular embaixo à esquerda, apontando
+            para o avatar dela. */}
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8, marginTop: 14 }}>
           <Image
             source={avatarSrc}
             style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: C.navy }}
             contentFit="cover"
             accessibilityLabel="Charlotte"
           />
-          {/* Balão do tamanho da fala (não ocupa a largura toda) */}
-          <View style={{ flexShrink: 1, alignItems: 'flex-start', marginRight: 36 }}>
+          <View style={{ maxWidth: '72%', marginBottom: 14 }}>
             <View style={{
-              backgroundColor: T.card, borderRadius: 16, borderBottomLeftRadius: 4,
-              paddingHorizontal: 12, paddingVertical: 9,
-              borderWidth: 1, borderColor: C.navyGhost,
+              backgroundColor: T.card, borderRadius: 16,
+              paddingHorizontal: 13, paddingVertical: 10,
+              ...Platform.select({
+                ios:     { shadowColor: 'rgba(22,19,31,0.10)', shadowOpacity: 1, shadowRadius: 10, shadowOffset: { width: 0, height: 3 } },
+                android: { elevation: 2 },
+              }),
             }}>
               <AppText style={{ fontSize: 11, fontWeight: '800', color: C.navy, marginBottom: 2 }}>
                 Charlotte
@@ -579,6 +583,9 @@ export default function HomeTab() {
                 </AppText>
               )}
             </View>
+            <Svg width={18} height={13} viewBox="0 0 18 13" style={{ position: 'absolute', left: 6, bottom: -12 }}>
+              <Path d="M17 0 L0 13 L6 0 Z" fill={T.card} />
+            </Svg>
           </View>
         </View>
 
