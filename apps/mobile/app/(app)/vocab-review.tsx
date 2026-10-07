@@ -505,14 +505,20 @@ export default function VocabReview() {
 
         {/* Recall prompt — acima do card, some depois de virar */}
         {!flipped && (
-          <AppText style={{
-            fontSize: 13, color: C.navyLight, textAlign: 'center',
-            marginBottom: 14, letterSpacing: 0.2, lineHeight: 18,
-          }}>
-            {isPt
-              ? 'Você lembra o significado desta palavra?'
-              : 'Do you remember the meaning of this word?'}
-          </AppText>
+          // Pergunta como fala da Charlotte (balão com o rabinho do logo)
+          <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'center', gap: 8, marginBottom: 18 }}>
+            <CharlotteAvatar size="sm" />
+            <View style={{ flexShrink: 1, marginBottom: 12 }}>
+              <View style={{ backgroundColor: C.card, borderRadius: 16, paddingHorizontal: 14, paddingVertical: 10, ...cardShadow }}>
+                <AppText display style={{ fontSize: 16, fontWeight: '800', color: C.navy, lineHeight: 21 }}>
+                  {isPt ? 'Lembra o que significa?' : 'Remember what it means?'}
+                </AppText>
+              </View>
+              <Svg width={16} height={11} viewBox="0 0 16 11" style={{ position: 'absolute', left: 8, bottom: -10 }}>
+                <Path d="M15 0 L0 11 L5 0 Z" fill={C.card} />
+              </Svg>
+            </View>
+          </View>
         )}
 
         <Animated.View style={{ width: '100%', opacity: opacAnim, ...(Platform.OS === 'ios' ? { transform: [{ translateY: slideAnim }] } : {}) }}>
