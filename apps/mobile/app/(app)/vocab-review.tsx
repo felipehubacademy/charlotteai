@@ -22,7 +22,7 @@ import {
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import {
-  ArrowLeft, Trophy, Star, SpeakerHigh,
+  ArrowLeft, SpeakerHigh,
 } from 'phosphor-react-native';
 import * as Haptics from 'expo-haptics';
 import { AppText } from '@/components/ui/Text';
@@ -34,7 +34,9 @@ import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { soundEngine } from '@/lib/soundEngine';
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import Constants from 'expo-constants';
-import { getLevelAccent, getLevelAccentBg } from '@/lib/levelColors';
+import { QueizyWave } from '@/components/ui/QueizyWave';
+import { MarkerText } from '@/components/ui/MarkerText';
+import Svg, { Path } from 'react-native-svg';
 
 const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -53,6 +55,9 @@ const C = {
   goldBg:   '#FFFBEB',
   green:    '#08804A',
   greenBg:  'rgba(8,128,74,0.09)',
+  volt:     '#DCFF4A',
+  pink:     '#D12A64',
+  pinkBg:   'rgba(255,79,139,0.10)',
 };
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -62,12 +67,6 @@ const CATEGORY_LABELS: Record<string, string> = {
   grammar:      'Grammar',
 };
 
-const CATEGORY_COLORS: Record<string, { color: string; bg: string }> = {
-  word:         { color: '#6B4BFF', bg: '#F1EEFF' },
-  idiom:        { color: '#0F766E', bg: '#F0FDFA' },
-  phrasal_verb: { color: '#D97706', bg: '#FFFBEB' },
-  grammar:      { color: '#DC2626', bg: '#FEF2F2' },
-};
 
 const cardShadow = Platform.select({
   ios:     { shadowColor: 'rgba(22,19,31,0.14)', shadowOpacity: 1, shadowRadius: 24, shadowOffset: { width: 0, height: 8 } },
@@ -97,8 +96,6 @@ export default function VocabReview() {
   const level    = profile?.charlotte_level ?? 'Inter';
   const isPt     = systemIsPt; // suporte/chrome: idioma do device
   const insets   = useSafeAreaInsets();
-  const levelAccent   = getLevelAccent(level);
-  const levelAccentBg = getLevelAccentBg(level);
 
 
   const [cards,    setCards]    = useState<VocabCard[]>([]);
@@ -111,7 +108,8 @@ export default function VocabReview() {
   useEffect(() => { soundEngine.resetStreak(); }, []);
   const [ratings,  setRatings]  = useState<SRRating[]>([]);
   const [totalXP,  setTotalXP]  = useState(0);
-  const [ttsLoading, setTtsLoading] = useState(false);
+  const [ttsLoading, setTtsLoading] = useState<string | null>(null);
+  const [playingKey, setPlayingKey] = useState<string | null>(null);
   const showSRInfo = () => Alert.alert(
     isPt ? 'Como funciona?' : 'How does this work?',
     isPt
@@ -171,21 +169,37 @@ export default function VocabReview() {
   }, [flipped, flipAnim, btnAnim, btnOpac]);
 
   // ── TTS ─────────────────────────────────────────────────────────────────────
-  const handleTts = useCallback(async () => {
-    if (!current?.term || ttsLoading) return;
-    setTtsLoading(true);
+  const handleTts = useCallback(async (key: string, text?: string) => {
+    const t = (text ?? current?.term ?? '').trim();
+    if (!t || ttsLoading) return;
+    setTtsLoading(key);
     try {
-      const res = await fetch(`${API_BASE}/api/tts-cached?term=${encodeURIComponent(current.term)}`);
+      const res = await fetch(`${API_BASE}/api/tts-cached?term=${encodeURIComponent(t)}`);
       if (!res.ok) throw new Error('TTS failed');
       const { url } = await res.json();
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
       try { playerRef.current?.remove(); } catch { /* ignore */ }
       const player = createAudioPlayer({ uri: url });
       playerRef.current = player;
+      setPlayingKey(key);
+      player.addListener('playbackStatusUpdate', (st: any) => {
+        if (st?.didJustFinish) setPlayingKey(k => (k === key ? null : k));
+      });
       player.play();
-    } catch { /* silencioso */ }
-    finally { setTtsLoading(false); }
+    } catch { setPlayingKey(null); }
+    finally { setTtsLoading(null); }
   }, [current?.term, ttsLoading]);
+
+  // Quando a palavra volta, por nota (mostrado em cada botão).
+  const whenLabel = (rating: SRRating): string => {
+    if (!current) return '';
+    const n = calcNextReview(rating, {
+      easeFactor: current.ease_factor ?? 2.5, intervalDays: current.interval_days ?? 0, repetitions: current.repetitions ?? 0,
+    });
+    const d = n.intervalDays;
+    if (d <= 1) return isPt ? 'amanhã' : 'tomorrow';
+    return isPt ? `${d} dias` : `${d} days`;
+  };
 
   // ── Rate & advance ──────────────────────────────────────────────────────────
   const handleRate = useCallback(async (rating: SRRating) => {
@@ -291,7 +305,7 @@ export default function VocabReview() {
   if (loading) {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator color={levelAccent} size="large" />
+        <ActivityIndicator color={C.navy} size="large" />
       </SafeAreaView>
     );
   }
@@ -326,84 +340,72 @@ export default function VocabReview() {
 
   // ── Summary ─────────────────────────────────────────────────────────────────
   if (phase === 'summary') {
+    const closing = hardCount === 0
+      ? (isPt ? 'Perfeito! Você lembrou de todas hoje.' : 'Perfect! You nailed every word today.')
+      : hardCount <= Math.floor(cards.length / 2)
+        ? (isPt ? `Mandou bem! As ${hardCount} ${hardCount === 1 ? 'difícil volta' : 'difíceis voltam'} amanhã.` : `Great work! The ${hardCount} hard one${hardCount > 1 ? 's come' : ' comes'} back tomorrow.`)
+        : (isPt ? 'Essas pediram mais atenção. Amanhã eu trago de volta!' : "These need more practice. I'll bring them back tomorrow!");
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
         <ScrollView contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 20, paddingBottom: insets.bottom + 32 }}>
-          <View style={{ alignItems: 'center', paddingTop: 32, paddingBottom: 8 }}>
-            <View style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: levelAccentBg, justifyContent: 'center', alignItems: 'center', marginBottom: 18 }}>
-              <Trophy size={36} color={levelAccent} weight="fill" />
-            </View>
-            <AppText display style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
+          <View style={{ paddingTop: 36, alignItems: 'center' }}>
+            <MarkerText display style={{ fontSize: 32, fontWeight: '800', color: C.navy, lineHeight: 38, textAlign: 'center' }}>
               {isPt ? 'Revisão concluída!' : 'Review complete!'}
-            </AppText>
-            <AppText style={{ fontSize: 15, color: C.navyMid, marginTop: 6, textAlign: 'center' }}>
+            </MarkerText>
+            <AppText style={{ fontSize: 15, color: C.navyMid, marginTop: 8, textAlign: 'center' }}>
               {isPt
-                ? `${cards.length} ${cards.length === 1 ? 'palavra revisada' : 'palavras revisadas'}`
-                : `${cards.length} ${cards.length === 1 ? 'word reviewed' : 'words reviewed'}`}
+                ? `${cards.length} ${cards.length === 1 ? 'palavra revisada' : 'palavras revisadas'} · +${totalXP} XP`
+                : `${cards.length} ${cards.length === 1 ? 'word reviewed' : 'words reviewed'} · +${totalXP} XP`}
             </AppText>
           </View>
 
-          {/* XP */}
-          <View style={{ backgroundColor: C.card, borderRadius: 18, padding: 20, marginTop: 20, ...cardShadow, alignItems: 'center' }}>
-            <AppText style={{ fontSize: 40, fontWeight: '800', color: levelAccent }}>+{totalXP} XP</AppText>
-            <AppText style={{ fontSize: 13, color: C.navyMid, marginTop: 2 }}>
-              {isPt ? 'ganhos nesta sessão' : 'earned this session'}
-            </AppText>
+          {/* Onda completa: queizy → crazy */}
+          <View style={{ marginTop: 24 }}>
+            <QueizyWave progress={1} height={16} strokeWidth={5} />
           </View>
 
-          {/* Stats */}
-          <View style={{ flexDirection: 'row', gap: 10, marginTop: 14 }}>
+          {/* Contagem por nota */}
+          <View style={{ flexDirection: 'row', gap: 10, marginTop: 22 }}>
             {[
-              { label: isPt ? 'Fácil' : 'Easy', value: easyCount, color: C.green, bg: C.greenBg },
-              { label: 'Ok',                     value: okCount,   color: C.gold,  bg: C.goldBg  },
-              { label: isPt ? 'Difícil' : 'Hard', value: hardCount, color: C.red,  bg: C.redBg   },
-            ].map(s => (
-              <View key={s.label} style={{ flex: 1, backgroundColor: s.bg, borderRadius: 14, padding: 14, alignItems: 'center' }}>
-                <AppText display style={{ fontSize: 28, fontWeight: '800', color: s.color }}>{s.value}</AppText>
-                <AppText style={{ fontSize: 12, color: s.color, marginTop: 2 }}>{s.label}</AppText>
+              { label: isPt ? 'Fácil' : 'Easy',     value: easyCount, color: C.navy, bg: C.volt },
+              { label: 'Ok',                         value: okCount,   color: C.navy, bg: C.card },
+              { label: isPt ? 'Difícil' : 'Hard',   value: hardCount, color: C.pink, bg: C.pinkBg },
+            ].map(s2 => (
+              <View key={s2.label} style={{ flex: 1, backgroundColor: s2.bg, borderRadius: 16, paddingVertical: 14, alignItems: 'center', borderWidth: s2.bg === C.card ? 1 : 0, borderColor: C.border }}>
+                <AppText display style={{ fontSize: 28, fontWeight: '800', color: s2.color }}>{s2.value}</AppText>
+                <AppText style={{ fontSize: 12, fontWeight: '700', color: s2.color, marginTop: 2 }}>{s2.label}</AppText>
               </View>
             ))}
           </View>
 
-          {/* Next review */}
           {nextStr ? (
-            <View style={{ backgroundColor: C.card, borderRadius: 14, padding: 16, marginTop: 14, flexDirection: 'row', alignItems: 'center', gap: 12, ...cardShadow }}>
-              <View style={{ width: 40, height: 40, borderRadius: 20, backgroundColor: levelAccentBg, justifyContent: 'center', alignItems: 'center' }}>
-                <Star size={20} color={levelAccent} weight="fill" />
-              </View>
-              <View style={{ flex: 1 }}>
-                <AppText style={{ fontSize: 13, color: C.navyMid }}>{isPt ? 'Próxima revisão' : 'Next review'}</AppText>
-                <AppText style={{ fontSize: 16, fontWeight: '700', color: C.navy, marginTop: 2 }}>{nextStr}</AppText>
-              </View>
-            </View>
+            <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center', marginTop: 14 }}>
+              {isPt ? `Próxima revisão: ${nextStr}` : `Next review: ${nextStr}`}
+            </AppText>
           ) : null}
 
-          {/* Charlotte message */}
-          <View style={{ backgroundColor: levelAccentBg, borderRadius: 14, padding: 16, marginTop: 14, flexDirection: 'row', gap: 12, alignItems: 'flex-start' }}>
+          {/* Balão da Charlotte */}
+          <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8, marginTop: 26 }}>
             <CharlotteAvatar size="sm" />
-            <AppText style={{ flex: 1, fontSize: 14, color: C.navy, lineHeight: 21 }}>
-              {hardCount === 0
-                ? (isPt ? 'Perfeito! Você dominou todas as palavras hoje.' : 'Perfect! You nailed every word today.')
-                : hardCount <= Math.floor(cards.length / 2)
-                  ? (isPt ? `Ótimo trabalho! As ${hardCount} difíceis voltarão em breve.` : `Great work! The ${hardCount} hard word${hardCount > 1 ? 's' : ''} will come back soon.`)
-                  : (isPt ? 'Essas palavras precisam de mais atenção — vou trazê-las de volta amanhã!' : "These words need more practice — I'll bring them back tomorrow!")}
-            </AppText>
+            <View style={{ flexShrink: 1, marginBottom: 14 }}>
+              <View style={{ backgroundColor: C.card, borderRadius: 18, paddingHorizontal: 14, paddingVertical: 11, ...cardShadow }}>
+                <AppText style={{ fontSize: 14, color: C.navy, lineHeight: 20 }}>{closing}</AppText>
+              </View>
+              <Svg width={18} height={12} viewBox="0 0 18 12" style={{ position: 'absolute', left: 8, bottom: -11 }}>
+                <Path d="M17 0 L0 12 L6 0 Z" fill={C.card} />
+              </Svg>
+            </View>
           </View>
 
-          {/* Buttons */}
+          <View style={{ flex: 1 }} />
           <TouchableOpacity
-            onPress={() => router.replace('/(app)')}
-            style={{
-              marginTop: 24, backgroundColor: C.navy, borderRadius: 16,
-              paddingVertical: 16, alignItems: 'center',
-              ...Platform.select({ ios: { shadowColor: C.navy, shadowOpacity: 0.2, shadowRadius: 8, shadowOffset: { width: 0, height: 4 } }, android: { elevation: 4 } }),
-            }}
+            onPress={() => router.back()}
+            style={{ marginTop: 28, backgroundColor: C.volt, borderRadius: 16, paddingVertical: 16, alignItems: 'center' }}
           >
-            <AppText style={{ color: '#FFF', fontSize: 16, fontWeight: '800' }}>
-              {isPt ? 'Voltar ao início' : 'Back to Home'}
+            <AppText style={{ color: C.navy, fontSize: 16, fontWeight: '800' }}>
+              {isPt ? 'Voltar ao vocabulário' : 'Back to vocabulary'}
             </AppText>
           </TouchableOpacity>
-
         </ScrollView>
       </SafeAreaView>
     );
@@ -412,7 +414,6 @@ export default function VocabReview() {
   // ── Card ─────────────────────────────────────────────────────────────────────
   if (!current) return null;
 
-  const catStyle = CATEGORY_COLORS[current.category] ?? { color: C.navyMid, bg: C.ghost };
 
   return (
     <View style={{ flex: 1, backgroundColor: C.bg, position: 'relative' }}>
@@ -426,21 +427,9 @@ export default function VocabReview() {
           <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
             <ArrowLeft size={22} color={C.navy} weight="bold" />
           </TouchableOpacity>
-          {/* Progress dots */}
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 6 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-            {cards.map((_, i) => (
-              <View
-                key={i}
-                style={{
-                  width: i === idx ? 20 : 6,
-                  height: 6, borderRadius: 3,
-                  backgroundColor: i < idx ? levelAccent : i === idx ? levelAccent : C.ghost,
-                  opacity: i < idx ? 0.4 : 1,
-                }}
-              />
-            ))}
-            </View>
+          {/* Progresso da sessão: a onda endireita a cada cartão */}
+          <View style={{ flex: 1, marginHorizontal: 14 }}>
+            <QueizyWave progress={cards.length ? idx / cards.length : 0} height={14} strokeWidth={4} />
           </View>
           <AppText style={{ fontSize: 13, color: C.navyMid, minWidth: 40, textAlign: 'right' }}>
             {idx + 1}/{cards.length}
@@ -452,11 +441,10 @@ export default function VocabReview() {
       {showXP && (
         <View style={{
           position: 'absolute', top: insets.top + 70, right: 20, zIndex: 100,
-          backgroundColor: C.greenBg, borderRadius: 20,
+          backgroundColor: C.volt, borderRadius: 20,
           paddingHorizontal: 14, paddingVertical: 6,
-          borderWidth: 1, borderColor: C.green + '30',
         }}>
-          <AppText style={{ fontSize: 15, fontWeight: '800', color: C.green }}>+{xpToast} XP</AppText>
+          <AppText style={{ fontSize: 15, fontWeight: '800', color: C.navy }}>+{xpToast} XP</AppText>
         </View>
       )}
 
@@ -497,31 +485,30 @@ export default function VocabReview() {
             >
               {/* Category chip + TTS */}
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <View style={{ backgroundColor: catStyle.bg, borderRadius: 8, paddingHorizontal: 10, paddingVertical: 4 }}>
-                  <AppText style={{ fontSize: 11, fontWeight: '700', color: catStyle.color, letterSpacing: 0.5 }}>
+                <View style={{ backgroundColor: C.ghost, borderRadius: 10, paddingHorizontal: 10, paddingVertical: 5 }}>
+                  <AppText style={{ fontSize: 11, fontWeight: '800', color: C.navy, letterSpacing: 0.6, textTransform: 'uppercase' }}>
                     {isPt
                       ? ({ word: 'Palavra', idiom: 'Expressão', phrasal_verb: 'Phrasal', grammar: 'Gramática' } as Record<string,string>)[current.category] ?? current.category
                       : CATEGORY_LABELS[current.category] ?? current.category}
                   </AppText>
                 </View>
                 <TouchableOpacity
-                  
-                  onPress={handleTts}
-                  disabled={ttsLoading}
+                  onPress={() => handleTts('term')}
                   hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-                  style={{ width: 40, height: 40, borderRadius: 20, backgroundColor: C.bg, justifyContent: 'center', alignItems: 'center' }}
+                  accessibilityLabel={isPt ? 'Ouvir' : 'Listen'}
+                  style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: playingKey === 'term' ? C.volt : C.ghost, justifyContent: 'center', alignItems: 'center' }}
                 >
-                  {ttsLoading
-                    ? <ActivityIndicator size="small" color={levelAccent} />
-                    : <SpeakerHigh size={20} color={levelAccent} weight="fill" />
+                  {ttsLoading === 'term'
+                    ? <ActivityIndicator size="small" color={C.navy} />
+                    : <SpeakerHigh size={21} color={C.navy} weight="fill" />
                   }
                 </TouchableOpacity>
               </View>
 
               {/* Term */}
               <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingVertical: 24 }}>
-                <AppText style={{
-                  fontSize: current.term.length > 12 ? 30 : 40,
+                <AppText display style={{
+                  fontSize: current.term.length > 12 ? 32 : 44,
                   fontWeight: '800', color: C.navy,
                   textAlign: 'center', lineHeight: current.term.length > 12 ? 38 : 50,
                 }}>
@@ -536,9 +523,11 @@ export default function VocabReview() {
 
               {/* Tap hint */}
               <View style={{ alignItems: 'center' }}>
-                <AppText style={{ fontSize: 12, color: C.navyLight, letterSpacing: 0.4 }}>
-                  {isPt ? 'toque para revelar' : 'tap to reveal'}
-                </AppText>
+                <View style={{ backgroundColor: C.navy, borderRadius: 14, paddingHorizontal: 20, paddingVertical: 11 }}>
+                  <AppText style={{ fontSize: 14, fontWeight: '800', color: '#FFFFFF' }}>
+                    {isPt ? 'Ver significado' : 'Show meaning'}
+                  </AppText>
+                </View>
               </View>
             </TouchableOpacity>
           </Animated.View>
@@ -556,17 +545,26 @@ export default function VocabReview() {
               padding: 28, minHeight: 320,
               ...cardShadow,
             }}>
-              <AppText style={{ fontSize: 13, fontWeight: '700', color: levelAccent, marginBottom: 12 }}>
-                {current.term}
-              </AppText>
-              <AppText style={{ fontSize: 20, fontWeight: '700', color: C.navy, lineHeight: 28, marginBottom: 16 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 14 }}>
+                <View style={{ flex: 1 }}>
+                  <MarkerText display style={{ fontSize: 24, fontWeight: '800', color: C.navy, lineHeight: 30 }}>
+                    {current.term}
+                  </MarkerText>
+                </View>
+                <TouchableOpacity
+                  onPress={() => handleTts('term')}
+                  hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                  style={{ width: 40, height: 40, borderRadius: 20, backgroundColor: playingKey === 'term' ? C.volt : C.ghost, justifyContent: 'center', alignItems: 'center' }}
+                >
+                  <SpeakerHigh size={19} color={C.navy} weight="fill" />
+                </TouchableOpacity>
+              </View>
+              <AppText style={{ fontSize: 20, fontWeight: '600', color: C.navy, lineHeight: 28, marginBottom: 16 }}>
                 {current.definition}
               </AppText>
               {current.example ? (
-                <View style={{
-                  backgroundColor: C.bg, borderRadius: 14, padding: 14,
-                  borderLeftWidth: 3, borderLeftColor: levelAccent,
-                }}>
+                <View style={{ backgroundColor: C.bg, borderRadius: 14, padding: 14, flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+                  <View style={{ flex: 1 }}>
                   <AppText style={{ fontSize: 14, color: C.navy, fontStyle: 'italic', lineHeight: 20 }}>
                     {current.example}
                   </AppText>
@@ -575,6 +573,14 @@ export default function VocabReview() {
                       {current.example_translation}
                     </AppText>
                   ) : null}
+                  </View>
+                  <TouchableOpacity
+                    onPress={() => handleTts('example', current.example!)}
+                    hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                    style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: playingKey === 'example' ? C.volt : C.ghost, justifyContent: 'center', alignItems: 'center' }}
+                  >
+                    <SpeakerHigh size={15} color={C.navy} weight="fill" />
+                  </TouchableOpacity>
                 </View>
               ) : null}
             </View>
@@ -592,7 +598,7 @@ export default function VocabReview() {
       }}>
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 6, marginBottom: 12 }}>
           <AppText style={{ fontSize: 12, color: C.navyLight, letterSpacing: 0.4 }}>
-            {isPt ? 'como foi?' : 'how did it go?'}
+            {isPt ? 'Como foi lembrar?' : 'How well did you remember?'}
           </AppText>
           <TouchableOpacity
             onPress={showSRInfo}
@@ -608,20 +614,21 @@ export default function VocabReview() {
         </View>
         <View style={{ flexDirection: 'row', gap: 10 }}>
           {([
-            { rating: 'hard' as SRRating, label: isPt ? 'Difícil' : 'Hard', color: C.red,   bg: C.redBg  },
-            { rating: 'ok'   as SRRating, label: 'Ok',                       color: C.gold,  bg: C.goldBg },
-            { rating: 'easy' as SRRating, label: isPt ? 'Fácil' : 'Easy',   color: C.green, bg: C.greenBg },
+            { rating: 'hard' as SRRating, label: isPt ? 'Difícil' : 'Hard', color: C.pink, bg: C.pinkBg, border: 'rgba(255,79,139,0.35)' },
+            { rating: 'ok'   as SRRating, label: 'Ok',                       color: C.navy, bg: C.card,   border: C.border },
+            { rating: 'easy' as SRRating, label: isPt ? 'Fácil' : 'Easy',   color: C.navy, bg: C.volt,   border: C.volt },
           ] as const).map(btn => (
             <TouchableOpacity
               key={btn.rating}
               onPress={() => handleRate(btn.rating)}
               style={{
                 flex: 1, backgroundColor: btn.bg, borderRadius: 16,
-                paddingVertical: 16, alignItems: 'center',
-                borderWidth: 1.5, borderColor: btn.color + '40',
+                paddingVertical: 12, alignItems: 'center',
+                borderWidth: 1.5, borderColor: btn.border,
               }}
             >
-              <AppText style={{ fontSize: 15, fontWeight: '700', color: btn.color }}>{btn.label}</AppText>
+              <AppText style={{ fontSize: 16, fontWeight: '800', color: btn.color }}>{btn.label}</AppText>
+              <AppText style={{ fontSize: 11, fontWeight: '600', color: btn.color, opacity: 0.75, marginTop: 2 }}>{whenLabel(btn.rating)}</AppText>
             </TouchableOpacity>
           ))}
         </View>
