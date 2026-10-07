@@ -16,7 +16,7 @@
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import {
-  View, TouchableOpacity, Animated, Platform,
+  View, TouchableOpacity, Animated, Platform, Easing,
   ActivityIndicator, ScrollView, Alert,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -78,35 +78,62 @@ const XP: Record<SRRating, number> = { hard: 5, ok: 10, easy: 15 };
 // ── Selo de XP total: a cada nota o número sobe contando e o selo dá um pulinho
 function SessionXPPill({ xp }: { xp: number }) {
   const [shown, setShown] = useState(xp);
+  const [delta, setDelta] = useState(0);
   const scale = useRef(new Animated.Value(1)).current;
+  const floatY = useRef(new Animated.Value(0)).current;
+  const floatO = useRef(new Animated.Value(0)).current;
   const prev = useRef(xp);
   useEffect(() => {
     const from = prev.current;
     prev.current = xp;
     if (xp <= from) { setShown(xp); return; }
+    // "+N" sobe de baixo do selo até ele, some, e aí o número conta e o selo pula.
+    setDelta(xp - from);
+    floatY.setValue(46);
+    floatO.setValue(0);
     Animated.sequence([
-      Animated.timing(scale, { toValue: 1.18, duration: 120, useNativeDriver: true }),
-      Animated.spring(scale, { toValue: 1, friction: 4, useNativeDriver: true }),
+      Animated.parallel([
+        Animated.timing(floatO, { toValue: 1, duration: 120, useNativeDriver: true }),
+        Animated.timing(floatY, { toValue: 0, duration: 520, easing: Easing.out(Easing.cubic), useNativeDriver: true }),
+      ]),
+      Animated.timing(floatO, { toValue: 0, duration: 140, useNativeDriver: true }),
     ]).start();
-    const steps = 12;
-    let i = 0;
-    const t = setInterval(() => {
-      i++;
-      setShown(Math.round(from + ((xp - from) * i) / steps));
-      if (i >= steps) clearInterval(t);
-    }, 30);
-    return () => clearInterval(t);
-  }, [xp, scale]);
+    let t: ReturnType<typeof setInterval> | null = null;
+    const start = setTimeout(() => {
+      Animated.sequence([
+        Animated.timing(scale, { toValue: 1.18, duration: 120, useNativeDriver: true }),
+        Animated.spring(scale, { toValue: 1, friction: 4, useNativeDriver: true }),
+      ]).start();
+      const steps = 12;
+      let i = 0;
+      t = setInterval(() => {
+        i++;
+        setShown(Math.round(from + ((xp - from) * i) / steps));
+        if (i >= steps && t) clearInterval(t);
+      }, 30);
+    }, 480);
+    return () => { clearTimeout(start); if (t) clearInterval(t); };
+  }, [xp, scale, floatY, floatO]);
   return (
-    <Animated.View style={{
-      flexDirection: 'row', alignItems: 'center', gap: 4,
-      backgroundColor: 'rgba(8,128,74,0.10)',
-      borderRadius: 14, paddingHorizontal: 9, paddingVertical: 4,
-      transform: [{ scale }],
-    }}>
-      <Lightning size={13} color="#08804A" weight="fill" />
-      <AppText style={{ fontSize: 13, fontWeight: '800', color: '#08804A', fontVariant: ['tabular-nums'] }}>{shown.toLocaleString()}</AppText>
-    </Animated.View>
+    <View>
+      <Animated.View style={{
+        flexDirection: 'row', alignItems: 'center', gap: 4,
+        backgroundColor: 'rgba(8,128,74,0.10)',
+        borderRadius: 14, paddingHorizontal: 9, paddingVertical: 4,
+        transform: [{ scale }],
+      }}>
+        <Lightning size={13} color="#08804A" weight="fill" />
+        <AppText style={{ fontSize: 13, fontWeight: '800', color: '#08804A', fontVariant: ['tabular-nums'] }}>{shown.toLocaleString()}</AppText>
+      </Animated.View>
+      <Animated.View pointerEvents="none" style={{
+        position: 'absolute', top: 0, left: 0, right: 0, alignItems: 'center',
+        opacity: floatO, transform: [{ translateY: floatY }], zIndex: 10,
+      }}>
+        <View style={{ backgroundColor: '#DCFF4A', borderRadius: 12, paddingHorizontal: 9, paddingVertical: 3 }}>
+          <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16131F' }}>+{delta}</AppText>
+        </View>
+      </Animated.View>
+    </View>
   );
 }
 
