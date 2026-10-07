@@ -129,7 +129,7 @@ export default function LearnTrailScreen() {
           <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1 }}>
             Charlotte
           </AppText>
-          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
             {isPortuguese ? 'Trilha de Aprendizado' : 'Learning Trail'}
           </AppText>
         </View>
@@ -165,7 +165,7 @@ export default function LearnTrailScreen() {
                 {modules.length} {isPortuguese ? 'módulos' : 'modules'} · {total} {isPortuguese ? 'tópicos' : 'topics'}
               </AppText>
             </View>
-            <AppText style={{ fontSize: 18, fontWeight: '900', color: accent }}>{pct}%</AppText>
+            <AppText display style={{ fontSize: 18, fontWeight: '900', color: accent }}>{pct}%</AppText>
           </View>
 
           {/* Progress bar */}

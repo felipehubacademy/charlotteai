@@ -245,7 +245,7 @@ export default function GoalsScreen() {
           >
             <ArrowLeft size={22} color={C.navy} weight="bold" />
           </TouchableOpacity>
-          <AppText style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
+          <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
             {isPt ? 'Metas' : 'Goals'}
           </AppText>
         </View>

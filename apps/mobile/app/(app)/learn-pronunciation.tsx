@@ -382,7 +382,7 @@ export default function LearnPronunciationScreen() {
           }}>
             <CheckCircle size={40} color={C.violet} weight="fill" />
           </View>
-          <AppText style={{ fontSize: 24, fontWeight: '900', color: C.navy, marginBottom: 8, letterSpacing: -0.5 }}>
+          <AppText display style={{ fontSize: 24, fontWeight: '900', color: C.navy, marginBottom: 8, letterSpacing: -0.5 }}>
             Session complete!
           </AppText>
           <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, marginBottom: 32 }}>
@@ -607,7 +607,7 @@ export default function LearnPronunciationScreen() {
                           borderWidth: 2.5, borderColor: scoreColor(assessmentResult.pronunciationScore),
                           alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                         }}>
-                          <AppText style={{ fontSize: 22, fontWeight: '900', color: scoreColor(assessmentResult.pronunciationScore), letterSpacing: -1 }}>
+                          <AppText display style={{ fontSize: 22, fontWeight: '900', color: scoreColor(assessmentResult.pronunciationScore), letterSpacing: -1 }}>
                             {Math.round(assessmentResult.pronunciationScore)}
                           </AppText>
                         </View>

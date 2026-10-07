@@ -883,7 +883,7 @@ export default function RolePlayExerciseScreen() {
             }}>
               <Trophy size={32} color={allObjectivesDone ? C.greenDark : '#B45309'} weight="fill" />
             </View>
-            <AppText style={{ fontSize: 20, fontWeight: '800', color: C.navy, marginBottom: 4 }}>
+            <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, marginBottom: 4 }}>
               {allObjectivesDone
                 ? (isPt ? 'Boa! Você acertou.' : 'Nice! You got it.')
                 : remainingSec === 0
@@ -960,7 +960,7 @@ export default function RolePlayExerciseScreen() {
               marginBottom: 20,
             }}>
               <View style={{ alignItems: 'center' }}>
-                <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
+                <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
                   {Math.floor((rp.time_budget_sec - remainingSec) / 60)}:{((rp.time_budget_sec - remainingSec) % 60).toString().padStart(2, '0')}
                 </AppText>
                 <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>
@@ -968,7 +968,7 @@ export default function RolePlayExerciseScreen() {
                 </AppText>
               </View>
               <View style={{ alignItems: 'center' }}>
-                <AppText style={{ fontSize: 18, fontWeight: '800', color: allObjectivesDone ? C.greenDark : '#B45309' }}>
+                <AppText display style={{ fontSize: 18, fontWeight: '800', color: allObjectivesDone ? C.greenDark : '#B45309' }}>
                   {Math.round((objectivesDone / objectivesTotal) * 100)}%
                 </AppText>
                 <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>

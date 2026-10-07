@@ -45,7 +45,7 @@ export class AppErrorBoundary extends React.Component<
       return (
         <View style={{ flex: 1, backgroundColor: '#FAF7F0', paddingTop: Platform.OS === 'ios' ? 60 : 40 }}>
           <ScrollView contentContainerStyle={{ padding: 24 }}>
-            <AppText style={{ fontSize: 18, fontWeight: '800', color: '#DC2626', marginBottom: 8 }}>
+            <AppText display style={{ fontSize: 18, fontWeight: '800', color: '#DC2626', marginBottom: 8 }}>
               Algo deu errado
             </AppText>
             <AppText style={{ fontSize: 13, color: '#4D4858', marginBottom: 16, lineHeight: 20 }}>

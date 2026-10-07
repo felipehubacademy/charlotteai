@@ -158,7 +158,7 @@ export default function MyVocabularyScreen() {
           <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
             <ArrowLeft size={22} color={C.navy} weight="bold" />
           </TouchableOpacity>
-          <AppText style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
+          <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
             {isPt ? 'Meu Vocabulário' : 'My Vocabulary'}
           </AppText>
 

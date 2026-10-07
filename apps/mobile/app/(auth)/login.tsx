@@ -100,7 +100,7 @@ export default function LoginScreen() {
             </View>
 
             {/* Charlotte */}
-            <AppText style={{ fontSize: 34, fontWeight: '800', color: C.navy, letterSpacing: -0.5, marginBottom: 6 }}>
+            <AppText display style={{ fontSize: 34, fontWeight: '800', color: C.navy, letterSpacing: -0.5, marginBottom: 6 }}>
               Charlotte
             </AppText>
 

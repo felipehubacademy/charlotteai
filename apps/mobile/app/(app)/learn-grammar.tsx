@@ -386,7 +386,7 @@ export default function LearnGrammarScreen() {
           }}>
             <CheckCircle size={40} color={C.gold} weight="fill" />
           </View>
-          <AppText style={{ fontSize: 24, fontWeight: '900', color: C.navy, marginBottom: 8, letterSpacing: -0.5 }}>
+          <AppText display style={{ fontSize: 24, fontWeight: '900', color: C.navy, marginBottom: 8, letterSpacing: -0.5 }}>
             Session complete!
           </AppText>
           <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, marginBottom: 32 }}>

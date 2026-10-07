@@ -253,7 +253,7 @@ export function AddWordModal({
             flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
             paddingHorizontal: 20, paddingTop: 8, paddingBottom: 14,
           }}>
-            <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
+            <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
               {isPt ? 'Adicionar palavra' : 'Add word'}
             </AppText>
             <TouchableOpacity

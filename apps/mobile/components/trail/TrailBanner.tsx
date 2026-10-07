@@ -125,7 +125,7 @@ export function TrailBanner({ userId, level, flush = false, currentLevel, onLeve
           <BookOpen size={22} color={accent} weight="fill" />
         </View>
         <View style={{ flex: 1 }}>
-          <AppText style={{ fontSize: 13, fontWeight: '800', color: C.navy }}>
+          <AppText display style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>
             {LEVEL_LABELS[level]}
           </AppText>
           <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
@@ -139,7 +139,7 @@ export function TrailBanner({ userId, level, flush = false, currentLevel, onLeve
             onSelect={(l) => onLevelChange(l as TrailLevel)}
           />
         ) : (
-          <AppText style={{ fontSize: 18, fontWeight: '900', color: accent }}>{pct}%</AppText>
+          <AppText display style={{ fontSize: 18, fontWeight: '900', color: accent }}>{pct}%</AppText>
         )}
       </View>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>

@@ -526,7 +526,7 @@ export default function ReviewSession() {
             <View style={{ width: 64, height: 64, borderRadius: 32, backgroundColor: levelAccentBg, justifyContent: 'center', alignItems: 'center', marginBottom: 16 }}>
               <Trophy size={32} color={levelAccent} weight="fill" />
             </View>
-            <AppText style={{ fontSize: 24, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
+            <AppText display style={{ fontSize: 24, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
               {isPt ? 'Sessão concluída!' : 'Session complete!'}
             </AppText>
             <AppText style={{ fontSize: 15, color: C.navyMid, marginTop: 6, textAlign: 'center' }}>
@@ -538,7 +538,7 @@ export default function ReviewSession() {
 
           {/* XP earned */}
           <View style={{ backgroundColor: C.card, borderRadius: 18, padding: 20, marginTop: 20, ...cardShadow, alignItems: 'center' }}>
-            <AppText style={{ fontSize: 36, fontWeight: '800', color: levelAccent }}>+{totalXP} XP</AppText>
+            <AppText display style={{ fontSize: 36, fontWeight: '800', color: levelAccent }}>+{totalXP} XP</AppText>
             <AppText style={{ fontSize: 13, color: C.navyMid, marginTop: 2 }}>
               {isPt ? 'ganhos nesta sessão' : 'earned this session'}
             </AppText>
@@ -818,7 +818,7 @@ function RatingButton({ label, color, bg, onPress, flex }: { label: string; colo
 function StatCard({ label, value, color, bg }: { label: string; value: number; color: string; bg: string }) {
   return (
     <View style={{ flex: 1, backgroundColor: bg, borderRadius: 14, padding: 14, alignItems: 'center' }}>
-      <AppText style={{ fontSize: 26, fontWeight: '800', color }}>{value}</AppText>
+      <AppText display style={{ fontSize: 26, fontWeight: '800', color }}>{value}</AppText>
       <AppText style={{ fontSize: 12, color, marginTop: 2 }}>{label}</AppText>
     </View>
   );

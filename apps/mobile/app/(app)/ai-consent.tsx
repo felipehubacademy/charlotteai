@@ -96,7 +96,7 @@ export default function AIConsentScreen() {
 
         {/* Título + subtítulo */}
         <View style={{ alignItems: 'center', paddingHorizontal: 28, paddingTop: 16, paddingBottom: 8 }}>
-          <AppText style={{ fontSize: 22, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
+          <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
             Tecnologias de IA
           </AppText>
           <AppText style={{ fontSize: 13, color: C.navyMid, marginTop: 8, textAlign: 'center', lineHeight: 19 }}>

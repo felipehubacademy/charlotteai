@@ -109,7 +109,7 @@ export default function ChangePasswordScreen() {
             }}>
               <Lock size={32} color={C.navy} weight="duotone" />
             </View>
-            <AppText style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
+            <AppText display style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
               {isPt ? 'Crie sua senha' : 'Create your password'}
             </AppText>
             <AppText style={{ fontSize: 14, color: C.navyMid, marginTop: 8, textAlign: 'center', lineHeight: 20 }}>

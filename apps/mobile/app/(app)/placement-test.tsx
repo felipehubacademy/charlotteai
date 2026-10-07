@@ -1002,7 +1002,7 @@ function ResultScreen({
               {LEVEL_TAG[level]}
             </AppText>
           </View>
-          <AppText style={{ fontSize: 20, fontWeight: '800', color: '#FFFFFF', textAlign: 'center', lineHeight: 28, marginTop: 12 }}>
+          <AppText display style={{ fontSize: 20, fontWeight: '800', color: '#FFFFFF', textAlign: 'center', lineHeight: 28, marginTop: 12 }}>
             {meta.tagline[L]}
           </AppText>
         </View>

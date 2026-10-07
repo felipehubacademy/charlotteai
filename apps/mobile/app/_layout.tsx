@@ -20,6 +20,11 @@ import { voiceSFX } from '@/lib/voiceSFX';
 import { loadAudioPreferences } from '@/lib/audioPreferences';
 import { ThemeProvider, useTheme } from '@/lib/theme';
 import { SplashOverlay } from '@/components/ui/SplashOverlay';
+import { useFonts } from 'expo-font';
+import {
+  BricolageGrotesque_700Bold,
+  BricolageGrotesque_800ExtraBold,
+} from '@expo-google-fonts/bricolage-grotesque';
 
 // Mantém a splash screen visível enquanto carrega
 SplashScreen.preventAutoHideAsync();
@@ -138,6 +143,20 @@ function AuthGuard() {
 }
 
 function RootLayout() {
+  // Fonte de títulos da marca Queizy (AppText display). A navegação espera a
+  // fonte carregar (o SplashOverlay cobre), com teto de 2s: se falhar, segue
+  // com a fonte do sistema.
+  const [fontsLoaded, fontError] = useFonts({
+    BricolageGrotesque_700Bold,
+    BricolageGrotesque_800ExtraBold,
+  });
+  const [fontTimeout, setFontTimeout] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setFontTimeout(true), 2000);
+    return () => clearTimeout(t);
+  }, []);
+  const fontsReady = fontsLoaded || !!fontError || fontTimeout;
+
   useEffect(() => {
     // Dismissa a native splash ASAP — o SplashOverlay (JS) com splash.png
     // assume daqui e segura no minimo 1200ms.
@@ -150,14 +169,18 @@ function RootLayout() {
         <ThemeProvider>
           <SafeAreaProvider initialMetrics={initialWindowMetrics}>
             <AuthProvider>
-              <AuthGuard />
               <ThemedStatusBar />
-              <Stack screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="index" />
-                <Stack.Screen name="(onboarding)" />
-                <Stack.Screen name="(auth)" />
-                <Stack.Screen name="(app)" />
-              </Stack>
+              {fontsReady && (
+                <>
+                  <AuthGuard />
+                  <Stack screenOptions={{ headerShown: false }}>
+                    <Stack.Screen name="index" />
+                    <Stack.Screen name="(onboarding)" />
+                    <Stack.Screen name="(auth)" />
+                    <Stack.Screen name="(app)" />
+                  </Stack>
+                </>
+              )}
               <OfflineBanner />
               <SplashOverlay />
             </AuthProvider>

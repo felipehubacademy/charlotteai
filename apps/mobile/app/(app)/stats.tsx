@@ -256,7 +256,7 @@ export default function StatsScreen() {
           <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1 }}>
             CHARLOTTE
           </AppText>
-          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
             {isPortuguese ? 'Seu Progresso' : 'Your Progress'}
           </AppText>
         </View>
@@ -333,7 +333,7 @@ export default function StatsScreen() {
 
         {/* ── Section: Progresso ───────────────────────────────────────────── */}
         <View style={{ paddingHorizontal: 20, marginBottom: 12 }}>
-          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
             {isPortuguese ? 'Progresso' : 'Progress'}
           </AppText>
         </View>
@@ -410,7 +410,7 @@ export default function StatsScreen() {
           flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
           paddingHorizontal: 20, marginBottom: 12,
         }}>
-          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
             {isPortuguese ? 'Conquistas' : 'Achievements'}
           </AppText>
           <TouchableOpacity
@@ -505,7 +505,7 @@ export default function StatsScreen() {
           flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
           paddingHorizontal: 20, marginBottom: 12,
         }}>
-          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
             Ranking
           </AppText>
           <TouchableOpacity

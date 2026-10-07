@@ -143,7 +143,7 @@ export default function ChangePasswordScreen() {
                 }}>
                   <ShieldCheck size={36} color={C.accent} weight="regular" />
                 </View>
-                <AppText style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
+                <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
                   {isPt ? 'Mantenha sua conta segura' : 'Keep your account secure'}
                 </AppText>
                 <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center', marginTop: 6, paddingHorizontal: 16 }}>
@@ -339,7 +339,7 @@ function SuccessState({ isPt, onBack }: { isPt: boolean; onBack: () => void }) {
       }}>
         <CheckCircle size={56} color={C.greenDark} weight="regular" />
       </View>
-      <AppText style={{ fontSize: 22, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
+      <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
         {isPt ? 'Senha alterada!' : 'Password changed!'}
       </AppText>
       <AppText style={{ fontSize: 14, color: C.navyMid, marginTop: 8, textAlign: 'center', paddingHorizontal: 24 }}>

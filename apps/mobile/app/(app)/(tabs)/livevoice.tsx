@@ -122,14 +122,14 @@ function PoolRing({ used, total, isUnlimited, isPt }: {
       <View style={{ alignItems: 'center' }}>
         {isUnlimited ? (
           <>
-            <AppText style={{ fontSize: 28, fontWeight: '900', color: C.greenAccent }}>∞</AppText>
+            <AppText display style={{ fontSize: 28, fontWeight: '900', color: C.greenAccent }}>∞</AppText>
             <AppText style={{ fontSize: 10, color: C.textMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>
               {isPt ? 'Ilimitado' : 'Unlimited'}
             </AppText>
           </>
         ) : (
           <>
-            <AppText style={{ fontSize: 30, fontWeight: '900', color: C.textWhite, lineHeight: 34 }}>{remainMin}</AppText>
+            <AppText display style={{ fontSize: 30, fontWeight: '900', color: C.textWhite, lineHeight: 34 }}>{remainMin}</AppText>
             <AppText style={{ fontSize: 10, color: C.textMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>
               {isPt ? 'min restantes' : 'min remaining'}
             </AppText>
@@ -725,7 +725,7 @@ export default function LiveVoiceTab() {
 
             {/* ── Header da tela: título + status row ── */}
             <View style={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 12 }}>
-              <AppText style={{ fontSize: 26, fontWeight: '900', color: C.textWhite, letterSpacing: -0.3 }}>
+              <AppText display style={{ fontSize: 26, fontWeight: '900', color: C.textWhite, letterSpacing: -0.3 }}>
                 Live Voice
               </AppText>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 6 }}>

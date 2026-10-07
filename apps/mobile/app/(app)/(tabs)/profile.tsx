@@ -365,7 +365,7 @@ export default function ProfileTab() {
           paddingHorizontal: 20, paddingVertical: 16,
           borderBottomWidth: 1, borderBottomColor: C.border,
         }}>
-          <AppText style={{ fontSize: 20, fontWeight: '800', color: C.navy }}>
+          <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy }}>
             {isPt ? 'Perfil' : 'Profile'}
           </AppText>
         </View>

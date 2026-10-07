@@ -117,7 +117,7 @@ export function RebrandNoticeSheet({ visible, isPt, onClose }: Props) {
 
             <QueizyMark size={84} />
 
-            <AppText style={{ fontSize: 22, fontWeight: '800', color: C.ink, textAlign: 'center', marginTop: 18, marginBottom: 8 }}>
+            <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.ink, textAlign: 'center', marginTop: 18, marginBottom: 8 }}>
               {title}
             </AppText>
             <AppText style={{ fontSize: 14, color: C.inkMid, textAlign: 'center', lineHeight: 20, paddingHorizontal: 4 }}>

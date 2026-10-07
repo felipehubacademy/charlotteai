@@ -94,7 +94,7 @@ export function PlacementPromptSheet({ visible, isPt, onTakeTest, onStartFromZer
               <Compass size={26} color={C.iconCol} weight="fill" />
             </View>
 
-            <AppText style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center', marginBottom: 8 }}>
+            <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center', marginBottom: 8 }}>
               {title}
             </AppText>
             <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center', marginBottom: 22, paddingHorizontal: 4, lineHeight: 19 }}>

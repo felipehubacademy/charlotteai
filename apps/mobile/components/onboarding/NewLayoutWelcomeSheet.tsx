@@ -131,7 +131,7 @@ export function NewLayoutWelcomeSheet({ visible, onClose }: Props) {
               alignSelf: 'center', marginBottom: 18,
             }} />
 
-            <AppText style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center', marginBottom: 6 }}>
+            <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center', marginBottom: 6 }}>
               Bem-vindo ao novo layout
             </AppText>
             <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center', marginBottom: 22, paddingHorizontal: 8 }}>

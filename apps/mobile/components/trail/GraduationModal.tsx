@@ -273,7 +273,7 @@ export function GraduationModal({ event, onClose }: Props) {
             }}>
               <GraduationCap size={42} color="#F59E0B" weight="fill" />
             </View>
-            <AppText style={{ fontSize: 24, fontWeight: '900', color: '#16131F', marginBottom: 8, textAlign: 'center' }}>
+            <AppText display style={{ fontSize: 24, fontWeight: '900', color: '#16131F', marginBottom: 8, textAlign: 'center' }}>
               You graduated!
             </AppText>
             <AppText style={{ fontSize: 15, fontWeight: '500', color: '#5A5878', textAlign: 'center', lineHeight: 22, marginBottom: 24 }}>

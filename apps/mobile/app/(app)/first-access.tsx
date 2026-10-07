@@ -96,7 +96,7 @@ export default function FirstAccessScreen() {
             <View style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: 'rgba(220,255,74,0.12)', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
               <Lock size={32} color={C.navy} weight="duotone" />
             </View>
-            <AppText style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
+            <AppText display style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
               {isPt ? 'Crie sua senha' : 'Create your password'}
             </AppText>
             <AppText style={{ fontSize: 14, color: C.navyMid, marginTop: 8, textAlign: 'center', lineHeight: 20 }}>

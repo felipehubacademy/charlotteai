@@ -45,7 +45,7 @@ export default function NotFoundScreen() {
           <Question size={40} color={C.green} weight="fill" />
         </View>
 
-        <AppText style={{ fontSize: 22, fontWeight: '800', color: C.navy, marginBottom: 10, textAlign: 'center' }}>
+        <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, marginBottom: 10, textAlign: 'center' }}>
           {isPt ? 'Página não encontrada' : 'Page not found'}
         </AppText>
         <AppText style={{ fontSize: 14, color: C.navyMid, textAlign: 'center', lineHeight: 21, marginBottom: 32 }}>

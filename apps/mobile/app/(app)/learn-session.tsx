@@ -1061,7 +1061,7 @@ export default function LearnSessionScreen() {
               </AppText>
             </View>
 
-            <AppText style={{ fontSize: 24, fontWeight: '900', color: C.navy, marginBottom: 8, letterSpacing: -0.5, textAlign: 'center' }}>
+            <AppText display style={{ fontSize: 24, fontWeight: '900', color: C.navy, marginBottom: 8, letterSpacing: -0.5, textAlign: 'center' }}>
               {perfect
                 ? (isPortuguese ? 'Revisão perfeita!' : 'Perfect review!')
                 : (isPortuguese ? 'Revisão concluída!' : 'Review complete!')}
@@ -1131,7 +1131,7 @@ export default function LearnSessionScreen() {
           }}>
             <CheckCircle size={40} color={accent} weight="fill" />
           </View>
-          <AppText style={{ fontSize: 24, fontWeight: '900', color: C.navy, marginBottom: 8, letterSpacing: -0.5 }}>
+          <AppText display style={{ fontSize: 24, fontWeight: '900', color: C.navy, marginBottom: 8, letterSpacing: -0.5 }}>
             {isPortuguese ? 'Tópico concluído!' : 'Topic complete!'}
           </AppText>
           <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, marginBottom: 8 }}>
@@ -1268,7 +1268,7 @@ export default function LearnSessionScreen() {
               </AppText>
             </View>
           )}
-          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '100%', textAlign: 'center' }} numberOfLines={1}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '100%', textAlign: 'center' }} numberOfLines={1}>
             {topicTitle}
           </AppText>
           {!!tenseTag && !params.reviewId && (
@@ -1918,7 +1918,7 @@ export default function LearnSessionScreen() {
                           backgroundColor: C.card, alignItems: 'center',
                         }}
                       >
-                        <AppText style={{ fontSize: 20, fontWeight: '800', color: C.navy }}>{word}</AppText>
+                        <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy }}>{word}</AppText>
                       </TouchableOpacity>
                     );
                   })}

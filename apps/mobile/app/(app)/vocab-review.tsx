@@ -305,7 +305,7 @@ export default function VocabReview() {
         </TouchableOpacity>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 32 }}>
           <CharlotteAvatar size="xl" />
-          <AppText style={{ fontSize: 22, fontWeight: '800', color: C.navy, marginTop: 20, textAlign: 'center' }}>
+          <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, marginTop: 20, textAlign: 'center' }}>
             {isPt ? 'Tudo em dia!' : 'All caught up!'}
           </AppText>
           <AppText style={{ fontSize: 15, color: C.navyMid, marginTop: 8, textAlign: 'center', lineHeight: 22 }}>
@@ -333,7 +333,7 @@ export default function VocabReview() {
             <View style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: levelAccentBg, justifyContent: 'center', alignItems: 'center', marginBottom: 18 }}>
               <Trophy size={36} color={levelAccent} weight="fill" />
             </View>
-            <AppText style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
+            <AppText display style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
               {isPt ? 'Revisão concluída!' : 'Review complete!'}
             </AppText>
             <AppText style={{ fontSize: 15, color: C.navyMid, marginTop: 6, textAlign: 'center' }}>
@@ -359,7 +359,7 @@ export default function VocabReview() {
               { label: isPt ? 'Difícil' : 'Hard', value: hardCount, color: C.red,  bg: C.redBg   },
             ].map(s => (
               <View key={s.label} style={{ flex: 1, backgroundColor: s.bg, borderRadius: 14, padding: 14, alignItems: 'center' }}>
-                <AppText style={{ fontSize: 28, fontWeight: '800', color: s.color }}>{s.value}</AppText>
+                <AppText display style={{ fontSize: 28, fontWeight: '800', color: s.color }}>{s.value}</AppText>
                 <AppText style={{ fontSize: 12, color: s.color, marginTop: 2 }}>{s.label}</AppText>
               </View>
             ))}

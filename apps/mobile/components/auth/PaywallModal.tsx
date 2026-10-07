@@ -419,7 +419,7 @@ export function PaywallModal() {
                     </AppText>
                   </View>
                   <View style={{ alignItems: 'flex-end' }}>
-                    <AppText style={{ color: C.greenDark, fontSize: 20, fontWeight: '800' }}>
+                    <AppText display style={{ color: C.greenDark, fontSize: 20, fontWeight: '800' }}>
                       {yearlyPrice}
                     </AppText>
                     <AppText style={{ color: C.muted, fontSize: 11 }}>{isPt ? '/ano' : '/yr'}</AppText>
@@ -446,7 +446,7 @@ export function PaywallModal() {
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                   <AppText style={{ color: C.navy, fontSize: 15, fontWeight: '700' }}>{isPt ? 'Mensal' : 'Monthly'}</AppText>
                   <View style={{ alignItems: 'flex-end' }}>
-                    <AppText style={{ color: C.navy, fontSize: 20, fontWeight: '800' }}>
+                    <AppText display style={{ color: C.navy, fontSize: 20, fontWeight: '800' }}>
                       {monthlyPrice}
                     </AppText>
                     <AppText style={{ color: C.muted, fontSize: 11 }}>{isPt ? '/mês' : '/mo'}</AppText>

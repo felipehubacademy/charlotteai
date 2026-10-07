@@ -310,7 +310,7 @@ export default function PronunciationScoreCard({
                   alignItems: 'center', justifyContent: 'center',
                   flexShrink: 0,
                 }}>
-                  <AppText style={{ fontSize: 21, fontWeight: '900', color: overallColor, letterSpacing: -1 }}>
+                  <AppText display style={{ fontSize: 21, fontWeight: '900', color: overallColor, letterSpacing: -1 }}>
                     {overall}
                   </AppText>
                 </View>

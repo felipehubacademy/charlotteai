@@ -239,7 +239,7 @@ export default function LeaderboardScreen() {
           <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1 }}>
             CHARLOTTE
           </AppText>
-          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
             Ranking {userLevel}
           </AppText>
         </View>
@@ -276,7 +276,7 @@ export default function LeaderboardScreen() {
                 <Trophy size={22} color="#D97706" weight="fill" />
               </View>
               <View style={{ flex: 1 }}>
-                <AppText style={{ fontSize: 22, fontWeight: '800', color: C.navy }}>
+                <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy }}>
                   {data.userEntry ? `#${data.userEntry.rank}` : '--'}
                 </AppText>
                 <AppText style={{ fontSize: 12, fontWeight: '600', color: C.navyLight }}>

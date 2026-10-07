@@ -329,10 +329,11 @@ function ModuleCard({
                 : `${data.completedCount} ${isPt ? 'de' : 'of'} ${data.totalCount} ${isPt ? 'concluídos' : 'completed'}`}
             </AppText>
             <AppText
+              display
               numberOfLines={2}
               style={{
-                fontSize: 16, fontWeight: '700',
-                color: isLocked ? C.navyLight : C.navy, lineHeight: 20,
+                fontSize: 17, fontWeight: '800',
+                color: isLocked ? C.navyLight : C.navy, lineHeight: 21,
               }}>
               {data.title}
             </AppText>

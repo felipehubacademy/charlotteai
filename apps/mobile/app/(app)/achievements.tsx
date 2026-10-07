@@ -296,7 +296,7 @@ export default function AchievementsScreen() {
           <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1 }}>
             CHARLOTTE
           </AppText>
-          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
             {isPortuguese ? 'Conquistas' : 'Achievements'}
           </AppText>
         </View>
@@ -323,7 +323,7 @@ export default function AchievementsScreen() {
             <Trophy size={22} color="#EAB308" weight="fill" />
           </View>
           <View style={{ flex: 1 }}>
-            <AppText style={{ fontSize: 22, fontWeight: '800', color: C.navy }}>
+            <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy }}>
               {earned.length}
             </AppText>
             <AppText style={{ fontSize: 12, fontWeight: '600', color: C.navyLight }}>
@@ -343,7 +343,7 @@ export default function AchievementsScreen() {
 
         {/* Full catalog grid */}
         <View style={{ paddingHorizontal: 20, marginBottom: 16 }}>
-          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
             {isPortuguese ? 'Todas as Conquistas' : 'All Achievements'}
           </AppText>
         </View>

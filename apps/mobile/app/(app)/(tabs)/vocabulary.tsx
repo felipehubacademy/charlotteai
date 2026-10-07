@@ -295,7 +295,7 @@ export default function VocabularyTab() {
             }}>
               <ClockCountdown size={28} color={levelAccent} weight="fill" />
             </View>
-            <AppText style={{ fontSize: 20, fontWeight: '900', color: C.navy, marginBottom: 8 }}>
+            <AppText display style={{ fontSize: 20, fontWeight: '900', color: C.navy, marginBottom: 8 }}>
               {isPt
                 ? `${dueCount} ${dueCount === 1 ? 'palavra para' : 'palavras para'} revisar`
                 : `${dueCount} ${dueCount === 1 ? 'word' : 'words'} to review`}
@@ -332,7 +332,7 @@ export default function VocabularyTab() {
           paddingHorizontal: 20, paddingVertical: 14, gap: 12,
           borderBottomWidth: 1, borderBottomColor: C.border,
         }}>
-          <AppText style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
+          <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
             {isPt ? 'Vocabulário' : 'Vocabulary'}
           </AppText>
           {dueCount > 0 && (
@@ -403,7 +403,7 @@ export default function VocabularyTab() {
         </View>
 
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 2 }}>
-          <AppText style={{ fontSize: 20, fontWeight: '900', color: '#16131F' }}>
+          <AppText display style={{ fontSize: 20, fontWeight: '900', color: '#16131F' }}>
             {tip.term}
           </AppText>
           <TouchableOpacity

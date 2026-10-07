@@ -136,7 +136,7 @@ export default function SignupScreen() {
           </View>
 
           {/* Textos */}
-          <AppText style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center', letterSpacing: -0.5, marginBottom: 12 }}>
+          <AppText display style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center', letterSpacing: -0.5, marginBottom: 12 }}>
             {isPt ? 'Verifique seu e-mail' : 'Check your email'}
           </AppText>
           <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 23, marginBottom: 6 }}>
@@ -202,7 +202,7 @@ export default function SignupScreen() {
                 resizeMode="cover"
               />
             </View>
-            <AppText style={{ fontSize: 28, fontWeight: '800', color: C.navy, letterSpacing: -0.5, marginBottom: 4 }}>
+            <AppText display style={{ fontSize: 28, fontWeight: '800', color: C.navy, letterSpacing: -0.5, marginBottom: 4 }}>
               {isPt ? 'Criar conta' : 'Create account'}
             </AppText>
             <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center' }}>

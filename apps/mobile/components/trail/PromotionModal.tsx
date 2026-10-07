@@ -285,7 +285,7 @@ export function PromotionModal({ event, onClose }: Props) {
             }}>
               <Trophy size={42} color={accent} weight="fill" />
             </View>
-            <AppText style={{ fontSize: 24, fontWeight: '900', color: '#16131F', marginBottom: 8, textAlign: 'center' }}>
+            <AppText display style={{ fontSize: 24, fontWeight: '900', color: '#16131F', marginBottom: 8, textAlign: 'center' }}>
               {title}
             </AppText>
             <AppText style={{ fontSize: 15, fontWeight: '500', color: '#5A5878', textAlign: 'center', lineHeight: 22, marginBottom: 24 }}>

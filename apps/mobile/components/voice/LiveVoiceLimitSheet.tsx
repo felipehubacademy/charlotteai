@@ -99,7 +99,7 @@ export function LiveVoiceLimitSheet({ visible, isPt, isSubscriber, poolMin, onSu
             }}>
               <PhoneSlash size={28} color={C.lossRed} weight="fill" />
             </View>
-            <AppText style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center', marginBottom: 8 }}>
+            <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center', marginBottom: 8 }}>
               {title}
             </AppText>
             <AppText style={{ fontSize: 14, color: C.navyMid, textAlign: 'center', lineHeight: 21, marginBottom: 22 }}>
