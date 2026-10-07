@@ -47,8 +47,6 @@ export default function CharlotteAvatar({
           width: px, height: px, borderRadius: px / 2,
           overflow: 'hidden',
           backgroundColor: '#16131F',
-          borderWidth: 1.5,
-          borderColor: 'rgba(220,255,74,0.75)',
         }}
       >
         {!imageError ? (
