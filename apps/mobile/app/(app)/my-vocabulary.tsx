@@ -37,7 +37,7 @@ const C = {
   redBg:     'rgba(220,38,38,0.07)',
   gold:      '#D97706',
   goldBg:    '#FFFBEB',
-  inputBg:   '#ECEAF5',
+  inputBg:   '#EDE9E1',
 };
 
 const cardShadow = Platform.select({

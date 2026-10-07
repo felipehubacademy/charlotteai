@@ -48,7 +48,7 @@ const C = {
   green:     '#DCFF4A',
   greenDark: '#5C7300',
   greenBg:   'rgba(220,255,74,0.10)',
-  inputBg:   '#F0EFF8',
+  inputBg:   '#F3F0E8',
 };
 
 const CATEGORIES: { key: VocabCategory; labelPt: string; labelEn: string }[] = [

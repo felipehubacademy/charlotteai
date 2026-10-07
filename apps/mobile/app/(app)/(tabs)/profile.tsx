@@ -49,7 +49,7 @@ const C = {
   green:     '#DCFF4A',
   greenDark: '#5C7300',
   error:     '#DC2626',
-  inputBg:   '#ECEAF5',
+  inputBg:   '#EDE9E1',
 };
 
 const cardShadow = Platform.select({

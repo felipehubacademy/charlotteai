@@ -92,7 +92,7 @@ const TypingIndicator = ({ isAudio = false }: { isAudio?: boolean }) => {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 16, alignSelf: 'flex-start' }}>
       <CharlotteAvatar size="xs" />
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#F0EFFA', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: 12 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#F3F0E8', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: 12 }}>
         {isAudio ? (
           <Animated.View style={{ opacity: pulse }}>
             <Microphone size={16} color="#5C7300" weight="fill" />
@@ -112,7 +112,7 @@ const TypingIndicator = ({ isAudio = false }: { isAudio?: boolean }) => {
 
 // Audio waveform indicator
 const AudioRecordingIndicator = () => (
-  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, padding: 14, backgroundColor: '#F0EFFA', borderRadius: 18, borderTopLeftRadius: 0, alignSelf: 'flex-start', marginBottom: 16 }}>
+  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, padding: 14, backgroundColor: '#F3F0E8', borderRadius: 18, borderTopLeftRadius: 0, alignSelf: 'flex-start', marginBottom: 16 }}>
     <CharlotteAvatar size="xs" />
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
       <Microphone size={14} color="#5C7300" weight="fill" />
@@ -206,7 +206,7 @@ const MessageBubble: React.FC<{
             paddingHorizontal: 14,
             paddingVertical: 10,
             borderRadius: 20,
-            backgroundColor: isUser ? '#DCFF4A' : '#F0EFFA',
+            backgroundColor: isUser ? '#DCFF4A' : '#F3F0E8',
             borderBottomRightRadius: isUser ? 0 : 20,
             borderBottomLeftRadius: isUser ? 20 : 20,
             borderTopLeftRadius: isUser ? 20 : 0,

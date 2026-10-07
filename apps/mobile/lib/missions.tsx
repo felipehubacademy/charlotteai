@@ -14,8 +14,8 @@ const greenDark = '#5C7300';
 const greenBg   = '#F8FFE0';
 const gold      = '#F59E0B';
 const orange    = '#FF6B35';
-const blue      = '#60A5FA';
-const blueBg    = '#EFF6FF';
+const blue      = '#6B4BFF';
+const blueBg    = '#F1EEFF';
 const pink      = '#FF4F8B';
 const pinkBg    = '#FFEEF4';
 

@@ -32,11 +32,11 @@ import { getLevelAccent } from '@/lib/levelColors';
 // ── Palette ───────────────────────────────────────────────────────────────────
 // Tela full navy — todos os elementos em stack sobre o mesmo fundo.
 
-// TESTE — bg claro mesmo do Goals (#F7F6FD) com elementos escuros.
+// TESTE — bg claro (Papel, #FAF7F0) com elementos escuros.
 // Nomes textWhite/textMuted/textDim mantidos pra evitar refactor massivo,
 // mas os VALORES agora são escuros (legado naming).
 const C = {
-  stage:       '#FCFAF5',  // lavanda muito claro
+  stage:       '#FCFAF5',  // papel bem claro
   panel:       '#FFFFFF',
   navyMid:     '#3A3546',
   navyLight:   'rgba(22,19,31,0.55)',
@@ -386,7 +386,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
             {/* Resumo no topo */}
             {call.summary && (
               <View style={{
-                backgroundColor: '#F0F0FB', borderRadius: 12, padding: 14,
+                backgroundColor: '#F3F0E8', borderRadius: 12, padding: 14,
                 borderLeftWidth: 3, borderLeftColor: '#6B4BFF',
                 marginBottom: 4,
               }}>

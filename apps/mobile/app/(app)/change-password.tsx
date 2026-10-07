@@ -22,7 +22,7 @@ const C = {
   navyMid:   '#4D4858',
   navyLight: '#8A8494',
   border:    'rgba(22,19,31,0.08)',
-  fieldBg:   '#F7F6FD',
+  fieldBg:   '#FAF7F0',
   green:     '#DCFF4A',
   greenDark: '#5C7300',
   greenBg:   'rgba(220,255,74,0.12)',

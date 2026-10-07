@@ -37,7 +37,7 @@ const C = {
   navyMid:   '#4D4858',
   navyLight: '#8A8494',
   card:      '#FFFFFF',
-  bg:        '#EEEAF3',
+  bg:        '#EFEBE4',
   border:    'rgba(22,19,31,0.06)',
   borderMid: 'rgba(22,19,31,0.12)',
   hairline:  'rgba(22,19,31,0.04)',
