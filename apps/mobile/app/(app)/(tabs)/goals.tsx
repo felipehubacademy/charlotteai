@@ -25,7 +25,7 @@ const C = {
   navyMid:   '#4D4858',
   navyLight: '#8A8494',
   navyGhost: 'rgba(22,19,31,0.06)',
-  greenDark: '#5C7300',
+  greenDark: '#08804A',
   greenBg:   '#F8FFE0',
   border:    'rgba(22,19,31,0.10)',
   shadow:    'rgba(22,19,31,0.08)',

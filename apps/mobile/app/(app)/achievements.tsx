@@ -22,7 +22,7 @@ const C = {
   navyLight: '#8A8494',
   ghost:     'rgba(22,19,31,0.06)',
   border:    'rgba(22,19,31,0.10)',
-  green:     '#5C7300',
+  green:     '#08804A',
   greenLight:'#F8FFE0',
 };
 

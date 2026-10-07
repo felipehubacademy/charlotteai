@@ -39,7 +39,7 @@ const C = {
   navyLight: '#8A8494',
   border:    'rgba(22,19,31,0.10)',
   green:     '#DCFF4A',
-  greenDark: '#5C7300',
+  greenDark: '#08804A',
   shadow: Platform.select({
     ios: {
       shadowColor: 'rgba(22,19,31,0.12)',
@@ -786,7 +786,7 @@ function OptionList({
         let borderColor = C.border;
         let bgColor = C.card;
         if (locked) {
-          if (isCorrect)                    { borderColor = C.greenDark; bgColor = 'rgba(92,115,0,0.08)'; }
+          if (isCorrect)                    { borderColor = C.greenDark; bgColor = 'rgba(8,128,74,0.08)'; }
           else if (isSelected && !isCorrect){ borderColor = '#DC2626';   bgColor = 'rgba(220,38,38,0.06)'; }
         } else {
           if (isSelected) { borderColor = C.green; bgColor = 'rgba(220,255,74,0.10)'; }

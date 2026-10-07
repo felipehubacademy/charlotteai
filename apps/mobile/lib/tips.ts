@@ -207,7 +207,7 @@ export const TIPS: Record<string, Tip[]> = {
 };
 
 export const TIP_STYLE: Record<string, { bg: string; color: string }> = {
-  'word':         { bg: '#F8FFE0', color: '#5C7300' },
+  'word':         { bg: '#F8FFE0', color: '#08804A' },
   'expression':   { bg: '#EFF6FF', color: '#1D4ED8' },
   'phrasal verb': { bg: '#FFEEF4', color: '#BE185D' },
   'idiom':        { bg: '#F1EEFF', color: '#6D28D9' },

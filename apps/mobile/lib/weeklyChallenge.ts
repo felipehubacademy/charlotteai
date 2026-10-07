@@ -37,7 +37,7 @@ const CHALLENGE_POOL: WeeklyChallenge[] = [
     title: { pt: 'Maratonista', en: 'Marathon Runner' },
     sub:   { pt: 'Envie 50 mensagens esta semana', en: 'Send 50 messages this week' },
     target: 50, unit: { pt: 'mensagens', en: 'messages' },
-    xpReward: 100, color: '#5C7300', bgColor: '#F8FFE0',
+    xpReward: 100, color: '#08804A', bgColor: '#F8FFE0',
     // Novice only sends text — lower target so the challenge is achievable
   },
   {

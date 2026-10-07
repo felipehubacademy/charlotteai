@@ -1898,14 +1898,14 @@ export default function LiveVoiceModal({
                   paddingHorizontal: 8, paddingVertical: 2,
                   borderRadius: 8,
                   backgroundColor: captionSpeaker === 'user'
-                    ? 'rgba(92,115,0,0.12)'
+                    ? 'rgba(8,128,74,0.12)'
                     : 'rgba(107,75,255,0.10)',
                   marginBottom: 6,
                 }}>
                   <AppText style={{
                     fontSize: 9, fontWeight: '800',
                     letterSpacing: 1,
-                    color: captionSpeaker === 'user' ? '#5C7300' : '#6B4BFF',
+                    color: captionSpeaker === 'user' ? '#08804A' : '#6B4BFF',
                   }}>
                     {captionSpeaker === 'user'
                       ? (userLevel === 'Novice' ? 'VOCÊ' : 'YOU')
@@ -1914,7 +1914,7 @@ export default function LiveVoiceModal({
                 </View>
                 <AppText
                   style={{
-                    color: captionSpeaker === 'user' ? '#5C7300' : '#16131F',
+                    color: captionSpeaker === 'user' ? '#08804A' : '#16131F',
                     fontSize: 16,
                     lineHeight: 22,
                     fontWeight: '500',
@@ -2056,16 +2056,16 @@ export default function LiveVoiceModal({
                   accessibilityRole="button"
                   style={{
                     width: 64, height: 64, borderRadius: 32,
-                    backgroundColor: isSpeaker ? 'rgba(92,115,0,0.12)' : 'rgba(22,19,31,0.06)',
+                    backgroundColor: isSpeaker ? 'rgba(8,128,74,0.12)' : 'rgba(22,19,31,0.06)',
                     borderWidth: 1,
-                    borderColor: isSpeaker ? 'rgba(92,115,0,0.4)' : 'rgba(22,19,31,0.10)',
+                    borderColor: isSpeaker ? 'rgba(8,128,74,0.4)' : 'rgba(22,19,31,0.10)',
                     alignItems: 'center', justifyContent: 'center',
                   }}
                 >
                   {onHeadphones
                     ? <Headphones size={24} color="rgba(22,19,31,0.65)" weight="regular" />
                     : isSpeaker
-                      ? <SpeakerHigh size={24} color="#5C7300" weight="regular" />
+                      ? <SpeakerHigh size={24} color="#08804A" weight="regular" />
                       : <Ear         size={24} color="rgba(22,19,31,0.65)" weight="regular" />
                   }
                 </TouchableOpacity>

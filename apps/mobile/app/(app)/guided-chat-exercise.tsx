@@ -55,8 +55,8 @@ const C = {
   navy:      '#16131F',
   navyMid:   '#4D4858',
   navyLight: '#8A8494',
-  greenDark: '#5C7300',
-  green:     '#5C7300',
+  greenDark: '#08804A',
+  green:     '#08804A',
   red:       '#DC2626',
   border:    'rgba(22,19,31,0.08)',
 };
@@ -636,7 +636,7 @@ export default function GuidedChatExerciseScreen() {
           }}>
             <View style={{
               width: 64, height: 64, borderRadius: 32,
-              backgroundColor: allObjectivesDone ? 'rgba(92,115,0,0.12)' : 'rgba(217,119,6,0.12)',
+              backgroundColor: allObjectivesDone ? 'rgba(8,128,74,0.12)' : 'rgba(217,119,6,0.12)',
               alignItems: 'center', justifyContent: 'center', marginBottom: 16,
             }}>
               <Trophy size={32} color={allObjectivesDone ? C.greenDark : '#B45309'} weight="fill" />
@@ -674,8 +674,8 @@ export default function GuidedChatExerciseScreen() {
               <View style={{
                 width: '100%',
                 padding: 12, borderRadius: 12, marginBottom: 16,
-                backgroundColor: 'rgba(92,115,0,0.08)',
-                borderWidth: 1, borderColor: 'rgba(92,115,0,0.20)',
+                backgroundColor: 'rgba(8,128,74,0.08)',
+                borderWidth: 1, borderColor: 'rgba(8,128,74,0.20)',
               }}>
                 <AppText style={{ fontSize: 13, color: C.navy, lineHeight: 18 }}>
                   {isPt ? gc.recap_pt : gc.recap_en}

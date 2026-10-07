@@ -13,7 +13,7 @@ const C = {
   border:    'rgba(22,19,31,0.08)',
   green:     '#22C55E',
   orange:    '#F97316',
-  greenDark: '#5C7300',
+  greenDark: '#08804A',
   gold:      '#EAB308',
 };
 

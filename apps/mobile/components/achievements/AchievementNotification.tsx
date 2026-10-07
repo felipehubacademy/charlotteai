@@ -62,7 +62,7 @@ const C = {
   navyMid:   '#4D4858',
   navyLight: '#8A8494',
   green:     '#DCFF4A',
-  greenDark: '#5C7300',
+  greenDark: '#08804A',
   greenBg:   '#F8FFE0',
   sheet:     '#FFFFFF',
   border:    'rgba(22,19,31,0.08)',

@@ -24,7 +24,7 @@ const C = {
   border:    'rgba(22,19,31,0.08)',
   fieldBg:   '#FAF7F0',
   green:     '#DCFF4A',
-  greenDark: '#5C7300',
+  greenDark: '#08804A',
   greenBg:   'rgba(220,255,74,0.12)',
   error:     '#DC2626',
   errorBg:   'rgba(220,38,38,0.08)',

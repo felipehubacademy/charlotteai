@@ -81,7 +81,7 @@ const C = {
   border:    'rgba(22,19,31,0.10)',
   gold:      '#D97706',
   goldBg:    '#FFFBEB',
-  green:     '#5C7300',
+  green:     '#08804A',
   greenBg:   '#F8FFE0',
   red:       '#DC2626',
   redBg:     'rgba(220,38,38,0.07)',
@@ -1534,7 +1534,7 @@ export default function LearnSessionScreen() {
                     let dotText     = selected ? '#FFF' : C.navyMid;
                     let trailIcon   = selected ? <CheckCircle size={18} color={accent} weight="fill" /> : null;
                     if (gStatus === 'submitted') {
-                      if (isCorrectOpt)                        { borderColor = C.green; bgColor = 'rgba(92,115,0,0.08)';    dotBg = C.green;  dotText = '#FFF'; trailIcon = <CheckCircle size={18} color={C.green} weight="fill" />; }
+                      if (isCorrectOpt)                        { borderColor = C.green; bgColor = 'rgba(8,128,74,0.08)';    dotBg = C.green;  dotText = '#FFF'; trailIcon = <CheckCircle size={18} color={C.green} weight="fill" />; }
                       else if (selected && !isCorrectOpt)      { borderColor = C.red;   bgColor = 'rgba(220,38,38,0.06)';  dotBg = C.red;    dotText = '#FFF'; trailIcon = <XCircle    size={18} color={C.red}   weight="fill" />; }
                       else                                     { borderColor = C.border; bgColor = C.card; dotBg = C.ghost; dotText = C.navyMid; trailIcon = null; }
                     }
@@ -2125,7 +2125,7 @@ export default function LearnSessionScreen() {
                 ? (isPortuguese ? 'Correto!' : 'Correct!')
                 : (isPortuguese ? 'Quase lá…' : 'Almost there…')}
             </AppText>
-            <View style={{ backgroundColor: isCorrect ? 'rgba(92,115,0,0.12)' : 'rgba(220,38,38,0.10)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 4 }}>
+            <View style={{ backgroundColor: isCorrect ? 'rgba(8,128,74,0.12)' : 'rgba(220,38,38,0.10)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 4 }}>
               <AppText style={{ fontSize: 12, fontWeight: '800', color: isCorrect ? C.green : C.red }}>
                 +{!isCorrect ? 0 : currentStep.exercise.type === 'short_write' ? 8 : 10} XP
               </AppText>
@@ -2146,7 +2146,7 @@ export default function LearnSessionScreen() {
 
           {/* Model answer for short_write */}
           {currentStep.exercise.type === 'short_write' && currentStep.exercise.example_answer && (
-            <View style={{ padding: 12, backgroundColor: 'rgba(92,115,0,0.07)', borderRadius: 12, marginBottom: 10 }}>
+            <View style={{ padding: 12, backgroundColor: 'rgba(8,128,74,0.07)', borderRadius: 12, marginBottom: 10 }}>
               <AppText style={{ fontSize: 11, fontWeight: '700', color: C.green, textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
                 {isPortuguese ? 'Exemplo de resposta' : 'Model answer'}
               </AppText>
@@ -2210,7 +2210,7 @@ export default function LearnSessionScreen() {
         const panelBorder = isCorrectState ? 'rgba(220,255,74,0.4)' : isCloseState ? 'rgba(245,158,11,0.4)' : 'rgba(220,38,38,0.25)';
         const textColor   = isCorrectState ? C.green : isCloseState ? '#92400E' : C.red;
         const btnColor    = isCorrectState ? C.green : isCloseState ? '#D97706' : C.red;
-        const xpBg        = isCorrectState ? 'rgba(92,115,0,0.12)' : isCloseState ? 'rgba(217,119,6,0.12)' : 'rgba(220,38,38,0.10)';
+        const xpBg        = isCorrectState ? 'rgba(8,128,74,0.12)' : isCloseState ? 'rgba(217,119,6,0.12)' : 'rgba(220,38,38,0.10)';
         const title       = isCorrectState
           ? (isPortuguese ? 'Correto!' : 'Correct!')
           : isCloseState
@@ -2335,7 +2335,7 @@ export default function LearnSessionScreen() {
                   onPress={() => saveExplainRating(1)}
                   style={{
                     width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center',
-                    backgroundColor: explainRating === 1 ? 'rgba(92,115,0,0.15)' : 'rgba(22,19,31,0.06)',
+                    backgroundColor: explainRating === 1 ? 'rgba(8,128,74,0.15)' : 'rgba(22,19,31,0.06)',
                   }}
                 >
                   <ThumbsUp size={18} color={explainRating === 1 ? C.green : 'rgba(22,19,31,0.35)'} weight={explainRating === 1 ? 'fill' : 'regular'} />

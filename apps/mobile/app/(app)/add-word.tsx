@@ -49,8 +49,8 @@ const C = {
   muted:    '#8A8494',
   border:   'rgba(22,19,31,0.10)',
   inputBg:  '#EDE9E1',   // mesmo que my-vocabulary
-  greenBg:  'rgba(92,115,0,0.08)',
-  green:    '#5C7300',
+  greenBg:  'rgba(8,128,74,0.08)',
+  green:    '#08804A',
 };
 
 const CATEGORIES: { key: VocabCategory; labelPt: string; labelEn: string }[] = [

@@ -51,8 +51,8 @@ const C = {
   redBg:    'rgba(220,38,38,0.08)',
   gold:     '#D97706',
   goldBg:   '#FFFBEB',
-  green:    '#5C7300',
-  greenBg:  'rgba(92,115,0,0.09)',
+  green:    '#08804A',
+  greenBg:  'rgba(8,128,74,0.09)',
 };
 
 const CATEGORY_LABELS: Record<string, string> = {

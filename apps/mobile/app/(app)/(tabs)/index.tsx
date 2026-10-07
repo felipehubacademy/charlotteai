@@ -56,7 +56,7 @@ const C = {
   navyGhost: 'rgba(22,19,31,0.06)',
   orange:    '#FF6B35',
   gold:      '#F59E0B',
-  greenDark: '#5C7300',
+  greenDark: '#08804A',
   shadow:    'rgba(22,19,31,0.08)',
 };
 

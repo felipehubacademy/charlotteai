@@ -35,7 +35,7 @@ const C = {
   card:       '#FFFFFF',
   cardBorder: 'rgba(22,19,31,0.10)',
   green:      '#DCFF4A',
-  greenDark:  '#5C7300',
+  greenDark:  '#08804A',
   navy:       '#16131F',
   navyMid:    '#4D4858',
   white:      '#FFFFFF',

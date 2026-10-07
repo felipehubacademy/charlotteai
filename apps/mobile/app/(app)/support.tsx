@@ -18,7 +18,7 @@ const SUPPORT_WHATSAPP = '';
 
 const C = {
   bg: '#FAF7F0', card: '#FFFFFF', navy: '#16131F', navyMid: '#4D4858',
-  navyLight: '#8A8494', border: 'rgba(22,19,31,0.08)', green: '#DCFF4A', greenDark: '#5C7300',
+  navyLight: '#8A8494', border: 'rgba(22,19,31,0.08)', green: '#DCFF4A', greenDark: '#08804A',
 };
 const cardShadow = Platform.select({
   ios: { shadowColor: 'rgba(22,19,31,0.08)', shadowOpacity: 1, shadowRadius: 12, shadowOffset: { width: 0, height: 3 } },

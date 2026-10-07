@@ -34,7 +34,7 @@ const C = {
   border:    'rgba(22,19,31,0.10)',
   violet:    '#6B4BFF',
   violetBg:  '#F1EEFF',
-  greenDark: '#5C7300',
+  greenDark: '#08804A',
   greenBg:   '#F8FFE0',
   red:       '#DC2626',
   redBg:     'rgba(220,38,38,0.07)',
@@ -663,7 +663,7 @@ export default function LearnPronunciationScreen() {
                         padding: 12, borderRadius: 12, marginBottom: 10,
                         backgroundColor: listenWriteCorrect ? C.greenBg : C.redBg,
                         borderWidth: 1,
-                        borderColor: listenWriteCorrect ? 'rgba(92,115,0,0.2)' : 'rgba(220,38,38,0.18)',
+                        borderColor: listenWriteCorrect ? 'rgba(8,128,74,0.2)' : 'rgba(220,38,38,0.18)',
                       }}>
                         {listenWriteCorrect
                           ? <CheckCircle size={18} color={C.greenDark} weight="fill" />

@@ -11,7 +11,7 @@ const C = {
   border:    'rgba(22,19,31,0.07)',
   bg:        '#FAF7F0',
   green:     '#DCFF4A',
-  greenDark: '#5C7300',
+  greenDark: '#08804A',
   greenBg:   'rgba(220,255,74,0.1)',
   greenBorder: 'rgba(220,255,74,0.3)',
   rowBg:     'rgba(22,19,31,0.03)',

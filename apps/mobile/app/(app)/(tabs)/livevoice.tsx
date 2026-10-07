@@ -45,7 +45,7 @@ const C = {
   textMuted:   '#4D4858',
   textDim:     '#8A8494',
   greenAccent: '#DCFF4A',
-  greenDark:   '#5C7300',
+  greenDark:   '#08804A',
   gold:        '#D97706',
   red:         '#DC2626',
 };
@@ -756,7 +756,7 @@ export default function LiveVoiceTab() {
               >
                 <View style={{
                   width: 38, height: 38, borderRadius: 11,
-                  backgroundColor: 'rgba(92,115,0,0.12)',
+                  backgroundColor: 'rgba(8,128,74,0.12)',
                   alignItems: 'center', justifyContent: 'center',
                 }}>
                   <Phone size={18} color={C.greenDark} weight="fill" />

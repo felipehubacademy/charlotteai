@@ -54,11 +54,11 @@ const NODE_CONFIG: Record<NodeType, {
 }> = {
   grammar:  { color: '#D97706', Icon: BookOpen,   label: 'Grammar',     labelPt: 'Gramática'  },
   speaking: { color: '#6B4BFF', Icon: Microphone, label: 'Speaking',    labelPt: 'Pronúncia'  },
-  roleplay: { color: '#5C7300', Icon: Play,        label: 'Role-play',   labelPt: 'Role-play'  },
+  roleplay: { color: '#08804A', Icon: Play,        label: 'Role-play',   labelPt: 'Role-play'  },
   chat:     { color: '#16131F', Icon: ChatCircle,  label: 'Guided Chat', labelPt: 'Chat Guiado' },
 };
 
-const NEXT_GREEN = '#5C7300';
+const NEXT_GREEN = '#DCFF4A'; // Volt — próximo passo da trilha
 const TOPICS_PER_MODULE = 4;
 
 // ── Domain ────────────────────────────────────────────────────────────────────
@@ -100,23 +100,17 @@ function scoreColor(s: number): string {
 }
 
 // ── Segmented progress bar (4 segments, type-tinted) ──────────────────────────
-function SegmentedProgress({ lessons }: { lessons: Lesson[] }) {
+function SegmentedProgress({ lessons, accent }: { lessons: Lesson[]; accent: string }) {
   return (
     <View style={{ flexDirection: 'row', gap: 4, marginTop: 16 }}>
       {lessons.map((l, i) => {
-        const cfg = NODE_CONFIG[l.type];
         const isDone = l.state === 'done';
-        const isNext = l.state === 'next';
         return (
           <View
             key={i}
             style={{
               flex: 1, height: 6, borderRadius: 3,
-              backgroundColor: isDone
-                ? cfg.color
-                : isNext
-                ? a(NEXT_GREEN, 0.30)
-                : C.ghost,
+              backgroundColor: isDone ? accent : C.ghost,
             }}
           />
         );
@@ -161,15 +155,15 @@ function NumberChip({
 
 // ── Lesson row (expanded view) ────────────────────────────────────────────────
 function LessonRow({
-  lesson, isLast, onPress, isPt,
-}: { lesson: Lesson; isLast: boolean; onPress: () => void; isPt: boolean }) {
+  lesson, isLast, onPress, isPt, isPrimary,
+}: { lesson: Lesson; isLast: boolean; onPress: () => void; isPt: boolean; isPrimary: boolean }) {
   const cfg = NODE_CONFIG[lesson.type];
   const isDone   = lesson.state === 'done';
   const isNext   = lesson.state === 'next';
   const isLocked = lesson.state === 'locked';
 
-  const iconBg = isLocked ? C.ghost : cfg.color;
-  const iconColor = isLocked ? C.navyLight : '#FFF';
+  const iconBg = C.ghost;
+  const iconColor = isLocked ? C.navyLight : C.navy;
 
   return (
     <TouchableOpacity
@@ -252,10 +246,11 @@ function LessonRow({
           minWidth: 56,
           paddingHorizontal: 10, paddingVertical: 6,
           borderRadius: 10,
-          backgroundColor: NEXT_GREEN,
+          backgroundColor: isPrimary ? NEXT_GREEN : 'transparent',
+          borderWidth: isPrimary ? 0 : 1, borderColor: C.borderMid,
           alignItems: 'center', justifyContent: 'center',
         }}>
-          <AppText style={{ fontSize: 11, fontWeight: '700', color: '#FFF' }}>
+          <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navy }}>
             {isPt ? 'Começar' : 'Start'}
           </AppText>
         </View>
@@ -331,7 +326,7 @@ function ModuleCard({
             }}>
               {isLocked
                 ? (isPt ? `${data.totalCount} tópicos · bloqueado` : `${data.totalCount} topics · locked`)
-                : `${data.completedCount} ${isPt ? 'de' : 'of'} ${data.totalCount} ${isPt ? 'concluidos' : 'completed'}`}
+                : `${data.completedCount} ${isPt ? 'de' : 'of'} ${data.totalCount} ${isPt ? 'concluídos' : 'completed'}`}
             </AppText>
             <AppText
               numberOfLines={2}
@@ -363,7 +358,7 @@ function ModuleCard({
         </View>
 
         {/* Segmented progress bar */}
-        {!isLocked && <SegmentedProgress lessons={data.lessons} />}
+        {!isLocked && <SegmentedProgress lessons={data.lessons} accent={accent} />}
       </TouchableOpacity>
 
       {/* Expanded lessons list */}
@@ -380,6 +375,7 @@ function ModuleCard({
               isLast={i === data.lessons.length - 1}
               onPress={() => onStartLesson(l)}
               isPt={isPt}
+              isPrimary={i === data.lessons.findIndex(x => x.state === 'next')}
             />
           ))}
         </View>

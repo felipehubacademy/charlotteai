@@ -95,7 +95,7 @@ const TypingIndicator = ({ isAudio = false }: { isAudio?: boolean }) => {
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#F3F0E8', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: 12 }}>
         {isAudio ? (
           <Animated.View style={{ opacity: pulse }}>
-            <Microphone size={16} color="#5C7300" weight="fill" />
+            <Microphone size={16} color="#08804A" weight="fill" />
           </Animated.View>
         ) : (
           dots.map((dot, i) => (
@@ -115,7 +115,7 @@ const AudioRecordingIndicator = () => (
   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, padding: 14, backgroundColor: '#F3F0E8', borderRadius: 18, borderTopLeftRadius: 0, alignSelf: 'flex-start', marginBottom: 16 }}>
     <CharlotteAvatar size="xs" />
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-      <Microphone size={14} color="#5C7300" weight="fill" />
+      <Microphone size={14} color="#08804A" weight="fill" />
       <AppText style={{ color: 'rgba(22,19,31,0.65)', fontSize: 14 }}>Recording...</AppText>
     </View>
   </View>
@@ -221,8 +221,8 @@ const MessageBubble: React.FC<{
               borderRadius: 8, paddingHorizontal: 8, paddingVertical: 4,
               alignSelf: 'flex-start',
             }}>
-              <SpeakerHigh size={11} color="#5C7300" weight="fill" />
-              <AppText style={{ fontSize: 10, fontWeight: '700', color: '#5C7300', textTransform: 'uppercase', letterSpacing: 0.7 }}>
+              <SpeakerHigh size={11} color="#08804A" weight="fill" />
+              <AppText style={{ fontSize: 10, fontWeight: '700', color: '#08804A', textTransform: 'uppercase', letterSpacing: 0.7 }}>
                 Demonstration
               </AppText>
             </View>
@@ -368,8 +368,8 @@ const MessageBubble: React.FC<{
         {showTranscription && (
           <View style={{ marginTop: 8, padding: 12, backgroundColor: '#FAF7F0', borderRadius: 12, borderWidth: 1, borderColor: 'rgba(22,19,31,0.1)' }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 6 }}>
-              <ChatCenteredText size={12} color="#5C7300" weight="regular" />
-              <AppText style={{ fontSize: 11, color: '#5C7300', fontWeight: '600' }}>Transcription</AppText>
+              <ChatCenteredText size={12} color="#08804A" weight="regular" />
+              <AppText style={{ fontSize: 11, color: '#08804A', fontWeight: '600' }}>Transcription</AppText>
             </View>
             <AppText style={{ fontSize: 14, color: '#16131F' }}>{transcription}</AppText>
           </View>
@@ -385,12 +385,12 @@ const MessageBubble: React.FC<{
                 onPress={() => openAddWord(term)}
                 style={{
                   flexDirection: 'row', alignItems: 'center', gap: 4,
-                  backgroundColor: 'rgba(92,115,0,0.10)',
+                  backgroundColor: 'rgba(8,128,74,0.10)',
                   borderRadius: 20, paddingHorizontal: 10, paddingVertical: 4,
-                  borderWidth: 1, borderColor: 'rgba(92,115,0,0.20)',
+                  borderWidth: 1, borderColor: 'rgba(8,128,74,0.20)',
                 }}
               >
-                <AppText style={{ fontSize: 12, color: '#5C7300', fontWeight: '600' }}>+ {term}</AppText>
+                <AppText style={{ fontSize: 12, color: '#08804A', fontWeight: '600' }}>+ {term}</AppText>
               </TouchableOpacity>
             ))}
           </View>
@@ -574,8 +574,8 @@ const ChatBox: React.FC<ChatBoxProps> = ({
             {!!(transcript || finalTranscript) && (
               <View className="bg-primary/10 rounded-xl p-3 mb-4 border border-primary/20">
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 4 }}>
-                  <Microphone size={12} color="#5C7300" weight="fill" />
-                  <AppText className="text-xs font-medium" style={{ color: '#5C7300' }}>Listening...</AppText>
+                  <Microphone size={12} color="#08804A" weight="fill" />
+                  <AppText className="text-xs font-medium" style={{ color: '#08804A' }}>Listening...</AppText>
                 </View>
                 <AppText className="text-sm text-white">
                   <AppText className="text-white/50">{transcript}</AppText>

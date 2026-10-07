@@ -29,7 +29,7 @@ const C = {
   border:    'rgba(22,19,31,0.10)',
   gold:      '#D97706',
   goldBg:    '#FFFBEB',
-  greenDark: '#5C7300',
+  greenDark: '#08804A',
   greenBg:   '#F8FFE0',
   red:       '#DC2626',
   redBg:     'rgba(220,38,38,0.07)',
@@ -643,7 +643,7 @@ export default function LearnGrammarScreen() {
                     padding: 14, borderRadius: 14, marginBottom: 12,
                     backgroundColor: isCorrect ? C.greenBg : C.redBg,
                     borderWidth: 1,
-                    borderColor: isCorrect ? 'rgba(92,115,0,0.2)' : 'rgba(220,38,38,0.18)',
+                    borderColor: isCorrect ? 'rgba(8,128,74,0.2)' : 'rgba(220,38,38,0.18)',
                   }}>
                     {isCorrect
                       ? <CheckCircle size={20} color={C.greenDark} weight="fill" />
@@ -653,7 +653,7 @@ export default function LearnGrammarScreen() {
                       {isCorrect ? 'Correct!' : 'Not quite…'}
                     </AppText>
                     <View style={{
-                      backgroundColor: isCorrect ? 'rgba(92,115,0,0.12)' : 'rgba(220,38,38,0.10)',
+                      backgroundColor: isCorrect ? 'rgba(8,128,74,0.12)' : 'rgba(220,38,38,0.10)',
                       borderRadius: 20, paddingHorizontal: 8, paddingVertical: 3,
                     }}>
                       <AppText style={{ fontSize: 11, fontWeight: '800', color: isCorrect ? C.greenDark : C.red }}>

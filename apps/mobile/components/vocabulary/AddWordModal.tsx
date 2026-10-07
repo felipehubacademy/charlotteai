@@ -46,7 +46,7 @@ const C = {
   muted:     '#8A8494',
   border:    'rgba(22,19,31,0.12)',
   green:     '#DCFF4A',
-  greenDark: '#5C7300',
+  greenDark: '#08804A',
   greenBg:   'rgba(220,255,74,0.10)',
   inputBg:   '#F3F0E8',
 };

@@ -406,7 +406,7 @@ export default function PracticeTab() {
               // âmbar = 3+ dias sem praticar. Recentes (0-2) sem dot.
               const dotColor =
                 active || d < 0 ? null
-                : d === 999 ? '#5C7300'      // novo (nunca tentou)
+                : d === 999 ? '#08804A'      // novo (nunca tentou)
                 : d >= 3    ? '#D97706'      // atrasado
                             : null;
               return (

@@ -39,7 +39,7 @@ export const lightColors: ThemeColors = {
   navyLight:  '#8A8494',
   navyGhost:  'rgba(22,19,31,0.06)',
   green:      '#DCFF4A',
-  greenDark:  '#5C7300',
+  greenDark:  '#08804A',
   greenBg:    '#F8FFE0',
   blue:       '#60A5FA',
   blueBg:     '#EFF6FF',
