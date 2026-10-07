@@ -25,20 +25,20 @@ interface GreetingRequest {
 }
 
 function buildPrompt(req: GreetingRequest): { system: string; user: string } {
-  const { firstName, streak, todayXP, totalXP, dailyGoal, hour, level, isNewUser } = req;
+  const { streak, todayXP, totalXP, dailyGoal, level, isNewUser } = req;
 
-  const timeOfDay = hour < 12 ? 'morning' : hour < 18 ? 'afternoon' : 'evening';
   const goalMet   = todayXP >= dailyGoal;
   const xpLeft    = Math.max(0, dailyGoal - todayXP);
   const newUser   = isNewUser ?? (totalXP === 0 && streak === 0);
 
   // ── System prompt ────────────────────────────────────────────────────────
   const system = level === 'Novice'
-    ? `Voce e Charlotte, professora de ingles com personalidade: direta, animada, real. Escreva UMA frase de recepcao em portugues brasileiro — curta, com personalidade, encorajadora. Estilo: como uma amiga que te conhece e quer que voce arrase. Nunca use emoji. Nunca seja generica. Nunca diga "sessao" nem "app". Seja natural e especifica ao contexto.`
-    : `You are Charlotte — sharp, warm, direct. Write ONE punchy welcome message in English. Style: like a cool coach who actually knows the student. No emoji. No generic phrases. Never say "session" or "app". Use the context to make it feel personal and real.`;
+    ? `Você é a Charlotte, professora de inglês com personalidade: direta, animada, real. Escreva UMA frase de incentivo em português brasileiro — curta, com personalidade, encorajadora. Estilo: como uma amiga que te conhece e quer que você arrase. A tela já mostra "Bom dia/Boa tarde/Boa noite" com o nome do aluno logo acima da sua frase: NÃO cumprimente, NÃO use o nome do aluno e NÃO mencione o período do dia — vá direto ao incentivo. Nunca use emoji. Nunca seja genérica. Nunca diga "sessão" nem "app". Seja natural e específica ao contexto.`
+    : `You are Charlotte — sharp, warm, direct. Write ONE punchy line of encouragement in English. Style: like a cool coach who actually knows the student. The screen already shows "Good morning/afternoon/evening" with the student's name right above your line: do NOT greet, do NOT use the student's name and do NOT mention the time of day — go straight to the encouragement. No emoji. No generic phrases. Never say "session" or "app". Use the context to make it feel personal and real.`;
 
   // ── User prompt (context) ─────────────────────────────────────────────────
-  const ctx: string[] = [`Name: ${firstName}`, `Time: ${timeOfDay}`];
+  // Nome e período ficam fora: a Home já os mostra no título acima da fala.
+  const ctx: string[] = [];
 
   if (newUser) {
     ctx.push('This is their very first time here. Welcome them like it is the start of something great. Do not mention streaks or XP.');
@@ -52,7 +52,7 @@ function buildPrompt(req: GreetingRequest): { system: string; user: string } {
     ctx.push(`No XP yet today. Short motivational nudge.`);
   }
 
-  const user = `${ctx.join(' | ')}\n\nWrite the greeting now. ONE sentence only. MAX 12 WORDS. Short, punchy, no fluff.`;
+  const user = `${ctx.join(' | ')}\n\nWrite the line now. ONE sentence only. MAX 12 WORDS. No greeting, no name. Short, punchy, no fluff.`;
 
   return { system, user };
 }

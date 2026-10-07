@@ -31,8 +31,10 @@ export function QueizyWave({
   let wave = '';
   const x0 = pad + (width - 2 * pad) * p;
   if (width > 0 && p < 1) {
-    wave = `M${x0.toFixed(1)} ${mid}`;
-    let x = x0;
+    // Com 0 feito, a onda começa logo depois do ponto verde.
+    const start = p === 0 ? pad + strokeWidth + 2 : x0;
+    wave = `M${start.toFixed(1)} ${mid}`;
+    let x = start;
     let up = true;
     while (x + step <= width - pad) {
       wave += ` Q${(x + step / 2).toFixed(1)} ${(up ? mid - amp : mid + amp).toFixed(1)} ${(x + step).toFixed(1)} ${mid}`;
@@ -48,9 +50,8 @@ export function QueizyWave({
           {wave !== '' && (
             <Path d={wave} stroke={todoColor} strokeWidth={strokeWidth} fill="none" strokeLinecap="round" strokeLinejoin="round" />
           )}
-          {p > 0 && (
-            <Path d={`M${pad} ${mid} H${x0.toFixed(1)}`} stroke={doneColor} strokeWidth={strokeWidth} strokeLinecap="round" />
-          )}
+          {/* Com 0 feito, um ponto verde marca onde a linha reta começa. */}
+          <Path d={`M${pad} ${mid} H${Math.max(x0, pad + 0.1).toFixed(1)}`} stroke={doneColor} strokeWidth={strokeWidth} strokeLinecap="round" />
         </Svg>
       )}
     </View>

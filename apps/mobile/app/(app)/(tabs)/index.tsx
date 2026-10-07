@@ -361,13 +361,14 @@ export default function HomeTab() {
 
     // Hardcoded fallback — used when API fails, times out, or returns empty.
     const h = new Date().getHours();
+    // Sem nome nem cumprimento: o título do hero já mostra os dois.
     const fallback = isPt
-      ? (h < 12 ? `Bom dia, ${firstName}! Pronto para praticar?`
-       : h < 18 ? `Boa tarde, ${firstName}! Vamos praticar um pouco?`
-                : `Boa noite, ${firstName}! Que tal uma sessão rápida?`)
-      : (h < 12 ? `Good morning, ${firstName}! Ready to practice?`
-       : h < 18 ? `Good afternoon, ${firstName}! Let's get some practice in.`
-                : `Good evening, ${firstName}! How about a quick session?`);
+      ? (h < 12 ? 'Começar o dia praticando faz toda a diferença.'
+       : h < 18 ? 'Uma lição rápida agora já te deixa mais perto da meta.'
+                : 'Ainda dá tempo de uma prática rápida hoje.')
+      : (h < 12 ? 'Starting the day with practice makes all the difference.'
+       : h < 18 ? 'One quick lesson now gets you closer to your goal.'
+                : "There's still time for a quick practice today.");
 
     const showFallback = () => {
       unstable_batchedUpdates(() => {
@@ -582,11 +583,15 @@ export default function HomeTab() {
         >
           <QueizyWave progress={todayXP / dailyGoal} />
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 4 }}>
-            <AppText style={{ fontSize: 11, fontWeight: '800', color: C.greenDark }}>
-              {isPt ? `${todayXP} / ${dailyGoal} XP hoje` : `${todayXP} / ${dailyGoal} XP today`}
+            <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navyMid }}>
+              {todayXP === 0
+                ? (isPt ? 'Pratique para endireitar a onda' : 'Practice to straighten the wave')
+                : todayXP >= dailyGoal
+                ? (isPt ? 'Meta do dia batida' : 'Daily goal done')
+                : (isPt ? `Faltam ${dailyGoal - todayXP} XP para a meta` : `${dailyGoal - todayXP} XP to go`)}
             </AppText>
-            <AppText style={{ fontSize: 11, fontWeight: '800', color: '#FF4F8B' }}>
-              queizy → crazy
+            <AppText style={{ fontSize: 11, fontWeight: '800', color: C.greenDark }}>
+              {todayXP} / {dailyGoal} XP
             </AppText>
           </View>
         </TouchableOpacity>
@@ -609,7 +614,7 @@ export default function HomeTab() {
       {/* Learning trail — scrollable below fixed hero */}
       <ScrollView
         ref={trailScrollRef}
-        style={{ flex: 1 }}
+        style={{ flex: 1, marginTop: 10 }}
         contentContainerStyle={{ paddingTop: 24, paddingBottom: 40 }}
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={32}
