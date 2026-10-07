@@ -9,7 +9,7 @@ import {
   Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, { Circle } from 'react-native-svg';
+import Svg, { Circle, Path as SvgPath } from 'react-native-svg';
 import { useFocusEffect } from 'expo-router';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { Image } from 'expo-image';
@@ -68,11 +68,18 @@ function poolStatusLabel(
 ): string {
   if (!isKnown) return isPt ? 'Carregando…' : 'Loading…';
   if (isLimitReached) return isPt ? 'Limite mensal atingido' : 'Monthly limit reached';
-  if (isUnlimited) return isPt ? 'Charlotte disponível · ilimitado' : 'Charlotte available · unlimited';
+  return isPt ? 'Charlotte disponível' : 'Charlotte available';
+}
+
+/** Selo de minutos restantes ao lado do status (null = sem selo). */
+function poolMinutesBadge(
+  isPt: boolean, isLimitReached: boolean, isUnlimited: boolean,
+  remainingSec: number, isKnown: boolean,
+): string | null {
+  if (!isKnown || isLimitReached) return null;
+  if (isUnlimited) return isPt ? 'ilimitado' : 'unlimited';
   const remainMin = Math.max(0, Math.floor(remainingSec / 60)); // mensal restante + bônus
-  return isPt
-    ? `Charlotte disponível · ${remainMin} min restantes`
-    : `Charlotte available · ${remainMin} min left`;
+  return `${remainMin} min`;
 }
 
 function formatCallMeta(call: { started_at: string; duration_seconds: number }, isPt: boolean): string {
@@ -618,7 +625,7 @@ export default function LiveVoiceTab() {
     : isLimitReached
       ? (isSubscriber ? (isPt ? 'Comprar minutos' : 'Buy minutes')
                       : (isPt ? 'Assinar Premium' : 'Subscribe to Premium'))
-      : (isPt ? 'Conversar com Charlotte' : 'Talk with Charlotte');
+      : (isPt ? 'Conversar com a Charlotte' : 'Talk with Charlotte');
   const onCtaPress = !poolKnown
     ? () => loadData()
     : isLimitReached
@@ -685,14 +692,14 @@ export default function LiveVoiceTab() {
             <View style={{
               position: 'absolute',
               width: 148, height: 148, borderRadius: 74,
-              borderWidth: 2, borderColor: '#F97316',
-              opacity: 0.35,
+              borderWidth: 2, borderColor: '#DCFF4A',
+              opacity: 0.55,
             }} />
             <View style={{
               position: 'absolute',
               width: 132, height: 132, borderRadius: 66,
               borderWidth: 1.5,
-              borderColor: 'rgba(249,115,22,0.25)',
+              borderColor: 'rgba(220,255,74,0.45)',
             }} />
             {/* Border num View pai: expo-image pode adicionar borderWidth
                 por fora da box, ficando maior que o RN Image do modal.
@@ -700,7 +707,7 @@ export default function LiveVoiceTab() {
                 + 3px frame em cada lado = 120 total, igual ao modal. */}
             <View style={{
               width: 120, height: 120, borderRadius: 60,
-              borderWidth: 3, borderColor: '#F97316',
+              borderWidth: 3, borderColor: '#DCFF4A',
               backgroundColor: '#16131F',
               overflow: 'hidden',
             }}>
@@ -710,6 +717,32 @@ export default function LiveVoiceTab() {
                 contentFit="cover"
               />
             </View>
+          </View>
+        </View>
+      )}
+
+      {/* Balão da Charlotte acima do avatar — mesmo estilo da Home (balão
+          branco com o rabinho do logo apontando para ela). */}
+      {!loading && !isLimitReached && (
+        <View pointerEvents="none" style={{
+          position: 'absolute', left: 0, right: 0,
+          top: avatarTopOffset - 92,
+          alignItems: 'center', zIndex: 6,
+        }}>
+          <View style={{ maxWidth: '78%' }}>
+            <View style={{
+              backgroundColor: C.panel, borderRadius: 18,
+              paddingHorizontal: 16, paddingVertical: 12,
+              shadowColor: 'rgba(22,19,31,0.10)', shadowOpacity: 1, shadowRadius: 12,
+              shadowOffset: { width: 0, height: 4 }, elevation: 2,
+            }}>
+              <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.textWhite, lineHeight: 23, textAlign: 'center' }}>
+                {isPt ? 'Bora conversar? Pode errar à vontade.' : "Let's talk! Mistakes are welcome here."}
+              </AppText>
+            </View>
+            <Svg width={20} height={14} viewBox="0 0 20 14" style={{ position: 'absolute', left: '42%', bottom: -13 }}>
+              <SvgPath d="M19 0 L0 14 L7 0 Z" fill={C.panel} />
+            </Svg>
           </View>
         </View>
       )}
@@ -725,9 +758,30 @@ export default function LiveVoiceTab() {
 
             {/* ── Header da tela: título + status row ── */}
             <View style={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 12 }}>
-              <AppText display style={{ fontSize: 26, fontWeight: '900', color: C.textWhite, letterSpacing: -0.3 }}>
-                Live Voice
-              </AppText>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <AppText display style={{ flex: 1, fontSize: 26, fontWeight: '900', color: C.textWhite, letterSpacing: -0.3 }}>
+                  Live Voice
+                </AppText>
+                {/* Histórico + ajuda — discretos, ao lado do título */}
+                <View style={{ flexDirection: 'row', gap: 4 }}>
+                  <TouchableOpacity
+                    onPress={() => setShowCallsDrawer(true)}
+                    accessibilityLabel={isPt ? 'Ver chamadas anteriores' : 'View previous calls'}
+                    hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
+                    style={{ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' }}
+                  >
+                    <ClockCounterClockwise size={21} color={C.navyMid} weight="regular" />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => setShowHelp(true)}
+                    accessibilityLabel={isPt ? 'Ajuda' : 'Help'}
+                    hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
+                    style={{ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' }}
+                  >
+                    <Question size={21} color={C.navyMid} weight="regular" />
+                  </TouchableOpacity>
+                </View>
+              </View>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 6 }}>
                 <View style={{
                   width: 8, height: 8, borderRadius: 4,
@@ -736,6 +790,13 @@ export default function LiveVoiceTab() {
                 <AppText style={{ fontSize: 13, color: C.textMuted, fontWeight: '500' }}>
                   {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown)}
                 </AppText>
+                {poolMinutesBadge(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown) && (
+                  <View style={{ backgroundColor: C.navyGhost, borderRadius: 10, paddingHorizontal: 8, paddingVertical: 2 }}>
+                    <AppText style={{ fontSize: 12, fontWeight: '800', color: C.textWhite }}>
+                      {poolMinutesBadge(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown)}
+                    </AppText>
+                  </View>
+                )}
               </View>
             </View>
 
@@ -782,46 +843,6 @@ export default function LiveVoiceTab() {
                 visual na transicao). */}
             <View style={{ flex: 1 }} />
 
-            {/* ── Botões drawer + help (sempre visíveis pra estabilidade de layout).
-                Drawer mostra empty state quando recentCalls.length === 0. ── */}
-            <View style={{
-              paddingHorizontal: 24, marginBottom: 12,
-              flexDirection: 'row', justifyContent: 'flex-end', gap: 10,
-            }}>
-              <TouchableOpacity
-                onPress={() => setShowCallsDrawer(true)}
-                accessibilityLabel={isPt ? 'Ver chamadas anteriores' : 'View previous calls'}
-                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                style={{
-                  width: 34, height: 34, borderRadius: 17,
-                  backgroundColor: '#FFFFFF',
-                  alignItems: 'center', justifyContent: 'center',
-                  borderWidth: 1, borderColor: 'rgba(22,19,31,0.10)',
-                  shadowColor: 'rgba(22,19,31,0.12)',
-                  shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
-                  elevation: 3,
-                }}
-              >
-                <ClockCounterClockwise size={17} color={C.navyMid} weight="regular" />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => setShowHelp(true)}
-                accessibilityLabel={isPt ? 'Ajuda' : 'Help'}
-                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                style={{
-                  width: 34, height: 34, borderRadius: 17,
-                  backgroundColor: '#FFFFFF',
-                  alignItems: 'center', justifyContent: 'center',
-                  borderWidth: 1, borderColor: 'rgba(22,19,31,0.10)',
-                  shadowColor: 'rgba(22,19,31,0.12)',
-                  shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
-                  elevation: 3,
-                }}
-              >
-                <Question size={17} color={C.navyMid} weight="regular" />
-              </TouchableOpacity>
-            </View>
-
             {/* ── CTA primário: conversar / comprar / assinar / carregando ── */}
             <TouchableOpacity
               onPress={onCtaPress}
@@ -830,12 +851,12 @@ export default function LiveVoiceTab() {
               style={{
                 marginHorizontal: 24,
                 marginBottom: 24,
-                backgroundColor: !poolKnown ? C.navyGhost : accent,
+                backgroundColor: !poolKnown ? C.navyGhost : C.greenAccent,
                 borderRadius: 16, paddingVertical: 18,
                 flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
-                shadowColor: !poolKnown ? 'transparent' : accent,
+                shadowColor: !poolKnown ? 'transparent' : 'rgba(22,19,31,0.25)',
                 shadowOffset: { width: 0, height: 6 },
-                shadowOpacity: 0.4, shadowRadius: 14,
+                shadowOpacity: 0.35, shadowRadius: 14,
                 elevation: 8,
                 opacity: !poolKnown ? 0.6 : 1,
               }}
@@ -844,12 +865,12 @@ export default function LiveVoiceTab() {
                 <ActivityIndicator size="small" color={C.textDim} />
               ) : isLimitReached ? (
                 isSubscriber
-                  ? <Plus size={20} color="#FFFFFF" weight="bold" />
-                  : <Crown size={20} color="#FFFFFF" weight="fill" />
+                  ? <Plus size={20} color={C.textWhite} weight="bold" />
+                  : <Crown size={20} color={C.textWhite} weight="fill" />
               ) : (
-                <Phone size={20} color="#FFFFFF" weight="fill" />
+                <Phone size={20} color={C.textWhite} weight="fill" />
               )}
-              <AppText style={{ fontSize: 15, fontWeight: '800', color: !poolKnown ? C.textDim : '#FFFFFF', letterSpacing: 0.3 }}>
+              <AppText style={{ fontSize: 15, fontWeight: '800', color: !poolKnown ? C.textDim : C.textWhite, letterSpacing: 0.3 }}>
                 {ctaLabel}
               </AppText>
             </TouchableOpacity>

@@ -35,6 +35,7 @@ import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Headphones, 
 import { ScrollView } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import * as SecureStore from 'expo-secure-store';
+import { systemIsPt } from '@/lib/systemLang';
 import { AppText } from '@/components/ui/Text';
 import { useCallTimer } from '@/hooks/useCallTimer';
 import Constants from 'expo-constants';
@@ -311,6 +312,8 @@ export default function LiveVoiceModal({
   const captionSpeakerRef = React.useRef<'user' | 'assistant'>('assistant');
   const captionClearTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const [captionsEnabled, setCaptionsEnabled]    = React.useState(userLevel === 'Novice');
+  // Avisos e botões da chamada seguem o idioma do aparelho (não o nível).
+  const isPtUI = systemIsPt;
   const [captionTranslation, setCaptionTranslation]   = React.useState<string | null>(null);
   const [captionTranslating, setCaptionTranslating]   = React.useState(false);
   const translationDismissTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -619,7 +622,7 @@ export default function LiveVoiceModal({
     Animated.timing(ringOpacity, { toValue: 0, duration: 200, useNativeDriver: true }).start();
   }, [status, charlotteSpeaking, isPaused]);
 
-  const ringColor = status === 'connecting' ? '#F97316' : '#DCFF4A';
+  const ringColor = status === 'connecting' ? 'rgba(22,19,31,0.35)' : '#DCFF4A';
 
   // ── Pool: carregar ao abrir o modal ───────────────────────────────────────
   const loadPool = React.useCallback(async () => {
@@ -633,7 +636,7 @@ export default function LiveVoiceModal({
         setPoolExhausted(true);
         setStatus('error');
         setErrorMsg(
-          userLevel === 'Novice'
+          isPtUI
             ? `Você usou seus ${Math.floor(levelPool / 60)} min de Live Voice deste mês. Volta no mês que vem!`
             : `You've used your ${Math.floor(levelPool / 60)}-min monthly Live Voice allowance. Come back next month!`
         );
@@ -791,8 +794,8 @@ export default function LiveVoiceModal({
       disconnectWebRTC();
       setStatus('error');
       setErrorMsg(
-        userLevel === 'Novice'
-          ? `Seus ${Math.floor(levelPool / 60)} min de Live Voice deste mes acabaram. Volta no mes que vem!`
+        isPtUI
+          ? `Seus ${Math.floor(levelPool / 60)} min de Live Voice deste mês acabaram. Volta no mês que vem!`
           : `Your ${Math.floor(levelPool / 60)}-min monthly allowance is up. See you next month!`
       );
       return;
@@ -878,7 +881,7 @@ export default function LiveVoiceModal({
     try {
       const { granted } = await requestRecordingPermissionsAsync();
       if (!granted) {
-        setErrorMsg(userLevel === 'Novice' ? 'Permissão de microfone negada' : 'Microphone permission denied');
+        setErrorMsg(isPtUI ? 'Permissão de microfone negada' : 'Microphone permission denied');
         setStatus('error');
         return;
       }
@@ -950,7 +953,7 @@ export default function LiveVoiceModal({
           setPoolExhausted(true);
           setStatus('error');
           setErrorMsg(
-            userLevel === 'Novice'
+            isPtUI
               ? `Você usou seus ${Math.floor(levelPool / 60)} min de Live Voice deste mês. Volta no mês que vem!`
               : `You've used your ${Math.floor(levelPool / 60)}-min monthly Live Voice allowance. Come back next month!`
           );
@@ -1473,7 +1476,7 @@ export default function LiveVoiceModal({
       console.error('[LiveVoice] connect error:', error);
       setStatus('error');
       setErrorMsg(
-        userLevel === 'Novice'
+        isPtUI
           ? 'Não foi possível conectar. Tente novamente.'
           : 'Could not connect. Please try again.'
       );
@@ -1658,13 +1661,15 @@ export default function LiveVoiceModal({
             backgroundColor: '#FFFFFF',
             borderBottomWidth: 1, borderBottomColor: 'rgba(22,19,31,0.10)',
           }}>
-            <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: 'rgba(107,75,255,0.10)', alignItems: 'center', justifyContent: 'center' }}>
-              <ChatCircle size={20} color="#6B4BFF" weight="fill" />
-            </View>
+            <Image
+              source={require('../../assets/charlotte-avatar.png')}
+              style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: '#16131F' }}
+              resizeMode="cover"
+            />
             <View style={{ flex: 1, alignItems: 'center' }}>
               <AppText style={{ fontSize: 9, fontWeight: '700', color: '#8A8494', textTransform: 'uppercase', letterSpacing: 1 }}>Charlotte</AppText>
               <AppText style={{ fontSize: 15, fontWeight: '800', color: '#16131F', letterSpacing: -0.3 }}>
-                {userLevel === 'Novice' ? 'Transcrição da Chamada' : 'Call Transcript'}
+                {isPtUI ? 'Transcrição da Chamada' : 'Call Transcript'}
               </AppText>
             </View>
             {/* Spacer to balance the icon on the left */}
@@ -1680,7 +1685,7 @@ export default function LiveVoiceModal({
             {conversationTurns.length === 0 ? (
               <View style={{ alignItems: 'center', paddingTop: 60, paddingHorizontal: 24 }}>
                 <AppText style={{ color: '#8A8494', fontSize: 14, textAlign: 'center', lineHeight: 20 }}>
-                  {userLevel === 'Novice'
+                  {isPtUI
                     ? 'Transcrição não disponível para esta chamada.'
                     : 'No transcript available for this call.'}
                 </AppText>
@@ -1726,13 +1731,13 @@ export default function LiveVoiceModal({
               onPress={() => { setShowTranscript(false); onClose(); }}
               style={{
                 marginHorizontal: 24, marginTop: 12, marginBottom: 12,
-                backgroundColor: '#6B4BFF',
+                backgroundColor: '#DCFF4A',
                 borderRadius: 14, paddingVertical: 15,
                 alignItems: 'center',
               }}
             >
-              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFFFFF' }}>
-                {userLevel === 'Novice' ? 'Fechar' : 'Close'}
+              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#16131F' }}>
+                {isPtUI ? 'Fechar' : 'Close'}
               </AppText>
             </TouchableOpacity>
           </View>
@@ -1746,8 +1751,8 @@ export default function LiveVoiceModal({
           <TouchableOpacity
             onPress={toggleCaptions}
             accessibilityLabel={captionsEnabled
-              ? (userLevel === 'Novice' ? 'Desligar legendas' : 'Hide captions')
-              : (userLevel === 'Novice' ? 'Ligar legendas' : 'Show captions')}
+              ? (isPtUI ? 'Desligar legendas' : 'Hide captions')
+              : (isPtUI ? 'Ligar legendas' : 'Show captions')}
             accessibilityRole="button"
             hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
             style={{
@@ -1782,13 +1787,13 @@ export default function LiveVoiceModal({
               </AppText>
             )}
             {status === 'connecting' && (
-              <AppText style={{ color: '#F97316', fontSize: 13 }}>
-                {userLevel === 'Novice' ? 'Chamando...' : 'Calling...'}
+              <AppText style={{ color: '#4D4858', fontSize: 13 }}>
+                {isPtUI ? 'Chamando...' : 'Calling...'}
               </AppText>
             )}
             {isPaused && (
-              <AppText style={{ color: '#F97316', fontSize: 13, letterSpacing: 0.5 }}>
-                {userLevel === 'Novice' ? 'Pausado por inatividade' : 'Paused — inactive'}
+              <AppText style={{ color: '#D12A64', fontSize: 13, letterSpacing: 0.5 }}>
+                {isPtUI ? 'Pausado por inatividade' : 'Paused — inactive'}
               </AppText>
             )}
             {status === 'error' && (
@@ -1805,7 +1810,7 @@ export default function LiveVoiceModal({
                     }}
                   >
                     <AppText style={{ color: '#0B0910', fontSize: 13, fontWeight: '700' }}>
-                      {userLevel === 'Novice' ? 'Tentar novamente' : 'Try again'}
+                      {isPtUI ? 'Tentar novamente' : 'Try again'}
                     </AppText>
                   </TouchableOpacity>
                 )}
@@ -1818,9 +1823,9 @@ export default function LiveVoiceModal({
             {!poolLoading && !poolExhausted && poolRemaining < 120 && (
               <AppText style={{
                 marginTop: 5, fontSize: 12, fontWeight: '500', letterSpacing: 0.2,
-                color: poolRemaining < 60 ? '#ef4444' : 'rgba(249,115,22,0.85)',
+                color: poolRemaining < 60 ? '#ef4444' : '#D12A64',
               }}>
-                {userLevel === 'Novice'
+                {isPtUI
                   ? `${poolMins} min restante${poolMins !== 1 ? 's' : ''}`
                   : `${poolMins} min left`}
               </AppText>
@@ -1836,7 +1841,7 @@ export default function LiveVoiceModal({
               <Animated.View style={{
                 position: 'absolute',
                 width: 148, height: 148, borderRadius: 74,
-                borderWidth: 2, borderColor: isPaused ? '#F97316' : ringColor,
+                borderWidth: 2, borderColor: isPaused ? '#FF4F8B' : ringColor,
                 transform: [{ scale: ringScale }],
                 opacity: ringOpacity,
               }} />
@@ -1845,10 +1850,10 @@ export default function LiveVoiceModal({
                 width: 132, height: 132, borderRadius: 66,
                 borderWidth: 1.5,
                 borderColor: isPaused
-                  ? 'rgba(249,115,22,0.25)'
+                  ? 'rgba(255,79,139,0.25)'
                   : status === 'connected'
-                    ? 'rgba(220,255,74,0.3)'
-                    : 'rgba(249,115,22,0.25)',
+                    ? 'rgba(220,255,74,0.45)'
+                    : 'rgba(22,19,31,0.12)',
               }} />
               <Image
                 source={require('../../assets/charlotte-avatar.png')}
@@ -1856,10 +1861,10 @@ export default function LiveVoiceModal({
                   width: 120, height: 120, borderRadius: 60,
                   borderWidth: 3,
                   borderColor: isPaused
-                    ? '#F97316'
+                    ? '#FF4F8B'
                     : status === 'connected'
                       ? '#DCFF4A'
-                      : '#F97316',
+                      : 'rgba(22,19,31,0.25)',
                   opacity: isPaused ? 0.6 : 1,
                   backgroundColor: '#16131F',
                 }}
@@ -1872,7 +1877,7 @@ export default function LiveVoiceModal({
                   width: 120, height: 120, borderRadius: 60,
                   alignItems: 'center', justifyContent: 'center',
                 }}>
-                  <Pause size={36} color="#F97316" weight="fill" />
+                  <Pause size={36} color="#D12A64" weight="fill" />
                 </View>
               )}
             </View>
@@ -1898,23 +1903,23 @@ export default function LiveVoiceModal({
                   paddingHorizontal: 8, paddingVertical: 2,
                   borderRadius: 8,
                   backgroundColor: captionSpeaker === 'user'
-                    ? 'rgba(8,128,74,0.12)'
+                    ? 'rgba(22,19,31,0.06)'
                     : 'rgba(107,75,255,0.10)',
                   marginBottom: 6,
                 }}>
                   <AppText style={{
                     fontSize: 9, fontWeight: '800',
                     letterSpacing: 1,
-                    color: captionSpeaker === 'user' ? '#08804A' : '#6B4BFF',
+                    color: captionSpeaker === 'user' ? '#4D4858' : '#6B4BFF',
                   }}>
                     {captionSpeaker === 'user'
-                      ? (userLevel === 'Novice' ? 'VOCÊ' : 'YOU')
+                      ? (isPtUI ? 'VOCÊ' : 'YOU')
                       : 'CHARLOTTE'}
                   </AppText>
                 </View>
                 <AppText
                   style={{
-                    color: captionSpeaker === 'user' ? '#08804A' : '#16131F',
+                    color: '#16131F',
                     fontSize: 16,
                     lineHeight: 22,
                     fontWeight: '500',
@@ -1951,7 +1956,7 @@ export default function LiveVoiceModal({
             /* ── Estado pausado ── */
             <View style={{ alignItems: 'center', gap: 16 }}>
               <AppText style={{ color: 'rgba(22,19,31,0.55)', fontSize: 13, textAlign: 'center' }}>
-                {userLevel === 'Novice'
+                {isPtUI
                   ? 'Chamada pausada. O timer não correu enquanto esteve ausente.'
                   : 'Call paused. Timer stopped while you were away.'}
               </AppText>
@@ -1968,7 +1973,7 @@ export default function LiveVoiceModal({
                 >
                   <ArrowCounterClockwise size={20} color="#0B0910" weight="bold" />
                   <AppText style={{ color: '#0B0910', fontSize: 15, fontWeight: '800' }}>
-                    {userLevel === 'Novice' ? 'Retomar' : 'Resume'}
+                    {isPtUI ? 'Retomar' : 'Resume'}
                   </AppText>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -1990,13 +1995,13 @@ export default function LiveVoiceModal({
               {/* Banner de inatividade */}
               {inactivityWarning && (
                 <View style={{
-                  backgroundColor: 'rgba(249,115,22,0.15)',
-                  borderRadius: 12, borderWidth: 1, borderColor: 'rgba(249,115,22,0.3)',
+                  backgroundColor: 'rgba(255,79,139,0.10)',
+                  borderRadius: 12, borderWidth: 1, borderColor: 'rgba(255,79,139,0.30)',
                   paddingHorizontal: 20, paddingVertical: 10,
                   alignItems: 'center',
                 }}>
-                  <AppText style={{ color: '#F97316', fontSize: 13, fontWeight: '700' }}>
-                    {userLevel === 'Novice'
+                  <AppText style={{ color: '#D12A64', fontSize: 13, fontWeight: '700' }}>
+                    {isPtUI
                       ? `Ainda está aí? Pausando em ${warningCountdown}s`
                       : `Still there? Pausing in ${warningCountdown}s`}
                   </AppText>
@@ -2009,8 +2014,8 @@ export default function LiveVoiceModal({
                   onPress={handleMute}
                   pressRetentionOffset={{ top: 20, bottom: 20, left: 20, right: 20 }}
                   accessibilityLabel={isMuted
-                    ? (userLevel === 'Novice' ? 'Ativar microfone / Unmute' : 'Unmute microphone')
-                    : (userLevel === 'Novice' ? 'Silenciar microfone / Mute' : 'Mute microphone')}
+                    ? (isPtUI ? 'Ativar microfone' : 'Unmute microphone')
+                    : (isPtUI ? 'Silenciar microfone' : 'Mute microphone')}
                   accessibilityRole="button"
                   style={{
                     width: 64, height: 64, borderRadius: 32,
@@ -2030,7 +2035,7 @@ export default function LiveVoiceModal({
                 <TouchableOpacity
                   onPress={handleEndCall}
                   pressRetentionOffset={{ top: 20, bottom: 20, left: 20, right: 20 }}
-                  accessibilityLabel={userLevel === 'Novice' ? 'Encerrar chamada / End call' : 'End call'}
+                  accessibilityLabel={isPtUI ? 'Encerrar chamada' : 'End call'}
                   accessibilityRole="button"
                   style={{
                     width: 64, height: 64, borderRadius: 32,
@@ -2049,10 +2054,10 @@ export default function LiveVoiceModal({
                   onPress={handleSpeakerToggle}
                   pressRetentionOffset={{ top: 20, bottom: 20, left: 20, right: 20 }}
                   accessibilityLabel={onHeadphones
-                    ? (userLevel === 'Novice' ? 'Áudio nos fones — tocar para alto-falante / Audio on headphones — tap for speaker' : 'Audio on headphones — tap for speaker')
+                    ? (isPtUI ? 'Áudio nos fones — tocar para alto-falante' : 'Audio on headphones — tap for speaker')
                     : isSpeaker
-                      ? (userLevel === 'Novice' ? 'Usar fone de ouvido / Switch to earpiece' : 'Switch to earpiece')
-                      : (userLevel === 'Novice' ? 'Usar alto-falante / Switch to speaker' : 'Switch to speaker')}
+                      ? (isPtUI ? 'Usar fone de ouvido' : 'Switch to earpiece')
+                      : (isPtUI ? 'Usar alto-falante' : 'Switch to speaker')}
                   accessibilityRole="button"
                   style={{
                     width: 64, height: 64, borderRadius: 32,
