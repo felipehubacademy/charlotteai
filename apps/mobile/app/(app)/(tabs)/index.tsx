@@ -225,9 +225,8 @@ export default function HomeTab() {
   const avatarSrc = require('@/assets/charlotte-avatar.png');
   const heroHour  = new Date().getHours();
   const heroTitle = isPt
-    ? `${heroHour < 12 ? 'Bom dia' : heroHour < 18 ? 'Boa tarde' : 'Boa noite'}, ${firstName}.`
-    : `${heroHour < 12 ? 'Good morning' : heroHour < 18 ? 'Good afternoon' : 'Good evening'}, ${firstName}.`;
-  const todayLabel = new Date().toLocaleDateString(isPt ? 'pt-BR' : 'en-US', { weekday: 'long', day: 'numeric', month: 'short' });
+    ? `${heroHour < 12 ? 'Bom dia' : heroHour < 18 ? 'Boa tarde' : 'Boa noite'}, ${firstName}!`
+    : `${heroHour < 12 ? 'Good morning' : heroHour < 18 ? 'Good afternoon' : 'Good evening'}, ${firstName}!`;
 
   // ── Data fetch ──────────────────────────────────────────────────────────────
   const fetchData = useCallback(async () => {
@@ -544,51 +543,41 @@ export default function HomeTab() {
         isPt={isPt}
       />
 
-      {/* Hero — saudação na fonte da marca + mensagem da Charlotte */}
-      <View style={{ marginHorizontal: 20, marginTop: 16 }}>
-        <AppText style={{ fontSize: 11, fontWeight: '700', letterSpacing: 1.4, color: C.navyLight, textTransform: 'uppercase' }}>
-          {todayLabel}
-        </AppText>
-        <AppText display style={{ fontSize: 32, fontWeight: '800', color: C.navy, lineHeight: 34, marginTop: 4 }}>
-          {heroTitle}
-        </AppText>
-
-        {/* Fala da Charlotte — balão no formato do logo: largura de balão
-            (2–3 linhas) e rabinho triangular embaixo à esquerda, apontando
-            para o avatar dela. */}
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8, marginTop: 14 }}>
+      {/* Hero — a Charlotte fala com o aluno: balão no formato do logo,
+          centralizado, com a saudação em destaque e a fala da IA embaixo. */}
+      <View style={{ marginHorizontal: 20, marginTop: 20 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'center', gap: 8 }}>
           <Image
             source={avatarSrc}
-            style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: C.navy }}
+            style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: C.navy }}
             contentFit="cover"
             accessibilityLabel="Charlotte"
           />
-          <View style={{ maxWidth: '72%', marginBottom: 14 }}>
+          <View style={{ maxWidth: '78%', marginBottom: 16 }}>
             <View style={{
-              backgroundColor: T.card, borderRadius: 16,
-              paddingHorizontal: 13, paddingVertical: 10,
+              backgroundColor: T.card, borderRadius: 18,
+              paddingHorizontal: 16, paddingVertical: 13,
               ...Platform.select({
-                ios:     { shadowColor: 'rgba(22,19,31,0.10)', shadowOpacity: 1, shadowRadius: 10, shadowOffset: { width: 0, height: 3 } },
+                ios:     { shadowColor: 'rgba(22,19,31,0.10)', shadowOpacity: 1, shadowRadius: 12, shadowOffset: { width: 0, height: 4 } },
                 android: { elevation: 2 },
               }),
             }}>
-              <AppText style={{ fontSize: 11, fontWeight: '800', color: C.navy, marginBottom: 2 }}>
-                Charlotte
+              <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, lineHeight: 26 }}>
+                {heroTitle}
               </AppText>
               {greetingLoading || !aiGreeting ? (
-                <TypingDots />
+                <View style={{ marginTop: 6 }}><TypingDots /></View>
               ) : (
-                <AppText style={{ fontSize: 13, color: C.navyMid, lineHeight: 19 }}>
+                <AppText style={{ fontSize: 14, color: C.navyMid, lineHeight: 20, marginTop: 4 }}>
                   {aiGreeting}
                 </AppText>
               )}
             </View>
-            <Svg width={18} height={13} viewBox="0 0 18 13" style={{ position: 'absolute', left: 6, bottom: -12 }}>
-              <Path d="M17 0 L0 13 L6 0 Z" fill={T.card} />
+            <Svg width={20} height={14} viewBox="0 0 20 14" style={{ position: 'absolute', left: 8, bottom: -13 }}>
+              <Path d="M19 0 L0 14 L7 0 Z" fill={T.card} />
             </Svg>
           </View>
         </View>
-
       </View>
 
       {/* Card do nível */}
