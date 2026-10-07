@@ -11,6 +11,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import { CheckCircle } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { HomeData, Mission, buildMissions } from '@/lib/missions';
@@ -300,12 +301,14 @@ export default function GoalsTab() {
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <SafeAreaView edges={['top']} style={{ backgroundColor: C.card }}>
         <View style={{
+          flexDirection: 'row', alignItems: 'center',
           paddingHorizontal: 20, paddingVertical: 16,
           borderBottomWidth: 1, borderBottomColor: C.border,
         }}>
-          <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy }}>
+          <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
             {isPt ? 'Metas' : 'Goals'}
           </AppText>
+          <HeaderLogo />
         </View>
       </SafeAreaView>
 

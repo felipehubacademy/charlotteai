@@ -21,10 +21,6 @@ import { loadAudioPreferences } from '@/lib/audioPreferences';
 import { ThemeProvider, useTheme } from '@/lib/theme';
 import { SplashOverlay } from '@/components/ui/SplashOverlay';
 import { useFonts } from 'expo-font';
-import {
-  BricolageGrotesque_700Bold,
-  BricolageGrotesque_800ExtraBold,
-} from '@expo-google-fonts/bricolage-grotesque';
 
 // Mantém a splash screen visível enquanto carrega
 SplashScreen.preventAutoHideAsync();
@@ -146,9 +142,11 @@ function RootLayout() {
   // Fonte de títulos da marca Queizy (AppText display). A navegação espera a
   // fonte carregar (o SplashOverlay cobre), com teto de 2s: se falhar, segue
   // com a fonte do sistema.
+  // Corte óptico de título (opsz 96), o mesmo do logo — gerado do arquivo
+  // variável oficial (OFL). O corte de texto do pacote do Google ficava neutro.
   const [fontsLoaded, fontError] = useFonts({
-    BricolageGrotesque_700Bold,
-    BricolageGrotesque_800ExtraBold,
+    BricolageGrotesque_700Bold:      require('@/assets/fonts/BricolageGrotesque96pt-Bold.ttf'),
+    BricolageGrotesque_800ExtraBold: require('@/assets/fonts/BricolageGrotesque96pt-ExtraBold.ttf'),
   });
   const [fontTimeout, setFontTimeout] = useState(false);
   useEffect(() => {

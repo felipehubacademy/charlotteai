@@ -13,6 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
 import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
+import Svg, { Path } from 'react-native-svg';
 import { systemIsPt } from '@/lib/systemLang';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
@@ -83,7 +84,7 @@ function TypingDots() {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 3 }}>
       {dots.map((dot, i) => (
-        <Animated.View key={i} style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: 'rgba(255,255,255,0.75)', opacity: dot }} />
+        <Animated.View key={i} style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: 'rgba(22,19,31,0.6)', opacity: dot }} />
       ))}
     </View>
   );
@@ -550,14 +551,21 @@ export default function HomeTab() {
               />
             </View>
             <View style={{ flex: 1, paddingLeft: 0, paddingVertical: 16, justifyContent: 'center' }}>
-              <View style={{ backgroundColor: '#3A3546', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: greetingLoading ? 10 : 12, alignSelf: 'flex-start' }}>
-                {greetingLoading || !aiGreeting ? (
-                  <TypingDots />
-                ) : (
-                  <AppText style={{ fontSize: 14, color: '#FFFFFF', lineHeight: 21, fontWeight: '500' }}>
-                    {aiGreeting}
-                  </AppText>
-                )}
+              {/* Balão da Charlotte no formato do logo Queizy: Volt sobre Tinta,
+                  cantos arredondados e o rabinho embaixo à esquerda. */}
+              <View style={{ alignSelf: 'flex-start', marginBottom: 10 }}>
+                <View style={{ backgroundColor: '#DCFF4A', borderRadius: 16, paddingHorizontal: 14, paddingVertical: greetingLoading ? 10 : 12 }}>
+                  {greetingLoading || !aiGreeting ? (
+                    <TypingDots />
+                  ) : (
+                    <AppText style={{ fontSize: 14, color: '#16131F', lineHeight: 21, fontWeight: '600' }}>
+                      {aiGreeting}
+                    </AppText>
+                  )}
+                </View>
+                <Svg width={18} height={12} viewBox="0 0 18 12" style={{ position: 'absolute', left: 12, bottom: -11 }}>
+                  <Path d="M17 0 L1 12 L6 0 Z" fill="#DCFF4A" />
+                </Svg>
               </View>
             </View>
           </View>

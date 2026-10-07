@@ -24,6 +24,7 @@ import {
 } from '@/lib/audioPreferences';
 import { openLink } from '@/lib/openLink';
 import { AppText } from '@/components/ui/Text';
+import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { restorePurchases, openManageSubscriptions } from '@/lib/purchases';
@@ -362,12 +363,14 @@ export default function ProfileTab() {
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <SafeAreaView edges={['top']} style={{ backgroundColor: C.card }}>
         <View style={{
+          flexDirection: 'row', alignItems: 'center',
           paddingHorizontal: 20, paddingVertical: 16,
           borderBottomWidth: 1, borderBottomColor: C.border,
         }}>
-          <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy }}>
+          <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
             {isPt ? 'Perfil' : 'Profile'}
           </AppText>
+          <HeaderLogo />
         </View>
       </SafeAreaView>
 

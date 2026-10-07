@@ -19,6 +19,7 @@ import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import Constants from 'expo-constants';
 import { AppText } from '@/components/ui/Text';
+import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import { systemIsPt } from '@/lib/systemLang';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
@@ -335,23 +336,47 @@ export default function VocabularyTab() {
           <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>
             {isPt ? 'Vocabulário' : 'Vocabulary'}
           </AppText>
-          {dueCount > 0 && (
-            <TouchableOpacity
-              onPress={() => router.push('/(app)/vocab-review')}
-              style={{
-                backgroundColor: `${levelAccent}15`,
-                borderRadius: 10, paddingHorizontal: 12, paddingVertical: 6,
-                flexDirection: 'row', alignItems: 'center', gap: 5,
-              }}
-            >
-              <ClockCountdown size={14} color={levelAccent} weight="fill" />
-              <AppText style={{ fontSize: 12, fontWeight: '700', color: levelAccent }}>
-                {dueCount} {isPt ? 'para revisar' : 'to review'}
-              </AppText>
-            </TouchableOpacity>
-          )}
+          <HeaderLogo />
         </View>
       </SafeAreaView>
+
+      {/* Revisão pendente — card no topo (saiu do header para o logo entrar) */}
+      {dueCount > 0 && (
+        <TouchableOpacity
+          onPress={() => router.push('/(app)/vocab-review')}
+          activeOpacity={0.85}
+          style={{
+            marginHorizontal: 16, marginTop: 14,
+            backgroundColor: C.card, borderRadius: 18,
+            borderWidth: 1, borderColor: C.border,
+            paddingVertical: 14, paddingHorizontal: 16,
+            flexDirection: 'row', alignItems: 'center', gap: 12,
+          }}
+        >
+          <View style={{
+            width: 40, height: 40, borderRadius: 12,
+            backgroundColor: `${levelAccent}15`,
+            alignItems: 'center', justifyContent: 'center',
+          }}>
+            <ClockCountdown size={22} color={levelAccent} weight="fill" />
+          </View>
+          <View style={{ flex: 1 }}>
+            <AppText display style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>
+              {isPt
+                ? `${dueCount} ${dueCount === 1 ? 'palavra para revisar' : 'palavras para revisar'}`
+                : `${dueCount} ${dueCount === 1 ? 'word to review' : 'words to review'}`}
+            </AppText>
+            <AppText style={{ fontSize: 12, color: C.navyMid, marginTop: 2 }}>
+              {isPt ? 'Revisar agora fixa as palavras na memória.' : 'Reviewing now locks them into memory.'}
+            </AppText>
+          </View>
+          <View style={{ backgroundColor: '#DCFF4A', borderRadius: 10, paddingHorizontal: 12, paddingVertical: 7 }}>
+            <AppText style={{ fontSize: 12, fontWeight: '800', color: '#16131F' }}>
+              {isPt ? 'Revisar' : 'Review'}
+            </AppText>
+          </View>
+        </TouchableOpacity>
+      )}
 
       {/* Vocabulary of the Day */}
       <View style={{

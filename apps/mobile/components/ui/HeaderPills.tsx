@@ -8,6 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Fire, Lightning, Trophy } from 'phosphor-react-native';
 import { AppText } from './Text';
+import { HeaderLogo } from './HeaderLogo';
 
 const C = {
   card:      '#FFFFFF',
@@ -73,6 +74,7 @@ export function HeaderPills({
             </AppText>
           </TouchableOpacity>
         )}
+        <HeaderLogo />
       </View>
     </SafeAreaView>
   );
