@@ -36,6 +36,7 @@ import { ScrollView } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import * as SecureStore from 'expo-secure-store';
 import { systemIsPt } from '@/lib/systemLang';
+import { LiveVoiceWave } from './LiveVoiceWave';
 import { AppText } from '@/components/ui/Text';
 import { useCallTimer } from '@/hooks/useCallTimer';
 import Constants from 'expo-constants';
@@ -1838,13 +1839,17 @@ export default function LiveVoiceModal({
               abaixo, então ligar/desligar caption não muda a posição do avatar. */}
           <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%', height: 360 }}>
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-              <Animated.View style={{
-                position: 'absolute',
-                width: 148, height: 148, borderRadius: 74,
-                borderWidth: 2, borderColor: isPaused ? '#FF4F8B' : ringColor,
-                transform: [{ scale: ringScale }],
-                opacity: ringOpacity,
-              }} />
+              {/* Anel pulsante só enquanto conecta — conectado, quem reage à voz
+                  é a onda da marca abaixo do avatar. */}
+              {status === 'connecting' && (
+                <Animated.View style={{
+                  position: 'absolute',
+                  width: 148, height: 148, borderRadius: 74,
+                  borderWidth: 2, borderColor: ringColor,
+                  transform: [{ scale: ringScale }],
+                  opacity: ringOpacity,
+                }} />
+              )}
               <View style={{
                 position: 'absolute',
                 width: 132, height: 132, borderRadius: 66,
@@ -1881,6 +1886,14 @@ export default function LiveVoiceModal({
                 </View>
               )}
             </View>
+
+            {/* Onda queizy → crazy: rosa irregular quando você fala, verde
+                suave quando a Charlotte fala, reta no silêncio. */}
+            {status === 'connected' && !isPaused && (
+              <View pointerEvents="none" style={{ position: 'absolute', top: 250, left: 0, right: 0, alignItems: 'center' }}>
+                <LiveVoiceWave mode={charlotteSpeaking ? 'charlotte' : userSpeaking ? 'user' : 'idle'} />
+              </View>
+            )}
 
             {!isPaused && captionsEnabled && liveCaption.length > 0 && (
               <TouchableOpacity
