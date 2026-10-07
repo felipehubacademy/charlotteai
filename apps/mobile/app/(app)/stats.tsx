@@ -1,673 +1,336 @@
+// Progresso — abre ao tocar nos contadores (sequência / XP / ranking) da Home.
+// Hub da gamificação: resumo do aluno, progresso do nível e prévias de
+// Conquistas, Ranking e Metas; cada prévia expande para a tela completa.
+
 import React, { useEffect, useState } from 'react';
-import {
-  View, TouchableOpacity, ScrollView, StatusBar, ActivityIndicator,
-  Modal, Pressable,
-} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, TouchableOpacity, ScrollView, StatusBar, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
-import {
-  ArrowLeft, ShareNetwork, Star, Lightning, Fire, Trophy,
-  BookOpenText, CaretRight, Medal,
-  Microphone, PencilLine, GraduationCap, Sun, CalendarCheck,
-  X, Lock, CheckCircle,
-} from 'phosphor-react-native';
+import { ShareNetwork, Fire, Trophy, BookOpenText, Lightning, Star } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { QueizyWave } from '@/components/ui/QueizyWave';
+import {
+  C, ScreenHeader, SectionTitle, Card, BadgeMedal, BadgeModal, RankRow, MissionRow,
+  badgeTitle, firstName,
+} from '@/components/stats/StatsUI';
 import { supabase } from '@/lib/supabase';
-import { Achievement } from '@/lib/types/achievement';
+import { useAuth } from '@/hooks/useAuth';
+import { useGoalsData } from '@/hooks/useGoalsData';
+import { systemIsPt } from '@/lib/systemLang';
 import { getBadgesForLevel, CatalogEntry } from '@/lib/achievementsCatalog';
+import { getDailyGoal } from '@/lib/dailyGoal';
 import { shareStreak, shareXP } from '@/lib/shareUtils';
 import {
-  checkLevelPromotion,
-  NEXT_LEVEL,
-  PROMOTION_XP_THRESHOLD,
-  TOTAL_TOPICS_PER_LEVEL,
-  PromotionStatus,
+  checkLevelPromotion, NEXT_LEVEL, PROMOTION_XP_THRESHOLD, TOTAL_TOPICS_PER_LEVEL, PromotionStatus,
 } from '@/lib/levelPromotion';
-import { LEVEL_ACCENT } from '@/lib/levelColors';
+import { UserLevel } from '@/lib/levelConfig';
+import { localTodayStr } from '@/lib/dateUtils';
 
-// ── Design tokens ──────────────────────────────────────────────────────────────
-const C = {
-  bg:        '#FAF7F0',
-  card:      '#FFFFFF',
-  navy:      '#16131F',
-  navyLight: '#8A8494',
-  ghost:     'rgba(22,19,31,0.06)',
-  border:    'rgba(22,19,31,0.08)',
-  green:     '#08804A',
-  greenLight:'#F8FFE0',
-};
+const isPt = systemIsPt;
 
-const LEVEL_COLOR = LEVEL_ACCENT;
+interface TopEntry { userId: string; totalXp: number; name: string }
 
-const RARITY_COLORS: Record<string, string> = {
-  common:    '#22C55E',
-  rare:      '#3B82F6',
-  epic:      '#A855F7',
-  legendary: '#EAB308',
-};
-
-const MEDAL_COLORS = ['#EAB308', '#9CA3AF', '#B45309'];
-
-type Level = 'Novice' | 'Inter' | 'Advanced';
-
-interface TopEntry {
-  userId: string;
-  totalXp: number;
-  name: string;
+interface EarnedRow {
+  id: string; code: string; title: string; rarity: string; category: string; earnedAt: Date;
 }
 
-interface AchievementWithCategory extends Achievement {
-  category: string;
-  code: string; // achievement_type — used to match against catalog
-}
-
-interface StatsData {
-  streak: number;
-  freshTotalXP: number;
-  achievements: AchievementWithCategory[];
-  rank: number;
-  top3: TopEntry[];
-  trailDone: number;
-  loading: boolean;
-  error: string | null;
-}
-
-function AchievementIcon({ category, rarity, size = 20 }: { category: string; rarity: string; size?: number }) {
-  const color = rarity === 'locked' ? 'rgba(22,19,31,0.22)' : (RARITY_COLORS[rarity] ?? '#22C55E');
-  switch (category) {
-    case 'xp':
-    case 'xp_milestone': return <Lightning     size={size} color={color} weight="fill" />;
-    case 'streak':       return <Fire          size={size} color={color} weight="fill" />;
-    case 'audio':        return <Microphone    size={size} color={color} weight="fill" />;
-    case 'grammar':
-    case 'text':         return <PencilLine    size={size} color={color} weight="fill" />;
-    case 'learn':        return <GraduationCap size={size} color={color} weight="fill" />;
-    case 'habit':        return <Sun           size={size} color={color} weight="fill" />;
-    case 'consistency':  return <CalendarCheck size={size} color={color} weight="fill" />;
-    default:             return <Star          size={size} color={color} weight="fill" />;
-  }
-}
-
-// ── Screen ─────────────────────────────────────────────────────────────────────
 export default function StatsScreen() {
-  const params = useLocalSearchParams<{
-    sessionXP: string;
-    totalXP:   string;
-    userId:    string;
-    userLevel: string;
-    userName:  string;
-  }>();
+  const params = useLocalSearchParams<{ totalXP: string; userId: string; userLevel: string; userName: string }>();
+  const { profile } = useAuth();
 
-  const totalXP   = Number(params.totalXP   ?? 0);
-  const userId    = params.userId   ?? '';
-  const userLevel = (params.userLevel ?? 'Inter') as Level;
-  const userName  = params.userName  ?? '';
+  const userId    = params.userId || profile?.id || '';
+  const userLevel = (params.userLevel || profile?.charlotte_level || 'Inter') as UserLevel;
+  const userName  = params.userName || profile?.name || '';
 
-  const isPortuguese = userLevel === 'Novice';
-  const accent       = LEVEL_COLOR[userLevel] ?? C.navy;
+  const goals = useGoalsData(userId, userLevel);
 
-  const [promotionStatus, setPromotionStatus] = useState<PromotionStatus | null>(null);
-  const [badgeModal, setBadgeModal] = useState<{ catalog: CatalogEntry; earnedAt?: Date } | null>(null);
-  const [data, setData] = useState<StatsData>({
-    streak: 0, freshTotalXP: totalXP,
-    achievements: [],
-    rank: 0, top3: [], trailDone: 0,
-    loading: true, error: null,
-  });
+  const [loading, setLoading]   = useState(true);
+  const [streak, setStreak]     = useState(0);
+  const [totalXP, setTotalXP]   = useState(Number(params.totalXP ?? 0));
+  const [rank, setRank]         = useState(0);
+  const [top3, setTop3]         = useState<TopEntry[]>([]);
+  const [earned, setEarned]     = useState<EarnedRow[]>([]);
+  const [trailDone, setTrailDone] = useState(0);
+  const [promotion, setPromotion] = useState<PromotionStatus | null>(null);
+  const [badgeModal, setBadgeModal] = useState<{ cat: CatalogEntry; earnedAt?: Date } | null>(null);
 
   useEffect(() => { if (userId) loadData(); }, [userId]);
 
   const loadData = async () => {
-    if (!userId) return;
-    setData(prev => ({ ...prev, loading: true, error: null }));
     try {
-      const [statsRes, achievementsRes, learnProgressRes, levelUsersRes] = await Promise.all([
-        supabase.from('charlotte_progress')
-          .select('streak_days,total_xp')
-          .eq('user_id', userId)
-          .maybeSingle(),
+      const [statsRes, achRes, learnRes, levelUsersRes] = await Promise.all([
+        supabase.from('charlotte_progress').select('streak_days,total_xp,last_practice_date').eq('user_id', userId).maybeSingle(),
         supabase.from('user_achievements')
-          .select('id,achievement_type,achievement_name,achievement_description,xp_bonus,rarity,category,earned_at')
+          .select('id,achievement_type,achievement_name,rarity,category,earned_at')
           .eq('user_id', userId)
-          .order('earned_at', { ascending: false })
-          .limit(4),
-        supabase.from('learn_progress')
-          .select('completed')
-          .eq('user_id', userId)
-          .eq('level', userLevel)
-          .maybeSingle(),
-        supabase.from('charlotte_users')
-          .select('id')
-          .eq('charlotte_level', userLevel),
+          .order('earned_at', { ascending: false }),
+        supabase.from('learn_progress').select('completed').eq('user_id', userId).eq('level', userLevel).maybeSingle(),
+        supabase.from('charlotte_users').select('id').eq('charlotte_level', userLevel),
       ]);
 
-      const freshTotalXP = statsRes.data?.total_xp ?? totalXP;
-      const completedCount = (learnProgressRes.data?.completed ?? []).length;
+      const xp = statsRes.data?.total_xp ?? Number(params.totalXP ?? 0);
+      const completed = (learnRes.data?.completed ?? []).length;
+      const levelIds = (levelUsersRes.data ?? []).map((u: any) => u.id as string);
 
-      // IDs of all users in the same level — used to scope ranking
-      const levelUserIds = (levelUsersRes.data ?? []).map((u: any) => u.id as string);
-
-      const [rankRes, top3Res] = await Promise.all([
-        levelUserIds.length > 0
-          ? supabase.from('charlotte_progress')
-              .select('user_id', { count: 'exact', head: true })
-              .in('user_id', levelUserIds)
-              .gt('total_xp', freshTotalXP)
+      const [rankRes, topRes] = await Promise.all([
+        levelIds.length > 0
+          ? supabase.from('charlotte_progress').select('user_id', { count: 'exact', head: true }).in('user_id', levelIds).gt('total_xp', xp)
           : Promise.resolve({ count: 0 }),
-        levelUserIds.length > 0
-          ? supabase.from('charlotte_progress')
-              .select('user_id,total_xp')
-              .in('user_id', levelUserIds)
-              .order('total_xp', { ascending: false })
-              .limit(3)
+        levelIds.length > 0
+          ? supabase.from('charlotte_progress').select('user_id,total_xp').in('user_id', levelIds).order('total_xp', { ascending: false }).limit(3)
           : Promise.resolve({ data: [] }),
       ]);
 
-      const userRank = ((rankRes as any).count ?? 0) + 1;
-
-      const achievements: AchievementWithCategory[] = (achievementsRes.data ?? []).map((a: any) => ({
-        id: a.id,
-        code: a.achievement_type ?? '',
-        type: 'general',
-        title: a.achievement_name ?? 'Achievement',
-        description: a.achievement_description ?? '',
-        xpBonus: a.xp_bonus ?? 0,
-        rarity: (a.rarity ?? 'common') as Achievement['rarity'],
-        icon: '',
-        earnedAt: new Date(a.earned_at),
-        category: a.category ?? 'general',
-      }));
-
-      const top3Raw = ((top3Res as any).data ?? []).map((r: any) => ({
-        userId: r.user_id,
-        totalXp: r.total_xp ?? 0,
-      }));
-
-      // Fetch names for top3 users
-      const top3UserIds = top3Raw.map((e: any) => e.userId);
-      const { data: top3Users } = top3UserIds.length > 0
-        ? await supabase.from('charlotte_users').select('id, name').in('id', top3UserIds)
-        : { data: [] };
+      const topRaw = ((topRes as any).data ?? []) as { user_id: string; total_xp: number }[];
+      const { data: names } = topRaw.length > 0
+        ? await supabase.from('charlotte_users').select('id, name').in('id', topRaw.map(r => r.user_id))
+        : { data: [] as any[] };
       const nameMap: Record<string, string> = {};
-      (top3Users ?? []).forEach((u: any) => { nameMap[u.id] = u.name ?? ''; });
+      (names ?? []).forEach((u: any) => { nameMap[u.id] = u.name ?? ''; });
 
-      const top3: TopEntry[] = top3Raw.map((e: any) => ({
-        ...e,
-        name: nameMap[e.userId] ?? '',
-      }));
-
-      setData({
-        streak: statsRes.data?.streak_days ?? 0,
-        freshTotalXP,
-        achievements,
-        rank: userRank,
-        top3,
-        trailDone: completedCount,
-        loading: false,
-        error: null,
-      });
-
-      const status = await checkLevelPromotion(userId, userLevel, completedCount);
-      setPromotionStatus(status);
+      // Mesma regra da Home: sequência só vale se praticou hoje ou ontem.
+      const last = statsRes.data?.last_practice_date ?? null;
+      const y = new Date(); y.setDate(y.getDate() - 1);
+      const yesterday = `${y.getFullYear()}-${String(y.getMonth() + 1).padStart(2, '0')}-${String(y.getDate()).padStart(2, '0')}`;
+      setStreak(last === localTodayStr() || last === yesterday ? (statsRes.data?.streak_days ?? 0) : 0);
+      setTotalXP(xp);
+      setRank(((rankRes as any).count ?? 0) + 1);
+      setTop3(topRaw.map(r => ({ userId: r.user_id, totalXp: r.total_xp ?? 0, name: nameMap[r.user_id] ?? '' })));
+      setEarned((achRes.data ?? []).map((a: any) => ({
+        id: a.id, code: a.achievement_type ?? '', title: a.achievement_name ?? '',
+        rarity: a.rarity ?? 'common', category: a.category ?? 'general', earnedAt: new Date(a.earned_at),
+      })));
+      setTrailDone(completed);
+      setPromotion(await checkLevelPromotion(userId, userLevel, completed));
     } catch {
-      setData(prev => ({ ...prev, loading: false, error: 'Error loading data' }));
+      // mantém o que já carregou
+    } finally {
+      setLoading(false);
     }
   };
 
-  // ── Derived ──────────────────────────────────────────────────────────────────
-  const displayXP            = data.freshTotalXP;
-  const promotionXPThreshold = PROMOTION_XP_THRESHOLD[userLevel] ?? 9999;
-  const trailTotal           = promotionStatus?.totalTopics ?? TOTAL_TOPICS_PER_LEVEL[userLevel] ?? 0;
-  const trailDone            = promotionStatus?.completedTopics ?? data.trailDone;
-  const trailPct             = trailTotal > 0 ? Math.min(100, (trailDone / trailTotal) * 100) : 0;
-  const xpPct                = Math.min(100, (displayXP / promotionXPThreshold) * 100);
-  const nextLevelName        = NEXT_LEVEL[userLevel];
+  // ── Derivados ───────────────────────────────────────────────────────────────
+  const nextLevel   = NEXT_LEVEL[userLevel];
+  const xpTarget    = PROMOTION_XP_THRESHOLD[userLevel] ?? 9999;
+  const trailTotal  = promotion?.totalTopics ?? TOTAL_TOPICS_PER_LEVEL[userLevel] ?? 0;
+  const trailCount  = promotion?.completedTopics ?? trailDone;
+  const catalog     = getBadgesForLevel(userLevel);
+  const catalogMap  = Object.fromEntries(catalog.map(c => [c.code, c]));
+  const earnedCodes = new Set(earned.map(e => e.code));
+  const earnedInCatalog = catalog.filter(c => earnedCodes.has(c.code)).length;
+  const dailyGoal   = getDailyGoal(goals.todayXP);
+  const missionsDone = goals.missions.filter(m => m.completed).length;
+  const you = isPt ? '(você)' : '(you)';
 
-  // ── Loading ──────────────────────────────────────────────────────────────────
-  if (data.loading) {
+  const badgePreview = [
+    ...earned.slice(0, 4).map(e => ({ key: e.id, earned: true, cat: catalogMap[e.code] as CatalogEntry | undefined, row: e })),
+    ...catalog.filter(c => !earnedCodes.has(c.code)).slice(0, Math.max(0, 4 - Math.min(4, earned.length)))
+      .map(c => ({ key: c.code, earned: false, cat: c as CatalogEntry | undefined, row: null as EarnedRow | null })),
+  ];
+
+  const openRoute = (pathname: string) =>
+    router.push({ pathname: pathname as any, params: { userId, userLevel, userName } });
+
+  if (loading) {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top', 'left', 'right', 'bottom']}>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: C.bg }}>
-          <ActivityIndicator size="large" color={C.navy} />
+      <View style={{ flex: 1, backgroundColor: C.bg }}>
+        <ScreenHeader title={isPt ? 'Seu progresso' : 'Your progress'} />
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <ActivityIndicator size="large" color={C.ink} />
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 
-  // ── Render ───────────────────────────────────────────────────────────────────
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top', 'left', 'right', 'bottom']}>
+    <View style={{ flex: 1, backgroundColor: C.bg }}>
       <StatusBar barStyle="dark-content" />
+      <ScreenHeader
+        title={isPt ? 'Seu progresso' : 'Your progress'}
+        right={
+          <TouchableOpacity
+            hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+            onPress={() => (streak > 0 ? shareStreak(streak, isPt) : shareXP(totalXP, isPt))}
+          >
+            <ShareNetwork size={21} color={C.ink} weight="bold" />
+          </TouchableOpacity>
+        }
+      />
 
-      {/* Header */}
-      <View style={{
-        flexDirection: 'row', alignItems: 'center',
-        paddingHorizontal: 16, height: 52,
-        backgroundColor: C.card,
-      }}>
-        <TouchableOpacity
-          onPress={() => router.back()}
-          hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-        >
-          <ArrowLeft size={22} color={C.navy} weight="bold" />
-        </TouchableOpacity>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingTop: 16, paddingBottom: 48 }} showsVerticalScrollIndicator={false}>
 
-        <View style={{ flex: 1, alignItems: 'center' }}>
-          <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1 }}>
-            CHARLOTTE
-          </AppText>
-          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
-            {isPortuguese ? 'Seu Progresso' : 'Your Progress'}
-          </AppText>
-        </View>
-
-        <TouchableOpacity
-          onPress={() => {
-            if (data.streak > 0) shareStreak(data.streak, isPortuguese);
-            else shareXP(displayXP, isPortuguese);
-          }}
-          hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-        >
-          <ShareNetwork size={20} color={C.navyLight} weight="regular" />
-        </TouchableOpacity>
-      </View>
-
-      {/* Content */}
-      <ScrollView
-        style={{ flex: 1, backgroundColor: C.bg }}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingTop: 16, paddingBottom: 40 }}
-      >
-
-        {/* ── Hero block ───────────────────────────────────────────────────── */}
-        <View style={{
-          marginHorizontal: 16, borderRadius: 20,
-          paddingHorizontal: 20, paddingVertical: 14,
-          backgroundColor: accent, marginBottom: 24,
-          flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-        }}>
-          <View style={{ flexDirection: 'row', gap: 8 }}>
-            <View style={{
-              flexDirection: 'row', alignItems: 'center', gap: 5,
-              backgroundColor: 'rgba(255,255,255,0.15)',
-              paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20,
-            }}>
-              <Fire size={13} color="#FFFFFF" weight="fill" />
-              <AppText style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '800' }}>
-                {data.streak}d
-              </AppText>
-            </View>
-
-            <View style={{
-              flexDirection: 'row', alignItems: 'center', gap: 5,
-              backgroundColor: 'rgba(255,255,255,0.15)',
-              paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20,
-            }}>
-              <Lightning size={13} color="#FFFFFF" weight="fill" />
-              <AppText style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '800' }}>
-                {displayXP.toLocaleString()} XP
-              </AppText>
-            </View>
-
-            <View style={{
-              flexDirection: 'row', alignItems: 'center', gap: 5,
-              backgroundColor: 'rgba(255,255,255,0.15)',
-              paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20,
-            }}>
-              <Trophy size={13} color="#FFFFFF" weight="fill" />
-              <AppText style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '800' }}>
-                {data.rank > 0 ? `#${data.rank}` : '--'}
-              </AppText>
+        {/* ── Resumo ─────────────────────────────────────────────────────── */}
+        <View style={{ marginHorizontal: 16, backgroundColor: C.ink, borderRadius: 24, padding: 20 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+            <AppText style={{ fontSize: 11, fontWeight: '800', color: 'rgba(255,255,255,0.6)', letterSpacing: 1, textTransform: 'uppercase' }}>
+              {isPt ? 'XP total' : 'Total XP'}
+            </AppText>
+            <View style={{ backgroundColor: C.volt, borderRadius: 20, paddingHorizontal: 10, paddingVertical: 3 }}>
+              <AppText style={{ fontSize: 12, fontWeight: '800', color: C.ink }}>{userLevel}</AppText>
             </View>
           </View>
+          <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, marginTop: 4 }}>
+            <AppText display style={{ fontSize: 46, fontWeight: '800', color: '#FFFFFF', lineHeight: 50 }}>
+              {totalXP.toLocaleString()}
+            </AppText>
+            {goals.todayXP > 0 && (
+              <AppText style={{ fontSize: 14, fontWeight: '800', color: C.volt, marginBottom: 8 }}>
+                +{goals.todayXP} {isPt ? 'hoje' : 'today'}
+              </AppText>
+            )}
+          </View>
 
-          <View style={{
-            backgroundColor: 'rgba(255,255,255,0.2)',
-            paddingHorizontal: 12, paddingVertical: 4, borderRadius: 20,
-          }}>
-            <AppText style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '700' }}>
-              {userLevel}
+          <View style={{ flexDirection: 'row', gap: 10, marginTop: 16 }}>
+            <View style={{ flex: 1, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 16, padding: 12, gap: 6 }}>
+              <Fire size={18} color={streak > 0 ? C.pink : 'rgba(255,255,255,0.4)'} weight="fill" />
+              <AppText display style={{ fontSize: 22, fontWeight: '800', color: '#FFFFFF' }}>{streak}</AppText>
+              <AppText style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)' }}>
+                {isPt ? (streak === 1 ? 'dia seguido' : 'dias seguidos') : (streak === 1 ? 'day streak' : 'days streak')}
+              </AppText>
+            </View>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => openRoute('/(app)/leaderboard')}
+              style={{ flex: 1, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 16, padding: 12, gap: 6 }}
+            >
+              <Trophy size={18} color={C.volt} weight="fill" />
+              <AppText display style={{ fontSize: 22, fontWeight: '800', color: '#FFFFFF' }}>{rank > 0 ? (isPt ? `${rank}º` : `#${rank}`) : '—'}</AppText>
+              <AppText style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)' }}>
+                {isPt ? `no ranking ${userLevel}` : `in ${userLevel} ranking`}
+              </AppText>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* ── Progresso do nível ─────────────────────────────────────────── */}
+        <SectionTitle title={nextLevel ? (isPt ? `Rumo ao ${nextLevel}` : `Road to ${nextLevel}`) : (isPt ? `Nível ${userLevel}` : `${userLevel} level`)} />
+        <Card>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+            <BookOpenText size={16} color={C.mid} weight="bold" />
+            <AppText style={{ flex: 1, fontSize: 14, fontWeight: '700', color: C.ink }}>
+              {isPt ? 'Trilha' : 'Trail'}
+            </AppText>
+            <AppText style={{ fontSize: 13, fontWeight: '800', color: C.mid }}>{trailCount}/{trailTotal}</AppText>
+          </View>
+          <QueizyWave progress={trailTotal > 0 ? trailCount / trailTotal : 0} height={14} strokeWidth={4} />
+
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 18, marginBottom: 8 }}>
+            <Lightning size={16} color={C.mid} weight="fill" />
+            <AppText style={{ flex: 1, fontSize: 14, fontWeight: '700', color: C.ink }}>XP</AppText>
+            <AppText style={{ fontSize: 13, fontWeight: '800', color: C.mid }}>
+              {totalXP.toLocaleString()}/{xpTarget.toLocaleString()}
             </AppText>
           </View>
-        </View>
+          <QueizyWave progress={totalXP / xpTarget} height={14} strokeWidth={4} />
 
-        {/* ── Section: Progresso ───────────────────────────────────────────── */}
-        <View style={{ paddingHorizontal: 20, marginBottom: 12 }}>
-          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
-            {isPortuguese ? 'Progresso' : 'Progress'}
-          </AppText>
-        </View>
-
-        <View style={{
-          backgroundColor: C.card, borderRadius: 20, padding: 16,
-          marginHorizontal: 16, marginBottom: 24,
-        }}>
-          {/* Trail */}
-          <View style={{ marginBottom: 14 }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 7 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <BookOpenText size={13} color={C.navyLight} weight="bold" />
-                <AppText style={{ fontSize: 12, fontWeight: '700', color: C.navy }}>
-                  {isPortuguese ? 'Trilha de Aprendizado' : 'Learning Trail'}
-                </AppText>
-              </View>
-              <AppText style={{
-                fontSize: 12, fontWeight: '700',
-                color: trailDone >= trailTotal && trailTotal > 0 ? C.green : C.navyLight,
-              }}>
-                {trailDone}/{trailTotal}
-              </AppText>
-            </View>
-            <View style={{ height: 5, backgroundColor: C.ghost, borderRadius: 3, overflow: 'hidden' }}>
-              <View style={{
-                width: `${trailPct}%` as `${number}%`, height: '100%',
-                backgroundColor: trailDone >= trailTotal && trailTotal > 0 ? C.green : accent,
-                borderRadius: 3,
-              }} />
-            </View>
-          </View>
-
-          {/* XP */}
-          <View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 7 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <Lightning size={13} color={C.navyLight} weight="fill" />
-                <AppText style={{ fontSize: 12, fontWeight: '700', color: C.navy }}>XP</AppText>
-              </View>
-              <AppText style={{
-                fontSize: 12, fontWeight: '700',
-                color: displayXP >= promotionXPThreshold ? C.green : C.navyLight,
-              }}>
-                {displayXP.toLocaleString()}/{promotionXPThreshold.toLocaleString()}
-              </AppText>
-            </View>
-            <View style={{ height: 5, backgroundColor: C.ghost, borderRadius: 3, overflow: 'hidden' }}>
-              <View style={{
-                width: `${xpPct}%` as `${number}%`, height: '100%',
-                backgroundColor: displayXP >= promotionXPThreshold ? C.green : accent,
-                borderRadius: 3,
-              }} />
-            </View>
-          </View>
-
-          {promotionStatus?.eligible && nextLevelName && (
+          {promotion?.eligible && nextLevel && (
             <View style={{
-              marginTop: 14, backgroundColor: C.greenLight, borderRadius: 12,
-              padding: 10, flexDirection: 'row', alignItems: 'center', gap: 8,
+              marginTop: 16, backgroundColor: C.volt, borderRadius: 14,
+              paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 8,
             }}>
-              <Star size={13} color={C.green} weight="fill" />
-              <AppText style={{ color: C.green, fontSize: 12, fontWeight: '700', flex: 1 }}>
-                {isPortuguese
-                  ? `Pronto para o nível ${nextLevelName}!`
-                  : `Ready for ${nextLevelName} level!`}
+              <Star size={15} color={C.ink} weight="fill" />
+              <AppText style={{ flex: 1, fontSize: 13, fontWeight: '800', color: C.ink }}>
+                {isPt ? `Pronto para o ${nextLevel}!` : `Ready for ${nextLevel}!`}
               </AppText>
             </View>
           )}
-        </View>
+        </Card>
 
-        {/* ── Section: Conquistas ──────────────────────────────────────────── */}
-        <View style={{
-          flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-          paddingHorizontal: 20, marginBottom: 12,
-        }}>
-          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
-            {isPortuguese ? 'Conquistas' : 'Achievements'}
-          </AppText>
-          <TouchableOpacity
-            onPress={() => router.push({
-              pathname: '/(app)/achievements' as any,
-              params: { userId, userLevel, userName },
-            })}
-          >
-            <CaretRight size={18} color={C.navyLight} weight="bold" />
-          </TouchableOpacity>
-        </View>
+        {/* ── Conquistas ─────────────────────────────────────────────────── */}
+        <SectionTitle
+          title={isPt ? 'Conquistas' : 'Achievements'}
+          meta={`${earnedInCatalog}/${catalog.length}`}
+          onPress={() => openRoute('/(app)/achievements')}
+        />
+        <Card style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 6, paddingTop: 20 }}>
+          {badgePreview.map(b => (
+            <BadgeMedal
+              key={b.key}
+              category={b.cat?.category ?? b.row?.category ?? 'general'}
+              rarity={b.cat?.rarity ?? b.row?.rarity ?? 'common'}
+              earned={b.earned}
+              label={badgeTitle(b.cat, b.row?.title ?? '', isPt)}
+              size={52}
+              onPress={() => b.cat && setBadgeModal({ cat: b.cat, earnedAt: b.row?.earnedAt })}
+            />
+          ))}
+        </Card>
 
-        {(() => {
-          const levelCatalog = getBadgesForLevel(userLevel);
-          const earnedMap: Record<string, AchievementWithCategory> = {};
-          data.achievements.forEach(a => { earnedMap[a.code] = a; });
-          const earnedCodes = new Set(data.achievements.map(a => a.code));
-          const shownEarned = data.achievements.slice(0, 4);
-          const lockedPreview = levelCatalog
-            .filter(a => !earnedCodes.has(a.code))
-            .slice(0, Math.max(0, 4 - shownEarned.length));
-          const allBadges = [
-            ...shownEarned.map(a => ({ type: 'earned' as const, ach: a })),
-            ...lockedPreview.map(c => ({ type: 'locked' as const, cat: c })),
-          ];
-          return (
-            <View style={{
-              flexDirection: 'row', paddingHorizontal: 16,
-              marginBottom: 24, gap: 8,
-            }}>
-              {allBadges.map((item, i) => {
-                if (item.type === 'earned') {
-                  const ach = item.ach;
-                  const rc = RARITY_COLORS[ach.rarity] ?? '#22C55E';
-                  const cat = levelCatalog.find(c => c.code === ach.code);
-                  return (
-                    <TouchableOpacity
-                      key={ach.id ?? i}
-                      activeOpacity={0.7}
-                      onPress={() => cat && setBadgeModal({ catalog: cat, earnedAt: ach.earnedAt })}
-                      style={{ flex: 1, alignItems: 'center' }}
-                    >
-                      <View style={{
-                        width: 52, height: 52, borderRadius: 26,
-                        backgroundColor: rc + '20',
-                        alignItems: 'center', justifyContent: 'center',
-                        marginBottom: 6,
-                      }}>
-                        <AchievementIcon category={ach.category} rarity={ach.rarity} size={24} />
-                      </View>
-                      <AppText style={{
-                        fontSize: 10, fontWeight: '600', color: C.navy,
-                        textAlign: 'center',
-                      }} numberOfLines={2}>
-                        {cat ? (isPortuguese ? cat.title : (cat.titleEN ?? cat.title)) : ach.title}
-                      </AppText>
-                    </TouchableOpacity>
-                  );
-                } else {
-                  const cat = item.cat;
-                  return (
-                    <TouchableOpacity
-                      key={cat.code}
-                      activeOpacity={0.7}
-                      onPress={() => setBadgeModal({ catalog: cat })}
-                      style={{ flex: 1, alignItems: 'center' }}
-                    >
-                      <View style={{
-                        width: 52, height: 52, borderRadius: 26,
-                        backgroundColor: C.ghost,
-                        alignItems: 'center', justifyContent: 'center',
-                        marginBottom: 6,
-                      }}>
-                        <AchievementIcon category={cat.category} rarity="locked" size={24} />
-                      </View>
-                      <AppText style={{
-                        fontSize: 10, fontWeight: '600', color: C.navyLight,
-                        textAlign: 'center',
-                      }} numberOfLines={2}>
-                        {isPortuguese ? cat.title : (cat.titleEN ?? cat.title)}
-                      </AppText>
-                    </TouchableOpacity>
-                  );
-                }
-              })}
-            </View>
-          );
-        })()}
-
-        {/* ── Section: Ranking ─────────────────────────────────────────────── */}
-        <View style={{
-          flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-          paddingHorizontal: 20, marginBottom: 12,
-        }}>
-          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
-            Ranking
-          </AppText>
-          <TouchableOpacity
-            onPress={() => router.push({
-              pathname: '/(app)/leaderboard' as any,
-              params: { userId, userLevel, userName },
-            })}
-          >
-            <CaretRight size={18} color={C.navyLight} weight="bold" />
-          </TouchableOpacity>
-        </View>
-
-        <View style={{
-          backgroundColor: C.card, borderRadius: 20, padding: 16,
-          marginHorizontal: 16, marginBottom: 24,
-        }}>
-          {data.top3.length === 0 ? (
-            <View style={{ alignItems: 'center', paddingVertical: 20 }}>
-              <Trophy size={32} color={C.navyLight} weight="fill" />
-              <AppText style={{ color: C.navyLight, fontSize: 13, fontWeight: '500', marginTop: 8 }}>
-                {isPortuguese ? 'Nenhum dado disponível' : 'No data available'}
-              </AppText>
-            </View>
+        {/* ── Ranking ────────────────────────────────────────────────────── */}
+        <SectionTitle
+          title="Ranking"
+          meta={userLevel}
+          onPress={() => openRoute('/(app)/leaderboard')}
+        />
+        <Card style={{ paddingVertical: 6 }}>
+          {top3.length === 0 ? (
+            <AppText style={{ fontSize: 13, color: C.light, textAlign: 'center', paddingVertical: 18 }}>
+              {isPt ? 'O ranking ainda está vazio.' : 'The ranking is still empty.'}
+            </AppText>
           ) : (
             <>
-              {data.top3.map((entry, i) => {
-                const isUser = entry.userId === userId;
-                return (
-                  <View
-                    key={entry.userId + String(i)}
-                    style={{
-                      flexDirection: 'row', alignItems: 'center',
-                      paddingVertical: 10,
-                      borderBottomWidth: i < data.top3.length - 1 ? 1 : 0,
-                      borderBottomColor: C.border,
-                      backgroundColor: isUser ? accent + '1A' : 'transparent',
-                      borderRadius: isUser ? 10 : 0,
-                      paddingHorizontal: isUser ? 8 : 0,
-                    }}
-                  >
-                    <Medal size={18} color={MEDAL_COLORS[i] ?? C.navyLight} weight="fill" />
-                    <AppText style={{
-                      flex: 1, fontSize: 13,
-                      fontWeight: isUser ? '800' : '600',
-                      color: isUser ? accent : C.navy,
-                      marginLeft: 10,
-                    }}>
-                      {isUser ? (userName || 'You') : (entry.name ? entry.name.split(' ')[0] : `#${i + 1}`)}
-                    </AppText>
-                    <AppText style={{
-                      fontSize: 13, fontWeight: '700',
-                      color: isUser ? accent : C.navyLight,
-                    }}>
-                      {entry.totalXp.toLocaleString()} XP
-                    </AppText>
-                  </View>
-                );
-              })}
-
-              {!data.top3.some(e => e.userId === userId) && (
-                <>
-                  <View style={{ height: 1, backgroundColor: C.border, marginVertical: 4 }} />
-                  <View style={{
-                    flexDirection: 'row', alignItems: 'center',
-                    paddingVertical: 10, paddingHorizontal: 8,
-                    backgroundColor: accent + '1A', borderRadius: 10,
-                  }}>
-                    <AppText style={{ fontSize: 13, fontWeight: '700', color: accent, width: 28 }}>
-                      #{data.rank}
-                    </AppText>
-                    <AppText style={{ flex: 1, fontSize: 13, fontWeight: '800', color: accent, marginLeft: 2 }}>
-                      {userName || 'You'}
-                    </AppText>
-                    <AppText style={{ fontSize: 13, fontWeight: '700', color: accent }}>
-                      {displayXP.toLocaleString()} XP
-                    </AppText>
-                  </View>
-                </>
+              {top3.map((e, i) => (
+                <RankRow
+                  key={e.userId}
+                  rank={i + 1}
+                  name={firstName(e.userId === userId ? userName : e.name, `#${i + 1}`)}
+                  xp={e.userId === userId ? totalXP : e.totalXp}
+                  isUser={e.userId === userId}
+                  youLabel={you}
+                  last={i === top3.length - 1 && top3.some(t => t.userId === userId)}
+                />
+              ))}
+              {!top3.some(e => e.userId === userId) && (
+                <RankRow rank={rank} name={firstName(userName, isPt ? 'Você' : 'You')} xp={totalXP} isUser youLabel={you} last />
               )}
             </>
           )}
-        </View>
+        </Card>
 
+        {/* ── Metas ──────────────────────────────────────────────────────── */}
+        <SectionTitle
+          title={isPt ? 'Metas' : 'Goals'}
+          meta={goals.missions.length > 0 ? `${missionsDone}/${goals.missions.length}` : undefined}
+          onPress={() => router.push('/(app)/goals')}
+        />
+        <Card>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
+            <AppText style={{ flex: 1, fontSize: 14, fontWeight: '700', color: C.ink }}>
+              {isPt ? 'Meta de hoje' : "Today's goal"}
+            </AppText>
+            <AppText style={{ fontSize: 13, fontWeight: '800', color: C.mid }}>
+              {goals.todayXP}/{dailyGoal} XP
+            </AppText>
+          </View>
+          <QueizyWave progress={goals.todayXP / dailyGoal} height={14} strokeWidth={4} />
+
+          <View style={{ marginTop: 8 }}>
+            {goals.missions.map((m, i) => (
+              <MissionRow key={m.id} mission={m} isPt={isPt} compact last={i === goals.missions.length - 1} />
+            ))}
+          </View>
+
+          {goals.weekly && (
+            <View style={{ marginTop: 6, backgroundColor: C.bg, borderRadius: 14, padding: 12 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
+                <AppText style={{ flex: 1, fontSize: 13, fontWeight: '700', color: C.ink }} numberOfLines={1}>
+                  {isPt ? 'Desafio da semana' : 'Weekly challenge'}
+                  <AppText style={{ fontSize: 13, fontWeight: '600', color: C.mid }}>
+                    {' · '}{isPt ? goals.weekly.challenge.title.pt : goals.weekly.challenge.title.en}
+                  </AppText>
+                </AppText>
+                <AppText style={{ fontSize: 12, fontWeight: '800', color: C.mid }}>
+                  {Math.min(goals.weekly.current, goals.weekly.challenge.target)}/{goals.weekly.challenge.target}
+                </AppText>
+              </View>
+              <QueizyWave progress={goals.weekly.current / goals.weekly.challenge.target} height={12} strokeWidth={3.5} />
+            </View>
+          )}
+        </Card>
       </ScrollView>
 
-      {/* ── Badge modal ───────────────────────────────────────────────────── */}
-      {badgeModal && (() => {
-        const { catalog: cat, earnedAt } = badgeModal;
-        const isEarned = !!earnedAt;
-        const rc = RARITY_COLORS[cat.rarity] ?? '#22C55E';
-        const howToEarn = isPortuguese ? cat.howToEarnPT : cat.howToEarnEN;
-        const RARITY_LABEL: Record<string, string> = {
-          common: 'Common', rare: 'Rare', epic: 'Epic', legendary: 'Legendary',
-        };
-        return (
-          <Modal visible transparent animationType="fade" onRequestClose={() => setBadgeModal(null)}>
-            <Pressable
-              style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.55)', alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 }}
-              onPress={() => setBadgeModal(null)}
-            >
-              <Pressable onPress={e => e.stopPropagation()}>
-                <View style={{ backgroundColor: C.card, borderRadius: 24, padding: 24, width: '100%', alignItems: 'center' }}>
-                  <TouchableOpacity
-                    onPress={() => setBadgeModal(null)}
-                    style={{ position: 'absolute', top: 16, right: 16 }}
-                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-                  >
-                    <X size={18} color={C.navyLight} weight="bold" />
-                  </TouchableOpacity>
-
-                  <View style={{
-                    width: 72, height: 72, borderRadius: 36,
-                    backgroundColor: isEarned ? rc + '20' : C.ghost,
-                    alignItems: 'center', justifyContent: 'center', marginBottom: 14,
-                  }}>
-                    <AchievementIcon category={cat.category} rarity={isEarned ? cat.rarity : 'locked'} size={34} />
-                  </View>
-
-                  <View style={{
-                    paddingHorizontal: 10, paddingVertical: 3, borderRadius: 20,
-                    backgroundColor: isEarned ? rc + '18' : C.ghost, marginBottom: 8,
-                  }}>
-                    <AppText style={{ fontSize: 10, fontWeight: '700', color: isEarned ? rc : C.navyLight, textTransform: 'uppercase', letterSpacing: 0.8 }}>
-                      {RARITY_LABEL[cat.rarity] ?? cat.rarity}
-                    </AppText>
-                  </View>
-
-                  <AppText style={{ fontSize: 17, fontWeight: '800', color: C.navy, textAlign: 'center', marginBottom: 10 }}>
-                    {isPortuguese ? cat.title : (cat.titleEN ?? cat.title)}
-                  </AppText>
-
-                  <View style={{ width: '100%', height: 1, backgroundColor: C.border, marginBottom: 14 }} />
-
-                  <View style={{ alignItems: 'center', paddingHorizontal: 8, marginBottom: isEarned ? 14 : 0 }}>
-                    {isEarned
-                      ? <CheckCircle size={20} color={C.green} weight="fill" style={{ marginBottom: 6 }} />
-                      : <Lock size={20} color={C.navyLight} weight="bold" style={{ marginBottom: 6 }} />
-                    }
-                    <AppText style={{ fontSize: 13, fontWeight: '500', color: C.navy, textAlign: 'center', lineHeight: 20 }}>
-                      {howToEarn}
-                    </AppText>
-                  </View>
-
-                  {isEarned && earnedAt && (
-                    <View style={{
-                      alignSelf: 'stretch',
-                      backgroundColor: C.greenLight, borderRadius: 12,
-                      paddingHorizontal: 14, paddingVertical: 10,
-                      flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6,
-                    }}>
-                      <CheckCircle size={15} color={C.green} weight="fill" style={{ flexShrink: 0 }} />
-                      <AppText style={{ fontSize: 12, fontWeight: '700', color: C.green, flexShrink: 1, textAlign: 'center' }}>
-                        {(isPortuguese ? 'Conquistado em ' : 'Earned on ') + earnedAt.toLocaleDateString(isPortuguese ? 'pt-BR' : 'en-US', { day: '2-digit', month: 'short', year: 'numeric' })}
-                      </AppText>
-                    </View>
-                  )}
-                </View>
-              </Pressable>
-            </Pressable>
-          </Modal>
-        );
-      })()}
-    </SafeAreaView>
+      {badgeModal && (
+        <BadgeModal cat={badgeModal.cat} earnedAt={badgeModal.earnedAt} isPt={isPt} onClose={() => setBadgeModal(null)} />
+      )}
+    </View>
   );
 }

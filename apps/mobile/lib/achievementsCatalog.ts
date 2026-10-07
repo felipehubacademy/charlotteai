@@ -3,8 +3,8 @@
 
 export interface CatalogEntry {
   code:        string;
-  title:       string;   // Portuguese (Novice)
-  titleEN?:    string;   // English (Inter / Advanced) — falls back to title if absent
+  title:       string;   // português (device em PT)
+  titleEN?:    string;   // inglês (device em outro idioma) — cai no title se ausente
   category:    string;
   rarity:      'common' | 'rare' | 'epic' | 'legendary';
   xpReward:    number;
@@ -151,75 +151,75 @@ export const GENERAL_ACHIEVEMENTS: CatalogEntry[] = [
 export const LEVEL_ACHIEVEMENTS: CatalogEntry[] = [
   // Novice (PT titles)
   {
-    code: 'novice_first_topic', title: 'A Jornada Começa', category: 'learn', rarity: 'common', xpReward: 15,
+    code: 'novice_first_topic', title: 'A Jornada Começa', titleEN: 'The Journey Begins', category: 'learn', rarity: 'common', xpReward: 15,
     level: 'Novice',
     howToEarnPT: 'Complete o primeiro tópico da trilha Novice.',
     howToEarnEN: 'Complete the first topic on the Novice trail.',
   },
   {
-    code: 'novice_halfway', title: 'No Embalo', category: 'learn', rarity: 'rare', xpReward: 60,
+    code: 'novice_halfway', title: 'No Embalo', titleEN: 'On a Roll', category: 'learn', rarity: 'rare', xpReward: 60,
     level: 'Novice',
     howToEarnPT: 'Complete 25 dos 50 tópicos da trilha Novice.',
     howToEarnEN: 'Complete 25 of 50 Novice trail topics.',
   },
   {
-    code: 'novice_master', title: 'Mestre do Básico', category: 'learn', rarity: 'epic', xpReward: 150,
+    code: 'novice_master', title: 'Mestre do Básico', titleEN: 'Basics Master', category: 'learn', rarity: 'epic', xpReward: 150,
     level: 'Novice',
     howToEarnPT: 'Complete todos os 50 tópicos da trilha Novice.',
     howToEarnEN: 'Complete all 50 Novice trail topics.',
   },
   {
-    code: 'novice_promoted', title: 'Passou de Fase!', category: 'general', rarity: 'legendary', xpReward: 200,
+    code: 'novice_promoted', title: 'Passou de Fase!', titleEN: 'Level Up!', category: 'general', rarity: 'legendary', xpReward: 200,
     level: 'Novice',
     howToEarnPT: 'Complete a trilha Novice e atinja 4.000 XP para ser promovido ao nível Inter.',
     howToEarnEN: 'Complete the Novice trail and reach 4,000 XP to be promoted to Inter.',
   },
   // Inter (EN titles)
   {
-    code: 'inter_first_topic', title: 'Rising Up', category: 'learn', rarity: 'common', xpReward: 15,
+    code: 'inter_first_topic', title: 'Subindo', titleEN: 'Rising Up', category: 'learn', rarity: 'common', xpReward: 15,
     level: 'Inter',
     howToEarnPT: 'Complete o primeiro tópico da trilha Inter.',
     howToEarnEN: 'Complete the first topic on the Inter trail.',
   },
   {
-    code: 'inter_halfway', title: 'Halfway There', category: 'learn', rarity: 'rare', xpReward: 80,
+    code: 'inter_halfway', title: 'Metade do Caminho', titleEN: 'Halfway There', category: 'learn', rarity: 'rare', xpReward: 80,
     level: 'Inter',
     howToEarnPT: 'Complete 35 dos 70 tópicos da trilha Inter.',
     howToEarnEN: 'Complete 35 of 70 Inter trail topics.',
   },
   {
-    code: 'inter_champion', title: 'Inter Champion', category: 'learn', rarity: 'epic', xpReward: 200,
+    code: 'inter_champion', title: 'Campeão Inter', titleEN: 'Inter Champion', category: 'learn', rarity: 'epic', xpReward: 200,
     level: 'Inter',
     howToEarnPT: 'Complete todos os 70 tópicos da trilha Inter.',
     howToEarnEN: 'Complete all 70 Inter trail topics.',
   },
   {
-    code: 'inter_promoted', title: 'Going Advanced', category: 'general', rarity: 'legendary', xpReward: 300,
+    code: 'inter_promoted', title: 'Rumo ao Advanced', titleEN: 'Going Advanced', category: 'general', rarity: 'legendary', xpReward: 300,
     level: 'Inter',
     howToEarnPT: 'Complete a trilha Inter e atinja 9.800 XP para ser promovido ao nível Advanced.',
     howToEarnEN: 'Complete the Inter trail and reach 9,800 XP to be promoted to Advanced.',
   },
   // Advanced (EN titles)
   {
-    code: 'advanced_first_topic', title: 'Elite Learner', category: 'learn', rarity: 'common', xpReward: 15,
+    code: 'advanced_first_topic', title: 'Aluno de Elite', titleEN: 'Elite Learner', category: 'learn', rarity: 'common', xpReward: 15,
     level: 'Advanced',
     howToEarnPT: 'Complete o primeiro tópico da trilha Advanced.',
     howToEarnEN: 'Complete the first topic on the Advanced trail.',
   },
   {
-    code: 'advanced_halfway', title: 'Deep End', category: 'learn', rarity: 'rare', xpReward: 100,
+    code: 'advanced_halfway', title: 'Mergulho Fundo', titleEN: 'Deep End', category: 'learn', rarity: 'rare', xpReward: 100,
     level: 'Advanced',
     howToEarnPT: 'Complete 20 dos 40 tópicos da trilha Advanced.',
     howToEarnEN: 'Complete 20 of 40 Advanced trail topics.',
   },
   {
-    code: 'advanced_master', title: 'Advanced Master', category: 'learn', rarity: 'epic', xpReward: 250,
+    code: 'advanced_master', title: 'Mestre Advanced', titleEN: 'Advanced Master', category: 'learn', rarity: 'epic', xpReward: 250,
     level: 'Advanced',
     howToEarnPT: 'Complete todos os 40 tópicos da trilha Advanced.',
     howToEarnEN: 'Complete all 40 Advanced trail topics.',
   },
   {
-    code: 'advanced_fluent', title: 'Fluent', category: 'general', rarity: 'legendary', xpReward: 500,
+    code: 'advanced_fluent', title: 'Fluente', titleEN: 'Fluent', category: 'general', rarity: 'legendary', xpReward: 500,
     level: 'Advanced',
     howToEarnPT: 'Acumule 20.000 XP no total.',
     howToEarnEN: 'Accumulate 20,000 total XP.',

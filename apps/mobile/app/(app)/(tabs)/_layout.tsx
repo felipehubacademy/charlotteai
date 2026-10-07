@@ -7,7 +7,7 @@ import React from 'react';
 import { Tabs } from 'expo-router';
 import { Platform, View, Image } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { House, Lightning, Notepad, Rocket, UserCircle, Phone } from 'phosphor-react-native';
+import { House, Lightning, Notepad, UserCircle, Phone } from 'phosphor-react-native';
 import { useAuth } from '@/hooks/useAuth';
 
 // Aba ativa = cor de destaque da marca, igual em todos os níveis: pílula Volt
@@ -82,14 +82,6 @@ export default function TabLayout() {
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabIcon focused={focused}><Notepad size={22} color={color} weight="fill" /></TabIcon>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="goals"
-        options={{
-          tabBarIcon: ({ color, focused }) => (
-            <TabIcon focused={focused}><Rocket size={22} color={color} weight="fill" /></TabIcon>
           ),
         }}
       />

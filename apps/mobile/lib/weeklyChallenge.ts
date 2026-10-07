@@ -37,7 +37,7 @@ const CHALLENGE_POOL: WeeklyChallenge[] = [
     title: { pt: 'Maratonista', en: 'Marathon Runner' },
     sub:   { pt: 'Envie 50 mensagens esta semana', en: 'Send 50 messages this week' },
     target: 50, unit: { pt: 'mensagens', en: 'messages' },
-    xpReward: 100, color: '#08804A', bgColor: '#F8FFE0',
+    xpReward: 100, color: '#08804A', bgColor: '#E3F6EC',
     // Novice only sends text — lower target so the challenge is achievable
   },
   {
@@ -45,28 +45,28 @@ const CHALLENGE_POOL: WeeklyChallenge[] = [
     title: { pt: 'Cac\u0327ador de XP', en: 'XP Hunter' },
     sub:   { pt: 'Ganhe 500 XP esta semana', en: 'Earn 500 XP this week' },
     target: 500, unit: { pt: 'XP', en: 'XP' },
-    xpReward: 120, color: '#6B4BFF', bgColor: '#FAF5FF',
+    xpReward: 120, color: '#6B4BFF', bgColor: '#EFECFF',
   },
   {
     id: 'streak_5',
     title: { pt: 'Consist\u00eancia', en: 'Consistency' },
     sub:   { pt: 'Mantenha 5 dias de streak', en: 'Keep a 5-day streak' },
     target: 5, unit: { pt: 'dias', en: 'days' },
-    xpReward: 80, color: '#FF6B35', bgColor: '#FFF3ED',
+    xpReward: 80, color: '#FF4F8B', bgColor: '#FFEEF4',
   },
   {
     id: 'lessons_5',
     title: { pt: 'Estudioso', en: 'Bookworm' },
     sub:   { pt: 'Complete 5 li\u00e7\u00f5es esta semana', en: 'Complete 5 lessons this week' },
     target: 5, unit: { pt: 'li\u00e7\u00f5es', en: 'lessons' },
-    xpReward: 100, color: '#1D4ED8', bgColor: '#EFF6FF',
+    xpReward: 100, color: '#16131F', bgColor: '#F1FFB8',
   },
   {
     id: 'audio_10',
     title: { pt: 'Falante', en: 'Speaker' },
     sub:   { pt: 'Envie 10 mensagens de \u00e1udio', en: 'Send 10 audio messages' },
     target: 10, unit: { pt: '\u00e1udios', en: 'audios' },
-    xpReward: 90, color: '#FF4F8B', bgColor: '#FFEEF4',
+    xpReward: 90, color: '#08804A', bgColor: '#E3F6EC',
     // Audio messages are only available from Inter onwards
     allowedLevels: ['Inter', 'Advanced'],
   },
@@ -75,7 +75,7 @@ const CHALLENGE_POOL: WeeklyChallenge[] = [
     title: { pt: 'Gram\u00e1tica', en: 'Grammar Star' },
     sub:   { pt: 'Envie 20 frases no modo Gram\u00e1tica', en: 'Send 20 sentences in Grammar mode' },
     target: 20, unit: { pt: 'frases', en: 'sentences' },
-    xpReward: 90, color: '#D97706', bgColor: '#FFFBEB',
+    xpReward: 90, color: '#6B4BFF', bgColor: '#EFECFF',
     // Replaces audio_10 for Novice (Grammar is unlocked for all)
     allowedLevels: ['Novice'],
   },

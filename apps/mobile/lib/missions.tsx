@@ -8,16 +8,17 @@ import {
 } from 'phosphor-react-native';
 import { LEVEL_CONFIG, UserLevel, ChatMode } from '@/lib/levelConfig';
 import { localTodayStr } from '@/lib/dateUtils';
+import { systemIsPt } from '@/lib/systemLang';
 
-// Static color tokens — matches module-level C in index.tsx (not theme-aware by design)
+// Cores das famílias de missão — paleta Queizy.
 const greenDark = '#08804A';
-const greenBg   = '#F8FFE0';
-const gold      = '#F59E0B';
-const orange    = '#FF6B35';
-const blue      = '#6B4BFF';
-const blueBg    = '#F1EEFF';
+const greenBg   = '#E3F6EC';
+const ink       = '#16131F';
+const voltBg    = '#F1FFB8';
 const pink      = '#FF4F8B';
 const pinkBg    = '#FFEEF4';
+const violet    = '#6B4BFF';
+const violetBg  = '#EFECFF';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -116,8 +117,8 @@ const MISSION_POOL: MissionTemplate[] = [
     id: 'xp_20',
     label: isPt => isPt ? 'Ganhe 20 XP' : 'Earn 20 XP',
     sub:   isPt => isPt ? 'Um começo rápido!' : 'A quick start!',
-    xpReward: 8, accentColor: gold, accentBg: '#FFFBEB', levels: 'all',
-    icon: <Lightning size={22} color={gold} weight="fill" />,
+    xpReward: 8, accentColor: ink, accentBg: voltBg, levels: 'all',
+    icon: <Lightning size={22} color={ink} weight="fill" />,
     getDestination: () => '/(app)/(tabs)/practice',
     getCompleted:     d => d.todayXP >= 20,
     getProgress:      d => Math.min(d.todayXP / 20, 1),
@@ -127,8 +128,8 @@ const MISSION_POOL: MissionTemplate[] = [
     id: 'xp_50',
     label: isPt => isPt ? 'Ganhe 50 XP hoje' : 'Earn 50 XP today',
     sub:   isPt => isPt ? 'Mantenha a conversa fluindo' : 'Keep the conversation going',
-    xpReward: 15, accentColor: gold, accentBg: '#FFFBEB', levels: 'all',
-    icon: <Lightning size={22} color={gold} weight="fill" />,
+    xpReward: 15, accentColor: ink, accentBg: voltBg, levels: 'all',
+    icon: <Lightning size={22} color={ink} weight="fill" />,
     getDestination: () => '/(app)/(tabs)/practice',
     getCompleted:     d => d.todayXP >= 50,
     getProgress:      d => Math.min(d.todayXP / 50, 1),
@@ -138,8 +139,8 @@ const MISSION_POOL: MissionTemplate[] = [
     id: 'xp_100',
     label: isPt => isPt ? 'Ganhe 100 XP hoje' : 'Earn 100 XP today',
     sub:   isPt => isPt ? 'Vá além do básico hoje!' : 'Push beyond the basics!',
-    xpReward: 25, accentColor: gold, accentBg: '#FFFBEB', levels: 'all',
-    icon: <Lightning size={22} color={gold} weight="fill" />,
+    xpReward: 25, accentColor: ink, accentBg: voltBg, levels: 'all',
+    icon: <Lightning size={22} color={ink} weight="fill" />,
     getDestination: () => '/(app)/(tabs)/practice',
     getCompleted:     d => d.todayXP >= 100,
     getProgress:      d => Math.min(d.todayXP / 100, 1),
@@ -151,8 +152,8 @@ const MISSION_POOL: MissionTemplate[] = [
     id: 'streak_2',
     label: isPt => isPt ? 'Sequência de 2 dias' : '2-day streak',
     sub:   isPt => isPt ? 'Pratique hoje e mantenha a sequência!' : 'Practice today and keep it going!',
-    xpReward: 20, accentColor: orange, accentBg: '#FFF3ED', levels: 'all',
-    icon: <Fire size={22} color={orange} weight="fill" />,
+    xpReward: 20, accentColor: pink, accentBg: pinkBg, levels: 'all',
+    icon: <Fire size={22} color={pink} weight="fill" />,
     getDestination: () => '/(app)/(tabs)/practice',
     eligible:         d => d.streakDays >= 1,
     getCompleted:     d => d.streakDays >= 2 && d.todayXP > 0,
@@ -163,8 +164,8 @@ const MISSION_POOL: MissionTemplate[] = [
     id: 'streak_10',
     label: isPt => isPt ? 'Sequência de 10 dias' : '10-day streak',
     sub:   isPt => isPt ? 'Você está no caminho certo!' : 'You\'re on a roll!',
-    xpReward: 80, accentColor: orange, accentBg: '#FFF3ED', levels: 'all',
-    icon: <Fire size={22} color={orange} weight="fill" />,
+    xpReward: 80, accentColor: pink, accentBg: pinkBg, levels: 'all',
+    icon: <Fire size={22} color={pink} weight="fill" />,
     getDestination: () => '/(app)/(tabs)/practice',
     eligible:         d => d.streakDays >= 9,
     getCompleted:     d => d.streakDays >= 10 && d.todayXP > 0,
@@ -177,8 +178,8 @@ const MISSION_POOL: MissionTemplate[] = [
     id: 'text_3',
     label: isPt => isPt ? 'Escreva 3 mensagens' : 'Write 3 text messages',
     sub:   isPt => isPt ? 'Pratique no Grammar ou Chat' : 'Practice in Grammar or Chat mode',
-    xpReward: 15, accentColor: pink, accentBg: pinkBg, levels: 'all',
-    icon: <TextT size={22} color={pink} weight="fill" />,
+    xpReward: 15, accentColor: violet, accentBg: violetBg, levels: 'all',
+    icon: <TextT size={22} color={violet} weight="fill" />,
     getDestination: () => '/(app)/(tabs)/practice',
     getCompleted:     d => (d.todayMessages - d.todayAudios) >= 3,
     getProgress:      d => Math.min((d.todayMessages - d.todayAudios) / 3, 1),
@@ -188,8 +189,8 @@ const MISSION_POOL: MissionTemplate[] = [
     id: 'text_7',
     label: isPt => isPt ? 'Escreva 7 mensagens' : 'Write 7 text messages',
     sub:   isPt => isPt ? 'Treine sua escrita em inglês' : 'Train your written English',
-    xpReward: 28, accentColor: pink, accentBg: pinkBg, levels: 'all',
-    icon: <TextT size={22} color={pink} weight="fill" />,
+    xpReward: 28, accentColor: violet, accentBg: violetBg, levels: 'all',
+    icon: <TextT size={22} color={violet} weight="fill" />,
     getDestination: () => '/(app)/(tabs)/practice',
     getCompleted:     d => (d.todayMessages - d.todayAudios) >= 7,
     getProgress:      d => Math.min((d.todayMessages - d.todayAudios) / 7, 1),
@@ -201,8 +202,8 @@ const MISSION_POOL: MissionTemplate[] = [
     id: 'audio_1',
     label: isPt => isPt ? 'Grave sua voz' : 'Record your voice',
     sub:   isPt => isPt ? 'Segure o microfone e fale algo' : 'Hold the mic and say something',
-    xpReward: 15, accentColor: blue, accentBg: blueBg, levels: 'pronunciation',
-    icon: <Microphone size={22} color={blue} weight="fill" />,
+    xpReward: 15, accentColor: greenDark, accentBg: greenBg, levels: 'pronunciation',
+    icon: <Microphone size={22} color={greenDark} weight="fill" />,
     getDestination: () => '/(app)/(tabs)/practice',
     getCompleted:     d => d.todayAudios >= 1,
     getProgress:      d => d.todayAudios >= 1 ? 1 : 0,
@@ -212,8 +213,8 @@ const MISSION_POOL: MissionTemplate[] = [
     id: 'audio_3',
     label: isPt => isPt ? 'Grave 3 áudios' : 'Record 3 voice messages',
     sub:   isPt => isPt ? 'Pratique a pronúncia com áudios' : 'Work on your pronunciation',
-    xpReward: 30, accentColor: blue, accentBg: blueBg, levels: 'pronunciation',
-    icon: <Microphone size={22} color={blue} weight="fill" />,
+    xpReward: 30, accentColor: greenDark, accentBg: greenBg, levels: 'pronunciation',
+    icon: <Microphone size={22} color={greenDark} weight="fill" />,
     getDestination: () => '/(app)/(tabs)/practice',
     getCompleted:     d => d.todayAudios >= 3,
     getProgress:      d => Math.min(d.todayAudios / 3, 1),
@@ -223,8 +224,8 @@ const MISSION_POOL: MissionTemplate[] = [
     id: 'audio_5',
     label: isPt => isPt ? 'Grave 5 áudios' : 'Record 5 voice messages',
     sub:   isPt => isPt ? 'Foco total na pronúncia hoje' : 'Full pronunciation focus today',
-    xpReward: 45, accentColor: blue, accentBg: blueBg, levels: 'pronunciation',
-    icon: <Microphone size={22} color={blue} weight="fill" />,
+    xpReward: 45, accentColor: greenDark, accentBg: greenBg, levels: 'pronunciation',
+    icon: <Microphone size={22} color={greenDark} weight="fill" />,
     getDestination: () => '/(app)/(tabs)/practice',
     getCompleted:     d => d.todayAudios >= 5,
     getProgress:      d => Math.min(d.todayAudios / 5, 1),
@@ -262,7 +263,7 @@ const MISSION_FAMILIES: Record<string, string[]> = {
 export function buildMissions(data: HomeData, level: UserLevel): Mission[] {
   const tabs = LEVEL_CONFIG[level].tabs;
   const hasPronunciation = tabs.includes('pronunciation');
-  const isPt = level === 'Novice';
+  const isPt = systemIsPt; // textos de interface seguem o idioma do device
 
   const todayStr = localTodayStr(); // YYYY-MM-DD no fuso local do device
   const dayNum = todayStr.split('-').reduce((acc, part) => acc * 100 + parseInt(part, 10), 0);
