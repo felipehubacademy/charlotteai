@@ -6,7 +6,7 @@ import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react'
 import {
   View, ScrollView, TouchableOpacity, Platform,
   ActivityIndicator, RefreshControl, Animated, unstable_batchedUpdates,
-  findNodeHandle, UIManager,
+  findNodeHandle, UIManager, AppState,
 } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -224,7 +224,15 @@ export default function HomeTab() {
   // e não toca AVAudioSession (substitui expo-video que floodava MediaPlayback
   // events no Live Voice — benchmark 2026-05-15).
   const avatarSrc = require('@/assets/charlotte-avatar.png');
-  const heroHour  = new Date().getHours();
+  // Hora da saudação: recalcula quando o app volta para o primeiro plano
+  // (quem abriu de manhã e voltou à tarde vê "Good afternoon").
+  const [heroHour, setHeroHour] = useState(() => new Date().getHours());
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', (st) => {
+      if (st === 'active') setHeroHour(new Date().getHours());
+    });
+    return () => sub.remove();
+  }, []);
   const heroTitle = isPt
     ? `${heroHour < 12 ? 'Bom dia' : heroHour < 18 ? 'Boa tarde' : 'Boa noite'}, ${firstName}!`
     : `${heroHour < 12 ? 'Good morning' : heroHour < 18 ? 'Good afternoon' : 'Good evening'}, ${firstName}!`;
