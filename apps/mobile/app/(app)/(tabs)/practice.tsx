@@ -9,7 +9,7 @@ import {
   Pressable, Animated, Easing, ScrollView, Dimensions, StatusBar,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
-import { Question, X, ClockCounterClockwise, XCircle, CaretRight, Trash, Plus } from 'phosphor-react-native';
+import { Question, X, ClockCounterClockwise, XCircle, CaretRight, Trash, Plus, DotsThree } from 'phosphor-react-native';
 import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
@@ -23,7 +23,8 @@ import ChatInputBar from '@/components/chat/ChatInputBar';
 import AchievementNotification from '@/components/achievements/AchievementNotification';
 import { TooltipAnchor } from '@/components/ui/TooltipBalloon';
 import { PracticeSuggestionTooltip } from '@/components/practice/PracticeSuggestionTooltip';
-import { TopicPills, Topic } from '@/components/practice/TopicPills';
+import { Topic } from '@/components/practice/TopicPills';
+import { PracticeEmptyState } from '@/components/practice/PracticeEmptyState';
 import { PronunciationPhraseHint } from '@/components/practice/PronunciationPhraseHint';
 import { useChat } from '@/hooks/useChat';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
@@ -94,6 +95,7 @@ export default function PracticeTab() {
   const { playingMessageId, toggle } = useMessageAudioPlayer();
   const [achievements, setAchievements] = useState<Achievement[]>([]);
   const [showHelp, setShowHelp] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
   const [recentSessions, setRecentSessions] = useState<ChatSession[]>([]);
   // daysSince por modo (-1 = nunca / não carregado, 0 = hoje, ...). 999 = nunca tentou
@@ -387,8 +389,8 @@ export default function PracticeTab() {
             : tabBarHeight
         }
       >
-        {/* ── Toggle pill (3 modos, hug content centered) ── */}
-        <View style={{ alignItems: 'center', paddingTop: 12, paddingBottom: 8 }}>
+        {/* ── Toggle pill (3 modos) + menu ⋯ (nova conversa, histórico, ajuda) ── */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, paddingTop: 12, paddingBottom: 8 }}>
           <View style={{
             flexDirection: 'row',
             backgroundColor: '#FFFFFF',
@@ -402,13 +404,12 @@ export default function PracticeTab() {
             {MODES.map(m => {
               const active = m.id === mode;
               const d = daysSince[m.id];
-              // Dot só pra pills inativos. Verde = nunca tentou (novo);
-              // âmbar = 3+ dias sem praticar. Recentes (0-2) sem dot.
+              // Dot só pra pills inativos: Pink = 3+ dias sem praticar
+              // (inclui nunca tentou). Em dia = sem dot.
               const dotColor =
                 active || d < 0 ? null
-                : d === 999 ? '#08804A'      // novo (nunca tentou)
-                : d >= 3    ? '#D97706'      // atrasado
-                            : null;
+                : d >= 3 ? '#FF4F8B'
+                         : null;
               return (
                 <TouchableOpacity
                   key={m.id}
@@ -418,7 +419,7 @@ export default function PracticeTab() {
                   style={{
                     paddingHorizontal: 14, paddingVertical: 7,
                     borderRadius: 18,
-                    backgroundColor: active ? accent : 'transparent',
+                    backgroundColor: active ? C.navy : 'transparent',
                   }}
                 >
                   <AppText style={{
@@ -439,13 +440,26 @@ export default function PracticeTab() {
               );
             })}
           </View>
+          <TouchableOpacity
+            onPress={() => setShowMenu(true)}
+            accessibilityLabel={isPt ? 'Mais opções' : 'More options'}
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            style={{
+              width: 38, height: 38, borderRadius: 19,
+              backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: C.border,
+              alignItems: 'center', justifyContent: 'center',
+            }}
+          >
+            <DotsThree size={20} color={C.navyMid} weight="bold" />
+          </TouchableOpacity>
         </View>
 
 
         {/* ── Área de mensagens ── */}
         <View style={{ flex: 1 }}>
           <ChatBox
-            messages={messages}
+            // Conversa vazia: o estado inicial já faz o papel do welcome.
+            messages={messages.length <= 1 && !historyLoading ? [] : messages}
             transcript=""
             finalTranscript=""
             isProcessingMessage={isProcessing}
@@ -458,77 +472,19 @@ export default function PracticeTab() {
             onExplainMore={mode === 'grammar' ? handleExplainMore : undefined}
           />
 
-          {/* Botões flutuantes bottom-right: histórico (chat only) + ajuda */}
-          <View style={{
-            position: 'absolute',
-            bottom: 10, right: 12,
-            flexDirection: 'row', gap: 8,
-            zIndex: 5,
-          }}>
-            {mode === 'chat' && (
-              <>
-                <TouchableOpacity
-                  onPress={handleNewSession}
-                  style={{
-                    width: 34, height: 34, borderRadius: 17,
-                    backgroundColor: '#FFFFFF',
-                    alignItems: 'center', justifyContent: 'center',
-                    borderWidth: 1, borderColor: C.border,
-                    shadowColor: 'rgba(22,19,31,0.12)',
-                    shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
-                    elevation: 3,
-                  }}
-                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                  accessibilityLabel={isPt ? 'Nova conversa' : 'New conversation'}
-                >
-                  <Plus size={17} color={C.navyMid} weight="regular" />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => setShowHistory(true)}
-                  style={{
-                    width: 34, height: 34, borderRadius: 17,
-                    backgroundColor: '#FFFFFF',
-                    alignItems: 'center', justifyContent: 'center',
-                    borderWidth: 1, borderColor: C.border,
-                    shadowColor: 'rgba(22,19,31,0.12)',
-                    shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
-                    elevation: 3,
-                  }}
-                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                  accessibilityLabel={isPt ? 'Histórico de conversas' : 'Conversation history'}
-                >
-                  <ClockCounterClockwise size={17} color={C.navyMid} weight="regular" />
-                </TouchableOpacity>
-              </>
-            )}
-            <TouchableOpacity
-              onPress={() => setShowHelp(true)}
-              style={{
-                width: 34, height: 34, borderRadius: 17,
-                backgroundColor: '#FFFFFF',
-                alignItems: 'center', justifyContent: 'center',
-                borderWidth: 1, borderColor: C.border,
-                shadowColor: 'rgba(22,19,31,0.12)',
-                shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
-                elevation: 3,
-              }}
-              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-              accessibilityLabel={isPt ? 'Ajuda' : 'Help'}
-            >
-              <Question size={17} color={C.navyMid} weight="regular" />
-            </TouchableOpacity>
-          </View>
+          {/* Estado inicial (só o welcome): balão da Charlotte + sugestões */}
+          {messages.length <= 1 && !historyLoading && (
+            <View pointerEvents="box-none" style={{ position: 'absolute', top: 0, left: 0, right: 0 }}>
+              <PracticeEmptyState
+                mode={mode}
+                isPt={isPt}
+                disabled={isProcessing || !!rateLimited}
+                onTopic={handleTopicSelect}
+                onSample={sendTextMessage}
+              />
+            </View>
+          )}
         </View>
-
-        {/* ── Topic pills (Novice + Free Chat + conversa vazia) ── */}
-        {userLevel === 'Novice' && mode === 'chat' && messages.length <= 1 && (
-          <TopicPills
-            isPt={isPt}
-            accent={accent}
-            disabled={isProcessing || !!rateLimited}
-            onSelect={handleTopicSelect}
-          />
-        )}
 
         {/* ── Pronunciation phrase hint (sempre Novice; toggle pra Inter/Adv) ── */}
         {mode === 'pronunciation' && (
@@ -586,6 +542,35 @@ export default function PracticeTab() {
       )}
 
       {/* ── Help modal (bottom sheet style) — fica acima do tab bar pra navbar continuar visível ── */}
+      {/* Menu ⋯ — ações da Practice */}
+      <Modal visible={showMenu} transparent animationType="fade" onRequestClose={() => setShowMenu(false)}>
+        <Pressable style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.35)', justifyContent: 'flex-end' }} onPress={() => setShowMenu(false)}>
+          <Pressable onPress={(e) => e.stopPropagation()} style={{
+            backgroundColor: '#FFFFFF', borderTopLeftRadius: 24, borderTopRightRadius: 24,
+            paddingTop: 10, paddingBottom: insets.bottom + 12, paddingHorizontal: 12,
+          }}>
+            <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 10 }} />
+            {[
+              ...(mode === 'chat' ? [
+                { key: 'new',  Icon: Plus,                  label: isPt ? 'Nova conversa' : 'New conversation',         onPress: handleNewSession },
+                { key: 'hist', Icon: ClockCounterClockwise, label: isPt ? 'Conversas anteriores' : 'Previous conversations', onPress: () => setShowHistory(true) },
+              ] : []),
+              { key: 'help', Icon: Question, label: isPt ? 'Como funciona' : 'How it works', onPress: () => setShowHelp(true) },
+            ].map(item => (
+              <TouchableOpacity
+                key={item.key}
+                onPress={() => { setShowMenu(false); setTimeout(item.onPress, 200); }}
+                activeOpacity={0.7}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 14, paddingHorizontal: 8 }}
+              >
+                <item.Icon size={20} color={C.navy} weight="regular" />
+                <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy }}>{item.label}</AppText>
+              </TouchableOpacity>
+            ))}
+          </Pressable>
+        </Pressable>
+      </Modal>
+
       <Modal visible={showHelp} transparent animationType="fade" onRequestClose={() => setShowHelp(false)}>
         <View style={{ flex: 1 }}>
           <Pressable

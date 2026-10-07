@@ -18,6 +18,7 @@ import {
   Copy, Question, X,
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { systemIsPt } from '@/lib/systemLang';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { translationService, TranslationResult } from '@/lib/translation-service';
 import PronunciationScoreCard, { PronunciationData } from '@/components/chat/PronunciationScoreCard';
@@ -142,6 +143,8 @@ const MessageBubble: React.FC<{
 
   const isUser = message.role === 'user';
   const isNovice = userLevel === 'Novice';
+  // Rótulos de interface seguem o idioma do aparelho.
+  const isPtUI = systemIsPt;
   const hasAudio = !!(message.audioUrl || message.audioUri);
   // Charlotte's audio response — text hidden by default, revealed via "Ver texto"
   const isCharlotteAudio  = !isUser && message.messageType === 'audio' && !!message.audioUrl;
@@ -319,7 +322,7 @@ const MessageBubble: React.FC<{
               >
                 <Lightbulb size={12} color="#4D4858" weight="regular" />
                 <AppText style={{ fontSize: 12, color: '#4D4858' }}>
-                  {isNovice ? 'Me explique melhor' : 'Explain more'}
+                  {isPtUI ? 'Me explique melhor' : 'Explain more'}
                 </AppText>
               </TouchableOpacity>
             )}
@@ -333,8 +336,8 @@ const MessageBubble: React.FC<{
                 <ChatCenteredText size={12} color="#4D4858" weight="regular" />
                 <AppText style={{ fontSize: 12, color: '#4D4858' }}>
                   {showTranscription
-                    ? (userLevel === 'Novice' ? 'Esconder' : 'Hide text')
-                    : (userLevel === 'Novice' ? 'Ver texto' : 'Show text')}
+                    ? (isPtUI ? 'Esconder texto' : 'Hide text')
+                    : (isPtUI ? 'Ver texto' : 'Show text')}
                 </AppText>
               </TouchableOpacity>
             )}
@@ -358,7 +361,7 @@ const MessageBubble: React.FC<{
                 onPress={() => { setTranslation(''); setTranslationError(false); fetchTranslation(); }}
                 style={{ marginTop: 4 }}
               >
-                <AppText style={{ fontSize: 11, color: '#8A8494' }}>Tentar novamente</AppText>
+                <AppText style={{ fontSize: 11, color: '#8A8494' }}>{isPtUI ? 'Tentar novamente' : 'Try again'}</AppText>
               </TouchableOpacity>
             )}
           </View>
@@ -369,7 +372,7 @@ const MessageBubble: React.FC<{
           <View style={{ marginTop: 8, padding: 12, backgroundColor: '#FAF7F0', borderRadius: 12, borderWidth: 1, borderColor: 'rgba(22,19,31,0.1)' }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 6 }}>
               <ChatCenteredText size={12} color="#08804A" weight="regular" />
-              <AppText style={{ fontSize: 11, color: '#08804A', fontWeight: '600' }}>Transcription</AppText>
+              <AppText style={{ fontSize: 11, color: '#08804A', fontWeight: '600' }}>{isPtUI ? 'Transcrição' : 'Transcription'}</AppText>
             </View>
             <AppText style={{ fontSize: 14, color: '#16131F' }}>{transcription}</AppText>
           </View>
@@ -423,7 +426,7 @@ const MessageBubble: React.FC<{
             {userLevel !== 'Advanced' && (
               <ActionRow
                 icon={<Globe size={20} color="#4D4858" weight="regular" />}
-                label={isNovice ? 'Traduzir' : 'Translate'}
+                label={isPtUI ? 'Traduzir' : 'Translate'}
                 onPress={() => {
                   setShowActions(false);
                   setTimeout(() => handleTranslation(), 200);
@@ -432,7 +435,7 @@ const MessageBubble: React.FC<{
             )}
             <ActionRow
               icon={<Copy size={20} color="#4D4858" weight="regular" />}
-              label={isNovice ? 'Copiar' : 'Copy'}
+              label={isPtUI ? 'Copiar' : 'Copy'}
               onPress={() => {
                 Clipboard.setString(message.content || '');
                 setShowActions(false);
@@ -441,7 +444,7 @@ const MessageBubble: React.FC<{
             {mode === 'grammar' && onExplainMore && message.id !== 'welcome-0' && !message.isExplainMore && (
               <ActionRow
                 icon={<Question size={20} color="#4D4858" weight="regular" />}
-                label={isNovice ? 'Me explique melhor' : 'Explain more'}
+                label={isPtUI ? 'Me explique melhor' : 'Explain more'}
                 onPress={() => {
                   setShowActions(false);
                   setTimeout(() => onExplainMore(message.content || ''), 200);
@@ -450,7 +453,7 @@ const MessageBubble: React.FC<{
             )}
             <ActionRow
               icon={<X size={20} color="#8A8494" weight="regular" />}
-              label={isNovice ? 'Cancelar' : 'Cancel'}
+              label={isPtUI ? 'Cancelar' : 'Cancel'}
               onPress={() => setShowActions(false)}
               muted
             />

@@ -6,6 +6,11 @@ import {
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
+import { QueizyWave } from '@/components/ui/QueizyWave';
+import { systemIsPt } from '@/lib/systemLang';
+
+// Textos de interface do cartão seguem o idioma do aparelho.
+const isPt = systemIsPt;
 
 // ── Palette ────────────────────────────────────────────────────
 const C = {
@@ -47,52 +52,56 @@ export interface PronunciationData {
 
 const METRICS = [
   {
-    label: 'Overall Score',
+    label: isPt ? 'Nota geral' : 'Overall Score',
     Icon: Target,
-    description:
-      'The combined pronunciation score — a summary of how clearly and naturally you spoke. 85+ is excellent, 70–84 is good, 55–69 is getting there.',
+    description: isPt
+      ? 'A nota combinada da sua pronúncia: um resumo de quão clara e natural foi a sua fala. A partir de 70 você chegou no "crazy"; abaixo disso ainda está "queizy".'
+      : 'The combined pronunciation score: a summary of how clearly and naturally you spoke. From 70 up you hit "crazy"; below that it is still "queizy".',
   },
   {
-    label: 'Accuracy',
+    label: isPt ? 'Precisão' : 'Accuracy',
     Icon: TextT,
-    description:
-      'How correctly you pronounced each individual sound. High accuracy means every letter and syllable was clearly recognisable.',
+    description: isPt
+      ? 'O quanto cada som foi pronunciado corretamente. Precisão alta significa que cada sílaba ficou clara e reconhecível.'
+      : 'How correctly you pronounced each individual sound. High accuracy means every syllable was clearly recognisable.',
   },
   {
-    label: 'Fluency',
+    label: isPt ? 'Fluência' : 'Fluency',
     Icon: Wind,
-    description:
-      'How smoothly you spoke without too many pauses or hesitations. A fluent speaker sounds relaxed and rhythmic.',
+    description: isPt
+      ? 'O quanto você falou sem pausas ou hesitações demais. Quem é fluente soa relaxado e com ritmo.'
+      : 'How smoothly you spoke without too many pauses or hesitations. A fluent speaker sounds relaxed and rhythmic.',
   },
   {
-    label: 'Completeness',
+    label: isPt ? 'Completude' : 'Completeness',
     Icon: CheckCircle,
-    description:
-      'Whether you said all the words in the phrase. A low score usually means a word was omitted or the recording cut off early.',
+    description: isPt
+      ? 'Se você disse todas as palavras da frase. Nota baixa costuma indicar uma palavra pulada ou a gravação cortada antes da hora.'
+      : 'Whether you said all the words in the phrase. A low score usually means a word was omitted or the recording cut off early.',
   },
   {
-    label: 'Prosody',
+    label: isPt ? 'Entonação' : 'Prosody',
     Icon: MusicNotes,
-    description:
-      'The music of speech: stress, rhythm, and intonation. Prosody measures whether you put emphasis on the right syllables and spoke with a natural cadence — not flat or robotic.',
+    description: isPt
+      ? 'A música da fala: acento, ritmo e entonação. Mede se você deu ênfase nas sílabas certas e falou com cadência natural, sem soar robótico.'
+      : 'The music of speech: stress, rhythm, and intonation. Prosody measures whether you put emphasis on the right syllables and spoke with a natural cadence, not flat or robotic.',
   },
 ];
 
 // ── Helpers ────────────────────────────────────────────────────
 
+// Lógica da marca: a partir de 70 = "crazy" (Verde), abaixo = "queizy" (Pink).
+const PASS = 70;
 function scoreColor(score: number): string {
-  if (score >= 85) return '#22C55E';
-  if (score >= 70) return '#F59E0B';
-  if (score >= 55) return '#FB923C';
-  return '#DC2626';
+  return score >= PASS ? '#08804A' : '#D12A64';
 }
 
 function overallLabel(score: number): string {
-  if (score >= 90) return 'Excellent!';
-  if (score >= 80) return 'Very good!';
-  if (score >= 70) return 'Good job!';
-  if (score >= 55) return 'Keep going!';
-  return 'Keep practising';
+  if (score >= 90) return isPt ? 'Excelente!' : 'Excellent!';
+  if (score >= 80) return isPt ? 'Muito bom!' : 'Very good!';
+  if (score >= 70) return isPt ? 'Mandou bem!' : 'Good job!';
+  if (score >= 55) return isPt ? 'Quase lá!' : 'Almost there!';
+  return isPt ? 'Bora praticar mais' : 'Keep practising';
 }
 
 // ── ScoreBar ───────────────────────────────────────────────────
@@ -155,7 +164,7 @@ function MetricsModal({ visible, onClose }: { visible: boolean; onClose: () => v
             paddingHorizontal: 20, marginBottom: 4,
           }}>
             <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>
-              Score Explained
+              {isPt ? 'Entenda a nota' : 'Score explained'}
             </AppText>
             <TouchableOpacity
               onPress={onClose}
@@ -174,7 +183,7 @@ function MetricsModal({ visible, onClose }: { visible: boolean; onClose: () => v
             fontSize: 12, color: C.navyLight,
             paddingHorizontal: 20, marginBottom: 14, lineHeight: 17,
           }}>
-            Charlotte analyses your speech across 5 dimensions:
+            {isPt ? 'A Charlotte analisa sua fala em 5 dimensões:' : 'Charlotte analyses your speech across 5 dimensions:'}
           </AppText>
 
           <ScrollView showsVerticalScrollIndicator={false} style={{ paddingBottom: 12 }}>
@@ -275,10 +284,12 @@ export default function PronunciationScoreCard({
               </View>
               <View style={{ flex: 1 }}>
                 <AppText style={{ fontSize: 13, fontWeight: '700', color: C.navyMid }}>
-                  Analysis unavailable
+                  {isPt ? 'Análise indisponível' : 'Analysis unavailable'}
                 </AppText>
                 <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 2, lineHeight: 16 }}>
-                  Could not reach the scoring service. Charlotte will still give you feedback below.
+                  {isPt
+                    ? 'Não conseguimos falar com o serviço de nota agora. A Charlotte ainda te dá um retorno logo abaixo.'
+                    : 'Could not reach the scoring service. Charlotte will still give you feedback below.'}
                 </AppText>
               </View>
             </View>
@@ -319,17 +330,22 @@ export default function PronunciationScoreCard({
                     {overallLabel(overall)}
                   </AppText>
                   <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 2 }}>
-                    Pronunciation score
+                    {isPt ? 'Nota de pronúncia' : 'Pronunciation score'}
                   </AppText>
                 </View>
               </View>
 
+              {/* Onda queizy → crazy: reta até a nota, torta no que falta */}
+              <View style={{ marginBottom: 14 }}>
+                <QueizyWave progress={overall / 100} height={16} strokeWidth={4} />
+              </View>
+
               {/* ── Score bars ── */}
-              <ScoreBar label="Accuracy"     score={data.accuracyScore}     />
-              <ScoreBar label="Fluency"      score={data.fluencyScore}      />
-              <ScoreBar label="Completeness" score={data.completenessScore} />
+              <ScoreBar label={isPt ? 'Precisão' : 'Accuracy'}       score={data.accuracyScore}     />
+              <ScoreBar label={isPt ? 'Fluência' : 'Fluency'}        score={data.fluencyScore}      />
+              <ScoreBar label={isPt ? 'Completude' : 'Completeness'} score={data.completenessScore} />
               {data.prosodyScore !== undefined && data.prosodyScore > 0 && (
-                <ScoreBar label="Prosody" score={data.prosodyScore} />
+                <ScoreBar label={isPt ? 'Entonação' : 'Prosody'} score={data.prosodyScore} />
               )}
 
               {/* ── Problem words ── */}
@@ -342,18 +358,18 @@ export default function PronunciationScoreCard({
                     fontSize: 10, fontWeight: '700', color: C.navyLight,
                     textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: 8,
                   }}>
-                    Needs work
+                    {isPt ? 'Para treinar' : 'Needs work'}
                   </AppText>
                   <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
                     {problemWords.map((w, i) => (
                       <View key={i} style={{
-                        backgroundColor: 'rgba(220,38,38,0.07)',
+                        backgroundColor: 'rgba(255,79,139,0.08)',
                         borderRadius: 8,
                         paddingHorizontal: 9, paddingVertical: 4,
                         borderWidth: 1,
-                        borderColor: 'rgba(220,38,38,0.18)',
+                        borderColor: 'rgba(255,79,139,0.25)',
                       }}>
-                        <AppText style={{ fontSize: 13, color: '#DC2626', fontWeight: '700' }}>
+                        <AppText style={{ fontSize: 13, color: '#D12A64', fontWeight: '700' }}>
                           {w.word}
                         </AppText>
                       </View>
@@ -372,7 +388,7 @@ export default function PronunciationScoreCard({
                     fontSize: 10, fontWeight: '700', color: C.navyLight,
                     textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: 4,
                   }}>
-                    Heard
+                    {isPt ? 'O que ouvi' : 'Heard'}
                   </AppText>
                   <AppText style={{ fontSize: 13, color: C.navyMid, fontStyle: 'italic', lineHeight: 19 }}>
                     "{data.text}"

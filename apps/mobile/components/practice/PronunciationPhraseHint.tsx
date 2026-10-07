@@ -72,7 +72,7 @@ export function PronunciationPhraseHint({ userLevel, isPt, accent, onPhraseChang
         >
           <Lightbulb size={13} color={accent} weight="fill" />
           <AppText style={{ fontSize: 12, fontWeight: '600', color: '#4D4858' }}>
-            Need an idea?
+            {isPt ? 'Precisa de uma ideia?' : 'Need an idea?'}
           </AppText>
         </TouchableOpacity>
       </View>
@@ -112,7 +112,7 @@ export function PronunciationPhraseHint({ userLevel, isPt, accent, onPhraseChang
               marginBottom:  4,
             }}
           >
-            {isNovice ? 'Tente dizer' : 'Try saying'}
+            {isPt ? 'Tente dizer' : 'Try saying'}
           </AppText>
           <AppText
             style={{ fontSize: 16, fontWeight: '600', color: '#16131F', lineHeight: 22 }}

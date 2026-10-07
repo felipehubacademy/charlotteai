@@ -7,6 +7,7 @@ import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { ArrowUp, ArrowRight, Microphone, X, Play, Pause, Hourglass, Lock, Trash } from 'phosphor-react-native';
 import * as Haptics from 'expo-haptics';
 import { AppText } from '@/components/ui/Text';
+import { systemIsPt } from '@/lib/systemLang';
 import { useAudioRecorder, PRONUNCIATION_RECORDING_OPTIONS } from '@/hooks/useAudioRecorder';
 import type { RateLimitState } from '@/hooks/useChat';
 
@@ -51,7 +52,8 @@ export default function ChatInputBar({
   userLevel,
   rateLimited,
 }: ChatInputBarProps) {
-  const isNovice = userLevel === 'Novice';
+  // Textos de interface seguem o idioma do aparelho (não o nível).
+  const isPtUI = systemIsPt;
 
   // Countdown timer for rate-limited state
   const [countdown, setCountdown] = React.useState(0);
@@ -287,8 +289,8 @@ export default function ChatInputBar({
     };
 
     const pillLabel = isDaily
-      ? (isNovice ? `Volte amanhã  ${formatCountdown(countdown)}` : `Come back tomorrow  ${formatCountdown(countdown)}`)
-      : (isNovice ? `Volte em ${formatCountdown(countdown)}` : `Come back in ${formatCountdown(countdown)}`);
+      ? (isPtUI ? `Volte amanhã  ${formatCountdown(countdown)}` : `Come back tomorrow  ${formatCountdown(countdown)}`)
+      : (isPtUI ? `Volte em ${formatCountdown(countdown)}` : `Come back in ${formatCountdown(countdown)}`);
 
     return (
       <View style={[wrapper, { gap: 8 }]}>
@@ -320,7 +322,7 @@ export default function ChatInputBar({
             }}
           >
             <AppText style={{ color: '#DCFF4A', fontSize: 14, fontWeight: '700' }}>
-              {isNovice ? 'Ativar assinatura' : 'Upgrade your plan'}
+              {isPtUI ? 'Ativar assinatura' : 'Upgrade your plan'}
             </AppText>
           </TouchableOpacity>
         )}
@@ -346,7 +348,7 @@ export default function ChatInputBar({
               justifyContent: 'center', gap: 8, paddingVertical: 12,
             }}>
               <AppText style={{ color: C.navyMid, fontSize: 14, fontWeight: '500' }}>
-                {isNovice ? 'Segure o microfone pra gravar' : 'Hold the mic to record'}
+                {isPtUI ? 'Segure o microfone pra gravar' : 'Hold the mic to record'}
               </AppText>
               <ArrowRight size={16} color={C.greenDark} weight="bold" />
             </View>
@@ -375,8 +377,8 @@ export default function ChatInputBar({
                 fontWeight: willCancel ? '700' : '500',
               }}>
                 {willCancel
-                  ? (isNovice ? 'Solte pra cancelar' : 'Release to cancel')
-                  : (isNovice ? '← Deslize pra cancelar' : '← Slide to cancel')}
+                  ? (isPtUI ? 'Solte pra cancelar' : 'Release to cancel')
+                  : (isPtUI ? '← Deslize pra cancelar' : '← Slide to cancel')}
               </AppText>
             </View>
           )}
@@ -391,7 +393,7 @@ export default function ChatInputBar({
                 : (disabled || isProcessing ? `${C.green}50` : C.green),
               transform: [{ translateX: micTranslateX }],
             }]}
-            accessibilityLabel={isNovice ? 'Microfone — segure para gravar / Hold to record' : 'Hold to record audio'}
+            accessibilityLabel={isPtUI ? 'Microfone — segure para gravar' : 'Hold to record audio'}
             accessibilityRole="button"
           >
             {isProcessing
@@ -419,7 +421,7 @@ export default function ChatInputBar({
             <TextInput
               value={text}
               onChangeText={setText}
-              placeholder={isNovice ? 'Digite em inglês...' : 'Type in English...'}
+              placeholder={isPtUI ? 'Digite em inglês...' : 'Type in English...'}
               placeholderTextColor={C.navyLight}
               style={{
                 color: C.navy, fontSize: 15, flex: 1,
@@ -441,7 +443,7 @@ export default function ChatInputBar({
               styles.actionBtn,
               { backgroundColor: hasText ? C.green : `${C.green}50` },
             ]}
-            accessibilityLabel={isNovice ? 'Enviar mensagem / Send message' : 'Send message'}
+            accessibilityLabel={isPtUI ? 'Enviar mensagem' : 'Send message'}
             accessibilityRole="button"
           >
             <ArrowUp size={20} color={hasText ? C.navy : `${C.navy}60`} weight="bold" />
@@ -471,8 +473,8 @@ export default function ChatInputBar({
                 onPress={() => { if (isPlaying) player.pause(); else player.play(); }}
                 style={{ padding: 2 }}
                 accessibilityLabel={isPlaying
-                  ? (isNovice ? 'Pausar / Pause' : 'Pause')
-                  : (isNovice ? 'Reproduzir / Play' : 'Play')}
+                  ? (isPtUI ? 'Pausar' : 'Pause')
+                  : (isPtUI ? 'Reproduzir' : 'Play')}
                 accessibilityRole="button"
               >
                 {isPlaying
@@ -494,7 +496,7 @@ export default function ChatInputBar({
               <TouchableOpacity
                 onPress={cancelPreview}
                 style={{ padding: 2 }}
-                accessibilityLabel={isNovice ? 'Cancelar / Cancel' : 'Cancel'}
+                accessibilityLabel={isPtUI ? 'Cancelar' : 'Cancel'}
                 accessibilityRole="button"
               >
                 <X size={16} color={C.red} weight="bold" />
@@ -522,8 +524,8 @@ export default function ChatInputBar({
                 fontWeight: willCancel ? '700' : '500',
               }}>
                 {willCancel
-                  ? (isNovice ? 'Solte pra cancelar' : 'Release to cancel')
-                  : (isNovice ? '← Deslize pra cancelar' : '← Slide to cancel')}
+                  ? (isPtUI ? 'Solte pra cancelar' : 'Release to cancel')
+                  : (isPtUI ? '← Deslize pra cancelar' : '← Slide to cancel')}
               </AppText>
             </View>
           )}
@@ -533,7 +535,7 @@ export default function ChatInputBar({
             <TextInput
               value={text}
               onChangeText={setText}
-              placeholder={isNovice ? 'Digite em inglês...' : 'Type in English...'}
+              placeholder={isPtUI ? 'Digite em inglês...' : 'Type in English...'}
               placeholderTextColor={C.navyLight}
               style={{
                 color: C.navy, fontSize: 15, flex: 1,
@@ -553,7 +555,7 @@ export default function ChatInputBar({
           <TouchableOpacity
             onPress={sendPreview}
             style={[styles.actionBtn, { backgroundColor: C.green }]}
-            accessibilityLabel={isNovice ? 'Enviar áudio / Send audio' : 'Send audio'}
+            accessibilityLabel={isPtUI ? 'Enviar áudio' : 'Send audio'}
             accessibilityRole="button"
           >
             <ArrowUp size={20} color={C.navy} weight="bold" />
@@ -564,7 +566,7 @@ export default function ChatInputBar({
             onPress={sendText}
             disabled={disabled}
             style={[styles.actionBtn, { backgroundColor: C.green, opacity: disabled ? 0.4 : 1 }]}
-            accessibilityLabel={isNovice ? 'Enviar mensagem / Send message' : 'Send message'}
+            accessibilityLabel={isPtUI ? 'Enviar mensagem' : 'Send message'}
             accessibilityRole="button"
           >
             <ArrowUp size={20} color={C.navy} weight="bold" />
@@ -580,7 +582,7 @@ export default function ChatInputBar({
                 : (disabled || isProcessing ? `${C.green}50` : C.green),
               transform: [{ translateX: micTranslateX }],
             }]}
-            accessibilityLabel={isNovice ? 'Microfone — segure para gravar / Hold to record' : 'Hold to record audio'}
+            accessibilityLabel={isPtUI ? 'Microfone — segure para gravar' : 'Hold to record audio'}
             accessibilityRole="button"
           >
             {isProcessing
