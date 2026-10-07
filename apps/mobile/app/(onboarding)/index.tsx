@@ -3,7 +3,7 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import {
-  View, ScrollView, TouchableOpacity, Dimensions,
+  Image, View, ScrollView, TouchableOpacity, Dimensions,
   Animated, Platform,
 } from 'react-native';
 import { router } from 'expo-router';
@@ -14,6 +14,11 @@ import { AppText } from '@/components/ui/Text';
 import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import Svg, { Path } from 'react-native-svg';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
+import { systemIsPt } from '@/lib/systemLang';
+
+// Onboarding é chrome/marketing: segue o idioma do aparelho. O inglês da
+// demonstração de conversa (slide 2) é conteúdo e fica em inglês.
+const isPt = systemIsPt;
 
 const { width: W } = Dimensions.get('window');
 export const ONBOARDING_KEY = 'onboarding_v3';
@@ -105,7 +110,7 @@ function Slide1() {
   return (
     <View style={{ width: W, flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 }}>
 
-      {/* Avatar + pulse rings */}
+      {/* Ícone do Queizy + pulse rings */}
       <View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 24 }}>
         <Animated.View style={{
           position: 'absolute',
@@ -119,29 +124,12 @@ function Slide1() {
           backgroundColor: 'rgba(220,255,74,0.14)',
           transform: [{ scale: pulse2 }],
         }} />
-        <CharlotteAvatar size="xxl" />
+        <Image
+          source={require('@/assets/icon.png')}
+          style={{ width: 104, height: 104, borderRadius: 26 }}
+          accessibilityLabel="Queizy"
+        />
       </View>
-
-      {/* Speech bubble */}
-      <Animated.View style={{
-        opacity: bubbleO,
-        transform: [{ translateY: bubbleY }],
-        backgroundColor: C.navy,
-        borderRadius: 16,
-        paddingHorizontal: 20,
-        paddingVertical: 12,
-        marginBottom: 40,
-        alignSelf: 'center',
-        ...C.shadow,
-      }}>
-        <AppText style={{ color: C.green, fontSize: 16, fontWeight: '700' }}>
-          Oi! Eu sou a Charlotte.
-        </AppText>
-        {/* Rabinho do logo Queizy */}
-        <Svg width={18} height={12} viewBox="0 0 18 12" style={{ position: 'absolute', left: 14, bottom: -11 }}>
-          <Path d="M17 0 L0 12 L6 0 Z" fill={C.navy} />
-        </Svg>
-      </Animated.View>
 
       {/* Headline */}
       <Animated.View style={{ opacity: headlineO, transform: [{ translateY: headlineY }], alignItems: 'center' }}>
@@ -150,12 +138,14 @@ function Slide1() {
           textAlign: 'center', lineHeight: 44, letterSpacing: -1,
           marginBottom: 12,
         }}>
-          Fale inglês.{'\n'}De verdade.
+          {isPt ? <>Do queizy{'\n'}ao crazy.</> : <>From queizy{'\n'}to crazy.</>}
         </AppText>
         <AppText style={{
-          fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, maxWidth: 260,
+          fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, maxWidth: 290,
         }}>
-          Sua professora de IA que conversa, corrige e te faz evoluir.
+          {isPt
+            ? 'O app que te leva do inglês travado ao inglês fluente, sem vergonha de errar no caminho.'
+            : 'The app that takes you from stuck to fluent English, with no shame in getting it wrong along the way.'}
         </AppText>
       </Animated.View>
 
@@ -172,7 +162,7 @@ type ChatItem =
 const CHAT_ITEMS: ChatItem[] = [
   { from: 'charlotte', text: 'How was your weekend?' },
   { from: 'user',      text: 'It was great, I went to the beach' },
-  { from: 'score',     label: 'Nota 92', sub: 'Fluência ótima · Pronúncia 88/100' },
+  { from: 'score',     label: isPt ? 'Nota 92' : 'Score 92', sub: isPt ? 'Fluência ótima · Pronúncia 88/100' : 'Great fluency · Pronunciation 88/100' },
 ];
 
 function Slide2({ active }: { active: boolean }) {
@@ -257,12 +247,14 @@ function Slide2({ active }: { active: boolean }) {
         fontSize: 32, fontWeight: '800', color: C.navy,
         textAlign: 'center', lineHeight: 38, letterSpacing: -0.5, marginBottom: 12,
       }}>
-        Pratique{'\n'}falando.
+        {isPt ? <>Conheça a Charlotte,{'\n'}sua tutora.</> : <>Meet Charlotte,{'\n'}your tutor.</>}
       </AppText>
       <AppText style={{
         fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, maxWidth: 270,
       }}>
-        A Charlotte corrige sua gramática e avalia sua pronúncia em tempo real.
+        {isPt
+          ? 'Ela conversa com você, corrige sua gramática e avalia sua pronúncia em tempo real.'
+          : 'She chats with you, fixes your grammar and scores your pronunciation in real time.'}
       </AppText>
 
     </View>
@@ -272,10 +264,10 @@ function Slide2({ active }: { active: boolean }) {
 // ── Slide 3 — Daily goal ──────────────────────────────────────────────────────
 
 const GOAL_OPTIONS = [
-  { label: '5 min',  value: 5,  sub: 'Suave'    },
-  { label: '10 min', value: 10, sub: 'Ideal'     },
-  { label: '15 min', value: 15, sub: 'Intenso'   },
-  { label: '20 min', value: 20, sub: 'Dedicado'  },
+  { label: '5 min',  value: 5,  sub: isPt ? 'Suave'    : 'Light'     },
+  { label: '10 min', value: 10, sub: 'Ideal'                            },
+  { label: '15 min', value: 15, sub: isPt ? 'Intenso'  : 'Intense'   },
+  { label: '20 min', value: 20, sub: isPt ? 'Dedicado' : 'Dedicated' },
 ];
 
 function Slide3({ active, selectedGoal, onGoalSelect }: {
@@ -349,7 +341,7 @@ function Slide3({ active, selectedGoal, onGoalSelect }: {
           ...C.shadow,
         }}>
           <AppText style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700', lineHeight: 24 }}>
-            Quanto tempo por dia{'\n'}você consegue estudar?
+            {isPt ? <>Quanto tempo por dia{'\n'}você quer praticar?</> : <>How much time a day{'\n'}do you want to practice?</>}
           </AppText>
         </View>
       </Animated.View>
@@ -419,7 +411,7 @@ export default function OnboardingScreen() {
         }}>
           <HeaderLogo />
           <TouchableOpacity onPress={goLogin} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
-            <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>Entrar</AppText>
+            <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>{isPt ? 'Entrar' : 'Sign in'}</AppText>
           </TouchableOpacity>
         </View>
 
@@ -469,7 +461,7 @@ export default function OnboardingScreen() {
             }}
           >
             <AppText style={{ fontSize: 16, fontWeight: '800', color: C.green }}>
-              {isLast ? 'Criar minha conta' : 'Próximo'}
+              {isLast ? (isPt ? 'Criar minha conta' : 'Create my account') : (isPt ? 'Próximo' : 'Next')}
             </AppText>
             <ArrowRight size={18} color={C.green} weight="bold" />
           </TouchableOpacity>
@@ -485,7 +477,7 @@ export default function OnboardingScreen() {
               }}
             >
               <AppText style={{ fontSize: 15, fontWeight: '700', color: C.navy }}>
-                Já tenho uma conta
+                {isPt ? 'Já tenho uma conta' : 'I already have an account'}
               </AppText>
             </TouchableOpacity>
           )}

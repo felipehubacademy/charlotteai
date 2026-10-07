@@ -21,7 +21,11 @@ import * as Haptics from 'expo-haptics';
 import { ArrowRight, ShieldCheck, MicrophoneStage, SpeakerHigh, Brain } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { AI_CONSENT_KEY } from '@/lib/aiConsent';
-import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
+import { Image } from 'react-native';
+import { systemIsPt } from '@/lib/systemLang';
+
+// Aviso legal/sistema: segue o idioma do aparelho.
+const isPt = systemIsPt;
 
 const C = {
   bg:        '#FAF7F0',
@@ -89,18 +93,20 @@ export default function AIConsentScreen() {
         contentContainerStyle={{ paddingBottom: 40 }}
         showsVerticalScrollIndicator={false}
       >
-        {/* Hero — avatar com fundo navy */}
+        {/* Hero — ícone do Queizy */}
         <View style={{ alignItems: 'center', paddingTop: 36, paddingBottom: 8 }}>
-          <CharlotteAvatar size="xxl" />
+          <Image source={require('@/assets/icon.png')} style={{ width: 88, height: 88, borderRadius: 22 }} accessibilityLabel="Queizy" />
         </View>
 
         {/* Título + subtítulo */}
         <View style={{ alignItems: 'center', paddingHorizontal: 28, paddingTop: 16, paddingBottom: 8 }}>
           <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
-            Tecnologias de IA
+            {isPt ? 'Tecnologias de IA' : 'AI technologies'}
           </AppText>
           <AppText style={{ fontSize: 13, color: C.navyMid, marginTop: 8, textAlign: 'center', lineHeight: 19 }}>
-            A Charlotte usa serviços de Inteligência Artificial para oferecer uma experiência personalizada de aprendizado.
+            {isPt
+              ? 'O Queizy usa serviços de Inteligência Artificial para oferecer uma experiência de aprendizado personalizada, com a Charlotte como sua tutora.'
+              : 'Queizy uses Artificial Intelligence services to offer a personalized learning experience, with Charlotte as your tutor.'}
           </AppText>
         </View>
 
@@ -109,21 +115,27 @@ export default function AIConsentScreen() {
           <View style={{ backgroundColor: C.card, borderRadius: 16, paddingHorizontal: 16, ...cardShadow }}>
             <ServiceRow
               icon={<Brain size={18} color={C.greenDark} weight="duotone" />}
-              name="Inteligência de linguagem"
-              purpose="Gera explicações, exercícios e feedback personalizado nas conversas e na trilha de aprendizado."
-              data="Suas mensagens são enviadas a um provedor de IA para processamento. Nenhum dado é armazenado permanentemente após o processamento."
+              name={isPt ? 'Inteligência de linguagem' : 'Language intelligence'}
+              purpose={isPt
+                ? 'Gera explicações, exercícios e feedback personalizado nas conversas e na trilha de aprendizado.'
+                : 'Generates explanations, exercises and personalized feedback in conversations and on the learning path.'}
+              data={isPt
+                ? 'Suas mensagens são enviadas a um provedor de IA para processamento. Nenhum dado é armazenado permanentemente após o processamento.'
+                : 'Your messages are sent to an AI provider for processing. No data is stored permanently after processing.'}
             />
             <ServiceRow
               icon={<SpeakerHigh size={18} color={C.greenDark} weight="duotone" />}
-              name="Síntese de voz"
-              purpose="Converte texto em voz para as falas da Charlotte."
-              data="Apenas texto é enviado. Nenhuma informação pessoal é transmitida."
+              name={isPt ? 'Síntese de voz' : 'Voice synthesis'}
+              purpose={isPt ? 'Converte texto em voz para as falas da Charlotte, sua tutora.' : 'Turns text into speech for Charlotte, your tutor.'}
+              data={isPt ? 'Apenas texto é enviado. Nenhuma informação pessoal é transmitida.' : 'Only text is sent. No personal information is transmitted.'}
             />
             <ServiceRow
               icon={<MicrophoneStage size={18} color={C.greenDark} weight="duotone" />}
-              name="Análise de pronúncia"
-              purpose="Avalia sua pronúncia e reconhece sua voz nos exercícios."
-              data="Áudio capturado pelo microfone é enviado a um serviço de análise de fala em tempo real e descartado logo em seguida."
+              name={isPt ? 'Análise de pronúncia' : 'Pronunciation analysis'}
+              purpose={isPt ? 'Avalia sua pronúncia e reconhece sua voz nos exercícios.' : 'Scores your pronunciation and recognizes your voice in the exercises.'}
+              data={isPt
+                ? 'Áudio capturado pelo microfone é enviado a um serviço de análise de fala em tempo real e descartado logo em seguida.'
+                : 'Audio captured by the microphone is sent to a real-time speech analysis service and discarded right after.'}
               last
             />
           </View>
@@ -135,18 +147,22 @@ export default function AIConsentScreen() {
           }}>
             <ShieldCheck size={18} color={C.greenDark} weight="duotone" style={{ marginTop: 1 }} />
             <AppText style={{ flex: 1, fontSize: 12, color: C.navyMid, lineHeight: 18 }}>
-              Seus dados de aprendizado são armazenados com segurança em nossa infraestrutura. Nunca vendemos nem compartilhamos suas informações pessoais com terceiros.
+              {isPt
+                ? 'Seus dados de aprendizado são armazenados com segurança em nossa infraestrutura. Nunca vendemos nem compartilhamos suas informações pessoais com terceiros.'
+                : 'Your learning data is stored securely on our infrastructure. We never sell or share your personal information with third parties.'}
             </AppText>
           </View>
 
           {/* Nota legal */}
           <AppText style={{ fontSize: 12, color: C.muted, textAlign: 'center', lineHeight: 18, marginTop: 20, marginBottom: 24 }}>
-            Ao continuar, você concorda com o uso dessas tecnologias conforme descrito acima e na nossa{' '}
+            {isPt
+              ? 'Ao continuar, você concorda com o uso dessas tecnologias conforme descrito acima e na nossa '
+              : 'By continuing, you agree to the use of these technologies as described above and in our '}
             <AppText
               style={{ color: C.greenDark, textDecorationLine: 'underline' }}
               onPress={() => Linking.openURL('https://charlotte.hubacademybr.com/privacidade')}
             >
-              Política de Privacidade
+              {isPt ? 'Política de Privacidade' : 'Privacy Policy'}
             </AppText>
             .
           </AppText>
@@ -165,7 +181,7 @@ export default function AIConsentScreen() {
               ? <ActivityIndicator color={C.navy} size="small" />
               : <>
                   <AppText style={{ color: C.navy, fontWeight: '800', fontSize: 15 }}>
-                    Entendi e aceito
+                    {isPt ? 'Entendi e aceito' : 'I understand and accept'}
                   </AppText>
                   <ArrowRight size={16} color={C.navy} weight="bold" />
                 </>

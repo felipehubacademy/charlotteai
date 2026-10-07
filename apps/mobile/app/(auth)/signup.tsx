@@ -188,20 +188,11 @@ export default function SignupScreen() {
 
           {/* ── Branding ── */}
           <View style={{ alignItems: 'center', marginBottom: 36 }}>
-            <View style={{
-              width: 100, height: 100, borderRadius: 50,
-              borderWidth: 3, borderColor: C.green,
-              overflow: 'hidden', marginBottom: 16,
-              backgroundColor: C.navy,
-              shadowColor: C.navy, shadowOpacity: 0.12,
-              shadowRadius: 20, shadowOffset: { width: 0, height: 6 },
-            }}>
-              <Image
-                source={require('@/assets/charlotte-avatar.png')}
-                style={{ width: '100%', height: '100%' }}
-                resizeMode="cover"
-              />
-            </View>
+            <Image
+              source={require('@/assets/icon.png')}
+              style={{ width: 88, height: 88, borderRadius: 22, marginBottom: 16 }}
+              accessibilityLabel="Queizy"
+            />
             <AppText display style={{ fontSize: 28, fontWeight: '800', color: C.navy, letterSpacing: -0.5, marginBottom: 4 }}>
               {isPt ? 'Criar conta' : 'Create account'}
             </AppText>

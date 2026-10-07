@@ -90,7 +90,7 @@ export default function ResetPasswordScreen() {
               {isPt ? 'Nova senha' : 'New password'}
             </AppText>
             <AppText style={{ fontSize: 14, color: C.navyMid, marginTop: 8, textAlign: 'center', lineHeight: 20 }}>
-              {isPt ? <>Escolha uma senha segura{'\n'}para sua conta Charlotte.</> : <>Choose a secure password{'\n'}for your Charlotte account.</>}
+              {isPt ? <>Escolha uma senha segura{'\n'}para sua conta Queizy.</> : <>Choose a secure password{'\n'}for your Queizy account.</>}
             </AppText>
           </View>
 
