@@ -3,20 +3,33 @@
 // Stack screens (grammar, chat, pronunciation, learn-session, etc.) are defined
 // in (app)/_layout.tsx and push on top of these tabs without the tab bar.
 
+import React from 'react';
 import { Tabs } from 'expo-router';
 import { Platform, View, Image } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { House, Lightning, Notepad, Rocket, UserCircle, Phone } from 'phosphor-react-native';
 import { useAuth } from '@/hooks/useAuth';
-import { UserLevel } from '@/lib/levelConfig';
-import { LEVEL_ACCENT } from '@/lib/levelColors';
 
-// LEVEL_ACCENT vem de @/lib/levelColors
+// Aba ativa = cor de destaque da marca, igual em todos os níveis: pílula Volt
+// atrás do ícone, ícone em Tinta (Volt puro sobre branco não tem contraste).
+const INK      = '#16131F';
+const VOLT     = '#DCFF4A';
+const INACTIVE = '#8A8494';
+
+function TabIcon({ focused, children }: { focused: boolean; children: React.ReactNode }) {
+  return (
+    <View style={{
+      width: 52, height: 32, borderRadius: 16,
+      backgroundColor: focused ? VOLT : 'transparent',
+      alignItems: 'center', justifyContent: 'center',
+    }}>
+      {children}
+    </View>
+  );
+}
 
 export default function TabLayout() {
   const { profile } = useAuth();
-  const level  = (profile?.charlotte_level ?? 'Inter') as UserLevel;
-  const accent = LEVEL_ACCENT[level];
   const insets = useSafeAreaInsets();
 
   return (
@@ -24,8 +37,8 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarActiveTintColor: accent,
-        tabBarInactiveTintColor: '#8A8494',
+        tabBarActiveTintColor: INK,
+        tabBarInactiveTintColor: INACTIVE,
         tabBarStyle: {
           backgroundColor: '#FFFFFF',
           borderTopColor: 'rgba(22,19,31,0.08)',
@@ -43,63 +56,67 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <House size={size ?? 24} color={color} weight="fill" />
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon focused={focused}><House size={22} color={color} weight="fill" /></TabIcon>
           ),
         }}
       />
       <Tabs.Screen
         name="livevoice"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Phone size={size ?? 24} color={color} weight="fill" />
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon focused={focused}><Phone size={22} color={color} weight="fill" /></TabIcon>
           ),
         }}
       />
       <Tabs.Screen
         name="practice"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Lightning size={size ?? 24} color={color} weight="fill" />
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon focused={focused}><Lightning size={22} color={color} weight="fill" /></TabIcon>
           ),
         }}
       />
       <Tabs.Screen
         name="vocabulary"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Notepad size={size ?? 24} color={color} weight="fill" />
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon focused={focused}><Notepad size={22} color={color} weight="fill" /></TabIcon>
           ),
         }}
       />
       <Tabs.Screen
         name="goals"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Rocket size={size ?? 24} color={color} weight="fill" />
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon focused={focused}><Rocket size={22} color={color} weight="fill" /></TabIcon>
           ),
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          tabBarIcon: ({ color, focused, size }) => {
-            const sz = size ?? 24;
-            return profile?.avatar_url ? (
-              <View style={{
-                width: sz, height: sz, borderRadius: sz / 2,
-                borderWidth: focused ? 2 : 1.5,
-                borderColor: focused ? accent : '#8A8494',
-                overflow: 'hidden',
-              }}>
-                <Image
-                  source={{ uri: profile.avatar_url }}
-                  style={{ width: sz, height: sz }}
-                  resizeMode="cover"
-                />
-              </View>
-            ) : (
-              <UserCircle size={sz} color={color} weight="fill" />
+          tabBarIcon: ({ color, focused }) => {
+            const sz = 24;
+            return (
+              <TabIcon focused={focused}>
+                {profile?.avatar_url ? (
+                  <View style={{
+                    width: sz, height: sz, borderRadius: sz / 2,
+                    borderWidth: focused ? 2 : 1.5,
+                    borderColor: focused ? INK : INACTIVE,
+                    overflow: 'hidden',
+                  }}>
+                    <Image
+                      source={{ uri: profile.avatar_url }}
+                      style={{ width: sz, height: sz }}
+                      resizeMode="cover"
+                    />
+                  </View>
+                ) : (
+                  <UserCircle size={sz} color={color} weight="fill" />
+                )}
+              </TabIcon>
             );
           },
         }}

@@ -641,8 +641,8 @@ export default function HomeTab() {
         accessibilityLabel={isNearTop ? 'Ir para tópico atual' : 'Voltar ao topo'}
       >
         {isNearTop
-          ? <ArrowDown size={22} color="#FFF" weight="bold" />
-          : <ArrowUp size={22} color="#FFF" weight="bold" />}
+          ? <ArrowDown size={22} color="#DCFF4A" weight="bold" />
+          : <ArrowUp size={22} color="#DCFF4A" weight="bold" />}
       </TouchableOpacity>
 
       <NewLayoutWelcomeSheet
