@@ -3,6 +3,8 @@
 //   você fala → onda rosa, irregular (o "queizy")
 //   Charlotte → onda verde, suave e regular (o "crazy")
 // Path SVG recalculado ~30fps enquanto alguém fala; parado no silêncio.
+// Com levelRef (0..1, volume real da voz), a amplitude acompanha a fala:
+// sobe nas sílabas fortes e quase some nas pausas.
 
 import React, { useEffect, useRef, useState } from 'react';
 import Svg, { Path } from 'react-native-svg';
@@ -17,28 +19,37 @@ const COLORS: Record<Mode, string> = {
 
 interface Props {
   mode: Mode;
+  /** Volume da voz 0..1 (atualizado fora do React). Sem ele, amplitude fixa. */
+  levelRef?: React.MutableRefObject<number>;
   width?: number;
   height?: number;
 }
 
-export function LiveVoiceWave({ mode, width = 200, height = 30 }: Props) {
+export function LiveVoiceWave({ mode, levelRef, width = 220, height = 38 }: Props) {
   const [t, setT] = useState(0);
   const raf = useRef<number | null>(null);
   const last = useRef(0);
+  const amp = useRef(0); // amplitude suavizada (evita saltos entre leituras)
 
   useEffect(() => {
     if (mode === 'idle') return;
     const loop = (now: number) => {
-      if (now - last.current > 33) { last.current = now; setT(now / 1000); }
+      if (now - last.current > 33) {
+        last.current = now;
+        const target = levelRef ? Math.max(0.12, levelRef.current) : 0.75;
+        amp.current += (target - amp.current) * 0.35;
+        setT(now / 1000);
+      }
       raf.current = requestAnimationFrame(loop);
     };
     raf.current = requestAnimationFrame(loop);
     return () => { if (raf.current) cancelAnimationFrame(raf.current); };
-  }, [mode]);
+  }, [mode, levelRef]);
 
   const sw = 4;
   const mid = height / 2;
   const maxAmp = height / 2 - sw;
+  if (mode === 'idle') amp.current = 0;
   const steps = 48;
   let d = '';
   for (let i = 0; i <= steps; i++) {
@@ -48,7 +59,7 @@ export function LiveVoiceWave({ mode, width = 200, height = 30 }: Props) {
     const env = Math.sin(Math.PI * u);
     let y = mid;
     if (mode === 'charlotte') {
-      y = mid + maxAmp * 0.75 * env * Math.sin(u * Math.PI * 6 - t * 6);
+      y = mid + maxAmp * amp.current * env * Math.sin(u * Math.PI * 6 - t * 6);
     } else if (mode === 'user') {
       const wobble =
         Math.sin(u * Math.PI * 9 - t * 9) * 0.6 +

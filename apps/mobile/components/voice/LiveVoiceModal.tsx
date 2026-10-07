@@ -499,6 +499,9 @@ export default function LiveVoiceModal({
   const lastAudioEnergyRef = React.useRef<{ energy: number; duration: number } | null>(null);
   const audioLevelLogCounterRef = React.useRef(0);
   const smoothedLevelRef = React.useRef(0);
+  // Nível de voz 0..1 lido pela onda da marca (LiveVoiceWave) no próprio loop
+  // de animação dela — ref, para não re-renderizar o modal a cada 100ms.
+  const voiceLevelRef = React.useRef(0);
 
   // Useffect unificado: gerencia tanto animacao ambient quanto audio-reactiva.
   // Charlotte falando = poll getStats e seta ringScale/ringOpacity direto
@@ -512,6 +515,7 @@ export default function LiveVoiceModal({
     loopRef.current?.stop();
     lastAudioEnergyRef.current = null;
     smoothedLevelRef.current = 0;
+    voiceLevelRef.current = 0;
 
     // 1) Charlotte falando — audio-reactivo via getStats
     if (status === 'connected' && charlotteSpeaking && !isPaused) {
@@ -560,6 +564,7 @@ export default function LiveVoiceModal({
           // valores tipicos de fala (0.05-0.30) ficam bem distribuidos
           // entre scale 1.0 e 1.25 em vez de saturar logo no 1.30.
           const dispLevel = Math.sqrt(lv);  // 0.05→0.22, 0.20→0.45, 0.40→0.63
+          voiceLevelRef.current = Math.min(1, dispLevel * 1.4);
           // Range mais agressivo: scale 1.0→1.40 (40% maior), opacidade
           // 0.15→0.85. Variacao tipica de fala fica entre 1.10-1.30 =
           // claramente visivel no telefone.
@@ -1890,8 +1895,8 @@ export default function LiveVoiceModal({
             {/* Onda queizy → crazy: rosa irregular quando você fala, verde
                 suave quando a Charlotte fala, reta no silêncio. */}
             {status === 'connected' && !isPaused && (
-              <View pointerEvents="none" style={{ position: 'absolute', top: 250, left: 0, right: 0, alignItems: 'center' }}>
-                <LiveVoiceWave mode={charlotteSpeaking ? 'charlotte' : userSpeaking ? 'user' : 'idle'} />
+              <View pointerEvents="none" style={{ position: 'absolute', top: 246, left: 0, right: 0, alignItems: 'center' }}>
+                <LiveVoiceWave mode={charlotteSpeaking ? 'charlotte' : userSpeaking ? 'user' : 'idle'} levelRef={voiceLevelRef} />
               </View>
             )}
 
