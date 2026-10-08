@@ -13,7 +13,7 @@ import {
   SignOut, FileText,
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
   CaretRight, SpeakerHigh, Vibrate, ChatCircleText,
-  CreditCard, Lifebuoy, UsersThree,
+  CreditCard, Lifebuoy, UsersThree, ChartLineUp,
 } from 'phosphor-react-native';
 import {
   loadAudioPreferences,
@@ -521,9 +521,15 @@ export default function ProfileTab() {
           </>
         )}
 
-        {/* Comunidade */}
-        <SectionTitle label={isPt ? 'Comunidade' : 'Community'} />
+        {/* Comunidade e evolução */}
+        <SectionTitle label={isPt ? 'Você no Queizy' : 'You on Queizy'} />
         <SettingGroup>
+          <SettingRow
+            icon={<ChartLineUp size={18} color={C.navy} weight="regular" />}
+            label={isPt ? 'Minha evolução' : 'My progress'}
+            onPress={() => router.push('/(app)/evolution' as any)}
+            chevron
+          />
           <SettingRow
             icon={<UsersThree size={18} color={C.navy} weight="regular" />}
             label={isPt ? 'Estudar junto' : 'Study together'}

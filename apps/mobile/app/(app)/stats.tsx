@@ -5,7 +5,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, TouchableOpacity, ScrollView, StatusBar, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
-import { ShareNetwork, Fire, Trophy, BookOpenText, Lightning, Star, UsersThree, CaretRight } from 'phosphor-react-native';
+import { ShareNetwork, Fire, Trophy, BookOpenText, Lightning, Star, UsersThree, CaretRight, ChartLineUp } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { QueizyWave } from '@/components/ui/QueizyWave';
 import {
@@ -203,6 +203,21 @@ export default function StatsScreen() {
             </TouchableOpacity>
           </View>
         </View>
+
+        {/* ── Minha evolução ─────────────────────────────────────────────── */}
+        <TouchableOpacity activeOpacity={0.85} onPress={() => router.push('/(app)/evolution' as any)}
+          style={{ marginHorizontal: 16, marginTop: 12, backgroundColor: C.card, borderRadius: 20, padding: 16, flexDirection: 'row', alignItems: 'center', gap: 14, borderWidth: 1, borderColor: C.border }}>
+          <View style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: C.voltBg, alignItems: 'center', justifyContent: 'center' }}>
+            <ChartLineUp size={22} color={C.ink} weight="bold" />
+          </View>
+          <View style={{ flex: 1 }}>
+            <AppText display style={{ fontSize: 17, fontWeight: '800', color: C.ink }}>{isPt ? 'Minha evolução' : 'My progress'}</AppText>
+            <AppText style={{ fontSize: 13, color: C.mid, marginTop: 2 }}>
+              {isPt ? 'O que você domina e o que vale treinar.' : "What you've mastered and what to practice."}
+            </AppText>
+          </View>
+          <CaretRight size={18} color={C.ink} weight="bold" />
+        </TouchableOpacity>
 
         {/* ── Progresso do nível ─────────────────────────────────────────── */}
         <SectionTitle title={nextLevel ? (isPt ? `Rumo ao ${nextLevel}` : `Road to ${nextLevel}`) : (isPt ? `Nível ${userLevel}` : `${userLevel} level`)} />
