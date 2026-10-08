@@ -49,11 +49,11 @@ function buildConfirmationUrl(emailData: Record<string, string>): string {
 
 // ── Templates ─────────────────────────────────────────────────────────────────
 const TEMPLATES: Record<string, { subject: string; html: string }> = {
-  signup:               { subject: 'Confirme seu email \u2014 Charlotte',            html: confirmSignup  },
-  recovery:             { subject: 'Redefini\u00e7\u00e3o de senha \u2014 Charlotte', html: resetPassword  },
-  magiclink:            { subject: 'Seu link de acesso \u2014 Charlotte',            html: magicLink      },
-  email_change_new:     { subject: 'Confirme seu novo email \u2014 Charlotte',       html: emailChange    },
-  email_change_current: { subject: 'Confirme seu novo email \u2014 Charlotte',       html: emailChange    },
+  signup:               { subject: 'Confirme seu email \u2014 Queizy',            html: confirmSignup  },
+  recovery:             { subject: 'Redefini\u00e7\u00e3o de senha \u2014 Queizy', html: resetPassword  },
+  magiclink:            { subject: 'Seu link de acesso \u2014 Queizy',            html: magicLink      },
+  email_change_new:     { subject: 'Confirme seu novo email \u2014 Queizy',       html: emailChange    },
+  email_change_current: { subject: 'Confirme seu novo email \u2014 Queizy',       html: emailChange    },
 };
 
 // ── Handler ───────────────────────────────────────────────────────────────────

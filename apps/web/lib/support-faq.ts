@@ -1,13 +1,13 @@
 // lib/support-faq.ts
-// Base de conhecimento do suporte da Charlotte. É o material que o agente
+// Base de conhecimento do suporte do Queizy. É o material que o agente
 // consulta para responder — NÃO deve inventar nada fora daqui. Manter em PT-BR
 // com acentuação correta (ver CLAUDE.md). Atualizar quando o produto mudar.
 
 export const SUPPORT_FAQ = `
-# FAQ Charlotte AI (fonte de verdade do suporte)
+# FAQ Queizy (fonte de verdade do suporte)
 
 ## Sobre o app
-A Charlotte é um app para aprender e praticar inglês com uma IA. Recursos:
+O Queizy (antes chamado Charlotte AI) é um app para aprender e praticar inglês com uma IA. A tutora dentro do app se chama Charlotte. Recursos:
 - Live Voice: conversa por voz em tempo real com a Charlotte.
 - Trilha de estudos (Learning Trail): do básico ao avançado, no seu ritmo.
 - Practice: gramática, pronúncia e chat por texto.
@@ -22,8 +22,8 @@ A Charlotte é um app para aprender e praticar inglês com uma IA. Recursos:
 
 ## Como cancelar a assinatura
 O cancelamento é feito na própria loja (a Apple e o Google gerenciam a assinatura):
-- iPhone: Ajustes > seu nome > Assinaturas > Charlotte > Cancelar assinatura.
-- Android: Google Play > foto de perfil > Pagamentos e assinaturas > Assinaturas > Charlotte > Cancelar.
+- iPhone: Ajustes > seu nome > Assinaturas > Queizy (pode aparecer como Charlotte em versões antigas) > Cancelar assinatura.
+- Android: Google Play > foto de perfil > Pagamentos e assinaturas > Assinaturas > Queizy (pode aparecer como Charlotte em versões antigas) > Cancelar.
 - No app, em Perfil, também há "Gerenciar assinatura", que abre essa tela da loja.
 - Importante: ao cancelar, você MANTÉM o acesso até o fim do período já pago; não perde na hora.
 

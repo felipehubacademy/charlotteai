@@ -40,7 +40,7 @@ function isNoise(m: InboxMessage): boolean {
 function replyHtml(text: string): string {
   const safe = text.replace(/</g, '&lt;').replace(/\n/g, '<br>');
   return `<div style="font-family:-apple-system,Arial,sans-serif;color:#1d1d1f;font-size:15px;line-height:1.6;">${safe}
-    <p style="margin-top:20px;color:#86868b;font-size:12px;">Charlotte — Hub Academy Ltda</p></div>`;
+    <p style="margin-top:20px;color:#86868b;font-size:12px;">Equipe Queizy — Hub Academy Ltda</p></div>`;
 }
 
 export async function POST(req: NextRequest) {

@@ -16,13 +16,13 @@ function page(title: string, message: string, status: number, extra = ''): NextR
 <html lang="pt-BR"><head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>${title}</title></head>
-<body style="margin:0;background:#f4f3fa;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;color:#16153A;">
+<body style="margin:0;background:#FAF7F0;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;color:#16131F;">
   <div style="max-width:460px;margin:0 auto;padding:80px 24px;text-align:center;">
-    <img src="https://charlotte.hubacademybr.com/charlotte-avatar.png" width="72" height="72" style="border-radius:50%;" alt="Charlotte" />
+    <img src="https://queizy.com/images/queizy-logo.png" height="32" style="height:32px;" alt="Queizy" />
     <h1 style="font-size:24px;margin:28px 0 12px;letter-spacing:-0.3px;">${title}</h1>
     <p style="font-size:16px;color:#515154;line-height:1.6;margin:0;">${message}</p>
     ${extra}
-    <p style="font-size:12px;color:#86868b;margin-top:48px;">Charlotte &mdash; Hub Academy Ltda</p>
+    <p style="font-size:12px;color:#86868b;margin-top:48px;">Queizy &mdash; Hub Academy Ltda</p>
   </div>
 </body></html>`;
   return new NextResponse(html, { status, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
@@ -65,7 +65,7 @@ export async function GET(req: NextRequest) {
   // Página de descadastro com opção de recadastro (1 clique)
   const resubUrl = `${req.nextUrl.origin}${req.nextUrl.pathname}?u=${encodeURIComponent(u)}&t=${t}&resub=1`;
   const extra = `<p style="margin:22px 0 0;font-size:14px;line-height:1.6;">
-      Foi um engano? <a href="${resubUrl}" style="color:#16153A;font-weight:600;text-decoration:underline;">Clique aqui para continuar recebendo nossos emails</a>.
+      Foi um engano? <a href="${resubUrl}" style="color:#16131F;font-weight:600;text-decoration:underline;">Clique aqui para continuar recebendo nossos emails</a>.
     </p>`;
   return page(
     'Você foi descadastrado',

@@ -29,9 +29,9 @@ import { unsubscribeUrl } from '@/lib/unsubscribe';
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 const LOG_TYPE = 'release_update';
 
-const PUSH_TITLE = 'Charlotte atualizada';
+const PUSH_TITLE = 'Agora somos Queizy';
 const PUSH_BODY =
-  'Uma nova versão já está disponível com melhorias na conversa por voz e estabilidade. Atualize pela App Store ou Google Play.';
+  'O app ganhou nome e cara nova. A Charlotte continua sua tutora. Atualize pela App Store ou Google Play.';
 
 // Login próprio (Bearer) com papel que acessa 'notifications', ou a senha mestra antiga.
 async function checkAuth(req: NextRequest) {

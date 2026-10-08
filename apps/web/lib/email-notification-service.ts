@@ -21,7 +21,7 @@ export class EmailNotificationService {
   
   // Template de email de boas-vindas
   static getWelcomeTemplate(nome: string, nivelIngles: string): EmailTemplate {
-    const subject = `Bem-vindo(a) ao Charlotte! Seu teste grátis de 7 dias começou 🎉`;
+    const subject = `Bem-vindo(a) ao Queizy! Seu teste grátis de 7 dias começou`;
     
     const html = `
       <!DOCTYPE html>
@@ -29,7 +29,7 @@ export class EmailNotificationService {
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bem-vindo ao Charlotte</title>
+        <title>Bem-vindo ao Queizy</title>
         <style>
           body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f8f9fa; }
           .container { max-width: 600px; margin: 0 auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
@@ -57,18 +57,18 @@ export class EmailNotificationService {
       <body>
         <div class="container">
           <div class="header">
-            <h1>🎉 Bem-vindo(a) ao Charlotte!</h1>
+            <h1> Bem-vindo(a) ao Queizy!</h1>
             <p>Seu teste grátis de 7 dias começou agora</p>
           </div>
           
           <div class="content">
             <div class="welcome-text">
               Olá <strong>${nome}</strong>!<br><br>
-              Que alegria ter você conosco! Seu teste grátis do Charlotte já está ativo e você pode começar a praticar inglês imediatamente.
+              Que alegria ter você conosco! Seu teste grátis do Queizy já está ativo e você pode começar a praticar inglês imediatamente.
             </div>
 
             <div class="trial-info">
-              <div class="trial-title">📅 Seu Período de Teste</div>
+              <div class="trial-title"> Seu Período de Teste</div>
               <div class="trial-desc">
                 • <strong>7 dias grátis</strong> com acesso completo<br>
                 • Nível configurado: <strong>${nivelIngles}</strong><br>
@@ -79,7 +79,7 @@ export class EmailNotificationService {
 
             <div class="features">
               <div class="feature">
-                <div class="feature-icon">💬</div>
+                <div class="feature-icon"></div>
                 <div class="feature-text">
                   <div class="feature-title">Conversas Inteligentes</div>
                   <div class="feature-desc">Pratique com nossa IA que se adapta ao seu nível</div>
@@ -87,7 +87,7 @@ export class EmailNotificationService {
               </div>
               
               <div class="feature">
-                <div class="feature-icon">🎤</div>
+                <div class="feature-icon"></div>
                 <div class="feature-text">
                   <div class="feature-title">Feedback de Pronúncia</div>
                   <div class="feature-desc">Receba correções instantâneas da sua pronúncia</div>
@@ -95,7 +95,7 @@ export class EmailNotificationService {
               </div>
               
               <div class="feature">
-                <div class="feature-icon">🏆</div>
+                <div class="feature-icon"></div>
                 <div class="feature-text">
                   <div class="feature-title">Sistema de Conquistas</div>
                   <div class="feature-desc">Ganhe XP e desbloqueie conquistas conforme progride</div>
@@ -119,7 +119,7 @@ export class EmailNotificationService {
           
           <div class="footer">
             <img src="${process.env.NEXT_PUBLIC_APP_URL || 'https://charlotte.hubacademybr.com'}/logos/hub-white.png" alt="Hub Academy" class="logo">
-            <p>Charlotte by Hub Academy<br>
+            <p>Queizy — Hub Academy<br>
             Transformando o aprendizado de inglês com IA</p>
           </div>
         </div>
@@ -128,19 +128,17 @@ export class EmailNotificationService {
     `;
 
     const text = `
-Bem-vindo(a) ao Charlotte! Seu teste grátis de 7 dias começou 🎉
+Bem-vindo(a) ao Queizy! Seu teste grátis de 7 dias começou
 
 Olá ${nome}!
 
-Que alegria ter você conosco! Seu teste grátis do Charlotte já está ativo e você pode começar a praticar inglês imediatamente.
-
-📅 SEU PERÍODO DE TESTE
+Que alegria ter você conosco! Seu teste grátis do Queizy já está ativo e você pode começar a praticar inglês imediatamente.
+ SEU PERÍODO DE TESTE
 • 7 dias grátis com acesso completo
 • Nível configurado: ${nivelIngles}
 • Sem necessidade de cartão de crédito
 • Cancele a qualquer momento
-
-🚀 O QUE VOCÊ PODE FAZER:
+ O QUE VOCÊ PODE FAZER:
 • Conversas Inteligentes: Pratique com nossa IA que se adapta ao seu nível
 • Feedback de Pronúncia: Receba correções instantâneas da sua pronúncia
 • Sistema de Conquistas: Ganhe XP e desbloqueie conquistas conforme progride
@@ -149,7 +147,7 @@ Comece agora: ${process.env.NEXT_PUBLIC_APP_URL || 'https://charlotte.hubacademy
 
 Dica: Para ter a melhor experiência, instale o app no seu celular. Assim você terá acesso offline e notificações para não perder nenhum dia de prática!
 
-Charlotte by Hub Academy
+Queizy — Hub Academy
 Transformando o aprendizado de inglês com IA
     `;
 
@@ -158,7 +156,7 @@ Transformando o aprendizado de inglês com IA
 
   // Template de email de lembrete
   static getReminderTemplate(nome: string, diasRestantes: number): EmailTemplate {
-    const subject = `Você tem ${diasRestantes} dias restantes no seu teste grátis do Charlotte ⏰`;
+    const subject = `Você tem ${diasRestantes} dias restantes no seu teste grátis do Queizy`;
     
     const html = `
       <!DOCTYPE html>
@@ -166,7 +164,7 @@ Transformando o aprendizado de inglês com IA
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Lembrete - Charlotte</title>
+        <title>Lembrete - Queizy</title>
         <style>
           body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f8f9fa; }
           .container { max-width: 600px; margin: 0 auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
@@ -186,13 +184,13 @@ Transformando o aprendizado de inglês com IA
       <body>
         <div class="container">
           <div class="header">
-            <h1>⏰ Não perca seu tempo!</h1>
+            <h1> Não perca seu tempo!</h1>
           </div>
           
           <div class="content">
             <div class="reminder-text">
               Olá <strong>${nome}</strong>!<br><br>
-              Você ainda tem tempo para aproveitar ao máximo seu teste grátis do Charlotte!
+              Você ainda tem tempo para aproveitar ao máximo seu teste grátis do Queizy!
             </div>
 
             <div class="days-left">
@@ -212,7 +210,7 @@ Transformando o aprendizado de inglês com IA
           </div>
           
           <div class="footer">
-            <p>Charlotte by Hub Academy</p>
+            <p>Queizy — Hub Academy</p>
           </div>
         </div>
       </body>
@@ -220,11 +218,11 @@ Transformando o aprendizado de inglês com IA
     `;
 
     const text = `
-Você tem ${diasRestantes} dias restantes no seu teste grátis do Charlotte ⏰
+Você tem ${diasRestantes} dias restantes no seu teste grátis do Queizy
 
 Olá ${nome}!
 
-Você ainda tem tempo para aproveitar ao máximo seu teste grátis do Charlotte!
+Você ainda tem tempo para aproveitar ao máximo seu teste grátis do Queizy!
 
 ${diasRestantes} DIAS RESTANTES
 
@@ -232,7 +230,7 @@ Continue praticando: ${process.env.NEXT_PUBLIC_APP_URL || 'https://charlotte.hub
 
 Aproveite cada minuto para melhorar seu inglês!
 
-Charlotte by Hub Academy
+Queizy — Hub Academy
     `;
 
     return { subject, html, text };
@@ -240,7 +238,7 @@ Charlotte by Hub Academy
 
   // Template de email de expiração
   static getExpirationTemplate(nome: string): EmailTemplate {
-    const subject = `Seu teste grátis do Charlotte expirou - Que tal continuar? 💪`;
+    const subject = `Seu teste grátis do Queizy expirou - Que tal continuar?`;
     
     const html = `
       <!DOCTYPE html>
@@ -248,7 +246,7 @@ Charlotte by Hub Academy
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Teste Expirado - Charlotte</title>
+        <title>Teste Expirado - Queizy</title>
         <style>
           body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f8f9fa; }
           .container { max-width: 600px; margin: 0 auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
@@ -271,17 +269,17 @@ Charlotte by Hub Academy
       <body>
         <div class="container">
           <div class="header">
-            <h1>⏰ Seu teste expirou</h1>
+            <h1> Seu teste expirou</h1>
           </div>
           
           <div class="content">
             <div class="expiration-text">
               Olá <strong>${nome}</strong>!<br><br>
-              Seu teste grátis de 7 dias do Charlotte chegou ao fim. Esperamos que tenha gostado da experiência!
+              Seu teste grátis de 7 dias do Queizy chegou ao fim. Esperamos que tenha gostado da experiência!
             </div>
 
             <div class="offer">
-              <div class="offer-title">🎉 Oferta Especial para Você!</div>
+              <div class="offer-title"> Oferta Especial para Você!</div>
               <div class="offer-desc">
                 Que tal continuar sua jornada de aprendizado? Temos planos especiais para quem testou nossa plataforma.
               </div>
@@ -294,7 +292,7 @@ Charlotte by Hub Academy
             </div>
 
             <div class="contact">
-              <div class="contact-title">💬 Precisa de Ajuda?</div>
+              <div class="contact-title"> Precisa de Ajuda?</div>
               <div class="contact-desc">
                 Entre em contato conosco para dúvidas sobre planos ou suporte técnico.<br>
                 Email: contato@queizy.com
@@ -303,7 +301,7 @@ Charlotte by Hub Academy
           </div>
           
           <div class="footer">
-            <p>Charlotte by Hub Academy</p>
+            <p>Queizy — Hub Academy</p>
           </div>
         </div>
       </body>
@@ -311,23 +309,21 @@ Charlotte by Hub Academy
     `;
 
     const text = `
-Seu teste grátis do Charlotte expirou - Que tal continuar? 💪
+Seu teste grátis do Queizy expirou - Que tal continuar?
 
 Olá ${nome}!
 
-Seu teste grátis de 7 dias do Charlotte chegou ao fim. Esperamos que tenha gostado da experiência!
-
-🎉 OFERTA ESPECIAL PARA VOCÊ!
+Seu teste grátis de 7 dias do Queizy chegou ao fim. Esperamos que tenha gostado da experiência!
+ OFERTA ESPECIAL PARA VOCÊ!
 
 Que tal continuar sua jornada de aprendizado? Temos planos especiais para quem testou nossa plataforma.
 
 Ver planos: ${process.env.NEXT_PUBLIC_APP_URL || 'https://charlotte.hubacademybr.com'}/configuracoes
-
-💬 PRECISA DE AJUDA?
+ PRECISA DE AJUDA?
 Entre em contato conosco para dúvidas sobre planos ou suporte técnico.
 Email: contato@queizy.com
 
-Charlotte by Hub Academy
+Queizy — Hub Academy
     `;
 
     return { subject, html, text };
@@ -335,7 +331,7 @@ Charlotte by Hub Academy
 
   // Template de email de recuperação de senha
   static getPasswordResetTemplate(nome: string, resetLink: string): EmailTemplate {
-    const subject = `Recuperação de senha - Charlotte 🔐`;
+    const subject = `Recuperação de senha - Queizy`;
     
     const html = `
       <!DOCTYPE html>
@@ -343,7 +339,7 @@ Charlotte by Hub Academy
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Recuperação de Senha - Charlotte</title>
+        <title>Recuperação de Senha - Queizy</title>
         <style>
           body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f8f9fa; }
           .container { max-width: 600px; margin: 0 auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
@@ -366,17 +362,17 @@ Charlotte by Hub Academy
       <body>
         <div class="container">
           <div class="header">
-            <h1>🔐 Recuperação de Senha</h1>
+            <h1> Recuperação de Senha</h1>
           </div>
           
           <div class="content">
             <div class="reset-text">
               Olá <strong>${nome}</strong>!<br><br>
-              Recebemos uma solicitação para redefinir a senha da sua conta no Charlotte.
+              Recebemos uma solicitação para redefinir a senha da sua conta no Queizy.
             </div>
 
             <div class="reset-info">
-              <div class="reset-info-title">🔑 Redefinir Senha</div>
+              <div class="reset-info-title"> Redefinir Senha</div>
               <div class="reset-info-desc">
                 Clique no botão abaixo para criar uma nova senha para sua conta.
               </div>
@@ -389,7 +385,7 @@ Charlotte by Hub Academy
             </div>
 
             <div class="security">
-              <div class="security-title">🛡️ Informações de Segurança</div>
+              <div class="security-title"> Informações de Segurança</div>
               <div class="security-desc">
                 • Este link expira em 1 hora<br>
                 • Se você não solicitou esta recuperação, ignore este email<br>
@@ -404,7 +400,7 @@ Charlotte by Hub Academy
           </div>
           
           <div class="footer">
-            <p>Charlotte by Hub Academy</p>
+            <p>Queizy — Hub Academy</p>
           </div>
         </div>
       </body>
@@ -412,25 +408,23 @@ Charlotte by Hub Academy
     `;
 
     const text = `
-Recuperação de senha - Charlotte 🔐
+Recuperação de senha - Queizy
 
 Olá ${nome}!
 
-Recebemos uma solicitação para redefinir a senha da sua conta no Charlotte.
-
-🔑 REDEFINIR SENHA
+Recebemos uma solicitação para redefinir a senha da sua conta no Queizy.
+ REDEFINIR SENHA
 
 Clique no link abaixo para criar uma nova senha para sua conta:
 ${resetLink}
-
-🛡️ INFORMAÇÕES DE SEGURANÇA:
+ INFORMAÇÕES DE SEGURANÇA:
 • Este link expira em 1 hora
 • Se você não solicitou esta recuperação, ignore este email
 • Nunca compartilhe este link com outras pessoas
 
 Se você não conseguir clicar no link, copie e cole a URL acima no seu navegador.
 
-Charlotte by Hub Academy
+Queizy — Hub Academy
     `;
 
     return { subject, html, text };
@@ -441,7 +435,7 @@ Charlotte by Hub Academy
     try {
       return await SimpleEmailService.sendEmail(to, template);
     } catch (error) {
-      console.error('❌ Erro ao enviar email:', error);
+      console.error(' Erro ao enviar email:', error);
       return false;
     }
   }
