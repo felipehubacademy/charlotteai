@@ -346,8 +346,10 @@ const AI_CARD = { bg: '#16131F', text: '#FFFFFF', mid: 'rgba(255,255,255,0.72)',
 const AI_ACCENT = { openai: '#DCFF4A', azure: '#B9A8FF', eleven: '#FF8FB4' };
 const isLiveVoice = (name: string) => /realtime/i.test(name);
 
-function CostDelta({ cur, prev, prevLabel }: { cur: number; prev: number | null; prevLabel: string }) {
+function CostDelta({ cur, prev, prevLabel, partial, fmt }: { cur: number; prev: number | null; prevLabel: string; partial: boolean; fmt: (n: number) => string }) {
   if (prev == null) return null;
+  // Mês em andamento: comparar com o mês anterior fechado engana; mostra o valor dele.
+  if (partial) return <span style={{ fontSize: 11.5, color: AI_CARD.low }}>{prevLabel}: {fmt(prev)}</span>;
   if (!prev) return <span style={{ fontSize: 11.5, color: AI_CARD.low }}>sem custo em {prevLabel}</span>;
   const pct = Math.round(((cur - prev) / prev) * 100);
   const up = pct > 0;
@@ -425,6 +427,7 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
   const curFmt = (n: number, cur: string) => n.toLocaleString(cur === 'BRL' ? 'pt-BR' : 'en-US', { style: 'currency', currency: cur });
   const toBrl = (n: number, cur: string) => (cur === 'BRL' ? n : n * (data?.fx || 0));
   const prevLabel = data ? monthLabel(data.prevMonth).toLowerCase() : '';
+  const partial = month === new Date().toISOString().slice(0, 7);
 
   // OpenAI: Live Voice (modelos realtime) separado do resto.
   const live = data ? data.openai.lines.filter(l => isLiveVoice(l.name)).reduce((s, l) => s + l.usd, 0) : 0;
@@ -451,7 +454,7 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
                 <div className="num" style={{ fontSize: 30, fontWeight: 800, color: AI_ACCENT.openai, lineHeight: 1.1 }}>{brl(toBrl(data.openai.usd, 'USD'))}</div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 6, flexWrap: 'wrap' }}>
                   <span className="num" style={{ fontSize: 12.5, color: AI_CARD.mid }}>{usdFmt(data.openai.usd)}</span>
-                  <CostDelta cur={data.openai.usd} prev={data.prev.openai.usd} prevLabel={prevLabel} />
+                  <CostDelta cur={data.openai.usd} prev={data.prev.openai.usd} prevLabel={prevLabel} partial={partial} fmt={usdFmt} />
                 </div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
@@ -478,12 +481,12 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
                     <div className="num" style={{ fontSize: 30, fontWeight: 800, color: AI_ACCENT.azure, lineHeight: 1.1 }}>{brl(azureBrl)}</div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 6, flexWrap: 'wrap' }}>
                       {data.azure.currency !== 'BRL' && <span className="num" style={{ fontSize: 12.5, color: AI_CARD.mid }}>{curFmt(data.azure.total, data.azure.currency)}</span>}
-                      <CostDelta cur={data.azure.total} prev={data.prev.azure?.total ?? null} prevLabel={prevLabel} />
+                      <CostDelta cur={data.azure.total} prev={data.prev.azure?.total ?? null} prevLabel={prevLabel} partial={partial} fmt={n => curFmt(n, data.azure!.currency)} />
                     </div>
                   </div>
                   <div style={{ fontSize: 12, color: AI_CARD.mid, lineHeight: 1.5 }}>Pronúncia da aba Practice e demais serviços da assinatura.</div>
                   <AiLines lines={data.azure.lines.filter(l => l.amount > 0).slice(0, 4).map(l => ({ name: l.name, value: l.amount }))} fmt={n => curFmt(n, data.azure!.currency)} />
-                  {postButton('Microsoft Azure', AI_ACCENT.azure, data.azure.total <= 0)}
+                  {postButton('Microsoft Azure', AI_ACCENT.azure, data.azure.total < 0.01)}
                 </>
               )}
             </AiCard>
