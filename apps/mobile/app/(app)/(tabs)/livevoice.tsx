@@ -451,11 +451,6 @@ export default function LiveVoiceTab() {
   const isSubscriber = !!profile?.is_institutional || profile?.subscription_status === 'active';
   const accent  = getLevelAccent(level);
 
-  // Fim do cartão de minutos em coordenadas da tela (mesma base dos elementos
-  // absolutos): y do conteúdo abaixo do HeaderPills + fim do cabeçalho dentro dele.
-  const [contentY, setContentY] = useState<number | null>(null);
-  const [headerEnd, setHeaderEnd] = useState<number | null>(null);
-  const headerBottom = contentY != null && headerEnd != null ? contentY + headerEnd : null;
   const [streak,  setStreak]  = useState(0);
   const [totalXP, setTotalXP] = useState(0);
   const [todayXP, setTodayXP] = useState(0);
@@ -656,20 +651,35 @@ export default function LiveVoiceTab() {
   //   Avatar center Y = insets.top + 24 + 50 + gap + 180.
   // Posicionando o avatar do tab com `top` absoluto = essa Y - 74 (metade
   // do bloco de arcos 148) garante alinhamento pixel-perfect na transição.
+  // Fim do cartão de minutos em coordenadas da tela (mesma base dos elementos
+  // absolutos): y do conteúdo abaixo do HeaderPills + fim do cabeçalho dentro dele.
+  const [contentY, setContentY] = useState<number | null>(null);
+  const [headerEnd, setHeaderEnd] = useState<number | null>(null);
+  const headerBottom = contentY != null && headerEnd != null ? contentY + headerEnd : null;
+  const [ctaY, setCtaY] = useState<number | null>(null);
+  const [cardY, setCardY] = useState<number | null>(null);
+  const showPoolCard = poolKnown && !poolUnlimited && poolTotal > 0;
+  // Primeiro elemento abaixo da Charlotte: o cartão de minutos (se aparece) ou o botão.
+  const bottomY = showPoolCard ? cardY : ctaY;
+  const ctaTop = contentY != null && bottomY != null ? contentY + bottomY : null;
+  const [bubbleH, setBubbleH] = useState(70);
   const innerH = screenH - insets.top - insets.bottom - 48;
   // Ajuste fino +12px sobre o calculo nominal pra bater com a posicao
   // visual real do avatar no modal (iPhone 15 Pro).
   const modalAvatarCenterY = insets.top + 24 + 50 + Math.max(0, (innerH - 500) / 2) + 180 + 9;
-  const avatarTopOffset = modalAvatarCenterY - 74;
-  // O balão fica acima do avatar (posição fixa), mas o cartão de minutos pode
-  // descer até ele em telas mais baixas. Mede o fim do cabeçalho e escolhe:
-  // balão normal, compacto numa linha logo abaixo do cartão, ou nenhum.
-  const BUBBLE_TOP = avatarTopOffset - 92;
-  const bubbleRoom = headerBottom == null ? Infinity : (avatarTopOffset + 6) - (headerBottom + 8);
-  const bubbleMode: 'full' | 'compact' | 'none' =
-    bubbleRoom >= 86 && (headerBottom == null || headerBottom + 8 <= BUBBLE_TOP) ? 'full'
-    : bubbleRoom >= 50 ? 'compact' : 'none';
-  const bubbleTop = bubbleMode === 'full' ? BUBBLE_TOP : (headerBottom ?? 0) + 8;
+  // Balão + Charlotte formam um bloco: o balão fica sempre colado acima do
+  // avatar (rabinho apontando para ela). O avatar começa na Y da tela de
+  // chamada; se o cartão de minutos descer até o balão (telas mais baixas,
+  // fonte maior), o bloco inteiro desce o necessário, sem passar do botão.
+  const BUBBLE_GAP = 22;          // do fim do balão ao topo da caixa do avatar
+  const AVATAR_BLOCK = 74 + 56 + 26; // caixa do avatar até o fim da onda
+  const nominalAvatarTop = modalAvatarCenterY - 74;
+  const minAvatarTop = headerBottom == null ? -Infinity : headerBottom + 10 + bubbleH + BUBBLE_GAP;
+  const maxAvatarTop = ctaTop == null ? Infinity : ctaTop - 8 - AVATAR_BLOCK;
+  const avatarTopOffset = Math.min(Math.max(nominalAvatarTop, minAvatarTop), Math.max(nominalAvatarTop, maxAvatarTop));
+  const bubbleTop = avatarTopOffset - BUBBLE_GAP - bubbleH;
+  // Último recurso (tela muito baixa): sem espaço para o balão, só a Charlotte.
+  const showBubble = headerBottom == null || bubbleTop >= headerBottom + 6;
 
   return (
     <View style={{ flex: 1, backgroundColor: C.stage }}>
@@ -730,21 +740,20 @@ export default function LiveVoiceTab() {
 
       {/* Balão da Charlotte acima do avatar — mesmo estilo da Home (balão
           branco com o rabinho do logo apontando para ela). */}
-      {!loading && !isLimitReached && bubbleMode !== 'none' && (
+      {!loading && !isLimitReached && showBubble && (
         <View pointerEvents="none" style={{
           position: 'absolute', left: 0, right: 0,
           top: bubbleTop,
           alignItems: 'center', zIndex: 6,
         }}>
-          <View style={{ maxWidth: bubbleMode === 'full' ? '78%' : '90%' }}>
+          <View style={{ maxWidth: '78%' }} onLayout={e => setBubbleH(Math.round(e.nativeEvent.layout.height))}>
             <View style={{
               backgroundColor: C.panel, borderRadius: 18,
-              paddingHorizontal: 16, paddingVertical: bubbleMode === 'full' ? 12 : 9,
+              paddingHorizontal: 16, paddingVertical: 12,
               shadowColor: 'rgba(22,19,31,0.10)', shadowOpacity: 1, shadowRadius: 12,
               shadowOffset: { width: 0, height: 4 }, elevation: 2,
             }}>
-              <AppText display numberOfLines={bubbleMode === 'full' ? undefined : 1} adjustsFontSizeToFit={bubbleMode !== 'full'}
-                style={{ fontSize: bubbleMode === 'full' ? 18 : 15, fontWeight: '800', color: C.textWhite, lineHeight: bubbleMode === 'full' ? 23 : 20, textAlign: 'center' }}>
+              <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.textWhite, lineHeight: 23, textAlign: 'center' }}>
                 {isPt ? 'Bora conversar? Pode errar à vontade.' : "Let's talk! Mistakes are welcome here."}
               </AppText>
             </View>
@@ -804,26 +813,6 @@ export default function LiveVoiceTab() {
                 </AppText>
               </View>
 
-              {/* Consumo do mês (veio do Perfil): usados do total, renovação e bônus. */}
-              {poolKnown && !poolUnlimited && poolTotal > 0 && (
-                <View style={{ marginTop: 14, backgroundColor: '#FFFFFF', borderRadius: 16, padding: 14, borderWidth: 1, borderColor: 'rgba(22,19,31,0.08)' }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
-                    <AppText style={{ flex: 1, fontSize: 13, fontWeight: '700', color: C.textWhite }}>
-                      {isPt ? 'Seu tempo este mês' : 'Your time this month'}
-                    </AppText>
-                    <AppText style={{ fontSize: 12, fontWeight: '700', color: C.textMuted }}>
-                      {`${Math.min(Math.ceil(poolUsed / 60), Math.floor(poolTotal / 60))} / ${Math.floor(poolTotal / 60)} min`}
-                    </AppText>
-                  </View>
-                  <QueizyWave progress={Math.min(1, poolUsed / poolTotal)} height={12} strokeWidth={3.5} doneColor="#2BD97C" />
-                  <AppText style={{ fontSize: 11.5, color: C.textDim, marginTop: 8 }}>
-                    {(isPt
-                      ? `Renova em 1/${String(new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).getMonth() + 1).padStart(2, '0')}`
-                      : `Resets ${new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toLocaleDateString('en', { month: 'short', day: 'numeric' })}`)
-                      + (poolBonus >= 60 ? (isPt ? ` · +${Math.floor(poolBonus / 60)} min de bônus` : ` · +${Math.floor(poolBonus / 60)} bonus min`) : '')}
-                  </AppText>
-                </View>
-              )}
             </View>
 
             {/* Banner fixo de upsell — só pra NÃO-assinante que esgotou o mês.
@@ -869,9 +858,32 @@ export default function LiveVoiceTab() {
                 visual na transicao). */}
             <View style={{ flex: 1 }} />
 
+            {/* Consumo do mês (veio do Perfil): usados do total, renovação e bônus.
+                Fica logo acima do botão, longe do balão da Charlotte. */}
+            {showPoolCard && (
+              <View onLayout={e => setCardY(e.nativeEvent.layout.y)} style={{ marginHorizontal: 24, marginBottom: 12, backgroundColor: '#FFFFFF', borderRadius: 16, padding: 14, borderWidth: 1, borderColor: 'rgba(22,19,31,0.08)' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+                  <AppText style={{ flex: 1, fontSize: 13, fontWeight: '700', color: C.textWhite }}>
+                    {isPt ? 'Seu tempo este mês' : 'Your time this month'}
+                  </AppText>
+                  <AppText style={{ fontSize: 12, fontWeight: '700', color: C.textMuted }}>
+                    {`${Math.min(Math.ceil(poolUsed / 60), Math.floor(poolTotal / 60))} / ${Math.floor(poolTotal / 60)} min`}
+                  </AppText>
+                </View>
+                <QueizyWave progress={Math.min(1, poolUsed / poolTotal)} height={12} strokeWidth={3.5} doneColor="#2BD97C" />
+                <AppText style={{ fontSize: 11.5, color: C.textDim, marginTop: 8 }}>
+                  {(isPt
+                    ? `Renova em 1/${String(new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).getMonth() + 1).padStart(2, '0')}`
+                    : `Resets ${new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toLocaleDateString('en', { month: 'short', day: 'numeric' })}`)
+                    + (poolBonus >= 60 ? (isPt ? ` · +${Math.floor(poolBonus / 60)} min de bônus` : ` · +${Math.floor(poolBonus / 60)} bonus min`) : '')}
+                </AppText>
+              </View>
+            )}
+
             {/* ── CTA primário: conversar / comprar / assinar / carregando ── */}
             <TouchableOpacity
               onPress={onCtaPress}
+              onLayout={e => setCtaY(e.nativeEvent.layout.y)}
               disabled={!poolKnown}
               activeOpacity={0.85}
               style={{
