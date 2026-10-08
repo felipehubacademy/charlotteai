@@ -34,6 +34,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       NSPhotoLibraryUsageDescription:
         'Queizy uses your photo library so you can set a profile photo.',
       ITSAppUsesNonExemptEncryption: false,
+      // Idiomas suportados: sem português declarado, o iOS informa inglês ao app
+      // (Intl vira "en-BR") e toda a interface ignora o aparelho em português.
+      CFBundleDevelopmentRegion: 'en',
+      CFBundleLocalizations: ['en', 'pt-BR', 'pt'],
       // Status bar: dark icons (time, wifi, battery) on light backgrounds
       UIViewControllerBasedStatusBarAppearance: false,
       UIStatusBarStyle: 'UIStatusBarStyleDarkContent',
