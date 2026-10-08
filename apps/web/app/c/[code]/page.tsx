@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ code: str
     title,
     description: 'Pratique inglês todo dia com a Charlotte, sua tutora de IA. Estude junto e ganhem minutos extras de conversa por voz.',
     openGraph: { title, images: ['/images/queizy-og.png'] },
+    twitter: { card: 'summary_large_image', title, images: ['/images/queizy-og.png'] },
   };
 }
 
