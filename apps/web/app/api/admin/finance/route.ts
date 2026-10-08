@@ -7,6 +7,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
+import { fxToBrl } from '@/lib/fx';
 
 export const dynamic = 'force-dynamic';
 
@@ -73,16 +74,9 @@ export async function GET(req: NextRequest) {
   const fx = req.nextUrl.searchParams.get('fx');
   if (fx) {
     const cur = fx.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 3);
-    if (cur === 'BRL') return NextResponse.json({ rate: 1 });
-    try {
-      const r = await fetch(`https://economia.awesomeapi.com.br/json/last/${cur}-BRL`, { cache: 'no-store' });
-      const j = await r.json();
-      const rate = Number(j?.[`${cur}BRL`]?.bid);
-      if (!Number.isFinite(rate) || rate <= 0) throw new Error('sem cotação');
-      return NextResponse.json({ rate: Math.round(rate * 10000) / 10000 });
-    } catch {
-      return NextResponse.json({ error: 'Cotação indisponível' }, { status: 502 });
-    }
+    const rate = await fxToBrl(cur);
+    if (!rate) return NextResponse.json({ error: 'Cotação indisponível' }, { status: 502 });
+    return NextResponse.json({ rate: Math.round(rate * 10000) / 10000 });
   }
 
   const { data, error } = await getSupabaseAdmin()

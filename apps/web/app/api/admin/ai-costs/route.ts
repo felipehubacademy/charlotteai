@@ -13,6 +13,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
+import { fxToBrl } from '@/lib/fx';
 
 export const dynamic = 'force-dynamic';
 
@@ -131,14 +132,7 @@ async function elevenlabs(): Promise<{ plan: string; used: number; limit: number
   };
 }
 
-async function fxBrl(cur = 'USD'): Promise<number> {
-  if (cur === 'BRL') return 1;
-  try {
-    const r = await fetch(`https://economia.awesomeapi.com.br/json/last/${cur}-BRL`, { cache: 'no-store' });
-    const j = await r.json();
-    return Number(j?.[`${cur}BRL`]?.bid) || 0;
-  } catch { return 0; }
-}
+const fxBrl = (cur = 'USD') => fxToBrl(cur);
 
 export async function GET(req: NextRequest) {
   const admin = await requireAdmin(req, 'finance');

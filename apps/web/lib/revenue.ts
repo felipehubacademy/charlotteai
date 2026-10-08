@@ -8,21 +8,10 @@
 // Idempotente por event.id (o webhook pode reenviar).
 
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { fxToBrl } from '@/lib/fx';
 
 const MONEY_EVENTS = new Set(['INITIAL_PURCHASE', 'RENEWAL', 'NON_RENEWING_PURCHASE', 'PRODUCT_CHANGE', 'TRIAL_CONVERTED']);
 const REFUND_EVENTS = new Set(['REFUND']);
-
-async function fxToBrl(currency: string): Promise<number> {
-  if (!currency || currency === 'BRL') return 1;
-  try {
-    const r = await fetch(`https://economia.awesomeapi.com.br/json/last/${currency}-BRL`, { cache: 'no-store' });
-    const j = await r.json();
-    const rate = Number(j?.[`${currency}BRL`]?.bid);
-    return Number.isFinite(rate) && rate > 0 ? rate : 0;
-  } catch {
-    return 0;
-  }
-}
 
 function storeLabel(store?: string): string {
   if (store === 'APP_STORE' || store === 'MAC_APP_STORE') return 'Assinaturas App Store';
