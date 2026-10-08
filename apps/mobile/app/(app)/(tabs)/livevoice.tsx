@@ -73,17 +73,6 @@ function poolStatusLabel(
   return isPt ? 'Charlotte disponível' : 'Charlotte available';
 }
 
-/** Selo de minutos restantes ao lado do status (null = sem selo). */
-function poolMinutesBadge(
-  isPt: boolean, isLimitReached: boolean, isUnlimited: boolean,
-  remainingSec: number, isKnown: boolean,
-): string | null {
-  if (!isKnown || isLimitReached) return null;
-  if (isUnlimited) return isPt ? 'ilimitado' : 'unlimited';
-  const remainMin = Math.max(0, Math.floor(remainingSec / 60)); // mensal restante + bônus
-  return `${remainMin} min`;
-}
-
 function formatCallMeta(call: { started_at: string; duration_seconds: number }, isPt: boolean): string {
   const days = Math.floor((Date.now() - new Date(call.started_at).getTime()) / 86_400_000);
   const minutes = Math.round(call.duration_seconds / 60);
@@ -794,13 +783,6 @@ export default function LiveVoiceTab() {
                 <AppText style={{ fontSize: 13, color: C.textMuted, fontWeight: '500' }}>
                   {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown)}
                 </AppText>
-                {poolMinutesBadge(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown) && (
-                  <View style={{ backgroundColor: C.navyGhost, borderRadius: 10, paddingHorizontal: 8, paddingVertical: 2 }}>
-                    <AppText style={{ fontSize: 12, fontWeight: '800', color: C.textWhite }}>
-                      {poolMinutesBadge(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown)}
-                    </AppText>
-                  </View>
-                )}
               </View>
 
               {/* Consumo do mês (veio do Perfil): usados do total, renovação e bônus. */}
