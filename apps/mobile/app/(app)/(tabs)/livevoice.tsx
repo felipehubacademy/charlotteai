@@ -451,8 +451,11 @@ export default function LiveVoiceTab() {
   const isSubscriber = !!profile?.is_institutional || profile?.subscription_status === 'active';
   const accent  = getLevelAccent(level);
 
-  const headerRef = React.useRef<View>(null);
-  const [headerBottom, setHeaderBottom] = useState<number | null>(null);
+  // Fim do cartão de minutos em coordenadas da tela (mesma base dos elementos
+  // absolutos): y do conteúdo abaixo do HeaderPills + fim do cabeçalho dentro dele.
+  const [contentY, setContentY] = useState<number | null>(null);
+  const [headerEnd, setHeaderEnd] = useState<number | null>(null);
+  const headerBottom = contentY != null && headerEnd != null ? contentY + headerEnd : null;
   const [streak,  setStreak]  = useState(0);
   const [totalXP, setTotalXP] = useState(0);
   const [todayXP, setTodayXP] = useState(0);
@@ -757,14 +760,14 @@ export default function LiveVoiceTab() {
           <ActivityIndicator size="large" color={C.textWhite} />
         </View>
       ) : (
-        <View style={{ flex: 1, backgroundColor: C.stage, position: 'relative' }}>
+        <View style={{ flex: 1, backgroundColor: C.stage, position: 'relative' }}
+          onLayout={e => setContentY(e.nativeEvent.layout.y)}>
 
           <View style={{ flex: 1 }}>
 
             {/* ── Header da tela: título + status row ── */}
             <View
-              ref={headerRef}
-              onLayout={() => headerRef.current?.measureInWindow((_x, y, _w, h) => setHeaderBottom(y + h - 12))}
+              onLayout={e => setHeaderEnd(e.nativeEvent.layout.y + e.nativeEvent.layout.height - 12)}
               style={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 12 }}
             >
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
