@@ -16,7 +16,7 @@ export interface RoadWeek { start: string; practices: number; trailAccuracy: num
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
-const H = 250;
+const H = 272;
 const PAD_X = 30;
 const AMP = 58;
 const GOAL = 10;      // práticas na semana para bater a meta
@@ -30,7 +30,7 @@ const fmt = (iso: string) => { const [, m, d] = iso.split('-'); return `${d}/${m
 function curve(t: number, width: number) {
   return {
     x: PAD_X + t * (width - PAD_X * 2),
-    y: H / 2 - 6 + AMP * Math.sin(t * Math.PI * 2.5),
+    y: H / 2 + 8 + AMP * Math.sin(t * Math.PI * 2.5),
   };
 }
 
@@ -83,7 +83,7 @@ export function EvolutionRoad({ weeks, isPt }: { weeks: RoadWeek[]; isPt: boolea
   const flag = stops[n - 1];
   // O avatar do aluno fica do lado em que a estrada não passa: se a parada atual está
   // na metade de baixo, ela vai embaixo (o trecho anterior vem de cima).
-  const charlotteAbove = cur ? cur.y < H / 2 - 6 : true;
+  const charlotteAbove = cur ? cur.y < H / 2 + 8 : true;
 
   return (
     <View>
@@ -119,7 +119,7 @@ export function EvolutionRoad({ weeks, isPt }: { weeks: RoadWeek[]; isPt: boolea
         {weeks.map((w, i) => {
           const p = stops[i];
           if (!p) return null;
-          const labelBelow = p.y >= H / 2 - 6;
+          const labelBelow = p.y >= H / 2 + 8;
           return (
             <React.Fragment key={w.start}>
               <Pressable onPress={() => setSelected(i)} hitSlop={6}
