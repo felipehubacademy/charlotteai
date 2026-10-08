@@ -117,6 +117,9 @@ export function usePushNotifications(userId?: string) {
           case 'buddy_joined':
             router.push('/(app)/study-together' as any);
             break;
+          case 'achievement_cheer':
+            router.push('/(app)/achievements' as any);
+            break;
           case 'xp_milestone':
             router.push('/(app)');  // home → stats visible
             break;

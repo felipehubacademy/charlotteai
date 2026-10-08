@@ -10,6 +10,7 @@ import { C, ScreenHeader, Card, RankRow, firstName } from '@/components/stats/St
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
+import { RecentAchievements } from '@/components/social/RecentAchievements';
 
 const isPt = systemIsPt;
 
@@ -144,6 +145,8 @@ export default function LeaderboardScreen() {
               )}
             </Card>
           )}
+
+          <RecentAchievements />
         </ScrollView>
       )}
     </View>

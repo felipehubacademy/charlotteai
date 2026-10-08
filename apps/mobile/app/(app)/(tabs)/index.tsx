@@ -32,6 +32,7 @@ import { voiceSFX } from '@/lib/voiceSFX';
 import { ArrowDown, ArrowUp } from 'phosphor-react-native';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { TrailBanner } from '@/components/trail/TrailBanner';
+import { StudyingNow } from '@/components/social/StudyingNow';
 import { PromotionModal } from '@/components/trail/PromotionModal';
 import { GraduationModal } from '@/components/trail/GraduationModal';
 import { usePromotion } from '@/lib/curriculum-v2/usePromotion';
@@ -534,6 +535,7 @@ export default function HomeTab() {
             </Svg>
           </TouchableOpacity>
         </View>
+        <StudyingNow />
       </View>
 
       {/* Card do nível */}
