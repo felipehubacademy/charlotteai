@@ -79,19 +79,21 @@ Start with a 7-day free trial. Then subscribe for full access.
 - **PT:**
 ```
 A Charlotte agora é Queizy! Novo visual, nova marca e a mesma tutora que você conhece.
-- Estudar junto: convide amigos, formem uma dupla e ganhem minutos de Live Voice
+- Trilha nova com Grammar, Listening & Speaking, Role-play e Guided Chat
+- Estude junto: ache amigos pelo nome ou @, cutuque e dispute competições de 24 horas ou 7 dias
 - Compartilhe conquistas, sequência e nível como imagem nas suas redes
 - Minha evolução: o que você domina, o que vale treinar e um resumo semanal da Charlotte
-- Histórico de gramática e de pronúncia
+- Minutos extras de Live Voice quando quiser
 - Melhorias de desempenho e correções
 ```
 - **EN:**
 ```
 Charlotte is now Queizy! A new look, a new brand and the same tutor you know.
-- Study together: invite friends, become study buddies and get Live Voice minutes
+- New learning path with Grammar, Listening & Speaking, Role-play and Guided Chat
+- Study together: find friends by name or @, nudge them and compete in 24-hour or 7-day challenges
 - Share achievements, streaks and level as images on your socials
 - My progress: what you've mastered, what to practice and a weekly summary from Charlotte
-- Grammar and pronunciation history
+- Extra Live Voice minutes whenever you want
 - Performance improvements and fixes
 ```
 
@@ -115,10 +117,20 @@ Notes:
 - Microphone: used for pronunciation exercises and Live Voice (real-time voice
   conversation, foreground only). Audio is sent for real-time analysis and is
   not stored.
-- Study together: users can invite friends with a personal link; nudges use
-  only predefined messages (no free text between users).
-- Subscription (auto-renewable) via StoreKit/RevenueCat with a 7-day free
-  trial. "Manage subscription" and "Restore purchases" are in Profile.
+- Social features (Profile > Study together / Estudar junto): users can find
+  others by name or @username and send friend requests, which must be accepted.
+  Interactions between users are predefined only (nudges, congratulations,
+  challenges); there is no free-text messaging between users.
+- Moderation (Guideline 1.2): every other user shown in the app has a "..."
+  menu with Report and Block. Reports are stored and emailed to our team and
+  reviewed within 24 hours; blocking hides both users from each other and stops
+  any interaction. Users can leave search in Profile > Preferences. The Terms
+  of Use prohibit objectionable content and abusive behavior.
+- Subscriptions (auto-renewable) via StoreKit/RevenueCat. The paywall shows the
+  Terms of Use and Privacy Policy links. "Manage subscription" and "Restore
+  purchases" are in Profile.
+- Extra Live Voice minutes (consumable in-app purchases, 10 and 30 minutes):
+  Live Voice tab > tap the "Your time this month" card > minute packs.
 - Privacy Policy: https://queizy.com/privacidade
   Terms of Use: https://queizy.com/termos
 ```

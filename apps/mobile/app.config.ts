@@ -116,9 +116,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       const app = c.modResults.manifest.application?.[0];
       if (app) {
         if (!app.service) app.service = [];
-        const SVC = 'expo.modules.audio.service.AudioControlsService';
-        if (!app.service.some((sv: { $?: Record<string, string> }) => sv.$?.['android:name'] === SVC)) {
-          app.service.push({ $: { 'android:name': SVC, 'tools:node': 'remove' } } as never);
+        // Também o serviço de gravação em segundo plano (o app só grava com a tela aberta).
+        for (const SVC of ['expo.modules.audio.service.AudioControlsService', 'expo.modules.audio.service.AudioRecordingService']) {
+          if (!app.service.some((sv: { $?: Record<string, string> }) => sv.$?.['android:name'] === SVC)) {
+            app.service.push({ $: { 'android:name': SVC, 'tools:node': 'remove' } } as never);
+          }
         }
       }
       return c;
