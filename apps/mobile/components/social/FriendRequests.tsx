@@ -6,6 +6,8 @@ import { AppText } from '@/components/ui/Text';
 import { C, Card, SectionTitle } from '@/components/stats/StatsUI';
 import { systemIsPt } from '@/lib/systemLang';
 import { fetchIncomingRequests, acceptFriend, declineFriend, Person } from '@/lib/friends';
+import { openUserActions } from '@/lib/moderation';
+import { DotsThreeVertical } from 'phosphor-react-native';
 
 export function FriendRequests({ onChange }: { onChange?: () => void }) {
   const isPt = systemIsPt;
@@ -50,6 +52,10 @@ export function FriendRequests({ onChange }: { onChange?: () => void }) {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => answer(p, true)} style={{ borderRadius: 999, paddingHorizontal: 12, paddingVertical: 8, backgroundColor: C.ink }}>
                   <AppText style={{ fontSize: 13, fontWeight: '800', color: C.volt }}>{t('Aceitar', 'Accept')}</AppText>
+                </TouchableOpacity>
+                <TouchableOpacity hitSlop={10} style={{ justifyContent: 'center' }} accessibilityLabel={t('Denunciar ou bloquear', 'Report or block')}
+                  onPress={() => openUserActions(p, { context: 'pedido de amizade', onBlocked: () => setList(v => v.filter(x => x.id !== p.id)) })}>
+                  <DotsThreeVertical size={20} color={C.light} weight="bold" />
                 </TouchableOpacity>
               </View>
             )}

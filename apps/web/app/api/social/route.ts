@@ -7,6 +7,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { pushIsPt } from '@/lib/expo-notification-service';
 import { firstName, sendDirectPush } from '@/lib/rally';
 import { friendsOf } from '@/lib/friends';
+import { blockedWith, isBlocked } from '@/lib/moderation';
 
 export const dynamic = 'force-dynamic';
 const NOW_WINDOW_MIN = 15;
@@ -41,7 +42,8 @@ export async function GET(req: NextRequest) {
   // Conquistas recentes de quem está no mesmo ranking (nível).
   const level = (me as { charlotte_level: string | null } | null)?.charlotte_level ?? 'Novice';
   const { data: board } = await supabase.from('charlotte_leaderboard_cache').select('user_id, display_name').eq('user_level', level).order('total_xp', { ascending: false }).limit(100);
-  const boardRows = ((board ?? []) as { user_id: string; display_name: string | null }[]).filter(r => r.user_id !== user.id);
+  const blocked = await blockedWith(user.id);
+  const boardRows = ((board ?? []) as { user_id: string; display_name: string | null }[]).filter(r => r.user_id !== user.id && !blocked.has(r.user_id));
   const nameOf = new Map(boardRows.map(r => [r.user_id, r.display_name]));
   let feed: unknown[] = [];
   if (boardRows.length) {
@@ -76,6 +78,7 @@ export async function POST(req: NextRequest) {
   const ach = row as { id: string; user_id: string; achievement_name: string } | null;
   if (!ach) return NextResponse.json({ error: 'not_found' }, { status: 404 });
   if (ach.user_id === user.id) return NextResponse.json({ error: 'own' }, { status: 400 });
+  if (await isBlocked(user.id, ach.user_id)) return NextResponse.json({ ok: true, already: true });
 
   const { error } = await supabase.from('achievement_cheers').insert({ from_id: user.id, to_id: ach.user_id, user_achievement_id: ach.id } as never);
   if (error) return NextResponse.json({ ok: true, already: true });

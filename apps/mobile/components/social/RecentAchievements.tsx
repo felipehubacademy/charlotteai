@@ -3,7 +3,8 @@
 import React, { useCallback, useState } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { useFocusEffect } from 'expo-router';
-import { Confetti, Check } from 'phosphor-react-native';
+import { Confetti, Check, DotsThreeVertical } from 'phosphor-react-native';
+import { openUserActions } from '@/lib/moderation';
 import { AppText } from '@/components/ui/Text';
 import { C, Card, SectionTitle, AchievementIcon } from '@/components/stats/StatsUI';
 import { systemIsPt } from '@/lib/systemLang';
@@ -62,6 +63,10 @@ export function RecentAchievements() {
                 <AppText style={{ fontSize: 13, fontWeight: '800', color: f.cheered ? C.light : C.ink }}>
                   {f.cheered ? (isPt ? 'Enviado' : 'Sent') : (isPt ? 'Parabéns' : 'Congrats')}
                 </AppText>
+              </TouchableOpacity>
+              <TouchableOpacity hitSlop={10} accessibilityLabel={isPt ? 'Denunciar ou bloquear' : 'Report or block'}
+                onPress={() => openUserActions({ id: f.userId, name: f.name }, { context: 'conquistas recentes', onBlocked: () => setFeed(v => v.filter(x => x.userId !== f.userId)) })}>
+                <DotsThreeVertical size={20} color={C.light} weight="bold" />
               </TouchableOpacity>
             </View>
           );

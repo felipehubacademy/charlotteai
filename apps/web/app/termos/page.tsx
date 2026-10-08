@@ -24,7 +24,7 @@ export default function TermosPage() {
             Termos de Uso
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, margin: 0 }}>
-            Última atualização: 17 de abril de 2026
+            Última atualização: 8 de outubro de 2026
           </p>
         </div>
       </div>
@@ -84,6 +84,17 @@ export default function TermosPage() {
             'Reproduzir ou explorar comercialmente o conteúdo sem autorização',
             'Interferir na operação ou segurança do aplicativo',
             'Contornar medidas de controle de acesso ao conteúdo premium',
+            'Usar nome, @ ou foto ofensivos, discriminatórios, sexuais ou que se passem por outra pessoa',
+            'Assediar, intimidar ou enviar pedidos, cutucadas ou convites repetidos a quem não quer interagir',
+          ]} />
+          <p style={{ marginTop: 18, marginBottom: 10, fontWeight: 700 }}>Interação entre usuários</p>
+          <p style={{ marginBottom: 14 }}>No Queizy você pode encontrar outros alunos pelo nome ou @, virar amigo de estudo, cutucar com mensagens prontas, dar parabéns por conquistas e criar competições. Temos tolerância zero com conteúdo ofensivo e com usuários abusivos:</p>
+          <List items={[
+            'Você pode bloquear qualquer usuário a qualquer momento: ele deixa de te encontrar, de te mandar pedidos, cutucadas, parabéns e convites',
+            'Você pode denunciar um usuário no próprio app; analisamos as denúncias em até 24 horas',
+            'Removemos conteúdo impróprio e suspendemos ou excluímos contas que violem estes termos, sem aviso prévio',
+            'As mensagens entre usuários são apenas as prontas do app: não há texto livre entre alunos',
+            'Você pode sair da busca em Perfil → Preferências → Aparecer na busca',
           ]} />
         </Section>
 

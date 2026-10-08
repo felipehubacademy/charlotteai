@@ -2,7 +2,7 @@
 // Ajuda e suporte — canais diretos (email/WhatsApp) + FAQ inline.
 import React, { useState } from 'react';
 import { View, ScrollView, TouchableOpacity, Linking, Platform } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import {
   ArrowLeft, EnvelopeSimple, WhatsappLogo, CaretDown, CaretRight, Question,
@@ -75,6 +75,7 @@ function FaqRow({ item, open, onToggle }: { item: Faq; open: boolean; onToggle: 
 }
 
 export default function SupportScreen() {
+  const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const { profile } = useAuth();
   const isPt = systemIsPt; // tela de suporte = sistema: idioma do device
   const [open, setOpen] = useState<number | null>(null);
@@ -87,7 +88,7 @@ export default function SupportScreen() {
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <ScreenHeader title={isPt ? 'Ajuda e suporte' : 'Help & support'} />
 
-      <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 48 }}>
+      <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 48 + insets.bottom }}>
         {/* Balão da Charlotte, no mesmo estilo da Practice */}
         <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8, marginBottom: 26, marginTop: 6 }}>
           <CharlotteAvatar size="md" />

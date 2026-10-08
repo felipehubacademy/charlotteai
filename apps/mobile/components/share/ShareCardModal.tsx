@@ -5,6 +5,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Modal, TouchableOpacity, Image, ActivityIndicator, Share, Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ViewShot, Sharing, Clipboard, canShareImage } from '@/lib/nativeOptional';
 import { X, ShareNetwork, LinkSimple, Check } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
@@ -33,6 +34,7 @@ export interface ShareCardContent {
 }
 
 export function ShareCardModal({ content, onClose }: { content: ShareCardContent | null; onClose: () => void }) {
+  const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const { profile } = useAuth();
   const isPt = systemIsPt;
   const cardRef = useRef<View>(null);
@@ -88,7 +90,7 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
 
   return (
     <Modal visible transparent animationType="fade" onRequestClose={onClose}>
-      <View style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.88)', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+      <View style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.88)', alignItems: 'center', justifyContent: 'center', padding: 20, paddingTop: 20 + insets.top, paddingBottom: 20 + insets.bottom }}>
         <TouchableOpacity onPress={onClose} style={{ position: 'absolute', top: 56, right: 20, padding: 8 }} hitSlop={12}>
           <X size={26} color="#FFFFFF" weight="bold" />
         </TouchableOpacity>

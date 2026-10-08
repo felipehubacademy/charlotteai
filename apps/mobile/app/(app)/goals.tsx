@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { View, ScrollView, ActivityIndicator } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { CalendarBlank } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
@@ -17,6 +18,7 @@ import { UserLevel } from '@/lib/levelConfig';
 const isPt = systemIsPt;
 
 export default function GoalsScreen() {
+  const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const { profile } = useAuth();
   const level  = (profile?.charlotte_level ?? 'Novice') as UserLevel;
   const goals  = useGoalsData(profile?.id ?? '', level);
@@ -36,7 +38,7 @@ export default function GoalsScreen() {
           <ActivityIndicator size="large" color={C.ink} />
         </View>
       ) : (
-        <ScrollView contentContainerStyle={{ paddingTop: 16, paddingBottom: 48 }} showsVerticalScrollIndicator={false}>
+        <ScrollView contentContainerStyle={{ paddingTop: 16, paddingBottom: 48 + insets.bottom }} showsVerticalScrollIndicator={false}>
 
           {/* ── Meta de hoje ──────────────────────────────────────────────── */}
           <View style={{ marginHorizontal: 16, backgroundColor: C.ink, borderRadius: 24, padding: 20 }}>

@@ -12,6 +12,7 @@ import {
   StyleSheet,
   Alert,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
 import * as ImageManipulator from 'expo-image-manipulator';
 import { readAsStringAsync } from 'expo-file-system/legacy';
@@ -56,6 +57,7 @@ export default function AvatarCropModal({
   currentAvatarUrl,
   onSaved,
 }: AvatarCropModalProps) {
+  const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const [imageUri, setImageUri]       = useState<string | null>(null);
   const [imageSize, setImageSize]     = useState<{ width: number; height: number } | null>(null);
   const [uploading, setUploading]     = useState(false);
@@ -288,7 +290,7 @@ export default function AvatarCropModal({
       statusBarTranslucent
       onRequestClose={handleClose}
     >
-      <View style={styles.container}>
+      <View style={[styles.container, { paddingBottom: insets.bottom }]}>
         {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity onPress={handleClose} style={styles.headerBtn} disabled={uploading}>

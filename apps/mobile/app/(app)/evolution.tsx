@@ -3,6 +3,7 @@
 
 import React, { useCallback, useState } from 'react';
 import { View, ScrollView, TouchableOpacity, ActivityIndicator, RefreshControl } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import Constants from 'expo-constants';
 import { ArrowUp, ArrowDown, CheckCircle, Target, Microphone, PencilLine } from 'phosphor-react-native';
@@ -63,6 +64,7 @@ function TrainButton({ label, onPress }: { label: string; onPress: () => void })
 }
 
 export default function EvolutionScreen() {
+  const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const isPt = systemIsPt;
   const t = (pt: string, en: string) => (isPt ? pt : en);
   const [data, setData] = useState<Evolution | null>(null);
@@ -105,7 +107,7 @@ export default function EvolutionScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <ScreenHeader title={t('Minha evolução', 'My progress')} />
-      <ScrollView contentContainerStyle={{ paddingTop: 16, paddingBottom: 48 }} refreshControl={<RefreshControl refreshing={false} onRefresh={load} />}>
+      <ScrollView contentContainerStyle={{ paddingTop: 16, paddingBottom: 48 + insets.bottom }} refreshControl={<RefreshControl refreshing={false} onRefresh={load} />}>
         {loading && !data && <ActivityIndicator color={C.ink} style={{ marginTop: 40 }} />}
         {error && !data && (
           <AppText style={{ textAlign: 'center', color: C.mid, marginTop: 40 }}>{t('Não foi possível carregar agora.', "Couldn't load right now.")}</AppText>

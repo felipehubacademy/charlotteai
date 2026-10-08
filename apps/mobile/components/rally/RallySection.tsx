@@ -3,8 +3,10 @@
 // e a criação de um rally (disputa + duração + quem chamar da dupla, ou link).
 import React, { useCallback, useEffect, useState } from 'react';
 import { View, TouchableOpacity, Modal, Pressable, ActivityIndicator, Share, Platform, Image } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from 'expo-router';
-import { Flag, Crown, Lightning, Target, Barbell, Check, ShareNetwork, ArrowsClockwise } from 'phosphor-react-native';
+import { Flag, Crown, Lightning, Target, Barbell, Check, ShareNetwork, ArrowsClockwise, DotsThreeVertical } from 'phosphor-react-native';
+import { openUserActions } from '@/lib/moderation';
 import { AppText } from '@/components/ui/Text';
 import { C, SectionTitle, Card } from '@/components/stats/StatsUI';
 import { systemIsPt } from '@/lib/systemLang';
@@ -37,6 +39,7 @@ function Mini({ uri, name }: { uri: string | null; name: string | null }) {
 }
 
 export function RallySection({ buddies }: { buddies: Buddy[] }) {
+  const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const isPt = systemIsPt;
   const t = (pt: string, en: string) => (isPt ? pt : en);
   const [list, setList] = useState<RallyList | null>(null);
@@ -112,6 +115,12 @@ export function RallySection({ buddies }: { buddies: Buddy[] }) {
             </AppText>
             {lead && <Crown size={16} color="#F59E0B" weight="fill" />}
             <AppText style={{ fontSize: 14, fontWeight: '800', color: C.ink }}>{formatRallyScore(r.metric, s.score, isPt)}</AppText>
+            {!s.isMe && (
+              <TouchableOpacity hitSlop={10} accessibilityLabel={t('Denunciar ou bloquear', 'Report or block')}
+                onPress={() => openUserActions({ id: s.userId, name: s.name }, { context: `competição ${r.code}`, onBlocked: load })}>
+                <DotsThreeVertical size={18} color={C.light} weight="bold" />
+              </TouchableOpacity>
+            )}
           </View>
         );
       })}
@@ -209,7 +218,7 @@ export function RallySection({ buddies }: { buddies: Buddy[] }) {
       {/* Criar rally */}
       <Modal visible={creating} transparent animationType="fade" onRequestClose={() => setCreating(false)}>
         <Pressable onPress={() => setCreating(false)} style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.5)', justifyContent: 'flex-end' }}>
-          <Pressable style={{ backgroundColor: C.card, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 20, paddingBottom: 36, gap: 10 }}>
+          <Pressable style={{ backgroundColor: C.card, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 20, paddingBottom: 36 + insets.bottom, gap: 10 }}>
             <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.ink }}>{t('Nova competição', 'New challenge')}</AppText>
 
             <AppText style={{ fontSize: 12, fontWeight: '800', color: C.light, letterSpacing: 0.8, textTransform: 'uppercase', marginTop: 4 }}>{t('Disputa', 'Challenge')}</AppText>

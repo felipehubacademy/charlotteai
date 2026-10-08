@@ -4,8 +4,10 @@
 
 import React, { useCallback, useState } from 'react';
 import { View, ScrollView, TouchableOpacity, TextInput, Image, ActivityIndicator, Modal, Pressable, RefreshControl } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from 'expo-router';
-import { Users, HandWaving, Crown, Lightning, Gift, PencilSimple } from 'phosphor-react-native';
+import { Users, HandWaving, Crown, Lightning, Gift, PencilSimple, DotsThreeVertical } from 'phosphor-react-native';
+import { openUserActions } from '@/lib/moderation';
 import { AppText } from '@/components/ui/Text';
 import { C, ScreenHeader, SectionTitle, Card } from '@/components/stats/StatsUI';
 import { ShareCardModal, ShareCardContent } from '@/components/share/ShareCardModal';
@@ -50,6 +52,7 @@ function Avatar({ uri, name, size = 44 }: { uri: string | null; name: string | n
 }
 
 export default function StudyTogetherScreen() {
+  const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const isPt = systemIsPt;
   const t = (pt: string, en: string) => (isPt ? pt : en);
   const [info, setInfo] = useState<ReferralInfo | null>(null);
@@ -108,7 +111,7 @@ export default function StudyTogetherScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <ScreenHeader title={t('Estudar junto', 'Study together')} />
-      <ScrollView contentContainerStyle={{ paddingBottom: 48 }} keyboardShouldPersistTaps="handled" refreshControl={<RefreshControl refreshing={false} onRefresh={load} />}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 48 + insets.bottom }} keyboardShouldPersistTaps="handled" refreshControl={<RefreshControl refreshing={false} onRefresh={load} />}>
 
         {/* Convite */}
         <View style={{ margin: 16, backgroundColor: C.ink, borderRadius: 24, padding: 22 }}>
@@ -178,6 +181,10 @@ export default function StudyTogetherScreen() {
                     <AppText style={{ fontSize: 13, fontWeight: '800', color: b.nudgedToday ? C.light : C.ink }}>
                       {b.nudgedToday ? t('Cutucado', 'Nudged') : t('Cutucar', 'Nudge')}
                     </AppText>
+                  </TouchableOpacity>
+                  <TouchableOpacity hitSlop={10} accessibilityLabel={t('Denunciar ou bloquear', 'Report or block')}
+                    onPress={() => openUserActions({ id: b.id, name: b.name }, { context: 'amigos de estudo', onBlocked: load, isFriend: true })}>
+                    <DotsThreeVertical size={20} color={C.light} weight="bold" />
                   </TouchableOpacity>
                 </View>
                 {/* XP da semana lado a lado */}
@@ -252,7 +259,7 @@ export default function StudyTogetherScreen() {
       {/* Escolha da cutucada */}
       <Modal visible={!!nudgeFor} transparent animationType="fade" onRequestClose={() => setNudgeFor(null)}>
         <Pressable onPress={() => setNudgeFor(null)} style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.5)', justifyContent: 'flex-end' }}>
-          <Pressable style={{ backgroundColor: C.card, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 20, paddingBottom: 36, gap: 10 }}>
+          <Pressable style={{ backgroundColor: C.card, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 20, paddingBottom: 36 + insets.bottom, gap: 10 }}>
             <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.ink, marginBottom: 6 }}>
               {t(`Cutucar ${nudgeFor?.name ?? ''}`, `Nudge ${nudgeFor?.name ?? ''}`)}
             </AppText>
@@ -269,7 +276,7 @@ export default function StudyTogetherScreen() {
       {/* Trocar o @ */}
       <Modal visible={editingHandle} transparent animationType="fade" onRequestClose={() => setEditingHandle(false)}>
         <Pressable onPress={() => setEditingHandle(false)} style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.5)', justifyContent: 'flex-end' }}>
-          <Pressable style={{ backgroundColor: C.card, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 20, paddingBottom: 36, gap: 12 }}>
+          <Pressable style={{ backgroundColor: C.card, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 20, paddingBottom: 36 + insets.bottom, gap: 12 }}>
             <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.ink }}>{t('Seu @', 'Your @')}</AppText>
             <AppText style={{ fontSize: 13.5, color: C.mid }}>{t('É assim que amigos te acham na busca. Precisa ser único.', "That's how friends find you in search. It has to be unique.")}</AppText>
             <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: C.bg, borderRadius: 12, paddingHorizontal: 14 }}>

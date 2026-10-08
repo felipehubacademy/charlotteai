@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { router } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   Lock, LockKey, Eye, EyeSlash, CheckCircle, XCircle,
   ShieldCheck,
@@ -39,6 +39,7 @@ const cardShadow = Platform.select({
 }) as object;
 
 export default function ChangePasswordScreen() {
+  const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const { profile } = useAuth();
   const isPt = systemIsPt; // tela de conta = sistema: idioma do device
 
@@ -106,7 +107,7 @@ export default function ChangePasswordScreen() {
         keyboardVerticalOffset={Platform.OS === 'ios' ? 12 : 0}
       >
         <ScrollView
-          contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 28, paddingBottom: 40 }}
+          contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 28, paddingBottom: 40 + insets.bottom }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
           alwaysBounceVertical={false}

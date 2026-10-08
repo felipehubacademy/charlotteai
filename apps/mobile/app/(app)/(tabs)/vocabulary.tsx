@@ -9,7 +9,7 @@ import {
   View, ScrollView, TouchableOpacity, TextInput,
   ActivityIndicator, Alert, Platform, Modal, Pressable, Animated, Easing,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import {
   MagnifyingGlass, Trash, Plus, SpeakerHigh,
@@ -88,6 +88,7 @@ function reviewLabel(nextReview: string | null, isPt: boolean): { label: string;
 }
 
 export default function VocabularyTab() {
+  const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const { profile, session } = useAuth();
   const level  = profile?.charlotte_level ?? 'Inter';
   const isPt   = systemIsPt; // chrome do vocabulário: idioma do device
@@ -547,7 +548,7 @@ export default function VocabularyTab() {
             <Animated.View style={{ transform: [{ translateY: sheetY }] }}>
             <Pressable onPress={(e) => e.stopPropagation()} style={{
               backgroundColor: C.card, borderTopLeftRadius: 26, borderTopRightRadius: 26,
-              paddingHorizontal: 22, paddingTop: 10, paddingBottom: 34,
+              paddingHorizontal: 22, paddingTop: 10, paddingBottom: 34 + insets.bottom,
             }}>
               <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 18 }} />
 

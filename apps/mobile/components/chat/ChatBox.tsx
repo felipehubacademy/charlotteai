@@ -10,6 +10,7 @@ import {
   Modal,
   Clipboard,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Defs, Pattern, Circle, Rect } from 'react-native-svg';
 import {
   Play, Pause, SpeakerHigh,
@@ -155,6 +156,7 @@ const MessageBubble: React.FC<{
   onTogglePlay: () => void;
   onExplainMore?: (originalCorrection: string) => void;
 }> = ({ message, userLevel, mode, isPlaying, onTogglePlay, onExplainMore }) => {
+  const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const [showTranslation, setShowTranslation] = React.useState(false);
   const [showTranscription, setShowTranscription] = React.useState(false);
   const [translation, setTranslation] = React.useState('');
@@ -443,7 +445,7 @@ const MessageBubble: React.FC<{
             style={{
               backgroundColor: '#FFFFFF',
               borderTopLeftRadius: 24, borderTopRightRadius: 24,
-              paddingHorizontal: 8, paddingTop: 14, paddingBottom: 24,
+              paddingHorizontal: 8, paddingTop: 14, paddingBottom: 24 + insets.bottom,
             }}
           >
             <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 14 }} />

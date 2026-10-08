@@ -9,6 +9,7 @@ import { randomBytes } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { pushIsPt } from '@/lib/expo-notification-service';
 import { friendsOf } from '@/lib/friends';
+import { isBlocked } from '@/lib/moderation';
 import {
   RALLY_METRICS, RALLY_DURATIONS, RALLY_MAX_PARTICIPANTS, RALLY_MAX_ACTIVE_CREATED,
   computeStandings, rallyLabel, firstName, sendDirectPush, type RallyRow, type RallyMetric,
@@ -137,6 +138,7 @@ export async function POST(req: NextRequest) {
 
   if (body.action === 'join') {
     if (rally.finalized || new Date(rally.ends_at).getTime() <= Date.now()) return NextResponse.json({ error: 'ended' }, { status: 400 });
+    if (await isBlocked(user.id, rally.creator_id)) return NextResponse.json({ error: 'not_found' }, { status: 404 });
     const { count } = await supabase.from('rally_participants').select('user_id', { count: 'exact', head: true }).eq('rally_id', rally.id);
     if ((count ?? 0) >= RALLY_MAX_PARTICIPANTS) return NextResponse.json({ error: 'full' }, { status: 400 });
     const { error } = await supabase.from('rally_participants').insert({ rally_id: rally.id, user_id: user.id } as never);

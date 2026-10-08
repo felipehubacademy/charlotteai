@@ -4,6 +4,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { View, TouchableOpacity, ScrollView, StatusBar, ActivityIndicator } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useLocalSearchParams, router } from 'expo-router';
 import { ShareNetwork, Fire, Trophy, BookOpenText, Lightning, Star, UsersThree, CaretRight, ChartLineUp } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
@@ -34,6 +35,7 @@ interface EarnedRow {
 }
 
 export default function StatsScreen() {
+  const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const openShare = useShareCard();
   const params = useLocalSearchParams<{ totalXP: string; userId: string; userLevel: string; userName: string }>();
   const { profile } = useAuth();
@@ -159,7 +161,7 @@ export default function StatsScreen() {
         }
       />
 
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingTop: 16, paddingBottom: 48 }} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingTop: 16, paddingBottom: 48 + insets.bottom }} showsVerticalScrollIndicator={false}>
 
         {/* ── Resumo ─────────────────────────────────────────────────────── */}
         <View style={{ marginHorizontal: 16, backgroundColor: C.ink, borderRadius: 24, padding: 20 }}>

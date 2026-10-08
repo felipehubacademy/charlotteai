@@ -7,6 +7,7 @@ import { AchievementsProvider } from '@/components/achievements/AchievementsProv
 import { PaywallProvider } from '@/lib/paywallContext';
 import { AppErrorBoundary } from '@/components/AppErrorBoundary';
 import { InviteClaimer } from '@/components/share/InviteClaimer';
+import { ActionSheetHost } from '@/components/ui/ActionSheet';
 import { ShareCardProvider } from '@/components/share/ShareCardProvider';
 
 export default function AppLayout() {
@@ -26,6 +27,7 @@ export default function AppLayout() {
       <AchievementsProvider>
       <PaywallModal />
       <InviteClaimer />
+      <ActionSheetHost />
       <Stack screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
         <Stack.Screen name="first-access" options={{ animation: 'none' }} />
         <Stack.Screen name="index" options={{ animation: 'none' }} />

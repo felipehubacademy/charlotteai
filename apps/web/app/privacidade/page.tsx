@@ -24,7 +24,7 @@ export default function PrivacidadePage() {
             Política de Privacidade
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, margin: 0 }}>
-            Última atualização: 17 de abril de 2026
+            Última atualização: 8 de outubro de 2026
           </p>
         </div>
       </div>
@@ -47,6 +47,7 @@ export default function PrivacidadePage() {
         <Section title="2. Dados que coletamos">
           <DataTable rows={[
             ['Dados de cadastro', 'Nome, e-mail e senha (armazenada com hash seguro).'],
+            ['Perfil público e amigos', 'Seu @, foto de perfil, nível, amigos de estudo, pedidos de amizade, cutucadas, parabéns e competições de que você participa.'],
             ['Dados de uso', 'Histórico de conversas com a IA, progresso nas lições, streak diário, nível de inglês e preferências de aprendizado.'],
             ['Dados de áudio', 'Gravações de voz durante exercícios de pronúncia e sessões de conversação. Enviados ao Microsoft Azure Speech Services para análise em tempo real e descartados imediatamente após o processamento — não são armazenados permanentemente.'],
 ['Dados de dispositivo', 'Token de notificações push, sistema operacional e versão do app (para lembretes de estudo).'],
@@ -76,6 +77,7 @@ export default function PrivacidadePage() {
         </Section>
 
         <Section title="5. Compartilhamento de dados">
+          <p style={{ marginBottom: 16 }}><b>O que outros alunos veem:</b> seu nome, seu @, sua foto de perfil e seu nível aparecem para outros alunos no ranking, na busca de amigos, nas conquistas recentes e nas competições. Seu e-mail nunca é mostrado. Você pode sair da busca em Perfil → Preferências → Aparecer na busca, bloquear qualquer usuário e denunciar abusos no app.</p>
           <p style={{ marginBottom: 16 }}>Não vendemos seus dados. Compartilhamos somente com os parceiros abaixo, contratualmente obrigados a protegê-los:</p>
           <DataTable rows={[
             ['Supabase', 'Banco de dados e autenticação.'],

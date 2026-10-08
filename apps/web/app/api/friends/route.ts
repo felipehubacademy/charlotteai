@@ -7,12 +7,18 @@
 //   POST { action: 'searchable', value }  aparecer ou não na busca
 //   POST { action: 'username', value }    trocar o @ (único)
 //   GET ?me=1                              meu @ e se apareço na busca
+//   GET ?blocked=1                         quem eu bloqueei
+//   POST { action: 'unfriend', id }                 deixar de estudar junto (sem bloquear)
+//   POST { action: 'block' | 'unblock', id }        bloquear / desbloquear
+//   POST { action: 'report', id, reason, context }  denunciar (e-mail ao suporte)
 // Na busca aparecem o nome completo, o @ (que diferencia homônimos), a foto e o nível.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { pushIsPt } from '@/lib/expo-notification-service';
 import { friendsOf, orderedPair } from '@/lib/friends';
 import { sendDirectPush } from '@/lib/rally';
+import { blockedWith, isBlocked, isOffensiveHandle } from '@/lib/moderation';
+import { sendEmail } from '@/lib/microsoft-graph-email-service';
 
 export const dynamic = 'force-dynamic';
 const MAX_REQUESTS_PER_DAY = 30;
@@ -37,6 +43,14 @@ export async function GET(req: NextRequest) {
   const supabase = getSupabaseAdmin();
   const q = (req.nextUrl.searchParams.get('q') ?? '').trim();
 
+  if (req.nextUrl.searchParams.get('blocked')) {
+    const { data } = await supabase.from('user_blocks').select('blocked_id').eq('blocker_id', user.id);
+    const ids = ((data ?? []) as { blocked_id: string }[]).map(r => r.blocked_id);
+    if (!ids.length) return NextResponse.json({ blocked: [] });
+    const { data: us } = await supabase.from('charlotte_users').select('id, name, username, charlotte_level, avatar_url').in('id', ids);
+    return NextResponse.json({ blocked: ((us ?? []) as U[]).map(u => ({ id: u.id, name: displayName(u.name), username: u.username, level: u.charlotte_level, avatarUrl: u.avatar_url })) });
+  }
+
   if (req.nextUrl.searchParams.get('me')) {
     const { data } = await supabase.from('charlotte_users').select('username, searchable').eq('id', user.id).maybeSingle();
     return NextResponse.json(data ?? {});
@@ -59,7 +73,8 @@ export async function GET(req: NextRequest) {
     const handle = clean(q.slice(1)).replace(/[^a-z0-9._]/g, '');
     const { data } = await supabase.from('charlotte_users').select('id, name, username, charlotte_level, avatar_url')
       .eq('searchable', true).neq('id', user.id).ilike('username', `${handle}%`).order('username').limit(20);
-    return NextResponse.json({ results: await withRelation(user.id, (data ?? []) as U[]) });
+    const blocked = await blockedWith(user.id);
+    return NextResponse.json({ results: await withRelation(user.id, ((data ?? []) as U[]).filter(u => !blocked.has(u.id))) });
   }
   // Cada palavra precisa aparecer no nome (sem diferenciar acento e maiúscula).
   const words = clean(q).split(/\s+/).filter(Boolean).slice(0, 3);
@@ -71,7 +86,8 @@ export async function GET(req: NextRequest) {
     .eq('searchable', true).neq('id', user.id).ilike('name', `%${words[0].slice(0, 3)}%`).limit(400) : { data: [] };
   const pool = new Map<string, U>();
   for (const u of [...((rough ?? []) as U[]), ...((wide ?? []) as U[])]) pool.set(u.id, u);
-  const hits = [...pool.values()].filter(u => { const n = clean(`${u.name ?? ''} ${u.username ?? ''}`); return words.every(w => n.includes(w)); }).slice(0, 20);
+  const blocked = await blockedWith(user.id);
+  const hits = [...pool.values()].filter(u => !blocked.has(u.id)).filter(u => { const n = clean(`${u.name ?? ''} ${u.username ?? ''}`); return words.every(w => n.includes(w)); }).slice(0, 20);
   return NextResponse.json({ results: await withRelation(user.id, hits) });
 }
 
@@ -94,6 +110,7 @@ async function withRelation(userId: string, hits: U[]) {
 async function becomeFriends(a: string, b: string) {
   const supabase = getSupabaseAdmin();
   const [x, y] = orderedPair(a, b);
+  await supabase.from('study_unfriended').delete().eq('user_a', x).eq('user_b', y);
   await supabase.from('study_friends').upsert({ user_a: x, user_b: y } as never, { onConflict: 'user_a,user_b', ignoreDuplicates: true });
   await supabase.from('friend_requests').update({ status: 'accepted', responded_at: new Date().toISOString() } as never)
     .or(`and(from_id.eq.${a},to_id.eq.${b}),and(from_id.eq.${b},to_id.eq.${a})`);
@@ -123,6 +140,7 @@ export async function POST(req: NextRequest) {
   if (body.action === 'username') {
     const value = clean(String(body.value ?? '')).replace(/^@/, '').trim();
     if (!USERNAME_RE.test(value)) return NextResponse.json({ error: 'invalid_username' }, { status: 400 });
+    if (isOffensiveHandle(value)) return NextResponse.json({ error: 'offensive_username' }, { status: 400 });
     const { data: taken } = await supabase.from('charlotte_users').select('id').eq('username', value).neq('id', user.id).maybeSingle();
     if (taken) return NextResponse.json({ error: 'username_taken' }, { status: 409 });
     const { error } = await supabase.from('charlotte_users').update({ username: value } as never).eq('id', user.id);
@@ -130,9 +148,58 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, username: value });
   }
 
+  if (body.action === 'unfriend') {
+    const id = String(body.id ?? '');
+    if (!id || id === user.id) return NextResponse.json({ error: 'invalid' }, { status: 400 });
+    const [x, y] = orderedPair(user.id, id);
+    await Promise.all([
+      supabase.from('study_friends').delete().eq('user_a', x).eq('user_b', y),
+      supabase.from('study_unfriended').upsert({ user_a: x, user_b: y } as never, { onConflict: 'user_a,user_b', ignoreDuplicates: true }),
+      supabase.from('friend_requests').delete().or(`and(from_id.eq.${user.id},to_id.eq.${id}),and(from_id.eq.${id},to_id.eq.${user.id})`),
+    ]);
+    return NextResponse.json({ ok: true });
+  }
+
+  if (body.action === 'block' || body.action === 'unblock') {
+    const id = String(body.id ?? '');
+    if (!id || id === user.id) return NextResponse.json({ error: 'invalid' }, { status: 400 });
+    if (body.action === 'unblock') {
+      await supabase.from('user_blocks').delete().eq('blocker_id', user.id).eq('blocked_id', id);
+      return NextResponse.json({ ok: true });
+    }
+    const [x, y] = orderedPair(user.id, id);
+    await Promise.all([
+      supabase.from('user_blocks').upsert({ blocker_id: user.id, blocked_id: id } as never, { onConflict: 'blocker_id,blocked_id', ignoreDuplicates: true }),
+      supabase.from('study_friends').delete().eq('user_a', x).eq('user_b', y),
+      supabase.from('friend_requests').delete().or(`and(from_id.eq.${user.id},to_id.eq.${id}),and(from_id.eq.${id},to_id.eq.${user.id})`),
+      supabase.from('rally_invites').delete().or(`and(user_id.eq.${user.id},invited_by.eq.${id}),and(user_id.eq.${id},invited_by.eq.${user.id})`),
+    ]);
+    return NextResponse.json({ ok: true });
+  }
+
+  if (body.action === 'report') {
+    const id = String(body.id ?? '');
+    const reason = String(body.reason ?? 'other').slice(0, 40);
+    const context = String(body.context ?? '').slice(0, 200);
+    if (!id || id === user.id) return NextResponse.json({ error: 'invalid' }, { status: 400 });
+    await supabase.from('user_reports').insert({ reporter_id: user.id, reported_id: id, reason, context } as never);
+    const { data: who } = await supabase.from('charlotte_users').select('name, username, email').in('id', [user.id, id]);
+    const rows = (who ?? []) as { name: string | null; username: string | null; email: string }[];
+    const fmt = (r?: { name: string | null; username: string | null; email: string }) => r ? `${r.name ?? ''} (@${r.username ?? '?'}) <${r.email}>` : '?';
+    const reporter = rows.find(r => r.email && r.email === (user.email ?? ''));
+    const reported = rows.find(r => r !== reporter);
+    await sendEmail({
+      to: 'suporte@queizy.com',
+      subject: `Denúncia de usuário: @${reported?.username ?? id}`,
+      html: `<p><b>Denúncia no app (analisar em até 24h)</b></p><p>Denunciado: ${fmt(reported)}<br/>Id: ${id}</p><p>Quem denunciou: ${fmt(reporter)}</p><p>Motivo: ${reason}<br/>Contexto: ${context || '—'}</p>`,
+    }).catch(() => false);
+    return NextResponse.json({ ok: true });
+  }
+
   if (body.action === 'request') {
     const to = String(body.to ?? '');
     if (!to || to === user.id) return NextResponse.json({ error: 'invalid' }, { status: 400 });
+    if (await isBlocked(user.id, to)) return NextResponse.json({ error: 'not_found' }, { status: 404 });
     if ((await friendsOf(user.id)).has(to)) return NextResponse.json({ ok: true, relation: 'friend' });
     // Pedido no sentido contrário já existe: vira amizade na hora.
     const { data: reverse } = await supabase.from('friend_requests').select('status').eq('from_id', to).eq('to_id', user.id).eq('status', 'pending').maybeSingle();

@@ -10,6 +10,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   Modal, Pressable, View, TouchableOpacity, Dimensions, Animated, Easing,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Compass } from 'phosphor-react-native';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { AppText } from '@/components/ui/Text';
@@ -32,6 +33,7 @@ interface Props {
 }
 
 export function PlacementPromptSheet({ visible, isPt, onTakeTest, onStartFromZero }: Props) {
+  const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const [mounted, setMounted] = useState(false);
   const backdropOpacity = useRef(new Animated.Value(0)).current;
   const sheetTranslateY = useRef(new Animated.Value(SCREEN_H)).current;
@@ -82,7 +84,7 @@ export function PlacementPromptSheet({ visible, isPt, onTakeTest, onStartFromZer
             style={{
               backgroundColor: '#FFFFFF',
               borderTopLeftRadius: 24, borderTopRightRadius: 24,
-              paddingHorizontal: 24, paddingTop: 16, paddingBottom: 24,
+              paddingHorizontal: 24, paddingTop: 16, paddingBottom: 24 + insets.bottom,
             }}
           >
             <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 18 }} />

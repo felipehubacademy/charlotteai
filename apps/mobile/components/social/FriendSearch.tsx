@@ -3,7 +3,8 @@
 // enviado, Aceitar ou Amigo de estudo. Usado no ranking e em Estudar junto.
 import React, { useEffect, useRef, useState } from 'react';
 import { View, TextInput, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
-import { MagnifyingGlass, UserPlus, Check, Clock, X } from 'phosphor-react-native';
+import { MagnifyingGlass, UserPlus, Check, Clock, X, DotsThreeVertical } from 'phosphor-react-native';
+import { openUserActions } from '@/lib/moderation';
 import { router } from 'expo-router';
 import { AppText } from '@/components/ui/Text';
 import { C, Card } from '@/components/stats/StatsUI';
@@ -93,6 +94,10 @@ export function FriendSearch({ onChange, autoFocus }: { onChange?: () => void; a
                     : p.relation === 'pending_out' ? <Clock size={14} color={C.light} weight="bold" />
                     : <UserPlus size={14} color={p.relation === 'pending_in' ? C.volt : C.ink} weight="bold" />}
                   <AppText style={{ fontSize: 13, fontWeight: '800', color: done ? C.light : p.relation === 'pending_in' ? C.volt : C.ink }}>{label}</AppText>
+                </TouchableOpacity>
+                <TouchableOpacity hitSlop={10} accessibilityLabel={t('Denunciar ou bloquear', 'Report or block')}
+                  onPress={() => openUserActions(p, { context: 'busca', isFriend: p.relation === 'friend', onBlocked: () => { setResults(v => v?.filter(x => x.id !== p.id) ?? v); onChange?.(); } })}>
+                  <DotsThreeVertical size={20} color={C.light} weight="bold" />
                 </TouchableOpacity>
               </View>
             );
