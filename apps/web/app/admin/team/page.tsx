@@ -52,7 +52,7 @@ export default function TeamPage() {
   return (
     <div className="adm-page">
       <div className="adm-topbar">
-        <div className="adm-topbar-title">Equipe <span className="adm-topbar-sub">· quem acessa a gestão</span></div>
+        <div className="adm-topbar-title">Equipe</div>
         <button className="adm-btn-sm primary" onClick={() => setAdding(true)}><Plus size={13} /> Adicionar pessoa</button>
       </div>
       <div className="adm-body">
@@ -63,10 +63,7 @@ export default function TeamPage() {
             <div className="adm-panel-body" style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
               <div style={{ flex: 1, minWidth: 260 }}>
                 <div style={{ fontWeight: 700, color: 'var(--t1)', marginBottom: 4 }}>Conta criada para {created.email}</div>
-                <div style={{ fontSize: 12.5, color: 'var(--t2)', lineHeight: 1.5 }}>
-                  Envie a senha temporária por um canal privado. Ela aparece só agora. A pessoa entra em /admin com o e-mail e essa senha,
-                  e pode trocá-la pelo app em &ldquo;Esqueci minha senha&rdquo;.
-                </div>
+                <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>Senha temporária. Aparece só agora.</div>
               </div>
               <code className="num" style={{ background: 'var(--s2)', padding: '8px 12px', borderRadius: 8, fontSize: 15, fontWeight: 700 }}>{created.tempPassword}</code>
               <button className="adm-btn-sm ghost" onClick={() => { navigator.clipboard.writeText(created.tempPassword); setCopied(true); setTimeout(() => setCopied(false), 1500); }}>
@@ -78,7 +75,7 @@ export default function TeamPage() {
         )}
 
         <div className="adm-grid">
-          <div className="adm-panel col-8">
+          <div className="adm-panel col-12">
             <div className="adm-panel-hdr"><div className="adm-panel-title">Membros</div><div className="adm-panel-sub">{members.filter(m => m.active).length} ativos</div></div>
             <table className="adm-table">
               <thead><tr><th>Pessoa</th><th>Nível de acesso</th><th>Situação</th><th>Desde</th></tr></thead>
@@ -108,17 +105,6 @@ export default function TeamPage() {
                 })}
               </tbody>
             </table>
-          </div>
-          <div className="adm-panel col-4">
-            <div className="adm-panel-hdr"><div className="adm-panel-title">Níveis de acesso</div></div>
-            <div className="adm-panel-body" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {ROLES.map(r => (
-                <div key={r.id}>
-                  <div style={{ fontWeight: 700, fontSize: 13, color: 'var(--t1)' }}>{r.label}</div>
-                  <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>{r.desc}</div>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="adm-panel col-12">
@@ -164,11 +150,8 @@ export default function TeamPage() {
               <div className="adm-field">
                 <label>Nível de acesso</label>
                 <select value={form.role} onChange={e => setForm(f => ({ ...f, role: e.target.value as Role }))}>
-                  {ROLES.map(r => <option key={r.id} value={r.id}>{r.label} — {r.desc}</option>)}
+                  {ROLES.map(r => <option key={r.id} value={r.id}>{r.label}</option>)}
                 </select>
-              </div>
-              <div style={{ fontSize: 12.5, color: 'var(--t2)', lineHeight: 1.5 }}>
-                Se a pessoa já usa o app, ela entra com a mesma conta. Se não, criamos uma conta com senha temporária para você repassar.
               </div>
             </div>
             <div className="adm-modal-footer">

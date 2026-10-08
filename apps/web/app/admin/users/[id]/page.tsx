@@ -89,7 +89,7 @@ export default function UserCrmPage() {
     <div className="adm-page">
       <div className="adm-topbar">
         <Link href="/admin" className="adm-btn-sm ghost"><ArrowLeft size={13} /> Usuários</Link>
-        <div className="adm-topbar-title">{u.name ?? u.email} <span className="adm-topbar-sub">· ficha do aluno</span></div>
+        <div className="adm-topbar-title">{u.name ?? u.email} </div>
         <span className={`badge ${riskClass(data.risk.label)}`}>Risco {data.risk.label.toLowerCase()}{data.risk.label !== 'Perdido' ? ` · ${data.risk.score}` : ''}</span>
       </div>
 
@@ -176,7 +176,7 @@ export default function UserCrmPage() {
             <div className="adm-panel-hdr"><div className="adm-panel-title">Anotações da equipe</div><div className="adm-panel-sub">{data.notes.length}</div></div>
             <div className="adm-panel-body" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {canWrite && <div style={{ display: 'flex', gap: 8 }}>
-                <textarea className="adm-input-sm" style={{ flex: 1, minHeight: 60, resize: 'vertical', fontFamily: 'inherit' }} placeholder="Ex.: ligou pedindo nota fiscal; prometemos retorno até sexta." value={note} onChange={e => setNote(e.target.value)} />
+                <textarea className="adm-input-sm" style={{ flex: 1, minHeight: 60, resize: 'vertical', fontFamily: 'inherit' }} placeholder="Nova anotação" value={note} onChange={e => setNote(e.target.value)} />
                 <button className="adm-btn-sm primary" disabled={saving || !note.trim()} onClick={addNote} style={{ alignSelf: 'flex-end' }}><Send size={13} /> Salvar</button>
               </div>}
               {data.notes.length === 0 && <div className="adm-empty-sub">Nenhuma anotação ainda.</div>}
@@ -195,7 +195,7 @@ export default function UserCrmPage() {
             <div className="adm-panel-body" style={{ display: 'flex', flexDirection: 'column', gap: 16, fontSize: 13 }}>
               <div>
                 <div style={{ fontWeight: 700, marginBottom: 6 }}>Pagamentos</div>
-                {data.payments.length === 0 ? <div className="adm-empty-sub">Nenhum pagamento registrado pelo RevenueCat.</div> : data.payments.map((p, i) => (
+                {data.payments.length === 0 ? <div className="adm-empty-sub">Nenhum pagamento.</div> : data.payments.map((p, i) => (
                   <div key={i} style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--t2)', padding: '3px 0' }}>
                     <span>{fmt(p.purchased_at)} · {p.event_type === 'REFUND' ? 'Reembolso' : p.event_type === 'RENEWAL' ? 'Renovação' : 'Compra'} · {p.store === 'PLAY_STORE' ? 'Google Play' : 'App Store'}</span>
                     <span className="num" style={{ color: p.event_type === 'REFUND' ? 'var(--err)' : 'var(--ok)', fontWeight: 700 }}>{brl(p.net_brl)}</span>

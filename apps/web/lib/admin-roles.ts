@@ -7,7 +7,8 @@ export type AdminRole = 'admin' | 'manager' | 'finance' | 'support' | 'collabora
 
 export type AdminArea =
   | 'users'          // ver alunos e a ficha (CRM)
-  | 'users:write'    // editar, criar e excluir alunos; anotações e etiquetas
+  | 'users:write'    // editar e criar alunos; anotações e etiquetas
+  | 'users:delete'   // excluir alunos (irreversível)
   | 'support'        // fila de atendimento e atendentes
   | 'notifications'  // enviar push e e-mails em massa
   | 'metrics'        // métricas de uso e custo por aluno
@@ -18,6 +19,7 @@ export type AdminArea =
 export const AREAS: { id: AdminArea; label: string }[] = [
   { id: 'users',         label: 'Ver alunos' },
   { id: 'users:write',   label: 'Editar alunos' },
+  { id: 'users:delete',  label: 'Excluir alunos' },
   { id: 'support',       label: 'Atendimento' },
   { id: 'notifications', label: 'Notificações em massa' },
   { id: 'metrics',       label: 'Métricas' },
@@ -27,8 +29,8 @@ export const AREAS: { id: AdminArea; label: string }[] = [
 ];
 
 export const PERMISSIONS: Record<AdminRole, AdminArea[]> = {
-  admin:        ['users', 'users:write', 'support', 'notifications', 'metrics', 'finance', 'finance:write', 'team'],
-  manager:      ['users', 'users:write', 'support', 'notifications', 'metrics', 'finance', 'finance:write'],
+  admin:        ['users', 'users:write', 'users:delete', 'support', 'notifications', 'metrics', 'finance', 'finance:write', 'team'],
+  manager:      ['users', 'users:write', 'users:delete', 'support', 'notifications', 'metrics', 'finance', 'finance:write'],
   finance:      ['users', 'metrics', 'finance', 'finance:write'],
   support:      ['users', 'users:write', 'support'],
   collaborator: ['users', 'metrics'],

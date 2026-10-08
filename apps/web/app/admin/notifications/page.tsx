@@ -233,7 +233,7 @@ export default function AdminNotificationsPage() {
             <div className="adm-panel">
               <div className="adm-panel-hdr">
                 <span className="adm-panel-title">Disparo Manual</span>
-                <span className="adm-panel-sub">executa imediatamente, ignorando horário agendado</span>
+                
               </div>
               <div className="adm-panel-body">
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -312,7 +312,7 @@ export default function AdminNotificationsPage() {
             <div className="adm-panel">
               <div className="adm-panel-hdr">
                 <span className="adm-panel-title">Volume Diário (30d)</span>
-                <span className="adm-panel-sub">notificações enviadas</span>
+                
               </div>
               <div className="adm-panel-body">
                 <MiniArea data={d?.timeseries ?? []} color="var(--brand)" h={90} />

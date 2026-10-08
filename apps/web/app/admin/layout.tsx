@@ -606,8 +606,8 @@ function LoginScreen({ onSignedIn, onLegacy, notice }: {
         <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--b1)', display: 'flex', flexDirection: 'column', gap: 8 }}>
           <span style={{ fontSize: 11.5, color: 'var(--t3)', lineHeight: 1.5 }}>
             {legacy
-              ? 'A senha mestra dá acesso total. Prefira o login com sua conta.'
-              : 'Use o mesmo e-mail e senha do app. Esqueceu a senha? Redefina pelo app em "Esqueci minha senha".'}
+              ? ''
+              : 'Mesmo e-mail e senha do app.'}
           </span>
           <button type="button" onClick={() => { setLegacy(l => !l); setErr(''); setPw(''); }}
             style={{ alignSelf: 'flex-start', background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontSize: 12, fontWeight: 600, color: 'var(--t2)', display: 'flex', alignItems: 'center', gap: 5 }}>

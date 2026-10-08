@@ -748,7 +748,7 @@ export default function MetricsPage() {
             <div className="col-8">
               <div className="adm-panel">
                 <div className="adm-panel-hdr">
-                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Tendência MRR <HelpTip text="Evolução semanal da receita recorrente mensal. Tendência de alta = crescimento saudável." /></span>
+                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Tendência MRR</span>
                   <span className="adm-panel-sub">{g.mrrHealth.mrrTrend.length} semanas</span>
                 </div>
                 <div className="adm-panel-body">
@@ -792,7 +792,7 @@ export default function MetricsPage() {
         <>
           <div className="adm-panel" style={{ marginBottom: 16 }}>
             <div className="adm-panel-hdr">
-              <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>DAU — Série temporal <HelpTip text="Usuários ativos por dia no período. Tendência crescente indica retenção saudável." /></span>
+              <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>DAU — Série temporal</span>
               <span className="adm-panel-sub">{g.range.days}d</span>
             </div>
             <div className="adm-panel-body">
@@ -804,7 +804,7 @@ export default function MetricsPage() {
             <div className="col-6">
               <div className="adm-panel">
                 <div className="adm-panel-hdr">
-                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Funil de Ativação <HelpTip text="Passos do onboarding — quantos usuários completaram cada etapa. Quedas grandes indicam fricção." /></span>
+                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Funil de Ativação</span>
                 </div>
                 <div className="adm-panel-body">
                   <FunnelBars data={g.activationFunnel.map(f => ({ label: f.label, count: f.count }))} />
@@ -836,7 +836,7 @@ export default function MetricsPage() {
 
           <div className="adm-panel">
             <div className="adm-panel-hdr">
-              <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Heatmap de Prática <HelpTip text="Práticas por dia da semana × hora do dia (horário local do usuário). Cores mais intensas = mais práticas. Útil para definir horário de push notifications." /></span>
+              <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Heatmap de Prática</span>
               <span className="adm-panel-sub">dia × hora local</span>
             </div>
             <div className="adm-panel-body">
@@ -882,7 +882,7 @@ export default function MetricsPage() {
             </div>
           </div>
           <div className="adm-panel">
-            <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Distribuição de Streak <HelpTip text="Quantos usuários têm cada faixa de streak de dias consecutivos. Concentração em faixas altas indica hábito formado." /></span></div>
+            <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Distribuição de Streak</span></div>
             <div className="adm-panel-body">
               <BarChart data={g.streakDistribution} labelKey="bucket" valueKey="count" color="var(--brand)" />
             </div>
@@ -914,7 +914,7 @@ export default function MetricsPage() {
         <div className="adm-grid" style={{ gap: 16 }}>
           <div className="col-12">
             <div className="adm-panel" style={{ marginBottom: 0 }}>
-              <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Custo Diário <HelpTip text="Custo diário total em APIs externas. Passe o mouse sobre o gráfico para ver o valor exato de cada dia." /></span></div>
+              <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Custo Diário</span></div>
               <div className="adm-panel-body">
                 <AreaChart data={g.openai.timeseries} xKey="date" yKey="cost" color="var(--warn)" h={150} />
               </div>
@@ -922,7 +922,7 @@ export default function MetricsPage() {
           </div>
           <div className="col-6">
             <div className="adm-panel">
-              <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Por Endpoint <HelpTip text="Custo e volume de chamadas por rota da API. Identifica quais funcionalidades geram mais custo." /></span></div>
+              <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Por Endpoint</span></div>
               <table className="adm-table">
                 <thead><tr><th>Endpoint</th><th>Provider</th><th style={{ textAlign: 'right' }}>Custo</th><th style={{ textAlign: 'right' }}>Chamadas</th></tr></thead>
                 <tbody>
@@ -950,7 +950,7 @@ export default function MetricsPage() {
           </div>
           <div className="col-6">
             <div className="adm-panel">
-              <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Por Modelo <HelpTip text="Custo e tokens consumidos por modelo de IA. Tokens = unidade de cobrança de texto processado." /></span></div>
+              <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Por Modelo</span></div>
               <table className="adm-table">
                 <thead><tr><th>Modelo</th><th style={{ textAlign: 'right' }}>Custo</th><th style={{ textAlign: 'right' }}>Tokens</th></tr></thead>
                 <tbody>
@@ -969,7 +969,7 @@ export default function MetricsPage() {
             <div className="col-12">
               <div className="adm-panel">
                 <div className="adm-panel-hdr">
-                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Top Usuários por Custo <HelpTip text="Usuários que geraram mais custo em APIs externas no período. Útil para identificar uso excessivo ou abuso." /></span>
+                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Top Usuários por Custo</span>
                   <span className="adm-panel-sub">top {g.openai.topUsers.length}</span>
                 </div>
                 <table className="adm-table">
@@ -995,7 +995,7 @@ export default function MetricsPage() {
               <div className="adm-panel">
                 <div className="adm-panel-hdr">
                   <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Custo do Sistema <HelpTip text="Custos de infraestrutura não atribuíveis a usuários específicos: scheduler de notificações (GPT) e geração de cache de TTS de vocabulário." /></span>
-                  <span className="adm-panel-sub">infra, scheduler, cache</span>
+                  
                 </div>
                 <table className="adm-table">
                   <thead><tr><th>Componente</th><th style={{ textAlign: 'right' }}>Custo</th></tr></thead>

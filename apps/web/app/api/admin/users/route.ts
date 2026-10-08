@@ -36,7 +36,7 @@ interface UserProgress {
 }
 
 // Login próprio (Bearer) com papel que acessa 'users', ou a senha mestra antiga.
-async function checkAuth(req: NextRequest, area: 'users' | 'users:write' = 'users') {
+async function checkAuth(req: NextRequest, area: 'users' | 'users:write' | 'users:delete' = 'users') {
   const admin = await getAdmin(req);
   return !!admin && can(admin.role, area);
 }
@@ -359,7 +359,7 @@ export async function PATCH(req: NextRequest) {
 
 // ── DELETE /api/admin/users — delete a user ───────────────────────────────────
 export async function DELETE(req: NextRequest) {
-  if (!(await checkAuth(req, 'users:write'))) return NextResponse.json({ error: 'Sem permissão para editar alunos.' }, { status: 403 });
+  if (!(await checkAuth(req, 'users:delete'))) return NextResponse.json({ error: 'Sem permissão para excluir alunos.' }, { status: 403 });
 
   const body = await req.json();
   const { id } = body;

@@ -135,7 +135,9 @@ const EMPTY_FORM: Form = {
 
 // ════════════════════════════════════════════════════════════════════════════
 export default function AdminUsersPage() {
-  const canWrite = canArea(useAdminMe(), 'users:write');
+  const me = useAdminMe();
+  const canWrite = canArea(me, 'users:write');
+  const canDelete = canArea(me, 'users:delete');
   const [users, setUsers]       = useState<User[]>([]);
   const [stats, setStats]       = useState<Stats | null>(null);
   const [loading, setLoading]   = useState(false);
@@ -436,7 +438,7 @@ export default function AdminUsersPage() {
                       <td colSpan={9}>
                         <div className="adm-empty">
                           <div className="adm-empty-title">Nenhum usuário encontrado</div>
-                          <div className="adm-empty-sub">Tente ajustar os filtros ou a busca.</div>
+                          
                         </div>
                       </td>
                     </tr>
@@ -492,7 +494,7 @@ export default function AdminUsersPage() {
                               target="_blank" rel="noreferrer" className="adm-btn-sm ghost" style={{ padding: '5px 8px' }} title="RevenueCat">
                               <ExternalLink size={13} />
                             </a>
-                            {canWrite && (
+                            {canDelete && (
                               <button onClick={() => openDelete(u)} className="adm-btn-sm danger" style={{ padding: '5px 8px' }} title="Excluir">
                                 <Trash2 size={13} />
                               </button>

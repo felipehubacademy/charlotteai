@@ -180,14 +180,14 @@ function EntryModal({ initial, vendors, customCats, onClose, onSaved }: {
           </div>
           <div className="adm-field">
             <label>Descrição</label>
-            <input value={f.description} onChange={e => set('description', e.target.value)} placeholder={f.kind === 'expense' ? 'Ex.: Domínio queizy.com (1 ano)' : 'Ex.: Repasse App Store setembro'} autoFocus />
+            <input value={f.description} onChange={e => set('description', e.target.value)}  autoFocus />
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
             <div className="adm-field">
               <label>Categoria</label>
               {newCat ? (
                 <div style={{ display: 'flex', gap: 6 }}>
-                  <input value={f.category} onChange={e => set('category', e.target.value)} placeholder="Nome da nova categoria" autoFocus style={{ flex: 1, minWidth: 0 }} />
+                  <input value={f.category} onChange={e => set('category', e.target.value)} placeholder="Nova categoria" autoFocus style={{ flex: 1, minWidth: 0 }} />
                   <button type="button" className="adm-btn-sm ghost" title="Voltar para a lista"
                     onClick={() => { setNewCat(false); set('category', baseCats[0]); }}><X size={14} /></button>
                 </div>
@@ -205,7 +205,7 @@ function EntryModal({ initial, vendors, customCats, onClose, onSaved }: {
             </div>
             <div className="adm-field">
               <label>{f.kind === 'expense' ? 'Fornecedor' : 'Origem'}</label>
-              <input list="vendors" value={f.vendor} onChange={e => set('vendor', e.target.value)} placeholder="Escolha ou digite um novo" />
+              <input list="vendors" value={f.vendor} onChange={e => set('vendor', e.target.value)}  />
               <datalist id="vendors">{vendors.map(v => <option key={v} value={v} />)}</datalist>
             </div>
           </div>
@@ -294,7 +294,7 @@ function ReportModal({ title, income, expense, byCategory, entries, onClose }: {
         <div style={{ padding: 28 }}>
           <img src="/images/queizy-logo.png" alt="Queizy" style={{ height: 26 }} />
           <h2 style={{ fontSize: 22, fontWeight: 800, margin: '16px 0 2px' }}>Relatório financeiro</h2>
-          <div style={{ fontSize: 13, color: 'var(--t2)' }}>{title} · gerado em {fmtDate(todayISO())} · regime de caixa</div>
+          <div style={{ fontSize: 13, color: 'var(--t2)' }}>{title} · gerado em {fmtDate(todayISO())}</div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, margin: '20px 0' }}>
             {[['Entradas', income], ['Saídas', expense], ['Resultado', result]].map(([l, v]) => (
@@ -466,13 +466,13 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
                 ))}
               </div>
               <AiLines lines={data.openai.lines.slice(0, 4).map(l => ({ name: l.name, value: l.usd }))} fmt={usdFmt} />
-              {!data.hasOpenAIAdminKey && <div style={{ fontSize: 11.5, color: AI_CARD.low, lineHeight: 1.5 }}>Para o valor real, salve uma chave de administrador da OpenAI como OPENAI_ADMIN_KEY na Vercel.</div>}
+              {!data.hasOpenAIAdminKey && <div style={{ fontSize: 11.5, color: AI_CARD.low, lineHeight: 1.5 }}>Estimativa: falta OPENAI_ADMIN_KEY.</div>}
               {postButton('OpenAI', AI_ACCENT.openai)}
             </AiCard>
 
             <AiCard name="Azure Speech" accent={AI_ACCENT.azure} badge={data.azure && !data.azure.error ? 'valor real' : undefined}>
               {!data.hasAzureCost ? (
-                <div style={{ fontSize: 12, color: AI_CARD.mid, lineHeight: 1.5 }}>Para ler o custo real, dê ao app do Azure o papel &ldquo;Cost Management Reader&rdquo; e salve o ID da assinatura como AZURE_COST_SUBSCRIPTION_ID na Vercel.</div>
+                <div style={{ fontSize: 12, color: AI_CARD.mid, lineHeight: 1.5 }}>Não configurado.</div>
               ) : data.azure?.error ? (
                 <div style={{ fontSize: 12, color: AI_CARD.mid, lineHeight: 1.5 }}>Não foi possível ler o custo do Azure ({data.azure.error}).</div>
               ) : data.azure && (
@@ -698,7 +698,7 @@ export default function FinancePage() {
       `}</style>
 
       <div className="adm-topbar">
-        <div className="adm-topbar-title">Financeiro <span className="adm-topbar-sub">· entradas e saídas, regime de caixa</span></div>
+        <div className="adm-topbar-title">Financeiro</div>
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
           {(Object.keys(RANGE_LABEL) as Range[]).map(r => (
             <button key={r} className={`range-pill${range === r ? ' active' : ''}`} onClick={() => setRange(r)}>{RANGE_LABEL[r]}</button>
@@ -729,14 +729,14 @@ export default function FinancePage() {
           ))}
 
           <div className="adm-panel col-8">
-            <div className="adm-panel-hdr"><div className="adm-panel-title">Entradas e saídas por mês</div><div className="adm-panel-sub">últimos 12 meses, valores pagos</div></div>
+            <div className="adm-panel-hdr"><div className="adm-panel-title">Entradas e saídas por mês</div><div className="adm-panel-sub">últimos 12 meses</div></div>
             <div className="adm-panel-body"><MonthlyChart months={months} /></div>
           </div>
 
           <div className="adm-panel col-4">
             <div className="adm-panel-hdr"><div className="adm-panel-title">Vencimentos</div><div className="adm-panel-sub">próximos 30 dias</div></div>
             <div className="adm-panel-body" style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 260, overflowY: 'auto' }}>
-              {upcoming.length === 0 && <div className="adm-empty-sub">Nada vencendo. Lance as contas recorrentes para ver aqui.</div>}
+              {upcoming.length === 0 && <div className="adm-empty-sub">Nada vencendo.</div>}
               {upcoming.map(e => {
                 const d = daysUntil(e.due_date);
                 return (
@@ -785,7 +785,7 @@ export default function FinancePage() {
               {list.length === 0 ? (
                 <div className="adm-empty">
                   <div className="adm-empty-title">{loading ? 'Carregando…' : 'Nenhum lançamento'}</div>
-                  {!loading && <div className="adm-empty-sub">Use "Lançamento" para registrar um custo ou uma receita.</div>}
+                  
                 </div>
               ) : (
                 <table className="adm-table">

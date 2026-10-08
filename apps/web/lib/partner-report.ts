@@ -95,7 +95,6 @@ export function renderPartnerReportHtml(r: PartnerReport): string {
 <div style="max-width:560px;margin:0 auto;padding:28px 20px">
   <img src="https://queizy.com/images/queizy-logo.png" alt="Queizy" height="28" style="height:28px">
   <h1 style="font-size:24px;margin:18px 0 4px">Relatório de ${r.label}</h1>
-  <p style="margin:0 0 20px;color:#8A8494;font-size:13px">Regime de caixa: o que foi pago e recebido no mês.</p>
 
   <div style="background:#16131F;color:#fff;border-radius:20px;padding:20px">
     <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.6);font-weight:700">Resultado do mês</div>
@@ -124,7 +123,7 @@ export function renderPartnerReportHtml(r: PartnerReport): string {
     ${row('Total de alunos', String(r.students.total))}
   </table>
 
-  <p style="margin:24px 0 0;font-size:12px;color:#8A8494">Detalhes, lançamentos e exportação em queizy.com/admin/finance.</p>
+  <p style="margin:24px 0 0;font-size:12px"><a href="https://queizy.com/admin/finance" style="color:#8A8494">queizy.com/admin/finance</a></p>
 </div></body></html>`;
 }
 

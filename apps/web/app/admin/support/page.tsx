@@ -58,7 +58,7 @@ export default function SupportAdmin() {
     <div className="adm-page">
       <div className="adm-topbar">
         <Headphones size={18} color="var(--accent)" />
-        <div className="adm-topbar-title">Suporte <span className="adm-topbar-sub">· atendimento automatizado</span></div>
+        <div className="adm-topbar-title">Suporte</div>
         <button className="adm-btn-sm ghost" onClick={() => { loadAgents(); loadQueue(); }}><RefreshCw size={13} /> Atualizar</button>
       </div>
 
@@ -79,7 +79,7 @@ export default function SupportAdmin() {
             </div>
             <div className="adm-panel">
               {convs.length === 0 ? (
-                <div className="adm-empty"><div className="adm-empty-title">{loading ? 'Carregando…' : 'Nenhuma conversa'}</div><div className="adm-empty-sub">As conversas de suporte aparecem aqui.</div></div>
+                <div className="adm-empty"><div className="adm-empty-title">{loading ? 'Carregando…' : 'Nenhuma conversa'}</div></div>
               ) : (
                 <table className="adm-table">
                   <thead><tr><th>Contato</th><th>Canal</th><th>Assunto / última</th><th>Status</th><th>Atendente</th><th>Quando</th></tr></thead>
@@ -111,7 +111,7 @@ export default function SupportAdmin() {
             </div>
             <div className="adm-panel">
               {agents.length === 0 ? (
-                <div className="adm-empty"><div className="adm-empty-title">Nenhum atendente</div><div className="adm-empty-sub">Cadastre atendentes para receber os casos escalados.</div></div>
+                <div className="adm-empty"><div className="adm-empty-title">Nenhum atendente</div></div>
               ) : (
                 <table className="adm-table">
                   <thead><tr><th>Nome</th><th>Email</th><th>WhatsApp</th><th>Ativo</th><th></th></tr></thead>
