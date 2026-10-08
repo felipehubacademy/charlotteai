@@ -3,9 +3,13 @@
 //        OpenAI: valor REAL pela API de custos da organização quando existe
 //        OPENAI_ADMIN_KEY (chave de administrador); sem ela, a estimativa
 //        registrada pelo nosso logger (charlotte.openai_usage).
+//        Azure (Speech e demais serviços): valor REAL pela API de Cost
+//        Management quando existe AZURE_COST_SUBSCRIPTION_ID. Usa o mesmo app
+//        do Azure (AZURE_TENANT_ID/CLIENT_ID/CLIENT_SECRET), que precisa do
+//        papel "Cost Management Reader" na assinatura.
 //        ElevenLabs: uso real de caracteres e plano pela API (ELEVENLABS_API_KEY).
 //   POST { month, provider } lança o custo do mês no Financeiro (uma vez por
-//        provedor e mês).
+//        provedor e mês). Provedores: OpenAI, Microsoft Azure.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
@@ -67,6 +71,51 @@ async function openaiEstimate(month: string): Promise<{ usd: number; lines: { na
   return { usd: arr.reduce((s, l) => s + l.usd, 0), lines: arr };
 }
 
+type Cost = { currency: string; total: number; lines: { name: string; amount: number }[] };
+
+async function azureReal(month: string): Promise<Cost | null> {
+  const sub = process.env.AZURE_COST_SUBSCRIPTION_ID;
+  const tenant = process.env.AZURE_TENANT_ID;
+  const clientId = process.env.AZURE_COST_CLIENT_ID || process.env.AZURE_CLIENT_ID;
+  const secret = process.env.AZURE_COST_CLIENT_SECRET || process.env.AZURE_CLIENT_SECRET;
+  if (!sub || !tenant || !clientId || !secret) return null;
+
+  const tok = await fetch(`https://login.microsoftonline.com/${tenant}/oauth2/v2.0/token`, {
+    method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, cache: 'no-store',
+    body: new URLSearchParams({ grant_type: 'client_credentials', client_id: clientId, client_secret: secret, scope: 'https://management.azure.com/.default' }),
+  });
+  if (!tok.ok) throw new Error(`Azure token ${tok.status}`);
+  const { access_token } = await tok.json();
+
+  const { start, end } = monthRange(month);
+  const to = new Date(Math.min(end.getTime() - 1000, Date.now()));
+  const r = await fetch(`https://management.azure.com/subscriptions/${sub}/providers/Microsoft.CostManagement/query?api-version=2023-03-01`, {
+    method: 'POST', cache: 'no-store',
+    headers: { Authorization: `Bearer ${access_token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      type: 'ActualCost', timeframe: 'Custom',
+      timePeriod: { from: start.toISOString(), to: to.toISOString() },
+      dataset: {
+        granularity: 'None',
+        aggregation: { totalCost: { name: 'Cost', function: 'Sum' } },
+        grouping: [{ type: 'Dimension', name: 'ServiceName' }],
+      },
+    }),
+  });
+  if (!r.ok) throw new Error(`Azure custos ${r.status}`);
+  const j = await r.json();
+  const cols: string[] = (j.properties?.columns ?? []).map((c: { name: string }) => c.name);
+  const iCost = cols.indexOf('Cost'), iName = cols.indexOf('ServiceName'), iCur = cols.indexOf('Currency');
+  let currency = 'USD';
+  const lines: { name: string; amount: number }[] = [];
+  for (const row of j.properties?.rows ?? []) {
+    if (iCur >= 0 && row[iCur]) currency = String(row[iCur]);
+    lines.push({ name: String(row[iName] ?? 'Outros'), amount: Number(row[iCost] ?? 0) });
+  }
+  lines.sort((a, b) => b.amount - a.amount);
+  return { currency, total: lines.reduce((s, l) => s + l.amount, 0), lines };
+}
+
 async function elevenlabs(): Promise<{ plan: string; used: number; limit: number; resetAt: string | null; nextInvoiceUsd: number | null } | null> {
   const key = process.env.ELEVENLABS_API_KEY;
   if (!key) return null;
@@ -82,11 +131,12 @@ async function elevenlabs(): Promise<{ plan: string; used: number; limit: number
   };
 }
 
-async function usdBrl(): Promise<number> {
+async function fxBrl(cur = 'USD'): Promise<number> {
+  if (cur === 'BRL') return 1;
   try {
-    const r = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL', { cache: 'no-store' });
+    const r = await fetch(`https://economia.awesomeapi.com.br/json/last/${cur}-BRL`, { cache: 'no-store' });
     const j = await r.json();
-    return Number(j?.USDBRL?.bid) || 0;
+    return Number(j?.[`${cur}BRL`]?.bid) || 0;
   } catch { return 0; }
 }
 
@@ -102,13 +152,20 @@ export async function GET(req: NextRequest) {
   } catch (e) {
     openai = { source: 'estimate', ...(await openaiEstimate(month)), error: e instanceof Error ? e.message : 'erro' };
   }
-  const [eleven, fx] = await Promise.all([elevenlabs().catch(() => null), usdBrl()]);
+  const [eleven, fx] = await Promise.all([elevenlabs().catch(() => null), fxBrl()]);
+  let azure: (Cost & { error?: string }) | null = null;
+  try { azure = await azureReal(month); }
+  catch (e) { azure = { currency: 'USD', total: 0, lines: [], error: e instanceof Error ? e.message : 'erro' }; }
 
   const { data: posted } = await getSupabaseAdmin().from('finance_entries')
     .select('vendor').eq('category', 'Inteligência artificial').like('notes', `%[ai-cost ${month}]%`);
   const postedVendors = ((posted ?? []) as { vendor: string }[]).map(p => p.vendor);
 
-  return NextResponse.json({ month, fx, openai, elevenlabs: eleven, hasOpenAIAdminKey: !!process.env.OPENAI_ADMIN_KEY, posted: postedVendors });
+  return NextResponse.json({
+    month, fx, openai, azure, elevenlabs: eleven, posted: postedVendors,
+    hasOpenAIAdminKey: !!process.env.OPENAI_ADMIN_KEY,
+    hasAzureCost: !!process.env.AZURE_COST_SUBSCRIPTION_ID,
+  });
 }
 
 export async function POST(req: NextRequest) {
@@ -117,7 +174,7 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
   const month = String(body.month ?? '');
   const provider = String(body.provider ?? '');
-  if (!/^\d{4}-\d{2}$/.test(month) || provider !== 'OpenAI') {
+  if (!/^\d{4}-\d{2}$/.test(month) || !['OpenAI', 'Microsoft Azure'].includes(provider)) {
     return NextResponse.json({ error: 'Mês e provedor válidos são obrigatórios.' }, { status: 400 });
   }
   const supabase = getSupabaseAdmin();
@@ -126,21 +183,31 @@ export async function POST(req: NextRequest) {
     .eq('vendor', provider).like('notes', `%${tag}%`);
   if (count) return NextResponse.json({ error: 'Esse mês já foi lançado.' }, { status: 409 });
 
-  const real = await openaiReal(month).catch(() => null);
-  const data = real ?? (await openaiEstimate(month));
-  const fx = (await usdBrl()) || 1;
-  const usd = Math.round(data.usd * 100) / 100;
+  let amount: number, currency: string, note: string;
+  if (provider === 'OpenAI') {
+    const real = await openaiReal(month).catch(() => null);
+    const data = real ?? (await openaiEstimate(month));
+    amount = data.usd; currency = 'USD';
+    note = real ? 'Valor real (API de custos da OpenAI).' : 'Estimativa pelo uso registrado no app.';
+  } else {
+    const az = await azureReal(month).catch(() => null);
+    if (!az) return NextResponse.json({ error: 'Não foi possível ler o custo do Azure.' }, { status: 502 });
+    amount = az.total; currency = az.currency;
+    note = 'Valor real (Azure Cost Management).';
+  }
+  amount = Math.round(amount * 100) / 100;
+  const fx = (await fxBrl(currency)) || 1;
   const { end } = monthRange(month);
   const lastDay = new Date(end.getTime() - 86400000).toISOString().slice(0, 10);
 
   const { data: entry, error } = await supabase.from('finance_entries').insert({
-    kind: 'expense', description: `OpenAI · uso de ${month}`, category: 'Inteligência artificial', vendor: provider,
-    amount: usd, currency: 'USD', fx_rate: fx, amount_brl: Math.round(usd * fx * 100) / 100,
+    kind: 'expense', description: `${provider === 'OpenAI' ? 'OpenAI' : 'Azure'} · uso de ${month}`, category: 'Inteligência artificial', vendor: provider,
+    amount, currency, fx_rate: fx, amount_brl: Math.round(amount * fx * 100) / 100,
     due_date: lastDay, status: 'pending', recurrence: 'none',
-    notes: `${real ? 'Valor real (API de custos da OpenAI).' : 'Estimativa pelo uso registrado no app.'} ${tag}`,
+    notes: `${note} ${tag}`,
     created_by: admin.userId,
   } as never).select('id').single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  await audit(admin, 'finance.ai_cost', 'finance_entry', (entry as { id: string }).id, { month, provider, usd });
+  await audit(admin, 'finance.ai_cost', 'finance_entry', (entry as { id: string }).id, { month, provider, amount, currency });
   return NextResponse.json({ ok: true });
 }

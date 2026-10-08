@@ -334,7 +334,8 @@ function ReportModal({ title, income, expense, byCategory, entries, onClose }: {
 
 // ── Custos de IA do mês ─────────────────────────────────────────────────────
 interface AiCosts {
-  month: string; fx: number; hasOpenAIAdminKey: boolean; posted: string[];
+  month: string; fx: number; hasOpenAIAdminKey: boolean; hasAzureCost: boolean; posted: string[];
+  azure: { currency: string; total: number; lines: { name: string; amount: number }[]; error?: string } | null;
   openai: { source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string };
   elevenlabs: { plan: string; used: number; limit: number; resetAt: string | null; nextInvoiceUsd: number | null } | null;
 }
@@ -342,23 +343,32 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
   const [month, setMonth] = useState(new Date().toISOString().slice(0, 7));
   const [data, setData] = useState<AiCosts | null>(null);
   const [busy, setBusy] = useState(false);
-  const [msg, setMsg] = useState('');
+  const [msg, setMsg] = useState<{ provider: string; text: string } | null>(null);
   const load = useCallback(async () => {
-    setData(null); setMsg('');
+    setData(null); setMsg(null);
     const r = await fetch(`/api/admin/ai-costs?month=${month}`);
     if (r.ok) setData(await r.json());
   }, [month]);
   useEffect(() => { load(); }, [load]);
 
-  const post = async () => {
-    setBusy(true); setMsg('');
-    const r = await fetch('/api/admin/ai-costs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ month, provider: 'OpenAI' }) });
+  const post = async (provider: string) => {
+    setBusy(true); setMsg(null);
+    const r = await fetch('/api/admin/ai-costs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ month, provider }) });
     const j = await r.json().catch(() => ({}));
     setBusy(false);
-    if (!r.ok) { setMsg(j.error ?? 'Não foi possível lançar.'); return; }
-    setMsg('Lançado no financeiro como "a pagar" no último dia do mês.');
-    onPosted(); load();
+    if (!r.ok) { setMsg({ provider, text: j.error ?? 'Não foi possível lançar.' }); return; }
+    onPosted(); await load();
+    setMsg({ provider, text: 'Lançado no financeiro como "a pagar" no último dia do mês.' });
   };
+  const postButton = (provider: string) => canWrite && data && (
+    <div style={{ marginTop: 12, display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+      <button className="adm-btn-sm primary" disabled={busy || data.posted.includes(provider)} onClick={() => post(provider)}>
+        {data.posted.includes(provider) ? 'Já lançado' : busy ? 'Lançando…' : 'Lançar no financeiro'}
+      </button>
+      {msg?.provider === provider && <span style={{ fontSize: 12, color: 'var(--t2)' }}>{msg.text}</span>}
+    </div>
+  );
+  const money2 = (n: number, cur: string) => n.toLocaleString(cur === 'BRL' ? 'pt-BR' : 'en-US', { style: 'currency', currency: cur });
 
   const months = Array.from({ length: 6 }, (_, i) => { const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - i); return d.toISOString().slice(0, 7); });
   const usdFmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
@@ -393,13 +403,34 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
                   Para o valor real, crie uma chave de administrador na OpenAI (Settings &rsaquo; Admin keys) e salve como OPENAI_ADMIN_KEY na Vercel.
                 </div>
               )}
-              {canWrite && (
-                <div style={{ marginTop: 12, display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
-                  <button className="adm-btn-sm primary" disabled={busy || data.posted.includes('OpenAI')} onClick={post}>
-                    {data.posted.includes('OpenAI') ? 'Já lançado' : busy ? 'Lançando…' : 'Lançar no financeiro'}
-                  </button>
-                  {msg && <span style={{ fontSize: 12, color: 'var(--t2)' }}>{msg}</span>}
+              {postButton('OpenAI')}
+            </div>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                <b style={{ fontSize: 14 }}>Microsoft Azure</b>
+                {data.azure && !data.azure.error && <span className="badge badge-ok">valor real</span>}
+              </div>
+              {!data.hasAzureCost ? (
+                <div style={{ fontSize: 12, color: 'var(--t3)', lineHeight: 1.5 }}>
+                  Para ler o custo real (Speech e demais serviços), dê ao app do Azure o papel &ldquo;Cost Management Reader&rdquo; na assinatura e salve o ID dela como AZURE_COST_SUBSCRIPTION_ID na Vercel.
                 </div>
+              ) : data.azure?.error ? (
+                <div style={{ fontSize: 12, color: 'var(--t3)', lineHeight: 1.5 }}>
+                  Não foi possível ler o custo do Azure ({data.azure.error}). Confira se o app tem o papel &ldquo;Cost Management Reader&rdquo; na assinatura.
+                </div>
+              ) : data.azure && (
+                <>
+                  <div className="num" style={{ fontSize: 24, fontWeight: 800 }}>{money2(data.azure.total, data.azure.currency)}</div>
+                  {data.azure.currency === 'USD' && <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>≈ {brl(data.azure.total * (data.fx || 0))} na cotação de hoje</div>}
+                  <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 4 }}>
+                    {data.azure.lines.filter(l => l.amount > 0).slice(0, 5).map(l => (
+                      <div key={l.name} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12.5, color: 'var(--t2)' }}>
+                        <span>{l.name}</span><span className="num">{money2(l.amount, data.azure!.currency)}</span>
+                      </div>
+                    ))}
+                  </div>
+                  {postButton('Microsoft Azure')}
+                </>
               )}
             </div>
             <div>
@@ -417,7 +448,7 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
                     {data.elevenlabs.resetAt ? `Renova em ${fmtDate(data.elevenlabs.resetAt.slice(0, 10))}` : ''}
                     {data.elevenlabs.nextInvoiceUsd != null ? ` · próxima fatura ${usdFmt(data.elevenlabs.nextInvoiceUsd)}` : ''}
                   </div>
-                  <div style={{ fontSize: 12, color: 'var(--t3)', marginTop: 8 }}>A assinatura da ElevenLabs entra como lançamento recorrente mensal.</div>
+                  <div style={{ fontSize: 12, color: 'var(--t3)', marginTop: 8 }}>A ElevenLabs entra pela fatura do cartão.</div>
                 </>
               ) : <div className="adm-empty-sub" style={{ marginTop: 6 }}>Não foi possível ler o uso agora.</div>}
             </div>
