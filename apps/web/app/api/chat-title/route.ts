@@ -91,10 +91,12 @@ export async function POST(request: NextRequest) {
       totalTokens:      completion.usage?.total_tokens,
     });
 
-    const title = (completion.choices[0]?.message?.content ?? '')
+    const raw = (completion.choices[0]?.message?.content ?? '')
       .trim()
       .replace(/^["'“”]+|["'“”.]+$/g, '')
-      .slice(0, 60) || null;
+      .slice(0, 60);
+    // Garante inicial maiúscula (o modelo às vezes devolve tudo em minúsculas).
+    const title = raw ? raw.charAt(0).toUpperCase() + raw.slice(1) : null;
 
     if (title) {
       const { error } = await supabase
