@@ -17,11 +17,11 @@ export const dynamic = 'force-dynamic';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// Referência pública (EF English Proficiency Index 2025).
-const BENCHMARK = {
-  source: 'EF EPI 2025',
-  pt: 'No ranking EF EPI 2025, o Brasil ficou em 75º lugar entre 123 países, com 482 pontos, abaixo da média mundial (488). Cada tópico que você conclui te coloca à frente dessa média.',
-  en: 'In the EF EPI 2025 ranking, Brazil placed 75th of 123 countries, scoring 482, below the global average (488). Every topic you finish moves you ahead of that average.',
+// Referência pública (EF English Proficiency Index 2025). Entra como dado para
+// a Charlotte usar no resumo semanal quando fizer sentido, não como card fixo.
+const BENCHMARK_FACT = {
+  pt: 'EF EPI 2025: o Brasil ficou em 75º lugar entre 123 países (482 pontos), abaixo da média mundial (488).',
+  en: 'EF EPI 2025: Brazil placed 75th of 123 countries (482 points), below the global average (488).',
 };
 
 /** Segunda-feira 00:00 de Brasília (YYYY-MM-DD). */
@@ -105,7 +105,6 @@ export async function GET(req: NextRequest) {
     pronunciation: { avg: pronNow.avg, previous: pronPrev.avg, attempts: pronNow.items.length, words: pronNow.topWords.slice(0, 8) },
     grammar: { errorFree: gramNow.errorFree, previous: gramPrev.errorFree, analyzed: gramNow.analyzed, recent: gramNow.corrections.slice(0, 4) },
     strengths, focus, exercises, weeks,
-    benchmark: { source: BENCHMARK.source, text: BENCHMARK[lang] },
   };
 
   const summary = await weeklySummary(user.id, lang, data, gramNow.corrections.slice(0, 12));
@@ -146,13 +145,14 @@ async function weeklySummary(userId: string, lang: 'pt' | 'en', d: EvolutionData
     strongTopics: d.strengths.map(s => `${s.topic} (${s.accuracy}%)`),
     focusTopics: d.focus.map(f => `${f.topic} (${f.accuracy}%)`),
     recentGrammarCorrections: corrections.map(c => `${c.wrong} -> ${c.right}`),
+    publicBenchmark: BENCHMARK_FACT[lang],
     practicesThisWeek: d.weeks[d.weeks.length - 1]?.practices ?? 0,
     practicesLastWeek: d.weeks[d.weeks.length - 2]?.practices ?? 0,
   };
 
   const system = lang === 'pt'
-    ? 'Você é a Charlotte, tutora de inglês do app Queizy. Escreva o resumo semanal da evolução do aluno, em português do Brasil com acentuação correta, em tom caloroso e motivador, falando direto com ele pelo primeiro nome. 3 a 4 frases, no máximo 70 palavras. Comece celebrando algo concreto com números reais dos dados. Depois aponte UM ponto de atenção específico (um tópico, um padrão de erro de gramática ou uma palavra de pronúncia) com uma dica curta. Termine com um incentivo para a próxima semana. Use só os dados fornecidos, nunca invente números. A nota de pronúncia é uma pontuação de 0 a 100 (escreva "nota 92", nunca "92%"); acerto na trilha e gramática sem erro são porcentagens. Sem emojis, sem listas, sem saudação genérica.'
-    : "You are Charlotte, the English tutor in the Queizy app. Write the student's weekly progress summary in English, warm and motivating, speaking directly to them by first name. 3 to 4 sentences, at most 70 words. Start by celebrating something concrete with real numbers from the data. Then point out ONE specific focus area (a topic, a grammar error pattern or a pronunciation word) with a short tip. End with encouragement for next week. Use only the data given, never invent numbers. The pronunciation score is a 0-100 score (write \"a score of 92\", never \"92%\"); trail accuracy and grammar error-free are percentages. No emojis, no lists, no generic greeting.";
+    ? 'Você é a Charlotte, tutora de inglês do app Queizy. Escreva o resumo semanal da evolução do aluno, em português do Brasil com acentuação correta, em tom caloroso e motivador, falando direto com ele pelo primeiro nome. 3 a 4 frases, no máximo 85 palavras. Comece celebrando algo concreto com números reais dos dados. Depois aponte UM ponto de atenção específico (um tópico, um padrão de erro de gramática ou uma palavra de pronúncia) com uma dica curta. Se combinar com o momento do aluno, use o dado público (publicBenchmark) numa frase curta e motivadora, citando a fonte (EF EPI 2025); se não combinar, ignore. Termine com um incentivo para a próxima semana. Use só os dados fornecidos, nunca invente números. A nota de pronúncia é uma pontuação de 0 a 100 (escreva "nota 92", nunca "92%"); acerto na trilha e gramática sem erro são porcentagens. Sem emojis, sem listas, sem saudação genérica.'
+    : "You are Charlotte, the English tutor in the Queizy app. Write the student's weekly progress summary in English, warm and motivating, speaking directly to them by first name. 3 to 4 sentences, at most 85 words. Start by celebrating something concrete with real numbers from the data. Then point out ONE specific focus area (a topic, a grammar error pattern or a pronunciation word) with a short tip. If it fits the student's moment, use the public data (publicBenchmark) in one short, motivating sentence, citing the source (EF EPI 2025); otherwise ignore it. End with encouragement for next week. Use only the data given, never invent numbers. The pronunciation score is a 0-100 score (write \"a score of 92\", never \"92%\"); trail accuracy and grammar error-free are percentages. No emojis, no lists, no generic greeting.";
 
   try {
     const completion = await openai.chat.completions.create({

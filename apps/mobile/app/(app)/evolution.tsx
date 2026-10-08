@@ -5,7 +5,7 @@ import React, { useCallback, useState } from 'react';
 import { View, ScrollView, TouchableOpacity, ActivityIndicator, RefreshControl } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import Constants from 'expo-constants';
-import { ArrowUp, ArrowDown, CheckCircle, Target, Microphone, PencilLine, Globe } from 'phosphor-react-native';
+import { ArrowUp, ArrowDown, CheckCircle, Target, Microphone, PencilLine } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { C, ScreenHeader, SectionTitle, Card } from '@/components/stats/StatsUI';
@@ -23,7 +23,6 @@ interface Evolution {
   grammar: { errorFree: number | null; previous: number | null; analyzed: number; recent: { wrong: string; right: string }[] };
   strengths: TopicStat[]; focus: TopicStat[];
   weeks: { start: string; practices: number; trailAccuracy: number | null; pronunciation: number | null }[];
-  benchmark: { source: string; text: string };
   summary: string;
 }
 
@@ -195,15 +194,6 @@ export default function EvolutionScreen() {
               </Card>
             )}
 
-            {/* Referência pública */}
-            <SectionTitle title={t('Você e o Brasil', 'You and Brazil')} />
-            <Card style={{ padding: 16, flexDirection: 'row', gap: 12 }}>
-              <Globe size={22} color={C.ink} weight="bold" />
-              <View style={{ flex: 1 }}>
-                <AppText style={{ fontSize: 14, lineHeight: 20, color: C.mid }}>{data.benchmark.text}</AppText>
-                <AppText style={{ fontSize: 11.5, color: C.light, marginTop: 6 }}>{t('Fonte', 'Source')}: {data.benchmark.source}</AppText>
-              </View>
-            </Card>
           </>
         )}
       </ScrollView>
