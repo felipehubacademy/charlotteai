@@ -14,6 +14,8 @@ import { C, ScreenHeader, SectionTitle, Card } from '@/components/stats/StatsUI'
 import { EvolutionRoad } from '@/components/stats/EvolutionRoad';
 import { supabase } from '@/lib/supabase';
 import { systemIsPt } from '@/lib/systemLang';
+import { getModule } from '@/lib/curriculum-v2/loader';
+import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -24,6 +26,7 @@ interface Evolution {
   pronunciation: { avg: number | null; previous: number | null; attempts: number; words: { word: string; count: number }[] };
   grammar: { errorFree: number | null; previous: number | null; analyzed: number; recent: { wrong: string; right: string }[] };
   strengths: TopicStat[]; focus: TopicStat[];
+  focusV2?: { level: string; moduleId: string; unitId: string; activity: 'grammar' | 'speaking'; accuracy: number }[];
   weeks: { start: string; practices: number; trailAccuracy: number | null; pronunciation: number | null }[];
   summary: string;
 }
@@ -84,6 +87,15 @@ export default function EvolutionScreen() {
     const trainTopic = (f: TopicStat) => router.push({
     pathname: '/(app)/learn-session',
     params: { level: f.level, moduleIndex: String(f.moduleIndex), topicIndex: String(f.topicIndex) },
+  } as any);
+  // Trilha nova: título da unidade vem do conteúdo local; Treinar abre a mesma atividade.
+  const v2Title = (f: NonNullable<Evolution['focusV2']>[number]) => {
+    const unit = getModule(f.level as V2Level, f.moduleId)?.units.find(u => u.id === f.unitId);
+    return unit?.title ?? f.unitId;
+  };
+  const trainV2 = (f: NonNullable<Evolution['focusV2']>[number]) => router.push({
+    pathname: '/(app)/learn-session',
+    params: { v: 'v2', level: f.level, moduleId: f.moduleId, unitId: f.unitId, activity: f.activity === 'speaking' ? 'ls' : 'grammar' },
   } as any);
   const trainPractice = (mode: 'pronunciation' | 'grammar', words?: string[]) => router.push({
     pathname: '/(app)/(tabs)/practice',
@@ -153,8 +165,26 @@ export default function EvolutionScreen() {
             )}
 
             {/* Pontos de atenção */}
-            {(data.focus.length > 0 || data.pronunciation.words.length > 0 || data.grammar.recent.length > 0) && (
+            {(data.focus.length > 0 || (data.focusV2?.length ?? 0) > 0 || data.pronunciation.words.length > 0 || data.grammar.recent.length > 0) && (
               <SectionTitle title={t('Vale treinar', 'Worth practicing')} />
+            )}
+            {(data.focusV2?.length ?? 0) > 0 && (
+              <Card style={{ paddingVertical: 6, marginBottom: data.focus.length ? 10 : 0 }}>
+                {data.focusV2!.map((f, i) => (
+                  <View key={`${f.level}${f.moduleId}${f.unitId}${f.activity}`} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 16, paddingVertical: 12, borderTopWidth: i ? 1 : 0, borderTopColor: C.border }}>
+                    <Target size={20} color="#D12A64" weight="bold" />
+                    <View style={{ flex: 1 }}>
+                      <AppText style={{ fontSize: 14.5, fontWeight: '700', color: C.ink }}>{v2Title(f)}</AppText>
+                      <AppText style={{ fontSize: 12, color: C.light, marginTop: 1 }}>
+                        {f.activity === 'speaking'
+                          ? t(`Listening & Speaking · nota ${f.accuracy}`, `Listening & Speaking · score ${f.accuracy}`)
+                          : t(`Grammar · ${f.accuracy}% de acerto`, `Grammar · ${f.accuracy}% correct`)}
+                      </AppText>
+                    </View>
+                    <TrainButton label={t('Treinar', 'Practice')} onPress={() => trainV2(f)} />
+                  </View>
+                ))}
+              </Card>
             )}
             {data.focus.length > 0 && (
               <Card style={{ paddingVertical: 6 }}>

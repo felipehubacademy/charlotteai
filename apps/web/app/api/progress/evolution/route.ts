@@ -24,6 +24,19 @@ const BENCHMARK_FACT = {
   en: 'EF EPI 2025: Brazil placed 75th of 123 countries (482 points), below the global average (488).',
 };
 
+// Trilha nova (learn_history_v2): uma nota por atividade. Só Grammar e
+// Listening & Speaking têm nota; Role-play e Chat contam como concluído.
+type V2Row = { level: string; module_id: string; unit_id: string; activity_type: string; score: number | string | null; updated_at: string };
+const V2_PASS: Record<string, number> = { grammar: 70, speaking: 60 };
+const v2Graded = (rows: V2Row[]) => rows.filter(r => r.activity_type in V2_PASS && r.score != null && !Number.isNaN(Number(r.score)));
+const v2Avg = (rows: V2Row[]) => { const g = v2Graded(rows); return g.length ? Math.round(g.reduce((a, r) => a + Number(r.score), 0) / g.length) : null; };
+/** Junta o acerto da trilha antiga (por resposta) com a nota média da nova (por atividade). */
+function mergeAcc(a: number | null, na: number, b: number | null, nb: number): number | null {
+  if (a == null || !na) return nb ? b : null;
+  if (b == null || !nb) return a;
+  return Math.round((a * na + b * nb) / (na + nb));
+}
+
 /** Segunda-feira 00:00 de Brasília (YYYY-MM-DD). */
 function weekStart(d = new Date()): string {
   const br = new Date(d.getTime() - 3 * 3600000);
@@ -48,12 +61,13 @@ export async function GET(req: NextRequest) {
   const since56 = new Date(now - 56 * DAY).toISOString();
   const cut30 = now - 30 * DAY;
 
-  const [userR, progR, histR, msgR, pracR] = await Promise.all([
+  const [userR, progR, histR, msgR, pracR, v2R] = await Promise.all([
     supabase.from('charlotte_users').select('name, charlotte_level').eq('id', user.id).maybeSingle(),
     supabase.from('charlotte_progress').select('total_xp, streak_days, last_practice_date').eq('user_id', user.id).maybeSingle(),
     supabase.from('learn_history').select('user_id, level, module_index, topic_index, exercise_type, is_correct, answered_at').eq('user_id', user.id).gte('answered_at', since60).limit(10000),
     supabase.from('chat_messages').select('user_id, role, mode, content, created_at').eq('user_id', user.id).in('mode', ['pronunciation', 'grammar']).gte('created_at', since60).order('created_at', { ascending: false }).limit(3000),
     supabase.from('charlotte_practices').select('practice_type, created_at').eq('user_id', user.id).gte('created_at', since56).limit(10000),
+    supabase.from('learn_history_v2').select('level, module_id, unit_id, activity_type, score, updated_at').eq('user_id', user.id).gte('updated_at', since60).limit(5000),
   ]);
 
   const u = userR.data as { name: string | null; charlotte_level: string | null } | null;
@@ -62,14 +76,17 @@ export async function GET(req: NextRequest) {
   const msgs = (msgR.data ?? []) as MsgRow[];
   const practices = ((pracR.data ?? []) as { practice_type: string; created_at: string }[]).filter(p => isStudy(p.practice_type));
 
+  const v2 = (v2R.data ?? []) as V2Row[];
   const isRecent = (iso: string) => new Date(iso).getTime() >= cut30;
+  const v2Now = v2.filter(r => isRecent(r.updated_at));
+  const v2Prev = v2.filter(r => !isRecent(r.updated_at));
   const histNow = hist.filter(h => isRecent(h.answered_at));
   const histPrev = hist.filter(h => !isRecent(h.answered_at));
   const msgsNow = msgs.filter(m => isRecent(m.created_at));
   const msgsPrev = msgs.filter(m => !isRecent(m.created_at));
 
-  const trailNow = pct(histNow.filter(h => h.is_correct).length, histNow.length);
-  const trailPrev = pct(histPrev.filter(h => h.is_correct).length, histPrev.length);
+  const trailNow = mergeAcc(pct(histNow.filter(h => h.is_correct).length, histNow.length), histNow.length, v2Avg(v2Now), v2Graded(v2Now).length);
+  const trailPrev = mergeAcc(pct(histPrev.filter(h => h.is_correct).length, histPrev.length), histPrev.length, v2Avg(v2Prev), v2Graded(v2Prev).length);
   const pronNow = pronunciation(msgsNow);
   const pronPrev = pronunciation(msgsPrev);
   const gramNow = grammar(msgsNow);
@@ -80,6 +97,12 @@ export async function GET(req: NextRequest) {
   const strengths = [...topics].filter(t => t.accuracy >= 80 && t.answers >= 8).sort((a, b) => b.accuracy - a.accuracy).slice(0, 4);
   const focus = topics.filter(t => t.accuracy <= 65).slice(0, 4);
   const exercises = byExercise(hist).filter(e => e.answers >= 5);
+  // Trilha nova: atividades abaixo da nota de aprovação, piores primeiro.
+  const focusV2 = v2Graded(v2)
+    .filter(r => Number(r.score) < V2_PASS[r.activity_type])
+    .sort((a, b) => Number(a.score) - Number(b.score))
+    .slice(0, 4)
+    .map(r => ({ level: r.level, moduleId: r.module_id, unitId: r.unit_id, activity: r.activity_type, accuracy: Math.round(Number(r.score)) }));
 
   // Série das últimas 8 semanas.
   const weeks = Array.from({ length: 8 }, (_, i) => {
@@ -87,11 +110,12 @@ export async function GET(req: NextRequest) {
     const start = end - 7 * DAY;
     const inW = (iso: string) => { const t = new Date(iso).getTime(); return t >= start && t < end; };
     const h = hist.filter(x => inW(x.answered_at));
+    const w2 = v2.filter(x => inW(x.updated_at));
     const p = pronunciation(msgs.filter(m => inW(m.created_at)));
     return {
       start: new Date(start).toISOString().slice(0, 10),
       practices: practices.filter(x => inW(x.created_at)).length,
-      trailAccuracy: pct(h.filter(x => x.is_correct).length, h.length),
+      trailAccuracy: mergeAcc(pct(h.filter(x => x.is_correct).length, h.length), h.length, v2Avg(w2), v2Graded(w2).length),
       pronunciation: p.avg,
     };
   }).reverse();
@@ -101,10 +125,10 @@ export async function GET(req: NextRequest) {
     level: u?.charlotte_level ?? null,
     streak: currentStreak(prog?.streak_days, prog?.last_practice_date),
     xp: prog?.total_xp ?? 0,
-    trail: { accuracy: trailNow, previous: trailPrev, answers: histNow.length },
+    trail: { accuracy: trailNow, previous: trailPrev, answers: histNow.length + v2Graded(v2Now).length },
     pronunciation: { avg: pronNow.avg, previous: pronPrev.avg, attempts: pronNow.items.length, words: pronNow.topWords.slice(0, 8) },
     grammar: { errorFree: gramNow.errorFree, previous: gramPrev.errorFree, analyzed: gramNow.analyzed, recent: gramNow.corrections.slice(0, 4) },
-    strengths, focus, exercises, weeks,
+    strengths, focus, focusV2, exercises, weeks,
     // Compatibilidade: o build 123 ainda mostra o card e lê este campo até o OTA chegar.
     benchmark: { source: 'EF EPI 2025', text: BENCHMARK_FACT[lang] },
   };
