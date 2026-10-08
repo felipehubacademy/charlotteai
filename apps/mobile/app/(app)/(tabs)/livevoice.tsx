@@ -451,6 +451,8 @@ export default function LiveVoiceTab() {
   const isSubscriber = !!profile?.is_institutional || profile?.subscription_status === 'active';
   const accent  = getLevelAccent(level);
 
+  const headerRef = React.useRef<View>(null);
+  const [headerBottom, setHeaderBottom] = useState<number | null>(null);
   const [streak,  setStreak]  = useState(0);
   const [totalXP, setTotalXP] = useState(0);
   const [todayXP, setTodayXP] = useState(0);
@@ -656,6 +658,15 @@ export default function LiveVoiceTab() {
   // visual real do avatar no modal (iPhone 15 Pro).
   const modalAvatarCenterY = insets.top + 24 + 50 + Math.max(0, (innerH - 500) / 2) + 180 + 9;
   const avatarTopOffset = modalAvatarCenterY - 74;
+  // O balão fica acima do avatar (posição fixa), mas o cartão de minutos pode
+  // descer até ele em telas mais baixas. Mede o fim do cabeçalho e escolhe:
+  // balão normal, compacto numa linha logo abaixo do cartão, ou nenhum.
+  const BUBBLE_TOP = avatarTopOffset - 92;
+  const bubbleRoom = headerBottom == null ? Infinity : (avatarTopOffset + 6) - (headerBottom + 8);
+  const bubbleMode: 'full' | 'compact' | 'none' =
+    bubbleRoom >= 86 && (headerBottom == null || headerBottom + 8 <= BUBBLE_TOP) ? 'full'
+    : bubbleRoom >= 50 ? 'compact' : 'none';
+  const bubbleTop = bubbleMode === 'full' ? BUBBLE_TOP : (headerBottom ?? 0) + 8;
 
   return (
     <View style={{ flex: 1, backgroundColor: C.stage }}>
@@ -716,20 +727,21 @@ export default function LiveVoiceTab() {
 
       {/* Balão da Charlotte acima do avatar — mesmo estilo da Home (balão
           branco com o rabinho do logo apontando para ela). */}
-      {!loading && !isLimitReached && (
+      {!loading && !isLimitReached && bubbleMode !== 'none' && (
         <View pointerEvents="none" style={{
           position: 'absolute', left: 0, right: 0,
-          top: avatarTopOffset - 92,
+          top: bubbleTop,
           alignItems: 'center', zIndex: 6,
         }}>
-          <View style={{ maxWidth: '78%' }}>
+          <View style={{ maxWidth: bubbleMode === 'full' ? '78%' : '90%' }}>
             <View style={{
               backgroundColor: C.panel, borderRadius: 18,
-              paddingHorizontal: 16, paddingVertical: 12,
+              paddingHorizontal: 16, paddingVertical: bubbleMode === 'full' ? 12 : 9,
               shadowColor: 'rgba(22,19,31,0.10)', shadowOpacity: 1, shadowRadius: 12,
               shadowOffset: { width: 0, height: 4 }, elevation: 2,
             }}>
-              <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.textWhite, lineHeight: 23, textAlign: 'center' }}>
+              <AppText display numberOfLines={bubbleMode === 'full' ? undefined : 1} adjustsFontSizeToFit={bubbleMode !== 'full'}
+                style={{ fontSize: bubbleMode === 'full' ? 18 : 15, fontWeight: '800', color: C.textWhite, lineHeight: bubbleMode === 'full' ? 23 : 20, textAlign: 'center' }}>
                 {isPt ? 'Bora conversar? Pode errar à vontade.' : "Let's talk! Mistakes are welcome here."}
               </AppText>
             </View>
@@ -750,7 +762,11 @@ export default function LiveVoiceTab() {
           <View style={{ flex: 1 }}>
 
             {/* ── Header da tela: título + status row ── */}
-            <View style={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 12 }}>
+            <View
+              ref={headerRef}
+              onLayout={() => headerRef.current?.measureInWindow((_x, y, _w, h) => setHeaderBottom(y + h - 12))}
+              style={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 12 }}
+            >
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <AppText display style={{ flex: 1, fontSize: 26, fontWeight: '900', color: C.textWhite, letterSpacing: -0.3 }}>
                   Live Voice
