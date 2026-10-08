@@ -10,7 +10,7 @@ import { AppText } from '@/components/ui/Text';
 import { C, ScreenHeader, SectionTitle, Card } from '@/components/stats/StatsUI';
 import { ShareCardModal, ShareCardContent } from '@/components/share/ShareCardModal';
 import { RallySection } from '@/components/rally/RallySection';
-import { FriendSearch } from '@/components/social/FriendSearch';
+import { FriendSearchEntry } from '@/components/social/FriendSearch';
 import { FriendRequests } from '@/components/social/FriendRequests';
 import { fetchMyHandle, setUsername } from '@/lib/friends';
 import { systemIsPt } from '@/lib/systemLang';
@@ -147,7 +147,7 @@ export default function StudyTogetherScreen() {
 
         {/* Encontrar amigos pelo nome ou @ */}
         <SectionTitle title={t('Encontrar amigos', 'Find friends')} />
-        <FriendSearch onChange={load} />
+        <FriendSearchEntry />
 
         {/* Dupla */}
         <SectionTitle title={t('Seus amigos de estudo', 'Your study friends')} meta={info?.buddies.length ? String(info.buddies.length) : undefined} />

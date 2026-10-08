@@ -4,6 +4,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, TextInput, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import { MagnifyingGlass, UserPlus, Check, Clock, X } from 'phosphor-react-native';
+import { router } from 'expo-router';
 import { AppText } from '@/components/ui/Text';
 import { C, Card } from '@/components/stats/StatsUI';
 import { systemIsPt } from '@/lib/systemLang';
@@ -18,7 +19,7 @@ function Face({ p }: { p: Person }) {
   );
 }
 
-export function FriendSearch({ onChange }: { onChange?: () => void }) {
+export function FriendSearch({ onChange, autoFocus }: { onChange?: () => void; autoFocus?: boolean }) {
   const isPt = systemIsPt;
   const t = (pt: string, en: string) => (isPt ? pt : en);
   const [q, setQ] = useState('');
@@ -55,7 +56,7 @@ export function FriendSearch({ onChange }: { onChange?: () => void }) {
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.card, borderRadius: 14, borderWidth: 1, borderColor: C.border, paddingHorizontal: 12 }}>
         <MagnifyingGlass size={18} color={C.light} weight="bold" />
         <TextInput
-          value={q} onChangeText={setQ} autoCapitalize="none" autoCorrect={false} returnKeyType="search"
+          value={q} onChangeText={setQ} autoCapitalize="none" autoCorrect={false} returnKeyType="search" autoFocus={autoFocus}
           placeholder={t('Buscar amigo por nome ou @', 'Find a friend by name or @')} placeholderTextColor={C.light}
           style={{ flex: 1, paddingVertical: 12, fontSize: 15, color: C.ink }}
         />
@@ -99,5 +100,17 @@ export function FriendSearch({ onChange }: { onChange?: () => void }) {
         </Card>
       )}
     </View>
+  );
+}
+
+/** Campo de busca que abre a tela Encontrar amigos (lá o teclado não cobre os resultados). */
+export function FriendSearchEntry() {
+  const isPt = systemIsPt;
+  return (
+    <TouchableOpacity activeOpacity={0.8} onPress={() => router.push('/(app)/find-friends' as any)}
+      style={{ marginHorizontal: 16, marginBottom: 16, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.card, borderRadius: 14, borderWidth: 1, borderColor: C.border, paddingHorizontal: 12, paddingVertical: 13 }}>
+      <MagnifyingGlass size={18} color={C.light} weight="bold" />
+      <AppText style={{ fontSize: 15, color: C.light }}>{isPt ? 'Buscar amigo por nome ou @' : 'Find a friend by name or @'}</AppText>
+    </TouchableOpacity>
   );
 }
