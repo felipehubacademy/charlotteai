@@ -7,6 +7,7 @@ import { AppText } from '@/components/ui/Text';
 import { C, ScreenHeader } from '@/components/stats/StatsUI';
 import { FriendSearch } from '@/components/social/FriendSearch';
 import { FriendRequests } from '@/components/social/FriendRequests';
+import { BlockedList } from '@/components/social/BlockedList';
 import { systemIsPt } from '@/lib/systemLang';
 
 export default function FindFriendsScreen() {
@@ -23,6 +24,7 @@ export default function FindFriendsScreen() {
                   : 'Search by name, last name or @. They get your request and, once accepted, you become study friends.'}
           </AppText>
           <FriendRequests />
+          <BlockedList />
         </ScrollView>
       </KeyboardAvoidingView>
     </View>
