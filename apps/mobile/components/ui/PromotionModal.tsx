@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Star, ArrowRight, Trophy } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { LEVEL_ACCENT } from '@/lib/levelColors';
+import { systemIsPt as isPt } from '@/lib/systemLang';
 
 interface Props {
   isOpen: boolean;
@@ -82,21 +83,23 @@ export default function PromotionModal({ isOpen, nextLevel, onConfirm }: Props) 
             fontSize: 11, fontWeight: '700', color: '#8A8494',
             textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: 10,
           }}>
-            Nível desbloqueado
+            {isPt ? 'Nível desbloqueado' : 'Level unlocked'}
           </AppText>
           <AppText style={{
             fontSize: 32, fontWeight: '900', color: '#16131F',
             letterSpacing: -1, textAlign: 'center', marginBottom: 8,
             lineHeight: 38,
           }}>
-            {labelPt}
+            {isPt ? labelPt : labelEn}
           </AppText>
-          <AppText style={{
-            fontSize: 14, fontWeight: '500', color: '#8A8494',
-            letterSpacing: 1, textTransform: 'uppercase', marginBottom: 8,
-          }}>
-            {labelEn}
-          </AppText>
+          {isPt && (
+            <AppText style={{
+              fontSize: 14, fontWeight: '500', color: '#8A8494',
+              letterSpacing: 1, textTransform: 'uppercase', marginBottom: 8,
+            }}>
+              {labelEn}
+            </AppText>
+          )}
 
           {/* Accent divider */}
           <View style={{
@@ -108,8 +111,9 @@ export default function PromotionModal({ isOpen, nextLevel, onConfirm }: Props) 
             fontSize: 15, color: '#4D4858', textAlign: 'center',
             lineHeight: 22, marginBottom: 32, fontWeight: '500',
           }}>
-            Você completou a trilha com performance suficiente.{'\n'}
-            Bem-vindo ao nível {labelPt}!
+            {isPt
+              ? `Você completou a trilha com nota suficiente.\nBoas-vindas ao nível ${labelPt}!`
+              : `You completed the trail with a strong enough score.\nWelcome to ${labelEn}!`}
           </AppText>
 
           {/* CTA */}
@@ -128,7 +132,7 @@ export default function PromotionModal({ isOpen, nextLevel, onConfirm }: Props) 
             }}
           >
             <AppText style={{ color: '#FFF', fontSize: 16, fontWeight: '800', letterSpacing: -0.3 }}>
-              Começar o {labelPt}
+              {isPt ? `Começar o ${labelPt}` : `Start ${labelEn}`}
             </AppText>
             <ArrowRight size={18} color="#FFF" weight="bold" />
           </TouchableOpacity>

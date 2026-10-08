@@ -128,7 +128,7 @@ export function useAudioRecorder(
         }
       }, 1000);
     } catch (error) {
-      console.error('❌ startRecording error:', error);
+      console.error('startRecording error:', error);
     }
   }, [hasPermission, requestPermission, recorder]);
 
@@ -171,7 +171,7 @@ export function useAudioRecorder(
         return { uri, duration: recordedDuration };
       }
     } catch (error) {
-      console.error('❌ stopRecording error:', error);
+      console.error('stopRecording error:', error);
       setState('idle');
       return null;
     }
@@ -226,7 +226,7 @@ export async function transcribeAudio(audioUri: string): Promise<string | null> 
     // API returns { transcription: "...", success: true }
     return data.transcription ?? data.text ?? null;
   } catch (error) {
-    console.error('❌ transcribeAudio error:', error);
+    console.error('transcribeAudio error:', error);
     return null;
   }
 }

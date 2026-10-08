@@ -27,7 +27,7 @@ import { AppText } from '@/components/ui/Text';
 import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
-import { restorePurchases, openManageSubscriptions } from '@/lib/purchases';
+import { restorePurchases, openManageSubscriptions, syncSubscriptionToSupabase } from '@/lib/purchases';
 import { systemIsPt } from '@/lib/systemLang';
 import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
@@ -283,6 +283,10 @@ export default function ProfileTab() {
   const handleRestorePurchases = async () => {
     setRestoringPurchases(true);
     const r = await restorePurchases();
+    // Mesmo fluxo do paywall: grava no Supabase na hora (sem esperar o webhook).
+    if (r.success && r.customerInfo && profile?.id) {
+      await syncSubscriptionToSupabase(profile.id, r.customerInfo).catch(() => {});
+    }
     await refreshProfile();
     setRestoringPurchases(false);
 
@@ -293,9 +297,18 @@ export default function ProfileTab() {
     const supportEmail = 'suporte@queizy.com';
     const subject = encodeURIComponent(isPt ? 'Restaurar compra' : 'Restore purchase');
     const body    = encodeURIComponent(isPt ? `Olá! Tentei restaurar minha assinatura.\n\nMeu email: ${profile?.email ?? ''}` : `Hi! I tried to restore my subscription.\n\nMy email: ${profile?.email ?? ''}`);
+    const inUse = r.errorCode === 7; // recibo da loja já vinculado a outra conta Queizy
     Alert.alert(
-      isPt ? 'Nenhuma assinatura encontrada' : 'No subscription found',
-      isPt ? 'Não encontramos assinatura vinculada a este usuário. Entre em contato com o suporte.' : 'No subscription found for this account. Please contact support.',
+      inUse
+        ? (isPt ? 'Assinatura vinculada a outra conta' : 'Subscription linked to another account')
+        : (isPt ? 'Nenhuma assinatura encontrada' : 'No subscription found'),
+      inUse
+        ? (isPt
+            ? 'Esta conta da loja já tem uma assinatura Queizy ativa em outro usuário. Entre com a conta Queizy original ou fale com o suporte.'
+            : 'This store account already has an active Queizy subscription on another user. Sign in with the original Queizy account or contact support.')
+        : (isPt
+            ? 'Não encontramos assinatura vinculada a este usuário. Se você já comprou, pode ser que ela esteja em outra conta Queizy. Entre com a conta original ou fale com o suporte.'
+            : 'No subscription found for this account. If you purchased before, it may be on another Queizy account. Sign in with the original account or contact support.'),
       [{ text: 'OK' }, { text: isPt ? 'Falar com suporte' : 'Contact support', onPress: () => Linking.openURL(`mailto:${supportEmail}?subject=${subject}&body=${body}`) }],
     );
   };

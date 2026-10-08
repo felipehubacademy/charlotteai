@@ -56,7 +56,7 @@ class TranslationService {
 
       return { translatedText: data.translatedText, success: true };
     } catch (error: any) {
-      console.error('❌ Translation failed:', error);
+      console.error('Translation failed:', error);
       return {
         translatedText: englishText,
         success: false,

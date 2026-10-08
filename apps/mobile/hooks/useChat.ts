@@ -44,7 +44,7 @@ async function savePractice(
     practice_type: practiceType,
     xp_earned:     xpEarned,
   });
-  if (error) console.warn('⚠️ savePractice error:', error.message, error.code);
+  if (error) console.warn('savePractice error:', error.message, error.code);
 }
 
 /** Persist a chat message for history and pedagogical analysis (fire-and-forget).
@@ -59,7 +59,7 @@ function saveChatMessage(
   if (!userId) return;
   supabase.from('chat_messages')
     .insert({ user_id: userId, role, content, mode, session_id: sessionId ?? null })
-    .then(({ error }) => { if (error) console.warn('⚠️ saveChatMessage:', error.message); });
+    .then(({ error }) => { if (error) console.warn('saveChatMessage:', error.message); });
 
   // Incrementa message_count na session (fire-and-forget) só pra Free Chat.
   if (sessionId && mode === 'chat') {
@@ -87,7 +87,7 @@ function saveChatMessage(
 /** Call TTS endpoint and save the mp3 to a local temp file. Returns local URI or null. */
 async function fetchTTS(text: string, userId?: string): Promise<string | null> {
   try {
-    console.log('🔊 Fetching TTS for:', text.slice(0, 60));
+    console.log('Fetching TTS for:', text.slice(0, 60));
     const response = await fetch(`${API_BASE_URL}/api/tts`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -95,12 +95,12 @@ async function fetchTTS(text: string, userId?: string): Promise<string | null> {
     });
     if (!response.ok) {
       const err = await response.text();
-      console.warn('❌ TTS HTTP error:', response.status, err);
+      console.warn('TTS HTTP error:', response.status, err);
       return null;
     }
     const data = await response.json();
     if (!data.audio) {
-      console.warn('❌ TTS response missing audio field:', JSON.stringify(data).slice(0, 200));
+      console.warn('TTS response missing audio field:', JSON.stringify(data).slice(0, 200));
       return null;
     }
     const ext = data.mimeType === 'audio/flac' ? 'flac' : data.mimeType === 'audio/wav' ? 'wav' : 'mp3';
@@ -108,10 +108,10 @@ async function fetchTTS(text: string, userId?: string): Promise<string | null> {
     await FileSystem.writeAsStringAsync(uri, data.audio, {
       encoding: 'base64' as any,
     });
-    console.log('✅ TTS saved to:', uri);
+    console.log('TTS saved to:', uri);
     return uri;
   } catch (e) {
-    console.warn('❌ TTS fetch failed:', e);
+    console.warn('TTS fetch failed:', e);
     return null;
   }
 }
@@ -212,13 +212,13 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         supabase.from('charlotte_chat_sessions')
           .update({ ended_at: new Date().toISOString() })
           .eq('id', prevId)
-          .then(({ error }) => { if (error) console.warn('⚠️ cold-start close:', error.message); });
+          .then(({ error }) => { if (error) console.warn('cold-start close:', error.message); });
 
         fetch(`${API_BASE_URL}/api/summarize-chat`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ sessionId: prevId, userId, userLevel }),
-        }).catch(err => console.warn('⚠️ summarize-chat (cold-start):', err));
+        }).catch(err => console.warn('summarize-chat (cold-start):', err));
       });
   }, [userId, mode]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -234,7 +234,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       .select('id')
       .single();
     if (error || !data) {
-      console.warn('⚠️ ensureSession failed:', error?.message);
+      console.warn('ensureSession failed:', error?.message);
       return null;
     }
     activeSessionIdRef.current = data.id;
@@ -255,7 +255,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       supabase.from('charlotte_chat_sessions')
         .update({ title: opts.title })
         .eq('id', sessionId)
-        .then(({ error }) => { if (error) console.warn('⚠️ session title:', error.message); });
+        .then(({ error }) => { if (error) console.warn('session title:', error.message); });
       return;
     }
     if (!opts.text?.trim()) return;
@@ -263,7 +263,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sessionId, userId, lang: systemIsPt ? 'pt' : 'en', text: opts.text.trim() }),
-    }).catch(err => console.warn('⚠️ chat-title:', err));
+    }).catch(err => console.warn('chat-title:', err));
   }, [mode, userId]);
 
   // ── Encerra session ativa: marca ended_at + dispara summary + limpa state ──
@@ -282,14 +282,14 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     supabase.from('charlotte_chat_sessions')
       .update({ ended_at: new Date().toISOString() })
       .eq('id', sessionId)
-      .then(({ error }) => { if (error) console.warn('⚠️ closeSession update:', error.message); });
+      .then(({ error }) => { if (error) console.warn('closeSession update:', error.message); });
 
     // Dispara summary via endpoint (fire-and-forget)
     fetch(`${API_BASE_URL}/api/summarize-chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sessionId, userId, userLevel, lang: systemIsPt ? 'pt' : 'en' }),
-    }).catch(err => console.warn('⚠️ summarize-chat:', err));
+    }).catch(err => console.warn('summarize-chat:', err));
 
     // Limpa state local
     setMessages([buildWelcome(mode, userLevel, userName)]);
@@ -322,7 +322,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     supabase.from('charlotte_chat_sessions')
       .update({ ended_at: null })
       .eq('id', sessionId)
-      .then(({ error }) => { if (error) console.warn('⚠️ loadSession reopen:', error.message); });
+      .then(({ error }) => { if (error) console.warn('loadSession reopen:', error.message); });
 
     const { data, error } = await supabase
       .from('chat_messages')
@@ -511,7 +511,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         saveChatMessage(userId, 'assistant', feedback, mode, activeSessionIdRef.current);
 
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-        soundEngine.play('xp_gained').catch(() => {}); // 🔊 XP ding
+        soundEngine.play('xp_gained').catch(() => {}); // XP ding
         setSessionXP(prev => prev + xpAwarded);
         setTotalXP(prev => {
           const milestone = checkXPMilestone(prev, prev + xpAwarded);
@@ -524,7 +524,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
           setTimeout(() => checkForNewAchievements(), 1500);
         }
       } catch (error) {
-        console.error('❌ sendTextMessage error:', error);
+        console.error('sendTextMessage error:', error);
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
         const fallback: Message = {
           id: generateId(),
@@ -632,7 +632,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
           setMessages(prev =>
             prev.map(m => m.id === tempId ? {
               ...m, isRecording: false,
-              technicalFeedback: "Couldn't hear you clearly. Try again in a quiet place 🎤",
+              technicalFeedback: systemIsPt ? 'Não deu para ouvir direito. Tente de novo num lugar mais silencioso.' : "Couldn't hear you clearly. Try again in a quiet place.",
             } : m)
           );
           setMessages(prev => [...prev, {
@@ -652,7 +652,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         // what the user said and what the correct word sounds like.
         // The semantic/minimal-pair check runs AFTER Azure — only for demo feedback.
         const referenceText = transcription; // always use Whisper's transcript
-        console.log('🔤 [azure] Using Whisper transcript as ref text:', referenceText);
+        console.log('[azure] Using Whisper transcript as ref text:', referenceText);
 
         // ── 3. Azure pronunciation assessment (with ref text if available) ──
         let pronunciationData: PronunciationData | null = null;
@@ -670,15 +670,15 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
           // Always pass Whisper's transcript as reference — Azure reference mode
           // gives proper per-word errorType detection and reliable scores.
           formData.append('referenceText', referenceText);
-          console.log(`🔬 Calling /api/pronunciation... (ref: "${referenceText.slice(0, 60)}")`);
+          console.log(`Calling /api/pronunciation... (ref: "${referenceText.slice(0, 60)}")`);
           const res = await fetch(`${API_BASE_URL}/api/pronunciation`, {
             method: 'POST',
             body: formData,
           });
-          console.log('🔬 Pronunciation API status:', res.status);
+          console.log('Pronunciation API status:', res.status);
           if (res.ok) {
             const json = await res.json();
-            console.log('🔬 Pronunciation result:', JSON.stringify(json).slice(0, 300));
+            console.log('Pronunciation result:', JSON.stringify(json).slice(0, 300));
             if (json.success && json.result) {
               azureAvailable = true;
               pronunciationData = {
@@ -698,14 +698,14 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
                 )
                 .map((w: { word: string }) => w.word);
             } else {
-              console.warn('⚠️ Pronunciation API returned failure:', json.error ?? 'unknown');
+              console.warn('Pronunciation API returned failure:', json.error ?? 'unknown');
             }
           } else {
             const errText = await res.text().catch(() => '');
-            console.warn('⚠️ Pronunciation API HTTP error:', res.status, errText.slice(0, 200));
+            console.warn('Pronunciation API HTTP error:', res.status, errText.slice(0, 200));
           }
         } catch (e) {
-          console.warn('⚠️ Pronunciation API unreachable:', e);
+          console.warn('Pronunciation API unreachable:', e);
         }
 
         // ── 3. Score card bubble ────────────────────────────────
@@ -779,13 +779,13 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
               const semJson = await semRes.json();
               semanticCorrections = semJson.corrections ?? [];
               if (semanticCorrections.length > 0) {
-                console.log('🔤 [semantic] Minimal-pair error detected (demo only):', semanticCorrections);
+                console.log('[semantic] Minimal-pair error detected (demo only):', semanticCorrections);
               } else {
-                console.log('🔤 [semantic] No minimal-pair errors found — sentence is semantically correct');
+                console.log('[semantic] No minimal-pair errors found — sentence is semantically correct');
               }
             }
           } catch (e) {
-            console.warn('⚠️ Semantic check failed, skipping demo for minimal pairs:', e);
+            console.warn('Semantic check failed, skipping demo for minimal pairs:', e);
           }
         }
 
@@ -851,7 +851,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         }
 
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-        soundEngine.play('xp_gained').catch(() => {}); // 🔊 XP ding
+        soundEngine.play('xp_gained').catch(() => {}); // XP ding
         setSessionXP(prev => prev + xpAwarded);
         setTotalXP(prev => {
           const milestone = checkXPMilestone(prev, prev + xpAwarded);
@@ -864,7 +864,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         }
 
       } catch (error) {
-        console.error('❌ pronunciation flow error:', error);
+        console.error('pronunciation flow error:', error);
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
         setMessages(prev => prev.map(m => m.id === tempId ? { ...m, isRecording: false } : m));
         setMessages(prev => [...prev, {
@@ -914,20 +914,20 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       });
 
       try {
-        console.log('🎤 Transcribing audio:', audioUri);
+        console.log('Transcribing audio:', audioUri);
         const transcription = await transcribeAudio(audioUri);
-        console.log('📝 Transcription result:', transcription);
+        console.log('Transcription result:', transcription);
 
         setMessages(prev =>
           prev.map(m => m.id === tempId ? { ...m, content: '', isRecording: false } : m)
         );
 
         if (!transcription) {
-          console.warn('⚠️ Transcription returned null — aborting');
+          console.warn('Transcription returned null — aborting');
           setMessages(prev =>
             prev.map(m => m.id === tempId ? {
               ...m, isRecording: false,
-              technicalFeedback: "Couldn't hear you clearly. Try again in a quiet place 🎤",
+              technicalFeedback: systemIsPt ? 'Não deu para ouvir direito. Tente de novo num lugar mais silencioso.' : "Couldn't hear you clearly. Try again in a quiet place.",
             } : m)
           );
           setMessages(prev => [...prev, {
@@ -980,7 +980,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
           setTimeout(() => checkForNewAchievements(), 1500);
         }
       } catch (error) {
-        console.error('❌ sendAudioMessage error:', error);
+        console.error('sendAudioMessage error:', error);
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
         setMessages(prev => prev.map(m => m.id === tempId ? { ...m, isRecording: false } : m));
         setMessages(prev => [...prev, {

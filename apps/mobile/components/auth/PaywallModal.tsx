@@ -247,8 +247,8 @@ export function PaywallModal() {
           : (isPt ? 'Nenhuma assinatura encontrada nesta conta' : 'No subscription found on this account'),
         isReceiptInUse
           ? (isPt
-              ? 'Esta conta Apple já tem uma assinatura Queizy ativa em outro usuário. Entre com a conta Queizy original ou fale com o suporte.'
-              : 'This Apple account already has an active Queizy subscription on another user. Sign in with the original Queizy account or contact support.')
+              ? 'Esta conta da loja já tem uma assinatura Queizy ativa em outro usuário. Entre com a conta Queizy original ou fale com o suporte.'
+              : 'This store account already has an active Queizy subscription on another user. Sign in with the original Queizy account or contact support.')
           : (isPt
               ? 'Não encontramos assinatura Queizy vinculada a este usuário.\n\nSe você já comprou antes, pode ser que a assinatura esteja em outra conta Queizy. Entre com a conta original ou fale com o suporte.'
               : 'We couldn’t find a Queizy subscription linked to this user.\n\nIf you’ve purchased before, it may be on another Queizy account. Sign in with the original account or contact support.'),

@@ -64,7 +64,7 @@ export function usePushNotifications(userId?: string) {
         }),
       });
     } catch (e) {
-      console.warn('⚠️ setNotificationHandler failed:', e);
+      console.warn('setNotificationHandler failed:', e);
     }
 
     if (!userId) return;
@@ -92,13 +92,13 @@ export function usePushNotifications(userId?: string) {
 
     // Notification received while app is in foreground
     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
-      console.log('📱 Push received:', notification.request.content.title);
+      console.log('Push received:', notification.request.content.title);
     });
 
     // User tapped a notification — deep link to the right screen
     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
       const data = response.notification.request.content.data as any;
-      console.log('👆 Push tapped:', data);
+      console.log('Push tapped:', data);
 
       // Map notification type → app route
       try {
@@ -119,7 +119,7 @@ export function usePushNotifications(userId?: string) {
             router.push('/(app)');
         }
       } catch (e) {
-        console.warn('⚠️ Push deep link failed:', e);
+        console.warn('Push deep link failed:', e);
       }
     });
 
@@ -144,7 +144,7 @@ async function registerForPushNotifications(): Promise<string | null> {
     }
 
     if (finalStatus !== 'granted') {
-      console.log('❌ Push permission denied');
+      console.log('Push permission denied');
       return null;
     }
 
@@ -152,11 +152,11 @@ async function registerForPushNotifications(): Promise<string | null> {
       projectId: EXPO_PROJECT_ID,
     });
 
-    console.log('✅ Expo Push Token:', token);
-    console.log('🔍 Push env — appOwnership:', Constants.appOwnership, '| executionEnvironment:', (Constants as any).executionEnvironment);
+    console.log('Expo Push Token:', token);
+    console.log('Push env — appOwnership:', Constants.appOwnership, '| executionEnvironment:', (Constants as any).executionEnvironment);
     return token;
   } catch (e) {
-    console.warn('❌ Push registration failed:', e);
+    console.warn('Push registration failed:', e);
     return null;
   }
 }
@@ -175,7 +175,7 @@ async function saveTokenToSupabase(userId: string, token: string) {
     .eq('expo_push_token', token)
     .neq('id', userId);
   if (clearErr) {
-    console.warn('⚠️ Push token takeover clear error:', clearErr.message);
+    console.warn('Push token takeover clear error:', clearErr.message);
   }
 
   // 2. Assign it to the current user, com o idioma do aparelho: os pushes
@@ -187,10 +187,10 @@ async function saveTokenToSupabase(userId: string, token: string) {
     .select('id');
 
   if (error) {
-    console.warn('❌ Failed to save push token:', error.message);
+    console.warn('Failed to save push token:', error.message);
   } else if (!data?.length) {
-    console.warn('⚠️ Push token update: no charlotte_users row found for', userId);
+    console.warn('Push token update: no charlotte_users row found for', userId);
   } else {
-    console.log('✅ Push token saved to Supabase');
+    console.log('Push token saved to Supabase');
   }
 }

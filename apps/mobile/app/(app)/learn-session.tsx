@@ -955,11 +955,11 @@ export default function LearnSessionScreen() {
 
       setIsComplete(true);
       if (userId) {
-        // 📅 Agendar revisões espaçadas (3, 7, 14, 30 dias) — somente se NÃO for uma revisão
+        // Agendar revisões espaçadas (3, 7, 14, 30 dias) — somente se NÃO for uma revisão
         if (!params.reviewId) {
           scheduleReviews(userId, level, moduleIndex, topicIndex, topic?.title ?? '').catch(console.warn);
         } else {
-          // ✅ Marcar revisão como concluída — ou reagendar se houve erros
+          // Marcar revisão como concluída — ou reagendar se houve erros
           if (sessionErrors > 0) {
             rescheduleReview(
               params.reviewId,

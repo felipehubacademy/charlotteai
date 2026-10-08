@@ -24,6 +24,31 @@ import { translationService, TranslationResult } from '@/lib/translation-service
 import PronunciationScoreCard, { PronunciationData } from '@/components/chat/PronunciationScoreCard';
 import { router } from 'expo-router';
 
+
+// A correção de gramática chega como ❌ "errado" → ✅ "certo" (formato que o
+// servidor também lê para o histórico). Aqui vira texto: errado riscado em
+// vermelho → certo em verde, sem os emojis.
+const MARK_RE = /❌\s*("?)([^"→\n]+?)\1\s*→\s*✅\s*("?)([^"\n—]+?)\3(?=\s*(?:—|-|$|\n|\.))/g;
+function renderMarked(content: string): React.ReactNode {
+  if (!/[❌✅]/.test(content)) return content;
+  const out: React.ReactNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  MARK_RE.lastIndex = 0;
+  while ((m = MARK_RE.exec(content))) {
+    if (m.index > last) out.push(content.slice(last, m.index));
+    out.push(
+      <AppText key={m.index} style={{ color: '#D12A64', textDecorationLine: 'line-through' }}>{m[1]}{m[2].trim()}{m[1]}</AppText>,
+      '  →  ',
+      <AppText key={`${m.index}r`} style={{ color: '#08804A', fontWeight: '700' }}>{m[3]}{m[4].trim()}{m[3]}</AppText>,
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < content.length) out.push(content.slice(last));
+  // Qualquer marcador que sobrou (formato fora do padrão) sai sem o emoji.
+  return out.map(n => (typeof n === 'string' ? n.replace(/\s*[❌✅]\uFE0F?\s*/g, ' ') : n));
+}
+
 export interface Message {
   id: string;
   role: 'user' | 'assistant';
@@ -226,7 +251,7 @@ const MessageBubble: React.FC<{
             }}>
               <SpeakerHigh size={11} color="#08804A" weight="fill" />
               <AppText style={{ fontSize: 10, fontWeight: '700', color: '#08804A', textTransform: 'uppercase', letterSpacing: 0.7 }}>
-                Demonstration
+                {systemIsPt ? 'Demonstração' : 'Demonstration'}
               </AppText>
             </View>
           )}
@@ -236,7 +261,7 @@ const MessageBubble: React.FC<{
             <AppText
               style={{ fontSize: 14, lineHeight: 21, color: isUser ? '#16131F' : '#16131F' }}
             >
-              {message.content}
+              {renderMarked(message.content)}
             </AppText>
           )}
 

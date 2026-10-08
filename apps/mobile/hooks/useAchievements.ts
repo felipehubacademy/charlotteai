@@ -60,7 +60,7 @@ export function useAchievements(userId: string | undefined) {
       description: row.achievement_description ?? row.description ?? '',
       xpBonus:     row.xp_bonus ?? 0,
       rarity:      (row.rarity as Achievement['rarity']) ?? 'common',
-      icon:        row.badge_icon ?? '🏆',
+      icon:        row.badge_icon ?? 'trophy',
       earnedAt:    new Date(row.earned_at),
     }));
 
