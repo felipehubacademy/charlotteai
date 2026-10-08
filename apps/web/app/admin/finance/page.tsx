@@ -484,7 +484,6 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
                       <CostDelta cur={data.azure.total} prev={data.prev.azure?.total ?? null} prevLabel={prevLabel} partial={partial} fmt={n => curFmt(n, data.azure!.currency)} />
                     </div>
                   </div>
-                  <div style={{ fontSize: 12, color: AI_CARD.mid, lineHeight: 1.5 }}>Pronúncia da aba Practice e demais serviços da assinatura.</div>
                   <AiLines lines={data.azure.lines.filter(l => l.amount > 0).slice(0, 4).map(l => ({ name: l.name, value: l.amount }))} fmt={n => curFmt(n, data.azure!.currency)} />
                   {postButton('Microsoft Azure', AI_ACCENT.azure, data.azure.total < 0.01)}
                 </>
@@ -512,7 +511,6 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
                       <div style={{ width: `${Math.min(100, (data.elevenlabs.used / Math.max(1, data.elevenlabs.limit)) * 100)}%`, height: '100%', background: AI_ACCENT.eleven, borderRadius: 999 }} />
                     </div>
                   </div>
-                  <div style={{ fontSize: 11.5, color: AI_CARD.low, marginTop: 'auto', lineHeight: 1.5 }}>Voz do vocabulário (gerada uma vez e guardada). Entra pela fatura do cartão.</div>
                 </>
               ) : <div style={{ fontSize: 12, color: AI_CARD.mid }}>Não foi possível ler o uso agora.</div>}
             </AiCard>
