@@ -3,11 +3,11 @@
 Locale primário pt-BR, secundário en-US. Contagem de caracteres entre parênteses.
 
 ## Nome do app
-- **App Store (até 30):** `Queizy: Inglês com IA` (21)
-- **Google Play (até 30):** `Queizy: Inglês com IA` (21)
+- **App Store (até 30):** `Queizy – Aprenda inglês` (23)
+- **Google Play (até 30):** `Queizy – Aprenda inglês` (23)
 
 ## Subtítulo da App Store (até 30)
-- **PT:** `Fale inglês com a Charlotte` (27)
+- **PT:** `Do queizy ao crazy, com IA` (26)
 - **EN:** `Speak English with Charlotte` (28)
 
 ## Descrição curta do Google Play (até 80)
