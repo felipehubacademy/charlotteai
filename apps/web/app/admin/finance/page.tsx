@@ -23,7 +23,7 @@ const EXPENSE_CATEGORIES = [
   'Ferramentas e software', 'Marketing e mídia', 'Equipe e prestadores', 'Jurídico e contábil', 'Impostos', 'Reembolsos e estornos', 'Outros',
 ];
 const INCOME_CATEGORIES = ['Assinaturas App Store', 'Assinaturas Google Play', 'B2B e institucional', 'Aporte de sócios', 'Outros'];
-const VENDORS = ['OpenAI', 'ElevenLabs', 'Microsoft Azure', 'Vercel', 'Supabase', 'Expo (EAS)', 'RevenueCat', 'Apple', 'Google', 'Cloudflare', 'registro.br', 'Microsoft 365', 'Sentry', 'HubSpot'];
+const VENDORS = ['OpenAI', 'Anthropic', 'ElevenLabs', 'Microsoft Azure', 'Vercel', 'Supabase', 'Expo (EAS)', 'RevenueCat', 'Apple', 'Google', 'Cloudflare', 'registro.br', 'Microsoft 365', 'Sentry', 'HubSpot'];
 const CURRENCIES = ['BRL', 'USD', 'EUR'];
 
 const STATUS_LABEL: Record<Status, string> = { pending: 'A pagar', paid: 'Pago', canceled: 'Cancelado' };
@@ -113,10 +113,13 @@ const emptyForm = (kind: Kind = 'expense'): FormState => ({
   amount: '', currency: 'BRL', fx_rate: '1', due_date: todayISO(), status: 'paid', paid_at: todayISO(), recurrence: 'none', notes: '',
 });
 
-function EntryModal({ initial, vendors, onClose, onSaved }: {
-  initial: FormState; vendors: string[]; onClose: () => void; onSaved: () => void;
+const NEW_CATEGORY = '__new__';
+
+function EntryModal({ initial, vendors, customCats, onClose, onSaved }: {
+  initial: FormState; vendors: string[]; customCats: Record<Kind, string[]>; onClose: () => void; onSaved: () => void;
 }) {
   const [f, setF] = useState<FormState>(initial);
+  const [newCat, setNewCat] = useState(false);
   const [saving, setSaving] = useState(false);
   const [fxLoading, setFxLoading] = useState(false);
   const [err, setErr] = useState('');
@@ -134,15 +137,19 @@ function EntryModal({ initial, vendors, onClose, onSaved }: {
 
   const amountNum = Number(f.amount.replace(/\./g, '').replace(',', '.')) || 0;
   const fxNum = Number(f.fx_rate.replace(',', '.')) || 0;
-  const cats = f.kind === 'expense' ? EXPENSE_CATEGORIES : INCOME_CATEGORIES;
+  const baseCats = f.kind === 'expense' ? EXPENSE_CATEGORIES : INCOME_CATEGORIES;
+  // Categorias criadas em lançamentos anteriores entram na lista, antes de "Outros".
+  const extra = customCats[f.kind].filter(c => !baseCats.includes(c));
+  const cats = [...baseCats.filter(c => c !== 'Outros'), ...extra, 'Outros'];
 
   const save = async () => {
     setErr('');
     if (!f.description.trim()) return setErr('Descreva o lançamento.');
+    if (!f.category.trim()) return setErr('Informe a categoria.');
     if (!amountNum) return setErr('Informe o valor.');
     setSaving(true);
     const body = {
-      id: f.id, kind: f.kind, description: f.description, category: f.category, vendor: f.vendor || null,
+      id: f.id, kind: f.kind, description: f.description, category: f.category.trim(), vendor: f.vendor.trim() || null,
       amount: amountNum, currency: f.currency, fx_rate: f.currency === 'BRL' ? 1 : fxNum,
       due_date: f.due_date, status: f.status, paid_at: f.status === 'paid' ? (f.paid_at || f.due_date) : null,
       recurrence: f.recurrence, notes: f.notes || null,
@@ -166,7 +173,7 @@ function EntryModal({ initial, vendors, onClose, onSaved }: {
           <div style={{ display: 'flex', gap: 8 }}>
             {(['expense', 'income'] as Kind[]).map(k => (
               <button key={k} type="button" className={`adm-chip${f.kind === k ? ' active' : ''}`} style={{ flex: 1, padding: '9px 12px' }}
-                onClick={() => setF(prev => ({ ...prev, kind: k, category: k === 'expense' ? EXPENSE_CATEGORIES[0] : INCOME_CATEGORIES[0] }))}>
+                onClick={() => { setNewCat(false); setF(prev => ({ ...prev, kind: k, category: k === 'expense' ? EXPENSE_CATEGORIES[0] : INCOME_CATEGORIES[0] })); }}>
                 {k === 'expense' ? 'Saída (custo)' : 'Entrada (receita)'}
               </button>
             ))}
@@ -178,13 +185,27 @@ function EntryModal({ initial, vendors, onClose, onSaved }: {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
             <div className="adm-field">
               <label>Categoria</label>
-              <select value={f.category} onChange={e => set('category', e.target.value)}>
-                {cats.map(c => <option key={c}>{c}</option>)}
-              </select>
+              {newCat ? (
+                <div style={{ display: 'flex', gap: 6 }}>
+                  <input value={f.category} onChange={e => set('category', e.target.value)} placeholder="Nome da nova categoria" autoFocus style={{ flex: 1, minWidth: 0 }} />
+                  <button type="button" className="adm-btn-sm ghost" title="Voltar para a lista"
+                    onClick={() => { setNewCat(false); set('category', baseCats[0]); }}><X size={14} /></button>
+                </div>
+              ) : (
+                <select value={cats.includes(f.category) ? f.category : (f.category ? f.category : cats[0])}
+                  onChange={e => {
+                    if (e.target.value === NEW_CATEGORY) { setNewCat(true); set('category', ''); }
+                    else set('category', e.target.value);
+                  }}>
+                  {!cats.includes(f.category) && f.category && <option>{f.category}</option>}
+                  {cats.map(c => <option key={c}>{c}</option>)}
+                  <option value={NEW_CATEGORY}>+ Nova categoria…</option>
+                </select>
+              )}
             </div>
             <div className="adm-field">
               <label>{f.kind === 'expense' ? 'Fornecedor' : 'Origem'}</label>
-              <input list="vendors" value={f.vendor} onChange={e => set('vendor', e.target.value)} placeholder="Ex.: OpenAI" />
+              <input list="vendors" value={f.vendor} onChange={e => set('vendor', e.target.value)} placeholder="Escolha ou digite um novo" />
               <datalist id="vendors">{vendors.map(v => <option key={v} value={v} />)}</datalist>
             </div>
           </div>
@@ -525,6 +546,10 @@ export default function FinancePage() {
 
   const vendors = useMemo(() => [...new Set([...VENDORS, ...entries.map(e => e.vendor).filter(Boolean) as string[]])].sort(), [entries]);
   const categories = useMemo(() => [...new Set(entries.map(e => e.category))].sort(), [entries]);
+  const customCats = useMemo(() => ({
+    expense: [...new Set(entries.filter(e => e.kind === 'expense').map(e => e.category))].sort(),
+    income: [...new Set(entries.filter(e => e.kind === 'income').map(e => e.category))].sort(),
+  }), [entries]);
 
   const list = useMemo(() => entries.filter(e => {
     if (kindFilter !== 'all' && e.kind !== kindFilter) return false;
@@ -711,7 +736,7 @@ export default function FinancePage() {
       </div>
 
       {partnerReport && <PartnerReportModal canWrite={canWrite} onClose={() => setPartnerReport(false)} />}
-      {modal && <EntryModal initial={modal} vendors={vendors} onClose={() => setModal(null)} onSaved={() => { setModal(null); load(); }} />}
+      {modal && <EntryModal initial={modal} vendors={vendors} customCats={customCats} onClose={() => setModal(null)} onSaved={() => { setModal(null); load(); }} />}
       {report && (
         <ReportModal
           title={RANGE_LABEL[range]}
