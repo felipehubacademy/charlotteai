@@ -209,3 +209,22 @@ export function pickPhrase(level: PronunciationLevel, lastId?: string | null): P
   const candidates = lastId ? pool.filter(p => p.id !== lastId) : pool;
   return candidates[Math.floor(Math.random() * candidates.length)];
 }
+
+/**
+ * Frase para treinar uma palavra específica (vinda de "Palavras para caprichar"
+ * em Minha evolução). Procura no banco, de todos os níveis, uma frase que
+ * contenha a palavra; prioriza o nível do aluno. Sem frase, treina a palavra sozinha.
+ */
+export function phraseForWord(word: string, level: PronunciationLevel): PronunciationPhrase {
+  const w = word.trim().toLowerCase();
+  const re = new RegExp(`(^|[^a-z'])${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}([^a-z']|$)`, 'i');
+  const order: PronunciationLevel[] = [level, ...(['Novice', 'Inter', 'Advanced'] as PronunciationLevel[]).filter(l => l !== level)];
+  for (const l of order) {
+    const hits = PRONUNCIATION_PHRASES[l].filter(p => re.test(p.text));
+    if (hits.length) {
+      const p = hits[Math.floor(Math.random() * hits.length)];
+      return { ...p, id: `w:${w}:${p.id}` };
+    }
+  }
+  return { id: `w:${w}`, text: word.trim() };
+}

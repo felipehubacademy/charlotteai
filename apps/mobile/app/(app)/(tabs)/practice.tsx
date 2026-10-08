@@ -85,7 +85,13 @@ export default function PracticeTab() {
   const accent    = getLevelAccent(userLevel);
 
   // Mode state — vem do URL ?mode=, default 'chat'
-  const params = useLocalSearchParams<{ mode?: string }>();
+  const params = useLocalSearchParams<{ mode?: string; words?: string }>();
+  // "Treinar" em Palavras para caprichar (Minha evolução) traz as palavras.
+  const [targetWords, setTargetWords] = useState<string[] | null>(null);
+  useEffect(() => {
+    const list = (params.words ?? '').split(',').map(w => w.trim()).filter(Boolean);
+    if (list.length) setTargetWords(list);
+  }, [params.words]);
   const rawMode = (params.mode ?? 'chat') as string;
   const mode: Mode = MODES.some(m => m.id === rawMode) ? (rawMode as Mode) : 'chat';
 
@@ -512,6 +518,8 @@ export default function PracticeTab() {
             isPt={isPt}
             accent={accent}
             onPhraseChange={resetMessages}
+            targetWords={targetWords}
+            onExitTargets={() => { setTargetWords(null); router.setParams({ words: undefined } as any); }}
           />
         )}
 

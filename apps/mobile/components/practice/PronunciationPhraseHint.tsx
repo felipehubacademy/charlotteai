@@ -13,7 +13,7 @@ import * as SecureStore from 'expo-secure-store';
 import { ArrowsClockwise, X, Lightbulb } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import {
-  pickPhrase, PronunciationPhrase, PronunciationLevel,
+  pickPhrase, phraseForWord, PronunciationPhrase, PronunciationLevel,
 } from '@/lib/pronunciationPhrases';
 
 interface Props {
@@ -23,11 +23,24 @@ interface Props {
   /** Fired sempre que uma frase nova é mostrada (refresh ou "Need an idea?"
    *  no Inter/Adv). NOT chamado no auto-pick inicial pro Novice. */
   onPhraseChange?: () => void;
+  /** Palavras de "Palavras para caprichar" (Minha evolução). Quando vem, o
+   *  hint treina uma palavra por vez, em todos os níveis; o X sai do treino. */
+  targetWords?: string[] | null;
+  onExitTargets?: () => void;
 }
 
-export function PronunciationPhraseHint({ userLevel, isPt, accent, onPhraseChange }: Props) {
+export function PronunciationPhraseHint({ userLevel, isPt, accent, onPhraseChange, targetWords, onExitTargets }: Props) {
   const isNovice = userLevel === 'Novice';
   const [phrase, setPhrase] = useState<PronunciationPhrase | null>(null);
+  const [wordIdx, setWordIdx] = useState(0);
+  const targets = targetWords && targetWords.length ? targetWords : null;
+
+  // Treino de palavras: uma por vez, numa frase do banco que a contenha.
+  useEffect(() => {
+    if (!targets) return;
+    setWordIdx(0);
+    setPhrase(phraseForWord(targets[0], userLevel));
+  }, [targets?.join('|'), userLevel]); // eslint-disable-line react-hooks/exhaustive-deps
   // Novice: sempre visível. Inter/Adv: visível só após tocar "Need an idea?".
   const [shown, setShown] = useState(isNovice);
 
@@ -59,6 +72,59 @@ export function PronunciationPhraseHint({ userLevel, isPt, accent, onPhraseChang
     setShown(true);
     pickNext();
   }, [pickNext, onPhraseChange]);
+
+  if (targets && phrase) {
+    const next = () => {
+      onPhraseChange?.();
+      const i = (wordIdx + 1) % targets.length;
+      setWordIdx(i);
+      setPhrase(phraseForWord(targets[i], userLevel));
+    };
+    const word = targets[wordIdx];
+    return (
+      <View style={{ paddingHorizontal: 14, paddingVertical: 8 }}>
+        <View style={{
+          flexDirection: 'row', alignItems: 'flex-start', gap: 10,
+          backgroundColor: '#FFFFFF', borderRadius: 14, paddingHorizontal: 14, paddingVertical: 12,
+          borderWidth: 1, borderColor: 'rgba(209,42,100,0.25)',
+        }}>
+          <View style={{ flex: 1 }}>
+            <AppText style={{ fontSize: 11, fontWeight: '700', color: '#D12A64', textTransform: 'uppercase', letterSpacing: 0.6, marginBottom: 4 }}>
+              {isPt ? `Palavra para caprichar · ${wordIdx + 1} de ${targets.length}` : `Word to polish · ${wordIdx + 1} of ${targets.length}`}
+            </AppText>
+            <AppText style={{ fontSize: 16, fontWeight: '600', color: '#16131F', lineHeight: 22 }}>
+              {`"${phrase.text}"`}
+            </AppText>
+            {phrase.text.toLowerCase() !== word.toLowerCase() && (
+              <AppText style={{ fontSize: 12, color: 'rgba(22,19,31,0.55)', marginTop: 4 }}>
+                {isPt ? `Foco em "${word}"` : `Focus on "${word}"`}
+              </AppText>
+            )}
+          </View>
+          <View style={{ flexDirection: 'column', gap: 6, alignItems: 'center' }}>
+            {targets.length > 1 && (
+              <TouchableOpacity
+                onPress={next}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                style={{ width: 28, height: 28, borderRadius: 14, backgroundColor: 'rgba(22,19,31,0.06)', alignItems: 'center', justifyContent: 'center' }}
+                accessibilityLabel={isPt ? 'Próxima palavra' : 'Next word'}
+              >
+                <ArrowsClockwise size={13} color="#4D4858" weight="bold" />
+              </TouchableOpacity>
+            )}
+            <TouchableOpacity
+              onPress={() => { onPhraseChange?.(); onExitTargets?.(); }}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              style={{ width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center' }}
+              accessibilityLabel={isPt ? 'Sair do treino de palavras' : 'Exit word practice'}
+            >
+              <X size={12} color="#8A8494" weight="bold" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    );
+  }
 
   // Inter/Adv: link discreto (alinhado à direita acima do mic)
   if (!shown && !isNovice) {

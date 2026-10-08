@@ -85,7 +85,10 @@ export default function EvolutionScreen() {
     pathname: '/(app)/learn-session',
     params: { level: f.level, moduleIndex: String(f.moduleIndex), topicIndex: String(f.topicIndex) },
   } as any);
-  const trainPractice = (mode: 'pronunciation' | 'grammar') => router.push({ pathname: '/(app)/(tabs)/practice', params: { mode } } as any);
+  const trainPractice = (mode: 'pronunciation' | 'grammar', words?: string[]) => router.push({
+    pathname: '/(app)/(tabs)/practice',
+    params: words?.length ? { mode, words: words.join(',') } : { mode },
+  } as any);
 
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
@@ -172,7 +175,7 @@ export default function EvolutionScreen() {
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 }}>
                   <Microphone size={18} color={C.ink} weight="bold" />
                   <AppText style={{ flex: 1, fontSize: 14.5, fontWeight: '700', color: C.ink }}>{t('Palavras para caprichar', 'Words to polish')}</AppText>
-                  <TrainButton label={t('Treinar', 'Practice')} onPress={() => trainPractice('pronunciation')} />
+                  <TrainButton label={t('Treinar', 'Practice')} onPress={() => trainPractice('pronunciation', data.pronunciation.words.map(w => w.word))} />
                 </View>
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
                   {data.pronunciation.words.map(w => (
