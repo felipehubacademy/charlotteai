@@ -7,6 +7,8 @@ import { router, useFocusEffect } from 'expo-router';
 import Constants from 'expo-constants';
 import { ArrowUp, ArrowDown, CheckCircle, Target, Microphone, PencilLine } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { MarkerText } from '@/components/ui/MarkerText';
+import Svg, { Path } from 'react-native-svg';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { C, ScreenHeader, SectionTitle, Card } from '@/components/stats/StatsUI';
 import { EvolutionRoad } from '@/components/stats/EvolutionRoad';
@@ -96,16 +98,20 @@ export default function EvolutionScreen() {
 
         {data && (
           <>
-            {/* Resumo da semana, pela Charlotte */}
-            <View style={{ marginHorizontal: 16, backgroundColor: C.ink, borderRadius: 24, padding: 20 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                <CharlotteAvatar size="sm" />
-                <View>
-                  <AppText style={{ fontSize: 14, fontWeight: '800', color: '#FFFFFF' }}>Charlotte</AppText>
-                  <AppText style={{ fontSize: 11, fontWeight: '700', color: C.volt, letterSpacing: 0.6, textTransform: 'uppercase' }}>{t('Resumo da semana', 'Weekly summary')}</AppText>
+            {/* Resumo da semana: balão da Charlotte, no mesmo estilo do hero da home */}
+            <View style={{ marginHorizontal: 20, flexDirection: 'row', alignItems: 'flex-end', gap: 8 }}>
+              <CharlotteAvatar size="sm" />
+              <View style={{ flex: 1, marginBottom: 14 }}>
+                <View style={{ backgroundColor: C.card, borderRadius: 18, paddingHorizontal: 16, paddingVertical: 13, borderWidth: 1, borderColor: C.border }}>
+                  <MarkerText display style={{ fontSize: 18, fontWeight: '800', color: C.ink, lineHeight: 24 }}>
+                    {t('Sua semana', 'Your week')}
+                  </MarkerText>
+                  <AppText style={{ fontSize: 14.5, lineHeight: 21, color: C.mid, marginTop: 4 }}>{data.summary}</AppText>
                 </View>
+                <Svg width={20} height={14} viewBox="0 0 20 14" style={{ position: 'absolute', left: 8, bottom: -13 }}>
+                  <Path d="M19 0 L0 14 L7 0 Z" fill={C.card} />
+                </Svg>
               </View>
-              <AppText style={{ fontSize: 15.5, lineHeight: 23, color: 'rgba(255,255,255,0.92)' }}>{data.summary}</AppText>
             </View>
 
             {/* Estrada da evolução: as últimas 8 semanas */}
