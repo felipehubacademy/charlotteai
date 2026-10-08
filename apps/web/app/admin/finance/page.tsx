@@ -4,7 +4,7 @@
 // (paid_at). O que está "a pagar" aparece em Vencimentos.
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Plus, Download, FileText, Check, Edit2, Trash2, X, Search, RefreshCw, Repeat } from 'lucide-react';
+import { Plus, Download, FileText, Check, Edit2, Trash2, X, Search, RefreshCw, Repeat, Send } from 'lucide-react';
 import { useAdminMe, canArea } from '@/lib/admin-context';
 
 // ── Tipos e catálogos ────────────────────────────────────────────────────────
@@ -20,7 +20,7 @@ interface Entry {
 
 const EXPENSE_CATEGORIES = [
   'Inteligência artificial', 'Infraestrutura e hospedagem', 'Lojas e pagamentos', 'Domínios e e-mail',
-  'Ferramentas e software', 'Marketing e mídia', 'Equipe e prestadores', 'Jurídico e contábil', 'Impostos', 'Outros',
+  'Ferramentas e software', 'Marketing e mídia', 'Equipe e prestadores', 'Jurídico e contábil', 'Impostos', 'Reembolsos e estornos', 'Outros',
 ];
 const INCOME_CATEGORIES = ['Assinaturas App Store', 'Assinaturas Google Play', 'B2B e institucional', 'Aporte de sócios', 'Outros'];
 const VENDORS = ['OpenAI', 'ElevenLabs', 'Microsoft Azure', 'Vercel', 'Supabase', 'Expo (EAS)', 'RevenueCat', 'Apple', 'Google', 'Cloudflare', 'registro.br', 'Microsoft 365', 'Sentry', 'HubSpot'];
@@ -311,6 +311,158 @@ function ReportModal({ title, income, expense, byCategory, entries, onClose }: {
   );
 }
 
+// ── Custos de IA do mês ─────────────────────────────────────────────────────
+interface AiCosts {
+  month: string; fx: number; hasOpenAIAdminKey: boolean; posted: string[];
+  openai: { source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string };
+  elevenlabs: { plan: string; used: number; limit: number; resetAt: string | null; nextInvoiceUsd: number | null } | null;
+}
+function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () => void }) {
+  const [month, setMonth] = useState(new Date().toISOString().slice(0, 7));
+  const [data, setData] = useState<AiCosts | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState('');
+  const load = useCallback(async () => {
+    setData(null); setMsg('');
+    const r = await fetch(`/api/admin/ai-costs?month=${month}`);
+    if (r.ok) setData(await r.json());
+  }, [month]);
+  useEffect(() => { load(); }, [load]);
+
+  const post = async () => {
+    setBusy(true); setMsg('');
+    const r = await fetch('/api/admin/ai-costs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ month, provider: 'OpenAI' }) });
+    const j = await r.json().catch(() => ({}));
+    setBusy(false);
+    if (!r.ok) { setMsg(j.error ?? 'Não foi possível lançar.'); return; }
+    setMsg('Lançado no financeiro como "a pagar" no último dia do mês.');
+    onPosted(); load();
+  };
+
+  const months = Array.from({ length: 6 }, (_, i) => { const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - i); return d.toISOString().slice(0, 7); });
+  const usdFmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
+  return (
+    <div className="adm-panel col-12">
+      <div className="adm-panel-hdr">
+        <div className="adm-panel-title">Custos de IA</div>
+        <select className="adm-select-ghost" value={month} onChange={e => setMonth(e.target.value)}>
+          {months.map(m => <option key={m} value={m}>{monthLabel(m)} {m.slice(0, 4)}</option>)}
+        </select>
+      </div>
+      <div className="adm-panel-body" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
+        {!data ? <div className="adm-empty-sub">Carregando…</div> : (
+          <>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                <b style={{ fontSize: 14 }}>OpenAI</b>
+                <span className={`badge ${data.openai.source === 'real' ? 'badge-ok' : 'badge-warn'}`}>{data.openai.source === 'real' ? 'valor real' : 'estimativa'}</span>
+              </div>
+              <div className="num" style={{ fontSize: 24, fontWeight: 800 }}>{usdFmt(data.openai.usd)}</div>
+              <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>≈ {brl(data.openai.usd * (data.fx || 0))} na cotação de hoje</div>
+              <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 4 }}>
+                {data.openai.lines.slice(0, 5).map(l => (
+                  <div key={l.name} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12.5, color: 'var(--t2)' }}>
+                    <span>{l.name}</span><span className="num">{usdFmt(l.usd)}</span>
+                  </div>
+                ))}
+              </div>
+              {!data.hasOpenAIAdminKey && (
+                <div style={{ fontSize: 12, color: 'var(--t3)', marginTop: 10, lineHeight: 1.5 }}>
+                  Para o valor real, crie uma chave de administrador na OpenAI (Settings &rsaquo; Admin keys) e salve como OPENAI_ADMIN_KEY na Vercel.
+                </div>
+              )}
+              {canWrite && (
+                <div style={{ marginTop: 12, display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+                  <button className="adm-btn-sm primary" disabled={busy || data.posted.includes('OpenAI')} onClick={post}>
+                    {data.posted.includes('OpenAI') ? 'Já lançado' : busy ? 'Lançando…' : 'Lançar no financeiro'}
+                  </button>
+                  {msg && <span style={{ fontSize: 12, color: 'var(--t2)' }}>{msg}</span>}
+                </div>
+              )}
+            </div>
+            <div>
+              <b style={{ fontSize: 14 }}>ElevenLabs</b>
+              {data.elevenlabs ? (
+                <>
+                  <div style={{ fontSize: 12.5, color: 'var(--t2)', margin: '6px 0 8px' }}>Plano {data.elevenlabs.plan} · uso real do ciclo atual</div>
+                  <div className="num" style={{ fontSize: 24, fontWeight: 800 }}>
+                    {data.elevenlabs.used.toLocaleString('pt-BR')} <span style={{ fontSize: 13, color: 'var(--t3)', fontWeight: 600 }}>de {data.elevenlabs.limit.toLocaleString('pt-BR')} caracteres</span>
+                  </div>
+                  <div style={{ height: 8, background: 'var(--b1)', borderRadius: 4, overflow: 'hidden', margin: '8px 0' }}>
+                    <div style={{ width: `${Math.min(100, (data.elevenlabs.used / Math.max(1, data.elevenlabs.limit)) * 100)}%`, height: '100%', background: '#16131F' }} />
+                  </div>
+                  <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>
+                    {data.elevenlabs.resetAt ? `Renova em ${fmtDate(data.elevenlabs.resetAt.slice(0, 10))}` : ''}
+                    {data.elevenlabs.nextInvoiceUsd != null ? ` · próxima fatura ${usdFmt(data.elevenlabs.nextInvoiceUsd)}` : ''}
+                  </div>
+                  <div style={{ fontSize: 12, color: 'var(--t3)', marginTop: 8 }}>A assinatura da ElevenLabs entra como lançamento recorrente mensal.</div>
+                </>
+              ) : <div className="adm-empty-sub" style={{ marginTop: 6 }}>Não foi possível ler o uso agora.</div>}
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── Relatório mensal dos sócios (prévia e envio) ───────────────────────────
+function PartnerReportModal({ canWrite, onClose }: { canWrite: boolean; onClose: () => void }) {
+  const prev = (() => { const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - 1); return d.toISOString().slice(0, 7); })();
+  const [period, setPeriod] = useState(prev);
+  const [data, setData] = useState<{ html: string; recipients: string[]; sent: { sent_at: string; sent_to: string[] } | null } | null>(null);
+  const [msg, setMsg] = useState('');
+  const [busy, setBusy] = useState(false);
+  const periods = Array.from({ length: 12 }, (_, i) => { const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - i); return d.toISOString().slice(0, 7); });
+
+  useEffect(() => {
+    setData(null); setMsg('');
+    fetch(`/api/admin/reports?period=${period}`).then(r => r.json()).then(setData).catch(() => setMsg('Não foi possível gerar a prévia.'));
+  }, [period]);
+
+  const send = async (onlyMe: boolean) => {
+    if (!onlyMe && !confirm(`Enviar o relatório de ${period} para: ${data?.recipients.join(', ')}?`)) return;
+    setBusy(true); setMsg('');
+    const r = await fetch('/api/admin/reports', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ period, onlyMe }) });
+    const j = await r.json().catch(() => ({}));
+    setBusy(false);
+    setMsg(r.ok ? `Enviado para ${j.sentTo?.join(', ') || 'ninguém'}${j.failed?.length ? `; falhou: ${j.failed.join(', ')}` : ''}.` : (j.error ?? 'Falha no envio.'));
+  };
+
+  return (
+    <div className="adm-modal-backdrop" onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="adm-modal" style={{ maxWidth: 680, background: 'var(--s1)' }}>
+        <div className="adm-modal-hdr">
+          <div className="adm-modal-title">Relatório mensal dos sócios</div>
+          <button className="adm-btn-sm ghost" onClick={onClose}><X size={14} /></button>
+        </div>
+        <div className="adm-modal-body">
+          <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+            <select className="adm-select-ghost" value={period} onChange={e => setPeriod(e.target.value)}>
+              {periods.map(p => <option key={p} value={p}>{monthLabel(p)} {p.slice(0, 4)}</option>)}
+            </select>
+            <span style={{ fontSize: 12.5, color: 'var(--t2)' }}>
+              Vai sozinho no dia 1 de cada mês para: {data?.recipients.join(', ') || '…'}
+            </span>
+          </div>
+          {data?.sent && <div style={{ fontSize: 12.5, color: 'var(--ok)' }}>Já enviado em {new Date(data.sent.sent_at).toLocaleString('pt-BR')} para {data.sent.sent_to.join(', ')}.</div>}
+          <div style={{ border: '1px solid var(--b2)', borderRadius: 12, overflow: 'hidden', height: 420, background: '#FAF7F0' }}>
+            {data ? <iframe title="Prévia" srcDoc={data.html} style={{ width: '100%', height: '100%', border: 0 }} /> : <div className="adm-empty"><div className="adm-empty-sub">Gerando prévia…</div></div>}
+          </div>
+          {msg && <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>{msg}</div>}
+        </div>
+        {canWrite && (
+          <div className="adm-modal-footer">
+            <button className="adm-btn-sm ghost" disabled={busy || !data} onClick={() => send(true)}>Enviar só para mim</button>
+            <button className="adm-btn-sm primary" disabled={busy || !data} onClick={() => send(false)}>Enviar para os sócios</button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Página ──────────────────────────────────────────────────────────────────
 export default function FinancePage() {
   const me = useAdminMe();
@@ -325,6 +477,7 @@ export default function FinancePage() {
   const [q, setQ] = useState('');
   const [modal, setModal] = useState<FormState | null>(null);
   const [report, setReport] = useState(false);
+  const [partnerReport, setPartnerReport] = useState(false);
 
   const load = useCallback(async () => {
     setLoading(true); setError('');
@@ -435,6 +588,7 @@ export default function FinancePage() {
         </div>
         <button className="adm-btn-sm ghost" onClick={load} title="Atualizar"><RefreshCw size={13} /></button>
         <button className="adm-btn-sm ghost" onClick={() => setReport(true)}><FileText size={13} /> Relatório</button>
+        <button className="adm-btn-sm ghost" onClick={() => setPartnerReport(true)}><Send size={13} /> Sócios</button>
         <button className="adm-btn-sm ghost" onClick={exportCsv}><Download size={13} /> CSV</button>
         {canWrite && <button className="adm-btn-sm primary" onClick={() => setModal(emptyForm())}><Plus size={13} /> Lançamento</button>}
       </div>
@@ -487,6 +641,8 @@ export default function FinancePage() {
             <div className="adm-panel-hdr"><div className="adm-panel-title">Saídas por categoria</div><div className="adm-panel-sub">{RANGE_LABEL[range]} · {brl(expense)}</div></div>
             <div className="adm-panel-body"><CategoryBars rows={byCategory} total={expense || 1} /></div>
           </div>
+
+          <AiCostsPanel canWrite={canWrite} onPosted={load} />
 
           <div className="adm-panel col-12">
             <div className="adm-panel-hdr" style={{ gap: 10, flexWrap: 'wrap' }}>
@@ -554,6 +710,7 @@ export default function FinancePage() {
         </div>
       </div>
 
+      {partnerReport && <PartnerReportModal canWrite={canWrite} onClose={() => setPartnerReport(false)} />}
       {modal && <EntryModal initial={modal} vendors={vendors} onClose={() => setModal(null)} onSaved={() => { setModal(null); load(); }} />}
       {report && (
         <ReportModal

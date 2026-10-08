@@ -1,0 +1,17 @@
+name: Partner Report
+
+on:
+  schedule:
+    # Dia 1 de cada mês, 12:00 UTC (09:00 em Brasília): relatório do mês anterior
+    - cron: '0 12 1 * *'
+  workflow_dispatch:
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Send monthly partner report
+        run: |
+          curl -sf -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "https://charlotte.hubacademybr.com/api/cron/partner-report"

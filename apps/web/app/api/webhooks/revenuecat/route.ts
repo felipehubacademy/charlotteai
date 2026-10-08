@@ -13,6 +13,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { recordRevenueEvent } from '@/lib/revenue';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -63,6 +64,9 @@ export async function POST(req: NextRequest) {
   }
 
   console.log(`[RC webhook] ${eventType} for user ${appUserId}`);
+
+  // Receita automática no Financeiro (idempotente; nunca bloqueia o webhook).
+  await recordRevenueEvent(event);
 
   // ── Compra de minutos avulsos (consumível) ───────────────────────────────
   // Concede minutos de Live Voice como saldo bônus (não zera no mês). Grant

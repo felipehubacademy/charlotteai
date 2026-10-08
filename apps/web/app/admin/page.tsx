@@ -444,7 +444,9 @@ export default function AdminUsersPage() {
                         <td>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                             <div style={{ fontWeight: 600, fontSize: 13, color: 'var(--t1)' }}>
-                              {u.name ?? <span style={{ color: 'var(--t3)', fontStyle: 'italic' }}>sem nome</span>}
+                              <a href={`/admin/users/${u.id}`} style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px dashed var(--b3)' }} title="Abrir ficha do aluno">
+                                {u.name ?? <span style={{ color: 'var(--t3)', fontStyle: 'italic' }}>sem nome</span>}
+                              </a>
                               {!u.is_active && <span className="badge badge-err" style={{ marginLeft: 6, verticalAlign: 'middle' }}>Inativo</span>}
                             </div>
                             <div style={{ fontSize: 11.5, color: 'var(--t3)', fontFamily: 'var(--font-mono)' }}>{u.email}</div>
