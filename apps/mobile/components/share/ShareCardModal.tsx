@@ -5,9 +5,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Modal, TouchableOpacity, Image, ActivityIndicator, Share, Platform } from 'react-native';
-import { captureRef } from 'react-native-view-shot';
-import * as Sharing from 'expo-sharing';
-import * as Clipboard from 'expo-clipboard';
+import { ViewShot, Sharing, Clipboard, canShareImage } from '@/lib/nativeOptional';
 import { X, ShareNetwork, LinkSimple, Check } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
@@ -55,9 +53,11 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
 
   const shareImage = async () => {
     if (!cardRef.current) return;
+    // Binário sem os módulos de imagem: compartilha o convite em texto.
+    if (!canShareImage || !ViewShot || !Sharing) { await shareLink(); return; }
     setBusy(true);
     try {
-      const uri = await captureRef(cardRef, { format: 'png', quality: 1, width: 1080, height: 1920, result: 'tmpfile' });
+      const uri = await ViewShot.captureRef(cardRef, { format: 'png', quality: 1, width: 1080, height: 1920, result: 'tmpfile' });
       if (await Sharing.isAvailableAsync()) {
         await Sharing.shareAsync(uri, { mimeType: 'image/png', UTI: 'public.png', dialogTitle: 'Queizy' });
       } else {
@@ -80,6 +80,7 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
 
   const copyLink = async () => {
     if (!link) return;
+    if (!Clipboard) { await shareLink(); return; }
     await Clipboard.setStringAsync(link);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);

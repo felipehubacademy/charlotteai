@@ -11,8 +11,7 @@
 import { Platform } from 'react-native';
 import Constants from 'expo-constants';
 import * as SecureStore from 'expo-secure-store';
-import * as Clipboard from 'expo-clipboard';
-import * as Application from 'expo-application';
+import { Clipboard, Application } from './nativeOptional';
 import { supabase } from './supabase';
 
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -96,11 +95,12 @@ export async function detectInstallInvite(): Promise<string | null> {
   await SecureStore.setItemAsync(DETECTED_KEY, '1');
   try {
     if (Platform.OS === 'android') {
+      if (!Application) return null;
       const ref = await Application.getInstallReferrerAsync();
       const m = /queizy_invite=([A-Z0-9]+)/i.exec(decodeURIComponent(ref ?? ''));
       return m ? normalizeCode(m[1]) : null;
     }
-    if (await Clipboard.hasStringAsync()) {
+    if (Clipboard && await Clipboard.hasStringAsync()) {
       const text = await Clipboard.getStringAsync();
       const m = /QUEIZY:([A-Z0-9]{4,})/i.exec(text ?? '');
       return m ? normalizeCode(m[1]) : null;
