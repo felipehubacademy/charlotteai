@@ -121,6 +121,8 @@ def main():
             print('falta', name)
             continue
         slide(p, bg, fg, title, sub, 1320, 2868).save(os.path.join(out, 'ios', f'{i:02d}.png'))
+        os.makedirs(os.path.join(out, 'ios-6.3'), exist_ok=True)
+        slide(p, bg, fg, title, sub, 1206, 2622).save(os.path.join(out, 'ios-6.3', f'{i:02d}.png'))
         slide(p, bg, fg, title, sub, 1080, 2160).save(os.path.join(out, 'play', f'{i:02d}.png'))
         print('ok', name)
     feature(os.path.join(out, 'play', 'feature.png'))
