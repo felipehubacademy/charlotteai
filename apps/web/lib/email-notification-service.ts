@@ -156,7 +156,7 @@ Transformando o aprendizado de inglês com IA
 
   // Template de email de lembrete
   static getReminderTemplate(nome: string, diasRestantes: number): EmailTemplate {
-    const subject = `Você tem ${diasRestantes} dias restantes no seu teste grátis do Queizy`;
+    const subject = `Você tem ${diasRestantes === 1 ? '1 dia restante' : `${diasRestantes} dias restantes`} no seu teste grátis do Queizy`;
     
     const html = `
       <!DOCTYPE html>
@@ -195,7 +195,7 @@ Transformando o aprendizado de inglês com IA
 
             <div class="days-left">
               <div class="days-number">${diasRestantes}</div>
-              <div class="days-text">dias restantes</div>
+              <div class="days-text">${diasRestantes === 1 ? 'dia restante' : 'dias restantes'}</div>
             </div>
 
             <div class="cta">
@@ -218,13 +218,13 @@ Transformando o aprendizado de inglês com IA
     `;
 
     const text = `
-Você tem ${diasRestantes} dias restantes no seu teste grátis do Queizy
+Você tem ${diasRestantes === 1 ? '1 dia restante' : `${diasRestantes} dias restantes`} no seu teste grátis do Queizy
 
 Olá ${nome}!
 
 Você ainda tem tempo para aproveitar ao máximo seu teste grátis do Queizy!
 
-${diasRestantes} DIAS RESTANTES
+${diasRestantes === 1 ? '1 DIA RESTANTE' : `${diasRestantes} DIAS RESTANTES`}
 
 Continue praticando: ${process.env.NEXT_PUBLIC_APP_URL || 'https://charlotte.hubacademybr.com'}/install
 

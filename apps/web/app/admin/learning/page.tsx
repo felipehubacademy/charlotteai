@@ -78,10 +78,10 @@ export default function LearningPage() {
 
         <div className="adm-grid">
           {[
-            { label: 'Alunos ativos', value: s ? `${s.active}` : '—', ctx: s ? `de ${s.students} cadastrados` : '' },
-            { label: 'Acerto na trilha', value: s?.trailAccuracy != null ? `${s.trailAccuracy}%` : '—', ctx: s ? `${s.trailAnswers.toLocaleString('pt-BR')} respostas` : '', color: accColor(s?.trailAccuracy ?? null) },
-            { label: 'Média de pronúncia', value: s?.pronunciationAvg != null ? `${s.pronunciationAvg}` : '—', ctx: s ? `${s.pronunciationAttempts} frases` : '', color: accColor(s?.pronunciationAvg ?? null) },
-            { label: 'Gramática sem erro', value: s?.grammarErrorFree != null ? `${s.grammarErrorFree}%` : '—', ctx: s ? `${s.grammarAnalyzed} frases analisadas` : '', color: accColor(s?.grammarErrorFree ?? null) },
+            { label: 'Alunos ativos', value: s ? `${s.active}` : '—', ctx: s ? `de ${s.students} ${s.students === 1 ? 'cadastrado' : 'cadastrados'}` : '' },
+            { label: 'Acerto na trilha', value: s?.trailAccuracy != null ? `${s.trailAccuracy}%` : '—', ctx: s ? `${s.trailAnswers.toLocaleString('pt-BR')} ${s.trailAnswers === 1 ? 'resposta' : 'respostas'}` : '', color: accColor(s?.trailAccuracy ?? null) },
+            { label: 'Média de pronúncia', value: s?.pronunciationAvg != null ? `${s.pronunciationAvg}` : '—', ctx: s ? `${s.pronunciationAttempts} ${s.pronunciationAttempts === 1 ? 'frase' : 'frases'}` : '', color: accColor(s?.pronunciationAvg ?? null) },
+            { label: 'Gramática sem erro', value: s?.grammarErrorFree != null ? `${s.grammarErrorFree}%` : '—', ctx: s ? `${s.grammarAnalyzed} ${s.grammarAnalyzed === 1 ? 'frase analisada' : 'frases analisadas'}` : '', color: accColor(s?.grammarErrorFree ?? null) },
           ].map(k => (
             <div key={k.label} className="kpi-card col-3">
               <div className="kpi-label">{k.label}</div>

@@ -308,7 +308,7 @@ function HeatmapGrid({ data }: { data: number[][] }) {
               {row.map((v, ci) => {
                 const intensity = v / max;
                 return (
-                  <div key={ci} title={`${DAYS_PT[ri]} ${ci}h: ${v} sessões`}
+                  <div key={ci} title={`${DAYS_PT[ri]} ${ci}h: ${v} ${v === 1 ? 'sessão' : 'sessões'}`}
                     style={{ flex: 1, height: 13, borderRadius: 2, background: intensity > 0 ? `rgba(163,255,60,${0.08 + intensity * 0.82})` : 'var(--s3)', cursor: 'default' }} />
                 );
               })}

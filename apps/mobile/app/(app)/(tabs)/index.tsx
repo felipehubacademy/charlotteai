@@ -177,9 +177,9 @@ export default function HomeTab() {
     });
     return () => sub.remove();
   }, []);
-  const heroTitle = isPt
-    ? `${heroHour < 12 ? 'Bom dia' : heroHour < 18 ? 'Boa tarde' : 'Boa noite'}, ${firstName}!`
-    : `${heroHour < 12 ? 'Good morning' : heroHour < 18 ? 'Good afternoon' : 'Good evening'}, ${firstName}!`;
+  // Saudação sempre em inglês (marca da Charlotte, decisão de produto); a fala
+  // da IA logo abaixo segue o nível do aluno.
+  const heroTitle = `${heroHour < 12 ? 'Good morning' : heroHour < 18 ? 'Good afternoon' : 'Good evening'}, ${firstName}!`;
 
   // ── Data fetch ──────────────────────────────────────────────────────────────
   const fetchData = useCallback(async () => {

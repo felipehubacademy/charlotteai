@@ -9,6 +9,7 @@ import { ArrowUp, ArrowDown, CheckCircle, Target, Microphone, PencilLine, Globe 
 import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { C, ScreenHeader, SectionTitle, Card } from '@/components/stats/StatsUI';
+import { EvolutionRoad } from '@/components/stats/EvolutionRoad';
 import { supabase } from '@/lib/supabase';
 import { systemIsPt } from '@/lib/systemLang';
 
@@ -79,8 +80,7 @@ export default function EvolutionScreen() {
   useFocusEffect(useCallback(() => { load(); }, [load]));
 
   const pctText = (v: number | null) => (v == null ? '—' : `${v}%`);
-  const maxWeek = Math.max(1, ...(data?.weeks.map(w => w.practices) ?? [1]));
-  const trainTopic = (f: TopicStat) => router.push({
+    const trainTopic = (f: TopicStat) => router.push({
     pathname: '/(app)/learn-session',
     params: { level: f.level, moduleIndex: String(f.moduleIndex), topicIndex: String(f.topicIndex) },
   } as any);
@@ -109,10 +109,16 @@ export default function EvolutionScreen() {
               <AppText style={{ fontSize: 15.5, lineHeight: 23, color: 'rgba(255,255,255,0.92)' }}>{data.summary}</AppText>
             </View>
 
+            {/* Estrada da evolução: as últimas 8 semanas */}
+            <SectionTitle title={t('Sua estrada', 'Your road')} />
+            <Card style={{ padding: 16 }}>
+              <EvolutionRoad weeks={data.weeks} isPt={isPt} />
+            </Card>
+
             {/* Números dos últimos 30 dias vs os 30 anteriores */}
             <View style={{ flexDirection: 'row', gap: 10, marginHorizontal: 16, marginTop: 14 }}>
-              <Kpi label={t('Trilha', 'Trail')} value={pctText(data.trail.accuracy)} now={data.trail.accuracy} prev={data.trail.previous} suffix="%" sub={data.trail.answers ? t(`${data.trail.answers} respostas`, `${data.trail.answers} answers`) : undefined} />
-              <Kpi label={t('Pronúncia', 'Pronunciation')} value={data.pronunciation.avg == null ? '—' : String(data.pronunciation.avg)} now={data.pronunciation.avg} prev={data.pronunciation.previous} sub={data.pronunciation.attempts ? t(`${data.pronunciation.attempts} frases`, `${data.pronunciation.attempts} phrases`) : undefined} />
+              <Kpi label={t('Trilha', 'Trail')} value={pctText(data.trail.accuracy)} now={data.trail.accuracy} prev={data.trail.previous} suffix="%" sub={data.trail.answers ? t(`${data.trail.answers} ${data.trail.answers === 1 ? 'resposta' : 'respostas'}`, `${data.trail.answers} ${data.trail.answers === 1 ? 'answer' : 'answers'}`) : undefined} />
+              <Kpi label={t('Pronúncia', 'Pronunciation')} value={data.pronunciation.avg == null ? '—' : String(data.pronunciation.avg)} now={data.pronunciation.avg} prev={data.pronunciation.previous} sub={data.pronunciation.attempts ? t(`${data.pronunciation.attempts} ${data.pronunciation.attempts === 1 ? 'frase' : 'frases'}`, `${data.pronunciation.attempts} ${data.pronunciation.attempts === 1 ? 'phrase' : 'phrases'}`) : undefined} />
               <Kpi label={t('Gramática', 'Grammar')} value={pctText(data.grammar.errorFree)} now={data.grammar.errorFree} prev={data.grammar.previous} suffix="%" sub={data.grammar.analyzed ? t(`sem erro em ${data.grammar.analyzed}`, `error-free of ${data.grammar.analyzed}`) : undefined} />
             </View>
             <AppText style={{ fontSize: 11.5, color: C.light, marginHorizontal: 20, marginTop: 6 }}>
@@ -188,20 +194,6 @@ export default function EvolutionScreen() {
                 ))}
               </Card>
             )}
-
-            {/* Últimas 8 semanas */}
-            <SectionTitle title={t('Suas últimas 8 semanas', 'Your last 8 weeks')} />
-            <Card style={{ padding: 16 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 6, height: 110 }}>
-                {data.weeks.map((w, i) => (
-                  <View key={w.start} style={{ flex: 1, alignItems: 'center', gap: 4 }}>
-                    <AppText style={{ fontSize: 10.5, fontWeight: '700', color: C.mid }}>{w.practices || ''}</AppText>
-                    <View style={{ width: '100%', height: Math.max(4, (w.practices / maxWeek) * 80), borderRadius: 6, backgroundColor: i === data.weeks.length - 1 ? C.ink : C.volt }} />
-                  </View>
-                ))}
-              </View>
-              <AppText style={{ fontSize: 11.5, color: C.light, marginTop: 10 }}>{t('Práticas por semana. A barra escura é esta semana.', 'Practices per week. The dark bar is this week.')}</AppText>
-            </Card>
 
             {/* Referência pública */}
             <SectionTitle title={t('Você e o Brasil', 'You and Brazil')} />

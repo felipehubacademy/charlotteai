@@ -90,8 +90,8 @@ export default function LearningSheetPage() {
         <div className="adm-grid">
           {[
             { label: 'Posição na trilha', value: current ? current.topic : '—', ctx: current ? `${current.level} · Módulo ${current.moduleNumber} · ${current.module}` : '', small: true },
-            { label: 'Acerto na trilha', value: data.trailAccuracy != null ? `${data.trailAccuracy}%` : '—', ctx: `${data.trailAnswers} respostas`, color: accColor(data.trailAccuracy) },
-            { label: 'Média de pronúncia', value: data.pronunciation.avg ?? '—', ctx: `${data.pronunciation.attempts} frases`, color: accColor(data.pronunciation.avg) },
+            { label: 'Acerto na trilha', value: data.trailAccuracy != null ? `${data.trailAccuracy}%` : '—', ctx: `${data.trailAnswers} ${data.trailAnswers === 1 ? 'resposta' : 'respostas'}`, color: accColor(data.trailAccuracy) },
+            { label: 'Média de pronúncia', value: data.pronunciation.avg ?? '—', ctx: `${data.pronunciation.attempts} ${data.pronunciation.attempts === 1 ? 'frase' : 'frases'}`, color: accColor(data.pronunciation.avg) },
             { label: 'Sequência', value: `${data.progress?.streak_days ?? 0} ${(data.progress?.streak_days ?? 0) === 1 ? 'dia' : 'dias'}`, ctx: `última prática ${ago(data.progress?.last_practice_date ? `${data.progress.last_practice_date}T12:00:00Z` : null)}` },
           ].map(k => (
             <div key={k.label} className="kpi-card col-3">
@@ -169,7 +169,7 @@ export default function LearningSheetPage() {
           <div className="adm-panel col-6">
             <div className="adm-panel-hdr">
               <div className="adm-panel-title">Gramática</div>
-              <div className="adm-panel-sub">{data.grammar.errorFree != null ? `${data.grammar.errorFree}% sem erro · ${data.grammar.analyzed} frases` : ''}</div>
+              <div className="adm-panel-sub">{data.grammar.errorFree != null ? `${data.grammar.errorFree}% sem erro · ${data.grammar.analyzed} ${data.grammar.analyzed === 1 ? 'frase' : 'frases'}` : ''}</div>
             </div>
             <div className="adm-panel-body" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {data.grammar.corrections.length === 0 && <div className="adm-empty-sub">Sem correções no período.</div>}

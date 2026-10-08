@@ -186,7 +186,7 @@ export default function StudyTogetherScreen() {
           </View>
           <AppText style={{ fontSize: 13, color: C.mid, textAlign: 'center', marginTop: 14 }}>
             {tier.next
-              ? t(`Você trouxe ${info?.invitedCount ?? 0}. Faltam ${tier.next - (info?.invitedCount ?? 0)} para o próximo nível.`, `You brought ${info?.invitedCount ?? 0}. ${tier.next - (info?.invitedCount ?? 0)} more to the next level.`)
+              ? (() => { const left = tier.next - (info?.invitedCount ?? 0); return t(`Você trouxe ${info?.invitedCount ?? 0}. ${left === 1 ? 'Falta 1' : `Faltam ${left}`} para o próximo nível.`, `You brought ${info?.invitedCount ?? 0}. ${left} more to the next level.`); })()
               : t('Nível máximo de padrinho. Obrigado por espalhar o Queizy!', 'Top sponsor level. Thanks for spreading Queizy!')}
           </AppText>
         </Card>

@@ -127,7 +127,7 @@ export default function UserCrmPage() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 16 }}>
                 {[
                   ['XP total', (data.progress?.total_xp ?? 0).toLocaleString('pt-BR')],
-                  ['Sequência', `${data.progress?.streak_days ?? 0} dias`],
+                  ['Sequência', `${data.progress?.streak_days ?? 0} ${(data.progress?.streak_days ?? 0) === 1 ? 'dia' : 'dias'}`],
                   ['Práticas em 7 dias', String(data.activity.practices7d)],
                   ['XP em 60 dias', data.activity.xp60d.toLocaleString('pt-BR')],
                 ].map(([k, v]) => (
