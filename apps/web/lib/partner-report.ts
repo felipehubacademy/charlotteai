@@ -102,17 +102,17 @@ export function renderPartnerReportHtml(r: PartnerReport): string {
     ${r.margin != null ? `<div style="font-size:13px;color:rgba(255,255,255,0.75)">Margem de <b>${r.margin}%</b> sobre as entradas</div>` : ''}
   </div>
 
-  <table style="width:100%;border-collapse:collapse;margin-top:18px;background:#fff;border-radius:16px;padding:6px 16px;display:block">
+  <div style="margin-top:18px;background:#fff;border-radius:16px;padding:6px 16px"><table style="width:100%;border-collapse:collapse">
     ${row('Entradas', `${brl(r.income)}${delta(r.income, r.prev.income)}`, true)}
     ${row('Saídas', `${brl(r.expense)}${delta(r.expense, r.prev.expense)}`, true)}
     ${row('Custo de IA', brl(r.aiCost))}
-  </table>
+  </table></div>
 
   <h2 style="font-size:16px;margin:24px 0 8px">Para onde foi o dinheiro</h2>
-  <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:16px;padding:6px 16px;display:block">${cats || row('Sem saídas pagas no mês', '—')}</table>
+  <div style="background:#fff;border-radius:16px;padding:6px 16px"><table style="width:100%;border-collapse:collapse">${cats || row('Sem saídas pagas no mês', '—')}</table></div>
 
   <h2 style="font-size:16px;margin:24px 0 8px">Alunos e vendas</h2>
-  <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:16px;padding:6px 16px;display:block">
+  <div style="background:#fff;border-radius:16px;padding:6px 16px"><table style="width:100%;border-collapse:collapse">
     ${row('Cadastros no mês', String(r.students.newInMonth))}
     ${row('Alunos que praticaram', String(r.students.activeInMonth))}
     ${row('Assinantes pagantes hoje', String(r.students.paying))}
@@ -121,7 +121,7 @@ export function renderPartnerReportHtml(r: PartnerReport): string {
     ${row('Renovações', String(r.sales.renewals))}
     ${row('Reembolsos', String(r.sales.refunds))}
     ${row('Total de alunos', String(r.students.total))}
-  </table>
+  </table></div>
 
   <p style="margin:24px 0 0;font-size:12px"><a href="https://queizy.com/admin/finance" style="color:#8A8494">queizy.com/admin/finance</a></p>
 </div></body></html>`;

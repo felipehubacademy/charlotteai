@@ -528,10 +528,11 @@ function PartnerReportModal({ canWrite, onClose }: { canWrite: boolean; onClose:
   const [data, setData] = useState<{ html: string; recipients: string[]; sent: { sent_at: string; sent_to: string[] } | null } | null>(null);
   const [msg, setMsg] = useState('');
   const [busy, setBusy] = useState(false);
+  const [sentOnlyMe, setSentOnlyMe] = useState(false);
   const periods = Array.from({ length: 12 }, (_, i) => { const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - i); return d.toISOString().slice(0, 7); });
 
   useEffect(() => {
-    setData(null); setMsg('');
+    setData(null); setMsg(''); setSentOnlyMe(false);
     fetch(`/api/admin/reports?period=${period}`).then(r => r.json()).then(setData).catch(() => setMsg('Não foi possível gerar a prévia.'));
   }, [period]);
 
@@ -541,6 +542,7 @@ function PartnerReportModal({ canWrite, onClose }: { canWrite: boolean; onClose:
     const r = await fetch('/api/admin/reports', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ period, onlyMe }) });
     const j = await r.json().catch(() => ({}));
     setBusy(false);
+    if (r.ok && onlyMe) setSentOnlyMe(true);
     setMsg(r.ok ? `Enviado para ${j.sentTo?.join(', ') || 'ninguém'}${j.failed?.length ? `; falhou: ${j.failed.join(', ')}` : ''}.` : (j.error ?? 'Falha no envio.'));
   };
 
@@ -568,7 +570,7 @@ function PartnerReportModal({ canWrite, onClose }: { canWrite: boolean; onClose:
         </div>
         {canWrite && (
           <div className="adm-modal-footer">
-            <button className="adm-btn-sm ghost" disabled={busy || !data} onClick={() => send(true)}>Enviar só para mim</button>
+            <button className="adm-btn-sm ghost" disabled={busy || !data || sentOnlyMe} onClick={() => send(true)}>{busy ? 'Enviando…' : sentOnlyMe ? 'Enviado para você' : 'Enviar só para mim'}</button>
             <button className="adm-btn-sm primary" disabled={busy || !data} onClick={() => send(false)}>Enviar para a gestão</button>
           </div>
         )}
