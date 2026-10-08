@@ -544,7 +544,7 @@ export default function HomeTab() {
             level={level}
             currentLevel={currentLevel}
             onLevelChange={handleLevelChange}
-            useV2={profile?.beta_features?.includes('curriculum_v2') ?? false}
+            useV2
             flush
           />
         </View>
@@ -576,7 +576,7 @@ export default function HomeTab() {
             // goDown caia no ramo de andamento, nao usa posicao obsoleta.
             if (finished) activeTopicYRef.current = 0;
           }}
-          useV2={profile?.beta_features?.includes('curriculum_v2') ?? false}
+          useV2
         />
       </ScrollView>
 
