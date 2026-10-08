@@ -1,21 +1,14 @@
 'use client';
-// Equipe — quem acessa a gestão e com qual papel. Só o papel "Dono" vê.
+// Equipe — quem acessa a gestão e com qual nível de acesso. Só o Administrador vê.
+// Níveis e permissões vêm de lib/admin-roles.ts, a mesma fonte que o servidor aplica.
 
 import { useCallback, useEffect, useState } from 'react';
-import { Plus, X, Copy, Check } from 'lucide-react';
+import { Plus, X, Copy, Check, Minus } from 'lucide-react';
+import { ROLES, AREAS, PERMISSIONS, type AdminRole as Role } from '@/lib/admin-roles';
 import { useAdminMe } from '@/lib/admin-context';
 
-type Role = 'owner' | 'partner' | 'finance' | 'support' | 'viewer';
 interface Member { id: string; user_id: string; email: string; name: string | null; role: Role; active: boolean; created_at: string }
 
-const ROLES: { id: Role; label: string; desc: string }[] = [
-  { id: 'owner',   label: 'Dono',       desc: 'Tudo, incluindo gerenciar a equipe.' },
-  { id: 'partner', label: 'Sócio',      desc: 'Tudo, menos gerenciar a equipe.' },
-  { id: 'finance', label: 'Financeiro', desc: 'Financeiro e métricas.' },
-  { id: 'support', label: 'Suporte',    desc: 'Usuários e fila de suporte.' },
-  { id: 'viewer',  label: 'Leitura',    desc: 'Vê usuários, métricas e financeiro, sem editar.' },
-];
-const roleLabel = (r: Role) => ROLES.find(x => x.id === r)?.label ?? r;
 
 export default function TeamPage() {
   const me = useAdminMe();
@@ -23,7 +16,7 @@ export default function TeamPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [adding, setAdding] = useState(false);
-  const [form, setForm] = useState({ email: '', name: '', role: 'partner' as Role });
+  const [form, setForm] = useState({ email: '', name: '', role: 'collaborator' as Role });
   const [saving, setSaving] = useState(false);
   const [created, setCreated] = useState<{ email: string; tempPassword: string } | null>(null);
   const [copied, setCopied] = useState(false);
@@ -31,7 +24,7 @@ export default function TeamPage() {
   const load = useCallback(async () => {
     setLoading(true); setError('');
     const r = await fetch('/api/admin/team');
-    if (!r.ok) { setError(r.status === 403 ? 'Só quem tem papel de Dono gerencia a equipe.' : `HTTP ${r.status}`); setLoading(false); return; }
+    if (!r.ok) { setError(r.status === 403 ? 'Só o nível Administrador gerencia a equipe.' : `HTTP ${r.status}`); setLoading(false); return; }
     setMembers((await r.json()).members ?? []);
     setLoading(false);
   }, []);
@@ -45,7 +38,7 @@ export default function TeamPage() {
     if (!r.ok) { setError(j.error ?? 'Não foi possível adicionar.'); return; }
     setAdding(false);
     if (j.tempPassword) setCreated({ email: form.email, tempPassword: j.tempPassword });
-    setForm({ email: '', name: '', role: 'partner' });
+    setForm({ email: '', name: '', role: 'collaborator' });
     load();
   };
 
@@ -88,7 +81,7 @@ export default function TeamPage() {
           <div className="adm-panel col-8">
             <div className="adm-panel-hdr"><div className="adm-panel-title">Membros</div><div className="adm-panel-sub">{members.filter(m => m.active).length} ativos</div></div>
             <table className="adm-table">
-              <thead><tr><th>Pessoa</th><th>Papel</th><th>Situação</th><th>Desde</th></tr></thead>
+              <thead><tr><th>Pessoa</th><th>Nível de acesso</th><th>Situação</th><th>Desde</th></tr></thead>
               <tbody>
                 {loading && <tr><td colSpan={4}>Carregando…</td></tr>}
                 {members.map(m => {
@@ -117,7 +110,7 @@ export default function TeamPage() {
             </table>
           </div>
           <div className="adm-panel col-4">
-            <div className="adm-panel-hdr"><div className="adm-panel-title">O que cada papel acessa</div></div>
+            <div className="adm-panel-hdr"><div className="adm-panel-title">Níveis de acesso</div></div>
             <div className="adm-panel-body" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {ROLES.map(r => (
                 <div key={r.id}>
@@ -125,6 +118,34 @@ export default function TeamPage() {
                   <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>{r.desc}</div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="adm-panel col-12">
+            <div className="adm-panel-hdr"><div className="adm-panel-title">Permissões por nível</div></div>
+            <div style={{ overflowX: 'auto' }}>
+              <table className="adm-table">
+                <thead>
+                  <tr>
+                    <th>Permissão</th>
+                    {ROLES.map(r => <th key={r.id} style={{ textAlign: 'center' }}>{r.label}</th>)}
+                  </tr>
+                </thead>
+                <tbody>
+                  {AREAS.map(a => (
+                    <tr key={a.id}>
+                      <td style={{ color: 'var(--t1)', fontWeight: 600 }}>{a.label}</td>
+                      {ROLES.map(r => (
+                        <td key={r.id} style={{ textAlign: 'center' }}>
+                          {PERMISSIONS[r.id].includes(a.id)
+                            ? <Check size={15} style={{ color: 'var(--ok)' }} aria-label="Sim" />
+                            : <Minus size={15} style={{ color: 'var(--t3)' }} aria-label="Não" />}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -141,7 +162,7 @@ export default function TeamPage() {
               <div className="adm-field"><label>E-mail</label><input type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} placeholder="igor@exemplo.com" autoFocus /></div>
               <div className="adm-field"><label>Nome</label><input value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="Igor Fina" /></div>
               <div className="adm-field">
-                <label>Papel</label>
+                <label>Nível de acesso</label>
                 <select value={form.role} onChange={e => setForm(f => ({ ...f, role: e.target.value as Role }))}>
                   {ROLES.map(r => <option key={r.id} value={r.id}>{r.label} — {r.desc}</option>)}
                 </select>

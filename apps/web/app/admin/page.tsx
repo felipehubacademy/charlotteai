@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useAdminMe, canArea } from '@/lib/admin-context';
 import { Search, Plus, Edit2, Trash2, RefreshCw, ExternalLink, ChevronUp, ChevronDown, X, TriangleAlert, Check, Eye, EyeOff } from 'lucide-react';
 
 // ── Types ────────────────────────────────────────────────────────────────────
@@ -134,6 +135,7 @@ const EMPTY_FORM: Form = {
 
 // ════════════════════════════════════════════════════════════════════════════
 export default function AdminUsersPage() {
+  const canWrite = canArea(useAdminMe(), 'users:write');
   const [users, setUsers]       = useState<User[]>([]);
   const [stats, setStats]       = useState<Stats | null>(null);
   const [loading, setLoading]   = useState(false);
@@ -329,9 +331,11 @@ export default function AdminUsersPage() {
           <RefreshCw size={13} style={{ animation: loading ? 'spin 1s linear infinite' : 'none' }} />
           {loading ? 'Carregando' : 'Atualizar'}
         </button>
-        <button onClick={openCreate} className="adm-btn-sm primary">
-          <Plus size={14} /> Novo usuário
-        </button>
+        {canWrite && (
+          <button onClick={openCreate} className="adm-btn-sm primary">
+            <Plus size={14} /> Novo usuário
+          </button>
+        )}
       </div>
 
       {error && (
@@ -479,16 +483,20 @@ export default function AdminUsersPage() {
                         <td><span style={{ fontSize: 11.5, color: 'var(--t3)' }}>{fmtDate(u.created_at)}</span></td>
                         <td>
                           <div style={{ display: 'flex', gap: 6, justifyContent: 'flex-end' }}>
-                            <button onClick={() => openEdit(u)} className="adm-btn-sm ghost" style={{ padding: '5px 8px' }} title="Editar">
-                              <Edit2 size={13} />
-                            </button>
+                            {canWrite && (
+                              <button onClick={() => openEdit(u)} className="adm-btn-sm ghost" style={{ padding: '5px 8px' }} title="Editar">
+                                <Edit2 size={13} />
+                              </button>
+                            )}
                             <a href={`https://app.revenuecat.com/customers?app_user_id=${encodeURIComponent(u.id)}`}
                               target="_blank" rel="noreferrer" className="adm-btn-sm ghost" style={{ padding: '5px 8px' }} title="RevenueCat">
                               <ExternalLink size={13} />
                             </a>
-                            <button onClick={() => openDelete(u)} className="adm-btn-sm danger" style={{ padding: '5px 8px' }} title="Excluir">
-                              <Trash2 size={13} />
-                            </button>
+                            {canWrite && (
+                              <button onClick={() => openDelete(u)} className="adm-btn-sm danger" style={{ padding: '5px 8px' }} title="Excluir">
+                                <Trash2 size={13} />
+                              </button>
+                            )}
                           </div>
                         </td>
                       </tr>

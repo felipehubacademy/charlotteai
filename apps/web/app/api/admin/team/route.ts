@@ -1,16 +1,15 @@
-// /api/admin/team — equipe do admin (só o papel "owner" acessa).
+// /api/admin/team — equipe da gestão (só o nível Administrador acessa).
 //   GET    lista membros
 //   POST   { email, name, role } adiciona. Se a pessoa ainda não tem conta,
 //          cria com senha temporária (devolvida uma única vez para repassar).
-//   PATCH  { id, role?, active? } muda papel ou desativa/reativa
+//   PATCH  { id, role?, active? } muda o nível de acesso ou desativa/reativa
 import { NextRequest, NextResponse } from 'next/server';
 import { randomBytes } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit, AdminRole } from '@/lib/admin-auth';
+import { isAdminRole } from '@/lib/admin-roles';
 
 export const dynamic = 'force-dynamic';
-
-const ROLES: AdminRole[] = ['owner', 'partner', 'finance', 'support', 'viewer'];
 
 export async function GET(req: NextRequest) {
   const admin = await requireAdmin(req, 'team');
@@ -46,8 +45,8 @@ export async function POST(req: NextRequest) {
   const email = String(body.email ?? '').trim().toLowerCase();
   const name = String(body.name ?? '').trim() || null;
   const role = String(body.role ?? '') as AdminRole;
-  if (!email.includes('@') || !ROLES.includes(role)) {
-    return NextResponse.json({ error: 'E-mail e papel válidos são obrigatórios.' }, { status: 400 });
+  if (!email.includes('@') || !isAdminRole(role)) {
+    return NextResponse.json({ error: 'E-mail e nível de acesso válidos são obrigatórios.' }, { status: 400 });
   }
 
   const supabase = getSupabaseAdmin();
@@ -92,17 +91,17 @@ export async function PATCH(req: NextRequest) {
 
   const update: Record<string, unknown> = { updated_at: new Date().toISOString() };
   if (body.role !== undefined) {
-    if (!ROLES.includes(body.role)) return NextResponse.json({ error: 'Papel inválido' }, { status: 400 });
+    if (!isAdminRole(body.role)) return NextResponse.json({ error: 'Nível de acesso inválido.' }, { status: 400 });
     update.role = body.role;
   }
   if (body.active !== undefined) update.active = !!body.active;
 
-  // Nunca deixar o admin sem nenhum dono ativo.
-  const losingOwner = cur.role === 'owner' && cur.active && (update.role && update.role !== 'owner' || update.active === false);
-  if (losingOwner) {
-    const { count } = await supabase.from('admin_members').select('id', { count: 'exact', head: true }).eq('role', 'owner').eq('active', true);
+  // Nunca deixar a gestão sem nenhum Administrador ativo.
+  const losingAdmin = cur.role === 'admin' && cur.active && (update.role && update.role !== 'admin' || update.active === false);
+  if (losingAdmin) {
+    const { count } = await supabase.from('admin_members').select('id', { count: 'exact', head: true }).eq('role', 'admin').eq('active', true);
     if ((count ?? 0) <= 1) {
-      return NextResponse.json({ error: 'É preciso ter pelo menos um dono ativo.' }, { status: 400 });
+      return NextResponse.json({ error: 'É preciso ter pelo menos um Administrador ativo.' }, { status: 400 });
     }
   }
 

@@ -6,35 +6,16 @@
 // Authorization: Bearer <token>.
 //
 // Compatibilidade: o header x-admin-secret (senha única antiga) ainda vale
-// como "owner", para scripts e para a transição. Remover quando a equipe
+// como "admin", para scripts e para a transição. Remover quando a equipe
 // estiver toda com login próprio.
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
-export type AdminRole = 'owner' | 'partner' | 'finance' | 'support' | 'viewer';
+import { PERMISSIONS, ROLE_LABEL, type AdminRole, type AdminArea } from '@/lib/admin-roles';
 
-export type AdminArea =
-  | 'users'      // usuários do app (CRM)
-  | 'metrics'    // métricas e custos de IA
-  | 'finance'    // financeiro (ver)
-  | 'finance:write'
-  | 'support'
-  | 'notifications'
-  | 'team';      // gerenciar equipe do admin
-
-// O que cada papel pode acessar.
-const PERMISSIONS: Record<AdminRole, AdminArea[]> = {
-  owner:   ['users', 'metrics', 'finance', 'finance:write', 'support', 'notifications', 'team'],
-  partner: ['users', 'metrics', 'finance', 'finance:write', 'support', 'notifications'],
-  finance: ['metrics', 'finance', 'finance:write'],
-  support: ['users', 'support'],
-  viewer:  ['users', 'metrics', 'finance'],
-};
-
-export const ROLE_LABEL: Record<AdminRole, string> = {
-  owner: 'Dono', partner: 'Sócio', finance: 'Financeiro', support: 'Suporte', viewer: 'Leitura',
-};
+export type { AdminRole, AdminArea };
+export { ROLE_LABEL };
 
 export interface AdminContext {
   userId: string | null;
@@ -56,7 +37,7 @@ export function areasFor(role: AdminRole): AdminArea[] {
 export async function getAdmin(req: NextRequest): Promise<AdminContext | null> {
   const secret = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
   if (process.env.ADMIN_SECRET && secret && secret === process.env.ADMIN_SECRET) {
-    return { userId: null, email: null, name: 'Senha mestra', role: 'owner', legacy: true };
+    return { userId: null, email: null, name: 'Senha mestra', role: 'admin', legacy: true };
   }
 
   const auth = req.headers.get('authorization') ?? '';

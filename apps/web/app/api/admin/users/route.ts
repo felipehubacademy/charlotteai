@@ -36,9 +36,9 @@ interface UserProgress {
 }
 
 // Login próprio (Bearer) com papel que acessa 'users', ou a senha mestra antiga.
-async function checkAuth(req: NextRequest) {
+async function checkAuth(req: NextRequest, area: 'users' | 'users:write' = 'users') {
   const admin = await getAdmin(req);
-  return !!admin && can(admin.role, 'users');
+  return !!admin && can(admin.role, area);
 }
 
 // ── GET /api/admin/users — list all users + stats + engagement ────────────────
@@ -175,7 +175,7 @@ export async function GET(req: NextRequest) {
 
 // ── POST /api/admin/users — create a new user ─────────────────────────────────
 export async function POST(req: NextRequest) {
-  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req, 'users:write'))) return NextResponse.json({ error: 'Sem permissão para editar alunos.' }, { status: 403 });
 
   const body = await req.json();
   const {
@@ -303,7 +303,7 @@ export async function POST(req: NextRequest) {
 
 // ── PATCH /api/admin/users — update a user ────────────────────────────────────
 export async function PATCH(req: NextRequest) {
-  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req, 'users:write'))) return NextResponse.json({ error: 'Sem permissão para editar alunos.' }, { status: 403 });
 
   const body = await req.json();
   const { id, ...fields } = body;
@@ -359,7 +359,7 @@ export async function PATCH(req: NextRequest) {
 
 // ── DELETE /api/admin/users — delete a user ───────────────────────────────────
 export async function DELETE(req: NextRequest) {
-  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req, 'users:write'))) return NextResponse.json({ error: 'Sem permissão para editar alunos.' }, { status: 403 });
 
   const body = await req.json();
   const { id } = body;

@@ -4,6 +4,7 @@
 // de prévia no admin e pelo envio manual.
 
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { REPORT_ROLES } from '@/lib/admin-roles';
 
 export interface PartnerReport {
   period: string; label: string;
@@ -127,9 +128,9 @@ export function renderPartnerReportHtml(r: PartnerReport): string {
 </div></body></html>`;
 }
 
-/** Destinatários: membros ativos com papel de dono, sócio ou financeiro (equipe de gestão). */
+/** Destinatários: membros ativos com financeiro completo (Administrador, Gerente, Financeiro). */
 export async function partnerReportRecipients(): Promise<string[]> {
   const { data } = await getSupabaseAdmin().from('admin_members')
-    .select('email').eq('active', true).in('role', ['owner', 'partner', 'finance']);
+    .select('email').eq('active', true).in('role', REPORT_ROLES);
   return [...new Set(((data ?? []) as { email: string }[]).map(m => m.email))];
 }

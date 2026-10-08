@@ -22,7 +22,7 @@ const EXPENSE_CATEGORIES = [
   'Inteligência artificial', 'Infraestrutura e hospedagem', 'Lojas e pagamentos', 'Domínios e e-mail',
   'Ferramentas e software', 'Marketing e mídia', 'Equipe e prestadores', 'Jurídico e contábil', 'Impostos', 'Reembolsos e estornos', 'Outros',
 ];
-const INCOME_CATEGORIES = ['Assinaturas App Store', 'Assinaturas Google Play', 'B2B e institucional', 'Aporte de sócios', 'Outros'];
+const INCOME_CATEGORIES = ['Assinaturas App Store', 'Assinaturas Google Play', 'B2B e institucional', 'Aporte de capital', 'Outros'];
 const VENDORS = ['OpenAI', 'Anthropic', 'ElevenLabs', 'Microsoft Azure', 'Vercel', 'Supabase', 'Expo (EAS)', 'RevenueCat', 'Apple', 'Google', 'Cloudflare', 'registro.br', 'Microsoft 365', 'Sentry', 'HubSpot'];
 const CURRENCIES = ['BRL', 'USD', 'EUR'];
 

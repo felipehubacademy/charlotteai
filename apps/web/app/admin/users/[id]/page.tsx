@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Tag, X, Send } from 'lucide-react';
+import { useAdminMe, canArea } from '@/lib/admin-context';
 
 interface Crm {
   user: Record<string, any>;
@@ -53,6 +54,7 @@ function ActivityStrip({ byDay }: { byDay: Record<string, number> }) {
 
 export default function UserCrmPage() {
   const id = useParams<{ id: string }>()?.id ?? '';
+  const canWrite = canArea(useAdminMe(), 'users:write');
   const [data, setData] = useState<Crm | null>(null);
   const [error, setError] = useState('');
   const [note, setNote] = useState('');
@@ -152,15 +154,20 @@ export default function UserCrmPage() {
             <div className="adm-panel-body" style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
               {data.tags.map(t => (
                 <span key={t} className="badge badge-accent" style={{ fontSize: 12 }}>
-                  {t} <button onClick={() => saveTags(data.tags.filter(x => x !== t))} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex' }}><X size={11} /></button>
+                  {t} {canWrite && <button onClick={() => saveTags(data.tags.filter(x => x !== t))} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex' }}><X size={11} /></button>}
                 </span>
               ))}
-              <input className="adm-input-sm" style={{ width: 170 }} placeholder="Nova etiqueta + Enter" value={tagInput}
-                onChange={e => setTagInput(e.target.value)}
-                onKeyDown={e => { if (e.key === 'Enter' && tagInput.trim()) { saveTags([...data.tags, tagInput.trim().toLowerCase()]); setTagInput(''); } }} />
-              {SUGGESTED_TAGS.filter(t => !data.tags.includes(t)).map(t => (
-                <button key={t} className="adm-chip" onClick={() => saveTags([...data.tags, t])}>+ {t}</button>
-              ))}
+              {canWrite && (
+                <>
+                  <input className="adm-input-sm" style={{ width: 170 }} placeholder="Nova etiqueta + Enter" value={tagInput}
+                    onChange={e => setTagInput(e.target.value)}
+                    onKeyDown={e => { if (e.key === 'Enter' && tagInput.trim()) { saveTags([...data.tags, tagInput.trim().toLowerCase()]); setTagInput(''); } }} />
+                  {SUGGESTED_TAGS.filter(t => !data.tags.includes(t)).map(t => (
+                    <button key={t} className="adm-chip" onClick={() => saveTags([...data.tags, t])}>+ {t}</button>
+                  ))}
+                </>
+              )}
+              {!canWrite && data.tags.length === 0 && <div className="adm-empty-sub">Sem etiquetas.</div>}
             </div>
           </div>
 
@@ -168,10 +175,10 @@ export default function UserCrmPage() {
           <div className="adm-panel col-6">
             <div className="adm-panel-hdr"><div className="adm-panel-title">Anotações da equipe</div><div className="adm-panel-sub">{data.notes.length}</div></div>
             <div className="adm-panel-body" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <div style={{ display: 'flex', gap: 8 }}>
+              {canWrite && <div style={{ display: 'flex', gap: 8 }}>
                 <textarea className="adm-input-sm" style={{ flex: 1, minHeight: 60, resize: 'vertical', fontFamily: 'inherit' }} placeholder="Ex.: ligou pedindo nota fiscal; prometemos retorno até sexta." value={note} onChange={e => setNote(e.target.value)} />
                 <button className="adm-btn-sm primary" disabled={saving || !note.trim()} onClick={addNote} style={{ alignSelf: 'flex-end' }}><Send size={13} /> Salvar</button>
-              </div>
+              </div>}
               {data.notes.length === 0 && <div className="adm-empty-sub">Nenhuma anotação ainda.</div>}
               {data.notes.map(n => (
                 <div key={n.id} style={{ borderTop: '1px solid var(--b1)', paddingTop: 10 }}>

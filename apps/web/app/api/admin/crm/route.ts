@@ -1,7 +1,7 @@
 // /api/admin/crm — ficha do aluno (CRM e CS).
 //   GET  ?userId=     perfil, atividade, conversas, suporte, pagamentos,
 //                     anotações, etiquetas e risco de cancelamento
-//   POST { userId, action: 'note', body }   nova anotação
+//   POST { userId, action: 'note', body }   nova anotação (exige users:write)
 //   POST { userId, action: 'tags', tags }   substitui as etiquetas
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
@@ -64,7 +64,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const admin = await requireAdmin(req, 'users');
+  const admin = await requireAdmin(req, 'users:write');
   if (admin instanceof NextResponse) return admin;
   const body = await req.json().catch(() => ({}));
   const userId = String(body.userId ?? '');
