@@ -21,7 +21,7 @@ import { useEffect, useState } from 'react';
 
 const IOS_URL     = 'https://apps.apple.com/app/id6760943273';
 const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.hubacademy.charlotte';
-const QR_PAGE_URL = 'https://charlotte.hubacademybr.com/open';
+const QR_PAGE_URL = 'https://queizy.com/open';
 
 type Phase = 'launching' | 'fallback' | 'expired';
 type OS    = 'ios' | 'android' | 'desktop';
@@ -124,7 +124,7 @@ export default function OpenPage() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Abrindo Charlotte AI...</title>
+        <title>Abrindo o Queizy...</title>
         <style>{`
           * { box-sizing: border-box; margin: 0; padding: 0; }
           body {
@@ -239,10 +239,10 @@ export default function OpenPage() {
       <body>
         <div className="card">
           <div className="avatar">
-            <img src="https://charlotte.hubacademybr.com/charlotte-bust.png" alt="Charlotte" />
+            <img src="/images/queizy-icon.png" alt="Queizy" />
           </div>
 
-          <p className="brand">Charlotte AI</p>
+          <p className="brand">Queizy</p>
 
           {phase === 'expired' ? (
             /* ── Link expirado ── */
@@ -253,9 +253,9 @@ export default function OpenPage() {
                 Abra o app e solicite um novo link pelo login.
               </p>
               {os === 'ios' ? (
-                <a href="charlotte://" className="btn-primary">Abrir Charlotte AI</a>
+                <a href="charlotte://" className="btn-primary">Abrir o Queizy</a>
               ) : os === 'android' ? (
-                <a href="intent://#Intent;scheme=charlotte;package=com.hubacademy.charlotte;end" className="btn-primary">Abrir Charlotte AI</a>
+                <a href="intent://#Intent;scheme=charlotte;package=com.hubacademy.charlotte;end" className="btn-primary">Abrir o Queizy</a>
               ) : null}
               <div className="divider">nao tem o app?</div>
               <div className="store-badges">
@@ -269,7 +269,7 @@ export default function OpenPage() {
               <div className="spinner" />
               <h1>Abrindo o app<span style={{ display: 'inline-block', width: 20, textAlign: 'left' }}>{dots}</span></h1>
               <p className="sub">
-                Aguarde enquanto abrimos o Charlotte AI no seu dispositivo.
+                Aguarde enquanto abrimos o Queizy no seu dispositivo.
               </p>
             </>
           ) : os === 'desktop' ? (
@@ -277,12 +277,12 @@ export default function OpenPage() {
             <>
               <h1>Abra no seu celular</h1>
               <p className="sub">
-                Charlotte AI &eacute; um app para iPhone e Android.<br />
+                O Queizy &eacute; um app para iPhone e Android.<br />
                 Escaneie o QR code com a c&acirc;mera do seu celular.
               </p>
 
               <div className="qr-wrap">
-                <img src={qrUrl} alt="QR code para baixar Charlotte AI" />
+                <img src={qrUrl} alt="QR code para baixar o Queizy" />
               </div>
               <p className="qr-label">
                 Aponte a c&acirc;mera para o QR code<br />e toque no link que aparecer.
@@ -292,7 +292,7 @@ export default function OpenPage() {
           ) : (
             /* ── Mobile: app nao instalado ── */
             <>
-              <h1>Baixe o Charlotte AI</h1>
+              <h1>Baixe o Queizy</h1>
               <p className="sub">
                 Instale o app para confirmar sua conta<br />e come&ccedil;ar a praticar ingl&ecirc;s.
               </p>
@@ -303,7 +303,7 @@ export default function OpenPage() {
               </div>
 
               <p className="note">
-                J&aacute; tem o app? Abra o Charlotte AI e entre com seu email e senha.
+                J&aacute; tem o app? Abra o Queizy e entre com seu email e senha.
               </p>
             </>
           )}

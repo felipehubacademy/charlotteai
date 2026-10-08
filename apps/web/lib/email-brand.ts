@@ -5,7 +5,7 @@
 
 export const SITE = 'https://queizy.com';
 export const LOGO_URL = `${SITE}/images/queizy-logo.png`;
-export const SMART_LINK = 'https://charlotte.hubacademybr.com/open?mode=invite';
+export const SMART_LINK = 'https://queizy.com/open?mode=invite';
 
 const INK = '#16131F';
 const MID = '#4D4858';

@@ -89,7 +89,7 @@ export default function RootLayout({
         <meta name="description" content="AI-powered English learning assistant with live voice conversations and personalized lessons" />
         <meta name="keywords" content="English learning, AI assistant, voice conversation, pronunciation, Hub Academy, Charlotte" />
         <meta name="author" content="Hub Academy" />
-        <link rel="canonical" href="https://charlotte.hubacademybr.com" />
+        <link rel="canonical" href="https://queizy.com" />
       </head>
       <body className={`${inter.className} antialiased`} suppressHydrationWarning>
         <Suspense fallback={
