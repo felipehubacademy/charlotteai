@@ -1,14 +1,15 @@
 // lib/microsoft-graph-email-service.ts
 // Envia emails via Microsoft Graph API usando client credentials (server-to-server).
-// Caixa: charlotte@hubacademybr.com. Os e-mails saem como "Queizy
-// <noreply@queizy.com>", apelido da mesma caixa (envio por apelido ligado no
-// Exchange). Respostas e devoluções continuam chegando nessa caixa.
+// Envio: caixa compartilhada noreply@queizy.com (nome "Queizy", sem licença).
+// Leitura do suporte: caixa charlotte@hubacademybr.com, que recebe contato@ e
+// suporte@queizy.com. Devoluções (NDRs) chegam na caixa de envio e são lidas
+// nas duas caixas.
 
 const TENANT_ID     = process.env.AZURE_TENANT_ID!;
 const CLIENT_ID     = process.env.AZURE_CLIENT_ID!;
 const CLIENT_SECRET = process.env.AZURE_CLIENT_SECRET!;
-const FROM_EMAIL    = 'charlotte@hubacademybr.com'; // caixa usada nas chamadas do Graph
-const SENDER_EMAIL  = process.env.EMAIL_SENDER_ADDRESS || 'noreply@queizy.com';
+const INBOX_EMAIL   = 'charlotte@hubacademybr.com'; // caixa lida pelo suporte
+const SENDER_EMAIL  = process.env.EMAIL_SENDER_ADDRESS || 'noreply@queizy.com'; // caixa de envio
 const FROM_NAME     = process.env.EMAIL_SENDER_NAME || 'Queizy';
 const REPLY_TO      = 'contato@queizy.com';
 
@@ -78,7 +79,7 @@ export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
     try {
       const token = await getAccessToken();
       const res = await fetch(
-        `https://graph.microsoft.com/v1.0/users/${FROM_EMAIL}/sendMail`,
+        `https://graph.microsoft.com/v1.0/users/${SENDER_EMAIL}/sendMail`,
         {
           method: 'POST',
           headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
@@ -127,18 +128,20 @@ export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
   return false;
 }
 
-// ── Leitura de bounces (NDRs) da caixa da Charlotte ────────────────────────────
+// ── Leitura de bounces (NDRs) das caixas de envio e do suporte ────────────────
 // Le mensagens recentes de "postmaster/Microsoft Exchange" (falha de entrega) e
 // devolve todos os emails achados no corpo. Requer permissao Mail.Read no app.
 export async function listBounceRecipients(sinceIso: string): Promise<{ scanned: number; emails: string[] }> {
   const token = await getAccessToken();
-  const url = `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(FROM_EMAIL)}/messages`
-    + `?$select=subject,from,receivedDateTime,body&$top=200`
-    + `&$filter=${encodeURIComponent(`receivedDateTime ge ${sinceIso}`)}`;
-  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-  if (!res.ok) throw new Error(`Graph read ${res.status}: ${await res.text()}`);
-  const json = await res.json();
-  const msgs: any[] = json.value ?? [];
+  const msgs: any[] = [];
+  for (const box of [...new Set([SENDER_EMAIL, INBOX_EMAIL])]) {
+    const url = `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(box)}/messages`
+      + `?$select=subject,from,receivedDateTime,body&$top=200`
+      + `&$filter=${encodeURIComponent(`receivedDateTime ge ${sinceIso}`)}`;
+    const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+    if (!res.ok) throw new Error(`Graph read ${box} ${res.status}: ${await res.text()}`);
+    msgs.push(...((await res.json()).value ?? []));
+  }
   const RE = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
   const emails = new Set<string>();
   for (const m of msgs) {
@@ -168,7 +171,7 @@ export interface InboxMessage {
 
 export async function listInboxMessages(sinceIso: string, top = 100): Promise<InboxMessage[]> {
   const token = await getAccessToken();
-  const url = `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(FROM_EMAIL)}/messages`
+  const url = `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(INBOX_EMAIL)}/messages`
     + `?$select=id,conversationId,from,toRecipients,subject,bodyPreview,body,receivedDateTime`
     + `&$top=${top}&$orderby=receivedDateTime desc`
     + `&$filter=${encodeURIComponent(`receivedDateTime ge ${sinceIso}`)}`;
