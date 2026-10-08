@@ -9,6 +9,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { randomBytes } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { pushIsPt } from '@/lib/expo-notification-service';
 
 export const dynamic = 'force-dynamic';
 
@@ -169,14 +170,14 @@ export async function POST(req: NextRequest) {
     const { error } = await supabase.from('referrals').insert({ invitee_id: user.id, inviter_id: inviterId, code, rewarded: true } as never);
     if (error) return NextResponse.json({ error: 'already_claimed' }, { status: 409 });
 
-    const { data: invRow } = await supabase.from('charlotte_users').select('name, live_voice_bonus_seconds, expo_push_token, charlotte_level').eq('id', inviterId).maybeSingle();
-    const inviter = invRow as { name: string | null; live_voice_bonus_seconds: number | null; expo_push_token: string | null; charlotte_level: string | null } | null;
+    const { data: invRow } = await supabase.from('charlotte_users').select('name, live_voice_bonus_seconds, expo_push_token, charlotte_level, app_language').eq('id', inviterId).maybeSingle();
+    const inviter = invRow as { name: string | null; live_voice_bonus_seconds: number | null; expo_push_token: string | null; charlotte_level: string | null; app_language: string | null } | null;
     await Promise.all([
       supabase.from('charlotte_users').update({ live_voice_bonus_seconds: (me.live_voice_bonus_seconds ?? 0) + REWARD_SECONDS } as never).eq('id', user.id),
       inviter ? supabase.from('charlotte_users').update({ live_voice_bonus_seconds: (inviter.live_voice_bonus_seconds ?? 0) + REWARD_SECONDS } as never).eq('id', inviterId) : Promise.resolve(),
     ]);
-    // Idioma do push segue a convenção dos demais pushes do app (Novice em português).
-    const pt = inviter?.charlotte_level !== 'Inter' && inviter?.charlotte_level !== 'Advanced';
+    // Push no idioma do aparelho de quem recebe.
+    const pt = inviter ? pushIsPt(inviter) : true;
     const who = firstName(me.name) ?? (pt ? 'Alguém' : 'Someone');
     await sendPush(inviter?.expo_push_token ?? null,
       pt ? `${who} aceitou seu convite` : `${who} accepted your invite`,
@@ -198,10 +199,10 @@ export async function POST(req: NextRequest) {
     await supabase.from('buddy_nudges').insert({ from_id: user.id, to_id: to, message: String(body.key) } as never);
     const [{ data: fromRow }, { data: toRow }] = await Promise.all([
       supabase.from('charlotte_users').select('name').eq('id', user.id).maybeSingle(),
-      supabase.from('charlotte_users').select('expo_push_token, charlotte_level').eq('id', to).maybeSingle(),
+      supabase.from('charlotte_users').select('expo_push_token, charlotte_level, app_language').eq('id', to).maybeSingle(),
     ]);
-    const target = toRow as { expo_push_token: string | null; charlotte_level: string | null } | null;
-    const pt = target?.charlotte_level !== 'Inter' && target?.charlotte_level !== 'Advanced';
+    const target = toRow as { expo_push_token: string | null; charlotte_level: string | null; app_language: string | null } | null;
+    const pt = target ? pushIsPt(target) : true;
     const from = firstName((fromRow as { name: string | null } | null)?.name ?? null) ?? (pt ? 'Sua dupla' : 'Your buddy');
     await sendPush(target?.expo_push_token ?? null, pt ? `${from} te cutucou` : `${from} nudged you`, pt ? msg.pt : msg.en,
       { type: 'buddy_nudge', screen: 'study-together' });

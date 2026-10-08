@@ -7,6 +7,7 @@ import * as Notifications from 'expo-notifications';
 import Constants from 'expo-constants';
 import { router } from 'expo-router';
 import { supabase } from '@/lib/supabase';
+import { systemIsPt } from '@/lib/systemLang';
 
 // Expo Go uses executionEnvironment === 'storeClient' OR appOwnership === 'expo'.
 // TestFlight and production builds use 'standalone'.
@@ -175,10 +176,11 @@ async function saveTokenToSupabase(userId: string, token: string) {
     console.warn('⚠️ Push token takeover clear error:', clearErr.message);
   }
 
-  // 2. Assign it to the current user.
+  // 2. Assign it to the current user, com o idioma do aparelho: os pushes
+  //    saem nesse idioma (regra do app: tudo fora do conteúdo segue o aparelho).
   const { error, data } = await supabase
     .from('charlotte_users')
-    .update({ expo_push_token: token })
+    .update({ expo_push_token: token, app_language: systemIsPt ? 'pt' : 'en' })
     .eq('id', userId)
     .select('id');
 

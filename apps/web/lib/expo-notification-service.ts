@@ -542,11 +542,22 @@ async function sendExpoPush(
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
+/**
+ * Idioma do push: o do aparelho do aluno (app_language, gravado pelo app com o
+ * token). Sem ele (apps antigos), vale a regra anterior: Novice em português.
+ */
+export function pushIsPt(u: { app_language?: string | null; charlotte_level?: string | null }): boolean {
+  if (u.app_language === 'pt') return true;
+  if (u.app_language === 'en') return false;
+  return u.charlotte_level === 'Novice';
+}
+
 interface NotifUser {
   id: string;
   name: string | null;
   expo_push_token: string;
   charlotte_level: string | null;
+  app_language: string | null;
   timezone: string | null;
 }
 
@@ -555,7 +566,7 @@ async function fetchCharlotteUsers(supabase: any, userIds: string[]): Promise<No
   if (!userIds.length) return [];
   const { data } = await supabase
     .from('charlotte_users')
-    .select('id, name, expo_push_token, charlotte_level, timezone')
+    .select('id, name, expo_push_token, charlotte_level, app_language, timezone')
     .in('id', userIds)
     .not('expo_push_token', 'is', null);
   return (data ?? []).filter((u: any) => u.expo_push_token?.startsWith('ExponentPushToken[')) as NotifUser[];
@@ -614,7 +625,7 @@ export async function sendStreakReminders(supabase: any): Promise<void> {
     const messages: ExpoMessage[] = [];
     const senders: any[] = [];
     for (const u of cuUsers) {
-      const isNovice = u.charlotte_level === 'Novice';
+      const isNovice = pushIsPt(u); // true = português
       const firstName = u.name?.split(/[\s\-]+/)[0] ?? 'there';
       const days = streakMap[u.id] ?? 1;
       const picked = pickCoreTemplate(
@@ -665,7 +676,7 @@ export async function sendDailyReminders(supabase: any): Promise<void> {
     // 2) Todos os usuários com token e timezone.
     const { data: cuUsers, error: usersErr } = await supabase
       .from('charlotte_users')
-      .select('id, name, expo_push_token, charlotte_level, timezone')
+      .select('id, name, expo_push_token, charlotte_level, app_language, timezone')
       .not('expo_push_token', 'is', null);
     if (usersErr) { console.error('❌ [Expo] users query error:', usersErr.message); return; }
 
@@ -714,7 +725,7 @@ export async function sendDailyReminders(supabase: any): Promise<void> {
     const perUserHash: Record<string, string> = {};
     const messages: ExpoMessage[] = eligible.map((u: any) => {
       const firstName = u.name?.split(/[\s\-]+/)[0] ?? 'there';
-      const isNovice  = u.charlotte_level === 'Novice';
+      const isNovice  = pushIsPt(u); // true = português
       const streak    = streakMap[u.id] ?? 0;
       const { msg, hash } = pickTemplate(
         isNovice ? poolNovice : poolAdvanced,
@@ -754,7 +765,7 @@ export async function sendCharlotteMessages(supabase: any): Promise<void> {
 
     const { data: allUsers } = await supabase
       .from('charlotte_users')
-      .select('id, name, expo_push_token, charlotte_level, timezone')
+      .select('id, name, expo_push_token, charlotte_level, app_language, timezone')
       .not('expo_push_token', 'is', null);
 
     const progressByUser = new Map<string, string>(
@@ -827,7 +838,7 @@ export async function sendCharlotteMessages(supabase: any): Promise<void> {
     const perUserHash: Record<string, string> = {};
     const messages: ExpoMessage[] = cuUsers.map((u: any) => {
       const firstName = u.name?.split(/[\s\-]+/)[0] ?? 'there';
-      const isNovice  = u.charlotte_level === 'Novice';
+      const isNovice  = pushIsPt(u); // true = português
       const xp        = todayXpMap[u.id] ?? 0;
       const streak    = streakMap[u.id] ?? 0;
       const { msg, hash } = pickTemplate(
@@ -865,7 +876,7 @@ export async function sendXPMilestoneNotification(
   try {
     const { data: user } = await supabase
       .from('charlotte_users')
-      .select('expo_push_token, name')
+      .select('expo_push_token, name, charlotte_level, app_language')
       .eq('id', userId)
       .single();
 
@@ -878,7 +889,7 @@ export async function sendXPMilestoneNotification(
     }
 
     const firstName = user.name?.split(' ')[0] ?? 'Você';
-    const isNovice  = (user as any).charlotte_level === 'Novice';
+    const isNovice  = pushIsPt(user as any); // true = português
     const recent = await fetchRecentVariantHashes(supabase, [userId], 'xp_milestone');
     const picked = pickCoreTemplate(
       'xp_milestone',
@@ -966,7 +977,7 @@ export async function sendGoalReminders(supabase: any): Promise<void> {
     const senders: any[] = [];
     for (const u of cuUsers) {
       const firstName = u.name?.split(/[\s\-]+/)[0] ?? 'there';
-      const isNovice  = u.charlotte_level === 'Novice';
+      const isNovice  = pushIsPt(u); // true = português
       const missing   = missingMap[u.id] ?? 0;
       const picked = pickCoreTemplate(
         'goal_reminder',
@@ -1070,7 +1081,7 @@ export async function sendWeeklyChallenges(supabase: any): Promise<void> {
     const chEn = WEEKLY_CHALLENGES_EN[weekIdx];
 
     const messages: ExpoMessage[] = cuUsers.map((u: any) => {
-      const isNovice = u.charlotte_level === 'Novice';
+      const isNovice = pushIsPt(u); // true = português
       const ch = isNovice ? chPt : chEn;
       return {
         to: u.expo_push_token,
@@ -1181,6 +1192,7 @@ interface EngagementUser {
   name: string | null;
   expo_push_token: string;
   charlotte_level: string | null;
+  app_language: string | null;
   timezone: string | null;
   last_practice_at: string | null;
   trial_ends_at: string | null;
@@ -1551,7 +1563,7 @@ function detectEngagementSignal(
   const localHour = localHourInTz(now, tz);
   const localDay  = localDayInTz(now, tz);
   const firstName = user.name?.split(/[\s\-]+/)[0] ?? 'there';
-  const isNovice  = user.charlotte_level === 'Novice';
+  const isNovice  = pushIsPt(user); // true = português
 
   // Iterate priority order; return first matching signal.
   for (const type of ENGAGEMENT_PRIORITY) {
@@ -1686,7 +1698,7 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
     //    PostgREST in this project).
     const { data: users, error: usersErr } = await supabase
       .from('charlotte_users')
-      .select('id, name, expo_push_token, charlotte_level, timezone, last_practice_at, trial_ends_at, subscription_status, subscription_expires_at, is_institutional')
+      .select('id, name, expo_push_token, charlotte_level, app_language, timezone, last_practice_at, trial_ends_at, subscription_status, subscription_expires_at, is_institutional')
       .not('expo_push_token', 'is', null);
     if (usersErr) { console.error('❌ [Engagement] users query:', usersErr.message); return; }
     const withToken = (users ?? []).filter((u: any) =>
@@ -1768,6 +1780,7 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
         name: raw.name,
         expo_push_token: raw.expo_push_token,
         charlotte_level: raw.charlotte_level,
+        app_language: raw.app_language ?? null,
         timezone: raw.timezone,
         last_practice_at: raw.last_practice_at,
         trial_ends_at: raw.trial_ends_at,
@@ -1820,8 +1833,8 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
     //     GPT_ENGAGEMENT_TYPES, and the warm step respects per-locale need.
     const gptWarmInputs: { type: string; needsPt: boolean; needsEn: boolean }[] = [];
     for (const [type, ps] of byTypeFinal) {
-      const needsPt = ps.some(p => p.user.charlotte_level === 'Novice');
-      const needsEn = ps.some(p => p.user.charlotte_level !== 'Novice');
+      const needsPt = ps.some(p => pushIsPt(p.user));
+      const needsEn = ps.some(p => !pushIsPt(p.user));
       gptWarmInputs.push({ type, needsPt, needsEn });
     }
     await warmEngagementGptPools(gptWarmInputs);
@@ -1845,7 +1858,7 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
       for (const p of ps) {
         const picked = pickReengTemplate(
           type,
-          p.user.charlotte_level === 'Novice',
+          pushIsPt(p.user),
           p.vars,
           hashesForType.get(p.user.id) ?? new Set(),
         );
