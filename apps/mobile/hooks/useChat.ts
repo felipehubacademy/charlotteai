@@ -13,6 +13,7 @@ import { ChatMode } from '@/lib/levelConfig';
 import { PronunciationData } from '@/components/chat/PronunciationScoreCard';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import { soundEngine } from '@/lib/soundEngine';
+import { systemIsPt } from '@/lib/systemLang';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -238,7 +239,31 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     }
     activeSessionIdRef.current = data.id;
     setActiveSessionId(data.id);
+    untitledRef.current.add(data.id);
     return data.id;
+  }, [mode, userId]);
+
+  // ── Título da conversa (Free Chat) ─────────────────────────────────────────
+  // Na primeira fala de uma session nova: tema tocado vira o título na hora;
+  // mensagem escrita/falada vai para /api/chat-title (IA, idioma do device).
+  const untitledRef = useRef<Set<string>>(new Set());
+  const maybeTitleSession = useCallback((opts: { title?: string; text?: string }) => {
+    const sessionId = activeSessionIdRef.current;
+    if (mode !== 'chat' || !sessionId || !userId || !untitledRef.current.has(sessionId)) return;
+    untitledRef.current.delete(sessionId);
+    if (opts.title) {
+      supabase.from('charlotte_chat_sessions')
+        .update({ title: opts.title })
+        .eq('id', sessionId)
+        .then(({ error }) => { if (error) console.warn('⚠️ session title:', error.message); });
+      return;
+    }
+    if (!opts.text?.trim()) return;
+    fetch(`${API_BASE_URL}/api/chat-title`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sessionId, userId, lang: systemIsPt ? 'pt' : 'en', text: opts.text.trim() }),
+    }).catch(err => console.warn('⚠️ chat-title:', err));
   }, [mode, userId]);
 
   // ── Encerra session ativa: marca ended_at + dispara summary + limpa state ──
@@ -263,7 +288,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     fetch(`${API_BASE_URL}/api/summarize-chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sessionId, userId, userLevel }),
+      body: JSON.stringify({ sessionId, userId, userLevel, lang: systemIsPt ? 'pt' : 'en' }),
     }).catch(err => console.warn('⚠️ summarize-chat:', err));
 
     // Limpa state local
@@ -461,6 +486,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
 
       // Save user message to history
       saveChatMessage(userId, 'user', text.trim(), mode, activeSessionIdRef.current);
+      maybeTitleSession({ text: text.trim() });
 
       try {
         const result = await getAssistantResponse(text.trim(), 'text');
@@ -522,11 +548,12 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
    * isExplainMore:true so the "Explain more" button is hidden on it.
    */
   const sendSilentMessage = useCallback(
-    async (text: string) => {
+    async (text: string, titleHint?: string) => {
       if (!text.trim() || isProcessing) return;
 
       // Em chat mode garante session (idempotente). Em outros modos é noop.
       if (mode === 'chat') await ensureSession();
+      if (titleHint) maybeTitleSession({ title: titleHint });
 
       setIsProcessing(true);
       contextManagerRef.current.addMessage('user', text.trim(), 'text');
@@ -915,6 +942,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
 
         // Save transcription as user message in chat history
         saveChatMessage(userId, 'user', transcription, mode, activeSessionIdRef.current);
+        maybeTitleSession({ text: transcription });
 
         const audioResult = await getAssistantResponse(transcription, 'audio');
         if (!audioResult) return;

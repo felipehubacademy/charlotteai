@@ -1,7 +1,8 @@
 // app/api/summarize-chat/route.ts
 // Resume uma session de Free Chat em 1-2 frases curtas e atualiza o registro
-// em charlotte_chat_sessions. Idioma do resumo segue o nível:
-// Novice → PT-BR, Inter → PT-BR, Advanced → EN.
+// em charlotte_chat_sessions. Idioma do resumo = idioma do device (`lang`),
+// como o resto da interface. Sem `lang` (app antigo), segue o nível:
+// Novice/Inter → PT-BR, Advanced → EN.
 
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
@@ -22,6 +23,7 @@ interface Body {
   sessionId: string;
   userId:    string;
   userLevel: 'Novice' | 'Inter' | 'Advanced';
+  lang?:     'pt' | 'en';
 }
 
 export async function POST(request: NextRequest) {
@@ -31,7 +33,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = (await request.json()) as Partial<Body>;
-    const { sessionId, userId, userLevel } = body;
+    const { sessionId, userId, userLevel, lang } = body;
 
     if (!sessionId || !userId || !userLevel) {
       return NextResponse.json(
@@ -63,7 +65,7 @@ export async function POST(request: NextRequest) {
       .map(m => `${m.role === 'user' ? 'User' : 'Charlotte'}: ${m.content}`)
       .join('\n');
 
-    const isPt = userLevel === 'Novice' || userLevel === 'Inter';
+    const isPt = lang ? lang === 'pt' : (userLevel === 'Novice' || userLevel === 'Inter');
     const summaryLang = isPt ? 'Brazilian Portuguese (PT-BR)' : 'English';
 
     const systemPrompt = `You are a language coach summarizing a chat conversation between a student and Charlotte (an AI English tutor). The student's level is ${userLevel}.

@@ -17,6 +17,7 @@ import * as SecureStore from 'expo-secure-store';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 import { HeaderPills } from '@/components/ui/HeaderPills';
+import Constants from 'expo-constants';
 import { AppText } from '@/components/ui/Text';
 import ChatBox from '@/components/chat/ChatBox';
 import ChatInputBar from '@/components/chat/ChatInputBar';
@@ -66,8 +67,12 @@ interface ChatSession {
   started_at:    string;
   ended_at:      string | null;
   summary:       string | null;
+  title:         string | null;
   message_count: number;
 }
+
+const API_BASE_URL =
+  (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
 export default function PracticeTab() {
   const { profile, signOut } = useAuth();
@@ -177,13 +182,26 @@ export default function PracticeTab() {
     if (!userId || mode !== 'chat') return;
     const { data } = await supabase
       .from('charlotte_chat_sessions')
-      .select('id,started_at,ended_at,summary,message_count')
+      .select('id,started_at,ended_at,summary,title,message_count')
       .eq('user_id', userId)
       .not('ended_at', 'is', null)
       .order('started_at', { ascending: false })
       .limit(20);
     setRecentSessions(data ?? []);
-  }, [userId, mode]);
+
+    // Conversas antigas sem título: gera (até 6 por vez) e atualiza a lista.
+    const untitled = (data ?? []).filter(s => !s.title && s.message_count > 0).slice(0, 6);
+    if (untitled.length === 0) return;
+    const results = await Promise.all(untitled.map(s =>
+      fetch(`${API_BASE_URL}/api/chat-title`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId: s.id, userId, lang: isPt ? 'pt' : 'en' }),
+      }).then(r => r.json()).then(j => [s.id, j?.title ?? null] as const).catch(() => [s.id, null] as const),
+    ));
+    const titles = new Map(results.filter(([, t]) => !!t));
+    if (titles.size) setRecentSessions(prev => prev.map(s => (titles.has(s.id) ? { ...s, title: titles.get(s.id)! } : s)));
+  }, [userId, mode, isPt]);
 
   useFocusEffect(useCallback(() => { fetchSessions(); }, [fetchSessions]));
 
@@ -325,7 +343,7 @@ export default function PracticeTab() {
   // o tópico com pergunta. User não vê própria msg, só o typing indicator.
   const handleTopicSelect = useCallback((topic: Topic) => {
     if (isProcessing) return;
-    sendSilentMessage(topic.prompt);
+    sendSilentMessage(topic.prompt, isPt ? topic.labelPt : topic.labelEn);
   }, [isProcessing, sendSilentMessage]);
 
   // Botão "+" — força nova conversa. Se vazia, no-op. Se tem msgs, confirma.
@@ -519,6 +537,7 @@ export default function PracticeTab() {
         bottomInset={0}
         activeSessionId={activeSessionId}
         onClose={() => setShowHistory(false)}
+        onNew={() => { setShowHistory(false); setTimeout(handleNewSession, 250); }}
         onSelect={handleLoadSession}
         onDelete={handleDeleteSession}
       />
@@ -561,6 +580,7 @@ export default function PracticeTab() {
                 { key: 'hist', Icon: ClockCounterClockwise, label: isPt ? 'Minhas correções' : 'My corrections', onPress: () => router.push({ pathname: '/(app)/practice-history', params: { mode: 'grammar' } }) },
               ] : []),
               ...(mode === 'pronunciation' ? [
+                { key: 'new',  Icon: Plus,                  label: isPt ? 'Nova análise' : 'New check', onPress: resetMessages },
                 { key: 'hist', Icon: ClockCounterClockwise, label: isPt ? 'Meu histórico' : 'My history', onPress: () => router.push({ pathname: '/(app)/practice-history', params: { mode: 'pronunciation' } }) },
               ] : []),
               { key: 'help', Icon: Question, label: isPt ? 'Como funciona' : 'How it works', onPress: () => setShowHelp(true) },
@@ -664,12 +684,13 @@ function HelpRow({ title, desc }: { title: string; desc: string }) {
 // direita do header, então drawer entra do mesmo lado.
 
 function ChatSessionsDrawer({
-  sessions, isOpen, onClose, onSelect, onDelete, isPt, drawerWidth, topInset, bottomInset,
+  sessions, isOpen, onClose, onNew, onSelect, onDelete, isPt, drawerWidth, topInset, bottomInset,
   activeSessionId,
 }: {
   sessions: ChatSession[];
   isOpen: boolean;
   onClose: () => void;
+  onNew: () => void;
   onSelect: (id: string) => void;
   onDelete: (id: string) => void;
   isPt: boolean;
@@ -730,13 +751,28 @@ function ChatSessionsDrawer({
           paddingHorizontal: 18, paddingVertical: 14,
           borderBottomWidth: 1, borderBottomColor: 'rgba(22,19,31,0.08)',
         }}>
-          <AppText style={{ fontSize: 15, fontWeight: '800', color: C.navy, flex: 1 }}>
-            {isPt ? 'Conversas anteriores' : 'Previous conversations'}
+          <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, flex: 1 }}>
+            {isPt ? 'Conversas' : 'Conversations'}
           </AppText>
           <TouchableOpacity onPress={onClose} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
-            <XCircle size={20} color={C.navyLight} weight="fill" />
+            <XCircle size={22} color={C.navyLight} weight="fill" />
           </TouchableOpacity>
         </View>
+
+        <TouchableOpacity
+          onPress={onNew}
+          activeOpacity={0.85}
+          style={{
+            marginHorizontal: 18, marginTop: 14, marginBottom: 6,
+            flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
+            backgroundColor: '#DCFF4A', borderRadius: 14, paddingVertical: 12,
+          }}
+        >
+          <Plus size={16} color={C.navy} weight="bold" />
+          <AppText style={{ fontSize: 14, fontWeight: '800', color: C.navy }}>
+            {isPt ? 'Nova conversa' : 'New conversation'}
+          </AppText>
+        </TouchableOpacity>
 
         {sessions.length === 0 ? (
           <View style={{ alignItems: 'center', paddingTop: 40, paddingHorizontal: 20 }}>
@@ -789,10 +825,10 @@ function ChatSessionItem({ session, isPt, isActive, onPress, onDelete }: {
 
   return (
     <View style={{
-      paddingVertical: 14, paddingHorizontal: 4,
-      borderBottomWidth: 1, borderBottomColor: 'rgba(22,19,31,0.06)',
+      paddingVertical: 12, paddingHorizontal: 10, marginHorizontal: -10,
+      borderRadius: 14,
       flexDirection: 'row', alignItems: 'center', gap: 8,
-      backgroundColor: isActive ? 'rgba(220,255,74,0.10)' : 'transparent',
+      backgroundColor: isActive ? '#F1FFB8' : 'transparent',
     }}>
       <TouchableOpacity
         onPress={onPress}
@@ -800,18 +836,16 @@ function ChatSessionItem({ session, isPt, isActive, onPress, onDelete }: {
         style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8 }}
       >
         <View style={{ flex: 1 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-            <AppText style={{ fontSize: 13, fontWeight: '800', color: C.navy }}>{whenLabel}</AppText>
-            <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,19,31,0.3)' }} />
-            <AppText style={{ fontSize: 12, fontWeight: '600', color: 'rgba(22,19,31,0.55)' }}>
-              {session.message_count} {isPt ? 'msg' : 'msg'}
+          <AppText display numberOfLines={1} style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>
+            {session.title ?? (isPt ? 'Conversa' : 'Conversation')}
+          </AppText>
+          {!!session.summary && (
+            <AppText numberOfLines={1} style={{ fontSize: 13, color: 'rgba(22,19,31,0.65)', marginTop: 2 }}>
+              {session.summary}
             </AppText>
-          </View>
-          <AppText
-            style={{ fontSize: 13, color: 'rgba(22,19,31,0.7)', lineHeight: 18 }}
-            numberOfLines={2}
-          >
-            {session.summary ?? (isPt ? 'Sem resumo disponível.' : 'No summary available.')}
+          )}
+          <AppText style={{ fontSize: 12, fontWeight: '600', color: C.navyLight, marginTop: 3 }}>
+            {whenLabel} · {session.message_count} {isPt ? (session.message_count === 1 ? 'mensagem' : 'mensagens') : (session.message_count === 1 ? 'message' : 'messages')}
           </AppText>
         </View>
         <CaretRight size={14} color="rgba(22,19,31,0.3)" weight="bold" />
