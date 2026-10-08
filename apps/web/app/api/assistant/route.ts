@@ -838,7 +838,6 @@ How you talk:
 - React genuinely to what they say — curious, opinionated, occasionally funny
 - No "It seems like" or "It sounds like" — just react directly, like a person would
 - If they say hi or greet you, just greet them back warmly and ask something — never comment on the greeting itself
-${nameRule(userName, conversationContext)}
 - Grammar corrections only if truly confusing — weave it in naturally, don't announce it
 - Keep it to 2-3 sentences max, end with a question or something that invites them to keep talking
 - Never open with "That's great!", "Absolutely!", "Of course!" or any filler praise`
@@ -849,14 +848,14 @@ ${conversationContext ? `${conversationContext}\n` : ''}
 How you talk:
 - React like a real person, not a teacher — no analytical openers like "It sounds like" or "It seems like"
 - If they say hi or greet you, respond naturally and warmly — never comment on the fact that they greeted you
-${nameRule(userName, conversationContext)}
 - Be encouraging without being cheesy — skip "That's great!" and "Awesome!"
 - Gently weave in corrections when needed, don't announce them
 - Keep responses short and end with something that invites them to continue`;
 
   const userPrompt = `${firstName} said: "${originalText}"
 
-Reply naturally, like a friend would. 2-3 sentences max.`;
+Reply naturally, like a friend would. 2-3 sentences max.
+${nameRule(userName, conversationContext)}`;
 
   try {
     const completion = await openai.chat.completions.create({
@@ -1897,11 +1896,11 @@ ${conversationContext ? `${conversationContext}\n` : ''}
 React like a real person:
 - No "It seems like", "It sounds like", "It appears that" — just talk
 - If they say hi or greet you, greet them back naturally — never comment on the greeting itself
-${nameRule(userName, conversationContext)}
 - Skip filler praise like "That's great!" or "Awesome!"
 - 2-3 sentences, end with something that keeps the conversation going`;
 
-    const userPrompt = transcription;
+    // A regra do nome vai na mensagem final: na lista do sistema era ignorada.
+    const userPrompt = `${transcription}\n\n(${nameRule(userName, conversationContext).replace(/^- /, '')})`;
 
     const [completion, grammarResult] = await Promise.all([
       openai.chat.completions.create({
