@@ -16,7 +16,7 @@ import {
   BookOpen, CheckCircle,
 } from 'phosphor-react-native';
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import Constants from 'expo-constants';
 import { AppText } from '@/components/ui/Text';
 import { HeaderLogo } from '@/components/ui/HeaderLogo';

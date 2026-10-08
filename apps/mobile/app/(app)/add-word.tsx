@@ -26,7 +26,7 @@ import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import Constants from 'expo-constants';
 import { scheduleVocabReviews } from '@/lib/spacedRepetition';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 
 /** Simple UUID v4 — avoids crypto.randomUUID() que nao esta disponivel em todos os ambientes iOS */

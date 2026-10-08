@@ -8,7 +8,7 @@
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { View, Modal, TouchableOpacity, Animated, Platform, Dimensions, Easing } from 'react-native';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import { Trophy, ArrowRight } from 'phosphor-react-native';
 import { VideoView, useVideoPlayer } from 'expo-video';
 import { systemIsPt } from '@/lib/systemLang';

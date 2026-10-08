@@ -7,7 +7,7 @@ import {
   Platform,
   useWindowDimensions,
 } from 'react-native';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import {
   Lightning, Star, Trophy, Fire, Medal, Confetti,
 } from 'phosphor-react-native';

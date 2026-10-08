@@ -3,7 +3,7 @@ import { TouchableOpacity, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Plus } from 'phosphor-react-native';
 import { router } from 'expo-router';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 
 interface VocabFABProps {
   bottom?: number;

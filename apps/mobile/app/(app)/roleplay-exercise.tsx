@@ -19,7 +19,7 @@ import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import { router, useLocalSearchParams, useFocusEffect } from 'expo-router';
 import { ArrowLeft, Microphone, X as XIcon, CheckCircle, Lightbulb, Trophy, ArrowsClockwise } from 'phosphor-react-native';
 import * as FileSystem from 'expo-file-system/legacy';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import Constants from 'expo-constants';
 import { createAudioPlayer, setAudioModeAsync, setIsAudioActiveAsync, AudioPlayer, RecordingPresets } from 'expo-audio';
 import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';

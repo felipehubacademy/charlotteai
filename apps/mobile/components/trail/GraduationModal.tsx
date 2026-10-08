@@ -11,7 +11,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { View, Modal, TouchableOpacity, Animated, Platform, Dimensions, Easing } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import { GraduationCap, ArrowRight } from 'phosphor-react-native';
 import { VideoView, useVideoPlayer } from 'expo-video';
 import { systemIsPt } from '@/lib/systemLang';

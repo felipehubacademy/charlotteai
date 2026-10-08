@@ -12,7 +12,7 @@ import {
   LightbulbFilament,
 } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import { useAuth } from '@/hooks/useAuth';
 import { useTotalXP } from '@/hooks/useTotalXP';
 import { QueizyWave } from '@/components/ui/QueizyWave';

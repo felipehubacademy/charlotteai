@@ -21,7 +21,7 @@ import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import Constants from 'expo-constants';
 import { scheduleVocabReviews } from '@/lib/spacedRepetition';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import { createAudioPlayer } from 'expo-audio';
 
 const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';

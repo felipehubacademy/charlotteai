@@ -17,7 +17,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import { ArrowRight, ShieldCheck, MicrophoneStage, SpeakerHigh, Brain } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { AI_CONSENT_KEY } from '@/lib/aiConsent';

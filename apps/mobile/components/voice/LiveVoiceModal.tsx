@@ -33,7 +33,7 @@ import { RTCPeerConnection, mediaDevices } from 'react-native-webrtc';
 import CharlotteAudioSession from 'charlotte-audio-session';
 import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Headphones, Pause, ArrowCounterClockwise, ArrowLeft, ChatCircle, ClosedCaptioning } from 'phosphor-react-native';
 import { ScrollView } from 'react-native';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import * as SecureStore from 'expo-secure-store';
 import { systemIsPt } from '@/lib/systemLang';
 import { LiveVoiceWave } from './LiveVoiceWave';

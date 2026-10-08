@@ -28,7 +28,7 @@ import {
   ArrowLeft, X as XIcon, CheckCircle, Lightbulb, Trophy,
   ArrowsClockwise, PaperPlaneRight,
 } from 'phosphor-react-native';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import Constants from 'expo-constants';
 
 import { AppText } from '@/components/ui/Text';

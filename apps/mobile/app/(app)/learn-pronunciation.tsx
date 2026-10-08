@@ -12,7 +12,7 @@ import {
   CheckCircle, XCircle, SpeakerHigh, Headphones,
 } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import * as FileSystem from 'expo-file-system/legacy';
 import { useAuth } from '@/hooks/useAuth';
 import { useTotalXP } from '@/hooks/useTotalXP';

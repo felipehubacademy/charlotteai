@@ -26,7 +26,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
 import { soundEngine } from '@/lib/soundEngine';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 
 const SCREEN_W     = Dimensions.get('window').width;
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';

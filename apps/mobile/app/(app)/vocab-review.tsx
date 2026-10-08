@@ -24,7 +24,7 @@ import { router } from 'expo-router';
 import {
   ArrowLeft, SpeakerHigh, Lightning,
 } from 'phosphor-react-native';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import { AppText } from '@/components/ui/Text';
 import { systemIsPt } from '@/lib/systemLang';
 import { supabase } from '@/lib/supabase';

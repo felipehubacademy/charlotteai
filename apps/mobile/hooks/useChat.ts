@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback, useRef } from 'react';
 import Constants from 'expo-constants';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import * as FileSystem from 'expo-file-system/legacy';
 import { Message } from '@/components/chat/ChatBox';
 import { ConversationContextManager } from '@/lib/conversation-context';

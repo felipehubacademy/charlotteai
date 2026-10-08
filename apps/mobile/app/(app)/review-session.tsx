@@ -8,7 +8,7 @@ import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { ArrowLeft, CheckCircle, XCircle, Trophy, Star, ArrowRight, SpeakerHigh } from 'phosphor-react-native';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import { soundEngine } from '@/lib/soundEngine';
 import { systemIsPt } from '@/lib/systemLang';
 import { checkGrammarAnswer } from '@/lib/grammarAnswer';

@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { ArrowUp, ArrowRight, Microphone, X, Play, Pause, Hourglass, Lock, Trash } from 'phosphor-react-native';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from '@/lib/hapticsGated';
 import { AppText } from '@/components/ui/Text';
 import { systemIsPt } from '@/lib/systemLang';
 import { useAudioRecorder, PRONUNCIATION_RECORDING_OPTIONS } from '@/hooks/useAudioRecorder';
