@@ -158,7 +158,7 @@ export function EvolutionRoad({ weeks, isPt }: { weeks: RoadWeek[]; isPt: boolea
         {/* o aluno chega na semana atual */}
         {cur && (
           <Animated.View pointerEvents="none" style={{
-            position: 'absolute', left: cur.x - 74, top: charlotteAbove ? cur.y - R - 54 : cur.y + R + 22,
+            position: 'absolute', right: width - (cur.x + 17), top: charlotteAbove ? cur.y - R - 54 : cur.y + R + 22,
             flexDirection: 'row', alignItems: 'center', gap: 6,
             opacity: arrive, transform: [{ scale: arrive.interpolate({ inputRange: [0, 1], outputRange: [0.6, 1] }) }],
           }}>
