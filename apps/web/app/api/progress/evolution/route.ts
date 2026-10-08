@@ -105,6 +105,8 @@ export async function GET(req: NextRequest) {
     pronunciation: { avg: pronNow.avg, previous: pronPrev.avg, attempts: pronNow.items.length, words: pronNow.topWords.slice(0, 8) },
     grammar: { errorFree: gramNow.errorFree, previous: gramPrev.errorFree, analyzed: gramNow.analyzed, recent: gramNow.corrections.slice(0, 4) },
     strengths, focus, exercises, weeks,
+    // Compatibilidade: o build 123 ainda mostra o card e lê este campo até o OTA chegar.
+    benchmark: { source: 'EF EPI 2025', text: BENCHMARK_FACT[lang] },
   };
 
   const summary = await weeklySummary(user.id, lang, data, gramNow.corrections.slice(0, 12));
