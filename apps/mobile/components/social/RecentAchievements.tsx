@@ -51,12 +51,10 @@ export function RecentAchievements() {
                 <AchievementIcon category={f.category} color={RARITY_COLOR[f.rarity] ?? C.green} size={20} />
               </View>
               <View style={{ flex: 1 }}>
-                <AppText style={{ fontSize: 14, color: C.ink }} numberOfLines={2}>
-                  <AppText style={{ fontWeight: '800' }}>{name}</AppText>
-                  {isPt ? ' conquistou ' : ' earned '}
-                  <AppText style={{ fontWeight: '800' }}>{title}</AppText>
+                <AppText style={{ fontSize: 14, fontWeight: '800', color: C.ink }} numberOfLines={2}>{title}</AppText>
+                <AppText style={{ fontSize: 12.5, color: C.mid, marginTop: 1 }} numberOfLines={1}>
+                  {name} · {ago(f.earnedAt, isPt)}
                 </AppText>
-                <AppText style={{ fontSize: 12, color: C.light, marginTop: 1 }}>{ago(f.earnedAt, isPt)}</AppText>
               </View>
               <TouchableOpacity disabled={f.cheered} onPress={() => cheer(f)}
                 style={{ flexDirection: 'row', alignItems: 'center', gap: 5, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 8, backgroundColor: f.cheered ? C.ghost : C.voltBg }}>
