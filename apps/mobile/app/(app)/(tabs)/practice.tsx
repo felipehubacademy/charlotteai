@@ -116,6 +116,17 @@ export default function PracticeTab() {
   // Streak + rank pra HeaderPills (mesmo padrão das outras tabs)
   const [streak, setStreak] = useState(0);
   const [rank,   setRank]   = useState<number | null>(null);
+  // XP do header lido junto com streak/rank (o do useChat pode chegar 0 se a
+  // primeira leitura falhar); mostra o maior dos dois.
+  const [headerXP, setHeaderXP] = useState(0);
+  const trialDaysLeft = useMemo(() => {
+    if (!profile || profile.is_institutional) return null;
+    if (profile.subscription_status !== 'trial') return null;
+    if (!profile.trial_ends_at) return null;
+    const diff = new Date(profile.trial_ends_at).getTime() - Date.now();
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    return days > 0 ? days : 0;
+  }, [profile]);
   const insets = useSafeAreaInsets();
   const tabBarHeight = useBottomTabBarHeight();
   const screenW = Dimensions.get('window').width;
@@ -156,20 +167,23 @@ export default function PracticeTab() {
   }, [messages.length, fetchDaysSince]);
 
   // Fetch streak + rank pra header pills (mesmo padrão das outras tabs)
-  const fetchHeaderStats = useCallback(async () => {
+  const fetchHeaderStats = useCallback(async (attempt = 0): Promise<void> => {
     if (!userId) return;
-    const [prog, leaderboardCount] = await Promise.all([
-      supabase.from('charlotte_progress')
-        .select('streak_days, last_practice_date, total_xp')
-        .eq('user_id', userId)
-        .maybeSingle(),
-      supabase.from('charlotte_leaderboard_cache')
-        .select('*', { count: 'exact', head: true })
-        .eq('user_level', userLevel)
-        .gt('total_xp', totalXP),
-    ]);
-
-    const userTotalXP = prog.data?.total_xp ?? 0;
+    const prog = await supabase.from('charlotte_progress')
+      .select('streak_days, last_practice_date, total_xp')
+      .eq('user_id', userId)
+      .maybeSingle();
+    // Falha de rede/token na primeira leitura: tenta de novo em vez de mostrar 0.
+    if (prog.error && attempt < 2) {
+      setTimeout(() => { void fetchHeaderStats(attempt + 1); }, 1500);
+      return;
+    }
+    const userTotalXP = Math.max(prog.data?.total_xp ?? 0, totalXP);
+    const leaderboardCount = await supabase.from('charlotte_leaderboard_cache')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_level', userLevel)
+      .gt('total_xp', userTotalXP);
+    setHeaderXP(userTotalXP);
     const todayStr = localTodayStr();
     const yesterdayStr = (() => {
       const d = new Date(); d.setDate(d.getDate() - 1);
@@ -389,9 +403,11 @@ export default function PracticeTab() {
 
       <HeaderPills
         streak={streak}
-        totalXP={totalXP}
+        totalXP={Math.max(totalXP, headerXP)}
         rank={rank}
         statsParams={statsParams}
+        trialDaysLeft={trialDaysLeft}
+        onPaywallOpen={openPaywall}
         isPt={isPt}
       />
 
