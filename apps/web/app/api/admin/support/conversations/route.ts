@@ -6,16 +6,17 @@ export const dynamic = 'force-dynamic';
  * GET ?status=open|escalated|auto_resolved|closed (opcional)
  */
 import { NextRequest, NextResponse } from 'next/server';
+import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
-const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
-function checkAuth(req: NextRequest) {
-  const auth = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
-  return ADMIN_SECRET && auth === ADMIN_SECRET;
+// Login próprio (Bearer) com papel que acessa 'support', ou a senha mestra antiga.
+async function checkAuth(req: NextRequest) {
+  const admin = await getAdmin(req);
+  return !!admin && can(admin.role, 'support');
 }
 
 export async function GET(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const status = req.nextUrl.searchParams.get('status') ?? '';
   const supabase = getSupabaseAdmin();
 

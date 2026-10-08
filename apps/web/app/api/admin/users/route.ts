@@ -7,11 +7,11 @@ export const dynamic = 'force-dynamic';
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { inviteTemplate } from '@/lib/email-templates';
 
-const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
 
 interface CharlotteUser {
   id: string; email: string; name: string | null;
@@ -35,14 +35,15 @@ interface UserProgress {
   user_id: string; streak_days: number | null; total_xp: number | null; last_practice_date: string | null;
 }
 
-function checkAuth(req: NextRequest) {
-  const auth = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
-  return ADMIN_SECRET && auth === ADMIN_SECRET;
+// Login próprio (Bearer) com papel que acessa 'users', ou a senha mestra antiga.
+async function checkAuth(req: NextRequest) {
+  const admin = await getAdmin(req);
+  return !!admin && can(admin.role, 'users');
 }
 
 // ── GET /api/admin/users — list all users + stats + engagement ────────────────
 export async function GET(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const supabase = getSupabaseAdmin();
 
@@ -174,7 +175,7 @@ export async function GET(req: NextRequest) {
 
 // ── POST /api/admin/users — create a new user ─────────────────────────────────
 export async function POST(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await req.json();
   const {
@@ -302,7 +303,7 @@ export async function POST(req: NextRequest) {
 
 // ── PATCH /api/admin/users — update a user ────────────────────────────────────
 export async function PATCH(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await req.json();
   const { id, ...fields } = body;
@@ -358,7 +359,7 @@ export async function PATCH(req: NextRequest) {
 
 // ── DELETE /api/admin/users — delete a user ───────────────────────────────────
 export async function DELETE(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await req.json();
   const { id } = body;

@@ -18,6 +18,7 @@ export const maxDuration = 300;
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 // Email do projeto vai por Microsoft Graph (Office 365), o MESMO caminho do
 // reset de senha / signup / welcome. Template no padrao usual do projeto.
@@ -26,16 +27,16 @@ import { releaseUpdateTemplate } from '@/lib/email-templates';
 import { unsubscribeUrl } from '@/lib/unsubscribe';
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
-const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
 const LOG_TYPE = 'release_update';
 
 const PUSH_TITLE = 'Charlotte atualizada';
 const PUSH_BODY =
   'Uma nova versão já está disponível com melhorias na conversa por voz e estabilidade. Atualize pela App Store ou Google Play.';
 
-function checkAuth(req: NextRequest) {
-  const auth = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
-  return ADMIN_SECRET && auth === ADMIN_SECRET;
+// Login próprio (Bearer) com papel que acessa 'notifications', ou a senha mestra antiga.
+async function checkAuth(req: NextRequest) {
+  const admin = await getAdmin(req);
+  return !!admin && can(admin.role, 'notifications');
 }
 
 interface Row {
@@ -48,7 +49,7 @@ interface Row {
 }
 
 export async function POST(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   let body: any = {};
   try { body = await req.json(); } catch {}

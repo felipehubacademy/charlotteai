@@ -154,7 +154,8 @@ export default function AdminUsersPage() {
   const getSecret = () => sessionStorage.getItem('adminSecret') ?? '';
 
   const fetchData = useCallback(async () => {
-    const secret = getSecret(); if (!secret) return;
+    // Login próprio: o layout injeta o token; a senha mestra (antiga) é opcional.
+    const secret = getSecret();
     setLoading(true); setError('');
     try {
       const res = await fetch('/api/admin/users', { headers: { 'x-admin-secret': secret } });

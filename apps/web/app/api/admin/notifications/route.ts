@@ -8,6 +8,7 @@ export const dynamic = 'force-dynamic';
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import {
   sendDailyReminders,
@@ -18,11 +19,11 @@ import {
   sendEngagementPushes,
 } from '@/lib/expo-notification-service';
 
-const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
 
-function checkAuth(req: NextRequest) {
-  const auth = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
-  return ADMIN_SECRET && auth === ADMIN_SECRET;
+// Login próprio (Bearer) com papel que acessa 'notifications', ou a senha mestra antiga.
+async function checkAuth(req: NextRequest) {
+  const admin = await getAdmin(req);
+  return !!admin && can(admin.role, 'notifications');
 }
 
 type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement';
@@ -35,7 +36,7 @@ const WINBACK_TYPES    = new Set(['streak_broken', 'reengagement_3d', 'reengagem
 
 // ── GET ───────────────────────────────────────────────────────────────────────
 export async function GET(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const url    = new URL(req.url);
   const page   = Math.max(1, parseInt(url.searchParams.get('page') ?? '1'));
@@ -184,7 +185,7 @@ export async function GET(req: NextRequest) {
 
 // ── POST — manual trigger ─────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await req.json().catch(() => ({}));
   const task = body.task as TaskType | undefined;

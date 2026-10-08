@@ -7,19 +7,20 @@ export const dynamic = 'force-dynamic';
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
-const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
 
-function checkAuth(req: NextRequest) {
-  const auth = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
-  return ADMIN_SECRET && auth === ADMIN_SECRET;
+// Login próprio (Bearer) com papel que acessa 'metrics', ou a senha mestra antiga.
+async function checkAuth(req: NextRequest) {
+  const admin = await getAdmin(req);
+  return !!admin && can(admin.role, 'metrics');
 }
 
 const round6 = (n: number) => Math.round(n * 1_000_000) / 1_000_000;
 
 export async function GET(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { searchParams } = req.nextUrl;
   const userId = searchParams.get('userId');

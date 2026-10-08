@@ -3,31 +3,35 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones } from 'lucide-react';
+import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Wallet, UserCog, KeyRound } from 'lucide-react';
+import { getSupabase } from '@/lib/supabase';
+import { AdminMe, AdminMeContext } from '@/lib/admin-context';
 
 // ── Design tokens ───────────────────────────────────────────────────────────
 const ADMIN_CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 .admin-root {
-  --bg:  #F6F6FA;
+  --bg:  #FAF7F0;
   --s1:  #FFFFFF;
   --s2:  #F0F0F6;
   --s3:  #E8E8F0;
   --s4:  #DDDDE8;
 
-  --accent:       #6366F1;
-  --accent-dim:   rgba(99,102,241,0.12);
-  --accent-ring:  rgba(99,102,241,0.30);
-  --accent-border:rgba(99,102,241,0.35);
+  /* Paleta Queizy: Tinta como ação principal, Volt como destaque */
+  --accent:       #16131F;
+  --accent-dim:   rgba(220,255,74,0.55);
+  --accent-ring:  rgba(220,255,74,0.65);
+  --accent-border:rgba(22,19,31,0.25);
+  --volt:         #DCFF4A;
 
-  --brand:        #3D7200;
-  --brand-dim:    rgba(61,114,0,0.08);
-  --brand-border: rgba(61,114,0,0.20);
+  --brand:        #08804A;
+  --brand-dim:    rgba(8,128,74,0.08);
+  --brand-border: rgba(8,128,74,0.20);
 
-  --ok:       #0E9B6A;  --ok-dim:   rgba(14,155,106,0.10);
-  --warn:     #F59E0B;  --warn-dim: rgba(245,158,11,0.12);
-  --err:      #EF4444;  --err-dim:  rgba(239,68,68,0.12);
+  --ok:       #08804A;  --ok-dim:   rgba(8,128,74,0.10);
+  --warn:     #6B4BFF;  --warn-dim: rgba(107,75,255,0.12);
+  --err:      #D12A64;  --err-dim:  rgba(255,79,139,0.12);
   --neutral:  #6B7280;
 
   --t1: rgba(0,0,0,0.85);
@@ -238,7 +242,7 @@ const ADMIN_CSS = `
 
 .adm-topbar {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(246,246,250,0.85);
+  background: rgba(250,247,240,0.88);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--b1);
@@ -346,7 +350,7 @@ const ADMIN_CSS = `
   color: var(--t2); vertical-align: middle;
 }
 .adm-table tr:last-child td { border-bottom: none; }
-.adm-table tr:hover td { background: rgba(99,102,241,0.04); color: var(--t1); }
+.adm-table tr:hover td { background: rgba(220,255,74,0.12); color: var(--t1); }
 
 /* Num */
 .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
@@ -540,22 +544,33 @@ const ADMIN_CSS = `
 }
 `;
 
-// ── Login Screen ────────────────────────────────────────────────────────────
-function LoginScreen({ onAuth }: { onAuth: (secret: string) => void }) {
+// ── Login ───────────────────────────────────────────────────────────────────
+// Cada pessoa entra com a própria conta do app (mesmo e-mail e senha). A
+// senha mestra antiga continua disponível como alternativa.
+function LoginScreen({ onSignedIn, onLegacy, notice }: {
+  onSignedIn: () => void; onLegacy: (secret: string) => void; notice?: string;
+}) {
+  const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
+  const [legacy, setLegacy] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [err, setErr] = useState('');
+  const [err, setErr] = useState(notice ?? '');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!pw.trim()) return;
     setLoading(true); setErr('');
     try {
-      const res = await fetch('/api/admin/users', {
-        headers: { 'x-admin-secret': pw.trim() },
-      });
-      if (res.status === 401) { setErr('Senha incorreta. Tente novamente.'); }
-      else { onAuth(pw.trim()); }
+      if (legacy) {
+        const res = await fetch('/api/admin/me', { headers: { 'x-admin-secret': pw.trim() } });
+        if (!res.ok) { setErr('Senha mestra incorreta.'); return; }
+        onLegacy(pw.trim());
+        return;
+      }
+      const supabase = getSupabase();
+      if (!supabase) { setErr('Configuração indisponível.'); return; }
+      const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password: pw });
+      if (error) { setErr('E-mail ou senha incorretos.'); return; }
+      onSignedIn();
     } catch {
       setErr('Erro de conexão. Verifique sua internet.');
     } finally { setLoading(false); }
@@ -564,34 +579,40 @@ function LoginScreen({ onAuth }: { onAuth: (secret: string) => void }) {
   return (
     <div className="adm-login-wrap">
       <form className="adm-login-card" onSubmit={handleSubmit}>
-        <div className="adm-login-logo">
-          <img src="/charlotte-avatar.png" alt="Charlotte" style={{ width: 40, height: 40, borderRadius: 'var(--r2)', objectFit: 'cover', flexShrink: 0 }} />
+        <div className="adm-login-logo" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: 14 }}>
+          <img src="/images/queizy-logo.png" alt="Queizy" style={{ height: 30, width: 'auto' }} />
           <div>
-            <div className="adm-login-title">Charlotte Admin</div>
-            <div className="adm-login-sub">Acesso restrito</div>
+            <div className="adm-login-title">Gestão</div>
+            <div className="adm-login-sub">Acesso da equipe Queizy</div>
           </div>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          {!legacy && (
+            <div className="adm-field">
+              <label>E-mail</label>
+              <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="voce@exemplo.com" autoFocus className="adm-input" />
+            </div>
+          )}
           <div className="adm-field">
-            <label>Senha de acesso</label>
-            <input
-              type="password"
-              value={pw}
-              onChange={e => setPw(e.target.value)}
-              placeholder="••••••••••"
-              autoFocus
-              className="adm-input"
-            />
+            <label>{legacy ? 'Senha mestra' : 'Senha'}</label>
+            <input type="password" value={pw} onChange={e => setPw(e.target.value)} placeholder="••••••••••" className="adm-input" />
           </div>
           {err && <div className="adm-login-err">{err}</div>}
-          <button type="submit" className="adm-btn adm-btn-primary" disabled={loading || !pw.trim()}>
+          <button type="submit" className="adm-btn adm-btn-primary" disabled={loading || !pw.trim() || (!legacy && !email.trim())}>
             <Shield size={14} />
             {loading ? 'Verificando...' : 'Entrar'}
           </button>
         </div>
-        <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--b1)', display: 'flex', alignItems: 'center', gap: 6 }}>
-          <Shield size={12} color="var(--t3)" />
-          <span style={{ fontSize: 11, color: 'var(--t3)' }}>Sessão ativa por 24h. Não compartilhe esta URL.</span>
+        <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--b1)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <span style={{ fontSize: 11.5, color: 'var(--t3)', lineHeight: 1.5 }}>
+            {legacy
+              ? 'A senha mestra dá acesso total. Prefira o login com sua conta.'
+              : 'Use o mesmo e-mail e senha do app. Esqueceu a senha? Redefina pelo app em "Esqueci minha senha".'}
+          </span>
+          <button type="button" onClick={() => { setLegacy(l => !l); setErr(''); setPw(''); }}
+            style={{ alignSelf: 'flex-start', background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontSize: 12, fontWeight: 600, color: 'var(--t2)', display: 'flex', alignItems: 'center', gap: 5 }}>
+            <KeyRound size={12} /> {legacy ? 'Entrar com minha conta' : 'Usar senha mestra'}
+          </button>
         </div>
       </form>
     </div>
@@ -599,45 +620,51 @@ function LoginScreen({ onAuth }: { onAuth: (secret: string) => void }) {
 }
 
 // ── Sidebar ─────────────────────────────────────────────────────────────────
-const NAV = [
-  { section: 'MAIN' },
-  { href: '/admin',         icon: Users,    label: 'Usuários' },
-  { section: 'ANALYTICS' },
-  { href: '/admin/metrics', icon: BarChart2, label: 'Métricas' },
+type NavItem = { section: string } | { href: string; icon: typeof Users; label: string; area: string };
+const NAV: NavItem[] = [
+  { section: 'CLIENTES' },
+  { href: '/admin',               icon: Users,      label: 'Usuários',     area: 'users' },
+  { href: '/admin/support',       icon: Headphones, label: 'Suporte',      area: 'support' },
+  { section: 'NEGÓCIO' },
+  { href: '/admin/finance',       icon: Wallet,     label: 'Financeiro',   area: 'finance' },
+  { href: '/admin/metrics',       icon: BarChart2,  label: 'Métricas',     area: 'metrics' },
   { section: 'SISTEMA' },
-  { href: '/admin/support', icon: Headphones, label: 'Suporte' },
-  { href: '/admin/notifications', icon: Bell, label: 'Notificações' },
+  { href: '/admin/notifications', icon: Bell,       label: 'Notificações', area: 'notifications' },
+  { href: '/admin/team',          icon: UserCog,    label: 'Equipe',       area: 'team' },
 ];
 
-function Sidebar({
-  collapsed, onToggle, pathname,
-  onLogout,
-}: {
-  collapsed: boolean; onToggle: () => void; pathname: string | null; onLogout: () => void;
+function Sidebar({ collapsed, onToggle, pathname, onLogout, me }: {
+  collapsed: boolean; onToggle: () => void; pathname: string | null; onLogout: () => void; me: AdminMe;
 }) {
+  // Esconde seções sem nenhum item liberado para o papel.
+  const visible = NAV.filter((item, i) => {
+    if ('section' in item) {
+      const rest = NAV.slice(i + 1);
+      const end = rest.findIndex(x => 'section' in x);
+      const items = (end === -1 ? rest : rest.slice(0, end)) as { area: string }[];
+      return items.some(x => me.areas.includes(x.area));
+    }
+    return me.areas.includes(item.area);
+  });
+  const initial = (me.name ?? me.email ?? 'A').trim().charAt(0).toUpperCase();
+
   return (
     <nav className={`adm-sidebar${collapsed ? ' collapsed' : ''}`}>
       <div className="adm-logo">
-        <img src="/charlotte-avatar.png" alt="Charlotte" style={{ width: 32, height: 32, borderRadius: 'var(--r1)', objectFit: 'cover', flexShrink: 0 }} />
+        <img src="/images/queizy-icon.png" alt="Queizy" style={{ width: 32, height: 32, borderRadius: 'var(--r1)', objectFit: 'cover', flexShrink: 0 }} />
         <div className="adm-logo-text">
-          <div className="adm-logo-name">Charlotte</div>
-          <div className="adm-logo-tag">ADMIN v2</div>
+          <div className="adm-logo-name">Queizy</div>
+          <div className="adm-logo-tag">GESTÃO</div>
         </div>
-        <button className="adm-collapse-btn" onClick={onToggle} title="[ to toggle">
+        <button className="adm-collapse-btn" onClick={onToggle} title="[ para recolher">
           {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
         </button>
       </div>
 
       <div className="adm-nav">
-        {NAV.map((item, i) => {
-          if ('section' in item) {
-            return (
-              <div key={i} className="adm-section-label">{item.section}</div>
-            );
-          }
-          const isActive = item.href === '/admin'
-            ? pathname === '/admin'
-            : (pathname ?? '').startsWith(item.href);
+        {visible.map((item, i) => {
+          if ('section' in item) return <div key={i} className="adm-section-label">{item.section}</div>;
+          const isActive = item.href === '/admin' ? pathname === '/admin' : (pathname ?? '').startsWith(item.href);
           const Icon = item.icon;
           return (
             <Link key={i} href={item.href} className={`adm-nav-item${isActive ? ' active' : ''}`}>
@@ -650,17 +677,14 @@ function Sidebar({
 
       <div className="adm-footer">
         <div className="adm-footer-user">
-          <div className="adm-avatar">A</div>
+          <div className="adm-avatar">{initial}</div>
           <div style={{ flex: 1, overflow: 'hidden' }}>
-            <div className="adm-user-name">Admin</div>
-            <div className="adm-user-role">Superuser</div>
+            <div className="adm-user-name">{me.name ?? me.email ?? 'Admin'}</div>
+            <div className="adm-user-role">{me.roleLabel}{me.legacy ? ' · senha mestra' : ''}</div>
           </div>
         </div>
-        <button
-          onClick={onLogout}
-          className="adm-nav-item"
-          style={{ width: '100%', marginTop: 4, background: 'none', border: 'none', textAlign: 'left' }}
-        >
+        <button onClick={onLogout} className="adm-nav-item"
+          style={{ width: '100%', marginTop: 4, background: 'none', border: 'none', textAlign: 'left' }}>
           <LogOut size={14} className="adm-nav-icon" />
           <span className="adm-nav-label" style={{ fontSize: 12, color: 'var(--t3)' }}>Sair</span>
         </button>
@@ -669,77 +693,91 @@ function Sidebar({
   );
 }
 
+// Toda chamada a /api/admin leva o token de quem está logado.
+let fetchPatched = false;
+function installAdminFetch() {
+  if (fetchPatched || typeof window === 'undefined') return;
+  fetchPatched = true;
+  const original = window.fetch.bind(window);
+  window.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
+    const url = typeof input === 'string' ? input : input instanceof URL ? input.pathname : input.url;
+    if (url.startsWith('/api/admin') || url.includes('/api/admin/')) {
+      const headers = new Headers(init?.headers ?? (input instanceof Request ? input.headers : undefined));
+      const { data } = (await getSupabase()?.auth.getSession()) ?? { data: { session: null } };
+      const token = data?.session?.access_token;
+      if (token && !headers.has('authorization')) headers.set('authorization', `Bearer ${token}`);
+      const secret = sessionStorage.getItem('adminSecret');
+      if (secret && !headers.get('x-admin-secret')) headers.set('x-admin-secret', secret);
+      return original(input, { ...init, headers });
+    }
+    return original(input, init);
+  };
+}
+
 // ── Layout ──────────────────────────────────────────────────────────────────
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const [authed, setAuthed] = useState<boolean | null>(null);
+  const [me, setMe] = useState<AdminMe | null>(null);
+  const [state, setState] = useState<'loading' | 'login' | 'ready'>('loading');
+  const [notice, setNotice] = useState<string | undefined>();
   const [collapsed, setCollapsed] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const s = sessionStorage.getItem('adminSecret') ?? '';
-    setAuthed(!!s);
-  }, []);
+  const loadMe = async () => {
+    installAdminFetch();
+    try {
+      const res = await fetch('/api/admin/me');
+      if (res.ok) { setMe(await res.json()); setState('ready'); return; }
+      const { data } = (await getSupabase()?.auth.getSession()) ?? { data: { session: null } };
+      setNotice(data?.session ? 'Sua conta não tem acesso à gestão. Peça para um dono te adicionar em Equipe.' : undefined);
+      if (data?.session) await getSupabase()?.auth.signOut();
+    } catch { /* cai no login */ }
+    sessionStorage.removeItem('adminSecret');
+    setState('login');
+  };
+
+  useEffect(() => { loadMe(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement;
-      if (e.key === '[' && !target.closest('input, textarea, select')) {
-        setCollapsed(c => !c);
-      }
+      if (e.key === '[' && !target.closest('input, textarea, select')) setCollapsed(c => !c);
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
   }, []);
 
-  const handleAuth = (s: string) => {
-    sessionStorage.setItem('adminSecret', s);
-    setAuthed(true);
-  };
-
-  const handleLogout = () => {
+  const handleLogout = async () => {
     sessionStorage.removeItem('adminSecret');
-    setAuthed(false);
+    await getSupabase()?.auth.signOut();
+    setMe(null); setNotice(undefined); setState('login');
   };
 
-  if (authed === null) {
+  if (state !== 'ready' || !me) {
     return (
       <>
         <style>{ADMIN_CSS}</style>
-        <div className="admin-root" style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', justifyContent: 'center' }} />
-      </>
-    );
-  }
-
-  if (!authed) {
-    return (
-      <>
-        <style>{ADMIN_CSS}</style>
-        <div className="admin-root"><LoginScreen onAuth={handleAuth} /></div>
+        <div className="admin-root" style={{ minHeight: '100dvh' }}>
+          {state === 'login' && (
+            <LoginScreen
+              notice={notice}
+              onSignedIn={() => { setState('loading'); loadMe(); }}
+              onLegacy={(secret) => { sessionStorage.setItem('adminSecret', secret); setState('loading'); loadMe(); }}
+            />
+          )}
+        </div>
       </>
     );
   }
 
   return (
-    <>
+    <AdminMeContext.Provider value={me}>
       <style>{ADMIN_CSS}</style>
       <div className="admin-root" style={{ display: 'flex', minHeight: '100dvh' }}>
-        <Sidebar
-          collapsed={collapsed}
-          onToggle={() => setCollapsed(c => !c)}
-          pathname={pathname}
-          onLogout={handleLogout}
-        />
-        <main
-          style={{
-            marginLeft: collapsed ? 64 : 240,
-            flex: 1,
-            minWidth: 0,
-            transition: 'margin-left 280ms cubic-bezier(.4,0,.2,1)',
-          }}
-        >
+        <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(c => !c)} pathname={pathname} onLogout={handleLogout} me={me} />
+        <main style={{ marginLeft: collapsed ? 64 : 240, flex: 1, minWidth: 0, transition: 'margin-left 280ms cubic-bezier(.4,0,.2,1)' }}>
           {children}
         </main>
       </div>
-    </>
+    </AdminMeContext.Provider>
   );
 }

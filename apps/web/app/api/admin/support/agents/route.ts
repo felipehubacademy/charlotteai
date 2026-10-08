@@ -8,16 +8,17 @@ export const dynamic = 'force-dynamic';
  * PATCH -> atualiza { id, name?, email?, whatsapp?, is_active? }
  */
 import { NextRequest, NextResponse } from 'next/server';
+import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
-const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
-function checkAuth(req: NextRequest) {
-  const auth = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
-  return ADMIN_SECRET && auth === ADMIN_SECRET;
+// Login próprio (Bearer) com papel que acessa 'support', ou a senha mestra antiga.
+async function checkAuth(req: NextRequest) {
+  const admin = await getAdmin(req);
+  return !!admin && can(admin.role, 'support');
 }
 
 export async function GET(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('support_agents')
@@ -28,7 +29,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   let body: any = {}; try { body = await req.json(); } catch {}
   const name = String(body?.name ?? '').trim();
   if (!name) return NextResponse.json({ error: 'Nome é obrigatório' }, { status: 400 });
@@ -44,7 +45,7 @@ export async function POST(req: NextRequest) {
 }
 
 export async function PATCH(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   let body: any = {}; try { body = await req.json(); } catch {}
   const id = String(body?.id ?? '');
   if (!id) return NextResponse.json({ error: 'id é obrigatório' }, { status: 400 });

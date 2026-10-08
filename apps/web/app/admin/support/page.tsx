@@ -42,7 +42,7 @@ export default function SupportAdmin() {
     if (r.ok) { const j = await r.json(); setConvs(j.conversations ?? []); setCounts(j.counts ?? {}); }
   }, [headers, statusFilter]);
 
-  useEffect(() => { if (secret) { setLoading(true); Promise.all([loadAgents(), loadQueue()]).finally(() => setLoading(false)); } }, [secret, loadAgents, loadQueue]);
+  useEffect(() => { setLoading(true); Promise.all([loadAgents(), loadQueue()]).finally(() => setLoading(false)); }, [secret, loadAgents, loadQueue]);
 
   const saveAgent = async (a: { id?: string; name: string; email: string; whatsapp: string; is_active: boolean }) => {
     const method = a.id ? 'PATCH' : 'POST';

@@ -12,18 +12,19 @@ export const dynamic = 'force-dynamic';
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
-const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
 
 // Preco da assinatura (em USD para padronizar com custo OpenAI)
 // 39.90 BRL/mes * 0.19 (cambio aprox) = ~7.58 USD/mes
 const MONTHLY_PRICE_USD = 7.58;
 const YEARLY_PRICE_USD  = 72.00;  // 379 BRL/ano
 
-function checkAuth(req: NextRequest) {
-  const auth = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
-  return ADMIN_SECRET && auth === ADMIN_SECRET;
+// Login próprio (Bearer) com papel que acessa 'metrics', ou a senha mestra antiga.
+async function checkAuth(req: NextRequest) {
+  const admin = await getAdmin(req);
+  return !!admin && can(admin.role, 'metrics');
 }
 
 function parseRange(req: NextRequest): { from: Date; to: Date; days: number } {
@@ -58,7 +59,7 @@ function parseFilters(req: NextRequest) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export async function GET(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { from, to, days } = parseRange(req);
   const filters = parseFilters(req);

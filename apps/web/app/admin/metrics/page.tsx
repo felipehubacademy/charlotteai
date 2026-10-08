@@ -623,7 +623,6 @@ export default function MetricsPage() {
 
   const fetch_ = useCallback(async () => {
     const secret = sessionStorage.getItem('adminSecret') ?? '';
-    if (!secret) return;
     setLoading(true); setError('');
     try {
       const p = new URLSearchParams({ days: preset === '7d' ? '7' : preset === '30d' ? '30' : '90' });
