@@ -10,6 +10,7 @@
 // closure / live-binding issues across bundler transforms).
 
 import Constants from 'expo-constants';
+import { supabase } from './supabase';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ??
@@ -56,9 +57,10 @@ export function prefetchGreeting(profile: PrefetchProfile): void {
   const controller = new AbortController();
   const abortTimer = setTimeout(() => controller.abort(), 5_000);
 
-  fetch(`${API_BASE_URL}/api/greeting`, {
+  // Login vai junto para o servidor calcular o destaque de ontem do aluno.
+  supabase.auth.getSession().then(({ data }) => data.session?.access_token ?? null).catch(() => null).then(token => fetch(`${API_BASE_URL}/api/greeting`, {
     method:  'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
     signal:  controller.signal,
     body: JSON.stringify({
       firstName,
@@ -79,5 +81,5 @@ export function prefetchGreeting(profile: PrefetchProfile): void {
     .finally(() => {
       clearTimeout(abortTimer);
       greetingCache.pending = false;
-    });
+    }));
 }

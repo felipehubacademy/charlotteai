@@ -506,7 +506,8 @@ export default function HomeTab() {
             contentFit="cover"
             accessibilityLabel="Charlotte"
           />
-          <View style={{ maxWidth: '78%', marginBottom: 16 }}>
+          <TouchableOpacity activeOpacity={0.8} onPress={() => router.push('/(app)/evolution' as any)} style={{ maxWidth: '78%', marginBottom: 16 }}
+            accessibilityLabel={isPt ? 'Ver minha evolução' : 'See my progress'}>
             <View style={{
               backgroundColor: T.card, borderRadius: 18,
               paddingHorizontal: 16, paddingVertical: 13,
@@ -531,7 +532,7 @@ export default function HomeTab() {
             <Svg width={20} height={14} viewBox="0 0 20 14" style={{ position: 'absolute', left: 8, bottom: -13 }}>
               <Path d="M19 0 L0 14 L7 0 Z" fill={T.card} />
             </Svg>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
 
