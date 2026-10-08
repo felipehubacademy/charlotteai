@@ -19,6 +19,7 @@ import { AppText } from '@/components/ui/Text';
 import { soundEngine } from '@/lib/soundEngine';
 import { useAuth } from '@/hooks/useAuth';
 import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
+import { useShareCard } from '@/components/share/ShareCardProvider';
 
 // Persist flag "ja viu" pra nao re-disparar a cada app boot.
 // Advanced nao bumpa de level (terminal), entao precisa de flag externa.
@@ -123,6 +124,7 @@ interface Props {
 }
 
 export function GraduationModal({ event, onClose }: Props) {
+  const openShare = useShareCard();
   const { profile } = useAuth();
   const userId = profile?.id;
   const scale = useRef(new Animated.Value(0.92)).current;
@@ -295,6 +297,15 @@ export function GraduationModal({ event, onClose }: Props) {
                 {systemIsPt ? 'Continuar praticando' : 'Keep practicing'}
               </AppText>
               <ArrowRight size={16} color="#DCFF4A" weight="bold" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+              markSeen();
+              onClose();
+              setTimeout(() => openShare({ kind: 'level', big: 'Advanced', title: systemIsPt ? 'Concluí o programa de inglês' : 'I finished the English program', subtitle: 'C1–C2' }), 450);
+            }} activeOpacity={0.7} style={{ marginTop: 10, paddingVertical: 10, paddingHorizontal: 16 }}>
+              <AppText style={{ color: '#16131F', fontSize: 14, fontWeight: '800', textDecorationLine: 'underline' }}>
+                {systemIsPt ? 'Compartilhar' : 'Share'}
+              </AppText>
             </TouchableOpacity>
           </Animated.View>
           {showConfetti && <Confetti />}

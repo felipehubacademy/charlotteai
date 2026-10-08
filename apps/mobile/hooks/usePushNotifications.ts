@@ -105,6 +105,10 @@ export function usePushNotifications(userId?: string) {
           case 'charlotte_message':
             router.push('/(app)/(tabs)/practice' as any);
             break;
+          case 'buddy_nudge':
+          case 'buddy_joined':
+            router.push('/(app)/study-together' as any);
+            break;
           case 'xp_milestone':
             router.push('/(app)');  // home → stats visible
             break;

@@ -13,7 +13,7 @@ import {
   SignOut, Microphone, FileText,
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
   CaretRight, SpeakerHigh, Vibrate, ChatCircleText,
-  CreditCard, Lifebuoy,
+  CreditCard, Lifebuoy, UsersThree,
 } from 'phosphor-react-native';
 import {
   loadAudioPreferences,
@@ -549,6 +549,17 @@ export default function ProfileTab() {
             </SettingGroup>
           </>
         )}
+
+        {/* Comunidade */}
+        <SectionTitle label={isPt ? 'Comunidade' : 'Community'} />
+        <SettingGroup>
+          <SettingRow
+            icon={<UsersThree size={18} color={C.navy} weight="regular" />}
+            label={isPt ? 'Estudar junto' : 'Study together'}
+            onPress={() => router.push('/(app)/study-together' as any)}
+            chevron
+          />
+        </SettingGroup>
 
         {/* Help */}
         <SectionTitle label={isPt ? 'Ajuda' : 'Help'} />

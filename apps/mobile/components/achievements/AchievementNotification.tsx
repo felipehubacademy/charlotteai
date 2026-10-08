@@ -15,7 +15,7 @@ import { AppText } from '@/components/ui/Text';
 import { Achievement } from '@/lib/types/achievement';
 import { soundEngine, SoundName } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
-import { shareAchievement } from '@/lib/shareUtils';
+import { useShareCard } from '@/components/share/ShareCardProvider';
 import { GENERAL_ACHIEVEMENTS, LEVEL_ACHIEVEMENTS } from '@/lib/achievementsCatalog';
 import { ShareNetwork } from 'phosphor-react-native';
 
@@ -169,6 +169,7 @@ interface Props {
 
 export default function AchievementNotification({ achievements, onDismiss, isPt = true }: Props) {
   const current = achievements[0];
+  const openShare = useShareCard();
   const { width } = useWindowDimensions();
   const cardWidth = Math.min(320, width * 0.88);
 
@@ -395,7 +396,11 @@ export default function AchievementNotification({ achievements, onDismiss, isPt 
                   </View>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  onPress={() => shareAchievement(current.title, current.rarity, isPt)}
+                  onPress={() => {
+                    const a = current;
+                    handleDismiss();
+                    setTimeout(() => openShare({ kind: 'achievement', big: a.title, title: isPt ? 'Conquista desbloqueada' : 'Achievement unlocked' }), 450);
+                  }}
                   activeOpacity={0.85}
                   style={{
                     backgroundColor: 'rgba(22,19,31,0.06)',

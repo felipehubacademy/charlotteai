@@ -17,6 +17,7 @@ import { soundEngine } from '@/lib/soundEngine';
 import { resolvePromotionVideoUriSync } from '@/hooks/usePromotionVideoPrefetch';
 import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
 import { LEVEL_ACCENT } from '@/lib/levelColors';
+import { useShareCard } from '@/components/share/ShareCardProvider';
 
 // URLs dos videos de promocao no Supabase Storage. Pre-fetch eh feito quando
 // o aluno entra na ultima unit do ultimo modulo (guided-chat-exercise via
@@ -133,6 +134,7 @@ interface Props {
 }
 
 export function PromotionModal({ event, onClose }: Props) {
+  const openShare = useShareCard();
   const scale = useRef(new Animated.Value(0.92)).current;
   const fade  = useRef(new Animated.Value(0)).current;
   const [videoFailed, setVideoFailed] = useState(false);
@@ -301,6 +303,15 @@ export function PromotionModal({ event, onClose }: Props) {
               }}>
               <AppText style={{ color: '#DCFF4A', fontSize: 15, fontWeight: '800' }}>{cta}</AppText>
               <ArrowRight size={16} color="#DCFF4A" weight="bold" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+              const ev = event;
+              onClose();
+              if (ev) setTimeout(() => openShare({ kind: 'level', big: ev.toLevel, title: systemIsPt ? 'Subi de nível no inglês' : 'I leveled up in English', subtitle: `${ev.fromLevel} → ${ev.toLevel}` }), 450);
+            }} activeOpacity={0.7} style={{ marginTop: 10, paddingVertical: 10, paddingHorizontal: 16 }}>
+              <AppText style={{ color: '#16131F', fontSize: 14, fontWeight: '800', textDecorationLine: 'underline' }}>
+                {systemIsPt ? 'Compartilhar' : 'Share'}
+              </AppText>
             </TouchableOpacity>
           </Animated.View>
           {showConfetti && <Confetti />}

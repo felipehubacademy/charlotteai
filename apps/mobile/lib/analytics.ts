@@ -24,6 +24,8 @@ export type AnalyticsEvent =
   | 'paywall_dismissed'
   | 'share_streak'
   | 'share_achievement'
+  | 'share_card'
+  | 'share_invite_link'
   | 'account_deleted'
   | 'notification_tapped';
 

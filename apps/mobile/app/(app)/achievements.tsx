@@ -2,6 +2,7 @@
 // as que faltam. Toque em qualquer medalha para ver como ganhar.
 
 import React, { useEffect, useState } from 'react';
+import { useShareCard } from '@/components/share/ShareCardProvider';
 import { View, ScrollView, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -16,6 +17,7 @@ import { getBadgesForLevel, CatalogEntry } from '@/lib/achievementsCatalog';
 const isPt = systemIsPt;
 
 export default function AchievementsScreen() {
+  const openShare = useShareCard();
   const params = useLocalSearchParams<{ userId: string; userLevel: string }>();
   const { profile } = useAuth();
   const insets = useSafeAreaInsets();
@@ -119,7 +121,8 @@ export default function AchievementsScreen() {
       )}
 
       {modal && (
-        <BadgeModal cat={modal} earnedAt={earnedAt[modal.code]} isPt={isPt} onClose={() => setModal(null)} />
+        <BadgeModal cat={modal} earnedAt={earnedAt[modal.code]} isPt={isPt} onClose={() => setModal(null)}
+          onShare={title => { setModal(null); setTimeout(() => openShare({ kind: 'achievement', big: title, title: isPt ? 'Conquista desbloqueada' : 'Achievement unlocked' }), 400); }} />
       )}
     </View>
   );

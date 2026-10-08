@@ -6,6 +6,8 @@ import { XPToastProvider } from '@/components/ui/XPToastProvider';
 import { AchievementsProvider } from '@/components/achievements/AchievementsProvider';
 import { PaywallProvider } from '@/lib/paywallContext';
 import { AppErrorBoundary } from '@/components/AppErrorBoundary';
+import { InviteClaimer } from '@/components/share/InviteClaimer';
+import { ShareCardProvider } from '@/components/share/ShareCardProvider';
 
 export default function AppLayout() {
   const { isAuthenticated, profile, mustChangePassword } = useAuth();
@@ -20,8 +22,10 @@ export default function AppLayout() {
     <AppErrorBoundary>
     <PaywallProvider>
     <XPToastProvider>
+    <ShareCardProvider>
       <AchievementsProvider>
       <PaywallModal />
+      <InviteClaimer />
       <Stack screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
         <Stack.Screen name="first-access" options={{ animation: 'none' }} />
         <Stack.Screen name="index" options={{ animation: 'none' }} />
@@ -40,6 +44,7 @@ export default function AppLayout() {
         <Stack.Screen name="ai-consent" options={{ animation: 'fade', gestureEnabled: false }} />
       </Stack>
       </AchievementsProvider>
+    </ShareCardProvider>
     </XPToastProvider>
     </PaywallProvider>
     </AppErrorBoundary>

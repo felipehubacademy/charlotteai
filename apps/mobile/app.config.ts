@@ -18,7 +18,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     resizeMode: 'cover',
     backgroundColor: '#FAF7F0',
   },
-  scheme: 'charlotte',
+  // queizy:// é o esquema da marca (convites); charlotte:// segue valendo para links antigos (auth, e-mails).
+  scheme: ['queizy', 'charlotte'],
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: false,

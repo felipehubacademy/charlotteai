@@ -5,7 +5,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, TouchableOpacity, ScrollView, StatusBar, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
-import { ShareNetwork, Fire, Trophy, BookOpenText, Lightning, Star } from 'phosphor-react-native';
+import { ShareNetwork, Fire, Trophy, BookOpenText, Lightning, Star, UsersThree, CaretRight } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { QueizyWave } from '@/components/ui/QueizyWave';
 import {
@@ -18,7 +18,7 @@ import { useGoalsData } from '@/hooks/useGoalsData';
 import { systemIsPt } from '@/lib/systemLang';
 import { getBadgesForLevel, CatalogEntry } from '@/lib/achievementsCatalog';
 import { getDailyGoal } from '@/lib/dailyGoal';
-import { shareStreak, shareXP } from '@/lib/shareUtils';
+import { useShareCard } from '@/components/share/ShareCardProvider';
 import {
   checkLevelPromotion, NEXT_LEVEL, PROMOTION_XP_THRESHOLD, TOTAL_TOPICS_PER_LEVEL, PromotionStatus,
 } from '@/lib/levelPromotion';
@@ -34,6 +34,7 @@ interface EarnedRow {
 }
 
 export default function StatsScreen() {
+  const openShare = useShareCard();
   const params = useLocalSearchParams<{ totalXP: string; userId: string; userLevel: string; userName: string }>();
   const { profile } = useAuth();
 
@@ -149,7 +150,9 @@ export default function StatsScreen() {
         right={
           <TouchableOpacity
             hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-            onPress={() => (streak > 0 ? shareStreak(streak, isPt) : shareXP(totalXP, isPt))}
+            onPress={() => openShare(streak > 0
+              ? { kind: 'streak', big: String(streak), title: isPt ? (streak === 1 ? 'dia seguido' : 'dias seguidos') : (streak === 1 ? 'day in a row' : 'days in a row'), subtitle: isPt ? 'Praticando inglês todo dia.' : 'Practicing English every day.' }
+              : { kind: 'xp', big: totalXP.toLocaleString(isPt ? 'pt-BR' : 'en-US'), title: 'XP', subtitle: isPt ? 'Somando pontos estudando inglês.' : 'Racking up points learning English.' })}
           >
             <ShareNetwork size={21} color={C.ink} weight="bold" />
           </TouchableOpacity>
@@ -286,6 +289,21 @@ export default function StatsScreen() {
           )}
         </Card>
 
+        {/* ── Estudar junto ───────────────────────────────────────────────── */}
+        <TouchableOpacity activeOpacity={0.85} onPress={() => router.push('/(app)/study-together' as any)}
+          style={{ marginHorizontal: 16, marginTop: 16, backgroundColor: C.volt, borderRadius: 20, padding: 18, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+          <View style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: C.ink, alignItems: 'center', justifyContent: 'center' }}>
+            <UsersThree size={22} color={C.volt} weight="bold" />
+          </View>
+          <View style={{ flex: 1 }}>
+            <AppText display style={{ fontSize: 17, fontWeight: '800', color: C.ink }}>{isPt ? 'Estudar junto' : 'Study together'}</AppText>
+            <AppText style={{ fontSize: 13, color: C.mid, marginTop: 2 }}>
+              {isPt ? 'Convide alguém e ganhem minutos de Live Voice.' : 'Invite someone and both get Live Voice minutes.'}
+            </AppText>
+          </View>
+          <CaretRight size={18} color={C.ink} weight="bold" />
+        </TouchableOpacity>
+
         {/* ── Metas ──────────────────────────────────────────────────────── */}
         <SectionTitle
           title={isPt ? 'Metas' : 'Goals'}
@@ -329,7 +347,8 @@ export default function StatsScreen() {
       </ScrollView>
 
       {badgeModal && (
-        <BadgeModal cat={badgeModal.cat} earnedAt={badgeModal.earnedAt} isPt={isPt} onClose={() => setBadgeModal(null)} />
+        <BadgeModal cat={badgeModal.cat} earnedAt={badgeModal.earnedAt} isPt={isPt} onClose={() => setBadgeModal(null)}
+          onShare={title => { setBadgeModal(null); setTimeout(() => openShare({ kind: 'achievement', big: title, title: isPt ? 'Conquista desbloqueada' : 'Achievement unlocked' }), 400); }} />
       )}
     </View>
   );
