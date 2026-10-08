@@ -1,0 +1,298 @@
+{
+ "Novice": [
+  {
+   "title": "Survival & Identity",
+   "topics": [
+    "Greetings & survival chunks",
+    "Subject pronouns + Verb To Be — affirmative",
+    "Verb To Be — negative & short answers",
+    "Verb To Be — questions"
+   ]
+  },
+  {
+   "title": "Nouns, Articles & Pronouns",
+   "topics": [
+    "Nouns — singular & plural + spelling rules",
+    "Articles — a / an / the",
+    "Demonstratives (this, that, these, those)",
+    "Possessives — my, your, his, her + possessive 's",
+    "Object pronouns (me, you, him, her, it, us, them)"
+   ]
+  },
+  {
+   "title": "Present Simple",
+   "topics": [
+    "Verb To Be — full review + real-life expressions",
+    "Present Simple — affirmative (I/you/we/they)",
+    "Present Simple — third person singular (-s / -es / -ies)",
+    "Present Simple — negative (don't / doesn't)",
+    "Present Simple — yes/no questions (Do/Does)",
+    "WH- questions — what, who, where, when, why, how",
+    "Frequency adverbs (always, usually, often…)"
+   ]
+  },
+  {
+   "title": "Time, Place & Chunks",
+   "topics": [
+    "Numbers, dates & time",
+    "Prepositions of time — at, on, in",
+    "Prepositions of place — in, on, at, next to, behind…",
+    "Common verb collocations — daily life chunks"
+   ]
+  },
+  {
+   "title": "Quantifiers & Ability",
+   "topics": [
+    "There is / There are + some / any",
+    "Quantifiers — a lot of, many, much, a few, a little",
+    "WH- questions — how much / how many + review",
+    "Can / can't — ability, possibility & permission"
+   ]
+  },
+  {
+   "title": "Present Continuous",
+   "topics": [
+    "Present Continuous — affirmative & negative",
+    "Present Continuous — questions",
+    "Present Simple vs. Present Continuous"
+   ]
+  },
+  {
+   "title": "Adjectives & Comparison",
+   "topics": [
+    "Adjectives — description + order",
+    "Comparative adjectives (-er / more + than)",
+    "Superlative adjectives (the -est / the most)"
+   ]
+  },
+  {
+   "title": "Past Simple",
+   "topics": [
+    "Past Simple — verb To Be (was / were)",
+    "Past Simple — regular verbs",
+    "Past Simple — irregular verbs Set 1",
+    "Past Simple — irregular verbs Set 2",
+    "Past Simple — questions (Did + base form)"
+   ]
+  },
+  {
+   "title": "Past Continuous & Obligation",
+   "topics": [
+    "Past Continuous — affirmative, negative & questions",
+    "Past Continuous — while / when clauses",
+    "Have to / don't have to (obligation)",
+    "Should / shouldn't (advice)"
+   ]
+  },
+  {
+   "title": "Future & First Conditionals",
+   "topics": [
+    "Articles — the / zero article revisited",
+    "Going to — future plans & intentions",
+    "Will — predictions & spontaneous decisions",
+    "Going to vs. Will",
+    "Zero Conditional + First Conditional (intro)"
+   ]
+  },
+  {
+   "title": "Connectors, Movement & Vocabulary",
+   "topics": [
+    "Conjunctions (and, but, or, so, because, although)",
+    "Prepositions of movement + phrasal verbs intro",
+    "Subject questions (Who made this? What happened?)",
+    "Vocabulary chunks — travel, shopping & technology",
+    "Vocabulary chunks — home, work & relationships",
+    "Novice Module Review — consolidação A1/A2"
+   ]
+  }
+ ],
+ "Inter": [
+  {
+   "title": "Present Perfect",
+   "topics": [
+    "Present Perfect — affirmative & negative",
+    "Present Perfect — yes/no questions + short answers",
+    "Present Perfect — WH- questions + ever/never/already/yet",
+    "Present Perfect vs. Past Simple — Part 1",
+    "Present Perfect vs. Past Simple — Part 2 (for/since/how long)",
+    "Present Perfect Continuous"
+   ]
+  },
+  {
+   "title": "Past Perfect & Narrative Tenses",
+   "topics": [
+    "Past Perfect — affirmative, negative & questions",
+    "Past Perfect — before / after / when / by the time",
+    "Past Perfect vs. Past Simple",
+    "Narrative tenses — integrated practice",
+    "Used to + Would — past habits & states"
+   ]
+  },
+  {
+   "title": "Modal Verbs",
+   "topics": [
+    "Ability — can, could, be able to",
+    "Permission & requests",
+    "Obligation & necessity",
+    "Deduction & certainty (must, can't, could)"
+   ]
+  },
+  {
+   "title": "Conditionals",
+   "topics": [
+    "Second Conditional — Part 1",
+    "Second Conditional — Part 2 + Wish",
+    "Third Conditional — Part 1",
+    "Third Conditional — Part 2 + Wish (past)",
+    "Conditionals — full review Zero→Third + unless"
+   ]
+  },
+  {
+   "title": "Passive Voice",
+   "topics": [
+    "Passive — Present Simple & Past Simple",
+    "Passive — other tenses (continuous, perfect, future, modal)",
+    "Passive — questions + when to use"
+   ]
+  },
+  {
+   "title": "Reported Speech",
+   "topics": [
+    "Reported Speech — statements (backshift rules)",
+    "Reported Speech — questions / indirect questions",
+    "Reported Speech — commands + reporting verbs"
+   ]
+  },
+  {
+   "title": "Clauses & Verb Patterns",
+   "topics": [
+    "Relative clauses — defining",
+    "Relative clauses — non-defining",
+    "Gerunds vs. Infinitives — Part 1",
+    "Gerunds vs. Infinitives — Part 2 (stop, remember, try…)"
+   ]
+  },
+  {
+   "title": "Fluency B1",
+   "topics": [
+    "Phrasal verbs — Set 1 (top 25 essentials)",
+    "Discourse markers — contrast, addition, cause & result",
+    "Future forms — integrative review",
+    "Future Continuous + Future Perfect",
+    "Question tags",
+    "Emphasis — so, such, too, enough",
+    "Prepositions in collocations",
+    "Vocabulary chunks — feelings, health & lifestyle",
+    "Vocabulary chunks — work, business & finance",
+    "B1 Review — consolidation"
+   ]
+  },
+  {
+   "title": "Mixed Conditionals & Past Modals",
+   "topics": [
+    "Mixed Conditionals — Part 1 (past → present)",
+    "Mixed Conditionals — Part 2 + Wish & If Only",
+    "Modal verbs — past speculation (must have, might have…)",
+    "Modal verbs — past speculation extended practice"
+   ]
+  },
+  {
+   "title": "Advanced Structures B2",
+   "topics": [
+    "Causative — have / get something done",
+    "Advanced passive — It is said that… / He is believed to…",
+    "Cleft sentences",
+    "Advanced relative clauses — reduced + whom/of which",
+    "Stative verbs — extended list",
+    "Articles — advanced + zero article",
+    "Advanced prepositions — collocations",
+    "Phrasal verbs — Set 2 (top 25 intermediate)",
+    "Gerunds & Infinitives — advanced",
+    "Reported Speech — advanced + complex reporting verbs",
+    "Comparison — advanced structures"
+   ]
+  },
+  {
+   "title": "Sophistication B2",
+   "topics": [
+    "Hypothesis & speculation",
+    "Inversion — negative fronted intro",
+    "Vocabulary chunks — idioms Set 1",
+    "Vocabulary chunks — collocations: environment & society",
+    "Concession clauses",
+    "Emphasis & focus structures",
+    "Present Perfect — review & distinctions B2",
+    "Conditionals — B2 review + formal alternatives",
+    "Passive voice — complete review",
+    "Reported Speech — complete review",
+    "Modal verbs — complete system review",
+    "Vocabulary chunks — idioms Set 2",
+    "Academic & formal register",
+    "Cause & effect language",
+    "Intermediate Module Review — B1/B2 consolidation"
+   ]
+  }
+ ],
+ "Advanced": [
+  {
+   "title": "Formal & Complex Structures C1",
+   "topics": [
+    "Advanced inversion — negative adverbials",
+    "Advanced conditionals — inversion + implied",
+    "Advanced modals — full nuance",
+    "Nominalisation",
+    "Cleft sentences — advanced use",
+    "Advanced passive — complex structures C1",
+    "Subjunctive — formal grammar",
+    "Ellipsis & substitution",
+    "Discourse coherence — cohesion & textual reference"
+   ]
+  },
+  {
+   "title": "Vocabulary & Register C1",
+   "topics": [
+    "Phrasal verbs Set 3 + collocations C1",
+    "Idioms & fixed expressions Set 3",
+    "Hedging & tentative language",
+    "Cause & effect — advanced collocations",
+    "Lexical collocations C1 — Academic Word List",
+    "Register variation — formal vs. informal vs. academic"
+   ]
+  },
+  {
+   "title": "Integrated Grammar C1",
+   "topics": [
+    "Advanced question formation — indirect & rhetorical",
+    "Aspect review — perfect tenses in context C1",
+    "Gerunds & Infinitives — mastery C1",
+    "Participle clauses (Having finished… / Feeling nervous…)",
+    "Advanced verb patterns",
+    "Idioms & collocations — fluency in production",
+    "Concession & contrast — advanced",
+    "Articles — edge cases & C1 mastery",
+    "Vocabulary — connotation, register & nuance",
+    "C1 Review — full integration"
+   ]
+  },
+  {
+   "title": "Native Fluency C2",
+   "topics": [
+    "Inversion — full mastery & rhetorical use",
+    "Advanced subjunctive & formal grammar C2",
+    "Conditional sentences — C2 mastery",
+    "Perfect tenses — advanced & nuanced use C2",
+    "Discourse markers C2 — sophisticated argumentation",
+    "Idioms, proverbs & cultural references",
+    "Advanced word formation",
+    "Irony, understatement & hyperbole",
+    "Authentic text analysis — register & style",
+    "Lexical density & precision",
+    "Coherence in long-form production",
+    "Spoken grammar — features of fluent speech",
+    "Modal verbs — C2 nuance & stylistic use",
+    "Passive & impersonal structures — C2 mastery",
+    "Advanced Final Review"
+   ]
+  }
+ ]
+}

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Wallet, UserCog, KeyRound } from 'lucide-react';
+import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Wallet, UserCog, KeyRound, GraduationCap } from 'lucide-react';
 import { getSupabase } from '@/lib/supabase';
 import { AdminMe, AdminMeContext } from '@/lib/admin-context';
 
@@ -624,6 +624,7 @@ type NavItem = { section: string } | { href: string; icon: typeof Users; label: 
 const NAV: NavItem[] = [
   { section: 'CLIENTES' },
   { href: '/admin',               icon: Users,      label: 'Usuários',     area: 'users' },
+  { href: '/admin/learning',      icon: GraduationCap, label: 'Pedagógico', area: 'learning' },
   { href: '/admin/support',       icon: Headphones, label: 'Suporte',      area: 'support' },
   { section: 'NEGÓCIO' },
   { href: '/admin/finance',       icon: Wallet,     label: 'Financeiro',   area: 'finance' },
@@ -632,6 +633,25 @@ const NAV: NavItem[] = [
   { href: '/admin/notifications', icon: Bell,       label: 'Notificações', area: 'notifications' },
   { href: '/admin/team',          icon: UserCog,    label: 'Equipe',       area: 'team' },
 ];
+
+type NavLink = { href: string; area: string };
+const NAV_LINKS = NAV.filter((x): x is NavLink & NavItem => 'href' in x) as NavLink[];
+
+/** Área da página atual pelo prefixo mais longo do menu (/admin/users/... é a ficha de Usuários). */
+function areaFor(pathname: string | null): string | null {
+  const p = (pathname ?? '').replace(/\/$/, '') || '/admin';
+  if (p.startsWith('/admin/users')) return 'users';
+  const hit = NAV_LINKS.filter(l => l.href !== '/admin' && p.startsWith(l.href)).sort((a, b) => b.href.length - a.href.length)[0];
+  if (hit) return hit.area;
+  return p === '/admin' ? 'users' : null;
+}
+function areaAllowed(me: AdminMe, pathname: string | null): boolean {
+  const area = areaFor(pathname);
+  return !area || me.areas.includes(area);
+}
+function firstAllowedHref(me: AdminMe): string {
+  return NAV_LINKS.find(l => me.areas.includes(l.area))?.href ?? '/admin';
+}
 
 function Sidebar({ collapsed, onToggle, pathname, onLogout, me }: {
   collapsed: boolean; onToggle: () => void; pathname: string | null; onLogout: () => void; me: AdminMe;
@@ -721,6 +741,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [notice, setNotice] = useState<string | undefined>();
   const [collapsed, setCollapsed] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const loadMe = async () => {
     installAdminFetch();
@@ -728,7 +749,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       const res = await fetch('/api/admin/me');
       if (res.ok) { setMe(await res.json()); setState('ready'); return; }
       const { data } = (await getSupabase()?.auth.getSession()) ?? { data: { session: null } };
-      setNotice(data?.session ? 'Sua conta não tem acesso à gestão. Peça para um dono te adicionar em Equipe.' : undefined);
+      setNotice(data?.session ? 'Sua conta não tem acesso à gestão. Peça para um Administrador te adicionar em Equipe.' : undefined);
       if (data?.session) await getSupabase()?.auth.signOut();
     } catch { /* cai no login */ }
     sessionStorage.removeItem('adminSecret');
@@ -751,6 +772,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     await getSupabase()?.auth.signOut();
     setMe(null); setNotice(undefined); setState('login');
   };
+
+  // Página sem acesso para o nível de quem entrou: vai para a primeira área liberada.
+  const allowedHere = !me || areaAllowed(me, pathname);
+  useEffect(() => {
+    if (state === 'ready' && me && !allowedHere) router.replace(firstAllowedHref(me));
+  }, [state, me, allowedHere, router]);
 
   if (state !== 'ready' || !me) {
     return (
@@ -775,7 +802,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="admin-root" style={{ display: 'flex', minHeight: '100dvh' }}>
         <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(c => !c)} pathname={pathname} onLogout={handleLogout} me={me} />
         <main style={{ marginLeft: collapsed ? 64 : 240, flex: 1, minWidth: 0, transition: 'margin-left 280ms cubic-bezier(.4,0,.2,1)' }}>
-          {children}
+          {allowedHere ? children : null}
         </main>
       </div>
     </AdminMeContext.Provider>

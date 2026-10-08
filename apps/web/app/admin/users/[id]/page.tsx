@@ -5,7 +5,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Tag, X, Send } from 'lucide-react';
+import { ArrowLeft, Tag, X, Send, GraduationCap } from 'lucide-react';
 import { useAdminMe, canArea } from '@/lib/admin-context';
 
 interface Crm {
@@ -54,7 +54,9 @@ function ActivityStrip({ byDay }: { byDay: Record<string, number> }) {
 
 export default function UserCrmPage() {
   const id = useParams<{ id: string }>()?.id ?? '';
-  const canWrite = canArea(useAdminMe(), 'users:write');
+  const me = useAdminMe();
+  const canWrite = canArea(me, 'users:write');
+  const canLearning = canArea(me, 'learning');
   const [data, setData] = useState<Crm | null>(null);
   const [error, setError] = useState('');
   const [note, setNote] = useState('');
@@ -91,6 +93,7 @@ export default function UserCrmPage() {
         <Link href="/admin" className="adm-btn-sm ghost"><ArrowLeft size={13} /> Usuários</Link>
         <div className="adm-topbar-title">{u.name ?? u.email} </div>
         <span className={`badge ${riskClass(data.risk.label)}`}>Risco {data.risk.label.toLowerCase()}{data.risk.label !== 'Perdido' ? ` · ${data.risk.score}` : ''}</span>
+        {canLearning && <Link href={`/admin/learning/${id}`} className="adm-btn-sm ghost" style={{ marginLeft: 'auto' }}><GraduationCap size={13} /> Pedagógico</Link>}
       </div>
 
       <div className="adm-body">

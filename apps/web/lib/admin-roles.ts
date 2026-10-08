@@ -3,12 +3,14 @@
 // permissões (lib/admin-auth.ts) e a tela de Equipe mostra a mesma matriz.
 // Sem dependências de servidor, para poder ser importado no cliente.
 
-export type AdminRole = 'admin' | 'manager' | 'finance' | 'support' | 'collaborator';
+export type AdminRole = 'admin' | 'manager' | 'teacher' | 'finance' | 'support' | 'collaborator';
 
 export type AdminArea =
   | 'users'          // ver alunos e a ficha (CRM)
   | 'users:write'    // editar e criar alunos; anotações e etiquetas
   | 'users:delete'   // excluir alunos (irreversível)
+  | 'learning'       // pedagógico: desempenho e estudo dos alunos (sem dados financeiros)
+  | 'learning:notes' // anotações pedagógicas na ficha
   | 'support'        // fila de atendimento e atendentes
   | 'notifications'  // enviar push e e-mails em massa
   | 'metrics'        // métricas de uso e custo por aluno
@@ -20,6 +22,8 @@ export const AREAS: { id: AdminArea; label: string }[] = [
   { id: 'users',         label: 'Ver alunos' },
   { id: 'users:write',   label: 'Editar alunos' },
   { id: 'users:delete',  label: 'Excluir alunos' },
+  { id: 'learning',       label: 'Ver pedagógico' },
+  { id: 'learning:notes', label: 'Anotações pedagógicas' },
   { id: 'support',       label: 'Atendimento' },
   { id: 'notifications', label: 'Notificações em massa' },
   { id: 'metrics',       label: 'Métricas' },
@@ -29,20 +33,22 @@ export const AREAS: { id: AdminArea; label: string }[] = [
 ];
 
 export const PERMISSIONS: Record<AdminRole, AdminArea[]> = {
-  admin:        ['users', 'users:write', 'users:delete', 'support', 'notifications', 'metrics', 'finance', 'finance:write', 'team'],
-  manager:      ['users', 'users:write', 'users:delete', 'support', 'notifications', 'metrics', 'finance', 'finance:write'],
+  admin:        ['users', 'users:write', 'users:delete', 'learning', 'learning:notes', 'support', 'notifications', 'metrics', 'finance', 'finance:write', 'team'],
+  manager:      ['users', 'users:write', 'users:delete', 'learning', 'learning:notes', 'support', 'notifications', 'metrics', 'finance', 'finance:write'],
+  teacher:      ['learning', 'learning:notes'],
   finance:      ['users', 'metrics', 'finance', 'finance:write'],
   support:      ['users', 'users:write', 'support'],
-  collaborator: ['users', 'metrics'],
+  collaborator: ['users', 'learning', 'metrics'],
 };
 
 // Ordem do mais amplo ao mais restrito.
 export const ROLES: { id: AdminRole; label: string; desc: string }[] = [
   { id: 'admin',        label: 'Administrador', desc: 'Acesso total, incluindo equipe e níveis de acesso.' },
   { id: 'manager',      label: 'Gerente',       desc: 'Todas as áreas, sem gerenciar a equipe.' },
+  { id: 'teacher',      label: 'Professor',     desc: 'Desempenho e estudo dos alunos, com anotações pedagógicas.' },
   { id: 'finance',      label: 'Financeiro',    desc: 'Financeiro completo, métricas e consulta de alunos.' },
   { id: 'support',      label: 'Atendimento',   desc: 'Alunos e fila de atendimento.' },
-  { id: 'collaborator', label: 'Colaborador',   desc: 'Consulta de alunos e métricas, sem editar.' },
+  { id: 'collaborator', label: 'Colaborador',   desc: 'Consulta de alunos, pedagógico e métricas, sem editar.' },
 ];
 
 export const ROLE_LABEL = Object.fromEntries(ROLES.map(r => [r.id, r.label])) as Record<AdminRole, string>;
