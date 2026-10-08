@@ -3,6 +3,7 @@
 
 import { randomUUID } from 'crypto';
 import { logOpenAIUsage } from './openai-usage';
+import { allFriendPairs } from '@/lib/friends';
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 
@@ -1934,14 +1935,14 @@ function buddyWeekStartIso(): string {
 
 export async function sendBuddyRivalry(supabase: any): Promise<void> {
   try {
-    const { data: pairs } = await supabase.from('referrals').select('inviter_id, invitee_id').limit(20000);
-    if (!pairs?.length) return;
+    const pairs = await allFriendPairs(); // convite + amigos da busca
+    if (!pairs.length) return;
     const buddiesOf = new Map<string, Set<string>>();
-    for (const p of pairs as { inviter_id: string; invitee_id: string }[]) {
-      if (!buddiesOf.has(p.inviter_id)) buddiesOf.set(p.inviter_id, new Set());
-      if (!buddiesOf.has(p.invitee_id)) buddiesOf.set(p.invitee_id, new Set());
-      buddiesOf.get(p.inviter_id)!.add(p.invitee_id);
-      buddiesOf.get(p.invitee_id)!.add(p.inviter_id);
+    for (const [a, b] of pairs) {
+      if (!buddiesOf.has(a)) buddiesOf.set(a, new Set());
+      if (!buddiesOf.has(b)) buddiesOf.set(b, new Set());
+      buddiesOf.get(a)!.add(b);
+      buddiesOf.get(b)!.add(a);
     }
     const everyone = [...buddiesOf.keys()];
     const allowed = await filterFrequencyCap(supabase, everyone, 'buddy_rivalry');

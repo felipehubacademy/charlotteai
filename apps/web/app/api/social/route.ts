@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { pushIsPt } from '@/lib/expo-notification-service';
 import { firstName, sendDirectPush } from '@/lib/rally';
+import { friendsOf } from '@/lib/friends';
 
 export const dynamic = 'force-dynamic';
 const NOW_WINDOW_MIN = 15;
@@ -23,18 +24,14 @@ export async function GET(req: NextRequest) {
   const supabase = getSupabaseAdmin();
 
   const since = new Date(Date.now() - NOW_WINDOW_MIN * 60000).toISOString();
-  const [{ data: recent }, { data: me }, a, b] = await Promise.all([
+  const [{ data: recent }, { data: me }, friends] = await Promise.all([
     supabase.from('charlotte_practices').select('user_id').gte('created_at', since).limit(5000),
     supabase.from('charlotte_users').select('charlotte_level').eq('id', user.id).maybeSingle(),
-    supabase.from('referrals').select('invitee_id').eq('inviter_id', user.id),
-    supabase.from('referrals').select('inviter_id').eq('invitee_id', user.id),
+    friendsOf(user.id),
   ]);
   const active = new Set(((recent ?? []) as { user_id: string }[]).map(r => r.user_id));
   active.delete(user.id);
-  const buddyIds = [
-    ...((a.data ?? []) as { invitee_id: string }[]).map(r => r.invitee_id),
-    ...((b.data ?? []) as { inviter_id: string }[]).map(r => r.inviter_id),
-  ].filter(id => active.has(id));
+  const buddyIds = [...friends.keys()].filter(id => active.has(id));
   let buddiesNow: string[] = [];
   if (buddyIds.length) {
     const { data } = await supabase.from('charlotte_users').select('name').in('id', buddyIds);

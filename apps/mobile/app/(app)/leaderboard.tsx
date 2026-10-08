@@ -11,6 +11,7 @@ import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 import { RecentAchievements } from '@/components/social/RecentAchievements';
+import { FriendSearch } from '@/components/social/FriendSearch';
 
 const isPt = systemIsPt;
 
@@ -94,7 +95,8 @@ export default function LeaderboardScreen() {
           <ActivityIndicator size="large" color={C.ink} />
         </View>
       ) : (
-        <ScrollView contentContainerStyle={{ paddingTop: 16, paddingBottom: insets.bottom + 40 }} showsVerticalScrollIndicator={false}>
+        <ScrollView contentContainerStyle={{ paddingTop: 16, paddingBottom: insets.bottom + 40 }} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+          <FriendSearch />
           {me && (
             <View style={{ marginHorizontal: 16, backgroundColor: C.ink, borderRadius: 24, padding: 20, marginBottom: 16 }}>
               <AppText style={{ fontSize: 11, fontWeight: '800', color: 'rgba(255,255,255,0.6)', letterSpacing: 1, textTransform: 'uppercase' }}>

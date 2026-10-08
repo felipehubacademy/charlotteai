@@ -5,11 +5,14 @@
 import React, { useCallback, useState } from 'react';
 import { View, ScrollView, TouchableOpacity, TextInput, Image, ActivityIndicator, Modal, Pressable, RefreshControl } from 'react-native';
 import { useFocusEffect } from 'expo-router';
-import { Users, HandWaving, Crown, Lightning, Gift } from 'phosphor-react-native';
+import { Users, HandWaving, Crown, Lightning, Gift, PencilSimple } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { C, ScreenHeader, SectionTitle, Card } from '@/components/stats/StatsUI';
 import { ShareCardModal, ShareCardContent } from '@/components/share/ShareCardModal';
 import { RallySection } from '@/components/rally/RallySection';
+import { FriendSearch } from '@/components/social/FriendSearch';
+import { FriendRequests } from '@/components/social/FriendRequests';
+import { fetchMyHandle, setUsername } from '@/lib/friends';
 import { systemIsPt } from '@/lib/systemLang';
 import {
   fetchReferral, claimInvite, nudgeBuddy, normalizeCode,
@@ -56,10 +59,16 @@ export default function StudyTogetherScreen() {
   const [claiming, setClaiming] = useState(false);
   const [nudgeFor, setNudgeFor] = useState<Buddy | null>(null);
   const [share, setShare] = useState<ShareCardContent | null>(null);
+  const [handle, setHandle] = useState<string | null>(null);
+  const [editingHandle, setEditingHandle] = useState(false);
+  const [handleDraft, setHandleDraft] = useState('');
+  const [handleErr, setHandleErr] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
-    setInfo(await fetchReferral());
+    const [ref, me] = await Promise.all([fetchReferral(), fetchMyHandle()]);
+    setInfo(ref);
+    if (me?.username) setHandle(me.username);
     setLoading(false);
   }, []);
   useFocusEffect(useCallback(() => { load(); }, [load]));
@@ -85,12 +94,21 @@ export default function StudyTogetherScreen() {
     await nudgeBuddy(b.id, key);
   };
 
+  const saveHandle = async () => {
+    setHandleErr(null);
+    const r = await setUsername(handleDraft);
+    if (r.ok && r.username) { setHandle(r.username); setEditingHandle(false); return; }
+    setHandleErr(r.error === 'username_taken'
+      ? t('Esse @ já está em uso. Tente outro.', 'That @ is taken. Try another.')
+      : t('Use de 3 a 20 letras, números, ponto ou _.', 'Use 3 to 20 letters, numbers, dot or _.'));
+  };
+
   const tier = sponsorTier(info?.invitedCount ?? 0);
 
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <ScreenHeader title={t('Estudar junto', 'Study together')} />
-      <ScrollView contentContainerStyle={{ paddingBottom: 48 }} refreshControl={<RefreshControl refreshing={false} onRefresh={load} />}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 48 }} keyboardShouldPersistTaps="handled" refreshControl={<RefreshControl refreshing={false} onRefresh={load} />}>
 
         {/* Convite */}
         <View style={{ margin: 16, backgroundColor: C.ink, borderRadius: 24, padding: 22 }}>
@@ -108,6 +126,14 @@ export default function StudyTogetherScreen() {
             <AppText style={{ flex: 1, fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>{t('Seu código', 'Your code')}</AppText>
             {loading && !info ? <ActivityIndicator color={C.volt} /> : <AppText style={{ fontSize: 18, fontWeight: '800', color: C.volt, letterSpacing: 1.5 }}>{info?.code ?? '—'}</AppText>}
           </View>
+          {!!handle && (
+            <TouchableOpacity onPress={() => { setHandleDraft(handle); setHandleErr(null); setEditingHandle(true); }}
+              style={{ flexDirection: 'row', alignItems: 'center', marginTop: 8, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 14, padding: 12 }}>
+              <AppText style={{ flex: 1, fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>{t('Seu @ para amigos te acharem', 'Your @ so friends can find you')}</AppText>
+              <AppText style={{ fontSize: 16, fontWeight: '800', color: '#FFFFFF', marginRight: 8 }}>@{handle}</AppText>
+              <PencilSimple size={15} color="rgba(255,255,255,0.6)" weight="bold" />
+            </TouchableOpacity>
+          )}
           <TouchableOpacity
             disabled={!info}
             onPress={() => setShare({ kind: 'xp', big: t('Bora?', "Let's go?"), title: t('Vem estudar inglês comigo', 'Come study English with me'), subtitle: t('Dupla de estudo no Queizy, com a Charlotte como tutora.', 'Study buddies on Queizy, with Charlotte as our tutor.') })}
@@ -115,6 +141,13 @@ export default function StudyTogetherScreen() {
             <AppText style={{ fontSize: 16, fontWeight: '800', color: C.ink }}>{t('Convidar amigos', 'Invite friends')}</AppText>
           </TouchableOpacity>
         </View>
+
+        {/* Pedidos de amizade recebidos */}
+        <FriendRequests onChange={load} />
+
+        {/* Encontrar amigos pelo nome ou @ */}
+        <SectionTitle title={t('Encontrar amigos', 'Find friends')} />
+        <FriendSearch onChange={load} />
 
         {/* Dupla */}
         <SectionTitle title={t('Seus amigos de estudo', 'Your study friends')} meta={info?.buddies.length ? String(info.buddies.length) : undefined} />
@@ -135,7 +168,7 @@ export default function StudyTogetherScreen() {
                   <View style={{ flex: 1 }}>
                     <AppText style={{ fontSize: 16, fontWeight: '800', color: C.ink }}>{b.name ?? t('Sua dupla', 'Your buddy')}</AppText>
                     <AppText style={{ fontSize: 12.5, color: C.light, marginTop: 1 }}>
-                      {b.relation === 'sponsor' ? t('Te convidou', 'Invited you') : t('Você convidou', 'You invited')}
+                      {b.relation === 'sponsor' ? t('Te convidou', 'Invited you') : b.relation === 'invited' ? t('Você convidou', 'You invited') : t('Amigo de estudo', 'Study friend')}
                       {b.level ? ` · ${b.level}` : ''}{b.streak ? ` · ${b.streak} ${t(b.streak === 1 ? 'dia' : 'dias', b.streak === 1 ? 'day' : 'days')}` : ''}
                     </AppText>
                   </View>
@@ -229,6 +262,26 @@ export default function StudyTogetherScreen() {
                 <AppText style={{ fontSize: 15, fontWeight: '700', color: C.ink }}>{t(NUDGE_TEXT[k].pt, NUDGE_TEXT[k].en)}</AppText>
               </TouchableOpacity>
             ))}
+          </Pressable>
+        </Pressable>
+      </Modal>
+
+      {/* Trocar o @ */}
+      <Modal visible={editingHandle} transparent animationType="fade" onRequestClose={() => setEditingHandle(false)}>
+        <Pressable onPress={() => setEditingHandle(false)} style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.5)', justifyContent: 'flex-end' }}>
+          <Pressable style={{ backgroundColor: C.card, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 20, paddingBottom: 36, gap: 12 }}>
+            <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.ink }}>{t('Seu @', 'Your @')}</AppText>
+            <AppText style={{ fontSize: 13.5, color: C.mid }}>{t('É assim que amigos te acham na busca. Precisa ser único.', "That's how friends find you in search. It has to be unique.")}</AppText>
+            <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: C.bg, borderRadius: 12, paddingHorizontal: 14 }}>
+              <AppText style={{ fontSize: 17, fontWeight: '800', color: C.light }}>@</AppText>
+              <TextInput value={handleDraft} onChangeText={v => setHandleDraft(v.toLowerCase().replace(/[^a-z0-9._]/g, ''))}
+                autoCapitalize="none" autoCorrect={false} maxLength={20} autoFocus
+                style={{ flex: 1, paddingVertical: 13, fontSize: 17, fontWeight: '700', color: C.ink, marginLeft: 2 }} />
+            </View>
+            {handleErr && <AppText style={{ fontSize: 13, color: '#D12A64' }}>{handleErr}</AppText>}
+            <TouchableOpacity onPress={saveHandle} style={{ backgroundColor: C.volt, borderRadius: 999, paddingVertical: 15, alignItems: 'center' }}>
+              <AppText style={{ fontSize: 16, fontWeight: '800', color: C.ink }}>{t('Salvar', 'Save')}</AppText>
+            </TouchableOpacity>
           </Pressable>
         </Pressable>
       </Modal>

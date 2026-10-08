@@ -8,6 +8,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { randomBytes } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { pushIsPt } from '@/lib/expo-notification-service';
+import { friendsOf } from '@/lib/friends';
 import {
   RALLY_METRICS, RALLY_DURATIONS, RALLY_MAX_PARTICIPANTS, RALLY_MAX_ACTIVE_CREATED,
   computeStandings, rallyLabel, firstName, sendDirectPush, type RallyRow, type RallyMetric,
@@ -33,17 +34,9 @@ async function usersById(ids: string[]): Promise<Map<string, PushUser>> {
   return new Map(((data ?? []) as PushUser[]).map(u => [u.id, u]));
 }
 
-/** Só a dupla de estudo (quem convidou quem) pode ser convidada pelo app. */
+/** Só amigos de estudo (convite ou busca) podem ser convidados pelo app. */
 async function buddiesOf(userId: string): Promise<Set<string>> {
-  const supabase = getSupabaseAdmin();
-  const [a, b] = await Promise.all([
-    supabase.from('referrals').select('invitee_id').eq('inviter_id', userId),
-    supabase.from('referrals').select('inviter_id').eq('invitee_id', userId),
-  ]);
-  return new Set([
-    ...((a.data ?? []) as { invitee_id: string }[]).map(r => r.invitee_id),
-    ...((b.data ?? []) as { inviter_id: string }[]).map(r => r.inviter_id),
-  ]);
+  return new Set((await friendsOf(userId)).keys());
 }
 
 async function createRally(userId: string, metric: RallyMetric, hours: number, invite: string[]) {

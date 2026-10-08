@@ -21,7 +21,7 @@ const DETECTED_KEY = 'queizy_invite_detection_done';
 
 export interface Buddy {
   id: string; name: string | null; avatarUrl: string | null; level: string | null;
-  relation: 'sponsor' | 'invited';
+  relation: 'sponsor' | 'invited' | 'friend';
   weekXp: number; weekExercises: number; streak: number; lastPractice: string | null; nudgedToday: boolean;
 }
 export interface ReferralInfo {

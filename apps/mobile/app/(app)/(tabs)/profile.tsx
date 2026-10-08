@@ -14,7 +14,9 @@ import {
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
   CaretRight, SpeakerHigh, Vibrate, ChatCircleText,
   CreditCard, Lifebuoy, UsersThree, ChartLineUp,
+  MagnifyingGlass,
 } from 'phosphor-react-native';
+import { fetchMyHandle, setSearchable } from '@/lib/friends';
 import {
   loadAudioPreferences,
   getAudioPreferences,
@@ -183,6 +185,9 @@ export default function ProfileTab() {
   const [deletingAccount,    setDeletingAccount]    = useState(false);
   const [restoringPurchases, setRestoringPurchases] = useState(false);
   const [audioPrefs,         setAudioPrefs]         = useState<AudioPreferences>(getAudioPreferences());
+  // Aparecer na busca de alunos (servidor). Ligado por padrão.
+  const [searchable,         setSearchableState]    = useState(true);
+  useEffect(() => { fetchMyHandle().then(h => { if (h) setSearchableState(h.searchable); }); }, []);
   const nameInputRef = useRef<TextInput>(null);
 
   useEffect(() => {
@@ -508,6 +513,13 @@ export default function ProfileTab() {
             description={isPt ? 'Reações curtas em momentos especiais (não afeta a Charlotte no chat).' : 'Short reactions in special moments (does not affect Charlotte in chat).'}
             value={audioPrefs.voice}
             onValueChange={togglePref('voice')}
+          />
+          <SwitchRow
+            icon={<MagnifyingGlass size={18} color={C.navy} weight="regular" />}
+            label={isPt ? 'Aparecer na busca' : 'Show me in search'}
+            description={isPt ? 'Amigos podem te achar pelo nome ou @ para estudar junto.' : 'Friends can find you by name or @ to study together.'}
+            value={searchable}
+            onValueChange={(v: boolean) => { setSearchableState(v); setSearchable(v); }}
           />
         </SettingGroup>
 

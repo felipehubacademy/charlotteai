@@ -111,6 +111,8 @@ export function usePushNotifications(userId?: string) {
           case 'buddy_nudge':
           case 'buddy_rivalry':
           case 'rally_invite':
+          case 'friend_request':
+          case 'friend_accepted':
           case 'rally_update':
           case 'rally_reminder':
           case 'rally_result':

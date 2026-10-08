@@ -10,6 +10,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { randomBytes } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { pushIsPt } from '@/lib/expo-notification-service';
+import { friendsOf } from '@/lib/friends';
 
 export const dynamic = 'force-dynamic';
 
@@ -92,7 +93,8 @@ export async function GET(req: NextRequest) {
   const me = meRow as { name: string | null; created_at: string } | null;
   const code = await ensureCode(user.id, me?.name ?? null);
   const { invited, invitedBy } = await buddyIds(user.id);
-  const ids = [...new Set([...invited, ...(invitedBy ? [invitedBy] : [])])];
+  const friends = await friendsOf(user.id); // convite + amigos da busca
+  const ids = [...friends.keys()];
 
   let buddies: unknown[] = [];
   if (ids.length) {
@@ -117,7 +119,7 @@ export async function GET(req: NextRequest) {
       name: firstName(p.name),
       avatarUrl: p.avatar_url,
       level: p.charlotte_level,
-      relation: p.id === invitedBy ? 'sponsor' : 'invited',
+      relation: friends.get(p.id) ?? 'friend',
       weekXp: weekXp.get(p.id) ?? 0,
       weekExercises: weekLessons.get(p.id) ?? 0,
       streak: prog.get(p.id)?.streak_days ?? 0,
@@ -192,8 +194,8 @@ export async function POST(req: NextRequest) {
     const to = String(body.to ?? '');
     const msg = NUDGES[String(body.key ?? '')];
     if (!to || !msg) return NextResponse.json({ error: 'invalid' }, { status: 400 });
-    const { invited, invitedBy } = await buddyIds(user.id);
-    if (!invited.includes(to) && invitedBy !== to) return NextResponse.json({ error: 'not_buddy' }, { status: 403 });
+    const friends = await friendsOf(user.id);
+    if (!friends.has(to)) return NextResponse.json({ error: 'not_buddy' }, { status: 403 });
     const { count } = await supabase.from('buddy_nudges').select('id', { count: 'exact', head: true })
       .eq('from_id', user.id).eq('to_id', to).gte('created_at', new Date(Date.now() - DAY).toISOString());
     if (count) return NextResponse.json({ error: 'already_today' }, { status: 429 });
