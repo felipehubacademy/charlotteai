@@ -12,6 +12,9 @@ const INBOX_EMAIL   = 'charlotte@hubacademybr.com'; // caixa que envia (como nor
 const SENDER_EMAIL  = process.env.EMAIL_SENDER_ADDRESS || 'noreply@queizy.com'; // remetente (caixa compartilhada)
 const FROM_NAME     = process.env.EMAIL_SENDER_NAME || 'Queizy';
 const REPLY_TO      = 'contato@queizy.com';
+// Reserva: apelido da própria caixa da Charlotte (envio por apelido ligado).
+// Usado só se o "Enviar como" noreply@ for negado pelo Exchange.
+const FALLBACK_FROM = 'contato@queizy.com';
 
 // ── Token cache (in-memory, valido por ~1h) ───────────────────────────────────
 
@@ -58,6 +61,7 @@ export interface SendEmailOptions {
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
 export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
+  let fromAddress = SENDER_EMAIL;
   const payload = {
     message: {
       subject: opts.subject,
@@ -94,6 +98,16 @@ export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
 
       const status = res.status;
       const errText = await res.text();
+
+      // "Enviar como" negado (permissão ainda propagando ou removida):
+      // reenvia pelo apelido da própria caixa para o e-mail não se perder.
+      if (status === 403 && errText.includes('ErrorSendAsDenied') && fromAddress !== FALLBACK_FROM) {
+        console.warn(`[Graph] Enviar como ${fromAddress} negado — usando ${FALLBACK_FROM}`);
+        fromAddress = FALLBACK_FROM;
+        payload.message.from = { emailAddress: { address: FALLBACK_FROM, name: FROM_NAME } };
+        attempt--;
+        continue;
+      }
 
       // Token stale/invalido -> limpa cache e tenta de novo na hora.
       if (status === 401 && attempt < MAX_ATTEMPTS) {
