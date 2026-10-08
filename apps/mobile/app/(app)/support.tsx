@@ -7,6 +7,9 @@ import { router } from 'expo-router';
 import {
   ArrowLeft, EnvelopeSimple, WhatsappLogo, CaretDown, CaretRight, Question,
 } from 'phosphor-react-native';
+import { ScreenHeader } from '@/components/stats/StatsUI';
+import Svg, { Path } from 'react-native-svg';
+import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
@@ -49,7 +52,7 @@ function Row({ icon, label, sub, onPress }: { icon: React.ReactNode; label: stri
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.7}
       style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 15, paddingHorizontal: 16, gap: 12 }}>
-      <View style={{ width: 34, height: 34, borderRadius: 10, backgroundColor: '#E3F6EC', alignItems: 'center', justifyContent: 'center' }}>{icon}</View>
+      <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: 'rgba(22,19,31,0.06)', alignItems: 'center', justifyContent: 'center' }}>{icon}</View>
       <View style={{ flex: 1 }}>
         <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy }}>{label}</AppText>
         {!!sub && <AppText style={{ fontSize: 12.5, color: C.navyLight, marginTop: 2 }}>{sub}</AppText>}
@@ -81,22 +84,34 @@ export default function SupportScreen() {
   const waUrl = SUPPORT_WHATSAPP ? `https://wa.me/${SUPPORT_WHATSAPP}` : '';
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-      {/* Header */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingVertical: 10, gap: 6 }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={10} style={{ padding: 6 }}>
-          <ArrowLeft size={22} color={C.navy} weight="bold" />
-        </TouchableOpacity>
-        <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy }}>{isPt ? 'Ajuda e suporte' : 'Help & support'}</AppText>
-      </View>
+    <View style={{ flex: 1, backgroundColor: C.bg }}>
+      <ScreenHeader title={isPt ? 'Ajuda e suporte' : 'Help & support'} />
 
       <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 48 }}>
-        <AppText style={{ fontSize: 12, fontWeight: '700', color: C.navyLight, letterSpacing: 0.5, marginBottom: 8, marginLeft: 4 }}>
-          {isPt ? 'FALE COM A GENTE' : 'CONTACT US'}
+        {/* Balão da Charlotte, no mesmo estilo da Practice */}
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8, marginBottom: 26, marginTop: 6 }}>
+          <CharlotteAvatar size="md" />
+          <View style={{ flex: 1, marginBottom: 14 }}>
+            <View style={{ backgroundColor: C.card, borderRadius: 18, paddingHorizontal: 16, paddingVertical: 12 }}>
+              <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, lineHeight: 25 }}>
+                {isPt ? 'Como posso te ajudar?' : 'How can I help?'}
+              </AppText>
+              <AppText style={{ fontSize: 13, color: C.navyMid, marginTop: 4, lineHeight: 18 }}>
+                {isPt ? 'Veja as dúvidas mais comuns ou fale direto com a equipe.' : 'Check the common questions or reach the team directly.'}
+              </AppText>
+            </View>
+            <Svg width={20} height={14} viewBox="0 0 20 14" style={{ position: 'absolute', left: 8, bottom: -13 }}>
+              <Path d="M19 0 L0 14 L7 0 Z" fill="#FFFFFF" />
+            </Svg>
+          </View>
+        </View>
+
+        <AppText display style={{ fontSize: 17, fontWeight: '800', color: C.navy, marginBottom: 10, marginLeft: 4 }}>
+          {isPt ? 'Fale com a gente' : 'Contact us'}
         </AppText>
-        <View style={[{ backgroundColor: C.card, borderRadius: 16, overflow: 'hidden' }, cardShadow]}>
+        <View style={{ backgroundColor: C.card, borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(22,19,31,0.08)' }}>
           <Row
-            icon={<EnvelopeSimple size={19} color={C.greenDark} weight="regular" />}
+            icon={<EnvelopeSimple size={19} color={C.navy} weight="regular" />}
             label={isPt ? 'Enviar email' : 'Send email'}
             sub={SUPPORT_EMAIL}
             onPress={() => Linking.openURL(emailUrl).catch(() => {})}
@@ -105,7 +120,7 @@ export default function SupportScreen() {
             <>
               <View style={{ height: 1, backgroundColor: C.border, marginLeft: 62 }} />
               <Row
-                icon={<WhatsappLogo size={19} color={C.greenDark} weight="regular" />}
+                icon={<WhatsappLogo size={19} color={C.navy} weight="regular" />}
                 label={isPt ? 'Falar no WhatsApp' : 'Chat on WhatsApp'}
                 sub={isPt ? 'Resposta rápida' : 'Quick reply'}
                 onPress={() => Linking.openURL(waUrl).catch(() => {})}
@@ -114,10 +129,10 @@ export default function SupportScreen() {
           )}
         </View>
 
-        <AppText style={{ fontSize: 12, fontWeight: '700', color: C.navyLight, letterSpacing: 0.5, marginTop: 24, marginBottom: 8, marginLeft: 4 }}>
-          {isPt ? 'PERGUNTAS FREQUENTES' : 'FREQUENTLY ASKED'}
+        <AppText display style={{ fontSize: 17, fontWeight: '800', color: C.navy, marginTop: 26, marginBottom: 10, marginLeft: 4 }}>
+          {isPt ? 'Perguntas frequentes' : 'Frequently asked'}
         </AppText>
-        <View style={[{ backgroundColor: C.card, borderRadius: 16, overflow: 'hidden' }, cardShadow]}>
+        <View style={{ backgroundColor: C.card, borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(22,19,31,0.08)' }}>
           {faqs.map((f, i) => (
             <React.Fragment key={i}>
               {i > 0 && <View style={{ height: 1, backgroundColor: C.border, marginLeft: 16 }} />}
@@ -133,6 +148,6 @@ export default function SupportScreen() {
           </AppText>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }

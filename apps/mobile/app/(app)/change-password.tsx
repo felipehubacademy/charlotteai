@@ -7,10 +7,11 @@ import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
-  CaretLeft, Lock, LockKey, Eye, EyeSlash, CheckCircle, XCircle,
+  Lock, LockKey, Eye, EyeSlash, CheckCircle, XCircle,
   ShieldCheck,
 } from 'phosphor-react-native';
 import { supabase } from '@/lib/supabase';
+import { ScreenHeader } from '@/components/stats/StatsUI';
 import { AppText } from '@/components/ui/Text';
 import { systemIsPt } from '@/lib/systemLang';
 import { useAuth } from '@/hooks/useAuth';
@@ -97,26 +98,7 @@ export default function ChangePasswordScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       {/* Safe area top na cor do header (branca) — sem barra lavender quebrada */}
-      <SafeAreaView edges={['top']} style={{ backgroundColor: C.card }}>
-        <View style={{
-          height: 56,
-          flexDirection: 'row', alignItems: 'center',
-          paddingHorizontal: 8,
-          backgroundColor: C.card,
-          borderBottomWidth: 1, borderBottomColor: C.border,
-        }}>
-          <TouchableOpacity
-            onPress={() => router.back()}
-            style={{ padding: 10, borderRadius: 20, marginRight: 4 }}
-            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-          >
-            <CaretLeft size={22} color={C.navy} weight="regular" />
-          </TouchableOpacity>
-          <AppText style={{ fontSize: 17, fontWeight: '700', color: C.navy }}>
-            {isPt ? 'Alterar senha' : 'Change password'}
-          </AppText>
-        </View>
-      </SafeAreaView>
+      <ScreenHeader title={isPt ? 'Alterar senha' : 'Change password'} />
 
       <KeyboardAvoidingView
         style={{ flex: 1 }}
@@ -137,13 +119,13 @@ export default function ChangePasswordScreen() {
               <View style={{ alignItems: 'center', marginBottom: 24 }}>
                 <View style={{
                   width: 72, height: 72, borderRadius: 36,
-                  backgroundColor: C.accentBg,
+                  backgroundColor: C.navy,
                   alignItems: 'center', justifyContent: 'center',
                   marginBottom: 14,
                 }}>
-                  <ShieldCheck size={36} color={C.accent} weight="regular" />
+                  <ShieldCheck size={36} color="#DCFF4A" weight="regular" />
                 </View>
-                <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
+                <AppText display style={{ fontSize: 24, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
                   {isPt ? 'Mantenha sua conta segura' : 'Keep your account secure'}
                 </AppText>
                 <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center', marginTop: 6, paddingHorizontal: 16 }}>
