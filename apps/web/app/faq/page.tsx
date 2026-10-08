@@ -3,12 +3,12 @@ import PublicHeader from '@/components/PublicHeader';
 import PublicFooter from '@/components/PublicFooter';
 
 export const metadata: Metadata = {
-  title: 'Perguntas Frequentes — Charlotte AI',
-  description: 'Dúvidas sobre assinatura, conta e uso do Charlotte AI, o app para aprender inglês com IA da Hub Academy.',
+  title: 'Perguntas Frequentes — Queizy',
+  description: 'Dúvidas sobre assinatura, conta e uso do Queizy, o app para aprender inglês com IA da Hub Academy.',
   robots: { index: true, follow: true },
 };
 
-const NAVY = '#16153A';
+const NAVY = '#16131F';
 
 interface Item { q: string; a: React.ReactNode; }
 interface Section { title: string; items: Item[]; }
@@ -19,9 +19,9 @@ const SECTIONS: Section[] = [
     items: [
       { q: 'Quais são os planos e preços?', a: <>Você começa com <strong>7 dias grátis, sem cartão de crédito</strong>. Depois, o plano <strong>Mensal</strong> custa R$ 29,90/mês e o <strong>Anual</strong> R$ 199,90/ano (equivale a ~R$ 16,66/mês). Os valores exatos e a compra ficam na tela de assinatura dentro do app.</> },
       { q: 'Como funciona o período grátis?', a: <>São <strong>7 dias com acesso completo e sem cartão de crédito</strong>. Não há cobrança automática: ao fim dos 7 dias, se quiser continuar, você escolhe um plano no app e a cobrança começa só nesse momento.</> },
-      { q: 'Como cancelo minha assinatura?', a: <>O cancelamento é feito na loja onde você assinou:<br/>• <strong>iPhone:</strong> Ajustes &gt; seu nome &gt; Assinaturas &gt; Charlotte &gt; Cancelar assinatura.<br/>• <strong>Android:</strong> Google Play &gt; foto de perfil &gt; Pagamentos e assinaturas &gt; Assinaturas &gt; Charlotte &gt; Cancelar.<br/>No app, em Perfil, também há "Gerenciar assinatura", que abre essa tela.</> },
+      { q: 'Como cancelo minha assinatura?', a: <>O cancelamento é feito na loja onde você assinou:<br/>• <strong>iPhone:</strong> Ajustes &gt; seu nome &gt; Assinaturas &gt; Queizy &gt; Cancelar assinatura.<br/>• <strong>Android:</strong> Google Play &gt; foto de perfil &gt; Pagamentos e assinaturas &gt; Assinaturas &gt; Queizy &gt; Cancelar.<br/>No app, em Perfil, também há "Gerenciar assinatura", que abre essa tela.</> },
       { q: 'Cancelei — perco o acesso na hora?', a: <>Não. Ao cancelar, você <strong>mantém o acesso até o fim do período já pago</strong>. O acesso só encerra quando a assinatura expira.</> },
-      { q: 'Como peço reembolso?', a: <>Os reembolsos são processados pela loja, não pela Hub Academy:<br/>• <strong>iPhone:</strong> em <a href="https://reportaproblem.apple.com" style={{ color: '#3D8800' }}>reportaproblem.apple.com</a>.<br/>• <strong>Android:</strong> pela ajuda do Google Play, dentro do prazo do Google.<br/>Se precisar de ajuda, fale com a gente em suporte@hubacademybr.com.</> },
+      { q: 'Como peço reembolso?', a: <>Os reembolsos são processados pela loja, não pela Hub Academy:<br/>• <strong>iPhone:</strong> em <a href="https://reportaproblem.apple.com" style={{ color: '#08804A' }}>reportaproblem.apple.com</a>.<br/>• <strong>Android:</strong> pela ajuda do Google Play, dentro do prazo do Google.<br/>Se precisar de ajuda, fale com a gente em suporte@queizy.com.</> },
       { q: 'Como restauro minha compra?', a: <>Em <strong>Perfil &gt; Restaurar compra</strong>. Você precisa estar logado na mesma conta da App Store ou Google Play usada na compra.</> },
     ],
   },
@@ -34,7 +34,7 @@ const SECTIONS: Section[] = [
     ],
   },
   {
-    title: 'Usando a Charlotte',
+    title: 'Usando o Queizy',
     items: [
       { q: 'O que é a Live Voice?', a: <>É a conversa por voz em tempo real com a Charlotte — você fala e ela responde, como numa conversa de verdade, corrigindo e ajudando você a soltar o inglês.</> },
       { q: 'Como funciona a trilha de estudos?', a: <>A trilha (Learning Trail) leva você do básico ao avançado, no seu ritmo, destravando os conteúdos conforme você evolui — com gramática, pronúncia e prática.</> },
@@ -55,7 +55,7 @@ export default function FaqPage() {
         }
         details.faq > summary::-webkit-details-marker { display: none; }
         details.faq > summary::after {
-          content: '+'; font-size: 22px; color: #9896b8; font-weight: 400; line-height: 1;
+          content: '+'; font-size: 22px; color: #8A8494; font-weight: 400; line-height: 1;
           transition: transform 180ms ease;
         }
         details.faq[open] > summary::after { content: '\\2212'; }
@@ -69,15 +69,15 @@ export default function FaqPage() {
       <div style={{ backgroundColor: NAVY, padding: '48px 24px 56px' }}>
         <div style={{ maxWidth: 720, margin: '0 auto' }}>
           <h1 style={{ color: '#fff', fontSize: 34, fontWeight: 800, letterSpacing: '-0.02em', margin: 0 }}>Perguntas frequentes</h1>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, marginTop: 10, lineHeight: 1.5 }}>Tudo sobre assinatura, sua conta e como usar a Charlotte. Não achou o que procura? É só falar com a gente.</p>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, marginTop: 10, lineHeight: 1.5 }}>Tudo sobre assinatura, sua conta e como usar o Queizy. Não achou o que procura? É só falar com a gente.</p>
         </div>
       </div>
 
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '40px 24px 64px' }}>
         {SECTIONS.map((sec, si) => (
           <section key={si} style={{ marginBottom: 40 }}>
-            <h2 style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#9896b8', marginBottom: 8 }}>{sec.title}</h2>
-            <div style={{ backgroundColor: '#fff', borderRadius: 16, padding: '4px 20px', boxShadow: '0 1px 3px rgba(22,21,58,0.06)' }}>
+            <h2 style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#8A8494', marginBottom: 8 }}>{sec.title}</h2>
+            <div style={{ backgroundColor: '#fff', borderRadius: 16, padding: '4px 20px', boxShadow: '0 1px 3px rgba(22,19,31,0.06)' }}>
               {sec.items.map((it, ii) => (
                 <details className="faq" key={ii}>
                   <summary>{it.q}</summary>
@@ -91,7 +91,7 @@ export default function FaqPage() {
         <div style={{ backgroundColor: '#eef7e2', border: '1px solid #d6ecbf', borderRadius: 16, padding: '24px 24px', textAlign: 'center' }}>
           <p style={{ margin: 0, fontSize: 16, fontWeight: 600, color: NAVY }}>Ainda com dúvida?</p>
           <p style={{ margin: '6px 0 16px', fontSize: 14, color: '#4a6b2f' }}>Nossa equipe responde por email — e em breve pelo WhatsApp.</p>
-          <a href="mailto:suporte@hubacademybr.com" style={{ display: 'inline-block', backgroundColor: NAVY, color: '#fff', fontWeight: 700, fontSize: 14, padding: '12px 24px', borderRadius: 999, textDecoration: 'none' }}>Enviar email para o suporte</a>
+          <a href="mailto:suporte@queizy.com" style={{ display: 'inline-block', backgroundColor: NAVY, color: '#fff', fontWeight: 700, fontSize: 14, padding: '12px 24px', borderRadius: 999, textDecoration: 'none' }}>Enviar email para o suporte</a>
         </div>
       </div>
 

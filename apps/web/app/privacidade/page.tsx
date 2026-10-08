@@ -3,8 +3,8 @@ import PublicHeader from '@/components/PublicHeader';
 import PublicFooter from '@/components/PublicFooter';
 
 export const metadata: Metadata = {
-  title: 'Política de Privacidade — Charlotte AI',
-  description: 'Política de Privacidade do aplicativo Charlotte AI, desenvolvido pela Hub Academy.',
+  title: 'Política de Privacidade — Queizy',
+  description: 'Política de Privacidade do aplicativo Queizy, desenvolvido pela Hub Academy.',
   robots: { index: true, follow: true },
 };
 
@@ -15,9 +15,9 @@ export default function PrivacidadePage() {
       <PublicHeader />
 
       {/* Hero */}
-      <div style={{ backgroundColor: '#16153A', padding: '48px 24px 56px' }}>
+      <div style={{ backgroundColor: '#16131F', padding: '48px 24px 56px' }}>
         <div style={{ maxWidth: 720, margin: '0 auto' }}>
-          <p style={{ color: '#A3FF3C', fontSize: 12, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', margin: '0 0 12px' }}>
+          <p style={{ color: '#DCFF4A', fontSize: 12, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', margin: '0 0 12px' }}>
             Legal
           </p>
           <h1 style={{ color: '#fff', fontSize: 36, fontWeight: 800, margin: '0 0 12px', letterSpacing: '-0.5px', lineHeight: 1.2 }}>
@@ -33,11 +33,11 @@ export default function PrivacidadePage() {
       <main style={{ maxWidth: 720, margin: '0 auto', padding: '48px 24px 80px' }}>
 
         <InfoBox>
-          O aplicativo <strong>Charlotte AI</strong> é desenvolvido e operado pela <strong>Hub Academy</strong>. Este documento descreve como coletamos, usamos, armazenamos e protegemos as suas informações pessoais, em conformidade com a <strong>Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018)</strong>.
+          O aplicativo <strong>Queizy</strong> é desenvolvido e operado pela <strong>Hub Academy</strong>. Este documento descreve como coletamos, usamos, armazenamos e protegemos as suas informações pessoais, em conformidade com a <strong>Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018)</strong>.
         </InfoBox>
 
         <Section title="1. Quem somos">
-          <p>O controlador dos seus dados pessoais é a <strong>Hub Academy</strong>, responsável pelo aplicativo Charlotte AI.</p>
+          <p>O controlador dos seus dados pessoais é a <strong>Hub Academy</strong>, responsável pelo aplicativo Queizy.</p>
           <ContactCard
             label="Contato do Encarregado (DPO)"
             email="privacidade@hubacademybr.com"
@@ -89,13 +89,13 @@ export default function PrivacidadePage() {
         </Section>
 
         <Section title="6. Inteligência Artificial e tratamento de dados">
-          <p style={{ marginBottom: 14 }}>O Charlotte AI utiliza serviços de IA de terceiros para personalizar sua experiência de aprendizado. Antes do primeiro uso, o aplicativo solicita seu consentimento explícito para o envio de dados a esses serviços.</p>
+          <p style={{ marginBottom: 14 }}>O Queizy utiliza serviços de IA de terceiros para personalizar sua experiência de aprendizado. Antes do primeiro uso, o aplicativo solicita seu consentimento explícito para o envio de dados a esses serviços.</p>
           <DataTable rows={[
             ['OpenAI GPT-4o', 'Suas mensagens de chat e respostas a exercícios são enviadas à API da OpenAI para geração de respostas personalizadas. A OpenAI não usa esses dados para treinar modelos por padrão (API usage).'],
             ['ElevenLabs TTS', 'Texto das respostas da Charlotte é enviado para síntese de voz. Nenhuma informação pessoal identificável é transmitida.'],
             ['Azure Speech Services', 'Áudio capturado pelo microfone é enviado ao Azure para reconhecimento de fala e avaliação de pronúncia em tempo real. O áudio é descartado imediatamente após o processamento e não é retido pela Microsoft para fins de treino.'],
           ]} />
-          <p style={{ marginTop: 16 }}>Você pode revogar seu consentimento de uso de IA a qualquer momento entrando em contato pelo e-mail <a href="mailto:privacidade@hubacademybr.com" style={{ color: '#7c3aed' }}>privacidade@hubacademybr.com</a>, ficando ciente de que o aplicativo não funcionará sem esses serviços.</p>
+          <p style={{ marginTop: 16 }}>Você pode revogar seu consentimento de uso de IA a qualquer momento entrando em contato pelo e-mail <a href="mailto:privacidade@hubacademybr.com" style={{ color: '#6B4BFF' }}>privacidade@hubacademybr.com</a>, ficando ciente de que o aplicativo não funcionará sem esses serviços.</p>
         </Section>
 
         <Section title="7. Retenção de dados">
@@ -134,7 +134,7 @@ export default function PrivacidadePage() {
         </Section>
 
         <Section title="10. Crianças e adolescentes">
-          <p>O Charlotte AI é destinado a usuários com <strong>13 anos ou mais</strong>. Não coletamos intencionalmente dados de crianças menores de 13 anos. Em caso de coleta inadvertida, entre em contato para exclusão imediata.</p>
+          <p>O Queizy é destinado a usuários com <strong>13 anos ou mais</strong>. Não coletamos intencionalmente dados de crianças menores de 13 anos. Em caso de coleta inadvertida, entre em contato para exclusão imediata.</p>
         </Section>
 
         <Section title="11. Alterações nesta política">
@@ -146,7 +146,7 @@ export default function PrivacidadePage() {
           <ContactCard label="Hub Academy — DPO" email="privacidade@hubacademybr.com" />
           <p style={{ marginTop: 16, fontSize: 14, color: '#6b7280' }}>
             Você também pode apresentar reclamação à <strong>Autoridade Nacional de Proteção de Dados (ANPD)</strong>:{' '}
-            <a href="https://www.gov.br/anpd" target="_blank" rel="noopener noreferrer" style={{ color: '#7c3aed' }}>www.gov.br/anpd</a>.
+            <a href="https://www.gov.br/anpd" target="_blank" rel="noopener noreferrer" style={{ color: '#6B4BFF' }}>www.gov.br/anpd</a>.
           </p>
         </Section>
 
@@ -166,10 +166,10 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <h2 style={{
         fontSize: 16,
         fontWeight: 700,
-        color: '#16153A',
+        color: '#16131F',
         margin: '0 0 14px',
         paddingBottom: 10,
-        borderBottom: '2px solid #A3FF3C',
+        borderBottom: '2px solid #DCFF4A',
         display: 'inline-block',
       }}>{title}</h2>
       <div style={{ fontSize: 15, color: '#374151', lineHeight: 1.75 }}>{children}</div>
@@ -214,7 +214,7 @@ function DataTable({ rows }: { rows: [string, string][] }) {
           backgroundColor: i % 2 === 0 ? '#fff' : '#f9fafb',
           borderBottom: i < rows.length - 1 ? '1px solid #e5e7eb' : 'none',
         }}>
-          <div style={{ padding: '12px 16px', fontSize: 13, fontWeight: 600, color: '#16153A', borderRight: '1px solid #e5e7eb' }}>
+          <div style={{ padding: '12px 16px', fontSize: 13, fontWeight: 600, color: '#16131F', borderRight: '1px solid #e5e7eb' }}>
             {label}
           </div>
           <div style={{ padding: '12px 16px', fontSize: 14, color: '#4b5563', lineHeight: 1.6 }}>
@@ -235,8 +235,8 @@ function ContactCard({ label, email }: { label: string; email: string }) {
       padding: '14px 16px',
       marginTop: 12,
     }}>
-      <p style={{ margin: '0 0 4px', fontSize: 12, fontWeight: 600, color: '#7c3aed', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{label}</p>
-      <a href={`mailto:${email}`} style={{ color: '#7c3aed', fontSize: 15, fontWeight: 500 }}>{email}</a>
+      <p style={{ margin: '0 0 4px', fontSize: 12, fontWeight: 600, color: '#6B4BFF', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{label}</p>
+      <a href={`mailto:${email}`} style={{ color: '#6B4BFF', fontSize: 15, fontWeight: 500 }}>{email}</a>
     </div>
   );
 }

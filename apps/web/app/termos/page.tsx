@@ -3,8 +3,8 @@ import PublicHeader from '@/components/PublicHeader';
 import PublicFooter from '@/components/PublicFooter';
 
 export const metadata: Metadata = {
-  title: 'Termos de Uso — Charlotte AI',
-  description: 'Termos de Uso do aplicativo Charlotte AI, desenvolvido pela Hub Academy.',
+  title: 'Termos de Uso — Queizy',
+  description: 'Termos de Uso do aplicativo Queizy, desenvolvido pela Hub Academy.',
   robots: { index: true, follow: true },
 };
 
@@ -15,9 +15,9 @@ export default function TermosPage() {
       <PublicHeader />
 
       {/* Hero */}
-      <div style={{ backgroundColor: '#16153A', padding: '48px 24px 56px' }}>
+      <div style={{ backgroundColor: '#16131F', padding: '48px 24px 56px' }}>
         <div style={{ maxWidth: 720, margin: '0 auto' }}>
-          <p style={{ color: '#A3FF3C', fontSize: 12, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', margin: '0 0 12px' }}>
+          <p style={{ color: '#DCFF4A', fontSize: 12, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', margin: '0 0 12px' }}>
             Legal
           </p>
           <h1 style={{ color: '#fff', fontSize: 36, fontWeight: 800, margin: '0 0 12px', letterSpacing: '-0.5px', lineHeight: 1.2 }}>
@@ -33,11 +33,11 @@ export default function TermosPage() {
       <main style={{ maxWidth: 720, margin: '0 auto', padding: '48px 24px 80px' }}>
 
         <InfoBox>
-          Ao baixar, instalar ou utilizar o <strong>Charlotte AI</strong>, você concorda com estes Termos de Uso. Se não concordar com qualquer disposição, não utilize o aplicativo. O app é desenvolvido e operado pela <strong>Hub Academy</strong>.
+          Ao baixar, instalar ou utilizar o <strong>Queizy</strong>, você concorda com estes Termos de Uso. Se não concordar com qualquer disposição, não utilize o aplicativo. O app é desenvolvido e operado pela <strong>Hub Academy</strong>.
         </InfoBox>
 
         <Section title="1. Descrição do Serviço">
-          <p style={{ marginBottom: 14 }}>Charlotte AI é um assistente de aprendizado de inglês com inteligência artificial que oferece:</p>
+          <p style={{ marginBottom: 14 }}>Queizy é um aplicativo de aprendizado de inglês com inteligência artificial, com a tutora Charlotte, que oferece:</p>
           <List items={[
             'Conversas em tempo real com IA para prática de inglês',
             'Lições interativas de gramática, pronúncia e vocabulário',
@@ -66,7 +66,7 @@ export default function TermosPage() {
 
         <Section title="4. Assinaturas e Pagamentos">
           <DataTable rows={[
-            ['Período de teste', 'O Charlotte AI oferece 7 dias de acesso gratuito completo, sem necessidade de cartão de crédito. Não há cobrança automática nem conversão em assinatura sem a sua ação: ao término dos 7 dias, o acesso é interrompido e, para continuar, você escolhe um plano pago (Mensal ou Anual) dentro do app.'],
+            ['Período de teste', 'O Queizy oferece 7 dias de acesso gratuito completo, sem necessidade de cartão de crédito. Não há cobrança automática nem conversão em assinatura sem a sua ação: ao término dos 7 dias, o acesso é interrompido e, para continuar, você escolhe um plano pago (Mensal ou Anual) dentro do app.'],
             ['Cobrança', 'Automática no início de cada período (mensal ou anual) até o cancelamento.'],
             ['Cancelamento', 'A qualquer momento nas configurações da App Store ou Google Play. O acesso permanece ativo até o fim do período pago.'],
             ['Reembolsos', 'Regidos pelas políticas da Apple ou Google. Solicite diretamente nas plataformas.'],
@@ -88,13 +88,13 @@ export default function TermosPage() {
         </Section>
 
         <Section title="6. Conteúdo Gerado por IA e Consentimento">
-          <p style={{ marginBottom: 14 }}>O Charlotte AI usa serviços de Inteligência Artificial de terceiros (OpenAI GPT-4o, ElevenLabs e Microsoft Azure Speech) para gerar respostas, sintetizar voz e avaliar pronúncia. Ao utilizar o aplicativo pela primeira vez, você consente explicitamente com o envio de dados a esses serviços, conforme detalhado na nossa <a href="/privacidade" style={{ color: '#7c3aed' }}>Política de Privacidade</a>.</p>
+          <p style={{ marginBottom: 14 }}>O Queizy usa serviços de Inteligência Artificial de terceiros (OpenAI GPT-4o, ElevenLabs e Microsoft Azure Speech) para gerar respostas, sintetizar voz e avaliar pronúncia. Ao utilizar o aplicativo pela primeira vez, você consente explicitamente com o envio de dados a esses serviços, conforme detalhado na nossa <a href="/privacidade" style={{ color: '#6B4BFF' }}>Política de Privacidade</a>.</p>
           <List items={[
             'O conteúdo gerado pela IA é para fins educacionais e pode conter imprecisões',
             'As respostas não substituem instrução profissional de idiomas',
             'Não nos responsabilizamos por decisões tomadas com base exclusivamente na IA',
             'Conversas e interações de voz são processadas pelos serviços de IA descritos acima e descartadas conforme suas políticas de retenção',
-            'A Charlotte AI pode informar que determinado conteúdo foi gerado por IA; isso é parte normal do serviço',
+            'O Queizy pode informar que determinado conteúdo foi gerado por IA; isso é parte normal do serviço',
           ]} />
         </Section>
 
@@ -118,7 +118,7 @@ export default function TermosPage() {
         </Section>
 
         <Section title="10. Contato">
-          <ContactCard label="Hub Academy — Suporte" email="contato@hubacademybr.com" />
+          <ContactCard label="Hub Academy — Suporte" email="contato@queizy.com" />
         </Section>
 
       </main>
@@ -137,10 +137,10 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <h2 style={{
         fontSize: 16,
         fontWeight: 700,
-        color: '#16153A',
+        color: '#16131F',
         margin: '0 0 14px',
         paddingBottom: 10,
-        borderBottom: '2px solid #A3FF3C',
+        borderBottom: '2px solid #DCFF4A',
         display: 'inline-block',
       }}>{title}</h2>
       <div style={{ fontSize: 15, color: '#374151', lineHeight: 1.75 }}>{children}</div>
@@ -185,7 +185,7 @@ function DataTable({ rows }: { rows: [string, string][] }) {
           backgroundColor: i % 2 === 0 ? '#fff' : '#f9fafb',
           borderBottom: i < rows.length - 1 ? '1px solid #e5e7eb' : 'none',
         }}>
-          <div style={{ padding: '12px 16px', fontSize: 13, fontWeight: 600, color: '#16153A', borderRight: '1px solid #e5e7eb' }}>
+          <div style={{ padding: '12px 16px', fontSize: 13, fontWeight: 600, color: '#16131F', borderRight: '1px solid #e5e7eb' }}>
             {label}
           </div>
           <div style={{ padding: '12px 16px', fontSize: 14, color: '#4b5563', lineHeight: 1.6 }}>
@@ -206,8 +206,8 @@ function ContactCard({ label, email }: { label: string; email: string }) {
       padding: '14px 16px',
       marginTop: 12,
     }}>
-      <p style={{ margin: '0 0 4px', fontSize: 12, fontWeight: 600, color: '#7c3aed', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{label}</p>
-      <a href={`mailto:${email}`} style={{ color: '#7c3aed', fontSize: 15, fontWeight: 500 }}>{email}</a>
+      <p style={{ margin: '0 0 4px', fontSize: 12, fontWeight: 600, color: '#6B4BFF', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{label}</p>
+      <a href={`mailto:${email}`} style={{ color: '#6B4BFF', fontSize: 15, fontWeight: 500 }}>{email}</a>
     </div>
   );
 }

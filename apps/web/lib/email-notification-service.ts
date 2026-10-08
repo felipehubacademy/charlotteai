@@ -297,7 +297,7 @@ Charlotte by Hub Academy
               <div class="contact-title">💬 Precisa de Ajuda?</div>
               <div class="contact-desc">
                 Entre em contato conosco para dúvidas sobre planos ou suporte técnico.<br>
-                Email: contato@hubacademybr.com
+                Email: contato@queizy.com
               </div>
             </div>
           </div>
@@ -325,7 +325,7 @@ Ver planos: ${process.env.NEXT_PUBLIC_APP_URL || 'https://charlotte.hubacademybr
 
 💬 PRECISA DE AJUDA?
 Entre em contato conosco para dúvidas sobre planos ou suporte técnico.
-Email: contato@hubacademybr.com
+Email: contato@queizy.com
 
 Charlotte by Hub Academy
     `;

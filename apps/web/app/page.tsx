@@ -300,7 +300,7 @@ export default function Page() {
           </p>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
             <a href="/faq" className="card" style={{ padding: '12px 22px', fontWeight: 700, fontSize: 14 }}>Dúvidas frequentes</a>
-            <a href="mailto:contato@hubacademybr.com" className="card" style={{ padding: '12px 22px', fontWeight: 700, fontSize: 14 }}>contato@hubacademybr.com</a>
+            <a href="mailto:contato@queizy.com" className="card" style={{ padding: '12px 22px', fontWeight: 700, fontSize: 14 }}>contato@queizy.com</a>
           </div>
         </div>
       </section>
@@ -316,7 +316,7 @@ export default function Page() {
             <a href="/privacidade">Privacidade</a>
             <a href="/termos">Termos</a>
             <a href="/faq">Ajuda</a>
-            <a href="mailto:contato@hubacademybr.com">Contato</a>
+            <a href="mailto:contato@queizy.com">Contato</a>
           </div>
         </div>
       </footer>

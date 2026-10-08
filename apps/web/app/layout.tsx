@@ -8,14 +8,14 @@ import { Suspense } from 'react';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://charlotte.hubacademybr.com'),
+  metadataBase: new URL('https://queizy.com'),
   title: 'Queizy',
   description: 'Inglês de verdade, com conversa, correção na hora e zero vergonha de errar. Pratique com a Charlotte, sua tutora de IA.',
   // 🌐 Open Graph para compartilhamento social
   openGraph: {
     title: 'Queizy — Do queizy ao crazy.',
     description: 'Inglês de verdade, com conversa, correção na hora e zero vergonha de errar.',
-    url: 'https://charlotte.hubacademybr.com',
+    url: 'https://queizy.com',
     siteName: 'Queizy',
     images: [
       {

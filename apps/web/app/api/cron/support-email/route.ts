@@ -17,6 +17,8 @@ import {
 
 const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
 const SUPPORT_ADDR = (process.env.SUPPORT_INBOX ?? 'suporte@hubacademybr.com').toLowerCase();
+// Endereços de suporte aceitos (o antigo e o do Queizy chegam na mesma caixa).
+const SUPPORT_ADDRS = [SUPPORT_ADDR, 'suporte@queizy.com'];
 const SELF = 'charlotte@hubacademybr.com';
 
 function checkAuth(req: NextRequest) {
@@ -31,7 +33,7 @@ function isNoise(m: InboxMessage): boolean {
   const subj = m.subject.toLowerCase();
   if (/out of office|automatic reply|resposta autom|ausência|aus[eê]ncia|f[ée]rias|vacation|não é possível entregar|nao e possivel entregar|undeliverable/.test(subj)) return true;
   // só o que foi endereçado ao suporte
-  if (!m.to.includes(SUPPORT_ADDR)) return true;
+  if (!SUPPORT_ADDRS.some(a => m.to.includes(a))) return true;
   return false;
 }
 

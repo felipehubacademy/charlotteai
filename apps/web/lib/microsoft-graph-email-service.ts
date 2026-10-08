@@ -1,12 +1,16 @@
 // lib/microsoft-graph-email-service.ts
 // Envia emails via Microsoft Graph API usando client credentials (server-to-server).
-// Remetente: charlotte@hubacademybr.com (alias de hub@hubacademybr.com)
+// Caixa: charlotte@hubacademybr.com. Os e-mails saem como "Queizy
+// <noreply@queizy.com>", apelido da mesma caixa (envio por apelido ligado no
+// Exchange). Respostas e devoluções continuam chegando nessa caixa.
 
 const TENANT_ID     = process.env.AZURE_TENANT_ID!;
 const CLIENT_ID     = process.env.AZURE_CLIENT_ID!;
 const CLIENT_SECRET = process.env.AZURE_CLIENT_SECRET!;
-const FROM_EMAIL    = 'charlotte@hubacademybr.com';
-const FROM_NAME     = 'Charlotte';
+const FROM_EMAIL    = 'charlotte@hubacademybr.com'; // caixa usada nas chamadas do Graph
+const SENDER_EMAIL  = process.env.EMAIL_SENDER_ADDRESS || 'noreply@queizy.com';
+const FROM_NAME     = process.env.EMAIL_SENDER_NAME || 'Queizy';
+const REPLY_TO      = 'contato@queizy.com';
 
 // ── Token cache (in-memory, valido por ~1h) ───────────────────────────────────
 
@@ -58,7 +62,8 @@ export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
       subject: opts.subject,
       body: { contentType: 'HTML', content: opts.html },
       toRecipients: [{ emailAddress: { address: opts.to } }],
-      from: { emailAddress: { address: FROM_EMAIL, name: FROM_NAME } },
+      from: { emailAddress: { address: SENDER_EMAIL, name: FROM_NAME } },
+      replyTo: [{ emailAddress: { address: REPLY_TO, name: FROM_NAME } }],
     },
     saveToSentItems: false,
   };
