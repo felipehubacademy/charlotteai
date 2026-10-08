@@ -31,7 +31,7 @@ interface Props {
   exhausted?: boolean;   // true = acabou o tempo; false = aberto pelo cartão, antes de acabar
   remainingMin?: number; // minutos que ainda restam (quando exhausted=false)
   onSubscribe: () => void;
-  onPurchased: () => void; // chamado após comprar minutos com sucesso
+  onPurchased: (minutes: number) => void; // chamado após comprar minutos com sucesso
   onClose: () => void;
 }
 
@@ -68,7 +68,7 @@ export function LiveVoiceLimitSheet({ visible, isPt, isSubscriber, poolMin, exha
     const res = await purchasePackage(pkg);
     setBuying(null);
     if (res.success) {
-      onPurchased(); // pai atualiza o pool (grant vem via webhook) e fecha
+      onPurchased(MINUTES_BY_PRODUCT[productId] ?? 0); // pai atualiza o pool (grant vem via webhook) e fecha
     } else if (!res.cancelled) {
       setErr(true);
     }

@@ -611,6 +611,9 @@ export default function LiveVoiceTab() {
   // Só considera "limite atingido" quando o pool é CONHECIDO — enquanto a
   // leitura não confirma, mostramos "carregando", nunca um limite/pool falso.
   const isLimitReached = poolKnown && !poolUnlimited && poolRemaining <= 0;
+  // Minutos extras (comprados ou de convite): não vencem e só são gastos depois do mês.
+  const extraMin = Math.floor(poolBonus / 60);
+  const usingExtras = !isLimitReached && extraMin > 0 && poolUsed >= poolTotal;
 
   // CTA primário — 3 estados: carregando (pool ainda incerto) · limite atingido
   // (assinante -> comprar minutos; trial -> assinar) · normal (conversar).
@@ -872,19 +875,33 @@ export default function LiveVoiceTab() {
               >
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
                   <AppText style={{ flex: 1, fontSize: 13, fontWeight: '700', color: C.textWhite }}>
-                    {isPt ? 'Seu tempo este mês' : 'Your time this month'}
+                    {usingExtras
+                      ? (isPt ? 'Usando seus minutos extras' : 'Using your extra minutes')
+                      : (isPt ? 'Seu tempo este mês' : 'Your time this month')}
                   </AppText>
-                  <AppText style={{ fontSize: 12, fontWeight: '700', color: C.textMuted }}>
-                    {`${Math.min(Math.ceil(poolUsed / 60), Math.floor(poolTotal / 60))} / ${Math.floor(poolTotal / 60)} min`}
+                  <AppText style={{ fontSize: 12, fontWeight: '700', color: usingExtras ? C.greenDark : C.textMuted }}>
+                    {usingExtras
+                      ? (isPt ? `${extraMin} min restantes` : `${extraMin} min left`)
+                      : `${Math.min(Math.ceil(poolUsed / 60), Math.floor(poolTotal / 60))} / ${Math.floor(poolTotal / 60)} min`}
                   </AppText>
                 </View>
                 <QueizyWave progress={Math.min(1, poolUsed / poolTotal)} height={12} strokeWidth={3.5} doneColor="#2BD97C" />
                 <AppText style={{ fontSize: 11.5, color: C.textDim, marginTop: 8 }}>
                   {(isPt
                     ? `Renova em 1/${String(new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).getMonth() + 1).padStart(2, '0')}`
-                    : `Resets ${new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toLocaleDateString('en', { month: 'short', day: 'numeric' })}`)
-                    + (poolBonus >= 60 ? (isPt ? ` · +${Math.floor(poolBonus / 60)} min de bônus` : ` · +${Math.floor(poolBonus / 60)} bonus min`) : '')}
+                    : `Resets ${new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toLocaleDateString('en', { month: 'short', day: 'numeric' })}`)}
                 </AppText>
+                {extraMin > 0 && (
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 10, paddingTop: 10, borderTopWidth: 1, borderTopColor: 'rgba(22,19,31,0.08)' }}>
+                    <View style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: C.greenDark }} />
+                    <AppText style={{ flex: 1, fontSize: 12.5, fontWeight: '700', color: C.textWhite }}>
+                      {isPt ? 'Minutos extras' : 'Extra minutes'}
+                    </AppText>
+                    <AppText style={{ fontSize: 12, fontWeight: '700', color: C.greenDark }}>
+                      {isPt ? `+${extraMin} min · não vencem` : `+${extraMin} min · never expire`}
+                    </AppText>
+                  </View>
+                )}
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 2, marginTop: 8 }}>
                   <AppText style={{ fontSize: 12, fontWeight: '700', color: C.greenDark }}>
                     {isSubscriber ? (isPt ? 'Comprar mais minutos' : 'Buy more minutes') : (isPt ? 'Quero mais minutos' : 'Get more minutes')}
@@ -979,8 +996,12 @@ export default function LiveVoiceTab() {
         exhausted={limitExhausted}
         remainingMin={Math.floor(poolRemaining / 60)}
         onSubscribe={() => { setShowLimitSheet(false); openPaywall(); }}
-        onPurchased={() => {
+        onPurchased={(mins) => {
           setShowLimitSheet(false);
+          setTimeout(() => Alert.alert(
+            isPt ? `+${mins} minutos adicionados` : `+${mins} minutes added`,
+            isPt ? 'Eles não vencem no fim do mês. Bora conversar?' : 'They don’t expire at month’s end. Ready to talk?',
+          ), 350);
           // O grant dos minutos chega via webhook do RevenueCat (async) —
           // atualiza o pool algumas vezes até o saldo bônus refletir.
           loadData();
