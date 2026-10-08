@@ -170,9 +170,13 @@ export default function StudyTogetherScreen() {
                   <Avatar uri={b.avatarUrl} name={b.name} />
                   <View style={{ flex: 1 }}>
                     <AppText style={{ fontSize: 16, fontWeight: '800', color: C.ink }}>{b.name ?? t('Sua dupla', 'Your buddy')}</AppText>
-                    <AppText style={{ fontSize: 12.5, color: C.light, marginTop: 1 }}>
-                      {b.relation === 'sponsor' ? t('Te convidou', 'Invited you') : b.relation === 'invited' ? t('Você convidou', 'You invited') : t('Amigo de estudo', 'Study friend')}
-                      {b.level ? ` · ${b.level}` : ''}{b.streak ? ` · ${b.streak} ${t(b.streak === 1 ? 'dia' : 'dias', b.streak === 1 ? 'day' : 'days')}` : ''}
+                    {/* Uma linha só: quem convidou (se veio de convite), nível e sequência. */}
+                    <AppText style={{ fontSize: 12.5, color: C.light, marginTop: 1 }} numberOfLines={1}>
+                      {[
+                        b.relation === 'sponsor' ? t('Te convidou', 'Invited you') : b.relation === 'invited' ? t('Você convidou', 'You invited') : null,
+                        b.level,
+                        b.streak ? `${b.streak} ${t(b.streak === 1 ? 'dia' : 'dias', b.streak === 1 ? 'day' : 'days')}` : null,
+                      ].filter(Boolean).join(' · ')}
                     </AppText>
                   </View>
                   <TouchableOpacity disabled={b.nudgedToday} onPress={() => setNudgeFor(b)}
