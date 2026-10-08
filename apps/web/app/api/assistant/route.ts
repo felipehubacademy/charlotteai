@@ -89,6 +89,15 @@ function extractVocabSuggestions(text: string): string[] {
     .slice(0, 3);
 }
 
+// Uso do nome no Free Chat: de vez em quando, no meio da conversa, como um
+// amigo faria. Nunca como abertura ("Hi Felipe!") — a saudação já acontece
+// na Home do app — e nunca em respostas seguidas.
+function nameRule(userName?: string): string {
+  const first = (userName || '').trim().split(/\s+/)[0];
+  if (!first) return '';
+  return `- The student's first name is ${first}. Use it now and then, naturally, in the middle of a reply (about 1 in 4 replies). Never open a reply with it ("Hi ${first}!", "${first}, ...") and skip it if you used it in one of your last two replies.`;
+}
+
 export async function POST(request: NextRequest) {
   // Extraimos userId antes de abrir o ALS, para que todas as chamadas
   // openai.chat.completions.create nos helpers abaixo sejam logadas
@@ -822,6 +831,7 @@ How you talk:
 - React genuinely to what they say — curious, opinionated, occasionally funny
 - No "It seems like" or "It sounds like" — just react directly, like a person would
 - If they say hi or greet you, just greet them back warmly and ask something — never comment on the greeting itself
+${nameRule(userName)}
 - Grammar corrections only if truly confusing — weave it in naturally, don't announce it
 - Keep it to 2-3 sentences max, end with a question or something that invites them to keep talking
 - Never open with "That's great!", "Absolutely!", "Of course!" or any filler praise`
@@ -832,6 +842,7 @@ ${conversationContext ? `${conversationContext}\n` : ''}
 How you talk:
 - React like a real person, not a teacher — no analytical openers like "It sounds like" or "It seems like"
 - If they say hi or greet you, respond naturally and warmly — never comment on the fact that they greeted you
+${nameRule(userName)}
 - Be encouraging without being cheesy — skip "That's great!" and "Awesome!"
 - Gently weave in corrections when needed, don't announce them
 - Keep responses short and end with something that invites them to continue`;
@@ -912,6 +923,7 @@ STYLE:
 - Be genuinely curious about the student's life and stories.
 - React to what they actually said (not just "Nice!" or "Cool!").
 - Vary reactions: "Oh nice!", "Really?", "That's cool!", "Tell me more!", "Wow!".
+${nameRule(userName)}
 - Max 2 short sentences + 1 follow-up question.
 - When the student makes a mistake, naturally model the correct form in your reply without pointing the error out.
 
@@ -1519,6 +1531,7 @@ ${conversationContext ? `\n${conversationContext}\n` : ''}
 STYLE (spoken — natural to read aloud):
 - Short sentences, no lists, no formatting.
 - React genuinely to what was said.
+${nameRule(userName)}
 - Max 2 sentences + 1 follow-up question.
 - When the student makes a mistake, naturally model the correct form in your reply.
 
@@ -1663,6 +1676,7 @@ RULES:
 - End with ONE question to keep them talking
 - Never mention pronunciation, scores, or grammar
 - Sound like a real friend texting, not a teacher
+${nameRule(userName)}
 
 Student said: "${transcription}"`;
 
@@ -1876,6 +1890,7 @@ ${conversationContext ? `${conversationContext}\n` : ''}
 React like a real person:
 - No "It seems like", "It sounds like", "It appears that" — just talk
 - If they say hi or greet you, greet them back naturally — never comment on the greeting itself
+${nameRule(userName)}
 - Skip filler praise like "That's great!" or "Awesome!"
 - 2-3 sentences, end with something that keeps the conversation going`;
 
@@ -2463,6 +2478,7 @@ RULES:
 - Never mention pronunciation, scores, or language coaching
 - Use natural modern language: "yeah", "totally", "for sure", "that's wild", "love that"
 - Avoid: "Delightful", "indeed", "I appreciate", "demonstrates"
+${nameRule(userName)}
 
 Student said: "${transcription}"`;
 
