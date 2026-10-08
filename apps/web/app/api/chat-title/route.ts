@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
       messages: [
         {
           role: 'system',
-          content: `Create a short title (2 to 5 words) in ${language} for a casual English-practice chat, based on the student's first message. Name the topic, like a chat app would ("Pizza perto de casa", "Mudanças no trabalho", "Weekend plans"). No quotes, no emoji, no final period. Return only the title.`,
+          content: `Create a short title (2 to 5 words) in ${language} for a casual English-practice chat, based on the student's first message. Name the topic, like a chat app would ("Pizza perto de casa", "Mudanças no trabalho", "Weekend plans"). Sentence case (only the first word capitalized, plus proper nouns). Do not use the words "chat" or "conversation". No quotes, no emoji, no final period. Return only the title.`,
         },
         { role: 'user', content: source.slice(0, 500) },
       ],
