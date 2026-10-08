@@ -556,6 +556,13 @@ export default function PracticeTab() {
                 { key: 'new',  Icon: Plus,                  label: isPt ? 'Nova conversa' : 'New conversation',         onPress: handleNewSession },
                 { key: 'hist', Icon: ClockCounterClockwise, label: isPt ? 'Conversas anteriores' : 'Previous conversations', onPress: () => setShowHistory(true) },
               ] : []),
+              ...(mode === 'grammar' ? [
+                { key: 'new',  Icon: Plus,                  label: isPt ? 'Nova análise' : 'New check',          onPress: resetMessages },
+                { key: 'hist', Icon: ClockCounterClockwise, label: isPt ? 'Minhas correções' : 'My corrections', onPress: () => router.push({ pathname: '/(app)/practice-history', params: { mode: 'grammar' } }) },
+              ] : []),
+              ...(mode === 'pronunciation' ? [
+                { key: 'hist', Icon: ClockCounterClockwise, label: isPt ? 'Meu histórico' : 'My history', onPress: () => router.push({ pathname: '/(app)/practice-history', params: { mode: 'pronunciation' } }) },
+              ] : []),
               { key: 'help', Icon: Question, label: isPt ? 'Como funciona' : 'How it works', onPress: () => setShowHelp(true) },
             ].map(item => (
               <TouchableOpacity
