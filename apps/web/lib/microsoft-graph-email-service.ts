@@ -1,15 +1,15 @@
 // lib/microsoft-graph-email-service.ts
 // Envia emails via Microsoft Graph API usando client credentials (server-to-server).
-// Envio: caixa compartilhada noreply@queizy.com (nome "Queizy", sem licença).
-// Leitura do suporte: caixa charlotte@hubacademybr.com, que recebe contato@ e
-// suporte@queizy.com. Devoluções (NDRs) chegam na caixa de envio e são lidas
-// nas duas caixas.
+// Envio: a caixa charlotte@hubacademybr.com envia como a caixa compartilhada
+// noreply@queizy.com (nome "Queizy", sem licença), com permissão "Enviar como"
+// dada no Exchange. Leitura do suporte: caixa da Charlotte, que recebe contato@
+// e suporte@queizy.com. Devoluções (NDRs) são lidas nas duas caixas.
 
 const TENANT_ID     = process.env.AZURE_TENANT_ID!;
 const CLIENT_ID     = process.env.AZURE_CLIENT_ID!;
 const CLIENT_SECRET = process.env.AZURE_CLIENT_SECRET!;
-const INBOX_EMAIL   = 'charlotte@hubacademybr.com'; // caixa lida pelo suporte
-const SENDER_EMAIL  = process.env.EMAIL_SENDER_ADDRESS || 'noreply@queizy.com'; // caixa de envio
+const INBOX_EMAIL   = 'charlotte@hubacademybr.com'; // caixa que envia (como noreply) e que o suporte lê
+const SENDER_EMAIL  = process.env.EMAIL_SENDER_ADDRESS || 'noreply@queizy.com'; // remetente (caixa compartilhada)
 const FROM_NAME     = process.env.EMAIL_SENDER_NAME || 'Queizy';
 const REPLY_TO      = 'contato@queizy.com';
 
@@ -79,7 +79,7 @@ export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
     try {
       const token = await getAccessToken();
       const res = await fetch(
-        `https://graph.microsoft.com/v1.0/users/${SENDER_EMAIL}/sendMail`,
+        `https://graph.microsoft.com/v1.0/users/${INBOX_EMAIL}/sendMail`,
         {
           method: 'POST',
           headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
