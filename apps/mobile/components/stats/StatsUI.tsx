@@ -8,7 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import {
   ArrowLeft, CaretRight, Lightning, Fire, Star, Microphone, PencilLine,
-  GraduationCap, Sun, CalendarCheck, X, Lock, CheckCircle,
+  GraduationCap, Sun, CalendarCheck, X, Lock, CheckCircle, UsersThree, Flag,
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { QueizyWave } from '@/components/ui/QueizyWave';
@@ -104,6 +104,8 @@ export function AchievementIcon({ category, color, size = 22 }: { category: stri
     case 'learn':        return <GraduationCap size={size} color={color} weight="fill" />;
     case 'habit':        return <Sun           size={size} color={color} weight="fill" />;
     case 'consistency':  return <CalendarCheck size={size} color={color} weight="fill" />;
+    case 'social':       return <UsersThree    size={size} color={color} weight="fill" />;
+    case 'rally':        return <Flag          size={size} color={color} weight="fill" />;
     default:             return <Star          size={size} color={color} weight="fill" />;
   }
 }

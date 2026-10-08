@@ -40,6 +40,8 @@ export async function runRallyJobs(): Promise<{ updates: number; reminders: numb
           .update({ live_voice_bonus_seconds: (w?.live_voice_bonus_seconds ?? 0) + RALLY_REWARD_SECONDS } as never).eq('id', winner.userId);
       }
       await supabase.from('rallies').update({ finalized: true, winner_id: winner?.userId ?? null } as never).eq('id', r.id);
+      // Conquistas de rally (Primeira Vitória, Fera dos Rallies).
+      if (winner) await supabase.rpc('rn_award_achievements', { p_user_id: winner.userId }).then(undefined, () => {});
       if (rows.length > 1) {
         await Promise.all(rows.map(s => {
           const u = people.get(s.userId); if (!u) return null;

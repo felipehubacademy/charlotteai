@@ -176,6 +176,8 @@ export async function POST(req: NextRequest) {
       supabase.from('charlotte_users').update({ live_voice_bonus_seconds: (me.live_voice_bonus_seconds ?? 0) + REWARD_SECONDS } as never).eq('id', user.id),
       inviter ? supabase.from('charlotte_users').update({ live_voice_bonus_seconds: (inviter.live_voice_bonus_seconds ?? 0) + REWARD_SECONDS } as never).eq('id', inviterId) : Promise.resolve(),
     ]);
+    // Conquistas de padrinho (Trouxe um Amigo, Turma Formada...) saem na hora.
+    await supabase.rpc('rn_award_achievements', { p_user_id: inviterId }).then(undefined, () => {});
     // Push no idioma do aparelho de quem recebe.
     const pt = inviter ? pushIsPt(inviter) : true;
     const who = firstName(me.name) ?? (pt ? 'Alguém' : 'Someone');

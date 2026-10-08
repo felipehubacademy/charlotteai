@@ -15,6 +15,32 @@ export interface CatalogEntry {
 
 // ── General badges (all levels) ───────────────────────────────────────────────
 export const GENERAL_ACHIEVEMENTS: CatalogEntry[] = [
+  // Estudar junto: padrinho (amigos trazidos) e rallies vencidos.
+  {
+    code: 'sponsor_1', title: 'Trouxe um Amigo', titleEN: 'Bring a Friend', category: 'social', rarity: 'common', xpReward: 30,
+    howToEarnPT: 'Um amigo entra no Queizy pelo seu convite.',
+    howToEarnEN: 'A friend joins Queizy with your invite.',
+  },
+  {
+    code: 'sponsor_5', title: 'Turma Formada', titleEN: 'Study Crew', category: 'social', rarity: 'epic', xpReward: 120,
+    howToEarnPT: 'Cinco amigos entram pelo seu convite.',
+    howToEarnEN: 'Five friends join with your invite.',
+  },
+  {
+    code: 'sponsor_20', title: 'Lenda dos Convites', titleEN: 'Invite Legend', category: 'social', rarity: 'legendary', xpReward: 400,
+    howToEarnPT: 'Vinte amigos entram pelo seu convite.',
+    howToEarnEN: 'Twenty friends join with your invite.',
+  },
+  {
+    code: 'rally_win_1', title: 'Primeira Vitória', titleEN: 'First Rally Win', category: 'rally', rarity: 'rare', xpReward: 40,
+    howToEarnPT: 'Vença seu primeiro rally em Estudar junto.',
+    howToEarnEN: 'Win your first rally in Study together.',
+  },
+  {
+    code: 'rally_win_5', title: 'Fera dos Rallies', titleEN: 'Rally Ace', category: 'rally', rarity: 'epic', xpReward: 150,
+    howToEarnPT: 'Vença cinco rallies.',
+    howToEarnEN: 'Win five rallies.',
+  },
   {
     code: 'first_practice', title: 'Olá, Mundo!', titleEN: 'Hello, World!', category: 'general', rarity: 'common', xpReward: 10,
     howToEarnPT: 'Faça sua primeira prática no app.',
