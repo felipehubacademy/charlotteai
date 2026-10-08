@@ -16,10 +16,10 @@ const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const CRON_SECRET      = process.env.CRON_SECRET ?? '';
 const ADMIN_SECRET     = process.env.ADMIN_SECRET ?? '';
 
-// Formata data ISO em portugues: "16 de abril de 2026"
+// Formata data ISO em português: "16 de abril de 2026"
 function formatDatePT(iso: string): string {
   const months = [
-    'janeiro', 'fevereiro', 'marco', 'abril', 'maio', 'junho',
+    'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
     'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro',
   ];
   const d = new Date(iso);

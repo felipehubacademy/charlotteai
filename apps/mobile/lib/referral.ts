@@ -13,6 +13,7 @@ import Constants from 'expo-constants';
 import * as SecureStore from 'expo-secure-store';
 import { Clipboard, Application } from './nativeOptional';
 import { supabase } from './supabase';
+import { savePendingRally } from './rally';
 
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 const PENDING_KEY = 'queizy_pending_invite';
@@ -96,12 +97,16 @@ export async function detectInstallInvite(): Promise<string | null> {
   try {
     if (Platform.OS === 'android') {
       if (!Application) return null;
-      const ref = await Application.getInstallReferrerAsync();
-      const m = /queizy_invite=([A-Z0-9]+)/i.exec(decodeURIComponent(ref ?? ''));
+      const ref = decodeURIComponent(await Application.getInstallReferrerAsync() ?? '');
+      const rally = /queizy_rally=([A-Z0-9]+)/i.exec(ref);
+      if (rally) await savePendingRally(rally[1]);
+      const m = /queizy_invite=([A-Z0-9]+)/i.exec(ref);
       return m ? normalizeCode(m[1]) : null;
     }
     if (Clipboard && await Clipboard.hasStringAsync()) {
       const text = await Clipboard.getStringAsync();
+      const rally = /RALLY:([A-Z0-9]{4,})/i.exec(text ?? '');
+      if (rally) await savePendingRally(rally[1]);
       const m = /QUEIZY:([A-Z0-9]{4,})/i.exec(text ?? '');
       return m ? normalizeCode(m[1]) : null;
     }

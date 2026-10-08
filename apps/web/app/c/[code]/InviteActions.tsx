@@ -7,7 +7,8 @@ const PLAY_ID = 'com.hubacademy.charlotte';
 
 type Platform = 'ios' | 'android' | 'desktop';
 
-export default function InviteActions({ code }: { code: string }) {
+/** code = convite (referral) de quem chamou; rally = código do rally, quando o link é de uma disputa. */
+export default function InviteActions({ code, rally }: { code: string; rally?: string }) {
   const [platform, setPlatform] = useState<Platform>('desktop');
 
   useEffect(() => {
@@ -15,14 +16,16 @@ export default function InviteActions({ code }: { code: string }) {
     const p: Platform = /iPad|iPhone|iPod/.test(ua) ? 'ios' : /Android/i.test(ua) ? 'android' : 'desktop';
     setPlatform(p);
     // Se o app já estiver instalado, abre direto no convite.
-    if (p !== 'desktop' && code) window.location.href = `queizy://invite/${code}`;
-  }, [code]);
+    if (p !== 'desktop' && rally) window.location.href = `queizy://rally/${rally}`;
+    else if (p !== 'desktop' && code) window.location.href = `queizy://invite/${code}`;
+  }, [code, rally]);
 
-  const playUrl = `https://play.google.com/store/apps/details?id=${PLAY_ID}&referrer=${encodeURIComponent(`queizy_invite=${code}`)}`;
+  const ref = [code && `queizy_invite=${code}`, rally && `queizy_rally=${rally}`].filter(Boolean).join('&');
+  const playUrl = `https://play.google.com/store/apps/details?id=${PLAY_ID}&referrer=${encodeURIComponent(ref)}`;
 
   // No iPhone o código vai para a área de transferência: o app oferece colar no primeiro acesso.
   const copyThenGo = async (url: string) => {
-    try { await navigator.clipboard.writeText(`QUEIZY:${code}`); } catch { /* segue sem copiar */ }
+    try { await navigator.clipboard.writeText([code && `QUEIZY:${code}`, rally && `RALLY:${rally}`].filter(Boolean).join(' ')); } catch { /* segue sem copiar */ }
     window.location.href = url;
   };
 

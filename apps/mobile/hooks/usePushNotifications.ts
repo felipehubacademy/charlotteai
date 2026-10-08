@@ -109,6 +109,11 @@ export function usePushNotifications(userId?: string) {
             router.push('/(app)/(tabs)/practice' as any);
             break;
           case 'buddy_nudge':
+          case 'buddy_rivalry':
+          case 'rally_invite':
+          case 'rally_update':
+          case 'rally_reminder':
+          case 'rally_result':
           case 'buddy_joined':
             router.push('/(app)/study-together' as any);
             break;

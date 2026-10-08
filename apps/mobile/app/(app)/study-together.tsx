@@ -1,5 +1,6 @@
 // Estudar junto — convite pessoal, dupla de estudo (XP da semana lado a lado),
-// cutucadas com mensagens prontas e o badge de Padrinho/Madrinha.
+// cutucadas com mensagens prontas, rallies (disputas de 24h/7 dias) e o badge
+// de Padrinho/Madrinha.
 
 import React, { useCallback, useState } from 'react';
 import { View, ScrollView, TouchableOpacity, TextInput, Image, ActivityIndicator, Modal, Pressable, RefreshControl } from 'react-native';
@@ -8,6 +9,7 @@ import { Users, HandWaving, Crown, Lightning, Gift } from 'phosphor-react-native
 import { AppText } from '@/components/ui/Text';
 import { C, ScreenHeader, SectionTitle, Card } from '@/components/stats/StatsUI';
 import { ShareCardModal, ShareCardContent } from '@/components/share/ShareCardModal';
+import { RallySection } from '@/components/rally/RallySection';
 import { systemIsPt } from '@/lib/systemLang';
 import {
   fetchReferral, claimInvite, nudgeBuddy, normalizeCode,
@@ -165,6 +167,9 @@ export default function StudyTogetherScreen() {
             );
           })}
         </View>
+
+        {/* Rallies */}
+        <RallySection buddies={info?.buddies ?? []} />
 
         {/* Padrinho / Madrinha */}
         <SectionTitle title={t('Padrinho de estudos', 'Study sponsor')} />

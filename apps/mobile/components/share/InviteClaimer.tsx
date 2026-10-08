@@ -9,6 +9,7 @@ import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 import { takePendingInvite, detectInstallInvite, fetchReferral, claimInvite } from '@/lib/referral';
+import { takePendingRally, savePendingRally, joinRally } from '@/lib/rally';
 
 export function InviteClaimer() {
   const { profile } = useAuth();
@@ -28,9 +29,17 @@ export function InviteClaimer() {
         if (!info?.canClaim) return;
         code = await detectInstallInvite();
       }
-      if (!code) return;
-      const r = await claimInvite(code);
-      if (r.ok) setJoined({ inviter: r.inviter, minutes: r.rewardMinutes });
+      if (code) {
+        const r = await claimInvite(code);
+        if (r.ok) setJoined({ inviter: r.inviter, minutes: r.rewardMinutes });
+      }
+      // Veio de um link de rally: entra na disputa já no primeiro acesso.
+      const rally = await takePendingRally();
+      if (rally) {
+        const j = await joinRally(rally);
+        if (!j.ok && j.error === 'network') await savePendingRally(rally);
+        else if (j.ok && !code) router.push('/(app)/study-together' as any);
+      }
     })();
   }, [profile?.first_welcome_done]);
 

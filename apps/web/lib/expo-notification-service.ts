@@ -324,7 +324,9 @@ interface NotificationType {
     | 'trial_ending_72h' | 'trial_ending_24h' | 'sub_expired_1d'
     // Winback
     | 'streak_broken'
-    | 'reengagement_3d' | 'reengagement_7d' | 'reengagement_14d' | 'reengagement_30d';
+    | 'reengagement_3d' | 'reengagement_7d' | 'reengagement_14d' | 'reengagement_30d'
+    // Estudar junto (duplas)
+    | 'buddy_rivalry';
 }
 
 // Max sends per user per UTC day, per type. For core types 1/day is a safety
@@ -353,6 +355,7 @@ const FREQUENCY_CAP: Record<NotificationType['id'], number> = {
   reengagement_7d:        1,
   reengagement_14d:       1,
   reengagement_30d:       1,
+  buddy_rivalry:          1,
 };
 
 // Re-engagement types are mutually exclusive: the dispatcher picks AT MOST
@@ -580,6 +583,7 @@ const TARGET_HOUR_GOAL     = 16;
 const TARGET_HOUR_STREAK   = 18;
 const TARGET_HOUR_PRAISE   = 18;
 const TARGET_HOUR_WEEKLY   = 9;
+const TARGET_HOUR_BUDDY    = 19;
 const WEEKLY_DAY_OF_WEEK   = 1; // Monday
 
 // ── 1. Streak reminders ──────────────────────────────────────────────────────
@@ -1886,5 +1890,112 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
     }
   } catch (e) {
     console.error('❌ [Engagement] dispatcher error:', e);
+  }
+}
+
+
+// ── Estudar junto: competição da dupla ───────────────────────────────────────
+// Às 19h (hora local), para quem tem dupla e ainda não estudou hoje:
+//  - dupla na frente no XP da semana  -> "Fulano já fez X XP, você está Y atrás"
+//  - aluno na frente, mas a dupla estudou hoje e está a <= 30 XP -> "Fulano está chegando"
+// Mensagens prontas, sem gênero, no idioma do aparelho; 1 por dia; sem repetir a última frase.
+type BuddyVars = { buddy: string; xp: number; diff: number };
+const BUDDY_BEHIND: Array<{ id: string; pt: (v: BuddyVars) => [string, string]; en: (v: BuddyVars) => [string, string] }> = [
+  { id: 'b1', pt: v => [`${v.buddy} já fez ${v.xp} XP esta semana`, `Você está ${v.diff} XP atrás. Uma lição rápida e vocês ficam lado a lado.`],
+              en: v => [`${v.buddy} already has ${v.xp} XP this week`, `You're ${v.diff} XP behind. One quick lesson and you're side by side.`] },
+  { id: 'b2', pt: v => [`${v.buddy} está na frente`, `São ${v.diff} XP de vantagem nesta semana. Bora mostrar do que você é capaz?`],
+              en: v => [`${v.buddy} is ahead`, `${v.diff} XP ahead this week. Ready to show what you can do?`] },
+  { id: 'b3', pt: v => ['Corre que ainda dá tempo!', `${v.buddy} abriu ${v.diff} XP de vantagem. Uma prática hoje já encurta essa distância.`],
+              en: v => ["Hurry, there's still time!", `${v.buddy} is ${v.diff} XP ahead. One practice today closes the gap.`] },
+  { id: 'b4', pt: v => ['Sua dupla não para', `${v.buddy} segue somando XP esta semana. E você, vem junto?`],
+              en: v => ["Your buddy isn't stopping", `${v.buddy} keeps adding XP this week. Coming along?`] },
+];
+const BUDDY_CLOSING: Array<{ id: string; pt: (v: BuddyVars) => [string, string]; en: (v: BuddyVars) => [string, string] }> = [
+  { id: 'c1', pt: v => [`${v.buddy} está chegando`, `Só ${v.diff} XP atrás de você. Uma lição hoje garante a liderança.`],
+              en: v => [`${v.buddy} is catching up`, `Only ${v.diff} XP behind you. One lesson today keeps you in the lead.`] },
+  { id: 'c2', pt: v => ['Sua liderança está em jogo', `${v.buddy} estudou hoje e encostou em você. Bora manter a frente?`],
+              en: v => ['Your lead is at stake', `${v.buddy} studied today and is right behind you. Keep the lead?`] },
+];
+
+function localDateInTz(utc: Date, tz: string): string {
+  try {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit' }).format(utc);
+  } catch {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: DEFAULT_TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(utc);
+  }
+}
+
+/** Segunda-feira 00:00 de Brasília, em ISO UTC (mesma semana da tela Estudar junto). */
+function buddyWeekStartIso(): string {
+  const now = new Date(Date.now() - 3 * 3600000);
+  const dow = (now.getUTCDay() + 6) % 7;
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - dow) + 3 * 3600000).toISOString();
+}
+
+export async function sendBuddyRivalry(supabase: any): Promise<void> {
+  try {
+    const { data: pairs } = await supabase.from('referrals').select('inviter_id, invitee_id').limit(20000);
+    if (!pairs?.length) return;
+    const buddiesOf = new Map<string, Set<string>>();
+    for (const p of pairs as { inviter_id: string; invitee_id: string }[]) {
+      if (!buddiesOf.has(p.inviter_id)) buddiesOf.set(p.inviter_id, new Set());
+      if (!buddiesOf.has(p.invitee_id)) buddiesOf.set(p.invitee_id, new Set());
+      buddiesOf.get(p.inviter_id)!.add(p.invitee_id);
+      buddiesOf.get(p.invitee_id)!.add(p.inviter_id);
+    }
+    const everyone = [...buddiesOf.keys()];
+    const allowed = await filterFrequencyCap(supabase, everyone, 'buddy_rivalry');
+    const candidates = usersAtLocalHour(await fetchCharlotteUsers(supabase, allowed), TARGET_HOUR_BUDDY);
+    if (!candidates.length) return;
+
+    const [{ data: practices }, { data: progress }, { data: names }] = await Promise.all([
+      supabase.from('charlotte_practices').select('user_id, xp_earned, created_at').in('user_id', everyone).gte('created_at', buddyWeekStartIso()).limit(50000),
+      supabase.from('charlotte_progress').select('user_id, last_practice_date').in('user_id', everyone),
+      supabase.from('charlotte_users').select('id, name').in('id', everyone),
+    ]);
+    const weekXp = new Map<string, number>();
+    const lastPracticeAt = new Map<string, number>();
+    for (const r of (practices ?? []) as { user_id: string; xp_earned: number | null; created_at: string }[]) {
+      weekXp.set(r.user_id, (weekXp.get(r.user_id) ?? 0) + (r.xp_earned ?? 0));
+      lastPracticeAt.set(r.user_id, Math.max(lastPracticeAt.get(r.user_id) ?? 0, new Date(r.created_at).getTime()));
+    }
+    const lastDate = new Map(((progress ?? []) as { user_id: string; last_practice_date: string | null }[]).map(p => [p.user_id, p.last_practice_date]));
+    const nameOf = new Map(((names ?? []) as { id: string; name: string | null }[]).map(n => [n.id, (n.name ?? '').trim().split(/\s+/)[0] || null]));
+
+    const recent = await fetchRecentVariantHashes(supabase, candidates.map(u => u.id), 'buddy_rivalry');
+    const messages: ExpoMessage[] = [];
+    const senders: Array<{ id: string; hash: string }> = [];
+    const now = new Date();
+    for (const u of candidates) {
+      const tz = u.timezone || DEFAULT_TZ;
+      const today = localDateInTz(now, tz);
+      if (lastDate.get(u.id) === today) continue; // já estudou hoje: nada de cobrança
+      const mine = weekXp.get(u.id) ?? 0;
+      let pick: { buddy: string; xp: number; diff: number; mode: 'behind' | 'closing' } | null = null;
+      for (const b of buddiesOf.get(u.id) ?? []) {
+        const name = nameOf.get(b);
+        if (!name) continue;
+        const theirs = weekXp.get(b) ?? 0;
+        if (theirs > mine && theirs >= 20) {
+          if (!pick || pick.mode !== 'behind' || theirs - mine > pick.diff) pick = { buddy: name, xp: theirs, diff: theirs - mine, mode: 'behind' };
+        } else if (!pick && mine > theirs && mine - theirs <= 30 && localDateInTz(new Date(lastPracticeAt.get(b) ?? 0), tz) === today) {
+          pick = { buddy: name, xp: theirs, diff: mine - theirs, mode: 'closing' };
+        }
+      }
+      if (!pick) continue;
+      const pool = pick.mode === 'behind' ? BUDDY_BEHIND : BUDDY_CLOSING;
+      const seen = recent.get(u.id) ?? new Set<string>();
+      const options = pool.filter(t => !seen.has(t.id));
+      const tpl = (options.length ? options : pool)[Math.floor(Math.random() * (options.length || pool.length))];
+      const [title, body] = pushIsPt(u) ? tpl.pt(pick) : tpl.en(pick);
+      messages.push({ to: u.expo_push_token, title, body, data: { screen: 'study-together', type: 'buddy_rivalry' }, sound: 'default', priority: 'high' });
+      senders.push({ id: u.id, hash: tpl.id });
+    }
+    if (!messages.length) return;
+    const { sent, errors } = await sendExpoPush(messages, supabase);
+    console.log(`[Expo] Buddy rivalry: ${sent} sent, ${errors} errors`);
+    await logRnPushes(supabase, senders.map((s2, i) => ({ userId: s2.id, type: 'buddy_rivalry', variantHash: s2.hash, title: messages[i].title, body: messages[i].body })));
+  } catch (e) {
+    console.error('[Expo] Buddy rivalry error:', e);
   }
 }
