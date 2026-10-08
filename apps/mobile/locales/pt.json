@@ -1,0 +1,8 @@
+{
+  "ios": {
+    "NSMicrophoneUsageDescription": "O Queizy usa o microfone para você praticar conversação e pronúncia em inglês com a Charlotte.",
+    "NSSpeechRecognitionUsageDescription": "O Queizy reconhece a sua fala para mostrar, palavra por palavra, o que você disse nos exercícios de Listening & Speaking.",
+    "NSCameraUsageDescription": "O Queizy usa a câmera para você tirar a sua foto de perfil.",
+    "NSPhotoLibraryUsageDescription": "O Queizy acessa as suas fotos para você escolher a sua foto de perfil."
+  }
+}

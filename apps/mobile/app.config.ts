@@ -33,6 +33,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         'Queizy uses your camera so you can set a profile photo.',
       NSPhotoLibraryUsageDescription:
         'Queizy uses your photo library so you can set a profile photo.',
+      NSSpeechRecognitionUsageDescription:
+        'Queizy recognizes your speech to show, word by word, what you said in Listening & Speaking exercises.',
       ITSAppUsesNonExemptEncryption: false,
       // Idiomas suportados: sem português declarado, o iOS informa inglês ao app
       // (Intl vira "en-BR") e toda a interface ignora o aparelho em português.
@@ -85,6 +87,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   // 2.1.0: binário Queizy (módulos nativos novos). O app antigo (2.0.0) não
   // recebe os OTAs do Queizy e continua Charlotte até atualizar pela loja.
   runtimeVersion: '2.1.0',
+  // Textos das permissões do iOS em português (InfoPlist.strings); o inglês fica no infoPlist.
+  locales: {
+    'pt-BR': './locales/pt-BR.json',
+    pt: './locales/pt.json',
+  },
   plugins: [
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ((config: ExpoConfig) => withAndroidManifest(config, (c) => {
@@ -145,7 +152,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         color: '#DCFF4A',
       },
     ],
-    'expo-speech-recognition',
+    [
+      'expo-speech-recognition',
+      {
+        microphonePermission: 'Queizy uses your microphone to practice English conversation with AI.',
+        speechRecognitionPermission: 'Queizy recognizes your speech to show, word by word, what you said in Listening & Speaking exercises.',
+      },
+    ],
   ],
   experiments: {
     typedRoutes: true,
