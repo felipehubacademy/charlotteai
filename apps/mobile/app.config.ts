@@ -103,6 +103,24 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       if (!hasEntry) {
         manifest['uses-feature'].push({ $: { 'android:name': 'android.hardware.telephony', 'android:required': 'false' } });
       }
+      // O app não toca áudio em segundo plano nem usa controles na tela de bloqueio.
+      // O expo-audio declara FOREGROUND_SERVICE_MEDIA_PLAYBACK e o AudioControlsService
+      // por padrão; a Play exige declaração para isso. Removemos os dois do manifesto.
+      manifest.$ = { ...(manifest.$ ?? {}), 'xmlns:tools': 'http://schemas.android.com/tools' };
+      if (!manifest['uses-permission']) manifest['uses-permission'] = [];
+      const perms = manifest['uses-permission'] as { $: Record<string, string> }[];
+      const FGS = 'android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK';
+      const fgs = perms.find(p => p.$?.['android:name'] === FGS);
+      if (fgs) fgs.$['tools:node'] = 'remove';
+      else perms.push({ $: { 'android:name': FGS, 'tools:node': 'remove' } });
+      const app = c.modResults.manifest.application?.[0];
+      if (app) {
+        if (!app.service) app.service = [];
+        const SVC = 'expo.modules.audio.service.AudioControlsService';
+        if (!app.service.some((sv: { $?: Record<string, string> }) => sv.$?.['android:name'] === SVC)) {
+          app.service.push({ $: { 'android:name': SVC, 'tools:node': 'remove' } } as never);
+        }
+      }
       return c;
     })) as unknown as string,
     'expo-router',
