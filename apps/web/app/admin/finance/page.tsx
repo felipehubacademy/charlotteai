@@ -296,8 +296,8 @@ function ReportModal({ title, income, expense, byCategory, entries, onClose }: {
           <h2 style={{ fontSize: 22, fontWeight: 800, margin: '16px 0 2px' }}>Relatório financeiro</h2>
           <div style={{ fontSize: 13, color: 'var(--t2)' }}>{title} · gerado em {fmtDate(todayISO())} · regime de caixa</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, margin: '20px 0' }}>
-            {[['Entradas', income], ['Saídas', expense], ['Resultado', result], ['50% por sócio', result / 2]].map(([l, v]) => (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, margin: '20px 0' }}>
+            {[['Entradas', income], ['Saídas', expense], ['Resultado', result]].map(([l, v]) => (
               <div key={l as string} style={{ border: '1px solid var(--b2)', borderRadius: 10, padding: 12 }}>
                 <div style={{ fontSize: 10.5, fontWeight: 700, color: 'var(--t3)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{l}</div>
                 <div className="num" style={{ fontSize: 17, fontWeight: 800, marginTop: 4, color: (v as number) < 0 ? 'var(--err)' : 'var(--t1)' }}>{brl(v as number)}</div>
@@ -334,11 +334,61 @@ function ReportModal({ title, income, expense, byCategory, entries, onClose }: {
 
 // ── Custos de IA do mês ─────────────────────────────────────────────────────
 interface AiCosts {
-  month: string; fx: number; hasOpenAIAdminKey: boolean; hasAzureCost: boolean; posted: string[];
+  month: string; prevMonth: string; fx: number; hasOpenAIAdminKey: boolean; hasAzureCost: boolean; posted: string[];
   azure: { currency: string; total: number; lines: { name: string; amount: number }[]; error?: string } | null;
   openai: { source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string };
   elevenlabs: { plan: string; used: number; limit: number; resetAt: string | null; nextInvoiceUsd: number | null } | null;
+  prev: { openai: { usd: number; lines: { name: string; usd: number }[] }; azure: { total: number; currency: string } | null };
 }
+
+// Cards dos três custos principais de IA: fundo Tinta, cada provedor com sua cor.
+const AI_CARD = { bg: '#16131F', text: '#FFFFFF', mid: 'rgba(255,255,255,0.72)', low: 'rgba(255,255,255,0.5)', line: 'rgba(255,255,255,0.1)' };
+const AI_ACCENT = { openai: '#DCFF4A', azure: '#B9A8FF', eleven: '#FF8FB4' };
+const isLiveVoice = (name: string) => /realtime/i.test(name);
+
+function CostDelta({ cur, prev, prevLabel }: { cur: number; prev: number | null; prevLabel: string }) {
+  if (prev == null) return null;
+  if (!prev) return <span style={{ fontSize: 11.5, color: AI_CARD.low }}>sem custo em {prevLabel}</span>;
+  const pct = Math.round(((cur - prev) / prev) * 100);
+  const up = pct > 0;
+  return (
+    <span style={{
+      fontSize: 11.5, fontWeight: 700, padding: '3px 8px', borderRadius: 999,
+      background: up ? 'rgba(255,79,139,0.18)' : 'rgba(43,217,124,0.18)', color: up ? '#FF8FB4' : '#5BE79A',
+    }}>
+      {up ? '+' : ''}{pct}% vs {prevLabel}
+    </span>
+  );
+}
+
+function AiCard({ name, accent, badge, children }: { name: string; accent: string; badge?: string; children: React.ReactNode }) {
+  return (
+    <div style={{ background: AI_CARD.bg, color: AI_CARD.text, borderRadius: 20, padding: 20, display: 'flex', flexDirection: 'column', gap: 10, position: 'relative', overflow: 'hidden', minHeight: 240 }}>
+      <div style={{ position: 'absolute', left: 0, top: 0, right: 0, height: 4, background: accent }} />
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <span style={{ width: 10, height: 10, borderRadius: 999, background: accent }} />
+        <b style={{ fontSize: 14, letterSpacing: 0.2 }}>{name}</b>
+        {badge && <span style={{ marginLeft: 'auto', fontSize: 10.5, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 0.8, color: accent }}>{badge}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function AiLines({ lines, fmt }: { lines: { name: string; value: number }[]; fmt: (n: number) => string }) {
+  if (!lines.length) return null;
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 5, borderTop: `1px solid ${AI_CARD.line}`, paddingTop: 10 }}>
+      {lines.map(l => (
+        <div key={l.name} style={{ display: 'flex', justifyContent: 'space-between', gap: 10, fontSize: 12, color: AI_CARD.mid }}>
+          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{l.name}</span>
+          <span className="num">{fmt(l.value)}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () => void }) {
   const [month, setMonth] = useState(new Date().toISOString().slice(0, 7));
   const [data, setData] = useState<AiCosts | null>(null);
@@ -358,100 +408,111 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
     setBusy(false);
     if (!r.ok) { setMsg({ provider, text: j.error ?? 'Não foi possível lançar.' }); return; }
     onPosted(); await load();
-    setMsg({ provider, text: 'Lançado no financeiro como "a pagar" no último dia do mês.' });
+    setMsg({ provider, text: 'Lançado como "a pagar" no último dia do mês.' });
   };
-  const postButton = (provider: string) => canWrite && data && (
-    <div style={{ marginTop: 12, display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
-      <button className="adm-btn-sm primary" disabled={busy || data.posted.includes(provider)} onClick={() => post(provider)}>
+  const postButton = (provider: string, accent: string, disabled = false) => canWrite && data && (
+    <div style={{ marginTop: 'auto', paddingTop: 6, display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+      <button type="button" disabled={busy || disabled || data.posted.includes(provider)} onClick={() => post(provider)}
+        style={{ border: 0, borderRadius: 999, padding: '8px 14px', fontSize: 12.5, fontWeight: 800, cursor: 'pointer', background: accent, color: '#16131F', opacity: busy || disabled || data.posted.includes(provider) ? 0.45 : 1 }}>
         {data.posted.includes(provider) ? 'Já lançado' : busy ? 'Lançando…' : 'Lançar no financeiro'}
       </button>
-      {msg?.provider === provider && <span style={{ fontSize: 12, color: 'var(--t2)' }}>{msg.text}</span>}
+      {msg?.provider === provider && <span style={{ fontSize: 11.5, color: AI_CARD.mid }}>{msg.text}</span>}
     </div>
   );
-  const money2 = (n: number, cur: string) => n.toLocaleString(cur === 'BRL' ? 'pt-BR' : 'en-US', { style: 'currency', currency: cur });
 
   const months = Array.from({ length: 6 }, (_, i) => { const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - i); return d.toISOString().slice(0, 7); });
   const usdFmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  const curFmt = (n: number, cur: string) => n.toLocaleString(cur === 'BRL' ? 'pt-BR' : 'en-US', { style: 'currency', currency: cur });
+  const toBrl = (n: number, cur: string) => (cur === 'BRL' ? n : n * (data?.fx || 0));
+  const prevLabel = data ? monthLabel(data.prevMonth).toLowerCase() : '';
+
+  // OpenAI: Live Voice (modelos realtime) separado do resto.
+  const live = data ? data.openai.lines.filter(l => isLiveVoice(l.name)).reduce((s, l) => s + l.usd, 0) : 0;
+  const rest = data ? data.openai.usd - live : 0;
+  const azureBrl = data?.azure && !data.azure.error ? toBrl(data.azure.total, data.azure.currency) : 0;
+  const totalBrl = data ? toBrl(data.openai.usd, 'USD') + azureBrl : 0;
 
   return (
     <div className="adm-panel col-12">
       <div className="adm-panel-hdr">
         <div className="adm-panel-title">Custos de IA</div>
-        <select className="adm-select-ghost" value={month} onChange={e => setMonth(e.target.value)}>
-          {months.map(m => <option key={m} value={m}>{monthLabel(m)} {m.slice(0, 4)}</option>)}
-        </select>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          {data && <span style={{ fontSize: 12.5, color: 'var(--t2)' }}>Total do mês (OpenAI + Azure): <b className="num" style={{ color: 'var(--t1)' }}>{brl(totalBrl)}</b></span>}
+          <select className="adm-select-ghost" value={month} onChange={e => setMonth(e.target.value)}>
+            {months.map(m => <option key={m} value={m}>{monthLabel(m)} {m.slice(0, 4)}</option>)}
+          </select>
+        </div>
       </div>
-      <div className="adm-panel-body" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
+      <div className="adm-panel-body" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16 }}>
         {!data ? <div className="adm-empty-sub">Carregando…</div> : (
           <>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                <b style={{ fontSize: 14 }}>OpenAI</b>
-                <span className={`badge ${data.openai.source === 'real' ? 'badge-ok' : 'badge-warn'}`}>{data.openai.source === 'real' ? 'valor real' : 'estimativa'}</span>
+            <AiCard name="OpenAI" accent={AI_ACCENT.openai} badge={data.openai.source === 'real' ? 'valor real' : 'estimativa'}>
+              <div>
+                <div className="num" style={{ fontSize: 30, fontWeight: 800, color: AI_ACCENT.openai, lineHeight: 1.1 }}>{brl(toBrl(data.openai.usd, 'USD'))}</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 6, flexWrap: 'wrap' }}>
+                  <span className="num" style={{ fontSize: 12.5, color: AI_CARD.mid }}>{usdFmt(data.openai.usd)}</span>
+                  <CostDelta cur={data.openai.usd} prev={data.prev.openai.usd} prevLabel={prevLabel} />
+                </div>
               </div>
-              <div className="num" style={{ fontSize: 24, fontWeight: 800 }}>{usdFmt(data.openai.usd)}</div>
-              <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>≈ {brl(data.openai.usd * (data.fx || 0))} na cotação de hoje</div>
-              <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 4 }}>
-                {data.openai.lines.slice(0, 5).map(l => (
-                  <div key={l.name} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12.5, color: 'var(--t2)' }}>
-                    <span>{l.name}</span><span className="num">{usdFmt(l.usd)}</span>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+                {[{ label: 'Live Voice', v: live }, { label: 'Chat, voz e o resto', v: rest }].map(b => (
+                  <div key={b.label} style={{ background: 'rgba(255,255,255,0.06)', borderRadius: 12, padding: '9px 11px' }}>
+                    <div style={{ fontSize: 10.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.6, color: AI_CARD.low }}>{b.label}</div>
+                    <div className="num" style={{ fontSize: 15, fontWeight: 800, marginTop: 2 }}>{usdFmt(b.v)}</div>
                   </div>
                 ))}
               </div>
-              {!data.hasOpenAIAdminKey && (
-                <div style={{ fontSize: 12, color: 'var(--t3)', marginTop: 10, lineHeight: 1.5 }}>
-                  Para o valor real, crie uma chave de administrador na OpenAI (Settings &rsaquo; Admin keys) e salve como OPENAI_ADMIN_KEY na Vercel.
-                </div>
-              )}
-              {postButton('OpenAI')}
-            </div>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                <b style={{ fontSize: 14 }}>Microsoft Azure</b>
-                {data.azure && !data.azure.error && <span className="badge badge-ok">valor real</span>}
-              </div>
+              <AiLines lines={data.openai.lines.slice(0, 4).map(l => ({ name: l.name, value: l.usd }))} fmt={usdFmt} />
+              {!data.hasOpenAIAdminKey && <div style={{ fontSize: 11.5, color: AI_CARD.low, lineHeight: 1.5 }}>Para o valor real, salve uma chave de administrador da OpenAI como OPENAI_ADMIN_KEY na Vercel.</div>}
+              {postButton('OpenAI', AI_ACCENT.openai)}
+            </AiCard>
+
+            <AiCard name="Azure Speech" accent={AI_ACCENT.azure} badge={data.azure && !data.azure.error ? 'valor real' : undefined}>
               {!data.hasAzureCost ? (
-                <div style={{ fontSize: 12, color: 'var(--t3)', lineHeight: 1.5 }}>
-                  Para ler o custo real (Speech e demais serviços), dê ao app do Azure o papel &ldquo;Cost Management Reader&rdquo; na assinatura e salve o ID dela como AZURE_COST_SUBSCRIPTION_ID na Vercel.
-                </div>
+                <div style={{ fontSize: 12, color: AI_CARD.mid, lineHeight: 1.5 }}>Para ler o custo real, dê ao app do Azure o papel &ldquo;Cost Management Reader&rdquo; e salve o ID da assinatura como AZURE_COST_SUBSCRIPTION_ID na Vercel.</div>
               ) : data.azure?.error ? (
-                <div style={{ fontSize: 12, color: 'var(--t3)', lineHeight: 1.5 }}>
-                  Não foi possível ler o custo do Azure ({data.azure.error}). Confira se o app tem o papel &ldquo;Cost Management Reader&rdquo; na assinatura.
-                </div>
+                <div style={{ fontSize: 12, color: AI_CARD.mid, lineHeight: 1.5 }}>Não foi possível ler o custo do Azure ({data.azure.error}).</div>
               ) : data.azure && (
                 <>
-                  <div className="num" style={{ fontSize: 24, fontWeight: 800 }}>{money2(data.azure.total, data.azure.currency)}</div>
-                  {data.azure.currency === 'USD' && <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>≈ {brl(data.azure.total * (data.fx || 0))} na cotação de hoje</div>}
-                  <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 4 }}>
-                    {data.azure.lines.filter(l => l.amount > 0).slice(0, 5).map(l => (
-                      <div key={l.name} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12.5, color: 'var(--t2)' }}>
-                        <span>{l.name}</span><span className="num">{money2(l.amount, data.azure!.currency)}</span>
-                      </div>
-                    ))}
+                  <div>
+                    <div className="num" style={{ fontSize: 30, fontWeight: 800, color: AI_ACCENT.azure, lineHeight: 1.1 }}>{brl(azureBrl)}</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 6, flexWrap: 'wrap' }}>
+                      {data.azure.currency !== 'BRL' && <span className="num" style={{ fontSize: 12.5, color: AI_CARD.mid }}>{curFmt(data.azure.total, data.azure.currency)}</span>}
+                      <CostDelta cur={data.azure.total} prev={data.prev.azure?.total ?? null} prevLabel={prevLabel} />
+                    </div>
                   </div>
-                  {postButton('Microsoft Azure')}
+                  <div style={{ fontSize: 12, color: AI_CARD.mid, lineHeight: 1.5 }}>Pronúncia da aba Practice e demais serviços da assinatura.</div>
+                  <AiLines lines={data.azure.lines.filter(l => l.amount > 0).slice(0, 4).map(l => ({ name: l.name, value: l.amount }))} fmt={n => curFmt(n, data.azure!.currency)} />
+                  {postButton('Microsoft Azure', AI_ACCENT.azure, data.azure.total <= 0)}
                 </>
               )}
-            </div>
-            <div>
-              <b style={{ fontSize: 14 }}>ElevenLabs</b>
+            </AiCard>
+
+            <AiCard name="ElevenLabs" accent={AI_ACCENT.eleven} badge={data.elevenlabs ? `plano ${data.elevenlabs.plan}` : undefined}>
               {data.elevenlabs ? (
                 <>
-                  <div style={{ fontSize: 12.5, color: 'var(--t2)', margin: '6px 0 8px' }}>Plano {data.elevenlabs.plan} · uso real do ciclo atual</div>
-                  <div className="num" style={{ fontSize: 24, fontWeight: 800 }}>
-                    {data.elevenlabs.used.toLocaleString('pt-BR')} <span style={{ fontSize: 13, color: 'var(--t3)', fontWeight: 600 }}>de {data.elevenlabs.limit.toLocaleString('pt-BR')} caracteres</span>
+                  <div>
+                    <div className="num" style={{ fontSize: 30, fontWeight: 800, color: AI_ACCENT.eleven, lineHeight: 1.1 }}>
+                      {data.elevenlabs.nextInvoiceUsd != null ? brl(toBrl(data.elevenlabs.nextInvoiceUsd, 'USD')) : '—'}
+                    </div>
+                    <div style={{ fontSize: 12.5, color: AI_CARD.mid, marginTop: 6 }}>
+                      {data.elevenlabs.nextInvoiceUsd != null ? `${usdFmt(data.elevenlabs.nextInvoiceUsd)} na próxima fatura` : 'Sem fatura prevista'}
+                      {data.elevenlabs.resetAt ? ` · ${fmtDate(data.elevenlabs.resetAt.slice(0, 10))}` : ''}
+                    </div>
                   </div>
-                  <div style={{ height: 8, background: 'var(--b1)', borderRadius: 4, overflow: 'hidden', margin: '8px 0' }}>
-                    <div style={{ width: `${Math.min(100, (data.elevenlabs.used / Math.max(1, data.elevenlabs.limit)) * 100)}%`, height: '100%', background: '#16131F' }} />
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: AI_CARD.mid, marginBottom: 6 }}>
+                      <span>Caracteres no ciclo</span>
+                      <span className="num">{data.elevenlabs.used.toLocaleString('pt-BR')} de {data.elevenlabs.limit.toLocaleString('pt-BR')}</span>
+                    </div>
+                    <div style={{ height: 8, background: 'rgba(255,255,255,0.1)', borderRadius: 999, overflow: 'hidden' }}>
+                      <div style={{ width: `${Math.min(100, (data.elevenlabs.used / Math.max(1, data.elevenlabs.limit)) * 100)}%`, height: '100%', background: AI_ACCENT.eleven, borderRadius: 999 }} />
+                    </div>
                   </div>
-                  <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>
-                    {data.elevenlabs.resetAt ? `Renova em ${fmtDate(data.elevenlabs.resetAt.slice(0, 10))}` : ''}
-                    {data.elevenlabs.nextInvoiceUsd != null ? ` · próxima fatura ${usdFmt(data.elevenlabs.nextInvoiceUsd)}` : ''}
-                  </div>
-                  <div style={{ fontSize: 12, color: 'var(--t3)', marginTop: 8 }}>A ElevenLabs entra pela fatura do cartão.</div>
+                  <div style={{ fontSize: 11.5, color: AI_CARD.low, marginTop: 'auto', lineHeight: 1.5 }}>Voz do vocabulário (gerada uma vez e guardada). Entra pela fatura do cartão.</div>
                 </>
-              ) : <div className="adm-empty-sub" style={{ marginTop: 6 }}>Não foi possível ler o uso agora.</div>}
-            </div>
+              ) : <div style={{ fontSize: 12, color: AI_CARD.mid }}>Não foi possível ler o uso agora.</div>}
+            </AiCard>
           </>
         )}
       </div>
@@ -459,7 +520,7 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
   );
 }
 
-// ── Relatório mensal dos sócios (prévia e envio) ───────────────────────────
+// ── Relatório mensal por e-mail (prévia e envio) ───────────────────────────
 function PartnerReportModal({ canWrite, onClose }: { canWrite: boolean; onClose: () => void }) {
   const prev = (() => { const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - 1); return d.toISOString().slice(0, 7); })();
   const [period, setPeriod] = useState(prev);
@@ -486,7 +547,7 @@ function PartnerReportModal({ canWrite, onClose }: { canWrite: boolean; onClose:
     <div className="adm-modal-backdrop" onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="adm-modal" style={{ maxWidth: 680, background: 'var(--s1)' }}>
         <div className="adm-modal-hdr">
-          <div className="adm-modal-title">Relatório mensal dos sócios</div>
+          <div className="adm-modal-title">Relatório mensal por e-mail</div>
           <button className="adm-btn-sm ghost" onClick={onClose}><X size={14} /></button>
         </div>
         <div className="adm-modal-body">
@@ -507,7 +568,7 @@ function PartnerReportModal({ canWrite, onClose }: { canWrite: boolean; onClose:
         {canWrite && (
           <div className="adm-modal-footer">
             <button className="adm-btn-sm ghost" disabled={busy || !data} onClick={() => send(true)}>Enviar só para mim</button>
-            <button className="adm-btn-sm primary" disabled={busy || !data} onClick={() => send(false)}>Enviar para os sócios</button>
+            <button className="adm-btn-sm primary" disabled={busy || !data} onClick={() => send(false)}>Enviar para a gestão</button>
           </div>
         )}
       </div>
@@ -644,7 +705,7 @@ export default function FinancePage() {
         </div>
         <button className="adm-btn-sm ghost" onClick={load} title="Atualizar"><RefreshCw size={13} /></button>
         <button className="adm-btn-sm ghost" onClick={() => setReport(true)}><FileText size={13} /> Relatório</button>
-        <button className="adm-btn-sm ghost" onClick={() => setPartnerReport(true)}><Send size={13} /> Sócios</button>
+        <button className="adm-btn-sm ghost" onClick={() => setPartnerReport(true)}><Send size={13} /> Relatório mensal</button>
         <button className="adm-btn-sm ghost" onClick={exportCsv}><Download size={13} /> CSV</button>
         {canWrite && <button className="adm-btn-sm primary" onClick={() => setModal(emptyForm())}><Plus size={13} /> Lançamento</button>}
       </div>
@@ -656,7 +717,7 @@ export default function FinancePage() {
           {[
             { label: 'Entradas', value: income, ctx: RANGE_LABEL[range], color: 'var(--ok)' },
             { label: 'Saídas', value: expense, ctx: RANGE_LABEL[range], color: 'var(--t1)' },
-            { label: 'Resultado', value: result, ctx: `50% por sócio: ${brl(result / 2)}`, color: result < 0 ? 'var(--err)' : 'var(--t1)' },
+            { label: 'Resultado', value: result, ctx: income > 0 ? `Margem de ${Math.round((result / income) * 100)}%` : RANGE_LABEL[range], color: result < 0 ? 'var(--err)' : 'var(--t1)' },
             { label: 'A pagar em 30 dias', value: toPay30, ctx: overdue ? `${overdue} vencido${overdue > 1 ? 's' : ''}` : `${upcoming.length} vencimento${upcoming.length === 1 ? '' : 's'}`, color: overdue ? 'var(--err)' : 'var(--t1)' },
           ].map(k => (
             <div key={k.label} className="kpi-card col-3">

@@ -1,4 +1,4 @@
-// /api/admin/reports — relatório mensal dos sócios.
+// /api/admin/reports — relatório mensal da gestão.
 //   GET  ?period=YYYY-MM          dados + HTML para prévia
 //   POST { period, onlyMe? }      envia por e-mail (onlyMe = só para quem pediu)
 import { NextRequest, NextResponse } from 'next/server';

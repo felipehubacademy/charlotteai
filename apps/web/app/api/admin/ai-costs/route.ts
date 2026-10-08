@@ -139,24 +139,37 @@ export async function GET(req: NextRequest) {
   if (admin instanceof NextResponse) return admin;
   const month = req.nextUrl.searchParams.get('month') ?? new Date().toISOString().slice(0, 7);
 
-  let openai: { source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string };
-  try {
-    const real = await openaiReal(month);
-    openai = real ? { source: 'real', ...real } : { source: 'estimate', ...(await openaiEstimate(month)) };
-  } catch (e) {
-    openai = { source: 'estimate', ...(await openaiEstimate(month)), error: e instanceof Error ? e.message : 'erro' };
-  }
-  const [eleven, fx] = await Promise.all([elevenlabs().catch(() => null), fxBrl()]);
-  let azure: (Cost & { error?: string }) | null = null;
-  try { azure = await azureReal(month); }
-  catch (e) { azure = { currency: 'USD', total: 0, lines: [], error: e instanceof Error ? e.message : 'erro' }; }
+  const prevMonth = (() => { const d = new Date(`${month}-01T12:00:00Z`); d.setUTCMonth(d.getUTCMonth() - 1); return d.toISOString().slice(0, 7); })();
+
+  const openaiFor = async (m: string): Promise<{ source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string }> => {
+    try {
+      const real = await openaiReal(m);
+      return real ? { source: 'real', ...real } : { source: 'estimate', ...(await openaiEstimate(m)) };
+    } catch (e) {
+      return { source: 'estimate', ...(await openaiEstimate(m)), error: e instanceof Error ? e.message : 'erro' };
+    }
+  };
+  const azureFor = async (m: string): Promise<(Cost & { error?: string }) | null> => {
+    try { return await azureReal(m); }
+    catch (e) { return { currency: 'USD', total: 0, lines: [], error: e instanceof Error ? e.message : 'erro' }; }
+  };
+
+  // Mês escolhido e mês anterior em paralelo, para a variação dos cards.
+  const [openai, openaiPrev, azure, azurePrev, eleven, fx] = await Promise.all([
+    openaiFor(month), openaiFor(prevMonth), azureFor(month), azureFor(prevMonth),
+    elevenlabs().catch(() => null), fxBrl(),
+  ]);
 
   const { data: posted } = await getSupabaseAdmin().from('finance_entries')
     .select('vendor').eq('category', 'Inteligência artificial').like('notes', `%[ai-cost ${month}]%`);
   const postedVendors = ((posted ?? []) as { vendor: string }[]).map(p => p.vendor);
 
   return NextResponse.json({
-    month, fx, openai, azure, elevenlabs: eleven, posted: postedVendors,
+    month, prevMonth, fx, openai, azure, elevenlabs: eleven, posted: postedVendors,
+    prev: {
+      openai: { usd: openaiPrev.usd, lines: openaiPrev.lines },
+      azure: azurePrev && !azurePrev.error ? { total: azurePrev.total, currency: azurePrev.currency } : null,
+    },
     hasOpenAIAdminKey: !!process.env.OPENAI_ADMIN_KEY,
     hasAzureCost: !!process.env.AZURE_COST_SUBSCRIPTION_ID,
   });

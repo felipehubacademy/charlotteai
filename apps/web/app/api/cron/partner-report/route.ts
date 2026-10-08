@@ -1,4 +1,4 @@
-// /api/cron/partner-report — dia 1 de cada mês: envia aos sócios o relatório
+// /api/cron/partner-report — dia 1 de cada mês: envia à equipe de gestão o relatório
 // do mês anterior (uma vez por mês). Chamado pelo GitHub Actions com CRON_SECRET.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';

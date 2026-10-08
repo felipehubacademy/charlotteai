@@ -1,13 +1,13 @@
 // lib/partner-report.ts
-// Relatório mensal para os sócios: resultado financeiro (regime de caixa),
-// divisão de 50%, alunos e assinaturas. Usado pelo cron do dia 1, pelo botão
+// Relatório mensal da gestão: resultado financeiro (regime de caixa),
+// margem, alunos e assinaturas. Usado pelo cron do dia 1, pelo botão
 // de prévia no admin e pelo envio manual.
 
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 export interface PartnerReport {
   period: string; label: string;
-  income: number; expense: number; result: number; share: number;
+  income: number; expense: number; result: number; margin: number | null;
   prev: { income: number; expense: number; result: number };
   expenseByCategory: { category: string; amount: number }[];
   incomeByCategory: { category: string; amount: number }[];
@@ -66,7 +66,7 @@ export async function buildPartnerReport(period: string): Promise<PartnerReport>
 
   return {
     period, label,
-    income: cur.income, expense: cur.expense, result, share: result / 2,
+    income: cur.income, expense: cur.expense, result, margin: cur.income > 0 ? Math.round((result / cur.income) * 100) : null,
     prev: { income: prev.income, expense: prev.expense, result: prev.income - prev.expense },
     expenseByCategory: cur.expenseBy, incomeByCategory: cur.incomeBy,
     aiCost: cur.expenseBy.find(c => c.category === 'Inteligência artificial')?.amount ?? 0,
@@ -99,7 +99,7 @@ export function renderPartnerReportHtml(r: PartnerReport): string {
   <div style="background:#16131F;color:#fff;border-radius:20px;padding:20px">
     <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.6);font-weight:700">Resultado do mês</div>
     <div style="font-size:34px;font-weight:800;margin:4px 0;color:${r.result < 0 ? '#FF4F8B' : '#DCFF4A'}">${brl(r.result)}</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.75)">50% por sócio: <b>${brl(r.share)}</b></div>
+    ${r.margin != null ? `<div style="font-size:13px;color:rgba(255,255,255,0.75)">Margem de <b>${r.margin}%</b> sobre as entradas</div>` : ''}
   </div>
 
   <table style="width:100%;border-collapse:collapse;margin-top:18px;background:#fff;border-radius:16px;padding:6px 16px;display:block">
@@ -127,7 +127,7 @@ export function renderPartnerReportHtml(r: PartnerReport): string {
 </div></body></html>`;
 }
 
-/** Destinatários: membros ativos com papel de dono, sócio ou financeiro. */
+/** Destinatários: membros ativos com papel de dono, sócio ou financeiro (equipe de gestão). */
 export async function partnerReportRecipients(): Promise<string[]> {
   const { data } = await getSupabaseAdmin().from('admin_members')
     .select('email').eq('active', true).in('role', ['owner', 'partner', 'finance']);
