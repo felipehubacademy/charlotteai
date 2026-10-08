@@ -10,7 +10,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import {
   User, Key, DeviceMobile, GraduationCap, Buildings,
-  SignOut, Microphone, FileText,
+  SignOut, FileText,
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
   CaretRight, SpeakerHigh, Vibrate, ChatCircleText,
   CreditCard, Lifebuoy, UsersThree,
@@ -28,14 +28,12 @@ import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { restorePurchases, openManageSubscriptions } from '@/lib/purchases';
-import { getLiveVoiceStatus, LiveVoiceStatus } from '@/lib/liveVoiceUsage';
 import { systemIsPt } from '@/lib/systemLang';
 import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
 import Constants from 'expo-constants';
 import * as Updates from 'expo-updates';
 import * as SecureStore from 'expo-secure-store';
-import { QueizyWave } from '@/components/ui/QueizyWave';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -184,7 +182,6 @@ export default function ProfileTab() {
   const [showAvatarModal,    setShowAvatarModal]    = useState(false);
   const [deletingAccount,    setDeletingAccount]    = useState(false);
   const [restoringPurchases, setRestoringPurchases] = useState(false);
-  const [voiceUsage,         setVoiceUsage]         = useState<LiveVoiceStatus | null>(null);
   const [audioPrefs,         setAudioPrefs]         = useState<AudioPreferences>(getAudioPreferences());
   const nameInputRef = useRef<TextInput>(null);
 
@@ -200,9 +197,7 @@ export default function ProfileTab() {
 
   useFocusEffect(useCallback(() => {
     setNameValue(profile?.name ?? '');
-    // Passa o id da sessão pra evitar o auth.getUser() de rede (frágil).
-    getLiveVoiceStatus(level, profile?.id).then(setVoiceUsage).catch(() => {});
-  }, [profile?.name, profile?.id, level]));
+  }, [profile?.name]));
 
   const handleSaveName = async () => {
     const trimmed = nameValue.trim();
@@ -450,30 +445,6 @@ export default function ProfileTab() {
             </View>
           </View>
 
-          {/* Live Voice do mês dentro do cartão */}
-          {voiceUsage !== null && voiceUsage.poolTotal > 0 && (
-            <View style={{ marginTop: 18, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 16, padding: 14 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-                <Microphone size={15} color={C.volt} weight="fill" />
-                <AppText style={{ flex: 1, fontSize: 13, fontWeight: '700', color: '#FFFFFF' }}>
-                  {isPt ? 'Live Voice este mês' : 'Live Voice this month'}
-                </AppText>
-                <AppText style={{ fontSize: 12, fontWeight: '700', color: 'rgba(255,255,255,0.7)' }}>
-                  {voiceUsage.isUnlimited
-                    ? (isPt ? 'Ilimitado' : 'Unlimited')
-                    : `${Math.min(Math.ceil(voiceUsage.secondsUsed / 60), Math.floor(voiceUsage.poolTotal / 60))} / ${Math.floor(voiceUsage.poolTotal / 60)} min`}
-                </AppText>
-              </View>
-              {!voiceUsage.isUnlimited && (
-                <QueizyWave progress={voiceUsage.secondsUsed / voiceUsage.poolTotal} height={12} strokeWidth={3.5} doneColor="#2BD97C" />
-              )}
-              <AppText style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 8 }}>
-                {isPt
-                  ? `Renova em 1/${String(new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).getMonth() + 1).padStart(2, '0')}`
-                  : `Resets ${new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toLocaleDateString('en', { month: 'short', day: 'numeric' })}`}
-              </AppText>
-            </View>
-          )}
         </View>
 
         <AvatarCropModal

@@ -21,6 +21,7 @@ import { usePaywallContext } from '@/lib/paywallContext';
 import { supabase } from '@/lib/supabase';
 import { UserLevel } from '@/lib/levelConfig';
 import { getLiveVoiceStatus, POOL_TRIAL_SECONDS } from '@/lib/liveVoiceUsage';
+import { QueizyWave } from '@/components/ui/QueizyWave';
 import { systemIsPt } from '@/lib/systemLang';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
@@ -469,6 +470,7 @@ export default function LiveVoiceTab() {
   const [poolUsed,        setPoolUsed]        = useState(0);
   const [poolTotal,       setPoolTotal]       = useState(POOL_TRIAL_SECONDS); // default; real vem de getLiveVoiceStatus
   const [poolRemaining,   setPoolRemaining]   = useState(POOL_TRIAL_SECONDS); // mensal restante + bônus
+  const [poolBonus,       setPoolBonus]       = useState(0); // minutos avulsos e de convite (não zeram)
   const [poolUnlimited,   setPoolUnlimited]   = useState(false);
   const [poolKnown,       setPoolKnown]       = useState(false); // true após 1 leitura válida (evita mostrar pool trial falso)
   const [recentCalls,     setRecentCalls]     = useState<LastCall[]>([]);
@@ -547,6 +549,7 @@ export default function LiveVoiceTab() {
         setPoolUsed(lv.secondsUsed);
         setPoolTotal(lv.poolTotal);
         setPoolRemaining(lv.secondsRemaining);
+        setPoolBonus(lv.bonusSeconds ?? 0);
         setPoolUnlimited(!!lv.isUnlimited);
         setPoolKnown(true);
       }
@@ -799,6 +802,27 @@ export default function LiveVoiceTab() {
                   </View>
                 )}
               </View>
+
+              {/* Consumo do mês (veio do Perfil): usados do total, renovação e bônus. */}
+              {poolKnown && !poolUnlimited && poolTotal > 0 && (
+                <View style={{ marginTop: 14, backgroundColor: '#FFFFFF', borderRadius: 16, padding: 14, borderWidth: 1, borderColor: 'rgba(22,19,31,0.08)' }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+                    <AppText style={{ flex: 1, fontSize: 13, fontWeight: '700', color: C.textWhite }}>
+                      {isPt ? 'Seu tempo este mês' : 'Your time this month'}
+                    </AppText>
+                    <AppText style={{ fontSize: 12, fontWeight: '700', color: C.textMuted }}>
+                      {`${Math.min(Math.ceil(poolUsed / 60), Math.floor(poolTotal / 60))} / ${Math.floor(poolTotal / 60)} min`}
+                    </AppText>
+                  </View>
+                  <QueizyWave progress={Math.min(1, poolUsed / poolTotal)} height={12} strokeWidth={3.5} doneColor="#2BD97C" />
+                  <AppText style={{ fontSize: 11.5, color: C.textDim, marginTop: 8 }}>
+                    {(isPt
+                      ? `Renova em 1/${String(new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).getMonth() + 1).padStart(2, '0')}`
+                      : `Resets ${new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toLocaleDateString('en', { month: 'short', day: 'numeric' })}`)
+                      + (poolBonus >= 60 ? (isPt ? ` · +${Math.floor(poolBonus / 60)} min de bônus` : ` · +${Math.floor(poolBonus / 60)} bonus min`) : '')}
+                  </AppText>
+                </View>
+              )}
             </View>
 
             {/* Banner fixo de upsell — só pra NÃO-assinante que esgotou o mês.
