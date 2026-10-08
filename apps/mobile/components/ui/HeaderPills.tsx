@@ -43,38 +43,37 @@ export function HeaderPills({
         <TouchableOpacity
           onPress={() => router.push({ pathname: '/(app)/stats', params: statsParams })}
           activeOpacity={0.7}
-          style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}
+          style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flexShrink: 1 }}
           hitSlop={{ top: 10, bottom: 10, left: 4, right: 4 }}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: streak ? 'rgba(251,146,60,0.12)' : 'rgba(22,19,31,0.05)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: streak ? 'rgba(251,146,60,0.12)' : 'rgba(22,19,31,0.05)', borderRadius: 20, paddingHorizontal: 8, paddingVertical: 5 }}>
             <Fire size={15} color={streak ? C.orange : C.navyLight} weight="fill" />
             <AppText style={{ fontSize: 13, fontWeight: '800', color: streak ? C.orange : C.navyLight }}>{streak}</AppText>
           </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: totalXP > 0 ? 'rgba(8,128,74,0.10)' : 'rgba(22,19,31,0.05)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: totalXP > 0 ? 'rgba(8,128,74,0.10)' : 'rgba(22,19,31,0.05)', borderRadius: 20, paddingHorizontal: 8, paddingVertical: 5 }}>
             <Lightning size={15} color={totalXP > 0 ? C.greenDark : C.navyLight} weight="fill" />
             <AppText style={{ fontSize: 13, fontWeight: '800', color: totalXP > 0 ? C.greenDark : C.navyLight }}>{totalXP.toLocaleString()}</AppText>
           </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: rank ? 'rgba(234,179,8,0.12)' : 'rgba(22,19,31,0.05)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: rank ? 'rgba(234,179,8,0.12)' : 'rgba(22,19,31,0.05)', borderRadius: 20, paddingHorizontal: 8, paddingVertical: 5 }}>
             <Trophy size={15} color={rank ? C.gold : C.navyLight} weight="fill" />
             <AppText style={{ fontSize: 13, fontWeight: '800', color: rank ? C.gold : C.navyLight }}>{rank ? `#${rank}` : '—'}</AppText>
           </View>
         </TouchableOpacity>
 
-        <View style={{ flex: 1 }} />
+        <View style={{ flex: 1, minWidth: 6 }} />
 
         {trialDaysLeft !== null && trialDaysLeft !== undefined && onPaywallOpen && (
           <TouchableOpacity
             onPress={onPaywallOpen} activeOpacity={0.75}
             hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-            style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: 'rgba(8,128,74,0.10)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5, marginRight: 10, borderWidth: 1, borderColor: 'rgba(8,128,74,0.20)' }}
+            style={{ flexShrink: 0, backgroundColor: 'rgba(8,128,74,0.10)', borderRadius: 20, paddingHorizontal: 8, paddingVertical: 5, marginRight: 8, borderWidth: 1, borderColor: 'rgba(8,128,74,0.20)' }}
           >
-            <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: C.greenDark }} />
-            <AppText style={{ fontSize: 12, fontWeight: '700', color: C.greenDark }}>
+            <AppText numberOfLines={1} style={{ fontSize: 12, fontWeight: '700', color: C.greenDark }}>
               {isPt ? `${trialDaysLeft}d grátis` : `${trialDaysLeft}d trial`}
             </AppText>
           </TouchableOpacity>
         )}
-        <HeaderLogo />
+        <View style={{ flexShrink: 0 }}><HeaderLogo /></View>
       </View>
     </SafeAreaView>
   );
