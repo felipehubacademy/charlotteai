@@ -70,25 +70,23 @@ export default function StoreCTA({ variant, label, className }: Props) {
   // Styles por variant
   const styleByVariant: Record<Variant, React.CSSProperties> = {
     nav: {
-      background: '#16153A', color: '#fff',
+      background: '#16131F', color: '#fff',
       fontSize: 13, fontWeight: 700,
       padding: '9px 20px', borderRadius: 10,
       border: 'none', cursor: 'pointer',
     },
     hero: {
       display: 'inline-flex', alignItems: 'center', gap: 12,
-      background: '#16153A', color: '#fff',
-      borderRadius: 14, padding: '14px 24px',
-      boxShadow: '0 8px 24px rgba(22,21,58,0.20)',
+      background: '#DCFF4A', color: '#16131F',
+      borderRadius: 16, padding: '14px 26px',
       border: 'none', cursor: 'pointer',
       fontFamily: 'inherit',
     },
     pricing: {
       display: 'inline-block',
-      background: '#A3FF3C', color: '#16153A',
+      background: '#DCFF4A', color: '#16131F',
       fontWeight: 800, fontSize: 16,
-      padding: '16px 48px', borderRadius: 14,
-      boxShadow: '0 4px 20px rgba(163,255,60,0.35)',
+      padding: '16px 48px', borderRadius: 16,
       border: 'none', cursor: 'pointer',
       fontFamily: 'inherit',
     },
@@ -96,7 +94,7 @@ export default function StoreCTA({ variant, label, className }: Props) {
 
   const hero = (
     <>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#16131F">
         <path d="M12 2L3 14h9l-1 8 10-12h-9l1-8z"/>
       </svg>
       <div>
@@ -125,7 +123,7 @@ export default function StoreCTA({ variant, label, className }: Props) {
           onClick={(e) => { if (e.target === e.currentTarget) setModalOpen(false); }}
           style={{
             position: 'fixed', inset: 0, zIndex: 100,
-            background: 'rgba(22,21,58,0.55)', backdropFilter: 'blur(6px)',
+            background: 'rgba(22,19,31,0.55)', backdropFilter: 'blur(6px)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             padding: 20,
           }}
@@ -136,7 +134,7 @@ export default function StoreCTA({ variant, label, className }: Props) {
               background: '#fff', borderRadius: 20,
               maxWidth: 440, width: '100%',
               padding: '36px 28px 28px',
-              boxShadow: '0 20px 60px rgba(22,21,58,0.25)',
+              boxShadow: '0 20px 60px rgba(22,19,31,0.25)',
               textAlign: 'center',
               position: 'relative',
             }}
@@ -147,7 +145,7 @@ export default function StoreCTA({ variant, label, className }: Props) {
               style={{
                 position: 'absolute', top: 12, right: 12,
                 background: 'transparent', border: 'none',
-                fontSize: 22, color: '#9896B8', cursor: 'pointer',
+                fontSize: 22, color: '#8A8494', cursor: 'pointer',
                 padding: 8, lineHeight: 1,
               }}
             >
@@ -155,13 +153,13 @@ export default function StoreCTA({ variant, label, className }: Props) {
             </button>
 
             <h3 style={{
-              fontSize: 22, fontWeight: 800, color: '#16153A',
+              fontSize: 22, fontWeight: 800, color: '#16131F',
               marginBottom: 8, letterSpacing: '-0.5px',
             }}>
               Baixe a Charlotte
             </h3>
             <p style={{
-              fontSize: 14, color: '#4B4A72', marginBottom: 24,
+              fontSize: 14, color: '#4D4858', marginBottom: 24,
               lineHeight: 1.5,
             }}>
               Escolha a loja do seu dispositivo.
@@ -208,7 +206,7 @@ export default function StoreCTA({ variant, label, className }: Props) {
             </div>
 
             <p style={{
-              fontSize: 12, color: '#9896B8', marginTop: 20,
+              fontSize: 12, color: '#8A8494', marginTop: 20,
             }}>
               7 dias grátis · sem cartão
             </p>

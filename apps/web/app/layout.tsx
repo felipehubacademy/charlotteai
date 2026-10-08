@@ -9,32 +9,32 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://charlotte.hubacademybr.com'),
-  title: 'Charlotte AI',
-  description: 'AI-powered English learning assistant with live voice conversations and personalized lessons',
+  title: 'Queizy',
+  description: 'Inglês de verdade, com conversa, correção na hora e zero vergonha de errar. Pratique com a Charlotte, sua tutora de IA.',
   // 🌐 Open Graph para compartilhamento social
   openGraph: {
-    title: 'Charlotte AI',
-    description: 'AI-powered English learning assistant with live voice conversations and personalized lessons',
+    title: 'Queizy — Do queizy ao crazy.',
+    description: 'Inglês de verdade, com conversa, correção na hora e zero vergonha de errar.',
     url: 'https://charlotte.hubacademybr.com',
-    siteName: 'Charlotte AI',
+    siteName: 'Queizy',
     images: [
       {
-        url: '/images/charlotte-og-v2.png',
+        url: '/images/queizy-og.png',
         width: 1200,
         height: 630,
-        alt: 'Charlotte AI - Professora de Inglês com IA',
+        alt: 'Queizy — Do queizy ao crazy.',
       },
     ],
-    locale: 'en_US',
+    locale: 'pt_BR',
     type: 'website',
   },
   
   // 🐦 Twitter Card
   twitter: {
     card: 'summary_large_image',
-    title: 'Charlotte AI',
-    description: 'AI-powered English learning assistant with live voice conversations and personalized lessons',
-    images: ['/images/charlotte-og-v2.png'],
+    title: 'Queizy — Do queizy ao crazy.',
+    description: 'Inglês de verdade, com conversa, correção na hora e zero vergonha de errar.',
+    images: ['/images/queizy-og.png'],
     creator: '@hubacademybr',
   },
   
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   
   // 🔍 SEO adicional
-  keywords: ['English learning', 'AI assistant', 'voice conversation', 'pronunciation', 'Hub Academy', 'Charlotte'],
+  keywords: ['inglês', 'aprender inglês', 'conversação', 'pronúncia', 'IA', 'Queizy', 'Charlotte', 'Hub Academy'],
   authors: [{ name: 'Hub Academy' }],
   creator: 'Hub Academy',
   publisher: 'Hub Academy',
@@ -66,7 +66,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: 'cover',
   userScalable: false,
-  themeColor: '#16153A',
+  themeColor: '#FAF7F0',
 };
 
 export default function RootLayout({
