@@ -295,7 +295,7 @@ export default function ProfileTab() {
       Alert.alert(isPt ? 'Compras restauradas' : 'Purchases restored', isPt ? 'Sua assinatura foi atualizada.' : 'Your subscription has been updated.');
       return;
     }
-    const supportEmail = 'suporte@hubacademybr.com';
+    const supportEmail = 'suporte@queizy.com';
     const subject = encodeURIComponent(isPt ? 'Restaurar compra' : 'Restore purchase');
     const body    = encodeURIComponent(isPt ? `Olá! Tentei restaurar minha assinatura.\n\nMeu email: ${profile?.email ?? ''}` : `Hi! I tried to restore my subscription.\n\nMy email: ${profile?.email ?? ''}`);
     Alert.alert(
@@ -567,13 +567,13 @@ export default function ProfileTab() {
           <SettingRow
             icon={<ShieldWarning size={18} color={C.navy} weight="regular" />}
             label={isPt ? 'Política de Privacidade' : 'Privacy Policy'}
-            onPress={() => openLink('https://charlotte.hubacademybr.com/privacidade')}
+            onPress={() => openLink('https://queizy.com/privacidade')}
             chevron
           />
           <SettingRow
             icon={<FileText size={18} color={C.navy} weight="regular" />}
             label={isPt ? 'Termos de Uso' : 'Terms of Use'}
-            onPress={() => openLink('https://charlotte.hubacademybr.com/termos')}
+            onPress={() => openLink('https://queizy.com/termos')}
             chevron
           />
         </SettingGroup>

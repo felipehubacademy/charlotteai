@@ -187,7 +187,7 @@ export function PaywallModal() {
                 const body = encodeURIComponent(
                   `Olá! Tentei assinar no app mas apareceu mensagem de que minha conta Apple já tem assinatura em outro usuário.\n\nMeu e-mail no Queizy: ${profile?.email ?? ''}\n\nPode me ajudar?`,
                 );
-                Linking.openURL(`mailto:suporte@hubacademybr.com?subject=${subject}&body=${body}`);
+                Linking.openURL(`mailto:suporte@queizy.com?subject=${subject}&body=${body}`);
               },
             },
           ],
@@ -251,7 +251,7 @@ export function PaywallModal() {
                   ? `Olá! Tentei restaurar minha assinatura no app.\n\nMeu e-mail no Queizy: ${profile?.email ?? ''}\n\nPode me ajudar?`
                   : `Hi! I tried to restore my subscription in the app.\n\nMy Queizy email: ${profile?.email ?? ''}\n\nCan you help?`,
               );
-              Linking.openURL(`mailto:suporte@hubacademybr.com?subject=${subject}&body=${body}`);
+              Linking.openURL(`mailto:suporte@queizy.com?subject=${subject}&body=${body}`);
             },
           },
         ],

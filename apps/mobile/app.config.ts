@@ -9,7 +9,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'Queizy',
   slug: 'charlotte-rn',
-  version: '1.1.1',
+  version: '2.0.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
@@ -77,7 +77,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   // main '1.0.0' (crash em NativeModules.InCallManager undefined). Quando
   // este reset for mergeado pra main, main passa a publicar OTA pra '2.0.0'
   // e usuarios em '1.0.0' so atualizam baixando a nova versao da App Store.
-  runtimeVersion: '2.0.0',
+  // 2.1.0: binário Queizy (módulos nativos novos). O app antigo (2.0.0) não
+  // recebe os OTAs do Queizy e continua Charlotte até atualizar pela loja.
+  runtimeVersion: '2.1.0',
   plugins: [
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ((config: ExpoConfig) => withAndroidManifest(config, (c) => {

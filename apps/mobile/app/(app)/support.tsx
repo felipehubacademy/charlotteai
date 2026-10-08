@@ -14,7 +14,7 @@ import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 
-const SUPPORT_EMAIL = 'suporte@hubacademybr.com';
+const SUPPORT_EMAIL = 'suporte@queizy.com';
 // Número do WhatsApp de suporte (formato internacional, só dígitos). Preencher
 // quando o WhatsApp Business estiver no ar; enquanto vazio, a opção fica oculta.
 const SUPPORT_WHATSAPP = '';

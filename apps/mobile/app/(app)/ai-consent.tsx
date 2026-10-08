@@ -160,7 +160,7 @@ export default function AIConsentScreen() {
               : 'By continuing, you agree to the use of these technologies as described above and in our '}
             <AppText
               style={{ color: C.greenDark, textDecorationLine: 'underline' }}
-              onPress={() => Linking.openURL('https://charlotte.hubacademybr.com/privacidade')}
+              onPress={() => Linking.openURL('https://queizy.com/privacidade')}
             >
               {isPt ? 'Política de Privacidade' : 'Privacy Policy'}
             </AppText>
