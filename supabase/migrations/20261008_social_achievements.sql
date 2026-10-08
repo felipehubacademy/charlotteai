@@ -163,3 +163,11 @@ cross join (values ('Novice'), ('Inter'), ('Advanced')) as l(lvl)
 where not exists (select 1 from charlotte.achievements a where a.code = v.code and a.user_level = l.lvl);
 
 update charlotte.achievements set category = 'rally' where code like 'rally_win_%';
+
+-- "Rally" virou "Competição" no app.
+update charlotte.achievements set
+  name = case code when 'rally_win_5' then (case when user_level='Advanced' then 'Challenge Ace' else 'Fera das Competições' end)
+                   else (case when user_level='Advanced' then 'First Challenge Win' else name end) end,
+  description = case code when 'rally_win_1' then (case when user_level='Advanced' then 'You won your first challenge.' else 'Você venceu sua primeira competição.' end)
+                   else (case when user_level='Advanced' then 'Five challenges won. Nobody can stop you!' else 'Cinco competições vencidas. Ninguém te segura!' end) end
+where code in ('rally_win_1', 'rally_win_5');

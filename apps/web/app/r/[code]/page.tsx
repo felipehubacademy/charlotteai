@@ -1,4 +1,4 @@
-// /r/[code] — link de um rally: "Fulano te desafiou para um rally no Queizy".
+// /r/[code] — link de uma competição (rally): "Fulano te desafiou para uma competição no Queizy".
 // Quem já tem o app entra direto (queizy://rally/CÓDIGO). Quem não tem baixa o
 // app levando junto o convite de quem criou o rally (vira dupla e os dois ganham
 // minutos) e o código do rally, que o app usa para entrar na disputa.
@@ -36,7 +36,7 @@ async function rallyInfo(code: string) {
 export async function generateMetadata({ params }: { params: Promise<{ code: string }> }): Promise<Metadata> {
   const { code } = await params;
   const info = await rallyInfo(code);
-  const title = info?.name ? `${info.name} te desafiou para um rally no Queizy` : 'Rally de inglês no Queizy';
+  const title = info?.name ? `${info.name} te desafiou para uma competição no Queizy` : 'Competição de inglês no Queizy';
   const description = info ? `${info.title}. Entre na disputa e pratique inglês com a Charlotte.` : 'Dispute com amigos quem estuda mais inglês.';
   return {
     title, description,
@@ -55,23 +55,23 @@ export default async function RallyPage({ params }: { params: Promise<{ code: st
       <div style={{ width: '100%', maxWidth: 420, textAlign: 'center' }}>
         <img src="/images/queizy-logo.png" alt="Queizy" style={{ height: 30, margin: '0 auto 40px', display: 'block' }} />
         <div style={{ display: 'inline-block', background: '#16131F', color: '#DCFF4A', fontWeight: 800, fontSize: 12, letterSpacing: 1, textTransform: 'uppercase', padding: '6px 12px', borderRadius: 999 }}>
-          Rally
+          Competição
         </div>
         <h1 className={display.className} style={{ fontSize: 40, lineHeight: 1.05, fontWeight: 800, margin: '18px 0 14px', letterSpacing: -1 }}>
-          {info?.name ? <>{info.name} te desafiou para um rally</> : <>Rally de inglês no Queizy</>}
+          {info?.name ? <>{info.name} te desafiou para uma competição</> : <>Competição de inglês no Queizy</>}
         </h1>
         {info ? (
           <>
             <p style={{ fontSize: 18, fontWeight: 800, margin: '0 0 8px' }}>{info.title}</p>
             <p style={{ fontSize: 16, lineHeight: 1.55, color: '#4D4858', margin: '0 0 28px' }}>
               {info.ended
-                ? 'Este rally já terminou, mas dá para começar outro no app.'
+                ? 'Esta competição já terminou, mas dá para começar outra no app.'
                 : `${hoursLeft <= 1 ? 'Termina em menos de 1 hora' : `Faltam ${hoursLeft} horas`}. Pratique com a Charlotte, sua tutora de IA, e quem vencer ganha 5 minutos extras de conversa por voz.`}
             </p>
             <InviteActions code={info.referral} rally={info.ended ? undefined : info.code} />
           </>
         ) : (
-          <p style={{ fontSize: 16, color: '#4D4858' }}>Não encontramos este rally. Confira o link com quem te convidou.</p>
+          <p style={{ fontSize: 16, color: '#4D4858' }}>Não encontramos esta competição. Confira o link com quem te convidou.</p>
         )}
       </div>
     </main>

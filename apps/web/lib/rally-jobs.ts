@@ -48,15 +48,15 @@ export async function runRallyJobs(): Promise<{ updates: number; reminders: numb
           const pt = pushIsPt(u);
           const title = rallyLabel(r.metric, r.duration_hours, pt);
           if (!winner) {
-            return sendDirectPush(u.expo_push_token, pt ? 'Empate no rally' : 'The rally ended in a tie',
+            return sendDirectPush(u.expo_push_token, pt ? 'Empate na competição' : 'The challenge ended in a tie',
               pt ? `${title}: ninguém ficou na frente. Revanche?` : `${title}: nobody pulled ahead. Rematch?`, { ...data, type: 'rally_result' });
           }
           if (s.userId === winner.userId) {
-            return sendDirectPush(u.expo_push_token, pt ? 'Você venceu o rally!' : 'You won the rally!',
+            return sendDirectPush(u.expo_push_token, pt ? 'Você venceu a competição!' : 'You won the challenge!',
               pt ? `${title}: ${formatScore(r.metric, s.score, true)}. Você ganhou ${RALLY_REWARD_SECONDS / 60} minutos de Live Voice.`
                  : `${title}: ${formatScore(r.metric, s.score, false)}. You got ${RALLY_REWARD_SECONDS / 60} Live Voice minutes.`, { ...data, type: 'rally_result' });
           }
-          return sendDirectPush(u.expo_push_token, pt ? `${winner.name ?? 'Sua dupla'} venceu o rally` : `${winner.name ?? 'Your buddy'} won the rally`,
+          return sendDirectPush(u.expo_push_token, pt ? `${winner.name ?? 'Alguém'} venceu a competição` : `${winner.name ?? 'Someone'} won the challenge`,
             pt ? `${title}, com ${formatScore(r.metric, winner.score, true)}. Você ficou em ${ord(s.rank, true)}. Revanche?`
                : `${title}, with ${formatScore(r.metric, winner.score, false)}. You came ${ord(s.rank, false)}. Rematch?`, { ...data, type: 'rally_result' });
         }));
@@ -74,7 +74,7 @@ export async function runRallyJobs(): Promise<{ updates: number; reminders: numb
       if (prev && u) {
         const pt = pushIsPt(u);
         await sendDirectPush(u.expo_push_token,
-          pt ? `${leader.name ?? 'Alguém'} passou você no rally` : `${leader.name ?? 'Someone'} passed you in the rally`,
+          pt ? `${leader.name ?? 'Alguém'} passou você na competição` : `${leader.name ?? 'Someone'} passed you in the challenge`,
           pt ? `${rallyLabel(r.metric, r.duration_hours, true)}: ${formatScore(r.metric, leader.score, true)} contra ${formatScore(r.metric, prev.score, true)}. Bora recuperar?`
              : `${rallyLabel(r.metric, r.duration_hours, false)}: ${formatScore(r.metric, leader.score, false)} vs ${formatScore(r.metric, prev.score, false)}. Take it back?`,
           { ...data, type: 'rally_update' });

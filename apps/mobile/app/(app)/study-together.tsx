@@ -117,7 +117,7 @@ export default function StudyTogetherScreen() {
         </View>
 
         {/* Dupla */}
-        <SectionTitle title={t('Sua dupla de estudo', 'Your study buddies')} meta={info?.buddies.length ? String(info.buddies.length) : undefined} />
+        <SectionTitle title={t('Seus amigos de estudo', 'Your study friends')} meta={info?.buddies.length ? String(info.buddies.length) : undefined} />
         <View style={{ paddingHorizontal: 16, gap: 10 }}>
           {info && info.buddies.length === 0 && (
             <Card style={{ padding: 18, alignItems: 'center' }}>

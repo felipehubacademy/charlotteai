@@ -35,12 +35,12 @@ export async function fetchRallies(): Promise<RallyList | null> {
   } catch { return null; }
 }
 
-type Result = { ok: true; code?: string; link?: string } | { ok: false; error: string };
+type Result = { ok: true; code?: string; link?: string; already?: boolean } | { ok: false; error: string };
 async function post(body: Record<string, unknown>): Promise<Result> {
   try {
     const r = await authed('/api/rally', { method: 'POST', body: JSON.stringify(body) });
     const j = await r.json().catch(() => ({}));
-    return r.ok ? { ok: true, code: j.code, link: j.link } : { ok: false, error: j.error ?? 'error' };
+    return r.ok ? { ok: true, code: j.code, link: j.link, already: !!j.already } : { ok: false, error: j.error ?? 'error' };
   } catch { return { ok: false, error: 'network' }; }
 }
 

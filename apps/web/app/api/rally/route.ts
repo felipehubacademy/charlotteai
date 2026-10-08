@@ -73,7 +73,7 @@ async function createRally(userId: string, metric: RallyMetric, hours: number, i
       const u = people.get(t); if (!u) return null;
       const pt = pushIsPt(u);
       return sendDirectPush(u.expo_push_token,
-        pt ? `${me ?? 'Sua dupla'} te chamou para um rally` : `${me ?? 'Your buddy'} challenged you to a rally`,
+        pt ? `${me ?? 'Alguém'} te chamou para uma competição` : `${me ?? 'Someone'} challenged you`,
         pt ? `${rallyLabel(metric, hours, true)}. Topa?` : `${rallyLabel(metric, hours, false)}. You in?`,
         { type: 'rally_invite', screen: 'study-together', code: rally!.code });
     }));
@@ -155,7 +155,7 @@ export async function POST(req: NextRequest) {
       const pt = pushIsPt(creator);
       const who = firstName(people.get(user.id)?.name) ?? (pt ? 'Alguém' : 'Someone');
       await sendDirectPush(creator.expo_push_token,
-        pt ? `${who} entrou no seu rally` : `${who} joined your rally`,
+        pt ? `${who} entrou na sua competição` : `${who} joined your challenge`,
         pt ? `${rallyLabel(rally.metric, rally.duration_hours, true)}. Que vença o melhor!` : `${rallyLabel(rally.metric, rally.duration_hours, false)}. May the best one win!`,
         { type: 'rally_update', screen: 'study-together', code });
     }

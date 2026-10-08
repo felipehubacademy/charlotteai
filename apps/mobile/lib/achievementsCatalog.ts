@@ -32,14 +32,14 @@ export const GENERAL_ACHIEVEMENTS: CatalogEntry[] = [
     howToEarnEN: 'Twenty friends join with your invite.',
   },
   {
-    code: 'rally_win_1', title: 'Primeira Vitória', titleEN: 'First Rally Win', category: 'rally', rarity: 'rare', xpReward: 40,
-    howToEarnPT: 'Vença seu primeiro rally em Estudar junto.',
-    howToEarnEN: 'Win your first rally in Study together.',
+    code: 'rally_win_1', title: 'Primeira Vitória', titleEN: 'First Challenge Win', category: 'rally', rarity: 'rare', xpReward: 40,
+    howToEarnPT: 'Vença sua primeira competição em Estudar junto.',
+    howToEarnEN: 'Win your first challenge in Study together.',
   },
   {
-    code: 'rally_win_5', title: 'Fera dos Rallies', titleEN: 'Rally Ace', category: 'rally', rarity: 'epic', xpReward: 150,
-    howToEarnPT: 'Vença cinco rallies.',
-    howToEarnEN: 'Win five rallies.',
+    code: 'rally_win_5', title: 'Fera das Competições', titleEN: 'Challenge Ace', category: 'rally', rarity: 'epic', xpReward: 150,
+    howToEarnPT: 'Vença cinco competições.',
+    howToEarnEN: 'Win five challenges.',
   },
   {
     code: 'first_practice', title: 'Olá, Mundo!', titleEN: 'Hello, World!', category: 'general', rarity: 'common', xpReward: 10,
