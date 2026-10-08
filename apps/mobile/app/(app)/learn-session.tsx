@@ -234,6 +234,7 @@ export default function LearnSessionScreen() {
   // sem bater threshold.
   const [completedActivityScore, setCompletedActivityScore] = useState<{
     score: number; threshold: number; activityType: 'grammar' | 'speaking' | 'roleplay' | 'chat';
+    previous: number | null; // melhor nota anterior nesta atividade (para o destaque "na hora")
   } | null>(null);
   const stepLoadedRef = useRef(false);
   const scrollRef = useRef<InstanceType<typeof ScrollView>>(null);
@@ -943,7 +944,9 @@ export default function LearnSessionScreen() {
         }
         const finalScore = Math.max(0, Math.min(100, rawScore));
         const threshold = activityType === 'grammar' ? 70 : activityType === 'speaking' ? 60 : 100;
-        setCompletedActivityScore({ score: finalScore, threshold, activityType });
+        const prevRow = v2Progress.get(params.moduleId, params.unitId, activityType);
+        const previous = typeof prevRow?.score === 'number' && (prevRow?.attempts ?? 0) > 0 ? prevRow.score : null;
+        setCompletedActivityScore({ score: finalScore, threshold, activityType, previous });
         try {
           await v2Progress.saveAttempt(
             params.moduleId, params.unitId, activityType, finalScore,
@@ -1140,6 +1143,36 @@ export default function LearnSessionScreen() {
           <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, marginBottom: 14 }}>
             {topicTitle}
           </AppText>
+          {/* Destaque "na hora": o que esta sessão teve de especial. */}
+          {(() => {
+            const c = completedActivityScore;
+            const pt = isPortuguese;
+            let text: string | null = null;
+            if (c && c.score >= c.threshold) {
+              const fmt = (n: number) => (c.activityType === 'speaking' ? (pt ? `nota ${n}` : `a score of ${n}`) : `${n}%`);
+              if (c.previous != null && c.score > c.previous) {
+                text = pt ? `Subiu de ${fmt(c.previous)} para ${fmt(c.score)}. Seu melhor nesta unidade!` : `Up from ${fmt(c.previous)} to ${fmt(c.score)}. Your best on this unit!`;
+              } else if (c.score === 100) {
+                text = c.activityType === 'speaking'
+                  ? (pt ? 'Pronúncia nota 100. Impecável!' : 'Pronunciation score 100. Flawless!')
+                  : (pt ? 'Sem nenhum erro. Mandou muito bem!' : 'Not a single mistake. Great job!');
+              } else if (c.previous == null) {
+                text = c.activityType === 'speaking'
+                  ? (pt ? `Nota ${c.score} na pronúncia logo de primeira.` : `A pronunciation score of ${c.score} on your first try.`)
+                  : (pt ? `${totalSteps - sessionErrors} de ${totalSteps} certas logo de primeira.` : `${totalSteps - sessionErrors} of ${totalSteps} right on your first try.`);
+              }
+            } else if (!c && totalSteps > 0) {
+              text = sessionErrors === 0
+                ? (pt ? 'Sem nenhum erro. Mandou muito bem!' : 'Not a single mistake. Great job!')
+                : (pt ? `${totalSteps - sessionErrors} de ${totalSteps} certas.` : `${totalSteps - sessionErrors} of ${totalSteps} right.`);
+            }
+            if (!text) return null;
+            return (
+              <View style={{ backgroundColor: 'rgba(8,128,74,0.10)', borderRadius: 14, paddingHorizontal: 16, paddingVertical: 10, marginBottom: 14, maxWidth: 340 }}>
+                <AppText style={{ fontSize: 14, fontWeight: '700', color: '#08804A', textAlign: 'center', lineHeight: 20 }}>{text}</AppText>
+              </View>
+            );
+          })()}
           <View style={{ backgroundColor: C.navy, borderRadius: 20, paddingHorizontal: 14, paddingVertical: 6, marginBottom: 32 }}>
             <AppText style={{ fontSize: 14, fontWeight: '800', color: '#DCFF4A' }}>
               +{sessionXP} XP
