@@ -458,8 +458,9 @@ export default function PracticeTab() {
         {/* ── Área de mensagens ── */}
         <View style={{ flex: 1 }}>
           <ChatBox
-            // Conversa vazia: o estado inicial já faz o papel do welcome.
-            messages={messages.length <= 1 && !historyLoading ? [] : messages}
+            // O estado inicial (balão + sugestões) substitui o welcome local:
+            // ele nunca aparece, nem depois que a conversa começa.
+            messages={messages.filter(m => m.id !== 'welcome-0')}
             transcript=""
             finalTranscript=""
             isProcessingMessage={isProcessing}
