@@ -181,14 +181,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     // 8-second safety net — prevents indefinite hang on cold boot (e.g. Keychain
     // contention or Supabase token-refresh delay blocking the HTTP request).
-    const timeoutPromise = new Promise<{ data: null; error: Error }>((resolve) =>
-      setTimeout(() => {
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const timeoutPromise = new Promise<{ data: null; error: Error }>((resolve) => {
+      timer = setTimeout(() => {
         console.warn('[AuthProvider] fetchProfile TIMEOUT for user:', userId);
         resolve({ data: null, error: new Error('fetchProfile timeout') });
-      }, 8_000)
-    );
+      }, 8_000);
+    });
 
-    const { data, error } = await Promise.race([queryPromise, timeoutPromise]);
+    // O cronômetro é desligado assim que a consulta responde (antes ele disparava
+    // depois do sucesso e registrava um falso TIMEOUT).
+    const { data, error } = await Promise.race([queryPromise, timeoutPromise]).finally(() => clearTimeout(timer));
 
     if (error) {
       console.error('[AuthProvider] Erro ao buscar perfil:', (error as any).message ?? error);

@@ -17,13 +17,6 @@ export const dynamic = 'force-dynamic';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// Referência pública (EF English Proficiency Index 2025). Entra como dado para
-// a Charlotte usar no resumo semanal quando fizer sentido, não como card fixo.
-const BENCHMARK_FACT = {
-  pt: 'EF EPI 2025: o Brasil ficou em 75º lugar entre 123 países (482 pontos), abaixo da média mundial (488).',
-  en: 'EF EPI 2025: Brazil placed 75th of 123 countries (482 points), below the global average (488).',
-};
-
 // Trilha nova (learn_history_v2): uma nota por atividade. Só Grammar e
 // Listening & Speaking têm nota; Role-play e Chat contam como concluído.
 type V2Row = { level: string; module_id: string; unit_id: string; activity_type: string; score: number | string | null; updated_at: string };
@@ -129,8 +122,6 @@ export async function GET(req: NextRequest) {
     pronunciation: { avg: pronNow.avg, previous: pronPrev.avg, attempts: pronNow.items.length, words: pronNow.topWords.slice(0, 8) },
     grammar: { errorFree: gramNow.errorFree, previous: gramPrev.errorFree, analyzed: gramNow.analyzed, recent: gramNow.corrections.slice(0, 4) },
     strengths, focus, focusV2, exercises, weeks,
-    // Compatibilidade: o build 123 ainda mostra o card e lê este campo até o OTA chegar.
-    benchmark: { source: 'EF EPI 2025', text: BENCHMARK_FACT[lang] },
   };
 
   const summary = await weeklySummary(user.id, lang, data, gramNow.corrections.slice(0, 12));
@@ -171,14 +162,13 @@ async function weeklySummary(userId: string, lang: 'pt' | 'en', d: EvolutionData
     strongTopics: d.strengths.map(s => `${s.topic} (${s.accuracy}%)`),
     focusTopics: d.focus.map(f => `${f.topic} (${f.accuracy}%)`),
     recentGrammarCorrections: corrections.map(c => `${c.wrong} -> ${c.right}`),
-    publicBenchmark: BENCHMARK_FACT[lang],
     practicesThisWeek: d.weeks[d.weeks.length - 1]?.practices ?? 0,
     practicesLastWeek: d.weeks[d.weeks.length - 2]?.practices ?? 0,
   };
 
   const system = lang === 'pt'
-    ? 'Você é a Charlotte, tutora de inglês do app Queizy, falando com o aluno como uma amiga animada, num balão de conversa. Português do Brasil coloquial e com acentuação correta, tratando por "você" e pelo primeiro nome. No máximo 3 frases curtas e 45 palavras. Comemore UM número concreto dos dados, aponte UMA coisa para treinar com uma dica rápida e feche com um empurrãozinho. Se combinar, mencione o dado público (publicBenchmark) em poucas palavras, citando EF EPI; senão, ignore. A nota de pronúncia vai de 0 a 100 (escreva "nota 92", nunca "92%"); acerto na trilha e gramática sem erro são porcentagens. Use só os dados fornecidos, nunca invente números. Sem emojis, sem listas, sem saudação, sem tom de relatório (nada de "sessões", "métricas", "desempenho").'
-    : "You are Charlotte, the English tutor in the Queizy app, talking to the student like an upbeat friend, in a chat bubble. Casual English, using their first name. At most 3 short sentences and 45 words. Celebrate ONE concrete number from the data, point out ONE thing to practice with a quick tip, and close with a little push. If it fits, mention the public data (publicBenchmark) in a few words, citing EF EPI; otherwise ignore it. The pronunciation score is 0 to 100 (write \"a score of 92\", never \"92%\"); trail accuracy and grammar error-free are percentages. Use only the data given, never invent numbers. No emojis, no lists, no greeting, no report tone (no \"sessions\", \"metrics\", \"performance\")."
+    ? 'Você é a Charlotte, tutora de inglês do app Queizy, falando com o aluno como uma amiga animada, num balão de conversa. Português do Brasil coloquial e com acentuação correta, tratando por "você" e pelo primeiro nome. No máximo 3 frases curtas e 45 palavras. Comemore UM número concreto dos dados, aponte UMA coisa para treinar com uma dica rápida e feche com um empurrãozinho. A nota de pronúncia vai de 0 a 100 (escreva "nota 92", nunca "92%"); acerto na trilha e gramática sem erro são porcentagens. Use só os dados fornecidos, nunca invente números. Sem emojis, sem listas, sem saudação, sem tom de relatório (nada de "sessões", "métricas", "desempenho").'
+    : "You are Charlotte, the English tutor in the Queizy app, talking to the student like an upbeat friend, in a chat bubble. Casual English, using their first name. At most 3 short sentences and 45 words. Celebrate ONE concrete number from the data, point out ONE thing to practice with a quick tip, and close with a little push. The pronunciation score is 0 to 100 (write \"a score of 92\", never \"92%\"); trail accuracy and grammar error-free are percentages. Use only the data given, never invent numbers. No emojis, no lists, no greeting, no report tone (no \"sessions\", \"metrics\", \"performance\")."
 
 
   try {
