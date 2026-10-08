@@ -467,6 +467,7 @@ export default function LiveVoiceTab() {
   const [showCallsDrawer, setShowCallsDrawer] = useState(false);
   const [showLiveVoice,   setShowLiveVoice]   = useState(false);
   const [showLimitSheet,  setShowLimitSheet]  = useState(false);
+  const [limitExhausted,  setLimitExhausted]  = useState(true); // false = aberto pelo cartão, antes de acabar
   const justHitLimitRef = React.useRef(false); // pool esgotou na chamada atual?
   const [showTranscript,  setShowTranscript]  = useState(false);
   const [showHelp,        setShowHelp]        = useState(false);
@@ -624,7 +625,7 @@ export default function LiveVoiceTab() {
     : isLimitReached
       // Trial só tem uma ação (assinar) -> vai direto ao paywall, sem o bottom
       // sheet redundante. Assinante abre o sheet (escolha real de +10/+30 min).
-      ? (isSubscriber ? () => setShowLimitSheet(true) : openPaywall)
+      ? (isSubscriber ? () => { setLimitExhausted(true); setShowLimitSheet(true); } : openPaywall)
       : startCall;
 
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
@@ -861,7 +862,14 @@ export default function LiveVoiceTab() {
             {/* Consumo do mês (veio do Perfil): usados do total, renovação e bônus.
                 Fica logo acima do botão, longe do balão da Charlotte. */}
             {showPoolCard && (
-              <View onLayout={e => setCardY(e.nativeEvent.layout.y)} style={{ marginHorizontal: 24, marginBottom: 12, backgroundColor: '#FFFFFF', borderRadius: 16, padding: 14, borderWidth: 1, borderColor: 'rgba(22,19,31,0.08)' }}>
+              <TouchableOpacity
+                onLayout={e => setCardY(e.nativeEvent.layout.y)}
+                onPress={() => { setLimitExhausted(isLimitReached); setShowLimitSheet(true); }}
+                activeOpacity={0.8}
+                accessibilityRole="button"
+                accessibilityLabel={isPt ? 'Ver pacotes de minutos' : 'See minute packs'}
+                style={{ marginHorizontal: 24, marginBottom: 12, backgroundColor: '#FFFFFF', borderRadius: 16, padding: 14, borderWidth: 1, borderColor: 'rgba(22,19,31,0.08)' }}
+              >
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
                   <AppText style={{ flex: 1, fontSize: 13, fontWeight: '700', color: C.textWhite }}>
                     {isPt ? 'Seu tempo este mês' : 'Your time this month'}
@@ -877,7 +885,13 @@ export default function LiveVoiceTab() {
                     : `Resets ${new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toLocaleDateString('en', { month: 'short', day: 'numeric' })}`)
                     + (poolBonus >= 60 ? (isPt ? ` · +${Math.floor(poolBonus / 60)} min de bônus` : ` · +${Math.floor(poolBonus / 60)} bonus min`) : '')}
                 </AppText>
-              </View>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 2, marginTop: 8 }}>
+                  <AppText style={{ fontSize: 12, fontWeight: '700', color: C.greenDark }}>
+                    {isSubscriber ? (isPt ? 'Comprar mais minutos' : 'Buy more minutes') : (isPt ? 'Quero mais minutos' : 'Get more minutes')}
+                  </AppText>
+                  <CaretRight size={12} color={C.greenDark} weight="bold" />
+                </View>
+              </TouchableOpacity>
             )}
 
             {/* ── CTA primário: conversar / comprar / assinar / carregando ── */}
@@ -951,7 +965,7 @@ export default function LiveVoiceTab() {
             // depois que o modal fecha (delay pro fade do modal terminar).
             if (justHitLimitRef.current) {
               justHitLimitRef.current = false;
-              setTimeout(() => setShowLimitSheet(true), 400);
+              setTimeout(() => { setLimitExhausted(true); setShowLimitSheet(true); }, 400);
             }
           }}
         />
@@ -962,6 +976,8 @@ export default function LiveVoiceTab() {
         isPt={isPt}
         isSubscriber={isSubscriber}
         poolMin={Math.floor(poolTotal / 60)}
+        exhausted={limitExhausted}
+        remainingMin={Math.floor(poolRemaining / 60)}
         onSubscribe={() => { setShowLimitSheet(false); openPaywall(); }}
         onPurchased={() => {
           setShowLimitSheet(false);

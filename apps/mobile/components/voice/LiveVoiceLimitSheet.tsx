@@ -6,7 +6,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Modal, View, Animated, TouchableOpacity, Pressable, ActivityIndicator } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { PhoneSlash } from 'phosphor-react-native';
+import { Phone, PhoneSlash } from 'phosphor-react-native';
 import type { PurchasesPackage } from 'react-native-purchases';
 import { AppText } from '@/components/ui/Text';
 import { getMinutePacks, purchasePackage, MINUTES_BY_PRODUCT } from '@/lib/purchases';
@@ -28,12 +28,14 @@ interface Props {
   isPt: boolean;
   isSubscriber: boolean; // premium ou institucional
   poolMin: number;       // minutos do pool mensal (5 ou 20)
+  exhausted?: boolean;   // true = acabou o tempo; false = aberto pelo cartão, antes de acabar
+  remainingMin?: number; // minutos que ainda restam (quando exhausted=false)
   onSubscribe: () => void;
   onPurchased: () => void; // chamado após comprar minutos com sucesso
   onClose: () => void;
 }
 
-export function LiveVoiceLimitSheet({ visible, isPt, isSubscriber, poolMin, onSubscribe, onPurchased, onClose }: Props) {
+export function LiveVoiceLimitSheet({ visible, isPt, isSubscriber, poolMin, exhausted = true, remainingMin = 0, onSubscribe, onPurchased, onClose }: Props) {
   const insets = useSafeAreaInsets();
   const translateY = useRef(new Animated.Value(500)).current;
   const backdrop   = useRef(new Animated.Value(0)).current;
@@ -72,7 +74,12 @@ export function LiveVoiceLimitSheet({ visible, isPt, isSubscriber, poolMin, onSu
     }
   };
 
-  const title = isPt ? 'Seus minutos acabaram' : 'You’re out of minutes';
+  const title = exhausted
+    ? (isPt ? 'Seus minutos acabaram' : 'You’re out of minutes')
+    : (isPt ? 'Mais minutos de conversa' : 'More conversation time');
+  const remainingLabel = isPt
+    ? `${remainingMin} ${remainingMin === 1 ? 'minuto' : 'minutos'}`
+    : `${remainingMin} ${remainingMin === 1 ? 'minute' : 'minutes'}`;
 
   return (
     <Modal visible={visible} transparent animationType="none" onRequestClose={onClose} statusBarTranslucent>
@@ -94,16 +101,26 @@ export function LiveVoiceLimitSheet({ visible, isPt, isSubscriber, poolMin, onSu
 
           <View style={{ alignItems: 'center' }}>
             <View style={{
-              width: 60, height: 60, borderRadius: 30, backgroundColor: C.lossRedBg,
+              width: 60, height: 60, borderRadius: 30, backgroundColor: exhausted ? C.lossRedBg : 'rgba(8,128,74,0.12)',
               alignItems: 'center', justifyContent: 'center', marginBottom: 16,
             }}>
-              <PhoneSlash size={28} color={C.lossRed} weight="fill" />
+              {exhausted
+                ? <PhoneSlash size={28} color={C.lossRed} weight="fill" />
+                : <Phone size={28} color={C.greenDark} weight="fill" />}
             </View>
             <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center', marginBottom: 8 }}>
               {title}
             </AppText>
             <AppText style={{ fontSize: 14, color: C.navyMid, textAlign: 'center', lineHeight: 21, marginBottom: 22 }}>
-              {isSubscriber
+              {!exhausted
+                ? (isSubscriber
+                    ? (isPt
+                        ? `Você ainda tem ${remainingLabel} este mês. Compre minutos extras quando quiser — eles não expiram no fim do mês.`
+                        : `You still have ${remainingLabel} this month. Buy extra minutes whenever you like — they don’t expire at month’s end.`)
+                    : (isPt
+                        ? `Você ainda tem ${remainingLabel} de Live Voice este mês. Assine o Premium para ter 20 minutos por mês e poder comprar minutos extras.`
+                        : `You still have ${remainingLabel} of Live Voice this month. Subscribe to Premium for 20 minutes a month and the option to buy extra minutes.`))
+                : isSubscriber
                 ? (isPt
                     ? `Você usou seus ${poolMin} minutos deste mês. Compre mais minutos para continuar conversando agora — eles não expiram no fim do mês.`
                     : `You’ve used your ${poolMin} minutes this month. Buy more minutes to keep talking now — they don’t expire at month’s end.`)
