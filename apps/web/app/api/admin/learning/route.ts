@@ -39,6 +39,15 @@ async function fetchAll<T>(build: (from: number, to: number) => PromiseLike<{ da
   return out;
 }
 
+// charlotte_progress guarda a última sequência e não zera quando ela quebra:
+// sem prática hoje ou ontem (horário de Brasília), a sequência atual é 0.
+function currentStreak(streak: number | null | undefined, lastDate: string | null | undefined): number {
+  if (!streak || !lastDate) return 0;
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(new Date());
+  const diff = Math.round((Date.parse(`${today}T12:00:00Z`) - Date.parse(`${lastDate.slice(0, 10)}T12:00:00Z`)) / DAY);
+  return diff <= 1 ? streak : 0;
+}
+
 function pct(n: number, d: number) { return d ? Math.round((n / d) * 100) : null; }
 
 function pronunciation(msgs: MsgRow[]) {
@@ -136,7 +145,7 @@ export async function GET(req: NextRequest) {
     const last = lastBy.get(u.id) ?? (pr?.last_practice_date ? `${pr.last_practice_date}T12:00:00Z` : null);
     return {
       id: u.id, name: u.name, level: u.charlotte_level,
-      xp: pr?.total_xp ?? 0, streak: pr?.streak_days ?? 0,
+      xp: pr?.total_xp ?? 0, streak: currentStreak(pr?.streak_days, pr?.last_practice_date),
       lastPractice: last,
       practices: practicesBy.get(u.id) ?? 0,
       trailAccuracy: h ? pct(h.ok, h.n) : null, trailAnswers: h?.n ?? 0,
@@ -207,7 +216,7 @@ async function studentSheet(userId: string, since: string, days: number) {
   return NextResponse.json({
     days,
     student: { id: u.id, name: u.name, level: u.charlotte_level, placementDone: !!u.placement_test_done, since: u.created_at },
-    progress: progR.data ?? null,
+    progress: progR.data ? { ...(progR.data as { total_xp: number; streak_days: number; last_practice_date: string | null }), streak_days: currentStreak((progR.data as { streak_days: number }).streak_days, (progR.data as { last_practice_date: string | null }).last_practice_date) } : null,
     trail,
     trailAccuracy: pct(hist.filter(h => h.is_correct).length, hist.length), trailAnswers: hist.length,
     byExercise: byExercise(hist),

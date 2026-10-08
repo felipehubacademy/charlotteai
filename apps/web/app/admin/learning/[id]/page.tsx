@@ -92,7 +92,7 @@ export default function LearningSheetPage() {
             { label: 'Posição na trilha', value: current ? current.topic : '—', ctx: current ? `${current.level} · Módulo ${current.moduleNumber} · ${current.module}` : '', small: true },
             { label: 'Acerto na trilha', value: data.trailAccuracy != null ? `${data.trailAccuracy}%` : '—', ctx: `${data.trailAnswers} respostas`, color: accColor(data.trailAccuracy) },
             { label: 'Média de pronúncia', value: data.pronunciation.avg ?? '—', ctx: `${data.pronunciation.attempts} frases`, color: accColor(data.pronunciation.avg) },
-            { label: 'Sequência', value: `${data.progress?.streak_days ?? 0} dias`, ctx: `última prática ${ago(data.progress?.last_practice_date ? `${data.progress.last_practice_date}T12:00:00Z` : null)}` },
+            { label: 'Sequência', value: `${data.progress?.streak_days ?? 0} ${(data.progress?.streak_days ?? 0) === 1 ? 'dia' : 'dias'}`, ctx: `última prática ${ago(data.progress?.last_practice_date ? `${data.progress.last_practice_date}T12:00:00Z` : null)}` },
           ].map(k => (
             <div key={k.label} className="kpi-card col-3">
               <div className="kpi-label">{k.label}</div>
