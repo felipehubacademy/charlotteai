@@ -52,6 +52,16 @@ const LOSE_ITEMS = [
   { icon: <Trophy size={18} color={C.greenDark} weight="fill" />, pt: 'Lições, exercícios e progresso na trilha', en: 'Lessons, exercises and progress on the track' },
 ];
 
+
+/** Preço no formato da moeda da loja (R$ 16,66 · $16.66). */
+function formatMoney(value: number, currency: string, isPt: boolean): string {
+  try {
+    return new Intl.NumberFormat(isPt ? 'pt-BR' : 'en-US', { style: 'currency', currency }).format(value);
+  } catch {
+    return `${currency} ${value.toFixed(2)}`;
+  }
+}
+
 export function PaywallModal() {
   const { profile, hasAccess, signOut, refreshProfile } = useAuth();
   const { paywallOpen, closePaywall } = usePaywallContext();
@@ -141,11 +151,13 @@ export function PaywallModal() {
     }
     if (!pkg) {
       Alert.alert(
-        'Planos indisponíveis',
-        errorMsg ?? 'Os planos ainda não estão disponíveis. Tente novamente em alguns instantes.',
+        isPt ? 'Planos indisponíveis' : 'Plans unavailable',
+        errorMsg ?? (isPt
+          ? 'Os planos ainda não estão disponíveis. Tente novamente em alguns instantes.'
+          : 'Plans are not available yet. Please try again in a moment.'),
         diagnostics ? [
           { text: 'OK' },
-          { text: 'Ver detalhes', onPress: () => Alert.alert('Detalhes técnicos', diagnostics!) },
+          { text: isPt ? 'Ver detalhes' : 'View details', onPress: () => Alert.alert(isPt ? 'Detalhes técnicos' : 'Technical details', diagnostics!) },
         ] : undefined,
       );
       return;
@@ -176,16 +188,18 @@ export function PaywallModal() {
       // (que também vai falhar, mas é o fluxo que o user entende) ou explica.
       if (result.errorCode === 7) {
         Alert.alert(
-          'Assinatura vinculada a outra conta',
-          'Esta conta Apple já tem uma assinatura Queizy ativa em outro usuário do app.\n\nEntre com a conta Queizy que fez a compra original, ou fale com o suporte.',
+          isPt ? 'Assinatura vinculada a outra conta' : 'Subscription linked to another account',
+          isPt
+            ? 'Esta conta da loja já tem uma assinatura Queizy ativa em outro usuário do app.\n\nEntre com a conta Queizy que fez a compra original, ou fale com o suporte.'
+            : 'This store account already has an active Queizy subscription on another user.\n\nSign in with the Queizy account that made the original purchase, or contact support.',
           [
             { text: 'OK' },
             {
-              text: 'Falar com suporte',
+              text: isPt ? 'Falar com suporte' : 'Contact support',
               onPress: () => {
                 const subject = encodeURIComponent('Assinatura vinculada a outra conta');
                 const body = encodeURIComponent(
-                  `Olá! Tentei assinar no app mas apareceu mensagem de que minha conta Apple já tem assinatura em outro usuário.\n\nMeu e-mail no Queizy: ${profile?.email ?? ''}\n\nPode me ajudar?`,
+                  `Olá! Tentei assinar no app mas apareceu mensagem de que minha conta da loja já tem assinatura em outro usuário.\n\nMeu e-mail no Queizy: ${profile?.email ?? ''}\n\nPode me ajudar?`,
                 );
                 Linking.openURL(`mailto:suporte@queizy.com?subject=${subject}&body=${body}`);
               },
@@ -194,8 +208,10 @@ export function PaywallModal() {
         );
       } else {
         Alert.alert(
-          'Erro na compra',
-          'Não foi possível processar o pagamento. Tente novamente em alguns instantes.',
+          isPt ? 'Erro na compra' : 'Purchase failed',
+          isPt
+            ? 'Não foi possível processar o pagamento. Tente novamente em alguns instantes.'
+            : 'We couldn\'t process the payment. Please try again in a moment.',
         );
       }
     }
@@ -219,7 +235,7 @@ export function PaywallModal() {
     setLoading(false);
 
     if (r.success && r.customerInfo && profile?.id) {
-      await syncSubscriptionToSupabase(profile.id, r.customerInfo);
+      await syncSubscriptionToSupabase(profile.id, r.customerInfo).catch(() => {});
       await refreshProfile();
     }
 
@@ -271,7 +287,7 @@ export function PaywallModal() {
   const yearlyPrice  = yearlyPkg?.product.priceString  ?? 'R$ 199,90';
 
   const yearlyMonthly = yearlyPkg
-    ? `${yearlyPkg.product.currencyCode} ${(yearlyPkg.product.price / 12).toFixed(2).replace('.', ',')}`
+    ? formatMoney(yearlyPkg.product.price / 12, yearlyPkg.product.currencyCode, isPt)
     : 'R$ 16,66';
 
   // Headline personalizada. O gancho de streak só faz sentido quando a
@@ -507,6 +523,16 @@ export function PaywallModal() {
               ? 'Cobrança imediata ao assinar. Renovação automática. Cancele quando quiser.'
               : 'Charged immediately on subscribing. Auto-renews. Cancel anytime.'}
           </AppText>
+
+          {/* Termos e privacidade (exigidos pelas lojas para assinatura) */}
+          <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 16, marginTop: -16, marginBottom: 16 }}>
+            <TouchableOpacity onPress={() => Linking.openURL('https://queizy.com/termos')} hitSlop={8}>
+              <AppText style={{ color: C.muted, fontSize: 12, textDecorationLine: 'underline' }}>{isPt ? 'Termos de Uso' : 'Terms of Use'}</AppText>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL('https://queizy.com/privacidade')} hitSlop={8}>
+              <AppText style={{ color: C.muted, fontSize: 12, textDecorationLine: 'underline' }}>{isPt ? 'Política de Privacidade' : 'Privacy Policy'}</AppText>
+            </TouchableOpacity>
+          </View>
 
           {/* Restore */}
           <TouchableOpacity

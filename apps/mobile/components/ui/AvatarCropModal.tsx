@@ -17,6 +17,7 @@ import * as ImageManipulator from 'expo-image-manipulator';
 import { readAsStringAsync } from 'expo-file-system/legacy';
 import { supabase } from '@/lib/supabase';
 import { AppText } from '@/components/ui/Text';
+import { systemIsPt as isPt } from '@/lib/systemLang';
 
 // ─── Theme ────────────────────────────────────────────────────────────────────
 const C = {
@@ -128,7 +129,7 @@ export default function AvatarCropModal({
       }
     } catch (err: any) {
       console.error('[AvatarCropModal] pickFromLibrary error:', err);
-      Alert.alert('Erro', 'Não foi possível abrir a galeria. Tente novamente.');
+      Alert.alert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível abrir a galeria. Tente novamente.' : 'Could not open the photo library. Please try again.');
     }
   }, []);
 
@@ -137,8 +138,8 @@ export default function AvatarCropModal({
       const { status } = await ImagePicker.requestCameraPermissionsAsync();
       if (status !== 'granted') {
         Alert.alert(
-          'Permissão necessária',
-          'Permita o acesso à câmera nas Configurações do iPhone > Charlotte.'
+          isPt ? 'Permissão necessária' : 'Permission needed',
+          isPt ? 'Permita o acesso à câmera nos Ajustes do aparelho > Queizy.' : 'Allow camera access in your device Settings > Queizy.'
         );
         return;
       }
@@ -152,7 +153,7 @@ export default function AvatarCropModal({
       }
     } catch (err: any) {
       console.error('[AvatarCropModal] pickFromCamera error:', err);
-      Alert.alert('Erro', 'Não foi possível abrir a câmera. Tente novamente.');
+      Alert.alert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível abrir a câmera. Tente novamente.' : 'Could not open the camera. Please try again.');
     }
   }, []);
 
@@ -261,7 +262,7 @@ export default function AvatarCropModal({
       handleCloseRef.current();
     } catch (err: any) {
       console.error('[AvatarCropModal] upload error:', err);
-      Alert.alert('Erro', err?.message ?? 'Não foi possível salvar a foto. Tente novamente.');
+      Alert.alert(isPt ? 'Erro' : 'Error', err?.message ?? (isPt ? 'Não foi possível salvar a foto. Tente novamente.' : 'Could not save the photo. Please try again.'));
     } finally {
       setUploading(false);
     }
@@ -291,9 +292,9 @@ export default function AvatarCropModal({
         {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity onPress={handleClose} style={styles.headerBtn} disabled={uploading}>
-            <AppText style={[styles.headerBtnText, { color: C.navyMid }]}>Cancelar</AppText>
+            <AppText style={[styles.headerBtnText, { color: C.navyMid }]}>{isPt ? 'Cancelar' : 'Cancel'}</AppText>
           </TouchableOpacity>
-          <AppText style={styles.headerTitle}>Foto do perfil</AppText>
+          <AppText style={styles.headerTitle}>{isPt ? 'Foto do perfil' : 'Profile photo'}</AppText>
           {phase === 'crop' ? (
             <TouchableOpacity
               onPress={handleSave}
@@ -302,7 +303,7 @@ export default function AvatarCropModal({
             >
               {uploading
                 ? <ActivityIndicator size="small" color={C.navy} />
-                : <AppText style={[styles.headerBtnText, { color: C.navy, fontWeight: '700' }]}>Salvar</AppText>
+                : <AppText style={[styles.headerBtnText, { color: C.navy, fontWeight: '700' }]}>{isPt ? 'Salvar' : 'Save'}</AppText>
               }
             </TouchableOpacity>
           ) : (
@@ -323,28 +324,29 @@ export default function AvatarCropModal({
                 />
               ) : (
                 <View style={styles.avatarPlaceholder}>
-                  <AppText style={styles.avatarPlaceholderText}>Sem foto</AppText>
+                  <AppText style={styles.avatarPlaceholderText}>{isPt ? 'Sem foto' : 'No photo'}</AppText>
                 </View>
               )}
 
-              <AppText style={styles.pickTitle}>Escolha uma foto</AppText>
+              <AppText style={styles.pickTitle}>{isPt ? 'Escolha uma foto' : 'Choose a photo'}</AppText>
               <AppText style={styles.pickSubtitle}>
-                Escolha da galeria ou tire uma nova foto.{'\n'}
-                Você pode recortar e dar zoom antes de salvar.
+                {isPt
+                  ? 'Escolha da galeria ou tire uma nova foto.\nVocê pode recortar e dar zoom antes de salvar.'
+                  : 'Pick from your library or take a new photo.\nYou can crop and zoom before saving.'}
               </AppText>
 
               <TouchableOpacity style={styles.pickButton} onPress={pickFromLibrary}>
-                <AppText style={styles.pickButtonText}>Escolher da galeria</AppText>
+                <AppText style={styles.pickButtonText}>{isPt ? 'Escolher da galeria' : 'Choose from library'}</AppText>
               </TouchableOpacity>
 
               <TouchableOpacity style={[styles.pickButton, styles.pickButtonSecondary]} onPress={pickFromCamera}>
-                <AppText style={[styles.pickButtonText, { color: C.navy }]}>Tirar uma foto</AppText>
+                <AppText style={[styles.pickButtonText, { color: C.navy }]}>{isPt ? 'Tirar uma foto' : 'Take a photo'}</AppText>
               </TouchableOpacity>
             </View>
           ) : (
             /* ── Crop phase ─────────────────────────────────── */
             <View style={styles.cropContainer}>
-              <AppText style={styles.cropHint}>Arraste ou use os botoes para ajustar</AppText>
+              <AppText style={styles.cropHint}>{isPt ? 'Arraste ou use os botões para ajustar' : 'Drag or use the buttons to adjust'}</AppText>
 
               {/* Circular crop frame */}
               <View style={styles.cropFrame} {...panResponder.panHandlers}>
@@ -397,13 +399,13 @@ export default function AvatarCropModal({
                 onPress={() => setPhase('pick')}
                 disabled={uploading}
               >
-                <AppText style={styles.changePhotoText}>Trocar foto</AppText>
+                <AppText style={styles.changePhotoText}>{isPt ? 'Trocar foto' : 'Change photo'}</AppText>
               </TouchableOpacity>
 
               {uploading && (
                 <View style={styles.uploadingOverlay}>
                   <ActivityIndicator size="large" color={C.green} />
-                  <AppText style={styles.uploadingText}>Salvando...</AppText>
+                  <AppText style={styles.uploadingText}>{isPt ? 'Salvando…' : 'Saving…'}</AppText>
                 </View>
               )}
             </View>

@@ -14,7 +14,7 @@
 //   -> tenta abrir charlotte:// (tela de login)
 //
 // Com Universal Links (proximo build):
-//   iOS intercepta https://charlotte.hubacademybr.com/open direto no app
+//   iOS intercepta https://queizy.com/open direto no app
 //   sem nem passar pelo browser — fluxo ainda mais suave.
 
 import { useEffect, useState } from 'react';

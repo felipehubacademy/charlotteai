@@ -34,8 +34,10 @@ export function checkXPMilestone(prevXP: number, newXP: number): number | null {
 export async function sendXPMilestoneNotification(milestone: number) {
   await Notifications.scheduleNotificationAsync({
     content: {
-      title: '🎉 Marco alcançado!',
-      body: `Você chegou a ${milestone.toLocaleString()} XP! Continue praticando com a Charlotte.`,
+      title: systemIsPt ? 'Marco alcançado!' : 'Milestone reached!',
+      body: systemIsPt
+        ? `Você chegou a ${milestone.toLocaleString('pt-BR')} XP! Continue praticando com a Charlotte.`
+        : `You reached ${milestone.toLocaleString('en-US')} XP! Keep practicing with Charlotte.`,
       sound: true,
     },
     trigger: null, // immediately

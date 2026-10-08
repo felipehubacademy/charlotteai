@@ -529,7 +529,9 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         const fallback: Message = {
           id: generateId(),
           role: 'assistant',
-          content: `Great practice, ${userName}! Keep it up! 😊`,
+          content: systemIsPt
+            ? 'Não consegui responder agora. Verifique a conexão e envie de novo.'
+            : "I couldn't reply right now. Check your connection and send it again.",
           messageType: 'text',
           timestamp: new Date(),
         };

@@ -332,7 +332,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         // e grava na tabela charlotte_users.
         data: { name },
         // Redirect back to the app after email confirmation
-        emailRedirectTo: 'https://charlotte.hubacademybr.com/open',
+        emailRedirectTo: 'https://queizy.com/open',
       },
     });
     if (error) throw error;
@@ -355,7 +355,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const resetPassword = async (email: string) => {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: 'https://charlotte.hubacademybr.com/open',
+      redirectTo: 'https://queizy.com/open',
     });
     if (error) throw error;
   };

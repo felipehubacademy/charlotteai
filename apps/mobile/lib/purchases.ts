@@ -11,8 +11,8 @@
  *  6. Sincronizar status com Supabase após compra/restauração
  *
  * Product IDs (configurados no App Store Connect + RevenueCat):
- *   com.hubacademy.charlotte.monthly  — R$ 29,90/mês  (7-day trial)
- *   com.hubacademy.charlotte.yearly   — R$ 199,90/ano (7-day trial)
+ *   com.hubacademy.charlotte.monthly  — R$ 29,90/mês  (sem trial na loja; os 7 dias grátis são do app)
+ *   com.hubacademy.charlotte.yearly   — R$ 199,90/ano (sem trial na loja)
  *
  * Entitlement ID: "Premium" (confirmado no dashboard RevenueCat 2026-08-21)
  * Offering ID:    "default"
