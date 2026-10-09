@@ -9,7 +9,7 @@ import { randomBytes } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { pushIsPt } from '@/lib/expo-notification-service';
 import { friendsOf } from '@/lib/friends';
-import { isBlocked } from '@/lib/moderation';
+import { isBlocked, isSuspended } from '@/lib/moderation';
 import {
   RALLY_METRICS, RALLY_DURATIONS, RALLY_MAX_PARTICIPANTS, RALLY_MAX_ACTIVE_CREATED,
   computeStandings, rallyLabel, firstName, sendDirectPush, type RallyRow, type RallyMetric,
@@ -118,6 +118,9 @@ export async function POST(req: NextRequest) {
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const supabase = getSupabaseAdmin();
   const body = await req.json().catch(() => ({}));
+  if ((body.action === 'create' || body.action === 'join' || body.action === 'rematch') && await isSuspended(user.id)) {
+    return NextResponse.json({ error: 'suspended' }, { status: 403 });
+  }
 
   if (body.action === 'create') {
     const metric = body.metric as RallyMetric;

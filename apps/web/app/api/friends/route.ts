@@ -17,7 +17,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { pushIsPt } from '@/lib/expo-notification-service';
 import { friendsOf, orderedPair } from '@/lib/friends';
 import { sendDirectPush } from '@/lib/rally';
-import { blockedWith, isBlocked, isOffensiveHandle } from '@/lib/moderation';
+import { blockedWith, isBlocked, isOffensiveHandle, isSuspended } from '@/lib/moderation';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 
 export const dynamic = 'force-dynamic';
@@ -68,6 +68,7 @@ export async function GET(req: NextRequest) {
   }
 
   if (q.replace('@', '').length < 2) return NextResponse.json({ results: [] });
+  if (await isSuspended(user.id)) return NextResponse.json({ results: [] });
   // Busca pelo @: começa com o que foi digitado.
   if (q.startsWith('@')) {
     const handle = clean(q.slice(1)).replace(/[^a-z0-9._]/g, '');

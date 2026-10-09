@@ -1,22 +1,39 @@
 // lib/moderation.ts — bloqueio entre alunos e filtro do @ (Guideline 1.2).
 // Bloqueio vale nos dois sentidos: nenhum dos dois vê, encontra ou interage
 // com o outro (busca, pedidos, cutucadas, parabéns, competições, pushes).
+// Suspensão (feita pela equipe no /admin) equivale a bloqueio com todo mundo.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
-/** Ids que eu bloqueei ou que me bloquearam. */
+/** Alunos suspensos do social pela equipe. */
+export async function suspendedIds(): Promise<Set<string>> {
+  const { data } = await getSupabaseAdmin().from('social_suspensions').select('user_id').limit(5000);
+  return new Set(((data ?? []) as { user_id: string }[]).map(r => r.user_id));
+}
+
+export async function isSuspended(userId: string): Promise<boolean> {
+  const { data } = await getSupabaseAdmin().from('social_suspensions').select('user_id').eq('user_id', userId).maybeSingle();
+  return !!data;
+}
+
+/** Ids que eu bloqueei ou que me bloquearam, mais os alunos suspensos. */
 export async function blockedWith(userId: string): Promise<Set<string>> {
   const supabase = getSupabaseAdmin();
-  const [a, b] = await Promise.all([
+  const [a, b, sus] = await Promise.all([
     supabase.from('user_blocks').select('blocked_id').eq('blocker_id', userId),
     supabase.from('user_blocks').select('blocker_id').eq('blocked_id', userId),
+    suspendedIds(),
   ]);
+  sus.delete(userId);
   return new Set([
     ...((a.data ?? []) as { blocked_id: string }[]).map(r => r.blocked_id),
     ...((b.data ?? []) as { blocker_id: string }[]).map(r => r.blocker_id),
+    ...sus,
   ]);
 }
 
 export async function isBlocked(a: string, b: string): Promise<boolean> {
+  const sus = await suspendedIds();
+  if (sus.has(a) || sus.has(b)) return true;
   const { data } = await getSupabaseAdmin().from('user_blocks').select('blocker_id')
     .or(`and(blocker_id.eq.${a},blocked_id.eq.${b}),and(blocker_id.eq.${b},blocked_id.eq.${a})`).limit(1);
   return !!data?.length;
