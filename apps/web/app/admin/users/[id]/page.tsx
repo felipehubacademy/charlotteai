@@ -18,7 +18,19 @@ interface Crm {
   payments: { event_type: string; product_id: string | null; store: string | null; net_brl: number; purchased_at: string }[];
   notes: { id: string; body: string; author_name: string | null; created_at: string }[];
   tags: string[];
+  social: {
+    suspended: { reason: string | null; created_by: string | null; created_at: string } | null;
+    friends: { id: string; name: string | null; username: string | null; relation: string }[];
+    rallies: { code: string; metric: string; hours: number; startsAt: string; endsAt: string; finished: boolean; won: boolean }[];
+    blocked: SocialPerson[]; blockedBy: SocialPerson[];
+    reportsMade: (SocialPerson & { reportId: number; reason: string; handled: boolean })[];
+    reportsReceived: (SocialPerson & { reportId: number; reason: string; handled: boolean })[];
+  };
 }
+type SocialPerson = { id: string; name: string | null; username: string | null; at: string };
+const REPORT_REASON: Record<string, string> = { offensive_profile: 'perfil ofensivo', harassment: 'assédio ou spam', other: 'outro motivo' };
+const METRIC_LABEL: Record<string, string> = { xp: 'XP', practices: 'práticas', accuracy: 'acerto' };
+const personLabel = (x: { name: string | null; username: string | null }) => `${x.name || 'Sem nome'}${x.username ? ` (@${x.username})` : ''}`;
 
 const TYPE_LABEL: Record<string, string> = {
   text_message: 'Mensagens', audio_message: 'Áudios', grammar_message: 'Gramática', learn_session: 'Trilha',
@@ -57,6 +69,7 @@ export default function UserCrmPage() {
   const me = useAdminMe();
   const canWrite = canArea(me, 'users:write');
   const canLearning = canArea(me, 'learning');
+  const canModerate = canArea(me, 'support');
   const [data, setData] = useState<Crm | null>(null);
   const [error, setError] = useState('');
   const [note, setNote] = useState('');
@@ -151,6 +164,77 @@ export default function UserCrmPage() {
               )}
             </div>
           </div>
+
+          {/* Social */}
+          {data.social && (
+            <div className="adm-panel col-12">
+              <div className="adm-panel-hdr">
+                <div className="adm-panel-title">Social</div>
+                <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                  {data.social.suspended && <span className="badge badge-warn">Suspenso do social</span>}
+                  {canModerate && (
+                    <button className="adm-btn-sm ghost" onClick={async () => {
+                      const suspend = !data.social.suspended;
+                      const reason = suspend ? prompt('Motivo da suspensão (fica no histórico):') : null;
+                      if (suspend && reason === null) return;
+                      if (!suspend && !confirm('Devolver este aluno ao social?')) return;
+                      await fetch('/api/admin/moderation', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: suspend ? 'suspend' : 'unsuspend', userId: id, reason }) });
+                      load();
+                    }}>{data.social.suspended ? 'Tirar suspensão' : 'Suspender do social'}</button>
+                  )}
+                </div>
+              </div>
+              <div className="adm-panel-body" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 18, fontSize: 13 }}>
+                {data.social.suspended && (
+                  <div style={{ gridColumn: '1 / -1', color: 'var(--t2)' }}>
+                    Suspenso por {data.social.suspended.created_by ?? '—'} em {new Date(data.social.suspended.created_at).toLocaleDateString('pt-BR')}{data.social.suspended.reason ? ` · ${data.social.suspended.reason}` : ''}
+                  </div>
+                )}
+                <div>
+                  <div className="kpi-label" style={{ marginBottom: 8 }}>Amigos de estudo ({data.social.friends.length})</div>
+                  {data.social.friends.length === 0 && <div className="adm-empty-sub">Nenhum.</div>}
+                  {data.social.friends.slice(0, 12).map(f => (
+                    <div key={f.id} style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginBottom: 6 }}>
+                      <Link href={`/admin/users/${f.id}`} style={{ color: 'var(--t1)', textDecoration: 'none' }}>{personLabel(f)}</Link>
+                      <span style={{ color: 'var(--t3)', whiteSpace: 'nowrap' }}>{f.relation}</span>
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <div className="kpi-label" style={{ marginBottom: 8 }}>Competições ({data.social.rallies.length})</div>
+                  {data.social.rallies.length === 0 && <div className="adm-empty-sub">Nenhuma.</div>}
+                  {data.social.rallies.map(r => (
+                    <div key={r.code} style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginBottom: 6 }}>
+                      <span style={{ color: 'var(--t1)' }}>{METRIC_LABEL[r.metric] ?? r.metric} · {r.hours === 24 ? '24 horas' : '7 dias'}</span>
+                      <span style={{ color: r.won ? 'var(--ok)' : 'var(--t3)', whiteSpace: 'nowrap' }}>{!r.finished ? 'em andamento' : r.won ? 'venceu' : 'encerrada'}</span>
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <div className="kpi-label" style={{ marginBottom: 8 }}>Bloqueios</div>
+                  <div style={{ color: 'var(--t2)', marginBottom: 6 }}>Bloqueou {data.social.blocked.length} · bloqueado por {data.social.blockedBy.length}</div>
+                  {[...data.social.blocked.map(b => ({ ...b, dir: 'bloqueou' })), ...data.social.blockedBy.map(b => ({ ...b, dir: 'bloqueado por' }))].slice(0, 8).map(b => (
+                    <div key={`${b.dir}${b.id}`} style={{ marginBottom: 6, color: 'var(--t1)' }}><span style={{ color: 'var(--t3)' }}>{b.dir}</span> {personLabel(b)}</div>
+                  ))}
+                </div>
+                <div>
+                  <div className="kpi-label" style={{ marginBottom: 8 }}>Denúncias</div>
+                  <div style={{ color: 'var(--t2)', marginBottom: 6 }}>Recebeu {data.social.reportsReceived.length} · fez {data.social.reportsMade.length}</div>
+                  {data.social.reportsReceived.slice(0, 6).map(r => (
+                    <div key={`in${r.reportId}`} style={{ marginBottom: 6 }}>
+                      <span style={{ color: 'var(--err)' }}>recebida</span> de {personLabel(r)} · {REPORT_REASON[r.reason] ?? r.reason}{r.handled ? ' · resolvida' : ''}
+                    </div>
+                  ))}
+                  {data.social.reportsMade.slice(0, 4).map(r => (
+                    <div key={`out${r.reportId}`} style={{ marginBottom: 6 }}>
+                      <span style={{ color: 'var(--t3)' }}>fez</span> contra {personLabel(r)} · {REPORT_REASON[r.reason] ?? r.reason}
+                    </div>
+                  ))}
+                  {(data.social.reportsReceived.length > 0 || data.social.reportsMade.length > 0) && canModerate && <Link href="/admin/moderation" className="adm-btn-sm ghost" style={{ marginTop: 4 }}>Abrir Denúncias</Link>}
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Etiquetas */}
           <div className="adm-panel col-12">

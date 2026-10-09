@@ -56,6 +56,7 @@ export async function GET(req: NextRequest) {
   });
 
   return NextResponse.json({
+    social: await socialOf(userId),
     user, progress, risk,
     activity: { byDay, byType, total60d: practices.length, practices7d, xp60d: practices.reduce((s, p) => s + (p.xp_earned ?? 0), 0) },
     sessions: sessR.data ?? [], support: supR.data ?? [], payments: revR.data ?? [],
@@ -92,4 +93,50 @@ export async function POST(req: NextRequest) {
   }
 
   return NextResponse.json({ error: 'Ação inválida' }, { status: 400 });
+}
+
+/** Social do aluno: amigos de estudo, competições, bloqueios, denúncias e suspensão. */
+async function socialOf(userId: string) {
+  const supabase = getSupabaseAdmin();
+  const [inv, by, fa, fb, bOut, bIn, rOut, rIn, sus, parts] = await Promise.all([
+    supabase.from('referrals').select('invitee_id').eq('inviter_id', userId),
+    supabase.from('referrals').select('inviter_id').eq('invitee_id', userId),
+    supabase.from('study_friends').select('user_b').eq('user_a', userId),
+    supabase.from('study_friends').select('user_a').eq('user_b', userId),
+    supabase.from('user_blocks').select('blocked_id, created_at').eq('blocker_id', userId),
+    supabase.from('user_blocks').select('blocker_id, created_at').eq('blocked_id', userId),
+    supabase.from('user_reports').select('id, reported_id, reason, handled, created_at').eq('reporter_id', userId).order('created_at', { ascending: false }).limit(20),
+    supabase.from('user_reports').select('id, reporter_id, reason, handled, created_at').eq('reported_id', userId).order('created_at', { ascending: false }).limit(20),
+    supabase.from('social_suspensions').select('reason, created_by, created_at').eq('user_id', userId).maybeSingle(),
+    supabase.from('rally_participants').select('rally_id').eq('user_id', userId).limit(50),
+  ]);
+  const rel = new Map<string, string>();
+  ((fa.data ?? []) as { user_b: string }[]).forEach(r => rel.set(r.user_b, 'Amigo (busca)'));
+  ((fb.data ?? []) as { user_a: string }[]).forEach(r => rel.set(r.user_a, 'Amigo (busca)'));
+  ((inv.data ?? []) as { invitee_id: string }[]).forEach(r => rel.set(r.invitee_id, 'Convidado por ele'));
+  ((by.data ?? []) as { inviter_id: string }[]).forEach(r => rel.set(r.inviter_id, 'Padrinho'));
+  const rallyIds = ((parts.data ?? []) as { rally_id: string }[]).map(p => p.rally_id);
+  const { data: rallies } = rallyIds.length
+    ? await supabase.from('rallies').select('id, code, metric, duration_hours, starts_at, ends_at, finalized, winner_id').in('id', rallyIds).order('starts_at', { ascending: false }).limit(10)
+    : { data: [] };
+  const ids = [...new Set([
+    ...rel.keys(),
+    ...((bOut.data ?? []) as { blocked_id: string }[]).map(r => r.blocked_id),
+    ...((bIn.data ?? []) as { blocker_id: string }[]).map(r => r.blocker_id),
+    ...((rOut.data ?? []) as { reported_id: string }[]).map(r => r.reported_id),
+    ...((rIn.data ?? []) as { reporter_id: string }[]).map(r => r.reporter_id),
+  ])];
+  const { data: people } = ids.length ? await supabase.from('charlotte_users').select('id, name, username').in('id', ids) : { data: [] };
+  const p = new Map(((people ?? []) as { id: string; name: string | null; username: string | null }[]).map(x => [x.id, x]));
+  const who = (id: string) => ({ id, name: p.get(id)?.name ?? null, username: p.get(id)?.username ?? null });
+  return {
+    suspended: sus.data ? sus.data as { reason: string | null; created_by: string | null; created_at: string } : null,
+    friends: [...rel.entries()].map(([id, relation]) => ({ ...who(id), relation })),
+    rallies: ((rallies ?? []) as { id: string; code: string; metric: string; duration_hours: number; starts_at: string; ends_at: string; finalized: boolean; winner_id: string | null }[])
+      .map(r => ({ code: r.code, metric: r.metric, hours: r.duration_hours, startsAt: r.starts_at, endsAt: r.ends_at, finished: r.finalized, won: r.winner_id === userId })),
+    blocked: ((bOut.data ?? []) as { blocked_id: string; created_at: string }[]).map(r => ({ ...who(r.blocked_id), at: r.created_at })),
+    blockedBy: ((bIn.data ?? []) as { blocker_id: string; created_at: string }[]).map(r => ({ ...who(r.blocker_id), at: r.created_at })),
+    reportsMade: ((rOut.data ?? []) as { id: number; reported_id: string; reason: string; handled: boolean; created_at: string }[]).map(r => ({ ...who(r.reported_id), reportId: r.id, reason: r.reason, handled: r.handled, at: r.created_at })),
+    reportsReceived: ((rIn.data ?? []) as { id: number; reporter_id: string; reason: string; handled: boolean; created_at: string }[]).map(r => ({ ...who(r.reporter_id), reportId: r.id, reason: r.reason, handled: r.handled, at: r.created_at })),
+  };
 }
