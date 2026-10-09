@@ -104,6 +104,7 @@ export default function UserCrmPage() {
             <div className="adm-panel-body" style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: 13 }}>
               {[
                 ['E-mail', u.email],
+                ['@ no app', u.username ? `@${u.username}` : '—'],
                 ['Nível', u.charlotte_level ?? '—'],
                 ['Plano', u.is_institutional ? 'Institucional' : (STATUS_LABEL[u.subscription_status] ?? u.subscription_status)],
                 ['Produto', u.subscription_product ?? '—'],

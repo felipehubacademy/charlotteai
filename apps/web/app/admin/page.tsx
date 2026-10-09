@@ -8,7 +8,7 @@ import { Search, Plus, Edit2, Trash2, RefreshCw, ExternalLink, ChevronUp, Chevro
 interface Engagement { totalXP: number; lastActive: string | null; sessionDays: number; lessonCount: number; messageCount: number; }
 interface TrailProgress { novice: number; inter: number; advanced: number; }
 interface User {
-  id: string; email: string; name: string | null;
+  id: string; email: string; name: string | null; username?: string | null;
   charlotte_level: 'Novice' | 'Inter' | 'Advanced' | null;
   placement_test_done: boolean; is_institutional: boolean; is_active: boolean;
   subscription_status: 'none' | 'trial' | 'active' | 'expired' | 'cancelled';
@@ -183,7 +183,7 @@ export default function AdminUsersPage() {
   const displayed = useMemo(() => {
     const q = search.toLowerCase();
     let list = users.filter(u => {
-      const matchQ = !q || u.email.toLowerCase().includes(q) || (u.name ?? '').toLowerCase().includes(q);
+      const matchQ = !q || u.email.toLowerCase().includes(q) || (u.name ?? '').toLowerCase().includes(q) || (!!u.username && `@${u.username}`.includes(q.startsWith('@') ? q : `@${q}`));
       const matchF =
         filter === 'all' ? true :
         filter === 'institutional' ? u.is_institutional :
@@ -372,7 +372,7 @@ export default function AdminUsersPage() {
           <Search size={14} style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'var(--t3)', pointerEvents: 'none' }} />
           <input
             type="text"
-            placeholder="Buscar por nome ou email..."
+            placeholder="Buscar por nome, e-mail ou @..."
             value={search}
             onChange={e => setSearch(e.target.value)}
             className="adm-input-sm"

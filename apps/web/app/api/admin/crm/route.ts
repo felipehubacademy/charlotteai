@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
   const supabase = getSupabaseAdmin();
   const since = new Date(Date.now() - 60 * DAY).toISOString();
   const [userR, progR, pracR, sessR, supR, revR, notesR, tagsR] = await Promise.all([
-    supabase.from('charlotte_users').select('id, email, name, charlotte_level, is_institutional, is_active, subscription_status, subscription_product, subscription_expires_at, trial_ends_at, created_at, last_seen_at, last_practice_at, app_version, app_platform, avatar_url, marketing_opt_out').eq('id', userId).maybeSingle(),
+    supabase.from('charlotte_users').select('id, email, name, username, charlotte_level, is_institutional, is_active, subscription_status, subscription_product, subscription_expires_at, trial_ends_at, created_at, last_seen_at, last_practice_at, app_version, app_platform, avatar_url, marketing_opt_out').eq('id', userId).maybeSingle(),
     supabase.from('charlotte_progress').select('total_xp, streak_days, last_practice_date').eq('user_id', userId).maybeSingle(),
     supabase.from('charlotte_practices').select('practice_type, xp_earned, created_at').eq('user_id', userId).gte('created_at', since).order('created_at', { ascending: false }).limit(2000),
     supabase.from('charlotte_chat_sessions').select('id, title, summary, started_at, message_count').eq('user_id', userId).order('started_at', { ascending: false }).limit(10),
