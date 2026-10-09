@@ -6,7 +6,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { pct, pronunciation, topicName, type MsgRow } from '@/lib/learning-stats';
+import { pronunciation, type MsgRow } from '@/lib/learning-stats';
+import { v2Title } from '@/lib/learning-v2';
 
 export const dynamic = 'force-dynamic';
 
@@ -112,8 +113,8 @@ export async function POST(request: NextRequest) {
 }
 
 /**
- * Destaque de ontem (dia de Brasília) para a fala da Charlotte: melhor tópico da
- * trilha com acerto alto, ou a melhor nota de pronúncia. null se não houver.
+ * Destaque de ontem (dia de Brasília) para a fala da Charlotte: melhor nota da
+ * trilha nova, a melhor nota de pronúncia ou as atividades concluídas. null se não houver.
  */
 async function yesterdayHighlight(req: NextRequest, pt: boolean): Promise<string | null> {
   try {
@@ -130,29 +131,24 @@ async function yesterdayHighlight(req: NextRequest, pt: boolean): Promise<string
     const to = new Date(todayStartUtc).toISOString();
 
     const [hist, msgs] = await Promise.all([
-      supabase.from('learn_history').select('level, module_index, topic_index, is_correct').eq('user_id', userId).gte('answered_at', from).lt('answered_at', to).limit(500),
+      supabase.from('learn_history_v2').select('level, module_id, unit_id, activity_type, score, completed').eq('user_id', userId).gte('updated_at', from).lt('updated_at', to).limit(200),
       supabase.from('chat_messages').select('user_id, role, mode, content, created_at').eq('user_id', userId).eq('mode', 'pronunciation').eq('role', 'user').gte('created_at', from).lt('created_at', to).limit(200),
     ]);
 
-    const rows = (hist.data ?? []) as { level: string; module_index: number; topic_index: number; is_correct: boolean }[];
-    const byTopic = new Map<string, { level: string; m: number; t: number; n: number; ok: number }>();
-    rows.forEach(r => {
-      const k = `${r.level}|${r.module_index}|${r.topic_index}`;
-      const c = byTopic.get(k) ?? { level: r.level, m: r.module_index, t: r.topic_index, n: 0, ok: 0 };
-      c.n++; if (r.is_correct) c.ok++; byTopic.set(k, c);
-    });
-    const best = [...byTopic.values()].filter(c => c.n >= 4).map(c => ({ ...c, acc: pct(c.ok, c.n) ?? 0 })).sort((a, b) => b.acc - a.acc || b.n - a.n)[0];
-    if (best && best.acc >= 70) {
-      const name = topicName(best.level, best.m, best.t).topic;
-      return pt ? `ontem acertou ${best.acc}% em "${name}"` : `yesterday got ${best.acc}% right in "${name}"`;
+    // Trilha: melhor nota de ontem (Gramática ou Listening & Speaking), com o nome do tópico.
+    const rows = (hist.data ?? []) as { level: string; module_id: string; unit_id: string; activity_type: string; score: number | string | null; completed: boolean | null }[];
+    const ACT: Record<string, [string, string]> = { grammar: ['Gramática', 'Grammar'], speaking: ['Listening & Speaking', 'Listening & Speaking'] };
+    const best = rows.filter(r => ACT[r.activity_type] && r.score != null).sort((a, b) => Number(b.score) - Number(a.score))[0];
+    if (best && Number(best.score) >= 80) {
+      const topic = v2Title(best.level, best.module_id, best.unit_id).topic;
+      const act = ACT[best.activity_type][pt ? 0 : 1];
+      return pt ? `ontem tirou ${Math.round(Number(best.score))} de 100 em ${act} no tópico "${topic}"` : `yesterday scored ${Math.round(Number(best.score))} out of 100 in ${act} on "${topic}"`;
     }
     const pron = pronunciation((msgs.data ?? []) as MsgRow[]);
     const top = Math.max(0, ...pron.items.map(i => i.score));
     if (top >= 80) return pt ? `ontem tirou nota ${top} de 100 numa frase de pronúncia` : `yesterday scored ${top} out of 100 on a pronunciation phrase`;
-    if (rows.length >= 5) {
-      const acc = pct(rows.filter(r => r.is_correct).length, rows.length);
-      return pt ? `ontem respondeu ${rows.length} exercícios da trilha (${acc}% de acerto)` : `yesterday answered ${rows.length} trail exercises (${acc}% correct)`;
-    }
+    const done = rows.filter(r => r.completed).length;
+    if (done >= 2) return pt ? `ontem concluiu ${done} atividades da trilha` : `yesterday completed ${done} trail activities`;
     return null;
   } catch {
     return null;
