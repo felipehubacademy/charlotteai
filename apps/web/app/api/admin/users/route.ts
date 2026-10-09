@@ -51,12 +51,16 @@ export async function GET(req: NextRequest) {
     { data: learnProgress },
     { data: userProgress },
   ] = await Promise.all([
-    supabase.from('charlotte_users').select('*').order('created_at', { ascending: false }) as unknown as Promise<{ data: CharlotteUser[] | null; error: { message: string } | null }>,
-    supabase.from('charlotte_practices').select('user_id, xp_earned, practice_type, created_at') as unknown as Promise<{ data: Practice[] | null; error: unknown }>,
-    fetchAll<{ user_id: string; level: string; module_id: string; unit_id: string; activity_type: string }>((a, b) =>
-      supabase.from('learn_history_v2').select('user_id, level, module_id, unit_id, activity_type').eq('completed', true).range(a, b), 200000)
+    // PostgREST devolve no máximo 1000 linhas por consulta: tudo aqui é paginado.
+    fetchAll<CharlotteUser>((a, b) => supabase.from('charlotte_users').select('*').order('created_at', { ascending: false }).range(a, b), 200000)
+      .then(data => ({ data, error: null as { message: string } | null })),
+    fetchAll<Practice>((a, b) => supabase.from('charlotte_practices').select('user_id, xp_earned, practice_type, created_at').order('id').range(a, b), 500000)
       .then(data => ({ data, error: null })),
-    supabase.from('charlotte_progress').select('user_id, streak_days, total_xp, last_practice_date') as unknown as Promise<{ data: UserProgress[] | null; error: unknown }>,
+    fetchAll<{ user_id: string; level: string; module_id: string; unit_id: string; activity_type: string }>((a, b) =>
+      supabase.from('learn_history_v2').select('user_id, level, module_id, unit_id, activity_type').eq('completed', true).order('id').range(a, b), 200000)
+      .then(data => ({ data, error: null })),
+    fetchAll<UserProgress>((a, b) => supabase.from('charlotte_progress').select('user_id, streak_days, total_xp, last_practice_date').order('user_id').range(a, b), 200000)
+      .then(data => ({ data, error: null })),
   ]);
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });

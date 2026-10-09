@@ -15,6 +15,20 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
+// PostgREST devolve no máximo 1000 linhas por consulta: pagina até o fim.
+async function paged(build: (from: number, to: number) => PromiseLike<{ data: unknown; error: { message: string } | null }>, max = 200000) {
+  const data: unknown[] = [];
+  for (let from = 0; from < max; from += 1000) {
+    const { data: rows, error } = await build(from, from + 999);
+    if (error) return { data: data.length ? data : null, error };
+    const arr = (rows ?? []) as unknown[];
+    data.push(...arr);
+    if (arr.length < 1000) break;
+  }
+  return { data, error: null as { message: string } | null };
+}
+
+
 
 // Preco da assinatura (em USD para padronizar com custo OpenAI)
 // 39.90 BRL/mes * 0.19 (cambio aprox) = ~7.58 USD/mes
@@ -149,14 +163,14 @@ export async function GET(req: NextRequest) {
   }
 
   const [usersRes, practicesRangeRes, practicesWideRes, progressRes, usageRes, notifRes, placementRes] = await Promise.all([
-    supabase.from('charlotte_users').select('id, email, name, created_at, charlotte_level, is_institutional, subscription_status, subscription_product, subscription_expires_at, trial_ends_at, placement_test_done, expo_push_token, runtime_version, app_version, app_platform, last_seen_at'),
-    supabase.from('charlotte_practices').select('user_id, created_at, xp_earned').gte('created_at', from.toISOString()).lte('created_at', to.toISOString()),
-    supabase.from('charlotte_practices').select('user_id, created_at').gte('created_at', d90.toISOString()),
-    supabase.from('charlotte_progress').select('user_id, streak_days, total_xp'),
+    paged((a, b) => supabase.from('charlotte_users').select('id, email, name, created_at, charlotte_level, is_institutional, subscription_status, subscription_product, subscription_expires_at, trial_ends_at, placement_test_done, expo_push_token, runtime_version, app_version, app_platform, last_seen_at').order('id').range(a, b)),
+    paged((a, b) => supabase.from('charlotte_practices').select('user_id, created_at, xp_earned').gte('created_at', from.toISOString()).lte('created_at', to.toISOString()).order('id').range(a, b)),
+    paged((a, b) => supabase.from('charlotte_practices').select('user_id, created_at').gte('created_at', d90.toISOString()).order('id').range(a, b)),
+    paged((a, b) => supabase.from('charlotte_progress').select('user_id, streak_days, total_xp').order('user_id').range(a, b)),
     // openai_usage: paginado para superar o limite de 1000 rows do PostgREST
     fetchAllUsage(),
     // notification_logs tambem pode nao existir
-    supabase.from('notification_logs').select('user_id, notification_type, status, created_at').gte('created_at', from.toISOString()).lte('created_at', to.toISOString()),
+    paged((a, b) => supabase.from('notification_logs').select('user_id, notification_type, status, created_at').gte('created_at', from.toISOString()).lte('created_at', to.toISOString()).order('created_at').range(a, b)),
     // users.placement_test_done ja veio no users select acima; placementRes fica vazio por ora
     Promise.resolve({ data: null, error: null }),
   ]);
