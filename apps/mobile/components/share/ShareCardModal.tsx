@@ -31,6 +31,8 @@ export interface ShareCardContent {
   subtitle?: string;
   /** Ícone opcional acima do destaque. */
   icon?: React.ReactNode;
+  /** Convite: a ação principal é o link (prévia com nome e arte no WhatsApp); a imagem fica como opção. */
+  invite?: boolean;
 }
 
 export function ShareCardModal({ content, onClose }: { content: ShareCardContent | null; onClose: () => void }) {
@@ -70,10 +72,14 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
     finally { setBusy(false); }
   };
 
-  const shareLink = async () => {
-    const message = isPt
+  function inviteMessage() {
+    return isPt
       ? `Vem estudar inglês comigo no Queizy! ${link ?? 'https://queizy.com'}`
       : `Come study English with me on Queizy! ${link ?? 'https://queizy.com'}`;
+  }
+
+  const shareLink = async () => {
+    const message = inviteMessage();
     try {
       await Share.share(Platform.OS === 'ios' ? { message } : { message, title: 'Queizy' });
       track('share_invite_link', { from: content.kind });
@@ -127,15 +133,19 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
 
         {/* Ações */}
         <View style={{ width: W + 40, marginTop: 22, gap: 10 }}>
-          <TouchableOpacity onPress={shareImage} disabled={busy}
+          <TouchableOpacity onPress={content.invite ? shareLink : shareImage} disabled={busy}
             style={{ backgroundColor: VOLT, borderRadius: 999, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
             {busy ? <ActivityIndicator color={INK} /> : <ShareNetwork size={20} color={INK} weight="bold" />}
-            <AppText style={{ fontSize: 16, fontWeight: '800', color: INK }}>{isPt ? 'Compartilhar imagem' : 'Share image'}</AppText>
+            <AppText style={{ fontSize: 16, fontWeight: '800', color: INK }}>
+              {content.invite ? (isPt ? 'Enviar convite' : 'Send invite') : (isPt ? 'Compartilhar imagem' : 'Share image')}
+            </AppText>
           </TouchableOpacity>
           <View style={{ flexDirection: 'row', gap: 10 }}>
-            <TouchableOpacity onPress={shareLink}
+            <TouchableOpacity onPress={content.invite ? shareImage : shareLink} disabled={busy}
               style={{ flex: 1, backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 999, paddingVertical: 13, alignItems: 'center' }}>
-              <AppText style={{ fontSize: 14, fontWeight: '700', color: PAPER }}>{isPt ? 'Enviar convite' : 'Send invite'}</AppText>
+              <AppText style={{ fontSize: 14, fontWeight: '700', color: PAPER }}>
+                {content.invite ? (isPt ? 'Compartilhar imagem' : 'Share image') : (isPt ? 'Enviar convite' : 'Send invite')}
+              </AppText>
             </TouchableOpacity>
             <TouchableOpacity onPress={copyLink} disabled={!link}
               style={{ flex: 1, backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 999, paddingVertical: 13, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>

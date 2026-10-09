@@ -259,7 +259,7 @@ export function RallySection({ buddies }: { buddies: Buddy[] }) {
                       <TouchableOpacity key={b.id} onPress={() => setInvite(v => (on ? v.filter(x => x !== b.id) : [...v, b.id]))}
                         style={{ flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 8, backgroundColor: on ? C.ink : C.bg }}>
                         {on && <Check size={13} color={C.volt} weight="bold" />}
-                        <AppText style={{ fontSize: 14, fontWeight: '700', color: on ? C.volt : C.ink }}>{b.name ?? t('Dupla', 'Buddy')}</AppText>
+                        <AppText style={{ fontSize: 14, fontWeight: '700', color: on ? C.volt : C.ink }}>{b.name ?? t('Amigo de estudo', 'Study buddy')}</AppText>
                       </TouchableOpacity>
                     );
                   })}

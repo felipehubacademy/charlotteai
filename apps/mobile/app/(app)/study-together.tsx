@@ -139,7 +139,7 @@ export default function StudyTogetherScreen() {
           )}
           <TouchableOpacity
             disabled={!info}
-            onPress={() => setShare({ kind: 'xp', big: t('Bora?', "Let's go?"), title: t('Vem estudar inglês comigo', 'Come study English with me'), subtitle: t('Dupla de estudo no Queizy, com a Charlotte como tutora.', 'Study buddies on Queizy, with Charlotte as our tutor.') })}
+            onPress={() => setShare({ kind: 'xp', big: t('Bora?', "Let's go?"), title: t('Vem estudar inglês comigo', 'Come study English with me'), subtitle: t('Amigos de estudo no Queizy, com a Charlotte como tutora.', 'Study buddies on Queizy, with Charlotte as our tutor.'), invite: true })}
             style={{ marginTop: 14, backgroundColor: C.volt, borderRadius: 999, paddingVertical: 14, alignItems: 'center' }}>
             <AppText style={{ fontSize: 16, fontWeight: '800', color: C.ink }}>{t('Convidar amigos', 'Invite friends')}</AppText>
           </TouchableOpacity>
@@ -152,7 +152,7 @@ export default function StudyTogetherScreen() {
         <SectionTitle title={t('Encontrar amigos', 'Find friends')} />
         <FriendSearchEntry />
 
-        {/* Dupla */}
+        {/* Amigos de estudo */}
         <SectionTitle title={t('Seus amigos de estudo', 'Your study friends')} meta={info?.buddies.length ? String(info.buddies.length) : undefined} />
         <View style={{ paddingHorizontal: 16, gap: 10 }}>
           {info && info.buddies.length === 0 && (
@@ -193,7 +193,7 @@ export default function StudyTogetherScreen() {
                 </View>
                 {/* XP da semana lado a lado */}
                 <View style={{ marginTop: 14, gap: 8 }}>
-                  {[{ label: t('Você', 'You'), xp: info.me.weekXp, color: C.ink }, { label: b.name ?? t('Dupla', 'Buddy'), xp: b.weekXp, color: C.pink }].map(row => (
+                  {[{ label: t('Você', 'You'), xp: info.me.weekXp, color: C.ink }, { label: b.name ?? t('Amigo de estudo', 'Study buddy'), xp: b.weekXp, color: C.pink }].map(row => (
                     <View key={row.label} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                       <AppText style={{ width: 64, fontSize: 12.5, color: C.mid }} numberOfLines={1}>{row.label}</AppText>
                       <View style={{ flex: 1, height: 8, backgroundColor: C.ghost, borderRadius: 999, overflow: 'hidden' }}>
