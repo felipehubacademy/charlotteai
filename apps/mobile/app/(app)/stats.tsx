@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { View, TouchableOpacity, ScrollView, StatusBar, ActivityIndicator } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useLocalSearchParams, router } from 'expo-router';
-import { ShareNetwork, Fire, Trophy, BookOpenText, Lightning, Star, UsersThree, CaretRight, ChartLineUp } from 'phosphor-react-native';
+import { ShareNetwork, Fire, Trophy, BookOpenText, Star, UsersThree, CaretRight, ChartLineUp } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { QueizyWave } from '@/components/ui/QueizyWave';
 import {
@@ -20,9 +20,10 @@ import { systemIsPt } from '@/lib/systemLang';
 import { getBadgesForLevel, CatalogEntry } from '@/lib/achievementsCatalog';
 import { getDailyGoal } from '@/lib/dailyGoal';
 import { useShareCard } from '@/components/share/ShareCardProvider';
-import {
-  checkLevelPromotion, NEXT_LEVEL, PROMOTION_XP_THRESHOLD, TOTAL_TOPICS_PER_LEVEL, PromotionStatus,
-} from '@/lib/levelPromotion';
+import { NEXT_LEVEL } from '@/lib/levelPromotion';
+import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
+import { listModules } from '@/lib/curriculum-v2/loader';
+import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 import { UserLevel } from '@/lib/levelConfig';
 import { localTodayStr } from '@/lib/dateUtils';
 
@@ -52,26 +53,23 @@ export default function StatsScreen() {
   const [rank, setRank]         = useState(0);
   const [top3, setTop3]         = useState<TopEntry[]>([]);
   const [earned, setEarned]     = useState<EarnedRow[]>([]);
-  const [trailDone, setTrailDone] = useState(0);
-  const [promotion, setPromotion] = useState<PromotionStatus | null>(null);
+  const v2Progress = useLearnProgressV2(userId, userLevel as V2Level);
   const [badgeModal, setBadgeModal] = useState<{ cat: CatalogEntry; earnedAt?: Date } | null>(null);
 
   useEffect(() => { if (userId) loadData(); }, [userId]);
 
   const loadData = async () => {
     try {
-      const [statsRes, achRes, learnRes, levelUsersRes] = await Promise.all([
+      const [statsRes, achRes, levelUsersRes] = await Promise.all([
         supabase.from('charlotte_progress').select('streak_days,total_xp,last_practice_date').eq('user_id', userId).maybeSingle(),
         supabase.from('user_achievements')
           .select('id,achievement_type,achievement_name,rarity,category,earned_at')
           .eq('user_id', userId)
           .order('earned_at', { ascending: false }),
-        supabase.from('learn_progress').select('completed').eq('user_id', userId).eq('level', userLevel).maybeSingle(),
         supabase.from('charlotte_users').select('id').eq('charlotte_level', userLevel),
       ]);
 
       const xp = statsRes.data?.total_xp ?? Number(params.totalXP ?? 0);
-      const completed = (learnRes.data?.completed ?? []).length;
       const levelIds = (levelUsersRes.data ?? []).map((u: any) => u.id as string);
 
       const [rankRes, topRes] = await Promise.all([
@@ -102,8 +100,6 @@ export default function StatsScreen() {
         id: a.id, code: a.achievement_type ?? '', title: a.achievement_name ?? '',
         rarity: a.rarity ?? 'common', category: a.category ?? 'general', earnedAt: new Date(a.earned_at),
       })));
-      setTrailDone(completed);
-      setPromotion(await checkLevelPromotion(userId, userLevel, completed));
     } catch {
       // mantém o que já carregou
     } finally {
@@ -113,9 +109,10 @@ export default function StatsScreen() {
 
   // ── Derivados ───────────────────────────────────────────────────────────────
   const nextLevel   = NEXT_LEVEL[userLevel];
-  const xpTarget    = PROMOTION_XP_THRESHOLD[userLevel] ?? 9999;
-  const trailTotal  = promotion?.totalTopics ?? TOTAL_TOPICS_PER_LEVEL[userLevel] ?? 0;
-  const trailCount  = promotion?.completedTopics ?? trailDone;
+  // Trilha: unidades concluídas (as 4 atividades). Concluir todas sobe de nível.
+  const trailUnits  = listModules(userLevel as V2Level).flatMap(m => m.units.map(u => ({ m: m.id, u: u.id })));
+  const trailTotal  = trailUnits.length;
+  const trailCount  = trailUnits.filter(x => v2Progress.isUnitComplete(x.m, x.u)).length;
   const catalog     = getBadgesForLevel(userLevel);
   const catalogMap  = Object.fromEntries(catalog.map(c => [c.code, c]));
   const earnedCodes = new Set(earned.map(e => e.code));
@@ -233,16 +230,7 @@ export default function StatsScreen() {
           </View>
           <QueizyWave progress={trailTotal > 0 ? trailCount / trailTotal : 0} height={14} strokeWidth={4} />
 
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 18, marginBottom: 8 }}>
-            <Lightning size={16} color={C.mid} weight="fill" />
-            <AppText style={{ flex: 1, fontSize: 14, fontWeight: '700', color: C.ink }}>XP</AppText>
-            <AppText style={{ fontSize: 13, fontWeight: '800', color: C.mid }}>
-              {totalXP.toLocaleString()}/{xpTarget.toLocaleString()}
-            </AppText>
-          </View>
-          <QueizyWave progress={totalXP / xpTarget} height={14} strokeWidth={4} />
-
-          {promotion?.eligible && nextLevel && (
+          {trailTotal > 0 && trailCount >= trailTotal && nextLevel && (
             <View style={{
               marginTop: 16, backgroundColor: C.volt, borderRadius: 14,
               paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 8,
