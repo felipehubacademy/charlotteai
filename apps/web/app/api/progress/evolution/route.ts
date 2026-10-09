@@ -10,7 +10,7 @@ import { v2HardestUnits, v2ByActivity, type V2Row as LV2Row } from '@/lib/learni
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 import {
-  DAY, isStudy, pronunciation, grammar, currentStreak,
+  DAY, isStudy, pronunciation, grammarWithTrail, currentStreak, type TrailFeedbackRow,
   type MsgRow,
 } from '@/lib/learning-stats';
 
@@ -49,11 +49,12 @@ export async function GET(req: NextRequest) {
   const since56 = new Date(now - 56 * DAY).toISOString();
   const cut30 = now - 30 * DAY;
 
-  const [userR, progR, msgR, pracR, v2R] = await Promise.all([
+  const [userR, progR, msgR, pracR, tfR, v2R] = await Promise.all([
     supabase.from('charlotte_users').select('name, charlotte_level').eq('id', user.id).maybeSingle(),
     supabase.from('charlotte_progress').select('total_xp, streak_days, last_practice_date').eq('user_id', user.id).maybeSingle(),
     supabase.from('chat_messages').select('user_id, role, mode, content, created_at').eq('user_id', user.id).in('mode', ['pronunciation', 'grammar']).gte('created_at', since60).order('created_at', { ascending: false }).limit(3000),
     supabase.from('charlotte_practices').select('practice_type, created_at').eq('user_id', user.id).gte('created_at', since56).limit(10000),
+    supabase.from('trail_feedback').select('error_free, corrections, created_at').eq('user_id', user.id).gte('created_at', since60).limit(500),
     supabase.from('learn_history_v2').select('user_id, level, module_id, unit_id, activity_type, score, completed, updated_at').eq('user_id', user.id).gte('updated_at', since60).limit(5000),
   ]);
 
@@ -73,8 +74,9 @@ export async function GET(req: NextRequest) {
   const trailPrev = v2Avg(v2Prev);
   const pronNow = pronunciation(msgsNow);
   const pronPrev = pronunciation(msgsPrev);
-  const gramNow = grammar(msgsNow);
-  const gramPrev = grammar(msgsPrev);
+  const tf = (tfR.data ?? []) as TrailFeedbackRow[];
+  const gramNow = grammarWithTrail(msgsNow, tf.filter(r => isRecent(r.created_at)));
+  const gramPrev = grammarWithTrail(msgsPrev, tf.filter(r => !isRecent(r.created_at)));
 
   // Pontos fortes e de atenção (últimos 60 dias, para ter volume).
   // Pontos fortes: unidades com nota média alta (Gramática + Listening & Speaking).

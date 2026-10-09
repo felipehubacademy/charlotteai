@@ -26,6 +26,8 @@ export const PRACTICE_LABEL: Record<string, string> = {
   text_message: 'Chat livre',
   sr_review: 'Revisão espaçada',
   vocab_review: 'Vocabulário',
+  roleplay: 'Role-play (trilha)',
+  guided_chat: 'Guided Chat (trilha)',
 };
 
 export const exLabel = (t: string) => EXERCISE_LABEL[t] ?? t;

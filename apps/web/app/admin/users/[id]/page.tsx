@@ -36,7 +36,7 @@ const personLabel = (x: { name: string | null; username: string | null }) => `${
 
 const TYPE_LABEL: Record<string, string> = {
   text_message: 'Mensagens', audio_message: 'Áudios', grammar_message: 'Gramática', learn_session: 'Trilha',
-  live_voice: 'Live Voice', pronunciation: 'Pronúncia', vocab_review: 'Revisão de vocabulário',
+  live_voice: 'Live Voice', pronunciation: 'Pronúncia', vocab_review: 'Revisão de vocabulário', roleplay: 'Role-play', guided_chat: 'Guided Chat', learn_exercise: 'Trilha',
 };
 const STATUS_LABEL: Record<string, string> = { active: 'Assinante', trial: 'Teste grátis', cancelled: 'Cancelou renovação', expired: 'Expirado', none: 'Sem plano' };
 const SUGGESTED_TAGS = ['vip', 'b2b', 'reclamou', 'promotor', 'precisa contato', 'parceiro igor'];

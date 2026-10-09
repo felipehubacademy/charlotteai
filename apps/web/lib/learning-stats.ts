@@ -88,3 +88,19 @@ export function byTopic(rows: HistRow[], minAnswers: number) {
     .sort((a, b) => a.accuracy - b.accuracy);
 }
 
+
+/** Correções do fim do Role-play e do Guided Chat (tabela trail_feedback). */
+export type TrailFeedbackRow = { error_free: boolean; corrections: { said: string; correct: string }[] | null; created_at: string };
+
+/** Gramática do Practice + conversas da trilha: % sem erro, quantas analisadas e as correções. */
+export function grammarWithTrail(msgs: MsgRow[], tf: TrailFeedbackRow[]) {
+  const g = grammar(msgs);
+  const okChat = Math.round(((g.errorFree ?? 0) * g.analyzed) / 100);
+  const analyzed = g.analyzed + tf.length;
+  const ok = okChat + tf.filter(r => r.error_free).length;
+  const corrections = [
+    ...g.corrections,
+    ...tf.flatMap(r => (r.corrections ?? []).map(c => ({ wrong: c.said, right: c.correct, at: r.created_at }))),
+  ].sort((a, b) => b.at.localeCompare(a.at));
+  return { analyzed, errorFree: pct(ok, analyzed), corrections };
+}

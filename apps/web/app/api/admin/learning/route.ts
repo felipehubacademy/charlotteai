@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
 import {
-  DAY, isStudy, pronunciation, grammar, currentStreak, fetchAll,
+  DAY, isStudy, pronunciation, grammarWithTrail, currentStreak, fetchAll, type TrailFeedbackRow,
   type MsgRow,
 } from '@/lib/learning-stats';
 import { V2_SELECT, v2Accuracy, v2ByActivity, v2HardestUnits, v2Position, type V2Row } from '@/lib/learning-v2';
@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
 
   if (userId) return studentSheet(userId, since, days);
 
-  const [users, progress, practices, msgs, v2] = await Promise.all([
+  const [users, progress, practices, msgs, v2, tfAll] = await Promise.all([
     fetchAll<{ id: string; name: string | null; charlotte_level: string | null; is_active: boolean | null; created_at: string }>((a, b) =>
       supabase.from('charlotte_users').select('id, name, charlotte_level, is_active, created_at').order('created_at', { ascending: false }).range(a, b)),
     fetchAll<{ user_id: string; total_xp: number; streak_days: number; last_practice_date: string | null }>((a, b) =>
@@ -35,6 +35,8 @@ export async function GET(req: NextRequest) {
       supabase.from('chat_messages').select('user_id, role, mode, content, created_at').in('mode', ['pronunciation', 'grammar']).gte('created_at', since).range(a, b), 50000),
     fetchAll<V2Row>((a, b) =>
       supabase.from('learn_history_v2').select(V2_SELECT).gte('updated_at', since).range(a, b), 100000),
+    fetchAll<TrailFeedbackRow>((a, b) =>
+      supabase.from('trail_feedback').select('error_free, corrections, created_at').gte('created_at', since).range(a, b), 50000),
   ]);
 
   const v2By = new Map<string, V2Row[]>();
@@ -79,7 +81,7 @@ export async function GET(req: NextRequest) {
     .map(s => ({ id: s.id, name: s.name, level: s.level, days: Math.floor((now - new Date(s.lastPractice!).getTime()) / DAY) }))
     .sort((a, b) => a.days - b.days).slice(0, 15);
 
-  const g = grammar(msgs);
+  const g = grammarWithTrail(msgs, tfAll);
   const accAll = v2Accuracy(v2);
 
   return NextResponse.json({
@@ -103,7 +105,7 @@ export async function GET(req: NextRequest) {
 
 async function studentSheet(userId: string, since: string, days: number) {
   const supabase = getSupabaseAdmin();
-  const [userR, progR, msgR, pracR, vocabR, srR, sessR, notesR, v2R] = await Promise.all([
+  const [userR, progR, msgR, pracR, vocabR, srR, sessR, notesR, v2R, tfR] = await Promise.all([
     supabase.from('charlotte_users').select('id, name, username, charlotte_level, placement_test_done, created_at, timezone').eq('id', userId).maybeSingle(),
     supabase.from('charlotte_progress').select('total_xp, streak_days, last_practice_date').eq('user_id', userId).maybeSingle(),
     supabase.from('chat_messages').select('user_id, role, mode, content, created_at').eq('user_id', userId).in('mode', ['pronunciation', 'grammar']).gte('created_at', since).order('created_at', { ascending: false }).limit(2000),
@@ -113,6 +115,7 @@ async function studentSheet(userId: string, since: string, days: number) {
     supabase.from('charlotte_chat_sessions').select('id, title, summary, started_at, message_count').eq('user_id', userId).order('started_at', { ascending: false }).limit(8),
     supabase.from('crm_notes').select('id, body, author_name, created_at').eq('user_id', userId).order('created_at', { ascending: false }).limit(50),
     supabase.from('learn_history_v2').select(V2_SELECT).eq('user_id', userId).limit(5000),
+    supabase.from('trail_feedback').select('error_free, corrections, created_at').eq('user_id', userId).gte('created_at', since).limit(500),
   ]);
   const u = userR.data as { id: string; name: string | null; username: string | null; charlotte_level: string | null; placement_test_done: boolean | null; created_at: string } | null;
   if (!u) return NextResponse.json({ error: 'Aluno não encontrado' }, { status: 404 });
@@ -127,7 +130,7 @@ async function studentSheet(userId: string, since: string, days: number) {
     byType[p.practice_type] = (byType[p.practice_type] ?? 0) + 1;
   });
   const pron = pronunciation(msgs);
-  const g = grammar(msgs);
+  const g = grammarWithTrail(msgs, (tfR.data ?? []) as TrailFeedbackRow[]);
   const v2All = (v2R.data ?? []) as V2Row[];
   const v2 = v2All.filter(r => r.updated_at >= since);
   const pos = u.charlotte_level ? v2Position(v2All, u.charlotte_level) : null;
