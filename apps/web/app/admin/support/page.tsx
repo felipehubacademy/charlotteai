@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import { Plus, RefreshCw, Check, X, Pencil, Headphones } from 'lucide-react';
 
 interface Agent { id: string; name: string; email: string | null; whatsapp: string | null; is_active: boolean; }
@@ -27,6 +28,7 @@ export default function SupportAdmin() {
   const [statusFilter, setStatusFilter] = useState('');
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState<{ mode: 'create' | 'edit'; agent?: Agent } | null>(null);
+  const [openConv, setOpenConv] = useState<string | null>(null);
 
   useEffect(() => { setSecret(sessionStorage.getItem('adminSecret') ?? ''); }, []);
 
@@ -85,7 +87,7 @@ export default function SupportAdmin() {
                   <thead><tr><th>Contato</th><th>Canal</th><th>Assunto / última</th><th>Status</th><th>Atendente</th><th>Quando</th></tr></thead>
                   <tbody>
                     {convs.map(c => (
-                      <tr key={c.id}>
+                      <tr key={c.id} onClick={() => setOpenConv(c.id)} style={{ cursor: 'pointer' }}>
                         <td style={{ color: 'var(--t1)', fontWeight: 500 }}>{c.contact}</td>
                         <td>{c.channel}</td>
                         <td style={{ maxWidth: 340 }}>
@@ -138,6 +140,7 @@ export default function SupportAdmin() {
       </div>
 
       {modal && <AgentModal mode={modal.mode} agent={modal.agent} onClose={() => setModal(null)} onSave={saveAgent} />}
+      {openConv && <ConversationModal id={openConv} onClose={() => setOpenConv(null)} onChanged={loadQueue} />}
     </div>
   );
 }
@@ -162,6 +165,91 @@ function AgentModal({ mode, agent, onClose, onSave }: {
           <button className="adm-btn-sm ghost" onClick={onClose}>Cancelar</button>
           <button className="adm-btn-sm primary" disabled={!name.trim()} onClick={() => onSave({ id: agent?.id, name: name.trim(), email: email.trim(), whatsapp: whatsapp.trim(), is_active: agent?.is_active ?? true })}>Salvar</button>
         </div>
+      </div>
+    </div>
+  );
+}
+
+interface Thread {
+  conversation: { id: string; channel: string; contact: string; subject: string | null; status: string; agentName: string | null; createdAt: string };
+  messages: { id: string; direction: string; author: string; body: string; intent: string | null; auto_sent: boolean; created_at: string }[];
+  user: { id: string; name: string | null; username: string | null; email: string; charlotte_level: string | null; subscription_status: string; is_institutional: boolean } | null;
+}
+const AUTHOR: Record<string, string> = { user: 'Aluno', agent: 'Agente automático', human: 'Atendente' };
+
+function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: () => void; onChanged: () => void }) {
+  const [data, setData] = useState<Thread | null>(null);
+  const [reply, setReply] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+
+  const load = useCallback(async () => {
+    const r = await fetch(`/api/admin/support/conversations?id=${id}`);
+    if (r.ok) setData(await r.json()); else setErr('Não foi possível abrir a conversa.');
+  }, [id]);
+  useEffect(() => { load(); }, [load]);
+
+  const post = async (body: Record<string, unknown>) => {
+    setBusy(true); setErr(null);
+    try {
+      const r = await fetch('/api/admin/support/conversations', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, ...body }) });
+      if (!r.ok) { setErr((await r.json().catch(() => ({}))).error ?? 'Não foi possível salvar.'); return false; }
+      await load(); onChanged(); return true;
+    } finally { setBusy(false); }
+  };
+
+  const c = data?.conversation;
+  return (
+    <div className="adm-modal-backdrop" onClick={onClose}>
+      <div className="adm-modal" style={{ width: 'min(720px, 94vw)', maxHeight: '88vh', display: 'flex', flexDirection: 'column' }} onClick={e => e.stopPropagation()}>
+        <div className="adm-modal-hdr">
+          <div style={{ minWidth: 0 }}>
+            <div className="adm-modal-title">{c?.subject || 'Conversa'}</div>
+            {c && <div style={{ fontSize: 12, color: 'var(--t3)', marginTop: 2 }}>{c.contact} · {c.channel} · {STATUS_LABEL[c.status] ?? c.status}{c.agentName ? ` · ${c.agentName}` : ''}</div>}
+          </div>
+          <button className="adm-btn-sm ghost" onClick={onClose}><X size={13} /></button>
+        </div>
+        <div className="adm-modal-body" style={{ overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {!data && !err && <div style={{ color: 'var(--t3)' }}>Carregando…</div>}
+          {data?.user ? (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, background: 'var(--s2)', borderRadius: 10, padding: '10px 12px', fontSize: 13 }}>
+              <div>
+                <b>{data.user.name || 'Sem nome'}</b>{data.user.username ? <span style={{ color: 'var(--t2)' }}> · @{data.user.username}</span> : null}
+                <div style={{ color: 'var(--t3)', fontSize: 12 }}>{data.user.charlotte_level ?? '—'} · {data.user.is_institutional ? 'Institucional' : data.user.subscription_status}</div>
+              </div>
+              <Link href={`/admin/users/${data.user.id}`} className="adm-btn-sm ghost">Ver aluno</Link>
+            </div>
+          ) : data && <div style={{ fontSize: 12.5, color: 'var(--t3)' }}>Contato sem conta no app.</div>}
+          {data?.messages.map(m => (
+            <div key={m.id} style={{ alignSelf: m.direction === 'in' ? 'flex-start' : 'flex-end', maxWidth: '85%', background: m.direction === 'in' ? 'var(--s1)' : 'var(--volt)', border: '1px solid var(--b1)', borderRadius: 12, padding: '9px 12px' }}>
+              <div style={{ fontSize: 11, color: 'var(--t3)', marginBottom: 4 }}>{AUTHOR[m.author] ?? m.author}{m.intent ? ` · ${m.intent}` : ''} · {fmt(m.created_at)}</div>
+              <div style={{ fontSize: 13, color: 'var(--t1)', whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>{m.body}</div>
+            </div>
+          ))}
+          {err && <div className="adm-alert crit">{err}</div>}
+        </div>
+        {c && (
+          <div className="adm-modal-footer" style={{ flexDirection: 'column', alignItems: 'stretch', gap: 8 }}>
+            {c.channel === 'email' ? (
+              <textarea className="adm-input" rows={4} value={reply} onChange={e => setReply(e.target.value)} placeholder={`Responder para ${c.contact}…`} style={{ resize: 'vertical' }} />
+            ) : (
+              <div style={{ fontSize: 12.5, color: 'var(--t3)' }}>Responder por aqui ainda só funciona em conversas de e-mail.</div>
+            )}
+            <div style={{ display: 'flex', gap: 8, justifyContent: 'space-between', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: 6 }}>
+                {c.status !== 'closed'
+                  ? <button className="adm-btn-sm ghost" disabled={busy} onClick={() => post({ action: 'status', status: 'closed' })}><Check size={12} /> Fechar sem responder</button>
+                  : <button className="adm-btn-sm ghost" disabled={busy} onClick={() => post({ action: 'status', status: 'open' })}>Reabrir</button>}
+              </div>
+              {c.channel === 'email' && (
+                <div style={{ display: 'flex', gap: 6 }}>
+                  <button className="adm-btn-sm ghost" disabled={busy || !reply.trim()} onClick={async () => { if (await post({ action: 'reply', body: reply, close: false })) setReply(''); }}>Enviar</button>
+                  <button className="adm-btn-sm primary" disabled={busy || !reply.trim()} onClick={async () => { if (await post({ action: 'reply', body: reply, close: true })) setReply(''); }}>Enviar e fechar</button>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
