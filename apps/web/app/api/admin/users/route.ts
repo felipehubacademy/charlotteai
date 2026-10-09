@@ -7,6 +7,7 @@ export const dynamic = 'force-dynamic';
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { fetchAll } from '@/lib/learning-stats';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
@@ -25,10 +26,6 @@ interface CharlotteUser {
 interface Practice {
   user_id: string; xp_earned: number | null;
   practice_type: string; created_at: string;
-}
-interface LearnProgress {
-  user_id: string; completed: unknown; module_index: number | null;
-  topic_index: number | null; level: string | null;
 }
 type TrailLevelKey = 'novice' | 'inter' | 'advanced';
 interface UserProgress {
@@ -56,7 +53,9 @@ export async function GET(req: NextRequest) {
   ] = await Promise.all([
     supabase.from('charlotte_users').select('*').order('created_at', { ascending: false }) as unknown as Promise<{ data: CharlotteUser[] | null; error: { message: string } | null }>,
     supabase.from('charlotte_practices').select('user_id, xp_earned, practice_type, created_at') as unknown as Promise<{ data: Practice[] | null; error: unknown }>,
-    supabase.from('learn_progress').select('user_id, completed, module_index, topic_index, level') as unknown as Promise<{ data: LearnProgress[] | null; error: unknown }>,
+    fetchAll<{ user_id: string; level: string; module_id: string; unit_id: string; activity_type: string }>((a, b) =>
+      supabase.from('learn_history_v2').select('user_id, level, module_id, unit_id, activity_type').eq('completed', true).range(a, b), 200000)
+      .then(data => ({ data, error: null })),
     supabase.from('charlotte_progress').select('user_id, streak_days, total_xp, last_practice_date') as unknown as Promise<{ data: UserProgress[] | null; error: unknown }>,
   ]);
 
@@ -86,17 +85,22 @@ export async function GET(req: NextRequest) {
     if (['text_message', 'audio_message', 'grammar_message'].includes(p.practice_type)) e.messageCount++;
   }
 
-  // ── Aggregate learn_progress per user (all levels) ───────────────────────
+  // ── Trilha nova: unidades concluídas (as 4 atividades) por nível ─────────
   type ProgMap = Record<string, { novice: number; inter: number; advanced: number }>;
   const progMap: ProgMap = {};
   const levelKey: Record<string, TrailLevelKey> = { Novice: 'novice', Inter: 'inter', Advanced: 'advanced' };
-  for (const lp of (learnProgress ?? [])) {
-    const key = levelKey[lp.level ?? 'Novice'];
+  const acts = new Map<string, Set<string>>();
+  for (const r of (learnProgress ?? [])) {
+    const k = `${String(r.user_id).toLowerCase()}|${r.level}|${r.module_id}|${r.unit_id}`;
+    acts.set(k, (acts.get(k) ?? new Set()).add(r.activity_type));
+  }
+  for (const [k, set] of acts) {
+    if (set.size < 4) continue;
+    const [uid, level] = k.split('|');
+    const key = levelKey[level];
     if (!key) continue;
-    const uid = String(lp.user_id).toLowerCase();
-    const completed = (lp.completed as Array<{ m: number; t: number }>) ?? [];
     if (!progMap[uid]) progMap[uid] = { novice: 0, inter: 0, advanced: 0 };
-    progMap[uid][key] = completed.length;
+    progMap[uid][key]++;
   }
 
   // ── Progress map (streak + total_xp + last_practice_date) ───────────────
