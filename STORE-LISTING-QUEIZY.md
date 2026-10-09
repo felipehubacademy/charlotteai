@@ -39,7 +39,7 @@ ACOMPANHE A SUA EVOLUÇÃO
 Veja o que você já domina, o que vale treinar e receba toda semana um resumo da Charlotte sobre o seu progresso.
 
 ESTUDE JUNTO
-Convide amigos, formem uma dupla de estudo e ganhem minutos extras de conversa por voz. Compartilhe suas conquistas nos Stories, no WhatsApp e onde quiser.
+Ache seus amigos pelo nome ou @, estudem juntos, disputem competições de 24 horas ou 7 dias e ganhem minutos extras de conversa por voz. Compartilhe suas conquistas nos Stories, no WhatsApp e onde quiser.
 
 MOTIVAÇÃO TODO DIA
 XP, sequência de dias, metas, missões, conquistas e ranking para você não parar.
