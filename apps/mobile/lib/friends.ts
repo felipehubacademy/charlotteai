@@ -6,7 +6,7 @@ import { supabase } from './supabase';
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
 export type FriendRelation = 'friend' | 'pending_in' | 'pending_out' | null;
-export interface Person { id: string; name: string; username: string | null; level: string | null; avatarUrl: string | null; relation?: FriendRelation }
+export interface Person { id: string; name: string; username: string | null; level: string | null; avatarUrl: string | null; relation?: FriendRelation; canRemind?: boolean }
 
 async function authed(path: string, init?: RequestInit): Promise<Response> {
   const { data } = await supabase.auth.getSession();
@@ -50,6 +50,7 @@ async function post(body: Record<string, unknown>): Promise<{ ok: boolean; error
 
 export const requestFriend = (to: string) => post({ action: 'request', to });
 export const acceptFriend = (from: string) => post({ action: 'accept', from });
+export const remindFriend = (to: string) => post({ action: 'remind', to });
 export const declineFriend = (from: string) => post({ action: 'decline', from });
 export const setSearchable = (value: boolean) => post({ action: 'searchable', value });
 export const setUsername = (value: string) => post({ action: 'username', value });

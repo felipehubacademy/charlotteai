@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
+import { fetchSocial } from '@/lib/social';
 import {
   User, Key, DeviceMobile, GraduationCap, Buildings,
   SignOut, FileText,
@@ -63,6 +64,8 @@ interface SettingRowProps {
   onPress?: () => void;
   destructive?: boolean;
   chevron?: boolean;
+  /** Número rosa à direita (ex.: pedidos esperando resposta). */
+  badge?: number;
 }
 
 // Ícone da linha dentro de um círculo neutro (rosa claro nas destrutivas).
@@ -79,7 +82,7 @@ function RowIcon({ children, destructive }: { children: React.ReactNode; destruc
 }
 
 // Row inside a SettingGroup card — no own card styling
-function SettingRow({ icon, label, value, valueColor, onPress, destructive = false, chevron }: SettingRowProps) {
+function SettingRow({ icon, label, value, valueColor, onPress, destructive = false, chevron, badge }: SettingRowProps) {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -93,6 +96,11 @@ function SettingRow({ icon, label, value, valueColor, onPress, destructive = fal
       <AppText style={{ flex: 1, fontSize: 15, fontWeight: '600', color: destructive ? C.error : C.navy }}>
         {label}
       </AppText>
+      {!!badge && (
+        <View style={{ minWidth: 22, height: 22, borderRadius: 11, paddingHorizontal: 6, backgroundColor: '#FF4F8B', alignItems: 'center', justifyContent: 'center' }}>
+          <AppText style={{ fontSize: 12, fontWeight: '800', color: '#FFFFFF' }}>{badge > 9 ? '9+' : badge}</AppText>
+        </View>
+      )}
       {!!value && (
         <AppText style={{ fontSize: 13, color: valueColor ?? C.navyLight, fontWeight: '700' }}>
           {value}
@@ -203,6 +211,14 @@ export default function ProfileTab() {
   useFocusEffect(useCallback(() => {
     setNameValue(profile?.name ?? '');
   }, [profile?.name]));
+
+  // Pedidos de amizade e convites de competição esperando resposta.
+  const [socialPending, setSocialPending] = useState(0);
+  useFocusEffect(useCallback(() => {
+    let alive = true;
+    fetchSocial().then(s => { if (alive && s) setSocialPending((s.pendingRequests?.length ?? 0) + (s.rallyInvites?.length ?? 0)); });
+    return () => { alive = false; };
+  }, []));
 
   const handleSaveName = async () => {
     const trimmed = nameValue.trim();
@@ -559,6 +575,7 @@ export default function ProfileTab() {
             icon={<UsersThree size={18} color={C.navy} weight="regular" />}
             label={isPt ? 'Estudar junto' : 'Study together'}
             onPress={() => router.push('/(app)/study-together' as any)}
+            badge={socialPending}
             chevron
           />
         </SettingGroup>

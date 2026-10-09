@@ -6,7 +6,7 @@ import { systemIsPt } from './systemLang';
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
 export interface FeedItem { id: string; userId: string; name: string | null; code: string; title: string; rarity: string; category: string; earnedAt: string; cheered: boolean }
-export interface SocialInfo { studyingNow: number; buddiesNow: string[]; feed: FeedItem[] }
+export interface SocialInfo { studyingNow: number; buddiesNow: string[]; pendingRequests?: string[]; rallyInvites?: string[]; feed: FeedItem[] }
 
 async function authed(path: string, init?: RequestInit): Promise<Response> {
   const { data } = await supabase.auth.getSession();

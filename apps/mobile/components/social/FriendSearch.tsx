@@ -3,13 +3,13 @@
 // enviado, Aceitar ou Amigo de estudo. Usado no ranking e em Estudar junto.
 import React, { useEffect, useRef, useState } from 'react';
 import { View, TextInput, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
-import { MagnifyingGlass, UserPlus, Check, Clock, X, DotsThreeVertical } from 'phosphor-react-native';
+import { MagnifyingGlass, UserPlus, Check, Clock, X, DotsThreeVertical, BellRinging } from 'phosphor-react-native';
 import { openUserActions } from '@/lib/moderation';
 import { router } from 'expo-router';
 import { AppText } from '@/components/ui/Text';
 import { C, Card } from '@/components/stats/StatsUI';
 import { systemIsPt } from '@/lib/systemLang';
-import { searchPeople, requestFriend, acceptFriend, Person } from '@/lib/friends';
+import { searchPeople, requestFriend, acceptFriend, remindFriend, Person } from '@/lib/friends';
 
 function Face({ p }: { p: Person }) {
   if (p.avatarUrl) return <Image source={{ uri: p.avatarUrl }} style={{ width: 40, height: 40, borderRadius: 20 }} />;
@@ -43,6 +43,13 @@ export function FriendSearch({ onChange, autoFocus }: { onChange?: () => void; a
 
   const act = async (p: Person) => {
     setBusy(p.id);
+    if (p.relation === 'pending_out') {
+      // Lembrar: manda o push de novo (no máximo 1 vez por dia).
+      const r = await remindFriend(p.id);
+      setBusy(null);
+      if (r.ok) setResults(v => v?.map(x => (x.id === p.id ? { ...x, canRemind: false, reminded: true } : x)) ?? v);
+      return;
+    }
     const r = p.relation === 'pending_in' ? await acceptFriend(p.id) : await requestFriend(p.id);
     setBusy(null);
     if (r.ok) {
@@ -74,10 +81,10 @@ export function FriendSearch({ onChange, autoFocus }: { onChange?: () => void; a
             </AppText>
           ) : results.map((p, i) => {
             const label = p.relation === 'friend' ? t('Amigo', 'Friend')
-              : p.relation === 'pending_out' ? t('Enviado', 'Sent')
+              : p.relation === 'pending_out' ? (p.canRemind ? t('Lembrar', 'Remind') : (p as Person & { reminded?: boolean }).reminded ? t('Lembrado', 'Reminded') : t('Enviado', 'Sent'))
               : p.relation === 'pending_in' ? t('Aceitar', 'Accept')
               : t('Adicionar', 'Add');
-            const done = p.relation === 'friend' || p.relation === 'pending_out';
+            const done = p.relation === 'friend' || (p.relation === 'pending_out' && !p.canRemind);
             return (
               <View key={p.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 12, paddingVertical: 10, borderTopWidth: i ? 1 : 0, borderTopColor: C.border }}>
                 <Face p={p} />
@@ -91,7 +98,8 @@ export function FriendSearch({ onChange, autoFocus }: { onChange?: () => void; a
                   style={{ flexDirection: 'row', alignItems: 'center', gap: 5, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 8, backgroundColor: done ? C.ghost : p.relation === 'pending_in' ? C.ink : C.voltBg }}>
                   {busy === p.id ? <ActivityIndicator size="small" color={C.ink} />
                     : p.relation === 'friend' ? <Check size={14} color={C.light} weight="bold" />
-                    : p.relation === 'pending_out' ? <Clock size={14} color={C.light} weight="bold" />
+                    : p.relation === 'pending_out' && !p.canRemind ? <Clock size={14} color={C.light} weight="bold" />
+                    : p.relation === 'pending_out' ? <BellRinging size={14} color={C.ink} weight="bold" />
                     : <UserPlus size={14} color={p.relation === 'pending_in' ? C.volt : C.ink} weight="bold" />}
                   <AppText style={{ fontSize: 13, fontWeight: '800', color: done ? C.light : p.relation === 'pending_in' ? C.volt : C.ink }}>{label}</AppText>
                 </TouchableOpacity>
