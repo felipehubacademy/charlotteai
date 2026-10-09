@@ -878,26 +878,22 @@ export default function RolePlayExerciseScreen() {
       {sessionComplete && (
         <View style={{
           ...StyleSheetAbsoluteFill,
-          backgroundColor: 'rgba(22,19,31,0.55)',
+          backgroundColor: C.bg,
           alignItems: 'center', justifyContent: 'center',
-          padding: 24,
         }}>
           <View style={{
-            backgroundColor: C.card, borderRadius: 20,
-            width: '100%', maxWidth: 400, maxHeight: '92%', overflow: 'hidden',
-            shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 16,
-            shadowOffset: { width: 0, height: 6 }, elevation: 10,
+            width: '100%', maxWidth: 440, flex: 1,
           }}>
           {/* Rolável: com as correções o card pode passar da altura em telas pequenas. */}
-          <ScrollView bounces={false} showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: 24, alignItems: 'center' }}>
+          <ScrollView bounces={false} showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingHorizontal: 28, paddingTop: 64, paddingBottom: 40, alignItems: 'center' }}>
             <View style={{
-              width: 64, height: 64, borderRadius: 32,
-              backgroundColor: allObjectivesDone ? 'rgba(8,128,74,0.12)' : 'rgba(255,79,139,0.12)',
-              alignItems: 'center', justifyContent: 'center', marginBottom: 16,
+              width: 88, height: 88, borderRadius: 44,
+              backgroundColor: allObjectivesDone ? '#DCFF4A' : 'rgba(255,79,139,0.16)',
+              alignItems: 'center', justifyContent: 'center', marginBottom: 22,
             }}>
-              <Trophy size={32} color={allObjectivesDone ? C.greenDark : '#D12A64'} weight="fill" />
+              <Trophy size={42} color={C.navy} weight="fill" />
             </View>
-            <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, marginBottom: 4 }}>
+            <AppText display style={{ fontSize: 28, fontWeight: '800', color: C.navy, marginBottom: 6, textAlign: 'center' }}>
               {allObjectivesDone
                 ? (isPt ? 'Boa! Você acertou.' : 'Nice! You got it.')
                 : remainingSec === 0
@@ -968,49 +964,27 @@ export default function RolePlayExerciseScreen() {
             <ConversationFeedbackBlock feedback={feedback} loading={feedbackLoading} />
 
             {/* Stats line */}
-            <View style={{
-              flexDirection: 'row', justifyContent: 'space-around',
-              width: '100%', paddingVertical: 12,
-              borderTopWidth: 1, borderTopColor: C.border,
-              borderBottomWidth: 1, borderBottomColor: C.border,
-              marginBottom: 20,
-            }}>
-              <View style={{ alignItems: 'center' }}>
-                <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
+            {/* Tempo e XP: mesma linguagem da conclusão da Gramática (pílula Tinta + Volt). */}
+            <View style={{ flexDirection: 'row', gap: 8, marginBottom: 28, marginTop: 4 }}>
+              <View style={{ backgroundColor: 'rgba(22,19,31,0.06)', borderRadius: 20, paddingHorizontal: 14, paddingVertical: 6 }}>
+                <AppText style={{ fontSize: 14, fontWeight: '800', color: C.navy }}>
                   {Math.floor((rp.time_budget_sec - remainingSec) / 60)}:{((rp.time_budget_sec - remainingSec) % 60).toString().padStart(2, '0')}
-                </AppText>
-                <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>
-                  {isPt ? 'Tempo' : 'Time'}
-                </AppText>
-              </View>
-              <View style={{ alignItems: 'center' }}>
-                <AppText display style={{ fontSize: 18, fontWeight: '800', color: allObjectivesDone ? C.greenDark : '#D12A64' }}>
-                  {Math.round((objectivesDone / objectivesTotal) * 100)}%
-                </AppText>
-                <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>
-                  {isPt ? 'Objetivos' : 'Goals'}
                 </AppText>
               </View>
               {xpEarned > 0 && (
-                <View style={{ alignItems: 'center' }}>
-                  <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>+{xpEarned}</AppText>
-                  <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>XP</AppText>
+                <View style={{ backgroundColor: C.navy, borderRadius: 20, paddingHorizontal: 14, paddingVertical: 6 }}>
+                  <AppText style={{ fontSize: 14, fontWeight: '800', color: '#DCFF4A' }}>+{xpEarned} XP</AppText>
                 </View>
               )}
             </View>
 
-            {/* Action buttons */}
-            <View style={{ flexDirection: 'row', gap: 10, width: '100%' }}>
+            <View style={{ flexDirection: 'column-reverse', alignItems: 'center', gap: 14, width: '100%' }}>
               <TouchableOpacity
                 onPress={restartSession}
-                style={{
-                  flex: 1, paddingVertical: 14, borderRadius: 14,
-                  backgroundColor: 'rgba(22,19,31,0.06)',
-                  alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8,
-                }}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 6 }}
               >
-                <ArrowsClockwise size={18} color={C.navy} weight="bold" />
-                <AppText style={{ fontSize: 14, fontWeight: '700', color: C.navy }}>
+                <ArrowsClockwise size={15} color={C.navyLight} weight="bold" />
+                <AppText style={{ fontSize: 14, fontWeight: '600', color: C.navyLight }}>
                   {isPt ? 'Refazer' : 'Try again'}
                 </AppText>
               </TouchableOpacity>
@@ -1028,13 +1002,9 @@ export default function RolePlayExerciseScreen() {
                     router.back();
                   }
                 }}
-                style={{
-                  flex: 1, paddingVertical: 14, borderRadius: 14,
-                  backgroundColor: C.green,
-                  alignItems: 'center',
-                }}
+                style={{ alignSelf: 'stretch', paddingVertical: 16, borderRadius: 16, backgroundColor: C.navy, alignItems: 'center' }}
               >
-                <AppText style={{ fontSize: 14, fontWeight: '700', color: '#FFF' }}>
+                <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>
                   {isPt ? 'Continuar' : 'Continue'}
                 </AppText>
               </TouchableOpacity>
