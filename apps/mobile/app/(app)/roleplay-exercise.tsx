@@ -17,7 +17,7 @@ import {
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams, useFocusEffect } from 'expo-router';
-import { ArrowLeft, Microphone, X as XIcon, CheckCircle, Lightbulb, Trophy, ArrowsClockwise } from 'phosphor-react-native';
+import { ArrowLeft, Microphone, X as XIcon, CheckCircle, Lightbulb, Trophy, Clock, ArrowsClockwise } from 'phosphor-react-native';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Haptics from '@/lib/hapticsGated';
 import Constants from 'expo-constants';
@@ -34,6 +34,8 @@ import type { Level as V2Level, RolePlay } from '@/lib/curriculum-v2/types';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { recordConversationPractice, fetchConversationFeedback, ConversationFeedback } from '@/lib/trailFeedback';
 import { ConversationFeedbackBlock } from '@/components/trail/ConversationFeedbackBlock';
+import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
+import { useTotalXP } from '@/hooks/useTotalXP';
 import { soundEngine } from '@/lib/soundEngine';
 
 const API_BASE_URL =
@@ -134,6 +136,8 @@ export default function RolePlayExerciseScreen() {
 
   // v2 progress (write on completion)
   const v2Progress = useLearnProgressV2(userId, level);
+  // XP no topo, igual à trilha: +5 a cada objetivo cumprido e +10 ao concluir.
+  const baseTotalXP = useTotalXP(userId);
 
   // Conversation history for the backend (just role + content)
   const historyRef = useRef<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
@@ -657,6 +661,9 @@ export default function RolePlayExerciseScreen() {
           </AppText>
         </View>
         {/* Timer pill — fica vermelho nos últimos 30s */}
+        <View style={{ marginRight: 8 }}>
+          <AnimatedXPBadge xp={baseTotalXP + (xpEarned > 0 ? xpEarned : objectivesMet.size * 5)} iconSize={13} fontSize={13} padH={10} padV={5} />
+        </View>
         <View style={{
           backgroundColor: timerWarn ? 'rgba(255,79,139,0.10)' : 'rgba(22,19,31,0.06)',
           paddingHorizontal: 10, paddingVertical: 5,
@@ -891,7 +898,9 @@ export default function RolePlayExerciseScreen() {
               backgroundColor: allObjectivesDone ? '#DCFF4A' : 'rgba(255,79,139,0.16)',
               alignItems: 'center', justifyContent: 'center', marginBottom: 22,
             }}>
-              <Trophy size={42} color={C.navy} weight="fill" />
+              {!allObjectivesDone && objectivesDone === 0 && remainingSec === 0
+                ? <Clock size={42} color={C.navy} weight="fill" />
+                : <Trophy size={42} color={C.navy} weight="fill" />}
             </View>
             <AppText display style={{ fontSize: 28, fontWeight: '800', color: C.navy, marginBottom: 6, textAlign: 'center' }}>
               {allObjectivesDone
