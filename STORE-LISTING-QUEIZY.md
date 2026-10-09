@@ -19,8 +19,8 @@ Locale primário pt-BR, secundário en-US. Contagem de caracteres entre parênte
 - **EN:** `english,learn english,speaking,pronunciation,fluency,grammar,AI tutor,conversation,language` (91)
 
 ## Texto promocional da App Store (até 170)
-- **PT:** `Novo: a Charlotte agora é Queizy. Estude junto com amigos, compartilhe suas conquistas e acompanhe a sua evolução semana a semana.` (130)
-- **EN:** `New: Charlotte is now Queizy. Study together with friends, share your achievements and follow your progress week by week.` (122)
+- **PT:** `Converse em inglês com a Charlotte, sua tutora de IA. Estude junto com amigos, dispute competições e acompanhe a sua evolução semana a semana.` (142)
+- **EN:** `Talk in English with Charlotte, your AI tutor. Study together with friends, compete in challenges and follow your progress week by week.` (137)
 
 ## Descrição (pt-BR)
 ```
@@ -78,8 +78,8 @@ Start with a 7-day free trial. Then subscribe for full access.
 ## Novidades desta versão (What's New / Notas da versão)
 - **PT:**
 ```
-A Charlotte agora é Queizy! Novo visual, nova marca e a mesma tutora que você conhece.
-- Trilha nova com Grammar, Listening & Speaking, Role-play e Guided Chat
+Boas-vindas ao Queizy! Pratique inglês todo dia com a Charlotte, sua tutora de IA.
+- Trilha com Grammar, Listening & Speaking, Role-play e Guided Chat
 - Estude junto: ache amigos pelo nome ou @, cutuque e dispute competições de 24 horas ou 7 dias
 - Compartilhe conquistas, sequência e nível como imagem nas suas redes
 - Minha evolução: o que você domina, o que vale treinar e um resumo semanal da Charlotte
@@ -88,8 +88,8 @@ A Charlotte agora é Queizy! Novo visual, nova marca e a mesma tutora que você 
 ```
 - **EN:**
 ```
-Charlotte is now Queizy! A new look, a new brand and the same tutor you know.
-- New learning path with Grammar, Listening & Speaking, Role-play and Guided Chat
+Welcome to Queizy! Practice English every day with Charlotte, your AI tutor.
+- Learning path with Grammar, Listening & Speaking, Role-play and Guided Chat
 - Study together: find friends by name or @, nudge them and compete in 24-hour or 7-day challenges
 - Share achievements, streaks and level as images on your socials
 - My progress: what you've mastered, what to practice and a weekly summary from Charlotte
