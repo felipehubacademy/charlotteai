@@ -14,7 +14,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View, TouchableOpacity, StatusBar, ActivityIndicator,
-   Platform, TextInput, Animated,
+   Platform, TextInput, Animated, ScrollView,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { setAudioModeAsync, setIsAudioActiveAsync } from 'expo-audio';
@@ -37,6 +37,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { getModule, listModules } from '@/lib/curriculum-v2/loader';
 import type { Level as V2Level, GuidedChat } from '@/lib/curriculum-v2/types';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
+import { recordConversationPractice, fetchConversationFeedback, ConversationFeedback } from '@/lib/trailFeedback';
+import { ConversationFeedbackBlock } from '@/components/trail/ConversationFeedbackBlock';
 import { soundEngine } from '@/lib/soundEngine';
 
 const API_BASE_URL =
@@ -188,6 +190,9 @@ export default function GuidedChatExerciseScreen() {
   // COMPLETION-BASED: threshold chat=0 — qualquer save destrava proxima.
   // Engagement guard: so salva se aluno mandou >= 1 mensagem.
   const savedRef = useRef(false);
+  const [feedback, setFeedback] = useState<ConversationFeedback | null>(null);
+  const [feedbackLoading, setFeedbackLoading] = useState(false);
+  const [xpEarned, setXpEarned] = useState(0);
   useEffect(() => {
     if (!sessionComplete || savedRef.current || !gc) return;
     const userMsgCount = messages.filter(m => m.role === 'user').length;
@@ -200,6 +205,12 @@ export default function GuidedChatExerciseScreen() {
     const score = Math.round((objectivesMet.size / total) * 100);
     v2Progress.saveAttempt(moduleId, unitId, 'chat', score)
       .catch(e => console.warn('[guided-chat] saveAttempt failed', e));
+    // XP da conversa (conta para sequência, metas e ranking) e correção do inglês no fim.
+    if (userId) recordConversationPractice(userId, 'chat', objectivesMet.size).then(setXpEarned);
+    const lines = historyRef.current.filter(h => h.role === 'user').map(h => h.content).filter(Boolean);
+    setFeedbackLoading(true);
+    fetchConversationFeedback({ level, moduleId, unitId, activity: 'chat', topic: getModule(level, moduleId)?.units.find(u => u.id === unitId)?.title, lines })
+      .then(setFeedback).finally(() => setFeedbackLoading(false));
   }, [sessionComplete, gc, objectivesMet, moduleId, unitId, v2Progress, messages]);
 
   // Restart session (Refazer button)
@@ -211,6 +222,7 @@ export default function GuidedChatExerciseScreen() {
     setHintVisible(null);
     setDraft('');
     savedRef.current = false;
+    setFeedback(null); setXpEarned(0);
     stuckTurnsRef.current = 0;
     const id = `assist_${Date.now()}`;
     const openerText = gc.scripted
@@ -629,11 +641,13 @@ export default function GuidedChatExerciseScreen() {
           alignItems: 'center', justifyContent: 'center', padding: 24,
         }}>
           <View style={{
-            backgroundColor: C.card, borderRadius: 20, padding: 24,
-            width: '100%', maxWidth: 400, alignItems: 'center',
+            backgroundColor: C.card, borderRadius: 20,
+            width: '100%', maxWidth: 400, maxHeight: '92%', overflow: 'hidden',
             shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 16,
             shadowOffset: { width: 0, height: 6 }, elevation: 10,
           }}>
+          {/* Rolável: com as correções o card pode passar da altura em telas pequenas. */}
+          <ScrollView bounces={false} showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: 24, alignItems: 'center' }}>
             <View style={{
               width: 64, height: 64, borderRadius: 32,
               backgroundColor: allObjectivesDone ? 'rgba(8,128,74,0.12)' : 'rgba(255,79,139,0.12)',
@@ -683,6 +697,8 @@ export default function GuidedChatExerciseScreen() {
               </View>
             )}
 
+            <ConversationFeedbackBlock feedback={feedback} loading={feedbackLoading} />
+
             <View style={{
               flexDirection: 'row', justifyContent: 'space-around',
               width: '100%', paddingVertical: 12,
@@ -703,9 +719,15 @@ export default function GuidedChatExerciseScreen() {
                   {Math.round((objectivesDone / objectivesTotal) * 100)}%
                 </AppText>
                 <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>
-                  {isPt ? 'Score' : 'Score'}
+                  {isPt ? 'Objetivos' : 'Goals'}
                 </AppText>
               </View>
+              {xpEarned > 0 && (
+                <View style={{ alignItems: 'center' }}>
+                  <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>+{xpEarned}</AppText>
+                  <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>XP</AppText>
+                </View>
+              )}
             </View>
 
             <View style={{ flexDirection: 'row', gap: 10, width: '100%' }}>
@@ -777,6 +799,7 @@ export default function GuidedChatExerciseScreen() {
                 </AppText>
               </TouchableOpacity>
             </View>
+          </ScrollView>
           </View>
         </View>
       )}

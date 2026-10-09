@@ -32,6 +32,8 @@ import { useAudioRecorder } from '@/hooks/useAudioRecorder';
 import { getModule } from '@/lib/curriculum-v2/loader';
 import type { Level as V2Level, RolePlay } from '@/lib/curriculum-v2/types';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
+import { recordConversationPractice, fetchConversationFeedback, ConversationFeedback } from '@/lib/trailFeedback';
+import { ConversationFeedbackBlock } from '@/components/trail/ConversationFeedbackBlock';
 import { soundEngine } from '@/lib/soundEngine';
 
 const API_BASE_URL =
@@ -240,6 +242,9 @@ export default function RolePlayExerciseScreen() {
   // Engagement guard: so salva se aluno mandou >= 1 mensagem. Evita save
   // quando aluno entrou e saiu sem nada (back btn imediato).
   const savedRef = useRef(false);
+  const [feedback, setFeedback] = useState<ConversationFeedback | null>(null);
+  const [feedbackLoading, setFeedbackLoading] = useState(false);
+  const [xpEarned, setXpEarned] = useState(0);
   useEffect(() => {
     if (!sessionComplete || savedRef.current || !rp) return;
     const userMsgCount = messages.filter(m => m.role === 'user').length;
@@ -252,6 +257,12 @@ export default function RolePlayExerciseScreen() {
     const score = Math.round((objectivesMet.size / total) * 100);
     v2Progress.saveAttempt(moduleId, unitId, 'roleplay', score)
       .catch(e => console.warn('[roleplay] saveAttempt failed', e));
+    // XP da conversa (conta para sequência, metas e ranking) e correção do inglês no fim.
+    if (userId) recordConversationPractice(userId, 'roleplay', objectivesMet.size).then(setXpEarned);
+    const lines = historyRef.current.filter(h => h.role === 'user').map(h => h.content).filter(Boolean);
+    setFeedbackLoading(true);
+    fetchConversationFeedback({ level, moduleId, unitId, activity: 'roleplay', topic: getModule(level, moduleId)?.units.find(u => u.id === unitId)?.title, lines })
+      .then(setFeedback).finally(() => setFeedbackLoading(false));
   }, [sessionComplete, rp, objectivesMet, moduleId, unitId, v2Progress, messages]);
 
   // ── Audio recorder ──────────────────────────────────────────────
@@ -527,6 +538,7 @@ export default function RolePlayExerciseScreen() {
     setHintsUsed(0);
     setHintVisible(null);
     savedRef.current = false;
+    setFeedback(null); setXpEarned(0);
     stuckTurnsRef.current = 0;
     historyRef.current = [{ role: 'assistant', content: rp.scripted?.npc_lines?.[(rp.scripted?.flow?.start ?? '')]?.text ?? rp.opening_line }];
     startTimeRef.current = Date.now();
@@ -871,11 +883,13 @@ export default function RolePlayExerciseScreen() {
           padding: 24,
         }}>
           <View style={{
-            backgroundColor: C.card, borderRadius: 20, padding: 24,
-            width: '100%', maxWidth: 400, alignItems: 'center',
+            backgroundColor: C.card, borderRadius: 20,
+            width: '100%', maxWidth: 400, maxHeight: '92%', overflow: 'hidden',
             shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 16,
             shadowOffset: { width: 0, height: 6 }, elevation: 10,
           }}>
+          {/* Rolável: com as correções o card pode passar da altura em telas pequenas. */}
+          <ScrollView bounces={false} showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: 24, alignItems: 'center' }}>
             <View style={{
               width: 64, height: 64, borderRadius: 32,
               backgroundColor: allObjectivesDone ? 'rgba(8,128,74,0.12)' : 'rgba(255,79,139,0.12)',
@@ -951,6 +965,8 @@ export default function RolePlayExerciseScreen() {
               })}
             </View>
 
+            <ConversationFeedbackBlock feedback={feedback} loading={feedbackLoading} />
+
             {/* Stats line */}
             <View style={{
               flexDirection: 'row', justifyContent: 'space-around',
@@ -972,9 +988,15 @@ export default function RolePlayExerciseScreen() {
                   {Math.round((objectivesDone / objectivesTotal) * 100)}%
                 </AppText>
                 <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>
-                  {isPt ? 'Score' : 'Score'}
+                  {isPt ? 'Objetivos' : 'Goals'}
                 </AppText>
               </View>
+              {xpEarned > 0 && (
+                <View style={{ alignItems: 'center' }}>
+                  <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>+{xpEarned}</AppText>
+                  <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>XP</AppText>
+                </View>
+              )}
             </View>
 
             {/* Action buttons */}
@@ -1017,6 +1039,7 @@ export default function RolePlayExerciseScreen() {
                 </AppText>
               </TouchableOpacity>
             </View>
+          </ScrollView>
           </View>
         </View>
       )}
