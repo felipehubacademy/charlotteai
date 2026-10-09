@@ -110,6 +110,11 @@ async function socialOf(userId: string) {
     supabase.from('social_suspensions').select('reason, created_by, created_at').eq('user_id', userId).maybeSingle(),
     supabase.from('rally_participants').select('rally_id').eq('user_id', userId).limit(50),
   ]);
+  const { data: tok } = await supabase.from('charlotte_users').select('expo_push_token').eq('id', userId).maybeSingle();
+  const token = (tok as { expo_push_token: string | null } | null)?.expo_push_token ?? null;
+  const { data: pushes } = token
+    ? await supabase.from('push_log').select('type, title, ok, error, created_at').eq('token', token).order('created_at', { ascending: false }).limit(10)
+    : { data: [] };
   const rel = new Map<string, string>();
   ((fa.data ?? []) as { user_b: string }[]).forEach(r => rel.set(r.user_b, 'Amigo (busca)'));
   ((fb.data ?? []) as { user_a: string }[]).forEach(r => rel.set(r.user_a, 'Amigo (busca)'));
@@ -130,6 +135,8 @@ async function socialOf(userId: string) {
   const p = new Map(((people ?? []) as { id: string; name: string | null; username: string | null }[]).map(x => [x.id, x]));
   const who = (id: string) => ({ id, name: p.get(id)?.name ?? null, username: p.get(id)?.username ?? null });
   return {
+    hasPushToken: !!token,
+    pushes: (pushes ?? []) as { type: string | null; title: string | null; ok: boolean; error: string | null; created_at: string }[],
     suspended: sus.data ? sus.data as { reason: string | null; created_by: string | null; created_at: string } : null,
     friends: [...rel.entries()].map(([id, relation]) => ({ ...who(id), relation })),
     rallies: ((rallies ?? []) as { id: string; code: string; metric: string; duration_hours: number; starts_at: string; ends_at: string; finalized: boolean; winner_id: string | null }[])

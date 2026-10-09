@@ -25,6 +25,8 @@ interface Crm {
     blocked: SocialPerson[]; blockedBy: SocialPerson[];
     reportsMade: (SocialPerson & { reportId: number; reason: string; handled: boolean })[];
     reportsReceived: (SocialPerson & { reportId: number; reason: string; handled: boolean })[];
+    hasPushToken: boolean;
+    pushes: { type: string | null; title: string | null; ok: boolean; error: string | null; created_at: string }[];
   };
 }
 type SocialPerson = { id: string; name: string | null; username: string | null; at: string };
@@ -231,6 +233,18 @@ export default function UserCrmPage() {
                     </div>
                   ))}
                   {(data.social.reportsReceived.length > 0 || data.social.reportsMade.length > 0) && canModerate && <Link href="/admin/moderation" className="adm-btn-sm ghost" style={{ marginTop: 4 }}>Abrir Denúncias</Link>}
+                </div>
+                <div>
+                  <div className="kpi-label" style={{ marginBottom: 8 }}>Avisos do social (push)</div>
+                  {!data.social.hasPushToken && <div style={{ color: 'var(--err)' }}>Sem permissão de push registrada no app.</div>}
+                  {data.social.hasPushToken && data.social.pushes.length === 0 && <div className="adm-empty-sub">Nenhum aviso enviado ainda.</div>}
+                  {data.social.pushes.map((p, i) => (
+                    <div key={i} style={{ marginBottom: 6 }}>
+                      <span style={{ color: p.ok ? 'var(--ok)' : 'var(--err)', fontWeight: 700 }}>{p.ok ? 'entregue ao serviço' : 'falhou'}</span>{' '}
+                      <span style={{ color: 'var(--t1)' }}>{p.title ?? p.type}</span>
+                      <div style={{ fontSize: 11.5, color: 'var(--t3)' }}>{new Date(p.created_at).toLocaleString('pt-BR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}{p.error ? ` · ${p.error}` : ''}</div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

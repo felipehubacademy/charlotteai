@@ -105,10 +105,22 @@ export function leaderOf(rows: Standing[]): Standing | null {
 /** Push direto (convite, entrada, resultado). Melhor esforço. */
 export async function sendDirectPush(token: string | null | undefined, title: string, body: string, data: Record<string, unknown>) {
   if (!token) return;
+  let ok = false; let error: string | null = null; let ticketId: string | null = null;
   try {
-    await fetch('https://exp.host/--/api/v2/push/send', {
+    const r = await fetch('https://exp.host/--/api/v2/push/send', {
       method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify([{ to: token, title, body, sound: 'default', priority: 'high', data }]),
+      body: JSON.stringify([{ to: token, title, body, sound: 'default', priority: 'high', channelId: 'charlotte', data }]),
     });
-  } catch { /* push é melhor esforço */ }
+    const j = await r.json().catch(() => null) as { data?: { status: string; id?: string; message?: string; details?: { error?: string } }[]; errors?: { message: string }[] } | null;
+    const t = j?.data?.[0];
+    ok = r.ok && t?.status === 'ok';
+    ticketId = t?.id ?? null;
+    error = ok ? null : (t?.details?.error ?? t?.message ?? j?.errors?.[0]?.message ?? `HTTP ${r.status}`);
+  } catch (e) {
+    error = e instanceof Error ? e.message : 'falha de rede';
+  }
+  // Comprovante (push é melhor esforço: falha aqui não interrompe nada).
+  try {
+    await getSupabaseAdmin().from('push_log').insert({ token, type: String(data.type ?? ''), title, ok, error, ticket_id: ticketId } as never);
+  } catch { /* ignora */ }
 }

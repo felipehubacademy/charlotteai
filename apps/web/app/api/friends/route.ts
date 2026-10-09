@@ -97,16 +97,23 @@ async function withRelation(userId: string, hits: U[]) {
   const ids = hits.map(h => h.id);
   const [friends, out, inc] = await Promise.all([
     friendsOf(userId),
-    ids.length ? supabase.from('friend_requests').select('to_id').eq('from_id', userId).eq('status', 'pending').in('to_id', ids) : Promise.resolve({ data: [] }),
+    ids.length ? supabase.from('friend_requests').select('to_id, created_at, reminded_at').eq('from_id', userId).eq('status', 'pending').in('to_id', ids) : Promise.resolve({ data: [] }),
     ids.length ? supabase.from('friend_requests').select('from_id').eq('to_id', userId).eq('status', 'pending').in('from_id', ids) : Promise.resolve({ data: [] }),
   ]);
-  const pendingOut = new Set(((out.data ?? []) as { to_id: string }[]).map(r => r.to_id));
+  const outRows = (out.data ?? []) as { to_id: string; created_at: string; reminded_at: string | null }[];
+  const pendingOut = new Set(outRows.map(r => r.to_id));
+  const remindable = new Set(outRows.filter(canRemind).map(r => r.to_id));
   const pendingIn = new Set(((inc.data ?? []) as { from_id: string }[]).map(r => r.from_id));
   return hits.map(u => ({
     id: u.id, name: displayName(u.name), username: u.username, level: u.charlotte_level, avatarUrl: u.avatar_url,
     relation: friends.has(u.id) ? 'friend' : pendingIn.has(u.id) ? 'pending_in' : pendingOut.has(u.id) ? 'pending_out' : null,
+    canRemind: !friends.has(u.id) && remindable.has(u.id),
   }));
 }
+
+/** Pedido sem resposta há mais de 24 h, e sem lembrete nas últimas 24 h. */
+const canRemind = (r: { created_at: string; reminded_at: string | null }) =>
+  Date.now() - new Date(r.reminded_at ?? r.created_at).getTime() > 86400000;
 
 async function becomeFriends(a: string, b: string) {
   const supabase = getSupabaseAdmin();
@@ -220,6 +227,18 @@ export async function POST(req: NextRequest) {
     await pushTo(to, pt => (pt ? `${me ?? 'Alguém'} quer estudar com você` : `${me ?? 'Someone'} wants to study with you`),
       pt => (pt ? 'Aceite para virarem amigos de estudo, se cutucarem e competirem juntos.' : 'Accept to become study friends, nudge each other and compete together.'), 'friend_request');
     return NextResponse.json({ ok: true, relation: 'pending_out' });
+  }
+
+  if (body.action === 'remind') {
+    const to = String(body.to ?? '');
+    const { data: row } = await supabase.from('friend_requests').select('created_at, reminded_at').eq('from_id', user.id).eq('to_id', to).eq('status', 'pending').maybeSingle();
+    if (!row) return NextResponse.json({ error: 'not_found' }, { status: 404 });
+    if (!canRemind(row as { created_at: string; reminded_at: string | null })) return NextResponse.json({ error: 'too_soon' }, { status: 429 });
+    if (await isBlocked(user.id, to)) return NextResponse.json({ error: 'not_found' }, { status: 404 });
+    await supabase.from('friend_requests').update({ reminded_at: new Date().toISOString() } as never).eq('from_id', user.id).eq('to_id', to);
+    await pushTo(to, pt => (pt ? `${me ?? 'Alguém'} ainda quer estudar com você` : `${me ?? 'Someone'} still wants to study with you`),
+      pt => (pt ? 'O pedido está em Estudar junto. Aceite para competirem juntos.' : 'The request is in Study together. Accept to compete together.'), 'friend_request');
+    return NextResponse.json({ ok: true });
   }
 
   if (body.action === 'accept' || body.action === 'decline') {

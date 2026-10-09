@@ -1,5 +1,6 @@
 // /api/social — comunidade (Bearer token do aluno).
-//   GET  ?lang=pt|en   "estudando agora" (pessoas e a sua dupla) + conquistas
+//   GET  ?lang=pt|en   "estudando agora" (pessoas e amigos), pedidos de amizade e
+//                      convites de competição esperando resposta, e conquistas
 //                      recentes de quem está no seu ranking (últimos 3 dias)
 //   POST { action: 'cheer', id }   dá parabéns numa conquista (push na hora)
 import { NextRequest, NextResponse } from 'next/server';
@@ -64,7 +65,22 @@ export async function GET(req: NextRequest) {
     }));
   }
 
-  return NextResponse.json({ studyingNow: active.size, buddiesNow, feed });
+  // Esperando resposta: pedidos de amizade e convites de competição ainda abertos.
+  const [{ data: reqs }, { data: invs }] = await Promise.all([
+    supabase.from('friend_requests').select('from_id').eq('to_id', user.id).eq('status', 'pending').order('created_at', { ascending: false }).limit(20),
+    supabase.from('rally_invites').select('invited_by, rallies!inner(ends_at, finalized)').eq('user_id', user.id).limit(20),
+  ]);
+  const reqIds = ((reqs ?? []) as { from_id: string }[]).map(r => r.from_id).filter(id => !blocked.has(id));
+  const nowIso = new Date().toISOString();
+  const invIds = ((invs ?? []) as unknown as { invited_by: string; rallies: { ends_at: string; finalized: boolean } }[])
+    .filter(i => !i.rallies.finalized && i.rallies.ends_at > nowIso && !blocked.has(i.invited_by)).map(i => i.invited_by);
+  const pendIds = [...new Set([...reqIds, ...invIds])];
+  const { data: pendUsers } = pendIds.length ? await supabase.from('charlotte_users').select('id, name').in('id', pendIds) : { data: [] };
+  const pn = new Map(((pendUsers ?? []) as { id: string; name: string | null }[]).map(u => [u.id, firstName(u.name)]));
+  const pendingRequests = reqIds.map(id => pn.get(id)).filter(Boolean) as string[];
+  const rallyInvites = invIds.map(id => pn.get(id)).filter(Boolean) as string[];
+
+  return NextResponse.json({ studyingNow: active.size, buddiesNow, pendingRequests, rallyInvites, feed });
 }
 
 export async function POST(req: NextRequest) {
