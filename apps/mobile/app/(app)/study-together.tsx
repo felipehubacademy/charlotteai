@@ -83,7 +83,7 @@ export default function StudyTogetherScreen() {
     const r = await claimInvite(c);
     setClaiming(false);
     if (r.ok) {
-      setClaimMsg({ ok: true, text: t(`Pronto! Você e ${r.inviter ?? 'sua dupla'} agora estudam juntos. +${r.rewardMinutes} min de Live Voice.`, `Done! You and ${r.inviter ?? 'your buddy'} are now study buddies. +${r.rewardMinutes} Live Voice min.`) });
+      setClaimMsg({ ok: true, text: t(`Pronto! Você e ${r.inviter ?? 'quem te convidou'} agora estudam juntos. +${r.rewardMinutes} min de Live Voice.`, `Done! You and ${r.inviter ?? 'your buddy'} are now study buddies. +${r.rewardMinutes} Live Voice min.`) });
       setCode(''); load();
     } else {
       const e = CLAIM_ERROR[r.error];
@@ -123,7 +123,7 @@ export default function StudyTogetherScreen() {
             {t('Vem estudar comigo no Queizy', 'Come study with me on Queizy')}
           </AppText>
           <AppText style={{ fontSize: 14, lineHeight: 20, color: 'rgba(255,255,255,0.72)', marginTop: 8 }}>
-            {t(`Vocês viram dupla de estudo e cada um ganha ${info?.rewardMinutes ?? 5} minutos de Live Voice.`, `You become study buddies and each get ${info?.rewardMinutes ?? 5} Live Voice minutes.`)}
+            {t(`Vocês viram amigos de estudo e cada um ganha ${info?.rewardMinutes ?? 5} minutos de Live Voice.`, `You become study buddies and each get ${info?.rewardMinutes ?? 5} Live Voice minutes.`)}
           </AppText>
           <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 18, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 14, padding: 12 }}>
             <AppText style={{ flex: 1, fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>{t('Seu código', 'Your code')}</AppText>
@@ -169,7 +169,7 @@ export default function StudyTogetherScreen() {
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
                   <Avatar uri={b.avatarUrl} name={b.name} />
                   <View style={{ flex: 1 }}>
-                    <AppText style={{ fontSize: 16, fontWeight: '800', color: C.ink }}>{b.name ?? t('Sua dupla', 'Your buddy')}</AppText>
+                    <AppText style={{ fontSize: 16, fontWeight: '800', color: C.ink }}>{b.name ?? t('Amigo de estudo', 'Study buddy')}</AppText>
                     {/* Uma linha só: quem convidou (se veio de convite), nível e sequência. */}
                     <AppText style={{ fontSize: 12.5, color: C.light, marginTop: 1 }} numberOfLines={1}>
                       {[

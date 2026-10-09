@@ -51,7 +51,7 @@ export default async function InvitePage({ params }: { params: Promise<{ code: s
           {name ? <>{name} te chamou para estudar inglês junto</> : <>Vem estudar inglês comigo</>}
         </h1>
         <p style={{ fontSize: 16, lineHeight: 1.55, color: '#4D4858', margin: '0 0 28px' }}>
-          Pratique todo dia com a Charlotte, sua tutora de IA. Vocês viram dupla de estudo e cada um ganha 5 minutos extras de conversa por voz.
+          Pratique todo dia com a Charlotte, sua tutora de IA. Vocês viram amigos de estudo e cada um ganha 5 minutos extras de conversa por voz.
         </p>
         <InviteActions code={clean} />
         <p style={{ fontSize: 13, color: '#8A8494', marginTop: 28 }}>

@@ -44,7 +44,7 @@ export function InviteClaimer() {
   }, [profile?.first_welcome_done]);
 
   if (!joined) return null;
-  const who = joined.inviter ?? (isPt ? 'sua dupla' : 'your buddy');
+  const who = joined.inviter ?? (isPt ? 'quem te convidou' : 'your buddy');
   return (
     <Modal visible transparent animationType="fade" onRequestClose={() => setJoined(null)}>
       <View style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.6)', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
@@ -60,7 +60,7 @@ export function InviteClaimer() {
           </AppText>
           <TouchableOpacity onPress={() => { setJoined(null); router.push('/(app)/study-together' as any); }}
             style={{ marginTop: 22, alignSelf: 'stretch', backgroundColor: '#DCFF4A', borderRadius: 999, paddingVertical: 15, alignItems: 'center' }}>
-            <AppText style={{ fontSize: 16, fontWeight: '800', color: '#16131F' }}>{isPt ? 'Ver minha dupla' : 'See my buddy'}</AppText>
+            <AppText style={{ fontSize: 16, fontWeight: '800', color: '#16131F' }}>{isPt ? 'Ver amigos de estudo' : 'See study buddies'}</AppText>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setJoined(null)} style={{ marginTop: 12, padding: 6 }}>
             <AppText style={{ fontSize: 14, fontWeight: '700', color: 'rgba(255,255,255,0.6)' }}>{isPt ? 'Depois' : 'Later'}</AppText>

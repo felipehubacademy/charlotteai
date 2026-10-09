@@ -29,7 +29,7 @@ SLIDES = [
     ('trail.png', PAPER, INK, 'Uma trilha do\nseu nível', 'Do iniciante ao avançado, A1 a C2'),
     ('pronunciation.png', PINK, WHITE, 'Pronúncia com\nnota de verdade', 'Veja as palavras que precisam de atenção'),
     ('evolution.png', VIOLET, WHITE, 'Acompanhe a sua\nevolução', 'Resumo da semana feito pela Charlotte'),
-    ('together.png', VOLT, INK, 'Estude junto com\nos seus amigos', 'Convide e ganhem minutos de conversa'),
+    ('together.png', VOLT, INK, 'Estude junto com\nos seus amigos', 'Dispute competições e veja quem estuda mais'),
 ]
 
 

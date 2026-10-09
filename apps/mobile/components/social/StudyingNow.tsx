@@ -21,7 +21,7 @@ export function StudyingNow() {
   if (!info || (info.n < 2 && !info.buddies.length)) return null;
   const buddy = info.buddies[0];
   const text = buddy
-    ? (isPt ? `${buddy}, da sua dupla, está estudando agora` : `${buddy}, your study buddy, is studying now`)
+    ? (isPt ? `${buddy} está estudando agora` : `${buddy} is studying now`)
     : (isPt ? `${info.n} pessoas estudando agora` : `${info.n} people studying now`);
   const extra = buddy && info.n > 1 ? (isPt ? ` · ${info.n} no total` : ` · ${info.n} in total`) : '';
 

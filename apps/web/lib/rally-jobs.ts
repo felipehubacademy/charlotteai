@@ -96,7 +96,7 @@ export async function runRallyJobs(): Promise<{ updates: number; reminders: numb
         const ahead = rows.find(x => x.rank === s.rank - 1) ?? rows[0];
         const body = s.rank === 1
           ? (pt ? `Você está na frente com ${formatScore(r.metric, s.score, true)}. Segura a liderança!` : `You're ahead with ${formatScore(r.metric, s.score, false)}. Hold the lead!`)
-          : (pt ? `Você está em ${ord(s.rank, true)}, atrás de ${ahead.name ?? 'sua dupla'} (${formatScore(r.metric, ahead.score, true)}). Ainda dá!`
+          : (pt ? `Você está em ${ord(s.rank, true)}, atrás de ${ahead.name ?? 'quem está na frente'} (${formatScore(r.metric, ahead.score, true)}). Ainda dá!`
                 : `You're ${ord(s.rank, false)}, behind ${ahead.name ?? 'your buddy'} (${formatScore(r.metric, ahead.score, false)}). Still time!`);
         return sendDirectPush(u.expo_push_token, `${span} · ${rallyLabel(r.metric, r.duration_hours, pt)}`, body, { ...data, type: 'rally_reminder' });
       }));

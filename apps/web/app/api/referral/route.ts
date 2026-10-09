@@ -207,7 +207,7 @@ export async function POST(req: NextRequest) {
     ]);
     const target = toRow as { expo_push_token: string | null; charlotte_level: string | null; app_language: string | null } | null;
     const pt = target ? pushIsPt(target) : true;
-    const from = firstName((fromRow as { name: string | null } | null)?.name ?? null) ?? (pt ? 'Sua dupla' : 'Your buddy');
+    const from = firstName((fromRow as { name: string | null } | null)?.name ?? null) ?? (pt ? 'Seu amigo de estudo' : 'Your study buddy');
     await sendPush(target?.expo_push_token ?? null, pt ? `${from} te cutucou` : `${from} nudged you`, pt ? msg.pt : msg.en,
       { type: 'buddy_nudge', screen: 'study-together' });
     return NextResponse.json({ ok: true });

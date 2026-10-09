@@ -1908,7 +1908,7 @@ const BUDDY_BEHIND: Array<{ id: string; pt: (v: BuddyVars) => [string, string]; 
               en: v => [`${v.buddy} is ahead`, `${v.diff} XP ahead this week. Ready to show what you can do?`] },
   { id: 'b3', pt: v => ['Corre que ainda dá tempo!', `${v.buddy} abriu ${v.diff} XP de vantagem. Uma prática hoje já encurta essa distância.`],
               en: v => ["Hurry, there's still time!", `${v.buddy} is ${v.diff} XP ahead. One practice today closes the gap.`] },
-  { id: 'b4', pt: v => ['Sua dupla não para', `${v.buddy} segue somando XP esta semana. E você, vem junto?`],
+  { id: 'b4', pt: v => [`${v.buddy} não para`, 'Segue somando XP esta semana. E você, vem junto?'],
               en: v => ["Your buddy isn't stopping", `${v.buddy} keeps adding XP this week. Coming along?`] },
 ];
 const BUDDY_CLOSING: Array<{ id: string; pt: (v: BuddyVars) => [string, string]; en: (v: BuddyVars) => [string, string] }> = [
