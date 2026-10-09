@@ -66,7 +66,7 @@ export function TrailBanner({ userId, level, flush = false, currentLevel, onLeve
   const v2Summaries  = useV2 ? listModuleSummaries(level as Level) : [];
   const modules      = useV2 ? v2Summaries : CURRICULUM[level];
 
-  const { progress, refetch }   = useLearnProgress(userId, level);
+  const { progress, refetch }   = useLearnProgress(useV2 ? undefined : userId, level); // v2 não lê a trilha antiga
   const v2Progress              = useLearnProgressV2(userId, level as Level);
 
   useFocusEffect(useCallback(() => {

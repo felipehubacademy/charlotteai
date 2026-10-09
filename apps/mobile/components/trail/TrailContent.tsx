@@ -457,7 +457,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
   const {
     loading, refetch,
     isTopicComplete, isCurrent, isLocked, isIntroDone,
-  } = useLearnProgress(userId, level);
+  } = useLearnProgress(useV2 ? undefined : userId, level); // v2 não lê a trilha antiga
 
   // Placement skips: nivel pulado → cascade desligado (tudo destravado).
   const { cascadeMode, isAccessible } = usePlacementSkips();
@@ -477,7 +477,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
   // ── Fetch per-lesson scores from learn_history (% correct + pronunciation score) ──
   const [scoreMap, setScoreMap] = useState<Record<string, number>>({});
   useEffect(() => {
-    if (!userId) return;
+    if (!userId || useV2) return; // notas da trilha antiga: só fora do modo v2
     let cancelled = false;
     (async () => {
       const { data, error } = await supabase
@@ -506,7 +506,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
       if (!cancelled) setScoreMap(map);
     })();
     return () => { cancelled = true; };
-  }, [userId, level]);
+  }, [userId, level, useV2]);
 
   // Build module data — each module gets up to 4 lessons (intro + topics, capped at 4)
   const moduleData: ModuleData[] = useMemo(() => {

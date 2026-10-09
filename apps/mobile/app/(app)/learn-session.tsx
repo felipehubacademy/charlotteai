@@ -157,7 +157,8 @@ export default function LearnSessionScreen() {
   const isPortuguese = systemIsPt;
   const baseTotalXP = useTotalXP(userId);
   const insets      = useSafeAreaInsets();
-  const learnProgress = useLearnProgress(userId, level);
+  // Trilha antiga só fora do modo v2 (sem userId o hook não lê nem grava nada).
+  const learnProgress = useLearnProgress(isV2 ? undefined : userId, level);
   // v2 mode: skip v1-specific learn_history (uses learn_history_v2 via v2Progress),
   // mas AINDA escreve XP em charlotte_practices pra o pill da home / leaderboard
   // / progresso global funcionarem normal.
@@ -957,7 +958,9 @@ export default function LearnSessionScreen() {
       }
 
       setIsComplete(true);
-      if (userId) {
+      if (userId) track('lesson_completed', { level, module: moduleIndex, topic: topicIndex, isReview: !!params.reviewId, v2: isV2 });
+      // Revisões e promoção da trilha antiga: só fora do modo v2 (a v2 promove pela Home).
+      if (userId && !isV2) {
         // Agendar revisões espaçadas (3, 7, 14, 30 dias) — somente se NÃO for uma revisão
         if (!params.reviewId) {
           scheduleReviews(userId, level, moduleIndex, topicIndex, topic?.title ?? '').catch(console.warn);
@@ -976,7 +979,6 @@ export default function LearnSessionScreen() {
             markReviewDone(params.reviewId).catch(console.warn);
           }
         }
-        track('lesson_completed', { level, module: moduleIndex, topic: topicIndex, isReview: !!params.reviewId });
 
         // Check level promotion after topic complete (only when NOT a review)
         if (!params.reviewId) {

@@ -7,10 +7,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
 import {
-  DAY, isStudy, pct, pronunciation, grammar, byExercise, byTopic, topicName, currentStreak, fetchAll,
-  type HistRow, type MsgRow,
+  DAY, isStudy, pronunciation, grammar, currentStreak, fetchAll,
+  type MsgRow,
 } from '@/lib/learning-stats';
-import { V2_SELECT, mergedAccuracy, v2ByActivity, v2HardestUnits, v2Position, type V2Row } from '@/lib/learning-v2';
+import { V2_SELECT, v2Accuracy, v2ByActivity, v2HardestUnits, v2Position, type V2Row } from '@/lib/learning-v2';
 
 export const dynamic = 'force-dynamic';
 
@@ -24,15 +24,13 @@ export async function GET(req: NextRequest) {
 
   if (userId) return studentSheet(userId, since, days);
 
-  const [users, progress, practices, hist, msgs, v2] = await Promise.all([
+  const [users, progress, practices, msgs, v2] = await Promise.all([
     fetchAll<{ id: string; name: string | null; charlotte_level: string | null; is_active: boolean | null; created_at: string }>((a, b) =>
       supabase.from('charlotte_users').select('id, name, charlotte_level, is_active, created_at').order('created_at', { ascending: false }).range(a, b)),
     fetchAll<{ user_id: string; total_xp: number; streak_days: number; last_practice_date: string | null }>((a, b) =>
       supabase.from('charlotte_progress').select('user_id, total_xp, streak_days, last_practice_date').range(a, b)),
     fetchAll<{ user_id: string; practice_type: string; created_at: string }>((a, b) =>
       supabase.from('charlotte_practices').select('user_id, practice_type, created_at').gte('created_at', since).range(a, b), 100000),
-    fetchAll<HistRow>((a, b) =>
-      supabase.from('learn_history').select('user_id, level, module_index, topic_index, exercise_type, is_correct, answered_at').gte('answered_at', since).range(a, b), 100000),
     fetchAll<MsgRow>((a, b) =>
       supabase.from('chat_messages').select('user_id, role, mode, content, created_at').in('mode', ['pronunciation', 'grammar']).gte('created_at', since).range(a, b), 50000),
     fetchAll<V2Row>((a, b) =>
@@ -49,8 +47,6 @@ export async function GET(req: NextRequest) {
     practicesBy.set(p.user_id, (practicesBy.get(p.user_id) ?? 0) + 1);
     if (!lastBy.has(p.user_id) || p.created_at > lastBy.get(p.user_id)!) lastBy.set(p.user_id, p.created_at);
   });
-  const histBy = new Map<string, { n: number; ok: number }>();
-  hist.forEach(h => { const c = histBy.get(h.user_id) ?? { n: 0, ok: 0 }; c.n++; if (h.is_correct) c.ok++; histBy.set(h.user_id, c); });
   const pron = pronunciation(msgs);
   const pronBy = new Map<string, number[]>();
   pron.items.forEach(i => pronBy.set(i.user, [...(pronBy.get(i.user) ?? []), i.score]));
@@ -64,8 +60,7 @@ export async function GET(req: NextRequest) {
 
   const students = users.map(u => {
     const pr = progressBy.get(u.id);
-    const h = histBy.get(u.id);
-    const acc = mergedAccuracy(h?.ok ?? 0, h?.n ?? 0, v2By.get(u.id) ?? []);
+    const acc = v2Accuracy(v2By.get(u.id) ?? []);
     const ps = pronBy.get(u.id);
     const last = lastBy.get(u.id) ?? (pr?.last_practice_date ? `${pr.last_practice_date}T12:00:00Z` : null);
     return {
@@ -85,8 +80,7 @@ export async function GET(req: NextRequest) {
     .sort((a, b) => a.days - b.days).slice(0, 15);
 
   const g = grammar(msgs);
-  const okAll = hist.filter(h => h.is_correct).length;
-  const accAll = mergedAccuracy(okAll, hist.length, v2);
+  const accAll = v2Accuracy(v2);
 
   return NextResponse.json({
     days,
@@ -99,8 +93,8 @@ export async function GET(req: NextRequest) {
       grammarAnalyzed: g.analyzed, grammarErrorFree: g.errorFree,
     },
     byLevel, byType,
-    byExercise: [...v2ByActivity(v2), ...byExercise(hist)],
-    hardestTopics: [...v2HardestUnits(v2, 3), ...byTopic(hist, 15)].slice(0, 8),
+    byExercise: v2ByActivity(v2),
+    hardestTopics: v2HardestUnits(v2, 3).slice(0, 8),
     mispronounced: pron.topWords,
     idle,
     students,
@@ -109,11 +103,9 @@ export async function GET(req: NextRequest) {
 
 async function studentSheet(userId: string, since: string, days: number) {
   const supabase = getSupabaseAdmin();
-  const [userR, progR, trailR, histR, msgR, pracR, vocabR, srR, sessR, notesR, v2R] = await Promise.all([
+  const [userR, progR, msgR, pracR, vocabR, srR, sessR, notesR, v2R] = await Promise.all([
     supabase.from('charlotte_users').select('id, name, username, charlotte_level, placement_test_done, created_at, timezone').eq('id', userId).maybeSingle(),
     supabase.from('charlotte_progress').select('total_xp, streak_days, last_practice_date').eq('user_id', userId).maybeSingle(),
-    supabase.from('learn_progress').select('level, module_index, topic_index, updated_at').eq('user_id', userId),
-    supabase.from('learn_history').select('user_id, level, module_index, topic_index, exercise_type, is_correct, answered_at').eq('user_id', userId).gte('answered_at', since).limit(5000),
     supabase.from('chat_messages').select('user_id, role, mode, content, created_at').eq('user_id', userId).in('mode', ['pronunciation', 'grammar']).gte('created_at', since).order('created_at', { ascending: false }).limit(2000),
     supabase.from('charlotte_practices').select('practice_type, created_at').eq('user_id', userId).gte('created_at', since).limit(5000),
     supabase.from('user_vocabulary').select('id', { count: 'exact', head: true }).eq('user_id', userId),
@@ -125,7 +117,6 @@ async function studentSheet(userId: string, since: string, days: number) {
   const u = userR.data as { id: string; name: string | null; username: string | null; charlotte_level: string | null; placement_test_done: boolean | null; created_at: string } | null;
   if (!u) return NextResponse.json({ error: 'Aluno não encontrado' }, { status: 404 });
 
-  const hist = (histR.data ?? []) as HistRow[];
   const msgs = (msgR.data ?? []) as MsgRow[];
   const study = ((pracR.data ?? []) as { practice_type: string; created_at: string }[]).filter(p => isStudy(p.practice_type));
   const byDay: Record<string, number> = {};
@@ -140,20 +131,18 @@ async function studentSheet(userId: string, since: string, days: number) {
   const v2All = (v2R.data ?? []) as V2Row[];
   const v2 = v2All.filter(r => r.updated_at >= since);
   const pos = u.charlotte_level ? v2Position(v2All, u.charlotte_level) : null;
-  const acc = mergedAccuracy(hist.filter(h => h.is_correct).length, hist.length, v2);
-  const trailV1 = ((trailR.data ?? []) as { level: string; module_index: number; topic_index: number; updated_at: string }[])
-    .map(t => ({ level: t.level, ...topicName(t.level, t.module_index, t.topic_index), moduleNumber: t.module_index + 1, updatedAt: t.updated_at }));
+  const acc = v2Accuracy(v2);
 
   return NextResponse.json({
     days,
     student: { id: u.id, name: u.name, username: u.username, level: u.charlotte_level, placementDone: !!u.placement_test_done, since: u.created_at },
     progress: progR.data ? { ...(progR.data as { total_xp: number; streak_days: number; last_practice_date: string | null }), streak_days: currentStreak((progR.data as { streak_days: number }).streak_days, (progR.data as { last_practice_date: string | null }).last_practice_date) } : null,
-    // Posição: a próxima unidade da trilha nova; a lista antiga só para quem ainda tem histórico v1.
-    trail: pos?.next ? [{ ...pos.next, updatedAt: v2All.map(r => r.updated_at).sort().at(-1) ?? '' }] : trailV1,
+    // Posição: a próxima unidade da trilha.
+    trail: pos?.next ? [{ ...pos.next, updatedAt: v2All.map(r => r.updated_at).sort().at(-1) ?? '' }] : [],
     trailUnits: pos ? { done: pos.unitsDone, total: pos.unitsTotal } : null,
     trailAccuracy: acc.accuracy, trailAnswers: acc.answers,
-    byExercise: [...v2ByActivity(v2), ...byExercise(hist)],
-    topics: [...v2HardestUnits(v2, 1), ...byTopic(hist, 3)],
+    byExercise: v2ByActivity(v2),
+    topics: v2HardestUnits(v2, 1),
     activity: { byDay, byType, total: study.length },
     pronunciation: { avg: pron.avg, attempts: pron.items.length, recent: pron.items.slice(0, 15).map(({ user: _u, ...i }) => i), topWords: pron.topWords },
     grammar: { analyzed: g.analyzed, errorFree: g.errorFree, corrections: g.corrections.slice(0, 15) },

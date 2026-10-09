@@ -23,12 +23,11 @@ export function v2Title(level: string, moduleId: string, unitId: string) {
 
 export const v2Graded = (rows: V2Row[]) => rows.filter(r => GRADED.has(r.activity_type) && r.score != null && !Number.isNaN(Number(r.score)));
 
-/** Junta o acerto da trilha antiga (por resposta) com a nota média da nova (por atividade). */
-export function mergedAccuracy(v1Ok: number, v1N: number, v2: V2Row[]): { accuracy: number | null; answers: number } {
-  const g = v2Graded(v2);
-  const n = v1N + g.length;
-  if (!n) return { accuracy: null, answers: 0 };
-  return { accuracy: Math.round((v1Ok * 100 + g.reduce((s, r) => s + Number(r.score), 0)) / n), answers: n };
+/** Nota média da trilha (Gramática + Listening & Speaking) e quantas atividades com nota. */
+export function v2Accuracy(rows: V2Row[]): { accuracy: number | null; answers: number } {
+  const g = v2Graded(rows);
+  if (!g.length) return { accuracy: null, answers: 0 };
+  return { accuracy: Math.round(g.reduce((s, r) => s + Number(r.score), 0) / g.length), answers: g.length };
 }
 
 /** Por atividade: nota média (Gramática, L&S) ou % concluída (Role-play, Chat). */

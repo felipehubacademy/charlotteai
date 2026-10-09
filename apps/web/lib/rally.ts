@@ -2,7 +2,7 @@
 // Placar calculado ao vivo, sempre na janela [starts_at, min(agora, ends_at)]:
 //   xp        soma do XP ganho (charlotte_practices)
 //   practices número de práticas de estudo
-//   accuracy  acerto na trilha (antiga por resposta + nova por nota), mínimo 5 respostas
+//   accuracy  nota média da trilha (Gramática + Listening & Speaking), mínimo 3 atividades
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { isStudy } from '@/lib/learning-stats';
 
@@ -12,7 +12,7 @@ export const RALLY_DURATIONS = [24, 168] as const;
 export const RALLY_REWARD_SECONDS = 5 * 60;
 export const RALLY_MAX_PARTICIPANTS = 10;
 export const RALLY_MAX_ACTIVE_CREATED = 3;
-export const RALLY_MIN_ANSWERS = 5;
+export const RALLY_MIN_ANSWERS = 3;
 
 export interface RallyRow {
   id: string; code: string; creator_id: string; metric: RallyMetric; duration_hours: number;
@@ -54,15 +54,13 @@ export async function computeStandings(rallies: RallyRow[]): Promise<Map<string,
   const from = new Date(Math.min(...rallies.map(r => new Date(r.starts_at).getTime()))).toISOString();
   const needAcc = rallies.some(r => r.metric === 'accuracy');
 
-  const [profiles, practices, hist, hist2] = await Promise.all([
+  const [profiles, practices, hist2] = await Promise.all([
     supabase.from('charlotte_users').select('id, name, avatar_url').in('id', users),
     supabase.from('charlotte_practices').select('user_id, xp_earned, practice_type, created_at').in('user_id', users).gte('created_at', from).limit(50000),
-    needAcc ? supabase.from('learn_history').select('user_id, is_correct, answered_at').in('user_id', users).gte('answered_at', from).limit(50000) : Promise.resolve({ data: [] }),
     needAcc ? supabase.from('learn_history_v2').select('user_id, activity_type, score, updated_at').in('user_id', users).gte('updated_at', from).limit(20000) : Promise.resolve({ data: [] }),
   ]);
   const prof = new Map(((profiles.data ?? []) as { id: string; name: string | null; avatar_url: string | null }[]).map(p => [p.id, p]));
   const pr = (practices.data ?? []) as { user_id: string; xp_earned: number | null; practice_type: string; created_at: string }[];
-  const h1 = (hist.data ?? []) as { user_id: string; is_correct: boolean; answered_at: string }[];
   const h2 = ((hist2.data ?? []) as { user_id: string; activity_type: string; score: number | string | null; updated_at: string }[])
     .filter(r => (r.activity_type === 'grammar' || r.activity_type === 'speaking') && r.score != null);
 
@@ -78,11 +76,9 @@ export async function computeStandings(rallies: RallyRow[]): Promise<Map<string,
       } else if (r.metric === 'practices') {
         score = pr.filter(p => p.user_id === uid && inW(p.created_at) && isStudy(p.practice_type)).length;
       } else {
-        const v1 = h1.filter(x => x.user_id === uid && inW(x.answered_at));
         const v2 = h2.filter(x => x.user_id === uid && inW(x.updated_at));
-        const n = v1.length + v2.length;
-        score = n < RALLY_MIN_ANSWERS ? null
-          : Math.round((v1.filter(x => x.is_correct).length * 100 + v2.reduce((s, x) => s + Number(x.score), 0)) / n);
+        score = v2.length < RALLY_MIN_ANSWERS ? null
+          : Math.round(v2.reduce((s, x) => s + Number(x.score), 0) / v2.length);
       }
       const p = prof.get(uid);
       return { userId: uid, name: firstName(p?.name), avatarUrl: p?.avatar_url ?? null, score, rank: 0 };

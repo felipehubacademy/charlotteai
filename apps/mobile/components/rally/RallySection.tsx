@@ -125,7 +125,7 @@ export function RallySection({ buddies }: { buddies: Buddy[] }) {
         );
       })}
       {r.metric === 'accuracy' && (
-        <AppText style={{ fontSize: 11.5, color: C.light, paddingHorizontal: 10 }}>{t('Conta a partir de 5 respostas na trilha.', 'Counts from 5 trail answers.')}</AppText>
+        <AppText style={{ fontSize: 11.5, color: C.light, paddingHorizontal: 10 }}>{t('Nota média em Gramática e Listening & Speaking, a partir de 3 atividades.', 'Average score in Grammar and Listening & Speaking, from 3 activities.')}</AppText>
       )}
     </View>
     );
