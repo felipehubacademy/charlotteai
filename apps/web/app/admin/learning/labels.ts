@@ -13,6 +13,10 @@ export const EXERCISE_LABEL: Record<string, string> = {
   minimal_pairs: 'Pares mínimos',
   sentence_stress: 'Acento da frase',
   shadowing: 'Shadowing',
+  'v2:grammar': 'Gramática (nota)',
+  'v2:speaking': 'Listening & Speaking (nota)',
+  'v2:roleplay': 'Role-play (concluído)',
+  'v2:chat': 'Guided Chat (concluído)',
 };
 
 export const PRACTICE_LABEL: Record<string, string> = {

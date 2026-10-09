@@ -10,9 +10,10 @@ import { exLabel, practiceLabel, accColor, ago } from '../labels';
 
 interface Sheet {
   days: number;
-  student: { id: string; name: string | null; level: string | null; placementDone: boolean; since: string };
+  student: { id: string; name: string | null; username: string | null; level: string | null; placementDone: boolean; since: string };
   progress: { total_xp: number; streak_days: number; last_practice_date: string | null } | null;
   trail: { level: string; module: string; topic: string; moduleNumber: number; updatedAt: string }[];
+  trailUnits: { done: number; total: number } | null;
   trailAccuracy: number | null; trailAnswers: number;
   byExercise: { type: string; answers: number; accuracy: number | null }[];
   topics: { level: string; module: string; topic: string; answers: number; accuracy: number }[];
@@ -79,6 +80,7 @@ export default function LearningSheetPage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <Link href="/admin/learning" className="adm-btn-sm ghost" style={{ padding: '5px 8px' }}><ArrowLeft size={14} /></Link>
           <div className="adm-topbar-title">{st.name?.trim() || 'Sem nome'}</div>
+          {st.username && <span style={{ color: 'var(--t2)', fontWeight: 600 }}>@{st.username}</span>}
           {st.level && <span className="badge badge-brand">{st.level}</span>}
         </div>
         <div style={{ display: 'flex', gap: 6 }}>
@@ -89,7 +91,7 @@ export default function LearningSheetPage() {
       <div className="adm-body">
         <div className="adm-grid">
           {[
-            { label: 'Posição na trilha', value: current ? current.topic : '—', ctx: current ? `${current.level} · Módulo ${current.moduleNumber} · ${current.module}` : '', small: true },
+            { label: 'Posição na trilha', value: current ? current.topic : '—', ctx: current ? `${current.level} · Módulo ${current.moduleNumber} · ${current.module}${data.trailUnits ? ` · ${data.trailUnits.done}/${data.trailUnits.total} unidades` : ''}` : '', small: true },
             { label: 'Acerto na trilha', value: data.trailAccuracy != null ? `${data.trailAccuracy}%` : '—', ctx: `${data.trailAnswers} ${data.trailAnswers === 1 ? 'resposta' : 'respostas'}`, color: accColor(data.trailAccuracy) },
             { label: 'Média de pronúncia', value: data.pronunciation.avg ?? '—', ctx: `${data.pronunciation.attempts} ${data.pronunciation.attempts === 1 ? 'frase' : 'frases'}`, color: accColor(data.pronunciation.avg) },
             { label: 'Sequência', value: `${data.progress?.streak_days ?? 0} ${(data.progress?.streak_days ?? 0) === 1 ? 'dia' : 'dias'}`, ctx: `última prática ${ago(data.progress?.last_practice_date ? `${data.progress.last_practice_date}T12:00:00Z` : null)}` },
