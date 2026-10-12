@@ -18,5 +18,11 @@
     "app/api/transcribe/route.ts": {
       "maxDuration": 30
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/chat-audio-cleanup",
+      "schedule": "0 7 * * *"
+    }
+  ]
 }

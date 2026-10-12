@@ -2,7 +2,7 @@
 // Depois disso o arquivo sai do bucket chat-audio e a mensagem fica só com a transcrição
 // (audio_path/audio_duration = null). Parte dos arquivos do Storage (rpc chat_audio_expired), então
 // também apaga áudios de mensagens que o limite de 100 por modo já removeu.
-// Chamado uma vez por dia pelo GitHub Actions com CRON_SECRET_TOKEN.
+// Chamado uma vez por dia pelo Cron da Vercel (vercel.json), que manda o CRON_SECRET.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
@@ -12,7 +12,7 @@ export const maxDuration = 60;
 const KEEP_DAYS = 90;
 
 export async function GET(req: NextRequest) {
-  if (req.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET_TOKEN}`) {
+  if (req.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const supabase = getSupabaseAdmin();
