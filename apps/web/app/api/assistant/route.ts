@@ -38,6 +38,18 @@ const assistantCtx = new AsyncLocalStorage<{ userId: string | null; endpoint: st
       }
     } catch { /* sem personagem, segue a Charlotte */ }
     const result: any = await (originalCreate as any)(params, ...rest);
+    // Imitação: se o modelo anunciar a imitação ("Hold up... impression time:") ou puser a fala
+    // entre aspas, limpa — o selo "imitando" no app já mostra a troca.
+    try {
+      const c = assistantCtx.getStore();
+      const msg = result?.choices?.[0]?.message;
+      if (c?.chatMode && c.impression && typeof msg?.content === 'string' && !msg.content.trim().startsWith('{')) {
+        let t = msg.content.trim()
+          .replace(/^[^:\n]{0,40}\b(impression|let me do (this|one)|imitat\w*)\b[^:\n]{0,40}:\s*/i, '');
+        if (/^["“][\s\S]*["”]$/.test(t)) t = t.slice(1, -1).trim();
+        msg.content = t;
+      }
+    } catch { /* segue com a resposta original */ }
     try {
       const ctx = assistantCtx.getStore();
       if (ctx && result?.usage) {
