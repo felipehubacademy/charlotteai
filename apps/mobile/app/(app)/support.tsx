@@ -18,9 +18,9 @@ import { systemIsPt } from '@/lib/systemLang';
 import { fetchSupportFaq, getCachedSupportFaq, type SupportFaqEntry } from '@/lib/supportFaq';
 
 const SUPPORT_EMAIL = 'suporte@queizy.com';
-// Número do WhatsApp de suporte (formato internacional, só dígitos). Preencher
-// quando o WhatsApp Business estiver no ar; enquanto vazio, a opção fica oculta.
-const SUPPORT_WHATSAPP = '';
+// WhatsApp do suporte (Cloud API: a IA responde e escala para o /admin). Só dígitos, com país.
+// Vazio esconde a opção.
+const SUPPORT_WHATSAPP = '551151995992';
 
 const C = {
   bg: '#FAF7F0', card: '#FFFFFF', navy: '#16131F', navyMid: '#4D4858',

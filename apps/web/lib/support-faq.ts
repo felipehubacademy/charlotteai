@@ -115,7 +115,7 @@ Casos específicos de cobrança ou reembolso são encaminhados a um atendente.` 
 
   // ── Contato ──────────────────────────────────────────────────────────────
   { section: 'Contato', question: 'Como falar com o suporte?', answer:
-`No app: Perfil > Ajuda > Ajuda e suporte. Por e-mail: suporte@queizy.com. Também há atendimento pelo WhatsApp.` },
+`No app: Perfil > Ajuda > Ajuda e suporte. Pelo WhatsApp: (11) 5199-5992. Por e-mail: suporte@queizy.com.` },
 ];
 
 export function formatFaq(entries: FaqEntry[]): string {
