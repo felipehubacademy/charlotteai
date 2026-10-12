@@ -1,6 +1,6 @@
 // app/api/cron/chat-audio-cleanup/route.ts — áudios do Free Chat ficam salvos por 90 dias.
 // Depois disso o arquivo sai do bucket chat-audio e a mensagem fica só com a transcrição
-// (audio_path/audio_duration = null). Chamado uma vez por dia pelo GitHub Actions com CRON_SECRET.
+// (audio_path/audio_duration = null). Chamado uma vez por dia pelo GitHub Actions com CRON_SECRET_TOKEN.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
@@ -10,7 +10,7 @@ export const maxDuration = 60;
 const KEEP_DAYS = 90;
 
 export async function GET(req: NextRequest) {
-  if (req.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (req.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET_TOKEN}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const supabase = getSupabaseAdmin();
