@@ -178,6 +178,35 @@ export async function notifyStaleTickets(): Promise<{ notified: number }> {
   return { notified };
 }
 
+/**
+ * Encerra em silêncio (sem mensagem ao aluno) os atendimentos parados:
+ * - da IA (resolvida ou aberta): 2 h sem resposta do aluno;
+ * - com atendente: 24 h depois da última resposta do atendente sem retorno do aluno
+ *   (é também quando o WhatsApp deixa de permitir resposta livre).
+ * Se o aluno escrever depois, upsertConversation reabre como atendimento novo.
+ */
+export async function closeIdleConversations(): Promise<{ closed: number }> {
+  const supabase = getSupabaseAdmin();
+  const now = new Date().toISOString();
+  const aiCutoff = new Date(Date.now() - 2 * 3600000).toISOString();
+  const { data: ai } = await supabase.from('support_conversations')
+    .update({ status: 'closed', updated_at: now } as never)
+    .in('status', ['auto_resolved', 'open']).lte('last_message_at', aiCutoff).select('id');
+  let closed = (ai ?? []).length;
+
+  const humanCutoff = new Date(Date.now() - 24 * 3600000).toISOString();
+  const { data: esc } = await supabase.from('support_conversations').select('id')
+    .eq('status', 'escalated').lte('last_message_at', humanCutoff).limit(200);
+  for (const c of (esc ?? []) as { id: string }[]) {
+    const { data: last } = await supabase.from('support_messages').select('author')
+      .eq('conversation_id', c.id).order('created_at', { ascending: false }).limit(1);
+    if ((last?.[0] as { author: string } | undefined)?.author !== 'human') continue; // aluno esperando: segue na fila
+    await supabase.from('support_conversations').update({ status: 'closed', updated_at: now } as never).eq('id', c.id);
+    closed++;
+  }
+  return { closed };
+}
+
 /** Corpo HTML das respostas por e-mail do suporte (agente e atendente). */
 export function supportReplyHtml(text: string): string {
   const safe = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\n/g, '<br>');

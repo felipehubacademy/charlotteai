@@ -52,11 +52,19 @@ export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
     .map(h => ({ role: h.direction === 'in' ? 'user' : 'assistant', content: h.body }));
 
   const context = await findUserContext(userEmail, userId);
-  const decision = await runSupportAgent({ userText: m.text, history, context, channel: 'whatsapp' });
+  // Primeira resposta do atendimento = nenhuma resposta nossa nas últimas 2 h (o atendimento
+  // da IA encerra sozinho depois de 2 h sem resposta do aluno; ver closeIdleConversations).
+  const { count: recentOut } = await supabase.from('support_messages').select('id', { count: 'exact', head: true })
+    .eq('conversation_id', convId).eq('direction', 'out').gte('created_at', new Date(Date.now() - 2 * 3600000).toISOString());
+  const decision = await runSupportAgent({
+    userText: m.text, history, context, channel: 'whatsapp',
+    firstName: firstNameOf(context.name ?? m.name), firstReply: !recentOut,
+  });
 
   if (decision.autoSend) {
     await reply(convId, m.from, decision.reply, decision.intent);
-    await setConversationStatus(convId, 'auto_resolved');
+    // "Obrigado, resolveu": despedida e atendimento encerrado na hora.
+    await setConversationStatus(convId, decision.intent === 'encerramento' ? 'closed' : 'auto_resolved');
     return;
   }
   // Pedido de e-mail para identificar (sem caso para humano ainda): responde e segue com a IA.
@@ -66,6 +74,13 @@ export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
   }
   await reply(convId, m.from, HOLDING, decision.intent);
   await escalate({ conversationId: convId, contact, channel: 'whatsapp', intent: decision.intent, userText: m.text, reason: decision.reason, userContext: context });
+}
+
+/** Primeiro nome para o cumprimento: só a primeira palavra, só letras (o nome do perfil é texto livre). */
+function firstNameOf(name: string | null | undefined): string | null {
+  const w = (name ?? '').trim().split(/\s+/)[0] ?? '';
+  const clean = w.replace(/[^\p{L}'-]/gu, '').slice(0, 20);
+  return clean.length >= 2 ? clean.charAt(0).toUpperCase() + clean.slice(1) : null;
 }
 
 async function reply(convId: string, to: string, text: string, intent: string) {

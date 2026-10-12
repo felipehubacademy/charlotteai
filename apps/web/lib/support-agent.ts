@@ -19,6 +19,7 @@ export const AUTO_INTENTS = new Set([
   'saudacao',
   'onde_fica',      // onde encontrar algo no app (XP, nível, metas, Live Voice...)
   'problema_uso',   // algo não funciona como esperado e a FAQ tem o passo a passo
+  'encerramento',   // aluno agradece ou diz que resolveu: despedida e encerra o atendimento
 ]);
 
 export interface SupportUserContext {
@@ -46,7 +47,9 @@ export interface AgentDecision {
   autoSend: boolean;      // decisão final: enviar automaticamente?
 }
 
-function systemPrompt(ctx: SupportUserContext, faq: string, channel?: string): string {
+interface Tone { firstName?: string | null; firstReply?: boolean }
+
+function systemPrompt(ctx: SupportUserContext, faq: string, channel?: string, tone: Tone = {}): string {
   const extra = ctx.identified ? [
     ctx.totalXP != null ? `XP total ${ctx.totalXP}` : null,
     ctx.streakDays != null ? `sequência de ${ctx.streakDays} dia(s)` : null,
@@ -69,12 +72,17 @@ REGRAS:
 - Use os dados do usuário identificado para personalizar: diga o nível dele, o XP total atual, os minutos de Live Voice restantes e o tipo de celular (iPhone ou Android, mostrando só o caminho daquele sistema). Ex.: se ele tem 0 min de Live Voice, a causa provável é o fim dos minutos do mês.
 - Se o usuário já tentou o passo a passo e continua com o problema, ou relata erro, travamento ou dado errado na conta (XP sumiu ou diminuiu, progresso perdido), use bug_tecnico e needsHuman=true.
 - Se o usuário pede uma função que não existe na FAQ, não prometa nada: agradeça a sugestão, diga que vai para a equipe e use intent sugestao (needsHuman=false).
-- Seja breve (no máximo alguns parágrafos curtos). Não peça dados sensíveis (senha, cartão).${channel === 'whatsapp' ? `
+- Seja breve (no máximo alguns parágrafos curtos). Não peça dados sensíveis (senha, cartão).
+- Tom humano e acolhedor, como uma pessoa da equipe (sem parecer robô, sem repetir frases prontas).${tone.firstReply ? `
+- Esta é a primeira resposta do atendimento: comece cumprimentando${tone.firstName ? ` pelo primeiro nome ("Oi, ${tone.firstName}!")` : ' ("Oi!")'}.` : `
+- O atendimento já começou: não cumprimente de novo nem repita o nome.`}
+- Quando responder uma dúvida (needsHuman=false, intent diferente de encerramento), a ÚLTIMA frase da resposta TEM de ser UMA pergunta curta terminando com "?", para saber se resolveu, variando a forma (ex.: "Consegui ajudar?", "Ficou alguma dúvida?", "Deu certo por aí?"). Não termine com "Se precisar, é só avisar" nem frase parecida.
+- Se o usuário só agradece ou diz que resolveu ("obrigado", "era isso", "resolveu", "valeu"), use intent encerramento: despeça-se em uma frase curta (ex.: "Que bom! Se precisar, é só chamar por aqui.") sem pergunta no fim, needsHuman=false.${channel === 'whatsapp' ? `
 - Canal WhatsApp: mensagens curtas e diretas, sem títulos nem listas longas; use *negrito* só se ajudar. Se o usuário não foi identificado e o caso envolve a conta dele, peça o e-mail do cadastro no app.` : ''}
 - ${who}
 
 Classifique a intenção em UM destes intents:
-reset_senha, como_cancelar, planos_precos, como_usar, onde_fica, problema_uso, restaurar_compra, acesso_login, saudacao, sugestao, reembolso, cobranca, excluir_conta, bug_tecnico, reclamacao, outro.
+reset_senha, como_cancelar, planos_precos, como_usar, onde_fica, problema_uso, restaurar_compra, acesso_login, saudacao, sugestao, encerramento, reembolso, cobranca, excluir_conta, bug_tecnico, reclamacao, outro.
 
 Responda SOMENTE um JSON com as chaves:
 {"intent": "<um dos intents>", "reply": "<resposta em PT-BR para o usuário>", "needsHuman": <true|false>, "reason": "<por que precisa de humano, ou vazio>"}
@@ -88,6 +96,8 @@ export async function runSupportAgent(input: {
   history?: SupportTurn[];
   context: SupportUserContext;
   channel?: string;
+  firstName?: string | null;   // primeiro nome (ex.: perfil do WhatsApp)
+  firstReply?: boolean;        // primeira resposta do atendimento: cumprimenta pelo nome
 }): Promise<AgentDecision> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
@@ -96,7 +106,7 @@ export async function runSupportAgent(input: {
 
   const { text: faq } = await getSupportFaq();
   const messages = [
-    { role: 'system', content: systemPrompt(input.context, faq, input.channel) },
+    { role: 'system', content: systemPrompt(input.context, faq, input.channel, { firstName: input.firstName, firstReply: input.firstReply }) },
     ...(input.history ?? []).slice(-8),
     { role: 'user', content: input.userText },
   ];
@@ -128,10 +138,16 @@ export async function runSupportAgent(input: {
   // Só auto-envia se o modelo não pediu humano E o intent está na whitelist E há resposta.
   // Sugestão de função: agradece e registra (a análise da conversa leva para o /admin).
   const autoSend = !needsHuman && (AUTO_INTENTS.has(intent) || intent === 'sugestao') && reply.length > 0;
+  // Resposta a uma dúvida termina com uma pergunta (mantém a conversa e mostra se resolveu).
+  let finalReply = reply;
+  if (autoSend && !['encerramento', 'saudacao', 'sugestao'].includes(intent) && !/\?\s*$/.test(reply)) {
+    const asks = ['Consegui ajudar?', 'Ficou alguma dúvida?', 'Deu certo por aí?', 'Era isso que você precisava?'];
+    finalReply = `${reply.replace(/\s*(Se precisar[^.!?]*[.!]|Qualquer (coisa|dúvida)[^.!?]*[.!])\s*$/i, '').trim()}\n\n${asks[Math.floor(Math.random() * asks.length)]}`;
+  }
 
   return {
     intent,
-    reply,
+    reply: finalReply,
     needsHuman,
     reason: String(parsed.reason ?? ''),
     autoSend,
