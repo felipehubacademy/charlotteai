@@ -30,8 +30,11 @@ const assistantCtx = new AsyncLocalStorage<{ userId: string | null; endpoint: st
     try {
       const c = assistantCtx.getStore();
       if (c?.chatMode && c.character.id !== 'charlotte' && Array.isArray(params?.messages)) {
-        params = { ...params, messages: params.messages.map((m: any) =>
-          m?.role === 'system' && typeof m.content === 'string' ? { ...m, content: applyCharacterToSystem(m.content, c.character, c.impression) } : m) };
+        const messages = params.messages.map((m: any) =>
+          m?.role === 'system' && typeof m.content === 'string' ? { ...m, content: applyCharacterToSystem(m.content, c.character, c.impression) } : m);
+        // Imitação: repete a instrução por último (vence as regras de tom do prompt de cada nível).
+        if (c.impression) messages.push({ role: 'system', content: `${c.impression.style}\nThis overrides the tone and style rules above for this reply only (keep the level, language and length rules).` });
+        params = { ...params, messages };
       }
     } catch { /* sem personagem, segue a Charlotte */ }
     const result: any = await (originalCreate as any)(params, ...rest);
