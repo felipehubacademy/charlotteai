@@ -181,7 +181,7 @@ function AgentModal({ mode, agent, onClose, onSave }: {
 }
 
 interface Thread {
-  conversation: { id: string; channel: string; contact: string; subject: string | null; status: string; agentName: string | null; createdAt: string; lastInboundAt: string | null };
+  conversation: { id: string; channel: string; contact: string; subject: string | null; status: string; agentName: string | null; createdAt: string; lastInboundAt: string | null; userVerified?: boolean };
   messages: { id: string; direction: string; author: string; body: string; intent: string | null; auto_sent: boolean; created_at: string }[];
   user: { id: string; name: string | null; username: string | null; email: string; charlotte_level: string | null; subscription_status: string; is_institutional: boolean } | null;
 }
@@ -229,6 +229,9 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
               <div>
                 <b>{data.user.name || 'Sem nome'}</b>{data.user.username ? <span style={{ color: 'var(--t2)' }}> · @{data.user.username}</span> : null}
                 <div style={{ color: 'var(--t3)', fontSize: 12 }}>{data.user.charlotte_level ?? '—'} · {data.user.is_institutional ? 'Institucional' : data.user.subscription_status}</div>
+                <div style={{ fontSize: 11.5, marginTop: 2, color: c?.userVerified ? 'var(--ok)' : 'var(--warn)' }}>
+                  {c?.userVerified ? 'Confirmado pelo app' : 'Só informou o e-mail: confira antes de mexer na conta'}
+                </div>
               </div>
               <Link href={`/admin/users/${data.user.id}`} className="adm-btn-sm ghost">Ver aluno</Link>
             </div>

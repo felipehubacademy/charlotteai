@@ -35,6 +35,8 @@ export interface SupportUserContext {
   liveVoiceMinutesLeft?: number | null;
   platform?: string | null;           // ios | android
   appVersion?: string | null;
+  verified?: boolean;                 // confirmado pelo código do app (ou e-mail do próprio remetente)
+  emailNotFound?: string | null;      // e-mail digitado que não tem cadastro
 }
 
 export interface SupportTurn { role: 'user' | 'assistant'; content: string; }
@@ -57,9 +59,14 @@ function systemPrompt(ctx: SupportUserContext, faq: string, channel?: string, to
     ctx.platform ? `celular ${ctx.platform === 'ios' ? 'iPhone' : ctx.platform === 'android' ? 'Android' : ctx.platform}` : null,
     ctx.appVersion ? `app versão ${ctx.appVersion}` : null,
   ].filter(Boolean).join(', ') : '';
-  const who = ctx.identified
+  const APP_BUTTON = 'no app, em Perfil > Ajuda > Ajuda e suporte > Falar no WhatsApp (assim a conta é reconhecida na hora)';
+  const who = ctx.identified && ctx.verified !== false
     ? `Usuário identificado: ${ctx.name ?? 'sem nome'} (${ctx.email ?? 'sem email'}), nível ${ctx.level ?? '—'}, assinatura "${ctx.subscription_status ?? '—'}", acesso ${ctx.has_access ? 'ativo' : 'inativo'}${extra ? `; ${extra}` : ''}. Use esses dados quando ajudarem (ex.: "seu nível é Novice", "você tem 3 min de Live Voice").`
-    : 'Usuário NÃO identificado na base (não achamos o cadastro pelo contato).';
+    : ctx.identified
+    ? `O contato digitou um e-mail que tem cadastro, mas isso NÃO comprova que é o dono da conta. NUNCA revele dados da conta (nome, nível, XP, minutos, assinatura, se a conta existe ou não). Dúvidas de uso: responda normalmente. Assunto da conta: diga que um atendente vai conferir, ou sugira chamar ${APP_BUTTON}.`
+    : ctx.emailNotFound
+    ? `O contato informou o e-mail "${ctx.emailNotFound}", que não encontramos. Peça para conferir o e-mail que aparece no app, em Perfil (logo abaixo do nome), ou para chamar ${APP_BUTTON}.`
+    : `Usuário NÃO identificado. Dúvidas de uso: responda sem pedir nada. Se o caso envolve a conta dele, peça o e-mail do cadastro no app ou sugira chamar ${APP_BUTTON}.`;
 
   return `Você é a atendente de suporte do Queizy (app de inglês com IA da Hub Academy; antes se chamava Charlotte AI, e a tutora dentro do app se chama Charlotte).
 Fale em português do Brasil, com acentuação e gramática perfeitas, tom gentil, claro e objetivo.
@@ -78,7 +85,7 @@ REGRAS:
 - O atendimento já começou: não cumprimente de novo nem repita o nome.`}
 - Quando responder uma dúvida (needsHuman=false, intent diferente de encerramento), a ÚLTIMA frase da resposta TEM de ser UMA pergunta curta terminando com "?", para saber se resolveu, variando a forma (ex.: "Consegui ajudar?", "Ficou alguma dúvida?", "Deu certo por aí?"). Não termine com "Se precisar, é só avisar" nem frase parecida.
 - Se o usuário só agradece ou diz que resolveu ("obrigado", "era isso", "resolveu", "valeu"), use intent encerramento: despeça-se em uma frase curta (ex.: "Que bom! Se precisar, é só chamar por aqui.") sem pergunta no fim, needsHuman=false.${channel === 'whatsapp' ? `
-- Canal WhatsApp: mensagens curtas e diretas, sem títulos nem listas longas; use *negrito* só se ajudar. Se o usuário não foi identificado e o caso envolve a conta dele, peça o e-mail do cadastro no app.` : ''}
+- Canal WhatsApp: mensagens curtas e diretas, sem títulos nem listas longas; use *negrito* só se ajudar.` : ''}
 - ${who}
 
 Classifique a intenção em UM destes intents:

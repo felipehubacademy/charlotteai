@@ -79,7 +79,7 @@ export async function GET(req: NextRequest) {
 async function conversationDetail(id: string) {
   const supabase = getSupabaseAdmin();
   const { data: conv } = await supabase.from('support_conversations')
-    .select('id, channel, contact, subject, status, user_id, created_at, last_message_at, last_inbound_at, support_agents(name)').eq('id', id).maybeSingle();
+    .select('id, channel, contact, subject, status, user_id, user_verified, created_at, last_message_at, last_inbound_at, support_agents(name)').eq('id', id).maybeSingle();
   if (!conv) return NextResponse.json({ error: 'Conversa não encontrada' }, { status: 404 });
   const c = conv as any;
   const [{ data: msgs }, userR] = await Promise.all([
@@ -89,7 +89,9 @@ async function conversationDetail(id: string) {
       : supabase.from('charlotte_users').select('id, name, username, email, charlotte_level, subscription_status, is_institutional').ilike('email', c.contact).maybeSingle(),
   ]);
   return NextResponse.json({
-    conversation: { id: c.id, channel: c.channel, contact: c.contact, subject: c.subject, status: c.status, agentName: c.support_agents?.name ?? null, createdAt: c.created_at, lastMessageAt: c.last_message_at, lastInboundAt: c.last_inbound_at },
+    conversation: { id: c.id, channel: c.channel, contact: c.contact, subject: c.subject, status: c.status, agentName: c.support_agents?.name ?? null, createdAt: c.created_at, lastMessageAt: c.last_message_at, lastInboundAt: c.last_inbound_at,
+      // E-mail é o próprio remetente; no WhatsApp, só o código do app confirma.
+      userVerified: c.channel === 'email' ? true : !!c.user_verified },
     messages: msgs ?? [],
     user: userR.data ?? null,
   });

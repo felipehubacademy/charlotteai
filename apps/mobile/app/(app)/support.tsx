@@ -16,6 +16,7 @@ import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 import { fetchSupportFaq, getCachedSupportFaq, type SupportFaqEntry } from '@/lib/supportFaq';
+import { openSupportWhatsApp } from '@/lib/supportWhatsApp';
 
 const SUPPORT_EMAIL = 'suporte@queizy.com';
 // WhatsApp do suporte (Cloud API: a IA responde e escala para o /admin). Só dígitos, com país.
@@ -102,7 +103,7 @@ export default function SupportScreen() {
   }
 
   const emailUrl = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(isPt ? 'Suporte Queizy' : 'Queizy Support')}`;
-  const waUrl = SUPPORT_WHATSAPP ? `https://wa.me/${SUPPORT_WHATSAPP}` : '';
+  const hasWhatsApp = !!SUPPORT_WHATSAPP;
 
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
@@ -137,14 +138,14 @@ export default function SupportScreen() {
             sub={SUPPORT_EMAIL}
             onPress={() => Linking.openURL(emailUrl).catch(() => {})}
           />
-          {!!waUrl && (
+          {hasWhatsApp && (
             <>
               <View style={{ height: 1, backgroundColor: C.border, marginLeft: 62 }} />
               <Row
                 icon={<WhatsappLogo size={19} color={C.navy} weight="regular" />}
                 label={isPt ? 'Falar no WhatsApp' : 'Chat on WhatsApp'}
                 sub={isPt ? 'Resposta rápida' : 'Quick reply'}
-                onPress={() => Linking.openURL(waUrl).catch(() => {})}
+                onPress={() => { openSupportWhatsApp(SUPPORT_WHATSAPP, isPt); }}
               />
             </>
           )}

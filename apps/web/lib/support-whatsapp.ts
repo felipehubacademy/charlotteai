@@ -2,12 +2,15 @@
 // IA responde o que está na FAQ; o resto vira ticket no /admin. Ticket com atendente não volta para a IA.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendWhatsAppText, markWhatsAppRead, type IncomingWhatsApp } from '@/lib/whatsapp';
-import { runSupportAgent, type SupportTurn } from '@/lib/support-agent';
+import { runSupportAgent, type SupportTurn, type SupportUserContext } from '@/lib/support-agent';
 import { findUserContext, upsertConversation, logMessage, setConversationStatus, escalate } from '@/lib/support-service';
 
 const HOLDING = 'Obrigado pela mensagem! Vou passar para a nossa equipe, que te responde por aqui em breve.';
 const NOT_TEXT = 'Por enquanto eu só consigo ler mensagens de texto. Pode escrever a sua dúvida?';
 const EMAIL_RE = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+// Código do botão do app (ver /api/support/whatsapp-code): "Q" + 5 caracteres sem 0/O/1/I/L.
+const CODE_RE = /\bQ[2-9A-HJKMNP-Z]{5}\b/;
+const CODE_TEXT_RE = /\(?\s*(?:c[óo]digo|code):?\s*Q[2-9A-HJKMNP-Z]{5}\s*\)?/i;
 
 export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
   const supabase = getSupabaseAdmin();
@@ -16,21 +19,34 @@ export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
   if (count) return;
   await markWhatsAppRead(m.id);
 
-  // Identifica o aluno pelo e-mail citado em alguma mensagem desta conversa.
-  const { data: prior } = await supabase.from('support_conversations').select('id, status, user_id').eq('channel', 'whatsapp').eq('external_id', m.from).maybeSingle();
-  const conv0 = prior as { id: string; status: string; user_id: string | null } | null;
-  const email = m.text?.match(EMAIL_RE)?.[0]?.toLowerCase() ?? null;
+  // Quem é o aluno, em ordem de confiança:
+  // 1) código do botão "Falar no WhatsApp" do app (gerado para a conta logada) → confirmado;
+  // 2) conversa já ligada antes a um aluno (o número fica lembrado);
+  // 3) e-mail digitado na conversa → só para encaminhar (não prova quem é).
+  const { data: prior } = await supabase.from('support_conversations').select('id, status, user_id, user_verified').eq('channel', 'whatsapp').eq('external_id', m.from).maybeSingle();
+  const conv0 = prior as { id: string; status: string; user_id: string | null; user_verified: boolean } | null;
   let userId = conv0?.user_id ?? null;
-  let userEmail: string | null = null;
-  if (email) {
-    const { data } = await supabase.from('charlotte_users').select('id, email').ilike('email', email).maybeSingle();
-    if (data) { userId = (data as { id: string }).id; userEmail = (data as { email: string }).email; }
-  } else if (userId) {
-    const { data } = await supabase.from('charlotte_users').select('email').eq('id', userId).maybeSingle();
-    userEmail = (data as { email: string } | null)?.email ?? null;
+  let verified = conv0?.user_verified ?? false;
+  let emailNotFound: string | null = null;
+  const code = m.text?.toUpperCase().match(CODE_RE)?.[0] ?? null;
+  if (code) {
+    const { data } = await supabase.from('support_link_codes').select('user_id')
+      .eq('code', code).gte('expires_at', new Date().toISOString()).maybeSingle();
+    if (data) {
+      userId = (data as { user_id: string }).user_id; verified = true;
+      await supabase.from('support_link_codes').update({ used_at: new Date().toISOString() } as never).eq('code', code);
+    }
+  }
+  const email = m.text?.match(EMAIL_RE)?.[0]?.toLowerCase() ?? null;
+  if (email && !verified) {
+    const { data } = await supabase.from('charlotte_users').select('id').ilike('email', email).maybeSingle();
+    if (data) userId = (data as { id: string }).id; else emailNotFound = email;
   }
   const contact = m.name ? `${m.name} (+${m.from})` : `+${m.from}`;
   const convId = await upsertConversation({ channel: 'whatsapp', externalId: m.from, contact, userId });
+  if (userId && (userId !== conv0?.user_id || verified !== (conv0?.user_verified ?? false))) {
+    await supabase.from('support_conversations').update({ user_id: userId, user_verified: verified } as never).eq('id', convId);
+  }
 
   const text = m.text ?? `[${m.type}]`;
   const { error: dup } = await supabase.from('support_messages').insert({
@@ -51,13 +67,17 @@ export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
   const history: SupportTurn[] = ((hist ?? []) as { direction: string; body: string }[]).slice(1).reverse()
     .map(h => ({ role: h.direction === 'in' ? 'user' : 'assistant', content: h.body }));
 
-  const context = await findUserContext(userEmail, userId);
+  // Dados da conta só para quem foi confirmado pelo app; e-mail digitado serve só para encaminhar.
+  const full = userId ? await findUserContext(null, userId) : { identified: false } as SupportUserContext;
+  const context: SupportUserContext = full.identified && !verified
+    ? { identified: true, verified: false, userId: full.userId, email: full.email }
+    : { ...full, verified, emailNotFound };
   // Primeira resposta do atendimento = nenhuma resposta nossa nas últimas 2 h (o atendimento
   // da IA encerra sozinho depois de 2 h sem resposta do aluno; ver closeIdleConversations).
   const { count: recentOut } = await supabase.from('support_messages').select('id', { count: 'exact', head: true })
     .eq('conversation_id', convId).eq('direction', 'out').gte('created_at', new Date(Date.now() - 2 * 3600000).toISOString());
   const decision = await runSupportAgent({
-    userText: m.text, history, context, channel: 'whatsapp',
+    userText: m.text.replace(CODE_TEXT_RE, '').trim() || m.text, history, context, channel: 'whatsapp',
     firstName: firstNameOf(context.name ?? m.name), firstReply: !recentOut,
   });
 
@@ -67,8 +87,8 @@ export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
     await setConversationStatus(convId, decision.intent === 'encerramento' ? 'closed' : 'auto_resolved');
     return;
   }
-  // Pedido de e-mail para identificar (sem caso para humano ainda): responde e segue com a IA.
-  if (!decision.needsHuman && decision.reply && !context.identified && /e-?mail/i.test(decision.reply)) {
+  // Pedido de e-mail ou do botão do app para identificar (sem caso para humano ainda): responde e segue com a IA.
+  if (!decision.needsHuman && decision.reply && !verified && /e-?mail|Falar no WhatsApp/i.test(decision.reply)) {
     await reply(convId, m.from, decision.reply, decision.intent);
     return;
   }
