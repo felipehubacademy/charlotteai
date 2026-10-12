@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Flag, Wallet, UserCog, KeyRound, GraduationCap } from 'lucide-react';
+import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Flag, Menu, Wallet, UserCog, KeyRound, GraduationCap } from 'lucide-react';
 import { getSupabase } from '@/lib/supabase';
 import { AdminMe, AdminMeContext } from '@/lib/admin-context';
 
@@ -542,6 +542,59 @@ const ADMIN_CSS = `
 @media (max-width: 600px) {
   .col-3, .col-4, .col-6 { grid-column: span 12; }
 }
+
+/* --- Celular (até 700px): menu vira gaveta, conteúdo ocupa a largura toda.
+   Nada aqui vale acima de 700px; o desktop não muda. --- */
+.adm-main { margin-left: var(--adm-ml, 240px); }
+.adm-mobilebar, .adm-backdrop { display: none; }
+@media (max-width: 900px) { .adm-main { margin-left: 64px; } }
+@media (max-width: 700px) {
+  .adm-main { margin-left: 0; }
+  .adm-mobilebar {
+    display: flex; align-items: center; gap: 10px;
+    position: sticky; top: 0; z-index: 120; height: 52px; padding: 0 12px;
+    background: var(--s1); border-bottom: 1px solid var(--b1);
+  }
+  .adm-mobilebar-btn {
+    width: 38px; height: 38px; border-radius: var(--r2); border: 1px solid var(--b2);
+    background: var(--s1); display: flex; align-items: center; justify-content: center; cursor: pointer;
+  }
+  .adm-mobilebar-title { font-size: 15px; font-weight: 700; color: var(--t1); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .adm-sidebar { width: 264px !important; transform: translateX(-100%); transition: transform 240ms cubic-bezier(.4,0,.2,1); box-shadow: var(--sh3); z-index: 300; }
+  .adm-sidebar.mobile-open { transform: translateX(0); }
+  .adm-sidebar .adm-logo-text, .adm-sidebar .adm-nav-label, .adm-sidebar .adm-section-label,
+  .adm-sidebar .adm-user-name, .adm-sidebar .adm-user-role { display: block; }
+  .adm-backdrop.show { display: block; position: fixed; inset: 0; background: rgba(22,19,31,0.45); z-index: 250; }
+
+  /* Topo de cada página: quebra linha em vez de cortar botões. */
+  .adm-topbar { position: static; height: auto; min-height: 52px; padding: 10px 12px; flex-wrap: wrap; gap: 8px; }
+  .adm-topbar-title { flex: 1 1 auto; min-width: 0; font-size: 15px; }
+  .adm-body { padding: 12px; }
+  .adm-tabs { padding: 0 12px; }
+  .adm-grid { gap: 12px; }
+  .col-4, .col-6, .col-8, .col-12 { grid-column: span 12; }
+  .col-3 { grid-column: span 6; }
+  /* Números (KPIs): 2 por linha, mais compactos. */
+  .kpi-card { padding: 12px 14px; }
+  .kpi-value { font-size: 1.5rem !important; }
+  .kpi-label { font-size: 10px; }
+  /* Recuos laterais fixos de 28px nas páginas viram 12px. */
+  .adm-page > div[style*="28px"] { padding-left: 12px !important; padding-right: 12px !important; }
+  .adm-page > div[style*="28px"] > div[style*="max-width"] { max-width: none !important; }
+
+  /* Tabelas: rolam de lado dentro do painel em vez de esmagar as colunas. */
+  .adm-panel { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .adm-table { min-width: 620px; }
+  .adm-table th, .adm-table td { padding-left: 10px; padding-right: 10px; }
+
+  /* Grades com colunas fixas no estilo da página: 1 coluna (KPIs em 2). */
+  .admin-root .adm-main [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+  .admin-root .adm-main [style*="repeat(4, 1fr)"], .admin-root .adm-main [style*="repeat(3, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
+
+  /* Modais: quase tela cheia, sem sair da tela. */
+  .adm-modal-backdrop { padding: 8px !important; align-items: flex-end !important; }
+  .adm-modal { max-width: 100% !important; width: 100% !important; max-height: calc(100dvh - 16px); }
+}
 `;
 
 // ── Login ───────────────────────────────────────────────────────────────────
@@ -635,7 +688,7 @@ const NAV: NavItem[] = [
   { href: '/admin/team',          icon: UserCog,    label: 'Equipe',       area: 'team' },
 ];
 
-type NavLink = { href: string; area: string };
+type NavLink = { href: string; area: string; label: string };
 const NAV_LINKS = NAV.filter((x): x is NavLink & NavItem => 'href' in x) as NavLink[];
 
 /** Área da página atual pelo prefixo mais longo do menu (/admin/users/... é a ficha de Usuários). */
@@ -654,8 +707,8 @@ function firstAllowedHref(me: AdminMe): string {
   return NAV_LINKS.find(l => me.areas.includes(l.area))?.href ?? '/admin';
 }
 
-function Sidebar({ collapsed, onToggle, pathname, onLogout, me }: {
-  collapsed: boolean; onToggle: () => void; pathname: string | null; onLogout: () => void; me: AdminMe;
+function Sidebar({ collapsed, onToggle, pathname, onLogout, me, mobileOpen }: {
+  collapsed: boolean; onToggle: () => void; pathname: string | null; onLogout: () => void; me: AdminMe; mobileOpen: boolean;
 }) {
   // Esconde seções sem nenhum item liberado para o papel.
   const visible = NAV.filter((item, i) => {
@@ -670,7 +723,7 @@ function Sidebar({ collapsed, onToggle, pathname, onLogout, me }: {
   const initial = (me.name ?? me.email ?? 'A').trim().charAt(0).toUpperCase();
 
   return (
-    <nav className={`adm-sidebar${collapsed ? ' collapsed' : ''}`}>
+    <nav className={`adm-sidebar${collapsed ? ' collapsed' : ''}${mobileOpen ? ' mobile-open' : ''}`}>
       <div className="adm-logo">
         <img src="/images/queizy-icon.png" alt="Queizy" style={{ width: 32, height: 32, borderRadius: 'var(--r1)', objectFit: 'cover', flexShrink: 0 }} />
         <div className="adm-logo-text">
@@ -741,7 +794,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [state, setState] = useState<'loading' | 'login' | 'ready'>('loading');
   const [notice, setNotice] = useState<string | undefined>();
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  useEffect(() => { setMobileOpen(false); }, [pathname]); // fecha a gaveta ao trocar de página
   const router = useRouter();
 
   const loadMe = async () => {
@@ -801,8 +856,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <AdminMeContext.Provider value={me}>
       <style>{ADMIN_CSS}</style>
       <div className="admin-root" style={{ display: 'flex', minHeight: '100dvh' }}>
-        <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(c => !c)} pathname={pathname} onLogout={handleLogout} me={me} />
-        <main style={{ marginLeft: collapsed ? 64 : 240, flex: 1, minWidth: 0, transition: 'margin-left 280ms cubic-bezier(.4,0,.2,1)' }}>
+        <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(c => !c)} pathname={pathname} onLogout={handleLogout} me={me} mobileOpen={mobileOpen} />
+        <div className={`adm-backdrop${mobileOpen ? ' show' : ''}`} onClick={() => setMobileOpen(false)} />
+        <main className="adm-main" style={{ ['--adm-ml' as string]: collapsed ? '64px' : '240px', flex: 1, minWidth: 0, transition: 'margin-left 280ms cubic-bezier(.4,0,.2,1)' } as React.CSSProperties}>
+          {/* Só no celular: barra com o menu (a lateral vira gaveta). */}
+          <div className="adm-mobilebar">
+            <button className="adm-mobilebar-btn" onClick={() => setMobileOpen(true)} aria-label="Abrir menu"><Menu size={18} /></button>
+            <img src="/images/queizy-icon.png" alt="" style={{ width: 26, height: 26, borderRadius: 6 }} />
+            <div className="adm-mobilebar-title">Gestão</div>
+          </div>
           {allowedHere ? children : null}
         </main>
       </div>
