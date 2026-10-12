@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Plus, RefreshCw, Check, X, Pencil, Headphones } from 'lucide-react';
 import { InsightsTab } from './InsightsTab';
 import { FaqTab } from './FaqTab';
+import { WhatsAppTab } from './WhatsAppTab';
 
 interface Agent { id: string; name: string; email: string | null; whatsapp: string | null; is_active: boolean; }
 interface Conversation {
@@ -23,7 +24,7 @@ const fmt = (s: string | null) => s ? new Date(s).toLocaleString('pt-BR', { day:
 
 export default function SupportAdmin() {
   const [secret, setSecret] = useState('');
-  const [tab, setTab] = useState<'agents' | 'queue' | 'insights' | 'faq'>('queue');
+  const [tab, setTab] = useState<'agents' | 'queue' | 'insights' | 'faq' | 'whatsapp'>('queue');
   const [agents, setAgents] = useState<Agent[]>([]);
   const [convs, setConvs] = useState<Conversation[]>([]);
   const [counts, setCounts] = useState<Record<string, number>>({});
@@ -71,6 +72,7 @@ export default function SupportAdmin() {
         <div className={`adm-tab${tab === 'insights' ? ' active' : ''}`} onClick={() => setTab('insights')}>Insights</div>
         <div className={`adm-tab${tab === 'faq' ? ' active' : ''}`} onClick={() => setTab('faq')}>FAQ da IA</div>
         <div className={`adm-tab${tab === 'agents' ? ' active' : ''}`} onClick={() => setTab('agents')}>Atendentes ({agents.length})</div>
+        <div className={`adm-tab${tab === 'whatsapp' ? ' active' : ''}`} onClick={() => setTab('whatsapp')}>WhatsApp</div>
       </div>
 
       <div className="adm-body">
@@ -112,6 +114,7 @@ export default function SupportAdmin() {
 
         {tab === 'insights' && <InsightsTab onOpenConversation={setOpenConv} />}
         {tab === 'faq' && <FaqTab />}
+        {tab === 'whatsapp' && <WhatsAppTab />}
 
         {tab === 'agents' && (
           <>

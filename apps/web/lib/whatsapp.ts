@@ -69,3 +69,50 @@ export function parseWhatsAppWebhook(body: unknown): IncomingWhatsApp[] {
   }
   return out;
 }
+
+// ── Ativação do número (usada pelo /admin → Suporte → WhatsApp) ─────────────
+// Conta do WhatsApp (WABA) do Queizy: "Charllot - Hub Academy".
+export const WHATSAPP_WABA_ID = process.env.WHATSAPP_WABA_ID || '275286372330713';
+
+async function graph(path: string, init?: { method?: string; body?: unknown }) {
+  const token = process.env.WHATSAPP_ACCESS_TOKEN;
+  if (!token) return { ok: false, status: 0, json: { error: { message: 'WHATSAPP_ACCESS_TOKEN ausente' } } as Record<string, any> };
+  const r = await fetch(`${GRAPH}/${path}`, {
+    method: init?.method ?? 'GET',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: init?.body ? JSON.stringify(init.body) : undefined,
+  });
+  const json = await r.json().catch(() => ({})) as Record<string, any>;
+  return { ok: r.ok, status: r.status, json };
+}
+
+/** Situação do número na Meta (nome, verificação, status, qualidade) e se o app recebe os webhooks da conta. */
+export async function whatsappStatus() {
+  const id = process.env.WHATSAPP_PHONE_NUMBER_ID;
+  if (!id) return { configured: false as const };
+  const [phone, apps] = await Promise.all([
+    graph(`${id}?fields=display_phone_number,verified_name,name_status,code_verification_status,status,quality_rating,platform_type,messaging_limit_tier`),
+    graph(`${WHATSAPP_WABA_ID}/subscribed_apps`),
+  ]);
+  return {
+    configured: true as const,
+    phone: phone.ok ? phone.json : null,
+    phoneError: phone.ok ? null : phone.json?.error?.message ?? `HTTP ${phone.status}`,
+    subscribedApps: apps.ok ? ((apps.json.data ?? []) as { whatsapp_business_api_data?: { name?: string } }[]).map(a => a.whatsapp_business_api_data?.name ?? '?') : null,
+    appsError: apps.ok ? null : apps.json?.error?.message ?? `HTTP ${apps.status}`,
+  };
+}
+
+/** Registra o número na Cloud API com o PIN de verificação em duas etapas (6 dígitos). */
+export async function registerWhatsAppNumber(pin: string) {
+  const id = process.env.WHATSAPP_PHONE_NUMBER_ID;
+  if (!id) return { ok: false, error: 'WHATSAPP_PHONE_NUMBER_ID ausente' };
+  const r = await graph(`${id}/register`, { method: 'POST', body: { messaging_product: 'whatsapp', pin } });
+  return r.ok ? { ok: true } : { ok: false, error: r.json?.error?.error_user_msg ?? r.json?.error?.message ?? `HTTP ${r.status}` };
+}
+
+/** Liga o app à conta do WhatsApp para os webhooks de mensagens chegarem. */
+export async function subscribeAppToWaba() {
+  const r = await graph(`${WHATSAPP_WABA_ID}/subscribed_apps`, { method: 'POST' });
+  return r.ok ? { ok: true } : { ok: false, error: r.json?.error?.message ?? `HTTP ${r.status}` };
+}
