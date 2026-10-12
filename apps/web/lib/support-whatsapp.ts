@@ -92,7 +92,7 @@ export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
     return;
   }
   const { ticketCode } = await escalate({ conversationId: convId, contact, channel: 'whatsapp', intent: decision.intent, userText: m.text, reason: decision.reason, userContext: context });
-  await reply(convId, m.from, ticketOpenedText(ticketCode), decision.intent);
+  await reply(convId, m.from, ticketOpenedText(ticketCode, decision.lang), decision.intent);
 }
 
 /** Primeiro nome para o cumprimento: só a primeira palavra, só letras (o nome do perfil é texto livre). */

@@ -3,7 +3,7 @@
 // /admin e o atendente responde pelo /admin (a resposta aparece no chat + push).
 // O aluno está logado, então é sempre identificado e confirmado.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { runSupportAgent, type SupportTurn } from '@/lib/support-agent';
+import { runSupportAgent, guessLang, type SupportTurn } from '@/lib/support-agent';
 import { findUserContext, upsertConversation, logMessage, setConversationStatus, escalate, ticketOpenedText } from '@/lib/support-service';
 import { sendDirectPush } from '@/lib/rally';
 
@@ -44,7 +44,7 @@ export async function handleAppMessage(userId: string, rawText: string, lang: 'p
     const { data: last } = await supabase.from('support_messages').select('author, body')
       .eq('conversation_id', convId).eq('direction', 'out').order('created_at', { ascending: false }).limit(1);
     const l = last?.[0] as { author: string; body: string } | undefined;
-    const waiting = lang === 'en' ? WAITING_EN : WAITING_PT;
+    const waiting = guessLang(text, lang) === 'en' ? WAITING_EN : WAITING_PT;
     if (l?.author !== 'human' && l?.author !== 'system' && l?.body !== waiting) await logMessage({ conversationId: convId, direction: 'out', author: 'agent', body: waiting, autoSent: true });
     return getAppChat(userId);
   }
@@ -67,7 +67,7 @@ export async function handleAppMessage(userId: string, rawText: string, lang: 'p
     await setConversationStatus(convId, decision.intent === 'encerramento' ? 'closed' : 'auto_resolved');
   } else {
     const { ticketCode } = await escalate({ conversationId: convId, contact, channel: 'app', intent: decision.intent, userText: text, reason: decision.reason, userContext: context });
-    await logMessage({ conversationId: convId, direction: 'out', author: 'agent', body: ticketOpenedText(ticketCode, lang), intent: decision.intent, autoSent: true });
+    await logMessage({ conversationId: convId, direction: 'out', author: 'agent', body: ticketOpenedText(ticketCode, decision.lang), intent: decision.intent, autoSent: true });
   }
   return getAppChat(userId);
 }

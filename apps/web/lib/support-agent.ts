@@ -4,6 +4,26 @@
 // da whitelist — Fase 1) ou escalar para um humano.
 import { getSupportFaq } from './support-faq';
 import { logOpenAIUsage } from './openai-usage';
+import glossary from './app-ui-glossary.json';
+
+const GLOSSARY = glossary as Record<string, string>;
+
+const LABELS_BY_LENGTH = Object.keys(GLOSSARY).filter(k => k.length >= 3).sort((a, b) => b.length - a.length);
+/** Troca rótulos do app citados entre aspas pelo nome em inglês ("Seu progresso" → "Your progress"). */
+export function toEnglishLabels(text: string): string {
+  return text.replace(/(["“'])([^"”'\n]{3,60})(["”'])/g, (all, open, label, close) => {
+    const key = LABELS_BY_LENGTH.find(k => k.toLowerCase() === label.trim().toLowerCase());
+    return key ? `${open}${GLOSSARY[key]}${close}` : all;
+  });
+}
+
+/** Idioma de um texto curto do aluno (para mensagens geradas pelo código). */
+export function guessLang(text: string, fallback: 'pt' | 'en' = 'pt'): 'pt' | 'en' {
+  const t = ` ${text.toLowerCase()} `;
+  if (/[ãõçáéíóúâêô]/.test(t) || /\s(não|nao|eu|meu|minha|você|voce|quero|preciso|obrigad[oa]|como|onde|tenho|está|esta|oi|olá|ola)\s/.test(t)) return 'pt';
+  if (/\s(i|my|the|how|where|what|can't|cannot|please|thanks|hello|hi|need|want)\s/.test(t)) return 'en';
+  return fallback;
+}
 
 const OPENAI_URL = 'https://api.openai.com/v1/chat/completions';
 const MODEL = 'gpt-4o-mini';
@@ -43,7 +63,8 @@ export interface SupportTurn { role: 'user' | 'assistant'; content: string; }
 
 export interface AgentDecision {
   intent: string;
-  reply: string;          // resposta em PT-BR (usada se auto_send)
+  reply: string;          // resposta ao aluno, no idioma da mensagem dele (usada se auto_send)
+  lang: 'pt' | 'en';      // idioma em que a IA respondeu (= idioma da mensagem do aluno)
   needsHuman: boolean;    // o modelo achou que precisa de humano
   reason: string;         // por que escalar (se aplicável)
   autoSend: boolean;      // decisão final: enviar automaticamente?
@@ -70,9 +91,17 @@ function systemPrompt(ctx: SupportUserContext, faq: string, channel?: string, to
 
   // Mesmo no chat do app, quem fala é o suporte (a Charlotte é a tutora; não se apresentar como ela).
   const identity = `Você é a atendente de suporte do Queizy (app de inglês com IA da Hub Academy; antes se chamava Charlotte AI, e a tutora dentro do app se chama Charlotte). Você NÃO é a Charlotte: fale como a equipe de suporte do Queizy (pode usar "nós", "a gente").`;
-  const language = lang === 'en'
-    ? `Answer in natural, friendly English (the user's phone is in English). The FAQ below is in Portuguese: translate the facts, and use the English names of the app screens and buttons (e.g. "Seu progresso" → "Your progress", "Perfil" → "Profile").`
-    : `Fale em português do Brasil, com acentuação e gramática perfeitas, tom gentil, claro e objetivo.`;
+  // Idioma da RESPOSTA = idioma da mensagem do aluno. Nomes de telas e botões = idioma do
+  // celular dele, porque é o que aparece na tela (lang = idioma do aparelho; WhatsApp/e-mail: pt).
+  const shown = lang === 'en'
+    ? Object.entries(GLOSSARY).filter(([pt]) => pt.length >= 3 && faq.includes(pt)).slice(0, 150)
+    : [];
+  const language = `Responda no MESMO idioma da última mensagem do usuário: português do Brasil (com acentuação e gramática perfeitas) ou inglês natural. Tom gentil, claro e objetivo. A FAQ está em português; se responder em inglês, traduza os fatos.
+${lang === 'en'
+    ? `O celular do usuário está em INGLÊS: ao citar telas, botões e menus, use SEMPRE o nome em inglês que aparece no app, mesmo respondendo em português (ex.: "toque em \"Your progress\""). Nomes no app (português → inglês):
+${shown.map(([pt, en]) => `${pt} → ${en}`).join('\n')}`
+    : 'Ao citar telas, botões e menus, use os nomes exatos da FAQ (é como aparecem no app).'}
+`;
   return `${identity}
 ${language}
 
@@ -97,7 +126,7 @@ Classifique a intenção em UM destes intents:
 reset_senha, como_cancelar, planos_precos, como_usar, onde_fica, problema_uso, restaurar_compra, acesso_login, saudacao, sugestao, encerramento, reembolso, cobranca, excluir_conta, bug_tecnico, reclamacao, outro.
 
 Responda SOMENTE um JSON com as chaves:
-{"intent": "<um dos intents>", "reply": "<resposta em PT-BR para o usuário>", "needsHuman": <true|false>, "reason": "<por que precisa de humano, ou vazio>"}
+{"intent": "<um dos intents>", "reply": "<resposta para o usuário, no idioma da mensagem dele>", "lang": "pt" | "en" (idioma da sua resposta), "needsHuman": <true|false>, "reason": "<por que precisa de humano, ou vazio>"}
 
 FAQ:
 ${faq}`;
@@ -114,7 +143,7 @@ export async function runSupportAgent(input: {
 }): Promise<AgentDecision> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    return { intent: 'outro', reply: '', needsHuman: true, reason: 'OPENAI_API_KEY ausente', autoSend: false };
+    return { intent: 'outro', reply: '', lang: guessLang(input.userText, input.lang ?? 'pt'), needsHuman: true, reason: 'OPENAI_API_KEY ausente', autoSend: false };
   }
 
   const { text: faq } = await getSupportFaq();
@@ -124,7 +153,7 @@ export async function runSupportAgent(input: {
     { role: 'user', content: input.userText },
   ];
 
-  let parsed: { intent?: string; reply?: string; needsHuman?: boolean; reason?: string } = {};
+  let parsed: { intent?: string; reply?: string; lang?: string; needsHuman?: boolean; reason?: string } = {};
   try {
     const res = await fetch(OPENAI_URL, {
       method: 'POST',
@@ -141,28 +170,31 @@ export async function runSupportAgent(input: {
     if (json.usage) logOpenAIUsage({ userId: input.context.userId ?? null, endpoint: 'support-agent', model: MODEL, promptTokens: json.usage.prompt_tokens, completionTokens: json.usage.completion_tokens, totalTokens: json.usage.total_tokens });
     parsed = JSON.parse(json.choices?.[0]?.message?.content ?? '{}');
   } catch (e) {
-    return { intent: 'outro', reply: '', needsHuman: true, reason: `Falha no agente: ${e instanceof Error ? e.message : String(e)}`, autoSend: false };
+    return { intent: 'outro', reply: '', lang: guessLang(input.userText, input.lang ?? 'pt'), needsHuman: true, reason: `Falha no agente: ${e instanceof Error ? e.message : String(e)}`, autoSend: false };
   }
 
   const intent = String(parsed.intent ?? 'outro');
   const needsHuman = parsed.needsHuman === true;
   const reply = String(parsed.reply ?? '').trim();
+  const replyLang: 'pt' | 'en' = parsed.lang === 'en' || parsed.lang === 'pt' ? parsed.lang : guessLang(input.userText, input.lang ?? 'pt');
 
   // Só auto-envia se o modelo não pediu humano E o intent está na whitelist E há resposta.
   // Sugestão de função: agradece e registra (a análise da conversa leva para o /admin).
   const autoSend = !needsHuman && (AUTO_INTENTS.has(intent) || intent === 'sugestao') && reply.length > 0;
+  // Celular em inglês: telas e botões citados entre aspas saem com o nome que aparece no app.
+  let finalReply = input.lang === 'en' ? toEnglishLabels(reply) : reply;
   // Resposta a uma dúvida termina com uma pergunta (mantém a conversa e mostra se resolveu).
-  let finalReply = reply;
   if (autoSend && !['encerramento', 'saudacao', 'sugestao'].includes(intent) && !/\?\s*$/.test(reply)) {
-    const asks = input.lang === 'en'
+    const asks = replyLang === 'en'
       ? ['Did that help?', 'Any other questions?', 'Did it work?', 'Is that what you needed?']
       : ['Consegui ajudar?', 'Ficou alguma dúvida?', 'Deu certo por aí?', 'Era isso que você precisava?'];
-    finalReply = `${reply.replace(/\s*(Se precisar[^.!?]*[.!]|Qualquer (coisa|dúvida)[^.!?]*[.!])\s*$/i, '').trim()}\n\n${asks[Math.floor(Math.random() * asks.length)]}`;
+    finalReply = `${finalReply.replace(/\s*(Se precisar[^.!?]*[.!]|Qualquer (coisa|dúvida)[^.!?]*[.!])\s*$/i, '').trim()}\n\n${asks[Math.floor(Math.random() * asks.length)]}`;
   }
 
   return {
     intent,
     reply: finalReply,
+    lang: replyLang,
     needsHuman,
     reason: String(parsed.reason ?? ''),
     autoSend,

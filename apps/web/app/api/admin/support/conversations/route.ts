@@ -16,6 +16,7 @@ import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { sendWhatsAppText } from '@/lib/whatsapp';
 import { logMessage, setConversationStatus, supportReplyHtml, ticketTakenText } from '@/lib/support-service';
 import { notifyAppReply } from '@/lib/support-app';
+import { guessLang } from '@/lib/support-agent';
 
 // Login próprio (Bearer) com papel que acessa 'support', ou a senha mestra antiga.
 async function checkAuth(req: NextRequest) {
@@ -116,7 +117,10 @@ export async function POST(req: NextRequest) {
   // Assume o atendimento: registra quem é e avisa o aluno pelo canal dele.
   const take = async (): Promise<string | null> => {
     if (!firstName) return 'Entre com o seu login de atendente (não a senha mestra) para assumir com o seu nome.';
-    const text = ticketTakenText(firstName, c.ticket_code);
+    // No idioma em que o aluno escreveu por último.
+    const { data: lastIn } = await supabase.from('support_messages').select('body').eq('conversation_id', c.id)
+      .eq('direction', 'in').order('created_at', { ascending: false }).limit(1);
+    const text = ticketTakenText(firstName, c.ticket_code, guessLang(String((lastIn?.[0] as { body?: string } | undefined)?.body ?? '')));
     if (c.channel === 'whatsapp') {
       const r = await sendWhatsAppText(c.external_id, text);
       if (!r.ok) return `Não foi possível avisar pelo WhatsApp: ${r.error}`;
