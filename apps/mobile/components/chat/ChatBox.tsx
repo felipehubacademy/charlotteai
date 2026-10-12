@@ -20,7 +20,8 @@ import {
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { systemIsPt } from '@/lib/systemLang';
-import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
+import { ChatCharacterContext, ChatCharacterAvatar } from '@/components/ui/CharacterAvatar';
+import { characterInfo, impressionLabel } from '@/lib/characters';
 import { translationService, TranslationResult } from '@/lib/translation-service';
 import PronunciationScoreCard, { PronunciationData } from '@/components/chat/PronunciationScoreCard';
 import { router } from 'expo-router';
@@ -67,6 +68,7 @@ export interface Message {
   isSeparator?: boolean;                 // Visual divider between history and current session
   isExplainMore?: boolean;              // Response to an "Explain more" tap — hides the button
   vocabularySuggestions?: string[];     // Terms Charlotte suggests adding to vocabulary
+  impression?: string | null;            // Família Queizy: resposta com imitação (ex.: Igorfina "president")
 }
 
 interface ChatBoxProps {
@@ -85,6 +87,8 @@ interface ChatBoxProps {
   /** Banner renderizado no topo VISUAL da lista (rola junto com as mensagens).
    *  Implementado como ListFooterComponent da FlatList invertida. */
   topBanner?: React.ReactNode;
+  /** Família Queizy: personagem da conversa (Free Chat). Padrão: Charlotte. */
+  character?: string;
 }
 
 // Typing indicator — dots for text, mic pulse for audio
@@ -118,7 +122,7 @@ const TypingIndicator = ({ isAudio = false }: { isAudio?: boolean }) => {
 
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 16, alignSelf: 'flex-start' }}>
-      <CharlotteAvatar size="xs" />
+      <ChatCharacterAvatar size="xs" />
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#F3F0E8', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: 12 }}>
         {isAudio ? (
           <Animated.View style={{ opacity: pulse }}>
@@ -140,13 +144,26 @@ const TypingIndicator = ({ isAudio = false }: { isAudio?: boolean }) => {
 // Audio waveform indicator
 const AudioRecordingIndicator = () => (
   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, padding: 14, backgroundColor: '#F3F0E8', borderRadius: 18, borderTopLeftRadius: 0, alignSelf: 'flex-start', marginBottom: 16 }}>
-    <CharlotteAvatar size="xs" />
+    <ChatCharacterAvatar size="xs" />
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
       <Microphone size={14} color="#08804A" weight="fill" />
       <AppText style={{ color: 'rgba(22,19,31,0.65)', fontSize: 14 }}>Recording...</AppText>
     </View>
   </View>
 );
+
+const ImpressionTag = ({ impression }: { impression: string }) => {
+  const character = React.useContext(ChatCharacterContext);
+  const label = impressionLabel(characterInfo(character), impression, systemIsPt);
+  if (!label) return null;
+  return (
+    <View style={{ alignSelf: 'flex-start', backgroundColor: '#16131F', borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3, marginBottom: 4 }}>
+      <AppText style={{ fontSize: 11, fontWeight: '700', color: '#DCFF4A' }}>
+        {systemIsPt ? `imitando: ${label}` : `impression: ${label}`}
+      </AppText>
+    </View>
+  );
+};
 
 const MessageBubble: React.FC<{
   message: Message;
@@ -223,11 +240,15 @@ const MessageBubble: React.FC<{
       {/* Avatar for assistant messages — alinhado ao topo */}
       {!isUser && (
         <View style={{ marginRight: 8, marginTop: 2 }}>
-          <CharlotteAvatar size="xs" />
+          <ChatCharacterAvatar size="xs" />
         </View>
       )}
       <View style={{ maxWidth: '78%', marginLeft: isUser ? 48 : 0, marginRight: isUser ? 0 : 8 }}>
 
+        {/* Família Queizy: selo da imitação (a voz e o texto mudam nesta resposta) */}
+        {!isUser && !!message.impression && (
+          <ImpressionTag impression={message.impression} />
+        )}
         {/* Bubble — long-press abre action sheet pra msgs da Charlotte */}
         <Pressable
           onLongPress={!isUser ? () => setShowActions(true) : undefined}
@@ -527,6 +548,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({
   playingMessageId,
   onExplainMore,
   topBanner,
+  character = 'charlotte',
 }) => {
   const flatListRef = React.useRef<FlatList>(null);
 
@@ -570,6 +592,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({
   };
 
   return (
+    <ChatCharacterContext.Provider value={mode === 'chat' ? character : 'charlotte'}>
     <View style={{ flex: 1, backgroundColor: '#FAF7F0' }}>
       {/* Subtle dot texture — like WhatsApp */}
       <Svg style={StyleSheet.absoluteFill}>
@@ -617,6 +640,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({
         }
       />
     </View>
+    </ChatCharacterContext.Provider>
   );
 };
 

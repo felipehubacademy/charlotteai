@@ -14,6 +14,7 @@ import { PronunciationData } from '@/components/chat/PronunciationScoreCard';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import { soundEngine } from '@/lib/soundEngine';
 import { systemIsPt } from '@/lib/systemLang';
+import { characterInfo, impressionForReply, type CharacterId, type ImpressionId } from '@/lib/characters';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -85,13 +86,14 @@ function saveChatMessage(
 }
 
 /** Call TTS endpoint and save the mp3 to a local temp file. Returns local URI or null. */
-async function fetchTTS(text: string, userId?: string): Promise<string | null> {
+async function fetchTTS(text: string, userId?: string, character?: CharacterId, impression?: ImpressionId | null): Promise<string | null> {
   try {
     console.log('Fetching TTS for:', text.slice(0, 60));
     const response = await fetch(`${API_BASE_URL}/api/tts`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text, source: 'chat', ...(userId ? { userId } : {}) }),
+      // Família Queizy: personagem (e imitação) define a voz no servidor.
+      body: JSON.stringify({ text, source: 'chat', ...(userId ? { userId } : {}), ...(character && character !== 'charlotte' ? { character, impression: impression ?? undefined } : {}) }),
     });
     if (!response.ok) {
       const err = await response.text();
@@ -143,6 +145,12 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
   React.useEffect(() => { activeSessionIdRef.current = activeSessionId; }, [activeSessionId]);
   const historyLoadedRef = useRef(false);
   const { checkForNewAchievements } = useAchievementsContext();
+  // Família Queizy: com quem é a conversa do Free Chat (cada conversa guarda o seu) e quantas
+  // respostas o personagem já deu nela (define quando o Igorfina solta uma imitação).
+  const [character, setCharacterState] = useState<CharacterId>('charlotte');
+  const characterRef = useRef<CharacterId>('charlotte');
+  const replyCountRef = useRef(0);
+  const setCharacter = useCallback((id: CharacterId) => { characterRef.current = id; setCharacterState(id); }, []);
 
   // Auto-clear rate limit when retry window expires
   React.useEffect(() => {
@@ -175,7 +183,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
   React.useEffect(() => {
     if (initialModeRef.current === mode) return;
     initialModeRef.current = mode;
-    setMessages([buildWelcome(mode, userLevel, userName)]);
+    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
     contextManagerRef.current = new ConversationContextManager(userLevel, userName);
     setActiveSessionId(null);
     activeSessionIdRef.current = null;
@@ -203,7 +211,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       .maybeSingle()
       .then(({ data: sessionRow }) => {
         setHistoryLoading(false);
-        setMessages([buildWelcome(mode, userLevel, userName)]);
+        setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
 
         if (!sessionRow) return;
 
@@ -230,7 +238,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
 
     const { data, error } = await supabase
       .from('charlotte_chat_sessions')
-      .insert({ user_id: userId })
+      .insert({ user_id: userId, character: characterRef.current })
       .select('id')
       .single();
     if (error || !data) {
@@ -271,7 +279,8 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     const sessionId = activeSessionIdRef.current;
     if (!sessionId) {
       // Mesmo sem session ativa, limpa state pra mensagens efêmeras
-      setMessages([buildWelcome(mode, userLevel, userName)]);
+      replyCountRef.current = 0;
+      setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
       return;
     }
 
@@ -292,9 +301,16 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     }).catch(err => console.warn('summarize-chat:', err));
 
     // Limpa state local
-    setMessages([buildWelcome(mode, userLevel, userName)]);
+    replyCountRef.current = 0;
+    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
     contextManagerRef.current = new ConversationContextManager(userLevel, userName);
   }, [mode, userLevel, userName, userId]);
+
+  // ── Nova conversa com um personagem (Free Chat) ───────────────────────────
+  const startConversationWith = useCallback(async (id: CharacterId): Promise<void> => {
+    setCharacter(id);
+    await closeSession();
+  }, [closeSession, setCharacter]);
 
   // ── Carrega session específica (do drawer histórico) ──────────────────────
   // Se já há outra session ativa diferente, encerra antes (evita 2 abertas).
@@ -324,16 +340,22 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       .eq('id', sessionId)
       .then(({ error }) => { if (error) console.warn('loadSession reopen:', error.message); });
 
-    const { data, error } = await supabase
-      .from('chat_messages')
-      .select('role, content, created_at')
-      .eq('user_id', userId)
-      .eq('session_id', sessionId)
-      .order('created_at', { ascending: true });
+    const [{ data: sess }, { data, error }] = await Promise.all([
+      supabase.from('charlotte_chat_sessions').select('character').eq('id', sessionId).maybeSingle(),
+      supabase
+        .from('chat_messages')
+        .select('role, content, created_at')
+        .eq('user_id', userId)
+        .eq('session_id', sessionId)
+        .order('created_at', { ascending: true }),
+    ]);
+    // A conversa continua com quem ela foi começada.
+    setCharacter(((sess as { character?: string } | null)?.character as CharacterId) ?? 'charlotte');
+    replyCountRef.current = (data ?? []).filter(r => r.role === 'assistant').length;
 
     setHistoryLoading(false);
     if (error || !data) {
-      setMessages([buildWelcome(mode, userLevel, userName)]);
+      setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
       return;
     }
 
@@ -350,13 +372,13 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       timestamp: new Date(row.created_at),
     }));
 
-    setMessages([buildWelcome(mode, userLevel, userName), ...historyMsgs]);
+    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current), ...historyMsgs]);
   }, [mode, userLevel, userName, userId]);
 
   // Welcome message on mount — only for non-chat modes (chat shows history or welcome async)
   React.useEffect(() => {
     if (mode === 'chat') return; // handled above with history
-    setMessages([buildWelcome(mode, userLevel, userName)]);
+    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const addMessage = useCallback((msg: Message) => {
@@ -370,12 +392,19 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       pronunciationData?: any
     ) => {
       const contextString = contextManagerRef.current.generateContextForAssistant();
+      // Free Chat com personagem: quem fala e, nesta resposta, se é uma imitação.
+      const who = mode === 'chat' ? characterRef.current : 'charlotte';
+      const impression = who !== 'charlotte'
+        ? impressionForReply(characterInfo(who), replyCountRef.current + 1, (activeSessionIdRef.current ?? '').length % 2)
+        : null;
 
       const response = await fetch(`${API_BASE_URL}/api/assistant`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           ...(userId ? { 'x-user-id': userId } : {}),
+          ...(who !== 'charlotte' ? { 'x-character': who } : {}),
+          ...(impression ? { 'x-impression': impression } : {}),
         },
         body: JSON.stringify({
           transcription: userMessage,
@@ -414,7 +443,9 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       const data = await response.json();
       if (!data.success) throw new Error(data.error || 'Assistant API failed');
 
+      if (mode === 'chat') replyCountRef.current += 1;
       return {
+        impression,
         feedback: data.result.feedback as string,
         technicalFeedback: data.result.technicalFeedback as string | undefined,
         xpAwarded: (data.result.xpAwarded as number) ?? 10,
@@ -443,7 +474,9 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       for (let i = 0; i < parts.length; i++) {
         if (i > 0) await delay(1500);
 
-        const audioUri = respondWithAudio ? await fetchTTS(parts[i], userId) : null;
+        const audioUri = respondWithAudio
+          ? await fetchTTS(parts[i], userId, mode === 'chat' ? characterRef.current : 'charlotte', (extraProps as { impression?: ImpressionId | null }).impression ?? null)
+          : null;
 
         const msg: Message = {
           id: `${generateId()}-${i}`,
@@ -491,7 +524,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       try {
         const result = await getAssistantResponse(text.trim(), 'text');
         if (!result) { setIsProcessing(false); return; }
-        const { feedback, technicalFeedback, xpAwarded, vocabularySuggestions } = result;
+        const { feedback, technicalFeedback, xpAwarded, vocabularySuggestions, impression } = result;
 
         contextManagerRef.current.addMessage('assistant', feedback, 'text');
 
@@ -504,7 +537,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         // Text input → text output always (no TTS regardless of mode)
         await deliverSequentially(
           [feedback.trim()], technicalFeedback, false,
-          vocabularySuggestions?.length ? { vocabularySuggestions } : {}
+          { ...(vocabularySuggestions?.length ? { vocabularySuggestions } : {}), ...(impression ? { impression } : {}) }
         );
 
         // Save assistant reply to history
@@ -948,7 +981,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
 
         const audioResult = await getAssistantResponse(transcription, 'audio');
         if (!audioResult) return;
-        const { feedback, technicalFeedback, xpAwarded, vocabularySuggestions } = audioResult;
+        const { feedback, technicalFeedback, xpAwarded, vocabularySuggestions, impression } = audioResult;
 
         contextManagerRef.current.addMessage('assistant', feedback, 'text');
 
@@ -962,7 +995,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         const withAudio = mode === 'chat';
         await deliverSequentially(
           [feedback.trim()], technicalFeedback, withAudio,
-          vocabularySuggestions?.length ? { vocabularySuggestions } : {}
+          { ...(vocabularySuggestions?.length ? { vocabularySuggestions } : {}), ...(impression ? { impression } : {}) }
         );
 
         // Save assistant reply to chat history
@@ -999,7 +1032,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
   // Reseta msgs pra welcome only (sem tocar no DB). Útil pra pronunciation
   // refresh: usuário toca pra trocar de frase → tela limpa.
   const resetMessages = useCallback(() => {
-    setMessages([buildWelcome(mode, userLevel, userName)]);
+    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
     contextManagerRef.current = new ConversationContextManager(userLevel, userName);
   }, [mode, userLevel, userName]);
 
@@ -1019,12 +1052,15 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     activeSessionId,
     closeSession,
     loadSession,
+    // Família Queizy: personagem da conversa atual e troca (nova conversa com outro personagem)
+    character,
+    startConversationWith,
   };
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-function buildWelcome(mode: ChatMode, userLevel: string, userName: string): Message {
+function buildWelcome(mode: ChatMode, userLevel: string, userName: string, character: CharacterId = 'charlotte'): Message {
   // Use only the first name for a warmer, more personal greeting
   const firstName = userName.split(/[\s\-]+/)[0];
   const welcomeMessages: Record<string, Record<string, string>> = {
@@ -1044,6 +1080,15 @@ function buildWelcome(mode: ChatMode, userLevel: string, userName: string): Mess
       Novice: `Hi ${firstName}! Let's practice English today. (Você pode escrever em português se quiser, mas vou responder em inglês simples.)`,
     },
   };
+  // Igorfina no Free Chat: abertura no jeito dele (mesma regra de idioma por nível).
+  if (mode === 'chat' && character === 'igorfina') {
+    const igor: Record<string, string> = {
+      Advanced: `Hey ${firstName}! Igorfina in the house. Tell me something about your day and I'll turn it into a show.`,
+      Inter: `Hi ${firstName}! It's Igorfina. Let's practice English and have some laughs. How's your day going?`,
+      Novice: `Hi ${firstName}! I'm Igorfina. Let's practice English and have fun! (Pode escrever em português se quiser; eu respondo em inglês simples.)`,
+    };
+    return { id: 'welcome-0', role: 'assistant', content: igor[userLevel] ?? igor.Inter, messageType: 'text', timestamp: new Date() };
+  }
   return {
     id: 'welcome-0',
     role: 'assistant',

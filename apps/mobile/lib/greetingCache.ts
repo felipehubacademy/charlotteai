@@ -19,6 +19,7 @@ const API_BASE_URL =
 export const greetingCache = {
   fetched:  false,   // true once a fetch was kicked off this JS session
   level:    '',      // level used for the current cached result
+  character: '',     // Família Queizy: personagem da mensagem em cache
   text:     '',      // resolved greeting text; '' while pending or on error
   pending:  false,   // true while the API call is in-flight
 };
@@ -26,6 +27,7 @@ export const greetingCache = {
 export function resetGreetingCache(): void {
   greetingCache.fetched  = false;
   greetingCache.level    = '';
+  greetingCache.character = '';
   greetingCache.text     = '';
   greetingCache.pending  = false;
 }
@@ -34,6 +36,7 @@ interface PrefetchProfile {
   name: string | null;
   charlotte_level: string;
   first_welcome_done: boolean;
+  active_character?: string | null;
 }
 
 // Fire-and-forget: call as soon as profile is available.
@@ -43,6 +46,7 @@ export function prefetchGreeting(profile: PrefetchProfile): void {
 
   greetingCache.fetched = true;
   greetingCache.level   = profile.charlotte_level;
+  greetingCache.character = profile.active_character || 'charlotte';
   greetingCache.pending = true;
 
   const firstName = profile.name?.split(' ')[0] || profile.name || 'there';
@@ -71,6 +75,7 @@ export function prefetchGreeting(profile: PrefetchProfile): void {
       hour:      new Date().getHours(),
       level,
       isNewUser,
+      character: greetingCache.character, // quem fala na Início (Família Queizy)
     }),
   })
     .then(res => (res.ok ? res.json() : null))

@@ -175,7 +175,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     console.log('[AuthProvider] fetchProfile start for:', userId);
     const queryPromise = supabase
       .from('charlotte_users')
-      .select('id, email, name, charlotte_level, placement_test_done, first_welcome_done, is_institutional, is_active, subscription_status, trial_ends_at, must_change_password, avatar_url, subscription_product, subscription_expires_at, beta_features, is_admin')
+      .select('id, email, name, charlotte_level, placement_test_done, first_welcome_done, is_institutional, is_active, subscription_status, trial_ends_at, must_change_password, avatar_url, subscription_product, subscription_expires_at, beta_features, is_admin, active_character')
       .eq('id', userId)
       .single();
 

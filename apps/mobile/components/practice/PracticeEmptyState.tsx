@@ -4,12 +4,14 @@
 //   Free Chat     → tópicos (a Charlotte abre o assunto)
 //   Grammar       → frases com erros comuns para corrigir (conteúdo, em inglês)
 //   Pronunciation → só o balão (as frases ficam no hint acima do microfone)
+// No Free Chat, o aluno escolhe com quem conversar (Família Queizy): Charlotte ou Igorfina.
 
 import React from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { AppText } from '@/components/ui/Text';
 import { NOVICE_TOPICS, Topic } from './TopicPills';
+import { CHARACTER_LIST, characterInfo, type CharacterId } from '@/lib/characters';
 
 type Mode = 'chat' | 'grammar' | 'pronunciation';
 
@@ -34,6 +36,37 @@ interface Props {
   disabled?: boolean;
   onTopic: (topic: Topic) => void;
   onSample: (text: string) => void;
+  /** Free Chat: com quem é a conversa e a troca de personagem. */
+  character?: CharacterId;
+  onCharacter?: (id: CharacterId) => void;
+}
+
+const IGOR_TITLE = { pt: 'Bora começar o show?', en: 'Ready for the show?' };
+
+/** Escolha de com quem conversar (Free Chat). */
+function CharacterPicker({ value, onChange, isPt, disabled }: { value: CharacterId; onChange: (id: CharacterId) => void; isPt: boolean; disabled?: boolean }) {
+  return (
+    // Desce um pouco: o balão de dica do topo ("Que tal praticar Gramática hoje?") fica por cima desta área.
+    <View style={{ alignItems: 'center', marginTop: 44, marginBottom: 22 }}>
+      <AppText style={{ fontSize: 12, color: '#8A8494', fontWeight: '700', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.6 }}>
+        {isPt ? 'Conversar com' : 'Chat with'}
+      </AppText>
+      <View style={{ flexDirection: 'row', gap: 10 }}>
+        {CHARACTER_LIST.map(c => {
+          const on = c.id === value;
+          return (
+            <TouchableOpacity key={c.id} disabled={disabled} activeOpacity={0.8} onPress={() => !on && onChange(c.id)}
+              accessibilityRole="button" accessibilityState={{ selected: on }}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingLeft: 4, paddingRight: 14, paddingVertical: 4, borderRadius: 24,
+                backgroundColor: on ? INK : '#FFFFFF', borderWidth: 1, borderColor: on ? INK : 'rgba(22,19,31,0.10)', opacity: disabled ? 0.5 : 1 }}>
+              <Image source={c.avatar} style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: INK }} />
+              <AppText style={{ fontSize: 14, fontWeight: '700', color: on ? '#DCFF4A' : INK }}>{c.name}</AppText>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    </View>
+  );
 }
 
 function Chip({ label, onPress, disabled, italic }: { label: string; onPress: () => void; disabled?: boolean; italic?: boolean }) {
@@ -55,17 +88,22 @@ function Chip({ label, onPress, disabled, italic }: { label: string; onPress: ()
   );
 }
 
-export function PracticeEmptyState({ mode, isPt, disabled, onTopic, onSample }: Props) {
-  const title = isPt ? TITLES[mode].pt : TITLES[mode].en;
+export function PracticeEmptyState({ mode, isPt, disabled, onTopic, onSample, character = 'charlotte', onCharacter }: Props) {
+  // Gramática e Pronúncia são sempre com a Charlotte (correção de professora).
+  const who = characterInfo(mode === 'chat' ? character : 'charlotte');
+  const title = who.id === 'igorfina' ? (isPt ? IGOR_TITLE.pt : IGOR_TITLE.en) : (isPt ? TITLES[mode].pt : TITLES[mode].en);
 
   return (
     <View pointerEvents="box-none" style={{ paddingHorizontal: 20, paddingTop: 28, alignItems: 'center' }}>
+      {mode === 'chat' && onCharacter && (
+        <CharacterPicker value={who.id} onChange={onCharacter} isPt={isPt} disabled={disabled} />
+      )}
       {/* Balão + avatar */}
       <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'center', gap: 8 }}>
         <Image
-          source={require('@/assets/charlotte-avatar.png')}
+          source={who.avatar}
           style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: INK }}
-          accessibilityLabel="Charlotte"
+          accessibilityLabel={who.name}
         />
         <View style={{ maxWidth: '78%', marginBottom: 16 }}>
           <View style={{

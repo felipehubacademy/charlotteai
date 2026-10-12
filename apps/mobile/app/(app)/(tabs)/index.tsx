@@ -24,6 +24,7 @@ import { useTheme } from '@/lib/theme';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { identifyUser, track } from '@/lib/analytics';
 import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greetingCache';
+import { characterInfo } from '@/lib/characters';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
 import { splashGate } from '@/lib/splashGate';
@@ -168,7 +169,8 @@ export default function HomeTab() {
   // Charlotte greeting animado em WebP com alpha. expo-image faz loop nativo
   // e não toca AVAudioSession (substitui expo-video que floodava MediaPlayback
   // events no Live Voice — benchmark 2026-05-15).
-  const avatarSrc = require('@/assets/charlotte-avatar.png');
+  // Família Queizy: quem fala na Início é o personagem escolhido (padrão Charlotte).
+  const avatarSrc = characterInfo(profile?.active_character).avatar;
   // Hora da saudação: recalcula quando o app volta para o primeiro plano
   // (quem abriu de manhã e voltou à tarde vê "Good afternoon").
   const [heroHour, setHeroHour] = useState(() => new Date().getHours());
@@ -297,7 +299,8 @@ export default function HomeTab() {
 
   // ── AI Greeting ─────────────────────────────────────────────────────────────
   useEffect(() => {
-    if (greetingCache.level && greetingCache.level !== level && profile) {
+    const who = profile?.active_character || 'charlotte';
+    if (profile && greetingCache.level && (greetingCache.level !== level || greetingCache.character !== who)) {
       resetGreetingCache();
       setAiGreeting(null);
       setGreetingLoading(true);

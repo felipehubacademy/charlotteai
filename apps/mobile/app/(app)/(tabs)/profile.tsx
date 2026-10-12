@@ -14,7 +14,7 @@ import {
   SignOut, FileText,
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
   CaretRight, SpeakerHigh, Vibrate, ChatCircleText,
-  CreditCard, Lifebuoy, UsersThree, ChartLineUp,
+  CreditCard, Lifebuoy, UsersThree, ChartLineUp, Sparkle,
   MagnifyingGlass,
 } from 'phosphor-react-native';
 import { fetchMyHandle, setSearchable } from '@/lib/friends';
@@ -576,6 +576,12 @@ export default function ProfileTab() {
             label={isPt ? 'Estudar junto' : 'Study together'}
             onPress={() => router.push('/(app)/study-together' as any)}
             badge={socialPending}
+            chevron
+          />
+          <SettingRow
+            icon={<Sparkle size={18} color={C.navy} weight="regular" />}
+            label={isPt ? 'Família Queizy' : 'Queizy family'}
+            onPress={() => router.push('/(app)/family' as any)}
             chevron
           />
         </SettingGroup>

@@ -46,11 +46,17 @@ Quando acabam, aparece "Seu tempo acabou este mês". Quem está no teste pode as
 Também dá para ganhar minutos extras em "Estudar junto": quando uma conta nova aceita o seu convite, cada um ganha 5 minutos; e quem vence uma Competição ganha 5 minutos.` },
   { section: 'Guia do app', question: 'O que tem no Practice?', answer:
 `No ícone de raio ficam três modos: Free Chat (conversa livre com a Charlotte por texto ou segurando o microfone para falar), Gramática e Pronúncia. "Trocar de modo" alterna entre eles.
+No Free Chat, numa conversa nova, "Conversar com" escolhe com quem falar: a Charlotte ou o Igorfina (veja "O que é a Família Queizy?").
 Também ficam lá as "Conversas anteriores", "Minhas correções" (os erros corrigidos pela Charlotte) e "Meu histórico".
 Na Pronúncia, segure o botão do microfone enquanto fala uma frase em inglês; a Charlotte avalia a pronúncia.` },
   { section: 'Guia do app', question: 'Como funciona o Vocabulário?', answer:
 `No ícone de bloco de notas ficam a "Palavra do dia" e "Sua coleção". Dá para incluir palavras em "Adicionar palavra" e ouvir a pronúncia normal ou devagar.
 O app agenda as revisões: quando há palavras para revisar aparece "Revisar hoje". Cada palavra mostra o estado: Nova, Aprendendo ou Dominada.` },
+  { section: 'Guia do app', question: 'O que é a Família Queizy?', answer:
+`A Família Queizy reúne os personagens do app: a Charlotte (sua tutora) e o Igorfina, comediante e imitador. No meio da conversa ele solta uma imitação, e o balão ganha o selo "imitando".
+- Para conversar com cada um: Practice > Free Chat, numa conversa nova toque em "Conversar com" e escolha. Cada conversa continua com quem ela foi começada.
+- Para escolher quem fala com você na tela Início: Perfil > Você no Queizy > Família Queizy > "Falar na Início".
+A trilha, a Gramática, a Pronúncia e o suporte são sempre com a Charlotte.` },
   { section: 'Guia do app', question: 'Onde ficam as metas e o desafio da semana?', answer:
 `Na tela "Seu progresso" (tocando nas pílulas de fogo, raio e troféu no topo), na parte "Metas": "Meta de hoje" e "Desafio da semana". Cada uma paga XP extra quando concluída.` },
   { section: 'Guia do app', question: 'Como estudar com amigos (Estudar junto)?', answer:
@@ -64,7 +70,7 @@ Pedidos de amizade e convites recebidos aparecem numa linha na tela Início. Par
 - Conta: Alterar senha e Refazer teste de nível.
 - Preferências: Sons, Vibração, Voz da Charlotte e Aparecer na busca.
 - Assinatura: situação da assinatura, Gerenciar assinatura e Restaurar compras.
-- Você no Queizy: Minha evolução e Estudar junto.
+- Você no Queizy: Minha evolução, Estudar junto e Família Queizy.
 - Ajuda: Ajuda e suporte.
 - Política de Privacidade, Termos de Uso e Sobre.
 - Sessão: Sair da conta e Excluir minha conta.` },

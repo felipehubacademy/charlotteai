@@ -26,6 +26,7 @@ import { TooltipAnchor } from '@/components/ui/TooltipBalloon';
 import { PracticeSuggestionTooltip } from '@/components/practice/PracticeSuggestionTooltip';
 import { Topic } from '@/components/practice/TopicPills';
 import { PracticeEmptyState } from '@/components/practice/PracticeEmptyState';
+import CharacterAvatar from '@/components/ui/CharacterAvatar';
 import { PronunciationPhraseHint } from '@/components/practice/PronunciationPhraseHint';
 import { useChat } from '@/hooks/useChat';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
@@ -69,6 +70,7 @@ interface ChatSession {
   summary:       string | null;
   title:         string | null;
   message_count: number;
+  character?:    string | null; // Família Queizy: com quem foi a conversa
 }
 
 const API_BASE_URL =
@@ -85,7 +87,7 @@ export default function PracticeTab() {
   const accent    = getLevelAccent(userLevel);
 
   // Mode state — vem do URL ?mode=, default 'chat'
-  const params = useLocalSearchParams<{ mode?: string; words?: string }>();
+  const params = useLocalSearchParams<{ mode?: string; words?: string; character?: string }>();
   // "Treinar" em Palavras para caprichar (Minha evolução) traz as palavras.
   const [targetWords, setTargetWords] = useState<string[] | null>(null);
   useEffect(() => {
@@ -101,7 +103,19 @@ export default function PracticeTab() {
     sessionXP, totalXP, rateLimited,
     sendTextMessage, sendAudioMessage, sendSilentMessage, resetMessages,
     activeSessionId, closeSession, loadSession,
+    character, startConversationWith,
   } = useChat({ userLevel, userName, userId, mode });
+
+  // Família Queizy: "Conversar" na tela da Família abre o Free Chat com o personagem.
+  // Só troca se não há conversa em andamento (não interrompe o aluno).
+  useEffect(() => {
+    const wanted = params.character;
+    if (!wanted || mode !== 'chat') return;
+    if (messages.length <= 1 && (wanted === 'charlotte' || wanted === 'igorfina') && wanted !== character) {
+      startConversationWith(wanted);
+    }
+    router.setParams({ character: undefined } as any);
+  }, [params.character]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const { playingMessageId, toggle } = useMessageAudioPlayer();
   const [achievements, setAchievements] = useState<Achievement[]>([]);
@@ -202,7 +216,7 @@ export default function PracticeTab() {
     if (!userId || mode !== 'chat') return;
     const { data } = await supabase
       .from('charlotte_chat_sessions')
-      .select('id,started_at,ended_at,summary,title,message_count')
+      .select('id,started_at,ended_at,summary,title,message_count,character')
       .eq('user_id', userId)
       .not('ended_at', 'is', null)
       .order('started_at', { ascending: false })
@@ -511,6 +525,7 @@ export default function PracticeTab() {
             onPlayAudio={toggle}
             playingMessageId={playingMessageId}
             onExplainMore={mode === 'grammar' ? handleExplainMore : undefined}
+            character={character}
           />
 
           {/* Estado inicial (só o welcome): balão da Charlotte + sugestões */}
@@ -522,6 +537,8 @@ export default function PracticeTab() {
                 disabled={isProcessing || !!rateLimited}
                 onTopic={handleTopicSelect}
                 onSample={sendTextMessage}
+                character={character}
+                onCharacter={startConversationWith}
               />
             </View>
           )}
@@ -857,8 +874,10 @@ function ChatSessionItem({ session, isPt, isActive, onPress, onDelete }: {
       <TouchableOpacity
         onPress={onPress}
         activeOpacity={0.6}
-        style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8 }}
+        style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10 }}
       >
+        {/* Com quem foi a conversa (como no WhatsApp) */}
+        <CharacterAvatar character={session.character} size="md" />
         <View style={{ flex: 1 }}>
           <AppText display numberOfLines={1} style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>
             {session.title ?? (isPt ? 'Conversa' : 'Conversation')}
