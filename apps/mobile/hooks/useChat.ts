@@ -14,7 +14,7 @@ import { PronunciationData } from '@/components/chat/PronunciationScoreCard';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import { soundEngine } from '@/lib/soundEngine';
 import { systemIsPt } from '@/lib/systemLang';
-import { characterInfo, impressionForReply, type CharacterId, type ImpressionId } from '@/lib/characters';
+import { characterInfo, isImpressionReply, pickImpression, type CharacterId, type ImpressionId } from '@/lib/characters';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -56,10 +56,11 @@ function saveChatMessage(
   content: string,
   mode: ChatMode,
   sessionId?: string | null,
+  impression?: string | null, // imitação usada nesta resposta (selo "imitando" ao reabrir)
 ): void {
   if (!userId) return;
   supabase.from('chat_messages')
-    .insert({ user_id: userId, role, content, mode, session_id: sessionId ?? null })
+    .insert({ user_id: userId, role, content, mode, session_id: sessionId ?? null, ...(impression ? { impression } : {}) })
     .then(({ error }) => { if (error) console.warn('saveChatMessage:', error.message); });
 
   // Incrementa message_count na session (fire-and-forget) só pra Free Chat.
@@ -150,6 +151,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
   const [character, setCharacterState] = useState<CharacterId>('charlotte');
   const characterRef = useRef<CharacterId>('charlotte');
   const replyCountRef = useRef(0);
+  const lastImpressionRef = useRef<ImpressionId | null>(null); // última imitação (evita repetir a mesma)
   const setCharacter = useCallback((id: CharacterId) => { characterRef.current = id; setCharacterState(id); }, []);
 
   // Auto-clear rate limit when retry window expires
@@ -280,6 +282,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     if (!sessionId) {
       // Mesmo sem session ativa, limpa state pra mensagens efêmeras
       replyCountRef.current = 0;
+      lastImpressionRef.current = null;
       setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
       return;
     }
@@ -302,6 +305,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
 
     // Limpa state local
     replyCountRef.current = 0;
+    lastImpressionRef.current = null;
     setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
     contextManagerRef.current = new ConversationContextManager(userLevel, userName);
   }, [mode, userLevel, userName, userId]);
@@ -344,7 +348,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       supabase.from('charlotte_chat_sessions').select('character').eq('id', sessionId).maybeSingle(),
       supabase
         .from('chat_messages')
-        .select('role, content, created_at')
+        .select('role, content, created_at, impression')
         .eq('user_id', userId)
         .eq('session_id', sessionId)
         .order('created_at', { ascending: true }),
@@ -352,6 +356,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     // A conversa continua com quem ela foi começada.
     setCharacter(((sess as { character?: string } | null)?.character as CharacterId) ?? 'charlotte');
     replyCountRef.current = (data ?? []).filter(r => r.role === 'assistant').length;
+    lastImpressionRef.current = (([...(data ?? [])].reverse().find(r => (r as { impression?: string | null }).impression) as { impression?: string } | undefined)?.impression as ImpressionId) ?? null;
 
     setHistoryLoading(false);
     if (error || !data) {
@@ -370,6 +375,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       content: row.content,
       messageType: 'text' as const,
       timestamp: new Date(row.created_at),
+      impression: (row as { impression?: string | null }).impression ?? null, // selo "imitando" volta ao reabrir
     }));
 
     setMessages([buildWelcome(mode, userLevel, userName, characterRef.current), ...historyMsgs]);
@@ -394,9 +400,10 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       const contextString = contextManagerRef.current.generateContextForAssistant();
       // Free Chat com personagem: quem fala e, nesta resposta, se é uma imitação.
       const who = mode === 'chat' ? characterRef.current : 'charlotte';
-      const impression = who !== 'charlotte'
-        ? impressionForReply(characterInfo(who), replyCountRef.current + 1, (activeSessionIdRef.current ?? '').length % 2)
+      const impression = who !== 'charlotte' && isImpressionReply(replyCountRef.current + 1, activeSessionIdRef.current ?? '')
+        ? pickImpression(characterInfo(who), userMessage, lastImpressionRef.current)
         : null;
+      if (impression) lastImpressionRef.current = impression;
 
       const response = await fetch(`${API_BASE_URL}/api/assistant`, {
         method: 'POST',
@@ -541,7 +548,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         );
 
         // Save assistant reply to history
-        saveChatMessage(userId, 'assistant', feedback, mode, activeSessionIdRef.current);
+        saveChatMessage(userId, 'assistant', feedback, mode, activeSessionIdRef.current, impression);
 
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         soundEngine.play('xp_gained').catch(() => {}); // XP ding
@@ -999,7 +1006,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         );
 
         // Save assistant reply to chat history
-        saveChatMessage(userId, 'assistant', feedback, mode, activeSessionIdRef.current);
+        saveChatMessage(userId, 'assistant', feedback, mode, activeSessionIdRef.current, impression);
 
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         setSessionXP(prev => prev + xpAwarded);
