@@ -6,6 +6,7 @@ import { AsyncLocalStorage } from 'node:async_hooks';
 import { grammarAnalysisService } from '@/lib/grammar-analysis';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { logOpenAIUsage } from '@/lib/openai-usage';
+import { characterOf, impressionOf, applyCharacterToSystem, type Character, type Impression } from '@/lib/characters';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,12 +19,21 @@ const openai = new OpenAI({
 // por vários helpers. Em vez de passar userId por cada assinatura, usamos
 // um ALS setado no entry point da POST e um patch do método create para
 // logar automaticamente. Escopo do patch é APENAS esta instancia do openai.
-const assistantCtx = new AsyncLocalStorage<{ userId: string | null; endpoint: string }>();
+const assistantCtx = new AsyncLocalStorage<{ userId: string | null; endpoint: string; character: Character; impression: Impression | null; chatMode: boolean }>();
 
 (function patchOpenAIForLogging() {
   const originalCreate = openai.chat.completions.create.bind(openai.chat.completions);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (openai.chat.completions as any).create = async function (params: any, ...rest: any[]) {
+    // Família Queizy: no Free Chat, o personagem escolhido fala no lugar da Charlotte
+    // (mesmas regras de ensino de cada nível; só muda quem fala e o jeito de falar).
+    try {
+      const c = assistantCtx.getStore();
+      if (c?.chatMode && c.character.id !== 'charlotte' && Array.isArray(params?.messages)) {
+        params = { ...params, messages: params.messages.map((m: any) =>
+          m?.role === 'system' && typeof m.content === 'string' ? { ...m, content: applyCharacterToSystem(m.content, c.character, c.impression) } : m) };
+      }
+    } catch { /* sem personagem, segue a Charlotte */ }
     const result: any = await (originalCreate as any)(params, ...rest);
     try {
       const ctx = assistantCtx.getStore();
@@ -110,7 +120,10 @@ export async function POST(request: NextRequest) {
   // openai.chat.completions.create nos helpers abaixo sejam logadas
   // automaticamente pelo patch acima.
   const userIdHeader = request.headers.get('x-user-id');
-  return assistantCtx.run({ userId: userIdHeader, endpoint: '/api/assistant' }, () => handleAssistantPOST(request, userIdHeader));
+  // Personagem do Free Chat (cabeçalho do app). Só vale no modo conversa; ver handleAssistantPOST.
+  const character = characterOf(request.headers.get('x-character'));
+  const impression = impressionOf(character, request.headers.get('x-impression')); // imitação desta resposta (decidida pelo app)
+  return assistantCtx.run({ userId: userIdHeader, endpoint: '/api/assistant', character, impression, chatMode: false }, () => handleAssistantPOST(request, userIdHeader));
 }
 
 async function handleAssistantPOST(request: NextRequest, userId: string | null) {
@@ -157,6 +170,9 @@ async function handleAssistantPOST(request: NextRequest, userId: string | null) 
       return await handleExplainError(transcription, userAnswer ?? '', correctAnswer ?? '', exerciseType ?? 'grammar', userLevel, userName);
     }
     // mode === 'chat' or undefined → fall through to existing logic (unchanged)
+    // A partir daqui é conversa (Free Chat): o personagem escolhido pode falar.
+    const store = assistantCtx.getStore();
+    if (store) store.chatMode = mode === 'chat';
 
     if (messageType === 'text' || !pronunciationData) {
       console.log('Processing TEXT message...');
