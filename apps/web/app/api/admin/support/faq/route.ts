@@ -4,7 +4,8 @@ export const dynamic = 'force-dynamic';
  * app/api/admin/support/faq/route.ts
  * FAQ que a IA do suporte consulta (tabela support_faq). Mudanças valem em até 1 min.
  * GET                                  lista tudo (ativas e desligadas)
- * POST { action: 'save', id?, section, question, answer, sort?, is_active? }  cria ou edita
+ * POST { action: 'save', id?, section, question, answer, sort?, is_active?, show_in_app? }  cria ou edita
+ *                                    (se aparece no app, gera a versão em inglês quando o texto muda)
  * POST { action: 'delete', id }        apaga
  * POST { action: 'seed' }              carrega a FAQ padrão (só se a tabela estiver vazia)
  */
@@ -12,12 +13,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can, audit } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { SUPPORT_FAQ_SEED, invalidateFaqCache } from '@/lib/support-faq';
+import { translateFaqToEnglish } from '@/lib/support-faq-translate';
+
+export const maxDuration = 60;
 
 export async function GET(req: NextRequest) {
   const admin = await getAdmin(req);
   if (!admin || !can(admin.role, 'support')) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const { data, error } = await getSupabaseAdmin().from('support_faq')
-    .select('id, section, question, answer, sort, is_active, source, updated_by, updated_at')
+    .select('id, section, question, answer, sort, is_active, show_in_app, question_en, answer_en, source, updated_by, updated_at')
     .order('sort', { ascending: true }).order('created_at', { ascending: true });
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json({ entries: data ?? [] });
@@ -66,6 +70,19 @@ export async function POST(req: NextRequest) {
       const { data: last } = await supabase.from('support_faq').select('sort').eq('section', section).order('sort', { ascending: false }).limit(1);
       const { data: max } = await supabase.from('support_faq').select('sort').order('sort', { ascending: false }).limit(1);
       row.sort = last?.[0] ? (last[0] as { sort: number }).sort + 1 : ((max?.[0] as { sort: number } | undefined)?.sort ?? 0) + 10;
+    }
+    const { data: prev } = body.id
+      ? await supabase.from('support_faq').select('section, question, answer, question_en, show_in_app').eq('id', String(body.id)).maybeSingle()
+      : { data: null };
+    const p = prev as { section: string; question: string; answer: string; question_en: string | null; show_in_app: boolean } | null;
+    const inApp = body.show_in_app !== undefined ? body.show_in_app === true : (p?.show_in_app ?? false);
+    row.show_in_app = inApp;
+    // Aparece no app: gera o inglês se o texto mudou (ou ainda não existe).
+    if (inApp) {
+      if (!p || !p.question_en || p.section !== section || p.question !== question || p.answer !== answer) {
+        const tr = await translateFaqToEnglish({ section, question, answer });
+        if (tr) { row.section_en = tr.section; row.question_en = tr.question; row.answer_en = tr.answer; }
+      }
     }
     const q = body.id
       ? supabase.from('support_faq').update(row as never).eq('id', String(body.id)).select('id').single()

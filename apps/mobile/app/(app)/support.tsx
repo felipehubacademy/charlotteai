@@ -1,6 +1,8 @@
 // app/(app)/support.tsx
-// Ajuda e suporte — canais diretos (email/WhatsApp) + FAQ inline.
-import React, { useState } from 'react';
+// Ajuda e suporte — canais diretos (email/WhatsApp) + FAQ.
+// A FAQ vem do servidor (mesma base da IA do suporte, editada no /admin); a lista
+// fixa abaixo só aparece se o app nunca conseguiu baixá-la.
+import React, { useState, useEffect } from 'react';
 import { View, ScrollView, TouchableOpacity, Linking, Platform } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -13,6 +15,7 @@ import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
+import { fetchSupportFaq, getCachedSupportFaq, type SupportFaqEntry } from '@/lib/supportFaq';
 
 const SUPPORT_EMAIL = 'suporte@queizy.com';
 // Número do WhatsApp de suporte (formato internacional, só dígitos). Preencher
@@ -35,7 +38,7 @@ const FAQ_PT: Faq[] = [
   { q: 'Cancelei — perco o acesso na hora?', a: 'Não. Ao cancelar, você continua com acesso até o fim do período que já pagou. O acesso só encerra quando a assinatura expira.' },
   { q: 'Como redefino minha senha?', a: 'Na tela de login, toque em "Esqueci minha senha", informe seu email e siga o link enviado.' },
   { q: 'Quais são os planos e preços?', a: '7 dias grátis, sem cartão de crédito. Depois, Plano Mensal R$ 29,90/mês ou Plano Anual R$ 199,90/ano (~R$ 16,66/mês). A cobrança só começa se você escolher um plano no app ao fim dos 7 dias. Os valores exatos aparecem na tela de assinatura.' },
-  { q: 'Como restauro minha compra?', a: 'Em Perfil > Restaurar compra. Você precisa estar logado na mesma conta da App Store ou Google Play usada na compra.' },
+  { q: 'Como restauro minha compra?', a: 'Em Perfil > Assinatura > Restaurar compras. Você precisa estar logado na mesma conta da App Store ou Google Play usada na compra.' },
   { q: 'Como pedir reembolso?', a: 'Os reembolsos são feitos pela loja.\n\niPhone: acesse reportaproblem.apple.com.\n\nAndroid: pela ajuda do Google Play.\n\nSe precisar, fale com a gente pelos canais acima.' },
 ];
 
@@ -44,7 +47,7 @@ const FAQ_EN: Faq[] = [
   { q: 'If I cancel, do I lose access right away?', a: 'No. When you cancel you keep access until the end of the period you already paid for. Access only ends when the subscription expires.' },
   { q: 'How do I reset my password?', a: 'On the login screen, tap "Forgot my password", enter your email and follow the link.' },
   { q: 'What are the plans and prices?', a: '7 days free, no credit card. Then Monthly R$ 29.90/month or Yearly R$ 199.90/year (~R$ 16.66/month). You are only charged if you choose a plan in the app after the 7 days. Exact prices show on the subscription screen.' },
-  { q: 'How do I restore my purchase?', a: 'Profile > Restore purchase. You must be signed in to the same App Store or Google Play account used for the purchase.' },
+  { q: 'How do I restore my purchase?', a: 'Profile > Subscription > Restore purchases. You must be signed in to the same App Store or Google Play account used for the purchase.' },
   { q: 'How do I request a refund?', a: 'Refunds are handled by the store.\n\niPhone: go to reportaproblem.apple.com.\n\nAndroid: via Google Play help.\n\nIf you need help, contact us using the channels above.' },
 ];
 
@@ -78,8 +81,25 @@ export default function SupportScreen() {
   const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const { profile } = useAuth();
   const isPt = systemIsPt; // tela de suporte = sistema: idioma do device
-  const [open, setOpen] = useState<number | null>(null);
-  const faqs = isPt ? FAQ_PT : FAQ_EN;
+  const [open, setOpen] = useState<string | null>(null);
+  const [remote, setRemote] = useState<SupportFaqEntry[] | null>(null);
+  useEffect(() => {
+    let alive = true;
+    getCachedSupportFaq(isPt).then(c => { if (alive && c) setRemote(prev => prev ?? c); });
+    fetchSupportFaq(isPt).then(f => { if (alive && f) setRemote(f); });
+    return () => { alive = false; };
+  }, [isPt]);
+  // Agrupa por seção, na ordem em que vêm do servidor.
+  const groups: { section: string | null; items: Faq[] }[] = [];
+  if (remote) {
+    for (const e of remote) {
+      let g = groups.find(x => x.section === e.section);
+      if (!g) { g = { section: e.section, items: [] }; groups.push(g); }
+      g.items.push({ q: e.question, a: e.answer });
+    }
+  } else {
+    groups.push({ section: null, items: isPt ? FAQ_PT : FAQ_EN });
+  }
 
   const emailUrl = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(isPt ? 'Suporte Queizy' : 'Queizy Support')}`;
   const waUrl = SUPPORT_WHATSAPP ? `https://wa.me/${SUPPORT_WHATSAPP}` : '';
@@ -133,14 +153,26 @@ export default function SupportScreen() {
         <AppText display style={{ fontSize: 17, fontWeight: '800', color: C.navy, marginTop: 26, marginBottom: 10, marginLeft: 4 }}>
           {isPt ? 'Perguntas frequentes' : 'Frequently asked'}
         </AppText>
-        <View style={{ backgroundColor: C.card, borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(22,19,31,0.08)' }}>
-          {faqs.map((f, i) => (
-            <React.Fragment key={i}>
-              {i > 0 && <View style={{ height: 1, backgroundColor: C.border, marginLeft: 16 }} />}
-              <FaqRow item={f} open={open === i} onToggle={() => setOpen(open === i ? null : i)} />
-            </React.Fragment>
-          ))}
-        </View>
+        {groups.map((g, gi) => (
+          <React.Fragment key={g.section ?? gi}>
+            {!!g.section && (
+              <AppText style={{ fontSize: 12, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6, marginTop: gi === 0 ? 0 : 16, marginBottom: 8, marginLeft: 6 }}>
+                {g.section}
+              </AppText>
+            )}
+            <View style={{ backgroundColor: C.card, borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(22,19,31,0.08)' }}>
+              {g.items.map((f, i) => {
+                const id = `${gi}-${i}`;
+                return (
+                  <React.Fragment key={id}>
+                    {i > 0 && <View style={{ height: 1, backgroundColor: C.border, marginLeft: 16 }} />}
+                    <FaqRow item={f} open={open === id} onToggle={() => setOpen(open === id ? null : id)} />
+                  </React.Fragment>
+                );
+              })}
+            </View>
+          </React.Fragment>
+        ))}
 
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 22 }}>
           <Question size={15} color={C.navyLight} weight="regular" />

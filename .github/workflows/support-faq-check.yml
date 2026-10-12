@@ -1,0 +1,37 @@
+# .github/workflows/support-faq-check.yml
+# Confere se a FAQ do suporte (a que a IA usa e a tela Ajuda e suporte mostra) ainda
+# cita telas e botões que existem no app. Se um rótulo sumiu ou mudou de nome, o job
+# falha (o GitHub avisa por e-mail) e o resumo diz qual pergunta corrigir em
+# /admin/suporte → FAQ da IA. Não bloqueia o OTA (workflow separado).
+# Também regenera o glossário PT → EN e avisa se ele ficou desatualizado.
+
+name: FAQ do suporte x app
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/mobile/**'
+      - 'scripts/support-faq-ui.mjs'
+  schedule:
+    - cron: '0 12 * * *'   # diário: pega edições feitas no /admin
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Rótulos citados na FAQ existem no app?
+        run: node scripts/support-faq-ui.mjs check
+      - name: Glossário PT → EN atualizado?
+        if: always()
+        run: |
+          node scripts/support-faq-ui.mjs glossary
+          if ! git diff --quiet apps/web/lib/app-ui-glossary.json; then
+            echo "::warning title=Glossário do app desatualizado::Rode 'node scripts/support-faq-ui.mjs glossary' e faça commit (a tradução da FAQ usa os nomes em inglês dele)."
+            echo "Glossário PT → EN desatualizado: rode \`node scripts/support-faq-ui.mjs glossary\` e faça commit." >> "$GITHUB_STEP_SUMMARY"
+          fi

@@ -36,3 +36,21 @@ via o Send Email Hook do Supabase em `/api/auth/send-email`).
 
 `apps/web/lib/simple-email-service.ts` (Resend) é um caminho legado/NÃO
 configurado em produção — **não usar** para envios novos; prefira o Microsoft Graph.
+
+## REGRA — Mudou tela ou botão do app? Atualize a FAQ do suporte na mesma tarefa
+
+A IA do suporte (e-mail e WhatsApp) e a tela "Ajuda e suporte" do app respondem com
+a FAQ da tabela `support_faq` (editável em /admin/suporte → aba "FAQ da IA"). Ela cita
+nomes exatos de telas, botões e caminhos ("Seu progresso", Perfil > Conta > ...).
+
+Sempre que uma mudança em `apps/mobile` criar, renomear, mover ou remover tela, aba,
+botão, menu ou fluxo que o aluno usa:
+1. Atualize as perguntas afetadas da FAQ (no /admin ou via SQL em `support_faq`),
+   e crie pergunta nova para função nova. Se a pergunta aparece no app (`show_in_app`),
+   regenere o inglês (salvar pelo /admin faz isso sozinho).
+2. Mantenha `SUPPORT_FAQ_SEED` em `apps/web/lib/support-faq.ts` coerente (é a reserva).
+3. Rode `node scripts/support-faq-ui.mjs glossary` se mudou texto de interface e
+   `node scripts/support-faq-ui.mjs check` para conferir.
+
+O workflow `.github/workflows/support-faq-check.yml` roda o check a cada push em
+`apps/mobile` e diariamente; se falhar, corrija a FAQ antes de seguir.
