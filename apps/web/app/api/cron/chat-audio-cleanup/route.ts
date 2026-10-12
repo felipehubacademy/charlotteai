@@ -1,6 +1,8 @@
 // app/api/cron/chat-audio-cleanup/route.ts — áudios do Free Chat ficam salvos por 90 dias.
 // Depois disso o arquivo sai do bucket chat-audio e a mensagem fica só com a transcrição
-// (audio_path/audio_duration = null). Chamado uma vez por dia pelo GitHub Actions com CRON_SECRET_TOKEN.
+// (audio_path/audio_duration = null). Parte dos arquivos do Storage (rpc chat_audio_expired), então
+// também apaga áudios de mensagens que o limite de 100 por modo já removeu.
+// Chamado uma vez por dia pelo GitHub Actions com CRON_SECRET_TOKEN.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
@@ -17,28 +19,24 @@ export async function GET(req: NextRequest) {
   const cutoff = new Date(Date.now() - KEEP_DAYS * 24 * 60 * 60 * 1000).toISOString();
   let removed = 0;
 
-  for (let round = 0; round < 20; round++) {
-    const { data, error } = await supabase
-      .from('chat_messages')
-      .select('id, audio_path')
-      .not('audio_path', 'is', null)
-      .lt('created_at', cutoff)
-      .limit(100);
+  for (let round = 0; round < 10; round++) {
+    const { data, error } = await supabase.rpc('chat_audio_expired', { cutoff, max_rows: 500 });
     if (error) return NextResponse.json({ error: error.message, removed }, { status: 500 });
-    if (!data?.length) break;
+    const paths = ((data ?? []) as { name: string }[]).map(r => r.name);
+    if (!paths.length) break;
 
-    const paths = data.map(r => r.audio_path as string);
-    const { error: rmError } = await supabase.storage.from('chat-audio').remove(paths);
-    if (rmError) return NextResponse.json({ error: rmError.message, removed }, { status: 500 });
-
-    const { error: upError } = await supabase
-      .from('chat_messages')
-      .update({ audio_path: null, audio_duration: null })
-      .in('id', data.map(r => r.id));
-    if (upError) return NextResponse.json({ error: upError.message, removed }, { status: 500 });
-
-    removed += data.length;
-    if (data.length < 100) break;
+    for (let i = 0; i < paths.length; i += 100) {
+      const chunk = paths.slice(i, i + 100);
+      const { error: upError } = await supabase
+        .from('chat_messages')
+        .update({ audio_path: null, audio_duration: null })
+        .in('audio_path', chunk);
+      if (upError) return NextResponse.json({ error: upError.message, removed }, { status: 500 });
+      const { error: rmError } = await supabase.storage.from('chat-audio').remove(chunk);
+      if (rmError) return NextResponse.json({ error: rmError.message, removed }, { status: 500 });
+      removed += chunk.length;
+    }
+    if (paths.length < 500) break;
   }
 
   return NextResponse.json({ ok: true, removed, cutoff });

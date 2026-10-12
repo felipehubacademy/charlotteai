@@ -13,5 +13,5 @@ jobs:
     steps:
       - name: Remove old chat audio
         run: |
-          curl -sf -H "Authorization: Bearer ${{ secrets.CRON_SECRET_TOKEN }}" \
+          curl -sS --fail-with-body -H "Authorization: Bearer ${{ secrets.CRON_SECRET_TOKEN }}" \
             "https://charlotte.hubacademybr.com/api/cron/chat-audio-cleanup"
