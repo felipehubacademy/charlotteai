@@ -168,7 +168,7 @@ export async function fetchWeeklyData(userId: string): Promise<{
 
   if (error || !data) return { weeklyMessages: 0, weeklyXP: 0, weeklyLessons: 0, weeklyAudios: 0, weeklyGrammarMessages: 0, weeklyActiveDays: 0 };
 
-  const weeklyMessages        = data.filter(p => ['text_message', 'audio_message'].includes(p.practice_type)).length;
+  const weeklyMessages        = data.filter(p => ['text_message', 'audio_message', 'grammar_message'].includes(p.practice_type)).length;
   const weeklyXP              = data.reduce((s, p) => s + (p.xp_earned ?? 0), 0);
   const weeklyAudios          = data.filter(p => p.practice_type === 'audio_message').length;
   const weeklyGrammarMessages = data.filter(p => p.practice_type === 'grammar_message').length;

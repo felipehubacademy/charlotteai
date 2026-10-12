@@ -8,7 +8,8 @@ import { supabase } from '@/lib/supabase';
 import { HomeData, Mission, buildMissions } from '@/lib/missions';
 import { getWeeklyChallenge, fetchWeeklyData, WeeklyChallengeState } from '@/lib/weeklyChallenge';
 import { UserLevel } from '@/lib/levelConfig';
-import { localMidnightUTC } from '@/lib/dateUtils';
+import { localMidnightUTC, localTodayStr } from '@/lib/dateUtils';
+import { claimGoals, GoalClaim } from '@/lib/goalsClaim';
 
 export interface GoalsData {
   missions: Mission[];
@@ -37,13 +38,13 @@ export function useGoalsData(userId: string, level: UserLevel): GoalsData {
         totalXP:       prog.data?.total_xp   ?? 0,
         todayXP,
         rank:          null,
-        todayMessages: practices.filter(p => ['text_message', 'audio_message'].includes(p.practice_type)).length,
+        // Mensagens do Practice: Chat (texto/áudio) e Gramática.
+        todayMessages: practices.filter(p => ['text_message', 'audio_message', 'grammar_message'].includes(p.practice_type)).length,
         todayAudios:   practices.filter(p => p.practice_type === 'audio_message').length,
       };
 
-      setData({
-        missions: buildMissions(homeData, level),
-        weekly: getWeeklyChallenge(
+      const missions = buildMissions(homeData, level);
+      const weekly = getWeeklyChallenge(
           weeklyRaw.weeklyMessages,
           weeklyRaw.weeklyXP,
           homeData.streakDays,
@@ -52,10 +53,18 @@ export function useGoalsData(userId: string, level: UserLevel): GoalsData {
           weeklyRaw.weeklyGrammarMessages,
           level,
           weeklyRaw.weeklyActiveDays,
-        ),
-        todayXP,
-        loading: false,
-      });
+        );
+      setData({ missions, weekly, todayXP, loading: false });
+
+      // Paga o XP do que foi concluído (o servidor ignora o que já foi pago).
+      const today = localTodayStr();
+      const items: GoalClaim[] = missions.filter(m => m.completed).map(m => ({ kind: 'mission', id: m.id, period: today }));
+      if (weekly.completed) items.push({ kind: 'weekly', id: weekly.challenge.id, period: weekly.weekStart });
+      const granted = await claimGoals(items);
+      if (granted.length) {
+        const extra = granted.reduce((s, g) => s + g.xp, 0);
+        setData(prev => ({ ...prev, todayXP: prev.todayXP + extra }));
+      }
     } catch (e) {
       console.warn('[useGoalsData] fetch error:', e);
       setData(prev => ({ ...prev, loading: false }));
