@@ -46,7 +46,28 @@ export async function POST(request: NextRequest) {
       .eq('id', userId);
     if (usersErr) console.warn('Cleanup warning (charlotte.users):', usersErr.message);
 
-    // 3. Limpar dados das tabelas do schema public
+    // 3. Apagar os áudios do Free Chat (bucket chat-audio, pasta {userId}/{sessionId}/...).
+    //    Voz é dado pessoal: sai junto com a conta, antes das mensagens.
+    try {
+      const bucket = supabase.storage.from('chat-audio');
+      const { data: folders } = await bucket.list(userId, { limit: 1000 });
+      for (const folder of folders ?? []) {
+        const prefix = `${userId}/${folder.name}`;
+        // folder.id null = subpasta (sessão); com id = arquivo solto na raiz da pessoa
+        if (folder.id) { await bucket.remove([prefix]); continue; }
+        for (;;) {
+          const { data: files } = await bucket.list(prefix, { limit: 1000 });
+          if (!files?.length) break;
+          const { error } = await bucket.remove(files.map(f => `${prefix}/${f.name}`));
+          if (error) { console.warn('Cleanup warning (chat-audio):', error.message); break; }
+          if (files.length < 1000) break;
+        }
+      }
+    } catch (e: any) {
+      console.warn('Cleanup warning (chat-audio):', e?.message);
+    }
+
+    // 4. Limpar dados das tabelas do schema public
     const publicTables = ['chat_messages', 'user_achievements'];
     for (const table of publicTables) {
       const { error } = await supabase
@@ -56,7 +77,7 @@ export async function POST(request: NextRequest) {
       if (error) console.warn(`Cleanup warning (${table}):`, error.message);
     }
 
-    // 4. Deletar o usuario do auth (cascata cuida do resto via FK)
+    // 5. Deletar o usuario do auth (cascata cuida do resto via FK)
     const { error: deleteErr } = await supabase.auth.admin.deleteUser(userId);
     if (deleteErr) {
       console.error('Failed to delete auth user:', deleteErr.message);
