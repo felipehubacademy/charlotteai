@@ -29,7 +29,10 @@ function walk(dir, out = []) {
   return out;
 }
 const decode = s => s.replace(/\\u([0-9a-fA-F]{4})/g, (_, h) => String.fromCharCode(parseInt(h, 16)));
-const source = () => MOBILE_DIRS.flatMap(d => walk(d)).map(f => decode(fs.readFileSync(f, 'utf8'))).join('\n');
+// A lista fixa de FAQ da tela de Suporte (reserva offline) cita os mesmos rótulos: fica fora
+// da busca, senão um rótulo errado na FAQ "se acha" nela mesma.
+const stripFaqCopies = s => s.replace(/const FAQ_(PT|EN)[^=]*=\s*\[[\s\S]*?\n\];/g, '');
+const source = () => MOBILE_DIRS.flatMap(d => walk(d)).map(f => stripFaqCopies(decode(fs.readFileSync(f, 'utf8')))).join('\n');
 
 function glossary() {
   const src = source();

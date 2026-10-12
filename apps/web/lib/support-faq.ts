@@ -28,7 +28,7 @@ Recursos: trilha de estudos do básico ao avançado (Novice, Intermediate e Adva
 `No topo das telas principais há três pílulas: o fogo laranja é a sequência (dias seguidos estudando), o raio verde é o XP total e o troféu é a posição no ranking do seu nível.
 Tocando nas pílulas abre a tela "Seu progresso", com o XP total, o XP ganho hoje ("+X hoje"), os dias seguidos, a posição no ranking, as conquistas, as metas e o ranking completo.` },
   { section: 'Guia do app', question: 'Como ganho XP?', answer:
-`Ganha XP quem estuda: concluindo atividades da trilha (Gramática, Listening & Speaking, Role-play e Guided Chat), conversando no Practice e cumprindo as metas. A meta de hoje e o desafio da semana pagam XP extra quando concluídos (cada meta paga uma vez por período). O XP soma no total, na sequência e no ranking.` },
+`Ganha XP quem estuda: concluindo atividades da trilha (Gramática, Listening & Speaking, Role-play e Guided Chat), mandando mensagens no Practice (Free Chat por texto ou áudio, e Gramática), revisando palavras no Vocabulário e cumprindo as metas. A meta de hoje e o desafio da semana pagam XP extra quando concluídos (cada meta paga uma vez por período). O XP soma no total, na sequência e no ranking.` },
   { section: 'Guia do app', question: 'Onde vejo meu nível?', answer:
 `Na tela Início, o cartão da trilha mostra o nome do nível (Novice, Intermediate ou Advanced), quantos módulos tem e o percentual concluído. Em "Seu progresso" (tocando nas pílulas do topo) aparece "Rumo ao" próximo nível.
 O seletor no cartão da trilha permite espiar a trilha de outros níveis (pré-visualização), sem mudar o seu nível.
@@ -42,7 +42,7 @@ Os minutos restantes do mês aparecem na própria tela do Live Voice, no cartão
   { section: 'Guia do app', question: 'Quantos minutos de Live Voice eu tenho?', answer:
 `Os minutos são por mês: 5 minutos no teste grátis e 20 minutos no Premium (e nas contas institucionais). Eles renovam no dia 1º de cada mês.
 Quando acabam, aparece "Seu tempo acabou este mês". Quem está no teste pode assinar o Premium; quem já assina pode comprar pacotes de minutos extras em "Comprar minutos" ou "Ver pacotes de minutos". Minutos extras comprados não vencem no fim do mês.
-Convidar alguém em "Estudar junto" também dá minutos de Live Voice para os dois.` },
+Também dá para ganhar minutos extras em "Estudar junto": quando uma conta nova aceita o seu convite, cada um ganha 5 minutos; e quem vence uma Competição ganha 5 minutos.` },
   { section: 'Guia do app', question: 'O que tem no Practice?', answer:
 `No ícone de raio ficam três modos: Free Chat (conversa livre com a Charlotte por texto ou segurando o microfone para falar), Gramática e Pronúncia. "Trocar de modo" alterna entre eles.
 Também ficam lá as "Conversas anteriores", "Minhas correções" (os erros corrigidos pela Charlotte) e "Meu histórico".
@@ -53,8 +53,11 @@ O app agenda as revisões: quando há palavras para revisar aparece "Revisar hoj
   { section: 'Guia do app', question: 'Onde ficam as metas e o desafio da semana?', answer:
 `Na tela "Seu progresso" (tocando nas pílulas de fogo, raio e troféu no topo), na parte "Metas": "Meta de hoje" e "Desafio da semana". Cada uma paga XP extra quando concluída.` },
   { section: 'Guia do app', question: 'Como estudar com amigos (Estudar junto)?', answer:
-`Em Perfil > Você no Queizy > Estudar junto (ou em "Seu progresso") dá para procurar amigos pelo nome ou pelo @ e convidar pessoas. Quem convida e quem entra ganham minutos de Live Voice.
-Pedidos de amizade e convites recebidos aparecem numa linha na tela Início. Para aparecer na busca, a opção "Aparecer na busca" precisa estar ligada em Perfil > Preferências.` },
+`Fica em Perfil > Você no Queizy > Estudar junto (ou em "Seu progresso"):
+- "Encontrar amigos": busca pelo nome, sobrenome ou @. A pessoa recebe o pedido e, ao aceitar, vocês viram amigos de estudo.
+- "Convidar amigos": manda o seu código de convite. Quando uma conta nova entra pelo convite (até 14 dias depois do cadastro, em "Recebeu um convite?"), cada um ganha 5 minutos de Live Voice.
+- "Competições": desafie amigos por 24 horas ou 7 dias (quem faz mais XP, quem pratica mais ou quem acerta mais na trilha). Quem vencer ganha 5 minutos de Live Voice.
+Pedidos de amizade e convites recebidos aparecem numa linha na tela Início. Para os amigos te acharem, a opção "Aparecer na busca" precisa estar ligada em Perfil > Preferências.` },
   { section: 'Guia do app', question: 'O que tem no Perfil?', answer:
 `Perfil (sua foto na barra de baixo):
 - Conta: Alterar senha e Refazer teste de nível.
@@ -107,7 +110,7 @@ Casos específicos de cobrança ou reembolso são encaminhados a um atendente.` 
 
   // ── Conta e acesso ───────────────────────────────────────────────────────
   { section: 'Conta e acesso', question: 'Como redefinir a senha?', answer:
-`Na tela de login, toque em "Esqueci minha senha", informe o e-mail do cadastro e siga o link enviado. Logado, dá para trocar em Perfil > Conta > Alterar senha. O suporte também pode enviar um e-mail de redefinição para o e-mail cadastrado.` },
+`Na tela de login, toque em "Esqueceu sua senha?", informe o e-mail do cadastro e siga o link enviado. Logado, dá para trocar em Perfil > Conta > Alterar senha. O suporte também pode enviar um e-mail de redefinição para o e-mail cadastrado.` },
   { section: 'Conta e acesso', question: 'Não consigo entrar na conta', answer:
 `Confirme que está usando o mesmo e-mail do cadastro e tente redefinir a senha. Se assinou e o acesso não liberou, use Perfil > Assinatura > Restaurar compras.` },
   { section: 'Conta e acesso', question: 'Como excluir a conta?', answer:
