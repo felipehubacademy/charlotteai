@@ -114,22 +114,24 @@ function storeBadges(appStoreUrl: string, playUrl: string): string {
 export function releaseUpdateTemplate(opts: { name?: string | null; unsubscribeUrl?: string }) {
   const appStore  = 'https://apps.apple.com/app/id6760943273';
   const playStore = 'https://play.google.com/store/apps/details?id=com.hubacademy.charlotte';
-  const ola = opts.name ? `Olá, ${opts.name}!` : 'Olá!';
+  const first = (opts.name ?? '').trim().split(/\s+/)[0];
+  const ola = first ? `Olá, ${first}!` : 'Olá!';
+  // Para quem já usava o app como Charlotte: aqui faz sentido contar a mudança de nome.
   const subject = 'A Charlotte agora é Queizy';
   const unsubscribe = opts.unsubscribeUrl
     ? `<p style="margin:12px 0 0;font-size:12px;color:#8A8494;line-height:1.7;">Não quer mais receber novidades? <a href="${opts.unsubscribeUrl}" style="color:#8A8494;text-decoration:underline;">Descadastrar</a>.</p>`
     : '';
   const html = base(`
     ${h1('Do queizy ao crazy.')}
-    ${p(`${ola}<br>O app que você usa para praticar inglês mudou de nome: agora ele se chama <strong style="color:#16131F;">Queizy</strong>. A Charlotte continua lá, como sua tutora.`)}
+    ${p(`${ola}<br>O app em que você pratica inglês agora se chama <strong style="color:#16131F;">Queizy</strong>, com cara nova e muita novidade. A Charlotte continua lá, como sua tutora.`)}
     ${features([
-      '<strong style="color:#16131F;">Cara nova</strong>, mais leve e direta, do início ao fim',
-      'Seu <strong style="color:#16131F;">histórico de correções</strong> e a evolução da sua pronúncia, para ver o quanto você já avançou',
-      'Conversas com <strong style="color:#16131F;">título</strong>, para retomar de onde parou',
-      'Metas, conquistas e ranking reunidos na tela de progresso',
+      '<strong style="color:#16131F;">Trilha nova</strong>, do seu nível: Gramática, Listening &amp; Speaking, Role-play e Guided Chat em cada tópico',
+      '<strong style="color:#16131F;">Correção no fim de cada conversa</strong>, com o jeito certo de falar e o porquê',
+      '<strong style="color:#16131F;">Estude junto</strong>: ache amigos pelo nome ou @, cutuque e disputem competições',
+      '<strong style="color:#16131F;">Minha evolução</strong>: o que você já domina, o que vale treinar e um resumo da Charlotte toda semana',
       'Sua conta, seu progresso e sua assinatura continuam iguais',
     ])}
-    ${p('Atualize o app para ver tudo isso.')}
+    ${p('Atualize o app pela loja para ver tudo isso.')}
     ${storeBadges(appStore, playStore)}
   `, unsubscribe);
   return { subject, html };
