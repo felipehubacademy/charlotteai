@@ -77,13 +77,13 @@ export async function POST(req: NextRequest) {
       autoResolved++;
       details.push({ from: m.from, intent: decision.intent, action: 'auto' });
     } else {
-      const holding = 'Olá! Recebemos sua mensagem e um de nossos atendentes vai te responder em breve. Obrigado pela paciência.';
-      await graphSendEmail({ to: m.from, subject: `Re: ${m.subject}`, html: replyHtml(holding) });
-      await logMessage({ conversationId: convId, direction: 'out', author: 'agent', body: holding, intent: decision.intent, autoSent: true });
       const r = await escalate({
         conversationId: convId, contact: m.from, channel: 'email', intent: decision.intent,
         userText, reason: decision.reason, userContext: context,
       });
+      const holding = `Olá! Recebemos sua mensagem e abrimos o chamado #${r.ticketCode}. Um de nossos atendentes vai te responder em breve. Obrigado pela paciência.`;
+      await graphSendEmail({ to: m.from, subject: `Re: ${m.subject}`, html: replyHtml(holding) });
+      await logMessage({ conversationId: convId, direction: 'out', author: 'agent', body: holding, intent: decision.intent, autoSent: true });
       escalated++;
       details.push({ from: m.from, intent: decision.intent, action: 'escalate', assignedTo: r.assignedTo });
     }

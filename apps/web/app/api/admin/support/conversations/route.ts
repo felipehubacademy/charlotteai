@@ -7,13 +7,14 @@ export const dynamic = 'force-dynamic';
  * GET ?id=                                 conversa completa + aluno
  * POST { id, action: 'reply', body, close } responde (e-mail, WhatsApp ou chat do app + push) e registra
  * POST { id, action: 'status', status }    muda o status
+ * POST { id, action: 'take' }              assume o atendimento (avisa o aluno com o nome do atendente)
  */
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can, audit } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { sendWhatsAppText } from '@/lib/whatsapp';
-import { logMessage, setConversationStatus, supportReplyHtml } from '@/lib/support-service';
+import { logMessage, setConversationStatus, supportReplyHtml, ticketTakenText } from '@/lib/support-service';
 import { notifyAppReply } from '@/lib/support-app';
 
 // Login próprio (Bearer) com papel que acessa 'support', ou a senha mestra antiga.
@@ -31,7 +32,7 @@ export async function GET(req: NextRequest) {
 
   let q = supabase
     .from('support_conversations')
-    .select('id, channel, external_id, contact, subject, status, assigned_agent_id, created_at, last_message_at, support_agents(name)')
+    .select('id, channel, external_id, contact, subject, status, assigned_agent_id, ticket_code, taken_by, created_at, last_message_at, support_agents(name)')
     .order('last_message_at', { ascending: false })
     .limit(100);
   if (status) q = q.eq('status', status);
@@ -69,6 +70,8 @@ export async function GET(req: NextRequest) {
     subject: c.subject,
     status: c.status,
     agentName: c.support_agents?.name ?? null,
+    ticketCode: c.ticket_code ?? null,
+    takenBy: c.taken_by ?? null,
     createdAt: c.created_at,
     lastMessageAt: c.last_message_at,
     last: lastByConv.get(c.id) ?? null,
@@ -80,11 +83,11 @@ export async function GET(req: NextRequest) {
 async function conversationDetail(id: string) {
   const supabase = getSupabaseAdmin();
   const { data: conv } = await supabase.from('support_conversations')
-    .select('id, channel, contact, subject, status, user_id, user_verified, created_at, last_message_at, last_inbound_at, support_agents(name)').eq('id', id).maybeSingle();
+    .select('id, channel, contact, subject, status, user_id, user_verified, ticket_code, taken_by, created_at, last_message_at, last_inbound_at, support_agents(name)').eq('id', id).maybeSingle();
   if (!conv) return NextResponse.json({ error: 'Conversa não encontrada' }, { status: 404 });
   const c = conv as any;
   const [{ data: msgs }, userR] = await Promise.all([
-    supabase.from('support_messages').select('id, direction, author, body, intent, auto_sent, created_at').eq('conversation_id', id).order('created_at').limit(500),
+    supabase.from('support_messages').select('id, direction, author, author_name, body, intent, auto_sent, created_at').eq('conversation_id', id).order('created_at').limit(500),
     c.user_id
       ? supabase.from('charlotte_users').select('id, name, username, email, charlotte_level, subscription_status, is_institutional').eq('id', c.user_id).maybeSingle()
       : supabase.from('charlotte_users').select('id, name, username, email, charlotte_level, subscription_status, is_institutional').ilike('email', c.contact).maybeSingle(),
@@ -92,7 +95,8 @@ async function conversationDetail(id: string) {
   return NextResponse.json({
     conversation: { id: c.id, channel: c.channel, contact: c.contact, subject: c.subject, status: c.status, agentName: c.support_agents?.name ?? null, createdAt: c.created_at, lastMessageAt: c.last_message_at, lastInboundAt: c.last_inbound_at,
       // E-mail é o próprio remetente; no WhatsApp, só o código do app confirma.
-      userVerified: c.channel === 'email' ? true : !!c.user_verified },
+      userVerified: c.channel === 'email' ? true : !!c.user_verified,
+      ticketCode: c.ticket_code ?? null, takenBy: c.taken_by ?? null },
     messages: msgs ?? [],
     user: userR.data ?? null,
   });
@@ -104,13 +108,41 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
   const id = String(body.id ?? '');
   const supabase = getSupabaseAdmin();
-  const { data: conv } = await supabase.from('support_conversations').select('id, channel, contact, subject, external_id').eq('id', id).maybeSingle();
+  const { data: conv } = await supabase.from('support_conversations').select('id, channel, contact, subject, external_id, status, ticket_code, taken_by').eq('id', id).maybeSingle();
   if (!conv) return NextResponse.json({ error: 'Conversa não encontrada' }, { status: 404 });
-  const c = conv as { id: string; channel: string; contact: string; subject: string | null; external_id: string };
+  const c = conv as { id: string; channel: string; contact: string; subject: string | null; external_id: string; status: string; ticket_code: string | null; taken_by: string | null };
+  const firstName = !admin.legacy && admin.name ? admin.name.trim().split(/\s+/)[0] : null;
+
+  // Assume o atendimento: registra quem é e avisa o aluno pelo canal dele.
+  const take = async (): Promise<string | null> => {
+    if (!firstName) return 'Entre com o seu login de atendente (não a senha mestra) para assumir com o seu nome.';
+    const text = ticketTakenText(firstName, c.ticket_code);
+    if (c.channel === 'whatsapp') {
+      const r = await sendWhatsAppText(c.external_id, text);
+      if (!r.ok) return `Não foi possível avisar pelo WhatsApp: ${r.error}`;
+    }
+    const { data: ag } = admin.email ? await supabase.from('support_agents').select('id').ilike('email', admin.email).maybeSingle() : { data: null };
+    await supabase.from('support_conversations').update({
+      taken_by: firstName, taken_at: new Date().toISOString(), status: 'escalated',
+      ...(ag ? { assigned_agent_id: (ag as { id: string }).id } : {}),
+    } as never).eq('id', c.id);
+    await logMessage({ conversationId: c.id, direction: 'out', author: 'system', body: text, authorName: firstName });
+    c.taken_by = firstName;
+    return null;
+  };
+
+  if (body.action === 'take') {
+    const e = await take();
+    if (e) return NextResponse.json({ error: e }, { status: 400 });
+    await audit(admin, 'support.take', 'support_conversation', c.id);
+    return NextResponse.json({ ok: true });
+  }
 
   if (body.action === 'reply') {
     const text = String(body.body ?? '').trim();
     if (!text) return NextResponse.json({ error: 'Escreva a resposta.' }, { status: 400 });
+    // Primeira resposta de um atendente: assume antes (o aluno vê quem está respondendo).
+    if (!c.taken_by && firstName && c.channel !== 'email') { const e = await take(); if (e) return NextResponse.json({ error: e }, { status: 502 }); }
     if (c.channel === 'whatsapp') {
       const r = await sendWhatsAppText(c.external_id, text);
       if (!r.ok) return NextResponse.json({ error: `Não foi possível enviar pelo WhatsApp: ${r.error}` }, { status: 502 });
@@ -121,7 +153,7 @@ export async function POST(req: NextRequest) {
     } else if (c.channel !== 'app') {
       return NextResponse.json({ error: 'Canal sem resposta pelo /admin.' }, { status: 400 });
     }
-    await logMessage({ conversationId: c.id, direction: 'out', author: 'human', body: text });
+    await logMessage({ conversationId: c.id, direction: 'out', author: 'human', body: text, authorName: firstName });
     // Chat do app: a resposta já aparece na conversa; o push avisa o aluno.
     if (c.channel === 'app') await notifyAppReply(c.external_id, text);
     await supabase.from('support_conversations').update({ last_message_at: new Date().toISOString() } as never).eq('id', c.id);

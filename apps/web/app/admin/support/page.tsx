@@ -10,7 +10,7 @@ import { WhatsAppTab } from './WhatsAppTab';
 interface Agent { id: string; name: string; email: string | null; whatsapp: string | null; is_active: boolean; }
 interface Conversation {
   id: string; channel: string; contact: string; subject: string | null; status: string;
-  agentName: string | null; lastMessageAt: string; last: { body: string; direction: string; intent: string | null } | null;
+  agentName: string | null; ticketCode: string | null; takenBy: string | null; lastMessageAt: string; last: { body: string; direction: string; intent: string | null } | null;
 }
 
 const STATUS_BADGE: Record<string, string> = {
@@ -94,14 +94,14 @@ export default function SupportAdmin() {
                   <tbody>
                     {convs.map(c => (
                       <tr key={c.id} onClick={() => setOpenConv(c.id)} style={{ cursor: 'pointer' }}>
-                        <td style={{ color: 'var(--t1)', fontWeight: 500 }}>{c.contact}</td>
+                        <td style={{ color: 'var(--t1)', fontWeight: 500 }}>{c.contact}{c.ticketCode && c.status === 'escalated' ? <div style={{ fontSize: 11, color: 'var(--t3)', fontWeight: 400 }}>Chamado #{c.ticketCode}</div> : null}</td>
                         <td>{c.channel === 'app' ? 'chat do app' : c.channel}</td>
                         <td style={{ maxWidth: 340 }}>
                           <div style={{ color: 'var(--t1)' }}>{c.subject || '—'}</div>
                           {c.last && <div style={{ fontSize: 11.5, color: 'var(--t3)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 340 }}>{c.last.intent ? `[${c.last.intent}] ` : ''}{c.last.body}</div>}
                         </td>
                         <td><span className={`badge ${STATUS_BADGE[c.status] ?? 'badge-muted'}`}>{STATUS_LABEL[c.status] ?? c.status}</span></td>
-                        <td>{c.agentName ?? <span style={{ color: 'var(--t3)' }}>—</span>}</td>
+                        <td>{c.takenBy ? <span>{c.takenBy}</span> : c.agentName ?? <span style={{ color: 'var(--t3)' }}>—</span>}{c.status === 'escalated' && !c.takenBy ? <div style={{ fontSize: 11, color: 'var(--warn)' }}>ninguém assumiu</div> : null}</td>
                         <td className="num" style={{ fontSize: 12 }}>{fmt(c.lastMessageAt)}</td>
                       </tr>
                     ))}
@@ -181,11 +181,11 @@ function AgentModal({ mode, agent, onClose, onSave }: {
 }
 
 interface Thread {
-  conversation: { id: string; channel: string; contact: string; subject: string | null; status: string; agentName: string | null; createdAt: string; lastInboundAt: string | null; userVerified?: boolean };
-  messages: { id: string; direction: string; author: string; body: string; intent: string | null; auto_sent: boolean; created_at: string }[];
+  conversation: { id: string; channel: string; contact: string; subject: string | null; status: string; agentName: string | null; createdAt: string; lastInboundAt: string | null; userVerified?: boolean; ticketCode?: string | null; takenBy?: string | null };
+  messages: { id: string; direction: string; author: string; author_name: string | null; body: string; intent: string | null; auto_sent: boolean; created_at: string }[];
   user: { id: string; name: string | null; username: string | null; email: string; charlotte_level: string | null; subscription_status: string; is_institutional: boolean } | null;
 }
-const AUTHOR: Record<string, string> = { user: 'Aluno', agent: 'Agente automático', human: 'Atendente' };
+const AUTHOR: Record<string, string> = { user: 'Aluno', agent: 'Agente automático', human: 'Atendente', system: 'Aviso ao aluno' };
 
 function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: () => void; onChanged: () => void }) {
   const [data, setData] = useState<Thread | null>(null);
@@ -218,7 +218,7 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
         <div className="adm-modal-hdr">
           <div style={{ minWidth: 0 }}>
             <div className="adm-modal-title">{c?.subject || 'Conversa'}</div>
-            {c && <div style={{ fontSize: 12, color: 'var(--t3)', marginTop: 2 }}>{c.contact} · {c.channel} · {STATUS_LABEL[c.status] ?? c.status}{c.agentName ? ` · ${c.agentName}` : ''}</div>}
+            {c && <div style={{ fontSize: 12, color: 'var(--t3)', marginTop: 2 }}>{c.contact} · {c.channel === 'app' ? 'chat do app' : c.channel} · {STATUS_LABEL[c.status] ?? c.status}{c.ticketCode ? ` · chamado #${c.ticketCode}` : ''}{c.takenBy ? ` · com ${c.takenBy}` : c.agentName ? ` · ${c.agentName}` : ''}</div>}
           </div>
           <button className="adm-btn-sm ghost" onClick={onClose}><X size={13} /></button>
         </div>
@@ -238,7 +238,7 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
           ) : data && <div style={{ fontSize: 12.5, color: 'var(--t3)' }}>Contato sem conta no app.</div>}
           {data?.messages.map(m => (
             <div key={m.id} style={{ alignSelf: m.direction === 'in' ? 'flex-start' : 'flex-end', maxWidth: '85%', background: m.direction === 'in' ? 'var(--s1)' : 'var(--volt)', border: '1px solid var(--b1)', borderRadius: 12, padding: '9px 12px' }}>
-              <div style={{ fontSize: 11, color: 'var(--t3)', marginBottom: 4 }}>{AUTHOR[m.author] ?? m.author}{m.intent ? ` · ${m.intent}` : ''} · {fmt(m.created_at)}</div>
+              <div style={{ fontSize: 11, color: 'var(--t3)', marginBottom: 4 }}>{m.author === 'human' && m.author_name ? `${m.author_name} (atendente)` : AUTHOR[m.author] ?? m.author}{m.intent ? ` · ${m.intent}` : ''} · {fmt(m.created_at)}</div>
               <div style={{ fontSize: 13, color: 'var(--t1)', whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>{m.body}</div>
             </div>
           ))}
@@ -256,6 +256,9 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
             ) : null}
             <div style={{ display: 'flex', gap: 8, justifyContent: 'space-between', flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', gap: 6 }}>
+                {c.status === 'escalated' && !c.takenBy && c.channel !== 'email' && (
+                  <button className="adm-btn-sm primary" disabled={busy} onClick={() => post({ action: 'take' })}>Assumir atendimento</button>
+                )}
                 {c.status !== 'closed'
                   ? <button className="adm-btn-sm ghost" disabled={busy} onClick={() => post({ action: 'status', status: 'closed' })}><Check size={12} /> Fechar sem responder</button>
                   : <button className="adm-btn-sm ghost" disabled={busy} onClick={() => post({ action: 'status', status: 'open' })}>Reabrir</button>}

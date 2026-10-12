@@ -3,9 +3,8 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendWhatsAppText, markWhatsAppRead, type IncomingWhatsApp } from '@/lib/whatsapp';
 import { runSupportAgent, type SupportTurn, type SupportUserContext } from '@/lib/support-agent';
-import { findUserContext, upsertConversation, logMessage, setConversationStatus, escalate } from '@/lib/support-service';
+import { findUserContext, upsertConversation, logMessage, setConversationStatus, escalate, ticketOpenedText } from '@/lib/support-service';
 
-const HOLDING = 'Obrigado pela mensagem! Vou passar para a nossa equipe, que te responde por aqui em breve.';
 const NOT_TEXT = 'Por enquanto eu só consigo ler mensagens de texto. Pode escrever a sua dúvida?';
 const EMAIL_RE = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
 // Código do botão do app (ver /api/support/whatsapp-code): "Q" + 5 caracteres sem 0/O/1/I/L.
@@ -92,8 +91,8 @@ export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
     await reply(convId, m.from, decision.reply, decision.intent);
     return;
   }
-  await reply(convId, m.from, HOLDING, decision.intent);
-  await escalate({ conversationId: convId, contact, channel: 'whatsapp', intent: decision.intent, userText: m.text, reason: decision.reason, userContext: context });
+  const { ticketCode } = await escalate({ conversationId: convId, contact, channel: 'whatsapp', intent: decision.intent, userText: m.text, reason: decision.reason, userContext: context });
+  await reply(convId, m.from, ticketOpenedText(ticketCode), decision.intent);
 }
 
 /** Primeiro nome para o cumprimento: só a primeira palavra, só letras (o nome do perfil é texto livre). */

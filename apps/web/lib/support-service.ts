@@ -79,14 +79,15 @@ export async function upsertConversation(args: {
 }
 
 export async function logMessage(args: {
-  conversationId: string; direction: 'in' | 'out'; author: 'user' | 'agent' | 'human';
-  body: string; intent?: string; autoSent?: boolean; graphMessageId?: string; externalId?: string;
+  conversationId: string; direction: 'in' | 'out'; author: 'user' | 'agent' | 'human' | 'system';
+  body: string; intent?: string; autoSent?: boolean; graphMessageId?: string; externalId?: string; authorName?: string | null;
 }): Promise<void> {
   const supabase = getSupabaseAdmin();
   await supabase.from('support_messages').insert({
     conversation_id: args.conversationId, direction: args.direction, author: args.author,
     body: args.body, intent: args.intent ?? null, auto_sent: args.autoSent ?? false,
     graph_message_id: args.graphMessageId ?? null, external_id: args.externalId ?? null,
+    author_name: args.authorName ?? null,
   });
 }
 
@@ -121,11 +122,33 @@ export async function pickAgent(): Promise<Agent | null> {
 export async function escalate(args: {
   conversationId: string; contact: string; channel: string; intent: string;
   userText: string; reason: string; userContext: SupportUserContext;
-}): Promise<{ assignedTo: string | null }> {
+}): Promise<{ assignedTo: string | null; ticketCode: string }> {
   const agent = await pickAgent();
   await setConversationStatus(args.conversationId, 'escalated', agent?.id ?? null);
-  await getSupabaseAdmin().from('support_conversations').update({ sla_notified_at: null } as never).eq('id', args.conversationId);
-  return { assignedTo: agent?.email ?? null };
+  // Número do chamado (novo a cada escalonamento) para o aluno citar; ninguém assumiu ainda.
+  const ticketCode = newTicketCode();
+  await getSupabaseAdmin().from('support_conversations')
+    .update({ sla_notified_at: null, ticket_code: ticketCode, taken_by: null, taken_at: null } as never).eq('id', args.conversationId);
+  return { assignedTo: agent?.email ?? null, ticketCode };
+}
+
+const TICKET_ALPHABET = '23456789ABCDEFGHJKMNPQRSTUVWXYZ'; // sem 0/O, 1/I/L
+export function newTicketCode(): string {
+  return Array.from({ length: 4 }, () => TICKET_ALPHABET[Math.floor(Math.random() * TICKET_ALPHABET.length)]).join('');
+}
+
+/** Texto do aviso de abertura do chamado (WhatsApp e chat do app). */
+export function ticketOpenedText(code: string, lang: 'pt' | 'en' = 'pt'): string {
+  return lang === 'en'
+    ? `I opened ticket #${code} with our team. As soon as someone replies, you'll get the answer here.`
+    : `Abri o chamado #${code} para a nossa equipe. Assim que alguém responder, a resposta chega por aqui.`;
+}
+
+/** Aviso de quem assumiu o atendimento (mostrado ao aluno). */
+export function ticketTakenText(name: string, code: string | null, lang: 'pt' | 'en' = 'pt'): string {
+  return lang === 'en'
+    ? `${name}, from the Queizy team, took over your case${code ? ` #${code}` : ''}.`
+    : `${name}, da equipe Queizy, assumiu o seu atendimento${code ? ` (chamado #${code})` : ''}.`;
 }
 
 const SLA_HOURS = 2;

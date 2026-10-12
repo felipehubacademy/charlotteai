@@ -4,15 +4,13 @@
 // O aluno está logado, então é sempre identificado e confirmado.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { runSupportAgent, type SupportTurn } from '@/lib/support-agent';
-import { findUserContext, upsertConversation, logMessage, setConversationStatus, escalate } from '@/lib/support-service';
+import { findUserContext, upsertConversation, logMessage, setConversationStatus, escalate, ticketOpenedText } from '@/lib/support-service';
 import { sendDirectPush } from '@/lib/rally';
 
-const HOLDING_PT = 'Vou passar o seu caso para alguém da equipe. Assim que responderem, você recebe um aviso e a resposta aparece aqui.';
-const HOLDING_EN = "I'll pass your case to someone on the team. As soon as they reply, you'll get a notification and the answer will show up here.";
 const WAITING_PT = 'Recebido! A equipe já está com o seu caso e responde por aqui.';
 const WAITING_EN = 'Got it! The team already has your case and will reply here.';
 
-export interface AppChatMessage { id: string; author: 'user' | 'agent' | 'human'; body: string; created_at: string }
+export interface AppChatMessage { id: string; author: 'user' | 'agent' | 'human' | 'system'; author_name: string | null; body: string; created_at: string }
 
 async function appConversation(userId: string) {
   const { data } = await getSupabaseAdmin().from('support_conversations').select('id, status')
@@ -24,7 +22,7 @@ async function appConversation(userId: string) {
 export async function getAppChat(userId: string): Promise<{ status: string | null; messages: AppChatMessage[] }> {
   const conv = await appConversation(userId);
   if (!conv) return { status: null, messages: [] };
-  const { data } = await getSupabaseAdmin().from('support_messages').select('id, author, body, created_at')
+  const { data } = await getSupabaseAdmin().from('support_messages').select('id, author, author_name, body, created_at')
     .eq('conversation_id', conv.id).order('created_at', { ascending: false }).limit(100);
   return { status: conv.status, messages: ((data ?? []) as AppChatMessage[]).reverse() };
 }
@@ -47,7 +45,7 @@ export async function handleAppMessage(userId: string, rawText: string, lang: 'p
       .eq('conversation_id', convId).eq('direction', 'out').order('created_at', { ascending: false }).limit(1);
     const l = last?.[0] as { author: string; body: string } | undefined;
     const waiting = lang === 'en' ? WAITING_EN : WAITING_PT;
-    if (l?.author !== 'human' && l?.body !== waiting) await logMessage({ conversationId: convId, direction: 'out', author: 'agent', body: waiting, autoSent: true });
+    if (l?.author !== 'human' && l?.author !== 'system' && l?.body !== waiting) await logMessage({ conversationId: convId, direction: 'out', author: 'agent', body: waiting, autoSent: true });
     return getAppChat(userId);
   }
 
@@ -68,8 +66,8 @@ export async function handleAppMessage(userId: string, rawText: string, lang: 'p
     await logMessage({ conversationId: convId, direction: 'out', author: 'agent', body: decision.reply, intent: decision.intent, autoSent: true });
     await setConversationStatus(convId, decision.intent === 'encerramento' ? 'closed' : 'auto_resolved');
   } else {
-    await logMessage({ conversationId: convId, direction: 'out', author: 'agent', body: lang === 'en' ? HOLDING_EN : HOLDING_PT, intent: decision.intent, autoSent: true });
-    await escalate({ conversationId: convId, contact, channel: 'app', intent: decision.intent, userText: text, reason: decision.reason, userContext: context });
+    const { ticketCode } = await escalate({ conversationId: convId, contact, channel: 'app', intent: decision.intent, userText: text, reason: decision.reason, userContext: context });
+    await logMessage({ conversationId: convId, direction: 'out', author: 'agent', body: ticketOpenedText(ticketCode, lang), intent: decision.intent, autoSent: true });
   }
   return getAppChat(userId);
 }

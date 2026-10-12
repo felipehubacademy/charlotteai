@@ -6,7 +6,7 @@ import { supabase } from './supabase';
 
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
-export interface SupportChatMessage { id: string; author: 'user' | 'agent' | 'human'; body: string; created_at: string }
+export interface SupportChatMessage { id: string; author: 'user' | 'agent' | 'human' | 'system'; author_name?: string | null; body: string; created_at: string }
 export interface SupportChat { status: string | null; messages: SupportChatMessage[] }
 
 async function call(method: 'GET' | 'POST', body?: unknown): Promise<SupportChat | { error: string }> {

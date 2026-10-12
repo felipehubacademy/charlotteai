@@ -39,6 +39,14 @@ function TypingDots() {
 
 function Bubble({ m, isPt }: { m: SupportChatMessage; isPt: boolean }) {
   const mine = m.author === 'user';
+  // Aviso do sistema (ex.: "Ana, da equipe Queizy, assumiu o seu atendimento").
+  if (m.author === 'system') {
+    return (
+      <View style={{ alignSelf: 'center', maxWidth: '90%', backgroundColor: 'rgba(22,19,31,0.06)', borderRadius: 14, paddingHorizontal: 12, paddingVertical: 7, marginBottom: 14 }}>
+        <AppText style={{ fontSize: 12.5, color: C.inkMid, textAlign: 'center', lineHeight: 17 }}>{m.body}</AppText>
+      </View>
+    );
+  }
   if (mine) {
     return (
       <View style={{ alignSelf: 'flex-end', maxWidth: '82%', backgroundColor: C.volt, borderRadius: 20, borderTopRightRadius: 4, paddingHorizontal: 14, paddingVertical: 10, marginBottom: 14 }}>
@@ -52,7 +60,7 @@ function Bubble({ m, isPt }: { m: SupportChatMessage; isPt: boolean }) {
       <View style={{ flexShrink: 1 }}>
         {m.author === 'human' && (
           <AppText style={{ fontSize: 11.5, fontWeight: '700', color: C.inkLight, marginBottom: 4, marginLeft: 4 }}>
-            {isPt ? 'Equipe Queizy' : 'Queizy team'}
+            {m.author_name ? `${m.author_name} · ${isPt ? 'Equipe Queizy' : 'Queizy team'}` : (isPt ? 'Equipe Queizy' : 'Queizy team')}
           </AppText>
         )}
         <View style={{ backgroundColor: C.bubble, borderRadius: 20, borderTopLeftRadius: 4, paddingHorizontal: 14, paddingVertical: 10 }}>
