@@ -134,7 +134,7 @@ export default function SupportScreen() {
         <View style={{ backgroundColor: C.card, borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(22,19,31,0.08)' }}>
           <Row
             icon={<ChatCircleDots size={19} color={C.navy} weight="regular" />}
-            label={isPt ? 'Conversar com a Charlotte' : 'Chat with Charlotte'}
+            label={isPt ? 'Conversar com o suporte' : 'Chat with support'}
             sub={isPt ? 'Aqui no app, na hora' : 'Right here in the app'}
             onPress={() => router.push('/(app)/support-chat' as any)}
           />

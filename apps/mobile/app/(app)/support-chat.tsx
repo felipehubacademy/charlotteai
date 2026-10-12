@@ -1,13 +1,13 @@
-// app/(app)/support-chat.tsx — "Fale com a Charlotte": chat de suporte dentro do app.
-// A Charlotte (IA) responde pela FAQ do suporte; o que ela não resolve vai para a equipe,
-// que responde por aqui (aviso por push). Textos da tela seguem o idioma do aparelho.
+// app/(app)/support-chat.tsx — chat do Suporte Queizy dentro do app.
+// A IA do suporte responde pela FAQ; o que ela não resolve vai para a equipe, que responde
+// por aqui (aviso por push). Não usa a Charlotte (ela é a tutora, não o suporte).
+// Textos da tela seguem o idioma do aparelho.
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { View, ScrollView, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, ActivityIndicator } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from 'expo-router';
-import { PaperPlaneRight } from 'phosphor-react-native';
+import { PaperPlaneRight, Headset } from 'phosphor-react-native';
 import { ScreenHeader } from '@/components/stats/StatsUI';
-import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { AppText } from '@/components/ui/Text';
 import { systemIsPt } from '@/lib/systemLang';
 import { loadSupportChat, sendSupportChat, type SupportChatMessage } from '@/lib/supportChat';
@@ -17,10 +17,19 @@ const C = {
   volt: '#DCFF4A', bubble: '#F3F0E8', border: 'rgba(22,19,31,0.08)',
 };
 
+/** Ícone do suporte (no lugar de um avatar de pessoa). */
+function SupportAvatar() {
+  return (
+    <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: C.ink, alignItems: 'center', justifyContent: 'center' }}>
+      <Headset size={17} color={C.volt} weight="fill" />
+    </View>
+  );
+}
+
 function TypingDots() {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8, marginBottom: 14 }}>
-      <CharlotteAvatar size="sm" />
+      <SupportAvatar />
       <View style={{ backgroundColor: C.bubble, borderRadius: 18, borderTopLeftRadius: 4, paddingHorizontal: 14, paddingVertical: 12 }}>
         <ActivityIndicator size="small" color={C.inkLight} />
       </View>
@@ -39,7 +48,7 @@ function Bubble({ m, isPt }: { m: SupportChatMessage; isPt: boolean }) {
   }
   return (
     <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8, marginBottom: 14, maxWidth: '88%' }}>
-      <CharlotteAvatar size="sm" />
+      <SupportAvatar />
       <View style={{ flexShrink: 1 }}>
         {m.author === 'human' && (
           <AppText style={{ fontSize: 11.5, fontWeight: '700', color: C.inkLight, marginBottom: 4, marginLeft: 4 }}>
@@ -102,13 +111,13 @@ export default function SupportChatScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
-      <ScreenHeader title={isPt ? 'Fale com a Charlotte' : 'Chat with Charlotte'} />
+      <ScreenHeader title={isPt ? 'Suporte Queizy' : 'Queizy support'} />
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView ref={scroll} contentContainerStyle={{ padding: 16, paddingBottom: 8 }} keyboardShouldPersistTaps="handled">
-          {/* Abertura fixa: a Charlotte se apresenta (não é gravada no servidor). */}
+          {/* Abertura fixa (não é gravada no servidor). */}
           <Bubble isPt={isPt} m={{ id: 'intro', author: 'agent', created_at: '', body: isPt
-            ? 'Oi! Sou a Charlotte. Me conte sua dúvida sobre o app, sua conta ou assinatura. Se for algo que eu não consiga resolver, chamo a equipe do Queizy para te responder por aqui.'
-            : "Hi! I'm Charlotte. Tell me your question about the app, your account or subscription. If it's something I can't solve, I'll bring in the Queizy team to reply here." }} />
+            ? 'Oi! Aqui é o suporte do Queizy. Conte sua dúvida sobre o app, sua conta ou assinatura. Respondemos na hora e, se precisar, alguém da equipe continua com você por aqui.'
+            : "Hi! This is Queizy support. Tell us your question about the app, your account or subscription. We reply right away and, if needed, someone from the team will follow up here." }} />
           {loading ? <ActivityIndicator style={{ marginTop: 20 }} color={C.inkLight} /> : messages.map(m => <Bubble key={m.id} m={m} isPt={isPt} />)}
           {sending && <TypingDots />}
           {status === 'escalated' && !sending && (

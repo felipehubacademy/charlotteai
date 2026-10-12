@@ -68,9 +68,8 @@ function systemPrompt(ctx: SupportUserContext, faq: string, channel?: string, to
     ? `O contato informou o e-mail "${ctx.emailNotFound}", que não encontramos. Peça para conferir o e-mail que aparece no app, em Perfil (logo abaixo do nome), ou para chamar ${APP_BUTTON}.`
     : `Usuário NÃO identificado. Dúvidas de uso: responda sem pedir nada. Se o caso envolve a conta dele, peça o e-mail do cadastro no app ou sugira chamar ${APP_BUTTON}.`;
 
-  const identity = channel === 'app'
-    ? `Você é a Charlotte, tutora e anfitriã do Queizy (app de inglês com IA da Hub Academy), atendendo o suporte no chat dentro do app. Fale em primeira pessoa como a Charlotte, simpática e próxima. Quando o caso precisar de uma pessoa, diga que vai chamar a equipe do Queizy.`
-    : `Você é a atendente de suporte do Queizy (app de inglês com IA da Hub Academy; antes se chamava Charlotte AI, e a tutora dentro do app se chama Charlotte).`;
+  // Mesmo no chat do app, quem fala é o suporte (a Charlotte é a tutora; não se apresentar como ela).
+  const identity = `Você é a atendente de suporte do Queizy (app de inglês com IA da Hub Academy; antes se chamava Charlotte AI, e a tutora dentro do app se chama Charlotte). Você NÃO é a Charlotte: fale como a equipe de suporte do Queizy (pode usar "nós", "a gente").`;
   const language = lang === 'en'
     ? `Answer in natural, friendly English (the user's phone is in English). The FAQ below is in Portuguese: translate the facts, and use the English names of the app screens and buttons (e.g. "Seu progresso" → "Your progress", "Perfil" → "Profile").`
     : `Fale em português do Brasil, com acentuação e gramática perfeitas, tom gentil, claro e objetivo.`;

@@ -1,4 +1,4 @@
-// lib/support-app.ts — chat de suporte dentro do app ("Fale com a Charlotte").
+// lib/support-app.ts — chat do Suporte Queizy dentro do app (não usa a Charlotte, que é a tutora).
 // Mesmo cérebro do WhatsApp: IA responde pela FAQ, o que ela não resolve vira ticket no
 // /admin e o atendente responde pelo /admin (a resposta aparece no chat + push).
 // O aluno está logado, então é sempre identificado e confirmado.
@@ -7,8 +7,8 @@ import { runSupportAgent, type SupportTurn } from '@/lib/support-agent';
 import { findUserContext, upsertConversation, logMessage, setConversationStatus, escalate } from '@/lib/support-service';
 import { sendDirectPush } from '@/lib/rally';
 
-const HOLDING_PT = 'Vou chamar a nossa equipe para te ajudar com isso. Assim que alguém responder, você recebe um aviso e a resposta aparece aqui.';
-const HOLDING_EN = "I'll bring in our team to help with this. As soon as someone replies, you'll get a notification and the answer will show up here.";
+const HOLDING_PT = 'Vou passar o seu caso para alguém da equipe. Assim que responderem, você recebe um aviso e a resposta aparece aqui.';
+const HOLDING_EN = "I'll pass your case to someone on the team. As soon as they reply, you'll get a notification and the answer will show up here.";
 const WAITING_PT = 'Recebido! A equipe já está com o seu caso e responde por aqui.';
 const WAITING_EN = 'Got it! The team already has your case and will reply here.';
 

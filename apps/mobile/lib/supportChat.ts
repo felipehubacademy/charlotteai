@@ -1,4 +1,4 @@
-// lib/supportChat.ts — chat de suporte dentro do app ("Fale com a Charlotte").
+// lib/supportChat.ts — chat do Suporte Queizy dentro do app.
 // O servidor (/api/support/chat) usa o mesmo cérebro do WhatsApp: a IA responde pela FAQ
 // e o que ela não resolve vai para a equipe, que responde por aqui (com push).
 import Constants from 'expo-constants';
