@@ -6,20 +6,39 @@ import { SupportUserContext } from '@/lib/support-agent';
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://queizy.com';
 
-export async function findUserContext(email?: string | null): Promise<SupportUserContext> {
-  if (!email) return { identified: false };
+/** Início do mês em Brasília (AAAA-MM-01), igual ao reset do Live Voice no app. */
+function brtMonthStart(): string {
+  const d = new Date(Date.now() - 3 * 3600000);
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-01`;
+}
+
+/** Contexto do aluno para o agente: pelo e-mail do contato ou pelo id já ligado à conversa. */
+export async function findUserContext(email?: string | null, userId?: string | null): Promise<SupportUserContext> {
+  if (!email && !userId) return { identified: false };
   const supabase = getSupabaseAdmin();
-  const { data } = await supabase
-    .from('charlotte_users')
-    .select('name, email, charlotte_level, subscription_status')
-    .eq('email', email.toLowerCase()).maybeSingle();
-  const u = data as { name: string | null; email: string; charlotte_level: string | null; subscription_status: string | null } | null;
-  if (!u) return { identified: false, email };
+  const cols = 'id, name, email, charlotte_level, subscription_status, is_institutional, app_platform, app_version, live_voice_seconds_used, live_voice_reset_date, live_voice_bonus_seconds';
+  const q = supabase.from('charlotte_users').select(cols);
+  const { data } = userId ? await q.eq('id', userId).maybeSingle() : await q.eq('email', email!.toLowerCase()).maybeSingle();
+  const u = data as {
+    id: string; name: string | null; email: string; charlotte_level: string | null; subscription_status: string | null;
+    is_institutional: boolean | null; app_platform: string | null; app_version: string | null;
+    live_voice_seconds_used: number | null; live_voice_reset_date: string | null; live_voice_bonus_seconds: number | null;
+  } | null;
+  if (!u) return { identified: false, email: email ?? null };
+  const { data: prog } = await supabase.from('charlotte_progress').select('total_xp, streak_days').eq('user_id', u.id).maybeSingle();
+  const p = prog as { total_xp: number | null; streak_days: number | null } | null;
+  // Mesma regra do app (lib/liveVoiceUsage.ts): 20 min Premium/institucional, 5 min no resto; bônus não vence.
+  const pool = u.subscription_status === 'active' || u.is_institutional ? 1200 : 300;
+  const used = !u.live_voice_reset_date || u.live_voice_reset_date < brtMonthStart() ? 0 : (u.live_voice_seconds_used ?? 0);
+  const left = Math.max(0, pool - used) + (u.live_voice_bonus_seconds ?? 0);
   return {
-    identified: true,
+    identified: true, userId: u.id,
     name: u.name, email: u.email, level: u.charlotte_level,
     subscription_status: u.subscription_status,
-    has_access: ['active', 'trial', 'cancelled'].includes(u.subscription_status ?? ''),
+    has_access: !!u.is_institutional || ['active', 'trial', 'cancelled'].includes(u.subscription_status ?? ''),
+    totalXP: p?.total_xp ?? 0, streakDays: p?.streak_days ?? 0,
+    liveVoiceMinutesLeft: Math.floor(left / 60),
+    platform: u.app_platform, appVersion: u.app_version,
   };
 }
 

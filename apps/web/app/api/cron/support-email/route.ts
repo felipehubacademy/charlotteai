@@ -63,6 +63,7 @@ export async function POST(req: NextRequest) {
     const context = await findUserContext(m.from);
     const convId = await upsertConversation({
       channel: 'email', externalId: m.conversationId || m.from, contact: m.from, subject: m.subject,
+      userId: context.userId ?? null,
     });
     const userText = `${m.subject}\n\n${m.bodyText}`.trim().slice(0, 4000);
     await logMessage({ conversationId: convId, direction: 'in', author: 'user', body: userText, graphMessageId: m.id });

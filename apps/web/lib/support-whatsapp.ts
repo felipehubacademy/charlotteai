@@ -51,7 +51,7 @@ export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
   const history: SupportTurn[] = ((hist ?? []) as { direction: string; body: string }[]).slice(1).reverse()
     .map(h => ({ role: h.direction === 'in' ? 'user' : 'assistant', content: h.body }));
 
-  const context = await findUserContext(userEmail);
+  const context = await findUserContext(userEmail, userId);
   const decision = await runSupportAgent({ userText: m.text, history, context, channel: 'whatsapp' });
 
   if (decision.autoSend) {
