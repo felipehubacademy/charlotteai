@@ -5,13 +5,14 @@ export const dynamic = 'force-dynamic';
  * Fila de conversas de suporte. Auth por x-admin-secret.
  * GET ?status=open|escalated|auto_resolved|closed (opcional)
  * GET ?id=                                 conversa completa + aluno
- * POST { id, action: 'reply', body, close } responde (e-mail) e registra
+ * POST { id, action: 'reply', body, close } responde (e-mail ou WhatsApp) e registra
  * POST { id, action: 'status', status }    muda o status
  */
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can, audit } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
+import { sendWhatsAppText } from '@/lib/whatsapp';
 import { logMessage, setConversationStatus, supportReplyHtml } from '@/lib/support-service';
 
 // Login próprio (Bearer) com papel que acessa 'support', ou a senha mestra antiga.
@@ -78,7 +79,7 @@ export async function GET(req: NextRequest) {
 async function conversationDetail(id: string) {
   const supabase = getSupabaseAdmin();
   const { data: conv } = await supabase.from('support_conversations')
-    .select('id, channel, contact, subject, status, user_id, created_at, last_message_at, support_agents(name)').eq('id', id).maybeSingle();
+    .select('id, channel, contact, subject, status, user_id, created_at, last_message_at, last_inbound_at, support_agents(name)').eq('id', id).maybeSingle();
   if (!conv) return NextResponse.json({ error: 'Conversa não encontrada' }, { status: 404 });
   const c = conv as any;
   const [{ data: msgs }, userR] = await Promise.all([
@@ -88,7 +89,7 @@ async function conversationDetail(id: string) {
       : supabase.from('charlotte_users').select('id, name, username, email, charlotte_level, subscription_status, is_institutional').ilike('email', c.contact).maybeSingle(),
   ]);
   return NextResponse.json({
-    conversation: { id: c.id, channel: c.channel, contact: c.contact, subject: c.subject, status: c.status, agentName: c.support_agents?.name ?? null, createdAt: c.created_at, lastMessageAt: c.last_message_at },
+    conversation: { id: c.id, channel: c.channel, contact: c.contact, subject: c.subject, status: c.status, agentName: c.support_agents?.name ?? null, createdAt: c.created_at, lastMessageAt: c.last_message_at, lastInboundAt: c.last_inbound_at },
     messages: msgs ?? [],
     user: userR.data ?? null,
   });
@@ -100,20 +101,27 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
   const id = String(body.id ?? '');
   const supabase = getSupabaseAdmin();
-  const { data: conv } = await supabase.from('support_conversations').select('id, channel, contact, subject').eq('id', id).maybeSingle();
+  const { data: conv } = await supabase.from('support_conversations').select('id, channel, contact, subject, external_id').eq('id', id).maybeSingle();
   if (!conv) return NextResponse.json({ error: 'Conversa não encontrada' }, { status: 404 });
-  const c = conv as { id: string; channel: string; contact: string; subject: string | null };
+  const c = conv as { id: string; channel: string; contact: string; subject: string | null; external_id: string };
 
   if (body.action === 'reply') {
     const text = String(body.body ?? '').trim();
     if (!text) return NextResponse.json({ error: 'Escreva a resposta.' }, { status: 400 });
-    if (c.channel !== 'email') return NextResponse.json({ error: 'Por enquanto só dá para responder conversas de e-mail por aqui.' }, { status: 400 });
-    const subject = c.subject ? (/^re:/i.test(c.subject) ? c.subject : `Re: ${c.subject}`) : 'Queizy — Suporte';
-    const ok = await sendEmail({ to: c.contact, subject, html: supportReplyHtml(text) });
-    if (!ok) return NextResponse.json({ error: 'Não foi possível enviar o e-mail.' }, { status: 502 });
+    if (c.channel === 'whatsapp') {
+      const r = await sendWhatsAppText(c.external_id, text);
+      if (!r.ok) return NextResponse.json({ error: `Não foi possível enviar pelo WhatsApp: ${r.error}` }, { status: 502 });
+    } else if (c.channel === 'email') {
+      const subject = c.subject ? (/^re:/i.test(c.subject) ? c.subject : `Re: ${c.subject}`) : 'Queizy — Suporte';
+      const ok = await sendEmail({ to: c.contact, subject, html: supportReplyHtml(text) });
+      if (!ok) return NextResponse.json({ error: 'Não foi possível enviar o e-mail.' }, { status: 502 });
+    } else {
+      return NextResponse.json({ error: 'Canal sem resposta pelo /admin.' }, { status: 400 });
+    }
     await logMessage({ conversationId: c.id, direction: 'out', author: 'human', body: text });
     await supabase.from('support_conversations').update({ last_message_at: new Date().toISOString() } as never).eq('id', c.id);
-    await setConversationStatus(c.id, body.close ? 'closed' : 'open');
+    // Respondido pelo atendente: o ticket segue com ele (a IA não entra) até ser encerrado.
+    await setConversationStatus(c.id, body.close ? 'closed' : 'escalated');
     await audit(admin, 'support.reply', 'support_conversation', c.id);
     return NextResponse.json({ ok: true });
   }

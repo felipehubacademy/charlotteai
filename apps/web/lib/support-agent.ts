@@ -37,7 +37,7 @@ export interface AgentDecision {
   autoSend: boolean;      // decisão final: enviar automaticamente?
 }
 
-function systemPrompt(ctx: SupportUserContext): string {
+function systemPrompt(ctx: SupportUserContext, channel?: string): string {
   const who = ctx.identified
     ? `Usuário identificado: ${ctx.name ?? 'sem nome'} (${ctx.email ?? 'sem email'}), nível ${ctx.level ?? '—'}, assinatura "${ctx.subscription_status ?? '—'}", acesso ${ctx.has_access ? 'ativo' : 'inativo'}.`
     : 'Usuário NÃO identificado na base (não achamos o cadastro pelo contato).';
@@ -48,7 +48,8 @@ Fale em português do Brasil, com acentuação e gramática perfeitas, tom genti
 REGRAS:
 - Responda APENAS com base na FAQ abaixo. NUNCA invente preços, políticas ou passos que não estejam na FAQ.
 - Se a dúvida não estiver claramente coberta pela FAQ, ou envolver ação na conta do usuário (reembolso, cobrança específica, exclusão de conta, problema técnico que você não resolve, reclamação/insatisfação), marque needsHuman=true.
-- Seja breve (no máximo alguns parágrafos curtos). Não peça dados sensíveis (senha, cartão).
+- Seja breve (no máximo alguns parágrafos curtos). Não peça dados sensíveis (senha, cartão).${channel === 'whatsapp' ? `
+- Canal WhatsApp: mensagens curtas e diretas, sem títulos nem listas longas; use *negrito* só se ajudar. Se o usuário não foi identificado e o caso envolve a conta dele, peça o e-mail do cadastro no app.` : ''}
 - ${who}
 
 Classifique a intenção em UM destes intents:
@@ -65,6 +66,7 @@ export async function runSupportAgent(input: {
   userText: string;
   history?: SupportTurn[];
   context: SupportUserContext;
+  channel?: string;
 }): Promise<AgentDecision> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
@@ -72,7 +74,7 @@ export async function runSupportAgent(input: {
   }
 
   const messages = [
-    { role: 'system', content: systemPrompt(input.context) },
+    { role: 'system', content: systemPrompt(input.context, input.channel) },
     ...(input.history ?? []).slice(-8),
     { role: 'user', content: input.userText },
   ];

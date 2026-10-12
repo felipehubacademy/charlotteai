@@ -14,7 +14,7 @@ const STATUS_BADGE: Record<string, string> = {
   open: 'badge-muted', escalated: 'badge-warn', auto_resolved: 'badge-ok', closed: 'badge-muted',
 };
 const STATUS_LABEL: Record<string, string> = {
-  open: 'Aberta', escalated: 'Escalada', auto_resolved: 'Auto-resolvida', closed: 'Fechada',
+  open: 'Aberta', escalated: 'Com atendente', auto_resolved: 'Resolvida pela IA', closed: 'Fechada',
 };
 
 const fmt = (s: string | null) => s ? new Date(s).toLocaleString('pt-BR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }) : '—';
@@ -171,7 +171,7 @@ function AgentModal({ mode, agent, onClose, onSave }: {
 }
 
 interface Thread {
-  conversation: { id: string; channel: string; contact: string; subject: string | null; status: string; agentName: string | null; createdAt: string };
+  conversation: { id: string; channel: string; contact: string; subject: string | null; status: string; agentName: string | null; createdAt: string; lastInboundAt: string | null };
   messages: { id: string; direction: string; author: string; body: string; intent: string | null; auto_sent: boolean; created_at: string }[];
   user: { id: string; name: string | null; username: string | null; email: string; charlotte_level: string | null; subscription_status: string; is_institutional: boolean } | null;
 }
@@ -199,6 +199,9 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
   };
 
   const c = data?.conversation;
+  const canReply = c?.channel === 'email' || c?.channel === 'whatsapp';
+  // WhatsApp: a Meta só deixa responder livremente até 24 h depois da última mensagem do aluno.
+  const waClosed = c?.channel === 'whatsapp' && !!c.lastInboundAt && Date.now() - new Date(c.lastInboundAt).getTime() > 24 * 3600000;
   return (
     <div className="adm-modal-backdrop" onClick={onClose}>
       <div className="adm-modal" style={{ width: 'min(720px, 94vw)', maxHeight: '88vh', display: 'flex', flexDirection: 'column' }} onClick={e => e.stopPropagation()}>
@@ -230,18 +233,21 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
         </div>
         {c && (
           <div className="adm-modal-footer" style={{ flexDirection: 'column', alignItems: 'stretch', gap: 8 }}>
-            {c.channel === 'email' ? (
-              <textarea className="adm-input" rows={4} value={reply} onChange={e => setReply(e.target.value)} placeholder={`Responder para ${c.contact}…`} style={{ resize: 'vertical' }} />
-            ) : (
-              <div style={{ fontSize: 12.5, color: 'var(--t3)' }}>Responder por aqui ainda só funciona em conversas de e-mail.</div>
+            {waClosed && (
+              <div style={{ fontSize: 12.5, color: 'var(--err)' }}>Já passaram 24 h desde a última mensagem do aluno. O WhatsApp só permite responder depois que ele escrever de novo.</div>
             )}
+            {canReply && !waClosed ? (
+              <textarea className="adm-input" rows={4} value={reply} onChange={e => setReply(e.target.value)} placeholder={`Responder ${c.channel === 'whatsapp' ? 'pelo WhatsApp' : 'por e-mail'} para ${c.contact}…`} style={{ resize: 'vertical' }} />
+            ) : !canReply ? (
+              <div style={{ fontSize: 12.5, color: 'var(--t3)' }}>Este canal não tem resposta pelo /admin.</div>
+            ) : null}
             <div style={{ display: 'flex', gap: 8, justifyContent: 'space-between', flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', gap: 6 }}>
                 {c.status !== 'closed'
                   ? <button className="adm-btn-sm ghost" disabled={busy} onClick={() => post({ action: 'status', status: 'closed' })}><Check size={12} /> Fechar sem responder</button>
                   : <button className="adm-btn-sm ghost" disabled={busy} onClick={() => post({ action: 'status', status: 'open' })}>Reabrir</button>}
               </div>
-              {c.channel === 'email' && (
+              {canReply && !waClosed && (
                 <div style={{ display: 'flex', gap: 6 }}>
                   <button className="adm-btn-sm ghost" disabled={busy || !reply.trim()} onClick={async () => { if (await post({ action: 'reply', body: reply, close: false })) setReply(''); }}>Enviar</button>
                   <button className="adm-btn-sm primary" disabled={busy || !reply.trim()} onClick={async () => { if (await post({ action: 'reply', body: reply, close: true })) setReply(''); }}>Enviar e fechar</button>

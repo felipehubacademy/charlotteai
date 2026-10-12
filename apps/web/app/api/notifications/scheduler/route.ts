@@ -31,11 +31,12 @@ import {
   sendBuddyRivalry,
 } from '@/lib/expo-notification-service';
 import { runRallyJobs } from '@/lib/rally-jobs';
+import { notifyStaleTickets } from '@/lib/support-service';
 import { getSupabase } from '@/lib/supabase';
 
 const CRON_SECRET = process.env.CRON_SECRET ?? '';
 
-type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'rally';
+type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'rally' | 'support_sla';
 
 function isAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization') ?? '';
@@ -76,6 +77,9 @@ async function runTask(task: TaskType): Promise<{ task: TaskType }> {
     case 'engagement':
       await sendEngagementPushes(supabase);
       break;
+    case 'support_sla': // ticket de suporte sem resposta há 2 h → e-mail ao atendente
+      await notifyStaleTickets();
+      break;
     default:
       throw new Error(`Unknown task: ${task}`);
   }
@@ -85,7 +89,7 @@ async function runTask(task: TaskType): Promise<{ task: TaskType }> {
 // Every hourly run invokes every sender. Each sender drops users whose
 // per-user local hour does not match the task's target hour, so this is
 // cheap when no one is at the right local time.
-const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'rally'];
+const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'rally', 'support_sla'];
 
 export async function GET(request: NextRequest) {
   if (!isAuthorized(request)) {
