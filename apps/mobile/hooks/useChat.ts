@@ -50,6 +50,26 @@ async function savePractice(
 
 /** Persist a chat message for history and pedagogical analysis (fire-and-forget).
  *  sessionId é opcional — só Free Chat agrupa em sessions. */
+const AUDIO_TYPES: Record<string, string> = { m4a: 'audio/mp4', mp4: 'audio/mp4', mp3: 'audio/mpeg', flac: 'audio/flac', wav: 'audio/wav', caf: 'audio/x-caf', aac: 'audio/aac' };
+
+/** Sobe um áudio do Free Chat para o bucket privado chat-audio ({userId}/{sessionId}/...). Retorna o caminho ou null. */
+async function uploadChatAudio(userId: string, sessionId: string, uri: string): Promise<string | null> {
+  try {
+    const ext = (uri.split('?')[0].split('.').pop() || 'm4a').toLowerCase();
+    const base64 = await FileSystem.readAsStringAsync(uri, { encoding: 'base64' as any });
+    const bin = atob(base64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    const path = `${userId}/${sessionId}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+    const { error } = await supabase.storage.from('chat-audio').upload(path, bytes, { contentType: AUDIO_TYPES[ext] ?? 'audio/mpeg' });
+    if (error) { console.warn('uploadChatAudio:', error.message); return null; }
+    return path;
+  } catch (e) {
+    console.warn('uploadChatAudio failed:', e);
+    return null;
+  }
+}
+
 function saveChatMessage(
   userId: string,
   role: 'user' | 'assistant',
@@ -57,11 +77,20 @@ function saveChatMessage(
   mode: ChatMode,
   sessionId?: string | null,
   impression?: string | null, // imitação usada nesta resposta (selo "imitando" ao reabrir)
+  audio?: { uri: string; duration?: number } | null, // áudio da mensagem (Free Chat): volta ao reabrir a conversa
 ): void {
   if (!userId) return;
-  supabase.from('chat_messages')
-    .insert({ user_id: userId, role, content, mode, session_id: sessionId ?? null, ...(impression ? { impression } : {}) })
-    .then(({ error }) => { if (error) console.warn('saveChatMessage:', error.message); });
+  // created_at fixado agora: o upload do áudio não pode inverter a ordem das mensagens.
+  const createdAt = new Date().toISOString();
+  (async () => {
+    const audioPath = audio?.uri && sessionId && mode === 'chat' ? await uploadChatAudio(userId, sessionId, audio.uri) : null;
+    const { error } = await supabase.from('chat_messages').insert({
+      user_id: userId, role, content, mode, session_id: sessionId ?? null, created_at: createdAt,
+      ...(impression ? { impression } : {}),
+      ...(audioPath ? { audio_path: audioPath, audio_duration: audio?.duration ?? null } : {}),
+    });
+    if (error) console.warn('saveChatMessage:', error.message);
+  })();
 
   // Incrementa message_count na session (fire-and-forget) só pra Free Chat.
   if (sessionId && mode === 'chat') {
@@ -348,7 +377,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       supabase.from('charlotte_chat_sessions').select('character').eq('id', sessionId).maybeSingle(),
       supabase
         .from('chat_messages')
-        .select('role, content, created_at, impression')
+        .select('role, content, created_at, impression, audio_path, audio_duration')
         .eq('user_id', userId)
         .eq('session_id', sessionId)
         .order('created_at', { ascending: true }),
@@ -369,14 +398,30 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       contextManagerRef.current.addMessage(row.role as 'user' | 'assistant', row.content, 'text');
     });
 
-    const historyMsgs: Message[] = data.map(row => ({
-      id: `hist-${row.created_at}`,
-      role: row.role as 'user' | 'assistant',
-      content: row.content,
-      messageType: 'text' as const,
-      timestamp: new Date(row.created_at),
-      impression: (row as { impression?: string | null }).impression ?? null, // selo "imitando" volta ao reabrir
-    }));
+    // Áudios salvos (bucket privado): links temporários para tocar de novo.
+    type Row = { role: string; content: string; created_at: string; impression?: string | null; audio_path?: string | null; audio_duration?: number | null };
+    const rows = data as Row[];
+    const paths = rows.map(r => r.audio_path).filter((p): p is string => !!p);
+    const signed: Record<string, string> = {};
+    if (paths.length) {
+      const { data: urls } = await supabase.storage.from('chat-audio').createSignedUrls(paths, 60 * 60 * 6);
+      (urls ?? []).forEach(u => { if (u.path && u.signedUrl) signed[u.path] = u.signedUrl; });
+    }
+
+    const historyMsgs: Message[] = rows.map(row => {
+      const url = row.audio_path ? signed[row.audio_path] : undefined;
+      const isUser = row.role === 'user';
+      return {
+        id: `hist-${row.created_at}`,
+        role: row.role as 'user' | 'assistant',
+        content: row.content,
+        messageType: url ? 'audio' as const : 'text' as const,
+        ...(url ? (isUser ? { audioUri: url } : { audioUrl: url }) : {}),
+        ...(url && row.audio_duration ? { audioDuration: row.audio_duration } : {}),
+        timestamp: new Date(row.created_at),
+        impression: row.impression ?? null, // selo "imitando" volta ao reabrir
+      };
+    });
 
     setMessages([buildWelcome(mode, userLevel, userName, characterRef.current), ...historyMsgs]);
   }, [mode, userLevel, userName, userId]);
@@ -477,7 +522,8 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       technicalFeedback: string | undefined,
       respondWithAudio = false,
       extraProps: Partial<Message> = {}
-    ) => {
+    ): Promise<(string | null)[]> => {
+      const uris: (string | null)[] = [];
       for (let i = 0; i < parts.length; i++) {
         if (i > 0) await delay(1500);
 
@@ -498,7 +544,9 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         };
 
         setMessages(prev => [...prev, msg]);
+        uris.push(audioUri);
       }
+      return uris;
     },
     []
   );
@@ -983,7 +1031,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         contextManagerRef.current.addMessage('user', transcription, 'audio');
 
         // Save transcription as user message in chat history
-        saveChatMessage(userId, 'user', transcription, mode, activeSessionIdRef.current);
+        saveChatMessage(userId, 'user', transcription, mode, activeSessionIdRef.current, null, { uri: audioUri, duration: audioDuration });
         maybeTitleSession({ text: transcription });
 
         const audioResult = await getAssistantResponse(transcription, 'audio');
@@ -1000,13 +1048,13 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
 
         // chat audio in → audio out (TTS); grammar audio in → text out
         const withAudio = mode === 'chat';
-        await deliverSequentially(
+        const [replyAudio] = await deliverSequentially(
           [feedback.trim()], technicalFeedback, withAudio,
           { ...(vocabularySuggestions?.length ? { vocabularySuggestions } : {}), ...(impression ? { impression } : {}) }
         );
 
         // Save assistant reply to chat history
-        saveChatMessage(userId, 'assistant', feedback, mode, activeSessionIdRef.current, impression);
+        saveChatMessage(userId, 'assistant', feedback, mode, activeSessionIdRef.current, impression, replyAudio ? { uri: replyAudio } : null);
 
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         setSessionXP(prev => prev + xpAwarded);

@@ -57,6 +57,8 @@ O app agenda as revisões: quando há palavras para revisar aparece "Revisar hoj
 - Para conversar com cada um: Practice > Free Chat, numa conversa nova toque em "Conversar com" e escolha. Cada conversa continua com quem ela foi começada.
 - Para escolher quem fala com você na tela Início: Perfil > Você no Queizy > Família Queizy > "Falar na Início".
 A trilha, a Gramática, a Pronúncia e o suporte são sempre com a Charlotte.` },
+  { section: 'Guia do app', question: 'Os áudios das conversas ficam salvos?', answer:
+`Sim. No Free Chat, os áudios que você grava e as respostas faladas ficam salvos por 90 dias: ao reabrir a conversa em "Conversas anteriores", dá para ouvir de novo. Depois de 90 dias o áudio é apagado e a mensagem fica só com o texto. Conversas de antes dessa mudança mostram apenas o texto.` },
   { section: 'Guia do app', question: 'Onde ficam as metas e o desafio da semana?', answer:
 `Na tela "Seu progresso" (tocando nas pílulas de fogo, raio e troféu no topo), na parte "Metas": "Meta de hoje" e "Desafio da semana". Cada uma paga XP extra quando concluída.` },
   { section: 'Guia do app', question: 'Como estudar com amigos (Estudar junto)?', answer:
