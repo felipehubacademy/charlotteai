@@ -38,7 +38,7 @@ Para refazer o teste de nível: Perfil > Conta > Refazer teste de nível (o resu
 Para concluir é preciso atingir o mínimo mostrado na atividade (por exemplo "precisa 70%"). Atividades já feitas podem ser refeitas pelo botão "Refazer". Ao completar o nível, o app oferece a passagem para o próximo.` },
   { section: 'Guia do app', question: 'Como ligo para a Charlotte (Live Voice)?', answer:
 `Toque no ícone de telefone na barra de baixo e depois em "Conversar com a Charlotte". Na primeira vez o celular pede permissão para usar o microfone: é preciso permitir.
-Na mesma tela ficam os minutos restantes do mês, "Ver chamadas anteriores" (com resumo e transcrição de cada conversa) e "Ajuda".` },
+Os minutos restantes do mês aparecem na própria tela do Live Voice, no cartão "Seu tempo este mês", logo acima do botão "Conversar com a Charlotte". Na mesma tela ficam "Ver chamadas anteriores" (com resumo e transcrição de cada conversa) e "Ajuda".` },
   { section: 'Guia do app', question: 'Quantos minutos de Live Voice eu tenho?', answer:
 `Os minutos são por mês: 5 minutos no teste grátis e 20 minutos no Premium (e nas contas institucionais). Eles renovam no dia 1º de cada mês.
 Quando acabam, aparece "Seu tempo acabou este mês". Quem está no teste pode assinar o Premium; quem já assina pode comprar pacotes de minutos extras em "Comprar minutos" ou "Ver pacotes de minutos". Minutos extras comprados não vencem no fim do mês.
@@ -115,7 +115,7 @@ Casos específicos de cobrança ou reembolso são encaminhados a um atendente.` 
 
   // ── Contato ──────────────────────────────────────────────────────────────
   { section: 'Contato', question: 'Como falar com o suporte?', answer:
-`No app: Perfil > Ajuda > Ajuda e suporte. Pelo WhatsApp: (11) 5199-5992. Por e-mail: suporte@queizy.com.` },
+`No app: Perfil > Ajuda > Ajuda e suporte > "Conversar com a Charlotte" (chat aqui no app, com resposta na hora; se precisar, a equipe do Queizy responde no mesmo chat e o aluno recebe um aviso). Também pelo WhatsApp (11) 5199-5992 e pelo e-mail suporte@queizy.com.` },
 ];
 
 export function formatFaq(entries: FaqEntry[]): string {

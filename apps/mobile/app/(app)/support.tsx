@@ -7,7 +7,7 @@ import { View, ScrollView, TouchableOpacity, Linking, Platform } from 'react-nat
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import {
-  ArrowLeft, EnvelopeSimple, WhatsappLogo, CaretDown, CaretRight, Question,
+  ArrowLeft, EnvelopeSimple, WhatsappLogo, CaretDown, CaretRight, Question, ChatCircleDots,
 } from 'phosphor-react-native';
 import { ScreenHeader } from '@/components/stats/StatsUI';
 import Svg, { Path } from 'react-native-svg';
@@ -132,6 +132,13 @@ export default function SupportScreen() {
           {isPt ? 'Fale com a gente' : 'Contact us'}
         </AppText>
         <View style={{ backgroundColor: C.card, borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(22,19,31,0.08)' }}>
+          <Row
+            icon={<ChatCircleDots size={19} color={C.navy} weight="regular" />}
+            label={isPt ? 'Conversar com a Charlotte' : 'Chat with Charlotte'}
+            sub={isPt ? 'Aqui no app, na hora' : 'Right here in the app'}
+            onPress={() => router.push('/(app)/support-chat' as any)}
+          />
+          <View style={{ height: 1, backgroundColor: C.border, marginLeft: 62 }} />
           <Row
             icon={<EnvelopeSimple size={19} color={C.navy} weight="regular" />}
             label={isPt ? 'Enviar email' : 'Send email'}

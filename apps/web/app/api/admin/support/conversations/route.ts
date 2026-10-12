@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
  * Fila de conversas de suporte. Auth por x-admin-secret.
  * GET ?status=open|escalated|auto_resolved|closed (opcional)
  * GET ?id=                                 conversa completa + aluno
- * POST { id, action: 'reply', body, close } responde (e-mail ou WhatsApp) e registra
+ * POST { id, action: 'reply', body, close } responde (e-mail, WhatsApp ou chat do app + push) e registra
  * POST { id, action: 'status', status }    muda o status
  */
 import { NextRequest, NextResponse } from 'next/server';
@@ -14,6 +14,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { sendWhatsAppText } from '@/lib/whatsapp';
 import { logMessage, setConversationStatus, supportReplyHtml } from '@/lib/support-service';
+import { notifyAppReply } from '@/lib/support-app';
 
 // Login próprio (Bearer) com papel que acessa 'support', ou a senha mestra antiga.
 async function checkAuth(req: NextRequest) {
@@ -117,10 +118,12 @@ export async function POST(req: NextRequest) {
       const subject = c.subject ? (/^re:/i.test(c.subject) ? c.subject : `Re: ${c.subject}`) : 'Queizy — Suporte';
       const ok = await sendEmail({ to: c.contact, subject, html: supportReplyHtml(text) });
       if (!ok) return NextResponse.json({ error: 'Não foi possível enviar o e-mail.' }, { status: 502 });
-    } else {
+    } else if (c.channel !== 'app') {
       return NextResponse.json({ error: 'Canal sem resposta pelo /admin.' }, { status: 400 });
     }
     await logMessage({ conversationId: c.id, direction: 'out', author: 'human', body: text });
+    // Chat do app: a resposta já aparece na conversa; o push avisa o aluno.
+    if (c.channel === 'app') await notifyAppReply(c.external_id, text);
     await supabase.from('support_conversations').update({ last_message_at: new Date().toISOString() } as never).eq('id', c.id);
     // Respondido pelo atendente: o ticket segue com ele (a IA não entra) até ser encerrado.
     await setConversationStatus(c.id, body.close ? 'closed' : 'escalated');

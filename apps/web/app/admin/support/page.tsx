@@ -95,7 +95,7 @@ export default function SupportAdmin() {
                     {convs.map(c => (
                       <tr key={c.id} onClick={() => setOpenConv(c.id)} style={{ cursor: 'pointer' }}>
                         <td style={{ color: 'var(--t1)', fontWeight: 500 }}>{c.contact}</td>
-                        <td>{c.channel}</td>
+                        <td>{c.channel === 'app' ? 'chat do app' : c.channel}</td>
                         <td style={{ maxWidth: 340 }}>
                           <div style={{ color: 'var(--t1)' }}>{c.subject || '—'}</div>
                           {c.last && <div style={{ fontSize: 11.5, color: 'var(--t3)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 340 }}>{c.last.intent ? `[${c.last.intent}] ` : ''}{c.last.body}</div>}
@@ -209,7 +209,7 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
   };
 
   const c = data?.conversation;
-  const canReply = c?.channel === 'email' || c?.channel === 'whatsapp';
+  const canReply = c?.channel === 'email' || c?.channel === 'whatsapp' || c?.channel === 'app';
   // WhatsApp: a Meta só deixa responder livremente até 24 h depois da última mensagem do aluno.
   const waClosed = c?.channel === 'whatsapp' && !!c.lastInboundAt && Date.now() - new Date(c.lastInboundAt).getTime() > 24 * 3600000;
   return (
@@ -250,7 +250,7 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
               <div style={{ fontSize: 12.5, color: 'var(--err)' }}>Já passaram 24 h desde a última mensagem do aluno. O WhatsApp só permite responder depois que ele escrever de novo.</div>
             )}
             {canReply && !waClosed ? (
-              <textarea className="adm-input" rows={4} value={reply} onChange={e => setReply(e.target.value)} placeholder={`Responder ${c.channel === 'whatsapp' ? 'pelo WhatsApp' : 'por e-mail'} para ${c.contact}…`} style={{ resize: 'vertical' }} />
+              <textarea className="adm-input" rows={4} value={reply} onChange={e => setReply(e.target.value)} placeholder={`Responder ${c.channel === 'whatsapp' ? 'pelo WhatsApp' : c.channel === 'app' ? 'no chat do app (o aluno recebe um aviso)' : 'por e-mail'} para ${c.contact}…`} style={{ resize: 'vertical' }} />
             ) : !canReply ? (
               <div style={{ fontSize: 12.5, color: 'var(--t3)' }}>Este canal não tem resposta pelo /admin.</div>
             ) : null}

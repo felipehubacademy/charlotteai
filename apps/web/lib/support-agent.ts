@@ -51,7 +51,7 @@ export interface AgentDecision {
 
 interface Tone { firstName?: string | null; firstReply?: boolean }
 
-function systemPrompt(ctx: SupportUserContext, faq: string, channel?: string, tone: Tone = {}): string {
+function systemPrompt(ctx: SupportUserContext, faq: string, channel?: string, tone: Tone = {}, lang: 'pt' | 'en' = 'pt'): string {
   const extra = ctx.identified ? [
     ctx.totalXP != null ? `XP total ${ctx.totalXP}` : null,
     ctx.streakDays != null ? `sequência de ${ctx.streakDays} dia(s)` : null,
@@ -68,8 +68,14 @@ function systemPrompt(ctx: SupportUserContext, faq: string, channel?: string, to
     ? `O contato informou o e-mail "${ctx.emailNotFound}", que não encontramos. Peça para conferir o e-mail que aparece no app, em Perfil (logo abaixo do nome), ou para chamar ${APP_BUTTON}.`
     : `Usuário NÃO identificado. Dúvidas de uso: responda sem pedir nada. Se o caso envolve a conta dele, peça o e-mail do cadastro no app ou sugira chamar ${APP_BUTTON}.`;
 
-  return `Você é a atendente de suporte do Queizy (app de inglês com IA da Hub Academy; antes se chamava Charlotte AI, e a tutora dentro do app se chama Charlotte).
-Fale em português do Brasil, com acentuação e gramática perfeitas, tom gentil, claro e objetivo.
+  const identity = channel === 'app'
+    ? `Você é a Charlotte, tutora e anfitriã do Queizy (app de inglês com IA da Hub Academy), atendendo o suporte no chat dentro do app. Fale em primeira pessoa como a Charlotte, simpática e próxima. Quando o caso precisar de uma pessoa, diga que vai chamar a equipe do Queizy.`
+    : `Você é a atendente de suporte do Queizy (app de inglês com IA da Hub Academy; antes se chamava Charlotte AI, e a tutora dentro do app se chama Charlotte).`;
+  const language = lang === 'en'
+    ? `Answer in natural, friendly English (the user's phone is in English). The FAQ below is in Portuguese: translate the facts, and use the English names of the app screens and buttons (e.g. "Seu progresso" → "Your progress", "Perfil" → "Profile").`
+    : `Fale em português do Brasil, com acentuação e gramática perfeitas, tom gentil, claro e objetivo.`;
+  return `${identity}
+${language}
 
 REGRAS:
 - Responda APENAS com base na FAQ abaixo. NUNCA invente preços, políticas ou passos que não estejam na FAQ.
@@ -84,8 +90,8 @@ REGRAS:
 - Esta é a primeira resposta do atendimento: comece cumprimentando${tone.firstName ? ` pelo primeiro nome ("Oi, ${tone.firstName}!")` : ' ("Oi!")'}.` : `
 - O atendimento já começou: não cumprimente de novo nem repita o nome.`}
 - Quando responder uma dúvida (needsHuman=false, intent diferente de encerramento), a ÚLTIMA frase da resposta TEM de ser UMA pergunta curta terminando com "?", para saber se resolveu, variando a forma (ex.: "Consegui ajudar?", "Ficou alguma dúvida?", "Deu certo por aí?"). Não termine com "Se precisar, é só avisar" nem frase parecida.
-- Se o usuário só agradece ou diz que resolveu ("obrigado", "era isso", "resolveu", "valeu"), use intent encerramento: despeça-se em uma frase curta (ex.: "Que bom! Se precisar, é só chamar por aqui.") sem pergunta no fim, needsHuman=false.${channel === 'whatsapp' ? `
-- Canal WhatsApp: mensagens curtas e diretas, sem títulos nem listas longas; use *negrito* só se ajudar.` : ''}
+- Se o usuário só agradece ou diz que resolveu ("obrigado", "era isso", "resolveu", "valeu"), use intent encerramento: despeça-se em uma frase curta (ex.: "Que bom! Se precisar, é só chamar por aqui.") sem pergunta no fim, needsHuman=false.${channel === 'whatsapp' || channel === 'app' ? `
+- Canal WhatsApp ou chat do app: mensagens curtas e diretas, sem títulos nem listas longas.${channel === 'app' ? ' Não use asteriscos nem nenhuma marcação (o chat mostra texto puro).' : ' Use *negrito* só se ajudar.'}` : ''}
 - ${who}
 
 Classifique a intenção em UM destes intents:
@@ -105,6 +111,7 @@ export async function runSupportAgent(input: {
   channel?: string;
   firstName?: string | null;   // primeiro nome (ex.: perfil do WhatsApp)
   firstReply?: boolean;        // primeira resposta do atendimento: cumprimenta pelo nome
+  lang?: 'pt' | 'en';          // idioma da resposta (chat do app segue o idioma do aparelho)
 }): Promise<AgentDecision> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
@@ -113,7 +120,7 @@ export async function runSupportAgent(input: {
 
   const { text: faq } = await getSupportFaq();
   const messages = [
-    { role: 'system', content: systemPrompt(input.context, faq, input.channel, { firstName: input.firstName, firstReply: input.firstReply }) },
+    { role: 'system', content: systemPrompt(input.context, faq, input.channel, { firstName: input.firstName, firstReply: input.firstReply }, input.lang ?? 'pt') },
     ...(input.history ?? []).slice(-8),
     { role: 'user', content: input.userText },
   ];
@@ -148,7 +155,9 @@ export async function runSupportAgent(input: {
   // Resposta a uma dúvida termina com uma pergunta (mantém a conversa e mostra se resolveu).
   let finalReply = reply;
   if (autoSend && !['encerramento', 'saudacao', 'sugestao'].includes(intent) && !/\?\s*$/.test(reply)) {
-    const asks = ['Consegui ajudar?', 'Ficou alguma dúvida?', 'Deu certo por aí?', 'Era isso que você precisava?'];
+    const asks = input.lang === 'en'
+      ? ['Did that help?', 'Any other questions?', 'Did it work?', 'Is that what you needed?']
+      : ['Consegui ajudar?', 'Ficou alguma dúvida?', 'Deu certo por aí?', 'Era isso que você precisava?'];
     finalReply = `${reply.replace(/\s*(Se precisar[^.!?]*[.!]|Qualquer (coisa|dúvida)[^.!?]*[.!])\s*$/i, '').trim()}\n\n${asks[Math.floor(Math.random() * asks.length)]}`;
   }
 
