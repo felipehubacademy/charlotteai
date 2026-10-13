@@ -66,7 +66,7 @@ export default function StatsScreen() {
           .select('id,achievement_type,achievement_name,rarity,category,earned_at')
           .eq('user_id', userId)
           .order('earned_at', { ascending: false }),
-        supabase.from('charlotte_users').select('id').eq('charlotte_level', userLevel),
+        supabase.from('charlotte_users').select('id').eq('charlotte_level', userLevel).eq('hide_from_ranking', false), // fora: contas de revisão
       ]);
 
       const xp = statsRes.data?.total_xp ?? Number(params.totalXP ?? 0);

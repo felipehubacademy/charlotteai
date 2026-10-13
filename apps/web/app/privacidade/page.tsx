@@ -24,7 +24,7 @@ export default function PrivacidadePage() {
             Política de Privacidade
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, margin: 0 }}>
-            Última atualização: 8 de outubro de 2026
+            Última atualização: 13 de outubro de 2026
           </p>
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function PrivacidadePage() {
             ['Dados de cadastro', 'Nome, e-mail e senha (armazenada com hash seguro).'],
             ['Perfil público e amigos', 'Seu @, foto de perfil, nível, amigos de estudo, pedidos de amizade, cutucadas, parabéns e competições de que você participa.'],
             ['Dados de uso', 'Histórico de conversas com a IA, progresso nas lições, streak diário, nível de inglês e preferências de aprendizado.'],
-            ['Dados de áudio', 'Gravações de voz durante exercícios de pronúncia e sessões de conversação. Enviados ao Microsoft Azure Speech Services para análise em tempo real e descartados imediatamente após o processamento — não são armazenados permanentemente.'],
+            ['Dados de áudio', 'Gravações de voz em exercícios de pronúncia e conversas. Na pronúncia e no Live Voice, o áudio é processado em tempo real e descartado. No Free Chat, os áudios das conversas (os seus e as respostas faladas) ficam guardados por 90 dias, num espaço privado, para você ouvir de novo; depois disso, fica só o texto.'],
 ['Dados de dispositivo', 'Token de notificações push, sistema operacional e versão do app (para lembretes de estudo).'],
             ['Dados de pagamento', 'Processados exclusivamente pela App Store ou Google Play via RevenueCat. Não armazenamos dados bancários.'],
           ]} />
@@ -104,7 +104,8 @@ export default function PrivacidadePage() {
           <List items={[
             'Dados de conta: enquanto ativa ou por até 5 anos após o encerramento',
             'Histórico de conversas: enquanto a conta estiver ativa',
-            'Gravações de voz: não armazenadas — descartadas após processamento',
+            'Áudios do Free Chat: 90 dias (depois fica só o texto). Demais gravações de voz: não armazenadas',
+            'Ao excluir a conta, todos os áudios e mensagens são apagados',
             'Dados de pagamento: conforme prazos legais (geralmente 5 anos)',
           ]} />
         </Section>

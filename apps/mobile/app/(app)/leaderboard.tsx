@@ -35,7 +35,7 @@ export default function LeaderboardScreen() {
 
   const load = async () => {
     try {
-      const { data: levelUsers } = await supabase.from('charlotte_users').select('id').eq('charlotte_level', userLevel);
+      const { data: levelUsers } = await supabase.from('charlotte_users').select('id').eq('charlotte_level', userLevel).eq('hide_from_ranking', false);
       const ids = (levelUsers ?? []).map((u: any) => u.id as string);
       if (ids.length === 0) return;
 

@@ -66,8 +66,11 @@ export function calcNextReview(
     intervalDays = repetitions === 0 ? 1 : Math.round(intervalDays * easeFactor);
     repetitions += 1;
   } else {
+    // "Fácil" tem bônus de 30% e fica sempre pelo menos 1 dia acima do "Ok"
+    // (antes os dois arredondavam para o mesmo intervalo).
+    const okDays = repetitions === 0 ? 1 : Math.round(intervalDays * easeFactor);
     easeFactor   = Math.min(3.0, easeFactor + 0.15);
-    intervalDays = repetitions === 0 ? 4 : Math.round(intervalDays * easeFactor);
+    intervalDays = repetitions === 0 ? 4 : Math.max(okDays + 1, Math.round(intervalDays * easeFactor * 1.3));
     repetitions += 1;
   }
 

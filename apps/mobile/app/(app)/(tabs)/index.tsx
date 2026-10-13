@@ -316,7 +316,8 @@ export default function HomeTab() {
     // Hardcoded fallback — used when API fails, times out, or returns empty.
     const h = new Date().getHours();
     // Sem nome nem cumprimento: o título do hero já mostra os dois.
-    const fallback = isPt
+    // Mesmo idioma da fala da IA: segue o nível (Novice em português; Inter e Advanced em inglês).
+    const fallback = (profile?.charlotte_level ?? level) === 'Novice'
       ? (h < 12 ? 'Começar o dia praticando faz toda a diferença.'
        : h < 18 ? 'Uma lição rápida agora já te deixa mais perto da meta.'
                 : 'Ainda dá tempo de uma prática rápida hoje.')
@@ -358,16 +359,16 @@ export default function HomeTab() {
     const poll = setInterval(() => {
       if (greetingCache.text) {
         clearInterval(poll);
-        resolve(greetingCache.text);
+        if (settled) setAiGreeting(greetingCache.text); // chegou depois do fallback: troca pela fala da IA
+        else resolve(greetingCache.text);
       } else if (!greetingCache.pending) {
         clearInterval(poll);
         resolve(fallback);
       }
     }, 50);
 
-    // 3s safety net — same as legacy home.
+    // 3s safety net — mostra o fallback, mas continua esperando a fala da IA (a requisição corta em 5s).
     const timeout = setTimeout(() => {
-      clearInterval(poll);
       resolve(fallback);
     }, 3000);
 
