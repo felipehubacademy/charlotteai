@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Bricolage_Grotesque } from 'next/font/google';
 import StoreCTA from '@/components/StoreCTA';
+import AffiliateCapture from '@/components/AffiliateCapture';
 
 // Fonte de títulos da marca (corte óptico 96, como no app).
 const display = Bricolage_Grotesque({ subsets: ['latin'], axes: ['opsz'], display: 'swap' });
@@ -56,6 +57,7 @@ const PRACTICE = [
 export default function Page() {
   return (
     <div className="qz">
+      <AffiliateCapture />
       <style>{`
         .qz {
           --volt: #DCFF4A; --ink: #16131F; --pink: #FF4F8B; --pink-d: #D12A64;

@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { playUrlWithAffiliate, copyAffiliateForIos, storedAffiliate } from '@/lib/affiliateTracking';
 
 /**
  * StoreCTA — botão que leva pra loja certa baseado no device.
@@ -55,12 +56,15 @@ export default function StoreCTA({ variant, label, className }: Props) {
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    // Link de afiliado: o código vai junto para a loja (referrer da Play / área de transferência no iPhone).
     if (platform === 'android') {
-      window.open(PLAY_STORE_URL, '_blank');
+      window.open(playUrlWithAffiliate(PLAY_STORE_URL), '_blank');
       return;
     }
     if (platform === 'ios' && APP_STORE_AVAILABLE) {
-      window.open(APP_STORE_URL, '_blank');
+      if (!storedAffiliate()) { window.open(APP_STORE_URL, '_blank'); return; }
+      // Com código de afiliado: copia "AFF:CODIGO" no toque e segue para a App Store.
+      copyAffiliateForIos().finally(() => { window.location.href = APP_STORE_URL; });
       return;
     }
     // iOS sem flag ou desktop → modal
@@ -156,7 +160,7 @@ export default function StoreCTA({ variant, label, className }: Props) {
               fontSize: 22, fontWeight: 800, color: '#16131F',
               marginBottom: 8, letterSpacing: '-0.5px',
             }}>
-              Baixe a Charlotte
+              Baixe o Queizy
             </h3>
             <p style={{
               fontSize: 14, color: '#4D4858', marginBottom: 24,
@@ -171,7 +175,7 @@ export default function StoreCTA({ variant, label, className }: Props) {
                   href={APP_STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => setModalOpen(false)}
+                  onClick={() => { copyAffiliateForIos(); setModalOpen(false); }}
                   aria-label="Baixar na App Store"
                   style={{ display: 'block', width: 170, transition: 'opacity 0.15s' }}
                   onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '0.85'; }}
@@ -187,7 +191,7 @@ export default function StoreCTA({ variant, label, className }: Props) {
               )}
 
               <a
-                href={PLAY_STORE_URL}
+                href={playUrlWithAffiliate(PLAY_STORE_URL)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setModalOpen(false)}
