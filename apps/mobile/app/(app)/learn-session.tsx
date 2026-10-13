@@ -4,7 +4,7 @@ import { useAchievementsContext } from '@/components/achievements/AchievementsPr
 import {
   View, ScrollView, TouchableOpacity, TextInput,
   Platform, Animated,
-  ActivityIndicator, Pressable, Modal,
+  ActivityIndicator, Pressable, Modal, useWindowDimensions,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -157,6 +157,8 @@ export default function LearnSessionScreen() {
   const isPortuguese = systemIsPt;
   const baseTotalXP = useTotalXP(userId);
   const insets      = useSafeAreaInsets();
+  // Charlotte de corpo inteiro encolhe em telas mais baixas para as opções caberem sem rolar.
+  const { height: winH } = useWindowDimensions();
   // Trilha antiga só fora do modo v2 (sem userId o hook não lê nem grava nada).
   const learnProgress = useLearnProgress(isV2 ? undefined : userId, level);
   // v2 mode: skip v1-specific learn_history (uses learn_history_v2 via v2Progress),
@@ -1386,8 +1388,8 @@ export default function LearnSessionScreen() {
 
               {/* Row: Charlotte LEFT + sentence/passage RIGHT (Duo style).
                   WebP com alpha real — sem crop hack. */}
-              {(() => { const CHAR_H = 196; const CHAR_W = 110; return (
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 18 }}>
+              {(() => { const CHAR_H = winH >= 920 ? 196 : winH >= 780 ? 112 : 88; const CHAR_W = Math.round(CHAR_H * 110 / 196); return (
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: winH >= 920 ? 18 : 10 }}>
                 <View style={{ width: CHAR_W, alignItems: 'center' }}>
                   <Image
                     source={charlotteSrc}
@@ -1397,7 +1399,7 @@ export default function LearnSessionScreen() {
                   />
                   {/* Sombra elíptica abaixo dos pés */}
                   <View style={{
-                    width: 80, height: 10, marginTop: -2,
+                    width: Math.round(CHAR_W * 0.73), height: 10, marginTop: -2,
                     borderRadius: 60,
                     backgroundColor: 'rgba(22,19,31,0.16)',
                     transform: [{ scaleY: 0.4 }],

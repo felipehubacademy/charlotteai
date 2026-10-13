@@ -359,18 +359,19 @@ export default function HomeTab() {
     const poll = setInterval(() => {
       if (greetingCache.text) {
         clearInterval(poll);
-        if (settled) setAiGreeting(greetingCache.text); // chegou depois do fallback: troca pela fala da IA
-        else resolve(greetingCache.text);
+        resolve(greetingCache.text);
       } else if (!greetingCache.pending) {
         clearInterval(poll);
         resolve(fallback);
       }
     }, 50);
 
-    // 3s safety net — mostra o fallback, mas continua esperando a fala da IA (a requisição corta em 5s).
+    // Fica no loading até a fala da IA chegar; a requisição corta em 5s e aí entra o fallback.
+    // Sem troca de texto depois que algo aparece. Rede de segurança um pouco acima dos 5s.
     const timeout = setTimeout(() => {
+      clearInterval(poll);
       resolve(fallback);
-    }, 3000);
+    }, 5500);
 
     return () => { clearInterval(poll); clearTimeout(timeout); };
   }, [userId, name, level, profile]); // eslint-disable-line

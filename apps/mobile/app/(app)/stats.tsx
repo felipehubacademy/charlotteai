@@ -318,13 +318,16 @@ export default function StatsScreen() {
         <Card>
           <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
             <AppText style={{ flex: 1, fontSize: 14, fontWeight: '700', color: C.ink }}>
-              {isPt ? 'Meta de hoje' : "Today's goal"}
+              {isPt ? 'XP de hoje' : "Today's XP"}
             </AppText>
             <AppText style={{ fontSize: 13, fontWeight: '800', color: C.mid }}>
               {goals.todayXP}/{dailyGoal} XP
             </AppText>
           </View>
           <QueizyWave progress={goals.todayXP / dailyGoal} height={14} strokeWidth={4} />
+          <AppText style={{ fontSize: 12, color: C.light, marginTop: 6 }}>
+            {isPt ? `Próximo marco: ${dailyGoal} XP` : `Next milestone: ${dailyGoal} XP`}
+          </AppText>
 
           <View style={{ marginTop: 8 }}>
             {goals.missions.map((m, i) => (

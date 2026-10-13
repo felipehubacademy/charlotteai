@@ -75,6 +75,9 @@ export function EvolutionRoad({ weeks, isPt }: { weeks: RoadWeek[]; isPt: boolea
   }, [width, draw, arrive]);
 
   const best = weeks.reduce((bi, w, i) => (w.practices > (weeks[bi]?.practices ?? -1) ? i : bi), 0);
+  // Próxima meta: 10 práticas na semana; depois disso, bater a melhor semana.
+  const thisWeek = weeks[current]?.practices ?? 0;
+  const nextGoal = thisWeek < GOAL ? GOAL : (weeks[best]?.practices ?? 0) + 1;
   const sel = weeks[selected];
   const doneLen = done?.len ?? 0;
   const dashOffset = draw.interpolate({ inputRange: [0, 1], outputRange: [doneLen, 0] });
@@ -151,7 +154,7 @@ export function EvolutionRoad({ weeks, isPt }: { weeks: RoadWeek[]; isPt: boolea
         <View pointerEvents="none" style={{ position: 'absolute', right: 0, top: 4, flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: 'rgba(255,79,139,0.10)', borderRadius: 999, paddingHorizontal: 10, paddingVertical: 4 }}>
           <Flag size={12} color={C.pink} weight="fill" />
           <AppText style={{ fontSize: 11, fontWeight: '800', color: '#D12A64' }}>
-            {isPt ? `Próxima: ${GOAL} práticas` : `Next: ${GOAL} practices`}
+            {isPt ? `Próxima: ${nextGoal} práticas` : `Next: ${nextGoal} practices`}
           </AppText>
         </View>
 

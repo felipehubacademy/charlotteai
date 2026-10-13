@@ -40,10 +40,10 @@ export default function GoalsScreen() {
       ) : (
         <ScrollView contentContainerStyle={{ paddingTop: 16, paddingBottom: 48 + insets.bottom }} showsVerticalScrollIndicator={false}>
 
-          {/* ── Meta de hoje ──────────────────────────────────────────────── */}
+          {/* ── XP de hoje (marco do dia; quem paga XP são as missões) ─────── */}
           <View style={{ marginHorizontal: 16, backgroundColor: C.ink, borderRadius: 24, padding: 20 }}>
             <AppText style={{ fontSize: 11, fontWeight: '800', color: 'rgba(255,255,255,0.6)', letterSpacing: 1, textTransform: 'uppercase' }}>
-              {isPt ? 'Meta de hoje' : "Today's goal"}
+              {isPt ? 'XP de hoje' : "Today's XP"}
             </AppText>
             <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8, marginTop: 4 }}>
               <AppText display style={{ fontSize: 46, fontWeight: '800', color: '#FFFFFF', lineHeight: 50 }}>
@@ -59,7 +59,7 @@ export default function GoalsScreen() {
             <AppText style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', marginTop: 12 }}>
               {goals.todayXP === 0
                 ? (isPt ? 'Comece com uma missão aí embaixo.' : 'Start with one of the missions below.')
-                : (isPt ? `Faltam ${left} XP para bater a meta.` : `${left} XP to hit the goal.`)}
+                : (isPt ? `Faltam ${left} XP para o próximo marco (${goal} XP).` : `${left} XP to the next milestone (${goal} XP).`)}
             </AppText>
           </View>
 

@@ -141,6 +141,13 @@ async function weeklySummary(userId: string, lang: 'pt' | 'en', d: EvolutionData
   const name = d.name ?? (lang === 'pt' ? 'você' : 'you');
   if (!hasData) {
     // Sem histórico suficiente: texto fixo, sem custo de IA (não guarda, para gerar quando houver dados).
+    // Já pratica (Free Chat, vocabulário) mas quase nada de trilha e pronúncia: reconhece o esforço.
+    const weekPractices = d.weeks[d.weeks.length - 1]?.practices ?? 0;
+    if (weekPractices >= 5) {
+      return lang === 'pt'
+        ? `Oi, ${name}! Você praticou bastante esta semana (${weekPractices} práticas). Para eu te mostrar onde você está mandando bem e o que vale treinar, faça alguns tópicos da trilha e umas frases de pronúncia.`
+        : `Hi, ${name}! You practiced a lot this week (${weekPractices} practices). To show you what you're nailing and what's worth practicing, do a few trail topics and some pronunciation phrases.`;
+    }
     return lang === 'pt'
       ? `Oi, ${name}! Ainda estou te conhecendo. Faça alguns tópicos da trilha e umas frases de pronúncia, e eu te mostro aqui onde você está mandando bem e o que vale treinar.`
       : `Hi, ${name}! I'm still getting to know you. Do a few trail topics and some pronunciation phrases, and I'll show you here what you're nailing and what's worth practicing.`;

@@ -28,7 +28,7 @@ Recursos: trilha de estudos do básico ao avançado (Novice, Intermediate e Adva
 `No topo das telas principais há três pílulas: o fogo laranja é a sequência (dias seguidos estudando), o raio verde é o XP total e o troféu é a posição no ranking do seu nível.
 Tocando nas pílulas abre a tela "Seu progresso", com o XP total, o XP ganho hoje ("+X hoje"), os dias seguidos, a posição no ranking, as conquistas, as metas e o ranking completo.` },
   { section: 'Guia do app', question: 'Como ganho XP?', answer:
-`Ganha XP quem estuda: concluindo atividades da trilha (Gramática, Listening & Speaking, Role-play e Guided Chat), mandando mensagens no Practice (Free Chat por texto ou áudio, e Gramática), revisando palavras no Vocabulário e cumprindo as metas. A meta de hoje e o desafio da semana pagam XP extra quando concluídos (cada meta paga uma vez por período). O XP soma no total, na sequência e no ranking.` },
+`Ganha XP quem estuda: concluindo atividades da trilha (Gramática, Listening & Speaking, Role-play e Guided Chat), mandando mensagens no Practice (Free Chat por texto ou áudio, e Gramática), revisando palavras no Vocabulário e cumprindo as metas. As missões do dia e o desafio da semana pagam XP extra quando concluídos (cada um paga uma vez por período). O XP soma no total, na sequência e no ranking.` },
   { section: 'Guia do app', question: 'Onde vejo meu nível?', answer:
 `Na tela Início, o cartão da trilha mostra o nome do nível (Novice, Intermediate ou Advanced), quantos módulos tem e o percentual concluído. Em "Seu progresso" (tocando nas pílulas do topo) aparece "Rumo ao" próximo nível.
 O seletor no cartão da trilha permite espiar a trilha de outros níveis (pré-visualização), sem mudar o seu nível.
@@ -60,7 +60,7 @@ A trilha, a Gramática, a Pronúncia e o suporte são sempre com a Charlotte.` }
   { section: 'Guia do app', question: 'Os áudios das conversas ficam salvos?', answer:
 `Sim. No Free Chat, os áudios que você grava e as respostas faladas ficam salvos por 90 dias: ao reabrir a conversa em "Conversas anteriores", dá para ouvir de novo. Depois de 90 dias o áudio é apagado e a mensagem fica só com o texto. Conversas de antes dessa mudança mostram apenas o texto.` },
   { section: 'Guia do app', question: 'Onde ficam as metas e o desafio da semana?', answer:
-`Na tela "Seu progresso" (tocando nas pílulas de fogo, raio e troféu no topo), na parte "Metas": "Meta de hoje" e "Desafio da semana". Cada uma paga XP extra quando concluída.` },
+`Na tela "Seu progresso" (tocando nas pílulas de fogo, raio e troféu no topo), na parte "Metas": o "XP de hoje" (com o próximo marco do dia), as missões do dia e o "Desafio da semana". As missões e o desafio pagam XP extra quando concluídos.` },
   { section: 'Guia do app', question: 'Como estudar com amigos (Estudar junto)?', answer:
 `Fica em Perfil > Você no Queizy > Estudar junto (ou em "Seu progresso"):
 - "Encontrar amigos": busca pelo nome, sobrenome ou @. A pessoa recebe o pedido e, ao aceitar, vocês viram amigos de estudo.
