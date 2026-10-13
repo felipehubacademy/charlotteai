@@ -35,6 +35,7 @@ import { systemIsPt } from '@/lib/systemLang';
 import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
 import Constants from 'expo-constants';
+import * as Application from 'expo-application';
 import * as Updates from 'expo-updates';
 import * as SecureStore from 'expo-secure-store';
 
@@ -182,6 +183,8 @@ function SectionTitle({ label }: { label: string }) {
 
 export default function ProfileTab() {
   const { profile, signOut, refreshProfile } = useAuth();
+  // Admin ou conta com acesso beta: vê o build e o id do OTA (ajuda no suporte e nos testes).
+  const isStaff = !!profile?.is_admin || (profile?.beta_features?.length ?? 0) > 0;
   const level  = (profile?.charlotte_level ?? 'Novice') as UserLevel;
   // Profile = tela de sistema/config: idioma segue o device (nao o nivel).
   const isPt   = systemIsPt;
@@ -620,7 +623,8 @@ export default function ProfileTab() {
           <SettingRow
             icon={<DeviceMobile size={18} color={C.navy} weight="regular" />}
             label="Queizy"
-            value={`v${Constants.expoConfig?.version ?? '1.0.0'}`}
+            // Versão do app instalado (loja/TestFlight), não a da config que vem no OTA.
+            value={`v${Application.nativeApplicationVersion ?? Constants.expoConfig?.version ?? '1.0.0'}${isStaff && Application.nativeBuildVersion ? ` (${Application.nativeBuildVersion})` : ''}`}
           />
           <SettingRow
             icon={<Buildings size={18} color={C.navy} weight="regular" />}
@@ -649,9 +653,9 @@ export default function ProfileTab() {
           />
         </SettingGroup>
 
-        {/* Versão já aparece em Sobre; aqui só o id do OTA para admin. */}
+        {/* Versão já aparece em Sobre; aqui só o id do OTA para admin e beta. */}
         <View style={{ paddingVertical: 28, alignItems: 'center', gap: 4 }}>
-          {profile?.is_admin && (
+          {isStaff && (
             <AppText style={{ fontSize: 10, color: C.navyLight, opacity: 0.6, letterSpacing: 0.2 }}>
               {`OTA: ${Updates.updateId ? Updates.updateId.slice(0, 8) : 'embedded'}`}
             </AppText>
