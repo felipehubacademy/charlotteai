@@ -47,7 +47,7 @@ Também dá para ganhar minutos extras em "Estudar junto": quando uma conta nova
   { section: 'Guia do app', question: 'O que tem no Practice?', answer:
 `No ícone de raio ficam três modos: Free Chat (conversa livre com a Charlotte por texto ou segurando o microfone para falar), Gramática e Pronúncia. "Trocar de modo" alterna entre eles.
 No Free Chat, numa conversa nova, "Conversar com" escolhe com quem falar: a Charlotte ou o Igorfina (veja "O que é a Família Queizy?").
-No menu "⋯" de cada modo: no Free Chat, "Nova conversa" e "Conversas anteriores"; na Gramática, "Minhas correções" (os erros corrigidos pela Charlotte); na Pronúncia, "Meu histórico". Em todos, "Como funciona".
+No menu ⋯ de cada modo: no Free Chat, "Nova conversa" e "Conversas anteriores"; na Gramática, "Minhas correções" (os erros corrigidos pela Charlotte); na Pronúncia, "Meu histórico". Em todos, "Como funciona".
 Na Pronúncia, segure o botão do microfone enquanto fala uma frase em inglês; a Charlotte avalia a pronúncia.` },
   { section: 'Guia do app', question: 'Como funciona o Vocabulário?', answer:
 `No ícone de bloco de notas ficam a "Palavra do dia" e "Sua coleção". Dá para incluir palavras em "Adicionar palavra" e ouvir a pronúncia normal ou devagar.
