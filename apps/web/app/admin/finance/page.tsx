@@ -559,7 +559,7 @@ function PartnerReportModal({ canWrite, onClose }: { canWrite: boolean; onClose:
               {periods.map(p => <option key={p} value={p}>{monthLabel(p)} {p.slice(0, 4)}</option>)}
             </select>
             <span style={{ fontSize: 12.5, color: 'var(--t2)' }}>
-              Vai sozinho no dia 1 de cada mês para: {data?.recipients.join(', ') || '…'}
+              Envio manual, pelo botão abaixo, para: {data?.recipients.join(', ') || '…'}
             </span>
           </div>
           {data?.sent && <div style={{ fontSize: 12.5, color: 'var(--ok)' }}>Já enviado em {new Date(data.sent.sent_at).toLocaleString('pt-BR')} para {data.sent.sent_to.join(', ')}.</div>}
