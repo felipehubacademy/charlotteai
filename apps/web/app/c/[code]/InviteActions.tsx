@@ -40,8 +40,12 @@ export default function InviteActions({ code, rally, aff }: { code: string; rall
   const primary = { ...btn, background: '#16131F', color: '#DCFF4A' };
   const ghost = { ...btn, background: '#FFFFFF', color: '#16131F', border: '1.5px solid #16131F', marginTop: 10 };
 
-  if (platform === 'ios') return <button style={primary} onClick={() => copyThenGo(APP_STORE_URL)}>Baixar na App Store</button>;
-  if (platform === 'android') return <a style={primary} href={playUrl}>Baixar no Google Play</a>;
+  // Quem já tem o app: abrir com um toque (alguns navegadores bloqueiam a abertura automática).
+  const appUrl = aff ? `queizy://aff/${aff}` : rally ? `queizy://rally/${rally}` : code ? `queizy://invite/${code}` : null;
+  const openApp = appUrl ? <a style={ghost} href={appUrl}>Já tenho o app: abrir no Queizy</a> : null;
+
+  if (platform === 'ios') return <><button style={primary} onClick={() => copyThenGo(APP_STORE_URL)}>Baixar na App Store</button>{openApp}</>;
+  if (platform === 'android') return <><a style={primary} href={playUrl}>Baixar no Google Play</a>{openApp}</>;
   return (
     <>
       <button style={primary} onClick={() => copyThenGo(APP_STORE_URL)}>App Store</button>
