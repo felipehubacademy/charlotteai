@@ -14,6 +14,7 @@ import * as SecureStore from 'expo-secure-store';
 import { Clipboard, Application } from './nativeOptional';
 import { supabase } from './supabase';
 import { savePendingRally } from './rally';
+import { savePendingAffiliate } from './affiliate';
 
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 const PENDING_KEY = 'queizy_pending_invite';
@@ -52,13 +53,14 @@ export async function fetchReferral(): Promise<ReferralInfo | null> {
   } catch { return null; }
 }
 
-export type ClaimResult = { ok: true; inviter: string | null; rewardMinutes: number } | { ok: false; error: string };
+// affiliate: o código era de um afiliado (influenciador), não de um aluno: não vira dupla de estudo.
+export type ClaimResult = { ok: true; inviter: string | null; rewardMinutes: number; affiliate?: string } | { ok: false; error: string };
 
 export async function claimInvite(code: string): Promise<ClaimResult> {
   try {
     const r = await authed('/api/referral', { method: 'POST', body: JSON.stringify({ action: 'claim', code }) });
     const j = await r.json().catch(() => ({}));
-    return r.ok ? { ok: true, inviter: j.inviter ?? null, rewardMinutes: j.rewardMinutes ?? 5 } : { ok: false, error: j.error ?? 'error' };
+    return r.ok ? { ok: true, inviter: j.inviter ?? null, rewardMinutes: j.rewardMinutes ?? 5, ...(j.affiliate ? { affiliate: String(j.affiliate) } : {}) } : { ok: false, error: j.error ?? 'error' };
   } catch { return { ok: false, error: 'network' }; }
 }
 
@@ -100,6 +102,8 @@ export async function detectInstallInvite(): Promise<string | null> {
       const ref = decodeURIComponent(await Application.getInstallReferrerAsync() ?? '');
       const rally = /queizy_rally=([A-Z0-9]+)/i.exec(ref);
       if (rally) await savePendingRally(rally[1]);
+      const aff = /queizy_aff=([A-Z0-9]+)/i.exec(ref);
+      if (aff) await savePendingAffiliate(aff[1], 'install');
       const m = /queizy_invite=([A-Z0-9]+)/i.exec(ref);
       return m ? normalizeCode(m[1]) : null;
     }
@@ -107,6 +111,8 @@ export async function detectInstallInvite(): Promise<string | null> {
       const text = await Clipboard.getStringAsync();
       const rally = /RALLY:([A-Z0-9]{4,})/i.exec(text ?? '');
       if (rally) await savePendingRally(rally[1]);
+      const aff = /AFF:([A-Z0-9]{3,})/i.exec(text ?? '');
+      if (aff) await savePendingAffiliate(aff[1], 'install');
       const m = /QUEIZY:([A-Z0-9]{4,})/i.exec(text ?? '');
       return m ? normalizeCode(m[1]) : null;
     }

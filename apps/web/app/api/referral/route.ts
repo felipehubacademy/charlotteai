@@ -11,6 +11,7 @@ import { randomBytes } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { pushIsPt } from '@/lib/expo-notification-service';
 import { friendsOf } from '@/lib/friends';
+import { attributeUser } from '@/lib/affiliates';
 
 export const dynamic = 'force-dynamic';
 
@@ -156,7 +157,12 @@ export async function POST(req: NextRequest) {
     if (!code) return NextResponse.json({ error: 'invalid_code' }, { status: 400 });
     const { data: owner } = await supabase.from('referral_codes').select('user_id').eq('code', code).maybeSingle();
     const inviterId = (owner as { user_id: string } | null)?.user_id;
-    if (!inviterId) return NextResponse.json({ error: 'invalid_code' }, { status: 404 });
+    if (!inviterId) {
+      // Não é convite de aluno: pode ser código de afiliado (campo "Recebeu um convite?").
+      const aff = await attributeUser(user.id, code, 'manual');
+      if (aff.ok) return NextResponse.json({ ok: true, affiliate: aff.affiliate, inviter: null, rewardMinutes: 0 });
+      return NextResponse.json({ error: aff.error === 'invalid_code' ? 'invalid_code' : aff.error }, { status: aff.error === 'invalid_code' ? 404 : 400 });
+    }
     if (inviterId === user.id) return NextResponse.json({ error: 'own_code' }, { status: 400 });
 
     const { data: meRow } = await supabase.from('charlotte_users').select('name, created_at, live_voice_bonus_seconds').eq('id', user.id).maybeSingle();

@@ -9,6 +9,7 @@
 
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { fxToBrl } from '@/lib/fx';
+import { recordAffiliateCommission } from '@/lib/affiliates';
 
 const MONEY_EVENTS = new Set(['INITIAL_PURCHASE', 'RENEWAL', 'NON_RENEWING_PURCHASE', 'PRODUCT_CHANGE', 'TRIAL_CONVERTED']);
 const REFUND_EVENTS = new Set(['REFUND']);
@@ -34,7 +35,7 @@ export async function recordRevenueEvent(event: Record<string, any>): Promise<vo
     const type = String(event?.type ?? '');
     const isRefund = REFUND_EVENTS.has(type);
     if (!MONEY_EVENTS.has(type) && !isRefund) return;
-    if (event?.environment === 'SANDBOX') return; // compras de teste não entram no caixa
+    const isSandbox = event?.environment === 'SANDBOX'; // compras de teste não entram no caixa
 
     const eventId = String(event?.id ?? '');
     if (!eventId) return;
@@ -52,6 +53,10 @@ export async function recordRevenueEvent(event: Record<string, any>): Promise<vo
     const netBrl = Math.round(pricePurchased * (1 - tax) * (1 - commission) * fx * 100) / 100;
     const purchasedAt = event?.purchased_at_ms ? new Date(Number(event.purchased_at_ms)) : new Date(Number(event?.event_timestamp_ms ?? Date.now()));
     const day = purchasedAt.toISOString().slice(0, 10);
+
+    // Teste (TestFlight / sandbox da Play): fora do caixa, mas a comissão de afiliado sai marcada
+    // como teste (não entra no saldo) para dar para testar o fluxo de ponta a ponta.
+    if (isSandbox) { await recordAffiliateCommission(event, netBrl, purchasedAt, true); return; }
 
     const supabase = getSupabaseAdmin();
     const { data: existing } = await supabase.from('revenue_events').select('id').eq('event_id', eventId).maybeSingle();
@@ -79,6 +84,9 @@ export async function recordRevenueEvent(event: Record<string, any>): Promise<vo
       finance_entry_id: (entry as { id: string } | null)?.id ?? null,
       raw: event,
     } as never);
+
+    // Afiliados: comissão (ou estorno) sobre o líquido desta compra.
+    await recordAffiliateCommission(event, netBrl, purchasedAt);
   } catch (e) {
     console.warn('[revenue] failed to record event:', e);
   }

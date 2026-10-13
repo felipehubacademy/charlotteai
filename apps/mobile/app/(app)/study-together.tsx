@@ -34,6 +34,8 @@ const CLAIM_ERROR: Record<string, { pt: string; en: string }> = {
   too_late:        { pt: 'Convites valem nos primeiros 14 dias de conta.', en: 'Invites work in the first 14 days of an account.' },
   already_claimed: { pt: 'Você já entrou com um convite.', en: 'You already joined with an invite.' },
   already_buddies: { pt: 'Vocês já estudam juntos.', en: "You're already study buddies." },
+  already_attributed: { pt: 'Sua conta já usou um código de parceiro.', en: 'Your account already used a partner code.' },
+  paused:          { pt: 'Esse código não está mais ativo.', en: 'This code is no longer active.' },
 };
 
 function sponsorTier(n: number) {
@@ -82,7 +84,10 @@ export default function StudyTogetherScreen() {
     setClaiming(true); setClaimMsg(null);
     const r = await claimInvite(c);
     setClaiming(false);
-    if (r.ok) {
+    if (r.ok && r.affiliate) {
+      setClaimMsg({ ok: true, text: t(`Código de ${r.affiliate} aplicado.`, `${r.affiliate}'s code applied.`) });
+      setCode('');
+    } else if (r.ok) {
       setClaimMsg({ ok: true, text: t(`Pronto! Você e ${r.inviter ?? 'quem te convidou'} agora estudam juntos. +${r.rewardMinutes} min de Live Voice.`, `Done! You and ${r.inviter ?? 'your buddy'} are now study buddies. +${r.rewardMinutes} Live Voice min.`) });
       setCode(''); load();
     } else {

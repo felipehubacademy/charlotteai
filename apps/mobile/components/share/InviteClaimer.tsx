@@ -10,6 +10,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 import { takePendingInvite, detectInstallInvite, fetchReferral, claimInvite } from '@/lib/referral';
 import { takePendingRally, joinRallyFromLink } from '@/lib/rally';
+import { attachPendingAffiliate } from '@/lib/affiliate';
 
 export function InviteClaimer() {
   const { profile } = useAuth();
@@ -25,18 +26,20 @@ export function InviteClaimer() {
     (async () => {
       let code = await takePendingInvite();
       if (!code) {
-        // Detecção pela instalação só para contas que ainda podem aceitar convite.
+        // Detecção pela instalação só para contas que ainda podem aceitar convite
+        // (lê também o código de afiliado e o de competição deixados pela instalação).
         const info = await fetchReferral();
-        if (!info?.canClaim) return;
-        code = await detectInstallInvite();
+        if (info?.canClaim) code = await detectInstallInvite();
       }
       let buddyShown = false;
       if (code) {
         const r = await claimInvite(code);
-        if (r.ok) { setJoined({ inviter: r.inviter, minutes: r.rewardMinutes }); buddyShown = true; }
+        if (r.ok && !r.affiliate) { setJoined({ inviter: r.inviter, minutes: r.rewardMinutes }); buddyShown = true; }
       }
       // Veio de um link de rally: entra na disputa já no primeiro acesso e mostra "Você entrou"
       // (RallyJoinedModal). Se o aviso da dupla de estudo estiver aberto, espera ele fechar.
+      // Link de afiliado (influenciador): marca a conta, sem aviso na tela.
+      await attachPendingAffiliate();
       const rally = await takePendingRally();
       if (rally) {
         if (buddyShown) rallyAfter.current = rally;

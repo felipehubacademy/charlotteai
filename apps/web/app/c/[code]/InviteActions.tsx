@@ -7,25 +7,29 @@ const PLAY_ID = 'com.hubacademy.charlotte';
 
 type Platform = 'ios' | 'android' | 'desktop';
 
-/** code = convite (referral) de quem chamou; rally = código do rally, quando o link é de uma disputa. */
-export default function InviteActions({ code, rally }: { code: string; rally?: string }) {
+/** code = convite (referral) de quem chamou; rally = código do rally, quando o link é de uma disputa;
+ *  aff = código de afiliado (influenciador), no link queizy.com/a/CODIGO. */
+export default function InviteActions({ code, rally, aff }: { code: string; rally?: string; aff?: string }) {
   const [platform, setPlatform] = useState<Platform>('desktop');
 
   useEffect(() => {
     const ua = navigator.userAgent;
     const p: Platform = /iPad|iPhone|iPod/.test(ua) ? 'ios' : /Android/i.test(ua) ? 'android' : 'desktop';
     setPlatform(p);
+    // Clique no link de afiliado (só conta quem abre a página no navegador, não a prévia do WhatsApp).
+    if (aff) fetch('/api/affiliate/click', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code: aff, platform: p }) }).catch(() => {});
     // Se o app já estiver instalado, abre direto no convite.
-    if (p !== 'desktop' && rally) window.location.href = `queizy://rally/${rally}`;
+    if (p !== 'desktop' && aff) window.location.href = `queizy://aff/${aff}`;
+    else if (p !== 'desktop' && rally) window.location.href = `queizy://rally/${rally}`;
     else if (p !== 'desktop' && code) window.location.href = `queizy://invite/${code}`;
-  }, [code, rally]);
+  }, [code, rally, aff]);
 
-  const ref = [code && `queizy_invite=${code}`, rally && `queizy_rally=${rally}`].filter(Boolean).join('&');
+  const ref = [code && `queizy_invite=${code}`, rally && `queizy_rally=${rally}`, aff && `queizy_aff=${aff}`].filter(Boolean).join('&');
   const playUrl = `https://play.google.com/store/apps/details?id=${PLAY_ID}&referrer=${encodeURIComponent(ref)}`;
 
   // No iPhone o código vai para a área de transferência: o app oferece colar no primeiro acesso.
   const copyThenGo = async (url: string) => {
-    try { await navigator.clipboard.writeText([code && `QUEIZY:${code}`, rally && `RALLY:${rally}`].filter(Boolean).join(' ')); } catch { /* segue sem copiar */ }
+    try { await navigator.clipboard.writeText([code && `QUEIZY:${code}`, rally && `RALLY:${rally}`, aff && `AFF:${aff}`].filter(Boolean).join(' ')); } catch { /* segue sem copiar */ }
     window.location.href = url;
   };
 
