@@ -2,7 +2,7 @@
 // Campos de versao do app reportados ao banco no app open (Nivel 1: via OTA, sem
 // modulo nativo). Lidos de expo-constants/expo-updates, ja embarcados no binario.
 //
-//   app_version     -> versao declarada no bundle (ex. "1.1.0")
+//   app_version     -> versao do app instalado (ex. "2.0.1"); sem o modulo, a da config
 //   runtime_version -> runtime do binario (ex. "2.0.0"); discrimina binario novo vs antigo
 //   ota_update_id   -> id do bundle OTA carregado; null = bundle embarcado da loja
 //   app_platform    -> 'ios' | 'android'
@@ -13,6 +13,7 @@
 import { Platform } from 'react-native';
 import Constants from 'expo-constants';
 import * as Updates from 'expo-updates';
+import { Application } from './nativeOptional';
 
 export interface AppVersionFields {
   app_version: string | null;
@@ -27,7 +28,8 @@ export function getAppVersionFields(): AppVersionFields {
   let ota_update_id: string | null = null;
 
   try {
-    app_version = Constants.expoConfig?.version ?? null;
+    // Versão do app instalado (loja/TestFlight); a da config vem com o OTA e não diz qual binário é.
+    app_version = Application?.nativeApplicationVersion ?? Constants.expoConfig?.version ?? null;
   } catch {}
   try {
     runtime_version = (Updates.runtimeVersion as string | null) ?? null;

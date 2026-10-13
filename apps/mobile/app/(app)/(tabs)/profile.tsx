@@ -35,7 +35,7 @@ import { systemIsPt } from '@/lib/systemLang';
 import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
 import Constants from 'expo-constants';
-import * as Application from 'expo-application';
+import { Application } from '@/lib/nativeOptional'; // protegido: binário sem o módulo não trava
 import * as Updates from 'expo-updates';
 import * as SecureStore from 'expo-secure-store';
 
@@ -624,7 +624,7 @@ export default function ProfileTab() {
             icon={<DeviceMobile size={18} color={C.navy} weight="regular" />}
             label="Queizy"
             // Versão do app instalado (loja/TestFlight), não a da config que vem no OTA.
-            value={`v${Application.nativeApplicationVersion ?? Constants.expoConfig?.version ?? '1.0.0'}${isStaff && Application.nativeBuildVersion ? ` (${Application.nativeBuildVersion})` : ''}`}
+            value={`v${Application?.nativeApplicationVersion ?? Constants.expoConfig?.version ?? '1.0.0'}${isStaff && Application?.nativeBuildVersion ? ` (${Application.nativeBuildVersion})` : ''}`}
           />
           <SettingRow
             icon={<Buildings size={18} color={C.navy} weight="regular" />}
