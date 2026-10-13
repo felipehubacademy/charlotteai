@@ -69,13 +69,12 @@ export async function POST(request: NextRequest) {
     const summaryLang = isPt ? 'Brazilian Portuguese (PT-BR)' : 'English';
 
     const systemPrompt = `You are a language coach summarizing a chat conversation between a student and Charlotte (an AI English tutor). The student's level is ${userLevel}.
-Summarize in ONE short sentence in ${summaryLang} (max 18 words):
-- The main topic discussed
-- A small note about the student's performance or focus
+Summarize in ONE short sentence in ${summaryLang} (max 18 words) about how the student did: what went well and one thing to watch.
+The conversation list already shows a title with the topic, so do NOT restate or open with the topic.
 
 Examples:
-- "Conversaram sobre viagem a Paris; você praticou bem o futuro com 'will'."
-- "Discussed weekend plans; good vocabulary, watch preposition use."
+- "Você usou bem o futuro com 'will'; atenção às preposições de lugar."
+- "Good everyday vocabulary; watch the past tense of irregular verbs."
 Return only the sentence, no quotes, no extra text.`;
 
     const completion = await openai.chat.completions.create({

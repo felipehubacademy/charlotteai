@@ -180,7 +180,7 @@ export default function EvolutionScreen() {
                       <AppText style={{ fontSize: 12, color: C.light, marginTop: 1 }}>
                         {f.activity === 'speaking'
                           ? t(`Listening & Speaking · nota ${f.accuracy}`, `Listening & Speaking · score ${f.accuracy}`)
-                          : t(`Grammar · ${f.accuracy}% de acerto`, `Grammar · ${f.accuracy}% correct`)}
+                          : t(`Gramática · ${f.accuracy}% de acerto`, `Grammar · ${f.accuracy}% correct`)}
                       </AppText>
                     </View>
                     <TrainButton label={t('Treinar', 'Practice')} onPress={() => trainV2(f)} />

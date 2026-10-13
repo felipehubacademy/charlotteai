@@ -73,13 +73,29 @@ function poolStatusLabel(
   return isPt ? 'Charlotte disponível' : 'Charlotte available';
 }
 
+/** Dias de calendário (local) entre a data e hoje: 0 = hoje, 1 = ontem. */
+function calendarDaysAgo(iso: string): number {
+  const d = new Date(iso); const now = new Date();
+  const a = new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+  const b = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+  return Math.max(0, Math.round((b - a) / 86_400_000));
+}
+
+function whenLabelOf(iso: string, isPt: boolean): string {
+  const days = calendarDaysAgo(iso);
+  return days === 0 ? (isPt ? 'Hoje' : 'Today')
+       : days === 1 ? (isPt ? 'Ontem' : 'Yesterday')
+       : isPt ? `há ${days} dias` : `${days} days ago`;
+}
+
+/** "menos de 1 min" para chamadas curtas, em vez de "0 min". */
+function durationLabel(seconds: number, isPt: boolean): string {
+  if (seconds < 60) return isPt ? 'menos de 1 min' : 'under 1 min';
+  return `${Math.round(seconds / 60)} min`;
+}
+
 function formatCallMeta(call: { started_at: string; duration_seconds: number }, isPt: boolean): string {
-  const days = Math.floor((Date.now() - new Date(call.started_at).getTime()) / 86_400_000);
-  const minutes = Math.round(call.duration_seconds / 60);
-  const whenLabel = days === 0 ? (isPt ? 'Hoje' : 'Today')
-                  : days === 1 ? (isPt ? 'Ontem' : 'Yesterday')
-                  : isPt ? `há ${days} dias` : `${days} days ago`;
-  return `${whenLabel} · ${minutes} min`;
+  return `${whenLabelOf(call.started_at, isPt)} · ${durationLabel(call.duration_seconds, isPt)}`;
 }
 
 // ── Pool ring ─────────────────────────────────────────────────────────────────
@@ -144,13 +160,9 @@ function PoolRing({ used, total, isUnlimited, isPt }: {
 function CallListItem({ call, isPt, onPress, onDelete }: {
   call: LastCall; isPt: boolean; onPress: () => void; onDelete: () => void;
 }) {
-  const days = Math.floor((Date.now() - new Date(call.started_at).getTime()) / 86_400_000);
-  const minutes = Math.round(call.duration_seconds / 60);
   const hasTranscript = !!(call.transcript && call.transcript.trim().length > 0);
-
-  const whenLabel = days === 0 ? (isPt ? 'Hoje' : 'Today')
-                  : days === 1 ? (isPt ? 'Ontem' : 'Yesterday')
-                  : isPt ? `há ${days} dias` : `${days} days ago`;
+  const whenLabel = whenLabelOf(call.started_at, isPt);
+  const durLabel  = durationLabel(call.duration_seconds, isPt);
 
   const handleDeletePress = () => {
     Alert.alert(
@@ -179,7 +191,7 @@ function CallListItem({ call, isPt, onPress, onDelete }: {
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
             <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16131F' }}>{whenLabel}</AppText>
             <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,19,31,0.3)' }} />
-            <AppText style={{ fontSize: 12, fontWeight: '600', color: 'rgba(22,19,31,0.55)' }}>{minutes} min</AppText>
+            <AppText style={{ fontSize: 12, fontWeight: '600', color: 'rgba(22,19,31,0.55)' }}>{durLabel}</AppText>
           </View>
           <AppText
             style={{ fontSize: 13, color: 'rgba(22,19,31,0.7)', lineHeight: 18 }}
@@ -464,6 +476,7 @@ export default function LiveVoiceTab() {
   const [poolKnown,       setPoolKnown]       = useState(false); // true após 1 leitura válida (evita mostrar pool trial falso)
   const [recentCalls,     setRecentCalls]     = useState<LastCall[]>([]);
   const [selectedCall,    setSelectedCall]    = useState<LastCall | null>(null);
+  const transcriptFromList = React.useRef(false); // voltar da chamada reabre a lista
   const [showCallsDrawer, setShowCallsDrawer] = useState(false);
   const [showLiveVoice,   setShowLiveVoice]   = useState(false);
   const [showLimitSheet,  setShowLimitSheet]  = useState(false);
@@ -959,6 +972,7 @@ export default function LiveVoiceTab() {
             onSelectCall={(call) => {
               setShowCallsDrawer(false);
               setSelectedCall(call);
+              transcriptFromList.current = true;
               setTimeout(() => setShowTranscript(true), 240);
             }}
             onDeleteCall={handleDeleteCall}
@@ -1015,7 +1029,13 @@ export default function LiveVoiceTab() {
         call={selectedCall}
         isOpen={showTranscript}
         isPt={isPt}
-        onClose={() => setShowTranscript(false)}
+        onClose={() => {
+          setShowTranscript(false);
+          if (transcriptFromList.current) {
+            transcriptFromList.current = false;
+            setTimeout(() => setShowCallsDrawer(true), 240);
+          }
+        }}
       />
 
       {/* ── Help modal (bottom sheet) — fica acima do tab bar pra navbar continuar visível ── */}
@@ -1056,8 +1076,14 @@ export default function LiveVoiceTab() {
               <LVHelpRow
                 title={isPt ? 'Conversa em tempo real' : 'Real-time conversation'}
                 desc={isPt
-                  ? 'Toque em "Conversar" pra falar com a Charlotte por voz. Ela ouve e responde como uma conversa natural.'
-                  : 'Tap "Talk" to chat with Charlotte using your voice. She listens and replies naturally.'}
+                  ? 'Toque em "Conversar com a Charlotte" para falar com ela por voz. Ela ouve e responde como numa conversa natural.'
+                  : 'Tap "Talk with Charlotte" to chat with her using your voice. She listens and replies naturally.'}
+              />
+              <LVHelpRow
+                title={isPt ? 'Seus minutos' : 'Your minutes'}
+                desc={isPt
+                  ? `O cartão "Seu tempo este mês" mostra quanto você já usou e quando renova. Precisa de mais? Toque em "${isSubscriber ? 'Comprar mais minutos' : 'Quero mais minutos'}", logo abaixo dele; os minutos extras não vencem no fim do mês.`
+                  : `The "Your time this month" card shows how much you have used and when it renews. Need more? Tap "${isSubscriber ? 'Buy more minutes' : 'Get more minutes'}", right below it; extra minutes don't expire at the end of the month.`}
               />
               {!isPt && (
                 <LVHelpRow
@@ -1068,8 +1094,8 @@ export default function LiveVoiceTab() {
               <LVHelpRow
                 title={isPt ? 'Histórico de chamadas' : 'Call history'}
                 desc={isPt
-                  ? 'Cada chamada vira um resumo curto no drawer (ícone de relógio). Toque numa chamada pra ver a transcrição completa.'
-                  : 'Each call becomes a short summary in the drawer (clock icon). Tap a call to see the full transcript.'}
+                  ? 'Cada chamada vira um resumo curto em "Conversas anteriores" (ícone de relógio, no topo). Toque numa chamada para ver a conversa completa.'
+                  : 'Each call becomes a short summary in "Previous conversations" (clock icon, at the top). Tap a call to see the full conversation.'}
               />
             </View>
           </Pressable>

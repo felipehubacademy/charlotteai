@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { useFocusEffect } from 'expo-router';
+import { useFocusEffect, useNavigation } from 'expo-router';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import {
   View, ScrollView, TouchableOpacity, TextInput,
   Platform, Animated,
-  ActivityIndicator, Pressable, Modal, useWindowDimensions,
+  ActivityIndicator, Pressable, Modal, useWindowDimensions, Alert,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -297,6 +297,27 @@ export default function LearnSessionScreen() {
 
   // ── Grammar state ──────────────────────────────────────────
   const [gStatus, setGStatus]           = useState<'answering' | 'submitted'>('answering');
+
+  // Sair no meio da rodada (seta, voltar do Android ou gesto do iOS): confirma antes.
+  // O passo atual fica salvo (resumeKey), então ao voltar o aluno continua desta pergunta.
+  const navigation = useNavigation();
+  const inProgressRef = useRef(false);
+  inProgressRef.current = !isComplete && (stepIdx > 0 || gStatus === 'submitted');
+  useEffect(() => {
+    const sub = navigation.addListener('beforeRemove', (e: any) => {
+      if (!inProgressRef.current) return;
+      e.preventDefault();
+      Alert.alert(
+        isPortuguese ? 'Sair do exercício?' : 'Leave the exercise?',
+        isPortuguese ? 'Quando voltar, você continua desta pergunta.' : "When you come back, you'll pick up from this question.",
+        [
+          { text: isPortuguese ? 'Continuar' : 'Keep going', style: 'cancel' },
+          { text: isPortuguese ? 'Sair' : 'Leave', style: 'destructive', onPress: () => navigation.dispatch(e.data.action) },
+        ],
+      );
+    });
+    return sub;
+  }, [navigation, isPortuguese]);
   const [userAnswer, setUserAnswer]     = useState('');
   const [isCorrect, setIsCorrect]       = useState<boolean | null>(null);
   const [showHint, setShowHint]         = useState(false);

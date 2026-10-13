@@ -256,7 +256,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         fetch(`${API_BASE_URL}/api/summarize-chat`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sessionId: prevId, userId, userLevel }),
+          body: JSON.stringify({ sessionId: prevId, userId, userLevel, lang: systemIsPt ? 'pt' : 'en' }),
         }).catch(err => console.warn('summarize-chat (cold-start):', err));
       });
   }, [userId, mode]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -359,7 +359,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       fetch(`${API_BASE_URL}/api/summarize-chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sessionId: prevId, userId, userLevel }),
+        body: JSON.stringify({ sessionId: prevId, userId, userLevel, lang: systemIsPt ? 'pt' : 'en' }),
       }).catch(() => {});
     }
 

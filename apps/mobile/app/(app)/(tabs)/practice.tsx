@@ -848,7 +848,10 @@ function ChatSessionItem({ session, isPt, isActive, onPress, onDelete }: {
   session: ChatSession; isPt: boolean; isActive: boolean;
   onPress: () => void; onDelete: () => void;
 }) {
-  const days = Math.floor((Date.now() - new Date(session.started_at).getTime()) / 86_400_000);
+  // Dias de calendário (local): conversa de ontem à noite é "Ontem", não "Hoje".
+  const d0 = new Date(session.started_at); const now = new Date();
+  const days = Math.max(0, Math.round((new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime()
+    - new Date(d0.getFullYear(), d0.getMonth(), d0.getDate()).getTime()) / 86_400_000));
   const whenLabel = days === 0 ? (isPt ? 'Hoje' : 'Today')
                   : days === 1 ? (isPt ? 'Ontem' : 'Yesterday')
                   : isPt ? `há ${days} dias` : `${days} days ago`;

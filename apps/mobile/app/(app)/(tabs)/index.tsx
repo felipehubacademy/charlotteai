@@ -510,7 +510,7 @@ export default function HomeTab() {
             source={avatarSrc}
             style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: C.navy }}
             contentFit="cover"
-            accessibilityLabel="Charlotte"
+            accessibilityLabel={characterInfo(profile?.active_character).name}
           />
           <TouchableOpacity activeOpacity={0.8} onPress={() => router.push('/(app)/evolution' as any)} style={{ maxWidth: '78%', marginBottom: 16 }}
             accessibilityLabel={isPt ? 'Ver minha evolução' : 'See my progress'}>
