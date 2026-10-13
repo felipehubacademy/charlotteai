@@ -73,7 +73,9 @@ export function RallySection({ buddies }: { buddies: Buddy[] }) {
     const others = r.standings.filter(s => !s.isMe).length;
     showActionSheet({
       title: t('Sair da competição?', 'Leave the challenge?'),
-      message: others <= 1
+      message: others === 0
+        ? t('Você é o único participante, então a competição é encerrada.', "You're the only player, so the challenge ends.")
+        : others === 1
         ? t('Seu placar sai da disputa e, como só sobra uma pessoa, a competição é encerrada sem vencedor.', 'Your score leaves the race and, with only one player left, the challenge ends with no winner.')
         : t('Seu placar sai da disputa e você deixa de concorrer ao prêmio.', 'Your score leaves the race and you can no longer win the prize.'),
       options: [{ label: t('Sair da competição', 'Leave challenge'), destructive: true,
