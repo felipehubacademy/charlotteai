@@ -14,7 +14,7 @@ export interface RallyStanding { userId: string; name: string | null; avatarUrl:
 export interface Rally {
   code: string; metric: RallyMetric; hours: number; title: string;
   startsAt: string; endsAt: string; finished: boolean;
-  creator: string | null; isCreator: boolean; winnerId: string | null; link: string;
+  creator: string | null; isCreator: boolean; winnerId: string | null; cancelled?: boolean; link: string;
   standings: RallyStanding[];
 }
 export interface RallyList { active: Rally[]; finished: Rally[]; invites: Rally[] }
@@ -48,6 +48,7 @@ export const createRally = (metric: RallyMetric, hours: 24 | 168, invite: string
 export const joinRally = (code: string) => post({ action: 'join', code });
 export const declineRally = (code: string) => post({ action: 'decline', code });
 export const rematchRally = (code: string) => post({ action: 'rematch', code });
+export const leaveRally = (code: string) => post({ action: 'leave', code });
 
 const clean = (c: string) => c.replace(/^RALLY:/i, '').toUpperCase().replace(/[^A-Z0-9]/g, '');
 

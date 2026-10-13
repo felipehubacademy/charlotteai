@@ -3,6 +3,7 @@
 //   POST { action: 'create', metric, hours, invite: [userId] }   cria e convida (push na hora)
 //   POST { action: 'join', code }                 entra pelo código (convite ou link)
 //   POST { action: 'decline', code }              recusa um convite
+//   POST { action: 'leave', code }                sai da competição (sobrou 1 ou ninguém: encerra sem vencedor)
 //   POST { action: 'rematch', code }              cria a revanche com os mesmos participantes
 import { NextRequest, NextResponse } from 'next/server';
 import { randomBytes } from 'crypto';
@@ -102,7 +103,7 @@ export async function GET(req: NextRequest) {
     code: r.code, metric: r.metric, hours: r.duration_hours, title: rallyLabel(r.metric, r.duration_hours, pt),
     startsAt: r.starts_at, endsAt: r.ends_at, finished: r.finalized || new Date(r.ends_at).getTime() <= now,
     creator: firstName(creators.get(r.creator_id)?.name), isCreator: r.creator_id === user.id,
-    winnerId: r.winner_id, link: `${SITE}/r/${r.code}`,
+    winnerId: r.winner_id, cancelled: !!r.cancelled, link: `${SITE}/r/${r.code}`,
     standings: (standings.get(r.id) ?? []).map(s => ({ ...s, isMe: s.userId === user.id })),
   });
   const joined = rallies.filter(r => myIds.includes(r.id));
@@ -163,6 +164,32 @@ export async function POST(req: NextRequest) {
   if (body.action === 'decline') {
     await supabase.from('rally_invites').delete().eq('rally_id', rally.id).eq('user_id', user.id);
     return NextResponse.json({ ok: true });
+  }
+
+  if (body.action === 'leave') {
+    if (rally.finalized || new Date(rally.ends_at).getTime() <= Date.now()) return NextResponse.json({ error: 'ended' }, { status: 400 });
+    const { data: gone } = await supabase.from('rally_participants').delete().eq('rally_id', rally.id).eq('user_id', user.id).select('user_id');
+    if (!gone?.length) return NextResponse.json({ error: 'not_participant' }, { status: 403 });
+    const { data: left } = await supabase.from('rally_participants').select('user_id').eq('rally_id', rally.id);
+    const remaining = ((left ?? []) as { user_id: string }[]).map(p => p.user_id);
+    if (remaining.length <= 1) {
+      // Sem disputa: encerra sem vencedor e sem prêmio. Quem ficou recebe o aviso.
+      await supabase.from('rallies').update({ finalized: true, cancelled: true, winner_id: null, ends_at: new Date().toISOString() } as never).eq('id', rally.id);
+      await supabase.from('rally_invites').delete().eq('rally_id', rally.id);
+      if (remaining.length === 1) {
+        const u = (await usersById(remaining)).get(remaining[0]);
+        if (u) {
+          const pt = pushIsPt(u);
+          await sendDirectPush(u.expo_push_token,
+            pt ? 'Competição encerrada' : 'Challenge ended',
+            pt ? `${rallyLabel(rally.metric, rally.duration_hours, true)}: a competição foi encerrada porque os outros participantes saíram.`
+               : `${rallyLabel(rally.metric, rally.duration_hours, false)}: the challenge ended because the other players left.`,
+            { type: 'rally_update', screen: 'study-together', code });
+        }
+      }
+      return NextResponse.json({ ok: true, code, cancelled: true });
+    }
+    return NextResponse.json({ ok: true, code });
   }
 
   if (body.action === 'rematch') {

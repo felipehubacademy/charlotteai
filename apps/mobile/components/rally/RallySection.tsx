@@ -7,12 +7,13 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from 'expo-router';
 import { Flag, Crown, Lightning, Target, Barbell, Check, ShareNetwork, ArrowsClockwise, DotsThreeVertical } from 'phosphor-react-native';
 import { openUserActions } from '@/lib/moderation';
+import { showActionSheet } from '@/components/ui/ActionSheet';
 import { AppText } from '@/components/ui/Text';
 import { C, SectionTitle, Card } from '@/components/stats/StatsUI';
 import { systemIsPt } from '@/lib/systemLang';
 import type { Buddy } from '@/lib/referral';
 import {
-  fetchRallies, createRally, joinRally, declineRally, rematchRally, takePendingRally, joinRallyFromLink,
+  fetchRallies, createRally, joinRally, declineRally, rematchRally, leaveRally, takePendingRally, joinRallyFromLink,
   formatRallyScore, rallyTimeLeft, Rally, RallyList, RallyMetric,
 } from '@/lib/rally';
 
@@ -25,6 +26,7 @@ const METRICS: { id: RallyMetric; Icon: typeof Lightning; pt: string; en: string
 const ERRORS: Record<string, { pt: string; en: string }> = {
   too_many_active: { pt: 'Você já tem 3 competições em andamento. Espere uma terminar.', en: 'You already have 3 challenges running. Wait for one to end.' },
   ended:           { pt: 'Essa competição já terminou.', en: 'That challenge has already ended.' },
+  not_participant: { pt: 'Você não está nessa competição.', en: "You're not in that challenge." },
   full:            { pt: 'Essa competição já está cheia.', en: 'That challenge is already full.' },
   not_found:       { pt: 'Competição não encontrada.', en: 'Challenge not found.' },
 };
@@ -65,6 +67,19 @@ export function RallySection({ buddies }: { buddies: Buddy[] }) {
 
   // Atualiza o tempo restante a cada minuto.
   useEffect(() => { const id = setInterval(() => tick(x => x + 1), 60000); return () => clearInterval(id); }, []);
+
+  // Sair da competição: confirma antes. Se sobrar uma pessoa só, a competição é encerrada sem vencedor.
+  const askLeave = (r: Rally) => {
+    const others = r.standings.filter(s => !s.isMe).length;
+    showActionSheet({
+      title: t('Sair da competição?', 'Leave the challenge?'),
+      message: others <= 1
+        ? t('Seu placar sai da disputa e, como só sobra uma pessoa, a competição é encerrada sem vencedor.', 'Your score leaves the race and, with only one player left, the challenge ends with no winner.')
+        : t('Seu placar sai da disputa e você deixa de concorrer ao prêmio.', 'Your score leaves the race and you can no longer win the prize.'),
+      options: [{ label: t('Sair da competição', 'Leave challenge'), destructive: true,
+        onPress: () => act(`l${r.code}`, () => leaveRally(r.code), t('Você saiu da competição.', 'You left the challenge.')) }],
+    });
+  };
 
   const shareLink = async (r: { link?: string; title?: string }) => {
     if (!r.link) return;
@@ -160,9 +175,13 @@ export function RallySection({ buddies }: { buddies: Buddy[] }) {
           <Card key={`a${r.code}`} style={{ padding: 16 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
               <Flag size={13} color={C.pink} weight="fill" />
-              <AppText style={{ fontSize: 11.5, fontWeight: '800', color: C.pink, letterSpacing: 0.8, textTransform: 'uppercase' }}>
+              <AppText style={{ flex: 1, fontSize: 11.5, fontWeight: '800', color: C.pink, letterSpacing: 0.8, textTransform: 'uppercase' }}>
                 {t('Em andamento', 'Live')} · {rallyTimeLeft(r.endsAt, isPt)}
               </AppText>
+              <TouchableOpacity hitSlop={10} onPress={() => askLeave(r)} disabled={busy === `l${r.code}`}
+                accessibilityLabel={t('Opções da competição', 'Challenge options')}>
+                {busy === `l${r.code}` ? <ActivityIndicator color={C.light} /> : <DotsThreeVertical size={18} color={C.light} weight="bold" />}
+              </TouchableOpacity>
             </View>
             <AppText display style={{ fontSize: 19, lineHeight: 24, fontWeight: '800', color: C.ink, marginTop: 6 }}>{r.title}</AppText>
             <Standings r={r} />
@@ -196,7 +215,7 @@ export function RallySection({ buddies }: { buddies: Buddy[] }) {
           return (
             <Card key={`f${r.code}`} style={{ padding: 16, opacity: 0.95 }}>
               <AppText style={{ fontSize: 12, fontWeight: '800', color: won ? C.green : C.light, letterSpacing: 0.8, textTransform: 'uppercase' }}>
-                {won ? t('Você venceu', 'You won') : winner ? t(`${winner.name ?? 'Alguém'} venceu`, `${winner.name ?? 'Someone'} won`) : t('Terminou', 'Ended')}
+                {r.cancelled ? t('Encerrada: os outros saíram', 'Ended: the others left') : won ? t('Você venceu', 'You won') : winner ? t(`${winner.name ?? 'Alguém'} venceu`, `${winner.name ?? 'Someone'} won`) : t('Terminou', 'Ended')}
               </AppText>
               <AppText style={{ fontSize: 15, fontWeight: '800', color: C.ink, marginTop: 2 }}>{r.title}</AppText>
               <Standings r={r} />

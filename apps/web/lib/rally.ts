@@ -17,7 +17,7 @@ export const RALLY_MIN_ANSWERS = 3;
 export interface RallyRow {
   id: string; code: string; creator_id: string; metric: RallyMetric; duration_hours: number;
   starts_at: string; ends_at: string; leader_id: string | null; reminder_sent: boolean;
-  finalized: boolean; winner_id: string | null; created_at: string;
+  finalized: boolean; winner_id: string | null; created_at: string; cancelled?: boolean;
 }
 
 export interface Standing { userId: string; name: string | null; avatarUrl: string | null; score: number | null; rank: number }
