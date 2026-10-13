@@ -65,7 +65,7 @@ A trilha, a Gramática, a Pronúncia e o suporte são sempre com a Charlotte.` }
 `Fica em Perfil > Você no Queizy > Estudar junto (ou em "Seu progresso"):
 - "Encontrar amigos": busca pelo nome, sobrenome ou @. A pessoa recebe o pedido e, ao aceitar, vocês viram amigos de estudo.
 - "Convidar amigos": manda o seu código de convite. Quando uma conta nova entra pelo convite (até 14 dias depois do cadastro, em "Recebeu um convite?"), cada um ganha 5 minutos de Live Voice.
-- "Competições": desafie amigos por 24 horas ou 7 dias (quem faz mais XP, quem pratica mais ou quem acerta mais na trilha). Quem vencer ganha 5 minutos de Live Voice.
+- "Competições": desafie amigos por 24 horas ou 7 dias (quem faz mais XP, quem pratica mais ou quem acerta mais na trilha). Quem vencer ganha 5 minutos de Live Voice. Recebeu o link de uma competição? Com o app instalado, ao tocar no link você já entra na disputa e aparece a tela "Você entrou na competição"; sem o app, baixe, crie a conta e você entra logo depois do cadastro.
 Pedidos de amizade e convites recebidos aparecem numa linha na tela Início. Para os amigos te acharem, a opção "Aparecer na busca" precisa estar ligada em Perfil > Preferências.` },
   { section: 'Guia do app', question: 'O que tem no Perfil?', answer:
 `Perfil (sua foto na barra de baixo):

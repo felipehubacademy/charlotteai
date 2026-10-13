@@ -80,3 +80,32 @@ export function rallyTimeLeft(endsAt: string, pt: boolean): string {
   const d = Math.floor(h / 24);
   return pt ? `Termina em ${d} dias` : `Ends in ${d} days`;
 }
+
+// ── Entrar por link: entra na hora e avisa a tela de "Você entrou" (RallyJoinedModal) ──
+export type RallyJoinEvent = { ok: true; rally: Rally | null; already: boolean } | { ok: false; error: string };
+const joinListeners = new Set<(e: RallyJoinEvent) => void>();
+let undelivered: RallyJoinEvent | null = null; // chegou antes de a tela estar montada (abertura a frio)
+
+export function onRallyJoin(fn: (e: RallyJoinEvent) => void): () => void {
+  joinListeners.add(fn);
+  if (undelivered) { const e = undelivered; undelivered = null; fn(e); }
+  return () => { joinListeners.delete(fn); };
+}
+
+/** Entra na competição do link e mostra o resultado. Sem internet, guarda o código para tentar depois. */
+export async function joinRallyFromLink(code: string): Promise<RallyJoinEvent | null> {
+  const c = clean(code);
+  if (!c) return null;
+  const r = await joinRally(c);
+  if (!r.ok && r.error === 'network') { await savePendingRally(c); return null; }
+  let ev: RallyJoinEvent;
+  if (r.ok) {
+    const list = await fetchRallies();
+    ev = { ok: true, rally: list?.active.find(x => x.code === c) ?? null, already: !!r.already };
+  } else {
+    ev = r;
+  }
+  if (joinListeners.size) joinListeners.forEach(fn => fn(ev));
+  else undelivered = ev;
+  return ev;
+}

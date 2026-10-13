@@ -12,7 +12,7 @@ import { C, SectionTitle, Card } from '@/components/stats/StatsUI';
 import { systemIsPt } from '@/lib/systemLang';
 import type { Buddy } from '@/lib/referral';
 import {
-  fetchRallies, createRally, joinRally, declineRally, rematchRally, takePendingRally,
+  fetchRallies, createRally, joinRally, declineRally, rematchRally, takePendingRally, joinRallyFromLink,
   formatRallyScore, rallyTimeLeft, Rally, RallyList, RallyMetric,
 } from '@/lib/rally';
 
@@ -56,12 +56,9 @@ export function RallySection({ buddies }: { buddies: Buddy[] }) {
   // Entra no rally pendente (link ou instalação) e carrega a lista.
   useFocusEffect(useCallback(() => {
     (async () => {
+      // O resultado aparece na tela de "Você entrou" (RallyJoinedModal).
       const pending = await takePendingRally();
-      if (pending) {
-        const r = await joinRally(pending);
-        if (!r.ok) setMsg({ ok: false, text: ERRORS[r.error] ? t(ERRORS[r.error].pt, ERRORS[r.error].en) : t('Não foi possível entrar na competição.', "Couldn't join the challenge.") });
-        else if (!r.already) setMsg({ ok: true, text: t('Você entrou na competição. Boa disputa!', 'You joined the challenge. Good luck!') });
-      }
+      if (pending) await joinRallyFromLink(pending);
       await load();
     })();
   }, [load])); // eslint-disable-line react-hooks/exhaustive-deps
