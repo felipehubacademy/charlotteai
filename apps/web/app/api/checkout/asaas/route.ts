@@ -6,6 +6,7 @@
 // Conta nova: criada aqui pelo e-mail; depois do pagamento chega o e-mail para criar a senha.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { affiliateByCode, attributeUser, cleanAffiliateCode } from '@/lib/affiliates';
 import {
   asaasConfigured, AsaasError, cancelSubscription, createCheckout, priceFor,
@@ -56,11 +57,12 @@ export async function POST(req: NextRequest) {
     const user = auth?.user;
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     const { data: row } = await supabase.from('asaas_checkouts')
-      .select('id, asaas_payment_id, asaas_installment_id, asaas_subscription_id, paid_at, refunded_at')
+      .select('id, asaas_payment_id, asaas_installment_id, asaas_subscription_id, paid_at, refunded_at, refund_requested_at, value_brl, method')
       .eq('user_id', user.id).not('paid_at', 'is', null).order('paid_at', { ascending: false }).limit(1).maybeSingle();
-    const r = row as { id: string; asaas_payment_id: string | null; asaas_installment_id: string | null; asaas_subscription_id: string | null; paid_at: string; refunded_at: string | null } | null;
+    const r = row as { id: string; asaas_payment_id: string | null; asaas_installment_id: string | null; asaas_subscription_id: string | null; paid_at: string; refunded_at: string | null; refund_requested_at: string | null; value_brl: number; method: string | null } | null;
     if (!r?.asaas_payment_id) return NextResponse.json({ error: 'not_found', message: 'Ainda não houve cobrança nesta conta. Se você está no teste grátis, é só cancelar a renovação: nada será cobrado.' }, { status: 404 });
     if (r.refunded_at) return NextResponse.json({ error: 'already', message: 'Esse pagamento já foi reembolsado.' }, { status: 409 });
+    if (r.refund_requested_at) return NextResponse.json({ ok: true, queued: true, message: 'Seu pedido de reembolso já está registrado. Devolvemos em até 2 dias úteis.' });
     const days = (Date.now() - new Date(r.paid_at).getTime()) / 86400000;
     if (days > REFUND_WINDOW_DAYS) {
       return NextResponse.json({ error: 'expired', message: `O prazo de ${REFUND_WINDOW_DAYS} dias para o reembolso terminou. Se precisar, escreva para suporte@queizy.com.` }, { status: 400 });
@@ -70,10 +72,23 @@ export async function POST(req: NextRequest) {
       else await refundPayment(r.asaas_payment_id);
       if (r.asaas_subscription_id) await cancelSubscription(r.asaas_subscription_id).catch(() => {});
     } catch (e) {
-      console.error('[checkout/asaas] refund failed:', e instanceof AsaasError ? e.body : e);
+      // O Asaas recusou (ex.: saldo insuficiente, porque a taxa já saiu do valor recebido).
+      // O pedido fica registrado e o suporte faz o reembolso; o acesso termina quando ele sair
+      // (o webhook PAYMENT_REFUNDED encerra). O aluno nunca fica sem resposta.
+      const why = e instanceof AsaasError ? e.message : String(e);
+      console.error('[checkout/asaas] refund failed, queued:', e instanceof AsaasError ? e.body : e);
       await supabase.from('asaas_events').insert({ id: `refund_fail_${Date.now()}`, event: 'REFUND_FAILED', payload: { checkout: r.id, payment: r.asaas_payment_id, error: e instanceof AsaasError ? e.body : String(e) } } as never);
-      const why = e instanceof AsaasError ? e.message : '';
-      return NextResponse.json({ error: 'failed', message: `Não foi possível reembolsar agora${why ? ` (${why})` : ''}. Escreva para suporte@queizy.com que resolvemos.` }, { status: 502 });
+      await supabase.from('asaas_checkouts').update({ refund_requested_at: new Date().toISOString() } as never).eq('id', r.id);
+      await sendEmail({
+        to: 'suporte@queizy.com',
+        subject: `Reembolso pendente (site): ${user.email ?? user.id}`,
+        html: `<p><b>Reembolso pedido pelo app e recusado pelo Asaas. Fazer em até 2 dias úteis.</b></p>
+          <p>Aluno: ${user.email ?? ''} (${user.id})<br/>Forma: ${r.method ?? ''} · Valor: R$ ${Number(r.value_brl).toFixed(2)}<br/>
+          Pagamento no Asaas: ${r.asaas_payment_id}${r.asaas_installment_id ? ` · parcelamento ${r.asaas_installment_id}` : ''}<br/>
+          Pago em: ${r.paid_at}<br/>Motivo da recusa: ${why}</p>
+          <p>No Asaas: Cobranças &gt; abrir o pagamento &gt; Estornar. O acesso termina sozinho quando o estorno sair.</p>`,
+      }).catch(() => false);
+      return NextResponse.json({ ok: true, queued: true, message: 'Seu pedido de reembolso foi registrado. Devolvemos em até 2 dias úteis e avisamos por e-mail.' });
     }
     // O webhook PAYMENT_REFUNDED encerra o acesso e estorna receita e comissão.
     await supabase.from('asaas_checkouts').update({ refunded_at: new Date().toISOString() } as never).eq('id', r.id);

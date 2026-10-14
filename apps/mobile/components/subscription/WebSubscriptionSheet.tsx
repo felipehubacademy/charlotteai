@@ -74,6 +74,10 @@ export function WebSubscriptionSheet({ visible, isPt, product, status, expiresAt
       if (!res.ok) {
         setDone({ ok: false, title: action === 'refund' ? (isPt ? 'Reembolso' : 'Refund') : (isPt ? 'Cancelamento' : 'Cancellation'),
           text: j.message ?? j.error ?? (isPt ? 'Não foi possível agora. Escreva para suporte@queizy.com.' : 'Not possible right now. Email suporte@queizy.com.') });
+      } else if (action === 'refund' && j.queued) {
+        setDone({ ok: true, title: isPt ? 'Pedido registrado' : 'Request received',
+          text: isPt ? 'Seu reembolso foi registrado. Devolvemos em até 2 dias úteis e avisamos por e-mail; até lá, seu acesso continua.' : 'Your refund request is registered. We will refund within 2 business days and email you; until then, your access continues.' });
+        onChanged();
       } else if (action === 'refund') {
         setDone({ ok: true, title: isPt ? 'Reembolso pedido' : 'Refund requested',
           text: isPix
