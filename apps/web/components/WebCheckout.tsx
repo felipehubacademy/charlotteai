@@ -144,7 +144,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
             <span style={{ display: 'block', fontSize: 13, color: MID, marginTop: 2 }}>
               {p === 'annual' ? `${brl(annual / 12)}/mês · 12 meses de acesso` : 'Cartão de crédito, renova todo mês'}
             </span>
-            {trial > 0 && <span style={{ display: 'block', fontSize: 13, color: GREEN, fontWeight: 700, marginTop: 4 }}>{trial} dias grátis{p === 'annual' ? ' no cartão' : ''}</span>}
+            {trial > 0 && <span style={{ display: 'block', fontSize: 13, color: GREEN, fontWeight: 700, marginTop: 4 }}>{trial} dias grátis</span>}
           </span>
           <span style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
             <span style={{ display: 'block', fontWeight: 800, fontSize: 22 }}>{brl(p === 'annual' ? annual : monthly)}</span>

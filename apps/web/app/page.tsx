@@ -181,7 +181,7 @@ export default function Page() {
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
               <StoreCTA variant="hero" label="7 dias grátis" plan="mensal" />
-              <span style={{ fontSize: 13, color: 'var(--light)' }}>7 dias grátis no cartão · Anual também no Pix ou em 12x</span>
+              <span style={{ fontSize: 13, color: 'var(--light)' }}>7 dias grátis · Anual também no Pix ou em 12x</span>
             </div>
           </div>
 
@@ -331,7 +331,7 @@ export default function Page() {
               <StoreCTA variant="pricing" label="Começar 7 dias grátis" plan="mensal" />
               <StoreCTA variant="pricing" label="Assinar o Anual" plan="anual" />
             </div>
-            <p style={{ fontSize: 13, color: 'var(--light)', marginTop: 16 }}>7 dias grátis no cartão, no Mensal e no Anual. O Anual também sai no Pix ou em até 12x. Cancele quando quiser.</p>
+            <p style={{ fontSize: 13, color: 'var(--light)', marginTop: 16 }}>7 dias grátis no Mensal e no Anual. O Anual também sai no Pix ou em até 12x. Cancele quando quiser.</p>
           </div>
         </div>
       </section>
