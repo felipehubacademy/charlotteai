@@ -128,8 +128,20 @@ interface Props {
   isPt?: boolean;
 }
 
+/** Uma conquista por vez, num único Modal que fica aberto enquanto houver fila.
+ *  Só o conteúdo troca (key = id), cada um com as próprias animações. Trocar o Modal inteiro
+ *  a cada conquista fazia o sistema fechar o novo junto com o anterior, e conquistas eram puladas. */
 export default function AchievementNotification({ achievements, onDismiss, isPt = true }: Props) {
   const current = achievements[0];
+  if (!current) return null;
+  return (
+    <Modal visible transparent animationType="none" statusBarTranslucent onRequestClose={() => onDismiss(current.id)}>
+      <AchievementScene key={current.id} current={current} onDismiss={onDismiss} isPt={isPt} />
+    </Modal>
+  );
+}
+
+function AchievementScene({ current, onDismiss, isPt }: { current: Achievement; onDismiss: (id: string) => void; isPt: boolean }) {
   const openShare = useShareCard();
   const insets = useSafeAreaInsets();
   const { width, height } = useWindowDimensions();
@@ -140,10 +152,10 @@ export default function AchievementNotification({ achievements, onDismiss, isPt 
   const pulse  = React.useRef(new Animated.Value(1)).current;
   const slide  = React.useRef(new Animated.Value(0)).current; // texto e botões sobem
   const autoDismissRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const dismissingRef = React.useRef(false);
+  const mountedAtRef = React.useRef(Date.now());
 
   React.useEffect(() => {
-    if (!current) return;
-    fade.setValue(0); medal.setValue(0); slide.setValue(0); pulse.setValue(1);
 
     soundEngine.play(achievementSound(current.rarity)).catch(() => {});
     achievementHaptic(current.rarity).catch(() => {});
@@ -168,9 +180,7 @@ export default function AchievementNotification({ achievements, onDismiss, isPt 
 
     autoDismissRef.current = setTimeout(() => handleDismiss(), 10000);
     return () => { if (autoDismissRef.current) clearTimeout(autoDismissRef.current); };
-  }, [current?.id]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  if (!current) return null;
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const s = SCENE[current.rarity] ?? SCENE.common;
   const cat = catalogOf(current.type);
@@ -179,7 +189,11 @@ export default function AchievementNotification({ achievements, onDismiss, isPt 
   const rarityLabel = isPt ? RARITY[current.rarity]?.pt : RARITY[current.rarity]?.en;
   const line = CHARLOTTE_LINE[current.rarity] ?? CHARLOTTE_LINE.common;
 
-  function handleDismiss() {
+  function handleDismiss(fromTap = false) {
+    if (dismissingRef.current) return; // toque duplo / tempo esgotado junto com o toque
+    // Toque logo que a conquista aparece = sobra do toque que fechou a anterior: ignora.
+    if (fromTap && Date.now() - mountedAtRef.current < 700) return;
+    dismissingRef.current = true;
     if (autoDismissRef.current) clearTimeout(autoDismissRef.current);
     Animated.timing(fade, { toValue: 0, duration: 200, useNativeDriver: true }).start(() => onDismiss(current.id));
   }
@@ -187,10 +201,10 @@ export default function AchievementNotification({ achievements, onDismiss, isPt 
   const rise = { opacity: slide, transform: [{ translateY: slide.interpolate({ inputRange: [0, 1], outputRange: [24, 0] }) }] };
 
   return (
-    <Modal visible transparent animationType="none" statusBarTranslucent onRequestClose={handleDismiss}>
+    <>
       <StatusBar barStyle={s.ink === INK ? 'dark-content' : 'light-content'} />
       <Animated.View style={{ flex: 1, backgroundColor: s.bg, opacity: fade }}>
-        {s.confetti && <ConfettiRain width={width} height={height} run={current.id as unknown as number} />}
+        {s.confetti && <ConfettiRain width={width} height={height} run={0} />}
 
         <View style={{ flex: 1, paddingTop: insets.top + 24, paddingBottom: insets.bottom + 20, paddingHorizontal: 24 }}>
           {/* Selo do topo */}
@@ -259,7 +273,7 @@ export default function AchievementNotification({ achievements, onDismiss, isPt 
               </View>
             </View>
 
-            <TouchableOpacity onPress={handleDismiss} activeOpacity={0.85}
+            <TouchableOpacity onPress={() => handleDismiss(true)} activeOpacity={0.85}
               style={{ backgroundColor: s.btnBg, borderRadius: 16, paddingVertical: 17, alignItems: 'center' }}>
               <AppText style={{ color: s.btnInk, fontSize: 16, fontWeight: '800' }}>{isPt ? 'Continuar' : 'Continue'}</AppText>
             </TouchableOpacity>
@@ -277,6 +291,6 @@ export default function AchievementNotification({ achievements, onDismiss, isPt 
           </Animated.View>
         </View>
       </Animated.View>
-    </Modal>
+    </>
   );
 }
