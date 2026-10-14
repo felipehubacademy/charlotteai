@@ -54,10 +54,12 @@ async function grantAccess(userId: string, plan: WebPlan, until: Date): Promise<
   const { data: cur } = await supabase.from('charlotte_users').select('subscription_expires_at').eq('id', userId).maybeSingle();
   const prev = (cur as { subscription_expires_at: string | null } | null)?.subscription_expires_at;
   const expires = prev && new Date(prev).getTime() > until.getTime() ? new Date(prev) : until; // nunca encurta
-  await supabase.from('charlotte_users').update({
+  const { error } = await supabase.from('charlotte_users').update({
     subscription_status: 'active', is_active: true, subscription_product: WEB_PRODUCT[plan],
     subscription_expires_at: expires.toISOString(), updated_at: new Date().toISOString(),
   } as never).eq('id', userId);
+  // Falha aqui é grave (pagou e não ganhou acesso): lança para o Asaas reenviar o evento.
+  if (error) throw new Error(`grantAccess falhou: ${error.message}`);
 }
 
 async function sendWelcome(userId: string, plan: WebPlan, trialDays: number): Promise<void> {
@@ -145,7 +147,7 @@ export async function POST(req: NextRequest) {
       if (!row.asaas_payment_id && (event === 'PAYMENT_CONFIRMED' || event === 'PAYMENT_RECEIVED')) {
         patch.asaas_payment_id = p.id;
         if (p.installment) patch.asaas_installment_id = p.installment;
-        patch.paid_at = new Date(p.confirmedDate || p.paymentDate || Date.now()).toISOString();
+        patch.paid_at = new Date().toISOString(); // agora: as datas do Asaas vêm sem hora e encurtariam o prazo do reembolso
       }
       if (event === 'PAYMENT_REFUNDED') patch.refunded_at = new Date().toISOString();
       await supabase.from('asaas_checkouts').update(patch as never).eq('id', row.id);

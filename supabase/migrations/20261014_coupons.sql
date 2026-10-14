@@ -20,3 +20,7 @@ alter table public.asaas_checkouts add column if not exists asaas_payment_id tex
 alter table public.asaas_checkouts add column if not exists asaas_installment_id text;
 alter table public.asaas_checkouts add column if not exists paid_at timestamptz;
 alter table public.asaas_checkouts add column if not exists refunded_at timestamptz;
+-- Assinatura pelo site grava web_monthly / web_annual em subscription_product.
+alter table charlotte.users drop constraint if exists users_subscription_product_check;
+alter table charlotte.users add constraint users_subscription_product_check
+  check (subscription_product is null or subscription_product in ('monthly', 'yearly', 'web_monthly', 'web_annual'));
