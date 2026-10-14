@@ -56,7 +56,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
       const j = await loadInfo(aff, code);
       if (j.coupon?.ok) {
         setCoupon(code); setCouponInput(code);
-        setCouponMsg({ ok: true, text: `Cupom ${code} aplicado: ${j.coupon.pct}% de desconto.` });
+        setCouponMsg({ ok: true, text: j.coupon.pct > 0 ? `Cupom ${code} aplicado: ${j.coupon.pct}% de desconto.` : `Cupom ${code} aplicado.` });
       } else {
         setCoupon(null);
         setCouponMsg({ ok: false, text: (j.coupon && !j.coupon.ok ? j.coupon.error : null) ?? 'Cupom não encontrado.' });
@@ -85,7 +85,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
   async function applyCouponWith(affCode: string | null, raw: string) {
     const code = raw.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
     const j = await loadInfo(affCode, code);
-    if (j.coupon?.ok) { setCoupon(code); setCouponMsg({ ok: true, text: `Cupom ${code} aplicado: ${j.coupon.pct}% de desconto.` }); }
+    if (j.coupon?.ok) { setCoupon(code); setCouponMsg({ ok: true, text: j.coupon.pct > 0 ? `Cupom ${code} aplicado: ${j.coupon.pct}% de desconto.` : `Cupom ${code} aplicado.` }); }
     else { setCouponMsg({ ok: false, text: (j.coupon && !j.coupon.ok ? j.coupon.error : null) ?? 'Cupom não encontrado.' }); await loadInfo(affCode, null); }
   }
 
