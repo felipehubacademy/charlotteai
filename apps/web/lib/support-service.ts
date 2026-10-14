@@ -1,4 +1,5 @@
 // lib/support-service.ts
+import { base as emailBase, p as emailP, note as emailNote } from '@/lib/email-brand';
 // Persistência + atribuição + escalonamento do suporte. Server-only (service role).
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
@@ -232,7 +233,7 @@ export async function closeIdleConversations(): Promise<{ closed: number }> {
 
 /** Corpo HTML das respostas por e-mail do suporte (agente e atendente). */
 export function supportReplyHtml(text: string): string {
+  // Mesmo visual de todos os e-mails do Queizy (lib/email-brand), com o texto alinhado à esquerda.
   const safe = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\n/g, '<br>');
-  return `<div style="font-family:-apple-system,Arial,sans-serif;color:#1d1d1f;font-size:15px;line-height:1.6;">${safe}
-    <p style="margin-top:20px;color:#86868b;font-size:12px;">Equipe Queizy — Hub Academy Ltda</p></div>`;
+  return emailBase(`${emailP(safe, false)}${emailNote('Equipe Queizy · Hub Academy Ltda. É só responder este e-mail para continuar a conversa.')}`);
 }

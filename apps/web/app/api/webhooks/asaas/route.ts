@@ -12,6 +12,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { recordRevenueEvent } from '@/lib/revenue';
 import { getCustomer, WEB_PRODUCT, type WebPlan } from '@/lib/asaas';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
+import { webSubscriptionWelcomeTemplate } from '@/lib/email-templates';
 
 export const dynamic = 'force-dynamic';
 const DAY = 86400000;
@@ -69,24 +70,8 @@ async function sendWelcome(userId: string, plan: WebPlan, trialDays: number): Pr
   if (!user?.email) return;
   const { data: link } = await supabase.auth.admin.generateLink({ type: 'recovery', email: user.email, options: { redirectTo: 'https://queizy.com/open' } });
   const passwordUrl = link?.properties?.action_link ?? 'https://queizy.com/open';
-  const first = (user.name ?? '').split(' ')[0] || 'Olá';
-  const planName = plan === 'monthly' ? 'Plano Mensal' : 'Plano Anual';
-  const what = trialDays > 0
-    ? `Seus ${trialDays} dias grátis do ${planName} começaram. A primeira cobrança no cartão é no ${trialDays + 1}º dia; se cancelar antes, não paga nada.`
-    : plan === 'monthly' ? 'Seu Plano Mensal está ativo.' : 'Seu Plano Anual está ativo: são 12 meses de acesso completo.';
-  const btn = (href: string, label: string) =>
-    `<a href="${href}" style="display:inline-block;background:#DDFF4A;color:#14121A;font-weight:700;text-decoration:none;padding:14px 22px;border-radius:12px;margin:6px 0">${label}</a>`;
-  const html = `<div style="font-family:Arial,Helvetica,sans-serif;color:#14121A;max-width:520px;margin:0 auto;padding:24px">
-    <h2 style="margin:0 0 12px">${first}, sua assinatura do Queizy está ativa</h2>
-    <p style="line-height:1.5">${what}</p>
-    <p style="line-height:1.5"><strong>1.</strong> Baixe o app Queizy na App Store ou no Google Play.</p>
-    <p style="line-height:1.5"><strong>2.</strong> Entre com este e-mail: <strong>${user.email}</strong>. Se ainda não tem senha, crie agora:</p>
-    <p>${btn(passwordUrl, 'Criar minha senha')}</p>
-    <p>${btn('https://queizy.com/open', 'Baixar o app')}</p>
-    ${trialDays > 0 ? '' : `<p style="font-size:13px;color:#6B6577;line-height:1.5">Não gostou? Em até 7 dias, peça o reembolso no app (Perfil &gt; Assinatura &gt; Gerenciar assinatura &gt; Pedir reembolso) ou respondendo este e-mail.</p>`}
-    <p style="font-size:13px;color:#6B6577;line-height:1.5">Dúvidas? É só responder este e-mail.</p>
-  </div>`;
-  await sendEmail({ to: user.email, subject: 'Sua assinatura do Queizy está ativa', html }).catch(() => false);
+  const { subject, html } = webSubscriptionWelcomeTemplate({ name: user.name, email: user.email, plan, trialDays, passwordUrl });
+  await sendEmail({ to: user.email, subject, html }).catch(() => false);
 }
 
 async function revenue(type: 'INITIAL_PURCHASE' | 'RENEWAL' | 'REFUND', row: Row, p: Payment): Promise<void> {

@@ -95,7 +95,7 @@ export function subscriptionExpiredTemplate(opts: {
 
 // ── Helpers extras: lista de novidades + badges das lojas ──────────────────────
 
-function storeBadges(appStoreUrl: string, playUrl: string): string {
+export function storeBadges(appStoreUrl = 'https://apps.apple.com/app/id6760943273', playUrl = 'https://play.google.com/store/apps/details?id=com.hubacademy.charlotte'): string {
   // Badges recortados justos (mesma altura visual); larguras proporcionais.
   const APP  = 'https://queizy.com/images/store-badges/app-store-badge.png';
   const PLAY = 'https://queizy.com/images/store-badges/google-play-badge.png';
@@ -134,5 +134,40 @@ export function releaseUpdateTemplate(opts: { name?: string | null; unsubscribeU
     ${p('Atualize o app pela loja para ver tudo isso.')}
     ${storeBadges(appStore, playStore)}
   `, unsubscribe);
+  return { subject, html };
+}
+
+// ── 7. Assinatura pelo site (Asaas) ativa ──────────────────────────────────────
+
+export function webSubscriptionWelcomeTemplate(opts: {
+  name?: string | null;
+  email: string;
+  plan: 'monthly' | 'annual';
+  trialDays: number;
+  passwordUrl: string;
+}) {
+  const first = (opts.name ?? '').trim().split(/\s+/)[0];
+  const planName = opts.plan === 'monthly' ? 'Plano Mensal' : 'Plano Anual';
+  const subject = first ? `${first}, bem-vindo à Família Queizy` : 'Bem-vindo à Família Queizy';
+  const status = opts.trialDays > 0
+    ? `Seus <strong style="color:#16131F;">${opts.trialDays} dias grátis</strong> do ${planName} começaram. A primeira cobrança no cartão é só no ${opts.trialDays + 1}º dia; se cancelar antes, não paga nada.`
+    : `Seu <strong style="color:#16131F;">${planName}</strong> está ativo.`;
+  const refund = opts.trialDays > 0
+    ? ''
+    : note('Não gostou? Em até 7 dias, peça o reembolso no app (Perfil &gt; Assinatura &gt; Gerenciar assinatura &gt; Pedir reembolso) ou respondendo este e-mail.');
+  const html = base(`
+    ${h1(first ? `Bem-vindo à Família Queizy, ${first}!` : 'Bem-vindo à Família Queizy!')}
+    ${p('Agora é com você: conversa de verdade, correção na hora e zero vergonha de errar. A Charlotte já está te esperando.')}
+    ${p(status)}
+    ${meta([
+      { label: 'Plano', value: planName },
+      { label: 'Entre no app com', value: opts.email },
+    ])}
+    ${p('Ainda não tem senha? Crie agora e entre no app com este e-mail.')}
+    ${btn('Criar minha senha', opts.passwordUrl)}
+    ${storeBadges()}
+    ${refund}
+    ${note('Dúvidas? É só responder este e-mail.')}
+  `);
   return { subject, html };
 }
