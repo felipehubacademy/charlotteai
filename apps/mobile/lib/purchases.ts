@@ -11,8 +11,9 @@
  *  6. Sincronizar status com Supabase após compra/restauração
  *
  * Product IDs (configurados no App Store Connect + RevenueCat):
- *   com.hubacademy.charlotte.monthly  — R$ 29,90/mês  (sem trial na loja; os 7 dias grátis são do app)
- *   com.hubacademy.charlotte.yearly   — R$ 199,90/ano (sem trial na loja)
+ *   com.hubacademy.charlotte.monthly  — R$ 29,99/mês  · teste grátis de 7 dias na loja (desde 2026-10-14)
+ *   com.hubacademy.charlotte.yearly   — R$ 199,99/ano · teste grátis de 7 dias na loja
+ *   (Android: ids com o plano básico — monthly:monthly-plan e yearly:annual-plan)
  *
  * Entitlement ID: "Premium" (confirmado no dashboard RevenueCat 2026-08-21)
  * Offering ID:    "default"
@@ -297,3 +298,39 @@ export async function syncSubscriptionToSupabase(
   }
   return { updated: true, hasPremium };
 }
+
+// ── Teste grátis da loja ──────────────────────────────────────────────────────
+
+const DAYS_PER_UNIT: Record<string, number> = { DAY: 1, WEEK: 7, MONTH: 30, YEAR: 365 };
+
+/**
+ * Dias de teste grátis a que a pessoa tem direito em cada pacote (id do produto → dias).
+ * Android: a Play só devolve a oferta de teste para quem é elegível (defaultOption.freePhase).
+ * iOS: introPrice com preço 0 + checagem de elegibilidade (quem já usou o teste no grupo não ganha de novo).
+ * Pacote sem teste (ou sem direito) não aparece no resultado. Nunca lança exceção.
+ */
+export async function getTrialDays(
+  pkgs: import('react-native-purchases').PurchasesPackage[],
+): Promise<Record<string, number>> {
+  const out: Record<string, number> = {};
+  try {
+    if (Platform.OS === 'android') {
+      for (const p of pkgs) {
+        const free = p.product.defaultOption?.freePhase;
+        if (free) out[p.product.identifier] = free.billingPeriod.value * (DAYS_PER_UNIT[free.billingPeriod.unit] ?? 1);
+      }
+      return out;
+    }
+    const withIntro = pkgs.filter(p => p.product.introPrice && p.product.introPrice.price === 0);
+    if (!withIntro.length) return out;
+    const elig = await Purchases.checkTrialOrIntroductoryPriceEligibility(withIntro.map(p => p.product.identifier));
+    for (const p of withIntro) {
+      const st = elig[p.product.identifier]?.status;
+      if (st !== Purchases.INTRO_ELIGIBILITY_STATUS.INTRO_ELIGIBILITY_STATUS_ELIGIBLE) continue;
+      const ip = p.product.introPrice!;
+      out[p.product.identifier] = ip.periodNumberOfUnits * (DAYS_PER_UNIT[ip.periodUnit] ?? 1) * Math.max(1, ip.cycles);
+    }
+  } catch { /* sem teste: segue com o preço normal */ }
+  return out;
+}
+

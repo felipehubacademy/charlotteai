@@ -1369,7 +1369,7 @@ const ENGAGEMENT_TEMPLATES: Record<string, ReengTemplates> = {
   },
   trial_ending_24h: {
     pt: [
-      { title: '⏰ Último dia do teste', body: '{name}, amanhã termina — continue por R$ 29,90/mês.' },
+      { title: '⏰ Último dia do teste', body: '{name}, amanhã termina — continue por R$ 29,99/mês.' },
       { title: '🚨 24h restantes', body: '{name}, você já evoluiu tanto. Não pare agora.' },
       { title: '💙 Última chance hoje', body: '{name}, amanhã tudo muda. Continue conosco?' },
       { title: '⏳ 24h e conta', body: '{name}, sua jornada vale continuar.' },

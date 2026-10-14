@@ -212,7 +212,7 @@ export default function StoreCTA({ variant, label, className }: Props) {
             <p style={{
               fontSize: 12, color: '#8A8494', marginTop: 20,
             }}>
-              7 dias grátis · sem cartão
+              7 dias grátis · cancele quando quiser
             </p>
           </div>
         </div>,

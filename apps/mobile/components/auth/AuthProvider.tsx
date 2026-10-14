@@ -373,10 +373,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!profile) return false;
     // (a) Institutional: is_active não importa — acesso sempre garantido
     if (profile.is_institutional) return true;
-    // (b) Grace para usuários sem assinatura ainda (null OU 'none'):
-    //     placement-test.tsx seta subscription_status='trial' ao concluir.
+    // (b) Sem assinatura ainda (null OU 'none'): livre só durante as boas-vindas (cadastro, teste de
+    //     nível). Desde 2026-10-14 o teste grátis é o da loja: terminadas as boas-vindas, sem plano,
+    //     o paywall abre com "Comece seus 7 dias grátis".
     const noSub = !profile.subscription_status || profile.subscription_status === 'none';
-    if (noSub) return true;
+    if (noSub) return !profile.first_welcome_done;
     // (c) Usuário inativo com assinatura = sem acesso
     if (!profile.is_active) return false;
     // 'cancelled' = auto-renew desligado mas acesso valido ate expires_at.

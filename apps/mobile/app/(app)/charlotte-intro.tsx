@@ -21,17 +21,9 @@ export default function OnboardingFinishScreen() {
       try {
         const update: Record<string, unknown> = { first_welcome_done: true };
         if (!profile.charlotte_level) update.charlotte_level = 'Novice';
-        const needsTrial =
-          !profile.is_institutional &&
-          (!profile.subscription_status || profile.subscription_status === 'none') &&
-          !profile.trial_ends_at;
-        if (needsTrial) {
-          const trialEnds = new Date();
-          trialEnds.setDate(trialEnds.getDate() + 7);
-          update.subscription_status = 'trial';
-          update.trial_ends_at       = trialEnds.toISOString();
-          update.is_active           = true;
-        }
+        // Desde 2026-10-14 o teste grátis de 7 dias é o da loja (Apple/Google, com o cartão da conta da loja):
+        // conta nova não ganha mais o teste do app. Sem acesso, o paywall abre logo depois das boas-vindas
+        // com "Comece seus 7 dias grátis" (components/auth/PaywallModal.tsx). Quem já tinha o teste do app segue igual.
         await supabase.from('charlotte_users').update(update).eq('id', profile.id);
         // refresh para o AuthGuard não redirecionar de volta pra cá
         refreshProfile().catch(() => {});

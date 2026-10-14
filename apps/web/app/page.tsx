@@ -273,18 +273,18 @@ export default function Page() {
           <div className="card" style={{ padding: '44px 40px', textAlign: 'center' }}>
             <span className="eyebrow">Planos</span>
             <h2 className="d">Comece de graça.</h2>
-            <p className="sub" style={{ margin: '0 auto' }}>7 dias com acesso completo, sem cartão. Depois, escolha o plano no app.</p>
+            <p className="sub" style={{ margin: '0 auto' }}>7 dias grátis com acesso completo. Cancele antes do fim do teste e não paga nada.</p>
             <div className="plans">
               <div className="plan">
                 <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--mid)' }}>Mensal</div>
-                <div className="price d">R$ 29,90</div>
+                <div className="price d">R$ 29,99</div>
                 <div style={{ fontSize: 13, color: 'var(--light)' }}>por mês</div>
               </div>
               <div className="plan best">
                 <span className="tag">MELHOR VALOR</span>
                 <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--mid)' }}>Anual</div>
-                <div className="price d">R$ 199,90</div>
-                <div style={{ fontSize: 13, color: 'var(--mid)' }}>por ano · cerca de R$ 16,66 por mês</div>
+                <div className="price d">R$ 199,99</div>
+                <div style={{ fontSize: 13, color: 'var(--mid)' }}>por ano · cerca de R$ 16,67 por mês</div>
               </div>
             </div>
             <StoreCTA variant="pricing" label="Experimentar 7 dias grátis" />

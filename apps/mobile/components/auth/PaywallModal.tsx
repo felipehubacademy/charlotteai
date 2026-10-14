@@ -2,8 +2,10 @@
  * components/auth/PaywallModal.tsx
  * Full-screen paywall shown when the user has no active subscription.
  *
- * Copy strategy: loss aversion — mostra o que o usuário vai perder,
- * personalizado com nome + streak (fallback: XP) ja acumulado.
+ * Conta nova (modelo de 2026-10-14): o teste grátis é o da loja (7 dias com o cartão da Apple/Google),
+ * então o paywall abre logo depois das boas-vindas com "Comece seus 7 dias grátis".
+ * Quem já usou o teste do app: loss aversion — o que vai perder, com nome + streak (ou XP).
+ * O botão fica fixo no rodapé (sempre visível, acima da barra do Android).
  */
 
 import React, { useEffect, useState, useCallback } from 'react';
@@ -12,7 +14,7 @@ import {
   ScrollView, Platform, Alert, Linking,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Fire, Trophy, MicrophoneStage, ChatCircleText, SignOut, ArrowsClockwise, X } from 'phosphor-react-native';
+import { Fire, Trophy, MicrophoneStage, ChatCircleText, SignOut, ArrowsClockwise, X, Gift } from 'phosphor-react-native';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { PurchasesPackage, PurchasesOffering } from 'react-native-purchases';
 import { HeaderLogo } from '@/components/ui/HeaderLogo';
@@ -29,6 +31,7 @@ import {
   PRODUCT_YEARLY,
   ENTITLEMENT_ID,
   identifyUser,
+  getTrialDays,
 } from '@/lib/purchases';
 
 const C = {
@@ -77,6 +80,14 @@ export function PaywallModal() {
   const [selected, setSelected]         = useState<string>(PRODUCT_YEARLY);
   const [loading, setLoading]           = useState(false);
   const [loadingOffer, setLoadingOffer] = useState(true);
+  // Dias de teste grátis da loja por produto (só para quem tem direito).
+  const [trialDays, setTrialDays]       = useState<Record<string, number>>({});
+  useEffect(() => {
+    if (!offering) return;
+    let alive = true;
+    getTrialDays(offering.availablePackages).then(t => { if (alive) setTrialDays(t); });
+    return () => { alive = false; };
+  }, [offering]);
 
   // Dados de progresso do usuario
   const [streakDays, setStreakDays] = useState<number>(0);
@@ -287,12 +298,27 @@ export function PaywallModal() {
     p => p.product.identifier.includes('yearly')
   );
 
-  const monthlyPrice = monthlyPkg?.product.priceString ?? 'R$ 29,90';
-  const yearlyPrice  = yearlyPkg?.product.priceString  ?? 'R$ 199,90';
+  const monthlyPrice = monthlyPkg?.product.priceString ?? 'R$ 29,99';
+  const yearlyPrice  = yearlyPkg?.product.priceString  ?? 'R$ 199,99';
 
   const yearlyMonthly = yearlyPkg
     ? formatMoney(yearlyPkg.product.price / 12, yearlyPkg.product.currencyCode, isPt)
-    : 'R$ 16,66';
+    : 'R$ 16,67';
+
+  const yearlyTrial  = yearlyPkg ? trialDays[yearlyPkg.product.identifier] ?? 0 : 0;
+  const monthlyTrial = monthlyPkg ? trialDays[monthlyPkg.product.identifier] ?? 0 : 0;
+  const isYearlySel  = selected.includes('yearly');
+  const selTrial     = isYearlySel ? yearlyTrial : monthlyTrial;
+  const anyTrial     = Math.max(yearlyTrial, monthlyTrial);
+  const selPriceLabel = isYearlySel ? `${yearlyPrice}${isPt ? '/ano' : '/yr'}` : `${monthlyPrice}${isPt ? '/mês' : '/mo'}`;
+
+  // Conta nova: nunca teve o teste do app nem assinatura. Começa pelo teste da loja.
+  // Também usa o tom de "ganho" quem ainda está no teste antigo do app (abriu pela pílula):
+  // nada foi perdido ainda. O tom de perda fica para quem perdeu o acesso.
+  const inAppTrial = profile?.subscription_status === 'trial'
+    && !!profile.trial_ends_at && new Date(profile.trial_ends_at).getTime() > Date.now();
+  const isNewUser = !!profile && (inAppTrial || (!profile.trial_ends_at
+    && !['active', 'cancelled', 'expired'].includes(profile.subscription_status ?? '')));
 
   // Headline personalizada. O gancho de streak só faz sentido quando a
   // sequência já é relevante (>= 3 dias) — "sua sequência de 1 dia está em
@@ -312,11 +338,32 @@ export function PaywallModal() {
     ? (firstName ? `${firstName}, continue evoluindo seu inglês no Queizy.` : 'Continue evoluindo seu inglês no Queizy.')
     : (firstName ? `${firstName}, keep improving your English on Queizy.` : 'Keep improving your English on Queizy.');
 
-  const headline = useStreak ? streakLine : useXp ? xpLine : neutralLine;
+  const newLine = anyTrial
+    ? (isPt
+        ? (firstName ? `${firstName}, comece seus ${anyTrial} dias grátis` : `Comece seus ${anyTrial} dias grátis`)
+        : (firstName ? `${firstName}, start your ${anyTrial}-day free trial` : `Start your ${anyTrial}-day free trial`))
+    : (isPt
+        ? (firstName ? `${firstName}, escolha seu plano para começar` : 'Escolha seu plano para começar')
+        : (firstName ? `${firstName}, choose your plan to start` : 'Choose your plan to start'));
 
-  const subheadline = isPt
-    ? 'Não deixe tudo isso ir embora. Continue de onde parou.'
-    : 'Don’t let all of this go. Pick up where you left off.';
+  const headline = isNewUser ? newLine : useStreak ? streakLine : useXp ? xpLine : neutralLine;
+
+  const subheadline = isNewUser
+    ? (isPt
+        ? 'Acesso completo ao Queizy: conversa por voz, correção na hora e a trilha inteira.'
+        : 'Full access to Queizy: voice chat, instant corrections and the whole learning path.')
+    : (isPt
+        ? 'Não deixe tudo isso ir embora. Continue de onde parou.'
+        : 'Don’t let all of this go. Pick up where you left off.');
+
+  // Texto curto sob o botão: com teste, deixa claro quando cobra e como não pagar.
+  const ctaNote = selTrial
+    ? (isPt
+        ? `Grátis por ${selTrial} dias, depois ${selPriceLabel}. Cancele antes do fim do teste e não paga nada.`
+        : `Free for ${selTrial} days, then ${selPriceLabel}. Cancel before the trial ends and you pay nothing.`)
+    : (isPt
+        ? 'Cobrança ao assinar. Renovação automática. Cancele quando quiser.'
+        : 'Charged on subscribing. Auto-renews. Cancel anytime.');
 
   return (
     <Modal visible={visible} animationType="fade" transparent={false} statusBarTranslucent>
@@ -336,12 +383,16 @@ export function PaywallModal() {
           </TouchableOpacity>
         )}
 
+        {/* Faixa da barra de status: o conteúdo rola por baixo dela, não por cima do relógio */}
+        <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: insets.top, backgroundColor: C.bg, zIndex: 5 }} />
+
         <ScrollView
+          style={{ flex: 1 }}
           contentContainerStyle={{
             flexGrow: 1,
             alignItems: 'center',
             paddingTop: insets.top + 32,
-            paddingBottom: insets.bottom + 24,
+            paddingBottom: 16,
           }}
           showsVerticalScrollIndicator={false}
         >
@@ -356,11 +407,13 @@ export function PaywallModal() {
           {/* Icone de perda */}
           <View style={{
             width: 64, height: 64, borderRadius: 32,
-            backgroundColor: C.lossRedBg,
+            backgroundColor: isNewUser ? '#E3F6EC' : C.lossRedBg,
             alignItems: 'center', justifyContent: 'center',
             marginBottom: 20,
           }}>
-            {useStreak
+            {isNewUser
+              ? <Gift size={32} color={C.greenDark} weight="fill" />
+              : useStreak
               ? <Fire size={32} color={C.lossRed} weight="fill" />
               : <Trophy size={32} color={C.lossRed} weight="fill" />
             }
@@ -391,7 +444,7 @@ export function PaywallModal() {
             borderWidth: 1, borderColor: C.cardBorder,
           }}>
             <AppText style={{ fontSize: 12, fontWeight: '700', color: C.muted, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 2 }}>
-              {isPt ? 'Você vai perder acesso a' : 'You’ll lose access to'}
+              {isNewUser ? (isPt ? 'O que você ganha' : 'What you get') : (isPt ? 'Você vai perder acesso a' : 'You’ll lose access to')}
             </AppText>
             {LOSE_ITEMS.map((item, i) => (
               <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
@@ -441,6 +494,11 @@ export function PaywallModal() {
                     <AppText style={{ color: C.muted, fontSize: 12, marginTop: 2 }}>
                       {yearlyMonthly}{isPt ? '/mês' : '/mo'}
                     </AppText>
+                    {!!yearlyTrial && (
+                      <AppText style={{ color: C.greenDark, fontSize: 12, fontWeight: '700', marginTop: 2 }}>
+                        {isPt ? `${yearlyTrial} dias grátis` : `${yearlyTrial}-day free trial`}
+                      </AppText>
+                    )}
                   </View>
                   <View style={{ alignItems: 'flex-end' }}>
                     <AppText display style={{ color: C.navy, fontSize: 22, fontWeight: '800' }}>
@@ -468,7 +526,14 @@ export function PaywallModal() {
                 }}
               >
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <AppText style={{ color: C.navy, fontSize: 15, fontWeight: '700' }}>{isPt ? 'Mensal' : 'Monthly'}</AppText>
+                  <View>
+                    <AppText style={{ color: C.navy, fontSize: 15, fontWeight: '700' }}>{isPt ? 'Mensal' : 'Monthly'}</AppText>
+                    {!!monthlyTrial && (
+                      <AppText style={{ color: C.greenDark, fontSize: 12, fontWeight: '700', marginTop: 2 }}>
+                        {isPt ? `${monthlyTrial} dias grátis` : `${monthlyTrial}-day free trial`}
+                      </AppText>
+                    )}
+                  </View>
                   <View style={{ alignItems: 'flex-end' }}>
                     <AppText display style={{ color: C.navy, fontSize: 22, fontWeight: '800' }}>
                       {monthlyPrice}
@@ -480,63 +545,6 @@ export function PaywallModal() {
 
             </View>
           )}
-
-          {/* CTA */}
-          <TouchableOpacity
-            onPress={handlePurchase}
-            disabled={loading || loadingOffer}
-            activeOpacity={0.85}
-            style={{
-              alignSelf: 'stretch',
-              backgroundColor: C.green,
-              borderRadius: 16,
-              paddingVertical: 17,
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: 16,
-              opacity: loading || loadingOffer ? 0.6 : 1,
-            }}
-          >
-            {(loading || loadingOffer)
-              ? (
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                  <ActivityIndicator color={C.navy} />
-                  {loading && (
-                    <AppText style={{ color: C.navy, fontSize: 14, fontWeight: '700' }}>
-                      {isPt ? 'Confirmando compra…' : 'Confirming purchase…'}
-                    </AppText>
-                  )}
-                </View>
-              )
-              : (() => {
-                  const isYearly = selected.includes('yearly');
-                  const priceLabel = isYearly
-                    ? `${yearlyPrice}${isPt ? '/ano' : '/yr'}`
-                    : `${monthlyPrice}${isPt ? '/mês' : '/mo'}`;
-                  return (
-                    <AppText style={{ color: C.navy, fontSize: 16, fontWeight: '800' }}>
-                      {isPt ? 'Assinar' : 'Subscribe'} — {priceLabel}
-                    </AppText>
-                  );
-                })()
-            }
-          </TouchableOpacity>
-
-          <AppText style={{ color: C.muted, fontSize: 11, textAlign: 'center', marginBottom: 24, lineHeight: 16 }}>
-            {isPt
-              ? 'Cobrança imediata ao assinar. Renovação automática. Cancele quando quiser.'
-              : 'Charged immediately on subscribing. Auto-renews. Cancel anytime.'}
-          </AppText>
-
-          {/* Termos e privacidade (exigidos pelas lojas para assinatura) */}
-          <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 16, marginTop: -16, marginBottom: 16 }}>
-            <TouchableOpacity onPress={() => Linking.openURL('https://queizy.com/termos')} hitSlop={8}>
-              <AppText style={{ color: C.muted, fontSize: 12, textDecorationLine: 'underline' }}>{isPt ? 'Termos de Uso' : 'Terms of Use'}</AppText>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => Linking.openURL('https://queizy.com/privacidade')} hitSlop={8}>
-              <AppText style={{ color: C.muted, fontSize: 12, textDecorationLine: 'underline' }}>{isPt ? 'Política de Privacidade' : 'Privacy Policy'}</AppText>
-            </TouchableOpacity>
-          </View>
 
           {/* Restore */}
           <TouchableOpacity
@@ -560,6 +568,56 @@ export function PaywallModal() {
           </View>{/* fim container iPad */}
 
         </ScrollView>
+
+        {/* Rodapé fixo: botão sempre visível, acima da barra de navegação */}
+        <View style={{
+          borderTopWidth: 1, borderTopColor: C.cardBorder, backgroundColor: C.bg,
+          paddingTop: 12, paddingBottom: insets.bottom + 12, paddingHorizontal: 24, alignItems: 'center',
+        }}>
+          <View style={{ width: '100%', maxWidth: 480 }}>
+            <TouchableOpacity
+              onPress={handlePurchase}
+              disabled={loading || loadingOffer}
+              activeOpacity={0.85}
+              style={{
+                alignSelf: 'stretch', backgroundColor: C.green, borderRadius: 16,
+                paddingVertical: 16, alignItems: 'center', justifyContent: 'center',
+                opacity: loading || loadingOffer ? 0.6 : 1,
+              }}
+            >
+              {(loading || loadingOffer)
+                ? (
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                    <ActivityIndicator color={C.navy} />
+                    {loading && (
+                      <AppText style={{ color: C.navy, fontSize: 14, fontWeight: '700' }}>
+                        {isPt ? 'Confirmando…' : 'Confirming…'}
+                      </AppText>
+                    )}
+                  </View>
+                )
+                : (
+                  <AppText style={{ color: C.navy, fontSize: 16, fontWeight: '800' }}>
+                    {selTrial
+                      ? (isPt ? `Começar ${selTrial} dias grátis` : `Start ${selTrial}-day free trial`)
+                      : `${isPt ? 'Assinar' : 'Subscribe'} — ${selPriceLabel}`}
+                  </AppText>
+                )}
+            </TouchableOpacity>
+            <AppText style={{ color: C.muted, fontSize: 11, textAlign: 'center', marginTop: 8, lineHeight: 16 }}>
+              {ctaNote}
+            </AppText>
+            {/* Termos e privacidade (exigidos pelas lojas para assinatura) */}
+            <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 16, marginTop: 6 }}>
+              <TouchableOpacity onPress={() => Linking.openURL('https://queizy.com/termos')} hitSlop={8}>
+                <AppText style={{ color: C.muted, fontSize: 12, textDecorationLine: 'underline' }}>{isPt ? 'Termos de Uso' : 'Terms of Use'}</AppText>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => Linking.openURL('https://queizy.com/privacidade')} hitSlop={8}>
+                <AppText style={{ color: C.muted, fontSize: 12, textDecorationLine: 'underline' }}>{isPt ? 'Política de Privacidade' : 'Privacy Policy'}</AppText>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
       </View>
     </Modal>
   );
