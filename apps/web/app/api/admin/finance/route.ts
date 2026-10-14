@@ -1,6 +1,7 @@
 // /api/admin/finance — lançamentos financeiros (entradas e saídas).
 //   GET              todos os lançamentos (o painel calcula gráficos no cliente)
 //   GET ?fx=USD      cotação atual da moeda em reais (AwesomeAPI)
+//   GET ?revenue=12  receita por canal (bruto, taxas, líquido) nos últimos N meses + projeção de 12 meses
 //   POST             cria lançamento
 //   PATCH            { id, ...campos } edita; ao pagar um recorrente, cria o próximo
 //   DELETE ?id=      apaga
@@ -8,6 +9,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
 import { fxToBrl } from '@/lib/fx';
+import { revenueSummary } from '@/lib/finance-revenue';
 
 export const dynamic = 'force-dynamic';
 
@@ -77,6 +79,12 @@ export async function GET(req: NextRequest) {
     const rate = await fxToBrl(cur);
     if (!rate) return NextResponse.json({ error: 'Cotação indisponível' }, { status: 502 });
     return NextResponse.json({ rate: Math.round(rate * 10000) / 10000 });
+  }
+
+  const rev = req.nextUrl.searchParams.get('revenue');
+  if (rev) {
+    const m = Math.max(1, Math.min(60, Number(rev) || 12));
+    return NextResponse.json(await revenueSummary(m));
   }
 
   const { data, error } = await getSupabaseAdmin()

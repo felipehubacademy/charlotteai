@@ -22,7 +22,7 @@ const EXPENSE_CATEGORIES = [
   'Inteligência artificial', 'Infraestrutura e hospedagem', 'Lojas e pagamentos', 'Domínios e e-mail',
   'Ferramentas e software', 'Marketing e mídia', 'Equipe e prestadores', 'Jurídico e contábil', 'Impostos', 'Reembolsos e estornos', 'Outros',
 ];
-const INCOME_CATEGORIES = ['Assinaturas App Store', 'Assinaturas Google Play', 'B2B e institucional', 'Aporte de capital', 'Outros'];
+const INCOME_CATEGORIES = ['Assinaturas App Store', 'Assinaturas Google Play', 'Assinaturas pelo site (Asaas)', 'B2B e institucional', 'Aporte de capital', 'Outros'];
 const VENDORS = ['OpenAI', 'Anthropic', 'ElevenLabs', 'Microsoft Azure', 'Vercel', 'Supabase', 'Expo (EAS)', 'RevenueCat', 'Apple', 'Google', 'Cloudflare', 'registro.br', 'Microsoft 365', 'Sentry', 'HubSpot'];
 const CURRENCIES = ['BRL', 'USD', 'EUR'];
 
@@ -579,6 +579,80 @@ function PartnerReportModal({ canWrite, onClose }: { canWrite: boolean; onClose:
   );
 }
 
+
+// ── Receita por canal + projeção ────────────────────────────────────────────
+type RevChannel = { channel: string; label: string; sales: number; refunds: number; gross: number; fees: number; net: number; feePct: number };
+type RevMonth = { month: string; gross: number; fees: number; net: number; renewals: number };
+type RevSummary = { since: string; channels: RevChannel[]; totals: { gross: number; fees: number; net: number };
+  projection: RevMonth[]; projectionTotals: { gross: number; fees: number; net: number }; activeSubscribers: number; inTrial: number };
+
+function RevenuePanel({ range }: { range: Range }) {
+  const months = range === 'month' ? 1 : range === '3m' ? 3 : range === 'year' ? new Date().getMonth() + 1 : range === 'all' ? 60 : 12;
+  const [d, setD] = useState<RevSummary | null>(null);
+  const [err, setErr] = useState('');
+  useEffect(() => {
+    setErr('');
+    fetch(`/api/admin/finance?revenue=${months}`).then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(setD).catch(() => setErr('Não foi possível carregar a receita.'));
+  }, [months]);
+  const max = Math.max(1, ...(d?.projection ?? []).map(p => p.gross));
+  return (
+    <>
+      <div className="adm-panel col-12">
+        <div className="adm-panel-hdr"><div className="adm-panel-title">Receita por canal</div>
+          <div className="adm-panel-sub">{RANGE_LABEL[range]} · bruto {brl(d?.totals.gross ?? 0)} · taxas {brl(d?.totals.fees ?? 0)} · líquido {brl(d?.totals.net ?? 0)}</div></div>
+        <div className="adm-panel-body" style={{ overflowX: 'auto' }}>
+          {err ? <div className="adm-empty-sub">{err}</div> : !d ? <div className="adm-empty-sub">Carregando…</div> : d.channels.length === 0 ? (
+            <div className="adm-empty-sub">Nenhuma venda no período.</div>
+          ) : (
+            <table className="adm-table">
+              <thead><tr><th>Canal</th><th style={{ textAlign: 'right' }}>Vendas</th><th style={{ textAlign: 'right' }}>Bruto</th><th style={{ textAlign: 'right' }}>Taxas</th><th style={{ textAlign: 'right' }}>Líquido</th></tr></thead>
+              <tbody>
+                {d.channels.map(c => (
+                  <tr key={c.channel}>
+                    <td>{c.label}</td>
+                    <td style={{ textAlign: 'right' }}>{c.sales}{c.refunds ? ` (−${c.refunds} reemb.)` : ''}</td>
+                    <td style={{ textAlign: 'right' }}>{brl(c.gross)}</td>
+                    <td style={{ textAlign: 'right' }}>{brl(c.fees)} <span style={{ color: 'var(--t3)' }}>({c.feePct.toLocaleString('pt-BR')}%)</span></td>
+                    <td style={{ textAlign: 'right', fontWeight: 700 }}>{brl(c.net)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </div>
+
+      <div className="adm-panel col-12">
+        <div className="adm-panel-hdr"><div className="adm-panel-title">Projeção de faturamento · 12 meses</div>
+          <div className="adm-panel-sub">bruto {brl(d?.projectionTotals.gross ?? 0)} · taxas {brl(d?.projectionTotals.fees ?? 0)} · líquido {brl(d?.projectionTotals.net ?? 0)}</div></div>
+        <div className="adm-panel-body">
+          {d && (
+            <>
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 6, height: 140 }}>
+                {d.projection.map(p => (
+                  <div key={p.month} style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}
+                    title={`${monthLabel(p.month)}: bruto ${brl(p.gross)} · taxas ${brl(p.fees)} · líquido ${brl(p.net)} · ${p.renewals} renovações`}>
+                    <div style={{ width: '100%', height: 110, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+                      <div style={{ height: `${(p.fees / max) * 100}%`, background: 'var(--b2)', borderRadius: '4px 4px 0 0' }} />
+                      <div style={{ height: `${(p.net / max) * 100}%`, background: 'var(--ok)' }} />
+                    </div>
+                    <div style={{ fontSize: 10.5, color: 'var(--t3)' }}>{monthLabel(p.month).slice(0, 3)}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ fontSize: 12.5, color: 'var(--t2)', marginTop: 10, lineHeight: 1.5 }}>
+                Verde: líquido · cinza: taxas (loja, imposto ou Asaas, pela taxa real de cada canal). Base: {d.activeSubscribers - d.inTrial} assinantes ativos que já pagaram, pelo vencimento de cada um; quem cancelou a renovação não entra.
+                {d.inTrial > 0 && ` Mais ${d.inTrial} em teste grátis, fora da projeção até a primeira cobrança.`} Pix e 12x do site não renovam sozinhos.
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </>
+  );
+}
+
 // ── Página ──────────────────────────────────────────────────────────────────
 export default function FinancePage() {
   const me = useAdminMe();
@@ -761,6 +835,8 @@ export default function FinancePage() {
             <div className="adm-panel-hdr"><div className="adm-panel-title">Saídas por categoria</div><div className="adm-panel-sub">{RANGE_LABEL[range]} · {brl(expense)}</div></div>
             <div className="adm-panel-body"><CategoryBars rows={byCategory} total={expense || 1} /></div>
           </div>
+
+          <RevenuePanel range={range} />
 
           <AiCostsPanel canWrite={canWrite} onPosted={load} />
 

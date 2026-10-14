@@ -25,6 +25,10 @@ function productLabel(productId?: string): string {
   const p = (productId ?? '').toLowerCase();
   if (p.includes('minutes10')) return 'Pacote 10 min Live Voice';
   if (p.includes('minutes30')) return 'Pacote 30 min Live Voice';
+  if (p === 'web_annual_pix') return 'Plano anual (site, Pix)';
+  if (p === 'web_annual_12x') return 'Plano anual (site, 12x)';
+  if (p === 'web_annual') return 'Plano anual (site, cartão)';
+  if (p === 'web_monthly') return 'Plano mensal (site, cartão)';
   if (p.includes('year') || p.includes('annual')) return 'Plano anual';
   if (p.includes('month')) return 'Plano mensal';
   return productId || 'Assinatura';

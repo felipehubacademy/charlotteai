@@ -17,7 +17,7 @@ export const dynamic = 'force-dynamic';
 const DAY = 86400000;
 const GRACE_DAYS = 3; // tolerância para a cobrança do cartão ser aprovada no dia
 
-type Row = { id: string; user_id: string; plan: WebPlan; trial_days: number; status: string; asaas_customer_id: string | null; asaas_subscription_id: string | null };
+type Row = { id: string; user_id: string; plan: WebPlan; method: string | null; trial_days: number; status: string; asaas_customer_id: string | null; asaas_subscription_id: string | null };
 type Payment = {
   id: string; customer: string; subscription?: string | null; installment?: string | null; installmentNumber?: number | null;
   value: number; netValue?: number | null; billingType?: string; dueDate?: string; paymentDate?: string | null;
@@ -94,7 +94,8 @@ async function revenue(type: 'INITIAL_PURCHASE' | 'RENEWAL' | 'REFUND', row: Row
   // Mesmo formato do evento do RevenueCat: reaproveita Financeiro + comissão de afiliado.
   await recordRevenueEvent({
     type, id: `asaas_${type}_${p.id}`, app_user_id: row.user_id, store: 'ASAAS',
-    product_id: WEB_PRODUCT[row.plan], currency: 'BRL', price_in_purchased_currency: value,
+    // product_id com a forma de pagamento (web_monthly, web_annual, web_annual_pix, web_annual_12x): o Financeiro separa por ela.
+    product_id: row.method && row.method !== row.plan ? `web_${row.method}` : WEB_PRODUCT[row.plan], currency: 'BRL', price_in_purchased_currency: value,
     tax_percentage: 0, commission_percentage: value > 0 ? Math.max(0, (value - net) / value) : 0,
     purchased_at_ms: at.getTime(), transaction_id: p.id, environment: process.env.ASAAS_ENV === 'sandbox' ? 'SANDBOX' : 'PRODUCTION',
   });
