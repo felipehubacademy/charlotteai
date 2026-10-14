@@ -25,6 +25,11 @@ export const PRICING = {
     input:  0.10,
     output: 0.50,
   },
+  // Juiz dos objetivos do Guided Chat e do Role-play
+  'gpt-6-sol': {
+    input:  2.00,
+    output: 10.00,
+  },
   'gpt-4o-mini': {
     input:  0.15,   // USD / 1M input tokens
     output: 0.60,   // USD / 1M output tokens

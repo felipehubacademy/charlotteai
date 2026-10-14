@@ -11,6 +11,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
+import { judgeObjectives } from '@/lib/objective-judge';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 
 export const dynamic = 'force-dynamic';
@@ -388,6 +389,12 @@ export async function POST(request: NextRequest) {
       ...history.map(h => ({ role: h.role, content: h.content })),
       { role: 'user', content: userTranscript },
     ];
+    // Juiz dos objetivos em paralelo (chamada própria, mais consistente que o da resposta).
+    const lastAssistantMsg = [...(history ?? [])].reverse().find(h => h.role === 'assistant')?.content ?? '';
+    const judgePromise = judgeObjectives({
+      objectives: (rp.objectives ?? []) as never, lastAssistant: lastAssistantMsg, studentMessage: userTranscript,
+      level, persona: (rp as { persona?: string }).persona, userId, endpoint: '/api/roleplay/turn',
+    });
     const completion = await openai.chat.completions.create({
       model:           'gpt-4o-mini',
       messages,
@@ -423,6 +430,8 @@ export async function POST(request: NextRequest) {
       console.warn('[roleplay/turn] JSON parse failed, using raw text', e, { rawText });
       clean = rawText;
     }
+    const judged = await judgePromise;
+    if (judged) objectivesMet = judged; // null = juiz falhou: fica o julgamento da resposta
 
     // 4) TTS — never send '...' (TTS would generate gibberish/silent audio
     // and the client would see no text + translate would 400 on empty).
