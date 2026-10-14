@@ -32,7 +32,7 @@ Tocando nas pílulas abre a tela "Seu progresso", com o XP total, o XP ganho hoj
   { section: 'Guia do app', question: 'Onde vejo meu nível?', answer:
 `Na tela Início, o cartão da trilha mostra o nome do nível (Novice, Intermediate ou Advanced), quantos módulos tem e o percentual concluído. Em "Seu progresso" (tocando nas pílulas do topo) aparece "Rumo ao" próximo nível.
 O seletor no cartão da trilha permite espiar a trilha de outros níveis (pré-visualização), sem mudar o seu nível.
-Para refazer o teste de nível: Perfil > Conta > Refazer teste de nível (o resultado substitui o nível atual).` },
+Para fazer o teste de nível: Perfil > Conta > Fazer teste de nível (aparece como Refazer teste de nível depois da primeira vez; o resultado substitui o nível atual). O teste faz parte do plano.` },
   { section: 'Guia do app', question: 'Como funciona a trilha de estudos?', answer:
 `A trilha fica na tela Início. Ela é dividida em módulos e unidades; cada unidade tem atividades de Gramática, Listening & Speaking, Role-play e Guided Chat. Cada atividade concluída destrava a próxima, e cada unidade completa destrava a seguinte.
 Para concluir é preciso atingir o mínimo mostrado na atividade (por exemplo "precisa 70%"). Atividades já feitas podem ser refeitas pelo botão "Refazer". Ao completar o nível, o app oferece a passagem para o próximo.` },
@@ -69,7 +69,7 @@ A trilha, a Gramática, a Pronúncia e o suporte são sempre com a Charlotte.` }
 Pedidos de amizade e convites recebidos aparecem numa linha na tela Início. Para os amigos te acharem, a opção "Aparecer na busca" precisa estar ligada em Perfil > Preferências.` },
   { section: 'Guia do app', question: 'O que tem no Perfil?', answer:
 `Perfil (sua foto na barra de baixo):
-- Conta: Alterar senha e Refazer teste de nível.
+- Conta: Alterar senha e Fazer teste de nível (Refazer teste de nível, depois da primeira vez).
 - Preferências: Sons, Vibração, Voz da Charlotte e Aparecer na busca.
 - Assinatura: situação da assinatura, Gerenciar assinatura e Restaurar compras.
 - Você no Queizy: Minha evolução, Estudar junto e Família Queizy.

@@ -238,7 +238,10 @@ export default function ProfileTab() {
     }
   };
 
+  // Nunca fez o teste: "Fazer" e vai direto. Já fez: "Refazer", com aviso de que troca o nível.
+  const placementDone = profile?.placement_test_done === true;
   const handleRetakePlacementTest = () => {
+    if (!placementDone) { router.push('/(app)/placement-test?direct=1'); return; }
     Alert.alert(
       isPt ? 'Refazer teste de nível' : 'Retake placement test',
       isPt ? 'Isso vai sobrescrever seu nível atual. Deseja continuar?' : 'This will override your current level. Continue?',
@@ -606,7 +609,7 @@ export default function ProfileTab() {
           />
           <SettingRow
             icon={<GraduationCap size={18} color={C.navy} weight="regular" />}
-            label={isPt ? 'Refazer teste de nível' : 'Retake placement test'}
+            label={placementDone ? (isPt ? 'Refazer teste de nível' : 'Retake placement test') : (isPt ? 'Fazer teste de nível' : 'Take placement test')}
             onPress={handleRetakePlacementTest}
             chevron
           />
