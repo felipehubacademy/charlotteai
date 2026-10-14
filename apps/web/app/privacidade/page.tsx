@@ -40,7 +40,7 @@ export default function PrivacidadePage() {
           <p>O controlador dos seus dados pessoais é a <strong>Hub Academy</strong>, responsável pelo aplicativo Queizy.</p>
           <ContactCard
             label="Contato do Encarregado (DPO)"
-            email="privacidade@hubacademybr.com"
+            email="privacidade@queizy.com"
           />
         </Section>
 
@@ -97,7 +97,7 @@ export default function PrivacidadePage() {
             ['ElevenLabs TTS', 'Texto das respostas da Charlotte é enviado para síntese de voz. Nenhuma informação pessoal identificável é transmitida.'],
             ['Azure Speech Services', 'Áudio capturado pelo microfone é enviado ao Azure para reconhecimento de fala e avaliação de pronúncia em tempo real. O áudio é descartado imediatamente após o processamento e não é retido pela Microsoft para fins de treino.'],
           ]} />
-          <p style={{ marginTop: 16 }}>Você pode revogar seu consentimento de uso de IA a qualquer momento entrando em contato pelo e-mail <a href="mailto:privacidade@hubacademybr.com" style={{ color: '#6B4BFF' }}>privacidade@hubacademybr.com</a>, ficando ciente de que o aplicativo não funcionará sem esses serviços.</p>
+          <p style={{ marginTop: 16 }}>Você pode revogar seu consentimento de uso de IA a qualquer momento entrando em contato pelo e-mail <a href="mailto:privacidade@queizy.com" style={{ color: '#6B4BFF' }}>privacidade@queizy.com</a>, ficando ciente de que o aplicativo não funcionará sem esses serviços.</p>
         </Section>
 
         <Section title="7. Retenção de dados">
@@ -123,7 +123,7 @@ export default function PrivacidadePage() {
           ]} />
           <ContactCard
             label="Para exercer seus direitos (resposta em até 15 dias úteis)"
-            email="privacidade@hubacademybr.com"
+            email="privacidade@queizy.com"
           />
         </Section>
 
@@ -146,7 +146,7 @@ export default function PrivacidadePage() {
 
         <Section title="12. Contato e ANPD">
           <p style={{ marginBottom: 16 }}>Para dúvidas ou reclamações:</p>
-          <ContactCard label="Hub Academy — DPO" email="privacidade@hubacademybr.com" />
+          <ContactCard label="Hub Academy — DPO" email="privacidade@queizy.com" />
           <p style={{ marginTop: 16, fontSize: 14, color: '#6b7280' }}>
             Você também pode apresentar reclamação à <strong>Autoridade Nacional de Proteção de Dados (ANPD)</strong>:{' '}
             <a href="https://www.gov.br/anpd" target="_blank" rel="noopener noreferrer" style={{ color: '#6B4BFF' }}>www.gov.br/anpd</a>.
