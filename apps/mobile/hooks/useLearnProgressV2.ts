@@ -15,6 +15,7 @@
  */
 import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
+import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 
 export type V2Activity = 'grammar' | 'speaking' | 'roleplay' | 'chat';
 export type V2Level    = 'Novice' | 'Inter' | 'Advanced';
@@ -56,6 +57,7 @@ export function useLearnProgressV2(
 ) {
   const [rows,    setRows]    = useState<V2Row[]>([]);
   const [loading, setLoading] = useState(true);
+  const { checkForNewAchievements } = useAchievementsContext();
 
   const refetch = useCallback(async () => {
     if (!userId) { setRows([]); setLoading(false); return; }
@@ -164,8 +166,10 @@ export function useLearnProgressV2(
       return [...prev, next];
     });
 
+    // Conquistas da trilha (ex.: primeira lição, módulo concluído): confere depois de salvar.
+    setTimeout(() => { checkForNewAchievements(); }, 1500);
     return next;
-  }, [userId, level, get]);
+  }, [userId, level, get, checkForNewAchievements]);
 
   return {
     loading,
