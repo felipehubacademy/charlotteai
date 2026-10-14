@@ -4,7 +4,7 @@
 // O aluno está logado, então é sempre identificado e confirmado.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { runSupportAgent, guessLang, type SupportTurn } from '@/lib/support-agent';
-import { findUserContext, upsertConversation, logMessage, setConversationStatus, escalate, ticketOpenedText } from '@/lib/support-service';
+import { aiShouldStaySilent, findUserContext, upsertConversation, logMessage, setConversationStatus, escalate, ticketOpenedText } from '@/lib/support-service';
 import { sendDirectPush } from '@/lib/rally';
 
 const WAITING_PT = 'Recebido! A equipe já está com o seu caso e responde por aqui.';
@@ -38,6 +38,9 @@ export async function handleAppMessage(userId: string, rawText: string, lang: 'p
   const convId = await upsertConversation({ channel: 'app', externalId: userId, contact, userId });
   await supabase.from('support_conversations').update({ user_verified: true } as never).eq('id', convId);
   await logMessage({ conversationId: convId, direction: 'in', author: 'user', body: text });
+
+  // Atendente respondeu há pouco, ou é só um "obrigado"/emoji depois da despedida: só registra.
+  if (await aiShouldStaySilent(convId, text)) return getAppChat(userId);
 
   // Atendente cuidando: só confirma o recebimento (uma vez por rodada) e segue na fila.
   if (before?.status === 'escalated') {

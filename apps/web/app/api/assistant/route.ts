@@ -132,6 +132,12 @@ function nameRule(userName?: string, conversationContext?: string): string {
   return `- In this reply, use the student's first name (${first}) once, naturally, in the middle or at the end of a sentence — like a friend would ("That's so cool, ${first}." / "What about you, ${first}?"). Never start the reply with the name.`;
 }
 
+// A análise de gramática do chat só dá a nota e o XP: se demorar, a resposta não espera por ela.
+const GRAMMAR_TIMEOUT_MS = 2500;
+function withTimeout<T>(p: Promise<T>, ms: number): Promise<T | null> {
+  return Promise.race([p, new Promise<null>(r => setTimeout(() => r(null), ms))]);
+}
+
 export async function POST(request: NextRequest) {
   // Extraimos userId antes de abrir o ALS, para que todas as chamadas
   // openai.chat.completions.create nos helpers abaixo sejam logadas
@@ -253,8 +259,8 @@ async function handleTextMessageWithGrammar(
 
     const [grammarResult, charlotteResponse] = await Promise.all([
       // 1. Grammar analysis para technicalFeedback (lightweight, paralela)
-      grammarAnalysisService.analyzeText(transcription, userLevel, userName)
-        .catch((e) => { console.warn('⚠️ Grammar analysis failed:', e?.message); return null; }),
+      withTimeout(grammarAnalysisService.analyzeText(transcription, userLevel, userName)
+        .catch((e) => { console.warn('⚠️ Grammar analysis failed:', e?.message); return null; }), GRAMMAR_TIMEOUT_MS),
       // 2. Charlotte's conversational response (independent)
       generateContextualFeedbackDirect(transcription, userLevel, userName, conversationContext),
     ]);
@@ -1950,7 +1956,7 @@ React like a real person:
         max_tokens: 90,
         temperature: 0.7,
       }),
-      grammarAnalysisService.analyzeText(transcription, 'Inter', userName).catch(() => null),
+      withTimeout(grammarAnalysisService.analyzeText(transcription, 'Inter', userName).catch(() => null), GRAMMAR_TIMEOUT_MS),
     ]);
 
     const assistantResponse = completion.choices[0]?.message?.content;

@@ -9,7 +9,11 @@
 // Todas as chamadas passam por aiFetch: SDK (new OpenAI({ fetch: aiFetch })) e fetch direto.
 
 const DEFAULT_REMAP: Record<string, string> = {
-  // Virada para o gpt-6-luna depois do teste lado a lado. Vazio = cada chamada usa o modelo que pediu.
+  // Virada em 2026-10-14, depois do teste lado a lado (qualidade igual ou melhor, mais barato).
+  // Para voltar um modelo: AI_MODEL_REMAP na Vercel, ex.: "gpt-4o-mini=gpt-4o-mini".
+  'gpt-4o-mini': 'gpt-6-luna',
+  'gpt-4.1-mini': 'gpt-6-luna',
+  'gpt-4o': 'gpt-6-luna',
 };
 
 function envRemap(): Record<string, string> {
@@ -51,6 +55,10 @@ export function adaptChatBody<T extends Record<string, any>>(body: T): T {
     delete out.max_tokens;
     // Respostas curtas e rápidas, como os modelos antigos: sem raciocínio longo.
     if (out.reasoning_effort == null) out.reasoning_effort = 'none';
+    // Os modelos novos gostam de **negrito**; o app mostra texto puro. Avisa uma vez, no topo.
+    if (Array.isArray(out.messages)) {
+      out.messages = [{ role: 'system', content: 'Write plain text only: never use Markdown (no **, no #, no bullet markup) unless the instructions below explicitly ask for it.' }, ...out.messages];
+    }
   }
   return out as T;
 }

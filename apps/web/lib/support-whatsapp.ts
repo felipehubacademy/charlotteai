@@ -3,7 +3,7 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendWhatsAppText, markWhatsAppRead, type IncomingWhatsApp } from '@/lib/whatsapp';
 import { runSupportAgent, type SupportTurn, type SupportUserContext } from '@/lib/support-agent';
-import { findUserContext, upsertConversation, logMessage, setConversationStatus, escalate, ticketOpenedText } from '@/lib/support-service';
+import { aiShouldStaySilent, findUserContext, upsertConversation, logMessage, setConversationStatus, escalate, ticketOpenedText } from '@/lib/support-service';
 
 const NOT_TEXT = 'Por enquanto eu só consigo ler mensagens de texto. Pode escrever a sua dúvida?';
 const EMAIL_RE = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
@@ -53,8 +53,12 @@ export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
   } as never);
   if (dup) return; // outra execução já pegou esta mensagem
 
-  // Atendente cuidando: só registra (o ticket segue na fila e entra no aviso por e-mail se demorar).
-  if (conv0?.status === 'escalated') return;
+  // Atendente respondeu há pouco, ou é só um "obrigado"/emoji depois da despedida: só registra.
+  if (m.text && await aiShouldStaySilent(convId, m.text)) return;
+  // Chamado aberto e ainda sem atendente: a IA segue respondendo o que a FAQ cobre (o aluno não
+  // espera horas por uma dúvida simples); o que ela não resolve continua na fila.
+  const waitingHuman = conv0?.status === 'escalated';
+  if (waitingHuman && !m.text) return;
 
   if (!m.text) {
     await reply(convId, m.from, NOT_TEXT, 'midia');
@@ -82,10 +86,12 @@ export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
 
   if (decision.autoSend) {
     await reply(convId, m.from, decision.reply, decision.intent);
-    // "Obrigado, resolveu": despedida e atendimento encerrado na hora.
+    // "Obrigado, resolveu": despedida e atendimento encerrado na hora (fecha também o chamado em espera).
     await setConversationStatus(convId, decision.intent === 'encerramento' ? 'closed' : 'auto_resolved');
     return;
   }
+  // Já está na fila do atendente: não abre outro chamado nem repete o aviso.
+  if (waitingHuman) return;
   // Pedido de e-mail ou do botão do app para identificar (sem caso para humano ainda): responde e segue com a IA.
   if (!decision.needsHuman && decision.reply && !verified && /e-?mail|Falar no WhatsApp/i.test(decision.reply)) {
     await reply(convId, m.from, decision.reply, decision.intent);

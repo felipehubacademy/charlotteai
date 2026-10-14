@@ -237,3 +237,31 @@ export function supportReplyHtml(text: string): string {
   const safe = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\n/g, '<br>');
   return emailBase(`${emailP(safe, false)}${emailNote('Equipe Queizy · Hub Academy Ltda. É só responder este e-mail para continuar a conversa.')}`);
 }
+
+// ── Quando a IA deve ficar quieta ────────────────────────────────────────────
+
+/** Só agradecimento, "ok", "já consegui" ou emoji: não é pergunta nova. */
+export function isPureAck(text: string): boolean {
+  const t = text.trim().toLowerCase().replace(/[!.,\s]+/g, ' ').trim();
+  if (!t) return true;
+  if (/^[\p{Extended_Pictographic}\p{Emoji_Component}\s]+$/u.test(text.trim())) return true;
+  return /^(obrigad[oa]s?|muito obrigad[oa]|valeu|vlw|brigad[oa]|ok|okay|blz|beleza|show|perfeito|top|certo|entendi|ja consegui|já consegui|consegui|deu certo|resolvido|resolveu|thanks|thank you|thx|great|perfect|got it)( [\p{Extended_Pictographic}\p{L} ]{0,20})?$/u.test(t);
+}
+
+/**
+ * Quem responde a próxima mensagem do aluno: a IA, ninguém (silêncio) ou o atendente.
+ *  - Atendente respondeu nas últimas 2 h: a conversa é dele; a IA não entra.
+ *  - Agradecimento/emoji logo depois de uma despedida (30 min): não manda outra despedida.
+ */
+export async function aiShouldStaySilent(conversationId: string, text: string): Promise<boolean> {
+  const supabase = getSupabaseAdmin();
+  const { data } = await supabase.from('support_messages').select('author, intent, created_at')
+    .eq('conversation_id', conversationId).eq('direction', 'out').order('created_at', { ascending: false }).limit(10);
+  const outs = (data ?? []) as { author: string; intent: string | null; created_at: string }[];
+  const now = Date.now();
+  const humanRecent = outs.some(o => o.author === 'human' && now - new Date(o.created_at).getTime() < 2 * 3600000);
+  if (humanRecent) return true;
+  const last = outs[0];
+  const closedRecently = !!last && last.intent === 'encerramento' && now - new Date(last.created_at).getTime() < 30 * 60000;
+  return closedRecently && isPureAck(text);
+}
