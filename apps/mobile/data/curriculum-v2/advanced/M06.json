@@ -112,6 +112,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites three compressed narrations using present participle clauses to open each.",
+        "scenario_pt": "Charlotte convida para três narrações comprimidas usando orações de particípio presente para abrir cada uma.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -120,6 +121,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Ação simultânea (walking/looking)",
             "label_en": "Simultaneous action (walking/looking)",
             "hidden_prompt": "user uses '-ing clause + main clause with same subject'",
             "hint_en": "Walking to work this morning, I realised I'd left my laptop at home.",
@@ -138,6 +140,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Ação de fundo + ação principal",
             "label_en": "Background action + main action",
             "hidden_prompt": "user uses '-ing clause' for ongoing background",
             "hint_en": "Sitting in the café, I overheard a strange conversation.",
@@ -156,6 +159,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Causa com oração -ing",
             "label_en": "Cause with -ing clause",
             "hidden_prompt": "user uses '-ing clause' as causal",
             "hint_en": "Knowing she was tired, I offered to drive.",
@@ -187,10 +191,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte writes vignettes. Match her with participle openings.",
+        "intro_pt": "Charlotte escreve vinhetas. Combine com ela usando aberturas com particípios.",
         "opening_message": "Walking past my old school last week, I felt fifteen all over again. What did your last walk make you feel?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Vinheta começando com -ing",
             "label_en": "Vignette with opening -ing",
             "hidden_prompt": "user uses '-ing clause + main clause'",
             "hint_en": "Walking through my neighbourhood, I noticed three new cafés had appeared.",
@@ -209,6 +215,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Aprofundar com outro -ing",
             "label_en": "Deepen with another -ing",
             "hidden_prompt": "user uses another participle clause",
             "hint_en": "Crossing the bridge, I realised I hadn't done that walk in years.",
@@ -227,6 +234,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her school walk",
             "hint_en": "What changed at your school?",
@@ -333,6 +341,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks for three descriptions opening with past participle (-ed) clauses.",
+        "scenario_pt": "Charlotte pede três descrições começando com cláusulas de past participle (-ed).",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -341,6 +350,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Construção/criação",
             "label_en": "Construction/creation",
             "hidden_prompt": "user uses 'Built/Made/Designed + by/in + clause + main'",
             "hint_en": "Built in 1872, the old town hall still hosts weekly markets.",
@@ -359,6 +369,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Biografia ('Born in...')",
             "label_en": "Biography ('Born in...')",
             "hidden_prompt": "user uses 'Born + place/time, + main clause'",
             "hint_en": "Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms.",
@@ -377,6 +388,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Característica passiva",
             "label_en": "Passive characteristic",
             "hidden_prompt": "user uses another past participle opener",
             "hint_en": "Surrounded by trees on three sides, the cabin is invisible from the road.",
@@ -408,10 +420,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte sketches places and lives. Use past participle clauses.",
+        "intro_pt": "Charlotte esboça lugares e vidas. Use cláusulas de particípio passado.",
         "opening_message": "Founded by a former monk, the little bookshop on my street has been there for forty years. Tell me about a place near you.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Lugar com abertura de particípio passado",
             "label_en": "Place with past participle opener",
             "hidden_prompt": "user uses 'Past participle clause, + main'",
             "hint_en": "Built in the 1930s, my building has the kind of doors they don't make anymore.",
@@ -430,6 +444,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Pessoa ou tradição",
             "label_en": "Person or tradition",
             "hidden_prompt": "user uses another past participle compression",
             "hint_en": "Raised on her grandmother's stories, my daughter now tells better ones than I do.",
@@ -447,6 +462,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about the bookshop",
             "hint_en": "Does the monk still work there?",
@@ -550,6 +566,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites three \"Having + past participle\" openers for stories or arguments.",
+        "scenario_pt": "Charlotte convida para três aberturas com \"Having + past participle\" para histórias ou argumentos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -558,6 +575,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Sequência temporal ('Having finished')",
             "label_en": "Time sequence ('Having finished')",
             "hidden_prompt": "user uses 'Having + past participle + main clause'",
             "hint_en": "Having finished my morning run, I felt ready for the meeting.",
@@ -576,6 +594,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Falar sobre longa experiência ('Having lived/worked')",
             "label_en": "Long experience ('Having lived/worked')",
             "hidden_prompt": "user uses 'Having + past participle' for long experience",
             "hint_en": "Having worked from home for two years, I forgot how loud offices are.",
@@ -594,6 +613,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Marcador discursivo 'Having said that'",
             "label_en": "Discourse marker 'Having said that'",
             "hidden_prompt": "user uses 'Having said that, + clause'",
             "hint_en": "I disagree with him on most things. Having said that, he's a good colleague.",
@@ -625,10 +645,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte sequences experiences. Use 'Having + past participle' openers.",
+        "intro_pt": "Charlotte sequencia experiências. Use aberturas com 'Having + past participle'.",
         "opening_message": "Having taught for fifteen years, I finally feel I'm starting to understand my students. What's something experience clarified for you?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Experiência + insight",
             "label_en": "Experience + insight",
             "hidden_prompt": "user uses 'Having + past participle + clause'",
             "hint_en": "Having managed people for ten years, I finally learned to stop solving for them.",
@@ -647,6 +669,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Adicionar com 'Having said that'",
             "label_en": "Add with 'Having said that'",
             "hidden_prompt": "user uses 'Having said that, + clause'",
             "hint_en": "Having said that, every team still finds a way to surprise me.",
@@ -665,6 +688,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for one specific student lesson",
             "hint_en": "What did students teach you?",
@@ -768,6 +792,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks for three \"Having been...\" openers — passive events that shaped you or someone you know.",
+        "scenario_pt": "Charlotte pede três aberturas com \"Having been...\" — eventos passivos que moldaram você ou alguém que você conhece.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -776,6 +801,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Criação ou educação ('raised/educated')",
             "label_en": "Upbringing or education ('raised/educated')",
             "hidden_prompt": "user uses 'Having been raised/educated/taught + clause'",
             "hint_en": "Having been raised by two musicians, I can't imagine a quiet house.",
@@ -794,6 +820,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Receber notícia ou aviso",
             "label_en": "Receiving news or warning",
             "hidden_prompt": "user uses 'Having been told/warned/informed'",
             "hint_en": "Having been warned about the traffic, I left an hour earlier.",
@@ -811,6 +838,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Experiência formativa repetida",
             "label_en": "Repeated formative experience",
             "hidden_prompt": "user uses 'Having been + past participle' for repeated event",
             "hint_en": "Having been overlooked at three previous companies, she finally spoke up at this one.",
@@ -842,10 +870,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites a layered portrait. Use 'Having been + past participle' openers.",
+        "intro_pt": "Charlotte convida para um retrato em camadas. Use aberturas com 'Having been + past participle'.",
         "opening_message": "Having been mentored by one careful teacher in my twenties, I still hear her edits when I write. Who shaped you most?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pessoa que te moldou (passivo)",
             "label_en": "Person who shaped you (passive)",
             "hidden_prompt": "user uses 'Having been + past participle + by + person'",
             "hint_en": "Having been taught patience by my grandfather, I find rushing strange.",
@@ -864,6 +894,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra experiência formativa",
             "label_en": "Another formative experience",
             "hidden_prompt": "user uses another 'Having been + past participle'",
             "hint_en": "Having been pushed too hard early on, I now coach my team gently.",
@@ -882,6 +913,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her mentor's edits",
             "hint_en": "What did she edit out?",
@@ -983,6 +1015,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks for three compressions — two reduced relatives, one \"with + noun + ing/ed\" clause.",
+        "scenario_pt": "Charlotte pede três compressões — duas relativas reduzidas, uma cláusula \"with + noun + ing/ed\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -991,6 +1024,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Relativa reduzida ativa (-ing)",
             "label_en": "Reduced relative active (-ing)",
             "hidden_prompt": "user uses 'the X + -ing'",
             "hint_en": "The woman standing at the bar gave me a long look.",
@@ -1009,6 +1043,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Relativa reduzida passiva (-ed)",
             "label_en": "Reduced relative passive (-ed)",
             "hidden_prompt": "user uses 'the X + past participle'",
             "hint_en": "The letter sent last week never reached him.",
@@ -1027,6 +1062,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Circunstância com 'with + substantivo + -ing/-ed'",
             "label_en": "Circumstance with 'with + noun + -ing/-ed'",
             "hidden_prompt": "user uses 'With + noun + -ing/-ed, + main clause'",
             "hint_en": "With my hands shaking, I signed the agreement.",
@@ -1058,10 +1094,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte builds vivid scenes. Use reduced relatives and with-clauses.",
+        "intro_pt": "Charlotte constrói cenas vívidas. Use reduced relatives e with-clauses.",
         "opening_message": "The café, packed with morning regulars and warmed by the smell of fresh bread, was where I made the call. Where did you make a big call recently?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Cena com relativa reduzida",
             "label_en": "Scene with reduced relative",
             "hidden_prompt": "user uses past participle reduced relative for scene",
             "hint_en": "The park, lit only by a single streetlight, is where I called my mother.",
@@ -1080,6 +1118,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Detalhar com oração 'with'",
             "label_en": "Detail with 'with' clause",
             "hidden_prompt": "user uses 'With + noun + -ing/-ed'",
             "hint_en": "With my heart pounding, I told her the news.",
@@ -1098,6 +1137,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte who she called",
             "hint_en": "Who did you call?",

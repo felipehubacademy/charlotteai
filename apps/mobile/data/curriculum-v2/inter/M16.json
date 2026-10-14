@@ -148,6 +148,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você dê instruções formais para uma equipe — usando modal passive (\"must be done, should be sent...\").",
+        "scenario_pt": "Charlotte pede que você dê instruções formais para uma equipe — usando modal passive (\"must be done, should be sent...\").",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -156,6 +157,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Dar instrução com 'must be'",
             "label_en": "Instruction with 'must be'",
             "hidden_prompt": "user uses 'X must be + past participle'",
             "hint_en": "The reports must be submitted by Friday.",
@@ -175,6 +177,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Recomendação com 'should be'",
             "label_en": "Recommendation with 'should be'",
             "hidden_prompt": "user uses 'X should be + past participle'",
             "hint_en": "Emails should be checked twice a day.",
@@ -194,6 +197,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Requisito com 'have to be'",
             "label_en": "Requirement with 'have to be'",
             "hidden_prompt": "user uses 'X has/have to be + past participle'",
             "hint_en": "Documents have to be signed before submission.",
@@ -226,10 +230,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte talks about rules. Use modal passives for what should/must be done.",
+        "intro_pt": "Charlotte fala sobre regras. Use modal passives para o que deve/tem que ser feito.",
         "opening_message": "What's one rule that must be followed at your work?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Regra com 'must be'",
             "label_en": "Rule with 'must be'",
             "hidden_prompt": "user uses 'X must be + past participle'",
             "hint_en": "Phones must be silenced during meetings.",
@@ -249,6 +255,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra regra com modal passive",
             "label_en": "Another rule with modal passive",
             "hidden_prompt": "user uses 'should be' or 'have to be' + past participle",
             "hint_en": "Emails should be answered within 24 hours.",
@@ -268,6 +275,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her workplace rules",
             "hint_en": "What's a rule at your work?",
@@ -421,6 +429,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você anuncie três eventos futuros — usando \"will be / is going to be + past participle\".",
+        "scenario_pt": "Charlotte pede que você anuncie três eventos futuros — usando \"will be / is going to be + past participle\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -429,6 +438,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Anúncio com 'will be'",
             "label_en": "Announcement with 'will be'",
             "hidden_prompt": "user uses 'X will be + past participle'",
             "hint_en": "The results will be announced on Friday.",
@@ -448,6 +458,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Plano com 'is going to be'",
             "label_en": "Plan with 'is going to be'",
             "hidden_prompt": "user uses 'X is/are going to be + past participle'",
             "hint_en": "A new park is going to be built downtown.",
@@ -467,6 +478,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Outro evento futuro passivo",
             "label_en": "Another future event passive",
             "hidden_prompt": "user uses another future passive",
             "hint_en": "The conference will be held in Rio.",
@@ -499,10 +511,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares future plans. Use 'will be' and 'going to be' + past participle.",
+        "intro_pt": "Charlotte compartilha planos futuros. Use 'will be' e 'going to be' + past participle.",
         "opening_message": "What's going to be built or changed in your city soon?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Plano futuro com 'is going to be'",
             "label_en": "Future plan with 'is going to be'",
             "hidden_prompt": "user uses 'X is going to be + past participle'",
             "hint_en": "A new metro line is going to be built.",
@@ -522,6 +536,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro plano futuro passivo",
             "label_en": "Another future passive plan",
             "hidden_prompt": "user uses 'will be + past participle'",
             "hint_en": "The old market will be renovated.",
@@ -541,6 +556,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about upcoming plans in her area",
             "hint_en": "What's going to be built in your area?",
@@ -694,6 +710,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte aponta 3 coisas — uma obra de arte, um livro, uma comida — e quer saber quem as criou, em passive com \"by\".",
+        "scenario_pt": "Charlotte aponta 3 coisas — uma obra de arte, um livro, uma comida — e quer saber quem as criou, usando passive com \"by\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -702,6 +719,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Obra de arte com 'by'",
             "label_en": "Artwork with 'by'",
             "hidden_prompt": "user uses 'X was painted/created by + person'",
             "hint_en": "Guernica was painted by Picasso.",
@@ -718,6 +736,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Livro com 'by'",
             "label_en": "Book with 'by'",
             "hidden_prompt": "user uses 'X was written by + author'",
             "hint_en": "Dom Casmurro was written by Machado de Assis.",
@@ -734,6 +753,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Comida ou objeto com 'by'",
             "label_en": "Food or object with 'by'",
             "hidden_prompt": "user uses 'X was made/cooked by + person'",
             "hint_en": "The cake was made by my grandmother.",
@@ -763,10 +783,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores favorite creators. Use 'by + person' in passive.",
+        "intro_pt": "Charlotte explora criadores favoritos. Use 'by + pessoa' na voz passiva.",
         "opening_message": "What's your favorite book and who was it written by?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Livro favorito + autor",
             "label_en": "Favorite book + author",
             "hidden_prompt": "user uses 'X was written by + author'",
             "hint_en": "My favorite book was written by Jorge Amado.",
@@ -783,6 +805,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro favorito (filme, música)",
             "label_en": "Another favorite (film, music)",
             "hidden_prompt": "user uses 'X was directed/composed/sung by + person'",
             "hint_en": "My favorite song was sung by Caetano.",
@@ -799,6 +822,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her favorites",
             "hint_en": "What's your favorite book and by whom?",
@@ -952,6 +976,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta sobre eventos da sua vida — mudanças, acidentes, conquistas — e quer ouvir 3 com \"get + past participle\".",
+        "scenario_pt": "Charlotte quer saber de eventos marcantes na sua vida. Pratica 'get + past participle' em três exemplos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -960,6 +985,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Falar sobre evento de vida com 'got + past participle'",
             "label_en": "Life event with 'got + past participle'",
             "hidden_prompt": "user uses 'X got married/hired/promoted/engaged'",
             "hint_en": "I got married three years ago.",
@@ -979,6 +1005,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Falar sobre acidente ou problema com 'got'",
             "label_en": "Accident or problem with 'got'",
             "hidden_prompt": "user uses 'X got hurt/lost/stolen'",
             "hint_en": "I got lost on my first day in São Paulo.",
@@ -998,6 +1025,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Outro 'get' passivo",
             "label_en": "Another 'get' passive",
             "hidden_prompt": "user uses another 'got + past participle'",
             "hint_en": "My car got stolen last year.",
@@ -1030,10 +1058,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares a quick story. Use 'got + past participle' naturally.",
+        "intro_pt": "Charlotte compartilha uma história rápida. Use 'got + past participle' naturalmente.",
         "opening_message": "I got soaked in the rain yesterday. Has something like that happened to you?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "História com 'got'",
             "label_en": "Story with 'got'",
             "hidden_prompt": "user uses 'I got + past participle'",
             "hint_en": "I got stuck in traffic for two hours.",
@@ -1053,6 +1083,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro evento com 'got'",
             "label_en": "Another event with 'got'",
             "hidden_prompt": "user uses another 'got + past participle'",
             "hint_en": "My bag got soaked too.",
@@ -1072,6 +1103,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her event",
             "hint_en": "How did you get home?",
@@ -1223,6 +1255,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede 4 sentenças passivas — uma modal, uma futura, uma com agente, uma com \"get\" — variedade total.",
+        "scenario_pt": "Charlotte pede 4 sentenças passivas — uma modal, uma futura, uma com agente, uma com \"get\" — variedade total.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1231,6 +1264,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Passiva modal",
             "label_en": "Modal passive",
             "hidden_prompt": "user uses 'modal + be + past participle'",
             "hint_en": "The report must be sent today.",
@@ -1247,6 +1281,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Futuro passivo ou agente passivo",
             "label_en": "Future passive or agent passive",
             "hidden_prompt": "user uses 'will be + past participle' or 'was + past participle + by'",
             "hint_en": "The book was written by a famous author.",
@@ -1263,6 +1298,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Passivo informal com get",
             "label_en": "Informal get passive",
             "hidden_prompt": "user uses 'got + past participle'",
             "hint_en": "I got promoted last month.",
@@ -1292,10 +1328,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte mixes professional and personal. Use all passive forms.",
+        "intro_pt": "Charlotte mistura o profissional e o pessoal. Use todas as formas passivas.",
         "opening_message": "What's been finished, what's being done, and what will be done at your work this month?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "O que foi feito (present perfect passive)",
             "label_en": "What's been done (present perfect passive)",
             "hidden_prompt": "user uses 'has/have been + past participle'",
             "hint_en": "The website has been redesigned.",
@@ -1312,6 +1350,7 @@
           },
           {
             "id": 2,
+            "label_pt": "O que está sendo feito (present continuous passive)",
             "label_en": "What's being done (present continuous passive)",
             "hidden_prompt": "user uses 'is/are being + past participle'",
             "hint_en": "New features are being tested.",
@@ -1328,6 +1367,7 @@
           },
           {
             "id": 3,
+            "label_pt": "O que será feito",
             "label_en": "What will be done",
             "hidden_prompt": "user uses 'will be + past participle'",
             "hint_en": "A new version will be released next month.",

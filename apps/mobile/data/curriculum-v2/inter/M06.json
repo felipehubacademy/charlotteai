@@ -148,6 +148,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks your weekend plans — uncertain.",
+        "scenario_pt": "Charlotte pergunta sobre seus planos para o fim de semana — incertos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -156,6 +157,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Possibilidade com might",
             "label_en": "Possibility with might",
             "hidden_prompt": "user uses 'I might + base'",
             "hint_en": "I might go hiking.",
@@ -175,6 +177,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra possibilidade",
             "label_en": "Another possibility",
             "hidden_prompt": "user uses another 'might + base'",
             "hint_en": "I might stay home.",
@@ -194,6 +197,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Falar sobre alguém",
             "label_en": "About someone",
             "hidden_prompt": "user uses 'X might + base'",
             "hint_en": "My friend might join me.",
@@ -225,10 +229,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about uncertain plans. Practice 'might'.",
+        "intro_pt": "Charlotte pergunta sobre planos incertos. Pratique 'might'.",
         "opening_message": "Anything you might do tomorrow?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Possibilidade",
             "label_en": "Possibility",
             "hidden_prompt": "user uses 'I might + base'",
             "hint_en": "I might work from home.",
@@ -248,6 +254,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro",
             "label_en": "Another",
             "hidden_prompt": "user uses another 'might'",
             "hint_en": "I might exercise.",
@@ -267,6 +274,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What might you do?'",
             "hint_en": "What might you do?",
@@ -416,6 +424,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte chats about probabilities for tomorrow.",
+        "scenario_pt": "Charlotte conversa sobre probabilidades para amanhã.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -424,6 +433,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Possibilidade com may",
             "label_en": "Possibility with may",
             "hidden_prompt": "user uses 'It/She/He may + base'",
             "hint_en": "It may rain.",
@@ -443,6 +453,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro com may",
             "label_en": "Another with may",
             "hidden_prompt": "user uses another may + base",
             "hint_en": "She may come over.",
@@ -462,6 +473,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Pedido formal com May I",
             "label_en": "Formal request with May I",
             "hidden_prompt": "user uses 'May I + base?'",
             "hint_en": "May I ask a favor?",
@@ -493,10 +505,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks formal-style possibilities. Practice 'may'.",
+        "intro_pt": "Charlotte pede possibilidades em estilo formal. Pratique 'may'.",
         "opening_message": "Anything that may happen next week?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Possibilidade",
             "label_en": "Possibility",
             "hidden_prompt": "user uses 'X may + base'",
             "hint_en": "I may travel.",
@@ -516,6 +530,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro",
             "label_en": "Another",
             "hidden_prompt": "user uses another may",
             "hint_en": "My boss may call me.",
@@ -535,6 +550,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What may you do?'",
             "hint_en": "What may you do?",
@@ -687,6 +703,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte considers options with you.",
+        "scenario_pt": "Charlotte considera opções com você.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -695,6 +712,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Sugestão com could",
             "label_en": "Suggestion with could",
             "hidden_prompt": "user uses 'We could + base'",
             "hint_en": "We could go hiking.",
@@ -711,6 +729,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra sugestão",
             "label_en": "Another suggestion",
             "hidden_prompt": "user uses another could + base",
             "hint_en": "We could see a movie.",
@@ -727,6 +746,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Solicitar com Could you",
             "label_en": "Request with Could you",
             "hidden_prompt": "user uses 'Could you + base?'",
             "hint_en": "Could you drive?",
@@ -755,10 +775,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte brainstorms possibilities with you. Practice 'could'.",
+        "intro_pt": "Charlotte faz um brainstorm de possibilidades com você. Pratique 'could'.",
         "opening_message": "I'm bored — what could I do?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Sugestão",
             "label_en": "Suggestion",
             "hidden_prompt": "user uses 'You could + base'",
             "hint_en": "You could read a book.",
@@ -775,6 +797,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro",
             "label_en": "Another",
             "hidden_prompt": "user uses another could",
             "hint_en": "You could call a friend.",
@@ -791,6 +814,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Mais um ou perguntar",
             "label_en": "One more or ask",
             "hidden_prompt": "user uses one more 'could' or asks",
             "hint_en": "You could try yoga.",
@@ -942,6 +966,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte shares surprising news — you express disbelief with can't.",
+        "scenario_pt": "Charlotte compartilha notícias surpreendentes — você expressa descrença com can't.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -950,6 +975,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Expressar descrença com can't",
             "label_en": "Express disbelief with can't",
             "hidden_prompt": "user uses 'That can't be true' or similar",
             "hint_en": "That can't be true!",
@@ -966,6 +992,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Mais ceticismo",
             "label_en": "More skepticism",
             "hidden_prompt": "user uses 'It can't be + adjective'",
             "hint_en": "It can't be that easy.",
@@ -982,6 +1009,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Fazer conclusão lógica",
             "label_en": "Logical conclusion",
             "hidden_prompt": "user uses 'X can't be + state'",
             "hint_en": "He can't be lying.",
@@ -1011,10 +1039,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares surprising news. React with 'can't'.",
+        "intro_pt": "Charlotte compartilha notícias surpreendentes. Reaja com 'can't'.",
         "opening_message": "My friend says she met a celebrity!",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Reagir com descrença",
             "label_en": "React with disbelief",
             "hidden_prompt": "user uses 'That can't + base'",
             "hint_en": "That can't be true!",
@@ -1031,6 +1061,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Mais ceticismo",
             "label_en": "More skepticism",
             "hidden_prompt": "user uses another can't",
             "hint_en": "It can't be possible.",
@@ -1047,6 +1078,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar mais",
             "label_en": "Ask more",
             "hidden_prompt": "user asks for more info",
             "hint_en": "Are you sure?",
@@ -1204,6 +1236,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte presents scenarios — you react with appropriate modal.",
+        "scenario_pt": "Charlotte apresenta cenários — reaja com o modal apropriado.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1212,6 +1245,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Possibilidade com might/could",
             "label_en": "Possibility with might/could",
             "hidden_prompt": "user uses might/could + base",
             "hint_en": "She might be home.",
@@ -1231,6 +1265,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Impossibilidade com can't",
             "label_en": "Impossibility with can't",
             "hidden_prompt": "user uses 'can't + base' for impossibility",
             "hint_en": "That can't be right.",
@@ -1250,6 +1285,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Pedido formal com May I",
             "label_en": "Formal request with May I",
             "hidden_prompt": "user uses 'May I + base?'",
             "hint_en": "May I ask a question?",
@@ -1282,10 +1318,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites integrated modal practice.",
+        "intro_pt": "Charlotte convida para prática integrada de modais.",
         "opening_message": "Tell me three things using possibility modals.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Possibilidade",
             "label_en": "Possibility",
             "hidden_prompt": "user uses might/may/could + base",
             "hint_en": "I might travel.",
@@ -1305,6 +1343,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra ou impossibilidade",
             "label_en": "Another or impossibility",
             "hidden_prompt": "user uses another modal",
             "hint_en": "She can't be busy now.",
@@ -1324,6 +1363,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What might/could you do?'",
             "hint_en": "What might you do?",

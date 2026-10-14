@@ -151,6 +151,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conta sobre perguntas que pessoas fizeram a ela — você reporta as perguntas yes/no com \"if\".",
+        "scenario_pt": "Charlotte conta sobre perguntas que pessoas fizeram a ela — você reporta as perguntas yes/no com \"if\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -159,6 +160,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Sim/não reportado (presente → passado)",
             "label_en": "Yes/no reported (present → past)",
             "hidden_prompt": "user uses 'X asked if I + past tense'",
             "hint_en": "She asked if I had time.",
@@ -175,6 +177,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro sim/não (modal)",
             "label_en": "Another yes/no (modal)",
             "hidden_prompt": "user uses 'asked if I could/would'",
             "hint_en": "He asked if I could help him.",
@@ -191,6 +194,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Pergunta com 'whether'",
             "label_en": "Question with 'whether'",
             "hidden_prompt": "user uses 'asked whether'",
             "hint_en": "She wanted to know whether I had read the book.",
@@ -220,10 +224,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte recalls an interview. Report yes/no questions with 'if/whether'.",
+        "intro_pt": "Charlotte relembra uma entrevista. Relate perguntas de sim/não com 'if/whether'.",
         "opening_message": "The interviewer asked me if I had experience with project management. What did she ask?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Relatar a pergunta da entrevista",
             "label_en": "Report the interview question",
             "hidden_prompt": "user uses 'She asked if you had experience'",
             "hint_en": "She asked if you had experience with project management.",
@@ -240,6 +246,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Relatar outra pergunta",
             "label_en": "Report another question",
             "hidden_prompt": "user reports another yes/no question",
             "hint_en": "She also asked if you could start in two weeks.",
@@ -256,6 +263,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about the outcome",
             "hint_en": "Did you get the job?",
@@ -406,6 +414,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conta sobre perguntas curiosas que fizeram a ela — você reporta as WH-questions.",
+        "scenario_pt": "Charlotte conta sobre perguntas curiosas que fizeram a ela — você reporta as WH-questions.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -414,6 +423,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Relatar com 'where/when'",
             "label_en": "Report with 'where/when'",
             "hidden_prompt": "user uses 'X asked where/when I + past tense'",
             "hint_en": "He asked where I worked.",
@@ -430,6 +440,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Relatar com 'what/how'",
             "label_en": "Report with 'what/how'",
             "hidden_prompt": "user uses 'X asked what/how + subject + past tense'",
             "hint_en": "She asked how I had learned English.",
@@ -446,6 +457,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Relatar com 'why/who'",
             "label_en": "Report with 'why/who'",
             "hidden_prompt": "user uses 'X asked why/who + subject + past tense'",
             "hint_en": "He asked why I had moved.",
@@ -475,10 +487,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte recalls a Q&A. Use WH-reported speech.",
+        "intro_pt": "Charlotte relembra um Q&A. Use WH-reported speech.",
         "opening_message": "My boss asked me why I had missed the meeting. What did he ask?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Relatar a pergunta dele",
             "label_en": "Report his question",
             "hidden_prompt": "user uses 'He asked why you had missed the meeting'",
             "hint_en": "He asked why you had missed the meeting.",
@@ -495,6 +509,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra pergunta WH",
             "label_en": "Another WH-question",
             "hidden_prompt": "user reports another WH-question",
             "hint_en": "He also asked what you had been working on.",
@@ -511,6 +526,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for more details",
             "hint_en": "What did you say?",
@@ -664,6 +680,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta sobre ordens recentes que você recebeu — você reporta com \"told me to\" e \"told me not to\".",
+        "scenario_pt": "Charlotte quer saber de ordens recentes que você recebeu. Pratica 'told me to' e 'told me not to'.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -672,6 +689,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Comando com 'told me to'",
             "label_en": "Command with 'told me to'",
             "hidden_prompt": "user uses 'X told me to + base'",
             "hint_en": "My boss told me to send the report.",
@@ -688,6 +706,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Comando negativo 'told me not to'",
             "label_en": "Negative command 'told me not to'",
             "hidden_prompt": "user uses 'X told me not to + base'",
             "hint_en": "My mom told me not to worry.",
@@ -704,6 +723,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Outro comando relatado",
             "label_en": "Another reported command",
             "hidden_prompt": "user uses another 'told + person + to + base'",
             "hint_en": "The doctor told me to drink more water.",
@@ -733,10 +753,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares orders she received. Practice 'told me to + base'.",
+        "intro_pt": "Charlotte compartilha ordens que recebeu. Pratique 'told me to + base'.",
         "opening_message": "My doctor told me to exercise more. What did she tell me?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Relatar o comando dela",
             "label_en": "Report her command",
             "hidden_prompt": "user uses 'She told you to exercise more'",
             "hint_en": "She told you to exercise more.",
@@ -753,6 +775,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro comando relatado",
             "label_en": "Another reported command",
             "hidden_prompt": "user reports another command",
             "hint_en": "She also told you to drink less coffee.",
@@ -769,6 +792,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if she'll follow the orders",
             "hint_en": "Are you going to follow her advice?",
@@ -922,6 +946,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta sobre pedidos recentes que você recebeu — você reporta com \"asked me to\", \"warned me to\", \"begged me to\".",
+        "scenario_pt": "Charlotte quer saber de pedidos recentes que você recebeu. Pratica 'asked me to', 'warned me to', 'begged me to'.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -930,6 +955,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Solicitar com 'asked me to'",
             "label_en": "Request with 'asked me to'",
             "hidden_prompt": "user uses 'X asked me to + base'",
             "hint_en": "A friend asked me to drive him to the airport.",
@@ -946,6 +972,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Aviso com 'warned me to'",
             "label_en": "Warning with 'warned me to'",
             "hidden_prompt": "user uses 'X warned me to/not to + base'",
             "hint_en": "My mom warned me not to overwork.",
@@ -962,6 +989,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Súplica com 'begged me to'",
             "label_en": "Plea with 'begged me to'",
             "hidden_prompt": "user uses 'X begged me to + base'",
             "hint_en": "She begged me to stay one more day.",
@@ -991,10 +1019,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte juggles requests. Use 'asked, warned, begged, urged'.",
+        "intro_pt": "Charlotte lida com pedidos. Use 'asked, warned, begged, urged'.",
         "opening_message": "My boss asked me to take on extra work. What did she ask?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Relatar o pedido do chefe",
             "label_en": "Report the boss's request",
             "hidden_prompt": "user uses 'She asked you to take on extra work'",
             "hint_en": "She asked you to take on extra work.",
@@ -1011,6 +1041,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Relatar outro pedido com verbo diferente",
             "label_en": "Report another request with different verb",
             "hidden_prompt": "user uses 'warned/begged/urged + person + to + base'",
             "hint_en": "Your friend begged you to take a vacation.",
@@ -1027,6 +1058,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how she handled it",
             "hint_en": "How did you handle all of it?",
@@ -1178,6 +1210,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conta uma conversa rica que teve — você reporta com statements, questions, e commands misturados.",
+        "scenario_pt": "Charlotte conta uma conversa rica que teve — você reporta com statements, questions, e commands misturados.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1186,6 +1219,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Relatar uma declaração",
             "label_en": "Report a statement",
             "hidden_prompt": "user uses 'X said (that) + past tense'",
             "hint_en": "She said she had been busy.",
@@ -1202,6 +1236,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Relatar uma pergunta",
             "label_en": "Report a question",
             "hidden_prompt": "user uses 'X asked if/where/what + statement order'",
             "hint_en": "He asked where I had gone.",
@@ -1218,6 +1253,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Relatar um comando",
             "label_en": "Report a command",
             "hidden_prompt": "user uses 'X told me to/not to + base'",
             "hint_en": "She told me to call her later.",
@@ -1247,10 +1283,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte recaps a family conversation. Mix statement/question/command reports.",
+        "intro_pt": "Charlotte recapitula uma conversa familiar. Misture relatos de afirmação/pergunta/comando.",
         "opening_message": "My mom asked me if I was coming for dinner and told me to bring dessert. What did she say?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Relatar a pergunta",
             "label_en": "Report the question",
             "hidden_prompt": "user uses 'She asked if you were coming for dinner'",
             "hint_en": "She asked if you were coming for dinner.",
@@ -1267,6 +1305,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Relatar o comando",
             "label_en": "Report the command",
             "hidden_prompt": "user uses 'She told you to bring dessert'",
             "hint_en": "She also told you to bring dessert.",
@@ -1283,6 +1322,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more",
             "hint_en": "What else did she say?",

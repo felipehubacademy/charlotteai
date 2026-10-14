@@ -154,6 +154,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você comente sobre 3 tópicos usando 3 conectores diferentes — however, nevertheless, on the other hand.",
+        "scenario_pt": "Charlotte pede que você comente sobre 3 tópicos usando 3 conectores diferentes — however, nevertheless, on the other hand.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -162,6 +163,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Contraste com 'however'",
             "label_en": "Contrast with 'however'",
             "hidden_prompt": "user uses 'X. However, Y.'",
             "hint_en": "Working from home is convenient. However, it can feel isolating.",
@@ -181,6 +183,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Ênfase com 'nevertheless'",
             "label_en": "Emphatic 'nevertheless'",
             "hidden_prompt": "user uses 'X. Nevertheless, Y.'",
             "hint_en": "The deadline was tight. Nevertheless, we delivered on time.",
@@ -200,6 +203,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Paralelo 'on the other hand'",
             "label_en": "Parallel 'on the other hand'",
             "hidden_prompt": "user uses 'X. On the other hand, Y.'",
             "hint_en": "I love Rio. On the other hand, São Paulo has more opportunities.",
@@ -232,10 +236,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites balanced opinions. Use 'however' and 'on the other hand'.",
+        "intro_pt": "Charlotte convida para opiniões equilibradas. Use 'however' e 'on the other hand'.",
         "opening_message": "Cities are exciting. However, they can be exhausting. What's your take?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Opinião com contraste",
             "label_en": "Opinion with contrast",
             "hidden_prompt": "user uses 'however' or 'on the other hand'",
             "hint_en": "I enjoy city life. However, I need quiet weekends.",
@@ -255,6 +261,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro contraste",
             "label_en": "Another contrast",
             "hidden_prompt": "user uses another discourse marker",
             "hint_en": "Rural life is peaceful. On the other hand, services are limited.",
@@ -274,6 +281,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for her view",
             "hint_en": "What do you prefer?",
@@ -436,6 +444,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você descreva 3 situações onde você superou obstáculos — usando although, even though, despite.",
+        "scenario_pt": "Charlotte pede que você descreva 3 situações onde você superou obstáculos — usando although, even though, despite.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -444,6 +453,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Embora + oração",
             "label_en": "Although + clause",
             "hidden_prompt": "user uses 'Although + subject + verb'",
             "hint_en": "Although I was nervous, I gave the presentation.",
@@ -463,6 +473,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Apesar de + substantivo",
             "label_en": "Despite + noun",
             "hidden_prompt": "user uses 'Despite + noun'",
             "hint_en": "Despite the rain, I went running.",
@@ -482,6 +493,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Mesmo que ou apesar de + -ing",
             "label_en": "Even though or despite + -ing",
             "hidden_prompt": "user uses 'Even though' or 'Despite + -ing'",
             "hint_en": "Despite feeling unsure, I took the job.",
@@ -514,10 +526,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares persistence stories. Use 'although' / 'despite'.",
+        "intro_pt": "Charlotte compartilha histórias de persistência. Use 'although' / 'despite'.",
         "opening_message": "Despite being scared, I gave my first big talk. What's your moment?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Sua história com 'despite' ou 'although'",
             "label_en": "Your story with 'despite' or 'although'",
             "hidden_prompt": "user uses 'despite' or 'although' for own story",
             "hint_en": "Despite my doubts, I applied for the role.",
@@ -537,6 +551,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro superação",
             "label_en": "Another overcoming",
             "hidden_prompt": "user uses another concession marker",
             "hint_en": "Although I had no experience, they hired me.",
@@ -556,6 +571,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her talk",
             "hint_en": "How did it go?",
@@ -715,6 +731,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você explique 3 situações com causa-efeito usando therefore, consequently, as a result.",
+        "scenario_pt": "Charlotte pede que você explique 3 situações com causa-efeito usando therefore, consequently, as a result.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -723,6 +740,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Causa-efeito com 'therefore'",
             "label_en": "Cause-effect with 'therefore'",
             "hidden_prompt": "user uses 'X. Therefore, Y.'",
             "hint_en": "I didn't sleep well. Therefore, I'm tired today.",
@@ -742,6 +760,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Causa-efeito com 'consequently'",
             "label_en": "Cause-effect with 'consequently'",
             "hidden_prompt": "user uses 'X. Consequently, Y.'",
             "hint_en": "Traffic was awful. Consequently, I was late.",
@@ -761,6 +780,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Causa-efeito com 'as a result'",
             "label_en": "Cause-effect with 'as a result'",
             "hidden_prompt": "user uses 'X. As a result, Y.'",
             "hint_en": "We launched late. As a result, sales were low.",
@@ -793,10 +813,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores decisions. Use therefore / consequently / as a result.",
+        "intro_pt": "Charlotte explora decisões. Use therefore / consequently / as a result.",
         "opening_message": "I work better in the morning. Therefore, I schedule deep work then. How about you?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Seu causa-efeito",
             "label_en": "Your cause-effect",
             "hidden_prompt": "user uses cause-result marker",
             "hint_en": "I get distracted easily. Therefore, I work in short blocks.",
@@ -816,6 +838,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro causa-efeito",
             "label_en": "Another cause-effect",
             "hidden_prompt": "user uses another causal marker",
             "hint_en": "I have evening meetings. As a result, I exercise at lunch.",
@@ -835,6 +858,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her routine",
             "hint_en": "What's your morning routine?",
@@ -991,6 +1015,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você descreva 3 coisas que admira em pessoas — adicionando qualidades com furthermore, moreover, in addition.",
+        "scenario_pt": "Charlotte pede que você descreva 3 coisas que admira em pessoas — adicionando qualidades com furthermore, moreover, in addition.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -999,6 +1024,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Primeira qualidade",
             "label_en": "First quality",
             "hidden_prompt": "user states base quality",
             "hint_en": "My grandmother is incredibly patient.",
@@ -1018,6 +1044,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Adicionar com 'furthermore' ou 'moreover'",
             "label_en": "Addition with 'furthermore' or 'moreover'",
             "hidden_prompt": "user uses 'Furthermore' or 'Moreover'",
             "hint_en": "Furthermore, she always knows what to say.",
@@ -1037,6 +1064,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Adicionar com 'in addition'",
             "label_en": "Addition with 'in addition'",
             "hidden_prompt": "user uses 'In addition'",
             "hint_en": "In addition, she's a wonderful cook.",
@@ -1069,10 +1097,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores positive traits. Use furthermore / moreover / in addition.",
+        "intro_pt": "Charlotte explora traços positivos. Use furthermore / moreover / in addition.",
         "opening_message": "My best friend is generous. Furthermore, she's a great listener. Tell me about yours.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Qualidade do amigo",
             "label_en": "Friend's quality",
             "hidden_prompt": "user states a quality",
             "hint_en": "My best friend is funny.",
@@ -1092,6 +1122,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Adicionar com 'moreover' ou 'in addition'",
             "label_en": "Addition with 'moreover' or 'in addition'",
             "hidden_prompt": "user uses 'moreover' or 'in addition'",
             "hint_en": "Moreover, he's incredibly loyal.",
@@ -1111,6 +1142,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Pergunta para Charlotte",
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte more",
             "hint_en": "How long have you known her?",
@@ -1265,6 +1297,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você apresente um mini-argumento completo — contraste, exemplo, conclusão — em 3 frases conectadas.",
+        "scenario_pt": "Charlotte pede que você apresente um mini-argumento completo — contraste, exemplo, conclusão — em 3 frases conectadas.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1273,6 +1306,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Fazer contraste inicial (however ou although)",
             "label_en": "Initial contrast (however or although)",
             "hidden_prompt": "user uses 'however' or 'although' for contrast",
             "hint_en": "Remote work has many advantages. However, it can feel lonely.",
@@ -1289,6 +1323,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Exemplo com 'for example'",
             "label_en": "Example with 'for example'",
             "hidden_prompt": "user uses 'For example' or 'For instance'",
             "hint_en": "For example, you miss casual office chat.",
@@ -1305,6 +1340,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Conclusão",
             "label_en": "Conclusion",
             "hidden_prompt": "user uses 'In conclusion', 'All in all', 'Overall'",
             "hint_en": "Overall, balance is key.",
@@ -1334,10 +1370,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites a full argument. Use contrast, addition, example, and conclusion markers.",
+        "intro_pt": "Charlotte convida para um argumento completo. Use marcadores de contraste, adição, exemplo e conclusão.",
         "opening_message": "Some say AI will replace teachers. What's your take?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Opinião com contraste",
             "label_en": "Opinion with contrast",
             "hidden_prompt": "user uses 'However' or 'On the other hand'",
             "hint_en": "AI can teach facts. However, it can't replace human connection.",
@@ -1354,6 +1392,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Exemplo ou adição",
             "label_en": "Example or addition",
             "hidden_prompt": "user uses 'For example' or 'Furthermore'",
             "hint_en": "For example, students often need encouragement.",
@@ -1370,6 +1409,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Conclusão",
             "label_en": "Conclusion",
             "hidden_prompt": "user uses 'In conclusion' or 'Overall'",
             "hint_en": "Overall, AI will help, not replace.",
@@ -1532,6 +1572,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte meets you at a networking event. You exchange professional information using workplace vocabulary.",
+        "scenario_pt": "Charlotte te encontra em um evento de networking. Vocês trocam informações profissionais usando vocabulário de trabalho.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1540,6 +1581,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Descrever sua profissão",
             "label_en": "Describe your profession",
             "hidden_prompt": "user uses 'I work for / in' + role",
             "hint_en": "I work for a consulting firm. I'm in strategy.",
@@ -1556,6 +1598,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Falar sobre modo de trabalho",
             "label_en": "Talk about work mode",
             "hidden_prompt": "user mentions remote/hybrid/in-office",
             "hint_en": "We're fully remote, which I love. I haven't been to the office in two years.",
@@ -1572,6 +1615,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar a Charlotte sobre seu trabalho",
             "label_en": "Ask Charlotte about her work",
             "hidden_prompt": "user asks Charlotte work question",
             "hint_en": "What about you? What do you do?",
@@ -1601,10 +1645,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte talks careers. Use workplace vocabulary.",
+        "intro_pt": "Charlotte fala sobre carreiras. Use vocabulário de ambiente de trabalho.",
         "opening_message": "I just got a promotion last week — finally. Took two years longer than expected.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Comentar sobre a promoção",
             "label_en": "Comment on the promotion",
             "hidden_prompt": "user reacts with workplace vocab",
             "hint_en": "Congratulations! Did you get a raise too?",
@@ -1621,6 +1667,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Falar sobre seu trabalho",
             "label_en": "Talk about your work",
             "hidden_prompt": "user shares work info",
             "hint_en": "I've been in software engineering for five years now.",
@@ -1637,6 +1684,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar sobre o trabalho de Charlotte",
             "label_en": "Ask about Charlotte's work",
             "hidden_prompt": "user asks Charlotte about her work",
             "hint_en": "What does the new role involve?",

@@ -557,7 +557,7 @@ export default function RolePlayExerciseScreen() {
     if (!rp || level === 'Advanced' || sessionComplete) return;
     const pending = rp.objectives.find(o => !objectivesMet.has(o.id));
     if (!pending) return;
-    const hint = isPt ? (pending.hint_pt ?? pending.label_pt) : (pending.hint_en ?? pending.label_en);
+    const hint = isPt ? (pending.hint_pt ?? pending.label_pt ?? pending.hint_en ?? pending.label_en) : (pending.hint_en ?? pending.label_en);
     setHintVisible(hint);
     setHintsUsed(prev => prev + 1);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -707,7 +707,7 @@ export default function RolePlayExerciseScreen() {
         <View style={{ gap: 8 }}>
           {rp.objectives.map(obj => {
             const met   = objectivesMet.has(obj.id);
-            const label = isPt ? obj.label_pt : (obj.label_en || obj.label_pt);
+            const label = isPt ? (obj.label_pt || obj.label_en) : (obj.label_en || obj.label_pt);
             const pulsing = met && lastFiredObjective === obj.id;
             return (
               <View key={obj.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
@@ -765,7 +765,7 @@ export default function RolePlayExerciseScreen() {
               <AppText style={{
                 fontSize: 13, color: '#D12A64', lineHeight: 18,
               }}>
-                {rp.scenario}
+                {isPt ? (rp.scenario_pt ?? rp.scenario) : rp.scenario}
               </AppText>
             </View>
           }
@@ -791,7 +791,7 @@ export default function RolePlayExerciseScreen() {
           const pending = rp.objectives.find(o => !objectivesMet.has(o.id));
           en = pending?.hint_en;
           pt = pending?.label_pt;
-          interLabel = pending?.label_en;
+          interLabel = isPt ? (pending?.label_pt || pending?.label_en) : pending?.label_en; // instrução: idioma do aparelho
         }
         if (level === 'Inter') {
           if (!interLabel) return null;
@@ -954,7 +954,7 @@ export default function RolePlayExerciseScreen() {
             <View style={{ width: '100%', gap: 8, marginBottom: 20 }}>
               {rp.objectives.map(obj => {
                 const met = objectivesMet.has(obj.id);
-                const label = isPt ? obj.label_pt : (obj.label_en || obj.label_pt);
+                const label = isPt ? (obj.label_pt || obj.label_en) : (obj.label_en || obj.label_pt);
                 if (__DEV__) console.log('[result-card-bullet]', { objId: obj.id, objIdType: typeof obj.id, met, setContents: Array.from(objectivesMet), setTypes: Array.from(objectivesMet).map(x => typeof x) });
                 return (
                   <View key={obj.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>

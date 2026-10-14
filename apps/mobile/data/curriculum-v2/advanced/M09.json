@@ -124,6 +124,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte presents three situations. You react to each with one of the five idioms — making the figurative language feel natural, not forced.",
+        "scenario_pt": "Charlotte apresenta três situações. Reaja a cada uma com um dos cinco idioms — tornando a linguagem figurativa natural, não forçada.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -132,6 +133,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Validar uma observação precisa",
             "label_en": "Validate a precise observation",
             "hidden_prompt": "user uses 'You hit the nail on the head' or similar",
             "hint_en": "Your analyst hit the nail on the head with that diagnosis.",
@@ -146,6 +148,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Nomear o problema evitado",
             "label_en": "Name the avoided problem",
             "hidden_prompt": "user uses 'the elephant in the room'",
             "hint_en": "The elephant in the room is that nobody trusts the new system.",
@@ -160,6 +163,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Comentar sobre a profundidade do problema",
             "label_en": "Comment on depth of problem",
             "hidden_prompt": "user uses 'tip of the iceberg' or 'read between the lines'",
             "hint_en": "What surfaced last week is just the tip of the iceberg.",
@@ -187,10 +191,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte raises an org issue. Diagnose with idioms.",
+        "intro_pt": "Charlotte levanta uma questão organizacional. Diagnostique com expressões idiomáticas.",
         "opening_message": "Our retention numbers slipped last quarter. The CEO thinks it's compensation, but I'm not so sure.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Diagnóstico com expressão idiomática inicial",
             "label_en": "Diagnosis with opening idiom",
             "hidden_prompt": "user uses an idiom like 'just the tip of the iceberg' or 'elephant in the room'",
             "hint_en": "Compensation might be the tip of the iceberg — the real story is usually managers.",
@@ -205,6 +211,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Aprofundar com outro idioma",
             "label_en": "Deepen with another idiom",
             "hidden_prompt": "user uses another idiom",
             "hint_en": "The elephant in the room is that people don't believe leadership listens.",
@@ -221,6 +228,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what her instinct says",
             "hint_en": "What does your gut say?",
@@ -328,6 +336,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites three short personal stories — a tough decision, a moment of hesitation, an expensive purchase. Use the body-idiom from each unit.",
+        "scenario_pt": "Charlotte convida para três histórias pessoais curtas — uma decisão difícil, um momento de hesitação, uma compra cara. Use o idioma corporal de cada unidade.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -336,6 +345,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Decisão difícil com 'bite the bullet'",
             "label_en": "Hard decision with 'bite the bullet'",
             "hidden_prompt": "user uses 'I bit the bullet and + clause'",
             "hint_en": "I bit the bullet and quit without another job lined up.",
@@ -356,6 +366,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Hesitação com 'cold feet'",
             "label_en": "Hesitation with 'cold feet'",
             "hidden_prompt": "user uses 'I/he/she got cold feet'",
             "hint_en": "I got cold feet about moving abroad and stayed another year.",
@@ -376,6 +387,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Compra cara com 'arm and a leg'",
             "label_en": "Expensive purchase with 'arm and a leg'",
             "hidden_prompt": "user uses 'cost an arm and a leg'",
             "hint_en": "The apartment renovation cost an arm and a leg, but we love it.",
@@ -405,10 +417,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte trades short personal stories. Match her body-idiom register.",
+        "intro_pt": "Charlotte troca histórias pessoais curtas. Combine com o registro de linguagem corporal e expressões idiomáticas dela.",
         "opening_message": "I bit the bullet last year and told my parents I wasn't going back into medicine. Have you ever had to deliver hard news?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Notícia difícil entregue",
             "label_en": "Hard news delivered",
             "hidden_prompt": "user uses 'I bit the bullet and + clause'",
             "hint_en": "I bit the bullet and told my boss I wanted to step back from leadership.",
@@ -429,6 +443,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Adicionar reação ou hesitação",
             "label_en": "Additional reaction or hesitation",
             "hidden_prompt": "user uses 'cold feet' or 'pulling my leg' or another body idiom",
             "hint_en": "I'd had cold feet about it for months — kept thinking I'd be giving up too much.",
@@ -447,6 +462,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how her parents took it",
             "hint_en": "How did your parents take it?",
@@ -554,6 +570,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three scenarios — an easy task, a leaked secret, a sceptical situation. Use food idioms.",
+        "scenario_pt": "Charlotte apresenta três cenários — uma tarefa fácil, um segredo vazado, uma situação de ceticismo. Use idioms de comida.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -562,6 +579,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Facilidade com 'piece of cake'",
             "label_en": "Ease with 'piece of cake'",
             "hidden_prompt": "user uses 'a piece of cake'",
             "hint_en": "The migration turned out to be a piece of cake compared to what we feared.",
@@ -580,6 +598,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Revelar com 'spill the beans'",
             "label_en": "Leak with 'spill the beans'",
             "hidden_prompt": "user uses 'spilled the beans' or 'spill the beans'",
             "hint_en": "Someone in marketing spilled the beans about the rebrand a week early.",
@@ -598,6 +617,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Ceticismo com 'grain of salt' ou dureza com 'tough nut'",
             "label_en": "Scepticism with 'grain of salt' or toughness with 'tough nut'",
             "hidden_prompt": "user uses 'grain of salt' or 'tough nut to crack'",
             "hint_en": "Take the optimistic projections with a grain of salt — they always slip.",
@@ -629,10 +649,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares office news. Respond with food idioms in flow.",
+        "intro_pt": "Charlotte compartilha notícias do escritório. Responda com expressões idiomáticas relacionadas a comida.",
         "opening_message": "Someone leaked the salary bands to the whole company on Friday. Chaos all weekend.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Reação com 'spill the beans'",
             "label_en": "Reaction with 'spill the beans'",
             "hidden_prompt": "user uses 'spilled the beans' or similar",
             "hint_en": "Whoever spilled the beans must have known the timing would hit hard.",
@@ -650,6 +672,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Aprofundar com outro idioma de comida",
             "label_en": "Deepen with another food idiom",
             "hidden_prompt": "user uses 'grain of salt' or 'tough nut' or 'piece of cake'",
             "hint_en": "Containing it will be no piece of cake — once the numbers are out, you can't un-leak them.",
@@ -668,6 +691,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how HR is responding",
             "hint_en": "How is HR handling it?",
@@ -775,6 +799,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three project scenarios. You respond strategically with animal/game idioms.",
+        "scenario_pt": "Charlotte apresenta três cenários de projetos. Você responde estrategicamente com idioms de animais/jogos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -783,6 +808,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Eficiência com 'kill two birds'",
             "label_en": "Efficiency with 'kill two birds'",
             "hidden_prompt": "user uses 'kill two birds with one stone'",
             "hint_en": "If we record the demo and the training in one session, we kill two birds with one stone.",
@@ -801,6 +827,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Posição com 'ball is in your court' ou 'on the same page'",
             "label_en": "Position with 'ball is in your court' or 'on the same page'",
             "hidden_prompt": "user uses 'the ball is in X's court' or 'on the same page'",
             "hint_en": "We're on the same page internally — now the ball is in the client's court.",
@@ -816,6 +843,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Flexibilidade com 'play it by ear'",
             "label_en": "Flexibility with 'play it by ear'",
             "hidden_prompt": "user uses 'play it by ear'",
             "hint_en": "For the launch event, we'll play it by ear and see how the audience reacts.",
@@ -846,10 +874,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte runs a project handoff. Use strategic idioms naturally.",
+        "intro_pt": "Charlotte conduz uma transição de projeto. Use expressões idiomáticas estratégicas de forma natural.",
         "opening_message": "I've sent over the full brief. Where do we go from here?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Resposta estratégica com 'ball in your court'",
             "label_en": "Strategic reply with 'ball in your court'",
             "hidden_prompt": "user uses 'the ball is in X's court' or 'on the same page'",
             "hint_en": "Now the ball is in my team's court — we'll review and come back with edits by Wednesday.",
@@ -866,6 +896,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Combinar tarefas ou improvisar",
             "label_en": "Combine tasks or improvise",
             "hidden_prompt": "user uses 'kill two birds' or 'play it by ear'",
             "hint_en": "We can kill two birds with one stone by reviewing the brief during our existing standup.",
@@ -883,6 +914,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about priorities",
             "hint_en": "What's the highest priority for you?",
@@ -984,6 +1016,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three contexts — clarity, easy wins, and trade-offs. Use modern business metaphors.",
+        "scenario_pt": "Charlotte apresenta três contextos — clareza, vitórias fáceis e concessões. Use metáforas modernas de negócios.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -992,6 +1025,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Clareza com 'crystal clear'",
             "label_en": "Clarity with 'crystal clear'",
             "hidden_prompt": "user uses 'crystal clear'",
             "hint_en": "The new policy on remote work is crystal clear — three days a week, no exceptions.",
@@ -1010,6 +1044,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Vitórias fáceis com 'low-hanging fruit'",
             "label_en": "Easy wins with 'low-hanging fruit'",
             "hidden_prompt": "user uses 'low-hanging fruit'",
             "hint_en": "We started with the low-hanging fruit and saw a 10% lift in two weeks.",
@@ -1028,6 +1063,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Compensação com 'double-edged sword' ou 'blessing in disguise'",
             "label_en": "Trade-off with 'double-edged sword' or 'blessing in disguise'",
             "hidden_prompt": "user uses 'double-edged sword' or 'blessing in disguise'",
             "hint_en": "Being acquired was a blessing in disguise — losing autonomy hurt, but the resources accelerated everything.",
@@ -1059,10 +1095,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte reflects on a career pivot. Mix classical idioms with modern metaphor.",
+        "intro_pt": "Charlotte reflete sobre uma mudança de carreira. Misture expressões idiomáticas clássicas com metáforas modernas.",
         "opening_message": "Leaving the corporate job felt like the end of the world at the time. In retrospect, blessing in disguise. Have you had a moment like that?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pivô pessoal com 'blessing in disguise'",
             "label_en": "Personal pivot with 'blessing in disguise'",
             "hidden_prompt": "user uses 'blessing in disguise'",
             "hint_en": "Getting laid off in 2020 turned out to be a blessing in disguise — I started the consulting work I'd been afraid to try.",
@@ -1079,6 +1117,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Aprofundar com outra metáfora",
             "label_en": "Deepen with another metaphor",
             "hidden_prompt": "user uses 'double-edged sword' or 'crystal clear' or another metaphor",
             "hint_en": "Independence is a double-edged sword — full agency, but also full responsibility for finding the next project.",
@@ -1097,6 +1136,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what gave her clarity",
             "hint_en": "What made it crystal clear it was time?",

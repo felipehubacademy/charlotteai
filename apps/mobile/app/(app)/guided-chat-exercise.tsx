@@ -249,7 +249,7 @@ export default function GuidedChatExerciseScreen() {
     if (!gc || level === 'Advanced' || sessionComplete) return;
     const pending = gc.objectives.find(o => !objectivesMet.has(o.id));
     if (!pending) return;
-    const hint = isPt ? (pending.hint_pt ?? pending.label_pt) : (pending.hint_en ?? pending.label_en);
+    const hint = isPt ? (pending.hint_pt ?? pending.label_pt ?? pending.hint_en ?? pending.label_en) : (pending.hint_en ?? pending.label_en);
     setHintVisible(hint);
     setHintsUsed(prev => prev + 1);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -467,7 +467,7 @@ export default function GuidedChatExerciseScreen() {
         <View style={{ gap: 8 }}>
           {gc.objectives.map(obj => {
             const met     = objectivesMet.has(obj.id);
-            const label   = isPt ? obj.label_pt : (obj.label_en || obj.label_pt);
+            const label   = isPt ? (obj.label_pt || obj.label_en) : (obj.label_en || obj.label_pt);
             const pulsing = met && lastFiredObjective === obj.id;
             return (
               <View key={obj.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
@@ -548,7 +548,7 @@ export default function GuidedChatExerciseScreen() {
           const pending = gc.objectives.find(o => !objectivesMet.has(o.id));
           en = pending?.hint_en;
           pt = pending?.label_pt;
-          interLabel = pending?.label_en;
+          interLabel = isPt ? (pending?.label_pt || pending?.label_en) : pending?.label_en; // instrução: idioma do aparelho
         }
         if (level === 'Inter') {
           if (!interLabel) return null;
@@ -677,7 +677,7 @@ export default function GuidedChatExerciseScreen() {
             <View style={{ width: '100%', gap: 8, marginBottom: 16 }}>
               {gc.objectives.map(obj => {
                 const met = objectivesMet.has(obj.id);
-                const label = isPt ? obj.label_pt : (obj.label_en || obj.label_pt);
+                const label = isPt ? (obj.label_pt || obj.label_en) : (obj.label_en || obj.label_pt);
                 return (
                   <View key={obj.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                     {met

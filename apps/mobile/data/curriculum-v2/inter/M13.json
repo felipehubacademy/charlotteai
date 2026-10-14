@@ -151,6 +151,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta sobre três situações passadas — \"o que você teria feito se tivesse sabido?\" — e quer respostas em third conditional.",
+        "scenario_pt": "Charlotte quer saber o que você teria feito em situações passadas. Pratica third conditional.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -159,6 +160,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Hipotético passado com 'if I had known'",
             "label_en": "Past hypothetical with 'if I had known'",
             "hidden_prompt": "user uses 'If I had known, I would have + past participle'",
             "hint_en": "If I had known, I would have come earlier.",
@@ -175,6 +177,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro hipotético passado",
             "label_en": "Another past hypothetical",
             "hidden_prompt": "user uses another 'If + past perfect, would have + past participle'",
             "hint_en": "If they had told me, I would have prepared better.",
@@ -191,6 +194,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Hipotético negativo (wouldn't have)",
             "label_en": "Negative hypothetical (wouldn't have)",
             "hidden_prompt": "user uses 'I wouldn't have + past participle if...'",
             "hint_en": "I wouldn't have taken the job if I had known.",
@@ -220,10 +224,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores small past regrets. Practice 'If I had known' naturally.",
+        "intro_pt": "Charlotte explora pequenos arrependimentos do passado. Pratique 'If I had known' naturalmente.",
         "opening_message": "What's something you would have done differently last year?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Algo para fazer diferente",
             "label_en": "Something to do differently",
             "hidden_prompt": "user uses 'I would have + past participle'",
             "hint_en": "I would have traveled more.",
@@ -240,6 +246,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Condição com 'if + past perfect'",
             "label_en": "Condition with 'if + past perfect'",
             "hidden_prompt": "user uses 'if I had + past participle'",
             "hint_en": "If I had saved more, I would have traveled.",
@@ -256,6 +263,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What would you have done?'",
             "hint_en": "What would you have done differently?",
@@ -409,6 +417,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conversa sobre arrependimentos passados — quer ouvir três coisas que você gostaria de ter feito diferente.",
+        "scenario_pt": "Charlotte quer saber dos seus arrependimentos. Pratica 'I wish I had' para três coisas.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -417,6 +426,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Arrependimento com 'I wish I had'",
             "label_en": "Regret with 'I wish I had'",
             "hidden_prompt": "user uses 'I wish I had + past participle'",
             "hint_en": "I wish I had studied harder.",
@@ -433,6 +443,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro arrependimento",
             "label_en": "Another regret",
             "hidden_prompt": "user uses another 'I wish I had + past participle'",
             "hint_en": "I wish I had traveled more when I was younger.",
@@ -449,6 +460,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Arrependimento com 'If only'",
             "label_en": "Regret with 'If only'",
             "hidden_prompt": "user uses 'If only I had + past participle'",
             "hint_en": "If only I had saved more money.",
@@ -478,10 +490,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares honest regrets. Use 'I wish I had' freely.",
+        "intro_pt": "Charlotte compartilha arrependimentos sinceros. Use 'I wish I had' à vontade.",
         "opening_message": "Is there something you wish you had done five years ago?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Arrependimento passado",
             "label_en": "Past regret",
             "hidden_prompt": "user uses 'I wish I had + past participle'",
             "hint_en": "I wish I had started learning English earlier.",
@@ -498,6 +512,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Razão ou outro arrependimento",
             "label_en": "Reason or another regret",
             "hidden_prompt": "user adds another wish or reason",
             "hint_en": "I wish I had made more time for my family.",
@@ -514,6 +529,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What about you?'",
             "hint_en": "How about you?",
@@ -667,6 +683,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conta três situações que aconteceram com ela e pergunta o que você teria feito no lugar dela.",
+        "scenario_pt": "Charlotte conta três situações que aconteceram com ela e pergunta o que você teria feito no lugar dela.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -675,6 +692,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Resposta com 'I would have'",
             "label_en": "Response with 'I would have'",
             "hidden_prompt": "user uses 'I would have + past participle'",
             "hint_en": "I would have taken the offer.",
@@ -694,6 +712,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Resposta com 'I wouldn't have'",
             "label_en": "Response with 'I wouldn't have'",
             "hidden_prompt": "user uses 'I wouldn't have + past participle'",
             "hint_en": "I wouldn't have said anything.",
@@ -713,6 +732,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Contra-pergunta com 'would have'",
             "label_en": "Counter-question with 'would have'",
             "hidden_prompt": "user asks 'What would you have done?' or similar",
             "hint_en": "What would you have done?",
@@ -745,10 +765,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks hypothetical past questions. Practice 'Would you have?'",
+        "intro_pt": "Charlotte faz perguntas hipotéticas sobre o passado. Pratique 'Would you have?'",
         "opening_message": "Would you have moved abroad if you'd had the chance at 20?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Responder a hipotético passado",
             "label_en": "Answer to past hypothetical",
             "hidden_prompt": "user uses 'I would have + past participle' or 'I wouldn't have'",
             "hint_en": "Yes, I would have gone.",
@@ -768,6 +790,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Razão ou condição",
             "label_en": "Reason or condition",
             "hidden_prompt": "user adds 'if + past perfect' or reason",
             "hint_en": "If I had been braver, I would have done it.",
@@ -787,6 +810,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Would you have?' question to Charlotte",
             "hint_en": "Would you have moved abroad?",
@@ -938,6 +962,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você conte uma história de \"quase aconteceu\" — um close call da sua vida — usando pelo menos dois third conditionals encadeados.",
+        "scenario_pt": "Charlotte pede que você conte uma história de \"quase aconteceu\" — um close call da sua vida — usando pelo menos dois third conditionals encadeados.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -946,6 +971,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Começar com 'If I hadn't...'",
             "label_en": "Open with 'If I hadn't...'",
             "hidden_prompt": "user opens the story with 'If I hadn't + past participle, I would (n't) have + past participle'",
             "hint_en": "If I hadn't missed that flight, I would have been in the storm.",
@@ -965,6 +991,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Encadear um segundo terceiro condicional",
             "label_en": "Chain a second third conditional",
             "hidden_prompt": "user adds a second third conditional that links to the first event",
             "hint_en": "And if I had been on that plane, I would never have met my best friend.",
@@ -984,6 +1011,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Concluir com uma reflexão",
             "label_en": "Close with a reflection",
             "hidden_prompt": "user closes with an emphatic third conditional (e.g. 'Everything would have been different' / 'Nothing would have happened')",
             "hint_en": "Everything would have been different if I had made one different choice.",
@@ -1016,10 +1044,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "We reconstruct a close call. Chain third conditionals to map the cascade.",
+        "intro_pt": "Reconstruímos um quase acidente. Encadeie third conditionals para mapear a cascata.",
         "opening_message": "Pick one moment from history or your life — what would have happened if it had gone differently?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Primeiro 'if hadn't / wouldn't have'",
             "label_en": "First 'if hadn't / wouldn't have'",
             "hidden_prompt": "user states a first third conditional with negative form ('If X hadn't... Y wouldn't have...')",
             "hint_en": "If the internet hadn't been invented, we wouldn't have this conversation.",
@@ -1039,6 +1069,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Encadear uma consequência",
             "label_en": "Chain a consequence",
             "hidden_prompt": "user adds another third conditional connected to the first",
             "hint_en": "And if we hadn't had this conversation, I would never have practiced English today.",
@@ -1058,6 +1089,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte 'What about you?' or 'What would have changed for you?' or similar",
             "hint_en": "What would have changed for you?",
@@ -1211,6 +1243,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte propõe uma conversa rica sobre o passado — quer ver você usar third conditional, wish + past perfect e um close call encadeado em três turnos.",
+        "scenario_pt": "Charlotte propõe uma conversa rica sobre o passado. Use third conditional, wish + past perfect e um close call encadeado em três turnos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1219,6 +1252,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Hipotético passado",
             "label_en": "Past hypothetical",
             "hidden_prompt": "user uses 'If I had + past participle, I would have + past participle'",
             "hint_en": "If I had left earlier, I wouldn't have missed the meeting.",
@@ -1235,6 +1269,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Arrependimento com 'wish'",
             "label_en": "Regret with 'wish'",
             "hidden_prompt": "user uses 'I wish I had + past participle'",
             "hint_en": "I wish I had studied abroad.",
@@ -1251,6 +1286,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Chamada apertada encadeada",
             "label_en": "Chained close call",
             "hidden_prompt": "user uses 'If I hadn't... I would never have...' or similar negative chained third conditional",
             "hint_en": "If I hadn't taken that flight, I would never have met my best friend.",
@@ -1280,10 +1316,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte integrates past hypotheticals, regrets, and chained close calls.",
+        "intro_pt": "Charlotte integra hipóteses passadas, arrependimentos e quase acidentes em cadeia.",
         "opening_message": "Looking back, what's one thing you would have changed?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "O que você teria mudado",
             "label_en": "What you'd have changed",
             "hidden_prompt": "user uses 'I would have + past participle'",
             "hint_en": "I would have spoken up more.",
@@ -1300,6 +1338,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Desejo ou chamada encadeada",
             "label_en": "Wish or chained close call",
             "hidden_prompt": "user uses 'I wish I had' or a chained third conditional ('If I hadn't... I would never have...')",
             "hint_en": "I wish I had been more confident — if I hadn't doubted myself, I would have taken more risks.",
@@ -1316,6 +1355,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What would you have changed?' or 'How about you?'",
             "hint_en": "What would you have changed?",

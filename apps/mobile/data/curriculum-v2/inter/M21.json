@@ -162,6 +162,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta o que você espera, no que está se adaptando, e a que se opõe — você usa 3 phrasal verbs em -ing.",
+        "scenario_pt": "Charlotte pergunta o que você espera, no que está se adaptando, e a que se opõe — você usa 3 phrasal verbs em -ing.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -170,6 +171,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Antecipação com 'look forward to + ing'",
             "label_en": "Anticipation with 'look forward to + ing'",
             "hidden_prompt": "user uses 'I look forward to + verb-ing'",
             "hint_en": "I look forward to traveling this summer.",
@@ -189,6 +191,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Usar 'getting used to + ing' para adaptação",
             "label_en": "Adaptation with 'getting used to + ing'",
             "hidden_prompt": "user uses 'I'm getting used to + verb-ing'",
             "hint_en": "I'm getting used to working remotely.",
@@ -208,6 +211,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Oposição com 'object to + ing'",
             "label_en": "Opposition with 'object to + ing'",
             "hidden_prompt": "user uses 'I object to + verb-ing'",
             "hint_en": "I object to working on Sundays.",
@@ -240,10 +244,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores life shifts. Use 'look forward to / getting used to / object to + ing'.",
+        "intro_pt": "Charlotte explora mudanças de vida. Use 'look forward to / getting used to / object to + ing'.",
         "opening_message": "I'm looking forward to my upcoming trip. What about you?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Antecipação",
             "label_en": "Anticipation",
             "hidden_prompt": "user uses 'look forward to + -ing'",
             "hint_en": "I'm looking forward to seeing my family.",
@@ -263,6 +269,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Falar sobre adaptação ou oposição",
             "label_en": "Adaptation or opposition",
             "hidden_prompt": "user uses 'getting used to' or 'object to + -ing'",
             "hint_en": "I'm getting used to having early meetings.",
@@ -282,6 +289,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her trip",
             "hint_en": "Where are you going?",
@@ -435,6 +443,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você comente sobre 3 situações irritantes da semana — usando put up with, run out of, e get away with.",
+        "scenario_pt": "Charlotte pede que você comente sobre 3 situações irritantes da semana — usando put up with, run out of, e get away with.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -443,6 +452,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Tolerar com 'put up with'",
             "label_en": "Tolerate with 'put up with'",
             "hidden_prompt": "user uses 'I can't put up with + noun'",
             "hint_en": "I can't put up with my neighbor's loud music.",
@@ -462,6 +472,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Esgotar com 'run out of'",
             "label_en": "Deplete with 'run out of'",
             "hidden_prompt": "user uses 'I ran/we ran out of + noun'",
             "hint_en": "I ran out of patience by Friday.",
@@ -481,6 +492,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Escapar com 'get away with'",
             "label_en": "Escape with 'get away with'",
             "hidden_prompt": "user uses 'X gets away with + noun/ing'",
             "hint_en": "He always gets away with arriving late.",
@@ -513,10 +525,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores tolerance limits. Use 3-part phrasals.",
+        "intro_pt": "Charlotte explora limites de tolerância. Use phrasals de 3 partes.",
         "opening_message": "I'm running out of energy this week. What's testing your limits?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Falar sobre limite com 'put up with'",
             "label_en": "Limit with 'put up with'",
             "hidden_prompt": "user uses 'I can't put up with' or similar",
             "hint_en": "I can't put up with constant interruptions.",
@@ -536,6 +550,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Esgotamento com 'run out of'",
             "label_en": "Depletion with 'run out of'",
             "hidden_prompt": "user uses 'running out of + noun'",
             "hint_en": "I'm running out of motivation.",
@@ -555,6 +570,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her energy",
             "hint_en": "What's draining you?",
@@ -708,6 +724,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta sobre relacionamentos seus — você usa 3-part phrasals de relacionamento (get along with, look up to, etc.).",
+        "scenario_pt": "Charlotte quer saber sobre seus relacionamentos. Pratica 3-part phrasals como 'get along with', 'look up to'.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -716,6 +733,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Harmonia com 'get along with'",
             "label_en": "Harmony with 'get along with'",
             "hidden_prompt": "user uses 'I get along with + person'",
             "hint_en": "I get along really well with my brother.",
@@ -735,6 +753,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Expressar admiração com 'look up to'",
             "label_en": "Admiration with 'look up to'",
             "hidden_prompt": "user uses 'I look up to + person'",
             "hint_en": "I look up to my old English teacher.",
@@ -754,6 +773,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Desaprovação com 'look down on'",
             "label_en": "Disapproval with 'look down on'",
             "hidden_prompt": "user uses 'I/he/she looks down on + person'",
             "hint_en": "I don't like people who look down on others.",
@@ -786,10 +806,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores mentors and dynamics. Use relationship phrasals.",
+        "intro_pt": "Charlotte explora mentores e dinâmicas. Use phrasals de relacionamento.",
         "opening_message": "I look up to my first boss — she shaped my career. Who do you look up to?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Mentor com 'look up to'",
             "label_en": "Mentor with 'look up to'",
             "hidden_prompt": "user uses 'I look up to + person'",
             "hint_en": "I look up to my dad — he's so patient.",
@@ -809,6 +831,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro relacionamento",
             "label_en": "Another relationship",
             "hidden_prompt": "user uses 'get along with' or 'look down on'",
             "hint_en": "I get along really well with my sister-in-law.",
@@ -828,6 +851,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her mentor",
             "hint_en": "What did she teach you?",
@@ -984,6 +1008,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta sobre 3 áreas que você precisa colocar em dia, compensar ou seguir adiante.",
+        "scenario_pt": "Charlotte pergunta sobre 3 áreas que você precisa colocar em dia, compensar ou seguir adiante.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -992,6 +1017,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Atualizar-se sobre algo atrasado",
             "label_en": "Catch up on something behind",
             "hidden_prompt": "user uses 'catch up on + noun'",
             "hint_en": "I need to catch up on sleep this weekend.",
@@ -1011,6 +1037,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Compensar com 'make up for'",
             "label_en": "Compensate with 'make up for'",
             "hidden_prompt": "user uses 'I want to make up for + noun'",
             "hint_en": "I want to make up for lost time with my family.",
@@ -1030,6 +1057,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Comprometer-se com 'go through with'",
             "label_en": "Commit with 'go through with'",
             "hidden_prompt": "user uses 'I'll go through with + noun'",
             "hint_en": "I'll go through with the renovation despite the cost.",
@@ -1062,10 +1090,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte talks about backlog and commitments. Use catch up / make up for / go through with.",
+        "intro_pt": "Charlotte fala sobre pendências e compromissos. Use catch up / make up for / go through with.",
         "opening_message": "I have a huge inbox to catch up on. What's on your list?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Algo para se atualizar",
             "label_en": "Something to catch up on",
             "hidden_prompt": "user uses 'catch up on + noun'",
             "hint_en": "I need to catch up on my reading.",
@@ -1085,6 +1115,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Compensação ou compromisso",
             "label_en": "Compensation or commitment",
             "hidden_prompt": "user uses 'make up for' or 'go through with'",
             "hint_en": "I want to make up for missing my friend's birthday.",
@@ -1104,6 +1135,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her inbox",
             "hint_en": "How many unread?",
@@ -1259,6 +1291,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você use 3 chunks idiomáticos diferentes em frases naturais.",
+        "scenario_pt": "Charlotte pede que você use 3 chunks idiomáticos diferentes em frases naturais.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1267,6 +1300,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pensando bem",
             "label_en": "On second thought",
             "hidden_prompt": "user uses 'On second thought + clause'",
             "hint_en": "On second thought, I'll skip the meeting.",
@@ -1283,6 +1317,7 @@
           },
           {
             "id": 2,
+            "label_pt": "No fim do dia",
             "label_en": "At the end of the day",
             "hidden_prompt": "user uses 'At the end of the day + clause'",
             "hint_en": "At the end of the day, health comes first.",
@@ -1299,6 +1334,7 @@
           },
           {
             "id": 3,
+            "label_pt": "A longo prazo ou por enquanto",
             "label_en": "In the long run or for the time being",
             "hidden_prompt": "user uses 'in the long run' or 'for the time being'",
             "hint_en": "In the long run, learning English will pay off.",
@@ -1328,10 +1364,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte talks priorities. Use idiomatic chunks for emphasis.",
+        "intro_pt": "Charlotte fala sobre prioridades. Use expressões idiomáticas para ênfase.",
         "opening_message": "At the end of the day, what truly matters to you?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Resposta com expressão idiomática",
             "label_en": "Response with idiomatic chunk",
             "hidden_prompt": "user uses 'At the end of the day' or similar chunk",
             "hint_en": "At the end of the day, my family is what matters.",
@@ -1348,6 +1386,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro trecho na frase",
             "label_en": "Another chunk in sentence",
             "hidden_prompt": "user uses another idiomatic chunk",
             "hint_en": "In the long run, I want financial freedom.",
@@ -1364,6 +1403,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her priorities",
             "hint_en": "What about you?",

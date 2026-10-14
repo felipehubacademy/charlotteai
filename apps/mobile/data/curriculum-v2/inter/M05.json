@@ -146,6 +146,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about your daily routine using phrasal verbs.",
+        "scenario_pt": "Charlotte pergunta sobre sua rotina diária usando phrasal verbs.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -154,6 +155,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Levantar",
             "label_en": "Get up",
             "hidden_prompt": "user uses 'I get up at + time'",
             "hint_en": "I get up at 7.",
@@ -173,6 +175,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro phrasal matinal",
             "label_en": "Another morning phrasal",
             "hidden_prompt": "user uses another phrasal (put on, turn on, go out)",
             "hint_en": "I put on my work clothes.",
@@ -192,6 +195,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Frasal para sair",
             "label_en": "Phrasal for leaving",
             "hidden_prompt": "user uses 'I go out' or similar",
             "hint_en": "I go out at 8.",
@@ -223,10 +227,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about your evening routine. Practice daily phrasal verbs.",
+        "intro_pt": "Charlotte pergunta sobre sua rotina noturna. Pratique phrasal verbs diários.",
         "opening_message": "What do you do when you come home?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Phrasal verb de chegada",
             "label_en": "Arrival phrasal verb",
             "hidden_prompt": "user uses 'I come back' or 'I get home'",
             "hint_en": "I come back at 6.",
@@ -246,6 +252,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro phrasal verb (take off/turn on)",
             "label_en": "Another phrasal verb (take off/turn on)",
             "hidden_prompt": "user uses 'take off' or 'turn on'",
             "hint_en": "I take off my shoes.",
@@ -265,6 +272,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about Charlotte's routine",
             "hint_en": "What do you do at home?",
@@ -417,6 +425,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about your \"look\" activities lately.",
+        "scenario_pt": "Charlotte pergunta sobre suas atividades de \"look\" recentemente.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -425,6 +434,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Algo que você está procurando",
             "label_en": "Something you're looking for",
             "hidden_prompt": "user uses 'I'm looking for + thing'",
             "hint_en": "I'm looking for a new apartment.",
@@ -441,6 +451,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Alguém de quem você cuida",
             "label_en": "Someone you look after",
             "hidden_prompt": "user uses 'I look after + person/pet'",
             "hint_en": "I look after my dog.",
@@ -457,6 +468,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Algo pesquisado",
             "label_en": "Something looked up",
             "hidden_prompt": "user uses 'I looked up + something'",
             "hint_en": "I looked up a recipe.",
@@ -486,10 +498,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks who and what you look after / look for. Practice 'look' phrasal verbs.",
+        "intro_pt": "Charlotte pergunta de quem e do que você cuida / procura. Pratique phrasal verbs com 'look'.",
         "opening_message": "Anyone you take care of these days?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pessoa/animal de estimação cuidado",
             "label_en": "Person/pet cared for",
             "hidden_prompt": "user uses 'I look after + person/pet'",
             "hint_en": "I look after my niece.",
@@ -506,6 +520,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Algo procurando",
             "label_en": "Something searching",
             "hidden_prompt": "user uses 'I'm looking for + thing'",
             "hint_en": "I'm looking for a new hobby.",
@@ -522,6 +537,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_en": "How about you?",
@@ -671,6 +687,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte chats about news, decisions, and plans.",
+        "scenario_pt": "Charlotte conversa sobre notícias, decisões e planos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -679,6 +696,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Algo que você descobriu",
             "label_en": "Something you found out",
             "hidden_prompt": "user uses 'I found out + something'",
             "hint_en": "I found out about a new job.",
@@ -695,6 +713,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Desistiu de algo",
             "label_en": "Gave up something",
             "hidden_prompt": "user uses 'I gave up + something'",
             "hint_en": "I gave up coffee.",
@@ -711,6 +730,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Pedir para buscar",
             "label_en": "Ask for pickup",
             "hidden_prompt": "user uses 'Can you pick me up?'",
             "hint_en": "Can you pick me up at 7?",
@@ -739,10 +759,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about news. Practice found out / gave up.",
+        "intro_pt": "Charlotte pergunta sobre notícias. Pratique found out / gave up.",
         "opening_message": "What's something you've found out lately?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Descoberta recente",
             "label_en": "Recent discovery",
             "hidden_prompt": "user uses 'I found out + ...'",
             "hint_en": "I found out my friend is moving.",
@@ -759,6 +781,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Desistiu de algo",
             "label_en": "Gave up something",
             "hidden_prompt": "user uses 'I gave up + something'",
             "hint_en": "I gave up sweets.",
@@ -775,6 +798,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_en": "How about you?",
@@ -926,6 +950,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte tests your pronoun placement.",
+        "scenario_pt": "Charlotte testa sua colocação de pronomes.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -934,6 +959,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Separável com pronome (it/him/them)",
             "label_en": "Separable with pronoun (it/him/them)",
             "hidden_prompt": "user splits separable phrasal with pronoun",
             "hint_en": "I turned it off.",
@@ -953,6 +979,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Dizer inseparável",
             "label_en": "Inseparable",
             "hidden_prompt": "user uses inseparable phrasal correctly",
             "hint_en": "She looks after them.",
@@ -972,6 +999,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Mais um phrasal correto",
             "label_en": "One more correct phrasal",
             "hidden_prompt": "user uses another phrasal verb correctly",
             "hint_en": "He picked me up at 8.",
@@ -1004,10 +1032,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats about everyday actions. Practice phrasal verb positioning.",
+        "intro_pt": "Charlotte conversa sobre ações do dia a dia. Pratique o posicionamento de phrasal verbs.",
         "opening_message": "Can you help me with something tomorrow?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Oferecer ajuda (buscar)",
             "label_en": "Offer help (pick up)",
             "hidden_prompt": "user uses 'I'll pick you up'",
             "hint_en": "I'll pick you up at 6.",
@@ -1027,6 +1057,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra oferta (ligar/desligar)",
             "label_en": "Another offer (turn on/off)",
             "hidden_prompt": "user uses another phrasal correctly",
             "hint_en": "I'll turn the lights off.",
@@ -1046,6 +1077,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte something using phrasal verb",
             "hint_en": "Can you look after my dog?",
@@ -1198,6 +1230,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks for a story using multiple phrasal verbs.",
+        "scenario_pt": "Charlotte pede uma história usando múltiplos phrasal verbs.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1206,6 +1239,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Primeiro com phrasal",
             "label_en": "First with phrasal",
             "hidden_prompt": "user uses a phrasal verb in past or present",
             "hint_en": "I got up at 6.",
@@ -1222,6 +1256,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Segundo com phrasal diferente",
             "label_en": "Second with different phrasal",
             "hidden_prompt": "user uses another phrasal verb",
             "hint_en": "I was looking for my phone.",
@@ -1238,6 +1273,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Terceiro com outro phrasal",
             "label_en": "Third with another phrasal",
             "hidden_prompt": "user uses one more phrasal verb",
             "hint_en": "I gave up and called a taxi.",
@@ -1267,10 +1303,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites a phrasal-rich chat. Integrate multiple phrasal verbs.",
+        "intro_pt": "Charlotte convida para um chat rico em phrasal verbs. Integre múltiplos phrasal verbs.",
         "opening_message": "What did your day look like today?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Atividade com phrasal",
             "label_en": "Activity with phrasal",
             "hidden_prompt": "user uses a phrasal verb",
             "hint_en": "I got up at 7.",
@@ -1287,6 +1325,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra atividade com phrasal verb",
             "label_en": "Another phrasal activity",
             "hidden_prompt": "user uses another phrasal",
             "hint_en": "I went out for lunch.",
@@ -1303,6 +1342,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_en": "How about you?",
@@ -1457,6 +1497,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte is the receptionist at a company. You're calling to speak with a specific person and need to handle the conversation professionally.",
+        "scenario_pt": "Charlotte é a recepcionista de uma empresa. Você está ligando para falar com uma pessoa específica e precisa conduzir a conversa de forma profissional.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1465,6 +1506,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Identificar-se e solicitar transferência",
             "label_en": "Identify yourself and request transfer",
             "hidden_prompt": "user uses 'This is...speaking' and 'Can I speak to'",
             "hint_en": "Hello, this is Maria Silva from Beta Industries. Can I speak to João Costa in the sales department, please?",
@@ -1481,6 +1523,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Pedir para deixar uma mensagem",
             "label_en": "Ask to leave a message",
             "hidden_prompt": "user uses 'Can I leave a message?'",
             "hint_en": "He's on another line? OK — can I leave a message?",
@@ -1497,6 +1540,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Solicitar retorno de chamada",
             "label_en": "Request callback",
             "hidden_prompt": "user asks for callback with 'get back to me' or 'call back'",
             "hint_en": "Please ask him to get back to me when he's free. My number is on the file.",
@@ -1526,10 +1570,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte calls to confirm a meeting. Handle the call professionally.",
+        "intro_pt": "Charlotte liga para confirmar uma reunião. Conduza a ligação de forma profissional.",
         "opening_message": "Hello, this is Charlotte from the design team. Am I speaking with Pedro?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Confirmar identidade",
             "label_en": "Confirm identity",
             "hidden_prompt": "user confirms with 'Yes, speaking'",
             "hint_en": "Yes, speaking. How can I help you?",
@@ -1546,6 +1592,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Relatar problema de conexão",
             "label_en": "Report connection issue",
             "hidden_prompt": "user reports cut off or asks to repeat",
             "hint_en": "Sorry, I think we got cut off for a moment. Could you repeat that?",
@@ -1562,6 +1609,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Confirmar e prometer acompanhamento",
             "label_en": "Confirm and promise follow-up",
             "hidden_prompt": "user confirms and uses 'get back to you'",
             "hint_en": "OK, I'll confirm the time and get back to you by end of day.",

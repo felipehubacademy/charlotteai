@@ -8,6 +8,7 @@ import {
   View, TouchableOpacity, ActivityIndicator, Platform,
 } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
+import { useIsFocused } from '@react-navigation/native';
 import {
   BookOpen, Microphone, Play, ChatCircle, CaretRight, CaretDown, Lock,
 } from 'phosphor-react-native';
@@ -635,9 +636,12 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
   }, [activeIdx]);
 
   // Fim da degustação neste nível: terminou o 1º bloco → paywall uma vez (por nível).
+  // Só com a Home em foco: a trilha fica montada por baixo do exercício e não pode abrir o
+  // paywall por cima da tela "Missão concluída"; abre quando o aluno toca em Continuar.
+  const isFocused = useIsFocused();
   const tasteDone = isTaster && useV2 && moduleData[0]?.state === 'done';
   useEffect(() => {
-    if (!tasteDone) return;
+    if (!tasteDone || !isFocused) return;
     const key = `taste_paywall_${level}`;
     let cancelled = false;
     (async () => {
@@ -647,7 +651,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
       openPaywall();
     })();
     return () => { cancelled = true; };
-  }, [tasteDone, level, openPaywall]);
+  }, [tasteDone, isFocused, level, openPaywall]);
 
   const handleStartLesson = useCallback((lesson: Lesson) => {
     if (lesson.state === 'locked' || !lesson.hasContent) return;

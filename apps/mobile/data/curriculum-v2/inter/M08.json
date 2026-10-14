@@ -147,6 +147,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about people in your life.",
+        "scenario_pt": "Charlotte pergunta sobre pessoas na sua vida.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -155,6 +156,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pessoa com oração who",
             "label_en": "Person with who clause",
             "hidden_prompt": "user uses 'X is the person who + verb'",
             "hint_en": "She's the friend who helps me.",
@@ -174,6 +176,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra pessoa",
             "label_en": "Another person",
             "hidden_prompt": "user uses another 'who' clause",
             "hint_en": "He's the teacher who taught me.",
@@ -193,6 +196,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Mais um",
             "label_en": "One more",
             "hidden_prompt": "user uses one more 'who' clause",
             "hint_en": "She's the colleague who sits next to me.",
@@ -225,10 +229,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about important people. Practice 'who' clauses.",
+        "intro_pt": "Charlotte pergunta sobre pessoas importantes. Pratique cláusulas com 'who'.",
         "opening_message": "Tell me about someone who inspires you.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Falar sobre pessoa inspiradora",
             "label_en": "Inspiring person",
             "hidden_prompt": "user uses 'someone who + verb'",
             "hint_en": "My mother is someone who never gives up.",
@@ -248,6 +254,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra pessoa especial",
             "label_en": "Another special person",
             "hidden_prompt": "user uses another 'who' clause",
             "hint_en": "I have a friend who always listens.",
@@ -267,6 +274,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about someone Charlotte admires",
             "hint_en": "Who inspires you?",
@@ -429,6 +437,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about things in your life.",
+        "scenario_pt": "Charlotte pergunta sobre coisas na sua vida.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -437,6 +446,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Coisa com which/that",
             "label_en": "Thing with which/that",
             "hidden_prompt": "user uses 'X is a thing which/that + verb'",
             "hint_en": "It's a book that changed my life.",
@@ -456,6 +466,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra coisa",
             "label_en": "Another thing",
             "hidden_prompt": "user uses another 'which/that' clause",
             "hint_en": "I have a phone which never breaks.",
@@ -475,6 +486,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Mais um item",
             "label_en": "One more item",
             "hidden_prompt": "user uses one more 'which/that' clause",
             "hint_en": "This is the song I love.",
@@ -506,10 +518,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about meaningful things. Practice 'which/that'.",
+        "intro_pt": "Charlotte pergunta sobre coisas significativas. Pratique 'which/that'.",
         "opening_message": "What's an object that means a lot to you?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Falar sobre objeto significativo",
             "label_en": "Meaningful object",
             "hidden_prompt": "user uses 'X is a + noun + that/which + clause'",
             "hint_en": "It's a watch that belonged to my grandfather.",
@@ -529,6 +543,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro objeto",
             "label_en": "Another object",
             "hidden_prompt": "user uses another 'which/that' clause",
             "hint_en": "I have books that I've kept for years.",
@@ -548,6 +563,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her meaningful object",
             "hint_en": "What about you?",
@@ -697,6 +713,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about meaningful places.",
+        "scenario_pt": "Charlotte pergunta sobre lugares significativos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -705,6 +722,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Lugar onde algo aconteceu",
             "label_en": "Place where something happened",
             "hidden_prompt": "user uses 'X is the place where + clause'",
             "hint_en": "This is the city where I was born.",
@@ -721,6 +739,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro lugar",
             "label_en": "Another place",
             "hidden_prompt": "user uses another 'where' clause",
             "hint_en": "It's a park where I run every morning.",
@@ -737,6 +756,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Mais um lugar",
             "label_en": "One more place",
             "hidden_prompt": "user uses one more 'where' clause",
             "hint_en": "I love the café where we used to meet.",
@@ -765,10 +785,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats about places. Practice 'where' clauses.",
+        "intro_pt": "Charlotte conversa sobre lugares. Pratique cláusulas com 'where'.",
         "opening_message": "What's a place where you feel at peace?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Lugar tranquilo",
             "label_en": "Peaceful place",
             "hidden_prompt": "user uses 'a place where + clause'",
             "hint_en": "The beach where I go in summer.",
@@ -785,6 +807,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro lugar",
             "label_en": "Another place",
             "hidden_prompt": "user uses another 'where' clause",
             "hint_en": "My grandma's house where I spent summers.",
@@ -801,6 +824,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_en": "How about you?",
@@ -950,6 +974,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about people through their belongings/relations.",
+        "scenario_pt": "Charlotte pergunta sobre pessoas através de seus pertences/relações.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -958,6 +983,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pessoa com whose + posse",
             "label_en": "Person with whose + possession",
             "hidden_prompt": "user uses 'X is + person + whose + noun'",
             "hint_en": "She's my friend whose dog is huge.",
@@ -974,6 +1000,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra pessoa",
             "label_en": "Another person",
             "hidden_prompt": "user uses another 'whose' clause",
             "hint_en": "He's the colleague whose office is next to mine.",
@@ -990,6 +1017,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Mais um com 'whose'",
             "label_en": "One more whose",
             "hidden_prompt": "user uses another 'whose' clause",
             "hint_en": "I know someone whose grandfather was a pilot.",
@@ -1018,10 +1046,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about people via possessions.",
+        "intro_pt": "Charlotte pergunta sobre pessoas através de posses.",
         "opening_message": "Tell me about a friend whose life is interesting.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Amigo com whose",
             "label_en": "Friend with whose",
             "hidden_prompt": "user uses 'a friend whose + noun + verb'",
             "hint_en": "A friend whose family travels often.",
@@ -1038,6 +1068,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra pessoa",
             "label_en": "Another person",
             "hidden_prompt": "user uses another 'whose'",
             "hint_en": "A colleague whose son is talented.",
@@ -1054,6 +1085,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about someone Charlotte knows",
             "hint_en": "How about you?",
@@ -1203,6 +1235,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks for a 4-sentence description using each pronoun.",
+        "scenario_pt": "Charlotte pede uma descrição de 4 frases usando cada pronome.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1211,6 +1244,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pessoa com who",
             "label_en": "Person with who",
             "hidden_prompt": "user uses 'who' clause for person",
             "hint_en": "I know a woman who runs marathons.",
@@ -1227,6 +1261,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Coisa ou lugar (that/where)",
             "label_en": "Thing or place (that/where)",
             "hidden_prompt": "user uses 'that' or 'where' clause",
             "hint_en": "It's a city where I'd love to live.",
@@ -1243,6 +1278,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Posse com whose",
             "label_en": "Possession with whose",
             "hidden_prompt": "user uses 'whose' clause",
             "hint_en": "He's the guy whose business is growing.",
@@ -1272,10 +1308,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats with relative pronouns.",
+        "intro_pt": "Charlotte conversa usando pronomes relativos.",
         "opening_message": "Describe your life using relative clauses.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pessoa",
             "label_en": "Person",
             "hidden_prompt": "user uses 'who' clause",
             "hint_en": "I work with people who inspire me.",
@@ -1292,6 +1330,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Coisa ou lugar",
             "label_en": "Thing or place",
             "hidden_prompt": "user uses 'that' or 'where' clause",
             "hint_en": "I read books that challenge me.",
@@ -1308,6 +1347,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte",
             "hint_en": "How about you?",

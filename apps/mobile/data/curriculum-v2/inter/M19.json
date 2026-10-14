@@ -149,6 +149,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta sobre pessoas importantes da sua vida — você descreve cada uma com informação extra usando non-defining \"who\".",
+        "scenario_pt": "Charlotte quer saber sobre pessoas importantes na sua vida. Pratica non-defining 'who' para dar informação extra.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -157,6 +158,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pessoa específica com 'who'",
             "label_en": "Specific person with 'who'",
             "hidden_prompt": "user uses 'X, who + verb, + main clause'",
             "hint_en": "My sister, who lives in Curitiba, is a nurse.",
@@ -176,6 +178,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra pessoa com informação extra",
             "label_en": "Another person with extra info",
             "hidden_prompt": "user uses another non-defining 'who'",
             "hint_en": "My best friend, who I've known since school, lives nearby.",
@@ -195,6 +198,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Pessoa do trabalho com 'who'",
             "label_en": "Work person with 'who'",
             "hidden_prompt": "user uses 'colleague/boss, who + verb'",
             "hint_en": "My boss, who is from England, speaks Portuguese well.",
@@ -227,10 +231,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares family stories. Use 'who' + comma for extra info.",
+        "intro_pt": "Charlotte compartilha histórias de família. Use 'who' + vírgula para informações adicionais.",
         "opening_message": "My aunt, who lives in Italy, is visiting next month. Tell me about your family.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pessoa da família com 'who'",
             "label_en": "Family person with 'who'",
             "hidden_prompt": "user uses 'X, who + extra info'",
             "hint_en": "My uncle, who works in Germany, sends me photos every week.",
@@ -250,6 +256,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra pessoa próxima",
             "label_en": "Another close person",
             "hidden_prompt": "user uses another non-defining clause",
             "hint_en": "My cousin, who I see every Christmas, just started college.",
@@ -269,6 +276,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her relative",
             "hint_en": "When is your aunt arriving?",
@@ -425,6 +433,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você descreva 3 lugares ou coisas com informação extra usando non-defining \"which\".",
+        "scenario_pt": "Charlotte pede que você descreva 3 lugares ou coisas com informação extra usando non-defining \"which\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -433,6 +442,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Lugar com 'which'",
             "label_en": "Place with 'which'",
             "hidden_prompt": "user uses 'X, which + extra info' for place",
             "hint_en": "Rio, which is famous for its beaches, has amazing views.",
@@ -452,6 +462,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Coisa com 'which'",
             "label_en": "Thing with 'which'",
             "hidden_prompt": "user uses 'X, which + extra info' for object",
             "hint_en": "My car, which I bought last year, is electric.",
@@ -471,6 +482,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Usar 'Which' referindo-se à frase inteira",
             "label_en": "'Which' referring to whole clause",
             "hidden_prompt": "user uses 'X happened, which + reaction'",
             "hint_en": "He forgot my birthday, which hurt my feelings.",
@@ -503,10 +515,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte talks about favorite things. Use 'which' + comma for extra info.",
+        "intro_pt": "Charlotte fala sobre coisas favoritas. Use 'which' + vírgula para informações adicionais.",
         "opening_message": "My favorite city is Lisbon, which has amazing food. What's yours?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Cidade favorita com 'which'",
             "label_en": "Favorite city with 'which'",
             "hidden_prompt": "user uses 'X, which + extra info, is my favorite'",
             "hint_en": "My favorite city is Florianópolis, which has beautiful beaches.",
@@ -526,6 +540,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro favorito com 'which'",
             "label_en": "Another favorite with 'which'",
             "hidden_prompt": "user uses another non-defining 'which'",
             "hint_en": "My favorite book, which I've read twice, is by Saramago.",
@@ -545,6 +560,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about Lisbon or her favorites",
             "hint_en": "What do you love about Lisbon?",
@@ -701,6 +717,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta sobre pessoas conectadas a você por algo (família, amigos, vizinhos) — você descreve com \"whose + possessão\".",
+        "scenario_pt": "Charlotte quer saber sobre pessoas conectadas a você. Pratica 'whose + possessão'.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -709,6 +726,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pessoa com 'whose + family'",
             "label_en": "Person with 'whose + family'",
             "hidden_prompt": "user uses 'X, whose father/mother/sister/brother + verb'",
             "hint_en": "Carla, whose mother is a chef, cooks amazing food.",
@@ -728,6 +746,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Pessoa com 'whose + objeto'",
             "label_en": "Person with 'whose + object'",
             "hidden_prompt": "user uses 'X, whose + object + verb'",
             "hint_en": "My neighbor, whose car is always parked badly, never apologizes.",
@@ -747,6 +766,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Pessoa com 'whose + qualidade/trabalho'",
             "label_en": "Person with 'whose + quality/work'",
             "hidden_prompt": "user uses 'X, whose + work/quality + verb'",
             "hint_en": "My friend, whose paintings are amazing, just had a show.",
@@ -779,10 +799,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares neighbor stories. Use 'whose + noun' for possession.",
+        "intro_pt": "Charlotte compartilha histórias de vizinhos. Use 'whose + substantivo' para posse.",
         "opening_message": "My neighbor, whose cat keeps coming to my house, is so friendly. Tell me about yours.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Vizinho com 'whose'",
             "label_en": "Neighbor with 'whose'",
             "hidden_prompt": "user uses 'X, whose + noun, + verb'",
             "hint_en": "My neighbor, whose kids are always playing outside, is great with them.",
@@ -802,6 +824,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra pessoa com 'whose'",
             "label_en": "Another person with 'whose'",
             "hidden_prompt": "user uses another non-defining 'whose'",
             "hint_en": "An old friend, whose family I know well, called me yesterday.",
@@ -821,6 +844,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her neighbor",
             "hint_en": "What does your neighbor do?",
@@ -977,6 +1001,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta sobre 3 lugares ou momentos marcantes — você descreve com \"where\" e \"when\" em non-defining.",
+        "scenario_pt": "Charlotte pergunta sobre 3 lugares ou momentos marcantes — você descreve com \"where\" e \"when\" em non-defining.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -985,6 +1010,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Lugar significativo com 'where'",
             "label_en": "Significant place with 'where'",
             "hidden_prompt": "user uses 'X, where + extra info'",
             "hint_en": "Rio, where I spent my honeymoon, is magical.",
@@ -1001,6 +1027,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Momento significativo com 'when'",
             "label_en": "Significant moment with 'when'",
             "hidden_prompt": "user uses 'X, when + extra info'",
             "hint_en": "2015, when I started my career, was a big year.",
@@ -1017,6 +1044,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Outro lugar ou tempo com informação extra",
             "label_en": "Another place or time with extra info",
             "hidden_prompt": "user uses another 'where' or 'when'",
             "hint_en": "Last winter, when I traveled to Europe, was amazing.",
@@ -1046,10 +1074,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares life moments. Use 'where' for places and 'when' for times.",
+        "intro_pt": "Charlotte compartilha momentos da vida. Use 'where' para lugares e 'when' para tempos.",
         "opening_message": "Lisbon, where I studied, holds a special place in my heart. What about you?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Lugar com 'where'",
             "label_en": "Place with 'where'",
             "hidden_prompt": "user uses 'X, where + extra info'",
             "hint_en": "Salvador, where I was born, has so much history.",
@@ -1066,6 +1096,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Tempo significativo com 'when'",
             "label_en": "Significant time with 'when'",
             "hidden_prompt": "user uses 'X, when + extra info'",
             "hint_en": "2010, when I graduated, feels like yesterday.",
@@ -1082,6 +1113,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her experience",
             "hint_en": "What did you study in Lisbon?",
@@ -1234,6 +1266,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte propõe um jogo — você diz uma frase definidora e uma não-definidora sobre cada pessoa/coisa.",
+        "scenario_pt": "Charlotte propõe um jogo. Diga uma frase definidora e uma não-definidora sobre cada pessoa/coisa.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1242,6 +1275,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Definir + não definir para pessoa",
             "label_en": "Defining + non-defining for person",
             "hidden_prompt": "user uses both defining and non-defining for a person",
             "hint_en": "The teacher who taught me French... My French teacher, who is from Paris,...",
@@ -1261,6 +1295,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Definir + não definir para lugar",
             "label_en": "Defining + non-defining for place",
             "hidden_prompt": "user uses both for a place",
             "hint_en": "The city where I work... São Paulo, where I work,...",
@@ -1280,6 +1315,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Definir + não definir para coisa",
             "label_en": "Defining + non-defining for thing",
             "hidden_prompt": "user uses both for an object",
             "hint_en": "The book that won the award... My favorite book, which won the award,...",
@@ -1312,10 +1348,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores how we describe. Mix defining and non-defining naturally.",
+        "intro_pt": "Charlotte explora como descrevemos. Misture definições e não-definições naturalmente.",
         "opening_message": "Tell me about a person — first define them, then add extra info.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Definir (identifica)",
             "label_en": "Defining (identifies)",
             "hidden_prompt": "user uses defining clause (no commas)",
             "hint_en": "The friend who I met at university lives nearby.",
@@ -1335,6 +1373,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Não definindo (informação extra)",
             "label_en": "Non-defining (extra info)",
             "hidden_prompt": "user uses non-defining with commas",
             "hint_en": "Pedro, who I met at university, just got married.",
@@ -1354,6 +1393,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Pergunta ou outra mistura",
             "label_en": "Question or another mix",
             "hidden_prompt": "user asks Charlotte or adds another mix",
             "hint_en": "How about your friends?",

@@ -108,6 +108,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites you to map three parallel lives — past choices whose consequences would have rippled into your present. Mixed conditionals throughout.",
+        "scenario_pt": "Charlotte te convida a mapear três vidas paralelas — escolhas passadas cujas consequências teriam impactado seu presente. Pratica mixed conditionals.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -116,6 +117,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Carreira mista (passado → presente)",
             "label_en": "Career mixed (past → present)",
             "hidden_prompt": "user uses 'If I had + past participle, I would + base' for present career state",
             "hint_en": "If I had taken that internship, I'd be working in tech now.",
@@ -134,6 +136,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Confuso sobre lugar ou relacionamento",
             "label_en": "Mixed about place or relationship",
             "hidden_prompt": "user uses another mixed conditional",
             "hint_en": "If I had stayed in Rio, I wouldn't know my partner today.",
@@ -152,6 +155,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Misto em ordem reversa (resultado primeiro)",
             "label_en": "Mixed in reverse order (result first)",
             "hidden_prompt": "user uses 'I would + base now... if I had + past participle'",
             "hint_en": "I'd be financially independent now if I'd started investing earlier.",
@@ -183,10 +187,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores past pivots and their present echoes. Mix tenses with care.",
+        "intro_pt": "Charlotte explora mudanças passadas e seus ecos presentes. Misture tempos verbais com cuidado.",
         "opening_message": "Looking back, what's one decision from years ago that completely shapes your present?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Condicional misto sobre decisão passada",
             "label_en": "Mixed conditional about past decision",
             "hidden_prompt": "user uses 'If I had + past participle, I would + base' anchored to present",
             "hint_en": "If I hadn't moved abroad, I wouldn't speak three languages today.",
@@ -205,6 +211,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Aprofundar com outro misto",
             "label_en": "Deepen with another mixed",
             "hidden_prompt": "user adds another mixed conditional that builds on the first",
             "hint_en": "If I had stayed, I'd probably still be in the same job.",
@@ -223,6 +230,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her own pivot",
             "hint_en": "What pivot shaped you?",
@@ -329,6 +337,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks you to explain three past outcomes by pointing at a permanent trait or condition — mixed conditional in reverse direction.",
+        "scenario_pt": "Charlotte pede para você explicar três resultados passados apontando uma característica ou condição permanente — mixed conditional na direção reversa.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -337,6 +346,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Traço presente → resultado passado",
             "label_en": "Present trait → past outcome",
             "hidden_prompt": "user uses 'If I weren't + adj/noun, I would have + past participle'",
             "hint_en": "If I weren't so cautious, I would have invested earlier.",
@@ -351,6 +361,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro exemplo de característica permanente",
             "label_en": "Another permanent trait example",
             "hidden_prompt": "user uses another 'if I weren't' or 'if he/she weren't'",
             "hint_en": "If my dad weren't so private, we'd have heard the story years ago.",
@@ -365,6 +376,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Inverter a ordem",
             "label_en": "Reverse the order",
             "hidden_prompt": "user starts with the past result clause",
             "hint_en": "She'd have called you back if she weren't so anxious.",
@@ -392,10 +404,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores trait-driven past outcomes. Mix subjunctive 'were' with 'would have done'.",
+        "intro_pt": "Charlotte explora resultados passados baseados em traços. Misture subjunctive 'were' com 'would have done'.",
         "opening_message": "If I weren't such a planner, I would have backpacked through Asia in my twenties. What about you?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Próprio traço → passado não realizado",
             "label_en": "Own trait → unrealised past",
             "hidden_prompt": "user uses 'If I weren't + trait, I would have + past participle'",
             "hint_en": "If I weren't so risk-averse, I would have started my own business.",
@@ -410,6 +424,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Aprofundar ou contrapor",
             "label_en": "Deepen or counter",
             "hidden_prompt": "user adds another mixed conditional or counterpoint",
             "hint_en": "But if I weren't this careful, I might have lost everything.",
@@ -424,6 +439,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her planner trait",
             "hint_en": "Do you regret it?",
@@ -536,6 +552,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites you to express three regrets with the inverted form — drop \"if\", invert \"had + subject + past participle\".",
+        "scenario_pt": "Charlotte te convida a expressar três arrependimentos com a forma invertida — sem 'if', inverta 'had + sujeito + past participle'.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -544,6 +561,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Própria inversão com 'Had I'",
             "label_en": "Own inversion with 'Had I'",
             "hidden_prompt": "user uses 'Had I + past participle, I would have + past participle'",
             "hint_en": "Had I started earlier, I would have finished by now.",
@@ -558,6 +576,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Inverter sobre outra pessoa",
             "label_en": "Inversion about someone else",
             "hidden_prompt": "user uses 'Had he/she + past participle'",
             "hint_en": "Had she taken the bus, she'd have made it on time.",
@@ -572,6 +591,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Inversão com resultado misto",
             "label_en": "Inversion with mixed result",
             "hidden_prompt": "user uses 'Had + subject + past participle, would + base now'",
             "hint_en": "Had we bought the apartment, we'd own it outright today.",
@@ -599,10 +619,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites a formal register. Use inverted conditionals throughout.",
+        "intro_pt": "Charlotte convida para um registro formal. Use condicionais invertidos ao longo.",
         "opening_message": "Imagine writing to your younger self. Had you known what you know now, what would you have done differently?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Própria inversão abordada",
             "label_en": "Own inversion addressed",
             "hidden_prompt": "user uses 'Had I + past participle, I would have'",
             "hint_en": "Had I trusted my instincts, I would have left that job sooner.",
@@ -617,6 +639,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra inversão (escolha diferente)",
             "label_en": "Another inversion (different choice)",
             "hidden_prompt": "user uses another inverted form",
             "hint_en": "Had I been kinder to myself, I'd have rested instead of pushing on.",
@@ -631,6 +654,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what she'd say to her younger self",
             "hint_en": "What would you tell yours?",
@@ -738,6 +762,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte drafts three formal hypotheticals for an imaginary cover letter or business email. You produce them with inverted forms.",
+        "scenario_pt": "Charlotte elabora três hipóteses formais para uma carta de apresentação ou e-mail comercial imaginário. Você as produz com formas invertidas.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -746,6 +771,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Hipótese com 'Were I to'",
             "label_en": "Hypothesis with 'Were I to'",
             "hidden_prompt": "user uses 'Were I to + base, I would + base'",
             "hint_en": "Were I to lead the project, I would restructure the team first.",
@@ -764,6 +790,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Possibilidade com 'Should you'",
             "label_en": "Possibility with 'Should you'",
             "hidden_prompt": "user uses 'Should you + base, ...'",
             "hint_en": "Should you require further details, I'm happy to elaborate.",
@@ -782,6 +809,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Outra inversão formal",
             "label_en": "Another formal inversion",
             "hidden_prompt": "user uses another 'Were' or 'Should' inversion",
             "hint_en": "Were the budget approved, we could launch in Q3.",
@@ -812,10 +840,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte trades formal email lines. Use 'Were I to' and 'Should you' for elevation.",
+        "intro_pt": "Charlotte troca linhas de e-mail formais. Use 'Were I to' e 'Should you' para elevação.",
         "opening_message": "Were I to propose a meeting next week, would your team be open to it?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Resposta formal com inversão",
             "label_en": "Formal reply with inversion",
             "hidden_prompt": "user uses 'Should you' or 'Were I to'",
             "hint_en": "Should the agenda allow, we'd be glad to attend.",
@@ -830,6 +860,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Adicionar condição formal",
             "label_en": "Add formal condition",
             "hidden_prompt": "user adds another inverted conditional",
             "hint_en": "Were the meeting moved to Wednesday, we could send two representatives.",
@@ -847,6 +878,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for an alternative or detail",
             "hint_en": "Would Tuesday afternoon work?",
@@ -951,6 +983,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites you to use three different non-\"if\" structures for hypotheticals — suppose, but for, unless.",
+        "scenario_pt": "Charlotte te convida a usar três estruturas diferentes sem 'if' para hipotéticos — suppose, but for, unless.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -959,6 +992,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Suposição com 'Suppose'",
             "label_en": "Supposition with 'Suppose'",
             "hidden_prompt": "user uses 'Suppose + clause' for hypothetical",
             "hint_en": "Suppose you had a free year — where would you go?",
@@ -973,6 +1007,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Contrafactual com 'But for'",
             "label_en": "Counterfactual with 'But for'",
             "hidden_prompt": "user uses 'But for + noun, would have + past participle'",
             "hint_en": "But for that scholarship, I wouldn't have finished college.",
@@ -991,6 +1026,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Condição com 'Unless' ou 'Provided that'",
             "label_en": "Condition with 'Unless' or 'Provided that'",
             "hidden_prompt": "user uses 'Unless' or 'Provided that' + clause",
             "hint_en": "Provided that the team agrees, we'll move forward Monday.",
@@ -1020,10 +1056,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte cycles through hypothetical framings. Vary your conditional scaffolds.",
+        "intro_pt": "Charlotte passa por enquadramentos hipotéticos. Varie suas estruturas condicionais.",
         "opening_message": "Suppose money weren't an issue — what would you do for the rest of your life?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Responder usando outro tipo hipotético",
             "label_en": "Reply using another hypothetical type",
             "hidden_prompt": "user uses 'But for' or 'Without' or another non-if structure",
             "hint_en": "Without that constraint, I'd open a small bookstore.",
@@ -1042,6 +1080,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Aprofundar com uma condição",
             "label_en": "Deepen with a condition",
             "hidden_prompt": "user uses 'Provided that' or 'Unless' or 'As long as'",
             "hint_en": "Provided that I could still travel, I'd happily live above the shop.",
@@ -1060,6 +1099,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte her own answer",
             "hint_en": "Suppose the same for you — what then?",

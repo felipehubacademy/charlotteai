@@ -109,6 +109,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte presents three flat statements. You recast each as an it-cleft, shifting the emphasis.",
+        "scenario_pt": "Charlotte apresenta três afirmações diretas. Reescreva cada uma como it-cleft, mudando a ênfase.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -117,6 +118,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Usar it-cleft para enfatizar pessoa",
             "label_en": "It-cleft emphasising person",
             "hidden_prompt": "user uses 'It was/is + person + who + clause'",
             "hint_en": "It was my mother who taught me to cook.",
@@ -131,6 +133,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Usar it-cleft para enfatizar tempo",
             "label_en": "It-cleft emphasising time",
             "hidden_prompt": "user uses 'It was + time + that + clause'",
             "hint_en": "It was in college that I discovered my passion for writing.",
@@ -145,6 +148,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Usar it-cleft para enfatizar lugar",
             "label_en": "It-cleft emphasising place",
             "hidden_prompt": "user uses 'It was at/in + place + that + clause'",
             "hint_en": "It was at a coffee shop in Lisbon that we first spoke.",
@@ -172,10 +176,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte interviews you. Answer with it-clefts to land emphasis cleanly.",
+        "intro_pt": "Charlotte te entrevista. Responda com it-clefts para enfatizar claramente.",
         "opening_message": "Who actually built your team's first product?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Responder com it-cleft sobre pessoa",
             "label_en": "Reply with it-cleft about person",
             "hidden_prompt": "user uses 'It was + person + who + clause'",
             "hint_en": "It was a small founding team of three who built it.",
@@ -190,6 +196,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Aprofundar com it-cleft de tempo",
             "label_en": "Deepen with it-cleft of time",
             "hidden_prompt": "user uses 'It was + time + that + clause'",
             "hint_en": "It was over a weekend in 2019 that we finished the first version.",
@@ -204,6 +211,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte a probing question back",
             "hint_en": "What do you want to know next?",
@@ -311,6 +319,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives you a frustration scenario. You answer with wh-clefts that re-centre what's actually needed.",
+        "scenario_pt": "Charlotte dá um cenário de frustração. Você responde com wh-clefts que reorientam o que realmente é necessário.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -319,6 +328,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Wh-cleft com 'What I need is'",
             "label_en": "Wh-cleft with 'What I need is'",
             "hidden_prompt": "user uses 'What I need is + noun'",
             "hint_en": "What I need is a clear deadline and less micromanagement.",
@@ -333,6 +343,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Wh-cleft com 'What surprised me was'",
             "label_en": "Wh-cleft with 'What surprised me was'",
             "hidden_prompt": "user uses 'What surprised me was + element'",
             "hint_en": "What surprised me was how calm she stayed under pressure.",
@@ -347,6 +358,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Wh-cleft com 'What I did was'",
             "label_en": "Wh-cleft with 'What I did was'",
             "hidden_prompt": "user uses 'What I did was + base form'",
             "hint_en": "What I did was step away from the screen for an hour.",
@@ -374,10 +386,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites self-reflection. Open with 'What I need is' or 'What surprised me was'.",
+        "intro_pt": "Charlotte convida para autorreflexão. Comece com 'What I need is' ou 'What surprised me was'.",
         "opening_message": "What's actually missing from your week right now?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Necessidade clara com wh-cleft",
             "label_en": "Clear need with wh-cleft",
             "hidden_prompt": "user uses 'What I need is + noun/clause'",
             "hint_en": "What I need is two hours of uninterrupted focus.",
@@ -392,6 +406,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Surpresa ou observação com wh-cleft",
             "label_en": "Surprise or observation with wh-cleft",
             "hidden_prompt": "user uses 'What surprised/struck me was + element'",
             "hint_en": "What surprised me was how much I missed silence.",
@@ -406,6 +421,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what she needs",
             "hint_en": "What's missing from yours?",
@@ -516,6 +532,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites you to express modest desires and minimal actions with all-clefts.",
+        "scenario_pt": "Charlotte te convida a expressar desejos modestos e ações mínimas usando all-clefts.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -524,6 +541,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "All-cleft de desejo",
             "label_en": "All-cleft of desire",
             "hidden_prompt": "user uses 'All I want is + noun/clause'",
             "hint_en": "All I want is a Friday without meetings.",
@@ -538,6 +556,7 @@
           },
           {
             "id": 2,
+            "label_pt": "All-cleft de ação própria",
             "label_en": "All-cleft of own action",
             "hidden_prompt": "user uses 'All I did was + base form'",
             "hint_en": "All I did was ask one honest question.",
@@ -552,6 +571,7 @@
           },
           {
             "id": 3,
+            "label_pt": "All-cleft de outra pessoa",
             "label_en": "All-cleft of someone else",
             "hidden_prompt": "user uses 'All he/she/they did was + base form'",
             "hint_en": "All my boss did was nod and walk away.",
@@ -579,10 +599,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte strips needs to essentials. Use 'All I want is' and 'All I did was'.",
+        "intro_pt": "Charlotte reduz necessidades ao essencial. Use 'All I want is' e 'All I did was'.",
         "opening_message": "All I want from this year is fewer commitments and deeper ones. What's yours?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Desejo essencial",
             "label_en": "Essential desire",
             "hidden_prompt": "user uses 'All I want is + noun/clause'",
             "hint_en": "All I want is to feel less rushed in the mornings.",
@@ -597,6 +619,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Ação minimizada",
             "label_en": "Minimised action",
             "hidden_prompt": "user uses 'All I did was + base'",
             "hint_en": "All I did was start setting my alarm twenty minutes earlier.",
@@ -611,6 +634,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for one specific change she made",
             "hint_en": "What did you actually change?",
@@ -718,6 +742,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte wants three \"it wasn't until...\" moments — delayed realisations or events.",
+        "scenario_pt": "Charlotte quer três momentos \"it wasn't until...\" — realizações ou eventos atrasados.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -726,6 +751,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Realização pessoal tardia",
             "label_en": "Personal late realisation",
             "hidden_prompt": "user uses 'It wasn't until + clause + that + main'",
             "hint_en": "It wasn't until I changed jobs that I understood how unhappy I had been.",
@@ -744,6 +770,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Mencionar evento tardio",
             "label_en": "Late event (not realisation)",
             "hidden_prompt": "user uses 'It wasn't until + time + that + event'",
             "hint_en": "It wasn't until 30 that I learned to cook properly.",
@@ -762,6 +789,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Falar de atraso sobre outra pessoa",
             "label_en": "Late + about someone else",
             "hidden_prompt": "user uses 'It wasn't until + clause + that + he/she + clause'",
             "hint_en": "It wasn't until last week that my brother told me the whole story.",
@@ -793,10 +821,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte trades lessons that came late. Use 'It wasn't until X that Y'.",
+        "intro_pt": "Charlotte troca lições que chegaram tarde. Use 'It wasn't until X that Y'.",
         "opening_message": "It wasn't until my mid-thirties that I started taking sleep seriously. What came to you late?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Falar sobre lição tardia",
             "label_en": "Late lesson",
             "hidden_prompt": "user uses 'It wasn't until X that Y'",
             "hint_en": "It wasn't until I lost a friend that I started replying to texts on the same day.",
@@ -811,6 +841,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra realização atrasada",
             "label_en": "Another delayed realisation",
             "hidden_prompt": "user uses another 'It wasn't until' cleft",
             "hint_en": "It wasn't until I tried therapy that I noticed how angry I was.",
@@ -829,6 +860,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what made her finally take sleep seriously",
             "hint_en": "What flipped the switch on sleep for you?",
@@ -941,6 +973,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte wants three lexical clefts — one with \"the reason\", one with \"the thing\", one with \"the place\" or \"the time\".",
+        "scenario_pt": "Charlotte quer três clivagens lexicais — uma com \"the reason\", uma com \"the thing\", uma com \"the place\" ou \"the time\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -949,6 +982,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Usar 'The reason... is'",
             "label_en": "'The reason... is'",
             "hidden_prompt": "user uses 'The reason (why) + clause + is + that-clause/element'",
             "hint_en": "The reason I started running is that my back wouldn't stop hurting.",
@@ -967,6 +1001,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Usar 'The thing that... is/was'",
             "label_en": "'The thing that... is/was'",
             "hidden_prompt": "user uses 'The thing that + clause + is/was + element'",
             "hint_en": "The thing that kept me going was a single email from a stranger.",
@@ -985,6 +1020,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Usar 'The place where' ou 'The time when'",
             "label_en": "'The place where' or 'The time when'",
             "hidden_prompt": "user uses 'The place where + clause + is/was' or 'The time when + clause + was'",
             "hint_en": "The time when I felt most myself was the year I lived alone in Lisbon.",
@@ -1016,10 +1052,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites layered self-portrait. Use lexical clefts throughout.",
+        "intro_pt": "Charlotte convida para um autorretrato em camadas. Use clivagens lexicais ao longo.",
         "opening_message": "The reason I became a teacher is that I had one great one as a kid. What's a 'the reason' for you?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pessoal 'The reason'",
             "label_en": "Personal 'The reason'",
             "hidden_prompt": "user uses 'The reason + clause + is + that-clause'",
             "hint_en": "The reason I write every morning is that I think better when nobody's watching.",
@@ -1038,6 +1076,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Definir 'The thing that'",
             "label_en": "Defining 'The thing that'",
             "hidden_prompt": "user uses 'The thing that + clause + is/was + element'",
             "hint_en": "The thing that changed me most was my first proper failure.",
@@ -1056,6 +1095,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her teacher",
             "hint_en": "Who was the teacher?",

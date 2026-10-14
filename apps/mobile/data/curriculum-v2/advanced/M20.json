@@ -108,6 +108,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three words. You use each in a sentence with deliberate, correct stress placement.",
+        "scenario_pt": "Charlotte dá três palavras. Você usa cada uma em uma frase com colocação de ênfase deliberada e correta.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -116,6 +117,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Mudança de acento em 'photograph / photography / photographic'",
             "label_en": "Stress shift in 'photograph / photography / photographic'",
             "hidden_prompt": "user produces stress shifts across the word family",
             "hint_en": "She studied photography in Paris before she ever took a single photograph that satisfied her — and what fascinates her now is photographic memory.",
@@ -133,6 +135,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Par substantivo/verbo com 'record'",
             "label_en": "Noun/verb pair with 'record'",
             "hidden_prompt": "user uses 'record' both as noun and verb",
             "hint_en": "We need to record a new podcast episode this afternoon — last week's record came out unusable because of the construction noise.",
@@ -151,6 +154,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Verbo + substantivo com 'develop'",
             "label_en": "Verb + noun with 'develop'",
             "hidden_prompt": "user uses 'develop' and 'development' with correct stress",
             "hint_en": "It takes weeks to develop a new feature, but the development of the whole platform took years.",
@@ -181,10 +185,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites stress-awareness chat. Notice patterns.",
+        "intro_pt": "Charlotte convida para um chat sobre consciência do estresse. Observe os padrões.",
         "opening_message": "I noticed today that 'comfortable' is one of the words I most often stress wrong. What's a word that catches you out?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Compartilhar uma palavra complicada",
             "label_en": "Share a tricky word",
             "hidden_prompt": "user names a word with stress they often misplace",
             "hint_en": "For me it's 'develop' — I'd always stress the first syllable until I noticed natives go to the second: deVELop.",
@@ -202,6 +208,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Discutir padrão de acentuação",
             "label_en": "Discuss stress pattern",
             "hidden_prompt": "user generalises about a stress pattern",
             "hint_en": "And the suffix matters too — 'PHO-tograph' becomes 'pho-TO-graphy'. The stress migrates with the ending.",
@@ -219,6 +226,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if 'comfortable' has a fast-speech reduction",
             "hint_en": "Do natives still say all four syllables of 'comfortable'?",
@@ -324,6 +332,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three sentences. You speak each with native rhythm — stressing content words, weakening function words.",
+        "scenario_pt": "Charlotte dá três frases. Você fala cada uma com ritmo nativo — enfatizando palavras de conteúdo, enfraquecendo palavras de função.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -332,6 +341,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Frase com 'of' / 'a' / 'the' fracos",
             "label_en": "Sentence with weak 'of' / 'a' / 'the'",
             "hidden_prompt": "user produces sentence with clear content stress and weak function words",
             "hint_en": "She left a note on the kitchen table — 'BACK in an HOUR, kettle's STILL warm.'",
@@ -350,6 +360,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Frase com contrações + 'to' fraco",
             "label_en": "Sentence with contractions + weak 'to'",
             "hidden_prompt": "user uses contractions and weak 'to'",
             "hint_en": "I'm going to the conference tomorrow — I'll catch the early train, and I should be there by ten.",
@@ -368,6 +379,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Usar frase longa com ritmo controlado",
             "label_en": "Long sentence with controlled rhythm",
             "hidden_prompt": "user paces a longer sentence with stress-timed rhythm",
             "hint_en": "We've been talking about this for months, but nobody's actually had the conversation with the team that needs to happen.",
@@ -398,10 +410,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte discusses L2 rhythm. Discuss how to internalise native rhythm.",
+        "intro_pt": "Charlotte discute o ritmo de L2. Discuta como internalizar o ritmo nativo.",
         "opening_message": "Brazilian learners often give every syllable equal weight. What's helped you start to compress?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Estratégia pessoal",
             "label_en": "Personal strategy",
             "hidden_prompt": "user shares a rhythm-internalisation strategy",
             "hint_en": "What helped me most was reading aloud with podcasts — copying the way native speakers stress only two or three words per sentence and let the rest blur.",
@@ -420,6 +434,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro insight de ritmo",
             "label_en": "Another rhythm insight",
             "hidden_prompt": "user shares another insight",
             "hint_en": "And I started practising contractions deliberately — saying 'I'm' instead of 'I am' even in writing, just to feel the weight shift.",
@@ -437,6 +452,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for a recommended audio source",
             "hint_en": "Which audio sources do you recommend most?",
@@ -544,6 +560,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three phrases. You produce each with the linking, intrusive sound, or assimilation that natives use.",
+        "scenario_pt": "Charlotte apresenta três frases. Você as produz com a ligação, som intrusivo ou assimilação que nativos usam.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -552,6 +569,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Ligação consoante + vogal",
             "label_en": "Consonant + vowel linking",
             "hidden_prompt": "user links across word boundaries",
             "hint_en": "I found out about it on Friday — three days before everyone else heard a word about it.",
@@ -569,6 +587,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Mencionar som intrusivo",
             "label_en": "Intrusive sound",
             "hidden_prompt": "user uses intrusive /r/, /j/, or /w/",
             "hint_en": "She'll be here in an hour or so, I imagine — and I think we should wait.",
@@ -586,6 +605,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Assimilação casual",
             "label_en": "Casual assimilation",
             "hidden_prompt": "user produces 'doncha / didja / wouldja' or similar",
             "hint_en": "Didja get the email I sent on Tuesday? I never heard back.",
@@ -615,10 +635,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte compares textbook vs natural speech. Discuss the gap.",
+        "intro_pt": "Charlotte compara fala de livro didático versus fala natural. Discuta a diferença.",
         "opening_message": "Textbooks teach 'Did you go?' I almost never hear it that way — natives say 'didja go?' What surprised you most?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Surpresa de fala natural pessoal",
             "label_en": "Personal natural-speech surprise",
             "hidden_prompt": "user shares what surprised them",
             "hint_en": "For me it was 'gonna' and 'wanna' — I'd been carefully pronouncing 'going to' and 'want to', and natives were always saying 'gonna' and 'wanna' instead.",
@@ -637,6 +659,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra observação",
             "label_en": "Another observation",
             "hidden_prompt": "user shares another observation about connected speech",
             "hint_en": "And 'what are you doing' compresses to something close to 'whatcha doin' — without the 't' of 'what' and without the 'g' of 'doing'.",
@@ -654,6 +677,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how to practise connected speech",
             "hint_en": "How do you practise this without sounding fake?",
@@ -758,6 +782,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three short phrases. You speak each with the intonation that fits its function.",
+        "scenario_pt": "Charlotte dá três frases curtas. Você fala cada uma com a entonação que se encaixa na sua função.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -766,6 +791,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Pergunta sim/não com entonação crescente",
             "label_en": "Yes/no question with rising",
             "hidden_prompt": "user produces yes/no question with rising intonation",
             "hint_en": "Have you spoken to her about it yet? — make sure the pitch climbs on 'yet'.",
@@ -780,6 +806,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Fazer lista com subida-subida-subida-queda",
             "label_en": "List with rise-rise-rise-fall",
             "hidden_prompt": "user produces a list with correct intonation",
             "hint_en": "I need to pick up coffee, milk, eggs, and bread before the store closes — bread is the falling beat.",
@@ -794,6 +821,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Eco cético com queda",
             "label_en": "Sceptical echo with falling",
             "hidden_prompt": "user produces 'really' or 'sure' with sceptical falling pitch",
             "hint_en": "When he said he'd be there by ten, I just said 'sure' — flat and falling — and he heard the doubt in two syllables.",
@@ -821,10 +849,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats about intonation as meaning-carrier. Compare patterns.",
+        "intro_pt": "Charlotte conversa sobre a entonação como portadora de significado. Compare padrões.",
         "opening_message": "I've noticed that 'fine' said three different ways carries three different meanings. How do you say 'fine' when you mean it's genuinely fine?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Genuíno",
             "label_en": "Genuine",
             "hidden_prompt": "user describes genuine 'fine' intonation",
             "hint_en": "Genuine 'fine' is short, medium pitch, neutral — like reporting the weather. No emotional weight.",
@@ -839,6 +869,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Passivo-agressivo",
             "label_en": "Passive-aggressive",
             "hidden_prompt": "user describes passive-aggressive 'fine' intonation",
             "hint_en": "Passive-aggressive 'fine' is longer, falling pitch, slightly clipped — it means 'this conversation is over and you've lost'.",
@@ -853,6 +884,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for the third meaning",
             "hint_en": "What's the third meaning you noticed?",
@@ -961,6 +993,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three sentences. You produce each with natural contractions and elisions.",
+        "scenario_pt": "Charlotte apresenta três frases. Você as produz com contrações e elisões naturais.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -969,6 +1002,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Contrações empilhadas",
             "label_en": "Stacked contractions",
             "hidden_prompt": "user uses 'I'd've / he'd've / we'd've'",
             "hint_en": "I'd've called you sooner if I'd known you were back in town — your number wasn't in my phone anymore.",
@@ -986,6 +1020,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Elisão entre consoantes",
             "label_en": "Elision between consonants",
             "hidden_prompt": "user drops /t/ or /d/ between consonants",
             "hint_en": "We need to finish the firs' draft by Friday — nex' week is too late, the regulator's pushed the deadline forward.",
@@ -1003,6 +1038,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Contrações + redução",
             "label_en": "Contractions + reduction",
             "hidden_prompt": "user produces 'going to / want to / got to' as gonna/wanna/gotta",
             "hint_en": "I'm gonna grab a coffee — you wanna come with me, or you've gotta finish that email first?",
@@ -1033,10 +1069,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats casually. Match register with contracted, elided speech.",
+        "intro_pt": "Charlotte conversa casualmente. Combine o registro com fala contraída e elidida.",
         "opening_message": "You been working late again?",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Resposta casual contraída",
             "label_en": "Casual contracted reply",
             "hidden_prompt": "user replies with 'I've / we've / it's' contractions",
             "hint_en": "I've been at it since six this morning — there's a deadline I shouldn'ta agreed to, and now I'm paying the price.",
@@ -1054,6 +1092,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Aprofundar com gonna/wanna",
             "label_en": "Deepen with gonna/wanna",
             "hidden_prompt": "user uses 'gonna / wanna / gotta'",
             "hint_en": "I'm gonna call it a day in about an hour — wanna grab a drink if you're around?",
@@ -1070,6 +1109,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte casually about her own day",
             "hint_en": "How's your day been?",

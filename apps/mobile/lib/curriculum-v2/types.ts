@@ -136,6 +136,7 @@ export interface ScriptedFlow {
 
 export interface RolePlay {
   scenario:        string;         // narrative setup
+  scenario_pt?:    string;         // cenário em português (Inter/Advanced); o aparelho em português mostra este
   voiced_by:       VoicedBy;
   persona:         string;         // character name in the scene (e.g. "Ana", "Teacher")
   persona_outfit:  string;         // asset slug (e.g. "ana_cafe_morning")

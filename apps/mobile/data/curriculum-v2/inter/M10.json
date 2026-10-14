@@ -157,6 +157,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta sobre verdades que você acredita serem sempre verdadeiras — científicas, da natureza, ou da vida cotidiana. Quer três frases bem construídas em zero conditional.",
+        "scenario_pt": "Charlotte quer saber de verdades universais que você acredita. Pratica zero conditional em três frases.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -165,6 +166,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Verdade científica ou física",
             "label_en": "Scientific or physical truth",
             "hidden_prompt": "user uses 'If + present, present' for a scientific/physical fact (water/heat/cold/light)",
             "hint_en": "If you heat water, it boils.",
@@ -181,6 +183,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Verdade biológica/corporal",
             "label_en": "Biological/body truth",
             "hidden_prompt": "user uses zero conditional for biology (sleep, eat, exercise consequences)",
             "hint_en": "If you don't eat, you get hungry.",
@@ -197,6 +200,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Verdade sobre natureza ou clima",
             "label_en": "Nature or weather truth",
             "hidden_prompt": "user uses zero conditional with weather/nature/seasons",
             "hint_en": "When the sun sets, it gets dark.",
@@ -226,10 +230,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte wants personal patterns — things that are always true in your life. Practice zero conditional with your own routines.",
+        "intro_pt": "Charlotte quer padrões pessoais — coisas que são sempre verdadeiras na sua vida. Pratique zero conditional com suas próprias rotinas.",
         "opening_message": "What's something that's always true in your daily life? Share an 'if-then'.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Padrão de rotina pessoal",
             "label_en": "Personal routine pattern",
             "hidden_prompt": "user uses 'If/When I + present, I + present' for a personal pattern",
             "hint_en": "If I don't have coffee, I feel grumpy.",
@@ -246,6 +252,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outro padrão de causa e efeito pessoal",
             "label_en": "Another personal cause-effect pattern",
             "hidden_prompt": "user uses another 'When/If + present, present' personal pattern",
             "hint_en": "When I exercise, I sleep better.",
@@ -262,6 +269,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar a Charlotte sobre seu padrão",
             "label_en": "Ask Charlotte about her pattern",
             "hidden_prompt": "user asks 'How about you?' or 'What's true for you?'",
             "hint_en": "How about you?",
@@ -420,6 +428,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você apresente uma verdade geral (sempre verdadeira) e em seguida uma predição específica para amanhã — quer ver você escolher conscientemente entre zero e first conditional.",
+        "scenario_pt": "Charlotte pede que você apresente uma verdade geral (sempre verdadeira) e em seguida uma predição específica para amanhã — quer ver você escolher conscientemente entre zero e first conditional.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -428,6 +437,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Verdade geral em zero condicional",
             "label_en": "General truth in zero conditional",
             "hidden_prompt": "user uses 'If + present, present' for an always-true statement",
             "hint_en": "If you exercise, you feel better.",
@@ -447,6 +457,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Predição específica no primeiro condicional",
             "label_en": "Specific prediction in first conditional",
             "hidden_prompt": "user uses 'If + present, will + base' for tomorrow/next week",
             "hint_en": "If I have time tomorrow, I'll exercise.",
@@ -466,6 +477,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Outra verdade geral ou plano específico",
             "label_en": "Another general truth OR specific plan",
             "hidden_prompt": "user uses zero or first conditional, with awareness of which",
             "hint_en": "If I save money, I'll buy a new phone.",
@@ -499,10 +511,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores the difference between universal truths and specific plans. Practice choosing zero vs first conditional.",
+        "intro_pt": "Charlotte explora a diferença entre verdades universais e planos específicos. Pratique escolher entre zero e first conditional.",
         "opening_message": "Tell me a 'life truth' you believe in and a 'plan' you have for this week.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Falar sobre verdade de vida (zero conditional)",
             "label_en": "Life truth (zero conditional)",
             "hidden_prompt": "user uses 'If/When + present, present' for a personal life truth",
             "hint_en": "If you read more, you write better.",
@@ -522,6 +536,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Plano específico para esta semana",
             "label_en": "Specific plan for this week",
             "hidden_prompt": "user uses 'If + present, I'll/will + base' for a specific plan",
             "hint_en": "If I finish work early Friday, I'll meet my friends.",
@@ -541,6 +556,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What's your truth/plan?'",
             "hint_en": "How about you?",
@@ -695,6 +711,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte testa sua intuição sobre \"when\" vs \"if\" — quer três frases onde você escolhe o correto baseado em certeza vs possibilidade.",
+        "scenario_pt": "Charlotte testa sua intuição sobre 'when' vs 'if' — quer três frases onde você escolhe o correto baseado em certeza vs possibilidade.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -703,6 +720,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Frase com 'when' (certeza/rotina)",
             "label_en": "Sentence with 'when' (certainty/routine)",
             "hidden_prompt": "user uses 'When + present, present/will' for certain events or daily routine",
             "hint_en": "When I get home, I make dinner.",
@@ -719,6 +737,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Frase com 'if' (possibilidade incerta)",
             "label_en": "Sentence with 'if' (uncertain possibility)",
             "hidden_prompt": "user uses 'If + present, will + base' for uncertain future",
             "hint_en": "If my friend calls, I'll meet up.",
@@ -735,6 +754,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Mais um com 'when' ou 'if' apropriado",
             "label_en": "One more with appropriate 'when' or 'if'",
             "hidden_prompt": "user uses correct when/if based on certainty level",
             "hint_en": "When summer comes, I travel.",
@@ -764,10 +784,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats about routines vs possibilities. Practice when (certain) vs if (uncertain).",
+        "intro_pt": "Charlotte conversa sobre rotinas versus possibilidades. Pratique when (certo) vs if (incerto).",
         "opening_message": "Tell me one thing you do every day, and one thing that depends on the weather.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Rotina diária com 'when'",
             "label_en": "Daily routine with 'when'",
             "hidden_prompt": "user uses 'When + present, present' for daily routine",
             "hint_en": "When I get to work, I check emails.",
@@ -784,6 +806,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Algo dependente do clima (com 'if')",
             "label_en": "Something weather-dependent (with 'if')",
             "hidden_prompt": "user uses 'If + present, will + base' for weather-dependent plans",
             "hint_en": "If it's sunny on Friday, I'll go to the park.",
@@ -800,6 +823,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What's your routine/possibility?'",
             "hint_en": "How about you?",
@@ -950,6 +974,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte propõe um \"mix\" de conditional types — você tem que produzir três frases combinando general truth, specific plan, e routine, mostrando que domina cada tipo.",
+        "scenario_pt": "Charlotte propõe um \"mix\" de conditional types. Produza três frases combinando general truth, specific plan e routine, mostrando domínio de cada tipo.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -958,6 +983,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Verdade geral (zero)",
             "label_en": "General truth (zero)",
             "hidden_prompt": "user uses 'If + present, present' for universal truth",
             "hint_en": "If you exercise, you feel good.",
@@ -974,6 +1000,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Plano futuro específico (primeiro)",
             "label_en": "Specific future plan (first)",
             "hidden_prompt": "user uses 'If + present, will + base' for specific future",
             "hint_en": "If it rains tomorrow, I'll stay home.",
@@ -990,6 +1017,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Rotina ou ambição com 'when'/'if'",
             "label_en": "Routine or ambition with 'when'/'if'",
             "hidden_prompt": "user uses 'When/If + present, present/will' appropriately",
             "hint_en": "If I work hard, I'll achieve my goals.",
@@ -1019,10 +1047,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites you to share life rules AND immediate plans. Use zero and first conditionals naturally.",
+        "intro_pt": "Charlotte te convida a compartilhar regras de vida E planos imediatos. Use zero e first conditionals naturalmente.",
         "opening_message": "Share a life rule you live by and something you might do tomorrow.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Falar sobre regra de vida (zero conditional)",
             "label_en": "Life rule (zero conditional)",
             "hidden_prompt": "user uses 'If/When + present, present' for personal life rule",
             "hint_en": "If you read more, you write better.",
@@ -1039,6 +1069,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Plano para amanhã (primeiro condicional)",
             "label_en": "Tomorrow's plan (first conditional)",
             "hidden_prompt": "user uses 'If + present, will + base' for tomorrow",
             "hint_en": "If I finish work early, I'll relax.",
@@ -1055,6 +1086,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What's your rule/plan?'",
             "hint_en": "How about you?",
@@ -1209,6 +1241,7 @@
       ],
       "roleplay": {
         "scenario": "Charlotte propõe uma \"story conditional\" — você cria três frases conectadas usando zero e first conditional, formando uma pequena narrativa coerente sobre seus planos e princípios.",
+        "scenario_pt": "Charlotte propõe uma \"story conditional\". Crie três frases conectadas usando zero e first conditional, formando uma pequena narrativa coerente sobre seus planos e princípios.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1217,6 +1250,7 @@
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Primeira frase com condicional",
             "label_en": "First sentence with a conditional",
             "hidden_prompt": "user uses any conditional structure correctly",
             "hint_en": "If I save enough money, I'll travel to Japan.",
@@ -1233,6 +1267,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Segunda frase conectada",
             "label_en": "Second connected sentence",
             "hidden_prompt": "user uses another conditional that connects to the first",
             "hint_en": "If you don't sleep enough, you feel terrible the next day.",
@@ -1249,6 +1284,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Terceira frase fechando a história",
             "label_en": "Third sentence closing the story",
             "hidden_prompt": "user uses one more conditional to close the narrative",
             "hint_en": "If it's nice tomorrow, I'll walk to the office.",
@@ -1278,10 +1314,12 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites a free conditional conversation. Use zero and first conditionals as they naturally come to you.",
+        "intro_pt": "Charlotte convida para uma conversa condicional livre. Use zero e first conditionals conforme surgirem naturalmente.",
         "opening_message": "Share an 'if-then' from your week — anything that comes to mind.",
         "objectives": [
           {
             "id": 1,
+            "label_pt": "Se-então sobre a semana",
             "label_en": "If-then about the week",
             "hidden_prompt": "user uses 'if + present, will + base' or 'if + present, present' about their week",
             "hint_en": "If I finish work early Friday, I'll cook a nice dinner.",
@@ -1298,6 +1336,7 @@
           },
           {
             "id": 2,
+            "label_pt": "Outra observação ou plano",
             "label_en": "Another observation or plan",
             "hidden_prompt": "user uses another conditional structure",
             "hint_en": "If I get tired in the afternoon, I take a short break.",
@@ -1314,6 +1353,7 @@
           },
           {
             "id": 3,
+            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What's your if-then?'",
             "hint_en": "How about you?",
