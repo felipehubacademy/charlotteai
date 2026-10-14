@@ -33,6 +33,7 @@ import Constants from 'expo-constants';
 
 import { AppText } from '@/components/ui/Text';
 import ChatBox, { Message } from '@/components/chat/ChatBox';
+import { usePaywallContext } from '@/lib/paywallContext';
 import { useAuth } from '@/hooks/useAuth';
 import { getModule, listModules } from '@/lib/curriculum-v2/loader';
 import type { Level as V2Level, GuidedChat } from '@/lib/curriculum-v2/types';
@@ -74,6 +75,7 @@ export default function GuidedChatExerciseScreen() {
   const unitId   = params.unitId ?? '';
 
   const { profile, isTaster } = useAuth();
+  const { openPaywall } = usePaywallContext();
   const userId      = profile?.id;
   const isPt        = systemIsPt; // suporte/chrome: idioma do device
   const insets      = useSafeAreaInsets();
@@ -742,8 +744,13 @@ export default function GuidedChatExerciseScreen() {
                   //   - eh ultima unit do ultimo modulo → home (com spinner
                   //     pra cobrir o gap ate o PromotionModal aparecer)
                   if (!allObjectivesDone) { router.back(); return; }
-                  // Degustação: o 1º bloco acabou aqui; a Home abre o paywall.
-                  if (isTaster) { router.replace('/(app)/(tabs)' as any); return; }
+                  // Degustação: terminou o 1º bloco deste nível (qualquer nível) → Home + paywall.
+                  // Abre daqui porque a Home volta no nível da conta, não no deste bloco.
+                  if (isTaster) {
+                    router.replace('/(app)/(tabs)' as any);
+                    setTimeout(() => openPaywall(), 600);
+                    return;
+                  }
                   const allMods = listModules(level as any);
                   const modIdx  = allMods.findIndex(m => m.id === moduleId);
                   const currMod = allMods[modIdx];
