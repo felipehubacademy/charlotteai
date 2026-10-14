@@ -10,11 +10,12 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { aiFetch } from '@/lib/ai-models';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 
 export const dynamic = 'force-dynamic';
 
-const openai = new OpenAI({
+const openai = new OpenAI({ fetch: aiFetch,
   apiKey: process.env.OPENAI_API_KEY || 'placeholder',
 });
 

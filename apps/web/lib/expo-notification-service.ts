@@ -1,4 +1,5 @@
 // lib/expo-notification-service.ts
+import { aiFetch } from '@/lib/ai-models';
 // Sends push notifications to React Native (Charlotte AI) via Expo Push API
 
 import { randomUUID } from 'crypto';
@@ -60,7 +61,7 @@ Return ONLY valid JSON: {"variants": [{"title": "...", "body": "..."}, ...]}`;
   if (!OPENAI_API_KEY) return [];
 
   try {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const res = await aiFetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${OPENAI_API_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -156,7 +157,7 @@ async function generateEngagementGptPool(
 Return ONLY valid JSON: {"variants": [{"title": "...", "body": "..."}, ...]}`;
 
   try {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const res = await aiFetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${OPENAI_API_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({

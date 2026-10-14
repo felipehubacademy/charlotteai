@@ -2,6 +2,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { aiFetch } from '@/lib/ai-models';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { grammarAnalysisService } from '@/lib/grammar-analysis';
 import { checkRateLimit } from '@/lib/rate-limit';
@@ -11,7 +12,7 @@ import { characterOf, impressionOf, applyCharacterToSystem, type Character, type
 
 export const dynamic = 'force-dynamic';
 
-const openai = new OpenAI({
+const openai = new OpenAI({ fetch: aiFetch,
   apiKey: process.env.OPENAI_API_KEY || 'placeholder',
 });
 

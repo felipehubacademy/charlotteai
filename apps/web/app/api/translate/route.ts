@@ -3,11 +3,12 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { aiFetch } from '@/lib/ai-models';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 
 export const dynamic = 'force-dynamic';
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({ fetch: aiFetch, apiKey: process.env.OPENAI_API_KEY });
 
 // Cache em memoria — max 100 entradas (FIFO)
 const translationCache = new Map<string, string>();

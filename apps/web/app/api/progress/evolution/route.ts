@@ -6,6 +6,7 @@
 // e idioma, guardado em evolution_summaries).
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { aiFetch } from '@/lib/ai-models';
 import { v2HardestUnits, v2ByActivity, type V2Row as LV2Row } from '@/lib/learning-v2';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { logOpenAIUsage } from '@/lib/openai-usage';
@@ -16,7 +17,7 @@ import {
 
 export const dynamic = 'force-dynamic';
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({ fetch: aiFetch, apiKey: process.env.OPENAI_API_KEY });
 
 // Trilha nova (learn_history_v2): uma nota por atividade. Só Grammar e
 // Listening & Speaking têm nota; Role-play e Chat contam como concluído.

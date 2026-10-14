@@ -1,8 +1,9 @@
 // lib/grammar-analysis.ts - Serviço de Análise de Gramática Estruturada
 
 import OpenAI from 'openai';
+import { aiFetch } from '@/lib/ai-models';
 
-const openai = new OpenAI({
+const openai = new OpenAI({ fetch: aiFetch,
   apiKey: process.env.OPENAI_API_KEY || 'placeholder',
 });
 

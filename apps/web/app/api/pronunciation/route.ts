@@ -2,11 +2,12 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { aiFetch } from '@/lib/ai-models';
 import { assessPronunciationOfficial } from '@/lib/azure-speech-sdk';
 import { transcodeToWavPcm16k, needsTranscode, guessExtension } from '@/lib/audio-transcode';
 import { logAzureSpeechUsage } from '@/lib/openai-usage';
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'placeholder' });
+const openai = new OpenAI({ fetch: aiFetch, apiKey: process.env.OPENAI_API_KEY || 'placeholder' });
 
 interface APIResponse {
   success: boolean;

@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { aiFetch } from '@/lib/ai-models';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({ fetch: aiFetch, apiKey: process.env.OPENAI_API_KEY });
 
 type ExerciseType = 'fill_gap' | 'fix_error' | 'read_answer';
 

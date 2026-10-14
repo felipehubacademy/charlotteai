@@ -8,12 +8,13 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { aiFetch } from '@/lib/ai-models';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 15;
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'placeholder' });
+const openai = new OpenAI({ fetch: aiFetch, apiKey: process.env.OPENAI_API_KEY || 'placeholder' });
 
 interface Payload {
   question:        string;   // texto do exercicio (sentence/passage)

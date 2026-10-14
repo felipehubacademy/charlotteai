@@ -1,4 +1,5 @@
 // lib/support-agent.ts
+import { aiFetch } from '@/lib/ai-models';
 // Núcleo do agente de suporte (canal-agnóstico). Recebe a mensagem do usuário +
 // contexto + histórico, consulta a FAQ e decide: responder sozinho (só intents
 // da whitelist — Fase 1) ou escalar para um humano.
@@ -155,7 +156,7 @@ export async function runSupportAgent(input: {
 
   let parsed: { intent?: string; reply?: string; lang?: string; needsHuman?: boolean; reason?: string } = {};
   try {
-    const res = await fetch(OPENAI_URL, {
+    const res = await aiFetch(OPENAI_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
       body: JSON.stringify({

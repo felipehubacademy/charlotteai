@@ -1,4 +1,5 @@
 // lib/support-faq-translate.ts — versão em inglês das perguntas da FAQ que aparecem no app.
+import { aiFetch } from '@/lib/ai-models';
 // Usa o glossário de rótulos do app (gerado do código por scripts/support-faq-ui.mjs) para
 // que telas e botões saiam com o nome que o aluno vê no celular em inglês.
 import glossary from './app-ui-glossary.json';
@@ -14,7 +15,7 @@ export async function translateFaqToEnglish(pt: FaqTexts): Promise<FaqTexts | nu
   const text = `${pt.section}\n${pt.question}\n${pt.answer}`;
   // Só os rótulos que aparecem no texto (mais longos primeiro).
   const terms = Object.keys(GLOSSARY).filter(k => k.length >= 3 && text.includes(k)).sort((a, b) => b.length - a.length).slice(0, 80);
-  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+  const res = await aiFetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
     body: JSON.stringify({

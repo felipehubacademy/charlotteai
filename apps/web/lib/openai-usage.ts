@@ -14,11 +14,17 @@
  */
 
 import { getSupabaseAdmin } from './supabase-admin';
+import { resolveModel } from './ai-models';
 
 // ── Pricing (USD) — valores por 1M tokens, exceto onde indicado ─────────────
 // Fonte: openai.com/pricing, em vigor em 2026-04. Revise trimestralmente.
 export const PRICING = {
   // Chat / text
+  // Substituto dos 4o/4.1 (outubro de 2026)
+  'gpt-6-luna': {
+    input:  0.10,
+    output: 0.50,
+  },
   'gpt-4o-mini': {
     input:  0.15,   // USD / 1M input tokens
     output: 0.60,   // USD / 1M output tokens
@@ -106,7 +112,7 @@ export interface OpenAIUsageRecord {
 // ── Cost calculation ─────────────────────────────────────────────────────────
 
 export function computeCostUSD(r: OpenAIUsageRecord): number {
-  const p = (PRICING as Record<string, any>)[r.model];
+  const p = (PRICING as Record<string, any>)[resolveModel(r.model)];
   if (!p) return 0;
 
   // Realtime: audio + text
@@ -206,7 +212,7 @@ export function logOpenAIUsage(rec: OpenAIUsageRecord): void {
       await supabase.from('openai_usage').insert({
         user_id:            rec.userId ?? null,
         endpoint:           rec.endpoint,
-        model:              rec.model,
+        model:              resolveModel(rec.model), // modelo que de fato atendeu
         prompt_tokens:      rec.promptTokens     ?? 0,
         completion_tokens: rec.completionTokens ?? 0,
         total_tokens:       rec.totalTokens      ?? (rec.promptTokens ?? 0) + (rec.completionTokens ?? 0),

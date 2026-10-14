@@ -1,4 +1,5 @@
 // lib/support-insights.ts — análise das conversas de suporte com IA (server-only).
+import { aiFetch } from '@/lib/ai-models';
 // Cada conversa parada há mais de 1 h ganha uma linha em support_insights: categoria,
 // assunto, tela do app, sentimento, quem resolveu, lacuna da FAQ (com a entrada
 // sugerida), problema de UX e pedido de função. Roda de hora em hora no agendador e
@@ -66,7 +67,7 @@ export async function analyzeConversation(conversationId: string): Promise<boole
   const { questions } = await getSupportFaq();
   let j: Record<string, unknown> = {};
   try {
-    const res = await fetch(OPENAI_URL, {
+    const res = await aiFetch(OPENAI_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
       body: JSON.stringify({
