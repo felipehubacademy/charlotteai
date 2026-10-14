@@ -321,13 +321,13 @@ async function tts(text: string, voicedBy: 'charlotte' | 'charlie', userId?: str
   // charlie   → onyx  (masculina, quente)
   const voice = voicedBy === 'charlie' ? 'onyx' : 'coral';
   const v = await speak(text, voice);
-  logOpenAIUsage({
+  for (const c of v.calls) logOpenAIUsage({
     endpoint:         '/api/roleplay/turn:tts',
-    model:            v.model,
-    promptTokens:     v.promptTokens,
-    completionTokens: (v.audioTokens ?? 0) + (v.textTokens ?? 0),
+    model:            c.model,
+    promptTokens:     c.promptTokens,
+    completionTokens: c.completionTokens,
     userId,
-    meta:             { voice, chars: text.length },
+    meta:             { voice, chars: text.length, fixed: v.calls.length > 1 },
   });
   return v.audio;
 }

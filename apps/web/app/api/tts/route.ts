@@ -51,13 +51,13 @@ export async function POST(request: NextRequest) {
     console.log(`TTS: OpenAI coral/flac — ${text.length} chars`);
 
     const v = await speak(text);
-    logOpenAIUsage({
+    for (const c of v.calls) logOpenAIUsage({
       endpoint:         '/api/tts',
-      model:            v.model,
-      promptTokens:     v.promptTokens,
-      completionTokens: (v.audioTokens ?? 0) + (v.textTokens ?? 0),
+      model:            c.model,
+      promptTokens:     c.promptTokens,
+      completionTokens: c.completionTokens,
       userId:           userId || undefined,
-      meta:             { ...meta, chars: text.length },
+      meta:             { ...meta, chars: text.length, fixed: v.calls.length > 1 },
     });
 
     return NextResponse.json({ audio: v.audio.toString('base64'), mimeType: 'audio/flac' });
