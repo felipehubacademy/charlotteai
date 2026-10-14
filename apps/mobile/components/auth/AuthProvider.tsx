@@ -63,7 +63,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // para destravar o paywall imediatamente após um purchase bem-sucedido.
   useEffect(() => {
     const unsubscribe = onCustomerInfoUpdate((info) => {
-      const hasPremium = !!info.entitlements.active[ENTITLEMENT_ID];
+      // O SDK pode mandar cache velho depois do vencimento: confere a data (igual ao syncSubscriptionToSupabase).
+      const exp = info.latestExpirationDate;
+      const hasPremium = !!info.entitlements.active[ENTITLEMENT_ID] && !(exp && new Date(exp).getTime() < Date.now());
       const activeProduct = info.activeSubscriptions?.[0] ?? null;
       const nextProduct: 'monthly' | 'yearly' | null =
         // Android traz o plano básico no id ("...yearly:annual-plan"): compara pelo prefixo.
