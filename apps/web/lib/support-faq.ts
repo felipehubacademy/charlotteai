@@ -44,7 +44,7 @@ Os minutos restantes do mês aparecem na própria tela do Live Voice, no cartão
 `Na degustação (conta nova, ainda sem assinatura) são 3 minutos, uma vez só. Com assinatura, os minutos são por mês: 5 minutos durante os 7 dias grátis e 20 minutos no Premium (e nas contas institucionais). Eles renovam no dia 1º de cada mês.
 Para ver quantos restam, não precisa ligar: toque no ícone de telefone na barra de baixo; o cartão "Seu tempo este mês" mostra os minutos, logo acima do botão "Conversar com a Charlotte" (esse botão já inicia a chamada).
 Quando acabam, aparece "Seu tempo acabou este mês". Quem está na degustação ou nos 7 dias grátis pode assinar o Premium; quem já assina pode comprar pacotes de minutos extras em "Comprar minutos" ou "Ver pacotes de minutos". Minutos extras comprados não vencem no fim do mês.
-Também dá para ganhar minutos extras em "Estudar junto": quando uma conta nova aceita o seu convite, cada um ganha 5 minutos; e quem vence uma Competição ganha 5 minutos.` },
+Com assinatura, também dá para ganhar minutos extras em "Estudar junto": quando uma conta nova aceita o seu convite, cada um ganha 5 minutos; e quem vence uma Competição ganha 5 minutos. Na degustação, os minutos extras ficam guardados e passam a valer quando você assina.` },
   { section: 'Guia do app', question: 'O que tem no Practice?', answer:
 `No ícone de raio ficam três modos: Free Chat (conversa livre com a Charlotte por texto ou segurando o microfone para falar), Gramática e Pronúncia. "Trocar de modo" alterna entre eles.
 No Free Chat, numa conversa nova, "Conversar com" escolhe com quem falar: a Charlotte ou o Igorfina (veja "O que é a Família Queizy?").
@@ -54,7 +54,7 @@ Na Pronúncia, segure o botão do microfone enquanto fala uma frase em inglês; 
 `No ícone de bloco de notas ficam a "Palavra do dia" e "Sua coleção". Dá para incluir palavras em "Adicionar palavra" e ouvir a pronúncia normal ou devagar.
 O app agenda as revisões: quando há palavras para revisar aparece "Revisar hoje". Cada palavra mostra o estado: Nova, Aprendendo ou Dominada.` },
   { section: 'Guia do app', question: 'O que é a Família Queizy?', answer:
-`A Família Queizy reúne os personagens do app: a Charlotte (sua tutora) e o Igorfina, comediante e imitador. No meio da conversa ele solta uma imitação, e o balão ganha o selo "imitando".
+`A Família Queizy reúne os personagens do app: a Charlotte (sua tutora) e o Igorfina, comediante e imitador. São personagens do Queizy: as respostas e as vozes deles são geradas por IA, na hora. As imitações do Igorfina também são personagens, não pessoas de verdade. No meio da conversa ele solta uma imitação, e o balão ganha o selo "imitando".
 - Para conversar com cada um: Practice > Free Chat, numa conversa nova toque em "Conversar com" e escolha. Cada conversa continua com quem ela foi começada.
 - Para escolher quem fala com você na tela Início: Perfil > Você no Queizy > Família Queizy > "Falar na Início".
 A trilha, a Gramática, a Pronúncia e o suporte são sempre com a Charlotte.` },
@@ -106,9 +106,9 @@ Se continuar sem funcionar depois disso, um atendente analisa (ajuda informar o 
   // ── Planos e assinatura ──────────────────────────────────────────────────
   { section: 'Planos e assinatura', question: 'Quais são os planos e preços?', answer:
 `Ao criar a conta, você experimenta de graça: o primeiro bloco da trilha nos 3 níveis (Gramática, Listening & Speaking, Role-play e Guided Chat), 10 mensagens no Practice e 3 minutos de Live Voice (uma vez só). Para continuar: Plano Mensal R$ 29,99/mês e Plano Anual R$ 199,99/ano (equivale a cerca de R$ 16,67/mês). O teste de nível também faz parte do plano.
-A tela de assinatura abre ao terminar o primeiro bloco ou quando a degustação acaba.
+A degustação não tem prazo em dias: vale até você usar o que é grátis. A tela de assinatura abre ao terminar o primeiro bloco ou quando a degustação acaba.
 Dá para assinar de dois jeitos:
-- No app, pela loja: App Store (iPhone) ou Google Play (Android), com 7 dias grátis para quem nunca assinou. A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.
+- No app, pela loja: App Store (iPhone) ou Google Play (Android), com 7 dias grátis para quem nunca assinou. Para começar os 7 dias, a loja pede uma forma de pagamento cadastrada na conta Apple ou Google (no site, o cartão de crédito). A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.
 - Pelo site, em queizy.com/assinar: Mensal no cartão de crédito, Anual no cartão de crédito à vista ou Anual no Pix à vista (veja "Como funciona a assinatura pelo site?").` },
   { section: 'Planos e assinatura', question: 'Como funciona a assinatura pelo site?', answer:
 `Em queizy.com/assinar você escolhe o plano e a forma de pagamento. O pagamento é feito numa página segura do Asaas, onde também se informa o CPF.
@@ -116,6 +116,7 @@ Dá para assinar de dois jeitos:
 - Anual no cartão de crédito à vista: 7 dias grátis para quem nunca assinou, depois uma cobrança única de R$ 199,99, com renovação automática a cada ano.
 - Anual no Pix à vista: paga na hora e libera 12 meses de acesso. Não renova sozinho, porque o Pix não tem cobrança automática. Não tem os 7 dias grátis, mas dá para pedir reembolso em até 7 dias do pagamento (veja a pergunta sobre reembolso).
 Nos planos no cartão, se cancelar a renovação antes do fim dos 7 dias grátis, não paga nada.
+Formas de pagamento: cartão de crédito ou Pix (o Pix só no Anual). Não aceitamos boleto.
 Não há parcelamento: quem prefere pagar aos poucos pode escolher o Mensal.
 Entre no app com o mesmo e-mail informado no site: é nessa conta que o acesso é liberado.` },
   { section: 'Planos e assinatura', question: 'Tenho um cupom ou código de desconto. Onde uso?', answer:
@@ -145,13 +146,17 @@ Se continuar bloqueado, um atendente confere o pagamento.` },
   { section: 'Conta e acesso', question: 'Como redefinir a senha?', answer:
 `Na tela de login, toque em "Esqueceu sua senha?", informe o e-mail do cadastro e siga o link enviado. Logado, dá para trocar em Perfil > Conta > Alterar senha. O suporte também pode enviar um e-mail de redefinição para o e-mail cadastrado.` },
   { section: 'Conta e acesso', question: 'Não consigo entrar na conta', answer:
-`Confirme que está usando o mesmo e-mail do cadastro e tente redefinir a senha. Se assinou e o acesso não liberou, use Perfil > Assinatura > Restaurar compras.` },
+`O Queizy entra com e-mail e senha (não há entrada com Apple ou Google). Confirme que está usando o mesmo e-mail do cadastro e tente redefinir a senha em "Esqueceu sua senha?".
+O e-mail de redefinição chega de noreply@queizy.com em alguns minutos; se não aparecer, confira as pastas de spam e lixo eletrônico. Se ainda assim não chegar, o suporte pode enviar de novo para o e-mail cadastrado.
+Se assinou e o acesso não liberou, veja a pergunta sobre o app bloqueado depois de assinar.
+A mesma conta funciona em mais de um celular, iPhone ou Android: entre com o mesmo e-mail e senha, e o progresso é o mesmo em todos.` },
   { section: 'Conta e acesso', question: 'Como excluir a conta?', answer:
 `Perfil > Sessão > Excluir minha conta. É permanente: apaga a conta e os dados. Excluir a conta não cancela a assinatura na loja; cancele antes pela App Store ou pelo Google Play. Pedidos de exclusão pelo suporte são confirmados por um atendente.` },
 
   // ── Contato ──────────────────────────────────────────────────────────────
   { section: 'Contato', question: 'Como falar com o suporte?', answer:
-`No app: Perfil > Ajuda > Ajuda e suporte > "Conversar com o suporte" (chat aqui no app, com resposta na hora; se precisar, a equipe do Queizy responde no mesmo chat e o aluno recebe um aviso). Também pelo WhatsApp (11) 5199-5992 e pelo e-mail suporte@queizy.com.` },
+`No app: Perfil > Ajuda > Ajuda e suporte. Lá ficam "Conversar com o suporte" (chat aqui no app, com resposta na hora; se precisar, a equipe do Queizy responde no mesmo chat e o aluno recebe um aviso) e "Falar no WhatsApp" (abre o WhatsApp do suporte já com um código que identifica a conta na hora).
+Também pelo WhatsApp (11) 5199-5992 e pelo e-mail suporte@queizy.com.` },
 ];
 
 export function formatFaq(entries: FaqEntry[]): string {

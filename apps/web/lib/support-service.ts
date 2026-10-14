@@ -4,6 +4,7 @@ import { base as emailBase, p as emailP, note as emailNote } from '@/lib/email-b
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
 import { SupportUserContext } from '@/lib/support-agent';
+import { isTasterRow, TASTE_LIVE_VOICE_SECONDS } from '@/lib/taste';
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://queizy.com';
 
@@ -17,26 +18,31 @@ function brtMonthStart(): string {
 export async function findUserContext(email?: string | null, userId?: string | null): Promise<SupportUserContext> {
   if (!email && !userId) return { identified: false };
   const supabase = getSupabaseAdmin();
-  const cols = 'id, name, email, charlotte_level, subscription_status, is_institutional, app_platform, app_version, live_voice_seconds_used, live_voice_reset_date, live_voice_bonus_seconds';
+  const cols = 'id, name, email, charlotte_level, subscription_status, is_institutional, app_platform, app_version, live_voice_seconds_used, live_voice_reset_date, live_voice_bonus_seconds, placement_test_done';
   const q = supabase.from('charlotte_users').select(cols);
   const { data } = userId ? await q.eq('id', userId).maybeSingle() : await q.eq('email', email!.toLowerCase()).maybeSingle();
   const u = data as {
     id: string; name: string | null; email: string; charlotte_level: string | null; subscription_status: string | null;
     is_institutional: boolean | null; app_platform: string | null; app_version: string | null;
     live_voice_seconds_used: number | null; live_voice_reset_date: string | null; live_voice_bonus_seconds: number | null;
+    placement_test_done: boolean | null;
   } | null;
   if (!u) return { identified: false, email: email ?? null };
   const { data: prog } = await supabase.from('charlotte_progress').select('total_xp, streak_days').eq('user_id', u.id).maybeSingle();
   const p = prog as { total_xp: number | null; streak_days: number | null } | null;
-  // Mesma regra do app (lib/liveVoiceUsage.ts): 20 min Premium/institucional, 5 min no resto; bônus não vence.
-  const pool = u.subscription_status === 'active' || u.is_institutional ? 1200 : 300;
-  const used = !u.live_voice_reset_date || u.live_voice_reset_date < brtMonthStart() ? 0 : (u.live_voice_seconds_used ?? 0);
-  const left = Math.max(0, pool - used) + (u.live_voice_bonus_seconds ?? 0);
+  // Mesma regra do app (lib/liveVoiceUsage.ts) e do /api/realtime-token: 20 min Premium/institucional,
+  // 5 min no resto; degustação = 3 min uma vez só (sem renovação e sem bônus); bônus não vence.
+  const taster = isTasterRow(u);
+  const pool = taster ? TASTE_LIVE_VOICE_SECONDS : u.subscription_status === 'active' || u.is_institutional ? 1200 : 300;
+  const used = !taster && (!u.live_voice_reset_date || u.live_voice_reset_date < brtMonthStart()) ? 0 : (u.live_voice_seconds_used ?? 0);
+  const left = Math.max(0, pool - used) + (taster ? 0 : (u.live_voice_bonus_seconds ?? 0));
   return {
     identified: true, userId: u.id,
     name: u.name, email: u.email, level: u.charlotte_level,
     subscription_status: u.subscription_status,
-    has_access: !!u.is_institutional || ['active', 'trial', 'cancelled'].includes(u.subscription_status ?? ''),
+    // Degustação também tem acesso (ao que é grátis); o rótulo da assinatura explica o limite.
+    has_access: taster || !!u.is_institutional || ['active', 'trial', 'cancelled'].includes(u.subscription_status ?? ''),
+    placementTestDone: !!u.placement_test_done,
     totalXP: p?.total_xp ?? 0, streakDays: p?.streak_days ?? 0,
     liveVoiceMinutesLeft: Math.floor(left / 60),
     platform: u.app_platform, appVersion: u.app_version,
@@ -245,6 +251,8 @@ export function isPureAck(text: string): boolean {
   const t = text.trim().toLowerCase().replace(/[!.,\s]+/g, ' ').trim();
   if (!t) return true;
   if (/^[\p{Extended_Pictographic}\p{Emoji_Component}\s]+$/u.test(text.trim())) return true;
+  // "ok mas não funcionou", "valeu, e o reembolso?": tem assunto novo.
+  if (/\?|\b(mas|não|nao|porém|porem|ainda|e o|e a|but|not|still)\b/u.test(t) || text.includes('?')) return false;
   return /^(obrigad[oa]s?|muito obrigad[oa]|valeu|vlw|brigad[oa]|ok|okay|blz|beleza|show|perfeito|top|certo|entendi|ja consegui|já consegui|consegui|deu certo|resolvido|resolveu|thanks|thank you|thx|great|perfect|got it)( [\p{Extended_Pictographic}\p{L} ]{0,20})?$/u.test(t);
 }
 

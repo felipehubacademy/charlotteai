@@ -42,7 +42,22 @@ export const AUTO_INTENTS = new Set([
   'problema_uso',   // algo não funciona como esperado e a FAQ tem o passo a passo
   'encerramento',   // aluno agradece ou diz que resolveu: despedida e encerra o atendimento
   'reembolso',      // só quando a FAQ tem o caminho (needsHuman=false); o resto escala
+  'excluir_conta',  // a FAQ tem o passo a passo; se não deu certo, o modelo marca needsHuman
 ]);
+
+// Status da assinatura em palavras (o modelo não sabe que "none" é a degustação).
+function subscriptionLabel(s?: string | null): string {
+  switch (s) {
+    case 'none': case null: case undefined: case '':
+      return 'degustação (conta sem assinatura: o primeiro bloco da trilha, 10 mensagens no Practice e 3 minutos de Live Voice, uma vez só; NÃO tem minutos mensais nem pode comprar pacotes de minutos; para continuar, assina um plano)';
+    case 'trial': return '7 dias grátis de uma assinatura (5 minutos de Live Voice)';
+    case 'active': return 'Premium ativo';
+    case 'cancelled': return 'cancelada (renovação desligada; o acesso continua até o fim do período já pago)';
+    case 'expired': return 'vencida (sem acesso; precisa assinar de novo)';
+    case 'institutional': return 'conta institucional';
+    default: return `"${s}"`;
+  }
+}
 
 export interface SupportUserContext {
   identified: boolean;
@@ -55,6 +70,7 @@ export interface SupportUserContext {
   totalXP?: number | null;
   streakDays?: number | null;
   liveVoiceMinutesLeft?: number | null;
+  placementTestDone?: boolean | null;
   platform?: string | null;           // ios | android
   appVersion?: string | null;
   verified?: boolean;                 // confirmado pelo código do app (ou e-mail do próprio remetente)
@@ -78,17 +94,20 @@ function systemPrompt(ctx: SupportUserContext, faq: string, channel?: string, to
   const extra = ctx.identified ? [
     ctx.totalXP != null ? `XP total ${ctx.totalXP}` : null,
     ctx.streakDays != null ? `sequência de ${ctx.streakDays} dia(s)` : null,
-    ctx.liveVoiceMinutesLeft != null ? `${ctx.liveVoiceMinutesLeft} min de Live Voice restantes neste mês` : null,
+    ctx.liveVoiceMinutesLeft != null
+      ? `${ctx.liveVoiceMinutesLeft} min de Live Voice restantes ${!ctx.subscription_status || ctx.subscription_status === 'none' ? '(da degustação, não renovam)' : 'neste mês'}`
+      : null,
+    ctx.placementTestDone != null ? (ctx.placementTestDone ? 'já fez o teste de nível' : 'ainda não fez o teste de nível') : null,
     ctx.platform ? `celular ${ctx.platform === 'ios' ? 'iPhone' : ctx.platform === 'android' ? 'Android' : ctx.platform}` : null,
     ctx.appVersion ? `app versão ${ctx.appVersion}` : null,
   ].filter(Boolean).join(', ') : '';
   const APP_BUTTON = 'no app, em Perfil > Ajuda > Ajuda e suporte > Falar no WhatsApp (assim a conta é reconhecida na hora)';
   const who = ctx.identified && ctx.verified !== false
-    ? `Usuário identificado: ${ctx.name ?? 'sem nome'} (${ctx.email ?? 'sem email'}), nível ${ctx.level ?? '—'}, assinatura "${ctx.subscription_status ?? '—'}", acesso ${ctx.has_access ? 'ativo' : 'inativo'}${extra ? `; ${extra}` : ''}. Use esses dados quando ajudarem (ex.: "seu nível é Novice", "você tem 3 min de Live Voice").`
+    ? `Usuário identificado: ${ctx.name ?? 'sem nome'} (${ctx.email ?? 'sem email'}), nível ${ctx.level ?? '—'}, assinatura: ${subscriptionLabel(ctx.subscription_status)}, acesso ${ctx.has_access ? 'ativo' : 'inativo'}${extra ? `; ${extra}` : ''}. Use esses dados quando ajudarem (ex.: "seu nível é Novice", "você tem 3 min de Live Voice").`
     : ctx.identified
-    ? `O contato digitou um e-mail que tem cadastro, mas isso NÃO comprova que é o dono da conta. NUNCA revele dados da conta (nome, nível, XP, minutos, assinatura, se a conta existe ou não). Dúvidas de uso: responda normalmente. Assunto da conta: diga que um atendente vai conferir, ou sugira chamar ${APP_BUTTON}.`
+    ? `O contato digitou um e-mail que tem cadastro, mas isso NÃO comprova que é o dono da conta. NUNCA revele dados da conta (nome, nível, XP, minutos, assinatura, se a conta existe ou não). Dúvidas de uso: responda normalmente. Se ele só quer ver um dado da própria conta (nível, XP, minutos, sequência), diga onde ver no app, com o caminho da FAQ, needsHuman=false. Outro assunto da conta: diga que um atendente vai conferir, ou sugira chamar ${APP_BUTTON}.`
     : ctx.emailNotFound
-    ? `O contato informou o e-mail "${ctx.emailNotFound}", que não encontramos. Peça para conferir o e-mail que aparece no app, em Perfil (logo abaixo do nome), ou para chamar ${APP_BUTTON}.`
+    ? `O contato informou o e-mail "${ctx.emailNotFound}", que não bate com nenhum cadastro. NÃO diga se o e-mail tem ou não cadastro (isso revelaria quem usa o app): peça para conferir se é o mesmo e-mail que aparece no app, em Perfil (logo abaixo do nome), ou para chamar ${APP_BUTTON}.`
     : `Usuário NÃO identificado. Dúvidas de uso: responda sem pedir nada. Se o caso envolve a conta dele, peça o e-mail do cadastro no app ou sugira chamar ${APP_BUTTON}.`;
 
   // Mesmo no chat do app, quem fala é o suporte (a Charlotte é a tutora; não se apresentar como ela).
@@ -109,9 +128,13 @@ ${language}
 
 REGRAS:
 - Responda APENAS com base na FAQ abaixo. NUNCA invente preços, políticas ou passos que não estejam na FAQ.
-- Mensagem vaga, sem pergunta concreta ("uma informação", "tenho uma dúvida", "preciso de ajuda", "oi, tudo bem?"): NÃO abra chamado. Use intent saudacao, needsHuman=false, e pergunte em uma frase qual é a dúvida.
+- Se a resposta está na FAQ, mesmo que em outras palavras ou espalhada em mais de um item, responda (ex.: quem assinou pelo site usa o app em qualquer celular entrando com o mesmo e-mail). Se o assunto NÃO aparece na FAQ, NÃO deduza, não "chute" pelo bom senso e não sugira caminhos para o aluno descobrir sozinho: diga em uma frase que vai confirmar com a equipe, needsHuman=true, intent outro. (Ex.: "o cupom vale para sempre?", "posso usar a assinatura da App Store no Android?", "funciona sem internet?" enquanto a FAQ não disser.)
+- Mensagem vaga, sem pergunta concreta ("uma informação", "tenho uma dúvida", "preciso de ajuda", "oi, tudo bem?", "é sobre pagamento"): NÃO abra chamado. Use intent saudacao, needsHuman=false, e pergunte em uma frase qual é a dúvida. Vale também quando falta um detalhe para responder (ex.: em qual parte do app o problema acontece).
+- Pedido para falar com uma pessoa ("atendente", "quero falar com um humano"): needsHuman=true, intent outro, mesmo sem outra pergunta.
+- Empresas, escolas, parcerias, imprensa ou quem quer ser afiliado/parceiro: needsHuman=true, intent outro (a equipe responde).
+- Não presuma nada que não está nos dados do usuário (ex.: se já fez o teste de nível, onde assinou). Quando a resposta depende de onde ele assinou (App Store, Google Play ou site queizy.com) e isso não está claro, dê os caminhos de forma curta ou pergunte onde assinou.
 - Se a FAQ já explica como o próprio usuário resolve (ex.: pedir reembolso da assinatura do site pelo app, cancelar, restaurar compra), responda com o passo a passo e needsHuman=false, mesmo que o assunto seja reembolso ou cobrança.
-- Marque needsHuman=true só quando a FAQ não cobre a dúvida, ou quando é preciso alguém agir na conta: o passo a passo da FAQ não funcionou, cobrança indevida ou contestada, reembolso fora do prazo ou recusado, exclusão de conta que não deu certo, problema técnico que você não resolve, reclamação ou insatisfação.
+- Marque needsHuman=true só quando a FAQ não cobre a dúvida, ou quando é preciso alguém agir na conta: o passo a passo da FAQ não funcionou, cobrança indevida ou contestada, reembolso fora do prazo, recusado ou já pedido que não chegou, exclusão de conta que não deu certo, problema técnico que você não resolve, reclamação ou insatisfação.
 - Dúvidas de uso do app ("onde vejo meu XP", "não acho meu nível", "como ligo para a Charlotte", "não vejo tal tela") são respondidas com o "Guia do app" e os "Problemas comuns" da FAQ: diga onde fica, com os nomes e ícones exatos da FAQ, ou dê o passo a passo.
 - Na PRIMEIRA vez que o usuário relata que algo não funciona ou não aparece (não vê o XP, não consegue ligar para a Charlotte, microfone não funciona etc.) e a FAQ tem o passo a passo: use problema_uso, responda com os passos e needsHuman=false. No fim, convide a responder se não resolver. Não escale nesse primeiro momento.
 - Use os dados do usuário identificado para personalizar: diga o nível dele, o XP total atual, os minutos de Live Voice restantes e o tipo de celular (iPhone ou Android, mostrando só o caminho daquele sistema). Ex.: se ele tem 0 min de Live Voice, a causa provável é o fim dos minutos do mês.
@@ -119,7 +142,7 @@ REGRAS:
 - Se o usuário pede uma função que não existe na FAQ, não prometa nada: agradeça a sugestão, diga que vai para a equipe e use intent sugestao (needsHuman=false).
 - Seja breve (no máximo alguns parágrafos curtos). Texto corrido, sem Markdown (sem **, # ou listas com marcação), salvo onde dito abaixo. Não peça dados sensíveis (senha, cartão).
 - Tom humano e acolhedor, como uma pessoa da equipe (sem parecer robô, sem repetir frases prontas).${tone.firstReply ? `
-- Esta é a primeira resposta do atendimento: comece cumprimentando${tone.firstName ? ` pelo primeiro nome ("Oi, ${tone.firstName}!")` : ' ("Oi!")'}.` : `
+- Esta é a primeira resposta do atendimento: comece cumprimentando, no idioma da resposta${tone.firstName ? `, pelo primeiro nome ("Oi, ${tone.firstName}!" ou "Hi, ${tone.firstName}!")` : ' ("Oi!" ou "Hi!")'}.` : `
 - O atendimento já começou: não cumprimente de novo nem repita o nome.`}
 - Quando responder uma dúvida (needsHuman=false, intent diferente de encerramento), a ÚLTIMA frase da resposta TEM de ser UMA pergunta curta terminando com "?", para saber se resolveu, variando a forma (ex.: "Consegui ajudar?", "Ficou alguma dúvida?", "Deu certo por aí?"). Não termine com "Se precisar, é só avisar" nem frase parecida.
 - Se o usuário só agradece ou diz que resolveu ("obrigado", "era isso", "resolveu", "valeu"), use intent encerramento: despeça-se em uma frase curta (ex.: "Que bom! Se precisar, é só chamar por aqui.") sem pergunta no fim, needsHuman=false.${channel === 'whatsapp' || channel === 'app' ? `
