@@ -102,9 +102,17 @@ export const PRICING = {
     output: 20.00,
   },
 
-  // ElevenLabs TTS — Creator plan ~$0.30 / 1 000 chars
+  // ElevenLabs TTS — preço de API (elevenlabs.io/pricing/api, conferido em 2026-10-14):
+  // Multilingual v2/v3/v4 US$ 0,08 / 1 000 chars; Flash/Turbo US$ 0,04 / 1 000 chars.
+  // (Antes estava US$ 0,30, o que exagerava o custo dos personagens no /admin.)
   'eleven_multilingual_v2': {
-    perChar: 0.000300,         // USD / character
+    perChar: 0.00008,          // USD / character
+  },
+  'eleven_turbo_v2_5': {
+    perChar: 0.00004,
+  },
+  'eleven_flash_v2_5': {
+    perChar: 0.00004,
   },
 
   // Azure Cognitive Services Speech — Pronunciation Assessment (Standard S0)

@@ -88,7 +88,7 @@ export async function GET(req: NextRequest) {
   const audioBuffer = await elRes.arrayBuffer();
   const filePath    = `${slug}.mp3`;
 
-  logElevenLabsUsage({ endpoint: '/api/tts-cached', charCount: term.length, userId: 'system:tts-cache' });
+  logElevenLabsUsage({ endpoint: '/api/tts-cached', charCount: term.length, model: 'eleven_turbo_v2_5', userId: 'system:tts-cache' });
 
   // ── 3. Upload to Supabase Storage ─────────────────────────────────────────
   const { error: uploadError } = await supabase.storage
