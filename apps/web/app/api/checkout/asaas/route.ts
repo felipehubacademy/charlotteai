@@ -71,7 +71,9 @@ export async function POST(req: NextRequest) {
       if (r.asaas_subscription_id) await cancelSubscription(r.asaas_subscription_id).catch(() => {});
     } catch (e) {
       console.error('[checkout/asaas] refund failed:', e instanceof AsaasError ? e.body : e);
-      return NextResponse.json({ error: 'failed', message: 'Não foi possível reembolsar agora. Escreva para suporte@queizy.com que resolvemos.' }, { status: 502 });
+      await supabase.from('asaas_events').insert({ id: `refund_fail_${Date.now()}`, event: 'REFUND_FAILED', payload: { checkout: r.id, payment: r.asaas_payment_id, error: e instanceof AsaasError ? e.body : String(e) } } as never);
+      const why = e instanceof AsaasError ? e.message : '';
+      return NextResponse.json({ error: 'failed', message: `Não foi possível reembolsar agora${why ? ` (${why})` : ''}. Escreva para suporte@queizy.com que resolvemos.` }, { status: 502 });
     }
     // O webhook PAYMENT_REFUNDED encerra o acesso e estorna receita e comissão.
     await supabase.from('asaas_checkouts').update({ refunded_at: new Date().toISOString() } as never).eq('id', r.id);
