@@ -197,7 +197,7 @@ export default function SignupScreen() {
               {isPt ? 'Criar conta' : 'Create account'}
             </AppText>
             <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center' }}>
-              {isPt ? 'Experimente 7 dias grátis.' : 'Try it free for 7 days.'}
+              {isPt ? 'Comece grátis, sem cartão.' : 'Start free, no card needed.'}
             </AppText>
           </View>
 
