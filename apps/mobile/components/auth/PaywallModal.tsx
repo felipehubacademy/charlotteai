@@ -14,7 +14,7 @@ import {
   ScrollView, Platform, Alert, Linking,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Fire, Trophy, MicrophoneStage, ChatCircleText, SignOut, ArrowsClockwise, X, Gift } from 'phosphor-react-native';
+import { Trophy, MicrophoneStage, ChatCircleText, SignOut, ArrowsClockwise, X } from 'phosphor-react-native';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { PurchasesPackage, PurchasesOffering } from 'react-native-purchases';
 import { HeaderLogo } from '@/components/ui/HeaderLogo';
@@ -45,8 +45,6 @@ const C = {
   white:      '#FFFFFF',
   muted:      '#8A8494',
   highlight:  '#F1FFB8',
-  lossRed:    '#D12A64',
-  lossRedBg:  'rgba(255,79,139,0.08)',
 };
 
 const LOSE_ITEMS = [
@@ -402,21 +400,6 @@ export function PaywallModal() {
 
           <View style={{ marginBottom: 28 }}>
             <HeaderLogo height={30} />
-          </View>
-
-          {/* Icone de perda */}
-          <View style={{
-            width: 64, height: 64, borderRadius: 32,
-            backgroundColor: isNewUser ? '#E3F6EC' : C.lossRedBg,
-            alignItems: 'center', justifyContent: 'center',
-            marginBottom: 20,
-          }}>
-            {isNewUser
-              ? <Gift size={32} color={C.greenDark} weight="fill" />
-              : useStreak
-              ? <Fire size={32} color={C.lossRed} weight="fill" />
-              : <Trophy size={32} color={C.lossRed} weight="fill" />
-            }
           </View>
 
           {/* Headline personalizada */}
