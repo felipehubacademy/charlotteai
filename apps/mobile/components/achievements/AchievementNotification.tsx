@@ -1,30 +1,31 @@
+// Conquista desbloqueada — tela cheia na cor da raridade, com a Charlotte como anfitriã.
+// Comum: lima · Rara: violeta · Épica: rosa (+ confete) · Lendária: tinta com volt (+ confete).
+// A medalha usa o ícone da categoria (o mesmo da tela de Conquistas) e entra girando.
 import React from 'react';
 import {
   View,
   Modal,
   TouchableOpacity,
   Animated,
-  Platform,
+  Easing,
+  Image,
+  StatusBar,
   useWindowDimensions,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Haptics from '@/lib/hapticsGated';
-import {
-  Lightning, Star, Trophy, Fire, Medal, Confetti,
-} from 'phosphor-react-native';
+import { Lightning, ShareNetwork } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { QueizyWave } from '@/components/ui/QueizyWave';
+import { AchievementIcon, RARITY } from '@/components/stats/StatsUI';
 import { Achievement } from '@/lib/types/achievement';
 import { soundEngine, SoundName } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { useShareCard } from '@/components/share/ShareCardProvider';
 import { GENERAL_ACHIEVEMENTS, LEVEL_ACHIEVEMENTS } from '@/lib/achievementsCatalog';
-import { ShareNetwork } from 'phosphor-react-native';
 
 const ALL_CATALOG = [...GENERAL_ACHIEVEMENTS, ...LEVEL_ACHIEVEMENTS];
-function getCatalogTitle(code: string, isPt: boolean): string | undefined {
-  const entry = ALL_CATALOG.find(e => e.code === code);
-  if (!entry) return undefined;
-  return isPt ? entry.title : (entry.titleEN ?? entry.title);
-}
+const catalogOf = (code: string) => ALL_CATALOG.find(e => e.code === code);
 
 function achievementSound(rarity: Achievement['rarity']): SoundName {
   switch (rarity) {
@@ -57,108 +58,68 @@ async function achievementHaptic(rarity: Achievement['rarity']): Promise<void> {
   }
 }
 
-const C = {
-  navy:      '#16131F',
-  navyMid:   '#4D4858',
-  navyLight: '#8A8494',
-  green:     '#DCFF4A',
-  greenDark: '#08804A',
-  greenBg:   '#E3F6EC',
-  sheet:     '#FFFFFF',
-  border:    'rgba(22,19,31,0.08)',
+const INK = '#16131F';
+const VOLT = '#DCFF4A';
+const WHITE = '#FFFFFF';
+
+// Cena por raridade: fundo, texto, medalha, destaque e o botão principal.
+const SCENE: Record<Achievement['rarity'], {
+  bg: string; ink: string; sub: string; medal: string; icon: string; ring: string;
+  btnBg: string; btnInk: string; ghostBg: string; wave: string; confetti: boolean;
+}> = {
+  common:    { bg: VOLT,      ink: INK,   sub: 'rgba(22,19,31,0.70)',  medal: WHITE, icon: '#08804A', ring: INK,  btnBg: INK,  btnInk: VOLT, ghostBg: 'rgba(22,19,31,0.08)',  wave: INK,  confetti: false },
+  rare:      { bg: '#6B4BFF', ink: WHITE, sub: 'rgba(255,255,255,0.80)', medal: WHITE, icon: '#6B4BFF', ring: VOLT, btnBg: VOLT, btnInk: INK,  ghostBg: 'rgba(255,255,255,0.16)', wave: VOLT, confetti: false },
+  epic:      { bg: '#FF4F8B', ink: WHITE, sub: 'rgba(255,255,255,0.85)', medal: WHITE, icon: '#FF4F8B', ring: VOLT, btnBg: INK,  btnInk: VOLT, ghostBg: 'rgba(255,255,255,0.18)', wave: INK,  confetti: true  },
+  legendary: { bg: INK,       ink: WHITE, sub: 'rgba(255,255,255,0.72)', medal: VOLT,  icon: INK,       ring: VOLT, btnBg: VOLT, btnInk: INK,  ghostBg: 'rgba(255,255,255,0.12)', wave: VOLT, confetti: true  },
 };
 
-const RARITY_COLORS: Record<Achievement['rarity'], string> = {
-  // Mesma escala de raridade da tela de Conquistas (components/stats/StatsUI).
-  common:    '#08804A',
-  rare:      '#6B4BFF',
-  epic:      '#FF4F8B',
-  legendary: '#DCFF4A',
+const CHARLOTTE_LINE: Record<Achievement['rarity'], { pt: string; en: string }> = {
+  common:    { pt: 'Mandou bem! Mais uma para a coleção.',   en: 'Nice one! Another one for the collection.' },
+  rare:      { pt: 'Essa não é para qualquer um. Orgulho!',  en: 'Not everyone gets this one. So proud!' },
+  epic:      { pt: 'Uau! Você está voando no inglês.',        en: 'Wow! Your English is taking off.' },
+  legendary: { pt: 'Lendário! Pouca gente chega aqui.',       en: 'Legendary! Very few people get here.' },
 };
 
-const RARITY_BG: Record<Achievement['rarity'], string> = {
-  common:    '#E3F6EC',
-  rare:      '#EFECFF',
-  epic:      '#FFEEF4',
-  legendary: '#16131F',
-};
+// ── Confete (Épica e Lendária) ───────────────────────────────────────────────
+const CONFETTI_COLORS = [VOLT, '#FF4F8B', '#6B4BFF', '#2BD97C', WHITE];
+const PIECES = Array.from({ length: 70 }, (_, i) => ({
+  x: (i * 37 + (i % 3) * 11) % 100,  // % da largura
+  delay: (i % 10) * 70,
+  dur: 2600 + (i % 6) * 220,
+  size: 6 + (i % 3) * 3,
+  spin: (i % 2 ? 1 : -1) * (180 + (i % 5) * 90),
+  drift: ((i % 5) - 2) * 30,
+  color: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
+  round: i % 3 === 0,
+}));
 
-// ── Sparkle particles — varied angles, distances, sizes, shapes ──────────────
-const SPARKLES = [
-  { angle: 0,    dist: 92,  size: 10, diamond: false },
-  { angle: 30,   dist: 76,  size: 6,  diamond: true  },
-  { angle: 60,   dist: 88,  size: 8,  diamond: false },
-  { angle: 90,   dist: 96,  size: 10, diamond: false },
-  { angle: 120,  dist: 72,  size: 6,  diamond: true  },
-  { angle: 150,  dist: 84,  size: 8,  diamond: false },
-  { angle: 180,  dist: 92,  size: 10, diamond: false },
-  { angle: 210,  dist: 76,  size: 6,  diamond: true  },
-  { angle: 240,  dist: 88,  size: 8,  diamond: false },
-  { angle: 270,  dist: 96,  size: 10, diamond: false },
-  { angle: 300,  dist: 72,  size: 6,  diamond: true  },
-  { angle: 330,  dist: 84,  size: 8,  diamond: false },
-];
-
-function SparkleRing({ color, anim }: { color: string; anim: Animated.Value }) {
+function ConfettiRain({ width, height, run }: { width: number; height: number; run: number }) {
+  const anims = React.useRef(PIECES.map(() => new Animated.Value(0))).current;
+  React.useEffect(() => {
+    anims.forEach(a => a.setValue(0));
+    Animated.parallel(anims.map((a, i) => Animated.timing(a, {
+      toValue: 1, duration: PIECES[i].dur, delay: PIECES[i].delay, easing: Easing.in(Easing.quad), useNativeDriver: true,
+    }))).start();
+  }, [run]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
-    <>
-      {SPARKLES.map((s, i) => {
-        const rad = (s.angle * Math.PI) / 180;
-        const x = Math.cos(rad) * s.dist;
-        const y = Math.sin(rad) * s.dist;
-        const delay = (i % 3) * 60;
-        return (
-          <Animated.View
-            key={i}
-            style={{
-              position: 'absolute',
-              width: s.size,
-              height: s.size,
-              borderRadius: s.diamond ? 0 : s.size / 2,
-              backgroundColor: i % 4 === 0 ? C.green : color,
-              transform: [
-                {
-                  translateX: anim.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [0, x],
-                  }),
-                },
-                {
-                  translateY: anim.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [0, y],
-                  }),
-                },
-                {
-                  rotate: s.diamond ? '45deg' : '0deg',
-                },
-                {
-                  scale: anim.interpolate({
-                    inputRange: [0, 0.25, 0.65, 1],
-                    outputRange: [0, 1.5, 1.2, 0],
-                  }),
-                },
-              ],
-              opacity: anim.interpolate({
-                inputRange: [0, 0.15, 0.75, 1],
-                outputRange: [0, 1, 1, 0],
-              }),
-            }}
-          />
-        );
-      })}
-    </>
+    <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+      {PIECES.map((p, i) => (
+        <Animated.View
+          key={i}
+          style={{
+            position: 'absolute', top: -20, left: (p.x / 100) * width,
+            width: p.size, height: p.round ? p.size : p.size * 1.8, borderRadius: p.round ? p.size / 2 : 2,
+            backgroundColor: p.color,
+            transform: [
+              { translateY: anims[i].interpolate({ inputRange: [0, 1], outputRange: [0, height + 40] }) },
+              { translateX: anims[i].interpolate({ inputRange: [0, 1], outputRange: [0, p.drift] }) },
+              { rotate: anims[i].interpolate({ inputRange: [0, 1], outputRange: ['0deg', `${p.spin}deg`] }) },
+            ],
+          }}
+        />
+      ))}
+    </View>
   );
-}
-
-function RarityIcon({ rarity, size = 44 }: { rarity: Achievement['rarity']; size?: number }) {
-  const color = RARITY_COLORS[rarity];
-  switch (rarity) {
-    case 'legendary': return <Trophy    size={size} color={color} weight="fill" />;
-    case 'epic':      return <Fire      size={size} color={color} weight="fill" />;
-    case 'rare':      return <Medal     size={size} color={color} weight="fill" />;
-    default:          return <Lightning size={size} color={color} weight="fill" />;
-  }
 }
 
 interface Props {
@@ -170,255 +131,151 @@ interface Props {
 export default function AchievementNotification({ achievements, onDismiss, isPt = true }: Props) {
   const current = achievements[0];
   const openShare = useShareCard();
-  const { width } = useWindowDimensions();
-  const cardWidth = Math.min(320, width * 0.88);
+  const insets = useSafeAreaInsets();
+  const { width, height } = useWindowDimensions();
+  const medalSize = Math.min(176, Math.round(height * 0.2));
 
-  const backdropAnim = React.useRef(new Animated.Value(0)).current;
-  const scaleAnim   = React.useRef(new Animated.Value(0)).current;
-  const sparkAnim   = React.useRef(new Animated.Value(0)).current;
-  const glowAnim    = React.useRef(new Animated.Value(1)).current;
+  const fade   = React.useRef(new Animated.Value(0)).current;
+  const medal  = React.useRef(new Animated.Value(0)).current; // entrada com giro
+  const pulse  = React.useRef(new Animated.Value(1)).current;
+  const slide  = React.useRef(new Animated.Value(0)).current; // texto e botões sobem
   const autoDismissRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   React.useEffect(() => {
     if (!current) return;
-
-    backdropAnim.setValue(0);
-    scaleAnim.setValue(0);
-    sparkAnim.setValue(0);
-    glowAnim.setValue(1);
+    fade.setValue(0); medal.setValue(0); slide.setValue(0); pulse.setValue(1);
 
     soundEngine.play(achievementSound(current.rarity)).catch(() => {});
     achievementHaptic(current.rarity).catch(() => {});
-
-    // Tier 4 — voz da Charlotte para conquistas de alto impacto.
-    // Delays alinhados com a duracao do SFX musical para nao colidir.
+    // Voz da Charlotte nas de alto impacto, depois do SFX musical.
     if (current.rarity === 'epic') {
-      setTimeout(() => voiceSFX.play('achievement_epic').catch(() => {}), 1900); // SFX ~1.8s
+      setTimeout(() => voiceSFX.play('achievement_epic').catch(() => {}), 1900);
     } else if (current.rarity === 'legendary') {
-      setTimeout(() => voiceSFX.play('achievement_legendary').catch(() => {}), 2300); // SFX ~2.2s
+      setTimeout(() => voiceSFX.play('achievement_legendary').catch(() => {}), 2300);
     }
 
-    // Backdrop fades in first (120ms), then card bounces in with overshoot
-    Animated.timing(backdropAnim, { toValue: 1, duration: 120, useNativeDriver: true }).start(() => {
-      Animated.spring(scaleAnim, {
-        toValue: 1,
-        stiffness: 260,
-        damping: 14,
-        mass: 0.9,
-        useNativeDriver: true,
-      }).start(() => {
-        Animated.timing(sparkAnim, { toValue: 1, duration: 800, useNativeDriver: true }).start();
-        Animated.loop(
-          Animated.sequence([
-            Animated.timing(glowAnim, { toValue: 1.14, duration: 550, useNativeDriver: true }),
-            Animated.timing(glowAnim, { toValue: 1,    duration: 550, useNativeDriver: true }),
-          ])
-        ).start();
-      });
+    Animated.timing(fade, { toValue: 1, duration: 180, useNativeDriver: true }).start();
+    Animated.sequence([
+      Animated.delay(80),
+      Animated.spring(medal, { toValue: 1, stiffness: 180, damping: 12, mass: 0.9, useNativeDriver: true }),
+    ]).start(() => {
+      Animated.loop(Animated.sequence([
+        Animated.timing(pulse, { toValue: 1.05, duration: 900, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+        Animated.timing(pulse, { toValue: 1,    duration: 900, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+      ])).start();
     });
+    Animated.timing(slide, { toValue: 1, duration: 420, delay: 260, easing: Easing.out(Easing.cubic), useNativeDriver: true }).start();
 
-    autoDismissRef.current = setTimeout(() => handleDismiss(), 8000);
-    return () => {
-      if (autoDismissRef.current) clearTimeout(autoDismissRef.current);
-    };
-  }, [current?.id]);
+    autoDismissRef.current = setTimeout(() => handleDismiss(), 10000);
+    return () => { if (autoDismissRef.current) clearTimeout(autoDismissRef.current); };
+  }, [current?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!current) return null;
 
-  const rarityColor = RARITY_COLORS[current.rarity];
-  const rarityBg    = RARITY_BG[current.rarity];
+  const s = SCENE[current.rarity] ?? SCENE.common;
+  const cat = catalogOf(current.type);
+  const title = cat ? (isPt ? cat.title : (cat.titleEN ?? cat.title)) : current.title;
+  const howTo = cat ? (isPt ? cat.howToEarnPT : cat.howToEarnEN) : current.description;
+  const rarityLabel = isPt ? RARITY[current.rarity]?.pt : RARITY[current.rarity]?.en;
+  const line = CHARLOTTE_LINE[current.rarity] ?? CHARLOTTE_LINE.common;
 
-  const handleDismiss = () => {
+  function handleDismiss() {
     if (autoDismissRef.current) clearTimeout(autoDismissRef.current);
-    Animated.parallel([
-      Animated.timing(backdropAnim, { toValue: 0, duration: 180, useNativeDriver: true }),
-      Animated.timing(scaleAnim,    { toValue: 0.82, duration: 180, useNativeDriver: true }),
-    ]).start(() => onDismiss(current.id));
-  };
+    Animated.timing(fade, { toValue: 0, duration: 200, useNativeDriver: true }).start(() => onDismiss(current.id));
+  }
+
+  const rise = { opacity: slide, transform: [{ translateY: slide.interpolate({ inputRange: [0, 1], outputRange: [24, 0] }) }] };
 
   return (
     <Modal visible transparent animationType="none" statusBarTranslucent onRequestClose={handleDismiss}>
-      <Animated.View
-        style={{
-          flex: 1,
-          backgroundColor: 'rgba(22,19,31,0.78)',
-          alignItems: 'center',
-          justifyContent: 'center',
-          opacity: backdropAnim,
-        }}
-      >
-        <TouchableOpacity
-          activeOpacity={1}
-          onPress={handleDismiss}
-          style={{ flex: 1, width: '100%', alignItems: 'center', justifyContent: 'center' }}
-        >
-          <Animated.View
-            style={{
-              transform: [{ scale: scaleAnim }],
-              alignItems: 'center',
-            }}
-          >
-            {/* Card */}
-            <View
-              style={{
-                backgroundColor: C.sheet,
-                borderRadius: 28,
-                paddingHorizontal: 28,
-                paddingTop: 40,
-                paddingBottom: 32,
-                alignItems: 'center',
-                width: cardWidth,
-                ...Platform.select({
-                  ios: {
-                    borderWidth: 0,
-                    shadowColor: rarityColor,
-                    shadowOpacity: 0.30,
-                    shadowRadius: 28,
-                    shadowOffset: { width: 0, height: 10 },
-                  },
-                  android: {
-                    elevation: 16,
-                    borderWidth: 2,
-                    borderColor: `${rarityColor}50`,
-                  },
-                }),
-              }}
-            >
-              {/* "Achievement Unlocked" label */}
+      <StatusBar barStyle={s.ink === INK ? 'dark-content' : 'light-content'} />
+      <Animated.View style={{ flex: 1, backgroundColor: s.bg, opacity: fade }}>
+        {s.confetti && <ConfettiRain width={width} height={height} run={current.id as unknown as number} />}
+
+        <View style={{ flex: 1, paddingTop: insets.top + 24, paddingBottom: insets.bottom + 20, paddingHorizontal: 24 }}>
+          {/* Selo do topo */}
+          <View style={{ alignItems: 'center' }}>
+            <View style={{ backgroundColor: s.ghostBg, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 6 }}>
+              <AppText style={{ color: s.ink, fontSize: 12, fontWeight: '800', letterSpacing: 1.2, textTransform: 'uppercase' }}>
+                {isPt ? 'Conquista desbloqueada' : 'Achievement unlocked'}
+              </AppText>
+            </View>
+          </View>
+
+          {/* Medalha */}
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Animated.View style={{
+              transform: [
+                { scale: Animated.multiply(medal, pulse) },
+                { rotate: medal.interpolate({ inputRange: [0, 1], outputRange: ['-200deg', '0deg'] }) },
+              ],
+            }}>
               <View style={{
-                backgroundColor: rarityBg,
-                paddingHorizontal: 14, paddingVertical: 5,
-                borderRadius: 20, marginBottom: 24,
-                borderWidth: 1, borderColor: `${rarityColor}25`,
+                width: medalSize + 24, height: medalSize + 24, borderRadius: (medalSize + 24) / 2,
+                borderWidth: 4, borderColor: s.ring, alignItems: 'center', justifyContent: 'center',
               }}>
-                <AppText style={{
-                  color: rarityColor, fontSize: 11, fontWeight: '800',
-                  letterSpacing: 1.2, textTransform: 'uppercase',
+                <View style={{
+                  width: medalSize, height: medalSize, borderRadius: medalSize / 2, backgroundColor: s.medal,
+                  alignItems: 'center', justifyContent: 'center',
+                  shadowColor: INK, shadowOpacity: 0.25, shadowRadius: 18, shadowOffset: { width: 0, height: 10 }, elevation: 10,
                 }}>
-                  {isPt ? 'Conquista Desbloqueada' : 'Achievement Unlocked'}
+                  <AchievementIcon category={cat?.category ?? 'general'} color={s.icon} size={Math.round(medalSize * 0.46)} />
+                </View>
+              </View>
+            </Animated.View>
+
+            <Animated.View style={[{ alignItems: 'center', marginTop: 28, width: '100%' }, rise]}>
+              <AppText style={{ color: s.ink, fontSize: 13, fontWeight: '800', letterSpacing: 1, textTransform: 'uppercase', opacity: 0.8, marginBottom: 6 }}>
+                {rarityLabel}
+              </AppText>
+              <AppText display style={{ color: s.ink, fontSize: 34, fontWeight: '800', textAlign: 'center', lineHeight: 38, letterSpacing: -0.5 }}>
+                {title}
+              </AppText>
+              {!!howTo && (
+                <AppText style={{ color: s.sub, fontSize: 15, textAlign: 'center', lineHeight: 21, marginTop: 10, maxWidth: 320 }}>
+                  {howTo}
+                </AppText>
+              )}
+              <View style={{ width: 160, marginTop: 18 }}>
+                <QueizyWave progress={0} height={14} strokeWidth={3.5} todoColor={s.wave} doneColor={s.wave} />
+              </View>
+              {current.xpBonus > 0 && (
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 16, backgroundColor: s.ghostBg, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 7 }}>
+                  <Lightning size={14} color={s.ink} weight="fill" />
+                  <AppText style={{ color: s.ink, fontSize: 14, fontWeight: '800' }}>+{current.xpBonus} XP</AppText>
+                </View>
+              )}
+            </Animated.View>
+          </View>
+
+          {/* Charlotte + botões */}
+          <Animated.View style={rise}>
+            <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, marginBottom: 18 }}>
+              <Image source={require('@/assets/charlotte-avatar.png')} style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: INK }} />
+              <View style={{ flex: 1, backgroundColor: WHITE, borderRadius: 18, borderBottomLeftRadius: 4, paddingHorizontal: 14, paddingVertical: 11 }}>
+                <AppText style={{ color: INK, fontSize: 15, fontWeight: '700', lineHeight: 20 }}>
+                  {isPt ? line.pt : line.en}
                 </AppText>
               </View>
-
-              {/* Icon with sparkles */}
-              <View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
-                <SparkleRing color={rarityColor} anim={sparkAnim} />
-                <Animated.View
-                  style={{
-                    width: 92,
-                    height: 92,
-                    borderRadius: 26,
-                    backgroundColor: rarityBg,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderWidth: 2,
-                    borderColor: `${rarityColor}45`,
-                    transform: [{ scale: glowAnim }],
-                    ...Platform.select({
-                      ios: {
-                        shadowColor: rarityColor,
-                        shadowOpacity: 0.35,
-                        shadowRadius: 14,
-                        shadowOffset: { width: 0, height: 4 },
-                      },
-                    }),
-                  }}
-                >
-                  <RarityIcon rarity={current.rarity} size={46} />
-                </Animated.View>
-              </View>
-
-              {/* Title */}
-              <AppText display style={{
-                color: C.navy, fontSize: 26, fontWeight: '800',
-                textAlign: 'center', marginBottom: 8,
-              }}>
-                {getCatalogTitle(current.type, isPt ?? true) ?? current.title}
-              </AppText>
-
-              {/* Description */}
-              <AppText style={{
-                color: C.navyMid, fontSize: 14, textAlign: 'center',
-                lineHeight: 21, marginBottom: 20,
-              }}>
-                {current.description}
-              </AppText>
-
-              {/* Rarity + XP bonus row */}
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 28 }}>
-                <View style={{
-                  flexDirection: 'row', alignItems: 'center', gap: 6,
-                  paddingHorizontal: 12, paddingVertical: 6,
-                  borderRadius: 20, backgroundColor: rarityBg,
-                  borderWidth: 1, borderColor: `${rarityColor}30`,
-                }}>
-                  <Star size={12} color={rarityColor} weight="fill" />
-                  <AppText style={{
-                    color: rarityColor, fontSize: 12, fontWeight: '800',
-                    textTransform: 'uppercase', letterSpacing: 0.8,
-                  }}>
-                    {current.rarity}
-                  </AppText>
-                </View>
-                {current.xpBonus > 0 && (
-                  <View style={{
-                    flexDirection: 'row', alignItems: 'center', gap: 5,
-                    paddingHorizontal: 12, paddingVertical: 6,
-                    borderRadius: 20, backgroundColor: C.greenBg,
-                    borderWidth: 1, borderColor: `${C.green}60`,
-                  }}>
-                    <Lightning size={12} color={C.greenDark} weight="fill" />
-                    <AppText style={{ color: C.greenDark, fontSize: 12, fontWeight: '800' }}>
-                      +{current.xpBonus} XP
-                    </AppText>
-                  </View>
-                )}
-              </View>
-
-              {/* Action buttons */}
-              <View style={{ flexDirection: 'row', gap: 10, width: '100%' }}>
-                <TouchableOpacity
-                  onPress={handleDismiss}
-                  activeOpacity={0.85}
-                  style={{
-                    flex: 1,
-                    backgroundColor: C.green,
-                    paddingHorizontal: 20,
-                    paddingVertical: 14,
-                    borderRadius: 16,
-                    alignItems: 'center',
-                  }}
-                >
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
-                    <AppText style={{ color: C.navy, fontSize: 15, fontWeight: '800' }}>
-                      {isPt ? 'Incrível!' : 'Awesome!'}
-                    </AppText>
-                    <Confetti size={16} color={C.navy} weight="fill" />
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => {
-                    const a = current;
-                    handleDismiss();
-                    setTimeout(() => openShare({ kind: 'achievement', big: a.title, title: isPt ? 'Conquista desbloqueada' : 'Achievement unlocked' }), 450);
-                  }}
-                  activeOpacity={0.85}
-                  style={{
-                    backgroundColor: 'rgba(22,19,31,0.06)',
-                    paddingHorizontal: 16,
-                    paddingVertical: 14,
-                    borderRadius: 16,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderWidth: 1,
-                    borderColor: 'rgba(22,19,31,0.08)',
-                  }}
-                >
-                  <ShareNetwork size={18} color={C.navy} weight="bold" />
-                </TouchableOpacity>
-              </View>
             </View>
+
+            <TouchableOpacity onPress={handleDismiss} activeOpacity={0.85}
+              style={{ backgroundColor: s.btnBg, borderRadius: 16, paddingVertical: 17, alignItems: 'center' }}>
+              <AppText style={{ color: s.btnInk, fontSize: 16, fontWeight: '800' }}>{isPt ? 'Continuar' : 'Continue'}</AppText>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                handleDismiss();
+                setTimeout(() => openShare({ kind: 'achievement', big: title, title: isPt ? 'Conquista desbloqueada' : 'Achievement unlocked' }), 450);
+              }}
+              activeOpacity={0.85}
+              style={{ flexDirection: 'row', gap: 8, justifyContent: 'center', alignItems: 'center', marginTop: 10, borderRadius: 16, paddingVertical: 14, backgroundColor: s.ghostBg }}
+            >
+              <ShareNetwork size={18} color={s.ink} weight="bold" />
+              <AppText style={{ color: s.ink, fontSize: 15, fontWeight: '800' }}>{isPt ? 'Compartilhar' : 'Share'}</AppText>
+            </TouchableOpacity>
           </Animated.View>
-        </TouchableOpacity>
+        </View>
       </Animated.View>
     </Modal>
   );
