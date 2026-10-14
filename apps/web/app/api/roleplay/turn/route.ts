@@ -10,9 +10,10 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
-import { aiFetch } from '@/lib/ai-models';
+import { aiFetch, transcribeModel, transcribedSeconds } from '@/lib/ai-models';
 import { judgeObjectives } from '@/lib/objective-judge';
 import { logOpenAIUsage } from '@/lib/openai-usage';
+import { speak } from '@/lib/charlotte-voice';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -314,26 +315,21 @@ function isHallucinationOrEmpty(text: string | undefined): boolean {
   return false;
 }
 
-// ── OpenAI TTS ──────────────────────────────────────────────────────
-async function tts(text: string, voicedBy: 'charlotte' | 'charlie'): Promise<Buffer> {
+// ── OpenAI TTS (lib/charlotte-voice) ────────────────────────────────
+async function tts(text: string, voicedBy: 'charlotte' | 'charlie', userId?: string): Promise<Buffer> {
   // charlotte → coral (feminina, já em produção)
   // charlie   → onyx  (masculina, quente)
   const voice = voicedBy === 'charlie' ? 'onyx' : 'coral';
-  const res = await fetch('https://api.openai.com/v1/audio/speech', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-      'Content-Type':  'application/json',
-    },
-    body: JSON.stringify({
-      model:           'gpt-4o-mini-tts',
-      input:           text,
-      voice,
-      response_format: 'flac',
-    }),
+  const v = await speak(text, voice);
+  logOpenAIUsage({
+    endpoint:         '/api/roleplay/turn:tts',
+    model:            v.model,
+    promptTokens:     v.promptTokens,
+    completionTokens: (v.audioTokens ?? 0) + (v.textTokens ?? 0),
+    userId,
+    meta:             { voice, chars: text.length },
   });
-  if (!res.ok) throw new Error(`TTS error: ${await res.text()}`);
-  return Buffer.from(await res.arrayBuffer());
+  return v.audio;
 }
 
 // ── Handler ─────────────────────────────────────────────────────────
@@ -353,7 +349,7 @@ export async function POST(request: NextRequest) {
     const t0 = Date.now();
     const transcription = await openai.audio.transcriptions.create({
       file:     audio,
-      model:    'whisper-1',
+      model:    transcribeModel(),
       language: 'en',
     });
     const userTranscript = transcription.text;
@@ -364,7 +360,7 @@ export async function POST(request: NextRequest) {
       const askAgain = level === 'Novice'
         ? "Sorry, I didn't hear you. Can you say it again?"
         : "Sorry, I didn't catch that — can you say it again?";
-      const audioBuf = await tts(askAgain, rp.voiced_by);
+      const audioBuf = await tts(askAgain, rp.voiced_by, userId);
       return NextResponse.json({
         user_transcript:     userTranscript || '',
         assistant_text:      askAgain,
@@ -377,8 +373,9 @@ export async function POST(request: NextRequest) {
     }
 
     logOpenAIUsage({
-      endpoint: '/api/roleplay/turn:whisper',
-      model:    'whisper-1',
+      endpoint:     '/api/roleplay/turn:whisper',
+      model:        transcribeModel(),
+      audioSeconds: transcribedSeconds(transcription),
       userId,
       meta:     { ms: Date.now() - t0 },
     });
@@ -533,14 +530,7 @@ export async function POST(request: NextRequest) {
       clean = SAFE_ACKS[Math.floor(Math.random() * SAFE_ACKS.length)];
     }
 
-    const audioBuf = await tts(clean, rp.voiced_by);
-    logOpenAIUsage({
-      endpoint:     '/api/roleplay/turn:tts',
-      model:        'gpt-4o-mini-tts',
-      promptTokens: clean.length,
-      userId,
-      meta:         { voice: rp.voiced_by === 'charlie' ? 'onyx' : 'coral' },
-    });
+    const audioBuf = await tts(clean, rp.voiced_by, userId);
 
     return NextResponse.json({
       user_transcript:      userTranscript,

@@ -36,6 +36,20 @@ export function resolveModel(model: string): string {
   return modelRemap()[model] ?? model;
 }
 
+/**
+ * Transcrição do áudio do aluno. A OpenAI desliga whisper-1 e gpt-4o-transcribe em 26/02/2027;
+ * gpt-transcribe é o substituto (US$ 0,0045/min, mais barato que o whisper). Ele só aceita
+ * response_format json/text (sem verbose_json); a duração vem em usage.seconds.
+ * Voltar sem deploy: env TRANSCRIBE_MODEL=whisper-1.
+ */
+export const transcribeModel = () => process.env.TRANSCRIBE_MODEL || 'gpt-transcribe';
+
+/** Segundos de áudio cobrados, de qualquer formato de resposta (json novo ou verbose_json antigo). */
+export function transcribedSeconds(t: unknown): number {
+  const r = t as { duration?: number; usage?: { seconds?: number } };
+  return r?.usage?.seconds ?? r?.duration ?? 0;
+}
+
 /** Família nova (gpt-5 em diante): sem temperature/top_p customizados e com max_completion_tokens. */
 export function isReasoningModel(model: string): boolean {
   return /^(gpt-5|gpt-6|o\d)/.test(model);

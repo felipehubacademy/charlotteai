@@ -51,6 +51,10 @@ export const PRICING = {
   'whisper-1': {
     perMinute: 0.006,  // USD / minute
   },
+  // Substituto do whisper-1 desde 2026-10 (lib/ai-models transcribeModel)
+  'gpt-transcribe': {
+    perMinute: 0.0045,
+  },
 
   // Realtime voice
   'gpt-realtime': {
@@ -85,6 +89,17 @@ export const PRICING = {
   'gpt-4o-mini-tts': {
     input:  0.60,    // USD / 1M input tokens (texto)
     output: 12.00,   // USD / 1M output tokens (audio)
+  },
+
+  // Voz da Charlotte desde 2026-10 (lib/charlotte-voice.ts): Chat Completions com saída de áudio.
+  // completionTokens = tokens de áudio + texto da saída, cobrados pelo preço de áudio (o texto é pouco).
+  'gpt-audio-1.5': {
+    input:  2.50,    // USD / 1M input tokens (texto)
+    output: 64.00,   // USD / 1M output tokens (áudio)
+  },
+  'gpt-audio-mini': {
+    input:  0.60,
+    output: 20.00,
   },
 
   // ElevenLabs TTS — Creator plan ~$0.30 / 1 000 chars

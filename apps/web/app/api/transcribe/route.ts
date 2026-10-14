@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
-import { aiFetch } from '@/lib/ai-models';
+import { aiFetch, transcribeModel, transcribedSeconds } from '@/lib/ai-models';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 
 export const dynamic = 'force-dynamic';
@@ -94,26 +94,24 @@ export async function POST(request: NextRequest) {
 
     // Whisper path — discourage semantic correction so minimal-pair errors
     // are preserved (e.g. user says "word" instead of "world").
-    // verbose_json gives us audio duration for cost tracking.
+    // A duração (custo) vem em usage.seconds no json do gpt-transcribe.
     // Accepts: flac, m4a, mp3, mp4, mpeg, mpga, oga, ogg, wav, webm.
     // iOS sends .wav, Android sends .m4a — both supported natively.
+    const model = transcribeModel();
     const transcription = await openai.audio.transcriptions.create({
       file: audioFile,
-      model: 'whisper-1',
+      model,
       language: 'en',
-      response_format: 'verbose_json',
+      response_format: 'json',
       temperature: 0.2,
       prompt: 'Transcribe exactly what was said, word for word, without correcting or improving the speech.',
     });
 
-    // Verbose response inclui `duration` em segundos
-    const audioSeconds = (transcription as any).duration as number | undefined;
-
     logOpenAIUsage({
       userId,
       endpoint: '/api/transcribe',
-      model: 'whisper-1',
-      audioSeconds: audioSeconds ?? 0,
+      model,
+      audioSeconds: transcribedSeconds(transcription),
     });
 
     console.log('Transcription result:', transcription.text);

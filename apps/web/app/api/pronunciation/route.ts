@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
-import { aiFetch } from '@/lib/ai-models';
+import { aiFetch, transcribeModel } from '@/lib/ai-models';
 import { assessPronunciationOfficial } from '@/lib/azure-speech-sdk';
 import { transcodeToWavPcm16k, needsTranscode, guessExtension } from '@/lib/audio-transcode';
 import { logAzureSpeechUsage } from '@/lib/openai-usage';
@@ -393,9 +393,9 @@ async function tryWhisperFallback(audioFile: File): Promise<{
 
     const transcription = await openai.audio.transcriptions.create({
       file: audioFile,
-      model: 'whisper-1',
+      model: transcribeModel(),
       language: 'en',
-      response_format: 'verbose_json',
+      response_format: 'json',
       temperature: 0.2,
       prompt: 'Transcribe exactly what was said, word for word, without correcting or improving the speech.',
     });
