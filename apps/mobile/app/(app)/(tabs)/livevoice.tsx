@@ -66,9 +66,10 @@ interface LastCall {
 
 function poolStatusLabel(
   isPt: boolean, isLimitReached: boolean, isUnlimited: boolean,
-  remainingSec: number, isKnown: boolean,
+  remainingSec: number, isKnown: boolean, isTaster = false,
 ): string {
   if (!isKnown) return isPt ? 'Carregando…' : 'Loading…';
+  if (isLimitReached && isTaster) return isPt ? 'Degustação usada' : 'Free taste used';
   if (isLimitReached) return isPt ? 'Limite mensal atingido' : 'Monthly limit reached';
   return isPt ? 'Charlotte disponível' : 'Charlotte available';
 }
@@ -454,12 +455,6 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
 export default function LiveVoiceTab() {
   const { profile, isTaster } = useAuth();
   const { openPaywall } = usePaywallContext();
-  // Degustação: Practice e Live Voice ficam para o teste de 7 dias. Volta para a Home e abre o paywall.
-  useFocusEffect(useCallback(() => {
-    if (!isTaster) return;
-    router.navigate('/(app)/(tabs)' as any);
-    openPaywall();
-  }, [isTaster, openPaywall]));
   const level   = (profile?.charlotte_level ?? 'Novice') as UserLevel;
   // Live Voice é tela de SISTEMA: idioma segue o device (não o nível).
   const isPt    = systemIsPt;
@@ -640,6 +635,7 @@ export default function LiveVoiceTab() {
     ? (isPt ? 'Carregando…' : 'Loading…')
     : isLimitReached
       ? (isSubscriber ? (isPt ? 'Comprar minutos' : 'Buy minutes')
+         : isTaster   ? (isPt ? 'Começar 7 dias grátis' : 'Start 7-day free trial')
                       : (isPt ? 'Assinar Premium' : 'Subscribe to Premium'))
       : (isPt ? 'Conversar com a Charlotte' : 'Talk with Charlotte');
   const onCtaPress = !poolKnown
@@ -832,7 +828,7 @@ export default function LiveVoiceTab() {
                   backgroundColor: !poolKnown ? C.textDim : isLimitReached ? C.red : C.greenDark,
                 }} />
                 <AppText style={{ fontSize: 13, color: C.textMuted, fontWeight: '500' }}>
-                  {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown)}
+                  {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown, isTaster)}
                 </AppText>
               </View>
 
@@ -862,15 +858,19 @@ export default function LiveVoiceTab() {
                 </View>
                 <View style={{ flex: 1 }}>
                   <AppText style={{ fontSize: 14, fontWeight: '700', color: C.textWhite }}>
-                    {isPt ? 'Seu tempo acabou este mês' : 'You’re out of time this month'}
+                    {isTaster
+                      ? (isPt ? 'Sua degustação acabou' : 'Your free taste is over')
+                      : (isPt ? 'Seu tempo acabou este mês' : 'You’re out of time this month')}
                   </AppText>
                   <AppText style={{ fontSize: 12, color: C.textDim, marginTop: 2 }}>
-                    {isPt ? 'Assine o Premium para conversar sem parar' : 'Subscribe to Premium to keep talking'}
+                    {isTaster
+                      ? (isPt ? 'Comece seus 7 dias grátis: 20 min por mês' : 'Start your 7-day free trial: 20 min a month')
+                      : (isPt ? 'Assine o Premium para conversar sem parar' : 'Subscribe to Premium to keep talking')}
                   </AppText>
                 </View>
                 <View style={{ backgroundColor: C.greenDark, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 8 }}>
                   <AppText style={{ fontSize: 13, fontWeight: '800', color: '#FFFFFF' }}>
-                    {isPt ? 'Assinar' : 'Subscribe'}
+                    {isTaster ? (isPt ? 'Testar' : 'Try it') : (isPt ? 'Assinar' : 'Subscribe')}
                   </AppText>
                 </View>
               </TouchableOpacity>
@@ -886,7 +886,7 @@ export default function LiveVoiceTab() {
             {showPoolCard && (
               <TouchableOpacity
                 onLayout={e => setCardY(e.nativeEvent.layout.y)}
-                onPress={() => { setLimitExhausted(isLimitReached); setShowLimitSheet(true); }}
+                onPress={isTaster ? openPaywall : () => { setLimitExhausted(isLimitReached); setShowLimitSheet(true); }}
                 activeOpacity={0.8}
                 accessibilityRole="button"
                 accessibilityLabel={isPt ? 'Ver pacotes de minutos' : 'See minute packs'}
@@ -896,6 +896,8 @@ export default function LiveVoiceTab() {
                   <AppText style={{ flex: 1, fontSize: 13, fontWeight: '700', color: C.textWhite }}>
                     {usingExtras
                       ? (isPt ? 'Usando seus minutos extras' : 'Using your extra minutes')
+                      : isTaster
+                      ? (isPt ? 'Degustação grátis' : 'Free taste')
                       : (isPt ? 'Seu tempo este mês' : 'Your time this month')}
                   </AppText>
                   <AppText style={{ fontSize: 12, fontWeight: '700', color: usingExtras ? C.greenDark : C.textMuted }}>
@@ -906,7 +908,9 @@ export default function LiveVoiceTab() {
                 </View>
                 <QueizyWave progress={Math.min(1, poolUsed / poolTotal)} height={12} strokeWidth={3.5} doneColor="#2BD97C" />
                 <AppText style={{ fontSize: 11.5, color: C.textDim, marginTop: 8 }}>
-                  {(isPt
+                  {isTaster
+                    ? (isPt ? 'Uma vez só. No teste de 7 dias, são 20 min por mês.' : 'One time only. The 7-day trial gives you 20 min a month.')
+                    : (isPt
                     ? `Renova em 1/${String(new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).getMonth() + 1).padStart(2, '0')}`
                     : `Resets ${new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toLocaleDateString('en', { month: 'short', day: 'numeric' })}`)}
                 </AppText>
@@ -923,7 +927,7 @@ export default function LiveVoiceTab() {
                 )}
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 2, marginTop: 8 }}>
                   <AppText style={{ fontSize: 12, fontWeight: '700', color: C.greenDark }}>
-                    {isSubscriber ? (isPt ? 'Comprar mais minutos' : 'Buy more minutes') : (isPt ? 'Quero mais minutos' : 'Get more minutes')}
+                    {isTaster ? (isPt ? 'Ver os planos' : 'See plans') : isSubscriber ? (isPt ? 'Comprar mais minutos' : 'Buy more minutes') : (isPt ? 'Quero mais minutos' : 'Get more minutes')}
                   </AppText>
                   <CaretRight size={12} color={C.greenDark} weight="bold" />
                 </View>

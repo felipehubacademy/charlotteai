@@ -76,6 +76,9 @@ Pedidos de amizade e convites recebidos aparecem numa linha na tela Início. Par
 - Ajuda: Ajuda e suporte.
 - Política de Privacidade, Termos de Uso e Sobre.
 - Sessão: Sair da conta e Excluir minha conta.` },
+  { section: 'Guia do app', question: 'Como mudo o idioma do app?', answer:
+`Em Perfil > Idioma do app, escolha Automático (do celular), Português ou English. O app reinicia e passa a mostrar as telas e os avisos no idioma escolhido.
+O conteúdo das lições continua no idioma do seu nível: na Novice as explicações são em português; no Inter e no Advanced, em inglês.` },
   { section: 'Guia do app', question: 'Onde vejo minha evolução?', answer:
 `Em Perfil > Você no Queizy > Minha evolução (ou "Ver minha evolução" na tela Início). Mostra o que você já domina e o que vale treinar, com base nas atividades feitas.` },
 
@@ -101,8 +104,8 @@ Se continuar sem funcionar depois disso, um atendente analisa (ajuda informar o 
 
   // ── Planos e assinatura ──────────────────────────────────────────────────
   { section: 'Planos e assinatura', question: 'Quais são os planos e preços?', answer:
-`Ao criar a conta, você experimenta de graça o primeiro bloco da trilha nos 3 níveis (Gramática, Listening & Speaking, Role-play e Guided Chat). Para continuar: Plano Mensal R$ 29,99/mês e Plano Anual R$ 199,99/ano (equivale a cerca de R$ 16,67/mês), com 7 dias grátis para quem nunca assinou.
-A tela de assinatura abre ao terminar o primeiro bloco ou ao entrar em algo do plano (Live Voice, Practice ou os blocos seguintes). O plano é confirmado na loja: App Store (iPhone) ou Google Play (Android). A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.` },
+`Ao criar a conta, você experimenta de graça: o primeiro bloco da trilha nos 3 níveis (Gramática, Listening & Speaking, Role-play e Guided Chat), 10 mensagens no Practice e 3 minutos de Live Voice. Para continuar: Plano Mensal R$ 29,99/mês e Plano Anual R$ 199,99/ano (equivale a cerca de R$ 16,67/mês), com 7 dias grátis para quem nunca assinou. O teste de nível também faz parte do plano.
+A tela de assinatura abre ao terminar o primeiro bloco ou quando a degustação acaba. O plano é confirmado na loja: App Store (iPhone) ou Google Play (Android). A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.` },
   { section: 'Planos e assinatura', question: 'Como cancelar a assinatura?', answer:
 `O cancelamento é feito na loja (a Apple e o Google gerenciam a assinatura):
 - iPhone: Ajustes > seu nome > Assinaturas > Queizy (pode aparecer como Charlotte em versões antigas) > Cancelar assinatura.

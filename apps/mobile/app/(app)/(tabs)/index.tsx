@@ -93,7 +93,7 @@ function TypingDots() {
 // ── Home Tab ──────────────────────────────────────────────────────────────────
 
 export default function HomeTab() {
-  const { profile } = useAuth();
+  const { profile, isTaster } = useAuth();
   const { openPaywall }           = usePaywallContext();
   const { colors: T }             = useTheme();
   const userId    = profile?.id ?? '';
@@ -146,14 +146,15 @@ export default function HomeTab() {
   const placementDone = profile?.placement_test_done === true;
 
   useEffect(() => {
-    if (loading || placementDone) return;
+    // Degustação: o teste de nível faz parte do teste de 7 dias; a janela aparece depois de assinar.
+    if (loading || placementDone || isTaster) return;
     SecureStore.getItemAsync('PLACEMENT_PROMPT_DISMISSED').then(v => {
       if (!v) {
         const t = setTimeout(() => setShowPlacementPrompt(true), 800);
         return () => clearTimeout(t);
       }
     }).catch(() => {});
-  }, [loading, placementDone]);
+  }, [loading, placementDone, isTaster]);
 
   const dismissPlacementPrompt = useCallback(() => {
     setShowPlacementPrompt(false);

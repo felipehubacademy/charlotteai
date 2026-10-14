@@ -3,6 +3,7 @@
 import Constants from 'expo-constants';
 import { supabase } from './supabase';
 import { systemIsPt } from './systemLang';
+import { getModule } from './curriculum-v2/loader';
 
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -31,13 +32,16 @@ export async function fetchConversationFeedback(args: {
   level: string; moduleId: string; unitId: string; activity: ConversationActivity; topic?: string; lines: string[];
 }): Promise<ConversationFeedback | null> {
   try {
+    // Estrutura que a unidade treina: o revisor não pode "corrigir" o alvo da aula.
+    const mod = getModule(args.level as any, args.moduleId);
+    const focus = [mod?.theme, mod?.goal].filter(Boolean).join(' — ').slice(0, 400);
     const { data } = await supabase.auth.getSession();
     const token = data.session?.access_token;
     if (!token) return null;
     const r = await fetch(`${API_BASE_URL}/api/trail/feedback`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-      body: JSON.stringify({ ...args, lang: systemIsPt ? 'pt' : 'en' }),
+      body: JSON.stringify({ ...args, focus, lang: systemIsPt ? 'pt' : 'en' }),
     });
     return r.ok ? await r.json() : null;
   } catch { return null; }

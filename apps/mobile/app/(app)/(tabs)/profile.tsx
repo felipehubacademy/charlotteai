@@ -15,7 +15,7 @@ import {
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
   CaretRight, SpeakerHigh, Vibrate, ChatCircleText,
   CreditCard, Lifebuoy, UsersThree, ChartLineUp, Sparkle,
-  MagnifyingGlass,
+  MagnifyingGlass, Translate,
 } from 'phosphor-react-native';
 import { fetchMyHandle, setSearchable } from '@/lib/friends';
 import {
@@ -31,7 +31,7 @@ import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { restorePurchases, openManageSubscriptions, syncSubscriptionToSupabase } from '@/lib/purchases';
-import { systemIsPt } from '@/lib/systemLang';
+import { systemIsPt, appLangPref, setAppLangPref } from '@/lib/systemLang';
 import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
 import Constants from 'expo-constants';
@@ -337,6 +337,23 @@ export default function ProfileTab() {
     );
   };
 
+  // Idioma do app (telas, avisos, compra). O conteúdo das lições continua seguindo o nível.
+  const handleChangeLanguage = () => {
+    const pick = (p: 'auto' | 'pt' | 'en') => { if (p !== appLangPref) setAppLangPref(p).catch(() => {}); };
+    Alert.alert(
+      isPt ? 'Idioma do app' : 'App language',
+      isPt
+        ? 'Muda os textos das telas e avisos. O conteúdo das lições continua no idioma do seu nível. O app reinicia ao trocar.'
+        : 'Changes screen and notice texts. Lesson content stays in the language of your level. The app restarts when you switch.',
+      [
+        { text: isPt ? 'Automático (do celular)' : 'Automatic (phone)', onPress: () => pick('auto') },
+        { text: 'Português', onPress: () => pick('pt') },
+        { text: 'English', onPress: () => pick('en') },
+      ],
+      { cancelable: true },
+    );
+  };
+
   const handleManageSubscription = async () => {
     // Assinatura pelo site (Asaas): não passa pela loja.
     const webProduct = profile?.subscription_product ?? '';
@@ -588,6 +605,13 @@ export default function ProfileTab() {
             description={isPt ? 'Amigos podem te achar pelo nome ou @ para estudar junto.' : 'Friends can find you by name or @ to study together.'}
             value={searchable}
             onValueChange={(v: boolean) => { setSearchableState(v); setSearchable(v); }}
+          />
+          <SettingRow
+            icon={<Translate size={18} color={C.navy} weight="regular" />}
+            label={isPt ? 'Idioma do app' : 'App language'}
+            value={appLangPref === 'pt' ? 'Português' : appLangPref === 'en' ? 'English' : (isPt ? 'Automático' : 'Automatic')}
+            onPress={handleChangeLanguage}
+            chevron
           />
         </SettingGroup>
 

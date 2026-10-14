@@ -13,7 +13,30 @@
 // quebraria por OTA). Lê o locale pelos módulos core do RN (presentes em todo
 // build) e cai no Intl como reforço.
 
-import { NativeModules, Platform } from 'react-native';
+import { NativeModules, Platform, DevSettings } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
+import * as Updates from 'expo-updates';
+
+// Escolha do aluno em Perfil > Idioma do app: 'auto' (padrão, segue o aparelho), 'pt' ou 'en'.
+const LANG_PREF_KEY = 'app_lang_pref';
+export type AppLangPref = 'auto' | 'pt' | 'en';
+
+function readLangPref(): AppLangPref {
+  try {
+    const v = SecureStore.getItem(LANG_PREF_KEY); // leitura síncrona: o idioma é decidido na abertura do app
+    return v === 'pt' || v === 'en' ? v : 'auto';
+  } catch { return 'auto'; }
+}
+
+/** Preferência atual (para mostrar no Perfil). */
+export const appLangPref: AppLangPref = readLangPref();
+
+/** Grava a escolha e reinicia o app para aplicar em todas as telas. */
+export async function setAppLangPref(pref: AppLangPref): Promise<void> {
+  if (pref === 'auto') await SecureStore.deleteItemAsync(LANG_PREF_KEY).catch(() => {});
+  else await SecureStore.setItemAsync(LANG_PREF_KEY, pref).catch(() => {});
+  try { await Updates.reloadAsync(); } catch { DevSettings.reload(); }
+}
 
 function rawDeviceLocale(): string {
   // 1) Módulos nativos core do RN (sempre presentes).
@@ -37,10 +60,15 @@ function rawDeviceLocale(): string {
   return '';
 }
 
-/** 'pt' quando o aparelho está em português; caso contrário 'en'. */
-export function getSystemLang(): 'pt' | 'en' {
+/** Idioma do aparelho: 'pt' quando está em português; caso contrário 'en'. */
+export function getDeviceLang(): 'pt' | 'en' {
   const loc = rawDeviceLocale().toLowerCase().replace('_', '-');
   return loc.startsWith('pt') ? 'pt' : 'en';
+}
+
+/** Idioma do app: a escolha do Perfil, ou o do aparelho no automático. */
+export function getSystemLang(): 'pt' | 'en' {
+  return appLangPref === 'auto' ? getDeviceLang() : appLangPref;
 }
 
 /** Atalho: true quando o idioma de sistema é português. */

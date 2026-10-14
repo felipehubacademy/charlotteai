@@ -32,21 +32,23 @@ export async function POST(req: NextRequest) {
   if (!lines.length) return NextResponse.json({ errorFree: true, corrections: [] });
 
   const tipLang = pt ? 'Brazilian Portuguese (with correct accents)' : 'English';
-  const system = `You review what an English learner (${level} level) said in a short practice conversation${body.topic ? ` about "${String(body.topic).slice(0, 80)}"` : ''}.
+  const focus = String(body.focus ?? '').slice(0, 400);
+  const system = `You review what an English learner (${level} level) said in a short practice conversation${body.topic ? ` about "${String(body.topic).slice(0, 80)}"` : ''}.${focus ? `\nThe lesson practices: ${focus}. Sentences that use this structure correctly are correct: never "fix" them into another structure.` : ''}
 Find real English mistakes only: grammar, wrong word, word order, missing words. Ignore punctuation, capitalization, contractions vs. full forms, and speech-to-text noise (repeated words, cut sentences, filler words). Do not rewrite sentences that are already correct and natural.
+Be careful with conditionals: a mixed conditional with a past condition and a present result ("If I had studied more, I would be better today") is correct, and so is a present condition with a past result ("If I were braver, I would have gone"). Only flag a sentence when you are certain it is wrong; when in doubt, leave it out.
 Return JSON: {"corrections":[{"said":"<the student's exact sentence>","correct":"<the corrected sentence>","tip":"<one short reason in ${tipLang}, max 90 characters>"}]}
 At most 3 corrections, the most useful first. If there are no real mistakes, return {"corrections":[]}.`;
 
   let corrections: Correction[] = [];
   try {
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      temperature: 0.2,
+      model: 'gpt-4o',
+      temperature: 0,
       response_format: { type: 'json_object' },
       messages: [{ role: 'system', content: system }, { role: 'user', content: lines.map((l: string, i: number) => `${i + 1}. ${l}`).join('\n') }],
     });
     logOpenAIUsage({
-      userId: user.id, endpoint: '/api/trail/feedback', model: 'gpt-4o-mini',
+      userId: user.id, endpoint: '/api/trail/feedback', model: 'gpt-4o',
       promptTokens: completion.usage?.prompt_tokens, completionTokens: completion.usage?.completion_tokens, totalTokens: completion.usage?.total_tokens,
     });
     const parsed = JSON.parse(completion.choices[0]?.message?.content ?? '{}') as { corrections?: Partial<Correction>[] };

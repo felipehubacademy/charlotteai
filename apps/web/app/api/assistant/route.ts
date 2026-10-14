@@ -5,6 +5,7 @@ import OpenAI from 'openai';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { grammarAnalysisService } from '@/lib/grammar-analysis';
 import { checkRateLimit } from '@/lib/rate-limit';
+import { checkPracticeTaste } from '@/lib/taste';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 import { characterOf, impressionOf, applyCharacterToSystem, type Character, type Impression } from '@/lib/characters';
 
@@ -161,6 +162,11 @@ async function handleAssistantPOST(request: NextRequest, userId: string | null) 
       const limit = await checkRateLimit(userId, userLevel, mode);
       if (limit) {
         return NextResponse.json(limit, { status: 429 });
+      }
+      // Degustação: 10 mensagens no Practice. O "Me ajuda" da trilha (explain_error) não conta.
+      if (mode !== 'explain_error') {
+        const taste = await checkPracticeTaste(userId, request.headers.get('x-lang') !== 'en');
+        if (taste) return NextResponse.json(taste, { status: 402 });
       }
     }
 

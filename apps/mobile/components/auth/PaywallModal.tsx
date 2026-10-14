@@ -14,7 +14,7 @@ import {
   ScrollView, Platform, Alert, Linking,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Trophy, MicrophoneStage, ChatCircleText, SignOut, ArrowsClockwise, X } from 'phosphor-react-native';
+import { Trophy, MicrophoneStage, ChatCircleText, SignOut, ArrowsClockwise, X, Target } from 'phosphor-react-native';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { PurchasesPackage, PurchasesOffering } from 'react-native-purchases';
 import { HeaderLogo } from '@/components/ui/HeaderLogo';
@@ -51,6 +51,11 @@ const LOSE_ITEMS = [
   { icon: <ChatCircleText size={18} color={C.greenDark} weight="fill" />, pt: 'Conversas em tempo real com a Charlotte', en: 'Real-time conversations with Charlotte' },
   { icon: <MicrophoneStage size={18} color={C.greenDark} weight="fill" />, pt: 'Chamadas em voz e feedback de pronúncia', en: 'Voice calls and pronunciation feedback' },
   { icon: <Trophy size={18} color={C.greenDark} weight="fill" />, pt: 'Lições, exercícios e progresso na trilha', en: 'Lessons, exercises and progress on the track' },
+];
+// Conta nova também ganha o teste de nível (fica no teste de 7 dias).
+const GAIN_ITEMS = [
+  ...LOSE_ITEMS,
+  { icon: <Target size={18} color={C.greenDark} weight="fill" />, pt: 'Teste de nível: comece no ponto certo da trilha', en: 'Level test: start at the right point of the track' },
 ];
 
 
@@ -348,8 +353,8 @@ export function PaywallModal() {
 
   const subheadline = isTaster
     ? (isPt
-        ? 'Com o teste, você libera a trilha inteira, a conversa livre e as chamadas de voz com a Charlotte.'
-        : 'With the trial you unlock the whole learning path, free chat and voice calls with Charlotte.')
+        ? 'Descubra seu nível e libere a trilha inteira, a conversa livre e as chamadas de voz com a Charlotte.'
+        : 'Find your level and unlock the whole learning path, free chat and voice calls with Charlotte.')
     : isNewUser
     ? (isPt
         ? 'Acesso completo ao Queizy: conversa por voz, correção na hora e a trilha inteira.'
@@ -433,7 +438,7 @@ export function PaywallModal() {
             <AppText style={{ fontSize: 12, fontWeight: '700', color: C.muted, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 2 }}>
               {isNewUser ? (isPt ? 'O que você ganha' : 'What you get') : (isPt ? 'Você vai perder acesso a' : 'You’ll lose access to')}
             </AppText>
-            {LOSE_ITEMS.map((item, i) => (
+            {(isNewUser ? GAIN_ITEMS : LOSE_ITEMS).map((item, i) => (
               <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
                 <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: '#E3F6EC', alignItems: 'center', justifyContent: 'center' }}>
                   {item.icon}

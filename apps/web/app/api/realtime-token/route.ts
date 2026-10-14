@@ -5,6 +5,7 @@
 // a troca de SDP — a API key nunca sai do servidor.
 
 import { NextRequest, NextResponse } from 'next/server';
+import { isTasterRow, TASTE_LIVE_VOICE_SECONDS } from '@/lib/taste';
 import { createClient } from '@supabase/supabase-js';
 
 const MODEL = 'gpt-realtime-2';
@@ -47,7 +48,7 @@ export async function POST(request: NextRequest) {
 
         const { data, error: dbErr } = await supabase
           .from('charlotte_users')
-          .select('live_voice_seconds_used, live_voice_reset_date, is_institutional, timezone')
+          .select('live_voice_seconds_used, live_voice_reset_date, is_institutional, timezone, subscription_status, live_voice_bonus_seconds')
           .eq('id', user.id)
           .single();
 
@@ -57,9 +58,12 @@ export async function POST(request: NextRequest) {
           } else {
             const tz           = (data as any).timezone || 'UTC';
             const thisMonth    = thisMonthFirstDayInTz(tz);
-            const needsReset   = !data.live_voice_reset_date || data.live_voice_reset_date < thisMonth;
+            // Degustação (sem assinatura): 3 min uma vez só, sem a renovação do mês.
+            const taster       = isTasterRow(data as never);
+            const needsReset   = !taster && (!data.live_voice_reset_date || data.live_voice_reset_date < thisMonth);
             const secondsUsed  = needsReset ? 0 : (data.live_voice_seconds_used ?? 0);
-            const remaining    = Math.max(0, POOL_SECONDS - secondsUsed);
+            const pool         = taster ? TASTE_LIVE_VOICE_SECONDS : POOL_SECONDS;
+            const remaining    = Math.max(0, pool - secondsUsed) + (taster ? 0 : Number((data as any).live_voice_bonus_seconds ?? 0));
 
             if (remaining <= 0) {
               console.warn('⛔ Live Voice pool exhausted for user:', user.id);

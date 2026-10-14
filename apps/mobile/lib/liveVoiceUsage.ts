@@ -12,6 +12,7 @@ import { localMonthStartStr } from './dateUtils';
 
 export const POOL_TRIAL_SECONDS   = 5 * 60;  //   300 s — trial / grátis
 export const POOL_PREMIUM_SECONDS  = 20 * 60; // 1 200 s — premium / institucional
+export const POOL_TASTE_SECONDS    = 3 * 60;  //   180 s — degustação (conta sem assinatura), uma vez só
 
 /** Fallback legado (usado onde não dá pra saber a assinatura ainda). */
 export const LIVE_VOICE_POOL_SECONDS = POOL_PREMIUM_SECONDS;
@@ -20,9 +21,13 @@ export const LIVE_VOICE_POOL_SECONDS = POOL_PREMIUM_SECONDS;
  * Pool por status de assinatura.
  * Institucional e Premium (subscription ativa) = 20 min; o resto (trial/none) = 5 min.
  */
+/** Conta sem assinatura (degustação): 3 min uma vez só, sem a renovação do mês. */
+export const isTasteStatus = (s?: string | null) => !s || s === 'none';
+
 export function getPoolForSubscription(subscriptionStatus?: string | null, isInstitutional?: boolean): number {
   if (isInstitutional) return POOL_PREMIUM_SECONDS;
   if (subscriptionStatus === 'active') return POOL_PREMIUM_SECONDS;
+  if (isTasteStatus(subscriptionStatus)) return POOL_TASTE_SECONDS;
   return POOL_TRIAL_SECONDS;
 }
 
@@ -79,9 +84,11 @@ export async function getLiveVoiceStatus(_level?: string, userIdArg?: string): P
   const bonus     = data.live_voice_bonus_seconds ?? 0;
 
   // Virou o mês → reset
-  const needsReset =
+  // Degustação não renova: os 3 min são uma vez só. Ao assinar, a data vazia faz o reset e libera o mês cheio.
+  const taster = isTasteStatus(data.subscription_status) && !data.is_institutional;
+  const needsReset = !taster && (
     !data.live_voice_reset_date ||
-    data.live_voice_reset_date < thisMonth;
+    data.live_voice_reset_date < thisMonth);
 
   if (needsReset) {
     const { error: updErr } = await supabase

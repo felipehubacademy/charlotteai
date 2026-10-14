@@ -14,6 +14,7 @@ import { PronunciationData } from '@/components/chat/PronunciationScoreCard';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import { soundEngine } from '@/lib/soundEngine';
 import { systemIsPt } from '@/lib/systemLang';
+import { usePaywallContext } from '@/lib/paywallContext';
 import { characterInfo, isImpressionReply, pickImpression, type CharacterId, type ImpressionId } from '@/lib/characters';
 
 const API_BASE_URL =
@@ -162,6 +163,7 @@ export interface RateLimitState {
 }
 
 export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatOptions) {
+  const { openPaywall } = usePaywallContext();
   const [messages, setMessages] = useState<Message[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isProcessingAudio, setIsProcessingAudio] = useState(false);
@@ -457,6 +459,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
           ...(userId ? { 'x-user-id': userId } : {}),
           ...(who !== 'charlotte' ? { 'x-character': who } : {}),
           ...(impression ? { 'x-impression': impression } : {}),
+          'x-lang': systemIsPt ? 'pt' : 'en',
         },
         body: JSON.stringify({
           transcription: userMessage,
@@ -468,6 +471,22 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
           conversationContext: contextString,
         }),
       });
+
+      // Degustação do Practice acabou (conta sem assinatura): aviso no chat e paywall.
+      if (response.status === 402) {
+        const data = await response.json().catch(() => ({}));
+        const tasteMsg: Message = {
+          id:          generateId(),
+          role:        'assistant',
+          content:     data.message ?? (systemIsPt ? 'Sua degustação do Practice acabou. Comece seus 7 dias grátis para continuar.' : 'Your Practice taste is over. Start your 7-day free trial to keep going.'),
+          messageType: 'text',
+          timestamp:   new Date(),
+        };
+        setMessages(prev => [...prev, tasteMsg]);
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+        setTimeout(() => openPaywall(), 1200);
+        return null;
+      }
 
       if (response.status === 429) {
         const data = await response.json();
@@ -504,7 +523,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         vocabularySuggestions: (data.result.vocabulary_suggestions as string[] | undefined) ?? [],
       };
     },
-    [userLevel, userName, mode]
+    [userLevel, userName, mode, openPaywall]
   );
 
   /**

@@ -12,6 +12,7 @@ import {
   ActivityIndicator, Animated, Platform, Dimensions,
 } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
+import { usePaywallContext } from '@/lib/paywallContext';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
@@ -313,7 +314,14 @@ type Phase = 'intro' | 'test' | 'saving' | 'result';
 type BlockNum = 1 | 2 | 3;
 
 export default function PlacementTestScreen() {
-  const { session, refreshProfile, profile } = useAuth();
+  const { session, refreshProfile, profile, isTaster } = useAuth();
+  // Degustação: o teste de nível faz parte do teste de 7 dias. Volta e abre o paywall.
+  const { openPaywall } = usePaywallContext();
+  useEffect(() => {
+    if (!isTaster) return;
+    if (router.canGoBack()) router.back(); else router.replace('/(app)/(tabs)' as any);
+    openPaywall();
+  }, [isTaster, openPaywall]);
   const { toggle: toggleAudio, playingMessageId, stop: stopAudio } = useMessageAudioPlayer();
 
   const firstName = (profile?.name ?? '').split(' ')[0] || (systemIsPt ? 'você' : 'you');

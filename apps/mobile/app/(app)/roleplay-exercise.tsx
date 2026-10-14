@@ -378,6 +378,8 @@ export default function RolePlayExerciseScreen() {
           objectivesMet: new Set(objectivesMet),
           stuckTurns:    stuckTurnsRef.current,
         });
+        // Só conta objetivo que existe nesta missão (o motor pode devolver id que não é dela).
+        out.newly_met = out.newly_met.filter(n => rp.objectives.some(o => o.id === n) && !objectivesMet.has(n));
 
         // Marca objectives
         if (out.newly_met.length > 0) {
@@ -485,7 +487,8 @@ export default function RolePlayExerciseScreen() {
       // Tick checklist + haptic celebration por objetivo batido nesse turno.
       // Atualiza stuckTurnsRef: novo objetivo bateu → zera; nada bateu → +1.
       const newOnes = (Array.isArray(data.objectives_met) ? data.objectives_met : [])
-        .filter((n: any) => typeof n === 'number' && !objectivesMet.has(n));
+        // Só conta objetivo que existe nesta missão: o modelo às vezes devolve um número que não é dela.
+        .filter((n: any) => typeof n === 'number' && rp.objectives.some(o => o.id === n) && !objectivesMet.has(n));
       if (newOnes.length > 0) {
         stuckTurnsRef.current = 0;
         // Sound + haptic + dispara o triggerObjectivePulse (animação do check)

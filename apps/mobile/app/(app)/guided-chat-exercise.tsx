@@ -283,6 +283,8 @@ export default function GuidedChatExerciseScreen() {
           objectivesMet: new Set(objectivesMet),
           stuckTurns:    stuckTurnsRef.current,
         });
+        // Só conta objetivo que existe nesta missão (o motor pode devolver id que não é dela).
+        out.newly_met = out.newly_met.filter(n => gc.objectives.some(o => o.id === n) && !objectivesMet.has(n));
 
         if (out.newly_met.length > 0) {
           stuckTurnsRef.current = 0;
@@ -354,7 +356,8 @@ export default function GuidedChatExerciseScreen() {
 
       // Tick checklist + haptic; update stuck_turns
       const newOnes = (Array.isArray(data.objectives_met) ? data.objectives_met : [])
-        .filter((n: any) => typeof n === 'number' && !objectivesMet.has(n));
+        // Só conta objetivo que existe nesta missão: o modelo às vezes devolve um número que não é dela.
+        .filter((n: any) => typeof n === 'number' && gc.objectives.some(o => o.id === n) && !objectivesMet.has(n));
       if (newOnes.length > 0) {
         stuckTurnsRef.current = 0;
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
