@@ -99,5 +99,10 @@ export const aiFetch: typeof fetch = async (input, init) => {
       return res;
     } catch { /* corpo não-JSON: segue igual */ }
   }
+  // Upload de áudio (multipart, corpo em stream): o fetch do Node exige duplex: 'half'.
+  // Sem isso a transcrição falha com "Connection error" (o SDK não põe duplex num fetch próprio).
+  if (init?.body && typeof init.body !== 'string') {
+    return fetch(input, { ...init, duplex: 'half' } as RequestInit);
+  }
   return fetch(input, init);
 };
