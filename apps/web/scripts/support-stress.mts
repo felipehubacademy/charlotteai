@@ -1,7 +1,8 @@
 // scripts/support-stress.mts — stress test do agente de suporte (WhatsApp, e-mail e chat do app).
 // Chama runSupportAgent direto: NÃO envia mensagem nem abre chamado. Para cada cenário, simula o
 // destino (resposta automática, pedido de identificação ou chamado) e um juiz (gpt-6-sol) confere a
-// resposta contra a FAQ. Custo por rodada: ~US$ 1-2.
+// resposta contra a FAQ. Juiz padrão: gpt-6-luna (~US$ 0,15/rodada). Com --judge=sol (gpt-6-sol,
+// mais rigoroso) a rodada custa ~US$ 2,50: use só para a conferência final.
 // Rodar (de apps/web, com as envs do .env.local): npx tsx --tsconfig tsconfig.json scripts/support-stress.mts relatorio.md
 import fs from 'node:fs';
 import { runSupportAgent, type SupportUserContext, type SupportTurn } from '@/lib/support-agent';
@@ -162,6 +163,7 @@ const CASES: Case[] = [
   { id: 'so-emoji', ch: 'whatsapp', ctx: 'anon', msg: '\u{1F64F}', exp: 'any' },
 ];
 
+const JUDGE_MODEL = process.argv.includes('--judge=sol') ? 'gpt-6-sol' : 'gpt-6-luna';
 const { text: FAQ } = await getSupportFaq();
 
 function outcome(d: { autoSend: boolean; needsHuman: boolean; reply: string }, verified: boolean): 'auto' | 'ask' | 'human' {
@@ -188,7 +190,7 @@ FAQ:
 ${FAQ}`;
   const r = await aiFetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
-    body: JSON.stringify({ model: 'gpt-6-sol', reasoning_effort: 'low', response_format: { type: 'json_object' }, messages: [{ role: 'system', content: sys }, { role: 'user', content: user }] }),
+    body: JSON.stringify({ model: JUDGE_MODEL, reasoning_effort: 'low', response_format: { type: 'json_object' }, messages: [{ role: 'system', content: sys }, { role: 'user', content: user }] }),
   });
   const j = await r.json();
   try { return JSON.parse(j.choices[0].message.content) as { severity: string; issues: string[] }; } catch { return { severity: 'error', issues: [JSON.stringify(j).slice(0, 200)] }; }
@@ -222,7 +224,7 @@ md += `Cenários: ${results.length} · destino certo: ${results.filter(r => r.ro
 md += `Regras de silêncio (isPureAck): ${ACK.length - ackFails.length}/${ACK.length}${ackFails.length ? ' · falhas: ' + ackFails.map(a => a[0]).join(' | ') : ''}\n\n`;
 const fmt = (r: typeof results[number]) => `### ${r.c.id} (${r.c.ch}, ${r.c.ctx}) esperado=${r.c.exp} obtido=${r.out} intent=${r.d.intent} juiz=${r.j.severity}\n> ${r.c.msg}\n\n${r.d.reply}\n${r.j.issues?.length ? '\nProblemas: ' + r.j.issues.join(' / ') : ''}\n`;
 md += `## Graves ou destino errado (${bad.length})\n\n${bad.map(fmt).join('\n')}\n## Leves (${minor.length})\n\n${minor.map(fmt).join('\n')}\n## Todos\n\n${results.filter(r => !bad.includes(r) && !minor.includes(r)).map(fmt).join('\n')}`;
-fs.writeFileSync(process.argv[2] ?? 'stress.md', md);
+fs.writeFileSync(process.argv.find((a, i) => i >= 2 && !a.startsWith('--')) ?? 'stress.md', md);
 console.log(md.split('\n').slice(0, 4).join('\n'));
 console.log('graves/destino:', bad.map(r => `${r.c.id}(${r.out}/${r.j.severity})`).join(', '));
 console.log('leves:', minor.map(r => r.c.id).join(', '));
