@@ -443,6 +443,7 @@ export default function ProfileTab() {
     if (subscriptionStatus === 'cancelled')    return { text: isPt ? 'Ativa · cancelada' : 'Active · cancelling', color: C.error };
     if (subscriptionStatus === 'trial')        return { text: 'Trial',                                  color: C.violet };
     if (subscriptionStatus === 'expired')      return { text: isPt ? 'Expirada'      : 'Expired',       color: C.error };
+    if (subscriptionStatus === 'none')         return { text: isPt ? 'Degustação'    : 'Free taste',    color: C.violet };
     return                                            { text: isPt ? 'Sem acesso'    : 'No access',     color: C.error };
   })();
 
