@@ -602,8 +602,9 @@ export default function GuidedChatExerciseScreen() {
         );
       })()}
 
-      {/* Text input + send */}
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+      {/* Text input + send. 'padding' nas duas plataformas: com o keyboard-controller o Android
+          não redimensiona a tela sozinho e o teclado cobria o campo. */}
+      <KeyboardAvoidingView behavior="padding">
         <View style={{
           paddingHorizontal: 12, paddingTop: 10,
           paddingBottom: Math.max(insets.bottom, 14),
