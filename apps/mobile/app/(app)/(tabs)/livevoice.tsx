@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path as SvgPath } from 'react-native-svg';
-import { useFocusEffect } from 'expo-router';
+import { useFocusEffect, router } from 'expo-router';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { Image } from 'expo-image';
 import { Phone, XCircle, ClockCounterClockwise, CaretRight, Trash, Question, X, Plus, Crown } from 'phosphor-react-native';
@@ -452,8 +452,14 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function LiveVoiceTab() {
-  const { profile }     = useAuth();
+  const { profile, isTaster } = useAuth();
   const { openPaywall } = usePaywallContext();
+  // Degustação: Practice e Live Voice ficam para o teste de 7 dias. Volta para a Home e abre o paywall.
+  useFocusEffect(useCallback(() => {
+    if (!isTaster) return;
+    router.navigate('/(app)/(tabs)' as any);
+    openPaywall();
+  }, [isTaster, openPaywall]));
   const level   = (profile?.charlotte_level ?? 'Novice') as UserLevel;
   // Live Voice é tela de SISTEMA: idioma segue o device (não o nível).
   const isPt    = systemIsPt;

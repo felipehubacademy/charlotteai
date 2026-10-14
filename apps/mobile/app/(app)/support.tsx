@@ -38,7 +38,7 @@ const FAQ_PT: Faq[] = [
   { q: 'Como cancelo minha assinatura?', a: 'O cancelamento é feito na loja.\n\niPhone: Ajustes > seu nome > Assinaturas > Queizy > Cancelar.\n\nAndroid: Google Play > perfil > Pagamentos e assinaturas > Assinaturas > Queizy > Cancelar.\n\nVocê mantém o acesso até o fim do período já pago.' },
   { q: 'Cancelei — perco o acesso na hora?', a: 'Não. Ao cancelar, você continua com acesso até o fim do período que já pagou. O acesso só encerra quando a assinatura expira.' },
   { q: 'Como redefino minha senha?', a: 'Na tela de login, toque em "Esqueceu sua senha?", informe seu email e siga o link enviado.' },
-  { q: 'Quais são os planos e preços?', a: 'Plano Mensal R$ 29,99/mês ou Plano Anual R$ 199,99/ano (~R$ 16,67/mês), com 7 dias grátis para quem nunca assinou. Você escolhe o plano no app e confirma na loja; a cobrança só começa ao fim dos 7 dias, e se cancelar antes não paga nada. Os valores exatos aparecem na tela de assinatura.' },
+  { q: 'Quais são os planos e preços?', a: 'Ao criar a conta, você experimenta de graça o primeiro bloco da trilha nos 3 níveis. Para continuar: Plano Mensal R$ 29,99/mês ou Plano Anual R$ 199,99/ano (~R$ 16,67/mês), com 7 dias grátis para quem nunca assinou. Você escolhe o plano no app e confirma na loja; a cobrança só começa ao fim dos 7 dias, e se cancelar antes não paga nada.' },
   { q: 'Como restauro minha compra?', a: 'Em Perfil > Assinatura > Restaurar compras. Você precisa estar logado na mesma conta da App Store ou Google Play usada na compra.' },
   { q: 'Como pedir reembolso?', a: 'Os reembolsos são feitos pela loja.\n\niPhone: acesse reportaproblem.apple.com.\n\nAndroid: pela ajuda do Google Play.\n\nSe precisar, fale com a gente pelos canais acima.' },
 ];

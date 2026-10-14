@@ -73,7 +73,7 @@ export default function GuidedChatExerciseScreen() {
   const moduleId = params.moduleId ?? '';
   const unitId   = params.unitId ?? '';
 
-  const { profile } = useAuth();
+  const { profile, isTaster } = useAuth();
   const userId      = profile?.id;
   const isPt        = systemIsPt; // suporte/chrome: idioma do device
   const insets      = useSafeAreaInsets();
@@ -739,6 +739,8 @@ export default function GuidedChatExerciseScreen() {
                   //   - eh ultima unit do ultimo modulo → home (com spinner
                   //     pra cobrir o gap ate o PromotionModal aparecer)
                   if (!allObjectivesDone) { router.back(); return; }
+                  // Degustação: o 1º bloco acabou aqui; a Home abre o paywall.
+                  if (isTaster) { router.replace('/(app)/(tabs)' as any); return; }
                   const allMods = listModules(level as any);
                   const modIdx  = allMods.findIndex(m => m.id === moduleId);
                   const currMod = allMods[modIdx];

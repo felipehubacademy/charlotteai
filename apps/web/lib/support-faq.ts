@@ -101,8 +101,8 @@ Se continuar sem funcionar depois disso, um atendente analisa (ajuda informar o 
 
   // ── Planos e assinatura ──────────────────────────────────────────────────
   { section: 'Planos e assinatura', question: 'Quais são os planos e preços?', answer:
-`Plano Mensal R$ 29,99/mês e Plano Anual R$ 199,99/ano (equivale a cerca de R$ 16,67/mês), com 7 dias grátis para quem nunca assinou.
-O plano é escolhido na tela de assinatura, que aparece logo depois das boas-vindas, e confirmado na loja: App Store (iPhone) ou Google Play (Android). A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.` },
+`Ao criar a conta, você experimenta de graça o primeiro bloco da trilha nos 3 níveis (Gramática, Listening & Speaking, Role-play e Guided Chat). Para continuar: Plano Mensal R$ 29,99/mês e Plano Anual R$ 199,99/ano (equivale a cerca de R$ 16,67/mês), com 7 dias grátis para quem nunca assinou.
+A tela de assinatura abre ao terminar o primeiro bloco ou ao entrar em algo do plano (Live Voice, Practice ou os blocos seguintes). O plano é confirmado na loja: App Store (iPhone) ou Google Play (Android). A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.` },
   { section: 'Planos e assinatura', question: 'Como cancelar a assinatura?', answer:
 `O cancelamento é feito na loja (a Apple e o Google gerenciam a assinatura):
 - iPhone: Ajustes > seu nome > Assinaturas > Queizy (pode aparecer como Charlotte em versões antigas) > Cancelar assinatura.

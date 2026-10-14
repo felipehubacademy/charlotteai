@@ -64,7 +64,7 @@ function formatMoney(value: number, currency: string, isPt: boolean): string {
 }
 
 export function PaywallModal() {
-  const { profile, hasAccess, signOut, refreshProfile } = useAuth();
+  const { profile, hasAccess, isTaster, signOut, refreshProfile } = useAuth();
   const { paywallOpen, closePaywall } = usePaywallContext();
   const insets = useSafeAreaInsets();
 
@@ -346,7 +346,11 @@ export function PaywallModal() {
 
   const headline = isNewUser ? newLine : useStreak ? streakLine : useXp ? xpLine : neutralLine;
 
-  const subheadline = isNewUser
+  const subheadline = isTaster
+    ? (isPt
+        ? 'Com o teste, você libera a trilha inteira, a conversa livre e as chamadas de voz com a Charlotte.'
+        : 'With the trial you unlock the whole learning path, free chat and voice calls with Charlotte.')
+    : isNewUser
     ? (isPt
         ? 'Acesso completo ao Queizy: conversa por voz, correção na hora e a trilha inteira.'
         : 'Full access to Queizy: voice chat, instant corrections and the whole learning path.')

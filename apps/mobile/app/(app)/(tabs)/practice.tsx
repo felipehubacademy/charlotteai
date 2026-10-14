@@ -77,8 +77,14 @@ const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
 export default function PracticeTab() {
-  const { profile, signOut } = useAuth();
+  const { profile, signOut, isTaster } = useAuth();
   const { openPaywall } = usePaywallContext();
+  // Degustação: Practice e Live Voice ficam para o teste de 7 dias. Volta para a Home e abre o paywall.
+  useFocusEffect(useCallback(() => {
+    if (!isTaster) return;
+    router.navigate('/(app)/(tabs)' as any);
+    openPaywall();
+  }, [isTaster, openPaywall]));
 
   const userLevel = (profile?.charlotte_level ?? 'Novice') as UserLevel;
   const userName  = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';

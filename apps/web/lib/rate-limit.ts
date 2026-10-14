@@ -121,7 +121,7 @@ export async function checkRateLimit(
 
     if (userData?.is_institutional) return null;
 
-    const isTrial   = userData?.subscription_status === 'trial' || !userData?.subscription_status;
+    const isTrial   = userData?.subscription_status === 'trial' || userData?.subscription_status === 'none' || !userData?.subscription_status;
     const limits    = isTrial ? LIMITS.trial : LIMITS.paid;
     const now       = new Date();
     const nowIso    = now.toISOString();

@@ -19,7 +19,8 @@ export interface AuthContextType {
   profile: UserProfile | null;
   isLoading: boolean;
   isAuthenticated: boolean;
-  hasAccess: boolean;           // is_institutional OR active/trial subscription
+  hasAccess: boolean;           // is_institutional OR active/trial subscription OR degustação
+  isTaster: boolean;            // conta nova sem assinatura: só o 1º bloco da trilha (3 níveis)
   mustChangePassword: boolean;
   isPasswordRecovery: boolean;  // true when app opened via password reset email link
   clearPasswordRecovery: () => void; // call after reset-password screen handled
@@ -373,11 +374,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!profile) return false;
     // (a) Institutional: is_active não importa — acesso sempre garantido
     if (profile.is_institutional) return true;
-    // (b) Sem assinatura ainda (null OU 'none'): livre só durante as boas-vindas (cadastro, teste de
-    //     nível). Desde 2026-10-14 o teste grátis é o da loja: terminadas as boas-vindas, sem plano,
-    //     o paywall abre com "Comece seus 7 dias grátis".
+    // (b) Sem assinatura ainda (null OU 'none'): degustação. O app abre normalmente, mas só o
+    //     1º bloco da trilha dos 3 níveis fica livre (ver isTaster). O resto abre o paywall com
+    //     o teste de 7 dias da loja.
     const noSub = !profile.subscription_status || profile.subscription_status === 'none';
-    if (noSub) return !profile.first_welcome_done;
+    if (noSub) return true;
     // (c) Usuário inativo com assinatura = sem acesso
     if (!profile.is_active) return false;
     // 'cancelled' = auto-renew desligado mas acesso valido ate expires_at.
@@ -397,6 +398,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return false;
   })();
 
+  const isTaster = !!profile && !profile.is_institutional
+    && (!profile.subscription_status || profile.subscription_status === 'none');
+
   const mustChangePassword = profile?.must_change_password === true;
 
   const clearPasswordRecovery = () => setIsPasswordRecovery(false);
@@ -408,6 +412,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       isLoading,
       isAuthenticated: !!session,
       hasAccess,
+      isTaster,
       mustChangePassword,
       isPasswordRecovery,
       clearPasswordRecovery,

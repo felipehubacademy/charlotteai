@@ -21,6 +21,9 @@ import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { supabase } from '@/lib/supabase';
+import * as SecureStore from 'expo-secure-store';
+import { useAuth } from '@/hooks/useAuth';
+import { usePaywallContext } from '@/lib/paywallContext';
 import { LEVEL_ACCENT } from '@/lib/levelColors';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -464,7 +467,11 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
   const v2Cascade = cascadeMode(level as V2LevelType);
   // Preview mode: aluno entrou em nivel ainda nao desbloqueado.
   // Tudo aparece lockado (read-only sneak peek do curriculo).
-  const isPreview = useV2 && !isAccessible(level as V2LevelType);
+  // Degustação (conta nova sem assinatura): o 1º bloco dos 3 níveis fica aberto, inclusive
+  // nos níveis ainda não liberados. Os blocos seguintes abrem o paywall.
+  const { isTaster } = useAuth();
+  const { openPaywall } = usePaywallContext();
+  const isPreview = useV2 && !isTaster && !isAccessible(level as V2LevelType);
 
   // v2 progress — só lê quando useV2 (sem custo extra em v1)
   const v2Progress = useLearnProgressV2(userId, level as V2Level, v2Cascade);
@@ -606,7 +613,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
         completedCount, totalCount, pct, state, avgScore,
       };
     });
-  }, [modules, level, useV2, isTopicComplete, isLocked, isIntroDone, scoreMap, v2Progress.rows]);
+  }, [modules, level, useV2, isTopicComplete, isLocked, isIntroDone, scoreMap, v2Progress.rows, isPreview]);
 
   const activeIdx = useMemo(
     () => moduleData.findIndex(m => m.state === 'active'),
@@ -627,8 +634,24 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
     if (activeIdx >= 0) setExpandedIdx(activeIdx);
   }, [activeIdx]);
 
+  // Fim da degustação neste nível: terminou o 1º bloco → paywall uma vez (por nível).
+  const tasteDone = isTaster && useV2 && moduleData[0]?.state === 'done';
+  useEffect(() => {
+    if (!tasteDone) return;
+    const key = `taste_paywall_${level}`;
+    let cancelled = false;
+    (async () => {
+      const seen = await SecureStore.getItemAsync(key).catch(() => null);
+      if (seen || cancelled) return;
+      await SecureStore.setItemAsync(key, '1').catch(() => {});
+      openPaywall();
+    })();
+    return () => { cancelled = true; };
+  }, [tasteDone, level, openPaywall]);
+
   const handleStartLesson = useCallback((lesson: Lesson) => {
     if (lesson.state === 'locked' || !lesson.hasContent) return;
+    if (isTaster && lesson.moduleIdx > 0) { openPaywall(); return; }
     if (lesson.isIntro) {
       router.push({
         pathname: '/(app)/learn-intro',
@@ -670,7 +693,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
         params: { level, moduleIndex: String(lesson.moduleIdx), topicIndex: String(lesson.topicIdx) },
       });
     }
-  }, [level]);
+  }, [level, isTaster, openPaywall]);
 
   // Ref pra scroll-to-active module
   const activeRef = useRef<View | null>(null);
