@@ -24,6 +24,7 @@ export default function PublicHeader() {
         </a>
         <div className="pub-nav-links" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
           <a href="/#como" style={{ fontSize: 14, color: '#4D4858', fontWeight: 500 }}>Como funciona</a>
+          <a href="/#familia" style={{ fontSize: 14, color: '#4D4858', fontWeight: 500 }}>Família Queizy</a>
           <a href="/#planos" style={{ fontSize: 14, color: '#4D4858', fontWeight: 500 }}>Planos</a>
           <a href="/faq" style={{ fontSize: 14, color: '#4D4858', fontWeight: 500 }}>Ajuda</a>
         </div>

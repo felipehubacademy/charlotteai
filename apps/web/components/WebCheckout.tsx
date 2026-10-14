@@ -13,7 +13,8 @@ const GREEN = '#08804A';
 const BORDER = '#E6E2EC';
 
 type Plan = 'monthly' | 'annual';
-type Info = { enabled: boolean; trialDays: number; discountPct: number; prices: { monthly: number; annual: number };
+type AnnualPay = 'card' | 'pix' | 'installments';
+type Info = { enabled: boolean; trialDays: number; discountPct: number; prices: { monthly: number; annual: number; annual_12x?: number };
   coupon: { ok: true; code: string; pct: number } | { ok: false; error: string } | null };
 
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -24,6 +25,7 @@ const maskPhone = (v: string) => v.replace(/\D/g, '').slice(0, 11)
 
 export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan; notice?: string }) {
   const [plan, setPlan] = useState<Plan>(initialPlan);
+  const [annualPay, setAnnualPay] = useState<AnnualPay>('card');
   const [info, setInfo] = useState<Info | null>(null);
   const [aff, setAff] = useState<string | null>(null);
   const [name, setName] = useState('');
@@ -92,6 +94,9 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
   const monthly = info?.prices.monthly ?? 29.99;
   const annual = info?.prices.annual ?? 199.99;
   const trial = info?.trialDays ?? 7;
+  const annual12 = info?.prices.annual_12x ?? Math.round(((annual + 0.49) / (1 - 0.0399)) * 100) / 100;
+  const method = plan === 'monthly' ? 'monthly' : annualPay === 'card' ? 'annual' : annualPay === 'pix' ? 'annual_pix' : 'annual_12x';
+  const hasTrial = method === 'monthly' || method === 'annual';
   const disc = info?.discountPct ?? 0;
 
   async function submit(e: React.FormEvent) {
@@ -100,7 +105,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
     try {
       const r = await fetch('/api/checkout/asaas', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan, name, email, cpf, phone, aff, coupon }),
+        body: JSON.stringify({ method, name, email, cpf, phone, aff, coupon }),
       });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || !j.url) { setError(j.error ?? 'Não foi possível abrir o pagamento agora.'); setBusy(false); return; }
@@ -121,9 +126,9 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
           <div style={{ textAlign: 'left' }}>
             <div style={{ fontWeight: 800, fontSize: 17 }}>{p === 'annual' ? 'Anual' : 'Mensal'}</div>
             <div style={{ fontSize: 13, color: MID, marginTop: 2 }}>
-              {p === 'annual' ? `${brl(annual / 12)}/mês · Pix ou até 12x no cartão` : 'Cartão de crédito, renova todo mês'}
+              {p === 'annual' ? `${brl(annual / 12)}/mês · cartão, Pix ou 12x` : 'Cartão de crédito, renova todo mês'}
             </div>
-            {p === 'monthly' && trial > 0 && <div style={{ fontSize: 13, color: GREEN, fontWeight: 700, marginTop: 4 }}>{trial} dias grátis</div>}
+            {trial > 0 && <div style={{ fontSize: 13, color: GREEN, fontWeight: 700, marginTop: 4 }}>{trial} dias grátis{p === 'annual' ? ' no cartão' : ''}</div>}
           </div>
           <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
             <div style={{ fontWeight: 800, fontSize: 22 }}>{brl(p === 'annual' ? annual : monthly)}</div>
@@ -134,12 +139,34 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
     );
   };
 
-  const cta = plan === 'monthly' && trial > 0 ? `Começar ${trial} dias grátis` : `Assinar — ${brl(plan === 'annual' ? annual : monthly)}`;
-  const note = plan === 'monthly'
+  const cta = hasTrial && trial > 0
+    ? `Começar ${trial} dias grátis`
+    : method === 'annual_12x' ? `Assinar — 12x de ${brl(annual12 / 12)}` : `Assinar — ${brl(plan === 'annual' ? annual : monthly)}`;
+  const note = method === 'monthly'
     ? (trial > 0
         ? `Grátis por ${trial} dias, depois ${brl(monthly)}/mês no cartão. Cancele antes do fim do teste e não paga nada. O teste vale para quem nunca assinou.`
         : `${brl(monthly)}/mês no cartão. Cancele quando quiser.`)
-    : `Pagamento único de ${brl(annual)} no Pix ou em até 12x no cartão. 12 meses de acesso completo; se desistir em até 7 dias, devolvemos o valor.`;
+    : method === 'annual'
+    ? (trial > 0
+        ? `Grátis por ${trial} dias, depois ${brl(annual)} por ano no cartão, em 1x. Cancele antes do fim do teste e não paga nada. O teste vale para quem nunca assinou.`
+        : `${brl(annual)} por ano no cartão, em 1x. Cancele a renovação quando quiser.`)
+    : method === 'annual_pix'
+    ? `Pagamento único de ${brl(annual)} no Pix, sem renovação automática. O teste de 7 dias é só no cartão; no Pix, se desistir em até 7 dias, devolvemos o valor.`
+    : `Total de ${brl(annual12)} em até 12x no cartão (inclui a taxa do parcelamento), sem renovação automática. Se desistir em até 7 dias, devolvemos o valor.`;
+
+  const payOption = (k: AnnualPay, title: string, detail: string) => {
+    const sel = annualPay === k;
+    return (
+      <button type="button" key={k} onClick={() => setAnnualPay(k)} className="wc-pay"
+        style={{ borderColor: sel ? INK : BORDER, background: sel ? '#fff' : 'transparent' }}>
+        <span className="wc-radio" style={{ borderColor: sel ? INK : BORDER }}>{sel && <i />}</span>
+        <span style={{ textAlign: 'left' }}>
+          <span style={{ display: 'block', fontWeight: 800, fontSize: 15 }}>{title}</span>
+          <span style={{ display: 'block', fontSize: 13, color: MID, marginTop: 2 }}>{detail}</span>
+        </span>
+      </button>
+    );
+  };
 
   return (
     <div className="wc">
@@ -153,6 +180,9 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
         .wc input:focus { outline: 2px solid ${INK}; border-color: transparent; }
         .wc-btn { width: 100%; border: 0; border-radius: 14px; background: ${LIME}; color: ${INK}; font-weight: 800; font-size: 17px; padding: 16px; cursor: pointer; margin-top: 20px; }
         .wc-btn[disabled] { opacity: 0.6; cursor: default; }
+        .wc-pay { display: flex; gap: 12px; align-items: flex-start; width: 100%; border: 1.5px solid; border-radius: 14px; padding: 12px 14px; cursor: pointer; font: inherit; color: inherit; }
+        .wc-radio { flex: none; width: 18px; height: 18px; border-radius: 50%; border: 2px solid; margin-top: 2px; display: flex; align-items: center; justify-content: center; }
+        .wc-radio i { width: 8px; height: 8px; border-radius: 50%; background: ${INK}; }
       `}</style>
 
       <h1>Assine o Queizy</h1>
@@ -168,6 +198,13 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
 
       <div style={{ display: 'grid', gap: 14 }}>
         {planCard('annual')}
+        {plan === 'annual' && (
+          <div role="radiogroup" aria-label="Forma de pagamento do anual" style={{ display: 'grid', gap: 8, marginTop: -4 }}>
+            {payOption('card', trial > 0 ? `Cartão: ${trial} dias grátis` : 'Cartão em 1x', `Depois ${brl(annual)} por ano, em 1x. Renova sozinho; cancele quando quiser.`)}
+            {payOption('pix', 'Pix à vista', `${brl(annual)} de uma vez, sem renovação automática.`)}
+            {payOption('installments', 'Até 12x no cartão', `12x de ${brl(annual12 / 12)} (total ${brl(annual12)}, com a taxa do parcelamento).`)}
+          </div>
+        )}
         {planCard('monthly')}
       </div>
 

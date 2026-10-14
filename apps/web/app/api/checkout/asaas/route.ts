@@ -9,6 +9,7 @@ import { affiliateByCode, attributeUser, cleanAffiliateCode } from '@/lib/affili
 import {
   asaasConfigured, AsaasError, cancelSubscription, createCheckout, priceFor,
   validCpf, WEB_TRIAL_DAYS, resolveCoupon, COUPON_ERROR_PT, type WebPlan,
+  ensureCustomer, priceForMethod, planOfMethod, methodHasTrial, type PayMethod,
 } from '@/lib/asaas';
 
 export const dynamic = 'force-dynamic';
@@ -37,7 +38,10 @@ export async function GET(req: NextRequest) {
     trialDays: WEB_TRIAL_DAYS,
     discountPct: Math.max(pctFor('monthly'), pctFor('annual')),
     coupon: c ? (c.ok ? { ok: true, code: c.code, pct: c.pct, plans: c.plans } : { ok: false, error: COUPON_ERROR_PT[c.error] }) : null,
-    prices: { monthly: priceFor('monthly', pctFor('monthly')), annual: priceFor('annual', pctFor('annual')) },
+    prices: {
+      monthly: priceFor('monthly', pctFor('monthly')), annual: priceFor('annual', pctFor('annual')),
+      annual_12x: priceForMethod('annual_12x', pctFor('annual')),
+    },
   });
 }
 
@@ -51,10 +55,11 @@ export async function POST(req: NextRequest) {
     const user = auth?.user;
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     const { data: row } = await supabase.from('asaas_checkouts').select('asaas_subscription_id')
-      .eq('user_id', user.id).eq('plan', 'monthly').not('asaas_subscription_id', 'is', null)
+      .eq('user_id', user.id).eq('status', 'paid').not('asaas_subscription_id', 'is', null)
       .order('created_at', { ascending: false }).limit(1).maybeSingle();
     const subId = (row as { asaas_subscription_id: string } | null)?.asaas_subscription_id;
-    if (!subId) return NextResponse.json({ error: 'Assinatura não encontrada.' }, { status: 404 });
+    // Pix e parcelado não renovam sozinhos: não há o que cancelar.
+    if (!subId) return NextResponse.json({ ok: true, noRenewal: true });
     try { await cancelSubscription(subId); } catch (e) {
       return NextResponse.json({ error: e instanceof AsaasError ? e.message : 'Não foi possível cancelar agora.' }, { status: 502 });
     }
@@ -65,7 +70,9 @@ export async function POST(req: NextRequest) {
 
   if (!asaasConfigured()) return NextResponse.json({ error: 'A assinatura pelo site abre em breve. Por enquanto, assine pelo app.' }, { status: 503 });
 
-  const plan: WebPlan | null = body.plan === 'monthly' || body.plan === 'annual' ? body.plan : null;
+  const METHODS: PayMethod[] = ['monthly', 'annual', 'annual_pix', 'annual_12x'];
+  const method: PayMethod | null = METHODS.includes(body.method) ? body.method : METHODS.includes(body.plan) ? body.plan : null;
+  const plan: WebPlan | null = method ? planOfMethod(method) : null;
   const name = String(body.name ?? '').trim().slice(0, 100);
   const email = String(body.email ?? '').trim().toLowerCase();
   const cpf = String(body.cpf ?? '').replace(/\D/g, '');
@@ -108,16 +115,24 @@ export async function POST(req: NextRequest) {
   const couponPct = coupon?.ok && coupon.kind === 'coupon' && coupon.plans.includes(plan) ? coupon.pct : 0;
   const discountPct = Math.max(affPct, couponPct); // não acumula: vale o maior
 
-  // 7 dias grátis só no mensal e só para quem nunca teve teste nem assinatura.
+  // 7 dias grátis no cartão (mensal ou anual) e só para quem nunca teve teste nem assinatura.
   const { count: paidBefore } = await supabase.from('asaas_checkouts').select('id', { count: 'exact', head: true }).eq('user_id', u.id).eq('status', 'paid');
   const neverTried = (!u.subscription_status || u.subscription_status === 'none') && !u.trial_ends_at && !paidBefore;
-  const trialDays = plan === 'monthly' && neverTried ? WEB_TRIAL_DAYS : 0;
-  const value = priceFor(plan, discountPct);
+  const trialDays = methodHasTrial(method!) && neverTried ? WEB_TRIAL_DAYS : 0;
+  const value = priceForMethod(method!, discountPct);
 
   try {
-    const checkout = await createCheckout({ plan, value, trialDays, userId: u.id, customer: { name, email, cpfCnpj: cpf, phone: phone || undefined } });
+    // Cliente no Asaas: o da última compra desta conta, ou um novo (sem endereço).
+    const { data: prevC } = await supabase.from('asaas_checkouts').select('asaas_customer_id')
+      .eq('user_id', u.id).not('asaas_customer_id', 'is', null).order('created_at', { ascending: false }).limit(1).maybeSingle();
+    let customerId = (prevC as { asaas_customer_id: string } | null)?.asaas_customer_id ?? null;
+    if (!customerId) {
+      customerId = await ensureCustomer({ name, email, cpfCnpj: cpf, phone: phone || undefined, userId: u.id })
+        .catch(e => { console.warn('[checkout/asaas] cliente não criado:', e instanceof AsaasError ? e.body : e); return null; });
+    }
+    const checkout = await createCheckout({ method: method!, value, trialDays, userId: u.id, customerId });
     await supabase.from('asaas_checkouts').insert({
-      id: checkout.id, user_id: u.id, plan, value_brl: value, trial_days: trialDays,
+      id: checkout.id, user_id: u.id, plan, method, value_brl: value, trial_days: trialDays, asaas_customer_id: customerId,
       affiliate_code: a?.code ?? null, status: 'created',
       coupon_code: couponPct > 0 && couponPct >= affPct && coupon?.ok ? coupon.code : null, discount_pct: discountPct,
     } as never);

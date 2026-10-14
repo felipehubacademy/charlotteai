@@ -74,6 +74,16 @@ export default function Page() {
         .qz .eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: var(--light); }
         .qz .marker { background: linear-gradient(transparent 22%, var(--volt) 22%, var(--volt) 88%, transparent 88%); padding: 0 6px; margin: 0 -2px; box-decoration-break: clone; -webkit-box-decoration-break: clone; border-radius: 4px; }
         .qz .card { background: #fff; border: 1px solid var(--line); border-radius: 24px; }
+        .qz .fam { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+        .qz .fam-card { padding: 28px 22px; text-align: center; }
+        .qz .fam-av { width: 88px; height: 88px; border-radius: 50%; background: var(--ink); margin: 0 auto 14px; display: block; object-fit: cover; }
+        .qz .fam-card h3 { font-size: 22px; margin: 0; }
+        .qz .fam-role { font-size: 13px; font-weight: 700; color: var(--mid); margin-top: 4px; }
+        .qz .fam-card p { font-size: 15px; line-height: 1.55; color: var(--mid); margin: 12px 0 0; }
+        .qz .fam-next { border-style: dashed; background: transparent; }
+        .qz .fam-ghost { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #DCFF4A, #FF4F8B 55%, #6B4BFF); filter: blur(0.5px); opacity: 0.55; }
+        .qz .fam-ghost span { font-size: 38px; font-weight: 800; color: #fff; filter: blur(1.5px); }
+        @media (max-width: 760px) { .qz .fam { grid-template-columns: 1fr; } }
 
         .qz nav { position: sticky; top: 0; z-index: 50; background: rgba(250,247,240,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
         .qz nav .wrap { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
@@ -150,6 +160,7 @@ export default function Page() {
           </a>
           <div className="nav-links">
             <a href="#praticar">Como praticar</a>
+            <a href="#familia">Família Queizy</a>
             <a href="#como">Como começar</a>
             <a href="#planos">Planos</a>
             <a href="/faq">Ajuda</a>
@@ -170,7 +181,7 @@ export default function Page() {
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
               <StoreCTA variant="hero" label="7 dias grátis" plan="mensal" />
-              <span style={{ fontSize: 13, color: 'var(--light)' }}>Mensal com 7 dias grátis · Anual no Pix ou em 12x</span>
+              <span style={{ fontSize: 13, color: 'var(--light)' }}>7 dias grátis no cartão · Anual também no Pix ou em 12x</span>
             </div>
           </div>
 
@@ -246,6 +257,35 @@ export default function Page() {
         </div>
       </div>
 
+      {/* ── Família Queizy ────────────────────────────────────────────── */}
+      {/* Novo personagem: acrescente em FAMILY e o card "Em breve" continua no fim. */}
+      <section id="familia">
+        <div className="wrap">
+          <span className="eyebrow">Família Queizy</span>
+          <h2 className="d">Gente boa para treinar com você.</h2>
+          <p className="sub">A Charlotte é a sua tutora e chama a turma para a conversa. Cada personagem tem seu jeito de falar, para você praticar inglês de verdade.</p>
+          <div className="fam">
+            {[
+              { name: 'Charlotte', role: 'Tutora', img: '/images/charlotte-avatar.png', d: 'Paciente e animada. Corrige na hora, sem vergonha de errar.' },
+              { name: 'Igorfina', role: 'Comediante e imitador', img: '/images/igorfina-avatar.png', d: 'No meio da conversa, ele solta uma imitação. Rir também ensina.' },
+            ].map(m => (
+              <div key={m.name} className="card fam-card">
+                <Image src={m.img} alt={m.name} width={88} height={88} className="fam-av" />
+                <h3 className="d">{m.name}</h3>
+                <div className="fam-role">{m.role}</div>
+                <p>{m.d}</p>
+              </div>
+            ))}
+            <div className="card fam-card fam-next">
+              <div className="fam-av fam-ghost" aria-hidden="true"><span>?</span></div>
+              <h3 className="d">Em breve</h3>
+              <div className="fam-role">Novo personagem</div>
+              <p>A Família Queizy está crescendo. Tem gente nova chegando para conversar com você.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Como começar ──────────────────────────────────────────────── */}
       <section id="como">
         <div className="wrap">
@@ -253,7 +293,7 @@ export default function Page() {
           <h2 className="d">Três passos e você já está falando.</h2>
           <div className="steps">
             {[
-              { n: 1, t: 'Baixe o Queizy', d: 'Disponível no iOS e no Android. A conta fica pronta em menos de dois minutos.' },
+              { n: 1, t: 'Assine e baixe o app', d: 'Assine aqui no site e entre no app com o mesmo e-mail. Disponível no iOS e no Android.' },
               { n: 2, t: 'Descubra seu nível', d: 'Um teste rápido monta a trilha certa para você. Se preferir, comece direto.' },
               { n: 3, t: 'Comece a falar', d: 'Converse, grave, erre e acerte. A Charlotte acompanha cada passo.' },
             ].map(s => (
@@ -291,7 +331,7 @@ export default function Page() {
               <StoreCTA variant="pricing" label="Começar 7 dias grátis" plan="mensal" />
               <StoreCTA variant="pricing" label="Assinar o Anual" plan="anual" />
             </div>
-            <p style={{ fontSize: 13, color: 'var(--light)', marginTop: 16 }}>Mensal: 7 dias grátis no cartão. Anual: Pix ou até 12x. Cancele quando quiser.</p>
+            <p style={{ fontSize: 13, color: 'var(--light)', marginTop: 16 }}>7 dias grátis no cartão, no Mensal e no Anual. O Anual também sai no Pix ou em até 12x. Cancele quando quiser.</p>
           </div>
         </div>
       </section>

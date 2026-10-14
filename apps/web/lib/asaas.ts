@@ -102,24 +102,51 @@ export function priceFor(plan: WebPlan, discountPct = 0): number {
   return round2(ASAAS_PRICES[plan] * (1 - Math.max(0, Math.min(50, discountPct)) / 100));
 }
 
+// Formas de pagamento no site.
+//   monthly      cartão, recorrente mensal, 7 dias grátis (quem nunca assinou)
+//   annual       cartão, recorrente anual, 7 dias grátis (quem nunca assinou), cobrança em 1x
+//   annual_pix   Pix à vista (sem teste: Pix não tem cobrança automática), garantia de 7 dias
+//   annual_12x   cartão parcelado em até 12x, pago na hora; a taxa do parcelamento vai no preço
+export type PayMethod = 'monthly' | 'annual' | 'annual_pix' | 'annual_12x';
+export const planOfMethod = (m: PayMethod): WebPlan => (m === 'monthly' ? 'monthly' : 'annual');
+export const methodHasTrial = (m: PayMethod) => m === 'monthly' || m === 'annual';
+
+// Taxa do Asaas no cartão de 7 a 12 parcelas (contrato da conta: 3,99% + R$ 0,49).
+// Só o parcelado repassa a taxa; à vista, Pix e recorrente a Hub absorve.
+export const INSTALLMENT_FEE_PCT = 3.99;
+export const INSTALLMENT_FEE_FIXED = 0.49;
+export function withInstallmentFee(value: number): number {
+  return round2((value + INSTALLMENT_FEE_FIXED) / (1 - INSTALLMENT_FEE_PCT / 100));
+}
+export function priceForMethod(m: PayMethod, discountPct = 0): number {
+  const base = priceFor(planOfMethod(m), discountPct);
+  return m === 'annual_12x' ? withInstallmentFee(base) : base;
+}
+
 export interface CheckoutInput {
-  plan: WebPlan;
+  method: PayMethod;
   value: number;
-  trialDays: number;       // só no mensal
+  trialDays: number;       // só monthly / annual
   userId: string;
-  customer: { name: string; email: string; cpfCnpj: string; phone?: string };
+  customerId: string | null; // cliente já criado no Asaas (evita o Asaas pedir endereço)
 }
 
 export interface AsaasCheckout { id: string; link: string | null; status: string }
 
 export async function createCheckout(input: CheckoutInput): Promise<AsaasCheckout> {
   const image = await itemImage();
-  const isMonthly = input.plan === 'monthly';
-  const now = new Date();
-  const firstCharge = new Date(now.getTime() + input.trialDays * 86400000);
+  const m = input.method;
+  const firstCharge = new Date(Date.now() + input.trialDays * 86400000);
+  const trialTxt = input.trialDays > 0 ? `${input.trialDays} dias grátis, depois ` : '';
+  const desc: Record<PayMethod, string> = {
+    monthly:    `${trialTxt}cobrança mensal no cartão`,
+    annual:     `${trialTxt}cobrança anual no cartão, em 1x`,
+    annual_pix: 'Acesso completo por 12 meses, pagamento único no Pix',
+    annual_12x: 'Acesso completo por 12 meses, em até 12x no cartão',
+  };
   const body: Record<string, unknown> = {
-    billingTypes: isMonthly ? ['CREDIT_CARD'] : ['CREDIT_CARD', 'PIX'],
-    chargeTypes: isMonthly ? ['RECURRENT'] : ['DETACHED', 'INSTALLMENT'],
+    billingTypes: m === 'annual_pix' ? ['PIX'] : ['CREDIT_CARD'],
+    chargeTypes: m === 'monthly' || m === 'annual' ? ['RECURRENT'] : m === 'annual_12x' ? ['INSTALLMENT'] : ['DETACHED'],
     minutesToExpire: 120,
     externalReference: input.userId,
     callback: {
@@ -128,28 +155,37 @@ export async function createCheckout(input: CheckoutInput): Promise<AsaasCheckou
       expiredUrl: `${SITE}/assinar?expirado=1`,
     },
     items: [{
-      name: isMonthly ? 'Queizy Mensal' : 'Queizy Anual',
-      description: isMonthly
-        ? (input.trialDays > 0 ? `${input.trialDays} dias grátis, depois cobrança mensal no cartão` : 'Assinatura mensal no cartão')
-        : 'Acesso completo por 12 meses',
+      name: m === 'monthly' ? 'Queizy Mensal' : 'Queizy Anual',
+      description: desc[m],
       quantity: 1,
       value: input.value,
       imageBase64: image,
     }],
-    customerData: {
-      name: input.customer.name,
-      email: input.customer.email,
-      cpfCnpj: input.customer.cpfCnpj,
-      ...(input.customer.phone ? { phone: input.customer.phone } : {}),
-    },
   };
-  if (isMonthly) {
-    body.subscription = { cycle: 'MONTHLY', nextDueDate: ymd(firstCharge) };
-  } else {
-    body.installment = { maxInstallmentCount: ANNUAL_MAX_INSTALLMENTS };
+  if (m === 'monthly' || m === 'annual') body.subscription = { cycle: m === 'monthly' ? 'MONTHLY' : 'YEARLY', nextDueDate: ymd(firstCharge) };
+  if (m === 'annual_12x') body.installment = { maxInstallmentCount: ANNUAL_MAX_INSTALLMENTS };
+  // Com o cliente já criado, o checkout não pede endereço. Se o Asaas recusar o campo,
+  // cria sem cliente e a própria página do Asaas pede os dados.
+  let r: AsaasCheckout;
+  try {
+    r = await asaas<AsaasCheckout>('/checkouts', { method: 'POST', body: input.customerId ? { ...body, customer: input.customerId } : body });
+  } catch (e) {
+    if (!input.customerId) throw e;
+    console.warn('[asaas] checkout com cliente recusado, tentando sem:', e instanceof AsaasError ? e.body : e);
+    r = await asaas<AsaasCheckout>('/checkouts', { method: 'POST', body });
   }
-  const r = await asaas<AsaasCheckout>('/checkouts', { method: 'POST', body });
   return { id: r.id, link: r.link ?? `https://www.asaas.com/checkoutSession/show?id=${r.id}`, status: r.status };
+}
+
+/** Cria (ou reaproveita) o cliente no Asaas. Endereço não é obrigatório aqui. */
+export async function ensureCustomer(c: { name: string; email: string; cpfCnpj: string; phone?: string; userId: string }): Promise<string> {
+  const found = await asaas<{ data: { id: string }[] }>(`/customers?cpfCnpj=${encodeURIComponent(c.cpfCnpj)}&limit=1`).catch(() => ({ data: [] }));
+  if (found.data?.[0]?.id) return found.data[0].id;
+  const r = await asaas<{ id: string }>('/customers', {
+    method: 'POST',
+    body: { name: c.name, email: c.email, cpfCnpj: c.cpfCnpj, ...(c.phone ? { mobilePhone: c.phone } : {}), externalReference: c.userId },
+  });
+  return r.id;
 }
 
 export interface AsaasCustomer { id: string; email: string | null; name: string; cpfCnpj: string | null }

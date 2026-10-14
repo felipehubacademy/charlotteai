@@ -5,7 +5,7 @@
 //   CHECKOUT_PAID              guarda o cliente; mensal com teste → acesso liberado até o fim do teste
 //   PAYMENT_CONFIRMED/RECEIVED acesso até o fim do período, receita no Financeiro, comissão do afiliado
 //   PAYMENT_REFUNDED/CHARGEBACK estorno: acesso encerrado, receita e comissão estornadas
-//   SUBSCRIPTION_DELETED/INACTIVATED  'cancelled' (acesso segue até o fim do período pago)
+//   SUBSCRIPTION_DELETED/INACTIVATED  'cancelled' (acesso segue até o fim do período pago; mensal ou anual no cartão)
 //   CHECKOUT_EXPIRED/CANCELED  só marca o checkout
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
@@ -68,9 +68,10 @@ async function sendWelcome(userId: string, plan: WebPlan, trialDays: number): Pr
   const { data: link } = await supabase.auth.admin.generateLink({ type: 'recovery', email: user.email, options: { redirectTo: 'https://queizy.com/open' } });
   const passwordUrl = link?.properties?.action_link ?? 'https://queizy.com/open';
   const first = (user.name ?? '').split(' ')[0] || 'Olá';
-  const what = plan === 'monthly'
-    ? (trialDays > 0 ? `Seus ${trialDays} dias grátis do Plano Mensal começaram. A primeira cobrança no cartão é no ${trialDays + 1}º dia; se cancelar antes, não paga nada.` : 'Seu Plano Mensal está ativo.')
-    : 'Seu Plano Anual está ativo: são 12 meses de acesso completo.';
+  const planName = plan === 'monthly' ? 'Plano Mensal' : 'Plano Anual';
+  const what = trialDays > 0
+    ? `Seus ${trialDays} dias grátis do ${planName} começaram. A primeira cobrança no cartão é no ${trialDays + 1}º dia; se cancelar antes, não paga nada.`
+    : plan === 'monthly' ? 'Seu Plano Mensal está ativo.' : 'Seu Plano Anual está ativo: são 12 meses de acesso completo.';
   const btn = (href: string, label: string) =>
     `<a href="${href}" style="display:inline-block;background:#DDFF4A;color:#14121A;font-weight:700;text-decoration:none;padding:14px 22px;border-radius:12px;margin:6px 0">${label}</a>`;
   const html = `<div style="font-family:Arial,Helvetica,sans-serif;color:#14121A;max-width:520px;margin:0 auto;padding:24px">
@@ -121,10 +122,10 @@ export async function POST(req: NextRequest) {
       if (!row) return NextResponse.json({ ok: true, unmatched: true });
       const status = event === 'CHECKOUT_PAID' ? 'paid' : event === 'CHECKOUT_EXPIRED' ? 'expired' : event === 'CHECKOUT_CANCELED' ? 'canceled' : row.status;
       await supabase.from('asaas_checkouts').update({ status, asaas_customer_id: c.customer ?? row.asaas_customer_id, updated_at: new Date().toISOString() } as never).eq('id', row.id);
-      if (event === 'CHECKOUT_PAID' && row.plan === 'monthly' && row.trial_days > 0) {
-        // Cartão validado e assinatura criada: acesso durante o teste (+1 dia para a 1ª cobrança).
-        await grantAccess(row.user_id, 'monthly', new Date(Date.now() + (row.trial_days + 1) * DAY));
-        await sendWelcome(row.user_id, 'monthly', row.trial_days);
+      if (event === 'CHECKOUT_PAID' && row.trial_days > 0) {
+        // Cartão validado e assinatura criada (mensal ou anual): acesso durante o teste (+1 dia para a 1ª cobrança).
+        await grantAccess(row.user_id, row.plan, new Date(Date.now() + (row.trial_days + 1) * DAY));
+        await sendWelcome(row.user_id, row.plan, row.trial_days);
       }
       return NextResponse.json({ ok: true });
     }
@@ -156,7 +157,7 @@ export async function POST(req: NextRequest) {
         const { count: same } = await supabase.from('revenue_events').select('id', { count: 'exact', head: true }).like('event_id', `asaas_%_${p.id}`);
         if (!same) await revenue(count ? 'RENEWAL' : 'INITIAL_PURCHASE', row, p);
         // Boas-vindas na 1ª cobrança sem teste (anual ou mensal sem teste).
-        if (!count && !same && !(row.plan === 'monthly' && row.trial_days > 0)) await sendWelcome(row.user_id, row.plan, 0);
+        if (!count && !same && !(row.trial_days > 0)) await sendWelcome(row.user_id, row.plan, 0);
       } else if (event === 'PAYMENT_REFUNDED' || event === 'PAYMENT_CHARGEBACK_REQUESTED' || event === 'PAYMENT_CHARGEBACK_DISPUTE') {
         await revenue('REFUND', row, p);
         await supabase.from('charlotte_users').update({
@@ -172,7 +173,7 @@ export async function POST(req: NextRequest) {
       const row = await findRow({ subscription: s.id, customer: s.customer });
       if (row) {
         await supabase.from('charlotte_users').update({ subscription_status: 'cancelled', updated_at: new Date().toISOString() } as never)
-          .eq('id', row.user_id).eq('subscription_product', WEB_PRODUCT.monthly);
+          .eq('id', row.user_id).in('subscription_product', [WEB_PRODUCT.monthly, WEB_PRODUCT.annual]);
       }
       return NextResponse.json({ ok: true });
     }

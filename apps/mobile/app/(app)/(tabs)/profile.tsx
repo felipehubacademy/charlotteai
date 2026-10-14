@@ -362,20 +362,16 @@ export default function ProfileTab() {
         ? new Date(profile.subscription_expires_at).toLocaleDateString(isPt ? 'pt-BR' : 'en-US')
         : null;
       const untilTxt = until ? (isPt ? ` Acesso até ${until}.` : ` Access until ${until}.`) : '';
-      if (webProduct === 'web_annual') {
-        Alert.alert(
-          isPt ? 'Plano Anual (pelo site)' : 'Annual Plan (website)',
-          (isPt ? 'Pago pelo site, sem renovação automática.' : 'Paid on the website, no automatic renewal.') + untilTxt,
-        );
-        return;
-      }
+      const isAnnual = webProduct === 'web_annual';
       if (profile?.subscription_status === 'cancelled') {
         Alert.alert(isPt ? 'Assinatura cancelada' : 'Subscription cancelled', (isPt ? 'Não haverá novas cobranças.' : 'You will not be charged again.') + untilTxt);
         return;
       }
       Alert.alert(
-        isPt ? 'Plano Mensal (pelo site)' : 'Monthly Plan (website)',
-        (isPt ? 'Cobrado todo mês no cartão.' : 'Charged monthly to your card.') + untilTxt,
+        isAnnual ? (isPt ? 'Plano Anual (pelo site)' : 'Annual Plan (website)') : (isPt ? 'Plano Mensal (pelo site)' : 'Monthly Plan (website)'),
+        (isAnnual
+          ? (isPt ? 'Assinado pelo site.' : 'Subscribed on the website.')
+          : (isPt ? 'Cobrado todo mês no cartão.' : 'Charged monthly to your card.')) + untilTxt,
         [
           { text: isPt ? 'Fechar' : 'Close', style: 'cancel' },
           {
@@ -390,7 +386,13 @@ export default function ProfileTab() {
                   body: JSON.stringify({ action: 'cancel' }),
                 });
                 if (!res.ok) throw new Error('Cancel failed');
+                const j = await res.json().catch(() => ({}));
                 await refreshProfile();
+                if (j.noRenewal) {
+                  // Pix ou parcelado: já não renova sozinho.
+                  Alert.alert(isPt ? 'Sem renovação automática' : 'No automatic renewal', (isPt ? 'Seu plano foi pago de uma vez e não renova sozinho.' : 'Your plan was paid upfront and does not renew.') + untilTxt);
+                  return;
+                }
                 Alert.alert(isPt ? 'Assinatura cancelada' : 'Subscription cancelled', (isPt ? 'Não haverá novas cobranças.' : 'You will not be charged again.') + untilTxt);
               } catch {
                 Alert.alert(

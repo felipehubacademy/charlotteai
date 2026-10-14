@@ -14,3 +14,4 @@ alter table public.coupons enable row level security;  -- só o servidor lê
 
 alter table public.asaas_checkouts add column if not exists coupon_code text;
 alter table public.asaas_checkouts add column if not exists discount_pct int not null default 0;
+alter table public.asaas_checkouts add column if not exists method text;  -- monthly | annual | annual_pix | annual_12x
