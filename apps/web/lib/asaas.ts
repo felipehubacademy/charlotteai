@@ -172,6 +172,11 @@ export async function createCheckout(input: CheckoutInput): Promise<AsaasCheckou
   } catch (e) {
     if (!input.customerId) throw e;
     console.warn('[asaas] checkout com cliente recusado, tentando sem:', e instanceof AsaasError ? e.body : e);
+    // Guarda o motivo para diagnóstico (asaas_events, evento CHECKOUT_FALLBACK).
+    try {
+      const { getSupabaseAdmin } = await import('@/lib/supabase-admin');
+      await getSupabaseAdmin().from('asaas_events').insert({ id: `fallback_${Date.now()}`, event: 'CHECKOUT_FALLBACK', payload: { error: e instanceof AsaasError ? e.body : String(e), method: m } } as never);
+    } catch { /* só diagnóstico */ }
     r = await asaas<AsaasCheckout>('/checkouts', { method: 'POST', body });
   }
   return { id: r.id, link: r.link ?? `https://www.asaas.com/checkoutSession/show?id=${r.id}`, status: r.status };
