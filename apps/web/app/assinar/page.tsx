@@ -14,7 +14,7 @@ export default async function AssinarPage({ searchParams }: { searchParams: Prom
   const notice = sp.cancelado ? 'O pagamento não foi concluído. Você pode tentar de novo quando quiser.'
     : sp.expirado ? 'A página de pagamento expirou. É só tentar de novo.' : undefined;
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#FAF7F0', fontFamily: "'Inter',-apple-system,'Segoe UI',Arial,sans-serif" }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FAF7F0', fontFamily: "'Inter',-apple-system,'Segoe UI',Arial,sans-serif" }}>
       <PublicHeader />
       <WebCheckout initialPlan={sp.plano === 'mensal' ? 'monthly' : 'annual'} notice={notice} />
       <PublicFooter />

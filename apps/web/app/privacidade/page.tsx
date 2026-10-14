@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function PrivacidadePage() {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#f9fafb' }}>
       {/* Header */}
       <PublicHeader />
 

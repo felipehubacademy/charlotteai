@@ -21,10 +21,10 @@ const STEPS = [
 
 export default function AssinarSucessoPage() {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#FAF7F0', fontFamily: "'Inter',-apple-system,'Segoe UI',Arial,sans-serif", color: INK }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FAF7F0', fontFamily: "'Inter',-apple-system,'Segoe UI',Arial,sans-serif", color: INK }}>
       <PublicHeader />
       <style>{`
-        .ok-wrap { max-width: 560px; margin: 0 auto; padding: 40px 16px 56px; text-align: center; }
+        .ok-wrap { width: 100%; box-sizing: border-box; max-width: 560px; margin: 0 auto; padding: 40px 16px 56px; text-align: center; }
         .ok-avs { display: flex; justify-content: center; margin-bottom: 20px; }
         .ok-avs img { border-radius: 50%; background: ${INK}; border: 4px solid #FAF7F0; }
         .ok-avs img + img { margin-left: -18px; }

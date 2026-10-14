@@ -4,6 +4,7 @@ import Image from 'next/image';
 export default function PublicFooter() {
   return (
     <footer style={{
+      marginTop: 'auto', // páginas curtas: o rodapé fica no fim da tela, não no meio
       borderTop: '1px solid #ECE8DF',
       padding: '24px 40px', background: '#FAF7F0',
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',

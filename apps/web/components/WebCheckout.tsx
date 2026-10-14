@@ -187,7 +187,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
   return (
     <div className="wc">
       <style>{`
-        .wc { max-width: 480px; margin: 0 auto; padding: 32px 16px 48px; color: ${INK}; }
+        .wc { width: 100%; box-sizing: border-box; max-width: 480px; margin: 0 auto; padding: 32px 16px 48px; color: ${INK}; }
         .wc h1 { font-size: 28px; line-height: 1.15; margin: 0 0 8px; font-weight: 800; letter-spacing: -0.5px; }
         .wc-plan { position: relative; display: block; width: 100%; box-sizing: border-box; border: 2px solid; border-radius: 18px; padding: 16px 18px; color: inherit; }
         .wc-plan-head { display: flex; gap: 12px; align-items: flex-start; width: 100%; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: inherit; }

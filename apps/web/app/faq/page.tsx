@@ -45,7 +45,7 @@ const SECTIONS: Section[] = [
 
 export default function FaqPage() {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb', fontFamily: "'Inter',-apple-system,'Segoe UI',Arial,sans-serif" }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#f9fafb', fontFamily: "'Inter',-apple-system,'Segoe UI',Arial,sans-serif" }}>
       <style>{`
         details.faq { border-bottom: 1px solid #ececf2; }
         details.faq > summary {
