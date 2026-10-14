@@ -122,7 +122,11 @@ export async function POST(req: NextRequest) {
     if (event.startsWith('PAYMENT_')) {
       const p = body.payment as Payment | undefined;
       if (!p?.id) return NextResponse.json({ ok: true });
-      const row = await findRow({ checkoutId: p.checkoutSession, subscription: p.subscription, externalReference: p.externalReference, customer: p.customer });
+      // Só pagamentos do nosso checkout ou da assinatura dele. Depósito na conta, cobrança avulsa
+      // feita no painel etc. chegam com o mesmo cliente e não podem virar receita/comissão.
+      const known = p.checkoutSession || p.subscription || p.installment || p.externalReference;
+      if (!known) return NextResponse.json({ ok: true, ignored: 'not_from_checkout' });
+      const row = await findRow({ checkoutId: p.checkoutSession, subscription: p.subscription, externalReference: p.externalReference });
       if (!row) return NextResponse.json({ ok: true, unmatched: true });
       const patch: Record<string, unknown> = { updated_at: new Date().toISOString() };
       if (p.subscription && !row.asaas_subscription_id) patch.asaas_subscription_id = p.subscription;

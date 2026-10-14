@@ -90,8 +90,10 @@ export async function POST(req: NextRequest) {
       }).catch(() => false);
       return NextResponse.json({ ok: true, queued: true, message: 'Seu pedido de reembolso foi registrado. Devolvemos em até 2 dias úteis e avisamos por e-mail.' });
     }
-    // O webhook PAYMENT_REFUNDED encerra o acesso e estorna receita e comissão.
-    await supabase.from('asaas_checkouts').update({ refunded_at: new Date().toISOString() } as never).eq('id', r.id);
+    // Encerra o acesso já (o app relê na hora); o webhook PAYMENT_REFUNDED estorna receita e comissão.
+    const nowIso = new Date().toISOString();
+    await supabase.from('asaas_checkouts').update({ refunded_at: nowIso } as never).eq('id', r.id);
+    await supabase.from('charlotte_users').update({ subscription_status: 'expired', is_active: false, subscription_expires_at: nowIso, updated_at: nowIso } as never).eq('id', user.id);
     return NextResponse.json({ ok: true });
   }
 
