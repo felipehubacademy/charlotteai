@@ -78,6 +78,11 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
     (async () => {
       try {
         if (fromUrl) { await loadInfo(code, null); await applyCouponWith(code, fromUrl); }
+        else if (code) {
+          // Veio pelo link de um afiliado: mostra o código dele já aplicado no campo de cupom.
+          setCouponOpen(true); setCouponInput(code);
+          await applyCouponWith(code, code);
+        }
         else await loadInfo(code, null);
       } catch { setInfo(null); }
     })();
