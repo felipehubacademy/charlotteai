@@ -14,7 +14,8 @@ export const SUPPORT_FAQ_SEED: FaqEntry[] = [
 `O Queizy (antes chamado Charlotte AI) é um app para aprender e praticar inglês com IA, da Hub Academy. A tutora dentro do app se chama Charlotte.
 Recursos: trilha de estudos do básico ao avançado (Novice, Intermediate e Advanced), Live Voice (conversa por voz em tempo real com a Charlotte), Practice (conversa por texto, gramática e pronúncia) e Vocabulário com revisão.` },
   { section: 'Sobre o app', question: 'Em que idioma fica o app?', answer:
-`Os botões, avisos e menus seguem o idioma do celular (português ou inglês). O conteúdo das aulas e dos exercícios é sempre em inglês, porque é o que o aluno está aprendendo. Para ver os menus em português, o idioma do aparelho precisa estar em português.` },
+`Os botões, avisos e menus seguem o idioma do celular (português ou inglês), mas dá para escolher em Perfil > Idioma do app: Automático (do celular), Português ou English. O app reinicia no idioma escolhido.
+O conteúdo das lições segue o nível: o inglês dos exercícios é sempre em inglês; as explicações são em português na Novice e em inglês no Inter e no Advanced.` },
 
   // ── Guia do app (onde fica cada coisa) ───────────────────────────────────
   { section: 'Guia do app', question: 'Como navegar no app (barra de baixo)?', answer:
@@ -40,9 +41,9 @@ Para concluir é preciso atingir o mínimo mostrado na atividade (por exemplo "p
 `Toque no ícone de telefone na barra de baixo e depois em "Conversar com a Charlotte". Na primeira vez o celular pede permissão para usar o microfone: é preciso permitir.
 Os minutos restantes do mês aparecem na própria tela do Live Voice, no cartão "Seu tempo este mês", logo acima do botão "Conversar com a Charlotte". Na mesma tela ficam "Ver chamadas anteriores" (com resumo e transcrição de cada conversa) e "Ajuda".` },
   { section: 'Guia do app', question: 'Quantos minutos de Live Voice eu tenho?', answer:
-`Os minutos são por mês: 5 minutos no teste grátis e 20 minutos no Premium (e nas contas institucionais). Eles renovam no dia 1º de cada mês.
+`Na degustação (conta nova, ainda sem assinatura) são 3 minutos, uma vez só. Com assinatura, os minutos são por mês: 5 minutos durante os 7 dias grátis e 20 minutos no Premium (e nas contas institucionais). Eles renovam no dia 1º de cada mês.
 Para ver quantos restam, não precisa ligar: toque no ícone de telefone na barra de baixo; o cartão "Seu tempo este mês" mostra os minutos, logo acima do botão "Conversar com a Charlotte" (esse botão já inicia a chamada).
-Quando acabam, aparece "Seu tempo acabou este mês". Quem está no teste pode assinar o Premium; quem já assina pode comprar pacotes de minutos extras em "Comprar minutos" ou "Ver pacotes de minutos". Minutos extras comprados não vencem no fim do mês.
+Quando acabam, aparece "Seu tempo acabou este mês". Quem está na degustação ou nos 7 dias grátis pode assinar o Premium; quem já assina pode comprar pacotes de minutos extras em "Comprar minutos" ou "Ver pacotes de minutos". Minutos extras comprados não vencem no fim do mês.
 Também dá para ganhar minutos extras em "Estudar junto": quando uma conta nova aceita o seu convite, cada um ganha 5 minutos; e quem vence uma Competição ganha 5 minutos.` },
   { section: 'Guia do app', question: 'O que tem no Practice?', answer:
 `No ícone de raio ficam três modos: Free Chat (conversa livre com a Charlotte por texto ou segurando o microfone para falar), Gramática e Pronúncia. "Trocar de modo" alterna entre eles.
@@ -104,8 +105,23 @@ Se continuar sem funcionar depois disso, um atendente analisa (ajuda informar o 
 
   // ── Planos e assinatura ──────────────────────────────────────────────────
   { section: 'Planos e assinatura', question: 'Quais são os planos e preços?', answer:
-`Ao criar a conta, você experimenta de graça: o primeiro bloco da trilha nos 3 níveis (Gramática, Listening & Speaking, Role-play e Guided Chat), 10 mensagens no Practice e 3 minutos de Live Voice. Para continuar: Plano Mensal R$ 29,99/mês e Plano Anual R$ 199,99/ano (equivale a cerca de R$ 16,67/mês), com 7 dias grátis para quem nunca assinou. O teste de nível também faz parte do plano.
-A tela de assinatura abre ao terminar o primeiro bloco ou quando a degustação acaba. O plano é confirmado na loja: App Store (iPhone) ou Google Play (Android). A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.` },
+`Ao criar a conta, você experimenta de graça: o primeiro bloco da trilha nos 3 níveis (Gramática, Listening & Speaking, Role-play e Guided Chat), 10 mensagens no Practice e 3 minutos de Live Voice (uma vez só). Para continuar: Plano Mensal R$ 29,99/mês e Plano Anual R$ 199,99/ano (equivale a cerca de R$ 16,67/mês). O teste de nível também faz parte do plano.
+A tela de assinatura abre ao terminar o primeiro bloco ou quando a degustação acaba.
+Dá para assinar de dois jeitos:
+- No app, pela loja: App Store (iPhone) ou Google Play (Android), com 7 dias grátis para quem nunca assinou. A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.
+- Pelo site, em queizy.com/assinar: Mensal no cartão de crédito, Anual no cartão de crédito à vista ou Anual no Pix à vista (veja "Como funciona a assinatura pelo site?").` },
+  { section: 'Planos e assinatura', question: 'Como funciona a assinatura pelo site?', answer:
+`Em queizy.com/assinar você escolhe o plano e a forma de pagamento. O pagamento é feito numa página segura do Asaas, onde também se informa o CPF.
+- Mensal no cartão de crédito: renova todo mês. Tem 7 dias grátis para quem nunca assinou; a primeira cobrança é feita ao fim dos 7 dias.
+- Anual no cartão de crédito à vista: 7 dias grátis para quem nunca assinou, depois uma cobrança única de R$ 199,99, com renovação automática a cada ano.
+- Anual no Pix à vista: paga na hora e libera 12 meses de acesso. Não renova sozinho, porque o Pix não tem cobrança automática. Não tem os 7 dias grátis, mas dá para pedir reembolso em até 7 dias do pagamento (veja a pergunta sobre reembolso).
+Nos planos no cartão, se cancelar a renovação antes do fim dos 7 dias grátis, não paga nada.
+Não há parcelamento: quem prefere pagar aos poucos pode escolher o Mensal.
+Entre no app com o mesmo e-mail informado no site: é nessa conta que o acesso é liberado.` },
+  { section: 'Planos e assinatura', question: 'Tenho um cupom ou código de desconto. Onde uso?', answer:
+`Cupons e códigos de desconto, inclusive o código de um parceiro do Queizy, valem só na assinatura pelo site: em queizy.com/assinar, escreva o código no campo de cupom antes de continuar. Quem entra pelo link de um parceiro já encontra o código preenchido.
+Não é possível usar cupom na assinatura pela App Store ou pelo Google Play.
+Se o código não for aceito, confira a grafia e se ele ainda está válido; se continuar, um atendente ajuda.` },
   { section: 'Planos e assinatura', question: 'Como cancelar a assinatura?', answer:
 `O cancelamento é feito na loja (a Apple e o Google gerenciam a assinatura):
 - iPhone: Ajustes > seu nome > Assinaturas > Queizy (pode aparecer como Charlotte em versões antigas) > Cancelar assinatura.
@@ -120,7 +136,10 @@ Ao cancelar, o acesso continua até o fim do período já pago.` },
 - Android (Google Play): pela ajuda do Google Play (pedir reembolso), dentro do prazo do Google.
 Casos específicos de cobrança ou reembolso são encaminhados a um atendente.` },
   { section: 'Planos e assinatura', question: 'Assinei, mas o app continua bloqueado', answer:
-`Use Perfil > Assinatura > Restaurar compras, logado na mesma conta da App Store ou do Google Play usada na compra. Se aparecer "Assinatura vinculada a outra conta", a compra foi feita com outro login do Queizy; um atendente ajuda a resolver.` },
+`Depende de onde você assinou:
+- Pela App Store ou pelo Google Play: use Perfil > Assinatura > Restaurar compras, logado na mesma conta da loja usada na compra. Se aparecer "Assinatura vinculada a outra conta", a compra foi feita com outro login do Queizy; um atendente ajuda a resolver.
+- Pelo site (queizy.com/assinar): o acesso é liberado na conta do e-mail informado no site, logo depois que o pagamento é confirmado (no Pix, em instantes). Confira se você entrou no app com esse mesmo e-mail (ele aparece em Perfil, logo abaixo do nome) e feche e abra o app. "Restaurar compras" não vale para compras feitas no site.
+Se continuar bloqueado, um atendente confere o pagamento.` },
 
   // ── Conta e acesso ───────────────────────────────────────────────────────
   { section: 'Conta e acesso', question: 'Como redefinir a senha?', answer:
