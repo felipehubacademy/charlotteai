@@ -154,9 +154,11 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
         {annualSel && (
           <div className="wc-pays" role="radiogroup" aria-label="Como pagar o Anual">
             <div className="wc-pays-title">Como você quer pagar o Anual?</div>
-            {payOption('card', trial > 0 ? `Cartão: ${trial} dias grátis` : 'Cartão em 1x', `Depois ${brl(annual)} por ano, em 1x. Renova sozinho; cancele quando quiser.`)}
-            {payOption('pix', 'Pix à vista', `${brl(annual)} de uma vez, sem renovação automática. Teste por 7 dias: se não gostar, peça o reembolso.`)}
-            {payOption('installments', 'Até 12x no cartão', `12x de ${brl(annual12 / 12)} (total ${brl(annual12)}, com a taxa do parcelamento). Teste por 7 dias: se não gostar, peça o reembolso.`)}
+            {payOption('card', 'Cartão de crédito à vista', trial > 0
+              ? `${trial} dias grátis: a primeira cobrança é só no ${trial + 1}º dia. Depois ${brl(annual)} por ano, em 1x, e renova sozinho.`
+              : `${brl(annual)} por ano, em 1x, e renova sozinho. Cancele quando quiser.`)}
+            {payOption('pix', 'Pix à vista', `Paga ${brl(annual)} agora. Não gostou? Reembolso em até 7 dias. Não renova sozinho.`)}
+            {payOption('installments', 'Cartão de crédito até 12x', `12x de ${brl(annual12 / 12)} (total ${brl(annual12)}, com a taxa do parcelamento). Cobrança agora; não gostou, reembolso em até 7 dias. Não renova sozinho.`)}
             {annualPay !== 'card' && (
               <details className="wc-help">
                 <summary>Como peço o reembolso?</summary>
