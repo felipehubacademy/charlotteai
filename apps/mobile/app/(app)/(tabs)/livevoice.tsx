@@ -1002,6 +1002,9 @@ export default function LiveVoiceTab() {
             soundEngine.setMuted(false);
             voiceSFX.setMuted(false);
             loadData();
+            // O consumo da chamada é gravado em paralelo ao fechar: relê depois para o cartão
+            // "Seu tempo" (e a degustação) não ficar com o valor de antes da ligação.
+            setTimeout(() => { loadData(); }, 2000);
             // Se o tempo acabou nesta chamada, mostra o popup de upsell logo
             // depois que o modal fecha (delay pro fade do modal terminar).
             if (justHitLimitRef.current) {
