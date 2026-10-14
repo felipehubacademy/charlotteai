@@ -5,7 +5,7 @@ import WebCheckout from '@/components/WebCheckout';
 
 export const metadata: Metadata = {
   title: 'Assinar — Queizy',
-  description: 'Assine o Queizy pelo site: Plano Mensal com 7 dias grátis no cartão ou Plano Anual no Pix ou em até 12x.',
+  description: 'Assine o Queizy pelo site: Plano Mensal ou Anual com 7 dias grátis; o Anual também no Pix.',
   robots: { index: false, follow: true },
 };
 

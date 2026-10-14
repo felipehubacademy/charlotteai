@@ -42,7 +42,6 @@ export async function GET(req: NextRequest) {
     coupon: c ? (c.ok ? { ok: true, code: c.code, pct: c.pct, plans: c.plans } : { ok: false, error: COUPON_ERROR_PT[c.error] }) : null,
     prices: {
       monthly: priceFor('monthly', pctFor('monthly')), annual: priceFor('annual', pctFor('annual')),
-      annual_12x: priceForMethod('annual_12x', pctFor('annual')),
     },
   });
 }
@@ -100,7 +99,7 @@ export async function POST(req: NextRequest) {
 
   if (!asaasConfigured()) return NextResponse.json({ error: 'A assinatura pelo site abre em breve. Por enquanto, assine pelo app.' }, { status: 503 });
 
-  const METHODS: PayMethod[] = ['monthly', 'annual', 'annual_pix', 'annual_12x'];
+  const METHODS: PayMethod[] = ['monthly', 'annual', 'annual_pix']; // 12x saiu em 2026-10-14: quer parcelar, vai no Mensal
   const method: PayMethod | null = METHODS.includes(body.method) ? body.method : METHODS.includes(body.plan) ? body.plan : null;
   const plan: WebPlan | null = method ? planOfMethod(method) : null;
   const name = String(body.name ?? '').trim().slice(0, 100);

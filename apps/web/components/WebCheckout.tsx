@@ -1,6 +1,6 @@
 'use client';
 // Assinatura pelo site (Asaas). Mensal: cartão com recorrência e 7 dias grátis para quem nunca
-// assinou. Anual: Pix à vista ou cartão em até 12x. O pagamento abre na página do Asaas.
+// assinou. Anual: cartão à vista (7 dias grátis) ou Pix à vista (reembolso em 7 dias). O pagamento abre na página do Asaas.
 import { useEffect, useState } from 'react';
 import { captureAffiliateFromUrl, storedAffiliate } from '@/lib/affiliateTracking';
 import StoreCTA from '@/components/StoreCTA';
@@ -13,8 +13,8 @@ const GREEN = '#08804A';
 const BORDER = '#E6E2EC';
 
 type Plan = 'monthly' | 'annual';
-type AnnualPay = 'card' | 'pix' | 'installments';
-type Info = { enabled: boolean; trialDays: number; discountPct: number; prices: { monthly: number; annual: number; annual_12x?: number };
+type AnnualPay = 'card' | 'pix';
+type Info = { enabled: boolean; trialDays: number; discountPct: number; prices: { monthly: number; annual: number };
   coupon: { ok: true; code: string; pct: number } | { ok: false; error: string } | null };
 
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -96,8 +96,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
   const monthly = info?.prices.monthly ?? 29.99;
   const annual = info?.prices.annual ?? 199.99;
   const trial = info?.trialDays ?? 7;
-  const annual12 = info?.prices.annual_12x ?? Math.round(((annual + 0.49) / (1 - 0.0399)) * 100) / 100;
-  const method = plan === 'monthly' ? 'monthly' : annualPay === 'card' ? 'annual' : annualPay === 'pix' ? 'annual_pix' : 'annual_12x';
+  const method = plan === 'monthly' ? 'monthly' : annualPay === 'card' ? 'annual' : 'annual_pix';
   const hasTrial = method === 'monthly' || method === 'annual';
   const disc = info?.discountPct ?? 0;
 
@@ -142,7 +141,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
           <span style={{ flex: 1, textAlign: 'left' }}>
             <span style={{ display: 'block', fontWeight: 800, fontSize: 17 }}>{p === 'annual' ? 'Anual' : 'Mensal'}</span>
             <span style={{ display: 'block', fontSize: 13, color: MID, marginTop: 2 }}>
-              {p === 'annual' ? `${brl(annual / 12)}/mês · 12 meses de acesso` : 'Cartão de crédito, renova todo mês'}
+              {p === 'annual' ? `${brl(annual / 12)}/mês · cartão ou Pix` : 'Cartão de crédito, renova todo mês'}
             </span>
             {trial > 0 && <span style={{ display: 'block', fontSize: 13, color: GREEN, fontWeight: 700, marginTop: 4 }}>{trial} dias grátis</span>}
           </span>
@@ -158,12 +157,11 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
               ? `${trial} dias grátis: a primeira cobrança é só no ${trial + 1}º dia. Depois ${brl(annual)} por ano, em 1x, e renova sozinho.`
               : `${brl(annual)} por ano, em 1x, e renova sozinho. Cancele quando quiser.`)}
             {payOption('pix', 'Pix à vista', `Paga ${brl(annual)} agora. Não gostou? Reembolso em até 7 dias. Não renova sozinho.`)}
-            {payOption('installments', 'Cartão de crédito até 12x', `12x de ${brl(annual12 / 12)} (total ${brl(annual12)}, com a taxa do parcelamento). Cobrança agora; não gostou, reembolso em até 7 dias. Não renova sozinho.`)}
             {annualPay !== 'card' && (
               <details className="wc-help">
                 <summary>Como peço o reembolso?</summary>
                 <p>Em até 7 dias depois do pagamento, no app: <strong>Perfil &gt; Assinatura &gt; Gerenciar assinatura &gt; Pedir reembolso</strong>. Se preferir, escreva para <a href="mailto:suporte@queizy.com">suporte@queizy.com</a> com o e-mail da sua conta.</p>
-                <p>No Pix, o valor volta para a mesma conta em instantes. No cartão, o estorno aparece na fatura (pode levar até duas faturas, conforme o banco). O acesso termina quando o reembolso é feito.</p>
+                <p>O valor volta para a mesma conta do Pix em instantes. O acesso termina quando o reembolso é feito.</p>
               </details>
             )}
           </div>
@@ -174,7 +172,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
 
   const cta = hasTrial && trial > 0
     ? `Começar ${trial} dias grátis`
-    : method === 'annual_12x' ? `Assinar — 12x de ${brl(annual12 / 12)}` : `Assinar — ${brl(plan === 'annual' ? annual : monthly)}`;
+    : `Assinar — ${brl(plan === 'annual' ? annual : monthly)}`;
   const note = method === 'monthly'
     ? (trial > 0
         ? `Grátis por ${trial} dias, depois ${brl(monthly)}/mês no cartão. Cancele antes do fim do teste e não paga nada. O teste vale para quem nunca assinou.`
@@ -183,9 +181,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
     ? (trial > 0
         ? `Grátis por ${trial} dias, depois ${brl(annual)} por ano no cartão, em 1x. Cancele antes do fim do teste e não paga nada. O teste vale para quem nunca assinou.`
         : `${brl(annual)} por ano no cartão, em 1x. Cancele a renovação quando quiser.`)
-    : method === 'annual_pix'
-    ? `Pagamento único de ${brl(annual)} no Pix, sem renovação automática. Teste por 7 dias: se não gostar, peça o reembolso no app ou por e-mail e devolvemos o valor.`
-    : `Total de ${brl(annual12)} em até 12x no cartão (inclui a taxa do parcelamento), sem renovação automática. Teste por 7 dias: se não gostar, peça o reembolso no app ou por e-mail.`;
+    : `Pagamento único de ${brl(annual)} no Pix, sem renovação automática. Teste por 7 dias: se não gostar, peça o reembolso no app ou por e-mail e devolvemos o valor.`;
 
 
   return (
