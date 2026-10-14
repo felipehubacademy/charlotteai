@@ -16,6 +16,10 @@ Recursos: trilha de estudos do básico ao avançado (Novice, Intermediate e Adva
   { section: 'Sobre o app', question: 'Em que idioma fica o app?', answer:
 `Os botões, avisos e menus seguem o idioma do celular (português ou inglês), mas dá para escolher em Perfil > Idioma do app: Automático (do celular), Português ou English. O app reinicia no idioma escolhido.
 O conteúdo das lições segue o nível: o inglês dos exercícios é sempre em inglês; as explicações são em português na Novice e em inglês no Inter e no Advanced.` },
+  { section: 'Sobre o app', question: 'O app funciona sem internet?', answer:
+`Não. O Queizy precisa de internet: as conversas, as correções e as vozes da Charlotte e do Igorfina são geradas na hora. Para o Live Voice, use Wi-Fi ou 4G estável.` },
+  { section: 'Sobre o app', question: 'Tem versão para iPad ou tablet?', answer:
+`Não. O Queizy foi feito para celular (iPhone e Android) e não tem versão própria para iPad ou tablet.` },
 
   // ── Guia do app (onde fica cada coisa) ───────────────────────────────────
   { section: 'Guia do app', question: 'Como navegar no app (barra de baixo)?', answer:
@@ -121,8 +125,12 @@ Não há parcelamento: quem prefere pagar aos poucos pode escolher o Mensal.
 Entre no app com o mesmo e-mail informado no site: é nessa conta que o acesso é liberado.` },
   { section: 'Planos e assinatura', question: 'Tenho um cupom ou código de desconto. Onde uso?', answer:
 `Cupons e códigos de desconto, inclusive o código de um parceiro do Queizy, valem só na assinatura pelo site: em queizy.com/assinar, escreva o código no campo de cupom antes de continuar. Quem entra pelo link de um parceiro já encontra o código preenchido.
+Por quanto tempo o desconto vale (só a primeira cobrança ou também as renovações) depende da campanha; se tiver dúvida, um atendente confirma.
 Não é possível usar cupom na assinatura pela App Store ou pelo Google Play.
 Se o código não for aceito, confira a grafia e se ele ainda está válido; se continuar, um atendente ajuda.` },
+  { section: 'Planos e assinatura', question: 'Assinei no iPhone. Funciona no Android (e vice-versa)?', answer:
+`Sim. A assinatura fica na sua conta do Queizy: entrando com o mesmo e-mail e senha, ela vale no iPhone e no Android, seja qual for a loja em que você assinou (e também vale a assinatura feita pelo site).
+Cancelar, trocar de plano ou pedir reembolso continua sendo na loja onde você assinou: assinatura da App Store, pela Apple (num iPhone, em Ajustes > seu nome > Assinaturas, ou em reportaproblem.apple.com para reembolso); assinatura do Google Play, pelo Google Play.` },
   { section: 'Planos e assinatura', question: 'Como cancelar a assinatura?', answer:
 `O cancelamento é feito na loja (a Apple e o Google gerenciam a assinatura):
 - iPhone: Ajustes > seu nome > Assinaturas > Queizy (pode aparecer como Charlotte em versões antigas) > Cancelar assinatura.
