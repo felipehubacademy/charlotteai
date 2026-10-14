@@ -65,8 +65,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const hasPremium = !!info.entitlements.active[ENTITLEMENT_ID];
       const activeProduct = info.activeSubscriptions?.[0] ?? null;
       const nextProduct: 'monthly' | 'yearly' | null =
-        activeProduct === PRODUCT_MONTHLY ? 'monthly' :
-        activeProduct === PRODUCT_YEARLY  ? 'yearly'  : null;
+        // Android traz o plano básico no id ("...yearly:annual-plan"): compara pelo prefixo.
+        activeProduct?.startsWith(PRODUCT_MONTHLY) ? 'monthly' :
+        activeProduct?.startsWith(PRODUCT_YEARLY)  ? 'yearly'  : null;
       const nextExpires = info.latestExpirationDate ?? null;
 
       setProfile(prev => {

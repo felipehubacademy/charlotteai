@@ -123,12 +123,18 @@ export function PaywallModal() {
       });
   }, [visible, profile?.id]);
 
+  // No Android o id vem com o plano básico ("...yearly:annual-plan"); compara também pelo prefixo.
+  // Sem isso, o anual pré-selecionado não casava e a compra caía no primeiro pacote (o mensal).
+  const matches = (id: string, sel: string) => id === sel || id.startsWith(`${sel}:`) || sel.startsWith(`${id}:`);
+  const findPkg = (pkgs: PurchasesPackage[], sel: string): PurchasesPackage | null =>
+    pkgs.find(p => matches(p.product.identifier, sel))
+    ?? (sel.includes('yearly') ? pkgs.find(p => p.packageType === 'ANNUAL') : pkgs.find(p => p.packageType === 'MONTHLY'))
+    ?? null;
+
   const selectedPkg = useCallback((): PurchasesPackage | null => {
     if (!offering) return null;
-    return offering.availablePackages.find(
-      p => p.product.identifier === selected
-    ) ?? offering.availablePackages[0] ?? null;
-  }, [offering, selected]);
+    return findPkg(offering.availablePackages, selected);
+  }, [offering, selected]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handlePurchase = async () => {
     let pkg = selectedPkg();
@@ -141,9 +147,7 @@ export function PaywallModal() {
       setLoadingOffer(false);
       if (r.offering) {
         setOffering(r.offering);
-        pkg = r.offering.availablePackages.find(p => p.product.identifier === selected)
-          ?? r.offering.availablePackages[0]
-          ?? null;
+        pkg = findPkg(r.offering.availablePackages, selected);
       } else {
         errorMsg = r.errorMessage;
         diagnostics = r.diagnostics;
