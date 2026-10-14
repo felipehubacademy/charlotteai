@@ -194,6 +194,9 @@ export const getCustomer = (id: string) => asaas<AsaasCustomer>(`/customers/${id
 export interface AsaasSubscription { id: string; customer: string; status: string; nextDueDate: string; value: number; cycle: string; externalReference?: string | null; checkoutSession?: string | null }
 export const getSubscription = (id: string) => asaas<AsaasSubscription>(`/subscriptions/${id}`);
 export const cancelSubscription = (id: string) => asaas<{ deleted: boolean }>(`/subscriptions/${id}`, { method: 'DELETE' });
+export const refundPayment = (id: string) => asaas<{ id: string; status: string }>(`/payments/${id}/refund`, { method: 'POST', body: {} });
+export const refundInstallment = (id: string) => asaas<{ id: string }>(`/installments/${id}/refund`, { method: 'POST', body: {} });
+export const REFUND_WINDOW_DAYS = 7;
 
 /** Valida CPF (dígitos verificadores). Aceita só números. */
 export function validCpf(raw: string): boolean {

@@ -114,9 +114,10 @@ A tela de assinatura abre ao terminar o primeiro bloco ou quando a degustação 
 - Assinou pelo site (queizy.com/assinar)? Cancele no app em Perfil > Assinatura > Gerenciar assinatura > Cancelar assinatura.
 Ao cancelar, o acesso continua até o fim do período já pago.` },
   { section: 'Planos e assinatura', question: 'Como pedir reembolso?', answer:
-`Reembolsos são feitos pela loja, não pela Hub Academy:
-- iPhone: pelo site reportaproblem.apple.com.
-- Android: pela ajuda do Google Play (pedir reembolso), dentro do prazo do Google.
+`Depende de onde você assinou:
+- Pelo site (queizy.com): em até 7 dias do pagamento, no app, em Perfil > Assinatura > Gerenciar assinatura > Pedir reembolso, ou por e-mail em suporte@queizy.com. No Pix o valor volta em instantes; no cartão, o estorno aparece na fatura (até duas faturas).
+- iPhone (App Store): pelo site reportaproblem.apple.com.
+- Android (Google Play): pela ajuda do Google Play (pedir reembolso), dentro do prazo do Google.
 Casos específicos de cobrança ou reembolso são encaminhados a um atendente.` },
   { section: 'Planos e assinatura', question: 'Assinei, mas o app continua bloqueado', answer:
 `Use Perfil > Assinatura > Restaurar compras, logado na mesma conta da App Store ou do Google Play usada na compra. Se aparecer "Assinatura vinculada a outra conta", a compra foi feita com outro login do Queizy; um atendente ajuda a resolver.` },

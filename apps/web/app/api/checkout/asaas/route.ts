@@ -1,7 +1,8 @@
 // /api/checkout/asaas — assinatura pelo site.
 //   GET  ?aff=CODE                       preços (com o desconto do afiliado) e se o checkout está ligado
 //   POST { plan, name, email, cpf, phone?, aff? }  cria (ou acha) a conta e devolve { url } do checkout do Asaas
-//   POST { action: 'cancel' }  (Bearer do aluno)   cancela a assinatura mensal do site
+//   POST { action: 'cancel' }  (Bearer do aluno)   cancela a renovação (mensal ou anual no cartão)
+//   POST { action: 'refund' }  (Bearer do aluno)   reembolso em até 7 dias do 1º pagamento (Pix, 12x ou cartão)
 // Conta nova: criada aqui pelo e-mail; depois do pagamento chega o e-mail para criar a senha.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
@@ -10,6 +11,7 @@ import {
   asaasConfigured, AsaasError, cancelSubscription, createCheckout, priceFor,
   validCpf, WEB_TRIAL_DAYS, resolveCoupon, COUPON_ERROR_PT, type WebPlan,
   ensureCustomer, priceForMethod, planOfMethod, methodHasTrial, type PayMethod,
+  refundPayment, refundInstallment, REFUND_WINDOW_DAYS,
 } from '@/lib/asaas';
 
 export const dynamic = 'force-dynamic';
@@ -48,6 +50,34 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
   const supabase = getSupabaseAdmin();
+
+  if (body.action === 'refund') {
+    const h = req.headers.get('authorization') ?? '';
+    const { data: auth } = h.startsWith('Bearer ') ? await supabase.auth.getUser(h.slice(7)) : { data: null };
+    const user = auth?.user;
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const { data: row } = await supabase.from('asaas_checkouts')
+      .select('id, asaas_payment_id, asaas_installment_id, asaas_subscription_id, paid_at, refunded_at')
+      .eq('user_id', user.id).not('paid_at', 'is', null).order('paid_at', { ascending: false }).limit(1).maybeSingle();
+    const r = row as { id: string; asaas_payment_id: string | null; asaas_installment_id: string | null; asaas_subscription_id: string | null; paid_at: string; refunded_at: string | null } | null;
+    if (!r?.asaas_payment_id) return NextResponse.json({ error: 'not_found', message: 'Ainda não houve cobrança nesta conta. Se você está no teste grátis, é só cancelar a renovação: nada será cobrado.' }, { status: 404 });
+    if (r.refunded_at) return NextResponse.json({ error: 'already', message: 'Esse pagamento já foi reembolsado.' }, { status: 409 });
+    const days = (Date.now() - new Date(r.paid_at).getTime()) / 86400000;
+    if (days > REFUND_WINDOW_DAYS) {
+      return NextResponse.json({ error: 'expired', message: `O prazo de ${REFUND_WINDOW_DAYS} dias para o reembolso terminou. Se precisar, escreva para suporte@queizy.com.` }, { status: 400 });
+    }
+    try {
+      if (r.asaas_installment_id) await refundInstallment(r.asaas_installment_id);
+      else await refundPayment(r.asaas_payment_id);
+      if (r.asaas_subscription_id) await cancelSubscription(r.asaas_subscription_id).catch(() => {});
+    } catch (e) {
+      console.error('[checkout/asaas] refund failed:', e instanceof AsaasError ? e.body : e);
+      return NextResponse.json({ error: 'failed', message: 'Não foi possível reembolsar agora. Escreva para suporte@queizy.com que resolvemos.' }, { status: 502 });
+    }
+    // O webhook PAYMENT_REFUNDED encerra o acesso e estorna receita e comissão.
+    await supabase.from('asaas_checkouts').update({ refunded_at: new Date().toISOString() } as never).eq('id', r.id);
+    return NextResponse.json({ ok: true });
+  }
 
   if (body.action === 'cancel') {
     const h = req.headers.get('authorization') ?? '';

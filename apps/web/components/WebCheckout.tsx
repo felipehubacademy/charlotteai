@@ -151,8 +151,8 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
         ? `Grátis por ${trial} dias, depois ${brl(annual)} por ano no cartão, em 1x. Cancele antes do fim do teste e não paga nada. O teste vale para quem nunca assinou.`
         : `${brl(annual)} por ano no cartão, em 1x. Cancele a renovação quando quiser.`)
     : method === 'annual_pix'
-    ? `Pagamento único de ${brl(annual)} no Pix, sem renovação automática. O teste de 7 dias é só no cartão; no Pix, se desistir em até 7 dias, devolvemos o valor.`
-    : `Total de ${brl(annual12)} em até 12x no cartão (inclui a taxa do parcelamento), sem renovação automática. Se desistir em até 7 dias, devolvemos o valor.`;
+    ? `Pagamento único de ${brl(annual)} no Pix, sem renovação automática. Teste por 7 dias: se não gostar, peça o reembolso no app ou por e-mail e devolvemos o valor.`
+    : `Total de ${brl(annual12)} em até 12x no cartão (inclui a taxa do parcelamento), sem renovação automática. Teste por 7 dias: se não gostar, peça o reembolso no app ou por e-mail.`;
 
   const payOption = (k: AnnualPay, title: string, detail: string) => {
     const sel = annualPay === k;
@@ -183,6 +183,12 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
         .wc-pay { display: flex; gap: 12px; align-items: flex-start; width: 100%; border: 1.5px solid; border-radius: 14px; padding: 12px 14px; cursor: pointer; font: inherit; color: inherit; }
         .wc-radio { flex: none; width: 18px; height: 18px; border-radius: 50%; border: 2px solid; margin-top: 2px; display: flex; align-items: center; justify-content: center; }
         .wc-radio i { width: 8px; height: 8px; border-radius: 50%; background: ${INK}; }
+        .wc-help { border-radius: 12px; background: #fff; border: 1px solid ${BORDER}; padding: 10px 14px; font-size: 14px; color: ${MID}; }
+        .wc-help summary { cursor: pointer; font-weight: 700; color: ${INK}; list-style: none; display: flex; align-items: center; gap: 8px; }
+        .wc-help summary::-webkit-details-marker { display: none; }
+        .wc-help summary::before { content: '?'; display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: ${INK}; color: ${LIME}; font-size: 12px; font-weight: 800; flex: none; }
+        .wc-help p { margin: 8px 0 0; line-height: 1.5; }
+        .wc-help a { color: ${INK}; }
       `}</style>
 
       <h1>Assine o Queizy</h1>
@@ -201,8 +207,15 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
         {plan === 'annual' && (
           <div role="radiogroup" aria-label="Forma de pagamento do anual" style={{ display: 'grid', gap: 8, marginTop: -4 }}>
             {payOption('card', trial > 0 ? `Cartão: ${trial} dias grátis` : 'Cartão em 1x', `Depois ${brl(annual)} por ano, em 1x. Renova sozinho; cancele quando quiser.`)}
-            {payOption('pix', 'Pix à vista', `${brl(annual)} de uma vez, sem renovação automática.`)}
-            {payOption('installments', 'Até 12x no cartão', `12x de ${brl(annual12 / 12)} (total ${brl(annual12)}, com a taxa do parcelamento).`)}
+            {payOption('pix', 'Pix à vista', `${brl(annual)} de uma vez, sem renovação automática. Teste por 7 dias: se não gostar, peça o reembolso.`)}
+            {payOption('installments', 'Até 12x no cartão', `12x de ${brl(annual12 / 12)} (total ${brl(annual12)}, com a taxa do parcelamento). Teste por 7 dias: se não gostar, peça o reembolso.`)}
+            {annualPay !== 'card' && (
+              <details className="wc-help">
+                <summary>Como peço o reembolso?</summary>
+                <p>Em até 7 dias depois do pagamento, no app: <strong>Perfil &gt; Assinatura &gt; Gerenciar assinatura &gt; Pedir reembolso</strong>. Se preferir, escreva para <a href="mailto:suporte@queizy.com">suporte@queizy.com</a> com o e-mail da sua conta.</p>
+                <p>No Pix, o valor volta para a mesma conta em instantes. No cartão, o estorno aparece na fatura (pode levar até duas faturas, conforme o banco). O acesso termina quando o reembolso é feito.</p>
+              </details>
+            )}
           </div>
         )}
         {planCard('monthly')}

@@ -17,7 +17,7 @@ export const dynamic = 'force-dynamic';
 const DAY = 86400000;
 const GRACE_DAYS = 3; // tolerância para a cobrança do cartão ser aprovada no dia
 
-type Row = { id: string; user_id: string; plan: WebPlan; method: string | null; trial_days: number; status: string; asaas_customer_id: string | null; asaas_subscription_id: string | null };
+type Row = { id: string; user_id: string; plan: WebPlan; method: string | null; trial_days: number; asaas_payment_id?: string | null; status: string; asaas_customer_id: string | null; asaas_subscription_id: string | null };
 type Payment = {
   id: string; customer: string; subscription?: string | null; installment?: string | null; installmentNumber?: number | null;
   value: number; netValue?: number | null; billingType?: string; dueDate?: string; paymentDate?: string | null;
@@ -81,6 +81,7 @@ async function sendWelcome(userId: string, plan: WebPlan, trialDays: number): Pr
     <p style="line-height:1.5"><strong>2.</strong> Entre com este e-mail: <strong>${user.email}</strong>. Se ainda não tem senha, crie agora:</p>
     <p>${btn(passwordUrl, 'Criar minha senha')}</p>
     <p>${btn('https://queizy.com/open', 'Baixar o app')}</p>
+    ${trialDays > 0 ? '' : `<p style="font-size:13px;color:#6B6577;line-height:1.5">Não gostou? Em até 7 dias, peça o reembolso no app (Perfil &gt; Assinatura &gt; Gerenciar assinatura &gt; Pedir reembolso) ou respondendo este e-mail.</p>`}
     <p style="font-size:13px;color:#6B6577;line-height:1.5">Dúvidas? É só responder este e-mail.</p>
   </div>`;
   await sendEmail({ to: user.email, subject: 'Sua assinatura do Queizy está ativa', html }).catch(() => false);
@@ -140,6 +141,13 @@ export async function POST(req: NextRequest) {
       if (p.subscription && !row.asaas_subscription_id) patch.asaas_subscription_id = p.subscription;
       if (!row.asaas_customer_id) patch.asaas_customer_id = p.customer;
       if (row.status !== 'paid' && (event === 'PAYMENT_CONFIRMED' || event === 'PAYMENT_RECEIVED')) patch.status = 'paid';
+      // 1º pagamento confirmado: base do reembolso em 7 dias.
+      if (!row.asaas_payment_id && (event === 'PAYMENT_CONFIRMED' || event === 'PAYMENT_RECEIVED')) {
+        patch.asaas_payment_id = p.id;
+        if (p.installment) patch.asaas_installment_id = p.installment;
+        patch.paid_at = new Date(p.confirmedDate || p.paymentDate || Date.now()).toISOString();
+      }
+      if (event === 'PAYMENT_REFUNDED') patch.refunded_at = new Date().toISOString();
       await supabase.from('asaas_checkouts').update(patch as never).eq('id', row.id);
 
       if (event === 'PAYMENT_CONFIRMED' || event === 'PAYMENT_RECEIVED') {

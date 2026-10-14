@@ -375,6 +375,40 @@ export default function ProfileTab() {
         [
           { text: isPt ? 'Fechar' : 'Close', style: 'cancel' },
           {
+            // Em até 7 dias do pagamento (Pix, 12x ou a 1ª cobrança do cartão): devolve o valor.
+            text: isPt ? 'Pedir reembolso' : 'Request refund',
+            onPress: () => Alert.alert(
+              isPt ? 'Pedir reembolso?' : 'Request a refund?',
+              isPt ? 'Vale até 7 dias depois do pagamento. O valor volta para você e o acesso termina na hora.' : 'Available up to 7 days after payment. You get the money back and access ends right away.',
+              [
+                { text: isPt ? 'Voltar' : 'Back', style: 'cancel' },
+                { text: isPt ? 'Pedir reembolso' : 'Request refund', style: 'destructive', onPress: async () => {
+                  try {
+                    const { data: { session } } = await supabase.auth.getSession();
+                    if (!session?.access_token) throw new Error('No session');
+                    const res = await fetch(`${API_BASE_URL}/api/checkout/asaas`, {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.access_token}` },
+                      body: JSON.stringify({ action: 'refund' }),
+                    });
+                    const j = await res.json().catch(() => ({}));
+                    if (!res.ok) {
+                      Alert.alert(isPt ? 'Reembolso' : 'Refund', j.message ?? (isPt ? 'Não foi possível agora. Escreva para suporte@queizy.com.' : 'Not possible right now. Email suporte@queizy.com.'));
+                      return;
+                    }
+                    await refreshProfile();
+                    Alert.alert(
+                      isPt ? 'Reembolso pedido' : 'Refund requested',
+                      isPt ? 'No Pix, o valor volta para a mesma conta em instantes. No cartão, o estorno aparece na fatura (pode levar até duas faturas).' : 'With Pix, the money is back in moments. On card, the refund shows on your statement (may take up to two statements).',
+                    );
+                  } catch {
+                    Alert.alert(isPt ? 'Reembolso' : 'Refund', isPt ? 'Não foi possível agora. Escreva para suporte@queizy.com.' : 'Not possible right now. Email suporte@queizy.com.');
+                  }
+                } },
+              ],
+            ),
+          },
+          {
             text: isPt ? 'Cancelar assinatura' : 'Cancel subscription', style: 'destructive',
             onPress: async () => {
               try {
