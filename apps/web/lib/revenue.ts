@@ -17,6 +17,7 @@ const REFUND_EVENTS = new Set(['REFUND']);
 function storeLabel(store?: string): string {
   if (store === 'APP_STORE' || store === 'MAC_APP_STORE') return 'Assinaturas App Store';
   if (store === 'PLAY_STORE') return 'Assinaturas Google Play';
+  if (store === 'ASAAS') return 'Assinaturas pelo site (Asaas)';
   return 'Outros';
 }
 
@@ -68,11 +69,11 @@ export async function recordRevenueEvent(event: Record<string, any>): Promise<vo
       kind: isRefund ? 'expense' : 'income',
       description: isRefund ? `Reembolso: ${product}` : `${product} (${type === 'RENEWAL' ? 'renovação' : 'nova compra'})`,
       category: isRefund ? 'Reembolsos e estornos' : storeLabel(store),
-      vendor: store === 'PLAY_STORE' ? 'Google Play' : store ? 'App Store' : null,
+      vendor: store === 'PLAY_STORE' ? 'Google Play' : store === 'ASAAS' ? 'Asaas' : store ? 'App Store' : null,
       amount: Math.round(pricePurchased * (1 - tax) * (1 - commission) * 100) / 100,
       currency, fx_rate: fx, amount_brl: netBrl,
       due_date: day, paid_at: day, status: 'paid', recurrence: 'none',
-      notes: `Automático (RevenueCat). Bruto ${grossBrl.toFixed(2)} BRL; líquido estimado após imposto ${(tax * 100).toFixed(0)}% e comissão ${(commission * 100).toFixed(0)}%.`,
+      notes: `Automático (${store === 'ASAAS' ? 'Asaas' : 'RevenueCat'}). Bruto ${grossBrl.toFixed(2)} BRL; líquido estimado após imposto ${(tax * 100).toFixed(0)}% e ${store === 'ASAAS' ? 'taxa do Asaas' : 'comissão'} ${(commission * 100).toFixed(0)}%.`,
     } as never).select('id').single();
 
     await supabase.from('revenue_events').insert({

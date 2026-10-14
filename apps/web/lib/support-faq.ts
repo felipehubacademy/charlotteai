@@ -108,6 +108,7 @@ A tela de assinatura abre ao terminar o primeiro bloco ou ao entrar em algo do p
 - iPhone: Ajustes > seu nome > Assinaturas > Queizy (pode aparecer como Charlotte em versões antigas) > Cancelar assinatura.
 - Android: Google Play > foto de perfil > Pagamentos e assinaturas > Assinaturas > Queizy (pode aparecer como Charlotte) > Cancelar.
 - No app: Perfil > Assinatura > Gerenciar assinatura abre essa tela da loja.
+- Assinou pelo site (queizy.com/assinar)? Cancele no app em Perfil > Assinatura > Gerenciar assinatura > Cancelar assinatura.
 Ao cancelar, o acesso continua até o fim do período já pago.` },
   { section: 'Planos e assinatura', question: 'Como pedir reembolso?', answer:
 `Reembolsos são feitos pela loja, não pela Hub Academy:

@@ -233,7 +233,7 @@ export async function openManageSubscriptions(): Promise<{ ok: boolean }> {
 export async function syncSubscriptionToSupabase(
   userId: string,
   customerInfo: CustomerInfo,
-  opts?: { previousStatus?: string | null },
+  opts?: { previousStatus?: string | null; previousProduct?: string | null },
 ): Promise<{ updated: boolean; hasPremium: boolean }> {
   // Defesa contra cache stale do RC: mesmo que entitlements.active diga que
   // está ativo, se latestExpirationDate ja passou, trata como expirado.
@@ -276,6 +276,11 @@ export async function syncSubscriptionToSupabase(
     opts?.previousStatus === 'cancelled';
 
   if (!hasPremium && !hadPaidStatus) {
+    return { updated: false, hasPremium: false };
+  }
+  // Assinatura pelo site (Asaas, produto 'web_*'): a loja não sabe dela. Sem compra na loja,
+  // quem manda é o webhook do Asaas no servidor.
+  if (!hasPremium && (opts?.previousProduct ?? '').startsWith('web_')) {
     return { updated: false, hasPremium: false };
   }
 

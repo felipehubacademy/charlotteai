@@ -119,6 +119,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           const info = await Purchases.getCustomerInfo();
           await syncSubscriptionToSupabase(userId, info, {
             previousStatus: current?.subscription_status ?? null,
+            previousProduct: current?.subscription_product ?? null,
           });
         } catch (e) {
           console.warn('[AuthProvider] foreground RC check error:', e);

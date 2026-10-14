@@ -338,6 +338,55 @@ export default function ProfileTab() {
   };
 
   const handleManageSubscription = async () => {
+    // Assinatura pelo site (Asaas): não passa pela loja.
+    const webProduct = profile?.subscription_product ?? '';
+    if (webProduct.startsWith('web_')) {
+      const until = profile?.subscription_expires_at
+        ? new Date(profile.subscription_expires_at).toLocaleDateString(isPt ? 'pt-BR' : 'en-US')
+        : null;
+      const untilTxt = until ? (isPt ? ` Acesso até ${until}.` : ` Access until ${until}.`) : '';
+      if (webProduct === 'web_annual') {
+        Alert.alert(
+          isPt ? 'Plano Anual (pelo site)' : 'Annual Plan (website)',
+          (isPt ? 'Pago pelo site, sem renovação automática.' : 'Paid on the website, no automatic renewal.') + untilTxt,
+        );
+        return;
+      }
+      if (profile?.subscription_status === 'cancelled') {
+        Alert.alert(isPt ? 'Assinatura cancelada' : 'Subscription cancelled', (isPt ? 'Não haverá novas cobranças.' : 'You will not be charged again.') + untilTxt);
+        return;
+      }
+      Alert.alert(
+        isPt ? 'Plano Mensal (pelo site)' : 'Monthly Plan (website)',
+        (isPt ? 'Cobrado todo mês no cartão.' : 'Charged monthly to your card.') + untilTxt,
+        [
+          { text: isPt ? 'Fechar' : 'Close', style: 'cancel' },
+          {
+            text: isPt ? 'Cancelar assinatura' : 'Cancel subscription', style: 'destructive',
+            onPress: async () => {
+              try {
+                const { data: { session } } = await supabase.auth.getSession();
+                if (!session?.access_token) throw new Error('No session');
+                const res = await fetch(`${API_BASE_URL}/api/checkout/asaas`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.access_token}` },
+                  body: JSON.stringify({ action: 'cancel' }),
+                });
+                if (!res.ok) throw new Error('Cancel failed');
+                await refreshProfile();
+                Alert.alert(isPt ? 'Assinatura cancelada' : 'Subscription cancelled', (isPt ? 'Não haverá novas cobranças.' : 'You will not be charged again.') + untilTxt);
+              } catch {
+                Alert.alert(
+                  isPt ? 'Não foi possível cancelar' : 'Could not cancel',
+                  isPt ? 'Tente de novo ou escreva para suporte@queizy.com.' : 'Try again or email suporte@queizy.com.',
+                );
+              }
+            },
+          },
+        ],
+      );
+      return;
+    }
     const r = await openManageSubscriptions();
     if (r.ok) return;
     // Fallback: abrir a pagina de assinaturas da loja direto.

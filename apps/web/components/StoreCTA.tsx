@@ -23,6 +23,8 @@ interface Props {
   variant: Variant;
   label: string;
   className?: string;
+  /** Vai direto para a loja, mesmo quem veio por link de afiliado (que normalmente assina pelo site). */
+  direct?: boolean;
 }
 
 type Platform = 'ios' | 'android' | 'desktop';
@@ -35,7 +37,7 @@ function detectPlatform(): Platform {
   return 'desktop';
 }
 
-export default function StoreCTA({ variant, label, className }: Props) {
+export default function StoreCTA({ variant, label, className, direct }: Props) {
   const [platform, setPlatform] = useState<Platform>('desktop');
   const [modalOpen, setModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -56,6 +58,8 @@ export default function StoreCTA({ variant, label, className }: Props) {
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    // Veio pelo link de um afiliado: assina pelo site (Pix, 12x, desconto do link). `direct` pula isso.
+    if (!direct && storedAffiliate()) { window.location.href = '/assinar'; return; }
     // Link de afiliado: o código vai junto para a loja (referrer da Play / área de transferência no iPhone).
     if (platform === 'android') {
       window.open(playUrlWithAffiliate(PLAY_STORE_URL), '_blank');
