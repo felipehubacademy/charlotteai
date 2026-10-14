@@ -12,7 +12,7 @@
  */
 
 // ── Levels & blocks ───────────────────────────────────────────────
-export type Level = 'Novice' | 'Inter' | 'Advanced';
+export type Level = 'Novice' | 'Inter' | 'Advanced' | 'Igorfina';
 export type Block = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
 export type ModuleMarker = 'denso' | 'review' | 'bridge' | 'missing' | 'qform';
 
@@ -54,7 +54,7 @@ export interface LSPhrase {
 }
 
 // ── Personas (avatars/voices) ─────────────────────────────────────
-export type VoicedBy = 'charlotte' | 'charlie';
+export type VoicedBy = 'charlotte' | 'charlie' | 'igorfina';
 
 // ── Role-play & Guided Chat shared types ──────────────────────────
 export interface Objective {

@@ -59,6 +59,8 @@ export async function POST(request: NextRequest) {
     if (!body.question || !body.correct_answer || !body.level) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
+    // Trilha do Igorfina = público do Novice (explicação em PT simples).
+    if ((body.level as string) === 'Igorfina') body.level = 'Novice';
     const lang = body.level === 'Novice' ? 'pt' : 'en';
     const prompt = buildPrompt(body, lang);
 

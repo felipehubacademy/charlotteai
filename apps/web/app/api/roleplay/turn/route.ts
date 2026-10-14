@@ -12,8 +12,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch, transcribeModel, transcribedSeconds } from '@/lib/ai-models';
 import { judgeObjectives } from '@/lib/objective-judge';
-import { logOpenAIUsage } from '@/lib/openai-usage';
+import { logOpenAIUsage, logElevenLabsUsage } from '@/lib/openai-usage';
 import { speak } from '@/lib/charlotte-voice';
+import { characterOf, voiceFor } from '@/lib/characters';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -31,7 +32,7 @@ interface Objective {
 
 interface RolePlayDef {
   scenario:        string;
-  voiced_by:       'charlotte' | 'charlie';
+  voiced_by:       'charlotte' | 'charlie' | 'igorfina';
   persona:         string;
   opening_line:    string;
   objectives:      Objective[];
@@ -43,7 +44,7 @@ interface RolePlayDef {
 interface Payload {
   history:     Array<{ role: 'user' | 'assistant'; content: string }>;
   role_play:   RolePlayDef;
-  level:       'Novice' | 'Inter' | 'Advanced';
+  level:       'Novice' | 'Inter' | 'Advanced' | 'Igorfina';
   unit_title?: string;
   /** Quantos turnos consecutivos o aluno passou SEM bater nenhum objetivo novo.
    *  >= 2 → injetamos instrução pra Ana nudgar mais diretamente. */
@@ -61,7 +62,7 @@ function buildSystemPrompt(
   userName?: string | null,
 ): string {
   const knownStudentBlock = userName
-    ? `\n\nABOUT THE STUDENT — YOU KNOW THEM:\nThe student's name is ${userName}. You (Charlotte) are their English coach\nand have been working with them. DO NOT ask their name, age, or any\nbasic intro question — you already know them. Greet them warmly by\nname when natural ("Hi ${userName}!", "${userName}, that was great!").`
+    ? `\n\nABOUT THE STUDENT — YOU KNOW THEM:\nThe student's name is ${userName}. You (${rp.persona}) are their English coach\nand have been working with them. DO NOT ask their name, age, or any\nbasic intro question — you already know them. Greet them warmly by\nname when natural ("Hi ${userName}!", "${userName}, that was great!").`
     : '';
   const objectivesBlock = rp.objectives.map(o => {
     const hintLine = o.hint_en
@@ -158,7 +159,7 @@ UNIT: ${unitTitle ?? ''}
 STUDENT CEFR LEVEL: ${level}
 
 STAY IN CHARACTER as ${rp.persona}. Speak natural conversational English. Keep
-replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.${knownStudentBlock}${simplicityBlock}
+replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.${rp.voiced_by === 'igorfina' ? IGORFINA_STYLE : ''}${knownStudentBlock}${simplicityBlock}
 
 HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}
@@ -315,6 +316,33 @@ function isHallucinationOrEmpty(text: string | undefined): boolean {
   return false;
 }
 
+// Trilha do Igorfina: ele interpreta todos os papéis, com o humor dele, e a voz é a do
+// próprio Igor (ElevenLabs, mp3). O nível pedagógico é o do Novice.
+const IGORFINA_STYLE = `\nYou are Igorfina, a stand-up comedian from the Queizy family, playing the role in the scenario above. Keep his vibe: relaxed, warm, a light joke now and then, "my friend". Never mention real people, politics or brands.`;
+
+async function ttsIgorfina(text: string, userId?: string): Promise<{ audio: Buffer; mime: string }> {
+  const voice = voiceFor(characterOf('igorfina'), null);
+  const key = process.env.ELEVENLABS_API_KEY;
+  if (!voice || !key) throw new Error('voz do Igorfina indisponível');
+  const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice.voiceId}?output_format=mp3_44100_128`, {
+    method: 'POST',
+    headers: { 'xi-api-key': key, 'Content-Type': 'application/json', Accept: 'audio/mpeg' },
+    body: JSON.stringify({ text, model_id: 'eleven_multilingual_v2', voice_settings: voice.settings }),
+  });
+  if (!res.ok) throw new Error(`ElevenLabs ${res.status}: ${await res.text()}`);
+  logElevenLabsUsage({ endpoint: '/api/roleplay/turn:tts', charCount: text.length, model: 'eleven_multilingual_v2', userId: userId ?? undefined, meta: { character: 'igorfina' } });
+  return { audio: Buffer.from(await res.arrayBuffer()), mime: 'audio/mpeg' };
+}
+
+/** Fala do personagem: Igorfina na voz dele (se falhar, cai na voz padrão); o resto, OpenAI. */
+async function speakAs(text: string, voicedBy: RolePlayDef['voiced_by'], userId?: string): Promise<{ audio: Buffer; mime: string }> {
+  if (voicedBy === 'igorfina') {
+    try { return await ttsIgorfina(text, userId); }
+    catch (e) { console.warn('[roleplay/turn] voz do Igorfina falhou, usando a padrão', e); }
+  }
+  return { audio: await tts(text, voicedBy === 'charlie' ? 'charlie' : 'charlotte', userId), mime: 'audio/flac' };
+}
+
 // ── OpenAI TTS (lib/charlotte-voice) ────────────────────────────────
 async function tts(text: string, voicedBy: 'charlotte' | 'charlie', userId?: string): Promise<Buffer> {
   // charlotte → coral (feminina, já em produção)
@@ -343,7 +371,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing audio or payload' }, { status: 400 });
     }
 
-    const { history, role_play: rp, level, unit_title, stuck_turns, next_objective_id, user_name } = JSON.parse(payload) as Payload;
+    const { history, role_play: rp, level: rawLevel, unit_title, stuck_turns, next_objective_id, user_name } = JSON.parse(payload) as Payload;
+    // Trilha do Igorfina = público do Novice (regras de simplicidade e de fluxo do iniciante).
+    const level = rawLevel === 'Igorfina' ? 'Novice' : rawLevel;
 
     // 1) Whisper STT
     const t0 = Date.now();
@@ -360,12 +390,12 @@ export async function POST(request: NextRequest) {
       const askAgain = level === 'Novice'
         ? "Sorry, I didn't hear you. Can you say it again?"
         : "Sorry, I didn't catch that — can you say it again?";
-      const audioBuf = await tts(askAgain, rp.voiced_by, userId);
+      const said = await speakAs(askAgain, rp.voiced_by, userId);
       return NextResponse.json({
         user_transcript:     userTranscript || '',
         assistant_text:      askAgain,
-        assistant_audio_b64: audioBuf.toString('base64'),
-        audio_mime:          'audio/flac',
+        assistant_audio_b64: said.audio.toString('base64'),
+        audio_mime:          said.mime,
         objectives_met:      [],
         status:              'continue',
         persona:             rp.persona,
@@ -530,13 +560,13 @@ export async function POST(request: NextRequest) {
       clean = SAFE_ACKS[Math.floor(Math.random() * SAFE_ACKS.length)];
     }
 
-    const audioBuf = await tts(clean, rp.voiced_by, userId);
+    const said = await speakAs(clean, rp.voiced_by, userId);
 
     return NextResponse.json({
       user_transcript:      userTranscript,
       assistant_text:       clean,
-      assistant_audio_b64:  audioBuf.toString('base64'),
-      audio_mime:           'audio/flac',
+      assistant_audio_b64:  said.audio.toString('base64'),
+      audio_mime:           said.mime,
       objectives_met:       objectivesMet,
       status:               complete ? 'complete' : 'continue',
       persona:              rp.persona,

@@ -487,7 +487,9 @@ export default function LearnSessionScreen() {
       const cacheDir = `${FileSystem.documentDirectory}tts_cache/`;
       await FileSystem.makeDirectoryAsync(cacheDir, { intermediates: true }).catch(() => {});
       const fileKey  = text.slice(0, 80).replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
-      const localUri = `${cacheDir}el_${fileKey}.mp3`;
+      // Trilha do Igorfina: as frases saem na voz dele (cache separado do da Charlotte).
+      const isIgor   = level === 'Igorfina';
+      const localUri = `${cacheDir}${isIgor ? 'igor' : 'el'}_${fileKey}.mp3`;
 
       // 0. Curriculum v2 pre-generated audio (CDN URL stamped at compile time).
       // Cache key derived from URL hash so different voices/versions don't collide.
@@ -506,17 +508,19 @@ export default function LearnSessionScreen() {
       const info = await FileSystem.getInfoAsync(localUri);
       if (info.exists) return localUri;
 
-      // 2. Pre-generated file served as static asset from Vercel CDN
-      const fileUrl = `${API_BASE_URL}/tts/${fileKey}.mp3`;
-      const dl = await FileSystem.downloadAsync(fileUrl, localUri);
-      if (dl.status === 200) return localUri;
-      await FileSystem.deleteAsync(localUri, { idempotent: true });
+      // 2. Pre-generated file served as static asset from Vercel CDN (voz da Charlotte)
+      if (!isIgor) {
+        const fileUrl = `${API_BASE_URL}/tts/${fileKey}.mp3`;
+        const dl = await FileSystem.downloadAsync(fileUrl, localUri);
+        if (dl.status === 200) return localUri;
+        await FileSystem.deleteAsync(localUri, { idempotent: true });
+      }
 
       // 3. Fallback: generate via ElevenLabs API and cache
       const res = await fetch(`${API_BASE_URL}/api/tts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, source: 'learn', ...(userId ? { userId } : {}) }),
+        body: JSON.stringify({ text, source: 'learn', ...(userId ? { userId } : {}), ...(isIgor ? { character: 'igorfina' } : {}) }),
       });
       if (!res.ok) return null;
       const data = await res.json();
@@ -524,7 +528,7 @@ export default function LearnSessionScreen() {
       await FileSystem.writeAsStringAsync(localUri, data.audio, { encoding: 'base64' as any });
       return localUri;
     } catch { return null; }
-  }, []);
+  }, [level]); // level: voz do Igorfina na trilha dele
 
   // ── Load grammar step ──────────────────────────────────────
   const loadGrammarStep = useCallback((ex: GrammarEx) => {

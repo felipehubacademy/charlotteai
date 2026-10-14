@@ -18,7 +18,7 @@ import { supabase } from '@/lib/supabase';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 
 export type V2Activity = 'grammar' | 'speaking' | 'roleplay' | 'chat';
-export type V2Level    = 'Novice' | 'Inter' | 'Advanced';
+export type V2Level    = 'Novice' | 'Inter' | 'Advanced' | 'Igorfina';
 
 interface V2Row {
   module_id:     string;

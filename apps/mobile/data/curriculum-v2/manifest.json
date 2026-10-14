@@ -360,7 +360,19 @@
         "title": "Cultural idioms",
         "file": "advanced/M24.json"
       }
+    ],
+    "igorfina": [
+      {
+        "id": "M01",
+        "title": "As 11 palavras que salvam",
+        "file": "igorfina/M01.json"
+      },
+      {
+        "id": "M02",
+        "title": "Visto, imigração e dinheiro",
+        "file": "igorfina/M02.json"
+      }
     ]
   },
-  "generated_at": "2026-08-20T17:08:17.320Z"
+  "generated_at": "2026-10-14T22:16:22.123Z"
 }

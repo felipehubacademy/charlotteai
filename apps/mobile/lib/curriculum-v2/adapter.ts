@@ -17,6 +17,8 @@ const LEVEL_TO_TRAIL: Record<Level, TrailLevel> = {
   Novice:   'Novice',
   Inter:    'Inter',
   Advanced: 'Advanced',
+  // Trilha do Igorfina: mesmo público do Novice (explicações em PT, telas do iniciante).
+  Igorfina: 'Novice',
 };
 
 /**

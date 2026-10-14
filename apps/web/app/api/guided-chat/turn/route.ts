@@ -32,7 +32,7 @@ interface Objective {
 
 interface GuidedChatDef {
   scenario:        string;
-  voiced_by:       'charlotte' | 'charlie';
+  voiced_by:       'charlotte' | 'charlie' | 'igorfina';
   persona:         string;
   opening_message: string;
   objectives:      Objective[];
@@ -43,7 +43,7 @@ interface GuidedChatDef {
 interface Payload {
   history:           Array<{ role: 'user' | 'assistant'; content: string }>;
   guided_chat:       GuidedChatDef;
-  level:             'Novice' | 'Inter' | 'Advanced';
+  level:             'Novice' | 'Inter' | 'Advanced' | 'Igorfina';
   user_message:      string;
   unit_title?:       string;
   stuck_turns?:      number;
@@ -51,13 +51,16 @@ interface Payload {
   user_name?: string | null;
 }
 
+// Trilha do Igorfina: ele interpreta todos os papéis, com o humor dele.
+const IGORFINA_STYLE = `\nYou are Igorfina, a stand-up comedian from the Queizy family, playing the role in the scenario above. Keep his vibe: relaxed, warm, a light joke now and then, "my friend". Never mention real people, politics or brands.`;
+
 function buildSystemPrompt(
   gc: GuidedChatDef, level: string, unitTitle?: string,
   stuckTurns: number = 0, nextObjectiveId?: number,
   userName?: string | null,
 ): string {
   const knownStudentBlock = userName
-    ? `\n\nABOUT THE STUDENT — YOU KNOW THEM:\nThe student's name is ${userName}. You (Charlotte) are their English coach\nand have been working with them. DO NOT ask their name, age, or any\nbasic intro question — you already know them. Greet them by name when\nnatural ("Hi ${userName}!", "${userName}, that was great!").`
+    ? `\n\nABOUT THE STUDENT — YOU KNOW THEM:\nThe student's name is ${userName}. You (${gc.persona}) are their English coach\nand have been working with them. DO NOT ask their name, age, or any\nbasic intro question — you already know them. Greet them by name when\nnatural ("Hi ${userName}!", "${userName}, that was great!").`
     : '';
   const objectivesBlock = gc.objectives.map(o => {
     const hintLine = o.hint_en
@@ -160,7 +163,7 @@ STUDENT CEFR LEVEL: ${level}
 
 STAY IN CHARACTER as ${gc.persona}. This is a TEXT chat (like WhatsApp).
 Use natural conversational English. Keep messages SHORT (1–2 sentences,
-max ~30 words). Emojis sparingly OK for warmth.${knownStudentBlock}${simplicityBlock}
+max ~30 words). Emojis sparingly OK for warmth.${gc.voiced_by === 'igorfina' ? IGORFINA_STYLE : ''}${knownStudentBlock}${simplicityBlock}
 
 HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}
@@ -308,9 +311,11 @@ export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as Payload & { user_id?: string };
     const {
-      history, guided_chat: gc, level, user_message, unit_title,
+      history, guided_chat: gc, level: rawLevel, user_message, unit_title,
       stuck_turns, next_objective_id, user_id: userId, user_name,
     } = body;
+    // Trilha do Igorfina = público do Novice (regras de simplicidade e de fluxo do iniciante).
+    const level = rawLevel === 'Igorfina' ? 'Novice' : rawLevel;
 
     if (!user_message || typeof user_message !== 'string') {
       return NextResponse.json({ error: 'Missing user_message' }, { status: 400 });

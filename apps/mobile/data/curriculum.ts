@@ -58,7 +58,7 @@ export interface Module {
   topics: Topic[];
 }
 
-export type TrailLevel = 'Novice' | 'Inter' | 'Advanced';
+export type TrailLevel = 'Novice' | 'Inter' | 'Advanced' | 'Igorfina';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // NOVICE — A1 / A2  (50 units across 11 modules)
@@ -3584,6 +3584,7 @@ export const CURRICULUM: Record<TrailLevel, Module[]> = {
   Novice:   NOVICE_MODULES,
   Inter:    INTER_MODULES,
   Advanced: ADVANCED_MODULES,
+  Igorfina: [], // trilha só na v2
 };
 
 // ── Helper: grammar quota per level ─────────────────────────────────────────
@@ -3591,6 +3592,7 @@ export const GRAMMAR_QUOTA: Record<TrailLevel, number> = {
   Novice:   10,
   Inter:    10,
   Advanced: 5,
+  Igorfina: 10,
 };
 
 // ── Helper: pron quota per level ─────────────────────────────────────────────
@@ -3598,6 +3600,7 @@ export const PRON_QUOTA: Record<TrailLevel, number> = {
   Novice:   0,
   Inter:    5,
   Advanced: 10,
+  Igorfina: 0,
 };
 
 // ── Helper: get topic safely ──────────────────────────────────────────────────

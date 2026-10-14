@@ -1,0 +1,1221 @@
+{
+  "id": "M01",
+  "title": "As 11 palavras que salvam",
+  "level": "Igorfina",
+  "block": "A1",
+  "units_range": "F01–F05",
+  "theme": "Sobreviver na viagem com 11 palavras: chamar a atenção, pedir ajuda, perguntar a hora e o caminho, dizer do que precisa",
+  "goal": "Aluno sai sabendo abordar um desconhecido, pedir ajuda com educação, perguntar a hora, achar o transporte e dizer para onde precisa ir, juntando as 11 palavras em frases prontas.",
+  "connects_to": "M02 (Visto, imigração e dinheiro) — depois de se virar na rua, encara o oficial da imigração.",
+  "module_chunks": [
+    "Hello! / Hi!",
+    "Sorry!",
+    "Excuse me",
+    "Excuse me? (não entendi, repete?)",
+    "Thank you / Thanks",
+    "Thank you so much",
+    "Please",
+    "Can you help me?",
+    "Can you help me, please?",
+    "Do you know...?",
+    "Do you know where...?",
+    "What time is it?",
+    "What time does it open?",
+    "What time does the bus leave?",
+    "Where is the...?",
+    "Where are the...?",
+    "Where is the subway?",
+    "Where is the bus stop?",
+    "Where are the taxis?",
+    "the subway / the bus / a taxi / the ferry boat",
+    "transportation",
+    "I need...",
+    "I need help",
+    "I need to go to...",
+    "I need to go to the airport",
+    "I need a taxi",
+    "Hello, excuse me, can you help me, please?",
+    "Do you know what time it is?",
+    "Excuse me, do you know where the subway is?",
+    "Thank you so much!"
+  ],
+  "units": [
+    {
+      "id": "F01",
+      "title": "Hello, sorry, excuse me",
+      "sub_cefr": "A1",
+      "grammar_focus": "Survival chunks: Hello / Sorry / Excuse me",
+      "tense": "EXPRESSÕES",
+      "markers": [],
+      "real_life_context": "Você chega em Nova York, precisa falar com um desconhecido na rua e esbarra em alguém no caminho.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____! Can you help me?",
+          "options": [
+            "Hello",
+            "Sorry",
+            "Thanks"
+          ],
+          "answer": "Hello",
+          "explanation": "Para começar a conversa com alguém, o primeiro passo é cumprimentar: \"Hello\". Dica do Igor: um \"Hello\" com sorriso abre qualquer porta."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Oops! _____! Are you OK?",
+          "options": [
+            "Sorry",
+            "Hello",
+            "Please"
+          ],
+          "answer": "Sorry",
+          "explanation": "Esbarrou em alguém? \"Sorry!\" é o \"desculpa!\" na hora. Curto e resolve."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ me, where is the subway?",
+          "choices": [
+            "Excuse",
+            "Sorry",
+            "Hello",
+            "Thank"
+          ],
+          "answer": "Excuse",
+          "explanation": "\"Excuse me\" é o \"com licença\" para chamar a atenção de um desconhecido antes de perguntar algo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____, I don't understand.",
+          "choices": [
+            "Sorry",
+            "Hello",
+            "Please",
+            "Thanks"
+          ],
+          "answer": "Sorry",
+          "explanation": "\"Sorry, I don't understand\" é a frase salva-vidas quando você não entendeu. Ninguém fica bravo com isso."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ me? Can you repeat, please?",
+          "hint": "Com licença / como é? (quando não entendeu)",
+          "answer": "Excuse",
+          "explanation": "\"Excuse me?\" com tom de pergunta quer dizer \"como é? não entendi\". Serve para pedir que a pessoa repita."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____! My name is Lucas.",
+          "hint": "Cumprimento (forma curta ou completa)",
+          "answer": "Hello",
+          "accepts": [
+            "Hi",
+            "Hey"
+          ],
+          "explanation": "\"Hello\", \"Hi\" e \"Hey\" são cumprimentos. \"Hi\" e \"Hey\" são mais informais, ótimos para o dia a dia."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____, I'm late! Sorry!",
+          "hint": "Com licença (para passar pelas pessoas)",
+          "answer": "Excuse me",
+          "explanation": "Para pedir passagem no metrô lotado, diga \"Excuse me\". O \"sorry\" no fim reforça a educação."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Excuse, where is the bus?",
+          "hint": "A expressão de \"com licença\" tem duas palavras",
+          "answer": "Excuse me, where is the bus?",
+          "explanation": "Sozinho, \"excuse\" fica incompleto. A expressão é sempre \"Excuse me\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Sorry me!",
+          "hint": "Para pedir desculpas basta uma palavra",
+          "answer": "Sorry!",
+          "explanation": "\"Sorry\" já é o pedido de desculpas completo. \"Sorry me\" não existe; quem leva o \"me\" é o \"excuse\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: Excuse me! Woman: Yes? Igor: Sorry, I'm lost. Where is the subway?",
+          "question": "Qual frase o Igor usou para chamar a atenção da mulher? (responda em inglês)",
+          "answer": "Excuse me",
+          "explanation": "Ele abriu com \"Excuse me!\" para chamar a atenção, e depois usou \"Sorry\" para se desculpar por incomodar."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Hello! Excuse me, one question, please.",
+          "context": "abordar um desconhecido na rua"
+        },
+        {
+          "text": "Sorry, I don't understand. Again, please?",
+          "context": "quando não entendeu nada"
+        },
+        {
+          "text": "Excuse me, I need to get off here.",
+          "context": "pedir passagem no metrô lotado"
+        },
+        {
+          "text": "Oh, sorry! Are you OK, my friend?",
+          "context": "depois de esbarrar em alguém"
+        },
+        {
+          "text": "Excuse me? Can you repeat that, please?",
+          "context": "pedir para a pessoa repetir"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Você está em Nova York, perdido na calçada. O Igorfina faz o papel de um morador apressado. Chame a atenção dele antes de perguntar qualquer coisa.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hey, I'm in a hurry here. What's up?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Chamar a atenção com educação",
+            "label_en": "Get his attention politely",
+            "hidden_prompt": "user gets attention politely with 'excuse me', 'hello', 'hi' or 'sorry' (alone or before a question) — must be in English",
+            "hint_pt": "Excuse me!",
+            "hint_en": "Excuse me!",
+            "examples_pass": [
+              "Excuse me!",
+              "Hello, excuse me.",
+              "Sorry, excuse me, one question."
+            ],
+            "examples_fail": [
+              "Hey you! (rude)",
+              "Com licença (Portuguese)",
+              "Where? (no polite opener)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Oh, OK, sure! How can I help you?\" quando obj_1 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 2 turnos):\n\n1. **Student**: ~\"Excuse me!\"\n2. **Igorfina**: \"Oh, OK, sure! How can I help you?\"",
+        "evaluation_focus": [
+          "Aluno usa \"Excuse me\" (ou \"Hello\"/\"Sorry\") para abrir a conversa",
+          "Pronúncia do \"excuse\" (ex-KIUZ)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Um turista mandou mensagem errada para você no aplicativo de mensagens do albergue. Responda com educação.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "O Igorfina está no albergue com você e manda mensagem no chat do quarto. Responda com as palavras que salvam.",
+        "opening_message": "Hello! Sorry, wrong room... are you room 12?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Cumprimentar de volta",
+            "label_en": "Greet back",
+            "hidden_prompt": "user greets back with 'hello', 'hi', 'hey' or similar — must be in English",
+            "hint_pt": "Hello!",
+            "hint_en": "Hello!",
+            "examples_pass": [
+              "Hello!",
+              "Hi!",
+              "Hey, hello!"
+            ],
+            "examples_fail": [
+              "Oi (Portuguese)",
+              "Yes (no greeting)",
+              "Bye (wrong intent)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer que não entendeu",
+            "label_en": "Say you don't understand",
+            "hidden_prompt": "user says they don't understand or asks to repeat, e.g. 'sorry, I don't understand', 'excuse me?', 'again, please?' — must be in English",
+            "hint_pt": "Sorry, I don't understand.",
+            "hint_en": "Sorry, I don't understand.",
+            "examples_pass": [
+              "Sorry, I don't understand.",
+              "Excuse me?",
+              "Sorry? Again, please."
+            ],
+            "examples_fail": [
+              "Room 12 (does not express confusion)",
+              "Não entendi (Portuguese)",
+              "OK (no request)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Ha! No problem, my friend. Wrong room. Sorry!\" quando obj_2 bater.",
+        "suggested_script": "**Script** (referencial, 4 turnos):\n\n1. **Igorfina**: \"Hello! Sorry, wrong room... are you room 12?\"\n2. **Student**: \"Hello!\"\n3. **Igorfina**: \"Room twelve? One, two?\"\n4. **Student**: \"Sorry, I don't understand.\"\n5. **Igorfina**: \"Ha! No problem, my friend. Wrong room. Sorry!\"\n\n---"
+      }
+    },
+    {
+      "id": "F02",
+      "title": "Please, thank you e \"Can you help me?\"",
+      "sub_cefr": "A1",
+      "grammar_focus": "Pedido educado: Can you + verbo + please",
+      "tense": "EXPRESSÕES",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "Você precisa pedir ajuda a alguém na estação e agradecer depois.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Can you help me, _____?",
+          "options": [
+            "please",
+            "sorry",
+            "hello"
+          ],
+          "answer": "please",
+          "explanation": "\"Please\" é o \"por favor\". No fim do pedido, deixa tudo mais educado: \"Can you help me, please?\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "A: Here is your ticket. B: _____ you!",
+          "options": [
+            "Thank",
+            "Please",
+            "Sorry"
+          ],
+          "answer": "Thank",
+          "explanation": "\"Thank you\" é o \"obrigado\". Recebeu algo ou uma ajuda? \"Thank you!\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ you help me, please?",
+          "choices": [
+            "Can",
+            "Is",
+            "Do",
+            "Are"
+          ],
+          "answer": "Can",
+          "explanation": "\"Can you...?\" é o jeito mais simples de pedir algo: \"você pode...?\". Depois vem o verbo: \"Can you help me?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Thank you so _____!",
+          "choices": [
+            "much",
+            "many",
+            "very",
+            "more"
+          ],
+          "answer": "much",
+          "explanation": "\"Thank you so much\" é o \"muito obrigado\". Dica do Igor: a gente diz \"so much\", nunca \"so many\" aqui."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Can you _____ me, please?",
+          "hint": "Verbo \"ajudar\"",
+          "answer": "help",
+          "explanation": "\"Help\" é ajudar. \"Can you help me?\" é a pergunta que mais salva em viagem."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "A: Thank you! B: You're _____.",
+          "hint": "Resposta ao \"thank you\" (de nada)",
+          "answer": "welcome",
+          "explanation": "\"You're welcome\" é o \"de nada\". Você vai ouvir muito; também aparece como \"No problem\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____, can you help me? I'm lost.",
+          "hint": "Com licença (para chamar a atenção)",
+          "answer": "Excuse me",
+          "explanation": "Combinação campeã: \"Excuse me\" para chamar a atenção e \"Can you help me?\" para pedir ajuda."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "You can help me, please?",
+          "hint": "Em perguntas, o \"can\" vem antes de \"you\"",
+          "answer": "Can you help me, please?",
+          "explanation": "Na pergunta, o \"can\" vai para a frente: \"Can you...?\". \"You can...\" é afirmação (\"você pode\")."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Thank you very much much!",
+          "hint": "Basta um \"much\"",
+          "answer": "Thank you very much!",
+          "explanation": "\"Thank you very much\" ou \"Thank you so much\": um \"much\" só. Repetir não deixa mais educado."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: Excuse me, can you help me, please? Man: Sure! Igor: Where is the bus stop? Man: It's right there. Igor: Thank you so much!",
+          "question": "O homem ajudou o Igor? Que palavra ele usou para dizer que sim? (responda em inglês)",
+          "answer": "Sure",
+          "explanation": "\"Sure!\" quer dizer \"claro!\". É a resposta mais comum quando alguém aceita ajudar."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Excuse me, can you help me, please?",
+          "context": "pedir ajuda a um desconhecido"
+        },
+        {
+          "text": "Thank you so much for your help!",
+          "context": "agradecer de verdade"
+        },
+        {
+          "text": "Can you help me with my bag, please?",
+          "context": "pedir ajuda com a mala"
+        },
+        {
+          "text": "Please, can you speak more slowly?",
+          "context": "pedir para falar devagar"
+        },
+        {
+          "text": "No problem, thank you very much!",
+          "context": "fechar a conversa com educação"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Você está na estação de trem com uma mala pesada. O Igorfina faz o papel de um funcionário da estação. Peça ajuda e agradeça.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hi there! You look a little lost. Everything OK?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pedir ajuda com educação",
+            "label_en": "Ask for help politely",
+            "hidden_prompt": "user asks for help, e.g. 'can you help me?', 'can you help me, please?', 'I need help, please' — must be in English",
+            "hint_pt": "Can you help me, please?",
+            "hint_en": "Can you help me, please?",
+            "examples_pass": [
+              "Can you help me, please?",
+              "Can you help me?",
+              "I need help, please."
+            ],
+            "examples_fail": [
+              "Help (bare word, no request)",
+              "Me ajuda (Portuguese)",
+              "Yes (no request)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Agradecer a ajuda",
+            "label_en": "Thank him",
+            "hidden_prompt": "user thanks him: 'thank you', 'thanks', 'thank you so much', 'thanks a lot' — must be in English",
+            "hint_pt": "Thank you so much!",
+            "hint_en": "Thank you so much!",
+            "examples_pass": [
+              "Thank you so much!",
+              "Thanks!",
+              "Thank you very much."
+            ],
+            "examples_fail": [
+              "OK (no thanks)",
+              "Obrigado (Portuguese)",
+              "Please (wrong intent)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"You're welcome! Have a great trip!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"Can you help me, please?\"\n2. **Igorfina**: \"Sure! Let me take your bag. Here you go!\"\n3. **Student**: ~\"Thank you so much!\"\n4. **Igorfina**: \"You're welcome! Have a great trip!\"",
+        "evaluation_focus": [
+          "Aluno faz o pedido com \"Can you help me\" (+ \"please\")",
+          "Agradece com \"Thank you\" / \"Thanks\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina está no balcão de informações do aeroporto, atendendo pelo chat do terminal. Peça ajuda e agradeça.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Você chegou ao aeroporto e o atendimento é pelo chat. O Igorfina está atendendo. Peça ajuda e agradeça no final.",
+        "opening_message": "Hello! Welcome to JFK. How can I help you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Cumprimentar",
+            "label_en": "Say hello",
+            "hidden_prompt": "user greets: 'hello', 'hi', 'good morning' or similar — must be in English",
+            "hint_pt": "Hi!",
+            "hint_en": "Hi!",
+            "examples_pass": [
+              "Hi!",
+              "Hello!",
+              "Hello, good morning."
+            ],
+            "examples_fail": [
+              "Oi (Portuguese)",
+              "Help (no greeting)",
+              "Bye (wrong intent)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Pedir ajuda",
+            "label_en": "Ask for help",
+            "hidden_prompt": "user asks for help: 'can you help me?', 'can you help me, please?', 'I need help' — must be in English",
+            "hint_pt": "Can you help me, please?",
+            "hint_en": "Can you help me, please?",
+            "examples_pass": [
+              "Can you help me, please?",
+              "Can you help me?",
+              "I need help, please."
+            ],
+            "examples_fail": [
+              "Help (bare word)",
+              "Ajuda (Portuguese)",
+              "Yes (no request)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Agradecer",
+            "label_en": "Say thank you",
+            "hidden_prompt": "user thanks: 'thank you', 'thanks', 'thank you so much' — must be in English",
+            "hint_pt": "Thank you so much!",
+            "hint_en": "Thank you so much!",
+            "examples_pass": [
+              "Thank you so much!",
+              "Thanks a lot!",
+              "Thank you!"
+            ],
+            "examples_fail": [
+              "OK (no thanks)",
+              "Valeu (Portuguese)",
+              "Please (wrong intent)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"You're welcome! Enjoy New York!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Hello! Welcome to JFK. How can I help you?\"\n2. **Student**: \"Hi!\"\n3. **Igorfina**: \"Hi! What do you need?\"\n4. **Student**: \"Can you help me, please?\"\n5. **Igorfina**: \"Of course! The taxis are on the left. Easy!\"\n6. **Student**: \"Thank you so much!\"\n7. **Igorfina**: \"You're welcome! Enjoy New York!\"\n\n---"
+      }
+    },
+    {
+      "id": "F03",
+      "title": "Do you know...? What time...?",
+      "sub_cefr": "A1",
+      "grammar_focus": "Perguntas prontas: Do you know + what time / where",
+      "tense": "PRESENTE · simple",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "Você está sem bateria no celular e precisa saber a hora e o horário do ônibus.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "What _____ is it?",
+          "options": [
+            "time",
+            "hour",
+            "clock"
+          ],
+          "answer": "time",
+          "explanation": "Para perguntar a hora, diga \"What time is it?\". Dica do Igor: nada de \"What hour\"; é sempre \"time\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you know what time it is?",
+          "options": [
+            "Do",
+            "Are",
+            "Is"
+          ],
+          "answer": "Do",
+          "explanation": "\"Do you know...?\" é \"você sabe...?\". Abre um monte de perguntas: \"Do you know what time it is?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "What time does the bus _____?",
+          "choices": [
+            "leave",
+            "leaves",
+            "leaving",
+            "left"
+          ],
+          "answer": "leave",
+          "explanation": "Depois de \"does\", o verbo fica na forma básica: \"What time does the bus leave?\" (a que horas o ônibus sai?)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Do you _____ where the museum is?",
+          "choices": [
+            "know",
+            "no",
+            "now",
+            "knows"
+          ],
+          "answer": "know",
+          "explanation": "\"Know\" é saber. O \"k\" é mudo: soa como \"nou\". Não confunda com \"now\" (agora)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Excuse me, what _____ is it?",
+          "hint": "Palavra para \"hora/horário\" nessa pergunta",
+          "answer": "time",
+          "explanation": "\"What time is it?\" é a pergunta completa. O \"Excuse me\" na frente deixa tudo educado."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you know what time it is?",
+          "hint": "Auxiliar da pergunta \"você sabe...?\"",
+          "answer": "Do",
+          "explanation": "Em perguntas com \"know\", o \"Do\" vem na frente: \"Do you know...?\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "What time does the store _____?",
+          "hint": "Verbo \"abrir\"",
+          "answer": "open",
+          "explanation": "\"What time does it open?\" pergunta a que horas abre. O contrário é \"close\" (fechar)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "What time it is?",
+          "hint": "Em pergunta direta, o \"is\" vem antes do \"it\"",
+          "answer": "What time is it?",
+          "explanation": "Pergunta direta: \"What time is it?\". Mas com \"Do you know\" a ordem muda: \"Do you know what time it is?\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "You know where is the bus?",
+          "hint": "Comece com \"Do\" e, depois de \"where\", use \"the bus is\"",
+          "answer": "Do you know where the bus is?",
+          "explanation": "Com \"Do you know where...\", a ordem fica \"where the bus is\". Parece estranho, mas é assim que o nativo fala."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: Excuse me, do you know what time it is? Woman: Sure, it's ten o'clock. Igor: And what time does the bus leave? Woman: At ten thirty.",
+          "question": "A que horas sai o ônibus? (responda em inglês, como a mulher disse)",
+          "answer": "At ten thirty",
+          "explanation": "Ela disse \"At ten thirty\", ou seja, às dez e meia. \"O'clock\" é só para hora cheia: \"ten o'clock\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Excuse me, do you know what time it is?",
+          "context": "perguntar a hora a alguém"
+        },
+        {
+          "text": "What time does the next bus leave?",
+          "context": "saber o horário do ônibus"
+        },
+        {
+          "text": "Do you know where the museum is?",
+          "context": "perguntar onde fica um lugar"
+        },
+        {
+          "text": "What time does the store open, please?",
+          "context": "saber quando a loja abre"
+        },
+        {
+          "text": "It's ten o'clock. Thank you so much!",
+          "context": "repetir a hora e agradecer"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Seu celular morreu e você precisa pegar o ônibus. O Igorfina faz o papel de uma pessoa no ponto de ônibus. Pergunte a hora e o horário do ônibus.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hey! Waiting for the bus too?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar a hora",
+            "label_en": "Ask the time",
+            "hidden_prompt": "user asks the time: 'what time is it?', 'do you know what time it is?' — must be in English",
+            "hint_pt": "Do you know what time it is?",
+            "hint_en": "Do you know what time it is?",
+            "examples_pass": [
+              "Do you know what time it is?",
+              "What time is it?",
+              "Excuse me, what time is it?"
+            ],
+            "examples_fail": [
+              "Time? (bare word)",
+              "Que horas são? (Portuguese)",
+              "Yes (no question)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar quando o ônibus sai",
+            "label_en": "Ask when the bus leaves",
+            "hidden_prompt": "user asks when the bus leaves/comes: 'what time does the bus leave?', 'what time is the bus?', 'when is the next bus?' — must be in English",
+            "hint_pt": "What time does the bus leave?",
+            "hint_en": "What time does the bus leave?",
+            "examples_pass": [
+              "What time does the bus leave?",
+              "What time is the next bus?",
+              "When is the bus?"
+            ],
+            "examples_fail": [
+              "Bus? (bare word)",
+              "Thank you (no question)",
+              "Que horas o ônibus sai? (Portuguese)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"At ten thirty. Five more minutes, relax!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"Do you know what time it is?\"\n2. **Igorfina**: \"It's ten twenty-five.\"\n3. **Student**: ~\"What time does the bus leave?\"\n4. **Igorfina**: \"At ten thirty. Five more minutes, relax!\"",
+        "evaluation_focus": [
+          "Aluno usa \"What time...?\" ou \"Do you know what time it is?\"",
+          "Ordem certa da pergunta (\"does the bus leave\")"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina trabalha numa loja e responde pelo chat do site. Você quer saber a hora em que a loja abre e onde ela fica.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Você quer comprar um tênis numa loja em Nova York. O Igorfina responde no chat da loja.",
+        "opening_message": "Hi! Welcome to Big Apple Sneakers. Questions? I'm here!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar quando a loja abre",
+            "label_en": "Ask when it opens",
+            "hidden_prompt": "user asks the opening time: 'what time does the store open?', 'what time do you open?', 'when do you open?' — must be in English",
+            "hint_pt": "What time does the store open?",
+            "hint_en": "What time does the store open?",
+            "examples_pass": [
+              "What time does the store open?",
+              "What time do you open?",
+              "When does it open?"
+            ],
+            "examples_fail": [
+              "Open? (bare word)",
+              "Que horas abre? (Portuguese)",
+              "Hi (no question)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar onde fica a loja",
+            "label_en": "Ask where the store is",
+            "hidden_prompt": "user asks the location: 'where is the store?', 'do you know where...', 'where are you?' — must be in English",
+            "hint_pt": "Where is the store?",
+            "hint_en": "Where is the store?",
+            "examples_pass": [
+              "Where is the store?",
+              "Where are you?",
+              "Do you know where the store is?"
+            ],
+            "examples_fail": [
+              "Store (bare word)",
+              "Onde fica? (Portuguese)",
+              "OK (no question)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Agradecer",
+            "label_en": "Say thank you",
+            "hidden_prompt": "user thanks: 'thank you', 'thanks', 'thank you so much' — must be in English",
+            "hint_pt": "Thank you so much!",
+            "hint_en": "Thank you so much!",
+            "examples_pass": [
+              "Thank you so much!",
+              "Thanks!",
+              "Thank you very much."
+            ],
+            "examples_fail": [
+              "OK (no thanks)",
+              "Obrigado (Portuguese)",
+              "Bye (no thanks)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"You're welcome! See you at nine!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Hi! Welcome to Big Apple Sneakers. Questions? I'm here!\"\n2. **Student**: \"What time does the store open?\"\n3. **Igorfina**: \"We open at nine o'clock.\"\n4. **Student**: \"Where is the store?\"\n5. **Igorfina**: \"On Fifth Avenue, next to the park.\"\n6. **Student**: \"Thank you so much!\"\n7. **Igorfina**: \"You're welcome! See you at nine!\"\n\n---"
+      }
+    },
+    {
+      "id": "F04",
+      "title": "Where is the subway? Where are the taxis?",
+      "sub_cefr": "A1",
+      "grammar_focus": "Where is (singular) × Where are (plural) + transportation",
+      "tense": "PRESENTE · to be",
+      "markers": [
+        "qform",
+        "denso"
+      ],
+      "real_life_context": "Você sai do aeroporto e precisa achar o metrô, o ônibus ou um táxi.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Where _____ the subway?",
+          "options": [
+            "is",
+            "are",
+            "am"
+          ],
+          "answer": "is",
+          "explanation": "Uma coisa só (o metrô) pede \"is\": \"Where is the subway?\". Dica do Igor: subway, igual à lanchonete, é o metrô."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Where _____ the taxis?",
+          "options": [
+            "are",
+            "is",
+            "am"
+          ],
+          "answer": "are",
+          "explanation": "Mais de uma coisa (os táxis) pede \"are\": \"Where are the taxis?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Excuse me, where is the bus _____?",
+          "choices": [
+            "stop",
+            "station",
+            "road",
+            "car"
+          ],
+          "answer": "stop",
+          "explanation": "\"Bus stop\" é o ponto de ônibus. \"Bus station\" é a rodoviária, um lugar bem maior."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Where is the _____ boat to the Statue of Liberty?",
+          "choices": [
+            "ferry",
+            "subway",
+            "taxi",
+            "bus"
+          ],
+          "answer": "ferry",
+          "explanation": "\"Ferry\" (ou \"ferry boat\") é a balsa. Em Nova York, ela leva até a Estátua da Liberdade."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Where _____ the bathrooms?",
+          "hint": "Banheiros = plural",
+          "answer": "are",
+          "explanation": "\"Bathrooms\" está no plural, então \"Where are the bathrooms?\". Se for um só: \"Where is the bathroom?\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Where is the _____? I need the train.",
+          "hint": "Metrô em inglês americano",
+          "answer": "subway",
+          "accepts": [
+            "metro"
+          ],
+          "explanation": "Nos Estados Unidos, metrô é \"subway\". Em outros países você também vai ouvir \"metro\" ou \"underground\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Excuse me, _____ is the taxi stand?",
+          "hint": "Palavra de pergunta para lugar (onde)",
+          "answer": "where",
+          "explanation": "\"Where\" pergunta lugar: onde. \"Taxi stand\" é o ponto de táxi."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Where is the taxis?",
+          "hint": "\"Taxis\" está no plural",
+          "answer": "Where are the taxis?",
+          "explanation": "Plural pede \"are\". Regra rápida: uma coisa, \"is\"; várias, \"are\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Where the subway is?",
+          "hint": "Em pergunta direta, o \"is\" vem logo depois do \"where\"",
+          "answer": "Where is the subway?",
+          "explanation": "Pergunta direta: \"Where is the subway?\". Só com \"Do you know\" a ordem muda: \"Do you know where the subway is?\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: Excuse me, where are the taxis? Officer: The taxis are outside, on the right. The subway is downstairs.",
+          "question": "Onde ficam os táxis? (responda em inglês, como o policial disse)",
+          "answer": "Outside, on the right",
+          "explanation": "\"Outside, on the right\" é lá fora, à direita. E o metrô está \"downstairs\", no andar de baixo."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Excuse me, where is the subway station?",
+          "context": "achar o metrô"
+        },
+        {
+          "text": "Excuse me, where are the taxis, please?",
+          "context": "achar o ponto de táxi"
+        },
+        {
+          "text": "Where is the bus stop for downtown?",
+          "context": "achar o ônibus para o centro"
+        },
+        {
+          "text": "Do you know where the ferry boat is?",
+          "context": "achar a balsa"
+        },
+        {
+          "text": "Where is the nearest bathroom, please?",
+          "context": "achar o banheiro mais perto"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Você saiu do aeroporto JFK. O Igorfina faz o papel de um guarda simpático. Pergunte onde ficam o metrô e os táxis.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Welcome to New York! Need some help?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar onde fica o metrô",
+            "label_en": "Ask where the subway is",
+            "hidden_prompt": "user asks where the subway is: 'where is the subway?', 'where is the subway station?', 'do you know where the subway is?' — must be in English",
+            "hint_pt": "Where is the subway?",
+            "hint_en": "Where is the subway?",
+            "examples_pass": [
+              "Where is the subway?",
+              "Where is the subway station?",
+              "Excuse me, where is the metro?"
+            ],
+            "examples_fail": [
+              "Subway (bare word)",
+              "Onde é o metrô? (Portuguese)",
+              "Yes (no question)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar onde estão os táxis",
+            "label_en": "Ask where the taxis are",
+            "hidden_prompt": "user asks where the taxis are, plural or singular accepted: 'where are the taxis?', 'where is the taxi stand?', 'where can I get a taxi?' — must be in English",
+            "hint_pt": "Where are the taxis?",
+            "hint_en": "Where are the taxis?",
+            "examples_pass": [
+              "Where are the taxis?",
+              "Where is the taxi stand?",
+              "And the taxis?"
+            ],
+            "examples_fail": [
+              "Taxi (bare word)",
+              "Cadê os táxis? (Portuguese)",
+              "Thank you (no question)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Outside, on the right. Yellow cars, you can't miss them!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"Where is the subway?\"\n2. **Igorfina**: \"Take the AirTrain. It's downstairs.\"\n3. **Student**: ~\"Where are the taxis?\"\n4. **Igorfina**: \"Outside, on the right. Yellow cars, you can't miss them!\"",
+        "evaluation_focus": [
+          "\"Where is\" com uma coisa, \"Where are\" com várias",
+          "Vocabulário de transporte: subway, taxi"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Você quer visitar a Estátua da Liberdade. O Igorfina, seu amigo que mora em Nova York, ajuda pelo chat.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Você quer ir até a Estátua da Liberdade. Pergunte ao Igorfina como chegar, usando where is e where are.",
+        "opening_message": "So, Statue of Liberty today? Great idea, my friend!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar onde fica a balsa",
+            "label_en": "Ask where the ferry is",
+            "hidden_prompt": "user asks where the ferry/boat is: 'where is the ferry?', 'where is the ferry boat?', 'where is the boat?' — must be in English",
+            "hint_pt": "Where is the ferry?",
+            "hint_en": "Where is the ferry?",
+            "examples_pass": [
+              "Where is the ferry?",
+              "Where is the ferry boat?",
+              "Do you know where the ferry is?"
+            ],
+            "examples_fail": [
+              "Ferry (bare word)",
+              "Onde fica a balsa? (Portuguese)",
+              "Yes (no question)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar onde fica o metrô",
+            "label_en": "Ask where the subway is",
+            "hidden_prompt": "user asks where the subway/station is: 'where is the subway?', 'where is the station?' — must be in English",
+            "hint_pt": "Where is the subway?",
+            "hint_en": "Where is the subway?",
+            "examples_pass": [
+              "Where is the subway?",
+              "Where is the subway station?",
+              "And the subway?"
+            ],
+            "examples_fail": [
+              "Subway (bare word)",
+              "Metrô? (Portuguese)",
+              "OK (no question)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Agradecer",
+            "label_en": "Say thank you",
+            "hidden_prompt": "user thanks: 'thank you', 'thanks', 'thank you so much' — must be in English",
+            "hint_pt": "Thank you so much!",
+            "hint_en": "Thank you so much!",
+            "examples_pass": [
+              "Thank you so much!",
+              "Thanks, my friend!",
+              "Thank you!"
+            ],
+            "examples_fail": [
+              "OK (no thanks)",
+              "Valeu (Portuguese)",
+              "Bye (no thanks)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"You're welcome! Send me a selfie with the Statue!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"So, Statue of Liberty today? Great idea, my friend!\"\n2. **Student**: \"Where is the ferry?\"\n3. **Igorfina**: \"The ferry is at Battery Park, downtown.\"\n4. **Student**: \"Where is the subway?\"\n5. **Igorfina**: \"Take the 1 train to South Ferry. Easy!\"\n6. **Student**: \"Thank you so much!\"\n7. **Igorfina**: \"You're welcome! Send me a selfie with the Statue!\"\n\n---"
+      }
+    },
+    {
+      "id": "F05",
+      "title": "I need... (juntando as 11 palavras)",
+      "sub_cefr": "A1",
+      "grammar_focus": "I need + coisa / I need to + verbo; combinações das 11 palavras",
+      "tense": "PRESENTE · simple",
+      "markers": [
+        "review",
+        "denso"
+      ],
+      "real_life_context": "Você precisa ir ao aeroporto às pressas e junta tudo o que aprendeu numa frase só.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ a taxi, please.",
+          "options": [
+            "need",
+            "needs",
+            "needing"
+          ],
+          "answer": "need",
+          "explanation": "\"I need\" é \"eu preciso\". Dica do Igor: é a palavra que mais se usa viajando. \"I need a taxi\", \"I need water\", \"I need help\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I need _____ go to the airport.",
+          "options": [
+            "to",
+            "for",
+            "at"
+          ],
+          "answer": "to",
+          "explanation": "Antes de um verbo (go, buy, find), use \"need to\": \"I need to go to the airport\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I need to go _____ the hotel.",
+          "choices": [
+            "to",
+            "in",
+            "on",
+            "at"
+          ],
+          "answer": "to",
+          "explanation": "\"Go to\" é \"ir para\". \"I need to go to the hotel\" = preciso ir para o hotel."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Excuse me, I need _____. Can you help me?",
+          "choices": [
+            "help",
+            "helps",
+            "helping",
+            "helped"
+          ],
+          "answer": "help",
+          "explanation": "\"I need help\" é o pedido de ajuda mais direto que existe. Simples e todo mundo entende."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ to go to the airport. Where are the taxis?",
+          "hint": "Verbo \"precisar\"",
+          "answer": "need",
+          "explanation": "\"I need to go to...\" é o jeito mais fácil de dizer para onde você precisa ir."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Hello, _____ me, can you help me, please?",
+          "hint": "A expressão de \"com licença\"",
+          "answer": "excuse",
+          "explanation": "A combinação completa do Igor: \"Hello, excuse me, can you help me, please?\". Educada e impossível de não entender."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Excuse me, do you know _____ the subway is?",
+          "hint": "Palavra de pergunta para lugar",
+          "answer": "where",
+          "explanation": "\"Do you know where the subway is?\" junta duas palavras que salvam: \"Do you know\" e \"where\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I need go to the airport.",
+          "hint": "Falta o \"to\" antes do verbo \"go\"",
+          "answer": "I need to go to the airport.",
+          "explanation": "Com verbo, é \"need to\": \"I need to go\". Sem verbo, vai direto: \"I need a taxi\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I am need a taxi.",
+          "hint": "\"Need\" já é o verbo; não precisa de \"am\"",
+          "answer": "I need a taxi.",
+          "explanation": "\"I need\" já diz \"eu preciso\". O \"am\" sobra. Erro clássico de quem traduz palavra por palavra."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: Hello, excuse me, can you help me, please? I need to go to the airport. Driver: Sure, get in! Igor: Thank you so much!",
+          "question": "Para onde o Igor precisa ir? (responda em inglês)",
+          "answer": "To the airport",
+          "explanation": "Ele disse \"I need to go to the airport\", ou seja, precisa ir para o aeroporto."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Hello, excuse me, can you help me, please?",
+          "context": "a combinação completa do Igor"
+        },
+        {
+          "text": "I need to go to the airport, please.",
+          "context": "dizer para onde precisa ir"
+        },
+        {
+          "text": "Excuse me, do you know where the subway is?",
+          "context": "perguntar o caminho com educação"
+        },
+        {
+          "text": "I need a taxi. Where are the taxis?",
+          "context": "achar um táxi às pressas"
+        },
+        {
+          "text": "Do you know what time it is? Thank you!",
+          "context": "perguntar a hora e agradecer"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Você está atrasado para o voo de volta. O Igorfina faz o papel de um motorista de táxi parado na rua. Diga do que precisa e para onde quer ir.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Taxi! Where to, my friend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer para onde precisa ir",
+            "label_en": "Say where you need to go",
+            "hidden_prompt": "user says the destination with need/to: 'I need to go to the airport', 'to the airport, please', 'airport, please' (destination + please also counts) — must be in English",
+            "hint_pt": "I need to go to the airport.",
+            "hint_en": "I need to go to the airport.",
+            "examples_pass": [
+              "I need to go to the airport.",
+              "To the airport, please.",
+              "JFK airport, please."
+            ],
+            "examples_fail": [
+              "Airport (bare word, no please)",
+              "Aeroporto (Portuguese)",
+              "Yes (no destination)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar a hora",
+            "label_en": "Ask the time",
+            "hidden_prompt": "user asks the time: 'what time is it?', 'do you know what time it is?' — must be in English",
+            "hint_pt": "Do you know what time it is?",
+            "hint_en": "Do you know what time it is?",
+            "examples_pass": [
+              "Do you know what time it is?",
+              "What time is it?",
+              "What time is it now?"
+            ],
+            "examples_fail": [
+              "Time (bare word)",
+              "Que horas são? (Portuguese)",
+              "Thank you (no question)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"It's five o'clock. Relax, we're gonna make it!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"I need to go to the airport.\"\n2. **Igorfina**: \"JFK? OK, let's go! Fasten your seat belt.\"\n3. **Student**: ~\"Do you know what time it is?\"\n4. **Igorfina**: \"It's five o'clock. Relax, we're gonna make it!\"",
+        "evaluation_focus": [
+          "\"I need to go to...\" com o \"to\" antes do verbo",
+          "Revisão das 11 palavras (\"what time\", \"please\", \"thank you\")"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina é o recepcionista do hotel e atende pelo chat do quarto. Você precisa de um táxi para o aeroporto amanhã cedo.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Seu voo é amanhã cedo. Fale com o Igorfina, da recepção do hotel, e use as 11 palavras que salvam.",
+        "opening_message": "Good evening! Front desk here. What do you need?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer do que precisa",
+            "label_en": "Say what you need",
+            "hidden_prompt": "user says they need a taxi/cab: 'I need a taxi', 'I need a taxi, please', 'a taxi, please' — must be in English",
+            "hint_pt": "I need a taxi, please.",
+            "hint_en": "I need a taxi, please.",
+            "examples_pass": [
+              "I need a taxi, please.",
+              "I need a taxi.",
+              "A taxi, please."
+            ],
+            "examples_fail": [
+              "Taxi (bare word)",
+              "Preciso de táxi (Portuguese)",
+              "Hello (no need stated)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer para onde vai",
+            "label_en": "Say where you're going",
+            "hidden_prompt": "user states the destination: 'I need to go to the airport', 'to the airport', 'airport, please' — must be in English",
+            "hint_pt": "I need to go to the airport.",
+            "hint_en": "I need to go to the airport.",
+            "examples_pass": [
+              "I need to go to the airport.",
+              "To the airport, please.",
+              "The airport."
+            ],
+            "examples_fail": [
+              "Tomorrow (no destination)",
+              "Aeroporto (Portuguese)",
+              "OK (no destination)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Agradecer",
+            "label_en": "Say thank you",
+            "hidden_prompt": "user thanks: 'thank you', 'thanks', 'thank you so much' — must be in English",
+            "hint_pt": "Thank you so much!",
+            "hint_en": "Thank you so much!",
+            "examples_pass": [
+              "Thank you so much!",
+              "Thanks!",
+              "Thank you very much!"
+            ],
+            "examples_fail": [
+              "OK (no thanks)",
+              "Obrigado (Portuguese)",
+              "Bye (no thanks)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"You're welcome! Taxi at six. Safe flight, my friend!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Good evening! Front desk here. What do you need?\"\n2. **Student**: \"I need a taxi, please.\"\n3. **Igorfina**: \"Sure! Where to?\"\n4. **Student**: \"I need to go to the airport.\"\n5. **Igorfina**: \"OK, the taxi is at six o'clock, at the door.\"\n6. **Student**: \"Thank you so much!\"\n7. **Igorfina**: \"You're welcome! Taxi at six. Safe flight, my friend!\""
+      }
+    }
+  ],
+  "cross_unit_consolidation": []
+}

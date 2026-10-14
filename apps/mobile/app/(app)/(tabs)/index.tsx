@@ -20,6 +20,7 @@ import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { UserLevel } from '@/lib/levelConfig';
+import type { TrailLevel } from '@/data/curriculum';
 import { useTheme } from '@/lib/theme';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { identifyUser, track } from '@/lib/analytics';
@@ -98,10 +99,13 @@ export default function HomeTab() {
   const { colors: T }             = useTheme();
   const userId    = profile?.id ?? '';
   const currentLevel = (profile?.charlotte_level ?? 'Novice') as UserLevel;
-  const [selectedLevel, setSelectedLevel] = useState<UserLevel>(currentLevel);
+  const [selectedLevel, setSelectedLevel] = useState<TrailLevel>(currentLevel);
   // Mantem selectedLevel sincronizado se o perfil mudar (ex: promocao organica)
   useEffect(() => { setSelectedLevel(currentLevel); }, [currentLevel]);
-  const level     = selectedLevel;
+  // A trilha do Igorfina (beta) é uma trilha à parte: só o cartão e a trilha mudam.
+  // Ranking, saudação e estatísticas continuam no nível do aluno.
+  const trailLevel = selectedLevel;
+  const level: UserLevel = selectedLevel === 'Igorfina' ? currentLevel : selectedLevel;
 
   // Promocao organica: checa apos cada focus da home.
   const { event: promotionEvent, ack: ackPromotion, checkAndPromote } = usePromotion();
@@ -428,7 +432,7 @@ export default function HomeTab() {
   // race com o onLayout do modulo ativo do novo nivel — se fosse num
   // useEffect([level]), o effect poderia rodar DEPOIS do onLayout e zerar
   // o Y recem-medido. Aqui zera antes, e o onLayout do novo nivel repopula.
-  const handleLevelChange = useCallback((lvl: UserLevel) => {
+  const handleLevelChange = useCallback((lvl: TrailLevel) => {
     activeTopicYRef.current = 0;
     trailFinishedRef.current = false;
     trailScrolledRef.current = false;
@@ -549,7 +553,7 @@ export default function HomeTab() {
         <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
           <TrailBanner
             userId={userId}
-            level={level}
+            level={trailLevel}
             currentLevel={currentLevel}
             onLevelChange={handleLevelChange}
             useV2
@@ -570,7 +574,7 @@ export default function HomeTab() {
       >
         <TrailContent
           userId={userId}
-          level={level}
+          level={trailLevel}
           showBanner={false}
           onCurrentTopicRef={handleCurrentTopicRef}
           onActiveModuleY={(y) => {

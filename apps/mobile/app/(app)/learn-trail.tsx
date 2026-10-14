@@ -50,6 +50,7 @@ const LEVEL_LABELS: Record<TrailLevel, string> = {
   Novice:   'Novice — A1/A2',
   Inter:    'Intermediate — B1/B2',
   Advanced: 'Advanced — C1/C2',
+  Igorfina: 'Manual do F#did@',
 };
 
 const LEVEL_COLOR = LEVEL_ACCENT;

@@ -68,6 +68,10 @@ const OUT  = path.join(REPO, 'apps/mobile/data/curriculum-v2');
 const args     = process.argv.slice(2);
 const ONLY     = (args.find(a => a.startsWith('--only=')) || '').slice(7);
 const VERBOSE  = args.includes('--verbose');
+// --level=igorfina: compila só essa trilha e mantém as outras como estão no manifest.
+// ATENÇÃO: compilar tudo regrava os JSONs de Inter/Advanced a partir do markdown e apaga
+// campos que só existem no JSON (ex.: label_pt/scenario_pt adicionados em 2026-10). Use --level.
+const LEVEL    = (args.find(a => a.startsWith('--level=')) || '').slice(8);
 
 main();
 
@@ -76,11 +80,16 @@ main();
 function main() {
   const files = collectFiles();
   const manifest = { level: {}, generated_at: new Date().toISOString() };
+  if (LEVEL) {
+    const prev = JSON.parse(fs.readFileSync(path.join(OUT, 'manifest.json'), 'utf8'));
+    for (const [lv, mods] of Object.entries(prev.level ?? {})) if (lv !== LEVEL) manifest.level[lv] = mods;
+  }
   const audioManifest = loadAudioManifest();
   let okCount = 0;
 
   for (const f of files) {
     if (ONLY && !f.relPath.includes(ONLY)) continue;
+    if (LEVEL && f.level !== LEVEL) continue;
     try {
       const mod = parseModule(f.absPath);
       validate(mod, f.relPath);
@@ -114,7 +123,7 @@ function main() {
 // lista aqui ao inves de require dinamico.
 function writeLoaderRegistry(manifest) {
   const loaderPath = path.join(REPO, 'apps/mobile/lib/curriculum-v2/loader.ts');
-  const levelMap = { Novice: 'novice', Inter: 'inter', Advanced: 'advanced' };
+  const levelMap = { Novice: 'novice', Inter: 'inter', Advanced: 'advanced', Igorfina: 'igorfina' };
   const blocks = Object.entries(levelMap).map(([level, dir]) => {
     const mods = (manifest.level[dir] ?? []).sort((a, b) => a.id.localeCompare(b.id));
     if (mods.length === 0) return `  ${level}: {},`;
@@ -167,7 +176,8 @@ export function listModuleSummaries(level: Level): Array<{
 
 function collectFiles() {
   const out = [];
-  for (const level of ['novice', 'inter', 'advanced']) {
+  // igorfina = trilha do Igorfina (Manual do F#did@), explicações em PT como no Novice.
+  for (const level of ['novice', 'inter', 'advanced', 'igorfina']) {
     const dir = path.join(SRC, level);
     if (!fs.existsSync(dir)) continue;
     for (const name of fs.readdirSync(dir).sort()) {
@@ -187,7 +197,7 @@ function write(f, mod) {
   // Inter/Advanced: strip PT fields (regra "zero PT visivel ao usuario+Inter").
   // Markdown source pode manter bilingue como orientacao; JSON entregue ao app
   // fica EN-only. Mobile ja faz fallback p/ label_en quando label_pt ausente.
-  const cleaned = (f.level === 'novice') ? mod : stripPortugueseFields(mod);
+  const cleaned = (f.level === 'novice' || f.level === 'igorfina') ? mod : stripPortugueseFields(mod);
   fs.writeFileSync(outFile, JSON.stringify(cleaned, null, 2) + '\n');
 }
 
@@ -588,6 +598,7 @@ function parseMarkers(s) {
 }
 
 function extractLevel(s) {
+  if (/Manual|Igorfina/i.test(s)) return 'Igorfina';
   if (/Novice/i.test(s))   return 'Novice';
   if (/Inter/i.test(s))    return 'Inter';
   if (/Advanced/i.test(s)) return 'Advanced';

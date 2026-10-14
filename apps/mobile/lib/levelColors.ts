@@ -7,24 +7,27 @@
 // de selo com texto branco (contraste ≥ 5:1). VIVID é a cor da marca, para
 // barras, preenchimentos e detalhes decorativos. BG é o fundo claro do nível.
 
-type Level = 'Novice' | 'Inter' | 'Advanced';
+type Level = 'Novice' | 'Inter' | 'Advanced' | 'Igorfina';
 
 export const LEVEL_ACCENT: Record<string, string> = {
   Novice:   '#D12A64',
   Inter:    '#6B4BFF',
   Advanced: '#08804A',
+  Igorfina: '#B45309', // trilha do Igorfina (âmbar)
 };
 
 export const LEVEL_VIVID: Record<string, string> = {
   Novice:   '#FF4F8B',
   Inter:    '#8B73FF',
   Advanced: '#2BD97C',
+  Igorfina: '#F59E0B',
 };
 
 export const LEVEL_ACCENT_BG: Record<string, string> = {
   Novice:   '#FFEEF4',
   Inter:    '#F1EEFF',
   Advanced: '#E8FBF1',
+  Igorfina: '#FEF3E2',
 };
 
 /** Cor de destaque do nível (fallback: Advanced, como nos ternários antigos). */

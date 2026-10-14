@@ -41,6 +41,7 @@ const LEVEL_LABELS: Record<TrailLevel, string> = {
   Novice:   'Novice',
   Inter:    'Intermediate',
   Advanced: 'Advanced',
+  Igorfina: 'Manual do F#did@',
 };
 
 const LEVEL_COLOR = LEVEL_ACCENT;
@@ -61,7 +62,7 @@ interface TrailBannerProps {
 }
 
 export function TrailBanner({ userId, level, flush = false, currentLevel, onLevelChange, useV2 = false }: TrailBannerProps) {
-  const isPortuguese = level === 'Novice';
+  const isPortuguese = level === 'Novice' || level === 'Igorfina';
   const accent       = LEVEL_COLOR[level];
   const v2Summaries  = useV2 ? listModuleSummaries(level as Level) : [];
   const modules      = useV2 ? v2Summaries : CURRICULUM[level];

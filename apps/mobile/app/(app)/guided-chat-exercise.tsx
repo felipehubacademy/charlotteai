@@ -52,6 +52,7 @@ const GUIDED_CHAT_BUDGET_SEC: Record<V2Level, number> = {
   Novice:   300,
   Inter:    420,
   Advanced: 600,
+  Igorfina: 300,
 };
 
 const C = {
@@ -510,6 +511,7 @@ export default function GuidedChatExerciseScreen() {
           isProcessingAudio={false}
           userLevel={level}
           mode="chat"
+          character={gc?.voiced_by === 'igorfina' ? 'igorfina' : 'charlotte'}
           topBanner={
             <View style={{
               alignSelf: 'center',

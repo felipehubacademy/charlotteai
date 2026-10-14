@@ -13,7 +13,8 @@ import type { Level } from './types';
 
 export type CascadeMode = 'linear' | 'unlocked';
 
-const LEVEL_ORDER: Record<Level, number> = { Novice: 0, Inter: 1, Advanced: 2 };
+// Igorfina (trilha à parte) fica sempre acessível: ordem 0, como o Novice.
+const LEVEL_ORDER: Record<Level, number> = { Novice: 0, Inter: 1, Advanced: 2, Igorfina: 0 };
 
 export function usePlacementSkips() {
   const { profile } = useAuth();

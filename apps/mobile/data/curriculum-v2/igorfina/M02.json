@@ -1,0 +1,1288 @@
+{
+  "id": "M02",
+  "title": "Visto, imigração e dinheiro",
+  "level": "Igorfina",
+  "block": "A1",
+  "units_range": "F06–F10",
+  "theme": "Passar pela entrevista do visto, pela imigração e pela alfândega sem travar",
+  "goal": "Aluno sai sabendo dizer o motivo da viagem, a profissão, quanto tempo fica e quanto dinheiro levou, pescando as palavras-chave das perguntas e respondendo simples.",
+  "connects_to": "M01 (As 11 palavras que salvam) e M03 (Passado, presente e futuro do jeito fácil).",
+  "module_chunks": [
+    "What's the purpose of your trip?",
+    "My trip is business.",
+    "My trip is just vacation.",
+    "It's a work exchange.",
+    "I'm here on vacation.",
+    "I'm here for work.",
+    "What do you do for a living?",
+    "I'm a teacher. / I'm a pilot. / I'm a nurse.",
+    "I make music for a living.",
+    "I work in sales.",
+    "How long are you staying?",
+    "I'm staying for ten days.",
+    "Just two weeks.",
+    "passport / visa / trip / travel / holiday / business / exchange",
+    "Here is my passport.",
+    "Where are you staying?",
+    "At a hotel in Manhattan.",
+    "How much money did you bring?",
+    "I brought five hundred dollars.",
+    "one, two, ten, twenty, fifty, one hundred",
+    "dollars / cash / credit card",
+    "Anything to declare?",
+    "Nothing to declare.",
+    "Welcome to the United States.",
+    "Enjoy your stay."
+  ],
+  "units": [
+    {
+      "id": "F06",
+      "title": "What's the purpose of your trip?",
+      "sub_cefr": "A1",
+      "grammar_focus": "Motivo da viagem: My trip is... / I'm here on... / I'm here for...",
+      "tense": "PRESENTE · to be",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "A primeira pergunta do oficial da imigração (e do consulado) é o motivo da viagem.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "What's the _____ of your trip?",
+          "options": [
+            "purpose",
+            "reason why",
+            "point"
+          ],
+          "answer": "purpose",
+          "explanation": "\"Purpose\" é o propósito, o motivo. \"What's the purpose of your trip?\" é a pergunta clássica da imigração. Dica do Igor: ouviu \"purpose\", é o motivo da viagem."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "My trip is just _____.",
+          "options": [
+            "vacation",
+            "vacations",
+            "a vacation trip"
+          ],
+          "answer": "vacation",
+          "explanation": "Nos Estados Unidos se diz \"vacation\" (férias), no singular. \"My trip is just vacation\" ou \"I'm here on vacation\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'm here _____ vacation.",
+          "choices": [
+            "on",
+            "in",
+            "for",
+            "at"
+          ],
+          "answer": "on",
+          "explanation": "\"On vacation\" é o jeito fixo de dizer \"de férias\". Frase pronta: \"I'm here on vacation\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'm here _____ work.",
+          "choices": [
+            "for",
+            "on",
+            "to",
+            "at"
+          ],
+          "answer": "for",
+          "explanation": "\"I'm here for work\" = estou aqui a trabalho. Com \"work\" e \"business\" também vale \"for\": \"I'm here for business\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My _____ is business.",
+          "hint": "Viagem",
+          "answer": "trip",
+          "explanation": "\"Trip\" é a viagem em si. \"My trip is business\" responde direto ao \"purpose of your trip\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's a work _____ program.",
+          "hint": "Intercâmbio",
+          "answer": "exchange",
+          "explanation": "\"Exchange\" é troca, intercâmbio. \"Work exchange\" é o intercâmbio de trabalho."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "A: What's the purpose of your trip? B: _____.",
+          "hint": "Resposta curta: férias",
+          "answer": "Vacation",
+          "accepts": [
+            "Just vacation",
+            "Holiday",
+            "Tourism"
+          ],
+          "explanation": "Na imigração, resposta curta funciona: \"Vacation.\" Não precisa contar a história toda."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm here in vacation.",
+          "hint": "Com \"vacation\", a preposição é outra",
+          "answer": "I'm here on vacation.",
+          "explanation": "É \"on vacation\", nunca \"in vacation\". Decore o bloco inteiro: \"on vacation\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My trip is vacations.",
+          "hint": "No inglês americano, \"vacation\" fica no singular",
+          "answer": "My trip is vacation.",
+          "explanation": "\"Vacation\" no singular. \"Vacations\" soa estranho nessa frase."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Officer: Good morning. What's the purpose of your trip? Igor: My trip is just vacation. Officer: OK. Welcome to the United States.",
+          "question": "Qual foi o motivo da viagem do Igor? (responda em inglês com uma palavra)",
+          "answer": "vacation",
+          "explanation": "Ele respondeu \"My trip is just vacation\": férias. Curto, simples e o oficial liberou."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "What's the purpose of your trip?",
+          "context": "a pergunta do oficial (para reconhecer)"
+        },
+        {
+          "text": "My trip is just vacation, officer.",
+          "context": "responder que é turismo"
+        },
+        {
+          "text": "I'm here on vacation for two weeks.",
+          "context": "férias e quanto tempo"
+        },
+        {
+          "text": "I'm here for business, a short meeting.",
+          "context": "viagem de trabalho"
+        },
+        {
+          "text": "It's a work exchange program in Florida.",
+          "context": "intercâmbio de trabalho"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Você chegou ao aeroporto de Miami. O Igorfina faz o papel do oficial da imigração. Responda o motivo da sua viagem.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Good morning. Passport, please. What's the purpose of your trip?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o motivo da viagem",
+            "label_en": "Say why you're traveling",
+            "hidden_prompt": "user states the purpose: vacation/holiday/tourism/business/work/exchange, e.g. 'my trip is vacation', 'I'm here on vacation', 'business' — must be in English",
+            "hint_pt": "My trip is just vacation.",
+            "hint_en": "My trip is just vacation.",
+            "examples_pass": [
+              "My trip is just vacation.",
+              "I'm here on vacation.",
+              "Business."
+            ],
+            "examples_fail": [
+              "Yes (no purpose)",
+              "Férias (Portuguese)",
+              "I want to live here (wrong and risky)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Entregar o passaporte",
+            "label_en": "Hand over your passport",
+            "hidden_prompt": "user hands over the passport verbally: 'here is my passport', 'here you go', 'here it is' — must be in English",
+            "hint_pt": "Here is my passport.",
+            "hint_en": "Here is my passport.",
+            "examples_pass": [
+              "Here is my passport.",
+              "Here you go.",
+              "Here it is."
+            ],
+            "examples_fail": [
+              "Passport (bare word)",
+              "Aqui está (Portuguese)",
+              "Thank you (no handover)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Thank you. Welcome to the United States. Enjoy your stay!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"My trip is just vacation.\"\n2. **Igorfina**: \"OK. Your passport, please?\"\n3. **Student**: ~\"Here is my passport.\"\n4. **Igorfina**: \"Thank you. Welcome to the United States. Enjoy your stay!\"",
+        "evaluation_focus": [
+          "Resposta curta com a palavra-chave (vacation, business, work)",
+          "\"Here is my passport\" com pronúncia clara"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Você está preenchendo o pedido do visto e tira as dúvidas pelo chat da agência. O Igorfina é o atendente e simula as perguntas do consulado.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "O Igorfina vai treinar com você as perguntas do consulado. Responda curto e verdadeiro.",
+        "opening_message": "Hi! Let's practice for the visa interview. First question: what's the purpose of your trip?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o motivo da viagem",
+            "label_en": "Say the purpose of your trip",
+            "hidden_prompt": "user states the purpose: vacation/holiday/tourism/business/work/exchange — must be in English",
+            "hint_pt": "My trip is just vacation.",
+            "hint_en": "My trip is just vacation.",
+            "examples_pass": [
+              "My trip is just vacation.",
+              "I'm here on vacation.",
+              "It's a work exchange."
+            ],
+            "examples_fail": [
+              "Yes (no purpose)",
+              "Turismo (Portuguese)",
+              "I want to live in America (risky answer)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer com quem vai",
+            "label_en": "Say who you're traveling with",
+            "hidden_prompt": "user says who they travel with: 'with my family', 'with my wife', 'alone', 'with a friend' — must be in English",
+            "hint_pt": "With my family.",
+            "hint_en": "With my family.",
+            "examples_pass": [
+              "With my family.",
+              "Alone.",
+              "I'm traveling with a friend."
+            ],
+            "examples_fail": [
+              "Family (bare word, accepted only with 'with')",
+              "Com a família (Portuguese)",
+              "Yes (no answer)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Agradecer o treino",
+            "label_en": "Thank him",
+            "hidden_prompt": "user thanks: 'thank you', 'thanks', 'thank you so much' — must be in English",
+            "hint_pt": "Thank you so much!",
+            "hint_en": "Thank you so much!",
+            "examples_pass": [
+              "Thank you so much!",
+              "Thanks!",
+              "Thank you!"
+            ],
+            "examples_fail": [
+              "OK (no thanks)",
+              "Valeu (Portuguese)",
+              "Bye (no thanks)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Perfect! Short and true, that's the secret. Good luck!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Hi! Let's practice for the visa interview. First question: what's the purpose of your trip?\"\n2. **Student**: \"My trip is just vacation.\"\n3. **Igorfina**: \"Great answer. Are you traveling alone?\"\n4. **Student**: \"With my family.\"\n5. **Igorfina**: \"Perfect. That's it for today!\"\n6. **Student**: \"Thank you so much!\"\n7. **Igorfina**: \"Perfect! Short and true, that's the secret. Good luck!\"\n\n---"
+      }
+    },
+    {
+      "id": "F07",
+      "title": "What do you do for a living?",
+      "sub_cefr": "A1",
+      "grammar_focus": "Profissão: I'm a/an + profissão · I work in... · I make... for a living",
+      "tense": "PRESENTE · to be",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "No consulado e na imigração perguntam sua profissão para entender sua vida no Brasil.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "What do you do for a _____?",
+          "options": [
+            "living",
+            "life",
+            "work"
+          ],
+          "answer": "living",
+          "explanation": "\"What do you do for a living?\" quer dizer \"o que você faz da vida?\", ou seja, a sua profissão. Dica do Igor: ouviu \"for a living\", fale do seu trabalho."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm _____ teacher.",
+          "options": [
+            "a",
+            "an",
+            "the"
+          ],
+          "answer": "a",
+          "explanation": "Em inglês, profissão leva \"a\" antes: \"I'm a teacher\". Em português a gente não usa artigo, mas em inglês é obrigatório."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'm _____ engineer.",
+          "choices": [
+            "an",
+            "a",
+            "the",
+            "one"
+          ],
+          "answer": "an",
+          "explanation": "Antes de som de vogal (a, e, i, o, u), use \"an\": \"an engineer\", \"an artist\". Antes de consoante, \"a\": \"a pilot\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I make music _____ a living.",
+          "choices": [
+            "for",
+            "to",
+            "by",
+            "on"
+          ],
+          "answer": "for",
+          "explanation": "\"I make music for a living\" = trabalho com música, vivo disso. O bloco é \"for a living\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'm a _____. I fly planes.",
+          "hint": "Profissão de quem pilota avião",
+          "answer": "pilot",
+          "explanation": "\"Pilot\" é piloto. Repare: \"I'm a pilot\", com o \"a\" antes."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ in sales.",
+          "hint": "Verbo \"trabalhar\"",
+          "answer": "work",
+          "explanation": "\"I work in sales\" = trabalho com vendas. Com área de trabalho, use \"work in\": \"I work in tech\", \"I work in a hospital\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "A: What do you do? B: I'm _____ nurse.",
+          "hint": "Artigo antes da profissão",
+          "answer": "a",
+          "explanation": "\"What do you do?\" é a versão curta de \"What do you do for a living?\". Resposta: \"I'm a nurse\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm teacher.",
+          "hint": "Falta o artigo antes da profissão",
+          "answer": "I'm a teacher.",
+          "explanation": "O erro mais comum de brasileiro: esquecer o \"a\". Sempre \"I'm a teacher\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm a engineer.",
+          "hint": "\"Engineer\" começa com som de vogal",
+          "answer": "I'm an engineer.",
+          "explanation": "Som de vogal pede \"an\": \"an engineer\". Fica mais fácil de falar, por isso existe essa regra."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Officer: What do you do for a living? Igor: I make music for a living. I'm a musician. Officer: Nice. Welcome.",
+          "question": "Qual é a profissão do Igor? (responda em inglês com uma palavra)",
+          "answer": "musician",
+          "explanation": "Ele disse \"I'm a musician\": músico. E reforçou com \"I make music for a living\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "What do you do for a living?",
+          "context": "a pergunta sobre profissão (para reconhecer)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d6a70eeac100736c.flac"
+        },
+        {
+          "text": "I'm a teacher at a public school.",
+          "context": "profissão com local de trabalho"
+        },
+        {
+          "text": "I work in sales for a big company.",
+          "context": "área de trabalho"
+        },
+        {
+          "text": "I make music for a living, officer.",
+          "context": "dizer do que você vive"
+        },
+        {
+          "text": "I'm an engineer and I live in Brazil.",
+          "context": "profissão e onde mora"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Você está na entrevista do visto no consulado. O Igorfina faz o papel do cônsul. Diga sua profissão e onde trabalha.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Good afternoon. So, what do you do for a living?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer sua profissão",
+            "label_en": "Say your job",
+            "hidden_prompt": "user states a job/profession, ideally with article: 'I'm a teacher', 'I'm an engineer', 'I make music for a living', 'I work in sales' — any real job counts — must be in English",
+            "hint_pt": "I'm a teacher.",
+            "hint_en": "I'm a teacher.",
+            "examples_pass": [
+              "I'm a teacher.",
+              "I'm an engineer.",
+              "I make music for a living."
+            ],
+            "examples_fail": [
+              "Teacher (bare word)",
+              "Sou professor (Portuguese)",
+              "Yes (no job)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer onde trabalha",
+            "label_en": "Say where you work",
+            "hidden_prompt": "user says where/at what they work: 'at a school', 'in a hospital', 'for a company', 'in Brazil', 'I work in sales' — must be in English",
+            "hint_pt": "I work at a school in Brazil.",
+            "hint_en": "I work at a school in Brazil.",
+            "examples_pass": [
+              "I work at a school in Brazil.",
+              "In a hospital.",
+              "For a big company in São Paulo."
+            ],
+            "examples_fail": [
+              "Brazil (bare word)",
+              "Numa escola (Portuguese)",
+              "Yes (no place)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Great. Your visa is approved. Have a nice trip!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"I'm a teacher.\"\n2. **Igorfina**: \"Nice. Where do you work?\"\n3. **Student**: ~\"I work at a school in Brazil.\"\n4. **Igorfina**: \"Great. Your visa is approved. Have a nice trip!\"",
+        "evaluation_focus": [
+          "Artigo antes da profissão (\"a\"/\"an\")",
+          "Mostrar vínculo com o Brasil (trabalho lá)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Você conheceu o Igorfina num grupo de viajantes e ele pergunta da sua vida pelo chat.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "O Igorfina quer saber o que você faz da vida. Responda e devolva a pergunta para ele.",
+        "opening_message": "Hey! Nice to meet you in the group. So, what do you do for a living?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer sua profissão",
+            "label_en": "Say your job",
+            "hidden_prompt": "user states a job/profession: 'I'm a nurse', 'I'm an artist', 'I work in tech', 'I make videos for a living' — must be in English",
+            "hint_pt": "I'm a nurse.",
+            "hint_en": "I'm a nurse.",
+            "examples_pass": [
+              "I'm a nurse.",
+              "I work in tech.",
+              "I'm an artist."
+            ],
+            "examples_fail": [
+              "Nurse (bare word)",
+              "Sou enfermeira (Portuguese)",
+              "Good (no job)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar a profissão dele",
+            "label_en": "Ask about his job",
+            "hidden_prompt": "user asks about his job: 'what do you do?', 'what do you do for a living?', 'and you?' (after stating own job) — must be in English",
+            "hint_pt": "What do you do?",
+            "hint_en": "What do you do?",
+            "examples_pass": [
+              "What do you do?",
+              "And you?",
+              "What do you do for a living?"
+            ],
+            "examples_fail": [
+              "You? (unclear)",
+              "E você? (Portuguese)",
+              "Cool (no question)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Reagir à resposta dele",
+            "label_en": "React to his answer",
+            "hidden_prompt": "user reacts positively: 'cool!', 'nice!', 'wow!', 'that's great!', 'awesome' — must be in English",
+            "hint_pt": "Cool! That's great!",
+            "hint_en": "Cool! That's great!",
+            "examples_pass": [
+              "Cool! That's great!",
+              "Nice!",
+              "Wow, awesome!"
+            ],
+            "examples_fail": [
+              "OK (flat, no reaction)",
+              "Legal (Portuguese)",
+              "Bye (no reaction)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Ha, thanks! Comedy for a living, crazy life. See you around!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Hey! Nice to meet you in the group. So, what do you do for a living?\"\n2. **Student**: \"I'm a nurse.\"\n3. **Igorfina**: \"Wow, important job!\"\n4. **Student**: \"What do you do?\"\n5. **Igorfina**: \"I make people laugh for a living. I'm a comedian!\"\n6. **Student**: \"Cool! That's great!\"\n7. **Igorfina**: \"Ha, thanks! Comedy for a living, crazy life. See you around!\"\n\n---"
+      }
+    },
+    {
+      "id": "F08",
+      "title": "Passport, visa, trip: pescando as palavras-chave",
+      "sub_cefr": "A1",
+      "grammar_focus": "Perguntas da imigração: How long / Where are you staying? · I'm staying...",
+      "tense": "PRESENTE · continuous (chunks)",
+      "markers": [
+        "qform",
+        "denso"
+      ],
+      "real_life_context": "O oficial fala rápido. Você pesca a palavra-chave (how long, where, passport) e responde simples.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "How _____ are you staying?",
+          "options": [
+            "long",
+            "much",
+            "many"
+          ],
+          "answer": "long",
+          "explanation": "\"How long\" pergunta quanto tempo. \"How long are you staying?\" = quanto tempo você vai ficar? Dica do Igor: ouviu \"how long\", responda com tempo: \"ten days\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm staying _____ ten days.",
+          "options": [
+            "for",
+            "in",
+            "at"
+          ],
+          "answer": "for",
+          "explanation": "Para dizer por quanto tempo, use \"for\": \"for ten days\", \"for two weeks\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Where are you _____?",
+          "choices": [
+            "staying",
+            "stay",
+            "stays",
+            "stayed"
+          ],
+          "answer": "staying",
+          "explanation": "\"Where are you staying?\" pergunta onde você vai se hospedar. Resposta: \"At a hotel\", \"At a friend's house\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'm staying _____ a hotel in Manhattan.",
+          "choices": [
+            "at",
+            "for",
+            "to",
+            "on"
+          ],
+          "answer": "at",
+          "explanation": "Com o lugar onde se hospeda, use \"at\": \"at a hotel\", \"at my friend's house\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Here is my _____ and my visa.",
+          "hint": "Documento de viagem (passaporte)",
+          "answer": "passport",
+          "explanation": "\"Passport\" é o passaporte; \"visa\" é o visto. Os dois andam juntos na imigração."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "A: How long are you staying? B: Just two _____.",
+          "hint": "Semanas",
+          "answer": "weeks",
+          "explanation": "\"Just two weeks\" = só duas semanas. \"Just\" deixa a resposta leve e natural."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Do you have a return _____?",
+          "hint": "Passagem (bilhete de volta)",
+          "answer": "ticket",
+          "explanation": "\"Return ticket\" é a passagem de volta. É bom ter no celular para mostrar se pedirem."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm staying in ten days.",
+          "hint": "Para duração, a preposição é outra",
+          "answer": "I'm staying for ten days.",
+          "explanation": "Duração usa \"for\": \"for ten days\". \"In ten days\" quer dizer \"daqui a dez dias\", outra coisa."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "How much time you are staying?",
+          "hint": "Use \"How long\" e coloque \"are\" antes de \"you\"",
+          "answer": "How long are you staying?",
+          "explanation": "O nativo pergunta \"How long are you staying?\". Na pergunta, o \"are\" vem antes do \"you\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Officer: How long are you staying? Igor: For ten days. Officer: Where are you staying? Igor: At a hotel in Orlando.",
+          "question": "Onde o Igor vai se hospedar? (responda em inglês)",
+          "answer": "At a hotel in Orlando",
+          "explanation": "Ele disse \"At a hotel in Orlando\". Repare como as respostas foram curtas: só a informação pedida."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "How long are you staying in the country?",
+          "context": "pergunta do oficial (para reconhecer)"
+        },
+        {
+          "text": "I'm staying for ten days, officer.",
+          "context": "dizer quanto tempo fica"
+        },
+        {
+          "text": "I'm staying at a hotel in Manhattan.",
+          "context": "dizer onde se hospeda"
+        },
+        {
+          "text": "Here is my passport and my return ticket.",
+          "context": "entregar os documentos"
+        },
+        {
+          "text": "Sorry, can you repeat that slowly, please?",
+          "context": "quando o oficial fala rápido"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Ainda na fila da imigração. O Igorfina, como oficial, faz mais duas perguntas rápidas. Pesque a palavra-chave e responda curto.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "OK. How long are you staying?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer quanto tempo fica",
+            "label_en": "Say how long you're staying",
+            "hidden_prompt": "user states a duration: 'ten days', 'for two weeks', 'I'm staying for one month', 'just a week' — must be in English",
+            "hint_pt": "I'm staying for ten days.",
+            "hint_en": "I'm staying for ten days.",
+            "examples_pass": [
+              "I'm staying for ten days.",
+              "Two weeks.",
+              "Just one week."
+            ],
+            "examples_fail": [
+              "Yes (no duration)",
+              "Dez dias (Portuguese)",
+              "Forever (risky answer)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer onde vai ficar",
+            "label_en": "Say where you're staying",
+            "hidden_prompt": "user says where they will stay: 'at a hotel', 'at my friend's house', 'at an Airbnb in Miami' — must be in English",
+            "hint_pt": "At a hotel in Manhattan.",
+            "hint_en": "At a hotel in Manhattan.",
+            "examples_pass": [
+              "At a hotel in Manhattan.",
+              "I'm staying at a hotel.",
+              "At my friend's house."
+            ],
+            "examples_fail": [
+              "Hotel (bare word, accepted only with 'at'/'in')",
+              "Num hotel (Portuguese)",
+              "Yes (no place)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"All right. Enjoy your stay!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"I'm staying for ten days.\"\n2. **Igorfina**: \"And where are you staying?\"\n3. **Student**: ~\"At a hotel in Manhattan.\"\n4. **Igorfina**: \"All right. Enjoy your stay!\"",
+        "evaluation_focus": [
+          "\"For\" com duração, \"at\" com lugar",
+          "Resposta curta, só com o que foi perguntado"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina vai te buscar no aeroporto e combina tudo pelo chat. Ele quer saber detalhes da sua chegada.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "O Igorfina mora em Miami e vai te buscar no aeroporto. Responda as perguntas dele pelo chat.",
+        "opening_message": "Yo! You're coming to Miami! How long are you staying?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer quanto tempo fica",
+            "label_en": "Say how long you're staying",
+            "hidden_prompt": "user states a duration: 'ten days', 'for two weeks', 'one month' — must be in English",
+            "hint_pt": "For two weeks.",
+            "hint_en": "For two weeks.",
+            "examples_pass": [
+              "For two weeks.",
+              "I'm staying for ten days.",
+              "Just one week."
+            ],
+            "examples_fail": [
+              "Yes (no duration)",
+              "Duas semanas (Portuguese)",
+              "Soon (no duration)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer onde vai ficar",
+            "label_en": "Say where you're staying",
+            "hidden_prompt": "user says where they will stay: 'at a hotel', 'at a hostel', 'at an Airbnb' — must be in English",
+            "hint_pt": "At a hotel near the beach.",
+            "hint_en": "At a hotel near the beach.",
+            "examples_pass": [
+              "At a hotel near the beach.",
+              "At a hostel.",
+              "I'm staying at an Airbnb."
+            ],
+            "examples_fail": [
+              "Hotel (bare word)",
+              "Num hotel (Portuguese)",
+              "Yes (no place)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Agradecer a carona",
+            "label_en": "Thank him for the ride",
+            "hidden_prompt": "user thanks him: 'thank you', 'thanks', 'thanks for the ride', 'thank you so much' — must be in English",
+            "hint_pt": "Thanks for the ride!",
+            "hint_en": "Thanks for the ride!",
+            "examples_pass": [
+              "Thanks for the ride!",
+              "Thank you so much!",
+              "Thanks, my friend!"
+            ],
+            "examples_fail": [
+              "OK (no thanks)",
+              "Valeu (Portuguese)",
+              "See you (no thanks)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"No problem! See you at the airport, my friend!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Yo! You're coming to Miami! How long are you staying?\"\n2. **Student**: \"For two weeks.\"\n3. **Igorfina**: \"Nice! And where are you staying?\"\n4. **Student**: \"At a hotel near the beach.\"\n5. **Igorfina**: \"Perfect. I can pick you up at the airport.\"\n6. **Student**: \"Thanks for the ride!\"\n7. **Igorfina**: \"No problem! See you at the airport, my friend!\"\n\n---"
+      }
+    },
+    {
+      "id": "F09",
+      "title": "How much money did you bring?",
+      "sub_cefr": "A1",
+      "grammar_focus": "Números (1–100, centenas) + I brought + valor",
+      "tense": "PASSADO · chunks (brought)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Na alfândega perguntam quanto dinheiro você trouxe. Você precisa falar números sem travar.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "How _____ money did you bring?",
+          "options": [
+            "much",
+            "many",
+            "long"
+          ],
+          "answer": "much",
+          "explanation": "Dinheiro é incontável em inglês, então \"how much\": \"How much money did you bring?\". \"How many\" é para coisas que se contam (bags, days)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ five hundred dollars.",
+          "options": [
+            "brought",
+            "bring",
+            "bringed"
+          ],
+          "answer": "brought",
+          "explanation": "\"Brought\" é o passado de \"bring\" (trazer). \"I brought five hundred dollars\" = trouxe quinhentos dólares. \"Bringed\" não existe."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I have two _____ dollars in cash.",
+          "choices": [
+            "hundred",
+            "hundreds",
+            "thousand of",
+            "hundreds of"
+          ],
+          "answer": "hundred",
+          "explanation": "Com número na frente, \"hundred\" fica no singular: \"two hundred\", \"five hundred\". Nada de \"two hundreds\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Fifty plus fifty is one _____.",
+          "choices": [
+            "hundred",
+            "thousand",
+            "dozen",
+            "million"
+          ],
+          "answer": "hundred",
+          "explanation": "50 + 50 = 100, \"one hundred\". Também se diz \"a hundred\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Twenty plus thirty is _____.",
+          "hint": "50 em inglês",
+          "answer": "fifty",
+          "explanation": "\"Fifty\" é 50. Cuidado com \"fifteen\" (15): o final \"-teen\" é longo; o \"-ty\" é curto e forte no começo: FIF-ty."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I brought one thousand dollars in _____.",
+          "hint": "Dinheiro em espécie (notas)",
+          "answer": "cash",
+          "explanation": "\"Cash\" é dinheiro vivo. \"In cash\" = em espécie. O contrário é \"credit card\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "A: How much money did you bring? B: Five hundred _____.",
+          "hint": "A moeda americana",
+          "answer": "dollars",
+          "explanation": "\"Dollars\" no plural quando é mais de um: \"five hundred dollars\". Dica do Igor: na alfândega, fale o número e a moeda, mais nada."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I brought five hundreds dollars.",
+          "hint": "Com número antes, \"hundred\" não vai para o plural",
+          "answer": "I brought five hundred dollars.",
+          "explanation": "\"Five hundred\", sem \"s\". O plural fica só no \"dollars\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "How many money did you bring?",
+          "hint": "Dinheiro é incontável",
+          "answer": "How much money did you bring?",
+          "explanation": "\"Money\" pede \"how much\". Regra rápida: dá para contar um por um? \"many\". Não dá? \"much\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Officer: Anything to declare? Igor: No, nothing to declare. Officer: How much money did you bring? Igor: I brought six hundred dollars in cash.",
+          "question": "Quanto dinheiro o Igor trouxe? (responda em inglês, como ele disse)",
+          "answer": "Six hundred dollars",
+          "explanation": "Ele disse \"six hundred dollars in cash\": seiscentos dólares em espécie. E \"nothing to declare\" = nada a declarar."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "How much money did you bring with you?",
+          "context": "pergunta da alfândega (para reconhecer)"
+        },
+        {
+          "text": "I brought five hundred dollars in cash.",
+          "context": "dizer o valor"
+        },
+        {
+          "text": "I have one thousand dollars on my card.",
+          "context": "dinheiro no cartão"
+        },
+        {
+          "text": "No, sir, I have nothing to declare.",
+          "context": "nada a declarar"
+        },
+        {
+          "text": "Fifteen or fifty? Sorry, can you repeat?",
+          "context": "confirmar um número"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Você passou pela imigração e chegou na alfândega. O Igorfina faz o papel do agente. Responda sobre o que declarar e quanto dinheiro trouxe.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hello. Anything to declare?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que não tem nada a declarar",
+            "label_en": "Say nothing to declare",
+            "hidden_prompt": "user says they have nothing to declare: 'nothing to declare', 'no, nothing', 'no, I have nothing to declare' — must be in English",
+            "hint_pt": "No, nothing to declare.",
+            "hint_en": "No, nothing to declare.",
+            "examples_pass": [
+              "No, nothing to declare.",
+              "Nothing.",
+              "No, I have nothing to declare."
+            ],
+            "examples_fail": [
+              "Yes (contradicts)",
+              "Nada (Portuguese)",
+              "Declare (bare word)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer quanto dinheiro trouxe",
+            "label_en": "Say how much money you brought",
+            "hidden_prompt": "user states an amount of money with a number in English: 'I brought five hundred dollars', 'five hundred dollars', 'about one thousand' — must be in English",
+            "hint_pt": "I brought five hundred dollars.",
+            "hint_en": "I brought five hundred dollars.",
+            "examples_pass": [
+              "I brought five hundred dollars.",
+              "Five hundred dollars.",
+              "About one thousand dollars."
+            ],
+            "examples_fail": [
+              "Money (no amount)",
+              "Quinhentos dólares (Portuguese)",
+              "A lot (no number)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"OK, that's fine. Have a nice day!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"No, nothing to declare.\"\n2. **Igorfina**: \"How much money did you bring?\"\n3. **Student**: ~\"I brought five hundred dollars.\"\n4. **Igorfina**: \"OK, that's fine. Have a nice day!\"",
+        "evaluation_focus": [
+          "Números ditos com clareza (hundred, fifty)",
+          "\"Brought\" como passado de \"bring\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Você e o Igorfina estão dividindo as contas da viagem pelo chat. Ele pergunta quanto você trouxe e quanto custou o hotel.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Você e o Igorfina vão dividir os gastos. Responda com números em inglês.",
+        "opening_message": "Hey, let's talk money! How much money did you bring?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer quanto trouxe",
+            "label_en": "Say how much you brought",
+            "hidden_prompt": "user states an amount in English: 'I brought five hundred dollars', 'six hundred dollars', 'about one thousand' — numbers can be words or digits — must be in English",
+            "hint_pt": "I brought five hundred dollars.",
+            "hint_en": "I brought five hundred dollars.",
+            "examples_pass": [
+              "I brought five hundred dollars.",
+              "600 dollars.",
+              "About one thousand."
+            ],
+            "examples_fail": [
+              "Some money (no number)",
+              "Quinhentos (Portuguese)",
+              "Yes (no amount)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar quanto custou o hotel",
+            "label_en": "Ask the hotel price",
+            "hidden_prompt": "user asks the price: 'how much is the hotel?', 'how much was the hotel?', 'how much does it cost?' — must be in English",
+            "hint_pt": "How much is the hotel?",
+            "hint_en": "How much is the hotel?",
+            "examples_pass": [
+              "How much is the hotel?",
+              "How much was the hotel?",
+              "And the hotel, how much?"
+            ],
+            "examples_fail": [
+              "Hotel? (bare word)",
+              "Quanto custa? (Portuguese)",
+              "OK (no question)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Concordar com a divisão",
+            "label_en": "Agree to split it",
+            "hidden_prompt": "user agrees: 'OK, deal!', 'sure', 'sounds good', 'no problem', 'let's split it' — must be in English",
+            "hint_pt": "OK, deal!",
+            "hint_en": "OK, deal!",
+            "examples_pass": [
+              "OK, deal!",
+              "Sounds good!",
+              "Sure, no problem."
+            ],
+            "examples_fail": [
+              "No (rejection)",
+              "Fechado (Portuguese)",
+              "Maybe (no agreement)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Deal! Two hundred bucks each. Easy money talk!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Hey, let's talk money! How much money did you bring?\"\n2. **Student**: \"I brought five hundred dollars.\"\n3. **Igorfina**: \"Nice. I brought six hundred.\"\n4. **Student**: \"How much is the hotel?\"\n5. **Igorfina**: \"Four hundred dollars. Two hundred each?\"\n6. **Student**: \"OK, deal!\"\n7. **Igorfina**: \"Deal! Two hundred bucks each. Easy money talk!\"\n\n---"
+      }
+    },
+    {
+      "id": "F10",
+      "title": "Na imigração: juntando tudo (e o que nunca dizer)",
+      "sub_cefr": "A1",
+      "grammar_focus": "Revisão do módulo: purpose, job, how long, where, money · respostas curtas e seguras",
+      "tense": "PRESENTE · to be (chunks)",
+      "markers": [
+        "review"
+      ],
+      "real_life_context": "A entrevista completa na imigração, do \"Next, please!\" ao \"Welcome\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "A: Next, please! B: Good morning. Here is my _____.",
+          "options": [
+            "passport",
+            "pass",
+            "port"
+          ],
+          "answer": "passport",
+          "explanation": "Ao ser chamado (\"Next, please!\"), cumprimente e entregue o passaporte: \"Good morning. Here is my passport.\""
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Qual resposta é a mais segura para 'What's the purpose of your trip?'",
+          "options": [
+            "I'm here on vacation.",
+            "I want to live in America.",
+            "I don't know."
+          ],
+          "answer": "I'm here on vacation.",
+          "explanation": "Dica do Igor: nunca diga \"I want to live in America\" na imigração ou no consulado; dá problema. Responda o motivo verdadeiro da viagem, curto."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'm a nurse and I _____ in a hospital in Brazil.",
+          "choices": [
+            "work",
+            "works",
+            "working",
+            "worked"
+          ],
+          "answer": "work",
+          "explanation": "Com \"I\", o verbo fica na forma básica: \"I work\". Mostrar que trabalha no Brasil ajuda: você tem vida lá."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'm staying _____ two weeks.",
+          "choices": [
+            "for",
+            "in",
+            "at",
+            "on"
+          ],
+          "answer": "for",
+          "explanation": "Duração com \"for\": \"for two weeks\". Revisão da unidade F08."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'm here _____ vacation.",
+          "hint": "Preposição de \"de férias\"",
+          "answer": "on",
+          "explanation": "\"On vacation\". Revisão da unidade F06: decore o bloco inteiro."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I brought three hundred _____.",
+          "hint": "A moeda americana",
+          "answer": "dollars",
+          "explanation": "\"Three hundred dollars\". Número e moeda, sem enrolar."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Sorry, I don't understand. Can you speak more _____, please?",
+          "hint": "Devagar",
+          "answer": "slowly",
+          "explanation": "Não entendeu? Peça com calma: \"Can you speak more slowly, please?\". O oficial está acostumado."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm here for to visit my friend.",
+          "hint": "Antes do verbo, só \"to\"",
+          "answer": "I'm here to visit my friend.",
+          "explanation": "Com verbo, use só \"to\": \"I'm here to visit my friend\". Com substantivo, \"for\": \"I'm here for work\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I am stay at a hotel.",
+          "hint": "Com \"I am\", o verbo ganha \"-ing\"",
+          "answer": "I am staying at a hotel.",
+          "explanation": "\"I'm staying at a hotel\" (estou hospedado). Ou mais simples: \"At a hotel\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Officer: Next, please! Purpose of your trip? Igor: Vacation. Officer: How long? Igor: Ten days. Officer: Where are you staying? Igor: At a hotel in Miami. Officer: Welcome to the United States.",
+          "question": "Quantas palavras o Igor usou para dizer quanto tempo vai ficar? Escreva a resposta dele (em inglês).",
+          "answer": "Ten days",
+          "explanation": "Só \"Ten days\". A estratégia do Igor: pescar a palavra-chave (\"How long?\") e responder o mínimo necessário."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Good morning, officer. Here is my passport.",
+          "context": "abrir a entrevista"
+        },
+        {
+          "text": "I'm here on vacation for ten days.",
+          "context": "motivo e duração numa frase"
+        },
+        {
+          "text": "I'm a teacher and I work in Brazil.",
+          "context": "profissão e vínculo com o Brasil"
+        },
+        {
+          "text": "I'm staying at a hotel near the beach.",
+          "context": "onde vai ficar"
+        },
+        {
+          "text": "Sorry, can you speak more slowly, please?",
+          "context": "pedir para falar devagar"
+        }
+      ],
+      "roleplay": {
+        "scenario": "A entrevista completa na imigração. O Igorfina faz o papel do oficial e faz três perguntas seguidas. Responda curto e verdadeiro.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 120,
+        "opening_line": "Next, please! Good morning. What's the purpose of your trip?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o motivo da viagem",
+            "label_en": "Say the purpose of your trip",
+            "hidden_prompt": "user states the purpose: vacation/holiday/tourism/business/work/exchange/visit a friend — must be in English; 'I want to live here' does NOT count",
+            "hint_pt": "I'm here on vacation.",
+            "hint_en": "I'm here on vacation.",
+            "examples_pass": [
+              "I'm here on vacation.",
+              "Business.",
+              "I'm here to visit my friend."
+            ],
+            "examples_fail": [
+              "I want to live in America (risky)",
+              "Férias (Portuguese)",
+              "Yes (no purpose)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer sua profissão",
+            "label_en": "Say your job",
+            "hidden_prompt": "user states a job: 'I'm a teacher', 'I'm an engineer', 'I work in sales' — must be in English",
+            "hint_pt": "I'm a teacher.",
+            "hint_en": "I'm a teacher.",
+            "examples_pass": [
+              "I'm a teacher.",
+              "I'm an engineer.",
+              "I work in sales."
+            ],
+            "examples_fail": [
+              "Teacher (bare word)",
+              "Sou professor (Portuguese)",
+              "Yes (no job)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer quanto tempo fica",
+            "label_en": "Say how long you're staying",
+            "hidden_prompt": "user states a duration: 'ten days', 'for two weeks', 'one month' — must be in English",
+            "hint_pt": "For ten days.",
+            "hint_en": "For ten days.",
+            "examples_pass": [
+              "For ten days.",
+              "I'm staying for two weeks.",
+              "Just one week."
+            ],
+            "examples_fail": [
+              "Yes (no duration)",
+              "Dez dias (Portuguese)",
+              "Forever (risky answer)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"OK. Welcome to the United States. Enjoy your vacation!\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Student**: ~\"I'm here on vacation.\"\n2. **Igorfina**: \"What do you do for a living?\"\n3. **Student**: ~\"I'm a teacher.\"\n4. **Igorfina**: \"How long are you staying?\"\n5. **Student**: ~\"For ten days.\"\n6. **Igorfina**: \"OK. Welcome to the United States. Enjoy your vacation!\"",
+        "evaluation_focus": [
+          "Respostas curtas com a palavra-chave certa",
+          "Nunca dizer que quer morar no país"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Você está nervoso com a imigração e manda mensagem para o Igorfina, que já passou por isso muitas vezes. Ele faz um treino rápido.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "O Igorfina vai fazer as perguntas da imigração no chat. Responda como se estivesse na frente do oficial.",
+        "opening_message": "Relax, my friend! Quick practice. Purpose of your trip?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o motivo da viagem",
+            "label_en": "Say the purpose",
+            "hidden_prompt": "user states the purpose: vacation/business/work/exchange/visit — must be in English; wanting to live there does NOT count",
+            "hint_pt": "Vacation.",
+            "hint_en": "Vacation.",
+            "examples_pass": [
+              "Vacation.",
+              "I'm here on vacation.",
+              "Business."
+            ],
+            "examples_fail": [
+              "I want to live there (risky)",
+              "Turismo (Portuguese)",
+              "Yes (no purpose)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer onde vai ficar",
+            "label_en": "Say where you're staying",
+            "hidden_prompt": "user says where they stay: 'at a hotel', 'at my friend's house', 'at an Airbnb' — must be in English",
+            "hint_pt": "At a hotel.",
+            "hint_en": "At a hotel.",
+            "examples_pass": [
+              "At a hotel.",
+              "At my friend's house.",
+              "I'm staying at a hostel."
+            ],
+            "examples_fail": [
+              "Hotel (bare word)",
+              "Num hotel (Portuguese)",
+              "Yes (no place)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer quanto dinheiro trouxe",
+            "label_en": "Say how much money you brought",
+            "hidden_prompt": "user states an amount: 'five hundred dollars', 'I brought one thousand dollars' — must be in English",
+            "hint_pt": "I brought five hundred dollars.",
+            "hint_en": "I brought five hundred dollars.",
+            "examples_pass": [
+              "I brought five hundred dollars.",
+              "800 dollars.",
+              "About one thousand."
+            ],
+            "examples_fail": [
+              "Some (no number)",
+              "Quinhentos (Portuguese)",
+              "Yes (no amount)"
+            ]
+          },
+          {
+            "id": 4,
+            "label_pt": "Agradecer o treino",
+            "label_en": "Thank him",
+            "hidden_prompt": "user thanks: 'thank you', 'thanks', 'thanks for the help' — must be in English",
+            "hint_pt": "Thanks for the help!",
+            "hint_en": "Thanks for the help!",
+            "examples_pass": [
+              "Thanks for the help!",
+              "Thank you so much!",
+              "Thanks!"
+            ],
+            "examples_fail": [
+              "OK (no thanks)",
+              "Valeu (Portuguese)",
+              "Bye (no thanks)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"You're ready! Short and true. Welcome to the USA!\" quando obj_4 bater.",
+        "suggested_script": "**Script** (referencial, 8 turnos):\n\n1. **Igorfina**: \"Relax, my friend! Quick practice. Purpose of your trip?\"\n2. **Student**: \"Vacation.\"\n3. **Igorfina**: \"Good! Where are you staying?\"\n4. **Student**: \"At a hotel.\"\n5. **Igorfina**: \"And how much money did you bring?\"\n6. **Student**: \"I brought five hundred dollars.\"\n7. **Igorfina**: \"Perfect answers. Short and true!\"\n8. **Student**: \"Thanks for the help!\"\n9. **Igorfina**: \"You're ready! Short and true. Welcome to the USA!\""
+      }
+    }
+  ],
+  "cross_unit_consolidation": []
+}

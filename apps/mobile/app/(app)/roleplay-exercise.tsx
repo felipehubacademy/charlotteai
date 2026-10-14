@@ -211,11 +211,12 @@ export default function RolePlayExerciseScreen() {
         const res = await fetch(`${API_BASE_URL}/api/tts`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text: rpDef.opening_line, userId, source: 'roleplay-opener' }),
+          // Trilha do Igorfina: a abertura sai na voz dele (ElevenLabs, mp3).
+          body: JSON.stringify({ text: rpDef.opening_line, userId, source: 'roleplay-opener', ...(rpDef.voiced_by === 'igorfina' ? { character: 'igorfina' } : {}) }),
         });
         if (!res.ok) return;
         const data = await res.json();
-        localUri = `${dir}${msgId}.flac`;
+        localUri = `${dir}${msgId}.${data.mimeType === 'audio/mpeg' ? 'mp3' : 'flac'}`;
         await FileSystem.writeAsStringAsync(localUri, data.audio, { encoding: 'base64' as any });
       }
       // Audio pronto: pusha o bubble real, encerra o typing indicator.
@@ -473,7 +474,7 @@ export default function RolePlayExerciseScreen() {
       const aMsgId = `assist_${Date.now()}`;
       const dir   = `${FileSystem.documentDirectory}roleplay/`;
       await FileSystem.makeDirectoryAsync(dir, { intermediates: true }).catch(() => {});
-      const localUri = `${dir}${aMsgId}.flac`;
+      const localUri = `${dir}${aMsgId}.${data.audio_mime === 'audio/mpeg' ? 'mp3' : 'flac'}`;
       await FileSystem.writeAsStringAsync(localUri, data.assistant_audio_b64, { encoding: 'base64' as any });
 
       setMessages(prev => [...prev, {
@@ -749,6 +750,7 @@ export default function RolePlayExerciseScreen() {
           isProcessingAudio={isProcessing}
           userLevel={level}
           mode="chat"
+          character={rp?.voiced_by === 'igorfina' ? 'igorfina' : 'charlotte'}
           onPlayAudio={onPlayAudio}
           playingMessageId={playingMessageId}
           topBanner={
@@ -858,7 +860,7 @@ export default function RolePlayExerciseScreen() {
                 : isRecording
                   ? (isPt ? 'Gravando… solte pra enviar' : 'Recording… release to send')
                   : playingMessageId
-                    ? (isPt ? 'Aguarde Charlotte terminar…' : 'Wait for Charlotte to finish…')
+                    ? (isPt ? `Aguarde ${rp?.persona ?? 'Charlotte'} terminar…` : `Wait for ${rp?.persona ?? 'Charlotte'} to finish…`)
                     : (isPt ? 'Segure o microfone pra falar' : 'Hold the mic to speak')}
             </AppText>
           </View>
