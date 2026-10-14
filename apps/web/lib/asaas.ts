@@ -15,6 +15,8 @@ export const ASAAS_PRICES = { monthly: 29.99, annual: 199.99 } as const;
 export const WEB_TRIAL_DAYS = 7;
 export const ANNUAL_MAX_INSTALLMENTS = 12;
 export const WEB_PRODUCT = { monthly: 'web_monthly', annual: 'web_annual' } as const;
+/** Produto gravado na conta: o anual no Pix fica separado (não renova, não tem o que cancelar). */
+export const WEB_ANNUAL_PIX = 'web_annual_pix';
 export type WebPlan = keyof typeof ASAAS_PRICES;
 
 const SITE = 'https://queizy.com';

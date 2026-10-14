@@ -111,7 +111,7 @@ A tela de assinatura abre ao terminar o primeiro bloco ou quando a degustação 
 - iPhone: Ajustes > seu nome > Assinaturas > Queizy (pode aparecer como Charlotte em versões antigas) > Cancelar assinatura.
 - Android: Google Play > foto de perfil > Pagamentos e assinaturas > Assinaturas > Queizy (pode aparecer como Charlotte) > Cancelar.
 - No app: Perfil > Assinatura > Gerenciar assinatura abre essa tela da loja.
-- Assinou pelo site (queizy.com/assinar)? Cancele no app em Perfil > Assinatura > Gerenciar assinatura > Cancelar assinatura.
+- Assinou pelo site (queizy.com/assinar)? Cancele no app em Perfil > Assinatura > Gerenciar assinatura > Cancelar renovação.
 Ao cancelar, o acesso continua até o fim do período já pago.` },
   { section: 'Planos e assinatura', question: 'Como pedir reembolso?', answer:
 `Depende de onde você assinou:

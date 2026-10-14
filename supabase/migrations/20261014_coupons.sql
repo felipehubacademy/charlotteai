@@ -24,3 +24,6 @@ alter table public.asaas_checkouts add column if not exists refunded_at timestam
 alter table charlotte.users drop constraint if exists users_subscription_product_check;
 alter table charlotte.users add constraint users_subscription_product_check
   check (subscription_product is null or subscription_product in ('monthly', 'yearly', 'web_monthly', 'web_annual'));
+alter table charlotte.users drop constraint if exists users_subscription_product_check;
+alter table charlotte.users add constraint users_subscription_product_check
+  check (subscription_product is null or subscription_product in ('monthly', 'yearly', 'web_monthly', 'web_annual', 'web_annual_pix'));

@@ -31,6 +31,7 @@ import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { restorePurchases, openManageSubscriptions, syncSubscriptionToSupabase } from '@/lib/purchases';
+import { WebSubscriptionSheet } from '@/components/subscription/WebSubscriptionSheet';
 import { systemIsPt, appLangPref, setAppLangPref } from '@/lib/systemLang';
 import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
@@ -183,6 +184,7 @@ function SectionTitle({ label }: { label: string }) {
 
 export default function ProfileTab() {
   const { profile, signOut, refreshProfile } = useAuth();
+  const [webSubOpen, setWebSubOpen] = useState(false);
   // Admin ou conta com acesso beta: vê o build e o id do OTA (ajuda no suporte e nos testes).
   const isStaff = !!profile?.is_admin || (profile?.beta_features?.length ?? 0) > 0;
   const level  = (profile?.charlotte_level ?? 'Novice') as UserLevel;
@@ -358,91 +360,8 @@ export default function ProfileTab() {
   };
 
   const handleManageSubscription = async () => {
-    // Assinatura pelo site (Asaas): não passa pela loja.
-    const webProduct = profile?.subscription_product ?? '';
-    if (webProduct.startsWith('web_')) {
-      const until = profile?.subscription_expires_at
-        ? new Date(profile.subscription_expires_at).toLocaleDateString(isPt ? 'pt-BR' : 'en-US')
-        : null;
-      const untilTxt = until ? (isPt ? ` Acesso até ${until}.` : ` Access until ${until}.`) : '';
-      const isAnnual = webProduct === 'web_annual';
-      if (profile?.subscription_status === 'cancelled') {
-        Alert.alert(isPt ? 'Assinatura cancelada' : 'Subscription cancelled', (isPt ? 'Não haverá novas cobranças.' : 'You will not be charged again.') + untilTxt);
-        return;
-      }
-      Alert.alert(
-        isAnnual ? (isPt ? 'Plano Anual (pelo site)' : 'Annual Plan (website)') : (isPt ? 'Plano Mensal (pelo site)' : 'Monthly Plan (website)'),
-        (isAnnual
-          ? (isPt ? 'Assinado pelo site.' : 'Subscribed on the website.')
-          : (isPt ? 'Cobrado todo mês no cartão.' : 'Charged monthly to your card.')) + untilTxt,
-        [
-          { text: isPt ? 'Fechar' : 'Close', style: 'cancel' },
-          {
-            // Em até 7 dias do pagamento (Pix, 12x ou a 1ª cobrança do cartão): devolve o valor.
-            text: isPt ? 'Pedir reembolso' : 'Request refund',
-            onPress: () => Alert.alert(
-              isPt ? 'Pedir reembolso?' : 'Request a refund?',
-              isPt ? 'Vale até 7 dias depois do pagamento. O valor volta para você e o acesso termina na hora.' : 'Available up to 7 days after payment. You get the money back and access ends right away.',
-              [
-                { text: isPt ? 'Voltar' : 'Back', style: 'cancel' },
-                { text: isPt ? 'Pedir reembolso' : 'Request refund', style: 'destructive', onPress: async () => {
-                  try {
-                    const { data: { session } } = await supabase.auth.getSession();
-                    if (!session?.access_token) throw new Error('No session');
-                    const res = await fetch(`${API_BASE_URL}/api/checkout/asaas`, {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.access_token}` },
-                      body: JSON.stringify({ action: 'refund' }),
-                    });
-                    const j = await res.json().catch(() => ({}));
-                    if (!res.ok) {
-                      Alert.alert(isPt ? 'Reembolso' : 'Refund', j.message ?? (isPt ? 'Não foi possível agora. Escreva para suporte@queizy.com.' : 'Not possible right now. Email suporte@queizy.com.'));
-                      return;
-                    }
-                    await refreshProfile();
-                    Alert.alert(
-                      isPt ? 'Reembolso pedido' : 'Refund requested',
-                      isPt ? 'No Pix, o valor volta para a mesma conta em instantes. No cartão, o estorno aparece na fatura (pode levar até duas faturas).' : 'With Pix, the money is back in moments. On card, the refund shows on your statement (may take up to two statements).',
-                    );
-                  } catch {
-                    Alert.alert(isPt ? 'Reembolso' : 'Refund', isPt ? 'Não foi possível agora. Escreva para suporte@queizy.com.' : 'Not possible right now. Email suporte@queizy.com.');
-                  }
-                } },
-              ],
-            ),
-          },
-          {
-            text: isPt ? 'Cancelar assinatura' : 'Cancel subscription', style: 'destructive',
-            onPress: async () => {
-              try {
-                const { data: { session } } = await supabase.auth.getSession();
-                if (!session?.access_token) throw new Error('No session');
-                const res = await fetch(`${API_BASE_URL}/api/checkout/asaas`, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.access_token}` },
-                  body: JSON.stringify({ action: 'cancel' }),
-                });
-                if (!res.ok) throw new Error('Cancel failed');
-                const j = await res.json().catch(() => ({}));
-                await refreshProfile();
-                if (j.noRenewal) {
-                  // Pix ou parcelado: já não renova sozinho.
-                  Alert.alert(isPt ? 'Sem renovação automática' : 'No automatic renewal', (isPt ? 'Seu plano foi pago de uma vez e não renova sozinho.' : 'Your plan was paid upfront and does not renew.') + untilTxt);
-                  return;
-                }
-                Alert.alert(isPt ? 'Assinatura cancelada' : 'Subscription cancelled', (isPt ? 'Não haverá novas cobranças.' : 'You will not be charged again.') + untilTxt);
-              } catch {
-                Alert.alert(
-                  isPt ? 'Não foi possível cancelar' : 'Could not cancel',
-                  isPt ? 'Tente de novo ou escreva para suporte@queizy.com.' : 'Try again or email suporte@queizy.com.',
-                );
-              }
-            },
-          },
-        ],
-      );
-      return;
-    }
+    // Assinatura pelo site (Asaas): não passa pela loja; abre a tela do Queizy.
+    if ((profile?.subscription_product ?? '').startsWith('web_')) { setWebSubOpen(true); return; }
     const r = await openManageSubscriptions();
     if (r.ok) return;
     // Fallback: abrir a pagina de assinaturas da loja direto.
@@ -775,6 +694,16 @@ export default function ProfileTab() {
           )}
         </View>
       </ScrollView>
+
+      <WebSubscriptionSheet
+        visible={webSubOpen}
+        isPt={isPt}
+        product={profile?.subscription_product ?? ''}
+        status={profile?.subscription_status ?? null}
+        expiresAt={profile?.subscription_expires_at ?? null}
+        onClose={() => setWebSubOpen(false)}
+        onChanged={() => { refreshProfile().catch(() => {}); }}
+      />
     </View>
   );
 }

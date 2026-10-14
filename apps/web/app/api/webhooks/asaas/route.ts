@@ -10,7 +10,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { recordRevenueEvent } from '@/lib/revenue';
-import { getCustomer, WEB_PRODUCT, type WebPlan } from '@/lib/asaas';
+import { getCustomer, WEB_PRODUCT, WEB_ANNUAL_PIX, type WebPlan } from '@/lib/asaas';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { webSubscriptionWelcomeTemplate } from '@/lib/email-templates';
 
@@ -50,13 +50,13 @@ async function findRow(p: { checkoutId?: string | null; externalReference?: stri
   return null;
 }
 
-async function grantAccess(userId: string, plan: WebPlan, until: Date): Promise<void> {
+async function grantAccess(userId: string, plan: WebPlan, until: Date, method?: string | null): Promise<void> {
   const supabase = getSupabaseAdmin();
   const { data: cur } = await supabase.from('charlotte_users').select('subscription_expires_at').eq('id', userId).maybeSingle();
   const prev = (cur as { subscription_expires_at: string | null } | null)?.subscription_expires_at;
   const expires = prev && new Date(prev).getTime() > until.getTime() ? new Date(prev) : until; // nunca encurta
   const { error } = await supabase.from('charlotte_users').update({
-    subscription_status: 'active', is_active: true, subscription_product: WEB_PRODUCT[plan],
+    subscription_status: 'active', is_active: true, subscription_product: method === 'annual_pix' ? WEB_ANNUAL_PIX : WEB_PRODUCT[plan],
     subscription_expires_at: expires.toISOString(), updated_at: new Date().toISOString(),
   } as never).eq('id', userId);
   // Falha aqui é grave (pagou e não ganhou acesso): lança para o Asaas reenviar o evento.
@@ -113,7 +113,7 @@ export async function POST(req: NextRequest) {
       await supabase.from('asaas_checkouts').update({ status, asaas_customer_id: c.customer ?? row.asaas_customer_id, updated_at: new Date().toISOString() } as never).eq('id', row.id);
       if (event === 'CHECKOUT_PAID' && row.trial_days > 0) {
         // Cartão validado e assinatura criada (mensal ou anual): acesso durante o teste (+1 dia para a 1ª cobrança).
-        await grantAccess(row.user_id, row.plan, new Date(Date.now() + (row.trial_days + 1) * DAY));
+        await grantAccess(row.user_id, row.plan, new Date(Date.now() + (row.trial_days + 1) * DAY), row.method);
         await sendWelcome(row.user_id, row.plan, row.trial_days);
       }
       return NextResponse.json({ ok: true });
@@ -146,7 +146,7 @@ export async function POST(req: NextRequest) {
         if (row.plan === 'monthly') {
           await grantAccess(row.user_id, 'monthly', new Date(addMonths(start, 1).getTime() + GRACE_DAYS * DAY));
         } else if (firstInstallment) {
-          await grantAccess(row.user_id, 'annual', new Date(addMonths(new Date(), 12).getTime() + GRACE_DAYS * DAY));
+          await grantAccess(row.user_id, 'annual', new Date(addMonths(new Date(), 12).getTime() + GRACE_DAYS * DAY), row.method);
         }
         const { count } = await supabase.from('revenue_events').select('id', { count: 'exact', head: true })
           .eq('app_user_id', row.user_id).eq('store', 'ASAAS').like('event_id', 'asaas_%').not('event_id', 'like', `%${p.id}`);
