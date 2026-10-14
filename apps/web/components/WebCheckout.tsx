@@ -18,8 +18,6 @@ type Info = { enabled: boolean; trialDays: number; discountPct: number; prices: 
   coupon: { ok: true; code: string; pct: number } | { ok: false; error: string } | null };
 
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-const maskCpf = (v: string) => v.replace(/\D/g, '').slice(0, 11)
-  .replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
 const maskPhone = (v: string) => v.replace(/\D/g, '').slice(0, 11)
   .replace(/^(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d{1,4})$/, '$1-$2');
 
@@ -30,7 +28,6 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
   const [aff, setAff] = useState<string | null>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [cpf, setCpf] = useState('');
   const [phone, setPhone] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -110,7 +107,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
     try {
       const r = await fetch('/api/checkout/asaas', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ method, name, email, cpf, phone, aff, coupon }),
+        body: JSON.stringify({ method, name, email, phone, aff, coupon }),
       });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || !j.url) { setError(j.error ?? 'Não foi possível abrir o pagamento agora.'); setBusy(false); return; }
@@ -120,27 +117,56 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
     }
   }
 
+  const payOption = (k: AnnualPay, title: string, detail: string) => {
+    const sel = annualPay === k;
+    return (
+      <button type="button" key={k} onClick={() => setAnnualPay(k)} className="wc-pay"
+        style={{ borderColor: sel ? INK : BORDER, background: sel ? '#fff' : 'transparent' }}>
+        <span className="wc-radio" style={{ borderColor: sel ? INK : BORDER }}>{sel && <i />}</span>
+        <span style={{ textAlign: 'left' }}>
+          <span style={{ display: 'block', fontWeight: 800, fontSize: 15 }}>{title}</span>
+          <span style={{ display: 'block', fontSize: 13, color: MID, marginTop: 2 }}>{detail}</span>
+        </span>
+      </button>
+    );
+  };
+
   const planCard = (p: Plan) => {
     const sel = plan === p;
+    const annualSel = p === 'annual' && sel;
     return (
-      <button type="button" onClick={() => setPlan(p)} className="wc-plan" style={{
-        borderColor: sel ? INK : BORDER, background: sel ? '#F4FFC2' : '#fff',
-      }}>
+      <div className="wc-plan" style={{ borderColor: sel ? INK : BORDER, background: sel ? '#F4FFC2' : '#fff' }}>
         {p === 'annual' && <span className="wc-tag">MELHOR VALOR</span>}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
-          <div style={{ textAlign: 'left' }}>
-            <div style={{ fontWeight: 800, fontSize: 17 }}>{p === 'annual' ? 'Anual' : 'Mensal'}</div>
-            <div style={{ fontSize: 13, color: MID, marginTop: 2 }}>
-              {p === 'annual' ? `${brl(annual / 12)}/mês · cartão, Pix ou 12x` : 'Cartão de crédito, renova todo mês'}
-            </div>
-            {trial > 0 && <div style={{ fontSize: 13, color: GREEN, fontWeight: 700, marginTop: 4 }}>{trial} dias grátis{p === 'annual' ? ' no cartão' : ''}</div>}
+        <button type="button" onClick={() => setPlan(p)} className="wc-plan-head" aria-pressed={sel}>
+          <span className="wc-radio" style={{ borderColor: sel ? INK : BORDER, marginTop: 4 }}>{sel && <i />}</span>
+          <span style={{ flex: 1, textAlign: 'left' }}>
+            <span style={{ display: 'block', fontWeight: 800, fontSize: 17 }}>{p === 'annual' ? 'Anual' : 'Mensal'}</span>
+            <span style={{ display: 'block', fontSize: 13, color: MID, marginTop: 2 }}>
+              {p === 'annual' ? `${brl(annual / 12)}/mês · 12 meses de acesso` : 'Cartão de crédito, renova todo mês'}
+            </span>
+            {trial > 0 && <span style={{ display: 'block', fontSize: 13, color: GREEN, fontWeight: 700, marginTop: 4 }}>{trial} dias grátis{p === 'annual' ? ' no cartão' : ''}</span>}
+          </span>
+          <span style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
+            <span style={{ display: 'block', fontWeight: 800, fontSize: 22 }}>{brl(p === 'annual' ? annual : monthly)}</span>
+            <span style={{ display: 'block', fontSize: 12, color: LIGHT }}>{p === 'annual' ? '/ano' : '/mês'}</span>
+          </span>
+        </button>
+        {annualSel && (
+          <div className="wc-pays" role="radiogroup" aria-label="Como pagar o Anual">
+            <div className="wc-pays-title">Como você quer pagar o Anual?</div>
+            {payOption('card', trial > 0 ? `Cartão: ${trial} dias grátis` : 'Cartão em 1x', `Depois ${brl(annual)} por ano, em 1x. Renova sozinho; cancele quando quiser.`)}
+            {payOption('pix', 'Pix à vista', `${brl(annual)} de uma vez, sem renovação automática. Teste por 7 dias: se não gostar, peça o reembolso.`)}
+            {payOption('installments', 'Até 12x no cartão', `12x de ${brl(annual12 / 12)} (total ${brl(annual12)}, com a taxa do parcelamento). Teste por 7 dias: se não gostar, peça o reembolso.`)}
+            {annualPay !== 'card' && (
+              <details className="wc-help">
+                <summary>Como peço o reembolso?</summary>
+                <p>Em até 7 dias depois do pagamento, no app: <strong>Perfil &gt; Assinatura &gt; Gerenciar assinatura &gt; Pedir reembolso</strong>. Se preferir, escreva para <a href="mailto:suporte@queizy.com">suporte@queizy.com</a> com o e-mail da sua conta.</p>
+                <p>No Pix, o valor volta para a mesma conta em instantes. No cartão, o estorno aparece na fatura (pode levar até duas faturas, conforme o banco). O acesso termina quando o reembolso é feito.</p>
+              </details>
+            )}
           </div>
-          <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
-            <div style={{ fontWeight: 800, fontSize: 22 }}>{brl(p === 'annual' ? annual : monthly)}</div>
-            <div style={{ fontSize: 12, color: LIGHT }}>{p === 'annual' ? '/ano' : '/mês'}</div>
-          </div>
-        </div>
-      </button>
+        )}
+      </div>
     );
   };
 
@@ -159,26 +185,16 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
     ? `Pagamento único de ${brl(annual)} no Pix, sem renovação automática. Teste por 7 dias: se não gostar, peça o reembolso no app ou por e-mail e devolvemos o valor.`
     : `Total de ${brl(annual12)} em até 12x no cartão (inclui a taxa do parcelamento), sem renovação automática. Teste por 7 dias: se não gostar, peça o reembolso no app ou por e-mail.`;
 
-  const payOption = (k: AnnualPay, title: string, detail: string) => {
-    const sel = annualPay === k;
-    return (
-      <button type="button" key={k} onClick={() => setAnnualPay(k)} className="wc-pay"
-        style={{ borderColor: sel ? INK : BORDER, background: sel ? '#fff' : 'transparent' }}>
-        <span className="wc-radio" style={{ borderColor: sel ? INK : BORDER }}>{sel && <i />}</span>
-        <span style={{ textAlign: 'left' }}>
-          <span style={{ display: 'block', fontWeight: 800, fontSize: 15 }}>{title}</span>
-          <span style={{ display: 'block', fontSize: 13, color: MID, marginTop: 2 }}>{detail}</span>
-        </span>
-      </button>
-    );
-  };
 
   return (
     <div className="wc">
       <style>{`
         .wc { max-width: 480px; margin: 0 auto; padding: 32px 16px 48px; color: ${INK}; }
         .wc h1 { font-size: 28px; line-height: 1.15; margin: 0 0 8px; font-weight: 800; letter-spacing: -0.5px; }
-        .wc-plan { position: relative; display: block; width: 100%; border: 2px solid; border-radius: 18px; padding: 16px 18px; cursor: pointer; font: inherit; color: inherit; }
+        .wc-plan { position: relative; display: block; width: 100%; box-sizing: border-box; border: 2px solid; border-radius: 18px; padding: 16px 18px; color: inherit; }
+        .wc-plan-head { display: flex; gap: 12px; align-items: flex-start; width: 100%; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: inherit; }
+        .wc-pays { display: grid; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(22,19,31,0.12); }
+        .wc-pays-title { font-size: 13px; font-weight: 800; color: ${INK}; }
         .wc-tag { position: absolute; top: -11px; right: 16px; background: ${INK}; color: ${LIME}; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 999px; letter-spacing: 0.5px; }
         .wc label { display: block; font-size: 13px; font-weight: 600; color: ${MID}; margin: 14px 0 6px; }
         .wc input { width: 100%; box-sizing: border-box; border: 1px solid ${BORDER}; border-radius: 12px; padding: 13px 14px; font-size: 16px; background: #fff; color: ${INK}; }
@@ -209,20 +225,6 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
 
       <div style={{ display: 'grid', gap: 14 }}>
         {planCard('annual')}
-        {plan === 'annual' && (
-          <div role="radiogroup" aria-label="Forma de pagamento do anual" style={{ display: 'grid', gap: 8, marginTop: -4 }}>
-            {payOption('card', trial > 0 ? `Cartão: ${trial} dias grátis` : 'Cartão em 1x', `Depois ${brl(annual)} por ano, em 1x. Renova sozinho; cancele quando quiser.`)}
-            {payOption('pix', 'Pix à vista', `${brl(annual)} de uma vez, sem renovação automática. Teste por 7 dias: se não gostar, peça o reembolso.`)}
-            {payOption('installments', 'Até 12x no cartão', `12x de ${brl(annual12 / 12)} (total ${brl(annual12)}, com a taxa do parcelamento). Teste por 7 dias: se não gostar, peça o reembolso.`)}
-            {annualPay !== 'card' && (
-              <details className="wc-help">
-                <summary>Como peço o reembolso?</summary>
-                <p>Em até 7 dias depois do pagamento, no app: <strong>Perfil &gt; Assinatura &gt; Gerenciar assinatura &gt; Pedir reembolso</strong>. Se preferir, escreva para <a href="mailto:suporte@queizy.com">suporte@queizy.com</a> com o e-mail da sua conta.</p>
-                <p>No Pix, o valor volta para a mesma conta em instantes. No cartão, o estorno aparece na fatura (pode levar até duas faturas, conforme o banco). O acesso termina quando o reembolso é feito.</p>
-              </details>
-            )}
-          </div>
-        )}
         {planCard('monthly')}
       </div>
 
@@ -256,8 +258,6 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
         <input id="wc-name" value={name} onChange={e => setName(e.target.value)} autoComplete="name" required />
         <label htmlFor="wc-email">E-mail (é com ele que você entra no app)</label>
         <input id="wc-email" type="email" value={email} onChange={e => setEmail(e.target.value)} autoComplete="email" inputMode="email" required />
-        <label htmlFor="wc-cpf">CPF (exigido para a nota e o pagamento)</label>
-        <input id="wc-cpf" value={cpf} onChange={e => setCpf(maskCpf(e.target.value))} inputMode="numeric" required />
         <label htmlFor="wc-phone">Celular (opcional)</label>
         <input id="wc-phone" value={phone} onChange={e => setPhone(maskPhone(e.target.value))} autoComplete="tel" inputMode="tel" />
 

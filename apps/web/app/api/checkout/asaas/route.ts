@@ -1,6 +1,6 @@
 // /api/checkout/asaas — assinatura pelo site.
 //   GET  ?aff=CODE                       preços (com o desconto do afiliado) e se o checkout está ligado
-//   POST { plan, name, email, cpf, phone?, aff? }  cria (ou acha) a conta e devolve { url } do checkout do Asaas
+//   POST { method, name, email, phone?, aff?, coupon? }  cria (ou acha) a conta e devolve { url } do checkout do Asaas
 //   POST { action: 'cancel' }  (Bearer do aluno)   cancela a renovação (mensal ou anual no cartão)
 //   POST { action: 'refund' }  (Bearer do aluno)   reembolso em até 7 dias do 1º pagamento (Pix, 12x ou cartão)
 // Conta nova: criada aqui pelo e-mail; depois do pagamento chega o e-mail para criar a senha.
@@ -9,8 +9,8 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { affiliateByCode, attributeUser, cleanAffiliateCode } from '@/lib/affiliates';
 import {
   asaasConfigured, AsaasError, cancelSubscription, createCheckout, priceFor,
-  validCpf, WEB_TRIAL_DAYS, resolveCoupon, COUPON_ERROR_PT, type WebPlan,
-  ensureCustomer, priceForMethod, planOfMethod, methodHasTrial, type PayMethod,
+  WEB_TRIAL_DAYS, resolveCoupon, COUPON_ERROR_PT, type WebPlan,
+  priceForMethod, planOfMethod, methodHasTrial, type PayMethod,
   refundPayment, refundInstallment, REFUND_WINDOW_DAYS,
 } from '@/lib/asaas';
 
@@ -105,12 +105,10 @@ export async function POST(req: NextRequest) {
   const plan: WebPlan | null = method ? planOfMethod(method) : null;
   const name = String(body.name ?? '').trim().slice(0, 100);
   const email = String(body.email ?? '').trim().toLowerCase();
-  const cpf = String(body.cpf ?? '').replace(/\D/g, '');
   const phone = String(body.phone ?? '').replace(/\D/g, '');
   if (!plan) return NextResponse.json({ error: 'Escolha um plano.' }, { status: 400 });
   if (name.split(/\s+/).length < 2) return NextResponse.json({ error: 'Informe nome e sobrenome.' }, { status: 400 });
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return NextResponse.json({ error: 'Confira o e-mail.' }, { status: 400 });
-  if (!validCpf(cpf)) return NextResponse.json({ error: 'Confira o CPF.' }, { status: 400 });
 
   // Conta: acha pelo e-mail ou cria (sem senha; ela é criada pelo link que chega no e-mail).
   let { data: user } = await supabase.from('charlotte_users').select(USER_COLS).ilike('email', email).maybeSingle();
@@ -152,14 +150,12 @@ export async function POST(req: NextRequest) {
   const value = priceForMethod(method!, discountPct);
 
   try {
-    // Cliente no Asaas: o da última compra desta conta, ou um novo (sem endereço).
+    // CPF, endereço e cartão ficam na página do Asaas (o checkout dele exige os dados completos
+    // do pagador). Aqui só nome e e-mail, para a conta do app; o pagamento é ligado à conta pelo
+    // id do checkout e pelo externalReference. Se a conta já tem cliente no Asaas, reaproveita.
     const { data: prevC } = await supabase.from('asaas_checkouts').select('asaas_customer_id')
-      .eq('user_id', u.id).not('asaas_customer_id', 'is', null).order('created_at', { ascending: false }).limit(1).maybeSingle();
-    let customerId = (prevC as { asaas_customer_id: string } | null)?.asaas_customer_id ?? null;
-    if (!customerId) {
-      customerId = await ensureCustomer({ name, email, cpfCnpj: cpf, phone: phone || undefined, userId: u.id })
-        .catch(e => { console.warn('[checkout/asaas] cliente não criado:', e instanceof AsaasError ? e.body : e); return null; });
-    }
+      .eq('user_id', u.id).eq('status', 'paid').not('asaas_customer_id', 'is', null).order('created_at', { ascending: false }).limit(1).maybeSingle();
+    const customerId = (prevC as { asaas_customer_id: string } | null)?.asaas_customer_id ?? null;
     const checkout = await createCheckout({ method: method!, value, trialDays, userId: u.id, customerId });
     await supabase.from('asaas_checkouts').insert({
       id: checkout.id, user_id: u.id, plan, method, value_brl: value, trial_days: trialDays, asaas_customer_id: customerId,
