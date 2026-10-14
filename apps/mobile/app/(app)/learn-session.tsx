@@ -1780,7 +1780,7 @@ export default function LearnSessionScreen() {
 
           {/* ── PRONUNCIATION — sem card, mesmo padrao do grammar (direto na lavanda) ── */}
           {currentStep.kind === 'pronunciation' && (
-            <View>
+            <View style={{ flex: 1 }}>
               {/* Bubble centralizada (sem avatar embedded) */}
               <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center' }}>
                 <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
@@ -1822,7 +1822,9 @@ export default function LearnSessionScreen() {
                   const bg = pronStatus === 'recording' ? '#D12A64' : '#6B4BFF';
                   const isRec = pronStatus === 'recording';
                   return (
-                    <View style={{ alignItems: 'center', marginTop: 420, marginBottom: 24 }}>
+                    // Mic encostado no fim do espaço disponível (marginTop auto): cabe em qualquer altura de
+                    // tela sem cortar o "Segure para falar" (antes era marginTop fixo de 420).
+                    <View style={{ alignItems: 'center', marginTop: 'auto', paddingTop: 24, marginBottom: 8 }}>
                       <View style={{ width: 160, height: 160, alignItems: 'center', justifyContent: 'center' }}>
                         {/* Aneis pulsantes (so quando recording) */}
                         {isRec && [0, 0.3, 0.6].map((delay, idx) => (
