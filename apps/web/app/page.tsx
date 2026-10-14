@@ -154,7 +154,7 @@ export default function Page() {
             <a href="#planos">Planos</a>
             <a href="/faq">Ajuda</a>
           </div>
-          <StoreCTA variant="nav" label="Baixar grátis" />
+          <StoreCTA variant="nav" label="Assinar" />
         </div>
       </nav>
 
@@ -169,8 +169,8 @@ export default function Page() {
               Quem te acompanha é a Charlotte, sua tutora de IA.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
-              <StoreCTA variant="hero" label="o Queizy" />
-              <span style={{ fontSize: 13, color: 'var(--light)' }}>Sem cartão para começar</span>
+              <StoreCTA variant="hero" label="7 dias grátis" plan="mensal" />
+              <span style={{ fontSize: 13, color: 'var(--light)' }}>Mensal com 7 dias grátis · Anual no Pix ou em 12x</span>
             </div>
           </div>
 
@@ -287,8 +287,11 @@ export default function Page() {
                 <div style={{ fontSize: 13, color: 'var(--mid)' }}>por ano · cerca de R$ 16,67 por mês</div>
               </div>
             </div>
-            <StoreCTA variant="pricing" label="Experimentar 7 dias grátis" />
-            <p style={{ fontSize: 13, color: 'var(--light)', marginTop: 16 }}>Cancele quando quiser, direto na loja.</p>
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <StoreCTA variant="pricing" label="Começar 7 dias grátis" plan="mensal" />
+              <StoreCTA variant="pricing" label="Assinar o Anual" plan="anual" />
+            </div>
+            <p style={{ fontSize: 13, color: 'var(--light)', marginTop: 16 }}>Mensal: 7 dias grátis no cartão. Anual: Pix ou até 12x. Cancele quando quiser.</p>
           </div>
         </div>
       </section>

@@ -19,6 +19,43 @@ export type WebPlan = keyof typeof ASAAS_PRICES;
 
 const SITE = 'https://queizy.com';
 
+export type CouponResult =
+  | { ok: true; code: string; pct: number; kind: 'coupon' | 'affiliate'; plans: WebPlan[]; affiliateCode?: string }
+  | { ok: false; error: 'not_found' | 'expired' | 'used_up' | 'inactive' };
+
+/** Confere o cupom: primeiro cupom de campanha (tabela coupons), depois código de afiliado. */
+export async function resolveCoupon(raw: unknown): Promise<CouponResult> {
+  const code = String(raw ?? '').trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (!code) return { ok: false, error: 'not_found' };
+  const { getSupabaseAdmin } = await import('@/lib/supabase-admin');
+  const supabase = getSupabaseAdmin();
+  const { data: c } = await supabase.from('coupons').select('*').eq('code', code).maybeSingle();
+  const row = c as { code: string; discount_pct: number; plans: string[]; active: boolean; expires_at: string | null; max_uses: number | null } | null;
+  if (row) {
+    if (!row.active) return { ok: false, error: 'inactive' };
+    if (row.expires_at && new Date(row.expires_at).getTime() < Date.now()) return { ok: false, error: 'expired' };
+    if (row.max_uses != null) {
+      const { count } = await supabase.from('asaas_checkouts').select('id', { count: 'exact', head: true }).eq('coupon_code', code).eq('status', 'paid');
+      if ((count ?? 0) >= row.max_uses) return { ok: false, error: 'used_up' };
+    }
+    return { ok: true, code, pct: row.discount_pct, kind: 'coupon', plans: (row.plans ?? ['monthly', 'annual']) as WebPlan[] };
+  }
+  const { data: a } = await supabase.from('affiliates').select('code, status, user_discount_pct').eq('code', code).maybeSingle();
+  const aff = a as { code: string; status: string; user_discount_pct: number } | null;
+  if (aff) {
+    if (aff.status !== 'active') return { ok: false, error: 'inactive' };
+    return { ok: true, code, pct: Number(aff.user_discount_pct) || 0, kind: 'affiliate', plans: ['monthly', 'annual'], affiliateCode: aff.code };
+  }
+  return { ok: false, error: 'not_found' };
+}
+
+export const COUPON_ERROR_PT: Record<string, string> = {
+  not_found: 'Cupom não encontrado.',
+  expired:   'Esse cupom expirou.',
+  used_up:   'Esse cupom já foi usado o máximo de vezes.',
+  inactive:  'Esse cupom não está ativo.',
+};
+
 export function asaasConfigured(): boolean {
   return !!process.env.ASAAS_API_KEY;
 }

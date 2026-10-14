@@ -8,7 +8,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { affiliateByCode, attributeUser, cleanAffiliateCode } from '@/lib/affiliates';
 import {
   asaasConfigured, AsaasError, cancelSubscription, createCheckout, priceFor,
-  validCpf, WEB_TRIAL_DAYS, type WebPlan,
+  validCpf, WEB_TRIAL_DAYS, resolveCoupon, COUPON_ERROR_PT, type WebPlan,
 } from '@/lib/asaas';
 
 export const dynamic = 'force-dynamic';
@@ -26,13 +26,18 @@ async function discountFor(code: string | null): Promise<{ code: string; pct: nu
   return { code: aff.code, pct: Number(aff.user_discount_pct) || 0 };
 }
 
+//   GET ?aff=CODE&coupon=CODE  preços com o melhor desconto (afiliado do link ou cupom); não acumula
 export async function GET(req: NextRequest) {
   const d = await discountFor(cleanAffiliateCode(req.nextUrl.searchParams.get('aff')) || null);
+  const couponRaw = req.nextUrl.searchParams.get('coupon');
+  const c = couponRaw ? await resolveCoupon(couponRaw) : null;
+  const pctFor = (plan: WebPlan) => Math.max(d?.pct ?? 0, c?.ok && c.plans.includes(plan) ? c.pct : 0);
   return NextResponse.json({
     enabled: asaasConfigured(),
     trialDays: WEB_TRIAL_DAYS,
-    discountPct: d?.pct ?? 0,
-    prices: { monthly: priceFor('monthly', d?.pct), annual: priceFor('annual', d?.pct) },
+    discountPct: Math.max(pctFor('monthly'), pctFor('annual')),
+    coupon: c ? (c.ok ? { ok: true, code: c.code, pct: c.pct, plans: c.plans } : { ok: false, error: COUPON_ERROR_PT[c.error] }) : null,
+    prices: { monthly: priceFor('monthly', pctFor('monthly')), annual: priceFor('annual', pctFor('annual')) },
   });
 }
 
@@ -90,12 +95,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Essa conta já tem uma assinatura ativa. É só entrar no app.' }, { status: 409 });
   }
 
+  // Cupom: de campanha ou código de afiliado (que também marca a conta para a comissão).
+  const coupon = body.coupon ? await resolveCoupon(body.coupon) : null;
+  if (coupon && !coupon.ok) return NextResponse.json({ error: COUPON_ERROR_PT[coupon.error] }, { status: 400 });
+
   // Afiliado: marca a conta (o primeiro link vale) e usa o desconto do afiliado da conta.
-  const affCode = cleanAffiliateCode(body.aff) || null;
+  const affCode = cleanAffiliateCode(body.aff) || (coupon?.ok && coupon.kind === 'affiliate' ? coupon.affiliateCode! : null);
   if (affCode) await attributeUser(u.id, affCode, 'link').catch(() => null);
   const { data: attr } = await supabase.from('affiliate_attributions').select('affiliates(code, status, user_discount_pct)').eq('user_id', u.id).maybeSingle();
   const a = (attr as { affiliates: { code: string; status: string; user_discount_pct: number } | null } | null)?.affiliates;
-  const discountPct = a && a.status === 'active' ? Number(a.user_discount_pct) || 0 : 0;
+  const affPct = a && a.status === 'active' ? Number(a.user_discount_pct) || 0 : 0;
+  const couponPct = coupon?.ok && coupon.kind === 'coupon' && coupon.plans.includes(plan) ? coupon.pct : 0;
+  const discountPct = Math.max(affPct, couponPct); // não acumula: vale o maior
 
   // 7 dias grátis só no mensal e só para quem nunca teve teste nem assinatura.
   const { count: paidBefore } = await supabase.from('asaas_checkouts').select('id', { count: 'exact', head: true }).eq('user_id', u.id).eq('status', 'paid');
@@ -108,6 +119,7 @@ export async function POST(req: NextRequest) {
     await supabase.from('asaas_checkouts').insert({
       id: checkout.id, user_id: u.id, plan, value_brl: value, trial_days: trialDays,
       affiliate_code: a?.code ?? null, status: 'created',
+      coupon_code: couponPct > 0 && couponPct >= affPct && coupon?.ok ? coupon.code : null, discount_pct: discountPct,
     } as never);
     return NextResponse.json({ url: checkout.link, trialDays, value, isNewAccount });
   } catch (e) {

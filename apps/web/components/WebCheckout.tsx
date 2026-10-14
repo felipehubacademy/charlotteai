@@ -13,7 +13,8 @@ const GREEN = '#08804A';
 const BORDER = '#E6E2EC';
 
 type Plan = 'monthly' | 'annual';
-type Info = { enabled: boolean; trialDays: number; discountPct: number; prices: { monthly: number; annual: number } };
+type Info = { enabled: boolean; trialDays: number; discountPct: number; prices: { monthly: number; annual: number };
+  coupon: { ok: true; code: string; pct: number } | { ok: false; error: string } | null };
 
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 const maskCpf = (v: string) => v.replace(/\D/g, '').slice(0, 11)
@@ -31,14 +32,62 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
   const [phone, setPhone] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [couponOpen, setCouponOpen] = useState(false);
+  const [couponInput, setCouponInput] = useState('');
+  const [coupon, setCoupon] = useState<string | null>(null); // cupom aplicado
+  const [couponMsg, setCouponMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const [couponBusy, setCouponBusy] = useState(false);
+
+  async function loadInfo(affCode: string | null, couponCode: string | null) {
+    const q = new URLSearchParams();
+    if (affCode) q.set('aff', affCode);
+    if (couponCode) q.set('coupon', couponCode);
+    const r = await fetch(`/api/checkout/asaas${q.toString() ? `?${q}` : ''}`);
+    const j = (await r.json()) as Info;
+    setInfo(j);
+    return j;
+  }
+
+  async function applyCoupon(raw?: string) {
+    const code = (raw ?? couponInput).trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (!code) return;
+    setCouponBusy(true); setCouponMsg(null);
+    try {
+      const j = await loadInfo(aff, code);
+      if (j.coupon?.ok) {
+        setCoupon(code); setCouponInput(code);
+        setCouponMsg({ ok: true, text: `Cupom ${code} aplicado: ${j.coupon.pct}% de desconto.` });
+      } else {
+        setCoupon(null);
+        setCouponMsg({ ok: false, text: (j.coupon && !j.coupon.ok ? j.coupon.error : null) ?? 'Cupom não encontrado.' });
+        await loadInfo(aff, null);
+      }
+    } catch { setCouponMsg({ ok: false, text: 'Sem conexão. Tente de novo.' }); }
+    setCouponBusy(false);
+  }
 
   useEffect(() => {
     captureAffiliateFromUrl();
     const code = storedAffiliate();
     setAff(code);
-    fetch(`/api/checkout/asaas${code ? `?aff=${encodeURIComponent(code)}` : ''}`)
-      .then(r => r.json()).then(setInfo).catch(() => setInfo(null));
-  }, []);
+    // Campanha pode trazer o cupom no link: queizy.com/assinar?cupom=CODIGO
+    const fromUrl = new URLSearchParams(window.location.search).get('cupom');
+    if (fromUrl) { setCouponOpen(true); setCouponInput(fromUrl.toUpperCase()); }
+    (async () => {
+      try {
+        if (fromUrl) { await loadInfo(code, null); await applyCouponWith(code, fromUrl); }
+        else await loadInfo(code, null);
+      } catch { setInfo(null); }
+    })();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Igual ao applyCoupon, mas com o afiliado já lido (o estado ainda não atualizou na primeira carga).
+  async function applyCouponWith(affCode: string | null, raw: string) {
+    const code = raw.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+    const j = await loadInfo(affCode, code);
+    if (j.coupon?.ok) { setCoupon(code); setCouponMsg({ ok: true, text: `Cupom ${code} aplicado: ${j.coupon.pct}% de desconto.` }); }
+    else { setCouponMsg({ ok: false, text: (j.coupon && !j.coupon.ok ? j.coupon.error : null) ?? 'Cupom não encontrado.' }); await loadInfo(affCode, null); }
+  }
 
   const monthly = info?.prices.monthly ?? 29.99;
   const annual = info?.prices.annual ?? 199.99;
@@ -51,7 +100,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
     try {
       const r = await fetch('/api/checkout/asaas', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan, name, email, cpf, phone, aff }),
+        body: JSON.stringify({ plan, name, email, cpf, phone, aff, coupon }),
       });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || !j.url) { setError(j.error ?? 'Não foi possível abrir o pagamento agora.'); setBusy(false); return; }
@@ -110,7 +159,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
       <p style={{ color: MID, margin: '0 0 22px', lineHeight: 1.5 }}>
         Acesso completo: conversa por voz com a Charlotte, correção na hora e a trilha inteira, do básico ao avançado.
       </p>
-      {disc > 0 && (
+      {disc > 0 && !coupon && (
         <div style={{ background: '#E3F6EC', color: GREEN, borderRadius: 12, padding: '10px 14px', fontSize: 14, fontWeight: 700, marginBottom: 16 }}>
           Desconto de {disc}% aplicado pelo seu link.
         </div>
@@ -120,6 +169,31 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
       <div style={{ display: 'grid', gap: 14 }}>
         {planCard('annual')}
         {planCard('monthly')}
+      </div>
+
+      <div style={{ marginTop: 14 }}>
+        {!couponOpen ? (
+          <button type="button" onClick={() => setCouponOpen(true)}
+            style={{ background: 'none', border: 0, padding: 0, color: MID, fontSize: 14, fontWeight: 700, textDecoration: 'underline', cursor: 'pointer', font: 'inherit' }}>
+            Tem um cupom?
+          </button>
+        ) : (
+          <div>
+            <label htmlFor="wc-coupon" style={{ marginTop: 0 }}>Cupom</label>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <input id="wc-coupon" value={couponInput} onChange={e => { setCouponInput(e.target.value.toUpperCase()); setCouponMsg(null); }}
+                onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); applyCoupon(); } }}
+                autoCapitalize="characters" autoComplete="off" style={{ flex: 1, minWidth: 0 }} />
+              <button type="button" onClick={() => applyCoupon()} disabled={couponBusy || !couponInput.trim()}
+                style={{ border: 0, borderRadius: 12, background: INK, color: LIME, fontWeight: 800, fontSize: 15, padding: '0 18px', cursor: 'pointer', opacity: couponBusy || !couponInput.trim() ? 0.6 : 1 }}>
+                {couponBusy ? '...' : 'Aplicar'}
+              </button>
+            </div>
+            {couponMsg && (
+              <p role="status" style={{ fontSize: 14, marginTop: 8, color: couponMsg.ok ? GREEN : '#C0264F', fontWeight: couponMsg.ok ? 700 : 400 }}>{couponMsg.text}</p>
+            )}
+          </div>
+        )}
       </div>
 
       <form onSubmit={submit} style={{ marginTop: 10 }}>

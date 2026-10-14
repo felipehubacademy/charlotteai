@@ -27,7 +27,7 @@ export default function PublicHeader() {
           <a href="/#planos" style={{ fontSize: 14, color: '#4D4858', fontWeight: 500 }}>Planos</a>
           <a href="/faq" style={{ fontSize: 14, color: '#4D4858', fontWeight: 500 }}>Ajuda</a>
         </div>
-        <StoreCTA variant="nav" label="Baixar grátis" className="nav-cta" />
+        <StoreCTA variant="nav" label="Assinar" className="nav-cta" />
       </nav>
     </>
   );
