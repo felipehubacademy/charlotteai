@@ -152,7 +152,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 **Voiced by**: `igorfina`
 **Persona**: Igorfina
 **Persona outfit**: `igorfina_casual`
-**Intro (em PT)**: "Peça as coisas com educação usando Could you...? e May I...?."
+**Intro (em PT)**: "Peça as coisas com educação usando Could you...? e May I...?"
 **Opening message**: "Welcome! How can I help you today?"
 
 **Sub-objectives** (3 objetivos):
@@ -670,10 +670,10 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 3. **id**: 3
    **label_pt**: "Dizer se vai junto"
    **label_en**: "Say if you might go too"
-   **hidden_prompt**: "user says whether they might join with might/may/sure: 'I might go with you', 'I'm sure I'll go', 'I may visit you' — must be in English"
+   **hidden_prompt**: "user says whether they might join with might/may/sure: 'I might go with you', 'I may visit you', 'I might join you' — must be in English"
    **hint_pt**: "I might go with you!"
    **hint_en**: "I might go with you!"
-   **example_pass**: I might go with you! | I may visit you there. | I'm sure, I'm going!
+   **example_pass**: I might go with you! | I may visit you there. | I might join you next week.
    **example_fail**: Maybe (no structure) | Talvez eu vá (Portuguese) | No (no structure)
 
 **Closing cue**: Igorfina encerra com "That would be amazing! Best tour guide ever!" quando obj_3 bater.

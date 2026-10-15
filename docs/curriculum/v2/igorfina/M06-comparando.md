@@ -620,7 +620,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **hint_pt**: "The blue one, it's less expensive."
    **hint_en**: "The blue one, it's less expensive."
    **example_pass**: The blue one, it's less expensive. | I'll take the cheaper one. | The least expensive, please.
-   **example_fail**: Blue (no comparison) | A azul (Portuguese) | The less expensive (wrong superlative)
+   **example_fail**: Blue (no comparison) | A azul (Portuguese) | The cheap one (no comparison)
 
 **Closing cue**: Igorfina fecha com "Great eye! Same style, less money. Smart shopping!" quando obj_2 bater.
 

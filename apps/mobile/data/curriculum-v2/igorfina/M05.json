@@ -211,7 +211,7 @@
         "voiced_by": "igorfina",
         "persona": "Igorfina",
         "persona_outfit": "igorfina_casual",
-        "intro_pt": "Peça as coisas com educação usando Could you...? e May I...?.",
+        "intro_pt": "Peça as coisas com educação usando Could you...? e May I...?",
         "opening_message": "Welcome! How can I help you today?",
         "objectives": [
           {
@@ -986,13 +986,13 @@
             "id": 3,
             "label_pt": "Dizer se vai junto",
             "label_en": "Say if you might go too",
-            "hidden_prompt": "user says whether they might join with might/may/sure: 'I might go with you', 'I'm sure I'll go', 'I may visit you' — must be in English",
+            "hidden_prompt": "user says whether they might join with might/may/sure: 'I might go with you', 'I may visit you', 'I might join you' — must be in English",
             "hint_pt": "I might go with you!",
             "hint_en": "I might go with you!",
             "examples_pass": [
               "I might go with you!",
               "I may visit you there.",
-              "I'm sure, I'm going!"
+              "I might join you next week."
             ],
             "examples_fail": [
               "Maybe (no structure)",
