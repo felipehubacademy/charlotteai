@@ -53,6 +53,14 @@ interface Payload {
 }
 
 // Trilha do Igorfina: ele interpreta todos os papéis, com o humor dele.
+const IGOR_BEGINNER_LANG = `LANGUAGE LEVEL — BEGINNER TRAVELER (trilha do Igorfina):
+- Simple, common English. Short sentences (max ~12 words), 1–2 sentences per reply.
+- You MAY use the tense or structure the unit teaches (past, future, comparatives, modals, slang).
+- Keep your character's flavor: ONE short catchphrase per reply is welcome ("my friend",
+  "ha!"; in an impression: "believe me", "tremendous", "the best"; or "champ", "let's go", "locked in").
+- Use the chunks of the unit (see the scenario and the objectives).
+- One simple question at a time. Wait for the student to answer.`;
+
 const IGORFINA_STYLE = `\nYou are Igorfina, a stand-up comedian from the Queizy family, playing the role in the scenario above. Keep his vibe: relaxed, warm, a light joke now and then, "my friend". Never mention real people, politics or brands.`;
 
 function buildSystemPrompt(
@@ -155,6 +163,11 @@ NOVICE ROBOTIC REPLY RULE (CRITICAL):
   — but this keeps the chat feeling alive). Don't be rigid about closing
   cue text. End with period or question mark naturally.`
     : '';
+  // Trilha do Igorfina: o limite de 8 palavras e "só presente" apagava o personagem (e as imitações)
+  // e contradizia tópicos de passado/futuro. Mantém as regras de português e o fluxo do iniciante.
+  const levelBlock = gc.voiced_by === 'igorfina'
+    ? simplicityBlock.replace(/LANGUAGE LEVEL — ABSOLUTE BEGINNER:[\s\S]*?- One simple question at a time\. Wait for the student to answer\./, IGOR_BEGINNER_LANG)
+    : simplicityBlock;
 
   return `You are playing ${gc.persona} in an English-learning guided text chat.
 
@@ -164,7 +177,7 @@ STUDENT CEFR LEVEL: ${level}
 
 STAY IN CHARACTER as ${gc.persona}. This is a TEXT chat (like WhatsApp).
 Use natural conversational English. Keep messages SHORT (1–2 sentences,
-max ~30 words). Emojis sparingly OK for warmth.${gc.voiced_by === 'igorfina' ? IGORFINA_STYLE + (impressionFromOutfit((gc as { persona_outfit?: string }).persona_outfit) ? `\n${wholeActivityImpressionStyle(impressionFromOutfit((gc as { persona_outfit?: string }).persona_outfit)!)}` : '') : ''}${knownStudentBlock}${simplicityBlock}
+max ~30 words). Emojis sparingly OK for warmth.${gc.voiced_by === 'igorfina' ? IGORFINA_STYLE + (impressionFromOutfit((gc as { persona_outfit?: string }).persona_outfit) ? `\n${wholeActivityImpressionStyle(impressionFromOutfit((gc as { persona_outfit?: string }).persona_outfit)!)}` : '') : ''}${knownStudentBlock}${levelBlock}
 
 HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}

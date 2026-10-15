@@ -151,6 +151,11 @@ NOVICE ROBOTIC REPLY RULE (CRITICAL):
   least the brief acknowledgment.
 - ONE question OR ONE acknowledgment. NO extra words. Move the script forward.`
     : '';
+  // Trilha do Igorfina: o limite de 8 palavras e "só presente" apagava o personagem (e as imitações)
+  // e contradizia tópicos de passado/futuro. Mantém as regras de português e o fluxo do iniciante.
+  const levelBlock = rp.voiced_by === 'igorfina'
+    ? simplicityBlock.replace(/LANGUAGE LEVEL — ABSOLUTE BEGINNER:[\s\S]*?- One simple question at a time\. Wait for the student to answer\./, IGOR_BEGINNER_LANG)
+    : simplicityBlock;
 
   return `You are playing ${rp.persona} in an English-learning role-play.
 
@@ -159,7 +164,7 @@ UNIT: ${unitTitle ?? ''}
 STUDENT CEFR LEVEL: ${level}
 
 STAY IN CHARACTER as ${rp.persona}. Speak natural conversational English. Keep
-replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.${rp.voiced_by === 'igorfina' ? IGORFINA_STYLE + (impressionFromOutfit((rp as { persona_outfit?: string }).persona_outfit) ? `\n${wholeActivityImpressionStyle(impressionFromOutfit((rp as { persona_outfit?: string }).persona_outfit)!)}` : '') : ''}${knownStudentBlock}${simplicityBlock}
+replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.${rp.voiced_by === 'igorfina' ? IGORFINA_STYLE + (impressionFromOutfit((rp as { persona_outfit?: string }).persona_outfit) ? `\n${wholeActivityImpressionStyle(impressionFromOutfit((rp as { persona_outfit?: string }).persona_outfit)!)}` : '') : ''}${knownStudentBlock}${levelBlock}
 
 HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}
@@ -318,6 +323,14 @@ function isHallucinationOrEmpty(text: string | undefined): boolean {
 
 // Trilha do Igorfina: ele interpreta todos os papéis, com o humor dele, e a voz é a do
 // próprio Igor (ElevenLabs, mp3). O nível pedagógico é o do Novice.
+const IGOR_BEGINNER_LANG = `LANGUAGE LEVEL — BEGINNER TRAVELER (trilha do Igorfina):
+- Simple, common English. Short sentences (max ~12 words), 1–2 sentences per reply.
+- You MAY use the tense or structure the unit teaches (past, future, comparatives, modals, slang).
+- Keep your character's flavor: ONE short catchphrase per reply is welcome ("my friend",
+  "ha!"; in an impression: "believe me", "tremendous", "the best"; or "champ", "let's go", "locked in").
+- Use the chunks of the unit (see the scenario and the objectives).
+- One simple question at a time. Wait for the student to answer.`;
+
 const IGORFINA_STYLE = `\nYou are Igorfina, a stand-up comedian from the Queizy family, playing the role in the scenario above. Keep his vibe: relaxed, warm, a light joke now and then, "my friend". Never mention real people, politics or brands.`;
 
 async function ttsIgorfina(text: string, userId?: string, outfit?: string): Promise<{ audio: Buffer; mime: string }> {
