@@ -506,7 +506,7 @@
           }
         ],
         "closing_cue": "Igorfina encerra com \"The best report. Incredible report. You're hired, believe me!\" quando obj_3 bater.",
-        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Folks, I need a report. A tremendous report. What was the best part of your trip?\"\n2. **Student**: \"The best part was the beach.\"\n3. **Igorfina**: \"Beautiful. And the worst? Be honest.\"\n4. **Student**: \"The worst part was the traffic.\"\n5. **Igorfina**: \"Terrible traffic. Sad! Better than your last trip?\"\n6. **Student**: \"It was better than my last trip.\"\n7. **Igorfina**: \"The best report. Incredible report. You're hired, believe me!\"\n\n---"
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Folks, I need a report. A tremendous report. What was the best part of your trip?\"\n2. **Student**: \"The best part was the beach.\"\n3. **Igorfina**: \"The beach! Tremendous. The most beautiful beach, believe me. And the worst part? Be honest, folks.\"\n4. **Student**: \"The worst part was the traffic.\"\n5. **Igorfina**: \"Terrible traffic. The worst. Sad! But this trip, folks, better than your last trip?\"\n6. **Student**: \"It was better than my last trip.\"\n7. **Igorfina**: \"The best report. Incredible report. You're hired, believe me!\"\n\n---"
       }
     },
     {

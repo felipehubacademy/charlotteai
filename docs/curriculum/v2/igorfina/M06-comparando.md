@@ -351,9 +351,9 @@ Igorfina fala no estilo do presidente (imitação). Aluno repete; a pronúncia �
 
 1. **Igorfina**: "Folks, I need a report. A tremendous report. What was the best part of your trip?"
 2. **Student**: "The best part was the beach."
-3. **Igorfina**: "Beautiful. And the worst? Be honest."
+3. **Igorfina**: "The beach! Tremendous. The most beautiful beach, believe me. And the worst part? Be honest, folks."
 4. **Student**: "The worst part was the traffic."
-5. **Igorfina**: "Terrible traffic. Sad! Better than your last trip?"
+5. **Igorfina**: "Terrible traffic. The worst. Sad! But this trip, folks, better than your last trip?"
 6. **Student**: "It was better than my last trip."
 7. **Igorfina**: "The best report. Incredible report. You're hired, believe me!"
 
