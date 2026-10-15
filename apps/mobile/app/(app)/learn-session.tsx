@@ -1827,13 +1827,14 @@ export default function LearnSessionScreen() {
                   O proprio icone pulsa (escala) quando audio toca — sem
                   ring externo, animacao no proprio glifo. */}
               {(currentStep.phrase.type === 'repeat' || pronStatus === 'result') && currentStep.phrase.text && (
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 24 }}>
+                // Frase longa quebra linha dentro da tela (flexShrink); nunca passa das laterais.
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 24, alignSelf: 'stretch', paddingHorizontal: 4 }}>
                   {currentStep.phrase.type !== 'sentence_stress' && pronStatus !== 'loading_audio' && (
-                    <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.7} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+                    <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.7} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }} style={{ flexShrink: 0 }}>
                       <SpeakerIcon size={32} color={accent} weight="fill" />
                     </TouchableOpacity>
                   )}
-                  <AppText style={{ fontSize: 22, fontWeight: '500', color: C.navy, lineHeight: 34, textAlign: 'center' }}>
+                  <AppText style={{ flexShrink: 1, fontSize: 22, fontWeight: '500', color: C.navy, lineHeight: 34, textAlign: 'center' }}>
                     {currentStep.phrase.text}
                   </AppText>
                 </View>
