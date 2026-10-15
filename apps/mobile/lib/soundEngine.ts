@@ -107,6 +107,8 @@ class SoundEngine {
       if (id) setTimeout(() => voiceSFX.play(id).catch(() => {}), 1100);
     } else if (name === 'answer_wrong') {
       this.consecCorrect = 0;
+      // Só o Igorfina comenta o erro ("Cuaaaeezy..."); a Charlotte não tem essa fala.
+      if (voiceSFX.getCharacter() === 'igorfina') setTimeout(() => voiceSFX.play('miss').catch(() => {}), 900);
     }
   }
 

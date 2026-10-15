@@ -22,11 +22,12 @@ export type VoiceSfxId =
   | 'streak_7_days'         // marco 7 dias           — "Seven days strong!"
   | 'streak_30_days'        // marco 30 dias          — "Thirty days!"
   | 'topic_complete'        // topico finalizado      — "Topic done!"
-  | 'module_complete';      // modulo finalizado      — "Module complete!"
+  | 'module_complete'       // modulo finalizado      — "Module complete!"
+  | 'miss';                 // erro (só o Igorfina)   — "Cuaaaeezy..."
 
 // ── Catalogo de assets bundled ───────────────────────────────────────────────
 
-const BUNDLED: Record<VoiceSfxId, number> = {
+const BUNDLED: Partial<Record<VoiceSfxId, number>> = {
   streak_3:              require('../assets/audio/voice/streak_3.mp3'),
   streak_5:              require('../assets/audio/voice/streak_5.mp3'),
   streak_10:             require('../assets/audio/voice/streak_10.mp3'),
@@ -40,6 +41,21 @@ const BUNDLED: Record<VoiceSfxId, number> = {
   module_complete:       require('../assets/audio/voice/module_complete.mp3'),
 };
 
+// Trilha do Igorfina: os bordões dele no lugar das falas da Charlotte. Por enquanto gerados
+// no ElevenLabs (voz do Igor); para trocar pela gravação dele, substitua os arquivos em
+// assets/audio/voice/igorfina/ mantendo os nomes. O que não tem versão dele fica em silêncio.
+export type VoiceCharacter = 'charlotte' | 'igorfina';
+const IGORFINA: Partial<Record<VoiceSfxId, number>> = {
+  streak_3:        require('../assets/audio/voice/igorfina/crazy.mp3'),        // "CRAZY!"
+  streak_5:        require('../assets/audio/voice/igorfina/sliced.mp3'),       // "SLICED!"
+  streak_10:       require('../assets/audio/voice/igorfina/thats_crazy.mp3'),  // "That is CRAZY, my friend!"
+  topic_complete:  require('../assets/audio/voice/igorfina/sliced.mp3'),
+  module_complete: require('../assets/audio/voice/igorfina/thats_crazy.mp3'),
+  miss:            require('../assets/audio/voice/igorfina/cuaaaeezy.mp3'),    // "Cuaaaeezy..."
+};
+// O erro pode voltar mais cedo que as outras falas, mas nunca em todo exercício.
+const MISS_COOLDOWN_MS = 5 * 60_000;
+
 // Cooldowns (ms)
 const GLOBAL_COOLDOWN_MS = 90_000;       // nenhuma voz toca antes de 90s da ultima
 const PER_ID_COOLDOWN_MS = 30 * 60_000;  // mesma frase nao repete por 30min
@@ -48,8 +64,13 @@ class VoiceSFXEngine {
   private muted = false;
   private lastPlayedAt = 0;
   private lastPlayedAtById = new Map<VoiceSfxId, number>();
+  private character: VoiceCharacter = 'charlotte';
 
   setMuted(m: boolean) { this.muted = m; }
+
+  /** Quem fala: a trilha do Igorfina usa os bordões dele (ver IGORFINA). */
+  setCharacter(c: VoiceCharacter) { this.character = c; }
+  getCharacter(): VoiceCharacter { return this.character; }
 
   /** Toca uma interjeicao. Retorna false se foi bloqueado por cooldown/prefs. */
   async play(id: VoiceSfxId): Promise<boolean> {
@@ -59,10 +80,10 @@ class VoiceSFXEngine {
     const now = Date.now();
     if (now - this.lastPlayedAt < GLOBAL_COOLDOWN_MS) return false;
     const lastForId = this.lastPlayedAtById.get(id) ?? 0;
-    if (now - lastForId < PER_ID_COOLDOWN_MS) return false;
+    if (now - lastForId < (id === 'miss' ? MISS_COOLDOWN_MS : PER_ID_COOLDOWN_MS)) return false;
 
     try {
-      const source = BUNDLED[id];
+      const source = this.character === 'igorfina' ? IGORFINA[id] : BUNDLED[id];
       if (!source) return false;
 
       // NAO mudamos interruptionMode aqui (mesma razao do soundEngine):

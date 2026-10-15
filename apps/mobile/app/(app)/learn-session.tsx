@@ -19,6 +19,7 @@ import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 import * as SecureStore from 'expo-secure-store';
 import * as Haptics from '@/lib/hapticsGated';
 import { soundEngine } from '@/lib/soundEngine';
+import { voiceSFX } from '@/lib/voiceSFX';
 import { systemIsPt } from '@/lib/systemLang';
 import { checkGrammarAnswer } from '@/lib/grammarAnswer';
 import { scheduleReviews, markReviewDone, rescheduleReview } from '@/lib/spacedRepetition';
@@ -247,6 +248,11 @@ export default function LearnSessionScreen() {
   // Reset contador de acertos consecutivos ao iniciar a sessao
   // (Tier 4 — voiceSFX dispara em 3/5/10 acertos seguidos)
   useEffect(() => { soundEngine.resetStreak(); }, []);
+  // Trilha do Igorfina: os bordões dele ("CRAZY!", "SLICED!", "Cuaaaeezy...") no lugar das falas da Charlotte.
+  useEffect(() => {
+    voiceSFX.setCharacter(level === 'Igorfina' ? 'igorfina' : 'charlotte');
+    return () => voiceSFX.setCharacter('charlotte');
+  }, [level]);
 
   // Silent loop (volume 0) mantem AVAudioSession ativa entre Charlotte/SFX.
   // Sem isso Spotify volta a tocar nos gaps. Per-screen, morre no unmount.
