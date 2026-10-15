@@ -60,9 +60,9 @@ function buildPrompt(req: GreetingRequest): { system: string; user: string } {
   } else if (todayXP > 0) {
     ctx.push(`Streak: ${streak} day${streak !== 1 ? 's' : ''}. ${todayXP} XP earned today, ${xpLeft} XP left to hit the goal. Push them gently.`);
   } else if (streak > 1) {
-    ctx.push(`Streak: ${streak} days. No XP yet today. Motivate them to keep the streak alive.`);
+    ctx.push(`Streak: ${streak} days. They have not earned XP TODAY yet (${totalXP} XP in total). Motivate them to keep the streak alive. If you mention XP, always say "today" explicitly; never imply they have no XP at all.`);
   } else {
-    ctx.push(`No XP yet today. Short motivational nudge.`);
+    ctx.push(`They have not earned XP TODAY yet (${totalXP} XP in total). Short motivational nudge. If you mention XP, always say "today" explicitly; never imply they have no XP at all.`);
   }
 
   // Destaque de ontem: a Charlotte comenta a evolução real do aluno.
