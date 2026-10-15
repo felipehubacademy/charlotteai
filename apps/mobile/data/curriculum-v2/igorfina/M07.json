@@ -1,0 +1,1259 @@
+{
+  "id": "M07",
+  "title": "In, out, on, off, under, above, beside",
+  "level": "Igorfina",
+  "block": "A1",
+  "units_range": "F31–F35",
+  "theme": "Dizer onde as coisas estão e usar in/out/on/off nas expressões do dia a dia",
+  "goal": "Aluno sai usando in, on, under, above, beside, next to, inside e outside para dizer onde algo está, \"turn on / turn off\" para aparelhos e \"I'm in! / I'm out\" para topar ou não topar.",
+  "connects_to": "M06 (Comparando) e M08 (Situações do dia a dia).",
+  "module_chunks": [
+    "in the box / on the box / under the box",
+    "out of the box",
+    "My phone is in my bag.",
+    "The keys are on the table.",
+    "The screwdriver is on the hood.",
+    "under the bridge / under the bed",
+    "above the door / above the bed",
+    "My phone is beside my bag.",
+    "next to the bank",
+    "between the hotel and the park",
+    "Turn on the light. / Turn off the light.",
+    "My phone is off.",
+    "The TV is on.",
+    "I'm in! (tô dentro)",
+    "I'm out. (tô fora)",
+    "inside / outside",
+    "Let's wait inside.",
+    "It's cold outside."
+  ],
+  "units": [
+    {
+      "id": "F31",
+      "title": "In, on, under",
+      "sub_cefr": "A1",
+      "grammar_focus": "Preposições de lugar básicas: in / on / under",
+      "tense": "PRESENTE · to be",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você perdeu as chaves no quarto do hotel e procura em todo lugar.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "My phone is _____ my bag.",
+          "options": [
+            "in",
+            "on",
+            "under"
+          ],
+          "answer": "in",
+          "explanation": "\"In\" = dentro. \"My phone is in my bag\" = meu celular está dentro da bolsa. Dica do Igor: pense na caixa, \"in the box\" é dentro."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The keys are _____ the table.",
+          "options": [
+            "on",
+            "in",
+            "under"
+          ],
+          "answer": "on",
+          "explanation": "\"On\" = em cima, encostado na superfície. \"On the table\" = em cima da mesa."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The cat is sleeping _____ the bed.",
+          "choices": [
+            "under",
+            "in",
+            "on top",
+            "at"
+          ],
+          "answer": "under",
+          "explanation": "\"Under\" = embaixo. \"Under the bed\" = embaixo da cama."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The screwdriver is _____ the hood of the car.",
+          "choices": [
+            "on",
+            "in",
+            "under",
+            "at"
+          ],
+          "answer": "on",
+          "explanation": "Frase do curso: \"The screwdriver is on the hood\" = a chave de fenda está em cima do capô."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The passport is _____ the drawer.",
+          "hint": "Dentro",
+          "answer": "in",
+          "explanation": "\"In the drawer\" = dentro da gaveta. Gaveta, mala, bolsa, caixa: \"in\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Your shoes are _____ the bed. Look down!",
+          "hint": "Embaixo",
+          "answer": "under",
+          "explanation": "\"Under the bed\" = embaixo da cama. \"Look down\" = olhe para baixo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "There's a picture _____ the wall.",
+          "hint": "Em (encostado na parede)",
+          "answer": "on",
+          "explanation": "Na parede é \"on the wall\": a foto está encostada na superfície."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "\"My phone is on my bag.\" (está dentro da bolsa)",
+          "hint": "Dentro é outra preposição",
+          "answer": "My phone is in my bag.",
+          "explanation": "Se está dentro, é \"in\". \"On my bag\" seria em cima da bolsa."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The keys are in the table.",
+          "hint": "Em cima de uma superfície usa outra preposição",
+          "answer": "The keys are on the table.",
+          "explanation": "Mesa é superfície: \"on the table\". \"In the table\" seria dentro da madeira, ha!"
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: Where are my keys? Not in my bag... not on the table... Oh! They're under the bed!",
+          "question": "Onde estavam as chaves? (responda em inglês)",
+          "answer": "Under the bed",
+          "explanation": "\"They're under the bed\" = estão embaixo da cama. Ele procurou \"in\", \"on\" e achou \"under\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "My phone is in my bag, I think.",
+          "context": "dentro"
+        },
+        {
+          "text": "The keys are on the table, by the door.",
+          "context": "em cima"
+        },
+        {
+          "text": "My shoes are under the bed again!",
+          "context": "embaixo"
+        },
+        {
+          "text": "The passport is in the drawer, don't worry.",
+          "context": "dentro da gaveta"
+        },
+        {
+          "text": "There's a map on the wall in the lobby.",
+          "context": "na parede"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Você vai sair e não acha suas coisas. O Igorfina, seu colega de quarto, pergunta onde procurou.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Let's go, we're late! Where's your phone?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer onde não está",
+            "label_en": "Say where it's not",
+            "hidden_prompt": "user says where the phone is not, using in/on/under: 'it's not in my bag', 'not on the table' — must be in English",
+            "hint_pt": "It's not in my bag.",
+            "hint_en": "It's not in my bag.",
+            "examples_pass": [
+              "It's not in my bag.",
+              "Not on the table!",
+              "It's not under the pillow."
+            ],
+            "examples_fail": [
+              "Bag (bare word)",
+              "Não está na bolsa (Portuguese)",
+              "I don't know (no location)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer onde achou",
+            "label_en": "Say where you found it",
+            "hidden_prompt": "user says where it is using in/on/under: 'it's under the bed!', 'here, on the chair', 'it's in my pocket' — must be in English",
+            "hint_pt": "It's under the bed!",
+            "hint_en": "It's under the bed!",
+            "examples_pass": [
+              "It's under the bed!",
+              "Here, on the chair.",
+              "It's in my pocket!"
+            ],
+            "examples_fail": [
+              "Bed (bare word)",
+              "Embaixo da cama (Portuguese)",
+              "Found it (no location)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Under the bed, classic! OK, let's go!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"It's not in my bag.\"\n2. **Igorfina**: \"Did you look under the bed?\"\n3. **Student**: ~\"It's under the bed!\"\n4. **Igorfina**: \"Under the bed, classic! OK, let's go!\"",
+        "evaluation_focus": [
+          "in / on / under no lugar certo",
+          "Frases curtas de localização"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Você vai fazer check-out e esqueceu coisas no quarto. O Igorfina, da recepção, ajuda pelo chat.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Você esqueceu coisas no quarto. Diga à recepção onde estão.",
+        "opening_message": "Hi! You forgot something in room 305? Where is it?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer onde está o carregador",
+            "label_en": "Say where the charger is",
+            "hidden_prompt": "user locates an item with in/on/under: 'my charger is on the desk', 'it's under the bed' — must be in English",
+            "hint_pt": "My charger is on the desk.",
+            "hint_en": "My charger is on the desk.",
+            "examples_pass": [
+              "My charger is on the desk.",
+              "It's under the bed.",
+              "The charger is in the drawer."
+            ],
+            "examples_fail": [
+              "Charger (bare word)",
+              "Na mesa (Portuguese)",
+              "I forgot (no location)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer onde está a jaqueta",
+            "label_en": "Say where the jacket is",
+            "hidden_prompt": "user locates another item with in/on/under: 'my jacket is in the closet', 'it's on the chair' — must be in English",
+            "hint_pt": "My jacket is in the closet.",
+            "hint_en": "My jacket is in the closet.",
+            "examples_pass": [
+              "My jacket is in the closet.",
+              "It's on the chair.",
+              "The jacket is under the blanket."
+            ],
+            "examples_fail": [
+              "Jacket (bare word)",
+              "No armário (Portuguese)",
+              "Yes (no location)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Agradecer",
+            "label_en": "Say thank you",
+            "hidden_prompt": "user thanks: 'thank you so much', 'thanks', 'thank you' — must be in English",
+            "hint_pt": "Thank you so much!",
+            "hint_en": "Thank you so much!",
+            "examples_pass": [
+              "Thank you so much!",
+              "Thanks a lot!",
+              "Thank you!"
+            ],
+            "examples_fail": [
+              "OK (no thanks)",
+              "Obrigado (Portuguese)",
+              "Bye (no thanks)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Found them both! They're at the front desk for you.\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Hi! You forgot something in room 305? Where is it?\"\n2. **Student**: \"My charger is on the desk.\"\n3. **Igorfina**: \"Got it. Anything else?\"\n4. **Student**: \"My jacket is in the closet.\"\n5. **Igorfina**: \"No problem, I'll send someone up.\"\n6. **Student**: \"Thank you so much!\"\n7. **Igorfina**: \"Found them both! They're at the front desk for you.\"\n\n---"
+      }
+    },
+    {
+      "id": "F32",
+      "title": "Beside, next to, above, between",
+      "sub_cefr": "A1",
+      "grammar_focus": "Mais preposições de lugar: beside / next to / above / between",
+      "tense": "PRESENTE · to be",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você explica onde fica um lugar na rua ou onde estão as coisas na mesa.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "\"My phone is _____ my bag.\" (do lado da bolsa)",
+          "options": [
+            "beside",
+            "in",
+            "under"
+          ],
+          "answer": "beside",
+          "explanation": "\"Beside\" = ao lado. Frase do curso: \"My phone is beside my bag\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The pharmacy is _____ to the bank.",
+          "options": [
+            "next",
+            "near of",
+            "beside to"
+          ],
+          "answer": "next",
+          "explanation": "\"Next to\" = ao lado de. \"The pharmacy is next to the bank\" é como se explica um endereço."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "There's a clock _____ the door.",
+          "choices": [
+            "above",
+            "on top",
+            "over of",
+            "up"
+          ],
+          "answer": "above",
+          "explanation": "\"Above\" = acima (sem encostar). \"Above the door\" = em cima da porta."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The café is _____ the hotel and the park.",
+          "choices": [
+            "between",
+            "next",
+            "beside",
+            "among of"
+          ],
+          "answer": "between",
+          "explanation": "\"Between\" = entre (duas coisas). \"Between the hotel and the park\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The bus stop is next _____ the supermarket.",
+          "hint": "Preposição que acompanha \"next\"",
+          "answer": "to",
+          "explanation": "Sempre \"next to\". Sem o \"to\" fica incompleto."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "There's a light _____ the bed.",
+          "hint": "Acima",
+          "answer": "above",
+          "explanation": "A luminária fica acima da cama, sem encostar: \"above the bed\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Sit _____ me, there's a free seat!",
+          "hint": "Ao meu lado",
+          "answer": "beside",
+          "accepts": [
+            "next to"
+          ],
+          "explanation": "\"Sit beside me\" ou \"Sit next to me\" = senta do meu lado."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The bank is next the pharmacy.",
+          "hint": "Falta o \"to\"",
+          "answer": "The bank is next to the pharmacy.",
+          "explanation": "\"Next to\" é bloco fechado."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The café is between of the hotel and the park.",
+          "hint": "\"Between\" não leva \"of\"",
+          "answer": "The café is between the hotel and the park.",
+          "explanation": "\"Between A and B\", direto, sem \"of\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Tourist: Where's the post office? Igor: It's next to the bank, between the café and the pharmacy. There's a big clock above the door.",
+          "question": "O que tem em cima da porta dos correios? (responda em inglês)",
+          "answer": "A big clock",
+          "explanation": "\"There's a big clock above the door\" = tem um relógio grande em cima da porta."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The pharmacy is next to the bank.",
+          "context": "explicar um endereço"
+        },
+        {
+          "text": "The café is between the hotel and the park.",
+          "context": "entre dois lugares"
+        },
+        {
+          "text": "There's a big clock above the door.",
+          "context": "acima"
+        },
+        {
+          "text": "Please, sit beside me, my friend!",
+          "context": "ao lado"
+        },
+        {
+          "text": "My phone is beside my bag, on the table.",
+          "context": "localizar algo"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Um turista perdido (o Igorfina) pede ajuda para achar a farmácia. Agora é você quem explica onde fica.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Excuse me! Do you know where the pharmacy is?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer ao lado de quê fica",
+            "label_en": "Say what it's next to",
+            "hidden_prompt": "user locates with next to / beside: 'it's next to the bank', 'beside the café' — must be in English",
+            "hint_pt": "It's next to the bank.",
+            "hint_en": "It's next to the bank.",
+            "examples_pass": [
+              "It's next to the bank.",
+              "Beside the café.",
+              "It's right next to the supermarket."
+            ],
+            "examples_fail": [
+              "Bank (bare word)",
+              "Do lado do banco (Portuguese)",
+              "There (unclear)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dar mais uma referência",
+            "label_en": "Give another reference",
+            "hidden_prompt": "user gives another location reference with between/above/across: 'between the café and the hotel', 'there's a green sign above the door' — must be in English",
+            "hint_pt": "It's between the café and the hotel.",
+            "hint_en": "It's between the café and the hotel.",
+            "examples_pass": [
+              "It's between the café and the hotel.",
+              "There's a green sign above the door.",
+              "Between the bank and the park."
+            ],
+            "examples_fail": [
+              "Hotel (bare word)",
+              "Entre o café e o hotel (Portuguese)",
+              "Near (unclear)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Next to the bank, green sign. Got it! Thanks, my friend!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"It's next to the bank.\"\n2. **Igorfina**: \"Which bank? There are three, ha!\"\n3. **Student**: ~\"It's between the café and the hotel.\"\n4. **Igorfina**: \"Next to the bank, green sign. Got it! Thanks, my friend!\"",
+        "evaluation_focus": [
+          "next to / beside / between / above",
+          "Dar endereço com referências"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina vai te encontrar num restaurante e pede, pelo chat, referências para achar o lugar.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "O Igorfina não acha o restaurante. Explique onde fica com as preposições do tópico.",
+        "opening_message": "I'm on Main Street. Where's the restaurant?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer ao lado de quê fica",
+            "label_en": "Say what it's next to",
+            "hidden_prompt": "user locates with next to/beside: 'it's next to the cinema', 'beside the bookstore' — must be in English",
+            "hint_pt": "It's next to the cinema.",
+            "hint_en": "It's next to the cinema.",
+            "examples_pass": [
+              "It's next to the cinema.",
+              "Beside the bookstore.",
+              "Right next to the bank."
+            ],
+            "examples_fail": [
+              "Cinema (bare word)",
+              "Do lado do cinema (Portuguese)",
+              "Close (unclear)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer entre o quê fica",
+            "label_en": "Say what it's between",
+            "hidden_prompt": "user locates with between: 'between the cinema and the bank', 'it's between two stores' — must be in English",
+            "hint_pt": "Between the cinema and the bank.",
+            "hint_en": "Between the cinema and the bank.",
+            "examples_pass": [
+              "Between the cinema and the bank.",
+              "It's between two stores.",
+              "Between the park and the hotel."
+            ],
+            "examples_fail": [
+              "Between (bare word)",
+              "Entre o cinema e o banco (Portuguese)",
+              "Near (unclear)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Descrever a placa",
+            "label_en": "Describe the sign",
+            "hidden_prompt": "user describes the sign with above/on: 'there's a red sign above the door', 'the name is on the window' — must be in English",
+            "hint_pt": "There's a red sign above the door.",
+            "hint_en": "There's a red sign above the door.",
+            "examples_pass": [
+              "There's a red sign above the door.",
+              "The name is on the window.",
+              "A big sign above the entrance."
+            ],
+            "examples_fail": [
+              "Red (bare word)",
+              "Placa vermelha (Portuguese)",
+              "Sign (bare word)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Found it! Red sign, best tacos. I'm coming in!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"I'm on Main Street. Where's the restaurant?\"\n2. **Student**: \"It's next to the cinema.\"\n3. **Igorfina**: \"OK... there are two cinemas, ha!\"\n4. **Student**: \"Between the cinema and the bank.\"\n5. **Igorfina**: \"Hmm, any sign?\"\n6. **Student**: \"There's a red sign above the door.\"\n7. **Igorfina**: \"Found it! Red sign, best tacos. I'm coming in!\"\n\n---"
+      }
+    },
+    {
+      "id": "F33",
+      "title": "Turn on, turn off",
+      "sub_cefr": "A1",
+      "grammar_focus": "on / off com aparelhos: turn on / turn off / is on / is off",
+      "tense": "PRESENTE · imperativo",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "No quarto do hotel você precisa ligar o ar, desligar a luz e explicar que o celular está desligado.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Can you turn _____ the light? It's dark.",
+          "options": [
+            "on",
+            "off",
+            "in"
+          ],
+          "answer": "on",
+          "explanation": "\"Turn on\" = ligar. \"Turn on the light\" = acenda a luz. Dica do Igor: \"on\" é ligado, \"off\" é desligado."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Please turn _____ your phone in the theater.",
+          "options": [
+            "off",
+            "on",
+            "out"
+          ],
+          "answer": "off",
+          "explanation": "\"Turn off\" = desligar. No cinema e no teatro: \"Please turn off your phone\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Sorry I didn't answer, my phone was _____.",
+          "choices": [
+            "off",
+            "out",
+            "under",
+            "down"
+          ],
+          "answer": "off",
+          "explanation": "\"My phone was off\" = meu celular estava desligado. \"Off\" sozinho = desligado."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The TV is _____. Can you turn it off?",
+          "choices": [
+            "on",
+            "in",
+            "up",
+            "over"
+          ],
+          "answer": "on",
+          "explanation": "\"The TV is on\" = a TV está ligada. \"Turn it off\" = desliga ela."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's hot! Can you turn _____ the air conditioning?",
+          "hint": "Ligar",
+          "answer": "on",
+          "explanation": "\"Turn on the air conditioning\" = liga o ar-condicionado. Em inglês falado: \"the AC\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Don't forget to turn _____ the lights.",
+          "hint": "Desligar",
+          "answer": "off",
+          "explanation": "\"Turn off the lights\" = apague as luzes. Ao sair do quarto, ha!"
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Is your phone on or _____?",
+          "hint": "Desligado",
+          "answer": "off",
+          "explanation": "\"On or off?\" = ligado ou desligado?"
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Can you open the light?",
+          "hint": "Em inglês não se \"abre\" a luz",
+          "answer": "Can you turn on the light?",
+          "explanation": "Em português \"abrir a luz\" às vezes; em inglês é sempre \"turn on\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My phone is close.",
+          "hint": "Desligado é outra palavra",
+          "answer": "My phone is off.",
+          "explanation": "Celular desligado = \"off\". \"Close\" é fechar porta ou janela."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: Hey, can you turn on the AC? It's so hot. And turn off the TV, please, I want to sleep.",
+          "question": "O que o Igor quer que desligue? (responda em inglês)",
+          "answer": "The TV",
+          "explanation": "\"Turn off the TV\" = desliga a TV. E o ar ele quer ligado (\"turn on the AC\")."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Can you turn on the light, please?",
+          "context": "pedir para ligar"
+        },
+        {
+          "text": "Please turn off your phone in the theater.",
+          "context": "pedir para desligar"
+        },
+        {
+          "text": "Sorry, my phone was off all day.",
+          "context": "explicar que estava desligado"
+        },
+        {
+          "text": "The TV is on, can you turn it off?",
+          "context": "aparelho ligado"
+        },
+        {
+          "text": "It's hot, let's turn on the AC.",
+          "context": "ligar o ar"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Você chegou ao quarto e nada funciona. O Igorfina, da recepção, atende o telefone do quarto.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Front desk, good evening! How can I help?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que o ar não liga",
+            "label_en": "Say the AC won't turn on",
+            "hidden_prompt": "user explains a device problem with turn on: 'I can't turn on the AC', 'the AC doesn't turn on', 'how do I turn on the AC?' — must be in English",
+            "hint_pt": "I can't turn on the AC.",
+            "hint_en": "I can't turn on the AC.",
+            "examples_pass": [
+              "I can't turn on the AC.",
+              "The AC doesn't turn on.",
+              "How do I turn on the air conditioning?"
+            ],
+            "examples_fail": [
+              "AC (bare word)",
+              "O ar não liga (Portuguese)",
+              "Hot (no explanation)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Pedir para desligarem o barulho",
+            "label_en": "Ask to turn off the noise",
+            "hidden_prompt": "user asks to turn something off: 'can you turn off the music next door?', 'please turn off the alarm' — must be in English",
+            "hint_pt": "Can you turn off the music next door?",
+            "hint_en": "Can you turn off the music next door?",
+            "examples_pass": [
+              "Can you turn off the music next door?",
+              "Please turn off the alarm.",
+              "Could you turn off the noise?"
+            ],
+            "examples_fail": [
+              "Music (bare word)",
+              "Desliga a música (Portuguese)",
+              "Noise (bare word)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"I'm on it! AC fixed and the party next door is over, ha!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"I can't turn on the AC.\"\n2. **Igorfina**: \"Oh, press the blue button twice. Anything else?\"\n3. **Student**: ~\"Can you turn off the music next door?\"\n4. **Igorfina**: \"I'm on it! AC fixed and the party next door is over, ha!\"",
+        "evaluation_focus": [
+          "\"turn on / turn off\" com aparelhos",
+          "Pedido educado com \"can you\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Sua família no Brasil está preocupada porque você sumiu. O Igorfina, seu primo, pergunta o que houve pelo chat.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Você ficou sem dar notícia. Explique pelo chat usando on e off.",
+        "opening_message": "Where were you?! Mom called you ten times!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que o celular estava desligado",
+            "label_en": "Say your phone was off",
+            "hidden_prompt": "user explains with off: 'my phone was off', 'sorry, my phone was off' — must be in English",
+            "hint_pt": "Sorry, my phone was off.",
+            "hint_en": "Sorry, my phone was off.",
+            "examples_pass": [
+              "Sorry, my phone was off.",
+              "My phone was off!",
+              "My battery died, my phone was off."
+            ],
+            "examples_fail": [
+              "Off (bare word)",
+              "Tava desligado (Portuguese)",
+              "Sorry (no explanation)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer por quê",
+            "label_en": "Say why",
+            "hidden_prompt": "user gives a reason with turn off or a context: 'I turned it off in the theater', 'I was at a show' — must be in English",
+            "hint_pt": "I turned it off in the theater.",
+            "hint_en": "I turned it off in the theater.",
+            "examples_pass": [
+              "I turned it off in the theater.",
+              "I was at a show.",
+              "I turned it off on the plane."
+            ],
+            "examples_fail": [
+              "Theater (bare word)",
+              "Eu desliguei no teatro (Portuguese)",
+              "Because (no reason)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Prometer deixar ligado",
+            "label_en": "Promise to keep it on",
+            "hidden_prompt": "user promises with on: 'I'll keep it on now', 'my phone is on now', 'I'll leave it on' — must be in English",
+            "hint_pt": "I'll keep it on now.",
+            "hint_en": "I'll keep it on now.",
+            "examples_pass": [
+              "I'll keep it on now.",
+              "My phone is on now.",
+              "I'll leave it on, I promise."
+            ],
+            "examples_fail": [
+              "OK (no promise)",
+              "Vou deixar ligado (Portuguese)",
+              "On (bare word)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"OK! Now call Mom before she calls the embassy, ha!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Where were you?! Mom called you ten times!\"\n2. **Student**: \"Sorry, my phone was off.\"\n3. **Igorfina**: \"Off? Why?\"\n4. **Student**: \"I turned it off in the theater.\"\n5. **Igorfina**: \"Ha, OK. But she was worried!\"\n6. **Student**: \"I'll keep it on now.\"\n7. **Igorfina**: \"OK! Now call Mom before she calls the embassy, ha!\"\n\n---"
+      }
+    },
+    {
+      "id": "F34",
+      "title": "I'm in! I'm out.",
+      "sub_cefr": "A1",
+      "grammar_focus": "Expressões com in/out: I'm in! / I'm out / Count me in / Count me out",
+      "tense": "EXPRESSÕES",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "O grupo da viagem propõe programas e você diz se topa ou se está fora.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "A: Pizza tonight? B: I'm _____!",
+          "options": [
+            "in",
+            "on",
+            "out of"
+          ],
+          "answer": "in",
+          "explanation": "\"I'm in!\" = tô dentro! Na caixa do Igor, \"in\" é estar dentro do plano."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "A: Karaoke at 3 a.m.? B: Nah, I'm _____.",
+          "options": [
+            "out",
+            "in",
+            "off"
+          ],
+          "answer": "out",
+          "explanation": "\"I'm out\" = tô fora. Educado e informal ao mesmo tempo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Beach on Sunday? Count me _____!",
+          "choices": [
+            "in",
+            "on",
+            "out",
+            "at"
+          ],
+          "answer": "in",
+          "explanation": "\"Count me in!\" = pode contar comigo! Outra forma de \"I'm in\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Hiking at 5 a.m.? Count me _____, ha!",
+          "choices": [
+            "out",
+            "in",
+            "off",
+            "up"
+          ],
+          "answer": "out",
+          "explanation": "\"Count me out\" = não conta comigo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "A: Who's coming to the game? B: Me! I'm _____!",
+          "hint": "Tô dentro",
+          "answer": "in",
+          "explanation": "\"I'm in!\" curtinho e animado."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Sorry guys, I'm tired. I'm _____ tonight.",
+          "hint": "Tô fora",
+          "answer": "out",
+          "explanation": "\"I'm out tonight\" = hoje tô fora."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Are you _____ or out?",
+          "hint": "Dentro",
+          "answer": "in",
+          "explanation": "\"Are you in or out?\" = tá dentro ou fora? Pergunta clássica para fechar um plano."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "\"I'm inside!\" (querendo dizer que topa o plano)",
+          "hint": "A expressão é mais curta",
+          "answer": "I'm in!",
+          "explanation": "\"Inside\" é lugar físico. Para topar plano, só \"I'm in!\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Count me on!",
+          "hint": "A expressão usa \"in\"",
+          "answer": "Count me in!",
+          "explanation": "\"Count me in\" (ou \"out\"). \"Count me on\" não existe."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: Who wants tacos? Ana: I'm in! Lucas: I'm out, I'm so tired. Mike: Count me in!",
+          "question": "Quem não vai comer tacos? (responda em inglês)",
+          "answer": "Lucas",
+          "explanation": "O Lucas disse \"I'm out\": tô fora. A Ana e o Mike toparam (\"I'm in\", \"Count me in\")."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Pizza tonight? I'm in, for sure!",
+          "context": "topar"
+        },
+        {
+          "text": "Sorry guys, I'm out, I'm so tired.",
+          "context": "estar fora"
+        },
+        {
+          "text": "Beach on Sunday? Count me in!",
+          "context": "pode contar comigo"
+        },
+        {
+          "text": "Are you in or out? Tell me now!",
+          "context": "perguntar"
+        },
+        {
+          "text": "Hiking at five? Count me out, ha!",
+          "context": "não conta comigo"
+        }
+      ],
+      "roleplay": {
+        "scenario": "O Igorfina propõe dois programas para a noite. Topa um e recusa o outro.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "OK, plans! Comedy club at eight. Are you in?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Topar o primeiro programa",
+            "label_en": "Join the first plan",
+            "hidden_prompt": "user joins the plan: 'I'm in!', 'count me in!', 'yes, I'm in' — must be in English",
+            "hint_pt": "I'm in!",
+            "hint_en": "I'm in!",
+            "examples_pass": [
+              "I'm in!",
+              "Count me in!",
+              "Yes, I'm in, for sure."
+            ],
+            "examples_fail": [
+              "Yes (no expression)",
+              "Tô dentro (Portuguese)",
+              "I'm inside (wrong expression)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Recusar o segundo",
+            "label_en": "Skip the second plan",
+            "hidden_prompt": "user declines with out: 'I'm out', 'count me out', 'nah, I'm out' — must be in English",
+            "hint_pt": "Nah, I'm out.",
+            "hint_en": "Nah, I'm out.",
+            "examples_pass": [
+              "Nah, I'm out.",
+              "Count me out!",
+              "I'm out, I'm too tired."
+            ],
+            "examples_fail": [
+              "No (no expression)",
+              "Tô fora (Portuguese)",
+              "I'm off (wrong expression)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Fair! Comedy yes, 3 a.m. club no. Smart!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"I'm in!\"\n2. **Igorfina**: \"Great! And dancing until 3 a.m. after?\"\n3. **Student**: ~\"Nah, I'm out.\"\n4. **Igorfina**: \"Fair! Comedy yes, 3 a.m. club no. Smart!\"",
+        "evaluation_focus": [
+          "\"I'm in / I'm out\" no lugar de sim/não",
+          "Tom natural e animado"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "No grupo da viagem, o Igorfina faz uma enquete de programas para o fim de semana.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Responda a enquete do Igorfina com I'm in, I'm out, count me in ou count me out.",
+        "opening_message": "Weekend poll! Saturday: boat tour. In or out?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Topar o passeio de barco",
+            "label_en": "Join the boat tour",
+            "hidden_prompt": "user joins with in: 'I'm in!', 'count me in' — must be in English",
+            "hint_pt": "Count me in!",
+            "hint_en": "Count me in!",
+            "examples_pass": [
+              "Count me in!",
+              "I'm in!",
+              "In, for sure!"
+            ],
+            "examples_fail": [
+              "Yes (no expression)",
+              "Tô dentro (Portuguese)",
+              "OK (no expression)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Recusar a trilha cedo",
+            "label_en": "Skip the early hike",
+            "hidden_prompt": "user declines with out: 'I'm out', 'count me out' — must be in English",
+            "hint_pt": "Count me out, ha!",
+            "hint_en": "Count me out, ha!",
+            "examples_pass": [
+              "Count me out, ha!",
+              "I'm out.",
+              "Nah, I'm out."
+            ],
+            "examples_fail": [
+              "No (no expression)",
+              "Tô fora (Portuguese)",
+              "Maybe (unclear)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar se ele vai",
+            "label_en": "Ask if he's in",
+            "hidden_prompt": "user asks him: 'are you in?', 'are you in or out?', 'and you, are you in?' — must be in English",
+            "hint_pt": "Are you in?",
+            "hint_en": "Are you in?",
+            "examples_pass": [
+              "Are you in?",
+              "Are you in or out?",
+              "And you, are you in?"
+            ],
+            "examples_fail": [
+              "You? (unclear)",
+              "E você? (Portuguese)",
+              "OK (no question)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Always in! Boat tour it is, hike is canceled, ha!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Weekend poll! Saturday: boat tour. In or out?\"\n2. **Student**: \"Count me in!\"\n3. **Igorfina**: \"Sunday: hike at 5 a.m.?\"\n4. **Student**: \"Count me out, ha!\"\n5. **Igorfina**: \"Ha! Anything else?\"\n6. **Student**: \"Are you in?\"\n7. **Igorfina**: \"Always in! Boat tour it is, hike is canceled, ha!\"\n\n---"
+      }
+    },
+    {
+      "id": "F35",
+      "title": "Inside, outside: juntando tudo",
+      "sub_cefr": "A1",
+      "grammar_focus": "Revisão do módulo + inside / outside",
+      "tense": "PRESENTE",
+      "markers": [
+        "review"
+      ],
+      "real_life_context": "Num dia de chuva na praia, você decide onde esperar, onde estão as coisas e se topa os planos.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "It's raining. Let's wait _____.",
+          "options": [
+            "inside",
+            "outside",
+            "on"
+          ],
+          "answer": "inside",
+          "explanation": "\"Inside\" = do lado de dentro. \"Let's wait inside\" = vamos esperar lá dentro."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "It's cold _____. Take your jacket.",
+          "options": [
+            "outside",
+            "inside",
+            "under"
+          ],
+          "answer": "outside",
+          "explanation": "\"Outside\" = lá fora. \"It's cold outside\" = está frio lá fora."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The towels are _____ the bag.",
+          "choices": [
+            "in",
+            "on",
+            "above",
+            "between"
+          ],
+          "answer": "in",
+          "explanation": "Dentro da bolsa: \"in the bag\". Revisão da F31."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Can you turn _____ the lights? It's dark in here.",
+          "choices": [
+            "on",
+            "off",
+            "in",
+            "up"
+          ],
+          "answer": "on",
+          "explanation": "Ligar a luz: \"turn on\". Revisão da F33."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The café is next _____ the beach.",
+          "hint": "Preposição de \"next\"",
+          "answer": "to",
+          "explanation": "\"Next to\". Revisão da F32."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "A: Movie inside? B: I'm _____!",
+          "hint": "Tô dentro",
+          "answer": "in",
+          "explanation": "\"I'm in!\" Revisão da F34."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "In surfing, the 'inside' is _____ the waves and the sand.",
+          "hint": "Entre",
+          "answer": "between",
+          "explanation": "No surf, \"inside\" é a zona entre a arrebentação e a areia, como explica o Igor."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Let's wait in side.",
+          "hint": "É uma palavra só",
+          "answer": "Let's wait inside.",
+          "explanation": "\"Inside\" e \"outside\" são palavras únicas."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My keys are on my pocket.",
+          "hint": "Bolso é dentro",
+          "answer": "My keys are in my pocket.",
+          "explanation": "Bolso, bolsa, gaveta: \"in\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: It's raining outside! Let's wait inside the café, next to the window. Turn on your phone, the group wants to meet. Are you in?",
+          "question": "Onde o Igor quer esperar? (responda em inglês)",
+          "answer": "Inside the café",
+          "explanation": "\"Let's wait inside the café, next to the window\". Um parágrafo com inside, outside, next to, turn on e \"Are you in?\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It's raining outside, let's wait inside.",
+          "context": "dentro e fora"
+        },
+        {
+          "text": "The towels are in the bag, on the chair.",
+          "context": "localizar coisas"
+        },
+        {
+          "text": "The café is next to the beach.",
+          "context": "referência de lugar"
+        },
+        {
+          "text": "Turn on your phone, the group is calling.",
+          "context": "ligar o celular"
+        },
+        {
+          "text": "A movie inside? I'm in, for sure!",
+          "context": "topar plano"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Começou a chover na praia. O Igorfina quer decidir o que fazer com você.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 120,
+        "opening_line": "Oh no, rain! What do we do now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Sugerir esperar dentro",
+            "label_en": "Suggest waiting inside",
+            "hidden_prompt": "user suggests going/waiting inside: 'let's wait inside', 'let's go inside the café' — must be in English",
+            "hint_pt": "Let's wait inside the café.",
+            "hint_en": "Let's wait inside the café.",
+            "examples_pass": [
+              "Let's wait inside the café.",
+              "Let's go inside!",
+              "We can wait inside."
+            ],
+            "examples_fail": [
+              "Inside (bare word)",
+              "Vamos entrar (Portuguese)",
+              "Rain (no suggestion)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer onde estão as coisas",
+            "label_en": "Say where your things are",
+            "hidden_prompt": "user locates things with in/on/under/next to: 'my bag is under the umbrella', 'the towels are in the bag' — must be in English",
+            "hint_pt": "My bag is under the umbrella.",
+            "hint_en": "My bag is under the umbrella.",
+            "examples_pass": [
+              "My bag is under the umbrella.",
+              "The towels are in the bag.",
+              "My phone is next to the chair."
+            ],
+            "examples_fail": [
+              "Bag (bare word)",
+              "A bolsa tá embaixo do guarda-sol (Portuguese)",
+              "Here (unclear)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Topar o plano dele",
+            "label_en": "Join his plan",
+            "hidden_prompt": "user joins: 'I'm in!', 'count me in', 'let's go!' — must be in English",
+            "hint_pt": "I'm in!",
+            "hint_en": "I'm in!",
+            "examples_pass": [
+              "I'm in!",
+              "Count me in!",
+              "Let's go, I'm in!"
+            ],
+            "examples_fail": [
+              "Yes (no expression)",
+              "Tô dentro (Portuguese)",
+              "Maybe (unclear)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Perfect! Coffee inside, rain outside, life is good!\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Student**: ~\"Let's wait inside the café.\"\n2. **Igorfina**: \"Good idea! Where's your bag?\"\n3. **Student**: ~\"My bag is under the umbrella.\"\n4. **Igorfina**: \"Grab it! Hot chocolate inside?\"\n5. **Student**: ~\"I'm in!\"\n6. **Igorfina**: \"Perfect! Coffee inside, rain outside, life is good!\"",
+        "evaluation_focus": [
+          "inside / outside e as preposições do módulo",
+          "\"I'm in\" para topar"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina está chegando para te buscar e quer saber onde você está esperando.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Explique ao Igorfina onde você está, usando as preposições do módulo.",
+        "opening_message": "I'm almost there! Are you waiting inside or outside?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer se está dentro ou fora",
+            "label_en": "Say inside or outside",
+            "hidden_prompt": "user says inside/outside: 'I'm inside', 'I'm waiting inside the station', 'outside, by the door' — must be in English",
+            "hint_pt": "I'm waiting inside the station.",
+            "hint_en": "I'm waiting inside the station.",
+            "examples_pass": [
+              "I'm waiting inside the station.",
+              "I'm inside.",
+              "Outside, by the door."
+            ],
+            "examples_fail": [
+              "Inside (bare word)",
+              "Tô dentro (Portuguese)",
+              "Here (unclear)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dar uma referência",
+            "label_en": "Give a reference",
+            "hidden_prompt": "user gives a reference with next to/beside/between/above: 'next to the coffee shop', 'between the stairs and the exit' — must be in English",
+            "hint_pt": "Next to the coffee shop.",
+            "hint_en": "Next to the coffee shop.",
+            "examples_pass": [
+              "Next to the coffee shop.",
+              "Between the stairs and the exit.",
+              "Beside the big clock."
+            ],
+            "examples_fail": [
+              "Coffee (bare word)",
+              "Do lado do café (Portuguese)",
+              "There (unclear)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer que o celular está ligado",
+            "label_en": "Say your phone is on",
+            "hidden_prompt": "user confirms the phone is on: 'my phone is on', 'my phone is on, call me' — must be in English",
+            "hint_pt": "My phone is on, call me!",
+            "hint_en": "My phone is on, call me!",
+            "examples_pass": [
+              "My phone is on, call me!",
+              "My phone is on.",
+              "Call me, my phone is on."
+            ],
+            "examples_fail": [
+              "Call (bare word)",
+              "Me liga (Portuguese)",
+              "OK (no info)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Got it! Inside, next to the coffee shop. See you in two minutes!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"I'm almost there! Are you waiting inside or outside?\"\n2. **Student**: \"I'm waiting inside the station.\"\n3. **Igorfina**: \"Where exactly? It's huge!\"\n4. **Student**: \"Next to the coffee shop.\"\n5. **Igorfina**: \"OK! If I get lost, I'll call you.\"\n6. **Student**: \"My phone is on, call me!\"\n7. **Igorfina**: \"Got it! Inside, next to the coffee shop. See you in two minutes!\""
+      }
+    }
+  ],
+  "cross_unit_consolidation": []
+}

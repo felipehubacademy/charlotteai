@@ -95,3 +95,17 @@ export function voiceFor(c: Character, impression: Impression | null): { voiceId
   if (impression) return { voiceId: impression.elevenVoiceId, settings: impression.elevenSettings };
   return c.elevenVoiceId ? { voiceId: c.elevenVoiceId, settings: c.elevenSettings } : null;
 }
+
+/**
+ * Imitação de uma atividade inteira da trilha do Igorfina (Role-play/Guided Chat), pelo figurino
+ * do conteúdo: persona_outfit 'igorfina_president' ou 'igorfina_hoops'. Sem figurino de imitação: null.
+ */
+export function impressionFromOutfit(outfit: unknown): Impression | null {
+  const m = typeof outfit === 'string' ? outfit.match(/^igorfina_(president|hoops)$/) : null;
+  return m ? impressionOf(CHARACTERS.igorfina, m[1]) : null;
+}
+
+/** Estilo da imitação valendo para a conversa toda (o texto original é "só nesta resposta"). */
+export function wholeActivityImpressionStyle(imp: Impression): string {
+  return imp.style.replace(/^THIS REPLY ONLY: switch into/, 'For this WHOLE activity, stay in');
+}

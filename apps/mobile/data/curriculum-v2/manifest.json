@@ -371,8 +371,48 @@
         "id": "M02",
         "title": "Visto, imigração e dinheiro",
         "file": "igorfina/M02.json"
+      },
+      {
+        "id": "M03",
+        "title": "Passado, presente e futuro do jeito fácil",
+        "file": "igorfina/M03.json"
+      },
+      {
+        "id": "M04",
+        "title": "Gírias (e palavrão: entenda, não use)",
+        "file": "igorfina/M04.json"
+      },
+      {
+        "id": "M05",
+        "title": "Could, would, should, can, might, have to, would rather",
+        "file": "igorfina/M05.json"
+      },
+      {
+        "id": "M06",
+        "title": "Comparando: melhor, pior, o maior",
+        "file": "igorfina/M06.json"
+      },
+      {
+        "id": "M07",
+        "title": "In, out, on, off, under, above, beside",
+        "file": "igorfina/M07.json"
+      },
+      {
+        "id": "M08",
+        "title": "Situações do dia a dia",
+        "file": "igorfina/M08.json"
+      },
+      {
+        "id": "M09",
+        "title": "Academia",
+        "file": "igorfina/M09.json"
+      },
+      {
+        "id": "M10",
+        "title": "Viagem sem grana",
+        "file": "igorfina/M10.json"
       }
     ]
   },
-  "generated_at": "2026-10-14T22:16:22.123Z"
+  "generated_at": "2026-10-15T01:23:06.470Z"
 }

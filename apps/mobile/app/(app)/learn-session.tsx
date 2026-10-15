@@ -21,6 +21,7 @@ import * as Haptics from '@/lib/hapticsGated';
 import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { extraTrack } from '@/lib/tracks';
+import { getModule } from '@/lib/curriculum-v2/loader';
 import { characterInfo } from '@/lib/characters';
 import { TrackHostReaction } from '@/components/trail/TrackHostReaction';
 import { systemIsPt } from '@/lib/systemLang';
@@ -429,6 +430,10 @@ export default function LearnSessionScreen() {
   const showError    = currentStep?.kind === 'grammar' && gStatus === 'submitted' && isCorrect === false;
   const charlotteSrc = showCheering ? cheerSrc : showError ? errorSrc : idleSrc;
   const hostTrack    = extraTrack(level);
+  // Tópico com imitação (persona_outfit igorfina_president/hoops): o L&S sai na voz da imitação.
+  const unitImpression = isV2 && hostTrack
+    ? getModule(level as any, params.moduleId!)?.units.find(u => u.id === params.unitId)?.roleplay?.persona_outfit?.match(/^igorfina_(president|hoops)$/)?.[1]
+    : undefined;
   // Quem fala na lição: a Charlotte, ou o anfitrião da trilha extra (ex.: Igorfina).
   const hostName     = hostTrack ? characterInfo(hostTrack.character).name : 'Charlotte';
   const hostSaidPt   = hostTrack ? 'ele disse' : 'ela disse';
@@ -504,7 +509,7 @@ export default function LearnSessionScreen() {
       const fileKey  = text.slice(0, 80).replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
       // Trilha do Igorfina: as frases saem na voz dele (cache separado do da Charlotte).
       const isIgor   = level === 'Igorfina';
-      const localUri = `${cacheDir}${isIgor ? 'igor' : 'el'}_${fileKey}.mp3`;
+      const localUri = `${cacheDir}${isIgor ? `igor${unitImpression ? `_${unitImpression}` : ''}` : 'el'}_${fileKey}.mp3`;
 
       // 0. Curriculum v2 pre-generated audio (CDN URL stamped at compile time).
       // Cache key derived from URL hash so different voices/versions don't collide.
@@ -535,7 +540,7 @@ export default function LearnSessionScreen() {
       const res = await fetch(`${API_BASE_URL}/api/tts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, source: 'learn', ...(userId ? { userId } : {}), ...(isIgor ? { character: 'igorfina' } : {}) }),
+        body: JSON.stringify({ text, source: 'learn', ...(userId ? { userId } : {}), ...(isIgor ? { character: 'igorfina', ...(unitImpression ? { impression: unitImpression } : {}) } : {}) }),
       });
       if (!res.ok) return null;
       const data = await res.json();
@@ -543,7 +548,7 @@ export default function LearnSessionScreen() {
       await FileSystem.writeAsStringAsync(localUri, data.audio, { encoding: 'base64' as any });
       return localUri;
     } catch { return null; }
-  }, [level]); // level: voz do Igorfina na trilha dele
+  }, [level, unitImpression]); // voz do Igorfina (ou da imitação do tópico) na trilha dele
 
   // ── Load grammar step ──────────────────────────────────────
   const loadGrammarStep = useCallback((ex: GrammarEx) => {

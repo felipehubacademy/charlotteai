@@ -32,9 +32,8 @@ export const EXTRA_TRACKS: ExtraTrack[] = [
     hostPt: 'com o Igorfina',
     hostEn: 'with Igorfina',
     betaFlag: 'igorfina_trail',
-    // Provisório: a entrevista completa da imigração. Trocar pela unidade com imitação do
-    // bloco 4 quando ela existir (o "uau" da trilha).
-    tasteUnit: { moduleId: 'M02', unitId: 'F10' },
+    // O "uau": o presidente exagerado ("the best, tremendous") ensinando the best / the worst.
+    tasteUnit: { moduleId: 'M06', unitId: 'F27' },
   },
 ];
 

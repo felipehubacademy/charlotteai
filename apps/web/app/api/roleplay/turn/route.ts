@@ -14,7 +14,7 @@ import { aiFetch, transcribeModel, transcribedSeconds } from '@/lib/ai-models';
 import { judgeObjectives } from '@/lib/objective-judge';
 import { logOpenAIUsage, logElevenLabsUsage } from '@/lib/openai-usage';
 import { speak } from '@/lib/charlotte-voice';
-import { characterOf, voiceFor } from '@/lib/characters';
+import { characterOf, voiceFor, impressionFromOutfit, wholeActivityImpressionStyle } from '@/lib/characters';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -159,7 +159,7 @@ UNIT: ${unitTitle ?? ''}
 STUDENT CEFR LEVEL: ${level}
 
 STAY IN CHARACTER as ${rp.persona}. Speak natural conversational English. Keep
-replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.${rp.voiced_by === 'igorfina' ? IGORFINA_STYLE : ''}${knownStudentBlock}${simplicityBlock}
+replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.${rp.voiced_by === 'igorfina' ? IGORFINA_STYLE + (impressionFromOutfit((rp as { persona_outfit?: string }).persona_outfit) ? `\n${wholeActivityImpressionStyle(impressionFromOutfit((rp as { persona_outfit?: string }).persona_outfit)!)}` : '') : ''}${knownStudentBlock}${simplicityBlock}
 
 HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}
@@ -320,8 +320,9 @@ function isHallucinationOrEmpty(text: string | undefined): boolean {
 // próprio Igor (ElevenLabs, mp3). O nível pedagógico é o do Novice.
 const IGORFINA_STYLE = `\nYou are Igorfina, a stand-up comedian from the Queizy family, playing the role in the scenario above. Keep his vibe: relaxed, warm, a light joke now and then, "my friend". Never mention real people, politics or brands.`;
 
-async function ttsIgorfina(text: string, userId?: string): Promise<{ audio: Buffer; mime: string }> {
-  const voice = voiceFor(characterOf('igorfina'), null);
+async function ttsIgorfina(text: string, userId?: string, outfit?: string): Promise<{ audio: Buffer; mime: string }> {
+  // Atividade com imitação (persona_outfit igorfina_president/hoops): a voz da imitação.
+  const voice = voiceFor(characterOf('igorfina'), impressionFromOutfit(outfit));
   const key = process.env.ELEVENLABS_API_KEY;
   if (!voice || !key) throw new Error('voz do Igorfina indisponível');
   const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice.voiceId}?output_format=mp3_44100_128`, {
@@ -335,9 +336,9 @@ async function ttsIgorfina(text: string, userId?: string): Promise<{ audio: Buff
 }
 
 /** Fala do personagem: Igorfina na voz dele (se falhar, cai na voz padrão); o resto, OpenAI. */
-async function speakAs(text: string, voicedBy: RolePlayDef['voiced_by'], userId?: string): Promise<{ audio: Buffer; mime: string }> {
+async function speakAs(text: string, voicedBy: RolePlayDef['voiced_by'], userId?: string, outfit?: string): Promise<{ audio: Buffer; mime: string }> {
   if (voicedBy === 'igorfina') {
-    try { return await ttsIgorfina(text, userId); }
+    try { return await ttsIgorfina(text, userId, outfit); }
     catch (e) { console.warn('[roleplay/turn] voz do Igorfina falhou, usando a padrão', e); }
   }
   return { audio: await tts(text, voicedBy === 'charlie' ? 'charlie' : 'charlotte', userId), mime: 'audio/flac' };
@@ -390,7 +391,7 @@ export async function POST(request: NextRequest) {
       const askAgain = level === 'Novice'
         ? "Sorry, I didn't hear you. Can you say it again?"
         : "Sorry, I didn't catch that — can you say it again?";
-      const said = await speakAs(askAgain, rp.voiced_by, userId);
+      const said = await speakAs(askAgain, rp.voiced_by, userId, (rp as { persona_outfit?: string }).persona_outfit);
       return NextResponse.json({
         user_transcript:     userTranscript || '',
         assistant_text:      askAgain,
@@ -560,7 +561,7 @@ export async function POST(request: NextRequest) {
       clean = SAFE_ACKS[Math.floor(Math.random() * SAFE_ACKS.length)];
     }
 
-    const said = await speakAs(clean, rp.voiced_by, userId);
+    const said = await speakAs(clean, rp.voiced_by, userId, (rp as { persona_outfit?: string }).persona_outfit);
 
     return NextResponse.json({
       user_transcript:      userTranscript,

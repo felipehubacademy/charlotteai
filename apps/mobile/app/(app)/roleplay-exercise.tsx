@@ -212,7 +212,7 @@ export default function RolePlayExerciseScreen() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           // Trilha do Igorfina: a abertura sai na voz dele (ElevenLabs, mp3).
-          body: JSON.stringify({ text: rpDef.opening_line, userId, source: 'roleplay-opener', ...(rpDef.voiced_by === 'igorfina' ? { character: 'igorfina' } : {}) }),
+          body: JSON.stringify({ text: rpDef.opening_line, userId, source: 'roleplay-opener', ...(rpDef.voiced_by === 'igorfina' ? { character: 'igorfina', impression: (rpDef.persona_outfit ?? '').match(/^igorfina_(president|hoops)$/)?.[1] } : {}) }),
         });
         if (!res.ok) return;
         const data = await res.json();

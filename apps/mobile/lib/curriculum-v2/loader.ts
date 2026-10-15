@@ -86,6 +86,14 @@ const MODULES: Record<Level, Record<string, () => Module>> = {
   Igorfina: {
     M01: () => require('@/data/curriculum-v2/igorfina/M01.json') as Module,
     M02: () => require('@/data/curriculum-v2/igorfina/M02.json') as Module,
+    M03: () => require('@/data/curriculum-v2/igorfina/M03.json') as Module,
+    M04: () => require('@/data/curriculum-v2/igorfina/M04.json') as Module,
+    M05: () => require('@/data/curriculum-v2/igorfina/M05.json') as Module,
+    M06: () => require('@/data/curriculum-v2/igorfina/M06.json') as Module,
+    M07: () => require('@/data/curriculum-v2/igorfina/M07.json') as Module,
+    M08: () => require('@/data/curriculum-v2/igorfina/M08.json') as Module,
+    M09: () => require('@/data/curriculum-v2/igorfina/M09.json') as Module,
+    M10: () => require('@/data/curriculum-v2/igorfina/M10.json') as Module,
   },
 };
 

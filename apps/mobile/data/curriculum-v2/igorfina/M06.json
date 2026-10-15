@@ -1,0 +1,1261 @@
+{
+  "id": "M06",
+  "title": "Comparando: melhor, pior, o maior",
+  "level": "Igorfina",
+  "block": "A1",
+  "units_range": "F26–F30",
+  "theme": "Comparar lugares, preços e distâncias na viagem: mais rápido, melhor, o pior, o mais caro, o mais longe",
+  "goal": "Aluno sai comparando com \"-er than / more ... than / less ... than\" e usando superlativos (\"the best\", \"the worst\", \"the most expensive\", \"the farthest\") em situações de viagem.",
+  "connects_to": "M05 (Could, would, should...) e M07 (In, out, on, off...).",
+  "module_chunks": [
+    "faster than / slower than",
+    "bigger than / smaller than",
+    "cheaper than",
+    "better than / the best",
+    "worse than / the worst",
+    "more expensive than / the most expensive",
+    "more famous than / the most famous",
+    "less expensive than / the least expensive",
+    "farther than / the farthest",
+    "Japan is farther than Portugal from Brazil.",
+    "Today is the worst day I've had in a long time.",
+    "This sweater is less expensive than the other one.",
+    "I ran even farther today.",
+    "the best pizza in town",
+    "the most beautiful view",
+    "Which one is better?",
+    "It's the best!"
+  ],
+  "units": [
+    {
+      "id": "F26",
+      "title": "Faster than, bigger than",
+      "sub_cefr": "A1",
+      "grammar_focus": "Comparativo de adjetivos curtos: adjetivo + -er + than",
+      "tense": "PRESENTE · comparativo",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você escolhe entre metrô, ônibus e táxi comparando qual é mais rápido e mais barato.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The subway is _____ than the bus.",
+          "options": [
+            "faster",
+            "more fast",
+            "fastest"
+          ],
+          "answer": "faster",
+          "explanation": "Adjetivo curto (fast) ganha \"-er\" + \"than\": \"faster than\" = mais rápido que. Dica do Igor: \"than\" é o \"do que\" da comparação."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The bus is _____ than the taxi.",
+          "options": [
+            "cheaper",
+            "more cheap",
+            "cheapest"
+          ],
+          "answer": "cheaper",
+          "explanation": "\"Cheap\" (barato) vira \"cheaper than\" = mais barato que."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "New York is _____ than Boston.",
+          "choices": [
+            "bigger",
+            "biger",
+            "more big",
+            "big"
+          ],
+          "answer": "bigger",
+          "explanation": "\"Big\" vira \"bigger\": quando a palavra termina em consoante-vogal-consoante, dobra a última letra (big → bigger, hot → hotter)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The walk is _____ than the bus. It takes an hour!",
+          "choices": [
+            "slower",
+            "slowest",
+            "more slow",
+            "slow"
+          ],
+          "answer": "slower",
+          "explanation": "\"Slow\" (devagar) vira \"slower than\" = mais devagar que."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My room is _____ than your room.",
+          "hint": "Menor (small + er)",
+          "answer": "smaller",
+          "explanation": "\"Small\" vira \"smaller than\". Só colocar \"-er\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The taxi is faster _____ the bus.",
+          "hint": "Do que",
+          "answer": "than",
+          "explanation": "\"Than\" liga as duas coisas comparadas. Não confunda com \"then\" (então)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Today is _____ than yesterday. 35 degrees!",
+          "hint": "Mais quente (hot + er)",
+          "answer": "hotter",
+          "explanation": "\"Hot\" vira \"hotter\" (dobra o \"t\"). \"Today is hotter than yesterday.\""
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The subway is more fast than the bus.",
+          "hint": "Adjetivo curto não usa \"more\"",
+          "answer": "The subway is faster than the bus.",
+          "explanation": "Com adjetivo curto, é \"-er\": \"faster\". \"More\" é para adjetivos longos (vem na F28)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The bus is cheaper then the taxi.",
+          "hint": "Na comparação é \"than\", não \"then\"",
+          "answer": "The bus is cheaper than the taxi.",
+          "explanation": "\"Than\" compara; \"then\" é \"então / depois\". Erro comum até de nativo na escrita."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: The taxi is faster than the subway, but the subway is cheaper. The bus is the slowest, but it has the best view!",
+          "question": "Qual é mais barato: o táxi ou o metrô? (responda em inglês)",
+          "answer": "The subway",
+          "explanation": "\"The subway is cheaper\": o metrô é mais barato. O táxi ganha em velocidade (faster)."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The subway is faster than the bus.",
+          "context": "comparar velocidade"
+        },
+        {
+          "text": "The bus is cheaper than a taxi.",
+          "context": "comparar preço"
+        },
+        {
+          "text": "New York is bigger than my city.",
+          "context": "comparar tamanho"
+        },
+        {
+          "text": "Today is hotter than yesterday, wow!",
+          "context": "comparar o tempo"
+        },
+        {
+          "text": "My room is smaller than your room.",
+          "context": "comparar quartos"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Você precisa chegar a um show. O Igorfina, como funcionário do hotel, explica as opções; compare e escolha.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "You can take the bus, the subway or a taxi. What do you want?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar qual é mais rápido",
+            "label_en": "Ask which is faster",
+            "hidden_prompt": "user asks a comparison question: 'which is faster?', 'is the subway faster than the bus?', 'which one is cheaper?' — must be in English",
+            "hint_pt": "Which is faster?",
+            "hint_en": "Which is faster?",
+            "examples_pass": [
+              "Which is faster?",
+              "Is the subway faster than the bus?",
+              "Which one is cheaper?"
+            ],
+            "examples_fail": [
+              "Fast? (bare word)",
+              "Qual é mais rápido? (Portuguese)",
+              "Subway (no question)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Escolher comparando",
+            "label_en": "Choose with a comparison",
+            "hidden_prompt": "user chooses and justifies with a comparative (-er than): 'the subway, it's faster', 'I'll take the bus, it's cheaper', 'the subway is faster than the taxi' — must be in English",
+            "hint_pt": "I'll take the subway, it's faster.",
+            "hint_en": "I'll take the subway, it's faster.",
+            "examples_pass": [
+              "I'll take the subway, it's faster.",
+              "The bus, it's cheaper.",
+              "The subway is faster than the taxi."
+            ],
+            "examples_fail": [
+              "Subway (no comparison)",
+              "O metrô (Portuguese)",
+              "The subway is more fast (wrong form)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Smart choice! Faster and cheaper. Enjoy the show!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"Which is faster?\"\n2. **Igorfina**: \"The subway. Twenty minutes. The taxi is slower with traffic.\"\n3. **Student**: ~\"I'll take the subway, it's faster.\"\n4. **Igorfina**: \"Smart choice! Faster and cheaper. Enjoy the show!\"",
+        "evaluation_focus": [
+          "Adjetivo curto + \"-er\" + \"than\"",
+          "Justificar a escolha com uma comparação"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Você e o Igorfina comparam as cidades da viagem pelo chat.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Compare as cidades com o Igorfina usando -er than.",
+        "opening_message": "Miami or New York? Tell me the truth!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comparar o tamanho",
+            "label_en": "Compare the size",
+            "hidden_prompt": "user compares with -er than: 'New York is bigger than Miami', 'Miami is smaller' — must be in English",
+            "hint_pt": "New York is bigger than Miami.",
+            "hint_en": "New York is bigger than Miami.",
+            "examples_pass": [
+              "New York is bigger than Miami.",
+              "Miami is smaller.",
+              "NYC is bigger."
+            ],
+            "examples_fail": [
+              "Big (bare word)",
+              "NY é maior (Portuguese)",
+              "New York is more big (wrong form)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Comparar o calor",
+            "label_en": "Compare the heat",
+            "hidden_prompt": "user compares temperature with -er than: 'Miami is hotter than New York', 'New York is colder' — must be in English",
+            "hint_pt": "Miami is hotter than New York.",
+            "hint_en": "Miami is hotter than New York.",
+            "examples_pass": [
+              "Miami is hotter than New York.",
+              "New York is colder.",
+              "Miami is warmer."
+            ],
+            "examples_fail": [
+              "Hot (bare word)",
+              "Miami é mais quente (Portuguese)",
+              "Miami is more hot (wrong form)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer qual você prefere",
+            "label_en": "Say which you prefer",
+            "hidden_prompt": "user states a preference: 'I prefer Miami', 'I'd rather go to New York', 'Miami is better for me' — must be in English",
+            "hint_pt": "I prefer Miami.",
+            "hint_en": "I prefer Miami.",
+            "examples_pass": [
+              "I prefer Miami.",
+              "I'd rather go to New York.",
+              "Miami is better for me."
+            ],
+            "examples_fail": [
+              "Miami (bare word)",
+              "Prefiro Miami (Portuguese)",
+              "Both (no preference)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Beach person, I knew it! Sunscreen, my friend!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Miami or New York? Tell me the truth!\"\n2. **Student**: \"New York is bigger than Miami.\"\n3. **Igorfina**: \"True! And the weather?\"\n4. **Student**: \"Miami is hotter than New York.\"\n5. **Igorfina**: \"Way hotter. So which one?\"\n6. **Student**: \"I prefer Miami.\"\n7. **Igorfina**: \"Beach person, I knew it! Sunscreen, my friend!\"\n\n---"
+      }
+    },
+    {
+      "id": "F27",
+      "title": "The best, the worst (com o presidente)",
+      "sub_cefr": "A1",
+      "grammar_focus": "Irregulares: good → better → the best; bad → worse → the worst",
+      "tense": "PRESENTE · superlativo",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "O Igorfina imita um presidente exagerado que acha tudo \"o melhor do mundo\". Você entra no jogo comparando e elegendo o melhor e o pior.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "This pizza is _____ than the pizza in my hotel.",
+          "options": [
+            "better",
+            "gooder",
+            "more good"
+          ],
+          "answer": "better",
+          "explanation": "\"Good\" é irregular: good → better → the best. \"Better than\" = melhor que. \"Gooder\" não existe."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "This is _____ pizza in New York!",
+          "options": [
+            "the best",
+            "the better",
+            "best of"
+          ],
+          "answer": "the best",
+          "explanation": "\"The best\" = o melhor (de todos). Superlativo sempre com \"the\". Dica do Igor: o presidente fala \"the best\" a cada três palavras."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The traffic today is _____ than yesterday.",
+          "choices": [
+            "worse",
+            "badder",
+            "worst",
+            "more bad"
+          ],
+          "answer": "worse",
+          "explanation": "\"Bad\" também é irregular: bad → worse → the worst. \"Worse than\" = pior que."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Today is _____ day I've had in a long time.",
+          "choices": [
+            "the worst",
+            "the worse",
+            "worst of",
+            "bad"
+          ],
+          "answer": "the worst",
+          "explanation": "Frase do curso: \"Today is the worst day I've had in a long time\" = hoje é o pior dia que tive em muito tempo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Folks, this hotel is _____ best hotel. Believe me.",
+          "hint": "Artigo que vem antes do superlativo",
+          "answer": "the",
+          "explanation": "Superlativo pede \"the\": \"the best\", \"the worst\", \"the biggest\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My English is _____ than last year!",
+          "hint": "Melhor (comparativo de good)",
+          "answer": "better",
+          "explanation": "\"My English is better than last year\" = meu inglês está melhor que no ano passado. Frase para se orgulhar."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "This is the _____ coffee ever. I can't drink it!",
+          "hint": "O pior (superlativo de bad)",
+          "answer": "worst",
+          "explanation": "\"The worst coffee ever\" = o pior café da vida. \"Ever\" reforça: de todos os tempos."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "This is the most good pizza.",
+          "hint": "\"Good\" tem superlativo irregular",
+          "answer": "This is the best pizza.",
+          "explanation": "Nada de \"most good\": o superlativo de \"good\" é \"the best\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Today is more bad than yesterday.",
+          "hint": "\"Bad\" tem comparativo irregular",
+          "answer": "Today is worse than yesterday.",
+          "explanation": "\"Bad\" → \"worse\". \"More bad\" e \"badder\" não existem (fora de música)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor (as the president): Folks, this burger is tremendous. The best burger. Better than any burger. The fries? The worst. Terrible fries. Sad!",
+          "question": "O que é \"the worst\" para o presidente? (responda em inglês)",
+          "answer": "The fries",
+          "explanation": "Ele achou o hambúrguer \"the best\" e as batatas \"the worst\". Repare: \"better than\" para comparar dois, \"the best / the worst\" para o extremo."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This is the best pizza in New York!",
+          "context": "eleger o melhor"
+        },
+        {
+          "text": "My English is better than last year.",
+          "context": "comparar com orgulho"
+        },
+        {
+          "text": "Today is the worst day of my trip.",
+          "context": "reclamar do dia"
+        },
+        {
+          "text": "The traffic is worse than yesterday.",
+          "context": "comparar o pior"
+        },
+        {
+          "text": "Believe me, this is the best city ever!",
+          "context": "exagerar como o presidente"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Numa lanchonete, o Igorfina imita um presidente exagerado que quer saber sua opinião sobre a comida. Entre no jogo: compare e eleja o melhor.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_president",
+        "time_budget_sec": 90,
+        "opening_line": "Folks, this burger. Tremendous. The best burger. Do you like it?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Eleger o melhor",
+            "label_en": "Name the best",
+            "hidden_prompt": "user uses a superlative with the best: 'it's the best burger', 'this is the best!', 'the best burger ever' — must be in English",
+            "hint_pt": "It's the best burger!",
+            "hint_en": "It's the best burger!",
+            "examples_pass": [
+              "It's the best burger!",
+              "This is the best!",
+              "The best burger ever!"
+            ],
+            "examples_fail": [
+              "Good (no superlative)",
+              "É o melhor (Portuguese)",
+              "It's the most good (wrong form)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Comparar com outra comida",
+            "label_en": "Compare with another food",
+            "hidden_prompt": "user compares with better/worse than: 'it's better than the pizza', 'the fries are worse than the burger' — must be in English",
+            "hint_pt": "It's better than the pizza.",
+            "hint_en": "It's better than the pizza.",
+            "examples_pass": [
+              "It's better than the pizza.",
+              "The fries are worse than the burger.",
+              "Better than my mom's burger!"
+            ],
+            "examples_fail": [
+              "Better (bare word)",
+              "Melhor que a pizza (Portuguese)",
+              "More good than (wrong form)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Tremendous answer! Nobody compares better than you. Believe me!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"It's the best burger!\"\n2. **Igorfina**: \"The best! And the pizza? Many people say the pizza...\"\n3. **Student**: ~\"It's better than the pizza.\"\n4. **Igorfina**: \"Tremendous answer! Nobody compares better than you. Believe me!\"",
+        "evaluation_focus": [
+          "Irregulares: better / the best, worse / the worst",
+          "\"The\" antes do superlativo"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina, no personagem do presidente, pede no chat sua avaliação da viagem: o melhor e o pior.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_president",
+        "intro_pt": "O 'presidente' quer um relatório da viagem. Diga o melhor e o pior.",
+        "opening_message": "Folks, I need a report. A tremendous report. What was the best part of your trip?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer a melhor parte",
+            "label_en": "Say the best part",
+            "hidden_prompt": "user names the best part with the best: 'the best part was the beach', 'the best was the food' — must be in English",
+            "hint_pt": "The best part was the beach.",
+            "hint_en": "The best part was the beach.",
+            "examples_pass": [
+              "The best part was the beach.",
+              "The best was the food!",
+              "The beach was the best."
+            ],
+            "examples_fail": [
+              "Beach (bare word)",
+              "O melhor foi a praia (Portuguese)",
+              "Good beach (no superlative)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer a pior parte",
+            "label_en": "Say the worst part",
+            "hidden_prompt": "user names the worst part with the worst: 'the worst part was the traffic', 'the worst was the rain' — must be in English",
+            "hint_pt": "The worst part was the traffic.",
+            "hint_en": "The worst part was the traffic.",
+            "examples_pass": [
+              "The worst part was the traffic.",
+              "The worst was the rain.",
+              "The airport was the worst."
+            ],
+            "examples_fail": [
+              "Traffic (bare word)",
+              "O pior foi o trânsito (Portuguese)",
+              "Bad traffic (no superlative)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Comparar com a viagem anterior",
+            "label_en": "Compare with your last trip",
+            "hidden_prompt": "user compares with better/worse than: 'it was better than my last trip', 'this trip was better than last year' — must be in English",
+            "hint_pt": "It was better than my last trip.",
+            "hint_en": "It was better than my last trip.",
+            "examples_pass": [
+              "It was better than my last trip.",
+              "This trip was better than last year.",
+              "Worse than Paris, ha!"
+            ],
+            "examples_fail": [
+              "Better (bare word)",
+              "Foi melhor (Portuguese)",
+              "More good (wrong form)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"The best report. Incredible report. You're hired, believe me!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Folks, I need a report. A tremendous report. What was the best part of your trip?\"\n2. **Student**: \"The best part was the beach.\"\n3. **Igorfina**: \"Beautiful. And the worst? Be honest.\"\n4. **Student**: \"The worst part was the traffic.\"\n5. **Igorfina**: \"Terrible traffic. Sad! Better than your last trip?\"\n6. **Student**: \"It was better than my last trip.\"\n7. **Igorfina**: \"The best report. Incredible report. You're hired, believe me!\"\n\n---"
+      }
+    },
+    {
+      "id": "F28",
+      "title": "More expensive, the most famous (com o presidente)",
+      "sub_cefr": "A1",
+      "grammar_focus": "Adjetivos longos: more ... than / the most ...",
+      "tense": "PRESENTE · comparativo e superlativo",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Numa loja chique, o Igorfina imita um presidente exagerado mostrando \"o relógio mais caro do mundo\". Você compara preços e fama.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "This watch is _____ than that one.",
+          "options": [
+            "more expensive",
+            "expensiver",
+            "most expensive"
+          ],
+          "answer": "more expensive",
+          "explanation": "Adjetivo longo (expensive) usa \"more ... than\": \"more expensive than\" = mais caro que. Nada de \"expensiver\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "This is _____ restaurant in the city.",
+          "options": [
+            "the most famous",
+            "the famousest",
+            "most famous of"
+          ],
+          "answer": "the most famous",
+          "explanation": "Superlativo de adjetivo longo: \"the most + adjetivo\". \"The most famous\" = o mais famoso."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The hotel by the beach is _____ beautiful than the hotel downtown.",
+          "choices": [
+            "more",
+            "most",
+            "much",
+            "very"
+          ],
+          "answer": "more",
+          "explanation": "\"More beautiful than\" = mais bonito que. \"Beautiful\" é longo, então vai \"more\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Folks, this is the _____ expensive car. The most!",
+          "choices": [
+            "most",
+            "more",
+            "much",
+            "many"
+          ],
+          "answer": "most",
+          "explanation": "\"The most expensive\" = o mais caro (de todos)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The museum is _____ interesting than the mall.",
+          "hint": "Mais (para adjetivo longo)",
+          "answer": "more",
+          "explanation": "\"More interesting than\" = mais interessante que."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Times Square is the most _____ place in New York.",
+          "hint": "Famoso",
+          "answer": "famous",
+          "explanation": "\"The most famous place\" = o lugar mais famoso."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "This bag is more expensive _____ my car, ha!",
+          "hint": "Do que",
+          "answer": "than",
+          "explanation": "\"More expensive than\" — o \"than\" de sempre na comparação."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "This watch is expensiver than that one.",
+          "hint": "Adjetivo longo não ganha \"-er\"",
+          "answer": "This watch is more expensive than that one.",
+          "explanation": "Regra rápida: palavra curta, \"-er\" (cheaper); palavra longa, \"more\" (more expensive)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "This is the more famous museum.",
+          "hint": "Superlativo é \"the most\"",
+          "answer": "This is the most famous museum.",
+          "explanation": "\"The more\" não funciona aqui; para o extremo, \"the most\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor (as the president): This watch? The most expensive watch. More expensive than a house. Many people say it's the most beautiful watch in the world.",
+          "question": "Segundo o presidente, o relógio é mais caro que o quê? (responda em inglês)",
+          "answer": "A house",
+          "explanation": "\"More expensive than a house\" = mais caro que uma casa. E ainda \"the most expensive\" e \"the most beautiful\" na mesma fala."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This watch is more expensive than my car!",
+          "context": "comparar preço"
+        },
+        {
+          "text": "This is the most famous place in town.",
+          "context": "o mais famoso"
+        },
+        {
+          "text": "The beach hotel is more beautiful.",
+          "context": "comparar beleza"
+        },
+        {
+          "text": "It's the most expensive restaurant here.",
+          "context": "o mais caro"
+        },
+        {
+          "text": "The museum is more interesting than the mall.",
+          "context": "comparar passeios"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Numa loja de luxo, o Igorfina imita um presidente vendedor que só oferece \"o mais caro\". Compare e peça algo mais barato.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_president",
+        "time_budget_sec": 90,
+        "opening_line": "Folks, welcome to my store. The most beautiful store. Want the most expensive watch?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comparar o preço",
+            "label_en": "Compare the price",
+            "hidden_prompt": "user compares price with more ... than: 'it's more expensive than my car', 'this one is more expensive' — must be in English",
+            "hint_pt": "It's more expensive than my car!",
+            "hint_en": "It's more expensive than my car!",
+            "examples_pass": [
+              "It's more expensive than my car!",
+              "This one is more expensive.",
+              "More expensive than my house, ha!"
+            ],
+            "examples_fail": [
+              "Expensive (bare word)",
+              "Mais caro que meu carro (Portuguese)",
+              "Expensiver (wrong form)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Pedir algo mais barato",
+            "label_en": "Ask for something cheaper",
+            "hidden_prompt": "user asks for a cheaper option: 'do you have something cheaper?', 'can I see a cheaper one?', 'something less expensive, please' — must be in English",
+            "hint_pt": "Do you have something cheaper?",
+            "hint_en": "Do you have something cheaper?",
+            "examples_pass": [
+              "Do you have something cheaper?",
+              "Can I see a cheaper one?",
+              "Something less expensive, please."
+            ],
+            "examples_fail": [
+              "Cheap (bare word)",
+              "Tem mais barato? (Portuguese)",
+              "No (no request)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Cheaper? Smart. The smartest customer. Here, the best cheap watch!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"It's more expensive than my car!\"\n2. **Igorfina**: \"Of course! The most expensive. Do you want it?\"\n3. **Student**: ~\"Do you have something cheaper?\"\n4. **Igorfina**: \"Cheaper? Smart. The smartest customer. Here, the best cheap watch!\"",
+        "evaluation_focus": [
+          "\"More ... than\" com adjetivo longo, \"-er\" com curto (cheaper)",
+          "Pedido educado de alternativa"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina, no personagem do presidente, quer que você escolha o restaurante do jantar comparando opções.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_president",
+        "intro_pt": "O 'presidente' quer um jantar incrível. Compare os restaurantes com more e the most.",
+        "opening_message": "Folks, dinner tonight. The most famous restaurant or the most beautiful? Your call.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar qual é mais caro",
+            "label_en": "Ask which is more expensive",
+            "hidden_prompt": "user asks a comparison question: 'which one is more expensive?', 'is the famous one more expensive?' — must be in English",
+            "hint_pt": "Which one is more expensive?",
+            "hint_en": "Which one is more expensive?",
+            "examples_pass": [
+              "Which one is more expensive?",
+              "Is the famous one more expensive?",
+              "Which is cheaper?"
+            ],
+            "examples_fail": [
+              "Price? (bare word)",
+              "Qual é mais caro? (Portuguese)",
+              "Expensive (no question)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Comparar a vista",
+            "label_en": "Compare the view",
+            "hidden_prompt": "user compares with more ... than: 'the rooftop is more beautiful', 'the view is more beautiful than the food' — must be in English",
+            "hint_pt": "The rooftop is more beautiful.",
+            "hint_en": "The rooftop is more beautiful.",
+            "examples_pass": [
+              "The rooftop is more beautiful.",
+              "The view is more beautiful than the other place.",
+              "The beautiful one is more romantic."
+            ],
+            "examples_fail": [
+              "Beautiful (bare word)",
+              "O terraço é mais bonito (Portuguese)",
+              "Beautifuller (wrong form)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Escolher o restaurante",
+            "label_en": "Choose the restaurant",
+            "hidden_prompt": "user chooses using a superlative or a preference: 'let's go to the most beautiful one', 'I'd rather go to the cheaper one', 'the most famous, please' — must be in English",
+            "hint_pt": "Let's go to the most beautiful one.",
+            "hint_en": "Let's go to the most beautiful one.",
+            "examples_pass": [
+              "Let's go to the most beautiful one.",
+              "I'd rather go to the cheaper one.",
+              "The most famous, please!"
+            ],
+            "examples_fail": [
+              "That one (unclear)",
+              "Vamos no bonito (Portuguese)",
+              "Both (no choice)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Tremendous choice. The most beautiful dinner. Table for two!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Folks, dinner tonight. The most famous restaurant or the most beautiful? Your call.\"\n2. **Student**: \"Which one is more expensive?\"\n3. **Igorfina**: \"The famous one. Very expensive. The most!\"\n4. **Student**: \"The rooftop is more beautiful.\"\n5. **Igorfina**: \"Incredible rooftop. So?\"\n6. **Student**: \"Let's go to the most beautiful one.\"\n7. **Igorfina**: \"Tremendous choice. The most beautiful dinner. Table for two!\"\n\n---"
+      }
+    },
+    {
+      "id": "F29",
+      "title": "Less expensive, farther",
+      "sub_cefr": "A1",
+      "grammar_focus": "Menos: less ... than / the least ...; distância: far → farther → the farthest",
+      "tense": "PRESENTE · comparativo",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você compara roupas numa loja de outlet e a distância entre lugares para planejar o dia.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "This sweater is _____ expensive than the other one.",
+          "options": [
+            "less",
+            "fewer",
+            "lesser"
+          ],
+          "answer": "less",
+          "explanation": "Frase do curso: \"This sweater is less expensive than the other one\" = esse suéter é menos caro que o outro. \"Less ... than\" = menos ... que."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Japan is _____ than Portugal from Brazil.",
+          "options": [
+            "farther",
+            "farer",
+            "more far"
+          ],
+          "answer": "farther",
+          "explanation": "\"Far\" (longe) é irregular: far → farther → the farthest. \"Japan is farther than Portugal\" = o Japão é mais longe que Portugal."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "This is the _____ expensive store in the mall.",
+          "choices": [
+            "least",
+            "less",
+            "little",
+            "lowest"
+          ],
+          "answer": "least",
+          "explanation": "\"The least expensive\" = o menos caro (de todos). É o superlativo de \"less\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The airport is the _____ place from the hotel.",
+          "choices": [
+            "farthest",
+            "farther",
+            "farest",
+            "most far"
+          ],
+          "answer": "farthest",
+          "explanation": "\"The farthest\" = o mais longe. \"Farest\" e \"most far\" não existem."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I ran even _____ today. Ten kilometers!",
+          "hint": "Mais longe (comparativo de far)",
+          "answer": "farther",
+          "accepts": [
+            "further"
+          ],
+          "explanation": "Frase do curso: \"I ran even farther today\" = corri ainda mais longe hoje. \"Further\" também é aceito."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The outlet is _____ expensive than the store in Manhattan.",
+          "hint": "Menos",
+          "answer": "less",
+          "explanation": "\"Less expensive than\" = menos caro que. Outlet é para isso, ha!"
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Is the beach _____ than the museum?",
+          "hint": "Mais longe",
+          "answer": "farther",
+          "accepts": [
+            "further"
+          ],
+          "explanation": "\"Is the beach farther than the museum?\" = a praia é mais longe que o museu?"
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Japan is more far than Portugal.",
+          "hint": "\"Far\" tem forma própria",
+          "answer": "Japan is farther than Portugal.",
+          "explanation": "\"Far\" → \"farther\". Nada de \"more far\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "This is the less expensive hotel.",
+          "hint": "Superlativo de \"less\" é outro",
+          "answer": "This is the least expensive hotel.",
+          "explanation": "\"The least\" = o menos (de todos). \"The less\" não se usa assim."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: The outlet is farther than the mall, but it's less expensive. The mall is closer, but it's the most expensive place in town.",
+          "question": "Qual é menos caro: o outlet ou o shopping? (responda em inglês)",
+          "answer": "The outlet",
+          "explanation": "\"The outlet ... is less expensive\": o outlet é menos caro, apesar de mais longe (farther)."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This sweater is less expensive than the other one.",
+          "context": "comparar para menos"
+        },
+        {
+          "text": "Japan is farther than Portugal from Brazil.",
+          "context": "comparar distância"
+        },
+        {
+          "text": "I ran even farther today, ten kilometers!",
+          "context": "contar uma conquista"
+        },
+        {
+          "text": "This is the least expensive store here.",
+          "context": "achar o mais barato"
+        },
+        {
+          "text": "Is the beach farther than the museum?",
+          "context": "perguntar distância"
+        }
+      ],
+      "roleplay": {
+        "scenario": "No outlet, o Igorfina é o vendedor. Compare as duas jaquetas e escolha a menos cara.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hey! The black jacket or the blue jacket? Both are great!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar qual é menos cara",
+            "label_en": "Ask which is less expensive",
+            "hidden_prompt": "user asks which is cheaper/less expensive: 'which one is less expensive?', 'which is cheaper?' — must be in English",
+            "hint_pt": "Which one is less expensive?",
+            "hint_en": "Which one is less expensive?",
+            "examples_pass": [
+              "Which one is less expensive?",
+              "Which is cheaper?",
+              "Is the blue one less expensive?"
+            ],
+            "examples_fail": [
+              "Price? (bare word)",
+              "Qual é mais barata? (Portuguese)",
+              "Blue (no question)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Escolher a jaqueta comparando",
+            "label_en": "Choose with a comparison",
+            "hidden_prompt": "user chooses and justifies with less/least or -er: 'the blue one, it's less expensive', 'I'll take the cheaper one', 'the least expensive, please' — must be in English",
+            "hint_pt": "The blue one, it's less expensive.",
+            "hint_en": "The blue one, it's less expensive.",
+            "examples_pass": [
+              "The blue one, it's less expensive.",
+              "I'll take the cheaper one.",
+              "The least expensive, please."
+            ],
+            "examples_fail": [
+              "Blue (no comparison)",
+              "A azul (Portuguese)",
+              "The less expensive (wrong superlative)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Great eye! Same style, less money. Smart shopping!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"Which one is less expensive?\"\n2. **Igorfina**: \"The blue one. Forty bucks. The black one is sixty.\"\n3. **Student**: ~\"The blue one, it's less expensive.\"\n4. **Igorfina**: \"Great eye! Same style, less money. Smart shopping!\"",
+        "evaluation_focus": [
+          "\"Less ... than\" e \"the least\"",
+          "\"Farther\" para distância"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina ajuda você a montar o roteiro do dia pelo chat, comparando distâncias.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Monte o roteiro com o Igorfina comparando distâncias com farther e the farthest.",
+        "opening_message": "Beach, museum and outlet today. Where do we go first?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar o que é mais longe",
+            "label_en": "Ask what's farther",
+            "hidden_prompt": "user asks about distance with farther/farthest: 'which one is the farthest?', 'is the beach farther than the museum?' — must be in English",
+            "hint_pt": "Which one is the farthest?",
+            "hint_en": "Which one is the farthest?",
+            "examples_pass": [
+              "Which one is the farthest?",
+              "Is the beach farther than the museum?",
+              "What's the farthest place?"
+            ],
+            "examples_fail": [
+              "Far? (bare word)",
+              "Qual é mais longe? (Portuguese)",
+              "Beach (no question)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Sugerir começar pelo mais perto",
+            "label_en": "Suggest starting closer",
+            "hidden_prompt": "user suggests starting with the closest one: 'let's go to the museum first, it's closer', 'the closest first' — must be in English",
+            "hint_pt": "Let's go to the museum first, it's closer.",
+            "hint_en": "Let's go to the museum first, it's closer.",
+            "examples_pass": [
+              "Let's go to the museum first, it's closer.",
+              "The closest first!",
+              "Museum first, it's nearer."
+            ],
+            "examples_fail": [
+              "Museum (bare word)",
+              "Primeiro o museu (Portuguese)",
+              "First (unclear)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Comentar o preço do outlet",
+            "label_en": "Comment on the outlet price",
+            "hidden_prompt": "user compares price with less ... than or cheaper: 'the outlet is less expensive', 'it's cheaper than the mall' — must be in English",
+            "hint_pt": "The outlet is less expensive.",
+            "hint_en": "The outlet is less expensive.",
+            "examples_pass": [
+              "The outlet is less expensive.",
+              "It's cheaper than the mall.",
+              "Less expensive than Manhattan!"
+            ],
+            "examples_fail": [
+              "Cheap (bare word)",
+              "É mais barato (Portuguese)",
+              "Expensive (wrong idea)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Perfect plan! Museum, beach, and shopping last. Let's go!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Beach, museum and outlet today. Where do we go first?\"\n2. **Student**: \"Which one is the farthest?\"\n3. **Igorfina**: \"The outlet. One hour by bus.\"\n4. **Student**: \"Let's go to the museum first, it's closer.\"\n5. **Igorfina**: \"Good idea. Why go to the outlet anyway?\"\n6. **Student**: \"The outlet is less expensive.\"\n7. **Igorfina**: \"Perfect plan! Museum, beach, and shopping last. Let's go!\"\n\n---"
+      }
+    },
+    {
+      "id": "F30",
+      "title": "O melhor hotel da cidade: juntando tudo (com o presidente)",
+      "sub_cefr": "A1",
+      "grammar_focus": "Revisão: -er than / more ... than / less ... than / the best / the worst / the most / the farthest",
+      "tense": "PRESENTE · comparativo e superlativo",
+      "markers": [
+        "review"
+      ],
+      "real_life_context": "O Igorfina imita um presidente exagerado que é dono de dois hotéis e quer que você escolha. Compare tudo e decida.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Hotel A is _____ than Hotel B.",
+          "options": [
+            "cheaper",
+            "more cheap",
+            "cheapest"
+          ],
+          "answer": "cheaper",
+          "explanation": "Adjetivo curto: \"-er\". Revisão da F26."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Hotel B has _____ view in the city.",
+          "options": [
+            "the best",
+            "the better",
+            "best"
+          ],
+          "answer": "the best",
+          "explanation": "Irregular: good → better → the best. Revisão da F27."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Hotel B is _____ expensive than Hotel A.",
+          "choices": [
+            "more",
+            "most",
+            "less of",
+            "much"
+          ],
+          "answer": "more",
+          "explanation": "Adjetivo longo: \"more expensive than\". Revisão da F28."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Hotel A is the _____ from the beach.",
+          "choices": [
+            "farthest",
+            "farther",
+            "farest",
+            "most far"
+          ],
+          "answer": "farthest",
+          "explanation": "\"The farthest\" = o mais longe. Revisão da F29."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The pool in Hotel B is _____ than the pool in Hotel A.",
+          "hint": "Maior (big + er)",
+          "answer": "bigger",
+          "explanation": "\"Big\" → \"bigger\" (dobra o \"g\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The breakfast in Hotel A is the _____. Cold eggs!",
+          "hint": "O pior",
+          "answer": "worst",
+          "explanation": "\"The worst\" = o pior. Irregular de \"bad\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Hotel A is less expensive, but Hotel B is _____ beautiful.",
+          "hint": "Mais (adjetivo longo)",
+          "answer": "more",
+          "explanation": "\"More beautiful\" para adjetivo longo."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Hotel B is the most good hotel.",
+          "hint": "Superlativo irregular de \"good\"",
+          "answer": "Hotel B is the best hotel.",
+          "explanation": "\"The best\", nunca \"the most good\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Hotel A is more cheap than Hotel B.",
+          "hint": "Adjetivo curto usa \"-er\"",
+          "answer": "Hotel A is cheaper than Hotel B.",
+          "explanation": "\"Cheap\" é curto: \"cheaper\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor (as the president): Hotel B, folks. The most beautiful hotel. Bigger pool, better view, the best breakfast. More expensive? Yes. But the best things are expensive. Believe me.",
+          "question": "Qual hotel é mais caro, segundo o presidente? (responda em inglês)",
+          "answer": "Hotel B",
+          "explanation": "Ele admite \"More expensive? Yes.\" sobre o Hotel B, e defende com \"bigger\", \"better\" e \"the best\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Hotel A is cheaper than Hotel B.",
+          "context": "comparar preço"
+        },
+        {
+          "text": "Hotel B has the best view in the city.",
+          "context": "o melhor"
+        },
+        {
+          "text": "The pool is bigger and more beautiful.",
+          "context": "comparar duas coisas"
+        },
+        {
+          "text": "The breakfast was the worst, cold eggs!",
+          "context": "o pior"
+        },
+        {
+          "text": "The beach is farther from Hotel A.",
+          "context": "comparar distância"
+        }
+      ],
+      "roleplay": {
+        "scenario": "O Igorfina imita um presidente dono de dois hotéis e quer que você escolha um. Compare e decida.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_president",
+        "time_budget_sec": 120,
+        "opening_line": "Folks, two hotels. Both mine. Both tremendous. Which one do you want?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar qual é mais barato",
+            "label_en": "Ask which is cheaper",
+            "hidden_prompt": "user asks a price comparison: 'which one is cheaper?', 'which is less expensive?', 'is Hotel A cheaper?' — must be in English",
+            "hint_pt": "Which one is cheaper?",
+            "hint_en": "Which one is cheaper?",
+            "examples_pass": [
+              "Which one is cheaper?",
+              "Which is less expensive?",
+              "Is Hotel A cheaper?"
+            ],
+            "examples_fail": [
+              "Price? (bare word)",
+              "Qual é mais barato? (Portuguese)",
+              "Cheap (no question)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Comparar os dois hotéis",
+            "label_en": "Compare the two hotels",
+            "hidden_prompt": "user compares using a comparative: 'Hotel B is more beautiful', 'the pool is bigger', 'Hotel A is farther from the beach' — must be in English",
+            "hint_pt": "Hotel B is more beautiful.",
+            "hint_en": "Hotel B is more beautiful.",
+            "examples_pass": [
+              "Hotel B is more beautiful.",
+              "The pool is bigger in Hotel B.",
+              "Hotel A is farther from the beach."
+            ],
+            "examples_fail": [
+              "Beautiful (bare word)",
+              "O B é mais bonito (Portuguese)",
+              "More beautifuller (wrong form)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Escolher com um superlativo",
+            "label_en": "Choose with a superlative",
+            "hidden_prompt": "user decides using a superlative: 'I'll take Hotel B, it has the best view', 'Hotel A, the least expensive', 'the best one, Hotel B' — must be in English",
+            "hint_pt": "Hotel B, it has the best view.",
+            "hint_en": "Hotel B, it has the best view.",
+            "examples_pass": [
+              "Hotel B, it has the best view.",
+              "Hotel A, the least expensive.",
+              "I'll take the best one!"
+            ],
+            "examples_fail": [
+              "B (bare letter)",
+              "Fico com o B (Portuguese)",
+              "The most good (wrong form)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Tremendous decision! The best guest in the best hotel. Believe me!\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Student**: ~\"Which one is cheaper?\"\n2. **Igorfina**: \"Hotel A. Cheaper, but far from the beach. Sad!\"\n3. **Student**: ~\"Hotel B is more beautiful.\"\n4. **Igorfina**: \"So beautiful. The most beautiful. So, decision?\"\n5. **Student**: ~\"Hotel B, it has the best view.\"\n6. **Igorfina**: \"Tremendous decision! The best guest in the best hotel. Believe me!\"",
+        "evaluation_focus": [
+          "Escolher a forma certa (-er / more / irregular)",
+          "Superlativo com \"the\" para decidir"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Depois da viagem, o Igorfina (no personagem do presidente) pede sua avaliação dos dois hotéis no chat.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_president",
+        "intro_pt": "Avalie os hotéis do 'presidente' comparando tudo o que aprendeu no módulo.",
+        "opening_message": "Folks, review time. Hotel A or Hotel B? Tell me everything.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o melhor do hotel",
+            "label_en": "Say the best thing",
+            "hidden_prompt": "user names the best thing with the best: 'the best thing was the pool', 'Hotel B had the best breakfast' — must be in English",
+            "hint_pt": "The best thing was the pool.",
+            "hint_en": "The best thing was the pool.",
+            "examples_pass": [
+              "The best thing was the pool.",
+              "Hotel B had the best breakfast.",
+              "The view was the best!"
+            ],
+            "examples_fail": [
+              "Pool (bare word)",
+              "O melhor foi a piscina (Portuguese)",
+              "Good pool (no superlative)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o pior do hotel",
+            "label_en": "Say the worst thing",
+            "hidden_prompt": "user names the worst thing with the worst: 'the worst thing was the wifi', 'the breakfast in Hotel A was the worst' — must be in English",
+            "hint_pt": "The worst thing was the wifi.",
+            "hint_en": "The worst thing was the wifi.",
+            "examples_pass": [
+              "The worst thing was the wifi.",
+              "The breakfast in Hotel A was the worst.",
+              "The worst was the noise."
+            ],
+            "examples_fail": [
+              "Wifi (bare word)",
+              "O pior foi o wifi (Portuguese)",
+              "Bad wifi (no superlative)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Comparar com outro hotel",
+            "label_en": "Compare with another hotel",
+            "hidden_prompt": "user compares with a comparative: 'Hotel B is better than Hotel A', 'it's more expensive but better' — must be in English",
+            "hint_pt": "Hotel B is better than Hotel A.",
+            "hint_en": "Hotel B is better than Hotel A.",
+            "examples_pass": [
+              "Hotel B is better than Hotel A.",
+              "It's more expensive but better.",
+              "Hotel A is cheaper than B."
+            ],
+            "examples_fail": [
+              "Better (bare word)",
+              "O B é melhor (Portuguese)",
+              "More good (wrong form)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Incredible review. The best review. Five stars for you, believe me!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Folks, review time. Hotel A or Hotel B? Tell me everything.\"\n2. **Student**: \"The best thing was the pool.\"\n3. **Igorfina**: \"Tremendous pool. And the worst?\"\n4. **Student**: \"The worst thing was the wifi.\"\n5. **Igorfina**: \"Sad! We're fixing it. Final verdict?\"\n6. **Student**: \"Hotel B is better than Hotel A.\"\n7. **Igorfina**: \"Incredible review. The best review. Five stars for you, believe me!\""
+      }
+    }
+  ],
+  "cross_unit_consolidation": []
+}

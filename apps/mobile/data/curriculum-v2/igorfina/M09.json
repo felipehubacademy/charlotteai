@@ -1,0 +1,1264 @@
+{
+  "id": "M09",
+  "title": "Academia",
+  "level": "Igorfina",
+  "block": "A1",
+  "units_range": "F41–F45",
+  "theme": "Treinar na academia em viagem: falar com o personal, séries e repetições, partes do corpo, exercícios e cansaço",
+  "goal": "Aluno sai usando o vocabulário de academia (gym, trainer, diet, meal, weight, sets, reps), as partes do corpo, os nomes dos exercícios e expressões de cansaço, e entende \"How tall are you?\".",
+  "connects_to": "M08 (Situações do dia a dia) e M10 (Viagem sem grana).",
+  "module_chunks": [
+    "gym / trainer / personal trainer",
+    "bodybuilding (o esporte) / bodybuilder (o atleta)",
+    "diet / meal / protein",
+    "weight / How much do you weigh?",
+    "How tall are you? / I'm 1.75 (one seventy-five).",
+    "lift / lift weights",
+    "three sets of eight reps",
+    "How many reps?",
+    "tired / exhausted",
+    "I'm exhausted!",
+    "muscle (pronúncia)",
+    "biceps / triceps / forearms / abs / chest / back",
+    "shoulders / calves / glutes / lower back",
+    "bench press / squat / row / curl",
+    "shoulder press / lateral raise",
+    "push / pull",
+    "Can I use this machine?",
+    "Are you using this?",
+    "Let's go, one more rep!"
+  ],
+  "units": [
+    {
+      "id": "F41",
+      "title": "Gym, trainer, diet",
+      "sub_cefr": "A1",
+      "grammar_focus": "Vocabulário de academia + perguntas pessoais: How tall are you? / How much do you weigh?",
+      "tense": "PRESENTE · simple",
+      "markers": [
+        "denso",
+        "qform"
+      ],
+      "real_life_context": "Você se matricula numa academia em Miami e conversa com o personal na primeira aula.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I go to the _____ every morning.",
+          "options": [
+            "gym",
+            "academy",
+            "gymnasium of"
+          ],
+          "answer": "gym",
+          "explanation": "Academia de musculação é \"gym\". \"Academy\" é outra coisa (escola, instituição). Dica do Igor: nunca diga \"I go to the academy\" querendo dizer academia."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "My _____ says I need to eat more protein.",
+          "options": [
+            "trainer",
+            "train",
+            "training"
+          ],
+          "answer": "trainer",
+          "explanation": "\"Trainer\" (ou \"personal trainer\") é o personal. \"Training\" é o treino."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "How _____ are you? I'm 1.80.",
+          "choices": [
+            "tall",
+            "high",
+            "big",
+            "long"
+          ],
+          "answer": "tall",
+          "explanation": "Altura de pessoa: \"How tall are you?\". \"High\" é para coisas (montanha, prédio)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He's a _____. He does bodybuilding competitions.",
+          "choices": [
+            "bodybuilder",
+            "bodybuilding",
+            "body build",
+            "builder body"
+          ],
+          "answer": "bodybuilder",
+          "explanation": "\"Bodybuilding\" é o esporte; \"bodybuilder\" é o atleta."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'm on a _____. No pizza for me!",
+          "hint": "Dieta",
+          "answer": "diet",
+          "explanation": "\"I'm on a diet\" = estou de dieta."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I eat five _____ a day.",
+          "hint": "Refeições",
+          "answer": "meals",
+          "explanation": "\"Meal\" = refeição. \"Five meals a day\" = cinco refeições por dia."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "How much do you _____? Around 80 kilos.",
+          "hint": "Pesar (verbo)",
+          "answer": "weigh",
+          "explanation": "\"How much do you weigh?\" = quanto você pesa? \"Weight\" (com t) é o peso, o substantivo."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I go to the academy every day to lift weights.",
+          "hint": "Academia de musculação tem outro nome",
+          "answer": "I go to the gym every day to lift weights.",
+          "explanation": "Para musculação, sempre \"gym\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "How high are you?",
+          "hint": "Altura de pessoa usa outra palavra",
+          "answer": "How tall are you?",
+          "explanation": "\"How tall are you?\" para pessoas. \"How high are you?\" soa como outra coisa, ha!"
+        },
+        {
+          "type": "read_answer",
+          "passage": "Trainer: Welcome to the gym! How tall are you? Igor: I'm 1.78. Trainer: And your diet? Igor: I eat four meals a day, a lot of protein.",
+          "question": "Quantas refeições o Igor faz por dia? (responda em inglês)",
+          "answer": "Four meals",
+          "explanation": "\"I eat four meals a day\" = como quatro refeições por dia."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I go to the gym every morning.",
+          "context": "rotina de treino"
+        },
+        {
+          "text": "My trainer says I need more protein.",
+          "context": "falar do personal"
+        },
+        {
+          "text": "How tall are you? I'm one seventy-five.",
+          "context": "altura"
+        },
+        {
+          "text": "I'm on a diet, no pizza for me!",
+          "context": "dieta"
+        },
+        {
+          "text": "I eat five meals a day, my friend.",
+          "context": "refeições"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Primeira aula na academia. O Igorfina é o personal trainer e faz perguntas para montar seu treino.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Welcome to the gym! I'm your trainer today. How tall are you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer sua altura",
+            "label_en": "Say your height",
+            "hidden_prompt": "user states a height: 'I'm 1.75', 'I'm one seventy-five', 'about five ten' — any number counts — must be in English",
+            "hint_pt": "I'm one seventy-five.",
+            "hint_en": "I'm one seventy-five.",
+            "examples_pass": [
+              "I'm one seventy-five.",
+              "I'm 1.80.",
+              "About five foot ten."
+            ],
+            "examples_fail": [
+              "Tall (no number)",
+              "Um e setenta (Portuguese)",
+              "Yes (no height)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Falar da sua alimentação",
+            "label_en": "Talk about your diet",
+            "hidden_prompt": "user describes eating with diet/meals: 'I eat three meals a day', 'I'm on a diet', 'I eat a lot of protein' — must be in English",
+            "hint_pt": "I eat three meals a day.",
+            "hint_en": "I eat three meals a day.",
+            "examples_pass": [
+              "I eat three meals a day.",
+              "I'm on a diet.",
+              "I eat a lot of protein."
+            ],
+            "examples_fail": [
+              "Food (bare word)",
+              "Como bem (Portuguese)",
+              "Yes (no info)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Perfect! Let's build your plan. Ready to lift?\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"I'm one seventy-five.\"\n2. **Igorfina**: \"Great. And your diet? How many meals a day?\"\n3. **Student**: ~\"I eat three meals a day.\"\n4. **Igorfina**: \"Perfect! Let's build your plan. Ready to lift?\"",
+        "evaluation_focus": [
+          "\"How tall are you?\" e números",
+          "Vocabulário de academia (gym, diet, meals)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina, seu amigo, quer te levar para a academia do hotel e pergunta da sua rotina pelo chat.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "O Igorfina quer treinar com você. Conte sua rotina usando o vocabulário de academia.",
+        "opening_message": "Gym tomorrow at 7? Do you go to the gym in Brazil?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Contar sua rotina de academia",
+            "label_en": "Tell your gym routine",
+            "hidden_prompt": "user describes gym habits: 'I go to the gym three times a week', 'yes, I go every day', 'not much' — must be in English",
+            "hint_pt": "I go to the gym three times a week.",
+            "hint_en": "I go to the gym three times a week.",
+            "examples_pass": [
+              "I go to the gym three times a week.",
+              "Yes, every day!",
+              "I go sometimes."
+            ],
+            "examples_fail": [
+              "Academia (Portuguese)",
+              "I go to the academy (wrong word)",
+              "Yes (no info)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar se ele tem personal",
+            "label_en": "Ask if he has a trainer",
+            "hidden_prompt": "user asks about a trainer: 'do you have a trainer?', 'do you have a personal trainer?' — must be in English",
+            "hint_pt": "Do you have a trainer?",
+            "hint_en": "Do you have a trainer?",
+            "examples_pass": [
+              "Do you have a trainer?",
+              "Do you have a personal trainer?",
+              "Who is your trainer?"
+            ],
+            "examples_fail": [
+              "Personal? (bare word)",
+              "Tem personal? (Portuguese)",
+              "I have (no question)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Topar o treino",
+            "label_en": "Agree to train",
+            "hidden_prompt": "user agrees: 'I'm in!', 'let's go!', 'see you at seven!' — must be in English",
+            "hint_pt": "I'm in! See you at seven.",
+            "hint_en": "I'm in! See you at seven.",
+            "examples_pass": [
+              "I'm in! See you at seven.",
+              "Let's go!",
+              "Count me in!"
+            ],
+            "examples_fail": [
+              "Bora (Portuguese)",
+              "Maybe (unclear)",
+              "Nah (rejection)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Seven a.m., no excuses, ha! Bring water!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Gym tomorrow at 7? Do you go to the gym in Brazil?\"\n2. **Student**: \"I go to the gym three times a week.\"\n3. **Igorfina**: \"Nice! I train every day.\"\n4. **Student**: \"Do you have a trainer?\"\n5. **Igorfina**: \"Yes, but tomorrow I'm YOUR trainer, ha!\"\n6. **Student**: \"I'm in! See you at seven.\"\n7. **Igorfina**: \"Seven a.m., no excuses, ha! Bring water!\"\n\n---"
+      }
+    },
+    {
+      "id": "F42",
+      "title": "Three sets of eight reps (com o astro do basquete)",
+      "sub_cefr": "A1",
+      "grammar_focus": "Séries e repetições: sets / reps / How many...? / one more rep",
+      "tense": "EXPRESSÕES",
+      "markers": [
+        "denso",
+        "qform"
+      ],
+      "real_life_context": "O Igorfina, imitando um astro do basquete, é seu parceiro de treino e conta as séries com muita energia.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Do three _____ of eight reps.",
+          "options": [
+            "sets",
+            "series",
+            "groups of"
+          ],
+          "answer": "sets",
+          "explanation": "\"Set\" = série. Frase do curso: \"three sets of eight reps\" = três séries de oito repetições. Nada de \"series\" aqui."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "How many _____? Ten?",
+          "options": [
+            "reps",
+            "repeats",
+            "repetitions of"
+          ],
+          "answer": "reps",
+          "explanation": "\"Reps\" é a forma curta de \"repetitions\": repetições. \"How many reps?\" = quantas repetições?"
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Come on! One more _____!",
+          "choices": [
+            "rep",
+            "set of",
+            "repeat",
+            "time of"
+          ],
+          "answer": "rep",
+          "explanation": "\"One more rep!\" = mais uma! O grito do parceiro de treino."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ weights four times a week.",
+          "choices": [
+            "lift",
+            "lifts",
+            "lifting",
+            "up"
+          ],
+          "answer": "lift",
+          "explanation": "\"Lift weights\" = levantar peso, fazer musculação."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Let's do four _____ of twelve.",
+          "hint": "Séries",
+          "answer": "sets",
+          "explanation": "\"Four sets of twelve\" = quatro séries de doze."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "How _____ sets do we do?",
+          "hint": "Quantas (para coisas contáveis)",
+          "answer": "many",
+          "explanation": "Sets são contáveis: \"How many sets?\". Lembra do M02: \"how much\" para dinheiro, \"how many\" para o que se conta."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Can I _____ this machine?",
+          "hint": "Usar",
+          "answer": "use",
+          "explanation": "\"Can I use this machine?\" = posso usar esse aparelho? Pergunta educada na academia."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Three series of eight repetitions.",
+          "hint": "Em inglês de academia, série é outra palavra",
+          "answer": "Three sets of eight reps.",
+          "explanation": "\"Sets\" e \"reps\" são as palavras de academia. \"Series\" é série de TV."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "How much reps?",
+          "hint": "Reps são contáveis",
+          "answer": "How many reps?",
+          "explanation": "\"Many\" com coisas contáveis: reps, sets, days."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor (as the hoops star): Yo! Three sets of eight reps. Let's go! ... That's six. Come on, champ, two more reps! We locked in!",
+          "question": "Quantas repetições por série o Igor pediu? (responda em inglês)",
+          "answer": "Eight reps",
+          "explanation": "\"Three sets of eight reps\": oito repetições em cada uma das três séries."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Three sets of eight reps, let's go!",
+          "context": "montar o treino"
+        },
+        {
+          "text": "How many reps do we do today?",
+          "context": "perguntar repetições"
+        },
+        {
+          "text": "Come on, one more rep, you got this!",
+          "context": "motivar"
+        },
+        {
+          "text": "Can I use this machine, please?",
+          "context": "pedir o aparelho"
+        },
+        {
+          "text": "I lift weights four times a week.",
+          "context": "rotina"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Na academia do hotel, o Igorfina imita um astro do basquete e vira seu parceiro de treino. Combinem as séries e repetições.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_hoops",
+        "time_budget_sec": 90,
+        "opening_line": "Yo, champ! Leg day! You ready to work?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar quantas séries",
+            "label_en": "Ask how many sets",
+            "hidden_prompt": "user asks about sets or reps: 'how many sets?', 'how many reps do we do?' — must be in English",
+            "hint_pt": "How many sets do we do?",
+            "hint_en": "How many sets do we do?",
+            "examples_pass": [
+              "How many sets do we do?",
+              "How many reps?",
+              "How many sets?"
+            ],
+            "examples_fail": [
+              "Sets? (bare word)",
+              "Quantas séries? (Portuguese)",
+              "How much sets (wrong form)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Confirmar o treino",
+            "label_en": "Confirm the workout",
+            "hidden_prompt": "user repeats or confirms the plan with sets/reps: 'three sets of eight reps, let's go!', 'OK, three sets of eight' — must be in English",
+            "hint_pt": "Three sets of eight reps, let's go!",
+            "hint_en": "Three sets of eight reps, let's go!",
+            "examples_pass": [
+              "Three sets of eight reps, let's go!",
+              "OK, three sets of eight.",
+              "Let's go, four sets!"
+            ],
+            "examples_fail": [
+              "Três séries (Portuguese)",
+              "OK (no plan)",
+              "Eight (bare number)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"That's championship work ethic! We locked in, let's go!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"How many sets do we do?\"\n2. **Igorfina**: \"Three sets of eight reps. Squats first!\"\n3. **Student**: ~\"Three sets of eight reps, let's go!\"\n4. **Igorfina**: \"That's championship work ethic! We locked in, let's go!\"",
+        "evaluation_focus": [
+          "\"sets\" e \"reps\" no lugar de \"series\" e \"repetitions\"",
+          "\"How many...?\" com coisas contáveis"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina (no personagem do astro do basquete) manda pelo chat o treino de amanhã e você ajusta.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_hoops",
+        "intro_pt": "O 'astro do basquete' montou seu treino. Converse com ele sobre séries e repetições.",
+        "opening_message": "Tomorrow: bench press, five sets of twelve reps. You ready, champ?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reagir ao treino puxado",
+            "label_en": "React to the hard workout",
+            "hidden_prompt": "user reacts with surprise/slang: 'no way!', 'for real?', 'that's a lot!' — must be in English",
+            "hint_pt": "No way! That's a lot!",
+            "hint_en": "No way! That's a lot!",
+            "examples_pass": [
+              "No way! That's a lot!",
+              "For real?",
+              "That's crazy, bro!"
+            ],
+            "examples_fail": [
+              "Muito (Portuguese)",
+              "OK (no reaction)",
+              "Yes (flat)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Propor menos repetições",
+            "label_en": "Suggest fewer reps",
+            "hidden_prompt": "user suggests a different plan with sets/reps: 'can we do three sets of eight?', 'three sets of ten, please' — must be in English",
+            "hint_pt": "Can we do three sets of eight?",
+            "hint_en": "Can we do three sets of eight?",
+            "examples_pass": [
+              "Can we do three sets of eight?",
+              "Three sets of ten, please.",
+              "How about four sets of eight?"
+            ],
+            "examples_fail": [
+              "Menos (Portuguese)",
+              "Less (too vague)",
+              "Eight (bare number)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Topar e motivar",
+            "label_en": "Agree and hype him",
+            "hidden_prompt": "user agrees with energy: 'let's go!', 'we got this!', 'I'm in, let's go!' — must be in English",
+            "hint_pt": "Deal! Let's go!",
+            "hint_en": "Deal! Let's go!",
+            "examples_pass": [
+              "Deal! Let's go!",
+              "We got this!",
+              "I'm in, let's go!"
+            ],
+            "examples_fail": [
+              "Bora (Portuguese)",
+              "OK (flat)",
+              "Maybe (unclear)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Three sets of eight, championship style! See you at the gym, champ!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Tomorrow: bench press, five sets of twelve reps. You ready, champ?\"\n2. **Student**: \"No way! That's a lot!\"\n3. **Igorfina**: \"Ha! Too much? What do you want?\"\n4. **Student**: \"Can we do three sets of eight?\"\n5. **Igorfina**: \"OK, OK. Rookie mode. Deal?\"\n6. **Student**: \"Deal! Let's go!\"\n7. **Igorfina**: \"Three sets of eight, championship style! See you at the gym, champ!\"\n\n---"
+      }
+    },
+    {
+      "id": "F43",
+      "title": "Partes do corpo: chest, back, abs",
+      "sub_cefr": "A1",
+      "grammar_focus": "Partes do corpo para treino: biceps, triceps, forearms, abs, chest, back, shoulders, calves, glutes, lower back + \"my ... hurts\"",
+      "tense": "PRESENTE · simple",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você combina o que vai treinar e explica uma dor para o personal.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Today is _____ day: bench press and push-ups.",
+          "options": [
+            "chest",
+            "chess",
+            "chair"
+          ],
+          "answer": "chest",
+          "explanation": "\"Chest\" = peito. \"Chess\" é xadrez, ha! Supino (bench press) trabalha o peito."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "My _____ hurts. I can't do squats today.",
+          "options": [
+            "lower back",
+            "low back of",
+            "down back"
+          ],
+          "answer": "lower back",
+          "explanation": "\"Lower back\" = lombar. \"My lower back hurts\" = minha lombar está doendo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Crunches are for your _____.",
+          "choices": [
+            "abs",
+            "arms",
+            "calves",
+            "back"
+          ],
+          "answer": "abs",
+          "explanation": "\"Abs\" = abdômen (forma curta de \"abdominals\"). Abdominais trabalham o \"abs\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Curls work your _____.",
+          "choices": [
+            "biceps",
+            "calves",
+            "glutes",
+            "chest"
+          ],
+          "answer": "biceps",
+          "explanation": "Rosca (curl) trabalha o bíceps. \"Biceps\" já termina em \"s\", mesmo sendo um músculo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Calf raises are for your _____.",
+          "hint": "Panturrilhas (plural de calf)",
+          "answer": "calves",
+          "explanation": "\"Calf\" (uma panturrilha) vira \"calves\" no plural."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Shoulder press works your _____.",
+          "hint": "Ombros",
+          "answer": "shoulders",
+          "explanation": "\"Shoulders\" = ombros. O nome do exercício já entrega."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "\"My _____ hurts after the run.\" (perna, parte de trás: panturrilha)",
+          "hint": "Panturrilha (singular)",
+          "answer": "calf",
+          "explanation": "\"My calf hurts\" = minha panturrilha dói. Com \"my ... hurts\", singular."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My back of down hurts.",
+          "hint": "Lombar é \"lower back\"",
+          "answer": "My lower back hurts.",
+          "explanation": "Lombar = \"lower back\". Tradução palavra por palavra não funciona aqui."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Today I train my chess.",
+          "hint": "Peito é outra palavra (parecida!)",
+          "answer": "Today I train my chest.",
+          "explanation": "\"Chest\" (peito) × \"chess\" (xadrez). Uma letra de diferença, sentido totalmente outro."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Trainer: What do you want to train today? Igor: Back and biceps. But my shoulder hurts a little. Trainer: OK, no shoulder press today.",
+          "question": "O que dói no Igor? (responda em inglês)",
+          "answer": "His shoulder",
+          "explanation": "\"My shoulder hurts a little\" = meu ombro dói um pouco. Por isso nada de shoulder press."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Today is chest day, bench press first.",
+          "context": "escolher o treino"
+        },
+        {
+          "text": "My lower back hurts a little today.",
+          "context": "explicar uma dor"
+        },
+        {
+          "text": "Curls are great for your biceps.",
+          "context": "exercício e músculo"
+        },
+        {
+          "text": "I train back and biceps on Monday.",
+          "context": "rotina por músculo"
+        },
+        {
+          "text": "My muscles are so tired after the gym.",
+          "context": "pronúncia de \"muscle\""
+        }
+      ],
+      "roleplay": {
+        "scenario": "O Igorfina é o personal e pergunta o que você quer treinar. Explique e conte uma dor.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Good morning! What do you want to train today?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que quer treinar",
+            "label_en": "Say what you want to train",
+            "hidden_prompt": "user names body parts to train: 'chest and triceps', 'I want to train my back', 'legs today' — must be in English",
+            "hint_pt": "Chest and triceps, please.",
+            "hint_en": "Chest and triceps, please.",
+            "examples_pass": [
+              "Chest and triceps, please.",
+              "I want to train my back.",
+              "Legs and glutes today."
+            ],
+            "examples_fail": [
+              "Peito (Portuguese)",
+              "Everything (too vague)",
+              "Chess (wrong word)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Contar uma dor",
+            "label_en": "Tell a pain",
+            "hidden_prompt": "user says a body part hurts: 'my lower back hurts', 'my shoulder hurts a little' — must be in English",
+            "hint_pt": "My lower back hurts a little.",
+            "hint_en": "My lower back hurts a little.",
+            "examples_pass": [
+              "My lower back hurts a little.",
+              "My shoulder hurts.",
+              "My knee hurts today."
+            ],
+            "examples_fail": [
+              "Dor (Portuguese)",
+              "Hurt (bare word)",
+              "I'm fine (no pain)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"OK! Chest and triceps, nothing for the lower back today. Let's go!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"Chest and triceps, please.\"\n2. **Igorfina**: \"Great! Anything hurting?\"\n3. **Student**: ~\"My lower back hurts a little.\"\n4. **Igorfina**: \"OK! Chest and triceps, nothing for the lower back today. Let's go!\"",
+        "evaluation_focus": [
+          "Nomes das partes do corpo",
+          "\"My ... hurts\" para explicar dor"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Depois do treino, o Igorfina pergunta pelo chat como você está e o que treinou.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Conte ao Igorfina o que treinou e o que está doendo, com as partes do corpo.",
+        "opening_message": "How was the gym? What did you train?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que treinou",
+            "label_en": "Say what you trained",
+            "hidden_prompt": "user names what they trained: 'I trained back and biceps', 'legs and abs', 'chest day' — must be in English",
+            "hint_pt": "I trained back and biceps.",
+            "hint_en": "I trained back and biceps.",
+            "examples_pass": [
+              "I trained back and biceps.",
+              "Legs and abs.",
+              "Chest day!"
+            ],
+            "examples_fail": [
+              "Costas (Portuguese)",
+              "Gym (too vague)",
+              "Everything (too vague)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Contar o que está doendo",
+            "label_en": "Say what hurts",
+            "hidden_prompt": "user says a body part hurts: 'my arms hurt', 'my calves hurt so much' — must be in English",
+            "hint_pt": "My arms hurt, ha!",
+            "hint_en": "My arms hurt, ha!",
+            "examples_pass": [
+              "My arms hurt, ha!",
+              "My calves hurt so much.",
+              "My back hurts a little."
+            ],
+            "examples_fail": [
+              "Tudo dói (Portuguese)",
+              "Pain (bare word)",
+              "Bad (unclear)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar o que ele treinou",
+            "label_en": "Ask what he trained",
+            "hidden_prompt": "user asks him: 'what did you train?', 'and you?', 'what about you?' — must be in English",
+            "hint_pt": "What did you train?",
+            "hint_en": "What did you train?",
+            "examples_pass": [
+              "What did you train?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "E você? (Portuguese)",
+              "You? (unclear)",
+              "Cool (no question)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Shoulders and abs! Tomorrow we both cry, ha!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"How was the gym? What did you train?\"\n2. **Student**: \"I trained back and biceps.\"\n3. **Igorfina**: \"Nice! Feeling it?\"\n4. **Student**: \"My arms hurt, ha!\"\n5. **Igorfina**: \"That means it worked!\"\n6. **Student**: \"What did you train?\"\n7. **Igorfina**: \"Shoulders and abs! Tomorrow we both cry, ha!\"\n\n---"
+      }
+    },
+    {
+      "id": "F44",
+      "title": "Bench press, squat, push e pull (com o astro do basquete)",
+      "sub_cefr": "A1",
+      "grammar_focus": "Nomes dos exercícios + push / pull + pedir o aparelho: Are you using this?",
+      "tense": "PRESENTE · continuous",
+      "markers": [
+        "denso",
+        "qform"
+      ],
+      "real_life_context": "A academia está cheia. Você precisa dividir o aparelho e o Igorfina, imitando o astro do basquete, explica os exercícios.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you using this bench?",
+          "options": [
+            "Are",
+            "Do",
+            "Is"
+          ],
+          "answer": "Are",
+          "explanation": "\"Are you using this?\" = você está usando isso? A pergunta educada para pedir o aparelho na academia lotada."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "A squat works your _____.",
+          "options": [
+            "legs",
+            "arms",
+            "chest"
+          ],
+          "answer": "legs",
+          "explanation": "\"Squat\" = agachamento. Trabalha pernas e glúteos."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Bench _____ is my favorite chest exercise.",
+          "choices": [
+            "press",
+            "push",
+            "pull",
+            "lift"
+          ],
+          "answer": "press",
+          "explanation": "\"Bench press\" = supino. Um dos exercícios mais famosos da academia."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Rows are a _____ exercise. You bring the weight to you.",
+          "choices": [
+            "pull",
+            "push",
+            "press",
+            "squat"
+          ],
+          "answer": "pull",
+          "explanation": "\"Pull\" = puxar. Remada (row) é exercício de puxar. \"Push\" = empurrar (supino, flexão)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Can I work _____ with you?",
+          "hint": "Revezar (work ___)",
+          "answer": "in",
+          "explanation": "\"Can I work in?\" = posso revezar com você? Gíria de academia: fazer suas séries no intervalo do outro."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Lateral _____ are for your shoulders.",
+          "hint": "Elevação (raises)",
+          "answer": "raises",
+          "explanation": "\"Lateral raises\" = elevação lateral. Ombros."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Push-ups are a _____ exercise.",
+          "hint": "Empurrar",
+          "answer": "push",
+          "explanation": "Flexão empurra o chão: \"push\". O nome já entrega."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "You are using this bench?",
+          "hint": "Na pergunta, \"are\" vem antes de \"you\"",
+          "answer": "Are you using this bench?",
+          "explanation": "Pergunta com \"are\": inverte a ordem."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Squat works my arms.",
+          "hint": "Agachamento trabalha outra parte",
+          "answer": "Squat works my legs.",
+          "explanation": "Squat = pernas (e glúteos). Curl é que trabalha braço."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor (as the hoops star): Yo, are you using this bench? Guy: Two more sets. Igor: Can I work in? Guy: Sure, go ahead! Igor: That's teamwork, let's go!",
+          "question": "Quantas séries faltavam para o outro rapaz? (responda em inglês)",
+          "answer": "Two more sets",
+          "explanation": "\"Two more sets\" = mais duas séries. E ele deixou o Igor revezar (\"Sure, go ahead!\")."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Excuse me, are you using this bench?",
+          "context": "pedir o aparelho"
+        },
+        {
+          "text": "Can I work in with you, bro?",
+          "context": "revezar"
+        },
+        {
+          "text": "Squats today, legs and glutes, let's go!",
+          "context": "exercício do dia"
+        },
+        {
+          "text": "Rows are a pull, push-ups are a push.",
+          "context": "push e pull"
+        },
+        {
+          "text": "Bench press is my favorite exercise.",
+          "context": "exercício favorito"
+        }
+      ],
+      "roleplay": {
+        "scenario": "A academia está lotada. O Igorfina (imitando o astro do basquete) está no banco de supino que você quer usar.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_hoops",
+        "time_budget_sec": 90,
+        "opening_line": "Yo! Big day at the gym, huh? Everybody's here!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar se ele está usando",
+            "label_en": "Ask if he's using it",
+            "hidden_prompt": "user asks if he is using the equipment: 'are you using this bench?', 'are you using this?' — must be in English",
+            "hint_pt": "Are you using this bench?",
+            "hint_en": "Are you using this bench?",
+            "examples_pass": [
+              "Are you using this bench?",
+              "Are you using this?",
+              "Excuse me, are you using the bench?"
+            ],
+            "examples_fail": [
+              "Bench? (bare word)",
+              "Tá usando? (Portuguese)",
+              "You using? (incomplete)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Pedir para revezar",
+            "label_en": "Ask to work in",
+            "hidden_prompt": "user asks to share/alternate: 'can I work in?', 'can I work in with you?', 'can we share?' — must be in English",
+            "hint_pt": "Can I work in with you?",
+            "hint_en": "Can I work in with you?",
+            "examples_pass": [
+              "Can I work in with you?",
+              "Can I work in?",
+              "Can we share the bench?"
+            ],
+            "examples_fail": [
+              "Revezar (Portuguese)",
+              "Share (bare word)",
+              "Give me (rude)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Of course, champ! Teamwork makes the dream work. Your set!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"Are you using this bench?\"\n2. **Igorfina**: \"Yeah, two more sets. Bench press, chest day!\"\n3. **Student**: ~\"Can I work in with you?\"\n4. **Igorfina**: \"Of course, champ! Teamwork makes the dream work. Your set!\"",
+        "evaluation_focus": [
+          "\"Are you using...?\" na ordem de pergunta",
+          "Nomes dos exercícios"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina (no personagem do astro do basquete) monta pelo chat um treino de \"push day\" e \"pull day\" com você.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_hoops",
+        "intro_pt": "Monte com o 'astro do basquete' o treino de push e pull, com os nomes dos exercícios.",
+        "opening_message": "Champ, we split it: push day and pull day. Name a push exercise!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer um exercício de empurrar",
+            "label_en": "Name a push exercise",
+            "hidden_prompt": "user names a push exercise: 'bench press', 'push-ups', 'shoulder press' — must be in English",
+            "hint_pt": "Bench press!",
+            "hint_en": "Bench press!",
+            "examples_pass": [
+              "Bench press!",
+              "Push-ups.",
+              "Shoulder press."
+            ],
+            "examples_fail": [
+              "Supino (Portuguese)",
+              "Squat (it's legs, not push upper)",
+              "Row (it's a pull)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer um exercício de puxar",
+            "label_en": "Name a pull exercise",
+            "hidden_prompt": "user names a pull exercise: 'rows', 'pull-ups', 'curls' — must be in English",
+            "hint_pt": "Rows!",
+            "hint_en": "Rows!",
+            "examples_pass": [
+              "Rows!",
+              "Pull-ups.",
+              "Curls."
+            ],
+            "examples_fail": [
+              "Remada (Portuguese)",
+              "Bench press (it's a push)",
+              "Push-ups (it's a push)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar quantas séries",
+            "label_en": "Ask how many sets",
+            "hidden_prompt": "user asks about sets/reps: 'how many sets?', 'how many reps for each?' — must be in English",
+            "hint_pt": "How many sets?",
+            "hint_en": "How many sets?",
+            "examples_pass": [
+              "How many sets?",
+              "How many reps for each?",
+              "How many sets of each?"
+            ],
+            "examples_fail": [
+              "Quantas? (Portuguese)",
+              "How much sets (wrong form)",
+              "Sets (bare word)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Three sets of ten each. Push, pull, championship! Let's go!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Champ, we split it: push day and pull day. Name a push exercise!\"\n2. **Student**: \"Bench press!\"\n3. **Igorfina**: \"That's it! Now a pull exercise.\"\n4. **Student**: \"Rows!\"\n5. **Igorfina**: \"Clean! You know the game.\"\n6. **Student**: \"How many sets?\"\n7. **Igorfina**: \"Three sets of ten each. Push, pull, championship! Let's go!\"\n\n---"
+      }
+    },
+    {
+      "id": "F45",
+      "title": "I'm exhausted! (juntando tudo)",
+      "sub_cefr": "A1",
+      "grammar_focus": "Cansaço (tired / exhausted) + revisão do módulo",
+      "tense": "PRESENTE · PASSADO (chunks)",
+      "markers": [
+        "review"
+      ],
+      "real_life_context": "Depois do treino mais pesado da viagem, você conta como foi e combina o próximo.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "After the gym I'm so _____.",
+          "options": [
+            "tired",
+            "tiring",
+            "tire"
+          ],
+          "answer": "tired",
+          "explanation": "\"Tired\" = cansado. \"Tiring\" é o que cansa: \"The workout was tiring\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "\"I'm _____! I can't walk!\" (muito, muito cansado)",
+          "options": [
+            "exhausted",
+            "exhausting",
+            "exhaust"
+          ],
+          "answer": "exhausted",
+          "explanation": "\"Exhausted\" = exausto, mais forte que \"tired\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We did four _____ of ten.",
+          "choices": [
+            "sets",
+            "reps of",
+            "series",
+            "groups"
+          ],
+          "answer": "sets",
+          "explanation": "\"Four sets of ten\". Revisão da F42."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My _____ hurt after the squats.",
+          "choices": [
+            "legs",
+            "arms",
+            "chest",
+            "shoulders"
+          ],
+          "answer": "legs",
+          "explanation": "Squat trabalha perna: \"My legs hurt\". Revisão da F43 e F44."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "That workout was so _____. I need a nap!",
+          "hint": "Cansativo (o que cansa)",
+          "answer": "tiring",
+          "accepts": [
+            "exhausting",
+            "hard"
+          ],
+          "explanation": "\"Tiring\" = cansativo. A pessoa fica \"tired\"; o treino é \"tiring\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I go to the _____ five days a week.",
+          "hint": "Academia",
+          "answer": "gym",
+          "explanation": "Revisão da F41: academia = \"gym\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Are you _____ this machine?",
+          "hint": "Usando (use + ing)",
+          "answer": "using",
+          "explanation": "Revisão da F44: \"Are you using this?\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm very tiring after the gym.",
+          "hint": "A pessoa fica \"cansada\", não \"cansativa\"",
+          "answer": "I'm very tired after the gym.",
+          "explanation": "\"I'm tiring\" seria \"eu sou cansativo\", ha! A pessoa é \"tired\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Three series of eight.",
+          "hint": "Na academia é \"sets\"",
+          "answer": "Three sets of eight.",
+          "explanation": "\"Sets\", sempre. Revisão da F42."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: Legs day, five sets of squats. I'm exhausted! My legs hurt so much. Tomorrow: chest. Are you in?",
+          "question": "O que o Igor vai treinar amanhã? (responda em inglês)",
+          "answer": "Chest",
+          "explanation": "\"Tomorrow: chest\" = amanhã, peito. E hoje ele está \"exhausted\" depois do treino de pernas."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm exhausted, that workout was so tiring!",
+          "context": "muito cansado"
+        },
+        {
+          "text": "We did four sets of ten squats.",
+          "context": "contar o treino"
+        },
+        {
+          "text": "My legs hurt so much today, ha!",
+          "context": "dor depois do treino"
+        },
+        {
+          "text": "Tomorrow is chest day. Are you in?",
+          "context": "próximo treino"
+        },
+        {
+          "text": "My muscles need a rest day, my friend.",
+          "context": "pedir descanso"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Saindo da academia, o Igorfina quer saber como foi e já quer marcar o próximo treino.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 120,
+        "opening_line": "So? How was the workout?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer como você está",
+            "label_en": "Say how you feel",
+            "hidden_prompt": "user says they are tired/exhausted: 'I'm exhausted!', 'I'm so tired' — must be in English",
+            "hint_pt": "I'm exhausted!",
+            "hint_en": "I'm exhausted!",
+            "examples_pass": [
+              "I'm exhausted!",
+              "I'm so tired.",
+              "I'm super tired, ha!"
+            ],
+            "examples_fail": [
+              "Cansado (Portuguese)",
+              "I'm tiring (wrong form)",
+              "Good (no feeling)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Contar o treino",
+            "label_en": "Tell the workout",
+            "hidden_prompt": "user describes the workout with sets/reps or exercises: 'four sets of squats', 'we did bench press and rows' — must be in English",
+            "hint_pt": "Four sets of ten squats.",
+            "hint_en": "Four sets of ten squats.",
+            "examples_pass": [
+              "Four sets of ten squats.",
+              "We did bench press and rows.",
+              "Three sets of eight, legs day."
+            ],
+            "examples_fail": [
+              "Agachamento (Portuguese)",
+              "Gym (too vague)",
+              "A lot (no details)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Responder sobre o próximo treino",
+            "label_en": "Answer about the next workout",
+            "hidden_prompt": "user answers with in/out or a plan: 'I'm in!', 'count me in', 'I need a rest day, I'm out' — must be in English",
+            "hint_pt": "I'm in, but after a rest day!",
+            "hint_en": "I'm in, but after a rest day!",
+            "examples_pass": [
+              "I'm in, but after a rest day!",
+              "Count me in!",
+              "I'm out tomorrow, I need rest."
+            ],
+            "examples_fail": [
+              "Talvez (Portuguese)",
+              "Maybe (unclear)",
+              "OK (no answer)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Fair! Rest day, then chest day. You're a machine, my friend!\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Student**: ~\"I'm exhausted!\"\n2. **Igorfina**: \"Ha! What did you do?\"\n3. **Student**: ~\"Four sets of ten squats.\"\n4. **Igorfina**: \"Legs day, respect! Chest tomorrow?\"\n5. **Student**: ~\"I'm in, but after a rest day!\"\n6. **Igorfina**: \"Fair! Rest day, then chest day. You're a machine, my friend!\"",
+        "evaluation_focus": [
+          "tired / exhausted (e não \"tiring\" para a pessoa)",
+          "Revisão de sets, reps e exercícios"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Você manda para o Igorfina o resumo da semana de treinos da viagem.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "Conte ao Igorfina a sua semana de academia usando tudo do módulo.",
+        "opening_message": "One week of gym on vacation! How do you feel?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer como se sente",
+            "label_en": "Say how you feel",
+            "hidden_prompt": "user describes feeling: 'I'm exhausted but happy', 'tired but strong', 'I feel great' — must be in English",
+            "hint_pt": "I'm exhausted but happy!",
+            "hint_en": "I'm exhausted but happy!",
+            "examples_pass": [
+              "I'm exhausted but happy!",
+              "Tired but strong.",
+              "I feel great!"
+            ],
+            "examples_fail": [
+              "Cansado (Portuguese)",
+              "I'm tiring (wrong form)",
+              "OK (flat)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o treino favorito",
+            "label_en": "Say your favorite workout",
+            "hidden_prompt": "user names a favorite exercise or day: 'bench press is my favorite', 'I love leg day' — must be in English",
+            "hint_pt": "Bench press is my favorite.",
+            "hint_en": "Bench press is my favorite.",
+            "examples_pass": [
+              "Bench press is my favorite.",
+              "I love leg day!",
+              "Rows are the best."
+            ],
+            "examples_fail": [
+              "Supino (Portuguese)",
+              "Gym (too vague)",
+              "Everything (too vague)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer o que dói",
+            "label_en": "Say what hurts",
+            "hidden_prompt": "user says a body part hurts: 'my shoulders hurt', 'my calves hurt a lot' — must be in English",
+            "hint_pt": "My shoulders hurt a lot, ha!",
+            "hint_en": "My shoulders hurt a lot, ha!",
+            "examples_pass": [
+              "My shoulders hurt a lot, ha!",
+              "My calves hurt.",
+              "My whole body hurts!"
+            ],
+            "examples_fail": [
+              "Tudo dói (Portuguese)",
+              "Pain (bare word)",
+              "Bad (unclear)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"That's the price of glory! Rest, eat, and back on Monday!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"One week of gym on vacation! How do you feel?\"\n2. **Student**: \"I'm exhausted but happy!\"\n3. **Igorfina**: \"Ha! Favorite exercise?\"\n4. **Student**: \"Bench press is my favorite.\"\n5. **Igorfina**: \"Classic. Anything hurting?\"\n6. **Student**: \"My shoulders hurt a lot, ha!\"\n7. **Igorfina**: \"That's the price of glory! Rest, eat, and back on Monday!\""
+      }
+    }
+  ],
+  "cross_unit_consolidation": []
+}

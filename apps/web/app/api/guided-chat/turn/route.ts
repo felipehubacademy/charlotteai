@@ -15,6 +15,7 @@ import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
 import { judgeObjectives } from '@/lib/objective-judge';
 import { logOpenAIUsage } from '@/lib/openai-usage';
+import { impressionFromOutfit, wholeActivityImpressionStyle } from '@/lib/characters';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 30;
@@ -163,7 +164,7 @@ STUDENT CEFR LEVEL: ${level}
 
 STAY IN CHARACTER as ${gc.persona}. This is a TEXT chat (like WhatsApp).
 Use natural conversational English. Keep messages SHORT (1–2 sentences,
-max ~30 words). Emojis sparingly OK for warmth.${gc.voiced_by === 'igorfina' ? IGORFINA_STYLE : ''}${knownStudentBlock}${simplicityBlock}
+max ~30 words). Emojis sparingly OK for warmth.${gc.voiced_by === 'igorfina' ? IGORFINA_STYLE + (impressionFromOutfit((gc as { persona_outfit?: string }).persona_outfit) ? `\n${wholeActivityImpressionStyle(impressionFromOutfit((gc as { persona_outfit?: string }).persona_outfit)!)}` : '') : ''}${knownStudentBlock}${simplicityBlock}
 
 HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}

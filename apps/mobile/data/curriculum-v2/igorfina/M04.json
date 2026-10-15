@@ -1,0 +1,1264 @@
+{
+  "id": "M04",
+  "title": "Gírias (e palavrão: entenda, não use)",
+  "level": "Igorfina",
+  "block": "A1",
+  "units_range": "F16–F20",
+  "theme": "Entender e usar as gírias do dia a dia; reconhecer palavrão e expressões rudes sem usar",
+  "goal": "Aluno sai entendendo e usando \"for real\", \"no way\", \"nah\", \"nope\", \"bro\", \"give me a hand\" e \"get out of here\", e reconhece \"damn\", \"that's BS\", \"shut up\" e \"ain't\" sabendo quando NÃO usar.",
+  "connects_to": "M03 (Passado, presente e futuro) e M05 (Could, would, should...).",
+  "module_chunks": [
+    "For real?",
+    "For real, I swear.",
+    "No way!",
+    "Nah. / Nope.",
+    "Yeah, for sure.",
+    "Bro / my bro",
+    "What's up, bro?",
+    "Give me a hand.",
+    "Can you give me a hand?",
+    "Get out of here! (não acredito)",
+    "Shut up! (rude; entre amigos às vezes = \"não acredito\")",
+    "Damn! (reconhecer, não usar)",
+    "That's BS. (mentira; reconhecer, não usar)",
+    "Ain't (= isn't / am not / don't have; reconhecer)",
+    "No problem. / No worries.",
+    "That's crazy!",
+    "I'm down. (tô dentro)",
+    "Let's go!",
+    "My bad. (foi mal)",
+    "Chill. / Take it easy."
+  ],
+  "units": [
+    {
+      "id": "F16",
+      "title": "For real? No way!",
+      "sub_cefr": "A1",
+      "grammar_focus": "Reações de surpresa: For real? / No way! / That's crazy!",
+      "tense": "EXPRESSÕES",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Um amigo americano conta uma novidade e você reage como nativo.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "A: I met a famous singer today! B: For _____?",
+          "options": [
+            "real",
+            "true",
+            "really"
+          ],
+          "answer": "real",
+          "explanation": "\"For real?\" é o \"sério?\" / \"jura?\". Dica do Igor: é a reação de surpresa que você mais vai ouvir na rua."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "A: The concert is free! B: No _____!",
+          "options": [
+            "way",
+            "road",
+            "how"
+          ],
+          "answer": "way",
+          "explanation": "\"No way!\" = \"não acredito!\" (de surpresa boa ou ruim). Também pode ser \"de jeito nenhum\": \"No way, I'm not going.\""
+        },
+        {
+          "type": "word_bank",
+          "sentence": "A: I lost my passport again. B: That's _____!",
+          "choices": [
+            "crazy",
+            "crazed",
+            "craze",
+            "crazily"
+          ],
+          "answer": "crazy",
+          "explanation": "\"That's crazy!\" = que loucura! Reação curta para qualquer história surpreendente."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "A: Do you want more coffee? B: _____, I'm good, thanks.",
+          "choices": [
+            "Nah",
+            "No way",
+            "For real",
+            "Damn"
+          ],
+          "answer": "Nah",
+          "explanation": "\"Nah\" é um \"não\" informal e leve. \"I'm good\" aqui quer dizer \"estou bem assim, não quero\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "A: Is it true? B: For _____, I swear.",
+          "hint": "Sério, de verdade",
+          "answer": "real",
+          "explanation": "\"For real, I swear\" = é sério, eu juro. \"For real\" também serve para confirmar."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "A: Are you coming? B: Yeah, for _____!",
+          "hint": "Com certeza (for ___)",
+          "answer": "sure",
+          "explanation": "\"For sure\" = com certeza. \"Yeah, for sure!\" é um \"sim\" bem animado."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "A: Did you finish the beer? B: _____. There's more in the fridge.",
+          "hint": "\"Não\" informal que termina em \"pe\"",
+          "answer": "Nope",
+          "accepts": [
+            "Nah"
+          ],
+          "explanation": "\"Nope\" é \"não\" informal, mais seco que \"nah\". Os dois são para conversa entre amigos."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "No road! That's amazing!",
+          "hint": "A expressão de surpresa é \"no ___\"",
+          "answer": "No way! That's amazing!",
+          "explanation": "Tradução literal não funciona aqui: a expressão é \"No way!\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "For really?",
+          "hint": "A gíria usa \"real\", não \"really\"",
+          "answer": "For real?",
+          "explanation": "Ou \"For real?\" ou \"Really?\". Misturar os dois (\"for really\") não existe."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Mike: Bro, I got tickets for the game tonight! Igor: No way! For real? Mike: For real! Igor: That's crazy!",
+          "question": "Que expressão o Igor usou para dizer \"sério?\" (responda em inglês)",
+          "answer": "For real?",
+          "explanation": "Ele usou \"For real?\" para perguntar se era sério, e \"No way!\" e \"That's crazy!\" para reagir."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "For real? That's crazy, my friend!",
+          "context": "reagir a uma novidade"
+        },
+        {
+          "text": "No way! The concert is free?",
+          "context": "surpresa boa"
+        },
+        {
+          "text": "Nah, I'm good, thanks a lot.",
+          "context": "recusar com leveza"
+        },
+        {
+          "text": "Yeah, for sure! Let's go tonight.",
+          "context": "aceitar animado"
+        },
+        {
+          "text": "For real, I swear it's true.",
+          "context": "confirmar que é sério"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Seu colega de quarto no albergue (o Igorfina) conta novidades malucas. Reaja como nativo.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Dude! I just saw a celebrity in the lobby!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reagir com surpresa",
+            "label_en": "React with surprise",
+            "hidden_prompt": "user reacts with surprise slang: 'for real?', 'no way!', 'really?', 'that's crazy!' — must be in English",
+            "hint_pt": "No way! For real?",
+            "hint_en": "No way! For real?",
+            "examples_pass": [
+              "No way! For real?",
+              "For real?",
+              "That's crazy!"
+            ],
+            "examples_fail": [
+              "Sério? (Portuguese)",
+              "OK (no surprise)",
+              "Yes (no reaction)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Topar a ideia dele",
+            "label_en": "Agree to his idea",
+            "hidden_prompt": "user agrees informally: 'yeah, for sure!', 'let's go!', 'I'm down', 'sure!' — must be in English",
+            "hint_pt": "Yeah, for sure!",
+            "hint_en": "Yeah, for sure!",
+            "examples_pass": [
+              "Yeah, for sure!",
+              "Let's go!",
+              "I'm down!"
+            ],
+            "examples_fail": [
+              "Nah (rejection)",
+              "Bora (Portuguese)",
+              "Maybe (no agreement)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Let's go! Autograph time, bro!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"No way! For real?\"\n2. **Igorfina**: \"For real! Let's go say hi?\"\n3. **Student**: ~\"Yeah, for sure!\"\n4. **Igorfina**: \"Let's go! Autograph time, bro!\"",
+        "evaluation_focus": [
+          "Reações curtas e naturais (for real, no way)",
+          "Entonação de surpresa"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina manda mensagens com fofocas da viagem do grupo. Reaja e responda.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "O Igorfina tem novidades do grupo. Reaja com as gírias do tópico.",
+        "opening_message": "Breaking news: Lucas missed the flight. Again.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reagir à notícia",
+            "label_en": "React to the news",
+            "hidden_prompt": "user reacts with surprise: 'no way!', 'for real?', 'that's crazy!' — must be in English",
+            "hint_pt": "No way!",
+            "hint_en": "No way!",
+            "examples_pass": [
+              "No way!",
+              "For real?",
+              "That's crazy, bro!"
+            ],
+            "examples_fail": [
+              "Kkkk (no English)",
+              "Sério (Portuguese)",
+              "OK (no reaction)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Recusar uma oferta com leveza",
+            "label_en": "Say no casually",
+            "hidden_prompt": "user declines casually: 'nah, I'm good', 'nope', 'no thanks' — must be in English",
+            "hint_pt": "Nah, I'm good.",
+            "hint_en": "Nah, I'm good.",
+            "examples_pass": [
+              "Nah, I'm good.",
+              "Nope!",
+              "No thanks, I'm good."
+            ],
+            "examples_fail": [
+              "Yes (accepts)",
+              "Não, valeu (Portuguese)",
+              "Maybe (unclear)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Confirmar que vai ao jantar",
+            "label_en": "Confirm the dinner",
+            "hidden_prompt": "user confirms enthusiastically: 'yeah, for sure!', 'I'm down!', 'let's go!' — must be in English",
+            "hint_pt": "Yeah, for sure!",
+            "hint_en": "Yeah, for sure!",
+            "examples_pass": [
+              "Yeah, for sure!",
+              "I'm down!",
+              "Let's go!"
+            ],
+            "examples_fail": [
+              "Nah (rejection)",
+              "Bora (Portuguese)",
+              "OK? (unclear)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Perfect! Dinner at eight. Lucas is paying, ha!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Breaking news: Lucas missed the flight. Again.\"\n2. **Student**: \"No way!\"\n3. **Igorfina**: \"For real! Want some of my airport cookies?\"\n4. **Student**: \"Nah, I'm good.\"\n5. **Igorfina**: \"More for me! Dinner tonight with the group?\"\n6. **Student**: \"Yeah, for sure!\"\n7. **Igorfina**: \"Perfect! Dinner at eight. Lucas is paying, ha!\"\n\n---"
+      }
+    },
+    {
+      "id": "F17",
+      "title": "Bro, give me a hand (com o astro do basquete)",
+      "sub_cefr": "A1",
+      "grammar_focus": "Gírias de amizade e pedido informal: bro / give me a hand / my bad / no worries",
+      "tense": "EXPRESSÕES",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Na quadra de basquete do parque, você pede ajuda e conversa com o pessoal como amigo.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "What's up, _____? Wanna play?",
+          "options": [
+            "bro",
+            "brother of",
+            "brothers"
+          ],
+          "answer": "bro",
+          "explanation": "\"Bro\" é o \"mano\" / \"parceiro\". Dica do Igor: na quadra, todo mundo é \"bro\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Can you give me a _____ with this bag?",
+          "options": [
+            "hand",
+            "arm",
+            "help"
+          ],
+          "answer": "hand",
+          "explanation": "\"Give me a hand\" = me dá uma mão, me ajuda. Igualzinho ao português, só que em inglês."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Oops, my _____! I hit your water bottle.",
+          "choices": [
+            "bad",
+            "sorry",
+            "wrong",
+            "fault"
+          ],
+          "answer": "bad",
+          "explanation": "\"My bad\" = foi mal. Pedido de desculpas informal, para coisa pequena."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "A: Sorry I'm late! B: No _____, bro.",
+          "choices": [
+            "worries",
+            "problem of",
+            "worry",
+            "problems"
+          ],
+          "answer": "worries",
+          "explanation": "\"No worries\" = de boa, sem problema. Primo do \"no problem\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "What's _____, bro? Long time no see!",
+          "hint": "E aí? (What's ___?)",
+          "answer": "up",
+          "explanation": "\"What's up?\" = e aí? Resposta comum: \"Not much!\" ou \"All good!\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Bro, can you _____ me a hand?",
+          "hint": "Verbo \"dar\"",
+          "answer": "give",
+          "explanation": "\"Can you give me a hand?\" é a versão educada entre amigos. \"Give me a hand!\" sozinho soa mais como ordem."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ go! One more game!",
+          "hint": "Vamos! (let's)",
+          "answer": "Let's",
+          "explanation": "\"Let's go!\" = vamos! Grito de energia na quadra, no show, em qualquer lugar."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Give me one hand, bro.",
+          "hint": "A expressão usa \"a hand\"",
+          "answer": "Give me a hand, bro.",
+          "explanation": "É sempre \"a hand\". \"One hand\" soa como se você quisesse literalmente uma mão."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My bad, I'm sorry very much.",
+          "hint": "Deixe só o pedido informal (ou \"I'm so sorry\")",
+          "answer": "My bad, I'm so sorry.",
+          "explanation": "\"I'm sorry very much\" não existe. Use \"I'm so sorry\" ou só \"My bad\" para coisas pequenas."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Player: Yo, bro! Can you give me a hand with the cones? Igor: Sure! Oops, my bad, I dropped one. Player: No worries, bro.",
+          "question": "O que o Igor disse quando derrubou o cone? (responda em inglês)",
+          "answer": "My bad",
+          "explanation": "Ele disse \"My bad\" (foi mal), e o outro respondeu \"No worries\" (de boa)."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "What's up, bro? Long time no see!",
+          "context": "cumprimentar um amigo"
+        },
+        {
+          "text": "Bro, can you give me a hand?",
+          "context": "pedir ajuda informal"
+        },
+        {
+          "text": "My bad, bro, that was my fault.",
+          "context": "foi mal"
+        },
+        {
+          "text": "No worries, we're all good here.",
+          "context": "de boa"
+        },
+        {
+          "text": "Let's go! One more game, my friend!",
+          "context": "energia na quadra"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Numa quadra de basquete do parque, o Igorfina, imitando um astro do basquete, está montando um jogo. Entre na conversa como amigo.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_hoops",
+        "time_budget_sec": 90,
+        "opening_line": "Yo! You look like a player. What's up?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Cumprimentar como amigo",
+            "label_en": "Greet like a friend",
+            "hidden_prompt": "user greets informally: 'what's up, bro?', 'hey bro!', 'yo, what's up?', 'not much, bro' — must be in English",
+            "hint_pt": "What's up, bro?",
+            "hint_en": "What's up, bro?",
+            "examples_pass": [
+              "What's up, bro?",
+              "Hey bro!",
+              "Not much, what's up?"
+            ],
+            "examples_fail": [
+              "E aí, mano (Portuguese)",
+              "Good morning, sir (too formal)",
+              "Yes (no greeting)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Oferecer ajuda",
+            "label_en": "Offer to help",
+            "hidden_prompt": "user offers to help or asks if he needs a hand: 'I can give you a hand', 'need a hand?', 'sure, I'll help' — must be in English",
+            "hint_pt": "I can give you a hand.",
+            "hint_en": "I can give you a hand.",
+            "examples_pass": [
+              "I can give you a hand.",
+              "Need a hand?",
+              "Sure, I'll help you!"
+            ],
+            "examples_fail": [
+              "Hand (bare word)",
+              "Te ajudo (Portuguese)",
+              "Nah (refuses)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"That's what I'm talking about! Teamwork, let's go!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"What's up, bro?\"\n2. **Igorfina**: \"Just setting up the court. Lot of cones, man.\"\n3. **Student**: ~\"I can give you a hand.\"\n4. **Igorfina**: \"That's what I'm talking about! Teamwork, let's go!\"",
+        "evaluation_focus": [
+          "Gírias de amizade no tom certo (bro, what's up)",
+          "\"Give a hand\" como pedido/oferta de ajuda"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Depois do jogo, o Igorfina (ainda imitando o astro do basquete) manda mensagem no grupo da quadra.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_hoops",
+        "intro_pt": "O pessoal da quadra combinou outro jogo. Responda o Igorfina com as gírias do tópico.",
+        "opening_message": "Great game today, bro! Sorry I took your water bottle, ha.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que está tudo bem",
+            "label_en": "Say it's all good",
+            "hidden_prompt": "user says it's fine: 'no worries, bro', 'no problem', 'all good' — must be in English",
+            "hint_pt": "No worries, bro!",
+            "hint_en": "No worries, bro!",
+            "examples_pass": [
+              "No worries, bro!",
+              "No problem!",
+              "All good, man."
+            ],
+            "examples_fail": [
+              "Tranquilo (Portuguese)",
+              "OK? (unclear)",
+              "Give it back (not reassuring)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Pedir desculpas por algo pequeno",
+            "label_en": "Say sorry casually",
+            "hidden_prompt": "user apologizes casually: 'my bad', 'my bad, I was late', 'sorry, bro' — must be in English",
+            "hint_pt": "My bad, I was late.",
+            "hint_en": "My bad, I was late.",
+            "examples_pass": [
+              "My bad, I was late.",
+              "My bad, bro!",
+              "Sorry, bro, my bad."
+            ],
+            "examples_fail": [
+              "Foi mal (Portuguese)",
+              "I'm late (no apology)",
+              "OK (no apology)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Topar o próximo jogo",
+            "label_en": "Join the next game",
+            "hidden_prompt": "user agrees to play again: 'let's go!', 'I'm down', 'for sure, bro' — must be in English",
+            "hint_pt": "Let's go! I'm down.",
+            "hint_en": "Let's go! I'm down.",
+            "examples_pass": [
+              "Let's go! I'm down.",
+              "For sure, bro!",
+              "I'm in!"
+            ],
+            "examples_fail": [
+              "Nah (rejection)",
+              "Bora (Portuguese)",
+              "Maybe (no agreement)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"That's championship energy! Saturday, nine a.m., we locked in!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Great game today, bro! Sorry I took your water bottle, ha.\"\n2. **Student**: \"No worries, bro!\"\n3. **Igorfina**: \"And you were late, right?\"\n4. **Student**: \"My bad, I was late.\"\n5. **Igorfina**: \"All good. Next game Saturday?\"\n6. **Student**: \"Let's go! I'm down.\"\n7. **Igorfina**: \"That's championship energy! Saturday, nine a.m., we locked in!\"\n\n---"
+      }
+    },
+    {
+      "id": "F18",
+      "title": "Get out of here! (e \"shut up\" sem ser rude)",
+      "sub_cefr": "A1",
+      "grammar_focus": "Expressões de dois sentidos: get out of here / shut up (contexto muda tudo)",
+      "tense": "EXPRESSÕES",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você ouve \"get out of here!\" e \"shut up!\" numa conversa animada e precisa entender se é bronca ou empolgação.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "A: I won the lottery! B: Get out of _____!",
+          "options": [
+            "here",
+            "there",
+            "out"
+          ],
+          "answer": "here",
+          "explanation": "\"Get out of here!\" entre amigos e com sorriso quer dizer \"não acredito!\". Com cara feia, é \"sai daqui!\". Dica do Igor: preste atenção no tom."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Qual frase é a forma educada de pedir silêncio?",
+          "options": [
+            "Could you be quiet, please?",
+            "Shut up!",
+            "Get out of here!"
+          ],
+          "answer": "Could you be quiet, please?",
+          "explanation": "\"Shut up!\" (cala a boca) é rude. Para pedir silêncio com educação: \"Could you be quiet, please?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "A: She said yes! B: Shut _____! That's amazing!",
+          "choices": [
+            "up",
+            "down",
+            "out",
+            "in"
+          ],
+          "answer": "up",
+          "explanation": "Entre amigos próximos, \"Shut up!\" com empolgação também significa \"não acredito!\". Mas com desconhecidos, evite."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Please, could you be _____? The baby is sleeping.",
+          "choices": [
+            "quiet",
+            "quite",
+            "quit",
+            "quietly"
+          ],
+          "answer": "quiet",
+          "explanation": "\"Quiet\" (QUAI-et) é quieto, silencioso. Não confunda com \"quite\" (bastante) nem \"quit\" (largar)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Get _____ of here! You met him?",
+          "hint": "Fora (get ___ of here)",
+          "answer": "out",
+          "explanation": "\"Get out of here!\" completo. Aqui, pela pergunta animada, é surpresa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Excuse me, could you be _____, please?",
+          "hint": "Quieto, em silêncio",
+          "answer": "quiet",
+          "explanation": "O jeito seguro de pedir silêncio para qualquer pessoa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "A: I'm moving to New York! B: No _____! Get out of here!",
+          "hint": "Não acredito (no ___)",
+          "answer": "way",
+          "explanation": "\"No way!\" + \"Get out of here!\": duas reações de surpresa juntas, bem natural."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Shut up, please, the movie started.",
+          "hint": "\"Shut up\" é rude; troque pelo pedido educado",
+          "answer": "Could you be quiet, please? The movie started.",
+          "explanation": "Mesmo com \"please\", \"shut up\" é grosseiro com desconhecidos. Use \"Could you be quiet, please?\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Get out from here!",
+          "hint": "A expressão usa \"of\"",
+          "answer": "Get out of here!",
+          "explanation": "É \"get out of\", nunca \"get out from\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Anna: Igor, I got the job in Miami! Igor: Shut up! Get out of here! That's amazing! Anna: Ha, thanks!",
+          "question": "O Igor estava bravo ou feliz? Responda em inglês: angry ou happy.",
+          "answer": "happy",
+          "explanation": "Ele estava feliz: \"Shut up! Get out of here!\" com \"That's amazing!\" no fim mostra empolgação, não bronca. Contexto e tom mudam tudo."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Get out of here! That's amazing news!",
+          "context": "surpresa boa"
+        },
+        {
+          "text": "Could you be quiet, please? Thank you.",
+          "context": "pedir silêncio com educação"
+        },
+        {
+          "text": "No way! Get out of here, for real?",
+          "context": "reação animada"
+        },
+        {
+          "text": "Excuse me, could you please be quiet?",
+          "context": "pedir silêncio no cinema"
+        },
+        {
+          "text": "That's amazing, I'm so happy for you!",
+          "context": "comemorar com alguém"
+        }
+      ],
+      "roleplay": {
+        "scenario": "No cinema, a pessoa do lado (o Igorfina) fala alto ao telefone. Peça silêncio do jeito educado.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Yeah, yeah, I'm at the movies, ha! What? Say that again!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pedir silêncio com educação",
+            "label_en": "Ask for quiet politely",
+            "hidden_prompt": "user asks politely for quiet: 'could you be quiet, please?', 'excuse me, can you be quiet?', 'please, a little quieter' — 'shut up' does NOT count — must be in English",
+            "hint_pt": "Excuse me, could you be quiet, please?",
+            "hint_en": "Excuse me, could you be quiet, please?",
+            "examples_pass": [
+              "Excuse me, could you be quiet, please?",
+              "Could you be quiet, please?",
+              "Sorry, can you speak lower, please?"
+            ],
+            "examples_fail": [
+              "Shut up! (rude)",
+              "Silêncio (Portuguese)",
+              "Quiet (bare word)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Agradecer",
+            "label_en": "Thank him",
+            "hidden_prompt": "user thanks: 'thank you', 'thanks', 'thanks a lot' — must be in English",
+            "hint_pt": "Thank you!",
+            "hint_en": "Thank you!",
+            "examples_pass": [
+              "Thank you!",
+              "Thanks a lot!",
+              "Thanks, I appreciate it."
+            ],
+            "examples_fail": [
+              "OK (no thanks)",
+              "Obrigado (Portuguese)",
+              "Finally (rude)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Oh, my bad! Phone off. Enjoy the movie!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"Excuse me, could you be quiet, please?\"\n2. **Igorfina**: \"Oh, sorry! I'm turning it off right now.\"\n3. **Student**: ~\"Thank you!\"\n4. **Igorfina**: \"Oh, my bad! Phone off. Enjoy the movie!\"",
+        "evaluation_focus": [
+          "Pedido educado no lugar de \"shut up\"",
+          "Tom gentil"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina manda uma notícia incrível pelo chat. Reaja com as expressões de surpresa (do jeito amigo).",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "O Igorfina tem uma novidade enorme. Reaja com surpresa, do jeito entre amigos.",
+        "opening_message": "Sit down. I got a show in Las Vegas!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reagir com surpresa",
+            "label_en": "React with surprise",
+            "hidden_prompt": "user reacts with surprise: 'get out of here!', 'no way!', 'for real?', 'shut up!' (friendly, among friends) — must be in English",
+            "hint_pt": "Get out of here!",
+            "hint_en": "Get out of here!",
+            "examples_pass": [
+              "Get out of here!",
+              "No way!",
+              "For real?!"
+            ],
+            "examples_fail": [
+              "Mentira (Portuguese)",
+              "OK (no surprise)",
+              "Bye (wrong intent)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Comemorar com ele",
+            "label_en": "Celebrate with him",
+            "hidden_prompt": "user celebrates: 'that's amazing!', 'congratulations!', 'I'm so happy for you!' — must be in English",
+            "hint_pt": "That's amazing! Congratulations!",
+            "hint_en": "That's amazing! Congratulations!",
+            "examples_pass": [
+              "That's amazing! Congratulations!",
+              "I'm so happy for you!",
+              "Congrats, bro!"
+            ],
+            "examples_fail": [
+              "Parabéns (Portuguese)",
+              "OK (no celebration)",
+              "Legal (Portuguese)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Pedir um ingresso",
+            "label_en": "Ask for a ticket",
+            "hidden_prompt": "user asks for a ticket or to go: 'can I get a ticket?', 'can I go?', 'give me a ticket, bro!' — must be in English",
+            "hint_pt": "Can I get a ticket?",
+            "hint_en": "Can I get a ticket?",
+            "examples_pass": [
+              "Can I get a ticket?",
+              "Can I go with you?",
+              "Save me a ticket, bro!"
+            ],
+            "examples_fail": [
+              "Ingresso (Portuguese)",
+              "Ticket (bare word)",
+              "Cool (no request)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"Front row, my friend! You're on the list!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Sit down. I got a show in Las Vegas!\"\n2. **Student**: \"Get out of here!\"\n3. **Igorfina**: \"For real! Next month!\"\n4. **Student**: \"That's amazing! Congratulations!\"\n5. **Igorfina**: \"Thanks! You wanna come?\"\n6. **Student**: \"Can I get a ticket?\"\n7. **Igorfina**: \"Front row, my friend! You're on the list!\"\n\n---"
+      }
+    },
+    {
+      "id": "F19",
+      "title": "Entenda, não use: damn, BS, ain't",
+      "sub_cefr": "A1",
+      "grammar_focus": "Reconhecer palavrão leve e gíria de rua (damn, that's BS, ain't) e trocar por versões seguras",
+      "tense": "EXPRESSÕES",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Em filmes, músicas e conversas de rua você ouve essas palavras. Você precisa entender, mas responder do jeito seguro.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "No filme, o personagem perde o ônibus e diz 'Damn!'. O que ele quis dizer?",
+          "options": [
+            "Droga! (frustração)",
+            "Obrigado!",
+            "Bom dia!"
+          ],
+          "answer": "Droga! (frustração)",
+          "explanation": "\"Damn!\" é um palavrão leve de frustração, tipo \"droga!\" / \"caramba!\". Entenda, mas evite usar com desconhecidos. Versão segura: \"Oh no!\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Alguém diz 'That's BS!'. O que significa?",
+          "options": [
+            "Isso é mentira!",
+            "Isso é ótimo!",
+            "Isso é barato!"
+          ],
+          "answer": "Isso é mentira!",
+          "explanation": "\"That's BS\" é um jeito vulgar de dizer \"isso é mentira / bobagem\". Versão segura: \"That's not true!\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Versão segura de 'That's BS!': That's not _____!",
+          "choices": [
+            "true",
+            "truth",
+            "real",
+            "truly"
+          ],
+          "answer": "true",
+          "explanation": "\"That's not true!\" diz a mesma coisa sem ofender ninguém."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Na música 'Ain't no sunshine', 'ain't' quer dizer: there _____ no sunshine.",
+          "choices": [
+            "is",
+            "are",
+            "am",
+            "be"
+          ],
+          "answer": "is",
+          "explanation": "\"Ain't\" é gíria para \"isn't / am not / aren't\" (às vezes \"don't have\"). Você vai ouvir em música e filme; para falar, prefira \"isn't\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Versão segura de 'Damn!': Oh _____!",
+          "hint": "Ah, não! (oh ___)",
+          "answer": "no",
+          "explanation": "\"Oh no!\" expressa a mesma frustração e cabe em qualquer lugar."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Versão segura de 'I ain't hungry': I'm _____ hungry.",
+          "hint": "Negação (não)",
+          "answer": "not",
+          "explanation": "\"I'm not hungry\" é o jeito padrão. \"I ain't hungry\" é gíria de rua."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Versão segura de 'That ain't right': That _____ right.",
+          "hint": "Forma curta de \"is not\"",
+          "answer": "isn't",
+          "accepts": [
+            "is not"
+          ],
+          "explanation": "\"That isn't right\" (ou \"That's not right\"). Mesmo sentido, sem gíria."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Damn, sir, can you help me?",
+          "hint": "Com desconhecidos, troque o palavrão por algo neutro",
+          "answer": "Excuse me, sir, can you help me?",
+          "explanation": "Palavrão com desconhecido soa grosseiro. Com \"Excuse me\" você chega com educação."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The museum ain't open today.",
+          "hint": "Troque a gíria pela forma padrão",
+          "answer": "The museum isn't open today.",
+          "explanation": "\"Isn't\" é a forma padrão. Entenda \"ain't\" quando ouvir, mas fale \"isn't\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Guy on the street: Damn, the bus ain't coming! That's BS! Igor: Oh no! Let's take a taxi, then.",
+          "question": "Qual foi a reação segura do Igor? (responda em inglês)",
+          "answer": "Oh no!",
+          "explanation": "O cara da rua usou três gírias pesadas; o Igor entendeu tudo e respondeu com \"Oh no!\", que serve em qualquer lugar."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Oh no! I missed the bus again.",
+          "context": "frustração do jeito seguro"
+        },
+        {
+          "text": "That's not true, I was there!",
+          "context": "discordar sem palavrão"
+        },
+        {
+          "text": "The museum isn't open on Monday.",
+          "context": "forma padrão no lugar de \"ain't\""
+        },
+        {
+          "text": "I'm not hungry right now, thanks.",
+          "context": "negar sem gíria"
+        },
+        {
+          "text": "Oh man, that's not right!",
+          "context": "reclamar sem ofender"
+        }
+      ],
+      "roleplay": {
+        "scenario": "O Igorfina, no papel de um amigo, reclama do dia usando gírias pesadas. Responda do jeito seguro, mostrando que entendeu.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Man, the bus didn't come and the store was closed. What a day, huh?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reagir à frustração dele",
+            "label_en": "React to his frustration",
+            "hidden_prompt": "user reacts with a SAFE expression of frustration or sympathy: 'oh no!', 'oh man!', 'that's bad!', 'I'm sorry!' — profanity (damn, BS) does NOT count — must be in English",
+            "hint_pt": "Oh no! That's bad.",
+            "hint_en": "Oh no! That's bad.",
+            "examples_pass": [
+              "Oh no! That's bad.",
+              "Oh man!",
+              "I'm sorry, that's terrible."
+            ],
+            "examples_fail": [
+              "Damn! (profanity, not the target)",
+              "Que droga (Portuguese)",
+              "OK (no reaction)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Sugerir uma solução",
+            "label_en": "Suggest a solution",
+            "hidden_prompt": "user suggests a solution: 'let's take a taxi', 'let's walk', 'let's go tomorrow' — must be in English",
+            "hint_pt": "Let's take a taxi.",
+            "hint_en": "Let's take a taxi.",
+            "examples_pass": [
+              "Let's take a taxi.",
+              "Let's walk!",
+              "We can go tomorrow."
+            ],
+            "examples_fail": [
+              "Taxi (bare word)",
+              "Vamos de táxi (Portuguese)",
+              "I don't know (no solution)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"Good idea! You're the calm one, ha!\" quando obj_2 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"Oh no! That's bad.\"\n2. **Igorfina**: \"Yeah... so what do we do now?\"\n3. **Student**: ~\"Let's take a taxi.\"\n4. **Igorfina**: \"Good idea! You're the calm one, ha!\"",
+        "evaluation_focus": [
+          "Reagir com expressões seguras (oh no, oh man)",
+          "Entender o sentido das gírias sem repeti-las"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "O Igorfina manda a letra de uma música e pergunta o que você entendeu. Mostre que entende as gírias e diga a versão segura.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_casual",
+        "intro_pt": "O Igorfina vai te testar com gírias de músicas e filmes. Responda com a versão segura em inglês.",
+        "opening_message": "Quiz time! In a song, 'ain't no sunshine'. How do you say it the normal way?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer a versão padrão de 'ain't'",
+            "label_en": "Say the standard form",
+            "hidden_prompt": "user gives the standard form: 'there is no sunshine', 'there isn't sunshine', 'there's no sunshine' — must be in English",
+            "hint_pt": "There is no sunshine.",
+            "hint_en": "There is no sunshine.",
+            "examples_pass": [
+              "There is no sunshine.",
+              "There's no sunshine.",
+              "There isn't any sunshine."
+            ],
+            "examples_fail": [
+              "Ain't no sunshine (repeats slang)",
+              "Não tem sol (Portuguese)",
+              "Sunshine (bare word)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer a versão segura de 'That's BS'",
+            "label_en": "Say the safe version",
+            "hidden_prompt": "user gives a safe version of 'that's BS': 'that's not true', 'that's a lie', 'no way, that's not true' — must be in English; repeating 'BS' does NOT count",
+            "hint_pt": "That's not true.",
+            "hint_en": "That's not true.",
+            "examples_pass": [
+              "That's not true.",
+              "That's a lie.",
+              "No, that's not true!"
+            ],
+            "examples_fail": [
+              "That's BS (repeats it)",
+              "É mentira (Portuguese)",
+              "True (bare word)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer a versão segura de 'Damn!'",
+            "label_en": "Say the safe version",
+            "hidden_prompt": "user gives a safe alternative to 'damn!': 'oh no!', 'oh man!', 'wow!', 'oh my God' — must be in English; repeating 'damn' does NOT count",
+            "hint_pt": "Oh no!",
+            "hint_en": "Oh no!",
+            "examples_pass": [
+              "Oh no!",
+              "Oh man!",
+              "Wow!"
+            ],
+            "examples_fail": [
+              "Damn! (repeats it)",
+              "Droga (Portuguese)",
+              "OK (not an exclamation)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"100%! You understand the streets and you speak like a gentleman, ha!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Quiz time! In a song, 'ain't no sunshine'. How do you say it the normal way?\"\n2. **Student**: \"There is no sunshine.\"\n3. **Igorfina**: \"Nice! And a safe way to say 'that's BS'?\"\n4. **Student**: \"That's not true.\"\n5. **Igorfina**: \"Perfect. Last one: something safe instead of 'damn!'?\"\n6. **Student**: \"Oh no!\"\n7. **Igorfina**: \"100%! You understand the streets and you speak like a gentleman, ha!\"\n\n---"
+      }
+    },
+    {
+      "id": "F20",
+      "title": "Conversa de quadra: juntando as gírias (com o astro do basquete)",
+      "sub_cefr": "A1",
+      "grammar_focus": "Revisão do módulo: for real / no way / bro / give me a hand / my bad / no worries / let's go",
+      "tense": "EXPRESSÕES",
+      "markers": [
+        "review"
+      ],
+      "real_life_context": "Você assiste a um jogo com o Igorfina (imitando o astro do basquete) e conversa como um nativo.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "A: We won by 30 points! B: No _____!",
+          "options": [
+            "way",
+            "road",
+            "how"
+          ],
+          "answer": "way",
+          "explanation": "\"No way!\" de surpresa. Revisão da F16."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Bro, can you give me a _____ with the snacks?",
+          "options": [
+            "hand",
+            "help",
+            "arm"
+          ],
+          "answer": "hand",
+          "explanation": "\"Give me a hand\" = me ajuda. Revisão da F17."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Oops, my _____! I spilled your soda.",
+          "choices": [
+            "bad",
+            "fault",
+            "sorry",
+            "wrong"
+          ],
+          "answer": "bad",
+          "explanation": "\"My bad\" = foi mal. Para coisas pequenas."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "A: Sorry! B: No _____, bro. It happens.",
+          "choices": [
+            "worries",
+            "worry",
+            "problems",
+            "way"
+          ],
+          "answer": "worries",
+          "explanation": "\"No worries\" = de boa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "For _____? He scored 50 points?",
+          "hint": "Sério? (for ___)",
+          "answer": "real",
+          "explanation": "\"For real?\" de surpresa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Let's _____! Overtime!",
+          "hint": "Vamos! (let's ___)",
+          "answer": "go",
+          "explanation": "\"Let's go!\" = vamos! Grito clássico de torcida."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Could you be _____, please? I can't hear the game.",
+          "hint": "Quieto (educado, no lugar de \"shut up\")",
+          "answer": "quiet",
+          "explanation": "Pedido educado de silêncio. Revisão da F18."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "For really? That's crazy!",
+          "hint": "A gíria é \"for ___\" sem \"-ly\"",
+          "answer": "For real? That's crazy!",
+          "explanation": "\"For real?\" ou \"Really?\". Nunca \"for really\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "That ain't fair, bro.",
+          "hint": "Troque a gíria pela forma padrão",
+          "answer": "That isn't fair, bro.",
+          "explanation": "\"That isn't fair\" (ou \"That's not fair\"). Revisão da F19."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Igor: Yo, that dunk was championship stuff! Fan: For real! Igor: Give me a hand, bro, I spilled the popcorn. My bad! Fan: No worries!",
+          "question": "O que o Igor derrubou? (responda em inglês)",
+          "answer": "The popcorn",
+          "explanation": "\"I spilled the popcorn\" = derrubei a pipoca. E ainda usou \"give me a hand\" e \"my bad\" na mesma fala."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "No way! Did you see that dunk?",
+          "context": "reagir a uma jogada"
+        },
+        {
+          "text": "For real, that was championship stuff!",
+          "context": "comentar o jogo"
+        },
+        {
+          "text": "Bro, can you give me a hand here?",
+          "context": "pedir ajuda na arquibancada"
+        },
+        {
+          "text": "My bad, I spilled your soda, bro.",
+          "context": "foi mal"
+        },
+        {
+          "text": "Let's go! We got this, my friend!",
+          "context": "torcer"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Na arquibancada do jogo, o Igorfina (imitando o astro do basquete) comenta cada jogada. Converse com ele usando as gírias do módulo.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_hoops",
+        "time_budget_sec": 120,
+        "opening_line": "Yo, did you see that? Fifty points tonight!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reagir à jogada",
+            "label_en": "React to the play",
+            "hidden_prompt": "user reacts with surprise slang: 'no way!', 'for real?', 'that's crazy!' — must be in English",
+            "hint_pt": "No way! For real?",
+            "hint_en": "No way! For real?",
+            "examples_pass": [
+              "No way! For real?",
+              "That's crazy!",
+              "For real?!"
+            ],
+            "examples_fail": [
+              "Caramba (Portuguese)",
+              "OK (no reaction)",
+              "Yes (flat)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Pedir desculpas por algo pequeno",
+            "label_en": "Say sorry casually",
+            "hidden_prompt": "user apologizes casually after he says they spilled something: 'my bad!', 'my bad, bro', 'sorry, my bad' — must be in English",
+            "hint_pt": "My bad, bro!",
+            "hint_en": "My bad, bro!",
+            "examples_pass": [
+              "My bad, bro!",
+              "Oops, my bad!",
+              "Sorry, my bad."
+            ],
+            "examples_fail": [
+              "Foi mal (Portuguese)",
+              "OK (no apology)",
+              "Damn (profanity)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Torcer com ele",
+            "label_en": "Cheer with him",
+            "hidden_prompt": "user cheers: 'let's go!', 'come on!', 'we got this!' — must be in English",
+            "hint_pt": "Let's go!",
+            "hint_en": "Let's go!",
+            "examples_pass": [
+              "Let's go!",
+              "Come on, let's go!",
+              "We got this!"
+            ],
+            "examples_fail": [
+              "Vai! (Portuguese)",
+              "Go (bare word, unclear)",
+              "Nah (negative)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina fecha com \"That's championship energy right there! We locked in!\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Student**: ~\"No way! For real?\"\n2. **Igorfina**: \"For real! Hey, you just kicked my popcorn, ha!\"\n3. **Student**: ~\"My bad, bro!\"\n4. **Igorfina**: \"No worries. Last quarter, we need energy!\"\n5. **Student**: ~\"Let's go!\"\n6. **Igorfina**: \"That's championship energy right there! We locked in!\"",
+        "evaluation_focus": [
+          "Gírias do módulo no momento certo",
+          "Energia na voz (entonação animada)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Depois do jogo, o Igorfina (ainda no personagem do astro) manda mensagem para combinar a próxima.",
+        "voiced_by": "igorfina",
+        "persona": "Igorfina",
+        "persona_outfit": "igorfina_hoops",
+        "intro_pt": "O jogo acabou e o Igorfina quer combinar o próximo. Use as gírias do módulo.",
+        "opening_message": "What a night, bro! Did you enjoy the game?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que amou o jogo",
+            "label_en": "Say you loved it",
+            "hidden_prompt": "user says they enjoyed it with energy: 'for real, it was crazy!', 'yeah, it was amazing!', 'I loved it, bro!' — must be in English",
+            "hint_pt": "For real, it was crazy!",
+            "hint_en": "For real, it was crazy!",
+            "examples_pass": [
+              "For real, it was crazy!",
+              "Yeah, it was amazing!",
+              "I loved it, bro!"
+            ],
+            "examples_fail": [
+              "Foi top (Portuguese)",
+              "Yes (flat)",
+              "OK (no enthusiasm)"
+            ]
+          },
+          {
+            "id": 2,
+            "label_pt": "Oferecer ajuda",
+            "label_en": "Offer help",
+            "hidden_prompt": "user offers to help: 'I can give you a hand', 'need a hand?', 'I'll help you, bro' — must be in English",
+            "hint_pt": "I can give you a hand.",
+            "hint_en": "I can give you a hand.",
+            "examples_pass": [
+              "I can give you a hand.",
+              "Need a hand, bro?",
+              "I'll help you!"
+            ],
+            "examples_fail": [
+              "Hand (bare word)",
+              "Te ajudo (Portuguese)",
+              "Nah (refuses)"
+            ]
+          },
+          {
+            "id": 3,
+            "label_pt": "Topar o próximo jogo",
+            "label_en": "Join the next game",
+            "hidden_prompt": "user agrees: 'let's go!', 'I'm down!', 'for sure, bro!' — must be in English",
+            "hint_pt": "I'm down! Let's go!",
+            "hint_en": "I'm down! Let's go!",
+            "examples_pass": [
+              "I'm down! Let's go!",
+              "For sure, bro!",
+              "Let's go!"
+            ],
+            "examples_fail": [
+              "Nah (rejection)",
+              "Bora (Portuguese)",
+              "Maybe (no agreement)"
+            ]
+          }
+        ],
+        "closing_cue": "Igorfina encerra com \"That's what I'm talking about! Same seats, next Friday!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"What a night, bro! Did you enjoy the game?\"\n2. **Student**: \"For real, it was crazy!\"\n3. **Igorfina**: \"I'm moving to a new place tomorrow. Lots of boxes...\"\n4. **Student**: \"I can give you a hand.\"\n5. **Igorfina**: \"You're the best! Next game is Friday. You in?\"\n6. **Student**: \"I'm down! Let's go!\"\n7. **Igorfina**: \"That's what I'm talking about! Same seats, next Friday!\""
+      }
+    }
+  ],
+  "cross_unit_consolidation": []
+}
