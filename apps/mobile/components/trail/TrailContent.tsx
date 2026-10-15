@@ -467,12 +467,13 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
 
   // Placement skips: nivel pulado → cascade desligado (tudo destravado).
   const { cascadeMode, isAccessible } = usePlacementSkips();
-  const v2Cascade = cascadeMode(level as V2LevelType);
-  // Preview mode: aluno entrou em nivel ainda nao desbloqueado.
-  // Tudo aparece lockado (read-only sneak peek do curriculo).
   // Degustação (conta nova sem assinatura): o 1º bloco dos 3 níveis fica aberto, inclusive
   // nos níveis ainda não liberados. Os blocos seguintes abrem o paywall.
   const { isTaster } = useAuth();
+  // Trilha extra em beta: o testador que assina vê todas as unidades abertas (revisão).
+  const v2Cascade = track?.betaAllUnlocked && !isTaster ? 'unlocked' : cascadeMode(level as V2LevelType);
+  // Preview mode: aluno entrou em nivel ainda nao desbloqueado.
+  // Tudo aparece lockado (read-only sneak peek do curriculo).
   const { openPaywall } = usePaywallContext();
   const isPreview = useV2 && !isTaster && !isAccessible(level as V2LevelType);
 
