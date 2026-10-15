@@ -52,7 +52,7 @@ function TrackCard({ track, width }: { track: ExtraTrack; width: number }) {
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 7, alignSelf: 'flex-start', backgroundColor: LEVEL_ACCENT_BG[track.id], borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3 }}>
             <Gift size={13} color={accent} weight="bold" />
             <AppText style={{ fontSize: 12, fontWeight: '700', color: accent }}>
-              {isPt ? '1 unidade grátis' : '1 free unit'}
+              {isPt ? '1 tópico grátis' : '1 free topic'}
             </AppText>
           </View>
         ) : (

@@ -39,8 +39,8 @@ Tocando nas pílulas abre a tela "Seu progresso", com o XP total, o XP ganho hoj
 O seletor no cartão da trilha permite espiar a trilha de outros níveis (pré-visualização), sem mudar o seu nível.
 Para fazer o teste de nível: Perfil > Conta > Fazer teste de nível (aparece como Refazer teste de nível depois da primeira vez; o resultado substitui o nível atual). O teste faz parte do plano.` },
   { section: 'Guia do app', question: 'Como funciona a trilha de estudos?', answer:
-`A trilha fica na tela Início. Ela é dividida em módulos e unidades; cada unidade tem atividades de Gramática, Listening & Speaking, Role-play e Guided Chat. Cada atividade concluída destrava a próxima, e cada unidade completa destrava a seguinte.
-Para concluir é preciso atingir o mínimo mostrado na atividade (por exemplo "precisa 70%"). Atividades já feitas podem ser refeitas pelo botão "Refazer". Ao completar o nível, o app oferece a passagem para o próximo.` },
+`A trilha fica na tela Início. Ela é dividida em módulos, e cada módulo em tópicos. Cada tópico tem 4 atividades: Gramática, Listening & Speaking, Role-play e Guided Chat. Cada atividade concluída destrava a próxima, e cada tópico completo (as 4 atividades) destrava o seguinte. O cartão da trilha mostra quantos tópicos você já concluiu.
+Para concluir uma atividade é preciso atingir o mínimo mostrado nela (por exemplo "precisa 70%"). Atividades já feitas podem ser refeitas pelo botão "Refazer". Ao completar o nível, o app oferece a passagem para o próximo.` },
   { section: 'Guia do app', question: 'Como ligo para a Charlotte (Live Voice)?', answer:
 `Toque no ícone de telefone na barra de baixo e depois em "Conversar com a Charlotte". Na primeira vez o celular pede permissão para usar o microfone: é preciso permitir.
 Os minutos restantes do mês aparecem na própria tela do Live Voice, no cartão "Seu tempo este mês", logo acima do botão "Conversar com a Charlotte". Na mesma tela ficam "Ver chamadas anteriores" (com resumo e transcrição de cada conversa) e "Ajuda".` },
@@ -109,8 +109,8 @@ Se continuar sem funcionar depois disso, um atendente analisa (ajuda informar o 
 
   // ── Planos e assinatura ──────────────────────────────────────────────────
   { section: 'Planos e assinatura', question: 'Quais são os planos e preços?', answer:
-`Ao criar a conta, você experimenta de graça: o primeiro bloco da trilha nos 3 níveis (Gramática, Listening & Speaking, Role-play e Guided Chat), 10 mensagens no Practice e 3 minutos de Live Voice (uma vez só). Para continuar: Plano Mensal R$ 29,99/mês e Plano Anual R$ 199,99/ano (equivale a cerca de R$ 16,67/mês). O teste de nível também faz parte do plano.
-A degustação não tem prazo em dias: vale até você usar o que é grátis. A tela de assinatura abre ao terminar o primeiro bloco ou quando a degustação acaba.
+`Ao criar a conta, você experimenta de graça: o primeiro módulo da trilha nos 3 níveis (Gramática, Listening & Speaking, Role-play e Guided Chat), 10 mensagens no Practice e 3 minutos de Live Voice (uma vez só). Para continuar: Plano Mensal R$ 29,99/mês e Plano Anual R$ 199,99/ano (equivale a cerca de R$ 16,67/mês). O teste de nível também faz parte do plano.
+A degustação não tem prazo em dias: vale até você usar o que é grátis. A tela de assinatura abre ao terminar o primeiro módulo ou quando a degustação acaba.
 Dá para assinar de dois jeitos:
 - No app, pela loja: App Store (iPhone) ou Google Play (Android), com 7 dias grátis para quem nunca assinou. Para começar os 7 dias, a loja pede uma forma de pagamento cadastrada na conta Apple ou Google (no site, o cartão de crédito). A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.
 - Pelo site, em queizy.com/assinar: Mensal no cartão de crédito, Anual no cartão de crédito à vista ou Anual no Pix à vista (veja "Como funciona a assinatura pelo site?").` },

@@ -1199,7 +1199,7 @@ export default function LearnSessionScreen() {
             if (c && c.score >= c.threshold) {
               const fmt = (n: number) => (c.activityType === 'speaking' ? (pt ? `nota ${n}` : `a score of ${n}`) : `${n}%`);
               if (c.previous != null && c.score > c.previous) {
-                text = pt ? `Subiu de ${fmt(c.previous)} para ${fmt(c.score)}. Seu melhor nesta unidade!` : `Up from ${fmt(c.previous)} to ${fmt(c.score)}. Your best on this unit!`;
+                text = pt ? `Subiu de ${fmt(c.previous)} para ${fmt(c.score)}. Seu melhor nesta atividade!` : `Up from ${fmt(c.previous)} to ${fmt(c.score)}. Your best on this activity!`;
               } else if (c.score === 100) {
                 text = c.activityType === 'speaking'
                   ? (pt ? 'Pronúncia nota 100. Impecável!' : 'Pronunciation score 100. Flawless!')

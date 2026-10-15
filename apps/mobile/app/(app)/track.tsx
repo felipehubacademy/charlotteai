@@ -49,7 +49,7 @@ export default function TrackScreen() {
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
                   <Gift size={14} color={accent} weight="bold" />
                   <AppText style={{ fontSize: 12, fontWeight: '800', letterSpacing: 0.6, color: accent }}>
-                    {isPt ? 'SUA UNIDADE GRÁTIS' : 'YOUR FREE UNIT'}
+                    {isPt ? 'SEU TÓPICO GRÁTIS' : 'YOUR FREE TOPIC'}
                   </AppText>
                 </View>
                 <AppText style={{ fontSize: 16, fontWeight: '800', color: T.textPrimary, marginTop: 3 }}>{tasteTitle}</AppText>

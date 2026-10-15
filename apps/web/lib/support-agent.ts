@@ -49,7 +49,7 @@ export const AUTO_INTENTS = new Set([
 function subscriptionLabel(s?: string | null): string {
   switch (s) {
     case 'none': case null: case undefined: case '':
-      return 'degustação (conta sem assinatura: o primeiro bloco da trilha, 10 mensagens no Practice e 3 minutos de Live Voice, uma vez só; NÃO tem minutos mensais nem pode comprar pacotes de minutos; para continuar, assina um plano)';
+      return 'degustação (conta sem assinatura: o primeiro módulo da trilha, 10 mensagens no Practice e 3 minutos de Live Voice, uma vez só; NÃO tem minutos mensais nem pode comprar pacotes de minutos; para continuar, assina um plano)';
     case 'trial': return '7 dias grátis de uma assinatura (5 minutos de Live Voice)';
     case 'active': return 'Premium ativo';
     case 'cancelled': return 'cancelada (renovação desligada; o acesso continua até o fim do período já pago)';
