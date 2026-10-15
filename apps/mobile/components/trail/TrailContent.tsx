@@ -327,7 +327,7 @@ function ModuleCard({
               fontSize: 11, fontWeight: '500', color: C.navyLight, marginBottom: 2,
             }}>
               {isLocked
-                ? (isPt ? `${data.totalCount} tópicos · bloqueado` : `${data.totalCount} topics · locked`)
+                ? (isPt ? `${data.totalCount} atividades · bloqueado` : `${data.totalCount} activities · locked`)
                 : `${data.completedCount} ${isPt ? 'de' : 'of'} ${data.totalCount} ${isPt ? 'concluídos' : 'completed'}`}
             </AppText>
             <AppText
