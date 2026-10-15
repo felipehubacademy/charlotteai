@@ -21,6 +21,7 @@ import * as Haptics from '@/lib/hapticsGated';
 import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { extraTrack } from '@/lib/tracks';
+import { characterInfo } from '@/lib/characters';
 import { TrackHostReaction } from '@/components/trail/TrackHostReaction';
 import { systemIsPt } from '@/lib/systemLang';
 import { checkGrammarAnswer } from '@/lib/grammarAnswer';
@@ -123,12 +124,12 @@ function checkGrammar(ex: GrammarEx, answer: string): boolean {
 const NOVICE_CORRECT_MESSAGES_PT = [
   'Mandou bem! Pronúncia clara.',
   'Show! Saiu direitinho.',
-  'Boa! Charlotte entendeu de primeira.',
+  'Boa! {host} entendeu de primeira.',
   'Isso aí! Você falou redondo.',
   'Manda mais — pronúncia limpa.',
 ];
-function pickNoviceCorrectMessage(): string {
-  return NOVICE_CORRECT_MESSAGES_PT[Math.floor(Math.random() * NOVICE_CORRECT_MESSAGES_PT.length)];
+function pickNoviceCorrectMessage(host = 'Charlotte'): string {
+  return NOVICE_CORRECT_MESSAGES_PT[Math.floor(Math.random() * NOVICE_CORRECT_MESSAGES_PT.length)].replace('{host}', host);
 }
 
 function wordMatchPercent(spoken: string, reference: string): number {
@@ -428,6 +429,9 @@ export default function LearnSessionScreen() {
   const showError    = currentStep?.kind === 'grammar' && gStatus === 'submitted' && isCorrect === false;
   const charlotteSrc = showCheering ? cheerSrc : showError ? errorSrc : idleSrc;
   const hostTrack    = extraTrack(level);
+  // Quem fala na lição: a Charlotte, ou o anfitrião da trilha extra (ex.: Igorfina).
+  const hostName     = hostTrack ? characterInfo(hostTrack.character).name : 'Charlotte';
+  const hostSaidPt   = hostTrack ? 'ele disse' : 'ela disse';
 
   // ── Explain error ────────────────────────────────────────────────────────────
   const fetchExplainError = useCallback(async () => {
@@ -835,7 +839,7 @@ export default function LearnSessionScreen() {
         // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
         if (isNoviceLike) {
           if (pct >= 70) {
-            feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage() : 'Nice! Pronunciation ok.' };
+            feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage(hostName) : 'Nice! Pronunciation ok.' };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
             soundEngine.play('answer_correct').catch(() => {});
           } else {
@@ -892,7 +896,7 @@ export default function LearnSessionScreen() {
         // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
         if (isNoviceLike) {
           if (pct >= 70) {
-            feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage() : 'Nice! Pronunciation ok.' };
+            feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage(hostName) : 'Nice! Pronunciation ok.' };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
             soundEngine.play('answer_correct').catch(() => {});
           } else {
@@ -1806,12 +1810,12 @@ export default function LearnSessionScreen() {
               <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center' }}>
                 <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
                   {currentStep.phrase.type === 'repeat'
-                    ? (isPortuguese ? 'Ouça a Charlotte e repita a frase.'        : 'Listen to Charlotte and repeat the phrase.')
+                    ? (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e repita a frase.` : `Listen to ${hostName} and repeat the phrase.`)
                     : currentStep.phrase.type === 'minimal_pairs'
-                    ? (isPortuguese ? 'Ouça a Charlotte e toque na palavra que ela disse.' : 'Listen to Charlotte and tap the word you heard.')
+                    ? (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e toque na palavra que ${hostSaidPt}.` : `Listen to ${hostName} and tap the word you heard.`)
                     : currentStep.phrase.type === 'sentence_stress'
                     ? (isPortuguese ? 'Toque na palavra que tem a sílaba mais forte na frase.' : 'Tap the word that carries the strongest stress in this sentence.')
-                    : (isPortuguese ? 'Ouça a Charlotte e escreva o que ouviu.'   : 'Listen to Charlotte and write what you hear.')}
+                    : (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e escreva o que ouviu.` : `Listen to ${hostName} and write what you hear.`)}
                 </AppText>
               </View>
 
@@ -1993,7 +1997,7 @@ export default function LearnSessionScreen() {
                           const correctWord = currentStep.phrase.target === 'word2' ? currentStep.phrase.word2 : currentStep.phrase.word1;
                           const message = correct
                             ? (isPortuguese ? 'Correto! Você ouviu a diferença.' : 'Correct! You heard the difference.')
-                            : (isPortuguese ? `Quase lá — Charlotte disse "${correctWord}".` : `Not quite — Charlotte said "${correctWord}".`);
+                            : (isPortuguese ? `Quase lá — ${hostName} disse "${correctWord}".` : `Not quite — ${hostName} said "${correctWord}".`);
                           showPronResult({ state: correct ? 'correct' : 'error', message, xp });
                         }}
                         style={{
