@@ -158,6 +158,8 @@ export default function LearnSessionScreen() {
   // DEVICE. O conteúdo pedagógico (dados do exercício em inglês + explicação
   // gerada no servidor por `userLevel`) NÃO é afetado por esta flag.
   const isPortuguese = systemIsPt;
+  // Trilhas extras (ex.: Igorfina) seguem as regras do Novice (pronúncia binária etc.).
+  const isNoviceLike = level === 'Novice' || !!extraTrack(level);
   const baseTotalXP = useTotalXP(userId);
   const insets      = useSafeAreaInsets();
   // Charlotte de corpo inteiro encolhe em telas mais baixas para as opções caberem sem rolar.
@@ -831,7 +833,7 @@ export default function LearnSessionScreen() {
 
         let feedback: NonNullable<PronFeedback>;
         // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
-        if (level === 'Novice') {
+        if (isNoviceLike) {
           if (pct >= 70) {
             feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage() : 'Nice! Pronunciation ok.' };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
@@ -859,7 +861,7 @@ export default function LearnSessionScreen() {
         // garante que retry sobrescreve a tentativa anterior do mesmo step.
         if (isV2) {
           pronScoresRef.current.set(stepIdx,
-            level === 'Novice' ? (feedback.state === 'correct' ? 100 : 0) : pct
+            isNoviceLike ? (feedback.state === 'correct' ? 100 : 0) : pct
           );
         }
         saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
@@ -888,7 +890,7 @@ export default function LearnSessionScreen() {
 
         let feedback: NonNullable<PronFeedback>;
         // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
-        if (level === 'Novice') {
+        if (isNoviceLike) {
           if (pct >= 70) {
             feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage() : 'Nice! Pronunciation ok.' };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
@@ -914,7 +916,7 @@ export default function LearnSessionScreen() {
         }
         if (isV2) {
           pronScoresRef.current.set(stepIdx,
-            level === 'Novice' ? (feedback.state === 'correct' ? 100 : 0) : pct
+            isNoviceLike ? (feedback.state === 'correct' ? 100 : 0) : pct
           );
         }
         saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,

@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
 import { logOpenAIUsage } from '@/lib/openai-usage';
+import { pedagogicalLevel } from '@/lib/levels';
 
 export const dynamic = 'force-dynamic';
 
@@ -31,7 +32,8 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { text, userLevel, userId } = body as { text?: string; userLevel?: string; userId?: string };
+    const { text, userLevel: rawLevel, userId } = body as { text?: string; userLevel?: string; userId?: string };
+    const userLevel = pedagogicalLevel(rawLevel);
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json({ success: false, error: 'text is required' }, { status: 400 });

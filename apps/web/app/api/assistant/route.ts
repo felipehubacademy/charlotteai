@@ -9,6 +9,7 @@ import { checkRateLimit } from '@/lib/rate-limit';
 import { checkPracticeTaste } from '@/lib/taste';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 import { characterOf, impressionOf, applyCharacterToSystem, type Character, type Impression } from '@/lib/characters';
+import { pedagogicalLevel } from '@/lib/levels';
 
 export const dynamic = 'force-dynamic';
 
@@ -162,7 +163,9 @@ async function handleAssistantPOST(request: NextRequest, userId: string | null) 
     }
 
     const body: AssistantRequest = await request.json();
-    const { transcription, pronunciationData, userLevel, userName, messageType, conversationContext, mode } = body;
+    const { transcription, pronunciationData, userName, messageType, conversationContext, mode } = body;
+    // Trilhas extras (ex.: Igorfina) = público do Novice: explicação em PT.
+    const userLevel = pedagogicalLevel(body.userLevel);
 
     // ── Rate limit check ─────────────────────────────────────────────────────
     if (userId) {

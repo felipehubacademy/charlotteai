@@ -7,6 +7,7 @@ import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { logOpenAIUsage } from '@/lib/openai-usage';
+import { pedagogicalLevel } from '@/lib/levels';
 
 export const dynamic = 'force-dynamic';
 const openai = new OpenAI({ fetch: aiFetch, apiKey: process.env.OPENAI_API_KEY });
@@ -23,7 +24,8 @@ export async function POST(req: NextRequest) {
 
   const body = await req.json().catch(() => ({}));
   const activity = body.activity === 'roleplay' ? 'roleplay' : body.activity === 'chat' ? 'chat' : null;
-  const level = String(body.level ?? 'Novice');
+  const level = String(body.level ?? 'Novice');      // id gravado (trilha extra fica com o dela)
+  const eduLevel = pedagogicalLevel(level);           // nível pedagógico do prompt
   const moduleId = String(body.moduleId ?? '');
   const unitId = String(body.unitId ?? '');
   const pt = body.lang !== 'en';
@@ -34,7 +36,7 @@ export async function POST(req: NextRequest) {
 
   const tipLang = pt ? 'Brazilian Portuguese (with correct accents)' : 'English';
   const focus = String(body.focus ?? '').slice(0, 400);
-  const system = `You review what an English learner (${level} level) said in a short practice conversation${body.topic ? ` about "${String(body.topic).slice(0, 80)}"` : ''}.${focus ? `\nThe lesson practices: ${focus}. Sentences that use this structure correctly are correct: never "fix" them into another structure.` : ''}
+  const system = `You review what an English learner (${eduLevel} level) said in a short practice conversation${body.topic ? ` about "${String(body.topic).slice(0, 80)}"` : ''}.${focus ? `\nThe lesson practices: ${focus}. Sentences that use this structure correctly are correct: never "fix" them into another structure.` : ''}
 Find real English mistakes only: grammar, wrong word, word order, missing words. Ignore punctuation, capitalization, contractions vs. full forms, and speech-to-text noise (repeated words, cut sentences, filler words). Do not rewrite sentences that are already correct and natural.
 Be careful with conditionals: a mixed conditional with a past condition and a present result ("If I had studied more, I would be better today") is correct, and so is a present condition with a past result ("If I were braver, I would have gone"). Only flag a sentence when you are certain it is wrong; when in doubt, leave it out.
 Return JSON: {"corrections":[{"said":"<the student's exact sentence>","correct":"<the corrected sentence>","tip":"<one short reason in ${tipLang}, max 90 characters>"}]}

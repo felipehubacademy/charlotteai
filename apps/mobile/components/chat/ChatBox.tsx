@@ -25,6 +25,7 @@ import { characterInfo, impressionLabel } from '@/lib/characters';
 import { translationService, TranslationResult } from '@/lib/translation-service';
 import PronunciationScoreCard, { PronunciationData } from '@/components/chat/PronunciationScoreCard';
 import { router } from 'expo-router';
+import { isExtraTrack } from '@/lib/tracks';
 
 
 // A correção de gramática chega como ❌ "errado" → ✅ "certo" (formato que o
@@ -186,7 +187,8 @@ const MessageBubble: React.FC<{
   };
 
   const isUser = message.role === 'user';
-  const isNovice = userLevel === 'Novice';
+  // Trilhas extras (ex.: Igorfina) são para iniciantes: mesmos apoios do Novice.
+  const isNovice = userLevel === 'Novice' || isExtraTrack(userLevel);
   // Rótulos de interface seguem o idioma do aparelho.
   const isPtUI = systemIsPt;
   const hasAudio = !!(message.audioUrl || message.audioUri);
