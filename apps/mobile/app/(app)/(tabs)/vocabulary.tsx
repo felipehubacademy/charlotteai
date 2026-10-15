@@ -7,7 +7,7 @@
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import {
   View, ScrollView, TouchableOpacity, TextInput,
-  ActivityIndicator, Alert, Platform, Modal, Pressable, Animated, Easing,
+  ActivityIndicator, Platform, Modal, Pressable, Animated, Easing,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
@@ -27,6 +27,7 @@ import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { getTip, Tip } from '@/lib/tips';
 import { localTodayStr } from '@/lib/dateUtils';
+import { appAlert } from '@/components/ui/AppAlert';
 
 const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -139,7 +140,7 @@ export default function VocabularyTab() {
 
       if (existing) {
         setTipAdded(true);
-        Alert.alert(
+        appAlert(
           isPt ? 'Já no vocabulário' : 'Already in vocabulary',
           isPt ? `"${tip.term}" já está na sua lista.` : `"${tip.term}" is already in your list.`,
         );
@@ -178,7 +179,7 @@ export default function VocabularyTab() {
         .order('created_at', { ascending: false });
       if (data) setItems(data);
     } catch {
-      Alert.alert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível adicionar.' : 'Could not add word.');
+      appAlert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível adicionar.' : 'Could not add word.');
     } finally {
       setAddingTip(false);
     }
@@ -245,7 +246,7 @@ export default function VocabularyTab() {
   const handleTipTts = useCallback(() => playAudio('tip', tip.term), [playAudio, tip.term]);
 
   const handleDelete = useCallback((item: VocabItem) => {
-    Alert.alert(
+    appAlert(
       isPt ? 'Remover palavra?' : 'Remove word?',
       isPt ? `"${item.term}" será removida da sua lista.` : `"${item.term}" will be removed from your list.`,
       [

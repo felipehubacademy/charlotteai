@@ -5,7 +5,7 @@
 
 import React, { useCallback, useState, useMemo, useEffect, useRef } from 'react';
 import {
-  Alert, View, TouchableOpacity,  Platform, Modal,
+  View, TouchableOpacity, Platform, Modal,
   Pressable, Animated, Easing, ScrollView, Dimensions, StatusBar,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
@@ -36,6 +36,7 @@ import { UserLevel } from '@/lib/levelConfig';
 import { supabase } from '@/lib/supabase';
 import { localTodayStr } from '@/lib/dateUtils';
 import { getLevelAccent } from '@/lib/levelColors';
+import { appAlert } from '@/components/ui/AppAlert';
 
 type Mode = 'chat' | 'grammar' | 'pronunciation';
 
@@ -332,7 +333,7 @@ export default function PracticeTab() {
     setSuggestionMode(null);
 
     if (mode === 'chat' && messages.length >= 2) {
-      Alert.alert(
+      appAlert(
         isPt ? 'Encerrar conversa?' : 'End conversation?',
         isPt
           ? 'A conversa será salva no histórico e você poderá retomar depois.'
@@ -383,7 +384,7 @@ export default function PracticeTab() {
   // Botão "+" — força nova conversa. Se vazia, no-op. Se tem msgs, confirma.
   const handleNewSession = useCallback(() => {
     if (messages.length <= 1) return;        // só welcome → já está em conversa nova
-    Alert.alert(
+    appAlert(
       isPt ? 'Iniciar nova conversa?' : 'Start a new conversation?',
       isPt
         ? 'A conversa atual será salva no histórico e você poderá retomar depois.'
@@ -857,7 +858,7 @@ function ChatSessionItem({ session, isPt, isActive, onPress, onDelete }: {
                   : isPt ? `há ${days} dias` : `${days} days ago`;
 
   const handleDeletePress = () => {
-    Alert.alert(
+    appAlert(
       isPt ? 'Excluir conversa?' : 'Delete conversation?',
       isPt ? 'Esta ação não pode ser desfeita.' : 'This cannot be undone.',
       [

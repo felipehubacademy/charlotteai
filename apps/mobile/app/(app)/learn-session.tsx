@@ -4,7 +4,7 @@ import { useAchievementsContext } from '@/components/achievements/AchievementsPr
 import {
   View, ScrollView, TouchableOpacity, TextInput,
   Platform, Animated,
-  ActivityIndicator, Pressable, Modal, useWindowDimensions, Alert,
+  ActivityIndicator, Pressable, Modal, useWindowDimensions,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -60,6 +60,7 @@ import { checkLevelPromotion, promoteUserLevel, NEXT_LEVEL } from '@/lib/levelPr
 import PromotionModal from '@/components/ui/PromotionModal';
 import BluetoothMicHint from '@/components/BluetoothMicHint';
 import { supabase } from '@/lib/supabase';
+import { appAlert } from '@/components/ui/AppAlert';
 
 // ── Color helper — rgba() for Android hex+alpha compatibility ──
 function a(hex: string, alpha: number): string {
@@ -319,7 +320,7 @@ export default function LearnSessionScreen() {
     const sub = navigation.addListener('beforeRemove', (e: any) => {
       if (!inProgressRef.current) return;
       e.preventDefault();
-      Alert.alert(
+      appAlert(
         isPortuguese ? 'Sair do exercício?' : 'Leave the exercise?',
         isPortuguese ? 'Quando voltar, você continua desta pergunta.' : "When you come back, you'll pick up from this question.",
         [

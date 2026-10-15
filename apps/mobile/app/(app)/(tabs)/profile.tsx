@@ -3,7 +3,7 @@
 
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import {
-  View, ScrollView, TouchableOpacity, Alert, Platform,
+  View, ScrollView, TouchableOpacity, Platform,
   Linking, ActivityIndicator, Image, TextInput, Switch,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -39,6 +39,7 @@ import Constants from 'expo-constants';
 import { Application } from '@/lib/nativeOptional'; // protegido: binário sem o módulo não trava
 import * as Updates from 'expo-updates';
 import * as SecureStore from 'expo-secure-store';
+import { appAlert } from '@/components/ui/AppAlert';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -234,7 +235,7 @@ export default function ProfileTab() {
       await refreshProfile();
       setEditingName(false);
     } catch {
-      Alert.alert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível salvar.' : 'Could not save.');
+      appAlert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível salvar.' : 'Could not save.');
     } finally {
       setSavingName(false);
     }
@@ -244,7 +245,7 @@ export default function ProfileTab() {
   const placementDone = profile?.placement_test_done === true;
   const handleRetakePlacementTest = () => {
     if (!placementDone) { router.push('/(app)/placement-test?direct=1'); return; }
-    Alert.alert(
+    appAlert(
       isPt ? 'Refazer teste de nível' : 'Retake placement test',
       isPt ? 'Isso vai sobrescrever seu nível atual. Deseja continuar?' : 'This will override your current level. Continue?',
       [
@@ -264,7 +265,7 @@ export default function ProfileTab() {
   };
 
   const handleDeleteAccount = () => {
-    Alert.alert(
+    appAlert(
       isPt ? 'Excluir minha conta' : 'Delete my account',
       isPt
         ? 'Todos os seus dados serão excluídos permanentemente. Essa ação NÃO pode ser desfeita.'
@@ -275,7 +276,7 @@ export default function ProfileTab() {
           text: isPt ? 'Sim, excluir tudo' : 'Yes, delete everything',
           style: 'destructive',
           onPress: () => {
-            Alert.alert(
+            appAlert(
               isPt ? 'Tem certeza?' : 'Are you sure?',
               isPt ? 'Última chance. Sua conta e todos os dados serão apagados para sempre.' : 'Last chance. Your account and all data will be erased forever.',
               [
@@ -295,7 +296,7 @@ export default function ProfileTab() {
                       if (!res.ok) throw new Error('Delete failed');
                       await signOut();
                     } catch {
-                      Alert.alert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível excluir. Tente novamente.' : 'Could not delete. Try again.');
+                      appAlert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível excluir. Tente novamente.' : 'Could not delete. Try again.');
                     } finally {
                       setDeletingAccount(false);
                     }
@@ -320,14 +321,14 @@ export default function ProfileTab() {
     setRestoringPurchases(false);
 
     if (r.hasPremium) {
-      Alert.alert(isPt ? 'Compras restauradas' : 'Purchases restored', isPt ? 'Sua assinatura foi atualizada.' : 'Your subscription has been updated.');
+      appAlert(isPt ? 'Compras restauradas' : 'Purchases restored', isPt ? 'Sua assinatura foi atualizada.' : 'Your subscription has been updated.');
       return;
     }
     const supportEmail = 'suporte@queizy.com';
     const subject = encodeURIComponent(isPt ? 'Restaurar compra' : 'Restore purchase');
     const body    = encodeURIComponent(isPt ? `Olá! Tentei restaurar minha assinatura.\n\nMeu email: ${profile?.email ?? ''}` : `Hi! I tried to restore my subscription.\n\nMy email: ${profile?.email ?? ''}`);
     const inUse = r.errorCode === 7; // recibo da loja já vinculado a outra conta Queizy
-    Alert.alert(
+    appAlert(
       inUse
         ? (isPt ? 'Assinatura vinculada a outra conta' : 'Subscription linked to another account')
         : (isPt ? 'Nenhuma assinatura encontrada' : 'No subscription found'),
@@ -345,7 +346,7 @@ export default function ProfileTab() {
   // Idioma do app (telas, avisos, compra). O conteúdo das lições continua seguindo o nível.
   const handleChangeLanguage = () => {
     const pick = (p: 'auto' | 'pt' | 'en') => { if (p !== appLangPref) setAppLangPref(p).catch(() => {}); };
-    Alert.alert(
+    appAlert(
       isPt ? 'Idioma do app' : 'App language',
       isPt
         ? 'Muda os textos das telas e avisos. O conteúdo das lições continua no idioma do seu nível. O app reinicia ao trocar.'
@@ -369,7 +370,7 @@ export default function ProfileTab() {
       ? 'https://apps.apple.com/account/subscriptions'
       : 'https://play.google.com/store/account/subscriptions';
     Linking.openURL(url).catch(() => {
-      Alert.alert(
+      appAlert(
         isPt ? 'Não foi possível abrir' : 'Could not open',
         isPt ? 'Abra a loja de apps e gerencie a assinatura por lá.' : 'Open your app store and manage the subscription there.',
       );
@@ -377,7 +378,7 @@ export default function ProfileTab() {
   };
 
   const handleSignOut = () => {
-    Alert.alert(
+    appAlert(
       isPt ? 'Sair da conta' : 'Sign out',
       isPt ? 'Tem certeza que deseja sair?' : 'Are you sure you want to sign out?',
       [

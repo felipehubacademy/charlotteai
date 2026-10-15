@@ -11,7 +11,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import {
   Modal, View, TouchableOpacity, ActivityIndicator,
-  ScrollView, Platform, Alert, Linking,
+  ScrollView, Platform, Linking,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Trophy, MicrophoneStage, ChatCircleText, SignOut, ArrowsClockwise, X, Target } from 'phosphor-react-native';
@@ -33,6 +33,7 @@ import {
   identifyUser,
   getTrialDays,
 } from '@/lib/purchases';
+import { appAlert, AppAlertHost } from '@/components/ui/AppAlert';
 
 const C = {
   bg:         '#FAF7F0',
@@ -168,14 +169,14 @@ export function PaywallModal() {
       }
     }
     if (!pkg) {
-      Alert.alert(
+      appAlert(
         isPt ? 'Planos indisponíveis' : 'Plans unavailable',
         errorMsg ?? (isPt
           ? 'Os planos ainda não estão disponíveis. Tente novamente em alguns instantes.'
           : 'Plans are not available yet. Please try again in a moment.'),
         diagnostics ? [
           { text: 'OK' },
-          { text: isPt ? 'Ver detalhes' : 'View details', onPress: () => Alert.alert(isPt ? 'Detalhes técnicos' : 'Technical details', diagnostics!) },
+          { text: isPt ? 'Ver detalhes' : 'View details', onPress: () => appAlert(isPt ? 'Detalhes técnicos' : 'Technical details', diagnostics!) },
         ] : undefined,
       );
       return;
@@ -205,7 +206,7 @@ export function PaywallModal() {
       // assinatura vinculada a outra conta Charlotte. Oferece restaurar
       // (que também vai falhar, mas é o fluxo que o user entende) ou explica.
       if (result.errorCode === 7) {
-        Alert.alert(
+        appAlert(
           isPt ? 'Assinatura vinculada a outra conta' : 'Subscription linked to another account',
           isPt
             ? 'Esta conta da loja já tem uma assinatura Queizy ativa em outro usuário do app.\n\nEntre com a conta Queizy que fez a compra original, ou fale com o suporte.'
@@ -225,7 +226,7 @@ export function PaywallModal() {
           ],
         );
       } else {
-        Alert.alert(
+        appAlert(
           isPt ? 'Erro na compra' : 'Purchase failed',
           isPt
             ? 'Não foi possível processar o pagamento. Tente novamente em alguns instantes.'
@@ -259,7 +260,7 @@ export function PaywallModal() {
 
     if (!r.hasPremium) {
       const isReceiptInUse = r.errorCode === 7;
-      Alert.alert(
+      appAlert(
         isReceiptInUse
           ? (isPt ? 'Assinatura vinculada a outra conta' : 'Subscription linked to another account')
           : (isPt ? 'Nenhuma assinatura encontrada nesta conta' : 'No subscription found on this account'),
@@ -611,6 +612,8 @@ export function PaywallModal() {
           </View>
         </View>
       </View>
+      {/* Avisos abertos com o modal na tela aparecem aqui dentro (iOS não empilha Modals). */}
+      <AppAlertHost inline />
     </Modal>
   );
 }

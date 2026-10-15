@@ -17,7 +17,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import {
   View, TouchableOpacity, Animated, Platform, Easing,
-  ActivityIndicator, ScrollView, Alert,
+  ActivityIndicator, ScrollView,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -37,6 +37,7 @@ import Constants from 'expo-constants';
 import { QueizyWave } from '@/components/ui/QueizyWave';
 import { MarkerText } from '@/components/ui/MarkerText';
 import Svg, { Path } from 'react-native-svg';
+import { appAlert } from '@/components/ui/AppAlert';
 
 const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -173,7 +174,7 @@ export default function VocabReview() {
   const [baseXP,   setBaseXP]   = useState<number | null>(null); // XP total do aluno ao abrir
   const [ttsLoading, setTtsLoading] = useState<string | null>(null);
   const [playingKey, setPlayingKey] = useState<string | null>(null);
-  const showSRInfo = () => Alert.alert(
+  const showSRInfo = () => appAlert(
     isPt ? 'Como funciona?' : 'How does this work?',
     isPt
       ? 'O sistema ajusta quando cada palavra volta baseado em quão fácil foi lembrar.\n\nDifícil — voltará em breve, precisa de mais prática.\n\nOk — intervalo moderado, você está no caminho.\n\nFácil — intervalo longo, você domina esta palavra.'

@@ -9,6 +9,7 @@ import { AppErrorBoundary } from '@/components/AppErrorBoundary';
 import { InviteClaimer } from '@/components/share/InviteClaimer';
 import { RallyJoinedModal } from '@/components/rally/RallyJoinedModal';
 import { ActionSheetHost } from '@/components/ui/ActionSheet';
+import { AppAlertHost } from '@/components/ui/AppAlert';
 import { ShareCardProvider } from '@/components/share/ShareCardProvider';
 
 export default function AppLayout() {
@@ -30,6 +31,7 @@ export default function AppLayout() {
       <InviteClaimer />
       <RallyJoinedModal />
       <ActionSheetHost />
+      <AppAlertHost />
       <Stack screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
         <Stack.Screen name="first-access" options={{ animation: 'none' }} />
         <Stack.Screen name="index" options={{ animation: 'none' }} />

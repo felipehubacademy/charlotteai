@@ -9,7 +9,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import {
   View, ScrollView, TouchableOpacity, TextInput,
-  ActivityIndicator, Alert, Platform,
+  ActivityIndicator, Platform,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
@@ -23,6 +23,7 @@ import { systemIsPt } from '@/lib/systemLang';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { getLevelAccent } from '@/lib/levelColors';
+import { appAlert } from '@/components/ui/AppAlert';
 
 const C = {
   bg:        '#FAF7F0',
@@ -128,7 +129,7 @@ export default function MyVocabularyScreen() {
   });
 
   const handleDelete = useCallback((item: VocabItem) => {
-    Alert.alert(
+    appAlert(
       isPt ? 'Remover palavra?' : 'Remove word?',
       isPt ? `"${item.term}" será removida da sua lista.` : `"${item.term}" will be removed from your list.`,
       [

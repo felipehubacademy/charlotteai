@@ -10,7 +10,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import {
   Modal, View, TextInput, TouchableOpacity, ActivityIndicator,
-  ScrollView, Platform, Alert, 
+  ScrollView, Platform,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -23,6 +23,7 @@ import Constants from 'expo-constants';
 import { scheduleVocabReviews } from '@/lib/spacedRepetition';
 import * as Haptics from '@/lib/hapticsGated';
 import { createAudioPlayer } from 'expo-audio';
+import { appAlert, AppAlertHost } from '@/components/ui/AppAlert';
 
 const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -153,7 +154,7 @@ export function AddWordModal({
   const handleSave = useCallback(async () => {
     if (!session?.user?.id || !term.trim()) return;
     if (!definition.trim()) {
-      Alert.alert(
+      appAlert(
         isPt ? 'Definição necessária' : 'Definition required',
         isPt ? 'Por favor, adicione uma definição para o termo.' : 'Please add a definition for the term.',
       );
@@ -207,7 +208,7 @@ export function AddWordModal({
       onClose();
     } catch (err) {
       console.warn('[AddWordModal] save error:', err);
-      Alert.alert(
+      appAlert(
         isPt ? 'Erro ao salvar' : 'Save error',
         isPt ? 'Não foi possível salvar a palavra. Tente novamente.' : 'Could not save the word. Please try again.',
       );
@@ -466,6 +467,8 @@ export function AddWordModal({
           </View>
         </View>
       </KeyboardAvoidingView>
+      {/* Avisos abertos com o modal na tela aparecem aqui dentro (iOS não empilha Modals). */}
+      <AppAlertHost inline />
     </Modal>
   );
 }

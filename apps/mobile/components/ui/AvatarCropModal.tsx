@@ -10,7 +10,6 @@ import {
   Dimensions,
   Platform,
   StyleSheet,
-  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
@@ -19,6 +18,7 @@ import { readAsStringAsync } from 'expo-file-system/legacy';
 import { supabase } from '@/lib/supabase';
 import { AppText } from '@/components/ui/Text';
 import { systemIsPt as isPt } from '@/lib/systemLang';
+import { appAlert, AppAlertHost } from '@/components/ui/AppAlert';
 
 // ─── Theme ────────────────────────────────────────────────────────────────────
 const C = {
@@ -131,7 +131,7 @@ export default function AvatarCropModal({
       }
     } catch (err: any) {
       console.error('[AvatarCropModal] pickFromLibrary error:', err);
-      Alert.alert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível abrir a galeria. Tente novamente.' : 'Could not open the photo library. Please try again.');
+      appAlert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível abrir a galeria. Tente novamente.' : 'Could not open the photo library. Please try again.');
     }
   }, []);
 
@@ -139,7 +139,7 @@ export default function AvatarCropModal({
     try {
       const { status } = await ImagePicker.requestCameraPermissionsAsync();
       if (status !== 'granted') {
-        Alert.alert(
+        appAlert(
           isPt ? 'Permissão necessária' : 'Permission needed',
           isPt ? 'Permita o acesso à câmera nos Ajustes do aparelho > Queizy.' : 'Allow camera access in your device Settings > Queizy.'
         );
@@ -155,7 +155,7 @@ export default function AvatarCropModal({
       }
     } catch (err: any) {
       console.error('[AvatarCropModal] pickFromCamera error:', err);
-      Alert.alert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível abrir a câmera. Tente novamente.' : 'Could not open the camera. Please try again.');
+      appAlert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível abrir a câmera. Tente novamente.' : 'Could not open the camera. Please try again.');
     }
   }, []);
 
@@ -264,7 +264,7 @@ export default function AvatarCropModal({
       handleCloseRef.current();
     } catch (err: any) {
       console.error('[AvatarCropModal] upload error:', err);
-      Alert.alert(isPt ? 'Erro' : 'Error', err?.message ?? (isPt ? 'Não foi possível salvar a foto. Tente novamente.' : 'Could not save the photo. Please try again.'));
+      appAlert(isPt ? 'Erro' : 'Error', err?.message ?? (isPt ? 'Não foi possível salvar a foto. Tente novamente.' : 'Could not save the photo. Please try again.'));
     } finally {
       setUploading(false);
     }
@@ -414,6 +414,8 @@ export default function AvatarCropModal({
           )}
         </View>
       </View>
+      {/* Avisos abertos com o modal na tela aparecem aqui dentro (iOS não empilha Modals). */}
+      <AppAlertHost inline />
     </Modal>
   );
 }

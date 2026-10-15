@@ -12,7 +12,7 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import {
   View, TextInput, TouchableOpacity, ActivityIndicator,
-  ScrollView, Platform, Alert, Keyboard,
+  ScrollView, Platform, Keyboard,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -28,6 +28,7 @@ import Constants from 'expo-constants';
 import { scheduleVocabReviews } from '@/lib/spacedRepetition';
 import * as Haptics from '@/lib/hapticsGated';
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
+import { appAlert } from '@/components/ui/AppAlert';
 
 /** Simple UUID v4 — avoids crypto.randomUUID() que nao esta disponivel em todos os ambientes iOS */
 function makeUUID(): string {
@@ -182,7 +183,7 @@ export default function AddWordScreen() {
   const handleSave = useCallback(async () => {
     if (!userId || !term.trim()) return;
     if (!definition.trim()) {
-      Alert.alert(
+      appAlert(
         isPt ? 'Definição necessária' : 'Definition required',
         isPt ? 'Adicione uma definição antes de salvar.' : 'Please add a definition before saving.',
       );
@@ -234,7 +235,7 @@ export default function AddWordScreen() {
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : JSON.stringify(err);
       console.warn('[AddWord] save error:', msg);
-      Alert.alert(
+      appAlert(
         isPt ? 'Erro ao salvar' : 'Save error',
         isPt ? 'Não foi possível salvar. Tente novamente.' : 'Could not save. Please try again.',
       );

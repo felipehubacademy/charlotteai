@@ -6,7 +6,6 @@ import React, { useState, useCallback, useMemo } from 'react';
 import {
   View, ScrollView, TouchableOpacity, ActivityIndicator,
   RefreshControl, Modal, Pressable, Dimensions, Animated, Easing, Platform,
-  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path as SvgPath } from 'react-native-svg';
@@ -30,6 +29,7 @@ import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 import { LiveVoiceWave } from '@/components/voice/LiveVoiceWave';
 import { LiveVoiceLimitSheet } from '@/components/voice/LiveVoiceLimitSheet';
 import { getLevelAccent } from '@/lib/levelColors';
+import { appAlert } from '@/components/ui/AppAlert';
 
 // ── Palette ───────────────────────────────────────────────────────────────────
 // Tela full navy — todos os elementos em stack sobre o mesmo fundo.
@@ -166,7 +166,7 @@ function CallListItem({ call, isPt, onPress, onDelete }: {
   const durLabel  = durationLabel(call.duration_seconds, isPt);
 
   const handleDeletePress = () => {
-    Alert.alert(
+    appAlert(
       isPt ? 'Excluir conversa?' : 'Delete conversation?',
       isPt ? 'Esta ação não pode ser desfeita.' : 'This cannot be undone.',
       [
@@ -1025,7 +1025,7 @@ export default function LiveVoiceTab() {
         onSubscribe={() => { setShowLimitSheet(false); openPaywall(); }}
         onPurchased={(mins) => {
           setShowLimitSheet(false);
-          setTimeout(() => Alert.alert(
+          setTimeout(() => appAlert(
             isPt ? `+${mins} minutos adicionados` : `+${mins} minutes added`,
             isPt ? 'Eles não vencem no fim do mês. Bora conversar?' : 'They don’t expire at month’s end. Ready to talk?',
           ), 350);
