@@ -16,6 +16,8 @@
 import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
+import { soundEngine } from '@/lib/soundEngine';
+import { getModule } from '@/lib/curriculum-v2/loader';
 
 export type V2Activity = 'grammar' | 'speaking' | 'roleplay' | 'chat';
 export type V2Level    = 'Novice' | 'Inter' | 'Advanced' | 'Igorfina';
@@ -153,6 +155,19 @@ export function useLearnProgressV2(
     if (error || !data) return null;
     const next = data as V2Row;
 
+    // Tópico = a unidade inteira (as 4 atividades). O "Topic done!" toca quando ESTA atividade
+    // fecha a unidade (normalmente o Guided Chat), e "Module complete!" quando fecha o módulo.
+    if (next.completed && !existing?.completed) {
+      const done = (m: string, u: string, a: V2Activity) =>
+        (m === moduleId && u === unitId && a === activity) || rows.some(r => r.module_id === m && r.unit_id === u && r.activity_type === a && r.completed);
+      const unitDone = (m: string, u: string) => ACTIVITY_ORDER.every(a => done(m, u, a));
+      if (unitDone(moduleId, unitId)) {
+        const mod = getModule(level as any, moduleId);
+        const moduleDone = !!mod && mod.units.every(u => unitDone(moduleId, u.id));
+        setTimeout(() => { soundEngine.play(moduleDone ? 'module_complete' : 'topic_complete').catch(() => {}); }, 400);
+      }
+    }
+
     // Update local cache so trail re-renders without waiting for refetch
     setRows(prev => {
       const i = prev.findIndex(r =>
@@ -169,7 +184,7 @@ export function useLearnProgressV2(
     // Conquistas da trilha (ex.: primeira lição, módulo concluído): confere depois de salvar.
     setTimeout(() => { checkForNewAchievements(); }, 1500);
     return next;
-  }, [userId, level, get, checkForNewAchievements]);
+  }, [userId, level, get, rows, checkForNewAchievements]);
 
   return {
     loading,

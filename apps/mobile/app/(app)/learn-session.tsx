@@ -1047,12 +1047,16 @@ export default function LearnSessionScreen() {
       const isLastTopic = !!moduleData && topicIndex === moduleData.topics.length - 1;
       const isModuleComplete = isLastTopic && !params.reviewId;
 
-      if (isModuleComplete) {
-        // SFX grande + voz "Module complete!" (delay interno no soundEngine)
-        soundEngine.play('module_complete').catch(() => {});
-      } else {
-        // Topico finalizado: SFX curto + voz "Topic done!"
-        soundEngine.play('topic_complete').catch(() => {});
+      // Trilha v2: tópico = a unidade inteira; o som de tópico/módulo concluído sai do saveAttempt
+      // quando a atividade fecha a unidade (ver useLearnProgressV2). Aqui é só a trilha antiga.
+      if (!isV2) {
+        if (isModuleComplete) {
+          // SFX grande + voz "Module complete!" (delay interno no soundEngine)
+          soundEngine.play('module_complete').catch(() => {});
+        } else {
+          // Topico finalizado: SFX curto + voz "Topic done!"
+          soundEngine.play('topic_complete').catch(() => {});
+        }
       }
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
       setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 120);
