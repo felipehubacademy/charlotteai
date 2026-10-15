@@ -640,7 +640,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 **Voiced by**: `igorfina`
 **Persona**: Igorfina
 **Persona outfit**: `igorfina_casual`
-**Intro (em PT)**: "Responda a enquete do Igorfina com I'm in, I'm out, count me in ou count me out."
+**Intro (em PT)**: "Responda à enquete do Igorfina com I'm in, I'm out, count me in ou count me out."
 **Opening message**: "Weekend poll! Saturday: boat tour. In or out?"
 
 **Sub-objectives** (3 objetivos):

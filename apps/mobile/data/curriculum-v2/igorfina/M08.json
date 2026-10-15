@@ -480,12 +480,12 @@
             "label_pt": "Sugerir perguntar ao funcionário",
             "label_en": "Suggest asking a clerk",
             "hidden_prompt": "user suggests asking: 'ask the clerk where the bread is', 'ask: where can I find the bread?' — must be in English",
-            "hint_pt": "Ask: where can I find the bread?",
-            "hint_en": "Ask: where can I find the bread?",
+            "hint_pt": "Ask the clerk where the bread is.",
+            "hint_en": "Ask the clerk where the bread is.",
             "examples_pass": [
-              "Ask: where can I find the bread?",
               "Ask the clerk where the bread is.",
-              "Ask someone, where is the bread?"
+              "Ask someone where the bread is.",
+              "Ask: where can I find the bread?"
             ],
             "examples_fail": [
               "Pergunta pra alguém (Portuguese)",
@@ -513,7 +513,7 @@
           }
         ],
         "closing_cue": "Igorfina encerra com \"Aisle three, found it! Breakfast is on me tomorrow!\" quando obj_3 bater.",
-        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"I'm at the supermarket! What do you need?\"\n2. **Student**: \"I'd like milk and bread.\"\n3. **Igorfina**: \"OK, milk is here. I can't find the bread!\"\n4. **Student**: \"Ask: where can I find the bread?\"\n5. **Igorfina**: \"Good idea, I'll ask the clerk.\"\n6. **Student**: \"Thanks, my friend!\"\n7. **Igorfina**: \"Aisle three, found it! Breakfast is on me tomorrow!\"\n\n---"
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"I'm at the supermarket! What do you need?\"\n2. **Student**: \"I'd like milk and bread.\"\n3. **Igorfina**: \"OK, milk is here. I can't find the bread!\"\n4. **Student**: \"Ask the clerk where the bread is.\"\n5. **Igorfina**: \"Good idea, I'll ask the clerk.\"\n6. **Student**: \"Thanks, my friend!\"\n7. **Igorfina**: \"Aisle three, found it! Breakfast is on me tomorrow!\"\n\n---"
       }
     },
     {
@@ -704,8 +704,8 @@
             ]
           }
         ],
-        "closing_cue": "Igorfina fecha com \"Twenty-five bucks, champ. Championship haircut, you locked in!\" quando obj_3 bater.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Student**: ~\"I'd like a haircut.\"\n2. **Igorfina**: \"Let's go! How do you want it?\"\n3. **Student**: ~\"Low on the sides, not much on the top.\"\n4. **Igorfina**: \"Clean. Done! Look at you, ready for the finals.\"\n5. **Student**: ~\"How much is it?\"\n6. **Igorfina**: \"Twenty-five bucks, champ. Championship haircut, you locked in!\"",
+        "closing_cue": "Igorfina fecha com \"Twenty-five bucks, champ. Championship haircut, you're locked in!\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Student**: ~\"I'd like a haircut.\"\n2. **Igorfina**: \"Let's go! How do you want it?\"\n3. **Student**: ~\"Low on the sides, not much on the top.\"\n4. **Igorfina**: \"Clean. Done! Look at you, ready for the finals.\"\n5. **Student**: ~\"How much is it?\"\n6. **Igorfina**: \"Twenty-five bucks, champ. Championship haircut, you're locked in!\"",
         "evaluation_focus": [
           "\"I'd like a haircut\" e a descrição \"on the sides / on the top\"",
           "Perguntar o preço no final"
@@ -910,7 +910,7 @@
         "persona": "Igorfina",
         "persona_outfit": "igorfina_casual",
         "time_budget_sec": 90,
-        "opening_line": "Hey! I love New York caps! Best prices on the street!",
+        "opening_line": "Hey! New York caps! Best prices on the street!",
         "objectives": [
           {
             "id": 1,
@@ -1002,9 +1002,9 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar se pode pagar pelo app",
-            "label_en": "Ask to pay by app or card",
-            "hidden_prompt": "user asks about payment method: 'can I pay by card?', 'can I send it by app?', 'can I pay you with Venmo?' — must be in English",
+            "label_pt": "Perguntar como pagar",
+            "label_en": "Ask how to pay",
+            "hidden_prompt": "user asks about payment method: 'can I pay by card?', 'can I send it by app?', 'can I pay you later?' — must be in English",
             "hint_pt": "Can I pay by card?",
             "hint_en": "Can I pay by card?",
             "examples_pass": [

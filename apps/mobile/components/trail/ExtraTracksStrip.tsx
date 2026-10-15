@@ -125,7 +125,8 @@ export function ExtraTracksRow() {
               {isPt ? t.titlePt : t.titleEn}
             </AppText>
             <AppText numberOfLines={1} style={{ fontSize: 12, color: T.textSecondary }}>
-              {isPt ? `Trilha da Família Queizy · ${t.hostPt}` : `Queizy Family path · ${t.hostEn}`}
+              {/* Curto para caber ao lado do selo em telas estreitas (Android): só com quem é. */}
+              {isPt ? t.hostPt : t.hostEn}
             </AppText>
           </View>
           {isTaster ? (

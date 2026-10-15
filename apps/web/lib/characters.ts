@@ -107,5 +107,6 @@ export function impressionFromOutfit(outfit: unknown): Impression | null {
 
 /** Estilo da imitação valendo para a conversa toda (o texto original é "só nesta resposta"). */
 export function wholeActivityImpressionStyle(imp: Impression): string {
-  return imp.style.replace(/^THIS REPLY ONLY: switch into/, 'For this WHOLE activity, stay in');
+  return imp.style.replace(/^THIS REPLY ONLY: switch into/, 'For this WHOLE activity, stay in')
+    + ' EVERY reply in this activity must sound like this character (at least one of its catchphrases or its signature tone), even the short ones. Prefer its catchphrases over "my friend".';
 }

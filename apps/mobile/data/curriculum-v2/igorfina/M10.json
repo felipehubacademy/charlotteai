@@ -415,7 +415,7 @@
             "examples_pass": [
               "What's the cheapest way to get to Brooklyn?",
               "What's the cheapest way?",
-              "How can I go cheap?"
+              "How can I get there cheap?"
             ],
             "examples_fail": [
               "Cheap (bare word)",
@@ -1100,7 +1100,7 @@
         },
         {
           "type": "read_answer",
-          "passage": "Igor: My friend, you did it! Ten lessons. Now: think in English, let the words come out, watch it again and repeat. See you next trip!",
+          "passage": "Igor: My friend, you did it! The whole manual! Now: think in English, let the words come out, watch it again and repeat. See you next trip!",
           "question": "Quais são os três conselhos finais do Igor? Escreva o primeiro (em inglês).",
           "answer": "Think in English",
           "explanation": "\"Think in English, let the words come out, watch it again and repeat\": pense em inglês, deixe as palavras saírem, assista de novo e repita. O fechamento do curso do Igor."
@@ -1204,7 +1204,7 @@
         "persona": "Igorfina",
         "persona_outfit": "igorfina_casual",
         "intro_pt": "É a despedida do manual. Responda o Igorfina com tudo o que aprendeu.",
-        "opening_message": "So, my friend... ten lessons! How do you feel now?",
+        "opening_message": "So, my friend... the whole manual! How do you feel now?",
         "objectives": [
           {
             "id": 1,
@@ -1228,13 +1228,13 @@
             "id": 2,
             "label_pt": "Dizer a lição favorita",
             "label_en": "Say your favorite lesson",
-            "hidden_prompt": "user names a favorite lesson/topic: 'my favorite was the slang', 'the best lesson was the gym', 'I loved the president, ha' — must be in English",
+            "hidden_prompt": "user names a favorite lesson/topic: 'my favorite was the slang', 'the best lesson was the gym', 'the immigration lesson was the best' — must be in English",
             "hint_pt": "My favorite was the slang lesson!",
             "hint_en": "My favorite was the slang lesson!",
             "examples_pass": [
               "My favorite was the slang lesson!",
               "The best lesson was the gym.",
-              "I loved the president, ha!"
+              "The immigration lesson was the best!"
             ],
             "examples_fail": [
               "Gírias (Portuguese)",
@@ -1262,7 +1262,7 @@
           }
         ],
         "closing_cue": "Igorfina encerra com \"Think in English, let the words come out, and watch it again. You're ready, my friend. Crazy proud of you!\" quando obj_3 bater.",
-        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"So, my friend... ten lessons! How do you feel now?\"\n2. **Student**: \"I feel great! I'm not scared anymore.\"\n3. **Igorfina**: \"That's the goal! Favorite lesson?\"\n4. **Student**: \"My favorite was the slang lesson!\"\n5. **Igorfina**: \"Ha! For real? No way! Classic.\"\n6. **Student**: \"Thank you so much! See you next trip!\"\n7. **Igorfina**: \"Think in English, let the words come out, and watch it again. You're ready, my friend. Crazy proud of you!\""
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"So, my friend... the whole manual! How do you feel now?\"\n2. **Student**: \"I feel great! I'm not scared anymore.\"\n3. **Igorfina**: \"That's the goal! Favorite lesson?\"\n4. **Student**: \"My favorite was the slang lesson!\"\n5. **Igorfina**: \"Ha! For real? No way! Classic.\"\n6. **Student**: \"Thank you so much! See you next trip!\"\n7. **Igorfina**: \"Think in English, let the words come out, and watch it again. You're ready, my friend. Crazy proud of you!\""
       }
     }
   ],

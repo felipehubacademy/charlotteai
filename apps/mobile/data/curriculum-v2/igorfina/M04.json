@@ -887,7 +887,7 @@
         "persona": "Igorfina",
         "persona_outfit": "igorfina_casual",
         "time_budget_sec": 90,
-        "opening_line": "Man, the bus didn't come and the store was closed. What a day, huh?",
+        "opening_line": "Damn, man! The bus ain't coming and the store was closed. That's BS, huh?",
         "objectives": [
           {
             "id": 1,
@@ -962,7 +962,7 @@
           {
             "id": 2,
             "label_pt": "Dizer a versão segura de 'That's BS'",
-            "label_en": "Say the safe version",
+            "label_en": "Say the safe version of 'That's BS'",
             "hidden_prompt": "user gives a safe version of 'that's BS': 'that's not true', 'that's a lie', 'no way, that's not true' — must be in English; repeating 'BS' does NOT count",
             "hint_pt": "That's not true.",
             "hint_en": "That's not true.",
@@ -980,7 +980,7 @@
           {
             "id": 3,
             "label_pt": "Dizer a versão segura de 'Damn!'",
-            "label_en": "Say the safe version",
+            "label_en": "Say the safe version of 'Damn!'",
             "hidden_prompt": "user gives a safe alternative to 'damn!': 'oh no!', 'oh man!', 'wow!', 'oh my God' — must be in English; repeating 'damn' does NOT count",
             "hint_pt": "Oh no!",
             "hint_en": "Oh no!",
@@ -996,8 +996,8 @@
             ]
           }
         ],
-        "closing_cue": "Igorfina encerra com \"100%! You understand the streets and you speak like a gentleman, ha!\" quando obj_3 bater.",
-        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Quiz time! In a song, 'ain't no sunshine'. How do you say it the normal way?\"\n2. **Student**: \"There is no sunshine.\"\n3. **Igorfina**: \"Nice! And a safe way to say 'that's BS'?\"\n4. **Student**: \"That's not true.\"\n5. **Igorfina**: \"Perfect. Last one: something safe instead of 'damn!'?\"\n6. **Student**: \"Oh no!\"\n7. **Igorfina**: \"100%! You understand the streets and you speak like a gentleman, ha!\"\n\n---"
+        "closing_cue": "Igorfina encerra com \"100%! You understand the streets and you speak like a pro, ha!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Quiz time! In a song, 'ain't no sunshine'. How do you say it the normal way?\"\n2. **Student**: \"There is no sunshine.\"\n3. **Igorfina**: \"Nice! And a safe way to say 'that's BS'?\"\n4. **Student**: \"That's not true.\"\n5. **Igorfina**: \"Perfect. Last one: something safe instead of 'damn!'?\"\n6. **Student**: \"Oh no!\"\n7. **Igorfina**: \"100%! You understand the streets and you speak like a pro, ha!\"\n\n---"
       }
     },
     {

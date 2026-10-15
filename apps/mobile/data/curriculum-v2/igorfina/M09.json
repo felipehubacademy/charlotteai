@@ -951,7 +951,7 @@
             ],
             "examples_fail": [
               "Supino (Portuguese)",
-              "Squat (it's legs, not push upper)",
+              "Squat (legs, not an upper-body push)",
               "Row (it's a pull)"
             ]
           },
@@ -1094,7 +1094,7 @@
         },
         {
           "type": "read_answer",
-          "passage": "Igor: Legs day, five sets of squats. I'm exhausted! My legs hurt so much. Tomorrow: chest. Are you in?",
+          "passage": "Igor: Leg day, five sets of squats. I'm exhausted! My legs hurt so much. Tomorrow: chest. Are you in?",
           "question": "O que o Igor vai treinar amanhã? (responda em inglês)",
           "answer": "Chest",
           "explanation": "\"Tomorrow: chest\" = amanhã, peito. E hoje ele está \"exhausted\" depois do treino de pernas."
@@ -1158,7 +1158,7 @@
             "examples_pass": [
               "Four sets of ten squats.",
               "We did bench press and rows.",
-              "Three sets of eight, legs day."
+              "Three sets of eight, leg day."
             ],
             "examples_fail": [
               "Agachamento (Portuguese)",
@@ -1186,7 +1186,7 @@
           }
         ],
         "closing_cue": "Igorfina fecha com \"Fair! Rest day, then chest day. You're a machine, my friend!\" quando obj_3 bater.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Student**: ~\"I'm exhausted!\"\n2. **Igorfina**: \"Ha! What did you do?\"\n3. **Student**: ~\"Four sets of ten squats.\"\n4. **Igorfina**: \"Legs day, respect! Chest tomorrow?\"\n5. **Student**: ~\"I'm in, but after a rest day!\"\n6. **Igorfina**: \"Fair! Rest day, then chest day. You're a machine, my friend!\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Student**: ~\"I'm exhausted!\"\n2. **Igorfina**: \"Ha! What did you do?\"\n3. **Student**: ~\"Four sets of ten squats.\"\n4. **Igorfina**: \"Leg day, respect! Chest tomorrow?\"\n5. **Student**: ~\"I'm in, but after a rest day!\"\n6. **Igorfina**: \"Fair! Rest day, then chest day. You're a machine, my friend!\"",
         "evaluation_focus": [
           "tired / exhausted (e não \"tiring\" para a pessoa)",
           "Revisão de sets, reps e exercícios"

@@ -199,12 +199,12 @@
         ]
       },
       "guided_chat": {
-        "scenario": "Um turista mandou mensagem errada para você no aplicativo de mensagens do albergue. Responda com educação.",
+        "scenario": "No albergue, o Igorfina manda mensagem no chat do quarto por engano. Responda com educação.",
         "voiced_by": "igorfina",
         "persona": "Igorfina",
         "persona_outfit": "igorfina_casual",
         "intro_pt": "O Igorfina está no albergue com você e manda mensagem no chat do quarto. Responda com as palavras que salvam.",
-        "opening_message": "Hello! Sorry, wrong room... are you room 12?",
+        "opening_message": "Hello! Sorry, wrong chat... are you in room 12?",
         "objectives": [
           {
             "id": 1,
@@ -243,8 +243,8 @@
             ]
           }
         ],
-        "closing_cue": "Igorfina encerra com \"Ha! No problem, my friend. Wrong room. Sorry!\" quando obj_2 bater.",
-        "suggested_script": "**Script** (referencial, 4 turnos):\n\n1. **Igorfina**: \"Hello! Sorry, wrong room... are you room 12?\"\n2. **Student**: \"Hello!\"\n3. **Igorfina**: \"Room twelve? One, two?\"\n4. **Student**: \"Sorry, I don't understand.\"\n5. **Igorfina**: \"Ha! No problem, my friend. Wrong room. Sorry!\"\n\n---"
+        "closing_cue": "Igorfina encerra com \"Ha! No problem, my friend. Wrong chat. Sorry!\" quando obj_2 bater.",
+        "suggested_script": "**Script** (referencial, 4 turnos):\n\n1. **Igorfina**: \"Hello! Sorry, wrong chat... are you in room 12?\"\n2. **Student**: \"Hello!\"\n3. **Igorfina**: \"Room twelve? One, two?\"\n4. **Student**: \"Sorry, I don't understand.\"\n5. **Igorfina**: \"Ha! No problem, my friend. Wrong chat. Sorry!\"\n\n---"
       }
     },
     {

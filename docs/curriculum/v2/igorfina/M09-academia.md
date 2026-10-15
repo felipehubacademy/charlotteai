@@ -653,7 +653,7 @@ Igorfina fala no estilo do astro do basquete (imitação). Aluno repete; a pron�
    **hint_pt**: "Bench press!"
    **hint_en**: "Bench press!"
    **example_pass**: Bench press! | Push-ups. | Shoulder press.
-   **example_fail**: Supino (Portuguese) | Squat (it's legs, not push upper) | Row (it's a pull)
+   **example_fail**: Supino (Portuguese) | Squat (legs, not an upper-body push) | Row (it's a pull)
 
 2. **id**: 2
    **label_pt**: "Dizer um exercício de puxar"
@@ -741,7 +741,7 @@ Igorfina fala no estilo do astro do basquete (imitação). Aluno repete; a pron�
    **Explanation**: "Sets", sempre. Revisão da F42.
 
 10. **read_answer**
-    **Passage**: "Igor: Legs day, five sets of squats. I'm exhausted! My legs hurt so much. Tomorrow: chest. Are you in?"
+    **Passage**: "Igor: Leg day, five sets of squats. I'm exhausted! My legs hurt so much. Tomorrow: chest. Are you in?"
     **Question**: O que o Igor vai treinar amanhã? (responda em inglês)
     **Answer**: Chest
     **Explanation**: "Tomorrow: chest" = amanhã, peito. E hoje ele está "exhausted" depois do treino de pernas.
@@ -783,7 +783,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **hidden_prompt**: "user describes the workout with sets/reps or exercises: 'four sets of squats', 'we did bench press and rows' — must be in English"
    **hint_pt**: "Four sets of ten squats."
    **hint_en**: "Four sets of ten squats."
-   **example_pass**: Four sets of ten squats. | We did bench press and rows. | Three sets of eight, legs day.
+   **example_pass**: Four sets of ten squats. | We did bench press and rows. | Three sets of eight, leg day.
    **example_fail**: Agachamento (Portuguese) | Gym (too vague) | A lot (no details)
 
 3. **id**: 3
@@ -802,7 +802,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 1. **Student**: ~"I'm exhausted!"
 2. **Igorfina**: "Ha! What did you do?"
 3. **Student**: ~"Four sets of ten squats."
-4. **Igorfina**: "Legs day, respect! Chest tomorrow?"
+4. **Igorfina**: "Leg day, respect! Chest tomorrow?"
 5. **Student**: ~"I'm in, but after a rest day!"
 6. **Igorfina**: "Fair! Rest day, then chest day. You're a machine, my friend!"
 

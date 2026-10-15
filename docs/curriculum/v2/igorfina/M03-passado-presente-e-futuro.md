@@ -172,7 +172,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 2. **id**: 2
    **label_pt**: "Contar um problema"
-   **label_en**: "Tell a problem"
+   **label_en**: "Tell him about a problem"
    **hidden_prompt**: "user tells a past problem with was: 'I was lost', 'I was out of cash', 'I was hungry all day' — must be in English"
    **hint_pt**: "I was out of cash."
    **hint_en**: "I was out of cash."
@@ -327,7 +327,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 1. **id**: 1
    **label_pt**: "Perguntar como ele foi"
-   **label_en**: "Ask how he went"
+   **label_en**: "Ask how he got there"
    **hidden_prompt**: "user asks with did about transport: 'did you take the subway?', 'did you take the bus?', 'did you walk?' — must be in English"
    **hint_pt**: "Did you take the subway?"
    **hint_en**: "Did you take the subway?"
@@ -601,7 +601,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 ### 3. Role-play
 
-**Cenário**: O Igorfina vai te mostrar a cidade amanhã e quer saber seus planos. Responda usando o futuro.
+**Cenário**: Amanhã é seu dia livre e você quer companhia. O Igorfina pergunta seus planos: conte usando o futuro e convide ele.
 **Tipo**: Live Voice
 **Voiced by**: `igorfina`
 **Persona**: Igorfina

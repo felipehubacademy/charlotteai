@@ -149,12 +149,12 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 ### 4. Guided Chat
 
-**Cenário**: Um turista mandou mensagem errada para você no aplicativo de mensagens do albergue. Responda com educação.
+**Cenário**: No albergue, o Igorfina manda mensagem no chat do quarto por engano. Responda com educação.
 **Voiced by**: `igorfina`
 **Persona**: Igorfina
 **Persona outfit**: `igorfina_casual`
 **Intro (em PT)**: "O Igorfina está no albergue com você e manda mensagem no chat do quarto. Responda com as palavras que salvam."
-**Opening message**: "Hello! Sorry, wrong room... are you room 12?"
+**Opening message**: "Hello! Sorry, wrong chat... are you in room 12?"
 
 **Sub-objectives** (base: 2 objetivos):
 
@@ -176,15 +176,15 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **example_pass**: Sorry, I don't understand. | Excuse me? | Sorry? Again, please.
    **example_fail**: Room 12 (does not express confusion) | Não entendi (Portuguese) | OK (no request)
 
-**Closing cue**: Igorfina encerra com "Ha! No problem, my friend. Wrong room. Sorry!" quando obj_2 bater.
+**Closing cue**: Igorfina encerra com "Ha! No problem, my friend. Wrong chat. Sorry!" quando obj_2 bater.
 
 **Script** (referencial, 4 turnos):
 
-1. **Igorfina**: "Hello! Sorry, wrong room... are you room 12?"
+1. **Igorfina**: "Hello! Sorry, wrong chat... are you in room 12?"
 2. **Student**: "Hello!"
 3. **Igorfina**: "Room twelve? One, two?"
 4. **Student**: "Sorry, I don't understand."
-5. **Igorfina**: "Ha! No problem, my friend. Wrong room. Sorry!"
+5. **Igorfina**: "Ha! No problem, my friend. Wrong chat. Sorry!"
 
 ---
 

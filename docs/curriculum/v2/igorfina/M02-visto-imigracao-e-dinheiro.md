@@ -14,8 +14,8 @@
 ## Module chunks introduced (~30)
 
 - What's the purpose of your trip?
-- My trip is business.
-- My trip is just vacation.
+- It's a business trip.
+- It's just vacation.
 - It's a work exchange.
 - I'm here on vacation.
 - I'm here for work.
@@ -56,7 +56,7 @@
 2. **multiple_choice** — "My trip is just _____."
    **Options**: vacation / vacations / a vacation trip
    **Answer**: vacation
-   **Explanation**: Nos Estados Unidos se diz "vacation" (férias), no singular. "My trip is just vacation" ou "I'm here on vacation".
+   **Explanation**: Nos Estados Unidos se diz "vacation" (férias), no singular. "It's just vacation" ou "I'm here on vacation".
 
 3. **word_bank** — "I'm here _____ vacation."
    **Choices**: on / in / for / at
@@ -68,10 +68,10 @@
    **Answer**: for
    **Explanation**: "I'm here for work" = estou aqui a trabalho. Com "work" e "business" também vale "for": "I'm here for business".
 
-5. **fill_gap** — "My _____ is business."
+5. **fill_gap** — "It's a business _____."
    **Hint**: Viagem
    **Answer**: trip
-   **Explanation**: "Trip" é a viagem em si. "My trip is business" responde direto ao "purpose of your trip".
+   **Explanation**: "Trip" é a viagem em si. "It's a business trip" responde direto ao "purpose of your trip".
 
 6. **fill_gap** — "It's a work _____ program."
    **Hint**: Intercâmbio
@@ -95,17 +95,17 @@
    **Explanation**: "Vacation" no singular. "Vacations" soa estranho nessa frase.
 
 10. **read_answer**
-    **Passage**: "Officer: Good morning. What's the purpose of your trip? Igor: My trip is just vacation. Officer: OK. Welcome to the United States."
+    **Passage**: "Officer: Good morning. What's the purpose of your trip? Igor: It's just vacation. Officer: OK. Welcome to the United States."
     **Question**: Qual foi o motivo da viagem do Igor? (responda em inglês com uma palavra)
     **Answer**: vacation
-    **Explanation**: Ele respondeu "My trip is just vacation": férias. Curto, simples e o oficial liberou.
+    **Explanation**: Ele respondeu "It's just vacation": férias. Curto, simples e o oficial liberou.
 
 ### 2. Listening/Speaking (5 phrases)
 
 Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 1. **"What's the purpose of your trip?"** — a pergunta do oficial (para reconhecer)
-2. **"My trip is just vacation, officer."** — responder que é turismo
+2. **"It's just vacation, officer."** — responder que é turismo
 3. **"I'm here on vacation for two weeks."** — férias e quanto tempo
 4. **"I'm here for business, a short meeting."** — viagem de trabalho
 5. **"It's a work exchange program in Florida."** — intercâmbio de trabalho
@@ -126,9 +126,9 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **label_pt**: "Dizer o motivo da viagem"
    **label_en**: "Say why you're traveling"
    **hidden_prompt**: "user states the purpose: vacation/holiday/tourism/business/work/exchange, e.g. 'my trip is vacation', 'I'm here on vacation', 'business' — must be in English"
-   **hint_pt**: "My trip is just vacation."
-   **hint_en**: "My trip is just vacation."
-   **example_pass**: My trip is just vacation. | I'm here on vacation. | Business.
+   **hint_pt**: "It's just vacation."
+   **hint_en**: "It's just vacation."
+   **example_pass**: It's just vacation. | I'm here on vacation. | Business.
    **example_fail**: Yes (no purpose) | Férias (Portuguese) | I want to live here (wrong and risky)
 
 2. **id**: 2
@@ -144,7 +144,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 **Suggested flow** (referencial, 4 turnos):
 
-1. **Student**: ~"My trip is just vacation."
+1. **Student**: ~"It's just vacation."
 2. **Igorfina**: "OK. Your passport, please?"
 3. **Student**: ~"Here is my passport."
 4. **Igorfina**: "Thank you. Welcome to the United States. Enjoy your stay!"
@@ -168,9 +168,9 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **label_pt**: "Dizer o motivo da viagem"
    **label_en**: "Say the purpose of your trip"
    **hidden_prompt**: "user states the purpose: vacation/holiday/tourism/business/work/exchange — must be in English"
-   **hint_pt**: "My trip is just vacation."
-   **hint_en**: "My trip is just vacation."
-   **example_pass**: My trip is just vacation. | I'm here on vacation. | It's a work exchange.
+   **hint_pt**: "It's just vacation."
+   **hint_en**: "It's just vacation."
+   **example_pass**: It's just vacation. | I'm here on vacation. | It's a work exchange.
    **example_fail**: Yes (no purpose) | Turismo (Portuguese) | I want to live in America (risky answer)
 
 2. **id**: 2
@@ -180,7 +180,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **hint_pt**: "With my family."
    **hint_en**: "With my family."
    **example_pass**: With my family. | Alone. | I'm traveling with a friend.
-   **example_fail**: Family (bare word, accepted only with 'with') | Com a família (Portuguese) | Yes (no answer)
+   **example_fail**: Com a família (Portuguese) | Yes (no answer) | Family (bare word)
 
 3. **id**: 3
    **label_pt**: "Agradecer o treino"
@@ -196,7 +196,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 **Script** (referencial, 6 turnos):
 
 1. **Igorfina**: "Hi! Let's practice for the visa interview. First question: what's the purpose of your trip?"
-2. **Student**: "My trip is just vacation."
+2. **Student**: "It's just vacation."
 3. **Igorfina**: "Great answer. Are you traveling alone?"
 4. **Student**: "With my family."
 5. **Igorfina**: "Perfect. That's it for today!"
@@ -464,7 +464,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **hint_pt**: "At a hotel in Manhattan."
    **hint_en**: "At a hotel in Manhattan."
    **example_pass**: At a hotel in Manhattan. | I'm staying at a hotel. | At my friend's house.
-   **example_fail**: Hotel (bare word, accepted only with 'at'/'in') | Num hotel (Portuguese) | Yes (no place)
+   **example_fail**: Num hotel (Portuguese) | Yes (no place) | Hotel (bare word)
 
 **Closing cue**: Igorfina fecha com "All right. Enjoy your stay!" quando obj_2 bater.
 
@@ -510,11 +510,11 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 3. **id**: 3
    **label_pt**: "Agradecer a carona"
-   **label_en**: "Thank him for the ride"
-   **hidden_prompt**: "user thanks him: 'thank you', 'thanks', 'thanks for the ride', 'thank you so much' — must be in English"
-   **hint_pt**: "Thanks for the ride!"
-   **hint_en**: "Thanks for the ride!"
-   **example_pass**: Thanks for the ride! | Thank you so much! | Thanks, my friend!
+   **label_en**: "Thank him for the offer"
+   **hidden_prompt**: "user thanks him: 'thank you', 'thanks', 'thanks, my friend', 'thank you so much' — must be in English"
+   **hint_pt**: "Thank you so much!"
+   **hint_en**: "Thank you so much!"
+   **example_pass**: Thank you so much! | Thanks, my friend! | Thanks a lot!
    **example_fail**: OK (no thanks) | Valeu (Portuguese) | See you (no thanks)
 
 **Closing cue**: Igorfina encerra com "No problem! See you at the airport, my friend!" quando obj_3 bater.
@@ -526,7 +526,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 3. **Igorfina**: "Nice! And where are you staying?"
 4. **Student**: "At a hotel near the beach."
 5. **Igorfina**: "Perfect. I can pick you up at the airport."
-6. **Student**: "Thanks for the ride!"
+6. **Student**: "Thank you so much!"
 7. **Igorfina**: "No problem! See you at the airport, my friend!"
 
 ---

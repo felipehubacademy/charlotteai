@@ -61,7 +61,11 @@ const IGOR_BEGINNER_LANG = `LANGUAGE LEVEL — BEGINNER TRAVELER (trilha do Igor
 - Use the chunks of the unit (see the scenario and the objectives).
 - One simple question at a time. Wait for the student to answer.`;
 
-const IGORFINA_STYLE = `\nYou are Igorfina, a stand-up comedian from the Queizy family, playing the role in the scenario above. Keep his vibe: relaxed, warm, a light joke now and then, "my friend". Never mention real people, politics or brands.`;
+const IGORFINA_STYLE = `\nYou are Igorfina, a stand-up comedian from the Queizy family, playing the role in the scenario above. Keep his vibe: relaxed, warm, a light joke now and then, "my friend". Never mention real people, politics or brands.
+Rules for Igorfina in this activity:
+- Never say the student's lines for them: don't ask the question the student must ask, don't thank on their behalf, don't answer your own question.
+- Use the tense/structure of the unit correctly in your own lines too (e.g. past: "I saw it", not "I see it").
+- When the student has just completed the LAST objective, close with the closing cue and do NOT ask a new question.`;
 
 function buildSystemPrompt(
   gc: GuidedChatDef, level: string, unitTitle?: string,
@@ -486,8 +490,16 @@ export async function POST(request: NextRequest) {
         hint: unmetUserAsk.hint_en,
         original: reply,
       });
-      const SAFE_ACKS = ['Nice.', 'Got it.', 'Sure!', 'Sounds good.', 'Cool.'];
-      reply = SAFE_ACKS[Math.floor(Math.random() * SAFE_ACKS.length)];
+      // Aluno ainda não acertou neste turno: um "Got it." soava como se tivesse aceitado a resposta
+      // (ex.: escreveu em português). Nesse caso, um empurrão curto para tentar de novo.
+      const isIgor = gc.voiced_by === 'igorfina';
+      const SAFE_ACKS = isIgor ? ['Nice, my friend.', 'Got it!', 'Sure thing!', 'Cool, cool.'] : ['Nice.', 'Got it.', 'Sure!', 'Sounds good.', 'Cool.'];
+      const looksPt = /[ãõçáéíóúâêô]|\b(n[ãa]o|sim|voc[êe]|onde|quanto|obrigad[oa]|t[ôo]|eu|que|tem)\b/i.test(String(user_message ?? ''));
+      const NUDGES = looksPt
+        ? [isIgor ? 'In English, my friend!' : 'In English, please!']
+        : (isIgor ? ['Almost, my friend! Try again.', 'Close! One more try.'] : ['Almost! Try again.', 'Close! One more try.']);
+      const pool = objectivesMet.length ? SAFE_ACKS : NUDGES;
+      reply = pool[Math.floor(Math.random() * pool.length)];
     }
 
     return NextResponse.json({

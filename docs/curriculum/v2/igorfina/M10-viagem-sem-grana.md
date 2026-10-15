@@ -285,7 +285,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **hidden_prompt**: "user asks for the cheapest way: 'what's the cheapest way to get to Brooklyn?', 'what's the cheapest way?' — must be in English"
    **hint_pt**: "What's the cheapest way to get to Brooklyn?"
    **hint_en**: "What's the cheapest way to get to Brooklyn?"
-   **example_pass**: What's the cheapest way to get to Brooklyn? | What's the cheapest way? | How can I go cheap?
+   **example_pass**: What's the cheapest way to get to Brooklyn? | What's the cheapest way? | How can I get there cheap?
    **example_fail**: Cheap (bare word) | Qual o mais barato? (Portuguese) | Brooklyn (no question)
 
 2. **id**: 2
@@ -743,7 +743,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **Explanation**: Revisão do M01: "Thank you so much!". Para fechar a viagem com educação.
 
 10. **read_answer**
-    **Passage**: "Igor: My friend, you did it! Ten lessons. Now: think in English, let the words come out, watch it again and repeat. See you next trip!"
+    **Passage**: "Igor: My friend, you did it! The whole manual! Now: think in English, let the words come out, watch it again and repeat. See you next trip!"
     **Question**: Quais são os três conselhos finais do Igor? Escreva o primeiro (em inglês).
     **Answer**: Think in English
     **Explanation**: "Think in English, let the words come out, watch it again and repeat": pense em inglês, deixe as palavras saírem, assista de novo e repita. O fechamento do curso do Igor.
@@ -819,7 +819,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 **Persona**: Igorfina
 **Persona outfit**: `igorfina_casual`
 **Intro (em PT)**: "É a despedida do manual. Responda o Igorfina com tudo o que aprendeu."
-**Opening message**: "So, my friend... ten lessons! How do you feel now?"
+**Opening message**: "So, my friend... the whole manual! How do you feel now?"
 
 **Sub-objectives** (3 objetivos):
 
@@ -835,10 +835,10 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 2. **id**: 2
    **label_pt**: "Dizer a lição favorita"
    **label_en**: "Say your favorite lesson"
-   **hidden_prompt**: "user names a favorite lesson/topic: 'my favorite was the slang', 'the best lesson was the gym', 'I loved the president, ha' — must be in English"
+   **hidden_prompt**: "user names a favorite lesson/topic: 'my favorite was the slang', 'the best lesson was the gym', 'the immigration lesson was the best' — must be in English"
    **hint_pt**: "My favorite was the slang lesson!"
    **hint_en**: "My favorite was the slang lesson!"
-   **example_pass**: My favorite was the slang lesson! | The best lesson was the gym. | I loved the president, ha!
+   **example_pass**: My favorite was the slang lesson! | The best lesson was the gym. | The immigration lesson was the best!
    **example_fail**: Gírias (Portuguese) | All (too vague) | Yes (no answer)
 
 3. **id**: 3
@@ -854,7 +854,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 **Script** (referencial, 6 turnos):
 
-1. **Igorfina**: "So, my friend... ten lessons! How do you feel now?"
+1. **Igorfina**: "So, my friend... the whole manual! How do you feel now?"
 2. **Student**: "I feel great! I'm not scared anymore."
 3. **Igorfina**: "That's the goal! Favorite lesson?"
 4. **Student**: "My favorite was the slang lesson!"

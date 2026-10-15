@@ -604,7 +604,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 **Persona**: Igorfina
 **Persona outfit**: `igorfina_casual`
 **Time budget**: 90s
-**Opening line**: "Man, the bus didn't come and the store was closed. What a day, huh?"
+**Opening line**: "Damn, man! The bus ain't coming and the store was closed. That's BS, huh?"
 
 **Sub-objectives** (2 objetivos):
 
@@ -661,7 +661,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 2. **id**: 2
    **label_pt**: "Dizer a versão segura de 'That's BS'"
-   **label_en**: "Say the safe version"
+   **label_en**: "Say the safe version of 'That's BS'"
    **hidden_prompt**: "user gives a safe version of 'that's BS': 'that's not true', 'that's a lie', 'no way, that's not true' — must be in English; repeating 'BS' does NOT count"
    **hint_pt**: "That's not true."
    **hint_en**: "That's not true."
@@ -670,14 +670,14 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 3. **id**: 3
    **label_pt**: "Dizer a versão segura de 'Damn!'"
-   **label_en**: "Say the safe version"
+   **label_en**: "Say the safe version of 'Damn!'"
    **hidden_prompt**: "user gives a safe alternative to 'damn!': 'oh no!', 'oh man!', 'wow!', 'oh my God' — must be in English; repeating 'damn' does NOT count"
    **hint_pt**: "Oh no!"
    **hint_en**: "Oh no!"
    **example_pass**: Oh no! | Oh man! | Wow!
    **example_fail**: Damn! (repeats it) | Droga (Portuguese) | OK (not an exclamation)
 
-**Closing cue**: Igorfina encerra com "100%! You understand the streets and you speak like a gentleman, ha!" quando obj_3 bater.
+**Closing cue**: Igorfina encerra com "100%! You understand the streets and you speak like a pro, ha!" quando obj_3 bater.
 
 **Script** (referencial, 6 turnos):
 
@@ -687,7 +687,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 4. **Student**: "That's not true."
 5. **Igorfina**: "Perfect. Last one: something safe instead of 'damn!'?"
 6. **Student**: "Oh no!"
-7. **Igorfina**: "100%! You understand the streets and you speak like a gentleman, ha!"
+7. **Igorfina**: "100%! You understand the streets and you speak like a pro, ha!"
 
 ---
 

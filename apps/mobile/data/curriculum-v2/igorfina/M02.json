@@ -9,8 +9,8 @@
   "connects_to": "M01 (As 11 palavras que salvam) e M03 (Passado, presente e futuro do jeito fácil).",
   "module_chunks": [
     "What's the purpose of your trip?",
-    "My trip is business.",
-    "My trip is just vacation.",
+    "It's a business trip.",
+    "It's just vacation.",
     "It's a work exchange.",
     "I'm here on vacation.",
     "I'm here for work.",
@@ -66,7 +66,7 @@
             "a vacation trip"
           ],
           "answer": "vacation",
-          "explanation": "Nos Estados Unidos se diz \"vacation\" (férias), no singular. \"My trip is just vacation\" ou \"I'm here on vacation\"."
+          "explanation": "Nos Estados Unidos se diz \"vacation\" (férias), no singular. \"It's just vacation\" ou \"I'm here on vacation\"."
         },
         {
           "type": "word_bank",
@@ -94,10 +94,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "My _____ is business.",
+          "sentence": "It's a business _____.",
           "hint": "Viagem",
           "answer": "trip",
-          "explanation": "\"Trip\" é a viagem em si. \"My trip is business\" responde direto ao \"purpose of your trip\"."
+          "explanation": "\"Trip\" é a viagem em si. \"It's a business trip\" responde direto ao \"purpose of your trip\"."
         },
         {
           "type": "fill_gap",
@@ -134,10 +134,10 @@
         },
         {
           "type": "read_answer",
-          "passage": "Officer: Good morning. What's the purpose of your trip? Igor: My trip is just vacation. Officer: OK. Welcome to the United States.",
+          "passage": "Officer: Good morning. What's the purpose of your trip? Igor: It's just vacation. Officer: OK. Welcome to the United States.",
           "question": "Qual foi o motivo da viagem do Igor? (responda em inglês com uma palavra)",
           "answer": "vacation",
-          "explanation": "Ele respondeu \"My trip is just vacation\": férias. Curto, simples e o oficial liberou."
+          "explanation": "Ele respondeu \"It's just vacation\": férias. Curto, simples e o oficial liberou."
         }
       ],
       "listening_speaking": [
@@ -146,7 +146,7 @@
           "context": "a pergunta do oficial (para reconhecer)"
         },
         {
-          "text": "My trip is just vacation, officer.",
+          "text": "It's just vacation, officer.",
           "context": "responder que é turismo"
         },
         {
@@ -175,10 +175,10 @@
             "label_pt": "Dizer o motivo da viagem",
             "label_en": "Say why you're traveling",
             "hidden_prompt": "user states the purpose: vacation/holiday/tourism/business/work/exchange, e.g. 'my trip is vacation', 'I'm here on vacation', 'business' — must be in English",
-            "hint_pt": "My trip is just vacation.",
-            "hint_en": "My trip is just vacation.",
+            "hint_pt": "It's just vacation.",
+            "hint_en": "It's just vacation.",
             "examples_pass": [
-              "My trip is just vacation.",
+              "It's just vacation.",
               "I'm here on vacation.",
               "Business."
             ],
@@ -208,7 +208,7 @@
           }
         ],
         "closing_cue": "Igorfina fecha com \"Thank you. Welcome to the United States. Enjoy your stay!\" quando obj_2 bater.",
-        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"My trip is just vacation.\"\n2. **Igorfina**: \"OK. Your passport, please?\"\n3. **Student**: ~\"Here is my passport.\"\n4. **Igorfina**: \"Thank you. Welcome to the United States. Enjoy your stay!\"",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"It's just vacation.\"\n2. **Igorfina**: \"OK. Your passport, please?\"\n3. **Student**: ~\"Here is my passport.\"\n4. **Igorfina**: \"Thank you. Welcome to the United States. Enjoy your stay!\"",
         "evaluation_focus": [
           "Resposta curta com a palavra-chave (vacation, business, work)",
           "\"Here is my passport\" com pronúncia clara"
@@ -227,10 +227,10 @@
             "label_pt": "Dizer o motivo da viagem",
             "label_en": "Say the purpose of your trip",
             "hidden_prompt": "user states the purpose: vacation/holiday/tourism/business/work/exchange — must be in English",
-            "hint_pt": "My trip is just vacation.",
-            "hint_en": "My trip is just vacation.",
+            "hint_pt": "It's just vacation.",
+            "hint_en": "It's just vacation.",
             "examples_pass": [
-              "My trip is just vacation.",
+              "It's just vacation.",
               "I'm here on vacation.",
               "It's a work exchange."
             ],
@@ -253,9 +253,9 @@
               "I'm traveling with a friend."
             ],
             "examples_fail": [
-              "Family (bare word, accepted only with 'with')",
               "Com a família (Portuguese)",
-              "Yes (no answer)"
+              "Yes (no answer)",
+              "Family (bare word)"
             ]
           },
           {
@@ -278,7 +278,7 @@
           }
         ],
         "closing_cue": "Igorfina encerra com \"Perfect! Short and true, that's the secret. Good luck!\" quando obj_3 bater.",
-        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Hi! Let's practice for the visa interview. First question: what's the purpose of your trip?\"\n2. **Student**: \"My trip is just vacation.\"\n3. **Igorfina**: \"Great answer. Are you traveling alone?\"\n4. **Student**: \"With my family.\"\n5. **Igorfina**: \"Perfect. That's it for today!\"\n6. **Student**: \"Thank you so much!\"\n7. **Igorfina**: \"Perfect! Short and true, that's the secret. Good luck!\"\n\n---"
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Hi! Let's practice for the visa interview. First question: what's the purpose of your trip?\"\n2. **Student**: \"It's just vacation.\"\n3. **Igorfina**: \"Great answer. Are you traveling alone?\"\n4. **Student**: \"With my family.\"\n5. **Igorfina**: \"Perfect. That's it for today!\"\n6. **Student**: \"Thank you so much!\"\n7. **Igorfina**: \"Perfect! Short and true, that's the secret. Good luck!\"\n\n---"
       }
     },
     {
@@ -685,9 +685,9 @@
               "At my friend's house."
             ],
             "examples_fail": [
-              "Hotel (bare word, accepted only with 'at'/'in')",
               "Num hotel (Portuguese)",
-              "Yes (no place)"
+              "Yes (no place)",
+              "Hotel (bare word)"
             ]
           }
         ],
@@ -745,14 +745,14 @@
           {
             "id": 3,
             "label_pt": "Agradecer a carona",
-            "label_en": "Thank him for the ride",
-            "hidden_prompt": "user thanks him: 'thank you', 'thanks', 'thanks for the ride', 'thank you so much' — must be in English",
-            "hint_pt": "Thanks for the ride!",
-            "hint_en": "Thanks for the ride!",
+            "label_en": "Thank him for the offer",
+            "hidden_prompt": "user thanks him: 'thank you', 'thanks', 'thanks, my friend', 'thank you so much' — must be in English",
+            "hint_pt": "Thank you so much!",
+            "hint_en": "Thank you so much!",
             "examples_pass": [
-              "Thanks for the ride!",
               "Thank you so much!",
-              "Thanks, my friend!"
+              "Thanks, my friend!",
+              "Thanks a lot!"
             ],
             "examples_fail": [
               "OK (no thanks)",
@@ -762,7 +762,7 @@
           }
         ],
         "closing_cue": "Igorfina encerra com \"No problem! See you at the airport, my friend!\" quando obj_3 bater.",
-        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Yo! You're coming to Miami! How long are you staying?\"\n2. **Student**: \"For two weeks.\"\n3. **Igorfina**: \"Nice! And where are you staying?\"\n4. **Student**: \"At a hotel near the beach.\"\n5. **Igorfina**: \"Perfect. I can pick you up at the airport.\"\n6. **Student**: \"Thanks for the ride!\"\n7. **Igorfina**: \"No problem! See you at the airport, my friend!\"\n\n---"
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Yo! You're coming to Miami! How long are you staying?\"\n2. **Student**: \"For two weeks.\"\n3. **Igorfina**: \"Nice! And where are you staying?\"\n4. **Student**: \"At a hotel near the beach.\"\n5. **Igorfina**: \"Perfect. I can pick you up at the airport.\"\n6. **Student**: \"Thank you so much!\"\n7. **Igorfina**: \"No problem! See you at the airport, my friend!\"\n\n---"
       }
     },
     {

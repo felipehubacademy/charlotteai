@@ -1359,7 +1359,7 @@ export default function LearnSessionScreen() {
               </AppText>
             </View>
           )}
-          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '100%', textAlign: 'center' }} numberOfLines={1}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '100%', textAlign: 'center' }} numberOfLines={2}>
             {topicTitle}
           </AppText>
           {!!tenseTag && !params.reviewId && (

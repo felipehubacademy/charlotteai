@@ -334,9 +334,9 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **label_pt**: "Sugerir perguntar ao funcionário"
    **label_en**: "Suggest asking a clerk"
    **hidden_prompt**: "user suggests asking: 'ask the clerk where the bread is', 'ask: where can I find the bread?' — must be in English"
-   **hint_pt**: "Ask: where can I find the bread?"
-   **hint_en**: "Ask: where can I find the bread?"
-   **example_pass**: Ask: where can I find the bread? | Ask the clerk where the bread is. | Ask someone, where is the bread?
+   **hint_pt**: "Ask the clerk where the bread is."
+   **hint_en**: "Ask the clerk where the bread is."
+   **example_pass**: Ask the clerk where the bread is. | Ask someone where the bread is. | Ask: where can I find the bread?
    **example_fail**: Pergunta pra alguém (Portuguese) | Bread (bare word) | I don't know (no suggestion)
 
 3. **id**: 3
@@ -355,7 +355,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 1. **Igorfina**: "I'm at the supermarket! What do you need?"
 2. **Student**: "I'd like milk and bread."
 3. **Igorfina**: "OK, milk is here. I can't find the bread!"
-4. **Student**: "Ask: where can I find the bread?"
+4. **Student**: "Ask the clerk where the bread is."
 5. **Igorfina**: "Good idea, I'll ask the clerk."
 6. **Student**: "Thanks, my friend!"
 7. **Igorfina**: "Aisle three, found it! Breakfast is on me tomorrow!"
@@ -470,7 +470,7 @@ Igorfina fala no estilo do astro do basquete (imitação). Aluno repete; a pron�
    **example_pass**: How much is it? | How much? | How much do I owe you?
    **example_fail**: Quanto é? (Portuguese) | Money (bare word) | OK (no question)
 
-**Closing cue**: Igorfina fecha com "Twenty-five bucks, champ. Championship haircut, you locked in!" quando obj_3 bater.
+**Closing cue**: Igorfina fecha com "Twenty-five bucks, champ. Championship haircut, you're locked in!" quando obj_3 bater.
 
 **Suggested flow** (referencial, 6 turnos):
 
@@ -479,7 +479,7 @@ Igorfina fala no estilo do astro do basquete (imitação). Aluno repete; a pron�
 3. **Student**: ~"Low on the sides, not much on the top."
 4. **Igorfina**: "Clean. Done! Look at you, ready for the finals."
 5. **Student**: ~"How much is it?"
-6. **Igorfina**: "Twenty-five bucks, champ. Championship haircut, you locked in!"
+6. **Igorfina**: "Twenty-five bucks, champ. Championship haircut, you're locked in!"
 
 **Evaluation focus**:
 - "I'd like a haircut" e a descrição "on the sides / on the top"
@@ -614,7 +614,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 **Persona**: Igorfina
 **Persona outfit**: `igorfina_casual`
 **Time budget**: 90s
-**Opening line**: "Hey! I love New York caps! Best prices on the street!"
+**Opening line**: "Hey! New York caps! Best prices on the street!"
 
 **Sub-objectives** (2 objetivos):
 
@@ -679,9 +679,9 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **example_fail**: Quanto eu te devo? (Portuguese) | Pay (bare word) | OK (no question)
 
 3. **id**: 3
-   **label_pt**: "Perguntar se pode pagar pelo app"
-   **label_en**: "Ask to pay by app or card"
-   **hidden_prompt**: "user asks about payment method: 'can I pay by card?', 'can I send it by app?', 'can I pay you with Venmo?' — must be in English"
+   **label_pt**: "Perguntar como pagar"
+   **label_en**: "Ask how to pay"
+   **hidden_prompt**: "user asks about payment method: 'can I pay by card?', 'can I send it by app?', 'can I pay you later?' — must be in English"
    **hint_pt**: "Can I pay by card?"
    **hint_en**: "Can I pay by card?"
    **example_pass**: Can I pay by card? | Can I send it by app? | Can I pay you later?
