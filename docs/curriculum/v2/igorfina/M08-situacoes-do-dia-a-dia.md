@@ -362,7 +362,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 ---
 
-## Unit F38 — Na barbearia (com o astro do basquete)
+## Unit F38 — Na barbearia
 
 > **Sub-CEFR**: A1 | **Grammar focus**: Pedir corte de cabelo: I'd like a haircut / low on the sides / not much on the top / just a trim | **Markers**: [denso] | **Tense**: EXPRESSÕES
 > **Real-life context**: Numa barbearia de bairro, o barbeiro (o Igorfina imitando um astro do basquete) quer deixar você "pronto para o jogo".

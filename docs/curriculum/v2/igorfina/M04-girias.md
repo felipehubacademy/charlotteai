@@ -201,7 +201,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 ---
 
-## Unit F17 — Bro, give me a hand (com o astro do basquete)
+## Unit F17 — Bro, give me a hand
 
 > **Sub-CEFR**: A1 | **Grammar focus**: Gírias de amizade e pedido informal: bro / give me a hand / my bad / no worries | **Markers**: [denso] | **Tense**: EXPRESSÕES
 > **Real-life context**: Na quadra de basquete do parque, você pede ajuda e conversa com o pessoal como amigo.
@@ -691,7 +691,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 ---
 
-## Unit F20 — Conversa de quadra: juntando as gírias (com o astro do basquete)
+## Unit F20 — Conversa de quadra: juntando as gírias
 
 > **Sub-CEFR**: A1 | **Grammar focus**: Revisão do módulo: for real / no way / bro / give me a hand / my bad / no worries / let's go | **Markers**: [review] | **Tense**: EXPRESSÕES
 > **Real-life context**: Você assiste a um jogo com o Igorfina (imitando o astro do basquete) e conversa como um nativo.

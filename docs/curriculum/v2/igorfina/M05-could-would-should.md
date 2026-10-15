@@ -362,7 +362,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 ---
 
-## Unit F23 — I would love... I'd rather... (com o presidente)
+## Unit F23 — I would love... I'd rather...
 
 > **Sub-CEFR**: A1 | **Grammar focus**: Desejo e preferência: I would love to + verbo / I'd like + coisa / I'd rather + verbo | **Markers**: [denso] | **Tense**: EXPRESSÕES · would
 > **Real-life context**: Num jantar de gala, o Igorfina imita um presidente exagerado oferecendo tudo "o melhor do mundo". Você diz o que gostaria e o que prefere.

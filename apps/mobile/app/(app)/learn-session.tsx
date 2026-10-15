@@ -20,7 +20,7 @@ import * as SecureStore from 'expo-secure-store';
 import * as Haptics from '@/lib/hapticsGated';
 import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
-import { extraTrack } from '@/lib/tracks';
+import { extraTrack, unitImpression as impressionOfUnit } from '@/lib/tracks';
 import { getModule } from '@/lib/curriculum-v2/loader';
 import { characterInfo } from '@/lib/characters';
 import { TrackHostReaction } from '@/components/trail/TrackHostReaction';
@@ -433,7 +433,7 @@ export default function LearnSessionScreen() {
   const hostTrack    = extraTrack(level);
   // Tópico com imitação (persona_outfit igorfina_president/hoops): o L&S sai na voz da imitação.
   const unitImpression = isV2 && hostTrack
-    ? getModule(level as any, params.moduleId!)?.units.find(u => u.id === params.unitId)?.roleplay?.persona_outfit?.match(/^igorfina_(president|hoops)$/)?.[1]
+    ? impressionOfUnit(getModule(level as any, params.moduleId!)?.units.find(u => u.id === params.unitId))
     : undefined;
   // Quem fala na lição: a Charlotte, ou o anfitrião da trilha extra (ex.: Igorfina).
   const hostName     = hostTrack ? characterInfo(hostTrack.character).name : 'Charlotte';

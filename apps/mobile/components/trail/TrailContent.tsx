@@ -26,7 +26,10 @@ import * as SecureStore from 'expo-secure-store';
 import { useAuth } from '@/hooks/useAuth';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { LEVEL_ACCENT } from '@/lib/levelColors';
-import { extraTrack } from '@/lib/tracks';
+import { extraTrack, unitImpression } from '@/lib/tracks';
+import { ImpressionTag } from '@/components/trail/ImpressionTag';
+import { LEVEL_ACCENT_BG } from '@/lib/levelColors';
+import type { CharacterId, ImpressionId } from '@/lib/characters';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function a(hex: string, alpha: number): string {
@@ -95,6 +98,7 @@ interface ModuleData {
   pct:            number;
   state:          'done' | 'active' | 'locked';
   avgScore:       number | null; // média dos scores das lessons concluídas
+  impression?:    ImpressionId;  // trilha do Igorfina: tópico com imitação (selo no cartão)
 }
 
 // ── Score colors (lógica da marca: abaixo da meta = queizy, passou = crazy) ──
@@ -275,8 +279,10 @@ function LessonRow({
 
 // ── Module card ───────────────────────────────────────────────────────────────
 function ModuleCard({
-  data, accent, expanded, onToggle, onStartLesson, isPt, isCurrentModule, onRef, onLayoutY,
+  data, accent, expanded, onToggle, onStartLesson, isPt, isCurrentModule, onRef, onLayoutY, host, tagBg,
 }: {
+  host?:          CharacterId;   // anfitrião da trilha extra (para o selo de imitação)
+  tagBg?:         string;
   data:           ModuleData;
   accent:         string;
   expanded:       boolean;
@@ -339,6 +345,10 @@ function ModuleCard({
               }}>
               {data.title}
             </AppText>
+            {host && data.impression ? (
+              <ImpressionTag character={host} impression={data.impression} isPt={isPt}
+                color={accent} bg={tagBg ?? accent + '1A'} />
+            ) : null}
           </View>
 
           {!isLocked && (
@@ -440,6 +450,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
           _v2ModuleTitle:  m.title,
           _v2PrevUnitId:   prevUnitId,
           _v2PrevModuleId: prevModuleId,
+          _impression:     unitImpression(u),
           topics: (['grammar', 'speaking', 'roleplay', 'chat'] as const).map(act => ({
             title:        labels[act],
             _v2ModuleId:  m.id,
@@ -457,6 +468,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
     _v2ModuleTitle?: string;
     _v2PrevUnitId?: string;
     _v2PrevModuleId?: string;
+    _impression?: ImpressionId;
     topics: Array<{ title: string; _v2ModuleId?: string; _v2UnitId?: string; _v2Activity?: NodeType }>;
   }>;
 
@@ -616,7 +628,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
         : null;
 
       return {
-        idx: mIdx, title: mod.title, lessons: fixed,
+        idx: mIdx, title: mod.title, lessons: fixed, impression: mod._impression,
         completedCount, totalCount, pct, state, avgScore,
       };
     });
@@ -785,6 +797,8 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
             <ModuleCard
               data={m}
               accent={accent}
+              host={track?.character}
+              tagBg={LEVEL_ACCENT_BG[level]}
               expanded={expandedIdx === i}
               onToggle={() => setExpandedIdx(k => k === i ? null : i)}
               onStartLesson={handleStartLesson}

@@ -196,7 +196,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 ---
 
-## Unit F27 — The best, the worst (com o presidente)
+## Unit F27 — The best, the worst
 
 > **Sub-CEFR**: A1 | **Grammar focus**: Irregulares: good → better → the best; bad → worse → the worst | **Markers**: [denso] | **Tense**: PRESENTE · superlativo
 > **Real-life context**: O Igorfina imita um presidente exagerado que acha tudo "o melhor do mundo". Você entra no jogo comparando e elegendo o melhor e o pior.
@@ -359,7 +359,7 @@ Igorfina fala no estilo do presidente (imitação). Aluno repete; a pronúncia �
 
 ---
 
-## Unit F28 — More expensive, the most famous (com o presidente)
+## Unit F28 — More expensive, the most famous
 
 > **Sub-CEFR**: A1 | **Grammar focus**: Adjetivos longos: more ... than / the most ... | **Markers**: [denso] | **Tense**: PRESENTE · comparativo e superlativo
 > **Real-life context**: Numa loja chique, o Igorfina imita um presidente exagerado mostrando "o relógio mais caro do mundo". Você compara preços e fama.
@@ -687,7 +687,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 ---
 
-## Unit F30 — O melhor hotel da cidade: juntando tudo (com o presidente)
+## Unit F30 — O melhor hotel da cidade: juntando tudo
 
 > **Sub-CEFR**: A1 | **Grammar focus**: Revisão: -er than / more ... than / less ... than / the best / the worst / the most / the farthest | **Markers**: [review] | **Tense**: PRESENTE · comparativo e superlativo
 > **Real-life context**: O Igorfina imita um presidente exagerado que é dono de dois hotéis e quer que você escolha. Compare tudo e decida.

@@ -15,7 +15,8 @@ import { TrailContent } from '@/components/trail/TrailContent';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 import { useTheme } from '@/lib/theme';
-import { extraTrack, EXTRA_TRACKS } from '@/lib/tracks';
+import { extraTrack, EXTRA_TRACKS, unitImpression } from '@/lib/tracks';
+import { ImpressionTag } from '@/components/trail/ImpressionTag';
 import type { TrailLevel } from '@/data/curriculum';
 
 export default function TrackScreen() {
@@ -26,7 +27,9 @@ export default function TrackScreen() {
   const insets = useSafeAreaInsets();
   const level = track.id as TrailLevel;
   const isPt = systemIsPt;
-  const tasteTitle = getModule(track.id, track.tasteUnit.moduleId)?.units.find(u => u.id === track.tasteUnit.unitId)?.title;
+  const tasteUnit  = getModule(track.id, track.tasteUnit.moduleId)?.units.find(u => u.id === track.tasteUnit.unitId);
+  const tasteTitle = tasteUnit?.title;
+  const tasteImpression = unitImpression(tasteUnit);
   const accent = LEVEL_ACCENT[track.id];
   const startTaste = () => router.push({
     pathname: '/(app)/learn-session',
@@ -53,6 +56,9 @@ export default function TrackScreen() {
                   </AppText>
                 </View>
                 <AppText style={{ fontSize: 16, fontWeight: '800', color: T.textPrimary, marginTop: 3 }}>{tasteTitle}</AppText>
+                {tasteImpression ? (
+                  <ImpressionTag character={track.character} impression={tasteImpression} isPt={isPt} color={accent} bg="#FFFFFF" />
+                ) : null}
               </View>
             </View>
             <TouchableOpacity activeOpacity={0.85} onPress={startTaste} accessibilityRole="button"

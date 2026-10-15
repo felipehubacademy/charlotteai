@@ -198,7 +198,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 ---
 
-## Unit F42 — Three sets of eight reps (com o astro do basquete)
+## Unit F42 — Three sets of eight reps
 
 > **Sub-CEFR**: A1 | **Grammar focus**: Séries e repetições: sets / reps / How many...? / one more rep | **Markers**: [denso] [qform] | **Tense**: EXPRESSÕES
 > **Real-life context**: O Igorfina, imitando um astro do basquete, é seu parceiro de treino e conta as séries com muita energia.
@@ -524,7 +524,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 ---
 
-## Unit F44 — Bench press, squat, push e pull (com o astro do basquete)
+## Unit F44 — Bench press, squat, push e pull
 
 > **Sub-CEFR**: A1 | **Grammar focus**: Nomes dos exercícios + push / pull + pedir o aparelho: Are you using this? | **Markers**: [denso] [qform] | **Tense**: PRESENTE · continuous
 > **Real-life context**: A academia está cheia. Você precisa dividir o aparelho e o Igorfina, imitando o astro do basquete, explica os exercícios.

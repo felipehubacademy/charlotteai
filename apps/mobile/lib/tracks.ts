@@ -8,7 +8,7 @@
 // --level=<pasta>, acrescente o id em Level (curriculum-v2/types.ts) e uma entrada aqui.
 
 import type { Level } from '@/lib/curriculum-v2/types';
-import type { CharacterId } from '@/lib/characters';
+import type { CharacterId, ImpressionId } from '@/lib/characters';
 
 export interface ExtraTrack {
   id:          Level;           // nível do curriculum v2 (ex.: 'Igorfina')
@@ -52,4 +52,9 @@ export function isExtraTrack(level: string | null | undefined): boolean {
 /** Trilhas que este aluno vê (as em beta só com a chave). */
 export function visibleTracks(betaFeatures: string[] | null | undefined): ExtraTrack[] {
   return EXTRA_TRACKS.filter(t => !t.betaFlag || (betaFeatures ?? []).includes(t.betaFlag));
+}
+
+/** Imitação do tópico (persona_outfit igorfina_president / igorfina_hoops), ou undefined. */
+export function unitImpression(unit: { roleplay?: { persona_outfit?: string } | null } | null | undefined): ImpressionId | undefined {
+  return unit?.roleplay?.persona_outfit?.match(/^igorfina_(president|hoops)$/)?.[1] as ImpressionId | undefined;
 }
