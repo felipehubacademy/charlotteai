@@ -20,6 +20,8 @@ import * as SecureStore from 'expo-secure-store';
 import * as Haptics from '@/lib/hapticsGated';
 import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
+import { extraTrack } from '@/lib/tracks';
+import { TrackHostReaction } from '@/components/trail/TrackHostReaction';
 import { systemIsPt } from '@/lib/systemLang';
 import { checkGrammarAnswer } from '@/lib/grammarAnswer';
 import { scheduleReviews, markReviewDone, rescheduleReview } from '@/lib/spacedRepetition';
@@ -423,6 +425,7 @@ export default function LearnSessionScreen() {
   const showCheering = currentStep?.kind === 'grammar' && gStatus === 'submitted' && isCorrect === true;
   const showError    = currentStep?.kind === 'grammar' && gStatus === 'submitted' && isCorrect === false;
   const charlotteSrc = showCheering ? cheerSrc : showError ? errorSrc : idleSrc;
+  const hostTrack    = extraTrack(level);
 
   // ── Explain error ────────────────────────────────────────────────────────────
   const fetchExplainError = useCallback(async () => {
@@ -1421,20 +1424,26 @@ export default function LearnSessionScreen() {
                   WebP com alpha real — sem crop hack. */}
               {(() => { const CHAR_H = winH >= 920 ? 196 : winH >= 780 ? 112 : 88; const CHAR_W = Math.round(CHAR_H * 110 / 196); return (
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: winH >= 920 ? 18 : 10 }}>
-                <View style={{ width: CHAR_W, alignItems: 'center' }}>
+                <View style={{ width: hostTrack ? Math.max(CHAR_W, Math.min(96, CHAR_H)) + 8 : CHAR_W, alignItems: 'center' }}>
+                  {hostTrack ? (
+                    // Trilha extra: o anfitrião (ex.: Igorfina) reage no lugar da Charlotte.
+                    <TrackHostReaction character={hostTrack.character} trackId={hostTrack.id} size={Math.max(CHAR_W, Math.min(96, CHAR_H))}
+                      mood={showCheering ? 'cheer' : showError ? 'error' : 'idle'} />
+                  ) : (
                   <Image
                     source={charlotteSrc}
                     style={{ width: CHAR_W, height: CHAR_H }}
                     contentFit="contain"
                     transition={150}
                   />
-                  {/* Sombra elíptica abaixo dos pés */}
-                  <View style={{
+                  )}
+                  {/* Sombra elíptica abaixo dos pés (só a Charlotte de corpo inteiro) */}
+                  {!hostTrack && <View style={{
                     width: Math.round(CHAR_W * 0.73), height: 10, marginTop: -2,
                     borderRadius: 60,
                     backgroundColor: 'rgba(22,19,31,0.16)',
                     transform: [{ scaleY: 0.4 }],
-                  }} />
+                  }} />}
                 </View>
 
                 {/* Right col: passage + sentence/question */}

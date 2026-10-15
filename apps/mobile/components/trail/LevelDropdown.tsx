@@ -16,7 +16,6 @@ import { LEVEL_ACCENT } from '@/lib/levelColors';
 import { QueizyWave } from '@/components/ui/QueizyWave';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { listModules } from '@/lib/curriculum-v2/loader';
-import { useAuth } from '@/hooks/useAuth';
 
 // Progresso do nível em miniatura (onda queizy → crazy + %). Montado só com o
 // menu aberto, então as consultas acontecem apenas quando o aluno abre o seletor.
@@ -47,8 +46,6 @@ const LEVEL_SHORT: Record<Level, string> = {
 const LEVEL_COLOR = LEVEL_ACCENT;
 
 const LEVELS: Level[] = ['Novice', 'Inter', 'Advanced'];
-// Trilha do Igorfina (Manual do F#did@): só para contas com a chave beta 'igorfina_trail'.
-export const IGORFINA_TRAIL_FLAG = 'igorfina_trail';
 
 const C = {
   card:     '#FFFFFF',
@@ -77,8 +74,6 @@ interface Props {
 const LEVEL_ORDER: Record<Level, number> = { Novice: 0, Inter: 1, Advanced: 2, Igorfina: 0 };
 
 export function LevelDropdown({ selectedLevel, currentLevel, onSelect, userId }: Props) {
-  const { profile } = useAuth();
-  const levels: Level[] = profile?.beta_features?.includes(IGORFINA_TRAIL_FLAG) ? [...LEVELS, 'Igorfina'] : LEVELS;
   const [open, setOpen]         = useState(false);
   const [anchor, setAnchor]     = useState<{ x: number; y: number; w: number; h: number } | null>(null);
   const [lockedToast, setLockedToast] = useState<Level | null>(null);
@@ -169,7 +164,7 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect, userId }:
                       borderWidth:     1,
                       borderColor:     C.border,
                     }, shadow as any]}>
-                    {levels.map((lvl, i) => {
+                    {LEVELS.map((lvl, i) => {
                       const isLocked = LEVEL_ORDER[lvl] > LEVEL_ORDER[currentLevel];
                       const isActive = lvl === selectedLevel;
                       const color    = LEVEL_COLOR[lvl];

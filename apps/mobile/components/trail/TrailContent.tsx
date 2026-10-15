@@ -26,6 +26,7 @@ import * as SecureStore from 'expo-secure-store';
 import { useAuth } from '@/hooks/useAuth';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { LEVEL_ACCENT } from '@/lib/levelColors';
+import { extraTrack } from '@/lib/tracks';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function a(hex: string, alpha: number): string {
@@ -403,7 +404,8 @@ interface TrailContentProps {
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY, onTrailFinished, useV2 }: TrailContentProps) {
-  const isPt    = level === 'Novice';
+  const track   = extraTrack(level);
+  const isPt    = level === 'Novice' || !!track; // trilhas extras: mesmo público do Novice
   const accent  = LEVEL_COLOR[level];
 
   // v2: cada UNIT vira um card. Dentro: 4 rows fixas, uma por atividade.
@@ -557,9 +559,12 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
         if (useV2 && v2Activity && topic._v2ModuleId && topic._v2UnitId) {
           const row = v2Progress.get(topic._v2ModuleId, topic._v2UnitId, v2Activity);
           complete    = !isPreview && !!row?.completed;
+          // Degustação numa trilha extra: a unidade grátis abre como se fosse a primeira.
+          const isTasteUnit = !!track && isTaster
+            && track.tasteUnit.moduleId === topic._v2ModuleId && track.tasteUnit.unitId === topic._v2UnitId;
           locked      = isPreview || !v2Progress.isActivityUnlocked(
                           topic._v2ModuleId, topic._v2UnitId, v2Activity,
-                          mod._v2PrevUnitId, mod._v2PrevModuleId,
+                          isTasteUnit ? undefined : mod._v2PrevUnitId, isTasteUnit ? undefined : mod._v2PrevModuleId,
                         );
           lessonScore = isPreview ? null : (typeof row?.score === 'number' ? row.score : null);
         } else {
@@ -639,7 +644,9 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
   // Só com a Home em foco: a trilha fica montada por baixo do exercício e não pode abrir o
   // paywall por cima da tela "Missão concluída"; abre quando o aluno toca em Continuar.
   const isFocused = useIsFocused();
-  const tasteDone = isTaster && useV2 && moduleData[0]?.state === 'done';
+  const tasteDone = isTaster && useV2 && (track
+    ? v2Progress.isUnitComplete(track.tasteUnit.moduleId, track.tasteUnit.unitId)
+    : moduleData[0]?.state === 'done');
   useEffect(() => {
     if (!tasteDone || !isFocused) return;
     const key = `taste_paywall_${level}`;
@@ -654,8 +661,10 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
   }, [tasteDone, isFocused, level, openPaywall]);
 
   const handleStartLesson = useCallback((lesson: Lesson) => {
+    // Trilha extra na degustação: só a unidade grátis; o resto (até com cadeado) abre o paywall.
+    if (isTaster && track && !(lesson.v2ModuleId === track.tasteUnit.moduleId && lesson.v2UnitId === track.tasteUnit.unitId)) { openPaywall(); return; }
     if (lesson.state === 'locked' || !lesson.hasContent) return;
-    if (isTaster && lesson.moduleIdx > 0) { openPaywall(); return; }
+    if (isTaster && !track && lesson.moduleIdx > 0) { openPaywall(); return; }
     if (lesson.isIntro) {
       router.push({
         pathname: '/(app)/learn-intro',
@@ -697,7 +706,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
         params: { level, moduleIndex: String(lesson.moduleIdx), topicIndex: String(lesson.topicIdx) },
       });
     }
-  }, [level, isTaster, openPaywall]);
+  }, [level, isTaster, openPaywall, track]);
 
   // Ref pra scroll-to-active module
   const activeRef = useRef<View | null>(null);

@@ -1,0 +1,52 @@
+// lib/tracks.ts — trilhas extras da Família Queizy (trilhas de influenciadores).
+//
+// Ficam fora do seletor de nível: aparecem na faixa "Trilhas da Família Queizy" da Início e
+// abrem numa tela própria (/(app)/track). Cada trilha é um "nível" do curriculum v2 (pasta
+// própria em data/curriculum-v2), com o progresso em learn_history_v2 pelo id da trilha.
+//
+// Para publicar uma trilha nova: escreva o conteúdo (docs/curriculum/v2/<pasta>/), compile com
+// --level=<pasta>, acrescente o id em Level (curriculum-v2/types.ts) e uma entrada aqui.
+
+import type { Level } from '@/lib/curriculum-v2/types';
+import type { CharacterId } from '@/lib/characters';
+
+export interface ExtraTrack {
+  id:          Level;           // nível do curriculum v2 (ex.: 'Igorfina')
+  character:   CharacterId;     // avatar e voz
+  titlePt:     string;
+  titleEn:     string;
+  hostPt:      string;          // "com o Igorfina"
+  hostEn:      string;
+  /** Só aparece para quem tem esta chave em beta_features (enquanto não lança para todos). */
+  betaFlag?:   string;
+  /** Degustação: a única unidade aberta para quem ainda não assina. A que dá o "uau". */
+  tasteUnit:   { moduleId: string; unitId: string };
+}
+
+export const EXTRA_TRACKS: ExtraTrack[] = [
+  {
+    id: 'Igorfina',
+    character: 'igorfina',
+    titlePt: 'Manual do F#did@',
+    titleEn: 'Survival Manual',
+    hostPt: 'com o Igorfina',
+    hostEn: 'with Igorfina',
+    betaFlag: 'igorfina_trail',
+    // Provisório: a entrevista completa da imigração. Trocar pela unidade com imitação do
+    // bloco 4 quando ela existir (o "uau" da trilha).
+    tasteUnit: { moduleId: 'M02', unitId: 'F10' },
+  },
+];
+
+export function extraTrack(level: string | null | undefined): ExtraTrack | null {
+  return EXTRA_TRACKS.find(t => t.id === level) ?? null;
+}
+
+export function isExtraTrack(level: string | null | undefined): boolean {
+  return !!extraTrack(level);
+}
+
+/** Trilhas que este aluno vê (as em beta só com a chave). */
+export function visibleTracks(betaFeatures: string[] | null | undefined): ExtraTrack[] {
+  return EXTRA_TRACKS.filter(t => !t.betaFlag || (betaFeatures ?? []).includes(t.betaFlag));
+}

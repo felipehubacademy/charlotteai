@@ -21,6 +21,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { UserLevel } from '@/lib/levelConfig';
 import type { TrailLevel } from '@/data/curriculum';
+import { ExtraTracksRow } from '@/components/trail/ExtraTracksStrip';
 import { useTheme } from '@/lib/theme';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { identifyUser, track } from '@/lib/analytics';
@@ -559,6 +560,8 @@ export default function HomeTab() {
             useV2
             flush
           />
+          {/* Trilhas extras da Família Queizy (influenciadores): linha fina no próprio cartão. */}
+          <ExtraTracksRow />
         </View>
       </View>
 
