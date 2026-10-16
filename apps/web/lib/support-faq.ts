@@ -141,6 +141,10 @@ Se o código não for aceito, confira a grafia e se ele está valendo (cupons de
 `Sim. A assinatura fica na sua conta do Queizy: entrando com o mesmo e-mail e senha, ela vale no iPhone e no Android, seja qual for a loja em que você assinou (e também vale a assinatura feita pelo site).
 Cancelar, trocar de plano ou pedir reembolso continua sendo na loja onde você assinou: assinatura da App Store, pela Apple (num iPhone, iPad ou Mac, em Ajustes > seu nome > Assinaturas, ou em reportaproblem.apple.com para reembolso); assinatura do Google Play, pelo Google Play (também pelo navegador, em play.google.com/store/account/subscriptions, com a mesma conta Google da compra).
 Se você tocar em Perfil > Assinatura > Gerenciar assinatura no aparelho da outra loja, o app mostra um aviso com esse caminho.` },
+  { section: 'Planos e assinatura', question: 'Assinei pelo site com o e-mail errado. E agora?', answer:
+`Logo depois do pagamento, a tela de confirmação do site mostra o e-mail da compra. Se ele estiver errado, toque em "Corrigir", escreva o e-mail certo e salve: mandamos para ele o link para criar a senha.
+Se você já saiu dessa tela, fale com o suporte (suporte@queizy.com ou WhatsApp) mandando o e-mail certo, o e-mail que foi digitado na compra (mesmo errado), o nome completo usado no pagamento e, se pagou no cartão, só os 4 últimos dígitos dele. Conferimos a compra e corrigimos na hora.
+A correção vale para contas criadas pela compra que ainda não foram usadas no app, em até 30 dias. Se o e-mail certo já tiver uma conta no Queizy, um atendente junta as duas.` },
   { section: 'Planos e assinatura', question: 'Como cancelar a assinatura?', answer:
 `O cancelamento é feito na loja (a Apple e o Google gerenciam a assinatura):
 - iPhone: Ajustes > seu nome > Assinaturas > Queizy (pode aparecer como Charlotte em versões antigas) > Cancelar assinatura.

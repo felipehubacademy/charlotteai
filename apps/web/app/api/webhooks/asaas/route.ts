@@ -11,8 +11,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { recordRevenueEvent } from '@/lib/revenue';
 import { getCustomer, paidPaymentsOf, updateSubscriptionValue, WEB_PRODUCT, WEB_ANNUAL_PIX, type WebPlan } from '@/lib/asaas';
-import { sendEmail } from '@/lib/microsoft-graph-email-service';
-import { webSubscriptionWelcomeTemplate } from '@/lib/email-templates';
+import { sendWebWelcome } from '@/lib/web-welcome';
 
 export const dynamic = 'force-dynamic';
 const DAY = 86400000;
@@ -79,14 +78,7 @@ async function grantAccess(userId: string, plan: WebPlan, until: Date, method?: 
 }
 
 async function sendWelcome(userId: string, plan: WebPlan, trialDays: number): Promise<void> {
-  const supabase = getSupabaseAdmin();
-  const { data: u } = await supabase.from('charlotte_users').select('email, name').eq('id', userId).maybeSingle();
-  const user = u as { email: string; name: string | null } | null;
-  if (!user?.email) return;
-  const { data: link } = await supabase.auth.admin.generateLink({ type: 'recovery', email: user.email, options: { redirectTo: 'https://queizy.com/open' } });
-  const passwordUrl = link?.properties?.action_link ?? 'https://queizy.com/open';
-  const { subject, html } = webSubscriptionWelcomeTemplate({ name: user.name, email: user.email, plan, trialDays, passwordUrl });
-  await sendEmail({ to: user.email, subject, html }).catch(() => false);
+  await sendWebWelcome(userId, plan, trialDays);
 }
 
 async function revenue(type: 'INITIAL_PURCHASE' | 'RENEWAL' | 'REFUND', row: Row, p: Payment): Promise<void> {

@@ -179,13 +179,16 @@ export async function POST(req: NextRequest) {
     const checkout = await createCheckout({ method: method!, value, trialDays, userId: u.id, customerId });
     await supabase.from('asaas_checkouts').insert({
       id: checkout.id, user_id: u.id, plan, method, value_brl: value, trial_days: trialDays, asaas_customer_id: customerId,
-      affiliate_code: a?.code ?? null, status: 'created',
+      affiliate_code: a?.code ?? null, status: 'created', created_account: isNewAccount,
       coupon_code: couponWins ? coupon!.code : null, discount_pct: discountPct,
       // Cupom com duração (ex.: só a 1ª cobrança): o webhook volta a assinatura para este valor
       // depois de N cobranças. Volta ao preço com o desconto do afiliado, se houver (esse é permanente).
       ...(couponWins && recurring && coupon!.cycles ? { coupon_cycles: coupon!.cycles, full_value_brl: priceForMethod(method!, affPct) } : {}),
     } as never);
-    return NextResponse.json({ url: checkout.link, trialDays, value, isNewAccount });
+    const res = NextResponse.json({ url: checkout.link, trialDays, value, isNewAccount });
+    // A tela de sucesso usa este cookie para mostrar o e-mail e oferecer "Não é esse? Corrigir".
+    res.cookies.set('qz_checkout', checkout.id, { httpOnly: true, secure: true, sameSite: 'lax', path: '/', maxAge: 2 * 86400 });
+    return res;
   } catch (e) {
     console.error('[checkout/asaas] create failed:', e instanceof AsaasError ? e.body : e);
     return NextResponse.json({ error: e instanceof AsaasError ? e.message : 'Não foi possível abrir o pagamento agora.' }, { status: 502 });

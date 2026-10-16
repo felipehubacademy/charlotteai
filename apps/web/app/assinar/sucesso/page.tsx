@@ -3,6 +3,7 @@ import Image from 'next/image';
 import PublicHeader from '@/components/PublicHeader';
 import PublicFooter from '@/components/PublicFooter';
 import StoreCTA from '@/components/StoreCTA';
+import CheckoutEmailCheck from '@/components/CheckoutEmailCheck';
 
 export const metadata: Metadata = {
   title: 'Bem-vindo à Família Queizy',
@@ -49,6 +50,8 @@ export default function AssinarSucessoPage() {
           Agora é com você: conversa de verdade, correção na hora e zero vergonha de errar.
           Do queizy ao crazy, a gente vai junto até o seu inglês sair natural.
         </p>
+
+        <CheckoutEmailCheck />
 
         <div className="ok-steps">
           {STEPS.map((s, i) => (

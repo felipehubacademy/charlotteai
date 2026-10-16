@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
     const userText = `${m.subject}\n\n${m.bodyText}`.trim().slice(0, 4000);
     await logMessage({ conversationId: convId, direction: 'in', author: 'user', body: userText, graphMessageId: m.id });
 
-    const decision = await runSupportAgent({ userText, context });
+    const decision = await runSupportAgent({ userText, context, contactEmail: m.from });
 
     if (decision.autoSend) {
       await graphSendEmail({ to: m.from, subject: `Re: ${m.subject}`, html: replyHtml(decision.reply) });

@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import { captureAffiliateFromUrl, storedAffiliate } from '@/lib/affiliateTracking';
 import StoreCTA from '@/components/StoreCTA';
+import { suggestEmailCorrection, isDisposableEmail } from '@/lib/email-validation';
 
 const INK = '#14121A';
 const MID = '#5C5668';
@@ -28,6 +29,9 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
   const [aff, setAff] = useState<string | null>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [confirmedEmail, setConfirmedEmail] = useState(false);
+  const emailSuggestion = email.includes('@') ? suggestEmailCorrection(email) : null;
+  useEffect(() => { setConfirmedEmail(false); }, [email]);
   const [phone, setPhone] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -102,7 +106,15 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    setError(null); setBusy(true);
+    setError(null);
+    // E-mail com cara de erro de digitação: pede confirmação antes (o acesso vai para ele).
+    if (emailSuggestion && !confirmedEmail) {
+      setConfirmedEmail(true);
+      setError(`Confira o e-mail: você quis dizer ${emailSuggestion}? Se o seu é ${email.trim()} mesmo, toque em continuar de novo.`);
+      return;
+    }
+    if (isDisposableEmail(email)) { setError('Use um e-mail que você acessa: é com ele que você entra no app.'); return; }
+    setBusy(true);
     try {
       const r = await fetch('/api/checkout/asaas', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -256,6 +268,13 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
         <input id="wc-name" value={name} onChange={e => setName(e.target.value)} autoComplete="name" required />
         <label htmlFor="wc-email">E-mail (é com ele que você entra no app)</label>
         <input id="wc-email" type="email" value={email} onChange={e => setEmail(e.target.value)} autoComplete="email" inputMode="email" required />
+        {emailSuggestion && (
+          <p style={{ fontSize: 13.5, color: MID, marginTop: 6 }}>
+            Você quis dizer <b style={{ color: INK }}>{emailSuggestion}</b>?{' '}
+            <button type="button" onClick={() => setEmail(emailSuggestion)}
+              style={{ background: 'none', border: 0, padding: 0, color: '#6B4BFF', fontWeight: 700, cursor: 'pointer', fontSize: 13.5 }}>Usar este</button>
+          </p>
+        )}
         <label htmlFor="wc-phone">Celular (opcional)</label>
         <input id="wc-phone" value={phone} onChange={e => setPhone(maskPhone(e.target.value))} autoComplete="tel" inputMode="tel" />
 
