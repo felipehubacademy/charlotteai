@@ -161,13 +161,25 @@ export async function resolveSupportEmailFix(input: SupportFixInput): Promise<Su
       ? { status: 'escalate', reason: `Nenhuma compra recente com o e-mail ${wrong} (ou parecido) sem uso no app.` }
       : { status: 'need_info', missing: ['identity'] };
   }
-  if (candidates.length > 1) return { status: 'escalate', reason: 'Mais de uma compra parecida: precisa de um atendente para escolher.' };
-
-  const ck = candidates[0];
+  // Mais de uma parecida: fica com as de mesmo nome antes do @ (só o domínio errado, o erro mais comum)
+  // ou com o e-mail exato que a pessoa disse ter digitado.
+  const local = (e: string) => normEmail(e).split('@')[0];
+  let pool = candidates;
+  if (pool.length > 1) {
+    const exact = pool.filter(c => { const e = normEmail(byId.get(c.user_id)?.email); return (wrong && e === wrong) || local(e) === local(correct); });
+    if (exact.length) pool = exact;
+  }
   if (!input.fullName) return { status: 'need_info', missing: ['identity'] };
-  const customer = ck.asaas_customer_id ? await getCustomer(ck.asaas_customer_id).catch(() => null) : null;
-  const buyerName = customer?.name ?? byId.get(ck.user_id)?.name ?? null;
-  if (!namesMatch(buyerName, input.fullName)) return { status: 'escalate', reason: 'O nome informado não bate com o do pagamento.' };
+  // Nome do pagamento (cliente do Asaas; sem ele, o nome da conta).
+  const buyerNameOf = async (c: Checkout) => {
+    const customer = c.asaas_customer_id ? await getCustomer(c.asaas_customer_id).catch(() => null) : null;
+    return customer?.name ?? byId.get(c.user_id)?.name ?? null;
+  };
+  const named: Checkout[] = [];
+  for (const c of pool) if (namesMatch(await buyerNameOf(c), input.fullName)) named.push(c);
+  if (!named.length) return { status: 'escalate', reason: 'O nome informado não bate com o de nenhuma compra parecida.' };
+  if (named.length > 1) return { status: 'escalate', reason: 'Mais de uma compra parecida com o mesmo nome: precisa de um atendente para escolher.' };
+  const ck = named[0];
   if (ck.asaas_payment_id) {
     const card = await getPaymentCard(ck.asaas_payment_id).catch(() => null);
     if (card?.last4) {
