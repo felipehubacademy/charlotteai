@@ -10,7 +10,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { recordRevenueEvent } from '@/lib/revenue';
-import { getCustomer, WEB_PRODUCT, WEB_ANNUAL_PIX, type WebPlan } from '@/lib/asaas';
+import { getCustomer, paidPaymentsOf, updateSubscriptionValue, WEB_PRODUCT, WEB_ANNUAL_PIX, type WebPlan } from '@/lib/asaas';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { webSubscriptionWelcomeTemplate } from '@/lib/email-templates';
 
@@ -27,6 +27,21 @@ type Payment = {
 
 function addMonths(d: Date, n: number): Date {
   const r = new Date(d); r.setMonth(r.getMonth() + n); return r;
+}
+
+async function restorePriceIfCouponEnded(checkoutId: string, subscriptionId: string) {
+  const supabase = getSupabaseAdmin();
+  try {
+    const { data } = await supabase.from('asaas_checkouts').select('coupon_cycles, full_value_brl, price_restored_at').eq('id', checkoutId).maybeSingle();
+    const ck = data as { coupon_cycles: number | null; full_value_brl: number | null; price_restored_at: string | null } | null;
+    if (!ck?.coupon_cycles || !ck.full_value_brl || ck.price_restored_at) return;
+    const paid = await paidPaymentsOf(subscriptionId);
+    if (paid < ck.coupon_cycles) return;
+    await updateSubscriptionValue(subscriptionId, Number(ck.full_value_brl));
+    await supabase.from('asaas_checkouts').update({ price_restored_at: new Date().toISOString() } as never).eq('id', checkoutId);
+  } catch (e) {
+    console.error('[asaas webhook] restore price failed:', e);
+  }
 }
 
 async function findRow(p: { checkoutId?: string | null; externalReference?: string | null; subscription?: string | null; customer?: string | null }): Promise<Row | null> {
@@ -158,6 +173,8 @@ export async function POST(req: NextRequest) {
         if (!same) await revenue(count ? 'RENEWAL' : 'INITIAL_PURCHASE', row, p);
         // Boas-vindas na 1ª cobrança sem teste (anual ou mensal sem teste).
         if (!count && !same && !(row.trial_days > 0)) await sendWelcome(row.user_id, row.plan, 0);
+        // Cupom com duração: depois da última cobrança com desconto, as próximas voltam ao preço cheio.
+        if (p.subscription) await restorePriceIfCouponEnded(row.id, p.subscription);
       } else if (event === 'PAYMENT_REFUNDED' || event === 'PAYMENT_CHARGEBACK_REQUESTED' || event === 'PAYMENT_CHARGEBACK_DISPUTE') {
         await revenue('REFUND', row, p);
         await supabase.from('charlotte_users').update({

@@ -166,6 +166,8 @@ export async function POST(req: NextRequest) {
   const neverTried = (!u.subscription_status || u.subscription_status === 'none') && !u.trial_ends_at && !paidBefore;
   const trialDays = methodHasTrial(method!) && neverTried ? WEB_TRIAL_DAYS : 0;
   const value = priceForMethod(method!, discountPct);
+  const couponWins = couponPct > 0 && couponPct >= affPct && !!coupon?.ok;
+  const recurring = method === 'monthly' || method === 'annual';
 
   try {
     // CPF, endereço e cartão ficam na página do Asaas (o checkout dele exige os dados completos
@@ -178,7 +180,10 @@ export async function POST(req: NextRequest) {
     await supabase.from('asaas_checkouts').insert({
       id: checkout.id, user_id: u.id, plan, method, value_brl: value, trial_days: trialDays, asaas_customer_id: customerId,
       affiliate_code: a?.code ?? null, status: 'created',
-      coupon_code: couponPct > 0 && couponPct >= affPct && coupon?.ok ? coupon.code : null, discount_pct: discountPct,
+      coupon_code: couponWins ? coupon!.code : null, discount_pct: discountPct,
+      // Cupom com duração (ex.: só a 1ª cobrança): o webhook volta a assinatura para este valor
+      // depois de N cobranças. Volta ao preço com o desconto do afiliado, se houver (esse é permanente).
+      ...(couponWins && recurring && coupon!.cycles ? { coupon_cycles: coupon!.cycles, full_value_brl: priceForMethod(method!, affPct) } : {}),
     } as never);
     return NextResponse.json({ url: checkout.link, trialDays, value, isNewAccount });
   } catch (e) {

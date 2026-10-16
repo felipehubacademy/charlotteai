@@ -133,9 +133,10 @@ Não há parcelamento: quem prefere pagar aos poucos pode escolher o Mensal.
 Entre no app com o mesmo e-mail informado no site: é nessa conta que o acesso é liberado.` },
   { section: 'Planos e assinatura', question: 'Tenho um cupom ou código de desconto. Onde uso?', answer:
 `Cupons e códigos de desconto, inclusive o código de um parceiro do Queizy, valem só na assinatura pelo site: em queizy.com/assinar, escreva o código no campo de cupom antes de continuar. Quem entra pelo link de um parceiro já encontra o código preenchido.
-Por quanto tempo o desconto vale (só a primeira cobrança ou também as renovações) depende da campanha; se tiver dúvida, um atendente confirma.
+Por quanto tempo o desconto vale depende da campanha: só na primeira cobrança, em algumas cobranças ou em todas. Depois das cobranças com desconto, a assinatura volta sozinha ao preço normal. Se tiver dúvida, um atendente confirma.
+Cupom e desconto de parceiro não se somam: vale o maior.
 Não é possível usar cupom na assinatura pela App Store ou pelo Google Play.
-Se o código não for aceito, confira a grafia e se ele ainda está válido; se continuar, um atendente ajuda.` },
+Se o código não for aceito, confira a grafia e se ele está valendo (cupons de campanha têm data para começar e para terminar); se continuar, um atendente ajuda.` },
   { section: 'Planos e assinatura', question: 'Assinei no iPhone. Funciona no Android (e vice-versa)?', answer:
 `Sim. A assinatura fica na sua conta do Queizy: entrando com o mesmo e-mail e senha, ela vale no iPhone e no Android, seja qual for a loja em que você assinou (e também vale a assinatura feita pelo site).
 Cancelar, trocar de plano ou pedir reembolso continua sendo na loja onde você assinou: assinatura da App Store, pela Apple (num iPhone, iPad ou Mac, em Ajustes > seu nome > Assinaturas, ou em reportaproblem.apple.com para reembolso); assinatura do Google Play, pelo Google Play (também pelo navegador, em play.google.com/store/account/subscriptions, com a mesma conta Google da compra).
