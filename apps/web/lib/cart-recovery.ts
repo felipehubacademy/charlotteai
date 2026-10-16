@@ -18,7 +18,7 @@ export const RECOVERY_COUPON = 'VOLTA';
 type Row = { id: string; user_id: string; plan: 'monthly' | 'annual'; method: string | null; trial_days: number; status: string; created_at: string; recovery_stage: number };
 type User = { id: string; name: string | null; email: string | null; subscription_status: string | null; subscription_expires_at: string | null; is_institutional: boolean | null; marketing_opt_out: boolean | null; email_bounced: boolean | null };
 
-export async function runCartRecovery(opts: { dryRun?: boolean } = {}) {
+export async function runCartRecovery(opts: { dryRun?: boolean; onlyEmail?: string | null } = {}) {
   const supabase = getSupabaseAdmin();
   const now = Date.now();
   const since = new Date(now - MAX_AGE_H * HOUR).toISOString();
@@ -48,6 +48,8 @@ export async function runCartRecovery(opts: { dryRun?: boolean } = {}) {
   let sent = 0;
   for (const r of pending) {
     const u = users.get(r.user_id);
+    // Teste: só a conta indicada (as outras ficam de fora, sem mudar o estado delas).
+    if (opts.onlyEmail && u?.email?.toLowerCase() !== opts.onlyEmail.toLowerCase()) continue;
     const ageH = (now - new Date(r.created_at).getTime()) / HOUR;
     const next = (r.recovery_stage + 1) as 1 | 2 | 3;
     if (ageH < STAGE_AFTER_H[next]) continue;

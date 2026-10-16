@@ -1,5 +1,5 @@
 // /api/cron/cart-recovery — lembretes de carrinho abandonado (lib/cart-recovery).
-// POST { dryRun?: true }   header Authorization: Bearer <CRON_SECRET> ou x-admin-secret.
+// POST { dryRun?: true, onlyEmail?: 'x@y' }  (onlyEmail: teste só com essa conta)   header Authorization: Bearer <CRON_SECRET> ou x-admin-secret.
 // Agendado de hora em hora pelo GitHub Actions (.github/workflows/cart-recovery.yml).
 import { NextRequest, NextResponse } from 'next/server';
 import { runCartRecovery } from '@/lib/cart-recovery';
@@ -16,5 +16,5 @@ function authorized(req: NextRequest): boolean {
 export async function POST(req: NextRequest) {
   if (!authorized(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const body = await req.json().catch(() => ({}));
-  return NextResponse.json(await runCartRecovery({ dryRun: body?.dryRun === true }));
+  return NextResponse.json(await runCartRecovery({ dryRun: body?.dryRun === true, onlyEmail: typeof body?.onlyEmail === 'string' ? body.onlyEmail : null }));
 }
