@@ -31,7 +31,7 @@ interface Form {
 
 type SortKey = 'name' | 'level' | 'created_at' | 'xp' | 'lastActive' | 'topics' | 'streak';
 type FilterKey = 'all' | 'institutional' | 'subscriber' | 'trial' | 'expired' | 'none';
-type ModalMode = 'create' | 'edit' | 'delete' | null;
+type ModalMode = 'create' | 'edit' | 'delete' | 'bulkDelete' | null;
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 const fmtDate = (s: string | null) => {
@@ -147,6 +147,9 @@ export default function AdminUsersPage() {
   const [sortKey, setSortKey]   = useState<SortKey>('created_at');
   const [sortDir, setSortDir]   = useState<'asc' | 'desc'>('desc');
   const [modal, setModal]       = useState<ModalMode>(null);
+  // Seleção para ações em lote (excluir, desativar, reativar).
+  const [checked, setChecked]   = useState<Set<string>>(new Set());
+  const [bulkMsg, setBulkMsg]   = useState<string | null>(null);
   const [selected, setSelected] = useState<User | null>(null);
   const [form, setForm]         = useState<Form>(EMPTY_FORM);
   const [saving, setSaving]     = useState(false);
@@ -325,6 +328,35 @@ export default function AdminUsersPage() {
     finally { setSaving(false); }
   };
 
+  // ── Ações em lote ──────────────────────────────────────────────────────────
+  const toggleCheck = (id: string) => setChecked(prev => { const n = new Set(prev); if (n.has(id)) n.delete(id); else n.add(id); return n; });
+  const pageAllChecked = pageUsers.length > 0 && pageUsers.every(u => checked.has(u.id));
+  const togglePage = () => setChecked(prev => {
+    const n = new Set(prev);
+    if (pageAllChecked) pageUsers.forEach(u => n.delete(u.id)); else pageUsers.forEach(u => n.add(u.id));
+    return n;
+  });
+  const checkedUsers = users.filter(u => checked.has(u.id));
+
+  // Roda a ação conta por conta (a API é por conta) e conta os resultados.
+  const runBulk = async (label: string, call: (u: User) => Promise<Response>) => {
+    setSaving(true); setBulkMsg(null);
+    let ok = 0; const failed: string[] = [];
+    for (const u of checkedUsers) {
+      try { const r = await call(u); if (r.ok) ok++; else failed.push(u.email ?? u.id); }
+      catch { failed.push(u.email ?? u.id); }
+    }
+    setSaving(false); setModal(null); setChecked(new Set());
+    setBulkMsg(`${label}: ${ok} de ${ok + failed.length}.${failed.length ? ` Falharam: ${failed.slice(0, 5).join(', ')}${failed.length > 5 ? '…' : ''}` : ''}`);
+    await fetchData();
+  };
+  const bulkDelete = () => runBulk('Excluídas', u => fetch('/api/admin/users', {
+    method: 'DELETE', headers: { 'x-admin-secret': getSecret(), 'Content-Type': 'application/json' }, body: JSON.stringify({ id: u.id }),
+  }));
+  const bulkActive = (active: boolean) => runBulk(active ? 'Reativadas' : 'Desativadas', u => fetch('/api/admin/users', {
+    method: 'PATCH', headers: { 'x-admin-secret': getSecret(), 'Content-Type': 'application/json' }, body: JSON.stringify({ id: u.id, is_active: active }),
+  }));
+
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <div className="adm-page">
@@ -405,6 +437,31 @@ export default function AdminUsersPage() {
         </div>
       </div>
 
+      {/* Barra de ações em lote */}
+      {(checked.size > 0 || bulkMsg) && (
+        <div style={{ margin: '10px 28px 0', padding: '10px 14px', borderRadius: 12, background: 'var(--s2, #F3F1EC)', display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', fontSize: 13 }}>
+          {checked.size > 0 ? (
+            <>
+              <b style={{ color: 'var(--t1)' }}>{checked.size} selecionada{checked.size !== 1 ? 's' : ''}</b>
+              {checked.size < displayed.length && (
+                <button className="adm-btn-sm ghost" onClick={() => setChecked(new Set(displayed.map(u => u.id)))}>Selecionar os {displayed.length} resultados</button>
+              )}
+              <div style={{ flex: 1 }} />
+              <button className="adm-btn-sm ghost" disabled={saving} onClick={() => bulkActive(false)}>Desativar</button>
+              <button className="adm-btn-sm ghost" disabled={saving} onClick={() => bulkActive(true)}>Reativar</button>
+              {canDelete && <button className="adm-btn-sm danger" disabled={saving} onClick={() => setModal('bulkDelete')}><Trash2 size={12} /> Excluir</button>}
+              <button className="adm-btn-sm ghost" onClick={() => setChecked(new Set())}>Limpar</button>
+            </>
+          ) : (
+            <>
+              <span style={{ color: 'var(--t2)' }}>{bulkMsg}</span>
+              <div style={{ flex: 1 }} />
+              <button className="adm-btn-sm ghost" onClick={() => setBulkMsg(null)}><X size={12} /></button>
+            </>
+          )}
+        </div>
+      )}
+
       {/* Table */}
       <div style={{ padding: '14px 28px 28px' }}>
         <div className="adm-panel">
@@ -423,6 +480,9 @@ export default function AdminUsersPage() {
               <table className="adm-table">
                 <thead>
                   <tr>
+                    <th style={{ width: 34 }}>
+                      <input type="checkbox" aria-label="Selecionar a página" checked={pageAllChecked} onChange={togglePage} />
+                    </th>
                     <SortTh label="Nome / Email" sk="name"       sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
                     <SortTh label="Nível"         sk="level"      sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
                     <th>Status</th>
@@ -437,7 +497,7 @@ export default function AdminUsersPage() {
                 <tbody>
                   {pageUsers.length === 0 ? (
                     <tr>
-                      <td colSpan={9}>
+                      <td colSpan={10}>
                         <div className="adm-empty">
                           <div className="adm-empty-title">Nenhum usuário encontrado</div>
                           
@@ -448,7 +508,10 @@ export default function AdminUsersPage() {
                     const sm = u.is_institutional ? STATUS_META.institutional : STATUS_META[u.subscription_status];
                     const lm = u.charlotte_level ? LEVEL_META[u.charlotte_level] : null;
                     return (
-                      <tr key={u.id}>
+                      <tr key={u.id} style={checked.has(u.id) ? { background: 'var(--s2, #F3F1EC)' } : undefined}>
+                        <td>
+                          <input type="checkbox" aria-label={`Selecionar ${u.email ?? u.name ?? ''}`} checked={checked.has(u.id)} onChange={() => toggleCheck(u.id)} />
+                        </td>
                         <td>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                             <div style={{ fontWeight: 600, fontSize: 13, color: 'var(--t1)' }}>
@@ -541,7 +604,7 @@ export default function AdminUsersPage() {
             {/* Header */}
             <div className="adm-modal-hdr">
               <div className="adm-modal-title">
-                {modal === 'create' ? 'Novo Usuário' : modal === 'edit' ? 'Editar Usuário' : 'Excluir Usuário'}
+                {modal === 'create' ? 'Novo Usuário' : modal === 'edit' ? 'Editar Usuário' : modal === 'bulkDelete' ? `Excluir ${checkedUsers.length} usuários` : 'Excluir Usuário'}
               </div>
               <button onClick={closeModal} className="adm-btn-sm ghost" style={{ padding: '4px 6px' }}>
                 <X size={15} />
@@ -564,6 +627,30 @@ export default function AdminUsersPage() {
                   <button onClick={closeModal} className="adm-btn-sm ghost">Cancelar</button>
                   <button onClick={handleDelete} disabled={saving} className="adm-btn-sm danger">
                     {saving ? 'Excluindo...' : 'Excluir definitivamente'}
+                  </button>
+                </div>
+              </>
+            )}
+
+            {/* Exclusão em lote */}
+            {modal === 'bulkDelete' && (
+              <>
+                <div className="adm-modal-body">
+                  <div className="adm-alert crit">
+                    <TriangleAlert size={14} style={{ flexShrink: 0 }} />
+                    <div>
+                      <div style={{ fontWeight: 700, marginBottom: 4 }}>Ação irreversível</div>
+                      <div>Excluir <strong>{checkedUsers.length}</strong> conta{checkedUsers.length !== 1 ? 's' : ''}? Todos os dados delas serão perdidos.</div>
+                      <div style={{ marginTop: 8, fontSize: 12, fontFamily: 'var(--font-mono)', maxHeight: 140, overflowY: 'auto' }}>
+                        {checkedUsers.map(u => <div key={u.id}>{u.email ?? u.name ?? u.id}</div>)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="adm-modal-footer">
+                  <button onClick={closeModal} className="adm-btn-sm ghost">Cancelar</button>
+                  <button onClick={bulkDelete} disabled={saving} className="adm-btn-sm danger">
+                    {saving ? 'Excluindo...' : `Excluir ${checkedUsers.length} definitivamente`}
                   </button>
                 </div>
               </>
