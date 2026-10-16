@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { captureAffiliateFromUrl, storedAffiliate } from '@/lib/affiliateTracking';
 import StoreCTA from '@/components/StoreCTA';
 import { suggestEmailCorrection, isDisposableEmail } from '@/lib/email-validation';
+import { track } from '@/lib/meta-pixel';
 
 const INK = '#14121A';
 const MID = '#5C5668';
@@ -32,6 +33,8 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
   const [confirmedEmail, setConfirmedEmail] = useState(false);
   const emailSuggestion = email.includes('@') ? suggestEmailCorrection(email) : null;
   useEffect(() => { setConfirmedEmail(false); }, [email]);
+  // Pixel (só com aceite): abriu a página de assinar.
+  useEffect(() => { track('ViewContent', { content_name: 'assinar' }); }, []);
   const [phone, setPhone] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -122,6 +125,8 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
       });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || !j.url) { setError(j.error ?? 'Não foi possível abrir o pagamento agora.'); setBusy(false); return; }
+      // Pixel (só com aceite): foi para o pagamento.
+      track('InitiateCheckout', { value: j.value, currency: 'BRL', content_name: method }, j.checkoutId ? `ck_${j.checkoutId}_checkout` : undefined);
       window.location.href = j.url;
     } catch {
       setError('Sem conexão. Tente de novo.'); setBusy(false);

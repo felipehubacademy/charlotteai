@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { playUrlWithAffiliate, copyAffiliateForIos, storedAffiliate } from '@/lib/affiliateTracking';
+import { trackCustom } from '@/lib/meta-pixel';
 
 /**
  * StoreCTA — botão que leva pra loja certa baseado no device.
@@ -62,6 +63,7 @@ export default function StoreCTA({ variant, label, className, direct, plan }: Pr
     e.preventDefault();
     // O site recebe só tráfego de fora da loja (influenciador, anúncio, conteúdo): assina pelo site.
     if (!direct) { window.location.href = plan ? `/assinar?plano=${plan}` : '/assinar'; return; }
+    trackCustom('AppStoreClick', { variant });
     // Link de afiliado: o código vai junto para a loja (referrer da Play / área de transferência no iPhone).
     if (platform === 'android') {
       window.open(playUrlWithAffiliate(PLAY_STORE_URL), '_blank');

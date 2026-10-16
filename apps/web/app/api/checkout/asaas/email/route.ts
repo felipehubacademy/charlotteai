@@ -11,12 +11,16 @@ export async function GET(req: NextRequest) {
   const id = req.cookies.get('qz_checkout')?.value;
   if (!id) return NextResponse.json({ email: null, canFix: false });
   const supabase = getSupabaseAdmin();
-  const { data } = await supabase.from('asaas_checkouts').select('user_id, created_account').eq('id', id).maybeSingle();
-  const ck = data as { user_id: string; created_account: boolean | null } | null;
+  const { data } = await supabase.from('asaas_checkouts').select('user_id, created_account, plan, value_brl, trial_days').eq('id', id).maybeSingle();
+  const ck = data as { user_id: string; created_account: boolean | null; plan: string; value_brl: number; trial_days: number } | null;
   if (!ck) return NextResponse.json({ email: null, canFix: false });
   const { data: u } = await supabase.from('charlotte_users').select('email, last_seen_at').eq('id', ck.user_id).maybeSingle();
   const user = u as { email: string | null; last_seen_at: string | null } | null;
-  return NextResponse.json({ email: user?.email ?? null, canFix: ck.created_account === true && !user?.last_seen_at });
+  return NextResponse.json({
+    email: user?.email ?? null, canFix: ck.created_account === true && !user?.last_seen_at,
+    // Para o pixel da tela de sucesso (mesmo event_id do servidor).
+    checkoutId: id, plan: ck.plan, value: Number(ck.value_brl), trialDays: ck.trial_days,
+  });
 }
 
 export async function POST(req: NextRequest) {

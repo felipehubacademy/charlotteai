@@ -12,6 +12,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { recordRevenueEvent } from '@/lib/revenue';
 import { getCustomer, paidPaymentsOf, updateSubscriptionValue, WEB_PRODUCT, WEB_ANNUAL_PIX, type WebPlan } from '@/lib/asaas';
 import { sendWebWelcome } from '@/lib/web-welcome';
+import { sendCapiEvent, type MetaTracking } from '@/lib/meta-capi';
 
 export const dynamic = 'force-dynamic';
 const DAY = 86400000;
@@ -77,6 +78,21 @@ async function grantAccess(userId: string, plan: WebPlan, until: Date, method?: 
   if (error) throw new Error(`grantAccess falhou: ${error.message}`);
 }
 
+// Conversão para a Meta pelo servidor (só com aceite de cookies no checkout). Mesmo event_id do
+// pixel da tela de sucesso: ck_<checkout>_start (teste grátis) e ck_<checkout>_purchase (1ª cobrança).
+async function metaConversion(checkoutId: string, userId: string, event: 'StartTrial' | 'Purchase', value?: number): Promise<void> {
+  const supabase = getSupabaseAdmin();
+  const [{ data: ck }, { data: u }] = await Promise.all([
+    supabase.from('asaas_checkouts').select('meta_tracking').eq('id', checkoutId).maybeSingle(),
+    supabase.from('charlotte_users').select('email').eq('id', userId).maybeSingle(),
+  ]);
+  await sendCapiEvent({
+    event, eventId: `ck_${checkoutId}_${event === 'StartTrial' ? 'start' : 'purchase'}`,
+    email: (u as { email: string | null } | null)?.email ?? null, userId,
+    value, currency: 'BRL', tracking: (ck as { meta_tracking: MetaTracking | null } | null)?.meta_tracking ?? null,
+  }).catch(() => false);
+}
+
 async function sendWelcome(userId: string, plan: WebPlan, trialDays: number): Promise<void> {
   await sendWebWelcome(userId, plan, trialDays);
 }
@@ -122,6 +138,7 @@ export async function POST(req: NextRequest) {
         // Cartão validado e assinatura criada (mensal ou anual): acesso durante o teste (+1 dia para a 1ª cobrança).
         await grantAccess(row.user_id, row.plan, new Date(Date.now() + (row.trial_days + 1) * DAY), row.method);
         await sendWelcome(row.user_id, row.plan, row.trial_days);
+        await metaConversion(row.id, row.user_id, 'StartTrial', 0);
       }
       return NextResponse.json({ ok: true });
     }
@@ -163,6 +180,8 @@ export async function POST(req: NextRequest) {
           .eq('app_user_id', row.user_id).eq('store', 'ASAAS').like('event_id', 'asaas_%').not('event_id', 'like', `%${p.id}`);
         const { count: same } = await supabase.from('revenue_events').select('id', { count: 'exact', head: true }).like('event_id', `asaas_%_${p.id}`);
         if (!same) await revenue(count ? 'RENEWAL' : 'INITIAL_PURCHASE', row, p);
+        // 1ª cobrança paga do aluno: venda para a Meta (renovações não entram).
+        if (!same && !count) await metaConversion(row.id, row.user_id, 'Purchase', Math.abs(Number(p.value) || 0));
         // Boas-vindas na 1ª cobrança sem teste (anual ou mensal sem teste).
         if (!count && !same && !(row.trial_days > 0)) await sendWelcome(row.user_id, row.plan, 0);
         // Cupom com duração: depois da última cobrança com desconto, as próximas voltam ao preço cheio.

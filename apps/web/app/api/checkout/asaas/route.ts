@@ -180,12 +180,19 @@ export async function POST(req: NextRequest) {
     await supabase.from('asaas_checkouts').insert({
       id: checkout.id, user_id: u.id, plan, method, value_brl: value, trial_days: trialDays, asaas_customer_id: customerId,
       affiliate_code: a?.code ?? null, status: 'created', created_account: isNewAccount,
+      // Aceite de cookies + identificadores do navegador: base da conversão enviada pelo servidor.
+      meta_tracking: {
+        consent: req.cookies.get('qz_consent')?.value === 'all',
+        fbp: req.cookies.get('_fbp')?.value ?? null, fbc: req.cookies.get('_fbc')?.value ?? null,
+        ip: (req.headers.get('x-forwarded-for') ?? '').split(',')[0].trim() || null,
+        ua: req.headers.get('user-agent'), url: req.headers.get('referer'),
+      },
       coupon_code: couponWins ? coupon!.code : null, discount_pct: discountPct,
       // Cupom com duração (ex.: só a 1ª cobrança): o webhook volta a assinatura para este valor
       // depois de N cobranças. Volta ao preço com o desconto do afiliado, se houver (esse é permanente).
       ...(couponWins && recurring && coupon!.cycles ? { coupon_cycles: coupon!.cycles, full_value_brl: priceForMethod(method!, affPct) } : {}),
     } as never);
-    const res = NextResponse.json({ url: checkout.link, trialDays, value, isNewAccount });
+    const res = NextResponse.json({ url: checkout.link, trialDays, value, isNewAccount, checkoutId: checkout.id });
     // A tela de sucesso usa este cookie para mostrar o e-mail e oferecer "Não é esse? Corrigir".
     res.cookies.set('qz_checkout', checkout.id, { httpOnly: true, secure: true, sameSite: 'lax', path: '/', maxAge: 2 * 86400 });
     return res;

@@ -3,6 +3,7 @@
 // Só oferece a correção enquanto a conta, criada pela compra, nunca foi usada no app.
 import { useEffect, useState } from 'react';
 import { suggestEmailCorrection } from '@/lib/email-validation';
+import { track } from '@/lib/meta-pixel';
 
 const INK = '#14121A';
 const MID = '#5C5668';
@@ -18,6 +19,11 @@ export default function CheckoutEmailCheck() {
   useEffect(() => {
     fetch('/api/checkout/asaas/email').then(r => r.json()).then(j => {
       setEmail(j.email ?? null); setCanFix(!!j.canFix);
+      // Pixel (só com aceite): começou o teste grátis ou assinou. Mesmo event_id do servidor.
+      if (j.checkoutId) {
+        if (j.trialDays > 0) track('StartTrial', { value: 0, currency: 'BRL', content_name: j.plan }, `ck_${j.checkoutId}_start`);
+        else track('Purchase', { value: j.value, currency: 'BRL', content_name: j.plan }, `ck_${j.checkoutId}_purchase`);
+      }
       // Erro de digitação provável: já abre a correção com a sugestão.
       const s = j.email ? suggestEmailCorrection(j.email) : null;
       if (s && j.canFix) { setEditing(true); setValue(s); }
