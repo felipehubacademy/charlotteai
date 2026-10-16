@@ -14,6 +14,7 @@ export async function sendCapiEvent(input: {
   event: 'StartTrial' | 'Purchase' | 'InitiateCheckout';
   eventId: string; email?: string | null; userId?: string | null;
   value?: number; currency?: string; tracking?: MetaTracking | null;
+  testEventCode?: string; // aba "Testar eventos" do Gestor de Eventos (só para conferir)
 }): Promise<boolean> {
   const token = process.env.META_CAPI_TOKEN;
   if (!token || !input.tracking?.consent) return false;
@@ -33,6 +34,7 @@ export async function sendCapiEvent(input: {
       },
       custom_data: input.value != null ? { value: input.value, currency: input.currency ?? 'BRL' } : undefined,
     }],
+    ...(input.testEventCode ? { test_event_code: input.testEventCode } : {}),
   };
   try {
     const r = await fetch(`https://graph.facebook.com/v21.0/${META_PIXEL_ID}/events?access_token=${encodeURIComponent(token)}`, {
