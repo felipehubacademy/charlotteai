@@ -641,7 +641,7 @@ export default function AdminUsersPage() {
                       { key: 'beta_new_layout',     label: 'Beta: New Layout (Tab Nav)' },
                       { key: 'beta_openai_tts',     label: 'Beta: OpenAI TTS (coral, gpt-4o-mini-tts)' },
                       { key: 'beta_curriculum_v2',  label: 'Beta: Curriculum v2 (new trail content)' },
-                      { key: 'beta_igorfina_trail', label: 'Beta: Trilha do Igorfina (Manual do F#did@)' },
+                      { key: 'beta_igorfina_trail', label: 'Revisão: Trilha do Igorfina toda aberta (só equipe e Igor)' },
                       { key: 'is_admin',            label: 'Admin (OTA + welcome reset)' },
                     ] as { key: keyof Form; label: string }[]).map(({ key, label }) => (
                       <label key={key} style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer', fontSize: 13.5, color: 'var(--t2)' }}>

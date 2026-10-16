@@ -481,9 +481,10 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
   const { cascadeMode, isAccessible } = usePlacementSkips();
   // Degustação (conta nova sem assinatura): o 1º bloco dos 3 níveis fica aberto, inclusive
   // nos níveis ainda não liberados. Os blocos seguintes abrem o paywall.
-  const { isTaster } = useAuth();
-  // Trilha extra em beta: o testador que assina vê todas as unidades abertas (revisão).
-  const v2Cascade = track?.betaAllUnlocked && !isTaster ? 'unlocked' : cascadeMode(level as V2LevelType);
+  const { isTaster, profile } = useAuth();
+  // Revisão (equipe e dono da trilha, chave reviewFlag): todas as unidades abertas. Alunos seguem em ordem.
+  const reviewAll = !!track?.reviewFlag && !isTaster && (profile?.beta_features ?? []).includes(track.reviewFlag);
+  const v2Cascade = reviewAll ? 'unlocked' : cascadeMode(level as V2LevelType);
   // Preview mode: aluno entrou em nivel ainda nao desbloqueado.
   // Tudo aparece lockado (read-only sneak peek do curriculo).
   const { openPaywall } = usePaywallContext();
