@@ -130,12 +130,14 @@ Não é possível usar cupom na assinatura pela App Store ou pelo Google Play.
 Se o código não for aceito, confira a grafia e se ele ainda está válido; se continuar, um atendente ajuda.` },
   { section: 'Planos e assinatura', question: 'Assinei no iPhone. Funciona no Android (e vice-versa)?', answer:
 `Sim. A assinatura fica na sua conta do Queizy: entrando com o mesmo e-mail e senha, ela vale no iPhone e no Android, seja qual for a loja em que você assinou (e também vale a assinatura feita pelo site).
-Cancelar, trocar de plano ou pedir reembolso continua sendo na loja onde você assinou: assinatura da App Store, pela Apple (num iPhone, em Ajustes > seu nome > Assinaturas, ou em reportaproblem.apple.com para reembolso); assinatura do Google Play, pelo Google Play.` },
+Cancelar, trocar de plano ou pedir reembolso continua sendo na loja onde você assinou: assinatura da App Store, pela Apple (num iPhone, iPad ou Mac, em Ajustes > seu nome > Assinaturas, ou em reportaproblem.apple.com para reembolso); assinatura do Google Play, pelo Google Play (também pelo navegador, em play.google.com/store/account/subscriptions, com a mesma conta Google da compra).
+Se você tocar em Perfil > Assinatura > Gerenciar assinatura no aparelho da outra loja, o app mostra um aviso com esse caminho.` },
   { section: 'Planos e assinatura', question: 'Como cancelar a assinatura?', answer:
 `O cancelamento é feito na loja (a Apple e o Google gerenciam a assinatura):
 - iPhone: Ajustes > seu nome > Assinaturas > Queizy (pode aparecer como Charlotte em versões antigas) > Cancelar assinatura.
 - Android: Google Play > foto de perfil > Pagamentos e assinaturas > Assinaturas > Queizy (pode aparecer como Charlotte) > Cancelar.
 - No app: Perfil > Assinatura > Gerenciar assinatura abre essa tela da loja.
+- Assinou numa loja e está usando o app na outra (por exemplo, assinou no iPhone e agora usa um Android)? O Gerenciar assinatura mostra um aviso explicando onde cancelar: assinatura da App Store, num iPhone, iPad ou Mac (Ajustes > seu nome > Assinaturas); assinatura do Google Play, pelo navegador em play.google.com/store/account/subscriptions, com a mesma conta Google da compra.
 - Assinou pelo site (queizy.com/assinar)? Cancele no app em Perfil > Assinatura > Gerenciar assinatura > Cancelar renovação.
 Ao cancelar, o acesso continua até o fim do período já pago.` },
   { section: 'Planos e assinatura', question: 'Como pedir reembolso?', answer:

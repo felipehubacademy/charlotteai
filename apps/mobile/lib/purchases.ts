@@ -219,6 +219,24 @@ export async function openManageSubscriptions(): Promise<{ ok: boolean }> {
   }
 }
 
+// Em qual loja a assinatura ativa foi feita. A assinatura vale pela conta nas duas lojas, mas
+// só dá para cancelar ou trocar de plano na loja da compra: no Android, uma assinatura da App
+// Store não aparece no Google Play (e vice-versa). Fonte: entitlement do RevenueCat; sem ele,
+// o id do produto gravado no perfil (o Play usa "produto:plano-base", a App Store não).
+export type SubscriptionStore = 'app_store' | 'play_store' | 'web' | null;
+export async function subscriptionStore(profileProduct?: string | null): Promise<SubscriptionStore> {
+  if ((profileProduct ?? '').startsWith('web_')) return 'web';
+  try {
+    const info = await Purchases.getCustomerInfo();
+    const store = info.entitlements.active[ENTITLEMENT_ID]?.store as string | undefined;
+    if (store === 'APP_STORE' || store === 'MAC_APP_STORE') return 'app_store';
+    if (store === 'PLAY_STORE') return 'play_store';
+  } catch { /* sem RevenueCat: cai no id do produto */ }
+  const p = profileProduct ?? '';
+  if (!p) return null;
+  return p.includes(':') ? 'play_store' : 'app_store';
+}
+
 // ── Sync to Supabase ──────────────────────────────────────────────────────────
 // Called after purchase/restore and on app foreground — keeps DB in sync com RC.
 // RevenueCat webhook também faz isso server-side, mas este é o sync client-side

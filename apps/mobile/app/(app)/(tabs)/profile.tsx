@@ -30,7 +30,7 @@ import { AppText } from '@/components/ui/Text';
 import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
-import { restorePurchases, openManageSubscriptions, syncSubscriptionToSupabase } from '@/lib/purchases';
+import { restorePurchases, openManageSubscriptions, syncSubscriptionToSupabase, subscriptionStore } from '@/lib/purchases';
 import { WebSubscriptionSheet } from '@/components/subscription/WebSubscriptionSheet';
 import { systemIsPt, appLangPref, setAppLangPref } from '@/lib/systemLang';
 import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
@@ -363,6 +363,30 @@ export default function ProfileTab() {
   const handleManageSubscription = async () => {
     // Assinatura pelo site (Asaas): não passa pela loja; abre a tela do Queizy.
     if ((profile?.subscription_product ?? '').startsWith('web_')) { setWebSubOpen(true); return; }
+    // Assinatura feita na outra loja: a página desta loja viria vazia. Explica onde gerenciar.
+    const store = await subscriptionStore(profile?.subscription_product);
+    if (store === 'app_store' && Platform.OS === 'android') {
+      appAlert(
+        isPt ? 'Assinatura feita pela App Store' : 'Subscribed through the App Store',
+        isPt
+          ? 'Sua assinatura vale aqui no Android, mas só a App Store consegue cancelar ou trocar o plano. Num iPhone, iPad ou Mac: Ajustes > seu nome > Assinaturas > Queizy.'
+          : 'Your subscription works here on Android, but only the App Store can cancel or change it. On an iPhone, iPad or Mac: Settings > your name > Subscriptions > Queizy.',
+      );
+      return;
+    }
+    if (store === 'play_store' && Platform.OS === 'ios') {
+      appAlert(
+        isPt ? 'Assinatura feita pelo Google Play' : 'Subscribed through Google Play',
+        isPt
+          ? 'Sua assinatura vale aqui no iPhone, mas só o Google Play consegue cancelar ou trocar o plano. Dá para fazer pelo navegador, entrando com a mesma conta Google da compra.'
+          : 'Your subscription works here on iPhone, but only Google Play can cancel or change it. You can do it in a browser, signed in with the Google account you used to subscribe.',
+        [
+          { text: isPt ? 'Agora não' : 'Not now', style: 'cancel' },
+          { text: isPt ? 'Abrir no navegador' : 'Open in browser', onPress: () => { Linking.openURL('https://play.google.com/store/account/subscriptions').catch(() => {}); } },
+        ],
+      );
+      return;
+    }
     const r = await openManageSubscriptions();
     if (r.ok) return;
     // Fallback: abrir a pagina de assinaturas da loja direto.
