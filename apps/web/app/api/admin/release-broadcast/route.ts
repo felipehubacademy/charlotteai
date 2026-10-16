@@ -25,15 +25,29 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 // Email do projeto vai por Microsoft Graph (Office 365), o MESMO caminho do
 // reset de senha / signup / welcome. Template no padrao usual do projeto.
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
-import { releaseUpdateTemplate } from '@/lib/email-templates';
+import { releaseUpdateTemplate, familyGrowsTemplate } from '@/lib/email-templates';
 import { unsubscribeUrl } from '@/lib/unsubscribe';
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
-const LOG_TYPE = 'release_update';
 
-const PUSH_TITLE = 'Agora somos Queizy';
-const PUSH_BODY =
-  'O app ganhou nome e cara nova. A Charlotte continua sua tutora. Atualize pela App Store ou Google Play.';
+// Campanhas: { campaign: 'release' } (padrão, "A Charlotte agora é Queizy") ou { campaign: 'family' }
+// ("A Família Queizy está crescendo": chegada do Igorfina e do Manual do F#did@). Cada uma tem o
+// próprio tipo de log, então a guarda de 24h de uma não bloqueia a outra.
+const CAMPAIGNS = {
+  release: {
+    logType: 'release_update',
+    pushTitle: 'Agora somos Queizy',
+    pushBody: 'O app ganhou nome e cara nova. A Charlotte continua sua tutora. Atualize pela App Store ou Google Play.',
+    template: releaseUpdateTemplate,
+  },
+  family: {
+    logType: 'family_grows',
+    pushTitle: 'A Família Queizy cresceu',
+    pushBody: 'O Igorfina chegou com uma trilha só dele, cheia de imitações. Vem conhecer o Manual do F#did@!',
+    template: familyGrowsTemplate,
+  },
+} as const;
+type CampaignId = keyof typeof CAMPAIGNS;
 
 // Login próprio (Bearer) com papel que acessa 'notifications', ou a senha mestra antiga.
 async function checkAuth(req: NextRequest) {
@@ -60,6 +74,11 @@ export async function POST(req: NextRequest) {
   const channels: string[] = Array.isArray(body?.channels) && body.channels.length
     ? body.channels
     : ['push', 'email'];
+  const campaignId: CampaignId = body?.campaign === 'family' ? 'family' : 'release';
+  const campaign = CAMPAIGNS[campaignId];
+  const LOG_TYPE = campaign.logType;
+  const PUSH_TITLE = campaign.pushTitle;
+  const PUSH_BODY = campaign.pushBody;
 
   // ── Diagnostico de email (nao envia em massa) ──────────────────────────────
   // { diag:true }            -> so reporta se a chave/remetente estao configurados
@@ -74,14 +93,14 @@ export async function POST(req: NextRequest) {
       const res = await supabase
         .from('charlotte_users').select('id, name').eq('email', body.to).maybeSingle();
       const u = res.data as { id: string; name: string | null } | null;
-      const tpl = releaseUpdateTemplate({
+      const tpl = campaign.template({
         name: u?.name ?? 'Teste',
         unsubscribeUrl: u?.id ? unsubscribeUrl(u.id) : undefined,
       });
       const ok = await graphSendEmail({ to: body.to, subject: tpl.subject, html: tpl.html });
       test = { ok, unsubUserId: u?.id ?? null };
     }
-    return NextResponse.json({ diag: true, provider, hasCreds, test });
+    return NextResponse.json({ diag: true, campaign: campaignId, provider, hasCreds, test });
   }
 
   // ── TRAVA DURA: qualquer ENVIO real exige { confirm:true } explicito. ───────
@@ -134,6 +153,7 @@ export async function POST(req: NextRequest) {
   if (dryRun) {
     return NextResponse.json({
       dryRun: true,
+      campaign: campaignId,
       totalUsers: rows.length,
       wouldPush: channels.includes('push') ? pushRows.length : 0,
       wouldEmail: channels.includes('email') ? emailRows.length : 0,
@@ -142,7 +162,7 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  const result: Record<string, unknown> = { channels };
+  const result: Record<string, unknown> = { campaign: campaignId, channels };
 
   // ── PUSH (Expo) ──────────────────────────────────────────────────────────
   if (channels.includes('push')) {
@@ -194,7 +214,7 @@ export async function POST(req: NextRequest) {
   if (channels.includes('email')) {
     let sent = 0, errors = 0;
     for (const r of emailRows) {
-      const tpl = releaseUpdateTemplate({ name: r.name, unsubscribeUrl: unsubscribeUrl(r.id) });
+      const tpl = campaign.template({ name: r.name, unsubscribeUrl: unsubscribeUrl(r.id) });
       const ok = await graphSendEmail({ to: r.email!, subject: tpl.subject, html: tpl.html });
       if (ok) sent++; else errors++;
     }

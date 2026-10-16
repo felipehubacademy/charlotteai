@@ -137,6 +137,38 @@ export function releaseUpdateTemplate(opts: { name?: string | null; unsubscribeU
   return { subject, html };
 }
 
+// ── 6b. A Família Queizy cresceu (campanha: chegada do Igorfina e do Manual do F#did@) ──────
+
+export function familyGrowsTemplate(opts: { name?: string | null; unsubscribeUrl?: string }) {
+  const appStore  = 'https://apps.apple.com/app/id6760943273';
+  const playStore = 'https://play.google.com/store/apps/details?id=com.hubacademy.charlotte';
+  const first = (opts.name ?? '').trim().split(/\s+/)[0];
+  const ola = first ? `Olá, ${first}!` : 'Olá!';
+  const subject = 'A Família Queizy está crescendo';
+  const unsubscribe = opts.unsubscribeUrl
+    ? `<p style="margin:12px 0 0;font-size:12px;color:#8A8494;line-height:1.7;">Não quer mais receber novidades? <a href="${opts.unsubscribeUrl}" style="color:#8A8494;text-decoration:underline;">Descadastrar</a>.</p>`
+    : '';
+  const avatar = (src: string, alt: string) =>
+    `<td style="padding:0 6px;" valign="middle"><img src="${src}" alt="${alt}" width="72" height="72" style="display:block;border:0;width:72px;height:72px;border-radius:36px;" /></td>`;
+  const html = base(`
+    <table cellpadding="0" cellspacing="0" style="margin:0 auto 20px;"><tr>
+      ${avatar('https://queizy.com/images/charlotte-avatar.png', 'Charlotte')}
+      ${avatar('https://queizy.com/images/igorfina-avatar.png', 'Igorfina')}
+    </tr></table>
+    ${h1('Chegou gente nova na Família.')}
+    ${p(`${ola}<br>A Charlotte continua sua tutora, mas agora tem companhia: o <strong style="color:#16131F;">Igorfina</strong>, comediante e imitador, entrou para a Família Queizy. E ele chegou com uma trilha só dele.`)}
+    ${features([
+      '<strong style="color:#16131F;">Manual do F#did@</strong>: inglês de sobrevivência para o dia a dia e para viajar. São 10 módulos e 50 tópicos, cada um com Gramática, Listening &amp; Speaking, Role-play e Guided Chat',
+      '<strong style="color:#16131F;">Imitações</strong>: em alguns tópicos ele vira o presidente exagerado ou o astro do basquete do começo ao fim',
+      '<strong style="color:#16131F;">Converse com ele</strong> quando quiser: Practice &gt; Free Chat &gt; Conversar com',
+      'Para abrir a trilha: Perfil &gt; Família Queizy &gt; Igorfina &gt; Ver trilha',
+    ])}
+    ${p('E a Família não para por aí: vem mais gente por aí. Abra o app e venha conhecer.')}
+    ${storeBadges(appStore, playStore)}
+  `, unsubscribe);
+  return { subject, html };
+}
+
 // ── 7. Assinatura pelo site (Asaas) ativa ──────────────────────────────────────
 
 export function webSubscriptionWelcomeTemplate(opts: {
