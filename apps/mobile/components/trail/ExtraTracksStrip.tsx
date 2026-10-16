@@ -1,10 +1,10 @@
 // components/trail/ExtraTracksStrip.tsx — faixa "Trilhas da Família Queizy" na Início.
 // Um cartão por trilha extra (lib/tracks.ts): avatar, nome, com quem é e o progresso.
 // Com uma trilha só, o cartão ocupa a largura toda; com mais, a faixa desliza para o lado.
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { View, ScrollView, TouchableOpacity, Platform, useWindowDimensions } from 'react-native';
-import { router } from 'expo-router';
-import { CaretRight, Gift } from 'phosphor-react-native';
+import { router, useFocusEffect } from 'expo-router';
+import { CaretRight, Gift, X } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import CharacterAvatar from '@/components/ui/CharacterAvatar';
 import { useAuth } from '@/hooks/useAuth';
@@ -14,6 +14,8 @@ import { LEVEL_ACCENT, LEVEL_VIVID, LEVEL_ACCENT_BG } from '@/lib/levelColors';
 import { systemIsPt } from '@/lib/systemLang';
 import { useTheme } from '@/lib/theme';
 import { visibleTracks, type ExtraTrack } from '@/lib/tracks';
+import { CHARACTER_LIST, characterInfo } from '@/lib/characters';
+import { shouldShowFamilyInvite, dismissFamilyInvite } from '@/lib/familyInvite';
 
 const shadow = Platform.select({
   ios:     { shadowColor: 'rgba(22,19,31,0.08)', shadowOpacity: 1, shadowRadius: 12, shadowOffset: { width: 0, height: 3 } },
@@ -98,13 +100,16 @@ export function ExtraTracksStrip({ onLayoutHeight }: { onLayoutHeight?: (h: numb
 /**
  * Versão em linha, dentro do cartão da trilha da Início (sempre visível: a Início rola sozinha
  * até o tópico ativo, então uma faixa acima da trilha ficaria escondida para quem está no meio).
- * Uma trilha: avatar, nome e progresso. Várias: avatares lado a lado (cada toque abre a dela).
+ * Mostra só a trilha de quem o aluno escolheu na Família (quem fala na Início): com várias
+ * trilhas de influenciadores, a Início não vira uma lista. As outras ficam na tela Família.
+ * Com a Charlotte na Início, aparece no lugar o convite para conhecer a Família (FamilyInviteRow).
  */
 export function ExtraTracksRow() {
   const { profile, isTaster } = useAuth();
   const { colors: T } = useTheme();
-  const tracks = visibleTracks(profile?.beta_features);
-  if (!tracks.length) return null;
+  const active = characterInfo(profile?.active_character).id;
+  const tracks = visibleTracks(profile?.beta_features).filter(t => t.character === active);
+  if (!tracks.length) return active === 'charlotte' ? <FamilyInviteRow /> : null;
   const isPt = systemIsPt;
   return (
     <View style={{ borderTopWidth: 1, borderTopColor: T.border, paddingHorizontal: 20, paddingVertical: 10, gap: 8 }}>
@@ -140,6 +145,65 @@ export function ExtraTracksRow() {
           <CaretRight size={16} color={T.textMuted} weight="bold" />
         </TouchableOpacity>
       ))}
+    </View>
+  );
+}
+
+/** Convite "Conheça a Família Queizy" (regras de quando aparece em lib/familyInvite). */
+function FamilyInviteRow() {
+  const { profile, isTaster } = useAuth();
+  const { colors: T } = useTheme();
+  const isPt = systemIsPt;
+  const [show, setShow] = useState(false);
+  useFocusEffect(useCallback(() => {
+    let alive = true;
+    shouldShowFamilyInvite(profile?.active_character, profile?.created_at).then(v => { if (alive) setShow(v); });
+    return () => { alive = false; };
+  }, [profile?.active_character, profile?.created_at]));
+  if (!show) return null;
+
+  const others = CHARACTER_LIST.filter(c => c.id !== 'charlotte');
+  const withTrack = visibleTracks(profile?.beta_features).find(t => others.some(c => c.id === t.character));
+  const host = characterInfo(withTrack?.character ?? others[0]?.id).name;
+  const subtitle = withTrack
+    ? (isTaster
+        ? (isPt ? `O ${host} tem um tópico grátis para você` : `${host} has a free topic for you`)
+        : (isPt ? `O ${host} tem uma trilha só dele` : `${host} has a trail of his own`))
+    : (isPt ? `Converse com o comediante ${host}` : `Chat with comedian ${host}`);
+
+  return (
+    <View style={{ borderTopWidth: 1, borderTopColor: T.border, paddingLeft: 20, paddingRight: 10, paddingVertical: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => router.push('/(app)/family' as any)}
+        accessibilityRole="button"
+        accessibilityLabel={isPt ? 'Conheça a Família Queizy' : 'Meet the Queizy family'}
+        style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, minHeight: 44 }}
+      >
+        <View style={{ flexDirection: 'row' }}>
+          {others.slice(0, 3).map((c, i) => (
+            <View key={c.id} style={{ marginLeft: i ? -10 : 0, borderRadius: 20, borderWidth: 2, borderColor: T.card }}>
+              <CharacterAvatar character={c.id} size="sm" />
+            </View>
+          ))}
+        </View>
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <AppText numberOfLines={1} style={{ fontSize: 14, fontWeight: '800', color: T.textPrimary }}>
+            {isPt ? 'Conheça a Família Queizy' : 'Meet the Queizy family'}
+          </AppText>
+          <AppText numberOfLines={1} style={{ fontSize: 12, color: T.textSecondary }}>{subtitle}</AppText>
+        </View>
+        <CaretRight size={16} color={T.textMuted} weight="bold" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => { setShow(false); dismissFamilyInvite(); }}
+        hitSlop={10}
+        accessibilityRole="button"
+        accessibilityLabel={isPt ? 'Fechar convite' : 'Dismiss'}
+        style={{ padding: 6 }}
+      >
+        <X size={14} color={T.textMuted} weight="bold" />
+      </TouchableOpacity>
     </View>
   );
 }

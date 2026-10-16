@@ -1,18 +1,21 @@
 // app/(app)/family.tsx — Família Queizy: os personagens do app.
-// Fase 1: o aluno escolhe quem fala na Início (charlotte_users.active_character). Conversar com
-// cada um é no Practice > Free Chat ("Conversar com"). Fase 2: trilhas, atividades e Live Voice
-// de cada personagem (vantagens do Premium) entram aqui.
+// O aluno escolhe quem fala na Início (charlotte_users.active_character); a trilha própria de
+// quem está escolhido aparece na Início. Aqui cada cartão também abre a trilha do personagem.
+// Conversar com cada um é no Practice > Free Chat ("Conversar com").
 import React, { useState } from 'react';
 import { View, ScrollView, TouchableOpacity, Image, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
-import { Check, ChatCircleDots } from 'phosphor-react-native';
+import { Check, ChatCircleDots, BookOpenText, CaretRight } from 'phosphor-react-native';
 import { ScreenHeader } from '@/components/stats/StatsUI';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { systemIsPt } from '@/lib/systemLang';
 import { CHARACTER_LIST, characterInfo, type CharacterId } from '@/lib/characters';
+import { visibleTracks } from '@/lib/tracks';
+import { markFamilyMemberPicked } from '@/lib/familyInvite';
+import { LEVEL_ACCENT, LEVEL_ACCENT_BG } from '@/lib/levelColors';
 
 const C = {
   bg: '#FAF7F0', card: '#FFFFFF', ink: '#16131F', inkMid: '#4D4858', inkLight: '#8A8494',
@@ -26,13 +29,15 @@ const shadow = Platform.select({
 export default function FamilyScreen() {
   const isPt = systemIsPt;
   const insets = useSafeAreaInsets();
-  const { profile, refreshProfile } = useAuth();
+  const { profile, refreshProfile, isTaster } = useAuth();
+  const tracks = visibleTracks(profile?.beta_features);
   const current = characterInfo(profile?.active_character).id;
   const [saving, setSaving] = useState<CharacterId | null>(null);
 
   const choose = async (id: CharacterId) => {
     if (!profile?.id || id === current || saving) return;
     setSaving(id);
+    if (id !== 'charlotte') markFamilyMemberPicked(); // some o convite da Família na Início
     try {
       const { error } = await supabase.from('charlotte_users').update({ active_character: id }).eq('id', profile.id);
       if (!error) await refreshProfile();
@@ -47,12 +52,13 @@ export default function FamilyScreen() {
       <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 40 + insets.bottom }}>
         <AppText style={{ fontSize: 14, color: C.inkMid, lineHeight: 20, marginBottom: 18, marginHorizontal: 4 }}>
           {isPt
-            ? 'Escolha quem fala com você na tela Início. Para conversar com cada um, vá em Practice > Free Chat e toque em "Conversar com".'
-            : 'Choose who talks to you on the Home screen. To chat with each one, go to Practice > Free Chat and tap "Chat with".'}
+            ? 'Escolha quem fala com você na tela Início. Quem tem trilha própria passa a mostrar a trilha lá também. Para conversar com cada um, vá em Practice > Free Chat e toque em "Conversar com".'
+            : 'Choose who talks to you on the Home screen. If they have their own trail, it shows up there too. To chat with each one, go to Practice > Free Chat and tap "Chat with".'}
         </AppText>
 
         {CHARACTER_LIST.map(c => {
           const on = c.id === current;
+          const track = tracks.find(t => t.character === c.id);
           return (
             <View key={c.id} style={{ backgroundColor: C.card, borderRadius: 20, padding: 16, marginBottom: 14, borderWidth: on ? 2 : 1, borderColor: on ? C.ink : C.border, ...shadow }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
@@ -77,6 +83,24 @@ export default function FamilyScreen() {
                   <AppText style={{ fontSize: 14, fontWeight: '700', color: C.ink }}>{isPt ? 'Conversar' : 'Chat'}</AppText>
                 </TouchableOpacity>
               </View>
+              {track ? (
+                <TouchableOpacity onPress={() => router.push({ pathname: '/(app)/track' as any, params: { id: track.id } })} activeOpacity={0.8}
+                  accessibilityRole="button"
+                  style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: C.border }}>
+                  <BookOpenText size={18} color={LEVEL_ACCENT[track.id]} weight="bold" />
+                  <View style={{ flex: 1, minWidth: 0 }}>
+                    <AppText style={{ fontSize: 12, color: C.inkLight }}>{isPt ? 'Trilha' : 'Trail'}</AppText>
+                    <AppText numberOfLines={1} style={{ fontSize: 15, fontWeight: '800', color: C.ink }}>{isPt ? track.titlePt : track.titleEn}</AppText>
+                  </View>
+                  {isTaster ? (
+                    <View style={{ backgroundColor: LEVEL_ACCENT_BG[track.id], borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3 }}>
+                      <AppText style={{ fontSize: 11, fontWeight: '800', color: LEVEL_ACCENT[track.id] }}>{isPt ? '1 tópico grátis' : '1 free topic'}</AppText>
+                    </View>
+                  ) : null}
+                  <AppText style={{ fontSize: 14, fontWeight: '700', color: C.ink }}>{isPt ? 'Ver trilha' : 'View trail'}</AppText>
+                  <CaretRight size={14} color={C.ink} weight="bold" />
+                </TouchableOpacity>
+              ) : null}
             </View>
           );
         })}

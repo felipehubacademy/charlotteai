@@ -163,4 +163,5 @@ export interface UserProfile {
   beta_features: string[];
   is_admin: boolean;
   active_character?: string | null;   // Família Queizy: quem fala na Início (padrão 'charlotte')
+  created_at?: string | null;         // criação da conta (convite da Família nos primeiros 7 dias)
 }
