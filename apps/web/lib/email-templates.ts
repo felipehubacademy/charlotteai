@@ -169,6 +169,51 @@ export function familyGrowsTemplate(opts: { name?: string | null; unsubscribeUrl
   return { subject, html };
 }
 
+// ── 6c. Carrinho abandonado (assinatura pelo site): 3 lembretes ──────────────────────
+
+export function cartRecoveryTemplate(opts: {
+  stage: 1 | 2 | 3; name?: string | null; plan: 'monthly' | 'annual'; trialDays: number;
+  coupon?: { code: string; pct: number; firstOnly: boolean } | null; unsubscribeUrl?: string;
+}) {
+  const first = (opts.name ?? '').trim().split(/\s+/)[0];
+  const ola = first ? `Oi, ${first}!` : 'Oi!';
+  const plano = opts.plan === 'monthly' ? 'mensal' : 'anual';
+  const url = `https://queizy.com/assinar?plano=${plano}&utm_source=email&utm_medium=carrinho&utm_campaign=etapa${opts.stage}${opts.stage === 3 && opts.coupon ? `&cupom=${encodeURIComponent(opts.coupon.code)}` : ''}`;
+  const unsubscribe = opts.unsubscribeUrl
+    ? `<p style="margin:12px 0 0;font-size:12px;color:#8A8494;line-height:1.7;">Não quer mais receber novidades? <a href="${opts.unsubscribeUrl}" style="color:#8A8494;text-decoration:underline;">Descadastrar</a>.</p>`
+    : '';
+  const trial = opts.trialDays > 0 ? `Começa com <strong style="color:#16131F;">${opts.trialDays} dias grátis</strong> e você cancela quando quiser.` : 'Você cancela quando quiser.';
+  let subject: string; let body: string;
+  if (opts.stage === 1) {
+    subject = 'Faltou pouco para começar no Queizy';
+    body = `${h1('Faltou pouco.')}
+      ${p(`${ola}<br>Você começou a assinatura do Queizy, mas o pagamento não foi concluído. Se foi só uma pausa, dá para terminar em um minuto.`)}
+      ${p(trial)}
+      ${btn('Terminar minha assinatura', url)}
+      ${note('Se teve algum problema no pagamento, é só responder este e-mail que a gente ajuda.')}`;
+  } else if (opts.stage === 2) {
+    subject = 'A Charlotte ainda está te esperando';
+    body = `${h1('Seu inglês de verdade começa aqui.')}
+      ${p(`${ola}<br>Ficou alguma dúvida? Olha o que vem na assinatura do Queizy:`)}
+      ${features([
+        '<strong style="color:#16131F;">Conversa de verdade</strong> com a Charlotte, por texto ou voz, com correção na hora',
+        '<strong style="color:#16131F;">Trilha do seu nível</strong>: Gramática, Listening &amp; Speaking, Role-play e Guided Chat',
+        '<strong style="color:#16131F;">Família Queizy</strong>: o Igorfina e a trilha dele, o Manual do F#did@',
+        'No site, o Anual também sai no <strong style="color:#16131F;">Pix</strong>; e você cancela quando quiser',
+      ])}
+      ${btn('Quero começar', url)}`;
+  } else {
+    subject = opts.coupon ? `Um presente para você começar: ${opts.coupon.pct}% de desconto` : 'Última chamada para começar no Queizy';
+    body = `${h1(opts.coupon ? `${opts.coupon.pct}% de desconto para você.` : 'Ainda dá tempo.')}
+      ${p(`${ola}<br>${opts.coupon
+        ? `Separamos um desconto para você começar: use o cupom <strong style="color:#16131F;">${opts.coupon.code}</strong> e ganhe ${opts.coupon.pct}% ${opts.coupon.firstOnly ? 'na primeira cobrança' : 'na assinatura'}. Ele já vai aplicado pelo botão abaixo.`
+        : 'Esta é a última mensagem sobre a sua assinatura. Do queizy ao crazy: a gente vai junto até o seu inglês sair natural.'}`)}
+      ${p(trial)}
+      ${btn(opts.coupon ? 'Usar meu desconto' : 'Assinar agora', url)}`;
+  }
+  return { subject, html: base(body, unsubscribe) };
+}
+
 // ── 7. Assinatura pelo site (Asaas) ativa ──────────────────────────────────────
 
 export function webSubscriptionWelcomeTemplate(opts: {

@@ -16,10 +16,10 @@ type Coupon = {
 type Checkout = {
   id: string; plan: string; method: string | null; value_brl: number; state: 'paid' | 'open' | 'abandoned' | 'superseded' | 'refunded';
   coupon_code: string | null; affiliate_code: string | null; discount_pct: number | null; trial_days: number;
-  created_at: string; paid_at: string | null; price_restored_at: string | null; coupon_cycles: number | null;
+  created_at: string; paid_at: string | null; price_restored_at: string | null; coupon_cycles: number | null; recovery_stage: number;
   user_id: string; name: string | null; email: string | null;
 };
-type Summary = { started30: number; paid30: number; abandoned30: number; revenue30: number };
+type Summary = { started30: number; paid30: number; abandoned30: number; recovered30: number; revenue30: number };
 
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 const day = (s: string | null) => (s ? new Date(s).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: '2-digit' }) : '—');
@@ -168,6 +168,7 @@ export default function CommercialAdmin() {
                 ['Checkouts (30 dias)', String(summary.started30)],
                 ['Pagos', String(summary.paid30)],
                 ['Abandonados', String(summary.abandoned30)],
+                ['Recuperados por lembrete', String(summary.recovered30 ?? 0)],
                 ['Receita (30 dias)', brl(summary.revenue30)],
               ].map(([l, v]) => (
                 <div key={l} className="adm-panel" style={{ padding: 14 }}>
@@ -185,7 +186,7 @@ export default function CommercialAdmin() {
             ))}
           </div>
           <div style={{ fontSize: 12, color: 'var(--t3)', marginBottom: 10 }}>
-            Abandonado: abriu o checkout do Asaas, o link venceu (2 horas) e a pessoa não assinou depois.
+            Abandonado: abriu o checkout do Asaas, o link venceu (2 horas) e a pessoa não assinou depois. Ela recebe até 3 lembretes por e-mail (3h, 24h e 72h); o último leva o cupom VOLTA, se ele existir e estiver valendo na aba Cupons.
           </div>
           <div className="adm-panel">
             {sales.length === 0 ? (
@@ -205,7 +206,10 @@ export default function CommercialAdmin() {
                           : c.affiliate_code ? `Afiliado ${c.affiliate_code}${c.discount_pct ? ` (${c.discount_pct}%)` : ''}` : '—'}
                         {c.price_restored_at && <div style={{ color: 'var(--t3)' }}>preço cheio desde {day(c.price_restored_at)}</div>}
                       </td>
-                      <td style={{ fontWeight: 700, color: c.state === 'paid' ? 'var(--green, #08804A)' : c.state === 'abandoned' ? 'var(--accent)' : 'var(--t2)' }}>{CHECKOUT_STATE[c.state]}</td>
+                      <td style={{ fontWeight: 700, color: c.state === 'paid' ? 'var(--green, #08804A)' : c.state === 'abandoned' ? 'var(--accent)' : 'var(--t2)' }}>
+                        {CHECKOUT_STATE[c.state]}
+                        {c.recovery_stage > 0 && <div style={{ fontSize: 11.5, fontWeight: 500, color: 'var(--t3)' }}>{c.recovery_stage} de 3 lembretes</div>}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

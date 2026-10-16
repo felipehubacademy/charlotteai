@@ -19,6 +19,7 @@ type Checkout = {
   id: string; user_id: string; plan: string; method: string | null; value_brl: number; status: string;
   coupon_code: string | null; affiliate_code: string | null; discount_pct: number | null; trial_days: number;
   created_at: string; paid_at: string | null; refunded_at: string | null; price_restored_at: string | null; coupon_cycles: number | null;
+  recovery_stage: number;
 };
 
 const ABANDON_AFTER_MS = 2 * 3600 * 1000; // o link do checkout do Asaas vence em 120 min
@@ -31,7 +32,7 @@ export async function GET(req: NextRequest) {
 
   if (view === 'checkouts') {
     const { data } = await supabase.from('asaas_checkouts')
-      .select('id, user_id, plan, method, value_brl, status, coupon_code, affiliate_code, discount_pct, trial_days, created_at, paid_at, refunded_at, price_restored_at, coupon_cycles')
+      .select('id, user_id, plan, method, value_brl, status, coupon_code, affiliate_code, discount_pct, trial_days, created_at, paid_at, refunded_at, price_restored_at, coupon_cycles, recovery_stage')
       .order('created_at', { ascending: false }).limit(300);
     const rows = (data ?? []) as Checkout[];
     const ids = [...new Set(rows.map(r => r.user_id))];
@@ -55,6 +56,8 @@ export async function GET(req: NextRequest) {
         started30: last30.length,
         paid30: last30.filter(r => r.state === 'paid').length,
         abandoned30: last30.filter(r => r.state === 'abandoned').length,
+        // Recebeu lembrete de carrinho abandonado e assinou depois.
+        recovered30: last30.filter(r => r.recovery_stage > 0 && paidUsers.has(r.user_id)).length,
         revenue30: last30.filter(r => r.state === 'paid').reduce((s, r) => s + Number(r.value_brl || 0), 0),
       },
     });
