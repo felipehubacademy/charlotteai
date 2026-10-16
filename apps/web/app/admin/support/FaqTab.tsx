@@ -3,6 +3,7 @@
 // Aba FAQ do /admin/suporte: a base que a IA do suporte consulta. Mudanças valem em até 1 min.
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Plus, Pencil, X, Trash2, Download, Smartphone } from 'lucide-react';
+import { useBulk, BulkBar, BulkCheckbox } from '@/components/admin/Bulk';
 
 interface Entry {
   id: string; section: string; question: string; answer: string; sort: number;
@@ -49,6 +50,14 @@ export function FaqTab() {
     setBusyApp(e.id);
     try { await post({ action: 'save', ...e, show_in_app: !e.show_in_app }); await load(); } finally { setBusyApp(null); }
   };
+  // Ações em lote: as perguntas visíveis (respeita a busca).
+  const visible = useMemo(() => sections.flatMap(([, list]) => list), [sections]);
+  const bulk = useBulk(visible.map(e => e.id));
+  const byId = (id: string) => (entries ?? []).find(e => e.id === id);
+  const saveFlag = async (id: string, patch: Partial<Entry>) => {
+    const e = byId(id); if (!e) return false;
+    return (await post({ action: 'save', ...e, ...patch })).ok;
+  };
   const remove = async (e: Entry) => {
     if (!confirm(`Apagar a pergunta "${e.question}"? A IA deixa de usar esta resposta.`)) return;
     await post({ action: 'delete', id: e.id }); load();
@@ -65,6 +74,13 @@ export function FaqTab() {
         É isto que a IA do suporte usa para responder (e-mail e WhatsApp). Ela não responde nada que não esteja aqui. As perguntas marcadas "No app" também aparecem em Ajuda e suporte, dentro do app (em inglês para quem usa o celular em inglês; a tradução é feita ao salvar). Mudanças valem em até 5 minutos.
       </div>
       {err && <div className="adm-alert crit" style={{ marginBottom: 16 }}>{err}</div>}
+      <BulkBar bulk={bulk} total={visible.length} allIds={visible.map(e => e.id)} noun={['pergunta', 'perguntas']} actions={[
+        { label: 'Ativar', confirm: 'Ativar {n} perguntas? A IA volta a usar essas respostas.', run: id => saveFlag(id, { is_active: true }), after: load },
+        { label: 'Desligar', confirm: 'Desligar {n} perguntas? A IA deixa de usar essas respostas.', run: id => saveFlag(id, { is_active: false }), after: load },
+        { label: 'Mostrar no app', confirm: 'Mostrar {n} perguntas em Ajuda e suporte, no app? A versão em inglês é gerada ao salvar (leva alguns segundos por pergunta).', run: id => saveFlag(id, { show_in_app: true }), after: load },
+        { label: 'Tirar do app', confirm: 'Tirar {n} perguntas de Ajuda e suporte no app? A IA continua usando.', run: id => saveFlag(id, { show_in_app: false }), after: load },
+        { label: 'Excluir', danger: true, confirm: 'Excluir {n} perguntas de vez? A IA deixa de usar essas respostas.', run: async id => (await post({ action: 'delete', id })).ok, after: load },
+      ]} />
 
       {entries && entries.length === 0 && (
         <div className="adm-panel"><div className="adm-empty">
@@ -81,6 +97,7 @@ export function FaqTab() {
             {list.map(e => (
               <div key={e.id} style={{ borderBottom: '1px solid var(--b1)', paddingBottom: 12, opacity: e.is_active ? 1 : 0.5 }}>
                 <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                  <div style={{ paddingTop: 2 }}><BulkCheckbox bulk={bulk} id={e.id} label={`Selecionar ${e.question}`} /></div>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--t1)' }}>{e.question}</div>
                     <div style={{ fontSize: 12.5, color: 'var(--t2)', whiteSpace: 'pre-wrap', lineHeight: 1.5, marginTop: 4 }}>{e.answer}</div>

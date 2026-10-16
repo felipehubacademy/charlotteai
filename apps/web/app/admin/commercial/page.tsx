@@ -6,6 +6,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { BadgePercent, RefreshCw, Plus, X, Pause, Play } from 'lucide-react';
 import AffiliatesAdmin from '../affiliates/page';
+import { useBulk, BulkBar, BulkCheckbox } from '@/components/admin/Bulk';
 
 type Coupon = {
   code: string; discount_pct: number; plans: string[] | null; active: boolean;
@@ -104,6 +105,10 @@ export default function CommercialAdmin() {
   const set = <K extends keyof Form>(k: K, v: Form[K]) => setForm(f => (f ? { ...f, [k]: v } : f));
 
   const sales = saleFilter === 'all' ? checkouts : checkouts.filter(c => c.state === saleFilter);
+  // Ações em lote nos cupons: pausar / reativar.
+  const couponBulk = useBulk(coupons.map(c => c.code));
+  const setCouponActive = async (code: string, active: boolean) =>
+    (await fetch('/api/admin/commercial', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'toggle_coupon', code, active }) })).ok;
 
   return (
     <div className="adm-page">
@@ -129,15 +134,20 @@ export default function CommercialAdmin() {
             afiliado: vale o maior. A <b>duração</b> diz quantas cobranças levam o desconto; depois, a assinatura volta sozinha ao preço
             cheio. Com <b>início</b> e <b>fim</b>, dá para deixar Black Friday, Natal e Dia do Consumidor agendados.
           </div>
+          <BulkBar bulk={couponBulk} total={coupons.length} allIds={coupons.map(c => c.code)} noun={['cupom', 'cupons']} actions={[
+            { label: 'Pausar', confirm: 'Pausar {n} cupons? Eles deixam de valer no site até você reativar.', run: code => setCouponActive(code, false), after: load },
+            { label: 'Reativar', confirm: 'Reativar {n} cupons? Eles voltam a valer no site (respeitando início, fim e limite de usos).', run: code => setCouponActive(code, true), after: load },
+          ]} />
           <div className="adm-panel">
             {coupons.length === 0 ? (
               <div className="adm-empty"><div className="adm-empty-title">{loading ? 'Carregando…' : 'Nenhum cupom ainda'}</div></div>
             ) : (
               <table className="adm-table">
-                <thead><tr><th>Código</th><th>Situação</th><th className="num">Desconto</th><th>Planos</th><th>Duração</th><th>Período</th><th className="num">Usos</th><th className="num">Receita</th><th></th></tr></thead>
+                <thead><tr><th style={{ width: 34 }}><BulkCheckbox bulk={couponBulk} page /></th><th>Código</th><th>Situação</th><th className="num">Desconto</th><th>Planos</th><th>Duração</th><th>Período</th><th className="num">Usos</th><th className="num">Receita</th><th></th></tr></thead>
                 <tbody>
                   {coupons.map(c => (
                     <tr key={c.code}>
+                      <td><BulkCheckbox bulk={couponBulk} id={c.code} label={`Selecionar ${c.code}`} /></td>
                       <td><div style={{ color: 'var(--t1)', fontWeight: 800, cursor: 'pointer' }} onClick={() => edit(c)}>{c.code}</div>{c.note && <div style={{ fontSize: 11.5, color: 'var(--t3)' }}>{c.note}</div>}</td>
                       <td style={{ color: COUPON_STATE[c.state].color, fontWeight: 700 }}>{COUPON_STATE[c.state].label}</td>
                       <td className="num">{c.discount_pct}%</td>
