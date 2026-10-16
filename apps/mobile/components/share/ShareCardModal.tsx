@@ -118,14 +118,17 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
             )}
             {name && (
               <AppText style={{ fontSize: 14, color: INK, marginTop: 16, fontWeight: '700' }}>
-                {isPt ? `${name}, aprendendo inglês com a Charlotte` : `${name}, learning English with Charlotte`}
+                {/* Convite: prova social. Conquistas: vale para qualquer membro da Família. */}
+                {content.invite
+                  ? (isPt ? `${name} já está no Queizy` : `${name} is already on Queizy`)
+                  : (isPt ? `${name}, aprendendo inglês no Queizy` : `${name}, learning English on Queizy`)}
               </AppText>
             )}
           </View>
 
           <View style={{ backgroundColor: INK, borderRadius: 16, padding: 14 }}>
             <AppText style={{ fontSize: 13, color: '#FFFFFF', fontWeight: '800' }}>
-              {isPt ? 'Vem estudar comigo' : 'Come study with me'}
+              {content.invite ? (isPt ? 'Entre pelo link' : 'Join with the link') : (isPt ? 'Vem estudar comigo' : 'Come study with me')}
             </AppText>
             <AppText style={{ fontSize: 13, color: VOLT, fontWeight: '700', marginTop: 2 }}>{shortLink}</AppText>
           </View>
