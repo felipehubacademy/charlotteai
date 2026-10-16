@@ -61,8 +61,15 @@ O app agenda as revisões: quando há palavras para revisar aparece "Revisar hoj
 `A Família Queizy reúne os personagens do app: a Charlotte (sua tutora) e o Igorfina, comediante e imitador. São personagens do Queizy: as respostas e as vozes deles são geradas por IA, na hora. As imitações do Igorfina também são personagens, não pessoas de verdade. No meio da conversa ele solta uma imitação, e o balão ganha o selo "imitando".
 - Para conversar com cada um: Practice > Free Chat, numa conversa nova toque em "Conversar com" e escolha. Cada conversa continua com quem ela foi começada.
 - Para escolher quem fala com você na tela Início: Perfil > Você no Queizy > Família Queizy > "Falar na Início". Na Início, o convite "Conheça a Família Queizy" também leva a essa tela.
-- Alguns membros da Família podem ter uma trilha própria, quando ela estiver liberada para a sua conta. Ela aparece no cartão da trilha da Início quando esse membro está em "Falar na Início", e na tela Família, em "Ver trilha".
+- O Igorfina tem uma trilha própria, o Manual do F#did@ (veja "O que é o Manual do F#did@?"). Ela aparece no cartão da trilha da Início quando o Igorfina está em "Falar na Início", e na tela Família, em "Ver trilha".
 A trilha principal, a Gramática, a Pronúncia e o suporte são com a Charlotte.` },
+  { section: 'Guia do app', question: 'O que é o Manual do F#did@?', answer:
+`É a trilha do Igorfina, da Família Queizy: inglês de sobrevivência para o dia a dia, viagem e situações reais, com o humor e as imitações dele.
+- São 10 módulos e 50 tópicos. Cada tópico tem as mesmas 4 atividades da trilha principal: Gramática, Listening & Speaking, Role-play e Guided Chat, com o Igorfina no lugar da Charlotte. As explicações são em português.
+- Em alguns tópicos ele faz uma imitação a atividade toda; o cartão do tópico mostra o selo com o nome da imitação (por exemplo, "Presidente" ou "Astro do basquete").
+- Onde fica: na Início, no cartão da trilha, quando o Igorfina está em "Falar na Início" (Perfil > Você no Queizy > Família Queizy), ou direto na tela Família, em "Ver trilha".
+- Os tópicos abrem em ordem, como na trilha principal. O progresso é separado: fazer o Manual não avança a sua trilha de nível.
+- Antes de assinar, um tópico do Manual é grátis ("SEU TÓPICO GRÁTIS"); os outros fazem parte da assinatura.` },
   { section: 'Guia do app', question: 'Os áudios das conversas ficam salvos?', answer:
 `Sim. No Free Chat, os áudios que você grava e as respostas faladas ficam salvos por 90 dias: ao reabrir a conversa em "Conversas anteriores", dá para ouvir de novo. Depois de 90 dias o áudio é apagado e a mensagem fica só com o texto. Conversas de antes dessa mudança mostram apenas o texto.` },
   { section: 'Guia do app', question: 'Onde ficam as metas e o desafio da semana?', answer:

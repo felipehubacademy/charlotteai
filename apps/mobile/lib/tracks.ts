@@ -34,8 +34,6 @@ export const EXTRA_TRACKS: ExtraTrack[] = [
     titleEn: 'Survival Manual',
     hostPt: 'com o Igorfina',
     hostEn: 'with Igorfina',
-    betaFlag: 'igorfina_trail',
-    betaAllUnlocked: true,
     // O "uau": o presidente exagerado ("the best, tremendous") ensinando the best / the worst.
     tasteUnit: { moduleId: 'M06', unitId: 'F27' },
   },
