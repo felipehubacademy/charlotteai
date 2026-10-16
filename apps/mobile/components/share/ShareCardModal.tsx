@@ -142,15 +142,16 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
           </TouchableOpacity>
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <TouchableOpacity onPress={content.invite ? shareImage : shareLink} disabled={busy}
-              style={{ flex: 1, backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 999, paddingVertical: 13, alignItems: 'center' }}>
-              <AppText style={{ fontSize: 14, fontWeight: '700', color: PAPER }}>
+              style={{ flex: 1, backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 999, paddingVertical: 13, paddingHorizontal: 12, alignItems: 'center' }}>
+              {/* Meia largura: o texto encolhe um pouco em vez de vazar do botão. */}
+              <AppText numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.75} style={{ fontSize: 14, fontWeight: '700', color: PAPER }}>
                 {content.invite ? (isPt ? 'Compartilhar imagem' : 'Share image') : (isPt ? 'Enviar convite' : 'Send invite')}
               </AppText>
             </TouchableOpacity>
             <TouchableOpacity onPress={copyLink} disabled={!link}
-              style={{ flex: 1, backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 999, paddingVertical: 13, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+              style={{ flex: 1, backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 999, paddingVertical: 13, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
               {copied ? <Check size={16} color={VOLT} weight="bold" /> : <LinkSimple size={16} color={PAPER} weight="bold" />}
-              <AppText style={{ fontSize: 14, fontWeight: '700', color: copied ? VOLT : PAPER }}>{copied ? (isPt ? 'Copiado' : 'Copied') : (isPt ? 'Copiar link' : 'Copy link')}</AppText>
+              <AppText numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.75} style={{ flexShrink: 1, fontSize: 14, fontWeight: '700', color: copied ? VOLT : PAPER }}>{copied ? (isPt ? 'Copiado' : 'Copied') : (isPt ? 'Copiar link' : 'Copy link')}</AppText>
             </TouchableOpacity>
           </View>
         </View>
