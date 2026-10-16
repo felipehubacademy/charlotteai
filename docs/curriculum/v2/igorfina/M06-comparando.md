@@ -637,7 +637,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 ### 4. Guided Chat
 
-**Cenário**: O Igorfina ajuda você a montar o roteiro do dia pelo chat, comparando distâncias.
+**Cenário**: O Igorfina ajuda você a montar o roteiro do dia pelo chat, comparando distâncias. A partir do hotel: o museu fica a 10 minutos a pé (o mais perto), a praia a 30 minutos de ônibus e o outlet a 1 hora de ônibus (o mais longe). Quando o aluno perguntar se um lugar é mais longe que outro, ele responde exatamente isso, com farther / the farthest.
 **Voiced by**: `igorfina`
 **Persona**: Igorfina
 **Persona outfit**: `igorfina_casual`

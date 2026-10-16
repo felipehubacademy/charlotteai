@@ -55,7 +55,7 @@ const LIMITS = {
 
 // ── Charlotte messages per type / mode / level ───────────────────────────────
 type LimitType = 'hourly' | 'daily';
-type Mode      = 'chat' | 'grammar' | 'pronunciation' | undefined;
+type Mode      = 'chat' | 'grammar' | 'pronunciation' | 'explain_error' | undefined; // explain_error conta como chat
 
 const MESSAGES: Record<LimitType, Record<'novice' | 'other', Record<'chat' | 'grammar' | 'pronunciation', string>>> = {
   hourly: {

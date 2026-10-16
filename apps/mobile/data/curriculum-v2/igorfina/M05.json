@@ -695,24 +695,24 @@
         ]
       },
       "guided_chat": {
-        "scenario": "O Igorfina, ainda imitando o presidente, te convida para uma \"festa incrível\" pelo chat e oferece opções.",
+        "scenario": "Você acabou de chegar à \"festa incrível\" do presidente (o Igorfina imitando), no terraço, e ela está acontecendo agora. Ele te recebe, oferece uma bebida e depois pizza ou sushi.",
         "voiced_by": "igorfina",
         "persona": "Igorfina",
         "persona_outfit": "igorfina_president",
-        "intro_pt": "O 'presidente' te convida para uma festa. Diga o que adoraria e o que prefere.",
-        "opening_message": "Folks, big party tonight. The biggest party. You're invited. Would you like to come?",
+        "intro_pt": "Você chegou à festa do 'presidente'. Diga o que adoraria, o que prefere e elogie o lugar.",
+        "opening_message": "Welcome to my party, folks. The biggest party. Would you like a drink?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Aceitar o convite",
-            "label_en": "Accept the invitation",
-            "hidden_prompt": "user accepts with would love: 'I'd love to!', 'I would love to come!', 'yes, I'd love to' — must be in English",
-            "hint_pt": "I'd love to!",
-            "hint_en": "I'd love to!",
+            "label_pt": "Aceitar a bebida",
+            "label_en": "Accept the drink",
+            "hidden_prompt": "user accepts the offer with would love: 'I'd love one!', 'I'd love a drink!', 'yes, I would love to' — must be in English",
+            "hint_pt": "I'd love a drink!",
+            "hint_en": "I'd love a drink!",
             "examples_pass": [
-              "I'd love to!",
-              "I would love to come!",
-              "Yes, I'd love to go."
+              "I'd love a drink!",
+              "I would love one!",
+              "Yes, I'd love to."
             ],
             "examples_fail": [
               "Yes (bare word)",
@@ -742,23 +742,23 @@
             "id": 3,
             "label_pt": "Elogiar o lugar",
             "label_en": "Compliment the place",
-            "hidden_prompt": "user compliments with would rather / love: 'there's no place I'd rather be!', 'I love this place!', 'this place is amazing' — must be in English",
+            "hidden_prompt": "user compliments the party using would rather or would love: 'there's no place I'd rather be!', 'I'd rather be here than at home!', 'I'd love to come back!' — must be in English and use 'd rather / would rather / 'd love / would love",
             "hint_pt": "There's no place I'd rather be!",
             "hint_en": "There's no place I'd rather be!",
             "examples_pass": [
               "There's no place I'd rather be!",
-              "I love this place!",
-              "This place is amazing!"
+              "I'd rather be here than at home!",
+              "I'd love to come back!"
             ],
             "examples_fail": [
               "Lugar top (Portuguese)",
-              "Nice (too flat)",
-              "OK (no compliment)"
+              "This place is amazing (no would rather/love)",
+              "Nice (too flat)"
             ]
           }
         ],
-        "closing_cue": "Igorfina encerra com \"Nobody says it better. Tremendous guest! See you tonight!\" quando obj_3 bater.",
-        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Folks, big party tonight. The biggest party. You're invited. Would you like to come?\"\n2. **Student**: \"I'd love to!\"\n3. **Igorfina**: \"Tremendous. Pizza or sushi? Both are the best.\"\n4. **Student**: \"I'd rather have pizza.\"\n5. **Igorfina**: \"Great choice. And the view from the rooftop, incredible!\"\n6. **Student**: \"There's no place I'd rather be!\"\n7. **Igorfina**: \"Nobody says it better. Tremendous guest! See you tonight!\"\n\n---"
+        "closing_cue": "Igorfina encerra com \"Nobody says it better. Tremendous guest! Enjoy the party!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Igorfina**: \"Welcome to my party, folks. The biggest party. Would you like a drink?\"\n2. **Student**: \"I'd love a drink!\"\n3. **Igorfina**: \"Tremendous. Pizza or sushi? Both are the best.\"\n4. **Student**: \"I'd rather have pizza.\"\n5. **Igorfina**: \"Great choice. And the view from the rooftop, incredible!\"\n6. **Student**: \"There's no place I'd rather be!\"\n7. **Igorfina**: \"Nobody says it better. Tremendous guest! Enjoy the party!\"\n\n---"
       }
     },
     {

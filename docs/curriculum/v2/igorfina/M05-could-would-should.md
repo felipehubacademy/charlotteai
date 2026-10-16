@@ -476,22 +476,22 @@ Igorfina fala no estilo do presidente (imitação). Aluno repete; a pronúncia �
 
 ### 4. Guided Chat
 
-**Cenário**: O Igorfina, ainda imitando o presidente, te convida para uma "festa incrível" pelo chat e oferece opções.
+**Cenário**: Você acabou de chegar à "festa incrível" do presidente (o Igorfina imitando), no terraço, e ela está acontecendo agora. Ele te recebe, oferece uma bebida e depois pizza ou sushi.
 **Voiced by**: `igorfina`
 **Persona**: Igorfina
 **Persona outfit**: `igorfina_president`
-**Intro (em PT)**: "O 'presidente' te convida para uma festa. Diga o que adoraria e o que prefere."
-**Opening message**: "Folks, big party tonight. The biggest party. You're invited. Would you like to come?"
+**Intro (em PT)**: "Você chegou à festa do 'presidente'. Diga o que adoraria, o que prefere e elogie o lugar."
+**Opening message**: "Welcome to my party, folks. The biggest party. Would you like a drink?"
 
 **Sub-objectives** (3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Aceitar o convite"
-   **label_en**: "Accept the invitation"
-   **hidden_prompt**: "user accepts with would love: 'I'd love to!', 'I would love to come!', 'yes, I'd love to' — must be in English"
-   **hint_pt**: "I'd love to!"
-   **hint_en**: "I'd love to!"
-   **example_pass**: I'd love to! | I would love to come! | Yes, I'd love to go.
+   **label_pt**: "Aceitar a bebida"
+   **label_en**: "Accept the drink"
+   **hidden_prompt**: "user accepts the offer with would love: 'I'd love one!', 'I'd love a drink!', 'yes, I would love to' — must be in English"
+   **hint_pt**: "I'd love a drink!"
+   **hint_en**: "I'd love a drink!"
+   **example_pass**: I'd love a drink! | I would love one! | Yes, I'd love to.
    **example_fail**: Yes (bare word) | Claro (Portuguese) | Maybe (unclear)
 
 2. **id**: 2
@@ -506,23 +506,23 @@ Igorfina fala no estilo do presidente (imitação). Aluno repete; a pronúncia �
 3. **id**: 3
    **label_pt**: "Elogiar o lugar"
    **label_en**: "Compliment the place"
-   **hidden_prompt**: "user compliments with would rather / love: 'there's no place I'd rather be!', 'I love this place!', 'this place is amazing' — must be in English"
+   **hidden_prompt**: "user compliments the party using would rather or would love: 'there's no place I'd rather be!', 'I'd rather be here than at home!', 'I'd love to come back!' — must be in English and use 'd rather / would rather / 'd love / would love"
    **hint_pt**: "There's no place I'd rather be!"
    **hint_en**: "There's no place I'd rather be!"
-   **example_pass**: There's no place I'd rather be! | I love this place! | This place is amazing!
-   **example_fail**: Lugar top (Portuguese) | Nice (too flat) | OK (no compliment)
+   **example_pass**: There's no place I'd rather be! | I'd rather be here than at home! | I'd love to come back!
+   **example_fail**: Lugar top (Portuguese) | This place is amazing (no would rather/love) | Nice (too flat)
 
-**Closing cue**: Igorfina encerra com "Nobody says it better. Tremendous guest! See you tonight!" quando obj_3 bater.
+**Closing cue**: Igorfina encerra com "Nobody says it better. Tremendous guest! Enjoy the party!" quando obj_3 bater.
 
 **Script** (referencial, 6 turnos):
 
-1. **Igorfina**: "Folks, big party tonight. The biggest party. You're invited. Would you like to come?"
-2. **Student**: "I'd love to!"
+1. **Igorfina**: "Welcome to my party, folks. The biggest party. Would you like a drink?"
+2. **Student**: "I'd love a drink!"
 3. **Igorfina**: "Tremendous. Pizza or sushi? Both are the best."
 4. **Student**: "I'd rather have pizza."
 5. **Igorfina**: "Great choice. And the view from the rooftop, incredible!"
 6. **Student**: "There's no place I'd rather be!"
-7. **Igorfina**: "Nobody says it better. Tremendous guest! See you tonight!"
+7. **Igorfina**: "Nobody says it better. Tremendous guest! Enjoy the party!"
 
 ---
 
