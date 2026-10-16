@@ -9,7 +9,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'Queizy',
   slug: 'charlotte-rn',
-  version: '2.0.1',
+  version: '2.0.2',
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
@@ -36,6 +36,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       NSSpeechRecognitionUsageDescription:
         'Queizy recognizes your speech to show, word by word, what you said in Listening & Speaking exercises.',
       ITSAppUsesNonExemptEncryption: false,
+      // Story do Instagram direto (react-native-share, Social.InstagramStories).
+      LSApplicationQueriesSchemes: ['instagram-stories', 'instagram'],
       // Idiomas suportados: sem português declarado, o iOS informa inglês ao app
       // (Intl vira "en-BR") e toda a interface ignora o aparelho em português.
       CFBundleDevelopmentRegion: 'en',
@@ -86,7 +88,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   // e usuarios em '1.0.0' so atualizam baixando a nova versao da App Store.
   // 2.1.0: binário Queizy (módulos nativos novos). O app antigo (2.0.0) não
   // recebe os OTAs do Queizy e continua Charlotte até atualizar pela loja.
-  runtimeVersion: '2.1.0',
+  // 2.2.0: binário com expo-store-review e react-native-share (build 2.0.2). OTA do main só
+  // chega a este binário depois do merge da branch native/2.0.2.
+  runtimeVersion: '2.2.0',
   // Textos das permissões do iOS em português (InfoPlist.strings); o inglês fica no infoPlist.
   locales: {
     'pt-BR': './locales/pt-BR.json',
@@ -113,6 +117,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       const fgs = perms.find(p => p.$?.['android:name'] === FGS);
       if (fgs) fgs.$['tools:node'] = 'remove';
       else perms.push({ $: { 'android:name': FGS, 'tools:node': 'remove' } });
+      // Android 11+: para abrir o Instagram (Story direto) o app precisa declarar o pacote.
+      const queries = (manifest as { queries?: { package?: { $: Record<string, string> }[] }[] }).queries ?? [];
+      if (!queries.some(q => q.package?.some(pk => pk.$?.['android:name'] === 'com.instagram.android'))) {
+        queries.push({ package: [{ $: { 'android:name': 'com.instagram.android' } }] });
+      }
+      (manifest as { queries?: unknown }).queries = queries;
       const app = c.modResults.manifest.application?.[0];
       if (app) {
         if (!app.service) app.service = [];
@@ -191,6 +201,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     // Build time: SENTRY_AUTH_TOKEN + SENTRY_ORG + SENTRY_PROJECT cuidam do
     // upload de sourcemaps via plugin (não precisam estar em extra).
     sentryDsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
+    // Story do Instagram: a Meta exige o App ID do Facebook (developers.facebook.com).
+    // Definir EXPO_PUBLIC_FACEBOOK_APP_ID no EAS antes do build; sem ele o botão não aparece.
+    facebookAppId: process.env.EXPO_PUBLIC_FACEBOOK_APP_ID,
     eas: {
       projectId: 'da14586b-2944-4150-b8ad-5ff7e32af6e2',
     },

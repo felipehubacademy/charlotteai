@@ -6,8 +6,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Modal, TouchableOpacity, Image, ActivityIndicator, Share, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ViewShot, Sharing, Clipboard, canShareImage } from '@/lib/nativeOptional';
-import { X, ShareNetwork, LinkSimple, Check } from 'phosphor-react-native';
+import { ViewShot, Sharing, Clipboard, canShareImage, RNShare } from '@/lib/nativeOptional';
+import Constants from 'expo-constants';
+import { X, ShareNetwork, LinkSimple, Check, InstagramLogo } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
@@ -70,6 +71,27 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
       track('share_card', { kind: content.kind });
     } catch { /* cancelado */ }
     finally { setBusy(false); }
+  };
+
+  // Story do Instagram direto: abre o editor de Story já com o cartão, sem link (decisão do
+  // produto: no Instagram fica melhor só a imagem). Precisa do App ID do Facebook no build.
+  const facebookAppId = (Constants.expoConfig?.extra as { facebookAppId?: string } | undefined)?.facebookAppId;
+  const canStory = !!(RNShare && canShareImage && facebookAppId);
+  const shareStory = async () => {
+    if (!cardRef.current || !RNShare || !ViewShot || !facebookAppId) return;
+    setBusy(true);
+    try {
+      const uri = await ViewShot.captureRef(cardRef, { format: 'png', quality: 1, width: 1080, height: 1920, result: 'tmpfile' });
+      await RNShare.shareSingle({
+        social: RNShare.Social.INSTAGRAM_STORIES as never,
+        appId: facebookAppId,
+        backgroundImage: uri.startsWith('file://') ? uri : `file://${uri}`,
+      });
+      track('share_story', { kind: content.kind });
+    } catch {
+      // Sem Instagram instalado (ou cancelado): cai no compartilhar normal da imagem.
+      await shareImage();
+    } finally { setBusy(false); }
   };
 
   function inviteMessage() {
@@ -140,6 +162,13 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
               {content.invite ? (isPt ? 'Enviar convite' : 'Send invite') : (isPt ? 'Compartilhar imagem' : 'Share image')}
             </AppText>
           </TouchableOpacity>
+          {canStory && !content.invite ? (
+            <TouchableOpacity onPress={shareStory} disabled={busy}
+              style={{ backgroundColor: '#FFFFFF', borderRadius: 999, paddingVertical: 14, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+              <InstagramLogo size={20} color={INK} weight="bold" />
+              <AppText style={{ fontSize: 15, fontWeight: '800', color: INK }}>{isPt ? 'Postar no Story' : 'Post to Story'}</AppText>
+            </TouchableOpacity>
+          ) : null}
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <TouchableOpacity onPress={content.invite ? shareImage : shareLink} disabled={busy}
               style={{ flex: 1, backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 999, paddingVertical: 13, alignItems: 'center' }}>

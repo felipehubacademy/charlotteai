@@ -18,6 +18,7 @@ import { supabase } from '@/lib/supabase';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import { soundEngine } from '@/lib/soundEngine';
 import { getModule } from '@/lib/curriculum-v2/loader';
+import { noteTopicCompleted } from '@/lib/storeReview';
 
 export type V2Activity = 'grammar' | 'speaking' | 'roleplay' | 'chat';
 export type V2Level    = 'Novice' | 'Inter' | 'Advanced' | 'Igorfina';
@@ -165,6 +166,7 @@ export function useLearnProgressV2(
         const mod = getModule(level as any, moduleId);
         const moduleDone = !!mod && mod.units.every(u => unitDone(moduleId, u.id));
         setTimeout(() => { soundEngine.play(moduleDone ? 'module_complete' : 'topic_complete').catch(() => {}); }, 400);
+        noteTopicCompleted(); // bom momento para pedir avaliação na loja (lib/storeReview)
       }
     }
 
