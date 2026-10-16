@@ -1,5 +1,5 @@
 // app/(onboarding)/index.tsx
-// 3-slide onboarding shown once on first launch (before login)
+// 4-slide onboarding shown once on first launch (before login)
 
 import React, { useRef, useState, useEffect } from 'react';
 import {
@@ -15,6 +15,7 @@ import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import Svg, { Path } from 'react-native-svg';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { systemIsPt } from '@/lib/systemLang';
+import { characterInfo } from '@/lib/characters';
 
 // Onboarding é chrome/marketing: segue o idioma do aparelho. O inglês da
 // demonstração de conversa (slide 2) é conteúdo e fica em inglês.
@@ -261,6 +262,74 @@ function Slide2({ active }: { active: boolean }) {
   );
 }
 
+// ── Slide Família — Conheça a Família Queizy ─────────────────────────────────
+// Mesmo recado do site (queizy.com/#familia): a Charlotte e o Igorfina, e um cartão "Em breve"
+// deixando claro que a Família vai crescer. Novo personagem: acrescente em FAMILY_MEMBERS.
+
+const FAMILY_MEMBERS: { id: 'charlotte' | 'igorfina'; role: string; line: string }[] = [
+  { id: 'charlotte', role: isPt ? 'Tutora' : 'Tutor',
+    line: isPt ? 'Paciente e animada. Corrige na hora, sem vergonha de errar.' : 'Patient and upbeat. Corrects you on the spot.' },
+  { id: 'igorfina', role: isPt ? 'Comediante e imitador' : 'Comedian and impressionist',
+    line: isPt ? 'Solta imitações no meio da conversa e tem trilha própria.' : 'Drops impressions mid-chat and has his own trail.' },
+];
+
+function SlideFamily({ active }: { active: boolean }) {
+  const anims = useRef([0, 1, 2].map(() => ({ o: new Animated.Value(0), y: new Animated.Value(12) }))).current;
+  useEffect(() => {
+    if (!active) return;
+    Animated.stagger(140, anims.map(a => Animated.parallel([
+      Animated.timing(a.o, { toValue: 1, duration: 320, useNativeDriver: true }),
+      Animated.timing(a.y, { toValue: 0, duration: 320, useNativeDriver: true }),
+    ]))).start();
+  }, [active]);
+
+  const card = { flexDirection: 'row' as const, alignItems: 'center' as const, gap: 14, backgroundColor: C.card, borderRadius: 18, paddingHorizontal: 14, paddingVertical: 12, borderWidth: 1, borderColor: C.border };
+  // Em tela pequena o conteúdo pode passar da altura: rola na vertical em vez de cortar.
+  return (
+    <ScrollView style={{ width: W, flex: 1 }} showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 28, paddingVertical: 12 }}>
+      <View style={{ width: '100%', gap: 10, marginBottom: 22 }}>
+        {FAMILY_MEMBERS.map((m, i) => {
+          const info = characterInfo(m.id);
+          return (
+            <Animated.View key={m.id} style={{ opacity: anims[i].o, transform: [{ translateY: anims[i].y }], ...card, ...C.shadow }}>
+              <Image source={info.avatar} style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: C.navy }} />
+              <View style={{ flex: 1, minWidth: 0 }}>
+                <AppText display style={{ fontSize: 17, fontWeight: '800', color: C.navy }}>{info.name}</AppText>
+                <AppText style={{ fontSize: 12, fontWeight: '700', color: C.greenDark, marginTop: 1 }}>{m.role}</AppText>
+                <AppText style={{ fontSize: 13, color: C.navyMid, lineHeight: 18, marginTop: 3 }}>{m.line}</AppText>
+              </View>
+            </Animated.View>
+          );
+        })}
+        <Animated.View style={{ opacity: anims[2].o, transform: [{ translateY: anims[2].y }], ...card, backgroundColor: 'transparent', borderStyle: 'dashed', borderWidth: 1.5, borderColor: 'rgba(22,19,31,0.18)' }}>
+          <View style={{ width: 52, height: 52, borderRadius: 26, alignItems: 'center', justifyContent: 'center', borderWidth: 1.5, borderStyle: 'dashed', borderColor: 'rgba(22,19,31,0.25)' }}>
+            <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navyLight }}>?</AppText>
+          </View>
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <AppText display style={{ fontSize: 17, fontWeight: '800', color: C.navy }}>{isPt ? 'Em breve' : 'Coming soon'}</AppText>
+            <AppText style={{ fontSize: 13, color: C.navyMid, lineHeight: 18, marginTop: 3 }}>
+              {isPt ? 'A Família está crescendo: tem gente nova chegando para conversar com você.' : 'The family is growing: new people are coming to chat with you.'}
+            </AppText>
+          </View>
+        </Animated.View>
+      </View>
+
+      <AppText display style={{
+        fontSize: 30, fontWeight: '800', color: C.navy,
+        textAlign: 'center', lineHeight: 35, letterSpacing: -0.5, marginBottom: 10,
+      }}>
+        {isPt ? <>Conheça a{'\n'}Família Queizy.</> : <>Meet the{'\n'}Queizy family.</>}
+      </AppText>
+      <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, maxWidth: 290 }}>
+        {isPt
+          ? 'Cada um tem seu jeito de falar, para você praticar inglês de verdade.'
+          : 'Each one has their own way of talking, so you practice real English.'}
+      </AppText>
+    </ScrollView>
+  );
+}
+
 // ── Slide 3 — Daily goal ──────────────────────────────────────────────────────
 
 const GOAL_OPTIONS = [
@@ -372,7 +441,7 @@ function Slide3({ active, selectedGoal, onGoalSelect }: {
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 
-const TOTAL = 3;
+const TOTAL = 4;
 
 export default function OnboardingScreen() {
   const scrollRef = useRef<ScrollView>(null);
@@ -437,8 +506,9 @@ export default function OnboardingScreen() {
         >
           <Slide1 />
           <Slide2 active={ready && slide === 1} />
+          <SlideFamily active={ready && slide === 2} />
           <Slide3
-            active={ready && slide === 2}
+            active={ready && slide === 3}
             selectedGoal={selectedGoal}
             onGoalSelect={setSelectedGoal}
           />
