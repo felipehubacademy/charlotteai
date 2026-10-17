@@ -10,7 +10,7 @@ import { isTasterRow, TASTE_LIVE_VOICE_SECONDS } from '@/lib/taste';
 import { createClient } from '@supabase/supabase-js';
 
 const MODEL = 'gpt-realtime-2';
-const POOL_SECONDS = 20 * 60; // 1 200 s — premium (igual a POOL_PREMIUM_SECONDS do app)
+const POOL_SECONDS = 20 * 60; // 1 200 s — premium e institucional (igual a POOL_PREMIUM_SECONDS do app)
 
 function thisMonthFirstDayInTz(tz: string): string {
   const parts = new Intl.DateTimeFormat('en-US', {
@@ -54,9 +54,8 @@ export async function POST(request: NextRequest) {
           .single();
 
         if (!dbErr && data) {
-          if (data.is_institutional) {
-            console.log(`✅ Institutional user ${user.id}: Live Voice unlimited`);
-          } else {
+          // Institucional segue o mesmo limite do pago (20 min/mês).
+          {
             const tz           = (data as any).timezone || 'UTC';
             const thisMonth    = thisMonthFirstDayInTz(tz);
             // Degustação (sem assinatura): 3 min uma vez só, sem a renovação do mês.
