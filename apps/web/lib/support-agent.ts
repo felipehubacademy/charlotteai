@@ -57,7 +57,7 @@ function subscriptionLabel(s?: string | null): string {
     case 'active': return 'Premium ativo';
     case 'cancelled': return 'cancelada (renovação desligada; o acesso continua até o fim do período já pago)';
     case 'expired': return 'vencida (sem acesso; precisa assinar de novo)';
-    case 'institutional': return 'conta institucional';
+    case 'institutional': return 'Premium ativo';
     default: return `"${s}"`;
   }
 }

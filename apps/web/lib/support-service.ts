@@ -39,7 +39,8 @@ export async function findUserContext(email?: string | null, userId?: string | n
   return {
     identified: true, userId: u.id,
     name: u.name, email: u.email, level: u.charlotte_level,
-    subscription_status: u.subscription_status,
+    // Institucional é controle interno: para o aluno (e para a IA) é Premium ativo.
+    subscription_status: u.is_institutional ? 'active' : u.subscription_status,
     // Degustação também tem acesso (ao que é grátis); o rótulo da assinatura explica o limite.
     has_access: taster || !!u.is_institutional || ['active', 'trial', 'cancelled'].includes(u.subscription_status ?? ''),
     placementTestDone: !!u.placement_test_done,
