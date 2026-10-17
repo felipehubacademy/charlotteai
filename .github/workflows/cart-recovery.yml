@@ -15,7 +15,7 @@ jobs:
         run: |
           response=$(curl -s -o /tmp/out.json -w "%{http_code}" \
             -X POST \
-            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET_TOKEN }}" \
             -H "Content-Type: application/json" \
             -H "User-Agent: github-actions-cron" \
             -d '{}' \
