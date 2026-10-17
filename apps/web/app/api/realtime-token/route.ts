@@ -1,6 +1,7 @@
 // app/api/realtime-token/route.ts
 // Cria uma ephemeral session token para o OpenAI Realtime API via WebRTC.
-// Valida o pool mensal de 30 min do usuário antes de emitir o token.
+// Valida o pool mensal de 20 min do usuário (mesmo valor do app, lib/liveVoiceUsage.ts) antes de emitir o token.
+// Os 30 min do pacote avulso (minutes30) entram em live_voice_bonus_seconds.
 // O client_secret retornado é de curta duração (~1 min) e usado apenas para
 // a troca de SDP — a API key nunca sai do servidor.
 
@@ -9,7 +10,7 @@ import { isTasterRow, TASTE_LIVE_VOICE_SECONDS } from '@/lib/taste';
 import { createClient } from '@supabase/supabase-js';
 
 const MODEL = 'gpt-realtime-2';
-const POOL_SECONDS = 30 * 60; // 1 800 s
+const POOL_SECONDS = 20 * 60; // 1 200 s — premium (igual a POOL_PREMIUM_SECONDS do app)
 
 function thisMonthFirstDayInTz(tz: string): string {
   const parts = new Intl.DateTimeFormat('en-US', {
