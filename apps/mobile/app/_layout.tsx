@@ -21,6 +21,7 @@ import { loadAudioPreferences } from '@/lib/audioPreferences';
 import { ThemeProvider, useTheme } from '@/lib/theme';
 import { SplashOverlay } from '@/components/ui/SplashOverlay';
 import { useFonts } from 'expo-font';
+import { useOtaAutoApply } from '@/lib/otaAutoApply';
 
 // Mantém a splash screen visível enquanto carrega
 SplashScreen.preventAutoHideAsync();
@@ -64,6 +65,8 @@ function AuthGuard() {
   const lastRoute   = useRef<string | null>(null);
   const retryCount  = useRef(0);
   const pathname    = usePathname();
+  // Atualização OTA aplicada ao voltar do segundo plano (lib/otaAutoApply).
+  useOtaAutoApply(pathname);
   const [aiConsent,    setAiConsent]    = useState<boolean | null>(null); // null = still loading
   const [consentReady, setConsentReady] = useState(false);
 
