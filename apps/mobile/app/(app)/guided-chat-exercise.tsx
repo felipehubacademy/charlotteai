@@ -14,7 +14,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View, TouchableOpacity, StatusBar, ActivityIndicator,
-   Platform, TextInput, Animated, ScrollView,
+   Platform, TextInput, Animated, ScrollView, Keyboard,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { setAudioModeAsync, setIsAudioActiveAsync } from 'expo-audio';
@@ -80,6 +80,13 @@ export default function GuidedChatExerciseScreen() {
   const userId      = profile?.id;
   const isPt        = systemIsPt; // suporte/chrome: idioma do device
   const insets      = useSafeAreaInsets();
+  // Teclado aberto: a missão recolhe para só o título e a contagem, e sobra espaço para a conversa.
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
+  useEffect(() => {
+    const show = Keyboard.addListener(Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow', () => setKeyboardOpen(true));
+    const hide = Keyboard.addListener(Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide', () => setKeyboardOpen(false));
+    return () => { show.remove(); hide.remove(); };
+  }, []);
 
   // Load guided-chat definition from v2
   const [gc, setGc] = useState<GuidedChat | null>(null);
@@ -449,13 +456,13 @@ export default function GuidedChatExerciseScreen() {
       {/* Sticky checklist */}
       <View style={{
         marginHorizontal: 14, marginTop: 6, marginBottom: 10,
-        padding: 14, borderRadius: 14,
+        padding: 14, paddingVertical: keyboardOpen ? 10 : 14, borderRadius: 14,
         backgroundColor: 'rgba(22,19,31,0.04)',
         borderWidth: 1, borderColor: C.border,
       }}>
         <View style={{
           flexDirection: 'row', alignItems: 'center',
-          justifyContent: 'space-between', marginBottom: 10,
+          justifyContent: 'space-between', marginBottom: keyboardOpen ? 0 : 10,
         }}>
           <AppText style={{
             fontSize: 10, fontWeight: '700', color: C.navyLight,
@@ -470,7 +477,7 @@ export default function GuidedChatExerciseScreen() {
             {objectivesDone}/{objectivesTotal}
           </AppText>
         </View>
-        <View style={{ gap: 8 }}>
+        {!keyboardOpen && <View style={{ gap: 8 }}>
           {gc.objectives.map(obj => {
             const met     = objectivesMet.has(obj.id);
             const label   = isPt ? (obj.label_pt || obj.label_en) : (obj.label_en || obj.label_pt);
@@ -498,7 +505,7 @@ export default function GuidedChatExerciseScreen() {
               </View>
             );
           })}
-        </View>
+        </View>}
       </View>
 
       {/* ChatBox with scenario as scrolling top banner */}

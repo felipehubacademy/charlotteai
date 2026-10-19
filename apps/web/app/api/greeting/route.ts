@@ -52,6 +52,10 @@ function buildPrompt(req: GreetingRequest): { system: string; user: string } {
   // ── User prompt (context) ─────────────────────────────────────────────────
   // Nome e período ficam fora: a Home já os mostra no título acima da fala.
   const ctx: string[] = [];
+  // Sem citar a outra língua: mencionar "hoje" no prompt do Inter fazia o modelo responder em português.
+  const todayRule = level === 'Novice'
+    ? 'If you mention XP, make it explicit that you mean today, using the Portuguese word "hoje" (never the English word).'
+    : 'If you mention XP, make it explicit that you mean today. Write ONLY in English.';
 
   if (newUser) {
     ctx.push('This is their very first time here. Welcome them like it is the start of something great. Do not mention streaks or XP.');
@@ -60,9 +64,9 @@ function buildPrompt(req: GreetingRequest): { system: string; user: string } {
   } else if (todayXP > 0) {
     ctx.push(`Streak: ${streak} day${streak !== 1 ? 's' : ''}. ${todayXP} XP earned today, ${xpLeft} XP left to hit the goal. Push them gently.`);
   } else if (streak > 1) {
-    ctx.push(`Streak: ${streak} days. They have not earned XP TODAY yet (${totalXP} XP in total). Motivate them to keep the streak alive. If you mention XP, make it explicit that you mean today, using the word for "today" in the language you are writing in (in Portuguese: "hoje"; never mix in the English word); never imply they have no XP at all.`);
+    ctx.push(`Streak: ${streak} days. They have not earned XP TODAY yet (${totalXP} XP in total). Motivate them to keep the streak alive. ${todayRule} Never imply they have no XP at all.`);
   } else {
-    ctx.push(`They have not earned XP TODAY yet (${totalXP} XP in total). Short motivational nudge. If you mention XP, make it explicit that you mean today, using the word for "today" in the language you are writing in (in Portuguese: "hoje"; never mix in the English word); never imply they have no XP at all.`);
+    ctx.push(`They have not earned XP TODAY yet (${totalXP} XP in total). Short motivational nudge. ${todayRule} Never imply they have no XP at all.`);
   }
 
   // Destaque de ontem: a Charlotte comenta a evolução real do aluno.
