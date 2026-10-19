@@ -1360,7 +1360,7 @@ export default function LearnSessionScreen() {
               </AppText>
             </View>
           )}
-          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '100%', textAlign: 'center' }} numberOfLines={2}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '100%', textAlign: 'center' }} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
             {topicTitle}
           </AppText>
           {!!tenseTag && !params.reviewId && (
@@ -1389,15 +1389,9 @@ export default function LearnSessionScreen() {
           }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
-          scrollEnabled={
-            // Grammar com input (read_answer/fix_error/short_write) ou passagens
-            // longas precisam scroll. Multiple_choice tambem — quando tem passage
-            // longo + 4 opcoes, ultima fica atras do footer. Pronunciation:
-            // listen_write. Word_bank/fill_gap nao precisam scroll.
-            (currentStep.kind === 'grammar' &&
-              ['read_answer', 'fix_error', 'short_write', 'multiple_choice'].includes(currentStep.exercise.type)) ||
-            (currentStep.kind === 'pronunciation' && currentStep.phrase?.type === 'listen_write')
-          }
+          // Sempre rolável (sem elástico quando cabe): com fonte/zoom grandes ou teclado aberto, a frase do
+          // fill_gap/word_bank ficava escondida atrás de Dica/Verificar e não dava para rolar.
+          alwaysBounceVertical={false}
         >
           {/* ── Progress (sem chip de tipo, mesmo padrao do grammar) ── */}
           <View style={{ marginBottom: 20 }}>
