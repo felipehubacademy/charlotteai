@@ -26,6 +26,19 @@ function ensureGlobals() {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('react-native-url-polyfill').setupURLPolyfill();
   if (g.navigator && g.navigator.userAgent === undefined) g.navigator.userAgent = g.navigator.product ?? 'Unknown';
+  // Recursos de navegador que o cliente do LiveKit usa e o RN não tem.
+  if (typeof g.DOMException === 'undefined') {
+    g.DOMException = class DOMException extends Error {
+      constructor(message = '', name = 'Error') { super(message); this.name = name; }
+    };
+  }
+  if (typeof g.Event === 'undefined') {
+    g.Event = class Event { type: string; constructor(type: string) { this.type = type; } };
+  }
+  if (typeof g.EventTarget === 'undefined') {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    g.EventTarget = require('event-target-shim').EventTarget;
+  }
   if (!g.crypto) g.crypto = {};
   if (!g.crypto.randomUUID) {
     g.crypto.randomUUID = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (ch: string) => {
