@@ -7,7 +7,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { View, Modal, TouchableOpacity, Image, ActivityIndicator, Share, Platform, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ViewShot, Sharing, Clipboard, canShareImage } from '@/lib/nativeOptional';
-import { X, ShareNetwork, LinkSimple, Check } from 'phosphor-react-native';
+import { X, ShareNetwork, LinkSimple, Check, Fire, Medal, GraduationCap, Lightning, Trophy, UsersThree } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
@@ -17,6 +17,18 @@ import { track } from '@/lib/analytics';
 const INK = '#16131F';
 const VOLT = '#DCFF4A';
 const PAPER = '#FAF7F0';
+
+// Cada tipo de card tem cor e ícone próprios (paleta Queizy), para o feed não ficar repetitivo.
+// light = fundo escuro/saturado: texto branco e logo com o nome em branco.
+type Theme = { bg: string; text: string; sub: string; accent: string; light: boolean; Icon: typeof Fire; linkBg: string; linkText: string; linkAccent: string };
+const THEMES: Record<string, Theme> = {
+  invite:      { bg: VOLT,      text: INK,       sub: 'rgba(22,19,31,0.72)',  accent: INK,       light: false, Icon: UsersThree,    linkBg: INK,       linkText: '#FFFFFF', linkAccent: VOLT },
+  challenge:   { bg: '#2BD97C', text: INK,       sub: 'rgba(22,19,31,0.75)',  accent: INK,       light: false, Icon: Trophy,        linkBg: INK,       linkText: '#FFFFFF', linkAccent: '#2BD97C' },
+  streak:      { bg: '#FF4F8B', text: '#FFFFFF', sub: 'rgba(255,255,255,0.85)', accent: VOLT,    light: true,  Icon: Fire,          linkBg: INK,       linkText: '#FFFFFF', linkAccent: VOLT },
+  achievement: { bg: '#6B4BFF', text: '#FFFFFF', sub: 'rgba(255,255,255,0.85)', accent: VOLT,    light: true,  Icon: Medal,         linkBg: VOLT,      linkText: INK,       linkAccent: INK },
+  level:       { bg: PAPER,     text: INK,       sub: 'rgba(22,19,31,0.7)',   accent: '#6B4BFF', light: false, Icon: GraduationCap, linkBg: '#6B4BFF', linkText: '#FFFFFF', linkAccent: VOLT },
+  xp:          { bg: PAPER,     text: INK,       sub: 'rgba(22,19,31,0.7)',   accent: '#08804A', light: false, Icon: Lightning,     linkBg: INK,       linkText: '#FFFFFF', linkAccent: VOLT },
+};
 
 // Prévia na tela: 9:16. A captura sai em 1080x1920.
 const W = 270;
@@ -57,6 +69,7 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
   }, [content]);
 
   if (!content) return null;
+  const th = THEMES[content.invite ? 'invite' : content.kind] ?? THEMES.invite;
   const name = (profile?.name ?? '').trim().split(/\s+/)[0] || null;
   const shortLink = (link ?? 'queizy.com').replace(/^https?:\/\//, '');
 
@@ -109,22 +122,26 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
         {/* Card capturado (dentro de um invólucro que só escala a prévia) */}
         <View style={{ width: W * scale, height: H * scale, alignItems: 'center', justifyContent: 'center' }}>
         <View style={{ transform: [{ scale }] }}>
-        <View ref={cardRef} collapsable={false} style={{ width: W, height: H, backgroundColor: VOLT, borderRadius: 22, overflow: 'hidden', padding: 22 }}>
-          <Image source={require('@/assets/logo-lockup.png')} style={{ height: 26, width: 112 }} resizeMode="contain" />
+        <View ref={cardRef} collapsable={false} style={{ width: W, height: H, backgroundColor: th.bg, borderRadius: 22, overflow: 'hidden', padding: 22 }}>
+          {/* Ícone grande do tipo, ao fundo */}
+          <View pointerEvents="none" style={{ position: 'absolute', right: -46, top: 70, opacity: th.light ? 0.16 : 0.1, transform: [{ rotate: '-14deg' }] }}>
+            <th.Icon size={230} color={th.light ? '#FFFFFF' : INK} weight="fill" />
+          </View>
+          <Image source={th.light ? require('@/assets/logo-lockup-light.png') : require('@/assets/logo-lockup.png')} style={{ height: 26, width: 112 }} resizeMode="contain" />
 
           <View style={{ flex: 1, justifyContent: 'center' }}>
             {content.icon && <View style={{ marginBottom: 14 }}>{content.icon}</View>}
-            <AppText display style={{ fontSize: content.big.length > 6 ? 46 : 72, lineHeight: content.big.length > 6 ? 50 : 76, fontWeight: '800', color: INK, letterSpacing: -2 }}>
+            <AppText display style={{ fontSize: content.big.length > 6 ? 46 : 72, lineHeight: content.big.length > 6 ? 50 : 76, fontWeight: '800', color: th.accent === INK ? th.text : th.accent, letterSpacing: -2 }}>
               {content.big}
             </AppText>
-            <AppText display style={{ fontSize: 24, lineHeight: 28, fontWeight: '800', color: INK, marginTop: 4 }}>
+            <AppText display style={{ fontSize: 24, lineHeight: 28, fontWeight: '800', color: th.text, marginTop: 4 }}>
               {content.title}
             </AppText>
             {content.subtitle && (
-              <AppText style={{ fontSize: 14, lineHeight: 19, color: 'rgba(22,19,31,0.72)', marginTop: 10 }}>{content.subtitle}</AppText>
+              <AppText style={{ fontSize: 14, lineHeight: 19, color: th.sub, marginTop: 10 }}>{content.subtitle}</AppText>
             )}
             {name && (
-              <AppText style={{ fontSize: 14, color: INK, marginTop: 16, fontWeight: '700' }}>
+              <AppText style={{ fontSize: 14, color: th.text, marginTop: 16, fontWeight: '700' }}>
                 {/* Convite: prova social. Conquistas: vale para qualquer membro da Família. */}
                 {content.invite
                   ? (isPt ? `${name} já está no Queizy` : `${name} is already on Queizy`)
@@ -133,11 +150,11 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
             )}
           </View>
 
-          <View style={{ backgroundColor: INK, borderRadius: 16, padding: 14 }}>
-            <AppText style={{ fontSize: 13, color: '#FFFFFF', fontWeight: '800' }}>
+          <View style={{ backgroundColor: th.linkBg, borderRadius: 16, padding: 14 }}>
+            <AppText style={{ fontSize: 13, color: th.linkText, fontWeight: '800' }}>
               {content.invite ? (isPt ? 'Entre pelo link' : 'Join with the link') : (isPt ? 'Vem estudar comigo' : 'Come study with me')}
             </AppText>
-            <AppText style={{ fontSize: 13, color: VOLT, fontWeight: '700', marginTop: 2 }}>{shortLink}</AppText>
+            <AppText style={{ fontSize: 13, color: th.linkAccent, fontWeight: '700', marginTop: 2 }}>{shortLink}</AppText>
           </View>
         </View>
         </View>
