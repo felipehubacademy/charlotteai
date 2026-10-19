@@ -617,7 +617,7 @@ export default function GuidedChatExerciseScreen() {
           backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border,
           flexDirection: 'row', alignItems: 'flex-end', gap: 8,
         }}>
-          <TextInput
+          <TextInput maxFontSizeMultiplier={1.15}
             value={draft}
             onChangeText={setDraft}
             placeholder={sessionComplete

@@ -481,7 +481,7 @@ export default function ProfileTab() {
             <View style={{ flex: 1, gap: 2 }}>
               {editingName ? (
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <TextInput
+                  <TextInput maxFontSizeMultiplier={1.15}
                     ref={nameInputRef}
                     value={nameValue}
                     onChangeText={setNameValue}

@@ -63,7 +63,7 @@ export function FriendSearch({ onChange, autoFocus }: { onChange?: () => void; a
     <View style={{ marginHorizontal: 16, marginBottom: 16 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.card, borderRadius: 14, borderWidth: 1, borderColor: C.border, paddingHorizontal: 12 }}>
         <MagnifyingGlass size={18} color={C.light} weight="bold" />
-        <TextInput
+        <TextInput maxFontSizeMultiplier={1.15}
           value={q} onChangeText={setQ} autoCapitalize="none" autoCorrect={false} returnKeyType="search" autoFocus={autoFocus}
           placeholder={t('Buscar amigo por nome ou @', 'Find a friend by name or @')} placeholderTextColor={C.light}
           style={{ flex: 1, paddingVertical: 12, fontSize: 15, color: C.ink }}

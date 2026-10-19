@@ -277,7 +277,7 @@ export function AddWordModal({
                 {isPt ? 'TERMO' : 'TERM'}
               </AppText>
               <View style={{ flexDirection: 'row', gap: 8 }}>
-                <TextInput
+                <TextInput maxFontSizeMultiplier={1.15}
                   value={term}
                   onChangeText={setTerm}
                   placeholder={isPt ? 'ex: take it easy' : 'e.g. take it easy'}
@@ -365,7 +365,7 @@ export function AddWordModal({
               <AppText style={{ fontSize: 12, fontWeight: '600', color: C.muted, marginBottom: 6, letterSpacing: 0.4 }}>
                 {isPt ? 'DEFINIÇÃO (PT-BR)' : 'DEFINITION'}
               </AppText>
-              <TextInput
+              <TextInput maxFontSizeMultiplier={1.15}
                 value={definition}
                 onChangeText={setDefinition}
                 placeholder={isPt ? 'O que significa este termo?' : 'What does this term mean?'}
@@ -386,7 +386,7 @@ export function AddWordModal({
               <AppText style={{ fontSize: 12, fontWeight: '600', color: C.muted, marginBottom: 6, letterSpacing: 0.4 }}>
                 {isPt ? 'EXEMPLO (EN)' : 'EXAMPLE'}
               </AppText>
-              <TextInput
+              <TextInput maxFontSizeMultiplier={1.15}
                 value={example}
                 onChangeText={setExample}
                 placeholder="e.g. Just take it easy — there's no rush."
@@ -408,7 +408,7 @@ export function AddWordModal({
                 <AppText style={{ fontSize: 12, fontWeight: '600', color: C.muted, marginBottom: 6, letterSpacing: 0.4 }}>
                   TRADUÇÃO DO EXEMPLO
                 </AppText>
-                <TextInput
+                <TextInput maxFontSizeMultiplier={1.15}
                   value={exampleTr}
                   onChangeText={setExampleTr}
                   placeholder="Tradução em português..."

@@ -123,7 +123,7 @@ export default function ChangePasswordScreen() {
             {/* Password */}
             <View style={inputWrap}>
               <Lock size={18} color={C.navyLight} weight="regular" style={{ marginRight: 10 }} />
-              <TextInput
+              <TextInput maxFontSizeMultiplier={1.15}
                 value={password}
                 onChangeText={t => { setPassword(t); setError(null); }}
                 placeholder={isPt ? 'Nova senha' : 'New password'}
@@ -146,7 +146,7 @@ export default function ChangePasswordScreen() {
             {/* Confirm */}
             <View style={inputWrap}>
               <Lock size={18} color={C.navyLight} weight="regular" style={{ marginRight: 10 }} />
-              <TextInput
+              <TextInput maxFontSizeMultiplier={1.15}
                 ref={confirmRef}
                 value={confirm}
                 onChangeText={t => { setConfirm(t); setError(null); }}

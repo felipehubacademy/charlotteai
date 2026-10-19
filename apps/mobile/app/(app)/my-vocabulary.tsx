@@ -173,7 +173,7 @@ export default function MyVocabularyScreen() {
           backgroundColor: C.inputBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9,
         }}>
           <MagnifyingGlass size={16} color={C.muted} />
-          <TextInput
+          <TextInput maxFontSizeMultiplier={1.15}
             value={search}
             onChangeText={setSearch}
             placeholder={isPt ? 'Buscar palavra...' : 'Search word...'}

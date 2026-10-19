@@ -1560,7 +1560,7 @@ export default function LearnSessionScreen() {
                         {/* TranslatableText engole espaço de ponta — injetamos manual */}
                         {/\s$/.test(lastBefore) && <AppText style={ts}>{' '}</AppText>}
                         {isFillGapAnswering ? (
-                          <TextInput
+                          <TextInput maxFontSizeMultiplier={1.15}
                             value={userAnswer}
                             onChangeText={setUserAnswer}
                             autoFocus
@@ -1762,7 +1762,7 @@ export default function LearnSessionScreen() {
                       </AppText>
                     </View>
                   )}
-                  <TextInput
+                  <TextInput maxFontSizeMultiplier={1.15}
                     value={userAnswer}
                     onChangeText={setUserAnswer}
                     placeholder={isPortuguese ? 'Escreva sua resposta em inglês...' : 'Write your answer in English...'}
@@ -1785,7 +1785,7 @@ export default function LearnSessionScreen() {
               {(currentStep.exercise.type === 'fix_error' || currentStep.exercise.type === 'read_answer') && gStatus === 'answering' && (
                 <>
                   <View style={{ flex: 1 }} />
-                  <TextInput
+                  <TextInput maxFontSizeMultiplier={1.15}
                     value={userAnswer}
                     onChangeText={setUserAnswer}
                     placeholder={
@@ -2027,7 +2027,7 @@ export default function LearnSessionScreen() {
               {/* Listen & Write: text input */}
               {currentStep.phrase.type === 'listen_write' && (pronStatus === 'listening' || pronStatus === 'result') && (
                 <>
-                  <TextInput
+                  <TextInput maxFontSizeMultiplier={1.15}
                     value={listenWriteAnswer}
                     onChangeText={setListenWriteAnswer}
                     placeholder={isPortuguese ? 'Digite o que você ouviu…' : 'Type what you heard…'}

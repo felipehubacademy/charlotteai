@@ -142,7 +142,7 @@ export default function SupportChatScreen() {
         </ScrollView>
 
         <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, paddingHorizontal: 12, paddingTop: 10, paddingBottom: keyboardOpen ? 10 : 10 + insets.bottom, backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border }}>
-          <TextInput
+          <TextInput maxFontSizeMultiplier={1.15}
             value={text} onChangeText={setText} multiline maxLength={2000}
             placeholder={isPt ? 'Escreva sua mensagem' : 'Type your message'} placeholderTextColor={C.inkLight}
             style={{ flex: 1, minHeight: 42, maxHeight: 120, backgroundColor: C.bg, borderRadius: 21, paddingHorizontal: 16, paddingTop: 11, paddingBottom: 11, fontSize: 15, color: C.ink }}

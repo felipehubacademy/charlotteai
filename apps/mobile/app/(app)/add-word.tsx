@@ -288,7 +288,7 @@ export default function AddWordScreen() {
               </AppText>
               {termStatus === 'checking' && <ActivityIndicator size="small" color={C.volt} />}
             </View>
-            <TextInput
+            <TextInput maxFontSizeMultiplier={1.15}
               value={term}
               onChangeText={t => { setTerm(t); setAlreadyAdded(false); setTermStatus('idle'); setSuggestion(null); }}
               placeholder={isPt ? 'ex: take it easy' : 'e.g. take it easy'}
@@ -366,7 +366,7 @@ export default function AddWordScreen() {
           {/* ── Significado ── */}
           <View>
             <Label>{isPt ? 'SIGNIFICADO' : 'MEANING'}</Label>
-            <TextInput
+            <TextInput maxFontSizeMultiplier={1.15}
               value={definition}
               onChangeText={setDefinition}
               placeholder={isPt ? 'O que significa?' : 'What does it mean?'}
@@ -380,7 +380,7 @@ export default function AddWordScreen() {
           <View>
             <Label>{isPt ? 'EXEMPLO EM INGLÊS' : 'EXAMPLE'}</Label>
             <View style={{ backgroundColor: C.card, borderRadius: 16, borderWidth: 1, borderColor: C.border, overflow: 'hidden' }}>
-              <TextInput
+              <TextInput maxFontSizeMultiplier={1.15}
                 value={example}
                 onChangeText={setExample}
                 placeholder="e.g. Just take it easy — there's no rush."
@@ -389,7 +389,7 @@ export default function AddWordScreen() {
                 style={[fieldStyle, { borderWidth: 0, borderRadius: 0, fontStyle: example ? 'italic' : 'normal', minHeight: 64 }]}
               />
               {isPt && (
-                <TextInput
+                <TextInput maxFontSizeMultiplier={1.15}
                   value={exampleTr}
                   onChangeText={setExampleTr}
                   placeholder="Tradução do exemplo"

@@ -463,7 +463,7 @@ export default function VocabularyTab() {
         {/* ── Busca + filtros ── */}
         <View style={{ marginTop: 18, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.card, borderRadius: 14, borderWidth: 1, borderColor: C.border, paddingHorizontal: 12, paddingVertical: 9 }}>
           <MagnifyingGlass size={16} color={C.muted} />
-          <TextInput
+          <TextInput maxFontSizeMultiplier={1.15}
             value={search} onChangeText={setSearch}
             placeholder={isPt ? 'Buscar na coleção' : 'Search your collection'}
             placeholderTextColor={C.muted}

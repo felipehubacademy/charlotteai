@@ -258,7 +258,7 @@ function PasswordField({
         paddingHorizontal: 12,
       }}>
         <Lock size={16} color={C.navyLight} weight="regular" style={{ marginRight: 8 }} />
-        <TextInput
+        <TextInput maxFontSizeMultiplier={1.15}
           value={value}
           onChangeText={onChangeText}
           secureTextEntry={!show}

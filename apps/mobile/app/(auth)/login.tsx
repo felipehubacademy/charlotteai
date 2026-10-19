@@ -124,7 +124,7 @@ export default function LoginScreen() {
             {/* E-mail */}
             <View style={[inputWrap, { borderColor: C.border }]}>
               <Envelope size={18} color={C.navyLight} weight="regular" style={{ marginRight: 10 }} />
-              <TextInput
+              <TextInput maxFontSizeMultiplier={1.15}
                 value={email}
                 onChangeText={t => { setEmail(t); setError(null); }}
                 placeholder={isPt ? 'E-mail' : 'Email'}
@@ -143,7 +143,7 @@ export default function LoginScreen() {
             {/* Senha */}
             <View style={[inputWrap, { borderColor: C.border }]}>
               <Lock size={18} color={C.navyLight} weight="regular" style={{ marginRight: 10 }} />
-              <TextInput
+              <TextInput maxFontSizeMultiplier={1.15}
                 ref={passwordRef}
                 value={password}
                 onChangeText={t => { setPassword(t); setError(null); }}

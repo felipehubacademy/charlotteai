@@ -695,7 +695,12 @@ export default function LiveVoiceTab() {
   const nominalAvatarTop = modalAvatarCenterY - 74;
   const minAvatarTop = headerBottom == null ? -Infinity : headerBottom + 10 + bubbleH + BUBBLE_GAP;
   const maxAvatarTop = ctaTop == null ? Infinity : ctaTop - 8 - AVATAR_BLOCK;
-  const avatarTopOffset = Math.min(Math.max(nominalAvatarTop, minAvatarTop), Math.max(nominalAvatarTop, maxAvatarTop));
+  // Desce para caber o balão; se aí encostar no cartão de minutos (tela baixa, fonte ou zoom
+  // grandes), sobe o necessário até o cabeçalho, e o balão sai (showBubble abaixo). Antes ficava
+  // na posição padrão e a Charlotte cobria o cartão.
+  const floorAvatarTop = headerBottom == null ? -Infinity : headerBottom + 6;
+  let avatarTopOffset = Math.max(nominalAvatarTop, minAvatarTop);
+  if (avatarTopOffset > maxAvatarTop) avatarTopOffset = Math.max(maxAvatarTop, floorAvatarTop);
   const bubbleTop = avatarTopOffset - BUBBLE_GAP - bubbleH;
   // Último recurso (tela muito baixa): sem espaço para o balão, só a Charlotte.
   const showBubble = headerBottom == null || bubbleTop >= headerBottom + 6;

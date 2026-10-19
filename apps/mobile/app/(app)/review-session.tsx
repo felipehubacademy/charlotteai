@@ -711,7 +711,7 @@ export default function ReviewSession() {
               {/* Text input (gap_fill, reverse, charlotte_challenge) */}
               {currentQuestion.cardType !== 'context_guess' && phase === 'question' ? (
                 <View>
-                  <TextInput
+                  <TextInput maxFontSizeMultiplier={1.15}
                     value={userAnswer}
                     onChangeText={setUserAnswer}
                     placeholder={isPt ? 'Digite sua resposta...' : 'Type your answer...'}

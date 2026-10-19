@@ -571,7 +571,7 @@ export default function LearnPronunciationScreen() {
 
               {/* Listen & Write input */}
               {exerciseType === 'listen_write' && (status === 'listening' || status === 'recording') && (
-                <TextInput
+                <TextInput maxFontSizeMultiplier={1.15}
                   value={listenWriteAnswer}
                   onChangeText={setListenWriteAnswer}
                   placeholder="Write what you heard…"

@@ -6,7 +6,7 @@
 import React, { useCallback, useState, useMemo, useEffect, useRef } from 'react';
 import {
   View, TouchableOpacity, Platform, Modal,
-  Pressable, Animated, Easing, ScrollView, Dimensions, StatusBar,
+  Pressable, Animated, Easing, ScrollView, Dimensions, StatusBar, useWindowDimensions,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { Question, X, ClockCounterClockwise, XCircle, CaretRight, Trash, Plus, DotsThree } from 'phosphor-react-native';
@@ -143,6 +143,7 @@ export default function PracticeTab() {
     return days > 0 ? days : 0;
   }, [profile]);
   const insets = useSafeAreaInsets();
+  const narrow = useWindowDimensions().width < 360; // aparelho pequeno ou zoom de tela
   const tabBarHeight = useBottomTabBarHeight();
   const screenW = Dimensions.get('window').width;
   const drawerW = Math.round(screenW * 0.82);
@@ -445,9 +446,10 @@ export default function PracticeTab() {
         }
       >
         {/* ── Toggle pill (3 modos) + menu ⋯ (nova conversa, histórico, ajuda) ── */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, paddingTop: 12, paddingBottom: 8 }}>
+        {/* Tela estreita (aparelho pequeno ou zoom de tela): pills encolhem em vez de passar da borda. */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, paddingTop: 12, paddingBottom: 8, paddingHorizontal: 12 }}>
           <View style={{
-            flexDirection: 'row',
+            flexDirection: 'row', flexShrink: 1,
             backgroundColor: '#FFFFFF',
             borderRadius: 22,
             padding: 4,
@@ -472,12 +474,12 @@ export default function PracticeTab() {
                   onPress={() => handleModeSwitch(m.id)}
                   activeOpacity={0.7}
                   style={{
-                    paddingHorizontal: 14, paddingVertical: 7,
+                    paddingHorizontal: narrow ? 9 : 14, paddingVertical: 7, flexShrink: 1,
                     borderRadius: 18,
                     backgroundColor: active ? C.navy : 'transparent',
                   }}
                 >
-                  <AppText style={{
+                  <AppText numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.8} style={{
                     fontSize: 13, fontWeight: '700',
                     color: active ? '#FFFFFF' : C.navyMid,
                   }}>
@@ -531,7 +533,9 @@ export default function PracticeTab() {
 
           {/* Estado inicial (só o welcome): balão da Charlotte + sugestões */}
           {messages.length <= 1 && !historyLoading && (
-            <View pointerEvents="box-none" style={{ position: 'absolute', top: 0, left: 0, right: 0 }}>
+            // Rolável: em tela baixa (aparelho pequeno, fonte ou zoom grandes) os temas ficavam atrás do campo.
+            <ScrollView style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+              contentContainerStyle={{ paddingBottom: 16 }} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
               <PracticeEmptyState
                 mode={mode}
                 isPt={isPt}
@@ -541,7 +545,7 @@ export default function PracticeTab() {
                 character={character}
                 onCharacter={startConversationWith}
               />
-            </View>
+            </ScrollView>
           )}
         </View>
 
