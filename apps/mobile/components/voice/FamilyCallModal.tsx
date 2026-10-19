@@ -224,7 +224,7 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
             <AppText style={{ fontSize: 14, fontWeight: '700', color: yourTurn ? INK : th.ink }}>{chip}</AppText>
           </View>
           <View style={{ marginTop: 18, height: 44, justifyContent: 'center' }}>
-            {status === 'calling' ? <ActivityIndicator color={th.ink} /> : (
+            {status === 'calling' ? <ActivityIndicator color={th.ink} /> : !live ? null : (
               <LiveVoiceWave
                 mode={live ? (mode === 'speaking' ? 'charlotte' : 'user') : 'idle'}
                 levelRef={levels.remote} userLevelRef={levels.local}
