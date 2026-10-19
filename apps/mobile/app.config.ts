@@ -142,6 +142,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     'expo-web-browser',
     // Fix Xcode 16 build error ('memory' file not found) pro react-native-webrtc.
     // Idempotente (marker guard), afeta so o target react-native-webrtc.
+    // LiveKit (WebRTC da ligação com a Família no ElevenLabs e da ligação da Charlotte).
+    '@livekit/react-native-expo-plugin',
     './plugins/withWebRTCXcode16Fix',
     // Linka ReplayKit no app target: o withWebRTCXcode16Fix desliga os modulos
     // do react-native-webrtc, o que mata o autolink da ReplayKit e quebra o

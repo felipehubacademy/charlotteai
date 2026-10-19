@@ -29,7 +29,9 @@ import {
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { requestRecordingPermissionsAsync, setAudioModeAsync } from 'expo-audio';
-import { RTCPeerConnection, mediaDevices } from 'react-native-webrtc';
+// WebRTC do LiveKit (fork do react-native-webrtc, mesma API): o SDK do ElevenLabs (ligação com a Família)
+// usa este pacote, e os dois não convivem no mesmo app.
+import { RTCPeerConnection, mediaDevices } from '@livekit/react-native-webrtc';
 import CharlotteAudioSession from 'charlotte-audio-session';
 import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Headphones, Pause, ArrowCounterClockwise, ArrowLeft, ChatCircle, ClosedCaptioning } from 'phosphor-react-native';
 import { ScrollView } from 'react-native';
