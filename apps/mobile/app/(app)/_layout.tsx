@@ -11,6 +11,7 @@ import { RallyJoinedModal } from '@/components/rally/RallyJoinedModal';
 import { ActionSheetHost } from '@/components/ui/ActionSheet';
 import { AppAlertHost } from '@/components/ui/AppAlert';
 import { ShareCardProvider } from '@/components/share/ShareCardProvider';
+import { GoalsCelebration } from '@/components/goals/GoalsCelebration';
 
 export default function AppLayout() {
   const { isAuthenticated, profile, mustChangePassword } = useAuth();
@@ -32,6 +33,7 @@ export default function AppLayout() {
       <RallyJoinedModal />
       <ActionSheetHost />
       <AppAlertHost />
+      <GoalsCelebration />
       <Stack screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
         <Stack.Screen name="first-access" options={{ animation: 'none' }} />
         <Stack.Screen name="index" options={{ animation: 'none' }} />

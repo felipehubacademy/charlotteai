@@ -27,6 +27,7 @@ import { usePaywallContext } from '@/lib/paywallContext';
 import { identifyUser, track } from '@/lib/analytics';
 import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greetingCache';
 import { characterInfo } from '@/lib/characters';
+import { fetchGoals } from '@/lib/missions';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
 import { splashGate } from '@/lib/splashGate';
@@ -302,7 +303,11 @@ export default function HomeTab() {
   }, [userId]); // eslint-disable-line
 
   useFocusEffect(useCallback(() => {
-    if (userId) fetchData();
+    if (!userId) return;
+    fetchData();
+    // Metas: o servidor credita o XP das missões concluídas e a comemoração aparece (GoalsCelebration).
+    // Ao voltar de uma lição para a Início, o aluno já vê a missão concluída.
+    fetchGoals();
   }, [fetchData]));
 
   // ── AI Greeting ─────────────────────────────────────────────────────────────

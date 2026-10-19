@@ -1,4 +1,5 @@
 // lib/expo-notification-service.ts
+import { pickWeekly, periodsFor, missionTexts, goalsFor, type MissionLevel } from '@/lib/missions';
 import { aiFetch } from '@/lib/ai-models';
 // Sends push notifications to React Native (Charlotte AI) via Expo Push API
 
@@ -926,131 +927,63 @@ export async function sendXPMilestoneNotification(
 }
 
 // ── 5. Goal reminders ────────────────────────────────────────────────────────
-// Users close to their weekly XP goal (80–99% of WEEKLY_XP_GOAL) get a nudge
-// in late afternoon. Helps convert near-misses into completed weeks.
-const WEEKLY_XP_GOAL = 100;
-
+// Desafio da semana quase lá: de quinta a domingo, à tarde (hora local), quem passou de 60% do
+// desafio e ainda não concluiu recebe quanto falta, qual é e quanto vale (lib/missions). Abre Metas.
+// Antes falava de uma "meta semanal de 100 XP" que não existia no app.
 export async function sendGoalReminders(supabase: any): Promise<void> {
-  console.log('🎯 [Expo] Checking goal reminders...');
+  console.log('[Expo] Checking weekly challenge reminders...');
   try {
-    const weekStart = new Date();
-    weekStart.setUTCHours(0, 0, 0, 0);
-    weekStart.setUTCDate(weekStart.getUTCDate() - ((weekStart.getUTCDay() + 6) % 7)); // Mon start
+    const since = new Date(Date.now() - 4 * 86400000).toISOString();
+    const { data: rows, error } = await supabase.from('charlotte_practices').select('user_id').gte('created_at', since);
+    if (error) { console.error('[Expo] goal query error:', error.message); return; }
+    const activeIds = [...new Set(((rows ?? []) as any[]).map(r => r.user_id))] as string[];
+    if (!activeIds.length) return;
 
-    // Sum XP per user this week
-    const { data: rows, error } = await supabase
-      .from('charlotte_practices')
-      .select('user_id, xp_earned')
-      .gte('created_at', weekStart.toISOString());
-    if (error) { console.error('❌ [Expo] goal query error:', error.message); return; }
+    const allUsers = await fetchCharlotteUsers(supabase, activeIds);
+    const now = new Date();
+    // Quinta (4) a domingo (0), no dia local do aluno.
+    const tzFiltered = usersAtLocalHour(allUsers, TARGET_HOUR_GOAL)
+      .filter((u: any) => [4, 5, 6, 0].includes(localDayInTz(now, u.timezone || DEFAULT_TZ)));
+    if (!tzFiltered.length) return;
 
-    const xpByUser = new Map<string, number>();
-    for (const r of (rows ?? []) as any[]) {
-      xpByUser.set(r.user_id, (xpByUser.get(r.user_id) ?? 0) + (r.xp_earned ?? 0));
-    }
-
-    const near = Array.from(xpByUser.entries())
-      .filter(([, xp]) => xp >= WEEKLY_XP_GOAL * 0.8 && xp < WEEKLY_XP_GOAL)
-      .map(([userId, xp]) => ({ userId, xp, missing: WEEKLY_XP_GOAL - xp }));
-
-    if (!near.length) { console.log('✅ [Expo] No users near weekly goal'); return; }
-
-    const allUsers = await fetchCharlotteUsers(supabase, near.map(n => n.userId));
-    const tzFiltered = usersAtLocalHour(allUsers, TARGET_HOUR_GOAL);
-    if (!tzFiltered.length) { console.log(`⏱️ [Expo] goal: no users at local ${TARGET_HOUR_GOAL}h this run`); return; }
-
-    const allowedIds = await filterFrequencyCap(
-      supabase,
-      tzFiltered.map((u: any) => u.id),
-      'goal_reminder',
-    );
-    const skipped = tzFiltered.length - allowedIds.length;
-    if (skipped > 0) console.log(`⏭️ [Expo] goal: skipping ${skipped} user(s) at daily cap`);
-    if (!allowedIds.length) return;
-
-    const allowed = new Set(allowedIds);
-    const cuUsers = tzFiltered.filter((u: any) => allowed.has(u.id));
-    const missingMap = Object.fromEntries(near.map(n => [n.userId, n.missing]));
-
-    const recentHashes = await fetchRecentVariantHashes(
-      supabase,
-      cuUsers.map((u: any) => u.id),
-      'goal_reminder',
-    );
-
-    const hashByUser: Record<string, string> = {};
+    const allowedIds = new Set(await filterFrequencyCap(supabase, tzFiltered.map((u: any) => u.id), 'goal_reminder'));
     const messages: ExpoMessage[] = [];
     const senders: any[] = [];
-    for (const u of cuUsers) {
-      const firstName = u.name?.split(/[\s\-]+/)[0] ?? 'there';
-      const isNovice  = pushIsPt(u); // true = português
-      const missing   = missingMap[u.id] ?? 0;
-      const picked = pickCoreTemplate(
-        'goal_reminder',
-        isNovice,
-        { name: firstName, missingXp: missing },
-        recentHashes.get(u.id) ?? new Set(),
-      );
-      if (!picked) continue;
-      hashByUser[u.id] = picked.hash;
+    for (const u of tzFiltered.filter((x: any) => allowedIds.has(x.id))) {
+      const g = await goalsFor(supabase, u.id, { credit: false });
+      const w = g.weekly;
+      if (w.completed || w.current / w.target < 0.6) continue;
+      const pt = pushIsPt(u);
+      const left = w.target - w.current;
+      const name = u.name?.split(/[\s\-]+/)[0] ?? '';
+      const unit = pt ? w.unit.pt : w.unit.en;
       messages.push({
         to: u.expo_push_token,
-        title: picked.msg.title,
-        body:  picked.msg.body,
-        data:  { screen: 'chat', type: 'goal_reminder', missingXP: missing },
+        title: pt ? 'Desafio da semana: falta pouco' : 'Weekly challenge: almost there',
+        body: pt
+          ? `${name ? `${name}, f` : 'F'}altam ${left} ${unit} para concluir: ${w.title.pt}. Vale ${w.xp} XP.`
+          : `${name ? `${name}, ` : ''}${left} ${unit} to go: ${w.title.en}. Worth ${w.xp} XP.`,
+        data: { screen: 'goals', type: 'goal_reminder', challenge: w.id },
         sound: 'default',
         priority: 'high',
       });
       senders.push(u);
     }
-
+    if (!messages.length) return;
     const { sent, errors } = await sendExpoPush(messages, supabase);
-    console.log(`✅ [Expo] Goal reminders: ${sent} sent, ${errors} errors`);
+    console.log(`[Expo] Weekly challenge reminders: ${sent} sent, ${errors} errors`);
     await logRnPushes(supabase, senders.map((u: any, i: number) => ({
-      userId: u.id,
-      type: 'goal_reminder',
-      variantHash: hashByUser[u.id],
-      title: messages[i]?.title,
-      body:  messages[i]?.body,
+      userId: u.id, type: 'goal_reminder', title: messages[i]?.title, body: messages[i]?.body,
     })));
   } catch (e) {
-    console.error('❌ [Expo] Goal reminder error:', e);
+    console.error('[Expo] Goal reminder error:', e);
   }
 }
 
 // ── 6. Weekly challenge ──────────────────────────────────────────────────────
-// Monday morning broadcast to users who practiced at least once last week.
-// Challenge title rotates deterministically by ISO week number so everyone
-// receives the same theme at the same time.
-const WEEKLY_CHALLENGES_PT = [
-  { title: '💪 Desafio da semana', body: 'Essa semana, fale 3 frases em inglês sobre seu final de semana!' },
-  { title: '🎧 Desafio da semana', body: 'Ouça a Charlotte e repita 5 frases com entonação natural.' },
-  { title: '📝 Desafio da semana', body: 'Escreva um parágrafo sobre um hobby usando o passado simples.' },
-  { title: '🗣️ Desafio da semana', body: 'Conte uma história curta em 1 minuto — sem pausas!' },
-  { title: '🔁 Desafio da semana', body: 'Use 3 phrasal verbs novos em conversas esta semana.' },
-  { title: '✨ Desafio da semana', body: 'Pronuncie as vogais longas/curtas em 5 palavras diferentes.' },
-  { title: '🎯 Desafio da semana', body: 'Faça 5 sessões de chat de pelo menos 3 minutos cada.' },
-  { title: '🔥 Desafio da semana', body: 'Complete 7 dias de streak — um pouquinho por dia!' },
-];
-const WEEKLY_CHALLENGES_EN = [
-  { title: '💪 Weekly challenge', body: 'This week, say 3 sentences about your weekend in English!' },
-  { title: '🎧 Weekly challenge', body: 'Listen to Charlotte and repeat 5 phrases with natural intonation.' },
-  { title: '📝 Weekly challenge', body: 'Write a paragraph about a hobby using the simple past.' },
-  { title: '🗣️ Weekly challenge', body: 'Tell a short story in 1 minute — no pauses!' },
-  { title: '🔁 Weekly challenge', body: 'Use 3 new phrasal verbs in conversations this week.' },
-  { title: '✨ Weekly challenge', body: 'Pronounce long/short vowels in 5 different words.' },
-  { title: '🎯 Weekly challenge', body: 'Do 5 chat sessions of at least 3 minutes each.' },
-  { title: '🔥 Weekly challenge', body: 'Keep a 7-day streak — a little every day!' },
-];
-
-function isoWeekNumber(d: Date): number {
-  const date = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
-  const day = date.getUTCDay() || 7;
-  date.setUTCDate(date.getUTCDate() + 4 - day);
-  const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
-  return Math.ceil((((date.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
-}
-
+// Segunda de manhã, para quem praticou na semana anterior. Anuncia exatamente o desafio da semana
+// que o aluno vê no app (lib/missions: mesmo modelo, meta pelo nível, onde fazer e XP) e abre a
+// tela de Metas. Antes eram frases soltas que o app não media nem pagava.
 export async function sendWeeklyChallenges(supabase: any): Promise<void> {
   console.log('💪 [Expo] Sending weekly challenges...');
   try {
@@ -1082,25 +1015,24 @@ export async function sendWeeklyChallenges(supabase: any): Promise<void> {
     const cuUsers = tzFiltered.filter((u: any) => allowed.has(u.id));
     if (!cuUsers.length) return;
 
-    const weekIdx = isoWeekNumber(now) % WEEKLY_CHALLENGES_PT.length;
-    const chPt = WEEKLY_CHALLENGES_PT[weekIdx];
-    const chEn = WEEKLY_CHALLENGES_EN[weekIdx];
-
     const messages: ExpoMessage[] = cuUsers.map((u: any) => {
-      const isNovice = pushIsPt(u); // true = português
-      const ch = isNovice ? chPt : chEn;
+      const pt = pushIsPt(u);
+      const level = (['Novice', 'Inter', 'Advanced'].includes(u.charlotte_level) ? u.charlotte_level : 'Novice') as MissionLevel;
+      const p = periodsFor(u.timezone);
+      const t = pickWeekly(u.id, p);
+      const tx = missionTexts(t, level, u.id, p.weekStart);
       return {
         to: u.expo_push_token,
-        title: ch.title,
-        body: ch.body,
-        data: { screen: 'chat', type: 'weekly_challenge', weekIdx },
+        title: pt ? 'Desafio da semana' : 'Weekly challenge',
+        body: pt ? `${tx.title.pt}. ${tx.where.pt}. Vale ${t.xp} XP.` : `${tx.title.en}. ${tx.where.en}. Worth ${t.xp} XP.`,
+        data: { screen: 'goals', type: 'weekly_challenge', challenge: t.id },
         sound: 'default',
         priority: 'high',
       };
     });
 
     const { sent, errors } = await sendExpoPush(messages, supabase);
-    console.log(`✅ [Expo] Weekly challenges: ${sent} sent, ${errors} errors (week ${weekIdx})`);
+    console.log(`✅ [Expo] Weekly challenges: ${sent} sent, ${errors} errors`);
     await logRnPushes(supabase, cuUsers.map((u: any, i: number) => ({
       userId: u.id,
       type: 'weekly_challenge',
@@ -1478,24 +1410,7 @@ const CORE_TEMPLATES: Record<string, ReengTemplates> = {
       { title: '🌟 Hold the momentum', body: '{streakDays}, {name}. Let\'s not let it cool down now.' },
     ],
   },
-  goal_reminder: {
-    pt: [
-      { title: '🎯 Meta quase lá!', body: '{name}, só {missingXp} XP para completar sua meta semanal!' },
-      { title: '✨ Reta final da semana', body: '{name}, {missingXp} XP e você fecha a semana com chave de ouro.' },
-      { title: '🚀 Falta pouco', body: '{missingXp} XP de distância da meta, {name}. Bora?' },
-      { title: '💪 Você está perto', body: '{name}, só {missingXp} XP e a meta semanal é sua.' },
-      { title: '🏆 Meta ao alcance', body: '{name}, {missingXp} XP de distância. Uma sessão curta fecha.' },
-      { title: '⚡ Fecha a semana', body: '{name}, {missingXp} XP até o fim. Vamos terminar forte?' },
-    ],
-    en: [
-      { title: '🎯 Almost at your goal!', body: '{name}, only {missingXp} XP to hit your weekly goal!' },
-      { title: '✨ Final stretch', body: '{name}, {missingXp} XP and you close the week strong.' },
-      { title: '🚀 Nearly there', body: '{missingXp} XP between you and the goal, {name}. Let\'s go?' },
-      { title: '💪 You\'re close', body: '{name}, just {missingXp} XP and the weekly goal is yours.' },
-      { title: '🏆 Goal in reach', body: '{name}, {missingXp} XP to go. One short session does it.' },
-      { title: '⚡ Finish the week', body: '{name}, {missingXp} XP left. Let\'s finish strong?' },
-    ],
-  },
+
   xp_milestone: {
     pt: [
       { title: '🎉 Marco alcançado!', body: '{name} chegou a {milestone} XP! Continue praticando!' },

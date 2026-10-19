@@ -73,7 +73,10 @@ A trilha principal, a Gramática, a Pronúncia e o suporte são com a Charlotte.
   { section: 'Guia do app', question: 'Os áudios das conversas ficam salvos?', answer:
 `Sim. No Free Chat, os áudios que você grava e as respostas faladas ficam salvos por 90 dias: ao reabrir a conversa em "Conversas anteriores", dá para ouvir de novo. Depois de 90 dias o áudio é apagado e a mensagem fica só com o texto. Conversas de antes dessa mudança mostram apenas o texto.` },
   { section: 'Guia do app', question: 'Onde ficam as metas e o desafio da semana?', answer:
-`Na tela "Seu progresso" (tocando nas pílulas de fogo, raio e troféu no topo), na parte "Metas": o "XP de hoje" (com o próximo marco do dia), as missões do dia e o "Desafio da semana". As missões e o desafio pagam XP extra quando concluídos.` },
+`Na tela "Seu progresso" (tocando nas pílulas de fogo, raio e troféu no topo), na parte "Metas". Ali ficam o "XP de hoje", as 3 missões do dia e o "Desafio da semana". Cada missão diz o que fazer e onde, e tocar nela leva direto ao lugar. O aviso do desafio da semana que chega no celular também abre essa tela.` },
+  { section: 'Guia do app', question: 'Como funcionam as missões do dia e o desafio da semana?', answer:
+`Todo dia você recebe 3 missões novas: uma da trilha (por exemplo, concluir atividades ou fazer um Role-play), uma de prática extra (no Practice ou no Vocabulário) e uma de constância (ganhar XP no dia ou manter a sequência). O desafio da semana vai de segunda a domingo e vale mais XP. As missões mudam todo dia e as metas seguem o seu nível.
+O XP entra sozinho: depois de cumprir, ao voltar para a tela Início (ou abrir "Metas") aparece o aviso "Missão concluída". Com as 3 do dia feitas tem comemoração, e ao concluir o desafio da semana dá para compartilhar o card. Cada missão paga uma vez.` },
   { section: 'Guia do app', question: 'Como estudar com amigos (Estudar junto)?', answer:
 `Fica em Perfil > Você no Queizy > Estudar junto (ou em "Seu progresso"):
 - "Encontrar amigos": busca pelo nome, sobrenome ou @. A pessoa recebe o pedido e, ao aceitar, vocês viram amigos de estudo.

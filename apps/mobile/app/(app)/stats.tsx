@@ -45,7 +45,7 @@ export default function StatsScreen() {
   const userLevel = (params.userLevel || profile?.charlotte_level || 'Inter') as UserLevel;
   const userName  = params.userName || profile?.name || '';
 
-  const goals = useGoalsData(userId, userLevel);
+  const goals = useGoalsData(userId);
 
   const [loading, setLoading]   = useState(true);
   const [streak, setStreak]     = useState(0);
@@ -341,14 +341,14 @@ export default function StatsScreen() {
                 <AppText style={{ flex: 1, fontSize: 13, fontWeight: '700', color: C.ink }} numberOfLines={1}>
                   {isPt ? 'Desafio da semana' : 'Weekly challenge'}
                   <AppText style={{ fontSize: 13, fontWeight: '600', color: C.mid }}>
-                    {' · '}{isPt ? goals.weekly.challenge.title.pt : goals.weekly.challenge.title.en}
+                    {' · '}{goals.weekly.mission.label}
                   </AppText>
                 </AppText>
                 <AppText style={{ fontSize: 12, fontWeight: '800', color: C.mid }}>
-                  {Math.min(goals.weekly.current, goals.weekly.challenge.target)}/{goals.weekly.challenge.target}
+                  {goals.weekly.mission.current}/{goals.weekly.mission.target}
                 </AppText>
               </View>
-              <QueizyWave progress={goals.weekly.current / goals.weekly.challenge.target} height={12} strokeWidth={3.5} />
+              <QueizyWave progress={goals.weekly.mission.progress} height={12} strokeWidth={3.5} />
             </View>
           )}
         </Card>

@@ -23,7 +23,7 @@ const W = 270;
 const H = 480;
 
 export interface ShareCardContent {
-  kind: 'streak' | 'achievement' | 'level' | 'xp';
+  kind: 'streak' | 'achievement' | 'level' | 'xp' | 'challenge';
   /** Número ou palavra em destaque (ex.: "7", "Inter"). */
   big: string;
   /** Linha abaixo do destaque (ex.: "dias seguidos"). */

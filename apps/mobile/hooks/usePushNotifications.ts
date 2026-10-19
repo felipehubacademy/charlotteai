@@ -122,6 +122,10 @@ export function usePushNotifications(userId?: string) {
           case 'support_reply': // equipe respondeu no chat de suporte
             router.push('/(app)/support-chat' as any);
             break;
+          case 'weekly_challenge': // desafio da semana: abre a tela de Metas
+          case 'goal_reminder':
+            router.push('/(app)/goals' as any);
+            break;
           case 'achievement_cheer':
             router.push('/(app)/achievements' as any);
             break;
