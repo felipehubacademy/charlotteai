@@ -94,6 +94,8 @@ function TypingDots() {
 
 // ── Home Tab ──────────────────────────────────────────────────────────────────
 
+const MIN_TRAIL_VIEWPORT = 240; // abaixo disso a trilha fixa embaixo do hero fica inutilizável
+
 export default function HomeTab() {
   const { profile, isTaster } = useAuth();
   const { openPaywall }           = usePaywallContext();
@@ -400,6 +402,9 @@ export default function HomeTab() {
   // o conditional do FAB reavalia assim que o trail mede a posicao.
   const [activeTopicY, setActiveTopicY] = useState(0);
   const activeTopicYRef = useRef<number>(0);
+  // Tela baixa: hero e card do nível rolam junto com a trilha (ver scrollAll no JSX).
+  const [scrollAll, setScrollAll] = useState(false);
+  const topBlockHRef = useRef(0);
   // Trilha finalizada (nenhum modulo ativo) — reportado pelo TrailContent.
   // Fonte de verdade pro goDown: evita usar um activeTopicYRef obsoleto que
   // sobra quando o user conclui a trilha na mesma sessao (mesmo nivel, sem
@@ -495,19 +500,8 @@ export default function HomeTab() {
 
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId: userId ?? '', userLevel: level, userName: name };
 
-  return (
-    <View style={{ flex: 1, backgroundColor: C.bg }}>
-
-      <HeaderPills
-        streak={streak}
-        totalXP={totalXP}
-        rank={rank}
-        statsParams={statsParams}
-        trialDaysLeft={trialDaysLeft}
-        onPaywallOpen={openPaywall}
-        isPt={isPt}
-      />
-
+  const topBlock = (
+    <>
       {/* Hero — a Charlotte fala com o aluno: balão no formato do logo,
           centralizado, com a saudação em destaque e a fala da IA embaixo. */}
       <View style={{ marginHorizontal: 20, marginTop: 20 }}>
@@ -564,17 +558,42 @@ export default function HomeTab() {
           <ExtraTracksRow />
         </View>
       </View>
+    </>
+  );
+
+  return (
+    <View style={{ flex: 1, backgroundColor: C.bg }}>
+
+      <HeaderPills
+        streak={streak}
+        totalXP={totalXP}
+        rank={rank}
+        statsParams={statsParams}
+        trialDaysLeft={trialDaysLeft}
+        onPaywallOpen={openPaywall}
+        isPt={isPt}
+      />
+
+      {/* Hero + card do nível: fixos no topo; em tela baixa (fonte/zoom grandes, aparelho pequeno)
+          rolam junto com a trilha (scrollAll), senão a trilha ficava com poucos pontos de altura. */}
+      {!scrollAll && topBlock}
 
       {/* Learning trail — scrollable below fixed hero */}
       <ScrollView
         ref={trailScrollRef}
-        style={{ flex: 1, marginTop: 10 }}
-        contentContainerStyle={{ paddingTop: 24, paddingBottom: 40 }}
+        style={{ flex: 1, marginTop: scrollAll ? 0 : 10 }}
+        contentContainerStyle={{ paddingTop: scrollAll ? 0 : 24, paddingBottom: 40 }}
+        onLayout={e => { if (!scrollAll && e.nativeEvent.layout.height < MIN_TRAIL_VIEWPORT) setScrollAll(true); }}
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={32}
         onScroll={(e) => setScrollY(e.nativeEvent.contentOffset.y)}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.navy} />}
       >
+        {scrollAll && (
+          <View onLayout={e => { topBlockHRef.current = e.nativeEvent.layout.height + 34; }} style={{ paddingBottom: 34 }}>
+            {topBlock}
+          </View>
+        )}
         <TrailContent
           userId={userId}
           level={trailLevel}
@@ -583,7 +602,7 @@ export default function HomeTab() {
           onActiveModuleY={(y) => {
             // Backup via onLayout — confiavel pra Inter/Advanced onde
             // measureLayout (tryScroll) as vezes falha silencioso.
-            if (y > 0) activeTopicYRef.current = y;
+            if (y > 0) activeTopicYRef.current = y + (scrollAll ? topBlockHRef.current : 0);
           }}
           onTrailFinished={(finished) => {
             trailFinishedRef.current = finished;
