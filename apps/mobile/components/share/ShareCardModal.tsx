@@ -41,7 +41,7 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
   // Só a prévia na tela; a imagem compartilhada continua 1080x1920 (o captureRef usa o card sem escala).
   const { height: winH } = useWindowDimensions();
   const ACTIONS_H = 180; // botões + espaços abaixo do card
-  const scale = Math.min(1, Math.max(0.6, (winH - insets.top - insets.bottom - 40 - ACTIONS_H) / H));
+  const scale = Math.min(1, Math.max(0.6, (winH - insets.top - insets.bottom - 40 - ACTIONS_H - 44) / H));
   const { profile } = useAuth();
   const isPt = systemIsPt;
   const cardRef = useRef<View>(null);
@@ -102,7 +102,7 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
   return (
     <Modal visible transparent animationType="fade" onRequestClose={onClose}>
       <View style={{ flex: 1, backgroundColor: 'rgba(22,19,31,0.88)', alignItems: 'center', justifyContent: 'center', padding: 20, paddingTop: 20 + insets.top, paddingBottom: 20 + insets.bottom }}>
-        <TouchableOpacity onPress={onClose} style={{ position: 'absolute', top: 56, right: 20, padding: 8 }} hitSlop={12}>
+        <TouchableOpacity onPress={onClose} style={{ position: 'absolute', top: insets.top + 4, right: 12, padding: 8, zIndex: 2 }} hitSlop={12}>
           <X size={26} color="#FFFFFF" weight="bold" />
         </TouchableOpacity>
 
