@@ -657,7 +657,7 @@ export default function RolePlayExerciseScreen() {
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1 }}>
-          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
+          <AppText display numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7} style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
             {rp.persona}
           </AppText>
           <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 1, letterSpacing: 0.6, textTransform: 'uppercase', fontWeight: '600' }}>

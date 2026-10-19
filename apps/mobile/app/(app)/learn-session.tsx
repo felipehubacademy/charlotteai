@@ -1364,7 +1364,7 @@ export default function LearnSessionScreen() {
             {topicTitle}
           </AppText>
           {!!tenseTag && !params.reviewId && (
-            <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>
+            <AppText numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7} style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>
               {tenseTag}
             </AppText>
           )}
