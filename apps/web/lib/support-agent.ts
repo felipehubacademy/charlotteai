@@ -6,6 +6,8 @@ import { aiFetch } from '@/lib/ai-models';
 import { getSupportFaq } from './support-faq';
 import { logOpenAIUsage } from './openai-usage';
 import glossary from './app-ui-glossary.json';
+import { resolveSupportEmailFix, type SupportFixResult } from './email-fix';
+import { sendAccessLink, checkStoreSubscription } from './support-access';
 
 const GLOSSARY = glossary as Record<string, string>;
 
@@ -43,6 +45,7 @@ export const AUTO_INTENTS = new Set([
   'encerramento',   // aluno agradece ou diz que resolveu: despedida e encerra o atendimento
   'reembolso',      // só quando a FAQ tem o caminho (needsHuman=false); o resto escala
   'excluir_conta',  // a FAQ tem o passo a passo; se não deu certo, o modelo marca needsHuman
+  'email_errado',   // assinou pelo site com o e-mail errado: o código localiza, confere e corrige (lib/email-fix)
 ]);
 
 // Status da assinatura em palavras (o modelo não sabe que "none" é a degustação).
@@ -54,7 +57,7 @@ function subscriptionLabel(s?: string | null): string {
     case 'active': return 'Premium ativo';
     case 'cancelled': return 'cancelada (renovação desligada; o acesso continua até o fim do período já pago)';
     case 'expired': return 'vencida (sem acesso; precisa assinar de novo)';
-    case 'institutional': return 'conta institucional';
+    case 'institutional': return 'Premium ativo';
     default: return `"${s}"`;
   }
 }
@@ -139,6 +142,9 @@ REGRAS:
 - Na PRIMEIRA vez que o usuário relata que algo não funciona ou não aparece (não vê o XP, não consegue ligar para a Charlotte, microfone não funciona etc.) e a FAQ tem o passo a passo: use problema_uso, responda com os passos e needsHuman=false. No fim, convide a responder se não resolver. Não escale nesse primeiro momento.
 - Use os dados do usuário identificado para personalizar: diga o nível dele, o XP total atual, os minutos de Live Voice restantes e o tipo de celular (iPhone ou Android, mostrando só o caminho daquele sistema). Ex.: se ele tem 0 min de Live Voice, a causa provável é o fim dos minutos do mês.
 - Se o usuário já tentou o passo a passo e continua com o problema, ou relata erro, travamento ou dado errado na conta (XP sumiu ou diminuiu, progresso perdido), use bug_tecnico e needsHuman=true.
+- Assinou pelo site (queizy.com/assinar) e digitou o e-mail errado, ou pagou pelo site e não recebeu o acesso / não consegue entrar porque o e-mail estava errado: intent email_errado, needsHuman=false. Preencha "emailFix" com o que a pessoa disse em TODA a conversa: correctEmail (o e-mail certo dela), wrongEmail (o que foi digitado na compra, se souber), fullName (nome completo usado no pagamento) e cardLast4 (só os 4 últimos dígitos do cartão, se pagou no cartão). Campo não informado = null. NUNCA peça o número inteiro do cartão, CPF ou senha. O "reply" pode ficar vazio: o sistema confere a compra e responde.
+- Esqueceu a senha, não consegue entrar ou não recebeu o e-mail para criar a senha: intent reset_senha (ou acesso_login), needsHuman=false. Preencha "accessEmail" com o e-mail que a pessoa diz usar na conta (null se não disse). O sistema manda o link para esse e-mail e responde.
+- Assinou pelo app (App Store ou Google Play) e o acesso não foi liberado / continua bloqueado: intent restaurar_compra, needsHuman=false, e responda com o passo a passo da FAQ (Restaurar compras). O sistema também confere a assinatura na loja.
 - Se o usuário pede uma função que não existe na FAQ, não prometa nada: agradeça a sugestão, diga que vai para a equipe e use intent sugestao (needsHuman=false).
 - Seja breve (no máximo alguns parágrafos curtos). Texto corrido, sem Markdown (sem **, # ou listas com marcação), salvo onde dito abaixo. Não peça dados sensíveis (senha, cartão).
 - Tom humano e acolhedor, como uma pessoa da equipe (sem parecer robô, sem repetir frases prontas).${tone.firstReply ? `
@@ -150,10 +156,10 @@ REGRAS:
 - ${who}
 
 Classifique a intenção em UM destes intents:
-reset_senha, como_cancelar, planos_precos, como_usar, onde_fica, problema_uso, restaurar_compra, acesso_login, saudacao, sugestao, encerramento, reembolso, cobranca, excluir_conta, bug_tecnico, reclamacao, outro.
+reset_senha, como_cancelar, planos_precos, como_usar, onde_fica, problema_uso, restaurar_compra, acesso_login, saudacao, sugestao, encerramento, reembolso, cobranca, excluir_conta, email_errado, bug_tecnico, reclamacao, outro.
 
 Responda SOMENTE um JSON com as chaves:
-{"intent": "<um dos intents>", "reply": "<resposta para o usuário, no idioma da mensagem dele>", "lang": "pt" | "en" (idioma da sua resposta), "needsHuman": <true|false>, "reason": "<por que precisa de humano, ou vazio>"}
+{"intent": "<um dos intents>", "reply": "<resposta para o usuário, no idioma da mensagem dele>", "lang": "pt" | "en" (idioma da sua resposta), "needsHuman": <true|false>, "reason": "<por que precisa de humano, ou vazio>", "emailFix": {"correctEmail": null, "wrongEmail": null, "fullName": null, "cardLast4": null} (só no intent email_errado), "accessEmail": null (só em reset_senha / acesso_login)}
 
 FAQ:
 ${faq}`;
@@ -167,6 +173,7 @@ export async function runSupportAgent(input: {
   firstName?: string | null;   // primeiro nome (ex.: perfil do WhatsApp)
   firstReply?: boolean;        // primeira resposta do atendimento: cumprimenta pelo nome
   lang?: 'pt' | 'en';          // idioma da resposta (chat do app segue o idioma do aparelho)
+  contactEmail?: string | null; // canal e-mail: o remetente (é o e-mail certo de quem comprou com o errado)
 }): Promise<AgentDecision> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
@@ -180,7 +187,7 @@ export async function runSupportAgent(input: {
     { role: 'user', content: input.userText },
   ];
 
-  let parsed: { intent?: string; reply?: string; lang?: string; needsHuman?: boolean; reason?: string } = {};
+  let parsed: { intent?: string; reply?: string; lang?: string; needsHuman?: boolean; reason?: string; emailFix?: Record<string, string | null>; accessEmail?: string | null } = {};
   try {
     const res = await aiFetch(OPENAI_URL, {
       method: 'POST',
@@ -201,9 +208,70 @@ export async function runSupportAgent(input: {
   }
 
   const intent = String(parsed.intent ?? 'outro');
-  const needsHuman = parsed.needsHuman === true;
-  const reply = String(parsed.reply ?? '').trim();
+  let needsHuman = parsed.needsHuman === true;
+  let reply = String(parsed.reply ?? '').trim();
+  let reason = String(parsed.reason ?? '');
   const replyLang: 'pt' | 'en' = parsed.lang === 'en' || parsed.lang === 'pt' ? parsed.lang : guessLang(input.userText, input.lang ?? 'pt');
+
+  // Senha / acesso: manda o link para o próprio e-mail da conta. A resposta não diz se o e-mail tem conta.
+  if ((intent === 'reset_senha' || intent === 'acesso_login') && !needsHuman) {
+    const email = (parsed.accessEmail || input.contactEmail || (input.context.verified !== false ? input.context.email : null) || '').trim();
+    if (!email) {
+      reply = replyLang === 'en'
+        ? 'I can send you a link to create a new password right now. What email do you use in the app?'
+        : 'Consigo te mandar agora um link para criar uma senha nova. Qual é o e-mail que você usa no app?';
+    } else {
+      const r = await sendAccessLink(email).catch(() => 'failed' as const);
+      if (r === 'failed') { needsHuman = true; reason = `Falha ao mandar o link de acesso para ${email}.`; }
+      else if (r === 'invalid') {
+        reply = replyLang === 'en' ? 'That email looks incomplete. Could you send it again?' : 'Esse e-mail parece incompleto. Pode mandar de novo?';
+      } else {
+        reply = replyLang === 'en'
+          ? `Done! If ${email} is the email on your account, we just sent it a link to create a new password (check spam and promotions too). Then sign in to the app with this email. If nothing arrives in a few minutes, the account may use another email: tell me which one.`
+          : `Pronto! Se ${email} for o e-mail da sua conta, acabamos de mandar para ele um link para criar uma senha nova (confira também o spam e as promoções). Depois é só entrar no app com esse e-mail. Se não chegar nada em alguns minutos, a conta pode estar em outro e-mail: me diga qual.`;
+      }
+    }
+  }
+
+  // Assinatura da loja não liberou: confere no RevenueCat e libera na hora, se estiver ativa.
+  if (intent === 'restaurar_compra' && !needsHuman && input.context.userId) {
+    const r = await checkStoreSubscription(input.context.userId).catch(() => ({ status: 'unavailable' as const }));
+    const verified = input.context.verified !== false;
+    if (r.status === 'activated' || r.status === 'already_active') {
+      reply = verified
+        ? (replyLang === 'en'
+          ? 'I checked your subscription in the store and it is active: your access is released. Close the app completely and open it again.'
+          : 'Conferi a sua assinatura na loja e ela está ativa: o acesso já está liberado. Feche o app por completo e abra de novo.')
+        : (replyLang === 'en'
+          ? 'Done: we checked and updated the access for this account. Close the app completely and open it again.'
+          : 'Pronto: conferimos e atualizamos o acesso dessa conta. Feche o app por completo e abra de novo.');
+    }
+    // not_found / expired / unavailable: fica o passo a passo da FAQ (Restaurar compras).
+  }
+
+  // E-mail errado na compra pelo site: o código localiza a compra, confere que é da pessoa e corrige.
+  if (intent === 'email_errado') {
+    const f = parsed.emailFix ?? {};
+    const fix: SupportFixResult = await resolveSupportEmailFix({
+      correctEmail: f.correctEmail || input.contactEmail || null,
+      wrongEmail: f.wrongEmail ?? null, fullName: f.fullName ?? null, cardLast4: f.cardLast4 ?? null,
+    }).catch(e => ({ status: 'escalate' as const, reason: `Falha ao conferir: ${e instanceof Error ? e.message : String(e)}` }));
+    if (fix.status === 'fixed') {
+      needsHuman = false;
+      reply = replyLang === 'en'
+        ? `Done! We found your purchase and changed your account email to ${fix.email}. We just sent the link to create your password to that address: then sign in to the app with this email.`
+        : `Pronto! Encontramos a sua compra e corrigimos o e-mail da conta para ${fix.email}. Acabamos de mandar para ele o link para criar a senha: depois é só entrar no app com esse e-mail.`;
+    } else if (fix.status === 'need_info') {
+      needsHuman = false;
+      const askEmail = fix.missing.includes('correctEmail');
+      reply = replyLang === 'en'
+        ? `I can fix that. To find your purchase and confirm it's yours, please send me${askEmail ? ' your correct email,' : ''} the email typed at checkout (even if it was wrong), the full name used for the payment and, if you paid by card, only the last 4 digits of the card.`
+        : `Consigo resolver isso. Para eu achar a sua compra e confirmar que é sua, me mande${askEmail ? ' o seu e-mail certo,' : ''} o e-mail que foi digitado na compra (mesmo errado), o nome completo usado no pagamento e, se pagou no cartão, só os 4 últimos dígitos dele.`;
+    } else {
+      needsHuman = true;
+      reason = `E-mail errado na compra pelo site: ${fix.reason}`;
+    }
+  }
 
   // Só auto-envia se o modelo não pediu humano E o intent está na whitelist E há resposta.
   // Sugestão de função: agradece e registra (a análise da conversa leva para o /admin).
@@ -211,7 +279,7 @@ export async function runSupportAgent(input: {
   // Celular em inglês: telas e botões citados entre aspas saem com o nome que aparece no app.
   let finalReply = input.lang === 'en' ? toEnglishLabels(reply) : reply;
   // Resposta a uma dúvida termina com uma pergunta (mantém a conversa e mostra se resolveu).
-  if (autoSend && !['encerramento', 'saudacao', 'sugestao'].includes(intent) && !/\?\s*$/.test(reply)) {
+  if (autoSend && !['encerramento', 'saudacao', 'sugestao', 'email_errado'].includes(intent) && !/\?\s*$/.test(reply)) {
     const asks = replyLang === 'en'
       ? ['Did that help?', 'Any other questions?', 'Did it work?', 'Is that what you needed?']
       : ['Consegui ajudar?', 'Ficou alguma dúvida?', 'Deu certo por aí?', 'Era isso que você precisava?'];
@@ -223,7 +291,7 @@ export async function runSupportAgent(input: {
     reply: finalReply,
     lang: replyLang,
     needsHuman,
-    reason: String(parsed.reason ?? ''),
+    reason,
     autoSend,
   };
 }

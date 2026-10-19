@@ -107,7 +107,7 @@ export default function FirstAccessScreen() {
           </View>
 
           {/* Hidden username for iOS Keychain */}
-          <TextInput
+          <TextInput maxFontSizeMultiplier={1.15}
             value={userEmail}
             textContentType="username"
             autoComplete="username"
@@ -119,7 +119,7 @@ export default function FirstAccessScreen() {
             {/* Password */}
             <View style={inputWrap}>
               <Lock size={18} color={C.navyLight} weight="regular" style={{ marginRight: 10 }} />
-              <TextInput
+              <TextInput maxFontSizeMultiplier={1.15}
                 value={password}
                 onChangeText={t => { setPassword(t); setError(null); }}
                 placeholder={isPt ? 'Nova senha' : 'New password'}
@@ -141,7 +141,7 @@ export default function FirstAccessScreen() {
             {/* Confirm */}
             <View style={inputWrap}>
               <Lock size={18} color={C.navyLight} weight="regular" style={{ marginRight: 10 }} />
-              <TextInput
+              <TextInput maxFontSizeMultiplier={1.15}
                 ref={confirmRef}
                 value={confirm}
                 onChangeText={t => { setConfirm(t); setError(null); }}

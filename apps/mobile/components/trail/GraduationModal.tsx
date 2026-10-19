@@ -301,7 +301,7 @@ export function GraduationModal({ event, onClose }: Props) {
             <TouchableOpacity onPress={() => {
               markSeen();
               onClose();
-              setTimeout(() => openShare({ kind: 'level', big: 'Advanced', title: systemIsPt ? 'Concluí o programa de inglês' : 'I finished the English program', subtitle: 'C1–C2' }), 450);
+              setTimeout(() => openShare({ kind: 'level', big: 'Advanced', badge: systemIsPt ? 'Programa concluído' : 'Program complete', title: systemIsPt ? 'Concluí o programa de inglês' : 'I finished the English program', subtitle: 'C1–C2' }), 450);
             }} activeOpacity={0.7} style={{ marginTop: 10, paddingVertical: 10, paddingHorizontal: 16 }}>
               <AppText style={{ color: '#16131F', fontSize: 14, fontWeight: '800', textDecorationLine: 'underline' }}>
                 {systemIsPt ? 'Compartilhar' : 'Share'}

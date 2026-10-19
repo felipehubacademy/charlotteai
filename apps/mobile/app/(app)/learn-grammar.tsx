@@ -584,7 +584,7 @@ export default function LearnGrammarScreen() {
               {(exercise.type === 'fill_gap' || exercise.type === 'fix_error' || exercise.type === 'read_answer') && status === 'answering' && (
                 <>
                   <View style={{ flex: 1 }} />
-                  <TextInput
+                  <TextInput maxFontSizeMultiplier={1.15}
                     value={userAnswer}
                     onChangeText={setUserAnswer}
                     placeholder={

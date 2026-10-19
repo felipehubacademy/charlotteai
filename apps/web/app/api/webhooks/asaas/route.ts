@@ -10,9 +10,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { recordRevenueEvent } from '@/lib/revenue';
-import { getCustomer, WEB_PRODUCT, WEB_ANNUAL_PIX, type WebPlan } from '@/lib/asaas';
-import { sendEmail } from '@/lib/microsoft-graph-email-service';
-import { webSubscriptionWelcomeTemplate } from '@/lib/email-templates';
+import { getCustomer, paidPaymentsOf, updateSubscriptionValue, WEB_PRODUCT, WEB_ANNUAL_PIX, type WebPlan } from '@/lib/asaas';
+import { sendWebWelcome } from '@/lib/web-welcome';
+import { sendCapiEvent, type MetaTracking } from '@/lib/meta-capi';
 
 export const dynamic = 'force-dynamic';
 const DAY = 86400000;
@@ -27,6 +27,21 @@ type Payment = {
 
 function addMonths(d: Date, n: number): Date {
   const r = new Date(d); r.setMonth(r.getMonth() + n); return r;
+}
+
+async function restorePriceIfCouponEnded(checkoutId: string, subscriptionId: string) {
+  const supabase = getSupabaseAdmin();
+  try {
+    const { data } = await supabase.from('asaas_checkouts').select('coupon_cycles, full_value_brl, price_restored_at').eq('id', checkoutId).maybeSingle();
+    const ck = data as { coupon_cycles: number | null; full_value_brl: number | null; price_restored_at: string | null } | null;
+    if (!ck?.coupon_cycles || !ck.full_value_brl || ck.price_restored_at) return;
+    const paid = await paidPaymentsOf(subscriptionId);
+    if (paid < ck.coupon_cycles) return;
+    await updateSubscriptionValue(subscriptionId, Number(ck.full_value_brl));
+    await supabase.from('asaas_checkouts').update({ price_restored_at: new Date().toISOString() } as never).eq('id', checkoutId);
+  } catch (e) {
+    console.error('[asaas webhook] restore price failed:', e);
+  }
 }
 
 async function findRow(p: { checkoutId?: string | null; externalReference?: string | null; subscription?: string | null; customer?: string | null }): Promise<Row | null> {
@@ -63,15 +78,23 @@ async function grantAccess(userId: string, plan: WebPlan, until: Date, method?: 
   if (error) throw new Error(`grantAccess falhou: ${error.message}`);
 }
 
-async function sendWelcome(userId: string, plan: WebPlan, trialDays: number): Promise<void> {
+// Conversão para a Meta pelo servidor (só com aceite de cookies no checkout). Mesmo event_id do
+// pixel da tela de sucesso: ck_<checkout>_start (teste grátis) e ck_<checkout>_purchase (1ª cobrança).
+async function metaConversion(checkoutId: string, userId: string, event: 'StartTrial' | 'Purchase', value?: number): Promise<void> {
   const supabase = getSupabaseAdmin();
-  const { data: u } = await supabase.from('charlotte_users').select('email, name').eq('id', userId).maybeSingle();
-  const user = u as { email: string; name: string | null } | null;
-  if (!user?.email) return;
-  const { data: link } = await supabase.auth.admin.generateLink({ type: 'recovery', email: user.email, options: { redirectTo: 'https://queizy.com/open' } });
-  const passwordUrl = link?.properties?.action_link ?? 'https://queizy.com/open';
-  const { subject, html } = webSubscriptionWelcomeTemplate({ name: user.name, email: user.email, plan, trialDays, passwordUrl });
-  await sendEmail({ to: user.email, subject, html }).catch(() => false);
+  const [{ data: ck }, { data: u }] = await Promise.all([
+    supabase.from('asaas_checkouts').select('meta_tracking').eq('id', checkoutId).maybeSingle(),
+    supabase.from('charlotte_users').select('email').eq('id', userId).maybeSingle(),
+  ]);
+  await sendCapiEvent({
+    event, eventId: `ck_${checkoutId}_${event === 'StartTrial' ? 'start' : 'purchase'}`,
+    email: (u as { email: string | null } | null)?.email ?? null, userId,
+    value, currency: 'BRL', tracking: (ck as { meta_tracking: MetaTracking | null } | null)?.meta_tracking ?? null,
+  }).catch(() => false);
+}
+
+async function sendWelcome(userId: string, plan: WebPlan, trialDays: number): Promise<void> {
+  await sendWebWelcome(userId, plan, trialDays);
 }
 
 async function revenue(type: 'INITIAL_PURCHASE' | 'RENEWAL' | 'REFUND', row: Row, p: Payment): Promise<void> {
@@ -115,6 +138,7 @@ export async function POST(req: NextRequest) {
         // Cartão validado e assinatura criada (mensal ou anual): acesso durante o teste (+1 dia para a 1ª cobrança).
         await grantAccess(row.user_id, row.plan, new Date(Date.now() + (row.trial_days + 1) * DAY), row.method);
         await sendWelcome(row.user_id, row.plan, row.trial_days);
+        await metaConversion(row.id, row.user_id, 'StartTrial', 0);
       }
       return NextResponse.json({ ok: true });
     }
@@ -156,8 +180,12 @@ export async function POST(req: NextRequest) {
           .eq('app_user_id', row.user_id).eq('store', 'ASAAS').like('event_id', 'asaas_%').not('event_id', 'like', `%${p.id}`);
         const { count: same } = await supabase.from('revenue_events').select('id', { count: 'exact', head: true }).like('event_id', `asaas_%_${p.id}`);
         if (!same) await revenue(count ? 'RENEWAL' : 'INITIAL_PURCHASE', row, p);
+        // 1ª cobrança paga do aluno: venda para a Meta (renovações não entram).
+        if (!same && !count) await metaConversion(row.id, row.user_id, 'Purchase', Math.abs(Number(p.value) || 0));
         // Boas-vindas na 1ª cobrança sem teste (anual ou mensal sem teste).
         if (!count && !same && !(row.trial_days > 0)) await sendWelcome(row.user_id, row.plan, 0);
+        // Cupom com duração: depois da última cobrança com desconto, as próximas voltam ao preço cheio.
+        if (p.subscription) await restorePriceIfCouponEnded(row.id, p.subscription);
       } else if (event === 'PAYMENT_REFUNDED' || event === 'PAYMENT_CHARGEBACK_REQUESTED' || event === 'PAYMENT_CHARGEBACK_DISPUTE') {
         await revenue('REFUND', row, p);
         await supabase.from('charlotte_users').update({

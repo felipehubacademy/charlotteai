@@ -24,7 +24,7 @@ export default function PrivacidadePage() {
             Política de Privacidade
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, margin: 0 }}>
-            Última atualização: 13 de outubro de 2026
+            Última atualização: 16 de outubro de 2026
           </p>
         </div>
       </div>
@@ -51,7 +51,8 @@ export default function PrivacidadePage() {
             ['Dados de uso', 'Histórico de conversas com a IA, progresso nas lições, streak diário, nível de inglês e preferências de aprendizado.'],
             ['Dados de áudio', 'Gravações de voz em exercícios de pronúncia e conversas. Na pronúncia e no Live Voice, o áudio é processado em tempo real e descartado. No Free Chat, os áudios das conversas (os seus e as respostas faladas) ficam guardados por 90 dias, num espaço privado, para você ouvir de novo; depois disso, fica só o texto.'],
 ['Dados de dispositivo', 'Token de notificações push, sistema operacional e versão do app (para lembretes de estudo).'],
-            ['Dados de pagamento', 'Processados exclusivamente pela App Store ou Google Play via RevenueCat. Não armazenamos dados bancários.'],
+            ['Dados de pagamento', 'Processados pela App Store ou Google Play (via RevenueCat) ou, na assinatura pelo site, pelo Asaas. Não armazenamos dados de cartão nem bancários.'],
+            ['Cookies do site (queizy.com)', 'Só com o seu aceite no aviso de cookies: o pixel da Meta (Facebook e Instagram) mede visitas, início de assinatura e vendas que vieram de anúncios. Na assinatura pelo site, com o aceite, também enviamos à Meta o seu e-mail criptografado (hash) para ligar a venda ao anúncio. Escolhendo "Só os essenciais", nada disso é usado e o site funciona do mesmo jeito.'],
           ]} />
         </Section>
 

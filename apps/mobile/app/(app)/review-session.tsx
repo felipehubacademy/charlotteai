@@ -161,7 +161,7 @@ function generateCardQuestion(item: SRCardItem): CardQuestion | null {
   if (!topic || !topic.grammar || topic.grammar.length === 0) return null;
 
   const grammar = topic.grammar;
-  const isPt    = item.userLevel === 'Novice';
+  const isPt    = systemIsPt; // instruções do card: idioma do aparelho
 
   switch (item.cardType) {
     case 'gap_fill': {
@@ -711,7 +711,7 @@ export default function ReviewSession() {
               {/* Text input (gap_fill, reverse, charlotte_challenge) */}
               {currentQuestion.cardType !== 'context_guess' && phase === 'question' ? (
                 <View>
-                  <TextInput
+                  <TextInput maxFontSizeMultiplier={1.15}
                     value={userAnswer}
                     onChangeText={setUserAnswer}
                     placeholder={isPt ? 'Digite sua resposta...' : 'Type your answer...'}

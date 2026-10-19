@@ -418,7 +418,7 @@ export default function ChatInputBar({
 
           {/* Input pill — single line (iOS centraliza nativo) */}
           <View style={[styles.pill, { flex: 1, paddingHorizontal: 16, paddingVertical: 10 }]}>
-            <TextInput
+            <TextInput maxFontSizeMultiplier={1.15}
               value={text}
               onChangeText={setText}
               placeholder={isPtUI ? 'Digite em inglês...' : 'Type in English...'}
@@ -532,7 +532,7 @@ export default function ChatInputBar({
 
           {/* Text input — single line, iOS centraliza nativo */}
           {!isPreview && !isRecording && (
-            <TextInput
+            <TextInput maxFontSizeMultiplier={1.15}
               value={text}
               onChangeText={setText}
               placeholder={isPtUI ? 'Digite em inglês...' : 'Type in English...'}

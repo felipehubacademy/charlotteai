@@ -683,7 +683,7 @@ const NAV: NavItem[] = [
   { section: 'NEGÓCIO' },
   { href: '/admin/finance',       icon: Wallet,     label: 'Financeiro',   area: 'finance' },
   { href: '/admin/metrics',       icon: BarChart2,  label: 'Métricas',     area: 'metrics' },
-  { href: '/admin/affiliates',    icon: Megaphone,  label: 'Afiliados',    area: 'finance' },
+  { href: '/admin/commercial',    icon: Megaphone,  label: 'Comercial',    area: 'finance' },
   { section: 'SISTEMA' },
   { href: '/admin/notifications', icon: Bell,       label: 'Notificações', area: 'notifications' },
   { href: '/admin/team',          icon: UserCog,    label: 'Equipe',       area: 'team' },

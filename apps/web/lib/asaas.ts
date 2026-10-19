@@ -22,8 +22,8 @@ export type WebPlan = keyof typeof ASAAS_PRICES;
 const SITE = 'https://queizy.com';
 
 export type CouponResult =
-  | { ok: true; code: string; pct: number; kind: 'coupon' | 'affiliate'; plans: WebPlan[]; affiliateCode?: string }
-  | { ok: false; error: 'not_found' | 'expired' | 'used_up' | 'inactive' };
+  | { ok: true; code: string; pct: number; kind: 'coupon' | 'affiliate'; plans: WebPlan[]; affiliateCode?: string; cycles?: number | null }
+  | { ok: false; error: 'not_found' | 'expired' | 'used_up' | 'inactive' | 'not_started' };
 
 /** Confere o cupom: primeiro cupom de campanha (tabela coupons), depois código de afiliado. */
 export async function resolveCoupon(raw: unknown): Promise<CouponResult> {
@@ -32,15 +32,17 @@ export async function resolveCoupon(raw: unknown): Promise<CouponResult> {
   const { getSupabaseAdmin } = await import('@/lib/supabase-admin');
   const supabase = getSupabaseAdmin();
   const { data: c } = await supabase.from('coupons').select('*').eq('code', code).maybeSingle();
-  const row = c as { code: string; discount_pct: number; plans: string[]; active: boolean; expires_at: string | null; max_uses: number | null } | null;
+  const row = c as { code: string; discount_pct: number; plans: string[]; active: boolean; starts_at: string | null; expires_at: string | null; max_uses: number | null; duration_cycles: number | null } | null;
   if (row) {
     if (!row.active) return { ok: false, error: 'inactive' };
+    if (row.starts_at && new Date(row.starts_at).getTime() > Date.now()) return { ok: false, error: 'not_started' };
     if (row.expires_at && new Date(row.expires_at).getTime() < Date.now()) return { ok: false, error: 'expired' };
     if (row.max_uses != null) {
       const { count } = await supabase.from('asaas_checkouts').select('id', { count: 'exact', head: true }).eq('coupon_code', code).eq('status', 'paid');
       if ((count ?? 0) >= row.max_uses) return { ok: false, error: 'used_up' };
     }
-    return { ok: true, code, pct: row.discount_pct, kind: 'coupon', plans: (row.plans ?? ['monthly', 'annual']) as WebPlan[] };
+    // duration_cycles: quantas cobranças levam o desconto (null = todas). Depois o webhook volta ao preço cheio.
+    return { ok: true, code, pct: row.discount_pct, kind: 'coupon', plans: (row.plans ?? ['monthly', 'annual']) as WebPlan[], cycles: row.duration_cycles ?? null };
   }
   const { data: a } = await supabase.from('affiliates').select('code, status, user_discount_pct').eq('code', code).maybeSingle();
   const aff = a as { code: string; status: string; user_discount_pct: number } | null;
@@ -56,6 +58,7 @@ export const COUPON_ERROR_PT: Record<string, string> = {
   expired:   'Esse cupom expirou.',
   used_up:   'Esse cupom já foi usado o máximo de vezes.',
   inactive:  'Esse cupom não está ativo.',
+  not_started: 'Esse cupom ainda não está valendo.',
 };
 
 export function asaasConfigured(): boolean {
@@ -201,6 +204,23 @@ export const getCustomer = (id: string) => asaas<AsaasCustomer>(`/customers/${id
 export interface AsaasSubscription { id: string; customer: string; status: string; nextDueDate: string; value: number; cycle: string; externalReference?: string | null; checkoutSession?: string | null }
 export const getSubscription = (id: string) => asaas<AsaasSubscription>(`/subscriptions/${id}`);
 export const cancelSubscription = (id: string) => asaas<{ deleted: boolean }>(`/subscriptions/${id}`, { method: 'DELETE' });
+/** 4 últimos dígitos do cartão de uma cobrança (null no Pix). Usado para conferir quem pagou. */
+export async function getPaymentCard(paymentId: string): Promise<{ last4: string | null; billingType: string }> {
+  const p = await asaas<{ billingType: string; creditCard?: { creditCardNumber?: string | null } | null }>(`/payments/${encodeURIComponent(paymentId)}`);
+  const n = String(p.creditCard?.creditCardNumber ?? '').replace(/\D/g, '');
+  return { last4: n ? n.slice(-4) : null, billingType: p.billingType };
+}
+/** Troca o e-mail do cliente no Asaas (recibos e avisos de cobrança vão para o e-mail certo). */
+export const updateCustomerEmail = (customerId: string, email: string) =>
+  asaas<AsaasCustomer>(`/customers/${encodeURIComponent(customerId)}`, { method: 'PUT', body: { email } });
+/** Quantas cobranças da assinatura já foram pagas (confirmadas ou recebidas). */
+export async function paidPaymentsOf(subscriptionId: string): Promise<number> {
+  const r = await asaas<{ data: { status: string }[] }>(`/payments?subscription=${encodeURIComponent(subscriptionId)}&limit=100`);
+  return (r.data ?? []).filter(p => ['CONFIRMED', 'RECEIVED', 'RECEIVED_IN_CASH'].includes(p.status)).length;
+}
+/** Muda o valor das próximas cobranças da assinatura (fim do desconto do cupom). */
+export const updateSubscriptionValue = (id: string, value: number) =>
+  asaas<AsaasSubscription>(`/subscriptions/${id}`, { method: 'POST', body: { value, updatePendingPayments: true } });
 export const refundPayment = (id: string) => asaas<{ id: string; status: string }>(`/payments/${id}/refund`, { method: 'POST', body: {} });
 export const refundInstallment = (id: string) => asaas<{ id: string }>(`/installments/${id}/refund`, { method: 'POST', body: {} });
 export const REFUND_WINDOW_DAYS = 7;

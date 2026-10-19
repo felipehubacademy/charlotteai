@@ -3,7 +3,9 @@
 // por aqui (aviso por push). Não usa a Charlotte (ela é a tutora, não o suporte).
 // Textos da tela seguem o idioma do aparelho.
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { View, ScrollView, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, ActivityIndicator } from 'react-native';
+import { View, ScrollView, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { useKeyboardOpen } from '@/hooks/useKeyboardOpen';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from 'expo-router';
 import { PaperPlaneRight, Headset } from 'phosphor-react-native';
@@ -74,6 +76,7 @@ function Bubble({ m, isPt }: { m: SupportChatMessage; isPt: boolean }) {
 export default function SupportChatScreen() {
   const isPt = systemIsPt;
   const insets = useSafeAreaInsets();
+  const keyboardOpen = useKeyboardOpen(); // teclado aberto: sem a margem da barra de navegação
   const [messages, setMessages] = useState<SupportChatMessage[]>([]);
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -120,7 +123,9 @@ export default function SupportChatScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <ScreenHeader title={isPt ? 'Suporte Queizy' : 'Queizy support'} />
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+      {/* keyboard-controller com 'padding' nas duas plataformas: no Android (edge-to-edge) a tela não
+          redimensiona sozinha e o teclado cobria o campo de mensagem. */}
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
         <ScrollView ref={scroll} contentContainerStyle={{ padding: 16, paddingBottom: 8 }} keyboardShouldPersistTaps="handled">
           {/* Abertura fixa (não é gravada no servidor). */}
           <Bubble isPt={isPt} m={{ id: 'intro', author: 'agent', created_at: '', body: isPt
@@ -136,8 +141,8 @@ export default function SupportChatScreen() {
           {!!err && <AppText style={{ fontSize: 13, color: '#C2410C', textAlign: 'center', marginBottom: 10 }}>{err}</AppText>}
         </ScrollView>
 
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, paddingHorizontal: 12, paddingTop: 10, paddingBottom: 10 + insets.bottom, backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border }}>
-          <TextInput
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, paddingHorizontal: 12, paddingTop: 10, paddingBottom: keyboardOpen ? 10 : 10 + insets.bottom, backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border }}>
+          <TextInput maxFontSizeMultiplier={1.15}
             value={text} onChangeText={setText} multiline maxLength={2000}
             placeholder={isPt ? 'Escreva sua mensagem' : 'Type your message'} placeholderTextColor={C.inkLight}
             style={{ flex: 1, minHeight: 42, maxHeight: 120, backgroundColor: C.bg, borderRadius: 21, paddingHorizontal: 16, paddingTop: 11, paddingBottom: 11, fontSize: 15, color: C.ink }}

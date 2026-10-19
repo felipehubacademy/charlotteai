@@ -20,6 +20,7 @@ import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { setAudioModeAsync, setIsAudioActiveAsync } from 'expo-audio';
 import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';
 import { systemIsPt } from '@/lib/systemLang';
+import { useKeyboardOpen } from '@/hooks/useKeyboardOpen';
 import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
 import { setPromotionPending } from '@/lib/promotionState';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -80,6 +81,8 @@ export default function GuidedChatExerciseScreen() {
   const userId      = profile?.id;
   const isPt        = systemIsPt; // suporte/chrome: idioma do device
   const insets      = useSafeAreaInsets();
+  // Teclado aberto: a missão recolhe para só o título e a contagem, e sobra espaço para a conversa.
+  const keyboardOpen = useKeyboardOpen();
 
   // Load guided-chat definition from v2
   const [gc, setGc] = useState<GuidedChat | null>(null);
@@ -421,10 +424,10 @@ export default function GuidedChatExerciseScreen() {
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1 }}>
-          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
+          <AppText display numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7} style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
             {gc.persona}
           </AppText>
-          <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 1, letterSpacing: 0.6, textTransform: 'uppercase', fontWeight: '600' }}>
+          <AppText numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7} style={{ fontSize: 11, color: C.navyLight, marginTop: 1, letterSpacing: 0.6, textTransform: 'uppercase', fontWeight: '600' }}>
             {isPt ? 'Chat Guiado' : 'Guided Chat'}
           </AppText>
         </View>
@@ -449,13 +452,13 @@ export default function GuidedChatExerciseScreen() {
       {/* Sticky checklist */}
       <View style={{
         marginHorizontal: 14, marginTop: 6, marginBottom: 10,
-        padding: 14, borderRadius: 14,
+        padding: 14, paddingVertical: keyboardOpen ? 10 : 14, borderRadius: 14,
         backgroundColor: 'rgba(22,19,31,0.04)',
         borderWidth: 1, borderColor: C.border,
       }}>
         <View style={{
           flexDirection: 'row', alignItems: 'center',
-          justifyContent: 'space-between', marginBottom: 10,
+          justifyContent: 'space-between', marginBottom: keyboardOpen ? 0 : 10,
         }}>
           <AppText style={{
             fontSize: 10, fontWeight: '700', color: C.navyLight,
@@ -470,7 +473,7 @@ export default function GuidedChatExerciseScreen() {
             {objectivesDone}/{objectivesTotal}
           </AppText>
         </View>
-        <View style={{ gap: 8 }}>
+        {!keyboardOpen && <View style={{ gap: 8 }}>
           {gc.objectives.map(obj => {
             const met     = objectivesMet.has(obj.id);
             const label   = isPt ? (obj.label_pt || obj.label_en) : (obj.label_en || obj.label_pt);
@@ -498,7 +501,7 @@ export default function GuidedChatExerciseScreen() {
               </View>
             );
           })}
-        </View>
+        </View>}
       </View>
 
       {/* ChatBox with scenario as scrolling top banner */}
@@ -609,11 +612,12 @@ export default function GuidedChatExerciseScreen() {
       <KeyboardAvoidingView behavior="padding">
         <View style={{
           paddingHorizontal: 12, paddingTop: 10,
-          paddingBottom: Math.max(insets.bottom, 14),
+          // Teclado aberto: sem a margem da barra de navegação (o teclado já a cobre).
+          paddingBottom: keyboardOpen ? 10 : Math.max(insets.bottom, 14),
           backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border,
           flexDirection: 'row', alignItems: 'flex-end', gap: 8,
         }}>
-          <TextInput
+          <TextInput maxFontSizeMultiplier={1.15}
             value={draft}
             onChangeText={setDraft}
             placeholder={sessionComplete

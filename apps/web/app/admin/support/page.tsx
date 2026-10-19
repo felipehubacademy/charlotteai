@@ -6,6 +6,7 @@ import { Plus, RefreshCw, Check, X, Pencil, Headphones } from 'lucide-react';
 import { InsightsTab } from './InsightsTab';
 import { FaqTab } from './FaqTab';
 import { WhatsAppTab } from './WhatsAppTab';
+import { useBulk, BulkBar, BulkCheckbox } from '@/components/admin/Bulk';
 
 interface Agent { id: string; name: string; email: string | null; whatsapp: string | null; is_active: boolean; }
 interface Conversation {
@@ -47,6 +48,13 @@ export default function SupportAdmin() {
     if (r.ok) { const j = await r.json(); setConvs(j.conversations ?? []); setCounts(j.counts ?? {}); }
   }, [headers, statusFilter]);
 
+  // Ações em lote na fila (fechar / reabrir), uma conversa por vez na mesma API do detalhe.
+  const bulk = useBulk(convs.map(c => c.id));
+  const setConvStatus = async (id: string, status: 'open' | 'closed') => {
+    const r = await fetch('/api/admin/support/conversations', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, action: 'status', status }) });
+    return r.ok;
+  };
+
   useEffect(() => { setLoading(true); Promise.all([loadAgents(), loadQueue()]).finally(() => setLoading(false)); }, [secret, loadAgents, loadQueue]);
 
   const saveAgent = async (a: { id?: string; name: string; email: string; whatsapp: string; is_active: boolean }) => {
@@ -85,15 +93,20 @@ export default function SupportAdmin() {
                 </div>
               ))}
             </div>
+            <BulkBar bulk={bulk} total={convs.length} allIds={convs.map(c => c.id)} noun={['atendimento', 'atendimentos']} actions={[
+              { label: 'Fechar', confirm: 'Fechar {n} atendimentos sem responder? O aluno não recebe mensagem.', run: id => setConvStatus(id, 'closed'), after: loadQueue },
+              { label: 'Reabrir', confirm: 'Reabrir {n} atendimentos?', run: id => setConvStatus(id, 'open'), after: loadQueue },
+            ]} />
             <div className="adm-panel">
               {convs.length === 0 ? (
                 <div className="adm-empty"><div className="adm-empty-title">{loading ? 'Carregando…' : 'Nenhuma conversa'}</div></div>
               ) : (
                 <table className="adm-table">
-                  <thead><tr><th>Contato</th><th>Canal</th><th>Assunto / última</th><th>Status</th><th>Atendente</th><th>Quando</th></tr></thead>
+                  <thead><tr><th style={{ width: 34 }}><BulkCheckbox bulk={bulk} page /></th><th>Contato</th><th>Canal</th><th>Assunto / última</th><th>Status</th><th>Atendente</th><th>Quando</th></tr></thead>
                   <tbody>
                     {convs.map(c => (
-                      <tr key={c.id} onClick={() => setOpenConv(c.id)} style={{ cursor: 'pointer' }}>
+                      <tr key={c.id} onClick={() => setOpenConv(c.id)} style={{ cursor: 'pointer', ...(bulk.checked.has(c.id) ? { background: 'var(--s2, #F3F1EC)' } : {}) }}>
+                        <td onClick={e => e.stopPropagation()}><BulkCheckbox bulk={bulk} id={c.id} label={`Selecionar ${c.contact}`} /></td>
                         <td style={{ color: 'var(--t1)', fontWeight: 500 }}>{c.contact}{c.ticketCode && c.status === 'escalated' ? <div style={{ fontSize: 11, color: 'var(--t3)', fontWeight: 400 }}>Chamado #{c.ticketCode}</div> : null}</td>
                         <td>{c.channel === 'app' ? 'chat do app' : c.channel}</td>
                         <td style={{ maxWidth: 340 }}>

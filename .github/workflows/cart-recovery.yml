@@ -1,0 +1,25 @@
+name: Carrinho abandonado (assinatura pelo site)
+
+on:
+  schedule:
+    # De hora em hora, no minuto 15. Cada lembrete sai uma vez por checkout (lib/cart-recovery).
+    - cron: '15 * * * *'
+  workflow_dispatch: # permite rodar manualmente
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Call cart recovery
+        run: |
+          response=$(curl -s -o /tmp/out.json -w "%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -H "User-Agent: github-actions-cron" \
+            -d '{}' \
+            "https://queizy.com/api/cron/cart-recovery")
+          echo "Response status: $response"
+          cat /tmp/out.json | head -c 2000
+          if [ "$response" != "200" ]; then exit 1; fi

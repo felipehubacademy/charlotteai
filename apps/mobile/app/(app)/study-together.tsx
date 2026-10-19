@@ -251,7 +251,7 @@ export default function StudyTogetherScreen() {
             <SectionTitle title={t('Recebeu um convite?', 'Got an invite?')} />
             <Card style={{ marginHorizontal: 16, padding: 16, gap: 10 }}>
               <View style={{ flexDirection: 'row', gap: 8 }}>
-                <TextInput value={code} onChangeText={setCode} autoCapitalize="characters" autoCorrect={false}
+                <TextInput maxFontSizeMultiplier={1.15} value={code} onChangeText={setCode} autoCapitalize="characters" autoCorrect={false}
                   placeholder={t('Código do convite', 'Invite code')} placeholderTextColor={C.light}
                   style={{ flex: 1, backgroundColor: C.bg, borderRadius: 12, paddingHorizontal: 14, paddingVertical: 12, fontSize: 16, fontWeight: '700', color: C.ink, letterSpacing: 1 }} />
                 <TouchableOpacity onPress={claim} disabled={claiming || !normalizeCode(code)}
@@ -290,7 +290,7 @@ export default function StudyTogetherScreen() {
             <AppText style={{ fontSize: 13.5, color: C.mid }}>{t('É assim que amigos te acham na busca. Precisa ser único.', "That's how friends find you in search. It has to be unique.")}</AppText>
             <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: C.bg, borderRadius: 12, paddingHorizontal: 14 }}>
               <AppText style={{ fontSize: 17, fontWeight: '800', color: C.light }}>@</AppText>
-              <TextInput value={handleDraft} onChangeText={v => setHandleDraft(v.toLowerCase().replace(/[^a-z0-9._]/g, ''))}
+              <TextInput maxFontSizeMultiplier={1.15} value={handleDraft} onChangeText={v => setHandleDraft(v.toLowerCase().replace(/[^a-z0-9._]/g, ''))}
                 autoCapitalize="none" autoCorrect={false} maxLength={20} autoFocus
                 style={{ flex: 1, paddingVertical: 13, fontSize: 17, fontWeight: '700', color: C.ink, marginLeft: 2 }} />
             </View>

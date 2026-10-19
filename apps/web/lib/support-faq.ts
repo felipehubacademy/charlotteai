@@ -45,7 +45,7 @@ Para concluir uma atividade é preciso atingir o mínimo mostrado nela (por exem
 `Toque no ícone de telefone na barra de baixo e depois em "Conversar com a Charlotte". Na primeira vez o celular pede permissão para usar o microfone: é preciso permitir.
 Os minutos restantes do mês aparecem na própria tela do Live Voice, no cartão "Seu tempo este mês", logo acima do botão "Conversar com a Charlotte". Na mesma tela ficam "Ver chamadas anteriores" (com resumo e transcrição de cada conversa) e "Ajuda".` },
   { section: 'Guia do app', question: 'Quantos minutos de Live Voice eu tenho?', answer:
-`Na degustação (conta nova, ainda sem assinatura) são 3 minutos, uma vez só. Com assinatura, os minutos são por mês: 5 minutos durante os 7 dias grátis e 20 minutos no Premium (e nas contas institucionais). Eles renovam no dia 1º de cada mês.
+`Na degustação (conta nova, ainda sem assinatura) são 3 minutos, uma vez só. Com assinatura, os minutos são por mês: 5 minutos durante os 7 dias grátis e 20 minutos no Premium. Eles renovam no dia 1º de cada mês.
 Para ver quantos restam, não precisa ligar: toque no ícone de telefone na barra de baixo; o cartão "Seu tempo este mês" mostra os minutos, logo acima do botão "Conversar com a Charlotte" (esse botão já inicia a chamada).
 Quando acabam, aparece "Seu tempo acabou este mês". Quem está na degustação ou nos 7 dias grátis pode assinar o Premium; quem já assina pode comprar pacotes de minutos extras em "Comprar minutos" ou "Ver pacotes de minutos". Minutos extras comprados não vencem no fim do mês.
 Com assinatura, também dá para ganhar minutos extras em "Estudar junto": quando uma conta nova aceita o seu convite, cada um ganha 5 minutos; e quem vence uma Competição ganha 5 minutos. Na degustação, os minutos extras ficam guardados e passam a valer quando você assina.` },
@@ -73,7 +73,10 @@ A trilha principal, a Gramática, a Pronúncia e o suporte são com a Charlotte.
   { section: 'Guia do app', question: 'Os áudios das conversas ficam salvos?', answer:
 `Sim. No Free Chat, os áudios que você grava e as respostas faladas ficam salvos por 90 dias: ao reabrir a conversa em "Conversas anteriores", dá para ouvir de novo. Depois de 90 dias o áudio é apagado e a mensagem fica só com o texto. Conversas de antes dessa mudança mostram apenas o texto.` },
   { section: 'Guia do app', question: 'Onde ficam as metas e o desafio da semana?', answer:
-`Na tela "Seu progresso" (tocando nas pílulas de fogo, raio e troféu no topo), na parte "Metas": o "XP de hoje" (com o próximo marco do dia), as missões do dia e o "Desafio da semana". As missões e o desafio pagam XP extra quando concluídos.` },
+`Na tela "Seu progresso" (tocando nas pílulas de fogo, raio e troféu no topo), na parte "Metas". Ali ficam o "XP de hoje", as 3 missões do dia e o "Desafio da semana". Cada missão diz o que fazer e onde, e tocar nela leva direto ao lugar. O aviso do desafio da semana que chega no celular também abre essa tela.` },
+  { section: 'Guia do app', question: 'Como funcionam as missões do dia e o desafio da semana?', answer:
+`Todo dia você recebe 3 missões novas: uma da trilha (por exemplo, concluir atividades ou fazer um Role-play), uma de prática extra (no Practice ou no Vocabulário) e uma de constância (ganhar XP no dia ou manter a sequência). O desafio da semana vai de segunda a domingo e vale mais XP. As missões mudam todo dia e as metas seguem o seu nível.
+O XP entra sozinho: depois de cumprir, ao voltar para a tela Início (ou abrir "Metas") aparece o aviso "Missão concluída". Com as 3 do dia feitas tem comemoração, e ao concluir o desafio da semana dá para compartilhar o card. Cada missão paga uma vez.` },
   { section: 'Guia do app', question: 'Como estudar com amigos (Estudar junto)?', answer:
 `Fica em Perfil > Você no Queizy > Estudar junto (ou em "Seu progresso"):
 - "Encontrar amigos": busca pelo nome, sobrenome ou @. A pessoa recebe o pedido e, ao aceitar, vocês viram amigos de estudo.
@@ -133,13 +136,18 @@ Não há parcelamento: quem prefere pagar aos poucos pode escolher o Mensal.
 Entre no app com o mesmo e-mail informado no site: é nessa conta que o acesso é liberado.` },
   { section: 'Planos e assinatura', question: 'Tenho um cupom ou código de desconto. Onde uso?', answer:
 `Cupons e códigos de desconto, inclusive o código de um parceiro do Queizy, valem só na assinatura pelo site: em queizy.com/assinar, escreva o código no campo de cupom antes de continuar. Quem entra pelo link de um parceiro já encontra o código preenchido.
-Por quanto tempo o desconto vale (só a primeira cobrança ou também as renovações) depende da campanha; se tiver dúvida, um atendente confirma.
+Por quanto tempo o desconto vale depende da campanha: só na primeira cobrança, em algumas cobranças ou em todas. Depois das cobranças com desconto, a assinatura volta sozinha ao preço normal. Se tiver dúvida, um atendente confirma.
+Cupom e desconto de parceiro não se somam: vale o maior.
 Não é possível usar cupom na assinatura pela App Store ou pelo Google Play.
-Se o código não for aceito, confira a grafia e se ele ainda está válido; se continuar, um atendente ajuda.` },
+Se o código não for aceito, confira a grafia e se ele está valendo (cupons de campanha têm data para começar e para terminar); se continuar, um atendente ajuda.` },
   { section: 'Planos e assinatura', question: 'Assinei no iPhone. Funciona no Android (e vice-versa)?', answer:
 `Sim. A assinatura fica na sua conta do Queizy: entrando com o mesmo e-mail e senha, ela vale no iPhone e no Android, seja qual for a loja em que você assinou (e também vale a assinatura feita pelo site).
 Cancelar, trocar de plano ou pedir reembolso continua sendo na loja onde você assinou: assinatura da App Store, pela Apple (num iPhone, iPad ou Mac, em Ajustes > seu nome > Assinaturas, ou em reportaproblem.apple.com para reembolso); assinatura do Google Play, pelo Google Play (também pelo navegador, em play.google.com/store/account/subscriptions, com a mesma conta Google da compra).
 Se você tocar em Perfil > Assinatura > Gerenciar assinatura no aparelho da outra loja, o app mostra um aviso com esse caminho.` },
+  { section: 'Planos e assinatura', question: 'Assinei pelo site com o e-mail errado. E agora?', answer:
+`Logo depois do pagamento, a tela de confirmação do site mostra o e-mail da compra. Se ele estiver errado, toque em "Corrigir", escreva o e-mail certo e salve: mandamos para ele o link para criar a senha.
+Se você já saiu dessa tela, fale com o suporte (suporte@queizy.com ou WhatsApp) mandando o e-mail certo, o e-mail que foi digitado na compra (mesmo errado), o nome completo usado no pagamento e, se pagou no cartão, só os 4 últimos dígitos dele. Conferimos a compra e corrigimos na hora.
+A correção vale para contas criadas pela compra que ainda não foram usadas no app, em até 30 dias. Se o e-mail certo já tiver uma conta no Queizy, um atendente junta as duas.` },
   { section: 'Planos e assinatura', question: 'Como cancelar a assinatura?', answer:
 `O cancelamento é feito na loja (a Apple e o Google gerenciam a assinatura):
 - iPhone: Ajustes > seu nome > Assinaturas > Queizy (pode aparecer como Charlotte em versões antigas) > Cancelar assinatura.

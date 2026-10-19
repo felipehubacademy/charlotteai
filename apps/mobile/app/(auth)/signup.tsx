@@ -207,7 +207,7 @@ export default function SignupScreen() {
             {/* Nome */}
             <View style={[inputWrap, { borderColor: C.border }]}>
               <UserCircle size={18} color={C.navyLight} weight="regular" style={{ marginRight: 10 }} />
-              <TextInput
+              <TextInput maxFontSizeMultiplier={1.15}
                 value={name}
                 onChangeText={t => { setName(t); setError(null); }}
                 placeholder={isPt ? 'Seu nome' : 'Your name'}
@@ -225,7 +225,7 @@ export default function SignupScreen() {
             {/* E-mail */}
             <View style={[inputWrap, { borderColor: C.border }]}>
               <Envelope size={18} color={C.navyLight} weight="regular" style={{ marginRight: 10 }} />
-              <TextInput
+              <TextInput maxFontSizeMultiplier={1.15}
                 ref={emailRef}
                 value={email}
                 onChangeText={t => { setEmail(t); setError(null); setEmailSuggestion(null); }}
@@ -263,7 +263,7 @@ export default function SignupScreen() {
             {/* Senha */}
             <View style={[inputWrap, { borderColor: C.border }]}>
               <Lock size={18} color={C.navyLight} weight="regular" style={{ marginRight: 10 }} />
-              <TextInput
+              <TextInput maxFontSizeMultiplier={1.15}
                 ref={passwordRef}
                 value={password}
                 onChangeText={t => { setPassword(t); setError(null); }}

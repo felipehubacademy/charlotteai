@@ -21,9 +21,10 @@ export interface ExtraTrack {
   betaFlag?:   string;
   /** Degustação: a única unidade aberta para quem ainda não assina. A que dá o "uau". */
   tasteUnit:   { moduleId: string; unitId: string };
-  /** Enquanto está em beta: quem tem a chave (e assina) vê todas as unidades abertas, sem a
-   *  ordem obrigatória, para revisar o conteúdo. Tirar no lançamento. */
-  betaAllUnlocked?: boolean;
+  /** Revisão: quem tem esta chave em beta_features (e não está na degustação) vê todas as
+   *  unidades abertas, sem a ordem obrigatória. Só para a equipe e o dono da trilha; alunos,
+   *  inclusive institucionais, seguem em ordem. */
+  reviewFlag?: string;
 }
 
 export const EXTRA_TRACKS: ExtraTrack[] = [
@@ -36,6 +37,7 @@ export const EXTRA_TRACKS: ExtraTrack[] = [
     hostEn: 'with Igorfina',
     // O "uau": o presidente exagerado ("the best, tremendous") ensinando the best / the worst.
     tasteUnit: { moduleId: 'M06', unitId: 'F27' },
+    reviewFlag: 'igorfina_trail', // Felipe e Igor: trilha toda aberta para revisar
   },
 ];
 

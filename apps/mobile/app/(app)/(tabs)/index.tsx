@@ -27,6 +27,7 @@ import { usePaywallContext } from '@/lib/paywallContext';
 import { identifyUser, track } from '@/lib/analytics';
 import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greetingCache';
 import { characterInfo } from '@/lib/characters';
+import { fetchGoals } from '@/lib/missions';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
 import { splashGate } from '@/lib/splashGate';
@@ -94,6 +95,8 @@ function TypingDots() {
 }
 
 // ── Home Tab ──────────────────────────────────────────────────────────────────
+
+const MIN_TRAIL_VIEWPORT = 240; // abaixo disso a trilha fixa embaixo do hero fica inutilizável
 
 export default function HomeTab() {
   const { profile, isTaster } = useAuth();
@@ -307,7 +310,12 @@ export default function HomeTab() {
   }, [userId]); // eslint-disable-line
 
   useFocusEffect(useCallback(() => {
-    if (userId) fetchData();
+    if (!userId) return;
+    fetchData();
+    // Metas: o servidor credita o XP das missões concluídas e a comemoração aparece (GoalsCelebration).
+    // Ao voltar de uma lição para a Início, o aluno já vê a missão concluída.
+    // Se creditou agora, recarrega para o XP do topo já somar.
+    fetchGoals().then(g => { if (g?.granted.length) fetchData(); });
   }, [fetchData]));
 
   // ── AI Greeting ─────────────────────────────────────────────────────────────
@@ -407,6 +415,11 @@ export default function HomeTab() {
   // o conditional do FAB reavalia assim que o trail mede a posicao.
   const [activeTopicY, setActiveTopicY] = useState(0);
   const activeTopicYRef = useRef<number>(0);
+  // Tela baixa (iPhone SE/8, fonte ou zoom grandes): a trilha fixa embaixo do topo ficava espremida.
+  //   1 = o card do nível (e trilhas extras) rola junto com a trilha; a saudação continua fixa.
+  //   2 = caso extremo: a saudação também rola.
+  const [scrollLevel, setScrollLevel] = useState<0 | 1 | 2>(0);
+  const topBlockHRef = useRef(0);
   // Trilha finalizada (nenhum modulo ativo) — reportado pelo TrailContent.
   // Fonte de verdade pro goDown: evita usar um activeTopicYRef obsoleto que
   // sobra quando o user conclui a trilha na mesma sessao (mesmo nivel, sem
@@ -502,19 +515,8 @@ export default function HomeTab() {
 
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId: userId ?? '', userLevel: level, userName: name };
 
-  return (
-    <View style={{ flex: 1, backgroundColor: C.bg }}>
-
-      <HeaderPills
-        streak={streak}
-        totalXP={totalXP}
-        rank={rank}
-        statsParams={statsParams}
-        trialDaysLeft={trialDaysLeft}
-        onPaywallOpen={openPaywall}
-        isPt={isPt}
-      />
-
+  const heroBlock = (
+    <>
       {/* Hero — a Charlotte fala com o aluno: balão no formato do logo,
           centralizado, com a saudação em destaque e a fala da IA embaixo. */}
       <View style={{ marginHorizontal: 20, marginTop: 20 }}>
@@ -556,6 +558,10 @@ export default function HomeTab() {
         <StudyingNow />
       </View>
 
+    </>
+  );
+  const levelBlock = (
+    <>
       {/* Card do nível */}
       <View style={{ marginHorizontal: 20, marginTop: 14 }}>
         <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
@@ -571,17 +577,45 @@ export default function HomeTab() {
           <ExtraTracksRow />
         </View>
       </View>
+    </>
+  );
+
+  return (
+    <View style={{ flex: 1, backgroundColor: C.bg }}>
+
+      <HeaderPills
+        streak={streak}
+        totalXP={totalXP}
+        rank={rank}
+        statsParams={statsParams}
+        trialDaysLeft={trialDaysLeft}
+        onPaywallOpen={openPaywall}
+        isPt={isPt}
+      />
+
+      {/* Saudação e card do nível fixos no topo; em tela baixa passam a rolar com a trilha (scrollLevel). */}
+      {scrollLevel < 2 && heroBlock}
+      {scrollLevel < 1 && levelBlock}
 
       {/* Learning trail — scrollable below fixed hero */}
       <ScrollView
         ref={trailScrollRef}
-        style={{ flex: 1, marginTop: 10 }}
-        contentContainerStyle={{ paddingTop: 24, paddingBottom: 40 }}
+        style={{ flex: 1, marginTop: scrollLevel ? 0 : 10 }}
+        contentContainerStyle={{ paddingTop: scrollLevel ? 0 : 24, paddingBottom: 40 }}
+        onLayout={e => {
+          if (scrollLevel < 2 && e.nativeEvent.layout.height < MIN_TRAIL_VIEWPORT) setScrollLevel(l => (l + 1) as 1 | 2);
+        }}
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={32}
         onScroll={(e) => setScrollY(e.nativeEvent.contentOffset.y)}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.navy} />}
       >
+        {scrollLevel > 0 && (
+          <View onLayout={e => { topBlockHRef.current = e.nativeEvent.layout.height + 34; }} style={{ paddingBottom: 34 }}>
+            {scrollLevel === 2 && heroBlock}
+            {levelBlock}
+          </View>
+        )}
         <TrailContent
           userId={userId}
           level={trailLevel}
@@ -590,7 +624,7 @@ export default function HomeTab() {
           onActiveModuleY={(y) => {
             // Backup via onLayout — confiavel pra Inter/Advanced onde
             // measureLayout (tryScroll) as vezes falha silencioso.
-            if (y > 0) activeTopicYRef.current = y;
+            if (y > 0) activeTopicYRef.current = y + (scrollLevel ? topBlockHRef.current : 0);
           }}
           onTrailFinished={(finished) => {
             trailFinishedRef.current = finished;

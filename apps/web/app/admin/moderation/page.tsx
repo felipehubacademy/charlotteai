@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { Flag, RefreshCw, Check, X, Ban, RotateCcw } from 'lucide-react';
+import { useBulk, BulkBar, BulkCheckbox } from '@/components/admin/Bulk';
 
 interface Person { id: string; name: string | null; username: string | null; email: string | null; avatarUrl: string | null }
 interface Report {
@@ -76,6 +77,13 @@ export default function ModerationAdmin() {
   const done = reports.filter(r => r.handled);
   const list = tab === 'open' ? open : done;
   const late = open.filter(r => Date.now() - new Date(r.createdAt).getTime() > 24 * HOURS).length;
+  // Ações em lote: resolver várias abertas (sem suspender ninguém) ou reabrir resolvidas.
+  const bulk = useBulk(list.map(r => String(r.id)));
+  const postQuiet = async (body: Record<string, unknown>) =>
+    (await fetch('/api/admin/moderation', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })).ok;
+  // Trocou de aba: a seleção da outra lista não vale aqui.
+  const { clear: clearBulk } = bulk;
+  useEffect(() => { clearBulk(); }, [tab, clearBulk]);
 
   return (
     <div className="adm-page">
@@ -99,17 +107,25 @@ export default function ModerationAdmin() {
         </div>
 
         {tab !== 'suspended' && (
+          <BulkBar key={tab} bulk={bulk} total={list.length} allIds={list.map(r => String(r.id))} noun={['denúncia', 'denúncias']} actions={tab === 'open' ? [
+            { label: 'Resolver sem ação', confirm: 'Marcar {n} denúncias como resolvidas, sem suspender ninguém? Fica registrado "Analisada, sem ação".', run: id => postQuiet({ action: 'resolve', id: Number(id), resolution: 'Analisada, sem ação.' }), after: load },
+          ] : [
+            { label: 'Reabrir', confirm: 'Reabrir {n} denúncias?', run: id => postQuiet({ action: 'reopen', id: Number(id) }), after: load },
+          ]} />
+        )}
+        {tab !== 'suspended' && (
           <div className="adm-panel">
             {list.length === 0 ? (
               <div className="adm-empty"><div className="adm-empty-title">{loading ? 'Carregando…' : tab === 'open' ? 'Nenhuma denúncia aberta' : 'Nenhuma denúncia resolvida'}</div></div>
             ) : (
               <table className="adm-table">
-                <thead><tr><th>Denunciado</th><th>Motivo</th><th>Quem denunciou</th><th>Quando</th><th>{tab === 'open' ? '' : 'Resolução'}</th></tr></thead>
+                <thead><tr><th style={{ width: 34 }}><BulkCheckbox bulk={bulk} page /></th><th>Denunciado</th><th>Motivo</th><th>Quem denunciou</th><th>Quando</th><th>{tab === 'open' ? '' : 'Resolução'}</th></tr></thead>
                 <tbody>
                   {list.map(r => {
                     const overdue = !r.handled && Date.now() - new Date(r.createdAt).getTime() > 24 * HOURS;
                     return (
                       <tr key={r.id}>
+                        <td><BulkCheckbox bulk={bulk} id={String(r.id)} /></td>
                         <td>
                           <Who p={r.reported} />
                           <div style={{ display: 'flex', gap: 6, marginTop: 6, flexWrap: 'wrap' }}>

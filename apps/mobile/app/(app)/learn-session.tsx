@@ -1360,11 +1360,11 @@ export default function LearnSessionScreen() {
               </AppText>
             </View>
           )}
-          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '100%', textAlign: 'center' }} numberOfLines={2}>
+          <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '100%', textAlign: 'center' }} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
             {topicTitle}
           </AppText>
           {!!tenseTag && !params.reviewId && (
-            <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>
+            <AppText numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7} style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>
               {tenseTag}
             </AppText>
           )}
@@ -1389,15 +1389,9 @@ export default function LearnSessionScreen() {
           }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
-          scrollEnabled={
-            // Grammar com input (read_answer/fix_error/short_write) ou passagens
-            // longas precisam scroll. Multiple_choice tambem — quando tem passage
-            // longo + 4 opcoes, ultima fica atras do footer. Pronunciation:
-            // listen_write. Word_bank/fill_gap nao precisam scroll.
-            (currentStep.kind === 'grammar' &&
-              ['read_answer', 'fix_error', 'short_write', 'multiple_choice'].includes(currentStep.exercise.type)) ||
-            (currentStep.kind === 'pronunciation' && currentStep.phrase?.type === 'listen_write')
-          }
+          // Sempre rolável (sem elástico quando cabe): com fonte/zoom grandes ou teclado aberto, a frase do
+          // fill_gap/word_bank ficava escondida atrás de Dica/Verificar e não dava para rolar.
+          alwaysBounceVertical={false}
         >
           {/* ── Progress (sem chip de tipo, mesmo padrao do grammar) ── */}
           <View style={{ marginBottom: 20 }}>
@@ -1560,7 +1554,7 @@ export default function LearnSessionScreen() {
                         {/* TranslatableText engole espaço de ponta — injetamos manual */}
                         {/\s$/.test(lastBefore) && <AppText style={ts}>{' '}</AppText>}
                         {isFillGapAnswering ? (
-                          <TextInput
+                          <TextInput maxFontSizeMultiplier={1.15}
                             value={userAnswer}
                             onChangeText={setUserAnswer}
                             autoFocus
@@ -1762,7 +1756,7 @@ export default function LearnSessionScreen() {
                       </AppText>
                     </View>
                   )}
-                  <TextInput
+                  <TextInput maxFontSizeMultiplier={1.15}
                     value={userAnswer}
                     onChangeText={setUserAnswer}
                     placeholder={isPortuguese ? 'Escreva sua resposta em inglês...' : 'Write your answer in English...'}
@@ -1785,7 +1779,7 @@ export default function LearnSessionScreen() {
               {(currentStep.exercise.type === 'fix_error' || currentStep.exercise.type === 'read_answer') && gStatus === 'answering' && (
                 <>
                   <View style={{ flex: 1 }} />
-                  <TextInput
+                  <TextInput maxFontSizeMultiplier={1.15}
                     value={userAnswer}
                     onChangeText={setUserAnswer}
                     placeholder={
@@ -2027,7 +2021,7 @@ export default function LearnSessionScreen() {
               {/* Listen & Write: text input */}
               {currentStep.phrase.type === 'listen_write' && (pronStatus === 'listening' || pronStatus === 'result') && (
                 <>
-                  <TextInput
+                  <TextInput maxFontSizeMultiplier={1.15}
                     value={listenWriteAnswer}
                     onChangeText={setListenWriteAnswer}
                     placeholder={isPortuguese ? 'Digite o que você ouviu…' : 'Type what you heard…'}

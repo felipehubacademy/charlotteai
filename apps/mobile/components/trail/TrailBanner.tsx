@@ -3,6 +3,7 @@
 // + "X de Y concluídos". Usado no hero da Home (fixo) e legacy LearnTrailScreen.
 // TrailContent pode ocultar via showBanner={false} pra não duplicar.
 
+import { systemIsPt } from '@/lib/systemLang';
 import React, { useCallback } from 'react';
 import { View, Platform } from 'react-native';
 import { useFocusEffect } from 'expo-router';
@@ -62,7 +63,7 @@ interface TrailBannerProps {
 }
 
 export function TrailBanner({ userId, level, flush = false, currentLevel, onLevelChange, useV2 = false }: TrailBannerProps) {
-  const isPortuguese = level === 'Novice' || level === 'Igorfina';
+  const isPortuguese = systemIsPt; // chrome: idioma do aparelho
   const accent       = LEVEL_COLOR[level];
   const v2Summaries  = useV2 ? listModuleSummaries(level as Level) : [];
   const modules      = useV2 ? v2Summaries : CURRICULUM[level];

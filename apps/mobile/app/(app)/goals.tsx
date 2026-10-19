@@ -13,15 +13,13 @@ import { useAuth } from '@/hooks/useAuth';
 import { useGoalsData, daysLeftInWeek } from '@/hooks/useGoalsData';
 import { systemIsPt } from '@/lib/systemLang';
 import { getDailyGoal } from '@/lib/dailyGoal';
-import { UserLevel } from '@/lib/levelConfig';
 
 const isPt = systemIsPt;
 
 export default function GoalsScreen() {
   const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const { profile } = useAuth();
-  const level  = (profile?.charlotte_level ?? 'Novice') as UserLevel;
-  const goals  = useGoalsData(profile?.id ?? '', level);
+  const goals  = useGoalsData(profile?.id ?? '');
 
   const goal      = getDailyGoal(goals.todayXP);
   const left      = Math.max(0, goal - goals.todayXP);
@@ -81,30 +79,30 @@ export default function GoalsScreen() {
                 borderWidth: 1, borderColor: C.border,
               }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                  <AppText display style={{ flex: 1, fontSize: 22, fontWeight: '800', color: C.ink }}>
-                    {isPt ? weekly.challenge.title.pt : weekly.challenge.title.en}
+                  <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.ink }}>
+                    {weekly.mission.label}
                   </AppText>
-                  <View style={{ backgroundColor: weekly.completed ? '#E3F6EC' : C.volt, borderRadius: 20, paddingHorizontal: 10, paddingVertical: 4 }}>
-                    <AppText style={{ fontSize: 12, fontWeight: '800', color: weekly.completed ? C.green : C.ink }}>
-                      +{weekly.challenge.xpReward} XP
+                  <View style={{ backgroundColor: weekly.mission.completed ? '#E3F6EC' : C.volt, borderRadius: 20, paddingHorizontal: 10, paddingVertical: 4 }}>
+                    <AppText style={{ fontSize: 12, fontWeight: '800', color: weekly.mission.completed ? C.green : C.ink }}>
+                      +{weekly.mission.xpReward} XP
                     </AppText>
                   </View>
                 </View>
                 <AppText style={{ fontSize: 14, color: C.mid, marginTop: 4, marginBottom: 14 }}>
-                  {isPt ? weekly.challenge.sub.pt : weekly.challenge.sub.en}
+                  {weekly.mission.sub}
                 </AppText>
-                <QueizyWave progress={weekly.current / weekly.challenge.target} height={14} strokeWidth={4} />
+                <QueizyWave progress={weekly.mission.progress} height={14} strokeWidth={4} />
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 8 }}>
                   <AppText style={{ flex: 1, fontSize: 13, fontWeight: '800', color: C.ink }}>
-                    {Math.min(weekly.current, weekly.challenge.target)} / {weekly.challenge.target}{' '}
+                    {weekly.mission.current} / {weekly.mission.target}{' '}
                     <AppText style={{ fontSize: 13, fontWeight: '600', color: C.mid }}>
-                      {isPt ? weekly.challenge.unit.pt : weekly.challenge.unit.en}
+                      {isPt ? weekly.raw.unit.pt : weekly.raw.unit.en}
                     </AppText>
                   </AppText>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
                     <CalendarBlank size={13} color={C.light} weight="bold" />
                     <AppText style={{ fontSize: 12, fontWeight: '700', color: C.light }}>
-                      {weekly.completed
+                      {weekly.mission.completed
                         ? (isPt ? 'Concluído' : 'Completed')
                         : isPt
                           ? (daysLeft === 1 ? 'termina hoje' : `${daysLeft} dias restantes`)

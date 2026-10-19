@@ -164,7 +164,7 @@ export function BadgeMedal({ category, rarity, earned, label, xp, size = 56, onP
 export function BadgeModal({ cat, earnedAt, isPt, onClose, onShare }: {
   cat: CatalogEntry; earnedAt?: Date | null; isPt: boolean; onClose: () => void;
   /** Conquistas ganhas: fecha o modal e abre o card de compartilhamento. */
-  onShare?: (title: string) => void;
+  onShare?: (title: string, cat: { code: string; rarity: string; category: string }) => void;
 }) {
   const earned = !!earnedAt;
   const r = RARITY[cat.rarity] ?? RARITY.common;
@@ -221,7 +221,7 @@ export function BadgeModal({ cat, earnedAt, isPt, onClose, onShare }: {
               null
             )}
             {earned && onShare && (
-              <TouchableOpacity onPress={() => onShare(badgeTitle(cat, cat.title, isPt))}
+              <TouchableOpacity onPress={() => onShare(badgeTitle(cat, cat.title, isPt), cat)}
                 style={{ alignSelf: 'stretch', marginTop: 10, backgroundColor: C.ink, borderRadius: 14, paddingVertical: 13, alignItems: 'center' }}>
                 <AppText style={{ fontSize: 14, fontWeight: '800', color: C.volt }}>{isPt ? 'Compartilhar' : 'Share'}</AppText>
               </TouchableOpacity>
