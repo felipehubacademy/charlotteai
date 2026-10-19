@@ -1,0 +1,59 @@
+// /api/family-call/session — libera uma ligação ao vivo com um membro da Família Queizy (ElevenLabs).
+//   POST { character: 'igorfina', topic?: string }  (Bearer do aluno)
+//   → { token, agentId, prompt, firstMessage, remainingSeconds }
+// Confere os minutos do mês (mesma cota do Live Voice) e, durante o protótipo, a liberação
+// 'familia_call' em beta_features. A chave do ElevenLabs nunca sai do servidor: o app recebe só um
+// token de conversa de curta duração.
+import { NextRequest, NextResponse } from 'next/server';
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { buildCallSession, type CallLevel } from '@/lib/family-call';
+import { isTasterRow, TASTE_LIVE_VOICE_SECONDS } from '@/lib/taste';
+
+export const dynamic = 'force-dynamic';
+const BETA_FLAG = 'familia_call';
+
+function monthStart(tz: string): string {
+  const p = new Intl.DateTimeFormat('en-CA', { timeZone: tz, year: 'numeric', month: '2-digit' }).formatToParts(new Date());
+  return `${p.find(x => x.type === 'year')?.value}-${p.find(x => x.type === 'month')?.value}-01`;
+}
+
+export async function POST(req: NextRequest) {
+  const h = req.headers.get('authorization') ?? '';
+  if (!h.startsWith('Bearer ')) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const supabase = getSupabaseAdmin();
+  const { data: auth } = await supabase.auth.getUser(h.slice(7));
+  if (!auth?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const key = process.env.ELEVENLABS_API_KEY;
+  if (!key) return NextResponse.json({ error: 'Not configured' }, { status: 500 });
+
+  const body = await req.json().catch(() => ({}));
+  const { data: u } = await supabase.from('charlotte_users')
+    .select('name, charlotte_level, beta_features, timezone, subscription_status, is_institutional, live_voice_seconds_used, live_voice_reset_date, live_voice_bonus_seconds')
+    .eq('id', auth.user.id).maybeSingle();
+  const user = u as Record<string, any> | null;
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(user.beta_features ?? []).includes(BETA_FLAG)) return NextResponse.json({ error: 'not_available' }, { status: 403 });
+
+  // Minutos: mesma regra do /api/realtime-token (degustação 3 min uma vez; 7 dias grátis 5; assinatura 20).
+  const taster = isTasterRow(user as never);
+  const needsReset = !taster && (!user.live_voice_reset_date || user.live_voice_reset_date < monthStart(user.timezone || 'America/Sao_Paulo'));
+  const used = needsReset ? 0 : Number(user.live_voice_seconds_used ?? 0);
+  const pool = taster ? TASTE_LIVE_VOICE_SECONDS : user.subscription_status === 'trial' ? 300 : 1200;
+  const remaining = Math.max(0, pool - used) + (taster ? 0 : Number(user.live_voice_bonus_seconds ?? 0));
+  if (remaining <= 0) return NextResponse.json({ error: 'monthly_pool_exhausted' }, { status: 403 });
+
+  const level = (['Novice', 'Inter', 'Advanced'].includes(user.charlotte_level) ? user.charlotte_level : 'Inter') as CallLevel;
+  const session = buildCallSession({
+    characterId: String(body.character ?? 'igorfina'), level, name: user.name ?? '',
+    topic: typeof body.topic === 'string' ? body.topic.slice(0, 120) : null,
+  });
+  if (!session) return NextResponse.json({ error: 'unknown_character' }, { status: 400 });
+
+  const r = await fetch(`https://api.elevenlabs.io/v1/convai/conversation/token?agent_id=${session.agentId}`, { headers: { 'xi-api-key': key } });
+  if (!r.ok) {
+    console.error('[family-call] token error', r.status, await r.text().catch(() => ''));
+    return NextResponse.json({ error: 'token_failed' }, { status: 502 });
+  }
+  const { token } = (await r.json()) as { token: string };
+  return NextResponse.json({ token, agentId: session.agentId, prompt: session.prompt, firstMessage: session.firstMessage, characterName: session.characterName, remainingSeconds: remaining });
+}

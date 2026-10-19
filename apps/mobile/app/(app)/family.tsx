@@ -6,7 +6,8 @@ import React, { useState } from 'react';
 import { View, ScrollView, TouchableOpacity, Image, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
-import { Check, ChatCircleDots, BookOpenText, CaretRight } from 'phosphor-react-native';
+import { Check, ChatCircleDots, BookOpenText, CaretRight, Phone } from 'phosphor-react-native';
+import { FamilyCallModal } from '@/components/voice/FamilyCallModal';
 import { ScreenHeader } from '@/components/stats/StatsUI';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
@@ -33,6 +34,9 @@ export default function FamilyScreen() {
   const tracks = visibleTracks(profile?.beta_features);
   const current = characterInfo(profile?.active_character).id;
   const [saving, setSaving] = useState<CharacterId | null>(null);
+  // Ligação ao vivo com a Família (ElevenLabs): protótipo, só com a liberação 'familia_call'.
+  const canCall = (profile?.beta_features ?? []).includes('familia_call');
+  const [calling, setCalling] = useState<CharacterId | null>(null);
 
   const choose = async (id: CharacterId) => {
     if (!profile?.id || id === current || saving) return;
@@ -82,6 +86,13 @@ export default function FamilyScreen() {
                   <ChatCircleDots size={16} color={C.ink} weight="regular" />
                   <AppText style={{ fontSize: 14, fontWeight: '700', color: C.ink }}>{isPt ? 'Conversar' : 'Chat'}</AppText>
                 </TouchableOpacity>
+                {canCall && c.id !== 'charlotte' && (
+                  <TouchableOpacity onPress={() => setCalling(c.id)} activeOpacity={0.8}
+                    accessibilityLabel={isPt ? `Ligar para ${c.name}` : `Call ${c.name}`}
+                    style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 11, paddingHorizontal: 14, borderRadius: 14, backgroundColor: C.volt }}>
+                    <Phone size={18} color={C.ink} weight="fill" />
+                  </TouchableOpacity>
+                )}
               </View>
               {track ? (
                 <TouchableOpacity onPress={() => router.push({ pathname: '/(app)/track' as any, params: { id: track.id } })} activeOpacity={0.8}
@@ -105,6 +116,7 @@ export default function FamilyScreen() {
           );
         })}
       </ScrollView>
+      {calling && <FamilyCallModal character={calling} onClose={() => setCalling(null)} />}
     </View>
   );
 }
