@@ -419,7 +419,8 @@ export default function ProfileTab() {
   const accessLabel = (() => {
     // Institucional tem acesso garantido — checar ANTES de is_active (senao
     // um institucional com is_active=false aparecia como "Inativa").
-    if (isInstitutional)                       return { text: isPt ? 'Institucional' : 'Institutional', color: C.greenDark };
+    // Institucional é controle interno: para o aluno aparece como assinatura ativa.
+    if (isInstitutional)                       return { text: isPt ? 'Ativa'         : 'Active',        color: C.greenDark };
     if (!isActive)                             return { text: isPt ? 'Inativa'       : 'Inactive',      color: C.error };
     if (subscriptionStatus === 'active')       return { text: isPt ? 'Ativa'         : 'Active',        color: C.greenDark };
     // 'cancelled' = auto-renew desligado mas acesso valido ate expires_at.

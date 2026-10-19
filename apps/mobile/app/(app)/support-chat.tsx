@@ -3,7 +3,8 @@
 // por aqui (aviso por push). Não usa a Charlotte (ela é a tutora, não o suporte).
 // Textos da tela seguem o idioma do aparelho.
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { View, ScrollView, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, ActivityIndicator } from 'react-native';
+import { View, ScrollView, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from 'expo-router';
 import { PaperPlaneRight, Headset } from 'phosphor-react-native';
@@ -120,7 +121,9 @@ export default function SupportChatScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <ScreenHeader title={isPt ? 'Suporte Queizy' : 'Queizy support'} />
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+      {/* keyboard-controller com 'padding' nas duas plataformas: no Android (edge-to-edge) a tela não
+          redimensiona sozinha e o teclado cobria o campo de mensagem. */}
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
         <ScrollView ref={scroll} contentContainerStyle={{ padding: 16, paddingBottom: 8 }} keyboardShouldPersistTaps="handled">
           {/* Abertura fixa (não é gravada no servidor). */}
           <Bubble isPt={isPt} m={{ id: 'intro', author: 'agent', created_at: '', body: isPt
