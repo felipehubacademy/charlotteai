@@ -427,7 +427,7 @@ export default function GuidedChatExerciseScreen() {
           <AppText display numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7} style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
             {gc.persona}
           </AppText>
-          <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 1, letterSpacing: 0.6, textTransform: 'uppercase', fontWeight: '600' }}>
+          <AppText numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7} style={{ fontSize: 11, color: C.navyLight, marginTop: 1, letterSpacing: 0.6, textTransform: 'uppercase', fontWeight: '600' }}>
             {isPt ? 'Chat Guiado' : 'Guided Chat'}
           </AppText>
         </View>

@@ -12,6 +12,13 @@ on:
     paths:
       - 'apps/mobile/**'
 
+# Um OTA por vez: dois pushes seguidos publicavam em paralelo e o mais antigo, terminando por
+# último, virava o "mais recente" (o app perdia a correção do push mais novo). Na fila, a execução
+# pendente mais nova substitui a anterior, então o último publicado é sempre o último commit.
+concurrency:
+  group: ota-production
+  cancel-in-progress: false
+
 jobs:
   update:
     name: Publish EAS OTA
