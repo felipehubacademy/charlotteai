@@ -4,7 +4,7 @@
 // de convite pessoal: quem compartilha também convida.
 
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Modal, TouchableOpacity, Image, ActivityIndicator, Share, Platform } from 'react-native';
+import { View, Modal, TouchableOpacity, Image, ActivityIndicator, Share, Platform, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ViewShot, Sharing, Clipboard, canShareImage } from '@/lib/nativeOptional';
 import { X, ShareNetwork, LinkSimple, Check } from 'phosphor-react-native';
@@ -37,6 +37,11 @@ export interface ShareCardContent {
 
 export function ShareCardModal({ content, onClose }: { content: ShareCardContent | null; onClose: () => void }) {
   const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
+  // Tela baixa (iPhone SE, fonte/zoom grandes): a prévia encolhe para os botões caberem.
+  // Só a prévia na tela; a imagem compartilhada continua 1080x1920 (o captureRef usa o card sem escala).
+  const { height: winH } = useWindowDimensions();
+  const ACTIONS_H = 180; // botões + espaços abaixo do card
+  const scale = Math.min(1, Math.max(0.6, (winH - insets.top - insets.bottom - 40 - ACTIONS_H) / H));
   const { profile } = useAuth();
   const isPt = systemIsPt;
   const cardRef = useRef<View>(null);
@@ -101,7 +106,9 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
           <X size={26} color="#FFFFFF" weight="bold" />
         </TouchableOpacity>
 
-        {/* Card capturado */}
+        {/* Card capturado (dentro de um invólucro que só escala a prévia) */}
+        <View style={{ width: W * scale, height: H * scale, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ transform: [{ scale }] }}>
         <View ref={cardRef} collapsable={false} style={{ width: W, height: H, backgroundColor: VOLT, borderRadius: 22, overflow: 'hidden', padding: 22 }}>
           <Image source={require('@/assets/logo-lockup.png')} style={{ height: 26, width: 112 }} resizeMode="contain" />
 
@@ -132,6 +139,8 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
             </AppText>
             <AppText style={{ fontSize: 13, color: VOLT, fontWeight: '700', marginTop: 2 }}>{shortLink}</AppText>
           </View>
+        </View>
+        </View>
         </View>
 
         {/* Ações */}
