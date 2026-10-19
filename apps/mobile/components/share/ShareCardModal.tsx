@@ -13,22 +13,57 @@ import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 import { fetchReferral } from '@/lib/referral';
 import { track } from '@/lib/analytics';
+import { AchievementIcon } from '@/components/stats/StatsUI';
 
 const INK = '#16131F';
 const VOLT = '#DCFF4A';
 const PAPER = '#FAF7F0';
 
-// Cada tipo de card tem cor e ícone próprios (paleta Queizy), para o feed não ficar repetitivo.
-// light = fundo escuro/saturado: texto branco e logo com o nome em branco.
-type Theme = { bg: string; text: string; sub: string; accent: string; light: boolean; Icon: typeof Fire; linkBg: string; linkText: string; linkAccent: string };
-const THEMES: Record<string, Theme> = {
-  invite:      { bg: VOLT,      text: INK,       sub: 'rgba(22,19,31,0.72)',  accent: INK,       light: false, Icon: UsersThree,    linkBg: INK,       linkText: '#FFFFFF', linkAccent: VOLT },
-  challenge:   { bg: '#2BD97C', text: INK,       sub: 'rgba(22,19,31,0.75)',  accent: INK,       light: false, Icon: Trophy,        linkBg: INK,       linkText: '#FFFFFF', linkAccent: '#2BD97C' },
-  streak:      { bg: '#FF4F8B', text: '#FFFFFF', sub: 'rgba(255,255,255,0.85)', accent: VOLT,    light: true,  Icon: Fire,          linkBg: INK,       linkText: '#FFFFFF', linkAccent: VOLT },
-  achievement: { bg: '#6B4BFF', text: '#FFFFFF', sub: 'rgba(255,255,255,0.85)', accent: VOLT,    light: true,  Icon: Medal,         linkBg: VOLT,      linkText: INK,       linkAccent: INK },
-  level:       { bg: PAPER,     text: INK,       sub: 'rgba(22,19,31,0.7)',   accent: '#6B4BFF', light: false, Icon: GraduationCap, linkBg: '#6B4BFF', linkText: '#FFFFFF', linkAccent: VOLT },
-  xp:          { bg: PAPER,     text: INK,       sub: 'rgba(22,19,31,0.7)',   accent: '#08804A', light: false, Icon: Lightning,     linkBg: INK,       linkText: '#FFFFFF', linkAccent: VOLT },
+// Cores e ícone variam por tipo E dentro do tipo, para o feed não repetir o mesmo card:
+//   sequência: cor gira a cada dia e marcos (7, 14, 30...) têm selo; conquista: cor pela raridade e
+//   ícone pela categoria; desafio/XP: giram pela semente; nível: cor do nível novo.
+// light = fundo saturado: texto branco e logo com o nome em branco.
+type Theme = { bg: string; text: string; sub: string; accent: string; light: boolean; linkBg: string; linkText: string; linkAccent: string };
+const T: Record<string, Theme> = {
+  volt:   { bg: VOLT,      text: INK,       sub: 'rgba(22,19,31,0.72)',   accent: INK,       light: false, linkBg: INK,       linkText: '#FFFFFF', linkAccent: VOLT },
+  green:  { bg: '#2BD97C', text: INK,       sub: 'rgba(22,19,31,0.75)',   accent: INK,       light: false, linkBg: INK,       linkText: '#FFFFFF', linkAccent: '#2BD97C' },
+  pink:   { bg: '#FF4F8B', text: '#FFFFFF', sub: 'rgba(255,255,255,0.85)', accent: VOLT,     light: true,  linkBg: INK,       linkText: '#FFFFFF', linkAccent: VOLT },
+  violet: { bg: '#6B4BFF', text: '#FFFFFF', sub: 'rgba(255,255,255,0.85)', accent: VOLT,     light: true,  linkBg: VOLT,      linkText: INK,       linkAccent: INK },
+  paperV: { bg: PAPER,     text: INK,       sub: 'rgba(22,19,31,0.7)',    accent: '#6B4BFF', light: false, linkBg: '#6B4BFF', linkText: '#FFFFFF', linkAccent: VOLT },
+  paperG: { bg: PAPER,     text: INK,       sub: 'rgba(22,19,31,0.7)',    accent: '#08804A', light: false, linkBg: INK,       linkText: '#FFFFFF', linkAccent: VOLT },
+  paperP: { bg: PAPER,     text: INK,       sub: 'rgba(22,19,31,0.7)',    accent: '#FF4F8B', light: false, linkBg: '#FF4F8B', linkText: '#FFFFFF', linkAccent: INK },
 };
+const KIND_ICON = { streak: Fire, achievement: Medal, level: GraduationCap, xp: Lightning, challenge: Trophy } as const;
+const STREAK_MILESTONES = new Set([7, 14, 21, 30, 50, 60, 90, 100, 150, 200, 365]);
+export const isStreakMilestone = (n: number) => STREAK_MILESTONES.has(n) || (n > 100 && n % 50 === 0);
+const RARITY_THEME: Record<string, keyof typeof T> = { common: 'green', rare: 'violet', epic: 'pink', legendary: 'volt' };
+const LEVEL_THEME: Record<string, keyof typeof T> = { Novice: 'green', Inter: 'paperV', Advanced: 'pink' };
+
+function seedNum(seed: string | number | undefined): number {
+  const s = String(seed ?? '');
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  return h;
+}
+
+function pickTheme(c: ShareCardContent): Theme {
+  if (c.invite) return T.volt;
+  const n = seedNum(c.seed ?? c.big);
+  switch (c.kind) {
+    case 'streak':      return c.badge ? T.volt : [T.pink, T.violet, T.green, T.paperP, T.paperV][Number(c.seed ?? 0) % 5];
+    case 'achievement': return T[RARITY_THEME[c.rarity ?? ''] ?? 'violet'];
+    case 'level':       return c.badge ? T.volt : T[LEVEL_THEME[c.big] ?? 'paperV'];
+    case 'challenge':   return [T.green, T.violet, T.pink, T.paperG][n % 4];
+    default:            return [T.paperG, T.green, T.paperV][n % 3];
+  }
+}
+
+// Posição do ícone ao fundo (também varia pela semente).
+const DECOR = [
+  { right: -46, top: 70, rotate: '-14deg', size: 230 },
+  { right: -60, bottom: 90, rotate: '12deg', size: 250 },
+  { left: -70, bottom: 120, rotate: '-8deg', size: 240 },
+] as const;
 
 // Prévia na tela: 9:16. A captura sai em 1080x1920.
 const W = 270;
@@ -36,6 +71,13 @@ const H = 480;
 
 export interface ShareCardContent {
   kind: 'streak' | 'achievement' | 'level' | 'xp' | 'challenge';
+  /** Semente da variação (dia da sequência, código da conquista, semana...). */
+  seed?: string | number;
+  /** Conquista: raridade (define a cor) e categoria (define o ícone). */
+  rarity?: 'common' | 'rare' | 'epic' | 'legendary';
+  category?: string;
+  /** Selo acima do destaque (ex.: "Marco de 30 dias", "Lendária"). */
+  badge?: string;
   /** Número ou palavra em destaque (ex.: "7", "Inter"). */
   big: string;
   /** Linha abaixo do destaque (ex.: "dias seguidos"). */
@@ -69,7 +111,9 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
   }, [content]);
 
   if (!content) return null;
-  const th = THEMES[content.invite ? 'invite' : content.kind] ?? THEMES.invite;
+  const th = pickTheme(content);
+  const decor = DECOR[seedNum(content.seed ?? content.big) % DECOR.length];
+  const DecorIcon = content.invite ? UsersThree : KIND_ICON[content.kind];
   const name = (profile?.name ?? '').trim().split(/\s+/)[0] || null;
   const shortLink = (link ?? 'queizy.com').replace(/^https?:\/\//, '');
 
@@ -124,13 +168,20 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
         <View style={{ transform: [{ scale }] }}>
         <View ref={cardRef} collapsable={false} style={{ width: W, height: H, backgroundColor: th.bg, borderRadius: 22, overflow: 'hidden', padding: 22 }}>
           {/* Ícone grande do tipo, ao fundo */}
-          <View pointerEvents="none" style={{ position: 'absolute', right: -46, top: 70, opacity: th.light ? 0.16 : 0.1, transform: [{ rotate: '-14deg' }] }}>
-            <th.Icon size={230} color={th.light ? '#FFFFFF' : INK} weight="fill" />
+          <View pointerEvents="none" style={{ position: 'absolute', ...('right' in decor ? { right: decor.right } : { left: decor.left }), ...('top' in decor ? { top: decor.top } : { bottom: decor.bottom }), opacity: th.light ? 0.16 : 0.1, transform: [{ rotate: decor.rotate }] }}>
+            {content.kind === 'achievement' && content.category && !content.invite
+              ? <AchievementIcon category={content.category} color={th.light ? '#FFFFFF' : INK} size={decor.size} />
+              : <DecorIcon size={decor.size} color={th.light ? '#FFFFFF' : INK} weight="fill" />}
           </View>
           <Image source={th.light ? require('@/assets/logo-lockup-light.png') : require('@/assets/logo-lockup.png')} style={{ height: 26, width: 112 }} resizeMode="contain" />
 
           <View style={{ flex: 1, justifyContent: 'center' }}>
             {content.icon && <View style={{ marginBottom: 14 }}>{content.icon}</View>}
+            {content.badge && (
+              <View style={{ alignSelf: 'flex-start', backgroundColor: th.light ? VOLT : INK, borderRadius: 999, paddingHorizontal: 10, paddingVertical: 4, marginBottom: 10 }}>
+                <AppText style={{ fontSize: 11, fontWeight: '800', letterSpacing: 1, textTransform: 'uppercase', color: th.light ? INK : VOLT }}>{content.badge}</AppText>
+              </View>
+            )}
             <AppText display style={{ fontSize: content.big.length > 6 ? 46 : 72, lineHeight: content.big.length > 6 ? 50 : 76, fontWeight: '800', color: th.accent === INK ? th.text : th.accent, letterSpacing: -2 }}>
               {content.big}
             </AppText>

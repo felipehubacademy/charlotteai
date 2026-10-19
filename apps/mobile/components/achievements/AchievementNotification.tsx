@@ -280,7 +280,7 @@ function AchievementScene({ current, onDismiss, isPt }: { current: Achievement; 
             <TouchableOpacity
               onPress={() => {
                 handleDismiss();
-                setTimeout(() => openShare({ kind: 'achievement', big: title, title: isPt ? 'Conquista desbloqueada' : 'Achievement unlocked' }), 450);
+                setTimeout(() => openShare({ kind: 'achievement', big: title, title: isPt ? 'Conquista desbloqueada' : 'Achievement unlocked', seed: current.type, rarity: current.rarity, category: cat?.category, badge: current.rarity === 'legendary' ? (isPt ? 'Lendária' : 'Legendary') : undefined }), 450);
               }}
               activeOpacity={0.85}
               style={{ flexDirection: 'row', gap: 8, justifyContent: 'center', alignItems: 'center', marginTop: 10, borderRadius: 16, paddingVertical: 14, backgroundColor: s.ghostBg }}
