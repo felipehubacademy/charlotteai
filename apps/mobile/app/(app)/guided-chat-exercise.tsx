@@ -14,12 +14,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View, TouchableOpacity, StatusBar, ActivityIndicator,
-   Platform, TextInput, Animated, ScrollView, Keyboard,
+   Platform, TextInput, Animated, ScrollView,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { setAudioModeAsync, setIsAudioActiveAsync } from 'expo-audio';
 import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';
 import { systemIsPt } from '@/lib/systemLang';
+import { useKeyboardOpen } from '@/hooks/useKeyboardOpen';
 import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
 import { setPromotionPending } from '@/lib/promotionState';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -81,12 +82,7 @@ export default function GuidedChatExerciseScreen() {
   const isPt        = systemIsPt; // suporte/chrome: idioma do device
   const insets      = useSafeAreaInsets();
   // Teclado aberto: a missão recolhe para só o título e a contagem, e sobra espaço para a conversa.
-  const [keyboardOpen, setKeyboardOpen] = useState(false);
-  useEffect(() => {
-    const show = Keyboard.addListener(Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow', () => setKeyboardOpen(true));
-    const hide = Keyboard.addListener(Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide', () => setKeyboardOpen(false));
-    return () => { show.remove(); hide.remove(); };
-  }, []);
+  const keyboardOpen = useKeyboardOpen();
 
   // Load guided-chat definition from v2
   const [gc, setGc] = useState<GuidedChat | null>(null);
@@ -616,7 +612,8 @@ export default function GuidedChatExerciseScreen() {
       <KeyboardAvoidingView behavior="padding">
         <View style={{
           paddingHorizontal: 12, paddingTop: 10,
-          paddingBottom: Math.max(insets.bottom, 14),
+          // Teclado aberto: sem a margem da barra de navegação (o teclado já a cobre).
+          paddingBottom: keyboardOpen ? 10 : Math.max(insets.bottom, 14),
           backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border,
           flexDirection: 'row', alignItems: 'flex-end', gap: 8,
         }}>
