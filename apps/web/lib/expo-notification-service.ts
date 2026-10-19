@@ -959,7 +959,7 @@ export async function sendGoalReminders(supabase: any): Promise<void> {
       const unit = pt ? w.unit.pt : w.unit.en;
       messages.push({
         to: u.expo_push_token,
-        title: pt ? 'Desafio da semana: falta pouco' : 'Weekly challenge: almost there',
+        title: pt ? '🎯 Desafio da semana: falta pouco' : '🎯 Weekly challenge: almost there',
         body: pt
           ? `${name ? `${name}, f` : 'F'}altam ${left} ${unit} para concluir: ${w.title.pt}. Vale ${w.xp} XP.`
           : `${name ? `${name}, ` : ''}${left} ${unit} to go: ${w.title.en}. Worth ${w.xp} XP.`,
@@ -1023,7 +1023,7 @@ export async function sendWeeklyChallenges(supabase: any): Promise<void> {
       const tx = missionTexts(t, level, u.id, p.weekStart);
       return {
         to: u.expo_push_token,
-        title: pt ? 'Desafio da semana' : 'Weekly challenge',
+        title: pt ? '🏆 Desafio da semana' : '🏆 Weekly challenge',
         body: pt ? `${tx.title.pt}. ${tx.where.pt}. Vale ${t.xp} XP.` : `${tx.title.en}. ${tx.where.en}. Worth ${t.xp} XP.`,
         data: { screen: 'goals', type: 'weekly_challenge', challenge: t.id },
         sound: 'default',
