@@ -90,9 +90,12 @@ export async function requestFamilyCall(character: string, topic?: string | null
 export interface FamilyCallHandlers {
   onConnect?: () => void;
   onDisconnect?: (reason?: string) => void;
+  /** message vem com as tags de voz (<President>...) para a tela saber da imitação. */
   onMessage?: (m: { source: 'ai' | 'user'; message: string }) => void;
   onModeChange?: (mode: 'speaking' | 'listening') => void;
   onError?: (msg: string) => void;
+  /** 'connecting' durante reconexão; 'connected' quando volta. */
+  onStatusChange?: (status: string) => void;
 }
 
 /** Abre a conversa com o agente. Devolve a conversa (endSession, setMicMuted). */
@@ -110,5 +113,17 @@ export async function startFamilyConversation(s: FamilyCallStart, h: FamilyCallH
     onMessage: (m: any) => h.onMessage?.({ source: m.source === 'ai' ? 'ai' : 'user', message: String(m.message ?? '') }),
     onModeChange: (m: any) => h.onModeChange?.(m?.mode === 'speaking' ? 'speaking' : 'listening'),
     onError: (msg: any) => h.onError?.(String(msg)),
+    onStatusChange: (st: any) => h.onStatusChange?.(String(st?.status ?? st)),
   });
+}
+
+/** Volume das duas pontas (lib/callLevels): estatísticas das trilhas de áudio da sala do LiveKit. */
+export async function familyCallStats(conversation: any): Promise<any[]> {
+  const room = conversation?.connection?.room;
+  if (!room) return [];
+  const tracks: any[] = [];
+  room.remoteParticipants?.forEach((p: any) => p.audioTrackPublications?.forEach((pub: any) => pub.track && tracks.push(pub.track)));
+  room.localParticipant?.audioTrackPublications?.forEach((pub: any) => pub.track && tracks.push(pub.track));
+  const reports = await Promise.all(tracks.map(t => t.getRTCStatsReport?.().catch(() => undefined)));
+  return reports.filter(Boolean);
 }

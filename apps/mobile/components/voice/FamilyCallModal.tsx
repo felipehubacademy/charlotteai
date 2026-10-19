@@ -1,47 +1,85 @@
 // FamilyCallModal — ligação ao vivo com um membro da Família Queizy (ElevenLabs Agents, lib/familyCall).
-// Mesmo roteiro de áudio da ligação da Charlotte (LiveVoiceModal): expo-audio em modo de gravação +
-// CharlotteAudioSession (sessão calibrada) antes do microfone, alto-falante reafirmado ao conectar e
-// tudo desligado no fim. Os minutos saem da mesma cota do Live Voice.
-// Protótipo: aparece só para contas com a liberação 'familia_call' (Família > Ligar).
+// Áudio: mesmo roteiro da ligação da Charlotte (LiveVoiceModal) — expo-audio em modo de gravação +
+// CharlotteAudioSession (sessão calibrada e alto-falante) ANTES de conectar, toque de chamada até o
+// personagem atender e tudo desligado no fim. Os minutos saem da mesma cota do Live Voice.
+// Microfone fechado durante a primeira fala do personagem: o eco dela no alto-falante virava uma
+// "resposta" falsa do aluno no começo da ligação.
+// Visual: cores do personagem, anel do avatar e onda seguindo o volume real das duas pontas
+// (lib/callLevels), estados claros, legendas em balões, selo da imitação e resumo no fim.
+// Protótipo: só com a liberação 'familia_call' (Família > botão de ligar).
 import React from 'react';
-import { View, Modal, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import { View, Modal, TouchableOpacity, Image, Animated, ActivityIndicator } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { requestRecordingPermissionsAsync, setAudioModeAsync } from 'expo-audio';
 import CharlotteAudioSession from 'charlotte-audio-session';
-import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear } from 'phosphor-react-native';
+import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Phone, ClosedCaptioning } from 'phosphor-react-native';
 import * as Haptics from '@/lib/hapticsGated';
 import { AppText } from '@/components/ui/Text';
 import { LiveVoiceWave } from './LiveVoiceWave';
 import { systemIsPt } from '@/lib/systemLang';
 import { characterInfo } from '@/lib/characters';
 import { consumeLiveVoiceSeconds } from '@/lib/liveVoiceUsage';
-import { requestFamilyCall, startFamilyConversation } from '@/lib/familyCall';
+import { requestFamilyCall, startFamilyConversation, familyCallStats } from '@/lib/familyCall';
+import { useCallLevels } from '@/lib/callLevels';
 import { track } from '@/lib/analytics';
 
-const STAGE = '#16131F';
+const INK = '#16131F';
 const VOLT = '#DCFF4A';
+const PINK = '#FF4F8B';
 
-type Status = 'connecting' | 'connected' | 'ended' | 'error';
+// Cores da ligação por personagem.
+const THEME: Record<string, { bg: string; ink: string; sub: string; you: string; chip: string; bubble: string }> = {
+  igorfina: { bg: VOLT, ink: INK, sub: 'rgba(22,19,31,0.65)', you: PINK, chip: 'rgba(22,19,31,0.08)', bubble: '#FFFFFF' },
+  default:  { bg: '#6B4BFF', ink: '#FFFFFF', sub: 'rgba(255,255,255,0.75)', you: VOLT, chip: 'rgba(255,255,255,0.14)', bubble: 'rgba(255,255,255,0.14)' },
+};
+// Imitações: tag de voz do agente → selo na tela.
+const IMPRESSION_BADGE: Record<string, { pt: string; en: string }> = {
+  President: { pt: 'Presidente', en: 'President' },
+  Hoops: { pt: 'Astro do basquete', en: 'Basketball star' },
+};
+
+type Status = 'calling' | 'connected' | 'reconnecting' | 'ended' | 'error';
+type Line = { who: 'ai' | 'user'; text: string };
 
 export function FamilyCallModal({ character, topic, onClose }: { character: string | null; topic?: string | null; onClose: () => void }) {
   const isPt = systemIsPt;
   const insets = useSafeAreaInsets();
   const info = characterInfo(character);
-  const [status, setStatus] = React.useState<Status>('connecting');
+  const th = THEME[character ?? ''] ?? THEME.default;
+  const [attempt, setAttempt] = React.useState(0);
+  const [status, setStatus] = React.useState<Status>('calling');
   const [mode, setMode] = React.useState<'speaking' | 'listening'>('listening');
-  const [caption, setCaption] = React.useState<{ who: 'ai' | 'user'; text: string } | null>(null);
+  const [lines, setLines] = React.useState<Line[]>([]);
+  const [captions, setCaptions] = React.useState(true);
+  const [badge, setBadge] = React.useState<string | null>(null);
   const [muted, setMuted] = React.useState(false);
   const [speaker, setSpeaker] = React.useState(true);
   const [secs, setSecs] = React.useState(0);
   const [error, setError] = React.useState('');
   const convRef = React.useRef<any>(null);
   const startedAtRef = React.useRef<number | null>(null);
-  const limitRef = React.useRef<number>(0);
+  const limitRef = React.useRef(0);
   const closingRef = React.useRef(false);
+  const mutedRef = React.useRef(false);
+  const firstTurnRef = React.useRef(true); // microfone fechado até o fim da 1ª fala do personagem
+
+  const levels = useCallLevels(status === 'connected', () => familyCallStats(convRef.current));
+  const ring = React.useRef(new Animated.Value(0)).current;
+
+  // Anel do avatar segue o volume de quem fala.
+  React.useEffect(() => {
+    if (status !== 'connected') { ring.setValue(0); return; }
+    const iv = setInterval(() => {
+      const v = mode === 'speaking' ? levels.remote.current : levels.local.current;
+      Animated.timing(ring, { toValue: Math.min(1, v), duration: 80, useNativeDriver: true }).start();
+    }, 90);
+    return () => clearInterval(iv);
+  }, [status, mode]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const finish = React.useCallback(async (reason: string) => {
     if (closingRef.current) return;
     closingRef.current = true;
+    CharlotteAudioSession.stopRingback().catch(() => {});
     try { await convRef.current?.endSession(); } catch {}
     convRef.current = null;
     CharlotteAudioSession.stop().catch(() => {});
@@ -51,11 +89,14 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
     setStatus(s => (s === 'error' ? s : 'ended'));
   }, [character]);
 
-  // Abre a ligação ao montar.
+  const setMic = (off: boolean) => { try { convRef.current?.setMicMuted(off); } catch {} };
+
+  // Abre a ligação (de novo a cada "Ligar de novo").
   React.useEffect(() => {
     if (!character) return;
     let alive = true;
-    closingRef.current = false;
+    closingRef.current = false; firstTurnRef.current = true; startedAtRef.current = null;
+    setStatus('calling'); setLines([]); setBadge(null); setSecs(0); setError(''); setMode('listening');
     (async () => {
       try {
         const { granted } = await requestRecordingPermissionsAsync();
@@ -64,6 +105,8 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
           setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix', shouldPlayInBackground: true }).catch(() => {}),
           CharlotteAudioSession.start(true).catch(() => {}),
         ]);
+        await CharlotteAudioSession.setSpeakerOn(true).catch(() => {});
+        CharlotteAudioSession.playRingback().catch(() => {});
         const s = await requestFamilyCall(character, topic);
         if (!alive) return;
         limitRef.current = s.remainingSeconds;
@@ -71,17 +114,37 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
           onConnect: () => {
             setStatus('connected');
             startedAtRef.current = Date.now();
-            CharlotteAudioSession.setSpeakerOn(true).catch(() => {});
-            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+            setMic(true); // abre só depois da primeira fala do personagem
+            setTimeout(() => { if (firstTurnRef.current) { firstTurnRef.current = false; setMic(mutedRef.current); } }, 9000);
             track('family_call_start', { character });
           },
           onDisconnect: () => { if (!closingRef.current) finish('remote'); },
-          onMessage: m => { if (m.message) setCaption({ who: m.source, text: m.message.replace(/<\/?[A-Za-z]+>/g, '') }); },
-          onModeChange: setMode,
+          onStatusChange: st => {
+            if (st === 'connecting' && startedAtRef.current) setStatus('reconnecting');
+            if (st === 'connected' && startedAtRef.current) setStatus('connected');
+          },
+          onMessage: m => {
+            if (!m.message) return;
+            if (m.source === 'ai') {
+              const tag = m.message.match(/<([A-Za-z]+)>/)?.[1];
+              setBadge(tag && IMPRESSION_BADGE[tag] ? (isPt ? IMPRESSION_BADGE[tag].pt : IMPRESSION_BADGE[tag].en) : null);
+            }
+            const text = m.message.replace(/<\/?[A-Za-z]+>/g, '').trim();
+            setLines(prev => [...prev, { who: m.source, text }].slice(-2));
+          },
+          onModeChange: md => {
+            if (md === 'speaking') {
+              CharlotteAudioSession.stopRingback().catch(() => {});
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+            }
+            if (md === 'listening' && firstTurnRef.current) { firstTurnRef.current = false; setMic(mutedRef.current); }
+            setMode(md);
+          },
           onError: msg => { console.warn('[family-call]', msg); },
         });
         if (!alive) { convRef.current?.endSession?.(); }
       } catch (e: any) {
+        CharlotteAudioSession.stopRingback().catch(() => {});
         if (!alive) return;
         const code = String(e?.message ?? '');
         setError(code === 'mic'
@@ -94,11 +157,11 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
       }
     })();
     return () => { alive = false; finish('unmount'); };
-  }, [character]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [character, attempt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Cronômetro e limite de minutos.
   React.useEffect(() => {
-    if (status !== 'connected') return;
+    if (status !== 'connected' && status !== 'reconnecting') return;
     const iv = setInterval(() => {
       const t = startedAtRef.current ? Math.round((Date.now() - startedAtRef.current) / 1000) : 0;
       setSecs(t);
@@ -108,57 +171,121 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
   }, [status, finish]);
 
   if (!character) return null;
-  const mm = `${String(Math.floor(secs / 60)).padStart(2, '0')}:${String(secs % 60).padStart(2, '0')}`;
-  const statusText = status === 'connecting' ? (isPt ? 'Chamando…' : 'Calling…')
+  const fmt = (n: number) => `${String(Math.floor(n / 60)).padStart(2, '0')}:${String(n % 60).padStart(2, '0')}`;
+  const live = status === 'connected' || status === 'reconnecting';
+  const yourTurn = status === 'connected' && mode === 'listening' && !firstTurnRef.current;
+  const chip = status === 'calling' ? (isPt ? `Chamando ${info.name}…` : `Calling ${info.name}…`)
+    : status === 'reconnecting' ? (isPt ? 'Conexão instável, reconectando…' : 'Unstable connection, reconnecting…')
     : status === 'ended' ? (isPt ? 'Ligação encerrada' : 'Call ended')
     : status === 'error' ? error
-    : mode === 'speaking' ? (isPt ? `${info.name} está falando` : `${info.name} is talking`) : (isPt ? 'Sua vez' : 'Your turn');
+    : mode === 'speaking' || firstTurnRef.current ? (isPt ? `${info.name} está falando` : `${info.name} is talking`)
+    : muted ? (isPt ? 'Microfone desligado' : 'Mic off') : (isPt ? 'Pode falar' : 'Your turn');
+  const minutesLeft = Math.max(0, Math.floor((limitRef.current - secs) / 60));
+  const ringScale = ring.interpolate({ inputRange: [0, 1], outputRange: [1, 1.32] });
+  const ringOpacity = ring.interpolate({ inputRange: [0, 1], outputRange: [0.15, 0.55] });
+  const ringColor = mode === 'speaking' ? th.ink : th.you;
+
+  const roundBtn = (on: boolean) => ({
+    width: 62, height: 62, borderRadius: 31, alignItems: 'center' as const, justifyContent: 'center' as const,
+    backgroundColor: on ? th.ink : th.chip,
+  });
 
   return (
     <Modal visible animationType="slide" onRequestClose={() => { finish('back'); onClose(); }}>
-      <View style={{ flex: 1, backgroundColor: STAGE, paddingTop: insets.top + 24, paddingBottom: insets.bottom + 24, paddingHorizontal: 24, alignItems: 'center' }}>
-        <AppText style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, fontWeight: '700', letterSpacing: 1.2, textTransform: 'uppercase' }}>
-          {isPt ? 'Ligação' : 'Call'} · {status === 'connected' ? mm : 'Família Queizy'}
-        </AppText>
-        <AppText display style={{ color: '#FFFFFF', fontSize: 30, fontWeight: '800', marginTop: 8 }}>{info.name}</AppText>
-        <AppText style={{ color: status === 'error' ? '#FF8FB3' : 'rgba(255,255,255,0.75)', fontSize: 15, marginTop: 6, textAlign: 'center' }}>{statusText}</AppText>
-
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignSelf: 'stretch' }}>
-          <View style={{ width: 150, height: 150, borderRadius: 75, overflow: 'hidden', backgroundColor: '#000', borderWidth: 4, borderColor: mode === 'speaking' && status === 'connected' ? VOLT : 'transparent' }}>
-            <Image source={info.avatar} style={{ width: '100%', height: '100%' }} />
+      <View style={{ flex: 1, backgroundColor: th.bg, paddingTop: insets.top + 16, paddingBottom: insets.bottom + 20, paddingHorizontal: 20 }}>
+        {/* Topo: tempo e minutos */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+          <View style={{ backgroundColor: th.chip, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6 }}>
+            <AppText style={{ fontSize: 13, fontWeight: '800', color: th.ink, letterSpacing: 0.5 }}>{live ? fmt(secs) : (isPt ? 'Ligação' : 'Call')}</AppText>
           </View>
-          <View style={{ marginTop: 26 }}>
-            <LiveVoiceWave mode={status === 'connected' ? (mode === 'speaking' ? 'charlotte' : 'user') : 'connecting'} />
-          </View>
-          {status === 'connecting' && <ActivityIndicator color={VOLT} style={{ marginTop: 18 }} />}
-          {!!caption && status === 'connected' && (
-            <AppText style={{ color: caption.who === 'ai' ? '#FFFFFF' : 'rgba(255,255,255,0.6)', fontSize: 16, lineHeight: 22, textAlign: 'center', marginTop: 24 }} numberOfLines={4}>
-              {caption.text}
-            </AppText>
+          {live && (
+            <TouchableOpacity onPress={() => setCaptions(c => !c)} accessibilityLabel={isPt ? 'Legendas' : 'Captions'}
+              style={{ width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center', backgroundColor: captions ? th.ink : th.chip }}>
+              <ClosedCaptioning size={20} color={captions ? th.bg : th.ink} weight="fill" />
+            </TouchableOpacity>
           )}
         </View>
 
-        {status === 'connected' || status === 'connecting' ? (
-          <View style={{ flexDirection: 'row', gap: 28, alignItems: 'center' }}>
-            <TouchableOpacity accessibilityLabel={muted ? (isPt ? 'Ligar microfone' : 'Unmute') : (isPt ? 'Silenciar microfone' : 'Mute')}
-              onPress={() => { const n = !muted; setMuted(n); try { convRef.current?.setMicMuted(n); } catch {} }}
-              style={{ width: 64, height: 64, borderRadius: 32, backgroundColor: muted ? '#FFFFFF' : 'rgba(255,255,255,0.12)', alignItems: 'center', justifyContent: 'center' }}>
-              {muted ? <MicrophoneSlash size={26} color={STAGE} weight="fill" /> : <Microphone size={26} color="#FFFFFF" weight="fill" />}
+        {/* Personagem */}
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          {badge && live ? (
+            <View style={{ backgroundColor: th.ink, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 5, marginBottom: 14 }}>
+              <AppText style={{ fontSize: 12, fontWeight: '800', color: th.bg, letterSpacing: 1, textTransform: 'uppercase' }}>{badge}</AppText>
+            </View>
+          ) : <View style={{ height: 38 }} />}
+          <View style={{ width: 200, height: 200, alignItems: 'center', justifyContent: 'center' }}>
+            <Animated.View style={{ position: 'absolute', width: 176, height: 176, borderRadius: 88, backgroundColor: ringColor, opacity: live ? ringOpacity : 0, transform: [{ scale: ringScale }] }} />
+            <View style={{ width: 168, height: 168, borderRadius: 84, overflow: 'hidden', backgroundColor: INK, borderWidth: 5, borderColor: th.ink }}>
+              <Image source={info.avatar} style={{ width: '100%', height: '100%' }} />
+            </View>
+          </View>
+          <AppText display style={{ fontSize: 32, fontWeight: '800', color: th.ink, marginTop: 18 }}>{info.name}</AppText>
+          <View style={{ marginTop: 10, backgroundColor: yourTurn ? th.you : th.chip, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 6 }}>
+            <AppText style={{ fontSize: 14, fontWeight: '700', color: yourTurn ? INK : th.ink }}>{chip}</AppText>
+          </View>
+          <View style={{ marginTop: 18, height: 44, justifyContent: 'center' }}>
+            {status === 'calling' ? <ActivityIndicator color={th.ink} /> : (
+              <LiveVoiceWave
+                mode={live ? (mode === 'speaking' ? 'charlotte' : 'user') : 'idle'}
+                levelRef={levels.remote} userLevelRef={levels.local}
+                color={mode === 'speaking' ? th.ink : th.you} width={260} height={44}
+              />
+            )}
+          </View>
+        </View>
+
+        {/* Legendas: as duas últimas falas */}
+        {live && captions && lines.length > 0 && (
+          <View style={{ gap: 8, marginBottom: 18 }}>
+            {lines.map((l, i) => (
+              <View key={i} style={{ alignSelf: l.who === 'ai' ? 'flex-start' : 'flex-end', maxWidth: '88%', backgroundColor: l.who === 'ai' ? th.bubble : th.ink, borderRadius: 16, paddingHorizontal: 14, paddingVertical: 9, opacity: i === lines.length - 1 ? 1 : 0.6 }}>
+                <AppText style={{ fontSize: 15, lineHeight: 20, color: l.who === 'ai' ? INK : th.bg }} numberOfLines={3}>{l.text}</AppText>
+              </View>
+            ))}
+          </View>
+        )}
+
+        {/* Fim: resumo */}
+        {(status === 'ended' || status === 'error') && (
+          <View style={{ backgroundColor: th.chip, borderRadius: 20, padding: 16, marginBottom: 16, alignItems: 'center' }}>
+            {status === 'ended' ? (
+              <>
+                <AppText style={{ fontSize: 15, fontWeight: '800', color: th.ink }}>{isPt ? `Vocês conversaram ${fmt(secs)}` : `You talked for ${fmt(secs)}`}</AppText>
+                <AppText style={{ fontSize: 13, color: th.sub, marginTop: 4 }}>{isPt ? `Restam ${minutesLeft} min de ligação neste mês` : `${minutesLeft} call minutes left this month`}</AppText>
+              </>
+            ) : <AppText style={{ fontSize: 15, fontWeight: '700', color: th.ink, textAlign: 'center' }}>{error}</AppText>}
+          </View>
+        )}
+
+        {/* Controles */}
+        {status === 'ended' || status === 'error' ? (
+          <View style={{ gap: 10 }}>
+            <TouchableOpacity onPress={() => setAttempt(a => a + 1)} activeOpacity={0.85}
+              style={{ backgroundColor: th.ink, borderRadius: 999, paddingVertical: 16, flexDirection: 'row', gap: 8, alignItems: 'center', justifyContent: 'center' }}>
+              <Phone size={18} color={th.bg} weight="fill" />
+              <AppText style={{ fontSize: 16, fontWeight: '800', color: th.bg }}>{isPt ? 'Ligar de novo' : 'Call again'}</AppText>
             </TouchableOpacity>
-            <TouchableOpacity accessibilityLabel={isPt ? 'Desligar' : 'Hang up'} onPress={() => { finish('hangup'); onClose(); }}
+            <TouchableOpacity onPress={onClose} style={{ paddingVertical: 12, alignItems: 'center' }}>
+              <AppText style={{ fontSize: 15, fontWeight: '700', color: th.ink }}>{isPt ? 'Fechar' : 'Close'}</AppText>
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 26, alignItems: 'center' }}>
+            <TouchableOpacity accessibilityLabel={muted ? (isPt ? 'Ligar microfone' : 'Unmute') : (isPt ? 'Silenciar microfone' : 'Mute')}
+              onPress={() => { const n = !muted; setMuted(n); mutedRef.current = n; if (!firstTurnRef.current) setMic(n); }}
+              style={roundBtn(muted)}>
+              {muted ? <MicrophoneSlash size={26} color={th.bg} weight="fill" /> : <Microphone size={26} color={th.ink} weight="fill" />}
+            </TouchableOpacity>
+            <TouchableOpacity accessibilityLabel={isPt ? 'Desligar' : 'Hang up'} onPress={() => finish('hangup')}
               style={{ width: 76, height: 76, borderRadius: 38, backgroundColor: '#E5484D', alignItems: 'center', justifyContent: 'center' }}>
               <PhoneSlash size={32} color="#FFFFFF" weight="fill" />
             </TouchableOpacity>
             <TouchableOpacity accessibilityLabel={speaker ? (isPt ? 'Usar o fone do celular' : 'Use earpiece') : (isPt ? 'Usar o alto-falante' : 'Use speaker')}
               onPress={() => { const n = !speaker; setSpeaker(n); CharlotteAudioSession.setSpeakerOn(n).catch(() => {}); }}
-              style={{ width: 64, height: 64, borderRadius: 32, backgroundColor: speaker ? '#FFFFFF' : 'rgba(255,255,255,0.12)', alignItems: 'center', justifyContent: 'center' }}>
-              {speaker ? <SpeakerHigh size={26} color={STAGE} weight="fill" /> : <Ear size={26} color="#FFFFFF" weight="fill" />}
+              style={roundBtn(speaker)}>
+              {speaker ? <SpeakerHigh size={26} color={th.bg} weight="fill" /> : <Ear size={26} color={th.ink} weight="fill" />}
             </TouchableOpacity>
           </View>
-        ) : (
-          <TouchableOpacity onPress={onClose} style={{ alignSelf: 'stretch', backgroundColor: VOLT, borderRadius: 999, paddingVertical: 16, alignItems: 'center' }}>
-            <AppText style={{ fontSize: 16, fontWeight: '800', color: STAGE }}>{isPt ? 'Fechar' : 'Close'}</AppText>
-          </TouchableOpacity>
         )}
       </View>
     </Modal>

@@ -23,11 +23,15 @@ interface Props {
   mode: Mode;
   /** Volume da voz 0..1 (atualizado fora do React). Sem ele, amplitude fixa. */
   levelRef?: React.MutableRefObject<number>;
+  /** Volume da voz do aluno 0..1. Com ele, a onda 'user' também acompanha a fala (sem ele, amplitude fixa). */
+  userLevelRef?: React.MutableRefObject<number>;
+  /** Cor da linha (sobrepõe a do modo; ex.: cor do personagem na ligação com a Família). */
+  color?: string;
   width?: number;
   height?: number;
 }
 
-export function LiveVoiceWave({ mode, levelRef, width = 220, height = 38 }: Props) {
+export function LiveVoiceWave({ mode, levelRef, userLevelRef, color, width = 220, height = 38 }: Props) {
   const [t, setT] = useState(0);
   const raf = useRef<number | null>(null);
   const last = useRef(0);
@@ -38,7 +42,8 @@ export function LiveVoiceWave({ mode, levelRef, width = 220, height = 38 }: Prop
     const loop = (now: number) => {
       if (now - last.current > 33) {
         last.current = now;
-        const target = levelRef ? Math.max(0.12, levelRef.current) : 0.75;
+        const ref = mode === 'user' ? userLevelRef : levelRef;
+        const target = ref ? Math.max(mode === 'user' ? 0.08 : 0.12, ref.current) : 0.75;
         amp.current += (target - amp.current) * 0.35;
         setT(now / 1000);
       }
@@ -46,7 +51,7 @@ export function LiveVoiceWave({ mode, levelRef, width = 220, height = 38 }: Prop
     };
     raf.current = requestAnimationFrame(loop);
     return () => { if (raf.current) cancelAnimationFrame(raf.current); };
-  }, [mode, levelRef]);
+  }, [mode, levelRef, userLevelRef]);
 
   const sw = 4;
   const mid = height / 2;
@@ -69,14 +74,14 @@ export function LiveVoiceWave({ mode, levelRef, width = 220, height = 38 }: Prop
         Math.sin(u * Math.PI * 9 - t * 9) * 0.6 +
         Math.sin(u * Math.PI * 17 + t * 13) * 0.3 +
         Math.sin(u * Math.PI * 4 - t * 5) * 0.25;
-      y = mid + maxAmp * env * wobble;
+      y = mid + maxAmp * env * wobble * (userLevelRef ? amp.current : 1);
     }
     d += `${i === 0 ? 'M' : ' L'}${x.toFixed(1)} ${y.toFixed(1)}`;
   }
 
   return (
     <Svg width={width} height={height}>
-      <Path d={d} stroke={COLORS[mode]} strokeWidth={sw} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <Path d={d} stroke={color ?? COLORS[mode]} strokeWidth={sw} fill="none" strokeLinecap="round" strokeLinejoin="round" />
     </Svg>
   );
 }
