@@ -48,9 +48,10 @@ function Kpi({ label, value, now, prev, suffix, sub }: { label: string; value: s
   return (
     <Card style={{ flex: 1, padding: 14, marginHorizontal: 0 }}>
       <AppText style={{ fontSize: 11, fontWeight: '700', color: C.light, textTransform: 'uppercase', letterSpacing: 0.4 }} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.75}>{label}</AppText>
-      <AppText display style={{ fontSize: 24, fontWeight: '800', color: C.ink, marginTop: 4 }}>{value}</AppText>
+      <AppText display style={{ fontSize: 24, fontWeight: '800', color: C.ink, marginTop: 4 }} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.6}>{value}</AppText>
       <Delta now={now} prev={prev} suffix={suffix} />
-      {sub ? <AppText style={{ fontSize: 11, color: C.light, marginTop: 4 }} numberOfLines={1}>{sub}</AppText> : null}
+      {/* Até 2 linhas: em tela estreita ou fonte grande a legenda cortava ("sem erro…"). */}
+      {sub ? <AppText style={{ fontSize: 11, color: C.light, marginTop: 4 }} numberOfLines={2}>{sub}</AppText> : null}
     </Card>
   );
 }
