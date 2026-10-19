@@ -85,7 +85,7 @@ export function GoalsCelebration() {
           <AppText style={{ fontSize: 11, fontWeight: '800', color: GREEN, letterSpacing: 1, textTransform: 'uppercase' }}>
             {isPt ? 'Missão concluída' : 'Mission complete'}
           </AppText>
-          <AppText style={{ fontSize: 14, fontWeight: '700', color: INK, marginTop: 2 }} numberOfLines={2}>{current.title}</AppText>
+          <AppText style={{ fontSize: 14, fontWeight: '700', color: INK, marginTop: 2 }} numberOfLines={3}>{current.title}</AppText>
         </View>
         <View style={{ backgroundColor: VOLT, borderRadius: 999, paddingHorizontal: 10, paddingVertical: 5 }}>
           <AppText style={{ fontSize: 13, fontWeight: '800', color: INK }}>+{current.xp} XP</AppText>

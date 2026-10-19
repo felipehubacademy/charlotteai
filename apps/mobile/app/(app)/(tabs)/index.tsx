@@ -307,7 +307,8 @@ export default function HomeTab() {
     fetchData();
     // Metas: o servidor credita o XP das missões concluídas e a comemoração aparece (GoalsCelebration).
     // Ao voltar de uma lição para a Início, o aluno já vê a missão concluída.
-    fetchGoals();
+    // Se creditou agora, recarrega para o XP do topo já somar.
+    fetchGoals().then(g => { if (g?.granted.length) fetchData(); });
   }, [fetchData]));
 
   // ── AI Greeting ─────────────────────────────────────────────────────────────
