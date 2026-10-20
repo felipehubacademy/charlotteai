@@ -6,7 +6,7 @@
 // "resposta" falsa do aluno no começo da ligação.
 // Visual: cores do personagem, anel do avatar e onda seguindo o volume real das duas pontas
 // (lib/callLevels), estados claros, legendas em balões, selo da imitação e resumo no fim.
-// Protótipo: só com a liberação 'familia_call' (Família > botão de ligar).
+// Aberta pela aba de ligação quando o membro escolhido na Família não é a Charlotte.
 import React from 'react';
 import { View, Modal, TouchableOpacity, Image, Animated, ActivityIndicator, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';

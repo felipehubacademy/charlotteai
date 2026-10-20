@@ -24,7 +24,7 @@ export default function PrivacidadePage() {
             Política de Privacidade
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, margin: 0 }}>
-            Última atualização: 16 de outubro de 2026
+            Última atualização: 19 de outubro de 2026
           </p>
         </div>
       </div>
@@ -48,8 +48,8 @@ export default function PrivacidadePage() {
           <DataTable rows={[
             ['Dados de cadastro', 'Nome, e-mail e senha (armazenada com hash seguro).'],
             ['Perfil público e amigos', 'Seu @, foto de perfil, nível, amigos de estudo, pedidos de amizade, cutucadas, parabéns e competições de que você participa.'],
-            ['Dados de uso', 'Histórico de conversas com a IA, progresso nas lições, streak diário, nível de inglês e preferências de aprendizado.'],
-            ['Dados de áudio', 'Gravações de voz em exercícios de pronúncia e conversas. Na pronúncia e no Live Voice, o áudio é processado em tempo real e descartado. No Free Chat, os áudios das conversas (os seus e as respostas faladas) ficam guardados por 90 dias, num espaço privado, para você ouvir de novo; depois disso, fica só o texto.'],
+            ['Dados de uso', 'Histórico de conversas com a IA, progresso nas lições, streak diário, nível de inglês e preferências de aprendizado. Nas ligações (Live Voice, com a Charlotte ou com a Família Queizy), guardamos a transcrição em texto, um resumo e anotações curtas da conversa para o personagem lembrar do assunto na próxima ligação; você vê e apaga cada ligação em "Conversas anteriores".'],
+            ['Dados de áudio', 'Gravações de voz em exercícios de pronúncia e conversas. Na pronúncia e nas ligações (Live Voice), o áudio é processado em tempo real e não é gravado. No Free Chat, os áudios das conversas (os seus e as respostas faladas) ficam guardados por 90 dias, num espaço privado, para você ouvir de novo; depois disso, fica só o texto.'],
 ['Dados de dispositivo', 'Token de notificações push, sistema operacional e versão do app (para lembretes de estudo).'],
             ['Dados de pagamento', 'Processados pela App Store ou Google Play (via RevenueCat) ou, na assinatura pelo site, pelo Asaas. Não armazenamos dados de cartão nem bancários.'],
             ['Cookies do site (queizy.com)', 'Só com o seu aceite no aviso de cookies: o pixel da Meta (Facebook e Instagram) mede visitas, início de assinatura e vendas que vieram de anúncios. Na assinatura pelo site, com o aceite, também enviamos à Meta o seu e-mail criptografado (hash) para ligar a venda ao anúncio. Escolhendo "Só os essenciais", nada disso é usado e o site funciona do mesmo jeito.'],
@@ -83,7 +83,7 @@ export default function PrivacidadePage() {
           <DataTable rows={[
             ['Supabase', 'Banco de dados e autenticação.'],
             ['OpenAI', 'Geração de respostas, explicações e exercícios via inteligência artificial (GPT-4o). Suas mensagens são processadas e descartadas conforme a política de dados da OpenAI.'],
-            ['ElevenLabs', 'Síntese de voz (text-to-speech) para as falas da Charlotte. Apenas texto é transmitido.'],
+            ['ElevenLabs', 'Síntese de voz (text-to-speech) das falas dos personagens e as ligações ao vivo com a Família Queizy (o áudio da ligação passa pelo ElevenLabs em tempo real, sem gravação de voz; a transcrição fica no ElevenLabs por até 7 dias e depois é apagada).'],
             ['Microsoft Azure Speech', 'Reconhecimento e avaliação de pronúncia. Áudio enviado em tempo real e descartado imediatamente após a análise.'],
             ['RevenueCat', 'Gestão de assinaturas e pagamentos.'],
             ['Apple / Google', 'Distribuição do app e compras in-app.'],
@@ -95,7 +95,7 @@ export default function PrivacidadePage() {
           <p style={{ marginBottom: 14 }}>O Queizy utiliza serviços de IA de terceiros para personalizar sua experiência de aprendizado. Antes do primeiro uso, o aplicativo solicita seu consentimento explícito para o envio de dados a esses serviços.</p>
           <DataTable rows={[
             ['OpenAI GPT-4o', 'Suas mensagens de chat e respostas a exercícios são enviadas à API da OpenAI para geração de respostas personalizadas. A OpenAI não usa esses dados para treinar modelos por padrão (API usage).'],
-            ['ElevenLabs TTS', 'Texto das respostas da Charlotte é enviado para síntese de voz. Nenhuma informação pessoal identificável é transmitida.'],
+            ['ElevenLabs', 'Texto das respostas dos personagens é enviado para síntese de voz. Nas ligações com a Família Queizy, o áudio da conversa é processado em tempo real para a resposta do personagem, junto com o seu primeiro nome, o seu nível e o assunto que você está estudando.'],
             ['Azure Speech Services', 'Áudio capturado pelo microfone é enviado ao Azure para reconhecimento de fala e avaliação de pronúncia em tempo real. O áudio é descartado imediatamente após o processamento e não é retido pela Microsoft para fins de treino.'],
           ]} />
           <p style={{ marginTop: 16 }}>Você pode revogar seu consentimento de uso de IA a qualquer momento entrando em contato pelo e-mail <a href="mailto:privacidade@queizy.com" style={{ color: '#6B4BFF' }}>privacidade@queizy.com</a>, ficando ciente de que o aplicativo não funcionará sem esses serviços.</p>

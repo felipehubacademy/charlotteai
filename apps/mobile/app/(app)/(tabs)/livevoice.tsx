@@ -487,9 +487,7 @@ export default function LiveVoiceTab() {
   const transcriptFromList = React.useRef(false); // voltar da chamada reabre a lista
   const [showCallsDrawer, setShowCallsDrawer] = useState(false);
   // Quem atende a ligação: o membro da Família escolhido (Perfil > Família Queizy > "Falar na Início").
-  // Ligação com a Família ainda em teste: só com a liberação 'familia_call'; sem ela, sempre a Charlotte.
-  const canCallFamily = (profile?.beta_features ?? []).includes('familia_call');
-  const hostId = canCallFamily ? characterInfo(profile?.active_character).id : 'charlotte';
+  const hostId = characterInfo(profile?.active_character).id;
   const host = characterInfo(hostId);
   const hostArticle = hostId === 'charlotte' ? 'a ' : hostId === 'igorfina' ? 'o ' : '';
   const [showFamilyCall, setShowFamilyCall] = useState(false);

@@ -1,8 +1,7 @@
 // /api/family-call/session — libera uma ligação ao vivo com um membro da Família Queizy (ElevenLabs).
 //   POST { character: 'igorfina', topic?: string, trackTopic?: string }  (Bearer do aluno)
 //   → { token, agentId, prompt, firstMessage, remainingSeconds }
-// Confere os minutos do mês (mesma cota do Live Voice) e, durante o protótipo, a liberação
-// 'familia_call' em beta_features. A chave do ElevenLabs nunca sai do servidor: o app recebe só um
+// Confere os minutos do mês (mesma cota do Live Voice). A chave do ElevenLabs nunca sai do servidor: o app recebe só um
 // token de conversa de curta duração.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
@@ -10,7 +9,6 @@ import { buildCallSession, generateOpener, type CallLevel } from '@/lib/family-c
 import { isTasterRow, TASTE_LIVE_VOICE_SECONDS } from '@/lib/taste';
 
 export const dynamic = 'force-dynamic';
-const BETA_FLAG = 'familia_call';
 
 function monthStart(tz: string): string {
   const p = new Intl.DateTimeFormat('en-CA', { timeZone: tz, year: 'numeric', month: '2-digit' }).formatToParts(new Date());
@@ -32,7 +30,6 @@ export async function POST(req: NextRequest) {
     .eq('id', auth.user.id).maybeSingle();
   const user = u as Record<string, any> | null;
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  if (!(user.beta_features ?? []).includes(BETA_FLAG)) return NextResponse.json({ error: 'not_available' }, { status: 403 });
 
   // Minutos: mesma regra do /api/realtime-token (degustação 3 min uma vez; 7 dias grátis 5; assinatura 20).
   const taster = isTasterRow(user as never);

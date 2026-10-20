@@ -15,6 +15,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import * as SecureStore from 'expo-secure-store';
 import { useAuth } from '@/hooks/useAuth';
+import { characterInfo } from '@/lib/characters';
 import { systemIsPt } from '@/lib/systemLang';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import Constants from 'expo-constants';
@@ -106,6 +107,15 @@ export default function PracticeTab() {
     activeSessionId, closeSession, loadSession,
     character, startConversationWith,
   } = useChat({ userLevel, userName, userId, mode });
+
+  // Família Queizy: o Free Chat começa com a pessoa escolhida na Família (Perfil > Família Queizy).
+  // Só quando não há conversa em andamento; "Conversar com" continua trocando para esta conversa.
+  // Gramática e Pronúncia seguem com a Charlotte.
+  const preferredCharacter = characterInfo(profile?.active_character).id;
+  useEffect(() => {
+    if (mode !== 'chat' || historyLoading || activeSessionId) return;
+    if (messages.length <= 1 && preferredCharacter !== character) startConversationWith(preferredCharacter);
+  }, [preferredCharacter, mode, historyLoading]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Família Queizy: "Conversar" na tela da Família abre o Free Chat com o personagem.
   // Só troca se não há conversa em andamento (não interrompe o aluno).

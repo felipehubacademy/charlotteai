@@ -41,33 +41,37 @@ Para fazer o teste de nível: Perfil > Conta > Fazer teste de nível (aparece co
   { section: 'Guia do app', question: 'Como funciona a trilha de estudos?', answer:
 `A trilha fica na tela Início. Ela é dividida em módulos, e cada módulo em tópicos. Cada tópico tem 4 atividades: Gramática, Listening & Speaking, Role-play e Guided Chat. Cada atividade concluída destrava a próxima, e cada tópico completo (as 4 atividades) destrava o seguinte. O cartão da trilha mostra quantos tópicos você já concluiu.
 Para concluir uma atividade é preciso atingir o mínimo mostrado nela (por exemplo "precisa 70%"). Atividades já feitas podem ser refeitas pelo botão "Refazer". Ao completar o nível, o app oferece a passagem para o próximo.` },
-  { section: 'Guia do app', question: 'Como ligo para a Charlotte (Live Voice)?', answer:
-`Toque no ícone de telefone na barra de baixo e depois em "Conversar com a Charlotte". Na primeira vez o celular pede permissão para usar o microfone: é preciso permitir.
-Os minutos restantes do mês aparecem na própria tela do Live Voice, no cartão "Seu tempo este mês", logo acima do botão "Conversar com a Charlotte". Na mesma tela ficam "Ver chamadas anteriores" (com resumo e transcrição de cada conversa) e "Ajuda".` },
+  { section: 'Guia do app', question: 'Como faço uma ligação (Live Voice)?', answer:
+`Toque no ícone de telefone na barra de baixo e depois em "Conversar com" (o botão mostra o nome de quem atende). A ligação é com quem estiver escolhido na Família Queizy: a Charlotte ou o Igorfina (Perfil > Você no Queizy > Família Queizy). Na primeira vez o celular pede permissão para usar o microfone: é preciso permitir.
+Durante a ligação, o selo mostra quem está falando e "Pode falar" quando é a sua vez; a linha embaixo do nome mexe com a sua voz. O botão de legenda (CC) liga e desliga a transcrição na tela.
+Os minutos restantes do mês aparecem no cartão "Seu tempo este mês". No ícone de relógio ficam as "Conversas anteriores", com resumo e transcrição de cada ligação (com a Charlotte e com o Igorfina).` },
   { section: 'Guia do app', question: 'Quantos minutos de Live Voice eu tenho?', answer:
 `Na degustação (conta nova, ainda sem assinatura) são 3 minutos, uma vez só. Com assinatura, os minutos são por mês: 5 minutos durante os 7 dias grátis e 20 minutos no Premium. Eles renovam no dia 1º de cada mês.
 Para ver quantos restam, não precisa ligar: toque no ícone de telefone na barra de baixo; o cartão "Seu tempo este mês" mostra os minutos, logo acima do botão "Conversar com a Charlotte" (esse botão já inicia a chamada).
 Quando acabam, aparece "Seu tempo acabou este mês". Quem está na degustação ou nos 7 dias grátis pode assinar o Premium; quem já assina pode comprar pacotes de minutos extras em "Comprar minutos" ou "Ver pacotes de minutos". Minutos extras comprados não vencem no fim do mês.
 Com assinatura, também dá para ganhar minutos extras em "Estudar junto": quando uma conta nova aceita o seu convite, cada um ganha 5 minutos; e quem vence uma Competição ganha 5 minutos. Na degustação, os minutos extras ficam guardados e passam a valer quando você assina.` },
   { section: 'Guia do app', question: 'O que tem no Practice?', answer:
-`No ícone de raio ficam três modos: Free Chat (conversa livre com a Charlotte por texto ou segurando o microfone para falar), Gramática e Pronúncia. "Trocar de modo" alterna entre eles.
-No Free Chat, numa conversa nova, "Conversar com" escolhe com quem falar: a Charlotte ou o Igorfina (veja "O que é a Família Queizy?").
+`No ícone de raio ficam três modos: Free Chat (conversa livre por texto ou segurando o microfone para falar, com quem estiver escolhido na Família), Gramática e Pronúncia. "Trocar de modo" alterna entre eles.
+No Free Chat, a conversa nova começa com quem está escolhido na Família, e "Conversar com" troca só aquela conversa: a Charlotte ou o Igorfina (veja "O que é a Família Queizy?").
 No menu ⋯ de cada modo: no Free Chat, "Nova conversa" e "Conversas anteriores"; na Gramática, "Minhas correções" (os erros corrigidos pela Charlotte); na Pronúncia, "Meu histórico". Em todos, "Como funciona".
 Na Pronúncia, segure o botão do microfone enquanto fala uma frase em inglês; a Charlotte avalia a pronúncia.` },
   { section: 'Guia do app', question: 'Como funciona o Vocabulário?', answer:
 `No ícone de bloco de notas ficam a "Palavra do dia" e "Sua coleção". Dá para incluir palavras em "Adicionar palavra" e ouvir a pronúncia normal ou devagar.
 O app agenda as revisões: quando há palavras para revisar aparece "Revisar hoje". Cada palavra mostra o estado: Nova, Aprendendo ou Dominada.` },
   { section: 'Guia do app', question: 'O que é a Família Queizy?', answer:
-`A Família Queizy reúne os personagens do app: a Charlotte (sua tutora) e o Igorfina, comediante e imitador. São personagens do Queizy: as respostas e as vozes deles são geradas por IA, na hora. As imitações do Igorfina também são personagens, não pessoas de verdade. No meio da conversa ele solta uma imitação, e o balão ganha o selo "imitando".
-- Para conversar com cada um: Practice > Free Chat, numa conversa nova toque em "Conversar com" e escolha. Cada conversa continua com quem ela foi começada.
-- Para escolher quem fala com você na tela Início: Perfil > Você no Queizy > Família Queizy > "Falar na Início". Na Início, o convite "Conheça a Família Queizy" também leva a essa tela.
-- O Igorfina tem uma trilha própria, o Manual do F#did@ (veja "O que é o Manual do F#did@?"). Ela aparece no cartão da trilha da Início quando o Igorfina está em "Falar na Início", e na tela Família, em "Ver trilha".
+`A Família Queizy reúne os personagens do app: a Charlotte (sua tutora) e o Igorfina, comediante e imitador. São personagens do Queizy: as respostas e as vozes deles são geradas por IA, na hora. As imitações do Igorfina também são personagens, não pessoas de verdade; quando ele imita, aparece o selo com o nome da imitação.
+- Para escolher quem te acompanha: Perfil > Você no Queizy > Família Queizy e toque no cartão (o escolhido fica com o selo "Escolhido"). Quem está escolhido fala com você na Início, atende quando você liga (ícone de telefone) e começa as conversas novas do Free Chat. Na Início, o convite "Conheça a Família Queizy" também leva a essa tela.
+- No Free Chat, "Conversar com" troca com quem é aquela conversa. Cada conversa continua com quem ela foi começada.
+- O Igorfina tem uma trilha própria, o Manual do F#did@ (veja "O que é o Manual do F#did@?"). Ela aparece no cartão da trilha da Início quando ele está escolhido, e no cartão dele na Família, em "Ver trilha".
 A trilha principal, a Gramática, a Pronúncia e o suporte são com a Charlotte.` },
+  { section: 'Guia do app', question: 'Posso ligar para o Igorfina?', answer:
+`Pode. Escolha o Igorfina na Família (Perfil > Você no Queizy > Família Queizy, toque no cartão dele) e depois toque no ícone de telefone na barra de baixo e em "Conversar com o Igorfina". É uma ligação de voz em tempo real, com a voz dele e, de vez em quando, uma imitação (o selo com o nome da imitação aparece na tela).
+Ele adapta a conversa ao seu nível, pode puxar o assunto do tópico que você está estudando e lembra do que vocês conversaram nas últimas ligações. Os minutos saem da mesma cota de ligação do mês ("Seu tempo este mês"). Cada ligação fica em "Conversas anteriores" (ícone de relógio), com resumo e transcrição; só o texto é guardado, sem áudio, e dá para apagar.` },
   { section: 'Guia do app', question: 'O que é o Manual do F#did@?', answer:
 `É a trilha do Igorfina, da Família Queizy: inglês de sobrevivência para o dia a dia, viagem e situações reais, com o humor e as imitações dele.
 - São 10 módulos e 50 tópicos. Cada tópico tem as mesmas 4 atividades da trilha principal: Gramática, Listening & Speaking, Role-play e Guided Chat, com o Igorfina no lugar da Charlotte. As explicações são em português.
 - Em alguns tópicos ele faz uma imitação a atividade toda; o cartão do tópico mostra o selo com o nome da imitação (por exemplo, "Presidente" ou "Astro do basquete").
-- Onde fica: na Início, no cartão da trilha, quando o Igorfina está em "Falar na Início" (Perfil > Você no Queizy > Família Queizy), ou direto na tela Família, em "Ver trilha".
+- Onde fica: na Início, no cartão da trilha, quando o Igorfina está escolhido na Família (Perfil > Você no Queizy > Família Queizy), ou direto na tela Família, em "Ver trilha".
 - Os tópicos abrem em ordem, como na trilha principal. O progresso é separado: fazer o Manual não avança a sua trilha de nível.
 - Antes de assinar, um tópico do Manual é grátis ("SEU TÓPICO GRÁTIS"); os outros fazem parte da assinatura.` },
   { section: 'Guia do app', question: 'Os áudios das conversas ficam salvos?', answer:
@@ -103,7 +107,7 @@ O conteúdo das lições continua no idioma do seu nível: na Novice as explica�
 `O XP total fica no raio verde, no topo das telas principais; tocando nele aparece também o XP de hoje.
 Se uma atividade não somou: a atividade da trilha só conta quando é concluída com o mínimo pedido. A atualização pode levar alguns segundos; fechar e abrir o app de novo costuma resolver. Confira também se está na conta certa (mesmo e-mail do cadastro).
 Se ainda assim o XP estiver errado, um atendente verifica a conta.` },
-  { section: 'Problemas comuns', question: 'Não consigo ligar para a Charlotte (Live Voice)', answer:
+  { section: 'Problemas comuns', question: 'Não consigo fazer a ligação (Live Voice)', answer:
 `Passo a passo:
 1. Microfone: o app precisa de permissão. iPhone: Ajustes > Queizy > Microfone. Android: Configurações > Apps > Queizy > Permissões > Microfone.
 2. Minutos: se aparecer "Seu tempo acabou este mês" ou "Limite mensal atingido", os minutos do mês acabaram. Eles voltam no dia 1º; antes disso, dá para assinar o Premium (teste grátis) ou comprar minutos extras (assinantes).
