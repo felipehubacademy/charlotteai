@@ -23,6 +23,12 @@
         "gru1"
       ]
     },
+    "app/api/checkout/asaas/direct/route.ts": {
+      "regions": [
+        "gru1"
+      ],
+      "maxDuration": 30
+    },
     "app/api/checkout/asaas/email/route.ts": {
       "regions": [
         "gru1"
