@@ -262,7 +262,7 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
           <View style={{ gap: 8, marginTop: compact ? 8 : 14 }}>
             {lines.map((l, i) => (
               <View key={i} style={{ alignSelf: l.who === 'ai' ? 'flex-start' : 'flex-end', maxWidth: '88%', backgroundColor: l.who === 'ai' ? th.bubble : th.ink, borderRadius: 16, paddingHorizontal: 14, paddingVertical: 9, opacity: i === lines.length - 1 ? 1 : 0.6 }}>
-                <AppText style={{ fontSize: 15, lineHeight: 20, color: l.who === 'ai' ? INK : th.bg }} numberOfLines={compact ? 2 : 3}>{l.text}</AppText>
+                <AppText style={{ fontSize: 15, lineHeight: 20, color: l.who === 'ai' ? INK : th.bg }} numberOfLines={3}>{l.text}</AppText>
               </View>
             ))}
           </View>
