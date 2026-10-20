@@ -75,7 +75,10 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
   // Tela baixa (iPhone SE/8, Android pequeno): avatar e centro menores para os botões caberem.
   const compact = useWindowDimensions().height < 760;
   const AV = compact ? 104 : 120;
-  const CENTER_H = compact ? 290 : 360;
+  const CENTER_H = compact ? 300 : 360;
+  // Centro da foto dentro da área do meio. Tela baixa: foto no alto da área, para a legenda
+  // (até 3 linhas + tradução) caber abaixo sem encostar nos botões.
+  const AV_Y = compact ? AV / 2 + 6 : CENTER_H / 2;
   const info = characterInfo(character);
   const th = THEME[character ?? ''] ?? THEME.default;
   const level = (profile?.charlotte_level ?? 'Inter') as 'Novice' | 'Inter' | 'Advanced';
@@ -443,7 +446,7 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
           </View>
 
           {/* ── CENTRO: avatar fixo + linha da voz do aluno + legenda ── */}
-          <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%', height: CENTER_H }}>
+          <View style={{ alignItems: 'center', justifyContent: compact ? 'flex-start' : 'center', paddingTop: compact ? 6 : 0, width: '100%', height: CENTER_H }}>
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               {/* Anel: voz do personagem (volume real). A vez do aluno é a linha abaixo. */}
               <Animated.View pointerEvents="none" style={{ position: 'absolute', width: AV + 12, height: AV + 12, borderRadius: (AV + 12) / 2, backgroundColor: th.ring,
@@ -463,7 +466,7 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
 
             {/* Linha: só a voz do aluno, na vez dele (retorno de que o microfone está ouvindo). */}
             {yourTurn && !muted && (
-              <View pointerEvents="none" style={{ position: 'absolute', top: CENTER_H / 2 + AV / 2 + 14, left: 0, right: 0, alignItems: 'center' }}>
+              <View pointerEvents="none" style={{ position: 'absolute', top: AV_Y + AV / 2 + 14, left: 0, right: 0, alignItems: 'center' }}>
                 <LiveVoiceWave mode="user" userLevelRef={levels.local} color={th.you} width={240} height={36} />
               </View>
             )}
@@ -471,7 +474,7 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
             {/* Legenda da última fala; tocar na do personagem traduz */}
             {live && captions && caption && (
               <TouchableOpacity onPress={translateCaption} activeOpacity={0.7} disabled={translating || caption.who === 'user'}
-                style={{ position: 'absolute', top: CENTER_H / 2 + AV / 2 + 58, left: 0, right: 0, alignItems: 'center', paddingHorizontal: 4 }}>
+                style={{ position: 'absolute', top: AV_Y + AV / 2 + 58, left: 0, right: 0, alignItems: 'center', paddingHorizontal: 4 }}>
                 <View style={{ paddingHorizontal: 8, paddingVertical: 2, borderRadius: 8, backgroundColor: th.chip, marginBottom: 6 }}>
                   <AppText style={{ fontSize: 9, fontWeight: '800', letterSpacing: 1, color: th.ink }}>
                     {caption.who === 'user' ? (isPt ? 'VOCÊ' : 'YOU') : info.name.toUpperCase()}
