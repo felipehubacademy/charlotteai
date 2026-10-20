@@ -134,6 +134,13 @@ export interface CheckoutInput {
   trialDays: number;       // só monthly / annual
   userId: string;
   customerId: string | null; // cliente já criado no Asaas (evita o Asaas pedir endereço)
+  customerData?: CheckoutCustomerData | null; // dados do pagador já preenchidos no nosso formulário
+}
+
+/** Dados do pagador que o checkout já recebe preenchidos (o aluno só digita o cartão). */
+export interface CheckoutCustomerData {
+  name: string; cpfCnpj: string; email: string; phone: string;
+  postalCode: string; address: string; addressNumber: string; complement?: string; province: string; city: number;
 }
 
 export interface AsaasCheckout { id: string; link: string | null; status: string }
@@ -173,8 +180,8 @@ export async function createCheckout(input: CheckoutInput): Promise<AsaasCheckou
   };
   if (m === 'monthly' || m === 'annual') body.subscription = { cycle: m === 'monthly' ? 'MONTHLY' : 'YEARLY', nextDueDate: ymd(firstCharge) };
   if (m === 'annual_12x') body.installment = { maxInstallmentCount: ANNUAL_MAX_INSTALLMENTS };
-  // Com o cliente já criado, o checkout não pede endereço. Se o Asaas recusar o campo,
-  // cria sem cliente e a própria página do Asaas pede os dados.
+  // Com o cliente (ou os dados dele), o checkout só pede o cartão. Se o Asaas recusar,
+  // cria sem e a própria página do Asaas pede os dados.
   let r: AsaasCheckout;
   // Se a API recusar o autoRedirect, cria sem ele (a venda nunca pode parar por isso).
   const withoutAutoRedirect = (b: Record<string, unknown>) => {
@@ -191,15 +198,19 @@ export async function createCheckout(input: CheckoutInput): Promise<AsaasCheckou
       throw e;
     }
   };
+  // Cliente que já pagou antes: usa o cadastro dele. Senão, manda os dados do nosso formulário
+  // (customerData). Os dois não podem ir juntos.
+  const first = input.customerId ? { ...body, customer: input.customerId }
+    : input.customerData ? { ...body, customerData: input.customerData } : null;
   try {
-    r = await post(input.customerId ? { ...body, customer: input.customerId } : body);
+    r = await post(first ?? body);
   } catch (e) {
-    if (!input.customerId) throw e;
+    if (!first) throw e;
     console.warn('[asaas] checkout com cliente recusado, tentando sem:', e instanceof AsaasError ? e.body : e);
     // Guarda o motivo para diagnóstico (asaas_events, evento CHECKOUT_FALLBACK).
     try {
       const { getSupabaseAdmin } = await import('@/lib/supabase-admin');
-      await getSupabaseAdmin().from('asaas_events').insert({ id: `fallback_${Date.now()}`, event: 'CHECKOUT_FALLBACK', payload: { error: e instanceof AsaasError ? e.body : String(e), method: m } } as never);
+      await getSupabaseAdmin().from('asaas_events').insert({ id: `fallback_${Date.now()}`, event: 'CHECKOUT_FALLBACK', payload: { error: e instanceof AsaasError ? e.body : String(e), method: m, via: input.customerId ? 'customer' : 'customerData' } } as never);
     } catch { /* só diagnóstico */ }
     r = await post(body);
   }

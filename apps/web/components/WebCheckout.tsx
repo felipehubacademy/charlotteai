@@ -1,11 +1,13 @@
 'use client';
 // Assinatura pelo site (Asaas). Mensal: cartão com recorrência e 7 dias grátis para quem nunca
-// assinou. Anual: cartão à vista (7 dias grátis) ou Pix à vista (reembolso em 7 dias). O pagamento abre na página do Asaas.
+// assinou. Anual: cartão à vista (7 dias grátis) ou Pix à vista (reembolso em 7 dias). O pagamento abre na página do Asaas,
+// com os dados do pagador já preenchidos daqui (lá o aluno só digita o cartão).
 import { useEffect, useState } from 'react';
 import { captureAffiliateFromUrl, storedAffiliate } from '@/lib/affiliateTracking';
 import StoreCTA from '@/components/StoreCTA';
 import { suggestEmailCorrection, isDisposableEmail } from '@/lib/email-validation';
 import { track } from '@/lib/meta-pixel';
+import { lookupCep, type CepInfo } from '@/lib/cep';
 
 const INK = '#14121A';
 const MID = '#5C5668';
@@ -22,6 +24,9 @@ type Info = { enabled: boolean; trialDays: number; discountPct: number; prices: 
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 const maskPhone = (v: string) => v.replace(/\D/g, '').slice(0, 11)
   .replace(/^(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d{1,4})$/, '$1-$2');
+const maskCpf = (v: string) => v.replace(/\D/g, '').slice(0, 11)
+  .replace(/^(\d{3})(\d)/, '$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d{1,2})$/, '.$1-$2');
+const maskCep = (v: string) => v.replace(/\D/g, '').slice(0, 8).replace(/^(\d{5})(\d)/, '$1-$2');
 
 export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan; notice?: string }) {
   const [plan, setPlan] = useState<Plan>(initialPlan);
@@ -36,6 +41,23 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
   // Pixel (só com aceite): abriu a página de assinar.
   useEffect(() => { track('ViewContent', { content_name: 'assinar' }); }, []);
   const [phone, setPhone] = useState('');
+  // Dados do pagador: pedidos uma vez aqui e enviados já preenchidos para a página de pagamento,
+  // onde o aluno só digita o cartão.
+  const [cpf, setCpf] = useState('');
+  const [cep, setCep] = useState('');
+  const [addrNumber, setAddrNumber] = useState('');
+  const [street, setStreet] = useState('');
+  const [cepInfo, setCepInfo] = useState<CepInfo | null>(null);
+  const [cepState, setCepState] = useState<'idle' | 'loading' | 'notfound'>('idle');
+  useEffect(() => {
+    const d = cep.replace(/\D/g, '');
+    setCepInfo(null);
+    if (d.length !== 8) { setCepState('idle'); return; }
+    let alive = true;
+    setCepState('loading');
+    lookupCep(d).then(info => { if (!alive) return; setCepInfo(info); setCepState(info ? 'idle' : 'notfound'); });
+    return () => { alive = false; };
+  }, [cep]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [couponOpen, setCouponOpen] = useState(false);
@@ -121,7 +143,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
     try {
       const r = await fetch('/api/checkout/asaas', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ method, name, email, phone, aff, coupon }),
+        body: JSON.stringify({ method, name, email, phone, cpf, cep, number: addrNumber, street, aff, coupon }),
       });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || !j.url) { setError(j.error ?? 'Não foi possível abrir o pagamento agora.'); setBusy(false); return; }
@@ -213,6 +235,9 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
         .wc-tag { position: absolute; top: -11px; right: 16px; background: ${INK}; color: ${LIME}; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 999px; letter-spacing: 0.5px; }
         .wc label { display: block; font-size: 13px; font-weight: 600; color: ${MID}; margin: 14px 0 6px; }
         .wc input { width: 100%; box-sizing: border-box; border: 1px solid ${BORDER}; border-radius: 12px; padding: 13px 14px; font-size: 16px; background: #fff; color: ${INK}; }
+        .wc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .wc-row > div { min-width: 0; }
+        .wc-addr { font-size: 13.5px; color: ${MID}; margin: 8px 0 0; line-height: 1.4; }
         .wc input:focus { outline: 2px solid ${INK}; border-color: transparent; }
         .wc-btn { width: 100%; border: 0; border-radius: 14px; background: ${LIME}; color: ${INK}; font-weight: 800; font-size: 17px; padding: 16px; cursor: pointer; margin-top: 20px; }
         .wc-btn[disabled] { opacity: 0.6; cursor: default; }
@@ -280,9 +305,44 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
               style={{ background: 'none', border: 0, padding: 0, color: '#6B4BFF', fontWeight: 700, cursor: 'pointer', fontSize: 13.5 }}>Usar este</button>
           </p>
         )}
-        <label htmlFor="wc-phone">Celular (opcional)</label>
-        <input id="wc-phone" value={phone} onChange={e => setPhone(maskPhone(e.target.value))} autoComplete="tel" inputMode="tel" />
+        <div className="wc-row">
+          <div>
+            <label htmlFor="wc-cpf">CPF</label>
+            <input id="wc-cpf" value={cpf} onChange={e => setCpf(maskCpf(e.target.value))} inputMode="numeric" autoComplete="off" placeholder="000.000.000-00" required />
+          </div>
+          <div>
+            <label htmlFor="wc-phone">Celular</label>
+            <input id="wc-phone" value={phone} onChange={e => setPhone(maskPhone(e.target.value))} autoComplete="tel" inputMode="tel" placeholder="(11) 90000-0000" required />
+          </div>
+        </div>
+        <div className="wc-row">
+          <div>
+            <label htmlFor="wc-cep">CEP</label>
+            <input id="wc-cep" value={cep} onChange={e => setCep(maskCep(e.target.value))} autoComplete="postal-code" inputMode="numeric" placeholder="00000-000" required />
+          </div>
+          <div>
+            <label htmlFor="wc-num">Número</label>
+            <input id="wc-num" value={addrNumber} onChange={e => setAddrNumber(e.target.value)} autoComplete="address-line2" placeholder="Ex.: 120 ou S/N" required />
+          </div>
+        </div>
+        {cepState === 'loading' && <p className="wc-addr">Buscando o endereço...</p>}
+        {cepState === 'notfound' && <p className="wc-addr" style={{ color: '#C0264F' }}>Não achamos esse CEP. Confira os números.</p>}
+        {cepInfo && cepInfo.street && (
+          <p className="wc-addr">{cepInfo.street}{cepInfo.district ? `, ${cepInfo.district}` : ''} · {cepInfo.city}/{cepInfo.uf}</p>
+        )}
+        {cepInfo && !cepInfo.street && (
+          <>
+            <p className="wc-addr">{cepInfo.city}/{cepInfo.uf}</p>
+            <label htmlFor="wc-street">Rua</label>
+            <input id="wc-street" value={street} onChange={e => setStreet(e.target.value)} autoComplete="address-line1" required />
+          </>
+        )}
 
+        <p style={{ fontSize: 13.5, color: MID, marginTop: 16, lineHeight: 1.5 }}>
+          {method === 'annual_pix'
+            ? 'Na próxima tela aparece o Pix para pagar, em ambiente seguro. Depois você volta para cá sozinho.'
+            : 'Na próxima tela você só digita o cartão, em ambiente seguro de pagamento. Depois você volta para cá sozinho.'}
+        </p>
         {error && <p role="alert" style={{ color: '#C0264F', fontSize: 14, marginTop: 14 }}>{error}</p>}
         <button className="wc-btn" type="submit" disabled={busy || info?.enabled === false}>
           {info?.enabled === false ? 'Em breve' : busy ? 'Abrindo o pagamento...' : cta}

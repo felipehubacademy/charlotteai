@@ -1,6 +1,6 @@
 // /api/checkout/asaas — assinatura pelo site.
 //   GET  ?aff=CODE                       preços (com o desconto do afiliado) e se o checkout está ligado
-//   POST { method, name, email, phone?, aff?, coupon? }  cria (ou acha) a conta e devolve { url } do checkout do Asaas
+//   POST { method, name, email, phone, cpf, cep, number, street?, complement?, aff?, coupon? }  cria (ou acha) a conta e devolve { url } do checkout do Asaas
 //   POST { action: 'cancel' }  (Bearer do aluno)   cancela a renovação (mensal ou anual no cartão)
 //   POST { action: 'refund' }  (Bearer do aluno)   reembolso em até 7 dias do 1º pagamento (Pix, 12x ou cartão)
 // Conta nova: criada aqui pelo e-mail; depois do pagamento chega o e-mail para criar a senha.
@@ -12,8 +12,9 @@ import {
   asaasConfigured, AsaasError, cancelSubscription, createCheckout, priceFor,
   WEB_TRIAL_DAYS, resolveCoupon, COUPON_ERROR_PT, type WebPlan,
   priceForMethod, planOfMethod, methodHasTrial, type PayMethod,
-  refundPayment, refundInstallment, REFUND_WINDOW_DAYS,
+  refundPayment, refundInstallment, REFUND_WINDOW_DAYS, validCpf, type CheckoutCustomerData,
 } from '@/lib/asaas';
+import { lookupCep } from '@/lib/cep';
 
 export const dynamic = 'force-dynamic';
 // Perto do banco e do processador de pagamento (São Paulo): o envio do formulário faz várias consultas
@@ -135,6 +136,20 @@ export async function POST(req: NextRequest) {
   if (!plan) return NextResponse.json({ error: 'Escolha um plano.' }, { status: 400 });
   if (name.split(/\s+/).length < 2) return NextResponse.json({ error: 'Informe nome e sobrenome.' }, { status: 400 });
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return NextResponse.json({ error: 'Confira o e-mail.' }, { status: 400 });
+  const cpf = String(body.cpf ?? '').replace(/\D/g, '');
+  if (!validCpf(cpf)) return NextResponse.json({ error: 'Confira o CPF.' }, { status: 400 });
+  if (phone.length < 10 || phone.length > 11) return NextResponse.json({ error: 'Confira o celular, com DDD.' }, { status: 400 });
+  const addrNumber = String(body.number ?? '').trim().slice(0, 10);
+  if (!addrNumber) return NextResponse.json({ error: 'Informe o número do endereço (ou S/N).' }, { status: 400 });
+  // Endereço pelo CEP. Se a consulta falhar, segue sem os dados: a página de pagamento pede o que faltar.
+  const cepInfo = await lookupCep(String(body.cep ?? ''));
+  if (!cepInfo && String(body.cep ?? '').replace(/\D/g, '').length !== 8) return NextResponse.json({ error: 'Confira o CEP.' }, { status: 400 });
+  const street = (cepInfo?.street || String(body.street ?? '').trim()).slice(0, 120);
+  const customerData: CheckoutCustomerData | null = cepInfo && street ? {
+    name, cpfCnpj: cpf, email, phone, postalCode: cepInfo.cep, address: street, addressNumber: addrNumber,
+    complement: String(body.complement ?? '').trim().slice(0, 60) || undefined,
+    province: cepInfo.district || 'Centro', city: cepInfo.ibge,
+  } : null;
 
   const ip = (req.headers.get('x-forwarded-for') ?? '').split(',')[0].trim() || null;
   if (ip) {
@@ -188,13 +203,13 @@ export async function POST(req: NextRequest) {
   const recurring = method === 'monthly' || method === 'annual';
 
   try {
-    // CPF, endereço e cartão ficam na página do Asaas (o checkout dele exige os dados completos
-    // do pagador). Aqui só nome e e-mail, para a conta do app; o pagamento é ligado à conta pelo
-    // id do checkout e pelo externalReference. Se a conta já tem cliente no Asaas, reaproveita.
+    // Nome, e-mail, CPF, celular e endereço vêm do nosso formulário e vão já preenchidos para a
+    // página do Asaas (customerData): lá o aluno só digita o cartão. Se a conta já tem cliente no
+    // Asaas, reaproveita ele. O pagamento é ligado à conta pelo id do checkout e pelo externalReference.
     const { data: prevC } = await supabase.from('asaas_checkouts').select('asaas_customer_id')
       .eq('user_id', u.id).eq('status', 'paid').not('asaas_customer_id', 'is', null).order('created_at', { ascending: false }).limit(1).maybeSingle();
     const customerId = (prevC as { asaas_customer_id: string } | null)?.asaas_customer_id ?? null;
-    const checkout = await createCheckout({ method: method!, value, trialDays, userId: u.id, customerId });
+    const checkout = await createCheckout({ method: method!, value, trialDays, userId: u.id, customerId, customerData });
     await supabase.from('asaas_checkouts').insert({
       id: checkout.id, user_id: u.id, plan, method, value_brl: value, trial_days: trialDays, asaas_customer_id: customerId,
       affiliate_code: a?.code ?? null, status: 'created', created_account: isNewAccount,
