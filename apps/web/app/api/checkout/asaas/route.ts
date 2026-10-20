@@ -7,30 +7,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
-import { affiliateByCode, attributeUser, cleanAffiliateCode } from '@/lib/affiliates';
+import { affiliateByCode, cleanAffiliateCode } from '@/lib/affiliates';
 import {
   asaasConfigured, AsaasError, cancelSubscription, createCheckout, priceFor,
   WEB_TRIAL_DAYS, resolveCoupon, COUPON_ERROR_PT, type WebPlan,
-  priceForMethod, planOfMethod, methodHasTrial, type PayMethod,
-  refundPayment, refundInstallment, REFUND_WINDOW_DAYS, validCpf, type CheckoutCustomerData,
+  refundPayment, refundInstallment, REFUND_WINDOW_DAYS,
 } from '@/lib/asaas';
-import { lookupCep } from '@/lib/cep';
+import { prepareWebCheckout, checkoutRowFields } from '@/lib/web-checkout';
 
 export const dynamic = 'force-dynamic';
 // Perto do banco e do processador de pagamento (São Paulo): o envio do formulário faz várias consultas
 // em sequência e, rodando nos EUA, cada uma atravessava o continente.
 export const preferredRegion = 'gru1';
-
-// Proteção contra robôs: cada envio cria uma conta. Até 10 envios por endereço a cada 10 minutos
-// (folga para família ou empresa no mesmo Wi-Fi; robô passa disso em segundos).
-const ATTEMPTS_PER_IP = 10;
-const ATTEMPTS_WINDOW_MS = 10 * 60000;
-
-type UserRow = {
-  id: string; email: string; subscription_status: string | null; trial_ends_at: string | null;
-  subscription_product: string | null; subscription_expires_at: string | null; is_institutional: boolean | null;
-};
-const USER_COLS = 'id, email, subscription_status, trial_ends_at, subscription_product, subscription_expires_at, is_institutional';
 
 async function discountFor(code: string | null): Promise<{ code: string; pct: number } | null> {
   if (!code) return null;
@@ -47,6 +35,8 @@ export async function GET(req: NextRequest) {
   const pctFor = (plan: WebPlan) => Math.max(d?.pct ?? 0, c?.ok && c.plans.includes(plan) ? c.pct : 0);
   return NextResponse.json({
     enabled: asaasConfigured(),
+    // Checkout próprio (cartão e Pix no queizy.com) ligado para todos. Enquanto não, só por ?checkout=novo.
+    direct: process.env.CHECKOUT_DIRECT === '1',
     trialDays: WEB_TRIAL_DAYS,
     discountPct: Math.max(pctFor('monthly'), pctFor('annual')),
     coupon: c ? (c.ok ? { ok: true, code: c.code, pct: c.pct, plans: c.plans } : { ok: false, error: COUPON_ERROR_PT[c.error] }) : null,
@@ -127,80 +117,10 @@ export async function POST(req: NextRequest) {
 
   if (!asaasConfigured()) return NextResponse.json({ error: 'A assinatura pelo site abre em breve. Por enquanto, assine pelo app.' }, { status: 503 });
 
-  const METHODS: PayMethod[] = ['monthly', 'annual', 'annual_pix']; // 12x saiu em 2026-10-14: quer parcelar, vai no Mensal
-  const method: PayMethod | null = METHODS.includes(body.method) ? body.method : METHODS.includes(body.plan) ? body.plan : null;
-  const plan: WebPlan | null = method ? planOfMethod(method) : null;
-  const name = String(body.name ?? '').trim().slice(0, 100);
-  const email = String(body.email ?? '').trim().toLowerCase();
-  const phone = String(body.phone ?? '').replace(/\D/g, '');
-  if (!plan) return NextResponse.json({ error: 'Escolha um plano.' }, { status: 400 });
-  if (name.split(/\s+/).length < 2) return NextResponse.json({ error: 'Informe nome e sobrenome.' }, { status: 400 });
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return NextResponse.json({ error: 'Confira o e-mail.' }, { status: 400 });
-  const cpf = String(body.cpf ?? '').replace(/\D/g, '');
-  if (!validCpf(cpf)) return NextResponse.json({ error: 'Confira o CPF.' }, { status: 400 });
-  if (phone.length < 10 || phone.length > 11) return NextResponse.json({ error: 'Confira o celular, com DDD.' }, { status: 400 });
-  const addrNumber = String(body.number ?? '').trim().slice(0, 10);
-  if (!addrNumber) return NextResponse.json({ error: 'Informe o número do endereço (ou S/N).' }, { status: 400 });
-  // Endereço pelo CEP. Se a consulta falhar, segue sem os dados: a página de pagamento pede o que faltar.
-  const cepInfo = await lookupCep(String(body.cep ?? ''));
-  if (!cepInfo && String(body.cep ?? '').replace(/\D/g, '').length !== 8) return NextResponse.json({ error: 'Confira o CEP.' }, { status: 400 });
-  const street = (cepInfo?.street || String(body.street ?? '').trim()).slice(0, 120);
-  const customerData: CheckoutCustomerData | null = cepInfo && street ? {
-    name, cpfCnpj: cpf, email, phone, postalCode: cepInfo.cep, address: street, addressNumber: addrNumber,
-    complement: String(body.complement ?? '').trim().slice(0, 60) || undefined,
-    province: cepInfo.district || 'Centro', city: cepInfo.ibge,
-  } : null;
-
-  const ip = (req.headers.get('x-forwarded-for') ?? '').split(',')[0].trim() || null;
-  if (ip) {
-    const { count } = await supabase.from('checkout_attempts').select('id', { count: 'exact', head: true })
-      .eq('ip', ip).gte('created_at', new Date(Date.now() - ATTEMPTS_WINDOW_MS).toISOString());
-    if ((count ?? 0) >= ATTEMPTS_PER_IP) {
-      return NextResponse.json({ error: 'Muitas tentativas seguidas. Espere alguns minutos e tente de novo.' }, { status: 429 });
-    }
-    await supabase.from('checkout_attempts').insert({ ip, email } as never);
-  }
-
-  // Conta: acha pelo e-mail ou cria (sem senha; ela é criada pelo link que chega no e-mail).
-  let { data: user } = await supabase.from('charlotte_users').select(USER_COLS).ilike('email', email).maybeSingle();
-  let isNewAccount = false;
-  if (!user) {
-    const { data: created, error } = await supabase.auth.admin.createUser({ email, email_confirm: true, user_metadata: { name } });
-    if (error || !created?.user) {
-      return NextResponse.json({ error: 'Não foi possível criar a conta com esse e-mail.' }, { status: 400 });
-    }
-    isNewAccount = true;
-    ({ data: user } = await supabase.from('charlotte_users').select(USER_COLS).eq('id', created.user.id).maybeSingle());
-    if (!user) return NextResponse.json({ error: 'Conta criada, mas ainda indisponível. Tente de novo em instantes.' }, { status: 503 });
-  }
-  const u = user as unknown as UserRow;
-
-  if (u.is_institutional) return NextResponse.json({ error: 'Essa conta já tem acesso pela instituição.' }, { status: 400 });
-  const stillValid = !!u.subscription_expires_at && new Date(u.subscription_expires_at).getTime() > Date.now();
-  if ((u.subscription_status === 'active' || u.subscription_status === 'cancelled') && stillValid) {
-    return NextResponse.json({ error: 'Essa conta já tem uma assinatura ativa. É só entrar no app.' }, { status: 409 });
-  }
-
-  // Cupom: de campanha ou código de afiliado (que também marca a conta para a comissão).
-  const coupon = body.coupon ? await resolveCoupon(body.coupon) : null;
-  if (coupon && !coupon.ok) return NextResponse.json({ error: COUPON_ERROR_PT[coupon.error] }, { status: 400 });
-
-  // Afiliado: marca a conta (o primeiro link vale) e usa o desconto do afiliado da conta.
-  const affCode = cleanAffiliateCode(body.aff) || (coupon?.ok && coupon.kind === 'affiliate' ? coupon.affiliateCode! : null);
-  if (affCode) await attributeUser(u.id, affCode, 'link').catch(() => null);
-  const { data: attr } = await supabase.from('affiliate_attributions').select('affiliates(code, status, user_discount_pct)').eq('user_id', u.id).maybeSingle();
-  const a = (attr as { affiliates: { code: string; status: string; user_discount_pct: number } | null } | null)?.affiliates;
-  const affPct = a && a.status === 'active' ? Number(a.user_discount_pct) || 0 : 0;
-  const couponPct = coupon?.ok && coupon.kind === 'coupon' && coupon.plans.includes(plan) ? coupon.pct : 0;
-  const discountPct = Math.max(affPct, couponPct); // não acumula: vale o maior
-
-  // 7 dias grátis no cartão (mensal ou anual) e só para quem nunca teve teste nem assinatura.
-  const { count: paidBefore } = await supabase.from('asaas_checkouts').select('id', { count: 'exact', head: true }).eq('user_id', u.id).eq('status', 'paid');
-  const neverTried = (!u.subscription_status || u.subscription_status === 'none') && !u.trial_ends_at && !paidBefore;
-  const trialDays = methodHasTrial(method!) && neverTried ? WEB_TRIAL_DAYS : 0;
-  const value = priceForMethod(method!, discountPct);
-  const couponWins = couponPct > 0 && couponPct >= affPct && !!coupon?.ok;
-  const recurring = method === 'monthly' || method === 'annual';
+  const prep = await prepareWebCheckout(req, body);
+  if (!prep.ok) return NextResponse.json({ error: prep.error }, { status: prep.status });
+  const { ctx } = prep;
+  const { method, u, isNewAccount, customerData, trialDays, value } = ctx;
 
   try {
     // Nome, e-mail, CPF, celular e endereço vêm do nosso formulário e vão já preenchidos para a
@@ -211,19 +131,7 @@ export async function POST(req: NextRequest) {
     const customerId = (prevC as { asaas_customer_id: string } | null)?.asaas_customer_id ?? null;
     const checkout = await createCheckout({ method: method!, value, trialDays, userId: u.id, customerId, customerData });
     await supabase.from('asaas_checkouts').insert({
-      id: checkout.id, user_id: u.id, plan, method, value_brl: value, trial_days: trialDays, asaas_customer_id: customerId,
-      affiliate_code: a?.code ?? null, status: 'created', created_account: isNewAccount,
-      // Aceite de cookies + identificadores do navegador: base da conversão enviada pelo servidor.
-      meta_tracking: {
-        consent: req.cookies.get('qz_consent')?.value === 'all',
-        fbp: req.cookies.get('_fbp')?.value ?? null, fbc: req.cookies.get('_fbc')?.value ?? null,
-        ip: (req.headers.get('x-forwarded-for') ?? '').split(',')[0].trim() || null,
-        ua: req.headers.get('user-agent'), url: req.headers.get('referer'),
-      },
-      coupon_code: couponWins ? coupon!.code : null, discount_pct: discountPct,
-      // Cupom com duração (ex.: só a 1ª cobrança): o webhook volta a assinatura para este valor
-      // depois de N cobranças. Volta ao preço com o desconto do afiliado, se houver (esse é permanente).
-      ...(couponWins && recurring && coupon!.cycles ? { coupon_cycles: coupon!.cycles, full_value_brl: priceForMethod(method!, affPct) } : {}),
+      id: checkout.id, ...checkoutRowFields(ctx, req), asaas_customer_id: customerId, status: 'created', channel: 'hosted',
     } as never);
     const res = NextResponse.json({ url: checkout.link, trialDays, value, isNewAccount, checkoutId: checkout.id });
     // A tela de sucesso usa este cookie para mostrar o e-mail e oferecer "Não é esse? Corrigir".

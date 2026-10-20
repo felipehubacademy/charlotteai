@@ -2,6 +2,8 @@
 // Assinatura pelo site (Asaas). Mensal: cartão com recorrência e 7 dias grátis para quem nunca
 // assinou. Anual: cartão à vista (7 dias grátis) ou Pix à vista (reembolso em 7 dias). O pagamento abre na página do Asaas,
 // com os dados do pagador já preenchidos daqui (lá o aluno só digita o cartão).
+// Checkout próprio (mode 'direct'): cartão e Pix aqui mesmo, sem sair do queizy.com. Ligado para todos
+// com CHECKOUT_DIRECT=1; antes disso, só por ?checkout=novo. ?checkout=teste usa o ambiente de testes.
 import { useEffect, useState } from 'react';
 import { captureAffiliateFromUrl, storedAffiliate } from '@/lib/affiliateTracking';
 import StoreCTA from '@/components/StoreCTA';
@@ -18,7 +20,9 @@ const BORDER = '#E6E2EC';
 
 type Plan = 'monthly' | 'annual';
 type AnnualPay = 'card' | 'pix';
-type Info = { enabled: boolean; trialDays: number; discountPct: number; prices: { monthly: number; annual: number };
+type Mode = 'hosted' | 'direct' | 'sandbox';
+type Pix = { image: string; payload: string; expiresAt: string };
+type Info = { enabled: boolean; direct?: boolean; trialDays: number; discountPct: number; prices: { monthly: number; annual: number };
   coupon: { ok: true; code: string; pct: number } | { ok: false; error: string } | null };
 
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -26,6 +30,8 @@ const maskPhone = (v: string) => v.replace(/\D/g, '').slice(0, 11)
   .replace(/^(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d{1,4})$/, '$1-$2');
 const maskCpf = (v: string) => v.replace(/\D/g, '').slice(0, 11)
   .replace(/^(\d{3})(\d)/, '$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d{1,2})$/, '.$1-$2');
+const maskCard = (v: string) => v.replace(/\D/g, '').slice(0, 19).replace(/(\d{4})(?=\d)/g, '$1 ');
+const maskExpiry = (v: string) => v.replace(/\D/g, '').slice(0, 4).replace(/^(\d{2})(\d)/, '$1/$2');
 const maskCep = (v: string) => v.replace(/\D/g, '').slice(0, 8).replace(/^(\d{5})(\d)/, '$1-$2');
 
 export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan; notice?: string }) {
@@ -49,6 +55,20 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
   const [street, setStreet] = useState('');
   const [cepInfo, setCepInfo] = useState<CepInfo | null>(null);
   const [cepState, setCepState] = useState<'idle' | 'loading' | 'notfound'>('idle');
+  // Checkout próprio: cartão aqui mesmo e Pix com o QR code na página.
+  const [urlMode, setUrlMode] = useState<Mode | null>(null);
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardName, setCardName] = useState('');
+  const [cardExpiry, setCardExpiry] = useState('');
+  const [cardCvv, setCardCvv] = useState('');
+  const [pix, setPix] = useState<Pix | null>(null);
+  const [copied, setCopied] = useState(false);
+  const [waiting, setWaiting] = useState<string | null>(null); // id da compra aguardando confirmação
+  const [fallback, setFallback] = useState(false);
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get('checkout');
+    if (q === 'teste') setUrlMode('sandbox'); else if (q === 'novo') setUrlMode('direct');
+  }, []);
   useEffect(() => {
     const d = cep.replace(/\D/g, '');
     setCepInfo(null);
@@ -128,6 +148,32 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
   const method = plan === 'monthly' ? 'monthly' : annualPay === 'card' ? 'annual' : 'annual_pix';
   const hasTrial = method === 'monthly' || method === 'annual';
   const disc = info?.discountPct ?? 0;
+  const mode: Mode = urlMode ?? (info?.direct ? 'direct' : 'hosted');
+  const ownCard = mode !== 'hosted' && method !== 'annual_pix';
+
+  // Aguardando o pagamento cair (Pix, ou cartão que o banco ainda está confirmando): consulta a cada 3 s.
+  useEffect(() => {
+    if (!waiting) return;
+    let alive = true;
+    const started = Date.now();
+    const tick = async () => {
+      if (!alive) return;
+      try {
+        const r = await fetch(`/api/checkout/asaas/direct?id=${encodeURIComponent(waiting)}`, { cache: 'no-store' });
+        const j = await r.json().catch(() => ({}));
+        if (j.paid) { window.location.href = '/assinar/sucesso'; return; }
+      } catch { /* tenta de novo */ }
+      // Cartão: até 2 minutos. Pix: enquanto a página estiver aberta.
+      if (!pix && Date.now() - started > 120000) {
+        setBusy(false); setWaiting(null);
+        setError('Seu pagamento está em análise. Assim que for confirmado, você recebe um e-mail com o acesso.');
+        return;
+      }
+      setTimeout(tick, 3000);
+    };
+    const t = setTimeout(tick, 2000);
+    return () => { alive = false; clearTimeout(t); };
+  }, [waiting, pix]);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -139,6 +185,35 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
       return;
     }
     if (isDisposableEmail(email)) { setError('Use um e-mail que você acessa: é com ele que você entra no app.'); return; }
+    if (mode !== 'hosted') return submitDirect();
+    return submitHosted();
+  }
+
+  async function submitDirect() {
+    setBusy(true); setFallback(false);
+    try {
+      const r = await fetch('/api/checkout/asaas/direct', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          method, name, email, phone, cpf, cep, number: addrNumber, street, aff, coupon, sandbox: mode === 'sandbox',
+          card: ownCard ? { number: cardNumber, name: cardName, expiry: cardExpiry, cvv: cardCvv } : undefined,
+        }),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.id) {
+        setError(j.error ?? 'Não foi possível concluir agora.'); setFallback(!!j.fallback && mode !== 'sandbox'); setBusy(false); return;
+      }
+      if (mode !== 'sandbox') track('InitiateCheckout', { value: j.value, currency: 'BRL', content_name: method }, `ck_${j.id}_checkout`);
+      setCardNumber(''); setCardCvv(''); // não deixa o cartão na tela
+      if (j.done) { window.location.href = '/assinar/sucesso'; return; }
+      if (j.pix) { setPix(j.pix); setBusy(false); }
+      setWaiting(j.id);
+    } catch {
+      setError('Sem conexão. Tente de novo.'); setBusy(false);
+    }
+  }
+
+  async function submitHosted() {
     setBusy(true);
     try {
       const r = await fetch('/api/checkout/asaas', {
@@ -211,6 +286,8 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
 
   const cta = hasTrial && trial > 0
     ? `Começar ${trial} dias grátis`
+    : mode !== 'hosted' && method === 'annual_pix'
+    ? `Gerar o Pix — ${brl(annual)}`
     : `Assinar — ${brl(plan === 'annual' ? annual : monthly)}`;
   const note = method === 'monthly'
     ? (trial > 0
@@ -237,6 +314,10 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
         .wc input { width: 100%; box-sizing: border-box; border: 1px solid ${BORDER}; border-radius: 12px; padding: 13px 14px; font-size: 16px; background: #fff; color: ${INK}; }
         .wc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .wc-row > div { min-width: 0; }
+        .wc-card { margin-top: 20px; padding: 4px 16px 14px; border: 1.5px solid ${BORDER}; border-radius: 16px; background: #fff; }
+        .wc-card-title { font-size: 15px; font-weight: 800; color: ${INK}; margin-top: 12px; }
+        .wc-pix { margin-top: 18px; padding: 20px 16px; border: 1.5px solid ${BORDER}; border-radius: 18px; background: #fff; text-align: center; }
+        .wc-pix p { font-size: 14.5px; color: ${MID}; line-height: 1.5; }
         .wc-addr { font-size: 13.5px; color: ${MID}; margin: 8px 0 0; line-height: 1.4; }
         .wc input:focus { outline: 2px solid ${INK}; border-color: transparent; }
         .wc-btn { width: 100%; border: 0; border-radius: 14px; background: ${LIME}; color: ${INK}; font-weight: 800; font-size: 17px; padding: 16px; cursor: pointer; margin-top: 20px; }
@@ -259,6 +340,11 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
       {disc > 0 && !coupon && (
         <div style={{ background: '#E3F6EC', color: GREEN, borderRadius: 12, padding: '10px 14px', fontSize: 14, fontWeight: 700, marginBottom: 16 }}>
           Desconto de {disc}% aplicado pelo seu link.
+        </div>
+      )}
+      {mode === 'sandbox' && (
+        <div style={{ background: '#FFF4E5', color: '#8A5300', borderRadius: 12, padding: '10px 14px', fontSize: 14, fontWeight: 700, marginBottom: 16 }}>
+          Modo de teste: nada é cobrado. Use um cartão de teste e um e-mail da equipe.
         </div>
       )}
       {notice && <div style={{ background: '#FFF4E5', color: '#8A5300', borderRadius: 12, padding: '10px 14px', fontSize: 14, marginBottom: 16 }}>{notice}</div>}
@@ -293,6 +379,21 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
         )}
       </div>
 
+      {pix ? (
+        <div className="wc-pix" role="status">
+          <div className="wc-card-title" style={{ fontSize: 20 }}>Pague com Pix</div>
+          <p>No app do seu banco, escolha Pix e use o código abaixo (copia e cola) ou leia o QR code.</p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`data:image/png;base64,${pix.image}`} alt="QR code do Pix" width={220} height={220} />
+          <button type="button" className="wc-btn" style={{ marginTop: 12 }}
+            onClick={() => { navigator.clipboard?.writeText(pix.payload).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2500); }).catch(() => {}); }}>
+            {copied ? 'Código copiado' : 'Copiar código Pix'}
+          </button>
+          <p className="wc-addr" style={{ wordBreak: 'break-all', textAlign: 'left' }}>{pix.payload}</p>
+          <p style={{ fontWeight: 700, color: INK, marginTop: 16 }}>Aguardando o pagamento... Assim que cair, esta página avança sozinha.</p>
+          <p className="wc-addr">Valor: {brl(annual)}, pagamento único, sem renovação automática.</p>
+        </div>
+      ) : (
       <form onSubmit={submit} style={{ marginTop: 10 }}>
         <label htmlFor="wc-name">Nome completo</label>
         <input id="wc-name" value={name} onChange={e => setName(e.target.value)} autoComplete="name" required />
@@ -338,14 +439,50 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
           </>
         )}
 
-        <p style={{ fontSize: 13.5, color: MID, marginTop: 16, lineHeight: 1.5 }}>
-          {method === 'annual_pix'
-            ? 'Na próxima tela aparece o Pix para pagar, em ambiente seguro. Depois você volta para cá sozinho.'
-            : 'Na próxima tela você só digita o cartão, em ambiente seguro de pagamento. Depois você volta para cá sozinho.'}
-        </p>
+        {mode === 'hosted' && (
+          <p style={{ fontSize: 13.5, color: MID, marginTop: 16, lineHeight: 1.5 }}>
+            {method === 'annual_pix'
+              ? 'Na próxima tela aparece o Pix para pagar, em ambiente seguro. Depois você volta para cá sozinho.'
+              : 'Na próxima tela você só digita o cartão, em ambiente seguro de pagamento. Depois você volta para cá sozinho.'}
+          </p>
+        )}
+        {ownCard && (
+          <div className="wc-card">
+            <div className="wc-card-title">Cartão de crédito</div>
+            <label htmlFor="wc-cc-number">Número do cartão</label>
+            <input id="wc-cc-number" value={cardNumber} onChange={e => setCardNumber(maskCard(e.target.value))}
+              autoComplete="cc-number" inputMode="numeric" placeholder="0000 0000 0000 0000" required />
+            <label htmlFor="wc-cc-name">Nome impresso no cartão</label>
+            <input id="wc-cc-name" value={cardName} onChange={e => setCardName(e.target.value.toUpperCase())}
+              autoComplete="cc-name" autoCapitalize="characters" required />
+            <div className="wc-row">
+              <div>
+                <label htmlFor="wc-cc-exp">Validade</label>
+                <input id="wc-cc-exp" value={cardExpiry} onChange={e => setCardExpiry(maskExpiry(e.target.value))}
+                  autoComplete="cc-exp" inputMode="numeric" placeholder="MM/AA" required />
+              </div>
+              <div>
+                <label htmlFor="wc-cc-cvv">CVV</label>
+                <input id="wc-cc-cvv" value={cardCvv} onChange={e => setCardCvv(e.target.value.replace(/\D/g, '').slice(0, 4))}
+                  autoComplete="cc-csc" inputMode="numeric" placeholder="000" required />
+              </div>
+            </div>
+            <p className="wc-addr">
+              {hasTrial && trial > 0
+                ? `Nada é cobrado hoje: o cartão só é validado. A primeira cobrança é no ${trial + 1}º dia.`
+                : 'Pagamento seguro.'} Os dados do cartão não ficam guardados no Queizy.
+            </p>
+          </div>
+        )}
         {error && <p role="alert" style={{ color: '#C0264F', fontSize: 14, marginTop: 14 }}>{error}</p>}
-        <button className="wc-btn" type="submit" disabled={busy || info?.enabled === false}>
-          {info?.enabled === false ? 'Em breve' : busy ? 'Abrindo o pagamento...' : cta}
+        {error && fallback && (
+          <button type="button" onClick={() => { setError(null); setFallback(false); submitHosted(); }}
+            style={{ background: 'none', border: 0, padding: 0, marginTop: 8, color: INK, fontSize: 14, fontWeight: 700, textDecoration: 'underline', cursor: 'pointer' }}>
+            Pagar na página segura do parceiro de pagamento
+          </button>
+        )}
+        <button className="wc-btn" type="submit" disabled={busy || (info?.enabled === false && mode !== 'sandbox')}>
+          {info?.enabled === false && mode !== 'sandbox' ? 'Em breve' : busy ? (mode === 'hosted' ? 'Abrindo o pagamento...' : waiting ? 'Confirmando o pagamento...' : 'Processando...') : cta}
         </button>
         <p style={{ fontSize: 13, color: LIGHT, textAlign: 'center', lineHeight: 1.5, marginTop: 12 }}>{note}</p>
         <p style={{ fontSize: 12, color: LIGHT, textAlign: 'center', lineHeight: 1.5, marginTop: 8 }}>
@@ -353,6 +490,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
           a <a href="/privacidade" style={{ color: MID }}>Política de Privacidade</a>.
         </p>
       </form>
+      )}
 
       <div style={{ borderTop: `1px solid ${BORDER}`, marginTop: 28, paddingTop: 22, textAlign: 'center' }}>
         <p style={{ fontSize: 14, color: MID, margin: '0 0 12px' }}>Prefere assinar pela App Store ou pelo Google Play?</p>
