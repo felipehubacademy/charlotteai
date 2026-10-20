@@ -29,6 +29,8 @@ export interface Character {
   elevenSettings?: VoiceSettings;
   /** Persona aplicada por cima das regras de ensino da Charlotte (inglês). */
   persona?: string;
+  /** Gênero gramatical, para adaptar as regras da Charlotte escritas em português ("amiga" → "amigo"). */
+  gender?: 'f' | 'm';
   impressions?: Partial<Record<ImpressionId, Impression>>;
   /** Estilo da mensagem da Início. */
   greetingStylePt?: string;
@@ -48,6 +50,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
   igorfina: {
     id: 'igorfina',
     name: 'Igorfina',
+    gender: 'm',
     elevenVoiceId: '9QtRgQhaZY2Ge2ttjy5x', // voz do próprio Igor
     // Ajustes dos áudios de referência no ElevenLabs.
     elevenSettings: { stability: 0.5, similarity_boost: 0.75, style: 0, use_speaker_boost: true },

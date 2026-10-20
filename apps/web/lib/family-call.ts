@@ -5,6 +5,7 @@
 // monta o prompt (personalidade do Free Chat em lib/characters + regras de voz e do nível do
 // aluno + nome e tópico) e a primeira fala, que vão como "overrides" da sessão.
 import { CHARACTERS, type Character } from '@/lib/characters';
+import { SYSTEM_PROMPTS } from '@/lib/live-voice-rules';
 
 export type CallLevel = 'Novice' | 'Inter' | 'Advanced';
 
@@ -13,24 +14,24 @@ export const FAMILY_AGENTS: Record<string, string> = {
   igorfina: 'agent_1201m5b3r7pdebb85d81ywb0fc0x',
 };
 
-const LEVEL_RULES: Record<CallLevel, string> = {
-  Novice: `STUDENT LEVEL: beginner (Novice). They know little English and are shy.
-- Speak simple, slow English with very common words. Mix in Portuguese freely to support them (about half and half), but always give them a short English sentence to repeat or answer.
-- Ask easy questions they can answer in 1 to 5 words (yes/no, either/or, "What's your favorite food?").
-- Celebrate every attempt. If they answer in Portuguese, give them the English version and invite them to say it.`,
-  Inter: `STUDENT LEVEL: intermediate (Inter). They can hold a conversation but make mistakes, hesitate and can feel shy.
-- Speak about 95% English. For a hard word, add a quick Portuguese translation ("hiking, caminhada").
-- If they hesitate or switch to Portuguese, keep replying in SIMPLE English and give them the key word they needed. Encourage them ("take your time", "you're doing great").`,
-  Advanced: `STUDENT LEVEL: advanced. They speak well and want natural, fluent conversation.
-- Speak 100% natural English, with idioms and real-life expressions (explain one briefly if they don't get it).
-- Push them a bit: ask for opinions, stories and details.`,
-};
+// Fora das regras da Charlotte, só o que é próprio do agente de voz da Família.
+const AGENT_NOTES = `VOICE CALL NOTES: this is voice only, so never use emojis, lists or markdown. If the app sends a note saying TIME IS UP, say a short goodbye right away (this overrides any rule about goodbyes).`;
 
-const VOICE_RULES = `THIS IS A LIVE VOICE CALL (not text):
-- TURN LENGTH (most important): at most TWO short sentences per turn: one short reaction (max 10 words) + one short question (max 12 words). Never lecture, never list things, never use bullet points, emojis or markdown.
-- Correct mistakes lightly and only when it matters: repeat their sentence the right way, naturally, inside your reaction ("Ah, you WENT to the beach! Nice!"). Never say "wrong".
-- Your own English is always correct.
-- If the student wants to stop, say a short funny goodbye.`;
+/** Regras da ligação da Charlotte (lib/live-voice-rules) com o nome e o gênero do personagem. */
+function baseRules(c: Character, level: CallLevel, name: string): string {
+  let t = SYSTEM_PROMPTS[level].replace(/\{NAME\}/g, name);
+  if (c.gender === 'm') {
+    t = t
+      .replace(/Você é Charlotte, amiga do/g, `Você é o ${c.name}, amigo do`)
+      .replace(/como amiga ao telefone/g, 'como amigo ao telefone')
+      .replace(/Calorosa, paciente, curiosa\. Amiga, não professora\./g, 'Caloroso, paciente, curioso. Amigo, não professor.');
+  }
+  t = t.replace(/Você é Charlotte/g, `Você é ${c.gender === 'm' ? 'o ' : 'a '}${c.name}`).replace(/\bCharlotte\b/g, c.name);
+  // A primeira fala já sai pronta (firstMessage); o route troca {GREETING} por ela.
+  return t
+    .replace(/Comece com: "\{GREETING\}"/, 'Você já abriu a ligação com: "{GREETING}" (essa foi a sua primeira fala, o TURNO 1).')
+    .replace(/Start with: "\{GREETING\}"/, 'You already opened the call with: "{GREETING}".');
+}
 
 /** Imitações por voz: a tag troca a voz no ElevenLabs; o estilo vem do Free Chat (lib/characters). */
 const IMPRESSION_TAGS: Record<string, string> = { president: 'President', hoops: 'Hoops' };
@@ -52,10 +53,12 @@ const FIRST_MESSAGES: Record<string, string[]> = {
     "{name}, my friend! Perfect timing, I was getting bored. Tell me, how was your day?",
   ],
 };
+// Novice: como a Charlotte, o TURNO 1 é só cumprimentar e perguntar como vai, em português.
 const FIRST_MESSAGES_NOVICE: Record<string, string[]> = {
   igorfina: [
-    "Oi, {name}! It's Igorfina! Tudo bem? How are you today?",
-    "{name}! Que bom te ouvir! Let's talk a little in English, ok? What's your favorite food?",
+    "Alô, {name}! Aqui é o Igorfina. Tudo bem com você?",
+    "Fala, {name}! Que bom te ouvir. Como você tá?",
+    "Ei, {name}! O Igorfina na linha. Tudo certo por aí?",
   ],
 };
 
@@ -71,7 +74,7 @@ export interface CallContext {
 
 // Retomada depois da pausa por inatividade: volta ao assunto em vez de cumprimentar de novo.
 const RESUME_LINES: Record<CallLevel, string[]> = {
-  Novice: ["{name}, voltou! Good! Where were we?", "Oi de novo, {name}! Ready? Let's continue!"],
+  Novice: ["Oi de novo, {name}! Onde a gente parou?", "{name}, voltou! Bora continuar de onde parou?"],
   Inter: ["Hey {name}, you're back! So, where were we?", "There you are, {name}! Let's pick up where we left off."],
   Advanced: ["Welcome back, {name}! Shall we pick up where we left off?", "{name}! Right, where were we?"],
 };
@@ -93,19 +96,15 @@ export function buildCallSession(opts: { characterId: string; level: CallLevel; 
   const resume = resumeLines.length
     ? `\nTHIS CALL WAS PAUSED because ${name} went quiet, and now it is back on. The conversation so far ended like this:\n${resumeLines.map(l => `${l.who === 'ai' ? 'You' : name}: ${l.text.replace(/\s+/g, ' ').slice(0, 200)}`).join('\n')}\nContinue from there naturally. Do not greet again or restart the conversation.`
     : '';
-  const prompt = `You are on a live voice call in Queizy, an app for Brazilians learning English. Your job: get ${name} talking in English, having fun and gently improving, like a funny friend, not a formal teacher.
+  // Base: as regras por nível da ligação da Charlotte, inteiras. Por cima: personalidade do personagem
+  // (que manda ignorar o nome e o jeito dela, mas manter todas as regras de ensino), imitações e contexto.
+  const prompt = `${baseRules(c, opts.level, name)}
 
-${LEVEL_RULES[opts.level]}
-
-${VOICE_RULES}${topic}${memory}${resume}
-
-${c.persona
-  .replace(/ignore her name, age and personality above, but keep EVERY teaching, level, language, length and format rule above\./, 'keep EVERY teaching, level, language and length rule above.')
-  .replace(/Do NOT do any impression unless this reply's instructions ask for one\./, 'Do impressions only as described in IMPRESSIONS below.')}
+${c.persona.replace(/Do NOT do any impression unless this reply's instructions ask for one\./, 'Do impressions only as described in IMPRESSIONS below.')}
 
 ${impressionsBlock(c)}
 
-The student's name is ${name}.`;
+${AGENT_NOTES}${topic}${memory}${resume}`;
   const pool = resumeLines.length ? RESUME_LINES[opts.level] : (opts.level === 'Novice' ? FIRST_MESSAGES_NOVICE : FIRST_MESSAGES)[c.id] ?? [];
   const firstMessage = (pool[Math.floor(Math.random() * pool.length)] ?? 'Hey {name}!').replace(/\{name\}/g, name);
   return { agentId: FAMILY_AGENTS[c.id], prompt, firstMessage, characterName: c.name };
@@ -127,11 +126,17 @@ export async function generateOpener(opts: {
     opts.trackTopic ? `Studying on your trail: "${opts.trackTopic}".` : '',
     opts.memories?.length ? `From your last call: ${opts.memories[0]}` : 'This is your first call together.',
   ].filter(Boolean).join(' ');
-  const impressionHint = Math.random() < 0.2
+  // Mesmo TURNO 1 da ligação da Charlotte. Novice: só cumprimentar e perguntar como vai, em
+  // português (o inglês entra aos poucos depois). Inter/Advanced: cumprimento curto em inglês.
+  const novice = opts.level === 'Novice';
+  const impressionHint = !novice && Math.random() < 0.2
     ? 'This time, open as ONE of your impressions, wrapped in its voice tag (<President>...</President> or <Hoops>...</Hoops>).'
     : 'Open in your normal voice (no tags).';
+  const task = novice
+    ? `Write ONLY your first line, in Brazilian Portuguese only (no English yet): greet ${name} by name with your humor and ask how they are. Nothing else. Max 15 words.`
+    : `Write ONLY your first line, in English: a warm, funny greeting using their name plus ONE easy question to get them talking. Max 2 short sentences, max 25 words. Use AT MOST one detail from the context (pick what makes the best opener; often just the time of day or a follow-up on the last call).`;
   const system = `${c.persona.split('Hard rules')[0]}
-You are opening a live voice call with ${name}, an English student (${opts.level} level). Write ONLY your first line: a warm, funny greeting using their name plus ONE easy question to get them talking. Max 2 short sentences, max 25 words, in English${opts.level === 'Novice' ? ' with a few simple Portuguese words to make them comfortable' : ''}. Use AT MOST one detail from the context (pick what makes the best opener; often just the time of day or a follow-up on the last call). No emojis, no quotes, no stage directions. ${impressionHint}
+You are opening a live voice call with ${name}, an English student (${opts.level} level). ${task} No emojis, no quotes, no stage directions. ${impressionHint}
 Never mention politics, news, real people, teams or brands.`;
   try {
     const ctrl = new AbortController();

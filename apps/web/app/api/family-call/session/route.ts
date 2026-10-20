@@ -77,5 +77,7 @@ export async function POST(req: NextRequest) {
   }
   const { token } = (await r.json()) as { token: string };
   const firstMessage = await openerP;
-  return NextResponse.json({ token, agentId: session.agentId, prompt: session.prompt, firstMessage, characterName: session.characterName, remainingSeconds: remaining });
+  // A regra do TURNO 1 cita a primeira fala: entra no prompt depois de pronta.
+  const prompt = session.prompt.replace('{GREETING}', firstMessage.replace(/<\/?[A-Za-z]+>/g, ''));
+  return NextResponse.json({ token, agentId: session.agentId, prompt, firstMessage, characterName: session.characterName, remainingSeconds: remaining });
 }
