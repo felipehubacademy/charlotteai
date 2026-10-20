@@ -323,8 +323,9 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
         } catch { /* sem aviso, cai no limite */ }
       }
       if (limitRef.current && left <= 0 && (modeRef.current !== 'speaking' || left <= -12)) { setPoolOut(true); finish('limit'); return; }
-      // Inatividade: o personagem falando ou a voz do aluno contam como atividade.
-      if (modeRef.current === 'speaking' || levels.local.current > 0.12) lastActivityRef.current = Date.now();
+      // Inatividade: conta só fala de verdade (o personagem falando, ou uma fala do aluno transcrita),
+      // como na Charlotte; ruído do ambiente no microfone não segura a ligação aberta.
+      if (modeRef.current === 'speaking') lastActivityRef.current = Date.now();
       const idle = Math.floor((Date.now() - lastActivityRef.current) / 1000);
       if (idle >= INACTIVITY_PAUSE_SEC) { pause(); return; }
       setWarning(idle >= INACTIVITY_WARN_SEC ? INACTIVITY_PAUSE_SEC - idle : null);
@@ -460,12 +461,12 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
                 <View style={{ backgroundColor: caption.who === 'user' ? INK : th.bubble, borderRadius: 16, paddingHorizontal: 14, paddingVertical: 10, maxWidth: '100%',
                   shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 8, shadowOffset: { width: 0, height: 2 }, elevation: 1 }}>
                   <AppText style={{ color: caption.who === 'user' ? '#FFFFFF' : INK, fontSize: 16, lineHeight: 22, fontWeight: '500', textAlign: 'center' }}
-                    numberOfLines={compact ? 3 : 4} ellipsizeMode="head">
+                    numberOfLines={3} ellipsizeMode="head">
                     {caption.text}
                   </AppText>
                 </View>
                 {translation && (
-                  <AppText style={{ color: th.sub, fontSize: 14, lineHeight: 19, fontStyle: 'italic', textAlign: 'center', marginTop: 6, paddingHorizontal: 8 }} numberOfLines={3}>
+                  <AppText style={{ color: th.sub, fontSize: 14, lineHeight: 19, fontStyle: 'italic', textAlign: 'center', marginTop: 6, paddingHorizontal: 8 }} numberOfLines={2}>
                     {translation}
                   </AppText>
                 )}
