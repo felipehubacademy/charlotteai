@@ -3,7 +3,8 @@
 //        cartão (monthly / annual): cria a assinatura; com teste grátis libera o acesso na hora
 //        Pix (annual_pix): cria a cobrança e devolve o QR code para mostrar na página
 //        → { id, done } ou { id, pix: { image, payload, expiresAt } } ou { id, pending: true }
-//   GET  ?id=  a tela consulta até o pagamento cair → { paid }
+//   GET  ?id=&check=1  a tela consulta até o pagamento cair → { paid }. Lê o nosso banco (o webhook marca
+//        o pagamento); só com check=1 (a cada ~20 s) consulta o Asaas, que limita a 25 mil chamadas em 12 h.
 //
 // O cartão só passa por aqui a caminho do Asaas: nunca é gravado nem vai para log.
 // sandbox: ambiente de testes do Asaas, só para os e-mails da equipe (SANDBOX_EMAIL). Nada ali é cobrado.
@@ -68,6 +69,11 @@ async function cardFails(ip: string | null, email: string, cpf: string): Promise
   return Math.max(...counts.map(c => c?.count ?? 0));
 }
 
+// Limite de chamadas do processador atingido (pico): pede para tentar em instantes, sem contar como recusa.
+function busyResponse(): NextResponse {
+  return NextResponse.json({ error: 'Muita gente assinando agora. Tente de novo em 1 minuto.' }, { status: 503 });
+}
+
 function withCookie(res: NextResponse, id: string): NextResponse {
   // A tela de sucesso usa este cookie para mostrar o e-mail e oferecer "Não é esse? Corrigir".
   res.cookies.set('qz_checkout', id, { httpOnly: true, secure: true, sameSite: 'lax', path: '/', maxAge: 2 * 86400 });
@@ -109,6 +115,7 @@ export async function POST(req: NextRequest) {
     customer = await ensurePayer(ctx.payer, ctx.u.id, sandbox);
   } catch (e) {
     console.error('[checkout/direct] customer failed:', e instanceof AsaasError ? e.body : (e as Error).message);
+    if (e instanceof AsaasError && e.status === 429) return busyResponse();
     return NextResponse.json({ error: 'Não foi possível iniciar o pagamento agora.', fallback: true }, { status: 502 });
   }
 
@@ -120,6 +127,7 @@ export async function POST(req: NextRequest) {
       return withCookie(NextResponse.json({ id, value: ctx.value, pix: { image: qr.encodedImage, payload: qr.payload, expiresAt: qr.expirationDate } }), id);
     } catch (e) {
       console.error('[checkout/direct] pix failed:', e instanceof AsaasError ? e.body : (e as Error).message);
+      if (e instanceof AsaasError && e.status === 429) return busyResponse();
       return NextResponse.json({ error: 'Não foi possível gerar o Pix agora.', fallback: true }, { status: 502 });
     }
   }
@@ -133,6 +141,7 @@ export async function POST(req: NextRequest) {
     });
     subscriptionId = sub.id;
   } catch (e) {
+    if (e instanceof AsaasError && e.status === 429) return busyResponse();
     const declined = e instanceof AsaasError && e.status === 400;
     // Só o motivo devolvido pelo Asaas (não repete o cartão).
     console.warn('[checkout/direct] card refused:', e instanceof AsaasError ? e.body : (e as Error).message);
@@ -161,7 +170,7 @@ async function loadRow(id: string): Promise<Row | null> {
  * Leva a compra até o fim, se já der: teste grátis → libera o acesso; cobrança paga → mesmo caminho do
  * webhook (uma vez por cobrança). Pode ser chamada de novo pela tela: se algo falhou antes, tenta outra vez.
  */
-async function settle(row: Row): Promise<boolean> {
+async function settle(row: Row, askAsaas = true): Promise<boolean> {
   if (row.status === 'paid') return true;
   const supabase = getSupabaseAdmin();
   const sandbox = !!row.sandbox;
@@ -171,6 +180,7 @@ async function settle(row: Row): Promise<boolean> {
     await supabase.from('asaas_checkouts').update({ status: 'paid', updated_at: new Date().toISOString() } as never).eq('id', row.id);
     return true;
   }
+  if (!askAsaas) return false;
   const payments = row.pending_payment_id
     ? [await getPaymentIn(row.pending_payment_id, sandbox)]
     : row.asaas_subscription_id ? await paymentsOfSubscription(row.asaas_subscription_id, sandbox) : [];
@@ -187,7 +197,7 @@ export async function GET(req: NextRequest) {
   const row = await loadRow(id);
   if (!row) return NextResponse.json({ paid: false }, { status: 404 });
   try {
-    return NextResponse.json({ paid: await settle(row) });
+    return NextResponse.json({ paid: await settle(row, req.nextUrl.searchParams.get('check') === '1') });
   } catch (e) {
     console.error('[checkout/direct] settle failed:', e instanceof AsaasError ? e.body : (e as Error).message);
     return NextResponse.json({ paid: false });

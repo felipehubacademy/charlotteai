@@ -156,14 +156,22 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
     if (!waiting) return;
     let alive = true;
     const started = Date.now();
+    let n = 0;
     const tick = async () => {
       if (!alive) return;
+      // A cada 3 s olha o nosso banco; a cada ~20 s pede também para conferir no processador de pagamento.
+      const check = n++ % 7 === 0 ? '&check=1' : '';
       try {
-        const r = await fetch(`/api/checkout/asaas/direct?id=${encodeURIComponent(waiting)}`, { cache: 'no-store' });
+        const r = await fetch(`/api/checkout/asaas/direct?id=${encodeURIComponent(waiting)}${check}`, { cache: 'no-store' });
         const j = await r.json().catch(() => ({}));
         if (j.paid) { window.location.href = '/assinar/sucesso'; return; }
       } catch { /* tenta de novo */ }
-      // Cartão: até 2 minutos. Pix: enquanto a página estiver aberta.
+      // Cartão: até 2 minutos. Pix: até 30 minutos (depois o e-mail de acesso chega quando o Pix cair).
+      if (pix && Date.now() - started > 30 * 60000) {
+        setWaiting(null);
+        setError('Ainda não recebemos o Pix. Se você já pagou, fique tranquilo: o e-mail com o acesso chega assim que o pagamento cair.');
+        return;
+      }
       if (!pix && Date.now() - started > 120000) {
         setBusy(false); setWaiting(null);
         setError('Seu pagamento está em análise. Assim que for confirmado, você recebe um e-mail com o acesso.');
