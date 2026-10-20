@@ -17,6 +17,36 @@
     },
     "app/api/transcribe/route.ts": {
       "maxDuration": 30
+    },
+    "app/api/checkout/asaas/route.ts": {
+      "regions": [
+        "gru1"
+      ]
+    },
+    "app/api/checkout/asaas/email/route.ts": {
+      "regions": [
+        "gru1"
+      ]
+    },
+    "app/api/webhooks/asaas/route.ts": {
+      "regions": [
+        "gru1"
+      ]
+    },
+    "app/api/auth/send-email/route.ts": {
+      "regions": [
+        "gru1"
+      ]
+    },
+    "app/api/cron/email-outbox/route.ts": {
+      "regions": [
+        "gru1"
+      ]
+    },
+    "app/api/cron/capacity-alert/route.ts": {
+      "regions": [
+        "gru1"
+      ]
     }
   },
   "crons": [
