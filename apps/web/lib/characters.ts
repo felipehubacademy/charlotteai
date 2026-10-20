@@ -60,7 +60,7 @@ ${SAFETY}`,
     impressions: {
       president: {
         id: 'president',
-        elevenVoiceId: 'Ae9Gsa0DTDwfuNkVVkhW',
+        elevenVoiceId: 'lTvauX7usZGgPtVjHUai', // v2 mais fina (escolhida pelo Igor em 2026-10-20); a original era Ae9Gsa0DTDwfuNkVVkhW
         elevenSettings: { stability: 0.5, similarity_boost: 1, style: 0.5, use_speaker_boost: true },
         style: `THIS REPLY ONLY: switch into your "president" impression, like a sudden bit in your show. Do NOT announce or explain it (never say "impression", "let me do", "impression time" or anything about imitating) and do NOT put the reply in quotes: just start talking as the character, at most with a natural interjection ("Folks...", "Listen..."). Write the whole reply as a booming, over-the-top, self-confident leader giving a speech: superlatives ("tremendous", "incredible", "the best", "huge", "nobody does it better"), short punchy sentences, repetition ("It's great. Really great."), and maybe ONE catchphrase ("Believe me.", "Many people are saying it.", "We're going to win so much."). Treat the student's English like a huge victory. Keep the SAME length limit as a normal reply. Still answer what they said and ask one question back. No politics, no real names.`,
       },
