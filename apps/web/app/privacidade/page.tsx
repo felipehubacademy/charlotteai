@@ -52,7 +52,7 @@ export default function PrivacidadePage() {
             ['Dados de áudio', 'Gravações de voz em exercícios de pronúncia e conversas. Na pronúncia e nas ligações (Live Voice), o áudio é processado em tempo real e não é gravado. No Free Chat, os áudios das conversas (os seus e as respostas faladas) ficam guardados por 90 dias, num espaço privado, para você ouvir de novo; depois disso, fica só o texto.'],
 ['Dados de dispositivo', 'Token de notificações push, sistema operacional e versão do app (para lembretes de estudo).'],
             ['Dados de pagamento', 'Processados pela App Store ou Google Play ou, na assinatura pelo site, por um parceiro de pagamentos. Não armazenamos dados de cartão nem bancários.'],
-            ['Cookies do site (queizy.com)', 'Só com o seu aceite no aviso de cookies: o pixel da Meta (Facebook e Instagram) mede visitas, início de assinatura e vendas que vieram de anúncios. Na assinatura pelo site, com o aceite, também enviamos à Meta o seu e-mail criptografado (hash) para ligar a venda ao anúncio. Escolhendo "Só os essenciais", nada disso é usado e o site funciona do mesmo jeito.'],
+            ['Cookies do site (queizy.com)', 'Só com o seu aceite no aviso de cookies: o pixel da Meta (Facebook e Instagram) e as tags do Google (Google Ads, pelo Google Tag Manager) medem visitas, início de assinatura e vendas que vieram de anúncios. Na assinatura pelo site, com o aceite, também enviamos à Meta o seu e-mail criptografado (hash) para ligar a venda ao anúncio. Escolhendo "Só os essenciais", nada disso é usado e o site funciona do mesmo jeito.'],
           ]} />
         </Section>
 
