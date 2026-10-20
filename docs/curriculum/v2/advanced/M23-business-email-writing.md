@@ -211,9 +211,9 @@
 
 ### 2. Listening/Speaking (5 phrases)
 
-1. **"I am writing to apply for the position of [role]."** — formal opener
-2. **"I bring [X] years of experience in [field]."** — quantified credibility
-3. **"In my current role, I have [specific achievement]."** — track record
+1. **"I am writing to apply for the position of Marketing Manager."** — formal opener
+2. **"I bring five years of experience in digital marketing."** — quantified credibility
+3. **"In my current role, I have doubled our online sales."** — track record
 4. **"My background aligns with your team's needs."** — fit statement
 5. **"I would welcome the opportunity to discuss."** — closing ask
 
@@ -363,11 +363,11 @@
 
 ### 2. Listening/Speaking (5 phrases)
 
-1. **"Led a cross-functional team of [X]."** — leadership CV bullet
-2. **"Spearheaded the initiative to [outcome]."** — initiative ownership
-3. **"What draws me to [Company] is..."** — cover letter pivot
-4. **"My approach combines [skill A] with [skill B]."** — value proposition
-5. **"I'd contribute to [specific company goal]."** — fit statement
+1. **"Led a cross-functional team of twelve people."** — leadership CV bullet
+2. **"Spearheaded the initiative to cut costs by twenty percent."** — initiative ownership
+3. **"What draws me to your company is its focus on people."** — cover letter pivot
+4. **"My approach combines data analysis with creative thinking."** — value proposition
+5. **"I'd contribute to your growth in Latin America."** — fit statement
 
 ### 3. Role-play
 
@@ -517,7 +517,7 @@
 
 1. **"Just following up on my email."** — gentle nudge
 2. **"Wondering if you had a chance to review."** — acknowledges their time
-3. **"Just checking in on [topic/application]."** — warm reintroduction
+3. **"Just checking in on my application."** — warm reintroduction
 4. **"Happy to jump on a quick call."** — offer engagement
 5. **"No rush on my end."** — pressure release
 

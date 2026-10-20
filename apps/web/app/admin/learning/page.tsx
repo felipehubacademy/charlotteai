@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Search } from 'lucide-react';
 import { exLabel, practiceLabel, accColor, ago } from './labels';
+import StuckPanel from './StuckPanel';
 
 interface Overview {
   days: number;
@@ -90,7 +91,7 @@ export default function LearningPage() {
             </div>
           ))}
 
-          {/* Onde os alunos travam */}
+          {/* Tópicos com menor acerto */}
           <div className="adm-panel col-8">
             <div className="adm-panel-hdr"><div className="adm-panel-title">Tópicos com menor acerto</div></div>
             <table className="adm-table">
@@ -185,6 +186,8 @@ export default function LearningPage() {
               ))}
             </div>
           </div>
+
+          <StuckPanel />
 
           {/* Alunos */}
           <div className="adm-panel col-12">

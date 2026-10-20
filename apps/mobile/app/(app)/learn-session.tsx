@@ -3,7 +3,7 @@ import { useFocusEffect, useNavigation } from 'expo-router';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import {
   View, ScrollView, TouchableOpacity, TextInput,
-  Platform, Animated,
+  Platform, Animated, Linking,
   ActivityIndicator, Pressable, Modal, useWindowDimensions,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
@@ -25,12 +25,13 @@ import { getModule } from '@/lib/curriculum-v2/loader';
 import { characterInfo } from '@/lib/characters';
 import { TrackHostReaction } from '@/components/trail/TrackHostReaction';
 import { systemIsPt } from '@/lib/systemLang';
-import { wordMatchPercent } from '@/lib/speechMatch';
+import { bestSpeechMatch, normalizeSpeech } from '@/lib/speechMatch';
+import { logAttempt } from '@/lib/learnAttempts';
 import { checkGrammarAnswer } from '@/lib/grammarAnswer';
 import { scheduleReviews, markReviewDone, rescheduleReview } from '@/lib/spacedRepetition';
 import { track } from '@/lib/analytics';
 import * as FileSystem from 'expo-file-system/legacy';
-import { useAudioRecorder, setAudioModeAsync, setIsAudioActiveAsync, RecordingPresets } from 'expo-audio';
+import { useAudioRecorder, setAudioModeAsync, setIsAudioActiveAsync, RecordingPresets, requestRecordingPermissionsAsync } from 'expo-audio';
 import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';
 import { Image } from 'expo-image';
 import {
@@ -170,6 +171,15 @@ export default function LearnSessionScreen() {
   const saveTopicComplete = isV2 ? (async () => {}) : learnProgress.saveTopicComplete;
   const saveExercise = useCallback(async (params: any) => {
     if (!isV2) return learnProgress.saveExercise(params);
+    // Gramática: cada resposta vai para learn_attempts (a fala é registrada em finishPronAttempt,
+    // com as leituras do reconhecimento).
+    if (params?.exerciseType && params.exerciseType !== 'repeat') {
+      logAttempt(userId, {
+        level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null, activityType: 'grammar',
+        stepIdx: stepIdxRef.current, expected: params.exerciseData?.correctAnswer ?? params.exerciseData?.question ?? null,
+        answer: params.exerciseData?.userAnswer ?? null, passed: !!params.isCorrect, source: 'typed',
+      });
+    }
     // v2 path: só XP via charlotte_practices (sem learn_history v1)
     if (!userId || typeof params?.xpEarned !== 'number') return;
     try {
@@ -179,7 +189,7 @@ export default function LearnSessionScreen() {
         xp_earned:     params.xpEarned,
       });
     } catch (e) { console.warn('[v2] charlotte_practices insert failed', e); }
-  }, [isV2, userId, learnProgress.saveExercise]);
+  }, [isV2, userId, level, learnProgress.saveExercise]);
   const v2Progress        = useLearnProgressV2(userId, level as V2Level);
 
   // v2 score trackers — populated during the session, persisted on completion
@@ -229,6 +239,8 @@ export default function LearnSessionScreen() {
     : null;
 
   const [stepIdx, setStepIdx]         = useState(0);
+  const stepIdxRef = useRef(0);
+  stepIdxRef.current = stepIdx;
   const [isComplete, setIsComplete]   = useState(false);
   // Pulse anim para o botao redondo de mic durante gravacao
   const micRingAnim = useRef(new Animated.Value(0)).current;
@@ -310,6 +322,8 @@ export default function LearnSessionScreen() {
   // O passo atual fica salvo (resumeKey), então ao voltar o aluno continua desta pergunta.
   const navigation = useNavigation();
   const inProgressRef = useRef(false);
+  const exitInfoRef = useRef({ userId, level });
+  exitInfoRef.current = { userId, level };
   inProgressRef.current = !isComplete && (stepIdx > 0 || gStatus === 'submitted');
   useEffect(() => {
     const sub = navigation.addListener('beforeRemove', (e: any) => {
@@ -320,7 +334,12 @@ export default function LearnSessionScreen() {
         isPortuguese ? 'Quando voltar, você continua desta pergunta.' : "When you come back, you'll pick up from this question.",
         [
           { text: isPortuguese ? 'Continuar' : 'Keep going', style: 'cancel' },
-          { text: isPortuguese ? 'Sair' : 'Leave', style: 'destructive', onPress: () => navigation.dispatch(e.data.action) },
+          { text: isPortuguese ? 'Sair' : 'Leave', style: 'destructive', onPress: () => {
+            // Saída no meio da atividade: registra em que passo o aluno parou.
+            logAttempt(exitInfoRef.current.userId, { level: exitInfoRef.current.level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null,
+              activityType: params.activity === 'ls' ? 'speaking' : 'grammar', stepIdx: stepIdxRef.current, event: 'exit' });
+            navigation.dispatch(e.data.action);
+          } },
         ],
       );
     });
@@ -345,7 +364,8 @@ export default function LearnSessionScreen() {
   // ── Pronunciation state ────────────────────────────────────
   type PronStatus = 'loading_audio' | 'listening' | 'recording' | 'assessing' | 'result' | 'error' | 'retry';
   type PronFeedbackState = 'correct' | 'close' | 'error';
-  type PronFeedback = { state: PronFeedbackState; message: string; xp: number } | null;
+  // missing = palavras esperadas que não apareceram; listenAgain = 2ª falha seguida na frase.
+  type PronFeedback = { state: PronFeedbackState; message: string; xp: number; missing?: string[]; listenAgain?: boolean } | null;
   const [pronStatus, setPronStatus]           = useState<PronStatus>('loading_audio');
   const [charlotteAudioUri, setCharlotteAudioUri] = useState<string | null>(null);
   const [listenWriteAnswer, setListenWriteAnswer] = useState('');
@@ -360,6 +380,17 @@ export default function LearnSessionScreen() {
   const pronFeedbackAnim = useRef(new Animated.Value(0)).current;
   // on-device ASR transcript (repeat)
   const speechTranscriptRef = useRef('');
+  // Todas as leituras do reconhecimento (o celular devolve mais de uma); a correção fica com a melhor.
+  const speechAltsRef = useRef<string[]>([]);
+  // Último erro do reconhecimento nesta gravação; se for de serviço indisponível (ex.: Android sem
+  // inglês instalado), as próximas gravações passam a ser conferidas pelo servidor.
+  const asrErrorRef = useRef<string | null>(null);
+  const asrBrokenRef = useRef(false);
+  const usedAsrRef = useRef(false);
+  // Falhas seguidas na frase atual (zera ao trocar de frase).
+  const stepFailsRef = useRef(0);
+  // Microfone negado: mostra aviso com atalho para os Ajustes, em vez de o botão não fazer nada.
+  const [micBlocked, setMicBlocked] = useState(false);
 
   // Loop de pulso do mic ring durante gravacao.
   // (declarado aqui, apos o useState de pronStatus, para evitar TDZ.)
@@ -381,11 +412,12 @@ export default function LearnSessionScreen() {
   // ── Speech recognition events (no-op on builds without native module) ──
   useSpeechRecognitionEvent('result', (event) => {
     if (!ASR_AVAILABLE) return;
-    const transcript = event.results[0]?.transcript;
-    if (transcript) speechTranscriptRef.current = transcript;
+    const alts = (event.results ?? []).map(r => r?.transcript).filter((t): t is string => !!t);
+    if (alts.length) { speechTranscriptRef.current = alts[0]; speechAltsRef.current = alts; }
   });
-  useSpeechRecognitionEvent('error', () => {
-    // keep whatever transcript we have so far
+  useSpeechRecognitionEvent('error', (event) => {
+    // Mantém o que já foi entendido; guarda o motivo para decidir o plano B.
+    asrErrorRef.current = (event as { error?: string })?.error ?? 'unknown';
   });
 
   const { playingMessageId, toggle: toggleAudio, stop: stopAudio } = useMessageAudioPlayer();
@@ -576,6 +608,7 @@ export default function LearnSessionScreen() {
   const loadPronStep = useCallback(async (ph: PronStep) => {
     setPronStatus('loading_audio');
     setPronFeedback(null);
+    stepFailsRef.current = 0;
     pronFeedbackAnim.setValue(0);
     setListenWriteAnswer('');
     setListenWriteCorrect(null);
@@ -753,10 +786,112 @@ export default function LearnSessionScreen() {
     setPronFeedback(null);
     pronFeedbackAnim.setValue(0);
     speechTranscriptRef.current = '';
+    speechAltsRef.current = [];
     setPronStatus('listening');
   };
 
+  // Pular a frase (registra para o painel de onde os alunos travam).
+  const handleSkipPron = () => {
+    logAttempt(userId, { ...pronLogBase(), event: 'skip', score: pronScoresRef.current.get(stepIdx) ?? null });
+    handleNext();
+  };
+
+  // "Ouvir de novo" depois de errar duas vezes: volta para a frase e toca o áudio.
+  const handleListenAgain = () => {
+    handleRetryPron();
+    setTimeout(() => { if (charlotteAudioUriRef.current) toggleAudio(charlottePlayId, charlotteAudioUriRef.current); }, 150);
+  };
+
+  const pronLogBase = () => ({
+    level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null, activityType: 'speaking' as const,
+    stepIdx, expected: currentStep?.kind === 'pronunciation' ? (currentStep.phrase.text ?? null) : null,
+  });
+
+  // Palavras da frase como aparecem na tela, marcando as que faltaram (para "Faltou: ...").
+  const missingDisplay = (phrase: string, missing: string[]): string[] => {
+    if (!missing.length) return [];
+    const miss = new Set(missing);
+    const out: string[] = [];
+    for (const tok of phrase.split(/\s+/)) {
+      const clean = tok.replace(/^[^\w$]+|[^\w%]+$/g, '');
+      if (!clean) continue;
+      const norm = normalizeSpeech(clean).split(' ').filter(Boolean);
+      if (norm.length && norm.some(w => miss.has(w))) out.push(clean);
+    }
+    return out.slice(0, 6);
+  };
+
+  // Corrige a tentativa (todas as leituras do reconhecimento) e mostra o resultado.
+  const finishPronAttempt = (alts: string[], source: 'device' | 'server') => {
+    if (!currentStep || currentStep.kind !== 'pronunciation') return;
+    const phraseText = currentStep.phrase.text ?? '';
+    const m = alts.length ? bestSpeechMatch(alts, phraseText) : { percent: 0, missing: [], transcript: '' };
+    const pct = m.percent;
+    const transcript = m.transcript;
+    const missing = missingDisplay(phraseText, m.missing);
+    const missLine = missing.length && transcript
+      ? (isPortuguese ? ` Faltou: ${missing.join(', ')}.` : ` Missing: ${missing.join(', ')}.`) : '';
+
+    let feedback: NonNullable<PronFeedback>;
+    // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
+    if (isNoviceLike) {
+      if (pct >= 70) {
+        feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage(hostName) : 'Nice! Pronunciation ok.' };
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        soundEngine.play('answer_correct').catch(() => {});
+      } else {
+        feedback = { state: 'error', xp: 0, message: transcript
+          ? (isPortuguese ? `Tente de novo. Entendemos: "${transcript}".${missLine}` : `Try again. We heard: "${transcript}".${missLine}`)
+          : (isPortuguese ? 'Não ouvimos nada. Segure o botão enquanto fala, perto do microfone.' : "We didn't hear anything. Hold the button while you speak, close to the mic.") };
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+        soundEngine.play('answer_wrong').catch(() => {});
+        setSessionErrors(prev => prev + 1);
+      }
+    } else if (pct >= 85) {
+      feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Ótima pronúncia.' : 'Perfect! Great pronunciation.' };
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      soundEngine.play('answer_correct').catch(() => {});
+    } else if (pct >= 50) {
+      feedback = { state: 'close', xp: 8, message: isPortuguese ? `Quase! Entendemos: "${transcript}".${missLine} Tente de novo.` : `Close! We heard: "${transcript}".${missLine} Try again.` };
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+    } else {
+      feedback = { state: 'error', xp: 0, message: transcript
+        ? (isPortuguese ? `Tente de novo. Entendemos: "${transcript}".${missLine}` : `Try again. We heard: "${transcript}".${missLine}`)
+        : (isPortuguese ? 'Não ouvimos nada. Segure o botão enquanto fala, perto do microfone.' : "We didn't hear anything. Hold the button while you speak, close to the mic.") };
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+      soundEngine.play('answer_wrong').catch(() => {});
+      setSessionErrors(prev => prev + 1);
+    }
+    if (feedback.state === 'correct') stepFailsRef.current = 0;
+    else { stepFailsRef.current += 1; if (stepFailsRef.current >= 2) feedback.listenAgain = true; }
+    feedback.missing = missing;
+    // v2: Novice binário (100/0), outros níveis score real. Map por stepIdx
+    // garante que retry sobrescreve a tentativa anterior do mesmo step.
+    if (isV2) {
+      pronScoresRef.current.set(stepIdx,
+        isNoviceLike ? (feedback.state === 'correct' ? 100 : 0) : pct
+      );
+    }
+    saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
+      exerciseData: { question: phraseText, score: pct, userAnswer: transcript } });
+    logAttempt(userId, { ...pronLogBase(), answer: transcript, alternatives: alts, score: pct,
+      passed: feedback.state === 'correct', source, errorCode: asrErrorRef.current });
+    showPronResult(feedback);
+  };
+
   // ── Pronunciation: record (repeat = on-device ASR, fallback = Whisper) ──
+  // Erros do reconhecimento que significam "serviço indisponível neste aparelho" (sem inglês
+  // instalado, sem serviço de voz, rede do serviço fora): daí em diante a conferência vai pelo
+  // servidor. "no-speech", "speech-timeout" e "aborted" são normais (o aluno não falou / soltou).
+  const ASR_BROKEN = new Set(['language-not-supported', 'service-not-allowed', 'network', 'client', 'busy', 'audio-capture', 'unknown']);
+
+  const blockMic = () => {
+    recordingRef.current = false;
+    setMicBlocked(true);
+    setPronStatus('listening');
+    logAttempt(userId, { ...pronLogBase(), event: 'mic_blocked' });
+  };
+
   const startRecording = async () => {
     if (recordingRef.current) return;
     if (!currentStep || currentStep.kind !== 'pronunciation') return;
@@ -769,25 +904,35 @@ export default function LearnSessionScreen() {
     recordingRef.current = true;
     recordingStartRef.current = Date.now();
     speechTranscriptRef.current = '';
+    speechAltsRef.current = [];
+    asrErrorRef.current = null;
     setPronStatus('recording');
 
     try {
-      if (currentStep.phrase.type === 'repeat' && ASR_AVAILABLE) {
+      let useAsr = currentStep.phrase.type === 'repeat' && ASR_AVAILABLE && !asrBrokenRef.current;
+      if (useAsr) {
+        try {
+          const available = await ExpoSpeechRecognitionModule.isRecognitionAvailable?.();
+          if (available === false) { asrBrokenRef.current = true; useAsr = false; logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: 'not-available' }); }
+        } catch { /* sem a checagem, tenta normalmente */ }
+      }
+      usedAsrRef.current = useAsr;
+      if (useAsr) {
         // On-device ASR — no audio file needed
         const perm = await ExpoSpeechRecognitionModule.requestPermissionsAsync();
-        if (!perm.granted) {
-          recordingRef.current = false;
-          setPronStatus('listening');
-          return;
-        }
+        if (!perm.granted) { blockMic(); return; }
+        setMicBlocked(false);
         // Registra a sessão no expo-audio antes do módulo nativo configurar a AVAudioSession.
         // Sem isso, o setAudioModeAsync do reset não consegue sobrescrever o estado que o
         // ExpoSpeechRecognitionModule deixa — causa earpiece persistente no iOS.
         await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
         await setIsAudioActiveAsync(true).catch(() => {});
-        ExpoSpeechRecognitionModule.start({ lang: 'en-US', interimResults: true, continuous: true });
+        ExpoSpeechRecognitionModule.start({ lang: 'en-US', interimResults: true, continuous: true, maxAlternatives: 3 });
       } else {
-        // Recorder — Whisper fallback (when on-device ASR unavailable)
+        // Gravação + transcrição pelo servidor (sem reconhecimento no aparelho ou com ele falhando)
+        const perm = await requestRecordingPermissionsAsync();
+        if (!perm.granted) { blockMic(); return; }
+        setMicBlocked(false);
         await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
         await setIsAudioActiveAsync(true).catch(() => {});
         await recorder.prepareToRecordAsync();
@@ -804,11 +949,12 @@ export default function LearnSessionScreen() {
     if (!recordingRef.current || !currentStep || currentStep.kind !== 'pronunciation') return;
 
     const elapsed = Date.now() - recordingStartRef.current;
+    const usedAsr = usedAsrRef.current;
 
     // Ignore accidental releases shorter than 300ms
     if (elapsed < 300) {
       recordingRef.current = false;
-      if (ASR_AVAILABLE) {
+      if (usedAsr) {
         ExpoSpeechRecognitionModule.abort();
       } else {
         try { await recorder.stop(); } catch {}
@@ -824,7 +970,7 @@ export default function LearnSessionScreen() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
     try {
-      if (ASR_AVAILABLE) {
+      if (usedAsr) {
         // ── REPEAT: on-device ASR + string similarity ────────────
         ExpoSpeechRecognitionModule.stop();
         // Give ~300ms for final result event to fire
@@ -833,48 +979,23 @@ export default function LearnSessionScreen() {
         await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
         await setIsAudioActiveAsync(true).catch(() => {});
 
-        const transcript = speechTranscriptRef.current;
-        const pct = transcript ? wordMatchPercent(transcript, currentStep.phrase.text ?? '') : 0;
-
-        let feedback: NonNullable<PronFeedback>;
-        // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
-        if (isNoviceLike) {
-          if (pct >= 70) {
-            feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage(hostName) : 'Nice! Pronunciation ok.' };
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-            soundEngine.play('answer_correct').catch(() => {});
-          } else {
-            feedback = { state: 'error', xp: 0, message: isPortuguese ? `Tente de novo. Entendemos: "${transcript}".` : `Try again. We heard: "${transcript}".` };
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-            soundEngine.play('answer_wrong').catch(() => {});
-            setSessionErrors(prev => prev + 1);
-          }
-        } else if (pct >= 85) {
-          feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Ótima pronúncia.' : 'Perfect! Great pronunciation.' };
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-          soundEngine.play('answer_correct').catch(() => {});
-        } else if (pct >= 50) {
-          feedback = { state: 'close', xp: 8, message: isPortuguese ? `Quase! Entendemos: "${transcript}". Tente de novo.` : `Close! We heard: "${transcript}". Try again.` };
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
-        } else {
-          feedback = { state: 'error', xp: 0, message: isPortuguese ? 'Não conseguimos entender. Fale mais perto do microfone.' : "We didn't catch that. Speak closer to the mic." };
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-          soundEngine.play('answer_wrong').catch(() => {});
-          setSessionErrors(prev => prev + 1);
+        const alts = speechAltsRef.current.length ? speechAltsRef.current : (speechTranscriptRef.current ? [speechTranscriptRef.current] : []);
+        const err = asrErrorRef.current;
+        if (!alts.length && err && (err === 'not-allowed' || ASR_BROKEN.has(err))) {
+          // Nada entendido por falha do serviço (não do aluno): não conta erro e passa a conferir
+          // pelo servidor na próxima gravação.
+          logAttempt(userId, { ...pronLogBase(), event: err === 'not-allowed' ? 'mic_blocked' : 'asr_error', errorCode: err });
+          if (err === 'not-allowed') { setMicBlocked(true); setPronStatus('listening'); return; }
+          asrBrokenRef.current = true;
+          showPronResult({ state: 'close', xp: 0, message: isPortuguese
+            ? 'O reconhecimento de voz do celular falhou. Fale de novo: agora a gente confere pela internet.'
+            : "Your phone's speech recognition failed. Try again: we'll check it online now." });
+          return;
         }
-        // v2: Novice binário (100/0), outros níveis score real. Map por stepIdx
-        // garante que retry sobrescreve a tentativa anterior do mesmo step.
-        if (isV2) {
-          pronScoresRef.current.set(stepIdx,
-            isNoviceLike ? (feedback.state === 'correct' ? 100 : 0) : pct
-          );
-        }
-        saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
-          exerciseData: { question: currentStep.phrase.text, score: pct, userAnswer: transcript } });
-        showPronResult(feedback);
+        finishPronAttempt(alts, 'device');
 
       } else {
-        // ── REPEAT fallback: Whisper transcription (no native ASR) ──
+        // ── REPEAT fallback: transcrição pelo servidor ──
         await recorder.stop();
         await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
         await setIsAudioActiveAsync(true).catch(() => {});
@@ -891,44 +1012,12 @@ export default function LearnSessionScreen() {
         const data = await res.json();
 
         const transcript = (data.transcription as string) ?? '';
-        const pct = transcript ? wordMatchPercent(transcript, currentStep.phrase.text ?? '') : 0;
-
-        let feedback: NonNullable<PronFeedback>;
-        // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
-        if (isNoviceLike) {
-          if (pct >= 70) {
-            feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage(hostName) : 'Nice! Pronunciation ok.' };
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-            soundEngine.play('answer_correct').catch(() => {});
-          } else {
-            feedback = { state: 'error', xp: 0, message: isPortuguese ? `Tente de novo. Entendemos: "${transcript}".` : `Try again. We heard: "${transcript}".` };
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-            soundEngine.play('answer_wrong').catch(() => {});
-            setSessionErrors(prev => prev + 1);
-          }
-        } else if (pct >= 85) {
-          feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Ótima pronúncia.' : 'Perfect! Great pronunciation.' };
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-          soundEngine.play('answer_correct').catch(() => {});
-        } else if (pct >= 50) {
-          feedback = { state: 'close', xp: 8, message: isPortuguese ? `Quase! Entendemos: "${transcript}". Tente de novo.` : `Close! We heard: "${transcript}". Try again.` };
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
-        } else {
-          feedback = { state: 'error', xp: 0, message: isPortuguese ? 'Não conseguimos entender. Fale mais perto do microfone.' : "We didn't catch that. Speak closer to the mic." };
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-          soundEngine.play('answer_wrong').catch(() => {});
-          setSessionErrors(prev => prev + 1);
-        }
-        if (isV2) {
-          pronScoresRef.current.set(stepIdx,
-            isNoviceLike ? (feedback.state === 'correct' ? 100 : 0) : pct
-          );
-        }
-        saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
-          exerciseData: { question: currentStep.phrase.text, score: pct, userAnswer: transcript } });
-        showPronResult(feedback);
+        finishPronAttempt(transcript ? [transcript] : [], 'server');
       }
-    } catch { setPronStatus('error'); }
+    } catch (e) {
+      logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: e instanceof Error ? e.message.slice(0, 60) : 'erro' });
+      setPronStatus('error');
+    }
   };
 
   // ── Pronunciation: listen_write check ─────────────────────
@@ -2051,7 +2140,7 @@ export default function LearnSessionScreen() {
               {/* Error fallback — shown when assessment failed */}
               {pronStatus === 'error' && (
                 <AppText style={{ color: C.red, fontSize: 13, textAlign: 'center', marginBottom: 12, marginTop: 8 }}>
-                  {isPortuguese ? 'Não foi possível avaliar. Toque em Próximo para continuar.' : 'Could not assess. Tap Next to continue.'}
+                  {isPortuguese ? 'Não foi possível conferir agora. Tente de novo ou pule esta frase.' : "Couldn't check it right now. Try again or skip this phrase."}
                 </AppText>
               )}
 
@@ -2156,11 +2245,34 @@ export default function LearnSessionScreen() {
                 Botao redondo de mic renderiza no main area acima (centralizado). */}
           {currentStep.kind === 'pronunciation' && currentStep.phrase.type === 'repeat' && (
             pronStatus === 'error' ? (
-              <TouchableOpacity onPress={handleNext}
-                style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Próximo' : 'Next')}</AppText>
-                {stepIdx + 1 < totalSteps && <ArrowRight size={18} color="#FFF" weight="bold" />}
-              </TouchableOpacity>
+              <View>
+                <TouchableOpacity onPress={handleRetryPron}
+                  style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                  <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{isPortuguese ? 'Tentar de novo' : 'Try again'}</AppText>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={handleSkipPron} style={{ alignItems: 'center', marginTop: 12 }}>
+                  <AppText style={{ fontSize: 13, color: C.navyLight, fontWeight: '600' }}>
+                    {stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir mesmo assim' : 'Finish anyway') : (isPortuguese ? 'Pular' : 'Skip')}
+                  </AppText>
+                </TouchableOpacity>
+              </View>
+            ) : micBlocked && pronStatus === 'listening' ? (
+              <View style={{ backgroundColor: 'rgba(255,79,139,0.08)', borderRadius: 16, padding: 14, gap: 10 }}>
+                <AppText style={{ fontSize: 13.5, color: C.navy, lineHeight: 19, textAlign: 'center' }}>
+                  {isPortuguese
+                    ? 'O Queizy está sem acesso ao microfone. Libere nos Ajustes do celular para fazer este exercício.'
+                    : "Queizy can't access your microphone. Allow it in your phone's Settings to do this exercise."}
+                </AppText>
+                <TouchableOpacity onPress={() => { Linking.openSettings().catch(() => {}); }}
+                  style={{ backgroundColor: C.navy, borderRadius: 14, paddingVertical: 13, alignItems: 'center' }}>
+                  <AppText style={{ fontSize: 14.5, fontWeight: '800', color: '#FFF' }}>{isPortuguese ? 'Abrir Ajustes' : 'Open Settings'}</AppText>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={handleSkipPron} style={{ alignItems: 'center' }}>
+                  <AppText style={{ fontSize: 13, color: C.navyLight, fontWeight: '600' }}>
+                    {stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir mesmo assim' : 'Finish anyway') : (isPortuguese ? 'Pular' : 'Skip')}
+                  </AppText>
+                </TouchableOpacity>
+              </View>
             ) : pronStatus === 'loading_audio' ? (
               <View style={{ alignItems: 'center', paddingVertical: 12 }}>
                 <ActivityIndicator color={accent} />
@@ -2344,6 +2456,15 @@ export default function LearnSessionScreen() {
               </View>
             )}
 
+            {/* Segunda falha seguida na frase: ouvir de novo antes de tentar */}
+            {canRetry && fb.listenAgain && !!charlotteAudioUri && (
+              <TouchableOpacity onPress={handleListenAgain} activeOpacity={0.85}
+                style={{ borderRadius: 16, paddingVertical: 13, marginBottom: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, borderWidth: 1.5, borderColor: btnColor }}>
+                <SpeakerHigh size={18} color={btnColor} weight="fill" />
+                <AppText style={{ fontSize: 14.5, fontWeight: '800', color: btnColor }}>{isPortuguese ? 'Ouvir a frase de novo' : 'Hear the phrase again'}</AppText>
+              </TouchableOpacity>
+            )}
+
             {/* Primary button */}
             <TouchableOpacity
               onPress={canRetry && !isCorrectState ? handleRetryPron : handleNext}
@@ -2360,7 +2481,7 @@ export default function LearnSessionScreen() {
 
             {/* Skip link for close/error on audio types */}
             {canRetry && (
-              <TouchableOpacity onPress={handleNext} style={{ alignItems: 'center', marginTop: 12 }}>
+              <TouchableOpacity onPress={handleSkipPron} style={{ alignItems: 'center', marginTop: 12 }}>
                 <AppText style={{ fontSize: 13, color: textColor, fontWeight: '600', opacity: 0.7 }}>
                   {stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir mesmo assim' : 'Finish anyway') : (isPortuguese ? 'Pular' : 'Skip')}
                 </AppText>
