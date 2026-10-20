@@ -25,6 +25,7 @@ import { getModule } from '@/lib/curriculum-v2/loader';
 import { characterInfo } from '@/lib/characters';
 import { TrackHostReaction } from '@/components/trail/TrackHostReaction';
 import { systemIsPt } from '@/lib/systemLang';
+import { wordMatchPercent } from '@/lib/speechMatch';
 import { checkGrammarAnswer } from '@/lib/grammarAnswer';
 import { scheduleReviews, markReviewDone, rescheduleReview } from '@/lib/spacedRepetition';
 import { track } from '@/lib/analytics';
@@ -134,13 +135,7 @@ function pickNoviceCorrectMessage(host = 'Charlotte'): string {
   return NOVICE_CORRECT_MESSAGES_PT[Math.floor(Math.random() * NOVICE_CORRECT_MESSAGES_PT.length)].replace('{host}', host);
 }
 
-function wordMatchPercent(spoken: string, reference: string): number {
-  const ref = reference.trim().toLowerCase().replace(/[.,!?;:]/g, '').split(' ').filter(w => w.length > 0);
-  const sp  = spoken.trim().toLowerCase().replace(/[.,!?;:]/g, '');
-  if (ref.length === 0) return 0;
-  const matched = ref.filter(w => sp.includes(w)).length;
-  return (matched / ref.length) * 100;
-}
+// Comparação da fala com a frase: lib/speechMatch (números por extenso = algarismos, contrações).
 
 // ── Main screen ────────────────────────────────────────────────
 export default function LearnSessionScreen() {
