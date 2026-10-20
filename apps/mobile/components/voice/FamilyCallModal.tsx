@@ -15,7 +15,7 @@
 // alto-falante virava uma "resposta" falsa do aluno).
 // Aberta pela aba de ligação quando o membro escolhido na Família não é a Charlotte.
 import React from 'react';
-import { View, Modal, TouchableOpacity, Image, Animated, ActivityIndicator, useWindowDimensions, Platform } from 'react-native';
+import { View, Modal, TouchableOpacity, Image, Animated, ActivityIndicator, useWindowDimensions, Platform, StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as SecureStore from 'expo-secure-store';
 import { requestRecordingPermissionsAsync, setAudioModeAsync } from 'expo-audio';
@@ -48,6 +48,9 @@ const INACTIVITY_WARN_SEC = 45;
 const INACTIVITY_PAUSE_SEC = 75;
 // Minutos acabando: o personagem é avisado para se despedir com esta folga.
 const FAREWELL_LEAD_SEC = 20;
+// Toque de chamada: soa no mínimo isto antes de conectar (no Android o microfone que a conversa
+// abre ao conectar corta o toque; sem o mínimo, a ligação "atendia" sem tocar).
+const MIN_RING_MS = 2500;
 
 // Cores da ligação por personagem (a estrutura e as funções são as mesmas para todos).
 // bg = fundo; ink = texto e ícones; sub = texto secundário; you = vez do aluno / linha da voz dele;
@@ -230,6 +233,7 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
         await CharlotteAudioSession.setSpeakerOn(true).catch(() => {});
         syncRoute();
         CharlotteAudioSession.playRingback().catch(() => {});
+        const ringStartedAt = Date.now();
         // Contexto opcional: tópico atual da trilha do nível e da trilha do personagem (se o aluno estiver nela).
         const uid = profile?.id ?? '';
         const charTrack = visibleTracks(profile?.beta_features).find(t => t.character === character);
@@ -238,6 +242,8 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
           uid && charTrack ? currentTopicTitle(uid, charTrack.id) : Promise.resolve(null),
         ]);
         const s = await requestFamilyCall(character, topic, trackTopic, resuming ? transcriptRef.current.slice(-8) : null);
+        const ringLeft = MIN_RING_MS - (Date.now() - ringStartedAt);
+        if (ringLeft > 0) await new Promise(r => setTimeout(r, ringLeft));
         if (!alive) return;
         limitRef.current = s.remainingSeconds;
         convRef.current = await startFamilyConversation(s, {
@@ -264,7 +270,8 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
             const text = m.message.replace(/<\/?[A-Za-z]+>/g, '').trim();
             // "..." = transcrição provisória do aluno (ainda sem palavras): não vira legenda.
             if (!text || /^[.\s…]+$/.test(text)) return;
-            lastActivityRef.current = Date.now();
+            // Atividade = fala do aluno (como na Charlotte). A fala do personagem não conta.
+            if (m.source === 'user') lastActivityRef.current = Date.now();
             transcriptRef.current.push({ who: m.source, text });
             if (m.source === 'user') lastUserTextRef.current = text;
             if (m.source === 'ai') {
@@ -288,8 +295,7 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
           onModeChange: md => {
             // Sem vibração na troca de vez (atrapalha com o celular na mão/ouvido), como na ligação da Charlotte.
             if (md === 'speaking') CharlotteAudioSession.stopRingback().catch(() => {});
-            if (md === 'listening' && firstTurnRef.current) { firstTurnRef.current = false; setMic(mutedRef.current); }
-            lastActivityRef.current = Date.now();
+            if (md === 'listening' && firstTurnRef.current) { firstTurnRef.current = false; setMic(mutedRef.current); lastActivityRef.current = Date.now(); }
             modeRef.current = md;
             setMode(md);
           },
@@ -331,9 +337,9 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
         } catch { /* sem aviso, cai no limite */ }
       }
       if (limitRef.current && left <= 0 && (modeRef.current !== 'speaking' || left <= -12)) { setPoolOut(true); finish('limit'); return; }
-      // Inatividade: conta só fala de verdade (o personagem falando, ou uma fala do aluno transcrita),
-      // como na Charlotte; ruído do ambiente no microfone não segura a ligação aberta.
-      if (modeRef.current === 'speaking') lastActivityRef.current = Date.now();
+      // Inatividade: só a fala do aluno (transcrita) conta, como na Charlotte; ruído do ambiente e a
+      // fala do personagem não seguram a ligação aberta. Enquanto ele fala, não avisa nem pausa.
+      if (modeRef.current === 'speaking') { setWarning(null); return; }
       const idle = Math.floor((Date.now() - lastActivityRef.current) / 1000);
       if (idle >= INACTIVITY_PAUSE_SEC) { pause(); return; }
       setWarning(idle >= INACTIVITY_WARN_SEC ? INACTIVITY_PAUSE_SEC - idle : null);
@@ -378,14 +384,17 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
   const ringScale = ring.interpolate({ inputRange: [0, 1], outputRange: [1, 1.3] });
   const ringOpacity = ring.interpolate({ inputRange: [0, 1], outputRange: [0.15, 0.55] });
 
+  // Dentro do Modal o Android às vezes devolve 0 de margem do topo: garante a altura da barra de status.
+  const topInset = Math.max(insets.top, Platform.OS === 'android' ? (StatusBar.currentHeight ?? 24) : 0);
+
   const roundBtn = (on: boolean) => ({
     width: 62, height: 62, borderRadius: 31, alignItems: 'center' as const, justifyContent: 'center' as const,
     backgroundColor: on ? th.ink : th.chip,
   });
 
   return (
-    <Modal visible animationType="slide" onRequestClose={() => { finish('back'); onClose(); }}>
-      <View style={{ flex: 1, backgroundColor: th.bg, paddingTop: insets.top, paddingBottom: insets.bottom }}>
+    <Modal visible animationType="slide" statusBarTranslucent onRequestClose={() => { finish('back'); onClose(); }}>
+      <View style={{ flex: 1, backgroundColor: th.bg, paddingTop: topInset, paddingBottom: insets.bottom }}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 24, paddingVertical: compact ? 14 : 24 }}>
 
           {/* Legenda liga/desliga (canto de cima, à direita) */}
