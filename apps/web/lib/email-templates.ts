@@ -248,3 +248,86 @@ export function webSubscriptionWelcomeTemplate(opts: {
   `);
   return { subject, html };
 }
+
+// ── Avisos da assinatura pelo site (tudo com a marca Queizy; o processador não manda nada ao aluno) ──
+
+const PLAN_NAME = (plan: 'monthly' | 'annual') => (plan === 'monthly' ? 'Plano Mensal' : 'Plano Anual');
+const firstName = (name?: string | null) => (name ?? '').trim().split(/\s+/)[0];
+const MANAGE_PATH = 'Perfil &gt; Assinatura &gt; Gerenciar assinatura';
+
+/** 2 dias antes da 1ª cobrança do teste grátis. */
+export function webTrialEndingTemplate(opts: { name?: string | null; plan: 'monthly' | 'annual'; chargeDate: string; trialEnd: string; value: string }) {
+  const first = firstName(opts.name);
+  const planName = PLAN_NAME(opts.plan);
+  const subject = `Seu teste grátis do Queizy termina em ${opts.trialEnd}`;
+  const html = base(`
+    ${h1(first ? `${first}, seu teste grátis está acabando` : 'Seu teste grátis está acabando')}
+    ${p(`Seus dias grátis do ${planName} vão até <strong style="color:#16131F;">${opts.trialEnd}</strong>. Em ${opts.chargeDate}, a assinatura começa e fazemos a primeira cobrança no cartão.`)}
+    ${meta([
+      { label: 'Plano', value: planName },
+      { label: 'Primeira cobrança', value: opts.chargeDate },
+      { label: 'Valor', value: `${opts.value}${opts.plan === 'monthly' ? ' por mês' : ' por ano'}` },
+    ])}
+    ${p('Quer continuar estudando? Não precisa fazer nada.')}
+    ${p(`Prefere não continuar? Cancele até ${opts.trialEnd} no app, em ${MANAGE_PATH} &gt; Cancelar assinatura, e nada será cobrado.`)}
+    ${btn('Abrir o Queizy', SMART_LINK)}
+    ${note('Dúvidas? É só responder este e-mail.')}
+  `);
+  return { subject, html };
+}
+
+/** Cobrança aprovada (1ª depois do teste grátis e renovações). */
+export function webPaymentReceiptTemplate(opts: { name?: string | null; plan: 'monthly' | 'annual'; method: string | null; value: string; paidAt: string; nextCharge: string | null; accessUntil: string | null; refundUntil: string | null }) {
+  const first = firstName(opts.name);
+  const planName = PLAN_NAME(opts.plan);
+  const pay = opts.method === 'annual_pix' ? 'Pix' : 'Cartão de crédito';
+  const subject = `Recebemos o pagamento do seu ${planName}`;
+  const rows = [
+    { label: 'Plano', value: planName },
+    { label: 'Valor', value: opts.value },
+    { label: 'Pagamento', value: `${pay}, em ${opts.paidAt}` },
+  ];
+  if (opts.nextCharge) rows.push({ label: 'Próxima cobrança', value: opts.nextCharge });
+  else if (opts.accessUntil) rows.push({ label: 'Acesso até', value: opts.accessUntil });
+  const html = base(`
+    ${h1(first ? `Tudo certo, ${first}!` : 'Pagamento confirmado')}
+    ${p(`Recebemos o pagamento do seu ${planName}. Seu acesso ao Queizy continua liberado.`)}
+    ${meta(rows)}
+    ${opts.refundUntil ? note(`Mudou de ideia? Você pode pedir o reembolso até ${opts.refundUntil} no app, em ${MANAGE_PATH} &gt; Pedir reembolso.`) : ''}
+    ${note('Dúvidas? É só responder este e-mail.')}
+  `);
+  return { subject, html };
+}
+
+/** Cobrança do cartão recusada (renovação ou 1ª depois do teste). */
+export function webPaymentFailedTemplate(opts: { name?: string | null; plan: 'monthly' | 'annual'; value: string; accessUntil: string | null }) {
+  const first = firstName(opts.name);
+  const planName = PLAN_NAME(opts.plan);
+  const subject = 'Não conseguimos cobrar a sua assinatura do Queizy';
+  const html = base(`
+    ${h1(first ? `${first}, a cobrança não passou` : 'A cobrança não passou')}
+    ${p(`Tentamos cobrar ${opts.value} do seu ${planName}, mas o cartão recusou. Isso costuma acontecer por falta de limite, cartão vencido ou bloqueio do banco.`)}
+    ${p(`Confira o cartão com o seu banco e responda este e-mail: a gente te ajuda a regularizar ou trocar o cartão.${opts.accessUntil ? ` Seu acesso continua até ${opts.accessUntil}.` : ''}`)}
+    ${btn('Falar com o suporte', 'mailto:suporte@queizy.com?subject=Cobran%C3%A7a%20da%20assinatura')}
+    ${note('Se preferir, assine de novo em queizy.com/assinar com o mesmo e-mail: o acesso continua na mesma conta.')}
+  `);
+  return { subject, html };
+}
+
+/** Assinatura cancelada (pelo app ou pelo suporte). */
+export function webCancelledTemplate(opts: { name?: string | null; plan: 'monthly' | 'annual'; inTrial: boolean; accessUntil: string | null }) {
+  const first = firstName(opts.name);
+  const planName = PLAN_NAME(opts.plan);
+  const subject = 'Sua assinatura do Queizy foi cancelada';
+  const status = opts.inTrial
+    ? `Você estava no teste grátis e nada foi cobrado. Nada será cobrado daqui para a frente.${opts.accessUntil ? ` Você continua usando o Queizy até ${opts.accessUntil}.` : ''}`
+    : `Não haverá novas cobranças.${opts.accessUntil ? ` Seu acesso continua até ${opts.accessUntil}.` : ''}`;
+  const html = base(`
+    ${h1(first ? `${first}, sua assinatura foi cancelada` : 'Sua assinatura foi cancelada')}
+    ${p(`Confirmamos o cancelamento do seu ${planName}. ${status}`)}
+    ${p('Sentiremos sua falta. Se quiser voltar, é só assinar de novo com o mesmo e-mail: seu progresso continua salvo.')}
+    ${btn('Assinar de novo', 'https://queizy.com/assinar')}
+    ${note('Não foi você que cancelou? Responda este e-mail.')}
+  `);
+  return { subject, html };
+}

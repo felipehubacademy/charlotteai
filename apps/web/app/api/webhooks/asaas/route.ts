@@ -11,6 +11,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { getCustomer, disableCustomerNotifications, WEB_PRODUCT, type AsaasPayment } from '@/lib/asaas';
 import { activateTrial, handlePaymentPaid, recordAsaasRevenue, type CheckoutRow } from '@/lib/asaas-activation';
+import { sendPaymentFailed, sendCancelledNotice } from '@/lib/subscription-notices';
 
 export const dynamic = 'force-dynamic';
 export const preferredRegion = 'gru1'; // perto do banco (São Paulo): várias consultas por evento
@@ -91,6 +92,10 @@ export async function POST(req: NextRequest) {
       if (event === 'PAYMENT_REFUNDED') patch.refunded_at = new Date().toISOString();
       await supabase.from('asaas_checkouts').update(patch as never).eq('id', row.id);
 
+      // Cartão recusado (renovação ou 1ª cobrança depois do teste): aviso com a nossa marca.
+      if (event === 'PAYMENT_CREDIT_CARD_CAPTURE_REFUSED' || event === 'PAYMENT_OVERDUE') {
+        await sendPaymentFailed(row.id, p).catch(e => console.warn('[webhooks/asaas] aviso de cobrança recusada:', e instanceof Error ? e.message : e));
+      }
       if (event === 'PAYMENT_REFUNDED' || event === 'PAYMENT_CHARGEBACK_REQUESTED' || event === 'PAYMENT_CHARGEBACK_DISPUTE') {
         if (!row.sandbox) await recordAsaasRevenue('REFUND', row, p);
         await supabase.from('charlotte_users').update({
@@ -107,6 +112,7 @@ export async function POST(req: NextRequest) {
       if (row) {
         await supabase.from('charlotte_users').update({ subscription_status: 'cancelled', updated_at: new Date().toISOString() } as never)
           .eq('id', row.user_id).in('subscription_product', [WEB_PRODUCT.monthly, WEB_PRODUCT.annual]);
+        await sendCancelledNotice(row.id, s.id).catch(e => console.warn('[webhooks/asaas] aviso de cancelamento:', e instanceof Error ? e.message : e));
       }
       return NextResponse.json({ ok: true });
     }

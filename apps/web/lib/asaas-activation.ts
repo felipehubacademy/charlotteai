@@ -12,6 +12,7 @@ import { recordRevenueEvent } from '@/lib/revenue';
 import { paidPaymentsOf, updateSubscriptionValue, WEB_PRODUCT, WEB_ANNUAL_PIX, type WebPlan, type AsaasPayment } from '@/lib/asaas';
 import { sendWebWelcome } from '@/lib/web-welcome';
 import { sendCapiEvent, type MetaTracking } from '@/lib/meta-capi';
+import { sendPaymentReceipt } from '@/lib/subscription-notices';
 
 const DAY = 86400000;
 const GRACE_DAYS = 3; // tolerância para a cobrança do cartão ser aprovada no dia
@@ -132,6 +133,8 @@ export async function handlePaymentPaid(row: CheckoutRow, p: AsaasPayment): Prom
     if (!count && !same && !(row.trial_days > 0)) await sendWebWelcome(row.user_id, row.plan, 0);
     // Cupom com duração: depois da última cobrança com desconto, as próximas voltam ao preço cheio.
     if (p.subscription && !row.sandbox) await restorePriceIfCouponEnded(row.id, p.subscription);
+    // Recibo com a nossa marca (1ª cobrança depois do teste e renovações). Falha aqui não desfaz o pagamento.
+    await sendPaymentReceipt(row.id, p, !count).catch(e => console.warn('[asaas] recibo:', e instanceof Error ? e.message : e));
   } catch (e) {
     await supabase.from('asaas_events').delete().eq('id', lockId); // libera para tentar de novo
     throw e;

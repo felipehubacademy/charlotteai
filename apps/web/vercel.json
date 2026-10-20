@@ -53,6 +53,12 @@
       "regions": [
         "gru1"
       ]
+    },
+    "app/api/cron/subscription-notices/route.ts": {
+      "regions": [
+        "gru1"
+      ],
+      "maxDuration": 120
     }
   },
   "crons": [
@@ -63,6 +69,10 @@
     {
       "path": "/api/cron/support-email",
       "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/subscription-notices",
+      "schedule": "0 13 * * *"
     }
   ]
 }

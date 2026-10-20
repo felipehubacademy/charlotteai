@@ -325,6 +325,8 @@ interface NotificationType {
     | 'micro_checkin' | 'cadence_drop' | 'weekly_recap' | 'charlotte_checkin'
     // Revenue
     | 'trial_ending_72h' | 'trial_ending_24h' | 'sub_expired_1d'
+    // Assinatura pelo site (avisos transacionais: fim do teste, cobrança recusada)
+    | 'web_sub_notice'
     // Winback
     | 'streak_broken'
     | 'reengagement_3d' | 'reengagement_7d' | 'reengagement_14d' | 'reengagement_30d'
@@ -353,6 +355,7 @@ const FREQUENCY_CAP: Record<NotificationType['id'], number> = {
   trial_ending_72h:       1,
   trial_ending_24h:       1,
   sub_expired_1d:         1,
+  web_sub_notice:         5,
   streak_broken:          1,
   reengagement_3d:        1,
   reengagement_7d:        1,
@@ -923,6 +926,29 @@ export async function sendXPMilestoneNotification(
     }]);
   } catch (e) {
     console.error('❌ [Expo] XP milestone error:', e);
+  }
+}
+
+// ── Avisos da assinatura do site (transacional: sem limite diário de push) ────
+// Fim do teste grátis, cobrança recusada etc. Abre o Perfil, onde fica "Gerenciar assinatura".
+export async function sendSubscriptionPush(
+  supabase: any, userId: string, msg: { pt: { title: string; body: string }; en: { title: string; body: string } }, kind: string,
+): Promise<boolean> {
+  const type = 'web_sub_notice' as const;
+  try {
+    const { data: user } = await supabase.from('charlotte_users')
+      .select('expo_push_token, charlotte_level, app_language').eq('id', userId).single();
+    if (!user?.expo_push_token?.startsWith('ExponentPushToken[')) return false;
+    const m = pushIsPt(user as any) ? msg.pt : msg.en;
+    const { sent } = await sendExpoPush([{
+      to: user.expo_push_token, title: m.title, body: m.body,
+      data: { screen: 'profile', type, kind }, sound: 'default', priority: 'high',
+    }], supabase);
+    await logRnPushes(supabase, [{ userId, type, variantHash: type, title: m.title, body: m.body }]);
+    return sent > 0;
+  } catch (e) {
+    console.error('[Expo] subscription push error:', e);
+    return false;
   }
 }
 

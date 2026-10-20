@@ -108,7 +108,11 @@ export async function POST(req: NextRequest) {
     try {
       if (r.asaas_installment_id) await refundInstallment(r.asaas_installment_id);
       else await refundPayment(r.asaas_payment_id);
-      if (r.asaas_subscription_id) await cancelSubscription(r.asaas_subscription_id).catch(() => {});
+      if (r.asaas_subscription_id) {
+        // No reembolso o acesso termina na hora: sem o e-mail de "assinatura cancelada" (trava antes do webhook).
+        await supabase.from('asaas_events').insert({ id: `notice_cancel_${r.asaas_subscription_id}`, event: 'NOTICE', payload: { key: 'refund' } } as never);
+        await cancelSubscription(r.asaas_subscription_id).catch(() => {});
+      }
     } catch (e) {
       // O Asaas recusou (ex.: saldo insuficiente, porque a taxa já saiu do valor recebido).
       // O pedido fica registrado e o suporte faz o reembolso; o acesso termina quando ele sair

@@ -119,6 +119,9 @@ export function usePushNotifications(userId?: string) {
           case 'buddy_joined':
             router.push('/(app)/study-together' as any);
             break;
+          case 'web_sub_notice': // assinatura do site: fim do teste, cobrança recusada → Perfil (Gerenciar assinatura)
+            router.push('/(app)/(tabs)/profile' as any);
+            break;
           case 'support_reply': // equipe respondeu no chat de suporte
             router.push('/(app)/support-chat' as any);
             break;
