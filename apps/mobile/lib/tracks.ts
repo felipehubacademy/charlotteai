@@ -32,7 +32,7 @@ export const EXTRA_TRACKS: ExtraTrack[] = [
     id: 'Igorfina',
     character: 'igorfina',
     titlePt: 'Manual do F#did@',
-    titleEn: 'Survival Manual',
+    titleEn: 'Manual do F#did@', // nome da trilha é marca do Igorfina: igual em qualquer idioma
     hostPt: 'com o Igorfina',
     hostEn: 'with Igorfina',
     // O "uau": o presidente exagerado ("the best, tremendous") ensinando the best / the worst.
