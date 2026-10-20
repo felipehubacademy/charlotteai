@@ -246,6 +246,10 @@ export async function getPaymentCard(paymentId: string): Promise<{ last4: string
   return { last4: n ? n.slice(-4) : null, billingType: p.billingType };
 }
 /** Troca o e-mail do cliente no Asaas (recibos e avisos de cobrança vão para o e-mail certo). */
+/** Desliga os e-mails/SMS do Asaas para o aluno (cobrança criada, vencendo, removida...): o aluno
+ *  recebe só os avisos do app e os nossos e-mails. */
+export const disableCustomerNotifications = (customerId: string, sandbox = false) =>
+  asaas<AsaasCustomer>(`/customers/${encodeURIComponent(customerId)}`, { method: 'PUT', body: { notificationDisabled: true }, sandbox });
 export const updateCustomerEmail = (customerId: string, email: string) =>
   asaas<AsaasCustomer>(`/customers/${encodeURIComponent(customerId)}`, { method: 'PUT', body: { email } });
 /** Quantas cobranças da assinatura já foram pagas (confirmadas ou recebidas). */

@@ -12,7 +12,7 @@ import { affiliateByCode, cleanAffiliateCode } from '@/lib/affiliates';
 import {
   asaasConfigured, AsaasError, cancelSubscription, createCheckout, priceFor,
   WEB_TRIAL_DAYS, resolveCoupon, COUPON_ERROR_PT, type WebPlan,
-  refundPayment, refundInstallment, REFUND_WINDOW_DAYS,
+  refundPayment, refundInstallment, REFUND_WINDOW_DAYS, disableCustomerNotifications,
 } from '@/lib/asaas';
 import { prepareWebCheckout, checkoutRowFields } from '@/lib/web-checkout';
 
@@ -76,6 +76,18 @@ async function mine(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
   const supabase = getSupabaseAdmin();
+
+  // Uma vez (admin): desliga os avisos do Asaas para os alunos que já assinaram pelo site.
+  if (body.action === 'mute-customers') {
+    if (!process.env.ADMIN_SECRET || req.headers.get('x-admin-secret') !== process.env.ADMIN_SECRET) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    const { data } = await supabase.from('asaas_checkouts').select('asaas_customer_id').eq('sandbox', false).not('asaas_customer_id', 'is', null);
+    const ids = [...new Set(((data ?? []) as { asaas_customer_id: string }[]).map(r => r.asaas_customer_id))];
+    let ok = 0; const failed: string[] = [];
+    for (const id of ids) { try { await disableCustomerNotifications(id); ok++; } catch { failed.push(id); } }
+    return NextResponse.json({ total: ids.length, ok, failed });
+  }
 
   if (body.action === 'refund') {
     const h = req.headers.get('authorization') ?? '';

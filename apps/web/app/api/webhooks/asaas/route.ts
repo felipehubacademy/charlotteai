@@ -9,7 +9,7 @@
 //   CHECKOUT_EXPIRED/CANCELED  só marca o checkout
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { getCustomer, WEB_PRODUCT, type AsaasPayment } from '@/lib/asaas';
+import { getCustomer, disableCustomerNotifications, WEB_PRODUCT, type AsaasPayment } from '@/lib/asaas';
 import { activateTrial, handlePaymentPaid, recordAsaasRevenue, type CheckoutRow } from '@/lib/asaas-activation';
 
 export const dynamic = 'force-dynamic';
@@ -61,6 +61,10 @@ export async function POST(req: NextRequest) {
       if (!row) return NextResponse.json({ ok: true, unmatched: true });
       const status = event === 'CHECKOUT_PAID' ? 'paid' : event === 'CHECKOUT_EXPIRED' ? 'expired' : event === 'CHECKOUT_CANCELED' ? 'canceled' : row.status;
       await supabase.from('asaas_checkouts').update({ status, asaas_customer_id: c.customer ?? row.asaas_customer_id, updated_at: new Date().toISOString() } as never).eq('id', row.id);
+      // Cliente criado pela página do Asaas nasce com os avisos dele ligados: desliga (o aluno fica só com os nossos).
+      if (event === 'CHECKOUT_PAID' && c.customer) {
+        await disableCustomerNotifications(c.customer).catch(e => console.warn('[webhooks/asaas] avisos do cliente:', e instanceof Error ? e.message : e));
+      }
       if (event === 'CHECKOUT_PAID' && row.trial_days > 0) {
         await activateTrial(row);
       }
