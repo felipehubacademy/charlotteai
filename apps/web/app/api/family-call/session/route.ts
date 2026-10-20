@@ -1,5 +1,6 @@
 // /api/family-call/session — libera uma ligação ao vivo com um membro da Família Queizy (ElevenLabs).
-//   POST { character: 'igorfina', topic?: string, trackTopic?: string }  (Bearer do aluno)
+//   POST { character: 'igorfina', topic?: string, trackTopic?: string, resume?: [{who, text}] }  (Bearer do aluno)
+//   resume = retomada depois da pausa por inatividade: segue a conversa, sem cumprimentar de novo.
 //   → { token, agentId, prompt, firstMessage, remainingSeconds }
 // Confere os minutos do mês (mesma cota do Live Voice). A chave do ElevenLabs nunca sai do servidor: o app recebe só um
 // token de conversa de curta duração.
@@ -43,6 +44,11 @@ export async function POST(req: NextRequest) {
   const characterId = String(body.character ?? 'igorfina');
   const topic = typeof body.topic === 'string' ? body.topic.slice(0, 120) : null;
   const trackTopic = typeof body.trackTopic === 'string' ? body.trackTopic.slice(0, 120) : null;
+  const resume = Array.isArray(body.resume)
+    ? (body.resume as unknown[]).slice(-8).map(l => l as { who?: unknown; text?: unknown })
+      .filter(l => (l.who === 'ai' || l.who === 'user') && typeof l.text === 'string')
+      .map(l => ({ who: l.who as 'ai' | 'user', text: String(l.text).slice(0, 300) }))
+    : null;
 
   // Memória: anotações das 3 últimas ligações com este personagem; sequência para a abertura.
   const [{ data: calls }, { data: prog }] = await Promise.all([
@@ -51,14 +57,15 @@ export async function POST(req: NextRequest) {
     supabase.from('charlotte_progress').select('streak_days').eq('user_id', auth.user.id).maybeSingle(),
   ]);
   const memories = ((calls ?? []) as { memory: string | null; summary: string | null }[]).map(c => c.memory || c.summary || '').filter(Boolean);
-  const session = buildCallSession({ characterId, level, name: user.name ?? '', topic, trackTopic, memories });
+  const session = buildCallSession({ characterId, level, name: user.name ?? '', topic, trackTopic, memories, resume });
   if (!session) return NextResponse.json({ error: 'unknown_character' }, { status: 400 });
 
   const tz = user.timezone || 'America/Sao_Paulo';
   const now = new Date();
   const localHour = Number(new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: 'numeric', hourCycle: 'h23' }).format(now));
   const weekday = new Intl.DateTimeFormat('en-US', { timeZone: tz, weekday: 'long' }).format(now);
-  const openerP = generateOpener({
+  // Retomada: usa a frase fixa de volta (sem gerar cumprimento novo).
+  const openerP = resume?.length ? Promise.resolve(session.firstMessage) : generateOpener({
     characterId, level, name: user.name ?? '', fallback: session.firstMessage, localHour, weekday,
     streak: Number((prog as { streak_days?: number } | null)?.streak_days ?? 0), topic, trackTopic, memories,
   });

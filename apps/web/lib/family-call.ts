@@ -65,7 +65,16 @@ export interface CallContext {
   trackTopic?: string | null;
   /** Memória das últimas ligações com este personagem (mais recente primeiro). */
   memories?: string[];
+  /** Retomada depois da pausa por inatividade: as últimas falas da mesma ligação. */
+  resume?: { who: 'ai' | 'user'; text: string }[] | null;
 }
+
+// Retomada depois da pausa por inatividade: volta ao assunto em vez de cumprimentar de novo.
+const RESUME_LINES: Record<CallLevel, string[]> = {
+  Novice: ["{name}, voltou! Good! Where were we?", "Oi de novo, {name}! Ready? Let's continue!"],
+  Inter: ["Hey {name}, you're back! So, where were we?", "There you are, {name}! Let's pick up where we left off."],
+  Advanced: ["Welcome back, {name}! Shall we pick up where we left off?", "{name}! Right, where were we?"],
+};
 
 export function buildCallSession(opts: { characterId: string; level: CallLevel; name: string } & CallContext) {
   const c = CHARACTERS[opts.characterId as keyof typeof CHARACTERS] as Character | undefined;
@@ -80,11 +89,15 @@ export function buildCallSession(opts: { characterId: string; level: CallLevel; 
   const memory = mem.length
     ? `\nWHAT YOU REMEMBER FROM YOUR LAST CALLS WITH ${name.toUpperCase()} (most recent first):\n${mem.map(m => `- ${m}`).join('\n')}\nUse it like a friend would: a callback joke or a follow-up question when it fits. Never list what you remember.`
     : '';
+  const resumeLines = (opts.resume ?? []).filter(l => l && l.text).slice(-8);
+  const resume = resumeLines.length
+    ? `\nTHIS CALL WAS PAUSED because ${name} went quiet, and now it is back on. The conversation so far ended like this:\n${resumeLines.map(l => `${l.who === 'ai' ? 'You' : name}: ${l.text.replace(/\s+/g, ' ').slice(0, 200)}`).join('\n')}\nContinue from there naturally. Do not greet again or restart the conversation.`
+    : '';
   const prompt = `You are on a live voice call in Queizy, an app for Brazilians learning English. Your job: get ${name} talking in English, having fun and gently improving, like a funny friend, not a formal teacher.
 
 ${LEVEL_RULES[opts.level]}
 
-${VOICE_RULES}${topic}${memory}
+${VOICE_RULES}${topic}${memory}${resume}
 
 ${c.persona
   .replace(/ignore her name, age and personality above, but keep EVERY teaching, level, language, length and format rule above\./, 'keep EVERY teaching, level, language and length rule above.')
@@ -93,7 +106,7 @@ ${c.persona
 ${impressionsBlock(c)}
 
 The student's name is ${name}.`;
-  const pool = (opts.level === 'Novice' ? FIRST_MESSAGES_NOVICE : FIRST_MESSAGES)[c.id] ?? [];
+  const pool = resumeLines.length ? RESUME_LINES[opts.level] : (opts.level === 'Novice' ? FIRST_MESSAGES_NOVICE : FIRST_MESSAGES)[c.id] ?? [];
   const firstMessage = (pool[Math.floor(Math.random() * pool.length)] ?? 'Hey {name}!').replace(/\{name\}/g, name);
   return { agentId: FAMILY_AGENTS[c.id], prompt, firstMessage, characterName: c.name };
 }

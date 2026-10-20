@@ -8,7 +8,7 @@ import { Platform } from 'react-native';
 import Constants from 'expo-constants';
 
 export type AnalyticsEvent =
-  | 'family_call_start' | 'family_call_end'
+  | 'family_call_start' | 'family_call_end' | 'family_call_pause' | 'family_call_resume'
   | 'app_open'
   | 'placement_test_done'
   | 'lesson_started'
