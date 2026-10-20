@@ -1571,9 +1571,18 @@ export default function LiveVoiceModal({
   // Sincroniza o icone do botao com a rota de audio REAL. O nativo re-roteia
   // sozinho (ex: forca speaker ao tirar AirPods); sem isto o icone ficava
   // preso no estado anterior. Deriva de getCurrentRoute (portType:portName).
+  // Android é diferente: getCurrentRoute devolve a LISTA de saídas conectadas
+  // ("speaker:...,earpiece:...,bt_sco:...") e "uninitialized" antes do start. Ler isso como rota
+  // ativa fazia a ligação começar no fone do celular (o "uninitialized" da montagem zerava o
+  // alto-falante antes do start). Lá o fone vem da lista e o alto-falante segue a escolha do aluno.
   const syncRouteState = React.useCallback(() => {
     try {
       const r = (CharlotteAudioSession.getCurrentRoute() || '').toLowerCase();
+      if (Platform.OS === 'android') {
+        if (!r || r === 'uninitialized') return;
+        setOnHeadphones(/wired_head|bt_|usb/.test(r));
+        return;
+      }
       const headphones = r.includes('bluetooth') || r.includes('headphone');
       const onSpk = r.includes('speaker'); // builtInSpeaker
       setOnHeadphones(headphones);
