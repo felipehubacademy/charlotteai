@@ -133,11 +133,19 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
   };
 
   // Rota de áudio real (fone Bluetooth / com fio, alto-falante, fone do celular), como na Charlotte.
+  // iOS devolve a rota ativa ("Speaker", "Headphones", "BluetoothHFP"...). Android devolve a lista de
+  // saídas conectadas ("speaker:...,earpiece:...,bt_sco:...") ou "uninitialized" antes da sessão:
+  // lá o fone vem da lista e o alto-falante segue o que o aluno escolheu no botão.
   const syncRoute = React.useCallback(() => {
     try {
       const r = (CharlotteAudioSession.getCurrentRoute() || '').toLowerCase();
-      setOnHeadphones(r.includes('bluetooth') || r.includes('headphone'));
-      setSpeaker(r.includes('speaker'));
+      if (!r || r === 'uninitialized') return;
+      if (Platform.OS === 'android') {
+        setOnHeadphones(/wired_head|bt_|usb/.test(r));
+      } else {
+        setOnHeadphones(r.includes('bluetooth') || r.includes('headphone'));
+        setSpeaker(r.includes('speaker'));
+      }
     } catch { /* noop */ }
   }, []);
   React.useEffect(() => {
