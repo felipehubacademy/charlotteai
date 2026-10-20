@@ -5,7 +5,8 @@ import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { webSubscriptionWelcomeTemplate } from '@/lib/email-templates';
 import type { WebPlan } from '@/lib/asaas';
 
-export async function sendWebWelcome(userId: string, plan: WebPlan, trialDays: number): Promise<boolean> {
+/** Envia agora, sem fila (usado pela própria fila ao reenviar). */
+export async function sendWebWelcomeNow(userId: string, plan: WebPlan, trialDays: number): Promise<boolean> {
   const supabase = getSupabaseAdmin();
   const { data: u } = await supabase.from('charlotte_users').select('email, name').eq('id', userId).maybeSingle();
   const user = u as { email: string; name: string | null } | null;
@@ -14,4 +15,15 @@ export async function sendWebWelcome(userId: string, plan: WebPlan, trialDays: n
   const passwordUrl = link?.properties?.action_link ?? 'https://queizy.com/open';
   const { subject, html } = webSubscriptionWelcomeTemplate({ name: user.name, email: user.email, plan, trialDays, passwordUrl });
   return sendEmail({ to: user.email, subject, html }).catch(() => false);
+}
+
+/** Envia; se o serviço de e-mail recusar (ex.: pico de envios), entra na fila e sai em alguns minutos
+ *  com um link de senha novo (lib/email-outbox). */
+export async function sendWebWelcome(userId: string, plan: WebPlan, trialDays: number): Promise<boolean> {
+  const ok = await sendWebWelcomeNow(userId, plan, trialDays).catch(() => false);
+  if (!ok) {
+    const { enqueue } = await import('@/lib/email-outbox');
+    await enqueue({ kind: 'web_welcome', payload: { userId, plan, trialDays } });
+  }
+  return ok;
 }

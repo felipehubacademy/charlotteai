@@ -15,6 +15,7 @@ import { sendWebWelcome } from '@/lib/web-welcome';
 import { sendCapiEvent, type MetaTracking } from '@/lib/meta-capi';
 
 export const dynamic = 'force-dynamic';
+export const preferredRegion = 'gru1'; // perto do banco (São Paulo): várias consultas por evento
 const DAY = 86400000;
 const GRACE_DAYS = 3; // tolerância para a cobrança do cartão ser aprovada no dia
 

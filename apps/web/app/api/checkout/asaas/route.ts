@@ -16,6 +16,14 @@ import {
 } from '@/lib/asaas';
 
 export const dynamic = 'force-dynamic';
+// Perto do banco e do processador de pagamento (São Paulo): o envio do formulário faz várias consultas
+// em sequência e, rodando nos EUA, cada uma atravessava o continente.
+export const preferredRegion = 'gru1';
+
+// Proteção contra robôs: cada envio cria uma conta. Até 10 envios por endereço a cada 10 minutos
+// (folga para família ou empresa no mesmo Wi-Fi; robô passa disso em segundos).
+const ATTEMPTS_PER_IP = 10;
+const ATTEMPTS_WINDOW_MS = 10 * 60000;
 
 type UserRow = {
   id: string; email: string; subscription_status: string | null; trial_ends_at: string | null;
@@ -127,6 +135,16 @@ export async function POST(req: NextRequest) {
   if (!plan) return NextResponse.json({ error: 'Escolha um plano.' }, { status: 400 });
   if (name.split(/\s+/).length < 2) return NextResponse.json({ error: 'Informe nome e sobrenome.' }, { status: 400 });
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return NextResponse.json({ error: 'Confira o e-mail.' }, { status: 400 });
+
+  const ip = (req.headers.get('x-forwarded-for') ?? '').split(',')[0].trim() || null;
+  if (ip) {
+    const { count } = await supabase.from('checkout_attempts').select('id', { count: 'exact', head: true })
+      .eq('ip', ip).gte('created_at', new Date(Date.now() - ATTEMPTS_WINDOW_MS).toISOString());
+    if ((count ?? 0) >= ATTEMPTS_PER_IP) {
+      return NextResponse.json({ error: 'Muitas tentativas seguidas. Espere alguns minutos e tente de novo.' }, { status: 429 });
+    }
+    await supabase.from('checkout_attempts').insert({ ip, email } as never);
+  }
 
   // Conta: acha pelo e-mail ou cria (sem senha; ela é criada pelo link que chega no e-mail).
   let { data: user } = await supabase.from('charlotte_users').select(USER_COLS).ilike('email', email).maybeSingle();

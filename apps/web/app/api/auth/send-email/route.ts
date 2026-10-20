@@ -7,6 +7,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Webhook } from 'standardwebhooks';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
+import { enqueue } from '@/lib/email-outbox';
 import {
   confirmSignup,
   resetPassword,
@@ -57,6 +58,8 @@ const TEMPLATES: Record<string, { subject: string; html: string }> = {
 };
 
 // ── Handler ───────────────────────────────────────────────────────────────────
+export const preferredRegion = 'gru1'; // banco e login em São Paulo
+
 export async function POST(req: NextRequest) {
   const rawBody = await req.text();
 
@@ -101,7 +104,10 @@ export async function POST(req: NextRequest) {
 
   const ok = await sendEmail({ to, subject: tmpl.subject, html });
   if (!ok) {
-    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    // Pico de envios (o serviço de e-mail limita por minuto): guarda na fila e responde OK, para o
+    // aluno não ver erro; o cron reenvia em poucos minutos (o link do login vale 1 hora).
+    await enqueue({ kind: `auth_${actionType}`, to_email: to, subject: tmpl.subject, html });
+    return NextResponse.json({});
   }
 
   return NextResponse.json({});
