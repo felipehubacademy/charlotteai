@@ -12,7 +12,7 @@ import { listInboxMessages, sendEmail as graphSendEmail, InboxMessage } from '@/
 import { runSupportAgent } from '@/lib/support-agent';
 import {
   findUserContext, isMessageProcessed, upsertConversation, logMessage,
-  setConversationStatus, escalate,
+  setConversationStatus, escalate, aiShouldStaySilent, isPureAck,
 } from '@/lib/support-service';
 
 const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
@@ -27,6 +27,18 @@ function checkAuth(req: NextRequest) {
   if (cron && req.headers.get('authorization') === `Bearer ${cron}`) return true;
   const auth = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
   return ADMIN_SECRET && auth === ADMIN_SECRET;
+}
+
+// Só o que a pessoa escreveu agora: corta a mensagem citada ("Em ..., escreveu:", "On ... wrote:", "> ...").
+function freshText(body: string): string {
+  const lines = body.split(/\r?\n/);
+  const out: string[] = [];
+  for (const l of lines) {
+    if (/^\s*(Em .{0,200}escreveu:|On .{0,200}wrote:|-{2,}\s*Original Message|De:\s|From:\s|Enviado do meu|Sent from my)/i.test(l)) break;
+    if (/^\s*>/.test(l)) continue;
+    out.push(l);
+  }
+  return out.join('\n').trim();
 }
 
 function isNoise(m: InboxMessage): boolean {
@@ -70,6 +82,19 @@ export async function POST(req: NextRequest) {
     });
     const userText = `${m.subject}\n\n${m.bodyText}`.trim().slice(0, 4000);
     await logMessage({ conversationId: convId, direction: 'in', author: 'user', body: userText, graphMessageId: m.id });
+
+    // Mesmas regras do app e do WhatsApp: "obrigado", "deu certo", emoji → encerra sem responder;
+    // atendente respondeu nas últimas 2 h → a conversa é dele, a IA não entra.
+    const fresh = freshText(m.bodyText);
+    if (isPureAck(fresh)) {
+      await setConversationStatus(convId, 'closed');
+      skipped++; details.push({ from: m.from, intent: 'agradecimento', action: 'silent_close' });
+      continue;
+    }
+    if (await aiShouldStaySilent(convId, fresh)) {
+      skipped++; details.push({ from: m.from, intent: 'com_atendente', action: 'silent' });
+      continue;
+    }
 
     const decision = await runSupportAgent({ userText, context, contactEmail: m.from });
 
