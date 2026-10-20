@@ -177,7 +177,7 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
       // Cartão: até 2 minutos. Pix: até 30 minutos (depois o e-mail de acesso chega quando o Pix cair).
       if (pix && Date.now() - started > 30 * 60000) {
         setWaiting(null);
-        setError('Ainda não recebemos o Pix. Se você já pagou, fique tranquilo: o e-mail com o acesso chega assim que o pagamento cair.');
+        setError('Ainda não recebemos o Pix. Se você já pagou, fique tranquilo: o e-mail com o acesso chega assim que o pagamento for confirmado.');
         return;
       }
       if (!pix && Date.now() - started > 120000) {
@@ -412,7 +412,7 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
               {copied ? 'Copiado' : 'Copiar'}
             </button>
           </div>
-          <p style={{ fontWeight: 700, color: INK, marginTop: 16 }}>Aguardando o pagamento... Assim que cair, esta página avança sozinha.</p>
+          <p style={{ fontWeight: 700, color: INK, marginTop: 16 }}>Aguardando o pagamento... Assim que ele for confirmado, esta página avança sozinha.</p>
           <p className="wc-addr">Valor: {brl(annual)}, pagamento único, sem renovação automática.</p>
         </div>
       ) : (
