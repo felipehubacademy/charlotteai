@@ -34,7 +34,7 @@ const maskCard = (v: string) => v.replace(/\D/g, '').slice(0, 19).replace(/(\d{4
 const maskExpiry = (v: string) => v.replace(/\D/g, '').slice(0, 4).replace(/^(\d{2})(\d)/, '$1/$2');
 const maskCep = (v: string) => v.replace(/\D/g, '').slice(0, 8).replace(/^(\d{5})(\d)/, '$1-$2');
 
-export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan; notice?: string }) {
+export default function WebCheckout({ initialPlan, notice, forceMode }: { initialPlan: Plan; notice?: string; forceMode?: Mode }) {
   const [plan, setPlan] = useState<Plan>(initialPlan);
   const [annualPay, setAnnualPay] = useState<AnnualPay>('card');
   const [info, setInfo] = useState<Info | null>(null);
@@ -148,7 +148,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
   const method = plan === 'monthly' ? 'monthly' : annualPay === 'card' ? 'annual' : 'annual_pix';
   const hasTrial = method === 'monthly' || method === 'annual';
   const disc = info?.discountPct ?? 0;
-  const mode: Mode = urlMode ?? (info?.direct ? 'direct' : 'hosted');
+  const mode: Mode = urlMode ?? forceMode ?? (info?.direct ? 'direct' : 'hosted');
   const ownCard = mode !== 'hosted' && method !== 'annual_pix';
 
   // Aguardando o pagamento cair (Pix, ou cartão que o banco ainda está confirmando): consulta a cada 3 s.
