@@ -283,13 +283,16 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
               // A abertura não conta como resposta: com N falas dele até aqui, a próxima é a resposta N.
               // Se ela é vez de imitação, avisa já (antes de o aluno terminar de falar).
               const upcoming = transcriptRef.current.filter(l => l.who === 'ai').length;
-              if (!farewellRef.current && isImpressionReply(upcoming, sessionKeyRef.current)) {
+              // Novice: a próxima fala dele é o turno upcoming + 1 (a abertura é o turno 1). Imitação só
+              // a partir do turno 6, depois da rampa de inglês (antes ela vinha toda em inglês e longa).
+              const noviceTooEarly = level === 'Novice' && upcoming + 1 < 6;
+              if (!farewellRef.current && !noviceTooEarly && isImpressionReply(upcoming, sessionKeyRef.current)) {
                 const imp = pickImpression(info, lastUserTextRef.current, lastImpressionRef.current);
                 const t = imp === 'hoops' ? 'Hoops' : imp === 'president' ? 'President' : null;
                 if (imp && t) {
                   lastImpressionRef.current = imp;
                   try {
-                    convRef.current?.sendContextualUpdate(`IMPRESSION TIME: make your next reply your ${imp === 'hoops' ? 'basketball superstar' : 'president'} impression, the whole reply wrapped in <${t}>...</${t}>, still answering what the student says. Right after it, go back to your normal voice.`);
+                    convRef.current?.sendContextualUpdate(`IMPRESSION TIME: make your next reply your ${imp === 'hoops' ? 'basketball superstar' : 'president'} impression, the whole reply wrapped in <${t}>...</${t}>, still answering what the student says. Keep EVERY level and language rule of a normal reply${level === 'Novice' ? ' (beginner: ONE short catchphrase of the impression in English, max 5 words, then Portuguese, ending with ONE short English question plus its translation in parentheses)' : ''} and at most TWO short sentences. Right after it, go back to your normal voice.`);
                   } catch { /* sem aviso, segue normal */ }
                 }
               }

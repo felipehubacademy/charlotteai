@@ -17,6 +17,17 @@ export const FAMILY_AGENTS: Record<string, string> = {
 // Fora das regras da Charlotte, só o que é próprio do agente de voz da Família.
 const AGENT_NOTES = `VOICE CALL NOTES: this is voice only, so never use emojis, lists or markdown. If the app sends a note saying TIME IS UP, say a short goodbye right away (this overrides any rule about goodbyes).`;
 
+// Novice nos agentes da Família: o modelo do agente é menor que o da ligação da Charlotte e escorregava
+// na rampa (pergunta repetida em português, exclamação extra em inglês, imitação longa toda em inglês).
+// Formato com exemplo, no FIM do prompt. Não muda a regra da Charlotte, só reforça a mesma regra.
+const NOVICE_FORMAT = `BEGINNER FORMAT CHECK (Novice), from turn 3 on, while the student answers in Portuguese, every reply is EXACTLY:
+[one short reaction in Portuguese] + [ONE short English question] + [its Portuguese translation in parentheses].
+Example: "Nossa, trabalhou muito, hein? What do you do? (O que você faz?)"
+- Never ask the question in Portuguese before the English one (wrong: "Como foi seu dia? How was your day? (Como foi seu dia?)").
+- Never add an English exclamation or comment besides the question (wrong: "That sounds tiring!").
+- Impression turn for a beginner: ONE short catchphrase of the impression in English (max 5 words), then the rest in Portuguese, ending with the ONE short English question and its translation. Max two short sentences. Example: "Tremendous, believe me! Pizza é a melhor comida do mundo. Do you like pizza? (Você gosta de pizza?)"
+- Once the student answers in English, you may use up to two short English sentences, as the level rule says.`;
+
 /** Regras da ligação da Charlotte (lib/live-voice-rules) com o nome e o gênero do personagem. */
 function baseRules(c: Character, level: CallLevel, name: string): string {
   let t = SYSTEM_PROMPTS[level].replace(/\{NAME\}/g, name);
@@ -41,7 +52,7 @@ function impressionsBlock(c: Character): string {
     .filter(([id]) => IMPRESSION_TAGS[id])
     .map(([id, imp]) => `- <${IMPRESSION_TAGS[id]}>...</${IMPRESSION_TAGS[id]}>: ${imp!.style.replace(/^THIS REPLY ONLY:\s*/, '').replace(/Keep the SAME length limit as a normal reply\.?/i, 'Keep the same two-sentence limit.')}`);
   if (!list.length) return '';
-  return `IMPRESSIONS (your signature): do an impression ONLY when you receive a note saying IMPRESSION TIME (the app decides the moment, like in your chat). Then your next reply is ONE whole turn as that impression, and right after it you go back to your normal voice. Wrap the WHOLE impression turn in its voice tag (the tag switches your voice). Never write in ALL CAPS and use at most one exclamation mark per turn: in the voice, caps and stacked exclamations turn into shouting.
+  return `IMPRESSIONS (your signature): do an impression ONLY when you receive a note saying IMPRESSION TIME (the app decides the moment, like in your chat). Then your next reply is ONE whole turn as that impression, and right after it you go back to your normal voice. Wrap the WHOLE impression turn in its voice tag (the tag switches your voice). Never write in ALL CAPS and use at most one exclamation mark per turn: in the voice, caps and stacked exclamations turn into shouting. An impression turn follows the SAME level and language rules and the same two-sentence limit as a normal reply (for a beginner: Portuguese, ending with one short English question and its translation).
 ${list.join('\n')}`;
 }
 
@@ -104,7 +115,7 @@ ${c.persona.replace(/Do NOT do any impression unless this reply's instructions a
 
 ${impressionsBlock(c)}
 
-${AGENT_NOTES}${topic}${memory}${resume}`;
+${AGENT_NOTES}${topic}${memory}${resume}${opts.level === 'Novice' ? `\n\n${NOVICE_FORMAT}` : ''}`;
   const pool = resumeLines.length ? RESUME_LINES[opts.level] : (opts.level === 'Novice' ? FIRST_MESSAGES_NOVICE : FIRST_MESSAGES)[c.id] ?? [];
   const firstMessage = (pool[Math.floor(Math.random() * pool.length)] ?? 'Hey {name}!').replace(/\{name\}/g, name);
   return { agentId: FAMILY_AGENTS[c.id], prompt, firstMessage, characterName: c.name };
@@ -133,7 +144,7 @@ export async function generateOpener(opts: {
     ? 'This time, open as ONE of your impressions, wrapped in its voice tag (<President>...</President> or <Hoops>...</Hoops>).'
     : 'Open in your normal voice (no tags).';
   const task = novice
-    ? `Write ONLY your first line, in Brazilian Portuguese only (no English yet): greet ${name} by name with your humor and ask how they are. Nothing else. Max 15 words.`
+    ? `Write ONLY your first line, in Brazilian Portuguese only (no English yet): greet ${name} by name with your humor and END by asking how they are ("Tudo bem?" or "Como você tá?"). Do not ask anything else (no "pronto pra...?", no questions about plans). Max 15 words.`
     : `Write ONLY your first line, in English: a warm, funny greeting using their name plus ONE easy question to get them talking. Max 2 short sentences, max 25 words. Use AT MOST one detail from the context (pick what makes the best opener; often just the time of day or a follow-up on the last call).`;
   const system = `${c.persona.split('Hard rules')[0]}
 You are opening a live voice call with ${name}, an English student (${opts.level} level). ${task} No emojis, no quotes, no stage directions. ${impressionHint}

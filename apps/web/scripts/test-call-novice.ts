@@ -18,7 +18,12 @@ const NAME = 'Felipe';
 const SCRIPTS: Record<string, string[]> = {
   'responde em português': ['Tudo bem, e você?', 'Pode ser, vamos!', 'Hoje eu trabalhei muito.', 'Eu sou designer.', 'Eu gosto de pizza.', 'Eu moro em São Paulo.'],
   'passa a responder em inglês': ['Tudo bem, e você?', 'Vamos sim!', 'Eu trabalhei muito hoje.', 'I am a designer.', 'I like pizza and coffee.', 'I live in São Paulo.'],
+  // O turno 2 tem que reagir ao que o aluno disse (não "Tudo bem comigo também!" para "Tô pronto").
+  'responde "tô pronto"': ['Tô pronto!', 'Bora!', 'Hoje eu trabalhei muito.', 'Eu sou designer.', 'Eu gosto de pizza.', 'Eu moro em São Paulo.'],
 };
+// Personagens da Família: no turno 6 o app manda a imitação (mesma nota do FamilyCallModal no Novice).
+const IMPRESSION_NOTE = 'IMPRESSION TIME: make your next reply your president impression, the whole reply wrapped in <President>...</President>, still answering what the student says. Keep EVERY level and language rule of a normal reply (beginner: ONE short catchphrase of the impression in English, max 5 words, then Portuguese, ending with ONE short English question plus its translation in parentheses) and at most TWO short sentences. Right after it, go back to your normal voice.';
+const norm = (t: string) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
 
 // Idioma de cada frase, marcado por um modelo de IA (lista de palavras não dá conta de
 // "Trabalhou bastante, hein?" ou de nomes como "São Paulo"). Tradução entre parênteses e exemplo
@@ -125,7 +130,8 @@ async function cases(): Promise<Case[]> {
 
 (async () => {
   let failures = 0;
-  for (const c of await cases()) {
+  // ONLY=igorfina testa só esse caso (Charlotte = ligação da Charlotte).
+  for (const c of (await cases()).filter(x => !process.env.ONLY || x.who === process.env.ONLY)) {
     for (const [label, script] of Object.entries(SCRIPTS)) {
       const shares: number[][] = [];
       const problems: string[] = [];
@@ -135,10 +141,22 @@ async function cases(): Promise<Case[]> {
         const row: number[] = [];
         for (let i = 0; i < script.length; i++) {
           msgs.push({ role: 'user', content: script[i] });
-          const reply = (await c.send(msgs)).replace(/<\/?[A-Za-z]+>/g, '');
+          const impressionTurn = c.who !== 'Charlotte' && i + 2 === 6;
+          if (impressionTurn) msgs.push({ role: 'system', content: IMPRESSION_NOTE });
+          const raw = await c.send(msgs);
+          if (impressionTurn) msgs.splice(msgs.length - 2, 2, msgs[msgs.length - 2]); // a nota não fica no histórico
+          const reply = raw.replace(/<\/?[A-Za-z]+>/g, '');
           msgs.push({ role: 'assistant', content: reply });
           const turn = i + 2; // o turno 1 é a abertura
           const sents = await classify(reply);
+          if (turn === 2 && label.includes('pronto') && /tudo bem comigo/i.test(reply)) problems.push(`T2 frase pronta sem ligar com a resposta: "${reply}"`);
+          if (impressionTurn && !/<[A-Za-z]+>/.test(raw)) problems.push(`T6 não fez a imitação pedida: "${reply}"`);
+          if (impressionTurn && sents.length > 4) problems.push(`T6 imitação longa (${sents.length} frases): "${reply}"`);
+          // Pergunta repetida: a mesma pergunta em português antes do inglês e de novo na tradução.
+          const trans = [...reply.matchAll(/\(([^)]*\?)\)/g)].map(m => norm(m[1]));
+          const outside = reply.replace(/\([^)]*\)/g, ' ');
+          const ptQs = (outside.match(/[^.!?]*\?/g) ?? []).map(norm).filter(Boolean);
+          if (trans.some(t => t && ptQs.includes(t))) problems.push(`T${turn} pergunta repetida em português: "${reply}"`);
           row.push(ptShareOf(sents));
           const mixed = sents.filter(x => x.lang === 'mixed');
           if (mixed.length) problems.push(`T${turn} frase misturada: "${mixed[0].text}"`);
@@ -149,7 +167,8 @@ async function cases(): Promise<Case[]> {
             const pt = sents.some(x => x.lang === 'pt');
             if (!pt && studentPt) problems.push(`T${turn} sem português (aluno respondeu em português): "${reply}"`);
             if (en === 0) problems.push(`T${turn} sem a pergunta em inglês: "${reply}"`);
-            if (en > 1 && studentPt) problems.push(`T${turn} inglês demais para o aluno que responde em português: "${reply}"`);
+            // Na imitação, o bordão curto em inglês é permitido além da pergunta.
+            if (en > (impressionTurn ? 2 : 1) && studentPt) problems.push(`T${turn} inglês demais para o aluno que responde em português: "${reply}"`);
           }
           if (!reply) problems.push(`T${turn} resposta vazia`);
           if (run === 0) console.log(`  [${c.who} · ${label}] T${turn}: ${reply}`);
