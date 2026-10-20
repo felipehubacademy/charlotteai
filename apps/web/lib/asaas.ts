@@ -238,7 +238,7 @@ export const getCustomer = (id: string) => asaas<AsaasCustomer>(`/customers/${id
 
 export interface AsaasSubscription { id: string; customer: string; status: string; nextDueDate: string; value: number; cycle: string; externalReference?: string | null; checkoutSession?: string | null }
 export const getSubscription = (id: string) => asaas<AsaasSubscription>(`/subscriptions/${id}`);
-export const cancelSubscription = (id: string) => asaas<{ deleted: boolean }>(`/subscriptions/${id}`, { method: 'DELETE' });
+export const cancelSubscription = (id: string, sandbox = false) => asaas<{ deleted: boolean }>(`/subscriptions/${id}`, { method: 'DELETE', sandbox });
 /** 4 últimos dígitos do cartão de uma cobrança (null no Pix). Usado para conferir quem pagou. */
 export async function getPaymentCard(paymentId: string): Promise<{ last4: string | null; billingType: string }> {
   const p = await asaas<{ billingType: string; creditCard?: { creditCardNumber?: string | null } | null }>(`/payments/${encodeURIComponent(paymentId)}`);

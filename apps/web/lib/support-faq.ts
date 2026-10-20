@@ -133,11 +133,11 @@ Dá para assinar de dois jeitos:
 - No app, pela loja: App Store (iPhone) ou Google Play (Android), com 7 dias grátis para quem nunca assinou. Para começar os 7 dias, a loja pede uma forma de pagamento cadastrada na conta Apple ou Google (no site, o cartão de crédito). A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.
 - Pelo site, em queizy.com/assinar: Mensal no cartão de crédito, Anual no cartão de crédito à vista ou Anual no Pix à vista (veja "Como funciona a assinatura pelo site?").` },
   { section: 'Planos e assinatura', question: 'Como funciona a assinatura pelo site?', answer:
-`Em queizy.com/assinar você escolhe o plano e a forma de pagamento. O pagamento é feito numa página segura de pagamento, onde também se informa o CPF.
+`Em queizy.com/assinar você escolhe o plano e a forma de pagamento e informa nome, e-mail, CPF, celular e CEP. Depois conclui o pagamento numa página segura de pagamento, onde só falta o cartão (ou aparece o Pix).
 - Mensal no cartão de crédito: renova todo mês. Tem 7 dias grátis para quem nunca assinou; a primeira cobrança é feita ao fim dos 7 dias.
 - Anual no cartão de crédito à vista: 7 dias grátis para quem nunca assinou, depois uma cobrança única de R$ 199,99, com renovação automática a cada ano.
 - Anual no Pix à vista: paga na hora e libera 12 meses de acesso. Não renova sozinho, porque o Pix não tem cobrança automática. Não tem os 7 dias grátis, mas dá para pedir reembolso em até 7 dias do pagamento (veja a pergunta sobre reembolso).
-Nos planos no cartão, se cancelar a renovação antes do fim dos 7 dias grátis, não paga nada.
+Nos planos no cartão, se cancelar a assinatura antes do fim dos 7 dias grátis (Perfil > Assinatura > Gerenciar assinatura > Cancelar assinatura), não paga nada.
 Formas de pagamento: cartão de crédito ou Pix (o Pix só no Anual). Não aceitamos boleto.
 Não há parcelamento: quem prefere pagar aos poucos pode escolher o Mensal.
 Entre no app com o mesmo e-mail informado no site: é nessa conta que o acesso é liberado.` },
@@ -161,11 +161,11 @@ A correção vale para contas criadas pela compra que ainda não foram usadas no
 - Android: Google Play > foto de perfil > Pagamentos e assinaturas > Assinaturas > Queizy (pode aparecer como Charlotte) > Cancelar.
 - No app: Perfil > Assinatura > Gerenciar assinatura abre essa tela da loja.
 - Assinou numa loja e está usando o app na outra (por exemplo, assinou no iPhone e agora usa um Android)? O Gerenciar assinatura mostra um aviso explicando onde cancelar: assinatura da App Store, num iPhone, iPad ou Mac (Ajustes > seu nome > Assinaturas); assinatura do Google Play, pelo navegador em play.google.com/store/account/subscriptions, com a mesma conta Google da compra.
-- Assinou pelo site (queizy.com/assinar)? Cancele no app em Perfil > Assinatura > Gerenciar assinatura > Cancelar renovação.
+- Assinou pelo site (queizy.com/assinar)? Cancele no app em Perfil > Assinatura > Gerenciar assinatura > Cancelar renovação. Durante os 7 dias grátis, o botão se chama Cancelar assinatura: nada é cobrado e você continua usando até o fim do teste.
 Ao cancelar, o acesso continua até o fim do período já pago.` },
   { section: 'Planos e assinatura', question: 'Como pedir reembolso?', answer:
 `Depende de onde você assinou:
-- Pelo site (queizy.com): em até 7 dias do pagamento, no app, em Perfil > Assinatura > Gerenciar assinatura > Pedir reembolso, ou por e-mail em suporte@queizy.com. No Pix o valor volta em instantes; no cartão, o estorno aparece na fatura (até duas faturas).
+- Pelo site (queizy.com): em até 7 dias do pagamento, no app, em Perfil > Assinatura > Gerenciar assinatura > Pedir reembolso, ou por e-mail em suporte@queizy.com. No Pix o valor volta em instantes; no cartão, o estorno aparece na fatura (até duas faturas). Durante os 7 dias grátis nada foi cobrado, então não há reembolso: para não ser cobrado, cancele em Gerenciar assinatura > Cancelar assinatura. A tela mostra até quando dá para pedir o reembolso.
 - iPhone (App Store): pelo site reportaproblem.apple.com.
 - Android (Google Play): pela ajuda do Google Play (pedir reembolso), dentro do prazo do Google.
 Casos específicos de cobrança ou reembolso são encaminhados a um atendente.` },

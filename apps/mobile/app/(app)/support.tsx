@@ -40,7 +40,7 @@ const FAQ_PT: Faq[] = [
   { q: 'Como redefino minha senha?', a: 'Na tela de login, toque em "Esqueceu sua senha?", informe seu email e siga o link enviado.' },
   { q: 'Quais são os planos e preços?', a: 'Ao criar a conta, você experimenta de graça o primeiro módulo da trilha nos 3 níveis, 10 mensagens no Practice e 3 minutos de Live Voice. Para continuar: Plano Mensal R$ 29,99/mês ou Plano Anual R$ 199,99/ano (~R$ 16,67/mês), com 7 dias grátis para quem nunca assinou. Você escolhe o plano no app e confirma na loja; a cobrança só começa ao fim dos 7 dias, e se cancelar antes não paga nada.' },
   { q: 'Como restauro minha compra?', a: 'Em Perfil > Assinatura > Restaurar compras. Você precisa estar logado na mesma conta da App Store ou Google Play usada na compra.' },
-  { q: 'Como pedir reembolso?', a: 'Assinou pelo site: em até 7 dias do pagamento, em Perfil > Assinatura > Gerenciar assinatura > Pedir reembolso, ou por e-mail em suporte@queizy.com.\n\niPhone (App Store): acesse reportaproblem.apple.com.\n\nAndroid: pela ajuda do Google Play.' },
+  { q: 'Como pedir reembolso?', a: 'Assinou pelo site: em até 7 dias do pagamento, em Perfil > Assinatura > Gerenciar assinatura > Pedir reembolso, ou por e-mail em suporte@queizy.com. No teste grátis nada foi cobrado: para não ser cobrado, use Cancelar assinatura na mesma tela.\n\niPhone (App Store): acesse reportaproblem.apple.com.\n\nAndroid: pela ajuda do Google Play.' },
 ];
 
 const FAQ_EN: Faq[] = [

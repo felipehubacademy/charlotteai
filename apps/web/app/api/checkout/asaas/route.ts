@@ -1,5 +1,6 @@
 // /api/checkout/asaas — assinatura pelo site.
 //   GET  ?aff=CODE                       preços (com o desconto do afiliado) e se o checkout está ligado
+//   GET  ?mine=1 (Bearer do aluno)        situação da assinatura do site: teste grátis, 1ª cobrança, prazo do reembolso
 //   POST { method, name, email, phone, cpf, cep, number, street?, complement?, aff?, coupon? }  cria (ou acha) a conta e devolve { url } do checkout do Asaas
 //   POST { action: 'cancel' }  (Bearer do aluno)   cancela a renovação (mensal ou anual no cartão)
 //   POST { action: 'refund' }  (Bearer do aluno)   reembolso em até 7 dias do 1º pagamento (Pix, 12x ou cartão)
@@ -29,6 +30,7 @@ async function discountFor(code: string | null): Promise<{ code: string; pct: nu
 
 //   GET ?aff=CODE&coupon=CODE  preços com o melhor desconto (afiliado do link ou cupom); não acumula
 export async function GET(req: NextRequest) {
+  if (req.nextUrl.searchParams.get('mine') === '1') return mine(req);
   const d = await discountFor(cleanAffiliateCode(req.nextUrl.searchParams.get('aff')) || null);
   const couponRaw = req.nextUrl.searchParams.get('coupon');
   const c = couponRaw ? await resolveCoupon(couponRaw) : null;
@@ -43,6 +45,31 @@ export async function GET(req: NextRequest) {
     prices: {
       monthly: priceFor('monthly', pctFor('monthly')), annual: priceFor('annual', pctFor('annual')),
     },
+  });
+}
+
+// Tela "Gerenciar assinatura" do app: no teste grátis não há o que reembolsar (só cancelar antes da
+// 1ª cobrança); depois de pago, o reembolso vale até 7 dias.
+async function mine(req: NextRequest) {
+  const supabase = getSupabaseAdmin();
+  const h = req.headers.get('authorization') ?? '';
+  const { data: auth } = h.startsWith('Bearer ') ? await supabase.auth.getUser(h.slice(7)) : { data: null };
+  const user = auth?.user;
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const { data } = await supabase.from('asaas_checkouts')
+    .select('created_at, trial_days, value_brl, paid_at, refunded_at, refund_requested_at, asaas_payment_id')
+    .eq('user_id', user.id).eq('status', 'paid').order('created_at', { ascending: false }).limit(1).maybeSingle();
+  const r = data as { created_at: string; trial_days: number; value_brl: number; paid_at: string | null; refunded_at: string | null; refund_requested_at: string | null; asaas_payment_id: string | null } | null;
+  if (!r) return NextResponse.json({ found: false });
+  const DAY = 86400000;
+  const inTrial = r.trial_days > 0 && !r.asaas_payment_id;
+  const firstChargeAt = r.trial_days > 0 ? new Date(new Date(r.created_at).getTime() + r.trial_days * DAY).toISOString() : null;
+  const refundableUntil = r.paid_at && !r.refunded_at && !r.refund_requested_at
+    ? new Date(new Date(r.paid_at).getTime() + REFUND_WINDOW_DAYS * DAY).toISOString() : null;
+  return NextResponse.json({
+    found: true, inTrial, firstChargeAt, value: Number(r.value_brl),
+    refundableUntil: refundableUntil && new Date(refundableUntil).getTime() > Date.now() ? refundableUntil : null,
+    refundPending: !!r.refund_requested_at && !r.refunded_at,
   });
 }
 
@@ -101,13 +128,14 @@ export async function POST(req: NextRequest) {
     const { data: auth } = h.startsWith('Bearer ') ? await supabase.auth.getUser(h.slice(7)) : { data: null };
     const user = auth?.user;
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    const { data: row } = await supabase.from('asaas_checkouts').select('asaas_subscription_id')
+    const { data: row } = await supabase.from('asaas_checkouts').select('asaas_subscription_id, sandbox')
       .eq('user_id', user.id).eq('status', 'paid').not('asaas_subscription_id', 'is', null)
       .order('created_at', { ascending: false }).limit(1).maybeSingle();
     const subId = (row as { asaas_subscription_id: string } | null)?.asaas_subscription_id;
+    const sandbox = !!(row as { sandbox: boolean | null } | null)?.sandbox;
     // Pix e parcelado não renovam sozinhos: não há o que cancelar.
     if (!subId) return NextResponse.json({ ok: true, noRenewal: true });
-    try { await cancelSubscription(subId); } catch (e) {
+    try { await cancelSubscription(subId, sandbox); } catch (e) {
       return NextResponse.json({ error: e instanceof AsaasError ? e.message : 'Não foi possível cancelar agora.' }, { status: 502 });
     }
     // Acesso segue até o fim do período pago (subscription_expires_at).
