@@ -3,6 +3,7 @@
 // resumo da última chamada + botão Start now. Beta only (new_layout).
 
 import { characterInfo } from '@/lib/characters';
+import { FamilyCallModal } from '@/components/voice/FamilyCallModal';
 import React, { useState, useCallback, useMemo } from 'react';
 import {
   View, ScrollView, TouchableOpacity, ActivityIndicator,
@@ -69,12 +70,12 @@ interface LastCall {
 
 function poolStatusLabel(
   isPt: boolean, isLimitReached: boolean, isUnlimited: boolean,
-  remainingSec: number, isKnown: boolean, isTaster = false,
+  remainingSec: number, isKnown: boolean, isTaster = false, hostName = 'Charlotte',
 ): string {
   if (!isKnown) return isPt ? 'Carregando…' : 'Loading…';
   if (isLimitReached && isTaster) return isPt ? 'Degustação usada' : 'Free taste used';
   if (isLimitReached) return isPt ? 'Limite mensal atingido' : 'Monthly limit reached';
-  return isPt ? 'Charlotte disponível' : 'Charlotte available';
+  return isPt ? `${hostName} disponível` : `${hostName} available`;
 }
 
 /** Dias de calendário (local) entre a data e hoje: 0 = hoje, 1 = ontem. */
@@ -485,6 +486,13 @@ export default function LiveVoiceTab() {
   const [selectedCall,    setSelectedCall]    = useState<LastCall | null>(null);
   const transcriptFromList = React.useRef(false); // voltar da chamada reabre a lista
   const [showCallsDrawer, setShowCallsDrawer] = useState(false);
+  // Quem atende a ligação: o membro da Família escolhido (Perfil > Família Queizy > "Falar na Início").
+  // Ligação com a Família ainda em teste: só com a liberação 'familia_call'; sem ela, sempre a Charlotte.
+  const canCallFamily = (profile?.beta_features ?? []).includes('familia_call');
+  const hostId = canCallFamily ? characterInfo(profile?.active_character).id : 'charlotte';
+  const host = characterInfo(hostId);
+  const hostArticle = hostId === 'charlotte' ? 'a ' : hostId === 'igorfina' ? 'o ' : '';
+  const [showFamilyCall, setShowFamilyCall] = useState(false);
   const [showLiveVoice,   setShowLiveVoice]   = useState(false);
   const [showLimitSheet,  setShowLimitSheet]  = useState(false);
   const [limitExhausted,  setLimitExhausted]  = useState(true); // false = aberto pelo cartão, antes de acabar
@@ -625,8 +633,8 @@ export default function LiveVoiceTab() {
     // rejeita com "tried to set AmbientSound... skipping" durante recording.
     // Mutar aqui zera essa fila.
     voiceSFX.setMuted(true);
-    setShowLiveVoice(true);
-  }, [poolKnown, poolUnlimited, poolRemaining]);
+    if (hostId !== 'charlotte') setShowFamilyCall(true); else setShowLiveVoice(true);
+  }, [poolKnown, poolUnlimited, poolRemaining, hostId]);
 
   // Só considera "limite atingido" quando o pool é CONHECIDO — enquanto a
   // leitura não confirma, mostramos "carregando", nunca um limite/pool falso.
@@ -643,7 +651,7 @@ export default function LiveVoiceTab() {
       ? (isSubscriber ? (isPt ? 'Comprar minutos' : 'Buy minutes')
          : isTaster   ? (isPt ? 'Começar 7 dias grátis' : 'Start 7-day free trial')
                       : (isPt ? 'Assinar Premium' : 'Subscribe to Premium'))
-      : (isPt ? 'Conversar com a Charlotte' : 'Talk with Charlotte');
+      : (isPt ? `Conversar com ${hostArticle}${host.name}` : `Talk with ${host.name}`);
   const onCtaPress = !poolKnown
     ? () => loadData()
     : isLimitReached
@@ -691,7 +699,8 @@ export default function LiveVoiceTab() {
   const innerH = screenH - insets.top - insets.bottom - 48;
   // Ajuste fino +12px sobre o calculo nominal pra bater com a posicao
   // visual real do avatar no modal (iPhone 15 Pro).
-  const modalAvatarCenterY = insets.top + 24 + 50 + Math.max(0, (innerH - 500) / 2) + 180 + 9;
+  // Topo da chamada com nome em destaque e selo de estado (~90): o centro desce ~20 em relação ao antigo (50).
+  const modalAvatarCenterY = insets.top + 24 + 70 + Math.max(0, (innerH - 490) / 2) + 180 + 9;
   // Balão + Charlotte formam um bloco: o balão fica sempre colado acima do
   // avatar (rabinho apontando para ela). O avatar começa na Y da tela de
   // chamada; se o cartão de minutos descer até o balão (telas mais baixas,
@@ -746,7 +755,7 @@ export default function LiveVoiceTab() {
               overflow: 'hidden',
             }}>
               <Image
-                source={require('@/assets/charlotte-avatar.png')}
+                source={host.avatar}
                 style={{ width: '100%', height: '100%' }}
                 contentFit="cover"
               />
@@ -784,7 +793,9 @@ export default function LiveVoiceTab() {
               shadowOffset: { width: 0, height: 4 }, elevation: 2,
             }}>
               <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.textWhite, lineHeight: 23, textAlign: 'center' }}>
-                {isPt ? 'Bora conversar? Pode errar à vontade.' : "Let's talk! Mistakes are welcome here."}
+                {hostId === 'charlotte'
+                  ? (isPt ? 'Bora conversar? Pode errar à vontade.' : "Let's talk! Mistakes are welcome here.")
+                  : (isPt ? 'Bora rir e falar inglês?' : "Let's laugh and speak English!")}
               </AppText>
             </View>
             <Svg width={20} height={14} viewBox="0 0 20 14" style={{ position: 'absolute', left: '42%', bottom: -13 }}>
@@ -839,7 +850,7 @@ export default function LiveVoiceTab() {
                   backgroundColor: !poolKnown ? C.textDim : isLimitReached ? C.red : C.greenDark,
                 }} />
                 <AppText style={{ fontSize: 13, color: C.textMuted, fontWeight: '500' }}>
-                  {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown, isTaster)}
+                  {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown, isTaster, host.name)}
                 </AppText>
               </View>
 
@@ -1000,6 +1011,19 @@ export default function LiveVoiceTab() {
           />
 
         </View>
+      )}
+
+      {showFamilyCall && (
+        <FamilyCallModal
+          character={hostId}
+          onClose={() => {
+            setShowFamilyCall(false);
+            soundEngine.setMuted(false);
+            voiceSFX.setMuted(false);
+            loadData();
+            setTimeout(() => { loadData(); }, 2000);
+          }}
+        />
       )}
 
       {showLiveVoice && (
