@@ -8,7 +8,7 @@
 // (lib/callLevels), estados claros, legendas em balões, selo da imitação e resumo no fim.
 // Protótipo: só com a liberação 'familia_call' (Família > botão de ligar).
 import React from 'react';
-import { View, Modal, TouchableOpacity, Image, Animated, ActivityIndicator } from 'react-native';
+import { View, Modal, TouchableOpacity, Image, Animated, ActivityIndicator, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { requestRecordingPermissionsAsync, setAudioModeAsync } from 'expo-audio';
 import CharlotteAudioSession from 'charlotte-audio-session';
@@ -44,6 +44,9 @@ type Line = { who: 'ai' | 'user'; text: string };
 export function FamilyCallModal({ character, topic, onClose }: { character: string | null; topic?: string | null; onClose: () => void }) {
   const isPt = systemIsPt;
   const insets = useSafeAreaInsets();
+  // Tela baixa (iPhone SE/8, Android pequeno): avatar e espaços menores para os botões caberem.
+  const compact = useWindowDimensions().height < 760;
+  const AV = compact ? 128 : 168;
   const info = characterInfo(character);
   const th = THEME[character ?? ''] ?? THEME.default;
   const [attempt, setAttempt] = React.useState(0);
@@ -133,6 +136,8 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
               setBadge(tag && IMPRESSION_BADGE[tag] ? (isPt ? IMPRESSION_BADGE[tag].pt : IMPRESSION_BADGE[tag].en) : null);
             }
             const text = m.message.replace(/<\/?[A-Za-z]+>/g, '').trim();
+            // "..." = transcrição provisória do aluno (ainda sem palavras): não vira balão.
+            if (!text || /^[.\s…]+$/.test(text)) return;
             setLines(prev => [...prev, { who: m.source, text }].slice(-2));
           },
           onModeChange: md => {
@@ -184,7 +189,7 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
     : mode === 'speaking' || firstTurnRef.current ? (isPt ? `${info.name} está falando` : `${info.name} is talking`)
     : muted ? (isPt ? 'Microfone desligado' : 'Mic off') : (isPt ? 'Pode falar' : 'Your turn');
   const minutesLeft = Math.max(0, Math.floor((limitRef.current - secs) / 60));
-  const ringScale = ring.interpolate({ inputRange: [0, 1], outputRange: [1, 1.32] });
+  const ringScale = ring.interpolate({ inputRange: [0, 1], outputRange: [1, compact ? 1.22 : 1.32] });
   const ringOpacity = ring.interpolate({ inputRange: [0, 1], outputRange: [0.15, 0.55] });
   const ringColor = th.ink;
 
@@ -210,37 +215,37 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
         </View>
 
         {/* Personagem */}
-        <View style={{ alignItems: 'center', paddingTop: 28 }}>
+        <View style={{ alignItems: 'center', paddingTop: compact ? 8 : 28 }}>
           {badge && live ? (
             <View style={{ backgroundColor: th.ink, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 5, marginBottom: 14 }}>
               <AppText style={{ fontSize: 12, fontWeight: '800', color: th.bg, letterSpacing: 1, textTransform: 'uppercase' }}>{badge}</AppText>
             </View>
           ) : <View style={{ height: 38 }} />}
-          <View style={{ width: 200, height: 200, alignItems: 'center', justifyContent: 'center' }}>
-            <Animated.View style={{ position: 'absolute', width: 176, height: 176, borderRadius: 88, backgroundColor: ringColor, opacity: live && mode === 'speaking' ? ringOpacity : 0, transform: [{ scale: ringScale }] }} />
-            <View style={{ width: 168, height: 168, borderRadius: 84, overflow: 'hidden', backgroundColor: INK, borderWidth: 5, borderColor: th.ink }}>
+          <View style={{ width: AV + 32, height: AV + 32, alignItems: 'center', justifyContent: 'center' }}>
+            <Animated.View style={{ position: 'absolute', width: AV + 8, height: AV + 8, borderRadius: (AV + 8) / 2, backgroundColor: ringColor, opacity: live && mode === 'speaking' ? ringOpacity : 0, transform: [{ scale: ringScale }] }} />
+            <View style={{ width: AV, height: AV, borderRadius: AV / 2, overflow: 'hidden', backgroundColor: INK, borderWidth: 5, borderColor: th.ink }}>
               <Image source={info.avatar} style={{ width: '100%', height: '100%' }} />
             </View>
           </View>
-          <AppText display style={{ fontSize: 32, fontWeight: '800', color: th.ink, marginTop: 18 }}>{info.name}</AppText>
+          <AppText display style={{ fontSize: compact ? 26 : 32, fontWeight: '800', color: th.ink, marginTop: compact ? 10 : 18 }}>{info.name}</AppText>
           <View style={{ marginTop: 10, backgroundColor: yourTurn ? th.you : th.chip, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 6 }}>
             <AppText style={{ fontSize: 14, fontWeight: '700', color: yourTurn ? INK : th.ink }}>{chip}</AppText>
           </View>
-          <View style={{ marginTop: 18, height: 44, justifyContent: 'center' }}>
+          <View style={{ marginTop: compact ? 8 : 18, height: compact ? 32 : 44, justifyContent: 'center' }}>
             {/* Linha: só a voz do aluno, na vez dele (retorno de que o microfone está ouvindo).
                 A voz do personagem aparece no anel do avatar. */}
             {status === 'calling' ? <ActivityIndicator color={th.ink} /> : yourTurn && !muted ? (
-              <LiveVoiceWave mode="user" userLevelRef={levels.local} color={th.you} width={260} height={44} />
+              <LiveVoiceWave mode="user" userLevelRef={levels.local} color={th.you} width={260} height={compact ? 32 : 44} />
             ) : null}
           </View>
         </View>
 
         {/* Legendas: as duas últimas falas */}
         {live && captions && lines.length > 0 && (
-          <View style={{ gap: 8, marginTop: 14 }}>
+          <View style={{ gap: 8, marginTop: compact ? 8 : 14 }}>
             {lines.map((l, i) => (
               <View key={i} style={{ alignSelf: l.who === 'ai' ? 'flex-start' : 'flex-end', maxWidth: '88%', backgroundColor: l.who === 'ai' ? th.bubble : th.ink, borderRadius: 16, paddingHorizontal: 14, paddingVertical: 9, opacity: i === lines.length - 1 ? 1 : 0.6 }}>
-                <AppText style={{ fontSize: 15, lineHeight: 20, color: l.who === 'ai' ? INK : th.bg }} numberOfLines={3}>{l.text}</AppText>
+                <AppText style={{ fontSize: 15, lineHeight: 20, color: l.who === 'ai' ? INK : th.bg }} numberOfLines={compact ? 2 : 3}>{l.text}</AppText>
               </View>
             ))}
           </View>
