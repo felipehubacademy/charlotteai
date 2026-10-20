@@ -9,7 +9,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'Queizy',
   slug: 'charlotte-rn',
-  version: '2.0.1',
+  version: '2.0.2',
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
@@ -74,7 +74,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   updates: {
     url: 'https://u.expo.dev/da14586b-2944-4150-b8ad-5ff7e32af6e2',
     enabled: true,
-    fallbackToCacheTimeout: 0,
+    // Na abertura, espera até 5 s (durante a tela de abertura) para aplicar a atualização nova antes de
+    // abrir. Com 0, quem acabou de baixar da loja passava a 1ª sessão no código que veio no binário, sem
+    // as correções mais recentes (casos reais em 2026-10-20: microfone do L&S e assinatura do site).
+    // Sem internet ou sem atualização nova, abre na hora com o que já tem.
+    fallbackToCacheTimeout: 5000,
     checkAutomatically: 'ON_LOAD',
   },
   // Bumped 2026-05-13 (livevoice-reset): novo binario tem CharlotteAudioSession
