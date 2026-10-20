@@ -339,6 +339,80 @@ interface AiCosts {
   openai: { source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string };
   elevenlabs: { plan: string; used: number; limit: number; resetAt: string | null; nextInvoiceUsd: number | null } | null;
   prev: { openai: { usd: number; lines: { name: string; usd: number }[] }; azure: { total: number; currency: string } | null };
+  voice: { byProduct: { name: string; credits: number }[]; byCharacter: { id: string; name: string; credits: number }[]; error?: string } | null;
+  liveCalls: { id: string; name: string; calls: number; students: number; minutes: number }[];
+}
+
+// Ligações ao vivo por personagem: uso (ligações, alunos, minutos) e custo do mês.
+// Charlotte: linhas realtime da OpenAI. Família: créditos de ligação do fornecedor de voz,
+// repartidos pelos minutos de cada personagem; em R$ quando o plano é legível (preço/créditos).
+function LiveCallsByCharacter({ data, toBrl }: { data: AiCosts; toBrl: (n: number, cur: string) => number }) {
+  const v = data.voice;
+  const callCredits = v?.byProduct.find(p => p.name.startsWith('Ligações'))?.credits ?? 0;
+  const otherCredits = v?.byProduct.find(p => p.name.startsWith('Falas'))?.credits ?? 0;
+  const totalCredits = callCredits + otherCredits;
+  const rate = data.elevenlabs && data.elevenlabs.nextInvoiceUsd != null && data.elevenlabs.limit > 0
+    ? data.elevenlabs.nextInvoiceUsd / data.elevenlabs.limit : null;
+  const charlotteUsd = data.openai.lines.filter(l => isLiveVoice(l.name)).reduce((s, l) => s + l.usd, 0);
+  const familyMinutes = data.liveCalls.filter(c => c.id !== 'charlotte').reduce((s, c) => s + c.minutes, 0);
+  const rows = data.liveCalls.map(c => {
+    let usd: number | null = null;
+    if (c.id === 'charlotte') usd = charlotteUsd;
+    else if (rate != null && familyMinutes > 0) usd = callCredits * rate * (c.minutes / familyMinutes);
+    const credits = c.id === 'charlotte' ? null : (familyMinutes > 0 ? callCredits * (c.minutes / familyMinutes) : 0);
+    return { ...c, usd, credits };
+  });
+  const pct = (n: number) => (totalCredits > 0 ? `${Math.round((n / totalCredits) * 100)}%` : '—');
+  const th: React.CSSProperties = { textAlign: 'left', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 0.6, color: 'var(--t3)', padding: '6px 8px' };
+  const td: React.CSSProperties = { fontSize: 13, padding: '8px', borderTop: '1px solid var(--line, rgba(0,0,0,0.08))' };
+  return (
+    <div style={{ marginTop: 18, display: 'grid', gap: 14 }}>
+      <div style={{ fontWeight: 800, fontSize: 14 }}>Ligações ao vivo por personagem</div>
+      {rows.length === 0 ? <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>Nenhuma ligação salva neste mês.</div> : (
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead><tr>
+              <th style={th}>Personagem</th><th style={th}>Ligações</th><th style={th}>Alunos</th><th style={th}>Minutos</th>
+              <th style={th}>Min/ligação</th><th style={th}>Custo</th><th style={th}>Custo/min</th>
+            </tr></thead>
+            <tbody>
+              {rows.map(r => (
+                <tr key={r.id}>
+                  <td style={{ ...td, fontWeight: 700 }}>{r.name}</td>
+                  <td style={td} className="num">{r.calls}</td>
+                  <td style={td} className="num">{r.students}</td>
+                  <td style={td} className="num">{r.minutes.toLocaleString('pt-BR')}</td>
+                  <td style={td} className="num">{r.calls ? (r.minutes / r.calls).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) : '—'}</td>
+                  <td style={td} className="num">{r.usd != null ? brl(toBrl(r.usd, 'USD')) : r.credits != null ? `${Math.round(r.credits).toLocaleString('pt-BR')} créditos` : '—'}</td>
+                  <td style={td} className="num">{r.usd != null && r.minutes > 0 ? brl(toBrl(r.usd / r.minutes, 'USD')) : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+      {v && !v.error && totalCredits > 0 && (
+        <div style={{ display: 'grid', gap: 8 }}>
+          <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>Fornecedor de voz no mês: {Math.round(totalCredits).toLocaleString('pt-BR')} créditos</div>
+          <div style={{ display: 'flex', height: 10, borderRadius: 999, overflow: 'hidden', background: 'rgba(0,0,0,0.06)' }}>
+            <div style={{ width: pct(callCredits), background: AI_ACCENT.eleven }} />
+            <div style={{ width: pct(otherCredits), background: AI_ACCENT.azure }} />
+          </div>
+          <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', fontSize: 12.5 }}>
+            <span><b style={{ color: AI_ACCENT.eleven }}>●</b> Ligações (Família): {pct(callCredits)}{rate != null ? ` · ${brl(toBrl(callCredits * rate, 'USD'))}` : ''}</span>
+            <span><b style={{ color: AI_ACCENT.azure }}>●</b> Falas e vocabulário: {pct(otherCredits)}{rate != null ? ` · ${brl(toBrl(otherCredits * rate, 'USD'))}` : ''}</span>
+          </div>
+          {v.byCharacter.length > 0 && (
+            <div style={{ fontSize: 12, color: 'var(--t2)' }}>
+              Por voz: {v.byCharacter.map(c => `${c.name} ${pct(c.credits)}`).join(' · ')}
+            </div>
+          )}
+        </div>
+      )}
+      {v?.error && <div style={{ fontSize: 12, color: 'var(--t2)' }}>Não foi possível ler a divisão do fornecedor de voz ({v.error}).</div>}
+      {rate == null && <div style={{ fontSize: 11.5, color: 'var(--t3)' }}>Valores em R$ das ligações da Família aparecem quando a chave do fornecedor de voz tiver a permissão de leitura do plano (user_read).</div>}
+    </div>
+  );
 }
 
 // Cards dos três custos principais de IA: fundo Tinta, cada provedor com sua cor.
@@ -517,6 +591,7 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
           </>
         )}
       </div>
+      {data && <LiveCallsByCharacter data={data} toBrl={toBrl} />}
     </div>
   );
 }
