@@ -334,6 +334,10 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
         .wc-card-title { font-size: 15px; font-weight: 800; color: ${INK}; margin-top: 12px; }
         .wc-pix { margin-top: 18px; padding: 20px 16px; border: 1.5px solid ${BORDER}; border-radius: 18px; background: #fff; text-align: center; }
         .wc-pix p { font-size: 14.5px; color: ${MID}; line-height: 1.5; }
+        .wc-qr { display: block; margin: 14px auto 6px; }
+        .wc-copy { display: flex; gap: 8px; margin-top: 12px; }
+        .wc-copy input { flex: 1; min-width: 0; font-size: 14px; color: ${MID}; text-overflow: ellipsis; }
+        .wc-copy button { flex: none; border: 0; border-radius: 12px; background: ${LIME}; color: ${INK}; font-weight: 800; font-size: 15px; padding: 0 20px; cursor: pointer; }
         .wc-addr { font-size: 13.5px; color: ${MID}; margin: 8px 0 0; line-height: 1.4; }
         .wc input:focus { outline: 2px solid ${INK}; border-color: transparent; }
         .wc-btn { width: 100%; border: 0; border-radius: 14px; background: ${LIME}; color: ${INK}; font-weight: 800; font-size: 17px; padding: 16px; cursor: pointer; margin-top: 20px; }
@@ -400,12 +404,14 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
           <div className="wc-card-title" style={{ fontSize: 20 }}>Pague com Pix</div>
           <p>No app do seu banco, escolha Pix e use o código abaixo (copia e cola) ou leia o QR code.</p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`data:image/png;base64,${pix.image}`} alt="QR code do Pix" width={220} height={220} />
-          <button type="button" className="wc-btn" style={{ marginTop: 12 }}
-            onClick={() => { navigator.clipboard?.writeText(pix.payload).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2500); }).catch(() => {}); }}>
-            {copied ? 'Código copiado' : 'Copiar código Pix'}
-          </button>
-          <p className="wc-addr" style={{ wordBreak: 'break-all', textAlign: 'left' }}>{pix.payload}</p>
+          <img className="wc-qr" src={`data:image/png;base64,${pix.image}`} alt="QR code do Pix" width={220} height={220} />
+          <div className="wc-copy">
+            <input value={pix.payload} readOnly aria-label="Código Pix (copia e cola)" onFocus={e => e.currentTarget.select()} />
+            <button type="button"
+              onClick={() => { navigator.clipboard?.writeText(pix.payload).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2500); }).catch(() => {}); }}>
+              {copied ? 'Copiado' : 'Copiar'}
+            </button>
+          </div>
           <p style={{ fontWeight: 700, color: INK, marginTop: 16 }}>Aguardando o pagamento... Assim que cair, esta página avança sozinha.</p>
           <p className="wc-addr">Valor: {brl(annual)}, pagamento único, sem renovação automática.</p>
         </div>
