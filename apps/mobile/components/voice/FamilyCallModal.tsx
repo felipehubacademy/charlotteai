@@ -68,9 +68,12 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
 
   // Anel do avatar segue o volume de quem fala.
   React.useEffect(() => {
-    if (status !== 'connected') { ring.setValue(0); return; }
+    if (status !== 'connected' || mode !== 'speaking') {
+      Animated.timing(ring, { toValue: 0, duration: 150, useNativeDriver: true }).start();
+      return;
+    }
     const iv = setInterval(() => {
-      const v = mode === 'speaking' ? levels.remote.current : levels.local.current;
+      const v = levels.remote.current;
       Animated.timing(ring, { toValue: Math.min(1, v), duration: 80, useNativeDriver: true }).start();
     }, 90);
     return () => clearInterval(iv);
@@ -183,7 +186,7 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
   const minutesLeft = Math.max(0, Math.floor((limitRef.current - secs) / 60));
   const ringScale = ring.interpolate({ inputRange: [0, 1], outputRange: [1, 1.32] });
   const ringOpacity = ring.interpolate({ inputRange: [0, 1], outputRange: [0.15, 0.55] });
-  const ringColor = mode === 'speaking' ? th.ink : th.you;
+  const ringColor = th.ink;
 
   const roundBtn = (on: boolean) => ({
     width: 62, height: 62, borderRadius: 31, alignItems: 'center' as const, justifyContent: 'center' as const,
@@ -207,14 +210,14 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
         </View>
 
         {/* Personagem */}
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ alignItems: 'center', paddingTop: 28 }}>
           {badge && live ? (
             <View style={{ backgroundColor: th.ink, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 5, marginBottom: 14 }}>
               <AppText style={{ fontSize: 12, fontWeight: '800', color: th.bg, letterSpacing: 1, textTransform: 'uppercase' }}>{badge}</AppText>
             </View>
           ) : <View style={{ height: 38 }} />}
           <View style={{ width: 200, height: 200, alignItems: 'center', justifyContent: 'center' }}>
-            <Animated.View style={{ position: 'absolute', width: 176, height: 176, borderRadius: 88, backgroundColor: ringColor, opacity: live ? ringOpacity : 0, transform: [{ scale: ringScale }] }} />
+            <Animated.View style={{ position: 'absolute', width: 176, height: 176, borderRadius: 88, backgroundColor: ringColor, opacity: live && mode === 'speaking' ? ringOpacity : 0, transform: [{ scale: ringScale }] }} />
             <View style={{ width: 168, height: 168, borderRadius: 84, overflow: 'hidden', backgroundColor: INK, borderWidth: 5, borderColor: th.ink }}>
               <Image source={info.avatar} style={{ width: '100%', height: '100%' }} />
             </View>
@@ -224,19 +227,17 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
             <AppText style={{ fontSize: 14, fontWeight: '700', color: yourTurn ? INK : th.ink }}>{chip}</AppText>
           </View>
           <View style={{ marginTop: 18, height: 44, justifyContent: 'center' }}>
-            {status === 'calling' ? <ActivityIndicator color={th.ink} /> : !live ? null : (
-              <LiveVoiceWave
-                mode={live ? (mode === 'speaking' ? 'charlotte' : 'user') : 'idle'}
-                levelRef={levels.remote} userLevelRef={levels.local}
-                color={mode === 'speaking' ? th.ink : th.you} width={260} height={44}
-              />
-            )}
+            {/* Linha: só a voz do aluno, na vez dele (retorno de que o microfone está ouvindo).
+                A voz do personagem aparece no anel do avatar. */}
+            {status === 'calling' ? <ActivityIndicator color={th.ink} /> : yourTurn && !muted ? (
+              <LiveVoiceWave mode="user" userLevelRef={levels.local} color={th.you} width={260} height={44} />
+            ) : null}
           </View>
         </View>
 
         {/* Legendas: as duas últimas falas */}
         {live && captions && lines.length > 0 && (
-          <View style={{ gap: 8, marginBottom: 18 }}>
+          <View style={{ gap: 8, marginTop: 14 }}>
             {lines.map((l, i) => (
               <View key={i} style={{ alignSelf: l.who === 'ai' ? 'flex-start' : 'flex-end', maxWidth: '88%', backgroundColor: l.who === 'ai' ? th.bubble : th.ink, borderRadius: 16, paddingHorizontal: 14, paddingVertical: 9, opacity: i === lines.length - 1 ? 1 : 0.6 }}>
                 <AppText style={{ fontSize: 15, lineHeight: 20, color: l.who === 'ai' ? INK : th.bg }} numberOfLines={3}>{l.text}</AppText>
@@ -244,6 +245,8 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
             ))}
           </View>
         )}
+
+        <View style={{ flex: 1 }} />
 
         {/* Fim: resumo */}
         {(status === 'ended' || status === 'error') && (
