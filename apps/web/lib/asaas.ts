@@ -158,6 +158,10 @@ export async function createCheckout(input: CheckoutInput): Promise<AsaasCheckou
       successUrl: `${SITE}/assinar/sucesso`,
       cancelUrl: `${SITE}/assinar?cancelado=1`,
       expiredUrl: `${SITE}/assinar?expirado=1`,
+      // Volta sozinho para a nossa tela de sucesso depois do pagamento (sem isso o aluno parava na
+      // tela "Pagamento confirmado" do processador e a conversão do navegador não disparava).
+      // Exige que queizy.com seja o domínio cadastrado nos dados comerciais da conta.
+      autoRedirect: true,
     },
     items: [{
       name: m === 'monthly' ? 'Queizy Mensal' : 'Queizy Anual',
@@ -172,8 +176,23 @@ export async function createCheckout(input: CheckoutInput): Promise<AsaasCheckou
   // Com o cliente já criado, o checkout não pede endereço. Se o Asaas recusar o campo,
   // cria sem cliente e a própria página do Asaas pede os dados.
   let r: AsaasCheckout;
+  // Se a API recusar o autoRedirect, cria sem ele (a venda nunca pode parar por isso).
+  const withoutAutoRedirect = (b: Record<string, unknown>) => {
+    const cb = { ...(b.callback as Record<string, unknown>) }; delete cb.autoRedirect;
+    return { ...b, callback: cb };
+  };
+  const post = async (b: Record<string, unknown>) => {
+    try { return await asaas<AsaasCheckout>('/checkouts', { method: 'POST', body: b }); }
+    catch (e) {
+      if (e instanceof AsaasError && e.status === 400 && JSON.stringify(e.body ?? '').toLowerCase().includes('redirect')) {
+        console.warn('[asaas] autoRedirect recusado, criando sem:', e.body);
+        return asaas<AsaasCheckout>('/checkouts', { method: 'POST', body: withoutAutoRedirect(b) });
+      }
+      throw e;
+    }
+  };
   try {
-    r = await asaas<AsaasCheckout>('/checkouts', { method: 'POST', body: input.customerId ? { ...body, customer: input.customerId } : body });
+    r = await post(input.customerId ? { ...body, customer: input.customerId } : body);
   } catch (e) {
     if (!input.customerId) throw e;
     console.warn('[asaas] checkout com cliente recusado, tentando sem:', e instanceof AsaasError ? e.body : e);
@@ -182,7 +201,7 @@ export async function createCheckout(input: CheckoutInput): Promise<AsaasCheckou
       const { getSupabaseAdmin } = await import('@/lib/supabase-admin');
       await getSupabaseAdmin().from('asaas_events').insert({ id: `fallback_${Date.now()}`, event: 'CHECKOUT_FALLBACK', payload: { error: e instanceof AsaasError ? e.body : String(e), method: m } } as never);
     } catch { /* só diagnóstico */ }
-    r = await asaas<AsaasCheckout>('/checkouts', { method: 'POST', body });
+    r = await post(body);
   }
   return { id: r.id, link: r.link ?? `https://www.asaas.com/checkoutSession/show?id=${r.id}`, status: r.status };
 }
