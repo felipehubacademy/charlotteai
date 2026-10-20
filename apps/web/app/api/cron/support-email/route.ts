@@ -3,7 +3,7 @@ export const maxDuration = 300;
 
 /**
  * app/api/cron/support-email/route.ts
- * Varredura (diária) da caixa de suporte: lê o que chegou em suporte@, roda o
+ * Varredura da caixa de suporte (a cada 5 minutos pelo agendamento da Vercel, GET): lê o que chegou em suporte@, roda o
  * agente e auto-responde (whitelist) ou escala pra um atendente. Idempotente
  * via graph_message_id. Auth por x-admin-secret (ou ?secret=).
  */
@@ -22,6 +22,9 @@ const SUPPORT_ADDRS = [SUPPORT_ADDR, 'suporte@queizy.com'];
 const SELF = 'charlotte@hubacademybr.com';
 
 function checkAuth(req: NextRequest) {
+  // Agendamento da Vercel (a cada 5 minutos, vercel.json) manda Bearer CRON_SECRET.
+  const cron = process.env.CRON_SECRET;
+  if (cron && req.headers.get('authorization') === `Bearer ${cron}`) return true;
   const auth = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
   return ADMIN_SECRET && auth === ADMIN_SECRET;
 }
@@ -90,4 +93,9 @@ export async function POST(req: NextRequest) {
   }
 
   return NextResponse.json({ ok: true, since, scanned: msgs.length, processed, autoResolved, escalated, skipped, details });
+}
+
+// Agendamento da Vercel chama por GET (sem corpo: últimas 24 horas).
+export async function GET(req: NextRequest) {
+  return POST(req);
 }

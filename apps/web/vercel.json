@@ -59,6 +59,10 @@
     {
       "path": "/api/cron/chat-audio-cleanup",
       "schedule": "0 7 * * *"
+    },
+    {
+      "path": "/api/cron/support-email",
+      "schedule": "*/5 * * * *"
     }
   ]
 }
