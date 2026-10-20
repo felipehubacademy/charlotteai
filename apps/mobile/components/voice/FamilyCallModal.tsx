@@ -19,7 +19,10 @@ import { LiveVoiceWave } from './LiveVoiceWave';
 import { systemIsPt } from '@/lib/systemLang';
 import { characterInfo } from '@/lib/characters';
 import { consumeLiveVoiceSeconds } from '@/lib/liveVoiceUsage';
-import { requestFamilyCall, startFamilyConversation, familyCallStats } from '@/lib/familyCall';
+import { requestFamilyCall, startFamilyConversation, familyCallStats, saveFamilyCall } from '@/lib/familyCall';
+import { currentTopicTitle } from '@/lib/currentTopic';
+import { visibleTracks } from '@/lib/tracks';
+import { useAuth } from '@/hooks/useAuth';
 import { useCallLevels } from '@/lib/callLevels';
 import { track } from '@/lib/analytics';
 
@@ -41,8 +44,9 @@ const IMPRESSION_BADGE: Record<string, { pt: string; en: string }> = {
 type Status = 'calling' | 'connected' | 'reconnecting' | 'ended' | 'error';
 type Line = { who: 'ai' | 'user'; text: string };
 
-export function FamilyCallModal({ character, topic, onClose }: { character: string | null; topic?: string | null; onClose: () => void }) {
+export function FamilyCallModal({ character, onClose }: { character: string | null; onClose: () => void }) {
   const isPt = systemIsPt;
+  const { profile } = useAuth();
   const insets = useSafeAreaInsets();
   // Tela baixa (iPhone SE/8, Android pequeno): avatar e espaços menores para os botões caberem.
   const compact = useWindowDimensions().height < 760;
@@ -65,6 +69,7 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
   const closingRef = React.useRef(false);
   const mutedRef = React.useRef(false);
   const firstTurnRef = React.useRef(true); // microfone fechado até o fim da 1ª fala do personagem
+  const transcriptRef = React.useRef<Line[]>([]); // conversa inteira, para o histórico
 
   const levels = useCallLevels(status === 'connected', () => familyCallStats(convRef.current));
   const ring = React.useRef(new Animated.Value(0)).current;
@@ -91,6 +96,9 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
     CharlotteAudioSession.stop().catch(() => {});
     const used = startedAtRef.current ? Math.round((Date.now() - startedAtRef.current) / 1000) : 0;
     if (used > 0) consumeLiveVoiceSeconds(used).catch(() => {});
+    if (startedAtRef.current && transcriptRef.current.length) {
+      saveFamilyCall({ character: character ?? '', startedAt: new Date(startedAtRef.current).toISOString(), durationSeconds: used, lines: transcriptRef.current });
+    }
     track('family_call_end', { character: character ?? '', seconds: used, reason });
     setStatus(s => (s === 'error' ? s : 'ended'));
   }, [character]);
@@ -101,7 +109,7 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
   React.useEffect(() => {
     if (!character) return;
     let alive = true;
-    closingRef.current = false; firstTurnRef.current = true; startedAtRef.current = null;
+    closingRef.current = false; firstTurnRef.current = true; startedAtRef.current = null; transcriptRef.current = [];
     setStatus('calling'); setLines([]); setBadge(null); setSecs(0); setError(''); setMode('listening');
     (async () => {
       try {
@@ -113,7 +121,15 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
         ]);
         await CharlotteAudioSession.setSpeakerOn(true).catch(() => {});
         CharlotteAudioSession.playRingback().catch(() => {});
-        const s = await requestFamilyCall(character, topic);
+        // Contexto opcional: tópico atual da trilha do nível e da trilha do personagem (se o aluno estiver nela).
+        const uid = profile?.id ?? '';
+        const lvl = (profile?.charlotte_level ?? 'Inter') as 'Novice' | 'Inter' | 'Advanced';
+        const charTrack = visibleTracks(profile?.beta_features).find(t => t.character === character);
+        const [topic, trackTopic] = await Promise.all([
+          uid ? currentTopicTitle(uid, lvl) : Promise.resolve(null),
+          uid && charTrack ? currentTopicTitle(uid, charTrack.id) : Promise.resolve(null),
+        ]);
+        const s = await requestFamilyCall(character, topic, trackTopic);
         if (!alive) return;
         limitRef.current = s.remainingSeconds;
         convRef.current = await startFamilyConversation(s, {
@@ -138,6 +154,7 @@ export function FamilyCallModal({ character, topic, onClose }: { character: stri
             const text = m.message.replace(/<\/?[A-Za-z]+>/g, '').trim();
             // "..." = transcrição provisória do aluno (ainda sem palavras): não vira balão.
             if (!text || /^[.\s…]+$/.test(text)) return;
+            transcriptRef.current.push({ who: m.source, text });
             setLines(prev => [...prev, { who: m.source, text }].slice(-2));
           },
           onModeChange: md => {

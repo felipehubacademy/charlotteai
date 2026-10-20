@@ -2,6 +2,7 @@
 // Live Voice tab — hero com video da Charlotte + ring de pool mensal +
 // resumo da última chamada + botão Start now. Beta only (new_layout).
 
+import { characterInfo } from '@/lib/characters';
 import React, { useState, useCallback, useMemo } from 'react';
 import {
   View, ScrollView, TouchableOpacity, ActivityIndicator,
@@ -60,6 +61,8 @@ interface LastCall {
   duration_seconds: number;
   summary:          string | null;
   transcript:       string | null;
+  /** Quem atendeu: 'charlotte' (padrão) ou um membro da Família Queizy. */
+  character?:       string | null;
 }
 
 // ── Helpers de label ──────────────────────────────────────────────────────────
@@ -188,9 +191,12 @@ function CallListItem({ call, isPt, onPress, onDelete }: {
         disabled={!hasTranscript}
         style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8 }}
       >
+        <Image source={characterInfo(call.character).avatar} style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: '#16131F' }} />
         <View style={{ flex: 1 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-            <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16131F' }}>{whenLabel}</AppText>
+            <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16131F' }}>{characterInfo(call.character).name}</AppText>
+            <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,19,31,0.3)' }} />
+            <AppText style={{ fontSize: 12, fontWeight: '700', color: 'rgba(22,19,31,0.55)' }}>{whenLabel}</AppText>
             <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,19,31,0.3)' }} />
             <AppText style={{ fontSize: 12, fontWeight: '600', color: 'rgba(22,19,31,0.55)' }}>{durLabel}</AppText>
           </View>
@@ -334,7 +340,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
   const turns = useMemo(() => {
     if (!call?.transcript) return [] as Array<{ role: 'user' | 'assistant'; text: string }>;
     return call.transcript.split('\n').reduce((acc, line) => {
-      const m = line.match(/^(User|Charlotte):\s*(.+)$/);
+      const m = line.match(/^(User|[A-Z][A-Za-z]+):\s*(.+)$/);
       if (m) {
         acc.push({ role: m[1] === 'User' ? 'user' : 'assistant', text: m[2] });
       } else if (acc.length > 0) {
@@ -381,7 +387,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
           {/* Header */}
           <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 24, marginBottom: 16 }}>
             <AppText style={{ fontSize: 16, fontWeight: '800', color: '#16131F', flex: 1 }}>
-              {isPt ? 'Conversa anterior' : 'Previous conversation'}
+              {isPt ? `Conversa com ${characterInfo(call.character).name}` : `Conversation with ${characterInfo(call.character).name}`}
             </AppText>
             <TouchableOpacity onPress={onClose} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
               <XCircle size={22} color="rgba(22,19,31,0.3)" weight="fill" />
@@ -423,7 +429,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
                   <View key={i} style={{ flexDirection: 'row', justifyContent: isUser ? 'flex-end' : 'flex-start' }}>
                     {!isUser && (
                       <Image
-                        source={require('@/assets/charlotte-avatar.png')}
+                        source={characterInfo(call.character).avatar}
                         style={{ width: 26, height: 26, borderRadius: 13, marginRight: 8, marginTop: 2, flexShrink: 0, backgroundColor: '#16131F' }}
                       />
                     )}
@@ -518,7 +524,7 @@ export default function LiveVoiceTab() {
           .eq('user_id', userId)
           .gte('earned_at', todayISO),
         supabase.from('charlotte_live_calls')
-          .select('id,started_at,duration_seconds,summary,transcript')
+          .select('id,started_at,duration_seconds,summary,transcript,character')
           .eq('user_id', userId)
           .order('started_at', { ascending: false })
           .limit(10),

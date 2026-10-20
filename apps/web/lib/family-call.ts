@@ -59,18 +59,32 @@ const FIRST_MESSAGES_NOVICE: Record<string, string[]> = {
   ],
 };
 
-export function buildCallSession(opts: { characterId: string; level: CallLevel; name: string; topic?: string | null }) {
+export interface CallContext {
+  /** Tópico atual na trilha do nível e na trilha do personagem (se o aluno estiver nela). */
+  topic?: string | null;
+  trackTopic?: string | null;
+  /** Memória das últimas ligações com este personagem (mais recente primeiro). */
+  memories?: string[];
+}
+
+export function buildCallSession(opts: { characterId: string; level: CallLevel; name: string } & CallContext) {
   const c = CHARACTERS[opts.characterId as keyof typeof CHARACTERS] as Character | undefined;
   if (!c || !c.persona || !FAMILY_AGENTS[c.id]) return null;
   const name = (opts.name || 'friend').split(/\s+/)[0];
-  const topic = opts.topic?.trim()
-    ? `\nCONTEXT: the student is studying "${opts.topic.trim()}" on their Queizy trail. Bring it up naturally once in a while (a question or a joke using it), without turning the call into a lesson.`
+  // Tópico e memória são sugestões: a conversa natural e os assuntos do aluno vêm primeiro.
+  const topics = [opts.topic?.trim() && `"${opts.topic.trim()}" (their main English trail)`, opts.trackTopic?.trim() && `"${opts.trackTopic.trim()}" (your own trail)`].filter(Boolean);
+  const topic = topics.length
+    ? `\nOPTIONAL CONTEXT (never force it): the student is studying ${topics.join(' and ')} in Queizy. If it fits the moment, you may use it once in a while (a question or a joke that makes them use that English), but the student's own topics always come first. Never turn the call into a lesson.`
+    : '';
+  const mem = (opts.memories ?? []).filter(Boolean).slice(0, 3);
+  const memory = mem.length
+    ? `\nWHAT YOU REMEMBER FROM YOUR LAST CALLS WITH ${name.toUpperCase()} (most recent first):\n${mem.map(m => `- ${m}`).join('\n')}\nUse it like a friend would: a callback joke or a follow-up question when it fits. Never list what you remember.`
     : '';
   const prompt = `You are on a live voice call in Queizy, an app for Brazilians learning English. Your job: get ${name} talking in English, having fun and gently improving, like a funny friend, not a formal teacher.
 
 ${LEVEL_RULES[opts.level]}
 
-${VOICE_RULES}${topic}
+${VOICE_RULES}${topic}${memory}
 
 ${c.persona
   .replace(/ignore her name, age and personality above, but keep EVERY teaching, level, language, length and format rule above\./, 'keep EVERY teaching, level, language and length rule above.')
@@ -82,4 +96,45 @@ The student's name is ${name}.`;
   const pool = (opts.level === 'Novice' ? FIRST_MESSAGES_NOVICE : FIRST_MESSAGES)[c.id] ?? [];
   const firstMessage = (pool[Math.floor(Math.random() * pool.length)] ?? 'Hey {name}!').replace(/\{name\}/g, name);
   return { agentId: FAMILY_AGENTS[c.id], prompt, firstMessage, characterName: c.name };
+}
+
+/** Primeira fala gerada na hora com o contexto do aluno (horário, dia, tópico, sequência, memória).
+ *  Roda junto do pedido de token, enquanto o telefone chama; se falhar ou passar de 2,5 s, usa a lista fixa. */
+export async function generateOpener(opts: {
+  characterId: string; level: CallLevel; name: string; fallback: string;
+  localHour: number; weekday: string; streak: number; topic?: string | null; trackTopic?: string | null; memories?: string[];
+}): Promise<string> {
+  const c = CHARACTERS[opts.characterId as keyof typeof CHARACTERS] as Character | undefined;
+  if (!c?.persona || !process.env.OPENAI_API_KEY) return opts.fallback;
+  const name = (opts.name || 'friend').split(/\s+/)[0];
+  const ctx = [
+    `Local time: ${opts.localHour}h, ${opts.weekday}.`,
+    opts.streak > 1 ? `Study streak: ${opts.streak} days in a row.` : '',
+    opts.topic ? `Studying on their main trail: "${opts.topic}".` : '',
+    opts.trackTopic ? `Studying on your trail: "${opts.trackTopic}".` : '',
+    opts.memories?.length ? `From your last call: ${opts.memories[0]}` : 'This is your first call together.',
+  ].filter(Boolean).join(' ');
+  const impressionHint = Math.random() < 0.2
+    ? 'This time, open as ONE of your impressions, wrapped in its voice tag (<President>...</President> or <Hoops>...</Hoops>).'
+    : 'Open in your normal voice (no tags).';
+  const system = `${c.persona.split('Hard rules')[0]}
+You are opening a live voice call with ${name}, an English student (${opts.level} level). Write ONLY your first line: a warm, funny greeting using their name plus ONE easy question to get them talking. Max 2 short sentences, max 25 words, in English${opts.level === 'Novice' ? ' with a few simple Portuguese words to make them comfortable' : ''}. Use AT MOST one detail from the context (pick what makes the best opener; often just the time of day or a follow-up on the last call). No emojis, no quotes, no stage directions. ${impressionHint}
+Never mention politics, news, real people, teams or brands.`;
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 2500);
+    const r = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST', signal: ctrl.signal,
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
+      body: JSON.stringify({ model: 'gpt-4.1-mini', temperature: 0.95, max_tokens: 70,
+        messages: [{ role: 'system', content: system }, { role: 'user', content: ctx }] }),
+    });
+    clearTimeout(timer);
+    if (!r.ok) return opts.fallback;
+    const j = await r.json();
+    const text = String(j.choices?.[0]?.message?.content ?? '').trim().replace(/^["“]|["”]$/g, '');
+    return text.length >= 8 && text.length <= 260 ? text : opts.fallback;
+  } catch {
+    return opts.fallback;
+  }
 }

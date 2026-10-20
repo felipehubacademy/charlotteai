@@ -73,14 +73,14 @@ export interface FamilyCallStart {
 }
 
 /** Pede ao servidor a ligação (confere minutos e a liberação) — erro 'monthly_pool_exhausted' / 'not_available'. */
-export async function requestFamilyCall(character: string, topic?: string | null): Promise<FamilyCallStart> {
+export async function requestFamilyCall(character: string, topic?: string | null, trackTopic?: string | null): Promise<FamilyCallStart> {
   const { data } = await supabase.auth.getSession();
   const token = data.session?.access_token;
   if (!token) throw new Error('not_signed_in');
   const r = await fetch(`${API_BASE_URL}/api/family-call/session`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-    body: JSON.stringify({ character, topic }),
+    body: JSON.stringify({ character, topic, trackTopic }),
   });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(j.error || 'failed');
@@ -126,4 +126,18 @@ export async function familyCallStats(conversation: any): Promise<any[]> {
   room.localParticipant?.audioTrackPublications?.forEach((pub: any) => pub.track && tracks.push(pub.track));
   const reports = await Promise.all(tracks.map(t => t.getRTCStatsReport?.().catch(() => undefined)));
   return reports.filter(Boolean);
+}
+
+/** Salva a ligação no histórico (transcrição, resumo e memória para a próxima). Falha em silêncio. */
+export async function saveFamilyCall(p: { character: string; startedAt: string; durationSeconds: number; lines: { who: 'ai' | 'user'; text: string }[] }) {
+  try {
+    const { data } = await supabase.auth.getSession();
+    const token = data.session?.access_token;
+    if (!token || !p.lines.length) return;
+    await fetch(`${API_BASE_URL}/api/family-call/end`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify(p),
+    });
+  } catch { /* o histórico não pode travar o fim da ligação */ }
 }
