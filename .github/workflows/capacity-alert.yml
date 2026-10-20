@@ -2,8 +2,9 @@ name: "Alerta - capacidade do banco"
 
 on:
   schedule:
-    # Todo dia às 12h UTC (9h em Brasília). Só manda e-mail quando o banco passa de 70% do limite.
-    - cron: '0 12 * * *'
+    # De hora em hora (pico dos anúncios). Só manda e-mail quando passa do limite de aviso, no máximo
+    # um a cada 12 horas.
+    - cron: '7 * * * *'
   workflow_dispatch: # permite rodar manualmente
 
 jobs:

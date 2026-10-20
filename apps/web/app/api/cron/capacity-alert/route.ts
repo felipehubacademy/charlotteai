@@ -2,7 +2,8 @@
 // antes do limite (para ligar o plano pago a tempo). Limites do gratuito: banco 500 MB, arquivos 1 GB.
 // O tráfego de saída (5 GB/mês) não é legível por aqui: o painel do banco mostra e avisa por e-mail.
 // POST { dryRun?: true }  header Authorization: Bearer <CRON_SECRET_TOKEN> ou x-admin-secret.
-// Agendado todo dia pelo GitHub Actions (.github/workflows/capacity-alert.yml).
+// Agendado de hora em hora pelo GitHub Actions (.github/workflows/capacity-alert.yml); o e-mail sai no
+// máximo a cada 12 horas para não lotar a caixa enquanto o plano pago não é ligado.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
@@ -42,6 +43,12 @@ export async function POST(req: NextRequest) {
   if (pct.storage >= WARN) alerts.push(`Arquivos em ${report.arquivos}.`);
   if (pct.conn >= 0.8) alerts.push(`Conexões em ${report.conexoes} no momento da checagem.`);
   if (!alerts.length || body?.dryRun === true) return NextResponse.json({ alerts, report });
+
+  const ALERT_KEY = 'capacity-alert';
+  const { count: recent } = await supabase.from('checkout_attempts').select('id', { count: 'exact', head: true })
+    .eq('kind', ALERT_KEY).gte('created_at', new Date(Date.now() - 12 * 3600000).toISOString());
+  if ((recent ?? 0) > 0) return NextResponse.json({ alerts, report, skipped: 'avisado nas últimas 12 horas' });
+  await supabase.from('checkout_attempts').insert({ kind: ALERT_KEY, email: ALERT_KEY, ip: null } as never);
 
   const { data: admins } = await supabase.from('admin_members').select('email').eq('role', 'admin').eq('active', true);
   const to = ((admins ?? []) as { email: string | null }[]).map(m => m.email).filter((e): e is string => !!e);
