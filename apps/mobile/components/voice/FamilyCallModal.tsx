@@ -221,6 +221,8 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
       setSecs(0); setPoolOut(false);
     }
     setStatus('calling'); setCaption(null); setTranslation(null); setBadge(null); setError(''); setMode('listening'); setWarning(null);
+    // Cada conexão (nova ou "Retomar") começa com o microfone ligado, como na Charlotte.
+    setMuted(false); mutedRef.current = false;
     modeRef.current = 'listening';
     (async () => {
       try {

@@ -694,8 +694,11 @@ export default function LiveVoiceModal({
     inactivityIntervalRef.current = setInterval(() => {
       const idleSec = Math.floor((Date.now() - lastActivityRef.current) / 1000);
       if (idleSec >= INACTIVITY_PAUSE_SEC) {
-        // Pausar por inatividade
-        return; // será tratado pelo useEffect abaixo
+        // Pausar por inatividade: zera a contagem para o useEffect abaixo disparar a pausa.
+        // (Antes só retornava; a contagem parava em 1 s e a ligação nunca pausava.)
+        setInactivityWarning(true);
+        setWarningCountdown(0);
+        return;
       }
       if (idleSec >= INACTIVITY_WARN_SEC) {
         if (!warnStartRef.current) warnStartRef.current = Date.now();
