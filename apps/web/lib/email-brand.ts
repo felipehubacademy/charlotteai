@@ -60,10 +60,12 @@ export function p(text: string, centered = true): string {
 export function meta(rows: { label: string; value: string }[]): string {
   const rowsHtml = rows.map(r =>
     `<tr>
-      <td style="padding:12px 0;font-size:14px;color:${LIGHT};border-bottom:1px solid #F0EDE6;width:150px;">${r.label}</td>
-      <td style="padding:12px 0;font-size:14px;color:${INK};border-bottom:1px solid #F0EDE6;font-weight:600;">${r.value}</td>
+      <td width="130" valign="top" style="padding:12px 12px 12px 0;font-size:14px;color:${LIGHT};border-bottom:1px solid #F0EDE6;width:130px;white-space:nowrap;">${r.label}</td>
+      <td valign="top" style="padding:12px 0;font-size:14px;color:${INK};border-bottom:1px solid #F0EDE6;font-weight:600;word-break:break-all;">${r.value}</td>
     </tr>`).join('');
-  return `<table cellpadding="0" cellspacing="0" style="width:100%;margin:24px 0;">${rowsHtml}</table>`;
+  // width/valign como atributos: o Outlook (principalmente no modo escuro) ignora a largura só no CSS
+  // e juntava o rótulo com o valor ("PlanoPlano Mensal").
+  return `<table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;margin:24px 0;">${rowsHtml}</table>`;
 }
 
 export function btn(text: string, url: string): string {
