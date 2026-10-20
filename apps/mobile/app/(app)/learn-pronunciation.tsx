@@ -23,6 +23,7 @@ import Constants from 'expo-constants';
 import { useAudioRecorder, RecordingPresets, RecordingOptions, IOSOutputFormat, AudioQuality } from 'expo-audio';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
 import BluetoothMicHint from '@/components/BluetoothMicHint';
+import { goBack } from '@/lib/goBack';
 
 // ── Palette ────────────────────────────────────────────────────
 const C = {
@@ -395,7 +396,7 @@ export default function LearnPronunciationScreen() {
           >
             <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>Start again</AppText>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.back()}>
+          <TouchableOpacity onPress={() => goBack()}>
             <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>Back to home</AppText>
           </TouchableOpacity>
         </View>
@@ -413,7 +414,7 @@ export default function LearnPronunciationScreen() {
         borderBottomWidth: 1, borderBottomColor: C.border,
         backgroundColor: C.card,
       }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+        <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1, alignItems: 'center' }}>

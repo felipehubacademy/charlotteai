@@ -18,6 +18,7 @@ import { useTotalXP } from '@/hooks/useTotalXP';
 import { QueizyWave } from '@/components/ui/QueizyWave';
 import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
+import { goBack } from '@/lib/goBack';
 
 // ── Palette ────────────────────────────────────────────────────
 const C = {
@@ -402,7 +403,7 @@ export default function LearnGrammarScreen() {
           >
             <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>Start again</AppText>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.back()}>
+          <TouchableOpacity onPress={() => goBack()}>
             <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>Back to home</AppText>
           </TouchableOpacity>
         </View>
@@ -419,7 +420,7 @@ export default function LearnGrammarScreen() {
         paddingHorizontal: 16, height: 52,
         borderBottomWidth: 1, borderBottomColor: C.border, backgroundColor: C.card,
       }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+        <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1, alignItems: 'center' }}>

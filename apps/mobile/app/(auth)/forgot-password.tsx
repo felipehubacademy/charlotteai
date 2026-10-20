@@ -10,6 +10,7 @@ import { Envelope, ArrowLeft, CheckCircle, WarningCircle } from 'phosphor-react-
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
+import { goBack } from '@/lib/goBack';
 
 // ── Light theme ───────────────────────────────────────────────
 const C = {
@@ -65,7 +66,7 @@ export default function ForgotPasswordScreen() {
 
           {/* Back */}
           <TouchableOpacity
-            onPress={() => router.back()}
+            onPress={() => goBack('/(auth)/login')}
             style={{ position: 'absolute', top: 0, left: 4, padding: 4 }}
             hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
           >
@@ -103,7 +104,7 @@ export default function ForgotPasswordScreen() {
                 </AppText>
               </View>
               <TouchableOpacity
-                onPress={() => router.back()}
+                onPress={() => goBack('/(auth)/login')}
                 style={{ backgroundColor: C.navy, borderRadius: 14, paddingVertical: 16, alignItems: 'center' }}
               >
                 <AppText style={{ color: '#FFFFFF', fontWeight: '700', fontSize: 15 }}>{isPt ? 'Voltar ao login' : 'Back to login'}</AppText>

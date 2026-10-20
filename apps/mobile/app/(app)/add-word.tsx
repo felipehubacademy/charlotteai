@@ -29,6 +29,7 @@ import { scheduleVocabReviews } from '@/lib/spacedRepetition';
 import * as Haptics from '@/lib/hapticsGated';
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import { appAlert } from '@/components/ui/AppAlert';
+import { goBack } from '@/lib/goBack';
 
 /** Simple UUID v4 — avoids crypto.randomUUID() que nao esta disponivel em todos os ambientes iOS */
 function makeUUID(): string {
@@ -265,7 +266,7 @@ export default function AddWordScreen() {
           paddingHorizontal: 16, paddingVertical: 14, gap: 12,
           borderBottomWidth: 1, borderBottomColor: C.border,
         }}>
-          <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+          <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
             <ArrowLeft size={22} color={C.navy} weight="bold" />
           </TouchableOpacity>
           <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>

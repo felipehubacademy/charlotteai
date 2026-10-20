@@ -4,6 +4,7 @@ import { CaretLeft } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
+import { goBack } from '@/lib/goBack';
 
 const C = {
   bg:        '#FFFFFF',
@@ -54,7 +55,7 @@ export default function ChatHeader({
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flex: 1 }}>
         {showBack && (
           <TouchableOpacity
-            onPress={() => router.back()}
+            onPress={() => goBack()}
             style={styles.iconBtn}
             hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
           >

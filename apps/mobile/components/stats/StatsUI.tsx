@@ -14,6 +14,8 @@ import { AppText } from '@/components/ui/Text';
 import { QueizyWave } from '@/components/ui/QueizyWave';
 import { CatalogEntry } from '@/lib/achievementsCatalog';
 import { Mission } from '@/lib/missions';
+import { goBack } from '@/lib/goBack';
+import { systemIsPt } from '@/lib/systemLang';
 
 export const C = {
   bg:     '#FAF7F0',
@@ -40,7 +42,9 @@ export function ScreenHeader({ title, right }: { title: string; right?: React.Re
         paddingHorizontal: 16, paddingVertical: 14, gap: 12,
         borderBottomWidth: 1, borderBottomColor: C.border,
       }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+        <TouchableOpacity onPress={() => goBack()}
+          accessibilityRole="button" accessibilityLabel={systemIsPt ? 'Voltar' : 'Back'}
+          hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
           <ArrowLeft size={22} color={C.ink} weight="bold" />
         </TouchableOpacity>
         <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.ink }}>

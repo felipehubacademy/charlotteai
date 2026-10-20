@@ -37,6 +37,7 @@ import { ConversationFeedbackBlock } from '@/components/trail/ConversationFeedba
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 import { useTotalXP } from '@/hooks/useTotalXP';
 import { soundEngine } from '@/lib/soundEngine';
+import { goBack } from '@/lib/goBack';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -653,7 +654,7 @@ export default function RolePlayExerciseScreen() {
         paddingHorizontal: 16, paddingVertical: 10,
         backgroundColor: C.card,
       }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+        <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1 }}>

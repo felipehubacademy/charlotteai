@@ -38,6 +38,7 @@ import { QueizyWave } from '@/components/ui/QueizyWave';
 import { MarkerText } from '@/components/ui/MarkerText';
 import Svg, { Path } from 'react-native-svg';
 import { appAlert } from '@/components/ui/AppAlert';
+import { goBack } from '@/lib/goBack';
 
 const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -375,7 +376,7 @@ export default function VocabReview() {
   if (cards.length === 0) {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
-        <TouchableOpacity onPress={() => router.back()} style={{ padding: 16 }}>
+        <TouchableOpacity onPress={() => goBack()} style={{ padding: 16 }}>
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 32 }}>
@@ -387,7 +388,7 @@ export default function VocabReview() {
             {isPt ? 'Nenhuma palavra para revisar agora.' : 'No vocabulary words due right now.'}
           </AppText>
           <TouchableOpacity
-            onPress={() => router.back()}
+            onPress={() => goBack()}
             style={{ marginTop: 28, backgroundColor: C.navy, borderRadius: 16, paddingVertical: 14, paddingHorizontal: 40 }}
           >
             <AppText style={{ color: '#FFF', fontSize: 16, fontWeight: '800' }}>
@@ -460,7 +461,7 @@ export default function VocabReview() {
 
           <View style={{ flex: 1 }} />
           <TouchableOpacity
-            onPress={() => router.back()}
+            onPress={() => goBack()}
             style={{ marginTop: 28, backgroundColor: C.volt, borderRadius: 16, paddingVertical: 16, alignItems: 'center' }}
           >
             <AppText style={{ color: C.navy, fontSize: 16, fontWeight: '800' }}>
@@ -485,7 +486,7 @@ export default function VocabReview() {
           paddingHorizontal: 16, paddingVertical: 12,
           borderBottomWidth: 1, borderBottomColor: C.border,
         }}>
-          <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
+          <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
             <ArrowLeft size={22} color={C.navy} weight="bold" />
           </TouchableOpacity>
           {/* Progresso da sessão: a onda endireita a cada cartão */}

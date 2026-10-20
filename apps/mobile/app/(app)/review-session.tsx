@@ -20,6 +20,7 @@ import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 import { CURRICULUM, TrailLevel } from '@/data/curriculum';
 import { calcNextReview, SRRating } from '@/lib/spacedRepetition';
 import { getLevelAccent, getLevelAccentBg } from '@/lib/levelColors';
+import { goBack } from '@/lib/goBack';
 
 // ── Palette ─────────────────────────────────────────────────────────────────
 const C = {
@@ -485,7 +486,7 @@ export default function ReviewSession() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingTop: 8, paddingBottom: 16 }}>
-          <TouchableOpacity onPress={() => router.back()} style={{ padding: 8, marginRight: 4 }}>
+          <TouchableOpacity onPress={() => goBack()} style={{ padding: 8, marginRight: 4 }}>
             <ArrowLeft size={22} color={C.navy} />
           </TouchableOpacity>
         </View>
@@ -500,7 +501,7 @@ export default function ReviewSession() {
               : 'No reviews due right now. Keep practising!'}
           </AppText>
           <TouchableOpacity
-            onPress={() => router.back()}
+            onPress={() => goBack()}
             activeOpacity={0.82}
             style={{
               marginTop: 32, backgroundColor: C.navy,
@@ -627,7 +628,7 @@ export default function ReviewSession() {
       >
         {/* Top bar */}
         <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingTop: 8, paddingBottom: 4 }}>
-          <TouchableOpacity onPress={() => router.back()} style={{ padding: 8, marginRight: 4 }}>
+          <TouchableOpacity onPress={() => goBack()} style={{ padding: 8, marginRight: 4 }}>
             <ArrowLeft size={22} color={C.navy} />
           </TouchableOpacity>
           <View style={{ flex: 1, height: 6, backgroundColor: C.navyGhost, borderRadius: 3, marginHorizontal: 8 }}>

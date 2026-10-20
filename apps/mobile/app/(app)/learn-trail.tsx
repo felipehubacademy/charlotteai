@@ -18,6 +18,7 @@ import { CURRICULUM, TrailLevel, topicHasContent, totalTopics } from '@/data/cur
 import { MODULE_INTROS } from '@/data/moduleIntros';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
 import { LEVEL_ACCENT } from '@/lib/levelColors';
+import { goBack } from '@/lib/goBack';
 
 // ── Palette ────────────────────────────────────────────────────
 const C = {
@@ -125,7 +126,7 @@ export default function LearnTrailScreen() {
         paddingHorizontal: 16, height: 52,
         borderBottomWidth: 1, borderBottomColor: C.border,
       }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+        <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1, alignItems: 'center' }}>

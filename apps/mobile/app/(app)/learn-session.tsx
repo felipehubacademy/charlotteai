@@ -63,6 +63,7 @@ import PromotionModal from '@/components/ui/PromotionModal';
 import BluetoothMicHint from '@/components/BluetoothMicHint';
 import { supabase } from '@/lib/supabase';
 import { appAlert } from '@/components/ui/AppAlert';
+import { goBack } from '@/lib/goBack';
 
 // ── Color helper — rgba() for Android hex+alpha compatibility ──
 function a(hex: string, alpha: number): string {
@@ -1428,7 +1429,7 @@ export default function LearnSessionScreen() {
         borderBottomWidth: 1, borderBottomColor: C.border,
         position: 'relative',
       }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }} style={{ zIndex: 2 }}>
+        <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }} style={{ zIndex: 2 }}>
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         {/* Titulo absoluto — centraliza na largura TOTAL do header, nao
