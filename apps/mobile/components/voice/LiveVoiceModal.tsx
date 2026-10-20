@@ -888,6 +888,10 @@ export default function LiveVoiceModal({
     setStatus('connecting');
     setErrorMsg('');
     setIsPaused(false);
+    // A tela fica montada entre ligações: sem isto, o mudo da ligação anterior passava para a
+    // próxima ("Microfone desligado" e o aluno falando sem ser ouvido).
+    setIsMuted(false);
+    isMutedRef.current = false;
     setInactivityWarning(false);
     setWarningCountdown(30);
 
