@@ -17,7 +17,8 @@ import * as Haptics from '@/lib/hapticsGated';
 import { AppText } from '@/components/ui/Text';
 import { LiveVoiceWave } from './LiveVoiceWave';
 import { systemIsPt } from '@/lib/systemLang';
-import { characterInfo } from '@/lib/characters';
+import { characterInfo, isImpressionReply, pickImpression, type ImpressionId } from '@/lib/characters';
+import { router } from 'expo-router';
 import { consumeLiveVoiceSeconds } from '@/lib/liveVoiceUsage';
 import { requestFamilyCall, startFamilyConversation, familyCallStats, saveFamilyCall } from '@/lib/familyCall';
 import { currentTopicTitle } from '@/lib/currentTopic';
@@ -70,6 +71,11 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
   const mutedRef = React.useRef(false);
   const firstTurnRef = React.useRef(true); // microfone fechado até o fim da 1ª fala do personagem
   const transcriptRef = React.useRef<Line[]>([]); // conversa inteira, para o histórico
+  // Imitações no mesmo ritmo do Free Chat (lib/characters: isImpressionReply/pickImpression):
+  // quando a próxima resposta é a vez de uma imitação, o app avisa o personagem antes dela.
+  const lastUserTextRef = React.useRef('');
+  const lastImpressionRef = React.useRef<ImpressionId | null>(null);
+  const sessionKeyRef = React.useRef('');
 
   const levels = useCallLevels(status === 'connected', () => familyCallStats(convRef.current));
   const ring = React.useRef(new Animated.Value(0)).current;
@@ -110,6 +116,7 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
     if (!character) return;
     let alive = true;
     closingRef.current = false; firstTurnRef.current = true; startedAtRef.current = null; transcriptRef.current = [];
+    lastUserTextRef.current = ''; lastImpressionRef.current = null; sessionKeyRef.current = `${character}-${Date.now()}`;
     setStatus('calling'); setLines([]); setBadge(null); setSecs(0); setError(''); setMode('listening');
     (async () => {
       try {
@@ -155,13 +162,27 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
             // "..." = transcrição provisória do aluno (ainda sem palavras): não vira balão.
             if (!text || /^[.\s…]+$/.test(text)) return;
             transcriptRef.current.push({ who: m.source, text });
+            if (m.source === 'user') lastUserTextRef.current = text;
+            if (m.source === 'ai') {
+              // A abertura não conta como resposta: com N falas dele até aqui, a próxima é a resposta N.
+              // Se ela é vez de imitação, avisa já (antes de o aluno terminar de falar).
+              const upcoming = transcriptRef.current.filter(l => l.who === 'ai').length;
+              if (isImpressionReply(upcoming, sessionKeyRef.current)) {
+                const imp = pickImpression(info, lastUserTextRef.current, lastImpressionRef.current);
+                const tag = imp === 'hoops' ? 'Hoops' : imp === 'president' ? 'President' : null;
+                if (imp && tag) {
+                  lastImpressionRef.current = imp;
+                  try {
+                    convRef.current?.sendContextualUpdate(`IMPRESSION TIME: make your next reply your ${imp === 'hoops' ? 'basketball superstar' : 'president'} impression, the whole reply wrapped in <${tag}>...</${tag}>, still answering what the student says. Right after it, go back to your normal voice.`);
+                  } catch { /* sem aviso, segue normal */ }
+                }
+              }
+            }
             setLines(prev => [...prev, { who: m.source, text }].slice(-2));
           },
           onModeChange: md => {
-            if (md === 'speaking') {
-              CharlotteAudioSession.stopRingback().catch(() => {});
-              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-            }
+            // Sem vibração na troca de vez (atrapalha com o celular na mão/ouvido), como na ligação da Charlotte.
+            if (md === 'speaking') CharlotteAudioSession.stopRingback().catch(() => {});
             if (md === 'listening' && firstTurnRef.current) { firstTurnRef.current = false; setMic(mutedRef.current); }
             setMode(md);
           },
@@ -290,6 +311,13 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
               <Phone size={18} color={th.bg} weight="fill" />
               <AppText style={{ fontSize: 16, fontWeight: '800', color: th.bg }}>{isPt ? 'Ligar de novo' : 'Call again'}</AppText>
             </TouchableOpacity>
+            {status === 'ended' && transcriptRef.current.length > 0 && (
+              <TouchableOpacity onPress={() => { onClose(); router.push({ pathname: '/(app)/(tabs)/livevoice', params: { history: '1' } } as any); }}
+                activeOpacity={0.85}
+                style={{ borderRadius: 999, paddingVertical: 14, alignItems: 'center', borderWidth: 2, borderColor: th.ink }}>
+                <AppText style={{ fontSize: 15, fontWeight: '800', color: th.ink }}>{isPt ? 'Ver conversa e resumo' : 'See conversation and summary'}</AppText>
+              </TouchableOpacity>
+            )}
             <TouchableOpacity onPress={onClose} style={{ paddingVertical: 12, alignItems: 'center' }}>
               <AppText style={{ fontSize: 15, fontWeight: '700', color: th.ink }}>{isPt ? 'Fechar' : 'Close'}</AppText>
             </TouchableOpacity>

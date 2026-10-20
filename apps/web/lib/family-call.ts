@@ -40,7 +40,7 @@ function impressionsBlock(c: Character): string {
     .filter(([id]) => IMPRESSION_TAGS[id])
     .map(([id, imp]) => `- <${IMPRESSION_TAGS[id]}>...</${IMPRESSION_TAGS[id]}>: ${imp!.style.replace(/^THIS REPLY ONLY:\s*/, '').replace(/Keep the SAME length limit as a normal reply\.?/i, 'Keep the same two-sentence limit.')}`);
   if (!list.length) return '';
-  return `IMPRESSIONS (your signature): about once every 4 or 5 turns, when it fits what the student said, do ONE whole turn as an impression, then go back to your normal voice. Never do the same impression twice in a row. Wrap the WHOLE impression turn in its voice tag (the tag switches your voice):
+  return `IMPRESSIONS (your signature): do an impression ONLY when you receive a note saying IMPRESSION TIME (the app decides the moment, like in your chat). Then your next reply is ONE whole turn as that impression, and right after it you go back to your normal voice. Wrap the WHOLE impression turn in its voice tag (the tag switches your voice):
 ${list.join('\n')}`;
 }
 

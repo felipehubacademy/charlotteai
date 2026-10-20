@@ -4,14 +4,14 @@
 
 import { characterInfo } from '@/lib/characters';
 import { FamilyCallModal } from '@/components/voice/FamilyCallModal';
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import {
   View, ScrollView, TouchableOpacity, ActivityIndicator,
   RefreshControl, Modal, Pressable, Dimensions, Animated, Easing, Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path as SvgPath } from 'react-native-svg';
-import { useFocusEffect, router } from 'expo-router';
+import { useFocusEffect, router, useLocalSearchParams } from 'expo-router';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { Image } from 'expo-image';
 import { Phone, XCircle, ClockCounterClockwise, CaretRight, Trash, Question, X, Plus, Crown } from 'phosphor-react-native';
@@ -493,6 +493,16 @@ export default function LiveVoiceTab() {
   const host = characterInfo(hostId);
   const hostArticle = hostId === 'charlotte' ? 'a ' : hostId === 'igorfina' ? 'o ' : '';
   const [showFamilyCall, setShowFamilyCall] = useState(false);
+  // Fim de uma ligação com a Família ("Ver conversa e resumo"): abre o histórico e relê a lista
+  // depois de alguns segundos (o resumo é gerado no servidor logo após a ligação).
+  const params = useLocalSearchParams<{ history?: string }>();
+  useEffect(() => {
+    if (params.history !== '1') return;
+    setShowCallsDrawer(true);
+    const t = setTimeout(() => { loadData(); }, 4000);
+    try { router.setParams({ history: undefined } as never); } catch {}
+    return () => clearTimeout(t);
+  }, [params.history]); // eslint-disable-line react-hooks/exhaustive-deps
   const [showLiveVoice,   setShowLiveVoice]   = useState(false);
   const [showLimitSheet,  setShowLimitSheet]  = useState(false);
   const [limitExhausted,  setLimitExhausted]  = useState(true); // false = aberto pelo cartão, antes de acabar
