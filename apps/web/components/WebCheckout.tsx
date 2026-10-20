@@ -31,7 +31,15 @@ const maskPhone = (v: string) => v.replace(/\D/g, '').slice(0, 11)
 const maskCpf = (v: string) => v.replace(/\D/g, '').slice(0, 11)
   .replace(/^(\d{3})(\d)/, '$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d{1,2})$/, '.$1-$2');
 const maskCard = (v: string) => v.replace(/\D/g, '').slice(0, 19).replace(/(\d{4})(?=\d)/g, '$1 ');
-const maskExpiry = (v: string) => v.replace(/\D/g, '').slice(0, 4).replace(/^(\d{2})(\d)/, '$1/$2');
+// Validade: o preenchimento automático do navegador manda "01/2030", "1/30" ou "012030"; quem digita
+// manda "0130". Sempre vira MM/AA (o ano com 4 dígitos fica com os 2 últimos).
+const maskExpiry = (v: string) => {
+  const m = v.match(/^\s*(\d{1,2})\s*[/\-. ]\s*(\d{4}|\d{2})\s*$/);
+  if (m) return `${m[1].padStart(2, '0')}/${m[2].slice(-2)}`;
+  let d = v.replace(/\D/g, '');
+  if (d.length === 6) d = d.slice(0, 2) + d.slice(4); // MMAAAA
+  return d.slice(0, 4).replace(/^(\d{2})(\d)/, '$1/$2');
+};
 const maskCep = (v: string) => v.replace(/\D/g, '').slice(0, 8).replace(/^(\d{5})(\d)/, '$1-$2');
 
 export default function WebCheckout({ initialPlan, notice, forceMode }: { initialPlan: Plan; notice?: string; forceMode?: Mode }) {
