@@ -14,7 +14,7 @@ export default async function Assinar2Page({ searchParams }: { searchParams: Pro
   const sp = await searchParams;
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FAF7F0', fontFamily: "'Inter',-apple-system,'Segoe UI',Arial,sans-serif" }}>
-      <PublicHeader />
+      <PublicHeader cta="none" />
       <WebCheckout initialPlan={sp.plano === 'mensal' ? 'monthly' : 'annual'} forceMode="direct" />
       <PublicFooter />
     </div>

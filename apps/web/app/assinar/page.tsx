@@ -15,7 +15,7 @@ export default async function AssinarPage({ searchParams }: { searchParams: Prom
     : sp.expirado ? 'A página de pagamento expirou. É só tentar de novo.' : undefined;
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FAF7F0', fontFamily: "'Inter',-apple-system,'Segoe UI',Arial,sans-serif" }}>
-      <PublicHeader />
+      <PublicHeader cta="none" />
       <WebCheckout initialPlan={sp.plano === 'mensal' ? 'monthly' : 'annual'} notice={notice} />
       <PublicFooter />
     </div>

@@ -3,7 +3,8 @@ import StoreCTA from '@/components/StoreCTA';
 
 // Header público padrão (igual à home). Usado em /faq, /privacidade, /termos.
 // cta 'download': para quem já assinou (tela de sucesso), o botão leva às lojas em vez de "Assinar".
-export default function PublicHeader({ cta = 'subscribe' }: { cta?: 'subscribe' | 'download' }) {
+// cta 'none': na própria página de assinar (o botão não faz sentido e tiraria a pessoa da compra).
+export default function PublicHeader({ cta = 'subscribe' }: { cta?: 'subscribe' | 'download' | 'none' }) {
   return (
     <>
       <style>{`
@@ -29,7 +30,7 @@ export default function PublicHeader({ cta = 'subscribe' }: { cta?: 'subscribe' 
           <a href="/#planos" style={{ fontSize: 14, color: '#4D4858', fontWeight: 500 }}>Planos</a>
           <a href="/faq" style={{ fontSize: 14, color: '#4D4858', fontWeight: 500 }}>Ajuda</a>
         </div>
-        {cta === 'download'
+        {cta === 'none' ? null : cta === 'download'
           ? <StoreCTA variant="nav" label="Baixar o app" className="nav-cta" direct />
           : <StoreCTA variant="nav" label="Assinar" className="nav-cta" />}
       </nav>
