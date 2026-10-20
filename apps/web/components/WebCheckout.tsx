@@ -289,7 +289,7 @@ export default function WebCheckout({ initialPlan, notice }: { initialPlan: Plan
         </button>
         <p style={{ fontSize: 13, color: LIGHT, textAlign: 'center', lineHeight: 1.5, marginTop: 12 }}>{note}</p>
         <p style={{ fontSize: 12, color: LIGHT, textAlign: 'center', lineHeight: 1.5, marginTop: 8 }}>
-          Pagamento processado pelo Asaas. Ao assinar, você concorda com os <a href="/termos" style={{ color: MID }}>Termos de Uso</a> e
+          Pagamento seguro. Ao assinar, você concorda com os <a href="/termos" style={{ color: MID }}>Termos de Uso</a> e
           a <a href="/privacidade" style={{ color: MID }}>Política de Privacidade</a>.
         </p>
       </form>

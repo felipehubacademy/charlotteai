@@ -130,7 +130,7 @@ Dá para assinar de dois jeitos:
 - No app, pela loja: App Store (iPhone) ou Google Play (Android), com 7 dias grátis para quem nunca assinou. Para começar os 7 dias, a loja pede uma forma de pagamento cadastrada na conta Apple ou Google (no site, o cartão de crédito). A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.
 - Pelo site, em queizy.com/assinar: Mensal no cartão de crédito, Anual no cartão de crédito à vista ou Anual no Pix à vista (veja "Como funciona a assinatura pelo site?").` },
   { section: 'Planos e assinatura', question: 'Como funciona a assinatura pelo site?', answer:
-`Em queizy.com/assinar você escolhe o plano e a forma de pagamento. O pagamento é feito numa página segura do Asaas, onde também se informa o CPF.
+`Em queizy.com/assinar você escolhe o plano e a forma de pagamento. O pagamento é feito numa página segura de pagamento, onde também se informa o CPF.
 - Mensal no cartão de crédito: renova todo mês. Tem 7 dias grátis para quem nunca assinou; a primeira cobrança é feita ao fim dos 7 dias.
 - Anual no cartão de crédito à vista: 7 dias grátis para quem nunca assinou, depois uma cobrança única de R$ 199,99, com renovação automática a cada ano.
 - Anual no Pix à vista: paga na hora e libera 12 meses de acesso. Não renova sozinho, porque o Pix não tem cobrança automática. Não tem os 7 dias grátis, mas dá para pedir reembolso em até 7 dias do pagamento (veja a pergunta sobre reembolso).
