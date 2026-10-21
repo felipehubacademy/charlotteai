@@ -97,7 +97,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "My phone number ends in _____ (9).",
+          "sentence": "I have _____ (9) cousins.",
           "hint": "Número 9 por extenso",
           "answer": "nine",
           "explanation": "9 = \"nine\". Som parecido com \"none\" (nenhum) mas significado totalmente diferente. Pronúncia: /naɪn/."

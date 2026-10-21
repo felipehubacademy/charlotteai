@@ -179,7 +179,7 @@ O aluno vê só a frase (e as opções); a **dica fica escondida** e quase ningu
 - **A informação necessária para responder tem que estar na frase**, nunca só na dica. Número, nome, fato:
   entre parênteses logo depois da lacuna ou da palavra errada.
   - Errado: `"My phone number is _____."` (Answer: nine; dica "Número 9 por extenso") — qualquer número serve.
-  - Certo: `"My phone number ends in _____ (9)."` / `"I'm tween (12) years old."`
+  - Certo: `"I have _____ (9) cousins."` / `"I'm tween (12) years old."` (a frase também precisa fazer sentido na vida real)
   O corretor ignora o que estiver entre parênteses na resposta do aluno.
 - **Se mais de uma resposta é natural e correta, liste todas em `**Accepts**:`** (separadas por ` / `).
   Ex.: `"I'm _____ hungry."` → Answer: so · Accepts: very / really.

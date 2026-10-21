@@ -66,7 +66,7 @@
    **Answer**: eleven
    **Explanation**: 11 = "eleven". Único formato — não segue o padrão -teen como 13-19.
 
-7. **fill_gap** — "My phone number ends in _____ (9)."
+7. **fill_gap** — "I have _____ (9) cousins."
    **Hint**: Número 9 por extenso
    **Answer**: nine
    **Explanation**: 9 = "nine". Som parecido com "none" (nenhum) mas significado totalmente diferente. Pronúncia: /naɪn/.
