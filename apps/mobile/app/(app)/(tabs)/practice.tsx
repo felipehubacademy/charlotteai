@@ -155,6 +155,10 @@ export default function PracticeTab() {
   const insets = useSafeAreaInsets();
   const narrow = useWindowDimensions().width < 360; // aparelho pequeno ou zoom de tela
   const tabBarHeight = useBottomTabBarHeight();
+  // Android: posição real (na tela) do bloco abaixo do topo. O ajuste de teclado mede a própria
+  // posição a partir desse bloco, não da tela; sem somar o topo, o campo ficava meio coberto pelo teclado.
+  const bodyRef = useRef<View>(null);
+  const [bodyTop, setBodyTop] = useState(0);
   const screenW = Dimensions.get('window').width;
   const drawerW = Math.round(screenW * 0.82);
 
@@ -439,20 +443,21 @@ export default function PracticeTab() {
 
       {/* Body wrapper — drawer absolute fica DENTRO deste wrapper, não cobre
           HeaderPills (que tá acima) nem tab bar (que tá fora do screen). */}
-      <View style={{ flex: 1, position: 'relative' }}>
+      <View
+        ref={bodyRef}
+        style={{ flex: 1, position: 'relative' }}
+        onLayout={() => { if (Platform.OS === 'android') bodyRef.current?.measureInWindow((_x, y) => setBodyTop(y)); }}
+      >
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        // iOS: 'padding' soma padding interno = keyboard - offset.
-        // Android: 'height' encolhe a View pela altura do teclado - offset.
-        // Em ambos, offset = tabBarHeight pra compensar que a tab bar já
-        // ocupa esse espaço entre o KAV e o fundo da tela (o sistema só
-        // empurra/encolhe ATÉ o topo do teclado; a tab bar fica embaixo
-        // do KAV mas dentro do que o sistema considera "espaço da janela").
+        // 'padding' soma um padding interno = parte do bloco coberta pelo teclado.
+        // iOS: offset = tab bar + área inferior (ajuste fino que já funcionava).
+        // Android: offset = topo real do bloco na tela (bodyTop), que o cálculo não conhece.
         behavior="padding"
         keyboardVerticalOffset={
           Platform.OS === 'ios'
             ? tabBarHeight + insets.bottom + 12
-            : tabBarHeight
+            : bodyTop || tabBarHeight
         }
       >
         {/* ── Toggle pill (3 modos) + menu ⋯ (nova conversa, histórico, ajuda) ── */}
