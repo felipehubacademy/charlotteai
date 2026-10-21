@@ -4,7 +4,6 @@ import {
    Platform, ScrollView,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
-import { useKeyboardShown } from '@/lib/useKeyboardShown';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Envelope, ArrowLeft, CheckCircle, WarningCircle } from 'phosphor-react-native';
@@ -27,7 +26,6 @@ const C = {
 };
 
 export default function ForgotPasswordScreen() {
-  const keyboardShown = useKeyboardShown();
   const [email, setEmail]     = useState('');
   const [loading, setLoading] = useState(false);
   const [sent, setSent]       = useState(false);
@@ -59,7 +57,7 @@ export default function ForgotPasswordScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : keyboardShown ? 'height' : undefined} style={{ flex: 1 }}>
+      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
         <ScrollView
           contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingHorizontal: 28, paddingVertical: 32 }}
           keyboardShouldPersistTaps="handled"

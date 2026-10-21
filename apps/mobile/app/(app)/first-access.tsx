@@ -4,7 +4,6 @@ import {
    Platform, ScrollView,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
-import { useKeyboardShown } from '@/lib/useKeyboardShown';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Lock, Eye, EyeSlash, CheckCircle, WarningCircle } from 'phosphor-react-native';
@@ -25,7 +24,6 @@ const C = {
 };
 
 export default function FirstAccessScreen() {
-  const keyboardShown = useKeyboardShown();
   const [password, setPassword]         = useState('');
   const [confirm, setConfirm]           = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -87,7 +85,7 @@ export default function FirstAccessScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : keyboardShown ? 'height' : undefined} style={{ flex: 1 }}>
+      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
         <ScrollView
           contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingHorizontal: 28, paddingVertical: 32 }}
           keyboardShouldPersistTaps="handled"
