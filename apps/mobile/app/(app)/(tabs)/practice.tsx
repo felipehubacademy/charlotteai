@@ -155,10 +155,6 @@ export default function PracticeTab() {
   const insets = useSafeAreaInsets();
   const narrow = useWindowDimensions().width < 360; // aparelho pequeno ou zoom de tela
   const tabBarHeight = useBottomTabBarHeight();
-  // Android: posição real (na tela) do bloco abaixo do topo. O ajuste de teclado mede a própria
-  // posição a partir desse bloco, não da tela; sem somar o topo, o campo ficava meio coberto pelo teclado.
-  const bodyRef = useRef<View>(null);
-  const [bodyTop, setBodyTop] = useState(0);
   const screenW = Dimensions.get('window').width;
   const drawerW = Math.round(screenW * 0.82);
 
@@ -443,21 +439,18 @@ export default function PracticeTab() {
 
       {/* Body wrapper — drawer absolute fica DENTRO deste wrapper, não cobre
           HeaderPills (que tá acima) nem tab bar (que tá fora do screen). */}
-      <View
-        ref={bodyRef}
-        style={{ flex: 1, position: 'relative' }}
-        onLayout={() => { if (Platform.OS === 'android') bodyRef.current?.measureInWindow((_x, y) => setBodyTop(y)); }}
-      >
+      <View style={{ flex: 1, position: 'relative' }}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         // 'padding' soma um padding interno = parte do bloco coberta pelo teclado.
         // iOS: offset = tab bar + área inferior (ajuste fino que já funcionava).
-        // Android: offset = topo real do bloco na tela (bodyTop), que o cálculo não conhece.
+        // Android: offset = tab bar + barra de status. Sem a barra de status, o campo ficava meio coberto
+        // pelo teclado (Samsung com tela inteira: faltavam exatamente os ~36 pt da barra de status).
         behavior="padding"
         keyboardVerticalOffset={
           Platform.OS === 'ios'
             ? tabBarHeight + insets.bottom + 12
-            : bodyTop || tabBarHeight
+            : tabBarHeight + insets.top
         }
       >
         {/* ── Toggle pill (3 modos) + menu ⋯ (nova conversa, histórico, ajuda) ── */}
