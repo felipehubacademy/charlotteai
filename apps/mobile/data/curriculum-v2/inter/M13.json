@@ -941,23 +941,28 @@
       "listening_speaking": [
         {
           "text": "If I hadn't missed the bus, I would never have met her.",
-          "context": "close call positive"
+          "context": "close call positive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/317edaa34fd5d3fb.flac"
         },
         {
           "text": "Nothing would have gone wrong if we had followed the plan.",
-          "context": "emphatic negative"
+          "context": "emphatic negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/37fd45800fa70254.flac"
         },
         {
           "text": "We wouldn't have made it without your help.",
-          "context": "implicit third conditional"
+          "context": "implicit third conditional",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/93b2ac9223e7f5b6.flac"
         },
         {
           "text": "Nobody would have noticed if she hadn't said anything.",
-          "context": "indefinite subject"
+          "context": "indefinite subject",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b6ba35abb85f332c.flac"
         },
         {
           "text": "One small change would have ruined everything.",
-          "context": "emphatic chain"
+          "context": "emphatic chain",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7e9a6f49f21a2d51.flac"
         }
       ],
       "roleplay": {
@@ -1228,7 +1233,8 @@
         },
         {
           "text": "If I hadn't missed the bus, I would never have met her.",
-          "context": "chained close call"
+          "context": "chained close call",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/317edaa34fd5d3fb.flac"
         },
         {
           "text": "What would you have done in my place?",

@@ -137,23 +137,28 @@
       "listening_speaking": [
         {
           "text": "I would like mixed eggs and a waffle.",
-          "context": "pedir o café da manhã"
+          "context": "pedir o café da manhã",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/3fbeb53c0be2410e.mp3"
         },
         {
           "text": "A chocolate milkshake, please. Thank you!",
-          "context": "escolher o sabor"
+          "context": "escolher o sabor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1e6abcac4a9695ad.mp3"
         },
         {
           "text": "For here, please. We're eating inside.",
-          "context": "comer no local"
+          "context": "comer no local",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2e265f6a1c2c8282.mp3"
         },
         {
           "text": "Can I get the check, please?",
-          "context": "pedir a conta"
+          "context": "pedir a conta",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/417fd4b254585c63.mp3"
         },
         {
           "text": "I'd like a coffee with milk, no sugar.",
-          "context": "pedir café do seu jeito"
+          "context": "pedir café do seu jeito",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/5af38d8c6a4e666e.mp3"
         }
       ],
       "roleplay": {
@@ -378,23 +383,28 @@
       "listening_speaking": [
         {
           "text": "Excuse me, where can I find the bread?",
-          "context": "achar um produto"
+          "context": "achar um produto",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/3fa425ab2a10e78b.mp3"
         },
         {
           "text": "I'd like milk, some snacks and ham.",
-          "context": "dizer o que quer"
+          "context": "dizer o que quer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/7474e71aa0453169.mp3"
         },
         {
           "text": "Yes, please! I'm looking for eggs.",
-          "context": "aceitar ajuda"
+          "context": "aceitar ajuda",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/ef8449defb2ace89.mp3"
         },
         {
           "text": "The milk is in aisle number three.",
-          "context": "entender o corredor"
+          "context": "entender o corredor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/85620350f74d52d1.mp3"
         },
         {
           "text": "Thank you! And where are the snacks?",
-          "context": "perguntar mais"
+          "context": "perguntar mais",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1624b46a34d09d71.mp3"
         }
       ],
       "roleplay": {
@@ -622,23 +632,28 @@
       "listening_speaking": [
         {
           "text": "Hi! I'd like a haircut, please.",
-          "context": "começar o pedido"
+          "context": "começar o pedido",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8978669ce060edb6.mp3"
         },
         {
           "text": "Pretty low on the sides, not much on the top.",
-          "context": "explicar o corte"
+          "context": "explicar o corte",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1944e2693a18b9a9.mp3"
         },
         {
           "text": "Just a trim, please, not too short.",
-          "context": "só aparar"
+          "context": "só aparar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2a7ce51a1c8c47b3.mp3"
         },
         {
           "text": "Can you trim the beard too?",
-          "context": "barba"
+          "context": "barba",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2d283b65630b3a89.mp3"
         },
         {
           "text": "It looks great! How much is it?",
-          "context": "gostar e pagar"
+          "context": "gostar e pagar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/ceb2c2ed8228709f.mp3"
         }
       ],
       "roleplay": {
@@ -885,23 +900,28 @@
       "listening_speaking": [
         {
           "text": "Excuse me, how much is this hat?",
-          "context": "perguntar preço"
+          "context": "perguntar preço",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/685e8dc7e901d4c5.mp3"
         },
         {
           "text": "It's twenty bucks? OK, I'll take it!",
-          "context": "aceitar o preço"
+          "context": "aceitar o preço",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/3c34cca2f4485b59.mp3"
         },
         {
           "text": "Here's thirty, keep the change.",
-          "context": "deixar o troco"
+          "context": "deixar o troco",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/955e343dff03d0d9.mp3"
         },
         {
           "text": "Can I pay by card, please?",
-          "context": "pagar no cartão"
+          "context": "pagar no cartão",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/57a84da9dbfe2398.mp3"
         },
         {
           "text": "Do you have change for a twenty?",
-          "context": "pedir troco"
+          "context": "pedir troco",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/7ff196969d17793d.mp3"
         }
       ],
       "roleplay": {
@@ -1131,23 +1151,28 @@
       "listening_speaking": [
         {
           "text": "Hi, officer. I'm kind of lost.",
-          "context": "começar o pedido de ajuda"
+          "context": "começar o pedido de ajuda",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e068449f18e1689d.mp3"
         },
         {
           "text": "I'm from Brazil. I need to go to the museum.",
-          "context": "explicar a situação"
+          "context": "explicar a situação",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1e459b3189f2c413.mp3"
         },
         {
           "text": "Would you help me, please?",
-          "context": "pedir com educação"
+          "context": "pedir com educação",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1a4af8917c435293.mp3"
         },
         {
           "text": "Go straight two blocks and turn left.",
-          "context": "entender a direção"
+          "context": "entender a direção",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2bc533d77de8902f.mp3"
         },
         {
           "text": "Turn right at the bank? Thank you so much!",
-          "context": "confirmar e agradecer"
+          "context": "confirmar e agradecer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/045bd9b9ced96eab.mp3"
         }
       ],
       "roleplay": {

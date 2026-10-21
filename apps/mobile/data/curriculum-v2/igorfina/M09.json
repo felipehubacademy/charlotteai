@@ -133,23 +133,28 @@
       "listening_speaking": [
         {
           "text": "I go to the gym every morning.",
-          "context": "rotina de treino"
+          "context": "rotina de treino",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e95921097b9409f2.mp3"
         },
         {
           "text": "My trainer says I need more protein.",
-          "context": "falar do personal"
+          "context": "falar do personal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/3680cf3d45027b5a.mp3"
         },
         {
           "text": "How tall are you? I'm one seventy-five.",
-          "context": "altura"
+          "context": "altura",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/9c0e9fa1cc11e250.mp3"
         },
         {
           "text": "I'm on a diet, no pizza for me!",
-          "context": "dieta"
+          "context": "dieta",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e9eb1d7871f46d71.mp3"
         },
         {
           "text": "I eat five meals a day, my friend.",
-          "context": "refeições"
+          "context": "refeições",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/9402091e9aa540c7.mp3"
         }
       ],
       "roleplay": {
@@ -375,23 +380,28 @@
       "listening_speaking": [
         {
           "text": "Three sets of eight reps, let's go!",
-          "context": "montar o treino"
+          "context": "montar o treino",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/67c15d0c3be79628.mp3"
         },
         {
           "text": "How many reps do we do today?",
-          "context": "perguntar repetições"
+          "context": "perguntar repetições",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/707e1638129873a3.mp3"
         },
         {
           "text": "Come on, one more rep, you got this!",
-          "context": "motivar"
+          "context": "motivar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/aecabace33837f29.mp3"
         },
         {
           "text": "Can I use this machine, please?",
-          "context": "pedir o aparelho"
+          "context": "pedir o aparelho",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e76d0082a1224ced.mp3"
         },
         {
           "text": "I lift weights four times a week.",
-          "context": "rotina"
+          "context": "rotina",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/a994d2d1be3a83c6.mp3"
         }
       ],
       "roleplay": {
@@ -616,23 +626,28 @@
       "listening_speaking": [
         {
           "text": "Today is chest day, bench press first.",
-          "context": "escolher o treino"
+          "context": "escolher o treino",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/a7f57c965209c12d.mp3"
         },
         {
           "text": "My lower back hurts a little today.",
-          "context": "explicar uma dor"
+          "context": "explicar uma dor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8bd07bdabf1ce9da.mp3"
         },
         {
           "text": "Curls are great for your biceps.",
-          "context": "exercício e músculo"
+          "context": "exercício e músculo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/9a7b75456987ddb2.mp3"
         },
         {
           "text": "I train back and biceps on Monday.",
-          "context": "rotina por músculo"
+          "context": "rotina por músculo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/26254424b177e7d7.mp3"
         },
         {
           "text": "My muscles are so tired after the gym.",
-          "context": "pronúncia de \"muscle\""
+          "context": "pronúncia de \"muscle\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/c5cf75f109f519dc.mp3"
         }
       ],
       "roleplay": {
@@ -858,23 +873,28 @@
       "listening_speaking": [
         {
           "text": "Excuse me, are you using this bench?",
-          "context": "pedir o aparelho"
+          "context": "pedir o aparelho",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/f9ad28b0bdf715e6.mp3"
         },
         {
           "text": "Can I work in with you, bro?",
-          "context": "revezar"
+          "context": "revezar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/3ba5926004f635b0.mp3"
         },
         {
           "text": "Squats today, legs and glutes, let's go!",
-          "context": "exercício do dia"
+          "context": "exercício do dia",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e29503962b92ca03.mp3"
         },
         {
           "text": "Rows are a pull, push-ups are a push.",
-          "context": "push e pull"
+          "context": "push e pull",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/50f2262220f1211c.mp3"
         },
         {
           "text": "Bench press is my favorite exercise.",
-          "context": "exercício favorito"
+          "context": "exercício favorito",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/b3c99276c5213fa8.mp3"
         }
       ],
       "roleplay": {
@@ -1103,23 +1123,28 @@
       "listening_speaking": [
         {
           "text": "I'm exhausted, that workout was so tiring!",
-          "context": "muito cansado"
+          "context": "muito cansado",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8140581152d55204.mp3"
         },
         {
           "text": "We did four sets of ten squats.",
-          "context": "contar o treino"
+          "context": "contar o treino",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/43541b2db0c53112.mp3"
         },
         {
           "text": "My legs hurt so much today, ha!",
-          "context": "dor depois do treino"
+          "context": "dor depois do treino",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/3f72b9c2a269bb1b.mp3"
         },
         {
           "text": "Tomorrow is chest day. Are you in?",
-          "context": "próximo treino"
+          "context": "próximo treino",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/9066936ca3633546.mp3"
         },
         {
           "text": "My muscles need a rest day, my friend.",
-          "context": "pedir descanso"
+          "context": "pedir descanso",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/c07fc897baf54b16.mp3"
         }
       ],
       "roleplay": {

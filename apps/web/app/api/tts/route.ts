@@ -7,6 +7,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { logOpenAIUsage, logElevenLabsUsage } from '@/lib/openai-usage';
 import { characterOf, impressionOf, voiceFor } from '@/lib/characters';
 import { speak } from '@/lib/charlotte-voice';
+import { createHash } from 'crypto';
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,6 +23,15 @@ async function ttsElevenLabs(text: string, voiceId: string, settings: unknown): 
   });
   if (!res.ok) throw new Error(`ElevenLabs TTS error: ${res.status} ${await res.text()}`);
   return Buffer.from(await res.arrayBuffer());
+}
+
+// ── Frases da trilha do personagem: geradas uma vez e reaproveitadas ─────────────
+// Mesmo arquivo e mesma chave que apps/mobile/scripts/generate-ls-audio.mjs (personagem + imitação + texto),
+// então frase já pré-gerada não chama o ElevenLabs, e frase nova é gerada só para o 1º aluno.
+const LS_BUCKET = 'curriculum-audio';
+function lsAudioPath(characterId: string, impressionId: string | null, text: string): string {
+  const key = createHash('sha1').update(`${characterId}|${impressionId ?? 'base'}|${text}`.trim().toLowerCase()).digest('hex').slice(0, 16);
+  return `ls/${characterId}/${key}.mp3`;
 }
 
 // ── Handler ──────────────────────────────────────────────────────────────────
@@ -38,8 +49,18 @@ export async function POST(request: NextRequest) {
     const imp = impressionOf(c, impression);
     const voice = voiceFor(c, imp);
     if (voice) {
+      // Trilha (source 'learn'): tenta o arquivo pronto antes de gerar.
+      const cachePath = source === 'learn' && c.id !== 'charlotte' ? lsAudioPath(c.id, imp?.id ?? null, text) : null;
+      if (cachePath) {
+        const { data } = await getSupabaseAdmin().storage.from(LS_BUCKET).download(cachePath);
+        if (data) return NextResponse.json({ audio: Buffer.from(await data.arrayBuffer()).toString('base64'), mimeType: 'audio/mpeg', cached: true });
+      }
       try {
         const buf = await ttsElevenLabs(text, voice.voiceId, voice.settings);
+        if (cachePath) {
+          await getSupabaseAdmin().storage.from(LS_BUCKET).upload(cachePath, buf, { contentType: 'audio/mpeg', upsert: true })
+            .catch((e: unknown) => console.warn('TTS cache upload falhou:', e));
+        }
         logElevenLabsUsage({ endpoint: '/api/tts', charCount: text.length, model: 'eleven_multilingual_v2', userId: userId || undefined, meta: { source: source ?? null, character: c.id, impression: imp?.id ?? null } });
         return NextResponse.json({ audio: buf.toString('base64'), mimeType: 'audio/mpeg' });
       } catch (e) {

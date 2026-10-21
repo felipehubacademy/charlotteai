@@ -135,23 +135,28 @@
       "listening_speaking": [
         {
           "text": "Could you give me a glass of water?",
-          "context": "pedir água no restaurante"
+          "context": "pedir água no restaurante",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/58ad1d93cae91254.mp3"
         },
         {
           "text": "Excuse me, may I sit here, please?",
-          "context": "pedir para sentar"
+          "context": "pedir para sentar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/824de6429b3a18ee.mp3"
         },
         {
           "text": "Could you take me to Central Park?",
-          "context": "pedir para o taxista"
+          "context": "pedir para o taxista",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/515c252d62ea65f2.mp3"
         },
         {
           "text": "May I go to the restroom, please?",
-          "context": "pedir para ir ao banheiro"
+          "context": "pedir para ir ao banheiro",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/b4dbfe60e598e49a.mp3"
         },
         {
           "text": "Could you speak more slowly, please?",
-          "context": "pedir para falar devagar"
+          "context": "pedir para falar devagar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/de57b5df552f26b8.mp3"
         }
       ],
       "roleplay": {
@@ -379,23 +384,28 @@
       "listening_speaking": [
         {
           "text": "Yes! I can go with you tonight.",
-          "context": "aceitar um convite"
+          "context": "aceitar um convite",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/ab0634f99cffa3b0.mp3"
         },
         {
           "text": "Sorry, I can't go. I have to work.",
-          "context": "recusar com motivo"
+          "context": "recusar com motivo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/a3414bad72629179.mp3"
         },
         {
           "text": "Can I pay by card, please?",
-          "context": "perguntar no caixa"
+          "context": "perguntar no caixa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/57a84da9dbfe2398.mp3"
         },
         {
           "text": "I can't find my phone anywhere!",
-          "context": "perdeu o celular"
+          "context": "perdeu o celular",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/5403c82c98cc4c21.mp3"
         },
         {
           "text": "Can you swim? The beach is close.",
-          "context": "perguntar habilidade"
+          "context": "perguntar habilidade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/04b7f19e01177612.mp3"
         }
       ],
       "roleplay": {
@@ -623,23 +633,28 @@
       "listening_speaking": [
         {
           "text": "I would love to eat this cake, thank you!",
-          "context": "aceitar com entusiasmo"
+          "context": "aceitar com entusiasmo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/001275ed50bb4a6c.mp3"
         },
         {
           "text": "I'd rather have a soda, not a beer.",
-          "context": "dizer o que prefere"
+          "context": "dizer o que prefere",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1d9f391498b5886a.mp3"
         },
         {
           "text": "There's no place I'd rather be tonight.",
-          "context": "elogiar o lugar"
+          "context": "elogiar o lugar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e19f79d75015781d.mp3"
         },
         {
           "text": "I'd like a coffee with milk, please.",
-          "context": "pedir com educação"
+          "context": "pedir com educação",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1b7018a961b4a0e6.mp3"
         },
         {
           "text": "Yes, I'd love to see the show!",
-          "context": "aceitar um convite"
+          "context": "aceitar um convite",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/c8a2ef7b141f4378.mp3"
         }
       ],
       "roleplay": {
@@ -867,23 +882,28 @@
       "listening_speaking": [
         {
           "text": "You should try the pizza in Brooklyn.",
-          "context": "dar uma dica"
+          "context": "dar uma dica",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2c604bb70a2d836c.mp3"
         },
         {
           "text": "I might go to the beach tomorrow.",
-          "context": "talvez vá"
+          "context": "talvez vá",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/bc52d0d02545aa9d.mp3"
         },
         {
           "text": "Take an umbrella, it may rain today.",
-          "context": "avisar uma possibilidade"
+          "context": "avisar uma possibilidade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/d5bcb503ec5d52b1.mp3"
         },
         {
           "text": "You should watch this movie again!",
-          "context": "recomendar"
+          "context": "recomendar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/4877cd023c57db9b.mp3"
         },
         {
           "text": "I'm sure, I'm going tonight!",
-          "context": "certeza total"
+          "context": "certeza total",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/fbd554a0054701b4.mp3"
         }
       ],
       "roleplay": {
@@ -1109,23 +1129,28 @@
       "listening_speaking": [
         {
           "text": "Sorry, I have to go. My bus is here.",
-          "context": "sair de uma conversa"
+          "context": "sair de uma conversa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/f625adb81a12846b.mp3"
         },
         {
           "text": "She has to go to the airport now.",
-          "context": "falar de outra pessoa"
+          "context": "falar de outra pessoa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/4bfaec0d18e0921a.mp3"
         },
         {
           "text": "Do I have to pay for the museum?",
-          "context": "perguntar se precisa pagar"
+          "context": "perguntar se precisa pagar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/16d4180db8158612.mp3"
         },
         {
           "text": "You don't have to pay, it's free today.",
-          "context": "dizer que não precisa"
+          "context": "dizer que não precisa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/13dd0e8f66d8f5d3.mp3"
         },
         {
           "text": "I have to go to Central Park. Could you take me?",
-          "context": "obrigação + pedido"
+          "context": "obrigação + pedido",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/d7d4cdbe39c0f55d.mp3"
         }
       ],
       "roleplay": {

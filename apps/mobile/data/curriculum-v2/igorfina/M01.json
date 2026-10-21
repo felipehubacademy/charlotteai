@@ -145,23 +145,28 @@
       "listening_speaking": [
         {
           "text": "Excuse me, one question, please.",
-          "context": "abordar um desconhecido na rua"
+          "context": "abordar um desconhecido na rua",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/5c88e9b4379315a2.mp3"
         },
         {
           "text": "Sorry, I don't understand. Again, please?",
-          "context": "quando não entendeu nada"
+          "context": "quando não entendeu nada",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/d386f808c0e09cf2.mp3"
         },
         {
           "text": "Excuse me, I need to get off here.",
-          "context": "pedir passagem no metrô lotado"
+          "context": "pedir passagem no metrô lotado",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/7cabe932afbc88f0.mp3"
         },
         {
           "text": "Oh, sorry! Are you OK, my friend?",
-          "context": "depois de esbarrar em alguém"
+          "context": "depois de esbarrar em alguém",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/a48991a20a17fc4d.mp3"
         },
         {
           "text": "Excuse me? Can you repeat that, please?",
-          "context": "pedir para a pessoa repetir"
+          "context": "pedir para a pessoa repetir",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/776b38d0b79af353.mp3"
         }
       ],
       "roleplay": {
@@ -350,23 +355,28 @@
       "listening_speaking": [
         {
           "text": "Excuse me, can you help me, please?",
-          "context": "pedir ajuda a um desconhecido"
+          "context": "pedir ajuda a um desconhecido",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/3713e9893022e6d2.mp3"
         },
         {
           "text": "Thank you so much for your help!",
-          "context": "agradecer de verdade"
+          "context": "agradecer de verdade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/6685e0b70f5be629.mp3"
         },
         {
           "text": "Can you help me with my bag, please?",
-          "context": "pedir ajuda com a mala"
+          "context": "pedir ajuda com a mala",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/99960e8665c8669d.mp3"
         },
         {
           "text": "Please, can you speak more slowly?",
-          "context": "pedir para falar devagar"
+          "context": "pedir para falar devagar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/449453a0486fdaf4.mp3"
         },
         {
           "text": "No problem, thank you very much!",
-          "context": "fechar a conversa com educação"
+          "context": "fechar a conversa com educação",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/0b6ea8da0849c3c9.mp3"
         }
       ],
       "roleplay": {
@@ -591,23 +601,28 @@
       "listening_speaking": [
         {
           "text": "Excuse me, do you know what time it is?",
-          "context": "perguntar a hora a alguém"
+          "context": "perguntar a hora a alguém",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/26a0c44df39e1e89.mp3"
         },
         {
           "text": "What time does the next bus leave?",
-          "context": "saber o horário do ônibus"
+          "context": "saber o horário do ônibus",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/ee1b815a3557cbff.mp3"
         },
         {
           "text": "Do you know where the museum is?",
-          "context": "perguntar onde fica um lugar"
+          "context": "perguntar onde fica um lugar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/562187489b24ffc7.mp3"
         },
         {
           "text": "What time does the store open, please?",
-          "context": "saber quando a loja abre"
+          "context": "saber quando a loja abre",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/bcaaa1b7822e0488.mp3"
         },
         {
           "text": "It's ten o'clock. Thank you so much!",
-          "context": "repetir a hora e agradecer"
+          "context": "repetir a hora e agradecer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/01316dfe014fb138.mp3"
         }
       ],
       "roleplay": {
@@ -836,23 +851,28 @@
       "listening_speaking": [
         {
           "text": "Excuse me, where is the subway station?",
-          "context": "achar o metrô"
+          "context": "achar o metrô",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/16bbd34b81c749fd.mp3"
         },
         {
           "text": "Excuse me, where are the taxis, please?",
-          "context": "achar o ponto de táxi"
+          "context": "achar o ponto de táxi",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8f63504be12ee833.mp3"
         },
         {
           "text": "Where is the bus stop for downtown?",
-          "context": "achar o ônibus para o centro"
+          "context": "achar o ônibus para o centro",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/9a86c3a4c2346b1e.mp3"
         },
         {
           "text": "Do you know where the ferry boat is?",
-          "context": "achar a balsa"
+          "context": "achar a balsa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/f05aa3cfc6e186b4.mp3"
         },
         {
           "text": "Where is the nearest bathroom, please?",
-          "context": "achar o banheiro mais perto"
+          "context": "achar o banheiro mais perto",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2d6dc3f9495ae461.mp3"
         }
       ],
       "roleplay": {
@@ -1078,23 +1098,28 @@
       "listening_speaking": [
         {
           "text": "Hello, excuse me, can you help me, please?",
-          "context": "a combinação completa do Igor"
+          "context": "a combinação completa do Igor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1e0ed8d4251bcea6.mp3"
         },
         {
           "text": "I need to go to the airport, please.",
-          "context": "dizer para onde precisa ir"
+          "context": "dizer para onde precisa ir",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/a243e61e56893801.mp3"
         },
         {
           "text": "Excuse me, do you know where the subway is?",
-          "context": "perguntar o caminho com educação"
+          "context": "perguntar o caminho com educação",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/b47ad742ce6227af.mp3"
         },
         {
           "text": "I need a taxi. Where are the taxis?",
-          "context": "achar um táxi às pressas"
+          "context": "achar um táxi às pressas",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/7a2c7e768aa66b75.mp3"
         },
         {
           "text": "Do you know what time it is? Thank you!",
-          "context": "perguntar a hora e agradecer"
+          "context": "perguntar a hora e agradecer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e3a66599913f6c07.mp3"
         }
       ],
       "roleplay": {

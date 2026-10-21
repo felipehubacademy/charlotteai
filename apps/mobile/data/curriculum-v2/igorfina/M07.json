@@ -131,23 +131,28 @@
       "listening_speaking": [
         {
           "text": "My phone is in my bag, I think.",
-          "context": "dentro"
+          "context": "dentro",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/74c1017e405d1051.mp3"
         },
         {
           "text": "The keys are on the table, by the door.",
-          "context": "em cima"
+          "context": "em cima",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/a9a50ba283451a8b.mp3"
         },
         {
           "text": "My shoes are under the bed again!",
-          "context": "embaixo"
+          "context": "embaixo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/c0e29ffc812746b2.mp3"
         },
         {
           "text": "The passport is in the drawer, don't worry.",
-          "context": "dentro da gaveta"
+          "context": "dentro da gaveta",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2d04a0e45007886d.mp3"
         },
         {
           "text": "There's a map on the wall in the lobby.",
-          "context": "na parede"
+          "context": "na parede",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/018e8422d2f6b115.mp3"
         }
       ],
       "roleplay": {
@@ -375,23 +380,28 @@
       "listening_speaking": [
         {
           "text": "The pharmacy is next to the bank.",
-          "context": "explicar um endereço"
+          "context": "explicar um endereço",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/9d3f7efb801b5cd8.mp3"
         },
         {
           "text": "The café is between the hotel and the park.",
-          "context": "entre dois lugares"
+          "context": "entre dois lugares",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2656f2b27e5d1354.mp3"
         },
         {
           "text": "There's a big clock above the door.",
-          "context": "acima"
+          "context": "acima",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/4da4486d70ac1fc6.mp3"
         },
         {
           "text": "Please, sit beside me, my friend!",
-          "context": "ao lado"
+          "context": "ao lado",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/af82c3f139796152.mp3"
         },
         {
           "text": "My phone is beside my bag, on the table.",
-          "context": "localizar algo"
+          "context": "localizar algo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/922e1ae75f610ec1.mp3"
         }
       ],
       "roleplay": {
@@ -616,23 +626,28 @@
       "listening_speaking": [
         {
           "text": "Can you turn on the light, please?",
-          "context": "pedir para ligar"
+          "context": "pedir para ligar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/087ad157d4295a4c.mp3"
         },
         {
           "text": "Please turn off your phone in the theater.",
-          "context": "pedir para desligar"
+          "context": "pedir para desligar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/bce6423fb4ec47e7.mp3"
         },
         {
           "text": "Sorry, my phone was off all day.",
-          "context": "explicar que estava desligado"
+          "context": "explicar que estava desligado",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/dae7a0e8b98468c3.mp3"
         },
         {
           "text": "The TV is on, can you turn it off?",
-          "context": "aparelho ligado"
+          "context": "aparelho ligado",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/d240b15b0af90c97.mp3"
         },
         {
           "text": "It's hot, let's turn on the AC.",
-          "context": "ligar o ar"
+          "context": "ligar o ar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/753ea5ef1b2a1c34.mp3"
         }
       ],
       "roleplay": {
@@ -857,23 +872,28 @@
       "listening_speaking": [
         {
           "text": "Pizza tonight? I'm in, for sure!",
-          "context": "topar"
+          "context": "topar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2d49ae99eced38c6.mp3"
         },
         {
           "text": "Sorry guys, I'm out, I'm so tired.",
-          "context": "estar fora"
+          "context": "estar fora",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/83ddda5f1420895b.mp3"
         },
         {
           "text": "Beach on Sunday? Count me in!",
-          "context": "pode contar comigo"
+          "context": "pode contar comigo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/59ad76796233a31f.mp3"
         },
         {
           "text": "Are you in or out? Tell me now!",
-          "context": "perguntar"
+          "context": "perguntar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/0061406881ea38f8.mp3"
         },
         {
           "text": "Hiking at five? Count me out, ha!",
-          "context": "não conta comigo"
+          "context": "não conta comigo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/dcbda03883decad8.mp3"
         }
       ],
       "roleplay": {
@@ -1098,23 +1118,28 @@
       "listening_speaking": [
         {
           "text": "It's raining outside, let's wait inside.",
-          "context": "dentro e fora"
+          "context": "dentro e fora",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/4f93cfd8f4bb1459.mp3"
         },
         {
           "text": "The towels are in the bag, on the chair.",
-          "context": "localizar coisas"
+          "context": "localizar coisas",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/6e20b8fa40523a5d.mp3"
         },
         {
           "text": "The café is next to the beach.",
-          "context": "referência de lugar"
+          "context": "referência de lugar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/22440da55b18bbe9.mp3"
         },
         {
           "text": "Turn on your phone, the group is calling.",
-          "context": "ligar o celular"
+          "context": "ligar o celular",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/a54fd6d2ae0ccfd7.mp3"
         },
         {
           "text": "A movie inside? I'm in, for sure!",
-          "context": "topar plano"
+          "context": "topar plano",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1a53f88ad80f60fc.mp3"
         }
       ],
       "roleplay": {

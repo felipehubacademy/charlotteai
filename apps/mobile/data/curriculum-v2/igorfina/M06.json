@@ -130,23 +130,28 @@
       "listening_speaking": [
         {
           "text": "The subway is faster than the bus.",
-          "context": "comparar velocidade"
+          "context": "comparar velocidade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/9434ea502d37d64c.mp3"
         },
         {
           "text": "The bus is cheaper than a taxi.",
-          "context": "comparar preço"
+          "context": "comparar preço",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e9b518b0e7d15344.mp3"
         },
         {
           "text": "New York is bigger than my city.",
-          "context": "comparar tamanho"
+          "context": "comparar tamanho",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/149254ff94970be8.mp3"
         },
         {
           "text": "Today is hotter than yesterday, wow!",
-          "context": "comparar o tempo"
+          "context": "comparar o tempo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/81aaaf8caaa2dcbc.mp3"
         },
         {
           "text": "My room is smaller than your room.",
-          "context": "comparar quartos"
+          "context": "comparar quartos",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/c77a4d686a838c4f.mp3"
         }
       ],
       "roleplay": {
@@ -371,23 +376,28 @@
       "listening_speaking": [
         {
           "text": "This is the best pizza in New York!",
-          "context": "eleger o melhor"
+          "context": "eleger o melhor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/b5e24f317ead9551.mp3"
         },
         {
           "text": "My English is better than last year.",
-          "context": "comparar com orgulho"
+          "context": "comparar com orgulho",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/d39a509224d18cba.mp3"
         },
         {
           "text": "Today is the worst day of my trip.",
-          "context": "reclamar do dia"
+          "context": "reclamar do dia",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/ed540cb6bc5aa86b.mp3"
         },
         {
           "text": "The traffic is worse than yesterday.",
-          "context": "comparar o pior"
+          "context": "comparar o pior",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e29c058517a46c12.mp3"
         },
         {
           "text": "Believe me, this is the best city ever!",
-          "context": "exagerar como o presidente"
+          "context": "exagerar como o presidente",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/6395c312e82b48b6.mp3"
         }
       ],
       "roleplay": {
@@ -612,23 +622,28 @@
       "listening_speaking": [
         {
           "text": "This watch is more expensive than my car!",
-          "context": "comparar preço"
+          "context": "comparar preço",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8fce800215dda0d4.mp3"
         },
         {
           "text": "This is the most famous place in town.",
-          "context": "o mais famoso"
+          "context": "o mais famoso",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/78f7d6908a10577d.mp3"
         },
         {
           "text": "The beach hotel is more beautiful.",
-          "context": "comparar beleza"
+          "context": "comparar beleza",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/c2350465606ff0e1.mp3"
         },
         {
           "text": "It's the most expensive restaurant here.",
-          "context": "o mais caro"
+          "context": "o mais caro",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8baee409a219ac7a.mp3"
         },
         {
           "text": "The museum is more interesting than the mall.",
-          "context": "comparar passeios"
+          "context": "comparar passeios",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/af1e44f3448d7eb3.mp3"
         }
       ],
       "roleplay": {
@@ -859,23 +874,28 @@
       "listening_speaking": [
         {
           "text": "This sweater is less expensive than the other one.",
-          "context": "comparar para menos"
+          "context": "comparar para menos",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/583bd7ccb48963b0.mp3"
         },
         {
           "text": "Japan is farther than Portugal from Brazil.",
-          "context": "comparar distância"
+          "context": "comparar distância",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8bd93eb7e20a3099.mp3"
         },
         {
           "text": "I ran even farther today, ten kilometers!",
-          "context": "contar uma conquista"
+          "context": "contar uma conquista",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/59a287d4afb96e0b.mp3"
         },
         {
           "text": "This is the least expensive store here.",
-          "context": "achar o mais barato"
+          "context": "achar o mais barato",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/9ccfaee5ba83cebb.mp3"
         },
         {
           "text": "Is the beach farther than the museum?",
-          "context": "perguntar distância"
+          "context": "perguntar distância",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/ce9d57601ac4a44e.mp3"
         }
       ],
       "roleplay": {
@@ -1100,23 +1120,28 @@
       "listening_speaking": [
         {
           "text": "Hotel A is cheaper than Hotel B.",
-          "context": "comparar preço"
+          "context": "comparar preço",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/9e6d9bdeba726335.mp3"
         },
         {
           "text": "Hotel B has the best view in the city.",
-          "context": "o melhor"
+          "context": "o melhor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/ecafc40cafdc2d22.mp3"
         },
         {
           "text": "The pool is bigger and more beautiful.",
-          "context": "comparar duas coisas"
+          "context": "comparar duas coisas",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/eb1f7bb32f8272cc.mp3"
         },
         {
           "text": "The breakfast was the worst, cold eggs!",
-          "context": "o pior"
+          "context": "o pior",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/bb390e31874ca9ef.mp3"
         },
         {
           "text": "The beach is farther from Hotel A.",
-          "context": "comparar distância"
+          "context": "comparar distância",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/3746f3eaebc8af8b.mp3"
         }
       ],
       "roleplay": {

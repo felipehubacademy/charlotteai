@@ -140,23 +140,28 @@
       "listening_speaking": [
         {
           "text": "Yesterday I was really hungry and tired.",
-          "context": "contar como estava ontem"
+          "context": "contar como estava ontem",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/ebe6c1780e1dbc09.mp3"
         },
         {
           "text": "I was out of cash at the store.",
-          "context": "dizer que estava sem dinheiro"
+          "context": "dizer que estava sem dinheiro",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/663ad16c53d93278.mp3"
         },
         {
           "text": "I was looking for the subway for hours.",
-          "context": "contar que procurou muito"
+          "context": "contar que procurou muito",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8aa6222fd295a290.mp3"
         },
         {
           "text": "I was born in Brazil, in São Paulo.",
-          "context": "dizer onde nasceu"
+          "context": "dizer onde nasceu",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e4969d4991b92c3c.mp3"
         },
         {
           "text": "Sorry I'm late, I was lost downtown.",
-          "context": "explicar o atraso"
+          "context": "explicar o atraso",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/ed5d57db82ac820f.mp3"
         }
       ],
       "roleplay": {
@@ -384,23 +389,28 @@
       "listening_speaking": [
         {
           "text": "Excuse me, did you see my passport?",
-          "context": "perguntar se viram algo perdido"
+          "context": "perguntar se viram algo perdido",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/499263d7670e04ee.mp3"
         },
         {
           "text": "Did you take the train or the bus?",
-          "context": "perguntar como a pessoa foi"
+          "context": "perguntar como a pessoa foi",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/7426267ffff65f5d.mp3"
         },
         {
           "text": "Did we miss the last bus tonight?",
-          "context": "preocupado com o horário"
+          "context": "preocupado com o horário",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2f8f24b5264f8e42.mp3"
         },
         {
           "text": "No, I didn't see it. Sorry, my friend.",
-          "context": "responder que não viu"
+          "context": "responder que não viu",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e3fc620f1e048806.mp3"
         },
         {
           "text": "Did they order the coffee for us?",
-          "context": "perguntar se já pediram"
+          "context": "perguntar se já pediram",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/99016913144a7126.mp3"
         }
       ],
       "roleplay": {
@@ -625,23 +635,28 @@
       "listening_speaking": [
         {
           "text": "Excuse me, I'm looking for the subway.",
-          "context": "procurar o metrô agora"
+          "context": "procurar o metrô agora",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/eca39c7ab88b4a01.mp3"
         },
         {
           "text": "I'm waiting for the bus to the airport.",
-          "context": "dizer o que está esperando"
+          "context": "dizer o que está esperando",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1ec6f6b04193ec22.mp3"
         },
         {
           "text": "I'm really hungry. Is there a restaurant here?",
-          "context": "com fome agora"
+          "context": "com fome agora",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/27a3bdaa89ca407a.mp3"
         },
         {
           "text": "Sorry, I'm out of cash right now.",
-          "context": "sem dinheiro no momento"
+          "context": "sem dinheiro no momento",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/718d5e212082470f.mp3"
         },
         {
           "text": "I'm going to the hotel, see you later!",
-          "context": "dizer para onde está indo"
+          "context": "dizer para onde está indo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/3a39cf3a640c7de1.mp3"
         }
       ],
       "roleplay": {
@@ -873,23 +888,28 @@
       "listening_speaking": [
         {
           "text": "Tomorrow I'm gonna take the ferry boat.",
-          "context": "plano para amanhã"
+          "context": "plano para amanhã",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e2e692afa1e43fbb.mp3"
         },
         {
           "text": "I'll take the bus, it's cheaper.",
-          "context": "decidir na hora"
+          "context": "decidir na hora",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/be6cceae8f1fc73c.mp3"
         },
         {
           "text": "Will you take the train with me tomorrow?",
-          "context": "convidar alguém"
+          "context": "convidar alguém",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/176a4910f75e319b.mp3"
         },
         {
           "text": "Don't worry, I'll be there at nine.",
-          "context": "combinar horário"
+          "context": "combinar horário",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/9122b95863daa42b.mp3"
         },
         {
           "text": "Next week I'm gonna visit Miami.",
-          "context": "falar de um plano maior"
+          "context": "falar de um plano maior",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8d14607871dcc5c7.mp3"
         }
       ],
       "roleplay": {
@@ -1117,23 +1137,28 @@
       "listening_speaking": [
         {
           "text": "Yesterday I was at the beach all day.",
-          "context": "contar o ontem"
+          "context": "contar o ontem",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/3ab5f53cda190336.mp3"
         },
         {
           "text": "Right now I'm waiting for the train.",
-          "context": "contar o agora"
+          "context": "contar o agora",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/77033d237bf9c8dd.mp3"
         },
         {
           "text": "Tomorrow I'm gonna visit the museum.",
-          "context": "contar o amanhã"
+          "context": "contar o amanhã",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2e645f5547babb75.mp3"
         },
         {
           "text": "Did you see the show last night?",
-          "context": "perguntar sobre o passado"
+          "context": "perguntar sobre o passado",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/7cc171f4178a2bd3.mp3"
         },
         {
           "text": "Next week I'll be back in Brazil.",
-          "context": "falar da volta"
+          "context": "falar da volta",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2ca55484cffc8912.mp3"
         }
       ],
       "roleplay": {

@@ -129,9 +129,21 @@ function normalizeWith(text: string, sTo: 'is' | 'has', dTo: 'would' | 'had'): s
     .replace(/[.,!?;:"()*]/g, ' ')
     .replace(/'s\b/g, 's')                        // possessivo: father's = fathers
     .replace(/'/g, '');
-  const raw = t.split(/\s+/).filter(Boolean)
-    .flatMap(w => (INFORMAL[w] ?? w).split(' '))
-    .map(w => ORDINALS[w] ?? americanize(w));
+  const words = t.split(/\s+/).filter(Boolean).flatMap(w => (INFORMAL[w] ?? w).split(' '));
+  const raw: string[] = [];
+  for (let i = 0; i < words.length; i++) {
+    const w = words[i];
+    // Ordinal composto: "twenty first" = "21" (senão virava "20" + "1" = "201").
+    const nextOrd = ORDINALS[words[i + 1] ?? ''];
+    if (w in TENS && nextOrd && +nextOrd < 10) { raw.push(String(TENS[w] + +nextOrd)); i++; continue; }
+    raw.push(ORDINALS[w] ?? americanize(w));
+  }
+  // Sigla soletrada: "C.E.O." / "c e o" = "ceo" (letras soltas seguidas viram uma palavra; "a" e "i" sozinhos são palavras).
+  for (let i = 0; i < raw.length; i++) {
+    let j = i;
+    while (j < raw.length && /^[a-z]$/.test(raw[j])) j++;
+    if (j - i >= 2 && raw.slice(i, j).some(x => x !== 'a' && x !== 'i')) { raw.splice(i, j - i, raw.slice(i, j).join('')); }
+  }
   const out: string[] = [];
   for (let i = 0; i < raw.length; ) {
     const w = raw[i];
@@ -218,12 +230,19 @@ export function bestSpeechMatch(spoken: string | string[], reference: string): S
   let best: SpeechMatch = { percent: 0, missing: [], transcript: alts[0] ?? '' };
   const variants: ['is' | 'has', 'would' | 'had'][] = [['is', 'would'], ['has', 'had']];
   for (const [sTo, dTo] of variants) {
-    const ref = normalizeWith(reference, sTo, dTo).split(' ').filter(Boolean);
-    if (ref.length === 0) continue;
-    if (alts.length === 0) { if (best.missing.length === 0) best = { percent: 0, missing: ref, transcript: '' }; continue; }
+    const ref0 = normalizeWith(reference, sTo, dTo).split(' ').filter(Boolean);
+    if (ref0.length === 0) continue;
+    if (alts.length === 0) { if (best.missing.length === 0) best = { percent: 0, missing: ref0, transcript: "" }; continue; }
     for (const alt of alts) {
       for (const [sp1, dp1] of variants) {
         const sp = normalizeWith(alt, sp1, dp1).split(' ').filter(Boolean);
+        // Palavra com hífen falada junta ("push-ups" esperado, "pushups" falado): junta o par na frase esperada.
+        const spSet = new Set(sp);
+        const ref: string[] = [];
+        for (let k = 0; k < ref0.length; k++) {
+          if (k + 1 < ref0.length && spSet.has(ref0[k] + ref0[k + 1])) { ref.push(ref0[k] + ref0[k + 1]); k++; }
+          else ref.push(ref0[k]);
+        }
         let { matched, missing } = matchWords(ref, sp);
         // O microfone costuma cortar o começo quando o aluno fala junto com o toque no botão:
         // faltar só a 1ª palavra curta (I, a, the...) da frase não desconta.

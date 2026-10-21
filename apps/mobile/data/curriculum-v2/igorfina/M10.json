@@ -133,23 +133,28 @@
       "listening_speaking": [
         {
           "text": "Excuse me, is the museum free today?",
-          "context": "perguntar se é de graça"
+          "context": "perguntar se é de graça",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/81de6d2c666b35a8.mp3"
         },
         {
           "text": "How much is the ticket, please?",
-          "context": "preço do ingresso"
+          "context": "preço do ingresso",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/c567d53f708fb29c.mp3"
         },
         {
           "text": "Is there a free tour in the city?",
-          "context": "passeio grátis"
+          "context": "passeio grátis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/9c2689f589119237.mp3"
         },
         {
           "text": "Is there a discount for students?",
-          "context": "desconto"
+          "context": "desconto",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/38ecfd785fa3d981.mp3"
         },
         {
           "text": "The park is free to visit, let's go!",
-          "context": "programa grátis"
+          "context": "programa grátis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/fd484bc071365c4e.mp3"
         }
       ],
       "roleplay": {
@@ -378,23 +383,28 @@
       "listening_speaking": [
         {
           "text": "What's the cheapest way to get to the beach?",
-          "context": "perguntar o mais barato"
+          "context": "perguntar o mais barato",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/f5302befe5654d00.mp3"
         },
         {
           "text": "I'll take the subway, it's cheaper.",
-          "context": "escolher"
+          "context": "escolher",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8b21de9fcdffea72.mp3"
         },
         {
           "text": "Let's walk, it's only five minutes.",
-          "context": "ir a pé"
+          "context": "ir a pé",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/487a5f99a46cd51f.mp3"
         },
         {
           "text": "Can I rent an electric scooter here?",
-          "context": "patinete"
+          "context": "patinete",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2eb0a8f56a3643f0.mp3"
         },
         {
           "text": "A day pass is cheaper for us.",
-          "context": "passe do dia"
+          "context": "passe do dia",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/045ad392f5cabea3.mp3"
         }
       ],
       "roleplay": {
@@ -620,23 +630,28 @@
       "listening_speaking": [
         {
           "text": "Excuse me, where can I eat cheap around here?",
-          "context": "achar comida barata"
+          "context": "achar comida barata",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/4ac4bdd059dc90c5.mp3"
         },
         {
           "text": "Is there a food truck near the park?",
-          "context": "food truck"
+          "context": "food truck",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/027f7acf72961b40.mp3"
         },
         {
           "text": "One dollar slice, please. Thank you!",
-          "context": "pedir a fatia"
+          "context": "pedir a fatia",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/2bdc80e923cbaf0a.mp3"
         },
         {
           "text": "Happy hour starts at five, let's go!",
-          "context": "happy hour"
+          "context": "happy hour",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/7ab6c50c0cc37792.mp3"
         },
         {
           "text": "I'm hungry and I'm out of cash, ha!",
-          "context": "revisão"
+          "context": "revisão",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/06900c22895787d5.mp3"
         }
       ],
       "roleplay": {
@@ -861,23 +876,28 @@
       "listening_speaking": [
         {
           "text": "What do you recommend for a free day?",
-          "context": "pedir recomendação"
+          "context": "pedir recomendação",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/261dfe1a416bfc2f.mp3"
         },
         {
           "text": "What's your favorite place in the city?",
-          "context": "perguntar o favorito"
+          "context": "perguntar o favorito",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/7cc7f03b42b05063.mp3"
         },
         {
           "text": "Is the boat tour worth it?",
-          "context": "vale a pena?"
+          "context": "vale a pena?",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/633aed8dc30c75da.mp3"
         },
         {
           "text": "You should go to the market on Sunday.",
-          "context": "recomendar"
+          "context": "recomendar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/dc7e3fe9edbf08dc.mp3"
         },
         {
           "text": "Totally worth it, thank you so much!",
-          "context": "agradecer a dica"
+          "context": "agradecer a dica",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/438bdc606328e612.mp3"
         }
       ],
       "roleplay": {
@@ -1109,23 +1129,28 @@
       "listening_speaking": [
         {
           "text": "Hello, excuse me, can you help me, please?",
-          "context": "as 11 palavras"
+          "context": "as 11 palavras",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1e0ed8d4251bcea6.mp3"
         },
         {
           "text": "This was the best trip of my life!",
-          "context": "o melhor"
+          "context": "o melhor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/240099b61c37c380.mp3"
         },
         {
           "text": "Could you take me to the airport, please?",
-          "context": "pedido educado"
+          "context": "pedido educado",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/7c39c9d0ccf880f6.mp3"
         },
         {
           "text": "Next year I'm gonna come back for sure!",
-          "context": "futuro"
+          "context": "futuro",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/5124dfabee982a1c.mp3"
         },
         {
           "text": "Think in English and let the words come out.",
-          "context": "o conselho do Igor"
+          "context": "o conselho do Igor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/94fa0ed1c2f66cd1.mp3"
         }
       ],
       "roleplay": {

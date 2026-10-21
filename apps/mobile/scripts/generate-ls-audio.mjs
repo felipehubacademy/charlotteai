@@ -2,9 +2,11 @@
 /**
  * generate-ls-audio.mjs
  *
- * Pre-gera audio (OpenAI TTS coral/flac) para todas as LSPhrase do
- * Curriculum v2 que ainda nao tem entrada em audio-manifest.json e
- * sobe pro bucket curriculum-audio no Supabase Storage.
+ * Pre-gera audio para todas as LSPhrase do Curriculum v2 que ainda nao tem
+ * entrada em audio-manifest.json e sobe pro bucket curriculum-audio no Supabase Storage.
+ *   Charlotte (novice/inter/advanced): OpenAI TTS coral/flac.
+ *   Igorfina: voz dele (ou da imitação da unidade) pela rota do app /api/tts (ElevenLabs, mp3),
+ *   com chave própria no manifest (personagem + imitação + texto; ver audioKey).
  *
  * Workflow:
  *   1. Rode compile-curriculum-v2.mjs antes (gera JSONs)
@@ -89,9 +91,20 @@ function ttsHash(text) {
   return crypto.createHash('sha1').update(text.trim().toLowerCase()).digest('hex').slice(0, 16);
 }
 
+// Mesma regra de compile-curriculum-v2.mjs (audioKey).
+function impressionOf(unit) {
+  return unit?.roleplay?.persona_outfit?.match(/^igorfina_(president|hoops)$/)?.[1] ?? null;
+}
+function audioKey(level, unit, text) {
+  if (level !== 'igorfina') return ttsHash(text);
+  return ttsHash(`igorfina|${impressionOf(unit) ?? 'base'}|${text}`);
+}
+
+const API_BASE = process.env.API_BASE_URL || 'https://queizy.com';
+
 function collectPhrases() {
   const out = [];
-  const levels = ['novice', 'inter', 'advanced'];
+  const levels = ['novice', 'inter', 'advanced', 'igorfina'];
   for (const level of levels) {
     const dir = path.join(OUT, level);
     if (!fs.existsSync(dir)) continue;
@@ -102,7 +115,7 @@ function collectPhrases() {
         for (const phrase of unit.listening_speaking ?? []) {
           out.push({
             level, moduleId: mod.id, unitId: unit.id,
-            text: phrase.text, hash: ttsHash(phrase.text),
+            text: phrase.text, hash: audioKey(level, unit, phrase.text), impression: impressionOf(unit),
           });
         }
       }
@@ -127,14 +140,27 @@ async function ttsOpenAI(text, level) {
   return Buffer.from(await res.arrayBuffer());
 }
 
-async function uploadSupabase(level, filename, buffer) {
+// Voz do personagem pela rota do app: mesma voz e mesmos ajustes que o aluno ouve.
+async function ttsCharacter(text, impression) {
+  const res = await fetch(`${API_BASE}/api/tts`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text, source: 'pregen', character: 'igorfina', ...(impression ? { impression } : {}) }),
+  });
+  if (!res.ok) throw new Error(`/api/tts ${res.status}: ${await res.text()}`);
+  const data = await res.json();
+  if (!data.audio) throw new Error('/api/tts sem audio');
+  return Buffer.from(data.audio, 'base64');
+}
+
+async function uploadSupabase(level, filename, buffer, mime = `audio/${FORMAT}`) {
   const path = `${PREFIX}/${level}/${filename}`;
   const url  = `${SUPABASE_URL}/storage/v1/object/${BUCKET}/${path}`;
   const res = await fetch(url, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Content-Type':  `audio/${FORMAT}`,
+      'Content-Type':  mime,
       'x-upsert':      'true',
     },
     body: buffer,
@@ -187,9 +213,10 @@ async function main() {
   for (const p of missing) {
     i++;
     try {
-      const buf      = await ttsOpenAI(p.text, p.level);
-      const filename = `${p.hash}.${FORMAT}`;
-      const url      = await uploadSupabase(p.level, filename, buf);
+      const isChar   = p.level === 'igorfina';
+      const buf      = isChar ? await ttsCharacter(p.text, p.impression) : await ttsOpenAI(p.text, p.level);
+      const filename = `${p.hash}.${isChar ? 'mp3' : FORMAT}`;
+      const url      = await uploadSupabase(p.level, filename, buf, isChar ? 'audio/mpeg' : `audio/${FORMAT}`);
       manifest[p.hash] = url;
       saveManifest(manifest);  // salva incremental — seguro pra crash mid-run
       console.log(`OK  [${i}/${missing.length}] ${p.level}/${p.moduleId}/${p.unitId} "${p.text.slice(0, 40)}" -> ${filename}`);
