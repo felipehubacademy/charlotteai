@@ -240,9 +240,12 @@ export interface AsaasSubscription { id: string; customer: string; status: strin
 export const getSubscription = (id: string) => asaas<AsaasSubscription>(`/subscriptions/${id}`);
 /** Assinaturas ativas criadas para a conta (externalReference = id da conta). No checkout da página do
  *  processador, o id da assinatura só chegava com a 1ª cobrança; aqui ele é achado na hora. */
-export async function activeSubscriptionsOf(userId: string, sandbox = false): Promise<AsaasSubscription[]> {
+export async function activeSubscriptionsOf(userId: string, sandbox = false, customerId?: string | null): Promise<AsaasSubscription[]> {
   const r = await asaas<{ data: AsaasSubscription[] }>(`/subscriptions?externalReference=${encodeURIComponent(userId)}&status=ACTIVE&limit=10`, { sandbox });
-  return r.data ?? [];
+  if (r.data?.length || !customerId) return r.data ?? [];
+  // A página do processador não repassa o externalReference para a assinatura: busca pelo cliente.
+  const c = await asaas<{ data: AsaasSubscription[] }>(`/subscriptions?customer=${encodeURIComponent(customerId)}&status=ACTIVE&limit=10`, { sandbox });
+  return c.data ?? [];
 }
 export const cancelSubscription = (id: string, sandbox = false) => asaas<{ deleted: boolean }>(`/subscriptions/${id}`, { method: 'DELETE', sandbox });
 /** 4 últimos dígitos do cartão de uma cobrança (null no Pix). Usado para conferir quem pagou. */

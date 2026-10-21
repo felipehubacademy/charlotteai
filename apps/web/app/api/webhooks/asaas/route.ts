@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
       }
       // Guarda já o id da assinatura (antes só chegava na 1ª cobrança; sem ele, cancelar pelo app não achava a assinatura).
       if (event === 'CHECKOUT_PAID' && !row.asaas_subscription_id && row.method !== 'annual_pix') {
-        const subs = await activeSubscriptionsOf(row.user_id).catch(() => []);
+        const subs = await activeSubscriptionsOf(row.user_id, false, c.customer).catch(() => []);
         if (subs[0]) await supabase.from('asaas_checkouts').update({ asaas_subscription_id: subs[0].id } as never).eq('id', row.id);
       }
       if (event === 'CHECKOUT_PAID' && row.trial_days > 0) {

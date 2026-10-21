@@ -85,16 +85,16 @@ export async function POST(req: NextRequest) {
     if (!process.env.ADMIN_SECRET || req.headers.get('x-admin-secret') !== process.env.ADMIN_SECRET) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    const { data } = await supabase.from('asaas_checkouts').select('id, user_id, method, asaas_subscription_id, charlotte_users!inner(email)')
+    const { data } = await supabase.from('asaas_checkouts').select('id, user_id, method, asaas_subscription_id, asaas_customer_id, charlotte_users!inner(email)')
       .eq('status', 'paid').eq('sandbox', false).neq('method', 'annual_pix');
-    const rows = (data ?? []) as unknown as { id: string; user_id: string; method: string; asaas_subscription_id: string | null; charlotte_users: { email: string } }[];
+    const rows = (data ?? []) as unknown as { id: string; user_id: string; method: string; asaas_subscription_id: string | null; asaas_customer_id: string | null; charlotte_users: { email: string } }[];
     const isTest = (e: string) => /^felipe\.xavier1987\+.*@gmail\.com$/i.test(e) || /@hubacademybr\.com$/i.test(e);
     const out: Record<string, unknown>[] = [];
     for (const r of rows) {
       const email = r.charlotte_users?.email ?? '';
       if (body.action === 'cancel-test' && !isTest(email)) continue;
       try {
-        const subs = await activeSubscriptionsOf(r.user_id);
+        const subs = await activeSubscriptionsOf(r.user_id, false, r.asaas_customer_id);
         if (!r.asaas_subscription_id && subs[0]) await supabase.from('asaas_checkouts').update({ asaas_subscription_id: subs[0].id } as never).eq('id', r.id);
         if (body.action === 'cancel-test') {
           for (const s of subs) await cancelSubscription(s.id);
@@ -177,15 +177,15 @@ export async function POST(req: NextRequest) {
     const { data: auth } = h.startsWith('Bearer ') ? await supabase.auth.getUser(h.slice(7)) : { data: null };
     const user = auth?.user;
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    const { data: row } = await supabase.from('asaas_checkouts').select('id, method, asaas_subscription_id, sandbox')
+    const { data: row } = await supabase.from('asaas_checkouts').select('id, method, asaas_subscription_id, asaas_customer_id, sandbox')
       .eq('user_id', user.id).eq('status', 'paid').order('created_at', { ascending: false }).limit(1).maybeSingle();
-    const ck = row as { id: string; method: string | null; asaas_subscription_id: string | null; sandbox: boolean | null } | null;
+    const ck = row as { id: string; method: string | null; asaas_subscription_id: string | null; asaas_customer_id: string | null; sandbox: boolean | null } | null;
     // Pix não renova sozinho: não há o que cancelar.
     if (!ck || ck.method === 'annual_pix') return NextResponse.json({ ok: true, noRenewal: true });
     const sandbox = !!ck.sandbox;
     try {
       // Compra pela página do processador: o id da assinatura pode ainda não estar guardado (só chega na 1ª cobrança).
-      const ids = ck.asaas_subscription_id ? [ck.asaas_subscription_id] : (await activeSubscriptionsOf(user.id, sandbox)).map(s => s.id);
+      const ids = ck.asaas_subscription_id ? [ck.asaas_subscription_id] : (await activeSubscriptionsOf(user.id, sandbox, ck.asaas_customer_id)).map(s => s.id);
       if (!ids.length) {
         await logOpsError('checkout', '/api/checkout/asaas (cancelar)', new Error('assinatura não encontrada no processador'), { user: user.id, checkout: ck.id });
         return NextResponse.json({ error: 'Não encontramos a assinatura para cancelar. Escreva para suporte@queizy.com que cancelamos para você.' }, { status: 404 });
