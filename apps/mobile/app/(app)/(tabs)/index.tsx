@@ -20,7 +20,7 @@ import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { UserLevel } from '@/lib/levelConfig';
-import type { TrailLevel } from '@/data/curriculum';
+import type { TrailLevel } from '@/data/trailTypes';
 import { ExtraTracksRow } from '@/components/trail/ExtraTracksStrip';
 import { useTheme } from '@/lib/theme';
 import { usePaywallContext } from '@/lib/paywallContext';
@@ -567,7 +567,6 @@ export default function HomeTab() {
             level={trailLevel}
             currentLevel={currentLevel}
             onLevelChange={handleLevelChange}
-            useV2
             flush
           />
           {/* Trilhas extras da Família Queizy (influenciadores): linha fina no próprio cartão. */}
@@ -633,7 +632,6 @@ export default function HomeTab() {
             // goDown caia no ramo de andamento, nao usa posicao obsoleta.
             if (finished) activeTopicYRef.current = 0;
           }}
-          useV2
         />
       </ScrollView>
 

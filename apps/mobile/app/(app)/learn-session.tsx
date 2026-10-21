@@ -11,12 +11,7 @@ import { useKeyboardShown } from '@/lib/useKeyboardShown';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomInset } from '@/lib/useBottomInset';
 import { router, useLocalSearchParams } from 'expo-router';
-import {
-  ArrowLeft, ArrowRight, CheckCircle, XCircle,
-  LightbulbFilament, BookOpen, Microphone,
-  SpeakerLow, SpeakerHigh, Play, Pause, ArrowsClockwise,
-  ThumbsUp, ThumbsDown,
-} from 'phosphor-react-native';
+import { ArrowLeft, ArrowRight, CheckCircle, XCircle, LightbulbFilament, BookOpen, Microphone, SpeakerLow, SpeakerHigh, Play, Pause, ThumbsUp, ThumbsDown } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 import * as SecureStore from 'expo-secure-store';
 import * as Haptics from '@/lib/hapticsGated';
@@ -30,7 +25,6 @@ import { systemIsPt } from '@/lib/systemLang';
 import { bestSpeechMatch, normalizeSpeech } from '@/lib/speechMatch';
 import { logAttempt } from '@/lib/learnAttempts';
 import { checkGrammarAnswer } from '@/lib/grammarAnswer';
-import { scheduleReviews, markReviewDone, rescheduleReview } from '@/lib/spacedRepetition';
 import { track } from '@/lib/analytics';
 import * as FileSystem from 'expo-file-system/legacy';
 import { useAudioRecorder, setAudioModeAsync, setIsAudioActiveAsync, RecordingPresets, requestRecordingPermissionsAsync } from 'expo-audio';
@@ -52,16 +46,10 @@ import { TranslatableText } from '@/components/ui/TranslatableText';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { QueizyWave } from '@/components/ui/QueizyWave';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
-import { useLearnProgress } from '@/hooks/useLearnProgress';
-import {
-  CURRICULUM, TrailLevel, GrammarEx, PronStep,
-  getTopic,
-} from '@/data/curriculum';
+import type { TrailLevel, GrammarEx, PronStep } from '@/data/trailTypes';
 import { getV2TopicForUnit } from '@/lib/curriculum-v2/adapter';
 import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
-import { checkLevelPromotion, promoteUserLevel, NEXT_LEVEL } from '@/lib/levelPromotion';
-import PromotionModal from '@/components/ui/PromotionModal';
 import BluetoothMicHint from '@/components/BluetoothMicHint';
 import { supabase } from '@/lib/supabase';
 import { appAlert } from '@/components/ui/AppAlert';
@@ -144,8 +132,8 @@ function pickNoviceCorrectMessage(host = 'Charlotte'): string {
 // ── Main screen ────────────────────────────────────────────────
 export default function LearnSessionScreen() {
   const params = useLocalSearchParams<{
-    level: string; moduleIndex: string; topicIndex: string; reviewId?: string;
-    // v2 params — if v=v2, load from curriculum-v2 by moduleId/unitId
+    level: string; moduleIndex?: string; topicIndex?: string;
+    // Trilha (v2): v=v2 + moduleId/unitId + activity
     v?: string; moduleId?: string; unitId?: string; activity?: string;
   }>();
   const level       = (params.level ?? 'Novice') as TrailLevel;
@@ -168,14 +156,10 @@ export default function LearnSessionScreen() {
   const bottomInset = useBottomInset();
   // Charlotte de corpo inteiro encolhe em telas mais baixas para as opções caberem sem rolar.
   const { height: winH } = useWindowDimensions();
-  // Trilha antiga só fora do modo v2 (sem userId o hook não lê nem grava nada).
-  const learnProgress = useLearnProgress(isV2 ? undefined : userId, level);
-  // v2 mode: skip v1-specific learn_history (uses learn_history_v2 via v2Progress),
-  // mas AINDA escreve XP em charlotte_practices pra o pill da home / leaderboard
-  // / progresso global funcionarem normal.
-  const saveTopicComplete = isV2 ? (async () => {}) : learnProgress.saveTopicComplete;
+  // Progresso da atividade vai para learn_history_v2 (v2Progress); aqui cada resposta grava
+  // o XP em charlotte_practices (pill da home, ranking, progresso global).
   const saveExercise = useCallback(async (params: any) => {
-    if (!isV2) return learnProgress.saveExercise(params);
+    if (!isV2) return;
     // Gramática: cada resposta vai para learn_attempts (a fala é registrada em finishPronAttempt,
     // com as leituras do reconhecimento).
     if (params?.exerciseType && params.exerciseType !== 'repeat') {
@@ -194,7 +178,7 @@ export default function LearnSessionScreen() {
         xp_earned:     params.xpEarned,
       });
     } catch (e) { console.warn('[v2] charlotte_practices insert failed', e); }
-  }, [isV2, userId, level, learnProgress.saveExercise]);
+  }, [isV2, userId, level]);
   const v2Progress        = useLearnProgressV2(userId, level as V2Level);
 
   // v2 score trackers — populated during the session, persisted on completion
@@ -219,7 +203,12 @@ export default function LearnSessionScreen() {
         params.unitId!,
         (params.activity as 'grammar' | 'ls' | 'both') ?? 'both'
       )
-    : getTopic(level, moduleIndex, topicIndex);
+    : null;
+
+  // Sem os parâmetros da trilha (link antigo da trilha removida): volta para a Início.
+  useEffect(() => {
+    if (!isV2) router.replace('/(app)/(tabs)' as any);
+  }, [isV2]);
 
   // ── Build flat steps array ─────────────────────────────────
   const steps: SessionStep[] = [
@@ -232,15 +221,9 @@ export default function LearnSessionScreen() {
   const [sessionXP, setSessionXP] = useState(0);
   const [sessionErrors, setSessionErrors] = useState(0);
 
-  // ── Promotion state ────────────────────────────────────────
-  const [showPromotion, setShowPromotion] = useState(false);
-  const [promotionNextLevel, setPromotionNextLevel] = useState<string>('');
-
   // ── Step index — with resume from SecureStore ──────────────
-  const resumeKey = userId
-    ? (isV2
-        ? `learn_step_v2_${userId}_${params.moduleId}_${params.unitId}_${params.activity ?? 'both'}`
-        : `learn_step_${userId}_${level}_${moduleIndex}_${topicIndex}`)
+  const resumeKey = userId && isV2
+    ? `learn_step_v2_${userId}_${params.moduleId}_${params.unitId}_${params.activity ?? 'both'}`
     : null;
 
   const [stepIdx, setStepIdx]         = useState(0);
@@ -1059,8 +1042,6 @@ export default function LearnSessionScreen() {
     setWordOrderPool([]);
     const next = stepIdx + 1;
     if (next >= totalSteps) {
-      await saveTopicComplete(level, moduleIndex, topicIndex);
-
       // v2 progress write — compute score, save to learn_history_v2.
       // 1 retentativa de exercício não conta como erro extra (sessionErrors
       // só incrementa na PRIMEIRA falha de cada step). Score = % de steps
@@ -1095,64 +1076,8 @@ export default function LearnSessionScreen() {
       }
 
       setIsComplete(true);
-      if (userId) track('lesson_completed', { level, module: moduleIndex, topic: topicIndex, isReview: !!params.reviewId, v2: isV2 });
-      // Revisões e promoção da trilha antiga: só fora do modo v2 (a v2 promove pela Home).
-      if (userId && !isV2) {
-        // Agendar revisões espaçadas (3, 7, 14, 30 dias) — somente se NÃO for uma revisão
-        if (!params.reviewId) {
-          scheduleReviews(userId, level, moduleIndex, topicIndex, topic?.title ?? '').catch(console.warn);
-        } else {
-          // Marcar revisão como concluída — ou reagendar se houve erros
-          if (sessionErrors > 0) {
-            rescheduleReview(
-              params.reviewId,
-              userId,
-              level,
-              moduleIndex,
-              topicIndex,
-              topic?.title ?? '',
-            ).catch(console.warn);
-          } else {
-            markReviewDone(params.reviewId).catch(console.warn);
-          }
-        }
-
-        // Check level promotion after topic complete (only when NOT a review)
-        if (!params.reviewId) {
-          try {
-            const { data: progressData } = await supabase
-              .from('learn_progress')
-              .select('completed')
-              .eq('user_id', userId)
-              .eq('level', level)
-              .maybeSingle();
-            const completedCount = (progressData?.completed ?? []).length;
-            const status = await checkLevelPromotion(userId, level, completedCount);
-            if (status.eligible && status.nextLevel) {
-              setPromotionNextLevel(status.nextLevel);
-              setShowPromotion(true);
-            }
-          } catch (e) {
-            console.warn('[Promotion] check error:', e);
-          }
-        }
-      }
-      // Celebracao de conclusao: detecta se foi modulo completo (ultimo topico)
-      const moduleData = CURRICULUM[level]?.[moduleIndex];
-      const isLastTopic = !!moduleData && topicIndex === moduleData.topics.length - 1;
-      const isModuleComplete = isLastTopic && !params.reviewId;
-
-      // Trilha v2: tópico = a unidade inteira; o som de tópico/módulo concluído sai do saveAttempt
-      // quando a atividade fecha a unidade (ver useLearnProgressV2). Aqui é só a trilha antiga.
-      if (!isV2) {
-        if (isModuleComplete) {
-          // SFX grande + voz "Module complete!" (delay interno no soundEngine)
-          soundEngine.play('module_complete').catch(() => {});
-        } else {
-          // Topico finalizado: SFX curto + voz "Topic done!"
-          soundEngine.play('topic_complete').catch(() => {});
-        }
-      }
+      if (userId) track('lesson_completed', { level, module: moduleIndex, topic: topicIndex, isReview: false, v2: isV2 });
+      // O som de tópico/módulo concluído sai do saveAttempt quando a atividade fecha a unidade (useLearnProgressV2).
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
       setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 120);
       setTimeout(() => Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success), 280);
@@ -1161,115 +1086,14 @@ export default function LearnSessionScreen() {
     }
   };
 
-  const handlePromotion = async () => {
-    if (!userId || !promotionNextLevel) return;
-    try {
-      await promoteUserLevel(userId, promotionNextLevel);
-      await refreshProfile(); // refresh auth context so level updates everywhere
-    } catch (e) {
-      console.error('[Promotion] error:', e);
-    }
-    setShowPromotion(false);
-    router.replace('/(app)'); // go home
-  };
-
   const progress = totalSteps > 0 ? (stepIdx + 1) / totalSteps : 0;
 
-  const modTitle   = CURRICULUM[level]?.[moduleIndex]?.title ?? '';
   const topicTitle = topic?.title ?? '';
   const tenseTag   = (topic && (topic as any).tense) ? String((topic as any).tense) : '';
 
   // ── Completion screen ──────────────────────────────────────
   if (isComplete) {
-    // ── Tela de conclusão: REVISÃO ─────────────────────────────
-    if (params.reviewId) {
-      const perfect = sessionErrors === 0;
-      return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'left', 'right']}>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 }}>
-            {/* Ícone */}
-            <View style={{
-              width: 80, height: 80, borderRadius: 40,
-              backgroundColor: perfect ? C.greenBg : C.violetBg,
-              borderWidth: 2, borderColor: perfect ? C.green : C.violet,
-              alignItems: 'center', justifyContent: 'center', marginBottom: 24,
-            }}>
-              {perfect
-                ? <CheckCircle size={40} color={C.green} weight="fill" />
-                : <ArrowsClockwise size={40} color={C.violet} weight="fill" />
-              }
-            </View>
-
-            {/* Badge revisão */}
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5,
-              backgroundColor: C.violetBg, borderRadius: 10,
-              paddingHorizontal: 10, paddingVertical: 4, marginBottom: 16 }}>
-              <ArrowsClockwise size={11} color={C.violet} weight="bold" />
-              <AppText style={{ fontSize: 11, fontWeight: '700', color: C.violet }}>
-                {isPortuguese ? 'Revisão' : 'Review'}
-              </AppText>
-            </View>
-
-            <AppText display style={{ fontSize: 30, fontWeight: '800', color: C.navy, marginBottom: 8, textAlign: 'center' }}>
-              {perfect
-                ? (isPortuguese ? 'Revisão perfeita!' : 'Perfect review!')
-                : (isPortuguese ? 'Revisão concluída!' : 'Review complete!')}
-            </AppText>
-            <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, marginBottom: 8 }}>
-              {topicTitle}
-            </AppText>
-            <AppText style={{ fontSize: 13, color: C.navyLight, textAlign: 'center', lineHeight: 20, marginBottom: 12 }}>
-              {sessionXP} {isPortuguese ? 'XP ganhos' : 'XP earned'}
-            </AppText>
-
-            {/* Feedback de erros / reagendamento */}
-            <View style={{
-              backgroundColor: perfect ? C.greenBg : C.violetBg,
-              borderRadius: 14, paddingHorizontal: 20, paddingVertical: 12,
-              marginBottom: 32, alignItems: 'center',
-            }}>
-              <AppText style={{ fontSize: 13, color: perfect ? C.green : C.violet, fontWeight: '600', textAlign: 'center', lineHeight: 20 }}>
-                {perfect
-                  ? (isPortuguese
-                    ? 'Excelente! Memória consolidada — próxima revisão em breve.'
-                    : 'Excellent! Memory consolidated — next review coming up.')
-                  : (isPortuguese
-                    ? `${sessionErrors} erro${sessionErrors > 1 ? 's' : ''} detectado${sessionErrors > 1 ? 's' : ''}. Revisão reagendada para daqui a 3 dias.`
-                    : `${sessionErrors} mistake${sessionErrors > 1 ? 's' : ''} detected. Review rescheduled for 3 days from now.`)
-                }
-              </AppText>
-            </View>
-
-            <TouchableOpacity
-              onPress={() => router.replace('/(app)')}
-              style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, paddingHorizontal: 40, marginBottom: 16 }}
-            >
-              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>
-                {isPortuguese ? 'Voltar ao início' : 'Back to home'}
-              </AppText>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => router.replace('/(app)/learn-trail')}>
-              <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>
-                {isPortuguese ? 'Ver trilha' : 'View trail'}
-              </AppText>
-            </TouchableOpacity>
-          </View>
-        </SafeAreaView>
-      );
-    }
-
     // ── Tela de conclusão: APRENDIZADO NORMAL ──────────────────
-    const modules = CURRICULUM[level];
-    let nextModuleIdx = moduleIndex;
-    let nextTopicIdx = topicIndex + 1;
-
-    if (modules[nextModuleIdx] && nextTopicIdx >= modules[nextModuleIdx].topics.length) {
-      nextModuleIdx = moduleIndex + 1;
-      nextTopicIdx = 0;
-    }
-
-    const hasNextTopic = nextModuleIdx < modules.length && modules[nextModuleIdx]?.topics[nextTopicIdx] !== undefined;
-
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'left', 'right']}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 }}>
@@ -1393,13 +1217,6 @@ export default function LearnSessionScreen() {
                       }
                     }
                     router.replace('/(app)/(tabs)' as any);
-                  } else if (hasNextTopic) {
-                    router.replace({
-                      pathname: '/(app)/learn-session',
-                      params: { level, moduleIndex: String(nextModuleIdx), topicIndex: String(nextTopicIdx) },
-                    });
-                  } else {
-                    router.replace('/(app)/learn-trail');
                   }
                 }}
                 style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, paddingHorizontal: 40, marginBottom: 16 }}
@@ -1408,15 +1225,10 @@ export default function LearnSessionScreen() {
               </TouchableOpacity>
             );
           })()}
-          <TouchableOpacity onPress={() => router.replace(isV2 ? '/(app)/(tabs)' as any : '/(app)/learn-trail')}>
+          <TouchableOpacity onPress={() => router.replace('/(app)/(tabs)' as any)}>
             <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>{isPortuguese ? 'Voltar' : 'Back'}</AppText>
           </TouchableOpacity>
         </View>
-        <PromotionModal
-          isOpen={showPromotion}
-          nextLevel={promotionNextLevel}
-          onConfirm={handlePromotion}
-        />
       </SafeAreaView>
     );
   }
@@ -1439,20 +1251,10 @@ export default function LearnSessionScreen() {
         {/* Titulo absoluto — centraliza na largura TOTAL do header, nao
             entre o arrow e o badge. pointerEvents:none deixa toques passarem. */}
         <View pointerEvents="none" style={{ position: 'absolute', left: 100, right: 100, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
-          {params.reviewId && (
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4,
-              backgroundColor: C.violetBg, borderRadius: 8,
-              paddingHorizontal: 8, paddingVertical: 2, marginBottom: 2 }}>
-              <ArrowsClockwise size={10} color={C.violet} weight="bold" />
-              <AppText style={{ fontSize: 9, fontWeight: '700', color: C.violet, textTransform: 'uppercase', letterSpacing: 1 }}>
-                {isPortuguese ? 'Revisão' : 'Review'}
-              </AppText>
-            </View>
-          )}
           <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '100%', textAlign: 'center' }} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
             {topicTitle}
           </AppText>
-          {!!tenseTag && !params.reviewId && (
+          {!!tenseTag && (
             <AppText numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7} style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>
               {tenseTag}
             </AppText>

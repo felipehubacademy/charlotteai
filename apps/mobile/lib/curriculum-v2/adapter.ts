@@ -9,7 +9,7 @@
  * before building the new trail UI in Phase 5.
  */
 
-import type { GrammarEx, PronStep, Topic, TrailLevel } from '@/data/curriculum';
+import type { GrammarEx, PronStep, Topic, TrailLevel } from '@/data/trailTypes';
 import { getModule } from './loader';
 import type { LSPhrase, Level } from './types';
 

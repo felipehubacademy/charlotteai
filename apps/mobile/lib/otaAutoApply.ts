@@ -16,7 +16,7 @@ const RELOAD_AFTER_AWAY_MS = 10 * 60_000;
 const CHECK_EVERY_MS = 30 * 60_000;
 const BUSY_ROUTES = [
   'learn-session', 'learn-grammar', 'learn-pronunciation', 'guided-chat-exercise', 'roleplay-exercise',
-  'review-session', 'vocab-review', 'placement-test', 'livevoice', 'support-chat', 'add-word',
+  'vocab-review', 'placement-test', 'livevoice', 'support-chat', 'add-word',
   'change-password', 'first-access',
 ];
 

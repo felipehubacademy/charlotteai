@@ -51,14 +51,35 @@ const ptShareOf = (sents: { text: string; lang: Lang }[]) => {
 // ── Modelos ────────────────────────────────────────────────────────────────
 type Msg = { role: 'system' | 'user' | 'assistant'; content: string };
 
+// Tempos até a primeira palavra de cada resposta (ms): é o que a voz espera para começar a falar.
+const LATENCIES: number[] = [];
+let TOTAL_PROBLEMS = 0;
 async function chat(model: string, msgs: Msg[]): Promise<string> {
+  // FAMILY_EFFORT=none|minimal: raciocínio desligado nos modelos que pensam antes de responder.
+  const effort = process.env.FAMILY_EFFORT;
+  const t0 = Date.now();
   const r = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
-    body: JSON.stringify({ model, temperature: 0.7, messages: msgs }),
+    body: JSON.stringify({ model, messages: msgs, stream: true, ...(effort ? { reasoning_effort: effort } : { temperature: 0.7 }) }),
   });
-  const j = await r.json();
-  if (!r.ok) throw new Error(`${model}: ${JSON.stringify(j).slice(0, 200)}`);
-  return String(j.choices[0].message.content ?? '');
+  if (!r.ok || !r.body) throw new Error(`${model}: ${r.status} ${(await r.text()).slice(0, 200)}`);
+  let out = ''; let first = 0; let buf = '';
+  const reader = r.body.getReader(); const dec = new TextDecoder();
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buf += dec.decode(value, { stream: true });
+    const lines = buf.split('\n'); buf = lines.pop() ?? '';
+    for (const line of lines) {
+      if (!line.startsWith('data: ') || line.includes('[DONE]')) continue;
+      try {
+        const d = JSON.parse(line.slice(6)).choices?.[0]?.delta?.content;
+        if (d) { if (!first) first = Date.now() - t0; out += d; }
+      } catch { /* pedaço incompleto */ }
+    }
+  }
+  if (first) LATENCIES.push(first);
+  return out;
 }
 
 // Modelo de voz da OpenAI (o da ligação da Charlotte) em modo texto, via WebSocket.
@@ -175,11 +196,18 @@ async function cases(): Promise<Case[]> {
         }
         shares.push(row);
       }
+      TOTAL_PROBLEMS += problems.length;
       const ok = problems.length === 0;
       if (!ok) failures++;
       console.log(`${ok ? 'OK  ' : 'FALHA'} ${c.who} (${c.model}) · aluno ${label} · % português T2..T7: ${shares.map(r => r.join('/')).join('  |  ')}`);
       problems.slice(0, 6).forEach(p => console.log(`      - ${p}`));
     }
+  }
+  if (LATENCIES.length) {
+    const v = [...LATENCIES].sort((x, y) => x - y);
+    const q = (p: number) => v[Math.min(v.length - 1, Math.floor(p * v.length))];
+    console.log(`PROBLEMAS no total: ${TOTAL_PROBLEMS}`);
+    console.log(`TEMPO até a 1ª palavra (${v.length} respostas): mediana ${q(0.5)} ms · 90% abaixo de ${q(0.9)} ms`);
   }
   console.log(failures ? `\n${failures} caso(s) com problema.` : '\nRampa do Novice OK em todas as ligações.');
   process.exit(failures ? 1 : 0);
