@@ -192,7 +192,7 @@
    **Answer**: were
    **Explanation**: "Were" (subjunctive across all persons) marks a present/ongoing trait in the if-clause. The trait explains why the past action didn't happen.
 
-3. **fill_gap** — "If he weren't less sensitive, he _____ that comment so personally last week."
+3. **fill_gap** — "If he weren't so sensitive, he _____ that comment so personally last week."
    **Hint**: would + have + past participle (resultado passado)
    **Answer**: wouldn't have taken
    **Explanation**: Ongoing personality (present) explains last week's reaction (past). Mixed: present condition → past result with "would have + past participle".

@@ -285,7 +285,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "If he weren't less sensitive, he _____ that comment so personally last week.",
+          "sentence": "If he weren't so sensitive, he _____ that comment so personally last week.",
           "hint": "would + have + past participle (resultado passado)",
           "answer": "wouldn't have taken",
           "explanation": "Ongoing personality (present) explains last week's reaction (past). Mixed: present condition → past result with \"would have + past participle\"."

@@ -613,7 +613,7 @@
 
 10. **read_answer**
     **Passage**: "I can speak two languages: English and Italian. My brother can play the guitar. My sister can play tennis very well."
-    **Question**: O que a irmã sabe tocar?
+    **Question**: O que a irmã sabe jogar?
     **Answer**: tennis
     **Explanation**: O texto diz "My sister can play tennis very well".
 

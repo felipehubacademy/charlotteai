@@ -1229,9 +1229,9 @@
         },
         {
           "type": "fix_error",
-          "sentence": "By the way of the way...",
-          "hint": "O chunk tem só 3 palavras — não repete \"of the way\"",
-          "answer": "By the way...",
+          "sentence": "In the way, have you seen Tom?",
+          "hint": "O chunk é \"By the way\"",
+          "answer": "By the way, have you seen Tom?",
           "explanation": "\"By the way\" é o chunk fixo. Não tem variação \"by the way of the way\". Erro de duplicação por insegurança no chunk."
         },
         {

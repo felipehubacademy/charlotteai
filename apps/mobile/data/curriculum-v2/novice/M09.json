@@ -868,8 +868,8 @@
         },
         {
           "type": "fix_error",
-          "sentence": "I'm working every day right now.",
-          "hint": "\"Every day\" indica rotina, não momento",
+          "sentence": "I work a lot right now.",
+          "hint": "\"Right now\" (agora, temporário) pede o presente contínuo",
           "answer": "I'm working a lot right now.",
           "explanation": "\"Every day\" + present continuous é contradição. Use \"every day\" com simple, ou \"right now / today\" com continuous. Aqui: troca pra \"a lot right now\"."
         },

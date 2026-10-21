@@ -207,9 +207,11 @@
    **Answer**: ascertain
    **Explanation**: "Ascertain" — formal Latinate verb meaning to find out for certain. Common in legal, investigative, academic writing. Informal counterpart: "find out" or "check". Register placement matters.
 
-4. **fix_error** — Formal email: "We need to kick off the project."
+4. **short_write** — Formal email: "We need to kick off the project."
    **Hint**: For formal context, use "commence" instead
    **Answer**: We need to commence the project.
+   **Prompt**: Rewrite this for a formal email: "We need to kick off the project."
+   **Example answer**: We need to commence the project.
    **Explanation**: "Kick off" is sports-informal, common in casual business speech but jarring in a formal email. The register-correct version uses "commence" or "begin" or "initiate". C1 awareness of register includes detecting these mismatches.
 
 5. **read_answer**
@@ -668,10 +670,11 @@
    **Accepts**: rewrite", "clean up / rewrite / clean up
    **Explanation**: Engineer-register prefers technical verbs in casual contexts. "Refactor" is technical but conversational. "Restructure" would be formal-corporate. "Fix" would be too vague. C1 register fluency includes knowing the verb each subculture defaults to.
 
-4. **fix_error** — Slack message to your boss: "Yo, can you pop into the call?"
+4. **short_write** — Slack message to your boss: "Yo, can you pop into the call?"
    **Hint**: "Yo" is too casual for any boss except in very informal cultures
    **Answer**: Hey, do you have a moment to join the call?
-   **Accepts**: Could you join the call?
+   **Prompt**: Rewrite this Slack message to your boss so it sounds professional: "Yo, can you pop into the call?"
+   **Example answer**: Hey, do you have a moment to join the call?
    **Explanation**: "Yo" is youth-register, fits only specific subcultures. Most professional contexts read "yo" as too casual or jarring. Even in informal Slack cultures, "hey" is safer. Register-reading is part of professional C1.
 
 5. **read_answer**

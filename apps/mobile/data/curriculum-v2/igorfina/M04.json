@@ -369,11 +369,11 @@
           "sentence": "My bad, I'm sorry very much.",
           "hint": "Deixe só o pedido informal (ou \"I'm so sorry\")",
           "answer": "My bad, I'm so sorry.",
-          "explanation": "\"I'm sorry very much\" não existe. Use \"I'm so sorry\" ou só \"My bad\" para coisas pequenas.",
           "accepts": [
             "My bad, I'm very sorry.",
             "My bad, I'm really sorry."
-          ]
+          ],
+          "explanation": "\"I'm sorry very much\" não existe. Use \"I'm so sorry\" ou só \"My bad\" para coisas pequenas."
         },
         {
           "type": "read_answer",
@@ -1114,10 +1114,10 @@
           "sentence": "That ain't fair, bro.",
           "hint": "Troque a gíria pela forma padrão",
           "answer": "That isn't fair, bro.",
-          "explanation": "\"That isn't fair\" (ou \"That's not fair\"). Revisão da F19.",
           "accepts": [
             "That is not fair, bro."
-          ]
+          ],
+          "explanation": "\"That isn't fair\" (ou \"That's not fair\"). Revisão da F19."
         },
         {
           "type": "read_answer",

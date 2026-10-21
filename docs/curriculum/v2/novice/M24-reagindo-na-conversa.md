@@ -791,9 +791,9 @@
    **Accepts**: Hang on a sec.
    **Explanation**: "One moment" é formal demais (atendente de banco). "Wait" e "Stop" soam ríspidos. Em conversa casual: "Hold on a sec", "Hang on a sec", "Just a sec", "Give me a sec".
 
-9. **fix_error** — "By the way of the way..."
-   **Hint**: O chunk tem só 3 palavras — não repete "of the way"
-   **Answer**: By the way...
+9. **fix_error** — "In the way, have you seen Tom?"
+   **Hint**: O chunk é "By the way"
+   **Answer**: By the way, have you seen Tom?
    **Explanation**: "By the way" é o chunk fixo. Não tem variação "by the way of the way". Erro de duplicação por insegurança no chunk.
 
 10. **multiple_choice** — Como o amigo usa 'by the way' aqui?

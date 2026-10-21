@@ -141,8 +141,8 @@
         },
         {
           "type": "fix_error",
-          "sentence": "She will rains.",
-          "hint": "Sujeito errado e verbo com -s",
+          "sentence": "It will rains.",
+          "hint": "Depois de \"will\", o verbo fica sem -s",
           "answer": "It will rain.",
           "explanation": "Chuva é \"it\". Will + base \"rain\" (sem -s mesmo em 3ª pessoa)."
         },

@@ -946,8 +946,8 @@
         {
           "type": "fix_error",
           "sentence": "I have hot.",
-          "hint": "\"Hot\" não combina com \"have\" — pense em \"febre\" ou em \"to be\"",
-          "answer": "I have a fever.",
+          "hint": "Calor em inglês é com \"to be\": I'm hot",
+          "answer": "I'm hot.",
           "accepts": [
             "I am hot."
           ],

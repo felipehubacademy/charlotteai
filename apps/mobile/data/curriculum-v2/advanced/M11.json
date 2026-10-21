@@ -299,11 +299,13 @@
           "explanation": "\"Ascertain\" — formal Latinate verb meaning to find out for certain. Common in legal, investigative, academic writing. Informal counterpart: \"find out\" or \"check\". Register placement matters."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Formal email: \"We need to kick off the project.\"",
           "hint": "For formal context, use \"commence\" instead",
           "answer": "We need to commence the project.",
-          "explanation": "\"Kick off\" is sports-informal, common in casual business speech but jarring in a formal email. The register-correct version uses \"commence\" or \"begin\" or \"initiate\". C1 awareness of register includes detecting these mismatches."
+          "explanation": "\"Kick off\" is sports-informal, common in casual business speech but jarring in a formal email. The register-correct version uses \"commence\" or \"begin\" or \"initiate\". C1 awareness of register includes detecting these mismatches.",
+          "prompt": "Rewrite this for a formal email: \"We need to kick off the project.\"",
+          "example_answer": "We need to commence the project."
         },
         {
           "type": "read_answer",
@@ -965,14 +967,13 @@
           "explanation": "Engineer-register prefers technical verbs in casual contexts. \"Refactor\" is technical but conversational. \"Restructure\" would be formal-corporate. \"Fix\" would be too vague. C1 register fluency includes knowing the verb each subculture defaults to."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Slack message to your boss: \"Yo, can you pop into the call?\"",
           "hint": "\"Yo\" is too casual for any boss except in very informal cultures",
           "answer": "Hey, do you have a moment to join the call?",
-          "accepts": [
-            "Could you join the call?"
-          ],
-          "explanation": "\"Yo\" is youth-register, fits only specific subcultures. Most professional contexts read \"yo\" as too casual or jarring. Even in informal Slack cultures, \"hey\" is safer. Register-reading is part of professional C1."
+          "explanation": "\"Yo\" is youth-register, fits only specific subcultures. Most professional contexts read \"yo\" as too casual or jarring. Even in informal Slack cultures, \"hey\" is safer. Register-reading is part of professional C1.",
+          "prompt": "Rewrite this Slack message to your boss so it sounds professional: \"Yo, can you pop into the call?\"",
+          "example_answer": "Hey, do you have a moment to join the call?"
         },
         {
           "type": "read_answer",

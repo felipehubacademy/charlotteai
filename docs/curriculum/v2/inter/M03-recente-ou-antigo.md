@@ -47,9 +47,10 @@
    **Answer**: met
    **Explanation**: "Yesterday" = finished → past simple.
 
-5. **fill_gap** — "I _____ him in 2010 and I _____ him many times since."
-   **Hint**: 1st = met (2010 specific), 2nd = have met
-   **Answer**: met
+5. **fill_gap** — "I met him in 2010 and I _____ him many times since."
+   **Hint**: "since" pede present perfect: have + past participle
+   **Answer**: have seen
+   **Accepts**: have met / 've seen / 've met
    **Explanation**: "In 2010" = specific past → "met". (Second blank would be "have seen/met").
 
 6. **fill_gap** — "She _____ this year." (job stayed)
@@ -758,9 +759,10 @@
    **Answer**: has left
    **Explanation**: "Already" without specific time → PP.
 
-5. **fill_gap** — "I _____ her in 2010 and we _____ best friends since."
-   **Hint**: 1=met; 2=have been
-   **Answer**: met
+5. **fill_gap** — "I met her in 2010 and we _____ best friends since."
+   **Hint**: "since" pede present perfect: have been
+   **Answer**: have been
+   **Accepts**: 've been
    **Explanation**: "In 2010" = past simple "met". Second part would be "have been".
 
 6. **fill_gap** — "He _____ five books this year." (year not finished)

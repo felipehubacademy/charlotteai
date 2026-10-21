@@ -626,8 +626,8 @@
    **Explanation**: "Sick of" significa "cansado de" (idiomático). Para "dor de estômago", use "I have a stomachache" ou "My stomach hurts". Erro de tradução literal.
 
 9. **fix_error** — "I have hot."
-   **Hint**: "Hot" não combina com "have" — pense em "febre" ou em "to be"
-   **Answer**: I have a fever.
+   **Hint**: Calor em inglês é com "to be": I'm hot
+   **Answer**: I'm hot.
 **Accepts**: I am hot.
    **Explanation**: "I have hot" não existe em inglês. Para febre médica: "I have a fever". Para sensação de calor: "I am hot / I feel hot". Erro de tradução literal de "estou com calor/febre".
 

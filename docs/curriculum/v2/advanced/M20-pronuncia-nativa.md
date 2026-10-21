@@ -189,8 +189,8 @@
    **Explanation**: Content words (nouns: cup, tea; verbs: want; sometimes pronouns: I) carry stress. Function words (a, of, the, am, is) weaken. In normal speech: "I WANT a CUP of TEA" with "a" and "of" reduced to schwa /ə/. Stress = meaning markers.
 
 2. **multiple_choice** — Weak form of "of" in connected speech:
-   **Options**: /əv/ / /oʊf/ / /ʊf/ / /əf/ (strong)
-   **Answer**: /əv/
+   **Options**: əv / oʊf / ʊf / əf
+   **Answer**: əv
    **Explanation**: "Of" weakens to /əv/ in normal speech — schwa + soft v. "Cup of tea" → "cupəv tea". Native speakers almost never say "OFF" with full stress unless contrasting ("It's / It is of the BOOK, not from it"). Weak forms are nearly invisible but constant.
 
 3. **fill_gap** — Identify weak form of "to": "I want to go" → "I want _____ go." (in connected fast speech)
@@ -348,7 +348,8 @@
 
 3. **fill_gap** — In fast connected speech, "I am" becomes "I-_-am" (intrusive sound)
    **Hint**: Intrusive /j/ between "I" /aɪ/ and "am" /æm/
-   **Answer**: y (/j/ sound)
+   **Answer**: y
+   **Accepts**: j / y sound
    **Explanation**: Intrusive /j/: a "y" sound bridges two vowels. "I am" /aɪ-jæm/ "go away" /goʊ-wəweɪ/ uses intrusive /w/. These sounds aren't in spelling but native speakers produce them automatically to avoid awkward vowel-to-vowel transitions.
 
 4. **fix_error** — Which is closer to natural fast speech of "don't you know"?
@@ -652,8 +653,8 @@
    **Explanation**: "Shouldn't / Should not have" — standard written contraction of "should not have". In casual fast speech, often produced as "shouldn'ta" /ˈʃʊdn(ə)tə/ — the "have" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register.
 
 3. **multiple_choice** — In fast speech, how is "next month" most likely pronounced?
-   **Options**: nex' month (/t/ elided) / next-uh month / next monf / nex monf
-   **Answer**: nex' month (/t/ elided)
+   **Options**: nex' month (t dropped) / next-uh month / next monf / nex monf
+   **Answer**: nex' month (t dropped)
    **Explanation**: Elision: dropping a sound, usually /t/ or /d/, between consonant clusters. "Next month" → "nex' month". Same with "old man" → "ol' man", "first place" → "firs' place". The dropped sound is too hard to say cleanly between adjacent consonants, so native speakers skip it.
 
 4. **fix_error** — Native English speaker would most likely say which?

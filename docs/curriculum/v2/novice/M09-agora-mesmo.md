@@ -601,8 +601,8 @@
    **Accepts**: at the moment
    **Explanation**: "This month" — atividade temporária em curso.
 
-8. **fix_error** — "I'm working every day right now."
-   **Hint**: "Every day" indica rotina, não momento
+8. **fix_error** — "I work a lot right now."
+   **Hint**: "Right now" (agora, temporário) pede o presente contínuo
    **Answer**: I'm working a lot right now.
    **Explanation**: "Every day" + present continuous é contradição. Use "every day" com simple, ou "right now / today" com continuous. Aqui: troca pra "a lot right now".
 

@@ -109,9 +109,9 @@
         },
         {
           "type": "fix_error",
-          "sentence": "However the weather, we went out.",
+          "sentence": "The weather was bad. However we went out.",
           "hint": "Falta vírgula após \"However\" no início",
-          "answer": "However, the weather was bad. We went out.",
+          "answer": "The weather was bad. However, we went out.",
           "explanation": "\"However\" always takes a comma AFTER when starting a sentence. And it doesn't replace \"although\" (which joins clauses)."
         },
         {

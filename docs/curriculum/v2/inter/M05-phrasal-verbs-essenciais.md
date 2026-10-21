@@ -411,9 +411,9 @@
    **Answer**: gave up
    **Explanation**: "Gave up coffee" = stopped drinking.
 
-7. **fill_gap** — "I'll _____ you at 7."
-   **Hint**: fetch
-   **Answer**: pick up
+7. **fill_gap** — "I'll _____ you up at 7."
+   **Hint**: pick someone up = fetch someone
+   **Answer**: pick
    **Explanation**: "Pick you up" (or "pick up you" — but "you" between).
 
 8. **fix_error** — "I picked up him at the station."

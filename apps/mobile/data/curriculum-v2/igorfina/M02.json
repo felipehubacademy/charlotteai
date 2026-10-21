@@ -59,7 +59,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "My trip is just _____.",
+          "sentence": "I'm just on _____.",
           "options": [
             "vacation",
             "vacations",
@@ -127,9 +127,9 @@
         },
         {
           "type": "fix_error",
-          "sentence": "My trip is vacations.",
+          "sentence": "I'm on vacations.",
           "hint": "No inglês americano, \"vacation\" fica no singular",
-          "answer": "My trip is vacation.",
+          "answer": "I'm on vacation.",
           "explanation": "\"Vacation\" no singular. \"Vacations\" soa estranho nessa frase."
         },
         {
@@ -348,11 +348,11 @@
           "sentence": "I'm a _____. I fly planes.",
           "hint": "Profissão de quem pilota avião",
           "answer": "pilot",
-          "explanation": "\"Pilot\" é piloto. Repare: \"I'm a pilot\", com o \"a\" antes.",
           "accepts": [
             "co-pilot",
             "captain"
-          ]
+          ],
+          "explanation": "\"Pilot\" é piloto. Repare: \"I'm a pilot\", com o \"a\" antes."
         },
         {
           "type": "fill_gap",

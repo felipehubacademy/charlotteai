@@ -92,7 +92,7 @@
 Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronúncia.
 
 1. **"I am eighteen years old."** — declarando idade adolescente
-2. **"My phone number is five five five."** — soletrando dígitos
+2. **"My phone number is five five five, one two three four."** — soletrando dígitos
 3. **"Floor twelve, please."** — pedindo andar no elevador
 4. **"Room sixteen."** — referenciando quarto de hotel
 5. **"Page nineteen."** — referenciando página de livro

@@ -356,10 +356,11 @@
    **Answer**: we conquered
    **Explanation**: Tricolon — a three-part structure with parallel grammar. "Veni, vidi, vici" — Latin original. Used for memorability and rhythm. Modern: "of the people, by the people, for the people" (Lincoln). Three is the rhetorical number — fewer feels incomplete, more feels excessive.
 
-4. **fix_error** — Make tricolon: "He fought injustice, he overcame poverty, his courage was admirable."
+4. **short_write** — Make tricolon: "He fought injustice, he overcame poverty, his courage was admirable."
    **Hint**: Match grammatical structure — all three parts as subject-verb-object
    **Answer**: He fought injustice, he overcame poverty, he inspired courage.
-   **Accepts**: He fought injustice, overcame poverty, and inspired courage.
+   **Prompt**: Rewrite as a tricolon (three parallel parts): "He fought injustice, he overcame poverty, his courage was admirable."
+   **Example answer**: He fought injustice, he overcame poverty, he inspired courage.
    **Explanation**: Tricolon requires parallel structure. The third clause broke parallelism ("his courage was admirable" — different subject). Restoring "he" + verb + object pattern makes the rhythm work. Or compress into one subject across three verbs.
 
 5. **read_answer**
@@ -511,9 +512,11 @@
    **Accepts**: inevitably / hence / therefore
    **Explanation**: After a cascade of negative causes, a closing marker delivers the consequence. "As a result", "Hence", "Inevitably", "Consequently" — each works. "As a result" is neutral; "Inevitably" claims the outcome was unavoidable; "Hence" is formal.
 
-4. **fix_error** — "A causes B, which causes C, this causes D."
+4. **short_write** — "A causes B, which causes C, this causes D."
    **Hint**: For a clean chain, use "which in turn causes" not "this causes" mid-chain
    **Answer**: A causes B, which in turn causes C, which in turn causes D.
+   **Prompt**: Rewrite this causal chain so it reads smoothly: "A causes B, which causes C, this causes D."
+   **Example answer**: A causes B, which in turn causes C, which in turn causes D.
    **Explanation**: "This causes" mid-chain breaks the embedded structure. Cleaner: keep "which in turn" links. The chain stays grammatically tight and the cumulative causality is more visible.
 
 5. **read_answer**

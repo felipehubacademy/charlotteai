@@ -628,9 +628,9 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I'll _____ you at 7.",
-          "hint": "fetch",
-          "answer": "pick up",
+          "sentence": "I'll _____ you up at 7.",
+          "hint": "pick someone up = fetch someone",
+          "answer": "pick",
           "explanation": "\"Pick you up\" (or \"pick up you\" — but \"you\" between)."
         },
         {

@@ -53,7 +53,7 @@
    **Answer**: purpose
    **Explanation**: "Purpose" é o propósito, o motivo. "What's the purpose of your trip?" é a pergunta clássica da imigração. Dica do Igor: ouviu "purpose", é o motivo da viagem.
 
-2. **multiple_choice** — "My trip is just _____."
+2. **multiple_choice** — "I'm just on _____."
    **Options**: vacation / vacations / a vacation trip
    **Answer**: vacation
    **Explanation**: Nos Estados Unidos se diz "vacation" (férias), no singular. "It's just vacation" ou "I'm here on vacation".
@@ -89,9 +89,9 @@
    **Answer**: I'm here on vacation.
    **Explanation**: É "on vacation", nunca "in vacation". Decore o bloco inteiro: "on vacation".
 
-9. **fix_error** — "My trip is vacations."
+9. **fix_error** — "I'm on vacations."
    **Hint**: No inglês americano, "vacation" fica no singular
-   **Answer**: My trip is vacation.
+   **Answer**: I'm on vacation.
    **Explanation**: "Vacation" no singular. "Vacations" soa estranho nessa frase.
 
 10. **read_answer**

@@ -76,8 +76,8 @@
    **Answer**: I will call you.
    **Explanation**: Will + base (sem "to"): "will call", não "will to call".
 
-9. **fix_error** — "She will rains."
-   **Hint**: Sujeito errado e verbo com -s
+9. **fix_error** — "It will rains."
+   **Hint**: Depois de "will", o verbo fica sem -s
    **Answer**: It will rain.
    **Explanation**: Chuva é "it". Will + base "rain" (sem -s mesmo em 3ª pessoa).
 

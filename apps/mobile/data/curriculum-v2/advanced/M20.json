@@ -275,10 +275,9 @@
             "əv",
             "oʊf",
             "ʊf",
-            "əf",
-            "(strong)"
+            "əf"
           ],
-          "answer": "/əv/",
+          "answer": "əv",
           "explanation": "\"Of\" weakens to /əv/ in normal speech — schwa + soft v. \"Cup of tea\" → \"cupəv tea\". Native speakers almost never say \"OFF\" with full stress unless contrasting (\"It's / It is of the BOOK, not from it\"). Weak forms are nearly invisible but constant."
         },
         {
@@ -518,8 +517,12 @@
           "type": "fill_gap",
           "sentence": "In fast connected speech, \"I am\" becomes \"I-_-am\" (intrusive sound)",
           "hint": "Intrusive /j/ between \"I\" /aɪ/ and \"am\" /æm/",
-          "answer": "y (/j/ sound)",
-          "explanation": "Intrusive /j/: a \"y\" sound bridges two vowels. \"I am\" /aɪ-jæm/ \"go away\" /goʊ-wəweɪ/ uses intrusive /w/. These sounds aren't in spelling but native speakers produce them automatically to avoid awkward vowel-to-vowel transitions."
+          "answer": "y",
+          "explanation": "Intrusive /j/: a \"y\" sound bridges two vowels. \"I am\" /aɪ-jæm/ \"go away\" /goʊ-wəweɪ/ uses intrusive /w/. These sounds aren't in spelling but native speakers produce them automatically to avoid awkward vowel-to-vowel transitions.",
+          "accepts": [
+            "j",
+            "y sound"
+          ]
         },
         {
           "type": "fix_error",
@@ -950,14 +953,12 @@
           "type": "multiple_choice",
           "sentence": "In fast speech, how is \"next month\" most likely pronounced?",
           "options": [
-            "nex' month (",
-            "t",
-            "elided)",
+            "nex' month (t dropped)",
             "next-uh month",
             "next monf",
             "nex monf"
           ],
-          "answer": "nex' month (/t/ elided)",
+          "answer": "nex' month (t dropped)",
           "explanation": "Elision: dropping a sound, usually /t/ or /d/, between consonant clusters. \"Next month\" → \"nex' month\". Same with \"old man\" → \"ol' man\", \"first place\" → \"firs' place\". The dropped sound is too hard to say cleanly between adjacent consonants, so native speakers skip it."
         },
         {

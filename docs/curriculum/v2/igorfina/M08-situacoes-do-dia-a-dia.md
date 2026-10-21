@@ -98,7 +98,7 @@
 
 Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
-1. **"I would like mixed eggs and a waffle."** — pedir o café da manhã
+1. **"I would like scrambled eggs and a waffle."** — pedir o café da manhã
 2. **"A chocolate milkshake, please. Thank you!"** — escolher o sabor
 3. **"For here, please. We're eating inside."** — comer no local
 4. **"Can I get the check, please?"** — pedir a conta
@@ -226,7 +226,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **Answer**: snacks
    **Explanation**: Frase do curso: "I'd like milk, some snacks and ham". "Snacks" = salgadinhos, lanchinhos.
 
-5. **fill_gap** — "Excuse me, where can I find the _____? I need eggs."
+5. **fill_gap** — "Excuse me, where can I find the _____? I want to make an omelet."
    **Hint**: Ovos
    **Answer**: eggs
    **Explanation**: "Where can I find the eggs?" = onde ficam os ovos?

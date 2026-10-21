@@ -750,7 +750,7 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "I'd like to introduce my family. _____ is Felipe."
+1. **multiple_choice** — "Let me introduce myself. _____ is Felipe."
    **Options**: My name / My / I
    **Answer**: My name
    **Explanation**: "My name is Felipe" é a apresentação padrão. Pra começar uma apresentação familiar, começa pelo seu próprio nome.

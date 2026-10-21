@@ -205,7 +205,7 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "The Amazon, _____ is the longest river, runs through Brazil."
+1. **multiple_choice** — "The Amazon, _____ is the largest river in the world, runs through Brazil."
    **Options**: which / that / who / where
    **Answer**: which
    **Explanation**: Non-defining for thing/place: "which". "That" doesn't work in non-defining. "The Amazon" is already identified, so the info is EXTRA.

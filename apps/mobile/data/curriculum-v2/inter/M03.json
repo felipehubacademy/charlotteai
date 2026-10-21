@@ -78,10 +78,15 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ him in 2010 and I _____ him many times since.",
-          "hint": "1st = met (2010 specific), 2nd = have met",
-          "answer": "met",
-          "explanation": "\"In 2010\" = specific past → \"met\". (Second blank would be \"have seen/met\")."
+          "sentence": "I met him in 2010 and I _____ him many times since.",
+          "hint": "\"since\" pede present perfect: have + past participle",
+          "answer": "have seen",
+          "explanation": "\"In 2010\" = specific past → \"met\". (Second blank would be \"have seen/met\").",
+          "accepts": [
+            "have met",
+            "'ve seen",
+            "'ve met"
+          ]
         },
         {
           "type": "fill_gap",
@@ -1185,10 +1190,13 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ her in 2010 and we _____ best friends since.",
-          "hint": "1=met; 2=have been",
-          "answer": "met",
-          "explanation": "\"In 2010\" = past simple \"met\". Second part would be \"have been\"."
+          "sentence": "I met her in 2010 and we _____ best friends since.",
+          "hint": "\"since\" pede present perfect: have been",
+          "answer": "have been",
+          "explanation": "\"In 2010\" = past simple \"met\". Second part would be \"have been\".",
+          "accepts": [
+            "'ve been"
+          ]
         },
         {
           "type": "fill_gap",

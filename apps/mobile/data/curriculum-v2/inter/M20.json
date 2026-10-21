@@ -947,9 +947,12 @@
         {
           "type": "read_answer",
           "passage": "It's time we left for the airport. It's high time you made a decision. It's about time you went to bed. It's time we took this seriously.",
-          "question": "What should you go to?",
-          "answer": "bed",
-          "explanation": "The text says \"It's / It is about time you went to bed\"."
+          "question": "According to the passage, where should \"you\" go?",
+          "answer": "to bed",
+          "explanation": "The text says \"It's / It is about time you went to bed\".",
+          "accepts": [
+            "bed"
+          ]
         }
       ],
       "listening_speaking": [

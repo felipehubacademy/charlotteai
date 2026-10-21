@@ -70,9 +70,9 @@
    **Answer**: I love pizza. However, I can't eat it daily.
    **Explanation**: "However" starts a new sentence, separated by a period. A comma before creates a comma splice. Correct punctuation: period + However + comma.
 
-9. **fix_error** — "However the weather, we went out."
+9. **fix_error** — "The weather was bad. However we went out."
    **Hint**: Falta vírgula após "However" no início
-   **Answer**: However, the weather was bad. We went out.
+   **Answer**: The weather was bad. However, we went out.
    **Explanation**: "However" always takes a comma AFTER when starting a sentence. And it doesn't replace "although" (which joins clauses).
 
 10. **read_answer**

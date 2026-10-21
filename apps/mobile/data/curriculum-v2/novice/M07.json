@@ -898,7 +898,7 @@
         {
           "type": "read_answer",
           "passage": "I can speak two languages: English and Italian. My brother can play the guitar. My sister can play tennis very well.",
-          "question": "O que a irmã sabe tocar?",
+          "question": "O que a irmã sabe jogar?",
           "answer": "tennis",
           "explanation": "O texto diz \"My sister can play tennis very well\"."
         }

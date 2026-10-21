@@ -43,7 +43,7 @@
    **Accepts**: was
    **Explanation**: In formal/correct second conditional, "were" is used for ALL persons (I, he, she, it, we, you, they). "Were" is the subjunctive form. "Was" is acceptable in informal speech, but "were" is the standard.
 
-4. **word_bank** — "I _____ help you if I were here."
+4. **word_bank** — "I _____ help you if I were there."
    **Choices**: would / will / am / could be
    **Answer**: would
    **Explanation**: The main clause of the second conditional uses "would + base form". "I would help you" — the if-clause has the past form "were".

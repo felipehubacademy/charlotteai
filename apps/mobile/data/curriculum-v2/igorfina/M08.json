@@ -139,9 +139,9 @@
       ],
       "listening_speaking": [
         {
-          "text": "I would like mixed eggs and a waffle.",
+          "text": "I would like scrambled eggs and a waffle.",
           "context": "pedir o café da manhã",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/3fbeb53c0be2410e.mp3"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1bd87af1731093dd.mp3"
         },
         {
           "text": "A chocolate milkshake, please. Thank you!",
@@ -342,7 +342,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Excuse me, where can I find the _____? I need eggs.",
+          "sentence": "Excuse me, where can I find the _____? I want to make an omelet.",
           "hint": "Ovos",
           "answer": "eggs",
           "explanation": "\"Where can I find the eggs?\" = onde ficam os ovos?"
@@ -352,10 +352,10 @@
           "sentence": "A: May I help you? B: Yes, _____! I'm looking for ham.",
           "hint": "Por favor",
           "answer": "please",
-          "explanation": "\"Yes, please!\" é a resposta educada a uma oferta de ajuda.",
           "accepts": [
             "sure"
-          ]
+          ],
+          "explanation": "\"Yes, please!\" é a resposta educada a uma oferta de ajuda."
         },
         {
           "type": "fill_gap",

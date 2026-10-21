@@ -609,8 +609,9 @@
 
 10. **read_answer**
     **Passage**: "It's time we left for the airport. It's high time you made a decision. It's about time you went to bed. It's time we took this seriously."
-    **Question**: What should you go to?
-    **Answer**: bed
+    **Question**: According to the passage, where should "you" go?
+    **Answer**: to bed
+    **Accepts**: bed
     **Explanation**: The text says "It's / It is about time you went to bed".
 
 ### 2. Listening/Speaking (5 phrases)
