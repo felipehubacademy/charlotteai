@@ -73,7 +73,7 @@ export function UpdateBanner() {
 
   return (
     <View style={{
-      flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 12,
+      flexDirection: 'row', alignItems: 'center', gap: 12,
       backgroundColor: '#16131F', borderRadius: 18, paddingVertical: 12, paddingLeft: 14, paddingRight: mode === 'optional' ? 6 : 14,
     }}>
       <ArrowCircleUp size={28} color="#DCFF4A" weight="fill" />
