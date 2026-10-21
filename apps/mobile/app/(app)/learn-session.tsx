@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useBottomInset } from '@/lib/useBottomInset';
 import { router, useLocalSearchParams } from 'expo-router';
 import {
   ArrowLeft, ArrowRight, CheckCircle, XCircle,
@@ -162,6 +163,7 @@ export default function LearnSessionScreen() {
   const isNoviceLike = level === 'Novice' || !!extraTrack(level);
   const baseTotalXP = useTotalXP(userId);
   const insets      = useSafeAreaInsets();
+  const bottomInset = useBottomInset();
   // Charlotte de corpo inteiro encolhe em telas mais baixas para as opções caberem sem rolar.
   const { height: winH } = useWindowDimensions();
   // Trilha antiga só fora do modo v2 (sem userId o hook não lê nem grava nada).
@@ -2153,7 +2155,7 @@ export default function LearnSessionScreen() {
             tanto pra grammar quanto pra pronunciation ── */}
         <View style={{
           paddingHorizontal: 20, paddingTop: 12,
-          paddingBottom: insets.bottom + 12,
+          paddingBottom: bottomInset + 12,
           backgroundColor: '#FAF7F0',
         }}>
           {/* ── Grammar ── */}
@@ -2313,7 +2315,7 @@ export default function LearnSessionScreen() {
           backgroundColor: isCorrect ? '#F1FFB8' : '#FFEEF4',
           borderTopLeftRadius: 24, borderTopRightRadius: 24,
           paddingHorizontal: 24, paddingTop: 20,
-          paddingBottom: insets.bottom + 20,
+          paddingBottom: bottomInset + 20,
           transform: [{ translateY: feedbackAnim.interpolate({ inputRange: [0, 1], outputRange: [300, 0] }) }],
         }}>
           {/* Header row: icon + title + XP badge */}
@@ -2424,7 +2426,7 @@ export default function LearnSessionScreen() {
             backgroundColor: panelBg,
             borderTopLeftRadius: 24, borderTopRightRadius: 24,
             paddingHorizontal: 24, paddingTop: 20,
-            paddingBottom: insets.bottom + 20,
+            paddingBottom: bottomInset + 20,
             transform: [{ translateY: pronFeedbackAnim.interpolate({ inputRange: [0, 1], outputRange: [300, 0] }) }],
           }}>
             {/* Header: icon + title + XP badge */}
@@ -2504,7 +2506,7 @@ export default function LearnSessionScreen() {
             backgroundColor: '#FFF',
             borderTopLeftRadius: 24, borderTopRightRadius: 24,
             paddingHorizontal: 24, paddingTop: 20,
-            paddingBottom: insets.bottom + 24,
+            paddingBottom: bottomInset + 24,
           }}>
             {/* Handle */}
             <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 20 }} />
