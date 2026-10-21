@@ -415,6 +415,7 @@ export default function HomeTab() {
   //   1 = o card do nível (e trilhas extras) rola junto com a trilha; a saudação continua fixa.
   //   2 = caso extremo: a saudação também rola.
   const [scrollLevel, setScrollLevel] = useState<0 | 1 | 2>(0);
+  const updateBannerHRef = useRef(0);
   const topBlockHRef = useRef(0);
   // Trilha finalizada (nenhum modulo ativo) — reportado pelo TrailContent.
   // Fonte de verdade pro goDown: evita usar um activeTopicYRef obsoleto que
@@ -590,7 +591,7 @@ export default function HomeTab() {
       />
 
       {/* Aviso de versão nova da loja: fixo logo abaixo do topo (fora da rolagem, nunca fica cortado). */}
-      <UpdateBanner style={{ marginHorizontal: 20, marginTop: 10 }} />
+      <UpdateBanner style={{ marginHorizontal: 20, marginTop: 10 }} onHeight={h => { updateBannerHRef.current = h ? h + 10 : 0; }} />
 
       {/* Saudação e card do nível fixos no topo; em tela baixa passam a rolar com a trilha (scrollLevel). */}
       {scrollLevel < 2 && heroBlock}
@@ -602,7 +603,8 @@ export default function HomeTab() {
         style={{ flex: 1, marginTop: scrollLevel ? 0 : 10 }}
         contentContainerStyle={{ paddingTop: scrollLevel ? 0 : 24, paddingBottom: 40 }}
         onLayout={e => {
-          if (scrollLevel < 2 && e.nativeEvent.layout.height < MIN_TRAIL_VIEWPORT) setScrollLevel(l => (l + 1) as 1 | 2);
+          // O card de versão nova (fechável) não conta: sem ele a tela é grande o bastante.
+          if (scrollLevel < 2 && e.nativeEvent.layout.height + updateBannerHRef.current < MIN_TRAIL_VIEWPORT) setScrollLevel(l => (l + 1) as 1 | 2);
         }}
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={32}

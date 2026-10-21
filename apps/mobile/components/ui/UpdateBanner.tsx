@@ -15,6 +15,7 @@ import { systemIsPt } from '@/lib/systemLang';
 import { Application } from '@/lib/nativeOptional';
 
 const SNOOZE_MS = 3 * 24 * 3600_000;
+const ESTIMATED_H = 72; // avisado antes do 1º layout; o onLayout corrige com a altura real
 const SNOOZE_KEY = 'update_banner_closed_at';
 const STORE_URL = Platform.select({
   ios: 'itms-apps://apps.apple.com/app/id6760943273',
@@ -36,7 +37,8 @@ function compareVersions(a: string, b: string): number {
   return 0;
 }
 
-export function UpdateBanner({ style }: { style?: StyleProp<ViewStyle> }) {
+/** onHeight: altura do card quando aparece (0 quando some), para a Início não contar o card como falta de espaço. */
+export function UpdateBanner({ style, onHeight }: { style?: StyleProp<ViewStyle>; onHeight?: (h: number) => void }) {
   const [mode, setMode] = useState<'hidden' | 'optional' | 'required'>('hidden');
 
   useEffect(() => {
@@ -49,9 +51,9 @@ export function UpdateBanner({ style }: { style?: StyleProp<ViewStyle> }) {
         const { data } = await supabase.from('app_release').select('latest_version, min_version').eq('platform', Platform.OS).maybeSingle();
         const rel = data as { latest_version: string; min_version: string | null } | null;
         if (!alive || !rel || compareVersions(installed, rel.latest_version) >= 0) return;
-        if (rel.min_version && compareVersions(installed, rel.min_version) < 0) { setMode('required'); return; }
+        if (rel.min_version && compareVersions(installed, rel.min_version) < 0) { onHeight?.(ESTIMATED_H); setMode('required'); return; }
         const closedAt = Number(await SecureStore.getItemAsync(SNOOZE_KEY).catch(() => null)) || 0;
-        if (alive && Date.now() - closedAt >= SNOOZE_MS) setMode('optional');
+        if (alive && Date.now() - closedAt >= SNOOZE_MS) { onHeight?.(ESTIMATED_H); setMode('optional'); }
       } catch {}
     })();
     return () => { alive = false; };
@@ -68,11 +70,12 @@ export function UpdateBanner({ style }: { style?: StyleProp<ViewStyle> }) {
   const openStore = () => { Linking.openURL(STORE_URL!).catch(() => Linking.openURL(STORE_WEB!).catch(() => {})); };
   const close = () => {
     setMode('hidden');
+    onHeight?.(0);
     SecureStore.setItemAsync(SNOOZE_KEY, String(Date.now())).catch(() => {});
   };
 
   return (
-    <View style={[style, {
+    <View onLayout={e => onHeight?.(e.nativeEvent.layout.height)} style={[style, {
       flexDirection: 'row', alignItems: 'center', gap: 12,
       backgroundColor: '#16131F', borderRadius: 18, paddingVertical: 12, paddingLeft: 14, paddingRight: mode === 'optional' ? 6 : 14,
     }]}>
