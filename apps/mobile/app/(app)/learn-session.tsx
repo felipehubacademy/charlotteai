@@ -7,6 +7,7 @@ import {
   ActivityIndicator, Pressable, Modal, useWindowDimensions,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { useKeyboardShown } from '@/lib/useKeyboardShown';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomInset } from '@/lib/useBottomInset';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -163,6 +164,7 @@ export default function LearnSessionScreen() {
   const isNoviceLike = level === 'Novice' || !!extraTrack(level);
   const baseTotalXP = useTotalXP(userId);
   const insets      = useSafeAreaInsets();
+  const keyboardShown = useKeyboardShown();
   const bottomInset = useBottomInset();
   // Charlotte de corpo inteiro encolhe em telas mais baixas para as opções caberem sem rolar.
   const { height: winH } = useWindowDimensions();
@@ -1461,7 +1463,7 @@ export default function LearnSessionScreen() {
         </TouchableOpacity>
       </View>
 
-      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FAF7F0' }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FAF7F0' }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown}>
         <ScrollView
           ref={scrollRef}
           style={{ flex: 1, backgroundColor: '#FAF7F0' }}
