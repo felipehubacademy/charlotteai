@@ -16,7 +16,8 @@ import { Application } from '@/lib/nativeOptional';
 
 const SNOOZE_MS = 3 * 24 * 3600_000;
 const ESTIMATED_H = 72; // avisado antes do 1º layout; o onLayout corrige com a altura real
-const SNOOZE_KEY = 'update_banner_closed_at';
+// Por versão: fechar o aviso da 2.0.2 não esconde o da próxima.
+const snoozeKey = (latest: string) => `update_banner_closed_${latest}`;
 const STORE_URL = Platform.select({
   ios: 'itms-apps://apps.apple.com/app/id6760943273',
   default: 'market://details?id=com.hubacademy.charlotte',
@@ -40,6 +41,7 @@ function compareVersions(a: string, b: string): number {
 /** onHeight: altura do card quando aparece (0 quando some), para a Início não contar o card como falta de espaço. */
 export function UpdateBanner({ style, onHeight }: { style?: StyleProp<ViewStyle>; onHeight?: (h: number) => void }) {
   const [mode, setMode] = useState<'hidden' | 'optional' | 'required'>('hidden');
+  const [latest, setLatest] = useState('');
 
   useEffect(() => {
     if (__DEV__ || (Platform.OS !== 'ios' && Platform.OS !== 'android')) return;
@@ -52,7 +54,8 @@ export function UpdateBanner({ style, onHeight }: { style?: StyleProp<ViewStyle>
         const rel = data as { latest_version: string; min_version: string | null } | null;
         if (!alive || !rel || compareVersions(installed, rel.latest_version) >= 0) return;
         if (rel.min_version && compareVersions(installed, rel.min_version) < 0) { onHeight?.(ESTIMATED_H); setMode('required'); return; }
-        const closedAt = Number(await SecureStore.getItemAsync(SNOOZE_KEY).catch(() => null)) || 0;
+        setLatest(rel.latest_version);
+        const closedAt = Number(await SecureStore.getItemAsync(snoozeKey(rel.latest_version)).catch(() => null)) || 0;
         if (alive && Date.now() - closedAt >= SNOOZE_MS) { onHeight?.(ESTIMATED_H); setMode('optional'); }
       } catch {}
     })();
@@ -71,7 +74,7 @@ export function UpdateBanner({ style, onHeight }: { style?: StyleProp<ViewStyle>
   const close = () => {
     setMode('hidden');
     onHeight?.(0);
-    SecureStore.setItemAsync(SNOOZE_KEY, String(Date.now())).catch(() => {});
+    if (latest) SecureStore.setItemAsync(snoozeKey(latest), String(Date.now())).catch(() => {});
   };
 
   return (
