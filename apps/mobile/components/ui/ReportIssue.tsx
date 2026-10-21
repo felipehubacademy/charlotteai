@@ -95,7 +95,9 @@ export function ReportIssueButton({ kind, getContext, color = C.light, size = 20
       </TouchableOpacity>
 
       <Modal visible={open} transparent animationType="slide" onRequestClose={close} statusBarTranslucent>
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
+        {/* Dentro do Modal o ajuste de teclado do keyboard-controller não alcança; o do React Native com
+            'padding' sobe a folha nos dois sistemas (no Android o Modal translúcido não redimensiona sozinho). */}
+        <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
           <Pressable onPress={close} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.45)' }} />
           <View style={{ backgroundColor: '#FFFFFF', borderTopLeftRadius: 24, borderTopRightRadius: 24, paddingHorizontal: 20, paddingTop: 16, paddingBottom: 20 + insets.bottom }}>
             <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 14 }} />
