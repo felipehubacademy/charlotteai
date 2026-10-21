@@ -62,6 +62,9 @@ Na Pronúncia, segure o botão do microfone enquanto fala uma frase em inglês; 
   { section: 'Guia do app', question: 'Como funciona o Vocabulário?', answer:
 `No ícone de bloco de notas ficam a "Palavra do dia" e "Sua coleção". Dá para incluir palavras em "Adicionar palavra" e ouvir a pronúncia normal ou devagar.
 O app agenda as revisões: quando há palavras para revisar aparece "Revisar hoje". Cada palavra mostra o estado: Nova, Aprendendo ou Dominada.` },
+  { section: 'Guia do app', question: 'Como reporto um problema num exercício?', answer:
+`Em todo exercício (trilha, Role-play, Guided Chat, Practice, teste de nível e revisão de vocabulário) tem uma bandeira no topo da tela. Toque nela, escolha o que aconteceu (por exemplo, "Minha resposta estava certa" ou "O app não entendeu minha fala"), escreva mais se quiser e toque em "Enviar".
+O reporte chega para a equipe junto com o exercício e a sua resposta, e a gente corrige o que for preciso.` },
   { section: 'Guia do app', question: 'O que é a Família Queizy?', answer:
 `A Família Queizy reúne os personagens do app: a Charlotte (sua tutora) e o Igorfina, comediante e imitador. São personagens do Queizy: as respostas e as vozes deles são geradas por IA, na hora. As imitações do Igorfina também são personagens, não pessoas de verdade; quando ele imita, aparece o selo com o nome da imitação.
 - Para escolher quem te acompanha: no primeiro acesso, o app pergunta "Quem vai te acompanhar?" (o Igorfina já vem marcado; conta nova começa com ele). Para trocar depois, toque na foto ao lado da saudação, na Tela Inicial, ou vá em Perfil > Você no Queizy > Família Queizy e toque no cartão (o escolhido fica com o selo "Escolhido"). Quem está escolhido fala com você na Tela Inicial, atende quando você liga (ícone de telefone) e começa as conversas novas do Free Chat.

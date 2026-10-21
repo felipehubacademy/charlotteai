@@ -24,6 +24,7 @@ import { router } from 'expo-router';
 import {
   ArrowLeft, SpeakerHigh, Lightning,
 } from 'phosphor-react-native';
+import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import * as Haptics from '@/lib/hapticsGated';
 import { AppText } from '@/components/ui/Text';
 import { systemIsPt } from '@/lib/systemLang';
@@ -498,6 +499,9 @@ export default function VocabReview() {
               {idx + 1}/{cards.length}
             </AppText>
             {baseXP !== null && <SessionXPPill xp={baseXP + totalXP} />}
+            {/* Reportar problema neste cartão. */}
+            <ReportIssueButton kind="speech" size={18}
+              getContext={() => ({ screen: 'vocab-review', stepIdx: idx, exercise: current as unknown as Record<string, unknown> })} />
           </View>
         </View>
       </SafeAreaView>

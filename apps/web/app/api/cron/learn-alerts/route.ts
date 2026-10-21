@@ -5,6 +5,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { stuckReport } from '@/lib/learn-stuck';
+import { listReports, REASON_PT, SCREEN_PT, exerciseText } from '@/lib/exercise-reports';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { base, h1, p, btn } from '@/lib/email-brand';
 
@@ -25,7 +26,9 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
   const days = Math.min(7, Math.max(1, Number(body?.days) || 1));
   const report = await stuckReport(days);
-  if (!report.alerts.length) return NextResponse.json({ sent: 0, alerts: 0, totals: report.totals });
+  // Reportes dos alunos pela bandeira dos exercícios no mesmo período (só os ainda abertos).
+  const reports = await listReports({ days, status: 'open' });
+  if (!report.alerts.length && !reports.length) return NextResponse.json({ sent: 0, alerts: 0, reports: 0, totals: report.totals });
 
   const { data } = await getSupabaseAdmin().from('admin_members').select('email').eq('role', 'admin').eq('active', true);
   const to = ((data ?? []) as { email: string | null }[]).map(m => m.email).filter((e): e is string => !!e);
@@ -33,13 +36,26 @@ export async function POST(req: NextRequest) {
   const html = base([
     h1('Onde os alunos travaram'),
     p(`Últimas ${days === 1 ? '24 horas' : `${days} dias`}: ${t.attempts} tentativas de ${t.students} aluno(s), ${t.fails} reprovações, ${t.skips} pulos e ${t.exits} saídas no meio.`),
-    `<ul style="margin:0 0 20px;padding-left:18px;font-size:14px;line-height:1.6;color:#16131F;">${report.alerts.slice(0, 15).map(a => `<li style="margin-bottom:8px;">${esc(a)}</li>`).join('')}</ul>`,
+    report.alerts.length
+      ? `<ul style="margin:0 0 20px;padding-left:18px;font-size:14px;line-height:1.6;color:#16131F;">${report.alerts.slice(0, 15).map(a => `<li style="margin-bottom:8px;">${esc(a)}</li>`).join('')}</ul>`
+      : '',
+    reports.length
+      ? p(`<strong>Reportados pelos alunos (${reports.length})</strong>`) +
+        `<ul style="margin:0 0 20px;padding-left:18px;font-size:14px;line-height:1.6;color:#16131F;">${reports.slice(0, 15).map(r => {
+          const where = [SCREEN_PT[r.screen] ?? r.screen, r.level, r.module_id, r.unit_id].filter(Boolean).join(' · ');
+          const extra = [r.user_answer ? `respondeu "${r.user_answer}"` : '', r.transcript ? `o app entendeu "${r.transcript}"` : '', r.comment ? `"${r.comment}"` : ''].filter(Boolean).join(' · ');
+          return `<li style="margin-bottom:8px;">${esc(`${REASON_PT[r.reason] ?? r.reason} — ${where}: "${exerciseText(r) || 'sem texto'}"${extra ? ` · ${extra}` : ''}`)}</li>`;
+        }).join('')}</ul>`
+      : '',
     btn('Abrir no /admin', 'https://queizy.com/admin/learning'),
   ].join(''));
-  if (body?.dryRun === true) return NextResponse.json({ dryRun: true, to, alerts: report.alerts });
+  if (body?.dryRun === true) return NextResponse.json({ dryRun: true, to, alerts: report.alerts, reports: reports.length });
   let sent = 0;
   for (const addr of to) {
-    if (await sendEmail({ to: addr, subject: `Queizy: ${report.alerts.length} ponto(s) onde os alunos travaram`, html })) sent++;
+    const subject = report.alerts.length
+      ? `Queizy: ${report.alerts.length} ponto(s) onde os alunos travaram${reports.length ? ` e ${reports.length} reporte(s)` : ''}`
+      : `Queizy: ${reports.length} reporte(s) dos alunos nos exercícios`;
+    if (await sendEmail({ to: addr, subject, html })) sent++;
   }
-  return NextResponse.json({ sent, alerts: report.alerts.length });
+  return NextResponse.json({ sent, alerts: report.alerts.length, reports: reports.length });
 }

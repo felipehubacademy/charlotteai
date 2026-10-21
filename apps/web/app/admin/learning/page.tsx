@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Search } from 'lucide-react';
 import { exLabel, practiceLabel, accColor, ago } from './labels';
 import StuckPanel from './StuckPanel';
+import ReportsPanel from './ReportsPanel';
 
 interface Overview {
   days: number;
@@ -188,6 +189,7 @@ export default function LearningPage() {
           </div>
 
           <StuckPanel />
+          <ReportsPanel />
 
           {/* Alunos */}
           <div className="adm-panel col-12">

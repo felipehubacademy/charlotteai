@@ -42,6 +42,7 @@ import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { recordConversationPractice, fetchConversationFeedback, ConversationFeedback } from '@/lib/trailFeedback';
 import { ConversationFeedbackBlock } from '@/components/trail/ConversationFeedbackBlock';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
+import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import { useTotalXP } from '@/hooks/useTotalXP';
 import { soundEngine } from '@/lib/soundEngine';
 import { goBack } from '@/lib/goBack';
@@ -432,6 +433,19 @@ export default function GuidedChatExerciseScreen() {
             {isPt ? 'Chat Guiado' : 'Guided Chat'}
           </AppText>
         </View>
+        {/* Reportar problema nesta atividade (vai com as últimas falas da conversa). */}
+        <ReportIssueButton
+          kind="chat"
+          getContext={() => {
+            const hist = historyRef.current.slice(-6);
+            const lastUser = [...hist].reverse().find(m => m.role === 'user');
+            return {
+              screen: 'guided-chat', level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null, activity: 'guided-chat',
+              exercise: { persona: gc.persona, conversation: hist },
+              transcript: lastUser?.content ?? null,
+            };
+          }}
+        />
         <View style={{ marginRight: 8 }}>
           <AnimatedXPBadge xp={baseTotalXP + (xpEarned > 0 ? xpEarned : objectivesMet.size * 5)} iconSize={13} fontSize={13} padH={10} padV={5} />
         </View>

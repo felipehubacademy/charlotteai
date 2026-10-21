@@ -12,6 +12,7 @@ import {
   LightbulbFilament,
 } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
+import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import * as Haptics from '@/lib/hapticsGated';
 import { useAuth } from '@/hooks/useAuth';
 import { useTotalXP } from '@/hooks/useTotalXP';
@@ -420,9 +421,16 @@ export default function LearnGrammarScreen() {
         paddingHorizontal: 16, height: 52,
         borderBottomWidth: 1, borderBottomColor: C.border, backgroundColor: C.card,
       }}>
-        <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
-          <ArrowLeft size={22} color={C.navy} weight="bold" />
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+          <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+            <ArrowLeft size={22} color={C.navy} weight="bold" />
+          </TouchableOpacity>
+          {/* Reportar problema neste exercício. */}
+          <ReportIssueButton
+            kind="grammar"
+            getContext={() => ({ screen: 'practice-grammar', level: userLevel, exercise: exercise as unknown as Record<string, unknown>, userAnswer: userAnswer || null })}
+          />
+        </View>
         <View style={{ flex: 1, alignItems: 'center' }}>
           <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>Grammar</AppText>
         </View>

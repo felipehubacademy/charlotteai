@@ -24,6 +24,7 @@ import { systemIsPt } from '@/lib/systemLang';
 import { bestSpeechMatch, normalizeSpeech } from '@/lib/speechMatch';
 import { logAttempt } from '@/lib/learnAttempts';
 import { checkGrammarAnswer } from '@/lib/grammarAnswer';
+import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import { track } from '@/lib/analytics';
 import * as FileSystem from 'expo-file-system/legacy';
 import { useAudioRecorder, setAudioModeAsync, setIsAudioActiveAsync, RecordingPresets, requestRecordingPermissionsAsync } from 'expo-audio';
@@ -1243,9 +1244,22 @@ export default function LearnSessionScreen() {
         borderBottomWidth: 1, borderBottomColor: C.border,
         position: 'relative',
       }}>
-        <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }} style={{ zIndex: 2 }}>
-          <ArrowLeft size={22} color={C.navy} weight="bold" />
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 18, zIndex: 2 }}>
+          <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+            <ArrowLeft size={22} color={C.navy} weight="bold" />
+          </TouchableOpacity>
+          {/* Reportar problema neste exercício (vai com o que está na tela). */}
+          <ReportIssueButton
+            kind={currentStep.kind === 'pronunciation' ? 'speech' : 'grammar'}
+            getContext={() => ({
+              screen: 'learn-session', level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null,
+              activity: params.activity ?? null, stepIdx,
+              exercise: (currentStep.kind === 'pronunciation' ? currentStep.phrase : currentStep.exercise) as unknown as Record<string, unknown>,
+              userAnswer: currentStep.kind === 'pronunciation' ? null : (userAnswer || null),
+              transcript: currentStep.kind === 'pronunciation' ? (speechTranscriptRef.current || null) : null,
+            })}
+          />
+        </View>
         {/* Titulo absoluto — centraliza na largura TOTAL do header, nao
             entre o arrow e o badge. pointerEvents:none deixa toques passarem. */}
         <View pointerEvents="none" style={{ position: 'absolute', left: 100, right: 100, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>

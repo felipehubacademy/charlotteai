@@ -14,6 +14,7 @@ import {
 import { router, useLocalSearchParams } from 'expo-router';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import { useBottomInset } from '@/lib/useBottomInset';
 import { StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
@@ -615,9 +616,18 @@ export default function PlacementTestScreen() {
           <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navyLight, letterSpacing: 0.5 }}>
             {systemIsPt ? `Etapa ${block} de 3` : `Step ${block} of 3`}
           </AppText>
-          <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyLight }}>
-            {`${qIndex + 1} / ${blockQuestions.length}`}
-          </AppText>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyLight }}>
+              {`${qIndex + 1} / ${blockQuestions.length}`}
+            </AppText>
+            {/* Reportar problema nesta pergunta. */}
+            <ReportIssueButton
+              kind="grammar" size={18}
+              getContext={() => ({ screen: 'placement', activity: `block_${block}`, stepIdx: qIndex,
+                exercise: currentQ as unknown as Record<string, unknown>,
+                userAnswer: selected !== null ? String(currentQ?.options?.[selected] ?? selected) : null })}
+            />
+          </View>
         </View>
         <QueizyWave progress={progress} height={14} strokeWidth={4} />
       </View>
