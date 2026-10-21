@@ -152,7 +152,8 @@ export async function POST(req: NextRequest) {
     if (declined) {
       // A mensagem do Asaas já vem em português (ex.: "Transação não autorizada. Verifique os dados do cartão...").
       const msg = e.message && !/^Asaas \d+$/.test(e.message) ? e.message : 'O cartão não foi autorizado. Confira os dados ou use outro cartão.';
-      return NextResponse.json({ error: msg, field: 'card' }, { status: 402 });
+      // Oferece tentar o mesmo cartão na página do parceiro (lá a análise de risco aprova alguns que a API recusa).
+      return NextResponse.json({ error: msg, field: 'card', fallback: !sandbox }, { status: 402 });
     }
     await logOpsError(e instanceof AsaasError && (e.status >= 500 || e.status === 429) ? 'asaas' : 'checkout', '/api/checkout/asaas/direct (cartão)', e);
     return NextResponse.json({ error: 'Não foi possível processar o cartão agora.', fallback: true }, { status: 502 });
