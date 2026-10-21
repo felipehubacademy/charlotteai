@@ -59,7 +59,7 @@ export default function ForgotPasswordScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown} style={{ flex: 1 }}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : keyboardShown ? 'height' : undefined} style={{ flex: 1 }}>
         <ScrollView
           contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingHorizontal: 28, paddingVertical: 32 }}
           keyboardShouldPersistTaps="handled"

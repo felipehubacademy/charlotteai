@@ -433,7 +433,7 @@ export default function LearnGrammarScreen() {
         </TouchableOpacity>
       </View>
 
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : keyboardShown ? 'height' : undefined}>
         <ScrollView
           style={{ flex: 1, backgroundColor: C.bg }}
           keyboardShouldPersistTaps="handled"

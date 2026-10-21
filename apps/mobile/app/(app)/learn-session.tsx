@@ -1265,7 +1265,7 @@ export default function LearnSessionScreen() {
         </TouchableOpacity>
       </View>
 
-      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FAF7F0' }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown}>
+      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FAF7F0' }} behavior={Platform.OS === 'ios' ? 'padding' : keyboardShown ? 'height' : undefined}>
         <ScrollView
           ref={scrollRef}
           style={{ flex: 1, backgroundColor: '#FAF7F0' }}

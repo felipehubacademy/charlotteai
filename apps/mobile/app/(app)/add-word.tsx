@@ -277,7 +277,7 @@ export default function AddWordScreen() {
         </View>
       </SafeAreaView>
 
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown} keyboardVerticalOffset={0}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : keyboardShown ? 'height' : undefined} keyboardVerticalOffset={0}>
         <ScrollView
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{ padding: 16, gap: 18, paddingBottom: insets.bottom + 150 }}

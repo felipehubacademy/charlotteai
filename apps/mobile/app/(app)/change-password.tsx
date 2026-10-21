@@ -105,7 +105,7 @@ export default function ChangePasswordScreen() {
 
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown}
+        behavior={Platform.OS === 'ios' ? 'padding' : keyboardShown ? 'height' : undefined}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 12 : 0}
       >
         <ScrollView

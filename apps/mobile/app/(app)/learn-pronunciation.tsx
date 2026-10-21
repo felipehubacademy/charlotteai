@@ -429,7 +429,7 @@ export default function LearnPronunciationScreen() {
         </TouchableOpacity>
       </View>
 
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : keyboardShown ? 'height' : undefined}>
         <ScrollView
           style={{ flex: 1, backgroundColor: C.bg }}
           contentContainerStyle={{ padding: 20, paddingBottom: 24, flexGrow: 1 }}

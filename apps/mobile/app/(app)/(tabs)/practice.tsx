@@ -450,7 +450,7 @@ export default function PracticeTab() {
         // ocupa esse espaço entre o KAV e o fundo da tela (o sistema só
         // empurra/encolhe ATÉ o topo do teclado; a tab bar fica embaixo
         // do KAV mas dentro do que o sistema considera "espaço da janela").
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown}
+        behavior={Platform.OS === 'ios' ? 'padding' : keyboardShown ? 'height' : undefined}
         keyboardVerticalOffset={
           Platform.OS === 'ios'
             ? tabBarHeight + insets.bottom + 12
