@@ -590,7 +590,7 @@ export default function HomeTab() {
       />
 
       {/* Aviso de versão nova da loja: fixo logo abaixo do topo (fora da rolagem, nunca fica cortado). */}
-      <View style={{ marginHorizontal: 20, marginTop: 10 }}><UpdateBanner /></View>
+      <UpdateBanner style={{ marginHorizontal: 20, marginTop: 10 }} />
 
       {/* Saudação e card do nível fixos no topo; em tela baixa passam a rolar com a trilha (scrollLevel). */}
       {scrollLevel < 2 && heroBlock}

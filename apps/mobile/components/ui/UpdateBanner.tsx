@@ -6,7 +6,7 @@
 //   - Abaixo de min_version (só em caso grave) o card não tem X.
 // "Atualizar" abre a loja do aparelho. Textos no idioma do aparelho.
 import React, { useEffect, useState } from 'react';
-import { View, TouchableOpacity, Linking, Platform } from 'react-native';
+import { View, TouchableOpacity, Linking, Platform, type StyleProp, type ViewStyle } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import { ArrowCircleUp, X } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
@@ -36,7 +36,7 @@ function compareVersions(a: string, b: string): number {
   return 0;
 }
 
-export function UpdateBanner() {
+export function UpdateBanner({ style }: { style?: StyleProp<ViewStyle> }) {
   const [mode, setMode] = useState<'hidden' | 'optional' | 'required'>('hidden');
 
   useEffect(() => {
@@ -72,10 +72,10 @@ export function UpdateBanner() {
   };
 
   return (
-    <View style={{
+    <View style={[style, {
       flexDirection: 'row', alignItems: 'center', gap: 12,
       backgroundColor: '#16131F', borderRadius: 18, paddingVertical: 12, paddingLeft: 14, paddingRight: mode === 'optional' ? 6 : 14,
-    }}>
+    }]}>
       <ArrowCircleUp size={28} color="#DCFF4A" weight="fill" />
       <View style={{ flex: 1 }}>
         <AppText style={{ fontSize: 14, fontWeight: '700', color: '#FFFFFF' }}>{title}</AppText>
