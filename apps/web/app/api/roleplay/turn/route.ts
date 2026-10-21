@@ -398,12 +398,20 @@ export async function POST(request: NextRequest) {
 
     // 1) Whisper STT
     const t0 = Date.now();
-    const transcription = await openai.audio.transcriptions.create({
-      file:     audio,
-      model:    transcribeModel(),
-      language: 'en',
-    });
-    const userTranscript = transcription.text;
+    // Áudio ilegível (corrompido, curto demais ou formato que o serviço recusa): trata como "não ouvi" e
+    // pede para repetir, em vez de devolver erro (o aluno ficava só com uma vibração e um balão vazio).
+    let transcription: Awaited<ReturnType<typeof openai.audio.transcriptions.create>> | null = null;
+    try {
+      transcription = await openai.audio.transcriptions.create({
+        file:     audio,
+        model:    transcribeModel(),
+        language: 'en',
+      });
+    } catch (e: any) {
+      if (e?.status !== 400) throw e;
+      console.warn('[roleplay/turn] áudio ilegível, pedindo para repetir:', e?.message);
+    }
+    const userTranscript = transcription?.text ?? '';
 
     // Whisper hallucinations comuns em audio silencioso/curto. Se cair em
     // uma dessas, devolve direto pedindo pra repetir (não desperdiça LLM/TTS).
@@ -426,7 +434,7 @@ export async function POST(request: NextRequest) {
     logOpenAIUsage({
       endpoint:     '/api/roleplay/turn:whisper',
       model:        transcribeModel(),
-      audioSeconds: transcribedSeconds(transcription),
+      audioSeconds: transcription ? transcribedSeconds(transcription) : 0,
       userId,
       meta:     { ms: Date.now() - t0 },
     });

@@ -534,6 +534,8 @@ export default function RolePlayExerciseScreen() {
     } catch (e: any) {
       console.warn('[roleplay] turn failed', e);
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+      // Sem resposta (internet, servidor): tira o balão vazio da fala do aluno para ele tentar de novo.
+      setMessages(prev => prev.filter(m => !(m.role === 'user' && !m.content)));
     } finally {
       setIsProcessing(false);
     }

@@ -122,6 +122,12 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error: any) {
+    // Áudio ilegível (corrompido, curto demais): não é erro do servidor. Devolve transcrição vazia e o app
+    // mostra "Não ouvimos nada, fale de novo" em vez de uma tela de erro.
+    if (error?.status === 400) {
+      console.warn('Transcription: áudio ilegível:', error?.message);
+      return NextResponse.json({ transcription: '', success: true, unreadable: true });
+    }
     console.error('Transcription error:', error);
     
     // Diferentes tipos de erro
