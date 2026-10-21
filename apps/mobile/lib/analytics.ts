@@ -28,7 +28,8 @@ export type AnalyticsEvent =
   | 'share_card'
   | 'share_invite_link'
   | 'account_deleted'
-  | 'notification_tapped';
+  | 'notification_tapped'
+  | 'ota_status';
 
 interface EventProps {
   [key: string]: string | number | boolean | null;

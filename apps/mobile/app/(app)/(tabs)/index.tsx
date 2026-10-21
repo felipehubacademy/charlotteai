@@ -25,6 +25,7 @@ import { ExtraTracksRow } from '@/components/trail/ExtraTracksStrip';
 import { useTheme } from '@/lib/theme';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { identifyUser, track } from '@/lib/analytics';
+import { reportOtaStatus } from '@/lib/otaDiagnostics';
 import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greetingCache';
 import { characterInfo } from '@/lib/characters';
 import { fetchGoals } from '@/lib/missions';
@@ -297,6 +298,7 @@ export default function HomeTab() {
     if (!userId) return;
     identifyUser(userId, level);
     track('app_open');
+    reportOtaStatus();
     supabase.from('charlotte_users').update({ last_seen_at: new Date().toISOString(), ...getAppVersionFields() }).eq('id', userId).then(() => {});
     setLoading(true);
     fetchData().finally(() => setLoading(false));
