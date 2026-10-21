@@ -38,6 +38,7 @@ import { ArrowDown, ArrowUp } from 'phosphor-react-native';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { TrailBanner } from '@/components/trail/TrailBanner';
 import { StudyingNow } from '@/components/social/StudyingNow';
+import { UpdateBanner } from '@/components/ui/UpdateBanner';
 import { PromotionModal } from '@/components/trail/PromotionModal';
 import { GraduationModal } from '@/components/trail/GraduationModal';
 import { usePromotion } from '@/lib/curriculum-v2/usePromotion';
@@ -557,8 +558,9 @@ export default function HomeTab() {
   );
   const levelBlock = (
     <>
-      {/* Card do nível */}
+      {/* Card do nível (com o aviso de versão nova da loja em cima, quando houver) */}
       <View style={{ marginHorizontal: 20, marginTop: 14 }}>
+        <UpdateBanner />
         <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
           <TrailBanner
             userId={userId}

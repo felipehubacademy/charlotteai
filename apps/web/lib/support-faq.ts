@@ -20,6 +20,9 @@ O conteúdo das lições segue o nível: o inglês dos exercícios é sempre em 
 `Não. O Queizy precisa de internet: as conversas, as correções e as vozes da Charlotte e do Igorfina são geradas na hora. Para o Live Voice, use Wi-Fi ou 4G estável.` },
   { section: 'Sobre o app', question: 'Tem versão para iPad ou tablet?', answer:
 `Não. O Queizy foi feito para celular (iPhone e Android) e não tem versão própria para iPad ou tablet.` },
+  { section: 'Sobre o app', question: 'Como atualizar o app?', answer:
+`Quando sai uma versão nova, aparece o aviso "Tem versão nova do Queizy" no topo da tela Início, com o botão "Atualizar", que abre a loja (App Store no iPhone, Google Play no Android). Também dá para atualizar direto pela loja: procure Queizy e toque em Atualizar.
+O X fecha o aviso; ele volta em alguns dias até você atualizar. Sua conta, seu progresso e sua assinatura continuam iguais.` },
 
   // ── Guia do app (onde fica cada coisa) ───────────────────────────────────
   { section: 'Guia do app', question: 'Como navegar no app (barra de baixo)?', answer:
