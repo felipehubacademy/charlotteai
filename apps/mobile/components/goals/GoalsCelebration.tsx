@@ -1,6 +1,6 @@
 // GoalsCelebration — comemora as metas creditadas pelo servidor (lib/goalsEvents), em três níveis:
 //   1. cada missão do dia: aviso curto no topo, com som (nada de tela cheia: são três por dia);
-//   2. as 3 missões do dia completas: tela curta com quem fala na Início (Família Queizy);
+//   2. as 3 missões do dia completas: tela curta com quem fala na Tela Inicial (Família Queizy);
 //   3. desafio da semana: comemoração completa, com o card de compartilhar (formato Stories).
 // Montado uma vez em app/(app)/_layout.tsx.
 import React, { useEffect, useRef, useState } from 'react';

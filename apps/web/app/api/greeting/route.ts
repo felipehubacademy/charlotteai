@@ -28,7 +28,7 @@ interface GreetingRequest {
   isNewUser?: boolean;    // from profile.first_welcome_done — reliable flag
   userId?: string;
   highlight?: string | null; // destaque de ontem, calculado no servidor
-  character?: string;        // Família Queizy: quem fala na Início (padrão: Charlotte)
+  character?: string;        // Família Queizy: quem fala na Tela Inicial (padrão: Charlotte)
 }
 
 function buildPrompt(req: GreetingRequest): { system: string; user: string } {

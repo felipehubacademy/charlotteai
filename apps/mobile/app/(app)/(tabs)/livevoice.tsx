@@ -486,7 +486,7 @@ export default function LiveVoiceTab() {
   const [selectedCall,    setSelectedCall]    = useState<LastCall | null>(null);
   const transcriptFromList = React.useRef(false); // voltar da chamada reabre a lista
   const [showCallsDrawer, setShowCallsDrawer] = useState(false);
-  // Quem atende a ligação: o membro da Família escolhido (Perfil > Família Queizy > "Falar na Início").
+  // Quem atende a ligação: o membro da Família escolhido (Perfil > Família Queizy > "Falar na Tela Inicial").
   const hostId = characterInfo(profile?.active_character).id;
   const host = characterInfo(hostId);
   const hostArticle = hostId === 'charlotte' ? 'a ' : hostId === 'igorfina' ? 'o ' : '';

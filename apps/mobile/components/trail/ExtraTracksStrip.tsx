@@ -1,4 +1,4 @@
-// components/trail/ExtraTracksStrip.tsx — faixa "Trilhas da Família Queizy" na Início.
+// components/trail/ExtraTracksStrip.tsx — faixa "Trilhas da Família Queizy" na Tela Inicial.
 // Um cartão por trilha extra (lib/tracks.ts): avatar, nome, com quem é e o progresso.
 // Com uma trilha só, o cartão ocupa a largura toda; com mais, a faixa desliza para o lado.
 import React, { useCallback, useState } from 'react';
@@ -98,11 +98,11 @@ export function ExtraTracksStrip({ onLayoutHeight }: { onLayoutHeight?: (h: numb
 }
 
 /**
- * Versão em linha, dentro do cartão da trilha da Início (sempre visível: a Início rola sozinha
+ * Versão em linha, dentro do cartão da trilha da Tela Inicial (sempre visível: a Tela Inicial rola sozinha
  * até o tópico ativo, então uma faixa acima da trilha ficaria escondida para quem está no meio).
- * Mostra só a trilha de quem o aluno escolheu na Família (quem fala na Início): com várias
- * trilhas de influenciadores, a Início não vira uma lista. As outras ficam na tela Família.
- * Com a Charlotte na Início, aparece no lugar o convite para conhecer a Família (FamilyInviteRow).
+ * Mostra só a trilha de quem o aluno escolheu na Família (quem fala na Tela Inicial): com várias
+ * trilhas de influenciadores, a Tela Inicial não vira uma lista. As outras ficam na tela Família.
+ * Com a Charlotte na Tela Inicial, aparece no lugar o convite para conhecer a Família (FamilyInviteRow).
  */
 export function ExtraTracksRow() {
   const { profile, isTaster } = useAuth();

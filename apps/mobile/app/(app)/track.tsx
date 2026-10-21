@@ -1,5 +1,5 @@
 // app/(app)/track.tsx — tela de uma trilha extra da Família Queizy (ex.: Manual do F#did@).
-// Mesmo cartão e mesma trilha da Início, com o nível = id da trilha (lib/tracks.ts).
+// Mesmo cartão e mesma trilha da Tela Inicial, com o nível = id da trilha (lib/tracks.ts).
 import React from 'react';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';

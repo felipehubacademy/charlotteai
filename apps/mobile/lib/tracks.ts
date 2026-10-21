@@ -1,6 +1,6 @@
 // lib/tracks.ts — trilhas extras da Família Queizy (trilhas de influenciadores).
 //
-// Ficam fora do seletor de nível: aparecem na faixa "Trilhas da Família Queizy" da Início e
+// Ficam fora do seletor de nível: aparecem na faixa "Trilhas da Família Queizy" da Tela Inicial e
 // abrem numa tela própria (/(app)/track). Cada trilha é um "nível" do curriculum v2 (pasta
 // própria em data/curriculum-v2), com o progresso em learn_history_v2 pelo id da trilha.
 //

@@ -34,7 +34,7 @@ Responda SOMENTE um JSON com as chaves:
  "faq_gap": true se a dúvida NÃO está bem coberta pelas perguntas da FAQ abaixo (ou a resposta automática errou, ficou genérica ou precisou de atendente para algo que poderia estar na FAQ); false caso contrário,
  "faq_question": se faq_gap, a pergunta como o aluno faria; senão "",
  "faq_answer": se faq_gap e houver mensagem de ATENDENTE com a explicação, escreva a resposta da FAQ reescrevendo o que o ATENDENTE disse (genérica, sem nome do aluno, em 1 a 4 frases); se nenhum ATENDENTE explicou, "" (nunca invente passos, preços ou políticas),
- "ux_issue": se a dúvida indica que algo no app é difícil de achar ou de entender (ex.: "não acha o nível na tela Início"), descreva em 1 frase; senão "",
+ "ux_issue": se a dúvida indica que algo no app é difícil de achar ou de entender (ex.: "não acha o nível na Tela Inicial"), descreva em 1 frase; senão "",
  "feature_request": se o aluno pediu uma função que não existe, descreva em 1 frase; senão ""
 }
 

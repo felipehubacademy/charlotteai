@@ -21,13 +21,13 @@ O conteúdo das lições segue o nível: o inglês dos exercícios é sempre em 
   { section: 'Sobre o app', question: 'Tem versão para iPad ou tablet?', answer:
 `Não. O Queizy foi feito para celular (iPhone e Android) e não tem versão própria para iPad ou tablet.` },
   { section: 'Sobre o app', question: 'Como atualizar o app?', answer:
-`Quando sai uma versão nova, aparece o aviso "Tem versão nova do Queizy" no topo da tela Início, com o botão "Atualizar", que abre a loja (App Store no iPhone, Google Play no Android). Também dá para atualizar direto pela loja: procure Queizy e toque em Atualizar.
+`Quando sai uma versão nova, aparece o aviso "Tem versão nova do Queizy" no topo da Tela Inicial, com o botão "Atualizar", que abre a loja (App Store no iPhone, Google Play no Android). Também dá para atualizar direto pela loja: procure Queizy e toque em Atualizar.
 O X fecha o aviso; ele volta em alguns dias até você atualizar. Sua conta, seu progresso e sua assinatura continuam iguais.` },
 
   // ── Guia do app (onde fica cada coisa) ───────────────────────────────────
   { section: 'Guia do app', question: 'Como navegar no app (barra de baixo)?', answer:
 `A barra de baixo tem 5 ícones, sem nome escrito:
-1. Casinha: Início (trilha de estudos).
+1. Casinha: Tela Inicial (trilha de estudos).
 2. Telefone: Live Voice (ligar para a Charlotte).
 3. Raio: Practice (conversa por texto, gramática e pronúncia).
 4. Bloco de notas: Vocabulário.
@@ -38,11 +38,11 @@ Tocando nas pílulas abre a tela "Seu progresso", com o XP total, o XP ganho hoj
   { section: 'Guia do app', question: 'Como ganho XP?', answer:
 `Ganha XP quem estuda: concluindo atividades da trilha (Gramática, Listening & Speaking, Role-play e Guided Chat), mandando mensagens no Practice (Free Chat por texto ou áudio, e Gramática), revisando palavras no Vocabulário e cumprindo as metas. As missões do dia e o desafio da semana pagam XP extra quando concluídos (cada um paga uma vez por período). O XP soma no total, na sequência e no ranking.` },
   { section: 'Guia do app', question: 'Onde vejo meu nível?', answer:
-`Na tela Início, o cartão da trilha mostra o nome do nível (Novice, Intermediate ou Advanced), quantos módulos tem e o percentual concluído. Em "Seu progresso" (tocando nas pílulas do topo) aparece "Rumo ao" próximo nível.
+`Na Tela Inicial, o cartão da trilha mostra o nome do nível (Novice, Intermediate ou Advanced), quantos módulos tem e o percentual concluído. Em "Seu progresso" (tocando nas pílulas do topo) aparece "Rumo ao" próximo nível.
 O seletor no cartão da trilha permite espiar a trilha de outros níveis (pré-visualização), sem mudar o seu nível.
 Para fazer o teste de nível: Perfil > Conta > Fazer teste de nível (aparece como Refazer teste de nível depois da primeira vez; o resultado substitui o nível atual). O teste faz parte do plano.` },
   { section: 'Guia do app', question: 'Como funciona a trilha de estudos?', answer:
-`A trilha fica na tela Início. Ela é dividida em módulos, e cada módulo em tópicos. Cada tópico tem 4 atividades: Gramática, Listening & Speaking, Role-play e Guided Chat. Cada atividade concluída destrava a próxima, e cada tópico completo (as 4 atividades) destrava o seguinte. O cartão da trilha mostra quantos tópicos você já concluiu.
+`A trilha fica na Tela Inicial. Ela é dividida em módulos, e cada módulo em tópicos. Cada tópico tem 4 atividades: Gramática, Listening & Speaking, Role-play e Guided Chat. Cada atividade concluída destrava a próxima, e cada tópico completo (as 4 atividades) destrava o seguinte. O cartão da trilha mostra quantos tópicos você já concluiu.
 Para concluir uma atividade é preciso atingir o mínimo mostrado nela (por exemplo "precisa 70%"). Atividades já feitas podem ser refeitas pelo botão "Refazer". Ao completar o nível, o app oferece a passagem para o próximo.` },
   { section: 'Guia do app', question: 'Como faço uma ligação (Live Voice)?', answer:
 `Toque no ícone de telefone na barra de baixo e depois em "Conversar com" (o botão mostra o nome de quem atende). A ligação é com quem estiver escolhido na Família Queizy: a Charlotte ou o Igorfina (Perfil > Você no Queizy > Família Queizy). Na primeira vez o celular pede permissão para usar o microfone: é preciso permitir.
@@ -64,9 +64,9 @@ Na Pronúncia, segure o botão do microfone enquanto fala uma frase em inglês; 
 O app agenda as revisões: quando há palavras para revisar aparece "Revisar hoje". Cada palavra mostra o estado: Nova, Aprendendo ou Dominada.` },
   { section: 'Guia do app', question: 'O que é a Família Queizy?', answer:
 `A Família Queizy reúne os personagens do app: a Charlotte (sua tutora) e o Igorfina, comediante e imitador. São personagens do Queizy: as respostas e as vozes deles são geradas por IA, na hora. As imitações do Igorfina também são personagens, não pessoas de verdade; quando ele imita, aparece o selo com o nome da imitação.
-- Para escolher quem te acompanha: no primeiro acesso, a Início pergunta "Quem vai te acompanhar?" (o Igorfina já vem marcado; conta nova começa com ele). Para trocar depois, toque na foto ao lado da saudação, na Início, ou vá em Perfil > Você no Queizy > Família Queizy e toque no cartão (o escolhido fica com o selo "Escolhido"). Quem está escolhido fala com você na Início, atende quando você liga (ícone de telefone) e começa as conversas novas do Free Chat.
+- Para escolher quem te acompanha: no primeiro acesso, o app pergunta "Quem vai te acompanhar?" (o Igorfina já vem marcado; conta nova começa com ele). Para trocar depois, toque na foto ao lado da saudação, na Tela Inicial, ou vá em Perfil > Você no Queizy > Família Queizy e toque no cartão (o escolhido fica com o selo "Escolhido"). Quem está escolhido fala com você na Tela Inicial, atende quando você liga (ícone de telefone) e começa as conversas novas do Free Chat.
 - No Free Chat, "Conversar com" troca com quem é aquela conversa. Cada conversa continua com quem ela foi começada.
-- O Igorfina tem uma trilha própria, o Manual do F#did@ (veja "O que é o Manual do F#did@?"). Ela aparece no cartão da trilha da Início quando ele está escolhido, e no cartão dele na Família, em "Ver trilha".
+- O Igorfina tem uma trilha própria, o Manual do F#did@ (veja "O que é o Manual do F#did@?"). Ela aparece no cartão da trilha da Tela Inicial quando ele está escolhido, e no cartão dele na Família, em "Ver trilha".
 A trilha principal, a Gramática, a Pronúncia e o suporte são com a Charlotte.` },
   { section: 'Guia do app', question: 'Posso ligar para o Igorfina?', answer:
 `Pode. Escolha o Igorfina na Família (Perfil > Você no Queizy > Família Queizy, toque no cartão dele) e depois toque no ícone de telefone na barra de baixo e em "Conversar com o Igorfina". É uma ligação de voz em tempo real, com a voz dele e, de vez em quando, uma imitação (o selo com o nome da imitação aparece na tela).
@@ -75,7 +75,7 @@ Ele adapta a conversa ao seu nível, pode puxar o assunto do tópico que você e
 `É a trilha do Igorfina, da Família Queizy: inglês de sobrevivência para o dia a dia, viagem e situações reais, com o humor e as imitações dele.
 - São 10 módulos e 50 tópicos. Cada tópico tem as mesmas 4 atividades da trilha principal: Gramática, Listening & Speaking, Role-play e Guided Chat, com o Igorfina no lugar da Charlotte. As explicações são em português.
 - Em alguns tópicos ele faz uma imitação a atividade toda; o cartão do tópico mostra o selo com o nome da imitação (por exemplo, "Presidente" ou "Astro do basquete").
-- Onde fica: na Início, no cartão da trilha, quando o Igorfina está escolhido na Família (Perfil > Você no Queizy > Família Queizy), ou direto na tela Família, em "Ver trilha".
+- Onde fica: na Tela Inicial, no cartão da trilha, quando o Igorfina está escolhido na Família (Perfil > Você no Queizy > Família Queizy), ou direto na tela Família, em "Ver trilha".
 - Os tópicos abrem em ordem, como na trilha principal. O progresso é separado: fazer o Manual não avança a sua trilha de nível.
 - Antes de assinar, um tópico do Manual é grátis ("SEU TÓPICO GRÁTIS"); os outros fazem parte da assinatura.` },
   { section: 'Guia do app', question: 'Os áudios das conversas ficam salvos?', answer:
@@ -84,13 +84,13 @@ Ele adapta a conversa ao seu nível, pode puxar o assunto do tópico que você e
 `Na tela "Seu progresso" (tocando nas pílulas de fogo, raio e troféu no topo), na parte "Metas". Ali ficam o "XP de hoje", as 3 missões do dia e o "Desafio da semana". Cada missão diz o que fazer e onde, e tocar nela leva direto ao lugar. O aviso do desafio da semana que chega no celular também abre essa tela.` },
   { section: 'Guia do app', question: 'Como funcionam as missões do dia e o desafio da semana?', answer:
 `Todo dia você recebe 3 missões novas: uma da trilha (por exemplo, concluir atividades ou fazer um Role-play), uma de prática extra (no Practice ou no Vocabulário) e uma de constância (ganhar XP no dia ou manter a sequência). O desafio da semana vai de segunda a domingo e vale mais XP. As missões mudam todo dia e as metas seguem o seu nível.
-O XP entra sozinho: depois de cumprir, ao voltar para a tela Início (ou abrir "Metas") aparece o aviso "Missão concluída". Com as 3 do dia feitas tem comemoração, e ao concluir o desafio da semana dá para compartilhar o card. Cada missão paga uma vez.` },
+O XP entra sozinho: depois de cumprir, ao voltar para a Tela Inicial (ou abrir "Metas") aparece o aviso "Missão concluída". Com as 3 do dia feitas tem comemoração, e ao concluir o desafio da semana dá para compartilhar o card. Cada missão paga uma vez.` },
   { section: 'Guia do app', question: 'Como estudar com amigos (Estudar junto)?', answer:
 `Fica em Perfil > Você no Queizy > Estudar junto (ou em "Seu progresso"):
 - "Encontrar amigos": busca pelo nome, sobrenome ou @. A pessoa recebe o pedido e, ao aceitar, vocês viram amigos de estudo.
 - "Convidar amigos": manda o seu código de convite. Quando uma conta nova entra pelo convite (até 14 dias depois do cadastro, em "Recebeu um convite?"), cada um ganha 5 minutos de Live Voice.
 - "Competições": desafie amigos por 24 horas ou 7 dias (quem faz mais XP, quem pratica mais ou quem acerta mais na trilha). Quem vencer ganha 5 minutos de Live Voice. Recebeu o link de uma competição? Com o app instalado, ao tocar no link você já entra na disputa e aparece a tela "Você entrou na competição"; sem o app, baixe, crie a conta e você entra logo depois do cadastro. Para sair de uma competição em andamento, toque no "⋮" no topo do cartão dela e em "Sair da competição"; se sobrar só uma pessoa, a competição é encerrada sem vencedor.
-Pedidos de amizade e convites recebidos aparecem numa linha na tela Início. Para os amigos te acharem, a opção "Aparecer na busca" precisa estar ligada em Perfil > Preferências.` },
+Pedidos de amizade e convites recebidos aparecem numa linha na Tela Inicial. Para os amigos te acharem, a opção "Aparecer na busca" precisa estar ligada em Perfil > Preferências.` },
   { section: 'Guia do app', question: 'O que tem no Perfil?', answer:
 `Perfil (sua foto na barra de baixo):
 - Conta: Alterar senha e Fazer teste de nível (Refazer teste de nível, depois da primeira vez).
@@ -104,7 +104,7 @@ Pedidos de amizade e convites recebidos aparecem numa linha na tela Início. Par
 `Em Perfil > Idioma do app, escolha Automático (do celular), Português ou English. O app reinicia e passa a mostrar as telas e os avisos no idioma escolhido.
 O conteúdo das lições continua no idioma do seu nível: na Novice as explicações são em português; no Inter e no Advanced, em inglês.` },
   { section: 'Guia do app', question: 'Onde vejo minha evolução?', answer:
-`Em Perfil > Você no Queizy > Minha evolução (ou "Ver minha evolução" na tela Início). Mostra o que você já domina e o que vale treinar, com base nas atividades feitas.` },
+`Em Perfil > Você no Queizy > Minha evolução (ou "Ver minha evolução" na Tela Inicial). Mostra o que você já domina e o que vale treinar, com base nas atividades feitas.` },
 
   // ── Problemas comuns ─────────────────────────────────────────────────────
   { section: 'Problemas comuns', question: 'Não vejo meu XP ou o XP não somou', answer:
@@ -124,7 +124,7 @@ Se continuar sem funcionar depois disso, um atendente analisa (ajuda informar o 
 Depois de cada tentativa o app mostra o que entendeu e, se faltou alguma palavra, "Faltou: ...". Errando duas vezes a mesma frase, aparece "Ouvir a frase de novo". Números (por extenso ou em algarismos), contrações ("I'm" ou "I am"), "gonna"/"going to" e grafia britânica ou americana contam igual. Se ainda assim não der, dá para tocar em "Pular".
 Se aparecer o aviso de que o Queizy está sem acesso ao microfone, toque em "Abrir Ajustes" e libere o microfone. Se o reconhecimento de voz do celular falhar, o app avisa e passa a conferir pela internet na próxima tentativa.` },
   { section: 'Problemas comuns', question: 'Não acho uma tela ou função', answer:
-`Use o guia da barra de baixo: casinha (Início e trilha), telefone (Live Voice), raio (Practice), bloco de notas (Vocabulário) e sua foto (Perfil). XP, sequência, ranking e metas ficam em "Seu progresso", tocando nas pílulas do topo. Se a função procurada não existir no app, isso é registrado como sugestão para a equipe.` },
+`Use o guia da barra de baixo: casinha (Tela Inicial e trilha), telefone (Live Voice), raio (Practice), bloco de notas (Vocabulário) e sua foto (Perfil). XP, sequência, ranking e metas ficam em "Seu progresso", tocando nas pílulas do topo. Se a função procurada não existir no app, isso é registrado como sugestão para a equipe.` },
   { section: 'Problemas comuns', question: 'O app travou ou deu erro', answer:
 `Atualize o app na loja, feche-o por completo e abra de novo. Confira a internet. Se o erro continuar, um atendente analisa; ajuda informar o que estava fazendo, a mensagem que apareceu e o modelo do celular.` },
 

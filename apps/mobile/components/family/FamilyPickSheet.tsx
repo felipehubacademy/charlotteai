@@ -1,10 +1,10 @@
 // components/family/FamilyPickSheet.tsx — "Quem vai te acompanhar?" (Família Queizy).
 //
-// Duas aberturas na Início:
+// Duas aberturas na Tela Inicial:
 //   - 'first': 1x por conta neste aparelho, no primeiro acesso. O Igorfina já vem marcado (padrão da casa);
 //     não fecha sem escolher (tocar fora ou voltar confirma o que está marcado).
 //   - 'switch': tocar na foto de quem fala na saudação; fecha ao tocar fora.
-// Quem é escolhido fica em charlotte_users.active_character (quem fecha a escolha é a Início).
+// Quem é escolhido fica em charlotte_users.active_character (quem fecha a escolha é a Tela Inicial).
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Modal, Pressable, View, TouchableOpacity, Dimensions, Animated, Easing } from 'react-native';
@@ -68,7 +68,7 @@ export function FamilyPickSheet({ visible, mode, isPt, current, saving, onConfir
     ? (isPt ? 'Quem vai te acompanhar?' : 'Who will keep you company?')
     : (isPt ? 'Quem fala com você?' : 'Who talks to you?');
   const body = isPt
-    ? 'Fala com você na Início, atende quando você liga e começa as conversas do Free Chat. A Charlotte segue como tutora da trilha.'
+    ? 'Fala com você na Tela Inicial, atende quando você liga e começa as conversas do Free Chat. A Charlotte segue como tutora da trilha.'
     : 'Talks to you on Home, picks up when you call and starts your Free Chat conversations. Charlotte stays your trail tutor.';
   const cta = mode === 'first'
     ? (isPt ? `Começar com ${picked === 'charlotte' ? 'a' : 'o'} ${name}` : `Start with ${name}`)
@@ -116,7 +116,7 @@ export function FamilyPickSheet({ visible, mode, isPt, current, saving, onConfir
 
             <AppText style={{ fontSize: 12, color: C.light, textAlign: 'center', lineHeight: 17, marginTop: 12 }}>
               {isPt
-                ? 'Dá para trocar quando quiser: toque na foto da Início ou vá em Perfil > Você no Queizy > Família Queizy.'
+                ? 'Dá para trocar quando quiser: toque na foto da Tela Inicial ou vá em Perfil > Você no Queizy > Família Queizy.'
                 : 'You can switch anytime: tap the photo on Home or go to Profile > You on Queizy > Queizy Family.'}
             </AppText>
           </Pressable>

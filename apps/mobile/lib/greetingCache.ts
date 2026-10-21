@@ -75,7 +75,7 @@ export function prefetchGreeting(profile: PrefetchProfile): void {
       hour:      new Date().getHours(),
       level,
       isNewUser,
-      character: greetingCache.character, // quem fala na Início (Família Queizy)
+      character: greetingCache.character, // quem fala na Tela Inicial (Família Queizy)
     }),
   })
     .then(res => (res.ok ? res.json() : null))
