@@ -27,7 +27,9 @@ import { usePaywallContext } from '@/lib/paywallContext';
 import { identifyUser, track } from '@/lib/analytics';
 import { reportOtaStatus } from '@/lib/otaDiagnostics';
 import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greetingCache';
-import { characterInfo } from '@/lib/characters';
+import { characterInfo, type CharacterId } from '@/lib/characters';
+import { FamilyPickSheet } from '@/components/family/FamilyPickSheet';
+import { markFamilyMemberPicked } from '@/lib/familyInvite';
 import { fetchGoals } from '@/lib/missions';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
@@ -100,7 +102,7 @@ function TypingDots() {
 const MIN_TRAIL_VIEWPORT = 240; // abaixo disso a trilha fixa embaixo do hero fica inutilizável
 
 export default function HomeTab() {
-  const { profile, isTaster } = useAuth();
+  const { profile, isTaster, refreshProfile } = useAuth();
   const { openPaywall }           = usePaywallContext();
   const { colors: T }             = useTheme();
   const userId    = profile?.id ?? '';
@@ -155,16 +157,49 @@ export default function HomeTab() {
   const [showPlacementPrompt, setShowPlacementPrompt] = useState(false);
   const placementDone = profile?.placement_test_done === true;
 
+  // Família Queizy: "Quem vai te acompanhar?" 1x por conta neste aparelho (Igorfina marcado), e de novo
+  // ao tocar na foto da saudação. Vem antes da janela do teste de nível (uma de cada vez).
+  const [familySheet, setFamilySheet] = useState<'first' | 'switch' | null>(null);
+  const [familyPickDone, setFamilyPickDone] = useState(false);
+  const [familySaving, setFamilySaving] = useState(false);
+  const familyKey = profile?.id ? `family_pick_done_${profile.id}` : null;
+  useEffect(() => {
+    if (!familyKey) return;
+    let alive = true;
+    SecureStore.getItemAsync(familyKey).catch(() => null).then(v => {
+      if (!alive) return;
+      if (v) { setFamilyPickDone(true); return; }
+      splashGate.then(() => setTimeout(() => { if (alive) setFamilySheet('first'); }, 700));
+    });
+    return () => { alive = false; };
+  }, [familyKey]);
+  const confirmFamily = useCallback(async (id: CharacterId) => {
+    if (!profile?.id || familySaving) return;
+    setFamilySaving(true);
+    try {
+      if (id !== characterInfo(profile.active_character).id) {
+        const { error } = await supabase.from('charlotte_users').update({ active_character: id }).eq('id', profile.id);
+        if (!error) await refreshProfile();
+      }
+      if (familyKey) await SecureStore.setItemAsync(familyKey, id).catch(() => {});
+      markFamilyMemberPicked(); // some o convite "Conheça a Família Queizy"
+    } finally {
+      setFamilySaving(false);
+      setFamilySheet(null);
+      setFamilyPickDone(true);
+    }
+  }, [profile?.id, profile?.active_character, familyKey, familySaving, refreshProfile]);
+
   useEffect(() => {
     // Degustação: o teste de nível faz parte do teste de 7 dias; a janela aparece depois de assinar.
-    if (loading || placementDone || isTaster) return;
+    if (loading || placementDone || isTaster || !familyPickDone) return;
     SecureStore.getItemAsync('PLACEMENT_PROMPT_DISMISSED').then(v => {
       if (!v) {
         const t = setTimeout(() => setShowPlacementPrompt(true), 800);
         return () => clearTimeout(t);
       }
     }).catch(() => {});
-  }, [loading, placementDone, isTaster]);
+  }, [loading, placementDone, isTaster, familyPickDone]);
 
   const dismissPlacementPrompt = useCallback(() => {
     setShowPlacementPrompt(false);
@@ -518,12 +553,15 @@ export default function HomeTab() {
           centralizado, com a saudação em destaque e a fala da IA embaixo. */}
       <View style={{ marginHorizontal: 20, marginTop: 20 }}>
         <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'center', gap: 8 }}>
-          <Image
-            source={avatarSrc}
-            style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: C.navy }}
-            contentFit="cover"
-            accessibilityLabel={characterInfo(profile?.active_character).name}
-          />
+          {/* Tocar na foto troca quem fala com você (Família Queizy). */}
+          <TouchableOpacity activeOpacity={0.8} onPress={() => setFamilySheet('switch')} hitSlop={8}
+            accessibilityLabel={isPt ? `Trocar quem fala com você (agora: ${characterInfo(profile?.active_character).name})` : `Change who talks to you (now: ${characterInfo(profile?.active_character).name})`}>
+            <Image
+              source={avatarSrc}
+              style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: C.navy }}
+              contentFit="cover"
+            />
+          </TouchableOpacity>
           <TouchableOpacity activeOpacity={0.8} onPress={() => router.push('/(app)/evolution' as any)} style={{ maxWidth: '78%', marginBottom: 16 }}
             accessibilityLabel={isPt ? 'Ver minha evolução' : 'See my progress'}>
             <View style={{
@@ -657,6 +695,16 @@ export default function HomeTab() {
       </TouchableOpacity>
 
 
+
+      <FamilyPickSheet
+        visible={familySheet !== null}
+        mode={familySheet ?? 'switch'}
+        isPt={systemIsPt}
+        current={characterInfo(profile?.active_character).id}
+        saving={familySaving}
+        onConfirm={confirmFamily}
+        onClose={() => setFamilySheet(null)}
+      />
 
       <PlacementPromptSheet
         visible={showPlacementPrompt}
