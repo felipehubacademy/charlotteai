@@ -21,6 +21,13 @@ type Checkout = {
   user_id: string; name: string | null; email: string | null;
 };
 type Summary = { started30: number; paid30: number; abandoned30: number; recovered30: number; revenue30: number };
+type Health = {
+  health: { checkouts: number; paid: number; hosted: number; direct: number; cardOk: number; cardDeclined: number; pixCreated: number; pixPaid: number };
+  errors: { created_at: string; area: string; route: string; message: string }[];
+  alerts: { created_at: string; kind: string; message: string; sent_email: boolean; sent_whatsapp: boolean }[];
+};
+const AREA: Record<string, string> = { checkout: 'Checkout', webhook: 'Webhook do pagamento', auth: 'Login / e-mails de acesso', asaas: 'Processador de pagamento' };
+const when = (iso: string) => new Date(iso).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
 
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 const day = (s: string | null) => (s ? new Date(s).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: '2-digit' }) : '—');
@@ -52,7 +59,8 @@ const EMPTY = { code: '', discount_pct: 20, monthly: true, annual: true, starts_
 type Form = typeof EMPTY;
 
 export default function CommercialAdmin() {
-  const [tab, setTab] = useState<'coupons' | 'affiliates' | 'sales'>('coupons');
+  const [tab, setTab] = useState<'coupons' | 'affiliates' | 'sales' | 'health'>('coupons');
+  const [health, setHealth] = useState<Health | null>(null);
   const [coupons, setCoupons] = useState<Coupon[]>([]);
   const [checkouts, setCheckouts] = useState<Checkout[]>([]);
   const [summary, setSummary] = useState<Summary | null>(null);
@@ -67,6 +75,8 @@ export default function CommercialAdmin() {
       const [c, s] = await Promise.all([fetch('/api/admin/commercial?view=coupons'), fetch('/api/admin/commercial?view=checkouts')]);
       if (c.ok) setCoupons((await c.json()).coupons ?? []);
       if (s.ok) { const j = await s.json(); setCheckouts(j.checkouts ?? []); setSummary(j.summary ?? null); }
+      const h = await fetch('/api/admin/commercial?view=health');
+      if (h.ok) setHealth(await h.json());
     } finally { setLoading(false); }
   }, []);
   useEffect(() => { load(); }, [load]);
@@ -123,6 +133,7 @@ export default function CommercialAdmin() {
         <div className={`adm-tab${tab === 'coupons' ? ' active' : ''}`} onClick={() => setTab('coupons')}>Cupons ({coupons.length})</div>
         <div className={`adm-tab${tab === 'affiliates' ? ' active' : ''}`} onClick={() => setTab('affiliates')}>Afiliados</div>
         <div className={`adm-tab${tab === 'sales' ? ' active' : ''}`} onClick={() => setTab('sales')}>Vendas pelo site</div>
+        <div className={`adm-tab${tab === 'health' ? ' active' : ''}`} onClick={() => setTab('health')}>Saúde do checkout</div>
       </div>
 
       {tab === 'affiliates' && <AffiliatesAdmin />}
@@ -167,6 +178,60 @@ export default function CommercialAdmin() {
               </table>
             )}
           </div>
+        </div>
+      )}
+
+      {tab === 'health' && (
+        <div className="adm-body">
+          {!health ? (
+            <div className="adm-empty"><div className="adm-empty-title">{loading ? 'Carregando…' : 'Sem dados'}</div></div>
+          ) : (
+            <>
+              <div style={{ fontSize: 12, color: 'var(--t3)', marginBottom: 10 }}>
+                Últimas 24 horas. O vigia confere a cada 5 minutos e avisa por e-mail e WhatsApp: erro no checkout, no webhook ou no login, processador fora do ar, pico de cartão recusado, vendas paradas, pagamento sem acesso (corrige sozinho), webhook mudo e fila de e-mails travada.
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 10, marginBottom: 14 }}>
+                {[
+                  ['Checkouts', `${health.health.checkouts}`],
+                  ['Pagos', `${health.health.paid}`],
+                  ['Página do parceiro / nossa', `${health.health.hosted} / ${health.health.direct}`],
+                  ['Cartão aprovado / recusado', `${health.health.cardOk} / ${health.health.cardDeclined}`],
+                  ['Pix gerado / pago', `${health.health.pixCreated} / ${health.health.pixPaid}`],
+                  ['Erros', `${health.errors.length}`],
+                ].map(([l, v]) => (
+                  <div key={l} className="adm-panel" style={{ padding: 14 }}>
+                    <div className="kpi-label">{l}</div>
+                    <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--t1)', marginTop: 4 }}>{v}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="adm-panel" style={{ marginBottom: 14 }}>
+                {health.errors.length === 0 ? (
+                  <div className="adm-empty"><div className="adm-empty-title">Nenhum erro nas últimas 24 horas</div></div>
+                ) : (
+                  <table className="adm-table">
+                    <thead><tr><th>Quando</th><th>Onde</th><th>Rota</th><th>Mensagem</th></tr></thead>
+                    <tbody>{health.errors.map((e, i) => (
+                      <tr key={i}><td style={{ whiteSpace: 'nowrap' }}>{when(e.created_at)}</td><td>{AREA[e.area] ?? e.area}</td><td style={{ fontSize: 12 }}>{e.route}</td><td style={{ fontSize: 12 }}>{e.message}</td></tr>
+                    ))}</tbody>
+                  </table>
+                )}
+              </div>
+              <div className="adm-panel">
+                {health.alerts.length === 0 ? (
+                  <div className="adm-empty"><div className="adm-empty-title">Nenhum alerta enviado ainda</div></div>
+                ) : (
+                  <table className="adm-table">
+                    <thead><tr><th>Alerta</th><th>Mensagem</th><th>Enviado</th></tr></thead>
+                    <tbody>{health.alerts.map((a, i) => (
+                      <tr key={i}><td style={{ whiteSpace: 'nowrap' }}>{when(a.created_at)}</td><td style={{ fontSize: 12 }}>{a.message}</td>
+                        <td style={{ fontSize: 12 }}>{[a.sent_email && 'e-mail', a.sent_whatsapp && 'WhatsApp'].filter(Boolean).join(' e ') || 'falhou'}</td></tr>
+                    ))}</tbody>
+                  </table>
+                )}
+              </div>
+            </>
+          )}
         </div>
       )}
 

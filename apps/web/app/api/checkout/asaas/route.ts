@@ -15,6 +15,7 @@ import {
   refundPayment, refundInstallment, REFUND_WINDOW_DAYS, disableCustomerNotifications,
 } from '@/lib/asaas';
 import { prepareWebCheckout, checkoutRowFields } from '@/lib/web-checkout';
+import { logOpsError } from '@/lib/ops-monitor';
 
 export const dynamic = 'force-dynamic';
 // Perto do banco e do processador de pagamento (São Paulo): o envio do formulário faz várias consultas
@@ -183,6 +184,7 @@ export async function POST(req: NextRequest) {
     return res;
   } catch (e) {
     console.error('[checkout/asaas] create failed:', e instanceof AsaasError ? e.body : e);
+    await logOpsError(e instanceof AsaasError && (e.status >= 500 || e.status === 429) ? 'asaas' : 'checkout', '/api/checkout/asaas (criar)', e);
     return NextResponse.json({ error: e instanceof AsaasError ? e.message : 'Não foi possível abrir o pagamento agora.' }, { status: 502 });
   }
 }

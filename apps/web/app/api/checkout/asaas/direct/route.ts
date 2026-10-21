@@ -17,6 +17,7 @@ import {
 } from '@/lib/asaas';
 import { prepareWebCheckout, checkoutRowFields } from '@/lib/web-checkout';
 import { activateTrial, handlePaymentPaid, type CheckoutRow } from '@/lib/asaas-activation';
+import { logOpsError } from '@/lib/ops-monitor';
 
 export const dynamic = 'force-dynamic';
 
@@ -115,6 +116,7 @@ export async function POST(req: NextRequest) {
     customer = await ensurePayer(ctx.payer, ctx.u.id, sandbox);
   } catch (e) {
     console.error('[checkout/direct] customer failed:', e instanceof AsaasError ? e.body : (e as Error).message);
+    await logOpsError(e instanceof AsaasError && (e.status >= 500 || e.status === 429) ? 'asaas' : 'checkout', '/api/checkout/asaas/direct (cliente)', e);
     if (e instanceof AsaasError && e.status === 429) return busyResponse();
     return NextResponse.json({ error: 'Não foi possível iniciar o pagamento agora.', fallback: true }, { status: 502 });
   }
@@ -127,6 +129,7 @@ export async function POST(req: NextRequest) {
       return withCookie(NextResponse.json({ id, value: ctx.value, pix: { image: qr.encodedImage, payload: qr.payload, expiresAt: qr.expirationDate } }), id);
     } catch (e) {
       console.error('[checkout/direct] pix failed:', e instanceof AsaasError ? e.body : (e as Error).message);
+      await logOpsError(e instanceof AsaasError && (e.status >= 500 || e.status === 429) ? 'asaas' : 'checkout', '/api/checkout/asaas/direct (Pix)', e);
       if (e instanceof AsaasError && e.status === 429) return busyResponse();
       return NextResponse.json({ error: 'Não foi possível gerar o Pix agora.', fallback: true }, { status: 502 });
     }
@@ -151,13 +154,14 @@ export async function POST(req: NextRequest) {
       const msg = e.message && !/^Asaas \d+$/.test(e.message) ? e.message : 'O cartão não foi autorizado. Confira os dados ou use outro cartão.';
       return NextResponse.json({ error: msg, field: 'card' }, { status: 402 });
     }
+    await logOpsError(e instanceof AsaasError && (e.status >= 500 || e.status === 429) ? 'asaas' : 'checkout', '/api/checkout/asaas/direct (cartão)', e);
     return NextResponse.json({ error: 'Não foi possível processar o cartão agora.', fallback: true }, { status: 502 });
   }
   await supabase.from('checkout_attempts').insert({ kind: 'card', ok: true, ip: ctx.ip, email: ctx.email, cpf: ctx.cpf } as never);
   await supabase.from('asaas_checkouts').insert({ ...base, asaas_customer_id: customer, asaas_subscription_id: subscriptionId, status: 'created' } as never);
   // Se liberar o acesso falhar aqui, a tela segue consultando (GET) e tenta de novo.
   const row = await loadRow(id);
-  const done = row ? await settle(row).catch(e => { console.error('[checkout/direct] settle failed:', (e as Error).message); return false; }) : false;
+  const done = row ? await settle(row).catch(async e => { console.error('[checkout/direct] settle failed:', (e as Error).message); await logOpsError('checkout', '/api/checkout/asaas/direct (liberar acesso)', e, { checkout: id }); return false; }) : false;
   return withCookie(NextResponse.json({ id, value: ctx.value, done, pending: !done }), id);
 }
 

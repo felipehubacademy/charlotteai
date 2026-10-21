@@ -107,6 +107,8 @@ export async function POST(req: NextRequest) {
     // Pico de envios (o serviço de e-mail limita por minuto): guarda na fila e responde OK, para o
     // aluno não ver erro; o cron reenvia em poucos minutos (o link do login vale 1 hora).
     await enqueue({ kind: `auth_${actionType}`, to_email: to, subject: tmpl.subject, html });
+    const { logOpsError } = await import('@/lib/ops-monitor');
+    await logOpsError('auth', `/api/auth/send-email (${actionType})`, new Error('envio recusado, foi para a fila'));
     return NextResponse.json({});
   }
 

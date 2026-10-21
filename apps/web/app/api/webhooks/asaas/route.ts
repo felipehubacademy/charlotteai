@@ -12,6 +12,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { getCustomer, disableCustomerNotifications, WEB_PRODUCT, type AsaasPayment } from '@/lib/asaas';
 import { activateTrial, handlePaymentPaid, recordAsaasRevenue, type CheckoutRow } from '@/lib/asaas-activation';
 import { sendPaymentFailed, sendCancelledNotice } from '@/lib/subscription-notices';
+import { logOpsError } from '@/lib/ops-monitor';
 
 export const dynamic = 'force-dynamic';
 export const preferredRegion = 'gru1'; // perto do banco (São Paulo): várias consultas por evento
@@ -118,6 +119,7 @@ export async function POST(req: NextRequest) {
     }
   } catch (e) {
     console.error('[webhooks/asaas]', event, e);
+    await logOpsError('webhook', `/api/webhooks/asaas (${event})`, e, { eventId });
     // Libera o evento para o Asaas reenviar.
     await supabase.from('asaas_events').delete().eq('id', eventId);
     return NextResponse.json({ error: 'processing_failed' }, { status: 500 });

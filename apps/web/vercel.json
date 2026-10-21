@@ -59,6 +59,12 @@
         "gru1"
       ],
       "maxDuration": 120
+    },
+    "app/api/cron/checkout-watch/route.ts": {
+      "regions": [
+        "gru1"
+      ],
+      "maxDuration": 60
     }
   },
   "crons": [
@@ -73,6 +79,10 @@
     {
       "path": "/api/cron/subscription-notices",
       "schedule": "0 13 * * *"
+    },
+    {
+      "path": "/api/cron/checkout-watch",
+      "schedule": "*/5 * * * *"
     }
   ]
 }

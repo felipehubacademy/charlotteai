@@ -30,6 +30,29 @@ export async function GET(req: NextRequest) {
   const supabase = getSupabaseAdmin();
   const view = req.nextUrl.searchParams.get('view') ?? 'coupons';
 
+  // Saúde do checkout (24 h): compras, recusas, Pix, erros das rotas críticas e alertas do vigia.
+  if (view === 'health') {
+    const since = new Date(Date.now() - 86400000).toISOString();
+    const [{ data: cks }, { data: att }, { data: errs }, { data: alerts }] = await Promise.all([
+      supabase.from('asaas_checkouts').select('status, method, channel, pending_payment_id').eq('sandbox', false).gte('created_at', since),
+      supabase.from('checkout_attempts').select('ok').eq('kind', 'card').gte('created_at', since),
+      supabase.from('ops_errors').select('created_at, area, route, message').gte('created_at', since).order('created_at', { ascending: false }).limit(50),
+      supabase.from('ops_alerts').select('created_at, kind, message, sent_email, sent_whatsapp').order('created_at', { ascending: false }).limit(20),
+    ]);
+    const c = (cks ?? []) as { status: string; method: string | null; channel: string; pending_payment_id: string | null }[];
+    const a = (att ?? []) as { ok: boolean | null }[];
+    const pix = c.filter(r => r.method === 'annual_pix');
+    return NextResponse.json({
+      health: {
+        checkouts: c.length, paid: c.filter(r => r.status === 'paid').length,
+        hosted: c.filter(r => r.channel === 'hosted').length, direct: c.filter(r => r.channel === 'direct').length,
+        cardOk: a.filter(r => r.ok === true).length, cardDeclined: a.filter(r => r.ok === false).length,
+        pixCreated: pix.length, pixPaid: pix.filter(r => r.status === 'paid').length,
+      },
+      errors: errs ?? [], alerts: alerts ?? [],
+    });
+  }
+
   if (view === 'checkouts') {
     const { data } = await supabase.from('asaas_checkouts')
       .select('id, user_id, plan, method, value_brl, status, coupon_code, affiliate_code, discount_pct, trial_days, created_at, paid_at, refunded_at, price_restored_at, coupon_cycles, recovery_stage')
