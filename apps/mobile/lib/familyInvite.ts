@@ -1,7 +1,7 @@
-// lib/familyInvite.ts — quando mostrar o convite "Conheça a Família Queizy" na Tela Inicial.
+// lib/familyInvite.ts — quando mostrar o convite "Conheça a Família Queizy" na tela inicial.
 // Só para quem nunca escolheu outro membro da Família. Nos primeiros 7 dias da conta aparece
 // todo dia (o "x" esconde até o dia seguinte); depois, uma vez por semana. Some de vez quando o
-// aluno escolhe alguém na Família (ou já está com outro membro na Tela Inicial).
+// aluno escolhe alguém na Família (ou já está com outro membro na tela inicial).
 import * as SecureStore from 'expo-secure-store';
 
 const PICKED_KEY    = 'family_member_picked';

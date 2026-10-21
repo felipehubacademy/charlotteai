@@ -1,5 +1,5 @@
 // lib/goalsEvents.ts — avisa a comemoração (components/goals/GoalsCelebration) quando o servidor
-// credita missões. Quem chama /api/goals (Tela Inicial, Progresso, Metas) emite; o host escuta.
+// credita missões. Quem chama /api/goals (tela inicial, Progresso, Metas) emite; o host escuta.
 import type { GoalsResponse } from './missions';
 
 type Listener = (g: GoalsResponse) => void;

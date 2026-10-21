@@ -23,7 +23,7 @@ const CATEGORY: Record<string, string> = {
 };
 const RESOLUTION: Record<string, string> = { ia: 'Resolvida pela IA', humano: 'Resolvida por atendente', sem_resposta: 'Sem resposta', em_aberto: 'Em aberto' };
 const SCREEN: Record<string, string> = {
-  inicio: 'Tela Inicial', trilha: 'Trilha', live_voice: 'Live Voice', practice: 'Practice', vocabulario: 'Vocabulário',
+  inicio: 'Tela inicial', trilha: 'Trilha', live_voice: 'Live Voice', practice: 'Practice', vocabulario: 'Vocabulário',
   perfil: 'Perfil', progresso: 'Seu progresso', metas: 'Metas', ranking: 'Ranking', estudar_junto: 'Estudar junto',
   assinatura: 'Assinatura', login: 'Login', notificacoes: 'Notificações', outro: 'Outro',
 };

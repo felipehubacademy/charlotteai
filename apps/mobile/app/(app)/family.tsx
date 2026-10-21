@@ -1,7 +1,7 @@
 // app/(app)/family.tsx — Família Queizy: os personagens do app.
-// O aluno escolhe quem o acompanha (charlotte_users.active_character): fala na Tela Inicial, atende a
+// O aluno escolhe quem o acompanha (charlotte_users.active_character): fala na tela inicial, atende a
 // ligação (aba de ligação) e começa o Free Chat ("Conversar com" troca só a conversa). O cartão
-// inteiro é o seletor; a trilha própria de quem está escolhido aparece na Tela Inicial ("Ver trilha" abre).
+// inteiro é o seletor; a trilha própria de quem está escolhido aparece na tela inicial ("Ver trilha" abre).
 import React, { useState } from 'react';
 import { View, ScrollView, TouchableOpacity, Image, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -37,7 +37,7 @@ export default function FamilyScreen() {
   const choose = async (id: CharacterId) => {
     if (!profile?.id || id === current || saving) return;
     setSaving(id);
-    if (id !== 'charlotte') markFamilyMemberPicked(); // some o convite da Família na Tela Inicial
+    if (id !== 'charlotte') markFamilyMemberPicked(); // some o convite da Família na tela inicial
     try {
       const { error } = await supabase.from('charlotte_users').update({ active_character: id }).eq('id', profile.id);
       if (!error) await refreshProfile();
@@ -52,7 +52,7 @@ export default function FamilyScreen() {
       <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 40 + insets.bottom }}>
         <AppText style={{ fontSize: 14, color: C.inkMid, lineHeight: 20, marginBottom: 18, marginHorizontal: 4 }}>
           {isPt
-            ? 'Escolha quem te acompanha no app: fala com você na Tela Inicial, atende quando você liga e começa as conversas do Free Chat. Quem tem trilha própria mostra a trilha na sua Tela Inicial.'
+            ? 'Escolha quem te acompanha no app: fala com você na tela inicial, atende quando você liga e começa as conversas do Free Chat. Quem tem trilha própria mostra a trilha na sua tela inicial.'
             : 'Choose who keeps you company in the app: they talk to you on Home, pick up when you call and start your Free Chat conversations. If they have their own trail, it shows on your Home.'}
         </AppText>
 
@@ -86,7 +86,7 @@ export default function FamilyScreen() {
                 </View>
               </View>
               {track ? (
-                // Trilha própria: aparece na Tela Inicial quando ele está escolhido; "Ver trilha" abre direto.
+                // Trilha própria: aparece na tela inicial quando ele está escolhido; "Ver trilha" abre direto.
                 <TouchableOpacity onPress={() => router.push({ pathname: '/(app)/track' as any, params: { id: track.id } })} activeOpacity={0.7}
                   accessibilityRole="button"
                   style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: C.border }}>

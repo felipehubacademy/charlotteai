@@ -204,7 +204,7 @@ export default function LearnSessionScreen() {
       )
     : null;
 
-  // Sem os parâmetros da trilha (link antigo da trilha removida): volta para a Tela Inicial.
+  // Sem os parâmetros da trilha (link antigo da trilha removida): volta para a tela inicial.
   useEffect(() => {
     if (!isV2) router.replace('/(app)/(tabs)' as any);
   }, [isV2]);

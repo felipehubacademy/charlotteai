@@ -215,7 +215,7 @@ export default function HomeTab() {
   // Charlotte greeting animado em WebP com alpha. expo-image faz loop nativo
   // e não toca AVAudioSession (substitui expo-video que floodava MediaPlayback
   // events no Live Voice — benchmark 2026-05-15).
-  // Família Queizy: quem fala na Tela Inicial é o personagem escolhido (padrão Charlotte).
+  // Família Queizy: quem fala na tela inicial é o personagem escolhido (padrão Charlotte).
   const avatarSrc = characterInfo(profile?.active_character).avatar;
   // Hora da saudação: recalcula quando o app volta para o primeiro plano
   // (quem abriu de manhã e voltou à tarde vê "Good afternoon").
@@ -344,7 +344,7 @@ export default function HomeTab() {
     if (!userId) return;
     fetchData();
     // Metas: o servidor credita o XP das missões concluídas e a comemoração aparece (GoalsCelebration).
-    // Ao voltar de uma lição para a Tela Inicial, o aluno já vê a missão concluída.
+    // Ao voltar de uma lição para a tela inicial, o aluno já vê a missão concluída.
     // Se creditou agora, recarrega para o XP do topo já somar.
     fetchGoals().then(g => { if (g?.granted.length) fetchData(); });
   }, [fetchData]));

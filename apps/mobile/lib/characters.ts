@@ -1,5 +1,5 @@
 // lib/characters.ts — Família Queizy no app (espelho de apps/web/lib/characters.ts: mesmos ids).
-// Fase 1: cada conversa do Free Chat é com um personagem; a mensagem da Tela Inicial sai na voz de quem
+// Fase 1: cada conversa do Free Chat é com um personagem; a mensagem da tela inicial sai na voz de quem
 // o aluno escolheu na Família (charlotte_users.active_character). O resto do app segue com a Charlotte.
 
 export type CharacterId = 'charlotte' | 'igorfina';

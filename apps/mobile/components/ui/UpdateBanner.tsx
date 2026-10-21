@@ -1,4 +1,4 @@
-// components/ui/UpdateBanner.tsx — card "Tem versão nova do Queizy" na Tela Inicial.
+// components/ui/UpdateBanner.tsx — card "Tem versão nova do Queizy" na tela inicial.
 //
 // A versão mais recente de cada loja fica no banco (public.app_release): ao liberar versão nova, troca-se o
 // número lá e o card aparece sozinho para quem está abaixo dela, sem build.
@@ -38,7 +38,7 @@ function compareVersions(a: string, b: string): number {
   return 0;
 }
 
-/** onHeight: altura do card quando aparece (0 quando some), para a Tela Inicial não contar o card como falta de espaço. */
+/** onHeight: altura do card quando aparece (0 quando some), para a tela inicial não contar o card como falta de espaço. */
 export function UpdateBanner({ style, onHeight }: { style?: StyleProp<ViewStyle>; onHeight?: (h: number) => void }) {
   const [mode, setMode] = useState<'hidden' | 'optional' | 'required'>('hidden');
   const [latest, setLatest] = useState('');

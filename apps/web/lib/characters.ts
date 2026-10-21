@@ -1,5 +1,5 @@
 // lib/characters.ts — Família Queizy: personagens que o aluno pode escolher para conversar.
-// Fase 1: cada conversa do Free Chat é com um personagem e a mensagem da Tela Inicial sai na voz de
+// Fase 1: cada conversa do Free Chat é com um personagem e a mensagem da tela inicial sai na voz de
 // quem o aluno escolheu na Família; o resto do app (trilha, correções de Gramática e Pronúncia,
 // suporte) segue com a Charlotte. Espelho em apps/mobile/lib/characters.ts — manter os ids iguais.
 //
@@ -32,7 +32,7 @@ export interface Character {
   /** Gênero gramatical, para adaptar as regras da Charlotte escritas em português ("amiga" → "amigo"). */
   gender?: 'f' | 'm';
   impressions?: Partial<Record<ImpressionId, Impression>>;
-  /** Estilo da mensagem da Tela Inicial. */
+  /** Estilo da mensagem da tela inicial. */
   greetingStylePt?: string;
   greetingStyleEn?: string;
 }
