@@ -94,7 +94,7 @@ export async function POST(req: NextRequest) {
       const email = r.charlotte_users?.email ?? '';
       if (body.action === 'cancel-test' && !isTest(email)) continue;
       try {
-        const subs = await activeSubscriptionsOf(r.user_id, false, r.asaas_customer_id);
+        const subs = await activeSubscriptionsOf(r.user_id, false, r.asaas_customer_id, r.charlotte_users?.email);
         if (!r.asaas_subscription_id && subs[0]) await supabase.from('asaas_checkouts').update({ asaas_subscription_id: subs[0].id } as never).eq('id', r.id);
         if (body.action === 'cancel-test') {
           for (const s of subs) await cancelSubscription(s.id);
@@ -185,7 +185,7 @@ export async function POST(req: NextRequest) {
     const sandbox = !!ck.sandbox;
     try {
       // Compra pela página do processador: o id da assinatura pode ainda não estar guardado (só chega na 1ª cobrança).
-      const ids = ck.asaas_subscription_id ? [ck.asaas_subscription_id] : (await activeSubscriptionsOf(user.id, sandbox, ck.asaas_customer_id)).map(s => s.id);
+      const ids = ck.asaas_subscription_id ? [ck.asaas_subscription_id] : (await activeSubscriptionsOf(user.id, sandbox, ck.asaas_customer_id, user.email)).map(s => s.id);
       if (!ids.length) {
         await logOpsError('checkout', '/api/checkout/asaas (cancelar)', new Error('assinatura não encontrada no processador'), { user: user.id, checkout: ck.id });
         return NextResponse.json({ error: 'Não encontramos a assinatura para cancelar. Escreva para suporte@queizy.com que cancelamos para você.' }, { status: 404 });
