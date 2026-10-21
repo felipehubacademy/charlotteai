@@ -84,10 +84,10 @@
    **Accepts**: Hi / Hey
    **Explanation**: "Hello", "Hi" e "Hey" são cumprimentos. "Hi" e "Hey" são mais informais, ótimos para o dia a dia.
 
-7. **fill_gap** — "_____, I'm late! Sorry!"
+7. **fill_gap** — "_____, can I get through? I'm late!"
    **Hint**: Com licença (para passar pelas pessoas)
    **Answer**: Excuse me
-   **Explanation**: Para pedir passagem no metrô lotado, diga "Excuse me". O "sorry" no fim reforça a educação.
+   **Explanation**: Para pedir passagem no metrô lotado, diga "Excuse me". "Sorry" é para pedir desculpas depois de esbarrar em alguém.
 
 8. **fix_error** — "Excuse, where is the bus?"
    **Hint**: A expressão de "com licença" tem duas palavras
@@ -109,7 +109,7 @@
 
 Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
-1. **"Hello! Excuse me, one question, please."** — abordar um desconhecido na rua
+1. **"Excuse me, one question, please."** — abordar um desconhecido na rua
 2. **"Sorry, I don't understand. Again, please?"** — quando não entendeu nada
 3. **"Excuse me, I need to get off here."** — pedir passagem no metrô lotado
 4. **"Oh, sorry! Are you OK, my friend?"** — depois de esbarrar em alguém

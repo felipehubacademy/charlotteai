@@ -115,10 +115,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____, I'm late! Sorry!",
+          "sentence": "_____, can I get through? I'm late!",
           "hint": "Com licença (para passar pelas pessoas)",
           "answer": "Excuse me",
-          "explanation": "Para pedir passagem no metrô lotado, diga \"Excuse me\". O \"sorry\" no fim reforça a educação."
+          "explanation": "Para pedir passagem no metrô lotado, diga \"Excuse me\". \"Sorry\" é para pedir desculpas depois de esbarrar em alguém."
         },
         {
           "type": "fix_error",
@@ -144,7 +144,7 @@
       ],
       "listening_speaking": [
         {
-          "text": "Hello! Excuse me, one question, please.",
+          "text": "Excuse me, one question, please.",
           "context": "abordar um desconhecido na rua"
         },
         {

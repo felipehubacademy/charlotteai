@@ -776,7 +776,11 @@
           "sentence": "I'm _____ hungry. Let's eat.",
           "hint": "Intensificador (muito, tão)",
           "answer": "so",
-          "explanation": "\"So + adjetivo\" intensifica: \"so hungry\" = \"com muita fome\". Também pode usar \"really hungry\"."
+          "explanation": "\"So + adjetivo\" intensifica: \"so hungry\" = \"com muita fome\". \"Very hungry\" e \"really hungry\" também valem.",
+          "accepts": [
+            "very",
+            "really"
+          ]
         },
         {
           "type": "fill_gap",
@@ -787,7 +791,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She is _____ today. Lots of meetings.",
+          "sentence": "She is _____ today: lots of meetings and no free time.",
           "hint": "Estado de quem tem muita coisa pra fazer",
           "answer": "busy",
           "explanation": "\"Busy\" = ocupado. \"She is busy today\" é resposta natural quando alguém tem muito trabalho."

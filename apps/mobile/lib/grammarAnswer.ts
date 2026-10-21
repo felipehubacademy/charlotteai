@@ -10,9 +10,17 @@
 
 export function normaliseAnswer(s: string): string {
   return s.trim().toLowerCase()
-    .replace(/[‘’‚‛]/g, "'")   // smart quotes (iOS) -> apóstrofo ASCII
-    .replace(/[“”„‟]/g, '"')
-    .replace(/\s+/g, ' ');
+    .replace(/[‘’‚‛`´]/g, "'")   // smart quotes (iOS) e acentos usados como apóstrofo -> apóstrofo ASCII
+    // Pontuação não conta: "Can you help me please?" = "Can you help me, please ?".
+    // Ponto e dois-pontos só no fim de palavra (mantém 8:30 e 2.5).
+    .replace(/[“”„‟",!?¿¡;()]/g, ' ')
+    .replace(/[.:](?=\s|$)/g, ' ')
+    // Contração digitada sem apóstrofo (comum no celular): wasnt -> wasn't, cant -> can't, im -> i'm.
+    .replace(/\b(was|is|are|were|do|does|did|has|have|had|could|should|would|wo|must|need)nt\b/g, "$1n't")
+    .replace(/\bcant\b/g, "can't")
+    .replace(/\bim\b/g, "i'm")
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 export function expandContractions(s: string, sTo: 'is' | 'has' = 'is', dTo: 'would' | 'had' = 'would'): string {

@@ -1703,7 +1703,10 @@ export default function LearnSessionScreen() {
               <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center' }}>
                 <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
                   {currentStep.phrase.type === 'repeat'
-                    ? (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e repita a frase.` : `Listen to ${hostName} and repeat the phrase.`)
+                    // Frase que é pergunta: muitos alunos respondiam ("I'm fine") em vez de repetir.
+                    ? ((currentStep.phrase.text ?? '').trim().endsWith('?')
+                      ? (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e repita a pergunta (não é para responder).` : `Listen to ${hostName} and repeat the question (don't answer it).`)
+                      : (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e repita a frase.` : `Listen to ${hostName} and repeat the phrase.`))
                     : currentStep.phrase.type === 'minimal_pairs'
                     ? (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e toque na palavra que ${hostSaidPt}.` : `Listen to ${hostName} and tap the word you heard.`)
                     : currentStep.phrase.type === 'sentence_stress'

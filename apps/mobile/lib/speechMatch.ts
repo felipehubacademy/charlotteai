@@ -119,6 +119,7 @@ function normalizeWith(text: string, sTo: 'is' | 'has', dTo: 'would' | 'had'): s
     .replace(/\$\s?(\d[\d,.]*)/g, '$1 dollars')    // $100 → 100 dollars
     .replace(/(\d)\s?%/g, '$1 percent')           // 50% → 50 percent
     .replace(/&/g, ' and ')
+    .replace(/\b(\d{1,2}):00\b/g, '$1')               // hora cheia: "8:00 p.m." = "8 pm"
     .replace(/(\d)[:.,\-](?=\d)/g, '$1')          // 7:30, 1,000, 555-1234 → algarismos juntos
     .replace(/(\d)(st|nd|rd|th)\b/g, '$1')        // 12th → 12
     .replace(/\b(a|p)\.m\.?/g, '$1m')             // a.m. → am
@@ -200,6 +201,8 @@ function matchWords(ref: string[], sp: string[]): { matched: number; missing: st
   return { matched, missing };
 }
 
+const LEADING_SHORT = new Set(['i', 'a', 'an', 'the', 'it', 'he', 'she', 'we', 'you', 'they', 'my', 'and', 'so']);
+
 export interface SpeechMatch {
   /** % das palavras da frase esperada que foram ditas (0–100). */
   percent: number;
@@ -221,7 +224,12 @@ export function bestSpeechMatch(spoken: string | string[], reference: string): S
     for (const alt of alts) {
       for (const [sp1, dp1] of variants) {
         const sp = normalizeWith(alt, sp1, dp1).split(' ').filter(Boolean);
-        const { matched, missing } = matchWords(ref, sp);
+        let { matched, missing } = matchWords(ref, sp);
+        // O microfone costuma cortar o começo quando o aluno fala junto com o toque no botão:
+        // faltar só a 1ª palavra curta (I, a, the...) da frase não desconta.
+        if (missing.length > 0 && ref.length >= 3 && LEADING_SHORT.has(ref[0]) && missing[0] === ref[0] && !sp.includes(ref[0])) {
+          matched += 1; missing = missing.slice(1);
+        }
         const percent = (matched / ref.length) * 100;
         if (percent > best.percent || (percent === best.percent && best.transcript === '')) best = { percent, missing, transcript: alt };
       }

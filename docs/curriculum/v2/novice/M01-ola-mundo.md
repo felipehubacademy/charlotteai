@@ -538,14 +538,15 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 5. **fill_gap** — "I'm _____ hungry. Let's eat."
    **Hint**: Intensificador (muito, tão)
    **Answer**: so
-   **Explanation**: "So + adjetivo" intensifica: "so hungry" = "com muita fome". Também pode usar "really hungry".
+   **Accepts**: very / really
+   **Explanation**: "So + adjetivo" intensifica: "so hungry" = "com muita fome". "Very hungry" e "really hungry" também valem.
 
 6. **fill_gap** — "_____ are you feeling today?"
    **Hint**: Pergunta sobre como (não onde, não quando)
    **Answer**: How
    **Explanation**: "How are you feeling?" pergunta sobre estado emocional/físico. É mais íntimo que "How are you?".
 
-7. **fill_gap** — "She is _____ today. Lots of meetings."
+7. **fill_gap** — "She is _____ today: lots of meetings and no free time."
    **Hint**: Estado de quem tem muita coisa pra fazer
    **Answer**: busy
    **Explanation**: "Busy" = ocupado. "She is busy today" é resposta natural quando alguém tem muito trabalho.
