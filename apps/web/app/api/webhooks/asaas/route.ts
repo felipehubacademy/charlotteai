@@ -9,7 +9,7 @@
 //   CHECKOUT_EXPIRED/CANCELED  só marca o checkout
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { getCustomer, disableCustomerNotifications, WEB_PRODUCT, type AsaasPayment } from '@/lib/asaas';
+import { getCustomer, disableCustomerNotifications, activeSubscriptionsOf, WEB_PRODUCT, type AsaasPayment } from '@/lib/asaas';
 import { activateTrial, handlePaymentPaid, recordAsaasRevenue, type CheckoutRow } from '@/lib/asaas-activation';
 import { sendPaymentFailed, sendCancelledNotice, sendRefundNotice } from '@/lib/subscription-notices';
 import { logOpsError } from '@/lib/ops-monitor';
@@ -66,6 +66,11 @@ export async function POST(req: NextRequest) {
       // Cliente criado pela página do Asaas nasce com os avisos dele ligados: desliga (o aluno fica só com os nossos).
       if (event === 'CHECKOUT_PAID' && c.customer) {
         await disableCustomerNotifications(c.customer).catch(e => console.warn('[webhooks/asaas] avisos do cliente:', e instanceof Error ? e.message : e));
+      }
+      // Guarda já o id da assinatura (antes só chegava na 1ª cobrança; sem ele, cancelar pelo app não achava a assinatura).
+      if (event === 'CHECKOUT_PAID' && !row.asaas_subscription_id && row.method !== 'annual_pix') {
+        const subs = await activeSubscriptionsOf(row.user_id).catch(() => []);
+        if (subs[0]) await supabase.from('asaas_checkouts').update({ asaas_subscription_id: subs[0].id } as never).eq('id', row.id);
       }
       if (event === 'CHECKOUT_PAID' && row.trial_days > 0) {
         await activateTrial(row);

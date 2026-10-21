@@ -12,7 +12,7 @@ import { affiliateByCode, cleanAffiliateCode } from '@/lib/affiliates';
 import {
   asaasConfigured, AsaasError, cancelSubscription, createCheckout, priceFor,
   WEB_TRIAL_DAYS, resolveCoupon, COUPON_ERROR_PT, type WebPlan,
-  refundPayment, refundInstallment, REFUND_WINDOW_DAYS, disableCustomerNotifications,
+  refundPayment, refundInstallment, REFUND_WINDOW_DAYS, disableCustomerNotifications, activeSubscriptionsOf,
 } from '@/lib/asaas';
 import { prepareWebCheckout, checkoutRowFields } from '@/lib/web-checkout';
 import { logOpsError } from '@/lib/ops-monitor';
@@ -78,6 +78,35 @@ async function mine(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
   const supabase = getSupabaseAdmin();
+
+  // Admin: guarda o id da assinatura das compras pela página do processador (backfill-subs) e cancela as
+  // assinaturas das contas de teste da equipe (cancel-test). Exige x-admin-secret.
+  if (body.action === 'backfill-subs' || body.action === 'cancel-test') {
+    if (!process.env.ADMIN_SECRET || req.headers.get('x-admin-secret') !== process.env.ADMIN_SECRET) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    const { data } = await supabase.from('asaas_checkouts').select('id, user_id, method, asaas_subscription_id, charlotte_users!inner(email)')
+      .eq('status', 'paid').eq('sandbox', false).neq('method', 'annual_pix');
+    const rows = (data ?? []) as unknown as { id: string; user_id: string; method: string; asaas_subscription_id: string | null; charlotte_users: { email: string } }[];
+    const isTest = (e: string) => /^felipe\.xavier1987\+.*@gmail\.com$/i.test(e) || /@hubacademybr\.com$/i.test(e);
+    const out: Record<string, unknown>[] = [];
+    for (const r of rows) {
+      const email = r.charlotte_users?.email ?? '';
+      if (body.action === 'cancel-test' && !isTest(email)) continue;
+      try {
+        const subs = await activeSubscriptionsOf(r.user_id);
+        if (!r.asaas_subscription_id && subs[0]) await supabase.from('asaas_checkouts').update({ asaas_subscription_id: subs[0].id } as never).eq('id', r.id);
+        if (body.action === 'cancel-test') {
+          for (const s of subs) await cancelSubscription(s.id);
+          if (subs.length) await supabase.from('charlotte_users').update({ subscription_status: 'cancelled', updated_at: new Date().toISOString() } as never).eq('id', r.user_id);
+        }
+        out.push({ email, ativas: subs.map(s => ({ id: s.id, valor: s.value, proxima: s.nextDueDate })), cancelado: body.action === 'cancel-test' && subs.length > 0 });
+      } catch (e) {
+        out.push({ email, erro: e instanceof Error ? e.message : String(e) });
+      }
+    }
+    return NextResponse.json({ total: out.length, out });
+  }
 
   // Uma vez (admin): desliga os avisos do Asaas para os alunos que já assinaram pelo site.
   if (body.action === 'mute-customers') {
@@ -148,14 +177,23 @@ export async function POST(req: NextRequest) {
     const { data: auth } = h.startsWith('Bearer ') ? await supabase.auth.getUser(h.slice(7)) : { data: null };
     const user = auth?.user;
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    const { data: row } = await supabase.from('asaas_checkouts').select('asaas_subscription_id, sandbox')
-      .eq('user_id', user.id).eq('status', 'paid').not('asaas_subscription_id', 'is', null)
-      .order('created_at', { ascending: false }).limit(1).maybeSingle();
-    const subId = (row as { asaas_subscription_id: string } | null)?.asaas_subscription_id;
-    const sandbox = !!(row as { sandbox: boolean | null } | null)?.sandbox;
-    // Pix e parcelado não renovam sozinhos: não há o que cancelar.
-    if (!subId) return NextResponse.json({ ok: true, noRenewal: true });
-    try { await cancelSubscription(subId, sandbox); } catch (e) {
+    const { data: row } = await supabase.from('asaas_checkouts').select('id, method, asaas_subscription_id, sandbox')
+      .eq('user_id', user.id).eq('status', 'paid').order('created_at', { ascending: false }).limit(1).maybeSingle();
+    const ck = row as { id: string; method: string | null; asaas_subscription_id: string | null; sandbox: boolean | null } | null;
+    // Pix não renova sozinho: não há o que cancelar.
+    if (!ck || ck.method === 'annual_pix') return NextResponse.json({ ok: true, noRenewal: true });
+    const sandbox = !!ck.sandbox;
+    try {
+      // Compra pela página do processador: o id da assinatura pode ainda não estar guardado (só chega na 1ª cobrança).
+      const ids = ck.asaas_subscription_id ? [ck.asaas_subscription_id] : (await activeSubscriptionsOf(user.id, sandbox)).map(s => s.id);
+      if (!ids.length) {
+        await logOpsError('checkout', '/api/checkout/asaas (cancelar)', new Error('assinatura não encontrada no processador'), { user: user.id, checkout: ck.id });
+        return NextResponse.json({ error: 'Não encontramos a assinatura para cancelar. Escreva para suporte@queizy.com que cancelamos para você.' }, { status: 404 });
+      }
+      if (!ck.asaas_subscription_id) await supabase.from('asaas_checkouts').update({ asaas_subscription_id: ids[0] } as never).eq('id', ck.id);
+      for (const id of ids) await cancelSubscription(id, sandbox);
+    } catch (e) {
+      await logOpsError('checkout', '/api/checkout/asaas (cancelar)', e, { user: user.id });
       return NextResponse.json({ error: e instanceof AsaasError ? e.message : 'Não foi possível cancelar agora.' }, { status: 502 });
     }
     // Acesso segue até o fim do período pago (subscription_expires_at).
