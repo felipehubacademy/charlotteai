@@ -854,7 +854,10 @@
           "sentence": "This room is _____ smaller than that one.",
           "hint": "Modificador suave (um pouco)",
           "answer": "a bit",
-          "explanation": "\"A bit smaller\" = um pouco menor. Sinônimo de \"a little\"."
+          "explanation": "\"A bit smaller\" = um pouco menor. Sinônimo de \"a little\".",
+          "accepts": [
+            "a little"
+          ]
         },
         {
           "type": "fix_error",

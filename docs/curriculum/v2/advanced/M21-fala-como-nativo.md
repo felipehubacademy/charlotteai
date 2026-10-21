@@ -45,7 +45,7 @@
 3. **fill_gap** — Hedge in casual speech: "She's _____ the best manager I've ever had."
    **Hint**: "Kind of" or "sort of"
    **Answer**: kind of
-   **Accepts**: sort of
+   **Accepts**: sort of / kinda
    **Explanation**: "Kind of" / "sort of" — hedges. Soften the absoluteness of "the best". "Kind of the best" = approximately the best, hesitant to claim full superlative. In writing this hedge is light; in speech it's heavy and frequent.
 
 4. **fix_error** — Casual speech, but over-filled: "Like, you know, I mean, like, the project was, sort of, really hard, you know?"
@@ -363,7 +363,8 @@
 5. **read_answer**
    **Passage**: "Native conversation has its own rhythm. The speaker tells the story. The listener punctuates with quiet sounds — 'mm-hm... right... yeah... oh, really?... no way.' These tiny words do enormous work. They tell the speaker the listener is present, paying attention, and emotionally tracking. Without them, the speaker feels alone on the line."
    **Question**: According to the passage, what work do backchannels do?
-   **Answer**: tell the speaker the listener is present, paying attention, and emotionally tracking
+   **Answer**: show listener is present and attentive
+   **Accepts**: listener is present / paying attention / emotionally tracking
    **Explanation**: Three functions: presence, attention, emotional tracking. All carried by single-word interjections. C2 conversational mastery includes producing these naturally — and noticing when other speakers go silent (a signal to wrap up or shift).
 
 ### 2. Listening/Speaking (5 phrases)

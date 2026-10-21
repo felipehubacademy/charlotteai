@@ -362,7 +362,8 @@
 5. **read_answer**
    **Passage**: "Having spent twenty years in the same office, she felt a kind of vertigo on her first morning of retirement. Having earned the right to rest, she didn't quite know what to do with it. Having always defined herself by what she made, she had to learn what she was without making anything at all."
    **Question**: What three things had she done by the time of her retirement morning?
-   **Answer**: spent twenty years in the same office, earned the right to rest, always defined herself by what she made
+   **Answer**: twenty years in office, earned right to rest, defined by what she made
+   **Accepts**: spent twenty years in the same office / earned the right to rest / defined herself by what she made
    **Explanation**: Three perfect participle openers ("Having spent... Having earned... Having always defined") layered to compress a whole biography of completed actions into one paragraph. Common in essay and biography.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -514,7 +515,8 @@
 5. **read_answer**
    **Passage**: "Having been raised by two demanding teachers, he had assumed all parents were like that. Having been corrected at every dinner table, he had grown into someone who corrected gently. Having been loved fiercely if formally, he loved the same way — and was loved back the same way too."
    **Question**: How was he raised, according to the passage?
-   **Answer**: by two demanding teachers / corrected at every dinner table / loved fiercely but formally
+   **Answer**: by two demanding teachers
+   **Accepts**: corrected at every dinner table / loved fiercely but formally / demanding teachers
    **Explanation**: Three "Having been + past participle" openers compress three formative passive experiences into a portrait. Each shaped a present trait.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -666,7 +668,8 @@
 5. **read_answer**
    **Passage**: "The waiter, balancing four plates and wearing the practised smile of someone who'd done this a thousand times, made it through the crowded dining room without spilling a drop. With diners watching, with chefs shouting, with the room nearly full to capacity, he placed each plate down as if the night were quiet."
    **Question**: How does the passage compress the waiter's situation?
-   **Answer**: with three "with + noun + -ing" clauses (diners watching, chefs shouting, room nearly full)
+   **Answer**: with diners watching, chefs shouting, room nearly full
+   **Accepts**: with diners watching / with chefs shouting / with room nearly full
    **Explanation**: Two reduced relatives open ("balancing four plates and wearing the practised smile") followed by three with-clauses ("With diners watching, with chefs shouting, with the room nearly full"). Compressed atmospheric writing.
 
 ### 2. Listening/Speaking (5 phrases)

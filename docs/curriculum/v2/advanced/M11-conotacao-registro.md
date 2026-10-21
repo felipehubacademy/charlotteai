@@ -665,7 +665,7 @@
 3. **fill_gap** — Tech meeting among engineers: "We need to _____ the deployment script before merging."
    **Hint**: Verb that fits engineer-casual register
    **Answer**: refactor
-   **Accepts**: rewrite", "clean up
+   **Accepts**: rewrite", "clean up / rewrite / clean up
    **Explanation**: Engineer-register prefers technical verbs in casual contexts. "Refactor" is technical but conversational. "Restructure" would be formal-corporate. "Fix" would be too vague. C1 register fluency includes knowing the verb each subculture defaults to.
 
 4. **fix_error** — Slack message to your boss: "Yo, can you pop into the call?"
@@ -830,7 +830,8 @@
 5. **read_answer**
    **Passage**: "I'm on holiday in London — sorry, vacation as you'd say. The flat I rented has no lift, so I'm climbing four floors of stairs every day. The pavement outside is wet from yesterday's rain. I queued for an hour at the museum. I should've intended to book online — but I always say I'll do it later and then forget. By the way, I actually realised today that I've gotten quite good at British English."
    **Question**: Which two false cognates were used correctly in the passage?
-   **Answer**: "intended" (correctly used instead of "pretended"); "actually" (correctly meaning "in fact", not "currently"); "realised" (meaning "understood", not Portuguese "realizar" = to perform/carry out)
+   **Answer**: intended, actually, realised
+   **Accepts**: intended / actually / realised
    **Explanation**: The passage models British vocabulary (holiday/flat/lift/pavement/queue) and demonstrates correct usage of common false-cognate traps (intend, actually, realise). False cognates remain a C1 challenge — careful awareness prevents fossilised errors.
 
 ### 2. Listening/Speaking (5 phrases)

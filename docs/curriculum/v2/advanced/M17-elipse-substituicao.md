@@ -516,7 +516,8 @@
 5. **read_answer**
    **Passage**: "When the senior partner offered his resignation, the deputy did the same within the week. When pressed by the board, the chief financial officer initially refused; she would do so only after a private conversation with the chairman. By the end of the month, three of five executives had resigned, and the remaining two were widely expected to do likewise."
    **Question**: How many verb-phrase substitutions appear in the passage?
-   **Answer**: three — "did the same" (resigned), "would do so" (refuse / give resignation), "do likewise" (resign)
+   **Answer**: three
+   **Accepts**: 3 / did the same / would do so / do likewise
    **Explanation**: Three substitutions for "resign": "did the same", "would do so", "do likewise". Each replaces the action verb to avoid repetition. Different forms suit different points in the paragraph.
 
 ### 2. Listening/Speaking (5 phrases)

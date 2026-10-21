@@ -211,7 +211,8 @@
 5. **read_answer**
    **Passage**: "The introduction set the tone. 'This paper examines the relationship between sleep and creative output among knowledge workers. It is widely accepted that sleep affects cognition, yet relatively little is known about its effects on specifically creative tasks. The present study addresses this gap. The data suggest that even modest sleep restriction reduces divergent thinking by a measurable margin.'"
    **Question**: According to the introduction, what does the data suggest?
-   **Answer**: even modest sleep restriction reduces divergent thinking (by a measurable margin)
+   **Answer**: sleep restriction reduces divergent thinking
+   **Accepts**: modest sleep restriction reduces divergent thinking / sleep reduces creativity / less sleep, less divergent thinking
    **Explanation**: Four impersonal frames in four sentences: "This paper examines...", "It is widely accepted that...", "The present study addresses...", "The data suggest that...". The author never appears as "I" — every claim has an institutional or evidential agent.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -506,11 +507,13 @@
 3. **fill_gap** — Building on prior work: "_____ research on this topic, the present study extends the analysis to non-Western contexts."
    **Hint**: "Building on" or "Extending"
    **Answer**: Building on
+   **Accepts**: Extending
    **Explanation**: "Building on + noun phrase" — academic frame for positioning your work as continuous with prior research. Alternatives: "Extending the work of", "Drawing on", "In line with". Each signals different relationship to the cited body.
 
 4. **fix_error** — "Smith (2020) said that the policy failed."
    **Hint**: Replace "said" with academic citation verb
-   **Answer**: Smith (2020) argues that the policy failed. (or: Smith (2020) contends that the policy failed.)
+   **Answer**: Smith (2020) argues that the policy failed.
+   **Accepts**: Smith (2020) contends that the policy failed.
    **Explanation**: "Said" is too conversational for academic citation. Standard verbs: "argues", "contends", "claims", "demonstrates", "suggests", "posits", "asserts", "maintains", "concludes". Each carries different connotation about how strongly the claim is being defended.
 
 5. **read_answer**
@@ -669,7 +672,8 @@
 5. **read_answer**
    **Passage**: "The article moved methodically. 'The first study found a small but consistent effect across all three age groups. This pattern raises a related question about gender differences, which the second study addressed. By contrast, the third study, conducted in a non-Western sample, produced a more complex picture. Taken together, these findings suggest that the underlying mechanism is robust, but its expression is culturally inflected.'"
    **Question**: What does the article conclude when the findings are taken together?
-   **Answer**: the underlying mechanism is robust, but its expression is culturally inflected
+   **Answer**: mechanism is robust, expression is culturally inflected
+   **Accepts**: mechanism is robust / expression is culturally inflected / robust but culturally inflected
    **Explanation**: Four cohesion devices in four sentences: "The first study found..." (anchoring), "This pattern raises a related question..." (carrying forward), "By contrast, the third study..." (signalling shift), "Taken together, these findings suggest..." (synthesising). Paragraph architecture at C2.
 
 ### 2. Listening/Speaking (5 phrases)

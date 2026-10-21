@@ -579,7 +579,10 @@
             "not waiting"
           ],
           "answer": "not to wait",
-          "explanation": "Negative command: \"NOT TO + base\". \"Told me not to wait\" — \"not\" before \"to\"."
+          "explanation": "Negative command: \"NOT TO + base\". \"Told me not to wait\" — \"not\" before \"to\".",
+          "accepts": [
+            "to not wait"
+          ]
         },
         {
           "type": "word_bank",
@@ -603,7 +606,10 @@
             "not speaking"
           ],
           "answer": "not to speak",
-          "explanation": "Standard negative: \"not to + base\". \"Not to speak loudly\"."
+          "explanation": "Standard negative: \"not to + base\". \"Not to speak loudly\".",
+          "accepts": [
+            "to not speak"
+          ]
         },
         {
           "type": "fill_gap",
@@ -845,7 +851,10 @@
             "not telling"
           ],
           "answer": "not to tell",
-          "explanation": "Negative request: \"asked me not to tell\". \"Not\" before \"to\"."
+          "explanation": "Negative request: \"asked me not to tell\". \"Not\" before \"to\".",
+          "accepts": [
+            "to not tell"
+          ]
         },
         {
           "type": "word_bank",

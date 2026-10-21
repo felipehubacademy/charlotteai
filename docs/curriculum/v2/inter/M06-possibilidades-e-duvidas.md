@@ -767,6 +767,7 @@
 7. **fill_gap** — "_____ I borrow your pen?" (formal polite)
    **Hint**: may/might for formal
    **Answer**: May
+   **Accepts**: Might
    **Explanation**: "May I" — formal request.
 
 8. **fix_error** — "She maybe come." (verb structure)

@@ -299,8 +299,13 @@
           "type": "read_answer",
           "passage": "English is stress-timed. The amount of time between stressed syllables stays roughly constant, no matter how many unstressed syllables sit between them. 'BEN went HOME' takes about the same time as 'BENjamin has GONE to the HOUSE' — the function words and unstressed syllables compress to keep the beat. Native rhythm is built on this compression.",
           "question": "How does English keep the same rhythm even with more words?",
-          "answer": "by compressing function words and unstressed syllables between content words (stressed beats stay roughly evenly spaced)",
-          "explanation": "Stress-timed language: the rhythm is set by stressed syllables, and everything else fits between them. Portuguese is syllable-timed (each syllable roughly equal); English compresses unstressed syllables. C2 spoken fluency = mastery of this compression."
+          "answer": "compresses unstressed syllables",
+          "explanation": "Stress-timed language: the rhythm is set by stressed syllables, and everything else fits between them. Portuguese is syllable-timed (each syllable roughly equal); English compresses unstressed syllables. C2 spoken fluency = mastery of this compression.",
+          "accepts": [
+            "compressing function words",
+            "unstressed syllables compressed",
+            "stress-timed rhythm"
+          ]
         }
       ],
       "listening_speaking": [
@@ -527,8 +532,14 @@
           "type": "read_answer",
           "passage": "Native English in flow rarely sounds like written English. 'I'm going to find out what he said' compresses to 'I'm-gonna-fine-DOUT what-he-SAID' — linking, weak forms, elision. The written words are unchanged. The sounds are barely recognisable to learners taught only the careful version. Connected speech is the gap between textbook and spoken English.",
           "question": "According to the passage, what is the gap between textbook and spoken English?",
-          "answer": "connected speech (linking, weak forms, elision, assimilation that the textbook doesn't show)",
-          "explanation": "Three phenomena named: linking (across word boundaries), weak forms (function-word reduction), elision (sound drops like /t/ in fast speech). All three are normal native pronunciation, but textbooks rarely show them, leaving learners surprised when they encounter real speech."
+          "answer": "connected speech",
+          "explanation": "Three phenomena named: linking (across word boundaries), weak forms (function-word reduction), elision (sound drops like /t/ in fast speech). All three are normal native pronunciation, but textbooks rarely show them, leaving learners surprised when they encounter real speech.",
+          "accepts": [
+            "linking",
+            "weak forms",
+            "elision",
+            "connected speech gap"
+          ]
         }
       ],
       "listening_speaking": [

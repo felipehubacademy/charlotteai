@@ -768,6 +768,7 @@
 4. **word_bank** — "I've got a big family. _____ are five people total."
    **Choices**: We / Us / Our / They
    **Answer**: We
+   **Accepts**: There
    **Explanation**: "We are" = "nós somos". "We" é o sujeito pra grupo incluindo você mesmo.
 
 5. **fill_gap** — "My brother is twenty. _____ is from Brazil."

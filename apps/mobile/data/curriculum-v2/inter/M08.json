@@ -1196,7 +1196,10 @@
           "sentence": "The book who I read.",
           "hint": "thing needs that/which",
           "answer": "The book that I read.",
-          "explanation": "Book = thing → that."
+          "explanation": "Book = thing → that.",
+          "accepts": [
+            "The book which I read."
+          ]
         },
         {
           "type": "read_answer",

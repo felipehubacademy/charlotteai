@@ -298,7 +298,11 @@
           "sentence": "_____, I might have done the same thing in his position.",
           "hint": "\"Granted\" or \"Admittedly\" or \"Then again\"",
           "answer": "Then again",
-          "explanation": "\"Then again\" introduces a reconsideration — second-guessing your own assertion. Punctuation: comma after. Slightly more reflective than \"that said\"; suggests the speaker is genuinely reconsidering, not just balancing."
+          "explanation": "\"Then again\" introduces a reconsideration — second-guessing your own assertion. Punctuation: comma after. Slightly more reflective than \"that said\"; suggests the speaker is genuinely reconsidering, not just balancing.",
+          "accepts": [
+            "Granted",
+            "Admittedly"
+          ]
         },
         {
           "type": "fix_error",

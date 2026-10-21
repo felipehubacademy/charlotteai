@@ -582,6 +582,7 @@
 4. **word_bank** — "I'd like to pay _____ cash."
    **Choices**: with / by / for / in
    **Answer**: with
+   **Accepts**: in
    **Explanation**: "Pay with cash" / "pay in cash" — ambas funcionam. "With" é mais comum em conversação.
 
 5. **fill_gap** — "Your total is twenty _____."

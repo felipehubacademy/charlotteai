@@ -1471,7 +1471,10 @@
           "sentence": "It's _____ today — really cold!",
           "hint": "clima muito frio",
           "answer": "freezing",
-          "explanation": "\"Freezing\" — adjetivo intensivo para \"very cold\". Outros intensivos: \"boiling\" (very hot), \"soaking\" (very wet). Não usar \"very freezing\" — o adjetivo já é intensificado."
+          "explanation": "\"Freezing\" — adjetivo intensivo para \"very cold\". Outros intensivos: \"boiling\" (very hot), \"soaking\" (very wet). Não usar \"very freezing\" — o adjetivo já é intensificado.",
+          "accepts": [
+            "cold"
+          ]
         },
         {
           "type": "fill_gap",

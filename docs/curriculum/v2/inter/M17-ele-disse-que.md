@@ -749,6 +749,7 @@
 2. **multiple_choice** — Direct: "I'll come tomorrow." Reported: "She said she would come _____."
    **Options**: the next day / tomorrow / the day after / next day
    **Answer**: the next day
+   **Accepts**: the day after
    **Explanation**: "Tomorrow" → "the next day" (or "the following day") in reported speech.
 
 3. **word_bank** — Direct: "I was here yesterday." Reported: "He said he had been _____ the day before."
@@ -759,6 +760,7 @@
 4. **word_bank** — Direct: "I saw it yesterday." Reported: "She said she had seen it _____."
    **Choices**: the day before / yesterday / the previous day / one day before
    **Answer**: the day before
+   **Accepts**: the previous day
    **Explanation**: "Yesterday" → "the day before" (or "the previous day") in reported speech.
 
 5. **fill_gap** — Direct: "I love this song." Reported: "He said he loved _____ song."

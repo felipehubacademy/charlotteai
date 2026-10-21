@@ -533,8 +533,13 @@
           "type": "read_answer",
           "passage": "Having spent twenty years in the same office, she felt a kind of vertigo on her first morning of retirement. Having earned the right to rest, she didn't quite know what to do with it. Having always defined herself by what she made, she had to learn what she was without making anything at all.",
           "question": "What three things had she done by the time of her retirement morning?",
-          "answer": "spent twenty years in the same office, earned the right to rest, always defined herself by what she made",
-          "explanation": "Three perfect participle openers (\"Having spent... Having earned... Having always defined\") layered to compress a whole biography of completed actions into one paragraph. Common in essay and biography."
+          "answer": "twenty years in office, earned right to rest, defined by what she made",
+          "explanation": "Three perfect participle openers (\"Having spent... Having earned... Having always defined\") layered to compress a whole biography of completed actions into one paragraph. Common in essay and biography.",
+          "accepts": [
+            "spent twenty years in the same office",
+            "earned the right to rest",
+            "defined herself by what she made"
+          ]
         }
       ],
       "listening_speaking": [
@@ -759,8 +764,13 @@
           "type": "read_answer",
           "passage": "Having been raised by two demanding teachers, he had assumed all parents were like that. Having been corrected at every dinner table, he had grown into someone who corrected gently. Having been loved fiercely if formally, he loved the same way — and was loved back the same way too.",
           "question": "How was he raised, according to the passage?",
-          "answer": "by two demanding teachers / corrected at every dinner table / loved fiercely but formally",
-          "explanation": "Three \"Having been + past participle\" openers compress three formative passive experiences into a portrait. Each shaped a present trait."
+          "answer": "by two demanding teachers",
+          "explanation": "Three \"Having been + past participle\" openers compress three formative passive experiences into a portrait. Each shaped a present trait.",
+          "accepts": [
+            "corrected at every dinner table",
+            "loved fiercely but formally",
+            "demanding teachers"
+          ]
         }
       ],
       "listening_speaking": [
@@ -982,8 +992,13 @@
           "type": "read_answer",
           "passage": "The waiter, balancing four plates and wearing the practised smile of someone who'd done this a thousand times, made it through the crowded dining room without spilling a drop. With diners watching, with chefs shouting, with the room nearly full to capacity, he placed each plate down as if the night were quiet.",
           "question": "How does the passage compress the waiter's situation?",
-          "answer": "with three \"with + noun + -ing\" clauses (diners watching, chefs shouting, room nearly full)",
-          "explanation": "Two reduced relatives open (\"balancing four plates and wearing the practised smile\") followed by three with-clauses (\"With diners watching, with chefs shouting, with the room nearly full\"). Compressed atmospheric writing."
+          "answer": "with diners watching, chefs shouting, room nearly full",
+          "explanation": "Two reduced relatives open (\"balancing four plates and wearing the practised smile\") followed by three with-clauses (\"With diners watching, with chefs shouting, with the room nearly full\"). Compressed atmospheric writing.",
+          "accepts": [
+            "with diners watching",
+            "with chefs shouting",
+            "with room nearly full"
+          ]
         }
       ],
       "listening_speaking": [

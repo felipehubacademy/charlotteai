@@ -11,6 +11,8 @@
 export function normaliseAnswer(s: string): string {
   return s.trim().toLowerCase()
     .replace(/[‘’‚‛`´]/g, "'")   // smart quotes (iOS) e acentos usados como apóstrofo -> apóstrofo ASCII
+    // Pista entre parênteses na frase ("I'm tween (12) years old"): se o aluno copiar junto, não conta.
+    .replace(/\([^)]*\)/g, ' ')
     // Pontuação não conta: "Can you help me please?" = "Can you help me, please ?".
     // Ponto e dois-pontos só no fim de palavra (mantém 8:30 e 2.5).
     .replace(/[“”„‟",!?¿¡;()]/g, ' ')

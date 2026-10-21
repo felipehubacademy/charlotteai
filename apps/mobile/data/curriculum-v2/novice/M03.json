@@ -1129,7 +1129,10 @@
             "They"
           ],
           "answer": "We",
-          "explanation": "\"We are\" = \"nós somos\". \"We\" é o sujeito pra grupo incluindo você mesmo."
+          "explanation": "\"We are\" = \"nós somos\". \"We\" é o sujeito pra grupo incluindo você mesmo.",
+          "accepts": [
+            "There"
+          ]
         },
         {
           "type": "fill_gap",

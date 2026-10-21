@@ -251,6 +251,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 9. **fix_error** — "My bad, I'm sorry very much."
    **Hint**: Deixe só o pedido informal (ou "I'm so sorry")
    **Answer**: My bad, I'm so sorry.
+   **Accepts**: My bad, I'm very sorry. / My bad, I'm really sorry.
    **Explanation**: "I'm sorry very much" não existe. Use "I'm so sorry" ou só "My bad" para coisas pequenas.
 
 10. **read_answer**
@@ -741,6 +742,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 9. **fix_error** — "That ain't fair, bro."
    **Hint**: Troque a gíria pela forma padrão
    **Answer**: That isn't fair, bro.
+   **Accepts**: That is not fair, bro.
    **Explanation**: "That isn't fair" (ou "That's not fair"). Revisão da F19.
 
 10. **read_answer**

@@ -224,6 +224,7 @@
 4. **word_bank** — "He likes coffee _____ he drinks it every day."
    **Choices**: so / because / but / and
    **Answer**: so
+   **Accepts**: and
    **Explanation**: "Likes coffee SO drinks" — consequência.
 
 5. **fill_gap** — "I went home early _____ I was sick."

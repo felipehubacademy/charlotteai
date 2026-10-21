@@ -886,7 +886,10 @@
           "sentence": "\"No, she _____.\" (response to \"Has she finished?\")",
           "hint": "Short answer negative (contracted)",
           "answer": "hasn't",
-          "explanation": "\"No, she hasn't / has not\" — short negative answer."
+          "explanation": "\"No, she hasn't / has not\" — short negative answer.",
+          "accepts": [
+            "has not"
+          ]
         },
         {
           "type": "fill_gap",

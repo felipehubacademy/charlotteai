@@ -59,7 +59,8 @@
 5. **read_answer**
    **Passage**: "The email began the way the senior partner's emails always did. 'I was wondering if you'd have a moment this afternoon. There's a small matter I was hoping to discuss in person — nothing urgent, but it would be helpful to talk it through.' She had learned that 'nothing urgent' from him often meant exactly the opposite."
    **Question**: How did the senior partner soften the request?
-   **Answer**: with "I was wondering if you'd have a moment" + "I was hoping to discuss"
+   **Answer**: "I was wondering if you'd have a moment"
+   **Accepts**: I was hoping to discuss / nothing urgent / softened with polite phrasing
    **Explanation**: Two past-continuous hedges layered ("I was wondering... I was hoping..."), plus "small matter", "nothing urgent", and "it would be helpful". Diplomatic register building room for both parties.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -366,7 +367,8 @@
 5. **read_answer**
    **Passage**: "The diplomat had a phrase for every situation. 'With respect, I'd see the geography rather differently. I take your point about the timeline, but the local context complicates it. I'm not entirely convinced we're talking about the same problem.' Each disagreement was delivered like a gift, wrapped carefully."
    **Question**: How does the diplomat disagree without offending?
-   **Answer**: hedged each disagreement ("With respect", "I take your point but", "I'm not entirely convinced")
+   **Answer**: hedged disagreement
+   **Accepts**: "with respect" / "I take your point but" / "I'm not entirely convinced"
    **Explanation**: Three diplomatic disagreement patterns layered. Each preserves the other's face while expressing genuine difference. Diplomat-grade C1.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -666,7 +668,7 @@
 4. **fix_error** — "I'm somewhat agree with you."
    **Hint**: "Somewhat" modifies adjective/adverb, not verb directly. Use "kind of agree" or "somewhat agreeable"
    **Answer**: I kind of agree with you.
-   **Accepts**: I somewhat agree with you, with the right rhythm.
+   **Accepts**: I somewhat agree with you, with the right rhythm. / I somewhat agree with you.
    **Explanation**: "Somewhat" modifies adjectives/adverbs in formal usage ("somewhat strange"). Modern spoken English does allow "I somewhat agree", but "kind of agree" / "sort of agree" is more natural.
 
 5. **read_answer**

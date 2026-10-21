@@ -593,6 +593,7 @@
 7. **fill_gap** — "This room is _____ smaller than that one."
    **Hint**: Modificador suave (um pouco)
    **Answer**: a bit
+   **Accepts**: a little
    **Explanation**: "A bit smaller" = um pouco menor. Sinônimo de "a little".
 
 8. **fix_error** — "She is very taller than me."

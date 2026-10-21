@@ -587,6 +587,7 @@
 5. **fill_gap** — "I love _____ books."
    **Hint**: Tipo de livro (gênero), sem artigo
    **Answer**: reading
+   **Accepts**: history / comic / comics / science fiction / mystery / romance / adventure
    **Explanation**: "I love reading books" — verbo no -ing após love. Ou pode ser tipo: "love mystery books".
 
 6. **fill_gap** — "She listens to _____ music every day."

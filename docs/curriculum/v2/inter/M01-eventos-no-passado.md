@@ -766,7 +766,7 @@
    **Answer**: was waiting for
    **Explanation**: "Was waiting for the bus" — background.
 
-7. **fill_gap** — "While we _____ for lunch, it started to rain."
+7. **fill_gap** — "While we _____ (cook) for lunch, it started to rain."
    **Hint**: past continuous of "cook"
    **Answer**: were cooking
    **Explanation**: "Were cooking" — plural past continuous.

@@ -859,7 +859,13 @@
             "English",
             "German",
             "French",
-            "Italian"
+            "Italian",
+            "Portuguese",
+            "Chinese",
+            "Russian",
+            "Japanese",
+            "Arabic",
+            "Korean"
           ],
           "explanation": "Idiomas após \"speak\" — sem artigo. \"Spanish\", \"English\", \"German\"."
         },

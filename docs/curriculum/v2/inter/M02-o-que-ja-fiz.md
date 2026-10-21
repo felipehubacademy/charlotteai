@@ -587,6 +587,7 @@
 6. **fill_gap** — "No, she _____." (response to "Has she finished?")
    **Hint**: Short answer negative (contracted)
    **Answer**: hasn't
+   **Accepts**: has not
    **Explanation**: "No, she hasn't / has not" — short negative answer.
 
 7. **fill_gap** — "_____ you eaten breakfast?"

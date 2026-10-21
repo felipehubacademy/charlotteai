@@ -742,6 +742,7 @@
 1. **multiple_choice** — "I _____ called you sooner — I'm sorry."
    **Options**: should have / could have / might have / can't have
    **Answer**: should have
+   **Accepts**: could have
    **Explanation**: "Should have called" — retrospective regret/apology.
 
 2. **multiple_choice** — "He _____ left already — he's not here."

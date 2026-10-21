@@ -351,7 +351,8 @@
           "hint": "Ao meu lado",
           "answer": "beside",
           "accepts": [
-            "next to"
+            "next to",
+            "by"
           ],
           "explanation": "\"Sit beside me\" ou \"Sit next to me\" = senta do meu lado."
         },

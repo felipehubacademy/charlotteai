@@ -780,6 +780,7 @@
 9. **fix_error** — "The book who I read."
    **Hint**: thing needs that/which
    **Answer**: The book that I read.
+   **Accepts**: The book which I read.
    **Explanation**: Book = thing → that.
 
 10. **read_answer**

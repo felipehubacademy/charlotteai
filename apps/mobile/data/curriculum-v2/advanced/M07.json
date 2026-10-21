@@ -689,8 +689,11 @@
           "type": "fill_gap",
           "sentence": "They talked her _____ the meeting.",
           "hint": "preposition + -ing",
-          "answer": "into attending (or out of attending — both grammatical, different meaning)",
-          "explanation": "\"Talk + person + into + -ing\" (persuaded to do) or \"out of + -ing\" (dissuaded from doing). Both prepositional patterns common with \"talk\"."
+          "answer": "into attending",
+          "explanation": "\"Talk + person + into + -ing\" (persuaded to do) or \"out of + -ing\" (dissuaded from doing). Both prepositional patterns common with \"talk\".",
+          "accepts": [
+            "out of attending"
+          ]
         },
         {
           "type": "fix_error",

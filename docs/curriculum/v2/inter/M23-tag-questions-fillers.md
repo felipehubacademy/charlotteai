@@ -82,7 +82,8 @@
 10. **read_answer**
     **Passage**: "You're new here, aren't you? I haven't seen you before. She's the new manager, isn't she? And they were just hired last week, weren't they? Everyone's still learning each other's names."
     **Question**: How many tag questions are in the passage?
-    **Answer**: three (aren't you, isn't she, weren't they) — or four if "haven't seen" counted, though that isn't a tag
+    **Answer**: three
+    **Accepts**: 3 / aren't you / isn't she / weren't they
     **Explanation**: Three tag questions: "aren't / are not you?", "isn't / is not she?", "weren't / were not they?". Each reverses polarity from positive to negative. The passage uses tags for social warmth — opening conversation, confirming knowledge.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -436,8 +437,9 @@
 
 10. **read_answer**
     **Passage**: "We should leave by eight, shouldn't we? Traffic gets terrible after that. You'll be ready, won't you? Marco can drive us, can't he? It would be faster than the train, wouldn't it?"
-    **Question**: Which modal appears most often?
-    **Answer**: "would" (in "wouldn't it?" and implied), or "will/should/can" each once
+    **Question**: Which modal is used in the tag of the last sentence?
+    **Answer**: would
+    **Accepts**: wouldn't
     **Explanation**: The passage uses modal tags: "shouldn't / should not we?", "won't / will not you?", "can't / cannot he?", "wouldn't / would not it?". Each tag echoes the modal of the main clause with negation. The structure is uniform across different modals.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -579,7 +581,7 @@
 3. **word_bank** — "Open the door, _____ you?"
    **Choices**: will / do / can / would
    **Answer**: will
-   **Accepts**: would / could" depending on politeness
+   **Accepts**: would / could" depending on politeness / can / could
    **Explanation**: Imperative + tag: "Open the door, will you?" — softens a command into a polite request. Variations: "would you?", "could you?", "won't / will not you?". All make the imperative friendlier.
 
 4. **word_bank** — "Nobody called, _____ they?"
@@ -615,7 +617,8 @@
 10. **read_answer**
     **Passage**: "I am late, aren't I? Sorry. Let's order food, shall we? You don't mind if I pay later, do you? Nobody else is coming, are they? Open the window, would you? It's stuffy in here."
     **Question**: Which two tags are special exceptions to the standard rule?
-    **Answer**: "aren't I?" (special tag for "I am") and "shall we?" (special tag for "let's"). Also "are they?" (for "nobody") and "would you?" (after imperative).
+    **Answer**: aren't I, shall we
+    **Accepts**: aren't I / shall we
     **Explanation**: The passage strings together multiple special cases: "aren't / are not I?" (irregular for "I am"), "shall we?" (for "let's"), "are they?" (indefinite subject "nobody"), "would you?" (softening imperative). All exceptions to the basic positive-negative rule.
 
 ### 2. Listening/Speaking (5 phrases)

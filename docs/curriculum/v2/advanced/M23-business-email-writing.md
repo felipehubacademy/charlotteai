@@ -46,9 +46,11 @@
    **Accepts**: Hoping
    **Explanation**: "Hope you're / you are doing well" — common semi-formal opener for someone you know but aren't close to. Drops the formal "I" of "I hope" to feel warmer. Widely used in workplace email.
 
-4. **fix_error** — Cold email opening: "Hey there, what's going on?"
+4. **short_write** — Cold email opening: "Hey there, what's going on?"
    **Hint**: Too casual for a cold business email
    **Answer**: Dear [Name], I hope this email finds you well. I'm reaching out regarding...
+   **Prompt**: Rewrite this cold email opening so it sounds professional: "Hey there, what's going on?"
+   **Example answer**: Dear [Name], I hope this email finds you well. I'm reaching out regarding...
    **Explanation**: "Hey there, what's / what is going on?" is appropriate among friends but jarring in business cold-outreach. Cold emails need formal openings: "Dear [Name]" + "I hope this email finds you well" or "I'm / I am reaching out regarding...". Register match is essential.
 
 5. **read_answer**
@@ -193,20 +195,24 @@
    **Answer**: I would welcome the opportunity to discuss how my background aligns with your team's needs.
    **Explanation**: This closing demonstrates: professional register ("I would welcome"), specific value framing ("how my background aligns"), and a soft ask for next step. The others lack specificity or sound desperate ("I really want this job").
 
-3. **fill_gap** — Application body chunk: "I bring _____ years of experience in [field], with a track record of..."
+3. **fill_gap** — Application body chunk: "I bring _____ (5) years of experience in [field], with a track record of..."
    **Hint**: number of years (template)
-   **Answer**: [number] (e.g., "five" or "ten")
+   **Answer**: five
+   **Accepts**: 5
    **Explanation**: "I bring [X] years of experience in [field], with a track record of [specific results]" — formula for quantifying experience with credibility. Always replace [X] with the actual number; "many" or "lots of" weakens the claim.
 
-4. **fix_error** — Application opening: "Hello, I want to apply to your company for the marketing job."
+4. **short_write** — Application opening: "Hello, I want to apply to your company for the marketing job."
    **Hint**: Too casual for a formal application
    **Answer**: I am writing to apply for the Marketing position advertised on [LinkedIn / your website].
+   **Prompt**: Rewrite this job application opening professionally: "Hello, I want to apply to your company for the marketing job."
+   **Example answer**: I am writing to apply for the Marketing position advertised on [LinkedIn / your website].
    **Explanation**: "Hello, I want to" is conversational; applications need formal phrasing: "I am writing to apply for [Position Name] advertised on [source]". Capitalize the position name; specify the source for tracking.
 
 5. **read_answer**
    **Passage**: "Dear Hiring Manager, I am writing to apply for the Senior Designer position advertised on LinkedIn. I bring eight years of experience in product design, with a track record of leading design systems at scale. In my current role at [Company], I have shipped three major product launches that drove a 30% increase in user engagement. I would welcome the opportunity to discuss how my background aligns with your team's needs. Kind regards, Maria."
    **Question**: What three application elements are present in this paragraph?
-   **Answer**: (1) formal opening with position name + source; (2) quantified experience + track record; (3) specific results + closing ask
+   **Answer**: formal opening, quantified experience, specific results
+   **Accepts**: formal opening / quantified experience / specific results / position name and source / track record
    **Explanation**: A complete application body has three pillars: clear opening (formal + specific position + source), credibility (years + track record + specific results), and closing (welcome opportunity + soft ask). This template scales across roles and industries.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -345,20 +351,25 @@
    **Answer**: Spearheaded
    **Explanation**: "Spearheaded" = strong action verb showing initiative and ownership. Other options sound passive or weak. CV verbs to favour: Led, Spearheaded, Drove, Built, Launched, Scaled, Optimised, Restructured, Negotiated.
 
-3. **fill_gap** — Cover letter chunk: "What draws me to [Company] is _____."
+3. **short_write** — Cover letter chunk: "What draws me to [Company] is _____."
    **Hint**: Specific reason connecting your interests to the company
    **Answer**: [specific reason — e.g., "your commitment to sustainable design"]
+   **Prompt**: Complete this cover letter line with a specific reason: "What draws me to [Company] is _____."
+   **Example answer**: What draws me to [Company] is your commitment to sustainable design.
    **Explanation**: "What draws me to [Company] is..." is a strong cover letter pivot showing you've researched the company. Always follow with a specific company value or initiative — generic "your innovative culture" reads as filler.
 
-4. **fix_error** — CV bullet: "Was the manager of a team that did some stuff."
+4. **short_write** — CV bullet: "Was the manager of a team that did some stuff."
    **Hint**: Use a strong action verb + quantification
    **Answer**: Managed a team of [X] to deliver [specific outcome] resulting in [quantified impact].
+   **Prompt**: Rewrite this CV bullet with a strong verb and a concrete result: "Was the manager of a team that did some stuff."
+   **Example answer**: Managed a team of 6 to deliver a new onboarding flow, cutting support tickets by 30%.
    **Explanation**: Strong CV bullets follow the formula: [Strong action verb] + [scope/team] + [concrete deliverable] + [quantified impact]. "Did some stuff" is the antithesis of professional CV writing.
 
 5. **read_answer**
    **Passage**: "What draws me to ClimateLab is your commitment to ocean restoration at scale — I've followed your work since the 2022 reef project. In my five years at Aquatic Research, I led the design of three monitoring platforms that are now deployed across 12 coastal sites. The technical challenge of building for hostile environments — combined with the urgency of the mission — is exactly the work I want to do for the next decade."
    **Question**: What three elements make this cover letter paragraph strong?
-   **Answer**: (1) specific company research ("ocean restoration", "2022 reef project"); (2) quantified track record ("three monitoring platforms", "12 coastal sites"); (3) personal motivation tied to mission
+   **Answer**: company research, quantified track record, personal motivation
+   **Accepts**: company research / quantified track record / personal motivation / ocean restoration / three monitoring platforms
    **Explanation**: Strong cover letter paragraphs do three things: show specific research (you know what they do), establish credibility (concrete achievements with numbers), and connect personal motivation to their mission. Each sentence does work.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -502,15 +513,18 @@
    **Answer**: Just checking in
    **Explanation**: "Just checking in on the [Position] application I submitted on [date]" — formal but warm follow-up for job applications. "Just checking in" is the universal gentle nudge phrase.
 
-4. **fix_error** — Follow-up email: "Hi, did you read my email or what? It's been a week."
+4. **short_write** — Follow-up email: "Hi, did you read my email or what? It's been a week."
    **Hint**: Too aggressive — soften with "just following up"
    **Answer**: Hi [Name], just following up on my email from last week — wondering if you've had a chance to review.
+   **Prompt**: Rewrite this follow-up email so it sounds polite and professional: "Hi, did you read my email or what? It's been a week."
+   **Example answer**: Hi [Name], just following up on my email from last week — wondering if you've had a chance to review.
    **Explanation**: "Did you read my email or what?" reads as hostile. Always soften with "just following up", "just checking in", or "wondering if you had a chance to review". The phrase "if you had a chance" acknowledges their time.
 
 5. **read_answer**
    **Passage**: "Hi Maria, Just following up on my email from last Tuesday — wondering if you've had a chance to review the proposal. Happy to jump on a quick call this week if any questions came up. No rush on my end. Best, Pedro."
    **Question**: What three elements make this follow-up effective?
-   **Answer**: (1) gentle opener "just following up"; (2) offer of value/easy engagement "happy to jump on a call"; (3) low-pressure close "no rush on my end"
+   **Answer**: gentle opener, offer of call, low-pressure close
+   **Accepts**: gentle opener / offer of call / low-pressure close / just following up / happy to jump on a call / no rush
    **Explanation**: Effective follow-ups combine gentle persistence ("just following up"), genuine helpfulness ("happy to jump on a call"), and pressure release ("no rush"). The recipient feels respected, not pressured.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -654,15 +668,18 @@
    **Answer**: Unfortunately
    **Explanation**: "Unfortunately" — the standard bad news softener. Universal across formal contexts. Variants: "I regret to inform you that...", "Sadly...". Always pair with reason or path forward when possible.
 
-4. **fix_error** — Decline email: "No, I won't be coming to the meeting. I'm busy."
+4. **short_write** — Decline email: "No, I won't be coming to the meeting. I'm busy."
    **Hint**: Too curt — soften with apology + alternative
    **Answer**: Unfortunately, I won't be able to attend the meeting on Friday — I have a competing commitment. Happy to follow up on the action items afterward.
+   **Prompt**: Rewrite this to decline politely and professionally: "No, I won't be coming to the meeting. I'm busy."
+   **Example answer**: Unfortunately, I won't be able to attend the meeting on Friday — I have a competing commitment. Happy to follow up on the action items afterward.
    **Explanation**: Professional declines soften the no ("Unfortunately"), give a brief reason ("competing commitment"), and offer engagement ("happy to follow up"). "I'm / I am busy" sounds dismissive.
 
 5. **read_answer**
    **Passage**: "Hi João, Thanks for sending the proposal — I appreciate the work that went into it. Unfortunately, the budget for this project isn't going to allow us to move forward at the scope you've outlined. I'd love to keep the door open for a scaled-down version, or a future collaboration when budgets reset in Q1. Apologies for any inconvenience, and thanks again for putting it together. Best, Maria."
    **Question**: What three professional moves does this 'no' make?
-   **Answer**: (1) gratitude/acknowledgment ("thanks for sending", "appreciate the work"); (2) clear reason ("budget isn't going to allow"); (3) keeps door open ("scaled-down version, or a future collaboration")
+   **Answer**: gratitude, clear reason, keeps door open
+   **Accepts**: gratitude / clear reason / keeps door open / thanks for sending / budget isn't going to allow / future collaboration
    **Explanation**: Strong declines preserve relationships. Three moves: acknowledge the effort, give a real reason, leave a door open. Never just say no — always frame the no with grace and a path forward.
 
 ### 2. Listening/Speaking (5 phrases)

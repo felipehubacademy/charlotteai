@@ -207,7 +207,8 @@
 5. **read_answer**
    **Passage**: "The novelist wrote of her childhood: 'Hardly had we settled into the new town when my father announced another move. No sooner had I made a friend than I was packing again. By twelve I had lived in seven houses and counted only my books as steady company.'"
    **Question**: How frequently did the family move?
-   **Answer**: very often (or "every time she made a friend" or "many times — seven houses by age 12")
+   **Answer**: very often
+   **Accepts**: often / many times / seven houses / moved a lot
    **Explanation**: Two stacked inversions ("Hardly had we settled... No sooner had I made a friend") dramatise the rapid succession of moves. The structures are narrative engines for back-to-back events.
 
 ### 2. Listening/Speaking (5 phrases)

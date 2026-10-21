@@ -172,6 +172,20 @@ Sequência reduzida (5 ex Advanced): **1× mc + 1× word_bank + 1× fill_gap + 1
 [... continua até 10 ...]
 ```
 
+### Resposta única (REGRA — 2026-10-21)
+
+O aluno vê só a frase (e as opções); a **dica fica escondida** e quase ninguém toca nela. Então:
+
+- **A informação necessária para responder tem que estar na frase**, nunca só na dica. Número, nome, fato:
+  entre parênteses logo depois da lacuna ou da palavra errada.
+  - Errado: `"My phone number is _____."` (Answer: nine; dica "Número 9 por extenso") — qualquer número serve.
+  - Certo: `"My phone number ends in _____ (9)."` / `"I'm tween (12) years old."`
+  O corretor ignora o que estiver entre parênteses na resposta do aluno.
+- **Se mais de uma resposta é natural e correta, liste todas em `**Accepts**:`** (separadas por ` / `).
+  Ex.: `"I'm _____ hungry."` → Answer: so · Accepts: very / really.
+- **multiple_choice / word_bank: só uma opção pode estar certa.** As outras precisam estar claramente erradas.
+- A dica serve para ajudar com a gramática, não para revelar o dado que falta.
+
 ---
 
 ## TEMPLATE DE LISTENING/SPEAKING (atividade 2)

@@ -82,8 +82,13 @@
           "type": "read_answer",
           "passage": "The email began the way the senior partner's emails always did. 'I was wondering if you'd have a moment this afternoon. There's a small matter I was hoping to discuss in person — nothing urgent, but it would be helpful to talk it through.' She had learned that 'nothing urgent' from him often meant exactly the opposite.",
           "question": "How did the senior partner soften the request?",
-          "answer": "with \"I was wondering if you'd have a moment\" + \"I was hoping to discuss\"",
-          "explanation": "Two past-continuous hedges layered (\"I was wondering... I was hoping...\"), plus \"small matter\", \"nothing urgent\", and \"it would be helpful\". Diplomatic register building room for both parties."
+          "answer": "\"I was wondering if you'd have a moment\"",
+          "explanation": "Two past-continuous hedges layered (\"I was wondering... I was hoping...\"), plus \"small matter\", \"nothing urgent\", and \"it would be helpful\". Diplomatic register building room for both parties.",
+          "accepts": [
+            "I was hoping to discuss",
+            "nothing urgent",
+            "softened with polite phrasing"
+          ]
         }
       ],
       "listening_speaking": [
@@ -506,8 +511,13 @@
           "type": "read_answer",
           "passage": "The diplomat had a phrase for every situation. 'With respect, I'd see the geography rather differently. I take your point about the timeline, but the local context complicates it. I'm not entirely convinced we're talking about the same problem.' Each disagreement was delivered like a gift, wrapped carefully.",
           "question": "How does the diplomat disagree without offending?",
-          "answer": "hedged each disagreement (\"With respect\", \"I take your point but\", \"I'm not entirely convinced\")",
-          "explanation": "Three diplomatic disagreement patterns layered. Each preserves the other's face while expressing genuine difference. Diplomat-grade C1."
+          "answer": "hedged disagreement",
+          "explanation": "Three diplomatic disagreement patterns layered. Each preserves the other's face while expressing genuine difference. Diplomat-grade C1.",
+          "accepts": [
+            "\"with respect\"",
+            "\"I take your point but\"",
+            "\"I'm not entirely convinced\""
+          ]
         }
       ],
       "listening_speaking": [
@@ -939,7 +949,8 @@
           "hint": "\"Somewhat\" modifies adjective/adverb, not verb directly. Use \"kind of agree\" or \"somewhat agreeable\"",
           "answer": "I kind of agree with you.",
           "accepts": [
-            "I somewhat agree with you, with the right rhythm."
+            "I somewhat agree with you, with the right rhythm.",
+            "I somewhat agree with you."
           ],
           "explanation": "\"Somewhat\" modifies adjectives/adverbs in formal usage (\"somewhat strange\"). Modern spoken English does allow \"I somewhat agree\", but \"kind of agree\" / \"sort of agree\" is more natural."
         },

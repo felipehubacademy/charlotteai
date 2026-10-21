@@ -56,7 +56,7 @@
    **Answer**: seventeen
    **Explanation**: "Seventeen" = 17. "Seventy" = 70. "Seven" = 7. Cuidado com a confusão -teen (17) vs -ty (70) — stress muda.
 
-5. **fill_gap** — "I am _____ years old."
+5. **fill_gap** — "I am _____ (18) years old."
    **Hint**: Número 18 por extenso
    **Answer**: eighteen
    **Explanation**: 18 = "eighteen". Atenção: tem "gh" silencioso (escrito mas não pronunciado).
@@ -66,12 +66,12 @@
    **Answer**: eleven
    **Explanation**: 11 = "eleven". Único formato — não segue o padrão -teen como 13-19.
 
-7. **fill_gap** — "My phone number is _____."
+7. **fill_gap** — "My phone number ends in _____ (9)."
    **Hint**: Número 9 por extenso
    **Answer**: nine
    **Explanation**: 9 = "nine". Som parecido com "none" (nenhum) mas significado totalmente diferente. Pronúncia: /naɪn/.
 
-8. **fix_error** — "I'm tween years old."
+8. **fix_error** — "I'm tween (12) years old."
    **Hint**: 12 em inglês não segue padrão -teen
    **Answer**: I'm twelve years old.
    **Explanation**: 12 = "twelve", não "tween". "Tween" é gíria para "pré-adolescente" — não é número. Os números 11 e 12 têm formato único.
@@ -224,17 +224,17 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Answer**: ninety
    **Explanation**: "Ninety" = 90. "Nine" = 9. "Ninth" = 9º. Para idade idosa: "She is ninety years old".
 
-5. **fill_gap** — "I am _____ years old."
+5. **fill_gap** — "I am _____ (35) years old."
    **Hint**: 35 por extenso
    **Answer**: thirty-five
    **Explanation**: 35 = "thirty-five" (com hífen entre dezena e unidade). Mesma regra: 21=twenty-one, 47=forty-seven, 99=ninety-nine.
 
-6. **fill_gap** — "The temperature is _____ degrees."
+6. **fill_gap** — "The temperature is _____ (100) degrees."
    **Hint**: 100 por extenso
    **Answer**: one hundred
    **Explanation**: 100 = "one hundred" ou "a hundred". Para 101-199: "one hundred and one", "one hundred and two", etc.
 
-7. **fill_gap** — "It's _____ dollars."
+7. **fill_gap** — "It's _____ (50) dollars."
    **Hint**: 50 por extenso
    **Answer**: fifty
    **Explanation**: 50 = "fifty". Atenção: NÃO é "fivety". Diferente de "fifteen" (15) — fifty é 50.
@@ -390,17 +390,17 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Answer**: Argentina
    **Explanation**: País = "Argentina". Nacionalidade = "Argentinian". "Argentine" também existe mas é menos comum em fala cotidiana.
 
-5. **fill_gap** — "I'm from _____."
+5. **fill_gap** — "I'm from _____ (Japão)."
    **Hint**: País asiático cuja capital é Tokyo
    **Answer**: Japan
    **Explanation**: "Japan" é o país. Nacionalidade: "Japanese". Não confundir — "I'm / I am from Japan" (país) vs "I'm / I am Japanese" (nacionalidade).
 
-6. **fill_gap** — "She is from _____."
+6. **fill_gap** — "She is from _____ (França)."
    **Hint**: País europeu, capital Paris
    **Answer**: France
    **Explanation**: "France" é o país. Nacionalidade: "French". Capital: Paris. Note que aqui o foco é o país, não a capital.
 
-7. **fill_gap** — "We are from _____."
+7. **fill_gap** — "We are from _____ (Austrália)."
    **Hint**: País dos cangurus, no hemisfério sul
    **Answer**: Australia
    **Explanation**: "Australia" é o país do canguru. Nacionalidade: "Australian". País grande, ilha-continente.

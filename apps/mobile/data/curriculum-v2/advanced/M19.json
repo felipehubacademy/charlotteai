@@ -82,8 +82,13 @@
           "type": "read_answer",
           "passage": "The radio silence had lasted three days. He must be off the grid — there was no other explanation. Or he might have lost his phone again, which would not be the first time. He should be back in range by Friday, but the team had stopped relying on his promises long ago.",
           "question": "According to the passage, what are the three possible explanations for his silence?",
-          "answer": "he's off the grid (must), he lost his phone (might have), he should be back by Friday",
-          "explanation": "Three modal shades calibrating certainty: \"must be off the grid\" (strong inference), \"might have lost his phone\" (weaker possibility), \"should be back by Friday\" (expected but uncertain). Each modal does specific epistemic work."
+          "answer": "off the grid, lost phone, back by Friday",
+          "explanation": "Three modal shades calibrating certainty: \"must be off the grid\" (strong inference), \"might have lost his phone\" (weaker possibility), \"should be back by Friday\" (expected but uncertain). Each modal does specific epistemic work.",
+          "accepts": [
+            "off the grid",
+            "lost his phone",
+            "should be back by Friday"
+          ]
         }
       ],
       "listening_speaking": [
@@ -289,8 +294,14 @@
           "type": "read_answer",
           "passage": "The analysts were cautious in print but emphatic in private. 'The merger may well close in the second quarter — every leak points that way. The valuation could well climb another fifteen percent before announcement. And the regulators, who have stayed quiet so far, might well intervene only after the press cycle has moved on.'",
           "question": "How does the analyst frame each claim?",
-          "answer": "each one is hedged but probable — using 'may well', 'could well', 'might well'",
-          "explanation": "Three hedged-probable modals: \"may well close\", \"could well climb\", \"might well intervene\". Each signals likelihood without certainty. The phrase carries quiet confidence — the speaker isn't asserting, but isn't doubting either. Analyst-grade register."
+          "answer": "hedged with 'may well', 'could well', 'might well'",
+          "explanation": "Three hedged-probable modals: \"may well close\", \"could well climb\", \"might well intervene\". Each signals likelihood without certainty. The phrase carries quiet confidence — the speaker isn't asserting, but isn't doubting either. Analyst-grade register.",
+          "accepts": [
+            "'may well'",
+            "'could well'",
+            "'might well'",
+            "hedged but probable"
+          ]
         }
       ],
       "listening_speaking": [
@@ -728,8 +739,13 @@
           "type": "read_answer",
           "passage": "The launch was supposed to happen on Monday. By all internal measures, the team was bound to make it. But the regulator was unlikely to issue final approval in time, and the marketing campaign was meant to align with broader industry events that had now shifted. Three layers of expectation, three layers of slippage.",
           "question": "According to the passage, why was the launch likely to slip?",
-          "answer": "the regulator was unlikely to approve in time / marketing was meant to align with shifted industry events",
-          "explanation": "Four quasi-modals layered: \"was supposed to happen\" (planned), \"was bound to make it\" (high probability), \"was unlikely to issue\" (probability negative), \"was meant to align\" (convention/plan). Each carries a slightly different shade of expectation."
+          "answer": "regulator unlikely to approve, marketing misaligned",
+          "explanation": "Four quasi-modals layered: \"was supposed to happen\" (planned), \"was bound to make it\" (high probability), \"was unlikely to issue\" (probability negative), \"was meant to align\" (convention/plan). Each carries a slightly different shade of expectation.",
+          "accepts": [
+            "regulator unlikely to approve in time",
+            "marketing campaign misaligned",
+            "approval and marketing timing"
+          ]
         }
       ],
       "listening_speaking": [
@@ -953,8 +969,13 @@
           "type": "read_answer",
           "passage": "The project manager laid out the scenarios. 'If the budget holds, we should be able to finish on time. If costs rise by another five percent, we might have to drop one of the integrations. And if the regulators raise concerns at any point, we would have to pause work entirely until we have a written response. Three contingencies, three layered obligations.'",
           "question": "What would force a complete pause?",
-          "answer": "if the regulators raise concerns (we would have to pause until written response)",
-          "explanation": "Three layered modal structures: \"should be able to\" (modal + quasi-modal), \"might have to drop\" (possibility + necessity), \"would have to pause\" (hypothetical + necessity). Each combines two modal meanings."
+          "answer": "if regulators raise concerns",
+          "explanation": "Three layered modal structures: \"should be able to\" (modal + quasi-modal), \"might have to drop\" (possibility + necessity), \"would have to pause\" (hypothetical + necessity). Each combines two modal meanings.",
+          "accepts": [
+            "regulators raise concerns",
+            "pause until written response",
+            "regulator concerns"
+          ]
         }
       ],
       "listening_speaking": [

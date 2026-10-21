@@ -64,7 +64,8 @@
           "hint": "\"Kind of\" or \"sort of\"",
           "answer": "kind of",
           "accepts": [
-            "sort of"
+            "sort of",
+            "kinda"
           ],
           "explanation": "\"Kind of\" / \"sort of\" — hedges. Soften the absoluteness of \"the best\". \"Kind of the best\" = approximately the best, hesitant to claim full superlative. In writing this hedge is light; in speech it's heavy and frequent."
         },
@@ -532,8 +533,13 @@
           "type": "read_answer",
           "passage": "Native conversation has its own rhythm. The speaker tells the story. The listener punctuates with quiet sounds — 'mm-hm... right... yeah... oh, really?... no way.' These tiny words do enormous work. They tell the speaker the listener is present, paying attention, and emotionally tracking. Without them, the speaker feels alone on the line.",
           "question": "According to the passage, what work do backchannels do?",
-          "answer": "tell the speaker the listener is present, paying attention, and emotionally tracking",
-          "explanation": "Three functions: presence, attention, emotional tracking. All carried by single-word interjections. C2 conversational mastery includes producing these naturally — and noticing when other speakers go silent (a signal to wrap up or shift)."
+          "answer": "show listener is present and attentive",
+          "explanation": "Three functions: presence, attention, emotional tracking. All carried by single-word interjections. C2 conversational mastery includes producing these naturally — and noticing when other speakers go silent (a signal to wrap up or shift).",
+          "accepts": [
+            "listener is present",
+            "paying attention",
+            "emotionally tracking"
+          ]
         }
       ],
       "listening_speaking": [

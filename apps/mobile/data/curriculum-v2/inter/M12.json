@@ -62,7 +62,10 @@
             "would be"
           ],
           "answer": "were",
-          "explanation": "In formal/correct second conditional, \"were\" is used for ALL persons (I, he, she, it, we, you, they). \"Were\" is the subjunctive form. \"Was\" is acceptable in informal speech, but \"were\" is the standard."
+          "explanation": "In formal/correct second conditional, \"were\" is used for ALL persons (I, he, she, it, we, you, they). \"Were\" is the subjunctive form. \"Was\" is acceptable in informal speech, but \"were\" is the standard.",
+          "accepts": [
+            "was"
+          ]
         },
         {
           "type": "word_bank",
@@ -313,7 +316,10 @@
             "would be"
           ],
           "answer": "were",
-          "explanation": "\"Were\" for all persons in formal wish/hypothetical. \"She wishes she were taller\" — present wish about height."
+          "explanation": "\"Were\" for all persons in formal wish/hypothetical. \"She wishes she were taller\" — present wish about height.",
+          "accepts": [
+            "was"
+          ]
         },
         {
           "type": "word_bank",

@@ -101,7 +101,10 @@
           "answer": "Chocolate",
           "accepts": [
             "Strawberry",
-            "Vanilla"
+            "Vanilla",
+            "chocolate",
+            "strawberry",
+            "vanilla"
           ],
           "explanation": "Responda só com o sabor + \"please\": \"Chocolate, please\". Também vale strawberry (morango) e vanilla (baunilha)."
         },
@@ -349,7 +352,10 @@
           "sentence": "A: May I help you? B: Yes, _____! I'm looking for ham.",
           "hint": "Por favor",
           "answer": "please",
-          "explanation": "\"Yes, please!\" é a resposta educada a uma oferta de ajuda."
+          "explanation": "\"Yes, please!\" é a resposta educada a uma oferta de ajuda.",
+          "accepts": [
+            "sure"
+          ]
         },
         {
           "type": "fill_gap",

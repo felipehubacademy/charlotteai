@@ -55,7 +55,8 @@
 5. **read_answer**
    **Passage**: "The investigation continues. It is reported that three witnesses came forward last night. It is believed that the suspect was acting alone. It cannot yet be confirmed that any property was stolen — but it is widely suspected that this is the work of the same group responsible for the previous incidents."
    **Question**: What is widely suspected?
-   **Answer**: that this is the work of the same group responsible for previous incidents
+   **Answer**: same group responsible
+   **Accepts**: work of the same group / same group as previous incidents / group responsible for previous incidents
    **Explanation**: Three impersonal passives layered ("It is reported... It is believed... It cannot be confirmed... it is widely suspected"). News register at its most cautious.
 
 ### 2. Listening/Speaking (5 phrases)

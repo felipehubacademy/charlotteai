@@ -717,7 +717,7 @@ Igorfina fala no estilo do astro do basquete (imitação). Aluno repete; a pron�
 5. **fill_gap** — "That workout was so _____. I need a nap!"
    **Hint**: Cansativo (o que cansa)
    **Answer**: tiring
-   **Accepts**: exhausting / hard
+   **Accepts**: exhausting / hard / difficult
    **Explanation**: "Tiring" = cansativo. A pessoa fica "tired"; o treino é "tiring".
 
 6. **fill_gap** — "I go to the _____ five days a week."

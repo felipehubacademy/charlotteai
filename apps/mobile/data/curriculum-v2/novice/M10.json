@@ -833,8 +833,8 @@
           "choices": [
             "a",
             "the",
-            "some",
-            "one"
+            "an",
+            "much"
           ],
           "answer": "a",
           "explanation": "\"A pizza\" — pedido singular contável. \"I'd / I would like a pizza\"."
@@ -1105,7 +1105,10 @@
             "one"
           ],
           "answer": "an",
-          "explanation": "\"An apple\" — singular contável (apple começa com vogal → \"an\")."
+          "explanation": "\"An apple\" — singular contável (apple começa com vogal → \"an\").",
+          "accepts": [
+            "one"
+          ]
         },
         {
           "type": "fill_gap",

@@ -40,6 +40,7 @@
 3. **word_bank** — "If I _____ rich, I would travel the world."
    **Choices**: were / was / am / would be
    **Answer**: were
+   **Accepts**: was
    **Explanation**: In formal/correct second conditional, "were" is used for ALL persons (I, he, she, it, we, you, they). "Were" is the subjunctive form. "Was" is acceptable in informal speech, but "were" is the standard.
 
 4. **word_bank** — "I _____ help you if I were here."
@@ -212,6 +213,7 @@
 2. **multiple_choice** — "She wishes she _____ taller."
    **Options**: were / was / is / would be
    **Answer**: were
+   **Accepts**: was
    **Explanation**: "Were" for all persons in formal wish/hypothetical. "She wishes she were taller" — present wish about height.
 
 3. **word_bank** — "I wish I _____ speak French."

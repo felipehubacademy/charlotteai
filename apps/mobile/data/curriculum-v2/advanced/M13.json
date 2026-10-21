@@ -66,7 +66,11 @@
           "sentence": "Argument climax: \"One reason is that the policy saves money. Another is that it saves lives. _____, it restores public trust.\"",
           "hint": "marcador de clímax argumentativo",
           "answer": "Most importantly",
-          "explanation": "Cascade pattern: each marker ranks the next claim higher. \"Most importantly\" (or \"Above all\", \"Crucially\") signals the strongest point — the climax of the argument."
+          "explanation": "Cascade pattern: each marker ranks the next claim higher. \"Most importantly\" (or \"Above all\", \"Crucially\") signals the strongest point — the climax of the argument.",
+          "accepts": [
+            "Most significantly",
+            "Importantly"
+          ]
         },
         {
           "type": "fix_error",
@@ -540,8 +544,13 @@
           "type": "read_answer",
           "passage": "Her closing argument used every classical device. 'We are not asking for charity. We are not asking for permission. We are asking — finally — to be heard. Not after the next crisis. Not after the next election. Now. Tomorrow is too late, and yesterday is gone.' The room rose to its feet before she had finished.",
           "question": "What three rhetorical devices appear?",
-          "answer": "anaphora (\"We are not asking...\"), tricolon (\"we are asking... not after... not after... Now\"), antithesis (\"Tomorrow is too late, and yesterday is gone\")",
-          "explanation": "Three anaphoras (\"We are not asking...\"), then tricolon climax (\"Not after... Not after... Now.\"), capped by antithesis (\"Tomorrow is too late, and yesterday is gone\"). Classical rhetoric concentrated."
+          "answer": "anaphora, tricolon, antithesis",
+          "explanation": "Three anaphoras (\"We are not asking...\"), then tricolon climax (\"Not after... Not after... Now.\"), capped by antithesis (\"Tomorrow is too late, and yesterday is gone\"). Classical rhetoric concentrated.",
+          "accepts": [
+            "anaphora",
+            "tricolon",
+            "antithesis"
+          ]
         }
       ],
       "listening_speaking": [
@@ -737,7 +746,8 @@
           "answer": "as a result",
           "accepts": [
             "inevitably",
-            "hence"
+            "hence",
+            "therefore"
           ],
           "explanation": "After a cascade of negative causes, a closing marker delivers the consequence. \"As a result\", \"Hence\", \"Inevitably\", \"Consequently\" — each works. \"As a result\" is neutral; \"Inevitably\" claims the outcome was unavoidable; \"Hence\" is formal."
         },
@@ -937,7 +947,8 @@
           ],
           "answer": "If we fail",
           "accepts": [
-            "Should we fail"
+            "Should we fail",
+            "Were we to fail"
           ],
           "explanation": "\"If we fail to + base\" — direct conditional close. Or inverted formal: \"Should we fail to + base\". Both work; the formal inverted version (M01-style) registers more gravity. \"If we will fail\" is grammatically wrong (no \"will\" in if-clauses)."
         },
@@ -962,8 +973,13 @@
           "type": "read_answer",
           "passage": "She landed her closing without flourish. 'What is at stake is not whether this policy is popular, but whether this generation chooses to leave the next one with options. The stakes could not be higher. The choice before us is clear: take the harder road now, or accept that we have decided, by inaction, to make the harder road our children's.' She sat down. The room sat with her for a long second.",
           "question": "How does the speaker frame the choice?",
-          "answer": "take the harder road now, or accept we have made it our children's",
-          "explanation": "Three classical conclusion devices: \"What is at stake is not X, but Y\" (stakes reframe), \"The stakes could not be higher\" (fixed climactic phrase), \"The choice before us is clear: X or Y\" (binary frame). Conclusion architecture at C2."
+          "answer": "take the harder road now or make it our children's",
+          "explanation": "Three classical conclusion devices: \"What is at stake is not X, but Y\" (stakes reframe), \"The stakes could not be higher\" (fixed climactic phrase), \"The choice before us is clear: X or Y\" (binary frame). Conclusion architecture at C2.",
+          "accepts": [
+            "take the harder road now",
+            "accept we made it our children's",
+            "harder road now or for children"
+          ]
         }
       ],
       "listening_speaking": [

@@ -68,7 +68,8 @@
 5. **read_answer**
    **Passage**: "She'd been planning to confront him for weeks, but every time she saw him, she lost her nerve. Finally, she bit the bullet over coffee on a Tuesday. He listened, then gave her the cold shoulder for the next three months. She, who normally wore her heart on her sleeve, learned to keep her feelings closer to her chest."
    **Question**: What three body-part idioms appear in the passage?
-   **Answer**: "bit the bullet" (forced herself to act), "gave her the cold shoulder" (ignored her), "wore her heart on her sleeve" (showed emotions openly)
+   **Answer**: bit the bullet, cold shoulder, heart on sleeve
+   **Accepts**: bit the bullet / gave the cold shoulder / wore her heart on her sleeve
    **Explanation**: Three idioms layered: she bit the bullet (decisive action despite difficulty), he gave her the cold shoulder (deliberate rejection), she normally wore her heart on her sleeve (her usual emotional openness — now changed). Each idiom does specific narrative work.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -220,7 +221,8 @@
 5. **read_answer**
    **Passage**: "The meeting started cordially, but everyone was avoiding the elephant in the room — the upcoming layoffs. When Maria finally let the cat out of the bag by mentioning specific names, the room went silent. The CEO had been barking up the wrong tree all morning, focusing on revenue when the real fear was jobs. Asked when announcements would come, he said 'soon' — which, knowing him, meant when pigs fly."
    **Question**: Which four idioms appear in the passage?
-   **Answer**: "elephant in the room", "let the cat out of the bag", "barking up the wrong tree", "when pigs fly"
+   **Answer**: elephant in the room, let the cat out of the bag, barking up the wrong tree, when pigs fly
+   **Accepts**: elephant in the room / let the cat out of the bag / barking up the wrong tree / when pigs fly
    **Explanation**: Four idioms threaded through the passage: the avoided topic (elephant), the accidental reveal (cat out of bag), the misguided focus (wrong tree), and the impossibility (pigs fly). Each does specific narrative work, replacing longer explanations with vivid images.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -372,7 +374,8 @@
 5. **read_answer**
    **Passage**: "Time flies when you're not paying attention. I hadn't seen Marco in years — we used to be close, but life moves and we lost touch. Then, out of the blue, he called last Tuesday. We met for coffee that same week. He was tired — he'd been burning the midnight oil on a startup that was either about to take off or crash, with no in-between. I told him to take a rain check on his other commitments and rest. He laughed, but the laugh was thin."
    **Question**: Which time-related idioms appear in the passage?
-   **Answer**: "Time flies", "out of the blue", "burning the midnight oil", "take a rain check"
+   **Answer**: time flies, out of the blue, burning the midnight oil, take a rain check
+   **Accepts**: time flies / out of the blue / burning the midnight oil / take a rain check
    **Explanation**: Four time idioms layered: time flies (time passes quickly), out of the blue (unexpectedly), burning the midnight oil (working late), take a rain check (postpone). Each compresses a longer concept into a vivid image.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -524,7 +527,8 @@
 5. **read_answer**
    **Passage**: "After two years of patches and workarounds, we finally threw in the towel on the legacy system. It wasn't one big failure — it was the slow accumulation of cutting corners on every release. The data loss on Tuesday was the last straw. We're back to square one now, designing a proper replacement. The ball is in the procurement team's court — they need to approve the budget by Friday."
    **Question**: Which five action idioms appear in the passage?
-   **Answer**: "threw in the towel", "cutting corners", "the last straw", "back to square one", "the ball is in [their] court"
+   **Answer**: threw in the towel, cutting corners, last straw, back to square one, ball is in their court
+   **Accepts**: threw in the towel / cutting corners / last straw / back to square one / ball is in their court
    **Explanation**: Five idioms tracking a project's failure and reset: gave up (threw in the towel), accumulated shortcuts (cutting corners), final breaking point (the last straw), starting over (back to square one), now their turn (ball in their court). Each carries a stage of the story.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -676,7 +680,8 @@
 5. **read_answer**
    **Passage**: "I was nervous about the meeting — I always struggle to break the ice with new clients. But Maria opened with a joke, and her first question hit the nail on the head: she asked the one thing nobody else had thought of. As a rule of thumb, I let her lead from there. Speak of the devil — she's just walked in. The presentation that took us a week to prepare turned out to be a piece of cake when she ran it."
    **Question**: Which five conversational idioms appear?
-   **Answer**: "break the ice", "hit the nail on the head", "as a rule of thumb", "speak of the devil", "a piece of cake"
+   **Answer**: break the ice, hit the nail on the head, rule of thumb, speak of the devil, piece of cake
+   **Accepts**: break the ice / hit the nail on the head / rule of thumb / speak of the devil / piece of cake
    **Explanation**: Five conversational idioms in one short passage: starting conversation (break the ice), being exactly right (hit the nail on the head), general principle (rule of thumb), coincidental appearance (speak of the devil), easy task (piece of cake). All high-frequency native conversational currency.
 
 ### 2. Listening/Speaking (5 phrases)

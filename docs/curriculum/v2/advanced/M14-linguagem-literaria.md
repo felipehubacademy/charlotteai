@@ -56,8 +56,8 @@
 5. **read_answer**
    **Passage**: "The metaphor ran through the essay. 'Memory is a city you have lived in too long. Its streets seem familiar, but you no longer notice them. Then one afternoon, after months away, you walk past a corner you have crossed a thousand times — and the light is different, and the city is again strange to you, and you realise you were never going to see it clearly while you lived inside it.'"
    **Question**: How does the passage extend the central metaphor?
-   **Answer**: by treating returning to a familiar place after absence as the only way to see it again
-   **Accepts**: through the image of walking back into a place you stopped seeing
+   **Answer**: returning after absence to see clearly
+   **Accepts**: see familiar place anew after absence / only see city clearly after leaving / familiar becomes strange after time away
    **Explanation**: Extended metaphor: "Memory is a city" — and the paragraph develops the comparison across multiple sentences (streets you stopped noticing, walking back after months, light is different, never see clearly while inside). Literary craft sustains the metaphor without re-stating it.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -210,7 +210,8 @@
 5. **read_answer**
    **Passage**: "The city slept badly that summer. The heat refused to release its grip even at three a.m. Buses sighed through the empty streets, half-empty themselves. Behind every shuttered window, a fan was arguing with the air. By dawn, the buildings looked tired, and the river was already glittering its way through another day it hadn't asked for."
    **Question**: Find three personifications in the passage.
-   **Answer**: the city slept badly, the heat refused to release its grip, buses sighed, a fan was arguing with the air, the buildings looked tired, the river was glittering its way through a day it hadn't asked for
+   **Answer**: city slept badly, heat refused to release, buses sighed
+   **Accepts**: city slept badly / heat refused to release / buses sighed / fan was arguing / buildings looked tired / river was glittering its way
    **Explanation**: Six personifications in five sentences: the city sleeps badly, heat refuses, buses sigh, fans argue, buildings look tired, the river was glittering through a day it hadn't asked for. Each gives a non-human entity human agency or feeling. Literary description at C2.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -517,7 +518,8 @@
 5. **read_answer**
    **Passage**: "He had spent thirty years building the business — through three recessions, two divorces, and one funeral that he had not been able to attend because the company needed him in Singapore. The company, now, didn't need him anywhere. The board had voted. Unanimously. He was free."
    **Question**: How does the passage use sentence length for effect?
-   **Answer**: opens with one long sentence describing decades; follows with short sentences/fragments ("Unanimously. He was free.") to deliver the rupture
+   **Answer**: long sentence then short fragments
+   **Accepts**: long sentence then short / opens long, ends short / short fragments for effect
    **Explanation**: The long opening sentence builds the weight of three decades. The short sentences and fragment ("Unanimously. He was free.") deliver the consequence with rhythmic shock. Length contrast IS the meaning.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -670,7 +672,8 @@
 5. **read_answer**
    **Passage**: "She had been waiting two hours. She did not look at her phone. She did not stand to stretch. She had finished her coffee and ordered another, then a third, paying each time in exact change. When his name appeared in the doorway, she stood without hurry, smiled without warmth, and gestured to the seat across from her as if the meeting had been arranged for her convenience all along."
    **Question**: Without using the word, what emotion is the woman conveying?
-   **Answer**: anger, or controlled fury, or being kept waiting / refusing to show it
+   **Answer**: anger
+   **Accepts**: controlled fury / kept waiting / refusing to show anger
    **Explanation**: No emotion word appears. Yet readers infer: contained anger, deliberate composure, asserting power. The details — "exact change", "stood without hurry", "smiled without warmth", "as if... her convenience" — show what's felt. Reader does the work; writer trusts the reader.
 
 ### 2. Listening/Speaking (5 phrases)

@@ -39,6 +39,7 @@
 3. **word_bank** — "She _____ this morning."
    **Choices**: called / has called / had called / is calling
    **Answer**: has called
+   **Accepts**: called
    **Explanation**: "This morning" (if it's still morning) = unfinished → PP. If morning is over → past simple "called".
 
 4. **word_bank** — "We _____ yesterday."

@@ -70,7 +70,7 @@
 6. **fill_gap** — "A: What flavor? B: _____, please."
    **Hint**: Um sabor (ex.: chocolate, morango, baunilha)
    **Answer**: Chocolate
-   **Accepts**: Strawberry / Vanilla
+   **Accepts**: Strawberry / Vanilla / chocolate / strawberry / vanilla
    **Explanation**: Responda só com o sabor + "please": "Chocolate, please". Também vale strawberry (morango) e vanilla (baunilha).
 
 7. **fill_gap** — "Can I get the check, _____?"
@@ -234,6 +234,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 6. **fill_gap** — "A: May I help you? B: Yes, _____! I'm looking for ham."
    **Hint**: Por favor
    **Answer**: please
+   **Accepts**: sure
    **Explanation**: "Yes, please!" é a resposta educada a uma oferta de ajuda.
 
 7. **fill_gap** — "The snacks are in aisle number _____." (5)

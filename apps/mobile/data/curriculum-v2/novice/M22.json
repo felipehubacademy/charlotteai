@@ -337,7 +337,10 @@
             "and"
           ],
           "answer": "so",
-          "explanation": "\"Likes coffee SO drinks\" — consequência."
+          "explanation": "\"Likes coffee SO drinks\" — consequência.",
+          "accepts": [
+            "and"
+          ]
         },
         {
           "type": "fill_gap",

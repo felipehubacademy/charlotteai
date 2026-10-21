@@ -432,7 +432,8 @@
 10. **read_answer**
     **Passage**: "Q: Were you at the meeting? A: Yes, I was. Q: Was Maria there too? A: No, she wasn't. She was sick."
     **Question**: Onde Maria estava?
-    **Answer**: sick (or "she was sick" — at home implied)
+    **Answer**: sick
+    **Accepts**: she was sick / at home sick
     **Explanation**: O texto diz "She was sick" — explicando por que ela não estava na reunião.
 
 ### 2. Listening/Speaking (5 phrases)

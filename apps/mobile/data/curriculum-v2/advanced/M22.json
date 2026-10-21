@@ -298,8 +298,13 @@
           "type": "read_answer",
           "passage": "Rarely has a single technology divided expert opinion as sharply as artificial intelligence has in the past decade. It is widely believed that AI will reshape the nature of work, though it could be argued that the reshaping has already begun. What is genuinely at stake is not whether change is coming, but how the gains will be distributed — and whose voices will shape that distribution. This essay argues for a third path: a regulatory framework that prioritises distributive justice over both reflexive enthusiasm and reflexive caution.",
           "question": "According to the opening, what is genuinely at stake?",
-          "answer": "how the gains will be distributed (and whose voices will shape that distribution)",
-          "explanation": "The opening integrates: inversion (\"Rarely has...\"), impersonal passive (\"It is widely believed...\"), hedged cleft (\"it could be argued...\"), pseudo-cleft reframe (\"What is genuinely at stake is not... but...\"), academic thesis statement. Five distinct C2 devices in five sentences. Op-ed opening grade."
+          "answer": "how gains will be distributed",
+          "explanation": "The opening integrates: inversion (\"Rarely has...\"), impersonal passive (\"It is widely believed...\"), hedged cleft (\"it could be argued...\"), pseudo-cleft reframe (\"What is genuinely at stake is not... but...\"), academic thesis statement. Five distinct C2 devices in five sentences. Op-ed opening grade.",
+          "accepts": [
+            "distribution of gains",
+            "whose voices shape distribution",
+            "distribution"
+          ]
         }
       ],
       "listening_speaking": [
@@ -508,8 +513,16 @@
           "type": "read_answer",
           "passage": "She knew the only way the message would land was through the long route. 'I can see why you'd frame it that way — and to be fair, the data does support the topline argument. That said, the deeper question, it seems to me, is whether we're optimising for the right outcome. With respect, I'd push back on the framing of success here.' Three concessions before a single disagreement. The other person leaned in instead of away.",
           "question": "How many diplomatic devices does the speaker use before reaching the disagreement?",
-          "answer": "at least three — 'I can see why', 'to be fair', 'that said', 'with respect' (4 if all counted)",
-          "explanation": "Diplomatic disagreement requires layered concession. The speaker grants ground three or four times before pivoting — each acknowledgement keeps the listener engaged. By the time the disagreement arrives, the relationship is intact. Integrates M08, M10, M11, M21."
+          "answer": "at least three",
+          "explanation": "Diplomatic disagreement requires layered concession. The speaker grants ground three or four times before pivoting — each acknowledgement keeps the listener engaged. By the time the disagreement arrives, the relationship is intact. Integrates M08, M10, M11, M21.",
+          "accepts": [
+            "three",
+            "3",
+            "I can see why",
+            "to be fair",
+            "that said",
+            "with respect"
+          ]
         }
       ],
       "listening_speaking": [
@@ -707,18 +720,31 @@
           "explanation": "Tag question \"aren't / are not we?\" for soft confirmation. Drawn from M21. Or universal \"right?\" for casual register. Both work; \"aren't / are not we?\" is slightly more polished, \"right?\" slightly more casual."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Too formal for casual context: \"I will see you on Saturday. Would you be inclined to arrive at noon?\"",
           "hint": "Casual contractions and conversational rhythm",
           "answer": "I'll see you Saturday. Wanna meet at noon? (or: See you Saturday — noon work for you?)",
-          "explanation": "Casual rewrite: \"I'll / I will\" (contraction), drop \"on\" before \"Saturday\" in casual register, \"Wanna meet\" (gonna/wanna conversion), question framed as \"X work for you?\" — short native pattern. Removes formal phrasing not needed in casual exchange."
+          "explanation": "Casual rewrite: \"I'll / I will\" (contraction), drop \"on\" before \"Saturday\" in casual register, \"Wanna meet\" (gonna/wanna conversion), question framed as \"X work for you?\" — short native pattern. Removes formal phrasing not needed in casual exchange.",
+          "prompt": "Rewrite this so it sounds casual (for a friend): \"I will see you on Saturday. Would you be inclined to arrive at noon?\"",
+          "example_answer": "I'll see you Saturday. Wanna meet at noon?"
         },
         {
           "type": "read_answer",
           "passage": "The conversation flowed. 'You been working late again?' 'Mm-hm. Should be done by Friday, though.' 'Want to grab a drink after, yeah?' 'I'd love to. Same place as last time?' 'Yeah, sounds good.' 'Cool — text me when you're heading out.' Six exchanges, twelve seconds, zero formality.",
           "question": "How many native conversational features can you spot?",
-          "answer": "at least six — 'You been' (dropped 'have'), 'Mm-hm' (backchannel), 'Should be' (ellipsis), 'grab' (verb), 'yeah?' (tag), 'I'd love to' (ellipsis+contraction), 'sounds good' (ellipsis)",
-          "explanation": "Tight casual exchange packed with native features: dropped auxiliary, backchannel, ellipsis, verb conversion, tag, contraction, set phrase. C2 conversational mastery looks like this — every utterance shaped by native instincts simultaneously."
+          "answer": "at least six",
+          "explanation": "Tight casual exchange packed with native features: dropped auxiliary, backchannel, ellipsis, verb conversion, tag, contraction, set phrase. C2 conversational mastery looks like this — every utterance shaped by native instincts simultaneously.",
+          "accepts": [
+            "six",
+            "6",
+            "You been",
+            "Mm-hm",
+            "Should be",
+            "grab",
+            "yeah?",
+            "I'd love to",
+            "sounds good"
+          ]
         }
       ],
       "listening_speaking": [
@@ -936,8 +962,13 @@
           "type": "read_answer",
           "passage": "She moved through her morning at three registers. To the board, she wrote: 'It is recommended that the committee defer action pending a full review of the regulatory landscape.' To her co-founder, she texted: 'we need to push the board call to next week, the lawyers aren't ready.' To her best friend over coffee, she said: 'Honestly? The board's about to drive me up the wall — three months of this, and they still haven't read the brief.' Three registers, one truth underneath.",
           "question": "How does the speaker phrase the same underlying message to her best friend?",
-          "answer": "'Honestly? The board's about to drive me up the wall — three months of this, and they still haven't read the brief.'",
-          "explanation": "Three registers, same content: formal board language (\"It is recommended that...\"), casual co-founder text (\"we need to push...\"), intimate friend chat (\"Honestly? The board's about to drive me up the wall...\"). C2 final mastery = effortless register switching, the right English for each room."
+          "answer": "\"Honestly? The board's about to drive me up the wall...\"",
+          "explanation": "Three registers, same content: formal board language (\"It is recommended that...\"), casual co-founder text (\"we need to push...\"), intimate friend chat (\"Honestly? The board's about to drive me up the wall...\"). C2 final mastery = effortless register switching, the right English for each room.",
+          "accepts": [
+            "the board's about to drive me up the wall",
+            "three months of this, still haven't read the brief",
+            "frustration with the board"
+          ]
         }
       ],
       "listening_speaking": [

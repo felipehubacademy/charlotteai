@@ -48,6 +48,7 @@
 3. **fill_gap** — Argument climax: "One reason is that the policy saves money. Another is that it saves lives. _____, it restores public trust."
    **Hint**: marcador de clímax argumentativo
    **Answer**: Most importantly
+   **Accepts**: Most significantly / Importantly
    **Explanation**: Cascade pattern: each marker ranks the next claim higher. "Most importantly" (or "Above all", "Crucially") signals the strongest point — the climax of the argument.
 
 4. **fix_error** — "Firstly the policy works. Secondly it's affordable. Lastly people support it."
@@ -364,7 +365,8 @@
 5. **read_answer**
    **Passage**: "Her closing argument used every classical device. 'We are not asking for charity. We are not asking for permission. We are asking — finally — to be heard. Not after the next crisis. Not after the next election. Now. Tomorrow is too late, and yesterday is gone.' The room rose to its feet before she had finished."
    **Question**: What three rhetorical devices appear?
-   **Answer**: anaphora ("We are not asking..."), tricolon ("we are asking... not after... not after... Now"), antithesis ("Tomorrow is too late, and yesterday is gone")
+   **Answer**: anaphora, tricolon, antithesis
+   **Accepts**: anaphora / tricolon / antithesis
    **Explanation**: Three anaphoras ("We are not asking..."), then tricolon climax ("Not after... Not after... Now."), capped by antithesis ("Tomorrow is too late, and yesterday is gone"). Classical rhetoric concentrated.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -506,7 +508,7 @@
 3. **fill_gap** — Causal climax: "Resources shrank, talent left, morale collapsed — _____, the project failed."
    **Hint**: "Inevitably" or "As a result" or "Hence"
    **Answer**: as a result
-   **Accepts**: inevitably / hence
+   **Accepts**: inevitably / hence / therefore
    **Explanation**: After a cascade of negative causes, a closing marker delivers the consequence. "As a result", "Hence", "Inevitably", "Consequently" — each works. "As a result" is neutral; "Inevitably" claims the outcome was unavoidable; "Hence" is formal.
 
 4. **fix_error** — "A causes B, which causes C, this causes D."
@@ -654,7 +656,7 @@
 2. **multiple_choice** — Conditional warning close: "_____ to act now, we will lose the window entirely."
    **Options**: If we fail / Should we fail / Were we to fail / If we will fail
    **Answer**: If we fail
-   **Accepts**: Should we fail
+   **Accepts**: Should we fail / Were we to fail
    **Explanation**: "If we fail to + base" — direct conditional close. Or inverted formal: "Should we fail to + base". Both work; the formal inverted version (M01-style) registers more gravity. "If we will fail" is grammatically wrong (no "will" in if-clauses).
 
 3. **fill_gap** — Strong frame: "_____ before us is clear: pay the cost of action now or pay a higher one later."
@@ -671,7 +673,8 @@
 5. **read_answer**
    **Passage**: "She landed her closing without flourish. 'What is at stake is not whether this policy is popular, but whether this generation chooses to leave the next one with options. The stakes could not be higher. The choice before us is clear: take the harder road now, or accept that we have decided, by inaction, to make the harder road our children's.' She sat down. The room sat with her for a long second."
    **Question**: How does the speaker frame the choice?
-   **Answer**: take the harder road now, or accept we have made it our children's
+   **Answer**: take the harder road now or make it our children's
+   **Accepts**: take the harder road now / accept we made it our children's / harder road now or for children
    **Explanation**: Three classical conclusion devices: "What is at stake is not X, but Y" (stakes reframe), "The stakes could not be higher" (fixed climactic phrase), "The choice before us is clear: X or Y" (binary frame). Conclusion architecture at C2.
 
 ### 2. Listening/Speaking (5 phrases)

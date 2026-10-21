@@ -561,16 +561,19 @@
 1. **multiple_choice** — "She _____ in a car accident last week."
    **Options**: got hurt / hurt / was hurt / has hurt
    **Answer**: got hurt
+   **Accepts**: was hurt
    **Explanation**: "Get + past participle" = informal passive, especially for state changes or accidents. "Got hurt" — common in speech.
 
 2. **multiple_choice** — "They _____ last summer."
    **Options**: got married / married / were married / get married
    **Answer**: got married
+   **Accepts**: were married
    **Explanation**: "Got married" — fixed chunk. "Get" passive is heavily used for life events.
 
 3. **word_bank** — "He _____ for the company last month."
    **Choices**: got hired / hired / was hired / has hired
    **Answer**: got hired
+   **Accepts**: was hired
    **Explanation**: "Got hired" — informal alternative for "was hired". Common in speech.
 
 4. **word_bank** — "I always _____ in the rain."
@@ -754,6 +757,7 @@
 4. **word_bank** — "She _____ married last weekend."
    **Choices**: got / was / is / has been
    **Answer**: got
+   **Accepts**: was
    **Explanation**: "Got married" — chunk informal de evento de vida.
 
 5. **fill_gap** — "This room _____ regularly."

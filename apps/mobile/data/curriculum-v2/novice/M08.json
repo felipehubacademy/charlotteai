@@ -844,7 +844,16 @@
           "sentence": "I love _____ books.",
           "hint": "Tipo de livro (gênero), sem artigo",
           "answer": "reading",
-          "explanation": "\"I love reading books\" — verbo no -ing após love. Ou pode ser tipo: \"love mystery books\"."
+          "explanation": "\"I love reading books\" — verbo no -ing após love. Ou pode ser tipo: \"love mystery books\".",
+          "accepts": [
+            "history",
+            "comic",
+            "comics",
+            "science fiction",
+            "mystery",
+            "romance",
+            "adventure"
+          ]
         },
         {
           "type": "fill_gap",

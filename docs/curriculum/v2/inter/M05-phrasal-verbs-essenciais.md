@@ -57,7 +57,7 @@
    **Explanation**: "Go out" = leave home (often for social activity).
 
 7. **fill_gap** — "He _____ the meeting." (left the meeting)
-   **Hint**: phrasal verb "leave"
+   **Hint**: past tense of "leave"
    **Answer**: left
    **Explanation**: Sometimes simple verbs work too. "Left the meeting".
 
@@ -927,6 +927,7 @@
 3. **word_bank** — Confirming you are the person being asked for: "Yes, _____."
    **Choices**: speaking / I'm here / it's me / talking
    **Answer**: speaking
+   **Accepts**: it's me
    **Explanation**: "Yes, speaking" — concise phone-specific confirmation that you are the person being asked for. Fixed phone convention. "Yes, it's / it is me" works casually but "speaking" is more professional.
 
 4. **word_bank** — Transferring a call: "I'll _____ you through."
@@ -963,7 +964,8 @@
 10. **read_answer**
     **Passage**: "Hello, this is Maria speaking. Can I speak to Pedro, please? Oh, he's on another line. Can you take a message? Please tell him to call me back when he's free. My number is 555-1234. Thanks — sorry, I think we're being cut off. I'll get back to you later. Bye!"
     **Question**: What two phone-specific phrasal verbs appear?
-    **Answer**: "cut off" (connection lost) and "get back to" (respond later). Also: "call me back" (return call), "speak to" (talk with).
+    **Answer**: cut off, get back to
+    **Accepts**: cut off / get back to / call me back
     **Explanation**: Phone English vocabulary: "this is...speaking" (identification), "speak to" (talk with), "on another line" (busy), "take a message" (record), "call back" (return call), "cut off" (lose connection), "get back to" (respond later). Each is a fixed phone convention.
 
 ### 2. Listening/Speaking (5 phrases)

@@ -1167,7 +1167,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "While we _____ for lunch, it started to rain.",
+          "sentence": "While we _____ (cook) for lunch, it started to rain.",
           "hint": "past continuous of \"cook\"",
           "answer": "were cooking",
           "explanation": "\"Were cooking\" — plural past continuous."

@@ -236,7 +236,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 7. **fill_gap** — "Sit _____ me, there's a free seat!"
    **Hint**: Ao meu lado
    **Answer**: beside
-   **Accepts**: next to
+   **Accepts**: next to / by
    **Explanation**: "Sit beside me" ou "Sit next to me" = senta do meu lado.
 
 8. **fix_error** — "The bank is next the pharmacy."

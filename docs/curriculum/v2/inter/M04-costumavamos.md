@@ -576,7 +576,7 @@
 
 4. **word_bank** — "My grandpa _____ tell us stories." (action)
    **Choices**: would / used to / both work
-   **Answer**: would
+   **Answer**: both work
    **Explanation**: For repeated past action narrative, "would" works (used to also works).
 
 5. **fill_gap** — "I _____ live in Rio."

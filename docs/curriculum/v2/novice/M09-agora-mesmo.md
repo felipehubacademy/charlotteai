@@ -586,16 +586,19 @@
 5. **fill_gap** — "I'm reading a great book _____."
    **Hint**: Marcador temporal pra agora
    **Answer**: right now
+   **Accepts**: at the moment
    **Explanation**: "Right now" enfatiza a ação no momento. Continuous + right now é combinação natural.
 
 6. **fill_gap** — "She is staying with us _____."
    **Hint**: Marcador de período curto (semana atual)
    **Answer**: this week
+   **Accepts**: at the moment
    **Explanation**: "This week" — período presente e específico. Combina com continuous.
 
 7. **fill_gap** — "They're traveling _____."
    **Hint**: Marcador de período atual (mês)
    **Answer**: this month
+   **Accepts**: at the moment
    **Explanation**: "This month" — atividade temporária em curso.
 
 8. **fix_error** — "I'm working every day right now."

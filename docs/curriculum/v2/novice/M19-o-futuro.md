@@ -963,6 +963,7 @@
 5. **fill_gap** — "It's _____ today — really cold!"
    **Hint**: clima muito frio
    **Answer**: freezing
+   **Accepts**: cold
    **Explanation**: "Freezing" — adjetivo intensivo para "very cold". Outros intensivos: "boiling" (very hot), "soaking" (very wet). Não usar "very freezing" — o adjetivo já é intensificado.
 
 6. **fill_gap** — "_____ is my favorite season."

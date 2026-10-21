@@ -431,7 +431,7 @@
 9. **fix_error** — "He was sick, therefore he didn't come."
    **Hint**: "Therefore" prefere ponto/ponto-e-vírgula antes
    **Answer**: He was sick. Therefore, he didn't come.
-   **Accepts**: He was sick; therefore, he didn't come.
+   **Accepts**: He was sick; therefore, he didn't come. / He was sick; therefore he didn't come.
    **Explanation**: A simple comma isn't strong enough for "therefore". Use a period or semicolon.
 
 10. **read_answer**
@@ -926,6 +926,7 @@
 1. **multiple_choice** — "I work _____ a tech company."
    **Options**: for / at / in / by
    **Answer**: for
+   **Accepts**: at
    **Explanation**: "Work for + company name" — preposition for employer relationship. "I work for Google / for a startup". Different from "work at" (location) or "work in" (industry/field). Common error: using "in" instead of "for".
 
 2. **multiple_choice** — "I work _____ marketing."

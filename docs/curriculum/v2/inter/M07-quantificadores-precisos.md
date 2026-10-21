@@ -739,8 +739,8 @@
 ### 1. Grammar (10 exercises)
 
 1. **multiple_choice** — "I have _____ time today."
-   **Options**: a little / a few / plenty of / hardly any
-   **Answer**: a little (any of these correct, but a little for "some, small amount")
+   **Options**: a little / a few / many / few
+   **Answer**: a little
    **Explanation**: "A little" with uncountable.
 
 2. **multiple_choice** — "She has _____ close friends."
@@ -761,7 +761,7 @@
 5. **fill_gap** — "There's _____ food in the fridge."
    **Hint**: small amount
    **Answer**: a little
-   **Accepts**: some
+   **Accepts**: some / little
    **Explanation**: "A little food" — small positive amount.
 
 6. **fill_gap** — "_____ of my coworkers are friendly."

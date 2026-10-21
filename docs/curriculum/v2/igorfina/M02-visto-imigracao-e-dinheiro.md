@@ -235,6 +235,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 5. **fill_gap** — "I'm a _____. I fly planes."
    **Hint**: Profissão de quem pilota avião
    **Answer**: pilot
+   **Accepts**: co-pilot / captain
    **Explanation**: "Pilot" é piloto. Repare: "I'm a pilot", com o "a" antes.
 
 6. **fill_gap** — "I _____ in sales."

@@ -206,7 +206,8 @@
 5. **read_answer**
    **Passage**: "English is stress-timed. The amount of time between stressed syllables stays roughly constant, no matter how many unstressed syllables sit between them. 'BEN went HOME' takes about the same time as 'BENjamin has GONE to the HOUSE' — the function words and unstressed syllables compress to keep the beat. Native rhythm is built on this compression."
    **Question**: How does English keep the same rhythm even with more words?
-   **Answer**: by compressing function words and unstressed syllables between content words (stressed beats stay roughly evenly spaced)
+   **Answer**: compresses unstressed syllables
+   **Accepts**: compressing function words / unstressed syllables compressed / stress-timed rhythm
    **Explanation**: Stress-timed language: the rhythm is set by stressed syllables, and everything else fits between them. Portuguese is syllable-timed (each syllable roughly equal); English compresses unstressed syllables. C2 spoken fluency = mastery of this compression.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -358,7 +359,8 @@
 5. **read_answer**
    **Passage**: "Native English in flow rarely sounds like written English. 'I'm going to find out what he said' compresses to 'I'm-gonna-fine-DOUT what-he-SAID' — linking, weak forms, elision. The written words are unchanged. The sounds are barely recognisable to learners taught only the careful version. Connected speech is the gap between textbook and spoken English."
    **Question**: According to the passage, what is the gap between textbook and spoken English?
-   **Answer**: connected speech (linking, weak forms, elision, assimilation that the textbook doesn't show)
+   **Answer**: connected speech
+   **Accepts**: linking / weak forms / elision / connected speech gap
    **Explanation**: Three phenomena named: linking (across word boundaries), weak forms (function-word reduction), elision (sound drops like /t/ in fast speech). All three are normal native pronunciation, but textbooks rarely show them, leaving learners surprised when they encounter real speech.
 
 ### 2. Listening/Speaking (5 phrases)

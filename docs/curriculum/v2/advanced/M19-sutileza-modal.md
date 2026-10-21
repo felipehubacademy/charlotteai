@@ -59,7 +59,8 @@
 5. **read_answer**
    **Passage**: "The radio silence had lasted three days. He must be off the grid — there was no other explanation. Or he might have lost his phone again, which would not be the first time. He should be back in range by Friday, but the team had stopped relying on his promises long ago."
    **Question**: According to the passage, what are the three possible explanations for his silence?
-   **Answer**: he's off the grid (must), he lost his phone (might have), he should be back by Friday
+   **Answer**: off the grid, lost phone, back by Friday
+   **Accepts**: off the grid / lost his phone / should be back by Friday
    **Explanation**: Three modal shades calibrating certainty: "must be off the grid" (strong inference), "might have lost his phone" (weaker possibility), "should be back by Friday" (expected but uncertain). Each modal does specific epistemic work.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -211,7 +212,8 @@
 5. **read_answer**
    **Passage**: "The analysts were cautious in print but emphatic in private. 'The merger may well close in the second quarter — every leak points that way. The valuation could well climb another fifteen percent before announcement. And the regulators, who have stayed quiet so far, might well intervene only after the press cycle has moved on.'"
    **Question**: How does the analyst frame each claim?
-   **Answer**: each one is hedged but probable — using 'may well', 'could well', 'might well'
+   **Answer**: hedged with 'may well', 'could well', 'might well'
+   **Accepts**: 'may well' / 'could well' / 'might well' / hedged but probable
    **Explanation**: Three hedged-probable modals: "may well close", "could well climb", "might well intervene". Each signals likelihood without certainty. The phrase carries quiet confidence — the speaker isn't asserting, but isn't doubting either. Analyst-grade register.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -516,7 +518,8 @@
 5. **read_answer**
    **Passage**: "The launch was supposed to happen on Monday. By all internal measures, the team was bound to make it. But the regulator was unlikely to issue final approval in time, and the marketing campaign was meant to align with broader industry events that had now shifted. Three layers of expectation, three layers of slippage."
    **Question**: According to the passage, why was the launch likely to slip?
-   **Answer**: the regulator was unlikely to approve in time / marketing was meant to align with shifted industry events
+   **Answer**: regulator unlikely to approve, marketing misaligned
+   **Accepts**: regulator unlikely to approve in time / marketing campaign misaligned / approval and marketing timing
    **Explanation**: Four quasi-modals layered: "was supposed to happen" (planned), "was bound to make it" (high probability), "was unlikely to issue" (probability negative), "was meant to align" (convention/plan). Each carries a slightly different shade of expectation.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -668,7 +671,8 @@
 5. **read_answer**
    **Passage**: "The project manager laid out the scenarios. 'If the budget holds, we should be able to finish on time. If costs rise by another five percent, we might have to drop one of the integrations. And if the regulators raise concerns at any point, we would have to pause work entirely until we have a written response. Three contingencies, three layered obligations.'"
    **Question**: What would force a complete pause?
-   **Answer**: if the regulators raise concerns (we would have to pause until written response)
+   **Answer**: if regulators raise concerns
+   **Accepts**: regulators raise concerns / pause until written response / regulator concerns
    **Explanation**: Three layered modal structures: "should be able to" (modal + quasi-modal), "might have to drop" (possibility + necessity), "would have to pause" (hypothetical + necessity). Each combines two modal meanings.
 
 ### 2. Listening/Speaking (5 phrases)

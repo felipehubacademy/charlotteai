@@ -1168,7 +1168,10 @@
             "next day"
           ],
           "answer": "the next day",
-          "explanation": "\"Tomorrow\" → \"the next day\" (or \"the following day\") in reported speech."
+          "explanation": "\"Tomorrow\" → \"the next day\" (or \"the following day\") in reported speech.",
+          "accepts": [
+            "the day after"
+          ]
         },
         {
           "type": "word_bank",
@@ -1192,7 +1195,10 @@
             "one day before"
           ],
           "answer": "the day before",
-          "explanation": "\"Yesterday\" → \"the day before\" (or \"the previous day\") in reported speech."
+          "explanation": "\"Yesterday\" → \"the day before\" (or \"the previous day\") in reported speech.",
+          "accepts": [
+            "the previous day"
+          ]
         },
         {
           "type": "fill_gap",

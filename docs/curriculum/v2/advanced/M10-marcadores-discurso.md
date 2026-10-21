@@ -199,6 +199,7 @@
 3. **fill_gap** — "_____, I might have done the same thing in his position."
    **Hint**: "Granted" or "Admittedly" or "Then again"
    **Answer**: Then again
+   **Accepts**: Granted / Admittedly
    **Explanation**: "Then again" introduces a reconsideration — second-guessing your own assertion. Punctuation: comma after. Slightly more reflective than "that said"; suggests the speaker is genuinely reconsidering, not just balancing.
 
 4. **fix_error** — "She's talented. However, that said, she's also lazy."

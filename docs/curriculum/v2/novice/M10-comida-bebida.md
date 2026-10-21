@@ -574,7 +574,7 @@
    **Explanation**: "Can I have...?" é pedido educado padrão em restaurantes. Sem "do".
 
 3. **word_bank** — "I'd like _____ pizza, please."
-   **Choices**: a / the / some / one
+   **Choices**: a / the / an / much
    **Answer**: a
    **Explanation**: "A pizza" — pedido singular contável. "I'd / I would like a pizza".
 
@@ -759,6 +759,7 @@
 4. **word_bank** — "Can I have _____ apple, please?"
    **Choices**: an / some / many / one
    **Answer**: an
+   **Accepts**: one
    **Explanation**: "An apple" — singular contável (apple começa com vogal → "an").
 
 5. **fill_gap** — "Is there _____ milk in the fridge?"

@@ -208,7 +208,8 @@
 5. **read_answer**
    **Passage**: "The protocol was unambiguous. 'It is vital that all personnel be briefed before deployment. It is crucial that no detail be omitted from the report. It is imperative that the chain of command be respected at every step.' Procedural language at its most formal."
    **Question**: What three things does the protocol demand?
-   **Answer**: all personnel be briefed before deployment, no detail be omitted from the report, the chain of command be respected
+   **Answer**: brief all personnel, omit no detail, respect chain of command
+   **Accepts**: brief all personnel / omit no detail / respect chain of command / everyone briefed, no detail omitted, chain of command respected
    **Explanation**: Three stacked "It is [vital/crucial/imperative] that + subject + be + past participle" — passive subjunctive used for impersonal formality. Procedural writing leans heavily on this register.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -360,7 +361,8 @@
 5. **read_answer**
    **Passage**: "Stevens watched the rain pool on the gravel drive. 'If only it were summer,' he said, 'and if I were ten years younger, I would walk to the village without a coat. I wish I were the kind of man who didn't notice weather. But I am not, and never was.'"
    **Question**: What three things does Stevens wish?
-   **Answer**: that it were summer, that he were ten years younger, that he were the kind of man who didn't notice weather
+   **Answer**: summer, ten years younger, not notice weather
+   **Accepts**: if it were summer / if I were ten years younger / wish I didn't notice weather
    **Explanation**: Three stacked subjunctive "were" forms — formal, literary register. Note final "I am not, and never was" — switches back to indicative for present/past fact.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -665,7 +667,8 @@
 5. **read_answer**
    **Passage**: "The professor closed her lecture with a quiet line: 'I would only ask that you remember three things. That you read what challenges you. That you write what scares you. And that, lest you become comfortable, you teach what you have only just begun to understand.' The room was silent for a long second."
    **Question**: What three things does she ask students to remember?
-   **Answer**: read what challenges you, write what scares you, teach what you have only just begun to understand
+   **Answer**: read what challenges, write what scares, teach what you just learned
+   **Accepts**: read what challenges you / write what scares you / teach what you have just begun to understand
    **Explanation**: Three mandative subjunctives ("that you read", "that you write", "that you teach"), capped by a "lest" subjunctive ("lest you become comfortable"). Layered C1 grammar in service of memorable speech.
 
 ### 2. Listening/Speaking (5 phrases)

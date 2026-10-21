@@ -392,6 +392,7 @@
 2. **multiple_choice** — Direct: "Don't wait for me." Reported: "She told me _____ for her."
    **Options**: not to wait / to not wait / don't wait / not waiting
    **Answer**: not to wait
+   **Accepts**: to not wait
    **Explanation**: Negative command: "NOT TO + base". "Told me not to wait" — "not" before "to".
 
 3. **word_bank** — Direct: "Be quiet." Reported: "He told us _____ quiet."
@@ -402,6 +403,7 @@
 4. **word_bank** — Direct: "Don't speak loudly." Reported: "She told them _____ loudly."
    **Choices**: not to speak / to not speak / don't speak / not speaking
    **Answer**: not to speak
+   **Accepts**: to not speak
    **Explanation**: Standard negative: "not to + base". "Not to speak loudly".
 
 5. **fill_gap** — Direct: "Open the window." Reported: "He told me _____ the window."
@@ -570,6 +572,7 @@
 2. **multiple_choice** — Direct: "Please don't tell anyone." Reported: "He asked me _____ anyone."
    **Options**: not to tell / to not tell / don't tell / not telling
    **Answer**: not to tell
+   **Accepts**: to not tell
    **Explanation**: Negative request: "asked me not to tell". "Not" before "to".
 
 3. **word_bank** — Direct: "Please be careful." Reported: "She _____ me to be careful."

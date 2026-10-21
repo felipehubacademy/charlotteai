@@ -1176,7 +1176,10 @@
           "sentence": "\"_____ I borrow your pen?\" (formal polite)",
           "hint": "may/might for formal",
           "answer": "May",
-          "explanation": "\"May I\" — formal request."
+          "explanation": "\"May I\" — formal request.",
+          "accepts": [
+            "Might"
+          ]
         },
         {
           "type": "fix_error",

@@ -348,7 +348,11 @@
           "sentence": "I'm a _____. I fly planes.",
           "hint": "Profissão de quem pilota avião",
           "answer": "pilot",
-          "explanation": "\"Pilot\" é piloto. Repare: \"I'm a pilot\", com o \"a\" antes."
+          "explanation": "\"Pilot\" é piloto. Repare: \"I'm a pilot\", com o \"a\" antes.",
+          "accepts": [
+            "co-pilot",
+            "captain"
+          ]
         },
         {
           "type": "fill_gap",

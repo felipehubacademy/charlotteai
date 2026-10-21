@@ -504,7 +504,8 @@
 
 3. **fill_gap** — "They talked her _____ the meeting."
    **Hint**: preposition + -ing
-   **Answer**: into attending (or out of attending — both grammatical, different meaning)
+   **Answer**: into attending
+   **Accepts**: out of attending
    **Explanation**: "Talk + person + into + -ing" (persuaded to do) or "out of + -ing" (dissuaded from doing). Both prepositional patterns common with "talk".
 
 4. **fix_error** — "He discouraged me to apply."

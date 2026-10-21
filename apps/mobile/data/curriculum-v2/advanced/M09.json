@@ -91,8 +91,13 @@
           "type": "read_answer",
           "passage": "The consultant's first report was diplomatic but unmistakable. 'You've hit the nail on the head on customer churn, but that's only the tip of the iceberg. The real elephant in the room is the leadership culture — and reading between the lines of your own employee survey, your people already know it.'",
           "question": "According to the consultant, what is the bigger issue beneath customer churn?",
-          "answer": "the leadership culture (or \"the elephant in the room — leadership culture\")",
-          "explanation": "Four C1 idioms stacked: \"hit the nail on the head\" (precise diagnosis), \"the tip of the iceberg\" (visible portion), \"the elephant in the room\" (avoided real problem), \"reading between the lines\" (decoding implicit messages). Consulting-grade prose."
+          "answer": "leadership culture",
+          "explanation": "Four C1 idioms stacked: \"hit the nail on the head\" (precise diagnosis), \"the tip of the iceberg\" (visible portion), \"the elephant in the room\" (avoided real problem), \"reading between the lines\" (decoding implicit messages). Consulting-grade prose.",
+          "accepts": [
+            "the elephant in the room",
+            "leadership culture issue",
+            "leadership"
+          ]
         }
       ],
       "listening_speaking": [

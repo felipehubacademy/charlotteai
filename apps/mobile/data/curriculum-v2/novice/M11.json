@@ -850,7 +850,10 @@
             "in"
           ],
           "answer": "with",
-          "explanation": "\"Pay with cash\" / \"pay in cash\" — ambas funcionam. \"With\" é mais comum em conversação."
+          "explanation": "\"Pay with cash\" / \"pay in cash\" — ambas funcionam. \"With\" é mais comum em conversação.",
+          "accepts": [
+            "in"
+          ]
         },
         {
           "type": "fill_gap",

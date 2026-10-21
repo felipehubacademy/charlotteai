@@ -497,6 +497,7 @@
 2. **multiple_choice** — "_____ any further questions, please contact our office."
    **Options**: Should you have / If you have / Had you / Were you
    **Answer**: Should you have
+   **Accepts**: If you have
    **Explanation**: "Should you + base" — inverted first conditional, very formal. Used in business correspondence to signal possibility ("if you happen to have"). Common in customer service writing.
 
 3. **fill_gap** — "_____ to ask me, I'd say the proposal needs more work."

@@ -1114,7 +1114,10 @@
             "can't have"
           ],
           "answer": "should have",
-          "explanation": "\"Should have called\" — retrospective regret/apology."
+          "explanation": "\"Should have called\" — retrospective regret/apology.",
+          "accepts": [
+            "could have"
+          ]
         },
         {
           "type": "multiple_choice",

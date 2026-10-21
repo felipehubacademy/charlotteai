@@ -59,7 +59,10 @@
             "is calling"
           ],
           "answer": "has called",
-          "explanation": "\"This morning\" (if it's still morning) = unfinished → PP. If morning is over → past simple \"called\"."
+          "explanation": "\"This morning\" (if it's still morning) = unfinished → PP. If morning is over → past simple \"called\".",
+          "accepts": [
+            "called"
+          ]
         },
         {
           "type": "word_bank",

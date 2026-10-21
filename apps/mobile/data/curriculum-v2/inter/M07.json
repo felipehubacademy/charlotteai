@@ -1140,10 +1140,10 @@
           "options": [
             "a little",
             "a few",
-            "plenty of",
-            "hardly any"
+            "many",
+            "few"
           ],
-          "answer": "a little (any of these correct, but a little for \"some, small amount\")",
+          "answer": "a little",
           "explanation": "\"A little\" with uncountable."
         },
         {
@@ -1187,7 +1187,8 @@
           "hint": "small amount",
           "answer": "a little",
           "accepts": [
-            "some"
+            "some",
+            "little"
           ],
           "explanation": "\"A little food\" — small positive amount."
         },

@@ -592,7 +592,7 @@
 6. **fill_gap** — "She can speak French and _____."
    **Hint**: Idioma (qualquer um)
    **Answer**: Spanish
-**Accepts**: English / German / French / Italian
+**Accepts**: English / German / French / Italian / Portuguese / Chinese / Russian / Japanese / Arabic / Korean
    **Explanation**: Idiomas após "speak" — sem artigo. "Spanish", "English", "German".
 
 7. **fill_gap** — "We can play _____ on Saturdays."

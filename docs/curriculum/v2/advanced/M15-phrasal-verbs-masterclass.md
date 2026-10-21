@@ -55,6 +55,7 @@
 3. **fill_gap** — "Why don't you _____ for dinner this weekend?"
    **Hint**: "Come round" (visit)
    **Answer**: come round
+   **Accepts**: come over
    **Explanation**: "Come round" = visit casually (British). Also: "come round to + idea" = gradually accept. "He came round to my point of view." Multiple meanings: drop by, regain consciousness, change mind. Context-dependent.
 
 4. **fix_error** — "She brought up the change in policy through her advocacy work."
@@ -65,7 +66,8 @@
 5. **read_answer**
    **Passage**: "The decade had brought about changes nobody could have foreseen. Old colleagues he hadn't seen in years would come round unannounced, sit in his kitchen, and tell him things they hadn't told their own families. It took a long time to bring some of them round to the idea that he was no longer the same person they had once known."
    **Question**: What three meanings of "bring/come round" appear in the passage?
-   **Answer**: 'brought about' = caused (changes); 'come round' = visit unannounced; 'bring round' = persuade/convince
+   **Answer**: caused, visit, persuade
+   **Accepts**: brought about = caused / come round = visit / bring round = persuade
    **Explanation**: Three phrasal verbs with shared form but distinct meanings: "brought about" (caused), "come round" (visit), "bring some of them round" (persuade). C2 readers track which meaning fits which context fluidly.
 
 ### 2. Listening/Speaking (5 phrases)

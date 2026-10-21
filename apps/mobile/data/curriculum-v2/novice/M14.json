@@ -622,8 +622,12 @@
           "type": "read_answer",
           "passage": "Q: Were you at the meeting? A: Yes, I was. Q: Was Maria there too? A: No, she wasn't. She was sick.",
           "question": "Onde Maria estava?",
-          "answer": "sick (or \"she was sick\" — at home implied)",
-          "explanation": "O texto diz \"She was sick\" — explicando por que ela não estava na reunião."
+          "answer": "sick",
+          "explanation": "O texto diz \"She was sick\" — explicando por que ela não estava na reunião.",
+          "accepts": [
+            "she was sick",
+            "at home sick"
+          ]
         }
       ],
       "listening_speaking": [

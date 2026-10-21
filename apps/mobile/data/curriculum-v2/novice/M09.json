@@ -841,21 +841,30 @@
           "sentence": "I'm reading a great book _____.",
           "hint": "Marcador temporal pra agora",
           "answer": "right now",
-          "explanation": "\"Right now\" enfatiza a ação no momento. Continuous + right now é combinação natural."
+          "explanation": "\"Right now\" enfatiza a ação no momento. Continuous + right now é combinação natural.",
+          "accepts": [
+            "at the moment"
+          ]
         },
         {
           "type": "fill_gap",
           "sentence": "She is staying with us _____.",
           "hint": "Marcador de período curto (semana atual)",
           "answer": "this week",
-          "explanation": "\"This week\" — período presente e específico. Combina com continuous."
+          "explanation": "\"This week\" — período presente e específico. Combina com continuous.",
+          "accepts": [
+            "at the moment"
+          ]
         },
         {
           "type": "fill_gap",
           "sentence": "They're traveling _____.",
           "hint": "Marcador de período atual (mês)",
           "answer": "this month",
-          "explanation": "\"This month\" — atividade temporária em curso."
+          "explanation": "\"This month\" — atividade temporária em curso.",
+          "accepts": [
+            "at the moment"
+          ]
         },
         {
           "type": "fix_error",
