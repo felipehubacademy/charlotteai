@@ -9,6 +9,7 @@ import {
   Pressable, Animated, Easing, ScrollView, Dimensions, StatusBar, useWindowDimensions,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { useKeyboardShown } from '@/lib/useKeyboardShown';
 import { Question, X, ClockCounterClockwise, XCircle, CaretRight, Trash, Plus, DotsThree } from 'phosphor-react-native';
 import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -79,6 +80,7 @@ const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
 export default function PracticeTab() {
+  const keyboardShown = useKeyboardShown();
   const { profile, signOut } = useAuth();
   const { openPaywall } = usePaywallContext();
 
@@ -448,7 +450,7 @@ export default function PracticeTab() {
         // ocupa esse espaço entre o KAV e o fundo da tela (o sistema só
         // empurra/encolhe ATÉ o topo do teclado; a tab bar fica embaixo
         // do KAV mas dentro do que o sistema considera "espaço da janela").
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown}
         keyboardVerticalOffset={
           Platform.OS === 'ios'
             ? tabBarHeight + insets.bottom + 12

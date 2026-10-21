@@ -4,6 +4,7 @@ import {
    Platform, Animated,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { useKeyboardShown } from '@/lib/useKeyboardShown';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { checkGrammarAnswer } from '@/lib/grammarAnswer';
@@ -317,6 +318,7 @@ const GRAMMAR_TOTAL = GRAMMAR_SEQUENCE.length; // 36
 // ── Main Screen ────────────────────────────────────────────────
 
 export default function LearnGrammarScreen() {
+  const keyboardShown = useKeyboardShown();
   const { profile } = useAuth();
   const userId    = profile?.id;
   const userLevel = (profile?.charlotte_level ?? 'Novice') as string;
@@ -431,7 +433,7 @@ export default function LearnGrammarScreen() {
         </TouchableOpacity>
       </View>
 
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown}>
         <ScrollView
           style={{ flex: 1, backgroundColor: C.bg }}
           keyboardShouldPersistTaps="handled"

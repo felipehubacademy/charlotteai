@@ -15,6 +15,7 @@ import {
   ScrollView, Platform, Keyboard,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { useKeyboardShown } from '@/lib/useKeyboardShown';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import {
@@ -64,6 +65,7 @@ const CATEGORIES: { key: VocabCategory; labelPt: string; labelEn: string }[] = [
 ];
 
 export default function AddWordScreen() {
+  const keyboardShown = useKeyboardShown();
   const { profile, session } = useAuth();
   const insets = useSafeAreaInsets();
   const params = useLocalSearchParams<{ term?: string; category?: string; source?: string }>();
@@ -275,7 +277,7 @@ export default function AddWordScreen() {
         </View>
       </SafeAreaView>
 
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={0}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown} keyboardVerticalOffset={0}>
         <ScrollView
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{ padding: 16, gap: 18, paddingBottom: insets.bottom + 150 }}

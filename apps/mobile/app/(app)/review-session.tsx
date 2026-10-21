@@ -5,6 +5,7 @@ import {
   ActivityIndicator, Pressable,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { useKeyboardShown } from '@/lib/useKeyboardShown';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { ArrowLeft, CheckCircle, XCircle, Trophy, Star, ArrowRight, SpeakerHigh } from 'phosphor-react-native';
@@ -258,6 +259,7 @@ const XP_BY_RATING: Record<SRRating, number> = { hard: 5, ok: 10, easy: 15 };
 
 // ── Component ────────────────────────────────────────────────────────────────
 export default function ReviewSession() {
+  const keyboardShown = useKeyboardShown();
   const { session, profile } = useAuth();
   const user = session?.user;
   const insets = useSafeAreaInsets();
@@ -623,7 +625,7 @@ export default function ReviewSession() {
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown}
         keyboardVerticalOffset={insets.top + 10}
       >
         {/* Top bar */}

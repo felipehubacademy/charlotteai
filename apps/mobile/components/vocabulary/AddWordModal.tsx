@@ -13,6 +13,7 @@ import {
   ScrollView, Platform,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { useKeyboardShown } from '@/lib/useKeyboardShown';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { X, MagicWand, BookOpen, SpeakerHigh, Check, Plus } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
@@ -64,6 +65,7 @@ export function AddWordModal({
   initialTerm = '', initialDefinition = '', initialExample = '',
   initialCategory = 'word', source = 'manual',
 }: AddWordModalProps) {
+  const keyboardShown = useKeyboardShown();
   const { profile, session } = useAuth();
   const insets = useSafeAreaInsets();
   const level  = profile?.charlotte_level ?? 'Inter';
@@ -223,7 +225,7 @@ export function AddWordModal({
     <Modal visible={visible} animationType="fade" transparent statusBarTranslucent>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown}
       >
         {/* Backdrop */}
         <TouchableOpacity

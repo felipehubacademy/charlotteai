@@ -5,6 +5,7 @@ import {
   Animated, Pressable,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { useKeyboardShown } from '@/lib/useKeyboardShown';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import {
@@ -166,6 +167,7 @@ const TYPE_LABELS: Record<ExerciseType, string> = {
 // ── Main Screen ────────────────────────────────────────────────
 
 export default function LearnPronunciationScreen() {
+  const keyboardShown = useKeyboardShown();
   const { profile } = useAuth();
   const userId    = profile?.id;
   const userLevel = (profile?.charlotte_level ?? 'Novice') as string;
@@ -427,7 +429,7 @@ export default function LearnPronunciationScreen() {
         </TouchableOpacity>
       </View>
 
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} enabled={Platform.OS === 'ios' || keyboardShown}>
         <ScrollView
           style={{ flex: 1, backgroundColor: C.bg }}
           contentContainerStyle={{ padding: 20, paddingBottom: 24, flexGrow: 1 }}
