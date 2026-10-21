@@ -25,13 +25,14 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 // Email do projeto vai por Microsoft Graph (Office 365), o MESMO caminho do
 // reset de senha / signup / welcome. Template no padrao usual do projeto.
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
-import { releaseUpdateTemplate, familyGrowsTemplate } from '@/lib/email-templates';
+import { releaseUpdateTemplate, familyGrowsTemplate, appUpdateTemplate } from '@/lib/email-templates';
 import { unsubscribeUrl } from '@/lib/unsubscribe';
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 
 // Campanhas: { campaign: 'release' } (padrão, "A Charlotte agora é Queizy") ou { campaign: 'family' }
-// ("A Família Queizy está crescendo": chegada do Igorfina e do Manual do F#did@). Cada uma tem o
+// ("A Família Queizy está crescendo": chegada do Igorfina e do Manual do F#did@) ou { campaign: 'update' }
+// ("Atualize o Queizy": só quem está numa versão de loja antiga). Cada uma tem o
 // próprio tipo de log, então a guarda de 24h de uma não bloqueia a outra.
 const CAMPAIGNS = {
   release: {
@@ -46,7 +47,15 @@ const CAMPAIGNS = {
     pushBody: 'O Igorfina chegou com uma trilha só dele, cheia de imitações. Vem conhecer o Manual do F#did@!',
     template: familyGrowsTemplate,
   },
+  // Só quem já abriu o app e está numa versão de loja anterior à mais recente (LATEST_STORE_VERSION).
+  update: {
+    logType: 'app_update',
+    pushTitle: 'Atualize o Queizy',
+    pushBody: 'Saiu versão nova na App Store e na Google Play, com correções e melhorias. Atualize pela loja para tudo funcionar direitinho.',
+    template: appUpdateTemplate,
+  },
 } as const;
+const LATEST_STORE_VERSION = '2.0.2';
 type CampaignId = keyof typeof CAMPAIGNS;
 
 // Login próprio (Bearer) com papel que acessa 'notifications', ou a senha mestra antiga.
@@ -62,6 +71,7 @@ interface Row {
   expo_push_token: string | null;
   marketing_opt_out: boolean | null;
   email_bounced: boolean | null;
+  app_version: string | null;
 }
 
 export async function POST(req: NextRequest) {
@@ -74,7 +84,7 @@ export async function POST(req: NextRequest) {
   const channels: string[] = Array.isArray(body?.channels) && body.channels.length
     ? body.channels
     : ['push', 'email'];
-  const campaignId: CampaignId = body?.campaign === 'family' ? 'family' : 'release';
+  const campaignId: CampaignId = body?.campaign === 'family' || body?.campaign === 'update' ? body.campaign : 'release';
   const campaign = CAMPAIGNS[campaignId];
   const LOG_TYPE = campaign.logType;
   const PUSH_TITLE = campaign.pushTitle;
@@ -134,7 +144,7 @@ export async function POST(req: NextRequest) {
   // ── Audiencia ──────────────────────────────────────────────────────────────
   const { data, error } = await supabase
     .from('charlotte_users')
-    .select('id, name, email, expo_push_token, marketing_opt_out, email_bounced, created_at');
+    .select('id, name, email, expo_push_token, marketing_opt_out, email_bounced, app_version, created_at');
   if (error) {
     return NextResponse.json({ error: `Falha ao buscar usuarios: ${error.message}` }, { status: 500 });
   }
@@ -142,7 +152,8 @@ export async function POST(req: NextRequest) {
   const isTeam = (e: string | null) => !!e && /@(hubacademybr\.com|queizy\.com)$/i.test(e);
   const rows = ((data ?? []) as (Row & { created_at: string })[])
     .filter(r => !isTeam(r.email))
-    .filter(r => !before || r.created_at < before);
+    .filter(r => !before || r.created_at < before)
+    .filter(r => campaignId !== 'update' || (!!r.app_version && r.app_version !== LATEST_STORE_VERSION));
 
   const pushRows = rows.filter(r => r.expo_push_token?.startsWith('ExponentPushToken['));
   // Marketing: exclui descadastrados (LGPD) e emails que ja deram bounce. Push nao e afetado.
@@ -155,6 +166,7 @@ export async function POST(req: NextRequest) {
       dryRun: true,
       campaign: campaignId,
       totalUsers: rows.length,
+      ...(campaignId === 'update' ? { byVersion: rows.reduce<Record<string, number>>((a, r) => { a[r.app_version!] = (a[r.app_version!] ?? 0) + 1; return a; }, {}) } : {}),
       wouldPush: channels.includes('push') ? pushRows.length : 0,
       wouldEmail: channels.includes('email') ? emailRows.length : 0,
       emailOptedOut,

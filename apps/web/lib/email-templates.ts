@@ -169,6 +169,27 @@ export function familyGrowsTemplate(opts: { name?: string | null; unsubscribeUrl
   return { subject, html };
 }
 
+// ── 6b2. Atualize o app (campanha: quem ainda não está na versão mais recente das lojas) ──────
+
+export function appUpdateTemplate(opts: { name?: string | null; unsubscribeUrl?: string }) {
+  const appStore  = 'https://apps.apple.com/app/id6760943273';
+  const playStore = 'https://play.google.com/store/apps/details?id=com.hubacademy.charlotte';
+  const first = (opts.name ?? '').trim().split(/\s+/)[0];
+  const ola = first ? `Olá, ${first}!` : 'Olá!';
+  const subject = 'Tem versão nova do Queizy nas lojas';
+  const unsubscribe = opts.unsubscribeUrl
+    ? `<p style="margin:12px 0 0;font-size:12px;color:#8A8494;line-height:1.7;">Não quer mais receber novidades? <a href="${opts.unsubscribeUrl}" style="color:#8A8494;text-decoration:underline;">Descadastrar</a>.</p>`
+    : '';
+  const html = base(`
+    ${h1('Atualize o seu Queizy.')}
+    ${p(`${ola}<br>Saiu uma versão nova do app na App Store e na Google Play, com correções e melhorias de estabilidade. O seu aparelho ainda está com uma versão anterior.`)}
+    ${p('Atualize pela loja para tudo funcionar direitinho. Sua conta, seu progresso e sua assinatura continuam iguais.')}
+    ${storeBadges(appStore, playStore)}
+    ${p('Já atualizou? Então está tudo certo, pode ignorar este e-mail.')}
+  `, unsubscribe);
+  return { subject, html };
+}
+
 // ── 6c. Carrinho abandonado (assinatura pelo site): 3 lembretes ──────────────────────
 
 export function cartRecoveryTemplate(opts: {
