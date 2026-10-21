@@ -11,7 +11,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { getCustomer, disableCustomerNotifications, WEB_PRODUCT, type AsaasPayment } from '@/lib/asaas';
 import { activateTrial, handlePaymentPaid, recordAsaasRevenue, type CheckoutRow } from '@/lib/asaas-activation';
-import { sendPaymentFailed, sendCancelledNotice } from '@/lib/subscription-notices';
+import { sendPaymentFailed, sendCancelledNotice, sendRefundNotice } from '@/lib/subscription-notices';
 import { logOpsError } from '@/lib/ops-monitor';
 
 export const dynamic = 'force-dynamic';
@@ -99,6 +99,8 @@ export async function POST(req: NextRequest) {
       }
       if (event === 'PAYMENT_REFUNDED' || event === 'PAYMENT_CHARGEBACK_REQUESTED' || event === 'PAYMENT_CHARGEBACK_DISPUTE') {
         if (!row.sandbox) await recordAsaasRevenue('REFUND', row, p);
+        // Reembolso feito no painel do processador também avisa o aluno (o do app já avisou: sai uma vez só).
+        if (event === 'PAYMENT_REFUNDED') await sendRefundNotice(row.id, p.id, false, Math.abs(Number(p.value) || 0)).catch(() => null);
         await supabase.from('charlotte_users').update({
           subscription_status: 'expired', is_active: false, subscription_expires_at: new Date().toISOString(), updated_at: new Date().toISOString(),
         } as never).eq('id', row.user_id);

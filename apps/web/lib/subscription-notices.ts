@@ -5,13 +5,14 @@
 //   sendPaymentReceipt      cobrança aprovada (1ª depois do teste e renovações)
 //   sendPaymentFailed       cobrança do cartão recusada
 //   sendCancelledNotice     assinatura cancelada (pelo app ou pelo suporte; não no reembolso)
+//   sendRefundNotice        reembolso feito (ou pedido registrado, quando o processador não devolveu na hora)
 //
 // Cada aviso sai uma vez só: trava em asaas_events (notice_<tipo>_<chave>).
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendOrQueue } from '@/lib/email-outbox';
 import { sendSubscriptionPush } from '@/lib/expo-notification-service';
 import {
-  webTrialEndingTemplate, webPaymentReceiptTemplate, webPaymentFailedTemplate, webCancelledTemplate,
+  webTrialEndingTemplate, webPaymentReceiptTemplate, webPaymentFailedTemplate, webCancelledTemplate, webRefundTemplate,
 } from '@/lib/email-templates';
 import type { AsaasPayment, WebPlan } from '@/lib/asaas';
 
@@ -119,5 +120,16 @@ export async function sendCancelledNotice(checkoutId: string, subscriptionId: st
     ? date(new Date(new Date(r.created_at).getTime() + (r.trial_days - 1) * DAY))
     : u.subscription_expires_at ? date(u.subscription_expires_at) : null;
   const { subject, html } = webCancelledTemplate({ name: u.name, plan: r.plan, inTrial, accessUntil });
+  await sendOrQueue({ kind: 'web_notice', to: u.email, subject, html });
+}
+
+/** Reembolso: feito na hora (app, painel ou webhook) ou pedido registrado para o suporte fazer. */
+export async function sendRefundNotice(checkoutId: string, paymentId: string, queued: boolean, value?: number): Promise<void> {
+  const r = await loadCk(checkoutId);
+  if (!r) return;
+  if (!(await once(`refund_${paymentId}${queued ? '_pedido' : ''}`))) return;
+  const u = await userOf(r.user_id);
+  if (!u?.email) return;
+  const { subject, html } = webRefundTemplate({ name: u.name, plan: r.plan, method: r.method, value: brl(value ?? r.value_brl), queued });
   await sendOrQueue({ kind: 'web_notice', to: u.email, subject, html });
 }

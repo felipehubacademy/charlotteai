@@ -331,3 +331,29 @@ export function webCancelledTemplate(opts: { name?: string | null; plan: 'monthl
   `);
   return { subject, html };
 }
+
+/** Reembolso feito (ou pedido registrado, quando o processador não devolveu na hora). */
+export function webRefundTemplate(opts: { name?: string | null; plan: 'monthly' | 'annual'; method: string | null; value: string; queued: boolean }) {
+  const first = firstName(opts.name);
+  const planName = PLAN_NAME(opts.plan);
+  const isPix = opts.method === 'annual_pix';
+  const subject = opts.queued ? 'Recebemos seu pedido de reembolso' : 'Seu reembolso foi feito';
+  const how = isPix
+    ? 'O valor volta para a mesma conta do Pix em instantes.'
+    : 'O estorno aparece na fatura do cartão em até duas faturas, conforme o seu banco.';
+  const html = base(`
+    ${h1(opts.queued ? (first ? `${first}, recebemos seu pedido` : 'Recebemos seu pedido') : (first ? `${first}, seu reembolso foi feito` : 'Seu reembolso foi feito'))}
+    ${p(opts.queued
+      ? `Registramos o pedido de reembolso do seu ${planName}. Devolvemos o valor em até 2 dias úteis e avisamos por e-mail quando sair.`
+      : `Devolvemos o pagamento do seu ${planName}. ${how}`)}
+    ${meta([
+      { label: 'Plano', value: planName },
+      { label: 'Valor', value: opts.value },
+      { label: 'Forma', value: isPix ? 'Pix' : 'Cartão de crédito' },
+    ])}
+    ${p(opts.queued ? 'Enquanto isso, seu acesso continua.' : 'Seu acesso ao Queizy foi encerrado e não haverá novas cobranças. Seu progresso continua salvo, se quiser voltar.')}
+    ${opts.queued ? '' : btn('Assinar de novo', 'https://queizy.com/assinar')}
+    ${note('Dúvidas? É só responder este e-mail.')}
+  `);
+  return { subject, html };
+}

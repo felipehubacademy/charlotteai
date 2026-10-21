@@ -16,6 +16,7 @@ import {
 } from '@/lib/asaas';
 import { prepareWebCheckout, checkoutRowFields } from '@/lib/web-checkout';
 import { logOpsError } from '@/lib/ops-monitor';
+import { sendRefundNotice } from '@/lib/subscription-notices';
 
 export const dynamic = 'force-dynamic';
 // Perto do banco e do processador de pagamento (São Paulo): o envio do formulário faz várias consultas
@@ -122,6 +123,7 @@ export async function POST(req: NextRequest) {
       console.error('[checkout/asaas] refund failed, queued:', e instanceof AsaasError ? e.body : e);
       await supabase.from('asaas_events').insert({ id: `refund_fail_${Date.now()}`, event: 'REFUND_FAILED', payload: { checkout: r.id, payment: r.asaas_payment_id, error: e instanceof AsaasError ? e.body : String(e) } } as never);
       await supabase.from('asaas_checkouts').update({ refund_requested_at: new Date().toISOString() } as never).eq('id', r.id);
+      await sendRefundNotice(r.id, r.asaas_payment_id, true, Number(r.value_brl)).catch(() => null);
       await sendEmail({
         to: 'suporte@queizy.com',
         subject: `Reembolso pendente (site): ${user.email ?? user.id}`,
@@ -136,6 +138,7 @@ export async function POST(req: NextRequest) {
     // Encerra o acesso já (o app relê na hora); o webhook PAYMENT_REFUNDED estorna receita e comissão.
     const nowIso = new Date().toISOString();
     await supabase.from('asaas_checkouts').update({ refunded_at: nowIso } as never).eq('id', r.id);
+    await sendRefundNotice(r.id, r.asaas_payment_id, false, Number(r.value_brl)).catch(() => null);
     await supabase.from('charlotte_users').update({ subscription_status: 'expired', is_active: false, subscription_expires_at: nowIso, updated_at: nowIso } as never).eq('id', user.id);
     return NextResponse.json({ ok: true });
   }
