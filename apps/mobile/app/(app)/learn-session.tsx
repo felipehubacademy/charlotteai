@@ -879,6 +879,45 @@ export default function LearnSessionScreen() {
     logAttempt(userId, { ...pronLogBase(), event: 'mic_blocked' });
   };
 
+  // Grava DESDE O TOQUE (gravador do aparelho, que liga em milissegundos) e só depois reconhece:
+  //   iPhone: o reconhecimento do próprio iPhone lê o arquivo WAV (grátis, no aparelho);
+  //   Android (o reconhecimento só lê PCM bruto, que o gravador não gera) ou se o iPhone falhar: servidor.
+  // Antes o app ligava o reconhecimento ao vivo no toque, que demorava até ~1 s para começar a ouvir e
+  // cortava o começo da fala ("Good morning, everyone!" virava "Ever won").
+  const micReadyRef = useRef(false);
+  const fileAsrEndRef = useRef<(() => void) | null>(null);
+  useSpeechRecognitionEvent('end', () => { fileAsrEndRef.current?.(); });
+
+  // Permissões pedidas quando o exercício de fala aparece, não no toque (o toque só começa a gravar).
+  useEffect(() => {
+    if (!currentStep || currentStep.kind !== 'pronunciation' || currentStep.phrase.type !== 'repeat' || micReadyRef.current) return;
+    (async () => {
+      try {
+        const perm = await requestRecordingPermissionsAsync();
+        if (!perm.granted) return;
+        if (Platform.OS === 'ios' && ASR_AVAILABLE) await ExpoSpeechRecognitionModule.requestPermissionsAsync().catch(() => null);
+        micReadyRef.current = true;
+      } catch { /* pede de novo no toque */ }
+    })();
+  }, [stepIdx]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /** Reconhecimento do iPhone sobre o arquivo gravado. Devolve as leituras (vazio se não entendeu). */
+  const recognizeFile = (uri: string): Promise<string[]> => new Promise(resolve => {
+    speechTranscriptRef.current = '';
+    speechAltsRef.current = [];
+    asrErrorRef.current = null;
+    let done = false;
+    const finish = () => {
+      if (done) return; done = true; fileAsrEndRef.current = null;
+      resolve(speechAltsRef.current.length ? speechAltsRef.current : (speechTranscriptRef.current ? [speechTranscriptRef.current] : []));
+    };
+    fileAsrEndRef.current = finish;
+    setTimeout(finish, 6000);
+    try {
+      ExpoSpeechRecognitionModule.start({ lang: 'en-US', interimResults: false, maxAlternatives: 3, audioSource: { uri } });
+    } catch { finish(); }
+  });
+
   const startRecording = async () => {
     if (recordingRef.current) return;
     if (!currentStep || currentStep.kind !== 'pronunciation') return;
@@ -894,38 +933,23 @@ export default function LearnSessionScreen() {
     speechAltsRef.current = [];
     asrErrorRef.current = null;
     setPronStatus('recording');
+    // Vibração junto com a animação: a gravação começa neste toque.
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
     try {
-      let useAsr = currentStep.phrase.type === 'repeat' && ASR_AVAILABLE && !asrBrokenRef.current;
-      if (useAsr) {
-        try {
-          const available = await ExpoSpeechRecognitionModule.isRecognitionAvailable?.();
-          if (available === false) { asrBrokenRef.current = true; useAsr = false; logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: 'not-available' }); }
-        } catch { /* sem a checagem, tenta normalmente */ }
-      }
-      usedAsrRef.current = useAsr;
-      if (useAsr) {
-        // On-device ASR — no audio file needed
-        const perm = await ExpoSpeechRecognitionModule.requestPermissionsAsync();
-        if (!perm.granted) { blockMic(); return; }
-        setMicBlocked(false);
-        // Registra a sessão no expo-audio antes do módulo nativo configurar a AVAudioSession.
-        // Sem isso, o setAudioModeAsync do reset não consegue sobrescrever o estado que o
-        // ExpoSpeechRecognitionModule deixa — causa earpiece persistente no iOS.
-        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
-        await setIsAudioActiveAsync(true).catch(() => {});
-        ExpoSpeechRecognitionModule.start({ lang: 'en-US', interimResults: true, continuous: true, maxAlternatives: 3 });
-      } else {
-        // Gravação + transcrição pelo servidor (sem reconhecimento no aparelho ou com ele falhando)
+      if (!micReadyRef.current) {
         const perm = await requestRecordingPermissionsAsync();
         if (!perm.granted) { blockMic(); return; }
-        setMicBlocked(false);
-        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
-        await setIsAudioActiveAsync(true).catch(() => {});
-        await recorder.prepareToRecordAsync();
-        recorder.record();
+        micReadyRef.current = true;
       }
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+      setMicBlocked(false);
+      usedAsrRef.current = false;
+      await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+      await setIsAudioActiveAsync(true).catch(() => {});
+      await recorder.prepareToRecordAsync();
+      recorder.record();
+      // Quanto o gravador levou do toque até gravar, por aparelho (diagnóstico).
+      track('mic_start', { ms: Date.now() - recordingStartRef.current, platform: Platform.OS });
     } catch {
       recordingRef.current = false;
       setPronStatus('listening');
@@ -936,16 +960,11 @@ export default function LearnSessionScreen() {
     if (!recordingRef.current || !currentStep || currentStep.kind !== 'pronunciation') return;
 
     const elapsed = Date.now() - recordingStartRef.current;
-    const usedAsr = usedAsrRef.current;
 
     // Ignore accidental releases shorter than 300ms
     if (elapsed < 300) {
       recordingRef.current = false;
-      if (usedAsr) {
-        ExpoSpeechRecognitionModule.abort();
-      } else {
-        try { await recorder.stop(); } catch {}
-      }
+      try { await recorder.stop(); } catch {}
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
       await setIsAudioActiveAsync(true).catch(() => {});
       setPronStatus('listening');
@@ -957,50 +976,39 @@ export default function LearnSessionScreen() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
     try {
-      if (usedAsr) {
-        // ── REPEAT: on-device ASR + string similarity ────────────
-        ExpoSpeechRecognitionModule.stop();
-        // Give ~300ms for final result event to fire
-        await new Promise(r => setTimeout(r, 300));
-        // Restore speaker routing — ASR leaves iOS audio session in earpiece mode
+      await recorder.stop();
+      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+      await setIsAudioActiveAsync(true).catch(() => {});
+      const audioUri = recorder.uri;
+      if (!audioUri) { setPronStatus('error'); return; }
+      const isWav = audioUri.toLowerCase().endsWith('.wav');
+
+      // iPhone: reconhecimento do aparelho sobre o arquivo.
+      if (Platform.OS === 'ios' && isWav && ASR_AVAILABLE && !asrBrokenRef.current) {
+        const alts = await recognizeFile(audioUri);
+        // O reconhecimento usa a sessão de áudio: devolve o som para o alto-falante.
         await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
         await setIsAudioActiveAsync(true).catch(() => {});
-
-        const alts = speechAltsRef.current.length ? speechAltsRef.current : (speechTranscriptRef.current ? [speechTranscriptRef.current] : []);
+        if (alts.length) { usedAsrRef.current = true; finishPronAttempt(alts, 'device'); return; }
         const err = asrErrorRef.current;
-        if (!alts.length && err && (err === 'not-allowed' || ASR_BROKEN.has(err))) {
-          // Nada entendido por falha do serviço (não do aluno): não conta erro e passa a conferir
-          // pelo servidor na próxima gravação.
-          logAttempt(userId, { ...pronLogBase(), event: err === 'not-allowed' ? 'mic_blocked' : 'asr_error', errorCode: err });
-          if (err === 'not-allowed') { setMicBlocked(true); setPronStatus('listening'); return; }
+        if (err && ASR_BROKEN.has(err)) {
           asrBrokenRef.current = true;
-          showPronResult({ state: 'close', xp: 0, message: isPortuguese
-            ? 'O reconhecimento de voz do celular falhou. Fale de novo: agora a gente confere pela internet.'
-            : "Your phone's speech recognition failed. Try again: we'll check it online now." });
-          return;
+          logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: err });
         }
-        finishPronAttempt(alts, 'device');
-
-      } else {
-        // ── REPEAT fallback: transcrição pelo servidor ──
-        await recorder.stop();
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
-        await setIsAudioActiveAsync(true).catch(() => {});
-        const audioUri = recorder.uri;
-        if (!audioUri) { setPronStatus('error'); return; }
-
-        const isWav = audioUri.toLowerCase().endsWith('.wav');
-        const formData = new FormData();
-        formData.append('audio', { uri: audioUri, name: isWav ? 'recording.wav' : 'recording.m4a', type: isWav ? 'audio/wav' : 'audio/x-m4a' } as unknown as Blob);
-        if (userId) formData.append('userId', userId);
-
-        const res = await fetch(`${API_BASE_URL}/api/transcribe`, { method: 'POST', body: formData });
-        if (!res.ok) throw new Error('Transcription failed');
-        const data = await res.json();
-
-        const transcript = (data.transcription as string) ?? '';
-        finishPronAttempt(transcript ? [transcript] : [], 'server');
+        // Nada entendido no aparelho: confere pelo servidor antes de reprovar.
       }
+
+      // Android (e reserva do iPhone): transcrição pelo servidor.
+      const formData = new FormData();
+      formData.append('audio', { uri: audioUri, name: isWav ? 'recording.wav' : 'recording.m4a', type: isWav ? 'audio/wav' : 'audio/x-m4a' } as unknown as Blob);
+      if (userId) formData.append('userId', userId);
+
+      const res = await fetch(`${API_BASE_URL}/api/transcribe`, { method: 'POST', body: formData });
+      if (!res.ok) throw new Error('Transcription failed');
+      const data = await res.json();
+
+      const transcript = (data.transcription as string) ?? '';
+      finishPronAttempt(transcript ? [transcript] : [], 'server');
     } catch (e) {
       logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: e instanceof Error ? e.message.slice(0, 60) : 'erro' });
       setPronStatus('error');

@@ -29,7 +29,8 @@ export type AnalyticsEvent =
   | 'share_invite_link'
   | 'account_deleted'
   | 'notification_tapped'
-  | 'ota_status';
+  | 'ota_status'
+  | 'mic_start';
 
 interface EventProps {
   [key: string]: string | number | boolean | null;
