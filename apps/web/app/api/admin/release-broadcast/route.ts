@@ -14,7 +14,7 @@ export const maxDuration = 300;
  *   { "channels": ["push","email"] } -> quais canais (default ambos)
  *   { "force": true }               -> ignora a guarda de "ja enviado nas ultimas 24h"
  *   { "before": "2026-10-09" }      -> só quem se cadastrou antes dessa data (ex.: quem usava o app como Charlotte)
- * Contas da equipe e de teste (@hubacademybr.com, @queizy.com) ficam sempre de fora.
+ * Contas da equipe e de teste (@hubacademybr.com, @queizy.com, felipe.xavier1987+...) ficam sempre de fora.
  *
  * Auth: header x-admin-secret ou ?secret= igual a ADMIN_SECRET.
  */
@@ -149,7 +149,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: `Falha ao buscar usuarios: ${error.message}` }, { status: 500 });
   }
   const before = typeof body?.before === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(body.before) ? body.before : null;
-  const isTeam = (e: string | null) => !!e && /@(hubacademybr\.com|queizy\.com)$/i.test(e);
+  const isTeam = (e: string | null) => !!e && (/@(hubacademybr\.com|queizy\.com)$/i.test(e) || /^felipe\.xavier1987\+/i.test(e));
   const rows = ((data ?? []) as (Row & { created_at: string })[])
     .filter(r => !isTeam(r.email))
     .filter(r => !before || r.created_at < before)
