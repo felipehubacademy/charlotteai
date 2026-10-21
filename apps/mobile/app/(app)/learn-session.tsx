@@ -885,6 +885,16 @@ export default function LearnSessionScreen() {
   // Antes o app ligava o reconhecimento ao vivo no toque, que demorava até ~1 s para começar a ouvir e
   // cortava o começo da fala ("Good morning, everyone!" virava "Ever won").
   const micReadyRef = useRef(false);
+  // Android: o gravador leva ~0,6 s para se preparar; fica preparado antes do toque (o toque só grava).
+  const recorderPreparedRef = useRef(false);
+  const prepareRecorderAhead = async () => {
+    if (Platform.OS !== 'android' || recorderPreparedRef.current || recordingRef.current) return;
+    try {
+      await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+      await recorder.prepareToRecordAsync();
+      recorderPreparedRef.current = true;
+    } catch { recorderPreparedRef.current = false; }
+  };
   const fileAsrEndRef = useRef<(() => void) | null>(null);
   useSpeechRecognitionEvent('end', () => { fileAsrEndRef.current?.(); });
 
@@ -897,6 +907,7 @@ export default function LearnSessionScreen() {
         if (!perm.granted) return;
         if (Platform.OS === 'ios' && ASR_AVAILABLE) await ExpoSpeechRecognitionModule.requestPermissionsAsync().catch(() => null);
         micReadyRef.current = true;
+        await prepareRecorderAhead();
       } catch { /* pede de novo no toque */ }
     })();
   }, [stepIdx]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -944,10 +955,15 @@ export default function LearnSessionScreen() {
       }
       setMicBlocked(false);
       usedAsrRef.current = false;
-      await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
-      await setIsAudioActiveAsync(true).catch(() => {});
-      await recorder.prepareToRecordAsync();
-      recorder.record();
+      if (recorderPreparedRef.current) {
+        recorderPreparedRef.current = false;
+        recorder.record();
+      } else {
+        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+        await setIsAudioActiveAsync(true).catch(() => {});
+        await recorder.prepareToRecordAsync();
+        recorder.record();
+      }
       // Quanto o gravador levou do toque até gravar, por aparelho (diagnóstico).
       track('mic_start', { ms: Date.now() - recordingStartRef.current, platform: Platform.OS });
     } catch {
@@ -968,6 +984,7 @@ export default function LearnSessionScreen() {
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
       await setIsAudioActiveAsync(true).catch(() => {});
       setPronStatus('listening');
+      prepareRecorderAhead();
       return;
     }
 
@@ -1012,6 +1029,8 @@ export default function LearnSessionScreen() {
     } catch (e) {
       logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: e instanceof Error ? e.message.slice(0, 60) : 'erro' });
       setPronStatus('error');
+    } finally {
+      prepareRecorderAhead(); // próxima tentativa (ou próxima frase) já com o gravador pronto
     }
   };
 
