@@ -70,6 +70,21 @@ export function contractionMatch(u: string, c: string, bothWays: boolean): boole
   return false;
 }
 
+// Algarismo -> número por extenso (0 a 100): "4" = "four", "35" = "thirty-five".
+// Só no read_answer, onde o número é a resposta e não o conteúdo ensinado; nos exercícios
+// que ensinam a escrever o número (fill_gap/word_bank do módulo de números) "12" não vale "twelve".
+const UNITS = ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve',
+  'thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+const TENS = ['', '', 'twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+function numberToWords(n: number): string {
+  if (n < 20) return UNITS[n];
+  if (n === 100) return 'one hundred';
+  return TENS[Math.floor(n / 10)] + (n % 10 ? `-${UNITS[n % 10]}` : '');
+}
+function digitsToWords(s: string): string {
+  return s.replace(/\b\d{1,3}\b/g, d => { const n = Number(d); return n <= 100 ? numberToWords(n) : d; });
+}
+
 /**
  * Corretor genérico por tipo de exercício de gramática.
  * `type`: fill_gap | fix_error | read_answer | multiple_choice | word_bank | word_order | short_write | ...
@@ -106,8 +121,8 @@ export function checkGrammarAnswer(
     return false;
   }
   if (type === 'read_answer') {
-    const cExp = expandContractions(c);
-    const uExp = expandContractions(u);
+    const cExp = expandContractions(digitsToWords(c));
+    const uExp = expandContractions(digitsToWords(u));
     const words = cExp.split(' ').filter(w => w.length > 2);
     return words.length > 0 && words.filter(w => uExp.includes(w)).length >= Math.ceil(words.length * 0.6);
   }

@@ -59,7 +59,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "Room number _____.",
+          "sentence": "Room number _____ (12).",
           "choices": [
             "twelve",
             "twin",
@@ -71,7 +71,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "My number is _____.",
+          "sentence": "My number is _____ (17).",
           "choices": [
             "seventeen",
             "seventy",
@@ -90,7 +90,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She is _____ years old.",
+          "sentence": "She is _____ (11) years old.",
           "hint": "Número 11 por extenso",
           "answer": "eleven",
           "explanation": "11 = \"eleven\". Único formato — não segue o padrão -teen como 13-19."
@@ -303,7 +303,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "She is _____ years old.",
+          "sentence": "She is _____ (40) years old.",
           "choices": [
             "forty",
             "fourty",
@@ -315,7 +315,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "My grandma is _____.",
+          "sentence": "My grandma is _____ (90).",
           "choices": [
             "ninety",
             "nine",

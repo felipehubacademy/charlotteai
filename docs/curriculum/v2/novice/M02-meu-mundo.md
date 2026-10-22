@@ -46,12 +46,12 @@
    **Answer**: ten
    **Explanation**: "Ten" (10) é o número cardinal. "Tenth" é "décimo" (ordinal, usado para datas/ranking). Para idade usamos o cardinal.
 
-3. **word_bank** — "Room number _____."
+3. **word_bank** — "Room number _____ (12)."
    **Choices**: twelve / twin / twenty / twice
    **Answer**: twelve
    **Explanation**: "Twelve" = 12. "Twin" = gêmeo (não é número). "Twenty" = 20. "Twice" = duas vezes.
 
-4. **word_bank** — "My number is _____."
+4. **word_bank** — "My number is _____ (17)."
    **Choices**: seventeen / seventy / seven / sixteen
    **Answer**: seventeen
    **Explanation**: "Seventeen" = 17. "Seventy" = 70. "Seven" = 7. Cuidado com a confusão -teen (17) vs -ty (70) — stress muda.
@@ -61,7 +61,7 @@
    **Answer**: eighteen
    **Explanation**: 18 = "eighteen". Atenção: tem "gh" silencioso (escrito mas não pronunciado).
 
-6. **fill_gap** — "She is _____ years old."
+6. **fill_gap** — "She is _____ (11) years old."
    **Hint**: Número 11 por extenso
    **Answer**: eleven
    **Explanation**: 11 = "eleven". Único formato — não segue o padrão -teen como 13-19.
@@ -214,12 +214,12 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Answer**: twenty-five
    **Explanation**: 25 = "twenty-five" (COM hífen). É a forma padrão para números compostos 21-99: dezena-unidade. Sem hífen ou colado é erro.
 
-3. **word_bank** — "She is _____ years old."
+3. **word_bank** — "She is _____ (40) years old."
    **Choices**: forty / fourty / fortee / forteen
    **Answer**: forty
    **Explanation**: 40 = "forty" — NÃO tem "u" no meio. É um dos números mais erradamente escritos. Cuidado: "four" (4) tem "u", mas "forty" não.
 
-4. **word_bank** — "My grandma is _____."
+4. **word_bank** — "My grandma is _____ (90)."
    **Choices**: ninety / nine / ninetee / ninth
    **Answer**: ninety
    **Explanation**: "Ninety" = 90. "Nine" = 9. "Ninth" = 9º. Para idade idosa: "She is ninety years old".
