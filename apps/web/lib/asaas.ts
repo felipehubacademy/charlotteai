@@ -254,6 +254,14 @@ export async function activeSubscriptionsOf(userId: string, sandbox = false, cus
   }
   return out;
 }
+/** Adia a próxima cobrança da assinatura (e a cobrança pendente já gerada) para `newDate` (AAAA-MM-DD).
+ *  Usado para estender o teste grátis do site quando o aluno perdeu dias por um erro nosso. */
+export async function postponeSubscription(id: string, newDate: string, sandbox = false): Promise<{ subscription: string; payments: string[] }> {
+  await asaas(`/subscriptions/${encodeURIComponent(id)}`, { method: 'PUT', body: { nextDueDate: newDate }, sandbox });
+  const pend = (await paymentsOfSubscription(id, sandbox)).filter(p => p.status === 'PENDING');
+  for (const p of pend) await asaas(`/payments/${encodeURIComponent(p.id)}`, { method: 'PUT', body: { dueDate: newDate }, sandbox });
+  return { subscription: newDate, payments: pend.map(p => p.id) };
+}
 export const cancelSubscription = (id: string, sandbox = false) => asaas<{ deleted: boolean }>(`/subscriptions/${id}`, { method: 'DELETE', sandbox });
 /** 4 últimos dígitos do cartão de uma cobrança (null no Pix). Usado para conferir quem pagou. */
 export async function getPaymentCard(paymentId: string): Promise<{ last4: string | null; billingType: string }> {
