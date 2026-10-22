@@ -378,3 +378,26 @@ export function webRefundTemplate(opts: { name?: string | null; plan: 'monthly' 
   `);
   return { subject, html };
 }
+
+/** Ajuda de acesso: aluno que assinou pelo site e não conseguiu entrar (ex.: link de senha que falhou do nosso lado).
+ *  Tom de acompanhamento pessoal, com o passo a passo. `when` = "ontem" / "hoje" / "no dia 21/10". */
+export function accessHelpTemplate(opts: { name?: string | null; email: string; when: string; passwordUrl: string }) {
+  const first = firstName(opts.name);
+  const subject = first ? `${first}, vimos que você ainda não conseguiu entrar no Queizy` : 'Vimos que você ainda não conseguiu entrar no Queizy';
+  const steps = [
+    'Toque no botão <strong style="color:#16131F;">Criar minha senha</strong>, aqui embaixo. Vai abrir uma página do Queizy: digite a senha que quiser duas vezes e toque em "Salvar senha".',
+    'Se ainda não tiver o app, baixe o Queizy na App Store ou no Google Play.',
+    `Abra o app, toque em "Entrar" e use este e-mail (<strong style="color:#16131F;">${opts.email}</strong>) com a senha que você acabou de criar.`,
+  ].map((s, i) => `<li style="margin:0 0 12px;padding-left:4px;"><strong style="color:#16131F;">${i + 1}.</strong> ${s}</li>`).join('');
+  const html = base(`
+    ${h1(first ? `Oi, ${first}!` : 'Oi!')}
+    ${p(`Aqui é a equipe do Queizy. Estamos acompanhando de perto quem acabou de chegar e notamos que você assinou ${opts.when}, mas ainda não conseguiu entrar no app.`)}
+    ${p('Descobrimos que o link de criar a senha não funcionava bem em alguns celulares e computadores, então o problema muito provavelmente foi do nosso lado. Já corrigimos, e pedimos desculpas pelo transtorno.')}
+    ${p('Para entrar, são só 3 passos:')}
+    <ul style="margin:8px auto 8px;padding:0;max-width:420px;font-size:15px;color:#3A3546;line-height:1.55;text-align:left;list-style:none;">${steps}</ul>
+    ${btn('Criar minha senha', opts.passwordUrl)}
+    ${storeBadges()}
+    ${note('Se travar em qualquer passo, é só responder este e-mail que a gente te ajuda na hora.<br>Um abraço, Equipe Queizy')}
+  `);
+  return { subject, html };
+}
