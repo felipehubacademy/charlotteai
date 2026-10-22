@@ -130,6 +130,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         // 2) Re-lê profile (agora possivelmente corrigido pelo sync acima).
         const updated = await fetchProfile(userId).catch(() => null);
         if (updated) setProfile(updated);
+        else {
+          // Sem perfil: a conta pode ter sido apagada com o app aberto. Confere no servidor; se não existe mais,
+          // sai da conta (falha de rede não derruba ninguém).
+          const { data: u, error: ue } = await supabase.auth.getUser();
+          const gone = !u?.user && !!ue && ((ue as any).status === 401 || (ue as any).status === 403 || /not found|does not exist|invalid/i.test(ue.message ?? ''));
+          if (gone) { await supabase.auth.signOut({ scope: 'local' }).catch(() => {}); return; }
+        }
         // Salvar timezone do device para uso em triggers/crons server-side
         void (async () => {
           const tz = deviceTimezone();

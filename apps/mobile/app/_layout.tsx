@@ -22,6 +22,10 @@ import { ThemeProvider, useTheme } from '@/lib/theme';
 import { SplashOverlay } from '@/components/ui/SplashOverlay';
 import { useFonts } from 'expo-font';
 import { useOtaAutoApply } from '@/lib/otaAutoApply';
+import { installApiAuthFetch } from '@/lib/apiAuthFetch';
+
+// Prova de login em todo pedido ao servidor; conta apagada → sai da conta (lib/apiAuthFetch).
+installApiAuthFetch();
 
 // Mantém a splash screen visível enquanto carrega
 SplashScreen.preventAutoHideAsync();
