@@ -148,11 +148,32 @@ export async function GET(req: NextRequest) {
     };
   });
 
+  // ── Fase da assinatura (mesma regra do /admin/metrics) ───────────────────
+  // pagante: já houve cobrança (loja: revenue_events; site: compra paga) e ainda tem acesso;
+  // teste_loja / teste_site: 7 dias grátis com cartão; teste_antigo: teste sem cartão do app (até 21/10).
+  const [{ data: paidRows }, { data: siteRows }] = await Promise.all([
+    supabase.from('revenue_events').select('app_user_id').gt('price_purchased', 0),
+    supabase.from('asaas_checkouts').select('user_id, trial_days, asaas_payment_id').eq('status', 'paid').eq('sandbox', false).is('refunded_at', null),
+  ]);
+  const storePaid = new Set(((paidRows ?? []) as { app_user_id: string }[]).map(r => String(r.app_user_id)));
+  const sitePaid = new Set(((siteRows ?? []) as { user_id: string; trial_days: number; asaas_payment_id: string | null }[])
+    .filter(r => r.asaas_payment_id || !(r.trial_days > 0)).map(r => String(r.user_id)));
+  const phaseOf = (u: { id: string; subscription_status: string; subscription_product: string | null; subscription_expires_at: string | null; trial_ends_at: string | null }) => {
+    if (u.subscription_status === 'trial') return u.trial_ends_at && new Date(u.trial_ends_at) > now ? 'teste_antigo' : null;
+    if (u.subscription_status !== 'active' && u.subscription_status !== 'cancelled') return null;
+    if (!u.subscription_expires_at || new Date(u.subscription_expires_at) <= now) return null;
+    const p = u.subscription_product ?? '';
+    if (p.startsWith('web_')) return sitePaid.has(String(u.id)) ? 'pagante' : 'teste_site';
+    if (p === 'monthly' || p === 'yearly') return storePaid.has(String(u.id)) ? 'pagante' : 'teste_loja';
+    return null;
+  };
+  for (const u of usersWithEng as any[]) u.sub_phase = u.is_institutional ? null : phaseOf(u);
+
   // ── Stats ─────────────────────────────────────────────────────────────────
   const total         = usersWithEng.length;
   const institutional = usersWithEng.filter(u => u.is_institutional).length;
-  const subscribers   = usersWithEng.filter(u => u.subscription_status === 'active').length;
-  const onTrial       = usersWithEng.filter(u => u.subscription_status === 'trial').length;
+  const subscribers   = (usersWithEng as any[]).filter(u => u.sub_phase === 'pagante').length;
+  const onTrial       = (usersWithEng as any[]).filter(u => String(u.sub_phase ?? '').startsWith('teste')).length;
   const trialExpired  = usersWithEng.filter(u => {
     if (u.is_institutional) return false;
     // Conta status='expired' OU status='trial' com data já vencida (cron atrasado)

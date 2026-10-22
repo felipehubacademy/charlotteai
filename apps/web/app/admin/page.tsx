@@ -12,6 +12,8 @@ interface User {
   charlotte_level: 'Novice' | 'Inter' | 'Advanced' | null;
   placement_test_done: boolean; is_institutional: boolean; is_active: boolean;
   subscription_status: 'none' | 'trial' | 'active' | 'expired' | 'cancelled';
+  /** pagante | teste_loja | teste_site | teste_antigo | null (mesma regra do /admin/metrics) */
+  sub_phase?: 'pagante' | 'teste_loja' | 'teste_site' | 'teste_antigo' | null;
   trial_ends_at: string | null; must_change_password: boolean; created_at: string;
   engagement: Engagement | null; trailProgress: TrailProgress | null;
   streak: number; longestStreak: number; beta_features: string[];
@@ -80,10 +82,15 @@ function DateTip({ iso, children }: { iso: string | null; children: React.ReactN
   );
 }
 
+const PHASE_META: Record<string, { label: string; cls: string }> = {
+  teste_loja:   { label: 'Teste da loja',  cls: 'badge-accent' },
+  teste_site:   { label: 'Teste do site',  cls: 'badge-accent' },
+  teste_antigo: { label: 'Teste antigo',   cls: 'badge-accent' },
+};
 const STATUS_META: Record<string, { label: string; cls: string }> = {
   institutional: { label: 'Institucional', cls: 'badge-inst'   },
-  active:    { label: 'Ativo',      cls: 'badge-ok'     },
-  trial:     { label: 'Trial',      cls: 'badge-accent'  },
+  active:    { label: 'Pagante',    cls: 'badge-ok'     },
+  trial:     { label: 'Teste antigo', cls: 'badge-accent'  },
   cancelled: { label: 'Cancelado',  cls: 'badge-warn'    },
   expired:   { label: 'Expirado',   cls: 'badge-err'     },
   none:      { label: 'Sem plano',  cls: 'badge-muted'   },
@@ -190,8 +197,8 @@ export default function AdminUsersPage() {
       const matchF =
         filter === 'all' ? true :
         filter === 'institutional' ? u.is_institutional :
-        filter === 'subscriber' ? u.subscription_status === 'active' :
-        filter === 'trial' ? u.subscription_status === 'trial' && !u.is_institutional :
+        filter === 'subscriber' ? u.sub_phase === 'pagante' :
+        filter === 'trial' ? !!u.sub_phase && u.sub_phase.startsWith('teste') :
         filter === 'expired' ? !u.is_institutional && (
           u.subscription_status === 'expired' ||
           (u.subscription_status === 'trial' && !!u.trial_ends_at && new Date(u.trial_ends_at) < new Date())
@@ -385,8 +392,8 @@ export default function AdminUsersPage() {
         <div style={{ padding: '16px 28px 0' }}>
           <div className="adm-grid">
             <div className="col-3"><StatCard label="Total" value={stats.total} delay={0} /></div>
-            <div className="col-3"><StatCard label="Assinantes" value={stats.subscribers} accent="var(--ok)" delay={60} /></div>
-            <div className="col-3"><StatCard label="Em Trial" value={stats.onTrial} accent="var(--accent)" delay={120} /></div>
+            <div className="col-3"><StatCard label="Pagantes" value={stats.subscribers} accent="var(--ok)" delay={60} /></div>
+            <div className="col-3"><StatCard label="Em teste grátis" value={stats.onTrial} accent="var(--accent)" delay={120} /></div>
             <div className="col-3"><StatCard label="Institucionais" value={stats.institutional} delay={180} /></div>
             <div className="col-3">
               <StatCard label="Novos (30d)" value={stats.last30}
@@ -416,8 +423,8 @@ export default function AdminUsersPage() {
         <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
           {([
             { id: 'all',           label: `Todos (${users.length})` },
-            { id: 'subscriber',    label: 'Assinantes' },
-            { id: 'trial',         label: 'Trial' },
+            { id: 'subscriber',    label: 'Pagantes' },
+            { id: 'trial',         label: 'Em teste' },
             { id: 'expired',       label: `Expirado${expiredCount > 0 ? ` (${expiredCount})` : ''}` },
             { id: 'institutional', label: 'Institucional' },
             { id: 'none',          label: 'Sem plano' },
@@ -505,7 +512,9 @@ export default function AdminUsersPage() {
                       </td>
                     </tr>
                   ) : pageUsers.map(u => {
-                    const sm = u.is_institutional ? STATUS_META.institutional : STATUS_META[u.subscription_status];
+                    const sm = u.is_institutional ? STATUS_META.institutional
+                      : (u.sub_phase && PHASE_META[u.sub_phase]) ? PHASE_META[u.sub_phase]
+                      : STATUS_META[u.subscription_status];
                     const lm = u.charlotte_level ? LEVEL_META[u.charlotte_level] : null;
                     return (
                       <tr key={u.id} style={checked.has(u.id) ? { background: 'var(--s2, #F3F1EC)' } : undefined}>
