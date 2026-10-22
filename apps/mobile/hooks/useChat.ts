@@ -628,7 +628,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         if (userId) {
           await savePractice(userId, mode === 'grammar' ? 'grammar_message' : 'text_message', xpAwarded);
           // Poll for new achievements after DB trigger has time to run
-          setTimeout(() => checkForNewAchievements(), 1500);
+          checkForNewAchievements(1500);
         }
       } catch (error) {
         console.error('sendTextMessage error:', error);
@@ -690,7 +690,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         });
         if (userId) {
           await savePractice(userId, mode === 'grammar' ? 'grammar_message' : 'text_message', xpAwarded);
-          setTimeout(() => checkForNewAchievements(), 1500);
+          checkForNewAchievements(1500);
         }
       } catch (error) {
         console.error('sendSilentMessage error:', error);
@@ -967,7 +967,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         });
         if (userId) {
           await savePractice(userId, 'audio_message', xpAwarded);
-          setTimeout(() => checkForNewAchievements(), 1500);
+          checkForNewAchievements(1500);
         }
 
       } catch (error) {
@@ -1084,7 +1084,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         });
         if (userId) {
           await savePractice(userId, 'audio_message', xpAwarded);
-          setTimeout(() => checkForNewAchievements(), 1500);
+          checkForNewAchievements(1500);
         }
       } catch (error) {
         console.error('sendAudioMessage error:', error);

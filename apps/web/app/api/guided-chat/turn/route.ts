@@ -440,11 +440,14 @@ export async function POST(request: NextRequest) {
     // Garantia: scaffold copiado SEMPRE passa, independe do LLM.
     // Pedagogicamente: aluno frustrado tem valvula de escape garantida.
     {
-      const msgNorm = user_message.toLowerCase().replace(/[''']/g, "'").trim();
+      // Sem pontuação nos dois lados: a transcrição da fala troca "!" por "." e tira vírgulas.
+      const scaffoldNorm = (t: string) => t.toLowerCase().replace(/[\u2018\u2019\u02BC`]/g, "'")
+        .replace(/[.,!?;:"\u201C\u201D\u2014\u2013…]/g, ' ').replace(/\s+/g, ' ').trim();
+      const msgNorm = scaffoldNorm(user_message);
       const pending = gc.objectives.filter(o => !objectivesMet.includes(o.id));
       for (const o of pending) {
         if (!o.hint_en) continue;
-        const hintNorm = o.hint_en.toLowerCase().replace(/[''']/g, "'").trim();
+        const hintNorm = scaffoldNorm(o.hint_en);
         if (hintNorm.length >= 4 && (msgNorm === hintNorm || msgNorm.includes(hintNorm))) {
           objectivesMet.push(o.id);
           console.info('[guided-chat/turn] scaffold-exact fallback marked obj', {

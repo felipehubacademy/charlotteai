@@ -182,7 +182,7 @@ export function useLearnProgressV2(
     });
 
     // Conquistas da trilha (ex.: primeira lição, módulo concluído): confere depois de salvar.
-    setTimeout(() => { checkForNewAchievements(); }, 1500);
+    checkForNewAchievements(1500);
     return next;
   }, [userId, level, get, rows, checkForNewAchievements]);
 

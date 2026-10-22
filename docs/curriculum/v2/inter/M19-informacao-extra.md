@@ -807,7 +807,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Three pairs — one defining and one non-defining for each topic."
+**Opening line**: "Let's do three pairs. For each topic, give me one sentence with 'who' or 'that' and one with extra information between commas."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -815,9 +815,9 @@
    **label_pt**: "Frase defining + non-defining sobre pessoa"
    **label_en**: "Defining + non-defining for person"
    **hidden_prompt**: "user uses both defining and non-defining for a person"
-   **hint_pt**: "The teacher who taught me French... My French teacher, who is from Paris,..."
-   **hint_en**: "The teacher who taught me French... My French teacher, who is from Paris,..."
-   **example_pass**: The teacher who taught me French... My French teacher, who is from Paris,... | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great. | My friend Maria, who lives in Rio and works as a teacher, is visiting. | My uncle, who's a doctor and lives in Spain, called. | My boss, who's been mentoring me for years, retired.
+   **hint_pt**: "The teacher who taught me French was strict. My French teacher, who is from Paris, was very patient."
+   **hint_en**: "The teacher who taught me French was strict. My French teacher, who is from Paris, was very patient."
+   **example_pass**: The teacher who taught me French was strict. My French teacher, who is from Paris, was very patient. | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great. | My friend Maria, who lives in Rio and works as a teacher, is visiting. | My uncle, who's a doctor and lives in Spain, called. | My boss, who's been mentoring me for years, retired.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 2. **id**: 2
@@ -842,7 +842,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three pairs — one defining and one non-defining for each topic."
+1. **Charlotte**: "Let's do three pairs. For each topic, give me one sentence with 'who' or 'that' and one with extra information between commas."
 2. **Student**: ~"The teacher who taught me French was great. My French teacher, who is from Paris, was great."
 3. **Charlotte**: "Same idea, different style. Place?"
 4. **Student**: ~"The city where I work is huge. São Paulo, where I work, is huge."

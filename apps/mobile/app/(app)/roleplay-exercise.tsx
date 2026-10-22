@@ -39,6 +39,7 @@ import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import { useTotalXP } from '@/hooks/useTotalXP';
 import { soundEngine } from '@/lib/soundEngine';
 import { goBack } from '@/lib/goBack';
+import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -138,6 +139,7 @@ export default function RolePlayExerciseScreen() {
 
   // v2 progress (write on completion)
   const v2Progress = useLearnProgressV2(userId, level);
+  const { waitForCelebration } = useAchievementsContext();
   // XP no topo, igual à trilha: +5 a cada objetivo cumprido e +10 ao concluir.
   const baseTotalXP = useTotalXP(userId);
 
@@ -234,6 +236,8 @@ export default function RolePlayExerciseScreen() {
         timestamp: new Date(),
       }]);
       setIsProcessing(false);
+      // Card de conquista da atividade anterior na tela: a abertura toca só depois que ele fechar.
+      await waitForCelebration();
       const p = playerRef.current;
       if (p) {
         p.replace({ uri: localUri });
@@ -241,7 +245,7 @@ export default function RolePlayExerciseScreen() {
         try { p.play(); } catch {}
       }
     } catch (e) { console.warn('[roleplay] opener TTS failed', e); setIsProcessing(false); }
-  }, [userId]);
+  }, [userId, waitForCelebration]);
 
   // Save attempt to learn_history_v2 when session completes (or timer expires).
   // Score = % objectives met. COMPLETION-BASED: threshold roleplay=0,

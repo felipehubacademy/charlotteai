@@ -186,14 +186,8 @@ export default function LearnSessionScreen() {
   const pronScoresRef    = useRef<Map<number, number>>(new Map());
   const grammarTotalRef  = useRef(0);
   const grammarCorrectRef = useRef(0);
-  const { pauseNotifications } = useAchievementsContext();
+  const { pauseNotifications, waitForCelebration } = useAchievementsContext();
 
-  useFocusEffect(
-    useCallback(() => {
-      pauseNotifications(true);
-      return () => pauseNotifications(false);
-    }, [pauseNotifications])
-  );
 
   const topic = isV2
     ? getV2TopicForUnit(
@@ -229,6 +223,18 @@ export default function LearnSessionScreen() {
   const stepIdxRef = useRef(0);
   stepIdxRef.current = stepIdx;
   const [isComplete, setIsComplete]   = useState(false);
+  // Conquista não interrompe exercício: o card fica na fila e aparece na tela de conclusão,
+  // antes da próxima atividade (que espera ele fechar para tocar áudio).
+  // Só pausa depois que a conquista da atividade anterior (se houver) já apareceu e foi fechada.
+  const [celebrationClear, setCelebrationClear] = useState(false);
+  useEffect(() => { waitForCelebration().then(() => setCelebrationClear(true)); }, [waitForCelebration]);
+  useFocusEffect(
+    useCallback(() => {
+      if (isComplete || !celebrationClear) return;
+      pauseNotifications(true);
+      return () => pauseNotifications(false);
+    }, [pauseNotifications, isComplete, celebrationClear])
+  );
   // Pulse anim para o botao redondo de mic durante gravacao
   const micRingAnim = useRef(new Animated.Value(0)).current;
   // "Me ajuda" — explicacao contextual via LLM (PT-BR Novice, EN Inter+)
@@ -661,11 +667,15 @@ export default function LearnSessionScreen() {
     // Autoplay (padrao Duolingo): toca uma vez ao entrar no step.
     // Categoria ja foi setada acima — toggleAudio nao precisa fazer swap.
     if (autoplayUri && ph.type !== 'sentence_stress') {
+      const uri = autoplayUri;
       setTimeout(() => {
-        try { toggleAudio(charlottePlayId, autoplayUri!); } catch {}
+        // Card de conquista da atividade anterior na tela: toca só depois que ele fechar.
+        waitForCelebration().then(() => {
+          try { toggleAudio(charlottePlayId, uri); } catch {}
+        });
       }, 600);
     }
-  }, [fetchTTS, stopAudio, pronFeedbackAnim, toggleAudio]);
+  }, [fetchTTS, stopAudio, pronFeedbackAnim, toggleAudio, waitForCelebration]);
 
   // ── Initialise & step transitions ──────────────────────────
   useEffect(() => {

@@ -1238,15 +1238,15 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 180,
-        "opening_line": "Three pairs — one defining and one non-defining for each topic.",
+        "opening_line": "Let's do three pairs. For each topic, give me one sentence with 'who' or 'that' and one with extra information between commas.",
         "objectives": [
           {
             "id": 1,
             "label_en": "Defining + non-defining for person",
             "hidden_prompt": "user uses both defining and non-defining for a person",
-            "hint_en": "The teacher who taught me French... My French teacher, who is from Paris,...",
+            "hint_en": "The teacher who taught me French was strict. My French teacher, who is from Paris, was very patient.",
             "examples_pass": [
-              "The teacher who taught me French... My French teacher, who is from Paris,...",
+              "The teacher who taught me French was strict. My French teacher, who is from Paris, was very patient.",
               "My sister, who lives in Rio, visited me.",
               "The book, which I bought yesterday, is great.",
               "My friend Maria, who lives in Rio and works as a teacher, is visiting.",
@@ -1299,7 +1299,7 @@
           }
         ],
         "closing_cue": "Charlotte fecha com \"Distinction mastered!\" quando obj_3 baterem.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three pairs — one defining and one non-defining for each topic.\"\n2. **Student**: ~\"The teacher who taught me French was great. My French teacher, who is from Paris, was great.\"\n3. **Charlotte**: \"Same idea, different style. Place?\"\n4. **Student**: ~\"The city where I work is huge. São Paulo, where I work, is huge.\"\n5. **Charlotte**: \"Thing?\"\n6. **Student**: ~\"The book that won the award is amazing. My favorite book, which won the award, is amazing.\"\n7. **Charlotte**: \"Distinction mastered!\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Let's do three pairs. For each topic, give me one sentence with 'who' or 'that' and one with extra information between commas.\"\n2. **Student**: ~\"The teacher who taught me French was great. My French teacher, who is from Paris, was great.\"\n3. **Charlotte**: \"Same idea, different style. Place?\"\n4. **Student**: ~\"The city where I work is huge. São Paulo, where I work, is huge.\"\n5. **Charlotte**: \"Thing?\"\n6. **Student**: ~\"The book that won the award is amazing. My favorite book, which won the award, is amazing.\"\n7. **Charlotte**: \"Distinction mastered!\"",
         "evaluation_focus": [
           "Defining: no commas, \"that\" OK",
           "Non-defining: commas, no \"that\"",
