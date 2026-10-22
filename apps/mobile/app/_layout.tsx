@@ -69,20 +69,23 @@ function AuthGuard() {
   useOtaAutoApply(pathname);
   const [aiConsent,    setAiConsent]    = useState<boolean | null>(null); // null = still loading
   const [consentReady, setConsentReady] = useState(false);
+  // De qual conta é o aceite lido: o guard só decide quando bate com a conta que está entrando
+  // (senão usa o "false" de antes do perfil carregar e manda para o aceite a cada abertura).
+  const [consentFor, setConsentFor] = useState<string | null>(null);
 
   // Read AI consent from secure store on mount and whenever pathname changes
   // (re-read after returning from ai-consent screen so the guard unblocks)
   useEffect(() => {
     // Aceite por conta (lib/aiConsent). Sem perfil ainda: o guard espera o perfil de qualquer jeito.
     if (!profile?.id) { setAiConsent(false); setConsentReady(true); return; }
-    // Até ler o aceite DESTA conta, o guard espera (senão decide com o "false" de antes do perfil carregar
-    // e manda para a tela de aceite toda vez que o app abre).
-    setConsentReady(false);
-    hasAiConsent(profile.id, profile.created_at).then(ok => {
+    const uid = profile.id;
+    hasAiConsent(uid, profile.created_at).then(ok => {
       setAiConsent(ok);
+      setConsentFor(uid);
       setConsentReady(true);
     }).catch(() => {
       setAiConsent(false);
+      setConsentFor(uid);
       setConsentReady(true);
     });
   }, [pathname, profile?.id, profile?.created_at]);
@@ -103,6 +106,7 @@ function AuthGuard() {
     if (isLoading) return;
     if (!consentReady) return;                        // wait for SecureStore read
     if (isAuthenticated && profile === null) return;  // wait for profile
+    if (isAuthenticated && profile && consentFor !== profile.id) return; // wait for this account's AI consent
 
     let target: string;
     if (!isAuthenticated) {
@@ -141,7 +145,7 @@ function AuthGuard() {
     if (lastRoute.current === target) return;
     lastRoute.current = target;
     router.replace(target as any);
-  }, [isLoading, consentReady, isAuthenticated, mustChangePassword, isPasswordRecovery, profile, profile?.placement_test_done, profile?.first_welcome_done, aiConsent, pathname]);
+  }, [isLoading, consentReady, consentFor, isAuthenticated, mustChangePassword, isPasswordRecovery, profile, profile?.placement_test_done, profile?.first_welcome_done, aiConsent, pathname]);
 
   return null;
 }
