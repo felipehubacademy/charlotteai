@@ -295,6 +295,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           if (!mounted) return;
           console.log('[AuthProvider] fetchProfile deferred start for:', userId);
           const userProfile = await fetchProfile(userId);
+          if (mounted && !userProfile) {
+            // Conta apagada (ex.: pelo /admin) com a sessão ainda salva no aparelho: o perfil nunca vem e a tela
+            // ficava girando. Confere no servidor se a conta existe; se não existe, encerra a sessão local e o
+            // app volta para o login. Falha de rede não derruba ninguém (getUser só erra com conta inválida).
+            const { data: u, error: ue } = await supabase.auth.getUser();
+            const gone = !u?.user && !!ue && ((ue as any).status === 401 || (ue as any).status === 403 || /not found|does not exist|invalid/i.test(ue.message ?? ''));
+            if (gone) {
+              console.warn('[AuthProvider] conta não existe mais — encerrando a sessão local');
+              await supabase.auth.signOut({ scope: 'local' }).catch(() => {});
+              return;
+            }
+          }
           if (mounted && userProfile) {
             // Pre-fetch the home greeting BEFORE setProfile so the API call is
             // already in-flight by the time HomeScreen mounts and its effect runs.

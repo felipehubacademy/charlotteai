@@ -200,8 +200,9 @@ export async function POST(req: NextRequest) {
 
   // Senha temporária vai no e-mail de convite: espaço colado no começo/fim impede o primeiro login.
   if (typeof password === 'string') password = password.trim();
-  if (!email || !password) {
-    return NextResponse.json({ error: 'email e password são obrigatórios' }, { status: 400 });
+  // Toda conta precisa de nome, e-mail e senha.
+  if (!String(name ?? '').trim() || !String(email ?? '').trim().includes('@') || !password) {
+    return NextResponse.json({ error: 'Nome, e-mail e senha são obrigatórios.' }, { status: 400 });
   }
 
   const supabase = getSupabaseAdmin();

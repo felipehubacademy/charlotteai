@@ -258,14 +258,14 @@ export default function AdminUsersPage() {
 
   // ── API actions ────────────────────────────────────────────────────────────
   const handleCreate = async () => {
-    if (!form.email || !form.password) { setFormErr('Email e senha são obrigatórios.'); return; }
+    if (!form.name?.trim() || !form.email?.trim() || !form.password?.trim()) { setFormErr('Nome, e-mail e senha são obrigatórios.'); return; }
     setSaving(true); setFormErr('');
     try {
       const res = await fetch('/api/admin/users', {
         method: 'POST',
         headers: { 'x-admin-secret': getSecret(), 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: form.email, password: form.password, name: form.name || null,
+          email: form.email.trim(), password: form.password.trim(), name: form.name.trim(),
           charlotte_level: form.charlotte_level || null,
           is_institutional: form.is_institutional, is_active: form.is_active,
           subscription_status: form.is_institutional ? 'none' : form.subscription_status,

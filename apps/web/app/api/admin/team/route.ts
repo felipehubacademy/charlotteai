@@ -45,8 +45,8 @@ export async function POST(req: NextRequest) {
   const email = String(body.email ?? '').trim().toLowerCase();
   const name = String(body.name ?? '').trim() || null;
   const role = String(body.role ?? '') as AdminRole;
-  if (!email.includes('@') || !isAdminRole(role)) {
-    return NextResponse.json({ error: 'E-mail e nível de acesso válidos são obrigatórios.' }, { status: 400 });
+  if (!email.includes('@') || !isAdminRole(role) || !name) {
+    return NextResponse.json({ error: 'Nome, e-mail e nível de acesso válidos são obrigatórios.' }, { status: 400 });
   }
 
   const supabase = getSupabaseAdmin();
