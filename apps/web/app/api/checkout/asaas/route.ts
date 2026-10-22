@@ -196,8 +196,20 @@ export async function POST(req: NextRequest) {
       await logOpsError('checkout', '/api/checkout/asaas (cancelar)', e, { user: user.id });
       return NextResponse.json({ error: e instanceof AsaasError ? e.message : 'Não foi possível cancelar agora.' }, { status: 502 });
     }
-    // Acesso segue até o fim do período pago (subscription_expires_at).
-    await supabase.from('charlotte_users').update({ subscription_status: 'cancelled', updated_at: new Date().toISOString() } as never).eq('id', user.id);
+    // Fora do teste: o acesso segue até o fim do período pago (subscription_expires_at).
+    // No teste grátis: a cobrança não vai acontecer, então o acesso termina no último dia grátis às 23h59
+    // (Brasília), igual ao que o app mostra ("Teste grátis até DD/MM"). Antes ficava a folga de 1 dia depois da
+    // data da cobrança, pensada para quem paga, e a data real não batia com a da tela.
+    const { data: tr } = await supabase.from('asaas_checkouts').select('created_at, trial_days, asaas_payment_id').eq('id', ck.id).maybeSingle();
+    const t = tr as { created_at: string; trial_days: number; asaas_payment_id: string | null } | null;
+    const patch: Record<string, unknown> = { subscription_status: 'cancelled', updated_at: new Date().toISOString() };
+    if (t && t.trial_days > 0 && !t.asaas_payment_id) {
+      const charge = new Date(new Date(t.created_at).getTime() + t.trial_days * 86_400_000);
+      const chargeDay = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(charge); // AAAA-MM-DD
+      const lastFree = new Date(`${chargeDay}T00:00:00-03:00`);
+      patch.subscription_expires_at = new Date(lastFree.getTime() - 1000).toISOString(); // véspera da cobrança, 23h59m59
+    }
+    await supabase.from('charlotte_users').update(patch as never).eq('id', user.id);
     return NextResponse.json({ ok: true });
   }
 

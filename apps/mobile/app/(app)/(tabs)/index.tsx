@@ -192,19 +192,21 @@ export default function HomeTab() {
     }
   }, [profile?.id, profile?.active_character, familyKey, familySaving, refreshProfile]);
 
-  // Degustação: uma coisa de cada vez. 1ª abertura = só a Família; o convite do teste de nível vem depois da
-  // 1ª atividade concluída (e antes de fechar o tópico grátis, quando a oferta da degustação já abre sozinha).
+  // Uma coisa de cada vez (todos): 1ª abertura = só a Família; o convite do teste de nível vem depois da 1ª atividade.
   const [tasterDone, setTasterDone] = useState<number | null>(null);
   useFocusEffect(useCallback(() => {
-    if (!isTaster || !profile?.id) return;
+    if (!profile?.id) return;
     supabase.from('learn_history_v2').select('id', { count: 'exact', head: true })
       .eq('user_id', profile.id).eq('completed', true)
       .then(({ count }) => setTasterDone(count ?? 0));
-  }, [isTaster, profile?.id]));
+  }, [profile?.id]));
 
   useEffect(() => {
     if (loading || placementDone || !familyPickDone) return;
-    if (isTaster && (tasterDone === null || tasterDone < 1 || tasterDone >= 4)) return;
+    // Mesma experiência para todos (degustação ou assinante): o convite vem depois da 1ª atividade concluída,
+    // nunca empilhado com o aceite e a Família na primeira entrada. Na degustação, some ao fechar o tópico grátis
+    // (aí a oferta da degustação já abre sozinha).
+    if (tasterDone === null || tasterDone < 1 || (isTaster && tasterDone >= 4)) return;
     if (!placementKey) return;
     // Conta antiga que já fechou o convite na versão anterior (marcação por aparelho) não vê de novo.
     const legacy = profile?.created_at && profile.created_at < '2026-10-22T14:50:00Z'
