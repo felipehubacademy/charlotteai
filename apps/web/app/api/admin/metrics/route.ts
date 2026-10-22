@@ -30,10 +30,9 @@ async function paged(build: (from: number, to: number) => PromiseLike<{ data: un
 
 
 
-// Preco da assinatura (em USD para padronizar com custo OpenAI)
-// 39.90 BRL/mes * 0.19 (cambio aprox) = ~7.58 USD/mes
-const MONTHLY_PRICE_USD = 7.58;
-const YEARLY_PRICE_USD  = 72.00;  // 379 BRL/ano
+// Preços atuais (R$) da loja; no site vale o valor de cada compra (com cupom).
+const MONTHLY_PRICE_BRL = 29.99;
+const YEARLY_PRICE_BRL  = 199.99;
 
 // Login próprio (Bearer) com papel que acessa 'metrics', ou a senha mestra antiga.
 async function checkAuth(req: NextRequest) {
@@ -217,36 +216,87 @@ export async function GET(req: NextRequest) {
   const nonInstitutional = users.filter(u => !u.is_institutional);
 
   // ── Receita ──────────────────────────────────────────────────────────────
-  const activeSubs = nonInstitutional.filter(u => u.subscription_status === 'active');
-  const monthlySubs = activeSubs.filter(u => u.subscription_product === 'monthly').length;
-  const yearlySubs  = activeSubs.filter(u => u.subscription_product === 'yearly').length;
-  // MRR considera yearly como /12
-  const mrr = (monthlySubs * MONTHLY_PRICE_USD) + (yearlySubs * YEARLY_PRICE_USD / 12);
+  // Cada conta é classificada pelo que de fato está acontecendo:
+  //  - loja (monthly/yearly): pagante se já houve cobrança registrada (revenue_events; o teste grátis da loja
+  //    tem preço 0 e não gera registro), senão está nos 7 dias grátis da loja;
+  //  - site (web_*): pagante se a compra já foi cobrada (asaas_payment_id) ou não tinha teste, senão está no teste;
+  //  - teste antigo do app (status 'trial', sem cartão) enquanto trial_ends_at não passou.
+  // Só conta quem ainda tem acesso (subscription_expires_at no futuro).
+  const nowMs = Date.now();
+  const [{ data: paidRows }, { data: siteRows }] = await Promise.all([
+    supabase.from('revenue_events').select('app_user_id').gt('price_purchased', 0),
+    supabase.from('asaas_checkouts').select('user_id, method, value_brl, trial_days, asaas_payment_id, created_at')
+      .eq('status', 'paid').eq('sandbox', false).is('refunded_at', null).order('created_at', { ascending: true }),
+  ]);
+  const storePaid = new Set(((paidRows ?? []) as { app_user_id: string }[]).map(r => String(r.app_user_id)));
+  const siteCk = new Map<string, { method: string | null; value_brl: number; trial_days: number; asaas_payment_id: string | null }>();
+  for (const r of (siteRows ?? []) as { user_id: string; method: string | null; value_brl: number; trial_days: number; asaas_payment_id: string | null }[]) siteCk.set(String(r.user_id), r);
+  const isStore = (p: string | null) => p === 'monthly' || p === 'yearly';
+  const isSite = (p: string | null) => !!p && p.startsWith('web_');
+  const isAnnual = (p: string | null) => p === 'yearly' || p === 'web_annual';
+  type SubKind = 'paid_store' | 'paid_site' | 'trial_store' | 'trial_site' | 'trial_legacy' | null;
+  const kindOf = (u: typeof users[number]): SubKind => {
+    if (u.subscription_status === 'trial') return u.trial_ends_at && new Date(u.trial_ends_at).getTime() > nowMs ? 'trial_legacy' : null;
+    if (u.subscription_status !== 'active' && u.subscription_status !== 'cancelled') return null;
+    if (!u.subscription_expires_at || new Date(u.subscription_expires_at).getTime() <= nowMs) return null;
+    if (isStore(u.subscription_product)) return storePaid.has(String(u.id)) ? 'paid_store' : 'trial_store';
+    if (isSite(u.subscription_product)) {
+      const ck = siteCk.get(String(u.id));
+      return ck && (ck.asaas_payment_id || !(ck.trial_days > 0)) ? 'paid_site' : 'trial_site';
+    }
+    return null;
+  };
+  const kinds = new Map(nonInstitutional.map(u => [u.id, kindOf(u)] as const));
+  const countKind = (k: SubKind) => nonInstitutional.filter(u => kinds.get(u.id) === k).length;
+  const subs = {
+    paidStore: countKind('paid_store'), paidSite: countKind('paid_site'),
+    trialStore: countKind('trial_store'), trialSite: countKind('trial_site'), trialLegacy: countKind('trial_legacy'),
+    cancelledWithAccess: nonInstitutional.filter(u => u.subscription_status === 'cancelled' && kinds.get(u.id)).length,
+  };
+  // "Assinantes ativos" = pagantes de verdade (quem está no teste grátis entra em "Em teste").
+  const activeSubs = nonInstitutional.filter(u => { const k = kinds.get(u.id); return k === 'paid_store' || k === 'paid_site'; });
+  const monthlySubs = activeSubs.filter(u => !isAnnual(u.subscription_product)).length;
+  const yearlySubs  = activeSubs.filter(u => isAnnual(u.subscription_product)).length;
+  const monthlyValue = (u: typeof users[number]): number => {
+    const ck = isSite(u.subscription_product) ? siteCk.get(String(u.id)) : null;
+    if (ck) return isAnnual(u.subscription_product) ? Number(ck.value_brl) / 12 : Number(ck.value_brl);
+    return isAnnual(u.subscription_product) ? YEARLY_PRICE_BRL / 12 : MONTHLY_PRICE_BRL;
+  };
+  // MRR em R$: soma do valor mensal de quem paga (anual ÷ 12).
+  const mrr = activeSubs.reduce((sum, u) => sum + monthlyValue(u), 0);
   const arr = mrr * 12;
+  // MRR que entra se todos os testes atuais (loja + site) virarem pagantes.
+  const trialMrrPotential = nonInstitutional.filter(u => { const k = kinds.get(u.id); return k === 'trial_store' || k === 'trial_site'; })
+    .reduce((sum, u) => sum + monthlyValue(u), 0);
 
   // ── Trial ────────────────────────────────────────────────────────────────
-  const onTrial = nonInstitutional.filter(u => u.subscription_status === 'trial').length;
+  const onTrial = subs.trialStore + subs.trialSite + subs.trialLegacy;
 
-  // Trial -> paid: quem ja esteve em trial (hoje active/cancelled/expired)
-  // Aproximacao: users com subscription_status != 'trial' e != 'none' que tiveram trial_ends_at
-  const hadTrial = nonInstitutional.filter(u => u.trial_ends_at !== null).length;
-  const convertedFromTrial = nonInstitutional.filter(u =>
-    u.trial_ends_at !== null &&
-    (u.subscription_status === 'active' || u.subscription_status === 'cancelled' || u.subscription_status === 'expired')
-  ).length;
-  const trialConversionPct = hadTrial === 0 ? null : Math.round((convertedFromTrial / hadTrial) * 100);
+  // Conversão do teste: pagantes ÷ (pagantes + testes que terminaram sem pagar). Quem ainda está no teste
+  // não entra (nem como convertido, nem como perdido).
+  const paidEver = (u: typeof users[number]) => storePaid.has(String(u.id)) || !!siteCk.get(String(u.id))?.asaas_payment_id;
+  const endedUnpaid = nonInstitutional.filter(u => {
+    if (kinds.get(u.id) || paidEver(u)) return false;
+    const legacyEnded = !!u.trial_ends_at && new Date(u.trial_ends_at).getTime() <= nowMs;
+    const subEnded = (isStore(u.subscription_product) || isSite(u.subscription_product))
+      && (u.subscription_status === 'cancelled' || u.subscription_status === 'expired');
+    return legacyEnded || subEnded;
+  }).length;
+  const convDen = activeSubs.length + endedUnpaid;
+  const trialConversionPct = convDen === 0 ? null : Math.round((activeSubs.length / convDen) * 100);
 
   // ── Churn ────────────────────────────────────────────────────────────────
   // Proxy: cancelled + expired entre non-institutional
+  // Só quem chegou a pagar (cancelar no teste grátis não é cancelamento de assinante).
   const churned = nonInstitutional.filter(u =>
-    u.subscription_status === 'cancelled' || u.subscription_status === 'expired'
+    (u.subscription_status === 'cancelled' || u.subscription_status === 'expired') && paidEver(u)
   ).length;
   const churnDenominator = churned + activeSubs.length;
   const churnPct = churnDenominator === 0 ? null : Math.round((churned / churnDenominator) * 100);
 
   // ── Renovacoes proximas (7 dias) ────────────────────────────────────────
   const in7d = new Date(); in7d.setDate(in7d.getDate() + 7);
-  const renewals7d = activeSubs.filter(u => {
+  const renewals7d = nonInstitutional.filter(u => { const k = kinds.get(u.id); return k && k !== 'trial_legacy' && u.subscription_status === 'active'; }).filter(u => {
     if (!u.subscription_expires_at) return false;
     const exp = new Date(u.subscription_expires_at);
     return exp > new Date() && exp <= in7d;
@@ -393,9 +443,9 @@ export async function GET(req: NextRequest) {
     const c = new Date(u.created_at);
     return c >= from && c <= to;
   });
-  const newMonthly = newInRange.filter(u => u.subscription_product === 'monthly').length;
-  const newYearly  = newInRange.filter(u => u.subscription_product === 'yearly').length;
-  const newMrr = (newMonthly * MONTHLY_PRICE_USD) + (newYearly * YEARLY_PRICE_USD / 12);
+  const newMonthly = newInRange.filter(u => !isAnnual(u.subscription_product)).length;
+  const newYearly  = newInRange.filter(u => isAnnual(u.subscription_product)).length;
+  const newMrr = newInRange.reduce((sum, u) => sum + monthlyValue(u), 0);
 
   // Churned MRR no periodo — assinaturas expiradas/canceladas com
   // subscription_expires_at dentro do range.
@@ -405,9 +455,11 @@ export async function GET(req: NextRequest) {
     const exp = new Date(u.subscription_expires_at);
     return exp >= from && exp <= to;
   });
-  const churnedMonthly = churnedInRange.filter(u => u.subscription_product === 'monthly').length;
-  const churnedYearly  = churnedInRange.filter(u => u.subscription_product === 'yearly').length;
-  const churnedMrr = (churnedMonthly * MONTHLY_PRICE_USD) + (churnedYearly * YEARLY_PRICE_USD / 12);
+  // Só quem chegou a pagar (cancelar no teste grátis não é receita perdida).
+  const churnedPaid = churnedInRange.filter(u => storePaid.has(String(u.id)) || !!siteCk.get(String(u.id))?.asaas_payment_id);
+  const churnedMonthly = churnedPaid.filter(u => !isAnnual(u.subscription_product)).length;
+  const churnedYearly  = churnedPaid.filter(u => isAnnual(u.subscription_product)).length;
+  const churnedMrr = churnedPaid.reduce((sum, u) => sum + monthlyValue(u), 0);
 
   const quickRatio = churnedMrr <= 0.001
     ? (newMrr > 0 ? 99 : 0)
@@ -424,8 +476,8 @@ export async function GET(req: NextRequest) {
     weekStart.setUTCHours(0, 0, 0, 0);
     weekStart.setUTCDate(weekStart.getUTCDate() - ((weekStart.getUTCDay() + 6) % 7));
     const key = weekStart.toISOString().slice(0, 10);
-    const rate = u.subscription_product === 'yearly' ? YEARLY_PRICE_USD / 12 : MONTHLY_PRICE_USD;
-    mrrWeekly[key] = (mrrWeekly[key] ?? 0) + rate;
+    if (!(storePaid.has(String(u.id)) || !!siteCk.get(String(u.id))?.asaas_payment_id)) continue; // só quem pagou
+    mrrWeekly[key] = (mrrWeekly[key] ?? 0) + monthlyValue(u);
   }
   const mrrTrend = Object.entries(mrrWeekly)
     .map(([week, amount]) => ({ week, amount: round2(amount) }))
@@ -785,10 +837,10 @@ export async function GET(req: NextRequest) {
   }
 
   // Trial conversion tanking
-  if (trialConversionPct != null && trialConversionPct < 15 && hadTrial >= 10) {
+  if (trialConversionPct != null && trialConversionPct < 15 && convDen >= 10) {
     alerts.push({
       severity: 'warn',
-      message: `Conversao trial → pago em ${trialConversionPct}%. Benchmark SaaS: 25-40%.`,
+      message: `Conversão do teste grátis em pago em ${trialConversionPct}%. Referência de apps por assinatura: 25% a 40%.`,
     });
   }
 
@@ -826,6 +878,8 @@ export async function GET(req: NextRequest) {
       monthlySubs,
       yearlySubs,
       onTrial,
+      subs,
+      trialMrrPotential: round2(trialMrrPotential),
       trialConversionPct,
       churnPct,
       renewals7d,

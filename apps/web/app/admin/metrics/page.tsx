@@ -9,6 +9,8 @@ interface MetricsResponse {
   revenue: {
     mrr: number; arr: number; activeSubs: number; monthlySubs: number; yearlySubs: number;
     onTrial: number; trialConversionPct: number | null; churnPct: number | null;
+    subs?: { paidStore: number; paidSite: number; trialStore: number; trialSite: number; trialLegacy: number; cancelledWithAccess: number };
+    trialMrrPotential?: number;
     renewals7d: number; inactivePaying: number; newUsers: number; totalUsers: number;
     totalNonInstitutional: number;
   };
@@ -665,19 +667,19 @@ export default function MetricsPage() {
     <>
       <Sec>Receita</Sec>
       <div className="adm-grid" style={{ marginBottom: 20 }}>
-        <div className="col-3"><KpiCard label="MRR" display={g ? fmtBRL(g.revenue.mrr) : '—'} ctx="receita mensal recorrente" accent="var(--brand)" delay={0} tip="Monthly Recurring Revenue — soma das assinaturas ativas convertidas para valor mensal." /></div>
+        <div className="col-3"><KpiCard label="MRR" display={g ? fmtBRL(g.revenue.mrr) : '—'} ctx={g?.revenue.trialMrrPotential ? `+${fmtBRL(g.revenue.trialMrrPotential)} se os testes atuais pagarem` : 'receita mensal recorrente'} accent="var(--brand)" delay={0} tip="Receita mensal recorrente em reais: soma do valor mensal de quem já pagou (anual ÷ 12; no site, o valor real da compra, com cupom). Quem está no teste grátis não entra." /></div>
         <div className="col-3"><KpiCard label="ARR" display={g ? fmtBRL(g.revenue.arr) : '—'} ctx="projeção anual" delay={60} tip="Annual Recurring Revenue — projeção do MRR atual multiplicada por 12." /></div>
-        <div className="col-3"><KpiCard label="Assinantes Ativos" value={g?.revenue.activeSubs} ctx={g ? `${g.revenue.monthlySubs} mensais · ${g.revenue.yearlySubs} anuais` : undefined} delay={120} tip="Usuários com subscription_status = 'active' — pagando no momento." /></div>
-        <div className="col-3"><KpiCard label="Em Trial" value={g?.revenue.onTrial} ctx={g?.revenue.trialConversionPct != null ? `${g.revenue.trialConversionPct.toFixed(1)}% conversão` : undefined} delay={180} tip="Usuários em período de teste gratuito. Inclui trials ainda válidos." /></div>
+        <div className="col-3"><KpiCard label="Assinantes pagantes" value={g?.revenue.activeSubs} ctx={g ? `${g.revenue.monthlySubs} mensais · ${g.revenue.yearlySubs} anuais${g.revenue.subs ? ` · loja ${g.revenue.subs.paidStore} · site ${g.revenue.subs.paidSite}` : ''}` : undefined} delay={120} tip="Quem já foi cobrado e ainda tem acesso (loja: com cobrança registrada; site: compra já paga). Quem está nos 7 dias grátis aparece em Em teste." /></div>
+        <div className="col-3"><KpiCard label="Em teste grátis" value={g?.revenue.onTrial} ctx={g?.revenue.subs ? `loja ${g.revenue.subs.trialStore} · site ${g.revenue.subs.trialSite} · teste antigo ${g.revenue.subs.trialLegacy}` : undefined} delay={180} tip="Loja e site: 7 dias grátis com cartão (a cobrança vem no fim). Teste antigo: os 7 dias sem cartão que o app dava até 21/10." /></div>
         <div className="col-3">
           <KpiCard label="Churn Rate" display={fmtPct(g?.revenue.churnPct ?? null)} ctx="mensal estimado" delay={240}
             accent={g?.revenue.churnPct != null && g.revenue.churnPct > 5 ? 'var(--err)' : undefined}
             tip="% de assinantes que cancelaram no período. Saudável: < 5%. Alerta: > 10%." />
         </div>
         <div className="col-3">
-          <KpiCard label="Conversão Trial" display={fmtPct(g?.revenue.trialConversionPct ?? null)} ctx="trial → pago" delay={300}
+          <KpiCard label="Conversão do teste" display={fmtPct(g?.revenue.trialConversionPct ?? null)} ctx="teste grátis → pago" delay={300}
             accent={g?.revenue.trialConversionPct != null && g.revenue.trialConversionPct > 15 ? 'var(--ok)' : undefined}
-            tip="% de usuários que completaram o trial e viraram assinantes pagos." />
+            tip="Pagantes ÷ (pagantes + testes que terminaram sem pagar). Quem ainda está no teste não entra na conta." />
         </div>
         <div className="col-3">
           <KpiCard label="Total Usuários" value={g?.revenue.totalUsers}
@@ -685,7 +687,7 @@ export default function MetricsPage() {
             ctx="todos os planos" delay={360}
             tip="Total de contas cadastradas, independente de plano ou status." />
         </div>
-        <div className="col-3"><KpiCard label="Renovações 7d" value={g?.revenue.renewals7d} ctx="próximas renovações" delay={420} tip="Assinaturas que renovam (e cobram) nos próximos 7 dias." /></div>
+        <div className="col-3"><KpiCard label="Cobranças em 7 dias" value={g?.revenue.renewals7d} ctx="renovações e fins de teste" delay={420} tip="Assinaturas (loja e site) com cobrança nos próximos 7 dias: renovações de quem já paga e a 1ª cobrança de quem está no teste grátis." /></div>
       </div>
 
       {g?.appVersions && (
