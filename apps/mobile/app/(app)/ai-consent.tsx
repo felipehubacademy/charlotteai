@@ -20,7 +20,8 @@ import * as SecureStore from 'expo-secure-store';
 import * as Haptics from '@/lib/hapticsGated';
 import { ArrowRight, ShieldCheck, MicrophoneStage, SpeakerHigh, Brain } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
-import { AI_CONSENT_KEY } from '@/lib/aiConsent';
+import { saveAiConsent } from '@/lib/aiConsent';
+import { useAuth } from '@/hooks/useAuth';
 import { Image } from 'react-native';
 import { systemIsPt } from '@/lib/systemLang';
 
@@ -78,12 +79,13 @@ function ServiceRow({ icon, name, purpose, data, last }: ServiceRowProps) {
 }
 
 export default function AIConsentScreen() {
+  const { profile } = useAuth();
   const [loading, setLoading] = useState(false);
 
   const handleAccept = async () => {
     setLoading(true);
     await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    await SecureStore.setItemAsync(AI_CONSENT_KEY, '1');
+    if (profile?.id) await saveAiConsent(profile.id);
     router.replace('/(app)');
   };
 

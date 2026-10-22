@@ -13,7 +13,7 @@ import * as Updates from 'expo-updates';
 import Constants from 'expo-constants';
 import { AuthProvider } from '@/components/auth/AuthProvider';
 import { useAuth } from '@/hooks/useAuth';
-import { AI_CONSENT_KEY } from '@/lib/aiConsent';
+import { hasAiConsent } from '@/lib/aiConsent';
 import { OfflineBanner } from '@/components/ui/OfflineBanner';
 import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
@@ -73,14 +73,16 @@ function AuthGuard() {
   // Read AI consent from secure store on mount and whenever pathname changes
   // (re-read after returning from ai-consent screen so the guard unblocks)
   useEffect(() => {
-    SecureStore.getItemAsync(AI_CONSENT_KEY).then(val => {
-      setAiConsent(val === '1');
+    // Aceite por conta (lib/aiConsent). Sem perfil ainda: o guard espera o perfil de qualquer jeito.
+    if (!profile?.id) { setAiConsent(false); setConsentReady(true); return; }
+    hasAiConsent(profile.id, profile.created_at).then(ok => {
+      setAiConsent(ok);
       setConsentReady(true);
     }).catch(() => {
       setAiConsent(false);
       setConsentReady(true);
     });
-  }, [pathname]);
+  }, [pathname, profile?.id, profile?.created_at]);
 
   // If auth resolved but profile fetch failed, retry up to 5 times with backoff.
   useEffect(() => {
