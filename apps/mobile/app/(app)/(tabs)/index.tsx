@@ -156,13 +156,14 @@ export default function HomeTab() {
   // teste. Sempre dispensável. Flag por device em SecureStore.
   const [showPlacementPrompt, setShowPlacementPrompt] = useState(false);
   const placementDone = profile?.placement_test_done === true;
+  // Convite visto/fechado: por conta (antes era por aparelho e uma conta nova no mesmo celular nunca via).
+  const placementKey = profile?.id ? `placement_prompt_dismissed_${profile.id}` : null;
 
   // Família Queizy: "Quem vai te acompanhar?" 1x por conta neste aparelho (Igorfina marcado), e de novo
   // ao tocar na foto da saudação. Vem antes da janela do teste de nível (uma de cada vez).
   const [familySheet, setFamilySheet] = useState<'first' | 'switch' | null>(null);
   const [familyPickDone, setFamilyPickDone] = useState(false);
   const [familySaving, setFamilySaving] = useState(false);
-  const pickedThisOpenRef = useRef(false);
   const familyKey = profile?.id ? `family_pick_done_${profile.id}` : null;
   useEffect(() => {
     if (!familyKey) return;
@@ -188,7 +189,6 @@ export default function HomeTab() {
       setFamilySaving(false);
       setFamilySheet(null);
       setFamilyPickDone(true);
-      pickedThisOpenRef.current = true;
     }
   }, [profile?.id, profile?.active_character, familyKey, familySaving, refreshProfile]);
 
@@ -204,19 +204,23 @@ export default function HomeTab() {
 
   useEffect(() => {
     if (loading || placementDone || !familyPickDone) return;
-    if (isTaster && (pickedThisOpenRef.current || tasterDone === null || tasterDone < 1 || tasterDone >= 4)) return;
-    SecureStore.getItemAsync('PLACEMENT_PROMPT_DISMISSED').then(v => {
+    if (isTaster && (tasterDone === null || tasterDone < 1 || tasterDone >= 4)) return;
+    if (!placementKey) return;
+    // Conta antiga que já fechou o convite na versão anterior (marcação por aparelho) não vê de novo.
+    const legacy = profile?.created_at && profile.created_at < '2026-10-22T14:50:00Z'
+      ? SecureStore.getItemAsync('PLACEMENT_PROMPT_DISMISSED').catch(() => null) : Promise.resolve(null);
+    Promise.all([SecureStore.getItemAsync(placementKey), legacy]).then(([own, old]) => { const v = own || old;
       if (!v) {
         const t = setTimeout(() => setShowPlacementPrompt(true), 800);
         return () => clearTimeout(t);
       }
     }).catch(() => {});
-  }, [loading, placementDone, familyPickDone, isTaster, tasterDone]);
+  }, [loading, placementDone, familyPickDone, isTaster, tasterDone, placementKey, profile?.created_at]);
 
   const dismissPlacementPrompt = useCallback(() => {
     setShowPlacementPrompt(false);
-    SecureStore.setItemAsync('PLACEMENT_PROMPT_DISMISSED', '1').catch(() => {});
-  }, []);
+    if (placementKey) SecureStore.setItemAsync(placementKey, '1').catch(() => {});
+  }, [placementKey]);
 
   const handleTakePlacement = useCallback(() => {
     dismissPlacementPrompt();
