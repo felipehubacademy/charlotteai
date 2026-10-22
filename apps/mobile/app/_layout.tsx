@@ -75,6 +75,9 @@ function AuthGuard() {
   useEffect(() => {
     // Aceite por conta (lib/aiConsent). Sem perfil ainda: o guard espera o perfil de qualquer jeito.
     if (!profile?.id) { setAiConsent(false); setConsentReady(true); return; }
+    // Até ler o aceite DESTA conta, o guard espera (senão decide com o "false" de antes do perfil carregar
+    // e manda para a tela de aceite toda vez que o app abre).
+    setConsentReady(false);
     hasAiConsent(profile.id, profile.created_at).then(ok => {
       setAiConsent(ok);
       setConsentReady(true);
