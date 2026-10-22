@@ -3,7 +3,7 @@
 // competição esperando você e, por último, quem está estudando agora. Sempre uma
 // linha só (reticências se faltar espaço). Toque leva para Estudar junto.
 import React, { useCallback, useState } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, AppState } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import { AppText } from '@/components/ui/Text';
 import { systemIsPt } from '@/lib/systemLang';
@@ -43,10 +43,14 @@ export function StudyingNow() {
   const isPt = systemIsPt;
   const [info, setInfo] = useState<SocialInfo | null>(null);
 
+  // Atualiza ao entrar na tela e, parado nela, a cada minuto (pausa com o app em segundo plano).
   useFocusEffect(useCallback(() => {
     let alive = true;
-    fetchSocial().then(s => { if (alive && s) setInfo(s); });
-    return () => { alive = false; };
+    const load = () => { if (AppState.currentState === 'active') fetchSocial().then(s => { if (alive && s) setInfo(s); }); };
+    load();
+    const iv = setInterval(load, 60_000);
+    const sub = AppState.addEventListener('change', st => { if (st === 'active') load(); });
+    return () => { alive = false; clearInterval(iv); sub.remove(); };
   }, []));
 
   const l = info ? line(info, isPt) : null;
