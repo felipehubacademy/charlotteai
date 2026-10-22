@@ -824,7 +824,8 @@ export default function LearnSessionScreen() {
     const phraseText = currentStep.phrase.text ?? '';
     const m = alts.length ? bestSpeechMatch(alts, phraseText) : { percent: 0, missing: [], transcript: '' };
     const pct = m.percent;
-    const transcript = m.transcript;
+    // Sem a pontuação final da transcrição (senão a mensagem fica com 'thank you.".').
+    const transcript = (m.transcript ?? '').replace(/[.!?…]+\s*$/, '');
     const missing = missingDisplay(phraseText, m.missing);
     const missLine = missing.length && transcript
       ? (isPortuguese ? ` Faltou: ${missing.join(', ')}.` : ` Missing: ${missing.join(', ')}.`) : '';
