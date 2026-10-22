@@ -186,8 +186,9 @@ export async function POST(req: NextRequest) {
   if (!(await checkAuth(req, 'users:write'))) return NextResponse.json({ error: 'Sem permissão para editar alunos.' }, { status: 403 });
 
   const body = await req.json();
+  let { password } = body;
   const {
-    email, password, name,
+    email, name,
     charlotte_level       = null,
     is_institutional      = true,
     is_active             = true,
@@ -197,6 +198,8 @@ export async function POST(req: NextRequest) {
     is_admin              = false,
   } = body;
 
+  // Senha temporária vai no e-mail de convite: espaço colado no começo/fim impede o primeiro login.
+  if (typeof password === 'string') password = password.trim();
   if (!email || !password) {
     return NextResponse.json({ error: 'email e password são obrigatórios' }, { status: 400 });
   }
