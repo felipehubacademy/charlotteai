@@ -55,6 +55,13 @@ interface Payload {
   user_name?: string | null;
 }
 
+/** Dica de vocabulário para a transcrição: nomes que podem aparecer na fala do aluno. */
+function transcriptionHint(userName?: string | null, persona?: string): string {
+  const first = (userName ?? '').trim().split(/\s+/)[0];
+  const names = [first, persona].filter(Boolean).join(', ');
+  return `A Brazilian student practicing English${names ? `. Names that may be said: ${names}` : ''}. Transcribe exactly what was said, keeping names as they are.`;
+}
+
 // ── Build system prompt with hidden objectives injection ───────────
 function buildSystemPrompt(
   rp: RolePlayDef, level: string, unitTitle?: string,
@@ -406,6 +413,8 @@ export async function POST(request: NextRequest) {
         file:     audio,
         model:    transcribeModel(),
         language: 'en',
+        // Nomes próprios (o do aluno costuma ser em português) como dica: sem isso "I'm Felipe" virava "Amphilippe".
+        prompt:   transcriptionHint(user_name, rp.persona),
       });
     } catch (e: any) {
       if (e?.status !== 400) throw e;
@@ -428,6 +437,8 @@ export async function POST(request: NextRequest) {
         objectives_met:      [],
         status:              'continue',
         persona:             rp.persona,
+        // Não ouviu (silêncio, áudio vazio ou ilegível): o app não conta como a tentativa do aluno.
+        retry:               true,
       });
     }
 

@@ -62,6 +62,7 @@ export async function POST(request: NextRequest) {
     const formData = await request.formData();
     const audioFile = formData.get('audio') as File;
     const userId   = (formData.get('userId') as string | null) ?? null;
+    const hintNames = ((formData.get('names') as string | null) ?? '').replace(/[^\p{L}\p{N} ,'-]/gu, '').slice(0, 120).trim();
 
     if (!audioFile) {
       return NextResponse.json(
@@ -104,7 +105,9 @@ export async function POST(request: NextRequest) {
       language: 'en',
       response_format: 'json',
       temperature: 0.2,
-      prompt: 'Transcribe exactly what was said, word for word, without correcting or improving the speech.',
+      // names (opcional): nomes que podem aparecer na fala (do aluno, do personagem). Sem a dica, nome em
+      // português vira palavra inventada ("I'm Felipe" -> "Amphilippe").
+      prompt: `Transcribe exactly what was said, word for word, without correcting or improving the speech.${hintNames ? ` Names that may be said: ${hintNames}.` : ''}`,
     });
 
     logOpenAIUsage({
