@@ -80,7 +80,7 @@ Ele adapta a conversa ao seu nível, pode puxar o assunto do tópico que você e
 - Em alguns tópicos ele faz uma imitação a atividade toda; o cartão do tópico mostra o selo com o nome da imitação (por exemplo, "Presidente" ou "Astro do basquete").
 - Onde fica: na tela inicial, no cartão da trilha, quando o Igorfina está escolhido na Família (Perfil > Você no Queizy > Família Queizy), ou direto na tela Família, em "Ver trilha".
 - Os tópicos abrem em ordem, como na trilha principal. O progresso é separado: fazer o Manual não avança a sua trilha de nível.
-- Antes de assinar, um tópico do Manual é grátis ("SEU TÓPICO GRÁTIS"); os outros aparecem com cadeado e fazem parte da assinatura. Tocar num deles abre a tela de assinatura; para seguir no tópico grátis, toque em "Continuar na degustação".` },
+- Antes de assinar, um tópico do Manual é grátis ("SEU TÓPICO GRÁTIS"), com as 4 atividades liberadas em qualquer ordem; os outros aparecem com cadeado e fazem parte da assinatura. Tocar num deles abre a tela de assinatura; para seguir no tópico grátis, toque em "Continuar na degustação".` },
   { section: 'Guia do app', question: 'Os áudios das conversas ficam salvos?', answer:
 `Sim. No Free Chat, os áudios que você grava e as respostas faladas ficam salvos por 90 dias: ao reabrir a conversa em "Conversas anteriores", dá para ouvir de novo. Depois de 90 dias o áudio é apagado e a mensagem fica só com o texto. Conversas de antes dessa mudança mostram apenas o texto.` },
   { section: 'Guia do app', question: 'Onde ficam as metas e o desafio da semana?', answer:

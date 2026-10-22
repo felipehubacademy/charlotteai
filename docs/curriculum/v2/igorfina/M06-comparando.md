@@ -233,19 +233,19 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **Answer**: better
    **Explanation**: "My English is better than last year" = meu inglês está melhor que no ano passado. Frase para se orgulhar.
 
-7. **fill_gap** — "This is the _____ coffee ever. I can't drink it!"
-   **Hint**: O pior (superlativo de bad)
+7. **word_bank** — "This is the _____ coffee ever. I can't drink it!"
+   **Choices**: worst / worse / best / baddest
    **Answer**: worst
-   **Explanation**: "The worst coffee ever" = o pior café da vida. "Ever" reforça: de todos os tempos.
+   **Explanation**: "The worst coffee ever" = o pior café da vida. "Ever" reforça: de todos os tempos. "Worse" é só para comparar dois ("worse than").
 
-8. **fix_error** — "This is the most good pizza."
-   **Hint**: "Good" tem superlativo irregular
-   **Answer**: This is the best pizza.
+8. **multiple_choice** — "This is _____ pizza."
+   **Options**: the best / the most good / the goodest
+   **Answer**: the best
    **Explanation**: Nada de "most good": o superlativo de "good" é "the best".
 
-9. **fix_error** — "Today is more bad than yesterday."
-   **Hint**: "Bad" tem comparativo irregular
-   **Answer**: Today is worse than yesterday.
+9. **multiple_choice** — "Today is _____ than yesterday."
+   **Options**: worse / more bad / badder
+   **Answer**: worse
    **Explanation**: "Bad" → "worse". "More bad" e "badder" não existem (fora de música).
 
 10. **read_answer**

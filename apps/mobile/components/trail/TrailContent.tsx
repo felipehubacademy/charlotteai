@@ -487,10 +487,11 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
           && track.tasteUnit.moduleId === topic._v2ModuleId && track.tasteUnit.unitId === topic._v2UnitId;
         // Degustação: o que não é grátis aparece com cadeado (e o toque abre a oferta, com X para seguir).
         const tasterLocked = isTaster && (track ? !isTasteUnit : mIdx > 0);
-        const locked = isPreview || tasterLocked || !v2Progress.isActivityUnlocked(
+        // Tópico grátis da trilha extra: as 4 atividades abertas desde o início, em qualquer ordem.
+        const locked = isPreview || tasterLocked || (!isTasteUnit && !v2Progress.isActivityUnlocked(
           topic._v2ModuleId, topic._v2UnitId, v2Activity,
           isTasteUnit ? undefined : mod._v2PrevUnitId, isTasteUnit ? undefined : mod._v2PrevModuleId,
-        );
+        ));
         return {
           key:        `m${mIdx}_t${tIdx}`,
           label:      topic.title,

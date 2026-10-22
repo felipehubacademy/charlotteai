@@ -345,24 +345,37 @@
           "explanation": "\"My English is better than last year\" = meu inglês está melhor que no ano passado. Frase para se orgulhar."
         },
         {
-          "type": "fill_gap",
+          "type": "word_bank",
           "sentence": "This is the _____ coffee ever. I can't drink it!",
-          "hint": "O pior (superlativo de bad)",
+          "choices": [
+            "worst",
+            "worse",
+            "best",
+            "baddest"
+          ],
           "answer": "worst",
-          "explanation": "\"The worst coffee ever\" = o pior café da vida. \"Ever\" reforça: de todos os tempos."
+          "explanation": "\"The worst coffee ever\" = o pior café da vida. \"Ever\" reforça: de todos os tempos. \"Worse\" é só para comparar dois (\"worse than\")."
         },
         {
-          "type": "fix_error",
-          "sentence": "This is the most good pizza.",
-          "hint": "\"Good\" tem superlativo irregular",
-          "answer": "This is the best pizza.",
+          "type": "multiple_choice",
+          "sentence": "This is _____ pizza.",
+          "options": [
+            "the best",
+            "the most good",
+            "the goodest"
+          ],
+          "answer": "the best",
           "explanation": "Nada de \"most good\": o superlativo de \"good\" é \"the best\"."
         },
         {
-          "type": "fix_error",
-          "sentence": "Today is more bad than yesterday.",
-          "hint": "\"Bad\" tem comparativo irregular",
-          "answer": "Today is worse than yesterday.",
+          "type": "multiple_choice",
+          "sentence": "Today is _____ than yesterday.",
+          "options": [
+            "worse",
+            "more bad",
+            "badder"
+          ],
+          "answer": "worse",
           "explanation": "\"Bad\" → \"worse\". \"More bad\" e \"badder\" não existem (fora de música)."
         },
         {
