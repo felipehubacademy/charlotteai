@@ -16,7 +16,7 @@ interface MetricsResponse {
   };
   retention: { d1: number | null; d7: number | null; d30: number | null };
   appVersions: {
-    latestRuntime: string; total: number; onLatest: number; reported: number;
+    latestRuntime: string; latestVersion?: string; active30d?: number; byVersion?: { version: string; count: number }[]; total: number; onLatest: number; reported: number;
     unknown: number; unknownActive30d: number; onLatestPct: number;
     byPlatform: { ios: number; android: number };
   };
@@ -667,14 +667,14 @@ export default function MetricsPage() {
     <>
       <Sec>Receita</Sec>
       <div className="adm-grid" style={{ marginBottom: 20 }}>
-        <div className="col-3"><KpiCard label="MRR" display={g ? fmtBRL(g.revenue.mrr) : '—'} ctx={g?.revenue.trialMrrPotential ? `+${fmtBRL(g.revenue.trialMrrPotential)} se os testes atuais pagarem` : 'receita mensal recorrente'} accent="var(--brand)" delay={0} tip="Receita mensal recorrente em reais: soma do valor mensal de quem já pagou (anual ÷ 12; no site, o valor real da compra, com cupom). Quem está no teste grátis não entra." /></div>
-        <div className="col-3"><KpiCard label="ARR" display={g ? fmtBRL(g.revenue.arr) : '—'} ctx="projeção anual" delay={60} tip="Annual Recurring Revenue — projeção do MRR atual multiplicada por 12." /></div>
+        <div className="col-3"><KpiCard label="Receita mensal (MRR)" display={g ? fmtBRL(g.revenue.mrr) : '—'} ctx={g?.revenue.trialMrrPotential ? `+${fmtBRL(g.revenue.trialMrrPotential)} se os testes atuais pagarem` : 'receita mensal recorrente'} accent="var(--brand)" delay={0} tip="Receita mensal recorrente em reais: soma do valor mensal de quem já pagou (anual ÷ 12; no site, o valor real da compra, com cupom). Quem está no teste grátis não entra." /></div>
+        <div className="col-3"><KpiCard label="Receita anual (ARR)" display={g ? fmtBRL(g.revenue.arr) : '—'} ctx="receita mensal × 12" delay={60} tip="Annual Recurring Revenue — projeção do MRR atual multiplicada por 12." /></div>
         <div className="col-3"><KpiCard label="Assinantes pagantes" value={g?.revenue.activeSubs} ctx={g ? `${g.revenue.monthlySubs} mensais · ${g.revenue.yearlySubs} anuais${g.revenue.subs ? ` · loja ${g.revenue.subs.paidStore} · site ${g.revenue.subs.paidSite}` : ''}` : undefined} delay={120} tip="Quem já foi cobrado e ainda tem acesso (loja: com cobrança registrada; site: compra já paga). Quem está nos 7 dias grátis aparece em Em teste." /></div>
         <div className="col-3"><KpiCard label="Em teste grátis" value={g?.revenue.onTrial} ctx={g?.revenue.subs ? `loja ${g.revenue.subs.trialStore} · site ${g.revenue.subs.trialSite} · teste antigo ${g.revenue.subs.trialLegacy}` : undefined} delay={180} tip="Loja e site: 7 dias grátis com cartão (a cobrança vem no fim). Teste antigo: os 7 dias sem cartão que o app dava até 21/10." /></div>
         <div className="col-3">
-          <KpiCard label="Churn Rate" display={fmtPct(g?.revenue.churnPct ?? null)} ctx="mensal estimado" delay={240}
+          <KpiCard label="Cancelamentos" display={fmtPct(g?.revenue.churnPct ?? null)} ctx="de quem já pagou" delay={240}
             accent={g?.revenue.churnPct != null && g.revenue.churnPct > 5 ? 'var(--err)' : undefined}
-            tip="% de assinantes que cancelaram no período. Saudável: < 5%. Alerta: > 10%." />
+            tip="Quem pagou e cancelou ou expirou ÷ (pagantes + esses). Cancelar no teste grátis não entra. Saudável: abaixo de 5%; alerta acima de 10%." />
         </div>
         <div className="col-3">
           <KpiCard label="Conversão do teste" display={fmtPct(g?.revenue.trialConversionPct ?? null)} ctx="teste grátis → pago" delay={300}
@@ -682,9 +682,8 @@ export default function MetricsPage() {
             tip="Pagantes ÷ (pagantes + testes que terminaram sem pagar). Quem ainda está no teste não entra na conta." />
         </div>
         <div className="col-3">
-          <KpiCard label="Total Usuários" value={g?.revenue.totalUsers}
-            dlt={prev && g ? pctDelta(g.revenue.newUsers, prev.newUsers) : undefined}
-            ctx="todos os planos" delay={360}
+          <KpiCard label="Total de contas" value={g?.revenue.totalUsers}
+            ctx={g ? `+${g.revenue.newUsers} no período` : 'todos os planos'} delay={360}
             tip="Total de contas cadastradas, independente de plano ou status." />
         </div>
         <div className="col-3"><KpiCard label="Cobranças em 7 dias" value={g?.revenue.renewals7d} ctx="renovações e fins de teste" delay={420} tip="Assinaturas (loja e site) com cobrança nos próximos 7 dias: renovações de quem já paga e a 1ª cobrança de quem está no teste grátis." /></div>
@@ -692,30 +691,31 @@ export default function MetricsPage() {
 
       {g?.appVersions && (
         <>
-          <Sec>Adoção do App (versão 1.1.0)</Sec>
+          <Sec>{`Versão do app (atual: ${g.appVersions.latestVersion ?? g.appVersions.latestRuntime})`}</Sec>
           <div className="adm-grid" style={{ marginBottom: 20 }}>
             <div className="col-3">
-              <KpiCard label="No 1.1.0 (up to date)" value={g.appVersions.onLatest}
+              <KpiCard label="Na versão atual" value={g.appVersions.onLatest}
                 display={`${g.appVersions.onLatest} · ${g.appVersions.onLatestPct.toFixed(0)}%`}
                 ctx={`iOS ${g.appVersions.byPlatform.ios} · Android ${g.appVersions.byPlatform.android}`}
                 accent={g.appVersions.onLatestPct >= 50 ? 'var(--ok)' : undefined} delay={0}
-                tip="Usuários rodando o binário novo (runtime 2.0.0 = build 119+). Só reporta quem já atualizou pela loja e abriu o app." />
+                tip="Quem abriu o app nos últimos 30 dias e está na versão atual da loja (a mesma do aviso de atualização). A porcentagem é sobre esses ativos." />
             </div>
             <div className="col-3">
-              <KpiCard label="A atualizar (ativos 30d)" value={g.appVersions.unknownActive30d}
-                ctx="ativos, ainda em versão antiga" delay={80}
+              <KpiCard label="A atualizar" value={g.appVersions.unknownActive30d}
+                ctx="ativos numa versão anterior" delay={80}
                 accent={g.appVersions.unknownActive30d > 0 ? 'var(--warn)' : undefined}
-                tip="Abriram o app nos últimos 30 dias mas não reportam runtime 2.0.0 — provavelmente ainda no binário antigo. Alvo do aviso de atualização." />
+                tip="Abriram o app nos últimos 30 dias numa versão anterior da loja. Recebem o aviso 'Tem versão nova' na tela inicial." />
             </div>
             <div className="col-3">
-              <KpiCard label="Reportando versão" value={g.appVersions.reported}
-                ctx={`de ${g.appVersions.total} usuários`} delay={160}
-                tip="Quantos já reportaram versão. Cresce conforme a base atualiza para o binário novo (o tracking só roda no runtime 2.0.0)." />
+              <KpiCard label="Ativos em 30 dias" value={g.appVersions.active30d ?? g.appVersions.reported}
+                ctx={`de ${g.appVersions.total} contas`} delay={160}
+                tip="Contas que abriram o app nos últimos 30 dias: a base das porcentagens desta seção." />
             </div>
             <div className="col-3">
-              <KpiCard label="Sem dado de versão" value={g.appVersions.unknown}
-                ctx="binário antigo ou inativos" delay={240}
-                tip="Nunca reportaram versão: no binário antigo (não recebe o código de tracking) ou não abriram o app desde o release." />
+              <KpiCard label="Por versão" value={g.appVersions.byVersion?.[0]?.count ?? 0}
+                display={(g.appVersions.byVersion ?? []).slice(0, 3).map(v => `${v.version}: ${v.count}`).join(' · ') || '—'}
+                ctx="ativos em 30 dias" delay={240}
+                tip="As versões mais usadas entre quem abriu o app nos últimos 30 dias." />
             </div>
           </div>
         </>
@@ -723,34 +723,34 @@ export default function MetricsPage() {
 
       {g?.mrrHealth && (
         <>
-          <Sec>Saúde MRR</Sec>
+          <Sec>Saúde da receita</Sec>
           <div className="adm-grid" style={{ marginBottom: 20 }}>
             <div className="col-4">
               <div className="adm-panel">
                 <div className="adm-panel-hdr">
-                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Quick Ratio <HelpTip text="Novo MRR ÷ MRR Perdido. ≥ 4 = crescimento saudável. < 1 = receita encolhendo." /></span>
+                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Receita nova ÷ perdida <HelpTip text="Receita mensal nova ÷ receita mensal perdida no período. 4 ou mais = crescimento saudável; abaixo de 1 = receita encolhendo." /></span>
                   <span style={{ fontSize: 14, fontFamily: 'var(--font-mono)', fontWeight: 700, color: g.mrrHealth.quickRatio >= 4 ? 'var(--ok)' : g.mrrHealth.quickRatio >= 1 ? 'var(--warn)' : 'var(--err)' }}>
                     {g.mrrHealth.quickRatio.toFixed(2)}
                   </span>
                 </div>
                 <div className="adm-panel-body" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: 12, color: 'var(--t2)' }}>Novo MRR</span>
+                    <span style={{ fontSize: 12, color: 'var(--t2)' }}>Receita nova</span>
                     <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--ok)', fontWeight: 700 }}>+{fmtBRL(g.mrrHealth.newMrr)}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: 12, color: 'var(--t2)' }}>MRR Perdido</span>
+                    <span style={{ fontSize: 12, color: 'var(--t2)' }}>Receita perdida</span>
                     <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--err)', fontWeight: 700 }}>-{fmtBRL(g.mrrHealth.churnedMrr)}</span>
                   </div>
                   <div style={{ height: 1, background: 'var(--b1)' }} />
-                  <div style={{ fontSize: 11, color: 'var(--t3)' }}>Quick Ratio ≥ 4 = crescimento saudável</div>
+                  <div style={{ fontSize: 11, color: 'var(--t3)' }}>4 ou mais = crescimento saudável</div>
                 </div>
               </div>
             </div>
             <div className="col-8">
               <div className="adm-panel">
                 <div className="adm-panel-hdr">
-                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Tendência MRR</span>
+                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Receita nova por semana</span>
                   <span className="adm-panel-sub">{g.mrrHealth.mrrTrend.length} semanas</span>
                 </div>
                 <div className="adm-panel-body">

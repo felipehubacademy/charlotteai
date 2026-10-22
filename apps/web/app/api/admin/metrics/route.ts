@@ -845,23 +845,29 @@ export async function GET(req: NextRequest) {
   }
 
   // ─────────────────────────────────────────────────────────────────────────
-  // ── Adocao da versao do app (release 1.1.0 / runtime 2.0.0) ────────────────
-  // runtime_version = '2.0.0' => binario novo (build 119+, "up to date").
-  // null => reportou de versao antiga da loja OU ainda nao abriu no binario novo.
-  const LATEST_RUNTIME = '2.0.0';
+  // ── Versão do app ────────────────────────────────────────────────────────
+  // Versão vigente = app_release (a mesma do aviso "Tem versão nova"). Base: quem abriu o app nos últimos 30 dias.
+  const { data: rel } = await supabase.from('app_release').select('platform, latest_version');
+  const latestBy = new Map(((rel ?? []) as { platform: string; latest_version: string }[]).map(r => [r.platform, r.latest_version]));
+  const latestVersion = latestBy.get('ios') ?? latestBy.get('android') ?? '';
   const d30ms = Date.now() - 30 * 86400 * 1000;
-  const appOnLatest = users.filter(u => u.runtime_version === LATEST_RUNTIME);
-  const appReported = users.filter(u => !!u.runtime_version);
-  const appUnknownActive = users.filter(u =>
-    !u.runtime_version && u.last_seen_at && new Date(u.last_seen_at).getTime() >= d30ms);
+  const active30 = users.filter(u => u.last_seen_at && new Date(u.last_seen_at).getTime() >= d30ms);
+  const isLatest = (u: typeof users[number]) => !!u.app_version && u.app_version === (latestBy.get(u.app_platform ?? '') ?? latestVersion);
+  const appOnLatest = active30.filter(isLatest);
+  const appOutdated = active30.filter(u => !!u.app_version && !isLatest(u));
+  const byVersion = Object.entries(active30.reduce<Record<string, number>>((m, u) => { const v = u.app_version ?? 'sem versão'; m[v] = (m[v] ?? 0) + 1; return m; }, {}))
+    .map(([version, count]) => ({ version, count })).sort((x, y) => y.count - x.count).slice(0, 6);
   const appVersions = {
-    latestRuntime: LATEST_RUNTIME,
+    latestRuntime: latestVersion, // (nome mantido) = versão vigente da loja
+    latestVersion,
     total: users.length,
+    active30d: active30.length,
     onLatest: appOnLatest.length,
-    reported: appReported.length,
-    unknown: users.length - appReported.length,
-    unknownActive30d: appUnknownActive.length,
-    onLatestPct: users.length ? round2((appOnLatest.length / users.length) * 100) : 0,
+    reported: active30.length,
+    unknown: active30.filter(u => !u.app_version).length,
+    unknownActive30d: appOutdated.length, // (nome mantido) = ativos numa versão anterior
+    onLatestPct: active30.length ? round2((appOnLatest.length / active30.length) * 100) : 0,
+    byVersion,
     byPlatform: {
       ios:     appOnLatest.filter(u => u.app_platform === 'ios').length,
       android: appOnLatest.filter(u => u.app_platform === 'android').length,
