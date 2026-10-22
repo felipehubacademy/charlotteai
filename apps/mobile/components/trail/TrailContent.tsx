@@ -81,6 +81,8 @@ interface Lesson {
   v2ModuleId?: string;
   v2UnitId?:   string;
   v2Activity?: NodeType;
+  /** Cadeado da degustação: tocável, abre a oferta (com X para seguir na degustação). */
+  paywall?:    boolean;
 }
 
 interface ModuleData {
@@ -93,6 +95,7 @@ interface ModuleData {
   state:          'done' | 'active' | 'locked';
   avgScore:       number | null; // média dos scores das lessons concluídas
   impression?:    ImpressionId;  // trilha do Igorfina: tópico com imitação (selo no cartão)
+  paywall?:       boolean;       // travado só pela degustação: o toque abre a oferta
 }
 
 // ── Score colors (lógica da marca: abaixo da meta = queizy, passou = crazy) ──
@@ -168,7 +171,7 @@ function LessonRow({
   return (
     <TouchableOpacity
       onPress={onPress}
-      disabled={isLocked}
+      disabled={isLocked && !lesson.paywall}
       activeOpacity={0.7}
       style={{
         flexDirection: 'row', alignItems: 'center', gap: 12,
@@ -313,8 +316,8 @@ function ModuleCard({
         ...elevation,
       }}>
       <TouchableOpacity
-        onPress={onToggle}
-        disabled={isLocked}
+        onPress={isLocked && data.paywall && data.lessons[0] ? () => onStartLesson(data.lessons[0]) : onToggle}
+        disabled={isLocked && !data.paywall}
         activeOpacity={0.85}
         style={{ paddingHorizontal: 18, paddingVertical: 16 }}
       >
@@ -482,7 +485,9 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
         // Degustação numa trilha extra: a unidade grátis abre como se fosse a primeira.
         const isTasteUnit = !!track && isTaster
           && track.tasteUnit.moduleId === topic._v2ModuleId && track.tasteUnit.unitId === topic._v2UnitId;
-        const locked = isPreview || !v2Progress.isActivityUnlocked(
+        // Degustação: o que não é grátis aparece com cadeado (e o toque abre a oferta, com X para seguir).
+        const tasterLocked = isTaster && (track ? !isTasteUnit : mIdx > 0);
+        const locked = isPreview || tasterLocked || !v2Progress.isActivityUnlocked(
           topic._v2ModuleId, topic._v2UnitId, v2Activity,
           isTasteUnit ? undefined : mod._v2PrevUnitId, isTasteUnit ? undefined : mod._v2PrevModuleId,
         );
@@ -498,6 +503,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
           v2ModuleId: topic._v2ModuleId,
           v2UnitId:   topic._v2UnitId,
           v2Activity,
+          paywall:    tasterLocked && !complete,
         };
       });
 
@@ -510,6 +516,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
       else if (fixed.some(l => l.state === 'next'))                state = 'active';
       else                                                          state = 'locked';
 
+      const paywall = state === 'locked' && fixed.some(l => l.paywall);
       const scored = fixed.filter(l => typeof l.score === 'number') as (Lesson & { score: number })[];
       const avgScore = scored.length > 0
         ? scored.reduce((s, l) => s + l.score, 0) / scored.length
@@ -517,7 +524,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
 
       return {
         idx: mIdx, title: mod.title, lessons: fixed, impression: mod._impression,
-        completedCount, totalCount, pct, state, avgScore,
+        completedCount, totalCount, pct, state, avgScore, paywall,
       };
     });
   }, [modules, v2Progress.rows, isPreview, track, isTaster]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -556,16 +563,16 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
       const seen = await SecureStore.getItemAsync(key).catch(() => null);
       if (seen || cancelled) return;
       await SecureStore.setItemAsync(key, '1').catch(() => {});
-      openPaywall();
+      openPaywall('taste_done');
     })();
     return () => { cancelled = true; };
   }, [tasteDone, isFocused, level, openPaywall]);
 
   const handleStartLesson = useCallback((lesson: Lesson) => {
     // Trilha extra na degustação: só a unidade grátis; o resto (até com cadeado) abre o paywall.
-    if (isTaster && track && !(lesson.v2ModuleId === track.tasteUnit.moduleId && lesson.v2UnitId === track.tasteUnit.unitId)) { openPaywall(); return; }
+    if (isTaster && track && !(lesson.v2ModuleId === track.tasteUnit.moduleId && lesson.v2UnitId === track.tasteUnit.unitId)) { openPaywall('track'); return; }
+    if (isTaster && !track && lesson.moduleIdx > 0) { openPaywall('trail'); return; }
     if (lesson.state === 'locked' || !lesson.hasContent) return;
-    if (isTaster && !track && lesson.moduleIdx > 0) { openPaywall(); return; }
     if (lesson.v2ModuleId && lesson.v2UnitId) {
       // O tipo da atividade (grammar/speaking/roleplay/chat) define qual fatia da unidade abre.
       switch (lesson.type) {

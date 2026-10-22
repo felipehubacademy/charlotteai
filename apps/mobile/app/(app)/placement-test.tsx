@@ -317,12 +317,13 @@ type BlockNum = 1 | 2 | 3;
 
 export default function PlacementTestScreen() {
   const { session, refreshProfile, profile, isTaster } = useAuth();
-  // Degustação: o teste de nível faz parte do teste de 7 dias. Volta e abre o paywall.
+  // Degustação: o teste de nível faz parte do plano pago. Volta e abre o paywall (com a frase do teste de nível e o X
+  // para seguir na degustação).
   const { openPaywall } = usePaywallContext();
   useEffect(() => {
     if (!isTaster) return;
     if (router.canGoBack()) router.back(); else router.replace('/(app)/(tabs)' as any);
-    openPaywall();
+    openPaywall('placement');
   }, [isTaster, openPaywall]);
   const { toggle: toggleAudio, playingMessageId, stop: stopAudio } = useMessageAudioPlayer();
 

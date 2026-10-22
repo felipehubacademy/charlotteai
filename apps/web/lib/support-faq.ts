@@ -80,7 +80,7 @@ Ele adapta a conversa ao seu nível, pode puxar o assunto do tópico que você e
 - Em alguns tópicos ele faz uma imitação a atividade toda; o cartão do tópico mostra o selo com o nome da imitação (por exemplo, "Presidente" ou "Astro do basquete").
 - Onde fica: na tela inicial, no cartão da trilha, quando o Igorfina está escolhido na Família (Perfil > Você no Queizy > Família Queizy), ou direto na tela Família, em "Ver trilha".
 - Os tópicos abrem em ordem, como na trilha principal. O progresso é separado: fazer o Manual não avança a sua trilha de nível.
-- Antes de assinar, um tópico do Manual é grátis ("SEU TÓPICO GRÁTIS"); os outros fazem parte da assinatura.` },
+- Antes de assinar, um tópico do Manual é grátis ("SEU TÓPICO GRÁTIS"); os outros aparecem com cadeado e fazem parte da assinatura. Tocar num deles abre a tela de assinatura; para seguir no tópico grátis, toque em "Continuar na degustação".` },
   { section: 'Guia do app', question: 'Os áudios das conversas ficam salvos?', answer:
 `Sim. No Free Chat, os áudios que você grava e as respostas faladas ficam salvos por 90 dias: ao reabrir a conversa em "Conversas anteriores", dá para ouvir de novo. Depois de 90 dias o áudio é apagado e a mensagem fica só com o texto. Conversas de antes dessa mudança mostram apenas o texto.` },
   { section: 'Guia do app', question: 'Onde ficam as metas e o desafio da semana?', answer:
@@ -134,7 +134,7 @@ Se aparecer o aviso de que o Queizy está sem acesso ao microfone, toque em "Abr
   // ── Planos e assinatura ──────────────────────────────────────────────────
   { section: 'Planos e assinatura', question: 'Quais são os planos e preços?', answer:
 `Ao criar a conta, você experimenta de graça: o primeiro módulo da trilha nos 3 níveis (Gramática, Listening & Speaking, Role-play e Guided Chat), 10 mensagens no Practice e 3 minutos de Live Voice (uma vez só). Para continuar: Plano Mensal R$ 29,99/mês e Plano Anual R$ 199,99/ano (equivale a cerca de R$ 16,67/mês). O teste de nível também faz parte do plano.
-A degustação não tem prazo em dias: vale até você usar o que é grátis. A tela de assinatura abre ao terminar o primeiro módulo ou quando a degustação acaba.
+A degustação não tem prazo em dias: vale até você usar o que é grátis. A tela de assinatura abre ao terminar o primeiro módulo ou quando a degustação acaba. Durante a degustação, o que faz parte do plano aparece com cadeado. Ao tocar nele (ou em "Fazer teste de nível"), a tela de assinatura abre e você pode fechar no X ou em "Continuar na degustação" e seguir usando o que é grátis.
 Dá para assinar de dois jeitos:
 - No app, pela loja: App Store (iPhone) ou Google Play (Android), com 7 dias grátis para quem nunca assinou. Para começar os 7 dias, a loja pede uma forma de pagamento cadastrada na conta Apple ou Google (no site, o cartão de crédito). A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.
 - Pelo site, em queizy.com/assinar: Mensal no cartão de crédito, Anual no cartão de crédito à vista ou Anual no Pix à vista (veja "Como funciona a assinatura pelo site?").` },

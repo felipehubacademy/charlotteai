@@ -72,7 +72,7 @@ function formatMoney(value: number, currency: string, isPt: boolean): string {
 
 export function PaywallModal() {
   const { profile, hasAccess, isTaster, signOut, refreshProfile } = useAuth();
-  const { paywallOpen, closePaywall } = usePaywallContext();
+  const { paywallOpen, paywallReason, closePaywall } = usePaywallContext();
   const insets = useSafeAreaInsets();
 
   // Paywall = tela de SISTEMA/transacional: idioma segue o device.
@@ -90,6 +90,7 @@ export function PaywallModal() {
     status: profile?.subscription_status ?? 'none',
     plan: selected.includes('yearly') ? 'yearly' : 'monthly',
     trial_days: selTrialRef.current,
+    reason: paywallReason,
   });
   const selTrialRef = useRef(0);
   useEffect(() => {
@@ -386,7 +387,19 @@ export function PaywallModal() {
 
   const headline = isNewUser ? newLine : useStreak ? streakLine : useXp ? xpLine : neutralLine;
 
-  const subheadline = isTaster
+  // Degustação: a frase diz por que a oferta abriu (o X e "Continuar na degustação" deixam seguir de graça).
+  const reasonLine = !isTaster ? null
+    : paywallReason === 'placement'
+    ? (isPt
+        ? 'O teste de nível faz parte do plano completo: ele descobre seu nível e monta a trilha certa para você.'
+        : 'The level test is part of the full plan: it finds your level and sets up the right path for you.')
+    : paywallReason === 'track'
+    ? (isPt
+        ? 'O Manual do F#did@ completo, com todos os tópicos do Igorfina, faz parte do plano completo.'
+        : "The full Manual do F#did@, with all of Igorfina's topics, is part of the full plan.")
+    : null;
+
+  const subheadline = reasonLine ?? (isTaster
     ? (isPt
         ? 'Descubra seu nível e libere a trilha inteira, a conversa livre e as chamadas de voz com a Charlotte.'
         : 'Find your level and unlock the whole learning path, free chat and voice calls with Charlotte.')
@@ -396,7 +409,7 @@ export function PaywallModal() {
         : 'Full access to Queizy: voice chat, instant corrections and the whole learning path.')
     : (isPt
         ? 'Não deixe tudo isso ir embora. Continue de onde parou.'
-        : 'Don’t let all of this go. Pick up where you left off.');
+        : 'Don’t let all of this go. Pick up where you left off.'));
 
   // Texto curto sob o botão: com teste, deixa claro quando cobra e como não pagar.
   const ctaNote = selTrial
@@ -634,6 +647,13 @@ export function PaywallModal() {
             <AppText style={{ color: C.muted, fontSize: 11, textAlign: 'center', marginTop: 8, lineHeight: 16 }}>
               {ctaNote}
             </AppText>
+            {forcedOpen && isTaster && (
+              <TouchableOpacity onPress={closePaywall} hitSlop={8} style={{ alignSelf: 'center', paddingVertical: 8, marginTop: 2 }}>
+                <AppText style={{ color: C.navy, fontSize: 14, fontWeight: '700' }}>
+                  {isPt ? 'Continuar na degustação' : 'Keep exploring for free'}
+                </AppText>
+              </TouchableOpacity>
+            )}
             {/* Termos e privacidade (exigidos pelas lojas para assinatura) */}
             <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 16, marginTop: 6 }}>
               <TouchableOpacity onPress={() => Linking.openURL('https://queizy.com/termos')} hitSlop={8}>
