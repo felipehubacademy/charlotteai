@@ -2265,7 +2265,7 @@ export default function LearnSessionScreen() {
         const fb = pronFeedback;
         const isCorrectState = fb.state === 'correct';
         const isCloseState   = fb.state === 'close';
-        const panelBg    = isCorrectState ? '#E3F6EC' : isCloseState ? '#EFECFF' : '#FFEEF4';
+        const panelBg    = isCorrectState ? '#F1FFB8' : isCloseState ? '#EFECFF' : '#FFEEF4';
         const panelBorder = isCorrectState ? 'rgba(8,128,74,0.25)' : isCloseState ? 'rgba(107,75,255,0.30)' : 'rgba(255,79,139,0.30)';
         const textColor   = isCorrectState ? C.green : isCloseState ? C.violet : C.red;
         const btnColor    = isCorrectState ? C.green : isCloseState ? C.violet : C.red;
