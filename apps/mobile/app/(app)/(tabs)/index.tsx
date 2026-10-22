@@ -298,15 +298,18 @@ export default function HomeTab() {
       // Sem isso, o intro tocava por baixo do splash e terminava antes
       // do user ver a home.
       const introWillPlay = !_introPlayedThisJsSession;
+      // Igorfina escolhido na Família: depois do jingle, uma fala gravada por ele (rodízio entre aberturas).
+      const igorOpening = introWillPlay && characterInfo(profile?.active_character).id === 'igorfina';
       if (introWillPlay) {
         _introPlayedThisJsSession = true;
         splashGate.then(() => {
           soundEngine.play('intro_app').catch(() => {});
+          if (igorOpening) setTimeout(() => { voiceSFX.playIgorOpening().catch(() => {}); }, 3100);
         });
       }
       // Offset usado pra shiftar streak_alive e Tier 4 quando o intro toca primeiro.
-      // intro dura ~3s => proximos sons em t=splash_done+3100ms.
-      const introOffset = introWillPlay ? 3100 : 0;
+      // intro dura ~3s => proximos sons em t=splash_done+3100ms (+ a fala do Igor, até ~3,5s).
+      const introOffset = introWillPlay ? 3100 + (igorOpening ? 3500 : 0) : 0;
 
       // Streak sound + Tier 4 (voz)
       if (!_streakSoundPlayedThisSession && streakDays > 0) {

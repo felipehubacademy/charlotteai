@@ -10,6 +10,7 @@
 
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import { getAudioPreferences } from './audioPreferences';
+import * as SecureStore from 'expo-secure-store';
 
 export type VoiceSfxId =
   | 'streak_3'              // 3 acertos seguidos     — "Nice!"
@@ -41,18 +42,32 @@ const BUNDLED: Partial<Record<VoiceSfxId, number>> = {
   module_complete:       require('../assets/audio/voice/module_complete.mp3'),
 };
 
-// Trilha do Igorfina: os bordões dele no lugar das falas da Charlotte. Por enquanto gerados
-// no ElevenLabs (voz do Igor); para trocar pela gravação dele, substitua os arquivos em
-// assets/audio/voice/igorfina/ mantendo os nomes. O que não tem versão dele fica em silêncio.
+// Trilha do Igorfina: os bordões dele no lugar das falas da Charlotte. Gravados pelo Igor (22/10/2026),
+// exceto crazy / thats_crazy / cuaaaeezy (voz dele no ElevenLabs). Lista = alterna a cada vez que toca.
+// O que não tem versão dele fica em silêncio.
 export type VoiceCharacter = 'charlotte' | 'igorfina';
-const IGORFINA: Partial<Record<VoiceSfxId, number>> = {
-  streak_3:        require('../assets/audio/voice/igorfina/crazy.mp3'),        // "CRAZY!"
-  streak_5:        require('../assets/audio/voice/igorfina/sliced.mp3'),       // "SLICED!"
-  streak_10:       require('../assets/audio/voice/igorfina/thats_crazy.mp3'),  // "That is CRAZY, my friend!"
-  topic_complete:  require('../assets/audio/voice/igorfina/sliced.mp3'),
-  module_complete: require('../assets/audio/voice/igorfina/thats_crazy.mp3'),
-  miss:            require('../assets/audio/voice/igorfina/cuaaaeezy.mp3'),    // "Cuaaaeezy..."
+const IG = {
+  crazy:       require('../assets/audio/voice/igorfina/crazy.mp3'),        // "CRAZY!"
+  sliced:      require('../assets/audio/voice/igorfina/sliced.mp3'),       // "Sliced!" (gravado)
+  thatsCrazy:  require('../assets/audio/voice/igorfina/thats_crazy.mp3'),  // "That is CRAZY, my friend!"
+  cuaaaeezy:   require('../assets/audio/voice/igorfina/cuaaaeezy.mp3'),    // "Cuaaaeezy..."
+  queizy1:     require('../assets/audio/voice/igorfina/queizy_1.mp3'),     // "Queizy!" (gravado)
+  queizy2:     require('../assets/audio/voice/igorfina/queizy_2.mp3'),     // "Queizy!" mais longo (gravado)
+  ohMan:       require('../assets/audio/voice/igorfina/oh_man.mp3'),       // "Oh man!" (gravado)
+  uncrumble:   require('../assets/audio/voice/igorfina/uncrumble.mp3'),    // "Uncrumble" = o "Incredible!" dele (gravado)
 };
+const IGORFINA: Partial<Record<VoiceSfxId, number | number[]>> = {
+  streak_3:        [IG.crazy, IG.queizy1],
+  streak_5:        IG.sliced,
+  streak_10:       IG.uncrumble,
+  topic_complete:  IG.sliced,
+  module_complete: IG.thatsCrazy,
+  miss:            [IG.cuaaaeezy, IG.ohMan],
+};
+// Abertura do app com o Igorfina escolhido na Família: uma fala por abertura, em rodízio
+// (os dois "Queizy" separados para não repetir em aberturas seguidas).
+const IGOR_OPENING: number[] = [IG.queizy1, IG.ohMan, IG.queizy2, IG.sliced, IG.uncrumble];
+const IGOR_OPENING_KEY = 'igor_opening_idx';
 // O erro pode voltar mais cedo que as outras falas, mas nunca em todo exercício.
 const MISS_COOLDOWN_MS = 5 * 60_000;
 
@@ -65,6 +80,7 @@ class VoiceSFXEngine {
   private lastPlayedAt = 0;
   private lastPlayedAtById = new Map<VoiceSfxId, number>();
   private character: VoiceCharacter = 'charlotte';
+  private turnById = new Map<VoiceSfxId, number>();
 
   setMuted(m: boolean) { this.muted = m; }
 
@@ -83,8 +99,15 @@ class VoiceSFXEngine {
     if (now - lastForId < (id === 'miss' ? MISS_COOLDOWN_MS : PER_ID_COOLDOWN_MS)) return false;
 
     try {
-      const source = this.character === 'igorfina' ? IGORFINA[id] : BUNDLED[id];
-      if (!source) return false;
+      const entry = this.character === 'igorfina' ? IGORFINA[id] : BUNDLED[id];
+      if (!entry) return false;
+      // Lista: alterna a cada vez que toca.
+      let source: number;
+      if (Array.isArray(entry)) {
+        const n = this.turnById.get(id) ?? 0;
+        source = entry[n % entry.length];
+        this.turnById.set(id, n + 1);
+      } else source = entry;
 
       // NAO mudamos interruptionMode aqui (mesma razao do soundEngine):
       // o SFX deve herdar o modo do screen, nao forcar mixWithOthers global.
@@ -100,6 +123,24 @@ class VoiceSFXEngine {
     } catch (e) {
       console.warn('[VoiceSFX] play error:', e);
       return false;
+    }
+  }
+
+  /** Fala do Igor na abertura do app (Igorfina escolhido na Família), em rodízio entre aberturas.
+   *  Respeita o mudo e a preferência de voz, mas não entra no cooldown das outras falas. */
+  async playIgorOpening(): Promise<number> {
+    if (this.muted || !getAudioPreferences().voice) return 0;
+    try {
+      const raw = await SecureStore.getItemAsync(IGOR_OPENING_KEY).catch(() => null);
+      const idx = (Number(raw) || 0) % IGOR_OPENING.length;
+      await SecureStore.setItemAsync(IGOR_OPENING_KEY, String((idx + 1) % IGOR_OPENING.length)).catch(() => {});
+      const player = createAudioPlayer(IGOR_OPENING[idx]);
+      player.play();
+      setTimeout(() => { try { player.pause(); player.remove(); } catch {} }, 4000);
+      return IGOR_OPENING[idx] === IG.ohMan ? 3400 : 1400; // duração aproximada, para empurrar as falas seguintes
+    } catch (e) {
+      console.warn('[VoiceSFX] opening error:', e);
+      return 0;
     }
   }
 
