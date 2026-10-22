@@ -298,7 +298,7 @@ export default function OpenPage() {
             <>
               <h1>Crie sua senha</h1>
               <p className="sub">Depois é só entrar no app Queizy com o seu e-mail e esta senha.</p>
-              <input className="pw" type="password" autoComplete="new-password" placeholder="Nova senha (mínimo 6 caracteres)"
+              <input className="pw" type="password" autoComplete="new-password" placeholder="Nova senha (6 ou mais)"
                 value={pw} onChange={e => setPw(e.target.value)} />
               <input className="pw" type="password" autoComplete="new-password" placeholder="Repita a senha"
                 value={pw2} onChange={e => setPw2(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') savePassword(); }} />
