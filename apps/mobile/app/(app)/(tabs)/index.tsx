@@ -192,14 +192,14 @@ export default function HomeTab() {
 
   useEffect(() => {
     // Degustação: o teste de nível faz parte do teste de 7 dias; a janela aparece depois de assinar.
-    if (loading || placementDone || isTaster || !familyPickDone) return;
+    if (loading || placementDone || !familyPickDone) return;
     SecureStore.getItemAsync('PLACEMENT_PROMPT_DISMISSED').then(v => {
       if (!v) {
         const t = setTimeout(() => setShowPlacementPrompt(true), 800);
         return () => clearTimeout(t);
       }
     }).catch(() => {});
-  }, [loading, placementDone, isTaster, familyPickDone]);
+  }, [loading, placementDone, familyPickDone]);
 
   const dismissPlacementPrompt = useCallback(() => {
     setShowPlacementPrompt(false);
@@ -208,9 +208,11 @@ export default function HomeTab() {
 
   const handleTakePlacement = useCallback(() => {
     dismissPlacementPrompt();
+    // Degustação: o teste de nível é do plano pago. Abre a oferta com essa frase (X / "Continuar na degustação").
+    if (isTaster) { openPaywall('placement'); return; }
     // direct=1: já escolheu fazer o teste no pop → pula o intro do placement.
     router.push('/(app)/placement-test?direct=1');
-  }, [dismissPlacementPrompt]);
+  }, [dismissPlacementPrompt, isTaster, openPaywall]);
 
   // Charlotte greeting animado em WebP com alpha. expo-image faz loop nativo
   // e não toca AVAudioSession (substitui expo-video que floodava MediaPlayback
