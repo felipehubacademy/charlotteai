@@ -49,6 +49,18 @@ export default function OpenPage() {
   const [saving, setSaving] = useState(false);
   const [accountEmail, setAccountEmail] = useState('');
 
+  const [resendEmail, setResendEmail] = useState('');
+  const [resendState, setResendState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const resendLink = async () => {
+    const email = resendEmail.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setResendState('error'); return; }
+    const sb = getSupabase();
+    if (!sb) { setResendState('error'); return; }
+    setResendState('sending');
+    const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: 'https://queizy.com/open' });
+    setResendState(error ? 'error' : 'sent');
+  };
+
   const savePassword = async () => {
     setPwErr('');
     if (pw.length < 6) { setPwErr('A senha precisa ter pelo menos 6 caracteres.'); return; }
@@ -76,6 +88,14 @@ export default function OpenPage() {
   useEffect(() => {
     const currentOs = getOS();
     setOs(currentOs);
+
+    // Link vencido ou já usado: avisa em qualquer aparelho (antes o computador caía no QR code).
+    {
+      const h0 = new URLSearchParams(window.location.hash.slice(1));
+      const q0 = new URLSearchParams(window.location.search.slice(1));
+      const err = h0.get('error_code') ?? h0.get('error') ?? q0.get('error_code') ?? q0.get('error');
+      if (err) { setPhase('expired'); return; }
+    }
 
     // Link de senha: mostra o formulário (qualquer aparelho) em vez de tentar abrir o app.
     {
@@ -321,16 +341,25 @@ export default function OpenPage() {
             /* ── Link expirado ── */
             <>
               <h1>Link expirado</h1>
-              <p className="sub">
-                Este link de confirma&ccedil;&atilde;o j&aacute; foi usado ou expirou.<br />
-                Abra o app e solicite um novo link pelo login.
-              </p>
+              {resendState === 'sent' ? (
+                <p className="sub">Pronto! Mandamos um link novo para <strong>{resendEmail.trim()}</strong>. Abra o e-mail (confira também o spam e as promoções) e crie sua senha.</p>
+              ) : (
+                <>
+                  <p className="sub">Este link já foi usado ou venceu. Digite o seu e-mail e mandamos um link novo para criar a sua senha.</p>
+                  <input className="pw" type="email" autoComplete="email" inputMode="email" placeholder="Seu e-mail"
+                    value={resendEmail} onChange={e => { setResendEmail(e.target.value); setResendState('idle'); }}
+                    onKeyDown={e => { if (e.key === 'Enter') resendLink(); }} />
+                  {resendState === 'error' ? <p className="pw-err">Confira o e-mail e tente de novo.</p> : null}
+                  <button className="pw-btn" onClick={resendLink} disabled={resendState === 'sending'}>{resendState === 'sending' ? 'Enviando…' : 'Enviar link novo'}</button>
+                  <div style={{ height: 20 }} />
+                </>
+              )}
               {os === 'ios' ? (
                 <a href="charlotte://" className="btn-primary">Abrir o Queizy</a>
               ) : os === 'android' ? (
                 <a href="intent://#Intent;scheme=charlotte;package=com.hubacademy.charlotte;end" className="btn-primary">Abrir o Queizy</a>
               ) : null}
-              <div className="divider">nao tem o app?</div>
+              <div className="divider">não tem o app?</div>
               <div className="store-badges">
                 <a href={IOS_URL} className="store-badge"><img src="/images/store-badges/app-store-pt.svg" alt="Download on the App Store" /></a>
                 <a href={ANDROID_URL} className="store-badge"><img src="/images/store-badges/google-play-pt.png" alt="Disponível no Google Play" /></a>
