@@ -7,6 +7,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { buildCallSession, generateOpener, type CallLevel } from '@/lib/family-call';
+import { characterOf, tagPortuguese } from '@/lib/characters';
 import { isTasterRow, TASTE_LIVE_VOICE_SECONDS } from '@/lib/taste';
 
 export const dynamic = 'force-dynamic';
@@ -76,7 +77,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'token_failed' }, { status: 502 });
   }
   const { token } = (await r.json()) as { token: string };
-  const firstMessage = await openerP;
+  // Partes em português da primeira fala na voz em português do personagem (etiqueta do agente).
+  const c = characterOf(characterId);
+  const firstMessage = c.elevenVoiceIdPt ? tagPortuguese(await openerP) : await openerP;
   // A regra do TURNO 1 cita a primeira fala: entra no prompt depois de pronta.
   const prompt = session.prompt.replace('{GREETING}', firstMessage.replace(/<\/?[A-Za-z]+>/g, ''));
   return NextResponse.json({ token, agentId: session.agentId, prompt, firstMessage, characterName: session.characterName, remainingSeconds: remaining });

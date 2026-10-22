@@ -14,7 +14,7 @@ import { aiFetch, transcribeModel, transcribedSeconds } from '@/lib/ai-models';
 import { judgeObjectives } from '@/lib/objective-judge';
 import { logOpenAIUsage, logElevenLabsUsage } from '@/lib/openai-usage';
 import { speak } from '@/lib/charlotte-voice';
-import { characterOf, voiceFor, impressionFromOutfit, wholeActivityImpressionStyle } from '@/lib/characters';
+import { characterOf, voiceSegments, impressionFromOutfit, wholeActivityImpressionStyle } from '@/lib/characters';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -349,17 +349,21 @@ Rules for Igorfina in this activity:
 
 async function ttsIgorfina(text: string, userId?: string, outfit?: string): Promise<{ audio: Buffer; mime: string }> {
   // Atividade com imitação (persona_outfit igorfina_president/hoops): a voz da imitação.
-  const voice = voiceFor(characterOf('igorfina'), impressionFromOutfit(outfit));
+  // Português na voz em português do Igor, inglês na voz normal (imitação: tudo na voz dela).
+  const segs = voiceSegments(characterOf('igorfina'), impressionFromOutfit(outfit), text);
   const key = process.env.ELEVENLABS_API_KEY;
-  if (!voice || !key) throw new Error('voz do Igorfina indisponível');
-  const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice.voiceId}?output_format=mp3_44100_128`, {
-    method: 'POST',
-    headers: { 'xi-api-key': key, 'Content-Type': 'application/json', Accept: 'audio/mpeg' },
-    body: JSON.stringify({ text, model_id: 'eleven_multilingual_v2', voice_settings: voice.settings }),
-  });
-  if (!res.ok) throw new Error(`ElevenLabs ${res.status}: ${await res.text()}`);
+  if (!segs.length || !key) throw new Error('voz do Igorfina indisponível');
+  const parts = await Promise.all(segs.map(async sg => {
+    const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${sg.voiceId}?output_format=mp3_44100_128`, {
+      method: 'POST',
+      headers: { 'xi-api-key': key, 'Content-Type': 'application/json', Accept: 'audio/mpeg' },
+      body: JSON.stringify({ text: sg.text, model_id: 'eleven_multilingual_v2', voice_settings: sg.settings }),
+    });
+    if (!res.ok) throw new Error(`ElevenLabs ${res.status}: ${await res.text()}`);
+    return Buffer.from(await res.arrayBuffer());
+  }));
   logElevenLabsUsage({ endpoint: '/api/roleplay/turn:tts', charCount: text.length, model: 'eleven_multilingual_v2', userId: userId ?? undefined, meta: { character: 'igorfina' } });
-  return { audio: Buffer.from(await res.arrayBuffer()), mime: 'audio/mpeg' };
+  return { audio: Buffer.concat(parts), mime: 'audio/mpeg' };
 }
 
 /** Fala do personagem: Igorfina na voz dele (se falhar, cai na voz padrão); o resto, OpenAI. */

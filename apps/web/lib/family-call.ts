@@ -4,7 +4,7 @@
 // <President>, <Hoops>) e só aceita conexão com token gerado aqui. A cada ligação o servidor
 // monta o prompt (personalidade do Free Chat em lib/characters + regras de voz e do nível do
 // aluno + nome e tópico) e a primeira fala, que vão como "overrides" da sessão.
-import { CHARACTERS, type Character } from '@/lib/characters';
+import { CHARACTERS, PT_VOICE_TAG, type Character } from '@/lib/characters';
 import { SYSTEM_PROMPTS } from '@/lib/live-voice-rules';
 
 export type CallLevel = 'Novice' | 'Inter' | 'Advanced';
@@ -46,6 +46,14 @@ function baseRules(c: Character, level: CallLevel, name: string): string {
 
 /** Imitações por voz: a tag troca a voz no ElevenLabs; o estilo vem do Free Chat (lib/characters). */
 const IMPRESSION_TAGS: Record<string, string> = { president: 'President', hoops: 'Hoops' };
+
+// Voz em português (personagem com clone em português): a etiqueta troca a voz só nas partes em português.
+function portugueseVoiceBlock(c: Character): string {
+  if (!c.elevenVoiceIdPt) return '';
+  return `PORTUGUESE VOICE (always, in your normal voice): wrap every Portuguese part of your reply in <${PT_VOICE_TAG}>...</${PT_VOICE_TAG}> (the tag switches to your Brazilian Portuguese voice). English always stays OUTSIDE the tag. Never put English inside it and never leave Portuguese outside it.
+Example: "<${PT_VOICE_TAG}>Nossa, trabalhou muito, hein?</${PT_VOICE_TAG}> What do you do? <${PT_VOICE_TAG}>(O que você faz?)</${PT_VOICE_TAG}>"
+Inside an impression turn, do not use this tag: the whole turn stays in the impression's tag.`;
+}
 
 function impressionsBlock(c: Character): string {
   const list = Object.entries(c.impressions ?? {})
@@ -115,7 +123,7 @@ ${c.persona.replace(/Do NOT do any impression unless this reply's instructions a
 
 ${impressionsBlock(c)}
 
-${AGENT_NOTES}${topic}${memory}${resume}${opts.level === 'Novice' ? `\n\n${NOVICE_FORMAT}` : ''}`;
+${AGENT_NOTES}${topic}${memory}${resume}${opts.level === 'Novice' ? `\n\n${NOVICE_FORMAT}` : ''}${portugueseVoiceBlock(c) ? `\n\n${portugueseVoiceBlock(c)}` : ''}`;
   const pool = resumeLines.length ? RESUME_LINES[opts.level] : (opts.level === 'Novice' ? FIRST_MESSAGES_NOVICE : FIRST_MESSAGES)[c.id] ?? [];
   const firstMessage = (pool[Math.floor(Math.random() * pool.length)] ?? 'Hey {name}!').replace(/\{name\}/g, name);
   return { agentId: FAMILY_AGENTS[c.id], prompt, firstMessage, characterName: c.name };

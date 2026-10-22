@@ -27,6 +27,8 @@ export interface Character {
   /** Voz própria no ElevenLabs (null = voz padrão da Charlotte no TTS da OpenAI). */
   elevenVoiceId: string | null;
   elevenSettings?: VoiceSettings;
+  /** Voz para as frases em português (o clone em inglês fica para o inglês). */
+  elevenVoiceIdPt?: string;
   /** Persona aplicada por cima das regras de ensino da Charlotte (inglês). */
   persona?: string;
   /** Gênero gramatical, para adaptar as regras da Charlotte escritas em português ("amiga" → "amigo"). */
@@ -52,6 +54,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     name: 'Igorfina',
     gender: 'm',
     elevenVoiceId: '9QtRgQhaZY2Ge2ttjy5x', // voz do próprio Igor
+    elevenVoiceIdPt: 'Ns4bYXHjNeTGuhVk2172', // clone em português (carioca), gravação de 22/10/2026
     // Ajustes dos áudios de referência no ElevenLabs.
     elevenSettings: { stability: 0.5, similarity_boost: 0.75, style: 0, use_speaker_boost: true },
     persona: `CHARACTER: You are Igorfina, a stand-up comedian and impressionist from the Queizy family (Charlotte's friend). You are NOT Charlotte: ignore her name, age and personality above, but keep EVERY teaching, level, language, length and format rule above.
@@ -91,6 +94,53 @@ export function applyCharacterToSystem(system: string, c: Character, impression:
     .replace(/Você é a Charlotte|Você é Charlotte/g, `Você é o ${c.name}`)
     .replace(/\bCharlotte\b/g, c.name);
   return `${renamed}\n\n${c.persona}${impression ? `\n\n${impression.style}` : ''}`;
+}
+
+// ── Português x inglês na mesma fala ────────────────────────────────────────
+const PT_WORDS = new Set(('você voce não nao que de do da dos das pra para eu é e um uma com isso isto tá ta muito mas como se te os as no na nos nas em meu minha '
+  + 'vamos agora bora sim fala bom boa legal tudo foi tem seu sua por mais bem aqui ele ela quer diz fazer faz está esta estou sou já ja hoje '
+  + 'então entao também tambem porque quando onde qual quem ou só so assim cara irmão mermão beleza demais gente vai vou ser era tô to').split(' '));
+const EN_WORDS = new Set(('the you is are i to and what do does your my it in of that this how can yes we have was be with for on he she they '
+  + 'did will would like where who why when there their our an at from about just so really').split(' '));
+
+/** true quando a frase é mais português do que inglês (acento conta a favor do português). */
+export function isPortugueseText(text: string): boolean {
+  const words = text.toLowerCase().match(/[a-zà-ú']+/g) ?? [];
+  let pt = (text.match(/[áàâãéêíóôõúç]/gi) ?? []).length * 2, en = 0;
+  for (const w of words) { if (PT_WORDS.has(w)) pt++; if (EN_WORDS.has(w)) en++; }
+  return pt > en;
+}
+
+/** Divide a fala em trechos seguidos do mesmo idioma (frase a frase). Frase sem pista fica com o idioma da anterior. */
+export function splitByLanguage(text: string): { text: string; pt: boolean }[] {
+  // Frases, e também o que vem depois de dois-pontos ("Agora me diz: Where are you from?").
+  const sentences = text.split(/(?<=:)\s+/).flatMap(part => (part.match(/[^.!?…]+[.!?…]*["')\]]*\s*/g) ?? [part]).map(x => x.endsWith(' ') ? x : `${x} `));
+  const out: { text: string; pt: boolean }[] = [];
+  for (const s of sentences) {
+    const words = s.toLowerCase().match(/[a-zà-ú']+/g) ?? [];
+    const hasCue = /[áàâãéêíóôõúç]/i.test(s) || words.some(w => PT_WORDS.has(w) || EN_WORDS.has(w));
+    const pt = hasCue ? isPortugueseText(s) : (out.length ? out[out.length - 1].pt : isPortugueseText(text));
+    if (out.length && out[out.length - 1].pt === pt) out[out.length - 1].text += s;
+    else out.push({ text: s, pt });
+  }
+  return out.map(x => ({ ...x, text: x.text.trim() })).filter(x => x.text);
+}
+
+/** Trechos da fala com a voz de cada um: português na voz em português do personagem (se tiver), o resto na voz normal.
+ *  Imitação fala tudo na voz dela. */
+export function voiceSegments(c: Character, impression: Impression | null, text: string): { voiceId: string; settings?: VoiceSettings; text: string }[] {
+  const base = voiceFor(c, impression);
+  if (!base) return [];
+  if (impression || !c.elevenVoiceIdPt) return [{ ...base, text }];
+  return splitByLanguage(text).map(seg => ({ voiceId: seg.pt ? c.elevenVoiceIdPt! : base.voiceId, settings: base.settings, text: seg.text }));
+}
+
+/** Ligação (agente do ElevenLabs): etiqueta <Portugues> nas partes em português, que troca para a voz em português.
+ *  Trecho que já está dentro de uma etiqueta de imitação não é mexido. */
+export const PT_VOICE_TAG = 'Portugues';
+export function tagPortuguese(text: string): string {
+  if (/<[A-Za-z]+>/.test(text)) return text;
+  return splitByLanguage(text).map(seg => seg.pt ? `<${PT_VOICE_TAG}>${seg.text}</${PT_VOICE_TAG}>` : seg.text).join(' ');
 }
 
 /** Voz do ElevenLabs para uma fala: a da imitação, senão a do personagem. */
