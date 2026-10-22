@@ -225,7 +225,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_pt": "Charlotte abre chat sobre suas preferências conectadas. Pratica and/but/so.",
-        "opening_message": "What do you like and don't like?",
+        "opening_message": "What do you like, and what don't you like?",
         "objectives": [
           {
             "id": 1,
@@ -281,7 +281,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Connector confidence!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What do you like and don't like?\"\n2. **Student**: \"I like reading and traveling.\"\n3. **Charlotte**: \"Contrast?\"\n4. **Student**: \"I like sweets but not too much.\"\n5. **Charlotte**: \"Balanced.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I like coffee but not espresso. Connector confidence!\"\n\n> N01 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What do you like, and what don't you like?\"\n2. **Student**: \"I like reading and traveling.\"\n3. **Charlotte**: \"Contrast?\"\n4. **Student**: \"I like sweets but not too much.\"\n5. **Charlotte**: \"Balanced.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I like coffee but not espresso. Connector confidence!\"\n\n> N01 chat = LLM puro.\n\n---"
       }
     },
     {
@@ -337,10 +337,10 @@
             "and"
           ],
           "answer": "so",
-          "explanation": "\"Likes coffee SO drinks\" — consequência.",
           "accepts": [
             "and"
-          ]
+          ],
+          "explanation": "\"Likes coffee SO drinks\" — consequência."
         },
         {
           "type": "fill_gap",

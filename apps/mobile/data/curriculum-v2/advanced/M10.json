@@ -119,7 +119,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte makes three slightly off-base claims. You correct or refine each with a nuancing marker.",
-        "scenario_pt": "Charlotte faz três afirmações um pouco equivocadas. Você corrige ou refina cada uma com um marcador de nuance.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -128,7 +127,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Correção suave com 'as a matter of fact'",
             "label_en": "Soft correction with 'as a matter of fact'",
             "hidden_prompt": "user uses 'As a matter of fact, + clause'",
             "hint_en": "As a matter of fact, the launch was last Tuesday, not Wednesday.",
@@ -147,7 +145,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Escalação com 'in fact'",
             "label_en": "Escalation with 'in fact'",
             "hidden_prompt": "user uses 'In fact, + clause' to intensify",
             "hint_en": "She didn't just attend the meeting — in fact, she led most of it.",
@@ -165,7 +162,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Esclarecimento com 'actually'",
             "label_en": "Clarification with 'actually'",
             "hidden_prompt": "user uses 'Actually, + clause'",
             "hint_en": "Actually, the deadline was extended on Friday afternoon.",
@@ -197,12 +193,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte raises common assumptions. Refine with 'in fact / actually / as a matter of fact'.",
-        "intro_pt": "Charlotte levanta suposições comuns. Refine com 'in fact / actually / as a matter of fact'.",
         "opening_message": "People keep saying remote work has killed productivity. Your read?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Correção de premissa",
             "label_en": "Correction of premise",
             "hidden_prompt": "user uses 'In fact / As a matter of fact / Actually + clause'",
             "hint_en": "Actually, most measured studies show productivity rose or held steady, not fell.",
@@ -221,7 +215,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Aprofundar com outro marcador",
             "label_en": "Deepen with another marker",
             "hidden_prompt": "user uses another nuancing marker",
             "hint_en": "In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked.",
@@ -239,7 +232,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte where she's hearing it",
             "hint_en": "Who's saying it?",
@@ -298,11 +290,11 @@
           "sentence": "_____, I might have done the same thing in his position.",
           "hint": "\"Granted\" or \"Admittedly\" or \"Then again\"",
           "answer": "Then again",
-          "explanation": "\"Then again\" introduces a reconsideration — second-guessing your own assertion. Punctuation: comma after. Slightly more reflective than \"that said\"; suggests the speaker is genuinely reconsidering, not just balancing.",
           "accepts": [
             "Granted",
             "Admittedly"
-          ]
+          ],
+          "explanation": "\"Then again\" introduces a reconsideration — second-guessing your own assertion. Punctuation: comma after. Slightly more reflective than \"that said\"; suggests the speaker is genuinely reconsidering, not just balancing."
         },
         {
           "type": "fix_error",
@@ -356,7 +348,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte makes three confident claims. You acknowledge them but introduce nuance with concession markers.",
-        "scenario_pt": "Charlotte faz três afirmações confiantes. Você as reconhece, mas introduz nuances com marcadores de concessão.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -365,7 +356,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Concessão com 'That said'",
             "label_en": "Concession with 'That said'",
             "hidden_prompt": "user uses 'That said, + clause'",
             "hint_en": "The product launch was successful. That said, the support tickets tell a more complicated story.",
@@ -380,7 +370,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'Mind you' (informal)",
             "label_en": "'Mind you' (informal)",
             "hidden_prompt": "user uses 'Mind you, + clause'",
             "hint_en": "He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship.",
@@ -398,7 +387,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Reconsideração com 'Then again' ou 'Granted'",
             "label_en": "Reconsideration with 'Then again' or 'Granted'",
             "hidden_prompt": "user uses 'Then again, + clause' or 'Granted, + clause'",
             "hint_en": "Granted, the data is preliminary — but the trend is hard to dismiss.",
@@ -430,12 +418,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte takes a strong position. Concede partially with 'that said / mind you / granted'.",
-        "intro_pt": "Charlotte toma uma posição forte. Conceda parcialmente com 'that said / mind you / granted'.",
         "opening_message": "AI is going to make most knowledge work obsolete in a decade. Hard truth.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Concordância parcial com concessão",
             "label_en": "Partial agreement with concession",
             "hidden_prompt": "user uses 'That said' or 'Mind you' or 'Granted'",
             "hint_en": "There's something to that. That said, 'most' is doing a lot of work in that sentence.",
@@ -450,7 +436,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Aprofundar com outro marcador de concessão",
             "label_en": "Deepen with another concession marker",
             "hidden_prompt": "user uses 'Then again' or 'Mind you' or 'Admittedly'",
             "hint_en": "Then again, every major shift looked total in advance and partial in retrospect.",
@@ -469,7 +454,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how she'd hedge her own claim",
             "hint_en": "What's the strongest counter you'd make to yourself?",
@@ -574,7 +558,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three technical or abstract claims. You translate them into plain English using reformulation markers.",
-        "scenario_pt": "Charlotte dá três afirmações técnicas ou abstratas. Você as traduz para um inglês simples usando marcadores de reformulação.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -583,7 +566,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Paráfrase com 'In other words'",
             "label_en": "Paraphrase with 'In other words'",
             "hidden_prompt": "user uses 'In other words, + clause'",
             "hint_en": "Our customer acquisition cost is rising faster than lifetime value. In other words, we're paying more to land each customer than they're worth to us.",
@@ -598,7 +580,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Reformulação formal com 'That is to say'",
             "label_en": "Formal reformulation with 'That is to say'",
             "hidden_prompt": "user uses 'That is to say, + clause'",
             "hint_en": "The model assumes diminishing returns. That is to say, each additional dollar produces less impact than the one before it.",
@@ -613,7 +594,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Autocorreção com 'Or rather'",
             "label_en": "Self-correction with 'Or rather'",
             "hidden_prompt": "user uses 'Or rather, + clause'",
             "hint_en": "She's resistant to change. Or rather, she's protective of what's been working.",
@@ -641,12 +621,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte uses jargon. Translate for clarity with 'in other words / that is to say'.",
-        "intro_pt": "Charlotte usa jargão. Traduza para clareza usando 'in other words / that is to say'.",
         "opening_message": "We're optimising for asymmetric upside in a thin market with low capital intensity. Make sense?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Tradução para inglês claro",
             "label_en": "Translation to clear English",
             "hidden_prompt": "user uses 'In other words / That is to say + clause'",
             "hint_en": "In other words, you're chasing big wins in a small market without spending much money to play.",
@@ -661,7 +639,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Confirmar com reformulação",
             "label_en": "Confirm with reformulation",
             "hidden_prompt": "user uses 'To put it another way' or 'Put differently'",
             "hint_en": "Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them.",
@@ -678,7 +655,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if the translation is right",
             "hint_en": "Have I got it right?",
@@ -783,7 +759,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites three pitches — for a place, a person, an idea. Use emphatic chain markers in each.",
-        "scenario_pt": "Charlotte convida para três apresentações — para um lugar, uma pessoa, uma ideia. Use marcadores de cadeia enfática em cada uma.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -792,7 +767,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Proposta com 'What's more'",
             "label_en": "Pitch with 'What's more'",
             "hidden_prompt": "user uses 'What's more, + clause' in a pitch",
             "hint_en": "The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door.",
@@ -811,7 +785,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Proposta com 'Not least'",
             "label_en": "Pitch with 'Not least'",
             "hidden_prompt": "user uses 'Not least, + clause'",
             "hint_en": "She's experienced, articulate, and — not least — calm under pressure.",
@@ -830,7 +803,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Clímax com 'Above all'",
             "label_en": "Climax with 'Above all'",
             "hidden_prompt": "user uses 'Above all, + clause'",
             "hint_en": "The idea is fundable, timely, and — above all — solves a problem nobody else is looking at.",
@@ -862,12 +834,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks you to defend a choice. Stack reasons with 'what's more / not least / above all'.",
-        "intro_pt": "Charlotte pede para você defender uma escolha. Empilhe razões com 'what's more / not least / above all'.",
         "opening_message": "You chose to stay in your current job instead of taking a fancier offer. Why?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Razão cumulativa com 'What's more'",
             "label_en": "Cumulative reason with 'What's more'",
             "hidden_prompt": "user uses 'What's more, + clause'",
             "hint_en": "The work itself still excites me. What's more, my manager has actually been listening to my career goals.",
@@ -886,7 +856,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Ponto específico com 'Not least'",
             "label_en": "Specific point with 'Not least'",
             "hidden_prompt": "user uses 'Not least, + clause'",
             "hint_en": "Not least, the team I built took years to assemble and I'd be starting from zero somewhere else.",
@@ -905,7 +874,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Clímax com 'Above all'",
             "label_en": "Climax with 'Above all'",
             "hidden_prompt": "user uses 'Above all, + clause'",
             "hint_en": "Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move.",
@@ -1011,7 +979,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte presents three messy situations. You give a weighted verdict on each using conclusion markers.",
-        "scenario_pt": "Charlotte apresenta três situações complicadas. Dê um veredicto ponderado em cada uma usando marcadores de conclusão.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1020,7 +987,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Veredito com 'All things considered'",
             "label_en": "Verdict with 'All things considered'",
             "hidden_prompt": "user uses 'All things considered, + clause'",
             "hint_en": "All things considered, leaving that job a year early was the right call.",
@@ -1039,7 +1005,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Veredito com 'On balance'",
             "label_en": "Verdict with 'On balance'",
             "hidden_prompt": "user uses 'On balance, + clause'",
             "hint_en": "On balance, the move abroad cost more than I expected but gave more than I imagined.",
@@ -1058,7 +1023,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Causal formal com 'Hence' ou 'Accordingly'",
             "label_en": "Formal causal with 'Hence' or 'Accordingly'",
             "hidden_prompt": "user uses 'Hence, + clause' or 'Accordingly, + clause'",
             "hint_en": "The model has proven robust across markets. Hence, we're rolling it out company-wide.",
@@ -1090,12 +1054,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte runs a year-end retrospective. Use full range of C1 discourse markers.",
-        "intro_pt": "Charlotte conduz uma retrospectiva de fim de ano. Use toda a gama de discourse markers de nível C1.",
         "opening_message": "How would you sum up the year, on balance?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Dar veredito inicial com marcador",
             "label_en": "Initial verdict with marker",
             "hidden_prompt": "user uses 'On balance / On the whole / All things considered'",
             "hint_en": "On balance, the year was harder than the last one but more meaningful.",
@@ -1114,7 +1076,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Concessão e ênfase",
             "label_en": "Concession and emphasis",
             "hidden_prompt": "user uses 'Granted / That said' + 'Above all / Not least'",
             "hint_en": "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are.",
@@ -1129,7 +1090,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for her own retrospective",
             "hint_en": "How would you sum up yours?",

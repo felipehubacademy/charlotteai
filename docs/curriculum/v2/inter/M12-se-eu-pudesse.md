@@ -95,7 +95,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Three hypotheticals about your current life — what would you do if?"
+**Opening line**: "Imagine your life a little different. What would you do if you had more time, more money or a different job?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -130,7 +130,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three hypotheticals about your current life — what would you do if?"
+1. **Charlotte**: "Imagine your life a little different. What would you do if you had more time, more money or a different job?"
 2. **Student**: ~"If I had more money, I would travel."
 3. **Charlotte**: "Classic. Different identity?"
 4. **Student**: ~"If I were taller, I would play basketball."

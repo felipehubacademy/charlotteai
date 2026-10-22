@@ -66,11 +66,11 @@
           "sentence": "Argument climax: \"One reason is that the policy saves money. Another is that it saves lives. _____, it restores public trust.\"",
           "hint": "marcador de clímax argumentativo",
           "answer": "Most importantly",
-          "explanation": "Cascade pattern: each marker ranks the next claim higher. \"Most importantly\" (or \"Above all\", \"Crucially\") signals the strongest point — the climax of the argument.",
           "accepts": [
             "Most significantly",
             "Importantly"
-          ]
+          ],
+          "explanation": "Cascade pattern: each marker ranks the next claim higher. \"Most importantly\" (or \"Above all\", \"Crucially\") signals the strongest point — the climax of the argument."
         },
         {
           "type": "fix_error",
@@ -119,7 +119,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives you a position to defend. You build a numbered, escalating case in three points.",
-        "scenario_pt": "Charlotte dá uma posição para você defender. Você constrói um argumento numerado e crescente em três pontos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -128,7 +127,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Começar com 'The case for'",
             "label_en": "Opening with 'The case for'",
             "hidden_prompt": "user uses 'The case for + noun/-ing'",
             "hint_en": "The case for sustained public library funding rests on three independent grounds.",
@@ -146,7 +144,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Razões numeradas",
             "label_en": "Numbered reasons",
             "hidden_prompt": "user uses 'First / Second / Most importantly'",
             "hint_en": "First, libraries close measurable literacy gaps in underserved communities. Second, they remain the most cost-effective public learning infrastructure. Most importantly, they offer something no algorithm can — a space without commercial intent.",
@@ -165,7 +162,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Fechamento sumativo",
             "label_en": "Summative close",
             "hidden_prompt": "user uses 'The evidence is unambiguous' or similar",
             "hint_en": "The evidence is unambiguous: the question is not whether to fund them, but how generously.",
@@ -195,12 +191,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks you to defend a workplace policy. Build the case with ranked reasons.",
-        "intro_pt": "Charlotte pede para você defender uma política de trabalho. Construa o caso com razões hierarquizadas.",
         "opening_message": "We're considering a four-day workweek. Build the case for trying it.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Abertura enquadrada",
             "label_en": "Framed opening",
             "hidden_prompt": "user uses 'The case for + noun/-ing'",
             "hint_en": "The case for piloting a four-day workweek rests on what we already know about attention and output.",
@@ -218,7 +212,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Razões numeradas com clímax",
             "label_en": "Numbered reasons with climax",
             "hidden_prompt": "user uses 'First / Second / Most importantly'",
             "hint_en": "First, every published trial — Iceland, Belgium, New Zealand — has reported sustained or improved productivity. Second, the recruitment advantage in a tight labour market is undeniable. Most importantly, exhausted people make worse decisions, and we make a lot of decisions.",
@@ -237,7 +230,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what objection she expects",
             "hint_en": "What's the loudest objection in your team?",
@@ -347,7 +339,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte names three common objections to a policy you support. You pre-empt and refute each.",
-        "scenario_pt": "Charlotte cita três objeções comuns a uma política que você apoia. Você antecipa e refuta cada uma.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -356,7 +347,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Refutação direta com 'However'",
             "label_en": "Direct refutation with 'However'",
             "hidden_prompt": "user uses 'Some may object that... However...'",
             "hint_en": "Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project.",
@@ -374,7 +364,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Refutação com diagnóstico",
             "label_en": "Refutation with diagnosis",
             "hidden_prompt": "user uses 'Critics might argue... but this overlooks...'",
             "hint_en": "Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries.",
@@ -393,7 +382,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Reformulação com 'The deeper question'",
             "label_en": "Reframing with 'The deeper question'",
             "hidden_prompt": "user uses 'It would be a mistake to' or 'The deeper question is'",
             "hint_en": "It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose.",
@@ -424,12 +412,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte plays sceptic. Anticipate and refute each objection.",
-        "intro_pt": "Charlotte finge ser cética. Antecipe e refute cada objeção.",
         "opening_message": "You're proposing remote-first hiring. But isn't that just outsourcing in disguise?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reconhecer e diagnosticar",
             "label_en": "Acknowledge + diagnose",
             "hidden_prompt": "user uses 'Critics might argue / Some may object / this overlooks'",
             "hint_en": "Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same.",
@@ -449,7 +435,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Reformular com 'The deeper question'",
             "label_en": "Reframe with 'The deeper question'",
             "hidden_prompt": "user uses 'The deeper question is' or 'It would be a mistake to assume'",
             "hint_en": "The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us.",
@@ -464,7 +449,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what objection she'd raise next",
             "hint_en": "What's your next push?",
@@ -544,12 +528,12 @@
           "passage": "Her closing argument used every classical device. 'We are not asking for charity. We are not asking for permission. We are asking — finally — to be heard. Not after the next crisis. Not after the next election. Now. Tomorrow is too late, and yesterday is gone.' The room rose to its feet before she had finished.",
           "question": "What three rhetorical devices appear?",
           "answer": "anaphora, tricolon, antithesis",
-          "explanation": "Three anaphoras (\"We are not asking...\"), then tricolon climax (\"Not after... Not after... Now.\"), capped by antithesis (\"Tomorrow is too late, and yesterday is gone\"). Classical rhetoric concentrated.",
           "accepts": [
             "anaphora",
             "tricolon",
             "antithesis"
-          ]
+          ],
+          "explanation": "Three anaphoras (\"We are not asking...\"), then tricolon climax (\"Not after... Not after... Now.\"), capped by antithesis (\"Tomorrow is too late, and yesterday is gone\"). Classical rhetoric concentrated."
         }
       ],
       "listening_speaking": [
@@ -581,16 +565,14 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives you a position. You craft three rhetorical sentences — one with anaphora, one with antithesis, one with tricolon.",
-        "scenario_pt": "Charlotte dá uma posição. Você cria três frases retóricas — uma com anáfora, uma com antítese, uma com tricolon.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 300,
-        "opening_line": "Position: 'Climate action cannot wait.' Craft three lines — anaphora, antithesis, tricolon.",
+        "opening_line": "Here's my position: 'Climate action cannot wait.' Give me three lines to support it: one with anaphora, one with antithesis and one with a tricolon.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Anáfora (abertura repetida)",
             "label_en": "Anaphora (repeated opening)",
             "hidden_prompt": "user uses repeated word/phrase at clause beginnings",
             "hint_en": "We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future.",
@@ -606,7 +588,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Antítese (X vs Y)",
             "label_en": "Antithesis (X vs Y)",
             "hidden_prompt": "user uses parallel opposing structure",
             "hint_en": "The cost of acting is high. The cost of waiting is higher.",
@@ -621,7 +602,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Tricolon (três partes paralelas)",
             "label_en": "Tricolon (three parallel parts)",
             "hidden_prompt": "user uses three parallel clauses",
             "hint_en": "We can adapt, we can mitigate, or we can ask our children to forgive us.",
@@ -636,7 +616,7 @@
           }
         ],
         "closing_cue": "Charlotte closes with \"Rhetorical devices, sharp.\" once obj_3 lands.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Position: 'Climate action cannot wait.' Craft three lines — anaphora, antithesis, tricolon.\"\n2. **Student**: ~\"We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future.\"\n3. **Charlotte**: \"Antithesis?\"\n4. **Student**: ~\"The cost of acting is high. The cost of waiting is higher.\"\n5. **Charlotte**: \"Tricolon?\"\n6. **Student**: ~\"We can adapt, we can mitigate, or we can ask our children to forgive us.\"\n7. **Charlotte**: \"Rhetorical devices, sharp.\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Here's my position: 'Climate action cannot wait.' Give me three lines to support it: one with anaphora, one with antithesis and one with a tricolon.\"\n2. **Student**: ~\"We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future.\"\n3. **Charlotte**: \"Antithesis?\"\n4. **Student**: ~\"The cost of acting is high. The cost of waiting is higher.\"\n5. **Charlotte**: \"Tricolon?\"\n6. **Student**: ~\"We can adapt, we can mitigate, or we can ask our children to forgive us.\"\n7. **Charlotte**: \"Rhetorical devices, sharp.\"",
         "evaluation_focus": [
           "Parallel grammatical structure",
           "Memorable rhythm",
@@ -649,12 +629,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites a speech opening. Weave rhetoric devices in.",
-        "intro_pt": "Charlotte convida para a abertura de um discurso. Entrelaçe dispositivos retóricos.",
         "opening_message": "I'm opening a conference on disability rights tomorrow. Help me draft an opener that lands.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Começar com anáfora",
             "label_en": "Opening with anaphora",
             "hidden_prompt": "user uses anaphora",
             "hint_en": "Try: 'We are here because rights are not granted, they are demanded. We are here because patience has limits. We are here because no one is coming to do this for us.'",
@@ -669,7 +647,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Antítese no meio",
             "label_en": "Antithesis in the middle",
             "hidden_prompt": "user uses antithesis",
             "hint_en": "Then drop in: 'Accessibility is not charity — it is justice taking the form of a ramp, a captioned line, an opened door.'",
@@ -684,7 +661,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Fechar com tricolon",
             "label_en": "Tricolon close",
             "hidden_prompt": "user uses tricolon",
             "hint_en": "Close with: 'Today we listen, tomorrow we organise, every day after that we demand.'",
@@ -796,7 +772,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives you a starting cause. You build a four-link causal chain ending in a conclusion.",
-        "scenario_pt": "Charlotte dá uma causa inicial. Você constrói uma cadeia causal de quatro elos terminando em uma conclusão.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -805,7 +780,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Primeiro link com 'which led to'",
             "label_en": "First link with 'which led to'",
             "hidden_prompt": "user uses 'which led to' or 'which caused'",
             "hint_en": "Interest rates rose, which led to higher mortgage costs.",
@@ -820,7 +794,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Ligações subsequentes com 'which in turn'",
             "label_en": "Subsequent links with 'which in turn'",
             "hidden_prompt": "user uses 'which in turn + verb'",
             "hint_en": "...which in turn cooled the housing market, which in turn slowed construction hiring.",
@@ -835,7 +808,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Conclusão com 'From this it follows'",
             "label_en": "Conclusion with 'From this it follows'",
             "hidden_prompt": "user uses 'From this it follows that' or 'As a result'",
             "hint_en": "From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters.",
@@ -863,12 +835,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks a 'why' question. Answer with a causal chain ending in formal conclusion.",
-        "intro_pt": "Charlotte faz uma pergunta com 'why'. Responda com uma cadeia causal terminando em uma conclusão formal.",
         "opening_message": "Why has consumer trust in news dropped so sharply?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Apresentar causa inicial e primeiro elo",
             "label_en": "Initial cause and first link",
             "hidden_prompt": "user opens chain with cause and 'which led to / which in turn'",
             "hint_en": "The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance.",
@@ -883,7 +853,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Continuar a cadeia",
             "label_en": "Continue the chain",
             "hidden_prompt": "user adds 'which in turn' link or two",
             "hint_en": "Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources.",
@@ -898,7 +867,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Conclusão formal",
             "label_en": "Formal conclusion",
             "hidden_prompt": "user uses 'From this it follows' or 'As a result' or 'The deeper cause is'",
             "hint_en": "From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention.",
@@ -975,12 +943,12 @@
           "passage": "She landed her closing without flourish. 'What is at stake is not whether this policy is popular, but whether this generation chooses to leave the next one with options. The stakes could not be higher. The choice before us is clear: take the harder road now, or accept that we have decided, by inaction, to make the harder road our children's.' She sat down. The room sat with her for a long second.",
           "question": "How does the speaker frame the choice?",
           "answer": "take the harder road now or make it our children's",
-          "explanation": "Three classical conclusion devices: \"What is at stake is not X, but Y\" (stakes reframe), \"The stakes could not be higher\" (fixed climactic phrase), \"The choice before us is clear: X or Y\" (binary frame). Conclusion architecture at C2.",
           "accepts": [
             "take the harder road now",
             "accept we made it our children's",
             "harder road now or for children"
-          ]
+          ],
+          "explanation": "Three classical conclusion devices: \"What is at stake is not X, but Y\" (stakes reframe), \"The stakes could not be higher\" (fixed climactic phrase), \"The choice before us is clear: X or Y\" (binary frame). Conclusion architecture at C2."
         }
       ],
       "listening_speaking": [
@@ -1012,7 +980,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives you the body of an argument. You craft three closing sentences — stakes, choice, and warning.",
-        "scenario_pt": "Charlotte dá o corpo de um argumento. Você cria três frases de encerramento — riscos, escolha e aviso.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1021,7 +988,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Nomeação de riscos",
             "label_en": "Stakes-naming",
             "hidden_prompt": "user uses 'What is at stake is' or 'The stakes could not be higher'",
             "hint_en": "What is at stake is not the pace of innovation, but the choice of whose interests guide it.",
@@ -1036,7 +1002,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Moldura de escolha",
             "label_en": "Choice frame",
             "hidden_prompt": "user uses 'The choice before us is clear'",
             "hint_en": "The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible.",
@@ -1051,7 +1016,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Aviso condicional",
             "label_en": "Conditional warning",
             "hidden_prompt": "user uses 'If we fail to' or 'Should we fail to'",
             "hint_en": "If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping.",
@@ -1080,12 +1044,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites a speech close. Use stakes, choice, warning conclusion devices.",
-        "intro_pt": "Charlotte convida para o encerramento de um discurso. Use dispositivos de conclusão com riscos, escolha e aviso.",
         "opening_message": "The speech is on civic participation. How would you close it?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Nomeação de riscos",
             "label_en": "Stakes-naming",
             "hidden_prompt": "user uses 'What is at stake is' or stakes phrase",
             "hint_en": "What is at stake is not turnout, but whether we still believe collective decisions can change anything.",
@@ -1100,7 +1062,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Moldura de escolha",
             "label_en": "Choice frame",
             "hidden_prompt": "user uses 'The choice before us is clear'",
             "hint_en": "The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors.",
@@ -1115,7 +1076,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Concluir com um chamado à ação",
             "label_en": "Close with call to action",
             "hidden_prompt": "user uses 'If we fail to' or call-to-action",
             "hint_en": "If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled.",

@@ -82,11 +82,11 @@
           "passage": "The audit's findings were unflinching. The decisions had been irresponsible, the reporting illegal, and the executive's denials immoral. Several mid-level managers, who had felt powerless to disagree, were now offered immunity in exchange for testimony. The CEO, displaying the unrepentant tone of someone unprepared for consequences, dismissed the report as illegitimate.",
           "question": "How does the passage describe the CEO's reaction?",
           "answer": "dismissed the report as illegitimate",
-          "explanation": "Eight negation prefixes in three sentences: unflinching (un-), irresponsible (ir-), illegal (il-), immoral (im-), powerless (-less suffix, not prefix but contrast), unrepentant (un-), unprepared (un-), illegitimate (il-). Each prefix correctly chosen by root.",
           "accepts": [
             "unrepentant tone",
             "dismissed as illegitimate"
-          ]
+          ],
+          "explanation": "Eight negation prefixes in three sentences: unflinching (un-), irresponsible (ir-), illegal (il-), immoral (im-), powerless (-less suffix, not prefix but contrast), unrepentant (un-), unprepared (un-), illegitimate (il-). Each prefix correctly chosen by root."
         }
       ],
       "listening_speaking": [
@@ -118,7 +118,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three positive descriptions. You negate each with the correct prefix.",
-        "scenario_pt": "Charlotte apresenta três descrições positivas. Você as nega com o prefixo correto.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -127,7 +126,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Negação com 'un-' ou 'in-'",
             "label_en": "Negation with 'un-' or 'in-'",
             "hidden_prompt": "user negates adjective with un- or in-",
             "hint_en": "From 'The candidate seems qualified.' → 'The candidate seems unqualified, given the role's requirements.'",
@@ -142,7 +140,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Negação com 'ir-' ou 'il-'",
             "label_en": "Negation with 'ir-' or 'il-'",
             "hidden_prompt": "user negates with ir- or il- correctly",
             "hint_en": "From 'The decision was reversible.' → 'The decision was irreversible — once it was signed, there was no going back.'",
@@ -157,7 +154,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Negação com 'dis-' ou 'mis-'",
             "label_en": "Negation with 'dis-' or 'mis-'",
             "hidden_prompt": "user uses dis- or mis- correctly",
             "hint_en": "From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.'",
@@ -185,12 +181,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte uses imprecise negations. Correct with the right prefix.",
-        "intro_pt": "Charlotte usa negações imprecisas. Corrija com o prefixo correto.",
         "opening_message": "My old colleague is really unresponsible with deadlines. Drove me mad.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Corrigir 'unresponsible' → 'irresponsible'",
             "label_en": "Correct 'unresponsible' → 'irresponsible'",
             "hidden_prompt": "user replaces 'unresponsible' with 'irresponsible'",
             "hint_en": "Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'.",
@@ -205,7 +199,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Adicionar exemplo com outra negação correta",
             "label_en": "Add example with another correct negation",
             "hidden_prompt": "user uses another prefix-formed negation",
             "hint_en": "And his approach to clients was unprofessional — late replies, missed details. The pattern was hard to ignore.",
@@ -220,7 +213,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if he ever changed",
             "hint_en": "Did he ever change?",
@@ -293,12 +285,12 @@
           "passage": "The institution's annual report read like a study in formal abstraction. 'Development continued across all departments. Recognition of contribution increased measurably. Leadership demonstrated greater accountability. Membership numbers held steady. The relationship between governance and execution improved markedly. The organisation's overall maturity is now beyond question.'",
           "question": "How many abstract nouns appear in the passage?",
           "answer": "at least 8",
-          "explanation": "The passage is built almost entirely on abstract nouns — typical of corporate/academic register. Suffixes used: -ment, -tion, -ship, -ity, -ance, -ence. Nominal density is a marker of formal English.",
           "accepts": [
             "eight",
             "8",
             "development, recognition, contribution, leadership, accountability, membership, relationship, governance, execution, organisation, maturity"
-          ]
+          ],
+          "explanation": "The passage is built almost entirely on abstract nouns — typical of corporate/academic register. Suffixes used: -ment, -tion, -ship, -ity, -ance, -ence. Nominal density is a marker of formal English."
         }
       ],
       "listening_speaking": [
@@ -330,7 +322,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three sentences with verbs/adjectives. You rewrite each using the abstract noun form for academic register.",
-        "scenario_pt": "Charlotte apresenta três frases com verbos/adjetivos. Você as reescreve usando a forma de substantivo abstrato para registro acadêmico.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -339,7 +330,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Verbo → substantivo (-tion / -ment)",
             "label_en": "Verb → noun (-tion / -ment)",
             "hidden_prompt": "user uses noun form of a verb",
             "hint_en": "From 'They decided to expand' → 'The decision to expand was made unanimously.'",
@@ -358,7 +348,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Transformar adjetivo em substantivo (-ness / -ity)",
             "label_en": "Adjective → noun (-ness / -ity)",
             "hidden_prompt": "user uses noun form of adjective",
             "hint_en": "From 'She was kind to the new hires' → 'Her kindness to the new hires set the tone for their entire onboarding.'",
@@ -377,7 +366,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Estado → substantivo (-ship / -hood)",
             "label_en": "State → noun (-ship / -hood)",
             "hidden_prompt": "user uses -ship or -hood form",
             "hint_en": "From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'",
@@ -405,12 +393,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte drafts too verb-heavy. Suggest nominalised academic versions.",
-        "intro_pt": "Charlotte elabora textos com muitos verbos. Sugira versões acadêmicas nominalizadas.",
         "opening_message": "I wrote: 'The team decided to expand, and they performed better. We grew faster than competitors.' For a board report — too active. Help me nominalise?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Nominalizar 'decided' e 'performed'",
             "label_en": "Nominalise 'decided' and 'performed'",
             "hidden_prompt": "user uses 'decision' and 'performance'",
             "hint_en": "Try: 'The decision to expand was followed by a measurable improvement in team performance.'",
@@ -429,7 +415,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Nominalizar 'grew'",
             "label_en": "Nominalise 'grew'",
             "hidden_prompt": "user uses 'growth'",
             "hint_en": "Then: 'Subsequent growth outpaced that of competitors over the same period.'",
@@ -447,7 +432,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte who the audience is",
             "hint_en": "Who is the audience — internal board or shareholders?",
@@ -560,7 +544,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three nouns or verbs. You form the adjective or verb derivation correctly.",
-        "scenario_pt": "Charlotte apresenta três substantivos ou verbos. Você forma a derivação de adjetivo ou verbo corretamente.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -569,7 +552,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar adjetivo com -able / -ible",
             "label_en": "Adjective with -able / -ible",
             "hidden_prompt": "user forms -able or -ible adjective",
             "hint_en": "From 'predict' → 'predictable'. From 'access' → 'accessible'. Use both: 'The system is both predictable and accessible.'",
@@ -584,7 +566,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Verbo com -ise / -ify",
             "label_en": "Verb with -ise / -ify",
             "hidden_prompt": "user forms -ise or -ify verb",
             "hint_en": "From 'standard' → 'standardise'. 'We need to standardise the process before we can scale.'",
@@ -599,7 +580,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar adjetivo com -ous / -ful",
             "label_en": "Adjective with -ous / -ful",
             "hidden_prompt": "user forms -ous or -ful adjective",
             "hint_en": "From 'mystery' → 'mysterious'. 'Her sudden departure was mysterious enough to spark every rumour in the office.'",
@@ -627,12 +607,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte tries derivations. Confirm or correct each.",
-        "intro_pt": "Charlotte tenta derivações. Confirme ou corrija cada uma.",
         "opening_message": "I want to say someone 'can be relied on' — is the word 'relyable'?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Corrigir ortografia",
             "label_en": "Correct spelling",
             "hidden_prompt": "user corrects 'relyable' to 'reliable'",
             "hint_en": "Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'.",
@@ -647,7 +625,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Adicionar outra derivação relacionada",
             "label_en": "Add another related derivation",
             "hidden_prompt": "user offers another -able or -ible derivation",
             "hint_en": "Same pattern: 'predict' becomes 'predictable', 'apply' becomes 'applicable' — same y→i rule when applicable.",
@@ -662,7 +639,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte who she's describing",
             "hint_en": "Who are you describing as reliable?",
@@ -738,7 +714,6 @@
           "passage": "The newspaper headline was, as always, a study in compound forms. 'WELL-KNOWN LIGHTHOUSE KEEPER MAKES POST OFFICE PEACE WITH LONG-LOST HALF-SISTER'. The reader was momentarily stunned: a closed compound (lighthouse), an open one (post office), two hyphenated ones (well-known, half-sister, long-lost) — and a sentence that managed to be charming despite saying almost nothing concrete.",
           "question": "How many compound forms can you identify in the headline?",
           "answer": "at least 5",
-          "explanation": "Five compounds in one headline: one closed (lighthouse), one open (post office), three hyphenated (well-known, long-lost, half-sister). C2 awareness includes recognising the spacing decisions native writers make instinctively.",
           "accepts": [
             "five",
             "5",
@@ -747,7 +722,8 @@
             "post office",
             "long-lost",
             "half-sister"
-          ]
+          ],
+          "explanation": "Five compounds in one headline: one closed (lighthouse), one open (post office), three hyphenated (well-known, long-lost, half-sister). C2 awareness includes recognising the spacing decisions native writers make instinctively."
         }
       ],
       "listening_speaking": [
@@ -779,7 +755,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three compounds. You use each in a sentence with the correct spacing.",
-        "scenario_pt": "Charlotte apresenta três compostos. Você os usa em uma frase com o espaçamento correto.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -788,7 +763,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Composto fechado",
             "label_en": "Closed compound",
             "hidden_prompt": "user uses a closed compound (one word)",
             "hint_en": "The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock.",
@@ -803,7 +777,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Composto hifenizado (antes do substantivo)",
             "label_en": "Hyphenated compound (before noun)",
             "hidden_prompt": "user uses a hyphenated compound before noun",
             "hint_en": "A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works.",
@@ -821,7 +794,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Composto aberto",
             "label_en": "Open compound",
             "hidden_prompt": "user uses an open compound (two separate words)",
             "hint_en": "She walked into the post office, paid in exact change, and left without saying a word.",
@@ -852,12 +824,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte writes with compounds. Check each spelling decision.",
-        "intro_pt": "Charlotte escreve com compostos. Verifique cada decisão ortográfica.",
         "opening_message": "I wrote: 'My state of the art smartphone helps me check work mail in the post office.' Anything to fix?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Corrigir 'state-of-the-art' (hifenizado antes de substantivo)",
             "label_en": "Correct 'state of the art' (hyphenated before noun)",
             "hidden_prompt": "user corrects to 'state-of-the-art' when before noun",
             "hint_en": "Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.'",
@@ -872,7 +842,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Confirmar 'smartphone' e 'post office'",
             "label_en": "Confirm 'smartphone' and 'post office'",
             "hidden_prompt": "user confirms closed vs open compounds",
             "hint_en": "'Smartphone' is correctly closed, and 'post office' is correctly open — those two were already right.",
@@ -887,7 +856,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about a specific compound she's unsure of",
             "hint_en": "Anything else you're unsure about?",
@@ -963,7 +931,6 @@
           "passage": "The verbs in the office had quietly evolved. 'Did you slack him?' someone asked. 'Yes, but he hasn't pinged back.' 'Try emailing — or just text.' 'I friended him on the new platform last week, so maybe message there.' Five years ago, none of those verbs existed in their current form. Now they were grammar.",
           "question": "How many conversion-verbs appear in the passage?",
           "answer": "at least 5",
-          "explanation": "Modern English aggressively converts nouns to verbs: slack (the app) → to slack, ping → to ping, email → to email, text → to text, friend (noun) → to friend (verb). C2 awareness includes recognising and producing these conversions.",
           "accepts": [
             "five",
             "5",
@@ -973,7 +940,8 @@
             "text",
             "friend",
             "message"
-          ]
+          ],
+          "explanation": "Modern English aggressively converts nouns to verbs: slack (the app) → to slack, ping → to ping, email → to email, text → to text, friend (noun) → to friend (verb). C2 awareness includes recognising and producing these conversions."
         }
       ],
       "listening_speaking": [
@@ -1005,7 +973,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three nouns. You use each as a verb in a natural sentence.",
-        "scenario_pt": "Charlotte apresenta três substantivos. Você os usa como verbo em uma frase natural.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1014,7 +981,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar 'Message' como verbo",
             "label_en": "'Message' as verb",
             "hidden_prompt": "user uses 'message' as verb",
             "hint_en": "I'll message you the details once the venue is confirmed.",
@@ -1032,7 +998,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'Gift' como verbo",
             "label_en": "'Gift' as verb",
             "hidden_prompt": "user uses 'gift' as verb",
             "hint_en": "She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile.",
@@ -1050,7 +1015,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'Screenshot' como verbo",
             "label_en": "'Screenshot' as verb",
             "hidden_prompt": "user uses 'screenshot' as verb",
             "hint_en": "I screenshotted the conversation just in case anyone needed proof of the timeline.",
@@ -1081,12 +1045,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte uses older forms. Suggest modern conversion-verbs.",
-        "intro_pt": "Charlotte usa formas antigas. Sugira verbos modernos de conversão.",
         "opening_message": "I told my daughter I would send her a text message later. She laughed at me.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Sugerir 'text' como verbo",
             "label_en": "Suggest 'text' as verb",
             "hidden_prompt": "user suggests 'text' as verb",
             "hint_en": "She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb.",
@@ -1102,7 +1064,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Adicionar outras conversões modernas",
             "label_en": "Add other modern conversions",
             "hidden_prompt": "user adds other conversion verbs",
             "hint_en": "Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. Conversion makes English faster.",
@@ -1121,7 +1082,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how old her daughter is",
             "hint_en": "How old is your daughter?",

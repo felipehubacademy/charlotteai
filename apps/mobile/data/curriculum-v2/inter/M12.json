@@ -62,10 +62,10 @@
             "would be"
           ],
           "answer": "were",
-          "explanation": "In formal/correct second conditional, \"were\" is used for ALL persons (I, he, she, it, we, you, they). \"Were\" is the subjunctive form. \"Was\" is acceptable in informal speech, but \"were\" is the standard.",
           "accepts": [
             "was"
-          ]
+          ],
+          "explanation": "In formal/correct second conditional, \"were\" is used for ALL persons (I, he, she, it, we, you, they). \"Were\" is the subjunctive form. \"Was\" is acceptable in informal speech, but \"were\" is the standard."
         },
         {
           "type": "word_bank",
@@ -151,16 +151,14 @@
       ],
       "roleplay": {
         "scenario": "Charlotte explora seus desejos não realizados — o que você faria diferente se tivesse outros recursos, tempo, ou identidades. Quer três hipóteses bem construídas.",
-        "scenario_pt": "Charlotte explora desejos não realizados. O que você faria diferente com mais recursos, tempo ou identidades? Crie três hipóteses bem construídas.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 180,
-        "opening_line": "Three hypotheticals about your current life — what would you do if?",
+        "opening_line": "Imagine your life a little different. What would you do if you had more time, more money or a different job?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hipotético com 'if I had + time/money'",
             "label_en": "Hypothetical with 'if I had + time/money'",
             "hidden_prompt": "user uses 'If I had + noun, I would + base'",
             "hint_en": "If I had more money, I would travel.",
@@ -177,7 +175,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Hipotético com 'if I were'",
             "label_en": "Hypothetical with 'if I were'",
             "hidden_prompt": "user uses 'If I were + adj/noun, I would + base'",
             "hint_en": "If I were taller, I would play basketball.",
@@ -194,7 +191,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Hipotético sobre outra pessoa",
             "label_en": "Hypothetical about someone else",
             "hidden_prompt": "user uses 'If + 3rd person + past, would + base'",
             "hint_en": "If my brother lived closer, we would hang out more.",
@@ -211,7 +207,7 @@
           }
         ],
         "closing_cue": "Charlotte fecha com \"Hypotheticals explored!\" quando obj_3 baterem.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three hypotheticals about your current life — what would you do if?\"\n2. **Student**: ~\"If I had more money, I would travel.\"\n3. **Charlotte**: \"Classic. Different identity?\"\n4. **Student**: ~\"If I were taller, I would play basketball.\"\n5. **Charlotte**: \"Someone else?\"\n6. **Student**: ~\"If my brother lived closer, we would hang out more.\"\n7. **Charlotte**: \"Hypotheticals explored!\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Imagine your life a little different. What would you do if you had more time, more money or a different job?\"\n2. **Student**: ~\"If I had more money, I would travel.\"\n3. **Charlotte**: \"Classic. Different identity?\"\n4. **Student**: ~\"If I were taller, I would play basketball.\"\n5. **Charlotte**: \"Someone else?\"\n6. **Student**: ~\"If my brother lived closer, we would hang out more.\"\n7. **Charlotte**: \"Hypotheticals explored!\"",
         "evaluation_focus": [
           "\"If + past simple, would + base\"",
           "\"Were\" for all persons (especially \"I\")",
@@ -224,12 +220,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores life hypotheticals with you. Practice second conditional naturally.",
-        "intro_pt": "Charlotte explora hipóteses de vida com você. Pratique o second conditional naturalmente.",
         "opening_message": "If you could change one thing about your life, what would you change?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo para mudar",
             "label_en": "Something to change",
             "hidden_prompt": "user uses 'I would + base' for hypothetical change",
             "hint_en": "I would change my job.",
@@ -246,7 +240,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Elaborar hipótese com 'if'",
             "label_en": "Elaborate hypothetical with 'if'",
             "hidden_prompt": "user uses 'If + past simple, I would + base'",
             "hint_en": "If I had a year off, I would travel the world.",
@@ -263,7 +256,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What would you change?'",
             "hint_en": "How about you?",
@@ -316,10 +308,10 @@
             "would be"
           ],
           "answer": "were",
-          "explanation": "\"Were\" for all persons in formal wish/hypothetical. \"She wishes she were taller\" — present wish about height.",
           "accepts": [
             "was"
-          ]
+          ],
+          "explanation": "\"Were\" for all persons in formal wish/hypothetical. \"She wishes she were taller\" — present wish about height."
         },
         {
           "type": "word_bank",
@@ -417,7 +409,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conversa sobre desejos suaves — coisas que você gostaria que fossem diferentes na sua vida atual. Quer três desejos com \"I wish\".",
-        "scenario_pt": "Charlotte quer saber de três desejos suaves. Pratica 'I wish' para coisas que gostaria de mudar agora.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -426,7 +417,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Desejo com 'I wish I had'",
             "label_en": "Wish with 'I wish I had'",
             "hidden_prompt": "user uses 'I wish I had + noun'",
             "hint_en": "I wish I had more energy.",
@@ -443,7 +433,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Desejo com 'I wish I were'",
             "label_en": "Wish with 'I wish I were'",
             "hidden_prompt": "user uses 'I wish I were + adj/noun'",
             "hint_en": "I wish I were less busy.",
@@ -460,7 +449,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Desejo com 'I wish I could'",
             "label_en": "Wish with 'I wish I could'",
             "hidden_prompt": "user uses 'I wish I could + base'",
             "hint_en": "I wish I could play the piano.",
@@ -490,12 +478,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites honest wishes about present life. Use 'I wish + past'.",
-        "intro_pt": "Charlotte convida para desejos sinceros sobre a vida presente. Use 'I wish + past'.",
         "opening_message": "What's something you wish were different right now?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Desejo atual",
             "label_en": "Present wish",
             "hidden_prompt": "user uses 'I wish + past simple' for present",
             "hint_en": "I wish I had more vacation days.",
@@ -512,7 +498,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outro desejo (could/were)",
             "label_en": "Another wish (could/were)",
             "hidden_prompt": "user uses another wish structure",
             "hint_en": "I wish I could travel more.",
@@ -529,7 +514,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What do you wish?'",
             "hint_en": "How about you?",
@@ -684,7 +668,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conta três problemas distintos — você dá conselhos honestos usando \"If I were you, I would...\"",
-        "scenario_pt": "Charlotte conta três problemas distintos — você dá conselhos honestos usando \"If I were you, I would...\"",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -693,7 +676,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Conselho sobre a oferta de emprego",
             "label_en": "Advice about the job offer",
             "hidden_prompt": "after Charlotte's FIRST problem (job offer in another city), user gives advice with 'If I were you, I would + base'. Accept repeating the same chunk in later objectives — what matters is responding to this specific problem.",
             "hint_en": "If I were you, I would take the offer.",
@@ -713,7 +695,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Conselho sobre o conflito com a amiga",
             "label_en": "Advice about the conflict with her friend",
             "hidden_prompt": "after Charlotte's SECOND problem (conflict with a friend / unclear conversation), user gives advice — accept 'If I were you, I would' or 'If I were in your position'. Same opener as obj 1 is fine; tied to NEW problem.",
             "hint_en": "If I were you, I would talk to her directly.",
@@ -733,7 +714,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Dar conselho sobre grande decisão de vida",
             "label_en": "Advice about the bigger life decision",
             "hidden_prompt": "after Charlotte's THIRD problem (bigger life decision — moving, studying, etc), user gives final advice. Any 'If I were you' or 'in your position' chunk works. Repetition of openers from objs 1/2 is fine — what matters is reacting to this third problem.",
             "hint_en": "If I were in your position, I would wait.",
@@ -766,12 +746,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares dilemmas. Practice giving advice with 'If I were you'.",
-        "intro_pt": "Charlotte compartilha dilemas. Pratique dar conselhos com 'If I were you'.",
         "opening_message": "I can't decide between two job offers. What would you do?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Dar conselho inicial",
             "label_en": "Initial advice",
             "hidden_prompt": "user uses 'If I were you, I would + base'",
             "hint_en": "If I were you, I would take the one closer to home.",
@@ -791,7 +769,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Razão ou conselho adicional",
             "label_en": "Reason or additional advice",
             "hidden_prompt": "user adds another 'I would + base' or 'If I were you'",
             "hint_en": "I would think about long-term growth.",
@@ -811,7 +788,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar mais sobre o dilema",
             "label_en": "Ask more about the dilemma",
             "hidden_prompt": "user asks Charlotte a clarifying question",
             "hint_en": "What does your gut say?",
@@ -968,7 +944,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte propõe um jogo de perguntas hipotéticas — vocês trocam \"What would you do if...\" para descobrir valores e desejos.",
-        "scenario_pt": "Charlotte propõe um jogo de perguntas hipotéticas. Troquem \"What would you do if...\" para descobrir valores e desejos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -977,7 +952,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hipotético 'What would you do if?'",
             "label_en": "Hypothetical 'What would you do if?'",
             "hidden_prompt": "user asks 'What would you do if + past simple?'",
             "hint_en": "What would you do if you won a million dollars?",
@@ -994,7 +968,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outro hipotético (Where/Who)",
             "label_en": "Another hypothetical (Where/Who)",
             "hidden_prompt": "user asks 'Where/Who/How would you + base + if + past?'",
             "hint_en": "Where would you go if you could travel anywhere?",
@@ -1011,7 +984,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Pergunta sim/não 'Would you'",
             "label_en": "Yes/no 'Would you' question",
             "hidden_prompt": "user asks 'Would you + base + if + past?'",
             "hint_en": "Would you change careers if you had the chance?",
@@ -1041,12 +1013,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte plays hypothetical Q&A with you. Ask 'Would you?' and 'What would you do if?'",
-        "intro_pt": "Charlotte faz um Q&A hipotético com você. Pergunte 'Would you?' e 'What would you do if?'",
         "opening_message": "Ask me: what would I do if I had a year off?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pergunta hipotética 1",
             "label_en": "Hypothetical question 1",
             "hidden_prompt": "user asks 'What would you do if + past simple?'",
             "hint_en": "What would you do if you had a year off?",
@@ -1063,7 +1033,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Pergunta hipotética 2",
             "label_en": "Hypothetical question 2",
             "hidden_prompt": "user asks another 'Would you?' or 'What would?'",
             "hint_en": "Would you move abroad if you had the chance?",
@@ -1080,7 +1049,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Hipotético 3 (mais profundo)",
             "label_en": "Hypothetical 3 (deeper)",
             "hidden_prompt": "user asks one more deep hypothetical",
             "hint_en": "What would you change if you could redo your career?",
@@ -1232,7 +1200,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte propõe uma conversa hipotética rica — quer ver você usar wishes, hypotheticals, advice, e perguntas hipotéticas tudo numa fala só.",
-        "scenario_pt": "Charlotte propõe uma conversa hipotética rica. Use wishes, hypotheticals, advice e perguntas hipotéticas tudo numa fala só.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1241,7 +1208,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Desejo atual",
             "label_en": "Present wish",
             "hidden_prompt": "user uses 'I wish + past simple'",
             "hint_en": "I wish I had more free time.",
@@ -1261,7 +1227,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Hipotético com 'if + past, would + base'",
             "label_en": "Hypothetical with 'if + past, would + base'",
             "hidden_prompt": "user uses 'If + past simple, would + base'",
             "hint_en": "If I had a sabbatical, I would write a book.",
@@ -1281,7 +1246,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Conselho com 'If I were you'",
             "label_en": "Advice with 'If I were you'",
             "hidden_prompt": "user uses 'If I were you, I would + base'",
             "hint_en": "If I were you, I would try a new hobby.",
@@ -1314,12 +1278,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores alternative realities. Mix wishes, hypotheticals, and advice freely.",
-        "intro_pt": "Charlotte explora realidades alternativas. Misture desejos, hipóteses e conselhos livremente.",
         "opening_message": "If your life could be different in one big way, what would change?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Grande mudança hipotética",
             "label_en": "Big hypothetical change",
             "hidden_prompt": "user uses 'If + past, I would + base' for big change",
             "hint_en": "If I could choose, I would live by the ocean.",
@@ -1339,7 +1301,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Adicionar desejo ou hipótese",
             "label_en": "Additional wish or hypothetical",
             "hidden_prompt": "user uses 'I wish' or another hypothetical",
             "hint_en": "I wish I had more courage to try new things.",
@@ -1359,7 +1320,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What would you change?'",
             "hint_en": "How about you?",

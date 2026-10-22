@@ -390,7 +390,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three direct sentences. Soften each with a euphemism — death, unemployment, firing."
+**Opening line**: "I'll say three blunt sentences, about death, unemployment and getting fired. Soften each one with a euphemism."
 
 **Sub-objectives** (3 objetivos):
 
@@ -425,7 +425,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three direct sentences. Soften each with a euphemism — death, unemployment, firing."
+1. **Charlotte**: "I'll say three blunt sentences, about death, unemployment and getting fired. Soften each one with a euphemism."
 2. **Student**: ~"Direct: 'His mother died last month.' Softened: 'His mother passed away last month.'"
 3. **Charlotte**: "Job?"
 4. **Student**: ~"Direct: 'He's unemployed right now.' Softened: 'He's between jobs at the moment.'"

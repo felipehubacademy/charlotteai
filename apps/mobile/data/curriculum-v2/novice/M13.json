@@ -216,7 +216,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_pt": "Charlotte explora rankings na sua vida. Pratica 'the + adj-est'.",
-        "opening_message": "Tell me three superlatives about your world.",
+        "opening_message": "What are the best, the biggest and the most fun things in your world?",
         "objectives": [
           {
             "id": 1,
@@ -268,7 +268,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Top of the list!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me three superlatives about your world.\"\n2. **Student**: \"I'm the oldest in my family.\"\n3. **Charlotte**: \"Big sibling energy. City?\"\n4. **Student**: \"São Paulo is the biggest city.\"\n5. **Charlotte**: \"Massive.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"NYC is the busiest. Top of the list!\"\n\n> N01 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What are the best, the biggest and the most fun things in your world?\"\n2. **Student**: \"I'm the oldest in my family.\"\n3. **Charlotte**: \"Big sibling energy. City?\"\n4. **Student**: \"São Paulo is the biggest city.\"\n5. **Charlotte**: \"Massive.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"NYC is the busiest. Top of the list!\"\n\n> N01 chat = LLM puro.\n\n---"
       }
     },
     {
@@ -720,7 +720,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_pt": "Charlotte abre chat sobre favoritos e piores. Pratica irregulares de superlativo.",
-        "opening_message": "Best meal in your city?",
+        "opening_message": "What's the best meal in your city?",
         "objectives": [
           {
             "id": 1,
@@ -772,7 +772,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Bests and worsts done!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Best meal in your city?\"\n2. **Student**: \"The best meal was pasta.\"\n3. **Charlotte**: \"Italian style.\"\n4. **Student**: \"The worst day was Monday.\"\n5. **Charlotte**: \"Always.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Best was sushi, worst was rainy Tuesday. Bests and worsts done!\"\n\n> N03 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's the best meal in your city?\"\n2. **Student**: \"The best meal was pasta.\"\n3. **Charlotte**: \"Italian style.\"\n4. **Student**: \"The worst day was Monday.\"\n5. **Charlotte**: \"Always.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Best was sushi, worst was rainy Tuesday. Bests and worsts done!\"\n\n> N03 chat = LLM puro.\n\n---"
       }
     },
     {
@@ -1238,10 +1238,10 @@
             "label_pt": "Dizer 'o melhor' de algo",
             "label_en": "Say 'the best'",
             "hidden_prompt": "user uses 'the best + noun' or 'X is the best'",
-            "hint_pt": "The best trip was Italy.",
-            "hint_en": "The best trip was Italy.",
+            "hint_pt": "My best trip was to Italy.",
+            "hint_en": "My best trip was to Italy.",
             "examples_pass": [
-              "The best trip was Italy."
+              "My best trip was to Italy."
             ],
             "examples_fail": [
               "Pasta (bare noun)",
@@ -1285,7 +1285,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Mastered the rankings!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Best thing this month? First time doing something?\"\n2. **Student**: \"The best trip was Italy.\"\n3. **Charlotte**: \"Wow.\"\n4. **Student**: \"It's my first time skiing.\"\n5. **Charlotte**: \"Adventure!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Best book of the year — second time reading it. Mastered the rankings!\"\n\n> N05 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Best thing this month? First time doing something?\"\n2. **Student**: \"My best trip was to Italy.\"\n3. **Charlotte**: \"Wow.\"\n4. **Student**: \"It's my first time skiing.\"\n5. **Charlotte**: \"Adventure!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Best book of the year — second time reading it. Mastered the rankings!\"\n\n> N05 chat = LLM puro.\n\n---"
       }
     }
   ],

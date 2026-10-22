@@ -258,10 +258,10 @@
             "label_pt": "Perguntar à Charlotte se ela tem outras dicas",
             "label_en": "Ask Charlotte for more tips",
             "hidden_prompt": "user asks 'What should I + base?' or 'Any other tips?'",
-            "hint_pt": "What should I do too?",
-            "hint_en": "What should I do too?",
+            "hint_pt": "What else should I do?",
+            "hint_en": "What else should I do?",
             "examples_pass": [
-              "What should I do too?"
+              "What else should I do?"
             ],
             "examples_fail": [
               "I do that too (statement)",
@@ -271,7 +271,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Great advice exchange!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I want to learn English faster. Any advice?\"\n2. **Student**: \"You should practice every day.\"\n3. **Charlotte**: \"Good. Anything to avoid?\"\n4. **Student**: \"You shouldn't translate everything.\"\n5. **Charlotte**: \"Smart!\"\n6. **Student**: \"What should I do too?\"\n7. **Charlotte**: \"Talk to natives! Great advice exchange!\"\n\n> N01 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I want to learn English faster. Any advice?\"\n2. **Student**: \"You should practice every day.\"\n3. **Charlotte**: \"Good. Anything to avoid?\"\n4. **Student**: \"You shouldn't translate everything.\"\n5. **Charlotte**: \"Smart!\"\n6. **Student**: \"What else should I do?\"\n7. **Charlotte**: \"Talk to natives! Great advice exchange!\"\n\n> N01 chat = LLM puro.\n\n---"
       }
     },
     {

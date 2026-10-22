@@ -153,7 +153,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta sobre 3 comportamentos que te irritam — você reclama com \"I wish + would\" / \"wouldn't\".",
-        "scenario_pt": "Charlotte pergunta sobre 3 comportamentos que te irritam — você reclama com \"I wish + would\" / \"wouldn't\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -162,7 +161,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reclamação com 'I wish + would'",
             "label_en": "Complaint with 'I wish + would'",
             "hidden_prompt": "user uses 'I wish X would + base'",
             "hint_en": "I wish my boss would give clearer instructions.",
@@ -179,7 +177,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Reclamação negativa com 'wouldn't'",
             "label_en": "Negative complaint with 'wouldn't'",
             "hidden_prompt": "user uses 'I wish X wouldn't + base'",
             "hint_en": "I wish people wouldn't talk loudly on the phone in public.",
@@ -196,7 +193,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Outra reclamação",
             "label_en": "Another complaint",
             "hidden_prompt": "user uses another 'I wish + would/wouldn't'",
             "hint_en": "I wish drivers would respect crosswalks.",
@@ -226,12 +222,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte vents lightly. Use 'I wish + would' for complaints.",
-        "intro_pt": "Charlotte desabafa levemente. Use 'I wish + would' para reclamações.",
         "opening_message": "I wish my coworker would stop chewing gum loudly. What about you?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reclamação sobre alguém específico",
             "label_en": "Complaint about someone specific",
             "hidden_prompt": "user uses 'I wish X would + base'",
             "hint_en": "I wish my brother would clean his room.",
@@ -248,7 +242,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra reclamação (negativa)",
             "label_en": "Another complaint (negative)",
             "hidden_prompt": "user uses 'I wish X wouldn't + base'",
             "hint_en": "I wish my cat wouldn't wake me up at 5 AM.",
@@ -265,7 +258,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Pergunta para Charlotte",
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte more about her annoyance",
             "hint_en": "Have you told them?",
@@ -419,7 +411,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte propõe que você expresse 3 desejos dramáticos usando \"If only\" — passado, presente, e futuro.",
-        "scenario_pt": "Charlotte quer que você expresse 3 desejos dramáticos usando \"If only\" — passado, presente e futuro.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -428,7 +419,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Se ao menos sobre o presente",
             "label_en": "If only about present",
             "hidden_prompt": "user uses 'If only + past simple' for present",
             "hint_en": "If only I had more energy!",
@@ -448,7 +438,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Se ao menos sobre o passado",
             "label_en": "If only about past",
             "hidden_prompt": "user uses 'If only + past perfect'",
             "hint_en": "If only I had taken that opportunity!",
@@ -468,7 +457,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Se ao menos com 'would'",
             "label_en": "If only with 'would'",
             "hidden_prompt": "user uses 'If only X would + base'",
             "hint_en": "If only my boss would notice my hard work!",
@@ -501,12 +489,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares deep wishes. Use 'If only' for emphasis.",
-        "intro_pt": "Charlotte compartilha desejos profundos. Use 'If only' para ênfase.",
         "opening_message": "If only I had learned to play piano as a kid. What about you?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Se ao menos sobre arrependimento passado",
             "label_en": "If only about past regret",
             "hidden_prompt": "user uses 'If only + past perfect'",
             "hint_en": "If only I had started exercising earlier.",
@@ -526,7 +512,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Se ao menos sobre desejo presente",
             "label_en": "If only about present wish",
             "hidden_prompt": "user uses 'If only + past simple' or 'were'",
             "hint_en": "If only I had more free time.",
@@ -546,7 +531,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte why she didn't learn piano",
             "hint_en": "Why didn't you learn?",
@@ -700,7 +684,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você expresse 3 preferências — duas próprias e uma sobre alguém usando \"I'd rather\".",
-        "scenario_pt": "Charlotte pede que você expresse 3 preferências — duas próprias e uma sobre alguém usando \"I'd rather\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -709,7 +692,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Própria preferência 'I'd rather + base'",
             "label_en": "Own preference 'I'd rather + base'",
             "hidden_prompt": "user uses 'I'd rather + base form'",
             "hint_en": "I'd rather watch a movie at home.",
@@ -729,7 +711,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Negativo 'I'd rather not'",
             "label_en": "Negative 'I'd rather not'",
             "hidden_prompt": "user uses 'I'd rather not + base'",
             "hint_en": "I'd rather not work this weekend.",
@@ -749,7 +730,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Preferência sobre outra pessoa",
             "label_en": "Preference about another person",
             "hidden_prompt": "user uses 'I'd rather you + past simple'",
             "hint_en": "I'd rather you called me before coming over.",
@@ -782,12 +762,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores preferences. Use 'I'd rather' across contexts.",
-        "intro_pt": "Charlotte explora preferências. Use 'I'd rather' em diferentes contextos.",
         "opening_message": "I'd rather work from home than commute. What's your preference?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Preferência de trabalho ou estilo de vida",
             "label_en": "Work or lifestyle preference",
             "hidden_prompt": "user uses 'I'd rather + base + than + base'",
             "hint_en": "I'd rather work in person than remotely.",
@@ -807,7 +785,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra preferência",
             "label_en": "Another preference",
             "hidden_prompt": "user uses another 'I'd rather'",
             "hint_en": "I'd rather travel than stay home.",
@@ -827,7 +804,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her preference",
             "hint_en": "Why do you prefer remote?",
@@ -949,10 +925,10 @@
           "passage": "It's time we left for the airport. It's high time you made a decision. It's about time you went to bed. It's time we took this seriously.",
           "question": "According to the passage, where should \"you\" go?",
           "answer": "to bed",
-          "explanation": "The text says \"It's / It is about time you went to bed\".",
           "accepts": [
             "bed"
-          ]
+          ],
+          "explanation": "The text says \"It's / It is about time you went to bed\"."
         }
       ],
       "listening_speaking": [
@@ -984,7 +960,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conta sobre 3 situações onde alguém precisa fazer algo já — você comenta com \"It's time / It's high time / It's about time\".",
-        "scenario_pt": "Charlotte conta sobre 3 situações onde alguém precisa fazer algo já — você comenta com \"It's time / It's high time / It's about time\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -993,7 +968,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Urgência com 'It's time'",
             "label_en": "Urgency with 'It's time'",
             "hidden_prompt": "user uses 'It's time + subject + past simple'",
             "hint_en": "It's time we addressed this issue.",
@@ -1013,7 +987,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Ênfase com 'It's high time'",
             "label_en": "Emphatic 'It's high time'",
             "hidden_prompt": "user uses 'It's high time + subject + past simple'",
             "hint_en": "It's high time he found a stable job.",
@@ -1033,7 +1006,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Urgência sobre o próprio comportamento",
             "label_en": "Urgency about own behavior",
             "hidden_prompt": "user uses 'It's about time I + past simple'",
             "hint_en": "It's about time I started exercising again.",
@@ -1066,12 +1038,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte motivates action. Use 'It's time' for overdue action.",
-        "intro_pt": "Charlotte motiva a ação. Use 'It's time' para ações atrasadas.",
         "opening_message": "It's high time I cleaned out my closet. What's overdue for you?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo atrasado para você",
             "label_en": "Something overdue for you",
             "hidden_prompt": "user uses 'It's (high/about) time I + past simple'",
             "hint_en": "It's about time I called my grandmother.",
@@ -1091,7 +1061,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra urgência",
             "label_en": "Another urgency",
             "hidden_prompt": "user uses another 'It's time + past'",
             "hint_en": "It's high time I learned to cook properly.",
@@ -1111,7 +1080,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more",
             "hint_en": "Why now for the closet?",
@@ -1266,7 +1234,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede que você expresse 4 estruturas diferentes em sequência — wish + would, if only, would rather, it's time.",
-        "scenario_pt": "Charlotte pede que você expresse 4 estruturas diferentes em sequência — wish + would, if only, would rather, it's time.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1275,7 +1242,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Eu gostaria + would",
             "label_en": "I wish + would",
             "hidden_prompt": "user uses 'I wish X would + base'",
             "hint_en": "I wish my dog would stop barking.",
@@ -1295,7 +1261,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Se ao menos + passado",
             "label_en": "If only + past",
             "hidden_prompt": "user uses 'If only + past simple/perfect'",
             "hint_en": "If only I had taken that opportunity.",
@@ -1315,7 +1280,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Would rather ou It's time",
             "label_en": "Would rather or It's time",
             "hidden_prompt": "user uses 'I'd rather' or 'It's time'",
             "hint_en": "It's high time I made a change.",
@@ -1348,12 +1312,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores life pivots. Mix wish structures naturally.",
-        "intro_pt": "Charlotte explora mudanças de vida. Misture estruturas de wish naturalmente.",
         "opening_message": "If only I had more courage. What do you wish for or wish you'd done?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Desejo profundo com 'If only' ou 'I wish'",
             "label_en": "Deep wish with 'If only' or 'I wish'",
             "hidden_prompt": "user uses 'If only' or 'I wish' for deep desire",
             "hint_en": "If only I had been more patient with myself.",
@@ -1373,7 +1335,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Preferência 'I'd rather' ou urgência 'It's time'",
             "label_en": "Preference 'I'd rather' or urgency 'It's time'",
             "hidden_prompt": "user uses 'I'd rather' or 'It's time + past'",
             "hint_en": "It's about time I forgave myself.",
@@ -1393,7 +1354,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her courage wish",
             "hint_en": "What would courage look like?",

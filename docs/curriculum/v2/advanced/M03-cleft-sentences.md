@@ -551,9 +551,9 @@
    **label_pt**: "Evento tardio (não realização)"
    **label_en**: "Late event (not realisation)"
    **hidden_prompt**: "user uses 'It wasn't until + time + that + event'"
-   **hint_pt**: "It wasn't until 30 that I learned to cook properly."
-   **hint_en**: "It wasn't until 30 that I learned to cook properly."
-   **example_pass**: It wasn't until 30 that I learned to cook properly. | It wasn't until my forties that I learned how to take a real holiday. | It wasn't until last winter that the doctor finally gave me a proper diagnosis. | It wasn't until 2018 that the company turned its first real profit. | It wasn't until after the move that we noticed how much lighter we both felt.
+   **hint_pt**: "It wasn't until I was 30 that I learned to cook properly."
+   **hint_en**: "It wasn't until I was 30 that I learned to cook properly."
+   **example_pass**: It wasn't until I was 30 that I learned to cook properly. | It wasn't until my forties that I learned how to take a real holiday. | It wasn't until last winter that the doctor finally gave me a proper diagnosis. | It wasn't until 2018 that the company turned its first real profit. | It wasn't until after the move that we noticed how much lighter we both felt.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
@@ -572,7 +572,7 @@
 1. **Charlotte**: "Three turning points that came late. 'It wasn't until X that Y.'"
 2. **Student**: ~"It wasn't until I changed jobs that I understood how unhappy I had been."
 3. **Charlotte**: "Hindsight is a knife. Late skill?"
-4. **Student**: ~"It wasn't until 30 that I learned to cook properly."
+4. **Student**: ~"It wasn't until I was 30 that I learned to cook properly."
 5. **Charlotte**: "Someone else's late reveal?"
 6. **Student**: ~"It wasn't until last week that my brother told me the whole story."
 7. **Charlotte**: "Late but legible."

@@ -428,7 +428,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 90,
-        "opening_line": "Family quick — how many brothers have you got?",
+        "opening_line": "Quick family question — how many brothers have you got?",
         "objectives": [
           {
             "id": 1,
@@ -471,10 +471,10 @@
             "label_pt": "Perguntar a Charlotte se ela tem irmãos",
             "label_en": "Ask Charlotte if she has siblings",
             "hidden_prompt": "user asks Charlotte about siblings with 'Have you got + brothers/sisters', 'how about you', or 'and you'",
-            "hint_pt": "Have you got any?",
-            "hint_en": "Have you got any?",
+            "hint_pt": "Have you got any brothers or sisters?",
+            "hint_en": "Have you got any brothers or sisters?",
             "examples_pass": [
-              "Have you got any?"
+              "Have you got any brothers or sisters?"
             ],
             "examples_fail": [
               "Yes I have (statement)",
@@ -484,7 +484,7 @@
           }
         ],
         "closing_cue": "Charlotte fecha com \"Nice! Family map done.\" quando obj_3 baterem.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Family quick — how many brothers have you got?\"\n2. **Student**: ~\"I've got two brothers.\"\n3. **Charlotte**: \"Cool. And sisters?\"\n4. **Student**: ~\"I've got one sister.\"\n5. **Charlotte**: \"Got it.\"\n6. **Student**: ~\"Have you got any?\"\n7. **Charlotte**: \"Yes — one sister. Nice! Family map done.\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Quick family question — how many brothers have you got?\"\n2. **Student**: ~\"I've got two brothers.\"\n3. **Charlotte**: \"Cool. And sisters?\"\n4. **Student**: ~\"I've got one sister.\"\n5. **Charlotte**: \"Got it.\"\n6. **Student**: ~\"Have you got any brothers or sisters?\"\n7. **Charlotte**: \"Yes — one sister. Nice! Family map done.\"",
         "evaluation_focus": [
           "Aluno usa \"I've got + number + family member\"",
           "Aluno devolve a pergunta usando \"Have you got\"",
@@ -1129,10 +1129,10 @@
             "They"
           ],
           "answer": "We",
-          "explanation": "\"We are\" = \"nós somos\". \"We\" é o sujeito pra grupo incluindo você mesmo.",
           "accepts": [
             "There"
-          ]
+          ],
+          "explanation": "\"We are\" = \"nós somos\". \"We\" é o sujeito pra grupo incluindo você mesmo."
         },
         {
           "type": "fill_gap",

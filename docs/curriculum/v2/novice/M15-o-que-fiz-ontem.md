@@ -802,7 +802,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "Walk me through yesterday — three actions."
+**Opening line**: "Tell me about yesterday. What are three things you did?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -837,7 +837,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Walk me through yesterday — three actions."
+1. **Charlotte**: "Tell me about yesterday. What are three things you did?"
 2. **Student**: ~"I worked all morning."
 3. **Charlotte**: "Lunch?"
 4. **Student**: ~"I called my mother."

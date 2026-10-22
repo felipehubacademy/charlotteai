@@ -59,10 +59,10 @@
             "is calling"
           ],
           "answer": "has called",
-          "explanation": "\"This morning\" (if it's still morning) = unfinished → PP. If morning is over → past simple \"called\".",
           "accepts": [
             "called"
-          ]
+          ],
+          "explanation": "\"This morning\" (if it's still morning) = unfinished → PP. If morning is over → past simple \"called\"."
         },
         {
           "type": "word_bank",
@@ -81,12 +81,12 @@
           "sentence": "I met him in 2010 and I _____ him many times since.",
           "hint": "\"since\" pede present perfect: have + past participle",
           "answer": "have seen",
-          "explanation": "\"In 2010\" = specific past → \"met\". (Second blank would be \"have seen/met\").",
           "accepts": [
             "have met",
             "'ve seen",
             "'ve met"
-          ]
+          ],
+          "explanation": "\"In 2010\" = specific past → \"met\". (Second blank would be \"have seen/met\")."
         },
         {
           "type": "fill_gap",
@@ -153,7 +153,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about experiences and specific past events.",
-        "scenario_pt": "Charlotte pergunta sobre experiências e eventos específicos do passado.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -162,7 +161,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Evento passado específico (past simple)",
             "label_en": "Specific past event (past simple)",
             "hidden_prompt": "user uses past simple with time marker (last year, yesterday, in 2020)",
             "hint_en": "I went to Italy last year.",
@@ -182,7 +180,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Falar sobre experiência de vida (PP)",
             "label_en": "Life experience (PP)",
             "hidden_prompt": "user uses 'I have + past participle' for life experience",
             "hint_en": "I have visited five countries.",
@@ -202,7 +199,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Outra distinção",
             "label_en": "Another distinction",
             "hidden_prompt": "user uses one more past simple or PP with appropriate marker",
             "hint_en": "I have never tried sushi.",
@@ -235,12 +231,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about finished events vs life experiences. Practice the distinction.",
-        "intro_pt": "Charlotte pergunta sobre eventos concluídos versus experiências de vida. Pratique a distinção.",
         "opening_message": "Specific past event — what did you do last weekend?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Evento específico",
             "label_en": "Specific event",
             "hidden_prompt": "user uses past simple with specific time",
             "hint_en": "I traveled to Rio last weekend.",
@@ -260,7 +254,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Experiência geral",
             "label_en": "General experience",
             "hidden_prompt": "user uses PP for life experience",
             "hint_en": "I've traveled a lot.",
@@ -280,7 +273,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks specific or experience question",
             "hint_en": "Have you ever been to Brazil?",
@@ -435,7 +427,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about durations in your life.",
-        "scenario_pt": "Charlotte pergunta sobre durações na sua vida.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -444,7 +435,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Há quanto tempo vive (for + duração)",
             "label_en": "How long lived (for + duration)",
             "hidden_prompt": "user uses 'I've lived/been there for + duration'",
             "hint_en": "I've lived here for ten years.",
@@ -461,7 +451,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Há quanto tempo trabalha",
             "label_en": "How long worked",
             "hidden_prompt": "user uses 'I've worked there for + duration'",
             "hint_en": "I've worked there for five years.",
@@ -478,7 +467,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Outra duração",
             "label_en": "Another duration",
             "hidden_prompt": "user uses 'I've + past participle + for + duration'",
             "hint_en": "I've studied English for two years.",
@@ -508,12 +496,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about long-term relationships. Practice 'for + duration'.",
-        "intro_pt": "Charlotte pergunta sobre relacionamentos de longo prazo. Pratique 'for + duration'.",
         "opening_message": "How long have you known your best friend?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Há quanto tempo conhece",
             "label_en": "How long known",
             "hidden_prompt": "user uses 'I've known + person + for + duration'",
             "hint_en": "I've known her for ten years.",
@@ -530,7 +516,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra duração",
             "label_en": "Another duration",
             "hidden_prompt": "user uses another PP + for",
             "hint_en": "I've worked here for two years.",
@@ -547,7 +532,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How long have you...?'",
             "hint_en": "How long have you taught?",
@@ -699,7 +683,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about starting points in your life.",
-        "scenario_pt": "Charlotte pergunta sobre pontos de partida na sua vida.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -708,7 +691,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo desde um ano",
             "label_en": "Something since a year",
             "hidden_prompt": "user uses 'I've + past participle + since + year'",
             "hint_en": "I've worked here since 2020.",
@@ -728,7 +710,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Algo desde um mês ou dia",
             "label_en": "Something since month or day",
             "hidden_prompt": "user uses 'since + month/day'",
             "hint_en": "I've been busy since Monday.",
@@ -748,7 +729,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Algo desde um evento de vida",
             "label_en": "Something since a life event",
             "hidden_prompt": "user uses 'since + clause' (since I was..., since I moved...)",
             "hint_en": "I've lived here since I was 18.",
@@ -781,12 +761,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks since when. Practice 'since + point'.",
-        "intro_pt": "Charlotte pergunta desde quando. Pratique 'since + point'.",
         "opening_message": "Since when have you studied English?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com since",
             "label_en": "Answer with since",
             "hidden_prompt": "user uses 'since + point'",
             "hint_en": "Since 2022.",
@@ -806,7 +784,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outro com since",
             "label_en": "Another with since",
             "hidden_prompt": "user uses 'I've + past participle + since'",
             "hint_en": "I've lived here since 2015.",
@@ -826,7 +803,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Since when have you...?'",
             "hint_en": "Since when have you taught?",
@@ -981,7 +957,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks \"How long\" about your life.",
-        "scenario_pt": "Charlotte pergunta \"How long\" sobre sua vida.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -990,7 +965,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com for + duração",
             "label_en": "Answer with for + duration",
             "hidden_prompt": "user uses 'For + duration'",
             "hint_en": "For two years.",
@@ -1010,7 +984,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra resposta com since",
             "label_en": "Another answer with since",
             "hidden_prompt": "user uses 'Since + point'",
             "hint_en": "Since 2022.",
@@ -1030,7 +1003,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte (How long)",
             "label_en": "Ask Charlotte (How long)",
             "hidden_prompt": "user asks 'How long have you + past participle?'",
             "hint_en": "How long have you been a teacher?",
@@ -1063,12 +1035,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks how long. Practice for/since responses.",
-        "intro_pt": "Charlotte pergunta há quanto tempo. Pratique respostas com for/since.",
         "opening_message": "How long have you been at your job?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com for",
             "label_en": "Answer with for",
             "hidden_prompt": "user uses 'For + duration'",
             "hint_en": "For three years.",
@@ -1088,7 +1058,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra duração",
             "label_en": "Another duration",
             "hidden_prompt": "user uses 'for + duration' or 'since + point'",
             "hint_en": "Since 2021.",
@@ -1108,7 +1077,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How long have you...?'",
             "hint_en": "How long have you lived in NYC?",
@@ -1193,10 +1161,10 @@
           "sentence": "I met her in 2010 and we _____ best friends since.",
           "hint": "\"since\" pede present perfect: have been",
           "answer": "have been",
-          "explanation": "\"In 2010\" = past simple \"met\". Second part would be \"have been\".",
           "accepts": [
             "'ve been"
-          ]
+          ],
+          "explanation": "\"In 2010\" = past simple \"met\". Second part would be \"have been\"."
         },
         {
           "type": "fill_gap",
@@ -1263,7 +1231,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks both types — specific past and experiences.",
-        "scenario_pt": "Charlotte pergunta sobre ambos os tipos — passado específico e experiências.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1272,7 +1239,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Evento específico (past simple)",
             "label_en": "Specific event (past simple)",
             "hidden_prompt": "user uses past simple + specific time",
             "hint_en": "I traveled to Italy in 2019.",
@@ -1289,7 +1255,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Falar sobre experiência de vida (PP)",
             "label_en": "Life experience (PP)",
             "hidden_prompt": "user uses 'I've + past participle' for experience",
             "hint_en": "I've never been to Asia.",
@@ -1306,7 +1271,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Fazer pergunta integrada",
             "label_en": "Integrated question",
             "hidden_prompt": "user asks PP or past simple question",
             "hint_en": "Have you been to Asia?",
@@ -1336,12 +1300,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites past stories. Integrate past simple + PP.",
-        "intro_pt": "Charlotte convida para histórias passadas. Integre past simple + PP.",
         "opening_message": "What's the last big thing that happened in your life?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Evento passado específico",
             "label_en": "Specific past event",
             "hidden_prompt": "user uses past simple with time marker",
             "hint_en": "I got promoted last month.",
@@ -1358,7 +1320,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Experiência geral (PP)",
             "label_en": "General experience (PP)",
             "hidden_prompt": "user uses PP for life experience",
             "hint_en": "I've never had such a good year.",
@@ -1375,7 +1336,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks past simple or PP question",
             "hint_en": "How about you?",

@@ -246,9 +246,9 @@
    **label_pt**: "Biografia ('Born in...')"
    **label_en**: "Biography ('Born in...')"
    **hidden_prompt**: "user uses 'Born + place/time, + main clause'"
-   **hint_pt**: "Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms."
-   **hint_en**: "Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms."
-   **example_pass**: Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms. | Born in Recife and raised in São Paulo, she carries traces of both cities in her speech. | Born in the middle of a snowstorm, she's been told the story every winter of her life. | Born in a small fishing town and educated in Paris, he moves between worlds with ease. | Born just after the war, my grandfather grew up with stories nobody wanted to tell twice.
+   **hint_pt**: "Born in Recife and raised in Belo Horizonte, she speaks Portuguese with two distinct rhythms."
+   **hint_en**: "Born in Recife and raised in Belo Horizonte, she speaks Portuguese with two distinct rhythms."
+   **example_pass**: Born in Recife and raised in Belo Horizonte, she speaks Portuguese with two distinct rhythms. | Born in Recife and raised in São Paulo, she carries traces of both cities in her speech. | Born in the middle of a snowstorm, she's been told the story every winter of her life. | Born in a small fishing town and educated in Paris, he moves between worlds with ease. | Born just after the war, my grandfather grew up with stories nobody wanted to tell twice.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 3. **id**: 3
@@ -267,7 +267,7 @@
 1. **Charlotte**: "Three descriptions opening with a past participle clause. 'Built... Born... Made...'"
 2. **Student**: ~"Built in 1872, the old town hall still hosts weekly markets."
 3. **Charlotte**: "Biography?"
-4. **Student**: ~"Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms."
+4. **Student**: ~"Born in Recife and raised in Belo Horizonte, she speaks Portuguese with two distinct rhythms."
 5. **Charlotte**: "Trait?"
 6. **Student**: ~"Surrounded by trees on three sides, the cabin is invisible from the road."
 7. **Charlotte**: "Compressions, descriptive grade."
@@ -382,7 +382,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three stories or thoughts, each starting with 'Having + past participle'."
+**Opening line**: "Give me three stories or thoughts, each one starting with 'Having' plus a past participle."
 
 **Sub-objectives** (3 objetivos):
 
@@ -417,7 +417,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three stories or thoughts, each starting with 'Having + past participle'."
+1. **Charlotte**: "Give me three stories or thoughts, each one starting with 'Having' plus a past participle."
 2. **Student**: ~"Having finished my morning run, I felt ready for the meeting."
 3. **Charlotte**: "Endorphins. Long experience?"
 4. **Student**: ~"Having worked from home for two years, I forgot how loud offices are."
@@ -535,7 +535,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three formative passive moments — 'Having been told... Having been raised... Having been...'"
+**Opening line**: "Tell me about three moments that shaped you, each one starting with 'Having been...', like 'Having been told...' or 'Having been raised...'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -570,7 +570,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three formative passive moments — 'Having been told... Having been raised... Having been...'"
+1. **Charlotte**: "Tell me about three moments that shaped you, each one starting with 'Having been...', like 'Having been told...' or 'Having been raised...'."
 2. **Student**: ~"Having been raised by two musicians, I can't imagine a quiet house."
 3. **Charlotte**: "Background determines tolerance for chaos. Warning?"
 4. **Student**: ~"Having been warned about the traffic, I left an hour earlier."

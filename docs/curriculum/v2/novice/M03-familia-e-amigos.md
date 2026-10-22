@@ -286,7 +286,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "Family quick — how many brothers have you got?"
+**Opening line**: "Quick family question — how many brothers have you got?"
 
 **Sub-objectives** (M03 gradiente: 3 objetivos):
 
@@ -312,21 +312,21 @@
    **label_pt**: "Perguntar a Charlotte se ela tem irmãos"
    **label_en**: "Ask Charlotte if she has siblings"
    **hidden_prompt**: "user asks Charlotte about siblings with 'Have you got + brothers/sisters', 'how about you', or 'and you'"
-   **hint_pt**: "Have you got any?"
-   **hint_en**: "Have you got any?"
-   **example_pass**: Have you got any?
+   **hint_pt**: "Have you got any brothers or sisters?"
+   **hint_en**: "Have you got any brothers or sisters?"
+   **example_pass**: Have you got any brothers or sisters?
    **example_fail**: Yes I have (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Nice! Family map done." quando obj_3 baterem.
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Family quick — how many brothers have you got?"
+1. **Charlotte**: "Quick family question — how many brothers have you got?"
 2. **Student**: ~"I've got two brothers."
 3. **Charlotte**: "Cool. And sisters?"
 4. **Student**: ~"I've got one sister."
 5. **Charlotte**: "Got it."
-6. **Student**: ~"Have you got any?"
+6. **Student**: ~"Have you got any brothers or sisters?"
 7. **Charlotte**: "Yes — one sister. Nice! Family map done."
 
 **Evaluation focus**:

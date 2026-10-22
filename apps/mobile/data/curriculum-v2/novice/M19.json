@@ -829,10 +829,10 @@
             "label_pt": "Reação com will",
             "label_en": "Reaction with will",
             "hidden_prompt": "user uses 'I'll + base'",
-            "hint_pt": "I'll help if you need.",
-            "hint_en": "I'll help if you need.",
+            "hint_pt": "I'll help if you need me.",
+            "hint_en": "I'll help if you need me.",
             "examples_pass": [
-              "I'll help if you need."
+              "I'll help if you need me."
             ],
             "examples_fail": [
               "Tomorrow (no verb)",
@@ -858,7 +858,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Two-tense mastery!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Plan something AND react to something.\"\n2. **Student**: \"I'm going to study tonight.\"\n3. **Charlotte**: \"Cool.\"\n4. **Student**: \"I'll help if you need.\"\n5. **Charlotte**: \"Thanks!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'm going to read, and I'll text if I'm bored. Two-tense mastery!\"\n\n> N03 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Plan something AND react to something.\"\n2. **Student**: \"I'm going to study tonight.\"\n3. **Charlotte**: \"Cool.\"\n4. **Student**: \"I'll help if you need me.\"\n5. **Charlotte**: \"Thanks!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'm going to read, and I'll text if I'm bored. Two-tense mastery!\"\n\n> N03 chat = LLM puro.\n\n---"
       }
     },
     {
@@ -1471,10 +1471,10 @@
           "sentence": "It's _____ today — really cold!",
           "hint": "clima muito frio",
           "answer": "freezing",
-          "explanation": "\"Freezing\" — adjetivo intensivo para \"very cold\". Outros intensivos: \"boiling\" (very hot), \"soaking\" (very wet). Não usar \"very freezing\" — o adjetivo já é intensificado.",
           "accepts": [
             "cold"
-          ]
+          ],
+          "explanation": "\"Freezing\" — adjetivo intensivo para \"very cold\". Outros intensivos: \"boiling\" (very hot), \"soaking\" (very wet). Não usar \"very freezing\" — o adjetivo já é intensificado."
         },
         {
           "type": "fill_gap",

@@ -386,7 +386,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Position: 'Climate action cannot wait.' Craft three lines — anaphora, antithesis, tricolon."
+**Opening line**: "Here's my position: 'Climate action cannot wait.' Give me three lines to support it: one with anaphora, one with antithesis and one with a tricolon."
 
 **Sub-objectives** (3 objetivos):
 
@@ -421,7 +421,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Position: 'Climate action cannot wait.' Craft three lines — anaphora, antithesis, tricolon."
+1. **Charlotte**: "Here's my position: 'Climate action cannot wait.' Give me three lines to support it: one with anaphora, one with antithesis and one with a tricolon."
 2. **Student**: ~"We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future."
 3. **Charlotte**: "Antithesis?"
 4. **Student**: ~"The cost of acting is high. The cost of waiting is higher."

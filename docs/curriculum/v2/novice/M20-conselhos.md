@@ -179,9 +179,9 @@
    **label_pt**: "Perguntar à Charlotte se ela tem outras dicas"
    **label_en**: "Ask Charlotte for more tips"
    **hidden_prompt**: "user asks 'What should I + base?' or 'Any other tips?'"
-   **hint_pt**: "What should I do too?"
-   **hint_en**: "What should I do too?"
-   **example_pass**: What should I do too?
+   **hint_pt**: "What else should I do?"
+   **hint_en**: "What else should I do?"
+   **example_pass**: What else should I do?
    **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Great advice exchange!" quando obj_3 baterem.
@@ -193,7 +193,7 @@
 3. **Charlotte**: "Good. Anything to avoid?"
 4. **Student**: "You shouldn't translate everything."
 5. **Charlotte**: "Smart!"
-6. **Student**: "What should I do too?"
+6. **Student**: "What else should I do?"
 7. **Charlotte**: "Talk to natives! Great advice exchange!"
 
 > N01 chat = LLM puro.

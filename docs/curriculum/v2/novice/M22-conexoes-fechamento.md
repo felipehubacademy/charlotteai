@@ -151,7 +151,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte abre chat sobre suas preferências conectadas. Pratica and/but/so."
-**Opening message**: "What do you like and don't like?"
+**Opening message**: "What do you like, and what don't you like?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -186,7 +186,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "What do you like and don't like?"
+1. **Charlotte**: "What do you like, and what don't you like?"
 2. **Student**: "I like reading and traveling."
 3. **Charlotte**: "Contrast?"
 4. **Student**: "I like sweets but not too much."

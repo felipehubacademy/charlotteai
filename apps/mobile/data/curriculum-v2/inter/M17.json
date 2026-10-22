@@ -153,7 +153,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conta sobre três pessoas que ela conheceu — você precisa reportar o que cada uma disse usando \"said + that-clause\".",
-        "scenario_pt": "Charlotte conta sobre três pessoas que ela conheceu — você precisa reportar o que cada uma disse usando \"said + that-clause\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -162,7 +161,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Relatar com 'said he/she + past'",
             "label_en": "Report with 'said he/she + past'",
             "hidden_prompt": "user uses 'X said (that) he/she + past tense'",
             "hint_en": "She said she was a teacher.",
@@ -179,7 +177,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outro relato",
             "label_en": "Another report",
             "hidden_prompt": "user uses another 'said (that)' construction",
             "hint_en": "He said he lived in Rio.",
@@ -196,7 +193,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Relatar uma atividade em andamento",
             "label_en": "Report an ongoing activity",
             "hidden_prompt": "user uses 'said he/she was + ing'",
             "hint_en": "She said she was working on a project.",
@@ -226,12 +222,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares conversations. Practice reporting with 'said' + backshift.",
-        "intro_pt": "Charlotte compartilha conversas. Pratique o discurso indireto com 'said' + backshift.",
         "opening_message": "My sister told me she's moving to Berlin. What did I just tell you?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Relatar o que Charlotte disse",
             "label_en": "Report what Charlotte said",
             "hidden_prompt": "user uses 'You said your sister was moving to Berlin'",
             "hint_en": "You said your sister was moving to Berlin.",
@@ -248,7 +242,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outro relato (mais conversa)",
             "label_en": "Another report (more talk)",
             "hidden_prompt": "user reports another statement with 'said'",
             "hint_en": "You said she had found a job there.",
@@ -265,7 +258,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about the situation",
             "hint_en": "Did she say when she's leaving?",
@@ -419,7 +411,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conta sobre conversas recentes — você reporta usando \"told\" e \"said\" corretamente.",
-        "scenario_pt": "Charlotte conta sobre conversas recentes — você reporta usando \"told\" e \"said\" corretamente.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -428,7 +419,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Relatar com 'told me'",
             "label_en": "Report with 'told me'",
             "hidden_prompt": "user uses 'X told me (that) + past tense'",
             "hint_en": "My boss told me I was getting a raise.",
@@ -448,7 +438,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Relatar com 'said'",
             "label_en": "Report with 'said'",
             "hidden_prompt": "user uses 'X said (that) + past tense' without object",
             "hint_en": "He said the deadline was Friday.",
@@ -468,7 +457,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Relatar com 'mentioned' ou 'spoke about'",
             "label_en": "Report with 'mentioned' or 'spoke about'",
             "hidden_prompt": "user uses another reporting verb",
             "hint_en": "She mentioned that she was tired.",
@@ -501,12 +489,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares office gossip. Use 'told me' and 'said'.",
-        "intro_pt": "Charlotte compartilha fofocas do escritório. Use 'told me' e 'said'.",
         "opening_message": "My coworker told me she was thinking of quitting. What do you think?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Relatar de volta para Charlotte",
             "label_en": "Report back to Charlotte",
             "hidden_prompt": "user reports 'You said your coworker was...'",
             "hint_en": "You said your coworker was thinking of quitting.",
@@ -526,7 +512,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Adicionar detalhe adicional",
             "label_en": "Additional detail",
             "hidden_prompt": "user adds another reported statement",
             "hint_en": "She told me she had been unhappy for a while.",
@@ -546,7 +531,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Pergunta para Charlotte",
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte more about it",
             "hint_en": "What did she say her plans were?",
@@ -703,7 +687,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conta sobre coisas que pessoas mencionaram que tinham feito — você precisa reportar com past perfect.",
-        "scenario_pt": "Charlotte conta sobre coisas que pessoas mencionaram que tinham feito — você precisa reportar com past perfect.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -712,7 +695,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Relatar com 'said he/she had + past participle'",
             "label_en": "Report with 'said he/she had + past participle'",
             "hidden_prompt": "user uses 'X said he/she had + past participle'",
             "hint_en": "He said he had finished the report.",
@@ -732,7 +714,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outro relato no past perfect",
             "label_en": "Another past perfect report",
             "hidden_prompt": "user uses another 'had + past participle'",
             "hint_en": "She told me she had visited Paris twice.",
@@ -752,7 +733,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Relatar com 'never' ou 'already'",
             "label_en": "Report with 'never' or 'already'",
             "hidden_prompt": "user uses 'said had never/already + past participle'",
             "hint_en": "He said he had never tried sushi.",
@@ -785,12 +765,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte recaps a meeting. Practice past perfect in reported speech.",
-        "intro_pt": "Charlotte recapitula uma reunião. Pratique past perfect em reported speech.",
         "opening_message": "At the meeting, my colleague said she had completed her part. What did she say?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Relatar o que ela disse",
             "label_en": "Report what she said",
             "hidden_prompt": "user uses 'She said she had + past participle'",
             "hint_en": "She said she had completed her part.",
@@ -810,7 +788,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Relatar outra declaração",
             "label_en": "Report another statement",
             "hidden_prompt": "user uses another reported past perfect",
             "hint_en": "Another colleague said he had already sent his notes.",
@@ -830,7 +807,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about the meeting",
             "hint_en": "Did anyone say they hadn't finished?",
@@ -987,7 +963,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conta sobre promessas, planos e habilidades de pessoas — você reporta com modal backshift (would, could, might, had to).",
-        "scenario_pt": "Charlotte conta sobre promessas, planos e habilidades de pessoas — você reporta com modal backshift (would, could, might, had to).",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -996,7 +971,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Relatar com 'would' (will)",
             "label_en": "Report with 'would' (will)",
             "hidden_prompt": "user uses 'X said he/she would + base'",
             "hint_en": "He said he would help me with the project.",
@@ -1016,7 +990,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Relatar com 'could' (can)",
             "label_en": "Report with 'could' (can)",
             "hidden_prompt": "user uses 'X said he/she could + base'",
             "hint_en": "She said she could speak French fluently.",
@@ -1036,7 +1009,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Relatar com 'might' ou 'had to'",
             "label_en": "Report with 'might' or 'had to'",
             "hidden_prompt": "user uses 'X said he/she might/had to + base'",
             "hint_en": "He said he might be late.",
@@ -1069,12 +1041,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares people's plans. Use 'would, could, might' in reports.",
-        "intro_pt": "Charlotte compartilha planos de pessoas. Use 'would, could, might' em relatos.",
         "opening_message": "A friend told me she would visit me next month. What did she promise?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Relatar a promessa",
             "label_en": "Report the promise",
             "hidden_prompt": "user uses 'She said she would + base'",
             "hint_en": "She said she would visit you next month.",
@@ -1094,7 +1064,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Relatar outra informação modal",
             "label_en": "Report another modal info",
             "hidden_prompt": "user uses another 'said could/might/had to'",
             "hint_en": "She mentioned she might bring her sister.",
@@ -1114,7 +1083,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Pergunta para Charlotte",
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte more about the visit",
             "hint_en": "Did she say when she would arrive?",
@@ -1168,10 +1136,10 @@
             "next day"
           ],
           "answer": "the next day",
-          "explanation": "\"Tomorrow\" → \"the next day\" (or \"the following day\") in reported speech.",
           "accepts": [
             "the day after"
-          ]
+          ],
+          "explanation": "\"Tomorrow\" → \"the next day\" (or \"the following day\") in reported speech."
         },
         {
           "type": "word_bank",
@@ -1195,10 +1163,10 @@
             "one day before"
           ],
           "answer": "the day before",
-          "explanation": "\"Yesterday\" → \"the day before\" (or \"the previous day\") in reported speech.",
           "accepts": [
             "the previous day"
-          ]
+          ],
+          "explanation": "\"Yesterday\" → \"the day before\" (or \"the previous day\") in reported speech."
         },
         {
           "type": "fill_gap",
@@ -1275,7 +1243,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conta sobre conversas de vários dias atrás — você reporta com todas as mudanças de tempo/lugar.",
-        "scenario_pt": "Charlotte conta sobre conversas de vários dias atrás — você reporta com todas as mudanças de tempo/lugar.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1284,7 +1251,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Relatar com mudança de tempo (today→that day)",
             "label_en": "Report with time shift (today→that day)",
             "hidden_prompt": "user uses 'said... that day' or 'said... the day before'",
             "hint_en": "He said he was tired that day.",
@@ -1301,7 +1267,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Relatar com 'the next day'",
             "label_en": "Report with 'the next day'",
             "hidden_prompt": "user uses 'said would + base + the next day/following week'",
             "hint_en": "She said she would come the next day.",
@@ -1318,7 +1283,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Relatar com mudança de lugar",
             "label_en": "Report with place shift",
             "hidden_prompt": "user uses 'said... there' instead of 'here'",
             "hint_en": "He said he had been there before.",
@@ -1348,12 +1312,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte tells a layered conversation. Use full backshift, time, and place shifts.",
-        "intro_pt": "Charlotte conta uma conversa complexa. Use full backshift, mudanças de tempo e lugar.",
         "opening_message": "Last week, my friend said she was moving here. What did she say?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Relatar com mudança de lugar",
             "label_en": "Report with place shift",
             "hidden_prompt": "user uses 'She said she was moving there'",
             "hint_en": "She said she was moving there.",
@@ -1370,7 +1332,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Relatar com mudança de tempo",
             "label_en": "Report with time shift",
             "hidden_prompt": "user uses 'she said she would arrive the following week' or similar",
             "hint_en": "She said she would arrive the following month.",
@@ -1387,7 +1348,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about the conversation",
             "hint_en": "Did she say why she was moving?",

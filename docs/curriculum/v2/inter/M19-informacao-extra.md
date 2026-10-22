@@ -273,7 +273,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Describe three things or places with 'which + comma' — extra info style."
+**Opening line**: "Describe three things or places and add extra information with ', which...'."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -308,7 +308,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Describe three things or places with 'which + comma' — extra info style."
+1. **Charlotte**: "Describe three things or places and add extra information with ', which...'."
 2. **Student**: ~"Rio, which is famous for its beaches, has amazing views."
 3. **Charlotte**: "Tourist favorite. Object?"
 4. **Student**: ~"My car, which I bought last year, is electric."

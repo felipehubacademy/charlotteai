@@ -453,7 +453,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "Hey! Ask me what I'm doing right now."
+**Opening line**: "Hey! Guess what I'm doing right now. Go on, ask me!"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -488,7 +488,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Hey! Ask me what I'm doing right now."
+1. **Charlotte**: "Hey! Guess what I'm doing right now. Go on, ask me!"
 2. **Student**: ~"What are you doing?"
 3. **Charlotte**: "Reading. Next?"
 4. **Student**: ~"Are you working?"

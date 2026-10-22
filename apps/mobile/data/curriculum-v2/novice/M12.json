@@ -854,10 +854,10 @@
           "sentence": "This room is _____ smaller than that one.",
           "hint": "Modificador suave (um pouco)",
           "answer": "a bit",
-          "explanation": "\"A bit smaller\" = um pouco menor. Sinônimo de \"a little\".",
           "accepts": [
             "a little"
-          ]
+          ],
+          "explanation": "\"A bit smaller\" = um pouco menor. Sinônimo de \"a little\"."
         },
         {
           "type": "fix_error",
@@ -979,7 +979,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_pt": "Charlotte explora intensidades de comparação. Pratica much/a little/a bit + comparativo.",
-        "opening_message": "Big or small differences this week?",
+        "opening_message": "Was this week very different from last week, or just a little?",
         "objectives": [
           {
             "id": 1,
@@ -1031,7 +1031,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Subtle observations!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Big or small differences this week?\"\n2. **Student**: \"Today is much hotter.\"\n3. **Charlotte**: \"Small ones?\"\n4. **Student**: \"My coffee is a little stronger today.\"\n5. **Charlotte**: \"Interesting.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Same hot week here. Subtle observations!\"\n\n> N04 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Was this week very different from last week, or just a little?\"\n2. **Student**: \"Today is much hotter.\"\n3. **Charlotte**: \"Small ones?\"\n4. **Student**: \"My coffee is a little stronger today.\"\n5. **Charlotte**: \"Interesting.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Same hot week here. Subtle observations!\"\n\n> N04 chat = LLM puro.\n\n---"
       }
     },
     {
@@ -1169,7 +1169,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 90,
-        "opening_line": "Three comparisons — one short adj, one long, one irregular!",
+        "opening_line": "Give me three comparisons: one with a short adjective, one with a long adjective and one irregular!",
         "objectives": [
           {
             "id": 1,
@@ -1221,7 +1221,7 @@
           }
         ],
         "closing_cue": "Charlotte fecha com \"Comparison master!\" quando obj_3 baterem.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three comparisons — one short adj, one long, one irregular!\"\n2. **Student**: ~\"I'm taller than my sister.\"\n3. **Charlotte**: \"Long adj?\"\n4. **Student**: ~\"This is more interesting than that.\"\n5. **Charlotte**: \"Irregular?\"\n6. **Student**: ~\"Today is better than yesterday.\"\n7. **Charlotte**: \"Comparison master!\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Give me three comparisons: one with a short adjective, one with a long adjective and one irregular!\"\n2. **Student**: ~\"I'm taller than my sister.\"\n3. **Charlotte**: \"Long adj?\"\n4. **Student**: ~\"This is more interesting than that.\"\n5. **Charlotte**: \"Irregular?\"\n6. **Student**: ~\"Today is better than yesterday.\"\n7. **Charlotte**: \"Comparison master!\"",
         "evaluation_focus": [
           "Tipo correto por tamanho de adjetivo",
           "Irregular memorizado",
@@ -1234,7 +1234,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_pt": "Charlotte abre chat de comparações variadas. Mostra que domina curtos, longos e irregulares.",
-        "opening_message": "Compare three things in your life right now.",
+        "opening_message": "Let's compare! Pick three things in your life and compare them.",
         "objectives": [
           {
             "id": 1,
@@ -1286,7 +1286,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"All comparison types covered!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Compare three things in your life right now.\"\n2. **Student**: \"Coffee is cheaper than wine.\"\n3. **Charlotte**: \"Long adj next?\"\n4. **Student**: \"My job is more difficult now.\"\n5. **Charlotte**: \"Tough.\"\n6. **Student**: \"My life is better today.\"\n7. **Charlotte**: \"All comparison types covered!\"\n\n> N05 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Let's compare! Pick three things in your life and compare them.\"\n2. **Student**: \"Coffee is cheaper than wine.\"\n3. **Charlotte**: \"Long adj next?\"\n4. **Student**: \"My job is more difficult now.\"\n5. **Charlotte**: \"Tough.\"\n6. **Student**: \"My life is better today.\"\n7. **Charlotte**: \"All comparison types covered!\"\n\n> N05 chat = LLM puro.\n\n---"
       }
     }
   ],

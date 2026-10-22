@@ -613,9 +613,9 @@
    **label_pt**: "Perguntar a Charlotte"
    **label_en**: "Ask Charlotte"
    **hidden_prompt**: "user asks Charlotte how she resolved the passport mess"
-   **hint_pt**: "How did you sort the passport?"
-   **hint_en**: "How did you sort the passport?"
-   **example_pass**: How did you sort the passport?
+   **hint_pt**: "How did you sort out the passport?"
+   **hint_en**: "How did you sort out the passport?"
+   **example_pass**: How did you sort out the passport?
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Minor agonies, mutual." once obj_3 lands.
@@ -627,7 +627,7 @@
 3. **Charlotte**: "The phantom delivery — modern classic."
 4. **Student**: "I had my reservation cancelled at the last minute."
 5. **Charlotte**: "And no compensation, I assume."
-6. **Student**: "How did you sort the passport?"
+6. **Student**: "How did you sort out the passport?"
 7. **Charlotte**: "Three weeks, four calls, one consulate. Minor agonies, mutual."
 
 > A04 chat = full LLM. Scaffold via hint_pt/hint_en.

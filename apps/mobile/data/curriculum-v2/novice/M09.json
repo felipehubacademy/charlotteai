@@ -661,7 +661,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 90,
-        "opening_line": "Hey! Ask me what I'm doing right now.",
+        "opening_line": "Hey! Guess what I'm doing right now. Go on, ask me!",
         "objectives": [
           {
             "id": 1,
@@ -713,7 +713,7 @@
           }
         ],
         "closing_cue": "Charlotte fecha com \"Great questions!\" quando obj_3 baterem.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hey! Ask me what I'm doing right now.\"\n2. **Student**: ~\"What are you doing?\"\n3. **Charlotte**: \"Reading. Next?\"\n4. **Student**: ~\"Are you working?\"\n5. **Charlotte**: \"Not yet. Family?\"\n6. **Student**: ~\"Is your friend working?\"\n7. **Charlotte**: \"Great questions!\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hey! Guess what I'm doing right now. Go on, ask me!\"\n2. **Student**: ~\"What are you doing?\"\n3. **Charlotte**: \"Reading. Next?\"\n4. **Student**: ~\"Are you working?\"\n5. **Charlotte**: \"Not yet. Family?\"\n6. **Student**: ~\"Is your friend working?\"\n7. **Charlotte**: \"Great questions!\"",
         "evaluation_focus": [
           "Inversão \"to be\" + sujeito",
           "Sem do/does no continuous",
@@ -841,30 +841,30 @@
           "sentence": "I'm reading a great book _____.",
           "hint": "Marcador temporal pra agora",
           "answer": "right now",
-          "explanation": "\"Right now\" enfatiza a ação no momento. Continuous + right now é combinação natural.",
           "accepts": [
             "at the moment"
-          ]
+          ],
+          "explanation": "\"Right now\" enfatiza a ação no momento. Continuous + right now é combinação natural."
         },
         {
           "type": "fill_gap",
           "sentence": "She is staying with us _____.",
           "hint": "Marcador de período curto (semana atual)",
           "answer": "this week",
-          "explanation": "\"This week\" — período presente e específico. Combina com continuous.",
           "accepts": [
             "at the moment"
-          ]
+          ],
+          "explanation": "\"This week\" — período presente e específico. Combina com continuous."
         },
         {
           "type": "fill_gap",
           "sentence": "They're traveling _____.",
           "hint": "Marcador de período atual (mês)",
           "answer": "this month",
-          "explanation": "\"This month\" — atividade temporária em curso.",
           "accepts": [
             "at the moment"
-          ]
+          ],
+          "explanation": "\"This month\" — atividade temporária em curso."
         },
         {
           "type": "fix_error",

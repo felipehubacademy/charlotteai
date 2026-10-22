@@ -153,7 +153,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte quer saber o que você vai fazer em momentos específicos do futuro — quando chegar em casa, quando o trabalho terminar, quando o fim de semana chegar.",
-        "scenario_pt": "Charlotte quer saber o que você vai fazer em momentos específicos do futuro: quando chegar em casa, quando o trabalho terminar, quando o fim de semana chegar.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -162,7 +161,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Promessa com 'when I get home/finish work'",
             "label_en": "Promise with 'when I get home/finish work'",
             "hidden_prompt": "user uses 'I'll + base + when I + present' for daily action",
             "hint_en": "I'll relax when I get home.",
@@ -182,7 +180,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Promessa com 'when + alguém + verbo'",
             "label_en": "Promise with 'when + someone + verb'",
             "hidden_prompt": "user uses 'I'll + base + when + 3rd person + verb-s'",
             "hint_en": "I'll celebrate when my brother graduates.",
@@ -202,7 +199,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Promessa futura com 'when'",
             "label_en": "Future promise with 'when'",
             "hidden_prompt": "user uses another 'when' clause with present simple",
             "hint_en": "I'll travel when I have enough money saved.",
@@ -235,12 +231,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores your future milestones with 'when' clauses. Remember: no 'will' after 'when'.",
-        "intro_pt": "Charlotte explora seus marcos futuros com cláusulas 'when'. Lembre-se: sem 'will' após 'when'.",
         "opening_message": "What will you do when you finally have free time?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Ação para quando tiver tempo livre",
             "label_en": "Action for when you have free time",
             "hidden_prompt": "user uses 'I'll + base + when I have time' or similar",
             "hint_en": "I'll read more when I have free time.",
@@ -260,7 +254,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra promessa com 'when'",
             "label_en": "Another 'when' promise",
             "hidden_prompt": "user uses another 'when' clause",
             "hint_en": "I'll move out when I save enough money.",
@@ -280,7 +273,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What will you do when...?' or 'How about you?'",
             "hint_en": "How about you?",
@@ -433,7 +425,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte planeja um evento com você — quer organizar a sequência de coisas que precisam acontecer antes e depois. Você usa before/after para articular a ordem.",
-        "scenario_pt": "Charlotte quer planejar um evento com você. Pratica 'before/after' para organizar a sequência.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -442,7 +433,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Ação com 'before'",
             "label_en": "Action with 'before'",
             "hidden_prompt": "user uses 'I'll + base + before + present' or 'Before + present, I'll + base'",
             "hint_en": "I'll take a shower before I leave.",
@@ -459,7 +449,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Ação com 'after'",
             "label_en": "Action with 'after'",
             "hidden_prompt": "user uses 'I'll + base + after + present'",
             "hint_en": "After I finish work, I'll grab dinner.",
@@ -476,7 +465,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Mais um na sequência",
             "label_en": "One more in sequence",
             "hidden_prompt": "user uses another before/after sequence",
             "hint_en": "Before we meet, I'll send you the address.",
@@ -506,12 +494,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats about your morning sequence. Use 'before' and 'after' with present simple.",
-        "intro_pt": "Charlotte conversa sobre sua sequência matinal. Use 'before' e 'after' com present simple.",
         "opening_message": "What's the first thing you do before you start work?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Ação pré-trabalho",
             "label_en": "Pre-work action",
             "hidden_prompt": "user uses 'Before I + present, I + present/will' for pre-work routine",
             "hint_en": "Before I start work, I have coffee.",
@@ -528,7 +514,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Ação posterior",
             "label_en": "Post action",
             "hidden_prompt": "user uses 'After I + present, I + present/will'",
             "hint_en": "After I check emails, I plan my day.",
@@ -545,7 +530,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What about your routine?'",
             "hint_en": "How about you?",
@@ -697,7 +681,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conversa sobre prazos e momentos — coisas que continuam até X acontecer, coisas que precisam estar prontas antes de Y. Quer três frases com \"until\" e \"by the time\".",
-        "scenario_pt": "Charlotte quer saber sobre prazos e momentos. Pratica 'until' e 'by the time' em três frases.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -706,7 +689,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Duração com 'until'",
             "label_en": "Duration with 'until'",
             "hidden_prompt": "user uses 'I'll + base + until + present'",
             "hint_en": "I'll work until I finish this project.",
@@ -723,7 +705,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Prazo com 'by the time'",
             "label_en": "Deadline with 'by the time'",
             "hidden_prompt": "user uses 'By the time + present, will + base' or 'will + base + by the time + present'",
             "hint_en": "By the time you arrive, dinner will be ready.",
@@ -740,7 +721,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Mais um com 'until' ou 'by the time'",
             "label_en": "One more with 'until' or 'by the time'",
             "hidden_prompt": "user uses another until/by the time clause",
             "hint_en": "I won't stop until I master English.",
@@ -770,12 +750,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte plans timeframes with you. Use 'until' for duration and 'by the time' for points.",
-        "intro_pt": "Charlotte planeja prazos com você. Pratica 'until' para duração e 'by the time' para pontos específicos.",
         "opening_message": "What are you doing until next month?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo continuando 'até' o próximo mês",
             "label_en": "Something continuing 'until' next month",
             "hidden_prompt": "user uses 'I'll + base + until + time' for ongoing action",
             "hint_en": "I'll be working hard until next month.",
@@ -792,7 +770,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Algo pronto 'by the time'",
             "label_en": "Something ready 'by the time'",
             "hidden_prompt": "user uses 'By the time + present, will + base'",
             "hint_en": "By the time the month ends, I'll have finished the project.",
@@ -809,7 +786,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What are your deadlines?'",
             "hint_en": "How about you?",
@@ -960,7 +936,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte espera atualizações sobre coisas importantes na sua vida — quer que você faça promessas usando \"as soon as\" para coisas que acontecerão imediatamente após eventos.",
-        "scenario_pt": "Charlotte espera atualizações sobre coisas importantes na sua vida. Quer que você faça promessas usando 'as soon as' para coisas que acontecerão imediatamente após eventos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -969,7 +944,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Promessa imediata ao chegar",
             "label_en": "Immediate promise upon arrival",
             "hidden_prompt": "user uses 'I'll + base + as soon as I + present'",
             "hint_en": "I'll text you as soon as I arrive.",
@@ -986,7 +960,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Reação imediata à notícia",
             "label_en": "Immediate reaction to news",
             "hidden_prompt": "user uses 'I'll + base + as soon as I + present (hear/get/receive)'",
             "hint_en": "I'll call my parents as soon as I hear back.",
@@ -1003,7 +976,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Mais uma promessa imediata",
             "label_en": "One more immediate promise",
             "hidden_prompt": "user uses another 'as soon as' clause",
             "hint_en": "I'll start celebrating as soon as I finish this.",
@@ -1033,12 +1005,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte awaits your news. Practice 'as soon as' for immediate follow-ups.",
-        "intro_pt": "Charlotte aguarda suas novidades. Pratique 'as soon as' para acompanhamentos imediatos.",
         "opening_message": "Promise me — what will you do as soon as you have any news?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Promessa com 'as soon as I have news'",
             "label_en": "Promise with 'as soon as I have news'",
             "hidden_prompt": "user uses 'I'll + base + as soon as I + present' for news/updates",
             "hint_en": "I'll let you know as soon as I have news.",
@@ -1055,7 +1025,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra promessa de atualização",
             "label_en": "Another update promise",
             "hidden_prompt": "user uses another 'as soon as' clause",
             "hint_en": "I'll send a photo as soon as I get there.",
@@ -1072,7 +1041,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What do you do as soon as...?'",
             "hint_en": "How about you?",
@@ -1222,7 +1190,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte planeja um dia inteiro com você — quer um itinerário detalhado usando todas as time clauses para articular a sequência.",
-        "scenario_pt": "Charlotte quer planejar um dia inteiro com você. Pratica time clauses para detalhar o itinerário.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1231,7 +1198,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Cláusula temporal com 'when' ou 'as soon as'",
             "label_en": "Time clause with 'when' or 'as soon as'",
             "hidden_prompt": "user uses 'when' or 'as soon as' + present simple",
             "hint_en": "I'll start when I have my coffee.",
@@ -1248,7 +1214,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Cláusula temporal com 'before' ou 'after'",
             "label_en": "Time clause with 'before' or 'after'",
             "hidden_prompt": "user uses 'before' or 'after' + present simple",
             "hint_en": "After I finish work, I'll go for a run.",
@@ -1265,7 +1230,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Cláusula temporal com 'until' ou 'by the time'",
             "label_en": "Time clause with 'until' or 'by the time'",
             "hidden_prompt": "user uses 'until' or 'by the time' + present simple",
             "hint_en": "By the time I get home, dinner will be ready.",
@@ -1295,12 +1259,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites you to talk about a big project using multiple time clauses naturally.",
-        "intro_pt": "Charlotte te convida a falar sobre um grande projeto usando múltiplas cláusulas temporais naturalmente.",
         "opening_message": "Tell me about a project — what's the timeline? Use time clauses.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Primeira oração temporal (when/as soon as)",
             "label_en": "First time clause (when/as soon as)",
             "hidden_prompt": "user uses 'when/before/after/as soon as' + present simple",
             "hint_en": "I'll start as soon as I have time.",
@@ -1317,7 +1279,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Duração ou cláusula de tempo final",
             "label_en": "Duration or endpoint time clause",
             "hidden_prompt": "user uses 'until' or 'by the time' + present",
             "hint_en": "I'll work until I finish it completely.",
@@ -1334,7 +1295,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or about her project",
             "hint_en": "How about you?",

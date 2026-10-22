@@ -232,7 +232,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three uncertain situations. Use 'might well / could well / may well' to mark probable outcomes."
+**Opening line**: "I've got three uncertain situations for you. Say what will probably happen with 'might well', 'could well' or 'may well'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -267,7 +267,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three uncertain situations. Use 'might well / could well / may well' to mark probable outcomes."
+1. **Charlotte**: "I've got three uncertain situations for you. Say what will probably happen with 'might well', 'could well' or 'may well'."
 2. **Student**: ~"Given how the conversation has been going, the negotiation might well end this week."
 3. **Charlotte**: "Plausible scenario?"
 4. **Student**: ~"If oil prices stay high for another quarter, inflation could well force another rate hike before year-end."
@@ -385,7 +385,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three contexts. Use 'ought to', 'shall', or 'would' — formal modal choice."
+**Opening line**: "I've got three formal situations for you. Choose between 'ought to', 'shall' and 'would'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -420,7 +420,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three contexts. Use 'ought to', 'shall', or 'would' — formal modal choice."
+1. **Charlotte**: "I've got three formal situations for you. Choose between 'ought to', 'shall' and 'would'."
 2. **Student**: ~"If the error was ours, we ought to take responsibility publicly — even if the legal team prefers we say less."
 3. **Charlotte**: "Contractual?"
 4. **Student**: ~"The supplier shall deliver no later than the fifteenth of each month; any delay shall be reported in writing within twenty-four hours."
@@ -772,9 +772,9 @@
    **label_pt**: "Perguntar a Charlotte"
    **label_en**: "Ask Charlotte"
    **hidden_prompt**: "user asks Charlotte where the line of acceptable is"
-   **hint_pt**: "Where's your line of acceptable?"
-   **hint_en**: "Where's your line of acceptable?"
-   **example_pass**: Where's your line of acceptable?
+   **hint_pt**: "Where do you draw the line?"
+   **hint_en**: "Where do you draw the line?"
+   **example_pass**: Where do you draw the line?
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Contingencies, modally layered. C2 modal subtlety, complete." once obj_3 lands.
@@ -786,7 +786,7 @@
 3. **Charlotte**: "And further below?"
 4. **Student**: "If we close more than thirty percent below, we would have to revisit the entire two-year plan — at that point, the strategy isn't the same business."
 5. **Charlotte**: "That's the line I've been circling without naming."
-6. **Student**: "Where's your line of acceptable?"
+6. **Student**: "Where do you draw the line?"
 7. **Charlotte**: "About fifteen percent below. Below that, every scenario starts to look like a different company. Contingencies, modally layered. C2 modal subtlety, complete."
 
 > A05 chat = full LLM. Scaffold via hint_pt/hint_en.

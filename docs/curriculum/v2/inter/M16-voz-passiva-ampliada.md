@@ -807,7 +807,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Mix passive forms — modal, future, with 'by', and informal 'got'."
+**Opening line**: "Give me four passive sentences: one with a modal, one about the future, one with 'by' and one with 'got'."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -842,7 +842,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Mix passive forms — modal, future, with 'by', and informal 'got'."
+1. **Charlotte**: "Give me four passive sentences: one with a modal, one about the future, one with 'by' and one with 'got'."
 2. **Student**: ~"The report must be sent today."
 3. **Charlotte**: "Strict. With agent?"
 4. **Student**: ~"The book was written by a famous author."

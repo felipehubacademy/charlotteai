@@ -504,7 +504,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em EN)**: "Charlotte asks about repeated past actions. Practice 'would + base'."
-**Opening message**: "Share a childhood memory — repeated activity."
+**Opening message**: "Tell me about something you used to do all the time as a kid."
 
 **Sub-objectives** (3):
 
@@ -539,7 +539,7 @@
 
 **Script** (7 turns):
 
-1. **Charlotte**: "Share a childhood memory — repeated activity."
+1. **Charlotte**: "Tell me about something you used to do all the time as a kid."
 2. **Student**: "We would play board games."
 3. **Charlotte**: "Cool."
 4. **Student**: "My dad would tell jokes."

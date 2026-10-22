@@ -813,7 +813,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "Welcome! Start with your house overall."
+**Opening line**: "Welcome! First, tell me about your house in general."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -848,7 +848,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Welcome! Start with your house overall."
+1. **Charlotte**: "Welcome! First, tell me about your house in general."
 2. **Student**: ~"My house is big."
 3. **Charlotte**: "Nice. How many bedrooms?"
 4. **Student**: ~"There are three bedrooms."

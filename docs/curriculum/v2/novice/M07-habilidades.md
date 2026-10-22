@@ -865,7 +865,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte quer um retrato completo das suas habilidades — positiva, negativa, e devolva a pergunta."
-**Opening message**: "Skills check! What can you do, what can't you?"
+**Opening message**: "Skills check! What can you do, and what can't you do?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -900,7 +900,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Skills check! What can you do, what can't you?"
+1. **Charlotte**: "Skills check! What can you do, and what can't you do?"
 2. **Student**: "I can swim."
 3. **Charlotte**: "Nice. Limitation?"
 4. **Student**: "I can't drive."

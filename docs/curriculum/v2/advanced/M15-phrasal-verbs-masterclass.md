@@ -544,7 +544,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three interpersonal moments. Use 'talk down to', 'wear down', 'shake off', or 'bear out'."
+**Opening line**: "I've got three moments between people for you. Describe them with 'talk down to', 'wear down', 'shake off' or 'bear out'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -579,7 +579,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three interpersonal moments. Use 'talk down to', 'wear down', 'shake off', or 'bear out'."
+1. **Charlotte**: "I've got three moments between people for you. Describe them with 'talk down to', 'wear down', 'shake off' or 'bear out'."
 2. **Student**: ~"He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot."
 3. **Charlotte**: "Exhaustion?"
 4. **Student**: ~"Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items."

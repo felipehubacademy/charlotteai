@@ -123,13 +123,13 @@
           "passage": "You're new here, aren't you? I haven't seen you before. She's the new manager, isn't she? And they were just hired last week, weren't they? Everyone's still learning each other's names.",
           "question": "How many tag questions are in the passage?",
           "answer": "three",
-          "explanation": "Three tag questions: \"aren't / are not you?\", \"isn't / is not she?\", \"weren't / were not they?\". Each reverses polarity from positive to negative. The passage uses tags for social warmth — opening conversation, confirming knowledge.",
           "accepts": [
             "3",
             "aren't you",
             "isn't she",
             "weren't they"
-          ]
+          ],
+          "explanation": "Three tag questions: \"aren't / are not you?\", \"isn't / is not she?\", \"weren't / were not they?\". Each reverses polarity from positive to negative. The passage uses tags for social warmth — opening conversation, confirming knowledge."
         }
       ],
       "listening_speaking": [
@@ -161,7 +161,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte meets you at a networking event. You confirm details about people you both know using tag questions.",
-        "scenario_pt": "Charlotte te encontra em um evento de networking. Você confirma detalhes sobre pessoas que ambos conhecem usando tag questions.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -170,7 +169,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Confirmar com tag 'aren't / isn't'",
             "label_en": "Confirm with tag 'aren't / isn't'",
             "hidden_prompt": "user uses 'isn't she?' or 'aren't they?' to confirm",
             "hint_en": "Yes! And she's the new project lead, isn't she?",
@@ -187,7 +185,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Etiqueta com 'have / has'",
             "label_en": "Tag with 'have / has'",
             "hidden_prompt": "user uses 'hasn't' or 'haven't' tag",
             "hint_en": "She's been here for two years now, hasn't she?",
@@ -204,7 +201,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Etiqueta com passado 'were/was'",
             "label_en": "Tag with past 'were/was'",
             "hidden_prompt": "user uses 'weren't' or 'wasn't' tag",
             "hint_en": "You were at last year's conference too, weren't you?",
@@ -234,12 +230,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte makes small talk with tags. Mirror her style.",
-        "intro_pt": "Charlotte faz conversa fiada com tags. Espelhe o estilo dela.",
         "opening_message": "It's really hot today, isn't it? I can't remember the last time we had weather like this.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Concordar e fazer outra tag",
             "label_en": "Agree and make another tag",
             "hidden_prompt": "user agrees and makes another tag question",
             "hint_en": "Yes! Summers are getting hotter every year, aren't they?",
@@ -256,7 +250,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Etiqueta com 'have'",
             "label_en": "Tag with 'have'",
             "hidden_prompt": "user uses tag with 'have/has'",
             "hint_en": "You've been here a while too, haven't you?",
@@ -273,7 +266,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Etiqueta negativa com 'wasn't / weren't'",
             "label_en": "Negative tag with 'wasn't / weren't'",
             "hidden_prompt": "user uses past be negative tag",
             "hint_en": "It wasn't this hot last summer, was it?",
@@ -424,7 +416,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte is at a casual dinner with mutual friends. You confirm details about each person using tag questions with action verbs.",
-        "scenario_pt": "Charlotte está em um jantar casual com amigos em comum. Você confirma detalhes sobre cada pessoa usando tag questions com verbos de ação.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -433,7 +424,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Etiqueta com 'don't / doesn't'",
             "label_en": "Tag with 'don't / doesn't'",
             "hidden_prompt": "user uses 'don't / doesn't' tag",
             "hint_en": "Yes! He works at the same company as you, doesn't he?",
@@ -450,7 +440,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Etiqueta passada com 'didn't'",
             "label_en": "Past tag with 'didn't'",
             "hidden_prompt": "user uses 'didn't' past tag",
             "hint_en": "He moved here from São Paulo last year, didn't he?",
@@ -467,7 +456,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Negativo → etiqueta positiva",
             "label_en": "Negative → positive tag",
             "hidden_prompt": "user uses negative statement + positive tag",
             "hint_en": "He doesn't speak Portuguese with you, does he?",
@@ -497,12 +485,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats about a coworker. Confirm with tags.",
-        "intro_pt": "Charlotte conversa sobre um colega de trabalho. Confirme com tags.",
         "opening_message": "Did you hear about Marcia? She just got promoted again.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Etiqueta de surpresa",
             "label_en": "Surprise tag",
             "hidden_prompt": "user uses 'didn't she?' or 'doesn't she?'",
             "hint_en": "Really? She just got promoted last year, didn't she?",
@@ -519,7 +505,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Etiqueta de presente 'doesn't'",
             "label_en": "Present 'doesn't' tag",
             "hidden_prompt": "user uses 'doesn't' present tag",
             "hint_en": "She works really long hours, doesn't she?",
@@ -536,7 +521,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Declaração negativa → etiqueta positiva",
             "label_en": "Negative statement → positive tag",
             "hidden_prompt": "user uses 'don't / doesn't' + positive tag pattern",
             "hint_en": "She doesn't take breaks much, does she?",
@@ -658,10 +642,10 @@
           "passage": "We should leave by eight, shouldn't we? Traffic gets terrible after that. You'll be ready, won't you? Marco can drive us, can't he? It would be faster than the train, wouldn't it?",
           "question": "Which modal is used in the tag of the last sentence?",
           "answer": "would",
-          "explanation": "The passage uses modal tags: \"shouldn't / should not we?\", \"won't / will not you?\", \"can't / cannot he?\", \"wouldn't / would not it?\". Each tag echoes the modal of the main clause with negation. The structure is uniform across different modals.",
           "accepts": [
             "wouldn't"
-          ]
+          ],
+          "explanation": "The passage uses modal tags: \"shouldn't / should not we?\", \"won't / will not you?\", \"can't / cannot he?\", \"wouldn't / would not it?\". Each tag echoes the modal of the main clause with negation. The structure is uniform across different modals."
         }
       ],
       "listening_speaking": [
@@ -693,7 +677,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte is planning an outing with you. You use tag questions to confirm details about who can come, what we should do, and when we'll meet.",
-        "scenario_pt": "Charlotte está planejando um passeio com você. Use tag questions para confirmar detalhes sobre quem pode vir, o que devemos fazer e quando nos encontraremos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -702,7 +685,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Confirmar com tag 'can'",
             "label_en": "Confirm with 'can' tag",
             "hidden_prompt": "user uses 'can't' or 'can' tag",
             "hint_en": "Yes! And Marco's coming too, isn't he? He said he could drive.",
@@ -719,7 +701,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Etiqueta com 'should / shouldn't'",
             "label_en": "Tag with 'should / shouldn't'",
             "hidden_prompt": "user uses 'should / shouldn't' tag",
             "hint_en": "We should bring something to drink, shouldn't we?",
@@ -736,7 +717,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Etiqueta com 'will / won't'",
             "label_en": "Tag with 'will / won't'",
             "hidden_prompt": "user uses 'will / won't' future tag",
             "hint_en": "It'll be a long evening, won't it?",
@@ -766,12 +746,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte plans the weekend with you using modal tags.",
-        "intro_pt": "Charlotte planeja o fim de semana com você. Pratica modal tags.",
         "opening_message": "You'll come to dinner Saturday, won't you? I'm cooking.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Etiqueta de aceitação modal",
             "label_en": "Modal acceptance tag",
             "hidden_prompt": "user uses modal tag to accept",
             "hint_en": "Yes! I should bring wine, shouldn't I?",
@@ -788,7 +766,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'Can'",
             "label_en": "'Can' tag",
             "hidden_prompt": "user uses 'can/can't' tag",
             "hint_en": "Pedro can come too, can't he?",
@@ -805,7 +782,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'Would' como tag",
             "label_en": "'Would' tag",
             "hidden_prompt": "user uses 'would/wouldn't' tag",
             "hint_en": "It wouldn't be a problem if I came a bit late, would it?",
@@ -931,11 +907,11 @@
           "passage": "I am late, aren't I? Sorry. Let's order food, shall we? You don't mind if I pay later, do you? Nobody else is coming, are they? Open the window, would you? It's stuffy in here.",
           "question": "Which two tags are special exceptions to the standard rule?",
           "answer": "aren't I, shall we",
-          "explanation": "The passage strings together multiple special cases: \"aren't / are not I?\" (irregular for \"I am\"), \"shall we?\" (for \"let's\"), \"are they?\" (indefinite subject \"nobody\"), \"would you?\" (softening imperative). All exceptions to the basic positive-negative rule.",
           "accepts": [
             "aren't I",
             "shall we"
-          ]
+          ],
+          "explanation": "The passage strings together multiple special cases: \"aren't / are not I?\" (irregular for \"I am\"), \"shall we?\" (for \"let's\"), \"are they?\" (indefinite subject \"nobody\"), \"would you?\" (softening imperative). All exceptions to the basic positive-negative rule."
         }
       ],
       "listening_speaking": [
@@ -967,7 +943,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites you for a walk. You navigate special-case tags — \"aren't I?\", \"shall we?\", imperative softeners, and indefinite subjects.",
-        "scenario_pt": "Charlotte te convida para uma caminhada. Pratica tags especiais — 'aren't I?', 'shall we?', suavizadores imperativos e sujeitos indefinidos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -976,7 +951,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com 'aren't I?'",
             "label_en": "Reply with 'aren't I?'",
             "hidden_prompt": "user uses 'aren't I?' tag",
             "hint_en": "Sure! I'm always up for a walk, aren't I?",
@@ -996,7 +970,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Imperativo com 'will you?'",
             "label_en": "Imperative with 'will you?'",
             "hidden_prompt": "user uses imperative + 'will you?' or 'would you?'",
             "hint_en": "Just give me ten minutes to finish this, will you?",
@@ -1016,7 +989,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Etiqueta de sujeito indefinido",
             "label_en": "Indefinite subject tag",
             "hidden_prompt": "user uses 'nobody / everyone / somebody' with tag",
             "hint_en": "Nobody else wants to come, do they?",
@@ -1050,12 +1022,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte teases you. Defend yourself with special tags.",
-        "intro_pt": "Charlotte te provoca. Defenda-se com tags especiais.",
         "opening_message": "You're always late, aren't you?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com 'aren't I?'",
             "label_en": "Reply with 'aren't I?'",
             "hidden_prompt": "user uses 'aren't I?' in a self-aware way",
             "hint_en": "Hey, I'm always on time, aren't I? Mostly?",
@@ -1075,7 +1045,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Etiqueta indefinida — 'nobody / everyone'",
             "label_en": "Indefinite tag — 'nobody / everyone'",
             "hidden_prompt": "user uses indefinite subject + tag",
             "hint_en": "Everyone runs a bit late sometimes, don't they?",
@@ -1095,7 +1064,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'Let's'",
             "label_en": "'Let's' tag",
             "hidden_prompt": "user uses 'let's...shall we?'",
             "hint_en": "Let's just order, shall we?",
@@ -1256,7 +1224,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks you a few open-ended questions. You respond naturally using fillers and tag questions.",
-        "scenario_pt": "Charlotte faz algumas perguntas abertas. Você responde naturalmente usando fillers e tag questions.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1265,7 +1232,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder começando com 'well'",
             "label_en": "Reply with 'well' opener",
             "hidden_prompt": "user uses 'Well' to open",
             "hint_en": "Well, I think it's interesting, but, you know, a bit ambitious.",
@@ -1282,7 +1248,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Preenchedor 'I mean' para esclarecer",
             "label_en": "Filler 'I mean' to clarify",
             "hidden_prompt": "user uses 'I mean' to clarify",
             "hint_en": "I mean, the deadline is kind of tight, isn't it?",
@@ -1299,7 +1264,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Pergunta com 'aren't they?' ou similar",
             "label_en": "Tag question with 'aren't they?' or similar",
             "hidden_prompt": "user uses a tag question naturally",
             "hint_en": "But the team is really capable, aren't they?",
@@ -1329,12 +1293,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats about a film. Use fillers and tags naturally.",
-        "intro_pt": "Charlotte conversa sobre um filme. Use fillers e tags naturalmente.",
         "opening_message": "Did you watch that movie I recommended? What did you think?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com preenchimento de abertura",
             "label_en": "Reply with opener filler",
             "hidden_prompt": "user uses 'Well' or 'I mean' opener",
             "hint_en": "Well, I actually liked it more than I expected.",
@@ -1351,7 +1313,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Atenuar com 'kind of' ou 'sort of'",
             "label_en": "Hedge with 'kind of' or 'sort of'",
             "hidden_prompt": "user uses 'kind of' or 'sort of' hedge",
             "hint_en": "The ending was kind of confusing, wasn't it?",
@@ -1368,7 +1329,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Pergunta de confirmação",
             "label_en": "Tag question to confirm",
             "hidden_prompt": "user uses a tag question",
             "hint_en": "But the soundtrack was amazing, wasn't it?",

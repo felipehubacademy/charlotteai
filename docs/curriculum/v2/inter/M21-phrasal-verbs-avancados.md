@@ -638,7 +638,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Three areas — what to catch up on, make up for, or go through with."
+**Opening line**: "Tell me about three things: something you need to catch up on, something you want to make up for and something you'll go through with."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -673,7 +673,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three areas — what to catch up on, make up for, or go through with."
+1. **Charlotte**: "Tell me about three things: something you need to catch up on, something you want to make up for and something you'll go through with."
 2. **Student**: ~"I need to catch up on sleep this weekend."
 3. **Charlotte**: "Real need. Compensate?"
 4. **Student**: ~"I want to make up for lost time with my family."

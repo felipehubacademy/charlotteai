@@ -111,7 +111,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte plays a writing coach. You compose three email openings — formal, semi-formal, casual — for the same message but different recipients.",
-        "scenario_pt": "Charlotte é sua coach de escrita. Componha três aberturas de e-mail — formal, semi-formal, casual — para a mesma mensagem, mas para destinatários diferentes.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -120,7 +119,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Abertura formal",
             "label_en": "Formal opening",
             "hidden_prompt": "user writes formal opener like 'Dear...' + 'I hope this email finds you well'",
             "hint_en": "Dear Ms. Costa, I hope this email finds you well. I'm reaching out to ask whether...",
@@ -136,7 +134,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Abertura semi-formal",
             "label_en": "Semi-formal opening",
             "hidden_prompt": "user writes semi-formal opener like 'Hi Marta, Hope you're doing well'",
             "hint_en": "Hi Marta, Hope you're doing well. Just wanted to ask if...",
@@ -153,7 +150,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Abertura casual",
             "label_en": "Casual opening",
             "hidden_prompt": "user writes casual opener like 'Hey João, Quick favour?'",
             "hint_en": "Hey João! Quick favour — can you...?",
@@ -184,12 +180,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks for register advice. Recommend the right openings and closings.",
-        "intro_pt": "Charlotte pede conselhos de registro. Recomende as aberturas e fechamentos corretos.",
         "opening_message": "I need to email the CEO of a partner company. We've never met. What should I open with?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Sugerir abertura formal",
             "label_en": "Suggest formal opening",
             "hidden_prompt": "user suggests formal opening + greeting",
             "hint_en": "Definitely go formal — open with 'Dear [Mr./Ms. Surname]' followed by 'I hope this email finds you well'.",
@@ -204,7 +198,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Sugerir transição para o assunto",
             "label_en": "Suggest transition to subject",
             "hidden_prompt": "user suggests 'I'm reaching out regarding...' or 'I'm writing to...'",
             "hint_en": "Then a clean transition: 'I'm reaching out regarding our potential collaboration on...' Keep the body tight.",
@@ -219,7 +212,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Sugerir encerramento",
             "label_en": "Suggest closing",
             "hidden_prompt": "user suggests formal closing like 'Kind regards'",
             "hint_en": "Close with 'Kind regards' followed by your full name and title. Avoid 'Best' — too casual for first contact at that level.",
@@ -277,10 +269,10 @@
           "sentence": "Application body chunk: \"I bring _____ (5) years of experience in [field], with a track record of...\"",
           "hint": "number of years (template)",
           "answer": "five",
-          "explanation": "\"I bring [X] years of experience in [field], with a track record of [specific results]\" — formula for quantifying experience with credibility. Always replace [X] with the actual number; \"many\" or \"lots of\" weakens the claim.",
           "accepts": [
             "5"
-          ]
+          ],
+          "explanation": "\"I bring [X] years of experience in [field], with a track record of [specific results]\" — formula for quantifying experience with credibility. Always replace [X] with the actual number; \"many\" or \"lots of\" weakens the claim."
         },
         {
           "type": "short_write",
@@ -296,14 +288,14 @@
           "passage": "Dear Hiring Manager, I am writing to apply for the Senior Designer position advertised on LinkedIn. I bring eight years of experience in product design, with a track record of leading design systems at scale. In my current role at [Company], I have shipped three major product launches that drove a 30% increase in user engagement. I would welcome the opportunity to discuss how my background aligns with your team's needs. Kind regards, Maria.",
           "question": "What three application elements are present in this paragraph?",
           "answer": "formal opening, quantified experience, specific results",
-          "explanation": "A complete application body has three pillars: clear opening (formal + specific position + source), credibility (years + track record + specific results), and closing (welcome opportunity + soft ask). This template scales across roles and industries.",
           "accepts": [
             "formal opening",
             "quantified experience",
             "specific results",
             "position name and source",
             "track record"
-          ]
+          ],
+          "explanation": "A complete application body has three pillars: clear opening (formal + specific position + source), credibility (years + track record + specific results), and closing (welcome opportunity + soft ask). This template scales across roles and industries."
         }
       ],
       "listening_speaking": [
@@ -335,7 +327,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte is helping you write a job application. You walk through the three core paragraphs together.",
-        "scenario_pt": "Charlotte está te ajudando a escrever uma candidatura de emprego. Vocês percorrem juntos os três parágrafos principais.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -344,7 +335,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Abertura formal",
             "label_en": "Formal opening",
             "hidden_prompt": "user writes 'I am writing to apply for [position]'",
             "hint_en": "I am writing to apply for the Senior Marketing Manager position advertised on LinkedIn.",
@@ -362,7 +352,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Ajustar parágrafo com experiência quantificada",
             "label_en": "Fit paragraph with quantified experience",
             "hidden_prompt": "user writes experience paragraph with specific years and results",
             "hint_en": "I bring six years of experience in B2B marketing, with a track record of doubling lead conversion at two consecutive companies.",
@@ -377,7 +366,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Concluir com 'would welcome'",
             "label_en": "Closing with 'would welcome'",
             "hidden_prompt": "user writes 'I would welcome the opportunity to discuss'",
             "hint_en": "I would welcome the opportunity to discuss how my approach to marketing aligns with your team's growth goals.",
@@ -407,12 +395,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte reviews your draft. Sharpen each section.",
-        "intro_pt": "Charlotte revisa seu rascunho. Aperfeiçoe cada seção.",
         "opening_message": "I read your draft. The opening is good. But the middle is too vague — what specifically have you done?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Adicionar conquista específica",
             "label_en": "Add specific achievement",
             "hidden_prompt": "user adds specific quantified achievement",
             "hint_en": "I led a team of eight engineers to deliver a platform migration that reduced infrastructure costs by 40%.",
@@ -427,7 +413,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Conectar ao papel",
             "label_en": "Connect to the role",
             "hidden_prompt": "user explicitly connects experience to the job description",
             "hint_en": "That experience maps directly to your team's current focus on scalable infrastructure.",
@@ -442,7 +427,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Concluir com 'I would welcome'",
             "label_en": "Close with 'I would welcome'",
             "hidden_prompt": "user closes with formal 'I would welcome the opportunity'",
             "hint_en": "I would welcome the opportunity to discuss how I could contribute to your next phase of growth.",
@@ -520,14 +504,14 @@
           "passage": "What draws me to ClimateLab is your commitment to ocean restoration at scale — I've followed your work since the 2022 reef project. In my five years at Aquatic Research, I led the design of three monitoring platforms that are now deployed across 12 coastal sites. The technical challenge of building for hostile environments — combined with the urgency of the mission — is exactly the work I want to do for the next decade.",
           "question": "What three elements make this cover letter paragraph strong?",
           "answer": "company research, quantified track record, personal motivation",
-          "explanation": "Strong cover letter paragraphs do three things: show specific research (you know what they do), establish credibility (concrete achievements with numbers), and connect personal motivation to their mission. Each sentence does work.",
           "accepts": [
             "company research",
             "quantified track record",
             "personal motivation",
             "ocean restoration",
             "three monitoring platforms"
-          ]
+          ],
+          "explanation": "Strong cover letter paragraphs do three things: show specific research (you know what they do), establish credibility (concrete achievements with numbers), and connect personal motivation to their mission. Each sentence does work."
         }
       ],
       "listening_speaking": [
@@ -559,7 +543,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte coaches you through writing strong CV bullets. You rewrite weak ones into strong ones.",
-        "scenario_pt": "Charlotte te orienta a escrever tópicos fortes para o currículo. Você reescreve os fracos em fortes.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -568,7 +551,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reescrever a liderança",
             "label_en": "Rewrite leadership bullet",
             "hidden_prompt": "user rewrites bullet with strong verb + scope + quantified outcome",
             "hint_en": "Led a 15-person engineering team to ship four major releases in 18 months, increasing platform reliability by 35%.",
@@ -586,7 +568,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Reescrever a iniciativa",
             "label_en": "Rewrite initiative bullet",
             "hidden_prompt": "user rewrites with 'Spearheaded' or 'Drove' + outcome",
             "hint_en": "Spearheaded the migration from monolith to microservices, cutting deployment time from days to hours.",
@@ -604,7 +585,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Reescrever o impacto financeiro",
             "label_en": "Rewrite financial impact bullet",
             "hidden_prompt": "user rewrites with quantified financial outcome",
             "hint_en": "Negotiated supplier contracts that reduced annual operating costs by $1.2M.",
@@ -636,12 +616,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte critiques your cover letter. Add specifics.",
-        "intro_pt": "Charlotte critica sua carta de apresentação. Acrescente detalhes específicos.",
         "opening_message": "Your cover letter says you 'admire the company's innovative culture'. That's filler. Be specific — what about them?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pivô específico com 'What draws me'",
             "label_en": "Specific pivot with 'What draws me'",
             "hidden_prompt": "user uses 'What draws me to [Company] is...' with specific reason",
             "hint_en": "What draws me to NorthPath is your commitment to open-source infrastructure — I've contributed to two of your projects on GitHub.",
@@ -659,7 +637,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Conectar com sua experiência",
             "label_en": "Connect with your experience",
             "hidden_prompt": "user connects company specifics to their own work",
             "hint_en": "In my current role, I've built three open-source tools that align with your team's release model.",
@@ -678,7 +655,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Concluir com motivação clara",
             "label_en": "Close with clear motivation",
             "hidden_prompt": "user closes with personal motivation tied to mission",
             "hint_en": "Working at NorthPath would let me combine my open-source ethos with the kind of scale your platform offers.",
@@ -755,7 +731,6 @@
           "passage": "Hi Maria, Just following up on my email from last Tuesday — wondering if you've had a chance to review the proposal. Happy to jump on a quick call this week if any questions came up. No rush on my end. Best, Pedro.",
           "question": "What three elements make this follow-up effective?",
           "answer": "gentle opener, offer of call, low-pressure close",
-          "explanation": "Effective follow-ups combine gentle persistence (\"just following up\"), genuine helpfulness (\"happy to jump on a call\"), and pressure release (\"no rush\"). The recipient feels respected, not pressured.",
           "accepts": [
             "gentle opener",
             "offer of call",
@@ -763,7 +738,8 @@
             "just following up",
             "happy to jump on a call",
             "no rush"
-          ]
+          ],
+          "explanation": "Effective follow-ups combine gentle persistence (\"just following up\"), genuine helpfulness (\"happy to jump on a call\"), and pressure release (\"no rush\"). The recipient feels respected, not pressured."
         }
       ],
       "listening_speaking": [
@@ -795,7 +771,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three scenarios — silence on a proposal, silence on a job application, silence post-meeting. You write the follow-up for each.",
-        "scenario_pt": "Charlotte apresenta três cenários — silêncio sobre uma proposta, silêncio sobre uma candidatura de emprego, silêncio após uma reunião. Você escreve o acompanhamento para cada um.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -804,7 +779,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Acompanhamento de proposta enviada",
             "label_en": "Follow-up for sent proposal",
             "hidden_prompt": "user uses 'just following up on the proposal'",
             "hint_en": "Just following up on the proposal I sent on Tuesday — wondering if you've had a chance to review it.",
@@ -821,7 +795,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Acompanhamento de candidatura de emprego",
             "label_en": "Follow-up for job application",
             "hidden_prompt": "user uses 'just checking in on the application'",
             "hint_en": "Just checking in on the Senior Designer application I submitted two weeks ago. Any update on next steps would be appreciated.",
@@ -839,7 +812,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Acompanhamento pós-reunião",
             "label_en": "Post-meeting follow-up",
             "hidden_prompt": "user uses 'following up on our conversation'",
             "hint_en": "Following up on our conversation last Friday — happy to share the case studies we discussed if useful.",
@@ -869,12 +841,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte is hesitant. Coach her through the follow-up.",
-        "intro_pt": "Charlotte está hesitante. Ajude-a a seguir em frente.",
         "opening_message": "I emailed a potential client three weeks ago and never heard back. I don't want to seem pushy. Should I just give up?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Incentivar acompanhamento",
             "label_en": "Encourage follow-up",
             "hidden_prompt": "user encourages writing a follow-up with 'just following up'",
             "hint_en": "Three weeks is the perfect window for a soft follow-up. Open with 'Just following up on my email from earlier this month'.",
@@ -889,7 +859,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Adicionar valor — razão para reengajar",
             "label_en": "Add value — reason to re-engage",
             "hidden_prompt": "user suggests adding a value-add reason",
             "hint_en": "Add a reason to re-engage — something like 'I came across a case study that might interest you' or 'Just released something relevant'.",
@@ -904,7 +873,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Aliviar pressão no final",
             "label_en": "Release pressure at close",
             "hidden_prompt": "user advises 'no rush on my end' close",
             "hint_en": "Close with 'No rush on my end — just wanted to keep the conversation open'. Gives them an easy yes or easy out.",
@@ -978,7 +946,6 @@
           "passage": "Hi João, Thanks for sending the proposal — I appreciate the work that went into it. Unfortunately, the budget for this project isn't going to allow us to move forward at the scope you've outlined. I'd love to keep the door open for a scaled-down version, or a future collaboration when budgets reset in Q1. Apologies for any inconvenience, and thanks again for putting it together. Best, Maria.",
           "question": "What three professional moves does this 'no' make?",
           "answer": "gratitude, clear reason, keeps door open",
-          "explanation": "Strong declines preserve relationships. Three moves: acknowledge the effort, give a real reason, leave a door open. Never just say no — always frame the no with grace and a path forward.",
           "accepts": [
             "gratitude",
             "clear reason",
@@ -986,7 +953,8 @@
             "thanks for sending",
             "budget isn't going to allow",
             "future collaboration"
-          ]
+          ],
+          "explanation": "Strong declines preserve relationships. Three moves: acknowledge the effort, give a real reason, leave a door open. Never just say no — always frame the no with grace and a path forward."
         }
       ],
       "listening_speaking": [
@@ -1018,7 +986,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three hard email scenarios — decline a request, deliver bad news, ask for a raise. You draft each opener.",
-        "scenario_pt": "Charlotte apresenta três cenários difíceis de e-mail — recusar um pedido, dar más notícias, pedir um aumento. Você redige a abertura de cada um.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1027,7 +994,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Declínio profissional",
             "label_en": "Professional decline",
             "hidden_prompt": "user writes professional decline with thanks + reason + door open",
             "hint_en": "Thank you for thinking of me. Unfortunately, my current commitments don't allow me to take this on right now, but I'd love to revisit when my workload shifts in Q2.",
@@ -1042,7 +1008,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Dar notícia ruim",
             "label_en": "Bad news delivery",
             "hidden_prompt": "user delivers bad news softly with 'unfortunately' + reason + path forward",
             "hint_en": "Unfortunately, the leadership team has decided to postpone the project until next year. I know this isn't the news anyone wanted, and I'm happy to discuss what this means for next steps.",
@@ -1057,7 +1022,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Fazer pedido",
             "label_en": "Raise request",
             "hidden_prompt": "user requests raise with specific framing + impact + ask",
             "hint_en": "I'd like to discuss compensation given my expanded scope over the past year — taking on the regional portfolio and growing the team by 40%. Could we find time next week to talk?",
@@ -1085,12 +1049,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte is stuck on a hard email. Coach her through the structure.",
-        "intro_pt": "Charlotte está presa em um e-mail difícil. Ajude-a com a estrutura.",
         "opening_message": "I need to tell a longtime client we can't take their new project. Two years of work, but the timing isn't right. I don't want to ruin the relationship.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Começar com gratidão + 'unfortunately'",
             "label_en": "Open with gratitude + 'unfortunately'",
             "hidden_prompt": "user suggests gratitude + softener",
             "hint_en": "Open with appreciation: 'Thank you for thinking of us for this — the relationship means a lot.' Then soften the no: 'Unfortunately, the timing doesn't work on our end right now.'",
@@ -1105,7 +1067,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Adicionar razão real",
             "label_en": "Add real reason",
             "hidden_prompt": "user suggests adding a brief honest reason",
             "hint_en": "Give a real but brief reason — 'we're at capacity through Q3' or 'we're shifting focus on internal work this year'. Honesty preserves trust.",
@@ -1120,7 +1081,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Manter porta aberta",
             "label_en": "Keep door open",
             "hidden_prompt": "user advises closing with future option",
             "hint_en": "Close with: 'I'd love to keep the conversation open for Q4 or beyond — when the timing aligns, we'd jump at the chance to work with you again.'",

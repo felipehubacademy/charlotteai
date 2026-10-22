@@ -540,9 +540,9 @@
    **label_pt**: "Reação com will"
    **label_en**: "Reaction with will"
    **hidden_prompt**: "user uses 'I'll + base'"
-   **hint_pt**: "I'll help if you need."
-   **hint_en**: "I'll help if you need."
-   **example_pass**: I'll help if you need.
+   **hint_pt**: "I'll help if you need me."
+   **hint_en**: "I'll help if you need me."
+   **example_pass**: I'll help if you need me.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -561,7 +561,7 @@
 1. **Charlotte**: "Plan something AND react to something."
 2. **Student**: "I'm going to study tonight."
 3. **Charlotte**: "Cool."
-4. **Student**: "I'll help if you need."
+4. **Student**: "I'll help if you need me."
 5. **Charlotte**: "Thanks!"
 6. **Student**: "How about you?"
 7. **Charlotte**: "I'm going to read, and I'll text if I'm bored. Two-tense mastery!"

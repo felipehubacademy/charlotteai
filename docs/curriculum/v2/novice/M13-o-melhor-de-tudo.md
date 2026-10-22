@@ -150,7 +150,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte explora rankings na sua vida. Pratica 'the + adj-est'."
-**Opening message**: "Tell me three superlatives about your world."
+**Opening message**: "What are the best, the biggest and the most fun things in your world?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -185,7 +185,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Tell me three superlatives about your world."
+1. **Charlotte**: "What are the best, the biggest and the most fun things in your world?"
 2. **Student**: "I'm the oldest in my family."
 3. **Charlotte**: "Big sibling energy. City?"
 4. **Student**: "São Paulo is the biggest city."
@@ -504,7 +504,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte abre chat sobre favoritos e piores. Pratica irregulares de superlativo."
-**Opening message**: "Best meal in your city?"
+**Opening message**: "What's the best meal in your city?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -539,7 +539,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Best meal in your city?"
+1. **Charlotte**: "What's the best meal in your city?"
 2. **Student**: "The best meal was pasta."
 3. **Charlotte**: "Italian style."
 4. **Student**: "The worst day was Monday."
@@ -867,9 +867,9 @@
    **label_pt**: "Dizer 'o melhor' de algo"
    **label_en**: "Say 'the best'"
    **hidden_prompt**: "user uses 'the best + noun' or 'X is the best'"
-   **hint_pt**: "The best trip was Italy."
-   **hint_en**: "The best trip was Italy."
-   **example_pass**: The best trip was Italy.
+   **hint_pt**: "My best trip was to Italy."
+   **hint_en**: "My best trip was to Italy."
+   **example_pass**: My best trip was to Italy.
    **example_fail**: Pasta (bare noun) | Best (bare adjective) | I like pasta (no superlative)
 
 2. **id**: 2
@@ -895,7 +895,7 @@
 **Script** (referencial, 7 turnos):
 
 1. **Charlotte**: "Best thing this month? First time doing something?"
-2. **Student**: "The best trip was Italy."
+2. **Student**: "My best trip was to Italy."
 3. **Charlotte**: "Wow."
 4. **Student**: "It's my first time skiing."
 5. **Charlotte**: "Adventure!"

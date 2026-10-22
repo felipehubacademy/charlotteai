@@ -274,7 +274,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Describe three things using 'which' or 'that'."
+**Opening line**: "Tell me about three things in your life, using 'which' or 'that'."
 
 **Sub-objectives** (3):
 
@@ -309,7 +309,7 @@
 
 **Suggested flow** (6 turns):
 
-1. **Charlotte**: "Describe three things using 'which' or 'that'."
+1. **Charlotte**: "Tell me about three things in your life, using 'which' or 'that'."
 2. **Student**: ~"It's a book that changed my life."
 3. **Charlotte**: "Cool. Tech?"
 4. **Student**: ~"I have a phone which never breaks."

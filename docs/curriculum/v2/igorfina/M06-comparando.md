@@ -109,7 +109,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 **Persona**: Igorfina
 **Persona outfit**: `igorfina_casual`
 **Time budget**: 90s
-**Opening line**: "You can take the bus, the subway or a taxi. What do you want?"
+**Opening line**: "You can take the bus, the subway or a taxi. Which one do you want?"
 
 **Sub-objectives** (2 objetivos):
 

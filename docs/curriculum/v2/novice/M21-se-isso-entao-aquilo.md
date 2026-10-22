@@ -271,7 +271,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "Three things — what depends on time, money, or mood?"
+**Opening line**: "Tell me three things that depend on time, money or your mood."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -306,7 +306,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three things — what depends on time, money, or mood?"
+1. **Charlotte**: "Tell me three things that depend on time, money or your mood."
 2. **Student**: ~"If I have time, I'll exercise."
 3. **Charlotte**: "Money?"
 4. **Student**: ~"If I save money, I'll travel."

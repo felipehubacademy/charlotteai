@@ -73,10 +73,10 @@
           "sentence": "Why don't you _____ for dinner this weekend?",
           "hint": "\"Come round\" (visit)",
           "answer": "come round",
-          "explanation": "\"Come round\" = visit casually (British). Also: \"come round to + idea\" = gradually accept. \"He came round to my point of view.\" Multiple meanings: drop by, regain consciousness, change mind. Context-dependent.",
           "accepts": [
             "come over"
-          ]
+          ],
+          "explanation": "\"Come round\" = visit casually (British). Also: \"come round to + idea\" = gradually accept. \"He came round to my point of view.\" Multiple meanings: drop by, regain consciousness, change mind. Context-dependent."
         },
         {
           "type": "fix_error",
@@ -90,12 +90,12 @@
           "passage": "The decade had brought about changes nobody could have foreseen. Old colleagues he hadn't seen in years would come round unannounced, sit in his kitchen, and tell him things they hadn't told their own families. It took a long time to bring some of them round to the idea that he was no longer the same person they had once known.",
           "question": "What three meanings of \"bring/come round\" appear in the passage?",
           "answer": "caused, visit, persuade",
-          "explanation": "Three phrasal verbs with shared form but distinct meanings: \"brought about\" (caused), \"come round\" (visit), \"bring some of them round\" (persuade). C2 readers track which meaning fits which context fluidly.",
           "accepts": [
             "brought about = caused",
             "come round = visit",
             "bring round = persuade"
-          ]
+          ],
+          "explanation": "Three phrasal verbs with shared form but distinct meanings: \"brought about\" (caused), \"come round\" (visit), \"bring some of them round\" (persuade). C2 readers track which meaning fits which context fluidly."
         }
       ],
       "listening_speaking": [
@@ -127,7 +127,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three contexts. You select the right \"bring/come round\" phrasal for each.",
-        "scenario_pt": "Charlotte apresenta três contextos. Você escolhe o phrasal 'bring/come round' correto para cada um.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -136,7 +135,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar 'Bring about' (causar)",
             "label_en": "'Bring about' (cause)",
             "hidden_prompt": "user uses 'bring about' for causation",
             "hint_en": "Decades of activism brought about the legal recognition that nobody had thought possible.",
@@ -154,7 +152,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'Come round' (visitar ou mudar de ideia)",
             "label_en": "'Come round' (visit or change mind)",
             "hidden_prompt": "user uses 'come round' for visit or persuasion",
             "hint_en": "She came round eventually — sceptical at first, then quietly convinced after the third presentation.",
@@ -172,7 +169,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'Bring someone round'",
             "label_en": "'Bring someone round'",
             "hidden_prompt": "user uses 'bring + person + round' for persuasion",
             "hint_en": "I'll bring the rest of the team round to the new direction by the end of the quarter.",
@@ -200,12 +196,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte tells of a change process. Comment with 'bring about', 'come round', 'bring round'.",
-        "intro_pt": "Charlotte fala sobre um processo de mudança. Comente com 'bring about', 'come round', 'bring round'.",
         "opening_message": "It took my company three years to accept remote work. How would you describe that process?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Descrever o resultado",
             "label_en": "Describe the outcome",
             "hidden_prompt": "user uses 'brought about' for outcome",
             "hint_en": "What brought about the shift was probably the talent leaving — once people quit, the policy followed.",
@@ -223,7 +217,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Descrever a persuasão",
             "label_en": "Describe the persuasion",
             "hidden_prompt": "user uses 'come round' or 'bring round'",
             "hint_en": "Senior leadership came round slowly — they had to lose two key hires before the policy really moved.",
@@ -241,7 +234,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte who was the last holdout",
             "hint_en": "Who was the last to come round?",
@@ -349,7 +341,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three contexts. You select the right attention-phrasal — gloss over, crop up, or single out.",
-        "scenario_pt": "Charlotte apresenta três contextos. Você escolhe o phrasal de atenção correto — 'gloss over', 'crop up' ou 'single out'.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -358,7 +349,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Minimizar com 'gloss over'",
             "label_en": "Downplay with 'gloss over'",
             "hidden_prompt": "user uses 'gloss over + noun'",
             "hint_en": "The press release glossed over the layoffs and led with the new office opening.",
@@ -373,7 +363,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Recorrência com 'crop up'",
             "label_en": "Recurrence with 'crop up'",
             "hidden_prompt": "user uses 'X crops up + frequency'",
             "hint_en": "His name crops up in every conversation about regional sales — even ones he wasn't part of.",
@@ -388,7 +377,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Destacar com 'single out'",
             "label_en": "Highlight with 'single out'",
             "hidden_prompt": "user uses 'single X out for + reason'",
             "hint_en": "The board singled out the engineering team for the smooth rollout.",
@@ -416,12 +404,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte discusses media coverage. Use 'gloss over', 'crop up', 'single out'.",
-        "intro_pt": "Charlotte discute a cobertura da mídia. Use 'gloss over', 'crop up', 'single out'.",
         "opening_message": "I read three different write-ups of the same story and got three different impressions. What does that tell you?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Diagnóstico com 'gloss over'",
             "label_en": "Diagnosis with 'gloss over'",
             "hidden_prompt": "user uses 'gloss over' to describe coverage gap",
             "hint_en": "Each version probably glossed over the angles inconvenient to its own audience.",
@@ -439,7 +425,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Padrão com 'crop up'",
             "label_en": "Pattern with 'crop up'",
             "hidden_prompt": "user uses 'X crops up' for recurring elements",
             "hint_en": "The same two facts probably crop up in all three, but framed in completely different ways.",
@@ -454,7 +439,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte who got singled out across coverages",
             "hint_en": "Was anyone singled out across all three?",
@@ -562,7 +546,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three project outcomes. You describe each with the right phrasal — live up to, fall through, iron out, tide over.",
-        "scenario_pt": "Charlotte apresenta três resultados de projetos. Você os descreve com o phrasal correto — 'live up to', 'fall through', 'iron out', 'tide over'.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -571,7 +554,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Expectativa com 'live up to'",
             "label_en": "Expectation with 'live up to'",
             "hidden_prompt": "user uses 'X lived up to / failed to live up to'",
             "hint_en": "The new product lived up to its launch promises — the team finally delivered something the press release didn't have to lie about.",
@@ -586,7 +568,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Plano desmoronado com 'fall through'",
             "label_en": "Plan collapsed with 'fall through'",
             "hidden_prompt": "user uses 'X fell through'",
             "hint_en": "The partnership fell through over a single clause neither side would move on.",
@@ -601,7 +582,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Resolver com 'iron out' ou sustentar com 'tide over'",
             "label_en": "Resolve with 'iron out' or sustain with 'tide over'",
             "hidden_prompt": "user uses 'iron out + issues' or 'tide over + period'",
             "hint_en": "We spent a week ironing out the integration bugs, and a bridge contract tided the team over until the next funding tranche.",
@@ -629,12 +609,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte recounts a tough quarter. Comment with project-related phrasals.",
-        "intro_pt": "Charlotte relata um trimestre difícil. Comente com phrasals relacionados a projetos.",
         "opening_message": "Q2 was rough — two contracts collapsed and our product didn't perform like we promised. What would you have done?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reconhecer com 'live up to'",
             "label_en": "Acknowledge with 'live up to'",
             "hidden_prompt": "user uses 'live up to + expectations'",
             "hint_en": "Not living up to a public promise is the hardest thing to recover from — trust is the slowest thing to rebuild.",
@@ -649,7 +627,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Recuperação com 'iron out'",
             "label_en": "Recovery with 'iron out'",
             "hidden_prompt": "user uses 'iron out + issues'",
             "hint_en": "The path back is usually quiet — iron out the technical issues, deliver a single boring quarter, and let the noise die.",
@@ -664,7 +641,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how the team was tided over",
             "hint_en": "How did you tide the team over financially?",
@@ -769,16 +745,14 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three interpersonal situations. You describe each with talk down to, wear down, shake off, or bear out.",
-        "scenario_pt": "Charlotte apresenta três situações interpessoais. Você as descreve usando 'talk down to', 'wear down', 'shake off' ou 'bear out'.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 300,
-        "opening_line": "Three interpersonal moments. Use 'talk down to', 'wear down', 'shake off', or 'bear out'.",
+        "opening_line": "I've got three moments between people for you. Describe them with 'talk down to', 'wear down', 'shake off' or 'bear out'.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Tratar com superioridade usando 'talk down to'",
             "label_en": "Patronise with 'talk down to'",
             "hidden_prompt": "user uses 'X talks down to + person'",
             "hint_en": "He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot.",
@@ -797,7 +771,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Exaustão com 'wear down'",
             "label_en": "Exhaustion with 'wear down'",
             "hidden_prompt": "user uses 'X wore + person + down'",
             "hint_en": "Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items.",
@@ -816,7 +789,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Recuperação com 'shake off' ou confirmação com 'bear out'",
             "label_en": "Recovery with 'shake off' or confirmation with 'bear out'",
             "hidden_prompt": "user uses 'shake off' or 'bear out'",
             "hint_en": "I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out.",
@@ -833,7 +805,7 @@
           }
         ],
         "closing_cue": "Charlotte closes with \"Interpersonal phrasals, sharp.\" once obj_3 lands.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three interpersonal moments. Use 'talk down to', 'wear down', 'shake off', or 'bear out'.\"\n2. **Student**: ~\"He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot.\"\n3. **Charlotte**: \"Exhaustion?\"\n4. **Student**: ~\"Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items.\"\n5. **Charlotte**: \"Recovery + confirmation?\"\n6. **Student**: ~\"I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out.\"\n7. **Charlotte**: \"Interpersonal phrasals, sharp.\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I've got three moments between people for you. Describe them with 'talk down to', 'wear down', 'shake off' or 'bear out'.\"\n2. **Student**: ~\"He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot.\"\n3. **Charlotte**: \"Exhaustion?\"\n4. **Student**: ~\"Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items.\"\n5. **Charlotte**: \"Recovery + confirmation?\"\n6. **Student**: ~\"I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out.\"\n7. **Charlotte**: \"Interpersonal phrasals, sharp.\"",
         "evaluation_focus": [
           "Phrasal fits the interpersonal nuance",
           "Three-part structure intact (talk down TO)",
@@ -846,12 +818,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte reflects on a hard work relationship. Use interpersonal phrasals.",
-        "intro_pt": "Charlotte reflete sobre uma relação de trabalho difícil. Use phrasals interpessoais.",
         "opening_message": "I worked with someone for five years who talked down to everyone but never noticed. I tried to address it — and got nowhere.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Validar com 'talk down to'",
             "label_en": "Validate with 'talk down to'",
             "hidden_prompt": "user uses 'talk down to' to validate",
             "hint_en": "People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement.",
@@ -867,7 +837,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Reconhecer 'wore down'",
             "label_en": "Acknowledge 'wore down'",
             "hidden_prompt": "user uses 'wear/wore down' for cumulative effect",
             "hint_en": "Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up.",
@@ -884,7 +853,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if she shook it off after leaving",
             "hint_en": "Have you shaken it off, now that you're out?",
@@ -991,7 +959,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three analytical statements. You sharpen each with stem from, amount to, or water down.",
-        "scenario_pt": "Charlotte dá três declarações analíticas. Você aprimora cada uma com stem from, amount to ou water down.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1000,7 +967,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Origem com 'stem from'",
             "label_en": "Origin with 'stem from'",
             "hidden_prompt": "user uses 'X stems from Y'",
             "hint_en": "Most of the team's friction stems from a single unresolved ownership question from the first month.",
@@ -1015,7 +981,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Equivalência com 'amount to'",
             "label_en": "Equivalence with 'amount to'",
             "hidden_prompt": "user uses 'X amounts to Y'",
             "hint_en": "Stripped of jargon, the new strategy amounts to doing exactly what we did last year, more carefully.",
@@ -1030,7 +995,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Enfraquecimento com 'water down'",
             "label_en": "Weakening with 'water down'",
             "hidden_prompt": "user uses 'water + X + down' or 'watered down'",
             "hint_en": "By the time the policy made it through legal review, it had been watered down to the point of being symbolic.",
@@ -1058,12 +1022,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte diagnoses a project problem. Use analytical phrasals together.",
-        "intro_pt": "Charlotte diagnostica um problema de projeto. Use expressões frasais analíticas juntas.",
         "opening_message": "The product team keeps missing its targets. The pattern is too consistent to be bad luck. What's your hypothesis?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Origem com 'stem from'",
             "label_en": "Origin with 'stem from'",
             "hidden_prompt": "user uses 'stems from' for analytical origin",
             "hint_en": "My hypothesis is that it stems from how the targets get set — too much top-down, too little capacity input.",
@@ -1078,7 +1040,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Equivalência com 'amount to'",
             "label_en": "Equivalence with 'amount to'",
             "hidden_prompt": "user uses 'amount to' or 'water down'",
             "hint_en": "The current process amounts to manufacturing failure: numbers that nobody believes get adopted, then everyone is surprised when they aren't hit.",
@@ -1093,7 +1054,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte where she would intervene",
             "hint_en": "Where would you intervene first?",

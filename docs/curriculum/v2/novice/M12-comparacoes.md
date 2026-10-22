@@ -683,7 +683,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte explora intensidades de comparação. Pratica much/a little/a bit + comparativo."
-**Opening message**: "Big or small differences this week?"
+**Opening message**: "Was this week very different from last week, or just a little?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -718,7 +718,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Big or small differences this week?"
+1. **Charlotte**: "Was this week very different from last week, or just a little?"
 2. **Student**: "Today is much hotter."
 3. **Charlotte**: "Small ones?"
 4. **Student**: "My coffee is a little stronger today."
@@ -806,7 +806,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "Three comparisons — one short adj, one long, one irregular!"
+**Opening line**: "Give me three comparisons: one with a short adjective, one with a long adjective and one irregular!"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -841,7 +841,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three comparisons — one short adj, one long, one irregular!"
+1. **Charlotte**: "Give me three comparisons: one with a short adjective, one with a long adjective and one irregular!"
 2. **Student**: ~"I'm taller than my sister."
 3. **Charlotte**: "Long adj?"
 4. **Student**: ~"This is more interesting than that."
@@ -861,7 +861,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte abre chat de comparações variadas. Mostra que domina curtos, longos e irregulares."
-**Opening message**: "Compare three things in your life right now."
+**Opening message**: "Let's compare! Pick three things in your life and compare them."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -896,7 +896,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Compare three things in your life right now."
+1. **Charlotte**: "Let's compare! Pick three things in your life and compare them."
 2. **Student**: "Coffee is cheaper than wine."
 3. **Charlotte**: "Long adj next?"
 4. **Student**: "My job is more difficult now."

@@ -875,9 +875,9 @@
    **label_pt**: "Adicionar evento com when"
    **label_en**: "Add event with when"
    **hidden_prompt**: "user adds event with 'when + past simple'"
-   **hint_pt**: "When I met an old friend by chance."
-   **hint_en**: "When I met an old friend by chance."
-   **example_pass**: When I met an old friend by chance. | They were eating dinner at 8pm. | We were watching TV last night.
+   **hint_pt**: "I was walking home when I met an old friend by chance."
+   **hint_en**: "I was walking home when I met an old friend by chance."
+   **example_pass**: I was walking home when I met an old friend by chance. | They were eating dinner at 8pm. | We were watching TV last night.
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 3. **id**: 3
@@ -896,7 +896,7 @@
 1. **Charlotte**: "Tell me about a memorable moment from this year."
 2. **Student**: "I was traveling in Italy."
 3. **Charlotte**: "Nice. And then?"
-4. **Student**: "When I met an old friend by chance."
+4. **Student**: "I was walking home when I met an old friend by chance."
 5. **Charlotte**: "Small world!"
 6. **Student**: "How about you?"
 7. **Charlotte**: "I was at a café when I met someone special. Cool memory!"

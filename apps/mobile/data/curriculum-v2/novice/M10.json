@@ -1105,10 +1105,10 @@
             "one"
           ],
           "answer": "an",
-          "explanation": "\"An apple\" — singular contável (apple começa com vogal → \"an\").",
           "accepts": [
             "one"
-          ]
+          ],
+          "explanation": "\"An apple\" — singular contável (apple começa com vogal → \"an\")."
         },
         {
           "type": "fill_gap",

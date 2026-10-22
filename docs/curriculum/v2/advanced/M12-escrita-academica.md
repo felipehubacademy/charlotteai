@@ -692,7 +692,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "I'll give a topic sentence. Build three follow-up paragraph openers — forward link, contrast, synthesis."
+**Opening line**: "I'll give you a topic sentence. Then write three openers for the next paragraphs: one that moves forward, one that contrasts and one that sums up."
 
 **Sub-objectives** (3 objetivos):
 
@@ -727,7 +727,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "I'll give a topic sentence. Build three follow-up paragraph openers — forward link, contrast, synthesis."
+1. **Charlotte**: "I'll give you a topic sentence. Then write three openers for the next paragraphs: one that moves forward, one that contrasts and one that sums up."
 2. **Student**: ~"This finding raises a related question about how the effect varies by income level."
 3. **Charlotte**: "Contrast?"
 4. **Student**: ~"By contrast, longitudinal studies in similar populations show a weaker effect over time."

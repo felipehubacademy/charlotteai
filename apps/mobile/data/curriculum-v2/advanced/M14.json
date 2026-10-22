@@ -117,7 +117,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives you three abstract concepts. You craft a fresh simile or metaphor for each — no clichés.",
-        "scenario_pt": "Charlotte dá três conceitos abstratos. Você cria uma nova comparação ou metáfora para cada um — sem clichês.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -126,7 +125,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Símile com 'like + substantivo'",
             "label_en": "Simile with 'like + noun'",
             "hidden_prompt": "user uses 'like + noun' freshly",
             "hint_en": "Silence in that house was like a guest no one had introduced — present at every meal, never directly addressed.",
@@ -144,7 +142,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Símile com 'as if + cláusula'",
             "label_en": "Simile with 'as if + clause'",
             "hidden_prompt": "user uses 'as if + clause' freshly",
             "hint_en": "Deadlines approach as if they have agendas of their own — patient at first, then suddenly impatient at three a.m.",
@@ -163,7 +160,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Nova metáfora 'X is Y'",
             "label_en": "Fresh 'X is Y' metaphor",
             "hidden_prompt": "user uses 'X is Y' metaphor, not cliché",
             "hint_en": "Hope is the rent you pay to live with yourself through bad years.",
@@ -191,12 +187,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites extended metaphor. Sustain one image across multiple sentences.",
-        "intro_pt": "Charlotte convida para uma metáfora estendida. Sustente uma imagem ao longo de várias frases.",
         "opening_message": "Take 'attention is the new oil'. Run it for three sentences — extend it without restating.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Estabelecer a metáfora",
             "label_en": "Establish the metaphor",
             "hidden_prompt": "user opens metaphor 'attention is the new oil'",
             "hint_en": "Attention is the new oil — and we are quietly running the same playbook on it.",
@@ -211,7 +205,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Estender sem repetir",
             "label_en": "Extend without restating",
             "hidden_prompt": "user extends the metaphor with related image",
             "hint_en": "Drilling deeper into private spaces, refining cruder feeds into more potent ones, pumping the surplus into political markets and consumer ones alike.",
@@ -228,7 +221,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Concluir ecoando a abertura",
             "label_en": "Close with echo of opening",
             "hidden_prompt": "user closes with metaphor echoed",
             "hint_en": "And like every oil age before it, the externalities — the climate, the wars, the costs we do not yet name — are quietly accumulating elsewhere.",
@@ -306,7 +298,6 @@
           "passage": "The city slept badly that summer. The heat refused to release its grip even at three a.m. Buses sighed through the empty streets, half-empty themselves. Behind every shuttered window, a fan was arguing with the air. By dawn, the buildings looked tired, and the river was already glittering its way through another day it hadn't asked for.",
           "question": "Find three personifications in the passage.",
           "answer": "city slept badly, heat refused to release, buses sighed",
-          "explanation": "Six personifications in five sentences: the city sleeps badly, heat refuses, buses sigh, fans argue, buildings look tired, the river was glittering through a day it hadn't asked for. Each gives a non-human entity human agency or feeling. Literary description at C2.",
           "accepts": [
             "city slept badly",
             "heat refused to release",
@@ -314,7 +305,8 @@
             "fan was arguing",
             "buildings looked tired",
             "river was glittering its way"
-          ]
+          ],
+          "explanation": "Six personifications in five sentences: the city sleeps badly, heat refuses, buses sigh, fans argue, buildings look tired, the river was glittering through a day it hadn't asked for. Each gives a non-human entity human agency or feeling. Literary description at C2."
         }
       ],
       "listening_speaking": [
@@ -346,7 +338,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three flat sentences. You personify each by giving the subject a human-like verb.",
-        "scenario_pt": "Charlotte apresenta três frases simples. Você as personifica dando ao sujeito um verbo com características humanas.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -355,7 +346,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Personificar tempo ou estação",
             "label_en": "Personify time or season",
             "hidden_prompt": "user replaces neutral verb with personifying verb",
             "hint_en": "From 'Time passed slowly.' → 'Time dragged its feet that afternoon, refusing to be hurried.'",
@@ -374,7 +364,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Personificar uma cidade ou edifício",
             "label_en": "Personify a city or building",
             "hidden_prompt": "user gives city/building human action",
             "hint_en": "From 'The building was old.' → 'The building leaned tiredly against the corner, holding itself up out of habit.'",
@@ -393,7 +382,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Personificar uma emoção",
             "label_en": "Personify an emotion",
             "hidden_prompt": "user gives emotion human will or action",
             "hint_en": "From 'I felt regret.' → 'Regret followed me around the house all morning, sitting on every empty chair.'",
@@ -425,12 +413,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte writes plain descriptions. Revise with personification.",
-        "intro_pt": "Charlotte escreve descrições simples. Revise com personificação.",
         "opening_message": "I wrote: 'The office was empty. The lights were on. The clock said 8 p.m.' Too flat. Animate it.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Personificar o escritório",
             "label_en": "Personify the office",
             "hidden_prompt": "user revises 'office was empty' with personification",
             "hint_en": "Try: 'The office held its breath in the absence of anyone to hold it for.'",
@@ -445,7 +431,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Personificar as luzes ou o relógio",
             "label_en": "Personify the lights or the clock",
             "hidden_prompt": "user personifies lights or clock",
             "hint_en": "And: 'The overhead lights kept their nightly vigil over no one in particular. The clock, indifferent as always, announced eight in red.'",
@@ -463,7 +448,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what mood she wants",
             "hint_en": "What mood are you going for?",
@@ -575,7 +559,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three sentences with generic verbs. You rewrite each with vivid verbs and specific nouns.",
-        "scenario_pt": "Charlotte apresenta três frases com verbos genéricos. Você as reescreve com verbos vívidos e substantivos específicos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -584,7 +567,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Verbo vívido para 'walked'",
             "label_en": "Vivid verb for 'walked'",
             "hidden_prompt": "user replaces 'walked + adverb' with vivid verb",
             "hint_en": "From 'He walked angrily into the room.' → 'He stormed into the room.'",
@@ -603,7 +585,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Substantivo específico",
             "label_en": "Specific noun",
             "hidden_prompt": "user replaces generic noun with specific one",
             "hint_en": "From 'A car drove by.' → 'A grey Peugeot crawled past, windows fogged.'",
@@ -622,7 +603,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Verbo vívido + substantivo específico",
             "label_en": "Vivid verb + specific noun",
             "hidden_prompt": "user replaces both",
             "hint_en": "From 'She looked sadly at the photo.' → 'She gazed at the polaroid of her grandmother, fingers tightening around the frame.'",
@@ -654,12 +634,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte drafts a scene. Revise for vivid verbs and specific nouns.",
-        "intro_pt": "Charlotte elabora uma cena. Revise para verbos vívidos e substantivos específicos.",
         "opening_message": "I wrote: 'She went into the café and sat down. A man was there. He was looking at his phone.' Bring it to life.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Substituir 'went' e 'sat down'",
             "label_en": "Replace 'went' and 'sat down'",
             "hidden_prompt": "user replaces 'went' / 'sat down' with vivid verbs",
             "hint_en": "Try: 'She pushed through the door of the café and slid into the booth by the window.'",
@@ -674,7 +652,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Substituir 'a man' por substantivo específico",
             "label_en": "Replace 'a man' with specific noun",
             "hidden_prompt": "user adds specific detail to 'a man'",
             "hint_en": "Then: 'In the corner, a man in a grey overcoat was hunched over his phone, thumb scrolling slowly enough to suggest he wasn't reading anything.'",
@@ -689,7 +666,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what mood she wants in the scene",
             "hint_en": "What's the scene meant to feel like?",
@@ -767,12 +743,12 @@
           "passage": "He had spent thirty years building the business — through three recessions, two divorces, and one funeral that he had not been able to attend because the company needed him in Singapore. The company, now, didn't need him anywhere. The board had voted. Unanimously. He was free.",
           "question": "How does the passage use sentence length for effect?",
           "answer": "long sentence then short fragments",
-          "explanation": "The long opening sentence builds the weight of three decades. The short sentences and fragment (\"Unanimously. He was free.\") deliver the consequence with rhythmic shock. Length contrast IS the meaning.",
           "accepts": [
             "long sentence then short",
             "opens long, ends short",
             "short fragments for effect"
-          ]
+          ],
+          "explanation": "The long opening sentence builds the weight of three decades. The short sentences and fragment (\"Unanimously. He was free.\") deliver the consequence with rhythmic shock. Length contrast IS the meaning."
         }
       ],
       "listening_speaking": [
@@ -804,7 +780,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives you a long sentence. You complete the paragraph with a short sentence or fragment that delivers impact.",
-        "scenario_pt": "Charlotte dá uma frase longa. Você completa o parágrafo com uma frase curta ou fragmento que causa impacto.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -813,7 +788,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Frase curta após longa",
             "label_en": "Short sentence after long",
             "hidden_prompt": "user completes with short impact sentence",
             "hint_en": "Long: 'After ten years of saving, two years of planning, and six months of paperwork that would have broken anyone less stubborn, she finally bought the cottage by the sea.' Short: 'She slept that first night.'",
@@ -832,7 +806,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Fragmento para ênfase",
             "label_en": "Fragment for emphasis",
             "hidden_prompt": "user uses fragment(s) for impact",
             "hint_en": "Long: 'The room contained the same books, the same chair, the same window onto the same courtyard, and even the same dust pattern across the same desk where she had once written her first novel.' Fragment: 'Same room. Different woman.'",
@@ -851,7 +824,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Fechar com trio de fragmentos",
             "label_en": "Trio of fragments to close",
             "hidden_prompt": "user closes with rhythmic fragments",
             "hint_en": "Long: 'They had spoken on the phone every Sunday for sixteen years, exchanged photographs of children and dogs, sent birthday cards on time even when nothing else in their lives was on time.' Trio: 'Then she didn't call. Then she didn't pick up. Then we knew.'",
@@ -883,12 +855,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte writes memoir-style. Revise for rhythm — vary sentence lengths.",
-        "intro_pt": "Charlotte escreve em estilo de memórias. Revise para ritmo — varie os comprimentos das frases.",
         "opening_message": "I wrote: 'When my father died I was thirty-two and I didn't know what to do and the house felt strange and nothing made sense for a long time.' All one breath. Help me break it.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Quebrar a frase longa",
             "label_en": "Break the long sentence",
             "hidden_prompt": "user breaks into sentences with varied length",
             "hint_en": "Try: 'When my father died, I was thirty-two. The house felt strange — not different, exactly, but watchful, the way a room is after someone leaves a meeting they will not return to.'",
@@ -906,7 +876,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Adicionar fragmento de impacto",
             "label_en": "Add impact fragment",
             "hidden_prompt": "user adds short sentence or fragment",
             "hint_en": "Then add: 'I did not know what to do. Nothing made sense for a long time. That was the year I learned to live with not-knowing.'",
@@ -924,7 +893,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte where the paragraph is going",
             "hint_en": "Where does the paragraph go next?",
@@ -997,12 +965,12 @@
           "passage": "She had been waiting two hours. She did not look at her phone. She did not stand to stretch. She had finished her coffee and ordered another, then a third, paying each time in exact change. When his name appeared in the doorway, she stood without hurry, smiled without warmth, and gestured to the seat across from her as if the meeting had been arranged for her convenience all along.",
           "question": "Without using the word, what emotion is the woman conveying?",
           "answer": "anger",
-          "explanation": "No emotion word appears. Yet readers infer: contained anger, deliberate composure, asserting power. The details — \"exact change\", \"stood without hurry\", \"smiled without warmth\", \"as if... her convenience\" — show what's felt. Reader does the work; writer trusts the reader.",
           "accepts": [
             "controlled fury",
             "kept waiting",
             "refusing to show anger"
-          ]
+          ],
+          "explanation": "No emotion word appears. Yet readers infer: contained anger, deliberate composure, asserting power. The details — \"exact change\", \"stood without hurry\", \"smiled without warmth\", \"as if... her convenience\" — show what's felt. Reader does the work; writer trusts the reader."
         }
       ],
       "listening_speaking": [
@@ -1034,7 +1002,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three emotion-stating sentences. You rewrite each as a \"shown\" version using observable detail.",
-        "scenario_pt": "Charlotte apresenta três frases que expressam emoções. Você as reescreve como uma versão \"mostrada\" usando detalhes observáveis.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1043,7 +1010,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Mostrar nervosismo",
             "label_en": "Show nervousness",
             "hidden_prompt": "user shows nervousness through behavioural detail",
             "hint_en": "From 'He was nervous before the interview.' → 'He checked his watch four times in two minutes. The receptionist offered him water. He said no, then changed his mind.'",
@@ -1058,7 +1024,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Mostrar tristeza",
             "label_en": "Show sadness",
             "hidden_prompt": "user shows sadness through specific behavioural detail",
             "hint_en": "From 'She was sad after the move.' → 'For three weeks, the boxes stayed in the hallway. She walked around them without looking down.'",
@@ -1073,7 +1038,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Mostrar alegria contida",
             "label_en": "Show contained joy",
             "hidden_prompt": "user shows joy through restrained behaviour",
             "hint_en": "From 'He was thrilled about the offer.' → 'He read the email twice. Then he did the small, private dance he only ever did when nobody was watching.'",
@@ -1101,12 +1065,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte writes flat. Revise to show, not tell.",
-        "intro_pt": "Charlotte escreve de forma plana. Revise para mostrar, não contar.",
         "opening_message": "I wrote: 'She felt lonely in the new city. The apartment was empty. She missed her friends.' Three flat tells. Show them.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Mostrar solidão",
             "label_en": "Show loneliness",
             "hidden_prompt": "user shows loneliness through detail",
             "hint_en": "Try: 'She kept the radio on while she cooked, then while she ate, then while she fell asleep. The voices of strangers, at least, didn't change.'",
@@ -1121,7 +1083,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Mostrar o apartamento vazio",
             "label_en": "Show the empty apartment",
             "hidden_prompt": "user shows emptiness through detail",
             "hint_en": "Then: 'The chair she bought for two had been pulled to face the window. Nobody ever needed to sit across from her.'",
@@ -1136,7 +1097,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Mostrar saudade dos amigos",
             "label_en": "Show missing friends",
             "hidden_prompt": "user shows missing friends through detail",
             "hint_en": "Close with: 'She kept opening the group chat without typing. Sometimes she read old messages instead of writing new ones.'",

@@ -688,7 +688,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three hedged claims, three different sources or markers — 'According to', 'allegedly', 'apparently/reportedly'."
+**Opening line**: "I'm your editor today. Give me three careful claims, each with a different marker: 'according to', 'allegedly' and 'apparently' or 'reportedly'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -723,7 +723,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three hedged claims, three different sources or markers — 'According to', 'allegedly', 'apparently/reportedly'."
+1. **Charlotte**: "I'm your editor today. Give me three careful claims, each with a different marker: 'according to', 'allegedly' and 'apparently' or 'reportedly'."
 2. **Student**: ~"According to the financial filing, profits doubled in the third quarter."
 3. **Charlotte**: "Source cited. Legal hedge?"
 4. **Student**: ~"The accountant allegedly transferred funds to a personal account."

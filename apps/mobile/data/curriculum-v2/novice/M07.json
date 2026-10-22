@@ -1254,7 +1254,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_pt": "Charlotte quer um retrato completo das suas habilidades — positiva, negativa, e devolva a pergunta.",
-        "opening_message": "Skills check! What can you do, what can't you?",
+        "opening_message": "Skills check! What can you do, and what can't you do?",
         "objectives": [
           {
             "id": 1,
@@ -1306,7 +1306,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Skill swap complete!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Skills check! What can you do, what can't you?\"\n2. **Student**: \"I can swim.\"\n3. **Charlotte**: \"Nice. Limitation?\"\n4. **Student**: \"I can't drive.\"\n5. **Charlotte**: \"Yet!\"\n6. **Student**: \"Can you cook?\"\n7. **Charlotte**: \"A little. Skill swap complete!\"\n\n> N05 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Skills check! What can you do, and what can't you do?\"\n2. **Student**: \"I can swim.\"\n3. **Charlotte**: \"Nice. Limitation?\"\n4. **Student**: \"I can't drive.\"\n5. **Charlotte**: \"Yet!\"\n6. **Student**: \"Can you cook?\"\n7. **Charlotte**: \"A little. Skill swap complete!\"\n\n> N05 chat = LLM puro.\n\n---"
       }
     }
   ],

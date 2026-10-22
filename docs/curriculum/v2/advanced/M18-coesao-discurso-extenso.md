@@ -551,9 +551,9 @@
    **label_pt**: "Outro exemplo de fluxo"
    **label_en**: "Another flow example"
    **hidden_prompt**: "user uses theme-rheme correctly"
-   **hint_pt**: "First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.'"
-   **hint_en**: "First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.'"
-   **example_pass**: First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.' | We launched the new product in June. The launch went more smoothly than any in the previous three years. | She joined the company in February. Her first project shipped within six weeks. | The board reviewed the strategy in March. The review surfaced three concerns we hadn't fully anticipated. | He moved to the new role last summer. The role has expanded considerably since he took it on.
+   **hint_pt**: "First: 'We launched the new product in June.' Follow: 'The launch went more smoothly than any in the previous three years.'"
+   **hint_en**: "First: 'We launched the new product in June.' Follow: 'The launch went more smoothly than any in the previous three years.'"
+   **example_pass**: First: 'We launched the new product in June.' Follow: 'The launch went more smoothly than any in the previous three years.' | We launched the new product in June. The launch went more smoothly than any in the previous three years. | She joined the company in February. Her first project shipped within six weeks. | The board reviewed the strategy in March. The review surfaced three concerns we hadn't fully anticipated. | He moved to the new role last summer. The role has expanded considerably since he took it on.
    **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
@@ -572,7 +572,7 @@
 1. **Charlotte**: "Three first sentences. Each follow-up should begin with old information and end with new."
 2. **Student**: ~"First: 'The interview lasted ninety minutes.' Follow: 'That length was deliberate — the panel wanted to see how she handled fatigue.'"
 3. **Charlotte**: "Another?"
-4. **Student**: ~"First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.'"
+4. **Student**: ~"First: 'We launched the new product in June.' Follow: 'The launch went more smoothly than any in the previous three years.'"
 5. **Charlotte**: "Counter-example?"
 6. **Student**: ~"Wrong order: 'A clear winner emerged from the discussion.' Better: 'The discussion produced a clear winner.'"
 7. **Charlotte**: "Information flow, naturally forward."

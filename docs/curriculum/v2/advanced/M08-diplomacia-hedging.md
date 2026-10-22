@@ -540,7 +540,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three impersonal hedges. 'It could be argued', 'One might say', 'In a sense', 'Arguably'."
+**Opening line**: "Let's discuss three topics in an impersonal way. Try 'It could be argued', 'One might say', 'In a sense' or 'Arguably'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -575,7 +575,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three impersonal hedges. 'It could be argued', 'One might say', 'In a sense', 'Arguably'."
+1. **Charlotte**: "Let's discuss three topics in an impersonal way. Try 'It could be argued', 'One might say', 'In a sense' or 'Arguably'."
 2. **Student**: ~"It could be argued that social media has changed how we form opinions."
 3. **Charlotte**: "Generational?"
 4. **Student**: ~"In a sense, every generation thinks the next one has it easier."

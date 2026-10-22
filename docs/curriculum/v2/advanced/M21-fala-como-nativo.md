@@ -228,7 +228,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three statements. Add a tag — agreement, confirmation, or soft challenge."
+**Opening line**: "I'll make three statements. Add a tag question to each one: to agree, to check or to gently challenge me."
 
 **Sub-objectives** (3 objetivos):
 
@@ -263,7 +263,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three statements. Add a tag — agreement, confirmation, or soft challenge."
+1. **Charlotte**: "I'll make three statements. Add a tag question to each one: to agree, to check or to gently challenge me."
 2. **Student**: ~"She's the strongest writer on the team, isn't she? The way she frames an argument is in a different category."
 3. **Charlotte**: "Confirmation?"
 4. **Student**: ~"You haven't met the new product manager yet, have you? She started two weeks ago and seems to be everywhere at once."

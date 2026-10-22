@@ -512,9 +512,9 @@
    **label_pt**: "Abundância"
    **label_en**: "Abundance"
    **hidden_prompt**: "user uses 'plenty of'"
-   **hint_pt**: "Plenty of work."
-   **hint_en**: "Plenty of work."
-   **example_pass**: Plenty of work. | We have plenty of time. | I have hardly any money.
+   **hint_pt**: "I have plenty of work."
+   **hint_en**: "I have plenty of work."
+   **example_pass**: I have plenty of work. | We have plenty of time. | I have hardly any money.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 2. **id**: 2
@@ -540,7 +540,7 @@
 **Script** (7 turns):
 
 1. **Charlotte**: "What's in abundance in your life right now?"
-2. **Student**: "Plenty of work."
+2. **Student**: "I have plenty of work."
 3. **Charlotte**: "Scarce?"
 4. **Student**: "Hardly any sleep."
 5. **Charlotte**: "Common pairing."
@@ -628,7 +628,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Tell me using 'several' and 'most'."
+**Opening line**: "Tell me about the things you collect. Try to use 'several' and 'most'."
 
 **Sub-objectives** (3):
 
@@ -663,7 +663,7 @@
 
 **Suggested flow** (6 turns):
 
-1. **Charlotte**: "Tell me using 'several' and 'most'."
+1. **Charlotte**: "Tell me about the things you collect. Try to use 'several' and 'most'."
 2. **Student**: ~"I have several hobbies."
 3. **Charlotte**: "Majority?"
 4. **Student**: ~"Most people drink coffee."

@@ -112,7 +112,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites three emphatic claims about rare experiences, all opened with negative frequency adverbials and inversion.",
-        "scenario_pt": "Charlotte convida para três afirmações enfáticas sobre experiências raras, todas abertas com advérbios de frequência negativa e inversão.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -121,7 +120,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Inversão com 'Never have I'",
             "label_en": "Inversion with 'Never have I'",
             "hidden_prompt": "user uses 'Never have I + past participle'",
             "hint_en": "Never have I tasted coffee that good.",
@@ -140,7 +138,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Inversão com 'Rarely' ou 'Seldom'",
             "label_en": "Inversion with 'Rarely' or 'Seldom'",
             "hidden_prompt": "user uses 'Rarely/Seldom + auxiliary + subject + base'",
             "hint_en": "Rarely do I feel this prepared for a meeting.",
@@ -159,7 +156,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Inversão com 'Hardly ever'",
             "label_en": "Inversion with 'Hardly ever'",
             "hidden_prompt": "user uses 'Hardly ever + auxiliary + subject'",
             "hint_en": "Hardly ever does my dog sleep through a thunderstorm.",
@@ -191,12 +187,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites emphasis. Use 'Never have I' and 'Rarely do I' freely.",
-        "intro_pt": "Charlotte convida para ênfase. Use 'Never have I' e 'Rarely do I' livremente.",
         "opening_message": "Never have I laughed as hard as I did at that wedding last summer. Your turn — top a rare moment.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Momento raro com inversão",
             "label_en": "Rare moment with inversion",
             "hidden_prompt": "user uses 'Never have I + past participle'",
             "hint_en": "Never have I cried so much at a film.",
@@ -215,7 +209,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outro com 'Rarely' ou 'Seldom'",
             "label_en": "Another with 'Rarely' or 'Seldom'",
             "hidden_prompt": "user uses 'Rarely/Seldom + auxiliary + subject'",
             "hint_en": "Rarely do strangers make me feel that welcome.",
@@ -234,7 +227,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for her rarest moment",
             "hint_en": "What's your rarest?",
@@ -307,13 +299,13 @@
           "passage": "The novelist wrote of her childhood: 'Hardly had we settled into the new town when my father announced another move. No sooner had I made a friend than I was packing again. By twelve I had lived in seven houses and counted only my books as steady company.'",
           "question": "How frequently did the family move?",
           "answer": "very often",
-          "explanation": "Two stacked inversions (\"Hardly had we settled... No sooner had I made a friend\") dramatise the rapid succession of moves. The structures are narrative engines for back-to-back events.",
           "accepts": [
             "often",
             "many times",
             "seven houses",
             "moved a lot"
-          ]
+          ],
+          "explanation": "Two stacked inversions (\"Hardly had we settled... No sooner had I made a friend\") dramatise the rapid succession of moves. The structures are narrative engines for back-to-back events."
         }
       ],
       "listening_speaking": [
@@ -345,7 +337,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks you to chain three \"barely had I... when...\" stories. Each must use inversion + a past simple second event.",
-        "scenario_pt": "Charlotte pede para você encadear três histórias 'barely had I... when...'. Cada uma deve usar inversão + um segundo evento no past simple.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -354,7 +345,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Inversão com 'Hardly had I... when'",
             "label_en": "Inversion with 'Hardly had I... when'",
             "hidden_prompt": "user uses 'Hardly had I + past participle + when + past simple'",
             "hint_en": "Hardly had I started my coffee when my boss called.",
@@ -369,7 +359,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Inversão com 'No sooner had I... than'",
             "label_en": "Inversion with 'No sooner had I... than'",
             "hidden_prompt": "user uses 'No sooner had I + past participle + than + past simple'",
             "hint_en": "No sooner had I unpacked than the rain started.",
@@ -384,7 +373,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Inversão com 'Scarcely had I'",
             "label_en": "Inversion with 'Scarcely had I'",
             "hidden_prompt": "user uses 'Scarcely had I + past participle + when + past simple'",
             "hint_en": "Scarcely had I closed my laptop when the deadline shifted.",
@@ -412,12 +400,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares cascades. Mirror her structure with 'hardly had I' and 'no sooner had I'.",
-        "intro_pt": "Charlotte compartilha cascatas. Espelhe a estrutura dela com 'hardly had I' e 'no sooner had I'.",
         "opening_message": "No sooner had I sat down to write than the doorbell rang. What's your worst day-from-hell sequence?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Cascata pessoal com 'No sooner had I'",
             "label_en": "Personal cascade with 'No sooner had I'",
             "hidden_prompt": "user uses 'No sooner had I + past participle + than + past simple'",
             "hint_en": "No sooner had I left the house than I realised I'd forgotten my keys.",
@@ -432,7 +418,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra cascata com 'Hardly had I'",
             "label_en": "Another cascade with 'Hardly had I'",
             "hidden_prompt": "user uses 'Hardly had I + past participle + when + past simple'",
             "hint_en": "Hardly had I turned back when it started pouring.",
@@ -447,7 +432,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how her writing went after the doorbell",
             "hint_en": "Did you ever get back to writing?",
@@ -555,7 +539,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte wants three layered claims with \"Not only... but also\" and two delayed realisations with \"Not until... did I\".",
-        "scenario_pt": "Charlotte quer três afirmações encadeadas com \"Not only... but also\" e duas realizações atrasadas com \"Not until... did I\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -564,7 +547,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar 'Not only... but also' no presente",
             "label_en": "'Not only... but also' present",
             "hidden_prompt": "user uses 'Not only + does/is + subject + base, but + subject + also'",
             "hint_en": "Not only is she fluent in three languages, but she also teaches them.",
@@ -583,7 +565,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'Not only... but also' no passado",
             "label_en": "'Not only... but also' past",
             "hidden_prompt": "user uses 'Not only did + subject + base, but + subject + also'",
             "hint_en": "Not only did we hit the target, but we also exceeded it by 20%.",
@@ -602,7 +583,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'Not until... did' (realização tardia)",
             "label_en": "'Not until... did' (late realisation)",
             "hidden_prompt": "user uses 'Not until + clause + did + subject + base'",
             "hint_en": "Not until I left the city did I appreciate the quiet.",
@@ -634,12 +614,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte stacks claims. Match her with 'Not only' and 'Not until'.",
-        "intro_pt": "Charlotte empilha afirmações. Acompanhe-a com 'Not only' e 'Not until'.",
         "opening_message": "Not only did my grandmother raise five children alone, but she also went back to school at 50. Top that — or layer your own.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Fazer afirmação em camadas",
             "label_en": "Layered claim",
             "hidden_prompt": "user uses 'Not only + inverted aux + subject + base, but + subject'",
             "hint_en": "Not only did my dad teach himself English, but he also learned coding at 60.",
@@ -658,7 +636,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Realização tardia com 'Not until'",
             "label_en": "Late realisation with 'Not until'",
             "hidden_prompt": "user uses 'Not until + clause + did + subject + base'",
             "hint_en": "Not until I had my own kid did I understand how much they did.",
@@ -677,7 +654,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her grandmother",
             "hint_en": "What did she study?",
@@ -785,7 +761,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte wants three retrospective realisations — two with \"Only after/when/by\", one with \"Little did I know\".",
-        "scenario_pt": "Charlotte quer três realizações retrospectivas — duas com \"Only after/when/by\", uma com \"Little did I know\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -794,7 +769,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Inversão com 'Only after/when'",
             "label_en": "Inversion with 'Only after/when'",
             "hidden_prompt": "user uses 'Only after/when + clause + did + subject + base'",
             "hint_en": "Only after I quit did I realise how much that job was costing me.",
@@ -813,7 +787,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Inversão com 'Only by'",
             "label_en": "Inversion with 'Only by'",
             "hidden_prompt": "user uses 'Only by + -ing + auxiliary + subject + base'",
             "hint_en": "Only by saying no a hundred times did I learn to protect my time.",
@@ -832,7 +805,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Inversão com 'Little did I know'",
             "label_en": "Inversion with 'Little did I know'",
             "hidden_prompt": "user uses 'Little did I know/realise/imagine + that-clause'",
             "hint_en": "Little did I know that conversation would change my career.",
@@ -864,12 +836,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte tells of late realisations. Use 'Only after/when/by' and 'Little did I know'.",
-        "intro_pt": "Charlotte fala sobre realizações tardias. Use 'Only after/when/by' e 'Little did I know'.",
         "opening_message": "Only by failing my first big presentation did I learn how to prepare. What unlocked something for you?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Realização com 'Only by/after/when'",
             "label_en": "Realisation with 'Only by/after/when'",
             "hidden_prompt": "user uses 'Only + phrase + auxiliary + subject + base'",
             "hint_en": "Only after losing a friend did I start texting people back the same day.",
@@ -888,7 +858,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Ironia dramática com 'Little did I know'",
             "label_en": "Dramatic irony with 'Little did I know'",
             "hidden_prompt": "user uses 'Little did I know + that-clause'",
             "hint_en": "Little did I know that one email would lead to a new career.",
@@ -907,7 +876,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for her own example",
             "hint_en": "What's your foreshadowing moment?",
@@ -1015,7 +983,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte casts you as the writer of a corporate policy. You produce three firm prohibitions using formal inversion.",
-        "scenario_pt": "Charlotte te coloca como redator de uma política corporativa. Você produz três proibições firmes usando formal inversion.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1024,7 +991,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar 'Under no circumstances' + modal",
             "label_en": "'Under no circumstances' + modal",
             "hidden_prompt": "user uses 'Under no circumstances + should/must + subject + base'",
             "hint_en": "Under no circumstances should staff share passwords.",
@@ -1043,7 +1009,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'On no account' + modal",
             "label_en": "'On no account' + modal",
             "hidden_prompt": "user uses 'On no account + may/must + subject + base'",
             "hint_en": "On no account may client data leave the secure server.",
@@ -1062,7 +1027,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'At no time' (negação)",
             "label_en": "'At no time' (denial)",
             "hidden_prompt": "user uses 'At no time + did/has + subject + base/past participle'",
             "hint_en": "At no time has the company authorised such a deduction.",
@@ -1094,12 +1058,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte writes a formal letter. Use 'Under no circumstances', 'In no way', 'At no time'.",
-        "intro_pt": "Charlotte escreve uma carta formal. Use 'Under no circumstances', 'In no way', 'At no time'.",
         "opening_message": "At no time did our team approve this campaign. How would you defend that publicly?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Negação formal com inversão",
             "label_en": "Formal denial with inversion",
             "hidden_prompt": "user uses 'In no way' or 'At no time' + inversion",
             "hint_en": "In no way does this campaign reflect our values.",
@@ -1118,7 +1080,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Proibição forte",
             "label_en": "Strong prohibition",
             "hidden_prompt": "user uses 'Under no circumstances + modal + subject'",
             "hint_en": "Under no circumstances will we accept responsibility for content we didn't approve.",
@@ -1137,7 +1098,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for advice on tone",
             "hint_en": "Too strong, or about right?",

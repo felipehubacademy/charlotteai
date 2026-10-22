@@ -776,11 +776,11 @@
           "sentence": "I'm _____ hungry. Let's eat.",
           "hint": "Intensificador (muito, tão)",
           "answer": "so",
-          "explanation": "\"So + adjetivo\" intensifica: \"so hungry\" = \"com muita fome\". \"Very hungry\" e \"really hungry\" também valem.",
           "accepts": [
             "very",
             "really"
-          ]
+          ],
+          "explanation": "\"So + adjetivo\" intensifica: \"so hungry\" = \"com muita fome\". \"Very hungry\" e \"really hungry\" também valem."
         },
         {
           "type": "fill_gap",

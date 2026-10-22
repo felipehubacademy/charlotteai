@@ -1191,7 +1191,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 90,
-        "opening_line": "Walk me through yesterday — three actions.",
+        "opening_line": "Tell me about yesterday. What are three things you did?",
         "objectives": [
           {
             "id": 1,
@@ -1243,7 +1243,7 @@
           }
         ],
         "closing_cue": "Charlotte fecha com \"Full day captured!\" quando obj_3 baterem.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Walk me through yesterday — three actions.\"\n2. **Student**: ~\"I worked all morning.\"\n3. **Charlotte**: \"Lunch?\"\n4. **Student**: ~\"I called my mother.\"\n5. **Charlotte**: \"Evening?\"\n6. **Student**: ~\"I cooked dinner.\"\n7. **Charlotte**: \"Full day captured!\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about yesterday. What are three things you did?\"\n2. **Student**: ~\"I worked all morning.\"\n3. **Charlotte**: \"Lunch?\"\n4. **Student**: ~\"I called my mother.\"\n5. **Charlotte**: \"Evening?\"\n6. **Student**: ~\"I cooked dinner.\"\n7. **Charlotte**: \"Full day captured!\"",
         "evaluation_focus": [
           "Sequência narrativa",
           "-ed em todos os verbos",

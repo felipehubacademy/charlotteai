@@ -160,7 +160,7 @@
         "persona": "Igorfina",
         "persona_outfit": "igorfina_casual",
         "time_budget_sec": 90,
-        "opening_line": "You can take the bus, the subway or a taxi. What do you want?",
+        "opening_line": "You can take the bus, the subway or a taxi. Which one do you want?",
         "objectives": [
           {
             "id": 1,

@@ -348,10 +348,10 @@
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
    **label_en**: "Ask Charlotte"
-   **hidden_prompt**: "user asks 'What may you do?'"
-   **hint_pt**: "What may you do?"
-   **hint_en**: "What may you do?"
-   **example_pass**: What may you do? | It may rain later. | How about you? | What should I do? | Any advice? | What would you do?
+   **hidden_prompt**: "user asks 'What might you do?'"
+   **hint_pt**: "What might you do?"
+   **hint_en**: "What might you do?"
+   **example_pass**: What might you do? | It may rain later. | How about you? | What should I do? | Any advice? | What would you do?
    **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 **Closing cue**: Charlotte closes with "Open scenarios!" when obj_3 hits.
@@ -363,7 +363,7 @@
 3. **Charlotte**: "Work?"
 4. **Student**: "My boss may call me."
 5. **Charlotte**: "Hope it's good."
-6. **Student**: "What may you do?"
+6. **Student**: "What might you do?"
 7. **Charlotte**: "I may take a day off. Open scenarios!"
 
 > I02 chat = LLM puro.
@@ -446,7 +446,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "What could we do this weekend? Suggest possibilities."
+**Opening line**: "What could we do this weekend? Give me some ideas!"
 
 **Sub-objectives** (3):
 
@@ -481,7 +481,7 @@
 
 **Suggested flow** (6 turns):
 
-1. **Charlotte**: "What could we do this weekend? Suggest possibilities."
+1. **Charlotte**: "What could we do this weekend? Give me some ideas!"
 2. **Student**: ~"We could go hiking."
 3. **Charlotte**: "Or?"
 4. **Student**: ~"We could see a movie."
