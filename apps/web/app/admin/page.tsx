@@ -190,20 +190,27 @@ export default function AdminUsersPage() {
   };
 
   // Filtered + sorted
+  // Mesma regra para a lista filtrada e para as contagens dos filtros rápidos.
+  const inFilter = (u: User, f: FilterKey): boolean =>
+    f === 'all' ? true :
+    f === 'institutional' ? u.is_institutional :
+    f === 'subscriber' ? u.sub_phase === 'pagante' :
+    f === 'trial' ? !!u.sub_phase && u.sub_phase.startsWith('teste') :
+    f === 'expired' ? !u.is_institutional && (
+      u.subscription_status === 'expired' ||
+      (u.subscription_status === 'trial' && !!u.trial_ends_at && new Date(u.trial_ends_at) < new Date())
+    ) :
+    f === 'none' ? u.subscription_status === 'none' && !u.is_institutional : true;
+  const filterCounts = useMemo(() => {
+    const keys: FilterKey[] = ['all', 'subscriber', 'trial', 'expired', 'institutional', 'none'];
+    return Object.fromEntries(keys.map(k => [k, users.filter(u => inFilter(u, k)).length])) as Record<FilterKey, number>;
+  }, [users]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const displayed = useMemo(() => {
     const q = search.toLowerCase();
     let list = users.filter(u => {
       const matchQ = !q || u.email.toLowerCase().includes(q) || (u.name ?? '').toLowerCase().includes(q) || (!!u.username && `@${u.username}`.includes(q.startsWith('@') ? q : `@${q}`));
-      const matchF =
-        filter === 'all' ? true :
-        filter === 'institutional' ? u.is_institutional :
-        filter === 'subscriber' ? u.sub_phase === 'pagante' :
-        filter === 'trial' ? !!u.sub_phase && u.sub_phase.startsWith('teste') :
-        filter === 'expired' ? !u.is_institutional && (
-          u.subscription_status === 'expired' ||
-          (u.subscription_status === 'trial' && !!u.trial_ends_at && new Date(u.trial_ends_at) < new Date())
-        ) :
-        filter === 'none' ? u.subscription_status === 'none' && !u.is_institutional : true;
+      const matchF = inFilter(u, filter);
       return matchQ && matchF;
     });
     list = [...list].sort((a, b) => {
@@ -422,12 +429,12 @@ export default function AdminUsersPage() {
         </div>
         <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
           {([
-            { id: 'all',           label: `Todos (${users.length})` },
-            { id: 'subscriber',    label: 'Pagantes' },
-            { id: 'trial',         label: 'Em teste' },
-            { id: 'expired',       label: `Expirado${expiredCount > 0 ? ` (${expiredCount})` : ''}` },
-            { id: 'institutional', label: 'Institucional' },
-            { id: 'none',          label: 'Sem plano' },
+            { id: 'all',           label: `Todos (${filterCounts.all ?? 0})` },
+            { id: 'subscriber',    label: `Pagantes (${filterCounts.subscriber ?? 0})` },
+            { id: 'trial',         label: `Em teste (${filterCounts.trial ?? 0})` },
+            { id: 'expired',       label: `Expirado (${filterCounts.expired ?? 0})` },
+            { id: 'institutional', label: `Institucional (${filterCounts.institutional ?? 0})` },
+            { id: 'none',          label: `Sem plano (${filterCounts.none ?? 0})` },
           ] as { id: FilterKey; label: string }[]).map(f => (
             <button
               key={f.id}
