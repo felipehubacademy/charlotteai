@@ -8,7 +8,7 @@
  * O botão fica fixo no rodapé (sempre visível, acima da barra do Android).
  */
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import {
   Modal, View, TouchableOpacity, ActivityIndicator,
   ScrollView, Platform, Linking,
@@ -34,6 +34,7 @@ import {
   getTrialDays,
 } from '@/lib/purchases';
 import { appAlert, AppAlertHost } from '@/components/ui/AppAlert';
+import { track } from '@/lib/analytics';
 
 const C = {
   bg:         '#FAF7F0',
@@ -79,6 +80,27 @@ export function PaywallModal() {
 
   const forcedOpen = paywallOpen && !!profile && hasAccess;
   const visible    = (!!profile && !hasAccess) || forcedOpen;
+
+  // Funil do paywall (charlotte_analytics_events): viu -> tocou em assinar -> comprou/cancelou/erro, ou fechou.
+  // `kind`: 'novo' (conta nova, oferta do teste da loja), 'degustacao' (abriu pelo bloco travado), 'sem_acesso'.
+  const shownRef = useRef(false);
+  const purchasedRef = useRef(false);
+  const funnelProps = () => ({
+    kind: !hasAccess ? 'sem_acesso' : (profile?.subscription_status ?? 'none') === 'none' ? 'degustacao' : 'aberto',
+    status: profile?.subscription_status ?? 'none',
+    plan: selected.includes('yearly') ? 'yearly' : 'monthly',
+    trial_days: selTrialRef.current,
+  });
+  const selTrialRef = useRef(0);
+  useEffect(() => {
+    if (visible && !shownRef.current) {
+      shownRef.current = true; purchasedRef.current = false;
+      track('paywall_shown', funnelProps());
+    } else if (!visible && shownRef.current) {
+      shownRef.current = false;
+      if (!purchasedRef.current) track('paywall_dismissed', funnelProps());
+    }
+  }, [visible]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [offering, setOffering]         = useState<PurchasesOffering | null>(null);
   const [selected, setSelected]         = useState<string>(PRODUCT_YEARLY);
@@ -185,11 +207,20 @@ export function PaywallModal() {
     // Salvaguarda: garante que a compra seja vinculada ao UUID do Supabase
     // e não a um $RCAnonymousID. identifyUser é idempotente.
     if (profile?.id) await identifyUser(profile.id);
+    track('paywall_purchase_tap', funnelProps());
     const result = await purchasePackage(pkg);
 
     if (result.cancelled) {
+      track('paywall_purchase_cancelled', funnelProps());
       setLoading(false);
       return;
+    }
+
+    if (result.success) {
+      purchasedRef.current = true;
+      track('subscription_purchased', { ...funnelProps(), product: pkg.product.identifier });
+    } else {
+      track('paywall_purchase_error', { ...funnelProps(), code: result.errorCode ?? null });
     }
 
     if (result.success && result.customerInfo && profile?.id) {
@@ -254,6 +285,8 @@ export function PaywallModal() {
     setLoading(false);
 
     if (r.success && r.customerInfo && profile?.id) {
+      purchasedRef.current = true;
+      track('subscription_restored', funnelProps());
       await syncSubscriptionToSupabase(profile.id, r.customerInfo).catch(() => {});
       await refreshProfile();
     }
@@ -313,6 +346,7 @@ export function PaywallModal() {
   const monthlyTrial = monthlyPkg ? trialDays[monthlyPkg.product.identifier] ?? 0 : 0;
   const isYearlySel  = selected.includes('yearly');
   const selTrial     = isYearlySel ? yearlyTrial : monthlyTrial;
+  selTrialRef.current = selTrial;
   const anyTrial     = Math.max(yearlyTrial, monthlyTrial);
   const selPriceLabel = isYearlySel ? `${yearlyPrice}${isPt ? '/ano' : '/yr'}` : `${monthlyPrice}${isPt ? '/mês' : '/mo'}`;
 
