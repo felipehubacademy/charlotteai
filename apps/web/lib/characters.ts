@@ -135,6 +135,28 @@ export function voiceSegments(c: Character, impression: Impression | null, text:
   return splitByLanguage(text).map(seg => ({ voiceId: seg.pt ? c.elevenVoiceIdPt! : base.voiceId, settings: base.settings, text: seg.text }));
 }
 
+/** Emenda mp3 de vozes diferentes num áudio só. Cada pedaço do ElevenLabs vem com etiqueta ID3 e um quadro "Info"
+ *  que diz a duração DELE: emendado assim, o tocador acha que o áudio acaba no fim do 1º pedaço. Tira os dois. */
+export function concatMp3(parts: Buffer[]): Buffer {
+  if (parts.length === 1) return parts[0];
+  const BITRATES = [0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320];
+  const RATES = [44100, 48000, 32000];
+  return Buffer.concat(parts.map(b => {
+    let o = 0;
+    if (b.length > 10 && b.toString('latin1', 0, 3) === 'ID3') {
+      o = 10 + ((b[6] & 0x7f) << 21 | (b[7] & 0x7f) << 14 | (b[8] & 0x7f) << 7 | (b[9] & 0x7f));
+    }
+    // 1º quadro: se for o quadro "Info"/"Xing" (MPEG-1 Layer III), pula ele.
+    if (b[o] === 0xff && (b[o + 1] & 0xe0) === 0xe0) {
+      const br = BITRATES[b[o + 2] >> 4], sr = RATES[(b[o + 2] >> 2) & 3], pad = (b[o + 2] >> 1) & 1;
+      const len = br && sr ? Math.floor((144 * br * 1000) / sr) + pad : 0;
+      const head = b.toString('latin1', o, o + Math.min(len, 64));
+      if (len && (head.includes('Info') || head.includes('Xing'))) o += len;
+    }
+    return b.subarray(o);
+  }));
+}
+
 /** Ligação (agente do ElevenLabs): etiqueta <Portugues> nas partes em português, que troca para a voz em português.
  *  Trecho que já está dentro de uma etiqueta de imitação não é mexido. */
 export const PT_VOICE_TAG = 'Portugues';

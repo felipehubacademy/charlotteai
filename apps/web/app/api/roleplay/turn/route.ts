@@ -14,7 +14,7 @@ import { aiFetch, transcribeModel, transcribedSeconds } from '@/lib/ai-models';
 import { judgeObjectives } from '@/lib/objective-judge';
 import { logOpenAIUsage, logElevenLabsUsage } from '@/lib/openai-usage';
 import { speak } from '@/lib/charlotte-voice';
-import { characterOf, voiceSegments, impressionFromOutfit, wholeActivityImpressionStyle } from '@/lib/characters';
+import { characterOf, voiceSegments, impressionFromOutfit, wholeActivityImpressionStyle, concatMp3 } from '@/lib/characters';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -363,7 +363,7 @@ async function ttsIgorfina(text: string, userId?: string, outfit?: string): Prom
     return Buffer.from(await res.arrayBuffer());
   }));
   logElevenLabsUsage({ endpoint: '/api/roleplay/turn:tts', charCount: text.length, model: 'eleven_multilingual_v2', userId: userId ?? undefined, meta: { character: 'igorfina' } });
-  return { audio: Buffer.concat(parts), mime: 'audio/mpeg' };
+  return { audio: concatMp3(parts), mime: 'audio/mpeg' };
 }
 
 /** Fala do personagem: Igorfina na voz dele (se falhar, cai na voz padrão); o resto, OpenAI. */

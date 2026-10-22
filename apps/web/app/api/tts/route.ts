@@ -5,7 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { logOpenAIUsage, logElevenLabsUsage } from '@/lib/openai-usage';
-import { characterOf, impressionOf, voiceFor, voiceSegments } from '@/lib/characters';
+import { characterOf, impressionOf, voiceFor, voiceSegments, concatMp3 } from '@/lib/characters';
 import { speak } from '@/lib/charlotte-voice';
 import { createHash } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
         // Português na voz em português do personagem e inglês na voz normal, emendados num áudio só.
         const segs = voiceSegments(c, imp, text);
         const parts = await Promise.all(segs.map(sg => ttsElevenLabs(sg.text, sg.voiceId, sg.settings)));
-        const buf = Buffer.concat(parts);
+        const buf = concatMp3(parts);
         if (cachePath) {
           await getSupabaseAdmin().storage.from(LS_BUCKET).upload(cachePath, buf, { contentType: 'audio/mpeg', upsert: true })
             .catch((e: unknown) => console.warn('TTS cache upload falhou:', e));
