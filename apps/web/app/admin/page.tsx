@@ -708,8 +708,9 @@ export default function AdminUsersPage() {
                         {form.is_institutional
                           ? <option value="none">Institucional (gerenciado)</option>
                           : <>
-                              <option value="none">Sem plano</option>
-                              <option value="trial">Trial</option>
+                              <option value="none">Sem plano (degustação)</option>
+                              {/* Trial do app acabou em 14/10: não dá para escolher; só aparece em conta antiga que ainda está nele. */}
+                              {form.subscription_status === 'trial' && <option value="trial" disabled>Trial antigo do app</option>}
                               <option value="active">Ativo</option>
                               <option value="cancelled">Cancelado</option>
                               <option value="expired">Expirado</option>
