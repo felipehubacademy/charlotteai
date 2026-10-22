@@ -17,13 +17,14 @@
 //   iOS intercepta https://queizy.com/open direto no app
 //   sem nem passar pelo browser — fluxo ainda mais suave.
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { getSupabase } from '@/lib/supabase';
 
 const IOS_URL     = 'https://apps.apple.com/app/id6760943273';
 const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.hubacademy.charlotte';
 const QR_PAGE_URL = 'https://queizy.com/open';
 
-type Phase = 'launching' | 'fallback' | 'expired';
+type Phase = 'launching' | 'fallback' | 'expired' | 'password' | 'password_done';
 type OS    = 'ios' | 'android' | 'desktop';
 
 function getOS(): OS {
@@ -38,10 +39,55 @@ export default function OpenPage() {
   const [phase, setPhase] = useState<Phase>('launching');
   const [os, setOs]       = useState<OS>('desktop');
   const [dots, setDots]   = useState('.');
+  // Link de criar/recuperar senha (compra pelo site, "Esqueci minha senha"): a senha é criada AQUI, no navegador,
+  // em qualquer aparelho. Antes dependia de abrir o app com a sessão, e no computador (QR sem a sessão) ou no
+  // navegador do Gmail (bloqueia abrir o app) a pessoa caía no app sem senha.
+  const tokensRef = useRef<{ access_token: string; refresh_token: string } | null>(null);
+  const [pw, setPw] = useState('');
+  const [pw2, setPw2] = useState('');
+  const [pwErr, setPwErr] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [accountEmail, setAccountEmail] = useState('');
+
+  const savePassword = async () => {
+    setPwErr('');
+    if (pw.length < 6) { setPwErr('A senha precisa ter pelo menos 6 caracteres.'); return; }
+    if (pw !== pw2) { setPwErr('As duas senhas não são iguais.'); return; }
+    const sb = getSupabase();
+    if (!sb || !tokensRef.current) { setPwErr('Não foi possível continuar. Peça um link novo no app, em "Esqueceu sua senha?".'); return; }
+    setSaving(true);
+    try {
+      const { data, error } = await sb.auth.setSession(tokensRef.current);
+      if (error) throw error;
+      const { error: e2 } = await sb.auth.updateUser({ password: pw });
+      if (e2) throw e2;
+      setAccountEmail(data.user?.email ?? '');
+      await sb.auth.signOut({ scope: 'local' }).catch(() => {});
+      setPhase('password_done');
+    } catch (e: any) {
+      const m = String(e?.message ?? '');
+      setPwErr(/expired|invalid/i.test(m)
+        ? 'Este link expirou. Peça um novo no app, em "Esqueceu sua senha?".'
+        : /different from the old|same/i.test(m) ? 'Use uma senha diferente da anterior.'
+        : 'Não foi possível salvar a senha. Tente de novo.');
+    } finally { setSaving(false); }
+  };
 
   useEffect(() => {
     const currentOs = getOS();
     setOs(currentOs);
+
+    // Link de senha: mostra o formulário (qualquer aparelho) em vez de tentar abrir o app.
+    {
+      const h = new URLSearchParams(window.location.hash.slice(1));
+      const at = h.get('access_token'), rt = h.get('refresh_token');
+      if (at && rt && h.get('type') === 'recovery') {
+        tokensRef.current = { access_token: at, refresh_token: rt };
+        history.replaceState(null, '', window.location.pathname); // tira os tokens da barra de endereço
+        setPhase('password');
+        return;
+      }
+    }
 
     // Desktop nao tem o app — vai direto para o fallback com QR code
     if (currentOs === 'desktop') {
@@ -228,6 +274,10 @@ export default function OpenPage() {
             height: 1px;
             background: rgba(22,21,58,0.08);
           }
+.pw { display: block; width: 100%; padding: 14px 16px; margin-bottom: 10px; border-radius: 14px; border: 1px solid rgba(22,21,58,0.15); font-size: 16px; color: #16153A; background: #fff; }
+          .pw-err { color: #D12A64; font-size: 13px; margin: 4px 0 10px; }
+          .pw-btn { display: block; width: 100%; padding: 15px; margin-top: 6px; border: 0; border-radius: 16px; background: #DCFF4A; color: #16131F; font-size: 16px; font-weight: 800; cursor: pointer; text-decoration: none; }
+          .pw-btn:disabled { opacity: 0.6; }
           .note {
             font-size: 12px;
             color: #9896B8;
@@ -244,7 +294,30 @@ export default function OpenPage() {
 
           <p className="brand">Queizy</p>
 
-          {phase === 'expired' ? (
+          {phase === 'password' ? (
+            <>
+              <h1>Crie sua senha</h1>
+              <p className="sub">Depois é só entrar no app Queizy com o seu e-mail e esta senha.</p>
+              <input className="pw" type="password" autoComplete="new-password" placeholder="Nova senha (mínimo 6 caracteres)"
+                value={pw} onChange={e => setPw(e.target.value)} />
+              <input className="pw" type="password" autoComplete="new-password" placeholder="Repita a senha"
+                value={pw2} onChange={e => setPw2(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') savePassword(); }} />
+              {pwErr ? <p className="pw-err">{pwErr}</p> : null}
+              <button className="pw-btn" onClick={savePassword} disabled={saving}>{saving ? 'Salvando…' : 'Salvar senha'}</button>
+            </>
+          ) : phase === 'password_done' ? (
+            <>
+              <h1>Senha criada!</h1>
+              <p className="sub">Agora abra o app Queizy e entre com {accountEmail ? <strong>{accountEmail}</strong> : 'o seu e-mail'} e a senha que você criou.</p>
+              {os !== 'desktop' ? (
+                <a className="pw-btn" href={os === 'android' ? 'intent://#Intent;scheme=charlotte;package=com.hubacademy.charlotte;end' : 'charlotte://'}>Abrir o app</a>
+              ) : null}
+              <div className="store-badges" style={{ marginTop: 16 }}>
+                {os !== 'android' ? <a className="store-badge" href={IOS_URL}><img src="/images/store-badges/app-store-pt.svg" alt="Baixar na App Store" /></a> : null}
+                {os !== 'ios' ? <a className="store-badge" href={ANDROID_URL}><img src="/images/store-badges/google-play-pt.png" alt="Disponível no Google Play" /></a> : null}
+              </div>
+            </>
+          ) : phase === 'expired' ? (
             /* ── Link expirado ── */
             <>
               <h1>Link expirado</h1>
