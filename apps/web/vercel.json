@@ -77,6 +77,10 @@
       "schedule": "*/5 * * * *"
     },
     {
+      "path": "/api/cron/access-help",
+      "schedule": "17 * * * *"
+    },
+    {
       "path": "/api/cron/subscription-notices",
       "schedule": "0 13 * * *"
     },
