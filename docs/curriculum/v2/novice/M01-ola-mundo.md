@@ -461,7 +461,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte simula um match num app de idiomas. Pratica dizer de onde você é e devolver a pergunta."
-**Opening message**: "Hey! Nice to match. Where are you from?"
+**Opening message**: "Hey! We matched! Where are you from?"
 
 **Sub-objectives** (POC base-da-base: 3 objetivos, todos curtos):
 
@@ -496,7 +496,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Hey! Nice to match. Where are you from?"
+1. **Charlotte**: "Hey! We matched! Where are you from?"
 2. **Student**: "I'm from Brazil."
 3. **Charlotte**: "Cool! Are you Brazilian?"
 4. **Student**: "I'm Brazilian."

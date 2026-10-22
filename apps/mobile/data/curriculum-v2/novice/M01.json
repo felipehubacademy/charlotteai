@@ -656,7 +656,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_pt": "Charlotte simula um match num app de idiomas. Pratica dizer de onde você é e devolver a pergunta.",
-        "opening_message": "Hey! Nice to match. Where are you from?",
+        "opening_message": "Hey! We matched! Where are you from?",
         "objectives": [
           {
             "id": 1,
@@ -713,7 +713,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Awesome! Talk soon.\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hey! Nice to match. Where are you from?\"\n2. **Student**: \"I'm from Brazil.\"\n3. **Charlotte**: \"Cool! Are you Brazilian?\"\n4. **Student**: \"I'm Brazilian.\"\n5. **Charlotte**: \"First time chatting with someone from Brazil.\"\n6. **Student**: \"Where are you from?\"\n7. **Charlotte**: \"I'm from New York. Awesome — talk soon!\"\n\n> N03 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hey! We matched! Where are you from?\"\n2. **Student**: \"I'm from Brazil.\"\n3. **Charlotte**: \"Cool! Are you Brazilian?\"\n4. **Student**: \"I'm Brazilian.\"\n5. **Charlotte**: \"First time chatting with someone from Brazil.\"\n6. **Student**: \"Where are you from?\"\n7. **Charlotte**: \"I'm from New York. Awesome — talk soon!\"\n\n> N03 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
       }
     },
     {
