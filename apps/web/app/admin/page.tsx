@@ -397,12 +397,12 @@ export default function AdminUsersPage() {
             <div className="col-3"><StatCard label="Institucionais" value={stats.institutional} delay={180} /></div>
             <div className="col-3">
               <StatCard label="Novos (30d)" value={stats.last30}
-                sub={stats.growthPct != null ? `${stats.growthPct > 0 ? '+' : ''}${stats.growthPct.toFixed(1)}% vs anterior` : undefined}
+                sub={stats.growthPct != null && Math.abs(stats.growthPct) <= 500 ? `${stats.growthPct > 0 ? '+' : ''}${stats.growthPct.toFixed(0)}% vs 30 dias anteriores` : 'contas criadas nos últimos 30 dias'}
                 delay={240} accent="var(--brand)" />
             </div>
             <div className="col-3"><StatCard label="Ativos Hoje" value={stats.activeToday} accent="var(--ok)" delay={300} /></div>
             <div className="col-3"><StatCard label="Ativos (7d)" value={stats.activeWeek} delay={360} /></div>
-            <div className="col-3"><StatCard label="Trial Expirado" value={stats.trialExpired} accent={stats.trialExpired > 0 ? 'var(--warn)' : undefined} delay={420} /></div>
+            <div className="col-3"><StatCard label="Teste encerrado" value={stats.trialExpired} accent={stats.trialExpired > 0 ? 'var(--warn)' : undefined} delay={420} /></div>
           </div>
         </div>
       )}
