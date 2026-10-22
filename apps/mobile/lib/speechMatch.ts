@@ -111,6 +111,8 @@ function expandMore(t: string): string {
     .replace(/\bo'clock\b/g, 'oclock');
 }
 
+const HOMOPHONES: Record<string, string> = { where: 'were', wear: 'were' };
+
 function normalizeWith(text: string, sTo: 'is' | 'has', dTo: 'would' | 'had'): string {
   let t = text.toLowerCase().replace(/[‘’`´]/g, "'").replace(/[“”„]/g, '"');
   // Lacunas do tipo [X] / [role] não são faladas pelo aluno: saem da frase esperada.
@@ -129,7 +131,8 @@ function normalizeWith(text: string, sTo: 'is' | 'has', dTo: 'would' | 'had'): s
     .replace(/[.,!?;:"()*]/g, ' ')
     .replace(/'s\b/g, 's')                        // possessivo: father's = fathers
     .replace(/'/g, '');
-  const words = t.split(/\s+/).filter(Boolean).flatMap(w => (INFORMAL[w] ?? w).split(' '));
+  // Homófonos que o reconhecimento troca: "Were you working?" vira "Where you working?".
+  const words = t.split(/\s+/).filter(Boolean).flatMap(w => (INFORMAL[w] ?? HOMOPHONES[w] ?? w).split(' '));
   const raw: string[] = [];
   for (let i = 0; i < words.length; i++) {
     const w = words[i];

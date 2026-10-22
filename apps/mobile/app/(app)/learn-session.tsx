@@ -829,6 +829,13 @@ export default function LearnSessionScreen() {
     const missLine = missing.length && transcript
       ? (isPortuguese ? ` Faltou: ${missing.join(', ')}.` : ` Missing: ${missing.join(', ')}.`) : '';
 
+    // A frase é uma pergunta e o aluno RESPONDEU ("I'm fine", "Yes, I was") em vez de repetir: diz isso.
+    const answered = /\?\s*["')]*\s*$/.test(phraseText.trim()) && !!transcript
+      && /^(yes|yeah|yep|no|nope|i|i'm|im|fine|good|great|ok|okay|sure|we|it|my|they|he|she)\b/i.test(transcript.trim());
+    const answeredMsg = isPortuguese
+      ? `É para repetir a pergunta, não responder. Entendemos: "${transcript}". Ouça e diga a pergunta igual.`
+      : `Repeat the question, don't answer it. We heard: "${transcript}". Listen and say the same question.`;
+
     let feedback: NonNullable<PronFeedback>;
     // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
     if (isNoviceLike) {
@@ -838,7 +845,7 @@ export default function LearnSessionScreen() {
         soundEngine.play('answer_correct').catch(() => {});
       } else {
         feedback = { state: 'error', xp: 0, message: transcript
-          ? (isPortuguese ? `Tente de novo. Entendemos: "${transcript}".${missLine}` : `Try again. We heard: "${transcript}".${missLine}`)
+          ? (answered ? answeredMsg : isPortuguese ? `Tente de novo. Entendemos: "${transcript}".${missLine}` : `Try again. We heard: "${transcript}".${missLine}`)
           : (isPortuguese ? 'Não ouvimos nada. Segure o botão enquanto fala, perto do microfone.' : "We didn't hear anything. Hold the button while you speak, close to the mic.") };
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
         soundEngine.play('answer_wrong').catch(() => {});
@@ -849,11 +856,11 @@ export default function LearnSessionScreen() {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       soundEngine.play('answer_correct').catch(() => {});
     } else if (pct >= 50) {
-      feedback = { state: 'close', xp: 8, message: isPortuguese ? `Quase! Entendemos: "${transcript}".${missLine} Tente de novo.` : `Close! We heard: "${transcript}".${missLine} Try again.` };
+      feedback = { state: 'close', xp: 8, message: answered ? answeredMsg : isPortuguese ? `Quase! Entendemos: "${transcript}".${missLine} Tente de novo.` : `Close! We heard: "${transcript}".${missLine} Try again.` };
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
     } else {
       feedback = { state: 'error', xp: 0, message: transcript
-        ? (isPortuguese ? `Tente de novo. Entendemos: "${transcript}".${missLine}` : `Try again. We heard: "${transcript}".${missLine}`)
+        ? (answered ? answeredMsg : isPortuguese ? `Tente de novo. Entendemos: "${transcript}".${missLine}` : `Try again. We heard: "${transcript}".${missLine}`)
         : (isPortuguese ? 'Não ouvimos nada. Segure o botão enquanto fala, perto do microfone.' : "We didn't hear anything. Hold the button while you speak, close to the mic.") };
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
       soundEngine.play('answer_wrong').catch(() => {});

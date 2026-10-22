@@ -21,6 +21,8 @@ export function normaliseAnswer(s: string): string {
     .replace(/\b(was|is|are|were|do|does|did|has|have|had|could|should|would|wo|must|need)nt\b/g, "$1n't")
     .replace(/\bcant\b/g, "can't")
     .replace(/\bim\b/g, "i'm")
+    // Teclado em português troca "to" por "tô" ("Nice tô meet you").
+    .replace(/(^|\s)tô(?=\s|$)/g, '$1to')
     .replace(/\s+/g, ' ')
     .trim();
 }

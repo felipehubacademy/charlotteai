@@ -82,7 +82,8 @@
 8. **fix_error** — "Good meet you!"
    **Hint**: Frase padrão ao conhecer alguém
    **Answer**: Nice to meet you!
-   **Explanation**: A frase correta é "Nice to meet you" — "Good meet you" não existe em inglês. Note também o "to" entre "Nice" e "meet".
+   **Accepts**: Good to meet you! / Pleased to meet you!
+   **Explanation**: A frase correta é "Nice to meet you" (ou "Good to meet you") — "Good meet you" não existe em inglês. Note o "to" antes de "meet".
 
 9. **fix_error** — "How you are?"
    **Hint**: Em perguntas, o verbo "to be" vem antes do sujeito

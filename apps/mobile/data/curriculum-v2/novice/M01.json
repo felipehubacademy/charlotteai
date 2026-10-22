@@ -120,7 +120,11 @@
           "sentence": "Good meet you!",
           "hint": "Frase padrão ao conhecer alguém",
           "answer": "Nice to meet you!",
-          "explanation": "A frase correta é \"Nice to meet you\" — \"Good meet you\" não existe em inglês. Note também o \"to\" entre \"Nice\" e \"meet\"."
+          "explanation": "A frase correta é \"Nice to meet you\" (ou \"Good to meet you\") — \"Good meet you\" não existe em inglês. Note o \"to\" antes de \"meet\".",
+          "accepts": [
+            "Good to meet you!",
+            "Pleased to meet you!"
+          ]
         },
         {
           "type": "fix_error",
