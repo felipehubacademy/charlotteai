@@ -21,7 +21,7 @@ interface User {
 }
 interface Stats {
   total: number; institutional: number; subscribers: number; onTrial: number;
-  trialExpired: number; last30: number; growthPct: number | null; activeToday: number; activeWeek: number;
+  trialExpired: number; last30: number; last24h?: number; prev24h?: number; growthPct: number | null; activeToday: number; activeWeek: number;
 }
 interface Form {
   email: string; password: string; name: string; charlotte_level: string;
@@ -396,8 +396,8 @@ export default function AdminUsersPage() {
             <div className="col-3"><StatCard label="Em teste grátis" value={stats.onTrial} accent="var(--accent)" delay={120} /></div>
             <div className="col-3"><StatCard label="Institucionais" value={stats.institutional} delay={180} /></div>
             <div className="col-3">
-              <StatCard label="Novos (30d)" value={stats.last30}
-                sub={stats.growthPct != null && Math.abs(stats.growthPct) <= 500 ? `${stats.growthPct > 0 ? '+' : ''}${stats.growthPct.toFixed(0)}% vs 30 dias anteriores` : 'contas criadas nos últimos 30 dias'}
+              <StatCard label="Novos (24h)" value={stats.last24h ?? 0}
+                sub={`${stats.prev24h ?? 0} nas 24 h anteriores · ${stats.last30} em 30 dias`}
                 delay={240} accent="var(--brand)" />
             </div>
             <div className="col-3"><StatCard label="Ativos Hoje" value={stats.activeToday} accent="var(--ok)" delay={300} /></div>

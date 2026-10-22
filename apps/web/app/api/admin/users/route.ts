@@ -185,6 +185,10 @@ export async function GET(req: NextRequest) {
   const d30   = new Date(now); d30.setDate(d30.getDate() - 30);
   const d60   = new Date(now); d60.setDate(d60.getDate() - 60);
   const last30 = usersWithEng.filter(u => new Date(u.created_at) >= d30).length;
+  // Novos nas últimas 24 h e nas 24 h anteriores (para comparar).
+  const d2 = new Date(now); d2.setDate(d2.getDate() - 2);
+  const last24h = usersWithEng.filter(u => new Date(u.created_at) >= d1).length;
+  const prev24h = usersWithEng.filter(u => new Date(u.created_at) >= d2 && new Date(u.created_at) < d1).length;
   const prev30 = usersWithEng.filter(u => new Date(u.created_at) >= d60 && new Date(u.created_at) < d30).length;
   const growthPct = prev30 === 0 ? null : Math.round(((last30 - prev30) / prev30) * 100);
 
@@ -198,7 +202,7 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json({
     users: usersWithEng,
-    stats: { total, institutional, subscribers, onTrial, trialExpired, last30, growthPct, activeToday, activeWeek },
+    stats: { total, institutional, subscribers, onTrial, trialExpired, last30, last24h, prev24h, growthPct, activeToday, activeWeek },
   });
 }
 
