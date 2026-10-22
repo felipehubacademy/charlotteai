@@ -162,6 +162,7 @@ export default function HomeTab() {
   const [familySheet, setFamilySheet] = useState<'first' | 'switch' | null>(null);
   const [familyPickDone, setFamilyPickDone] = useState(false);
   const [familySaving, setFamilySaving] = useState(false);
+  const pickedThisOpenRef = useRef(false);
   const familyKey = profile?.id ? `family_pick_done_${profile.id}` : null;
   useEffect(() => {
     if (!familyKey) return;
@@ -187,19 +188,30 @@ export default function HomeTab() {
       setFamilySaving(false);
       setFamilySheet(null);
       setFamilyPickDone(true);
+      pickedThisOpenRef.current = true;
     }
   }, [profile?.id, profile?.active_character, familyKey, familySaving, refreshProfile]);
 
+  // Degustação: uma coisa de cada vez. 1ª abertura = só a Família; o convite do teste de nível vem depois da
+  // 1ª atividade concluída (e antes de fechar o tópico grátis, quando a oferta da degustação já abre sozinha).
+  const [tasterDone, setTasterDone] = useState<number | null>(null);
+  useFocusEffect(useCallback(() => {
+    if (!isTaster || !profile?.id) return;
+    supabase.from('learn_history_v2').select('id', { count: 'exact', head: true })
+      .eq('user_id', profile.id).eq('completed', true)
+      .then(({ count }) => setTasterDone(count ?? 0));
+  }, [isTaster, profile?.id]));
+
   useEffect(() => {
-    // Degustação: o teste de nível faz parte do teste de 7 dias; a janela aparece depois de assinar.
     if (loading || placementDone || !familyPickDone) return;
+    if (isTaster && (pickedThisOpenRef.current || tasterDone === null || tasterDone < 1 || tasterDone >= 4)) return;
     SecureStore.getItemAsync('PLACEMENT_PROMPT_DISMISSED').then(v => {
       if (!v) {
         const t = setTimeout(() => setShowPlacementPrompt(true), 800);
         return () => clearTimeout(t);
       }
     }).catch(() => {});
-  }, [loading, placementDone, familyPickDone]);
+  }, [loading, placementDone, familyPickDone, isTaster, tasterDone]);
 
   const dismissPlacementPrompt = useCallback(() => {
     setShowPlacementPrompt(false);
