@@ -13,12 +13,30 @@ const DIAS_OLHANDO = 7;      // comentários de posts publicados nos últimos N 
 const POR_RODADA = 20;       // respostas por execução do cron
 
 type Acao = 'responder' | 'escalar' | 'ocultar' | 'ignorar';
-interface Decisao { category: string; action: Acao; reply: string; note: string }
+interface Decisao { category: string; action: Acao; reply: string; note: string; humor: number; lang: 'pt' | 'en' }
+
+function hashDe(id: string): number {
+  let h = 0; for (const ch of id) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return h;
+}
 
 /** Atraso antes de responder: de 2 a 8 minutos, fixo por comentário. */
 function atrasoMin(id: string): number {
-  let h = 0; for (const ch of id) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
-  return 2 + (h % 7);
+  return 2 + (hashDe(id) % 7);
+}
+
+// Risada na medida da graça (1 = leve, 2 = engraçado, 3 = muito engraçado). A IA só mede;
+// a risada é colocada aqui, variando por comentário, para não sair sempre igual.
+const RISADAS: Record<'pt' | 'en', string[][]> = {
+  pt: [[], ['rs', 'haha'], ['kkkk', 'kkkkk', 'hahaha'], ['KKKKKKK', 'KKKKKKKKK', 'kkkkkkkkkk']],
+  en: [[], ['haha'], ['hahaha', 'lol'], ['LOL', 'HAHAHA']],
+};
+const JA_RI = /^(rs+|k{3,}|(ha){2,}|lol)\b/i;
+
+function comRisada(reply: string, humor: number, lang: 'pt' | 'en', id: string): string {
+  const opcoes = RISADAS[lang][Math.max(0, Math.min(3, Math.round(humor)))];
+  if (!opcoes.length || !reply || JA_RI.test(reply)) return reply;
+  return `${opcoes[hashDe(id) % opcoes.length]} ${reply}`;
 }
 
 const PROMPT = (post: string, faq: string) => `Você responde os comentários do Instagram do Queizy (@queizyapp), um app de inglês para brasileiros. A tutora do app é a Charlotte; o Igorfina é um personagem comediante da Família Queizy.
@@ -30,6 +48,7 @@ Decida o que fazer com o comentário:
 - quiz: a pessoa respondeu "Queizy" (frase errada) ou "Crazy" (frase certa) num post de quiz. Diga se acertou, de forma animada, e explique em uma frase o porquê (use a resposta do post).
 - ingles: escreveu em inglês ou perguntou sobre inglês. Responda com simpatia; se houver erro, mostre a forma certa com delicadeza.
 - duvida_app: pergunta sobre o app (preço, como funciona, iPhone/Android, teste grátis). Responda só com o que está na FAQ abaixo; se a FAQ não cobre, convide a chamar no Direct.
+- brincadeira: piada, trocadilho, zoeira ou chute engraçado (ex.: inventar o que uma sigla quer dizer). Num post que esconde ou pergunta algo (sigla censurada, quiz), um chute sobre a resposta é brincadeira com humor de pelo menos 2, mesmo sem risada. Responda entrando na brincadeira e, se couber, ensine a forma certa ou puxe para o tema do post. Nunca ignore uma brincadeira.
 - elogio: agradeça de forma curta e calorosa.
 - pergunta_geral: outra pergunta simples; responda se for fácil e seguro.
 - reclamacao: problema com conta, cobrança, reembolso, bug, insatisfação. action "escalar" e uma resposta curta convidando a chamar no Direct para a equipe resolver.
@@ -46,18 +65,26 @@ Regras da resposta:
 - Nunca prometa funções, descontos ou prazos que não estejam na FAQ. Nunca peça dados pessoais nos comentários.
 - Não comece com o @ da pessoa (a resposta já vai no comentário dela).
 
-Responda SOMENTE um JSON: {"category": "<categoria>", "action": "responder" | "escalar" | "ocultar" | "ignorar", "reply": "<texto ou vazio>", "note": "<motivo curto, para a equipe>"}
+Humor: meça o quanto o comentário é engraçado, levando em conta o tom do post (posts do Igorfina são de humor):
+- 0: sério, dúvida, reclamação, elogio neutro ("legal o post").
+- 1: leve, um sorriso; ou a pessoa riu pouco ("rs", "haha").
+- 2: engraçado de verdade; chute engraçado ou trocadilho; ou a pessoa riu ("kkkk").
+- 3: muito engraçado, piada boa; ou a pessoa riu muito ("KKKKKKK", "kkkkkkkkkk").
+A risada da pessoa conta: se ela riu, o humor é pelo menos o da risada dela.
+Não escreva risada (rs, kkkk, haha) na resposta: o sistema coloca a risada certa no começo. Quando houver humor, entre na brincadeira com leveza antes de ensinar. Reclamação, ofensa e spam têm sempre humor 0.
+
+Responda SOMENTE um JSON: {"category": "<categoria>", "action": "responder" | "escalar" | "ocultar" | "ignorar", "reply": "<texto ou vazio>", "humor": 0 | 1 | 2 | 3, "lang": "pt" | "en" (idioma da resposta), "note": "<motivo curto, para a equipe>"}
 
 FAQ do app:
 ${faq}`;
 
-async function decidir(comment: string, post: string): Promise<Decisao | null> {
+export async function decidir(comment: string, post: string): Promise<Decisao | null> {
   const { text: faq } = await getSupportFaq();
   const res = await aiFetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: MODEL, temperature: 0.6, response_format: { type: 'json_object' },
+      model: MODEL, temperature: 0.4, response_format: { type: 'json_object' },
       messages: [{ role: 'system', content: PROMPT(post, faq) }, { role: 'user', content: `Comentário: ${comment}` }],
     }),
   });
@@ -67,7 +94,8 @@ async function decidir(comment: string, post: string): Promise<Decisao | null> {
   try {
     const d = JSON.parse(j.choices[0].message.content) as Partial<Decisao>;
     const action = (['responder', 'escalar', 'ocultar', 'ignorar'] as const).includes(d.action as Acao) ? d.action as Acao : 'ignorar';
-    return { category: String(d.category ?? 'outro'), action, reply: String(d.reply ?? '').trim().slice(0, 300), note: String(d.note ?? '') };
+    const humor = ['reclamacao', 'spam', 'ofensa'].includes(String(d.category)) ? 0 : Number(d.humor) || 0;
+    return { category: String(d.category ?? 'outro'), action, reply: String(d.reply ?? '').trim().slice(0, 300), note: String(d.note ?? ''), humor, lang: d.lang === 'en' ? 'en' : 'pt' };
   } catch { return null; }
 }
 
@@ -106,10 +134,11 @@ export async function handlePendingComments(auth: IgAuth): Promise<Record<string
     const post = p ? `Linha: ${p.linha ?? '-'}\nLegenda: ${p.caption}\n${p.context ? `Contexto: ${p.context}` : ''}` : 'Post sem dados.';
     const d = await decidir(c.text, post);
     if (!d) { await supabase.from('instagram_comments').update({ action: 'erro', note: 'IA não respondeu' } as never).eq('id', c.id); continue; }
-    const patch: Record<string, unknown> = { category: d.category, note: d.note, handled_at: new Date().toISOString() };
+    const patch: Record<string, unknown> = { category: d.category, note: d.humor ? `${d.note} | humor ${d.humor}` : d.note, handled_at: new Date().toISOString() };
     if ((d.action === 'responder' || d.action === 'escalar') && d.reply) {
-      const r = await replyToComment(auth, c.id, d.reply);
-      Object.assign(patch, r.ok ? { reply_text: d.reply, reply_id: r.data, replied_by: 'ia' } : { note: `${d.note} | falhou: ${r.error}` });
+      const texto = d.action === 'escalar' ? d.reply : comRisada(d.reply, d.humor, d.lang, c.id);
+      const r = await replyToComment(auth, c.id, texto);
+      Object.assign(patch, r.ok ? { reply_text: texto, reply_id: r.data, replied_by: 'ia' } : { note: `${d.note} | falhou: ${r.error}` });
       patch.action = r.ok ? (d.action === 'escalar' ? 'escalado' : 'respondido') : 'erro';
     } else if (d.action === 'escalar') {
       patch.action = 'escalado';
