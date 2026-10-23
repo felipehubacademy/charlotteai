@@ -102,7 +102,7 @@ export default function InstagramAdmin() {
         )}
         {status?.configured && (
           <div style={{ fontSize: 12.5, color: 'var(--t2)', marginBottom: 12 }}>
-            Conta @{status.auth?.username ?? '…'} · chave {status.auth?.expires_at ? `válida até ${new Date(status.auth.expires_at).toLocaleDateString('pt-BR')} (renova sozinha)` : 'conectada'} · publica às 12h e 18h30 o que estiver aprovado. As DMs do Instagram aparecem no Suporte.
+            Conta @{status.auth?.username ?? '…'} · chave {status.auth?.expires_at ? `válida até ${new Date(status.auth.expires_at).toLocaleDateString('pt-BR')} (renova sozinha)` : 'conectada'} · publica na hora marcada o que estiver aprovado. As DMs do Instagram aparecem no Suporte.
           </div>
         )}
 
