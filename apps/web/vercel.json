@@ -95,5 +95,6 @@
       "path": "/api/cron/instagram",
       "schedule": "*/5 * * * *"
     }
-  ]
+  ],
+  "ignoreCommand": "[ -n \"$VERCEL_GIT_PREVIOUS_SHA\" ] && git diff --quiet \"$VERCEL_GIT_PREVIOUS_SHA\" HEAD -- ."
 }
