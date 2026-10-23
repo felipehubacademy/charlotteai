@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Bricolage_Grotesque } from 'next/font/google';
 import StoreCTA from '@/components/StoreCTA';
 import AffiliateCapture from '@/components/AffiliateCapture';
+import IgorAudioButton from '@/components/IgorAudioButton';
 
 // Fonte de títulos da marca (corte óptico 96, como no app).
 const display = Bricolage_Grotesque({ subsets: ['latin'], axes: ['opsz'], display: 'swap' });
@@ -94,6 +95,9 @@ export default function Page() {
         .qz .hero p.lead { font-size: 19px; line-height: 1.6; color: var(--mid); max-width: 460px; margin-bottom: 32px; }
         .qz .badge { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--line); border-radius: 100px; padding: 6px 14px; font-size: 13px; font-weight: 700; color: var(--mid); }
         .qz .badge i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); display: inline-block; }
+        .qz .badge-new { text-decoration: none; color: var(--ink); }
+        .qz .badge-new:hover { border-color: var(--ink); }
+        .qz .igor-play { display: inline-flex; align-items: center; gap: 6px; background: var(--ink); color: #fff; border: none; border-radius: 100px; padding: 7px 13px; font-size: 12.5px; font-weight: 700; cursor: pointer; font-family: inherit; }
 
         .qz .mock { background: #fff; border-radius: 36px; border: 1px solid var(--line); padding: 22px; box-shadow: 0 30px 80px rgba(22,19,31,0.12); max-width: 400px; justify-self: center; width: 100%; }
         .qz .bubble { display: flex; gap: 10px; align-items: flex-end; margin-bottom: 14px; }
@@ -173,11 +177,11 @@ export default function Page() {
       <div className="wrap">
         <div className="hero">
           <div>
-            <span className="badge"><i /> iOS e Android · 7 dias grátis</span>
+            <a className="badge badge-new" href="#familia"><i /> Novo: Manual do F#did@ com o Igorfina</a>
             <h1 className="d">Do queizy<br />ao <span className="marker">crazy.</span></h1>
             <p className="lead">
               Inglês de verdade, com conversa, correção na hora e zero vergonha de errar.
-              Quem te acompanha é a Charlotte, sua tutora de IA.
+              Quem te acompanha é a Charlotte, sua tutora de IA. E o Igorfina transforma os seus erros em comédia.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
               <StoreCTA variant="hero" label="7 dias grátis" plan="mensal" />
@@ -202,6 +206,14 @@ export default function Page() {
               <div className="b">
                 Oh nice! Which beach did you <b>go</b> to?
                 <div className="fix"><s>I go</s> &rarr; <b>I went</b> · passado de &ldquo;go&rdquo;</div>
+              </div>
+            </div>
+            <div className="bubble">
+              <Image src="/images/igorfina-avatar.png" alt="Igorfina" width={36} height={36} style={{ borderRadius: '50%', background: 'var(--ink)' }} />
+              <div className="b">
+                <div style={{ fontSize: 12, fontWeight: 800, color: 'var(--mid)', marginBottom: 4 }}>Igorfina</div>
+                &ldquo;I go to the beach&rdquo; é rotina, Ana. Se foi no fim de semana, é <b>I went</b>. A não ser que você more na praia: aí eu quero o endereço.
+                <div style={{ marginTop: 10 }}><IgorAudioButton /></div>
               </div>
             </div>
             <div style={{ marginTop: 18, padding: '14px 16px', background: 'var(--paper)', borderRadius: 18 }}>
