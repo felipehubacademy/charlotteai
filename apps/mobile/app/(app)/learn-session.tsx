@@ -909,20 +909,28 @@ export default function LearnSessionScreen() {
   const micReadyRef = useRef(false);
   // Android: o gravador leva ~0,6 s para se preparar; fica preparado antes do toque (o toque só grava).
   const recorderPreparedRef = useRef(false);
+  // Uma preparação por vez: duas seguidas (ex.: o toque que liberou o microfone e a volta do app ao
+  // primeiro plano) deixavam o gravador do Android travado e o "segurar para falar" não gravava.
+  const preparingRef = useRef<Promise<void> | null>(null);
   const prepareRecorderAhead = async () => {
     if (Platform.OS !== 'android' || recorderPreparedRef.current || recordingRef.current) return;
-    try {
-      await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
-      await recorder.prepareToRecordAsync();
-      recorderPreparedRef.current = true;
-    } catch { recorderPreparedRef.current = false; }
+    if (preparingRef.current) return preparingRef.current;
+    preparingRef.current = (async () => {
+      try {
+        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+        await recorder.prepareToRecordAsync();
+        recorderPreparedRef.current = true;
+      } catch { recorderPreparedRef.current = false; }
+    })();
+    try { await preparingRef.current; } finally { preparingRef.current = null; }
   };
   const fileAsrEndRef = useRef<(() => void) | null>(null);
   useSpeechRecognitionEvent('end', () => { fileAsrEndRef.current?.(); });
 
   const micGranted = async () => {
-    if (Platform.OS === 'ios' && ASR_AVAILABLE) await ExpoSpeechRecognitionModule.requestPermissionsAsync().catch(() => null);
+    if (micReadyRef.current) return;
     micReadyRef.current = true;
+    if (Platform.OS === 'ios' && ASR_AVAILABLE) await ExpoSpeechRecognitionModule.requestPermissionsAsync().catch(() => null);
     setMicAsk(false);
     setMicBlocked(false);
     await prepareRecorderAhead();
@@ -1005,6 +1013,7 @@ export default function LearnSessionScreen() {
     try {
       setMicBlocked(false);
       usedAsrRef.current = false;
+      if (preparingRef.current) await preparingRef.current;
       if (recorderPreparedRef.current) {
         recorderPreparedRef.current = false;
         recorder.record();
