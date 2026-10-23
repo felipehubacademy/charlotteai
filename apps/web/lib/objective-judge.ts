@@ -5,6 +5,7 @@
 // (ex.: "What about you?" não valia "perguntar à Charlotte" em 4 de 6 rodadas). Aqui um modelo só
 // julga, cada objetivo pendente de forma independente, com raciocínio curto ligado.
 import OpenAI from 'openai';
+import { createHash } from 'crypto';
 import { aiFetch } from '@/lib/ai-models';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 
@@ -51,16 +52,22 @@ Reply only JSON: {"met": [<ids satisfied by the last message>]}`;
 
   const user = `${persona} said: "${args.lastAssistant.slice(0, 600)}"\nStudent's last message: "${args.studentMessage.slice(0, 600)}"`;
   try {
+    // O texto do juiz é o mesmo para a atividade inteira (todos os turnos e alunos). A chave de cache
+    // manda essas chamadas para o mesmo lugar na OpenAI: lê o cache (barato) em vez de gravar de novo
+    // (a gravação de cache do juiz era o maior item da conta em out/2026). Mesmo modelo, mesma qualidade.
+    const cacheKey = `judge-${createHash('sha1').update(system).digest('hex').slice(0, 16)}`;
     const c = await openai.chat.completions.create({
       model: judgeModel(),
       messages: [{ role: 'system', content: system }, { role: 'user', content: user }],
       response_format: { type: 'json_object' },
       max_completion_tokens: 1200,
       reasoning_effort: judgeEffort(),
+      prompt_cache_key: cacheKey,
     } as never) as OpenAI.Chat.Completions.ChatCompletion;
     logOpenAIUsage({
       endpoint: `${args.endpoint}#judge`, model: judgeModel(), userId: args.userId ?? null,
       promptTokens: c.usage?.prompt_tokens, completionTokens: c.usage?.completion_tokens,
+      meta: { cached_tokens: c.usage?.prompt_tokens_details?.cached_tokens ?? 0 },
     });
     const parsed = JSON.parse(c.choices[0]?.message?.content ?? '{}') as { met?: unknown };
     const ids = new Set(args.objectives.map(o => o.id));
