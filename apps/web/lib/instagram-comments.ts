@@ -130,6 +130,13 @@ export async function handlePendingComments(auth: IgAuth): Promise<Record<string
     const desde = new Date(c.commented_at ?? c.created_at).getTime();
     if (Date.now() - desde < atrasoMin(c.id) * 60000) continue;
     feitos++;
+    // Só GIF, figurinha ou imagem: a API entrega o comentário sem texto e a IA não vê o que tem nele.
+    // Vai para a equipe decidir no /admin (pode ser elogio ou ofensa).
+    if (!(c.text ?? '').trim()) {
+      await supabase.from('instagram_comments').update({ action: 'escalado', category: 'midia', note: 'Só GIF/imagem: a IA não vê, conferir no Instagram e ocultar se for ofensivo', handled_at: new Date().toISOString() } as never).eq('id', c.id);
+      out.escalado = (out.escalado ?? 0) + 1;
+      continue;
+    }
     const p = c.instagram_posts;
     const post = p ? `Linha: ${p.linha ?? '-'}\nLegenda: ${p.caption}\n${p.context ? `Contexto: ${p.context}` : ''}` : 'Post sem dados.';
     const d = await decidir(c.text, post);
