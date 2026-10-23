@@ -33,11 +33,12 @@ import {
 import { runRallyJobs } from '@/lib/rally-jobs';
 import { notifyStaleTickets, closeIdleConversations } from '@/lib/support-service';
 import { analyzePendingConversations } from '@/lib/support-insights';
+import { runAiCostReport } from '@/lib/ai-cost-report';
 import { getSupabase } from '@/lib/supabase';
 
 const CRON_SECRET = process.env.CRON_SECRET ?? '';
 
-type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'rally' | 'support_sla' | 'support_insights' | 'support_autoclose';
+type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'rally' | 'support_sla' | 'support_insights' | 'support_autoclose' | 'ai_costs';
 
 function isAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization') ?? '';
@@ -49,7 +50,7 @@ function isAuthorized(request: NextRequest): boolean {
   return false;
 }
 
-async function runTask(task: TaskType): Promise<{ task: TaskType }> {
+async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType }> {
   const supabase = getSupabase();
   if (!supabase) throw new Error('Supabase client unavailable');
 
@@ -87,6 +88,9 @@ async function runTask(task: TaskType): Promise<{ task: TaskType }> {
     case 'support_autoclose': // atendimento parado: IA 2 h, atendente 24 h → encerrado (sem mensagem)
       await closeIdleConversations();
       break;
+    case 'ai_costs': // 8h (Brasília): e-mail "Custos de IA de ontem" com alertas (OpenAI e ElevenLabs)
+      await runAiCostReport({ force: forced });
+      break;
     default:
       throw new Error(`Unknown task: ${task}`);
   }
@@ -96,7 +100,7 @@ async function runTask(task: TaskType): Promise<{ task: TaskType }> {
 // Every hourly run invokes every sender. Each sender drops users whose
 // per-user local hour does not match the task's target hour, so this is
 // cheap when no one is at the right local time.
-const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'rally', 'support_sla', 'support_insights', 'support_autoclose'];
+const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'rally', 'support_sla', 'support_insights', 'support_autoclose', 'ai_costs'];
 
 export async function GET(request: NextRequest) {
   if (!isAuthorized(request)) {
@@ -109,7 +113,7 @@ export async function GET(request: NextRequest) {
   // force_task: synchronous — caller waits for result
   if (forceTask) {
     try {
-      const result = await runTask(forceTask);
+      const result = await runTask(forceTask, true);
       return NextResponse.json({
         success: true,
         forced: true,
