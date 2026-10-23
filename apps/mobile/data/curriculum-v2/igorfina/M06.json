@@ -307,16 +307,27 @@
           "explanation": "\"The best\" = o melhor (de todos). Superlativo sempre com \"the\". Dica do Igor: o presidente fala \"the best\" a cada três palavras."
         },
         {
+          "type": "multiple_choice",
+          "sentence": "Today is _____ than yesterday.",
+          "options": [
+            "worse",
+            "more bad",
+            "badder"
+          ],
+          "answer": "worse",
+          "explanation": "\"Bad\" também é irregular: bad → worse → the worst. \"Worse than\" = pior que. \"More bad\" e \"badder\" não existem (fora de música)."
+        },
+        {
           "type": "word_bank",
           "sentence": "The traffic today is _____ than yesterday.",
           "choices": [
             "worse",
             "badder",
-            "worst",
+            "bad",
             "more bad"
           ],
           "answer": "worse",
-          "explanation": "\"Bad\" também é irregular: bad → worse → the worst. \"Worse than\" = pior que."
+          "explanation": "De novo: bad → worse. \"Worse than\" = pior que, para comparar duas coisas (hoje e ontem)."
         },
         {
           "type": "word_bank",
@@ -328,7 +339,7 @@
             "bad"
           ],
           "answer": "the worst",
-          "explanation": "Frase do curso: \"Today is the worst day I've had in a long time\" = hoje é o pior dia que tive em muito tempo."
+          "explanation": "\"The worst\" = o pior (de todos): bad → worse → the worst. Frase do curso: \"Today is the worst day I've had in a long time\" = hoje é o pior dia que tive em muito tempo."
         },
         {
           "type": "fill_gap",
@@ -368,21 +379,13 @@
           "explanation": "Nada de \"most good\": o superlativo de \"good\" é \"the best\"."
         },
         {
-          "type": "multiple_choice",
-          "sentence": "Today is _____ than yesterday.",
-          "options": [
-            "worse",
-            "more bad",
-            "badder"
-          ],
-          "answer": "worse",
-          "explanation": "\"Bad\" → \"worse\". \"More bad\" e \"badder\" não existem (fora de música)."
-        },
-        {
           "type": "read_answer",
           "passage": "Igor (as the president): Folks, this burger is tremendous. The best burger. Better than any burger. The fries? The worst. Terrible fries. Sad!",
-          "question": "O que é \"the worst\" para o presidente? (responda em inglês)",
+          "question": "Para o presidente, qual comida é \"the worst\"? (responda em inglês, com a palavra do texto)",
           "answer": "The fries",
+          "accepts": [
+            "fries"
+          ],
           "explanation": "Ele achou o hambúrguer \"the best\" e as batatas \"the worst\". Repare: \"better than\" para comparar dois, \"the best / the worst\" para o extremo."
         }
       ],

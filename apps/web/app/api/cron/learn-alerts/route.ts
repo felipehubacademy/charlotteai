@@ -36,9 +36,14 @@ export async function POST(req: NextRequest) {
   const html = base([
     h1('Onde os alunos travaram'),
     p(`Últimas ${days === 1 ? '24 horas' : `${days} dias`}: ${t.attempts} tentativas de ${t.students} aluno(s), ${t.fails} reprovações, ${t.skips} pulos e ${t.exits} saídas no meio.`),
-    report.alerts.length
-      ? `<ul style="margin:0 0 20px;padding-left:18px;font-size:14px;line-height:1.6;color:#16131F;">${report.alerts.slice(0, 15).map(a => `<li style="margin-bottom:8px;">${esc(a)}</li>`).join('')}</ul>`
-      : '',
+    ...([
+      ['Possível falha do app (conferir primeiro)', 'O aluno parece ter acertado e o corretor ou o reconhecimento de voz reprovou.', report.alertGroups.app],
+      ['Conteúdo difícil', 'Parte grande dos alunos que fizeram o exercício errou de verdade. Avaliar se vale suavizar.', report.alertGroups.content],
+      ['Saídas no meio', '', report.alertGroups.exits],
+      ['Microfone e reconhecimento de voz', '', report.alertGroups.tech],
+    ] as [string, string, string[]][]).filter(([, , list]) => list.length).map(([title, note, list]) =>
+      p(`<strong>${title} (${list.length})</strong>${note ? `<br><span style="color:#6B6878;">${note}</span>` : ''}`) +
+      `<ul style="margin:0 0 20px;padding-left:18px;font-size:14px;line-height:1.6;color:#16131F;">${list.slice(0, 10).map(a => `<li style="margin-bottom:8px;">${esc(a)}</li>`).join('')}</ul>`),
     reports.length
       ? p(`<strong>Reportados pelos alunos (${reports.length})</strong>`) +
         `<ul style="margin:0 0 20px;padding-left:18px;font-size:14px;line-height:1.6;color:#16131F;">${reports.slice(0, 15).map(r => {
@@ -49,7 +54,7 @@ export async function POST(req: NextRequest) {
       : '',
     btn('Abrir no /admin', 'https://queizy.com/admin/learning'),
   ].join(''));
-  if (body?.dryRun === true) return NextResponse.json({ dryRun: true, to, alerts: report.alerts, reports: reports.length });
+  if (body?.dryRun === true) return NextResponse.json({ dryRun: true, to, alertGroups: report.alertGroups, reports: reports.length });
   let sent = 0;
   for (const addr of to) {
     const subject = report.alerts.length
