@@ -11,6 +11,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { markInviteAccepted } from '@/lib/admin-invite';
 
 import { PERMISSIONS, ROLE_LABEL, type AdminRole, type AdminArea } from '@/lib/admin-roles';
 
@@ -50,11 +51,13 @@ export async function getAdmin(req: NextRequest): Promise<AdminContext | null> {
 
   const { data: member } = await supabase
     .from('admin_members')
-    .select('role, active, name, email')
+    .select('role, active, name, email, accepted_at')
     .eq('user_id', userData.user.id)
     .maybeSingle();
-  const m = member as { role: AdminRole; active: boolean; name: string | null; email: string } | null;
+  const m = member as { role: AdminRole; active: boolean; name: string | null; email: string; accepted_at: string | null } | null;
   if (!m || !m.active) return null;
+  // Primeiro acesso de quem foi convidado: marca o aceite e avisa quem convidou.
+  if (!m.accepted_at) await markInviteAccepted(userData.user.id).catch(e => console.warn('[admin] aceite', e));
 
   return { userId: userData.user.id, email: m.email, name: m.name, role: m.role, legacy: false };
 }

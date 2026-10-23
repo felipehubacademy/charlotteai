@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
   if (admin instanceof NextResponse) return admin;
   const { data, error } = await getSupabaseAdmin()
     .from('admin_members')
-    .select('id, user_id, email, name, role, active, created_at')
+    .select('id, user_id, email, name, role, active, created_at, accepted_at')
     .order('created_at', { ascending: true });
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json({ members: data ?? [] });
@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
   const { data: member, error } = await supabase
     .from('admin_members')
     .upsert({ user_id: userId, email, name, role, active: true, invited_by: admin.userId, updated_at: new Date().toISOString() } as never, { onConflict: 'user_id' })
-    .select('id, user_id, email, name, role, active, created_at')
+    .select('id, user_id, email, name, role, active, created_at, accepted_at')
     .single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
@@ -118,7 +118,7 @@ export async function PATCH(req: NextRequest) {
   }
 
   const { data, error } = await supabase.from('admin_members').update(update as never).eq('id', id)
-    .select('id, user_id, email, name, role, active, created_at').single();
+    .select('id, user_id, email, name, role, active, created_at, accepted_at').single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
   await audit(admin, 'team.update', 'admin_member', id, update);

@@ -417,3 +417,17 @@ export function adminInviteTemplate(opts: { name?: string | null; email: string;
   `);
   return { subject, html };
 }
+
+/** Aviso para quem convidou: a pessoa aceitou o convite (primeiro acesso à gestão). */
+export function adminAcceptedTemplate(opts: { inviterName?: string | null; memberName?: string | null; memberEmail: string; roleLabel: string }) {
+  const first = firstName(opts.inviterName);
+  const who = opts.memberName?.trim() || opts.memberEmail;
+  const subject = `${who} aceitou o convite para a gestão do Queizy`;
+  const html = base(`
+    ${h1(first ? `Oi, ${first}!` : 'Oi!')}
+    ${p(`<strong style="color:#16131F;">${who}</strong> (${opts.memberEmail}) aceitou o seu convite e acabou de entrar na gestão do Queizy como <strong style="color:#16131F;">${opts.roleLabel}</strong>.`)}
+    ${btn('Ver a equipe', 'https://queizy.com/admin/team')}
+    ${note('Para mudar o nível de acesso ou desativar a pessoa, use a tela Equipe no /admin.')}
+  `);
+  return { subject, html };
+}

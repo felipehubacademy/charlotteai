@@ -7,7 +7,7 @@ import { Plus, X, Copy, Check, Minus } from 'lucide-react';
 import { ROLES, AREAS, PERMISSIONS, type AdminRole as Role } from '@/lib/admin-roles';
 import { useAdminMe } from '@/lib/admin-context';
 
-interface Member { id: string; user_id: string; email: string; name: string | null; role: Role; active: boolean; created_at: string }
+interface Member { id: string; user_id: string; email: string; name: string | null; role: Role; active: boolean; created_at: string; accepted_at: string | null }
 
 
 export default function TeamPage() {
@@ -109,6 +109,9 @@ export default function TeamPage() {
                         <button className={`adm-btn-sm ${m.active ? 'ghost' : 'primary'}`} onClick={() => update(m, { active: !m.active })}>
                           {m.active ? 'Desativar' : 'Reativar'}
                         </button>
+                        {m.active && !m.accepted_at && (
+                          <span style={{ marginLeft: 8, fontSize: 11.5, color: 'var(--t3)' }}>Aguardando aceite</span>
+                        )}
                         {m.active && !isMe && (
                           <button className="adm-btn-sm ghost" style={{ marginLeft: 6 }} onClick={() => resend(m)}>Reenviar convite</button>
                         )}
