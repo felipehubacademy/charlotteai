@@ -135,7 +135,7 @@ export async function GET(request: NextRequest) {
   // (maxDuration: 120s in vercel.json) via after().
   const now = new Date();
   after(async () => {
-    await Promise.allSettled(HOURLY_TASKS.map(runTask));
+    await Promise.allSettled(HOURLY_TASKS.map(t => runTask(t)));
   });
 
   return NextResponse.json({
