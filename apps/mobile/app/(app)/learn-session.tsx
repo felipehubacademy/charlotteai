@@ -3,7 +3,7 @@ import { useFocusEffect, useNavigation } from 'expo-router';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import {
   View, ScrollView, TouchableOpacity, TextInput,
-  Platform, Animated, Linking,
+  Platform, Animated, Linking, AppState,
   ActivityIndicator, Pressable, Modal, useWindowDimensions,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
@@ -27,7 +27,7 @@ import { checkGrammarAnswer } from '@/lib/grammarAnswer';
 import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import { track } from '@/lib/analytics';
 import * as FileSystem from 'expo-file-system/legacy';
-import { useAudioRecorder, setAudioModeAsync, setIsAudioActiveAsync, RecordingPresets, requestRecordingPermissionsAsync } from 'expo-audio';
+import { useAudioRecorder, setAudioModeAsync, setIsAudioActiveAsync, RecordingPresets, requestRecordingPermissionsAsync, getRecordingPermissionsAsync } from 'expo-audio';
 import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';
 import { Image } from 'expo-image';
 import {
@@ -384,6 +384,10 @@ export default function LearnSessionScreen() {
   const stepFailsRef = useRef(0);
   // Microfone negado: mostra aviso com atalho para os Ajustes, em vez de o botão não fazer nada.
   const [micBlocked, setMicBlocked] = useState(false);
+  // Microfone ainda não liberado: o botão vira "toque para liberar" e o toque só pede a permissão.
+  // Antes o pedido do sistema abria no meio do "segurar para falar": o aluno soltava o dedo com o
+  // aviso na tela e a primeira gravação dava erro (AudioRecorder.stop rejeitado, ~1 em cada aluno novo no Android).
+  const [micAsk, setMicAsk] = useState(false);
 
   // Loop de pulso do mic ring durante gravacao.
   // (declarado aqui, apos o useState de pronStatus, para evitar TDZ.)
@@ -916,19 +920,43 @@ export default function LearnSessionScreen() {
   const fileAsrEndRef = useRef<(() => void) | null>(null);
   useSpeechRecognitionEvent('end', () => { fileAsrEndRef.current?.(); });
 
-  // Permissões pedidas quando o exercício de fala aparece, não no toque (o toque só começa a gravar).
+  const micGranted = async () => {
+    if (Platform.OS === 'ios' && ASR_AVAILABLE) await ExpoSpeechRecognitionModule.requestPermissionsAsync().catch(() => null);
+    micReadyRef.current = true;
+    setMicAsk(false);
+    setMicBlocked(false);
+    await prepareRecorderAhead();
+  };
+
+  // Quando o exercício de fala aparece, só CONFERE a permissão (sem abrir o pedido do sistema).
+  const checkMicPermission = async () => {
+    try {
+      const perm = await getRecordingPermissionsAsync();
+      if (perm.granted) { await micGranted(); return; }
+      if (perm.canAskAgain) setMicAsk(true);
+      else { setMicAsk(false); setMicBlocked(true); }
+    } catch { setMicAsk(true); }
+  };
   useEffect(() => {
     if (!currentStep || currentStep.kind !== 'pronunciation' || currentStep.phrase.type !== 'repeat' || micReadyRef.current) return;
-    (async () => {
-      try {
-        const perm = await requestRecordingPermissionsAsync();
-        if (!perm.granted) return;
-        if (Platform.OS === 'ios' && ASR_AVAILABLE) await ExpoSpeechRecognitionModule.requestPermissionsAsync().catch(() => null);
-        micReadyRef.current = true;
-        await prepareRecorderAhead();
-      } catch { /* pede de novo no toque */ }
-    })();
+    checkMicPermission();
   }, [stepIdx]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Volta dos Ajustes do celular: confere de novo (o aluno pode ter liberado lá).
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', st => {
+      if (st === 'active' && !micReadyRef.current && (micBlocked || micAsk)) checkMicPermission();
+    });
+    return () => sub.remove();
+  }, [micBlocked, micAsk]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /** Toque no botão enquanto o microfone não está liberado: pede a permissão (sem gravar). */
+  const requestMic = async () => {
+    try {
+      const perm = await requestRecordingPermissionsAsync();
+      if (perm.granted) { await micGranted(); return; }
+      if (!perm.canAskAgain) { setMicAsk(false); blockMic(); }
+    } catch { /* continua em "toque para liberar" */ }
+  };
 
   /** Reconhecimento do iPhone sobre o arquivo gravado. Devolve as leituras (vazio se não entendeu). */
   const recognizeFile = (uri: string): Promise<string[]> => new Promise(resolve => {
@@ -950,6 +978,8 @@ export default function LearnSessionScreen() {
   const startRecording = async () => {
     if (recordingRef.current) return;
     if (!currentStep || currentStep.kind !== 'pronunciation') return;
+    // Sem permissão o botão está em "toque para liberar" (requestMic); aqui nunca abre o pedido do sistema.
+    if (!micReadyRef.current) return;
 
     // Para o áudio de referência se estiver tocando. Antes o mic ficava
     // desabilitado enquanto a frase tocava (isPlaying), e ao pedir pra repetir
@@ -966,11 +996,6 @@ export default function LearnSessionScreen() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
     try {
-      if (!micReadyRef.current) {
-        const perm = await requestRecordingPermissionsAsync();
-        if (!perm.granted) { blockMic(); return; }
-        micReadyRef.current = true;
-      }
       setMicBlocked(false);
       usedAsrRef.current = false;
       if (recorderPreparedRef.current) {
@@ -1800,8 +1825,11 @@ export default function LearnSessionScreen() {
               {currentStep.phrase.type === 'repeat'
                 && pronStatus !== 'result' && pronStatus !== 'error'
                 && pronStatus !== 'loading_audio' && pronStatus !== 'assessing' && (() => {
-                  const bg = pronStatus === 'recording' ? '#D12A64' : '#6B4BFF';
                   const isRec = pronStatus === 'recording';
+                  // Microfone não liberado: botão apagado com balão; o toque pede a permissão
+                  // (ou abre os Ajustes, se o aluno negou de vez).
+                  const needsMic = !isRec && (micAsk || micBlocked);
+                  const bg = isRec ? '#D12A64' : needsMic ? '#B9B4C9' : '#6B4BFF';
                   return (
                     // Mic encostado no fim do espaço disponível (marginTop auto): cabe em qualquer altura de
                     // tela sem cortar o "Segure para falar" (antes era marginTop fixo de 420).
@@ -1830,10 +1858,23 @@ export default function LearnSessionScreen() {
                             }}
                           />
                         ))}
+                        {needsMic && (
+                          <View pointerEvents="none" style={{ position: 'absolute', top: -30, left: -90, right: -90, alignItems: 'center', zIndex: 2 }}>
+                            <View style={{ backgroundColor: C.navy, borderRadius: 12, paddingHorizontal: 14, paddingVertical: 8 }}>
+                              <AppText style={{ fontSize: 13, fontWeight: '700', color: '#FFF', textAlign: 'center' }}>
+                                {micBlocked
+                                  ? (isPortuguese ? 'Microfone bloqueado: toque para abrir os Ajustes' : 'Microphone blocked: tap to open Settings')
+                                  : (isPortuguese ? 'Toque aqui para liberar o microfone' : 'Tap here to allow the microphone')}
+                              </AppText>
+                            </View>
+                            <View style={{ width: 0, height: 0, borderLeftWidth: 7, borderRightWidth: 7, borderTopWidth: 7, borderLeftColor: 'transparent', borderRightColor: 'transparent', borderTopColor: C.navy }} />
+                          </View>
+                        )}
                         <TouchableOpacity
                           activeOpacity={0.85}
-                          onPressIn={startRecording}
-                          onPressOut={stopRecording}
+                          onPress={needsMic ? (micBlocked ? () => { Linking.openSettings().catch(() => {}); } : requestMic) : undefined}
+                          onPressIn={needsMic ? undefined : startRecording}
+                          onPressOut={needsMic ? undefined : stopRecording}
                           style={{
                             width: 120, height: 120, borderRadius: 60,
                             backgroundColor: bg,
@@ -1854,9 +1895,11 @@ export default function LearnSessionScreen() {
                       }}>
                         {isRec
                           ? (isPortuguese ? 'Solte para parar' : 'Release to stop')
-                          : (isPortuguese ? 'Segure para falar' : 'Hold to speak')}
+                          : needsMic
+                            ? (isPortuguese ? 'Microfone ainda não liberado' : 'Microphone not allowed yet')
+                            : (isPortuguese ? 'Segure para falar' : 'Hold to speak')}
                       </AppText>
-                      {!isRec && (
+                      {!isRec && !needsMic && (
                         <BluetoothMicHint level={level} style={{ marginTop: 14, marginHorizontal: 0, maxWidth: 320 }} />
                       )}
                     </View>

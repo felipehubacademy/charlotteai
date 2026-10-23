@@ -39,7 +39,7 @@ function comRisada(reply: string, humor: number, lang: 'pt' | 'en', id: string):
   return `${opcoes[hashDe(id) % opcoes.length]} ${reply}`;
 }
 
-const PROMPT = (post: string, faq: string) => `Você responde os comentários do Instagram do Queizy (@queizyapp), um app de inglês para brasileiros. A tutora do app é a Charlotte; o Igorfina é um personagem comediante da Família Queizy.
+const PROMPT = (post: string, faq: string, previous: string[]) => `Você responde os comentários do Instagram do Queizy (@queizyapp), um app de inglês para brasileiros. A tutora do app é a Charlotte; o Igorfina é um personagem comediante da Família Queizy.
 
 Sobre o post comentado:
 ${post}
@@ -48,7 +48,7 @@ Decida o que fazer com o comentário:
 - quiz: a pessoa respondeu "Queizy" (frase errada) ou "Crazy" (frase certa) num post de quiz. Diga se acertou, de forma animada, e explique em uma frase o porquê (use a resposta do post).
 - ingles: escreveu em inglês ou perguntou sobre inglês. Responda com simpatia; se houver erro, mostre a forma certa com delicadeza.
 - duvida_app: pergunta sobre o app (preço, como funciona, iPhone/Android, teste grátis). Responda só com o que está na FAQ abaixo; se a FAQ não cobre, convide a chamar no Direct.
-- brincadeira: piada, trocadilho, zoeira ou chute engraçado (ex.: inventar o que uma sigla quer dizer). Num post que esconde ou pergunta algo (sigla censurada, quiz), um chute sobre a resposta é brincadeira com humor de pelo menos 2, mesmo sem risada. Responda entrando na brincadeira e, se couber, ensine a forma certa ou puxe para o tema do post. Nunca ignore uma brincadeira.
+- brincadeira: piada, trocadilho, zoeira ou chute engraçado (ex.: inventar o que uma sigla quer dizer). Num post que esconde ou pergunta algo (sigla censurada, quiz), um chute sobre a resposta é brincadeira com humor de pelo menos 2, mesmo sem risada. Responda entrando na brincadeira. Às vezes ensine a forma certa ou puxe para o tema do post, às vezes só brinque de volta: não precisa ensinar em toda resposta. Nunca ignore uma brincadeira.
 - elogio: agradeça de forma curta e calorosa.
 - pergunta_geral: outra pergunta simples; responda se for fácil e seguro.
 - reclamacao: problema com conta, cobrança, reembolso, bug, insatisfação. action "escalar" e uma resposta curta convidando a chamar no Direct para a equipe resolver.
@@ -64,7 +64,11 @@ Regras da resposta:
 - Nunca nomeie empresas de tecnologia ou fornecedores; diga "IA".
 - Nunca prometa funções, descontos ou prazos que não estejam na FAQ. Nunca peça dados pessoais nos comentários.
 - Não comece com o @ da pessoa (a resposta já vai no comentário dela).
-
+- Soe como gente, não como modelo pronto: cada resposta com abertura, formato e tamanho diferentes (às vezes uma frase só, às vezes uma pergunta de volta, às vezes só uma piada).
+${previous.length ? `
+Respostas que já demos neste post (quem lê vê todas juntas). NÃO repita a abertura ("Boa tentativa", "Esse F..."), a estrutura nem a mesma dica ou exemplo de nenhuma delas:
+${previous.map(r => `- ${r}`).join('\n')}
+` : ''}
 Humor: meça o quanto o comentário é engraçado, levando em conta o tom do post (posts do Igorfina são de humor):
 - 0: sério, dúvida, reclamação, elogio neutro ("legal o post").
 - 1: leve, um sorriso; ou a pessoa riu pouco ("rs", "haha").
@@ -78,14 +82,14 @@ Responda SOMENTE um JSON: {"category": "<categoria>", "action": "responder" | "e
 FAQ do app:
 ${faq}`;
 
-export async function decidir(comment: string, post: string): Promise<Decisao | null> {
+export async function decidir(comment: string, post: string, previous: string[] = []): Promise<Decisao | null> {
   const { text: faq } = await getSupportFaq();
   const res = await aiFetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: MODEL, temperature: 0.4, response_format: { type: 'json_object' },
-      messages: [{ role: 'system', content: PROMPT(post, faq) }, { role: 'user', content: `Comentário: ${comment}` }],
+      model: MODEL, temperature: 0.8, response_format: { type: 'json_object' },
+      messages: [{ role: 'system', content: PROMPT(post, faq, previous) }, { role: 'user', content: `Comentário: ${comment}` }],
     }),
   });
   if (!res.ok) { console.error('[instagram-comments] IA', res.status, await res.text()); return null; }
@@ -121,11 +125,11 @@ export async function collectComments(auth: IgAuth): Promise<number> {
 export async function handlePendingComments(auth: IgAuth): Promise<Record<string, number>> {
   const supabase = getSupabaseAdmin();
   const { data } = await supabase.from('instagram_comments')
-    .select('id, text, username, commented_at, created_at, instagram_posts(caption, context, linha)')
+    .select('id, text, username, media_id, commented_at, created_at, instagram_posts(caption, context, linha)')
     .eq('action', 'pendente').order('created_at').limit(POR_RODADA * 2);
   const out: Record<string, number> = {};
   let feitos = 0;
-  for (const c of (data ?? []) as unknown as { id: string; text: string; username: string | null; commented_at: string | null; created_at: string; instagram_posts: { caption: string; context: string | null; linha: string | null } | null }[]) {
+  for (const c of (data ?? []) as unknown as { id: string; text: string; username: string | null; media_id: string; commented_at: string | null; created_at: string; instagram_posts: { caption: string; context: string | null; linha: string | null } | null }[]) {
     if (feitos >= POR_RODADA) break;
     const desde = new Date(c.commented_at ?? c.created_at).getTime();
     if (Date.now() - desde < atrasoMin(c.id) * 60000) continue;
@@ -139,7 +143,12 @@ export async function handlePendingComments(auth: IgAuth): Promise<Record<string
     }
     const p = c.instagram_posts;
     const post = p ? `Linha: ${p.linha ?? '-'}\nLegenda: ${p.caption}\n${p.context ? `Contexto: ${p.context}` : ''}` : 'Post sem dados.';
-    const d = await decidir(c.text, post);
+    // Últimas respostas no mesmo post, para a IA não repetir abertura, formato e dica.
+    const { data: prev } = await supabase.from('instagram_comments').select('reply_text')
+      .eq('media_id', c.media_id).not('reply_text', 'is', null)
+      .order('handled_at', { ascending: false }).limit(8);
+    const previous = ((prev ?? []) as { reply_text: string }[]).map(r => r.reply_text);
+    const d = await decidir(c.text, post, previous);
     if (!d) { await supabase.from('instagram_comments').update({ action: 'erro', note: 'IA não respondeu' } as never).eq('id', c.id); continue; }
     const patch: Record<string, unknown> = { category: d.category, note: d.humor ? `${d.note} | humor ${d.humor}` : d.note, handled_at: new Date().toISOString() };
     if ((d.action === 'responder' || d.action === 'escalar') && d.reply) {
