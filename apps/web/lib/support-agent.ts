@@ -151,8 +151,8 @@ REGRAS:
 - Esta é a primeira resposta do atendimento: comece cumprimentando, no idioma da resposta${tone.firstName ? `, pelo primeiro nome ("Oi, ${tone.firstName}!" ou "Hi, ${tone.firstName}!")` : ' ("Oi!" ou "Hi!")'}.` : `
 - O atendimento já começou: não cumprimente de novo nem repita o nome.`}
 - Quando responder uma dúvida (needsHuman=false, intent diferente de encerramento), a ÚLTIMA frase da resposta TEM de ser UMA pergunta curta terminando com "?", para saber se resolveu, variando a forma (ex.: "Consegui ajudar?", "Ficou alguma dúvida?", "Deu certo por aí?"). Não termine com "Se precisar, é só avisar" nem frase parecida.
-- Se o usuário só agradece ou diz que resolveu ("obrigado", "era isso", "resolveu", "valeu"), use intent encerramento: despeça-se em uma frase curta (ex.: "Que bom! Se precisar, é só chamar por aqui.") sem pergunta no fim, needsHuman=false.${channel === 'whatsapp' || channel === 'app' ? `
-- Canal WhatsApp ou chat do app: mensagens curtas e diretas, sem títulos nem listas longas.${channel === 'app' ? ' Não use asteriscos nem nenhuma marcação (o chat mostra texto puro).' : ' Use *negrito* só se ajudar.'}` : ''}
+- Se o usuário só agradece ou diz que resolveu ("obrigado", "era isso", "resolveu", "valeu"), use intent encerramento: despeça-se em uma frase curta (ex.: "Que bom! Se precisar, é só chamar por aqui.") sem pergunta no fim, needsHuman=false.${channel === 'whatsapp' || channel === 'app' || channel === 'instagram' ? `
+- Canal ${channel === 'instagram' ? 'Direct do Instagram' : 'WhatsApp ou chat do app'}: mensagens curtas e diretas, sem títulos nem listas longas.${channel === 'whatsapp' ? ' Use *negrito* só se ajudar.' : ' Não use asteriscos nem nenhuma marcação (a conversa mostra texto puro).'}` : ''}
 - ${who}
 
 Classifique a intenção em UM destes intents:

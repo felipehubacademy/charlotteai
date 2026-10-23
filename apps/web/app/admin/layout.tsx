@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Flag, Menu, Wallet, UserCog, KeyRound, GraduationCap, Megaphone } from 'lucide-react';
+import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Flag, Menu, Wallet, UserCog, KeyRound, GraduationCap, Megaphone, Instagram } from 'lucide-react';
 import { getSupabase } from '@/lib/supabase';
 import { AdminMe, AdminMeContext } from '@/lib/admin-context';
 
@@ -684,6 +684,7 @@ const NAV: NavItem[] = [
   { href: '/admin/finance',       icon: Wallet,     label: 'Financeiro',   area: 'finance' },
   { href: '/admin/metrics',       icon: BarChart2,  label: 'Métricas',     area: 'metrics' },
   { href: '/admin/commercial',    icon: Megaphone,  label: 'Comercial',    area: 'finance' },
+  { href: '/admin/instagram',     icon: Instagram,  label: 'Instagram',    area: 'notifications' },
   { section: 'SISTEMA' },
   { href: '/admin/notifications', icon: Bell,       label: 'Notificações', area: 'notifications' },
   { href: '/admin/team',          icon: UserCog,    label: 'Equipe',       area: 'team' },

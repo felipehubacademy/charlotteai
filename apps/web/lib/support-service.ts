@@ -193,12 +193,12 @@ export async function notifyStaleTickets(): Promise<{ notified: number }> {
     const horas = Math.round((Date.now() - new Date(c.last_inbound_at).getTime()) / 3600000);
     const html = `
       <div style="font-family:Arial,sans-serif;color:#16131F;">
-        <h2>Ticket sem resposta há ${horas} h (${c.channel === 'whatsapp' ? 'WhatsApp' : 'e-mail'})</h2>
+        <h2>Ticket sem resposta há ${horas} h (${({ whatsapp: 'WhatsApp', instagram: 'Instagram', app: 'chat do app' } as Record<string, string>)[c.channel] ?? 'e-mail'})</h2>
         <p><strong>Aluno:</strong> ${c.contact}${c.subject ? ` · ${c.subject}` : ''}</p>
         <p><strong>Última mensagem:</strong></p>
         <blockquote style="border-left:3px solid #ccc;padding-left:12px;color:#333;">${String(lastIn?.[0]?.body ?? '').replace(/</g, '&lt;').slice(0, 1200)}</blockquote>
         <p><a href="${APP_URL}/admin/support">Responder no /admin</a></p>
-        ${c.channel === 'whatsapp' ? '<p style="color:#888;font-size:12px;">No WhatsApp, só dá para responder livremente até 24 h depois da última mensagem do aluno.</p>' : ''}
+        ${c.channel === 'whatsapp' || c.channel === 'instagram' ? `<p style="color:#888;font-size:12px;">No ${c.channel === 'whatsapp' ? 'WhatsApp' : 'Instagram'}, só dá para responder livremente até 24 h depois da última mensagem do aluno.</p>` : ''}
       </div>`;
     const ok = await graphSendEmail({ to, subject: `[Suporte] Sem resposta há ${horas} h — ${c.contact}`, html });
     if (ok) {
