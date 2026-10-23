@@ -48,6 +48,8 @@ export default function OpenFlow() {
   const [pwErr, setPwErr] = useState('');
   const [saving, setSaving] = useState(false);
   const [accountEmail, setAccountEmail] = useState('');
+  // Convite da gestão (?next=admin): no fim leva ao /admin, não ao app.
+  const [forAdmin, setForAdmin] = useState(false);
 
   const [resendEmail, setResendEmail] = useState('');
   const [resendState, setResendState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
@@ -103,6 +105,7 @@ export default function OpenFlow() {
       const at = h.get('access_token'), rt = h.get('refresh_token');
       if (at && rt && h.get('type') === 'recovery') {
         tokensRef.current = { access_token: at, refresh_token: rt };
+        setForAdmin(new URLSearchParams(window.location.search).get('next') === 'admin');
         history.replaceState(null, '', window.location.pathname); // tira os tokens da barra de endereço
         setPhase('password');
         return;
@@ -302,13 +305,19 @@ export default function OpenFlow() {
           {phase === 'password' ? (
             <>
               <h1>Crie sua senha</h1>
-              <p className="sub">Depois é só entrar no app Queizy com o seu e-mail e esta senha.</p>
+              <p className="sub">{forAdmin ? 'Depois é só entrar na gestão do Queizy com o seu e-mail e esta senha.' : 'Depois é só entrar no app Queizy com o seu e-mail e esta senha.'}</p>
               <input className="pw" type="password" autoComplete="new-password" placeholder="Nova senha (6 ou mais)"
                 value={pw} onChange={e => setPw(e.target.value)} />
               <input className="pw" type="password" autoComplete="new-password" placeholder="Repita a senha"
                 value={pw2} onChange={e => setPw2(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') savePassword(); }} />
               {pwErr ? <p className="pw-err">{pwErr}</p> : null}
               <button className="pw-btn" onClick={savePassword} disabled={saving}>{saving ? 'Salvando…' : 'Salvar senha'}</button>
+            </>
+          ) : phase === 'password_done' && forAdmin ? (
+            <>
+              <h1>Senha criada!</h1>
+              <p className="sub">Agora entre na gestão com {accountEmail ? <strong>{accountEmail}</strong> : 'o seu e-mail'} e a senha que você criou.</p>
+              <a className="pw-btn" href="/admin">Entrar na gestão</a>
             </>
           ) : phase === 'password_done' ? (
             <>

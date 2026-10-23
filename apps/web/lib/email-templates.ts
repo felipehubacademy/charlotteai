@@ -401,3 +401,19 @@ export function accessHelpTemplate(opts: { name?: string | null; email: string; 
   `);
   return { subject, html };
 }
+
+/** Convite para a gestão (/admin): papel, o que a pessoa acessa e o link para criar a senha. */
+export function adminInviteTemplate(opts: { name?: string | null; email: string; roleLabel: string; roleDesc: string; areas: string[]; passwordUrl: string }) {
+  const first = firstName(opts.name);
+  const subject = `${first ? `${first}, você` : 'Você'} recebeu acesso à gestão do Queizy`;
+  const html = base(`
+    ${h1(first ? `Oi, ${first}!` : 'Oi!')}
+    ${p(`Você recebeu acesso à gestão do Queizy como <strong style="color:#16131F;">${opts.roleLabel}</strong>. ${opts.roleDesc}`)}
+    ${p('O que você vai poder fazer:')}
+    ${features(opts.areas)}
+    ${p(`Para entrar, crie a sua senha no botão abaixo e depois acesse <strong style="color:#16131F;">queizy.com/admin</strong> com este e-mail (<strong style="color:#16131F;">${opts.email}</strong>) e a senha que criou.`)}
+    ${btn('Criar minha senha', opts.passwordUrl)}
+    ${note('O link vale por pouco tempo. Se ele expirar, a própria página deixa pedir um novo.<br>Se você já tem senha no Queizy, pode ignorar o botão e entrar direto em queizy.com/admin.')}
+  `);
+  return { subject, html };
+}

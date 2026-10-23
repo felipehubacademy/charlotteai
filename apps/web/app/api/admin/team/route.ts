@@ -2,12 +2,15 @@
 //   GET    lista membros
 //   POST   { email, name, role } adiciona. Se a pessoa ainda não tem conta,
 //          cria com senha temporária (devolvida uma única vez para repassar).
+//          Em todo caso manda o e-mail de convite (papel, acessos e link para criar a senha).
+//   POST   { resend: true, id } manda o e-mail de convite de novo
 //   PATCH  { id, role?, active? } muda o nível de acesso ou desativa/reativa
 import { NextRequest, NextResponse } from 'next/server';
 import { randomBytes } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit, AdminRole } from '@/lib/admin-auth';
 import { isAdminRole } from '@/lib/admin-roles';
+import { sendAdminInvite } from '@/lib/admin-invite';
 
 export const dynamic = 'force-dynamic';
 
@@ -42,6 +45,14 @@ export async function POST(req: NextRequest) {
   if (admin instanceof NextResponse) return admin;
 
   const body = await req.json().catch(() => ({}));
+  if (body.resend === true) {
+    const { data: m } = await getSupabaseAdmin().from('admin_members').select('id, email, name, role, active').eq('id', String(body.id ?? '')).maybeSingle();
+    const mem = m as { id: string; email: string; name: string | null; role: AdminRole; active: boolean } | null;
+    if (!mem || !mem.active) return NextResponse.json({ error: 'Membro não encontrado ou desativado.' }, { status: 404 });
+    const emailSent = await sendAdminInvite({ email: mem.email, name: mem.name, role: mem.role });
+    await audit(admin, 'team.resend_invite', 'admin_member', mem.id, { email: mem.email, emailSent });
+    return emailSent ? NextResponse.json({ emailSent }) : NextResponse.json({ error: 'Não foi possível enviar o e-mail.' }, { status: 500 });
+  }
   const email = String(body.email ?? '').trim().toLowerCase();
   const name = String(body.name ?? '').trim() || null;
   const role = String(body.role ?? '') as AdminRole;
@@ -72,8 +83,9 @@ export async function POST(req: NextRequest) {
     .single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-  await audit(admin, 'team.add', 'admin_member', (member as { id: string }).id, { email, role, newAccount: !!tempPassword });
-  return NextResponse.json({ member, tempPassword });
+  const emailSent = await sendAdminInvite({ email, name, role });
+  await audit(admin, 'team.add', 'admin_member', (member as { id: string }).id, { email, role, newAccount: !!tempPassword, emailSent });
+  return NextResponse.json({ member, tempPassword, emailSent });
 }
 
 export async function PATCH(req: NextRequest) {

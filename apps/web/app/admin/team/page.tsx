@@ -19,6 +19,7 @@ export default function TeamPage() {
   const [form, setForm] = useState({ email: '', name: '', role: 'collaborator' as Role });
   const [saving, setSaving] = useState(false);
   const [created, setCreated] = useState<{ email: string; tempPassword: string } | null>(null);
+  const [notice, setNotice] = useState('');
   const [copied, setCopied] = useState(false);
 
   const load = useCallback(async () => {
@@ -38,8 +39,17 @@ export default function TeamPage() {
     if (!r.ok) { setError(j.error ?? 'Não foi possível adicionar.'); return; }
     setAdding(false);
     if (j.tempPassword) setCreated({ email: form.email, tempPassword: j.tempPassword });
+    setNotice(j.emailSent ? `Convite enviado por e-mail para ${form.email}, com o nível de acesso e o link para criar a senha.` : 'A pessoa foi adicionada, mas o e-mail de convite não saiu. Use "Reenviar convite".');
     setForm({ email: '', name: '', role: 'collaborator' });
     load();
+  };
+
+  const resend = async (m: Member) => {
+    setError(''); setNotice('');
+    const r = await fetch('/api/admin/team', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ resend: true, id: m.id }) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) { setError(j.error ?? 'Não foi possível reenviar.'); return; }
+    setNotice(`Convite reenviado para ${m.email}.`);
   };
 
   const update = async (m: Member, patch: Partial<Pick<Member, 'role' | 'active'>>) => {
@@ -57,6 +67,7 @@ export default function TeamPage() {
       </div>
       <div className="adm-body">
         {error && <div className="adm-alert crit" style={{ marginBottom: 16 }}>{error}</div>}
+        {notice && <div className="adm-alert" style={{ marginBottom: 16 }}>{notice}</div>}
 
         {created && (
           <div className="adm-panel" style={{ marginBottom: 16, borderColor: 'var(--accent-border)' }}>
@@ -98,6 +109,9 @@ export default function TeamPage() {
                         <button className={`adm-btn-sm ${m.active ? 'ghost' : 'primary'}`} onClick={() => update(m, { active: !m.active })}>
                           {m.active ? 'Desativar' : 'Reativar'}
                         </button>
+                        {m.active && !isMe && (
+                          <button className="adm-btn-sm ghost" style={{ marginLeft: 6 }} onClick={() => resend(m)}>Reenviar convite</button>
+                        )}
                       </td>
                       <td>{new Date(m.created_at).toLocaleDateString('pt-BR')}</td>
                     </tr>
