@@ -957,6 +957,13 @@ export default function LearnSessionScreen() {
       if (!perm.canAskAgain) { setMicAsk(false); blockMic(); }
     } catch { /* continua em "toque para liberar" */ }
   };
+  /** Toque com o microfone bloqueado: tenta o pedido do sistema (o Android às vezes marca "não pedir
+   *  de novo" sem ser verdade) e, se ele não liberar, abre os Ajustes do app. */
+  const openMicSettings = async () => {
+    const perm = await requestRecordingPermissionsAsync().catch(() => null);
+    if (perm?.granted) { await micGranted(); return; }
+    Linking.openSettings().catch(() => {});
+  };
 
   /** Reconhecimento do iPhone sobre o arquivo gravado. Devolve as leituras (vazio se não entendeu). */
   const recognizeFile = (uri: string): Promise<string[]> => new Promise(resolve => {
@@ -1872,7 +1879,7 @@ export default function LearnSessionScreen() {
                         )}
                         <TouchableOpacity
                           activeOpacity={0.85}
-                          onPress={needsMic ? (micBlocked ? () => { Linking.openSettings().catch(() => {}); } : requestMic) : undefined}
+                          onPress={needsMic ? (micBlocked ? openMicSettings : requestMic) : undefined}
                           onPressIn={needsMic ? undefined : startRecording}
                           onPressOut={needsMic ? undefined : stopRecording}
                           style={{
@@ -2173,7 +2180,7 @@ export default function LearnSessionScreen() {
                     ? 'O Queizy está sem acesso ao microfone. Libere nos Ajustes do celular para fazer este exercício.'
                     : "Queizy can't access your microphone. Allow it in your phone's Settings to do this exercise."}
                 </AppText>
-                <TouchableOpacity onPress={() => { Linking.openSettings().catch(() => {}); }}
+                <TouchableOpacity onPress={openMicSettings}
                   style={{ backgroundColor: C.navy, borderRadius: 14, paddingVertical: 13, alignItems: 'center' }}>
                   <AppText style={{ fontSize: 14.5, fontWeight: '800', color: '#FFF' }}>{isPortuguese ? 'Abrir Ajustes' : 'Open Settings'}</AppText>
                 </TouchableOpacity>
