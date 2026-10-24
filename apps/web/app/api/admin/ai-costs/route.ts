@@ -247,7 +247,7 @@ export async function POST(req: NextRequest) {
   const admin = await requireAdmin(req, 'finance:write');
   if (admin instanceof NextResponse) return admin;
   const body = await req.json().catch(() => ({}));
-  // Reenvia o e-mail "Custos de IA de ontem" agora (o automático sai às 8h).
+  // Reenvia o e-mail de custos de IA agora (o automático sai às 8h).
   if (body.action === 'daily_report') {
     const r = await runAiCostReport({ force: true });
     await audit(admin, 'ai_costs.daily_report', 'ai_cost_daily', null, r);

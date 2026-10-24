@@ -88,7 +88,7 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
     case 'support_autoclose': // atendimento parado: IA 2 h, atendente 24 h → encerrado (sem mensagem)
       await closeIdleConversations();
       break;
-    case 'ai_costs': // 8h (Brasília): e-mail "Custos de IA de ontem" com alertas (OpenAI e ElevenLabs)
+    case 'ai_costs': // 8h (Brasília): e-mail de custos de IA (anteontem, já fechado) com alertas (OpenAI e ElevenLabs)
       await runAiCostReport({ force: forced });
       break;
     default:
