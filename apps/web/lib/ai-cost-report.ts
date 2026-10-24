@@ -56,7 +56,7 @@ const usd = (v: number) => `US$ ${v.toFixed(2).replace('.', ',')}`;
 const dateBr = (d: Date) => d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', timeZone: 'America/Sao_Paulo' });
 
 /** Roda às 8h (Brasília) ou forçado; manda um e-mail por dia no máximo. */
-export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{ sent: boolean; reason?: string }> {
+export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{ sent: boolean; reason?: string; openaiUsd?: number | null; openaiError?: string }> {
   const hourBrt = new Date(Date.now() - 3 * 3600000).getUTCHours();
   if (!opts.force && hourBrt !== 8) return { sent: false, reason: 'fora do horário' };
   const supabase = getSupabaseAdmin();
@@ -65,7 +65,8 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
   const { data: claimed } = await supabase.from('ai_cost_daily').upsert({ day } as never, { onConflict: 'day', ignoreDuplicates: true }).select('day');
   if (!opts.force && !(claimed ?? []).length) return { sent: false, reason: 'já enviado' };
 
-  const [oa, el, fx] = await Promise.all([openaiDay(start, end).catch(e => { console.error('[ai-cost-report] openai', e); return null; }), elevenSub().catch(() => null), fxToBrl('USD').catch(() => 5.5)]);
+  let openaiError: string | undefined;
+  const [oa, el, fx] = await Promise.all([openaiDay(start, end).catch(e => { console.error('[ai-cost-report] openai', e); openaiError = String(e?.message ?? e); return null; }), elevenSub().catch(() => null), fxToBrl('USD').catch(() => 5.5)]);
   const alerts: string[] = [];
 
   if (oa && oa.usd > OPENAI_DAILY_LIMIT_USD) alerts.push(`OpenAI gastou ${usd(oa.usd)} ontem, acima do teto de ${usd(OPENAI_DAILY_LIMIT_USD)} por dia.`);
@@ -115,5 +116,5 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
   const subject = `${alerts.length ? 'Atenção: ' : ''}Custos de IA de ${dayBr}: OpenAI ${oa ? usd(oa.usd) : '—'}${el && el.limit ? `, ElevenLabs ${Math.round((el.used / el.limit) * 100)}%` : ''}`;
   let sent = 0;
   for (const addr of to) if (await sendEmail({ to: addr, subject, html }).catch(() => false)) sent++;
-  return { sent: sent > 0 };
+  return { sent: sent > 0, openaiUsd: oa?.usd ?? null, openaiError };
 }

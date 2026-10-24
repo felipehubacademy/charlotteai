@@ -17,6 +17,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
+import { runAiCostReport } from '@/lib/ai-cost-report';
 import { fxToBrl } from '@/lib/fx';
 import { CHARACTERS } from '@/lib/characters';
 
@@ -246,6 +247,12 @@ export async function POST(req: NextRequest) {
   const admin = await requireAdmin(req, 'finance:write');
   if (admin instanceof NextResponse) return admin;
   const body = await req.json().catch(() => ({}));
+  // Reenvia o e-mail "Custos de IA de ontem" agora (o automático sai às 8h).
+  if (body.action === 'daily_report') {
+    const r = await runAiCostReport({ force: true });
+    await audit(admin, 'ai_costs.daily_report', 'ai_cost_daily', null, r);
+    return NextResponse.json(r);
+  }
   const month = String(body.month ?? '');
   const provider = String(body.provider ?? '');
   if (!/^\d{4}-\d{2}$/.test(month) || !['OpenAI', 'Microsoft Azure'].includes(provider)) {
