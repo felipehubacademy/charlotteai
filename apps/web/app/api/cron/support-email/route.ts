@@ -19,7 +19,8 @@ const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
 const SUPPORT_ADDR = (process.env.SUPPORT_INBOX ?? 'suporte@hubacademybr.com').toLowerCase();
 // Endereços de suporte aceitos (o antigo e o do Queizy chegam na mesma caixa).
 const SUPPORT_ADDRS = [SUPPORT_ADDR, 'suporte@queizy.com'];
-const SELF = 'charlotte@hubacademybr.com';
+// Nossos próprios remetentes (avisos do sistema, relatórios, respostas): nunca viram chamado.
+const SELF = ['charlotte@hubacademybr.com', 'noreply@queizy.com', 'contato@queizy.com', (process.env.EMAIL_SENDER_ADDRESS || '').toLowerCase()].filter(Boolean);
 
 function checkAuth(req: NextRequest) {
   // Agendamento da Vercel (a cada 5 minutos, vercel.json) manda Bearer CRON_SECRET.
@@ -43,7 +44,7 @@ function freshText(body: string): string {
 
 function isNoise(m: InboxMessage): boolean {
   const from = m.from;
-  if (!from || from === SELF) return true;
+  if (!from || SELF.includes(from.toLowerCase())) return true;
   if (from.includes('postmaster') || from.includes('microsoftexchange')) return true;
   const subj = m.subject.toLowerCase();
   if (/out of office|automatic reply|resposta autom|ausência|aus[eê]ncia|f[ée]rias|vacation|não é possível entregar|nao e possivel entregar|undeliverable/.test(subj)) return true;

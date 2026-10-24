@@ -11,11 +11,12 @@ const OPENAI_DAILY_LIMIT_USD = Number(process.env.AI_DAILY_ALERT_USD || 5);
 const ELEVEN_STEPS = [95, 85, 70];
 const DAY = 86400000;
 
-/** Dia de ontem em Brasília (YYYY-MM-DD) e o intervalo dele em segundos (UTC). */
+/** Dia de ontem em Brasília (YYYY-MM-DD) e o intervalo dele em segundos. A API de custos da OpenAI
+ *  agrupa por dia UTC, então o intervalo vai de 00:00 a 24:00 UTC desse dia (3 h de diferença). */
 function yesterdayBrt(): { day: string; start: number; end: number } {
   const nowBrt = new Date(Date.now() - 3 * 3600000);
   const day = new Date(Date.UTC(nowBrt.getUTCFullYear(), nowBrt.getUTCMonth(), nowBrt.getUTCDate()) - DAY);
-  const start = day.getTime() / 1000 + 3 * 3600; // 00:00 BRT = 03:00 UTC
+  const start = day.getTime() / 1000;
   return { day: day.toISOString().slice(0, 10), start, end: start + 86400 };
 }
 
@@ -28,7 +29,7 @@ async function openaiDay(start: number, end: number): Promise<{ usd: number; lin
   url.searchParams.set('bucket_width', '1d');
   url.searchParams.append('group_by', 'line_item');
   const r = await fetch(url, { headers: { Authorization: `Bearer ${key}` }, cache: 'no-store' });
-  if (!r.ok) throw new Error(`OpenAI costs ${r.status}`);
+  if (!r.ok) throw new Error(`OpenAI costs ${r.status}: ${(await r.text()).slice(0, 200)}`);
   const j = await r.json();
   const lines = new Map<string, number>();
   for (const bucket of j.data ?? []) for (const res of bucket.results ?? []) {
@@ -64,7 +65,7 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
   const { data: claimed } = await supabase.from('ai_cost_daily').upsert({ day } as never, { onConflict: 'day', ignoreDuplicates: true }).select('day');
   if (!opts.force && !(claimed ?? []).length) return { sent: false, reason: 'já enviado' };
 
-  const [oa, el, fx] = await Promise.all([openaiDay(start, end).catch(() => null), elevenSub().catch(() => null), fxToBrl('USD').catch(() => 5.5)]);
+  const [oa, el, fx] = await Promise.all([openaiDay(start, end).catch(e => { console.error('[ai-cost-report] openai', e); return null; }), elevenSub().catch(() => null), fxToBrl('USD').catch(() => 5.5)]);
   const alerts: string[] = [];
 
   if (oa && oa.usd > OPENAI_DAILY_LIMIT_USD) alerts.push(`OpenAI gastou ${usd(oa.usd)} ontem, acima do teto de ${usd(OPENAI_DAILY_LIMIT_USD)} por dia.`);
@@ -96,7 +97,8 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
   } as never).eq('day', day);
 
   const { data: admins } = await supabase.from('admin_members').select('email').eq('role', 'admin').eq('active', true);
-  const to = ((admins ?? []) as { email: string | null }[]).map(a => a.email).filter((e): e is string => !!e);
+  // A caixa do suporte não recebe: lá todo e-mail vira chamado.
+  const to = ((admins ?? []) as { email: string | null }[]).map(a => a.email).filter((e): e is string => !!e && !/^suporte@/i.test(e));
   const dayBr = dateBr(new Date(Date.parse(day) + 12 * 3600000));
   const top = (oa?.lines ?? []).filter(l => l.usd >= 0.05).slice(0, 6);
   const html = base([
