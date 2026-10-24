@@ -71,7 +71,8 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
   const [oa, el, fx] = await Promise.all([openaiDay(start, end).catch(e => { console.error('[ai-cost-report] openai', e); openaiError = String(e?.message ?? e); return null; }), elevenSub().catch(() => null), fxToBrl('USD').catch(() => 5.5)]);
   const alerts: string[] = [];
 
-  if (oa && oa.usd > OPENAI_DAILY_LIMIT_USD) alerts.push(`OpenAI gastou ${usd(oa.usd)} ontem, acima do teto de ${usd(OPENAI_DAILY_LIMIT_USD)} por dia.`);
+  const dayLabel = dateBr(new Date(Date.parse(day) + 12 * 3600000));
+  if (oa && oa.usd > OPENAI_DAILY_LIMIT_USD) alerts.push(`OpenAI gastou ${usd(oa.usd)} em ${dayLabel}, acima do teto de ${usd(OPENAI_DAILY_LIMIT_USD)} por dia.`);
 
   let elevenLine = 'ElevenLabs: não foi possível ler a assinatura.';
   if (el && el.limit > 0) {
@@ -102,7 +103,7 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
   const { data: admins } = await supabase.from('admin_members').select('email').eq('role', 'admin').eq('active', true);
   // A caixa do suporte não recebe: lá todo e-mail vira chamado.
   const to = ((admins ?? []) as { email: string | null }[]).map(a => a.email).filter((e): e is string => !!e && !/^suporte@/i.test(e));
-  const dayBr = dateBr(new Date(Date.parse(day) + 12 * 3600000));
+  const dayBr = dayLabel;
   const top = (oa?.lines ?? []).filter(l => l.usd >= 0.05).slice(0, 6);
   const html = base([
     h1(`Custos de IA de ${dayBr}`),
