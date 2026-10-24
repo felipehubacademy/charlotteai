@@ -1,10 +1,10 @@
 // /api/admin/instagram — aba Instagram do /admin (calendário, aprovação e comentários do @queizyapp).
-//   GET  ?view=posts       posts de 2 dias atrás até 40 dias à frente
+//   GET  ?view=posts       posts de 60 dias atrás até 40 dias à frente (publicadas e rejeitadas ficam no histórico)
 //   GET  ?view=comments    últimos comentários e o que a IA fez
 //   GET  ?view=status      conta conectada, validade da chave, contagens
 //   POST { action: 'approve', ids }                aprova (só sai o que estiver aprovado)
-//   POST { action: 'unapprove', id }               volta para rascunho (antes de preparar)
-//   POST { action: 'cancel', id }                  cancela
+//   POST { action: 'unapprove', id }               volta para aguardando aprovação (aprovado, com erro ou rejeitado)
+//   POST { action: 'cancel', id }                  rejeita (sai da fila e não é publicado)
 //   POST { action: 'update', id, caption?, scheduled_at? }   edita legenda ou horário (antes de preparar)
 //   POST { action: 'retry', id }                   post com erro volta para aprovado
 //   POST { action: 'reply_comment', id, text }     responde um comentário pelo /admin
@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
     const { count: escalados } = await supabase.from('instagram_comments').select('id', { count: 'exact', head: true }).eq('action', 'escalado');
     return NextResponse.json({ configured: instagramConfigured(), auth: data ?? null, counts, escalados: escalados ?? 0 });
   }
-  const from = new Date(Date.now() - 2 * 86400000).toISOString();
+  const from = new Date(Date.now() - 60 * 86400000).toISOString();
   const to = new Date(Date.now() + 40 * 86400000).toISOString();
   const { data } = await supabase.from('instagram_posts')
     .select('id, source_key, scheduled_at, linha, kind, caption, media, cover_url, status, approved_by, approved_at, permalink, error, attempts, published_at')
@@ -66,8 +66,9 @@ export async function POST(req: NextRequest) {
     case 'cancel': {
       const id = String(body.id ?? '');
       const status = body.action === 'cancel' ? 'cancelado' : 'rascunho';
-      const { data } = await supabase.from('instagram_posts').update({ status, approved_by: null, approved_at: null, updated_at: now } as never)
-        .eq('id', id).in('status', ['rascunho', 'aprovado', 'erro']).select('id');
+      const de = body.action === 'cancel' ? ['rascunho', 'aprovado', 'erro'] : ['aprovado', 'erro', 'cancelado'];
+      const { data } = await supabase.from('instagram_posts').update({ status, approved_by: null, approved_at: null, attempts: 0, error: null, updated_at: now } as never)
+        .eq('id', id).in('status', de).select('id');
       if (!(data ?? []).length) return NextResponse.json({ error: 'Esse post já está sendo publicado ou já saiu.' }, { status: 400 });
       await audit(admin, `instagram.${body.action}`, 'instagram_post', id);
       return NextResponse.json({ ok: true });

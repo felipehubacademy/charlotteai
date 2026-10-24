@@ -25,8 +25,16 @@ const STATUS: Record<string, { label: string; color: string }> = {
   preparado: { label: 'Publicando',           color: 'var(--warn)' },
   publicado: { label: 'Publicado',            color: 'var(--ok)' },
   erro:      { label: 'Erro',                 color: 'var(--err)' },
-  cancelado: { label: 'Cancelado',            color: 'var(--t3)' },
+  cancelado: { label: 'Rejeitado',            color: 'var(--t3)' },
 };
+// Sub-abas do calendário: cada post aparece em uma só (erro fica em Aprovadas, para não se perder).
+type Fila = 'pendentes' | 'aprovadas' | 'publicadas' | 'rejeitadas';
+const FILAS: { id: Fila; label: string; status: string[] }[] = [
+  { id: 'pendentes',  label: 'Aguardando aprovação', status: ['rascunho'] },
+  { id: 'aprovadas',  label: 'Aprovadas',            status: ['aprovado', 'preparado', 'erro'] },
+  { id: 'publicadas', label: 'Publicadas',           status: ['publicado'] },
+  { id: 'rejeitadas', label: 'Rejeitadas',           status: ['cancelado'] },
+];
 const ACAO: Record<string, string> = { pendente: 'Na fila', respondido: 'Respondido', escalado: 'Para a equipe', oculto: 'Ocultado', ignorado: 'Sem resposta', erro: 'Erro' };
 const KIND: Record<Post['kind'], string> = { image: 'Post', carousel: 'Carrossel', reels: 'Reels' };
 const dia = (s: string) => new Date(s).toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: '2-digit' });
@@ -39,6 +47,7 @@ const toLocalInput = (s: string) => {
 
 export default function InstagramAdmin() {
   const [tab, setTab] = useState<'calendar' | 'comments'>('calendar');
+  const [fila, setFila] = useState<Fila>('pendentes');
   const [posts, setPosts] = useState<Post[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);
   const [status, setStatus] = useState<Status | null>(null);
@@ -72,7 +81,10 @@ export default function InstagramAdmin() {
   };
 
   const pendentes = posts.filter(p => p.status === 'rascunho');
-  const porDia = posts.reduce<Record<string, Post[]>>((acc, p) => { (acc[dia(p.scheduled_at)] ??= []).push(p); return acc; }, {});
+  const daFila = (f: Fila) => posts.filter(p => FILAS.find(x => x.id === f)!.status.includes(p.status));
+  // Publicadas: da mais recente para a mais antiga; as outras na ordem do calendário.
+  const visiveis = fila === 'publicadas' ? [...daFila(fila)].reverse() : daFila(fila);
+  const porDia = visiveis.reduce<Record<string, Post[]>>((acc, p) => { (acc[dia(p.scheduled_at)] ??= []).push(p); return acc; }, {});
   const capa = (p: Post) => p.kind === 'reels' ? p.cover_url : p.media[0]?.url;
   const escalados = comments.filter(c => c.action === 'escalado');
 
@@ -82,7 +94,7 @@ export default function InstagramAdmin() {
         <Instagram size={18} color="var(--accent)" />
         <div className="adm-topbar-title">Instagram</div>
         <button className="adm-btn-sm ghost" onClick={load}><RefreshCw size={13} /> Atualizar</button>
-        {tab === 'calendar' && pendentes.length > 0 && (
+        {tab === 'calendar' && fila === 'pendentes' && pendentes.length > 0 && (
           <button className="adm-btn-sm primary" disabled={busy} onClick={() => { if (confirm(`Aprovar ${pendentes.length} post(s)? Eles saem sozinhos na hora marcada.`)) act({ action: 'approve', ids: pendentes.map(p => p.id) }); }}>
             <Check size={13} /> Aprovar todos ({pendentes.length})
           </button>
@@ -90,7 +102,7 @@ export default function InstagramAdmin() {
       </div>
 
       <div className="adm-tabs">
-        <div className={`adm-tab${tab === 'calendar' ? ' active' : ''}`} onClick={() => setTab('calendar')}>Calendário ({posts.length})</div>
+        <div className={`adm-tab${tab === 'calendar' ? ' active' : ''}`} onClick={() => setTab('calendar')}>Calendário</div>
         <div className={`adm-tab${tab === 'comments' ? ' active' : ''}`} onClick={() => setTab('comments')}>Comentários{escalados.length ? ` (${escalados.length} para a equipe)` : ''}</div>
       </div>
 
@@ -107,8 +119,17 @@ export default function InstagramAdmin() {
         )}
 
         {tab === 'calendar' && (
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 14 }}>
+            {FILAS.map(f => (
+              <button key={f.id} className={`adm-btn-sm ${fila === f.id ? 'primary' : 'ghost'}`} onClick={() => setFila(f.id)}>
+                {f.label} ({daFila(f.id).length})
+              </button>
+            ))}
+          </div>
+        )}
+        {tab === 'calendar' && (
           Object.keys(porDia).length === 0 ? (
-            <div className="adm-panel"><div className="adm-empty"><div className="adm-empty-title">{loading ? 'Carregando…' : 'Nenhum post no calendário'}</div></div></div>
+            <div className="adm-panel"><div className="adm-empty"><div className="adm-empty-title">{loading ? 'Carregando…' : { pendentes: 'Nada esperando aprovação', aprovadas: 'Nenhum post aprovado na fila', publicadas: 'Nada publicado ainda', rejeitadas: 'Nenhum post rejeitado' }[fila]}</div></div></div>
           ) : Object.entries(porDia).map(([d, list]) => (
             <div key={d} style={{ marginBottom: 18 }}>
               <div style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, color: 'var(--t2)', marginBottom: 8 }}>{d}</div>
@@ -205,9 +226,10 @@ export default function InstagramAdmin() {
                     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                       {open.status === 'rascunho' && <button className="adm-btn-sm primary" disabled={busy} onClick={async () => { if (await act({ action: 'approve', ids: [open.id] })) setOpen(null); }}><Check size={13} /> Aprovar</button>}
                       {open.status === 'aprovado' && <button className="adm-btn-sm ghost" disabled={busy} onClick={async () => { if (await act({ action: 'unapprove', id: open.id })) setOpen(null); }}><Undo2 size={13} /> Tirar aprovação</button>}
+                      {open.status === 'cancelado' && <button className="adm-btn-sm primary" disabled={busy} onClick={async () => { if (await act({ action: 'unapprove', id: open.id })) setOpen(null); }}><Undo2 size={13} /> Voltar para aprovação</button>}
                       {open.status === 'erro' && <button className="adm-btn-sm primary" disabled={busy} onClick={async () => { if (await act({ action: 'retry', id: open.id })) setOpen(null); }}><RotateCcw size={13} /> Tentar de novo</button>}
                       {['rascunho', 'aprovado', 'erro'].includes(open.status) && <button className="adm-btn-sm ghost" onClick={() => setEdit({ caption: open.caption, when: toLocalInput(open.scheduled_at) })}><Pencil size={13} /> Editar</button>}
-                      {['rascunho', 'aprovado', 'erro'].includes(open.status) && <button className="adm-btn-sm ghost" disabled={busy} onClick={async () => { if (confirm('Cancelar este post?') && await act({ action: 'cancel', id: open.id })) setOpen(null); }}><X size={13} /> Cancelar post</button>}
+                      {['rascunho', 'aprovado', 'erro'].includes(open.status) && <button className="adm-btn-sm ghost" disabled={busy} onClick={async () => { if (confirm('Rejeitar este post? Ele não será publicado (dá para voltar depois em Rejeitadas).') && await act({ action: 'cancel', id: open.id })) setOpen(null); }}><X size={13} /> Rejeitar</button>}
                       {open.permalink && <a className="adm-btn-sm ghost" href={open.permalink} target="_blank" rel="noreferrer"><ExternalLink size={13} /> Ver no Instagram</a>}
                     </div>
                   </>
