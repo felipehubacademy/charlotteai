@@ -1714,8 +1714,8 @@ export default function LearnSessionScreen() {
                     ))}
                   </View>
 
-                  {/* Word pool — available chips */}
-                  <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+                  {/* Word pool — available chips (centralizadas) */}
+                  <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, justifyContent: 'center' }}>
                     {wordOrderPool.map((w, i) => (
                       <TouchableOpacity
                         key={i}
