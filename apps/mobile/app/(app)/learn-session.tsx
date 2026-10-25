@@ -1592,7 +1592,7 @@ export default function LearnSessionScreen() {
                   lineHeight: currentStep.exercise.type === 'read_answer' ? 26 : 34,
                   marginBottom: gStatus === 'answering' ? 0 : 20,
                 }}>
-                  {formatDialogue(String(currentStep.exercise.type === 'read_answer' ? currentStep.exercise.question : currentStep.exercise.sentence) ?? '')}
+                  {formatDialogue(String((currentStep.exercise.type === 'read_answer' ? currentStep.exercise.question : currentStep.exercise.sentence) ?? ''))}
                 </AppText>
               )
               )}
