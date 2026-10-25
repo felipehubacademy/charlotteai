@@ -404,10 +404,10 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Answer**: Where are you from?
    **Explanation**: Em perguntas WH-, a estrutura é: WH-word + auxiliar + sujeito. "Where are you from?" — não "You are from where?".
 
-9. **fix_error** — "Is they French?"
-   **Hint**: "They" é plural
-   **Answer**: Are they French?
-   **Explanation**: "They" é plural, então usa "are", não "is". "Are they French?".
+9. **multiple_choice** — "_____ they French?"
+   **Options**: Are / Is / Am
+   **Answer**: Are
+   **Explanation**: "They" (eles) pede "are": They are French. Na pergunta, o "are" vai para a frente: Are they French?
 
 10. **read_answer**
     **Passage**: "I have two friends abroad. Anna is from Italy and she lives in Rome. Lucas is from Brazil but lives in Lisbon."
@@ -542,25 +542,26 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Accepts**: very / really
    **Explanation**: "So + adjetivo" intensifica: "so hungry" = "com muita fome". "Very hungry" e "really hungry" também valem.
 
-6. **fill_gap** — "_____ are you feeling today?"
-   **Hint**: Pergunta sobre como (não onde, não quando)
+6. **multiple_choice** — "_____ are you feeling today?"
+   **Options**: How / Where / When / Who
    **Answer**: How
-   **Explanation**: "How are you feeling?" pergunta sobre estado emocional/físico. É mais íntimo que "How are you?".
+   **Explanation**: "How" pergunta como. "How are you feeling today?" = como você está se sentindo hoje?
 
-7. **fill_gap** — "She is _____ today: lots of meetings and no free time."
-   **Hint**: Estado de quem tem muita coisa pra fazer
+7. **word_bank** — "She is _____ today: lots of meetings and no free time."
+   **Choices**: busy / tired / hungry / funny
    **Answer**: busy
-   **Explanation**: "Busy" = ocupado. "She is busy today" é resposta natural quando alguém tem muito trabalho.
+   **Explanation**: "Busy" = ocupada. Muitas reuniões e nenhum tempo livre: ela está ocupada. "Tired" é cansada, que pode até ser verdade, mas a frase fala de agenda cheia.
 
 8. **fix_error** — "I tired am."
    **Hint**: Ordem da frase
    **Answer**: I am tired.
    **Explanation**: A ordem em inglês é: sujeito + verbo + complemento. "I am tired" — não "I tired am" (que seria a ordem do PT-BR às vezes).
 
-9. **fix_error** — "How feels you?"
-   **Hint**: Use "to be" + verbo no -ing ("How are you ___ing?")
+9. **word_order**
+   **Context PT**: Monte a pergunta: como você está se sentindo?
+   **Words**: How / are / you / feeling / ?
    **Answer**: How are you feeling?
-   **Explanation**: A forma correta usa "to be" + verbo no -ing: "How are you feeling?" — não "How feels you?". Outra forma comum: "How do you feel?".
+   **Explanation**: Pergunta com "how": How + are + you + verbo com -ing. Nada de "How feels you?".
 
 10. **read_answer**
     **Passage**: "Tom: Hey Ana, are you okay? You look down. Ana: I'm tired and a bit stressed. Work is crazy this week."
@@ -692,7 +693,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 5. **fill_gap** — "Goodbye! Have a _____ day."
    **Hint**: Adjetivo positivo
    **Answer**: nice
-   **Explanation**: "Have a nice day" é despedida educada padrão. Também aceita "good day", "great day".
+   **Accepts**: great / good / wonderful / lovely
+   **Explanation**: "Have a nice day!" é a despedida mais comum. "Great", "good" e "wonderful" também funcionam.
 
 6. **fill_gap** — "_____ you next week!"
    **Hint**: Despedida com referência temporal
