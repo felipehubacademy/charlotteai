@@ -48,16 +48,14 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Noun-verb pair: which has stress on the first syllable as a noun?",
+          "sentence": "Listen to \"record\" in \"I bought a record\". Where is the stress?",
           "options": [
-            "REcord (noun) — reCORD (verb)",
-            "Record (both)",
-            "Record (verb) — reCORD (noun)",
-            "no difference"
+            "At the start: REcord",
+            "At the end: reCORD"
           ],
-          "answer": "REcord (noun) — reCORD (verb)",
-          "explanation": "Many two-syllable noun-verb pairs follow the pattern: NOUN stress on first, VERB stress on second. \"REcord\" (a recording, noun) vs \"reCORD\" (to record, verb). Similar pairs: PROduce / proDUCE, CONtract / conTRACT, OBject / obJECT, PERmit / perMIT. Native speakers signal the part of speech via stress.",
-          "listen": "a record. I want to record it."
+          "answer": "At the start: REcord",
+          "explanation": "As a thing (a record), the stress goes at the start: REcord. As an action (to record), it moves to the end: \"I want to reCORD it\". Same with PREsent / preSENT and PERmit / perMIT.",
+          "listen": "I bought a record."
         },
         {
           "type": "multiple_choice",
@@ -87,10 +85,18 @@
         },
         {
           "type": "read_answer",
-          "passage": "Stress shifts can change meaning entirely. PROduce (noun: vegetables and fruit) is different from proDUCE (verb: to make). PERmit (noun: a licence) differs from perMIT (verb: to allow). OBject (noun: a thing) sits opposite obJECT (verb: to oppose). For every misplaced stress, a momentary parse failure passes through the listener's mind.",
-          "question": "What does the passage say happens when stress is misplaced?",
-          "answer": "a momentary parse failure passes through the listener's mind",
-          "explanation": "Three noun-verb pairs with stress contrast: PROduce/proDUCE, PERmit/perMIT, OBject/obJECT. Each pair shares spelling but differs in stress, and the stress signals the part of speech. C2 listeners hear this shift instantly; speakers must produce it."
+          "passage": "A: What's in the box? B: A present for you. I want to present it at dinner tonight, in front of everyone.",
+          "question": "What does B want to do at dinner?",
+          "answer": "give A the present in front of everyone",
+          "accepts": [
+            "give the present",
+            "give it to A",
+            "present it",
+            "give you the present",
+            "give the gift"
+          ],
+          "explanation": "\"A PREsent\" is the gift; \"to preSENT\" is to give it formally. Same letters, different stress, different meaning.",
+          "listen": "A: What's in the box? B: A present for you. I want to present it at dinner tonight, in front of everyone."
         }
       ],
       "listening_speaking": [
@@ -315,15 +321,17 @@
         },
         {
           "type": "read_answer",
-          "passage": "English is stress-timed. The amount of time between stressed syllables stays roughly constant, no matter how many unstressed syllables sit between them. 'BEN went HOME' takes about the same time as 'BENjamin has GONE to the HOUSE' — the function words and unstressed syllables compress to keep the beat. Native rhythm is built on this compression.",
-          "question": "How does English keep the same rhythm even with more words?",
-          "answer": "compresses unstressed syllables",
+          "passage": "A: Do you want to grab a coffee before the meeting? B: I'd love to, but I've got to finish this report first.",
+          "question": "Why can't B get a coffee now?",
+          "answer": "B has to finish a report first",
           "accepts": [
-            "compressing function words",
-            "unstressed syllables compressed",
-            "stress-timed rhythm"
+            "finish the report",
+            "finish a report",
+            "the report",
+            "has to finish"
           ],
-          "explanation": "Stress-timed language: the rhythm is set by stressed syllables, and everything else fits between them. Portuguese is syllable-timed (each syllable roughly equal); English compresses unstressed syllables. C2 spoken fluency = mastery of this compression."
+          "explanation": "In fast speech \"I've got to\" sounds almost like \"I've gotta\", and \"want to\" like \"wanna\". The stressed words carry the meaning: COFfee, MEETing, FInish, REport.",
+          "listen": "A: Do you want to grab a coffee before the meeting? B: I'd love to, but I've got to finish this report first."
         }
       ],
       "listening_speaking": [
@@ -512,16 +520,14 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "\"Law and order\" in natural British English includes which intrusive sound?",
+          "sentence": "Listen to \"pick it up\". How does it sound?",
           "options": [
-            "r — \"law-r-and order\"",
-            "j — \"law-y-and order\"",
-            "w — \"law-w-and order\"",
-            "none"
+            "Like one long word",
+            "Like three separate words, with pauses"
           ],
-          "answer": "r — \"law-r-and order\"",
-          "explanation": "Intrusive /r/: a sound inserted between two vowels where no \"r\" exists in spelling. \"Law and order\" → \"law-r-and order\". Common in British English. Same pattern: \"drawing\" → \"draw-r-ing\" (heard especially in fast speech). American English uses it less.",
-          "listen": "law and order"
+          "answer": "Like one long word",
+          "explanation": "Natives link the words: \"pi-ki-tup\". A word ending in a consonant joins the next word starting with a vowel. Same with \"turn it off\" (\"tur-ni-toff\") and \"an apple\" (\"a-napple\").",
+          "listen": "Pick it up."
         },
         {
           "type": "multiple_choice",
@@ -551,16 +557,17 @@
         },
         {
           "type": "read_answer",
-          "passage": "Native English in flow rarely sounds like written English. 'I'm going to find out what he said' compresses to 'I'm-gonna-fine-DOUT what-he-SAID' — linking, weak forms, elision. The written words are unchanged. The sounds are barely recognisable to learners taught only the careful version. Connected speech is the gap between textbook and spoken English.",
-          "question": "According to the passage, what is the gap between textbook and spoken English?",
-          "answer": "connected speech",
+          "passage": "A: Whaddaya wanna do tonight? B: Dunno. Gonna stay in, I guess. I'm kinda tired.",
+          "question": "What is B probably going to do tonight?",
+          "answer": "stay in",
           "accepts": [
-            "linking",
-            "weak forms",
-            "elision",
-            "connected speech gap"
+            "stay home",
+            "stay at home",
+            "stay in",
+            "rest"
           ],
-          "explanation": "Three phenomena named: linking (across word boundaries), weak forms (function-word reduction), elision (sound drops like /t/ in fast speech). All three are normal native pronunciation, but textbooks rarely show them, leaving learners surprised when they encounter real speech."
+          "explanation": "\"Whaddaya wanna\" = what do you want to; \"dunno\" = I don't know; \"gonna\" = going to; \"kinda\" = kind of. This is how the sentences really sound in casual speech.",
+          "listen": "A: Whaddaya wanna do tonight? B: Dunno. Gonna stay in, I guess. I'm kinda tired."
         }
       ],
       "listening_speaking": [
@@ -772,22 +779,29 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "How do you make \"Really?\" sound like genuine surprise vs sarcasm?",
+          "sentence": "Listen. Is she asking or telling?",
           "options": [
-            "Surprise rises high, sarcasm falls low and flat",
-            "Surprise falls low, sarcasm rises high",
-            "Both rise, only the volume changes",
-            "Both fall, only the speed changes"
+            "Asking",
+            "Telling"
           ],
-          "answer": "Surprise rises high, sarcasm falls low and flat",
-          "explanation": "Same word, two intonations. Genuine surprise rises sharply (\"REAL-ly?\" high). Sarcastic disbelief falls and flattens (\"REAL-ly.\" low, slow). Intonation carries the emotional content that words alone don't. C2 speakers control this consciously."
+          "answer": "Asking",
+          "explanation": "The words are a statement (\"You're coming tonight\"), but the voice goes up at the end, so it's a question. In casual English, intonation alone can turn a statement into a question.",
+          "listen": "You're coming tonight?"
         },
         {
           "type": "read_answer",
-          "passage": "Intonation is the second language inside English. The same words — 'You're going' — can be a statement (falling), a question (rising), an accusation (high pitch on 'YOU'), or a sceptical echo (falling on 'you', rising on 'going'). Without intonation, the words deliver only half their meaning.",
-          "question": "According to the passage, how many different meanings can 'You're going' carry through intonation?",
-          "answer": "at least four — statement, question, accusation, sceptical echo",
-          "explanation": "Four intonation contours for the same words: statement (falling), question (rising), accusation (high on 'YOU'), sceptical echo (falling-rising). Each delivers a different speech act. C2 listeners parse intonation; C2 speakers control it."
+          "passage": "A: I just finished my first marathon! B: You finished a marathon? That's amazing!",
+          "question": "How does B feel?",
+          "answer": "surprised",
+          "accepts": [
+            "surprised and happy",
+            "impressed",
+            "amazed",
+            "excited",
+            "happy for A"
+          ],
+          "explanation": "B repeats the news with the voice going up (\"You finished a marathon?\") to show surprise, then confirms with \"That's amazing!\".",
+          "listen": "A: I just finished my first marathon! B: You finished a marathon? That's amazing!"
         }
       ],
       "listening_speaking": [
@@ -992,10 +1006,15 @@
         },
         {
           "type": "read_answer",
-          "passage": "Native speech is built on contraction and elision. 'Should not have' becomes 'shouldn't've' or 'shouldn'ta'. 'Next month' becomes 'nex' month'. 'Going to' becomes 'gonna'. None of these are lazy — they are the natural sound shape of the language at speed. Speaking only the full forms is the marker of either great formality or great foreignness.",
-          "question": "How does the passage describe contractions and elisions?",
-          "answer": "as the natural sound shape of the language at speed (not lazy)",
-          "explanation": "The point: contracted/elided forms are normal English, not careless English. Native speakers use them constantly; learners who avoid them sound either over-formal or non-native. C2 mastery includes natural use of these forms."
+          "passage": "A: You shouldn't've told him. B: I know. I'll call him next month and say sorry.",
+          "question": "When will B call him?",
+          "answer": "next month",
+          "accepts": [
+            "next month",
+            "in a month"
+          ],
+          "explanation": "\"Shouldn't've\" = should not have, said fast; \"next month\" sounds like \"nex' month\". Natives drop sounds like this all the time.",
+          "listen": "A: You shouldn't've told him. B: I know. I'll call him next month and say sorry."
         }
       ],
       "listening_speaking": [

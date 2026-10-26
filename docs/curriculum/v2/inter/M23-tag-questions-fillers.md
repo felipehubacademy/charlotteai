@@ -617,10 +617,10 @@
 
 10. **read_answer**
     **Passage**: "I am late, aren't I? Sorry. Let's order food, shall we? You don't mind if I pay later, do you? Nobody else is coming, are they? Open the window, would you? It's stuffy in here."
-    **Question**: Which two tags are special exceptions to the standard rule?
-    **Answer**: aren't I, shall we
-    **Accepts**: aren't I / shall we
-    **Explanation**: The passage strings together multiple special cases: "aren't / are not I?" (irregular for "I am"), "shall we?" (for "let's"), "are they?" (indefinite subject "nobody"), "would you?" (softening imperative). All exceptions to the basic positive-negative rule.
+    **Question**: What does the speaker ask the other person to do?
+    **Answer**: open the window
+    **Accepts**: open the window / open a window / order food
+    **Explanation**: "Open the window, would you?" is a polite request: the tag "would you?" softens the order. The speaker also suggests ordering food with "Let's order food, shall we?".
 
 ### 2. Listening/Speaking (5 phrases)
 
