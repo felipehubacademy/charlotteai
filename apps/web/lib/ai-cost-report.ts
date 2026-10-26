@@ -2,14 +2,14 @@
 // anterior a ontem (já fechado na OpenAI).
 // Valores REAIS: OpenAI pela API de custos da organização (por item) e ElevenLabs pela assinatura.
 // O registro interno (openai_usage) subestima: não conta o Live Voice nem as escritas de cache.
-// Alertas: ElevenLabs passou de 70/85/95% ou vai acabar antes de renovar; OpenAI do dia acima do teto.
+// Alertas: ElevenLabs passou de 80/90/95% ou vai acabar antes de renovar; OpenAI do dia acima do teto.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { base, h1, p, btn, note } from '@/lib/email-brand';
 import { fxToBrl } from '@/lib/fx';
 
 const OPENAI_DAILY_LIMIT_USD = Number(process.env.AI_DAILY_ALERT_USD || 5);
-const ELEVEN_STEPS = [95, 85, 70];
+const ELEVEN_STEPS = [95, 90, 80]; // 80%: hora de ligar a recarga automática (o Felipe liga na mão)
 const DAY = 86400000;
 
 /** Dia relatado (YYYY-MM-DD) e o intervalo dele em segundos. É ANTEONTEM: a OpenAI leva cerca de um
@@ -90,7 +90,7 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
       + (el.resetAt ? `. Renova em ${dateBr(el.resetAt)}` : '')
       + (runOut ? `; nesse ritmo acaba em ${dateBr(runOut)}.` : '.');
     const step = ELEVEN_STEPS.find(s => pct >= s);
-    if (step) alerts.push(`ElevenLabs passou de ${step}% dos créditos do ciclo (${pct}%).`);
+    if (step) alerts.push(`ElevenLabs passou de ${step}% dos créditos do ciclo (${pct}%). Ligue a recarga automática no painel da ElevenLabs.`);
     if (runOut && el.resetAt && runOut < el.resetAt) alerts.push(`ElevenLabs: nesse ritmo os créditos acabam em ${dateBr(runOut)}, antes da renovação em ${dateBr(el.resetAt)}. Sem recarga automática, as vozes dos personagens e as ligações param.`);
   }
 
@@ -114,7 +114,7 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
     top.length ? `<table style="margin:0 auto 18px;font-size:13.5px;color:#3A3546;border-collapse:collapse;">${top.map(l => `<tr><td style="padding:3px 14px 3px 0;text-align:left;">${l.name}</td><td style="padding:3px 0;text-align:right;white-space:nowrap;">${usd(l.usd)}</td></tr>`).join('')}</table>` : '',
     p(elevenLine),
     btn('Ver no Financeiro', 'https://queizy.com/admin/finance'),
-    note(`O valor da OpenAI é do dia anterior a ontem: ela leva cerca de um dia para fechar os custos. Os créditos da ElevenLabs são de agora.<br>Teto diário da OpenAI para alerta: ${usd(OPENAI_DAILY_LIMIT_USD)}. Alertas da ElevenLabs em 70%, 85% e 95% do ciclo.`),
+    note(`O valor da OpenAI é do dia anterior a ontem: ela leva cerca de um dia para fechar os custos. Os créditos da ElevenLabs são de agora.<br>Teto diário da OpenAI para alerta: ${usd(OPENAI_DAILY_LIMIT_USD)}. Alertas da ElevenLabs em 80%, 90% e 95% do ciclo.`),
   ].join(''));
   const subject = `${alerts.length ? 'Atenção: ' : ''}Custos de IA de ${dayBr}: OpenAI ${oa ? usd(oa.usd) : '—'}${el && el.limit ? `, ElevenLabs ${Math.round((el.used / el.limit) * 100)}%` : ''}`;
   let sent = 0;
