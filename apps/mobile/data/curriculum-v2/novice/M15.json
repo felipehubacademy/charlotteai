@@ -831,129 +831,117 @@
       "grammar_focus": "-ed pronunciation rules (som de T, som de D, sílaba a mais)",
       "tense": "PASSADO · simples",
       "markers": [],
-      "real_life_context": "Você pronuncia o -ed corretamente (som de T, som de D ou sílaba a mais) em diferentes verbos.",
+      "real_life_context": "Você ouve o verbo no passado e reconhece se o -ed soa como T ou como D.",
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'worked'. Quantas sílabas você escuta?",
+          "sentence": "Ouça 'worked'. Som de T ou de D?",
           "options": [
-            "1",
-            "2",
-            "3"
+            "T",
+            "D"
           ],
-          "answer": "1",
-          "explanation": "\"Worked\" tem uma sílaba só: o -ed não vira sílaba nova, só um T colado no final (\"workt\"). Erro comum: falar \"wor-ked\".",
+          "answer": "T",
+          "explanation": "\"Worked\" termina com som de T.",
           "listen": "worked"
         },
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'wanted'. Quantas sílabas você escuta?",
+          "sentence": "Ouça 'played'. Som de T ou de D?",
           "options": [
-            "1",
-            "2",
-            "3"
+            "T",
+            "D"
           ],
-          "answer": "2",
-          "explanation": "\"Wanted\" tem duas sílabas: want-ed. Quando o verbo termina em T ou D, o -ed vira uma sílaba a mais.",
-          "listen": "wanted"
-        },
-        {
-          "type": "multiple_choice",
-          "sentence": "Ouça os quatro. Qual tem uma sílaba a mais?",
-          "options": [
-            "visited",
-            "walked",
-            "played",
-            "closed"
-          ],
-          "answer": "visited",
-          "explanation": "\"Visit\" termina em T, então o -ed vira sílaba a mais: vis-it-ed. Walked, played e closed continuam com uma sílaba só.",
-          "listen": "visited, walked, played, closed"
-        },
-        {
-          "type": "multiple_choice",
-          "sentence": "Ouça os quatro. Em qual o -ed soa como um T?",
-          "options": [
-            "finished",
-            "lived",
-            "arrived",
-            "opened"
-          ],
-          "answer": "finished",
-          "explanation": "Ouça de novo: \"finished\" termina com um T rápido (\"finisht\"). Nos outros, o final soa como D.",
-          "listen": "finished, lived, arrived, opened"
-        },
-        {
-          "type": "multiple_choice",
-          "sentence": "Ouça 'worked'. Como soa o -ed?",
-          "options": [
-            "como um T",
-            "como um D",
-            "como uma sílaba a mais",
-            "não tem som"
-          ],
-          "answer": "como um T",
-          "explanation": "\"Worked\" termina com um T rápido, tudo numa sílaba só: \"workt\". Não fale \"wor-ked\".",
-          "listen": "worked"
-        },
-        {
-          "type": "multiple_choice",
-          "sentence": "Ouça 'played'. Como soa o -ed?",
-          "options": [
-            "como um D",
-            "como um T",
-            "como uma sílaba a mais",
-            "não tem som"
-          ],
-          "answer": "como um D",
-          "explanation": "\"Played\" termina com um D leve, numa sílaba só: \"pleid\".",
+          "answer": "D",
+          "explanation": "\"Played\" termina com som de D.",
           "listen": "played"
         },
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'needed'. Como soa o -ed?",
+          "sentence": "Ouça 'stopped'. Som de T ou de D?",
           "options": [
-            "como uma sílaba a mais",
-            "como um T",
-            "como um D",
-            "não tem som"
+            "T",
+            "D"
           ],
-          "answer": "como uma sílaba a mais",
-          "explanation": "\"Needed\" tem duas sílabas: need-ed. É assim com verbos que já terminam em T ou D, como wanted e visited.",
-          "listen": "needed"
-        },
-        {
-          "type": "multiple_choice",
-          "sentence": "Ouça 'stopped'. Como soa o -ed?",
-          "options": [
-            "como um T",
-            "como um D",
-            "como uma sílaba a mais",
-            "não tem som"
-          ],
-          "answer": "como um T",
-          "explanation": "\"Stopped\" soa \"stopt\": um T rápido no final, numa sílaba só.",
+          "answer": "T",
+          "explanation": "\"Stopped\" termina com som de T.",
           "listen": "stopped"
         },
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'started'. Quantas sílabas você escuta?",
+          "sentence": "Ouça 'called'. Som de T ou de D?",
           "options": [
-            "1",
-            "2",
-            "3"
+            "T",
+            "D"
           ],
-          "answer": "2",
-          "explanation": "\"Started\" tem duas sílabas: start-ed. O -ed vira sílaba porque \"start\" já termina em T.",
-          "listen": "started"
+          "answer": "D",
+          "explanation": "\"Called\" termina com som de D.",
+          "listen": "called"
         },
         {
-          "type": "read_answer",
-          "passage": "Yesterday I worked, watched a movie, and called my friend. Then I visited my parents.",
-          "question": "Ouça o texto. Qual verbo tem uma sílaba a mais?",
-          "answer": "visited",
-          "explanation": "Só \"visited\" ganha sílaba a mais (vis-it-ed), porque \"visit\" termina em T. Worked, watched e called têm uma sílaba só.",
-          "listen": "Yesterday I worked, watched a movie, and called my friend. Then I visited my parents."
+          "type": "multiple_choice",
+          "sentence": "Ouça 'watched'. Som de T ou de D?",
+          "options": [
+            "T",
+            "D"
+          ],
+          "answer": "T",
+          "explanation": "\"Watched\" termina com som de T.",
+          "listen": "watched"
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Ouça 'lived'. Som de T ou de D?",
+          "options": [
+            "T",
+            "D"
+          ],
+          "answer": "D",
+          "explanation": "\"Lived\" termina com som de D.",
+          "listen": "lived"
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Ouça 'finished'. Som de T ou de D?",
+          "options": [
+            "T",
+            "D"
+          ],
+          "answer": "T",
+          "explanation": "\"Finished\" termina com som de T.",
+          "listen": "finished"
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Ouça 'opened'. Som de T ou de D?",
+          "options": [
+            "T",
+            "D"
+          ],
+          "answer": "D",
+          "explanation": "\"Opened\" termina com som de D.",
+          "listen": "opened"
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Ouça 'washed'. Som de T ou de D?",
+          "options": [
+            "T",
+            "D"
+          ],
+          "answer": "T",
+          "explanation": "\"Washed\" termina com som de T.",
+          "listen": "washed"
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Ouça 'cleaned'. Som de T ou de D?",
+          "options": [
+            "T",
+            "D"
+          ],
+          "answer": "D",
+          "explanation": "\"Cleaned\" termina com som de D.",
+          "listen": "cleaned"
         }
       ],
       "listening_speaking": [

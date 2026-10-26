@@ -563,70 +563,69 @@
 
 > **Sub-CEFR**: A2 | **Grammar focus**: -ed pronunciation rules (som de T, som de D, sílaba a mais) | **Tense**: PASSADO · simples
 > **Markers**: —
-> **Real-life context**: Você pronuncia o -ed corretamente (som de T, som de D ou sílaba a mais) em diferentes verbos.
+> **Real-life context**: Você ouve o verbo no passado e reconhece se o -ed soa como T ou como D.
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "Ouça 'worked'. Quantas sílabas você escuta?"
+1. **multiple_choice** — "Ouça 'worked'. Som de T ou de D?"
    **Listen**: worked
-   **Options**: 1 / 2 / 3
-   **Answer**: 1
-   **Explanation**: "Worked" tem uma sílaba só: o -ed não vira sílaba nova, só um T colado no final ("workt"). Erro comum: falar "wor-ked".
+   **Options**: T / D
+   **Answer**: T
+   **Explanation**: "Worked" termina com som de T.
 
-2. **multiple_choice** — "Ouça 'wanted'. Quantas sílabas você escuta?"
-   **Listen**: wanted
-   **Options**: 1 / 2 / 3
-   **Answer**: 2
-   **Explanation**: "Wanted" tem duas sílabas: want-ed. Quando o verbo termina em T ou D, o -ed vira uma sílaba a mais.
-
-3. **multiple_choice** — "Ouça os quatro. Qual tem uma sílaba a mais?"
-   **Listen**: visited, walked, played, closed
-   **Options**: visited / walked / played / closed
-   **Answer**: visited
-   **Explanation**: "Visit" termina em T, então o -ed vira sílaba a mais: vis-it-ed. Walked, played e closed continuam com uma sílaba só.
-
-4. **multiple_choice** — "Ouça os quatro. Em qual o -ed soa como um T?"
-   **Listen**: finished, lived, arrived, opened
-   **Options**: finished / lived / arrived / opened
-   **Answer**: finished
-   **Explanation**: Ouça de novo: "finished" termina com um T rápido ("finisht"). Nos outros, o final soa como D.
-
-5. **multiple_choice** — "Ouça 'worked'. Como soa o -ed?"
-   **Listen**: worked
-   **Options**: como um T / como um D / como uma sílaba a mais / não tem som
-   **Answer**: como um T
-   **Explanation**: "Worked" termina com um T rápido, tudo numa sílaba só: "workt". Não fale "wor-ked".
-
-6. **multiple_choice** — "Ouça 'played'. Como soa o -ed?"
+2. **multiple_choice** — "Ouça 'played'. Som de T ou de D?"
    **Listen**: played
-   **Options**: como um D / como um T / como uma sílaba a mais / não tem som
-   **Answer**: como um D
-   **Explanation**: "Played" termina com um D leve, numa sílaba só: "pleid".
+   **Options**: T / D
+   **Answer**: D
+   **Explanation**: "Played" termina com som de D.
 
-7. **multiple_choice** — "Ouça 'needed'. Como soa o -ed?"
-   **Listen**: needed
-   **Options**: como uma sílaba a mais / como um T / como um D / não tem som
-   **Answer**: como uma sílaba a mais
-   **Explanation**: "Needed" tem duas sílabas: need-ed. É assim com verbos que já terminam em T ou D, como wanted e visited.
-
-8. **multiple_choice** — "Ouça 'stopped'. Como soa o -ed?"
+3. **multiple_choice** — "Ouça 'stopped'. Som de T ou de D?"
    **Listen**: stopped
-   **Options**: como um T / como um D / como uma sílaba a mais / não tem som
-   **Answer**: como um T
-   **Explanation**: "Stopped" soa "stopt": um T rápido no final, numa sílaba só.
+   **Options**: T / D
+   **Answer**: T
+   **Explanation**: "Stopped" termina com som de T.
 
-9. **multiple_choice** — "Ouça 'started'. Quantas sílabas você escuta?"
-   **Listen**: started
-   **Options**: 1 / 2 / 3
-   **Answer**: 2
-   **Explanation**: "Started" tem duas sílabas: start-ed. O -ed vira sílaba porque "start" já termina em T.
+4. **multiple_choice** — "Ouça 'called'. Som de T ou de D?"
+   **Listen**: called
+   **Options**: T / D
+   **Answer**: D
+   **Explanation**: "Called" termina com som de D.
 
-10. **read_answer**
-    **Passage**: "Yesterday I worked, watched a movie, and called my friend. Then I visited my parents."
-    **Listen**: Yesterday I worked, watched a movie, and called my friend. Then I visited my parents.
-    **Question**: Ouça o texto. Qual verbo tem uma sílaba a mais?
-    **Answer**: visited
-    **Explanation**: Só "visited" ganha sílaba a mais (vis-it-ed), porque "visit" termina em T. Worked, watched e called têm uma sílaba só.
+5. **multiple_choice** — "Ouça 'watched'. Som de T ou de D?"
+   **Listen**: watched
+   **Options**: T / D
+   **Answer**: T
+   **Explanation**: "Watched" termina com som de T.
+
+6. **multiple_choice** — "Ouça 'lived'. Som de T ou de D?"
+   **Listen**: lived
+   **Options**: T / D
+   **Answer**: D
+   **Explanation**: "Lived" termina com som de D.
+
+7. **multiple_choice** — "Ouça 'finished'. Som de T ou de D?"
+   **Listen**: finished
+   **Options**: T / D
+   **Answer**: T
+   **Explanation**: "Finished" termina com som de T.
+
+8. **multiple_choice** — "Ouça 'opened'. Som de T ou de D?"
+   **Listen**: opened
+   **Options**: T / D
+   **Answer**: D
+   **Explanation**: "Opened" termina com som de D.
+
+9. **multiple_choice** — "Ouça 'washed'. Som de T ou de D?"
+   **Listen**: washed
+   **Options**: T / D
+   **Answer**: T
+   **Explanation**: "Washed" termina com som de T.
+
+10. **multiple_choice** — "Ouça 'cleaned'. Som de T ou de D?"
+    **Listen**: cleaned
+    **Options**: T / D
+    **Answer**: D
+    **Explanation**: "Cleaned" termina com som de D.
 
 ### 2. Listening/Speaking (5 phrases)
 
