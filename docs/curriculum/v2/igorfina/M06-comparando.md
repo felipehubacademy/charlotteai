@@ -238,7 +238,8 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **Answer**: better
    **Explanation**: "My English is better than last year" = meu inglês está melhor que no ano passado. Frase para se orgulhar.
 
-8. **word_bank** — "This is the _____ coffee ever. I can't drink it!"
+8. **word_bank** — "Yuck! This is the _____ coffee ever. I can't drink it!"
+   **Hint**: O café está horrível: o pior de todos
    **Choices**: worst / worse / best / baddest
    **Answer**: worst
    **Explanation**: "The worst coffee ever" = o pior café da vida. "Ever" reforça: de todos os tempos. "Worse" é só para comparar dois ("worse than").

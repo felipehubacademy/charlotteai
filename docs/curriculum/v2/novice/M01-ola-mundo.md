@@ -421,7 +421,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 ### 2. Listening/Speaking (5 phrases)
 
 1. **"Where are you from?"** — pergunta padrão de origem
-2. **"I'm from São Paulo, Brazil."** — resposta completa
+2. **"I'm from Brazil."** — resposta completa
 3. **"Are you Brazilian?"** — checando nacionalidade
 4. **"Yes, I am."** — resposta afirmativa curta
 5. **"No, I'm not. I'm Portuguese."** — corrigindo

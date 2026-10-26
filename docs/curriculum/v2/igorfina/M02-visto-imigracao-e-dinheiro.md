@@ -64,7 +64,7 @@
    **Explanation**: "On vacation" é o jeito fixo de dizer "de férias". Frase pronta: "I'm here on vacation".
 
 4. **word_bank** — "I'm here _____ work."
-   **Choices**: for / on / to / at
+   **Choices**: for / on / to / by
    **Answer**: for
    **Explanation**: "I'm here for work" = estou aqui a trabalho. Com "work" e "business" também vale "for": "I'm here for business".
 
