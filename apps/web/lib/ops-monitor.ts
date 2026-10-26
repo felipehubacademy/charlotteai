@@ -9,6 +9,7 @@
 // vendas pararam; pagou e ficou sem acesso (corrige sozinho); webhook mudo; fila de e-mails travada.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
+import { notifyAdmins } from '@/lib/admin-push';
 import { sendWhatsAppText, sendAlertTemplate } from '@/lib/whatsapp';
 import { grantAccess, type CheckoutRow } from '@/lib/asaas-activation';
 
@@ -53,6 +54,7 @@ async function deliver(alerts: Alert[]): Promise<{ sent: number }> {
     <p style="color:#8A8494;font-size:13px">Vigia automático (a cada 5 min). Cada tipo de alerta repete no máximo 1 vez por hora.</p></div>`;
   for (const addr of to) emailOk = (await sendEmail({ to: addr, subject: `Queizy: alerta do checkout (${fresh.length})`, html }).catch(() => false)) || emailOk;
   let waOk = false;
+  await notifyAdmins({ title: `Alerta do checkout (${fresh.length})`, body: fresh.map(a => a.message).join(' · ').slice(0, 300), url: '/admin/commercial', tag: 'checkout' }).catch(() => 0);
   const wa = process.env.ALERT_WHATSAPP;
   // Texto livre só passa dentro da janela de 24 h; fora dela, o modelo aprovado.
   if (wa) waOk = (await sendWhatsAppText(wa, text)).ok || (await sendAlertTemplate(wa, fresh.map(a => a.message).join(' | '))).ok;

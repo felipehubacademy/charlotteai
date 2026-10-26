@@ -5,6 +5,7 @@
 // Alertas: ElevenLabs passou de 80/90/95% ou vai acabar antes de renovar; OpenAI do dia acima do teto.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
+import { notifyAdmins } from '@/lib/admin-push';
 import { base, h1, p, btn, note } from '@/lib/email-brand';
 import { fxToBrl } from '@/lib/fx';
 
@@ -119,5 +120,6 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
   const subject = `${alerts.length ? 'Atenção: ' : ''}Custos de IA de ${dayBr}: OpenAI ${oa ? usd(oa.usd) : '—'}${el && el.limit ? `, ElevenLabs ${Math.round((el.used / el.limit) * 100)}%` : ''}`;
   let sent = 0;
   for (const addr of to) if (await sendEmail({ to: addr, subject, html }).catch(() => false)) sent++;
+  if (alerts.length) await notifyAdmins({ title: 'Custos de IA: atenção', body: alerts.join(' ').slice(0, 300), url: '/admin/finance', tag: 'ai-costs' }).catch(() => 0);
   return { sent: sent > 0, openaiUsd: oa?.usd ?? null, openaiError };
 }

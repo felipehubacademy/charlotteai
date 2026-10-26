@@ -7,6 +7,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
+import { notifyAdmins } from '@/lib/admin-push';
 import { base, h1, p, btn } from '@/lib/email-brand';
 
 export const dynamic = 'force-dynamic';
@@ -59,5 +60,6 @@ export async function POST(req: NextRequest) {
     btn('Abrir o painel do banco', 'https://supabase.com/dashboard/org/_/billing'),
   ].join(''));
   for (const addr of to) await sendEmail({ to: addr, subject: 'Queizy: banco do app perto do limite do plano gratuito', html }).catch(() => false);
+  await notifyAdmins({ title: 'Banco do app perto do limite', body: alerts.join(' '), url: '/admin', tag: 'capacity' }).catch(() => 0);
   return NextResponse.json({ alerts, report, sent: to.length });
 }
