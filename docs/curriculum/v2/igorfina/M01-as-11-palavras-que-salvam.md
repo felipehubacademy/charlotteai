@@ -87,6 +87,7 @@
 7. **fill_gap** — "_____, can I get through? I'm late!"
    **Hint**: Com licença (para passar pelas pessoas)
    **Answer**: Excuse me
+   **Accepts**: Sorry / Pardon me / Sorry, excuse me
    **Explanation**: Para pedir passagem no metrô lotado, diga "Excuse me". "Sorry" é para pedir desculpas depois de esbarrar em alguém.
 
 8. **fix_error** — "Excuse, where is the bus?"
@@ -97,6 +98,7 @@
 9. **fix_error** — "Sorry me!"
    **Hint**: Para pedir desculpas basta uma palavra
    **Answer**: Sorry!
+   **Accepts**: Excuse me! / I'm sorry!
    **Explanation**: "Sorry" já é o pedido de desculpas completo. "Sorry me" não existe; quem leva o "me" é o "excuse".
 
 10. **read_answer**
@@ -239,6 +241,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 9. **fix_error** — "Thank you very much much!"
    **Hint**: Basta um "much"
    **Answer**: Thank you very much!
+   **Accepts**: Thank you so much!
    **Explanation**: "Thank you very much" ou "Thank you so much": um "much" só. Repetir não deixa mais educado.
 
 10. **read_answer**
@@ -550,7 +553,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 6. **fill_gap** — "Where is the _____? I need the train."
    **Hint**: Metrô em inglês americano
    **Answer**: subway
-   **Accepts**: metro
+   **Accepts**: metro / station / train station / subway station / metro station
    **Explanation**: Nos Estados Unidos, metrô é "subway". Em outros países você também vai ouvir "metro" ou "underground".
 
 7. **fill_gap** — "Excuse me, _____ is the taxi stand?"
@@ -561,6 +564,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 8. **fix_error** — "Where is the taxis?"
    **Hint**: "Taxis" está no plural
    **Answer**: Where are the taxis?
+   **Accepts**: Where is the taxi?
    **Explanation**: Plural pede "are". Regra rápida: uma coisa, "is"; várias, "are".
 
 9. **fix_error** — "Where the subway is?"
@@ -572,6 +576,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
     **Passage**: "Igor: Excuse me, where are the taxis? Officer: The taxis are outside, on the right. The subway is downstairs."
     **Question**: Onde ficam os táxis? (responda em inglês, como o policial disse)
     **Answer**: Outside, on the right
+    **Accepts**: Outside
     **Explanation**: "Outside, on the right" é lá fora, à direita. E o metrô está "downstairs", no andar de baixo.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -735,6 +740,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
     **Passage**: "Igor: Hello, excuse me, can you help me, please? I need to go to the airport. Driver: Sure, get in! Igor: Thank you so much!"
     **Question**: Para onde o Igor precisa ir? (responda em inglês)
     **Answer**: To the airport
+    **Accepts**: airport
     **Explanation**: Ele disse "I need to go to the airport", ou seja, precisa ir para o aeroporto.
 
 ### 2. Listening/Speaking (5 phrases)

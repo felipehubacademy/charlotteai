@@ -66,7 +66,7 @@
 5. **fill_gap** — "A: How are you? B: I'm fine, _____."
    **Hint**: Resposta educada após "I'm fine" (forma curta ou completa)
    **Answer**: thank you
-   **Accepts**: thanks / thanks a lot / thank you so much
+   **Accepts**: thanks / thanks a lot / thank you so much / and you / how about you / thanks, and you / thank you, and you
    **Explanation**: "Thank you" é a forma educada padrão. Em conversa casual, "Thanks" funciona igual — ambas valem. Em inglês falado, "Thanks" é até mais frequente.
 
 6. **fill_gap** — "_____ morning! How are you?"
@@ -94,6 +94,7 @@
     **Passage**: "Ana: Good morning! How are you, Tom? Tom: I'm fine, thank you! And you? Ana: I'm great!"
     **Question**: Como Tom está? (responda em inglês com uma palavra)
     **Answer**: fine
+    **Accepts**: good / well / ok / okay
     **Explanation**: Tom diz "I'm / I am fine, thank you" — "fine" significa bem/ótimo em inglês.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -245,6 +246,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 7. **fill_gap** — "Hi! _____ is my friend Tom."
    **Hint**: Use "This" (começa com T) — quando apresenta alguém perto de você, igual "Este é..." em português
    **Answer**: This
+   **Accepts**: He
    **Explanation**: "This is + pessoa" = "Este é + pessoa". Use "This" pra apresentar alguém que está perto de você. Memoriza esse chunk: "This is my friend ___" funciona pra qualquer nome.
 
 8. **fix_error** — "I are a student."
@@ -567,6 +569,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
     **Passage**: "Tom: Hey Ana, are you okay? You look down. Ana: I'm tired and a bit stressed. Work is crazy this week."
     **Question**: Como Ana se sente? (dê uma palavra)
     **Answer**: tired
+    **Accepts**: stressed
     **Explanation**: Ana diz "I'm / I am tired and a bit stressed". A primeira palavra que descreve ela é "tired" (cansada).
 
 ### 2. Listening/Speaking (5 phrases)

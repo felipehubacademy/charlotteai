@@ -59,6 +59,9 @@
           "sentence": "If we had bought that house in 2010, we _____ enough equity to retire by now.",
           "hint": "resultado presente: would + base \"have\"",
           "answer": "would have",
+          "accepts": [
+            "would've"
+          ],
           "explanation": "Past cause (\"had bought\") + present result (\"would have enough equity now\"). Note: \"have\" here is the stative present verb, not \"have + past participle\"."
         },
         {
@@ -66,6 +69,9 @@
           "sentence": "If I had studied medicine, I would have been a doctor now.",
           "hint": "For a present state, use \"would be\" — not \"would have been\"",
           "answer": "If I had studied medicine, I would be a doctor now.",
+          "accepts": [
+            "If I had studied medicine, I would be a doctor right now."
+          ],
           "explanation": "\"Would have been\" places the result fully in the past (pure third conditional). The marker \"now\" requires a present consequence, so use \"would be\" — the mixed form. Common C1 trap."
         },
         {

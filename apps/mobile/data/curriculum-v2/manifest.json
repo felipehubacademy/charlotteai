@@ -1,127 +1,5 @@
 {
   "level": {
-    "advanced": [
-      {
-        "id": "M01",
-        "title": "Mixed conditionals",
-        "file": "advanced/M01.json"
-      },
-      {
-        "id": "M02",
-        "title": "Inversion",
-        "file": "advanced/M02.json"
-      },
-      {
-        "id": "M03",
-        "title": "Cleft sentences",
-        "file": "advanced/M03.json"
-      },
-      {
-        "id": "M04",
-        "title": "Subjunctive",
-        "file": "advanced/M04.json"
-      },
-      {
-        "id": "M05",
-        "title": "Advanced passive",
-        "file": "advanced/M05.json"
-      },
-      {
-        "id": "M06",
-        "title": "Participle clauses",
-        "file": "advanced/M06.json"
-      },
-      {
-        "id": "M07",
-        "title": "Reported speech masterclass",
-        "file": "advanced/M07.json"
-      },
-      {
-        "id": "M08",
-        "title": "Diplomacy and hedging",
-        "file": "advanced/M08.json"
-      },
-      {
-        "id": "M09",
-        "title": "Idioms and figurative language",
-        "file": "advanced/M09.json"
-      },
-      {
-        "id": "M10",
-        "title": "Discourse markers",
-        "file": "advanced/M10.json"
-      },
-      {
-        "id": "M11",
-        "title": "Connotation and register",
-        "file": "advanced/M11.json"
-      },
-      {
-        "id": "M12",
-        "title": "Academic writing",
-        "file": "advanced/M12.json"
-      },
-      {
-        "id": "M13",
-        "title": "Argumentation and persuasion",
-        "file": "advanced/M13.json"
-      },
-      {
-        "id": "M14",
-        "title": "Literary language",
-        "file": "advanced/M14.json"
-      },
-      {
-        "id": "M15",
-        "title": "Phrasal verbs masterclass",
-        "file": "advanced/M15.json"
-      },
-      {
-        "id": "M16",
-        "title": "Word formation",
-        "file": "advanced/M16.json"
-      },
-      {
-        "id": "M17",
-        "title": "Ellipsis and substitution",
-        "file": "advanced/M17.json"
-      },
-      {
-        "id": "M18",
-        "title": "Cohesion in extended discourse",
-        "file": "advanced/M18.json"
-      },
-      {
-        "id": "M19",
-        "title": "Modal subtlety",
-        "file": "advanced/M19.json"
-      },
-      {
-        "id": "M20",
-        "title": "Native pronunciation",
-        "file": "advanced/M20.json"
-      },
-      {
-        "id": "M21",
-        "title": "Speak like a native",
-        "file": "advanced/M21.json"
-      },
-      {
-        "id": "M22",
-        "title": "Synthesis and mastery",
-        "file": "advanced/M22.json"
-      },
-      {
-        "id": "M23",
-        "title": "Business & email writing",
-        "file": "advanced/M23.json"
-      },
-      {
-        "id": "M24",
-        "title": "Cultural idioms",
-        "file": "advanced/M24.json"
-      }
-    ],
     "novice": [
       {
         "id": "M01",
@@ -361,6 +239,128 @@
         "file": "inter/M23.json"
       }
     ],
+    "advanced": [
+      {
+        "id": "M01",
+        "title": "Mixed conditionals",
+        "file": "advanced/M01.json"
+      },
+      {
+        "id": "M02",
+        "title": "Inversion",
+        "file": "advanced/M02.json"
+      },
+      {
+        "id": "M03",
+        "title": "Cleft sentences",
+        "file": "advanced/M03.json"
+      },
+      {
+        "id": "M04",
+        "title": "Subjunctive",
+        "file": "advanced/M04.json"
+      },
+      {
+        "id": "M05",
+        "title": "Advanced passive",
+        "file": "advanced/M05.json"
+      },
+      {
+        "id": "M06",
+        "title": "Participle clauses",
+        "file": "advanced/M06.json"
+      },
+      {
+        "id": "M07",
+        "title": "Reported speech masterclass",
+        "file": "advanced/M07.json"
+      },
+      {
+        "id": "M08",
+        "title": "Diplomacy and hedging",
+        "file": "advanced/M08.json"
+      },
+      {
+        "id": "M09",
+        "title": "Idioms and figurative language",
+        "file": "advanced/M09.json"
+      },
+      {
+        "id": "M10",
+        "title": "Discourse markers",
+        "file": "advanced/M10.json"
+      },
+      {
+        "id": "M11",
+        "title": "Connotation and register",
+        "file": "advanced/M11.json"
+      },
+      {
+        "id": "M12",
+        "title": "Academic writing",
+        "file": "advanced/M12.json"
+      },
+      {
+        "id": "M13",
+        "title": "Argumentation and persuasion",
+        "file": "advanced/M13.json"
+      },
+      {
+        "id": "M14",
+        "title": "Literary language",
+        "file": "advanced/M14.json"
+      },
+      {
+        "id": "M15",
+        "title": "Phrasal verbs masterclass",
+        "file": "advanced/M15.json"
+      },
+      {
+        "id": "M16",
+        "title": "Word formation",
+        "file": "advanced/M16.json"
+      },
+      {
+        "id": "M17",
+        "title": "Ellipsis and substitution",
+        "file": "advanced/M17.json"
+      },
+      {
+        "id": "M18",
+        "title": "Cohesion in extended discourse",
+        "file": "advanced/M18.json"
+      },
+      {
+        "id": "M19",
+        "title": "Modal subtlety",
+        "file": "advanced/M19.json"
+      },
+      {
+        "id": "M20",
+        "title": "Native pronunciation",
+        "file": "advanced/M20.json"
+      },
+      {
+        "id": "M21",
+        "title": "Speak like a native",
+        "file": "advanced/M21.json"
+      },
+      {
+        "id": "M22",
+        "title": "Synthesis and mastery",
+        "file": "advanced/M22.json"
+      },
+      {
+        "id": "M23",
+        "title": "Business & email writing",
+        "file": "advanced/M23.json"
+      },
+      {
+        "id": "M24",
+        "title": "Cultural idioms",
+        "file": "advanced/M24.json"
+      }
+    ],
     "igorfina": [
       {
         "id": "M01",
@@ -414,5 +414,5 @@
       }
     ]
   },
-  "generated_at": "2026-10-26T11:29:52.827Z"
+  "generated_at": "2026-10-26T11:31:55.593Z"
 }

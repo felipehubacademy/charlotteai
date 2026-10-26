@@ -244,6 +244,7 @@
 8. **fix_error** — "I didn't studying yesterday."
    **Hint**: Past continuous doesn't use "didn't"
    **Answer**: I wasn't studying yesterday.
+   **Accepts**: I didn't study yesterday.
    **Explanation**: Past continuous negative uses was/were + not + -ing, not "didn't / did not". "I wasn't / was not studying", not "I didn't / did not studying".
 
 9. **fix_error** — "She weren't cooking."
@@ -432,6 +433,7 @@
     **Passage**: "Q: Were you studying yesterday at 8pm? A: Yes, I was. Q: Was your sister with you? A: No, she wasn't. She was at the gym."
     **Question**: Where was the sister?
     **Answer**: at the gym
+    **Accepts**: gym
     **Explanation**: The text says "She was at the gym".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -594,6 +596,7 @@
 7. **fill_gap** — "As I _____ home, I saw an accident."
    **Hint**: past continuous of "walk"
    **Answer**: was walking
+   **Accepts**: was going / was driving / was coming / was running / was riding / was cycling / was heading
    **Explanation**: "As" similar to "while" — background action.
 
 8. **fix_error** — "I was cooking when she was arriving."
@@ -766,6 +769,7 @@
 6. **fill_gap** — "She _____ the bus when it started to rain."
    **Hint**: past continuous of "wait for"
    **Answer**: was waiting for
+   **Accepts**: was taking / was catching / was getting on / was riding / was boarding / was waiting at
    **Explanation**: "Was waiting for the bus" — background.
 
 7. **fill_gap** — "While we _____ (cook) for lunch, it started to rain."

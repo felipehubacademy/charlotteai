@@ -42,11 +42,13 @@
 3. **fill_gap** — "If we had bought that house in 2010, we _____ enough equity to retire by now."
    **Hint**: resultado presente: would + base "have"
    **Answer**: would have
+   **Accepts**: would've
    **Explanation**: Past cause ("had bought") + present result ("would have enough equity now"). Note: "have" here is the stative present verb, not "have + past participle".
 
 4. **fix_error** — "If I had studied medicine, I would have been a doctor now."
    **Hint**: For a present state, use "would be" — not "would have been"
    **Answer**: If I had studied medicine, I would be a doctor now.
+   **Accepts**: If I had studied medicine, I would be a doctor right now.
    **Explanation**: "Would have been" places the result fully in the past (pure third conditional). The marker "now" requires a present consequence, so use "would be" — the mixed form. Common C1 trap.
 
 5. **read_answer**

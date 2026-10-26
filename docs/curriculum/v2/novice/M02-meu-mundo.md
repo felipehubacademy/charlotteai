@@ -227,11 +227,13 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 5. **fill_gap** — "I am _____ (35) years old."
    **Hint**: 35 por extenso
    **Answer**: thirty-five
+   **Accepts**: thirty five
    **Explanation**: 35 = "thirty-five" (com hífen entre dezena e unidade). Mesma regra: 21=twenty-one, 47=forty-seven, 99=ninety-nine.
 
 6. **fill_gap** — "The temperature is _____ (100) degrees."
    **Hint**: 100 por extenso
    **Answer**: one hundred
+   **Accepts**: a hundred
    **Explanation**: 100 = "one hundred" ou "a hundred". Para 101-199: "one hundred and one", "one hundred and two", etc.
 
 7. **fill_gap** — "It's _____ (50) dollars."
@@ -571,11 +573,13 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 7. **fill_gap** — "Are you _____?"
    **Hint**: Nacionalidade do Reino Unido (UK)
    **Answer**: British
+   **Accepts**: from the UK
    **Explanation**: "British" = britânico/a (cobre Inglaterra, Escócia, País de Gales, Irlanda do Norte). "English" é específico da Inglaterra. UK inteiro = "British".
 
 8. **fix_error** — "I am Brazil."
    **Hint**: "I am" pede nacionalidade, não país
    **Answer**: I am Brazilian.
+   **Accepts**: I'm from Brazil. / I am from Brazil.
    **Explanation**: "I am" + nacionalidade (Brazilian). "I am from" + país (Brazil). Confundir os dois é o erro mais comum. Você É brasileiro, você É DE Brasil.
 
 9. **fix_error** — "She is Americaner."

@@ -375,6 +375,9 @@
           "sentence": "I didn't studying yesterday.",
           "hint": "Past continuous doesn't use \"didn't\"",
           "answer": "I wasn't studying yesterday.",
+          "accepts": [
+            "I didn't study yesterday."
+          ],
           "explanation": "Past continuous negative uses was/were + not + -ing, not \"didn't / did not\". \"I wasn't / was not studying\", not \"I didn't / did not studying\"."
         },
         {
@@ -642,6 +645,9 @@
           "passage": "Q: Were you studying yesterday at 8pm? A: Yes, I was. Q: Was your sister with you? A: No, she wasn't. She was at the gym.",
           "question": "Where was the sister?",
           "answer": "at the gym",
+          "accepts": [
+            "gym"
+          ],
           "explanation": "The text says \"She was at the gym\"."
         }
       ],
@@ -889,6 +895,15 @@
           "sentence": "As I _____ home, I saw an accident.",
           "hint": "past continuous of \"walk\"",
           "answer": "was walking",
+          "accepts": [
+            "was going",
+            "was driving",
+            "was coming",
+            "was running",
+            "was riding",
+            "was cycling",
+            "was heading"
+          ],
           "explanation": "\"As\" similar to \"while\" — background action."
         },
         {
@@ -1151,6 +1166,14 @@
           "sentence": "She _____ the bus when it started to rain.",
           "hint": "past continuous of \"wait for\"",
           "answer": "was waiting for",
+          "accepts": [
+            "was taking",
+            "was catching",
+            "was getting on",
+            "was riding",
+            "was boarding",
+            "was waiting at"
+          ],
           "explanation": "\"Was waiting for the bus\" — background."
         },
         {

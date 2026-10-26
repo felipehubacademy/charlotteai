@@ -333,6 +333,11 @@
           "sentence": "I have _____ a great movie.",
           "hint": "past participle of \"see\"",
           "answer": "seen",
+          "accepts": [
+            "watched",
+            "found",
+            "made"
+          ],
           "explanation": "\"See\" → \"saw\" → \"seen\" (past participle)."
         },
         {
@@ -340,6 +345,13 @@
           "sentence": "She has _____ a new book.",
           "hint": "past participle of \"write\"",
           "answer": "written",
+          "accepts": [
+            "read",
+            "bought",
+            "published",
+            "finished",
+            "started"
+          ],
           "explanation": "\"Write\" → \"wrote\" → \"written\"."
         },
         {
@@ -623,6 +635,10 @@
           "sentence": "I've yet seen that movie.",
           "hint": "yet goes at end, not middle",
           "answer": "I haven't seen that movie yet.",
+          "accepts": [
+            "I've already seen that movie.",
+            "I have already seen that movie."
+          ],
           "explanation": "\"Yet\" goes at END of negative/question, not between have/has and verb. Used with negative."
         },
         {
@@ -886,6 +902,9 @@
           "sentence": "Have you ever go to Italy?",
           "hint": "After Have, past participle",
           "answer": "Have you ever been to Italy?",
+          "accepts": [
+            "Have you ever gone to Italy?"
+          ],
           "explanation": "After \"Have\", use past participle. For experiences = \"been\" (not \"go\" or \"gone\")."
         },
         {

@@ -118,6 +118,11 @@
           "sentence": "_____, can I get through? I'm late!",
           "hint": "Com licença (para passar pelas pessoas)",
           "answer": "Excuse me",
+          "accepts": [
+            "Sorry",
+            "Pardon me",
+            "Sorry, excuse me"
+          ],
           "explanation": "Para pedir passagem no metrô lotado, diga \"Excuse me\". \"Sorry\" é para pedir desculpas depois de esbarrar em alguém."
         },
         {
@@ -132,6 +137,10 @@
           "sentence": "Sorry me!",
           "hint": "Para pedir desculpas basta uma palavra",
           "answer": "Sorry!",
+          "accepts": [
+            "Excuse me!",
+            "I'm sorry!"
+          ],
           "explanation": "\"Sorry\" já é o pedido de desculpas completo. \"Sorry me\" não existe; quem leva o \"me\" é o \"excuse\"."
         },
         {
@@ -345,6 +354,9 @@
           "sentence": "Thank you very much much!",
           "hint": "Basta um \"much\"",
           "answer": "Thank you very much!",
+          "accepts": [
+            "Thank you so much!"
+          ],
           "explanation": "\"Thank you very much\" ou \"Thank you so much\": um \"much\" só. Repetir não deixa mais educado."
         },
         {
@@ -818,7 +830,11 @@
           "hint": "Metrô em inglês americano",
           "answer": "subway",
           "accepts": [
-            "metro"
+            "metro",
+            "station",
+            "train station",
+            "subway station",
+            "metro station"
           ],
           "explanation": "Nos Estados Unidos, metrô é \"subway\". Em outros países você também vai ouvir \"metro\" ou \"underground\"."
         },
@@ -834,6 +850,9 @@
           "sentence": "Where is the taxis?",
           "hint": "\"Taxis\" está no plural",
           "answer": "Where are the taxis?",
+          "accepts": [
+            "Where is the taxi?"
+          ],
           "explanation": "Plural pede \"are\". Regra rápida: uma coisa, \"is\"; várias, \"are\"."
         },
         {
@@ -848,6 +867,9 @@
           "passage": "Igor: Excuse me, where are the taxis? Officer: The taxis are outside, on the right. The subway is downstairs.",
           "question": "Onde ficam os táxis? (responda em inglês, como o policial disse)",
           "answer": "Outside, on the right",
+          "accepts": [
+            "Outside"
+          ],
           "explanation": "\"Outside, on the right\" é lá fora, à direita. E o metrô está \"downstairs\", no andar de baixo."
         }
       ],
@@ -1095,6 +1117,9 @@
           "passage": "Igor: Hello, excuse me, can you help me, please? I need to go to the airport. Driver: Sure, get in! Igor: Thank you so much!",
           "question": "Para onde o Igor precisa ir? (responda em inglês)",
           "answer": "To the airport",
+          "accepts": [
+            "airport"
+          ],
           "explanation": "Ele disse \"I need to go to the airport\", ou seja, precisa ir para o aeroporto."
         }
       ],

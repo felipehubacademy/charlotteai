@@ -228,11 +228,13 @@
 5. **fill_gap** — "I have _____ a great movie."
    **Hint**: past participle of "see"
    **Answer**: seen
+   **Accepts**: watched / found / made
    **Explanation**: "See" → "saw" → "seen" (past participle).
 
 6. **fill_gap** — "She has _____ a new book."
    **Hint**: past participle of "write"
    **Answer**: written
+   **Accepts**: read / bought / published / finished / started
    **Explanation**: "Write" → "wrote" → "written".
 
 7. **fill_gap** — "We have _____ a lot of work."
@@ -420,6 +422,7 @@
 8. **fix_error** — "I've yet seen that movie."
    **Hint**: yet goes at end, not middle
    **Answer**: I haven't seen that movie yet.
+   **Accepts**: I've already seen that movie. / I have already seen that movie.
    **Explanation**: "Yet" goes at END of negative/question, not between have/has and verb. Used with negative.
 
 9. **fix_error** — "She has just leave."
@@ -603,6 +606,7 @@
 9. **fix_error** — "Have you ever go to Italy?"
    **Hint**: After Have, past participle
    **Answer**: Have you ever been to Italy?
+   **Accepts**: Have you ever gone to Italy?
    **Explanation**: After "Have", use past participle. For experiences = "been" (not "go" or "gone").
 
 10. **read_answer**

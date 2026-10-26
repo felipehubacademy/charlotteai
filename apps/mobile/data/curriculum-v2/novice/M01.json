@@ -97,7 +97,11 @@
           "accepts": [
             "thanks",
             "thanks a lot",
-            "thank you so much"
+            "thank you so much",
+            "and you",
+            "how about you",
+            "thanks, and you",
+            "thank you, and you"
           ],
           "explanation": "\"Thank you\" é a forma educada padrão. Em conversa casual, \"Thanks\" funciona igual — ambas valem. Em inglês falado, \"Thanks\" é até mais frequente."
         },
@@ -138,6 +142,12 @@
           "passage": "Ana: Good morning! How are you, Tom? Tom: I'm fine, thank you! And you? Ana: I'm great!",
           "question": "Como Tom está? (responda em inglês com uma palavra)",
           "answer": "fine",
+          "accepts": [
+            "good",
+            "well",
+            "ok",
+            "okay"
+          ],
           "explanation": "Tom diz \"I'm / I am fine, thank you\" — \"fine\" significa bem/ótimo em inglês."
         }
       ],
@@ -345,6 +355,9 @@
           "sentence": "Hi! _____ is my friend Tom.",
           "hint": "Use \"This\" (começa com T) — quando apresenta alguém perto de você, igual \"Este é...\" em português",
           "answer": "This",
+          "accepts": [
+            "He"
+          ],
           "explanation": "\"This is + pessoa\" = \"Este é + pessoa\". Use \"This\" pra apresentar alguém que está perto de você. Memoriza esse chunk: \"This is my friend ___\" funciona pra qualquer nome."
         },
         {
@@ -839,6 +852,9 @@
           "passage": "Tom: Hey Ana, are you okay? You look down. Ana: I'm tired and a bit stressed. Work is crazy this week.",
           "question": "Como Ana se sente? (dê uma palavra)",
           "answer": "tired",
+          "accepts": [
+            "stressed"
+          ],
           "explanation": "Ana diz \"I'm / I am tired and a bit stressed\". A primeira palavra que descreve ela é \"tired\" (cansada)."
         }
       ],

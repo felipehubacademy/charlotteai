@@ -330,6 +330,9 @@
           "sentence": "I am _____ (35) years old.",
           "hint": "35 por extenso",
           "answer": "thirty-five",
+          "accepts": [
+            "thirty five"
+          ],
           "explanation": "35 = \"thirty-five\" (com hífen entre dezena e unidade). Mesma regra: 21=twenty-one, 47=forty-seven, 99=ninety-nine."
         },
         {
@@ -337,6 +340,9 @@
           "sentence": "The temperature is _____ (100) degrees.",
           "hint": "100 por extenso",
           "answer": "one hundred",
+          "accepts": [
+            "a hundred"
+          ],
           "explanation": "100 = \"one hundred\" ou \"a hundred\". Para 101-199: \"one hundred and one\", \"one hundred and two\", etc."
         },
         {
@@ -831,6 +837,9 @@
           "sentence": "Are you _____?",
           "hint": "Nacionalidade do Reino Unido (UK)",
           "answer": "British",
+          "accepts": [
+            "from the UK"
+          ],
           "explanation": "\"British\" = britânico/a (cobre Inglaterra, Escócia, País de Gales, Irlanda do Norte). \"English\" é específico da Inglaterra. UK inteiro = \"British\"."
         },
         {
@@ -838,6 +847,10 @@
           "sentence": "I am Brazil.",
           "hint": "\"I am\" pede nacionalidade, não país",
           "answer": "I am Brazilian.",
+          "accepts": [
+            "I'm from Brazil.",
+            "I am from Brazil."
+          ],
           "explanation": "\"I am\" + nacionalidade (Brazilian). \"I am from\" + país (Brazil). Confundir os dois é o erro mais comum. Você É brasileiro, você É DE Brasil."
         },
         {
