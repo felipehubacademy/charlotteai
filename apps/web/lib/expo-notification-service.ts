@@ -1,4 +1,5 @@
 // lib/expo-notification-service.ts
+import { inQuietHours } from './push-quiet-hours';
 import { pickWeekly, periodsFor, missionTexts, goalsFor, type MissionLevel } from '@/lib/missions';
 import { aiFetch } from '@/lib/ai-models';
 // Sends push notifications to React Native (Charlotte AI) via Expo Push API
@@ -1511,6 +1512,10 @@ function detectEngagementSignal(
   const localDay  = localDayInTz(now, tz);
   const firstName = user.name?.split(/[\s\-]+/)[0] ?? 'there';
   const isNovice  = pushIsPt(user); // true = português
+
+  // Fora da janela das 9h às 21h (horário do aluno) nenhum sinal dispara. Vale também para o
+  // "oi da Charlotte" (micro_checkin), cujo horário é dinâmico: se cair fora, não sai naquele dia.
+  if (inQuietHours(tz, now)) return null;
 
   // Iterate priority order; return first matching signal.
   for (const type of ENGAGEMENT_PRIORITY) {

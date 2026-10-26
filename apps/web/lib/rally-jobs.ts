@@ -2,14 +2,21 @@
 //  1. troca de liderança  -> push para quem perdeu a ponta
 //  2. perto do fim        -> 2h antes (rally de 24h) ou 24h antes (rally de 7 dias), com a posição
 //  3. encerramento        -> vencedor ganha minutos de Live Voice; todos recebem o resultado
+// Push só das 9h às 21h no horário de cada um (lib/push-quiet-hours); fora disso o aviso não sai.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { pushIsPt } from '@/lib/expo-notification-service';
+import { inQuietHours } from '@/lib/push-quiet-hours';
 import {
   computeStandings, leaderOf, rallyLabel, formatScore, sendDirectPush,
   RALLY_REWARD_SECONDS, type RallyRow, type Standing,
 } from '@/lib/rally';
 
-type PushUser = { id: string; expo_push_token: string | null; charlotte_level: string | null; app_language: string | null; live_voice_bonus_seconds: number | null };
+type PushUser = { id: string; expo_push_token: string | null; charlotte_level: string | null; app_language: string | null; live_voice_bonus_seconds: number | null; timezone: string | null };
+
+function pushIfAwake(u: PushUser, title: string, body: string, data: Record<string, unknown>) {
+  if (inQuietHours(u.timezone)) return null;
+  return pushIfAwake(u, title, body, data);
+}
 
 export async function runRallyJobs(): Promise<{ updates: number; reminders: number; finalized: number }> {
   const supabase = getSupabaseAdmin();
@@ -21,7 +28,7 @@ export async function runRallyJobs(): Promise<{ updates: number; reminders: numb
   const standings = await computeStandings(rallies);
   const ids = [...new Set([...standings.values()].flat().map(s => s.userId))];
   const { data: us } = await supabase.from('charlotte_users')
-    .select('id, expo_push_token, charlotte_level, app_language, live_voice_bonus_seconds').in('id', ids.length ? ids : ['-']);
+    .select('id, expo_push_token, charlotte_level, app_language, live_voice_bonus_seconds, timezone').in('id', ids.length ? ids : ['-']);
   const people = new Map(((us ?? []) as PushUser[]).map(u => [u.id, u]));
   const ord = (n: number, pt: boolean) => (pt ? `${n}º` : n === 1 ? '1st' : n === 2 ? '2nd' : n === 3 ? '3rd' : `${n}th`);
   let updates = 0, reminders = 0, finalized = 0;
@@ -48,15 +55,15 @@ export async function runRallyJobs(): Promise<{ updates: number; reminders: numb
           const pt = pushIsPt(u);
           const title = rallyLabel(r.metric, r.duration_hours, pt);
           if (!winner) {
-            return sendDirectPush(u.expo_push_token, pt ? 'Empate na competição' : 'The challenge ended in a tie',
+            return pushIfAwake(u, pt ? 'Empate na competição' : 'The challenge ended in a tie',
               pt ? `${title}: ninguém ficou na frente. Revanche?` : `${title}: nobody pulled ahead. Rematch?`, { ...data, type: 'rally_result' });
           }
           if (s.userId === winner.userId) {
-            return sendDirectPush(u.expo_push_token, pt ? 'Você venceu a competição!' : 'You won the challenge!',
+            return pushIfAwake(u, pt ? 'Você venceu a competição!' : 'You won the challenge!',
               pt ? `${title}: ${formatScore(r.metric, s.score, true)}. Você ganhou ${RALLY_REWARD_SECONDS / 60} minutos de Live Voice.`
                  : `${title}: ${formatScore(r.metric, s.score, false)}. You got ${RALLY_REWARD_SECONDS / 60} Live Voice minutes.`, { ...data, type: 'rally_result' });
           }
-          return sendDirectPush(u.expo_push_token, pt ? `${winner.name ?? 'Alguém'} venceu a competição` : `${winner.name ?? 'Someone'} won the challenge`,
+          return pushIfAwake(u, pt ? `${winner.name ?? 'Alguém'} venceu a competição` : `${winner.name ?? 'Someone'} won the challenge`,
             pt ? `${title}, com ${formatScore(r.metric, winner.score, true)}. Você ficou em ${ord(s.rank, true)}. Revanche?`
                : `${title}, with ${formatScore(r.metric, winner.score, false)}. You came ${ord(s.rank, false)}. Rematch?`, { ...data, type: 'rally_result' });
         }));
@@ -73,7 +80,7 @@ export async function runRallyJobs(): Promise<{ updates: number; reminders: numb
       const u = people.get(r.leader_id);
       if (prev && u) {
         const pt = pushIsPt(u);
-        await sendDirectPush(u.expo_push_token,
+        await pushIfAwake(u,
           pt ? `${leader.name ?? 'Alguém'} passou você na competição` : `${leader.name ?? 'Someone'} passed you in the challenge`,
           pt ? `${rallyLabel(r.metric, r.duration_hours, true)}: ${formatScore(r.metric, leader.score, true)} contra ${formatScore(r.metric, prev.score, true)}. Bora recuperar?`
              : `${rallyLabel(r.metric, r.duration_hours, false)}: ${formatScore(r.metric, leader.score, false)} vs ${formatScore(r.metric, prev.score, false)}. Take it back?`,
@@ -98,7 +105,7 @@ export async function runRallyJobs(): Promise<{ updates: number; reminders: numb
           ? (pt ? `Você está na frente com ${formatScore(r.metric, s.score, true)}. Segura a liderança!` : `You're ahead with ${formatScore(r.metric, s.score, false)}. Hold the lead!`)
           : (pt ? `Você está em ${ord(s.rank, true)}, atrás de ${ahead.name ?? 'quem está na frente'} (${formatScore(r.metric, ahead.score, true)}). Ainda dá!`
                 : `You're ${ord(s.rank, false)}, behind ${ahead.name ?? 'your buddy'} (${formatScore(r.metric, ahead.score, false)}). Still time!`);
-        return sendDirectPush(u.expo_push_token, `${span} · ${rallyLabel(r.metric, r.duration_hours, pt)}`, body, { ...data, type: 'rally_reminder' });
+        return pushIfAwake(u, `${span} · ${rallyLabel(r.metric, r.duration_hours, pt)}`, body, { ...data, type: 'rally_reminder' });
       }));
       await supabase.from('rallies').update({ reminder_sent: true } as never).eq('id', r.id);
       reminders++;
