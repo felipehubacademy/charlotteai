@@ -66,7 +66,7 @@ function auxVariants(s: string): string[] {
 export function contractionMatch(u: string, c: string, bothWays: boolean): boolean {
   for (const uu of auxVariants(u)) {
     for (const cc of auxVariants(c)) {
-      if (uu === cc || uu.includes(cc) || (bothWays && cc.includes(uu))) return true;
+      if (uu === cc || hasWords(uu, cc) || (bothWays && coversMost(uu, cc))) return true;
     }
   }
   return false;
