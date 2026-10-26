@@ -35,7 +35,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Listen to \"photograph\". Where is the stress?",
+          "sentence": "Where is the stress in \"photograph\"?",
           "options": [
             "PHO-tograph",
             "pho-TO-graph",
@@ -48,7 +48,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen to \"record\" in \"I bought a record\". Where is the stress?",
+          "sentence": "\"I bought a record\": where is the stress in \"record\"?",
           "options": [
             "At the start: REcord",
             "At the end: reCORD"
@@ -59,7 +59,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen: which syllable is stressed in \"comfortable\"?",
+          "sentence": "Which syllable is stressed in \"comfortable\"?",
           "options": [
             "1st (COM)",
             "2nd (FOR)",
@@ -72,7 +72,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen to \"develop\". Where is the stress?",
+          "sentence": "Where is the stress in \"develop\"?",
           "options": [
             "DEvelop (1st syllable)",
             "deVELop (2nd syllable)",
@@ -269,7 +269,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Listen to \"I want a cup of tea\". Which words are stressed?",
+          "sentence": "\"I want a cup of tea\": which words are stressed?",
           "options": [
             "I, want, cup, tea",
             "I, want, cup, of, tea",
@@ -282,7 +282,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen to \"a cup of tea\". How does \"of\" sound?",
+          "sentence": "\"A cup of tea\": how does \"of\" sound?",
           "options": [
             "Short and weak, almost swallowed",
             "Strong and clear, like \"off\"",
@@ -295,7 +295,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen to \"I want to go\". How does \"to\" sound?",
+          "sentence": "\"I want to go\": how does \"to\" sound?",
           "options": [
             "Short and weak, like \"tuh\"",
             "Strong, like \"two\"",
@@ -308,7 +308,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen. Which sentence did she say?",
+          "sentence": "What did she say?",
           "options": [
             "I AM going TO the STORE",
             "I'm going to the STORE",
@@ -505,7 +505,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Listen to \"an apple\". How does it sound?",
+          "sentence": "How does \"an apple\" sound?",
           "options": [
             "a-napple (linked)",
             "an apple (separated)",
@@ -518,7 +518,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen to \"pick it up\". How does it sound?",
+          "sentence": "How does \"pick it up\" sound?",
           "options": [
             "Like one long word",
             "Like three separate words, with pauses"
@@ -529,7 +529,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen. What did she say?",
+          "sentence": "What did she say?",
           "options": [
             "What do you want to do?",
             "What did you want to do?",
@@ -541,7 +541,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen. What did she say?",
+          "sentence": "What did she say?",
           "options": [
             "I don't know, I've got to go.",
             "I didn't know, I got to go.",
@@ -735,7 +735,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Listen to \"Are you ready?\". What does the voice do at the end?",
+          "sentence": "\"Are you ready?\": what does the voice do at the end?",
           "options": [
             "Rising at the end",
             "Falling at the end",
@@ -748,7 +748,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen to \"What time is it?\". What does the voice do at the end?",
+          "sentence": "\"What time is it?\": what does the voice do at the end?",
           "options": [
             "Falling at the end",
             "Rising at the end",
@@ -761,7 +761,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen to the list. What does the voice do on the last item?",
+          "sentence": "What does the voice do on the last item of the list?",
           "options": [
             "It goes down",
             "It goes up",
@@ -774,7 +774,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen. Is she asking or telling?",
+          "sentence": "Is she asking or telling?",
           "options": [
             "Asking",
             "Telling"
@@ -974,7 +974,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen. What did she say?",
+          "sentence": "What did she say?",
           "options": [
             "I'm going to call you later.",
             "I'm calling you later.",
@@ -986,7 +986,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen. What did she say?",
+          "sentence": "What did she say?",
           "options": [
             "I'd've gone if I'd known.",
             "I would of gone if I would know.",

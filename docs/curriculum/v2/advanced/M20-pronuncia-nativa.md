@@ -31,25 +31,25 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — Listen to "photograph". Where is the stress?
+1. **multiple_choice** — Where is the stress in "photograph"?
    **Listen**: photograph
    **Options**: PHO-tograph / pho-TO-graph / pho-to-GRAPH / equally stressed
    **Answer**: PHO-tograph
    **Explanation**: "PHO-tograph" — stress on first syllable. Compare with "phoTOgraphy" (stress on second) and "photoGRAphic" (stress on third). The same root shifts stress based on the suffix. C2 mastery includes knowing how word formation shifts stress.
 
-2. **multiple_choice** — Listen to "record" in "I bought a record". Where is the stress?
+2. **multiple_choice** — "I bought a record": where is the stress in "record"?
    **Listen**: I bought a record.
    **Options**: At the start: REcord / At the end: reCORD
    **Answer**: At the start: REcord
    **Explanation**: As a thing (a record), the stress goes at the start: REcord. As an action (to record), it moves to the end: "I want to reCORD it". Same with PREsent / preSENT and PERmit / perMIT.
 
-3. **multiple_choice** — Listen: which syllable is stressed in "comfortable"?
+3. **multiple_choice** — Which syllable is stressed in "comfortable"?
    **Listen**: comfortable
    **Options**: 1st (COM) / 2nd (FOR) / 3rd (TA) / 4th (BLE)
    **Answer**: 1st (COM)
    **Explanation**: "COMfortable" — stress on the first syllable. In fast speech natives often say it in three syllables ("COMF-ter-ble"). Many learners stress "comFORtable", which sounds foreign. Long words like this often keep the stress at the start.
 
-4. **multiple_choice** — Listen to "develop". Where is the stress?
+4. **multiple_choice** — Where is the stress in "develop"?
    **Listen**: develop
    **Options**: DEvelop (1st syllable) / deVELop (2nd syllable) / deveLOP (3rd syllable) / equal stress
    **Answer**: deVELop (2nd syllable)
@@ -188,25 +188,25 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — Listen to "I want a cup of tea". Which words are stressed?
+1. **multiple_choice** — "I want a cup of tea": which words are stressed?
    **Listen**: I want a cup of tea.
    **Options**: I, want, cup, tea / I, want, cup, of, tea / want, a, tea / I, of, a
    **Answer**: I, want, cup, tea
    **Explanation**: Content words (nouns: cup, tea; verbs: want; sometimes pronouns: I) carry stress. Function words (a, of, the, am, is) weaken. In normal speech: "I WANT a CUP of TEA" with "a" and "of" reduced to schwa /ə/. Stress = meaning markers.
 
-2. **multiple_choice** — Listen to "a cup of tea". How does "of" sound?
+2. **multiple_choice** — "A cup of tea": how does "of" sound?
    **Listen**: a cup of tea
    **Options**: Short and weak, almost swallowed / Strong and clear, like "off" / Completely silent / Long, like "oaf"
    **Answer**: Short and weak, almost swallowed
    **Explanation**: Function words like "of", "to", "a" and "for" lose their full vowel in connected speech and become short and weak. Only the content words (cup, tea) keep full stress. Saying "of" clearly every time is one of the strongest markers of a non-native rhythm.
 
-3. **multiple_choice** — Listen to "I want to go". How does "to" sound?
+3. **multiple_choice** — "I want to go": how does "to" sound?
    **Listen**: I want to go
    **Options**: Short and weak, like "tuh" / Strong, like "two" / Completely silent / Long, like "toe"
    **Answer**: Short and weak, like "tuh"
    **Explanation**: In connected speech "to" is unstressed and its vowel reduces to a short, neutral sound: "I want tuh go". In very fast casual speech it merges further into "wanna". The full "two" is only used for emphasis or at the end of a sentence ("Where do you want to?").
 
-4. **multiple_choice** — Listen. Which sentence did she say?
+4. **multiple_choice** — What did she say?
    **Listen**: I'm going to the store.
    **Options**: I AM going TO the STORE / I'm going to the STORE / I AM GOING TO THE STORE
    **Answer**: I'm going to the STORE
@@ -345,25 +345,25 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — Listen to "an apple". How does it sound?
+1. **multiple_choice** — How does "an apple" sound?
    **Listen**: an apple
    **Options**: a-napple (linked) / an apple (separated) / an-apple (with pause) / no difference
    **Answer**: a-napple (linked)
    **Explanation**: Linking: when a word ends in a consonant and the next begins with a vowel, the consonant attaches to the next word in connected speech. "An apple" → "a-NAP-pl". "Stop it" → "sto-PIT". "Find out" → "fine-DOUT". Native rhythm relies on this linking.
 
-2. **multiple_choice** — Listen to "pick it up". How does it sound?
+2. **multiple_choice** — How does "pick it up" sound?
    **Listen**: Pick it up.
    **Options**: Like one long word / Like three separate words, with pauses
    **Answer**: Like one long word
    **Explanation**: Natives link the words: "pi-ki-tup". A word ending in a consonant joins the next word starting with a vowel. Same with "turn it off" ("tur-ni-toff") and "an apple" ("a-napple").
 
-3. **multiple_choice** — Listen. What did she say?
+3. **multiple_choice** — What did she say?
    **Listen**: Whaddaya wanna do?
    **Options**: What do you want to do? / What did you want to do? / Where do you want to go?
    **Answer**: What do you want to do?
    **Explanation**: In fast casual speech "what do you" becomes "whaddaya" and "want to" becomes "wanna". You will hear this all the time in films and conversations.
 
-4. **multiple_choice** — Listen. What did she say?
+4. **multiple_choice** — What did she say?
    **Listen**: Dunno, gotta go.
    **Options**: I don't know, I've got to go. / I didn't know, I got to go. / Don't go, I've got it.
    **Answer**: I don't know, I've got to go.
@@ -502,25 +502,25 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — Listen to "Are you ready?". What does the voice do at the end?
+1. **multiple_choice** — "Are you ready?": what does the voice do at the end?
    **Listen**: Are you ready?
    **Options**: Rising at the end / Falling at the end / Flat / Rising-falling
    **Answer**: Rising at the end
    **Explanation**: Yes/no questions typically end with rising intonation. "Are you ready?" rises on "ready". Compare with wh-questions ("What time is it?") which fall on the last content word. Rising intonation signals expectation of yes/no answer.
 
-2. **multiple_choice** — Listen to "What time is it?". What does the voice do at the end?
+2. **multiple_choice** — "What time is it?": what does the voice do at the end?
    **Listen**: What time is it?
    **Options**: Falling at the end / Rising at the end / Flat / Rising-falling
    **Answer**: Falling at the end
    **Explanation**: Wh-questions typically fall at the end. "What time is it?" — falling pitch on "is it". The question word itself signals that a specific answer is expected, so the rising pattern of yes/no questions isn't needed.
 
-3. **multiple_choice** — Listen to the list. What does the voice do on the last item?
+3. **multiple_choice** — What does the voice do on the last item of the list?
    **Listen**: I need eggs, milk, bread and butter.
    **Options**: It goes down / It goes up / It stays flat / It stops suddenly
    **Answer**: It goes down
    **Explanation**: In a list, the voice goes up on each item ("eggs, milk, bread") and comes down on the last one ("and butter") to show the list is finished. If it stays up, the listener waits for more.
 
-4. **multiple_choice** — Listen. Is she asking or telling?
+4. **multiple_choice** — Is she asking or telling?
    **Listen**: You're coming tonight?
    **Options**: Asking / Telling
    **Answer**: Asking
@@ -669,13 +669,13 @@
    **Answer**: shouldn't have
    **Explanation**: "Shouldn't / Should not have" — standard written contraction of "should not have". In casual fast speech, often produced as "shouldn'ta" /ˈʃʊdn(ə)tə/ — the "have" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register.
 
-3. **multiple_choice** — Listen. What did she say?
+3. **multiple_choice** — What did she say?
    **Listen**: I'm gonna call ya later.
    **Options**: I'm going to call you later. / I'm calling you later. / I'm gone, call you later.
    **Answer**: I'm going to call you later.
    **Explanation**: "Gonna" = going to; "ya" = you. This is how the sentence really sounds in casual speech.
 
-4. **multiple_choice** — Listen. What did she say?
+4. **multiple_choice** — What did she say?
    **Listen**: I'd've gone if I'd known.
    **Options**: I'd've gone if I'd known. / I would of gone if I would know. / I'd gone if I'd knew. / I have gone if I knew.
    **Answer**: I'd've gone if I'd known.

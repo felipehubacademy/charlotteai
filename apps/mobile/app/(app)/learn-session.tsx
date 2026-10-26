@@ -1414,7 +1414,9 @@ export default function LearnSessionScreen() {
               {/* Instruction — bubble na cor do nível, sem avatar, centralizado */}
               <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center' }}>
                 <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
-                  {currentStep.exercise.type === 'multiple_choice'
+                  {currentStep.exercise.type === 'multiple_choice' && currentStep.exercise.listen
+                    ? (isPortuguese ? 'Ouça e escolha a opção correta.' : 'Listen and choose the correct option.')
+                    : currentStep.exercise.type === 'multiple_choice'
                     ? (() => {
                         // Label smart: passage = leia texto / gap = completar frase /
                         // resto = escolha generica (perguntas tipo 'Qual soa MAIS natural?').
