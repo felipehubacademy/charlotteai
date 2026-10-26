@@ -4,7 +4,7 @@
 // com os dados do pagador já preenchidos daqui (lá o aluno só digita o cartão).
 // Checkout próprio (mode 'direct'): cartão e Pix aqui mesmo, sem sair do queizy.com. Ligado para todos
 // com CHECKOUT_DIRECT=1; antes disso, só por ?checkout=novo. ?checkout=teste usa o ambiente de testes.
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { captureAffiliateFromUrl, storedAffiliate } from '@/lib/affiliateTracking';
 import StoreCTA from '@/components/StoreCTA';
 import { suggestEmailCorrection, isDisposableEmail } from '@/lib/email-validation';
@@ -159,6 +159,19 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
   const mode: Mode = urlMode ?? forceMode ?? (info?.direct ? 'direct' : 'hosted');
   const ownCard = mode !== 'hosted' && method !== 'annual_pix';
 
+  // begin_checkout / InitiateCheckout quando o cartão fica completo (antes do botão), como já acontece
+  // quando o Pix é gerado. Uma vez por tela; o envio do formulário não repete o evento.
+  const cardTrackedRef = useRef(false);
+  useEffect(() => {
+    if (!ownCard || mode === 'sandbox' || cardTrackedRef.current) return;
+    const complete = cardNumber.replace(/\D/g, '').length >= 13 && cardName.trim().length >= 3
+      && /^\d{2}\/\d{2}$/.test(cardExpiry) && cardCvv.length >= 3;
+    if (!complete) return;
+    cardTrackedRef.current = true;
+    track('InitiateCheckout', { value: method === 'monthly' ? monthly : annual, currency: 'BRL', content_name: method },
+      `ck_card_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`);
+  }, [ownCard, mode, cardNumber, cardName, cardExpiry, cardCvv, method, monthly, annual]);
+
   // Aguardando o pagamento cair (Pix, ou cartão que o banco ainda está confirmando): consulta a cada 3 s.
   useEffect(() => {
     if (!waiting) return;
@@ -219,7 +232,7 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
       if (!r.ok || !j.id) {
         setError(j.error ?? 'Não foi possível concluir agora.'); setFallback(!!j.fallback && mode !== 'sandbox'); setBusy(false); return;
       }
-      if (mode !== 'sandbox') track('InitiateCheckout', { value: j.value, currency: 'BRL', content_name: method }, `ck_${j.id}_checkout`);
+      if (mode !== 'sandbox' && !(ownCard && cardTrackedRef.current)) track('InitiateCheckout', { value: j.value, currency: 'BRL', content_name: method }, `ck_${j.id}_checkout`);
       setCardNumber(''); setCardCvv(''); // não deixa o cartão na tela
       if (j.done) { window.location.href = '/assinar/sucesso'; return; }
       if (j.pix) { setPix(j.pix); setBusy(false); }
