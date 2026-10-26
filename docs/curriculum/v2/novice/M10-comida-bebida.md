@@ -778,6 +778,7 @@
 6. **fill_gap** — "I have _____ cookies and _____ juice."
    **Hint**: Afirmativa (positiva) com ambos
    **Answer**: some / some
+   **Accepts**: some some / some, some
    **Explanation**: Afirmativa usa "some" tanto pra contável quanto incontável. "I have some cookies and some juice".
 
 7. **fill_gap** — "_____ is this sandwich?"

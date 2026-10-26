@@ -76,6 +76,10 @@
           "sentence": "Please _____ the TV — I want to watch the news.",
           "hint": "switch on",
           "answer": "turn on",
+          "accepts": [
+            "switch on",
+            "put on"
+          ],
           "explanation": "\"Turn on the TV\" — common chunk."
         },
         {
@@ -83,6 +87,9 @@
           "sentence": "We _____ for dinner with friends.",
           "hint": "leave home (phrasal \"go\" + particle)",
           "answer": "went out",
+          "accepts": [
+            "went"
+          ],
           "explanation": "\"Go out\" = leave home (often for social activity)."
         },
         {
@@ -347,6 +354,9 @@
           "sentence": "He's _____ a new job.",
           "hint": "searching",
           "answer": "looking for",
+          "accepts": [
+            "searching for"
+          ],
           "explanation": "\"Looking for a job\" — searching."
         },
         {
@@ -354,6 +364,10 @@
           "sentence": "Can you _____ my dog while I'm away?",
           "hint": "take care of",
           "answer": "look after",
+          "accepts": [
+            "take care of",
+            "watch"
+          ],
           "explanation": "\"Look after my dog\" — take care."
         },
         {
@@ -601,6 +615,11 @@
           "sentence": "I _____ the truth yesterday.",
           "hint": "discovered",
           "answer": "found out",
+          "accepts": [
+            "learned",
+            "discovered",
+            "heard"
+          ],
           "explanation": "Past simple of \"find out\"."
         },
         {
@@ -608,6 +627,10 @@
           "sentence": "He _____ coffee three months ago.",
           "hint": "quit",
           "answer": "gave up",
+          "accepts": [
+            "quit",
+            "stopped"
+          ],
           "explanation": "\"Gave up coffee\" = stopped drinking."
         },
         {
@@ -856,6 +879,10 @@
           "sentence": "Please turn the music _____.",
           "hint": "switch off",
           "answer": "off",
+          "accepts": [
+            "down",
+            "up"
+          ],
           "explanation": "With noun, can separate: \"turn the music off\" OR \"turn off the music\". Both correct."
         },
         {
@@ -1128,6 +1155,9 @@
           "sentence": "I'm _____ a new apartment.",
           "hint": "searching for (-ing)",
           "answer": "looking for",
+          "accepts": [
+            "searching for"
+          ],
           "explanation": "\"Looking for\" — present continuous."
         },
         {
@@ -1135,6 +1165,10 @@
           "sentence": "He _____ smoking last year.",
           "hint": "quit (past)",
           "answer": "gave up",
+          "accepts": [
+            "quit",
+            "stopped"
+          ],
           "explanation": "\"Gave up\" — past of give up."
         },
         {
@@ -1142,6 +1176,10 @@
           "sentence": "She _____ her cat every day.",
           "hint": "takes care of",
           "answer": "looks after",
+          "accepts": [
+            "takes care of",
+            "feeds"
+          ],
           "explanation": "\"Looks after\" — present 3rd person."
         },
         {

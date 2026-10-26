@@ -229,16 +229,19 @@
 5. **fill_gap** — "He _____ working at home yesterday."
    **Hint**: Past continuous negative (contracted)
    **Answer**: wasn't
+   **Accepts**: was not
    **Explanation**: "He wasn't / was not working" — 3rd person negative contracted.
 
 6. **fill_gap** — "I _____ studying when you called."
    **Hint**: Past continuous negative with I
    **Answer**: wasn't
+   **Accepts**: was not
    **Explanation**: "I wasn't / was not" — past continuous negative.
 
 7. **fill_gap** — "They _____ paying attention."
    **Hint**: Plural past continuous negative
    **Answer**: weren't
+   **Accepts**: were not
    **Explanation**: "They weren't / were not paying" — plural negative.
 
 8. **fix_error** — "I didn't studying yesterday."

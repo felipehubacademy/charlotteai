@@ -354,6 +354,9 @@
           "sentence": "He _____ working at home yesterday.",
           "hint": "Past continuous negative (contracted)",
           "answer": "wasn't",
+          "accepts": [
+            "was not"
+          ],
           "explanation": "\"He wasn't / was not working\" — 3rd person negative contracted."
         },
         {
@@ -361,6 +364,9 @@
           "sentence": "I _____ studying when you called.",
           "hint": "Past continuous negative with I",
           "answer": "wasn't",
+          "accepts": [
+            "was not"
+          ],
           "explanation": "\"I wasn't / was not\" — past continuous negative."
         },
         {
@@ -368,6 +374,9 @@
           "sentence": "They _____ paying attention.",
           "hint": "Plural past continuous negative",
           "answer": "weren't",
+          "accepts": [
+            "were not"
+          ],
           "explanation": "\"They weren't / were not paying\" — plural negative."
         },
         {

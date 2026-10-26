@@ -89,6 +89,9 @@
           "sentence": "The exam was _____ difficult as I expected.",
           "hint": "abre a estrutura de igualdade",
           "answer": "as",
+          "accepts": [
+            "just as"
+          ],
           "explanation": "\"As difficult as I expected\" — the first \"as\" opens the equality structure with expectation verbs."
         },
         {
@@ -352,6 +355,10 @@
           "sentence": "This restaurant _____ as expensive as the one downtown.",
           "hint": "negação de to be 3ª pessoa",
           "answer": "isn't",
+          "accepts": [
+            "is not",
+            "wasn't"
+          ],
           "explanation": "\"Isn't / Is not as expensive as\" — lower price than another option."
         },
         {
@@ -596,6 +603,10 @@
           "sentence": "He works _____ as hard as his colleague.",
           "hint": "2x intensificador",
           "answer": "twice",
+          "accepts": [
+            "three times",
+            "half"
+          ],
           "explanation": "\"Twice as hard as\" — doubled effort. \"Twice\" always comes before the first \"as\"."
         },
         {
@@ -610,6 +621,10 @@
           "sentence": "She spent _____ as much time on this project as I did.",
           "hint": "2x (time = uncountable)",
           "answer": "twice",
+          "accepts": [
+            "three times",
+            "half"
+          ],
           "explanation": "\"Twice as much time as\" — time is uncountable, so \"much\". \"Twice\" opens the multiplier."
         },
         {
@@ -1117,6 +1132,10 @@
           "sentence": "This trip cost _____ as much as the last one.",
           "hint": "3x mais",
           "answer": "three times",
+          "accepts": [
+            "twice",
+            "half"
+          ],
           "explanation": "\"Three times as much as\" — multiplier opens the structure before \"as much as\"."
         },
         {

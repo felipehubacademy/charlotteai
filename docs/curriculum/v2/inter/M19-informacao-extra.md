@@ -56,6 +56,7 @@
 6. **fill_gap** — "Ana, _____ I work with, just had a baby."
    **Hint**: who
    **Answer**: who
+   **Accepts**: whom
    **Explanation**: "Who I work with" — extra info about Ana. Note: stranded preposition at the end is acceptable.
 
 7. **fill_gap** — "Mr. Silva, _____ teaches English, is from Portugal."
@@ -584,16 +585,19 @@
 5. **fill_gap** — "São Paulo, _____ I work, is a huge city."
    **Hint**: where (lugar)
    **Answer**: where
+   **Accepts**: in which
    **Explanation**: "Where I work" — specific place of work.
 
 6. **fill_gap** — "March, _____ I was born, is my favorite month."
    **Hint**: when (tempo)
    **Answer**: when
+   **Accepts**: in which
    **Explanation**: "When I was born" — specific time.
 
 7. **fill_gap** — "The university, _____ I studied, is famous."
    **Hint**: where
    **Answer**: where
+   **Accepts**: in which
    **Explanation**: "Where I studied" — place of study.
 
 8. **fix_error** — "Paris, which I lived for a year, is beautiful."
@@ -762,6 +766,7 @@
 5. **fill_gap** — Defining: "The woman _____ lives next door is a doctor."
    **Hint**: who/that (defining para pessoa)
    **Answer**: who
+   **Accepts**: that
    **Explanation**: Defining identifies WHO (among several women). "Who" works; "that" does too.
 
 6. **fill_gap** — Non-defining: "My mother, _____ is a doctor, lives next door."
@@ -772,6 +777,7 @@
 7. **fill_gap** — Defining: "The town _____ I grew up is small."
    **Hint**: where (lugar em defining)
    **Answer**: where
+   **Accepts**: in which
    **Explanation**: Defining "where" with no commas. "The town where I grew up" — identifies which town.
 
 8. **fix_error** — Non-defining: "My brother, that lives in Rio, is a teacher."

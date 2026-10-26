@@ -100,6 +100,10 @@
           "sentence": "He _____ Brazil three years ago.",
           "hint": "ago = past simple",
           "answer": "visited",
+          "accepts": [
+            "left",
+            "toured"
+          ],
           "explanation": "\"Ago\" always with past simple. \"Visited Brazil three years ago\"."
         },
         {
@@ -371,6 +375,11 @@
           "sentence": "How long have you _____ here?",
           "hint": "past participle of \"live\"",
           "answer": "lived",
+          "accepts": [
+            "been",
+            "worked",
+            "stayed"
+          ],
           "explanation": "\"How long have you lived here?\" — common question."
         },
         {
@@ -1162,7 +1171,9 @@
           "hint": "\"since\" pede present perfect: have been",
           "answer": "have been",
           "accepts": [
-            "'ve been"
+            "'ve been",
+            "have become",
+            "'ve become"
           ],
           "explanation": "\"In 2010\" = past simple \"met\". Second part would be \"have been\"."
         },
@@ -1178,6 +1189,11 @@
           "sentence": "\"I _____ her last week.\" (specific past)",
           "hint": "past simple \"see\"",
           "answer": "saw",
+          "accepts": [
+            "met",
+            "called",
+            "visited"
+          ],
           "explanation": "\"Last week\" = past simple."
         },
         {

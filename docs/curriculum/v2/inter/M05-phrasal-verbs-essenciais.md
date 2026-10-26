@@ -49,11 +49,13 @@
 5. **fill_gap** — "Please _____ the TV — I want to watch the news."
    **Hint**: switch on
    **Answer**: turn on
+   **Accepts**: switch on / put on
    **Explanation**: "Turn on the TV" — common chunk.
 
 6. **fill_gap** — "We _____ for dinner with friends."
    **Hint**: leave home (phrasal "go" + particle)
    **Answer**: went out
+   **Accepts**: went
    **Explanation**: "Go out" = leave home (often for social activity).
 
 7. **fill_gap** — "He _____ the meeting." (left the meeting)
@@ -226,11 +228,13 @@
 5. **fill_gap** — "He's _____ a new job."
    **Hint**: searching
    **Answer**: looking for
+   **Accepts**: searching for
    **Explanation**: "Looking for a job" — searching.
 
 6. **fill_gap** — "Can you _____ my dog while I'm away?"
    **Hint**: take care of
    **Answer**: look after
+   **Accepts**: take care of / watch
    **Explanation**: "Look after my dog" — take care.
 
 7. **fill_gap** — "I _____ the painting for a long time."
@@ -404,11 +408,13 @@
 5. **fill_gap** — "I _____ the truth yesterday."
    **Hint**: discovered
    **Answer**: found out
+   **Accepts**: learned / discovered / heard
    **Explanation**: Past simple of "find out".
 
 6. **fill_gap** — "He _____ coffee three months ago."
    **Hint**: quit
    **Answer**: gave up
+   **Accepts**: quit / stopped
    **Explanation**: "Gave up coffee" = stopped drinking.
 
 7. **fill_gap** — "I'll _____ you up at 7."
@@ -581,6 +587,7 @@
 5. **fill_gap** — "Please turn the music _____."
    **Hint**: switch off
    **Answer**: off
+   **Accepts**: down / up
    **Explanation**: With noun, can separate: "turn the music off" OR "turn off the music". Both correct.
 
 6. **fill_gap** — "Can you pick me _____ at 8?"
@@ -759,16 +766,19 @@
 5. **fill_gap** — "I'm _____ a new apartment."
    **Hint**: searching for (-ing)
    **Answer**: looking for
+   **Accepts**: searching for
    **Explanation**: "Looking for" — present continuous.
 
 6. **fill_gap** — "He _____ smoking last year."
    **Hint**: quit (past)
    **Answer**: gave up
+   **Accepts**: quit / stopped
    **Explanation**: "Gave up" — past of give up.
 
 7. **fill_gap** — "She _____ her cat every day."
    **Hint**: takes care of
    **Answer**: looks after
+   **Accepts**: takes care of / feeds
    **Explanation**: "Looks after" — present 3rd person.
 
 8. **fix_error** — "I picked up him at the airport."

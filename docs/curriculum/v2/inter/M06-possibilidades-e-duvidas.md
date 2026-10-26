@@ -48,6 +48,7 @@
 5. **fill_gap** — "I _____ visit my parents this weekend."
    **Hint**: possibility modal
    **Answer**: might
+   **Accepts**: may / could / will
    **Explanation**: "I might visit" — uncertain plan.
 
 6. **fill_gap** — "She might _____ tired."
@@ -225,16 +226,19 @@
 5. **fill_gap** — "She _____ be at home."
    **Hint**: possibility (formal)
    **Answer**: may
+   **Accepts**: might / could
    **Explanation**: "May be at home" — possibility.
 
 6. **fill_gap** — "It may _____ tomorrow."
    **Hint**: base "rain"
    **Answer**: rain
+   **Accepts**: snow
    **Explanation**: "May rain" — possibility about weather.
 
 7. **fill_gap** — "_____ I leave early today?" (formal request)
    **Hint**: formal polite request
    **Answer**: May
+   **Accepts**: Can / Could / Might
    **Explanation**: "May I + base?" — formal polite request.
 
 8. **fix_error** — "She mays come."
@@ -401,6 +405,7 @@
 5. **fill_gap** — "That _____ be the answer."
    **Hint**: possibility modal
    **Answer**: could
+   **Accepts**: might / may
    **Explanation**: "Could be the answer" — possible.
 
 6. **fill_gap** — "She could _____ a doctor."
@@ -411,6 +416,7 @@
 7. **fill_gap** — "_____ you help me?" (polite request)
    **Hint**: polite modal
    **Answer**: Could
+   **Accepts**: Can / Would / Will
    **Explanation**: "Could you + base?" — polite request.
 
 8. **fix_error** — "She coulds come."
@@ -578,17 +584,20 @@
 5. **fill_gap** — "That _____ be right — it's wrong."
    **Hint**: impossibility
    **Answer**: can't
+   **Accepts**: cannot / couldn't
    **Explanation**: "Can't / Cannot be right" — impossible.
 
 6. **fill_gap** — "They _____ be coming — it's too late."
    **Hint**: impossibility (continuous)
    **Answer**: can't
+   **Accepts**: cannot
    **Explanation**: "Can't / Cannot be coming" — impossibility with continuous.
 
-7. **fill_gap** — "He _____ be at home — his car is here."
-   **Hint**: logical conclusion
+7. **fill_gap** — "He _____ be at home — his car isn't here."
+   **Hint**: logical conclusion (impossible)
    **Answer**: can't
-   **Explanation**: Logical: if car here, he's not home.
+   **Accepts**: cannot / couldn't
+   **Explanation**: Logical conclusion: his car isn't here, so he can't be at home. (If the car were here, we'd say "he must be at home".)
 
 8. **fix_error** — "She mustn't be at home." (meaning impossible)
    **Hint**: For impossibility, use can't
@@ -762,6 +771,7 @@
 6. **fill_gap** — "That _____ be true — it's impossible!"
    **Hint**: impossibility
    **Answer**: can't
+   **Accepts**: cannot
    **Explanation**: "Can't / Cannot be" — logical impossibility.
 
 7. **fill_gap** — "_____ I borrow your pen?" (formal polite)

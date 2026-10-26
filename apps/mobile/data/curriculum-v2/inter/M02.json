@@ -80,6 +80,9 @@
           "sentence": "I _____ never tried that food.",
           "hint": "have/has for I",
           "answer": "have",
+          "accepts": [
+            "'ve"
+          ],
           "explanation": "\"I have never tried\" — present perfect with I."
         },
         {
@@ -94,6 +97,9 @@
           "sentence": "We have _____ been to Japan.",
           "hint": "never (life experience negative)",
           "answer": "never",
+          "accepts": [
+            "already"
+          ],
           "explanation": "\"We have never been\" — common life experience structure."
         },
         {
@@ -359,6 +365,11 @@
           "sentence": "We have _____ a lot of work.",
           "hint": "past participle of \"do\"",
           "answer": "done",
+          "accepts": [
+            "had",
+            "finished",
+            "got"
+          ],
           "explanation": "\"Do\" → \"did\" → \"done\"."
         },
         {
@@ -614,6 +625,9 @@
           "sentence": "She has _____ left the office.",
           "hint": "a moment ago",
           "answer": "just",
+          "accepts": [
+            "already"
+          ],
           "explanation": "\"Just\" — recent action. \"She has just left\"."
         },
         {
@@ -621,6 +635,9 @@
           "sentence": "I've _____ done my homework — finished an hour ago.",
           "hint": "sooner than expected",
           "answer": "already",
+          "accepts": [
+            "just"
+          ],
           "explanation": "\"Already\" = before now (sooner). \"I've / I have already done\"."
         },
         {
@@ -1149,6 +1166,12 @@
           "sentence": "I have _____ finished my project.",
           "hint": "just (recent)",
           "answer": "just",
+          "accepts": [
+            "already",
+            "finally",
+            "nearly",
+            "almost"
+          ],
           "explanation": "\"I have just finished\" — recent."
         },
         {
@@ -1156,6 +1179,9 @@
           "sentence": "She has _____ eaten breakfast.",
           "hint": "already (sooner)",
           "answer": "already",
+          "accepts": [
+            "just"
+          ],
           "explanation": "\"Already\" — between has and past participle."
         },
         {

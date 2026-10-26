@@ -56,11 +56,13 @@
 6. **fill_gap** — "She would visit more often if she _____ a car."
    **Hint**: past simple de "have"
    **Answer**: had
+   **Accepts**: owned / bought
    **Explanation**: "If she had a car" — past simple "had" signaling a hypothetical present situation (she doesn't have a car now, but if she did...).
 
 7. **fill_gap** — "If we _____ the lottery, what would we do?"
    **Hint**: past simple de "win"
    **Answer**: won
+   **Accepts**: had
    **Explanation**: "If we won" — past simple "won" in the if-clause signals a hypothetical present. The main clause keeps "would + base form".
 
 8. **fix_error** — "If I will have time, I would learn piano."
@@ -234,11 +236,13 @@
 6. **fill_gap** — "We wish we _____ in a bigger house."
    **Hint**: past simple de "live"
    **Answer**: lived
+   **Accepts**: were living
    **Explanation**: "We wish we lived in a bigger house" — present wish about housing.
 
 7. **fill_gap** — "I wish I _____ play the guitar."
    **Hint**: passado de "can" para wishes
    **Answer**: could
+   **Accepts**: knew how to
    **Explanation**: "I wish I could play" — ability wish. "Could" is the "past" used in wish.
 
 8. **fix_error** — "I wish I have more time."
@@ -406,6 +410,7 @@
 5. **fill_gap** — "If I were you, I _____ go for it."
    **Hint**: would + base
    **Answer**: would
+   **Accepts**: 'd
    **Explanation**: "Would go for it" — natural encouragement chunk in the main clause.
 
 6. **fill_gap** — "If I _____ in your position, I would think twice."
@@ -416,6 +421,7 @@
 7. **fill_gap** — "I _____ talk to him if I were you."
    **Hint**: would + base
    **Answer**: would
+   **Accepts**: 'd
    **Explanation**: "I would talk" — "would" in the main clause, even with reversed sentence order.
 
 8. **fix_error** — "If I was you, I would say yes."
@@ -589,11 +595,13 @@
 6. **fill_gap** — "Would you change jobs if you _____ the chance?"
    **Hint**: past simple "have"
    **Answer**: had
+   **Accepts**: got
    **Explanation**: "If you had the chance" — past simple in the if-clause of a hypothetical question.
 
 7. **fill_gap** — "Where would you go if you _____ a free week?"
    **Hint**: past simple "have"
    **Answer**: had
+   **Accepts**: got
    **Explanation**: "If you had a free week" — past simple "had" signals a hypothetical present in the if-clause.
 
 8. **fix_error** — "What will you do if you won the lottery?"
@@ -772,6 +780,7 @@
 7. **fill_gap** — "Would you change anything if you _____ go back in time?"
    **Hint**: past de "can" (habilidade hipotética)
    **Answer**: could
+   **Accepts**: were able to
    **Explanation**: "If you could go back" — "could" expresses hypothetical ability inside the if-clause.
 
 8. **fix_error** — "If I will have time, I would learn Spanish."

@@ -56,6 +56,7 @@
 6. **fill_gap** — "The exam was _____ difficult as I expected."
    **Hint**: abre a estrutura de igualdade
    **Answer**: as
+   **Accepts**: just as
    **Explanation**: "As difficult as I expected" — the first "as" opens the equality structure with expectation verbs.
 
 7. **fill_gap** — "He works as hard _____ anyone in the office."
@@ -239,6 +240,7 @@
 7. **fill_gap** — "This restaurant _____ as expensive as the one downtown."
    **Hint**: negação de to be 3ª pessoa
    **Answer**: isn't
+   **Accepts**: is not / wasn't
    **Explanation**: "Isn't / Is not as expensive as" — lower price than another option.
 
 8. **fix_error** — "It isn't so hot as yesterday."
@@ -407,6 +409,7 @@
 5. **fill_gap** — "He works _____ as hard as his colleague."
    **Hint**: 2x intensificador
    **Answer**: twice
+   **Accepts**: three times / half
    **Explanation**: "Twice as hard as" — doubled effort. "Twice" always comes before the first "as".
 
 6. **fill_gap** — "This apartment is three times as expensive _____ the other."
@@ -417,6 +420,7 @@
 7. **fill_gap** — "She spent _____ as much time on this project as I did."
    **Hint**: 2x (time = uncountable)
    **Answer**: twice
+   **Accepts**: three times / half
    **Explanation**: "Twice as much time as" — time is uncountable, so "much". "Twice" opens the multiplier.
 
 8. **fix_error** — "He's two times faster as me."
@@ -768,6 +772,7 @@
 6. **fill_gap** — "This trip cost _____ as much as the last one."
    **Hint**: 3x mais
    **Answer**: three times
+   **Accepts**: twice / half
    **Explanation**: "Three times as much as" — multiplier opens the structure before "as much as".
 
 7. **fill_gap** — "_____ harder you try, the more you accomplish."

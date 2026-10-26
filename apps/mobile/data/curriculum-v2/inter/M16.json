@@ -81,6 +81,12 @@
           "sentence": "The car _____ if it makes that sound.",
           "hint": "should be + past participle \"check\"",
           "answer": "should be checked",
+          "accepts": [
+            "must be checked",
+            "needs to be checked",
+            "should be repaired",
+            "should be fixed"
+          ],
           "explanation": "\"Should be checked\" — passive recommendation about the car."
         },
         {
@@ -88,6 +94,10 @@
           "sentence": "Children _____ unsupervised.",
           "hint": "shouldn't be + past participle \"leave\"",
           "answer": "shouldn't be left",
+          "accepts": [
+            "mustn't be left",
+            "should not be left"
+          ],
           "explanation": "\"Shouldn't / Should not be left unsupervised\" — passive prohibition."
         },
         {
@@ -95,6 +105,10 @@
           "sentence": "The package _____ at this point — it's been weeks.",
           "hint": "must have been + past participle \"lose\"",
           "answer": "must have been lost",
+          "accepts": [
+            "might have been lost",
+            "may have been lost"
+          ],
           "explanation": "\"Must have been lost\" — modal perfect passive. Strong inference about the past in passive voice."
         },
         {
@@ -354,6 +368,10 @@
           "sentence": "Dinner _____ at 7 PM.",
           "hint": "will be + past participle \"serve\"",
           "answer": "will be served",
+          "accepts": [
+            "is served",
+            "is going to be served"
+          ],
           "explanation": "\"Will be served at 7\" — standard future passive."
         },
         {
@@ -361,6 +379,12 @@
           "sentence": "The bridge _____ in 2030.",
           "hint": "will be + past participle \"complete\"",
           "answer": "will be completed",
+          "accepts": [
+            "will be finished",
+            "will be built",
+            "will be opened",
+            "is going to be completed"
+          ],
           "explanation": "\"Will be completed\" — future passive about construction."
         },
         {
@@ -368,6 +392,9 @@
           "sentence": "The meeting _____ next week.",
           "hint": "is going to be + past participle \"hold\"",
           "answer": "is going to be held",
+          "accepts": [
+            "will be held"
+          ],
           "explanation": "\"Is going to be held\" — planned-future passive. \"Hold\" → past participle \"held\"."
         },
         {
@@ -891,6 +918,9 @@
           "sentence": "My phone _____ stolen yesterday.",
           "hint": "got + past participle",
           "answer": "got",
+          "accepts": [
+            "was"
+          ],
           "explanation": "\"Got stolen\" — informal passive of \"was stolen\". Common in storytelling."
         },
         {
@@ -898,6 +928,9 @@
           "sentence": "They _____ engaged last month.",
           "hint": "got + past participle \"engage\"",
           "answer": "got engaged",
+          "accepts": [
+            "got married"
+          ],
           "explanation": "\"Got engaged\" — life event in get-passive."
         },
         {
@@ -905,6 +938,9 @@
           "sentence": "I _____ lost in the city.",
           "hint": "got + past participle \"lose\"",
           "answer": "got lost",
+          "accepts": [
+            "was lost"
+          ],
           "explanation": "\"Got lost\" — common in storytelling. \"Lose\" → past participle \"lost\"."
         },
         {
@@ -1168,6 +1204,11 @@
           "sentence": "This room _____ regularly.",
           "hint": "should be + past participle \"clean\"",
           "answer": "should be cleaned",
+          "accepts": [
+            "is cleaned",
+            "must be cleaned",
+            "needs to be cleaned"
+          ],
           "explanation": "Modal passive recomendação. \"Should be cleaned\"."
         },
         {
@@ -1175,6 +1216,10 @@
           "sentence": "The package _____ tomorrow.",
           "hint": "will be + past participle \"deliver\"",
           "answer": "will be delivered",
+          "accepts": [
+            "is going to be delivered",
+            "is being delivered"
+          ],
           "explanation": "Future passive. \"Will be delivered tomorrow\"."
         },
         {
@@ -1182,6 +1227,9 @@
           "sentence": "I _____ lost in the city.",
           "hint": "got + past participle \"lose\"",
           "answer": "got lost",
+          "accepts": [
+            "was lost"
+          ],
           "explanation": "Get passive narrativo. \"Got lost in the city\"."
         },
         {

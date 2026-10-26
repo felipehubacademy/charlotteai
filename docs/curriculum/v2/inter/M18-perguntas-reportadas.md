@@ -53,6 +53,7 @@
 5. **fill_gap** — Direct: "Are you happy?" Reported: "He asked _____ I _____ happy."
    **Hint**: if / was
    **Answer**: if / was
+   **Accepts**: if was / whether was / if, was
    **Explanation**: "If" + statement word order + backshift "are" → "was".
 
 6. **fill_gap** — Direct: "Do you speak English?" Reported: "She asked if I _____ English."
@@ -598,6 +599,7 @@
 7. **fill_gap** — Direct: "Please try harder." Reported: "She _____ me to try harder."
    **Hint**: urged (encorajamento forte)
    **Answer**: urged
+   **Accepts**: asked / told / encouraged / begged / wanted
    **Explanation**: "Urged + person + to + base" — emphatic request, encouragement.
 
 8. **fix_error** — Direct: "Please help me." Reported: "She asked me please to help her."
@@ -771,6 +773,7 @@
 6. **fill_gap** — Direct: "Can you help?" Reported: "He asked _____ I _____ help."
    **Hint**: if / could
    **Answer**: if / could
+   **Accepts**: if could / whether could / if, could
    **Explanation**: "Asked if + subject + could". Backshift "can" → "could".
 
 7. **fill_gap** — Direct: "I've finished." Reported: "She said she _____ finished."

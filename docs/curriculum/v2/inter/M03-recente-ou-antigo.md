@@ -61,6 +61,7 @@
 7. **fill_gap** — "He _____ Brazil three years ago."
    **Hint**: ago = past simple
    **Answer**: visited
+   **Accepts**: left / toured
    **Explanation**: "Ago" always with past simple. "Visited Brazil three years ago".
 
 8. **fix_error** — "I have seen her yesterday."
@@ -238,6 +239,7 @@
 7. **fill_gap** — "How long have you _____ here?"
    **Hint**: past participle of "live"
    **Answer**: lived
+   **Accepts**: been / worked / stayed
    **Explanation**: "How long have you lived here?" — common question.
 
 8. **fix_error** — "I have lived here since two years."
@@ -762,7 +764,7 @@
 5. **fill_gap** — "I met her in 2010 and we _____ best friends since."
    **Hint**: "since" pede present perfect: have been
    **Answer**: have been
-   **Accepts**: 've been
+   **Accepts**: 've been / have become / 've become
    **Explanation**: "In 2010" = past simple "met". Second part would be "have been".
 
 6. **fill_gap** — "He _____ five books this year." (year not finished)
@@ -773,6 +775,7 @@
 7. **fill_gap** — "I _____ her last week." (specific past)
    **Hint**: past simple "see"
    **Answer**: saw
+   **Accepts**: met / called / visited
    **Explanation**: "Last week" = past simple.
 
 8. **fix_error** — "I have seen her yesterday."

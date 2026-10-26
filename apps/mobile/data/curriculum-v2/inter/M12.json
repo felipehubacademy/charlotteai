@@ -91,6 +91,10 @@
           "sentence": "She would visit more often if she _____ a car.",
           "hint": "past simple de \"have\"",
           "answer": "had",
+          "accepts": [
+            "owned",
+            "bought"
+          ],
           "explanation": "\"If she had a car\" — past simple \"had\" signaling a hypothetical present situation (she doesn't have a car now, but if she did...)."
         },
         {
@@ -98,6 +102,9 @@
           "sentence": "If we _____ the lottery, what would we do?",
           "hint": "past simple de \"win\"",
           "answer": "won",
+          "accepts": [
+            "had"
+          ],
           "explanation": "\"If we won\" — past simple \"won\" in the if-clause signals a hypothetical present. The main clause keeps \"would + base form\"."
         },
         {
@@ -349,6 +356,9 @@
           "sentence": "We wish we _____ in a bigger house.",
           "hint": "past simple de \"live\"",
           "answer": "lived",
+          "accepts": [
+            "were living"
+          ],
           "explanation": "\"We wish we lived in a bigger house\" — present wish about housing."
         },
         {
@@ -356,6 +366,9 @@
           "sentence": "I wish I _____ play the guitar.",
           "hint": "passado de \"can\" para wishes",
           "answer": "could",
+          "accepts": [
+            "knew how to"
+          ],
           "explanation": "\"I wish I could play\" — ability wish. \"Could\" is the \"past\" used in wish."
         },
         {
@@ -597,6 +610,9 @@
           "sentence": "If I were you, I _____ go for it.",
           "hint": "would + base",
           "answer": "would",
+          "accepts": [
+            "'d"
+          ],
           "explanation": "\"Would go for it\" — natural encouragement chunk in the main clause."
         },
         {
@@ -611,6 +627,9 @@
           "sentence": "I _____ talk to him if I were you.",
           "hint": "would + base",
           "answer": "would",
+          "accepts": [
+            "'d"
+          ],
           "explanation": "\"I would talk\" — \"would\" in the main clause, even with reversed sentence order."
         },
         {
@@ -881,6 +900,9 @@
           "sentence": "Would you change jobs if you _____ the chance?",
           "hint": "past simple \"have\"",
           "answer": "had",
+          "accepts": [
+            "got"
+          ],
           "explanation": "\"If you had the chance\" — past simple in the if-clause of a hypothetical question."
         },
         {
@@ -888,6 +910,9 @@
           "sentence": "Where would you go if you _____ a free week?",
           "hint": "past simple \"have\"",
           "answer": "had",
+          "accepts": [
+            "got"
+          ],
           "explanation": "\"If you had a free week\" — past simple \"had\" signals a hypothetical present in the if-clause."
         },
         {
@@ -1144,6 +1169,9 @@
           "sentence": "Would you change anything if you _____ go back in time?",
           "hint": "past de \"can\" (habilidade hipotética)",
           "answer": "could",
+          "accepts": [
+            "were able to"
+          ],
           "explanation": "\"If you could go back\" — \"could\" expresses hypothetical ability inside the if-clause."
         },
         {

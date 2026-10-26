@@ -348,6 +348,11 @@
           "sentence": "He _____ that he didn't want to come.",
           "hint": "said (sem objeto direto)",
           "answer": "said",
+          "accepts": [
+            "explained",
+            "mentioned",
+            "replied"
+          ],
           "explanation": "\"Said that\" — the verb \"say\" doesn't take a direct object before the that-clause."
         },
         {
@@ -355,6 +360,9 @@
           "sentence": "She _____ the children a story.",
           "hint": "told (tell + pessoa + coisa)",
           "answer": "told",
+          "accepts": [
+            "read"
+          ],
           "explanation": "\"Told the children a story\" — natural structure with tell."
         },
         {
@@ -1180,6 +1188,9 @@
           "sentence": "Direct: \"I'll call you next week.\" Reported: \"She said she would call me the _____ week.\"",
           "hint": "\"next\" → \"following\"",
           "answer": "following",
+          "accepts": [
+            "next"
+          ],
           "explanation": "\"Next week\" → \"the following week\" in reported speech."
         },
         {

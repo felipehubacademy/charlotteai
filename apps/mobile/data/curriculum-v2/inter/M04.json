@@ -91,6 +91,12 @@
           "sentence": "We used to _____ in Rio.",
           "hint": "base verb \"live\"",
           "answer": "live",
+          "accepts": [
+            "work",
+            "study",
+            "stay",
+            "be"
+          ],
           "explanation": "After \"used to\", base form: \"live\"."
         },
         {
@@ -599,6 +605,11 @@
           "sentence": "My dad would _____ me to school.",
           "hint": "base verb (drive)",
           "answer": "drive",
+          "accepts": [
+            "take",
+            "walk",
+            "bring"
+          ],
           "explanation": "After would, base form."
         },
         {
@@ -1122,6 +1133,11 @@
           "sentence": "She used to _____ piano.",
           "hint": "base form (play)",
           "answer": "play",
+          "accepts": [
+            "teach",
+            "study",
+            "practice"
+          ],
           "explanation": "After used to, base."
         },
         {

@@ -51,6 +51,7 @@
 5. **fill_gap** — "I _____ never tried that food."
    **Hint**: have/has for I
    **Answer**: have
+   **Accepts**: 've
    **Explanation**: "I have never tried" — present perfect with I.
 
 6. **fill_gap** — "_____ she ever traveled abroad?"
@@ -61,6 +62,7 @@
 7. **fill_gap** — "We have _____ been to Japan."
    **Hint**: never (life experience negative)
    **Answer**: never
+   **Accepts**: already
    **Explanation**: "We have never been" — common life experience structure.
 
 8. **fix_error** — "I have visit Italy."
@@ -240,6 +242,7 @@
 7. **fill_gap** — "We have _____ a lot of work."
    **Hint**: past participle of "do"
    **Answer**: done
+   **Accepts**: had / finished / got
    **Explanation**: "Do" → "did" → "done".
 
 8. **fix_error** — "I have went to Italy."
@@ -407,11 +410,13 @@
 5. **fill_gap** — "She has _____ left the office."
    **Hint**: a moment ago
    **Answer**: just
+   **Accepts**: already
    **Explanation**: "Just" — recent action. "She has just left".
 
 6. **fill_gap** — "I've _____ done my homework — finished an hour ago."
    **Hint**: sooner than expected
    **Answer**: already
+   **Accepts**: just
    **Explanation**: "Already" = before now (sooner). "I've / I have already done".
 
 7. **fill_gap** — "Have they arrived _____?"
@@ -765,11 +770,13 @@
 5. **fill_gap** — "I have _____ finished my project."
    **Hint**: just (recent)
    **Answer**: just
+   **Accepts**: already / finally / nearly / almost
    **Explanation**: "I have just finished" — recent.
 
 6. **fill_gap** — "She has _____ eaten breakfast."
    **Hint**: already (sooner)
    **Answer**: already
+   **Accepts**: just
    **Explanation**: "Already" — between has and past participle.
 
 7. **fill_gap** — "I haven't called him _____."

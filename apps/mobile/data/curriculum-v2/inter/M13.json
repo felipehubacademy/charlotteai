@@ -88,6 +88,10 @@
           "sentence": "He _____ have come if you had invited him.",
           "hint": "\"would\" + have + past participle",
           "answer": "would",
+          "accepts": [
+            "might",
+            "could"
+          ],
           "explanation": "\"He would have come\" — would + have + come. Full structure of the main clause."
         },
         {
@@ -873,6 +877,10 @@
           "sentence": "If I had taken that flight, I _____ been in the storm.",
           "hint": "would have + past participle (resultado hipotético)",
           "answer": "would have",
+          "accepts": [
+            "might have",
+            "could have"
+          ],
           "explanation": "Close call narrative. \"I would have been in the storm\" — main clause of the third conditional. The auxiliary \"would have\" introduces the hypothetical past result."
         },
         {

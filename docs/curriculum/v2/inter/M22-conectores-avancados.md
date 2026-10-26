@@ -53,16 +53,19 @@
 5. **fill_gap** — "The product is expensive. _____, the quality is excellent."
    **Hint**: Conector de contraste no início de frase
    **Answer**: However
+   **Accepts**: But / Still / Nevertheless / Even so / That said
    **Explanation**: "However" links contrasting evaluations. Common in reviews or analyses.
 
 6. **fill_gap** — "The weather was bad. _____, we had fun."
    **Hint**: Mesmo assim — Nevertheless
    **Answer**: Nevertheless
+   **Accepts**: However / Still / Even so / Nonetheless / But
    **Explanation**: "Nevertheless" — despite everything. Emphatic contrast.
 
 7. **fill_gap** — "He's introverted. _____, she's very outgoing."
    **Hint**: Contraste paralelo — On the other hand
    **Answer**: On the other hand
+   **Accepts**: However / In contrast / By contrast
    **Explanation**: "On the other hand" for comparison between two people/things.
 
 8. **fix_error** — "I love pizza, however, I can't eat it daily."
@@ -231,16 +234,19 @@
 5. **fill_gap** — "_____ the difficulty, we succeeded."
    **Hint**: Despite + substantivo
    **Answer**: Despite
+   **Accepts**: In spite of
    **Explanation**: "Despite the difficulty" — noun following "despite".
 
 6. **fill_gap** — "_____ she's young, she's very mature."
    **Hint**: Although + cláusula
    **Answer**: Although
+   **Accepts**: Though / Even though / While
    **Explanation**: "Although she's / she is young" — full clause after "although".
 
 7. **fill_gap** — "_____ having a bad day, he stayed kind."
    **Hint**: Despite + -ing
    **Answer**: Despite
+   **Accepts**: In spite of
    **Explanation**: "Despite having" — gerund after "despite". Equivalent to "in spite of having".
 
 8. **fix_error** — "Despite it was raining, we went out."
@@ -257,9 +263,9 @@
 
 10. **read_answer**
     **Passage**: "Although it was raining, we went out. Despite the cold, we enjoyed the picnic. Although he is rich, he isn't happy. Despite being tired, she finished the project."
-    **Question**: Why is the rich man not happy?
-    **Answer**: he isn't happy
-    **Accepts**: the text doesn't say why
+    **Question**: Is the rich man happy?
+    **Answer**: No
+    **Accepts**: he isn't happy / he is not happy / no, he isn't / not happy
     **Explanation**: The text states "Although he is rich, he isn't / is not happy" — the contrast is between wealth and happiness, no further reason given.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -411,16 +417,19 @@
 5. **fill_gap** — "I overslept. _____, I missed the bus."
    **Hint**: As a result (resultado)
    **Answer**: As a result
+   **Accepts**: So / Therefore / Consequently / Because of that
    **Explanation**: "As a result I missed" — direct consequence of the prior action.
 
 6. **fill_gap** — "The project failed. _____, the team was disbanded."
    **Hint**: Consequently
    **Answer**: Consequently
+   **Accepts**: As a result / Therefore / So
    **Explanation**: Failure → disbanding. Formal "consequently".
 
 7. **fill_gap** — "He's allergic to peanuts. _____, he avoids them."
    **Hint**: For that reason
    **Answer**: For that reason
+   **Accepts**: Therefore / So / As a result / That's why / Consequently
    **Explanation**: "For that reason" = for that reason. Links motive to behavior.
 
 8. **fix_error** — "Sales dropped therefore we cut the budget."
@@ -590,16 +599,19 @@
 5. **fill_gap** — "Brazil is huge. _____, it has many cultures."
    **Hint**: Adição formal
    **Answer**: Furthermore
+   **Accepts**: Moreover / In addition / Also / Besides
    **Explanation**: "Furthermore" — adding another fact to the same argument.
 
 6. **fill_gap** — "Many fruits are healthy, _____ apples and oranges."
    **Hint**: For example, such as (introduzem exemplos)
    **Answer**: such as
+   **Accepts**: like / including
    **Explanation**: "Such as" introduces direct examples after a noun. Comma before is optional.
 
 7. **fill_gap** — "I love hiking. _____, last weekend I climbed a mountain."
    **Hint**: For example, for instance
    **Answer**: For example
+   **Accepts**: For instance / In fact
    **Explanation**: "For example" introduces a concrete example after a generalization.
 
 8. **fix_error** — "He's smart, furthermore he's funny."
@@ -768,16 +780,19 @@
 5. **fill_gap** — "_____, three points emerged from the discussion."
    **Hint**: To sum up (resumir)
    **Answer**: To sum up
+   **Accepts**: In summary / In short / Overall / In conclusion
    **Explanation**: "To sum up" introduz síntese dos pontos.
 
 6. **fill_gap** — "_____, the year was challenging but rewarding."
    **Hint**: All in all (balanço geral)
    **Answer**: All in all
+   **Accepts**: Overall / In conclusion / To sum up / In short
    **Explanation**: "All in all" — balanço final ponderado.
 
 7. **fill_gap** — "_____, we should proceed with the launch."
    **Hint**: In conclusion (decisão formal)
    **Answer**: In conclusion
+   **Accepts**: To sum up / Therefore / So / Overall
    **Explanation**: "In conclusion" — formal decision/recommendation.
 
 8. **fix_error** — "In conclusion the project was successful."
@@ -947,6 +962,7 @@
 5. **fill_gap** — "I got a 5% _____ this year."
    **Hint**: salary increase
    **Answer**: raise
+   **Accepts**: increase / pay rise / bonus
    **Explanation**: "Raise" = salary increase (American English). British English: "rise". "Bonus" is a one-time payment, not a permanent increase. "Promotion" is moving up in title/role, often with raise. Different concepts.
 
 6. **fill_gap** — "I work _____ — three days in office, two at home."
@@ -976,6 +992,7 @@
     **Passage**: "I work for a fintech startup in São Paulo. I've been in software engineering for eight years. We're a hybrid team — three days in the office, two remote. My manager is great, the team is small, and I got a promotion last quarter. The hours are long, but the work is exciting."
     **Question**: What's the speaker's work mode?
     **Answer**: hybrid (three days in office, two remote)
+    **Accepts**: hybrid
     **Explanation**: The text uses workplace vocabulary: "work for [company]", "in software engineering" (field), "hybrid team" (work mode), "manager", "got a promotion". Each is a high-frequency professional chunk.
 
 ### 2. Listening/Speaking (5 phrases)

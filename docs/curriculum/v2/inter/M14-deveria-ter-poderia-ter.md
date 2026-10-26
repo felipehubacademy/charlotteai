@@ -52,16 +52,19 @@
 5. **fill_gap** — "He _____ have apologized."
    **Hint**: should / shouldn't (criticism)
    **Answer**: should
+   **Accepts**: shouldn't / could / might / must
    **Explanation**: "He should have apologized" — retrospective suggestion: it was the right thing to do. (Accepts "should" in the context criticizing that he didn't apologize.)
 
 6. **fill_gap** — "I _____ have eaten so much."
    **Hint**: shouldn't (arrependimento)
    **Answer**: shouldn't
+   **Accepts**: should not
    **Explanation**: "I shouldn't / should not have eaten so much" — I ate too much, I regret it.
 
 7. **fill_gap** — "You _____ have called me first."
    **Hint**: should (sugestão retrospectiva)
    **Answer**: should
+   **Accepts**: could
    **Explanation**: "You should have called me first" — mild criticism about not calling.
 
 8. **fix_error** — "I should studied harder."
@@ -227,13 +230,15 @@
    **Explanation**: "He could have done it alone" — the real ability and opportunity existed.
 
 5. **fill_gap** — "You _____ asked me — I would have helped."
-   **Hint**: could (have)
-   **Answer**: could
+   **Hint**: could have (missed chance)
+   **Answer**: could have
+   **Accepts**: should have / might have
    **Explanation**: "You could have asked me" — a chance that existed but wasn't taken.
 
 6. **fill_gap** — "I _____ have gone, but I chose to stay."
    **Hint**: could
    **Answer**: could
+   **Accepts**: should / might
    **Explanation**: "I could have gone" — the possibility existed, chose not to.
 
 7. **fill_gap** — "She _____ have known — she wasn't even there."
@@ -584,6 +589,7 @@
 5. **fill_gap** — "They _____ have left already."
    **Hint**: might (incerteza)
    **Answer**: might
+   **Accepts**: may / could / must
    **Explanation**: "They might have left" — uncertain possibility. Maybe, maybe not.
 
 6. **fill_gap** — "I _____ have worried so much — everything turned out fine."
@@ -594,6 +600,7 @@
 7. **fill_gap** — "She _____ have forgotten — let me text her."
    **Hint**: might (incerteza)
    **Answer**: might
+   **Accepts**: may / must / could
    **Explanation**: "She might have forgotten" — positive uncertainty. She may have forgotten.
 
 8. **fix_error** — "She might forgotten about the meeting."
@@ -768,11 +775,13 @@
 6. **fill_gap** — "They _____ have left already — but I'm not sure."
    **Hint**: might (incerteza)
    **Answer**: might
+   **Accepts**: may / could
    **Explanation**: "Might have left" — uncertain speculation.
 
 7. **fill_gap** — "I _____ have spoken so loudly — sorry."
    **Hint**: shouldn't (auto-crítica)
    **Answer**: shouldn't
+   **Accepts**: should not
    **Explanation**: "Shouldn't / Should not have spoken so loudly" — regret about a past action.
 
 8. **fix_error** — "She must left already."

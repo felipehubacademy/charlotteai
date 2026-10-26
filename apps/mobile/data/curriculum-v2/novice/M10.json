@@ -1158,6 +1158,10 @@
           "sentence": "I have _____ cookies and _____ juice.",
           "hint": "Afirmativa (positiva) com ambos",
           "answer": "some / some",
+          "accepts": [
+            "some some",
+            "some, some"
+          ],
           "explanation": "Afirmativa usa \"some\" tanto pra contável quanto incontável. \"I have some cookies and some juice\"."
         },
         {

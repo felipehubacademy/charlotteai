@@ -104,6 +104,10 @@
           "sentence": "If you don't water plants, they _____.",
           "hint": "present simple plural \"die\"",
           "answer": "die",
+          "accepts": [
+            "dry up",
+            "wither"
+          ],
           "explanation": "\"They die\" — plural plants use the base form of the verb. Universal consequence of not watering."
         },
         {
@@ -628,6 +632,10 @@
           "sentence": "_____ winter comes, the days get shorter.",
           "hint": "certeza sazonal (sempre acontece)",
           "answer": "When",
+          "accepts": [
+            "As",
+            "Once"
+          ],
           "explanation": "Winter is a guaranteed yearly event — use \"when\". \"If winter comes\" would sound odd because winter always arrives."
         },
         {
@@ -635,6 +643,9 @@
           "sentence": "_____ you don't feel well, take a break.",
           "hint": "possibilidade (pode ou não estar doente)",
           "answer": "If",
+          "accepts": [
+            "When"
+          ],
           "explanation": "You aren't always sick — it varies. \"If you don't / do not feel well\" — possibility."
         },
         {
@@ -642,6 +653,12 @@
           "sentence": "_____ I get home from work, I take off my shoes and sit down.",
           "hint": "rotina diária garantida",
           "answer": "When",
+          "accepts": [
+            "As soon as",
+            "After",
+            "Once",
+            "Whenever"
+          ],
           "explanation": "Getting home from work is part of the routine. \"When I get home\" — every time it happens."
         },
         {
@@ -880,6 +897,9 @@
           "sentence": "If I _____ early enough, I'll have breakfast at home.",
           "hint": "present simple de \"wake up\" 1ª pessoa",
           "answer": "wake up",
+          "accepts": [
+            "get up"
+          ],
           "explanation": "\"Wake up\" — fixed phrasal verb in present simple. First conditional signals a specific future result."
         },
         {
@@ -894,6 +914,10 @@
           "sentence": "I'll be there if you _____ me to be.",
           "hint": "present simple de \"want\" 2ª pessoa",
           "answer": "want",
+          "accepts": [
+            "need",
+            "ask"
+          ],
           "explanation": "First conditional with a promise. \"Want\" — present simple base form with \"you\"."
         },
         {
@@ -1136,6 +1160,9 @@
           "sentence": "If I _____ free time this evening, I'll watch a movie.",
           "hint": "present simple \"have\" com I",
           "answer": "have",
+          "accepts": [
+            "get"
+          ],
           "explanation": "First conditional. \"Have free time\" — present simple."
         },
         {
@@ -1143,6 +1170,10 @@
           "sentence": "Plants _____ if you don't water them — that's biology.",
           "hint": "present simple plural \"die\"",
           "answer": "die",
+          "accepts": [
+            "wither",
+            "dry up"
+          ],
           "explanation": "Universal biological truth → zero conditional. \"Plants die\" — plural present simple."
         },
         {

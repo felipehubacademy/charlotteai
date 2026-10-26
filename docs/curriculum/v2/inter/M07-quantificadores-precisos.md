@@ -49,16 +49,19 @@
 5. **fill_gap** — "I have _____ money on me."
    **Hint**: small amount (uncountable)
    **Answer**: a little
+   **Accepts**: some
    **Explanation**: "Money" uncountable → "a little".
 
 6. **fill_gap** — "She invited _____ friends."
    **Hint**: small number (countable)
    **Answer**: a few
+   **Accepts**: some / several / many
    **Explanation**: "Friends" countable → "a few".
 
 7. **fill_gap** — "Add _____ salt."
    **Hint**: uncountable
    **Answer**: a little
+   **Accepts**: some / more
    **Explanation**: "Salt" uncountable → "a little".
 
 8. **fix_error** — "I have a few money."
@@ -404,16 +407,19 @@
 5. **fill_gap** — "I have _____ books to read this summer."
    **Hint**: lots
    **Answer**: plenty of
+   **Accepts**: a lot of / lots of / many
    **Explanation**: "Plenty of books" — abundance.
 
 6. **fill_gap** — "There's _____ rain this year."
    **Hint**: almost none
    **Answer**: hardly any
+   **Accepts**: little / no / not much
    **Explanation**: "Hardly any rain" — scarcity.
 
 7. **fill_gap** — "We had _____ visitors yesterday."
    **Hint**: very few
    **Answer**: hardly any
+   **Accepts**: few / no
    **Explanation**: "Hardly any visitors" — almost no one came.
 
 8. **fix_error** — "I have plenty time."
@@ -582,16 +588,19 @@
 5. **fill_gap** — "There are _____ ways to do this."
    **Hint**: more than a few (3+)
    **Answer**: several
+   **Accepts**: many / a few / some / lots of
    **Explanation**: "Several ways" — multiple options.
 
 6. **fill_gap** — "_____ people like coffee."
    **Hint**: majority
    **Answer**: Most
+   **Accepts**: Many / Some / A lot of / Lots of
    **Explanation**: "Most people" — general majority.
 
 7. **fill_gap** — "_____ of my friends live abroad."
    **Hint**: majority of specific group
    **Answer**: Most
+   **Accepts**: Many / Some / A few / Several / All
    **Explanation**: "Most of + the/my + plural".
 
 8. **fix_error** — "I have several time."
@@ -767,6 +776,7 @@
 6. **fill_gap** — "_____ of my coworkers are friendly."
    **Hint**: majority of specific
    **Answer**: Most
+   **Accepts**: Many / Some / All / A few
    **Explanation**: "Most of my coworkers".
 
 7. **fill_gap** — "I have _____ patience for delays today."

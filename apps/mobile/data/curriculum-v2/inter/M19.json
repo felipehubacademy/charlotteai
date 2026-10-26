@@ -89,6 +89,9 @@
           "sentence": "Ana, _____ I work with, just had a baby.",
           "hint": "who",
           "answer": "who",
+          "accepts": [
+            "whom"
+          ],
           "explanation": "\"Who I work with\" — extra info about Ana. Note: stranded preposition at the end is acceptable."
         },
         {
@@ -907,6 +910,9 @@
           "sentence": "São Paulo, _____ I work, is a huge city.",
           "hint": "where (lugar)",
           "answer": "where",
+          "accepts": [
+            "in which"
+          ],
           "explanation": "\"Where I work\" — specific place of work."
         },
         {
@@ -914,6 +920,9 @@
           "sentence": "March, _____ I was born, is my favorite month.",
           "hint": "when (tempo)",
           "answer": "when",
+          "accepts": [
+            "in which"
+          ],
           "explanation": "\"When I was born\" — specific time."
         },
         {
@@ -921,6 +930,9 @@
           "sentence": "The university, _____ I studied, is famous.",
           "hint": "where",
           "answer": "where",
+          "accepts": [
+            "in which"
+          ],
           "explanation": "\"Where I studied\" — place of study."
         },
         {
@@ -1163,6 +1175,9 @@
           "sentence": "Defining: \"The woman _____ lives next door is a doctor.\"",
           "hint": "who/that (defining para pessoa)",
           "answer": "who",
+          "accepts": [
+            "that"
+          ],
           "explanation": "Defining identifies WHO (among several women). \"Who\" works; \"that\" does too."
         },
         {
@@ -1177,6 +1192,9 @@
           "sentence": "Defining: \"The town _____ I grew up is small.\"",
           "hint": "where (lugar em defining)",
           "answer": "where",
+          "accepts": [
+            "in which"
+          ],
           "explanation": "Defining \"where\" with no commas. \"The town where I grew up\" — identifies which town."
         },
         {

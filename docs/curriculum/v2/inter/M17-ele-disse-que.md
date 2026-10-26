@@ -235,11 +235,13 @@
 6. **fill_gap** — "He _____ that he didn't want to come."
    **Hint**: said (sem objeto direto)
    **Answer**: said
+   **Accepts**: explained / mentioned / replied
    **Explanation**: "Said that" — the verb "say" doesn't take a direct object before the that-clause.
 
 7. **fill_gap** — "She _____ the children a story."
    **Hint**: told (tell + pessoa + coisa)
    **Answer**: told
+   **Accepts**: read
    **Explanation**: "Told the children a story" — natural structure with tell.
 
 8. **fix_error** — "She said me that she was tired."
@@ -771,6 +773,7 @@
 6. **fill_gap** — Direct: "I'll call you next week." Reported: "She said she would call me the _____ week."
    **Hint**: "next" → "following"
    **Answer**: following
+   **Accepts**: next
    **Explanation**: "Next week" → "the following week" in reported speech.
 
 7. **fill_gap** — Direct: "I came here last year." Reported: "He said he had come _____ the year before."

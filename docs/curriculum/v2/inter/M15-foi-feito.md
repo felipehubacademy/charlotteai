@@ -53,6 +53,7 @@
 5. **fill_gap** — "These shirts _____ in Italy."
    **Hint**: are + past participle "make"
    **Answer**: are made
+   **Accepts**: are produced / are manufactured / were made / are designed
    **Explanation**: "Are made in Italy" — plural passive. Focus on the shirts (recipient), not on who manufactures them.
 
 6. **fill_gap** — "Spanish _____ by 500 million people."
@@ -63,6 +64,7 @@
 7. **fill_gap** — "Rice _____ in Asia."
    **Hint**: is + past participle "grow"
    **Answer**: is grown
+   **Accepts**: is produced / is eaten / is cultivated
    **Explanation**: "Rice is grown in Asia" — general fact, vague agent, natural passive.
 
 8. **fix_error** — "English is speak in many countries."
@@ -231,16 +233,19 @@
 5. **fill_gap** — "The book _____ in 1925."
    **Hint**: was + past participle "publish"
    **Answer**: was published
+   **Accepts**: was written / was released
    **Explanation**: "Was published in 1925" — past passive, specific year.
 
 6. **fill_gap** — "Two cars _____ in the accident."
    **Hint**: were + past participle "damage"
    **Answer**: were damaged
+   **Accepts**: were destroyed / were wrecked
    **Explanation**: Plural "two cars" → "were damaged". Past passive plural.
 
 7. **fill_gap** — "The decision _____ last week."
    **Hint**: was + past participle "make"
    **Answer**: was made
+   **Accepts**: was taken / was announced
    **Explanation**: "The decision was made" — past passive, focus on the decision.
 
 8. **fix_error** — "The Mona Lisa was paint by Leonardo."
@@ -408,16 +413,19 @@
 5. **fill_gap** — "The dishes _____ in the kitchen."
    **Hint**: are being + past participle "wash"
    **Answer**: are being washed
+   **Accepts**: are being cleaned / are being done
    **Explanation**: "Are being washed" — em processo agora, plural.
 
 6. **fill_gap** — "The room _____ right now."
    **Hint**: is being + past participle "clean"
    **Answer**: is being cleaned
+   **Accepts**: is being painted / is being prepared / is being decorated
    **Explanation**: "Is being cleaned right now" — ação em curso, singular.
 
 7. **fill_gap** — "The new policy _____ at this moment."
    **Hint**: is being + past participle "discuss"
    **Answer**: is being discussed
+   **Accepts**: is being debated / is being reviewed / is being written
    **Explanation**: "Is being discussed at this moment" — discussion in progress.
 
 8. **fix_error** — "My car is repaired today."
@@ -586,16 +594,19 @@
 5. **fill_gap** — "The new car _____ already."
    **Hint**: has been + past participle "release"
    **Answer**: has been released
+   **Accepts**: has been sold / has been delivered / has been launched
    **Explanation**: "Has been released already" — completed release with present effect. Singular.
 
 6. **fill_gap** — "Many books _____ this year."
    **Hint**: have been + past participle "publish"
    **Answer**: have been published
+   **Accepts**: have been written / have been sold / have been released
    **Explanation**: Plural "many books" → "have been published". The period "this year" → present perfect.
 
 7. **fill_gap** — "The work _____ already."
    **Hint**: has been + past participle "do" — irregular
    **Answer**: has been done
+   **Accepts**: has been finished / has been completed
    **Explanation**: "Has been done" — "do" → past participle "done". Irregular form.
 
 8. **fix_error** — "The package has delivered already."
@@ -764,16 +775,19 @@
 5. **fill_gap** — "These shirts _____ in Italy. (general fact)"
    **Hint**: are + past participle "make"
    **Answer**: are made
+   **Accepts**: are produced / are manufactured / are designed
    **Explanation**: Ongoing current fact → present simple passive, plural.
 
 6. **fill_gap** — "The package _____ yesterday. (past)"
    **Hint**: was + past participle "deliver"
    **Answer**: was delivered
+   **Accepts**: was sent / was shipped
    **Explanation**: "Yesterday" → past simple passive, singular.
 
 7. **fill_gap** — "The house _____ right now. (ongoing)"
    **Hint**: is being + past participle "build"
    **Answer**: is being built
+   **Accepts**: is being painted / is being renovated / is being cleaned
    **Explanation**: "Right now" → present continuous passive. "Is being built".
 
 8. **fix_error** — "The book is wrote by a famous author."

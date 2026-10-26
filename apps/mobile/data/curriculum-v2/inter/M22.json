@@ -84,6 +84,13 @@
           "sentence": "The product is expensive. _____, the quality is excellent.",
           "hint": "Conector de contraste no início de frase",
           "answer": "However",
+          "accepts": [
+            "But",
+            "Still",
+            "Nevertheless",
+            "Even so",
+            "That said"
+          ],
           "explanation": "\"However\" links contrasting evaluations. Common in reviews or analyses."
         },
         {
@@ -91,6 +98,13 @@
           "sentence": "The weather was bad. _____, we had fun.",
           "hint": "Mesmo assim — Nevertheless",
           "answer": "Nevertheless",
+          "accepts": [
+            "However",
+            "Still",
+            "Even so",
+            "Nonetheless",
+            "But"
+          ],
           "explanation": "\"Nevertheless\" — despite everything. Emphatic contrast."
         },
         {
@@ -98,6 +112,11 @@
           "sentence": "He's introverted. _____, she's very outgoing.",
           "hint": "Contraste paralelo — On the other hand",
           "answer": "On the other hand",
+          "accepts": [
+            "However",
+            "In contrast",
+            "By contrast"
+          ],
           "explanation": "\"On the other hand\" for comparison between two people/things."
         },
         {
@@ -360,6 +379,9 @@
           "sentence": "_____ the difficulty, we succeeded.",
           "hint": "Despite + substantivo",
           "answer": "Despite",
+          "accepts": [
+            "In spite of"
+          ],
           "explanation": "\"Despite the difficulty\" — noun following \"despite\"."
         },
         {
@@ -367,6 +389,11 @@
           "sentence": "_____ she's young, she's very mature.",
           "hint": "Although + cláusula",
           "answer": "Although",
+          "accepts": [
+            "Though",
+            "Even though",
+            "While"
+          ],
           "explanation": "\"Although she's / she is young\" — full clause after \"although\"."
         },
         {
@@ -374,6 +401,9 @@
           "sentence": "_____ having a bad day, he stayed kind.",
           "hint": "Despite + -ing",
           "answer": "Despite",
+          "accepts": [
+            "In spite of"
+          ],
           "explanation": "\"Despite having\" — gerund after \"despite\". Equivalent to \"in spite of having\"."
         },
         {
@@ -399,10 +429,13 @@
         {
           "type": "read_answer",
           "passage": "Although it was raining, we went out. Despite the cold, we enjoyed the picnic. Although he is rich, he isn't happy. Despite being tired, she finished the project.",
-          "question": "Why is the rich man not happy?",
-          "answer": "he isn't happy",
+          "question": "Is the rich man happy?",
+          "answer": "No",
           "accepts": [
-            "the text doesn't say why"
+            "he isn't happy",
+            "he is not happy",
+            "no, he isn't",
+            "not happy"
           ],
           "explanation": "The text states \"Although he is rich, he isn't / is not happy\" — the contrast is between wealth and happiness, no further reason given."
         }
@@ -642,6 +675,12 @@
           "sentence": "I overslept. _____, I missed the bus.",
           "hint": "As a result (resultado)",
           "answer": "As a result",
+          "accepts": [
+            "So",
+            "Therefore",
+            "Consequently",
+            "Because of that"
+          ],
           "explanation": "\"As a result I missed\" — direct consequence of the prior action."
         },
         {
@@ -649,6 +688,11 @@
           "sentence": "The project failed. _____, the team was disbanded.",
           "hint": "Consequently",
           "answer": "Consequently",
+          "accepts": [
+            "As a result",
+            "Therefore",
+            "So"
+          ],
           "explanation": "Failure → disbanding. Formal \"consequently\"."
         },
         {
@@ -656,6 +700,13 @@
           "sentence": "He's allergic to peanuts. _____, he avoids them.",
           "hint": "For that reason",
           "answer": "For that reason",
+          "accepts": [
+            "Therefore",
+            "So",
+            "As a result",
+            "That's why",
+            "Consequently"
+          ],
           "explanation": "\"For that reason\" = for that reason. Links motive to behavior."
         },
         {
@@ -922,6 +973,12 @@
           "sentence": "Brazil is huge. _____, it has many cultures.",
           "hint": "Adição formal",
           "answer": "Furthermore",
+          "accepts": [
+            "Moreover",
+            "In addition",
+            "Also",
+            "Besides"
+          ],
           "explanation": "\"Furthermore\" — adding another fact to the same argument."
         },
         {
@@ -929,6 +986,10 @@
           "sentence": "Many fruits are healthy, _____ apples and oranges.",
           "hint": "For example, such as (introduzem exemplos)",
           "answer": "such as",
+          "accepts": [
+            "like",
+            "including"
+          ],
           "explanation": "\"Such as\" introduces direct examples after a noun. Comma before is optional."
         },
         {
@@ -936,6 +997,10 @@
           "sentence": "I love hiking. _____, last weekend I climbed a mountain.",
           "hint": "For example, for instance",
           "answer": "For example",
+          "accepts": [
+            "For instance",
+            "In fact"
+          ],
           "explanation": "\"For example\" introduces a concrete example after a generalization."
         },
         {
@@ -1196,6 +1261,12 @@
           "sentence": "_____, three points emerged from the discussion.",
           "hint": "To sum up (resumir)",
           "answer": "To sum up",
+          "accepts": [
+            "In summary",
+            "In short",
+            "Overall",
+            "In conclusion"
+          ],
           "explanation": "\"To sum up\" introduz síntese dos pontos."
         },
         {
@@ -1203,6 +1274,12 @@
           "sentence": "_____, the year was challenging but rewarding.",
           "hint": "All in all (balanço geral)",
           "answer": "All in all",
+          "accepts": [
+            "Overall",
+            "In conclusion",
+            "To sum up",
+            "In short"
+          ],
           "explanation": "\"All in all\" — balanço final ponderado."
         },
         {
@@ -1210,6 +1287,12 @@
           "sentence": "_____, we should proceed with the launch.",
           "hint": "In conclusion (decisão formal)",
           "answer": "In conclusion",
+          "accepts": [
+            "To sum up",
+            "Therefore",
+            "So",
+            "Overall"
+          ],
           "explanation": "\"In conclusion\" — formal decision/recommendation."
         },
         {
@@ -1458,6 +1541,11 @@
           "sentence": "I got a 5% _____ this year.",
           "hint": "salary increase",
           "answer": "raise",
+          "accepts": [
+            "increase",
+            "pay rise",
+            "bonus"
+          ],
           "explanation": "\"Raise\" = salary increase (American English). British English: \"rise\". \"Bonus\" is a one-time payment, not a permanent increase. \"Promotion\" is moving up in title/role, often with raise. Different concepts."
         },
         {
@@ -1504,6 +1592,9 @@
           "passage": "I work for a fintech startup in São Paulo. I've been in software engineering for eight years. We're a hybrid team — three days in the office, two remote. My manager is great, the team is small, and I got a promotion last quarter. The hours are long, but the work is exciting.",
           "question": "What's the speaker's work mode?",
           "answer": "hybrid (three days in office, two remote)",
+          "accepts": [
+            "hybrid"
+          ],
           "explanation": "The text uses workplace vocabulary: \"work for [company]\", \"in software engineering\" (field), \"hybrid team\" (work mode), \"manager\", \"got a promotion\". Each is a high-frequency professional chunk."
         }
       ],

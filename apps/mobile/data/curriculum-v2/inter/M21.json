@@ -92,6 +92,11 @@
           "sentence": "He's used _____ alone.",
           "hint": "to + -ing form \"live\"",
           "answer": "to living",
+          "accepts": [
+            "to being",
+            "to eating",
+            "to working"
+          ],
           "explanation": "\"Used to living\" — accustomed to. Note: different from \"used to live\" (used to / habitual past) — the clue is \"TO + -ing\", not \"TO + base\"."
         },
         {
@@ -368,6 +373,9 @@
           "sentence": "She _____ time before the deadline.",
           "hint": "ran + out + of",
           "answer": "ran out of",
+          "accepts": [
+            "is running out of"
+          ],
           "explanation": "\"Ran out of time\" — very common chunk, running out of time."
         },
         {
@@ -641,6 +649,9 @@
           "sentence": "I really _____ my old boss — she was inspiring.",
           "hint": "look up to (admirar)",
           "answer": "look up to",
+          "accepts": [
+            "looked up to"
+          ],
           "explanation": "\"Look up to\" — to admire as a role model."
         },
         {
@@ -655,6 +666,9 @@
           "sentence": "She _____ poor people, which is awful.",
           "hint": "looks down on",
           "answer": "looks down on",
+          "accepts": [
+            "looked down on"
+          ],
           "explanation": "\"Looks down on poor people\" — contemptuous behavior worth criticizing."
         },
         {
@@ -921,6 +935,12 @@
           "sentence": "I _____ the news every morning.",
           "hint": "catch up on",
           "answer": "catch up on",
+          "accepts": [
+            "read",
+            "watch",
+            "check",
+            "keep up with"
+          ],
           "explanation": "\"Catch up on the news\" — get up to date on the news."
         },
         {
@@ -1188,6 +1208,11 @@
           "sentence": "_____, the project is fine — let's move on.",
           "hint": "By and large (no geral, em sua maioria)",
           "answer": "By and large",
+          "accepts": [
+            "Overall",
+            "All in all",
+            "On the whole"
+          ],
           "explanation": "\"By and large\" = generally speaking. Chunk for qualified summary."
         },
         {
@@ -1195,6 +1220,10 @@
           "sentence": "_____, you're absolutely right.",
           "hint": "On second thought",
           "answer": "On second thought",
+          "accepts": [
+            "Actually",
+            "On reflection"
+          ],
           "explanation": "\"On second thought\" — reconsideração. Mudou de ideia."
         },
         {
@@ -1202,6 +1231,12 @@
           "sentence": "_____, exercise is what makes the difference.",
           "hint": "In the long run",
           "answer": "In the long run",
+          "accepts": [
+            "In the end",
+            "Ultimately",
+            "At the end of the day",
+            "Over time"
+          ],
           "explanation": "\"In the long run\" — perspectiva de longo prazo."
         },
         {

@@ -54,11 +54,13 @@
 6. **fill_gap** — "The teacher _____ teaches us is great."
    **Hint**: person, subject
    **Answer**: who
+   **Accepts**: that
    **Explanation**: "Who teaches".
 
 7. **fill_gap** — "He's the guy _____ won the race."
    **Hint**: person
    **Answer**: who
+   **Accepts**: that
    **Explanation**: "Who won".
 
 8. **fix_error** — "He's the man which called me."
@@ -232,7 +234,7 @@
 6. **fill_gap** — "The phone _____ I bought is broken."
    **Hint**: thing, object of clause
    **Answer**: that
-   **Accepts**: which, / omitted
+   **Accepts**: which
    **Explanation**: "The phone that I bought" — object: that/which/omitted.
 
 7. **fill_gap** — "It's the song _____ I love."
@@ -406,16 +408,19 @@
 5. **fill_gap** — "It's a restaurant _____ they serve great pasta."
    **Hint**: place
    **Answer**: where
+   **Accepts**: in which
    **Explanation**: "Restaurant where they serve".
 
 6. **fill_gap** — "I remember the park _____ we used to play."
    **Hint**: place
    **Answer**: where
+   **Accepts**: in which
    **Explanation**: "Park where we played".
 
 7. **fill_gap** — "She lives in a country _____ it's always sunny."
    **Hint**: place
    **Answer**: where
+   **Accepts**: in which
    **Explanation**: "Country where it's / it is sunny".
 
 8. **fix_error** — "It's the city which I grew up."
@@ -759,6 +764,7 @@
 5. **fill_gap** — "He's the doctor _____ helped me."
    **Hint**: person
    **Answer**: who
+   **Accepts**: that
    **Explanation**: Who for people.
 
 6. **fill_gap** — "I have a phone _____ takes great photos."
@@ -770,6 +776,7 @@
 7. **fill_gap** — "The school _____ I studied is famous."
    **Hint**: place
    **Answer**: where
+   **Accepts**: in which / at which
    **Explanation**: Where for places.
 
 8. **fix_error** — "He's the man which I met."

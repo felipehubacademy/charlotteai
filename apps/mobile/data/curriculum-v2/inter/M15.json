@@ -84,6 +84,12 @@
           "sentence": "These shirts _____ in Italy.",
           "hint": "are + past participle \"make\"",
           "answer": "are made",
+          "accepts": [
+            "are produced",
+            "are manufactured",
+            "were made",
+            "are designed"
+          ],
           "explanation": "\"Are made in Italy\" — plural passive. Focus on the shirts (recipient), not on who manufactures them."
         },
         {
@@ -98,6 +104,11 @@
           "sentence": "Rice _____ in Asia.",
           "hint": "is + past participle \"grow\"",
           "answer": "is grown",
+          "accepts": [
+            "is produced",
+            "is eaten",
+            "is cultivated"
+          ],
           "explanation": "\"Rice is grown in Asia\" — general fact, vague agent, natural passive."
         },
         {
@@ -360,6 +371,10 @@
           "sentence": "The book _____ in 1925.",
           "hint": "was + past participle \"publish\"",
           "answer": "was published",
+          "accepts": [
+            "was written",
+            "was released"
+          ],
           "explanation": "\"Was published in 1925\" — past passive, specific year."
         },
         {
@@ -367,6 +382,10 @@
           "sentence": "Two cars _____ in the accident.",
           "hint": "were + past participle \"damage\"",
           "answer": "were damaged",
+          "accepts": [
+            "were destroyed",
+            "were wrecked"
+          ],
           "explanation": "Plural \"two cars\" → \"were damaged\". Past passive plural."
         },
         {
@@ -374,6 +393,10 @@
           "sentence": "The decision _____ last week.",
           "hint": "was + past participle \"make\"",
           "answer": "was made",
+          "accepts": [
+            "was taken",
+            "was announced"
+          ],
           "explanation": "\"The decision was made\" — past passive, focus on the decision."
         },
         {
@@ -615,6 +638,10 @@
           "sentence": "The dishes _____ in the kitchen.",
           "hint": "are being + past participle \"wash\"",
           "answer": "are being washed",
+          "accepts": [
+            "are being cleaned",
+            "are being done"
+          ],
           "explanation": "\"Are being washed\" — em processo agora, plural."
         },
         {
@@ -622,6 +649,11 @@
           "sentence": "The room _____ right now.",
           "hint": "is being + past participle \"clean\"",
           "answer": "is being cleaned",
+          "accepts": [
+            "is being painted",
+            "is being prepared",
+            "is being decorated"
+          ],
           "explanation": "\"Is being cleaned right now\" — ação em curso, singular."
         },
         {
@@ -629,6 +661,11 @@
           "sentence": "The new policy _____ at this moment.",
           "hint": "is being + past participle \"discuss\"",
           "answer": "is being discussed",
+          "accepts": [
+            "is being debated",
+            "is being reviewed",
+            "is being written"
+          ],
           "explanation": "\"Is being discussed at this moment\" — discussion in progress."
         },
         {
@@ -892,6 +929,11 @@
           "sentence": "The new car _____ already.",
           "hint": "has been + past participle \"release\"",
           "answer": "has been released",
+          "accepts": [
+            "has been sold",
+            "has been delivered",
+            "has been launched"
+          ],
           "explanation": "\"Has been released already\" — completed release with present effect. Singular."
         },
         {
@@ -899,6 +941,11 @@
           "sentence": "Many books _____ this year.",
           "hint": "have been + past participle \"publish\"",
           "answer": "have been published",
+          "accepts": [
+            "have been written",
+            "have been sold",
+            "have been released"
+          ],
           "explanation": "Plural \"many books\" → \"have been published\". The period \"this year\" → present perfect."
         },
         {
@@ -906,6 +953,10 @@
           "sentence": "The work _____ already.",
           "hint": "has been + past participle \"do\" — irregular",
           "answer": "has been done",
+          "accepts": [
+            "has been finished",
+            "has been completed"
+          ],
           "explanation": "\"Has been done\" — \"do\" → past participle \"done\". Irregular form."
         },
         {
@@ -1166,6 +1217,11 @@
           "sentence": "These shirts _____ in Italy. (general fact)",
           "hint": "are + past participle \"make\"",
           "answer": "are made",
+          "accepts": [
+            "are produced",
+            "are manufactured",
+            "are designed"
+          ],
           "explanation": "Ongoing current fact → present simple passive, plural."
         },
         {
@@ -1173,6 +1229,10 @@
           "sentence": "The package _____ yesterday. (past)",
           "hint": "was + past participle \"deliver\"",
           "answer": "was delivered",
+          "accepts": [
+            "was sent",
+            "was shipped"
+          ],
           "explanation": "\"Yesterday\" → past simple passive, singular."
         },
         {
@@ -1180,6 +1240,11 @@
           "sentence": "The house _____ right now. (ongoing)",
           "hint": "is being + past participle \"build\"",
           "answer": "is being built",
+          "accepts": [
+            "is being painted",
+            "is being renovated",
+            "is being cleaned"
+          ],
           "explanation": "\"Right now\" → present continuous passive. \"Is being built\"."
         },
         {

@@ -55,6 +55,7 @@
 6. **fill_gap** — "He _____ have come if you had invited him."
    **Hint**: "would" + have + past participle
    **Answer**: would
+   **Accepts**: might / could
    **Explanation**: "He would have come" — would + have + come. Full structure of the main clause.
 
 7. **fill_gap** — "If they _____ asked, I would have helped."
@@ -584,6 +585,7 @@
 5. **fill_gap** — "If I had taken that flight, I _____ been in the storm."
    **Hint**: would have + past participle (resultado hipotético)
    **Answer**: would have
+   **Accepts**: might have / could have
    **Explanation**: Close call narrative. "I would have been in the storm" — main clause of the third conditional. The auxiliary "would have" introduces the hypothetical past result.
 
 6. **fill_gap** — "We wouldn't have made it if the train _____ been delayed."

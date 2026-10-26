@@ -80,6 +80,9 @@
           "sentence": "I have _____ money on me.",
           "hint": "small amount (uncountable)",
           "answer": "a little",
+          "accepts": [
+            "some"
+          ],
           "explanation": "\"Money\" uncountable → \"a little\"."
         },
         {
@@ -87,6 +90,11 @@
           "sentence": "She invited _____ friends.",
           "hint": "small number (countable)",
           "answer": "a few",
+          "accepts": [
+            "some",
+            "several",
+            "many"
+          ],
           "explanation": "\"Friends\" countable → \"a few\"."
         },
         {
@@ -94,6 +102,10 @@
           "sentence": "Add _____ salt.",
           "hint": "uncountable",
           "answer": "a little",
+          "accepts": [
+            "some",
+            "more"
+          ],
           "explanation": "\"Salt\" uncountable → \"a little\"."
         },
         {
@@ -623,6 +635,11 @@
           "sentence": "I have _____ books to read this summer.",
           "hint": "lots",
           "answer": "plenty of",
+          "accepts": [
+            "a lot of",
+            "lots of",
+            "many"
+          ],
           "explanation": "\"Plenty of books\" — abundance."
         },
         {
@@ -630,6 +647,11 @@
           "sentence": "There's _____ rain this year.",
           "hint": "almost none",
           "answer": "hardly any",
+          "accepts": [
+            "little",
+            "no",
+            "not much"
+          ],
           "explanation": "\"Hardly any rain\" — scarcity."
         },
         {
@@ -637,6 +659,10 @@
           "sentence": "We had _____ visitors yesterday.",
           "hint": "very few",
           "answer": "hardly any",
+          "accepts": [
+            "few",
+            "no"
+          ],
           "explanation": "\"Hardly any visitors\" — almost no one came."
         },
         {
@@ -878,6 +904,12 @@
           "sentence": "There are _____ ways to do this.",
           "hint": "more than a few (3+)",
           "answer": "several",
+          "accepts": [
+            "many",
+            "a few",
+            "some",
+            "lots of"
+          ],
           "explanation": "\"Several ways\" — multiple options."
         },
         {
@@ -885,6 +917,12 @@
           "sentence": "_____ people like coffee.",
           "hint": "majority",
           "answer": "Most",
+          "accepts": [
+            "Many",
+            "Some",
+            "A lot of",
+            "Lots of"
+          ],
           "explanation": "\"Most people\" — general majority."
         },
         {
@@ -892,6 +930,13 @@
           "sentence": "_____ of my friends live abroad.",
           "hint": "majority of specific group",
           "answer": "Most",
+          "accepts": [
+            "Many",
+            "Some",
+            "A few",
+            "Several",
+            "All"
+          ],
           "explanation": "\"Most of + the/my + plural\"."
         },
         {
@@ -1165,6 +1210,12 @@
           "sentence": "_____ of my coworkers are friendly.",
           "hint": "majority of specific",
           "answer": "Most",
+          "accepts": [
+            "Many",
+            "Some",
+            "All",
+            "A few"
+          ],
           "explanation": "\"Most of my coworkers\"."
         },
         {

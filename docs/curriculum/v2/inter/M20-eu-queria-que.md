@@ -52,6 +52,7 @@
 5. **fill_gap** — "I wish you _____ be quiet for one minute."
    **Hint**: would
    **Answer**: would
+   **Accepts**: could
    **Explanation**: "I wish you would be quiet" — wish for a specific action. Annoyed tone.
 
 6. **fill_gap** — "I wish my neighbors _____ make so much noise."
@@ -62,6 +63,7 @@
 7. **fill_gap** — "I wish he _____ stop complaining."
    **Hint**: would
    **Answer**: would
+   **Accepts**: could
    **Explanation**: "Would stop complaining" — wish for them to stop the recurring behavior.
 
 8. **fix_error** — "I wish you will listen to me."
@@ -230,6 +232,7 @@
 5. **fill_gap** — "If only I _____ speak more languages!"
    **Hint**: could (habilidade)
    **Answer**: could
+   **Accepts**: were able to
    **Explanation**: "If only I could" — present ability wish. "Could" + base.
 
 6. **fill_gap** — "If only he _____ listened to me!"
@@ -408,16 +411,19 @@
 5. **fill_gap** — "I'd rather _____ coffee than tea."
    **Hint**: base form "drink"
    **Answer**: drink
+   **Accepts**: have
    **Explanation**: "Would rather drink coffee" — simple preference with base form.
 
 6. **fill_gap** — "I'd rather you _____ to me before deciding."
    **Hint**: past simple "talk"
    **Answer**: talked
+   **Accepts**: spoke / came
    **Explanation**: "I'd / I would rather you talked" — preference about the other person's behavior. Past simple, not base form.
 
 7. **fill_gap** — "She'd rather _____ outside on the patio."
    **Hint**: base form "sit"
    **Answer**: sit
+   **Accepts**: eat / be / stay
    **Explanation**: "Would rather sit outside" — own preference, base form.
 
 8. **fix_error** — "I'd rather to go home."
@@ -585,11 +591,13 @@
 5. **fill_gap** — "It's high time you _____ a real vacation."
    **Hint**: past simple "have"
    **Answer**: had
+   **Accepts**: took
    **Explanation**: "It's / It is high time you had a vacation" — urgência enfática.
 
 6. **fill_gap** — "It's about time he _____ growing up."
    **Hint**: past simple "start"
    **Answer**: started
+   **Accepts**: began
    **Explanation**: "It's / It is about time he started growing up" — emphatic suggestion about someone.
 
 7. **fill_gap** — "It's time we _____ honest with each other."
@@ -773,6 +781,7 @@
 7. **fill_gap** — "It's high time you _____ a real job."
    **Hint**: past simple "get"
    **Answer**: got
+   **Accepts**: found / had
    **Explanation**: "It's / It is high time + past simple" — emphatic urgency.
 
 8. **fix_error** — "I wish you will be quiet."

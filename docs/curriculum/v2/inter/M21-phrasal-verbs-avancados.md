@@ -61,6 +61,7 @@
 5. **fill_gap** — "He's used _____ alone."
    **Hint**: to + -ing form "live"
    **Answer**: to living
+   **Accepts**: to being / to eating / to working
    **Explanation**: "Used to living" — accustomed to. Note: different from "used to live" (used to / habitual past) — the clue is "TO + -ing", not "TO + base".
 
 6. **fill_gap** — "I object _____ on weekends."
@@ -239,6 +240,7 @@
 5. **fill_gap** — "She _____ time before the deadline."
    **Hint**: ran + out + of
    **Answer**: ran out of
+   **Accepts**: is running out of
    **Explanation**: "Ran out of time" — very common chunk, running out of time.
 
 6. **fill_gap** — "How do you _____ that smell?"
@@ -416,6 +418,7 @@
 5. **fill_gap** — "I really _____ my old boss — she was inspiring."
    **Hint**: look up to (admirar)
    **Answer**: look up to
+   **Accepts**: looked up to
    **Explanation**: "Look up to" — to admire as a role model.
 
 6. **fill_gap** — "He's hard to _____ — very stubborn."
@@ -426,6 +429,7 @@
 7. **fill_gap** — "She _____ poor people, which is awful."
    **Hint**: looks down on
    **Answer**: looks down on
+   **Accepts**: looked down on
    **Explanation**: "Looks down on poor people" — contemptuous behavior worth criticizing.
 
 8. **fix_error** — "I get along my coworkers."
@@ -598,6 +602,7 @@
 6. **fill_gap** — "I _____ the news every morning."
    **Hint**: catch up on
    **Answer**: catch up on
+   **Accepts**: read / watch / check / keep up with
    **Explanation**: "Catch up on the news" — get up to date on the news.
 
 7. **fill_gap** — "Sorry for being late — I'll _____ it tomorrow."
@@ -771,16 +776,19 @@
 5. **fill_gap** — "_____, the project is fine — let's move on."
    **Hint**: By and large (no geral, em sua maioria)
    **Answer**: By and large
+   **Accepts**: Overall / All in all / On the whole
    **Explanation**: "By and large" = generally speaking. Chunk for qualified summary.
 
 6. **fill_gap** — "_____, you're absolutely right."
    **Hint**: On second thought
    **Answer**: On second thought
+   **Accepts**: Actually / On reflection
    **Explanation**: "On second thought" — reconsideração. Mudou de ideia.
 
 7. **fill_gap** — "_____, exercise is what makes the difference."
    **Hint**: In the long run
    **Answer**: In the long run
+   **Accepts**: In the end / Ultimately / At the end of the day / Over time
    **Explanation**: "In the long run" — perspectiva de longo prazo.
 
 8. **fix_error** — "In the end of the day, it doesn't matter."

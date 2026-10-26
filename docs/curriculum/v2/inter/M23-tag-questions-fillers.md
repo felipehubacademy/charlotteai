@@ -261,6 +261,7 @@
     **Passage**: "You go to the gym every morning, don't you? I see you there sometimes. She works out too, doesn't she? Last week they were both there at 6am, weren't they? You all wake up so early — I don't know how you do it."
     **Question**: Which tag question uses "don't"?
     **Answer**: "you go to the gym every morning, don't you?"
+    **Accepts**: you go to the gym every morning / the first one
     **Explanation**: The passage uses three different tag formations: "don't / do not you?" (for "you go"), "doesn't / does not she?" (for "she works out"), "weren't / were not they?" (for "they were"). Each tag matches the verb form in the main clause.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -417,7 +418,7 @@
 6. **fill_gap** — "She must be tired, _____ she?"
    **Hint**: "Must" usually pairs with "mustn't" in tag, though "must" often gets a different tag in real speech
    **Answer**: mustn't
-   **Accepts**: isn't" depending on register
+   **Accepts**: isn't / must not
    **Explanation**: "Must" technically pairs with "mustn't / must not" in textbook tags. In real speech, "She must be tired, isn't / is not she?" is more common when "must" expresses certainty rather than obligation.
 
 7. **fill_gap** — "You can drive, _____ you?"
@@ -771,7 +772,7 @@
 5. **fill_gap** — Pause filler signaling you're searching for the word: "I, _____, don't really know what to say."
    **Hint**: short filler word for pause
    **Answer**: like
-   **Accepts**: you know
+   **Accepts**: you know / um / uh / well / I mean
    **Explanation**: "Like" — pause filler especially common in younger speech. Signals you're searching, processing, or about to give an example. Overuse sounds immature but moderate use is natural.
 
 6. **fill_gap** — Tag question with rising intonation (real question expecting answer): "She's coming tomorrow, _____ she?"
@@ -792,13 +793,14 @@
 9. **fix_error** — "Obviously you don't know what I'm talking about." (in a serious conversation)
    **Hint**: "Obviously" can sound condescending — use "I mean" or rephrase
    **Answer**: I mean, you might not know what I'm talking about.
-   **Accepts**: simply: "Maybe you don't know what I'm talking about.
+   **Accepts**: Maybe you don't know what I'm talking about. / You might not know what I'm talking about.
    **Explanation**: "Obviously" implies the listener should know — can sound condescending. In sensitive conversations, "I mean" or "actually" is softer. Register awareness is part of using fillers well.
 
 10. **read_answer**
     **Passage**: "Well, I think — I mean, you know how it is — sometimes you just need a break. Kind of. So I told my boss I needed a few days. She was, like, totally understanding. It's a good company to work for, isn't it?"
     **Question**: How many different fillers appear in the passage?
     **Answer**: at least six — "Well", "I mean", "you know", "Kind of", "So", "like"
+    **Accepts**: six / 6 / at least six
     **Explanation**: The passage uses many fillers naturally: "Well" (opener), "I mean" (clarification), "you know" (shared understanding), "Kind of" (hedge), "So" (transition), "like" (pause/example). Combined sparingly, they create natural conversational rhythm. "Isn't / Is not it?" at the end is a tag, not a filler.
 
 ### 2. Listening/Speaking (5 phrases)

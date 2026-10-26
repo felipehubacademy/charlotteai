@@ -52,16 +52,19 @@
 5. **fill_gap** — "We'll celebrate when she _____ the exam."
    **Hint**: present simple 3ª pessoa de "pass"
    **Answer**: passes
+   **Accepts**: finishes / takes
    **Explanation**: "When she passes" — 3rd person singular with -s. After "when", always present simple.
 
 6. **fill_gap** — "I'll let you know when I _____ a decision."
    **Hint**: present simple "make" com I
    **Answer**: make
+   **Accepts**: reach / have
    **Explanation**: "When I make a decision" — present simple base form with "I".
 
 7. **fill_gap** — "When they _____ the news, they'll be happy."
    **Hint**: present simple de "hear" 3ª pessoa plural
    **Answer**: hear
+   **Accepts**: get / see / read
    **Explanation**: "When they hear" — plural "they" uses the base form "hear". After "when" in future context, present simple.
 
 8. **fix_error** — "I'll call you when I will arrive."
@@ -230,16 +233,19 @@
 5. **fill_gap** — "I'll text you before I _____ to the meeting."
    **Hint**: present simple "go" com I
    **Answer**: go
+   **Accepts**: head / leave / walk / get
    **Explanation**: "Before I go" — present simple base form. Time clauses always use present simple, even in future contexts.
 
 6. **fill_gap** — "After she _____ the report, she'll send it to you."
    **Hint**: present simple 3ª pessoa de "finish"
    **Answer**: finishes
+   **Accepts**: writes / completes / reviews
    **Explanation**: "After she finishes" — 3rd person singular with -es. "After + present simple" for future sequence.
 
 7. **fill_gap** — "Before you _____, please clean the kitchen."
    **Hint**: present simple de "leave" com you
    **Answer**: leave
+   **Accepts**: go
    **Explanation**: "Before you leave" — a request for before departure. Present simple base form with "you", never "will".
 
 8. **fix_error** — "I'll call you before I will arrive."
@@ -408,16 +414,19 @@
 5. **fill_gap** — "Don't leave _____ I tell you to."
    **Hint**: duração contínua
    **Answer**: until
+   **Accepts**: till
    **Explanation**: "Until I tell you" — stay here the whole time, until you get permission. Duration.
 
 6. **fill_gap** — "By the time I _____ home, my parents will be asleep."
    **Hint**: present simple "get" com I
    **Answer**: get
+   **Accepts**: arrive / come / return / reach
    **Explanation**: "By the time I get home" — when I get home, they'll already be asleep. Present simple after "by the time" in future contexts.
 
 7. **fill_gap** — "I'll keep trying _____ I succeed."
    **Hint**: até atingir o resultado
    **Answer**: until
+   **Accepts**: till
    **Explanation**: "Until I succeed" — keep trying the whole time until succeeding. Duration.
 
 8. **fix_error** — "I'll wait until you will arrive."
@@ -586,16 +595,19 @@
 5. **fill_gap** — "As soon as they _____ home, they'll start cooking."
    **Hint**: present simple "get" plural
    **Answer**: get
+   **Accepts**: arrive / come
    **Explanation**: "As soon as they get home" — plural without -s. Immediate reaction.
 
 6. **fill_gap** — "Call me as soon as you _____ help."
    **Hint**: present simple "need" com you
    **Answer**: need
+   **Accepts**: want
    **Explanation**: "As soon as you need help" — immediate. A promise of availability, present simple base form.
 
 7. **fill_gap** — "I'll start as soon as the music _____."
    **Hint**: present simple 3ª pessoa "begin"
    **Answer**: begins
+   **Accepts**: starts / stops / ends
    **Explanation**: "As soon as the music begins" — 3rd person singular "begins" with -s.
 
 8. **fix_error** — "I'll text you as soon as I will arrive."
@@ -764,16 +776,19 @@
 5. **fill_gap** — "By the time I _____ home, dinner will be ready."
    **Hint**: present simple "get" com I
    **Answer**: get
+   **Accepts**: arrive / come / return
    **Explanation**: "By the time I get home" — future reference point. Present simple after "by the time".
 
 6. **fill_gap** — "Don't leave until I _____ you the documents."
    **Hint**: present simple "give" com I
    **Answer**: give
+   **Accepts**: send / bring / show
    **Explanation**: "Until I give you" — duration until you receive the documents. Present simple after "until".
 
 7. **fill_gap** — "After we _____ dinner, let's relax."
    **Hint**: present simple "finish" com we
    **Answer**: finish
+   **Accepts**: have / eat
    **Explanation**: "After we finish" — sequence: relax after dinner. Present simple after "after".
 
 8. **fix_error** — "I'll text you as soon as I will land."

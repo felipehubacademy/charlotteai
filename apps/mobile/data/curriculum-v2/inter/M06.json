@@ -77,6 +77,11 @@
           "sentence": "I _____ visit my parents this weekend.",
           "hint": "possibility modal",
           "answer": "might",
+          "accepts": [
+            "may",
+            "could",
+            "will"
+          ],
           "explanation": "\"I might visit\" — uncertain plan."
         },
         {
@@ -349,6 +354,10 @@
           "sentence": "She _____ be at home.",
           "hint": "possibility (formal)",
           "answer": "may",
+          "accepts": [
+            "might",
+            "could"
+          ],
           "explanation": "\"May be at home\" — possibility."
         },
         {
@@ -356,6 +365,9 @@
           "sentence": "It may _____ tomorrow.",
           "hint": "base \"rain\"",
           "answer": "rain",
+          "accepts": [
+            "snow"
+          ],
           "explanation": "\"May rain\" — possibility about weather."
         },
         {
@@ -363,6 +375,11 @@
           "sentence": "\"_____ I leave early today?\" (formal request)",
           "hint": "formal polite request",
           "answer": "May",
+          "accepts": [
+            "Can",
+            "Could",
+            "Might"
+          ],
           "explanation": "\"May I + base?\" — formal polite request."
         },
         {
@@ -617,6 +634,10 @@
           "sentence": "That _____ be the answer.",
           "hint": "possibility modal",
           "answer": "could",
+          "accepts": [
+            "might",
+            "may"
+          ],
           "explanation": "\"Could be the answer\" — possible."
         },
         {
@@ -631,6 +652,11 @@
           "sentence": "\"_____ you help me?\" (polite request)",
           "hint": "polite modal",
           "answer": "Could",
+          "accepts": [
+            "Can",
+            "Would",
+            "Will"
+          ],
           "explanation": "\"Could you + base?\" — polite request."
         },
         {
@@ -872,6 +898,10 @@
           "sentence": "That _____ be right — it's wrong.",
           "hint": "impossibility",
           "answer": "can't",
+          "accepts": [
+            "cannot",
+            "couldn't"
+          ],
           "explanation": "\"Can't / Cannot be right\" — impossible."
         },
         {
@@ -879,14 +909,21 @@
           "sentence": "They _____ be coming — it's too late.",
           "hint": "impossibility (continuous)",
           "answer": "can't",
+          "accepts": [
+            "cannot"
+          ],
           "explanation": "\"Can't / Cannot be coming\" — impossibility with continuous."
         },
         {
           "type": "fill_gap",
-          "sentence": "He _____ be at home — his car is here.",
-          "hint": "logical conclusion",
+          "sentence": "He _____ be at home — his car isn't here.",
+          "hint": "logical conclusion (impossible)",
           "answer": "can't",
-          "explanation": "Logical: if car here, he's not home."
+          "accepts": [
+            "cannot",
+            "couldn't"
+          ],
+          "explanation": "Logical conclusion: his car isn't here, so he can't be at home. (If the car were here, we'd say \"he must be at home\".)"
         },
         {
           "type": "fix_error",
@@ -1137,6 +1174,9 @@
           "sentence": "That _____ be true — it's impossible!",
           "hint": "impossibility",
           "answer": "can't",
+          "accepts": [
+            "cannot"
+          ],
           "explanation": "\"Can't / Cannot be\" — logical impossibility."
         },
         {

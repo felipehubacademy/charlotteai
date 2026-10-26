@@ -63,6 +63,7 @@
 7. **fill_gap** — "If you don't water plants, they _____."
    **Hint**: present simple plural "die"
    **Answer**: die
+   **Accepts**: dry up / wither
    **Explanation**: "They die" — plural plants use the base form of the verb. Universal consequence of not watering.
 
 8. **fix_error** — "If you heat water, it will boil."
@@ -412,16 +413,19 @@
 5. **fill_gap** — "_____ winter comes, the days get shorter."
    **Hint**: certeza sazonal (sempre acontece)
    **Answer**: When
+   **Accepts**: As / Once
    **Explanation**: Winter is a guaranteed yearly event — use "when". "If winter comes" would sound odd because winter always arrives.
 
 6. **fill_gap** — "_____ you don't feel well, take a break."
    **Hint**: possibilidade (pode ou não estar doente)
    **Answer**: If
+   **Accepts**: When
    **Explanation**: You aren't always sick — it varies. "If you don't / do not feel well" — possibility.
 
 7. **fill_gap** — "_____ I get home from work, I take off my shoes and sit down."
    **Hint**: rotina diária garantida
    **Answer**: When
+   **Accepts**: As soon as / After / Once / Whenever
    **Explanation**: Getting home from work is part of the routine. "When I get home" — every time it happens.
 
 8. **fix_error** — "If the sun rises, the day starts."
@@ -589,6 +593,7 @@
 5. **fill_gap** — "If I _____ early enough, I'll have breakfast at home."
    **Hint**: present simple de "wake up" 1ª pessoa
    **Answer**: wake up
+   **Accepts**: get up
    **Explanation**: "Wake up" — fixed phrasal verb in present simple. First conditional signals a specific future result.
 
 6. **fill_gap** — "Plants die if you don't _____ them regularly."
@@ -599,6 +604,7 @@
 7. **fill_gap** — "I'll be there if you _____ me to be."
    **Hint**: present simple de "want" 2ª pessoa
    **Answer**: want
+   **Accepts**: need / ask
    **Explanation**: First conditional with a promise. "Want" — present simple base form with "you".
 
 8. **fix_error** — "If it will rain tomorrow, I'll stay home."
@@ -767,11 +773,13 @@
 5. **fill_gap** — "If I _____ free time this evening, I'll watch a movie."
    **Hint**: present simple "have" com I
    **Answer**: have
+   **Accepts**: get
    **Explanation**: First conditional. "Have free time" — present simple.
 
 6. **fill_gap** — "Plants _____ if you don't water them — that's biology."
    **Hint**: present simple plural "die"
    **Answer**: die
+   **Accepts**: wither / dry up
    **Explanation**: Universal biological truth → zero conditional. "Plants die" — plural present simple.
 
 7. **fill_gap** — "_____ you study consistently, you make progress."

@@ -84,6 +84,11 @@
           "sentence": "Direct: \"Are you happy?\" Reported: \"He asked _____ I _____ happy.\"",
           "hint": "if / was",
           "answer": "if / was",
+          "accepts": [
+            "if was",
+            "whether was",
+            "if, was"
+          ],
           "explanation": "\"If\" + statement word order + backshift \"are\" → \"was\"."
         },
         {
@@ -875,6 +880,13 @@
           "sentence": "Direct: \"Please try harder.\" Reported: \"She _____ me to try harder.\"",
           "hint": "urged (encorajamento forte)",
           "answer": "urged",
+          "accepts": [
+            "asked",
+            "told",
+            "encouraged",
+            "begged",
+            "wanted"
+          ],
           "explanation": "\"Urged + person + to + base\" — emphatic request, encouragement."
         },
         {
@@ -1124,6 +1136,11 @@
           "sentence": "Direct: \"Can you help?\" Reported: \"He asked _____ I _____ help.\"",
           "hint": "if / could",
           "answer": "if / could",
+          "accepts": [
+            "if could",
+            "whether could",
+            "if, could"
+          ],
           "explanation": "\"Asked if + subject + could\". Backshift \"can\" → \"could\"."
         },
         {

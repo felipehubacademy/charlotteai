@@ -83,6 +83,12 @@
           "sentence": "He _____ have apologized.",
           "hint": "should / shouldn't (criticism)",
           "answer": "should",
+          "accepts": [
+            "shouldn't",
+            "could",
+            "might",
+            "must"
+          ],
           "explanation": "\"He should have apologized\" — retrospective suggestion: it was the right thing to do. (Accepts \"should\" in the context criticizing that he didn't apologize.)"
         },
         {
@@ -90,6 +96,9 @@
           "sentence": "I _____ have eaten so much.",
           "hint": "shouldn't (arrependimento)",
           "answer": "shouldn't",
+          "accepts": [
+            "should not"
+          ],
           "explanation": "\"I shouldn't / should not have eaten so much\" — I ate too much, I regret it."
         },
         {
@@ -97,6 +106,9 @@
           "sentence": "You _____ have called me first.",
           "hint": "should (sugestão retrospectiva)",
           "answer": "should",
+          "accepts": [
+            "could"
+          ],
           "explanation": "\"You should have called me first\" — mild criticism about not calling."
         },
         {
@@ -336,8 +348,12 @@
         {
           "type": "fill_gap",
           "sentence": "You _____ asked me — I would have helped.",
-          "hint": "could (have)",
-          "answer": "could",
+          "hint": "could have (missed chance)",
+          "answer": "could have",
+          "accepts": [
+            "should have",
+            "might have"
+          ],
           "explanation": "\"You could have asked me\" — a chance that existed but wasn't taken."
         },
         {
@@ -345,6 +361,10 @@
           "sentence": "I _____ have gone, but I chose to stay.",
           "hint": "could",
           "answer": "could",
+          "accepts": [
+            "should",
+            "might"
+          ],
           "explanation": "\"I could have gone\" — the possibility existed, chose not to."
         },
         {
@@ -851,6 +871,11 @@
           "sentence": "They _____ have left already.",
           "hint": "might (incerteza)",
           "answer": "might",
+          "accepts": [
+            "may",
+            "could",
+            "must"
+          ],
           "explanation": "\"They might have left\" — uncertain possibility. Maybe, maybe not."
         },
         {
@@ -865,6 +890,11 @@
           "sentence": "She _____ have forgotten — let me text her.",
           "hint": "might (incerteza)",
           "answer": "might",
+          "accepts": [
+            "may",
+            "must",
+            "could"
+          ],
           "explanation": "\"She might have forgotten\" — positive uncertainty. She may have forgotten."
         },
         {
@@ -1135,6 +1165,10 @@
           "sentence": "They _____ have left already — but I'm not sure.",
           "hint": "might (incerteza)",
           "answer": "might",
+          "accepts": [
+            "may",
+            "could"
+          ],
           "explanation": "\"Might have left\" — uncertain speculation."
         },
         {
@@ -1142,6 +1176,9 @@
           "sentence": "I _____ have spoken so loudly — sorry.",
           "hint": "shouldn't (auto-crítica)",
           "answer": "shouldn't",
+          "accepts": [
+            "should not"
+          ],
           "explanation": "\"Shouldn't / Should not have spoken so loudly\" — regret about a past action."
         },
         {

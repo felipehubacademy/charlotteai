@@ -87,6 +87,9 @@
           "sentence": "The teacher _____ teaches us is great.",
           "hint": "person, subject",
           "answer": "who",
+          "accepts": [
+            "that"
+          ],
           "explanation": "\"Who teaches\"."
         },
         {
@@ -94,6 +97,9 @@
           "sentence": "He's the guy _____ won the race.",
           "hint": "person",
           "answer": "who",
+          "accepts": [
+            "that"
+          ],
           "explanation": "\"Who won\"."
         },
         {
@@ -360,8 +366,7 @@
           "hint": "thing, object of clause",
           "answer": "that",
           "accepts": [
-            "which,",
-            "omitted"
+            "which"
           ],
           "explanation": "\"The phone that I bought\" — object: that/which/omitted."
         },
@@ -630,6 +635,9 @@
           "sentence": "It's a restaurant _____ they serve great pasta.",
           "hint": "place",
           "answer": "where",
+          "accepts": [
+            "in which"
+          ],
           "explanation": "\"Restaurant where they serve\"."
         },
         {
@@ -637,6 +645,9 @@
           "sentence": "I remember the park _____ we used to play.",
           "hint": "place",
           "answer": "where",
+          "accepts": [
+            "in which"
+          ],
           "explanation": "\"Park where we played\"."
         },
         {
@@ -644,6 +655,9 @@
           "sentence": "She lives in a country _____ it's always sunny.",
           "hint": "place",
           "answer": "where",
+          "accepts": [
+            "in which"
+          ],
           "explanation": "\"Country where it's / it is sunny\"."
         },
         {
@@ -1133,6 +1147,9 @@
           "sentence": "He's the doctor _____ helped me.",
           "hint": "person",
           "answer": "who",
+          "accepts": [
+            "that"
+          ],
           "explanation": "Who for people."
         },
         {
@@ -1150,6 +1167,10 @@
           "sentence": "The school _____ I studied is famous.",
           "hint": "place",
           "answer": "where",
+          "accepts": [
+            "in which",
+            "at which"
+          ],
           "explanation": "Where for places."
         },
         {

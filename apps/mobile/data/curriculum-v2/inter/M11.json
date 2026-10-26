@@ -82,6 +82,10 @@
           "sentence": "We'll celebrate when she _____ the exam.",
           "hint": "present simple 3ª pessoa de \"pass\"",
           "answer": "passes",
+          "accepts": [
+            "finishes",
+            "takes"
+          ],
           "explanation": "\"When she passes\" — 3rd person singular with -s. After \"when\", always present simple."
         },
         {
@@ -89,6 +93,10 @@
           "sentence": "I'll let you know when I _____ a decision.",
           "hint": "present simple \"make\" com I",
           "answer": "make",
+          "accepts": [
+            "reach",
+            "have"
+          ],
           "explanation": "\"When I make a decision\" — present simple base form with \"I\"."
         },
         {
@@ -96,6 +104,11 @@
           "sentence": "When they _____ the news, they'll be happy.",
           "hint": "present simple de \"hear\" 3ª pessoa plural",
           "answer": "hear",
+          "accepts": [
+            "get",
+            "see",
+            "read"
+          ],
           "explanation": "\"When they hear\" — plural \"they\" uses the base form \"hear\". After \"when\" in future context, present simple."
         },
         {
@@ -355,6 +368,12 @@
           "sentence": "I'll text you before I _____ to the meeting.",
           "hint": "present simple \"go\" com I",
           "answer": "go",
+          "accepts": [
+            "head",
+            "leave",
+            "walk",
+            "get"
+          ],
           "explanation": "\"Before I go\" — present simple base form. Time clauses always use present simple, even in future contexts."
         },
         {
@@ -362,6 +381,11 @@
           "sentence": "After she _____ the report, she'll send it to you.",
           "hint": "present simple 3ª pessoa de \"finish\"",
           "answer": "finishes",
+          "accepts": [
+            "writes",
+            "completes",
+            "reviews"
+          ],
           "explanation": "\"After she finishes\" — 3rd person singular with -es. \"After + present simple\" for future sequence."
         },
         {
@@ -369,6 +393,9 @@
           "sentence": "Before you _____, please clean the kitchen.",
           "hint": "present simple de \"leave\" com you",
           "answer": "leave",
+          "accepts": [
+            "go"
+          ],
           "explanation": "\"Before you leave\" — a request for before departure. Present simple base form with \"you\", never \"will\"."
         },
         {
@@ -611,6 +638,9 @@
           "sentence": "Don't leave _____ I tell you to.",
           "hint": "duração contínua",
           "answer": "until",
+          "accepts": [
+            "till"
+          ],
           "explanation": "\"Until I tell you\" — stay here the whole time, until you get permission. Duration."
         },
         {
@@ -618,6 +648,12 @@
           "sentence": "By the time I _____ home, my parents will be asleep.",
           "hint": "present simple \"get\" com I",
           "answer": "get",
+          "accepts": [
+            "arrive",
+            "come",
+            "return",
+            "reach"
+          ],
           "explanation": "\"By the time I get home\" — when I get home, they'll already be asleep. Present simple after \"by the time\" in future contexts."
         },
         {
@@ -625,6 +661,9 @@
           "sentence": "I'll keep trying _____ I succeed.",
           "hint": "até atingir o resultado",
           "answer": "until",
+          "accepts": [
+            "till"
+          ],
           "explanation": "\"Until I succeed\" — keep trying the whole time until succeeding. Duration."
         },
         {
@@ -866,6 +905,10 @@
           "sentence": "As soon as they _____ home, they'll start cooking.",
           "hint": "present simple \"get\" plural",
           "answer": "get",
+          "accepts": [
+            "arrive",
+            "come"
+          ],
           "explanation": "\"As soon as they get home\" — plural without -s. Immediate reaction."
         },
         {
@@ -873,6 +916,9 @@
           "sentence": "Call me as soon as you _____ help.",
           "hint": "present simple \"need\" com you",
           "answer": "need",
+          "accepts": [
+            "want"
+          ],
           "explanation": "\"As soon as you need help\" — immediate. A promise of availability, present simple base form."
         },
         {
@@ -880,6 +926,11 @@
           "sentence": "I'll start as soon as the music _____.",
           "hint": "present simple 3ª pessoa \"begin\"",
           "answer": "begins",
+          "accepts": [
+            "starts",
+            "stops",
+            "ends"
+          ],
           "explanation": "\"As soon as the music begins\" — 3rd person singular \"begins\" with -s."
         },
         {
@@ -1120,6 +1171,11 @@
           "sentence": "By the time I _____ home, dinner will be ready.",
           "hint": "present simple \"get\" com I",
           "answer": "get",
+          "accepts": [
+            "arrive",
+            "come",
+            "return"
+          ],
           "explanation": "\"By the time I get home\" — future reference point. Present simple after \"by the time\"."
         },
         {
@@ -1127,6 +1183,11 @@
           "sentence": "Don't leave until I _____ you the documents.",
           "hint": "present simple \"give\" com I",
           "answer": "give",
+          "accepts": [
+            "send",
+            "bring",
+            "show"
+          ],
           "explanation": "\"Until I give you\" — duration until you receive the documents. Present simple after \"until\"."
         },
         {
@@ -1134,6 +1195,10 @@
           "sentence": "After we _____ dinner, let's relax.",
           "hint": "present simple \"finish\" com we",
           "answer": "finish",
+          "accepts": [
+            "have",
+            "eat"
+          ],
           "explanation": "\"After we finish\" — sequence: relax after dinner. Present simple after \"after\"."
         },
         {

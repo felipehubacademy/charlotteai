@@ -58,6 +58,7 @@
 7. **fill_gap** — "We used to _____ in Rio."
    **Hint**: base verb "live"
    **Answer**: live
+   **Accepts**: work / study / stay / be
    **Explanation**: After "used to", base form: "live".
 
 8. **fix_error** — "I used to playing soccer."
@@ -414,6 +415,7 @@
 7. **fill_gap** — "My dad would _____ me to school."
    **Hint**: base verb (drive)
    **Answer**: drive
+   **Accepts**: take / walk / bring
    **Explanation**: After would, base form.
 
 8. **fix_error** — "Every summer, we would going to the beach."
@@ -766,6 +768,7 @@
 6. **fill_gap** — "She used to _____ piano."
    **Hint**: base form (play)
    **Answer**: play
+   **Accepts**: teach / study / practice
    **Explanation**: After used to, base.
 
 7. **fill_gap** — "We _____ to eat out a lot, but not now."
