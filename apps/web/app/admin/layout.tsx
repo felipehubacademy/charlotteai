@@ -4,7 +4,7 @@ import AdminShell from './AdminShell';
 
 export const metadata: Metadata = {
   title: 'Queizy Gestão',
-  manifest: '/admin.webmanifest',
+  manifest: '/admin-pwa/manifest.json',
   robots: { index: false, follow: false },
   appleWebApp: { capable: true, title: 'Queizy Gestão', statusBarStyle: 'black-translucent' },
   icons: { apple: '/admin-pwa/apple-touch-icon.png' },
