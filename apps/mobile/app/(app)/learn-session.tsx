@@ -109,7 +109,7 @@ type SessionStep = GrammarStep | PronStepWrap;
 // (aceita contração <-> forma cheia, inclusive "solta" no fill_gap). Este
 // wrapper só adapta a assinatura GrammarEx.
 function checkGrammar(ex: GrammarEx, answer: string): boolean {
-  return checkGrammarAnswer(ex.type, answer, ex.answer, ex.accepts);
+  return checkGrammarAnswer(ex.type, answer, ex.answer, ex.accepts, ex.sentence);
 }
 
 // ── Pronunciation helpers ──────────────────────────────────────
@@ -1605,7 +1605,7 @@ export default function LearnSessionScreen() {
                 <View style={{ gap: 10 }}>
                   {shuffledOptions.map((opt, i) => {
                     const selected = userAnswer === opt;
-                    const isCorrectOpt = opt === currentStep.exercise.answer;
+                    const isCorrectOpt = opt === currentStep.exercise.answer || !!currentStep.exercise.accepts?.includes(opt);
                     // locked state colours (after submit)
                     let borderColor = selected ? accent : C.border;
                     let bgColor     = selected ? accentBg : C.card;

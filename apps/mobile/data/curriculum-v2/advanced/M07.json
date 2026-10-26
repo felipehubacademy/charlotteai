@@ -267,6 +267,11 @@
           "sentence": "I suggest _____ the meeting until next week.",
           "hint": "-ing form of \"postpone\"",
           "answer": "postponing",
+          "accepts": [
+            "delaying",
+            "moving",
+            "pushing back"
+          ],
           "explanation": "\"Suggest + -ing\" is the most natural form. Alternative: \"suggest that we postpone...\" (mandative subjunctive from M04). Both work; \"+ -ing\" is more compact."
         },
         {
@@ -465,6 +470,9 @@
           "sentence": "They offered _____ him to the station.",
           "hint": "\"to + base form of drive\"",
           "answer": "to drive",
+          "accepts": [
+            "to take"
+          ],
           "explanation": "\"Offer + to + infinitive\" — the offered action is in infinitive form. Same pattern: \"offered to help, offered to pay, offered to wait\"."
         },
         {
@@ -898,7 +906,9 @@
           "hint": "\"According to + person\", not used for own opinion",
           "answer": "In my opinion, the meeting was a waste of time.",
           "accepts": [
-            "I think the meeting was a waste of time."
+            "I think the meeting was a waste of time.",
+            "In my view, the meeting was a waste of time.",
+            "To me, the meeting was a waste of time."
           ],
           "explanation": "\"According to\" is for citing OTHERS, not yourself. \"According to me\" is grammatically possible but stylistically wrong. Use \"In my opinion\" or \"I think\" for your own view."
         },

@@ -68,7 +68,11 @@
           "answer": "Most importantly",
           "accepts": [
             "Most significantly",
-            "Importantly"
+            "Importantly",
+            "Above all",
+            "Crucially",
+            "Most crucially",
+            "Finally"
           ],
           "explanation": "Cascade pattern: each marker ranks the next claim higher. \"Most importantly\" (or \"Above all\", \"Crucially\") signals the strongest point — the climax of the argument."
         },
@@ -293,14 +297,23 @@
           "sentence": "Cautioning against assumption: \"_____ that the trend will continue indefinitely. Markets, after all, are not linear.\"",
           "hint": "\"It would be a mistake to assume\"",
           "answer": "It would be a mistake to assume",
+          "accepts": [
+            "It would be wrong to assume",
+            "It is a mistake to assume",
+            "It would be naive to assume",
+            "We should not assume",
+            "It would be unwise to assume"
+          ],
           "explanation": "\"It would be a mistake to assume...\" — pre-emptive rebuttal of an implicit assumption. Standard C2 argument move. Variants: \"It would be premature to conclude\", \"We should be wary of assuming\"."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Some peoples say the policy is too expensive but they are wrong.",
           "hint": "\"Some people say... however\" is more polished than \"some are wrong\"",
           "answer": "Some may object that the policy is too expensive. However, this overlooks the long-term savings.",
-          "explanation": "\"Some peoples\" — wrong noun form. \"But they are wrong\" — bluntly dismissive, weak rhetorically. The polished form acknowledges the objection (\"Some may object that...\") and refutes specifically (\"this overlooks...\")."
+          "explanation": "\"Some peoples\" — wrong noun form. \"But they are wrong\" — bluntly dismissive, weak rhetorically. The polished form acknowledges the objection (\"Some may object that...\") and refutes specifically (\"this overlooks...\").",
+          "prompt": "Rewrite this as a polished counter-argument: present the objection, then answer it.",
+          "example_answer": "Some may object that the policy is too expensive. However, this overlooks the long-term savings."
         },
         {
           "type": "read_answer",
@@ -722,7 +735,12 @@
           "accepts": [
             "inevitably",
             "hence",
-            "therefore"
+            "therefore",
+            "consequently",
+            "thus",
+            "unsurprisingly",
+            "in the end",
+            "ultimately"
           ],
           "explanation": "After a cascade of negative causes, a closing marker delivers the consequence. \"As a result\", \"Hence\", \"Inevitably\", \"Consequently\" — each works. \"As a result\" is neutral; \"Inevitably\" claims the outcome was unavoidable; \"Hence\" is formal."
         },
@@ -926,6 +944,9 @@
           "sentence": "Strong frame: \"_____ before us is clear: pay the cost of action now or pay a higher one later.\"",
           "hint": "\"The choice\"",
           "answer": "The choice",
+          "accepts": [
+            "The decision"
+          ],
           "explanation": "\"The choice before us is clear: X or Y\" — binary-frame conclusion. Reframes the entire argument as a single decision. Common in op-eds, manifestos, and political speeches. The colon introduces the two options."
         },
         {

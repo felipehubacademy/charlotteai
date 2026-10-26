@@ -68,13 +68,15 @@
    **Accepts**: However / In contrast / By contrast
    **Explanation**: "On the other hand" for comparison between two people/things.
 
-8. **fix_error** — "I love pizza, however, I can't eat it daily."
+8. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: "However" precisa de ponto antes (não vírgula)
+   **Options**: I love pizza. However, I can't eat it daily. / I love pizza, however, I can't eat it daily. / I love pizza however I can't eat it daily.
    **Answer**: I love pizza. However, I can't eat it daily.
    **Explanation**: "However" starts a new sentence, separated by a period. A comma before creates a comma splice. Correct punctuation: period + However + comma.
 
-9. **fix_error** — "The weather was bad. However we went out."
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Falta vírgula após "However" no início
+   **Options**: The weather was bad. However we went out. / The weather was bad. However, we went out. / The weather was bad, however we went out.
    **Answer**: The weather was bad. However, we went out.
    **Explanation**: "However" always takes a comma AFTER when starting a sentence. And it doesn't replace "although" (which joins clauses).
 
@@ -432,15 +434,16 @@
    **Accepts**: Therefore / So / As a result / That's why / Consequently
    **Explanation**: "For that reason" = for that reason. Links motive to behavior.
 
-8. **fix_error** — "Sales dropped therefore we cut the budget."
+8. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Falta pontuação — ponto e vírgula
+   **Options**: Sales dropped. Therefore, we cut the budget. / Sales dropped therefore we cut the budget. / Sales dropped, therefore we cut the budget.
    **Answer**: Sales dropped. Therefore, we cut the budget.
    **Explanation**: Sentence connectors need a period before and a comma after. No punctuation = comma splice.
 
-9. **fix_error** — "He was sick, therefore he didn't come."
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: "Therefore" prefere ponto/ponto-e-vírgula antes
+   **Options**: He was sick, therefore he didn't come. / He was sick. Therefore, he didn't come. / He was sick therefore, he didn't come.
    **Answer**: He was sick. Therefore, he didn't come.
-   **Accepts**: He was sick; therefore, he didn't come. / He was sick; therefore he didn't come.
    **Explanation**: A simple comma isn't strong enough for "therefore". Use a period or semicolon.
 
 10. **read_answer**
@@ -614,8 +617,9 @@
    **Accepts**: For instance / In fact
    **Explanation**: "For example" introduces a concrete example after a generalization.
 
-8. **fix_error** — "He's smart, furthermore he's funny."
+8. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Pontuação — ponto antes de "furthermore"
+   **Options**: He's smart, furthermore he's funny. / He's smart. Furthermore, he's funny. / He's smart furthermore, he's funny.
    **Answer**: He's smart. Furthermore, he's funny.
    **Explanation**: Formal sentence connectors need a period before, comma after. Comma splice = incorrect.
 
@@ -795,13 +799,15 @@
    **Accepts**: To sum up / Therefore / So / Overall
    **Explanation**: "In conclusion" — formal decision/recommendation.
 
-8. **fix_error** — "In conclusion the project was successful."
+8. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Falta vírgula após o conector
+   **Options**: In conclusion the project was successful. / In conclusion, the project was successful. / In conclusion the project, was successful.
    **Answer**: In conclusion, the project was successful.
    **Explanation**: "In conclusion" at the start needs a comma after. Universal rule for opening discourse markers.
 
-9. **fix_error** — "All in all I learned a lot this year."
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Vírgula obrigatória após
+   **Options**: All in all I learned a lot this year. / All in all, I learned a lot this year. / All, in all I learned a lot this year.
    **Answer**: All in all, I learned a lot this year.
    **Explanation**: "All in all" at the start = comma required. Same for informal connectors.
 

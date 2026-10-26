@@ -569,12 +569,12 @@
 
 1. **multiple_choice** — "How is 'worked' pronounced?"
    **Options**: /workt/ / /workd/ / /workid/
-   **Answer**: /workt/
+   **Answer**: workt
    **Explanation**: Após som SURDO (k, p, s, f, sh, ch), -ed soa /t/. "Worked" = /workt/.
 
 2. **multiple_choice** — "How is 'played' pronounced?"
    **Options**: /playd/ / /playt/ / /playid/
-   **Answer**: /playd/
+   **Answer**: playd
    **Explanation**: Após som SONORO (vogais, l, n, m, r, g), -ed soa /d/. "Played" = /playd/.
 
 3. **word_bank** — "Which is /id/? 'visited' / 'walked' / 'played' / 'closed'"
@@ -589,17 +589,17 @@
 
 5. **multiple_choice** — "How does the -ed in 'worked' sound?"
    **Options**: /t/ / /d/ / /ɪd/ / silent
-   **Answer**: /t/
+   **Answer**: t
    **Explanation**: O som /k/ no fim de "work" é surdo (sem vibração) → o -ed soa /t/. "Worked" = /wɜːrkt/, uma sílaba só.
 
 6. **multiple_choice** — "How does the -ed in 'played' sound?"
    **Options**: /d/ / /t/ / /ɪd/ / silent
-   **Answer**: /d/
+   **Answer**: d
    **Explanation**: A vogal /eɪ/ no fim de "play" é sonora (com vibração) → o -ed soa /d/. "Played" = /pleɪd/, uma sílaba só.
 
 7. **multiple_choice** — "How does the -ed in 'wanted' sound?"
    **Options**: /ɪd/ / /t/ / /d/ / silent
-   **Answer**: /ɪd/
+   **Answer**: ɪd
    **Explanation**: O verbo "want" termina em /t/ → o -ed forma uma sílaba extra e soa /ɪd/. "Wanted" = /ˈwɒntɪd/, duas sílabas.
 
 8. **fix_error** — "I pronounced 'visited' as /vIzId/."

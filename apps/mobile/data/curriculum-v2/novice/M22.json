@@ -940,8 +940,13 @@
           "explanation": "\"Although\" já carrega o contraste — não precisa de \"but\" também. É erro de dupla conjunção."
         },
         {
-          "type": "fix_error",
-          "sentence": "It's raining, however we'll go.",
+          "type": "multiple_choice",
+          "sentence": "Qual frase está com a pontuação certa?",
+          "options": [
+            "It's raining. However, we'll go.",
+            "It's raining, however we'll go.",
+            "It's raining however, we'll go."
+          ],
           "hint": "However precisa de pontuação forte",
           "answer": "It's raining. However, we'll go.",
           "explanation": "\"However\" normalmente começa nova frase ou após ponto e vírgula. Com vírgula simples soa errado."

@@ -362,6 +362,7 @@
 3. **fill_gap** — "Let's _____ the last few disagreements before we sign."
    **Hint**: "Iron + out" — resolve
    **Answer**: iron out
+   **Accepts**: sort out / smooth out / work out
    **Explanation**: "Iron out" = smooth out, resolve (problems, disagreements, wrinkles). The image: ironing a wrinkled shirt smooth. Separable phrasal — "iron them out" works too. Common in business negotiation.
 
 4. **fix_error** — "We need to live up the customer's expectations."
@@ -515,6 +516,7 @@
 3. **fill_gap** — "She couldn't quite _____ the feeling that something was wrong."
    **Hint**: "Shake + off"
    **Answer**: shake off
+   **Accepts**: shake
    **Explanation**: "Shake off" = recover from, get rid of (a feeling, illness, pursuer). Separable: "shake the feeling off" also works. Common with abstract objects: doubt, dread, fear, a cold.
 
 4. **fix_error** — "He worn me down with constant complaints."

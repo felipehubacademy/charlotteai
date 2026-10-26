@@ -49,13 +49,14 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 3. **fill_gap** — Open the next sentence with a casual filler that fits the register: "I knew what was coming. _____, it still surprised me when it actually arrived."
    **Hint**: Casual filler that signals casual register
    **Answer**: I mean
-   **Accepts**: you know / honestly
+   **Accepts**: you know / honestly / Even so / Look
    **Explanation**: Casual filler drawn from M21 — "I mean" / "you know" / "honestly". Marks the shift from observation to feeling. Native narrative often uses one such filler per paragraph, particularly at moments of emotional pivot.
 
-4. **fix_error** — Sentence too long and dense for narrative rhythm: "She had spent fifteen years working at the company and during that time she had built three teams, launched two products, and somehow managed to keep her sense of humour intact throughout every reorganisation and budget cut."
+4. **short_write** — Sentence too long and dense for narrative rhythm: "She had spent fifteen years working at the company and during that time she had built three teams, launched two products, and somehow managed to keep her sense of humour intact throughout every reorganisation and budget cut."
    **Hint**: Vary rhythm — long sentence + short follow-up or fragment
    **Answer**: She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation.
-   **Accepts**: similar rhythm-varied version
+   **Prompt**: Rewrite the sentence varying the rhythm: a long sentence plus short follow-ups or fragments.
+   **Example answer**: She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation.
    **Explanation**: Long sentence + tricolon fragment + emphatic repetition. Drawn from M14 (rhythm) and M13 (tricolon). Native narrative breaks dense sentences for breath. The fragment "Three teams. Two products." emphasises the scale.
 
 5. **read_answer**
@@ -203,12 +204,14 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 3. **fill_gap** — Open with an inverted concession: "_____ has a single regulation produced such fierce debate as the proposed framework now before parliament."
    **Hint**: "Rarely" or "Seldom"
    **Answer**: Rarely
-   **Accepts**: Seldom
+   **Accepts**: Seldom / Never / Hardly ever
    **Explanation**: Fronted negative frequency adverb triggers inversion — opener of choice for argumentative emphasis. "Rarely has..." opens with weight, signals importance. M02 inversion in argumentative service.
 
-4. **fix_error** — Argumentative opener too casual: "AI is a big deal. People disagree about it. Some say it'll ruin things, others say it'll save us. What do you think?"
+4. **short_write** — Argumentative opener too casual: "AI is a big deal. People disagree about it. Some say it'll ruin things, others say it'll save us. What do you think?"
    **Hint**: Rewrite for academic register with at least one structural device
    **Answer**: Rarely has a technology generated as polarised a debate as artificial intelligence has in the past decade. It is increasingly clear, however, that the question is not whether AI will reshape society but how — and on whose terms.
+   **Prompt**: Rewrite this opener in academic register, with at least one structural device (like inversion).
+   **Example answer**: Rarely has a technology generated as polarised a debate as artificial intelligence has in the past decade. It is increasingly clear, however, that the question is not whether AI will reshape society but how — and on whose terms.
    **Explanation**: Casual opener → academic opener with inversion ("Rarely has..."), formal vocabulary ("polarised debate", "increasingly clear"), and clausal complexity. Reframed argument question ("not whether... but how... and on whose terms"). Heavy integration of M02, M03, M12, M13.
 
 5. **read_answer**
@@ -357,12 +360,14 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 3. **fill_gap** — Diplomatic reframe of a strong position: "_____ that the proposal has merit — but the timing concerns are non-trivial."
    **Hint**: "I can see / Granted / It's true"
    **Answer**: I can see
-   **Accepts**: Granted / It's true
+   **Accepts**: Granted / It's true / I accept / I agree / I admit / I grant
    **Explanation**: Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. "Granted, X — but Y" / "I can see X, but Y" / "It's / It is true that X — but Y". Diplomatic argument pivots on acknowledging the other side first.
 
-4. **fix_error** — Blunt feedback: "Your slides are bad and the message is confused."
+4. **short_write** — Blunt feedback: "Your slides are bad and the message is confused."
    **Hint**: Rewrite diplomatically with at least three softening moves
    **Answer**: Honestly — and I mean this only because I want the deck to land well — I think the message could be tighter, and the slides might benefit from another pass. To be fair, the substance is all there; it's just buried.
+   **Prompt**: Rewrite this feedback diplomatically, with at least three softening moves.
+   **Example answer**: Honestly — and I mean this only because I want the deck to land well — I think the message could be tighter, and the slides might benefit from another pass. To be fair, the substance is all there; it's just buried.
    **Explanation**: Diplomatic rewrite uses: "Honestly" (M21), "I mean this only because" (intentional reassurance), "could be tighter / might benefit" (modal hedges M19), "To be fair" (M10 concession), positive framing ("the substance is all there"). Same critique, preserved relationship.
 
 5. **read_answer**
@@ -511,7 +516,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 3. **fill_gap** — Casual reply with tag: "We're meeting at the usual place, _____"
    **Hint**: Tag for confirmation
    **Answer**: aren't we
-   **Accepts**: right?
+   **Accepts**: right? / right / yeah / yes
    **Explanation**: Tag question "aren't / are not we?" for soft confirmation. Drawn from M21. Or universal "right?" for casual register. Both work; "aren't / are not we?" is slightly more polished, "right?" slightly more casual.
 
 4. **short_write** — Too formal for casual context: "I will see you on Saturday. Would you be inclined to arrive at noon?"
@@ -670,9 +675,11 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **Accepts**: But to be serious for a moment / OK, getting back to it,
    **Explanation**: "Anyway" — universal pivot from digression back to topic. Casual register marker that doubles as a structural device. Drawn from M21. Native speakers code-switch within a single conversation, and "anyway" is one of the standard pivot points.
 
-4. **fix_error** — Same-register monotone across all turns: "Yes. Indeed. Yes. Indeed. Yes. The findings support that. Indeed. Yes."
+4. **short_write** — Same-register monotone across all turns: "Yes. Indeed. Yes. Indeed. Yes. The findings support that. Indeed. Yes."
    **Hint**: Vary registers — formal, casual, backchannels mixed
    **Answer**: Yes. Right — mm-hm. The findings do support that. Yeah. And, you know, the implications are pretty striking when you stack them up. Mm-hm, exactly.
+   **Prompt**: Rewrite these turns mixing registers: formal lines, casual lines and backchannels.
+   **Example answer**: Yes. Right — mm-hm. The findings do support that. Yeah. And, you know, the implications are pretty striking when you stack them up. Mm-hm, exactly.
    **Explanation**: Real conversation modulates: short backchannels ("Right — mm-hm"), substantive points ("The findings do support that"), informal connectors ("you know"), confirmations. Monotone replies sound like a chatbot. C2 fluency is rhythm + register variation.
 
 5. **read_answer**

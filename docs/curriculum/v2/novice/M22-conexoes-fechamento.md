@@ -613,8 +613,9 @@
    **Answer**: Although it's cold, I'll go out.
    **Explanation**: "Although" já carrega o contraste — não precisa de "but" também. É erro de dupla conjunção.
 
-9. **fix_error** — "It's raining, however we'll go."
+9. **multiple_choice** — Qual frase está com a pontuação certa?
    **Hint**: However precisa de pontuação forte
+   **Options**: It's raining. However, we'll go. / It's raining, however we'll go. / It's raining however, we'll go.
    **Answer**: It's raining. However, we'll go.
    **Explanation**: "However" normalmente começa nova frase ou após ponto e vírgula. Com vírgula simples soa errado.
 

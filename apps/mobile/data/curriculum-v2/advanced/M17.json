@@ -272,7 +272,9 @@
           "hint": "\"Believe so\" or \"think so\"",
           "answer": "believe so",
           "accepts": [
-            "think so"
+            "think so",
+            "guess so",
+            "suppose so"
           ],
           "explanation": "\"I believe so\" — substitution after believe. Same pattern with other thinking verbs: think, suppose, imagine, presume, gather. All take \"so\" or \"not\" as clause replacements in conversation."
         },
@@ -678,7 +680,8 @@
           "hint": "\"Do it\" or \"do so\"",
           "answer": "do so",
           "accepts": [
-            "do it"
+            "do it",
+            "do that"
           ],
           "explanation": "\"Do so\" or \"do it\" — both replace \"email\" here. \"Do so\" leans formal; \"do it\" leans conversational. C2 speakers choose by register."
         },
@@ -688,7 +691,8 @@
           "hint": "Native English often uses \"He did the same\" or \"He did too\"",
           "answer": "She walked into the room. He did the same.",
           "accepts": [
-            "She walked into the room. He did too."
+            "She walked into the room. He did too.",
+            "She walked into the room. He did likewise."
           ],
           "explanation": "\"He did so\" is grammatical but stylistically heavy in narrative — feels formal-stilted. \"Did the same\" or \"did too\" or \"followed\" reads more naturally. Register-aware substitution: \"do so\" for formal, \"do the same / do too\" for everyday narrative."
         },
@@ -895,12 +899,9 @@
             "Neither have I",
             "So have I",
             "Either have I",
-            "Me neither"
+            "Neither I have"
           ],
           "answer": "Neither have I",
-          "accepts": [
-            "Me neither\" in casual register"
-          ],
           "explanation": "\"Neither have I\" — echo for negative statements. Pattern: \"Neither + auxiliary + subject\". Both work: \"Neither have I\" (formal) and \"Me neither\" (informal). Some speakers say \"Nor have I\" — synonymous with \"Neither have I\"."
         },
         {
@@ -910,7 +911,10 @@
           "answer": "So was I",
           "accepts": [
             "So was he",
-            "So was everyone"
+            "So was everyone",
+            "Me too",
+            "So was everybody",
+            "So were we"
           ],
           "explanation": "Past simple of \"be\" → \"So was + subject\". Pattern: match the auxiliary form (\"was\") and invert with the subject. The whole verb phrase is replaced by the auxiliary echo."
         },
@@ -920,7 +924,10 @@
           "hint": "For negative agreement, use \"Me neither\" or \"Neither do I\"",
           "answer": "I don't like coffee. — Me neither.",
           "accepts": [
-            "Neither do I."
+            "Neither do I.",
+            "Me neither",
+            "Me either",
+            "Nor do I"
           ],
           "explanation": "\"Me too\" is for positive agreement (\"I like coffee. — Me too\"). For negative agreement, use \"Me neither\" or \"Neither do I\". Common L2 error — defaulting to \"me too\" for all agreement."
         },

@@ -44,6 +44,7 @@
 3. **fill_gap** — "Seldom _____ a film leave me speechless the way that one did."
    **Hint**: "does" + base form
    **Answer**: does
+   **Accepts**: did
    **Explanation**: "Seldom does a film leave..." — "does" auxiliary before subject "a film", then base form "leave". Singular subject takes "does".
 
 4. **fix_error** — "Never I have been so insulted."
@@ -197,6 +198,7 @@
 3. **fill_gap** — "Scarcely had I _____ the door when the rain started."
    **Hint**: particípio passado de "shut"
    **Answer**: shut
+   **Accepts**: closed / opened / locked / left
    **Explanation**: "Scarcely had I shut the door when..." — past perfect after the inversion. "Shut" is irregular: shut/shut/shut.
 
 4. **fix_error** — "Hardly I had sat down when the phone rang."
@@ -361,7 +363,7 @@
    **Passage**: "The award citation read: 'Not only has Dr. Lima reshaped the field through her research, but she has also mentored a generation of scientists. Not until we examined her full body of work did we appreciate how interconnected her contributions truly are.'"
    **Question**: What two achievements does the citation emphasise?
    **Answer**: research that reshaped the field + mentoring a generation
-   **Accepts**: similar
+   **Accepts**: reshaped the field and mentored a generation / research and mentoring / her research and mentoring scientists
    **Explanation**: "Not only... but also" layers two achievements; "Not until... did we appreciate" dramatises late recognition. Both inversions register formality and emphasis.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -656,6 +658,7 @@
 3. **fill_gap** — "At no time _____ the company endorse that policy."
    **Hint**: auxiliar de inversão no past simple
    **Answer**: did
+   **Accepts**: does
    **Explanation**: "At no time did the company endorse..." — past inversion. The fronted negative phrase "at no time" forces "did + subject + base", a formal disavowal.
 
 4. **fix_error** — "In no way she meant to offend you."

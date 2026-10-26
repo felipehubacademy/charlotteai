@@ -54,19 +54,20 @@
           "answer": "I mean",
           "accepts": [
             "you know",
-            "honestly"
+            "honestly",
+            "Even so",
+            "Look"
           ],
           "explanation": "Casual filler drawn from M21 — \"I mean\" / \"you know\" / \"honestly\". Marks the shift from observation to feeling. Native narrative often uses one such filler per paragraph, particularly at moments of emotional pivot."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Sentence too long and dense for narrative rhythm: \"She had spent fifteen years working at the company and during that time she had built three teams, launched two products, and somehow managed to keep her sense of humour intact throughout every reorganisation and budget cut.\"",
           "hint": "Vary rhythm — long sentence + short follow-up or fragment",
           "answer": "She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation.",
-          "accepts": [
-            "similar rhythm-varied version"
-          ],
-          "explanation": "Long sentence + tricolon fragment + emphatic repetition. Drawn from M14 (rhythm) and M13 (tricolon). Native narrative breaks dense sentences for breath. The fragment \"Three teams. Two products.\" emphasises the scale."
+          "explanation": "Long sentence + tricolon fragment + emphatic repetition. Drawn from M14 (rhythm) and M13 (tricolon). Native narrative breaks dense sentences for breath. The fragment \"Three teams. Two products.\" emphasises the scale.",
+          "prompt": "Rewrite the sentence varying the rhythm: a long sentence plus short follow-ups or fragments.",
+          "example_answer": "She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation."
         },
         {
           "type": "read_answer",
@@ -275,16 +276,20 @@
           "hint": "\"Rarely\" or \"Seldom\"",
           "answer": "Rarely",
           "accepts": [
-            "Seldom"
+            "Seldom",
+            "Never",
+            "Hardly ever"
           ],
           "explanation": "Fronted negative frequency adverb triggers inversion — opener of choice for argumentative emphasis. \"Rarely has...\" opens with weight, signals importance. M02 inversion in argumentative service."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Argumentative opener too casual: \"AI is a big deal. People disagree about it. Some say it'll ruin things, others say it'll save us. What do you think?\"",
           "hint": "Rewrite for academic register with at least one structural device",
           "answer": "Rarely has a technology generated as polarised a debate as artificial intelligence has in the past decade. It is increasingly clear, however, that the question is not whether AI will reshape society but how — and on whose terms.",
-          "explanation": "Casual opener → academic opener with inversion (\"Rarely has...\"), formal vocabulary (\"polarised debate\", \"increasingly clear\"), and clausal complexity. Reframed argument question (\"not whether... but how... and on whose terms\"). Heavy integration of M02, M03, M12, M13."
+          "explanation": "Casual opener → academic opener with inversion (\"Rarely has...\"), formal vocabulary (\"polarised debate\", \"increasingly clear\"), and clausal complexity. Reframed argument question (\"not whether... but how... and on whose terms\"). Heavy integration of M02, M03, M12, M13.",
+          "prompt": "Rewrite this opener in academic register, with at least one structural device (like inversion).",
+          "example_answer": "Rarely has a technology generated as polarised a debate as artificial intelligence has in the past decade. It is increasingly clear, however, that the question is not whether AI will reshape society but how — and on whose terms."
         },
         {
           "type": "read_answer",
@@ -482,16 +487,22 @@
           "answer": "I can see",
           "accepts": [
             "Granted",
-            "It's true"
+            "It's true",
+            "I accept",
+            "I agree",
+            "I admit",
+            "I grant"
           ],
           "explanation": "Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. \"Granted, X — but Y\" / \"I can see X, but Y\" / \"It's / It is true that X — but Y\". Diplomatic argument pivots on acknowledging the other side first."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Blunt feedback: \"Your slides are bad and the message is confused.\"",
           "hint": "Rewrite diplomatically with at least three softening moves",
           "answer": "Honestly — and I mean this only because I want the deck to land well — I think the message could be tighter, and the slides might benefit from another pass. To be fair, the substance is all there; it's just buried.",
-          "explanation": "Diplomatic rewrite uses: \"Honestly\" (M21), \"I mean this only because\" (intentional reassurance), \"could be tighter / might benefit\" (modal hedges M19), \"To be fair\" (M10 concession), positive framing (\"the substance is all there\"). Same critique, preserved relationship."
+          "explanation": "Diplomatic rewrite uses: \"Honestly\" (M21), \"I mean this only because\" (intentional reassurance), \"could be tighter / might benefit\" (modal hedges M19), \"To be fair\" (M10 concession), positive framing (\"the substance is all there\"). Same critique, preserved relationship.",
+          "prompt": "Rewrite this feedback diplomatically, with at least three softening moves.",
+          "example_answer": "Honestly — and I mean this only because I want the deck to land well — I think the message could be tighter, and the slides might benefit from another pass. To be fair, the substance is all there; it's just buried."
         },
         {
           "type": "read_answer",
@@ -691,7 +702,10 @@
           "hint": "Tag for confirmation",
           "answer": "aren't we",
           "accepts": [
-            "right?"
+            "right?",
+            "right",
+            "yeah",
+            "yes"
           ],
           "explanation": "Tag question \"aren't / are not we?\" for soft confirmation. Drawn from M21. Or universal \"right?\" for casual register. Both work; \"aren't / are not we?\" is slightly more polished, \"right?\" slightly more casual."
         },
@@ -920,11 +934,13 @@
           "explanation": "\"Anyway\" — universal pivot from digression back to topic. Casual register marker that doubles as a structural device. Drawn from M21. Native speakers code-switch within a single conversation, and \"anyway\" is one of the standard pivot points."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Same-register monotone across all turns: \"Yes. Indeed. Yes. Indeed. Yes. The findings support that. Indeed. Yes.\"",
           "hint": "Vary registers — formal, casual, backchannels mixed",
           "answer": "Yes. Right — mm-hm. The findings do support that. Yeah. And, you know, the implications are pretty striking when you stack them up. Mm-hm, exactly.",
-          "explanation": "Real conversation modulates: short backchannels (\"Right — mm-hm\"), substantive points (\"The findings do support that\"), informal connectors (\"you know\"), confirmations. Monotone replies sound like a chatbot. C2 fluency is rhythm + register variation."
+          "explanation": "Real conversation modulates: short backchannels (\"Right — mm-hm\"), substantive points (\"The findings do support that\"), informal connectors (\"you know\"), confirmations. Monotone replies sound like a chatbot. C2 fluency is rhythm + register variation.",
+          "prompt": "Rewrite these turns mixing registers: formal lines, casual lines and backchannels.",
+          "example_answer": "Yes. Right — mm-hm. The findings do support that. Yeah. And, you know, the implications are pretty striking when you stack them up. Mm-hm, exactly."
         },
         {
           "type": "read_answer",

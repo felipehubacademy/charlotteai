@@ -76,6 +76,7 @@
 5. **fill_gap** — "_____ me? Can you repeat, please?"
    **Hint**: Com licença / como é? (quando não entendeu)
    **Answer**: Excuse
+   **Accepts**: Pardon
    **Explanation**: "Excuse me?" com tom de pergunta quer dizer "como é? não entendi". Serve para pedir que a pessoa repita.
 
 6. **fill_gap** — "_____! My name is Lucas."
@@ -98,7 +99,7 @@
 9. **fix_error** — "Sorry me!"
    **Hint**: Para pedir desculpas basta uma palavra
    **Answer**: Sorry!
-   **Accepts**: Excuse me! / I'm sorry!
+   **Accepts**: Excuse me! / I'm sorry! / So sorry!
    **Explanation**: "Sorry" já é o pedido de desculpas completo. "Sorry me" não existe; quem leva o "me" é o "excuse".
 
 10. **read_answer**
@@ -241,7 +242,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 9. **fix_error** — "Thank you very much much!"
    **Hint**: Basta um "much"
    **Answer**: Thank you very much!
-   **Accepts**: Thank you so much!
+   **Accepts**: Thank you so much! / Thanks so much! / Thanks a lot! / Thank you!
    **Explanation**: "Thank you very much" ou "Thank you so much": um "much" só. Repetir não deixa mais educado.
 
 10. **read_answer**

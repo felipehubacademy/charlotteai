@@ -582,7 +582,7 @@
 3. **word_bank** — "Open the door, _____ you?"
    **Choices**: will / do / can / would
    **Answer**: will
-   **Accepts**: would / could" depending on politeness / can / could
+   **Accepts**: would / can
    **Explanation**: Imperative + tag: "Open the door, will you?" — softens a command into a polite request. Variations: "would you?", "could you?", "won't / will not you?". All make the imperative friendlier.
 
 4. **word_bank** — "Nobody called, _____ they?"

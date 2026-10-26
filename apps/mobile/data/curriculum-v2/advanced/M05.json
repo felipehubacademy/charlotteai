@@ -286,6 +286,11 @@
           "sentence": "They _____ to be considering a merger.",
           "hint": "\"are\" + past participle of \"think\"",
           "answer": "are thought",
+          "accepts": [
+            "are believed",
+            "are said",
+            "are reported"
+          ],
           "explanation": "\"They are thought to be considering\" — continuous infinitive after \"to\". The subject \"they\" is reported as currently considering something."
         },
         {
@@ -507,6 +512,15 @@
           "sentence": "We need to _____ this contract _____ by Friday.",
           "hint": "\"have/get\" / past participle \"review\"",
           "answer": "have / reviewed",
+          "accepts": [
+            "have reviewed",
+            "get",
+            "reviewed",
+            "get reviewed",
+            "have it reviewed",
+            "have this contract reviewed",
+            "get this contract reviewed"
+          ],
           "explanation": "\"Have this contract reviewed by Friday\" — passive causative with deadline. Implies the reviewing will be done by someone else (a lawyer, an editor), arranged by us."
         },
         {
@@ -514,6 +528,9 @@
           "sentence": "\"I cut my hair last week\" (you mean someone else cut it).",
           "hint": "To make clear someone else did it, use causative",
           "answer": "I had my hair cut last week.",
+          "accepts": [
+            "I got my hair cut last week."
+          ],
           "explanation": "\"I cut my hair\" implies you did it yourself with scissors at home. To indicate a barber did it, use the causative: \"I had/got my hair cut\". Crucial precision in C1 communication."
         },
         {
@@ -709,6 +726,21 @@
           "sentence": "We _____ our house _____ while we were away.",
           "hint": "\"had\" / past participle \"burgle\"",
           "answer": "had / burgled",
+          "accepts": [
+            "had burgled",
+            "got",
+            "burgled",
+            "got burgled",
+            "had our house burgled",
+            "got our house burgled",
+            "had",
+            "robbed",
+            "had robbed",
+            "had our house robbed",
+            "had",
+            "broken into",
+            "had our house broken into"
+          ],
           "explanation": "\"Had our house burgled\" — passive misfortune, no agency on the homeowners' part. The structure mirrors causative but the meaning is its opposite."
         },
         {
@@ -716,6 +748,9 @@
           "sentence": "I cut my hair by a hairdresser yesterday.",
           "hint": "To name the agent, use causative + \"by\"",
           "answer": "I had my hair cut by a hairdresser yesterday.",
+          "accepts": [
+            "I got my hair cut by a hairdresser yesterday."
+          ],
           "explanation": "\"I cut my hair\" implies you did it. To attribute action to someone else AND name them, use causative + \"by + agent\". \"I had/got my hair cut by...\""
         },
         {
@@ -925,6 +960,14 @@
           "sentence": "I need to _____ my passport _____ before I travel.",
           "hint": "\"have\" / \"renew\" past participle",
           "answer": "have / renewed",
+          "accepts": [
+            "have renewed",
+            "get",
+            "renewed",
+            "get renewed",
+            "have my passport renewed",
+            "get my passport renewed"
+          ],
           "explanation": "Causative: \"Have my passport renewed\" — arranging the service. Distinct from \"renew my passport\" (you doing the renewal yourself, which makes less sense since governments issue them)."
         },
         {
@@ -932,6 +975,9 @@
           "sentence": "I had stolen my bike last week.",
           "hint": "For misfortune, the structure is \"had + object + past participle\" (your bike was stolen)",
           "answer": "I had my bike stolen last week.",
+          "accepts": [
+            "I got my bike stolen last week."
+          ],
           "explanation": "\"I had stolen my bike\" reads as \"I had committed the theft of my bike\" (past perfect active). To describe the misfortune of being stolen from, use \"I had + object + past participle\"."
         },
         {

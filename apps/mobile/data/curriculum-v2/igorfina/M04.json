@@ -107,7 +107,8 @@
           "hint": "\"Não\" informal que termina em \"pe\"",
           "answer": "Nope",
           "accepts": [
-            "Nah"
+            "Nah",
+            "No"
           ],
           "explanation": "\"Nope\" é \"não\" informal, mais seco que \"nah\". Os dois são para conversa entre amigos."
         },
@@ -341,6 +342,11 @@
           "sentence": "What's _____, bro? Long time no see!",
           "hint": "E aí? (What's ___?)",
           "answer": "up",
+          "accepts": [
+            "good",
+            "new",
+            "happening"
+          ],
           "explanation": "\"What's up?\" = e aí? Resposta comum: \"Not much!\" ou \"All good!\"."
         },
         {
@@ -598,6 +604,9 @@
           "sentence": "Excuse me, could you be _____, please?",
           "hint": "Quieto, em silêncio",
           "answer": "quiet",
+          "accepts": [
+            "silent"
+          ],
           "explanation": "O jeito seguro de pedir silêncio para qualquer pessoa."
         },
         {
@@ -612,6 +621,12 @@
           "sentence": "Shut up, please, the movie started.",
           "hint": "\"Shut up\" é rude; troque pelo pedido educado",
           "answer": "Could you be quiet, please? The movie started.",
+          "accepts": [
+            "Can you be quiet, please? The movie started.",
+            "Could you please be quiet? The movie started.",
+            "Please be quiet, the movie started.",
+            "Could you be quiet, please?"
+          ],
           "explanation": "Mesmo com \"please\", \"shut up\" é grosseiro com desconhecidos. Use \"Could you be quiet, please?\"."
         },
         {
@@ -861,6 +876,13 @@
           "sentence": "Damn, sir, can you help me?",
           "hint": "Com desconhecidos, troque o palavrão por algo neutro",
           "answer": "Excuse me, sir, can you help me?",
+          "accepts": [
+            "Sorry, sir, can you help me?",
+            "Hi, sir, can you help me?",
+            "Hello, sir, can you help me?",
+            "Sir, can you help me?",
+            "Excuse me, can you help me?"
+          ],
           "explanation": "Palavrão com desconhecido soa grosseiro. Com \"Excuse me\" você chega com educação."
         },
         {

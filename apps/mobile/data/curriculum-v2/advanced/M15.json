@@ -497,6 +497,11 @@
           "sentence": "Let's _____ the last few disagreements before we sign.",
           "hint": "\"Iron + out\" — resolve",
           "answer": "iron out",
+          "accepts": [
+            "sort out",
+            "smooth out",
+            "work out"
+          ],
           "explanation": "\"Iron out\" = smooth out, resolve (problems, disagreements, wrinkles). The image: ironing a wrinkled shirt smooth. Separable phrasal — \"iron them out\" works too. Common in business negotiation."
         },
         {
@@ -699,6 +704,9 @@
           "sentence": "She couldn't quite _____ the feeling that something was wrong.",
           "hint": "\"Shake + off\"",
           "answer": "shake off",
+          "accepts": [
+            "shake"
+          ],
           "explanation": "\"Shake off\" = recover from, get rid of (a feeling, illness, pursuer). Separable: \"shake the feeling off\" also works. Common with abstract objects: doubt, dread, fear, a cold."
         },
         {

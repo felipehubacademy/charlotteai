@@ -44,6 +44,7 @@
 3. **fill_gap** — "The proposal was rejected for three reasons: cost, timing, and political risk. _____ three concerns shaped the rest of the discussion."
    **Hint**: "These" + the three reasons just listed
    **Answer**: These
+   **Accepts**: Those
    **Explanation**: "These three concerns" — "these" because the antecedent is plural ("three reasons"). The demonstrative gathers the just-listed items and names them with a summary noun ("concerns"). This pattern — "These X..." — is essential for extended discourse cohesion.
 
 4. **fix_error** — "The team missed two deadlines. This deadlines worried the client."
@@ -197,11 +198,14 @@
 3. **fill_gap** — Lexical chain: "She rescued a stray dog last winter. _____ animal had been on the street for weeks."
    **Hint**: Superordinate of "dog"
    **Answer**: The (animal)
+   **Accepts**: That / This
    **Explanation**: "The animal" — moves up from specific ("dog") to superordinate ("animal"). The article "the" signals shared knowledge. This is cohesion through hyponym → superordinate, sustained by definite article.
 
-4. **fix_error** — "He bought a Tesla. He bought a Tesla. He bought a Tesla last year, and a Tesla is expensive to maintain."
+4. **short_write** — "He bought a Tesla. He bought a Tesla. He bought a Tesla last year, and a Tesla is expensive to maintain."
    **Hint**: Vary with synonyms / superordinates
    **Answer**: He bought a Tesla last year. The car has been expensive to maintain — the technology is unforgiving when something breaks.
+   **Prompt**: Rewrite it without the repetition, using synonyms or a general word like "the car".
+   **Example answer**: He bought a Tesla last year. The car has been expensive to maintain — the technology is unforgiving when something breaks.
    **Explanation**: Triple repetition of "Tesla" is heavy. Cohesion through variation: Tesla → the car → the technology. Each refers to the same purchase, but the prose breathes.
 
 5. **read_answer**
@@ -503,7 +507,7 @@
 3. **fill_gap** — Information flow: "We discussed the budget. _____ revealed significant risks."
    **Hint**: Reference back with old info first
    **Answer**: That discussion
-   **Accepts**: The discussion
+   **Accepts**: The discussion / This discussion
    **Explanation**: "That discussion" (referring back) → "revealed significant risks" (new info). Or "The discussion" — definite article carries old info. The sentence builds on what was just mentioned.
 
 4. **fix_error** — Reverse information flow: "Significant risks were revealed by our discussion of the budget."

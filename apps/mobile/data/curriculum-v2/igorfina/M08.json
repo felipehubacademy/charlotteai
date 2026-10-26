@@ -120,6 +120,15 @@
           "sentence": "\"I want eggs.\" (para o garçom)",
           "hint": "Use a forma educada de pedir",
           "answer": "I would like eggs, please.",
+          "accepts": [
+            "I'd like eggs, please.",
+            "I would like some eggs, please.",
+            "I'd like some eggs, please.",
+            "Can I get eggs, please?",
+            "Could I have eggs, please?",
+            "Can I get some eggs, please?",
+            "I would like eggs."
+          ],
           "explanation": "\"I want\" soa seco. \"I would like..., please\" é o jeito educado."
         },
         {
@@ -611,6 +620,9 @@
           "sentence": "A: How much? B: It's 25 _____.",
           "hint": "Gíria para dólares",
           "answer": "bucks",
+          "accepts": [
+            "dollars"
+          ],
           "explanation": "\"Bucks\" = dólares, na gíria. \"25 bucks\" = 25 dólares."
         },
         {
@@ -618,6 +630,13 @@
           "sentence": "\"I'd like to cut my hair.\" (para o barbeiro)",
           "hint": "Quem corta é o barbeiro; peça \"a haircut\"",
           "answer": "I'd like a haircut.",
+          "accepts": [
+            "I would like a haircut.",
+            "Can I get a haircut?",
+            "I'd like to get a haircut.",
+            "I'd like to get my hair cut.",
+            "A haircut, please."
+          ],
           "explanation": "\"I'd like to cut my hair\" soa como se você mesmo fosse cortar. Na barbearia: \"I'd like a haircut\"."
         },
         {
@@ -886,6 +905,11 @@
           "sentence": "How much costs this?",
           "hint": "Use \"How much is...\"",
           "answer": "How much is this?",
+          "accepts": [
+            "How much does this cost?",
+            "How much does it cost?",
+            "How much is it?"
+          ],
           "explanation": "Em inglês a pergunta mais simples é \"How much is this?\". \"How much does this cost?\" também está certo."
         },
         {

@@ -66,17 +66,21 @@
           "sentence": "_____ if you'd mind looking over this draft when you have a moment.",
           "hint": "\"I was wondering\"",
           "answer": "I was wondering",
+          "accepts": [
+            "I wonder",
+            "I'm wondering",
+            "I was just wondering"
+          ],
           "explanation": "Soft request opener. The full structure: \"I was wondering if you'd / you would mind + -ing\". Double softening: past continuous + \"would you mind\" + -ing."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "I want you to look at this report.",
           "hint": "Soften with \"I was wondering if you could...\"",
           "answer": "I was wondering if you could take a look at this report.",
-          "accepts": [
-            "I was hoping you might look at this report."
-          ],
-          "explanation": "\"I want you to\" is direct and can read as demanding. The softer C1 register uses \"I was wondering if you could...\" or similar hedged forms. Especially important when asking up the hierarchy."
+          "explanation": "\"I want you to\" is direct and can read as demanding. The softer C1 register uses \"I was wondering if you could...\" or similar hedged forms. Especially important when asking up the hierarchy.",
+          "prompt": "Rewrite this request so it sounds polite and indirect.",
+          "example_answer": "I was wondering if you could take a look at this report."
         },
         {
           "type": "read_answer",
@@ -273,17 +277,19 @@
           "sentence": "_____ wish to revisit this decision later.",
           "hint": "\"You may\" (formal modal hedge)",
           "answer": "You may",
+          "accepts": [
+            "You might"
+          ],
           "explanation": "\"You may wish to + base\" — formal-polite suggestion. Common in written business and academic prose. Slightly more elevated than \"you might want to\"."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "You should fix the introduction.",
           "hint": "Soften with hedged suggestion",
           "answer": "It might be worth revisiting the introduction.",
-          "accepts": [
-            "You might want to look at the introduction again."
-          ],
-          "explanation": "\"You should\" can land as criticism. Hedged forms preserve face — same content, different relational impact. C1 register often demands the softer version."
+          "explanation": "\"You should\" can land as criticism. Hedged forms preserve face — same content, different relational impact. C1 register often demands the softer version.",
+          "prompt": "Rewrite this feedback as a softer, hedged suggestion.",
+          "example_answer": "It might be worth revisiting the introduction."
         },
         {
           "type": "read_answer",
@@ -482,14 +488,13 @@
           "explanation": "\"I'm / I am not entirely sure I agree\" — soft disagreement. \"Not entirely\" hedges; \"I'm / I am not sure I agree\" is softer than \"I disagree\". Common in academic and professional contexts."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "You're wrong about that.",
           "hint": "Soften with \"I'd see it differently\"",
           "answer": "I'd see it a little differently.",
-          "accepts": [
-            "With respect, I'd see it differently."
-          ],
-          "explanation": "\"You're / You are wrong\" is blunt and damaging. \"I'd / I would see it differently\" presents the same disagreement without attacking the other person. Crucial diplomatic shift."
+          "explanation": "\"You're / You are wrong\" is blunt and damaging. \"I'd / I would see it differently\" presents the same disagreement without attacking the other person. Crucial diplomatic shift.",
+          "prompt": "Rewrite this so you disagree politely.",
+          "example_answer": "I'd see it a little differently."
         },
         {
           "type": "read_answer",
@@ -686,6 +691,12 @@
           "sentence": "_____ that there are no simple solutions here.",
           "hint": "\"One might say\"",
           "answer": "One might say",
+          "accepts": [
+            "One could say",
+            "One might argue",
+            "It could be argued",
+            "It might be said"
+          ],
           "explanation": "\"One might say that...\" — impersonal hedging. Common in academic writing and op-eds. Distances the speaker from the claim while still introducing it."
         },
         {
@@ -909,6 +920,11 @@
           "sentence": "It cost ten thousand euros, _____.",
           "hint": "\"give or take\"",
           "answer": "give or take",
+          "accepts": [
+            "more or less",
+            "or so",
+            "roughly"
+          ],
           "explanation": "\"Give or take\" — idiomatic phrase meaning \"plus or minus a small amount\". Placed at end of clause, after the figure. Casual register."
         },
         {
@@ -918,7 +934,10 @@
           "answer": "I kind of agree with you.",
           "accepts": [
             "I somewhat agree with you, with the right rhythm.",
-            "I somewhat agree with you."
+            "I somewhat agree with you.",
+            "I sort of agree with you.",
+            "I partly agree with you.",
+            "I agree with you to some extent."
           ],
           "explanation": "\"Somewhat\" modifies adjectives/adverbs in formal usage (\"somewhat strange\"). Modern spoken English does allow \"I somewhat agree\", but \"kind of agree\" / \"sort of agree\" is more natural."
         },

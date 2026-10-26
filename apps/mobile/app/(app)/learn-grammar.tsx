@@ -267,7 +267,7 @@ const EXERCISES: Record<string, Record<ExerciseType, Exercise[]>> = {
 // Corretor compartilhado (lib/grammarAnswer) — aceita contração <-> forma cheia
 // (inclusive "solta" no fill_gap) e trata os tipos de exercício de gramática.
 function checkAnswer(ex: Exercise, userAnswer: string): boolean {
-  return checkGrammarAnswer(ex.type, userAnswer, ex.answer, (ex as { accepts?: string[] }).accepts);
+  return checkGrammarAnswer(ex.type, userAnswer, ex.answer, (ex as { accepts?: string[] }).accepts, (ex as { sentence?: string }).sentence);
 }
 
 // ── Sequence ────────────────────────────────────────────────────

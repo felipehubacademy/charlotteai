@@ -231,6 +231,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 6. **fill_gap** — "There's a light _____ the bed."
    **Hint**: Acima
    **Answer**: above
+   **Accepts**: over
    **Explanation**: A luminária fica acima da cama, sem encostar: "above the bed".
 
 7. **fill_gap** — "Sit _____ me, there's a free seat!"
@@ -405,6 +406,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 8. **fix_error** — "Can you open the light?"
    **Hint**: Em inglês não se "abre" a luz
    **Answer**: Can you turn on the light?
+   **Accepts**: Can you turn the light on? / Can you switch on the light? / Can you switch the light on? / Could you turn on the light?
    **Explanation**: Em português "abrir a luz" às vezes; em inglês é sempre "turn on".
 
 9. **fix_error** — "My phone is close."

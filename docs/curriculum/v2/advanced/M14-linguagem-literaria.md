@@ -45,12 +45,13 @@
 3. **fill_gap** — Cultural metaphor: "Attention is _____ — finite, contested, and exploited."
    **Hint**: "the new currency" or "the new oil"
    **Answer**: the new oil
-   **Accepts**: the new currency
+   **Accepts**: the new currency / the new gold
    **Explanation**: "X is the new Y" — modern metaphorical equation. "Attention is the new oil" is a famous tech-era metaphor (resource that drives the economy, and that one is extracted). This pattern compresses a whole argument into a phrase.
 
 4. **fix_error** — "She moved like she was walking on glass."
    **Hint**: "Like + clause" is informal; use "as if" or "as though"
    **Answer**: She moved as if she were walking on glass.
+   **Accepts**: She moved as though she were walking on glass. / She moved as if she was walking on glass. / She moved as though she was walking on glass.
    **Explanation**: "Like she was walking" is spoken English. Formal/literary prose prefers "as if + subject + were" (subjunctive). The "were" maintains the hypothetical mood across persons. C2 literary writing observes the distinction.
 
 5. **read_answer**
@@ -201,10 +202,11 @@
    **Answer**: refused
    **Explanation**: "Refused" attributes will to hope — an abstract feeling acting like a person who chooses to stay. Personification turns abstract states into actors. The image becomes vivid because hope behaves like a stubborn houseguest.
 
-4. **fix_error** — Personification attempt: "The wind was strong yesterday."
+4. **short_write** — Personification attempt: "The wind was strong yesterday."
    **Hint**: To personify, give the wind a human-style verb or quality
    **Answer**: The wind argued with the trees all afternoon.
-   **Accepts**: The wind shouldered its way down the street.
+   **Prompt**: Rewrite the sentence personifying the wind (give it a human action).
+   **Example answer**: The wind argued with the trees all afternoon.
    **Explanation**: The original is just description, not personification. To personify, give the wind a human action ("argued", "shouldered", "wrestled"). Personification makes the description active, not flat.
 
 5. **read_answer**
@@ -350,16 +352,18 @@
    **Answer**: glared
    **Explanation**: "Glared" — verb that already contains the angry quality. Replaces "looked angrily" (which spells out the emotion). Strong verbs make adverbs redundant. C2 prose almost always prefers the single vivid verb.
 
-3. **fill_gap** — Specific noun: "She drove past in a _____, headlights cutting through the rain."
+3. **short_write** — Specific noun: "She drove past in a _____, headlights cutting through the rain."
    **Hint**: Specific car model + colour or detail
    **Answer**: a red Toyota
-   **Accepts**: a dented Volvo / any specific car
+   **Prompt**: Complete the sentence with a specific noun (a car model, colour or detail).
+   **Example answer**: She drove past in a red Toyota, headlights cutting through the rain.
    **Explanation**: Replacing "a car" with "a red Toyota" or similar specific image. Specific nouns ground prose in concrete reality. Mark Twain: "Don't / Do not say the old lady screamed. Bring her on and let her scream." Same principle: bring on the specific car.
 
-4. **fix_error** — "He walked slowly into the room, looking sadly at her, and then said something quietly."
+4. **short_write** — "He walked slowly into the room, looking sadly at her, and then said something quietly."
    **Hint**: Replace verb+adverb pairs with vivid verbs
    **Answer**: He trudged into the room, gazed sadly at her, and murmured something.
-   **Accepts**: He shuffled in, met her eyes, and whispered.
+   **Prompt**: Rewrite the sentence replacing verb + adverb pairs with vivid verbs.
+   **Example answer**: He trudged into the room, gazed sadly at her, and murmured something.
    **Explanation**: Three verb+adverb pairs: "walked slowly", "looked sadly", "said quietly". Each can become a single vivid verb: "trudged", "gazed" (still keeping "sadly" optionally), "murmured" / "whispered". Tightens prose, increases rhythm.
 
 5. **read_answer**
@@ -504,15 +508,18 @@
    **Answer**: Empty.
    **Explanation**: Sentence fragments — incomplete grammatical units — are legitimate in literary writing for emphasis. "Empty." stands alone as a single image. Academic writing rejects fragments; literary and journalistic prose use them strategically.
 
-3. **fill_gap** — Long sentence followed by short: "We had walked for hours, through the empty fields and along the river that we hadn't seen since childhood, talking about nothing in particular and everything at once — and then, suddenly, the silence. _____"
+3. **short_write** — Long sentence followed by short: "We had walked for hours, through the empty fields and along the river that we hadn't seen since childhood, talking about nothing in particular and everything at once — and then, suddenly, the silence. _____"
    **Hint**: A short impact sentence or fragment
    **Answer**: Neither of us spoke for a long time.
-   **Accepts**: Just the river. / Just walking. / Nobody.
+   **Prompt**: Add a short impact sentence or fragment after the long sentence.
+   **Example answer**: Neither of us spoke for a long time.
    **Explanation**: After a long sweeping sentence, the next move is contraction. A short sentence or fragment ("Just the river.") drops the rhythm down dramatically. This is rhythm-as-meaning — the silence the long sentence describes is enacted by the short one.
 
-4. **fix_error** — All-long-sentences paragraph: "She walked into the room which was empty except for a chair by the window where her mother used to sit and read in the afternoons before everything changed and now nobody sat there at all."
+4. **short_write** — All-long-sentences paragraph: "She walked into the room which was empty except for a chair by the window where her mother used to sit and read in the afternoons before everything changed and now nobody sat there at all."
    **Hint**: Break for rhythm — at least one short sentence or fragment
    **Answer**: She walked into the room. It was empty except for a chair by the window — her mother's chair, where she used to read in the afternoons. Before everything. Now nobody sat there.
+   **Prompt**: Rewrite the paragraph breaking it up for rhythm (at least one short sentence or fragment).
+   **Example answer**: She walked into the room. It was empty except for a chair by the window — her mother's chair, where she used to read in the afternoons. Before everything. Now nobody sat there.
    **Explanation**: The original runs without pause. Break it: a short opener, a medium-length description, a fragment ("Before everything."), a short close. Rhythm now varies, and the meaning lands.
 
 5. **read_answer**
@@ -658,15 +665,18 @@
    **Answer**: He didn't sit down. He didn't sit down for the entire meeting.
    **Explanation**: The repeated short sentence — "He didn't / did not sit down. He didn't sit down for the entire meeting." — shows the contained, pressurised anger through a behavioural detail. The repetition itself enacts the refusal. Reader infers fury.
 
-3. **fill_gap** — Convert "She was sad" to a shown version: "She _____"
+3. **short_write** — Convert "She was sad" to a shown version: "She _____"
    **Hint**: An observable detail or action that implies sadness
    **Answer**: kept the wedding photo turned face-down for three weeks
-   **Accepts**: any specific behavioural detail
+   **Prompt**: Show, don't tell: complete "She..." with an observable action that implies sadness.
+   **Example answer**: She kept the wedding photo turned face-down for three weeks.
    **Explanation**: Show sadness through behaviour — the face-down photo implies refusal to look, time passing, unresolved grief. Specific actions carry emotion more reliably than abstract emotion words. The reader does the inferring; the prose stays concrete.
 
-4. **fix_error** — "He was happy about the news."
+4. **short_write** — "He was happy about the news."
    **Hint**: Convey happiness through detail rather than the abstract word
    **Answer**: He read it twice, then a third time. He set the letter down, picked it up again, and went to find his wife.
+   **Prompt**: Rewrite it showing happiness through details instead of the word "happy".
+   **Example answer**: He read it twice, then a third time. He set the letter down, picked it up again, and went to find his wife.
    **Explanation**: "Happy" is abstract. Showing the rereading, the inability to set it down, the impulse to share — these observable actions communicate joy more vividly. The reader experiences the news landing, instead of being told the character is happy.
 
 5. **read_answer**

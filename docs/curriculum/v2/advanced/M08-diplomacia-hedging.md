@@ -48,12 +48,14 @@
 3. **fill_gap** — "_____ if you'd mind looking over this draft when you have a moment."
    **Hint**: "I was wondering"
    **Answer**: I was wondering
+   **Accepts**: I wonder / I'm wondering / I was just wondering
    **Explanation**: Soft request opener. The full structure: "I was wondering if you'd / you would mind + -ing". Double softening: past continuous + "would you mind" + -ing.
 
-4. **fix_error** — "I want you to look at this report."
+4. **short_write** — "I want you to look at this report."
    **Hint**: Soften with "I was wondering if you could..."
    **Answer**: I was wondering if you could take a look at this report.
-   **Accepts**: I was hoping you might look at this report.
+   **Prompt**: Rewrite this request so it sounds polite and indirect.
+   **Example answer**: I was wondering if you could take a look at this report.
    **Explanation**: "I want you to" is direct and can read as demanding. The softer C1 register uses "I was wondering if you could..." or similar hedged forms. Especially important when asking up the hierarchy.
 
 5. **read_answer**
@@ -202,12 +204,14 @@
 3. **fill_gap** — "_____ wish to revisit this decision later."
    **Hint**: "You may" (formal modal hedge)
    **Answer**: You may
+   **Accepts**: You might
    **Explanation**: "You may wish to + base" — formal-polite suggestion. Common in written business and academic prose. Slightly more elevated than "you might want to".
 
-4. **fix_error** — "You should fix the introduction."
+4. **short_write** — "You should fix the introduction."
    **Hint**: Soften with hedged suggestion
    **Answer**: It might be worth revisiting the introduction.
-   **Accepts**: You might want to look at the introduction again.
+   **Prompt**: Rewrite this feedback as a softer, hedged suggestion.
+   **Example answer**: It might be worth revisiting the introduction.
    **Explanation**: "You should" can land as criticism. Hedged forms preserve face — same content, different relational impact. C1 register often demands the softer version.
 
 5. **read_answer**
@@ -358,10 +362,11 @@
    **Answer**: I'm not
    **Explanation**: "I'm / I am not entirely sure I agree" — soft disagreement. "Not entirely" hedges; "I'm / I am not sure I agree" is softer than "I disagree". Common in academic and professional contexts.
 
-4. **fix_error** — "You're wrong about that."
+4. **short_write** — "You're wrong about that."
    **Hint**: Soften with "I'd see it differently"
    **Answer**: I'd see it a little differently.
-   **Accepts**: With respect, I'd see it differently.
+   **Prompt**: Rewrite this so you disagree politely.
+   **Example answer**: I'd see it a little differently.
    **Explanation**: "You're / You are wrong" is blunt and damaging. "I'd / I would see it differently" presents the same disagreement without attacking the other person. Crucial diplomatic shift.
 
 5. **read_answer**
@@ -510,6 +515,7 @@
 3. **fill_gap** — "_____ that there are no simple solutions here."
    **Hint**: "One might say"
    **Answer**: One might say
+   **Accepts**: One could say / One might argue / It could be argued / It might be said
    **Explanation**: "One might say that..." — impersonal hedging. Common in academic writing and op-eds. Distances the speaker from the claim while still introducing it.
 
 4. **fix_error** — "Arguably is the best film of the decade."
@@ -663,12 +669,13 @@
 3. **fill_gap** — "It cost ten thousand euros, _____."
    **Hint**: "give or take"
    **Answer**: give or take
+   **Accepts**: more or less / or so / roughly
    **Explanation**: "Give or take" — idiomatic phrase meaning "plus or minus a small amount". Placed at end of clause, after the figure. Casual register.
 
 4. **fix_error** — "I'm somewhat agree with you."
    **Hint**: "Somewhat" modifies adjective/adverb, not verb directly. Use "kind of agree" or "somewhat agreeable"
    **Answer**: I kind of agree with you.
-   **Accepts**: I somewhat agree with you, with the right rhythm. / I somewhat agree with you.
+   **Accepts**: I somewhat agree with you, with the right rhythm. / I somewhat agree with you. / I sort of agree with you. / I partly agree with you. / I agree with you to some extent.
    **Explanation**: "Somewhat" modifies adjectives/adverbs in formal usage ("somewhat strange"). Modern spoken English does allow "I somewhat agree", but "kind of agree" / "sort of agree" is more natural.
 
 5. **read_answer**

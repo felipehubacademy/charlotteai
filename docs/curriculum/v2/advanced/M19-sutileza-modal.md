@@ -49,6 +49,7 @@
 3. **fill_gap** — "She _____ be home by now — her shift ended at six."
    **Hint**: Modal of expected outcome based on schedule
    **Answer**: should
+   **Accepts**: ought to / must
    **Explanation**: "Should" — mild expectation based on knowledge of routine. Weaker than "must" or "will". Implies "based on what I know, this is expected — but I'm / I am not certain". Common for time-based expectations.
 
 4. **fix_error** — "He hasn't replied to the email. He must has been busy."
@@ -202,6 +203,7 @@
 3. **fill_gap** — "We _____ be wrong about this — but the data so far supports our reading."
    **Hint**: "May" + well
    **Answer**: may well
+   **Accepts**: might well / could well / may / might / could
    **Explanation**: "May well + base form" — hedged probability. "We may well be wrong" = "It's quite possible we're / we are wrong, even likely". Formal register equivalent of "might well". Choice between "may well" / "might well" / "could well" often comes down to register.
 
 4. **fix_error** — "He might good be right."
@@ -355,12 +357,13 @@
 3. **fill_gap** — Habitual past: "When I was a child, my grandmother _____ read to me every evening."
    **Hint**: Modal for habitual past
    **Answer**: would
+   **Accepts**: used to
    **Explanation**: "Would + base" for habitual past — repeated actions in a past period. Similar to "used to" but emphasises the routine. "She would read to me every evening" = it was her habit. Note: only works for repeated actions, not for past states ("She would be tall" doesn't work for past states; use "was").
 
 4. **fix_error** — Habitual past: "Every summer, we use to visit my aunt in Coimbra."
    **Hint**: Past tense — "used to" or "would"
    **Answer**: Every summer, we used to visit my aunt in Coimbra.
-   **Accepts**: ...we would visit my aunt in Coimbra.
+   **Accepts**: Every summer, we would visit my aunt in Coimbra.
    **Explanation**: "Use to" needs past form "used to" (note the d). Or replace with "would" for habitual past. Common spelling error — "use to" sounds like "used to" but only "used to" is grammatical past form.
 
 5. **read_answer**
@@ -508,6 +511,7 @@
 3. **fill_gap** — Probability: "The weather forecast says rain _____ continue through the weekend."
    **Hint**: Likelihood structure
    **Answer**: is likely to
+   **Accepts**: will / may / might / could / is expected to / is going to
    **Explanation**: "Is likely to + base" — probability statement. Common in forecasts, predictions, analysis. "Is unlikely to" for the negative. C2 register uses these instead of "will probably" for slightly more analytical tone.
 
 4. **fix_error** — "He is supposed call me at three."
@@ -661,11 +665,13 @@
 3. **fill_gap** — Anticipated obligation: "Given the new regulations, we _____ adjust our reporting process by next quarter."
    **Hint**: "Are going to" + "have to"
    **Answer**: are going to have to
+   **Accepts**: will have to / will need to / need to / have to / must
    **Explanation**: "Be going to have to + base" — anticipated forced obligation. Combines "going to" (future intention/anticipation) with "have to" (necessity). Conveys that the obligation is approaching whether we like it or not. Slightly weary tone.
 
 4. **fix_error** — "She might must work overtime this week."
    **Hint**: Two modals can't stack — use a quasi-modal
    **Answer**: She might have to work overtime this week.
+   **Accepts**: She may have to work overtime this week. / She might need to work overtime this week.
    **Explanation**: "Might must" is ungrammatical — English doesn't permit two true modals together. Replace one with a quasi-modal: "might have to" or "may need to". This is one of the most common L2 errors for Spanish/Portuguese speakers, whose languages allow modal-modal sequences.
 
 5. **read_answer**

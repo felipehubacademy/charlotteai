@@ -77,7 +77,7 @@
 7. **fill_gap** — "A: Did you finish the beer? B: _____. There's more in the fridge."
    **Hint**: "Não" informal que termina em "pe"
    **Answer**: Nope
-   **Accepts**: Nah
+   **Accepts**: Nah / No
    **Explanation**: "Nope" é "não" informal, mais seco que "nah". Os dois são para conversa entre amigos.
 
 8. **fix_error** — "No road! That's amazing!"
@@ -231,6 +231,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 5. **fill_gap** — "What's _____, bro? Long time no see!"
    **Hint**: E aí? (What's ___?)
    **Answer**: up
+   **Accepts**: good / new / happening
    **Explanation**: "What's up?" = e aí? Resposta comum: "Not much!" ou "All good!".
 
 6. **fill_gap** — "Bro, can you _____ me a hand?"
@@ -400,6 +401,7 @@ Igorfina fala no estilo do astro do basquete (imitação). Aluno repete; a pron�
 6. **fill_gap** — "Excuse me, could you be _____, please?"
    **Hint**: Quieto, em silêncio
    **Answer**: quiet
+   **Accepts**: silent
    **Explanation**: O jeito seguro de pedir silêncio para qualquer pessoa.
 
 7. **fill_gap** — "A: I'm moving to New York! B: No _____! Get out of here!"
@@ -410,6 +412,7 @@ Igorfina fala no estilo do astro do basquete (imitação). Aluno repete; a pron�
 8. **fix_error** — "Shut up, please, the movie started."
    **Hint**: "Shut up" é rude; troque pelo pedido educado
    **Answer**: Could you be quiet, please? The movie started.
+   **Accepts**: Can you be quiet, please? The movie started. / Could you please be quiet? The movie started. / Please be quiet, the movie started. / Could you be quiet, please?
    **Explanation**: Mesmo com "please", "shut up" é grosseiro com desconhecidos. Use "Could you be quiet, please?".
 
 9. **fix_error** — "Get out from here!"
@@ -574,6 +577,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 8. **fix_error** — "Damn, sir, can you help me?"
    **Hint**: Com desconhecidos, troque o palavrão por algo neutro
    **Answer**: Excuse me, sir, can you help me?
+   **Accepts**: Sorry, sir, can you help me? / Hi, sir, can you help me? / Hello, sir, can you help me? / Sir, can you help me? / Excuse me, can you help me?
    **Explanation**: Palavrão com desconhecido soa grosseiro. Com "Excuse me" você chega com educação.
 
 9. **fix_error** — "The museum ain't open today."

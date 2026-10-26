@@ -69,8 +69,9 @@
    **Answer**: My brother, who lives in Rio, is a teacher.
    **Explanation**: Common error: using "that" in non-defining. "That" only in defining clauses (no commas). For non-defining: "who".
 
-9. **fix_error** — "Maria who I met yesterday is from Spain."
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Non-defining precisa de vírgulas
+   **Options**: Maria who I met yesterday is from Spain. / Maria, who I met yesterday, is from Spain. / Maria, who I met yesterday is from Spain.
    **Answer**: Maria, who I met yesterday, is from Spain.
    **Explanation**: Maria is already specific (proper name). The information is EXTRA, it doesn't identify. So, commas are needed (non-defining).
 
@@ -246,8 +247,9 @@
    **Answer**: The Amazon, which is the longest river, runs through Brazil.
    **Explanation**: "That" only in defining clauses (no commas). For non-defining: "which".
 
-9. **fix_error** — "My phone which I bought last week broke already."
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Non-defining precisa de vírgulas
+   **Options**: My phone which I bought last week broke already. / My phone, which I bought last week, broke already. / My phone which I bought last week, broke already.
    **Answer**: My phone, which I bought last week, broke already.
    **Explanation**: If the info is EXTRA (doesn't identify among several phones), use commas. Without commas, it would be defining (among several, the one I bought last week).
 

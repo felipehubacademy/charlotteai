@@ -8,6 +8,18 @@
 // "'ve lived" = "have lived"), e trata a ambiguidade de present perfect
 // ('s = is/has, 'd = would/had) testando as duas leituras.
 
+const US_TO_UK: Record<string, string> = {};
+for (const [us, uk] of [
+  ['realize', 'realise'], ['realized', 'realised'], ['realizing', 'realising'],
+  ['recognize', 'recognise'], ['recognized', 'recognised'], ['organize', 'organise'], ['organized', 'organised'],
+  ['apologize', 'apologise'], ['apologized', 'apologised'], ['standardizing', 'standardising'],
+  ['reorganization', 'reorganisation'], ['polarized', 'polarised'],
+  ['favorite', 'favourite'], ['favorites', 'favourites'], ['behavior', 'behaviour'], ['humor', 'humour'],
+  ['color', 'colour'], ['colors', 'colours'], ['honor', 'honour'], ['neighbor', 'neighbour'], ['neighbors', 'neighbours'],
+  ['canceled', 'cancelled'], ['traveled', 'travelled'], ['traveling', 'travelling'],
+  ['center', 'centre'], ['theater', 'theatre'], ['gray', 'grey'],
+]) US_TO_UK[us] = uk;
+
 export function normaliseAnswer(s: string): string {
   return s.trim().toLowerCase()
     .replace(/[‘’‚‛`´]/g, "'")   // smart quotes (iOS) e acentos usados como apóstrofo -> apóstrofo ASCII
@@ -17,6 +29,11 @@ export function normaliseAnswer(s: string): string {
     // Ponto e dois-pontos só no fim de palavra (mantém 8:30 e 2.5).
     .replace(/[“”„‟",!?¿¡;()]/g, ' ')
     .replace(/[.:](?=\s|$)/g, ' ')
+    // Travessão também não conta ("the last straw — I'm quitting" = "the last straw, I'm quitting");
+    // hífen dentro da palavra fica (double-edged).
+    .replace(/[–—]|(^|\s)-+(?=\s|$)/g, ' ')
+    // Grafia americana vale igual à britânica do gabarito (realize = realise, favorite = favourite).
+    .replace(/\b(\w+)\b/g, w => US_TO_UK[w] ?? w)
     // Contração digitada sem apóstrofo (comum no celular): wasnt -> wasn't, cant -> can't, im -> i'm.
     .replace(/\b(was|is|are|were|do|does|did|has|have|had|could|should|would|wo|must|need)nt\b/g, "$1n't")
     .replace(/\bcant\b/g, "can't")
@@ -33,7 +50,6 @@ export function expandContractions(s: string, sTo: 'is' | 'has' = 'is', dTo: 'wo
     .replace(/won't/g, 'will not')
     .replace(/can't/g, 'cannot')
     .replace(/shan't/g, 'shall not')
-    .replace(/ain't/g, 'is not')
     .replace(/n't/g, ' not')
     // Sujeito + contração
     .replace(/\b(i|you|we|they|who)'ve\b/g, '$1 have')
@@ -107,10 +123,26 @@ export function checkGrammarAnswer(
   answer: string,
   correct: string,
   accepts?: string[],
+  wrong?: string,
 ): boolean {
+  // Múltipla escolha: o aluno toca numa alternativa, então compara a alternativa exata
+  // (a normalização ignora pontuação, e há questões em que só a pontuação muda entre as opções).
+  if (type === 'multiple_choice') {
+    const k = (s: string) => s.trim().toLowerCase().replace(/[‘’‚‛`´]/g, "'");
+    return k(answer) === k(correct) || !!accepts?.some(a => k(a) === k(answer));
+  }
+
   const u = normaliseAnswer(answer);
   const c = normaliseAnswer(correct);
   if (u === c) return true;
+
+  // fix_error: repetir a frase errada nunca vale. Sem isso, erro de palavra a mais ou a menos
+  // passava pela comparação flexível ("Sorry me!" contém "Sorry!"). A frase pode vir com
+  // contexto antes da citação ('Awkward: "The matter is..."'), então vale também o trecho entre aspas.
+  if (type === 'fix_error' && wrong) {
+    const quoted = wrong.match(/["“]([^"”]+)["”]/)?.[1];
+    if (u === normaliseAnswer(wrong) || (quoted && u === normaliseAnswer(quoted))) return false;
+  }
 
   if (accepts && accepts.length) {
     const lenient = type === 'read_answer' || type === 'fix_error' || type === 'fill_gap';

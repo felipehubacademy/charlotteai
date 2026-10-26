@@ -48,7 +48,7 @@
 3. **fill_gap** — Argument climax: "One reason is that the policy saves money. Another is that it saves lives. _____, it restores public trust."
    **Hint**: marcador de clímax argumentativo
    **Answer**: Most importantly
-   **Accepts**: Most significantly / Importantly
+   **Accepts**: Most significantly / Importantly / Above all / Crucially / Most crucially / Finally
    **Explanation**: Cascade pattern: each marker ranks the next claim higher. "Most importantly" (or "Above all", "Crucially") signals the strongest point — the climax of the argument.
 
 4. **fix_error** — "Firstly the policy works. Secondly it's affordable. Lastly people support it."
@@ -202,11 +202,14 @@
 3. **fill_gap** — Cautioning against assumption: "_____ that the trend will continue indefinitely. Markets, after all, are not linear."
    **Hint**: "It would be a mistake to assume"
    **Answer**: It would be a mistake to assume
+   **Accepts**: It would be wrong to assume / It is a mistake to assume / It would be naive to assume / We should not assume / It would be unwise to assume
    **Explanation**: "It would be a mistake to assume..." — pre-emptive rebuttal of an implicit assumption. Standard C2 argument move. Variants: "It would be premature to conclude", "We should be wary of assuming".
 
-4. **fix_error** — "Some peoples say the policy is too expensive but they are wrong."
+4. **short_write** — "Some peoples say the policy is too expensive but they are wrong."
    **Hint**: "Some people say... however" is more polished than "some are wrong"
    **Answer**: Some may object that the policy is too expensive. However, this overlooks the long-term savings.
+   **Prompt**: Rewrite this as a polished counter-argument: present the objection, then answer it.
+   **Example answer**: Some may object that the policy is too expensive. However, this overlooks the long-term savings.
    **Explanation**: "Some peoples" — wrong noun form. "But they are wrong" — bluntly dismissive, weak rhetorically. The polished form acknowledges the objection ("Some may object that...") and refutes specifically ("this overlooks...").
 
 5. **read_answer**
@@ -509,7 +512,7 @@
 3. **fill_gap** — Causal climax: "Resources shrank, talent left, morale collapsed — _____, the project failed."
    **Hint**: "Inevitably" or "As a result" or "Hence"
    **Answer**: as a result
-   **Accepts**: inevitably / hence / therefore
+   **Accepts**: inevitably / hence / therefore / consequently / thus / unsurprisingly / in the end / ultimately
    **Explanation**: After a cascade of negative causes, a closing marker delivers the consequence. "As a result", "Hence", "Inevitably", "Consequently" — each works. "As a result" is neutral; "Inevitably" claims the outcome was unavoidable; "Hence" is formal.
 
 4. **short_write** — "A causes B, which causes C, this causes D."
@@ -665,6 +668,7 @@
 3. **fill_gap** — Strong frame: "_____ before us is clear: pay the cost of action now or pay a higher one later."
    **Hint**: "The choice"
    **Answer**: The choice
+   **Accepts**: The decision
    **Explanation**: "The choice before us is clear: X or Y" — binary-frame conclusion. Reframes the entire argument as a single decision. Common in op-eds, manifestos, and political speeches. The colon introduces the two options.
 
 4. **fix_error** — "The stakes are not higher anywhere."

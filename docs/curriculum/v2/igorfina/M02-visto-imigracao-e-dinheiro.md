@@ -81,7 +81,7 @@
 7. **fill_gap** — "A: What's the purpose of your trip? B: _____."
    **Hint**: Resposta curta: férias
    **Answer**: Vacation
-   **Accepts**: Just vacation / Holiday / Tourism
+   **Accepts**: Just vacation / Holiday / Tourism / Pleasure / Sightseeing
    **Explanation**: Na imigração, resposta curta funciona: "Vacation." Não precisa contar a história toda.
 
 8. **fix_error** — "I'm here in vacation."
@@ -404,11 +404,13 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 6. **fill_gap** — "A: How long are you staying? B: Just two _____."
    **Hint**: Semanas
    **Answer**: weeks
+   **Accepts**: days / months / nights
    **Explanation**: "Just two weeks" = só duas semanas. "Just" deixa a resposta leve e natural.
 
 7. **fill_gap** — "Do you have a return _____?"
    **Hint**: Passagem (bilhete de volta)
    **Answer**: ticket
+   **Accepts**: flight
    **Explanation**: "Return ticket" é a passagem de volta. É bom ter no celular para mostrar se pedirem.
 
 8. **fix_error** — "I'm staying in ten days."
@@ -588,6 +590,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
     **Passage**: "Officer: Anything to declare? Igor: No, nothing to declare. Officer: How much money did you bring? Igor: I brought six hundred dollars in cash."
     **Question**: Quanto dinheiro o Igor trouxe? (responda em inglês, como ele disse)
     **Answer**: Six hundred dollars
+    **Accepts**: 600 dollars / $600 / 600
     **Explanation**: Ele disse "six hundred dollars in cash": seiscentos dólares em espécie. E "nothing to declare" = nada a declarar.
 
 ### 2. Listening/Speaking (5 phrases)

@@ -198,7 +198,7 @@
 3. **fill_gap** — "Are you sure about the date?" "I _____, but let me double-check."
    **Hint**: "Believe so" or "think so"
    **Answer**: believe so
-   **Accepts**: think so
+   **Accepts**: think so / guess so / suppose so
    **Explanation**: "I believe so" — substitution after believe. Same pattern with other thinking verbs: think, suppose, imagine, presume, gather. All take "so" or "not" as clause replacements in conversation.
 
 4. **fix_error** — "Will she come? I think yes."
@@ -504,13 +504,13 @@
 3. **fill_gap** — "I told her I would email Monday, but she suggested I _____ today instead."
    **Hint**: "Do it" or "do so"
    **Answer**: do so
-   **Accepts**: do it
+   **Accepts**: do it / do that
    **Explanation**: "Do so" or "do it" — both replace "email" here. "Do so" leans formal; "do it" leans conversational. C2 speakers choose by register.
 
 4. **fix_error** — "She walked into the room. He did so." (Stylistically — too repetitive of action)
    **Hint**: Native English often uses "He did the same" or "He did too"
    **Answer**: She walked into the room. He did the same.
-   **Accepts**: She walked into the room. He did too.
+   **Accepts**: She walked into the room. He did too. / She walked into the room. He did likewise.
    **Explanation**: "He did so" is grammatical but stylistically heavy in narrative — feels formal-stilted. "Did the same" or "did too" or "followed" reads more naturally. Register-aware substitution: "do so" for formal, "do the same / do too" for everyday narrative.
 
 5. **read_answer**
@@ -652,21 +652,20 @@
    **Explanation**: "So do I" — echo for positive statements. Pattern: "So + auxiliary + subject". Match the auxiliary to the original sentence: "I love" → "So do I". For "I am happy" → "So am I". For "I can swim" → "So can I". The auxiliary mirrors the original.
 
 2. **multiple_choice** — "I haven't seen that film." "_____."
-   **Options**: Neither have I / So have I / Either have I / Me neither
+   **Options**: Neither have I / So have I / Either have I / Neither I have
    **Answer**: Neither have I
-   **Accepts**: Me neither" in casual register
    **Explanation**: "Neither have I" — echo for negative statements. Pattern: "Neither + auxiliary + subject". Both work: "Neither have I" (formal) and "Me neither" (informal). Some speakers say "Nor have I" — synonymous with "Neither have I".
 
 3. **fill_gap** — "She was tired." "_____."
    **Hint**: Echo with "so + was + subject"
    **Answer**: So was I
-   **Accepts**: So was he / So was everyone
+   **Accepts**: So was he / So was everyone / Me too / So was everybody / So were we
    **Explanation**: Past simple of "be" → "So was + subject". Pattern: match the auxiliary form ("was") and invert with the subject. The whole verb phrase is replaced by the auxiliary echo.
 
 4. **fix_error** — "I don't like coffee." "Me too."
    **Hint**: For negative agreement, use "Me neither" or "Neither do I"
    **Answer**: I don't like coffee. — Me neither.
-   **Accepts**: Neither do I.
+   **Accepts**: Neither do I. / Me neither / Me either / Nor do I
    **Explanation**: "Me too" is for positive agreement ("I like coffee. — Me too"). For negative agreement, use "Me neither" or "Neither do I". Common L2 error — defaulting to "me too" for all agreement.
 
 5. **read_answer**

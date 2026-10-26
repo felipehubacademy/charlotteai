@@ -50,13 +50,13 @@
 3. **fill_gap** — "She's not stingy with the budget — she's _____."
    **Hint**: positive word for careful with money
    **Answer**: thrifty
-   **Accepts**: frugal
+   **Accepts**: frugal / economical / careful / prudent
    **Explanation**: "Stingy" is strongly negative (selfishly cheap). "Thrifty" is positive (wisely economical). "Frugal" is neutral-positive (austere by choice). "Cheap" sits negative when applied to a person. Reframing "stingy" as "thrifty" reverses the moral charge while describing the same act.
 
 4. **fix_error** — "Your essay was great — really skinny and direct."
    **Hint**: "Skinny" is mildly negative for body, wrong word for prose
    **Answer**: Your essay was great — really lean and direct.
-   **Accepts**: tight, concise
+   **Accepts**: tight, concise / Your essay was great — really concise and direct. / Your essay was great — really tight and direct. / Your essay was great — really crisp and direct.
    **Explanation**: "Skinny" carries unkind body-image weight. Applied to writing, the better word is "lean" or "tight" or "concise" — all positive. Connotation matters: "slim" leans neutral, "slender" leans positive, "skinny/scrawny" lean negative.
 
 5. **read_answer**
@@ -205,6 +205,7 @@
 3. **fill_gap** — Formal: "The investigation will _____ whether the claim is valid."
    **Hint**: Formal verb for "find out"
    **Answer**: ascertain
+   **Accepts**: determine / establish
    **Explanation**: "Ascertain" — formal Latinate verb meaning to find out for certain. Common in legal, investigative, academic writing. Informal counterpart: "find out" or "check". Register placement matters.
 
 4. **short_write** — Formal email: "We need to kick off the project."
@@ -359,12 +360,13 @@
 3. **fill_gap** — "Three hundred employees were _____ in the restructuring."
    **Hint**: Corporate euphemism for "fired"
    **Answer**: let go
-   **Accepts**: laid off
+   **Accepts**: laid off / made redundant / laid-off / released
    **Explanation**: "Let go" — corporate euphemism for "fired". "Laid off" specifically implies layoffs (no fault of the worker). "Fired" implies cause/fault. C1 register knows when each fits. Press releases prefer "let go" or "laid off"; HR conversations may use both depending on circumstance.
 
 4. **fix_error** — Funeral condolence: "Sorry about your grandmother — she died Tuesday, right?"
    **Hint**: Use "passed away" in condolence context
    **Answer**: Sorry about your grandmother — she passed away Tuesday, right?
+   **Accepts**: Sorry about your grandmother — she passed Tuesday, right? / Sorry about your grandmother — she passed on Tuesday, right? / Sorry about your grandmother — she passed away on Tuesday, right?
    **Explanation**: "Died" in a direct condolence reads as blunt. Even when factually identical, "passed away" honours the social moment. Register-awareness is part of C1 fluency, not just vocabulary range.
 
 5. **read_answer**
@@ -513,6 +515,7 @@
 3. **fill_gap** — Offered cake: "Well, _____."
    **Hint**: Litotes meaning "yes, please"
    **Answer**: I wouldn't say no
+   **Accepts**: I won't say no
    **Explanation**: "I wouldn't / would not say no" — litotes for accepting eagerly. Polite-British register. Saying "I wouldn't / would not say no" to cake is much warmer than "yes". Cultural code: the litotes signals you want it but won't be greedy about asking.
 
 4. **fix_error** — "The new apartment isn't cheap exactly."
@@ -667,7 +670,7 @@
 3. **fill_gap** — Tech meeting among engineers: "We need to _____ the deployment script before merging."
    **Hint**: Verb that fits engineer-casual register
    **Answer**: refactor
-   **Accepts**: rewrite", "clean up / rewrite / clean up
+   **Accepts**: rewrite / clean up / tidy up / rework
    **Explanation**: Engineer-register prefers technical verbs in casual contexts. "Refactor" is technical but conversational. "Restructure" would be formal-corporate. "Fix" would be too vague. C1 register fluency includes knowing the verb each subculture defaults to.
 
 4. **short_write** — Slack message to your boss: "Yo, can you pop into the call?"

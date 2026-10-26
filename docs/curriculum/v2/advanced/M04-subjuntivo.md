@@ -198,6 +198,7 @@
 3. **fill_gap** — "It was imperative that the troops _____ before dawn."
    **Hint**: base form "withdraw"
    **Answer**: withdraw
+   **Accepts**: pull out / retreat
    **Explanation**: "It was imperative that + subject + base form". Note: even when the main clause is past ("was imperative"), the subjunctive in the that-clause stays in base form. No backshift.
 
 4. **fix_error** — "It is necessary that he is on time."

@@ -62,6 +62,9 @@
           "sentence": "Seldom _____ a film leave me speechless the way that one did.",
           "hint": "\"does\" + base form",
           "answer": "does",
+          "accepts": [
+            "did"
+          ],
           "explanation": "\"Seldom does a film leave...\" — \"does\" auxiliary before subject \"a film\", then base form \"leave\". Singular subject takes \"does\"."
         },
         {
@@ -285,6 +288,12 @@
           "sentence": "Scarcely had I _____ the door when the rain started.",
           "hint": "particípio passado de \"shut\"",
           "answer": "shut",
+          "accepts": [
+            "closed",
+            "opened",
+            "locked",
+            "left"
+          ],
           "explanation": "\"Scarcely had I shut the door when...\" — past perfect after the inversion. \"Shut\" is irregular: shut/shut/shut."
         },
         {
@@ -505,7 +514,9 @@
           "question": "What two achievements does the citation emphasise?",
           "answer": "research that reshaped the field + mentoring a generation",
           "accepts": [
-            "similar"
+            "reshaped the field and mentored a generation",
+            "research and mentoring",
+            "her research and mentoring scientists"
           ],
           "explanation": "\"Not only... but also\" layers two achievements; \"Not until... did we appreciate\" dramatises late recognition. Both inversions register formality and emphasis."
         }
@@ -934,6 +945,9 @@
           "sentence": "At no time _____ the company endorse that policy.",
           "hint": "auxiliar de inversão no past simple",
           "answer": "did",
+          "accepts": [
+            "does"
+          ],
           "explanation": "\"At no time did the company endorse...\" — past inversion. The fronted negative phrase \"at no time\" forces \"did + subject + base\", a formal disavowal."
         },
         {

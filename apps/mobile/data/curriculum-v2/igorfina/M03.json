@@ -601,6 +601,10 @@
           "sentence": "A: Where are you? B: I'm _____ the station.",
           "hint": "Preposição de lugar: na (estação)",
           "answer": "at",
+          "accepts": [
+            "in",
+            "near"
+          ],
           "explanation": "\"At the station\" = na estação. \"At\" é para um ponto, um lugar específico."
         },
         {
@@ -842,7 +846,11 @@
           "hint": "Verbo auxiliar do futuro (vou)",
           "answer": "will",
           "accepts": [
-            "'ll"
+            "'ll",
+            "am gonna",
+            "'m gonna",
+            "am going to",
+            "'m going to"
           ],
           "explanation": "\"I will be there\" (ou \"I'll be there\") = vou estar aí. Frase pronta para combinar horário."
         },
@@ -1100,6 +1108,11 @@
           "sentence": "Today I'm _____ to Brooklyn.",
           "hint": "Indo (go com -ing)",
           "answer": "going",
+          "accepts": [
+            "flying",
+            "driving",
+            "heading"
+          ],
           "explanation": "\"I'm going to Brooklyn\" = estou indo para o Brooklyn (hoje, agora)."
         },
         {
@@ -1108,7 +1121,11 @@
           "hint": "Verbo auxiliar do futuro (vou)",
           "answer": "will",
           "accepts": [
-            "'ll"
+            "'ll",
+            "am going to",
+            "'m going to",
+            "am gonna",
+            "'m gonna"
           ],
           "explanation": "\"I will visit\" (ou \"I'll visit\") = vou visitar. Revisão da F14."
         },

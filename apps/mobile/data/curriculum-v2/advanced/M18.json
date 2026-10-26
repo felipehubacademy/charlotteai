@@ -62,6 +62,9 @@
           "sentence": "The proposal was rejected for three reasons: cost, timing, and political risk. _____ three concerns shaped the rest of the discussion.",
           "hint": "\"These\" + the three reasons just listed",
           "answer": "These",
+          "accepts": [
+            "Those"
+          ],
           "explanation": "\"These three concerns\" — \"these\" because the antecedent is plural (\"three reasons\"). The demonstrative gathers the just-listed items and names them with a summary noun (\"concerns\"). This pattern — \"These X...\" — is essential for extended discourse cohesion."
         },
         {
@@ -280,14 +283,20 @@
           "sentence": "Lexical chain: \"She rescued a stray dog last winter. _____ animal had been on the street for weeks.\"",
           "hint": "Superordinate of \"dog\"",
           "answer": "The (animal)",
+          "accepts": [
+            "That",
+            "This"
+          ],
           "explanation": "\"The animal\" — moves up from specific (\"dog\") to superordinate (\"animal\"). The article \"the\" signals shared knowledge. This is cohesion through hyponym → superordinate, sustained by definite article."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "He bought a Tesla. He bought a Tesla. He bought a Tesla last year, and a Tesla is expensive to maintain.",
           "hint": "Vary with synonyms / superordinates",
           "answer": "He bought a Tesla last year. The car has been expensive to maintain — the technology is unforgiving when something breaks.",
-          "explanation": "Triple repetition of \"Tesla\" is heavy. Cohesion through variation: Tesla → the car → the technology. Each refers to the same purchase, but the prose breathes."
+          "explanation": "Triple repetition of \"Tesla\" is heavy. Cohesion through variation: Tesla → the car → the technology. Each refers to the same purchase, but the prose breathes.",
+          "prompt": "Rewrite it without the repetition, using synonyms or a general word like \"the car\".",
+          "example_answer": "He bought a Tesla last year. The car has been expensive to maintain — the technology is unforgiving when something breaks."
         },
         {
           "type": "read_answer",
@@ -709,7 +718,8 @@
           "hint": "Reference back with old info first",
           "answer": "That discussion",
           "accepts": [
-            "The discussion"
+            "The discussion",
+            "This discussion"
           ],
           "explanation": "\"That discussion\" (referring back) → \"revealed significant risks\" (new info). Or \"The discussion\" — definite article carries old info. The sentence builds on what was just mentioned."
         },

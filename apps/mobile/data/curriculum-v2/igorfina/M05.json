@@ -92,7 +92,8 @@
           "hint": "Você poderia...? (pedido educado)",
           "answer": "Could",
           "accepts": [
-            "Can"
+            "Can",
+            "Would"
           ],
           "explanation": "\"Could you help me?\" é mais educado; \"Can you help me?\" também funciona."
         },
@@ -599,6 +600,10 @@
           "sentence": "Tea or coffee? I'd rather _____ coffee.",
           "hint": "Tomar (verbo \"have\")",
           "answer": "have",
+          "accepts": [
+            "drink",
+            "get"
+          ],
           "explanation": "\"I'd rather have coffee\" = prefiro café. Com comida e bebida, use \"have\"."
         },
         {
@@ -846,7 +851,8 @@
           "hint": "Talvez (~70%)",
           "answer": "might",
           "accepts": [
-            "may"
+            "may",
+            "could"
           ],
           "explanation": "\"I might stay at the hotel\" = talvez eu fique no hotel."
         },
@@ -1095,6 +1101,9 @@
           "sentence": "You don't _____ to pay. It's free!",
           "hint": "Precisar (você não precisa)",
           "answer": "have",
+          "accepts": [
+            "need"
+          ],
           "explanation": "\"You don't have to pay\" = você não precisa pagar. Atenção: \"don't have to\" é \"não precisa\", não é \"não pode\"."
         },
         {

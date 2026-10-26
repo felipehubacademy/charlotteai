@@ -366,6 +366,7 @@
 3. **fill_gap** — "Take what he says with a _____ of salt — he exaggerates."
    **Hint**: small unit of salt
    **Answer**: grain
+   **Accepts**: pinch
    **Explanation**: "Take with a grain of salt" = treat with healthy scepticism. British variant: "pinch of salt". The image: a small dose of salt was once thought to neutralise poisons; metaphorically, a small dose of doubt neutralises misleading claims.
 
 4. **fix_error** — "She's a hard nut to broke."

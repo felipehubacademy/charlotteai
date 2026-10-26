@@ -69,7 +69,10 @@
           "hint": "positive word for careful with money",
           "answer": "thrifty",
           "accepts": [
-            "frugal"
+            "frugal",
+            "economical",
+            "careful",
+            "prudent"
           ],
           "explanation": "\"Stingy\" is strongly negative (selfishly cheap). \"Thrifty\" is positive (wisely economical). \"Frugal\" is neutral-positive (austere by choice). \"Cheap\" sits negative when applied to a person. Reframing \"stingy\" as \"thrifty\" reverses the moral charge while describing the same act."
         },
@@ -79,7 +82,10 @@
           "hint": "\"Skinny\" is mildly negative for body, wrong word for prose",
           "answer": "Your essay was great — really lean and direct.",
           "accepts": [
-            "tight, concise"
+            "tight, concise",
+            "Your essay was great — really concise and direct.",
+            "Your essay was great — really tight and direct.",
+            "Your essay was great — really crisp and direct."
           ],
           "explanation": "\"Skinny\" carries unkind body-image weight. Applied to writing, the better word is \"lean\" or \"tight\" or \"concise\" — all positive. Connotation matters: \"slim\" leans neutral, \"slender\" leans positive, \"skinny/scrawny\" lean negative."
         },
@@ -288,6 +294,10 @@
           "sentence": "Formal: \"The investigation will _____ whether the claim is valid.\"",
           "hint": "Formal verb for \"find out\"",
           "answer": "ascertain",
+          "accepts": [
+            "determine",
+            "establish"
+          ],
           "explanation": "\"Ascertain\" — formal Latinate verb meaning to find out for certain. Common in legal, investigative, academic writing. Informal counterpart: \"find out\" or \"check\". Register placement matters."
         },
         {
@@ -510,7 +520,10 @@
           "hint": "Corporate euphemism for \"fired\"",
           "answer": "let go",
           "accepts": [
-            "laid off"
+            "laid off",
+            "made redundant",
+            "laid-off",
+            "released"
           ],
           "explanation": "\"Let go\" — corporate euphemism for \"fired\". \"Laid off\" specifically implies layoffs (no fault of the worker). \"Fired\" implies cause/fault. C1 register knows when each fits. Press releases prefer \"let go\" or \"laid off\"; HR conversations may use both depending on circumstance."
         },
@@ -519,6 +532,11 @@
           "sentence": "Funeral condolence: \"Sorry about your grandmother — she died Tuesday, right?\"",
           "hint": "Use \"passed away\" in condolence context",
           "answer": "Sorry about your grandmother — she passed away Tuesday, right?",
+          "accepts": [
+            "Sorry about your grandmother — she passed Tuesday, right?",
+            "Sorry about your grandmother — she passed on Tuesday, right?",
+            "Sorry about your grandmother — she passed away on Tuesday, right?"
+          ],
           "explanation": "\"Died\" in a direct condolence reads as blunt. Even when factually identical, \"passed away\" honours the social moment. Register-awareness is part of C1 fluency, not just vocabulary range."
         },
         {
@@ -715,6 +733,9 @@
           "sentence": "Offered cake: \"Well, _____.\"",
           "hint": "Litotes meaning \"yes, please\"",
           "answer": "I wouldn't say no",
+          "accepts": [
+            "I won't say no"
+          ],
           "explanation": "\"I wouldn't / would not say no\" — litotes for accepting eagerly. Polite-British register. Saying \"I wouldn't / would not say no\" to cake is much warmer than \"yes\". Cultural code: the litotes signals you want it but won't be greedy about asking."
         },
         {
@@ -928,9 +949,10 @@
           "hint": "Verb that fits engineer-casual register",
           "answer": "refactor",
           "accepts": [
-            "rewrite\", \"clean up",
             "rewrite",
-            "clean up"
+            "clean up",
+            "tidy up",
+            "rework"
           ],
           "explanation": "Engineer-register prefers technical verbs in casual contexts. \"Refactor\" is technical but conversational. \"Restructure\" would be formal-corporate. \"Fix\" would be too vague. C1 register fluency includes knowing the verb each subculture defaults to."
         },

@@ -109,8 +109,13 @@
           "explanation": "Common error: using \"that\" in non-defining. \"That\" only in defining clauses (no commas). For non-defining: \"who\"."
         },
         {
-          "type": "fix_error",
-          "sentence": "Maria who I met yesterday is from Spain.",
+          "type": "multiple_choice",
+          "sentence": "Which sentence is punctuated correctly?",
+          "options": [
+            "Maria who I met yesterday is from Spain.",
+            "Maria, who I met yesterday, is from Spain.",
+            "Maria, who I met yesterday is from Spain."
+          ],
           "hint": "Non-defining precisa de vírgulas",
           "answer": "Maria, who I met yesterday, is from Spain.",
           "explanation": "Maria is already specific (proper name). The information is EXTRA, it doesn't identify. So, commas are needed (non-defining)."
@@ -382,8 +387,13 @@
           "explanation": "\"That\" only in defining clauses (no commas). For non-defining: \"which\"."
         },
         {
-          "type": "fix_error",
-          "sentence": "My phone which I bought last week broke already.",
+          "type": "multiple_choice",
+          "sentence": "Which sentence is punctuated correctly?",
+          "options": [
+            "My phone which I bought last week broke already.",
+            "My phone, which I bought last week, broke already.",
+            "My phone which I bought last week, broke already."
+          ],
           "hint": "Non-defining precisa de vírgulas",
           "answer": "My phone, which I bought last week, broke already.",
           "explanation": "If the info is EXTRA (doesn't identify among several phones), use commas. Without commas, it would be defining (among several, the one I bought last week)."

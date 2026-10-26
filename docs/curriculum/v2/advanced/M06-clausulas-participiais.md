@@ -51,7 +51,7 @@
 4. **fix_error** — "Walking down the street, the rain started suddenly."
    **Hint**: Subject of participle must match subject of main clause
    **Answer**: While I was walking down the street, the rain started suddenly.
-   **Accepts**: Walking down the street, I felt the rain start suddenly.
+   **Accepts**: Walking down the street, I felt the rain start suddenly. / As I was walking down the street, the rain started suddenly. / When I was walking down the street, the rain started suddenly. / While I was walking down the street, it started raining suddenly.
    **Explanation**: As written, the participle "walking" attaches to "the rain" — the rain wasn't walking! Classic dangling participle. Fix by adding a subject clause or rewriting so the participle subject matches the main clause.
 
 5. **read_answer**
@@ -199,6 +199,7 @@
 3. **fill_gap** — "_____ by the team in only six weeks, the prototype exceeded expectations."
    **Hint**: past participle "develop"
    **Answer**: Developed
+   **Accepts**: Built / Designed
    **Explanation**: "Developed by the team in only six weeks" — passive past participle clause with agent. Subject of clause = "prototype" (which was developed).
 
 4. **fix_error** — "Building in 1900, the bridge is still standing."
@@ -352,11 +353,13 @@
 3. **fill_gap** — "_____ for an hour, I finally gave up and called a cab."
    **Hint**: "Having" + past participle "wait"
    **Answer**: Having waited
+   **Accepts**: After waiting
    **Explanation**: "Having waited for an hour" — the waiting was completed (or felt completed) before the main action of giving up. Past perfect compressed.
 
 4. **fix_error** — "Finished my work, I went home."
    **Hint**: Use "Having finished" to mark completion before the main action
    **Answer**: Having finished my work, I went home.
+   **Accepts**: After finishing my work, I went home. / Having finished work, I went home.
    **Explanation**: Bare "Finished my work" reads as past participle adjective ("being in a finished state"), which is awkward here. "Having finished" clearly marks the sequence: first finish, then go.
 
 5. **read_answer**
@@ -510,6 +513,7 @@
 4. **fix_error** — "Being told the news, she immediately called her mother."
    **Hint**: For completed action before main, use "Having been told"
    **Answer**: Having been told the news, she immediately called her mother.
+   **Accepts**: After being told the news, she immediately called her mother. / Told the news, she immediately called her mother.
    **Explanation**: "Being told" suggests simultaneity (as she was being told). For a completed event BEFORE her call, "Having been told" is clearer. Both grammatical, but C1 precision favours the perfect form here.
 
 5. **read_answer**

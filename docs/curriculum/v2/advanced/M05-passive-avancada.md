@@ -198,6 +198,7 @@
 3. **fill_gap** — "They _____ to be considering a merger."
    **Hint**: "are" + past participle of "think"
    **Answer**: are thought
+   **Accepts**: are believed / are said / are reported
    **Explanation**: "They are thought to be considering" — continuous infinitive after "to". The subject "they" is reported as currently considering something.
 
 4. **fix_error** — "He is said that he is wealthy."
@@ -351,11 +352,13 @@
 3. **fill_gap** — "We need to _____ this contract _____ by Friday."
    **Hint**: "have/get" / past participle "review"
    **Answer**: have / reviewed
+   **Accepts**: have reviewed / get / reviewed / get reviewed / have it reviewed / have this contract reviewed / get this contract reviewed
    **Explanation**: "Have this contract reviewed by Friday" — passive causative with deadline. Implies the reviewing will be done by someone else (a lawyer, an editor), arranged by us.
 
 4. **fix_error** — "I cut my hair last week" (you mean someone else cut it).
    **Hint**: To make clear someone else did it, use causative
    **Answer**: I had my hair cut last week.
+   **Accepts**: I got my hair cut last week.
    **Explanation**: "I cut my hair" implies you did it yourself with scissors at home. To indicate a barber did it, use the causative: "I had/got my hair cut". Crucial precision in C1 communication.
 
 5. **read_answer**
@@ -503,11 +506,13 @@
 3. **fill_gap** — "We _____ our house _____ while we were away."
    **Hint**: "had" / past participle "burgle"
    **Answer**: had / burgled
+   **Accepts**: had burgled / got / burgled / got burgled / had our house burgled / got our house burgled / had / robbed / had robbed / had our house robbed / had / broken into / had our house broken into
    **Explanation**: "Had our house burgled" — passive misfortune, no agency on the homeowners' part. The structure mirrors causative but the meaning is its opposite.
 
 4. **fix_error** — "I cut my hair by a hairdresser yesterday."
    **Hint**: To name the agent, use causative + "by"
    **Answer**: I had my hair cut by a hairdresser yesterday.
+   **Accepts**: I got my hair cut by a hairdresser yesterday.
    **Explanation**: "I cut my hair" implies you did it. To attribute action to someone else AND name them, use causative + "by + agent". "I had/got my hair cut by..."
 
 5. **read_answer**
@@ -655,11 +660,13 @@
 3. **fill_gap** — "I need to _____ my passport _____ before I travel."
    **Hint**: "have" / "renew" past participle
    **Answer**: have / renewed
+   **Accepts**: have renewed / get / renewed / get renewed / have my passport renewed / get my passport renewed
    **Explanation**: Causative: "Have my passport renewed" — arranging the service. Distinct from "renew my passport" (you doing the renewal yourself, which makes less sense since governments issue them).
 
 4. **fix_error** — "I had stolen my bike last week."
    **Hint**: For misfortune, the structure is "had + object + past participle" (your bike was stolen)
    **Answer**: I had my bike stolen last week.
+   **Accepts**: I got my bike stolen last week.
    **Explanation**: "I had stolen my bike" reads as "I had committed the theft of my bike" (past perfect active). To describe the misfortune of being stolen from, use "I had + object + past participle".
 
 5. **read_answer**

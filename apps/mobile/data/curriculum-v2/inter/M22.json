@@ -120,15 +120,25 @@
           "explanation": "\"On the other hand\" for comparison between two people/things."
         },
         {
-          "type": "fix_error",
-          "sentence": "I love pizza, however, I can't eat it daily.",
+          "type": "multiple_choice",
+          "sentence": "Which sentence is punctuated correctly?",
+          "options": [
+            "I love pizza. However, I can't eat it daily.",
+            "I love pizza, however, I can't eat it daily.",
+            "I love pizza however I can't eat it daily."
+          ],
           "hint": "\"However\" precisa de ponto antes (não vírgula)",
           "answer": "I love pizza. However, I can't eat it daily.",
           "explanation": "\"However\" starts a new sentence, separated by a period. A comma before creates a comma splice. Correct punctuation: period + However + comma."
         },
         {
-          "type": "fix_error",
-          "sentence": "The weather was bad. However we went out.",
+          "type": "multiple_choice",
+          "sentence": "Which sentence is punctuated correctly?",
+          "options": [
+            "The weather was bad. However we went out.",
+            "The weather was bad. However, we went out.",
+            "The weather was bad, however we went out."
+          ],
           "hint": "Falta vírgula após \"However\" no início",
           "answer": "The weather was bad. However, we went out.",
           "explanation": "\"However\" always takes a comma AFTER when starting a sentence. And it doesn't replace \"although\" (which joins clauses)."
@@ -710,21 +720,27 @@
           "explanation": "\"For that reason\" = for that reason. Links motive to behavior."
         },
         {
-          "type": "fix_error",
-          "sentence": "Sales dropped therefore we cut the budget.",
+          "type": "multiple_choice",
+          "sentence": "Which sentence is punctuated correctly?",
+          "options": [
+            "Sales dropped. Therefore, we cut the budget.",
+            "Sales dropped therefore we cut the budget.",
+            "Sales dropped, therefore we cut the budget."
+          ],
           "hint": "Falta pontuação — ponto e vírgula",
           "answer": "Sales dropped. Therefore, we cut the budget.",
           "explanation": "Sentence connectors need a period before and a comma after. No punctuation = comma splice."
         },
         {
-          "type": "fix_error",
-          "sentence": "He was sick, therefore he didn't come.",
+          "type": "multiple_choice",
+          "sentence": "Which sentence is punctuated correctly?",
+          "options": [
+            "He was sick, therefore he didn't come.",
+            "He was sick. Therefore, he didn't come.",
+            "He was sick therefore, he didn't come."
+          ],
           "hint": "\"Therefore\" prefere ponto/ponto-e-vírgula antes",
           "answer": "He was sick. Therefore, he didn't come.",
-          "accepts": [
-            "He was sick; therefore, he didn't come.",
-            "He was sick; therefore he didn't come."
-          ],
           "explanation": "A simple comma isn't strong enough for \"therefore\". Use a period or semicolon."
         },
         {
@@ -1004,8 +1020,13 @@
           "explanation": "\"For example\" introduces a concrete example after a generalization."
         },
         {
-          "type": "fix_error",
-          "sentence": "He's smart, furthermore he's funny.",
+          "type": "multiple_choice",
+          "sentence": "Which sentence is punctuated correctly?",
+          "options": [
+            "He's smart, furthermore he's funny.",
+            "He's smart. Furthermore, he's funny.",
+            "He's smart furthermore, he's funny."
+          ],
           "hint": "Pontuação — ponto antes de \"furthermore\"",
           "answer": "He's smart. Furthermore, he's funny.",
           "explanation": "Formal sentence connectors need a period before, comma after. Comma splice = incorrect."
@@ -1296,15 +1317,25 @@
           "explanation": "\"In conclusion\" — formal decision/recommendation."
         },
         {
-          "type": "fix_error",
-          "sentence": "In conclusion the project was successful.",
+          "type": "multiple_choice",
+          "sentence": "Which sentence is punctuated correctly?",
+          "options": [
+            "In conclusion the project was successful.",
+            "In conclusion, the project was successful.",
+            "In conclusion the project, was successful."
+          ],
           "hint": "Falta vírgula após o conector",
           "answer": "In conclusion, the project was successful.",
           "explanation": "\"In conclusion\" at the start needs a comma after. Universal rule for opening discourse markers."
         },
         {
-          "type": "fix_error",
-          "sentence": "All in all I learned a lot this year.",
+          "type": "multiple_choice",
+          "sentence": "Which sentence is punctuated correctly?",
+          "options": [
+            "All in all I learned a lot this year.",
+            "All in all, I learned a lot this year.",
+            "All, in all I learned a lot this year."
+          ],
           "hint": "Vírgula obrigatória após",
           "answer": "All in all, I learned a lot this year.",
           "explanation": "\"All in all\" at the start = comma required. Same for informal connectors."

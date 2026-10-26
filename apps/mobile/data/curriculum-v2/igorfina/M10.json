@@ -92,6 +92,10 @@
           "sentence": "The park is free to _____.",
           "hint": "Visitar",
           "answer": "visit",
+          "accepts": [
+            "enter",
+            "explore"
+          ],
           "explanation": "\"Free to visit\" = de graça para visitar. Parques, praias e ruas famosas costumam ser."
         },
         {
@@ -113,6 +117,9 @@
           "sentence": "It's gratis?",
           "hint": "\"Grátis\" em inglês é outra palavra",
           "answer": "Is it free?",
+          "accepts": [
+            "Is it for free?"
+          ],
           "explanation": "\"Free\" e ordem de pergunta: \"Is it free?\". \"Gratis\" existe, mas quase ninguém usa na rua."
         },
         {
@@ -120,6 +127,11 @@
           "sentence": "Have a free tour here?",
           "hint": "Use \"Is there...?\"",
           "answer": "Is there a free tour here?",
+          "accepts": [
+            "Is there a free tour?",
+            "Do you have a free tour here?",
+            "Do you have a free tour?"
+          ],
           "explanation": "Em português \"tem um tour?\"; em inglês, \"Is there a tour?\". Não use \"have\" para \"existir\"."
         },
         {
@@ -347,7 +359,11 @@
           "hint": "Vou (futuro decidido agora)",
           "answer": "will",
           "accepts": [
-            "'ll"
+            "'ll",
+            "am gonna",
+            "'m gonna",
+            "am going to",
+            "'m going to"
           ],
           "explanation": "\"I will take the bus\" (ou \"I'll take the bus\"). Revisão do M03."
         },
@@ -617,6 +633,10 @@
           "sentence": "Is there a cheap local around here?",
           "hint": "\"Lugar\" em inglês é outra palavra",
           "answer": "Is there a cheap place around here?",
+          "accepts": [
+            "Is there a cheap restaurant around here?",
+            "Is there a cheap spot around here?"
+          ],
           "explanation": "\"Local\" em inglês é \"local, da região\". Lugar = \"place\"."
         },
         {

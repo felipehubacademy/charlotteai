@@ -100,6 +100,9 @@
           "sentence": "_____ me? Can you repeat, please?",
           "hint": "Com licença / como é? (quando não entendeu)",
           "answer": "Excuse",
+          "accepts": [
+            "Pardon"
+          ],
           "explanation": "\"Excuse me?\" com tom de pergunta quer dizer \"como é? não entendi\". Serve para pedir que a pessoa repita."
         },
         {
@@ -139,7 +142,8 @@
           "answer": "Sorry!",
           "accepts": [
             "Excuse me!",
-            "I'm sorry!"
+            "I'm sorry!",
+            "So sorry!"
           ],
           "explanation": "\"Sorry\" já é o pedido de desculpas completo. \"Sorry me\" não existe; quem leva o \"me\" é o \"excuse\"."
         },
@@ -355,7 +359,10 @@
           "hint": "Basta um \"much\"",
           "answer": "Thank you very much!",
           "accepts": [
-            "Thank you so much!"
+            "Thank you so much!",
+            "Thanks so much!",
+            "Thanks a lot!",
+            "Thank you!"
           ],
           "explanation": "\"Thank you very much\" ou \"Thank you so much\": um \"much\" só. Repetir não deixa mais educado."
         },

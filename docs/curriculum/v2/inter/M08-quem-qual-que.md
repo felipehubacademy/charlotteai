@@ -68,8 +68,9 @@
    **Answer**: He's the man who called me.
    **Explanation**: "Who" for people, "which" for things.
 
-9. **fix_error** — "She's the girl, who lives here." (defining = no comma)
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: No comma in defining clause
+   **Options**: She's the girl who lives here. / She's the girl, who lives here. / She's, the girl who lives here.
    **Answer**: She's the girl who lives here.
    **Explanation**: Defining clauses have NO commas. Identifies which girl.
 
@@ -248,10 +249,10 @@
    **Answer**: The book that I read was great.
    **Explanation**: Book = thing → "that" or "which".
 
-9. **fix_error** — "He has a car, which is red." (defining = no comma)
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: No comma in defining
+   **Options**: He has a car which is red. / He has a car, which is red. / He has, a car which is red.
    **Answer**: He has a car which is red.
-   **Accepts**: He has a red car
    **Explanation**: Defining → no comma. Non-defining (info adicional) → comma — but M19 covers that.
 
 10. **read_answer**

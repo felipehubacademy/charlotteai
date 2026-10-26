@@ -65,6 +65,10 @@
           "sentence": "We weren't expecting an offer that high. _____, we were ready to negotiate for less.",
           "hint": "Past clarification marker",
           "answer": "As a matter of fact",
+          "accepts": [
+            "In fact",
+            "Actually"
+          ],
           "explanation": "\"As a matter of fact\" introduces a behind-the-scenes truth that softens or surprises. Used when adding context that adjusts the interlocutor's mental model."
         },
         {
@@ -512,14 +516,22 @@
           "sentence": "She's not just busy. _____, she's overwhelmed.",
           "hint": "Correction marker",
           "answer": "Or rather",
+          "accepts": [
+            "In fact",
+            "Actually",
+            "Rather",
+            "More accurately"
+          ],
           "explanation": "\"Or rather\" introduces a self-correction — replacing a less-accurate term with a more-accurate one. Comma after. Used when you realise mid-sentence that you've understated or misstated something."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "The data suggests, in other words, a downward trend.",
           "hint": "\"In other words\" doesn't fit mid-clause when there's no paraphrase",
           "answer": "The data suggests a downward trend. In other words, sales are slipping.",
-          "explanation": "\"In other words\" introduces a restatement of a prior idea. It needs something to restate. Inserting it without a paraphrase makes it filler. Use only when you're actually paraphrasing."
+          "explanation": "\"In other words\" introduces a restatement of a prior idea. It needs something to restate. Inserting it without a paraphrase makes it filler. Use only when you're actually paraphrasing.",
+          "prompt": "Fix the sentence: use \"In other words\" only to introduce a paraphrase.",
+          "example_answer": "The data suggests a downward trend. In other words, sales are slipping."
         },
         {
           "type": "read_answer",
@@ -713,6 +725,10 @@
           "sentence": "He's a great teacher — _____, the students adore him.",
           "hint": "\"Not least\"",
           "answer": "not least",
+          "accepts": [
+            "indeed",
+            "in fact"
+          ],
           "explanation": "\"Not least\" introduces a specifically important point, often understated. Fixed phrase. Means \"and not at all unimportantly\". Often introduces the most concrete or compelling evidence in a list."
         },
         {
@@ -933,6 +949,12 @@
           "sentence": "The contract was breached; _____, we are entitled to compensation.",
           "hint": "Formal causal marker",
           "answer": "hence",
+          "accepts": [
+            "therefore",
+            "thus",
+            "consequently",
+            "accordingly"
+          ],
           "explanation": "\"Hence\" = therefore, formal. Fixed marker introducing a consequence. Synonym: \"accordingly\", \"thus\". Common in legal, academic, business prose. Note: \"hence\" can also mean \"from now\" (\"five years hence\") but as discourse marker means \"therefore\"."
         },
         {

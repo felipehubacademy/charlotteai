@@ -110,8 +110,13 @@
           "explanation": "\"Who\" for people, \"which\" for things."
         },
         {
-          "type": "fix_error",
-          "sentence": "\"She's the girl, who lives here.\" (defining = no comma)",
+          "type": "multiple_choice",
+          "sentence": "Which sentence is punctuated correctly?",
+          "options": [
+            "She's the girl who lives here.",
+            "She's the girl, who lives here.",
+            "She's, the girl who lives here."
+          ],
           "hint": "No comma in defining clause",
           "answer": "She's the girl who lives here.",
           "explanation": "Defining clauses have NO commas. Identifies which girl."
@@ -388,13 +393,15 @@
           "explanation": "Book = thing → \"that\" or \"which\"."
         },
         {
-          "type": "fix_error",
-          "sentence": "\"He has a car, which is red.\" (defining = no comma)",
+          "type": "multiple_choice",
+          "sentence": "Which sentence is punctuated correctly?",
+          "options": [
+            "He has a car which is red.",
+            "He has a car, which is red.",
+            "He has, a car which is red."
+          ],
           "hint": "No comma in defining",
           "answer": "He has a car which is red.",
-          "accepts": [
-            "He has a red car"
-          ],
           "explanation": "Defining → no comma. Non-defining (info adicional) → comma — but M19 covers that."
         },
         {

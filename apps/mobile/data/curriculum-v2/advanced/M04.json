@@ -287,6 +287,10 @@
           "sentence": "It was imperative that the troops _____ before dawn.",
           "hint": "base form \"withdraw\"",
           "answer": "withdraw",
+          "accepts": [
+            "pull out",
+            "retreat"
+          ],
           "explanation": "\"It was imperative that + subject + base form\". Note: even when the main clause is past (\"was imperative\"), the subjunctive in the that-clause stays in base form. No backshift."
         },
         {

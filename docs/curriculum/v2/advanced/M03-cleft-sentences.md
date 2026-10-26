@@ -45,11 +45,13 @@
 3. **fill_gap** — "It was Mary _____ called me last night, not Jane."
    **Hint**: pronome relativo para pessoas
    **Answer**: who
+   **Accepts**: that
    **Explanation**: Subject-emphasis cleft. "It was Mary who" — after "It was + person", use "who" (or "that"), never "which". The cleft contrasts Mary with Jane.
 
 4. **fix_error** — "It was the manager which decided to cancel the project."
    **Hint**: For people, use "who", not "which"
    **Answer**: It was the manager who decided to cancel the project.
+   **Accepts**: It was the manager that decided to cancel the project.
    **Explanation**: After "It was + person", use "who" (or "that"), never "which". "Which" is for things. Common slip when speakers default to "which" as universal connector.
 
 5. **read_answer**

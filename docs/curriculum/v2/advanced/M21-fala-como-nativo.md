@@ -51,6 +51,7 @@
 4. **fix_error** — Casual speech, but over-filled: "Like, you know, I mean, like, the project was, sort of, really hard, you know?"
    **Hint**: Three or more fillers in one sentence is too many
    **Answer**: The project was really hard, you know?
+   **Accepts**: The project was really hard. / Honestly, the project was really hard. / The project was, you know, really hard.
    **Explanation**: Over-filling sounds nervous or under-prepared. C2 fluency = strategic filler use. One filler per sentence is natural; two is borderline; three or more weakens. Remove some and keep one well-placed.
 
 5. **read_answer**
@@ -198,12 +199,12 @@
 3. **fill_gap** — Casual tag for "It's good weather today, _____" (very informal British)
    **Hint**: Universal informal tag
    **Answer**: innit
-   **Accepts**: isn't it" formal
+   **Accepts**: isn't it / is it not
    **Explanation**: "Innit" — universal informal tag in British English, especially Cockney/London. Stands in for any positive→negative tag ("isn't it / aren't they / haven't they / didn't he"). Use cautiously — works in casual peer-to-peer speech but reads as too informal in professional contexts.
 
-4. **fix_error** — Tag mismatched: "You've been to Paris, haven't you?"
-   **Hint**: Actually, that's correct. Try: "You haven't been to Paris, have you?"
-   **Answer**: You haven't been to Paris, have you? (negative → positive tag)
+4. **fix_error** — Tag mismatched: "You haven't been to Paris, haven't you?"
+   **Hint**: Negative statement → positive tag
+   **Answer**: You haven't been to Paris, have you?
    **Explanation**: Common L2 error is matching polarity. Native English always reverses: pos → neg tag, neg → pos tag. "You've / You have been" (positive perfect) + "haven't / have not you?" (negative). "You haven't / have not been" (negative) + "have you?" (positive). Polarity always inverts.
 
 5. **read_answer**
@@ -351,7 +352,7 @@
 3. **fill_gap** — Backchannel meaning "I'm tracking, keep going": "_____"
    **Hint**: Single syllable, neutral confirmation
    **Answer**: Right
-   **Accepts**: Mm-hm / Yeah
+   **Accepts**: Mm-hm / Yeah / Uh-huh / Sure / Okay / OK / Mm
    **Explanation**: "Right" — neutral confirmation backchannel. Often timed during pauses or at the end of a sentence. Allows the speaker to continue without seeking more elaborate confirmation. Stress-pattern: short, rising-falling pitch, almost throwaway.
 
 4. **fix_error** — Over-elaborate backchannel: "I am listening to your account with great interest."
@@ -506,6 +507,7 @@
 3. **fill_gap** — Casual opener for sensitive topic: "_____, I think we should reconsider."
    **Hint**: Attention-getter with deliberate pause
    **Answer**: Look
+   **Accepts**: Listen / Honestly
    **Explanation**: "Look, ..." — informal attention-getter, often preceding a sensitive or direct statement. Casual register. Synonyms: "Listen, ...". Signals "I'm / I am about to be direct" — used in interpersonal conversation, feedback, or persuasion.
 
 4. **fix_error** — Awkward sensitivity-opener: "With no offence, but you're wrong."
@@ -664,6 +666,7 @@
 4. **fix_error** — Awkward: "The matter is that we don't have time."
    **Hint**: Use "The thing is" instead
    **Answer**: The thing is, we don't have time.
+   **Accepts**: The thing is that we don't have time. / The point is, we don't have time. / The problem is, we don't have time. / Here's the thing: we don't have time.
    **Explanation**: "The matter is" sounds formal-translated. Native English casual conversation uses "The thing is" or "Here's the thing". These openers feel native; "the matter is" reads as translation from another language.
 
 5. **read_answer**

@@ -42,7 +42,7 @@
 3. **fill_gap** — "If we had bought that house in 2010, we _____ enough equity to retire by now."
    **Hint**: resultado presente: would + base "have"
    **Answer**: would have
-   **Accepts**: would've
+   **Accepts**: would've / would already have / 'd have
    **Explanation**: Past cause ("had bought") + present result ("would have enough equity now"). Note: "have" here is the stative present verb, not "have + past participle".
 
 4. **fix_error** — "If I had studied medicine, I would have been a doctor now."
@@ -197,6 +197,7 @@
 3. **fill_gap** — "If he weren't so sensitive, he _____ that comment so personally last week."
    **Hint**: would + have + past participle (resultado passado)
    **Answer**: wouldn't have taken
+   **Accepts**: would not have taken / 'd not have taken
    **Explanation**: Ongoing personality (present) explains last week's reaction (past). Mixed: present condition → past result with "would have + past participle".
 
 4. **fix_error** — "If I weren't allergic to nuts, I would eat that cake at the party."
@@ -505,11 +506,13 @@
 3. **fill_gap** — "_____ to ask me, I'd say the proposal needs more work."
    **Hint**: Inverted second conditional
    **Answer**: Were you
+   **Accepts**: If you were
    **Explanation**: "Were you to ask me" = "If you were to ask me". Hedged offer of opinion, formal register.
 
 4. **fix_error** — "Should I had known, I would have come earlier."
    **Hint**: "Should" pairs with present-form base, not past perfect
    **Answer**: Had I known, I would have come earlier.
+   **Accepts**: If I had known, I would have come earlier.
    **Explanation**: "Should + subject + base" is for first conditional (present/future hypotheticals). For past hypotheticals, switch to "Had + subject + past participle". Don't mix the two patterns.
 
 5. **read_answer**
@@ -658,11 +661,13 @@
 3. **fill_gap** — "We'll go ahead _____ the weather doesn't turn."
    **Hint**: "Unless" or "as long as" or "provided that"
    **Answer**: provided that
+   **Accepts**: as long as / provided / providing / providing that / so long as / if
    **Explanation**: "Provided that" = "if (and only if)". Formal "if" with the added flavor of a condition that must hold. "Unless" would invert the logic ("unless it turns"); "provided that" preserves it.
 
 4. **fix_error** — "Unless you don't tell me the truth, I can't help you."
    **Hint**: "Unless" already carries the negative meaning
    **Answer**: Unless you tell me the truth, I can't help you.
+   **Accepts**: If you don't tell me the truth, I can't help you.
    **Explanation**: "Unless" = "if... not". Double-negative ("unless you don't / do not") flips meaning back to positive — saying you must lie. Drop the redundant "don't / do not".
 
 5. **read_answer**

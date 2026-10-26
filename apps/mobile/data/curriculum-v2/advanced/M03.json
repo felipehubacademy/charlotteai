@@ -63,6 +63,9 @@
           "sentence": "It was Mary _____ called me last night, not Jane.",
           "hint": "pronome relativo para pessoas",
           "answer": "who",
+          "accepts": [
+            "that"
+          ],
           "explanation": "Subject-emphasis cleft. \"It was Mary who\" — after \"It was + person\", use \"who\" (or \"that\"), never \"which\". The cleft contrasts Mary with Jane."
         },
         {
@@ -70,6 +73,9 @@
           "sentence": "It was the manager which decided to cancel the project.",
           "hint": "For people, use \"who\", not \"which\"",
           "answer": "It was the manager who decided to cancel the project.",
+          "accepts": [
+            "It was the manager that decided to cancel the project."
+          ],
           "explanation": "After \"It was + person\", use \"who\" (or \"that\"), never \"which\". \"Which\" is for things. Common slip when speakers default to \"which\" as universal connector."
         },
         {

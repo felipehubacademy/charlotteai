@@ -60,7 +60,9 @@
           "hint": "resultado presente: would + base \"have\"",
           "answer": "would have",
           "accepts": [
-            "would've"
+            "would've",
+            "would already have",
+            "'d have"
           ],
           "explanation": "Past cause (\"had bought\") + present result (\"would have enough equity now\"). Note: \"have\" here is the stative present verb, not \"have + past participle\"."
         },
@@ -286,6 +288,10 @@
           "sentence": "If he weren't so sensitive, he _____ that comment so personally last week.",
           "hint": "would + have + past participle (resultado passado)",
           "answer": "wouldn't have taken",
+          "accepts": [
+            "would not have taken",
+            "'d not have taken"
+          ],
           "explanation": "Ongoing personality (present) explains last week's reaction (past). Mixed: present condition → past result with \"would have + past participle\"."
         },
         {
@@ -698,6 +704,9 @@
           "sentence": "_____ to ask me, I'd say the proposal needs more work.",
           "hint": "Inverted second conditional",
           "answer": "Were you",
+          "accepts": [
+            "If you were"
+          ],
           "explanation": "\"Were you to ask me\" = \"If you were to ask me\". Hedged offer of opinion, formal register."
         },
         {
@@ -705,6 +714,9 @@
           "sentence": "Should I had known, I would have come earlier.",
           "hint": "\"Should\" pairs with present-form base, not past perfect",
           "answer": "Had I known, I would have come earlier.",
+          "accepts": [
+            "If I had known, I would have come earlier."
+          ],
           "explanation": "\"Should + subject + base\" is for first conditional (present/future hypotheticals). For past hypotheticals, switch to \"Had + subject + past participle\". Don't mix the two patterns."
         },
         {
@@ -911,6 +923,14 @@
           "sentence": "We'll go ahead _____ the weather doesn't turn.",
           "hint": "\"Unless\" or \"as long as\" or \"provided that\"",
           "answer": "provided that",
+          "accepts": [
+            "as long as",
+            "provided",
+            "providing",
+            "providing that",
+            "so long as",
+            "if"
+          ],
           "explanation": "\"Provided that\" = \"if (and only if)\". Formal \"if\" with the added flavor of a condition that must hold. \"Unless\" would invert the logic (\"unless it turns\"); \"provided that\" preserves it."
         },
         {
@@ -918,6 +938,9 @@
           "sentence": "Unless you don't tell me the truth, I can't help you.",
           "hint": "\"Unless\" already carries the negative meaning",
           "answer": "Unless you tell me the truth, I can't help you.",
+          "accepts": [
+            "If you don't tell me the truth, I can't help you."
+          ],
           "explanation": "\"Unless\" = \"if... not\". Double-negative (\"unless you don't / do not\") flips meaning back to positive — saying you must lie. Drop the redundant \"don't / do not\"."
         },
         {

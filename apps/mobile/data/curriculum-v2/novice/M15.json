@@ -841,7 +841,7 @@
             "workd",
             "workid"
           ],
-          "answer": "/workt/",
+          "answer": "workt",
           "explanation": "Após som SURDO (k, p, s, f, sh, ch), -ed soa /t/. \"Worked\" = /workt/."
         },
         {
@@ -852,7 +852,7 @@
             "playt",
             "playid"
           ],
-          "answer": "/playd/",
+          "answer": "playd",
           "explanation": "Após som SONORO (vogais, l, n, m, r, g), -ed soa /d/. \"Played\" = /playd/."
         },
         {
@@ -888,7 +888,7 @@
             "ɪd",
             "silent"
           ],
-          "answer": "/t/",
+          "answer": "t",
           "explanation": "O som /k/ no fim de \"work\" é surdo (sem vibração) → o -ed soa /t/. \"Worked\" = /wɜːrkt/, uma sílaba só."
         },
         {
@@ -900,7 +900,7 @@
             "ɪd",
             "silent"
           ],
-          "answer": "/d/",
+          "answer": "d",
           "explanation": "A vogal /eɪ/ no fim de \"play\" é sonora (com vibração) → o -ed soa /d/. \"Played\" = /pleɪd/, uma sílaba só."
         },
         {
@@ -912,7 +912,7 @@
             "d",
             "silent"
           ],
-          "answer": "/ɪd/",
+          "answer": "ɪd",
           "explanation": "O verbo \"want\" termina em /t/ → o -ed forma uma sílaba extra e soa /ɪd/. \"Wanted\" = /ˈwɒntɪd/, duas sílabas."
         },
         {

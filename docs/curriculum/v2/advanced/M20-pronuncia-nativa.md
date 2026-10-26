@@ -43,12 +43,13 @@
 
 3. **fill_gap** — Which syllable carries stress in "comfortable"? _____
    **Hint**: First syllable
-   **Answer**: COM-fortable (first syllable: COM)
+   **Answer**: COM
+   **Accepts**: COM-fortable / COMfortable / first / first syllable / the first syllable / the first one
    **Explanation**: "COMfortable" — stress on "COM". Native speakers often reduce to "COMF-tər-bəl" (three syllables in fast speech). Many learners stress "comFORTable" or "comforTABLE", which sounds foreign. C2 awareness includes the first-syllable stress on "comfortable" and similar long Latinate words.
 
-4. **fix_error** — Which is correct stress for "develop"?
-   **Hint**: Second syllable
-   **Answer**: deVELop (stress on VEL)
+4. **multiple_choice** — Which is correct stress for "develop"?
+   **Options**: DEvelop (1st syllable) / deVELop (2nd syllable) / deveLOP (3rd syllable) / equal stress
+   **Answer**: deVELop (2nd syllable)
    **Explanation**: "deVELop" — stress on second syllable. Pattern for similar verbs: deCIDE, reMEMber, beGIN, dis-COVer, sup-PORT. Two-or-three-syllable verbs often stress the second syllable (especially with prefixes de-, re-, dis-). Wrong stress in everyday verbs is a major C2 fluency leak.
 
 5. **read_answer**
@@ -185,7 +186,7 @@
 
 1. **multiple_choice** — In the sentence "I want a cup of tea", which words are stressed?
    **Options**: I, want, cup, tea / I, want, cup, of, tea / want, a, tea / I, of, a
-   **Answer**: I, want, cup, tea (sometimes also "I" reduced)
+   **Answer**: I, want, cup, tea
    **Explanation**: Content words (nouns: cup, tea; verbs: want; sometimes pronouns: I) carry stress. Function words (a, of, the, am, is) weaken. In normal speech: "I WANT a CUP of TEA" with "a" and "of" reduced to schwa /ə/. Stress = meaning markers.
 
 2. **multiple_choice** — Weak form of "of" in connected speech:
@@ -195,12 +196,13 @@
 
 3. **fill_gap** — Identify weak form of "to": "I want to go" → "I want _____ go." (in connected fast speech)
    **Hint**: schwa + t
-   **Answer**: tə (schwa)
+   **Answer**: tə
+   **Accepts**: /tə/ / schwa / ta / tuh / tuh (schwa)
    **Explanation**: "To" weakens to /tə/ in connected speech. "Want to" often blends into "wanna" /ˈwɒnə/ in casual register. C2 listeners parse "wanna / gonna / gotta" as "want to / going to / got to" — and produce them naturally in informal contexts.
 
-4. **fix_error** — Which sentence has the more native rhythm? "I AM going TO the STORE" or "I'm going to the STORE"?
-   **Hint**: Native English weakens auxiliaries and uses contractions
-   **Answer**: I'm going to the STORE.
+4. **multiple_choice** — Which sentence has the more native rhythm?
+   **Options**: I AM going TO the STORE / I'm going to the STORE / I AM GOING TO THE STORE
+   **Answer**: I'm going to the STORE
    **Explanation**: Equal stress on every word ("I AM going TO the STORE") sounds robotic. Native rhythm contracts ("I'm / I am") and weakens function words ("going tə the"). Only content words get full stress: "I'm / I am GOing to the STORE". Stress-timed rhythm.
 
 5. **read_answer**
@@ -342,8 +344,8 @@
    **Explanation**: Linking: when a word ends in a consonant and the next begins with a vowel, the consonant attaches to the next word in connected speech. "An apple" → "a-NAP-pl". "Stop it" → "sto-PIT". "Find out" → "fine-DOUT". Native rhythm relies on this linking.
 
 2. **multiple_choice** — "Law and order" in natural British English includes which intrusive sound?
-   **Options**: /r/ — "law-r-and order" / /j/ — "law-y-and order" / /w/ — "law-w-and order" / none
-   **Answer**: /r/ — "law-r-and order"
+   **Options**: r — "law-r-and order" / j — "law-y-and order" / w — "law-w-and order" / none
+   **Answer**: r — "law-r-and order"
    **Explanation**: Intrusive /r/: a sound inserted between two vowels where no "r" exists in spelling. "Law and order" → "law-r-and order". Common in British English. Same pattern: "drawing" → "draw-r-ing" (heard especially in fast speech). American English uses it less.
 
 3. **fill_gap** — In fast connected speech, "I am" becomes "I-_-am" (intrusive sound)
@@ -352,9 +354,9 @@
    **Accepts**: j / y sound
    **Explanation**: Intrusive /j/: a "y" sound bridges two vowels. "I am" /aɪ-jæm/ "go away" /goʊ-wəweɪ/ uses intrusive /w/. These sounds aren't in spelling but native speakers produce them automatically to avoid awkward vowel-to-vowel transitions.
 
-4. **fix_error** — Which is closer to natural fast speech of "don't you know"?
-   **Hint**: Assimilation creates "doncha"
-   **Answer**: "doncha know" (assimilation: don't + you → doncha)
+4. **multiple_choice** — Which is closer to natural fast speech of "don't you know"?
+   **Options**: doncha know / dont-you know / doan-you know / don-tee-you know
+   **Answer**: doncha know
    **Explanation**: Assimilation: when adjacent sounds change to be more similar. "Don't / Do not you" → "doncha" /ˈdoʊnʧə/. "Did you" → "didja" /ˈdɪʤə/. "Would you" → "wouldja". These aren't lazy — they're the natural shape of fast English. C2 awareness includes both producing and parsing them.
 
 5. **read_answer**
@@ -502,12 +504,13 @@
 
 3. **fill_gap** — For a list, the intonation pattern is typically: rise-rise-rise-_____.
    **Hint**: Final intonation when list is complete
-   **Answer**: fall (falling on the last item)
+   **Answer**: fall
+   **Accepts**: falling / a fall / it falls / fall on the last item
    **Explanation**: List intonation: rise, rise, rise, FALL. "I need apples, oranges, bananas, and bread" — rising on each item until "bread", which falls to signal "end of list". If the list continued, all items would rise. The falling final = closure.
 
-4. **fix_error** — How would you make "Really?" sound like genuine surprise vs sarcasm?
-   **Hint**: Pitch pattern differs
-   **Answer**: Surprise: rising-then-rising "Really?" (high pitch). Sarcasm: falling "Really." (low, flat, with stress on first syllable).
+4. **multiple_choice** — How do you make "Really?" sound like genuine surprise vs sarcasm?
+   **Options**: Surprise rises high, sarcasm falls low and flat / Surprise falls low, sarcasm rises high / Both rise, only the volume changes / Both fall, only the speed changes
+   **Answer**: Surprise rises high, sarcasm falls low and flat
    **Explanation**: Same word, two intonations. Genuine surprise rises sharply ("REAL-ly?" high). Sarcastic disbelief falls and flattens ("REAL-ly." low, slow). Intonation carries the emotional content that words alone don't. C2 speakers control this consciously.
 
 5. **read_answer**
@@ -649,7 +652,7 @@
 
 2. **multiple_choice** — Negative contraction of "should have":
    **Options**: shouldn't have / shouldn'tve / should'nt have / shouldnt'have
-   **Answer**: shouldn't have (often pronounced "shouldn'ta" in casual speech)
+   **Answer**: shouldn't have
    **Explanation**: "Shouldn't / Should not have" — standard written contraction of "should not have". In casual fast speech, often produced as "shouldn'ta" /ˈʃʊdn(ə)tə/ — the "have" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register.
 
 3. **multiple_choice** — In fast speech, how is "next month" most likely pronounced?
@@ -657,9 +660,9 @@
    **Answer**: nex' month (t dropped)
    **Explanation**: Elision: dropping a sound, usually /t/ or /d/, between consonant clusters. "Next month" → "nex' month". Same with "old man" → "ol' man", "first place" → "firs' place". The dropped sound is too hard to say cleanly between adjacent consonants, so native speakers skip it.
 
-4. **fix_error** — Native English speaker would most likely say which?
-   **Hint**: Contracted form
-   **Answer**: "I'd've gone if I'd known."
+4. **multiple_choice** — In casual speech, a native English speaker would most likely say which?
+   **Options**: I'd've gone if I'd known. / I would of gone if I would know. / I'd gone if I'd knew. / I have gone if I knew.
+   **Answer**: I'd've gone if I'd known.
    **Explanation**: "I would have gone if I had known" → casual contracted: "I'd / I would've gone if I'd known". Two contractions stacked: "I'd / I would" (I would) and "'ve" (have). In writing, "I would've" is common; "I'd / I would've" is very informal and mostly spoken. C2 listeners recognise these even when they don't appear in print.
 
 5. **read_answer**

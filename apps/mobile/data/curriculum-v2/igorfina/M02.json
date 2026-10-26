@@ -114,7 +114,9 @@
           "accepts": [
             "Just vacation",
             "Holiday",
-            "Tourism"
+            "Tourism",
+            "Pleasure",
+            "Sightseeing"
           ],
           "explanation": "Na imigração, resposta curta funciona: \"Vacation.\" Não precisa contar a história toda."
         },
@@ -606,6 +608,11 @@
           "sentence": "A: How long are you staying? B: Just two _____.",
           "hint": "Semanas",
           "answer": "weeks",
+          "accepts": [
+            "days",
+            "months",
+            "nights"
+          ],
           "explanation": "\"Just two weeks\" = só duas semanas. \"Just\" deixa a resposta leve e natural."
         },
         {
@@ -613,6 +620,9 @@
           "sentence": "Do you have a return _____?",
           "hint": "Passagem (bilhete de volta)",
           "answer": "ticket",
+          "accepts": [
+            "flight"
+          ],
           "explanation": "\"Return ticket\" é a passagem de volta. É bom ter no celular para mostrar se pedirem."
         },
         {
@@ -880,6 +890,11 @@
           "passage": "Officer: Anything to declare? Igor: No, nothing to declare. Officer: How much money did you bring? Igor: I brought six hundred dollars in cash.",
           "question": "Quanto dinheiro o Igor trouxe? (responda em inglês, como ele disse)",
           "answer": "Six hundred dollars",
+          "accepts": [
+            "600 dollars",
+            "$600",
+            "600"
+          ],
           "explanation": "Ele disse \"six hundred dollars in cash\": seiscentos dólares em espécie. E \"nothing to declare\" = nada a declarar."
         }
       ],

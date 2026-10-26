@@ -353,6 +353,9 @@
           "sentence": "Can I _____ this machine?",
           "hint": "Usar",
           "answer": "use",
+          "accepts": [
+            "try"
+          ],
           "explanation": "\"Can I use this machine?\" = posso usar esse aparelho? Pergunta educada na academia."
         },
         {
@@ -860,6 +863,9 @@
           "sentence": "Squat works my arms.",
           "hint": "Agachamento trabalha outra parte",
           "answer": "Squat works my legs.",
+          "accepts": [
+            "Squats work my legs."
+          ],
           "explanation": "Squat = pernas (e glúteos). Curl é que trabalha braço."
         },
         {

@@ -71,7 +71,10 @@
           "hint": "Subject of participle must match subject of main clause",
           "answer": "While I was walking down the street, the rain started suddenly.",
           "accepts": [
-            "Walking down the street, I felt the rain start suddenly."
+            "Walking down the street, I felt the rain start suddenly.",
+            "As I was walking down the street, the rain started suddenly.",
+            "When I was walking down the street, the rain started suddenly.",
+            "While I was walking down the street, it started raining suddenly."
           ],
           "explanation": "As written, the participle \"walking\" attaches to \"the rain\" — the rain wasn't walking! Classic dangling participle. Fix by adding a subject clause or rewriting so the participle subject matches the main clause."
         },
@@ -284,6 +287,10 @@
           "sentence": "_____ by the team in only six weeks, the prototype exceeded expectations.",
           "hint": "past participle \"develop\"",
           "answer": "Developed",
+          "accepts": [
+            "Built",
+            "Designed"
+          ],
           "explanation": "\"Developed by the team in only six weeks\" — passive past participle clause with agent. Subject of clause = \"prototype\" (which was developed)."
         },
         {
@@ -504,6 +511,9 @@
           "sentence": "_____ for an hour, I finally gave up and called a cab.",
           "hint": "\"Having\" + past participle \"wait\"",
           "answer": "Having waited",
+          "accepts": [
+            "After waiting"
+          ],
           "explanation": "\"Having waited for an hour\" — the waiting was completed (or felt completed) before the main action of giving up. Past perfect compressed."
         },
         {
@@ -511,6 +521,10 @@
           "sentence": "Finished my work, I went home.",
           "hint": "Use \"Having finished\" to mark completion before the main action",
           "answer": "Having finished my work, I went home.",
+          "accepts": [
+            "After finishing my work, I went home.",
+            "Having finished work, I went home."
+          ],
           "explanation": "Bare \"Finished my work\" reads as past participle adjective (\"being in a finished state\"), which is awkward here. \"Having finished\" clearly marks the sequence: first finish, then go."
         },
         {
@@ -734,6 +748,10 @@
           "sentence": "Being told the news, she immediately called her mother.",
           "hint": "For completed action before main, use \"Having been told\"",
           "answer": "Having been told the news, she immediately called her mother.",
+          "accepts": [
+            "After being told the news, she immediately called her mother.",
+            "Told the news, she immediately called her mother."
+          ],
           "explanation": "\"Being told\" suggests simultaneity (as she was being told). For a completed event BEFORE her call, \"Having been told\" is clearer. Both grammatical, but C1 precision favours the perfect form here."
         },
         {

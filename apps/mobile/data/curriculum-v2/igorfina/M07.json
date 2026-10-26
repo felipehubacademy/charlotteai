@@ -343,6 +343,9 @@
           "sentence": "There's a light _____ the bed.",
           "hint": "Acima",
           "answer": "above",
+          "accepts": [
+            "over"
+          ],
           "explanation": "A luminária fica acima da cama, sem encostar: \"above the bed\"."
         },
         {
@@ -607,6 +610,12 @@
           "sentence": "Can you open the light?",
           "hint": "Em inglês não se \"abre\" a luz",
           "answer": "Can you turn on the light?",
+          "accepts": [
+            "Can you turn the light on?",
+            "Can you switch on the light?",
+            "Can you switch the light on?",
+            "Could you turn on the light?"
+          ],
           "explanation": "Em português \"abrir a luz\" às vezes; em inglês é sempre \"turn on\"."
         },
         {

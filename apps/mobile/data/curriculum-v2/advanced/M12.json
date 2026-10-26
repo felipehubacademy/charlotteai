@@ -65,6 +65,12 @@
           "sentence": "Verbal \"Companies are adopting AI tools quickly.\" Nominalise: \"_____ of AI tools by companies has accelerated.\"",
           "hint": "noun form of \"adopt\" + adjective",
           "answer": "The rapid adoption",
+          "accepts": [
+            "The quick adoption",
+            "The swift adoption",
+            "The fast adoption",
+            "Rapid adoption"
+          ],
           "explanation": "\"Adopt\" → \"adoption\". Adjective \"rapid\" carries the adverbial sense (\"quickly\"). Original subject becomes prepositional (\"BY companies\"). Academic style favours such compressions for density and impersonal tone."
         },
         {
@@ -290,14 +296,13 @@
           "explanation": "Academic prose lets the evidence speak. \"The data suggest\" — note plural verb (data is technically plural, though \"data shows\" is now common). \"The findings indicate\", \"The results demonstrate\" — all variations of the impersonal evidence-as-agent construction."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Academic register: \"I believe this hypothesis is correct.\"",
           "hint": "Replace \"I believe\" with impersonal alternative",
           "answer": "There is reason to believe this hypothesis is correct.",
-          "accepts": [
-            "The evidence supports this hypothesis."
-          ],
-          "explanation": "\"I believe\" is too subjective for academic prose. Alternatives: \"There is reason to believe\", \"The evidence supports\", \"It is plausible that\", \"It can be argued that\". Each preserves the modesty of a claim while removing the speaker."
+          "explanation": "\"I believe\" is too subjective for academic prose. Alternatives: \"There is reason to believe\", \"The evidence supports\", \"It is plausible that\", \"It can be argued that\". Each preserves the modesty of a claim while removing the speaker.",
+          "prompt": "Rewrite this in an impersonal academic register (no \"I believe\").",
+          "example_answer": "There is reason to believe this hypothesis is correct."
         },
         {
           "type": "read_answer",
@@ -508,17 +513,22 @@
           "sentence": "Hedged conclusion: \"_____ that the relationship is causal, though further study is needed.\"",
           "hint": "\"There is reason to believe\"",
           "answer": "There is reason to believe",
+          "accepts": [
+            "It seems likely",
+            "The evidence suggests",
+            "It appears",
+            "There is evidence"
+          ],
           "explanation": "\"There is reason to believe that...\" — moderate-strong hedge often paired with \"though further study is needed\" or \"but this remains to be confirmed\". Pattern: hedge + qualifier. Marks intellectual humility while still advancing the claim."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Academic register: \"This proves that the drug works.\"",
           "hint": "Academic register avoids \"proves\" — use a hedged verb",
           "answer": "This suggests that the drug is effective.",
-          "accepts": [
-            "The evidence supports the conclusion that the drug is effective."
-          ],
-          "explanation": "\"Proves\" implies certainty that scientific epistemology rarely warrants. Even strong findings use \"supports\", \"suggests\", \"indicates\", or \"is consistent with\". The hedge isn't false modesty — it's accurate representation of evidence."
+          "explanation": "\"Proves\" implies certainty that scientific epistemology rarely warrants. Even strong findings use \"supports\", \"suggests\", \"indicates\", or \"is consistent with\". The hedge isn't false modesty — it's accurate representation of evidence.",
+          "prompt": "Rewrite this with a hedged academic verb instead of \"proves\".",
+          "example_answer": "This suggests that the drug is effective."
         },
         {
           "type": "read_answer",
@@ -735,7 +745,19 @@
           "hint": "Replace \"said\" with academic citation verb",
           "answer": "Smith (2020) argues that the policy failed.",
           "accepts": [
-            "Smith (2020) contends that the policy failed."
+            "Smith (2020) contends that the policy failed.",
+            "Smith (2020) claims that the policy failed.",
+            "Smith (2020) maintains that the policy failed.",
+            "Smith (2020) asserts that the policy failed.",
+            "Smith (2020) argued that the policy failed.",
+            "Smith (2020) concludes that the policy failed.",
+            "Smith (2020) concluded that the policy failed.",
+            "Smith (2020) found that the policy failed.",
+            "Smith (2020) shows that the policy failed.",
+            "Smith (2020) demonstrates that the policy failed.",
+            "Smith (2020) notes that the policy failed.",
+            "Smith (2020) observes that the policy failed.",
+            "Smith (2020) reports that the policy failed."
           ],
           "explanation": "\"Said\" is too conversational for academic citation. Standard verbs: \"argues\", \"contends\", \"claims\", \"demonstrates\", \"suggests\", \"posits\", \"asserts\", \"maintains\", \"concludes\". Each carries different connotation about how strongly the claim is being defended."
         },
@@ -938,20 +960,24 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Cumulative argument: \"_____ findings together suggest a more general principle.\"",
+          "sentence": "Cumulative argument: \"_____, these findings suggest a more general principle.\"",
           "hint": "\"Taken together\" or \"Considered jointly\"",
           "answer": "Taken together",
+          "accepts": [
+            "Considered together",
+            "Considered jointly",
+            "Together"
+          ],
           "explanation": "\"Taken together, these findings...\" — academic frame for synthesising multiple results. Marks the cumulative move from individual evidence to general claim. Other patterns: \"Considered jointly\", \"In aggregate\", \"Across the studies reviewed\"."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Paragraph opener: \"Also, the third experiment found similar results.\"",
           "hint": "\"Also\" is too casual to open an academic paragraph",
           "answer": "Furthermore, the third experiment yielded similar results.",
-          "accepts": [
-            "A third experiment yielded similar results, reinforcing the pattern."
-          ],
-          "explanation": "\"Also\" is conversational. Academic register uses \"Furthermore\", \"Moreover\", \"In addition\", or restructures: \"A third experiment...\". Paragraph openers carry the connective load — too casual undercuts the register."
+          "explanation": "\"Also\" is conversational. Academic register uses \"Furthermore\", \"Moreover\", \"In addition\", or restructures: \"A third experiment...\". Paragraph openers carry the connective load — too casual undercuts the register.",
+          "prompt": "Rewrite this paragraph opener in academic register.",
+          "example_answer": "Furthermore, the third experiment yielded similar results."
         },
         {
           "type": "read_answer",

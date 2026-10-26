@@ -81,6 +81,7 @@
 8. **fix_error** — "I want eggs." (para o garçom)
    **Hint**: Use a forma educada de pedir
    **Answer**: I would like eggs, please.
+   **Accepts**: I'd like eggs, please. / I would like some eggs, please. / I'd like some eggs, please. / Can I get eggs, please? / Could I have eggs, please? / Can I get some eggs, please? / I would like eggs.
    **Explanation**: "I want" soa seco. "I would like..., please" é o jeito educado.
 
 9. **fix_error** — "Can I get the count, please?"
@@ -404,11 +405,13 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 7. **fill_gap** — "A: How much? B: It's 25 _____."
    **Hint**: Gíria para dólares
    **Answer**: bucks
+   **Accepts**: dollars
    **Explanation**: "Bucks" = dólares, na gíria. "25 bucks" = 25 dólares.
 
 8. **fix_error** — "I'd like to cut my hair." (para o barbeiro)
    **Hint**: Quem corta é o barbeiro; peça "a haircut"
    **Answer**: I'd like a haircut.
+   **Accepts**: I would like a haircut. / Can I get a haircut? / I'd like to get a haircut. / I'd like to get my hair cut. / A haircut, please.
    **Explanation**: "I'd like to cut my hair" soa como se você mesmo fosse cortar. Na barbearia: "I'd like a haircut".
 
 9. **fix_error** — "Pretty low in the sides."
@@ -584,6 +587,7 @@ Igorfina fala no estilo do astro do basquete (imitação). Aluno repete; a pron�
 8. **fix_error** — "How much costs this?"
    **Hint**: Use "How much is..."
    **Answer**: How much is this?
+   **Accepts**: How much does this cost? / How much does it cost? / How much is it?
    **Explanation**: Em inglês a pergunta mais simples é "How much is this?". "How much does this cost?" também está certo.
 
 9. **fix_error** — "Keep the troco."
