@@ -15,7 +15,7 @@ import {
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
   CaretRight, SpeakerHigh, Vibrate, ChatCircleText,
   CreditCard, Lifebuoy, UsersThree, ChartLineUp, Sparkle,
-  MagnifyingGlass, Translate,
+  MagnifyingGlass, Translate, Bell,
 } from 'phosphor-react-native';
 import { fetchMyHandle, setSearchable } from '@/lib/friends';
 import {
@@ -40,6 +40,7 @@ import { Application } from '@/lib/nativeOptional'; // protegido: binário sem o
 import * as Updates from 'expo-updates';
 import * as SecureStore from 'expo-secure-store';
 import { appAlert } from '@/components/ui/AppAlert';
+import { reminderHourLabel } from '@/lib/reminderTime';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -225,6 +226,16 @@ export default function ProfileTab() {
     fetchSocial().then(s => { if (alive && s) setSocialPending((s.pendingRequests?.length ?? 0) + (s.rallyInvites?.length ?? 0)); });
     return () => { alive = false; };
   }, []));
+
+  // Horário do lembrete (tela própria); relê ao voltar dela.
+  const [reminderHour, setReminderHour] = useState<number | null>(null);
+  useFocusEffect(useCallback(() => {
+    if (!profile?.id) return;
+    let alive = true;
+    supabase.from('charlotte_users').select('reminder_hour').eq('id', profile.id).maybeSingle()
+      .then(({ data }) => { if (alive) setReminderHour((data as { reminder_hour?: number | null } | null)?.reminder_hour ?? null); });
+    return () => { alive = false; };
+  }, [profile?.id]));
 
   const handleSaveName = async () => {
     const trimmed = nameValue.trim();
@@ -590,6 +601,13 @@ export default function ProfileTab() {
             description={isPt ? 'Amigos podem te achar pelo nome ou @ para estudar junto.' : 'Friends can find you by name or @ to study together.'}
             value={searchable}
             onValueChange={(v: boolean) => { setSearchableState(v); setSearchable(v); }}
+          />
+          <SettingRow
+            icon={<Bell size={18} color={C.navy} weight="regular" />}
+            label={isPt ? 'Horário do lembrete' : 'Reminder time'}
+            value={reminderHourLabel(reminderHour, isPt)}
+            onPress={() => router.push('/(app)/reminder-time')}
+            chevron
           />
           <SettingRow
             icon={<Translate size={18} color={C.navy} weight="regular" />}

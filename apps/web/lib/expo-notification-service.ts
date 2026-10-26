@@ -687,7 +687,7 @@ export async function sendDailyReminders(supabase: any): Promise<void> {
     // 2) Todos os usuários com token e timezone.
     const { data: cuUsers, error: usersErr } = await supabase
       .from('charlotte_users')
-      .select('id, name, expo_push_token, charlotte_level, app_language, timezone')
+      .select('id, name, expo_push_token, charlotte_level, app_language, timezone, reminder_hour')
       .not('expo_push_token', 'is', null);
     if (usersErr) { console.error('❌ [Expo] users query error:', usersErr.message); return; }
 
@@ -699,8 +699,11 @@ export async function sendDailyReminders(supabase: any): Promise<void> {
     });
     if (!withToken.length) { console.log('✅ [Expo] No eligible users for daily reminder'); return; }
 
-    const tzFiltered = usersAtLocalHour(withToken, TARGET_HOUR_DAILY);
-    if (!tzFiltered.length) { console.log(`⏱️ [Expo] daily: no users at local ${TARGET_HOUR_DAILY}h this run`); return; }
+    // Hora do lembrete: a escolhida pelo aluno no Perfil (9h a 20h) ou, no automático, 11h.
+    const now = new Date();
+    const tzFiltered = withToken.filter((u: any) =>
+      localHourInTz(now, u.timezone || DEFAULT_TZ) === (u.reminder_hour ?? TARGET_HOUR_DAILY));
+    if (!tzFiltered.length) { console.log('⏱️ [Expo] daily: no users at their reminder hour this run'); return; }
 
     const allowedIds = await filterFrequencyCap(
       supabase,
@@ -1164,6 +1167,7 @@ interface EngagementUser {
   subscription_status: string | null;
   subscription_expires_at: string | null;
   is_institutional: boolean | null;
+  reminder_hour: number | null; // horário escolhido no Perfil (null = automático)
   total_xp: number;
   streak_days: number;
   practiced_today: boolean;
@@ -1604,6 +1608,8 @@ function detectEngagementSignal(
       case 'micro_checkin': {
         // User's usual practice hour has passed by ≥ 2h and they still have
         // not practiced today. Keeps the "Charlotte is around" feeling.
+        // Quem escolheu o horário do lembrete no Perfil recebe só o lembrete nessa hora, sem o "oi".
+        if (user.reminder_hour != null) break;
         const usual = usualLocalPracticeHour(user.recent_practice_timestamps, tz);
         if (usual == null) break;
         if (user.practiced_today) break;
@@ -1650,7 +1656,7 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
     //    PostgREST in this project).
     const { data: users, error: usersErr } = await supabase
       .from('charlotte_users')
-      .select('id, name, expo_push_token, charlotte_level, app_language, timezone, last_practice_at, trial_ends_at, subscription_status, subscription_expires_at, is_institutional')
+      .select('id, name, expo_push_token, charlotte_level, app_language, timezone, last_practice_at, trial_ends_at, subscription_status, subscription_expires_at, is_institutional, reminder_hour')
       .not('expo_push_token', 'is', null);
     if (usersErr) { console.error('❌ [Engagement] users query:', usersErr.message); return; }
     const withToken = (users ?? []).filter((u: any) =>
@@ -1739,6 +1745,7 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
         subscription_status: raw.subscription_status,
         subscription_expires_at: raw.subscription_expires_at,
         is_institutional: raw.is_institutional,
+        reminder_hour: raw.reminder_hour ?? null,
         total_xp: prog.totalXp,
         streak_days: prog.streak,
         practiced_today: todayPractices.has(raw.id),

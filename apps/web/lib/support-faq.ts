@@ -97,7 +97,7 @@ Pedidos de amizade e convites recebidos aparecem numa linha na tela inicial. Par
   { section: 'Guia do app', question: 'O que tem no Perfil?', answer:
 `Perfil (sua foto na barra de baixo):
 - Conta: Alterar senha e Fazer teste de nível (Refazer teste de nível, depois da primeira vez).
-- Preferências: Sons, Vibração, Voz da Charlotte e Aparecer na busca.
+- Preferências: Sons, Vibração, Voz da Charlotte, Aparecer na busca, Horário do lembrete e Idioma do app.
 - Assinatura: situação da assinatura, Gerenciar assinatura e Restaurar compras.
 - Você no Queizy: Minha evolução, Estudar junto e Família Queizy.
 - Ajuda: Ajuda e suporte.
@@ -106,6 +106,9 @@ Pedidos de amizade e convites recebidos aparecem numa linha na tela inicial. Par
   { section: 'Guia do app', question: 'Como mudo o idioma do app?', answer:
 `Em Perfil > Idioma do app, escolha Automático (do celular), Português ou English. O app reinicia e passa a mostrar as telas e os avisos no idioma escolhido.
 O conteúdo das lições continua no idioma do seu nível: na Novice as explicações são em português; no Inter e no Advanced, em inglês.` },
+  { section: 'Guia do app', question: 'Como mudo o horário do lembrete?', answer:
+`Em Perfil > Horário do lembrete, escolha um horário fixo (de hora em hora, das 9h às 20h) ou "Me lembrar no horário em que costumo estudar", que é o padrão. O horário vale para o lembrete diário de praticar, no fuso do seu celular.
+Os avisos do Queizy só chegam entre 9h e 21h. Para não receber nenhum aviso, desative as notificações do Queizy nos ajustes do celular.` },
   { section: 'Guia do app', question: 'Onde vejo minha evolução?', answer:
 `Em Perfil > Você no Queizy > Minha evolução (ou "Ver minha evolução" na tela inicial). Mostra o que você já domina e o que vale treinar, com base nas atividades feitas.` },
 

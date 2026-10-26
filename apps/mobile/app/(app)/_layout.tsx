@@ -42,6 +42,7 @@ export default function AppLayout() {
         <Stack.Screen name="learn-pronunciation" />
         <Stack.Screen name="learn-session" />
         <Stack.Screen name="change-password" />
+        <Stack.Screen name="reminder-time" />
         <Stack.Screen name="placement-test" options={{ animation: 'none' }} />
         <Stack.Screen name="charlotte-intro" options={{ animation: 'none', gestureEnabled: false }} />{/* fim do onboarding, sem vídeo */}
         <Stack.Screen name="leaderboard" />
