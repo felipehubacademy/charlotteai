@@ -94,6 +94,9 @@
           "sentence": "This test is _____ than the last one — only ten questions!",
           "hint": "Comparativo de \"easy\"",
           "answer": "easier",
+          "accepts": [
+            "shorter"
+          ],
           "explanation": "\"Easy\" → \"easier\" (y → ier). Adjetivos em -y trocam y por -ier."
         },
         {
@@ -335,6 +338,11 @@
           "sentence": "Yoga is _____ than running — perfect for stress.",
           "hint": "Comparativo longo de \"relaxing\"",
           "answer": "more relaxing",
+          "accepts": [
+            "calmer",
+            "more calming",
+            "more peaceful"
+          ],
           "explanation": "\"Relaxing\" tem 3 sílabas → \"more relaxing\"."
         },
         {
@@ -342,6 +350,12 @@
           "sentence": "This puzzle is _____ than the last one — it's taking hours.",
           "hint": "Comparativo longo de \"challenging\"",
           "answer": "more challenging",
+          "accepts": [
+            "harder",
+            "more difficult",
+            "more complicated",
+            "longer"
+          ],
           "explanation": "\"Challenging\" 3+ sílabas → \"more challenging\"."
         },
         {
@@ -349,6 +363,11 @@
           "sentence": "She is _____ than him — she always solves the hardest problems.",
           "hint": "Comparativo longo de \"intelligent\"",
           "answer": "more intelligent",
+          "accepts": [
+            "smarter",
+            "cleverer",
+            "brighter"
+          ],
           "explanation": "\"Intelligent\" 4 sílabas → \"more intelligent\". Sem -er."
         },
         {
@@ -602,6 +621,9 @@
           "sentence": "He has _____ friends than me.",
           "hint": "Comparativo de \"few/little\" (mais)",
           "answer": "more",
+          "accepts": [
+            "fewer"
+          ],
           "explanation": "\"More\" é o comparativo de quantidade — tanto countable quanto uncountable."
         },
         {
@@ -840,6 +862,11 @@
           "sentence": "My car is _____ better than my old one.",
           "hint": "Intensifier (muito mais)",
           "answer": "much",
+          "accepts": [
+            "far",
+            "a lot",
+            "way"
+          ],
           "explanation": "\"Much better\" = bem melhor. Padrão pra intensificar comparativos."
         },
         {
@@ -847,6 +874,12 @@
           "sentence": "She is _____ more patient than I am.",
           "hint": "Modificador suave (um pouco)",
           "answer": "a little",
+          "accepts": [
+            "a bit",
+            "much",
+            "far",
+            "a lot"
+          ],
           "explanation": "\"A little more patient\" = um pouco mais paciente. Suaviza."
         },
         {
@@ -855,7 +888,10 @@
           "hint": "Modificador suave (um pouco)",
           "answer": "a bit",
           "accepts": [
-            "a little"
+            "a little",
+            "much",
+            "far",
+            "a lot"
           ],
           "explanation": "\"A bit smaller\" = um pouco menor. Sinônimo de \"a little\"."
         },
@@ -864,6 +900,12 @@
           "sentence": "She is very taller than me.",
           "hint": "\"Very\" não vai com comparativo",
           "answer": "She is much taller than me.",
+          "accepts": [
+            "She is far taller than me.",
+            "She is a lot taller than me.",
+            "She is a bit taller than me.",
+            "She is a little taller than me."
+          ],
           "explanation": "Com comparativo usa \"much\", não \"very\". \"Very + adjetivo simples\" (very tall); \"Much + comparativo\" (much taller)."
         },
         {

@@ -95,6 +95,10 @@
           "sentence": "I _____ my passport at the security check — I can't find it anywhere!",
           "hint": "passado de \"lose\"",
           "answer": "lost",
+          "accepts": [
+            "left",
+            "forgot"
+          ],
           "explanation": "\"Lost\" — passado simples de \"lose\". Verbo irregular: lose → lost → lost. \"I lost my passport\" — frase crítica para reportar perda no aeroporto."
         },
         {
@@ -112,6 +116,9 @@
           "sentence": "I'm here _____ business.",
           "hint": "preposição para propósito",
           "answer": "for",
+          "accepts": [
+            "on"
+          ],
           "explanation": "\"I'm / I am here for + propósito\" — chunk fixo na imigração. \"I'm here for business / vacation / a conference\". Preposição \"for\" é obrigatória."
         },
         {
@@ -382,6 +389,13 @@
           "sentence": "Is _____ included?",
           "hint": "refeição da manhã",
           "answer": "breakfast",
+          "accepts": [
+            "parking",
+            "wifi",
+            "Wi-Fi",
+            "dinner",
+            "lunch"
+          ],
           "explanation": "\"Is breakfast included?\" — pergunta padrão sobre o que vem incluído na diária. \"Breakfast\" não tem artigo neste chunk."
         },
         {
@@ -656,7 +670,8 @@
           "hint": "distância — \"far\" ou \"close/near\"",
           "answer": "far",
           "accepts": [
-            "near\" ou \"close"
+            "near",
+            "close"
           ],
           "explanation": "\"Far from here\" / \"near here\" / \"close to here\" — chunks para descrever distância. Todos funcionam aqui."
         },
@@ -931,6 +946,10 @@
           "sentence": "My stomach _____.",
           "hint": "verbo para \"dói\"",
           "answer": "hurts",
+          "accepts": [
+            "aches",
+            "is hurting"
+          ],
           "explanation": "\"My stomach hurts\" — chunk fixo para \"minha barriga dói\". \"Hurt\" é verbo regular: hurts (presente), hurt (passado, idêntico)."
         },
         {
@@ -1191,6 +1210,9 @@
           "sentence": "Can I _____ a message for him, please?",
           "hint": "verbo para \"deixar\"",
           "answer": "leave",
+          "accepts": [
+            "take"
+          ],
           "explanation": "\"Leave a message\" — chunk fixo. \"Leave\" significa \"deixar\". Padrão para gravar recado quando a pessoa não está."
         },
         {
@@ -1198,6 +1220,10 @@
           "sentence": "I'll _____ you back later on the phone.",
           "hint": "phrasal verb de retorno",
           "answer": "call",
+          "accepts": [
+            "phone",
+            "ring"
+          ],
           "explanation": "\"Call back\" — phrasal verb para \"ligar de volta\". \"I'll / I will call you back\" — promessa fixa ao telefone."
         },
         {
@@ -1205,6 +1231,11 @@
           "sentence": "Could you _____ that, please?",
           "hint": "verbo para \"repetir\"",
           "answer": "repeat",
+          "accepts": [
+            "say",
+            "spell",
+            "explain"
+          ],
           "explanation": "\"Could you repeat that?\" — pergunta educada para pedir repetição. Útil quando não se entende algo no telefone."
         },
         {

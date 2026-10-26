@@ -64,16 +64,19 @@
 5. **fill_gap** — "I _____ at eleven on weekends because I am tired."
    **Hint**: Verbo "dormir" forma base
    **Answer**: sleep
+   **Accepts**: wake up / get up
    **Explanation**: "I sleep at eleven" = "Eu durmo às onze". Forma base do verbo com "I". "On weekends" indica padrão semanal.
 
 6. **fill_gap** — "I _____ breakfast at seven-thirty."
    **Hint**: Verbo pra refeição (forma base)
    **Answer**: have
+   **Accepts**: eat
    **Explanation**: "I have breakfast" = "Tomo café da manhã". "Have" aqui é verbo lexical (comer/tomar), não "have got" (possuir).
 
 7. **fill_gap** — "We _____ orange juice every morning."
    **Hint**: Verbo "beber" forma base
    **Answer**: drink
+   **Accepts**: have
    **Explanation**: "We drink orange juice" — forma base com "we" (plural). "Drink" sem -s.
 
 8. **fix_error** — "I wakes up at seven."
@@ -246,6 +249,7 @@
 6. **fill_gap** — "We _____ English on Mondays and Wednesdays at school."
    **Hint**: Verbo "estudar"
    **Answer**: study
+   **Accepts**: learn / have / practice
    **Explanation**: "We study English" — pronome plural com forma base. Sem -s.
 
 7. **fill_gap** — "I _____ in a hospital. I am a doctor."
@@ -418,16 +422,19 @@
 5. **fill_gap** — "I _____ a sandwich for lunch every day."
    **Hint**: Verbo "comer"
    **Answer**: eat
+   **Accepts**: have / make / buy
    **Explanation**: "I eat a sandwich" — forma base. "Eat" = comer. "A sandwich" = chunk com artigo indefinido.
 
 6. **fill_gap** — "We _____ coffee in the morning at the cafe."
    **Hint**: Verbo "beber"
    **Answer**: drink
+   **Accepts**: have / buy
    **Explanation**: "We drink coffee" — plural, forma base. "Drink" = beber.
 
 7. **fill_gap** — "I _____ lunch at noon."
    **Hint**: Verbo pra refeição (mesmo padrão de breakfast/dinner)
    **Answer**: have
+   **Accepts**: eat
    **Explanation**: "I have lunch" = "Eu almoço". "Have lunch" / "have breakfast" / "have dinner" são chunks fixos.
 
 8. **fix_error** — "I eats vegetables every day."
@@ -595,16 +602,19 @@
 5. **fill_gap** — "I _____ to work at eight every day."
    **Hint**: Verbo "ir" forma base
    **Answer**: go
+   **Accepts**: drive / walk / get
    **Explanation**: "I go to work" — forma base com "I". Estrutura: "I go to + lugar + at + time".
 
 6. **fill_gap** — "We _____ home together after class on foot."
    **Hint**: Verbo "vir / voltar"
    **Answer**: come
+   **Accepts**: walk / go
    **Explanation**: "We come home" — plural, forma base. "Come home" = "voltar pra casa". Chunk fixo.
 
 7. **fill_gap** — "I _____ to the park on Sundays to run."
    **Hint**: Verbo "ir"
    **Answer**: go
+   **Accepts**: walk / drive / come
    **Explanation**: "I go to the park" — atividade dominical. Forma base com "I".
 
 8. **fix_error** — "I goes to school every day."
@@ -777,11 +787,13 @@
 6. **fill_gap** — "We _____ eat pizza — only on Fridays."
    **Hint**: Advérbio de frequência média/ocasional
    **Answer**: sometimes
+   **Accepts**: often / usually / occasionally
    **Explanation**: "Sometimes" = às vezes (~30-50%). "Only on Fridays" indica ocasional, então "sometimes" cabe.
 
 7. **fill_gap** — "I _____ go to bed at eleven on weekdays."
    **Hint**: Advérbio de frequência alta mas não absoluta
    **Answer**: usually
+   **Accepts**: often / normally / generally
    **Explanation**: "Usually" = geralmente (~80%). "On weekdays" indica padrão típico mas não 100% absoluto.
 
 8. **fix_error** — "I always am tired."

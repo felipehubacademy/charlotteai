@@ -53,16 +53,19 @@
 5. **fill_gap** — "You _____ study more."
    **Hint**: Conselho positivo
    **Answer**: should
+   **Accepts**: need to / must / have to / ought to
    **Explanation**: "You should study" = você deveria estudar.
 
 6. **fill_gap** — "She _____ stay up late."
    **Hint**: Conselho negativo
    **Answer**: shouldn't
+   **Accepts**: mustn't
    **Explanation**: "She shouldn't / should not stay up late" = ela não deveria ficar acordada.
 
 7. **fill_gap** — "I think you _____ try yoga."
    **Hint**: Conselho com "I think"
    **Answer**: should
+   **Accepts**: could / can
    **Explanation**: "I think you should try" = acho que você deveria tentar.
 
 8. **fix_error** — "She shoulds rest."
@@ -231,16 +234,19 @@
 5. **fill_gap** — "I _____ finish this report."
    **Hint**: Obrigação com I
    **Answer**: have to
+   **Accepts**: need to / must / should / have got to
    **Explanation**: "I have to finish" — obrigação.
 
 6. **fill_gap** — "Lucas _____ wear a uniform."
    **Hint**: Obrigação com nome (he)
    **Answer**: has to
+   **Accepts**: needs to / must / has got to
    **Explanation**: Lucas = he → "has to".
 
 7. **fill_gap** — "They _____ wake up early."
    **Hint**: Obrigação plural
    **Answer**: have to
+   **Accepts**: need to / must
    **Explanation**: "They have to" — plural.
 
 8. **fix_error** — "She have to work late."
@@ -587,11 +593,13 @@
 5. **fill_gap** — "_____ I help you?"
    **Hint**: Oferta com should
    **Answer**: Should
+   **Accepts**: Can / May / Could / Shall
    **Explanation**: "Should I help you?" — oferta polida.
 
 6. **fill_gap** — "_____ he take a taxi or walk?"
    **Hint**: Conselho 3ª pessoa
    **Answer**: Should
+   **Accepts**: Will / Can / Could / Shall
    **Explanation**: "Should he take a taxi?" — pedido de conselho sobre ele.
 
 7. **fill_gap** — "_____ I have to wear a tie?"
@@ -765,16 +773,19 @@
 5. **fill_gap** — "I _____ see a doctor about this."
    **Hint**: Conselho leve
    **Answer**: should
+   **Accepts**: need to / have to / must
    **Explanation**: "I should see" — sugestão suave. "Have to" seria mais forte.
 
 6. **fill_gap** — "She _____ leave at 7 — strict company rule."
    **Hint**: Obrigação forte
    **Answer**: has to
+   **Accepts**: must / needs to / has got to
    **Explanation**: "She has to leave" — obrigação imposta.
 
 7. **fill_gap** — "We _____ buy more bread."
    **Hint**: Necessidade prática
    **Answer**: need to
+   **Accepts**: have to / should / must
    **Explanation**: "We need to buy" — necessidade. "Need to" é o mais comum pra coisas práticas.
 
 8. **fix_error** — "You should to study."

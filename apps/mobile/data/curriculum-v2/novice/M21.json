@@ -86,6 +86,10 @@
           "sentence": "If she _____, I'll call her back.",
           "hint": "Present simple 3ª pessoa de \"call\"",
           "answer": "calls",
+          "accepts": [
+            "texts",
+            "writes"
+          ],
           "explanation": "\"If she calls\" — 3ª pessoa + -s no present."
         },
         {
@@ -93,6 +97,12 @@
           "sentence": "We _____ travel if we save money.",
           "hint": "Consequência futura",
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "can",
+            "could",
+            "might"
+          ],
           "explanation": "\"We will travel\" — will + base na consequência."
         },
         {
@@ -330,6 +340,14 @@
           "sentence": "I'll cook if you _____.",
           "hint": "Present simple de \"shop\"",
           "answer": "shop",
+          "accepts": [
+            "clean",
+            "wash up",
+            "help",
+            "do the dishes",
+            "want",
+            "buy the food"
+          ],
           "explanation": "\"If you shop\" — present simple com you."
         },
         {
@@ -337,6 +355,11 @@
           "sentence": "If I _____ a chance, I'll try.",
           "hint": "Present simple de \"get\"",
           "answer": "get",
+          "accepts": [
+            "have",
+            "see",
+            "find"
+          ],
           "explanation": "\"If I get\" — present simple com I."
         },
         {
@@ -344,6 +367,12 @@
           "sentence": "She _____ help if I ask.",
           "hint": "Consequência futura",
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "can",
+            "might",
+            "would"
+          ],
           "explanation": "\"She will help\" — will + base."
         },
         {
@@ -595,6 +624,10 @@
           "sentence": "We _____ go to the cinema if you want.",
           "hint": "Consequência futura",
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "can"
+          ],
           "explanation": "\"We will go\" — will + base. Ou \"we'll / we will go\"."
         },
         {
@@ -842,6 +875,9 @@
           "sentence": "She _____ come unless she's sick.",
           "hint": "Auxiliar futuro",
           "answer": "will",
+          "accepts": [
+            "'ll"
+          ],
           "explanation": "\"She will come unless...\" — will + base."
         },
         {
@@ -1091,6 +1127,11 @@
           "sentence": "If she _____ early, we'll have time.",
           "hint": "Present simple 3ª pessoa \"arrive\"",
           "answer": "arrives",
+          "accepts": [
+            "comes",
+            "gets here",
+            "leaves"
+          ],
           "explanation": "3ª pessoa: arrives."
         },
         {

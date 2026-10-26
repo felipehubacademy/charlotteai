@@ -50,16 +50,19 @@
 5. **fill_gap** — "I _____ my friend yesterday on the phone."
    **Hint**: Passado de "call"
    **Answer**: called
+   **Accepts**: phoned / rang
    **Explanation**: "Called" — call + ed. Som /d/.
 
 6. **fill_gap** — "They _____ the door before entering the house."
    **Hint**: Passado de "open"
    **Answer**: opened
+   **Accepts**: unlocked / knocked on
    **Explanation**: "Opened" — open + ed.
 
 7. **fill_gap** — "She _____ a lot last week for the exam."
    **Hint**: Passado de "study" (y → ied)
    **Answer**: studied
+   **Accepts**: worked / read / practiced / revised
    **Explanation**: Verbos em -y após consoante: y → ied. "Study" → "studied".
 
 8. **fix_error** — "She worked last night?"
@@ -232,11 +235,13 @@
 6. **fill_gap** — "She _____ to the store on foot."
    **Hint**: Passado de "walk"
    **Answer**: walked
+   **Accepts**: went
    **Explanation**: "Walk" → "walked" (regular básico).
 
 7. **fill_gap** — "They _____ a great movie at the cinema."
    **Hint**: Passado de "enjoy"
    **Answer**: enjoyed
+   **Accepts**: watched / saw / loved / liked
    **Explanation**: "Enjoy" → "enjoyed". Verbos em vogal + y mantêm y: "enjoyed", "played", "stayed".
 
 8. **fix_error** — "He stoped the car."
@@ -404,21 +409,25 @@
 5. **fill_gap** — "I _____ a great song yesterday on Spotify."
    **Hint**: Passado de "discover"
    **Answer**: discovered
+   **Accepts**: found / heard / listened to
    **Explanation**: "Discover" → "discovered". Regular -ed.
 
 6. **fill_gap** — "She _____ a beautiful painting with oil colors."
    **Hint**: Passado de "paint"
    **Answer**: painted
+   **Accepts**: made / created
    **Explanation**: "Paint" → "painted". Pronúncia /id/ (verbos terminados em -t ou -d).
 
 7. **fill_gap** — "We _____ the lights at midnight."
    **Hint**: Passado de "turn off"
    **Answer**: turned off
+   **Accepts**: switched off / turned on / switched on
    **Explanation**: Phrasal verb: "turn off" → "turned off". Passado + partícula.
 
 8. **fix_error** — "I worked yesterday last week."
    **Hint**: Os dois marcadores temporais são iguais
    **Answer**: I worked yesterday.
+   **Accepts**: I worked last week.
    **Explanation**: Não combina "yesterday" + "last week" — escolha um. Yesterday = ontem; last week = semana passada.
 
 9. **fix_error** — "He visit me last week."
@@ -758,16 +767,19 @@
 5. **fill_gap** — "I _____ my room yesterday — it was so messy."
    **Hint**: Passado de "clean"
    **Answer**: cleaned
+   **Accepts**: tidied / organized / tidied up
    **Explanation**: "Cleaned" — clean + ed.
 
 6. **fill_gap** — "She _____ for the test all week at the library."
    **Hint**: Passado de "study"
    **Answer**: studied
+   **Accepts**: worked / read / revised
    **Explanation**: "Studied" — y → ied.
 
 7. **fill_gap** — "They _____ at the party two hours late."
    **Hint**: Passado de "arrive"
    **Answer**: arrived
+   **Accepts**: showed up / turned up
    **Explanation**: "Arrived" — arrive + d (e mudo + d).
 
 8. **fix_error** — "I cooked breakfast and watch TV."

@@ -1085,6 +1085,10 @@
           "sentence": "_____ name is Felipe.",
           "hint": "Possessivo de primeira pessoa",
           "answer": "My",
+          "accepts": [
+            "His",
+            "Your"
+          ],
           "explanation": "\"My\" = meu/minha. \"My name is Felipe\" = \"Meu nome é Felipe\". É um chunk fixo de apresentação."
         },
         {

@@ -55,11 +55,13 @@
 6. **fill_gap** — "If she _____, I'll call her back."
    **Hint**: Present simple 3ª pessoa de "call"
    **Answer**: calls
+   **Accepts**: texts / writes
    **Explanation**: "If she calls" — 3ª pessoa + -s no present.
 
 7. **fill_gap** — "We _____ travel if we save money."
    **Hint**: Consequência futura
    **Answer**: will
+   **Accepts**: 'll / can / could / might
    **Explanation**: "We will travel" — will + base na consequência.
 
 8. **fix_error** — "If it will rain, I'll stay."
@@ -227,16 +229,19 @@
 5. **fill_gap** — "I'll cook if you _____."
    **Hint**: Present simple de "shop"
    **Answer**: shop
+   **Accepts**: clean / wash up / help / do the dishes / want / buy the food
    **Explanation**: "If you shop" — present simple com you.
 
 6. **fill_gap** — "If I _____ a chance, I'll try."
    **Hint**: Present simple de "get"
    **Answer**: get
+   **Accepts**: have / see / find
    **Explanation**: "If I get" — present simple com I.
 
 7. **fill_gap** — "She _____ help if I ask."
    **Hint**: Consequência futura
    **Answer**: will
+   **Accepts**: 'll / can / might / would
    **Explanation**: "She will help" — will + base.
 
 8. **fix_error** — "If I will go, I'll call you."
@@ -414,6 +419,7 @@
 7. **fill_gap** — "We _____ go to the cinema if you want."
    **Hint**: Consequência futura
    **Answer**: will
+   **Accepts**: 'll / can
    **Explanation**: "We will go" — will + base. Ou "we'll / we will go".
 
 8. **fix_error** — "If you will need help, I'll come."
@@ -587,6 +593,7 @@
 6. **fill_gap** — "She _____ come unless she's sick."
    **Hint**: Auxiliar futuro
    **Answer**: will
+   **Accepts**: 'll
    **Explanation**: "She will come unless..." — will + base.
 
 7. **fill_gap** — "Unless _____ rains, we'll go to the park."
@@ -760,6 +767,7 @@
 5. **fill_gap** — "If she _____ early, we'll have time."
    **Hint**: Present simple 3ª pessoa "arrive"
    **Answer**: arrives
+   **Accepts**: comes / gets here / leaves
    **Explanation**: 3ª pessoa: arrives.
 
 6. **fill_gap** — "I'll go to the gym _____ I'm too tired."

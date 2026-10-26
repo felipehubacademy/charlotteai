@@ -55,16 +55,19 @@
 5. **fill_gap** — "We _____ music very much — it makes us happy."
    **Hint**: Verbo "amar" para "we"
    **Answer**: love
+   **Accepts**: like / enjoy
    **Explanation**: "We love music" — plural usa forma base.
 
 6. **fill_gap** — "She _____ horror movies."
    **Hint**: Verbo "odiar" 3ª pessoa singular
    **Answer**: hates
+   **Accepts**: loves / likes / enjoys
    **Explanation**: "She hates" — 3ª pessoa + -s. "Hate" → "hates".
 
 7. **fill_gap** — "I _____ this song! It's my favorite!"
    **Hint**: Verbo de afeto forte
    **Answer**: love
+   **Accepts**: like / adore
    **Explanation**: "I love this song" — afeto forte por música. "Love" + objeto direto.
 
 8. **fix_error** — "She love coffee."
@@ -232,16 +235,19 @@
 5. **fill_gap** — "I like _____ in the park."
    **Hint**: Verbo "correr" no gerúndio
    **Answer**: running
+   **Accepts**: walking / jogging / playing / reading / cycling / biking / skating
    **Explanation**: "I like running" — verbo no -ing após like. "Run" → "running" (dobra o n antes do -ing).
 
 6. **fill_gap** — "She hates _____ the dishes."
    **Hint**: Verbo "lavar" no gerúndio
    **Answer**: washing
+   **Accepts**: doing
    **Explanation**: "Hates washing" — wash + ing = washing. Após hate sempre -ing.
 
 7. **fill_gap** — "We love _____ in the morning."
    **Hint**: Verbo "caminhar" no gerúndio
    **Answer**: walking
+   **Accepts**: running / jogging / swimming / reading / cooking / studying / exercising / working out / cycling
    **Explanation**: "Love walking" — walk + ing. Atividade favorita.
 
 8. **fix_error** — "I like read books."
@@ -409,11 +415,13 @@
 5. **fill_gap** — "Ana likes _____."
    **Hint**: Pronome objeto de "you"
    **Answer**: you
+   **Accepts**: me / him / her / us / them / it
    **Explanation**: "You" funciona como sujeito E objeto: "You like Ana" / "Ana likes you". Forma única.
 
 6. **fill_gap** — "Can you help _____?"
    **Hint**: Pronome objeto de "we"
    **Answer**: us
+   **Accepts**: me / him / her / them
    **Explanation**: "Us" é o objeto de "we". "Help us" = "Ajude a nós/nos ajude".
 
 7. **fill_gap** — "I love this song. Listen to _____!"
@@ -587,13 +595,13 @@
 5. **fill_gap** — "I love _____ books."
    **Hint**: Tipo de livro (gênero), sem artigo
    **Answer**: reading
-   **Accepts**: history / comic / comics / science fiction / mystery / romance / adventure
+   **Accepts**: history / comic / comics / science fiction / mystery / romance / adventure / fantasy / horror / poetry / children's / crime / detective / travel / cook / cooking
    **Explanation**: "I love reading books" — verbo no -ing após love. Ou pode ser tipo: "love mystery books".
 
 6. **fill_gap** — "She listens to _____ music every day."
    **Hint**: Adjetivo de gênero musical
    **Answer**: classical
-**Accepts**: pop / rock / jazz
+   **Accepts**: pop / rock / jazz / country / electronic / hip-hop / hip hop / rap / samba / funk / folk / latin / indie / opera / blues / reggae / soul / gospel / k-pop / sertanejo
    **Explanation**: "Classical music", "pop music" — gênero + music. Sem artigo.
 
 7. **fill_gap** — "We love _____ — soccer, basketball, tennis."
@@ -767,6 +775,7 @@
 5. **fill_gap** — "I _____ tea, but I drink coffee anyway."
    **Hint**: Verbo "preferir"
    **Answer**: prefer
+   **Accepts**: like / love
    **Explanation**: "I prefer tea" = "Prefiro chá". Forma base com "I".
 
 6. **fill_gap** — "She _____ playing tennis to swimming."

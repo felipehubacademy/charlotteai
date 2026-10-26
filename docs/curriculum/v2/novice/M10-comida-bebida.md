@@ -55,6 +55,7 @@
 5. **fill_gap** — "I'd like _____ bread, please."
    **Hint**: Quantidade indefinida com incontável
    **Answer**: some
+   **Accepts**: more
    **Explanation**: "Bread" é incontável. "Some bread" = "um pouco de pão / pão" (quantidade não especificada).
 
 6. **fill_gap** — "She has three _____ in her lunch."
@@ -65,16 +66,19 @@
 7. **fill_gap** — "Can I have _____ juice?"
    **Hint**: Quantidade indefinida (juice = incontável)
    **Answer**: some
+   **Accepts**: more
    **Explanation**: "Juice" é incontável → "some juice". Padrão pra pedir bebida.
 
 8. **fix_error** — "I'd like a water, please."
    **Hint**: "Water" é incontável
    **Answer**: I'd like some water, please.
+   **Accepts**: I'd like a glass of water, please. / I'd like water, please. / I'd like a bottle of water, please.
    **Explanation**: "Water" é incontável, não usa "a". Use "some water" ou "a glass of water" (com unidade).
 
 9. **fix_error** — "I have two breads."
    **Hint**: "Bread" é incontável
    **Answer**: I have some bread.
+   **Accepts**: I have two pieces of bread. / I have two slices of bread. / I have two loaves of bread.
    **Explanation**: "Bread" não tem plural com -s. Pra quantificar: "two pieces of bread", "some bread", "a slice of bread".
 
 10. **read_answer**
@@ -586,11 +590,13 @@
 5. **fill_gap** — "I'd _____ a sandwich and a juice."
    **Hint**: Forma curta de "would"
    **Answer**: like
+   **Accepts**: love
    **Explanation**: "I'd / I would like" = "I would like" (eu gostaria). Contração obrigatória em fala.
 
 6. **fill_gap** — "Could I _____ the menu, please?"
    **Hint**: Verbo "ter / receber" no pedido
    **Answer**: have
+   **Accepts**: see / get
    **Explanation**: "Could I have the menu?" — versão ainda mais educada que "Can I have". "Have" no sentido de receber.
 
 7. **fill_gap** — "_____ would you like to drink?"
@@ -601,11 +607,13 @@
 8. **fix_error** — "I want one coffee."
    **Hint**: Mais educado em restaurante
    **Answer**: I'd like a coffee.
+   **Accepts**: I'd like one coffee. / Can I have a coffee? / Could I have a coffee, please? / I'd like a coffee, please.
    **Explanation**: "I want" é direto demais em contextos sociais/comerciais. "I'd / I would like a coffee" é o padrão educado. Também "a coffee" (não "one coffee").
 
 9. **fix_error** — "Give me the menu."
    **Hint**: Forma educada de pedir
    **Answer**: Can I have the menu, please?
+   **Accepts**: Could I have the menu, please? / Can I see the menu, please? / Could I see the menu, please? / May I have the menu, please? / Can I have the menu?
    **Explanation**: "Give me" sem "please" soa rude. "Can I have... please?" é o padrão educado.
 
 10. **read_answer**
@@ -780,6 +788,7 @@
 8. **fix_error** — "I'd like one tea."
    **Hint**: Tea é incontável
    **Answer**: I'd like some tea.
+   **Accepts**: I'd like a cup of tea.
    **Explanation**: Tea = incontável. Não usa "one". Use "some tea" ou "a cup of tea".
 
 9. **fix_error** — "How many milk do we have?"

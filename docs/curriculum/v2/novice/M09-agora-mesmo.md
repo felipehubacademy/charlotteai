@@ -60,11 +60,13 @@
 6. **fill_gap** — "We are _____ in the park for exercise."
    **Hint**: Verbo "correr" no -ing (dobra o n)
    **Answer**: running
+   **Accepts**: walking / jogging / cycling / exercising / training / biking / skating
    **Explanation**: Verbos curtos terminados em consoante-vogal-consoante dobram a última consoante antes de -ing: run → running, sit → sitting, swim → swimming.
 
 7. **fill_gap** — "She is _____ a cake for the party."
    **Hint**: Verbo "fazer" no -ing (drop o -e)
    **Answer**: making
+   **Accepts**: baking
    **Explanation**: Verbos terminados em -e mudo perdem o e antes de -ing: make → making, write → writing, take → taking.
 
 8. **fix_error** — "I am work right now."
@@ -232,16 +234,19 @@
 5. **fill_gap** — "I _____ studying right now."
    **Hint**: Negativa com "I" (forma contraída)
    **Answer**: 'm not
+   **Accepts**: am not
    **Explanation**: "I'm / I am not studying" — "am not" contrai pra "'m not". Não existe "amn't" em inglês padrão.
 
 6. **fill_gap** — "She _____ cooking."
    **Hint**: Negativa de "she is" (forma contraída)
    **Answer**: isn't
+   **Accepts**: is not
    **Explanation**: "She isn't / is not cooking" — is + not contrai pra "isn't / is not".
 
 7. **fill_gap** — "They _____ watching TV; they're playing games."
    **Hint**: Negativa de "they are" (contraída)
    **Answer**: aren't
+   **Accepts**: are not
    **Explanation**: "They aren't / are not watching" — are + not = aren't.
 
 8. **fix_error** — "She don't working."
@@ -586,19 +591,19 @@
 5. **fill_gap** — "I'm reading a great book _____."
    **Hint**: Marcador temporal pra agora
    **Answer**: right now
-   **Accepts**: at the moment
+   **Accepts**: at the moment / now / today / at this moment / this week
    **Explanation**: "Right now" enfatiza a ação no momento. Continuous + right now é combinação natural.
 
 6. **fill_gap** — "She is staying with us _____."
    **Hint**: Marcador de período curto (semana atual)
    **Answer**: this week
-   **Accepts**: at the moment
+   **Accepts**: at the moment / this month / now / right now / today / for a few days / this weekend
    **Explanation**: "This week" — período presente e específico. Combina com continuous.
 
 7. **fill_gap** — "They're traveling _____."
    **Hint**: Marcador de período atual (mês)
    **Answer**: this month
-   **Accepts**: at the moment
+   **Accepts**: at the moment / this week / this year / now / right now / this summer / these days
    **Explanation**: "This month" — atividade temporária em curso.
 
 8. **fix_error** — "I work a lot right now."
@@ -766,16 +771,19 @@
 5. **fill_gap** — "He _____ to the gym every day after work."
    **Hint**: rotina, 3ª pessoa
    **Answer**: goes
+   **Accepts**: drives / walks / runs
    **Explanation**: "Every day" indica rotina → present simple. "He goes to the gym" — 3ª pessoa singular, "go" vira "goes".
 
 6. **fill_gap** — "She _____ Italian — she's a translator."
    **Hint**: Profissão / habilidade permanente
    **Answer**: speaks
+   **Accepts**: knows / teaches
    **Explanation**: Habilidade permanente usa present simple: "She speaks Italian". Não continuous.
 
 7. **fill_gap** — "Look! It _____."
    **Hint**: Continuous (acontecendo agora)
    **Answer**: is raining
+   **Accepts**: is snowing
    **Explanation**: "Look! It is raining" — ação que está acontecendo neste momento. Continuous.
 
 8. **fix_error** — "I am working in a bank every day."

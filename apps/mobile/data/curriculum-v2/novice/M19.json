@@ -931,6 +931,10 @@
           "sentence": "I _____ get you a coffee.",
           "hint": "Oferta espontânea (contraída)",
           "answer": "'ll",
+          "accepts": [
+            "will",
+            "can"
+          ],
           "explanation": "\"I'll / I will get you\" — oferta."
         },
         {
@@ -938,6 +942,11 @@
           "sentence": "_____ you open the door, please?",
           "hint": "Pedido educado",
           "answer": "Will",
+          "accepts": [
+            "Can",
+            "Could",
+            "Would"
+          ],
           "explanation": "\"Will you open?\" — pedido polido."
         },
         {
@@ -1472,7 +1481,11 @@
           "hint": "clima muito frio",
           "answer": "freezing",
           "accepts": [
-            "cold"
+            "cold",
+            "very cold",
+            "so cold",
+            "icy",
+            "chilly"
           ],
           "explanation": "\"Freezing\" — adjetivo intensivo para \"very cold\". Outros intensivos: \"boiling\" (very hot), \"soaking\" (very wet). Não usar \"very freezing\" — o adjetivo já é intensificado."
         },

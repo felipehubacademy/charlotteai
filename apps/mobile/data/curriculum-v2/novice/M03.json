@@ -94,6 +94,13 @@
           "sentence": "_____ brother is fifteen years old.",
           "hint": "Possessivo de \"I\"",
           "answer": "My",
+          "accepts": [
+            "His",
+            "Her",
+            "Our",
+            "Your",
+            "Their"
+          ],
           "explanation": "\"My brother\" = \"meu irmão\". Após \"My\" vem o substantivo possuído."
         },
         {
@@ -357,6 +364,9 @@
           "sentence": "I _____ two sisters.",
           "hint": "Forma de \"have got\" para \"I\"",
           "answer": "have got",
+          "accepts": [
+            "have"
+          ],
           "explanation": "\"I have got\" ou contraído \"I've / I have got\". Pra \"I\" sempre \"have\", nunca \"has\"."
         },
         {
@@ -364,6 +374,9 @@
           "sentence": "She _____ one brother and two sisters.",
           "hint": "Forma de \"have got\" para \"she\"",
           "answer": "has got",
+          "accepts": [
+            "has"
+          ],
           "explanation": "\"She has got\" — terceira pessoa singular. Contração: \"She's / She is got\"."
         },
         {
@@ -378,6 +391,9 @@
           "sentence": "She have got a sister.",
           "hint": "\"She\" é terceira pessoa",
           "answer": "She has got a sister.",
+          "accepts": [
+            "She has a sister."
+          ],
           "explanation": "Com \"she/he/it\" usa \"has got\", não \"have got\". A frase correta: \"She has got a sister\"."
         },
         {
@@ -385,6 +401,9 @@
           "sentence": "I has got a friend.",
           "hint": "\"I\" não usa \"has\"",
           "answer": "I have got a friend.",
+          "accepts": [
+            "I have a friend."
+          ],
           "explanation": "Com \"I\" sempre \"have got\", não \"has got\". A frase correta: \"I have got a friend\" ou contraído \"I've / I have got a friend\"."
         },
         {
@@ -630,6 +649,12 @@
           "sentence": "_____ wife is from Italy.",
           "hint": "Possessivo de \"he\"",
           "answer": "His",
+          "accepts": [
+            "My",
+            "Your",
+            "Our",
+            "Their"
+          ],
           "explanation": "\"His wife\" = \"a esposa dele\". \"His\" é o possessivo de \"he\" (ele)."
         },
         {
@@ -875,6 +900,10 @@
           "sentence": "_____ name is Ana.",
           "hint": "Possessivo de \"she\"",
           "answer": "Her",
+          "accepts": [
+            "My",
+            "Your"
+          ],
           "explanation": "\"Her name\" = \"o nome dela\". \"Her\" é o possessivo de \"she\" (ela)."
         },
         {
@@ -889,6 +918,12 @@
           "sentence": "Ana is _____ best friend. We are twenty-five.",
           "hint": "Possessivo de \"I\"",
           "answer": "my",
+          "accepts": [
+            "our",
+            "your",
+            "his",
+            "her"
+          ],
           "explanation": "\"My best friend\" = \"a minha melhor amiga\". \"My\" é o possessivo de \"I\"."
         },
         {
@@ -1146,6 +1181,13 @@
           "sentence": "_____ family is great.",
           "hint": "Possessivo de \"I\"",
           "answer": "My",
+          "accepts": [
+            "Our",
+            "His",
+            "Her",
+            "Your",
+            "Their"
+          ],
           "explanation": "\"My family\" = \"a minha família\". \"My\" antes do substantivo."
         },
         {

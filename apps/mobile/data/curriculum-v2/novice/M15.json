@@ -79,6 +79,10 @@
           "sentence": "I _____ my friend yesterday on the phone.",
           "hint": "Passado de \"call\"",
           "answer": "called",
+          "accepts": [
+            "phoned",
+            "rang"
+          ],
           "explanation": "\"Called\" — call + ed. Som /d/."
         },
         {
@@ -86,6 +90,10 @@
           "sentence": "They _____ the door before entering the house.",
           "hint": "Passado de \"open\"",
           "answer": "opened",
+          "accepts": [
+            "unlocked",
+            "knocked on"
+          ],
           "explanation": "\"Opened\" — open + ed."
         },
         {
@@ -93,6 +101,12 @@
           "sentence": "She _____ a lot last week for the exam.",
           "hint": "Passado de \"study\" (y → ied)",
           "answer": "studied",
+          "accepts": [
+            "worked",
+            "read",
+            "practiced",
+            "revised"
+          ],
           "explanation": "Verbos em -y após consoante: y → ied. \"Study\" → \"studied\"."
         },
         {
@@ -337,6 +351,9 @@
           "sentence": "She _____ to the store on foot.",
           "hint": "Passado de \"walk\"",
           "answer": "walked",
+          "accepts": [
+            "went"
+          ],
           "explanation": "\"Walk\" → \"walked\" (regular básico)."
         },
         {
@@ -344,6 +361,12 @@
           "sentence": "They _____ a great movie at the cinema.",
           "hint": "Passado de \"enjoy\"",
           "answer": "enjoyed",
+          "accepts": [
+            "watched",
+            "saw",
+            "loved",
+            "liked"
+          ],
           "explanation": "\"Enjoy\" → \"enjoyed\". Verbos em vogal + y mantêm y: \"enjoyed\", \"played\", \"stayed\"."
         },
         {
@@ -591,6 +614,11 @@
           "sentence": "I _____ a great song yesterday on Spotify.",
           "hint": "Passado de \"discover\"",
           "answer": "discovered",
+          "accepts": [
+            "found",
+            "heard",
+            "listened to"
+          ],
           "explanation": "\"Discover\" → \"discovered\". Regular -ed."
         },
         {
@@ -598,6 +626,10 @@
           "sentence": "She _____ a beautiful painting with oil colors.",
           "hint": "Passado de \"paint\"",
           "answer": "painted",
+          "accepts": [
+            "made",
+            "created"
+          ],
           "explanation": "\"Paint\" → \"painted\". Pronúncia /id/ (verbos terminados em -t ou -d)."
         },
         {
@@ -605,6 +637,11 @@
           "sentence": "We _____ the lights at midnight.",
           "hint": "Passado de \"turn off\"",
           "answer": "turned off",
+          "accepts": [
+            "switched off",
+            "turned on",
+            "switched on"
+          ],
           "explanation": "Phrasal verb: \"turn off\" → \"turned off\". Passado + partícula."
         },
         {
@@ -612,6 +649,9 @@
           "sentence": "I worked yesterday last week.",
           "hint": "Os dois marcadores temporais são iguais",
           "answer": "I worked yesterday.",
+          "accepts": [
+            "I worked last week."
+          ],
           "explanation": "Não combina \"yesterday\" + \"last week\" — escolha um. Yesterday = ontem; last week = semana passada."
         },
         {
@@ -1120,6 +1160,11 @@
           "sentence": "I _____ my room yesterday — it was so messy.",
           "hint": "Passado de \"clean\"",
           "answer": "cleaned",
+          "accepts": [
+            "tidied",
+            "organized",
+            "tidied up"
+          ],
           "explanation": "\"Cleaned\" — clean + ed."
         },
         {
@@ -1127,6 +1172,11 @@
           "sentence": "She _____ for the test all week at the library.",
           "hint": "Passado de \"study\"",
           "answer": "studied",
+          "accepts": [
+            "worked",
+            "read",
+            "revised"
+          ],
           "explanation": "\"Studied\" — y → ied."
         },
         {
@@ -1134,6 +1184,10 @@
           "sentence": "They _____ at the party two hours late.",
           "hint": "Passado de \"arrive\"",
           "answer": "arrived",
+          "accepts": [
+            "showed up",
+            "turned up"
+          ],
           "explanation": "\"Arrived\" — arrive + d (e mudo + d)."
         },
         {

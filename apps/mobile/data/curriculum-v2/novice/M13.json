@@ -80,6 +80,10 @@
           "sentence": "She is _____ in the team — nobody beats her time.",
           "hint": "Superlativo de \"fast\"",
           "answer": "the fastest",
+          "accepts": [
+            "the best",
+            "the quickest"
+          ],
           "explanation": "\"Fast\" → \"fastest\". \"The fastest\" = a mais rápida."
         },
         {
@@ -87,6 +91,10 @@
           "sentence": "This is _____ exam of the semester — only basic questions.",
           "hint": "Superlativo de \"easy\"",
           "answer": "the easiest",
+          "accepts": [
+            "the simplest",
+            "the shortest"
+          ],
           "explanation": "\"Easy\" → \"easiest\" (y → iest). \"The easiest exam\"."
         },
         {
@@ -94,6 +102,9 @@
           "sentence": "São Paulo is _____ city in Brazil.",
           "hint": "Superlativo de \"big\"",
           "answer": "the biggest",
+          "accepts": [
+            "the largest"
+          ],
           "explanation": "\"Big\" → \"biggest\" (dobra o g). \"The biggest city in Brazil\"."
         },
         {
@@ -331,6 +342,12 @@
           "sentence": "She is _____ teacher in the school — she never gets angry.",
           "hint": "Superlativo longo de \"patient\"",
           "answer": "the most patient",
+          "accepts": [
+            "the best",
+            "the calmest",
+            "the nicest",
+            "the kindest"
+          ],
           "explanation": "\"Patient\" → \"the most patient\" (2 sílabas+, usa \"most\")."
         },
         {
@@ -338,6 +355,13 @@
           "sentence": "It's _____ topic of the year — everyone is talking about it.",
           "hint": "Superlativo longo de \"popular\"",
           "answer": "the most popular",
+          "accepts": [
+            "the hottest",
+            "the biggest",
+            "the most talked-about",
+            "the most important",
+            "the most discussed"
+          ],
           "explanation": "\"Popular\" → \"the most popular\". Sempre \"most\" antes de adj longo."
         },
         {
@@ -345,6 +369,10 @@
           "sentence": "This is _____ book in the library — I almost fell asleep.",
           "hint": "Superlativo longo de \"boring\"",
           "answer": "the most boring",
+          "accepts": [
+            "the dullest",
+            "the worst"
+          ],
           "explanation": "\"Boring\" (2 sílabas) → \"the most boring\"."
         },
         {
@@ -584,6 +612,11 @@
           "sentence": "He is _____ teacher in the school — students love his classes.",
           "hint": "Irregular superlativo de \"good\"",
           "answer": "the best",
+          "accepts": [
+            "the most popular",
+            "the nicest",
+            "the funniest"
+          ],
           "explanation": "\"The best\" — superlativo de \"good\". Decora a lista: good/better/best."
         },
         {
@@ -591,6 +624,9 @@
           "sentence": "It's _____ thing about Mondays — waking up so early!",
           "hint": "Irregular superlativo de \"bad\"",
           "answer": "the worst",
+          "accepts": [
+            "the hardest"
+          ],
           "explanation": "\"The worst\" — superlativo de \"bad\". Lista: bad/worse/worst."
         },
         {
@@ -598,6 +634,9 @@
           "sentence": "She has _____ ideas of all.",
           "hint": "Quantidade máxima (mais)",
           "answer": "the most",
+          "accepts": [
+            "the best"
+          ],
           "explanation": "\"The most ideas\" = mais ideias. \"The most + noun\" pra quantidades."
         },
         {
@@ -1093,6 +1132,12 @@
           "sentence": "It's _____ time in NYC.",
           "hint": "1st (ordinal de 1)",
           "answer": "my first",
+          "accepts": [
+            "the first",
+            "our first",
+            "her first",
+            "his first"
+          ],
           "explanation": "\"My first time in NYC\" — primeira visita. Ordinal especial."
         },
         {
@@ -1100,6 +1145,9 @@
           "sentence": "São Paulo is _____ city in Brazil.",
           "hint": "Superlativo curto de \"big\"",
           "answer": "the biggest",
+          "accepts": [
+            "the largest"
+          ],
           "explanation": "\"Big\" → \"the biggest\" (dobra g)."
         },
         {
@@ -1107,6 +1155,11 @@
           "sentence": "She is _____ student in class — top grades every test.",
           "hint": "Irregular superlativo de \"good\"",
           "answer": "the best",
+          "accepts": [
+            "the smartest",
+            "the brightest",
+            "the top"
+          ],
           "explanation": "Good → the best (irregular)."
         },
         {

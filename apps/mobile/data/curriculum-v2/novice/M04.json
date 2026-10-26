@@ -88,6 +88,13 @@
           "sentence": "_____ kitchen is small.",
           "hint": "Possessivo de \"I\"",
           "answer": "My",
+          "accepts": [
+            "Our",
+            "His",
+            "Her",
+            "Your",
+            "Their"
+          ],
           "explanation": "\"My kitchen\" — falando da própria cozinha. Pra dizer \"a minha cozinha\", usa \"my + substantivo\"."
         },
         {
@@ -95,6 +102,12 @@
           "sentence": "This is _____ bedroom. It is great.",
           "hint": "Possessivo (mostrando algo seu)",
           "answer": "my",
+          "accepts": [
+            "your",
+            "our",
+            "his",
+            "her"
+          ],
           "explanation": "\"This is my bedroom\" pra apresentar o próprio quarto. \"My\" possessivo."
         },
         {
@@ -102,6 +115,10 @@
           "sentence": "Welcome to _____ home!",
           "hint": "Possessivo (sua casa)",
           "answer": "my",
+          "accepts": [
+            "our",
+            "your"
+          ],
           "explanation": "\"Welcome to my home\" — receber alguém na sua casa. Chunk fixo de hospitalidade."
         },
         {
@@ -352,6 +369,9 @@
           "sentence": "_____ a big bed in my bedroom.",
           "hint": "There + verbo to be singular",
           "answer": "There is",
+          "accepts": [
+            "There's"
+          ],
           "explanation": "\"There is a big bed\" — \"tem uma cama grande\". Singular = \"there is\"."
         },
         {
@@ -380,6 +400,9 @@
           "sentence": "It have a window in my room.",
           "hint": "Em inglês usa \"there is/are\", não \"it has/have\"",
           "answer": "There is a window in my room.",
+          "accepts": [
+            "There's a window in my room."
+          ],
           "explanation": "Em português dizemos \"tem\", mas em inglês NÃO se traduz como \"it has/have\". A estrutura correta é \"there is/there are\" pra indicar existência."
         },
         {
@@ -878,6 +901,9 @@
           "sentence": "There is _____ chair next to the table.",
           "hint": "Artigo indefinido antes de \"chair\"",
           "answer": "a",
+          "accepts": [
+            "one"
+          ],
           "explanation": "\"A\" antes de \"chair\" (consoante /ʧ/). \"A chair\" = \"uma cadeira\"."
         },
         {
@@ -885,6 +911,9 @@
           "sentence": "Welcome to _____ house — this is where I live.",
           "hint": "Artigo definido (referência específica)",
           "answer": "the",
+          "accepts": [
+            "my"
+          ],
           "explanation": "\"The house\" se refere a uma casa específica já em contexto. \"The\" é o artigo definido."
         },
         {
@@ -892,6 +921,12 @@
           "sentence": "She is _____ teacher.",
           "hint": "Artigo indefinido antes de profissão",
           "answer": "a",
+          "accepts": [
+            "my",
+            "the",
+            "our",
+            "your"
+          ],
           "explanation": "\"A teacher\" — para profissões, sempre artigo indefinido (a/an). \"A teacher\" porque \"teacher\" começa com consoante."
         },
         {
@@ -1148,6 +1183,9 @@
           "sentence": "_____ a chair next to my bed.",
           "hint": "Singular para indicar existência",
           "answer": "There is",
+          "accepts": [
+            "There's"
+          ],
           "explanation": "\"There is a chair\" = \"tem uma cadeira\" (singular)."
         },
         {

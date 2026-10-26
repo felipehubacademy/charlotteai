@@ -80,6 +80,12 @@
           "sentence": "You _____ study more.",
           "hint": "Conselho positivo",
           "answer": "should",
+          "accepts": [
+            "need to",
+            "must",
+            "have to",
+            "ought to"
+          ],
           "explanation": "\"You should study\" = você deveria estudar."
         },
         {
@@ -87,6 +93,9 @@
           "sentence": "She _____ stay up late.",
           "hint": "Conselho negativo",
           "answer": "shouldn't",
+          "accepts": [
+            "mustn't"
+          ],
           "explanation": "\"She shouldn't / should not stay up late\" = ela não deveria ficar acordada."
         },
         {
@@ -94,6 +103,10 @@
           "sentence": "I think you _____ try yoga.",
           "hint": "Conselho com \"I think\"",
           "answer": "should",
+          "accepts": [
+            "could",
+            "can"
+          ],
           "explanation": "\"I think you should try\" = acho que você deveria tentar."
         },
         {
@@ -336,6 +349,12 @@
           "sentence": "I _____ finish this report.",
           "hint": "Obrigação com I",
           "answer": "have to",
+          "accepts": [
+            "need to",
+            "must",
+            "should",
+            "have got to"
+          ],
           "explanation": "\"I have to finish\" — obrigação."
         },
         {
@@ -343,6 +362,11 @@
           "sentence": "Lucas _____ wear a uniform.",
           "hint": "Obrigação com nome (he)",
           "answer": "has to",
+          "accepts": [
+            "needs to",
+            "must",
+            "has got to"
+          ],
           "explanation": "Lucas = he → \"has to\"."
         },
         {
@@ -350,6 +374,10 @@
           "sentence": "They _____ wake up early.",
           "hint": "Obrigação plural",
           "answer": "have to",
+          "accepts": [
+            "need to",
+            "must"
+          ],
           "explanation": "\"They have to\" — plural."
         },
         {
@@ -868,6 +896,12 @@
           "sentence": "_____ I help you?",
           "hint": "Oferta com should",
           "answer": "Should",
+          "accepts": [
+            "Can",
+            "May",
+            "Could",
+            "Shall"
+          ],
           "explanation": "\"Should I help you?\" — oferta polida."
         },
         {
@@ -875,6 +909,12 @@
           "sentence": "_____ he take a taxi or walk?",
           "hint": "Conselho 3ª pessoa",
           "answer": "Should",
+          "accepts": [
+            "Will",
+            "Can",
+            "Could",
+            "Shall"
+          ],
           "explanation": "\"Should he take a taxi?\" — pedido de conselho sobre ele."
         },
         {
@@ -1122,6 +1162,11 @@
           "sentence": "I _____ see a doctor about this.",
           "hint": "Conselho leve",
           "answer": "should",
+          "accepts": [
+            "need to",
+            "have to",
+            "must"
+          ],
           "explanation": "\"I should see\" — sugestão suave. \"Have to\" seria mais forte."
         },
         {
@@ -1129,6 +1174,11 @@
           "sentence": "She _____ leave at 7 — strict company rule.",
           "hint": "Obrigação forte",
           "answer": "has to",
+          "accepts": [
+            "must",
+            "needs to",
+            "has got to"
+          ],
           "explanation": "\"She has to leave\" — obrigação imposta."
         },
         {
@@ -1136,6 +1186,11 @@
           "sentence": "We _____ buy more bread.",
           "hint": "Necessidade prática",
           "answer": "need to",
+          "accepts": [
+            "have to",
+            "should",
+            "must"
+          ],
           "explanation": "\"We need to buy\" — necessidade. \"Need to\" é o mais comum pra coisas práticas."
         },
         {

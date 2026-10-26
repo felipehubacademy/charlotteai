@@ -82,6 +82,10 @@
           "sentence": "I _____ drive a car.",
           "hint": "Verbo modal de habilidade",
           "answer": "can",
+          "accepts": [
+            "can't",
+            "cannot"
+          ],
           "explanation": "\"I can drive\" — habilidade. Note: \"I drive\" significa \"eu dirijo (frequente)\"; \"I can drive\" significa \"eu sei dirigir / sou capaz\"."
         },
         {
@@ -89,6 +93,10 @@
           "sentence": "My sister _____ dance very well.",
           "hint": "Verbo de habilidade (forma única)",
           "answer": "can",
+          "accepts": [
+            "can't",
+            "cannot"
+          ],
           "explanation": "\"My sister can dance\" — can para qualquer pessoa, sem mudança."
         },
         {
@@ -96,6 +104,10 @@
           "sentence": "They _____ play soccer.",
           "hint": "Modal \"saber/poder fazer\"",
           "answer": "can",
+          "accepts": [
+            "can't",
+            "cannot"
+          ],
           "explanation": "\"They can play\" — plural usa can igual: forma única."
         },
         {
@@ -333,6 +345,9 @@
           "sentence": "I _____ ride a bike — I never learned.",
           "hint": "Negativa de can",
           "answer": "can't",
+          "accepts": [
+            "cannot"
+          ],
           "explanation": "\"I can't / cannot ride a bike\" = \"Não sei andar de bicicleta\". Forma contraída de \"cannot\"."
         },
         {
@@ -340,6 +355,9 @@
           "sentence": "My father _____ sing — he's terrible at it.",
           "hint": "Negativa de can (3ª pessoa também usa can't)",
           "answer": "can't",
+          "accepts": [
+            "cannot"
+          ],
           "explanation": "\"My father can't / cannot sing\" — mesmo na 3ª pessoa singular, can't."
         },
         {
@@ -347,6 +365,9 @@
           "sentence": "Sorry, I _____ help you right now — I'm too busy.",
           "hint": "Negativa polida com can",
           "answer": "can't",
+          "accepts": [
+            "cannot"
+          ],
           "explanation": "\"I can't / cannot help\" — usado pra recusar polidamente. Comum em contextos sociais."
         },
         {
@@ -848,6 +869,18 @@
           "sentence": "I can play the _____ very well.",
           "hint": "Instrumento musical",
           "answer": "piano",
+          "accepts": [
+            "guitar",
+            "violin",
+            "drums",
+            "flute",
+            "saxophone",
+            "bass",
+            "cello",
+            "trumpet",
+            "keyboard",
+            "ukulele"
+          ],
           "explanation": "\"Play the piano\" — chunk com \"the\" obrigatório pra instrumentos musicais. Exemplo: play the guitar, play the violin."
         },
         {
@@ -877,7 +910,17 @@
           "accepts": [
             "tennis",
             "basketball",
-            "volleyball"
+            "volleyball",
+            "football",
+            "golf",
+            "baseball",
+            "chess",
+            "cards",
+            "games",
+            "video games",
+            "rugby",
+            "handball",
+            "futsal"
           ],
           "explanation": "\"Play + esporte\" sem artigo. \"Play soccer\", \"play tennis\", \"play basketball\"."
         },
@@ -1118,6 +1161,9 @@
           "sentence": "I _____ drive yet — I'm only fifteen.",
           "hint": "Negativa de can",
           "answer": "can't",
+          "accepts": [
+            "cannot"
+          ],
           "explanation": "\"I can't / cannot drive yet\" = \"Ainda não sei dirigir\". \"Yet\" indica que vai aprender no futuro."
         },
         {
@@ -1132,6 +1178,10 @@
           "sentence": "We _____ both play the guitar.",
           "hint": "Modal de habilidade positivo",
           "answer": "can",
+          "accepts": [
+            "can't",
+            "cannot"
+          ],
           "explanation": "\"We can both play\" — ambos podem. \"Can\" igual pra qualquer pessoa."
         },
         {

@@ -55,16 +55,19 @@
 5. **fill_gap** — "I _____ drive a car."
    **Hint**: Verbo modal de habilidade
    **Answer**: can
+   **Accepts**: can't / cannot
    **Explanation**: "I can drive" — habilidade. Note: "I drive" significa "eu dirijo (frequente)"; "I can drive" significa "eu sei dirigir / sou capaz".
 
 6. **fill_gap** — "My sister _____ dance very well."
    **Hint**: Verbo de habilidade (forma única)
    **Answer**: can
+   **Accepts**: can't / cannot
    **Explanation**: "My sister can dance" — can para qualquer pessoa, sem mudança.
 
 7. **fill_gap** — "They _____ play soccer."
    **Hint**: Modal "saber/poder fazer"
    **Answer**: can
+   **Accepts**: can't / cannot
    **Explanation**: "They can play" — plural usa can igual: forma única.
 
 8. **fix_error** — "She cans speak English."
@@ -232,16 +235,19 @@
 5. **fill_gap** — "I _____ ride a bike — I never learned."
    **Hint**: Negativa de can
    **Answer**: can't
+   **Accepts**: cannot
    **Explanation**: "I can't / cannot ride a bike" = "Não sei andar de bicicleta". Forma contraída de "cannot".
 
 6. **fill_gap** — "My father _____ sing — he's terrible at it."
    **Hint**: Negativa de can (3ª pessoa também usa can't)
    **Answer**: can't
+   **Accepts**: cannot
    **Explanation**: "My father can't / cannot sing" — mesmo na 3ª pessoa singular, can't.
 
 7. **fill_gap** — "Sorry, I _____ help you right now — I'm too busy."
    **Hint**: Negativa polida com can
    **Answer**: can't
+   **Accepts**: cannot
    **Explanation**: "I can't / cannot help" — usado pra recusar polidamente. Comum em contextos sociais.
 
 8. **fix_error** — "She doesn't can drive."
@@ -587,6 +593,7 @@
 5. **fill_gap** — "I can play the _____ very well."
    **Hint**: Instrumento musical
    **Answer**: piano
+   **Accepts**: guitar / violin / drums / flute / saxophone / bass / cello / trumpet / keyboard / ukulele
    **Explanation**: "Play the piano" — chunk com "the" obrigatório pra instrumentos musicais. Exemplo: play the guitar, play the violin.
 
 6. **fill_gap** — "She can speak French and _____."
@@ -598,7 +605,7 @@
 7. **fill_gap** — "We can play _____ on Saturdays."
    **Hint**: Esporte ou jogo
    **Answer**: soccer
-**Accepts**: tennis / basketball / volleyball
+   **Accepts**: tennis / basketball / volleyball / football / golf / baseball / chess / cards / games / video games / rugby / handball / futsal
    **Explanation**: "Play + esporte" sem artigo. "Play soccer", "play tennis", "play basketball".
 
 8. **fix_error** — "I can play piano."
@@ -766,6 +773,7 @@
 5. **fill_gap** — "I _____ drive yet — I'm only fifteen."
    **Hint**: Negativa de can
    **Answer**: can't
+   **Accepts**: cannot
    **Explanation**: "I can't / cannot drive yet" = "Ainda não sei dirigir". "Yet" indica que vai aprender no futuro.
 
 6. **fill_gap** — "_____ your sister speak French?"
@@ -776,6 +784,7 @@
 7. **fill_gap** — "We _____ both play the guitar."
    **Hint**: Modal de habilidade positivo
    **Answer**: can
+   **Accepts**: can't / cannot
    **Explanation**: "We can both play" — ambos podem. "Can" igual pra qualquer pessoa.
 
 8. **fix_error** — "She cans speak Japanese."

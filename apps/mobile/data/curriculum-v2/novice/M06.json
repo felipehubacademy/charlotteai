@@ -88,6 +88,11 @@
           "sentence": "She _____ coffee in the morning before work.",
           "hint": "Verbo \"beber\" na 3ª pessoa singular",
           "answer": "drinks",
+          "accepts": [
+            "has",
+            "makes",
+            "buys"
+          ],
           "explanation": "\"She drinks\" — 3ª pessoa leva -s. Drink + s = drinks."
         },
         {
@@ -95,6 +100,9 @@
           "sentence": "Lucas _____ to school by bus every day.",
           "hint": "Verbo \"ir\" na 3ª pessoa singular",
           "answer": "goes",
+          "accepts": [
+            "travels"
+          ],
           "explanation": "\"Go\" termina em -o, leva -es: \"goes\". Lucas = he, então \"Lucas goes\"."
         },
         {

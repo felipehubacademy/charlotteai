@@ -89,6 +89,14 @@
           "sentence": "The cashier is _____ the door.",
           "hint": "Preposição \"perto de\"",
           "answer": "next to",
+          "accepts": [
+            "near",
+            "by",
+            "beside",
+            "behind",
+            "in front of",
+            "opposite"
+          ],
           "explanation": "\"Next to\" = ao lado de. Localização: \"next to the door\"."
         },
         {
@@ -103,6 +111,10 @@
           "sentence": "I want one shirt black.",
           "hint": "Ordem do adjetivo + educado",
           "answer": "I'd like a black shirt.",
+          "accepts": [
+            "I want a black shirt.",
+            "Can I have a black shirt?"
+          ],
           "explanation": "Adjetivo VEM ANTES do substantivo: \"a BLACK shirt\" (não \"a shirt black\"). E \"I'd / I would like\" é mais educado que \"I want\"."
         },
         {
@@ -367,6 +379,9 @@
           "sentence": "Those is my shirt.",
           "hint": "Concordância plural-singular",
           "answer": "That is my shirt.",
+          "accepts": [
+            "Those are my shirts."
+          ],
           "explanation": "\"Shirt\" singular → \"That\" (não \"Those\"). Pra plural seria \"Those are my shirts\"."
         },
         {
@@ -597,6 +612,11 @@
           "sentence": "The cashier is _____ the door.",
           "hint": "Preposição \"perto de / ao lado\"",
           "answer": "next to",
+          "accepts": [
+            "near",
+            "beside",
+            "by"
+          ],
           "explanation": "\"Next to\" = ao lado de. \"The cashier is next to the door\"."
         },
         {
@@ -860,6 +880,9 @@
           "sentence": "Your total is twenty _____.",
           "hint": "Moeda americana",
           "answer": "dollars",
+          "accepts": [
+            "bucks"
+          ],
           "explanation": "\"Twenty dollars\" — preço em USD. \"Bucks\" é gíria."
         },
         {
@@ -874,6 +897,9 @@
           "sentence": "_____ shirt is twenty dollars.",
           "hint": "Demonstrativo singular próximo",
           "answer": "This",
+          "accepts": [
+            "That"
+          ],
           "explanation": "\"This shirt is twenty dollars\" — pode pegar e mostrar a peça."
         },
         {
@@ -888,6 +914,9 @@
           "sentence": "I pay for cash.",
           "hint": "Preposição com cash",
           "answer": "I pay with cash.",
+          "accepts": [
+            "I pay in cash."
+          ],
           "explanation": "\"Pay with cash\" — preposição é \"with\" (ou \"in\"). \"For\" seria \"pagar POR algo (item)\"."
         },
         {
@@ -1144,6 +1173,9 @@
           "sentence": "I pay for cash.",
           "hint": "Preposição com cash",
           "answer": "I pay with cash.",
+          "accepts": [
+            "I pay in cash."
+          ],
           "explanation": "\"Pay with cash\" — preposição \"with\". \"For\" seria \"pagar POR algo\"."
         },
         {

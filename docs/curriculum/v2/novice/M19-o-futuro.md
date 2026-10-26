@@ -603,11 +603,13 @@
 5. **fill_gap** — "I _____ get you a coffee."
    **Hint**: Oferta espontânea (contraída)
    **Answer**: 'll
+   **Accepts**: will / can
    **Explanation**: "I'll / I will get you" — oferta.
 
 6. **fill_gap** — "_____ you open the door, please?"
    **Hint**: Pedido educado
    **Answer**: Will
+   **Accepts**: Can / Could / Would
    **Explanation**: "Will you open?" — pedido polido.
 
 7. **fill_gap** — "I promise I _____ tell anyone."
@@ -963,7 +965,7 @@
 5. **fill_gap** — "It's _____ today — really cold!"
    **Hint**: clima muito frio
    **Answer**: freezing
-   **Accepts**: cold
+   **Accepts**: cold / very cold / so cold / icy / chilly
    **Explanation**: "Freezing" — adjetivo intensivo para "very cold". Outros intensivos: "boiling" (very hot), "soaking" (very wet). Não usar "very freezing" — o adjetivo já é intensificado.
 
 6. **fill_gap** — "_____ is my favorite season."

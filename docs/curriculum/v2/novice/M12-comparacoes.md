@@ -61,6 +61,7 @@
 7. **fill_gap** — "This test is _____ than the last one — only ten questions!"
    **Hint**: Comparativo de "easy"
    **Answer**: easier
+   **Accepts**: shorter
    **Explanation**: "Easy" → "easier" (y → ier). Adjetivos em -y trocam y por -ier.
 
 8. **fix_error** — "He is taller as me."
@@ -229,16 +230,19 @@
 5. **fill_gap** — "Yoga is _____ than running — perfect for stress."
    **Hint**: Comparativo longo de "relaxing"
    **Answer**: more relaxing
+   **Accepts**: calmer / more calming / more peaceful
    **Explanation**: "Relaxing" tem 3 sílabas → "more relaxing".
 
 6. **fill_gap** — "This puzzle is _____ than the last one — it's taking hours."
    **Hint**: Comparativo longo de "challenging"
    **Answer**: more challenging
+   **Accepts**: harder / more difficult / more complicated / longer
    **Explanation**: "Challenging" 3+ sílabas → "more challenging".
 
 7. **fill_gap** — "She is _____ than him — she always solves the hardest problems."
    **Hint**: Comparativo longo de "intelligent"
    **Answer**: more intelligent
+   **Accepts**: smarter / cleverer / brighter
    **Explanation**: "Intelligent" 4 sílabas → "more intelligent". Sem -er.
 
 8. **fix_error** — "This book is interestinger than that one."
@@ -416,6 +420,7 @@
 7. **fill_gap** — "He has _____ friends than me."
    **Hint**: Comparativo de "few/little" (mais)
    **Answer**: more
+   **Accepts**: fewer
    **Explanation**: "More" é o comparativo de quantidade — tanto countable quanto uncountable.
 
 8. **fix_error** — "She is gooder at math."
@@ -583,22 +588,25 @@
 5. **fill_gap** — "My car is _____ better than my old one."
    **Hint**: Intensifier (muito mais)
    **Answer**: much
+   **Accepts**: far / a lot / way
    **Explanation**: "Much better" = bem melhor. Padrão pra intensificar comparativos.
 
 6. **fill_gap** — "She is _____ more patient than I am."
    **Hint**: Modificador suave (um pouco)
    **Answer**: a little
+   **Accepts**: a bit / much / far / a lot
    **Explanation**: "A little more patient" = um pouco mais paciente. Suaviza.
 
 7. **fill_gap** — "This room is _____ smaller than that one."
    **Hint**: Modificador suave (um pouco)
    **Answer**: a bit
-   **Accepts**: a little
+   **Accepts**: a little / much / far / a lot
    **Explanation**: "A bit smaller" = um pouco menor. Sinônimo de "a little".
 
 8. **fix_error** — "She is very taller than me."
    **Hint**: "Very" não vai com comparativo
    **Answer**: She is much taller than me.
+   **Accepts**: She is far taller than me. / She is a lot taller than me. / She is a bit taller than me. / She is a little taller than me.
    **Explanation**: Com comparativo usa "much", não "very". "Very + adjetivo simples" (very tall); "Much + comparativo" (much taller).
 
 9. **fix_error** — "I'm a little more better today."

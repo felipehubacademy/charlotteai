@@ -91,6 +91,15 @@
           "sentence": "We are _____ in the park for exercise.",
           "hint": "Verbo \"correr\" no -ing (dobra o n)",
           "answer": "running",
+          "accepts": [
+            "walking",
+            "jogging",
+            "cycling",
+            "exercising",
+            "training",
+            "biking",
+            "skating"
+          ],
           "explanation": "Verbos curtos terminados em consoante-vogal-consoante dobram a última consoante antes de -ing: run → running, sit → sitting, swim → swimming."
         },
         {
@@ -98,6 +107,9 @@
           "sentence": "She is _____ a cake for the party.",
           "hint": "Verbo \"fazer\" no -ing (drop o -e)",
           "answer": "making",
+          "accepts": [
+            "baking"
+          ],
           "explanation": "Verbos terminados em -e mudo perdem o e antes de -ing: make → making, write → writing, take → taking."
         },
         {
@@ -337,6 +349,9 @@
           "sentence": "I _____ studying right now.",
           "hint": "Negativa com \"I\" (forma contraída)",
           "answer": "'m not",
+          "accepts": [
+            "am not"
+          ],
           "explanation": "\"I'm / I am not studying\" — \"am not\" contrai pra \"'m not\". Não existe \"amn't\" em inglês padrão."
         },
         {
@@ -344,6 +359,9 @@
           "sentence": "She _____ cooking.",
           "hint": "Negativa de \"she is\" (forma contraída)",
           "answer": "isn't",
+          "accepts": [
+            "is not"
+          ],
           "explanation": "\"She isn't / is not cooking\" — is + not contrai pra \"isn't / is not\"."
         },
         {
@@ -351,6 +369,9 @@
           "sentence": "They _____ watching TV; they're playing games.",
           "hint": "Negativa de \"they are\" (contraída)",
           "answer": "aren't",
+          "accepts": [
+            "are not"
+          ],
           "explanation": "\"They aren't / are not watching\" — are + not = aren't."
         },
         {
@@ -842,7 +863,11 @@
           "hint": "Marcador temporal pra agora",
           "answer": "right now",
           "accepts": [
-            "at the moment"
+            "at the moment",
+            "now",
+            "today",
+            "at this moment",
+            "this week"
           ],
           "explanation": "\"Right now\" enfatiza a ação no momento. Continuous + right now é combinação natural."
         },
@@ -852,7 +877,13 @@
           "hint": "Marcador de período curto (semana atual)",
           "answer": "this week",
           "accepts": [
-            "at the moment"
+            "at the moment",
+            "this month",
+            "now",
+            "right now",
+            "today",
+            "for a few days",
+            "this weekend"
           ],
           "explanation": "\"This week\" — período presente e específico. Combina com continuous."
         },
@@ -862,7 +893,13 @@
           "hint": "Marcador de período atual (mês)",
           "answer": "this month",
           "accepts": [
-            "at the moment"
+            "at the moment",
+            "this week",
+            "this year",
+            "now",
+            "right now",
+            "this summer",
+            "these days"
           ],
           "explanation": "\"This month\" — atividade temporária em curso."
         },
@@ -1103,6 +1140,11 @@
           "sentence": "He _____ to the gym every day after work.",
           "hint": "rotina, 3ª pessoa",
           "answer": "goes",
+          "accepts": [
+            "drives",
+            "walks",
+            "runs"
+          ],
           "explanation": "\"Every day\" indica rotina → present simple. \"He goes to the gym\" — 3ª pessoa singular, \"go\" vira \"goes\"."
         },
         {
@@ -1110,6 +1152,10 @@
           "sentence": "She _____ Italian — she's a translator.",
           "hint": "Profissão / habilidade permanente",
           "answer": "speaks",
+          "accepts": [
+            "knows",
+            "teaches"
+          ],
           "explanation": "Habilidade permanente usa present simple: \"She speaks Italian\". Não continuous."
         },
         {
@@ -1117,6 +1163,9 @@
           "sentence": "Look! It _____.",
           "hint": "Continuous (acontecendo agora)",
           "answer": "is raining",
+          "accepts": [
+            "is snowing"
+          ],
           "explanation": "\"Look! It is raining\" — ação que está acontecendo neste momento. Continuous."
         },
         {

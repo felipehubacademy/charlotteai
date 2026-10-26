@@ -260,6 +260,7 @@
     **Passage**: "Friend: 'I just got engaged!' You: 'No way! Seriously?' Friend: 'Yes! Last night, on the beach.' You: 'Get out! That's amazing!' Friend: 'I can't believe it either.'"
     **Question**: Como o narrador reage à notícia do noivado?
     **Answer**: with surprise — "No way! Seriously?" and "Get out! That's amazing!"
+    **Accepts**: No way / Seriously / Get out / That's amazing
     **Explanation**: O texto mostra várias reações de surpresa em sequência: "No way!", "Seriously?", "Get out!", "That's / That is amazing!". Todas válidas para uma grande notícia.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -416,7 +417,7 @@
 6. **fill_gap** — "I _____ what you're saying — it's clear."
    **Hint**: confirmar compreensão
    **Answer**: get
-**Accepts**: see
+   **Accepts**: see / understand / know
    **Explanation**: "I get what you're / you are saying" / "I see what you're / you are saying" — ambos chunks naturais de "entendo o que você diz". "Get" e "see" funcionam aqui idiomaticamente.
 
 7. **fill_gap** — "_____ you said is clear."
@@ -439,6 +440,7 @@
     **Passage**: "Friend: 'First, you log in. Then click Settings. After that, change your password.' You: 'Got it. Log in, click Settings, change password. Makes sense.' Friend: 'Exactly!' You: 'I see. Easy enough.'"
     **Question**: Como o narrador confirma que entendeu?
     **Answer**: with "Got it", "Makes sense", "I see"
+    **Accepts**: Got it / Makes sense / I see
     **Explanation**: O texto mostra três reações de confirmação em sequência: "Got it", "Makes sense", "I see". Todas válidas para mostrar que se entendeu.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -595,7 +597,7 @@
 6. **fill_gap** — "That _____ awful."
    **Hint**: verbo to be
    **Answer**: is
-**Accepts**: 's
+   **Accepts**: 's / sounds / looks / seems
    **Explanation**: "That is awful" / "That's / That is awful" — reação forte a algo ruim. "Awful" significa "horrível, terrível".
 
 7. **fill_gap** — "_____ a shame."

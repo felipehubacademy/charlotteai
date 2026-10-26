@@ -64,6 +64,7 @@
 5. **fill_gap** — "I _____ my passport at the security check — I can't find it anywhere!"
    **Hint**: passado de "lose"
    **Answer**: lost
+   **Accepts**: left / forgot
    **Explanation**: "Lost" — passado simples de "lose". Verbo irregular: lose → lost → lost. "I lost my passport" — frase crítica para reportar perda no aeroporto.
 
 6. **fill_gap** — "_____ does the flight leave?"
@@ -75,6 +76,7 @@
 7. **fill_gap** — "I'm here _____ business."
    **Hint**: preposição para propósito
    **Answer**: for
+   **Accepts**: on
    **Explanation**: "I'm / I am here for + propósito" — chunk fixo na imigração. "I'm here for business / vacation / a conference". Preposição "for" é obrigatória.
 
 8. **fix_error** — "I lost my luggages at the airport."
@@ -255,6 +257,7 @@
 7. **fill_gap** — "Is _____ included?"
    **Hint**: refeição da manhã
    **Answer**: breakfast
+   **Accepts**: parking / wifi / Wi-Fi / dinner / lunch
    **Explanation**: "Is breakfast included?" — pergunta padrão sobre o que vem incluído na diária. "Breakfast" não tem artigo neste chunk.
 
 8. **fix_error** — "I want a room for two persons."
@@ -436,7 +439,7 @@
 7. **fill_gap** — "The post office is _____ from here."
    **Hint**: distância — "far" ou "close/near"
    **Answer**: far
-**Accepts**: near" ou "close
+   **Accepts**: near / close
    **Explanation**: "Far from here" / "near here" / "close to here" — chunks para descrever distância. Todos funcionam aqui.
 
 8. **fix_error** — "How I go to the airport?"
@@ -617,6 +620,7 @@
 7. **fill_gap** — "My stomach _____."
    **Hint**: verbo para "dói"
    **Answer**: hurts
+   **Accepts**: aches / is hurting
    **Explanation**: "My stomach hurts" — chunk fixo para "minha barriga dói". "Hurt" é verbo regular: hurts (presente), hurt (passado, idêntico).
 
 8. **fix_error** — "I am sick of the stomach."
@@ -787,16 +791,19 @@
 5. **fill_gap** — "Can I _____ a message for him, please?"
    **Hint**: verbo para "deixar"
    **Answer**: leave
+   **Accepts**: take
    **Explanation**: "Leave a message" — chunk fixo. "Leave" significa "deixar". Padrão para gravar recado quando a pessoa não está.
 
 6. **fill_gap** — "I'll _____ you back later on the phone."
    **Hint**: phrasal verb de retorno
    **Answer**: call
+   **Accepts**: phone / ring
    **Explanation**: "Call back" — phrasal verb para "ligar de volta". "I'll / I will call you back" — promessa fixa ao telefone.
 
 7. **fill_gap** — "Could you _____ that, please?"
    **Hint**: verbo para "repetir"
    **Answer**: repeat
+   **Accepts**: say / spell / explain
    **Explanation**: "Could you repeat that?" — pergunta educada para pedir repetição. Útil quando não se entende algo no telefone.
 
 8. **fix_error** — "Hi, my name is John speaking."

@@ -61,16 +61,19 @@
 5. **fill_gap** — "_____ kitchen is small."
    **Hint**: Possessivo de "I"
    **Answer**: My
+   **Accepts**: Our / His / Her / Your / Their
    **Explanation**: "My kitchen" — falando da própria cozinha. Pra dizer "a minha cozinha", usa "my + substantivo".
 
 6. **fill_gap** — "This is _____ bedroom. It is great."
    **Hint**: Possessivo (mostrando algo seu)
    **Answer**: my
+   **Accepts**: your / our / his / her
    **Explanation**: "This is my bedroom" pra apresentar o próprio quarto. "My" possessivo.
 
 7. **fill_gap** — "Welcome to _____ home!"
    **Hint**: Possessivo (sua casa)
    **Answer**: my
+   **Accepts**: our / your
    **Explanation**: "Welcome to my home" — receber alguém na sua casa. Chunk fixo de hospitalidade.
 
 8. **fix_error** — "I house is big."
@@ -238,6 +241,7 @@
 5. **fill_gap** — "_____ a big bed in my bedroom."
    **Hint**: There + verbo to be singular
    **Answer**: There is
+   **Accepts**: There's
    **Explanation**: "There is a big bed" — "tem uma cama grande". Singular = "there is".
 
 6. **fill_gap** — "_____ two windows in the kitchen."
@@ -258,6 +262,7 @@
 9. **fix_error** — "It have a window in my room."
    **Hint**: Em inglês usa "there is/are", não "it has/have"
    **Answer**: There is a window in my room.
+   **Accepts**: There's a window in my room.
    **Explanation**: Em português dizemos "tem", mas em inglês NÃO se traduz como "it has/have". A estrutura correta é "there is/there are" pra indicar existência.
 
 10. **read_answer**
@@ -592,16 +597,19 @@
 5. **fill_gap** — "There is _____ chair next to the table."
    **Hint**: Artigo indefinido antes de "chair"
    **Answer**: a
+   **Accepts**: one
    **Explanation**: "A" antes de "chair" (consoante /ʧ/). "A chair" = "uma cadeira".
 
 6. **fill_gap** — "Welcome to _____ house — this is where I live."
    **Hint**: Artigo definido (referência específica)
    **Answer**: the
+   **Accepts**: my
    **Explanation**: "The house" se refere a uma casa específica já em contexto. "The" é o artigo definido.
 
 7. **fill_gap** — "She is _____ teacher."
    **Hint**: Artigo indefinido antes de profissão
    **Answer**: a
+   **Accepts**: my / the / our / your
    **Explanation**: "A teacher" — para profissões, sempre artigo indefinido (a/an). "A teacher" porque "teacher" começa com consoante.
 
 8. **fix_error** — "I've got a apple."
@@ -774,6 +782,7 @@
 6. **fill_gap** — "_____ a chair next to my bed."
    **Hint**: Singular para indicar existência
    **Answer**: There is
+   **Accepts**: There's
    **Explanation**: "There is a chair" = "tem uma cadeira" (singular).
 
 7. **fill_gap** — "I've got two _____ in my kitchen."

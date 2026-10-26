@@ -77,6 +77,9 @@
           "sentence": "He plays soccer _____ basketball.",
           "hint": "Soma de atividades",
           "answer": "and",
+          "accepts": [
+            "or"
+          ],
           "explanation": "\"And\" — ambos esportes."
         },
         {
@@ -84,6 +87,10 @@
           "sentence": "I want to travel _____ I don't have money.",
           "hint": "Contraste",
           "answer": "but",
+          "accepts": [
+            "although",
+            "though"
+          ],
           "explanation": "\"But\" — quero mas não posso."
         },
         {
@@ -106,7 +113,9 @@
           "hint": "Estrutura paralela",
           "answer": "I like dogs, cats, and birds.",
           "accepts": [
-            "use \"but\" with opposite idea"
+            "I like dogs, cats and birds.",
+            "I like dogs and cats and birds.",
+            "I like dogs and cats, but not birds."
           ],
           "explanation": "\"But\" sem ideia oposta soa estranho. Use \"and\" pra lista. \"But\" exigiria contraste."
         },
@@ -347,6 +356,10 @@
           "sentence": "I went home early _____ I was sick.",
           "hint": "Motivo (causa)",
           "answer": "because",
+          "accepts": [
+            "since",
+            "as"
+          ],
           "explanation": "\"Because I was sick\" — explicação."
         },
         {
@@ -354,6 +367,9 @@
           "sentence": "It rained yesterday, _____ we stayed inside.",
           "hint": "Resultado",
           "answer": "so",
+          "accepts": [
+            "and"
+          ],
           "explanation": "\"So we stayed\" — consequência da chuva. \"Rained\" é past simple (M15)."
         },
         {
@@ -361,6 +377,10 @@
           "sentence": "She is happy _____ she got a job.",
           "hint": "Causa",
           "answer": "because",
+          "accepts": [
+            "since",
+            "as"
+          ],
           "explanation": "\"Because she got a job\" — explicação da felicidade."
         },
         {
@@ -611,6 +631,9 @@
           "sentence": "She always laughs _____ at funny jokes.",
           "hint": "Advérbio de \"happy\" (y → ily)",
           "answer": "happily",
+          "accepts": [
+            "loudly"
+          ],
           "explanation": "\"Happy\" → \"happily\" (y → ily). Regra de spelling."
         },
         {
@@ -618,6 +641,9 @@
           "sentence": "He walks _____ in the morning — never in a rush.",
           "hint": "Advérbio de \"slow\"",
           "answer": "slowly",
+          "accepts": [
+            "calmly"
+          ],
           "explanation": "\"Slow\" + ly = \"slowly\"."
         },
         {
@@ -625,6 +651,9 @@
           "sentence": "Please speak _____ — the baby is sleeping.",
           "hint": "Advérbio de \"quiet\"",
           "answer": "quietly",
+          "accepts": [
+            "softly"
+          ],
           "explanation": "\"Quiet\" → \"quietly\". Manter o \"t\"."
         },
         {
@@ -872,6 +901,11 @@
           "sentence": "_____ I love coffee, I drink tea sometimes.",
           "hint": "Embora (concessão)",
           "answer": "Although",
+          "accepts": [
+            "Though",
+            "Even though",
+            "While"
+          ],
           "explanation": "\"Although I love coffee\" — apesar de amar."
         },
         {
@@ -879,6 +913,11 @@
           "sentence": "It's raining. _____, we'll go anyway.",
           "hint": "No entanto (contraste forte)",
           "answer": "However",
+          "accepts": [
+            "But",
+            "Still",
+            "Nevertheless"
+          ],
           "explanation": "\"However, we'll / we will go\" — contraste após pausa."
         },
         {
@@ -886,6 +925,11 @@
           "sentence": "_____ she's young, she's very smart.",
           "hint": "Embora",
           "answer": "Although",
+          "accepts": [
+            "Though",
+            "Even though",
+            "While"
+          ],
           "explanation": "\"Although she's / she is young\" — concessão."
         },
         {
@@ -1143,6 +1187,10 @@
           "sentence": "She speaks English _____ — almost like a native.",
           "hint": "Advérbio de \"well\" (good irregular)",
           "answer": "well",
+          "accepts": [
+            "fluently",
+            "perfectly"
+          ],
           "explanation": "\"Speak well\" — well é irregular."
         },
         {
@@ -1150,6 +1198,10 @@
           "sentence": "I love English _____ it opens doors.",
           "hint": "Causa",
           "answer": "because",
+          "accepts": [
+            "since",
+            "as"
+          ],
           "explanation": "Because + causa."
         },
         {

@@ -742,6 +742,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 7. **fill_gap** — "_____ name is Felipe."
    **Hint**: Possessivo de primeira pessoa
    **Answer**: My
+   **Accepts**: His / Your
    **Explanation**: "My" = meu/minha. "My name is Felipe" = "Meu nome é Felipe". É um chunk fixo de apresentação.
 
 8. **fix_error** — "I'm from Brazilian."

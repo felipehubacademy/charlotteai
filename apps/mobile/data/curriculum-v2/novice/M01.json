@@ -117,6 +117,9 @@
           "sentence": "A: Goodbye! B: _____ you later!",
           "hint": "Despedida informal comum",
           "answer": "See",
+          "accepts": [
+            "Catch"
+          ],
           "explanation": "\"See you later\" é uma forma muito informal de dizer tchau. Entre amigos e colegas próximos."
         },
         {
@@ -1060,6 +1063,9 @@
           "sentence": "_____ you next week!",
           "hint": "Despedida com referência temporal",
           "answer": "See",
+          "accepts": [
+            "Catch"
+          ],
           "explanation": "\"See you next week\" = \"te vejo semana que vem\". Padrão para combinar próximo encontro."
         },
         {
@@ -1081,6 +1087,9 @@
           "sentence": "Take of care!",
           "hint": "\"Take care\" é chunk fixo",
           "answer": "Take care!",
+          "accepts": [
+            "Take care of yourself!"
+          ],
           "explanation": "\"Take care\" é uma expressão fixa, sem \"of\". \"Take CARE of yourself\" leva \"of\" só nessa versão longa."
         },
         {

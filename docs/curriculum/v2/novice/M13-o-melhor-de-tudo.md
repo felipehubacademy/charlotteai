@@ -51,16 +51,19 @@
 5. **fill_gap** — "She is _____ in the team — nobody beats her time."
    **Hint**: Superlativo de "fast"
    **Answer**: the fastest
+   **Accepts**: the best / the quickest
    **Explanation**: "Fast" → "fastest". "The fastest" = a mais rápida.
 
 6. **fill_gap** — "This is _____ exam of the semester — only basic questions."
    **Hint**: Superlativo de "easy"
    **Answer**: the easiest
+   **Accepts**: the simplest / the shortest
    **Explanation**: "Easy" → "easiest" (y → iest). "The easiest exam".
 
 7. **fill_gap** — "São Paulo is _____ city in Brazil."
    **Hint**: Superlativo de "big"
    **Answer**: the biggest
+   **Accepts**: the largest
    **Explanation**: "Big" → "biggest" (dobra o g). "The biggest city in Brazil".
 
 8. **fix_error** — "He is tallest in our class."
@@ -228,16 +231,19 @@
 5. **fill_gap** — "She is _____ teacher in the school — she never gets angry."
    **Hint**: Superlativo longo de "patient"
    **Answer**: the most patient
+   **Accepts**: the best / the calmest / the nicest / the kindest
    **Explanation**: "Patient" → "the most patient" (2 sílabas+, usa "most").
 
 6. **fill_gap** — "It's _____ topic of the year — everyone is talking about it."
    **Hint**: Superlativo longo de "popular"
    **Answer**: the most popular
+   **Accepts**: the hottest / the biggest / the most talked-about / the most important / the most discussed
    **Explanation**: "Popular" → "the most popular". Sempre "most" antes de adj longo.
 
 7. **fill_gap** — "This is _____ book in the library — I almost fell asleep."
    **Hint**: Superlativo longo de "boring"
    **Answer**: the most boring
+   **Accepts**: the dullest / the worst
    **Explanation**: "Boring" (2 sílabas) → "the most boring".
 
 8. **fix_error** — "He is the interestingest person."
@@ -405,16 +411,19 @@
 5. **fill_gap** — "He is _____ teacher in the school — students love his classes."
    **Hint**: Irregular superlativo de "good"
    **Answer**: the best
+   **Accepts**: the most popular / the nicest / the funniest
    **Explanation**: "The best" — superlativo de "good". Decora a lista: good/better/best.
 
 6. **fill_gap** — "It's _____ thing about Mondays — waking up so early!"
    **Hint**: Irregular superlativo de "bad"
    **Answer**: the worst
+   **Accepts**: the hardest
    **Explanation**: "The worst" — superlativo de "bad". Lista: bad/worse/worst.
 
 7. **fill_gap** — "She has _____ ideas of all."
    **Hint**: Quantidade máxima (mais)
    **Answer**: the most
+   **Accepts**: the best
    **Explanation**: "The most ideas" = mais ideias. "The most + noun" pra quantidades.
 
 8. **fix_error** — "This is the goodest restaurant."
@@ -760,16 +769,19 @@
 5. **fill_gap** — "It's _____ time in NYC."
    **Hint**: 1st (ordinal de 1)
    **Answer**: my first
+   **Accepts**: the first / our first / her first / his first
    **Explanation**: "My first time in NYC" — primeira visita. Ordinal especial.
 
 6. **fill_gap** — "São Paulo is _____ city in Brazil."
    **Hint**: Superlativo curto de "big"
    **Answer**: the biggest
+   **Accepts**: the largest
    **Explanation**: "Big" → "the biggest" (dobra g).
 
 7. **fill_gap** — "She is _____ student in class — top grades every test."
    **Hint**: Irregular superlativo de "good"
    **Answer**: the best
+   **Accepts**: the smartest / the brightest / the top
    **Explanation**: Good → the best (irregular).
 
 8. **fix_error** — "He is the most tall."

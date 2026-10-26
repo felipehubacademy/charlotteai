@@ -60,6 +60,7 @@
 6. **fill_gap** — "The cashier is _____ the door."
    **Hint**: Preposição "perto de"
    **Answer**: next to
+   **Accepts**: near / by / beside / behind / in front of / opposite
    **Explanation**: "Next to" = ao lado de. Localização: "next to the door".
 
 7. **fill_gap** — "I'd like _____ buy two shirts."
@@ -70,6 +71,7 @@
 8. **fix_error** — "I want one shirt black."
    **Hint**: Ordem do adjetivo + educado
    **Answer**: I'd like a black shirt.
+   **Accepts**: I want a black shirt. / Can I have a black shirt?
    **Explanation**: Adjetivo VEM ANTES do substantivo: "a BLACK shirt" (não "a shirt black"). E "I'd / I would like" é mais educado que "I want".
 
 9. **fix_error** — "I'm looking the menu."
@@ -252,6 +254,7 @@
 9. **fix_error** — "Those is my shirt."
    **Hint**: Concordância plural-singular
    **Answer**: That is my shirt.
+   **Accepts**: Those are my shirts.
    **Explanation**: "Shirt" singular → "That" (não "Those"). Pra plural seria "Those are my shirts".
 
 10. **read_answer**
@@ -410,6 +413,7 @@
 5. **fill_gap** — "The cashier is _____ the door."
    **Hint**: Preposição "perto de / ao lado"
    **Answer**: next to
+   **Accepts**: near / beside / by
    **Explanation**: "Next to" = ao lado de. "The cashier is next to the door".
 
 6. **fill_gap** — "My shoes are _____ the box."
@@ -588,6 +592,7 @@
 5. **fill_gap** — "Your total is twenty _____."
    **Hint**: Moeda americana
    **Answer**: dollars
+   **Accepts**: bucks
    **Explanation**: "Twenty dollars" — preço em USD. "Bucks" é gíria.
 
 6. **fill_gap** — "Can I have a _____, please?"
@@ -598,6 +603,7 @@
 7. **fill_gap** — "_____ shirt is twenty dollars."
    **Hint**: Demonstrativo singular próximo
    **Answer**: This
+   **Accepts**: That
    **Explanation**: "This shirt is twenty dollars" — pode pegar e mostrar a peça.
 
 8. **fix_error** — "How much it is?"
@@ -608,6 +614,7 @@
 9. **fix_error** — "I pay for cash."
    **Hint**: Preposição com cash
    **Answer**: I pay with cash.
+   **Accepts**: I pay in cash.
    **Explanation**: "Pay with cash" — preposição é "with" (ou "in"). "For" seria "pagar POR algo (item)".
 
 10. **read_answer**
@@ -785,6 +792,7 @@
 9. **fix_error** — "I pay for cash."
    **Hint**: Preposição com cash
    **Answer**: I pay with cash.
+   **Accepts**: I pay in cash.
    **Explanation**: "Pay with cash" — preposição "with". "For" seria "pagar POR algo".
 
 10. **read_answer**

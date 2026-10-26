@@ -65,6 +65,7 @@
 5. **fill_gap** — "_____ brother is fifteen years old."
    **Hint**: Possessivo de "I"
    **Answer**: My
+   **Accepts**: His / Her / Our / Your / Their
    **Explanation**: "My brother" = "meu irmão". Após "My" vem o substantivo possuído.
 
 6. **fill_gap** — "He is from Brazil. _____ name is Lucas."
@@ -242,11 +243,13 @@
 5. **fill_gap** — "I _____ two sisters."
    **Hint**: Forma de "have got" para "I"
    **Answer**: have got
+   **Accepts**: have
    **Explanation**: "I have got" ou contraído "I've / I have got". Pra "I" sempre "have", nunca "has".
 
 6. **fill_gap** — "She _____ one brother and two sisters."
    **Hint**: Forma de "have got" para "she"
    **Answer**: has got
+   **Accepts**: has
    **Explanation**: "She has got" — terceira pessoa singular. Contração: "She's / She is got".
 
 7. **fill_gap** — "How many brothers _____ you got?"
@@ -257,11 +260,13 @@
 8. **fix_error** — "She have got a sister."
    **Hint**: "She" é terceira pessoa
    **Answer**: She has got a sister.
+   **Accepts**: She has a sister.
    **Explanation**: Com "she/he/it" usa "has got", não "have got". A frase correta: "She has got a sister".
 
 9. **fix_error** — "I has got a friend."
    **Hint**: "I" não usa "has"
    **Answer**: I have got a friend.
+   **Accepts**: I have a friend.
    **Explanation**: Com "I" sempre "have got", não "has got". A frase correta: "I have got a friend" ou contraído "I've / I have got a friend".
 
 10. **read_answer**
@@ -429,6 +434,7 @@
 7. **fill_gap** — "_____ wife is from Italy."
    **Hint**: Possessivo de "he"
    **Answer**: His
+   **Accepts**: My / Your / Our / Their
    **Explanation**: "His wife" = "a esposa dele". "His" é o possessivo de "he" (ele).
 
 8. **fix_error** — "Maria is my wifey."
@@ -596,6 +602,7 @@
 5. **fill_gap** — "_____ name is Ana."
    **Hint**: Possessivo de "she"
    **Answer**: Her
+   **Accepts**: My / Your
    **Explanation**: "Her name" = "o nome dela". "Her" é o possessivo de "she" (ela).
 
 6. **fill_gap** — "My friend is Brazilian. _____ name is Lucas."
@@ -606,6 +613,7 @@
 7. **fill_gap** — "Ana is _____ best friend. We are twenty-five."
    **Hint**: Possessivo de "I"
    **Answer**: my
+   **Accepts**: our / your / his / her
    **Explanation**: "My best friend" = "a minha melhor amiga". "My" é o possessivo de "I".
 
 8. **fix_error** — "Him is my friend."
@@ -779,6 +787,7 @@
 6. **fill_gap** — "_____ family is great."
    **Hint**: Possessivo de "I"
    **Answer**: My
+   **Accepts**: Our / His / Her / Your / Their
    **Explanation**: "My family" = "a minha família". "My" antes do substantivo.
 
 7. **fill_gap** — "She is my sister. _____ is fifteen years old."

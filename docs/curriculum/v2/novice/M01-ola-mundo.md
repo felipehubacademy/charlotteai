@@ -77,6 +77,7 @@
 7. **fill_gap** — "A: Goodbye! B: _____ you later!"
    **Hint**: Despedida informal comum
    **Answer**: See
+   **Accepts**: Catch
    **Explanation**: "See you later" é uma forma muito informal de dizer tchau. Entre amigos e colegas próximos.
 
 8. **fix_error** — "Good meet you!"
@@ -702,6 +703,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 6. **fill_gap** — "_____ you next week!"
    **Hint**: Despedida com referência temporal
    **Answer**: See
+   **Accepts**: Catch
    **Explanation**: "See you next week" = "te vejo semana que vem". Padrão para combinar próximo encontro.
 
 7. **fill_gap** — "_____ care of yourself."
@@ -717,6 +719,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 9. **fix_error** — "Take of care!"
    **Hint**: "Take care" é chunk fixo
    **Answer**: Take care!
+   **Accepts**: Take care of yourself!
    **Explanation**: "Take care" é uma expressão fixa, sem "of". "Take CARE of yourself" leva "of" só nessa versão longa.
 
 10. **read_answer**

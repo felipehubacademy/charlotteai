@@ -50,11 +50,13 @@
 5. **fill_gap** — "He plays soccer _____ basketball."
    **Hint**: Soma de atividades
    **Answer**: and
+   **Accepts**: or
    **Explanation**: "And" — ambos esportes.
 
 6. **fill_gap** — "I want to travel _____ I don't have money."
    **Hint**: Contraste
    **Answer**: but
+   **Accepts**: although / though
    **Explanation**: "But" — quero mas não posso.
 
 7. **fill_gap** — "Tea, coffee, _____ juice?"
@@ -70,7 +72,7 @@
 9. **fix_error** — "I like dogs and cats but birds."
    **Hint**: Estrutura paralela
    **Answer**: I like dogs, cats, and birds.
-   **Accepts**: use "but" with opposite idea
+   **Accepts**: I like dogs, cats and birds. / I like dogs and cats and birds. / I like dogs and cats, but not birds.
    **Explanation**: "But" sem ideia oposta soa estranho. Use "and" pra lista. "But" exigiria contraste.
 
 10. **read_answer**
@@ -230,16 +232,19 @@
 5. **fill_gap** — "I went home early _____ I was sick."
    **Hint**: Motivo (causa)
    **Answer**: because
+   **Accepts**: since / as
    **Explanation**: "Because I was sick" — explicação.
 
 6. **fill_gap** — "It rained yesterday, _____ we stayed inside."
    **Hint**: Resultado
    **Answer**: so
+   **Accepts**: and
    **Explanation**: "So we stayed" — consequência da chuva. "Rained" é past simple (M15).
 
 7. **fill_gap** — "She is happy _____ she got a job."
    **Hint**: Causa
    **Answer**: because
+   **Accepts**: since / as
    **Explanation**: "Because she got a job" — explicação da felicidade.
 
 8. **fix_error** — "I'm tired so I worked all day."
@@ -408,16 +413,19 @@
 5. **fill_gap** — "She always laughs _____ at funny jokes."
    **Hint**: Advérbio de "happy" (y → ily)
    **Answer**: happily
+   **Accepts**: loudly
    **Explanation**: "Happy" → "happily" (y → ily). Regra de spelling.
 
 6. **fill_gap** — "He walks _____ in the morning — never in a rush."
    **Hint**: Advérbio de "slow"
    **Answer**: slowly
+   **Accepts**: calmly
    **Explanation**: "Slow" + ly = "slowly".
 
 7. **fill_gap** — "Please speak _____ — the baby is sleeping."
    **Hint**: Advérbio de "quiet"
    **Answer**: quietly
+   **Accepts**: softly
    **Explanation**: "Quiet" → "quietly". Manter o "t".
 
 8. **fix_error** — "She speaks quick."
@@ -585,16 +593,19 @@
 5. **fill_gap** — "_____ I love coffee, I drink tea sometimes."
    **Hint**: Embora (concessão)
    **Answer**: Although
+   **Accepts**: Though / Even though / While
    **Explanation**: "Although I love coffee" — apesar de amar.
 
 6. **fill_gap** — "It's raining. _____, we'll go anyway."
    **Hint**: No entanto (contraste forte)
    **Answer**: However
+   **Accepts**: But / Still / Nevertheless
    **Explanation**: "However, we'll / we will go" — contraste após pausa.
 
 7. **fill_gap** — "_____ she's young, she's very smart."
    **Hint**: Embora
    **Answer**: Although
+   **Accepts**: Though / Even though / While
    **Explanation**: "Although she's / she is young" — concessão.
 
 8. **fix_error** — "Although it's cold but I'll go out."
@@ -768,11 +779,13 @@
 6. **fill_gap** — "She speaks English _____ — almost like a native."
    **Hint**: Advérbio de "well" (good irregular)
    **Answer**: well
+   **Accepts**: fluently / perfectly
    **Explanation**: "Speak well" — well é irregular.
 
 7. **fill_gap** — "I love English _____ it opens doors."
    **Hint**: Causa
    **Answer**: because
+   **Accepts**: since / as
    **Explanation**: Because + causa.
 
 8. **fix_error** — "She no like coffee."

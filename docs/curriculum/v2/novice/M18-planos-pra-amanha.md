@@ -593,6 +593,7 @@
 7. **fill_gap** — "I'm going to finish _____."
    **Hint**: Marcador "em breve"
    **Answer**: soon
+   **Accepts**: today / tomorrow / later / tonight / next week / on time / it
    **Explanation**: "I'm / I am going to finish soon" = vou terminar em breve.
 
 8. **fix_error** — "I'm going to travel yesterday."
@@ -760,6 +761,7 @@
 5. **fill_gap** — "I'm going to _____ a new job next month."
    **Hint**: Verbo "começar" base
    **Answer**: start
+   **Accepts**: begin / get / find / look for / apply for
    **Explanation**: "Going to + base": "going to start".
 
 6. **fill_gap** — "She _____ going to call tonight."

@@ -59,11 +59,13 @@
 5. **fill_gap** — "She _____ coffee in the morning before work."
    **Hint**: Verbo "beber" na 3ª pessoa singular
    **Answer**: drinks
+   **Accepts**: has / makes / buys
    **Explanation**: "She drinks" — 3ª pessoa leva -s. Drink + s = drinks.
 
 6. **fill_gap** — "Lucas _____ to school by bus every day."
    **Hint**: Verbo "ir" na 3ª pessoa singular
    **Answer**: goes
+   **Accepts**: travels
    **Explanation**: "Go" termina em -o, leva -es: "goes". Lucas = he, então "Lucas goes".
 
 7. **fill_gap** — "My mother _____ in a small office as a manager."
