@@ -151,7 +151,7 @@
             "ok",
             "okay"
           ],
-          "explanation": "Tom diz \"I'm / I am fine, thank you\" — \"fine\" significa bem/ótimo em inglês."
+          "explanation": "Tom diz \"I'm fine, thank you\" — \"fine\" significa bem/ótimo em inglês."
         }
       ],
       "listening_speaking": [
@@ -337,14 +337,14 @@
             "She's"
           ],
           "answer": "I'm",
-          "explanation": "\"I'm / I am\" é a contração de \"I am\". Ao se apresentar, você diz \"I'm / I am John\" (sou o John). Bem mais comum que \"I am John\"."
+          "explanation": "\"I'm\" é a contração de \"I am\". Ao se apresentar, você diz \"I'm John\" (sou o John). Bem mais comum que \"I am John\"."
         },
         {
           "type": "fill_gap",
           "sentence": "I am _____ Brazil.",
           "hint": "Preposição de origem",
           "answer": "from",
-          "explanation": "\"I'm / I am from Brazil\" = \"Eu sou do Brasil\". A preposição \"from\" indica origem em inglês."
+          "explanation": "\"I'm from Brazil\" = \"Eu sou do Brasil\". A preposição \"from\" indica origem em inglês."
         },
         {
           "type": "fill_gap",
@@ -368,7 +368,7 @@
           "sentence": "I are a student.",
           "hint": "Verbo \"to be\" com \"I\"",
           "answer": "I am a student.",
-          "explanation": "Com \"I\" sempre se usa \"am\", nunca \"are\". A frase correta é \"I am a student\" (ou contraído: \"I'm / I am a student\")."
+          "explanation": "Com \"I\" sempre se usa \"am\", nunca \"are\". A frase correta é \"I am a student\" (ou contraído: \"I'm a student\")."
         },
         {
           "type": "fix_error",
@@ -858,7 +858,7 @@
           "accepts": [
             "stressed"
           ],
-          "explanation": "Ana diz \"I'm / I am tired and a bit stressed\". A primeira palavra que descreve ela é \"tired\" (cansada)."
+          "explanation": "Ana diz \"I'm tired and a bit stressed\". A primeira palavra que descreve ela é \"tired\" (cansada)."
         }
       ],
       "listening_speaking": [

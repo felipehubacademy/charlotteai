@@ -210,7 +210,7 @@
    **Listen**: I'm going to the store.
    **Options**: I AM going TO the STORE / I'm going to the STORE / I AM GOING TO THE STORE
    **Answer**: I'm going to the STORE
-   **Explanation**: Equal stress on every word ("I AM going TO the STORE") sounds robotic. Native rhythm contracts ("I'm / I am") and weakens function words ("going tə the"). Only content words get full stress: "I'm / I am GOing to the STORE". Stress-timed rhythm.
+   **Explanation**: Equal stress on every word ("I AM going TO the STORE") sounds robotic. Native rhythm contracts ("I'm") and weakens function words ("going tə the"). Only content words get full stress: "I'm GOing to the STORE". Stress-timed rhythm.
 
 5. **read_answer**
    **Passage**: "A: Do you want to grab a coffee before the meeting? B: I'd love to, but I've got to finish this report first."
@@ -662,12 +662,12 @@
 1. **multiple_choice** — Contraction of "he is going":
    **Options**: he's going / he'is going / he is going / hes going
    **Answer**: he's going
-   **Explanation**: "He's / He is going" — contraction of "he is". The apostrophe replaces the missing letter. C2 speakers default to contractions in spoken English. Writing without contractions reads as formal or stiff; speaking without contractions reads as foreign.
+   **Explanation**: "He's going" — contraction of "he is". The apostrophe replaces the missing letter. C2 speakers default to contractions in spoken English. Writing without contractions reads as formal or stiff; speaking without contractions reads as foreign.
 
 2. **multiple_choice** — Negative contraction of "should have":
    **Options**: shouldn't have / shouldn'tve / should'nt have / shouldnt'have
    **Answer**: shouldn't have
-   **Explanation**: "Shouldn't / Should not have" — standard written contraction of "should not have". In casual fast speech, often produced as "shouldn'ta" /ˈʃʊdn(ə)tə/ — the "have" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register.
+   **Explanation**: "Shouldn't have" — standard written contraction of "should not have". In casual fast speech, often produced as "shouldn'ta" /ˈʃʊdn(ə)tə/ — the "have" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register.
 
 3. **multiple_choice** — What did she say?
    **Listen**: I'm gonna call ya later.
@@ -679,7 +679,7 @@
    **Listen**: I'd've gone if I'd known.
    **Options**: I'd've gone if I'd known. / I would of gone if I would know. / I'd gone if I'd knew. / I have gone if I knew.
    **Answer**: I'd've gone if I'd known.
-   **Explanation**: "I would have gone if I had known" → casual contracted: "I'd / I would've gone if I'd known". Two contractions stacked: "I'd / I would" (I would) and "'ve" (have). In writing, "I would've" is common; "I'd / I would've" is very informal and mostly spoken. C2 listeners recognise these even when they don't appear in print.
+   **Explanation**: "I would have gone if I had known" → casual contracted: "I'd've gone if I'd known". Two contractions stacked: "I'd" (I would) and "'ve" (have). In writing, "I would've" is common; "I'd've" is very informal and mostly spoken. C2 listeners recognise these even when they don't appear in print.
 
 5. **read_answer**
    **Passage**: "A: You shouldn't've told him. B: I know. I'll call him next month and say sorry."

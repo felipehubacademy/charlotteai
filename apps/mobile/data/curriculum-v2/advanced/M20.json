@@ -315,7 +315,7 @@
             "I AM GOING TO THE STORE"
           ],
           "answer": "I'm going to the STORE",
-          "explanation": "Equal stress on every word (\"I AM going TO the STORE\") sounds robotic. Native rhythm contracts (\"I'm / I am\") and weakens function words (\"going tə the\"). Only content words get full stress: \"I'm / I am GOing to the STORE\". Stress-timed rhythm.",
+          "explanation": "Equal stress on every word (\"I AM going TO the STORE\") sounds robotic. Native rhythm contracts (\"I'm\") and weakens function words (\"going tə the\"). Only content words get full stress: \"I'm GOing to the STORE\". Stress-timed rhythm.",
           "listen": "I'm going to the store."
         },
         {
@@ -958,7 +958,7 @@
             "hes going"
           ],
           "answer": "he's going",
-          "explanation": "\"He's / He is going\" — contraction of \"he is\". The apostrophe replaces the missing letter. C2 speakers default to contractions in spoken English. Writing without contractions reads as formal or stiff; speaking without contractions reads as foreign."
+          "explanation": "\"He's going\" — contraction of \"he is\". The apostrophe replaces the missing letter. C2 speakers default to contractions in spoken English. Writing without contractions reads as formal or stiff; speaking without contractions reads as foreign."
         },
         {
           "type": "multiple_choice",
@@ -970,7 +970,7 @@
             "shouldnt'have"
           ],
           "answer": "shouldn't have",
-          "explanation": "\"Shouldn't / Should not have\" — standard written contraction of \"should not have\". In casual fast speech, often produced as \"shouldn'ta\" /ˈʃʊdn(ə)tə/ — the \"have\" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register."
+          "explanation": "\"Shouldn't have\" — standard written contraction of \"should not have\". In casual fast speech, often produced as \"shouldn'ta\" /ˈʃʊdn(ə)tə/ — the \"have\" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register."
         },
         {
           "type": "multiple_choice",
@@ -994,7 +994,7 @@
             "I have gone if I knew."
           ],
           "answer": "I'd've gone if I'd known.",
-          "explanation": "\"I would have gone if I had known\" → casual contracted: \"I'd / I would've gone if I'd known\". Two contractions stacked: \"I'd / I would\" (I would) and \"'ve\" (have). In writing, \"I would've\" is common; \"I'd / I would've\" is very informal and mostly spoken. C2 listeners recognise these even when they don't appear in print.",
+          "explanation": "\"I would have gone if I had known\" → casual contracted: \"I'd've gone if I'd known\". Two contractions stacked: \"I'd\" (I would) and \"'ve\" (have). In writing, \"I would've\" is common; \"I'd've\" is very informal and mostly spoken. C2 listeners recognise these even when they don't appear in print.",
           "listen": "I'd've gone if I'd known."
         },
         {

@@ -665,7 +665,7 @@
           "accepts": [
             "in which"
           ],
-          "explanation": "\"Country where it's / it is sunny\"."
+          "explanation": "\"Country where it's sunny\"."
         },
         {
           "type": "fix_error",

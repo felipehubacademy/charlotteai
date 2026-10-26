@@ -563,69 +563,69 @@
 
 > **Sub-CEFR**: A2 | **Grammar focus**: -ed pronunciation rules (som de T, som de D, sílaba a mais) | **Tense**: PASSADO · simples
 > **Markers**: —
-> **Real-life context**: Você ouve o verbo no passado e reconhece se o -ed soa como T ou como D.
+> **Real-life context**: Você ouve o verbo no passado e reconhece se o -ed soa como T, como D ou se ganha uma sílaba a mais.
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "'worked': som de T ou de D?"
+1. **multiple_choice** — "'worked': como termina?"
    **Listen**: worked
-   **Options**: T / D
-   **Answer**: T
-   **Explanation**: "Worked" termina com som de T.
+   **Options**: som de T / som de D / sílaba a mais
+   **Answer**: som de T
+   **Explanation**: "Worked" termina com som de T, numa sílaba só.
 
-2. **multiple_choice** — "'played': som de T ou de D?"
+2. **multiple_choice** — "'played': como termina?"
    **Listen**: played
-   **Options**: T / D
-   **Answer**: D
-   **Explanation**: "Played" termina com som de D.
+   **Options**: som de T / som de D / sílaba a mais
+   **Answer**: som de D
+   **Explanation**: "Played" termina com som de D, numa sílaba só.
 
-3. **multiple_choice** — "'stopped': som de T ou de D?"
+3. **multiple_choice** — "'wanted': como termina?"
+   **Listen**: wanted
+   **Options**: som de T / som de D / sílaba a mais
+   **Answer**: sílaba a mais
+   **Explanation**: "Wanted" ganha uma sílaba a mais no final: want-ed.
+
+4. **multiple_choice** — "'stopped': como termina?"
    **Listen**: stopped
-   **Options**: T / D
-   **Answer**: T
-   **Explanation**: "Stopped" termina com som de T.
+   **Options**: som de T / som de D / sílaba a mais
+   **Answer**: som de T
+   **Explanation**: "Stopped" termina com som de T, numa sílaba só.
 
-4. **multiple_choice** — "'called': som de T ou de D?"
+5. **multiple_choice** — "'called': como termina?"
    **Listen**: called
-   **Options**: T / D
-   **Answer**: D
-   **Explanation**: "Called" termina com som de D.
+   **Options**: som de T / som de D / sílaba a mais
+   **Answer**: som de D
+   **Explanation**: "Called" termina com som de D, numa sílaba só.
 
-5. **multiple_choice** — "'watched': som de T ou de D?"
+6. **multiple_choice** — "'visited': como termina?"
+   **Listen**: visited
+   **Options**: som de T / som de D / sílaba a mais
+   **Answer**: sílaba a mais
+   **Explanation**: "Visited" ganha uma sílaba a mais no final: vis-it-ed.
+
+7. **multiple_choice** — "'watched': como termina?"
    **Listen**: watched
-   **Options**: T / D
-   **Answer**: T
-   **Explanation**: "Watched" termina com som de T.
+   **Options**: som de T / som de D / sílaba a mais
+   **Answer**: som de T
+   **Explanation**: "Watched" termina com som de T, numa sílaba só.
 
-6. **multiple_choice** — "'lived': som de T ou de D?"
+8. **multiple_choice** — "'lived': como termina?"
    **Listen**: lived
-   **Options**: T / D
-   **Answer**: D
-   **Explanation**: "Lived" termina com som de D.
+   **Options**: som de T / som de D / sílaba a mais
+   **Answer**: som de D
+   **Explanation**: "Lived" termina com som de D, numa sílaba só.
 
-7. **multiple_choice** — "'finished': som de T ou de D?"
-   **Listen**: finished
-   **Options**: T / D
-   **Answer**: T
-   **Explanation**: "Finished" termina com som de T.
+9. **multiple_choice** — "'needed': como termina?"
+   **Listen**: needed
+   **Options**: som de T / som de D / sílaba a mais
+   **Answer**: sílaba a mais
+   **Explanation**: "Needed" ganha uma sílaba a mais no final: need-ed.
 
-8. **multiple_choice** — "'opened': som de T ou de D?"
-   **Listen**: opened
-   **Options**: T / D
-   **Answer**: D
-   **Explanation**: "Opened" termina com som de D.
-
-9. **multiple_choice** — "'washed': som de T ou de D?"
-   **Listen**: washed
-   **Options**: T / D
-   **Answer**: T
-   **Explanation**: "Washed" termina com som de T.
-
-10. **multiple_choice** — "'cleaned': som de T ou de D?"
+10. **multiple_choice** — "'cleaned': como termina?"
     **Listen**: cleaned
-    **Options**: T / D
-    **Answer**: D
-    **Explanation**: "Cleaned" termina com som de D.
+    **Options**: som de T / som de D / sílaba a mais
+    **Answer**: som de D
+    **Explanation**: "Cleaned" termina com som de D, numa sílaba só.
 
 ### 2. Listening/Speaking (5 phrases)
 

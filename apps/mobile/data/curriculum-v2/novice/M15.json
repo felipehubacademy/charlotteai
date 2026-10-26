@@ -831,116 +831,126 @@
       "grammar_focus": "-ed pronunciation rules (som de T, som de D, sílaba a mais)",
       "tense": "PASSADO · simples",
       "markers": [],
-      "real_life_context": "Você ouve o verbo no passado e reconhece se o -ed soa como T ou como D.",
+      "real_life_context": "Você ouve o verbo no passado e reconhece se o -ed soa como T, como D ou se ganha uma sílaba a mais.",
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "'worked': som de T ou de D?",
+          "sentence": "'worked': como termina?",
           "options": [
-            "T",
-            "D"
+            "som de T",
+            "som de D",
+            "sílaba a mais"
           ],
-          "answer": "T",
-          "explanation": "\"Worked\" termina com som de T.",
+          "answer": "som de T",
+          "explanation": "\"Worked\" termina com som de T, numa sílaba só.",
           "listen": "worked"
         },
         {
           "type": "multiple_choice",
-          "sentence": "'played': som de T ou de D?",
+          "sentence": "'played': como termina?",
           "options": [
-            "T",
-            "D"
+            "som de T",
+            "som de D",
+            "sílaba a mais"
           ],
-          "answer": "D",
-          "explanation": "\"Played\" termina com som de D.",
+          "answer": "som de D",
+          "explanation": "\"Played\" termina com som de D, numa sílaba só.",
           "listen": "played"
         },
         {
           "type": "multiple_choice",
-          "sentence": "'stopped': som de T ou de D?",
+          "sentence": "'wanted': como termina?",
           "options": [
-            "T",
-            "D"
+            "som de T",
+            "som de D",
+            "sílaba a mais"
           ],
-          "answer": "T",
-          "explanation": "\"Stopped\" termina com som de T.",
+          "answer": "sílaba a mais",
+          "explanation": "\"Wanted\" ganha uma sílaba a mais no final: want-ed.",
+          "listen": "wanted"
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "'stopped': como termina?",
+          "options": [
+            "som de T",
+            "som de D",
+            "sílaba a mais"
+          ],
+          "answer": "som de T",
+          "explanation": "\"Stopped\" termina com som de T, numa sílaba só.",
           "listen": "stopped"
         },
         {
           "type": "multiple_choice",
-          "sentence": "'called': som de T ou de D?",
+          "sentence": "'called': como termina?",
           "options": [
-            "T",
-            "D"
+            "som de T",
+            "som de D",
+            "sílaba a mais"
           ],
-          "answer": "D",
-          "explanation": "\"Called\" termina com som de D.",
+          "answer": "som de D",
+          "explanation": "\"Called\" termina com som de D, numa sílaba só.",
           "listen": "called"
         },
         {
           "type": "multiple_choice",
-          "sentence": "'watched': som de T ou de D?",
+          "sentence": "'visited': como termina?",
           "options": [
-            "T",
-            "D"
+            "som de T",
+            "som de D",
+            "sílaba a mais"
           ],
-          "answer": "T",
-          "explanation": "\"Watched\" termina com som de T.",
+          "answer": "sílaba a mais",
+          "explanation": "\"Visited\" ganha uma sílaba a mais no final: vis-it-ed.",
+          "listen": "visited"
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "'watched': como termina?",
+          "options": [
+            "som de T",
+            "som de D",
+            "sílaba a mais"
+          ],
+          "answer": "som de T",
+          "explanation": "\"Watched\" termina com som de T, numa sílaba só.",
           "listen": "watched"
         },
         {
           "type": "multiple_choice",
-          "sentence": "'lived': som de T ou de D?",
+          "sentence": "'lived': como termina?",
           "options": [
-            "T",
-            "D"
+            "som de T",
+            "som de D",
+            "sílaba a mais"
           ],
-          "answer": "D",
-          "explanation": "\"Lived\" termina com som de D.",
+          "answer": "som de D",
+          "explanation": "\"Lived\" termina com som de D, numa sílaba só.",
           "listen": "lived"
         },
         {
           "type": "multiple_choice",
-          "sentence": "'finished': som de T ou de D?",
+          "sentence": "'needed': como termina?",
           "options": [
-            "T",
-            "D"
+            "som de T",
+            "som de D",
+            "sílaba a mais"
           ],
-          "answer": "T",
-          "explanation": "\"Finished\" termina com som de T.",
-          "listen": "finished"
+          "answer": "sílaba a mais",
+          "explanation": "\"Needed\" ganha uma sílaba a mais no final: need-ed.",
+          "listen": "needed"
         },
         {
           "type": "multiple_choice",
-          "sentence": "'opened': som de T ou de D?",
+          "sentence": "'cleaned': como termina?",
           "options": [
-            "T",
-            "D"
+            "som de T",
+            "som de D",
+            "sílaba a mais"
           ],
-          "answer": "D",
-          "explanation": "\"Opened\" termina com som de D.",
-          "listen": "opened"
-        },
-        {
-          "type": "multiple_choice",
-          "sentence": "'washed': som de T ou de D?",
-          "options": [
-            "T",
-            "D"
-          ],
-          "answer": "T",
-          "explanation": "\"Washed\" termina com som de T.",
-          "listen": "washed"
-        },
-        {
-          "type": "multiple_choice",
-          "sentence": "'cleaned': som de T ou de D?",
-          "options": [
-            "T",
-            "D"
-          ],
-          "answer": "D",
-          "explanation": "\"Cleaned\" termina com som de D.",
+          "answer": "som de D",
+          "explanation": "\"Cleaned\" termina com som de D, numa sílaba só.",
           "listen": "cleaned"
         }
       ],

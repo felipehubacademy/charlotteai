@@ -322,7 +322,7 @@
             "am got"
           ],
           "answer": "have got",
-          "explanation": "\"I have got\" (ou contraído \"I've / I have got\") é a forma simples pra dizer \"eu tenho\". Com \"I\", \"you\", \"we\", \"they\" usa \"have got\"."
+          "explanation": "\"I have got\" (ou contraído \"I've got\") é a forma simples pra dizer \"eu tenho\". Com \"I\", \"you\", \"we\", \"they\" usa \"have got\"."
         },
         {
           "type": "multiple_choice",
@@ -333,7 +333,7 @@
             "is got"
           ],
           "answer": "has got",
-          "explanation": "\"She has got\" — \"she\" é terceira pessoa singular, usa \"has got\". Forma contraída: \"She's / She is got\"."
+          "explanation": "\"She has got\" — \"she\" é terceira pessoa singular, usa \"has got\". Forma contraída: \"She's got\"."
         },
         {
           "type": "word_bank",
@@ -345,7 +345,7 @@
             "had got"
           ],
           "answer": "has got",
-          "explanation": "\"He has got\" = \"ele tem\". Forma curta: \"He's / He is got three friends\". Com \"he/she/it\" sempre \"has\"."
+          "explanation": "\"He has got\" = \"ele tem\". Forma curta: \"He's got three friends\". Com \"he/she/it\" sempre \"has\"."
         },
         {
           "type": "word_bank",
@@ -367,7 +367,7 @@
           "accepts": [
             "have"
           ],
-          "explanation": "\"I have got\" ou contraído \"I've / I have got\". Pra \"I\" sempre \"have\", nunca \"has\"."
+          "explanation": "\"I have got\" ou contraído \"I've got\". Pra \"I\" sempre \"have\", nunca \"has\"."
         },
         {
           "type": "fill_gap",
@@ -377,7 +377,7 @@
           "accepts": [
             "has"
           ],
-          "explanation": "\"She has got\" — terceira pessoa singular. Contração: \"She's / She is got\"."
+          "explanation": "\"She has got\" — terceira pessoa singular. Contração: \"She's got\"."
         },
         {
           "type": "fill_gap",
@@ -404,7 +404,7 @@
           "accepts": [
             "I have a friend."
           ],
-          "explanation": "Com \"I\" sempre \"have got\", não \"has got\". A frase correta: \"I have got a friend\" ou contraído \"I've / I have got a friend\"."
+          "explanation": "Com \"I\" sempre \"have got\", não \"has got\". A frase correta: \"I have got a friend\" ou contraído \"I've got a friend\"."
         },
         {
           "type": "read_answer",

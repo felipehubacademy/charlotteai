@@ -127,7 +127,7 @@
           "accepts": [
             "doesn't like"
           ],
-          "explanation": "O texto diz \"I don't / do not like soda\"."
+          "explanation": "O texto diz \"I don't like soda\"."
         }
       ],
       "listening_speaking": [
@@ -311,7 +311,7 @@
             "but"
           ],
           "answer": "because",
-          "explanation": "\"Because\" introduz a CAUSA. \"I'm / I am tired because I worked\" — cansado por trabalhar."
+          "explanation": "\"Because\" introduz a CAUSA. \"I'm tired because I worked\" — cansado por trabalhar."
         },
         {
           "type": "multiple_choice",
@@ -322,7 +322,7 @@
             "but"
           ],
           "answer": "so",
-          "explanation": "\"So\" introduz a CONSEQUÊNCIA. \"I'm tired so I'll / I will rest\" — cansado, então descanso."
+          "explanation": "\"So\" introduz a CONSEQUÊNCIA. \"I'm tired so I'll rest\" — cansado, então descanso."
         },
         {
           "type": "word_bank",
@@ -882,7 +882,7 @@
             "And"
           ],
           "answer": "Although",
-          "explanation": "\"Although he's / he is tired\" — embora cansado."
+          "explanation": "\"Although he's tired\" — embora cansado."
         },
         {
           "type": "word_bank",
@@ -918,7 +918,7 @@
             "Still",
             "Nevertheless"
           ],
-          "explanation": "\"However, we'll / we will go\" — contraste após pausa."
+          "explanation": "\"However, we'll go\" — contraste após pausa."
         },
         {
           "type": "fill_gap",
@@ -930,7 +930,7 @@
             "Even though",
             "While"
           ],
-          "explanation": "\"Although she's / she is young\" — concessão."
+          "explanation": "\"Although she's young\" — concessão."
         },
         {
           "type": "fix_error",

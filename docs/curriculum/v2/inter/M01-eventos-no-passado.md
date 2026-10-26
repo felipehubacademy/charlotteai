@@ -209,51 +209,51 @@
 1. **multiple_choice** — "I _____ sleeping. I was studying."
    **Options**: wasn't / weren't / didn't
    **Answer**: wasn't
-   **Explanation**: Past continuous negative with I: "I wasn't / was not" (was not).
+   **Explanation**: Past continuous negative with I: "I wasn't" (was not).
 
 2. **multiple_choice** — "They _____ playing soccer; they were watching TV."
    **Options**: weren't / wasn't / didn't
    **Answer**: weren't
-   **Explanation**: Plural past continuous negative: "weren't / were not" (were not).
+   **Explanation**: Plural past continuous negative: "weren't" (were not).
 
 3. **word_bank** — "She _____ cooking; she was on the phone."
    **Choices**: wasn't / weren't / didn't / no was
    **Answer**: wasn't
-   **Explanation**: She → "wasn't / was not".
+   **Explanation**: She → "wasn't".
 
 4. **word_bank** — "We _____ talking when you came in."
    **Choices**: weren't / wasn't / didn't / no were
    **Answer**: weren't
-   **Explanation**: We plural → "weren't / were not".
+   **Explanation**: We plural → "weren't".
 
 5. **fill_gap** — "He _____ working at home yesterday."
    **Hint**: Past continuous negative (contracted)
    **Answer**: wasn't
    **Accepts**: was not
-   **Explanation**: "He wasn't / was not working" — 3rd person negative contracted.
+   **Explanation**: "He wasn't working" — 3rd person negative contracted.
 
 6. **fill_gap** — "I _____ studying when you called."
    **Hint**: Past continuous negative with I
    **Answer**: wasn't
    **Accepts**: was not
-   **Explanation**: "I wasn't / was not" — past continuous negative.
+   **Explanation**: "I wasn't" — past continuous negative.
 
 7. **fill_gap** — "They _____ paying attention."
    **Hint**: Plural past continuous negative
    **Answer**: weren't
    **Accepts**: were not
-   **Explanation**: "They weren't / were not paying" — plural negative.
+   **Explanation**: "They weren't paying" — plural negative.
 
 8. **fix_error** — "I didn't studying yesterday."
    **Hint**: Past continuous doesn't use "didn't"
    **Answer**: I wasn't studying yesterday.
    **Accepts**: I didn't study yesterday.
-   **Explanation**: Past continuous negative uses was/were + not + -ing, not "didn't / did not". "I wasn't / was not studying", not "I didn't / did not studying".
+   **Explanation**: Past continuous negative uses was/were + not + -ing, not "didn't". "I wasn't studying", not "I didn't studying".
 
 9. **fix_error** — "She weren't cooking."
    **Hint**: She is singular
    **Answer**: She wasn't cooking.
-   **Explanation**: She → "wasn't / was not" (was not). "Weren't / Were not" is for plurals.
+   **Explanation**: She → "wasn't" (was not). "Weren't" is for plurals.
 
 10. **read_answer**
     **Passage**: "I wasn't sleeping at midnight — I was reading. My sister wasn't working either. We weren't doing anything special."

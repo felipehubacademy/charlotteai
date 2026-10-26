@@ -223,17 +223,17 @@
 1. **multiple_choice** — "I _____ two brothers."
    **Options**: have got / has got / am got
    **Answer**: have got
-   **Explanation**: "I have got" (ou contraído "I've / I have got") é a forma simples pra dizer "eu tenho". Com "I", "you", "we", "they" usa "have got".
+   **Explanation**: "I have got" (ou contraído "I've got") é a forma simples pra dizer "eu tenho". Com "I", "you", "we", "they" usa "have got".
 
 2. **multiple_choice** — "She _____ one sister."
    **Options**: has got / have got / is got
    **Answer**: has got
-   **Explanation**: "She has got" — "she" é terceira pessoa singular, usa "has got". Forma contraída: "She's / She is got".
+   **Explanation**: "She has got" — "she" é terceira pessoa singular, usa "has got". Forma contraída: "She's got".
 
 3. **word_bank** — "He _____ three friends."
    **Choices**: has got / have got / has / had got
    **Answer**: has got
-   **Explanation**: "He has got" = "ele tem". Forma curta: "He's / He is got three friends". Com "he/she/it" sempre "has".
+   **Explanation**: "He has got" = "ele tem". Forma curta: "He's got three friends". Com "he/she/it" sempre "has".
 
 4. **word_bank** — "We _____ a big family."
    **Choices**: have got / has got / are got / are have
@@ -244,13 +244,13 @@
    **Hint**: Forma de "have got" para "I"
    **Answer**: have got
    **Accepts**: have
-   **Explanation**: "I have got" ou contraído "I've / I have got". Pra "I" sempre "have", nunca "has".
+   **Explanation**: "I have got" ou contraído "I've got". Pra "I" sempre "have", nunca "has".
 
 6. **fill_gap** — "She _____ one brother and two sisters."
    **Hint**: Forma de "have got" para "she"
    **Answer**: has got
    **Accepts**: has
-   **Explanation**: "She has got" — terceira pessoa singular. Contração: "She's / She is got".
+   **Explanation**: "She has got" — terceira pessoa singular. Contração: "She's got".
 
 7. **fill_gap** — "How many brothers _____ you got?"
    **Hint**: Auxiliar de pergunta com "have got"
@@ -267,7 +267,7 @@
    **Hint**: "I" não usa "has"
    **Answer**: I have got a friend.
    **Accepts**: I have a friend.
-   **Explanation**: Com "I" sempre "have got", não "has got". A frase correta: "I have got a friend" ou contraído "I've / I have got a friend".
+   **Explanation**: Com "I" sempre "have got", não "has got". A frase correta: "I have got a friend" ou contraído "I've got a friend".
 
 10. **read_answer**
     **Passage**: "I've got a small family. I have got one brother and one sister. My brother is twenty-five. My sister is fifteen."

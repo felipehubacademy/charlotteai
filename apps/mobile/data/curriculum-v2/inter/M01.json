@@ -312,7 +312,7 @@
             "didn't"
           ],
           "answer": "wasn't",
-          "explanation": "Past continuous negative with I: \"I wasn't / was not\" (was not)."
+          "explanation": "Past continuous negative with I: \"I wasn't\" (was not)."
         },
         {
           "type": "multiple_choice",
@@ -323,7 +323,7 @@
             "didn't"
           ],
           "answer": "weren't",
-          "explanation": "Plural past continuous negative: \"weren't / were not\" (were not)."
+          "explanation": "Plural past continuous negative: \"weren't\" (were not)."
         },
         {
           "type": "word_bank",
@@ -335,7 +335,7 @@
             "no was"
           ],
           "answer": "wasn't",
-          "explanation": "She → \"wasn't / was not\"."
+          "explanation": "She → \"wasn't\"."
         },
         {
           "type": "word_bank",
@@ -347,7 +347,7 @@
             "no were"
           ],
           "answer": "weren't",
-          "explanation": "We plural → \"weren't / were not\"."
+          "explanation": "We plural → \"weren't\"."
         },
         {
           "type": "fill_gap",
@@ -357,7 +357,7 @@
           "accepts": [
             "was not"
           ],
-          "explanation": "\"He wasn't / was not working\" — 3rd person negative contracted."
+          "explanation": "\"He wasn't working\" — 3rd person negative contracted."
         },
         {
           "type": "fill_gap",
@@ -367,7 +367,7 @@
           "accepts": [
             "was not"
           ],
-          "explanation": "\"I wasn't / was not\" — past continuous negative."
+          "explanation": "\"I wasn't\" — past continuous negative."
         },
         {
           "type": "fill_gap",
@@ -377,7 +377,7 @@
           "accepts": [
             "were not"
           ],
-          "explanation": "\"They weren't / were not paying\" — plural negative."
+          "explanation": "\"They weren't paying\" — plural negative."
         },
         {
           "type": "fix_error",
@@ -387,14 +387,14 @@
           "accepts": [
             "I didn't study yesterday."
           ],
-          "explanation": "Past continuous negative uses was/were + not + -ing, not \"didn't / did not\". \"I wasn't / was not studying\", not \"I didn't / did not studying\"."
+          "explanation": "Past continuous negative uses was/were + not + -ing, not \"didn't\". \"I wasn't studying\", not \"I didn't studying\"."
         },
         {
           "type": "fix_error",
           "sentence": "She weren't cooking.",
           "hint": "She is singular",
           "answer": "She wasn't cooking.",
-          "explanation": "She → \"wasn't / was not\" (was not). \"Weren't / Were not\" is for plurals."
+          "explanation": "She → \"wasn't\" (was not). \"Weren't\" is for plurals."
         },
         {
           "type": "read_answer",

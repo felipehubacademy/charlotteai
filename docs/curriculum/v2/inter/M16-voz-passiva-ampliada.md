@@ -57,7 +57,7 @@
    **Hint**: shouldn't be + past participle "leave"
    **Answer**: shouldn't be left
    **Accepts**: mustn't be left / should not be left
-   **Explanation**: "Shouldn't / Should not be left unsupervised" — passive prohibition.
+   **Explanation**: "Shouldn't be left unsupervised" — passive prohibition.
 
 7. **fill_gap** — "The package _____ at this point — it's been weeks."
    **Hint**: must have been + past participle "lose"
@@ -73,7 +73,7 @@
 9. **fix_error** — "Children shouldn't left alone."
    **Hint**: Falta "be"
    **Answer**: Children shouldn't be left alone.
-   **Explanation**: "Shouldn't / Should not BE left" — modal + be + past participle. Fixed form.
+   **Explanation**: "Shouldn't BE left" — modal + be + past participle. Fixed form.
 
 10. **read_answer**
     **Passage**: "The report must be finished by Friday. This room should be cleaned every day. Children shouldn't be left alone. The form must be filled in blue ink."

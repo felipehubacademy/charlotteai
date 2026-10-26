@@ -38,7 +38,7 @@
             "had"
           ],
           "answer": "have",
-          "explanation": "Present perfect with I/you/we/they uses \"have\" + past participle. \"I have visited\" or \"I've / I have visited\"."
+          "explanation": "Present perfect with I/you/we/they uses \"have\" + past participle. \"I have visited\" or \"I've visited\"."
         },
         {
           "type": "multiple_choice",
@@ -49,7 +49,7 @@
             "had"
           ],
           "answer": "has",
-          "explanation": "She/he/it uses \"has\" + past participle. \"She has tried\" or \"She's / She is tried\"."
+          "explanation": "She/he/it uses \"has\" + past participle. \"She has tried\" or \"She's tried\"."
         },
         {
           "type": "word_bank",
@@ -73,7 +73,7 @@
             "nothing"
           ],
           "answer": "never",
-          "explanation": "\"I've / I have never seen\" — \"never\" is the standard negative in PP for life experiences."
+          "explanation": "\"I've never seen\" — \"never\" is the standard negative in PP for life experiences."
         },
         {
           "type": "fill_gap",
@@ -618,7 +618,7 @@
             "since"
           ],
           "answer": "yet",
-          "explanation": "\"Yet\" at end of negative sentence: \"I haven't / have not seen it yet\" = ainda não."
+          "explanation": "\"Yet\" at end of negative sentence: \"I haven't seen it yet\" = ainda não."
         },
         {
           "type": "fill_gap",
@@ -638,7 +638,7 @@
           "accepts": [
             "just"
           ],
-          "explanation": "\"Already\" = before now (sooner). \"I've / I have already done\"."
+          "explanation": "\"Already\" = before now (sooner). \"I've already done\"."
         },
         {
           "type": "fill_gap",
@@ -670,7 +670,7 @@
           "passage": "I've just finished my report. I've already eaten lunch. I haven't called my mom yet — I'll do it soon.",
           "question": "What hasn't the speaker done yet?",
           "answer": "called my mom",
-          "explanation": "The text says \"I haven't / have not called my mom yet\"."
+          "explanation": "The text says \"I haven't called my mom yet\"."
         }
       ],
       "listening_speaking": [
@@ -898,7 +898,7 @@
           "accepts": [
             "has not"
           ],
-          "explanation": "\"No, she hasn't / has not\" — short negative answer."
+          "explanation": "\"No, she hasn't\" — short negative answer."
         },
         {
           "type": "fill_gap",
@@ -932,7 +932,7 @@
           "accepts": [
             "she hasn't"
           ],
-          "explanation": "The text says \"No, she hasn't / has not\"."
+          "explanation": "The text says \"No, she hasn't\"."
         }
       ],
       "listening_speaking": [

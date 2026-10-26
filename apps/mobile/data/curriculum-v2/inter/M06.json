@@ -856,7 +856,7 @@
             "shouldn't"
           ],
           "answer": "can't",
-          "explanation": "\"Can't / Cannot\" for logical impossibility — \"It can't / cannot be true!\" = it's impossible."
+          "explanation": "\"Can't\" for logical impossibility — \"It can't be true!\" = it's impossible."
         },
         {
           "type": "multiple_choice",
@@ -879,7 +879,7 @@
             "wasn't"
           ],
           "answer": "can't",
-          "explanation": "\"Can't / Cannot be\" — logical impossibility."
+          "explanation": "\"Can't be\" — logical impossibility."
         },
         {
           "type": "word_bank",
@@ -902,7 +902,7 @@
             "cannot",
             "couldn't"
           ],
-          "explanation": "\"Can't / Cannot be right\" — impossible."
+          "explanation": "\"Can't be right\" — impossible."
         },
         {
           "type": "fill_gap",
@@ -912,7 +912,7 @@
           "accepts": [
             "cannot"
           ],
-          "explanation": "\"Can't / Cannot be coming\" — impossibility with continuous."
+          "explanation": "\"Can't be coming\" — impossibility with continuous."
         },
         {
           "type": "fill_gap",
@@ -930,7 +930,7 @@
           "sentence": "\"She mustn't be at home.\" (meaning impossible)",
           "hint": "For impossibility, use can't",
           "answer": "She can't be at home.",
-          "explanation": "\"Mustn't / Must not\" = prohibition. \"Can't / Cannot\" = impossibility."
+          "explanation": "\"Mustn't\" = prohibition. \"Can't\" = impossibility."
         },
         {
           "type": "fix_error",
@@ -947,7 +947,7 @@
           "accepts": [
             "in Paris"
           ],
-          "explanation": "The text says \"he's / he is in Paris\" — reason it can't be him."
+          "explanation": "The text says \"he's in Paris\" — reason it can't be him."
         }
       ],
       "listening_speaking": [
@@ -1177,7 +1177,7 @@
           "accepts": [
             "cannot"
           ],
-          "explanation": "\"Can't / Cannot be\" — logical impossibility."
+          "explanation": "\"Can't be\" — logical impossibility."
         },
         {
           "type": "fill_gap",

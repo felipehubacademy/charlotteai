@@ -422,7 +422,7 @@
    **Hint**: place
    **Answer**: where
    **Accepts**: in which
-   **Explanation**: "Country where it's / it is sunny".
+   **Explanation**: "Country where it's sunny".
 
 8. **fix_error** — "It's the city which I grew up."
    **Hint**: For places use where (or "in which")

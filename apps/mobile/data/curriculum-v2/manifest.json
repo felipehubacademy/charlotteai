@@ -1,55 +1,125 @@
 {
   "level": {
-    "igorfina": [
+    "novice": [
       {
         "id": "M01",
-        "title": "As 11 palavras que salvam",
-        "file": "igorfina/M01.json"
+        "title": "Olá, mundo",
+        "file": "novice/M01.json"
       },
       {
         "id": "M02",
-        "title": "Visto, imigração e dinheiro",
-        "file": "igorfina/M02.json"
+        "title": "Meu mundo",
+        "file": "novice/M02.json"
       },
       {
         "id": "M03",
-        "title": "Passado, presente e futuro do jeito fácil",
-        "file": "igorfina/M03.json"
+        "title": "Família e amigos",
+        "file": "novice/M03.json"
       },
       {
         "id": "M04",
-        "title": "Gírias (e palavrão: entenda, não use)",
-        "file": "igorfina/M04.json"
+        "title": "Em casa",
+        "file": "novice/M04.json"
       },
       {
         "id": "M05",
-        "title": "Could, would, should, can, might, have to, would rather",
-        "file": "igorfina/M05.json"
+        "title": "Meu dia-a-dia",
+        "file": "novice/M05.json"
       },
       {
         "id": "M06",
-        "title": "Comparando: melhor, pior, o maior",
-        "file": "igorfina/M06.json"
+        "title": "O que faço (3ª pessoa)",
+        "file": "novice/M06.json"
       },
       {
         "id": "M07",
-        "title": "In, out, on, off, under, above, beside",
-        "file": "igorfina/M07.json"
+        "title": "Habilidades",
+        "file": "novice/M07.json"
       },
       {
         "id": "M08",
-        "title": "Situações do dia a dia",
-        "file": "igorfina/M08.json"
+        "title": "Gostos",
+        "file": "novice/M08.json"
       },
       {
         "id": "M09",
-        "title": "Academia",
-        "file": "igorfina/M09.json"
+        "title": "Agora mesmo",
+        "file": "novice/M09.json"
       },
       {
         "id": "M10",
-        "title": "Viagem sem grana",
-        "file": "igorfina/M10.json"
+        "title": "Comida e bebida",
+        "file": "novice/M10.json"
+      },
+      {
+        "id": "M11",
+        "title": "Compras",
+        "file": "novice/M11.json"
+      },
+      {
+        "id": "M12",
+        "title": "Comparações",
+        "file": "novice/M12.json"
+      },
+      {
+        "id": "M13",
+        "title": "O melhor de tudo",
+        "file": "novice/M13.json"
+      },
+      {
+        "id": "M14",
+        "title": "Onde estive ontem",
+        "file": "novice/M14.json"
+      },
+      {
+        "id": "M15",
+        "title": "O que fiz ontem",
+        "file": "novice/M15.json"
+      },
+      {
+        "id": "M16",
+        "title": "Histórias simples",
+        "file": "novice/M16.json"
+      },
+      {
+        "id": "M17",
+        "title": "Não foi assim",
+        "file": "novice/M17.json"
+      },
+      {
+        "id": "M18",
+        "title": "Planos pra amanhã",
+        "file": "novice/M18.json"
+      },
+      {
+        "id": "M19",
+        "title": "O futuro",
+        "file": "novice/M19.json"
+      },
+      {
+        "id": "M20",
+        "title": "Conselhos",
+        "file": "novice/M20.json"
+      },
+      {
+        "id": "M21",
+        "title": "Se isso, então aquilo",
+        "file": "novice/M21.json"
+      },
+      {
+        "id": "M22",
+        "title": "Conexões e fechamento Novice",
+        "file": "novice/M22.json"
+      },
+      {
+        "id": "M23",
+        "title": "Em viagem, no médico, ao telefone",
+        "file": "novice/M23.json"
+      },
+      {
+        "id": "M24",
+        "title": "Reagindo na conversa",
+        "file": "novice/M24.json"
       }
     ],
     "inter": [
@@ -291,128 +361,58 @@
         "file": "advanced/M24.json"
       }
     ],
-    "novice": [
+    "igorfina": [
       {
         "id": "M01",
-        "title": "Olá, mundo",
-        "file": "novice/M01.json"
+        "title": "As 11 palavras que salvam",
+        "file": "igorfina/M01.json"
       },
       {
         "id": "M02",
-        "title": "Meu mundo",
-        "file": "novice/M02.json"
+        "title": "Visto, imigração e dinheiro",
+        "file": "igorfina/M02.json"
       },
       {
         "id": "M03",
-        "title": "Família e amigos",
-        "file": "novice/M03.json"
+        "title": "Passado, presente e futuro do jeito fácil",
+        "file": "igorfina/M03.json"
       },
       {
         "id": "M04",
-        "title": "Em casa",
-        "file": "novice/M04.json"
+        "title": "Gírias (e palavrão: entenda, não use)",
+        "file": "igorfina/M04.json"
       },
       {
         "id": "M05",
-        "title": "Meu dia-a-dia",
-        "file": "novice/M05.json"
+        "title": "Could, would, should, can, might, have to, would rather",
+        "file": "igorfina/M05.json"
       },
       {
         "id": "M06",
-        "title": "O que faço (3ª pessoa)",
-        "file": "novice/M06.json"
+        "title": "Comparando: melhor, pior, o maior",
+        "file": "igorfina/M06.json"
       },
       {
         "id": "M07",
-        "title": "Habilidades",
-        "file": "novice/M07.json"
+        "title": "In, out, on, off, under, above, beside",
+        "file": "igorfina/M07.json"
       },
       {
         "id": "M08",
-        "title": "Gostos",
-        "file": "novice/M08.json"
+        "title": "Situações do dia a dia",
+        "file": "igorfina/M08.json"
       },
       {
         "id": "M09",
-        "title": "Agora mesmo",
-        "file": "novice/M09.json"
+        "title": "Academia",
+        "file": "igorfina/M09.json"
       },
       {
         "id": "M10",
-        "title": "Comida e bebida",
-        "file": "novice/M10.json"
-      },
-      {
-        "id": "M11",
-        "title": "Compras",
-        "file": "novice/M11.json"
-      },
-      {
-        "id": "M12",
-        "title": "Comparações",
-        "file": "novice/M12.json"
-      },
-      {
-        "id": "M13",
-        "title": "O melhor de tudo",
-        "file": "novice/M13.json"
-      },
-      {
-        "id": "M14",
-        "title": "Onde estive ontem",
-        "file": "novice/M14.json"
-      },
-      {
-        "id": "M15",
-        "title": "O que fiz ontem",
-        "file": "novice/M15.json"
-      },
-      {
-        "id": "M16",
-        "title": "Histórias simples",
-        "file": "novice/M16.json"
-      },
-      {
-        "id": "M17",
-        "title": "Não foi assim",
-        "file": "novice/M17.json"
-      },
-      {
-        "id": "M18",
-        "title": "Planos pra amanhã",
-        "file": "novice/M18.json"
-      },
-      {
-        "id": "M19",
-        "title": "O futuro",
-        "file": "novice/M19.json"
-      },
-      {
-        "id": "M20",
-        "title": "Conselhos",
-        "file": "novice/M20.json"
-      },
-      {
-        "id": "M21",
-        "title": "Se isso, então aquilo",
-        "file": "novice/M21.json"
-      },
-      {
-        "id": "M22",
-        "title": "Conexões e fechamento Novice",
-        "file": "novice/M22.json"
-      },
-      {
-        "id": "M23",
-        "title": "Em viagem, no médico, ao telefone",
-        "file": "novice/M23.json"
-      },
-      {
-        "id": "M24",
-        "title": "Reagindo na conversa",
-        "file": "novice/M24.json"
+        "title": "Viagem sem grana",
+        "file": "igorfina/M10.json"
       }
     ]
   },
-  "generated_at": "2026-10-26T14:43:55.410Z"
+  "generated_at": "2026-10-26T15:34:15.763Z"
 }
