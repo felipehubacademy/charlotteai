@@ -692,6 +692,21 @@ export default function LearnSessionScreen() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stepIdx]);
 
+  // ── Grammar: botão "Ouvir" (exercícios sobre som) ──────────
+  const [grammarListenLoading, setGrammarListenLoading] = useState(false);
+  const playGrammarListen = useCallback(async (text: string) => {
+    if (grammarListenLoading) return;
+    setGrammarListenLoading(true);
+    try {
+      const uri = await fetchTTS(text);
+      if (!uri) return;
+      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false, interruptionMode: 'doNotMix' }).catch(() => {});
+      toggleAudio(`grammar-listen-${stepIdx}`, uri);
+    } finally {
+      setGrammarListenLoading(false);
+    }
+  }, [fetchTTS, toggleAudio, stepIdx, grammarListenLoading]);
+
   // ── Grammar: check answer ──────────────────────────────────
   const handleGrammarSubmit = () => {
     if (!currentStep || currentStep.kind !== 'grammar') return;
@@ -1418,6 +1433,22 @@ export default function LearnSessionScreen() {
                     :                                                   (isPortuguese ? 'Leia o texto e responda à pergunta.'                : 'Read the text and answer the question.')}
                 </AppText>
               </View>
+
+              {/* Exercício sobre som: botão para ouvir a palavra/frase (sem símbolo fonético na escrita). */}
+              {!!currentStep.exercise.listen && (
+                <TouchableOpacity
+                  onPress={() => playGrammarListen(currentStep.exercise.listen!)}
+                  activeOpacity={0.85}
+                  accessibilityRole="button"
+                  accessibilityLabel={isPortuguese ? 'Ouvir' : 'Listen'}
+                  style={{ alignSelf: 'center', flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 999, borderWidth: 1.5, borderColor: accent, paddingHorizontal: 18, paddingVertical: 10, marginBottom: 14 }}
+                >
+                  {grammarListenLoading
+                    ? <ActivityIndicator size="small" color={accent} />
+                    : <SpeakerHigh size={18} color={accent} weight="fill" />}
+                  <AppText style={{ fontSize: 14.5, fontWeight: '800', color: accent }}>{isPortuguese ? 'Ouvir' : 'Listen'}</AppText>
+                </TouchableOpacity>
+              )}
 
               {/* Row: Charlotte LEFT + sentence/passage RIGHT (Duo style).
                   WebP com alpha real — sem crop hack. */}

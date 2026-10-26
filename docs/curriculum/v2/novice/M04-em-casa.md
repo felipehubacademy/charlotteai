@@ -577,12 +577,12 @@
 1. **multiple_choice** — "I've got _____ apple."
    **Options**: an / a / the
    **Answer**: an
-   **Explanation**: "An" antes de palavras com som de vogal. "Apple" começa com /æ/ (vogal). "An apple".
+   **Explanation**: "An" antes de palavras com som de vogal. "Apple" começa com som de vogal. "An apple".
 
 2. **multiple_choice** — "There is _____ door in my room."
    **Options**: a / an / the
    **Answer**: a
-   **Explanation**: "A" antes de som de consoante. "Door" começa com /d/ (consoante). "A door".
+   **Explanation**: "A" antes de som de consoante. "Door" começa com som de D (consoante). "A door".
 
 3. **word_bank** — "_____ kitchen is small."
    **Choices**: The / A / An / I
@@ -598,7 +598,7 @@
    **Hint**: Artigo indefinido antes de "chair"
    **Answer**: a
    **Accepts**: one
-   **Explanation**: "A" antes de "chair" (consoante /ʧ/). "A chair" = "uma cadeira".
+   **Explanation**: "A" antes de "chair" (começa com som de consoante, o "tch"). "A chair" = "uma cadeira".
 
 6. **fill_gap** — "Welcome to _____ house — this is where I live."
    **Hint**: Artigo definido (referência específica)
@@ -615,7 +615,7 @@
 8. **fix_error** — "I've got a apple."
    **Hint**: Apple começa com som de vogal
    **Answer**: I've got an apple.
-   **Explanation**: "Apple" começa com som /æ/ (vogal), então usa "an", não "a". Regra: "an" antes de SOM de vogal.
+   **Explanation**: "Apple" começa com som de vogal, então usa "an", não "a". Regra: "an" antes de SOM de vogal.
 
 9. **fix_error** — "I am the teacher in my school."
    **Hint**: Profissão usa artigo indefinido

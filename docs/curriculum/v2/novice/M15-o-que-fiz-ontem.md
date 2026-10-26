@@ -4,7 +4,7 @@
 > **Block**: A2 Block
 > **Units**: 5 (N01–N05)
 > **Theme**: Passado simples — verbos regulares (-ed)
-> **Module goal**: Aluno sai sabendo formar e pronunciar past simple regular (-ed com sons /t/, /d/, /id/) pra contar ações cotidianas passadas.
+> **Module goal**: Aluno sai sabendo formar e pronunciar past simple regular (-ed com som de T, som de D ou sílaba a mais) pra contar ações cotidianas passadas.
 > **Connects to**: M16 (Histórias simples) — depois de verbos regulares, aprende os irregulares mais comuns.
 
 ## Module chunks introduced (~30)
@@ -13,7 +13,7 @@
 - studied / cried / tried (y → ied)
 - stopped / planned (dobra consoante)
 - arrived / lived / liked (e + d)
-- pronúncia /t/ (worked, watched), /d/ (played, lived), /id/ (visited, wanted)
+- pronúncia: som de T (worked, watched), som de D (played, lived), sílaba a mais (visited, wanted)
 - yesterday / last week / X ago
 - I worked / She worked (sem -s no passado)
 
@@ -35,7 +35,7 @@
 2. **multiple_choice** — "She _____ TV last night."
    **Options**: watched / watch / watches
    **Answer**: watched
-   **Explanation**: "Watch" + ed = "watched" (note pronúncia /watcht/, terminação /t/).
+   **Explanation**: "Watch" + ed = "watched" (o -ed soa como T, uma sílaba só).
 
 3. **word_bank** — "We _____ in the park."
    **Choices**: played / play / playing / plays
@@ -51,7 +51,7 @@
    **Hint**: Passado de "call"
    **Answer**: called
    **Accepts**: phoned / rang
-   **Explanation**: "Called" — call + ed. Som /d/.
+   **Explanation**: "Called" — call + ed. O -ed soa como D.
 
 6. **fill_gap** — "They _____ the door before entering the house."
    **Hint**: Passado de "open"
@@ -86,7 +86,7 @@
 1. **"I worked yesterday."** — basic -ed past
 2. **"She watched a movie."** — 3rd person past
 3. **"We played in the park."** — plural past
-4. **"He cleaned his room."** — -ed pronunciation /d/
+4. **"He cleaned his room."** — -ed soa como D
 5. **"I studied English last week."** — -ied irregular spelling
 
 ### 3. Role-play
@@ -389,7 +389,7 @@
 1. **multiple_choice** — "I _____ the gym last night."
    **Options**: visited / visit / visiting
    **Answer**: visited
-   **Explanation**: "Visit" → "visited". Note: pronúncia /id/ (visit-id).
+   **Explanation**: "Visit" → "visited". O -ed vira sílaba a mais: vis-it-ed.
 
 2. **multiple_choice** — "We _____ home at six."
    **Options**: returned / return / returns
@@ -404,7 +404,7 @@
 4. **word_bank** — "He _____ his report."
    **Choices**: finished / finish / finishs / finishing
    **Answer**: finished
-   **Explanation**: "Finish" → "finished". Pronúncia /t/ (após sons surdos).
+   **Explanation**: "Finish" → "finished". O -ed soa como T (depois de som surdo).
 
 5. **fill_gap** — "I _____ a great song yesterday on Spotify."
    **Hint**: Passado de "discover"
@@ -416,7 +416,7 @@
    **Hint**: Passado de "paint"
    **Answer**: painted
    **Accepts**: made / created
-   **Explanation**: "Paint" → "painted". Pronúncia /id/ (verbos terminados em -t ou -d).
+   **Explanation**: "Paint" → "painted". O -ed vira sílaba a mais (verbos terminados em T ou D).
 
 7. **fill_gap** — "We _____ the lights at midnight."
    **Hint**: Passado de "turn off"
@@ -447,7 +447,7 @@
 2. **"She missed the bus."** — miss
 3. **"We returned home at six."** — return
 4. **"He finished his report."** — finish
-5. **"They painted the house."** — paint /id/
+5. **"They painted the house."** — paint-ed, sílaba a mais
 
 ### 3. Role-play
 
@@ -561,70 +561,80 @@
 
 ## Unit N04 — Pronúncia do -ed
 
-> **Sub-CEFR**: A2 | **Grammar focus**: -ed pronunciation rules (/t/, /d/, /id/) | **Tense**: PASSADO · simples
+> **Sub-CEFR**: A2 | **Grammar focus**: -ed pronunciation rules (som de T, som de D, sílaba a mais) | **Tense**: PASSADO · simples
 > **Markers**: —
-> **Real-life context**: Você pronuncia -ed corretamente — /t/, /d/, /id/ — em diferentes verbos.
+> **Real-life context**: Você pronuncia o -ed corretamente (som de T, som de D ou sílaba a mais) em diferentes verbos.
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "How is 'worked' pronounced?"
-   **Options**: /workt/ / /workd/ / /workid/
-   **Answer**: workt
-   **Explanation**: Após som SURDO (k, p, s, f, sh, ch), -ed soa /t/. "Worked" = /workt/.
+1. **multiple_choice** — "Ouça 'worked'. Quantas sílabas você escuta?"
+   **Listen**: worked
+   **Options**: 1 / 2 / 3
+   **Answer**: 1
+   **Explanation**: "Worked" tem uma sílaba só: o -ed não vira sílaba nova, ele só soa como um T colado no final ("workt"). Erro comum de brasileiro: falar "wor-ked", com duas sílabas.
 
-2. **multiple_choice** — "How is 'played' pronounced?"
-   **Options**: /playd/ / /playt/ / /playid/
-   **Answer**: playd
-   **Explanation**: Após som SONORO (vogais, l, n, m, r, g), -ed soa /d/. "Played" = /playd/.
+2. **multiple_choice** — "Ouça 'wanted'. Quantas sílabas você escuta?"
+   **Listen**: wanted
+   **Options**: 1 / 2 / 3
+   **Answer**: 2
+   **Explanation**: "Wanted" tem duas sílabas: want-ed. Quando o verbo termina em T ou D, o -ed vira uma sílaba a mais.
 
-3. **word_bank** — "Which is /id/? 'visited' / 'walked' / 'played' / 'closed'"
+3. **word_bank** — "Qual destes verbos ganha uma sílaba a mais no passado?"
+   **Listen**: visited, walked, played, closed
    **Choices**: visited / walked / played / closed
    **Answer**: visited
-   **Explanation**: Após /t/ ou /d/, -ed soa /id/ (extra syllable). "Visit-ed" = /vIz-It-Id/.
+   **Explanation**: "Visit" termina em T, então o -ed vira sílaba a mais: vis-it-ed. Walked, played e closed continuam com uma sílaba só.
 
-4. **word_bank** — "Which is /t/? 'finished' / 'lived' / 'arrived' / 'opened'"
+4. **word_bank** — "Em qual destes o -ed soa como um T?"
+   **Listen**: finished, lived, arrived, opened
    **Choices**: finished / lived / arrived / opened
    **Answer**: finished
-   **Explanation**: "Finished" termina em /sh/ (surdo) → /t/. "Finish-t" = /fIn-Isht/.
+   **Explanation**: "Finish" termina com som de SH, que é surdo (sai só ar, sem vibrar a garganta). Depois de som surdo, o -ed soa como T. Lived, arrived e opened terminam em som que vibra, então o -ed soa como D.
 
-5. **multiple_choice** — "How does the -ed in 'worked' sound?"
-   **Options**: /t/ / /d/ / /ɪd/ / silent
-   **Answer**: t
-   **Explanation**: O som /k/ no fim de "work" é surdo (sem vibração) → o -ed soa /t/. "Worked" = /wɜːrkt/, uma sílaba só.
+5. **multiple_choice** — "Ouça 'worked'. Como soa o -ed?"
+   **Listen**: worked
+   **Options**: como um T / como um D / como uma sílaba a mais / não tem som
+   **Answer**: como um T
+   **Explanation**: O K no fim de "work" é surdo (sem vibração na garganta), então o -ed soa como T.
 
-6. **multiple_choice** — "How does the -ed in 'played' sound?"
-   **Options**: /d/ / /t/ / /ɪd/ / silent
-   **Answer**: d
-   **Explanation**: A vogal /eɪ/ no fim de "play" é sonora (com vibração) → o -ed soa /d/. "Played" = /pleɪd/, uma sílaba só.
+6. **multiple_choice** — "Ouça 'played'. Como soa o -ed?"
+   **Listen**: played
+   **Options**: como um D / como um T / como uma sílaba a mais / não tem som
+   **Answer**: como um D
+   **Explanation**: "Play" termina em vogal, que vibra a garganta. Depois de som que vibra, o -ed soa como D. Continua com uma sílaba só.
 
-7. **multiple_choice** — "How does the -ed in 'wanted' sound?"
-   **Options**: /ɪd/ / /t/ / /d/ / silent
-   **Answer**: ɪd
-   **Explanation**: O verbo "want" termina em /t/ → o -ed forma uma sílaba extra e soa /ɪd/. "Wanted" = /ˈwɒntɪd/, duas sílabas.
+7. **multiple_choice** — "Ouça 'needed'. Como soa o -ed?"
+   **Listen**: needed
+   **Options**: como uma sílaba a mais / como um T / como um D / não tem som
+   **Answer**: como uma sílaba a mais
+   **Explanation**: "Need" termina em D. Depois de T ou D, o -ed vira sílaba a mais: need-ed.
 
-8. **fix_error** — "I pronounced 'visited' as /vIzId/."
-   **Hint**: -ed após /t/ pede sílaba extra
-   **Answer**: I pronounced 'visited' as /vIz-Itid/.
-   **Explanation**: "Visited" tem 3 sílabas: vis-it-ed (/vIz-It-Id/). O -ed forma sílaba extra após /t/ ou /d/.
+8. **multiple_choice** — "Por que 'visited' tem uma sílaba a mais e 'worked' não?"
+   **Listen**: visited, worked
+   **Options**: Porque "visit" termina em T / Porque "visited" é um verbo mais longo / Porque "worked" é irregular / Porque todo verbo com -ed ganha sílaba
+   **Answer**: Porque "visit" termina em T
+   **Explanation**: A sílaba a mais só aparece quando o verbo termina em T ou D (visit, want, need, decide). Nos outros casos, o -ed gruda no final, como em "worked".
 
-9. **fix_error** — "I said 'worked' with /id/."
-   **Hint**: Verbos em som surdo (k, p, s, etc.) usam /t/
-   **Answer**: I said 'worked' with /t/.
-   **Explanation**: "Worked" tem som /k/ (surdo) → -ed = /t/. Não /id/. Pronuncia /workt/, uma sílaba.
+9. **multiple_choice** — "Qual regra está certa?"
+   **Listen**: worked, stopped, washed
+   **Options**: Depois de K, P, S, SH e CH, o -ed soa como T / Depois de K, P, S, SH e CH, o -ed soa como D / Depois de K, P, S, SH e CH, o -ed vira sílaba a mais / O -ed sempre soa igual
+   **Answer**: Depois de K, P, S, SH e CH, o -ed soa como T
+   **Explanation**: Esses sons são surdos (sai só ar). O -ed acompanha e também sai surdo, como um T: worked, stopped, washed, watched.
 
 10. **read_answer**
-    **Passage**: "Yesterday I worked /workt/, watched /watcht/ a movie, and called /kAld/ my friend. Then I visited /vIzItId/ my parents."
-    **Question**: Qual verbo tem o som /id/?
+    **Passage**: "Yesterday I worked, watched a movie, and called my friend. Then I visited my parents."
+    **Listen**: Yesterday I worked, watched a movie, and called my friend. Then I visited my parents.
+    **Question**: Qual verbo do texto ganha uma sílaba a mais no passado?
     **Answer**: visited
-    **Explanation**: "Visited" termina em /id/ (3 sílabas). Os outros são /t/ ou /d/ (2 sílabas).
+    **Explanation**: Só "visited" ganha sílaba a mais (vis-it-ed), porque "visit" termina em T. Worked, watched e called têm uma sílaba só.
 
 ### 2. Listening/Speaking (5 phrases)
 
-1. **"I worked yesterday."** — /t/ sound (work)
-2. **"She played in the park."** — /d/ sound (play)
-3. **"He visited his uncle."** — /id/ sound (visit)
-4. **"They watched TV all night."** — /t/ (watch)
-5. **"I painted the wall."** — /id/ (paint)
+1. **"I worked yesterday."** — -ed soa como T (work)
+2. **"She played in the park."** — -ed soa como D (play)
+3. **"He visited his uncle."** — sílaba a mais (visit-ed)
+4. **"They watched TV all night."** — -ed soa como T (watch)
+5. **"I painted the wall."** — sílaba a mais (paint-ed)
 
 ### 3. Role-play
 
@@ -634,13 +644,13 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "Let's practice -ed sounds. Say a verb with /t/."
+**Opening line**: "Let's practice -ed sounds. Say a verb where -ed sounds like T."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Falar um verbo com som /t/"
-   **label_en**: "Say a /t/ verb"
+   **label_pt**: "Falar um verbo em que o -ed soa como T"
+   **label_en**: "Say a verb where -ed sounds like T"
    **hidden_prompt**: "user says a past tense verb ending in voiceless consonant (worked, watched, finished, asked, etc.)"
    **hint_pt**: "I worked."
    **hint_en**: "I worked."
@@ -648,8 +658,8 @@
    **example_fail**: worked (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
-   **label_pt**: "Falar um verbo com som /d/"
-   **label_en**: "Say a /d/ verb"
+   **label_pt**: "Falar um verbo em que o -ed soa como D"
+   **label_en**: "Say a verb where -ed sounds like D"
    **hidden_prompt**: "user says a past tense verb ending in voiced sound (played, lived, called, opened, etc.)"
    **hint_pt**: "I played soccer."
    **hint_en**: "I played soccer."
@@ -657,8 +667,8 @@
    **example_fail**: soccer (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
-   **label_pt**: "Falar um verbo com som /id/"
-   **label_en**: "Say a /id/ verb"
+   **label_pt**: "Falar um verbo em que o -ed vira sílaba a mais"
+   **label_en**: "Say a verb where -ed adds a syllable"
    **hidden_prompt**: "user says a past tense verb ending in /id/ (visited, painted, wanted, started, ended)"
    **hint_pt**: "I visited my friend."
    **hint_en**: "I visited my friend."
@@ -669,18 +679,18 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Let's practice -ed sounds. Say a verb with /t/."
+1. **Charlotte**: "Let's practice -ed sounds. Say a verb where -ed sounds like T."
 2. **Student**: ~"I worked."
-3. **Charlotte**: "Now /d/."
+3. **Charlotte**: "Now one where -ed sounds like D."
 4. **Student**: ~"I played soccer."
-5. **Charlotte**: "And /id/?"
+5. **Charlotte**: "And one where -ed adds a syllable?"
 6. **Student**: ~"I visited my friend."
 7. **Charlotte**: "All three sounds covered!"
 
 **Evaluation focus**:
 - Pronúncia correta dos 3 sons -ed
 - Diferenciação clara
-- Sílaba extra em /id/
+- Sílaba a mais quando o verbo termina em T ou D
 
 ### 4. Guided Chat
 
@@ -921,7 +931,7 @@
 Ao terminar M15, o aluno deve usar naturalmente:
 - Past simple regular: verb + ed (worked, watched, cleaned)
 - Spelling rules: e + d (arrived), dobra consoante (stopped), y → ied (studied)
-- Pronúncia: /t/ (worked), /d/ (played), /id/ (visited)
+- Pronúncia: som de T (worked), som de D (played), sílaba a mais (visited)
 - Time markers: yesterday, last week, ago, in YEAR
 - Sem -s na 3ª pessoa no passado (she worked, não she workeds)
 

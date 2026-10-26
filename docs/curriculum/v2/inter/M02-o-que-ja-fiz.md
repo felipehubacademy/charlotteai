@@ -215,7 +215,7 @@
 2. **multiple_choice** — "She has _____ a great book."
    **Options**: read / readed / red
    **Answer**: read
-   **Explanation**: "Read" past participle = "read" (same spelling, /red/ pronunciation).
+   **Explanation**: "Read" past participle = "read" (same spelling, but pronounced like the color "red").
 
 3. **word_bank** — "We have _____ pizza for lunch."
    **Choices**: eaten / ate / eated / eating
@@ -264,7 +264,7 @@
 ### 2. Listening/Speaking (5 phrases)
 
 1. **"I've been to ten countries."** — been
-2. **"She has read that book."** — read /red/
+2. **"She has read that book."** — read (pronounced like "red")
 3. **"We have eaten pizza."** — eaten
 4. **"He has spoken three languages."** — spoken
 5. **"I have seen that movie."** — seen
@@ -755,7 +755,7 @@
 2. **multiple_choice** — "She has _____ that book."
    **Options**: read / readed / red
    **Answer**: read
-   **Explanation**: Past participle of read = read (same spelling, /red/).
+   **Explanation**: Past participle of read = read (same spelling, pronounced like "red").
 
 3. **word_bank** — "We have _____ traveled together."
    **Choices**: never / no / not / nothing

@@ -859,7 +859,7 @@
             "the"
           ],
           "answer": "an",
-          "explanation": "\"An\" antes de palavras com som de vogal. \"Apple\" começa com /æ/ (vogal). \"An apple\"."
+          "explanation": "\"An\" antes de palavras com som de vogal. \"Apple\" começa com som de vogal. \"An apple\"."
         },
         {
           "type": "multiple_choice",
@@ -870,7 +870,7 @@
             "the"
           ],
           "answer": "a",
-          "explanation": "\"A\" antes de som de consoante. \"Door\" começa com /d/ (consoante). \"A door\"."
+          "explanation": "\"A\" antes de som de consoante. \"Door\" começa com som de D (consoante). \"A door\"."
         },
         {
           "type": "word_bank",
@@ -904,7 +904,7 @@
           "accepts": [
             "one"
           ],
-          "explanation": "\"A\" antes de \"chair\" (consoante /ʧ/). \"A chair\" = \"uma cadeira\"."
+          "explanation": "\"A\" antes de \"chair\" (começa com som de consoante, o \"tch\"). \"A chair\" = \"uma cadeira\"."
         },
         {
           "type": "fill_gap",
@@ -934,7 +934,7 @@
           "sentence": "I've got a apple.",
           "hint": "Apple começa com som de vogal",
           "answer": "I've got an apple.",
-          "explanation": "\"Apple\" começa com som /æ/ (vogal), então usa \"an\", não \"a\". Regra: \"an\" antes de SOM de vogal."
+          "explanation": "\"Apple\" começa com som de vogal, então usa \"an\", não \"a\". Regra: \"an\" antes de SOM de vogal."
         },
         {
           "type": "fix_error",

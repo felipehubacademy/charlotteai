@@ -42,6 +42,8 @@ export interface GrammarExercise {
   // short_write
   prompt?:         string;
   example_answer?: string;
+  /** Texto em inglês que o botão "Ouvir" toca (exercícios sobre som; sem símbolo fonético na escrita). */
+  listen?: string;
 }
 
 // ── Listening/Speaking ────────────────────────────────────────────

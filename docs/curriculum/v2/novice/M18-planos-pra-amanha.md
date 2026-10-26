@@ -921,12 +921,12 @@
 1. **multiple_choice** — Você ouve "I'm gonna eat" — significa:
    **Options**: I'm going to eat. / I'm growing to eat. / I'm gone to eat. / I'm great to eat.
    **Answer**: I'm going to eat.
-   **Explanation**: "Gonna" é a redução falada de "going to". Em fala nativa rápida, "going to" comprime em "gonna" /ˈɡənə/. Não escrita formal — apenas oral. Reconhecer essa redução é essencial pra entender filmes e conversa real.
+   **Explanation**: "Gonna" é a redução falada de "going to". Em fala nativa rápida, "going to" comprime em "gonna". Não escrita formal — apenas oral. Reconhecer essa redução é essencial pra entender filmes e conversa real.
 
 2. **multiple_choice** — Você ouve "I wanna go" — significa:
    **Options**: I want to go. / I won to go. / I want a go. / I am going.
    **Answer**: I want to go.
-   **Explanation**: "Wanna" = redução falada de "want to". Em fala natural, "want to" se funde em "wanna" /ˈwɒnə/. Só ouvir — escrita formal sempre "want to".
+   **Explanation**: "Wanna" = redução falada de "want to". Em fala natural, "want to" se funde em "wanna". Só ouvir — escrita formal sempre "want to".
 
 3. **word_bank** — "I _____ leave now" = "I've got to leave now" (em fala rápida):
    **Choices**: gotta / gota / gotto / got

@@ -359,6 +359,7 @@ function parseGrammarExercise(raw) {
   const wordsField     = field(raw, 'Words');
   const prompt         = field(raw, 'Prompt');
   const example_answer = field(raw, 'Example answer') || field(raw, 'Example');
+  const listen         = field(raw, 'Listen');   // texto que o botão "Ouvir" toca
 
   if (passage)        ex.passage = stripQuotes(passage);
   if (question)       ex.question = question;
@@ -372,6 +373,7 @@ function parseGrammarExercise(raw) {
   if (wordsField)     ex.words = splitSlash(wordsField);
   if (prompt)         ex.prompt = prompt;
   if (example_answer) ex.example_answer = example_answer;
+  if (listen)         ex.listen = listen;
 
   return ex;
 }

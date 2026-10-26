@@ -44,7 +44,7 @@
             "fivve"
           ],
           "answer": "five",
-          "explanation": "O número 5 em inglês é \"five\". Pronúncia: /faɪv/. Atenção: tem \"v\", não \"f\" no final."
+          "explanation": "O número 5 em inglês é \"five\". Atenção: termina com som de \"v\", não de \"f\"."
         },
         {
           "type": "multiple_choice",
@@ -100,7 +100,7 @@
           "sentence": "I have _____ (9) cousins.",
           "hint": "Número 9 por extenso",
           "answer": "nine",
-          "explanation": "9 = \"nine\". Som parecido com \"none\" (nenhum) mas significado totalmente diferente. Pronúncia: /naɪn/."
+          "explanation": "9 = \"nine\". Som parecido com \"none\" (nenhum) mas significado totalmente diferente."
         },
         {
           "type": "fix_error",

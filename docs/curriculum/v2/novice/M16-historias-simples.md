@@ -210,7 +210,7 @@
 1. **multiple_choice** — "I _____ a new phone yesterday."
    **Options**: bought / buyed / buys
    **Answer**: bought
-   **Explanation**: "Buy" → "bought" (irregular). Pronúncia /bO:t/.
+   **Explanation**: "Buy" → "bought" (irregular). O "gh" não é pronunciado: soa parecido com "bót".
 
 2. **multiple_choice** — "She _____ a cake to the party."
    **Options**: brought / bringed / brings
@@ -231,7 +231,7 @@
    **Hint**: Passado de "eat"
    **Answer**: ate
    **Accepts**: had / made / ordered / cooked / bought
-   **Explanation**: "Eat" → "ate" (irregular). Pronúncia /eIt/.
+   **Explanation**: "Eat" → "ate" (irregular). Soa parecido com "eit", igual a "eight" (oito).
 
 6. **fill_gap** — "She _____ a lot of water after the gym."
    **Hint**: Passado de "drink"
@@ -422,7 +422,7 @@
    **Hint**: Passado de "read" (escrita igual, pronúncia diferente)
    **Answer**: read
    **Accepts**: finished
-   **Explanation**: "Read" → "read" — escrita IGUAL, mas pronúncia muda: /ri:d/ presente → /red/ passado.
+   **Explanation**: "Read" → "read" — escrita IGUAL, mas pronúncia muda: no presente soa como "riid"; no passado, como "red".
 
 8. **fix_error** — "I meeted my old friend."
    **Hint**: Meet é irregular
@@ -584,7 +584,7 @@
 4. **word_bank** — "We _____ the document."
    **Choices**: read / readed / reads / reading
    **Answer**: read
-   **Explanation**: "Read" → "read" — IGUAL na escrita, MAS pronúncia muda: /red/ no passado.
+   **Explanation**: "Read" → "read" — IGUAL na escrita, MAS pronúncia muda: no passado soa como "red".
 
 5. **fill_gap** — "I _____ my coat in the closet before dinner."
    **Hint**: Passado de "put" (igual)
@@ -602,7 +602,7 @@
    **Hint**: Passado de "read" — escrita igual, mas atenção à pronúncia
    **Answer**: read
    **Accepts**: saw / found
-   **Explanation**: "Read" no passado: escrita /read/, mas se pronuncia /red/. Mudança só fonética.
+   **Explanation**: "Read" no passado: escreve-se "read", mas se pronuncia como "red". Mudança só no som.
 
 8. **fix_error** — "She putted the book on the shelf."
    **Hint**: Put não muda no passado
@@ -626,7 +626,7 @@
 1. **"I put the book on the table."** — put unchanged
 2. **"She cut her finger."** — cut unchanged
 3. **"He let me know."** — let unchanged
-4. **"I read the article yesterday."** — read /red/ (past)
+4. **"I read the article yesterday."** — read, pronunciado como "red" (past)
 5. **"We put everything away."** — put + away
 
 ### 3. Role-play

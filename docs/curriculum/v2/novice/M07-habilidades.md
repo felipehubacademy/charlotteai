@@ -215,7 +215,7 @@
 1. **multiple_choice** — "I _____ swim well."
    **Options**: can't / don't can / no can
    **Answer**: can't
-   **Explanation**: Negativa de "can" é "can't / cannot" (cannot). "I can't / cannot swim" = "Eu não sei nadar". Pronúncia: /kænt/ (americano) ou /kɑːnt/ (britânico).
+   **Explanation**: Negativa de "can" é "can't / cannot" (cannot). "I can't / cannot swim" = "Eu não sei nadar". No inglês americano, a vogal de "can't" é mais aberta e longa que a de "can"; no britânico, soa parecido com "cânt".
 
 2. **multiple_choice** — "She _____ drive a car."
    **Options**: can't / doesn't can / no can

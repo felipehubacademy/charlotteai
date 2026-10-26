@@ -24,6 +24,7 @@ export interface GrammarEx {
   // short_write
   prompt?:        string;   // the writing prompt/instruction
   example_answer?: string;  // model answer shown after submission
+  listen?: string;          // texto que o botão "Ouvir" toca (exercícios sobre som)
 }
 
 export interface PronStep {

@@ -314,7 +314,7 @@
             "buys"
           ],
           "answer": "bought",
-          "explanation": "\"Buy\" → \"bought\" (irregular). Pronúncia /bO:t/."
+          "explanation": "\"Buy\" → \"bought\" (irregular). O \"gh\" não é pronunciado: soa parecido com \"bót\"."
         },
         {
           "type": "multiple_choice",
@@ -363,7 +363,7 @@
             "cooked",
             "bought"
           ],
-          "explanation": "\"Eat\" → \"ate\" (irregular). Pronúncia /eIt/."
+          "explanation": "\"Eat\" → \"ate\" (irregular). Soa parecido com \"eit\", igual a \"eight\" (oito)."
         },
         {
           "type": "fill_gap",
@@ -651,7 +651,7 @@
           "accepts": [
             "finished"
           ],
-          "explanation": "\"Read\" → \"read\" — escrita IGUAL, mas pronúncia muda: /ri:d/ presente → /red/ passado."
+          "explanation": "\"Read\" → \"read\" — escrita IGUAL, mas pronúncia muda: no presente soa como \"riid\"; no passado, como \"red\"."
         },
         {
           "type": "fix_error",
@@ -891,7 +891,7 @@
             "reading"
           ],
           "answer": "read",
-          "explanation": "\"Read\" → \"read\" — IGUAL na escrita, MAS pronúncia muda: /red/ no passado."
+          "explanation": "\"Read\" → \"read\" — IGUAL na escrita, MAS pronúncia muda: no passado soa como \"red\"."
         },
         {
           "type": "fill_gap",
@@ -923,7 +923,7 @@
             "saw",
             "found"
           ],
-          "explanation": "\"Read\" no passado: escrita /read/, mas se pronuncia /red/. Mudança só fonética."
+          "explanation": "\"Read\" no passado: escreve-se \"read\", mas se pronuncia como \"red\". Mudança só no som."
         },
         {
           "type": "fix_error",
@@ -968,7 +968,7 @@
         },
         {
           "text": "I read the article yesterday.",
-          "context": "read /red/ (past)",
+          "context": "read, pronunciado como \"red\" (past)",
           "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8620969a06489ae9.flac"
         },
         {

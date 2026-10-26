@@ -39,7 +39,7 @@
 1. **multiple_choice** — "How do you spell 5?"
    **Options**: five / fife / fivve
    **Answer**: five
-   **Explanation**: O número 5 em inglês é "five". Pronúncia: /faɪv/. Atenção: tem "v", não "f" no final.
+   **Explanation**: O número 5 em inglês é "five". Atenção: termina com som de "v", não de "f".
 
 2. **multiple_choice** — "I am _____ years old."
    **Options**: ten / tenth / tens
@@ -69,7 +69,7 @@
 7. **fill_gap** — "I have _____ (9) cousins."
    **Hint**: Número 9 por extenso
    **Answer**: nine
-   **Explanation**: 9 = "nine". Som parecido com "none" (nenhum) mas significado totalmente diferente. Pronúncia: /naɪn/.
+   **Explanation**: 9 = "nine". Som parecido com "none" (nenhum) mas significado totalmente diferente.
 
 8. **fix_error** — "I'm tween (12) years old."
    **Hint**: 12 em inglês não segue padrão -teen

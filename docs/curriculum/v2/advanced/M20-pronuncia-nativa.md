@@ -32,22 +32,25 @@
 ### 1. Grammar (5 exercises)
 
 1. **multiple_choice** — Where is the stress in "photograph"?
+   **Listen**: photograph
    **Options**: PHO-tograph / pho-TO-graph / pho-to-GRAPH / equally stressed
    **Answer**: PHO-tograph
    **Explanation**: "PHO-tograph" — stress on first syllable. Compare with "phoTOgraphy" (stress on second) and "photoGRAphic" (stress on third). The same root shifts stress based on the suffix. C2 mastery includes knowing how word formation shifts stress.
 
 2. **multiple_choice** — Noun-verb pair: which has stress on the first syllable as a noun?
+   **Listen**: a record. I want to record it.
    **Options**: REcord (noun) — reCORD (verb) / Record (both) / Record (verb) — reCORD (noun) / no difference
    **Answer**: REcord (noun) — reCORD (verb)
    **Explanation**: Many two-syllable noun-verb pairs follow the pattern: NOUN stress on first, VERB stress on second. "REcord" (a recording, noun) vs "reCORD" (to record, verb). Similar pairs: PROduce / proDUCE, CONtract / conTRACT, OBject / obJECT, PERmit / perMIT. Native speakers signal the part of speech via stress.
 
-3. **fill_gap** — Which syllable carries stress in "comfortable"? _____
-   **Hint**: First syllable
-   **Answer**: COM
-   **Accepts**: COM-fortable / COMfortable / first / first syllable / the first syllable / the first one
-   **Explanation**: "COMfortable" — stress on "COM". Native speakers often reduce to "COMF-tər-bəl" (three syllables in fast speech). Many learners stress "comFORTable" or "comforTABLE", which sounds foreign. C2 awareness includes the first-syllable stress on "comfortable" and similar long Latinate words.
+3. **multiple_choice** — Listen: which syllable is stressed in "comfortable"?
+   **Listen**: comfortable
+   **Options**: 1st (COM) / 2nd (FOR) / 3rd (TA) / 4th (BLE)
+   **Answer**: 1st (COM)
+   **Explanation**: "COMfortable" — stress on the first syllable. In fast speech natives often say it in three syllables ("COMF-ter-ble"). Many learners stress "comFORtable", which sounds foreign. Long words like this often keep the stress at the start.
 
 4. **multiple_choice** — Which is correct stress for "develop"?
+   **Listen**: develop
    **Options**: DEvelop (1st syllable) / deVELop (2nd syllable) / deveLOP (3rd syllable) / equal stress
    **Answer**: deVELop (2nd syllable)
    **Explanation**: "deVELop" — stress on second syllable. Pattern for similar verbs: deCIDE, reMEMber, beGIN, dis-COVer, sup-PORT. Two-or-three-syllable verbs often stress the second syllable (especially with prefixes de-, re-, dis-). Wrong stress in everyday verbs is a major C2 fluency leak.
@@ -185,22 +188,25 @@
 ### 1. Grammar (5 exercises)
 
 1. **multiple_choice** — In the sentence "I want a cup of tea", which words are stressed?
+   **Listen**: I want a cup of tea.
    **Options**: I, want, cup, tea / I, want, cup, of, tea / want, a, tea / I, of, a
    **Answer**: I, want, cup, tea
    **Explanation**: Content words (nouns: cup, tea; verbs: want; sometimes pronouns: I) carry stress. Function words (a, of, the, am, is) weaken. In normal speech: "I WANT a CUP of TEA" with "a" and "of" reduced to schwa /ə/. Stress = meaning markers.
 
-2. **multiple_choice** — Weak form of "of" in connected speech:
-   **Options**: əv / oʊf / ʊf / əf
-   **Answer**: əv
-   **Explanation**: "Of" weakens to /əv/ in normal speech — schwa + soft v. "Cup of tea" → "cupəv tea". Native speakers almost never say "OFF" with full stress unless contrasting ("It's / It is of the BOOK, not from it"). Weak forms are nearly invisible but constant.
+2. **multiple_choice** — Listen to "a cup of tea". How does "of" sound?
+   **Listen**: a cup of tea
+   **Options**: Short and weak, almost swallowed / Strong and clear, like "off" / Completely silent / Long, like "oaf"
+   **Answer**: Short and weak, almost swallowed
+   **Explanation**: Function words like "of", "to", "a" and "for" lose their full vowel in connected speech and become short and weak. Only the content words (cup, tea) keep full stress. Saying "of" clearly every time is one of the strongest markers of a non-native rhythm.
 
-3. **fill_gap** — Identify weak form of "to": "I want to go" → "I want _____ go." (in connected fast speech)
-   **Hint**: schwa + t
-   **Answer**: tə
-   **Accepts**: /tə/ / schwa / ta / tuh / tuh (schwa)
-   **Explanation**: "To" weakens to /tə/ in connected speech. "Want to" often blends into "wanna" /ˈwɒnə/ in casual register. C2 listeners parse "wanna / gonna / gotta" as "want to / going to / got to" — and produce them naturally in informal contexts.
+3. **multiple_choice** — Listen to "I want to go". How does "to" sound?
+   **Listen**: I want to go
+   **Options**: Short and weak, like "tuh" / Strong, like "two" / Completely silent / Long, like "toe"
+   **Answer**: Short and weak, like "tuh"
+   **Explanation**: In connected speech "to" is unstressed and its vowel reduces to a short, neutral sound: "I want tuh go". In very fast casual speech it merges further into "wanna". The full "two" is only used for emphasis or at the end of a sentence ("Where do you want to?").
 
 4. **multiple_choice** — Which sentence has the more native rhythm?
+   **Listen**: I'm going to the store.
    **Options**: I AM going TO the STORE / I'm going to the STORE / I AM GOING TO THE STORE
    **Answer**: I'm going to the STORE
    **Explanation**: Equal stress on every word ("I AM going TO the STORE") sounds robotic. Native rhythm contracts ("I'm / I am") and weakens function words ("going tə the"). Only content words get full stress: "I'm / I am GOing to the STORE". Stress-timed rhythm.
@@ -339,22 +345,25 @@
 ### 1. Grammar (5 exercises)
 
 1. **multiple_choice** — In natural speech, "an apple" sounds like:
+   **Listen**: an apple
    **Options**: a-napple (linked) / an apple (separated) / an-apple (with pause) / no difference
    **Answer**: a-napple (linked)
    **Explanation**: Linking: when a word ends in a consonant and the next begins with a vowel, the consonant attaches to the next word in connected speech. "An apple" → "a-NAP-pl". "Stop it" → "sto-PIT". "Find out" → "fine-DOUT". Native rhythm relies on this linking.
 
 2. **multiple_choice** — "Law and order" in natural British English includes which intrusive sound?
+   **Listen**: law and order
    **Options**: r — "law-r-and order" / j — "law-y-and order" / w — "law-w-and order" / none
    **Answer**: r — "law-r-and order"
    **Explanation**: Intrusive /r/: a sound inserted between two vowels where no "r" exists in spelling. "Law and order" → "law-r-and order". Common in British English. Same pattern: "drawing" → "draw-r-ing" (heard especially in fast speech). American English uses it less.
 
-3. **fill_gap** — In fast connected speech, "I am" becomes "I-_-am" (intrusive sound)
-   **Hint**: Intrusive /j/ between "I" /aɪ/ and "am" /æm/
-   **Answer**: y
-   **Accepts**: j / y sound
-   **Explanation**: Intrusive /j/: a "y" sound bridges two vowels. "I am" /aɪ-jæm/ "go away" /goʊ-wəweɪ/ uses intrusive /w/. These sounds aren't in spelling but native speakers produce them automatically to avoid awkward vowel-to-vowel transitions.
+3. **multiple_choice** — Listen to "I am" said quickly. Which sound slips in between the two words?
+   **Listen**: I am
+   **Options**: a light "y" sound / a light "w" sound / a light "r" sound / nothing at all
+   **Answer**: a light "y" sound
+   **Explanation**: When a word ending in an "ee"/"eye" kind of vowel meets another vowel, natives glide between them with a light "y": "I-y-am", "she-y-is". After "oo"/"oh" vowels the glide is a "w": "go-w-away". Nobody teaches this, but it is why connected English sounds smooth.
 
 4. **multiple_choice** — Which is closer to natural fast speech of "don't you know"?
+   **Listen**: Don't you know?
    **Options**: doncha know / dont-you know / doan-you know / don-tee-you know
    **Answer**: doncha know
    **Explanation**: Assimilation: when adjacent sounds change to be more similar. "Don't / Do not you" → "doncha" /ˈdoʊnʧə/. "Did you" → "didja" /ˈdɪʤə/. "Would you" → "wouldja". These aren't lazy — they're the natural shape of fast English. C2 awareness includes both producing and parsing them.
@@ -493,16 +502,19 @@
 ### 1. Grammar (5 exercises)
 
 1. **multiple_choice** — Typical intonation pattern for "Are you ready?":
+   **Listen**: Are you ready?
    **Options**: Rising at the end / Falling at the end / Flat / Rising-falling
    **Answer**: Rising at the end
    **Explanation**: Yes/no questions typically end with rising intonation. "Are you ready?" rises on "ready". Compare with wh-questions ("What time is it?") which fall on the last content word. Rising intonation signals expectation of yes/no answer.
 
 2. **multiple_choice** — Typical intonation for "What time is it?":
+   **Listen**: What time is it?
    **Options**: Falling at the end / Rising at the end / Flat / Rising-falling
    **Answer**: Falling at the end
    **Explanation**: Wh-questions typically fall at the end. "What time is it?" — falling pitch on "is it". The question word itself signals that a specific answer is expected, so the rising pattern of yes/no questions isn't needed.
 
 3. **fill_gap** — For a list, the intonation pattern is typically: rise-rise-rise-_____.
+   **Listen**: I need eggs, milk, bread and butter.
    **Hint**: Final intonation when list is complete
    **Answer**: fall
    **Accepts**: falling / a fall / it falls / fall on the last item
@@ -656,11 +668,13 @@
    **Explanation**: "Shouldn't / Should not have" — standard written contraction of "should not have". In casual fast speech, often produced as "shouldn'ta" /ˈʃʊdn(ə)tə/ — the "have" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register.
 
 3. **multiple_choice** — In fast speech, how is "next month" most likely pronounced?
+   **Listen**: next month
    **Options**: nex' month (t dropped) / next-uh month / next monf / nex monf
    **Answer**: nex' month (t dropped)
    **Explanation**: Elision: dropping a sound, usually /t/ or /d/, between consonant clusters. "Next month" → "nex' month". Same with "old man" → "ol' man", "first place" → "firs' place". The dropped sound is too hard to say cleanly between adjacent consonants, so native speakers skip it.
 
 4. **multiple_choice** — In casual speech, a native English speaker would most likely say which?
+   **Listen**: I'd've gone if I'd known.
    **Options**: I'd've gone if I'd known. / I would of gone if I would know. / I'd gone if I'd knew. / I have gone if I knew.
    **Answer**: I'd've gone if I'd known.
    **Explanation**: "I would have gone if I had known" → casual contracted: "I'd / I would've gone if I'd known". Two contractions stacked: "I'd / I would" (I would) and "'ve" (have). In writing, "I would've" is common; "I'd / I would've" is very informal and mostly spoken. C2 listeners recognise these even when they don't appear in print.

@@ -420,7 +420,7 @@
 7. **fill_gap** — Direct: "I read that book." Reported: "He said he _____ that book."
    **Hint**: had + past participle "read"
    **Answer**: had read
-   **Explanation**: "Read" (past) → "had read" (past perfect). Note: pronounced /red/ in both.
+   **Explanation**: "Read" (past) → "had read" (past perfect). Note: pronounced like "red" in both.
 
 8. **fix_error** — Direct: "I finished it." Reported: "He said he finished it."
    **Hint**: Past simple precisa ir para past perfect

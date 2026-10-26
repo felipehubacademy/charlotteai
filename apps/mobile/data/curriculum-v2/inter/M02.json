@@ -308,7 +308,7 @@
             "red"
           ],
           "answer": "read",
-          "explanation": "\"Read\" past participle = \"read\" (same spelling, /red/ pronunciation)."
+          "explanation": "\"Read\" past participle = \"read\" (same spelling, but pronounced like the color \"red\")."
         },
         {
           "type": "word_bank",
@@ -402,7 +402,7 @@
         },
         {
           "text": "She has read that book.",
-          "context": "read /red/",
+          "context": "read (pronounced like \"red\")",
           "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/de55a814d38cf727.flac"
         },
         {
@@ -1135,7 +1135,7 @@
             "red"
           ],
           "answer": "read",
-          "explanation": "Past participle of read = read (same spelling, /red/)."
+          "explanation": "Past participle of read = read (same spelling, pronounced like \"red\")."
         },
         {
           "type": "word_bank",

@@ -639,7 +639,7 @@
           "sentence": "Direct: \"I read that book.\" Reported: \"He said he _____ that book.\"",
           "hint": "had + past participle \"read\"",
           "answer": "had read",
-          "explanation": "\"Read\" (past) → \"had read\" (past perfect). Note: pronounced /red/ in both."
+          "explanation": "\"Read\" (past) → \"had read\" (past perfect). Note: pronounced like \"red\" in both."
         },
         {
           "type": "fix_error",
