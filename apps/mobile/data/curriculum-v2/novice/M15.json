@@ -835,7 +835,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'worked'. Som de T ou de D?",
+          "sentence": "'worked': som de T ou de D?",
           "options": [
             "T",
             "D"
@@ -846,7 +846,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'played'. Som de T ou de D?",
+          "sentence": "'played': som de T ou de D?",
           "options": [
             "T",
             "D"
@@ -857,7 +857,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'stopped'. Som de T ou de D?",
+          "sentence": "'stopped': som de T ou de D?",
           "options": [
             "T",
             "D"
@@ -868,7 +868,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'called'. Som de T ou de D?",
+          "sentence": "'called': som de T ou de D?",
           "options": [
             "T",
             "D"
@@ -879,7 +879,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'watched'. Som de T ou de D?",
+          "sentence": "'watched': som de T ou de D?",
           "options": [
             "T",
             "D"
@@ -890,7 +890,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'lived'. Som de T ou de D?",
+          "sentence": "'lived': som de T ou de D?",
           "options": [
             "T",
             "D"
@@ -901,7 +901,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'finished'. Som de T ou de D?",
+          "sentence": "'finished': som de T ou de D?",
           "options": [
             "T",
             "D"
@@ -912,7 +912,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'opened'. Som de T ou de D?",
+          "sentence": "'opened': som de T ou de D?",
           "options": [
             "T",
             "D"
@@ -923,7 +923,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'washed'. Som de T ou de D?",
+          "sentence": "'washed': som de T ou de D?",
           "options": [
             "T",
             "D"
@@ -934,7 +934,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Ouça 'cleaned'. Som de T ou de D?",
+          "sentence": "'cleaned': som de T ou de D?",
           "options": [
             "T",
             "D"

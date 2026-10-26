@@ -567,61 +567,61 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "Ouça 'worked'. Som de T ou de D?"
+1. **multiple_choice** — "'worked': som de T ou de D?"
    **Listen**: worked
    **Options**: T / D
    **Answer**: T
    **Explanation**: "Worked" termina com som de T.
 
-2. **multiple_choice** — "Ouça 'played'. Som de T ou de D?"
+2. **multiple_choice** — "'played': som de T ou de D?"
    **Listen**: played
    **Options**: T / D
    **Answer**: D
    **Explanation**: "Played" termina com som de D.
 
-3. **multiple_choice** — "Ouça 'stopped'. Som de T ou de D?"
+3. **multiple_choice** — "'stopped': som de T ou de D?"
    **Listen**: stopped
    **Options**: T / D
    **Answer**: T
    **Explanation**: "Stopped" termina com som de T.
 
-4. **multiple_choice** — "Ouça 'called'. Som de T ou de D?"
+4. **multiple_choice** — "'called': som de T ou de D?"
    **Listen**: called
    **Options**: T / D
    **Answer**: D
    **Explanation**: "Called" termina com som de D.
 
-5. **multiple_choice** — "Ouça 'watched'. Som de T ou de D?"
+5. **multiple_choice** — "'watched': som de T ou de D?"
    **Listen**: watched
    **Options**: T / D
    **Answer**: T
    **Explanation**: "Watched" termina com som de T.
 
-6. **multiple_choice** — "Ouça 'lived'. Som de T ou de D?"
+6. **multiple_choice** — "'lived': som de T ou de D?"
    **Listen**: lived
    **Options**: T / D
    **Answer**: D
    **Explanation**: "Lived" termina com som de D.
 
-7. **multiple_choice** — "Ouça 'finished'. Som de T ou de D?"
+7. **multiple_choice** — "'finished': som de T ou de D?"
    **Listen**: finished
    **Options**: T / D
    **Answer**: T
    **Explanation**: "Finished" termina com som de T.
 
-8. **multiple_choice** — "Ouça 'opened'. Som de T ou de D?"
+8. **multiple_choice** — "'opened': som de T ou de D?"
    **Listen**: opened
    **Options**: T / D
    **Answer**: D
    **Explanation**: "Opened" termina com som de D.
 
-9. **multiple_choice** — "Ouça 'washed'. Som de T ou de D?"
+9. **multiple_choice** — "'washed': som de T ou de D?"
    **Listen**: washed
    **Options**: T / D
    **Answer**: T
    **Explanation**: "Washed" termina com som de T.
 
-10. **multiple_choice** — "Ouça 'cleaned'. Som de T ou de D?"
+10. **multiple_choice** — "'cleaned': som de T ou de D?"
     **Listen**: cleaned
     **Options**: T / D
     **Answer**: D

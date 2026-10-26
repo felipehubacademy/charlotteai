@@ -52,128 +52,6 @@
         "file": "igorfina/M10.json"
       }
     ],
-    "novice": [
-      {
-        "id": "M01",
-        "title": "Olá, mundo",
-        "file": "novice/M01.json"
-      },
-      {
-        "id": "M02",
-        "title": "Meu mundo",
-        "file": "novice/M02.json"
-      },
-      {
-        "id": "M03",
-        "title": "Família e amigos",
-        "file": "novice/M03.json"
-      },
-      {
-        "id": "M04",
-        "title": "Em casa",
-        "file": "novice/M04.json"
-      },
-      {
-        "id": "M05",
-        "title": "Meu dia-a-dia",
-        "file": "novice/M05.json"
-      },
-      {
-        "id": "M06",
-        "title": "O que faço (3ª pessoa)",
-        "file": "novice/M06.json"
-      },
-      {
-        "id": "M07",
-        "title": "Habilidades",
-        "file": "novice/M07.json"
-      },
-      {
-        "id": "M08",
-        "title": "Gostos",
-        "file": "novice/M08.json"
-      },
-      {
-        "id": "M09",
-        "title": "Agora mesmo",
-        "file": "novice/M09.json"
-      },
-      {
-        "id": "M10",
-        "title": "Comida e bebida",
-        "file": "novice/M10.json"
-      },
-      {
-        "id": "M11",
-        "title": "Compras",
-        "file": "novice/M11.json"
-      },
-      {
-        "id": "M12",
-        "title": "Comparações",
-        "file": "novice/M12.json"
-      },
-      {
-        "id": "M13",
-        "title": "O melhor de tudo",
-        "file": "novice/M13.json"
-      },
-      {
-        "id": "M14",
-        "title": "Onde estive ontem",
-        "file": "novice/M14.json"
-      },
-      {
-        "id": "M15",
-        "title": "O que fiz ontem",
-        "file": "novice/M15.json"
-      },
-      {
-        "id": "M16",
-        "title": "Histórias simples",
-        "file": "novice/M16.json"
-      },
-      {
-        "id": "M17",
-        "title": "Não foi assim",
-        "file": "novice/M17.json"
-      },
-      {
-        "id": "M18",
-        "title": "Planos pra amanhã",
-        "file": "novice/M18.json"
-      },
-      {
-        "id": "M19",
-        "title": "O futuro",
-        "file": "novice/M19.json"
-      },
-      {
-        "id": "M20",
-        "title": "Conselhos",
-        "file": "novice/M20.json"
-      },
-      {
-        "id": "M21",
-        "title": "Se isso, então aquilo",
-        "file": "novice/M21.json"
-      },
-      {
-        "id": "M22",
-        "title": "Conexões e fechamento Novice",
-        "file": "novice/M22.json"
-      },
-      {
-        "id": "M23",
-        "title": "Em viagem, no médico, ao telefone",
-        "file": "novice/M23.json"
-      },
-      {
-        "id": "M24",
-        "title": "Reagindo na conversa",
-        "file": "novice/M24.json"
-      }
-    ],
     "inter": [
       {
         "id": "M01",
@@ -412,7 +290,129 @@
         "title": "Cultural idioms",
         "file": "advanced/M24.json"
       }
+    ],
+    "novice": [
+      {
+        "id": "M01",
+        "title": "Olá, mundo",
+        "file": "novice/M01.json"
+      },
+      {
+        "id": "M02",
+        "title": "Meu mundo",
+        "file": "novice/M02.json"
+      },
+      {
+        "id": "M03",
+        "title": "Família e amigos",
+        "file": "novice/M03.json"
+      },
+      {
+        "id": "M04",
+        "title": "Em casa",
+        "file": "novice/M04.json"
+      },
+      {
+        "id": "M05",
+        "title": "Meu dia-a-dia",
+        "file": "novice/M05.json"
+      },
+      {
+        "id": "M06",
+        "title": "O que faço (3ª pessoa)",
+        "file": "novice/M06.json"
+      },
+      {
+        "id": "M07",
+        "title": "Habilidades",
+        "file": "novice/M07.json"
+      },
+      {
+        "id": "M08",
+        "title": "Gostos",
+        "file": "novice/M08.json"
+      },
+      {
+        "id": "M09",
+        "title": "Agora mesmo",
+        "file": "novice/M09.json"
+      },
+      {
+        "id": "M10",
+        "title": "Comida e bebida",
+        "file": "novice/M10.json"
+      },
+      {
+        "id": "M11",
+        "title": "Compras",
+        "file": "novice/M11.json"
+      },
+      {
+        "id": "M12",
+        "title": "Comparações",
+        "file": "novice/M12.json"
+      },
+      {
+        "id": "M13",
+        "title": "O melhor de tudo",
+        "file": "novice/M13.json"
+      },
+      {
+        "id": "M14",
+        "title": "Onde estive ontem",
+        "file": "novice/M14.json"
+      },
+      {
+        "id": "M15",
+        "title": "O que fiz ontem",
+        "file": "novice/M15.json"
+      },
+      {
+        "id": "M16",
+        "title": "Histórias simples",
+        "file": "novice/M16.json"
+      },
+      {
+        "id": "M17",
+        "title": "Não foi assim",
+        "file": "novice/M17.json"
+      },
+      {
+        "id": "M18",
+        "title": "Planos pra amanhã",
+        "file": "novice/M18.json"
+      },
+      {
+        "id": "M19",
+        "title": "O futuro",
+        "file": "novice/M19.json"
+      },
+      {
+        "id": "M20",
+        "title": "Conselhos",
+        "file": "novice/M20.json"
+      },
+      {
+        "id": "M21",
+        "title": "Se isso, então aquilo",
+        "file": "novice/M21.json"
+      },
+      {
+        "id": "M22",
+        "title": "Conexões e fechamento Novice",
+        "file": "novice/M22.json"
+      },
+      {
+        "id": "M23",
+        "title": "Em viagem, no médico, ao telefone",
+        "file": "novice/M23.json"
+      },
+      {
+        "id": "M24",
+        "title": "Reagindo na conversa",
+        "file": "novice/M24.json"
+      }
     ]
   },
-  "generated_at": "2026-10-26T14:36:59.464Z"
+  "generated_at": "2026-10-26T14:43:55.410Z"
 }
