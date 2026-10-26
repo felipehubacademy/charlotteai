@@ -335,6 +335,9 @@
           "sentence": "You can help me, please?",
           "hint": "Em perguntas, o \"can\" vem antes de \"you\"",
           "answer": "Can you help me, please?",
+          "accepts": [
+            "Can you help me?"
+          ],
           "explanation": "Na pergunta, o \"can\" vai para a frente: \"Can you...?\". \"You can...\" é afirmação (\"você pode\")."
         },
         {
@@ -347,7 +350,7 @@
         {
           "type": "read_answer",
           "passage": "Igor: Excuse me, can you help me, please? Man: Sure! Igor: Where is the bus stop? Man: It's right there. Igor: Thank you so much!",
-          "question": "O homem ajudou o Igor? Que palavra ele usou para dizer que sim? (responda em inglês)",
+          "question": "Que palavra o homem usou para dizer que ajuda o Igor? (responda em inglês)",
           "answer": "Sure",
           "explanation": "\"Sure!\" quer dizer \"claro!\". É a resposta mais comum quando alguém aceita ajudar."
         }

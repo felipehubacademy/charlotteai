@@ -94,6 +94,11 @@
           "sentence": "He was _____ his car with soap when I called.",
           "hint": "verb \"wash\" in -ing form",
           "answer": "washing",
+          "accepts": [
+            "cleaning",
+            "scrubbing",
+            "rinsing"
+          ],
           "explanation": "\"Wash\" + ing = \"washing\". \"With soap\" makes it clear the verb is \"wash\" (not \"fix\" / \"drive\"). Note: simple -ing, no doubled consonant."
         },
         {
@@ -853,9 +858,24 @@
         {
           "type": "fill_gap",
           "sentence": "I was reading when my friend _____.",
-          "hint": "past simple of \"call\"",
+          "hint": "past simple: the action that interrupted (e.g. \"call\")",
           "answer": "called",
-          "explanation": "Event (interruption) = past simple: \"called\"."
+          "accepts": [
+            "arrived",
+            "came",
+            "came in",
+            "came over",
+            "came by",
+            "came home",
+            "showed up",
+            "dropped by",
+            "phoned",
+            "rang",
+            "texted",
+            "knocked",
+            "walked in"
+          ],
+          "explanation": "Event (interruption) = past simple: \"called\", \"arrived\", \"came\"... The long action (\"was reading\") uses past continuous."
         },
         {
           "type": "fill_gap",

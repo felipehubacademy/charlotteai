@@ -61,6 +61,7 @@
 7. **fill_gap** — "He was _____ his car with soap when I called."
    **Hint**: verb "wash" in -ing form
    **Answer**: washing
+   **Accepts**: cleaning / scrubbing / rinsing
    **Explanation**: "Wash" + ing = "washing". "With soap" makes it clear the verb is "wash" (not "fix" / "drive"). Note: simple -ing, no doubled consonant.
 
 8. **fix_error** — "I were studying yesterday."
@@ -580,9 +581,10 @@
    **Explanation**: After "while", use past continuous: "while she was working".
 
 5. **fill_gap** — "I was reading when my friend _____."
-   **Hint**: past simple of "call"
+   **Hint**: past simple: the action that interrupted (e.g. "call")
    **Answer**: called
-   **Explanation**: Event (interruption) = past simple: "called".
+   **Accepts**: arrived / came / came in / came over / came by / came home / showed up / dropped by / phoned / rang / texted / knocked / walked in
+   **Explanation**: Event (interruption) = past simple: "called", "arrived", "came"... The long action ("was reading") uses past continuous.
 
 6. **fill_gap** — "While she _____ TV, the lights went off."
    **Hint**: past continuous of "watch"

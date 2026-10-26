@@ -87,6 +87,17 @@ function digitsToWords(s: string): string {
   return s.replace(/\b\d{1,3}\b/g, d => { const n = Number(d); return n <= 100 ? numberToWords(n) : d; });
 }
 
+// Comparação por PALAVRAS inteiras (antes era por letras: "this" continha "is", e um pedaço
+// qualquer da resposta certa passava, como só "help" para "Can you help me, please?").
+function hasWords(hay: string, needle: string): boolean {
+  return !!needle && ` ${hay} `.includes(` ${needle} `);
+}
+/** A resposta do aluno é um trecho da esperada com pelo menos 80% das palavras dela. */
+function coversMost(u: string, expected: string): boolean {
+  if (!hasWords(expected, u)) return false;
+  return u.split(' ').length >= Math.ceil(expected.split(' ').length * 0.8);
+}
+
 /**
  * Corretor genérico por tipo de exercício de gramática.
  * `type`: fill_gap | fix_error | read_answer | multiple_choice | word_bank | word_order | short_write | ...
@@ -106,19 +117,19 @@ export function checkGrammarAnswer(
     for (const a of accepts) {
       const na = normaliseAnswer(a);
       if (na === u) return true;
-      if (lenient && (u.includes(na) || na.includes(u))) return true;
+      if (lenient && (hasWords(u, na) || coversMost(u, na))) return true;
     }
   }
 
   if (type === 'multiple_choice' || type === 'word_bank' || type === 'word_order') return false;
 
   if (type === 'fill_gap') {
-    if (u.includes(c)) return true;               // aceita frase inteira
+    if (hasWords(u, c)) return true;              // aceita frase inteira
     if (contractionMatch(u, c, false)) return true;
     return false;
   }
   if (type === 'fix_error') {
-    if (u.includes(c) || c.includes(u)) return true;
+    if (hasWords(u, c) || coversMost(u, c)) return true;
     if (contractionMatch(u, c, true)) return true;
     return false;
   }

@@ -1,122 +1,5 @@
 {
   "level": {
-    "inter": [
-      {
-        "id": "M01",
-        "title": "Past events",
-        "file": "inter/M01.json"
-      },
-      {
-        "id": "M02",
-        "title": "What I've done",
-        "file": "inter/M02.json"
-      },
-      {
-        "id": "M03",
-        "title": "Recent or distant?",
-        "file": "inter/M03.json"
-      },
-      {
-        "id": "M04",
-        "title": "We used to",
-        "file": "inter/M04.json"
-      },
-      {
-        "id": "M05",
-        "title": "Essential phrasal verbs",
-        "file": "inter/M05.json"
-      },
-      {
-        "id": "M06",
-        "title": "Possibilities and doubts",
-        "file": "inter/M06.json"
-      },
-      {
-        "id": "M07",
-        "title": "Precise quantifiers",
-        "file": "inter/M07.json"
-      },
-      {
-        "id": "M08",
-        "title": "Who, which, that",
-        "file": "inter/M08.json"
-      },
-      {
-        "id": "M09",
-        "title": "As... as",
-        "file": "inter/M09.json"
-      },
-      {
-        "id": "M10",
-        "title": "General truths",
-        "file": "inter/M10.json"
-      },
-      {
-        "id": "M11",
-        "title": "When, before, after",
-        "file": "inter/M11.json"
-      },
-      {
-        "id": "M12",
-        "title": "If I could...",
-        "file": "inter/M12.json"
-      },
-      {
-        "id": "M13",
-        "title": "If I had known...",
-        "file": "inter/M13.json"
-      },
-      {
-        "id": "M14",
-        "title": "Should have, could have",
-        "file": "inter/M14.json"
-      },
-      {
-        "id": "M15",
-        "title": "It was done",
-        "file": "inter/M15.json"
-      },
-      {
-        "id": "M16",
-        "title": "Extended passive voice",
-        "file": "inter/M16.json"
-      },
-      {
-        "id": "M17",
-        "title": "He said that...",
-        "file": "inter/M17.json"
-      },
-      {
-        "id": "M18",
-        "title": "Reported questions",
-        "file": "inter/M18.json"
-      },
-      {
-        "id": "M19",
-        "title": "Extra information",
-        "file": "inter/M19.json"
-      },
-      {
-        "id": "M20",
-        "title": "I wish...",
-        "file": "inter/M20.json"
-      },
-      {
-        "id": "M21",
-        "title": "Advanced phrasal verbs",
-        "file": "inter/M21.json"
-      },
-      {
-        "id": "M22",
-        "title": "Advanced connectors",
-        "file": "inter/M22.json"
-      },
-      {
-        "id": "M23",
-        "title": "Tag questions and fillers",
-        "file": "inter/M23.json"
-      }
-    ],
     "advanced": [
       {
         "id": "M01",
@@ -237,58 +120,6 @@
         "id": "M24",
         "title": "Cultural idioms",
         "file": "advanced/M24.json"
-      }
-    ],
-    "igorfina": [
-      {
-        "id": "M01",
-        "title": "As 11 palavras que salvam",
-        "file": "igorfina/M01.json"
-      },
-      {
-        "id": "M02",
-        "title": "Visto, imigração e dinheiro",
-        "file": "igorfina/M02.json"
-      },
-      {
-        "id": "M03",
-        "title": "Passado, presente e futuro do jeito fácil",
-        "file": "igorfina/M03.json"
-      },
-      {
-        "id": "M04",
-        "title": "Gírias (e palavrão: entenda, não use)",
-        "file": "igorfina/M04.json"
-      },
-      {
-        "id": "M05",
-        "title": "Could, would, should, can, might, have to, would rather",
-        "file": "igorfina/M05.json"
-      },
-      {
-        "id": "M06",
-        "title": "Comparando: melhor, pior, o maior",
-        "file": "igorfina/M06.json"
-      },
-      {
-        "id": "M07",
-        "title": "In, out, on, off, under, above, beside",
-        "file": "igorfina/M07.json"
-      },
-      {
-        "id": "M08",
-        "title": "Situações do dia a dia",
-        "file": "igorfina/M08.json"
-      },
-      {
-        "id": "M09",
-        "title": "Academia",
-        "file": "igorfina/M09.json"
-      },
-      {
-        "id": "M10",
-        "title": "Viagem sem grana",
-        "file": "igorfina/M10.json"
       }
     ],
     "novice": [
@@ -412,7 +243,176 @@
         "title": "Reagindo na conversa",
         "file": "novice/M24.json"
       }
+    ],
+    "inter": [
+      {
+        "id": "M01",
+        "title": "Past events",
+        "file": "inter/M01.json"
+      },
+      {
+        "id": "M02",
+        "title": "What I've done",
+        "file": "inter/M02.json"
+      },
+      {
+        "id": "M03",
+        "title": "Recent or distant?",
+        "file": "inter/M03.json"
+      },
+      {
+        "id": "M04",
+        "title": "We used to",
+        "file": "inter/M04.json"
+      },
+      {
+        "id": "M05",
+        "title": "Essential phrasal verbs",
+        "file": "inter/M05.json"
+      },
+      {
+        "id": "M06",
+        "title": "Possibilities and doubts",
+        "file": "inter/M06.json"
+      },
+      {
+        "id": "M07",
+        "title": "Precise quantifiers",
+        "file": "inter/M07.json"
+      },
+      {
+        "id": "M08",
+        "title": "Who, which, that",
+        "file": "inter/M08.json"
+      },
+      {
+        "id": "M09",
+        "title": "As... as",
+        "file": "inter/M09.json"
+      },
+      {
+        "id": "M10",
+        "title": "General truths",
+        "file": "inter/M10.json"
+      },
+      {
+        "id": "M11",
+        "title": "When, before, after",
+        "file": "inter/M11.json"
+      },
+      {
+        "id": "M12",
+        "title": "If I could...",
+        "file": "inter/M12.json"
+      },
+      {
+        "id": "M13",
+        "title": "If I had known...",
+        "file": "inter/M13.json"
+      },
+      {
+        "id": "M14",
+        "title": "Should have, could have",
+        "file": "inter/M14.json"
+      },
+      {
+        "id": "M15",
+        "title": "It was done",
+        "file": "inter/M15.json"
+      },
+      {
+        "id": "M16",
+        "title": "Extended passive voice",
+        "file": "inter/M16.json"
+      },
+      {
+        "id": "M17",
+        "title": "He said that...",
+        "file": "inter/M17.json"
+      },
+      {
+        "id": "M18",
+        "title": "Reported questions",
+        "file": "inter/M18.json"
+      },
+      {
+        "id": "M19",
+        "title": "Extra information",
+        "file": "inter/M19.json"
+      },
+      {
+        "id": "M20",
+        "title": "I wish...",
+        "file": "inter/M20.json"
+      },
+      {
+        "id": "M21",
+        "title": "Advanced phrasal verbs",
+        "file": "inter/M21.json"
+      },
+      {
+        "id": "M22",
+        "title": "Advanced connectors",
+        "file": "inter/M22.json"
+      },
+      {
+        "id": "M23",
+        "title": "Tag questions and fillers",
+        "file": "inter/M23.json"
+      }
+    ],
+    "igorfina": [
+      {
+        "id": "M01",
+        "title": "As 11 palavras que salvam",
+        "file": "igorfina/M01.json"
+      },
+      {
+        "id": "M02",
+        "title": "Visto, imigração e dinheiro",
+        "file": "igorfina/M02.json"
+      },
+      {
+        "id": "M03",
+        "title": "Passado, presente e futuro do jeito fácil",
+        "file": "igorfina/M03.json"
+      },
+      {
+        "id": "M04",
+        "title": "Gírias (e palavrão: entenda, não use)",
+        "file": "igorfina/M04.json"
+      },
+      {
+        "id": "M05",
+        "title": "Could, would, should, can, might, have to, would rather",
+        "file": "igorfina/M05.json"
+      },
+      {
+        "id": "M06",
+        "title": "Comparando: melhor, pior, o maior",
+        "file": "igorfina/M06.json"
+      },
+      {
+        "id": "M07",
+        "title": "In, out, on, off, under, above, beside",
+        "file": "igorfina/M07.json"
+      },
+      {
+        "id": "M08",
+        "title": "Situações do dia a dia",
+        "file": "igorfina/M08.json"
+      },
+      {
+        "id": "M09",
+        "title": "Academia",
+        "file": "igorfina/M09.json"
+      },
+      {
+        "id": "M10",
+        "title": "Viagem sem grana",
+        "file": "igorfina/M10.json"
+      }
     ]
   },
-  "generated_at": "2026-10-25T12:13:58.458Z"
+  "generated_at": "2026-10-26T11:29:52.827Z"
 }

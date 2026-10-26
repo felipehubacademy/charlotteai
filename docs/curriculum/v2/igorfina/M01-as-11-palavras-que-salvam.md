@@ -233,6 +233,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 8. **fix_error** — "You can help me, please?"
    **Hint**: Em perguntas, o "can" vem antes de "you"
    **Answer**: Can you help me, please?
+   **Accepts**: Can you help me?
    **Explanation**: Na pergunta, o "can" vai para a frente: "Can you...?". "You can..." é afirmação ("você pode").
 
 9. **fix_error** — "Thank you very much much!"
@@ -242,7 +243,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 10. **read_answer**
     **Passage**: "Igor: Excuse me, can you help me, please? Man: Sure! Igor: Where is the bus stop? Man: It's right there. Igor: Thank you so much!"
-    **Question**: O homem ajudou o Igor? Que palavra ele usou para dizer que sim? (responda em inglês)
+    **Question**: Que palavra o homem usou para dizer que ajuda o Igor? (responda em inglês)
     **Answer**: Sure
     **Explanation**: "Sure!" quer dizer "claro!". É a resposta mais comum quando alguém aceita ajudar.
 
