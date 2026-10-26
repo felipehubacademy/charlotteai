@@ -842,7 +842,7 @@
             "3"
           ],
           "answer": "1",
-          "explanation": "\"Worked\" tem uma sílaba só: o -ed não vira sílaba nova, ele só soa como um T colado no final (\"workt\"). Erro comum de brasileiro: falar \"wor-ked\", com duas sílabas.",
+          "explanation": "\"Worked\" tem uma sílaba só: o -ed não vira sílaba nova, só um T colado no final (\"workt\"). Erro comum: falar \"wor-ked\".",
           "listen": "worked"
         },
         {
@@ -859,7 +859,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Qual destes verbos ganha uma sílaba a mais no passado?",
+          "sentence": "Ouça os quatro. Qual tem uma sílaba a mais?",
           "options": [
             "visited",
             "walked",
@@ -872,7 +872,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Em qual destes o -ed soa como um T?",
+          "sentence": "Ouça os quatro. Em qual o -ed soa como um T?",
           "options": [
             "finished",
             "lived",
@@ -880,7 +880,7 @@
             "opened"
           ],
           "answer": "finished",
-          "explanation": "\"Finish\" termina com som de SH, que é surdo (sai só ar, sem vibrar a garganta). Depois de som surdo, o -ed soa como T. Lived, arrived e opened terminam em som que vibra, então o -ed soa como D.",
+          "explanation": "Ouça de novo: \"finished\" termina com um T rápido (\"finisht\"). Nos outros, o final soa como D.",
           "listen": "finished, lived, arrived, opened"
         },
         {
@@ -893,7 +893,7 @@
             "não tem som"
           ],
           "answer": "como um T",
-          "explanation": "O K no fim de \"work\" é surdo (sem vibração na garganta), então o -ed soa como T.",
+          "explanation": "\"Worked\" termina com um T rápido, tudo numa sílaba só: \"workt\". Não fale \"wor-ked\".",
           "listen": "worked"
         },
         {
@@ -906,7 +906,7 @@
             "não tem som"
           ],
           "answer": "como um D",
-          "explanation": "\"Play\" termina em vogal, que vibra a garganta. Depois de som que vibra, o -ed soa como D. Continua com uma sílaba só.",
+          "explanation": "\"Played\" termina com um D leve, numa sílaba só: \"pleid\".",
           "listen": "played"
         },
         {
@@ -919,39 +919,38 @@
             "não tem som"
           ],
           "answer": "como uma sílaba a mais",
-          "explanation": "\"Need\" termina em D. Depois de T ou D, o -ed vira sílaba a mais: need-ed.",
+          "explanation": "\"Needed\" tem duas sílabas: need-ed. É assim com verbos que já terminam em T ou D, como wanted e visited.",
           "listen": "needed"
         },
         {
           "type": "multiple_choice",
-          "sentence": "Por que 'visited' tem uma sílaba a mais e 'worked' não?",
+          "sentence": "Ouça 'stopped'. Como soa o -ed?",
           "options": [
-            "Porque \"visit\" termina em T",
-            "Porque \"visited\" é um verbo mais longo",
-            "Porque \"worked\" é irregular",
-            "Porque todo verbo com -ed ganha sílaba"
+            "como um T",
+            "como um D",
+            "como uma sílaba a mais",
+            "não tem som"
           ],
-          "answer": "Porque \"visit\" termina em T",
-          "explanation": "A sílaba a mais só aparece quando o verbo termina em T ou D (visit, want, need, decide). Nos outros casos, o -ed gruda no final, como em \"worked\".",
-          "listen": "visited, worked"
+          "answer": "como um T",
+          "explanation": "\"Stopped\" soa \"stopt\": um T rápido no final, numa sílaba só.",
+          "listen": "stopped"
         },
         {
           "type": "multiple_choice",
-          "sentence": "Qual regra está certa?",
+          "sentence": "Ouça 'started'. Quantas sílabas você escuta?",
           "options": [
-            "Depois de K, P, S, SH e CH, o -ed soa como T",
-            "Depois de K, P, S, SH e CH, o -ed soa como D",
-            "Depois de K, P, S, SH e CH, o -ed vira sílaba a mais",
-            "O -ed sempre soa igual"
+            "1",
+            "2",
+            "3"
           ],
-          "answer": "Depois de K, P, S, SH e CH, o -ed soa como T",
-          "explanation": "Esses sons são surdos (sai só ar). O -ed acompanha e também sai surdo, como um T: worked, stopped, washed, watched.",
-          "listen": "worked, stopped, washed"
+          "answer": "2",
+          "explanation": "\"Started\" tem duas sílabas: start-ed. O -ed vira sílaba porque \"start\" já termina em T.",
+          "listen": "started"
         },
         {
           "type": "read_answer",
           "passage": "Yesterday I worked, watched a movie, and called my friend. Then I visited my parents.",
-          "question": "Qual verbo do texto ganha uma sílaba a mais no passado?",
+          "question": "Ouça o texto. Qual verbo tem uma sílaba a mais?",
           "answer": "visited",
           "explanation": "Só \"visited\" ganha sílaba a mais (vis-it-ed), porque \"visit\" termina em T. Worked, watched e called têm uma sílaba só.",
           "listen": "Yesterday I worked, watched a movie, and called my friend. Then I visited my parents."

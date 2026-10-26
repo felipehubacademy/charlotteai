@@ -758,17 +758,16 @@
           "listen": "What time is it?"
         },
         {
-          "type": "fill_gap",
-          "sentence": "For a list, the intonation pattern is typically: rise-rise-rise-_____.",
-          "hint": "Final intonation when list is complete",
-          "answer": "fall",
-          "accepts": [
-            "falling",
-            "a fall",
-            "it falls",
-            "fall on the last item"
+          "type": "multiple_choice",
+          "sentence": "Listen to the list. What does the voice do on the last item?",
+          "options": [
+            "It goes down",
+            "It goes up",
+            "It stays flat",
+            "It stops suddenly"
           ],
-          "explanation": "List intonation: rise, rise, rise, FALL. \"I need apples, oranges, bananas, and bread\" — rising on each item until \"bread\", which falls to signal \"end of list\". If the list continued, all items would rise. The falling final = closure.",
+          "answer": "It goes down",
+          "explanation": "In a list, the voice goes up on each item (\"eggs, milk, bread\") and comes down on the last one (\"and butter\") to show the list is finished. If it stays up, the listener waits for more.",
           "listen": "I need eggs, milk, bread and butter."
         },
         {

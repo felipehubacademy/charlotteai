@@ -513,12 +513,11 @@
    **Answer**: Falling at the end
    **Explanation**: Wh-questions typically fall at the end. "What time is it?" — falling pitch on "is it". The question word itself signals that a specific answer is expected, so the rising pattern of yes/no questions isn't needed.
 
-3. **fill_gap** — For a list, the intonation pattern is typically: rise-rise-rise-_____.
+3. **multiple_choice** — Listen to the list. What does the voice do on the last item?
    **Listen**: I need eggs, milk, bread and butter.
-   **Hint**: Final intonation when list is complete
-   **Answer**: fall
-   **Accepts**: falling / a fall / it falls / fall on the last item
-   **Explanation**: List intonation: rise, rise, rise, FALL. "I need apples, oranges, bananas, and bread" — rising on each item until "bread", which falls to signal "end of list". If the list continued, all items would rise. The falling final = closure.
+   **Options**: It goes down / It goes up / It stays flat / It stops suddenly
+   **Answer**: It goes down
+   **Explanation**: In a list, the voice goes up on each item ("eggs, milk, bread") and comes down on the last one ("and butter") to show the list is finished. If it stays up, the listener waits for more.
 
 4. **multiple_choice** — How do you make "Really?" sound like genuine surprise vs sarcasm?
    **Options**: Surprise rises high, sarcasm falls low and flat / Surprise falls low, sarcasm rises high / Both rise, only the volume changes / Both fall, only the speed changes

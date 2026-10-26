@@ -571,7 +571,7 @@
    **Listen**: worked
    **Options**: 1 / 2 / 3
    **Answer**: 1
-   **Explanation**: "Worked" tem uma sílaba só: o -ed não vira sílaba nova, ele só soa como um T colado no final ("workt"). Erro comum de brasileiro: falar "wor-ked", com duas sílabas.
+   **Explanation**: "Worked" tem uma sílaba só: o -ed não vira sílaba nova, só um T colado no final ("workt"). Erro comum: falar "wor-ked".
 
 2. **multiple_choice** — "Ouça 'wanted'. Quantas sílabas você escuta?"
    **Listen**: wanted
@@ -579,52 +579,52 @@
    **Answer**: 2
    **Explanation**: "Wanted" tem duas sílabas: want-ed. Quando o verbo termina em T ou D, o -ed vira uma sílaba a mais.
 
-3. **multiple_choice** — "Qual destes verbos ganha uma sílaba a mais no passado?"
+3. **multiple_choice** — "Ouça os quatro. Qual tem uma sílaba a mais?"
    **Listen**: visited, walked, played, closed
    **Options**: visited / walked / played / closed
    **Answer**: visited
    **Explanation**: "Visit" termina em T, então o -ed vira sílaba a mais: vis-it-ed. Walked, played e closed continuam com uma sílaba só.
 
-4. **multiple_choice** — "Em qual destes o -ed soa como um T?"
+4. **multiple_choice** — "Ouça os quatro. Em qual o -ed soa como um T?"
    **Listen**: finished, lived, arrived, opened
    **Options**: finished / lived / arrived / opened
    **Answer**: finished
-   **Explanation**: "Finish" termina com som de SH, que é surdo (sai só ar, sem vibrar a garganta). Depois de som surdo, o -ed soa como T. Lived, arrived e opened terminam em som que vibra, então o -ed soa como D.
+   **Explanation**: Ouça de novo: "finished" termina com um T rápido ("finisht"). Nos outros, o final soa como D.
 
 5. **multiple_choice** — "Ouça 'worked'. Como soa o -ed?"
    **Listen**: worked
    **Options**: como um T / como um D / como uma sílaba a mais / não tem som
    **Answer**: como um T
-   **Explanation**: O K no fim de "work" é surdo (sem vibração na garganta), então o -ed soa como T.
+   **Explanation**: "Worked" termina com um T rápido, tudo numa sílaba só: "workt". Não fale "wor-ked".
 
 6. **multiple_choice** — "Ouça 'played'. Como soa o -ed?"
    **Listen**: played
    **Options**: como um D / como um T / como uma sílaba a mais / não tem som
    **Answer**: como um D
-   **Explanation**: "Play" termina em vogal, que vibra a garganta. Depois de som que vibra, o -ed soa como D. Continua com uma sílaba só.
+   **Explanation**: "Played" termina com um D leve, numa sílaba só: "pleid".
 
 7. **multiple_choice** — "Ouça 'needed'. Como soa o -ed?"
    **Listen**: needed
    **Options**: como uma sílaba a mais / como um T / como um D / não tem som
    **Answer**: como uma sílaba a mais
-   **Explanation**: "Need" termina em D. Depois de T ou D, o -ed vira sílaba a mais: need-ed.
+   **Explanation**: "Needed" tem duas sílabas: need-ed. É assim com verbos que já terminam em T ou D, como wanted e visited.
 
-8. **multiple_choice** — "Por que 'visited' tem uma sílaba a mais e 'worked' não?"
-   **Listen**: visited, worked
-   **Options**: Porque "visit" termina em T / Porque "visited" é um verbo mais longo / Porque "worked" é irregular / Porque todo verbo com -ed ganha sílaba
-   **Answer**: Porque "visit" termina em T
-   **Explanation**: A sílaba a mais só aparece quando o verbo termina em T ou D (visit, want, need, decide). Nos outros casos, o -ed gruda no final, como em "worked".
+8. **multiple_choice** — "Ouça 'stopped'. Como soa o -ed?"
+   **Listen**: stopped
+   **Options**: como um T / como um D / como uma sílaba a mais / não tem som
+   **Answer**: como um T
+   **Explanation**: "Stopped" soa "stopt": um T rápido no final, numa sílaba só.
 
-9. **multiple_choice** — "Qual regra está certa?"
-   **Listen**: worked, stopped, washed
-   **Options**: Depois de K, P, S, SH e CH, o -ed soa como T / Depois de K, P, S, SH e CH, o -ed soa como D / Depois de K, P, S, SH e CH, o -ed vira sílaba a mais / O -ed sempre soa igual
-   **Answer**: Depois de K, P, S, SH e CH, o -ed soa como T
-   **Explanation**: Esses sons são surdos (sai só ar). O -ed acompanha e também sai surdo, como um T: worked, stopped, washed, watched.
+9. **multiple_choice** — "Ouça 'started'. Quantas sílabas você escuta?"
+   **Listen**: started
+   **Options**: 1 / 2 / 3
+   **Answer**: 2
+   **Explanation**: "Started" tem duas sílabas: start-ed. O -ed vira sílaba porque "start" já termina em T.
 
 10. **read_answer**
     **Passage**: "Yesterday I worked, watched a movie, and called my friend. Then I visited my parents."
     **Listen**: Yesterday I worked, watched a movie, and called my friend. Then I visited my parents.
-    **Question**: Qual verbo do texto ganha uma sílaba a mais no passado?
+    **Question**: Ouça o texto. Qual verbo tem uma sílaba a mais?
     **Answer**: visited
     **Explanation**: Só "visited" ganha sílaba a mais (vis-it-ed), porque "visit" termina em T. Worked, watched e called têm uma sílaba só.
 
