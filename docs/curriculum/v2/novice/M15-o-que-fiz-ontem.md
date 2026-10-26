@@ -579,15 +579,15 @@
    **Answer**: 2
    **Explanation**: "Wanted" tem duas sílabas: want-ed. Quando o verbo termina em T ou D, o -ed vira uma sílaba a mais.
 
-3. **word_bank** — "Qual destes verbos ganha uma sílaba a mais no passado?"
+3. **multiple_choice** — "Qual destes verbos ganha uma sílaba a mais no passado?"
    **Listen**: visited, walked, played, closed
-   **Choices**: visited / walked / played / closed
+   **Options**: visited / walked / played / closed
    **Answer**: visited
    **Explanation**: "Visit" termina em T, então o -ed vira sílaba a mais: vis-it-ed. Walked, played e closed continuam com uma sílaba só.
 
-4. **word_bank** — "Em qual destes o -ed soa como um T?"
+4. **multiple_choice** — "Em qual destes o -ed soa como um T?"
    **Listen**: finished, lived, arrived, opened
-   **Choices**: finished / lived / arrived / opened
+   **Options**: finished / lived / arrived / opened
    **Answer**: finished
    **Explanation**: "Finish" termina com som de SH, que é surdo (sai só ar, sem vibrar a garganta). Depois de som surdo, o -ed soa como T. Lived, arrived e opened terminam em som que vibra, então o -ed soa como D.
 

@@ -858,9 +858,9 @@
           "listen": "wanted"
         },
         {
-          "type": "word_bank",
+          "type": "multiple_choice",
           "sentence": "Qual destes verbos ganha uma sílaba a mais no passado?",
-          "choices": [
+          "options": [
             "visited",
             "walked",
             "played",
@@ -871,9 +871,9 @@
           "listen": "visited, walked, played, closed"
         },
         {
-          "type": "word_bank",
+          "type": "multiple_choice",
           "sentence": "Em qual destes o -ed soa como um T?",
-          "choices": [
+          "options": [
             "finished",
             "lived",
             "arrived",
