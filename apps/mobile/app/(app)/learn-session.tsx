@@ -689,8 +689,9 @@ export default function LearnSessionScreen() {
     } else {
       loadPronStep(currentStep.phrase);
     }
+  // Unidade na chave também: um link para outra unidade reaproveita a tela e pode cair no mesmo passo.
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stepIdx]);
+  }, [stepIdx, params.moduleId, params.unitId, params.activity]);
 
   // ── Grammar: botão "Ouvir" (exercícios sobre som) ──────────
   const [grammarListenLoading, setGrammarListenLoading] = useState(false);
