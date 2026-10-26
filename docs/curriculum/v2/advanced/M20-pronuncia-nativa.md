@@ -57,7 +57,6 @@
 
 5. **read_answer**
    **Passage**: "A: What's in the box? B: A present for you. I want to present it at dinner tonight, in front of everyone."
-   **Listen**: A: What's in the box? B: A present for you. I want to present it at dinner tonight, in front of everyone.
    **Question**: What does B want to do at dinner?
    **Answer**: give A the present in front of everyone
    **Accepts**: give the present / give it to A / present it / give you the present / give the gift
@@ -215,7 +214,6 @@
 
 5. **read_answer**
    **Passage**: "A: Do you want to grab a coffee before the meeting? B: I'd love to, but I've got to finish this report first."
-   **Listen**: A: Do you want to grab a coffee before the meeting? B: I'd love to, but I've got to finish this report first.
    **Question**: Why can't B get a coffee now?
    **Answer**: B has to finish a report first
    **Accepts**: finish the report / finish a report / the report / has to finish
@@ -373,7 +371,6 @@
 
 5. **read_answer**
    **Passage**: "A: Whaddaya wanna do tonight? B: Dunno. Gonna stay in, I guess. I'm kinda tired."
-   **Listen**: A: Whaddaya wanna do tonight? B: Dunno. Gonna stay in, I guess. I'm kinda tired.
    **Question**: What is B probably going to do tonight?
    **Answer**: stay in
    **Accepts**: stay home / stay at home / stay in / rest
@@ -531,7 +528,6 @@
 
 5. **read_answer**
    **Passage**: "A: I just finished my first marathon! B: You finished a marathon? That's amazing!"
-   **Listen**: A: I just finished my first marathon! B: You finished a marathon? That's amazing!
    **Question**: How does B feel?
    **Answer**: surprised
    **Accepts**: surprised and happy / impressed / amazed / excited / happy for A
@@ -687,7 +683,6 @@
 
 5. **read_answer**
    **Passage**: "A: You shouldn't've told him. B: I know. I'll call him next month and say sorry."
-   **Listen**: A: You shouldn't've told him. B: I know. I'll call him next month and say sorry.
    **Question**: When will B call him?
    **Answer**: next month
    **Accepts**: next month / in a month
