@@ -35,7 +35,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Where is the stress in \"photograph\"?",
+          "sentence": "Listen to \"photograph\". Where is the stress?",
           "options": [
             "PHO-tograph",
             "pho-TO-graph",
@@ -72,7 +72,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Which is correct stress for \"develop\"?",
+          "sentence": "Listen to \"develop\". Where is the stress?",
           "options": [
             "DEvelop (1st syllable)",
             "deVELop (2nd syllable)",
@@ -269,7 +269,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "In the sentence \"I want a cup of tea\", which words are stressed?",
+          "sentence": "Listen to \"I want a cup of tea\". Which words are stressed?",
           "options": [
             "I, want, cup, tea",
             "I, want, cup, of, tea",
@@ -308,7 +308,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Which sentence has the more native rhythm?",
+          "sentence": "Listen. Which sentence did she say?",
           "options": [
             "I AM going TO the STORE",
             "I'm going to the STORE",
@@ -505,7 +505,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "In natural speech, \"an apple\" sounds like:",
+          "sentence": "Listen to \"an apple\". How does it sound?",
           "options": [
             "a-napple (linked)",
             "an apple (separated)",
@@ -529,29 +529,27 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Listen to \"I am\" said quickly. Which sound slips in between the two words?",
+          "sentence": "Listen. What did she say?",
           "options": [
-            "a light \"y\" sound",
-            "a light \"w\" sound",
-            "a light \"r\" sound",
-            "nothing at all"
+            "What do you want to do?",
+            "What did you want to do?",
+            "Where do you want to go?"
           ],
-          "answer": "a light \"y\" sound",
-          "explanation": "When a word ending in an \"ee\"/\"eye\" kind of vowel meets another vowel, natives glide between them with a light \"y\": \"I-y-am\", \"she-y-is\". After \"oo\"/\"oh\" vowels the glide is a \"w\": \"go-w-away\". Nobody teaches this, but it is why connected English sounds smooth.",
-          "listen": "I am"
+          "answer": "What do you want to do?",
+          "explanation": "In fast casual speech \"what do you\" becomes \"whaddaya\" and \"want to\" becomes \"wanna\". You will hear this all the time in films and conversations.",
+          "listen": "Whaddaya wanna do?"
         },
         {
           "type": "multiple_choice",
-          "sentence": "Which is closer to natural fast speech of \"don't you know\"?",
+          "sentence": "Listen. What did she say?",
           "options": [
-            "doncha know",
-            "dont-you know",
-            "doan-you know",
-            "don-tee-you know"
+            "I don't know, I've got to go.",
+            "I didn't know, I got to go.",
+            "Don't go, I've got it."
           ],
-          "answer": "doncha know",
-          "explanation": "Assimilation: when adjacent sounds change to be more similar. \"Don't / Do not you\" → \"doncha\" /ˈdoʊnʧə/. \"Did you\" → \"didja\" /ˈdɪʤə/. \"Would you\" → \"wouldja\". These aren't lazy — they're the natural shape of fast English. C2 awareness includes both producing and parsing them.",
-          "listen": "Don't you know?"
+          "answer": "I don't know, I've got to go.",
+          "explanation": "\"Dunno\" = I don't know; \"gotta\" = (I've) got to. Natives drop and merge sounds when they speak fast.",
+          "listen": "Dunno, gotta go."
         },
         {
           "type": "read_answer",
@@ -737,7 +735,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Typical intonation pattern for \"Are you ready?\":",
+          "sentence": "Listen to \"Are you ready?\". What does the voice do at the end?",
           "options": [
             "Rising at the end",
             "Falling at the end",
@@ -750,7 +748,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Typical intonation for \"What time is it?\":",
+          "sentence": "Listen to \"What time is it?\". What does the voice do at the end?",
           "options": [
             "Falling at the end",
             "Rising at the end",
@@ -976,20 +974,19 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "In fast speech, how is \"next month\" most likely pronounced?",
+          "sentence": "Listen. What did she say?",
           "options": [
-            "nex' month (t dropped)",
-            "next-uh month",
-            "next monf",
-            "nex monf"
+            "I'm going to call you later.",
+            "I'm calling you later.",
+            "I'm gone, call you later."
           ],
-          "answer": "nex' month (t dropped)",
-          "explanation": "Elision: dropping a sound, usually /t/ or /d/, between consonant clusters. \"Next month\" → \"nex' month\". Same with \"old man\" → \"ol' man\", \"first place\" → \"firs' place\". The dropped sound is too hard to say cleanly between adjacent consonants, so native speakers skip it.",
-          "listen": "next month"
+          "answer": "I'm going to call you later.",
+          "explanation": "\"Gonna\" = going to; \"ya\" = you. This is how the sentence really sounds in casual speech.",
+          "listen": "I'm gonna call ya later."
         },
         {
           "type": "multiple_choice",
-          "sentence": "In casual speech, a native English speaker would most likely say which?",
+          "sentence": "Listen. What did she say?",
           "options": [
             "I'd've gone if I'd known.",
             "I would of gone if I would know.",
