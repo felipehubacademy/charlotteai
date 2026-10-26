@@ -1,11 +1,11 @@
 // Perfil > Horário do lembrete: o aluno escolhe a hora do lembrete diário (9h a 20h, no fuso dele)
 // ou deixa no automático (lembrete às 11h + "oi da Charlotte" perto do horário em que costuma estudar).
 // Grava charlotte_users.reminder_hour (null = automático). Sem opção de desligar: o celular já permite.
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { View, TouchableOpacity, ScrollView, ActivityIndicator, Platform } from 'react-native';
 import { useFocusEffect } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { CheckCircle, Sparkle } from 'phosphor-react-native';
+import { Bell, CheckCircle, Sparkle } from 'phosphor-react-native';
 import { supabase } from '@/lib/supabase';
 import { ScreenHeader } from '@/components/stats/StatsUI';
 import { AppText } from '@/components/ui/Text';
@@ -30,69 +30,80 @@ const cardShadow = Platform.select({
   android: { elevation: 3 },
 }) as object;
 
-const HOURS = Array.from({ length: 12 }, (_, i) => 9 + i); // 9h a 20h
+const MIN_H = 9, MAX_H = 20; // 9h a 20h
+const DEFAULT_FIXED = 18;
 
 export default function ReminderTimeScreen() {
   const insets = useSafeAreaInsets();
   const { profile } = useAuth();
   const isPt = systemIsPt; // tela de conta = idioma do aparelho
 
-  const [hour, setHour] = useState<number | null>(null);
+  const [hour, setHour] = useState<number | null>(null);      // null = automático
+  const [fixed, setFixed] = useState<number>(DEFAULT_FIXED);  // hora mostrada no seletor
   const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState<number | 'auto' | null>(null);
+  const [saving, setSaving] = useState(false);
+  const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const savedRef = useRef<number | null>(null);
 
   useFocusEffect(useCallback(() => {
     if (!profile?.id) return;
     let alive = true;
     supabase.from('charlotte_users').select('reminder_hour').eq('id', profile.id).maybeSingle()
-      .then(({ data }) => { if (alive) { setHour((data as { reminder_hour?: number | null } | null)?.reminder_hour ?? null); setLoading(false); } });
+      .then(({ data }) => {
+        if (!alive) return;
+        const h = (data as { reminder_hour?: number | null } | null)?.reminder_hour ?? null;
+        setHour(h); savedRef.current = h; if (h != null) setFixed(h); setLoading(false);
+      });
     return () => { alive = false; };
   }, [profile?.id]));
 
-  const choose = async (h: number | null) => {
-    if (!profile?.id || saving != null || h === hour) return;
-    const prev = hour;
-    setHour(h); setSaving(h ?? 'auto');
-    const { error } = await supabase.from('charlotte_users').update({ reminder_hour: h } as never).eq('id', profile.id);
-    setSaving(null);
-    if (error) {
-      setHour(prev);
-      appAlert(isPt ? 'Não foi possível salvar' : 'Could not save', isPt ? 'Confira sua conexão e tente de novo.' : 'Check your connection and try again.');
-    }
+  // Grava com um pequeno atraso: tocar várias vezes no + ou no − vira um salvamento só.
+  const save = (h: number | null) => {
+    if (!profile?.id) return;
+    setHour(h);
+    if (saveTimer.current) clearTimeout(saveTimer.current);
+    saveTimer.current = setTimeout(async () => {
+      if (h === savedRef.current) return;
+      setSaving(true);
+      const { error } = await supabase.from('charlotte_users').update({ reminder_hour: h } as never).eq('id', profile.id);
+      setSaving(false);
+      if (error) {
+        setHour(savedRef.current);
+        appAlert(isPt ? 'Não foi possível salvar' : 'Could not save', isPt ? 'Confira sua conexão e tente de novo.' : 'Check your connection and try again.');
+      } else {
+        savedRef.current = h;
+      }
+    }, 600);
   };
 
-  const Option = ({ h, title, subtitle, icon }: { h: number | null; title: string; subtitle?: string; icon?: React.ReactNode }) => {
-    const selected = hour === h;
-    const busy = saving === (h ?? 'auto');
-    return (
-      <TouchableOpacity
-        onPress={() => choose(h)}
-        activeOpacity={0.75}
-        accessibilityRole="radio"
-        accessibilityState={{ selected }}
-        style={{
-          flexDirection: 'row', alignItems: 'center', gap: 12,
-          paddingHorizontal: 16, paddingVertical: 14,
-          backgroundColor: selected ? C.accentBg : 'transparent',
-        }}
-      >
-        {icon}
-        <View style={{ flex: 1 }}>
-          <AppText style={{ fontSize: 15.5, fontWeight: selected ? '800' : '600', color: C.navy }}>{title}</AppText>
-          {!!subtitle && <AppText style={{ fontSize: 13, color: C.navyMid, marginTop: 2, lineHeight: 18 }}>{subtitle}</AppText>}
-        </View>
-        {busy
-          ? <ActivityIndicator size="small" color={C.accent} />
-          : selected
-            ? <CheckCircle size={22} color={C.accent} weight="fill" />
-            : <View style={{ width: 20, height: 20, margin: 1, borderRadius: 10, borderWidth: 1.5, borderColor: C.navyLight }} />}
-      </TouchableOpacity>
-    );
+  const step = (d: number) => {
+    const next = Math.min(MAX_H, Math.max(MIN_H, fixed + d));
+    setFixed(next); save(next);
   };
+
+  const Radio = ({ selected }: { selected: boolean }) => selected
+    ? <CheckCircle size={22} color={C.accent} weight="fill" />
+    : <View style={{ width: 20, height: 20, margin: 1, borderRadius: 10, borderWidth: 1.5, borderColor: C.navyLight }} />;
+
+  const StepBtn = ({ label, d, disabled }: { label: string; d: number; disabled: boolean }) => (
+    <TouchableOpacity
+      onPress={() => step(d)}
+      disabled={disabled}
+      activeOpacity={0.7}
+      accessibilityRole="button"
+      accessibilityLabel={d > 0 ? (isPt ? 'Mais tarde' : 'Later') : (isPt ? 'Mais cedo' : 'Earlier')}
+      hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+      style={{ width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center', backgroundColor: disabled ? C.bg : C.accentBg }}
+    >
+      <AppText style={{ fontSize: 26, fontWeight: '700', color: disabled ? C.navyLight : C.accent, lineHeight: 30 }}>{label}</AppText>
+    </TouchableOpacity>
+  );
+
+  const isAuto = hour == null;
 
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
-      <ScreenHeader title={isPt ? 'Horário do lembrete' : 'Reminder time'} />
+      <ScreenHeader title={isPt ? 'Horário do lembrete' : 'Reminder time'} right={saving ? <ActivityIndicator size="small" color={C.accent} /> : undefined} />
       {loading ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <ActivityIndicator color={C.accent} />
@@ -106,23 +117,49 @@ export default function ReminderTimeScreen() {
           </AppText>
 
           <View style={{ backgroundColor: C.card, borderRadius: 16, overflow: 'hidden', ...cardShadow }}>
-            <Option
-              h={null}
-              icon={<Sparkle size={20} color={C.accent} weight="fill" />}
-              title={isPt ? 'Me lembrar no horário em que costumo estudar' : 'Remind me around when I usually study'}
-              subtitle={isPt ? 'A Charlotte ajusta sozinha, pelo seu ritmo.' : 'Charlotte adjusts it to your rhythm.'}
-            />
-          </View>
-
-          <AppText style={{ fontSize: 12, fontWeight: '800', color: C.navyLight, letterSpacing: 0.8, textTransform: 'uppercase', marginTop: 4 }}>
-            {isPt ? 'Ou escolha um horário fixo' : 'Or pick a fixed time'}
-          </AppText>
-          <View style={{ backgroundColor: C.card, borderRadius: 16, overflow: 'hidden', ...cardShadow }}>
-            {HOURS.map((h, i) => (
-              <View key={h} style={i > 0 ? { borderTopWidth: 1, borderTopColor: C.border } : undefined}>
-                <Option h={h} title={reminderHourLabel(h, isPt)} />
+            <TouchableOpacity
+              onPress={() => save(null)}
+              activeOpacity={0.75}
+              accessibilityRole="radio"
+              accessibilityState={{ selected: isAuto }}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingVertical: 14, backgroundColor: isAuto ? C.accentBg : 'transparent' }}
+            >
+              <Sparkle size={20} color={C.accent} weight="fill" />
+              <View style={{ flex: 1 }}>
+                <AppText style={{ fontSize: 15.5, fontWeight: isAuto ? '800' : '600', color: C.navy }}>
+                  {isPt ? 'No horário em que costumo estudar' : 'Around when I usually study'}
+                </AppText>
+                <AppText style={{ fontSize: 13, color: C.navyMid, marginTop: 2, lineHeight: 18 }}>
+                  {isPt ? 'A Charlotte ajusta sozinha, pelo seu ritmo.' : 'Charlotte adjusts it to your rhythm.'}
+                </AppText>
               </View>
-            ))}
+              <Radio selected={isAuto} />
+            </TouchableOpacity>
+
+            <View style={{ borderTopWidth: 1, borderTopColor: C.border, backgroundColor: !isAuto ? C.accentBg : 'transparent' }}>
+              <TouchableOpacity
+                onPress={() => save(fixed)}
+                activeOpacity={0.75}
+                accessibilityRole="radio"
+                accessibilityState={{ selected: !isAuto }}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingVertical: 14 }}
+              >
+                <Bell size={20} color={C.accent} weight="fill" />
+                <AppText style={{ flex: 1, fontSize: 15.5, fontWeight: !isAuto ? '800' : '600', color: C.navy }}>
+                  {isPt ? 'Em um horário fixo' : 'At a fixed time'}
+                </AppText>
+                <Radio selected={!isAuto} />
+              </TouchableOpacity>
+              {!isAuto && (
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 28, paddingBottom: 18, paddingTop: 2 }}>
+                  <StepBtn label="−" d={-1} disabled={fixed <= MIN_H} />
+                  <AppText display style={{ minWidth: 96, textAlign: 'center', fontSize: 34, fontWeight: '800', color: C.navy }}>
+                    {reminderHourLabel(fixed, isPt)}
+                  </AppText>
+                  <StepBtn label="+" d={1} disabled={fixed >= MAX_H} />
+                </View>
+              )}
+            </View>
           </View>
         </ScrollView>
       )}

@@ -107,7 +107,7 @@ Pedidos de amizade e convites recebidos aparecem numa linha na tela inicial. Par
 `Em Perfil > Idioma do app, escolha Automático (do celular), Português ou English. O app reinicia e passa a mostrar as telas e os avisos no idioma escolhido.
 O conteúdo das lições continua no idioma do seu nível: na Novice as explicações são em português; no Inter e no Advanced, em inglês.` },
   { section: 'Guia do app', question: 'Como mudo o horário do lembrete?', answer:
-`Em Perfil > Horário do lembrete, escolha um horário fixo (de hora em hora, das 9h às 20h) ou "Me lembrar no horário em que costumo estudar", que é o padrão. O horário vale para o lembrete diário de praticar, no fuso do seu celular.
+`Em Perfil > Horário do lembrete, escolha "No horário em que costumo estudar", que é o padrão, ou "Em um horário fixo" e ajuste a hora no + e no − (das 9h às 20h). O horário vale para o lembrete diário de praticar, no fuso do seu celular.
 Os avisos do Queizy só chegam entre 9h e 21h. Para não receber nenhum aviso, desative as notificações do Queizy nos ajustes do celular.` },
   { section: 'Guia do app', question: 'Onde vejo minha evolução?', answer:
 `Em Perfil > Você no Queizy > Minha evolução (ou "Ver minha evolução" na tela inicial). Mostra o que você já domina e o que vale treinar, com base nas atividades feitas.` },
