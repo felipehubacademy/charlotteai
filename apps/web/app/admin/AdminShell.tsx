@@ -7,6 +7,7 @@ import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Head
 import { getSupabase } from '@/lib/supabase';
 import { AdminMe, AdminMeContext } from '@/lib/admin-context';
 import AdminPushToggle from '@/components/admin/AdminPushToggle';
+import AdminLoading from '@/components/admin/AdminLoading';
 
 // ── Design tokens ───────────────────────────────────────────────────────────
 const ADMIN_CSS = `
@@ -844,6 +845,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
       <>
         <style>{ADMIN_CSS}</style>
         <div className="admin-root" style={{ minHeight: '100dvh' }}>
+          {state === 'loading' && <AdminLoading />}
           {state === 'login' && (
             <LoginScreen
               notice={notice}

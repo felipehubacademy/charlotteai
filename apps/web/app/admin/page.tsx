@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useAdminMe, canArea } from '@/lib/admin-context';
+import AdminLoading from '@/components/admin/AdminLoading';
 import { Search, Plus, Edit2, Trash2, RefreshCw, ExternalLink, ChevronUp, ChevronDown, X, TriangleAlert, Check, Eye, EyeOff } from 'lucide-react';
 
 // ── Types ────────────────────────────────────────────────────────────────────
@@ -147,7 +148,7 @@ export default function AdminUsersPage() {
   const canDelete = canArea(me, 'users:delete');
   const [users, setUsers]       = useState<User[]>([]);
   const [stats, setStats]       = useState<Stats | null>(null);
-  const [loading, setLoading]   = useState(false);
+  const [loading, setLoading]   = useState(true); // primeira carga: tela de carregamento até chegar a lista
   const [error, setError]       = useState('');
   const [search, setSearch]     = useState('');
   const [filter, setFilter]     = useState<FilterKey>('all');
@@ -372,6 +373,9 @@ export default function AdminUsersPage() {
   }));
 
   // ── Render ─────────────────────────────────────────────────────────────────
+  // Primeira carga: tela inteira de carregamento até a lista chegar (no PWA a tela ficava vazia).
+  if (loading && !users.length && !stats && !error) return <AdminLoading label="Carregando usuários…" />;
+
   return (
     <div className="adm-page">
       {/* Top bar */}
