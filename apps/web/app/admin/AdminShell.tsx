@@ -818,7 +818,22 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
     try {
       const res = await fetch('/api/admin/me');
       if (res.ok) { setMe(await res.json()); setState('ready'); return; }
+      // Erro do servidor ou da rede não é falta de acesso: não desconecta, só pede para tentar de novo.
+      if (res.status >= 500) {
+        setNotice('Não foi possível abrir o painel agora. Tente de novo em instantes.');
+        setState('login');
+        return;
+      }
       const { data } = (await getSupabase()?.auth.getSession()) ?? { data: { session: null } };
+      // Token vencido numa aba nova: renova a sessão e tenta mais uma vez antes de concluir que não tem acesso.
+      if (data?.session && res.status === 401) {
+        const { data: refreshed } = (await getSupabase()?.auth.refreshSession()) ?? { data: { session: null } };
+        if (refreshed?.session) {
+          const again = await fetch('/api/admin/me');
+          if (again.ok) { setMe(await again.json()); setState('ready'); return; }
+          if (again.status >= 500) { setNotice('Não foi possível abrir o painel agora. Tente de novo em instantes.'); setState('login'); return; }
+        }
+      }
       setNotice(data?.session ? 'Sua conta não tem acesso à gestão. Peça para um Administrador te adicionar em Equipe.' : undefined);
       if (data?.session) await getSupabase()?.auth.signOut();
     } catch { /* cai no login */ }
