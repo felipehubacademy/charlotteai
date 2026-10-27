@@ -5,6 +5,7 @@
 //   POST { action: 'toggle_coupon', code, active }    pausa ou reativa (finance)
 // Os cupons valem só no site (Asaas). Afiliados ficam em /api/admin/affiliates.
 import { NextRequest, NextResponse } from 'next/server';
+import { cleanCampaign } from '@/lib/ad-attribution';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
 
@@ -72,7 +73,8 @@ export async function GET(req: NextRequest) {
       else r.visits++;
     }
     for (const c of (cks ?? []) as { status: string; asaas_payment_id: string | null; value_brl: number; meta_tracking: { utm?: { c?: string } } | null }[]) {
-      const camp = String(c.meta_tracking?.utm?.c ?? '').toLowerCase().replace(/[^a-z0-9_-]+/g, '-').slice(0, 60);
+      const raw = String(c.meta_tracking?.utm?.c ?? '');
+      const camp = raw ? cleanCampaign(raw) : ''; // mesma limpeza das visitas e cliques (lib/ad-attribution)
       if (!camp) continue;
       const r = row(camp);
       r.checkouts++;
