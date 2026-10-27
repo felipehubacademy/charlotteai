@@ -148,16 +148,8 @@ function Spot({ e, place, isUser, youLabel, rise }: { e: PodiumEntry | undefined
       ) : null}
       {/* Coluna: sobe ao abrir. A medalha fica pendurada no topo, sobre a onda. */}
       <Animated.View onLayout={ev => setColW(ev.nativeEvent.layout.width)}
-        style={{ width: '100%', height, borderTopLeftRadius: 16, borderTopRightRadius: 16, overflow: 'visible', alignItems: 'center' }}>
-        <Svg width="100%" height="100%" style={{ position: 'absolute' }}>
-          <Defs>
-            <LinearGradient id={`col${place}`} x1="0" y1="0" x2="0" y2="1">
-              <Stop offset="0" stopColor="#FFFFFF" stopOpacity={big ? 0.18 : 0.12} />
-              <Stop offset="1" stopColor="#FFFFFF" stopOpacity={0.02} />
-            </LinearGradient>
-          </Defs>
-          <Rect x="0" y="0" width="100%" height="100%" rx="16" fill={`url(#col${place})`} />
-        </Svg>
+        style={{ width: '100%', height, borderTopLeftRadius: 16, borderTopRightRadius: 16, alignItems: 'center',
+          backgroundColor: big ? 'rgba(255,255,255,0.14)' : 'rgba(255,255,255,0.09)' }}>
         <WaveTop width={colW} />
         <Animated.View style={{ marginTop: 18, opacity: fade }}>
           <Medal place={place} size={big ? 50 : 42} />
