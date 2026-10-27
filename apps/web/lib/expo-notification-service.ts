@@ -7,6 +7,7 @@ import { aiFetch } from '@/lib/ai-models';
 import { randomUUID } from 'crypto';
 import { logOpenAIUsage } from './openai-usage';
 import { allFriendPairs } from '@/lib/friends';
+import { tasteDay, TASTE_DAYS } from '@/lib/taste';
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 
@@ -332,7 +333,9 @@ interface NotificationType {
     | 'streak_broken'
     | 'reengagement_3d' | 'reengagement_7d' | 'reengagement_14d' | 'reengagement_30d'
     // Estudar junto (duplas)
-    | 'buddy_rivalry';
+    | 'buddy_rivalry'
+    // Degustação (conta sem plano): fluxo próprio, sendTastePushes
+    | 'taste_daily' | 'taste_nudge' | 'taste_ended' | 'taste_offer';
 }
 
 // Max sends per user per UTC day, per type. For core types 1/day is a safety
@@ -363,6 +366,10 @@ const FREQUENCY_CAP: Record<NotificationType['id'], number> = {
   reengagement_14d:       1,
   reengagement_30d:       1,
   buddy_rivalry:          1,
+  taste_daily:            1,
+  taste_nudge:            1,
+  taste_ended:            1,
+  taste_offer:            1,
 };
 
 // Re-engagement types are mutually exclusive: the dispatcher picks AT MOST
@@ -388,6 +395,15 @@ async function filterFrequencyCap(
   type: NotificationType['id'],
 ): Promise<string[]> {
   if (!userIds.length) return userIds;
+  // Degustação (conta sem plano): só recebe o fluxo próprio (lib/taste-push.ts). Os avisos genéricos
+  // ("sua sequência", "última chance hoje"…) chamavam para um conteúdo que ela não tem.
+  if (!String(type).startsWith('taste_')) {
+    const { data: tasters } = await supabase.from('charlotte_users').select('id')
+      .in('id', userIds).or('subscription_status.is.null,subscription_status.eq.none').not('is_institutional', 'is', true);
+    const skip = new Set(((tasters ?? []) as { id: string }[]).map(t => String(t.id)));
+    if (skip.size) userIds = userIds.filter(uid => !skip.has(String(uid)));
+    if (!userIds.length) return userIds;
+  }
   const cap = FREQUENCY_CAP[type];
   // Rolling 24h window instead of UTC midnight — avoids double-sends for users
   // in negative-offset timezones (e.g., Americas) where UTC midnight falls in
@@ -1952,5 +1968,90 @@ export async function sendBuddyRivalry(supabase: any): Promise<void> {
     await logRnPushes(supabase, senders.map((s2, i) => ({ userId: s2.id, type: 'buddy_rivalry', variantHash: s2.hash, title: messages[i].title, body: messages[i].body })));
   } catch (e) {
     console.error('[Expo] Buddy rivalry error:', e);
+  }
+}
+
+// ── Degustação: fluxo próprio de push ────────────────────────────────────────
+// Quem está na degustação (conta sem plano) não recebe os avisos genéricos (filterFrequencyCap os
+// tira) e ganha esta sequência, no máximo 1 por dia, na hora do lembrete do aluno (padrão 11h):
+//   dias 2 a 4: o tópico grátis do dia está liberado (ou, se não estudou ontem, um lembrete leve);
+//   dia 5: último dia da degustação; dia 6: acabou, com o convite para os 7 dias grátis;
+//   dia 9: última lembrança do teste grátis. Depois disso, nada.
+const TASTE_COPY: Record<'taste_daily' | 'taste_last' | 'taste_nudge' | 'taste_ended' | 'taste_offer', { pt: MsgTemplate; en: MsgTemplate }> = {
+  taste_daily: {
+    pt: { title: 'Seu tópico de hoje chegou', body: '{name}, mais um tópico grátis da trilha está liberado. Leva poucos minutos.' },
+    en: { title: "Today's topic is here", body: '{name}, a new free topic is unlocked on your path. It only takes a few minutes.' },
+  },
+  taste_last: {
+    pt: { title: 'Último tópico grátis', body: '{name}, hoje é o último dia da sua degustação. Seu tópico já está liberado.' },
+    en: { title: 'Last free topic', body: "{name}, today is the last day of your free taste. Your topic is ready." },
+  },
+  taste_nudge: {
+    pt: { title: 'Seu tópico grátis está esperando', body: '{name}, ele continua liberado. Cinco minutinhos hoje já contam.' },
+    en: { title: 'Your free topic is waiting', body: "{name}, it's still unlocked. Five minutes today already count." },
+  },
+  taste_ended: {
+    pt: { title: 'Sua degustação terminou', body: '{name}, gostou? Comece os 7 dias grátis e siga na trilha, no chat e nas ligações.' },
+    en: { title: 'Your free taste is over', body: '{name}, enjoyed it? Start your 7-day free trial and keep going.' },
+  },
+  taste_offer: {
+    pt: { title: 'Seus 7 dias grátis continuam disponíveis', body: '{name}, dá para voltar de onde parou. Sem cobrança nos 7 primeiros dias.' },
+    en: { title: 'Your 7-day free trial is still available', body: '{name}, pick up where you left off. No charge for the first 7 days.' },
+  },
+};
+
+export async function sendTastePushes(supabase: any): Promise<void> {
+  try {
+    const since = new Date(Date.now() - 12 * 86400000).toISOString();
+    const { data: rows, error } = await supabase
+      .from('charlotte_users')
+      .select('id, name, expo_push_token, charlotte_level, app_language, timezone, reminder_hour, created_at, subscription_status, is_institutional')
+      .or('subscription_status.is.null,subscription_status.eq.none')
+      .not('is_institutional', 'is', true)
+      .not('expo_push_token', 'is', null)
+      .gte('created_at', since);
+    if (error) { console.error('❌ [Expo] taste users query error:', error.message); return; }
+
+    const now = new Date();
+    const atHour = (rows ?? []).filter((u: any) =>
+      u.expo_push_token?.startsWith('ExponentPushToken[')
+      && localHourInTz(now, u.timezone || DEFAULT_TZ) === (u.reminder_hour ?? TARGET_HOUR_DAILY));
+    if (!atHour.length) return;
+
+    // Um push da degustação por dia, qualquer que seja o tipo.
+    const ids = atHour.map((u: any) => String(u.id));
+    const { data: recent } = await supabase.from('notification_logs').select('user_id')
+      .in('user_id', ids).like('notification_type', 'taste_%').gte('created_at', new Date(Date.now() - 20 * 3600000).toISOString());
+    const already = new Set(((recent ?? []) as { user_id: string }[]).map(r => String(r.user_id)));
+
+    const { data: prog } = await supabase.from('charlotte_progress').select('user_id, last_practice_date').in('user_id', ids);
+    const lastPractice = new Map(((prog ?? []) as { user_id: string; last_practice_date: string | null }[]).map(r => [String(r.user_id), r.last_practice_date]));
+
+    const plan: { u: any; type: NotificationType['id']; copy: keyof typeof TASTE_COPY }[] = [];
+    for (const u of atHour) {
+      if (already.has(String(u.id))) continue;
+      const day = tasteDay(u.created_at, now.getTime());
+      const yesterday = new Intl.DateTimeFormat('en-CA', { timeZone: u.timezone || DEFAULT_TZ }).format(new Date(now.getTime() - 86400000));
+      const studiedYesterday = (lastPractice.get(String(u.id)) ?? '') >= yesterday;
+      if (day >= 2 && day < TASTE_DAYS) plan.push({ u, type: studiedYesterday ? 'taste_daily' : 'taste_nudge', copy: studiedYesterday ? 'taste_daily' : 'taste_nudge' });
+      else if (day === TASTE_DAYS) plan.push({ u, type: 'taste_daily', copy: 'taste_last' });
+      else if (day === TASTE_DAYS + 1) plan.push({ u, type: 'taste_ended', copy: 'taste_ended' });
+      else if (day === TASTE_DAYS + 4) plan.push({ u, type: 'taste_offer', copy: 'taste_offer' });
+    }
+    if (!plan.length) return;
+
+    const messages: ExpoMessage[] = plan.map(({ u, type, copy }) => {
+      const firstName = u.name?.split(/[\s\-]+/)[0] || (pushIsPt(u) ? 'Oi' : 'Hi');
+      const tpl = TASTE_COPY[copy][pushIsPt(u) ? 'pt' : 'en'];
+      return {
+        to: u.expo_push_token, title: tpl.title, body: tpl.body.replace('{name}', firstName),
+        data: { type }, sound: 'default', priority: 'high',
+      };
+    });
+    const { sent, errors } = await sendExpoPush(messages, supabase);
+    console.log(`✅ [Expo] Degustação: ${sent} enviados, ${errors} erros`);
+    await logRnPushes(supabase, plan.map((p, i) => ({ userId: p.u.id, type: p.type, title: messages[i].title, body: messages[i].body })));
+  } catch (e) {
+    console.error('❌ [Expo] taste push error:', e);
   }
 }

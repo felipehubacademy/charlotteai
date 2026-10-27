@@ -22,11 +22,15 @@ interface Data {
 
 // ── Catálogo: o que cada aviso é e quando sai (horário local do aluno) ─────────
 // Fonte: lib/expo-notification-service.ts (TARGET_HOUR_* e ENGAGEMENT_TARGET_HOUR) e lib/rally-jobs.ts.
-type Group = 'Rotina' | 'Para não esfriar' | 'Assinatura' | 'Reativação';
+type Group = 'Degustação' | 'Rotina' | 'Para não esfriar' | 'Assinatura' | 'Reativação';
 const GROUP_COLOR: Record<Group, string> = {
-  'Rotina': 'var(--accent)', 'Para não esfriar': 'var(--ok)', 'Assinatura': 'var(--brand)', 'Reativação': 'var(--warn)',
+  'Degustação': 'var(--brand)', 'Rotina': 'var(--accent)', 'Para não esfriar': 'var(--ok)', 'Assinatura': 'var(--brand)', 'Reativação': 'var(--warn)',
 };
 const CATALOG: Record<string, { label: string; when: string; group: Group }> = {
+  taste_daily:            { label: 'Tópico do dia liberado',      when: 'Dias 2 a 5 do cadastro, na hora do lembrete (no 5º, "último tópico grátis")', group: 'Degustação' },
+  taste_nudge:            { label: 'Tópico grátis esperando',     when: 'Dias 2 a 4, no lugar do anterior, para quem não estudou na véspera', group: 'Degustação' },
+  taste_ended:            { label: 'Degustação terminou',         when: 'Dia 6, com o convite para os 7 dias grátis', group: 'Degustação' },
+  taste_offer:            { label: 'Teste grátis ainda disponível', when: 'Dia 9, última lembrança', group: 'Degustação' },
   daily_reminder:         { label: 'Lembrete diário',             when: 'No horário escolhido pelo aluno (padrão 11h)', group: 'Rotina' },
   charlotte_message:      { label: 'Elogio da Charlotte',         when: '18h, para quem estudou no dia', group: 'Rotina' },
   streak_reminder:        { label: 'Aviso de sequência',          when: '18h, para quem ainda não estudou', group: 'Rotina' },
@@ -215,7 +219,7 @@ export default function AdminNotificationsPage() {
             <Moon size={18} color="var(--accent)" style={{ flexShrink: 0, marginTop: 2 }} />
             <div style={{ fontSize: 13, color: 'var(--t2)', lineHeight: 1.55 }}>
               <strong style={{ color: 'var(--t1)' }}>Horário de silêncio: das 21h às 9h</strong>, no fuso de cada aluno. Nada sai nesse intervalo.
-              Os envios são automáticos: o agendador confere de hora em hora quem deve receber cada aviso, no máximo um aviso de engajamento por hora.
+              Os envios são automáticos: o agendador confere de hora em hora quem deve receber cada aviso, no máximo um aviso de engajamento por hora. Quem está na degustação (conta sem plano) recebe só os avisos da degustação, um por dia.
               O aluno escolhe o horário do lembrete em Perfil &gt; Horário do lembrete.
             </div>
           </div>

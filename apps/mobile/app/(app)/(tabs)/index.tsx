@@ -38,6 +38,7 @@ import { getAppVersionFields } from '@/lib/appVersion';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { ArrowDown, ArrowUp } from 'phosphor-react-native';
 import { TrailContent } from '@/components/trail/TrailContent';
+import { TasteCallCard } from '@/components/trail/TasteCallCard';
 import { TrailBanner } from '@/components/trail/TrailBanner';
 import { StudyingNow } from '@/components/social/StudyingNow';
 import { UpdateBanner } from '@/components/ui/UpdateBanner';
@@ -677,6 +678,8 @@ export default function HomeTab() {
             {levelBlock}
           </View>
         )}
+        {/* Degustação sem nenhuma atividade concluída (passada a 1ª meia hora): a ligação como alternativa. */}
+        {isTaster && tasterDone === 0 && !!profile?.created_at && Date.now() - new Date(profile.created_at).getTime() > 30 * 60000 && <TasteCallCard />}
         <TrailContent
           userId={userId}
           level={trailLevel}

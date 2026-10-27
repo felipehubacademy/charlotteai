@@ -36,6 +36,8 @@ import { AppText } from '@/components/ui/Text';
 import ChatBox, { Message } from '@/components/chat/ChatBox';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { useAuth } from '@/hooks/useAuth';
+import * as SecureStore from 'expo-secure-store';
+import { TASTE_DAYS, tasteDayNumber } from '@/lib/tasteDays';
 import { getModule, listModules } from '@/lib/curriculum-v2/loader';
 import type { Level as V2Level, GuidedChat } from '@/lib/curriculum-v2/types';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
@@ -766,11 +768,14 @@ export default function GuidedChatExerciseScreen() {
                   //   - eh ultima unit do ultimo modulo → home (com spinner
                   //     pra cobrir o gap ate o PromotionModal aparecer)
                   if (!allObjectivesDone) { router.back(); return; }
-                  // Degustação: terminou o 1º bloco deste nível (qualquer nível) → Home + paywall.
-                  // Abre daqui porque a Home volta no nível da conta, não no deste bloco.
+                  // Degustação: terminou um tópico grátis → Home + oferta (amanhã libera outro; no último dia,
+                  // a degustação acabou). Abre daqui porque a Home volta no nível da conta, não no deste tópico.
+                  // A mesma chave da trilha evita a oferta abrir de novo ao voltar para ela hoje.
                   if (isTaster) {
+                    const day = Math.min(tasteDayNumber(profile?.created_at), TASTE_DAYS);
+                    SecureStore.setItemAsync(`taste_paywall_${level}_${day}`, '1').catch(() => {});
                     router.replace('/(app)/(tabs)' as any);
-                    setTimeout(() => openPaywall(), 600);
+                    setTimeout(() => openPaywall(day >= TASTE_DAYS ? 'taste_done' : 'taste_today'), 600);
                     return;
                   }
                   const allMods = listModules(level as any);

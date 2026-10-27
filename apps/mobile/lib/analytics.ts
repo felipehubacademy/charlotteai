@@ -22,6 +22,7 @@ export type AnalyticsEvent =
   | 'subscription_purchased'
   | 'subscription_restored'
   | 'paywall_shown'
+  | 'taste_call_card_tap'
   | 'paywall_dismissed'
   | 'paywall_purchase_tap'
   | 'paywall_purchase_cancelled'

@@ -393,6 +393,18 @@ export function PaywallModal() {
     ? (isPt
         ? 'O teste de nível faz parte do plano completo: ele descobre seu nível e monta a trilha certa para você.'
         : 'The level test is part of the full plan: it finds your level and sets up the right path for you.')
+    : paywallReason === 'taste_today'
+    ? (isPt
+        ? 'Amanhã libera mais um tópico grátis. Ou comece os 7 dias grátis e siga agora, sem esperar.'
+        : 'Another free topic unlocks tomorrow. Or start your 7-day free trial and keep going now.')
+    : paywallReason === 'taste_done'
+    ? (isPt
+        ? 'Sua degustação terminou. Comece os 7 dias grátis para seguir na trilha, conversar e ligar para a Charlotte.'
+        : 'Your free taste is over. Start your 7-day free trial to keep going, chat and call Charlotte.')
+    : paywallReason === 'trail'
+    ? (isPt
+        ? 'Este tópico faz parte do plano completo, com a trilha inteira, a conversa livre e as ligações com a Charlotte.'
+        : 'This topic is part of the full plan, with the whole path, free chat and calls with Charlotte.')
     : paywallReason === 'track'
     ? (isPt
         ? 'O Manual do F#did@ completo, com todos os tópicos do Igorfina, faz parte do plano completo.'

@@ -665,7 +665,7 @@ export default function LiveVoiceTab() {
     : isLimitReached
       // Trial só tem uma ação (assinar) -> vai direto ao paywall, sem o bottom
       // sheet redundante. Assinante abre o sheet (escolha real de +10/+30 min).
-      ? (isSubscriber ? () => { setLimitExhausted(true); setShowLimitSheet(true); } : openPaywall)
+      ? (isSubscriber ? () => { setLimitExhausted(true); setShowLimitSheet(true); } : () => openPaywall())
       : startCall;
 
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
@@ -868,7 +868,7 @@ export default function LiveVoiceTab() {
                 Fica visível até o pool renovar (dia 1º). Toque -> paywall. */}
             {isLimitReached && !isSubscriber && (
               <TouchableOpacity
-                onPress={openPaywall}
+                onPress={() => openPaywall()}
                 activeOpacity={0.85}
                 style={{
                   marginHorizontal: 24, marginBottom: 4,
@@ -916,7 +916,7 @@ export default function LiveVoiceTab() {
             {showPoolCard && (
               <TouchableOpacity
                 onLayout={e => setCardY(e.nativeEvent.layout.y)}
-                onPress={isTaster ? openPaywall : () => { setLimitExhausted(isLimitReached); setShowLimitSheet(true); }}
+                onPress={isTaster ? () => openPaywall() : () => { setLimitExhausted(isLimitReached); setShowLimitSheet(true); }}
                 activeOpacity={0.8}
                 accessibilityRole="button"
                 accessibilityLabel={isPt ? 'Ver pacotes de minutos' : 'See minute packs'}

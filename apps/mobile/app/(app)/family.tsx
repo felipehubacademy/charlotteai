@@ -97,7 +97,7 @@ export default function FamilyScreen() {
                   </AppText>
                   {isTaster ? (
                     <View style={{ backgroundColor: LEVEL_ACCENT_BG[track.id], borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3 }}>
-                      <AppText style={{ fontSize: 11, fontWeight: '800', color: LEVEL_ACCENT[track.id] }}>{isPt ? '1 tópico grátis' : '1 free topic'}</AppText>
+                      <AppText style={{ fontSize: 11, fontWeight: '800', color: LEVEL_ACCENT[track.id] }}>{isPt ? '1 tópico grátis por dia' : '1 free topic a day'}</AppText>
                     </View>
                   ) : null}
                   <AppText style={{ fontSize: 13, fontWeight: '700', color: C.ink }}>{isPt ? 'Ver trilha' : 'View trail'}</AppText>

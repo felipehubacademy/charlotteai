@@ -25,6 +25,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { LEVEL_ACCENT } from '@/lib/levelColors';
 import { extraTrack, unitImpression } from '@/lib/tracks';
+import { TASTE_DAYS, tasteDayNumber, tasteFreeUnits } from '@/lib/tasteDays';
 import { ImpressionTag } from '@/components/trail/ImpressionTag';
 import { LEVEL_ACCENT_BG } from '@/lib/levelColors';
 import type { CharacterId, ImpressionId } from '@/lib/characters';
@@ -458,9 +459,22 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
 
   // Placement skips: nivel pulado → cascade desligado (tudo destravado).
   const { cascadeMode, isAccessible } = usePlacementSkips();
-  // Degustação (conta nova sem assinatura): o 1º bloco dos 3 níveis fica aberto, inclusive
-  // nos níveis ainda não liberados. Os blocos seguintes abrem o paywall.
+  // Degustação (conta nova sem assinatura): 1 tópico por dia nos 3 níveis, inclusive nos níveis
+  // ainda não liberados. Os outros abrem a oferta.
   const { isTaster, profile } = useAuth();
+  // Degustação diária: 1 tópico novo por dia (lib/tasteDays). Recalcula ao voltar para a tela.
+  const [tasteNow, setTasteNow] = useState(() => new Date());
+  useFocusEffect(useCallback(() => { setTasteNow(new Date()); }, []));
+  const tasteDay = tasteDayNumber(profile?.created_at, tasteNow);
+  const freeUnits = tasteFreeUnits(profile?.created_at, tasteNow);
+  // Unidades da degustação por posição na trilha. Trilha extra: a unidade do "uau" primeiro, depois as do início.
+  const tasteOrder = useMemo(() => {
+    const keys = modules.map(m => `${m._v2ModuleId}/${m.topics[0]._v2UnitId}`);
+    if (!track) return keys;
+    const uau = `${track.tasteUnit.moduleId}/${track.tasteUnit.unitId}`;
+    return [uau, ...keys.filter(k => k !== uau)];
+  }, [modules, track]);
+  const tasteRank = useCallback((moduleId: string, unitId: string) => tasteOrder.indexOf(`${moduleId}/${unitId}`), [tasteOrder]);
   // Revisão (equipe e dono da trilha, chave reviewFlag): todas as unidades abertas. Alunos seguem em ordem.
   const reviewAll = !!track?.reviewFlag && !isTaster && (profile?.beta_features ?? []).includes(track.reviewFlag);
   const v2Cascade = reviewAll ? 'unlocked' : cascadeMode(level as V2LevelType);
@@ -485,8 +499,9 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
         // Degustação numa trilha extra: a unidade grátis abre como se fosse a primeira.
         const isTasteUnit = !!track && isTaster
           && track.tasteUnit.moduleId === topic._v2ModuleId && track.tasteUnit.unitId === topic._v2UnitId;
-        // Degustação: o que não é grátis aparece com cadeado (e o toque abre a oferta, com X para seguir).
-        const tasterLocked = isTaster && (track ? !isTasteUnit : mIdx > 0);
+        // Degustação: libera 1 tópico por dia (posição < tópicos liberados hoje). O resto aparece com
+        // cadeado, e o toque abre a oferta (com X para seguir).
+        const tasterLocked = isTaster && tasteRank(topic._v2ModuleId, topic._v2UnitId) >= freeUnits;
         // Tópico grátis da trilha extra: as 4 atividades abertas desde o início, em qualquer ordem.
         const locked = isPreview || tasterLocked || (!isTasteUnit && !v2Progress.isActivityUnlocked(
           topic._v2ModuleId, topic._v2UnitId, v2Activity,
@@ -528,7 +543,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
         completedCount, totalCount, pct, state, avgScore, paywall,
       };
     });
-  }, [modules, v2Progress.rows, isPreview, track, isTaster]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [modules, v2Progress.rows, isPreview, track, isTaster, freeUnits, tasteRank]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const activeIdx = useMemo(
     () => moduleData.findIndex(m => m.state === 'active'),
@@ -549,30 +564,36 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
     if (activeIdx >= 0) setExpandedIdx(activeIdx);
   }, [activeIdx]);
 
-  // Fim da degustação neste nível: terminou o 1º bloco → paywall uma vez (por nível).
+  // Degustação: terminou os tópicos liberados até hoje → oferta uma vez por dia (por nível). Nos dias
+  // seguintes ela diz que amanhã libera mais; no último, que a degustação acabou.
   // Só com a Home em foco: a trilha fica montada por baixo do exercício e não pode abrir o
   // paywall por cima da tela "Missão concluída"; abre quando o aluno toca em Continuar.
   const isFocused = useIsFocused();
-  const tasteDone = isTaster && (track
-    ? v2Progress.isUnitComplete(track.tasteUnit.moduleId, track.tasteUnit.unitId)
-    : moduleData[0]?.state === 'done');
+  const tasteDone = isTaster && tasteOrder.length > 0 && tasteOrder.slice(0, freeUnits).every(k => {
+    const [m, u] = k.split('/');
+    return v2Progress.isUnitComplete(m, u);
+  });
+  const lastTasteDay = tasteDay >= TASTE_DAYS;
   useEffect(() => {
     if (!tasteDone || !isFocused) return;
-    const key = `taste_paywall_${level}`;
+    const key = `taste_paywall_${level}_${Math.min(tasteDay, TASTE_DAYS)}`;
     let cancelled = false;
     (async () => {
       const seen = await SecureStore.getItemAsync(key).catch(() => null);
       if (seen || cancelled) return;
       await SecureStore.setItemAsync(key, '1').catch(() => {});
-      openPaywall('taste_done');
+      openPaywall(lastTasteDay ? 'taste_done' : 'taste_today');
     })();
     return () => { cancelled = true; };
-  }, [tasteDone, isFocused, level, openPaywall]);
+  }, [tasteDone, isFocused, level, openPaywall, tasteDay, lastTasteDay]);
 
   const handleStartLesson = useCallback((lesson: Lesson) => {
     // Trilha extra na degustação: só a unidade grátis; o resto (até com cadeado) abre o paywall.
-    if (isTaster && track && !(lesson.v2ModuleId === track.tasteUnit.moduleId && lesson.v2UnitId === track.tasteUnit.unitId)) { openPaywall('track'); return; }
-    if (isTaster && !track && lesson.moduleIdx > 0) { openPaywall('trail'); return; }
+    // Degustação: tópico ainda não liberado. Se libera num dos próximos dias, a oferta diz isso.
+    if (isTaster && lesson.v2ModuleId && lesson.v2UnitId) {
+      const rank = tasteRank(lesson.v2ModuleId, lesson.v2UnitId);
+      if (rank >= freeUnits) { openPaywall(rank < TASTE_DAYS ? 'taste_today' : track ? 'track' : 'trail'); return; }
+    }
     if (lesson.state === 'locked' || !lesson.hasContent) return;
     if (lesson.v2ModuleId && lesson.v2UnitId) {
       // O tipo da atividade (grammar/speaking/roleplay/chat) define qual fatia da unidade abre.
@@ -603,7 +624,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
           return;
       }
     }
-  }, [level, isTaster, openPaywall, track]);
+  }, [level, isTaster, openPaywall, track, tasteRank, freeUnits]);
 
   // Ref pra scroll-to-active module
   const activeRef = useRef<View | null>(null);

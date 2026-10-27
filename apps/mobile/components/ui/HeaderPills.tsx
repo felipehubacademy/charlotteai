@@ -64,7 +64,7 @@ export function HeaderPills({
 
         {trialDaysLeft !== null && trialDaysLeft !== undefined && onPaywallOpen && (
           <TouchableOpacity
-            onPress={onPaywallOpen} activeOpacity={0.75}
+            onPress={() => onPaywallOpen?.()} activeOpacity={0.75}
             hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             style={{ flexShrink: 0, backgroundColor: 'rgba(8,128,74,0.10)', borderRadius: 20, paddingHorizontal: 8, paddingVertical: 5, marginRight: 8, borderWidth: 1, borderColor: 'rgba(8,128,74,0.20)' }}
           >

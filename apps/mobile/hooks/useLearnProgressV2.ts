@@ -124,6 +124,8 @@ export function useLearnProgressV2(
    */
   const saveAttempt = useCallback(async (
     moduleId: string, unitId: string, activity: V2Activity, score: number,
+    /** 1ª atividade da trilha: conclui com qualquer nota (a nota aparece só como incentivo). */
+    forcePass = false,
   ): Promise<V2Row | null> => {
     if (!userId) return null;
 
@@ -131,7 +133,7 @@ export function useLearnProgressV2(
     const previousScore = existing?.score ?? 0;
     // Sempre guardar a MAIOR nota. Retry com score menor não sobrescreve.
     const bestScore     = Math.max(previousScore, score);
-    const newCompleted  = (existing?.completed ?? false) || meetsThreshold(activity, bestScore);
+    const newCompleted  = (existing?.completed ?? false) || forcePass || meetsThreshold(activity, bestScore);
     const newAttempts   = (existing?.attempts ?? 0) + 1;
 
     const payload = {

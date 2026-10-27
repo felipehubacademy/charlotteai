@@ -29,6 +29,7 @@ import {
   sendWeeklyChallenges,
   sendEngagementPushes,
   sendBuddyRivalry,
+  sendTastePushes,
 } from '@/lib/expo-notification-service';
 import { runRallyJobs } from '@/lib/rally-jobs';
 import { notifyStaleTickets, closeIdleConversations } from '@/lib/support-service';
@@ -39,7 +40,7 @@ import { getSupabase } from '@/lib/supabase';
 
 const CRON_SECRET = process.env.CRON_SECRET ?? '';
 
-type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'rally' | 'support_sla' | 'support_insights' | 'support_autoclose' | 'ai_costs' | 'email_outbox';
+type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'taste' | 'rally' | 'support_sla' | 'support_insights' | 'support_autoclose' | 'ai_costs' | 'email_outbox';
 
 function isAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization') ?? '';
@@ -74,6 +75,9 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
     case 'buddy':
       await sendBuddyRivalry(supabase);
       break;
+    case 'taste': // degustação: 1 push por dia, fluxo próprio (os genéricos não vão para ela)
+      await sendTastePushes(supabase);
+      break;
     case 'rally':
       await runRallyJobs();
       break;
@@ -104,7 +108,7 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
 // Every hourly run invokes every sender. Each sender drops users whose
 // per-user local hour does not match the task's target hour, so this is
 // cheap when no one is at the right local time.
-const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'rally', 'support_sla', 'support_insights', 'support_autoclose', 'ai_costs', 'email_outbox'];
+const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'taste', 'rally', 'support_sla', 'support_insights', 'support_autoclose', 'ai_costs', 'email_outbox'];
 
 export async function GET(request: NextRequest) {
   if (!isAuthorized(request)) {

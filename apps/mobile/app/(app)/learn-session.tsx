@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useFocusEffect, useNavigation } from 'expo-router';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import {
@@ -17,7 +17,7 @@ import * as Haptics from '@/lib/hapticsGated';
 import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { extraTrack, unitImpression as impressionOfUnit } from '@/lib/tracks';
-import { getModule } from '@/lib/curriculum-v2/loader';
+import { getModule, listModules } from '@/lib/curriculum-v2/loader';
 import { characterInfo } from '@/lib/characters';
 import { TrackHostReaction } from '@/components/trail/TrackHostReaction';
 import { systemIsPt } from '@/lib/systemLang';
@@ -203,9 +203,21 @@ export default function LearnSessionScreen() {
     if (!isV2) router.replace('/(app)/(tabs)' as any);
   }, [isV2]);
 
+  // 1ª atividade da trilha (gramática da 1ª unidade do nível, ou a unidade grátis da trilha extra):
+  // só 5 exercícios e sem reprovação. Quase metade das contas novas parava antes de terminar os 10,
+  // e 1 em cada 5 que terminavam reprovava logo na primeira experiência.
+  const isFirstActivity = useMemo(() => {
+    if (!isV2 || params.activity !== 'grammar' || !params.moduleId || !params.unitId) return false;
+    const t = extraTrack(level);
+    if (t) return t.tasteUnit.moduleId === params.moduleId && t.tasteUnit.unitId === params.unitId;
+    const first = listModules(level as V2Level)[0];
+    return !!first && first.id === params.moduleId && first.units[0]?.id === params.unitId;
+  }, [isV2, level, params.activity, params.moduleId, params.unitId]);
+  const FIRST_ACTIVITY_EXERCISES = 5;
+
   // ── Build flat steps array ─────────────────────────────────
   const steps: SessionStep[] = [
-    ...(topic?.grammar.map(ex => ({ kind: 'grammar' as const, exercise: ex })) ?? []),
+    ...((isFirstActivity ? topic?.grammar.slice(0, FIRST_ACTIVITY_EXERCISES) : topic?.grammar)?.map(ex => ({ kind: 'grammar' as const, exercise: ex })) ?? []),
     ...(topic?.pronunciation.map(ph => ({ kind: 'pronunciation' as const, phrase: ph })) ?? []),
   ];
   const totalSteps = steps.length;
@@ -1166,13 +1178,13 @@ export default function LearnSessionScreen() {
           rawScore = Math.round(((totalSteps - sessionErrors) / totalSteps) * 100);
         }
         const finalScore = Math.max(0, Math.min(100, rawScore));
-        const threshold = activityType === 'grammar' ? 70 : activityType === 'speaking' ? 60 : 100;
+        const threshold = isFirstActivity ? 0 : activityType === 'grammar' ? 70 : activityType === 'speaking' ? 60 : 100;
         const prevRow = v2Progress.get(params.moduleId, params.unitId, activityType);
         const previous = typeof prevRow?.score === 'number' && (prevRow?.attempts ?? 0) > 0 ? prevRow.score : null;
         setCompletedActivityScore({ score: finalScore, threshold, activityType, previous });
         try {
           await v2Progress.saveAttempt(
-            params.moduleId, params.unitId, activityType, finalScore,
+            params.moduleId, params.unitId, activityType, finalScore, isFirstActivity,
           );
         } catch (e) {
           console.warn('[v2Progress] save attempt failed', e);

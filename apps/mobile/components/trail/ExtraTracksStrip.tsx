@@ -54,7 +54,7 @@ function TrackCard({ track, width }: { track: ExtraTrack; width: number }) {
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 7, alignSelf: 'flex-start', backgroundColor: LEVEL_ACCENT_BG[track.id], borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3 }}>
             <Gift size={13} color={accent} weight="bold" />
             <AppText style={{ fontSize: 12, fontWeight: '700', color: accent }}>
-              {isPt ? '1 tópico grátis' : '1 free topic'}
+              {isPt ? '1 tópico grátis por dia' : '1 free topic a day'}
             </AppText>
           </View>
         ) : (
@@ -167,7 +167,7 @@ function FamilyInviteRow() {
   const host = characterInfo(withTrack?.character ?? others[0]?.id).name;
   const subtitle = withTrack
     ? (isTaster
-        ? (isPt ? `O ${host} tem um tópico grátis para você` : `${host} has a free topic for you`)
+        ? (isPt ? `O ${host} tem um tópico grátis por dia para você` : `${host} has a free topic a day for you`)
         : (isPt ? `O ${host} tem uma trilha só dele` : `${host} has a trail of his own`))
     : (isPt ? `Converse com o comediante ${host}` : `Chat with comedian ${host}`);
 
