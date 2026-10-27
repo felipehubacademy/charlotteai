@@ -17,7 +17,7 @@ export interface CatalogEntry {
 export const GENERAL_ACHIEVEMENTS: CatalogEntry[] = [
   // Estudar junto: padrinho (amigos trazidos) e rallies vencidos.
   {
-    code: 'profile_photo', title: 'Cara do Queizy', titleEN: 'Face of Queizy', category: 'social', rarity: 'common', xpReward: 20,
+    code: 'profile_photo', title: 'Cara do Queizy', titleEN: 'Face of Queizy', category: 'social', rarity: 'common', xpReward: 100,
     howToEarnPT: 'Coloque sua foto no Perfil.',
     howToEarnEN: 'Add your photo in Profile.',
   },

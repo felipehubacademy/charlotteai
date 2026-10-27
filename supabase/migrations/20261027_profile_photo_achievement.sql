@@ -1,5 +1,5 @@
 -- Conquista "Cara do Queizy": colocar a foto no perfil (campanha da foto: ranking e conquistas recentes
--- com rosto). 20 XP, comum, uma vez. Regra nova has_photo em rn_award_achievements.
+-- com rosto). 100 XP, comum, uma vez. Regra nova has_photo em rn_award_achievements.
 CREATE OR REPLACE FUNCTION public.rn_award_achievements(p_user_id uuid)
  RETURNS jsonb
  LANGUAGE plpgsql
@@ -160,7 +160,7 @@ select v.code,
        case when l.lvl = 'Advanced' then v.desc_en else v.desc_pt end,
        v.xp, v.rtype, v.rval, l.lvl, 'social', v.color, v.code, v.rarity, true, v.sort
 from (values
-  ('profile_photo', 'Cara do Queizy', 'Face of Queizy', 'Colocou sua foto no perfil. Agora a turma te reconhece no ranking!', 'You added your profile photo. Now everyone recognizes you on the leaderboard!', 20, 'has_photo', 1, '#FF4F8B', 'common', 903)
+  ('profile_photo', 'Cara do Queizy', 'Face of Queizy', 'Colocou sua foto no perfil. Agora a turma te reconhece no ranking!', 'You added your profile photo. Now everyone recognizes you on the leaderboard!', 100, 'has_photo', 1, '#FF4F8B', 'common', 903)
 ) as v(code, name_pt, name_en, desc_pt, desc_en, xp, rtype, rval, color, rarity, sort)
 cross join (values ('Novice'), ('Inter'), ('Advanced')) as l(lvl)
 where not exists (select 1 from charlotte.achievements a where a.code = v.code and a.user_level = l.lvl);

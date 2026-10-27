@@ -1,6 +1,6 @@
 // components/social/PhotoNudge.tsx — convite leve para colocar a foto no perfil (campanha da foto).
 // Só aparece para quem ainda não tem foto. Toque: abre o Perfil já na tela de escolher a foto.
-// A foto vale a conquista "Cara do Queizy" (+20 XP).
+// A foto vale a conquista "Cara do Queizy" (+100 XP).
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { router } from 'expo-router';
@@ -31,7 +31,7 @@ export function PhotoNudge({ text, style }: { text?: string; style?: object }) {
         </AppText>
       </View>
       <View style={{ backgroundColor: C.volt, borderRadius: 999, paddingHorizontal: 10, paddingVertical: 4 }}>
-        <AppText style={{ fontSize: 12, fontWeight: '800', color: C.ink }}>+20 XP</AppText>
+        <AppText style={{ fontSize: 12, fontWeight: '800', color: C.ink }}>+100 XP</AppText>
       </View>
     </TouchableOpacity>
   );
