@@ -407,7 +407,7 @@ export default function AdminUsersPage() {
             <div className="col-3"><StatCard label="Pagantes" value={stats.subscribers} accent="var(--ok)" delay={60} /></div>
             <div className="col-3">
               <StatCard label="Em teste grátis" value={stats.onTrial} accent="var(--accent)" delay={120}
-                sub={stats.trialSplit ? `Loja ${stats.trialSplit.loja} · Site ${stats.trialSplit.site} · Sem cartão ${stats.trialSplit.semCartao}` : undefined} />
+                sub={stats.trialSplit ? `Loja ${stats.trialSplit.loja} · Site ${stats.trialSplit.site}${stats.trialSplit.semCartao ? ` · Sem cartão ${stats.trialSplit.semCartao}` : ''}` : undefined} />
             </div>
             <div className="col-3"><StatCard label="Institucionais" value={stats.institutional} delay={180} /></div>
             <div className="col-3">

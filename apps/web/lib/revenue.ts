@@ -64,11 +64,50 @@ export async function recordRevenueEvent(event: Record<string, any>): Promise<vo
     if (isSandbox) { await recordAffiliateCommission(event, netBrl, purchasedAt, true); return; }
 
     const supabase = getSupabaseAdmin();
+    // Compra feita com conta interna da equipe (testes em produção): também fica fora do caixa.
+    if (event?.app_user_id) {
+      const { data: u } = await supabase.from('charlotte_users').select('email').eq('id', String(event.app_user_id)).maybeSingle();
+      const email = String((u as { email?: string } | null)?.email ?? '').toLowerCase();
+      if (/^felipe\.xavier1987\+/.test(email) || email.endsWith('@hubacademybr.com')) {
+        await recordAffiliateCommission(event, netBrl, purchasedAt, true);
+        return;
+      }
+    }
+
     const { data: existing } = await supabase.from('revenue_events').select('id').eq('event_id', eventId).maybeSingle();
     if (existing) return;
 
     const store = String(event?.store ?? '');
     const product = productLabel(event?.product_id);
+
+    // Estorno de compra já lançada: a própria entrada fica "Estornado" (sai do caixa, mas segue
+    // visível), em vez de uma saída separada que inflava entradas e saídas com o mesmo valor.
+    if (isRefund && event?.transaction_id) {
+      const { data: orig } = await supabase.from('revenue_events').select('finance_entry_id')
+        .eq('raw->>transaction_id', String(event.transaction_id)).neq('event_type', 'REFUND')
+        .not('finance_entry_id', 'is', null).limit(1).maybeSingle();
+      const origId = (orig as { finance_entry_id: string } | null)?.finance_entry_id;
+      const { data: origEntry } = origId
+        ? await supabase.from('finance_entries').select('id, notes').eq('id', origId).eq('kind', 'income').maybeSingle()
+        : { data: null };
+      if (origEntry) {
+        const e = origEntry as { id: string; notes: string | null };
+        const when = new Date().toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+        await supabase.from('finance_entries').update({
+          status: 'refunded', notes: `${e.notes ? `${e.notes} | ` : ''}Estornado em ${when}.`,
+        } as never).eq('id', e.id);
+        await supabase.from('revenue_events').insert({
+          event_id: eventId, event_type: type, app_user_id: event?.app_user_id ?? null,
+          product_id: event?.product_id ?? null, store, currency,
+          price_purchased: pricePurchased, price_usd: Number(event?.price ?? 0) || null,
+          tax_pct: tax, commission_pct: commission, gross_brl: grossBrl, net_brl: netBrl,
+          purchased_at: purchasedAt.toISOString(), finance_entry_id: e.id, raw: event,
+        } as never);
+        await recordAffiliateCommission(event, netBrl, purchasedAt);
+        return;
+      }
+    }
+
     const { data: entry } = await supabase.from('finance_entries').insert({
       kind: isRefund ? 'expense' : 'income',
       description: isRefund ? `Reembolso: ${product}` : `${product} (${type === 'RENEWAL' ? 'renovação' : 'nova compra'})`,

@@ -3,36 +3,29 @@ export const dynamic = 'force-dynamic';
 /**
  * app/api/admin/notifications/route.ts
  *
- * GET  — token health, stats 24h/7d, byType, byCategory, timeseries 30d, recent logs
- * POST — manually trigger a notification task (same tasks as scheduler)
+ * GET — alunos com push ativo, envios 24h/7d, por tipo (7d), volume diário (30d) e últimos envios.
+ * Sem disparo manual: o agendador (/api/notifications/scheduler) roda de hora em hora sozinho.
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import {
-  sendDailyReminders,
-  sendCharlotteMessages,
-  sendStreakReminders,
-  sendGoalReminders,
-  sendWeeklyChallenges,
-  sendEngagementPushes,
-} from '@/lib/expo-notification-service';
 
-
-// Login próprio (Bearer) com papel que acessa 'notifications', ou a senha mestra antiga.
 async function checkAuth(req: NextRequest) {
   const admin = await getAdmin(req);
   return !!admin && can(admin.role, 'notifications');
 }
 
-type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement';
-
-// ── Category sets (mirror metrics route) ──────────────────────────────────────
-const CORE_TYPES       = new Set(['streak_reminder', 'daily_reminder', 'charlotte_message', 'xp_milestone', 'goal_reminder', 'weekly_challenge']);
-const PREVENTION_TYPES = new Set(['streak_saver', 'streak_milestone_ahead', 'level_imminent', 'micro_checkin', 'cadence_drop', 'weekly_recap', 'charlotte_checkin']);
-const REVENUE_TYPES    = new Set(['trial_ending_72h', 'trial_ending_24h', 'sub_expired_1d']);
-const WINBACK_TYPES    = new Set(['streak_broken', 'reengagement_3d', 'reengagement_7d', 'reengagement_14d', 'reengagement_30d']);
+// O PostgREST devolve no máximo 1000 linhas por consulta; a semana passa disso.
+async function fetchAll<T>(build: (from: number, to: number) => PromiseLike<{ data: T[] | null }>): Promise<T[]> {
+  const out: T[] = [];
+  for (let from = 0; from < 50000; from += 1000) {
+    const { data } = await build(from, from + 999);
+    out.push(...(data ?? []));
+    if (!data || data.length < 1000) break;
+  }
+  return out;
+}
 
 // ── GET ───────────────────────────────────────────────────────────────────────
 export async function GET(req: NextRequest) {
@@ -59,29 +52,12 @@ export async function GET(req: NextRequest) {
     logsPage,
     logsCount,
   ] = await Promise.all([
-    // Token health
-    supabase
-      .from('charlotte_users')
-      .select('expo_push_token') as unknown as Promise<{ data: { expo_push_token: string | null }[] | null }>,
-
-    // Stats 24h
-    supabase
-      .from('notification_logs')
-      .select('status')
-      .gte('created_at', ago24h) as unknown as Promise<{ data: { status: string }[] | null }>,
-
-    // Stats 7d + byType + byCategory
-    supabase
-      .from('notification_logs')
-      .select('user_id, notification_type, status')
-      .gte('created_at', ago7d) as unknown as Promise<{ data: { user_id: string; notification_type: string; status: string }[] | null }>,
-
-    // Timeseries 30d — only sent, only date needed
-    supabase
-      .from('notification_logs')
-      .select('created_at')
-      .gte('created_at', ago30d)
-      .eq('status', 'sent') as unknown as Promise<{ data: { created_at: string }[] | null }>,
+    fetchAll<{ expo_push_token: string | null }>((f, t) => supabase.from('charlotte_users').select('expo_push_token').order('id').range(f, t) as never),
+    fetchAll<{ status: string }>((f, t) => supabase.from('notification_logs').select('status').gte('created_at', ago24h).order('created_at').range(f, t) as never),
+    fetchAll<{ user_id: string; notification_type: string; status: string }>((f, t) =>
+      supabase.from('notification_logs').select('user_id, notification_type, status').gte('created_at', ago7d).order('created_at').range(f, t) as never),
+    fetchAll<{ created_at: string }>((f, t) =>
+      supabase.from('notification_logs').select('created_at').gte('created_at', ago30d).eq('status', 'sent').order('created_at').range(f, t) as never),
 
     // Recent logs (paginated)
     (() => {
@@ -108,19 +84,19 @@ export async function GET(req: NextRequest) {
   ]);
 
   // ── Token health ────────────────────────────────────────────────────────────
-  const allUsers   = tokenRes.data ?? [];
+  const allUsers   = tokenRes;
   const withToken  = allUsers.filter(u => u.expo_push_token?.startsWith('ExponentPushToken[')).length;
   const tokenStats = { total: allUsers.length, withToken, withoutToken: allUsers.length - withToken };
 
   // ── Stats 24h ───────────────────────────────────────────────────────────────
-  const rows24h = (logs24h.data ?? []).filter(r => r.status !== 'scheduler_lock');
+  const rows24h = logs24h.filter(r => r.status !== 'scheduler_lock');
   const stats24h = {
     sent:   rows24h.filter(r => r.status === 'sent').length,
     failed: rows24h.filter(r => r.status === 'failed').length,
   };
 
-  // ── Stats 7d + byType + byCategory ─────────────────────────────────────────
-  const rows7d   = (logs7d.data ?? []).filter(r => r.status !== 'scheduler_lock');
+  // ── Stats 7d + byType ─────────────────────────────────────────
+  const rows7d   = logs7d.filter(r => r.status !== 'scheduler_lock');
   const sent7d   = rows7d.filter(r => r.status === 'sent').length;
   const failed7d = rows7d.filter(r => r.status === 'failed').length;
   const stats7d  = {
@@ -140,18 +116,10 @@ export async function GET(req: NextRequest) {
     .map(([t, v]) => ({ type: t, sent: v.sent, failed: v.failed, uniqueUsers: v.users.size }))
     .sort((a, b) => b.sent - a.sent);
 
-  // byCategory (from sent rows only)
-  const byCategory = { core: 0, prevention: 0, revenue: 0, winback: 0 };
-  for (const r of rows7d.filter(r => r.status === 'sent')) {
-    if      (CORE_TYPES.has(r.notification_type))       byCategory.core++;
-    else if (PREVENTION_TYPES.has(r.notification_type)) byCategory.prevention++;
-    else if (REVENUE_TYPES.has(r.notification_type))    byCategory.revenue++;
-    else if (WINBACK_TYPES.has(r.notification_type))    byCategory.winback++;
-  }
 
   // ── Timeseries 30d ──────────────────────────────────────────────────────────
   const tsMap: Record<string, number> = {};
-  for (const r of logs30d.data ?? []) {
+  for (const r of logs30d) {
     const day = r.created_at.slice(0, 10);
     tsMap[day] = (tsMap[day] ?? 0) + 1;
   }
@@ -178,42 +146,12 @@ export async function GET(req: NextRequest) {
   }));
 
   return NextResponse.json({
-    tokenStats, stats24h, stats7d, byType, byCategory, timeseries,
+    tokenStats, stats24h, stats7d, byType, timeseries,
     logs, page, total: logsCount.count ?? 0, perPage: PER_PAGE,
   });
 }
 
-// ── POST — manual trigger ─────────────────────────────────────────────────────
-export async function POST(req: NextRequest) {
-  if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-
-  const body = await req.json().catch(() => ({}));
-  const task = body.task as TaskType | undefined;
-  if (!task) return NextResponse.json({ error: 'Missing task' }, { status: 400 });
-
-  const supabase = getSupabaseAdmin();
-  if (!supabase) return NextResponse.json({ error: 'Supabase unavailable' }, { status: 500 });
-
-  const t0 = Date.now();
-  try {
-    switch (task) {
-      case 'daily':      await sendDailyReminders(supabase);      break;
-      case 'praise':     await sendCharlotteMessages(supabase);   break;
-      case 'streak':     await sendStreakReminders(supabase);      break;
-      case 'goal':       await sendGoalReminders(supabase);        break;
-      case 'weekly':     await sendWeeklyChallenges(supabase);     break;
-      case 'engagement': await sendEngagementPushes(supabase);     break;
-      default: return NextResponse.json({ error: `Unknown task: ${task}` }, { status: 400 });
-    }
-    return NextResponse.json({ ok: true, task, ms: Date.now() - t0 });
-  } catch (err) {
-    return NextResponse.json({ ok: false, task, error: String(err), ms: Date.now() - t0 }, { status: 500 });
-  }
-}
-
-// ── Local types ───────────────────────────────────────────────────────────────
 interface Log {
-  id: string; user_id: string; notification_type: string;
-  status: string; message_title: string | null; message_body: string | null;
-  error_message: string | null; created_at: string;
+  id: string; user_id: string; notification_type: string; status: string;
+  message_title: string | null; message_body: string | null; error_message: string | null; created_at: string;
 }

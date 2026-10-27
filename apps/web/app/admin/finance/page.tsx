@@ -9,7 +9,7 @@ import { useAdminMe, canArea } from '@/lib/admin-context';
 
 // ── Tipos e catálogos ────────────────────────────────────────────────────────
 type Kind = 'expense' | 'income';
-type Status = 'pending' | 'paid' | 'canceled';
+type Status = 'pending' | 'paid' | 'canceled' | 'refunded';
 type Recurrence = 'none' | 'monthly' | 'yearly';
 interface Entry {
   id: string; kind: Kind; description: string; category: string; vendor: string | null;
@@ -26,7 +26,7 @@ const INCOME_CATEGORIES = ['Assinaturas App Store', 'Assinaturas Google Play', '
 const VENDORS = ['OpenAI', 'Anthropic', 'ElevenLabs', 'Microsoft Azure', 'Vercel', 'Supabase', 'Expo (EAS)', 'RevenueCat', 'Apple', 'Google', 'Cloudflare', 'registro.br', 'Microsoft 365', 'Sentry', 'HubSpot'];
 const CURRENCIES = ['BRL', 'USD', 'EUR'];
 
-const STATUS_LABEL: Record<Status, string> = { pending: 'A pagar', paid: 'Pago', canceled: 'Cancelado' };
+const STATUS_LABEL: Record<Status, string> = { pending: 'A pagar', paid: 'Pago', canceled: 'Cancelado', refunded: 'Estornado' };
 const REC_LABEL: Record<Recurrence, string> = { none: 'Única', monthly: 'Mensal', yearly: 'Anual' };
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
@@ -241,6 +241,7 @@ function EntryModal({ initial, vendors, customCats, onClose, onSaved }: {
                 <option value="paid">{f.kind === 'expense' ? 'Pago' : 'Recebido'}</option>
                 <option value="pending">{f.kind === 'expense' ? 'A pagar' : 'A receber'}</option>
                 <option value="canceled">Cancelado</option>
+                <option value="refunded">Estornado</option>
               </select>
             </div>
             <div className="adm-field">
@@ -927,7 +928,7 @@ export default function FinancePage() {
                   <option value="all">Entradas e saídas</option><option value="expense">Só saídas</option><option value="income">Só entradas</option>
                 </select>
                 <select className="adm-select-ghost" value={statusFilter} onChange={e => setStatusFilter(e.target.value as 'all' | Status)}>
-                  <option value="all">Qualquer situação</option><option value="paid">Pagos</option><option value="pending">A pagar</option><option value="canceled">Cancelados</option>
+                  <option value="all">Qualquer situação</option><option value="paid">Pagos</option><option value="pending">A pagar</option><option value="canceled">Cancelados</option><option value="refunded">Estornados</option>
                 </select>
                 <select className="adm-select-ghost" value={catFilter} onChange={e => setCatFilter(e.target.value)}>
                   <option value="">Todas as categorias</option>{categories.map(c => <option key={c}>{c}</option>)}
@@ -956,7 +957,7 @@ export default function FinancePage() {
                         <td>{e.category}</td>
                         <td>
                           <span className={`badge ${e.status === 'paid' ? 'badge-ok' : e.status === 'pending' ? (daysUntil(e.due_date) < 0 ? 'badge-err' : 'badge-warn') : 'badge-muted'}`}>
-                            {e.status === 'paid' ? (e.kind === 'income' ? 'Recebido' : 'Pago') : e.status === 'pending' ? (e.kind === 'income' ? 'A receber' : 'A pagar') : 'Cancelado'}
+                            {e.status === 'paid' ? (e.kind === 'income' ? 'Recebido' : 'Pago') : e.status === 'pending' ? (e.kind === 'income' ? 'A receber' : 'A pagar') : STATUS_LABEL[e.status]}
                           </span>
                         </td>
                         <td className="num" style={{ textAlign: 'right', fontWeight: 700, color: e.kind === 'income' ? 'var(--ok)' : 'var(--t1)', whiteSpace: 'nowrap' }}>

@@ -6,6 +6,7 @@ import { Plus, RefreshCw, Check, X, Pencil, Headphones } from 'lucide-react';
 import { InsightsTab } from './InsightsTab';
 import { FaqTab } from './FaqTab';
 import { WhatsAppTab } from './WhatsAppTab';
+import { ModerationTab } from './ModerationTab';
 import { useBulk, BulkBar, BulkCheckbox } from '@/components/admin/Bulk';
 
 const CHANNEL_LABEL: Record<string, string> = { app: 'chat do app', whatsapp: 'WhatsApp', instagram: 'Instagram', email: 'e-mail' };
@@ -26,7 +27,7 @@ const fmt = (s: string | null) => s ? new Date(s).toLocaleString('pt-BR', { day:
 
 export default function SupportAdmin() {
   const [secret, setSecret] = useState('');
-  const [tab, setTab] = useState<'agents' | 'queue' | 'insights' | 'faq' | 'whatsapp'>('queue');
+  const [tab, setTab] = useState<'agents' | 'queue' | 'insights' | 'faq' | 'whatsapp' | 'reports'>('queue');
   const [agents, setAgents] = useState<Agent[]>([]);
   const [convs, setConvs] = useState<Conversation[]>([]);
   const [counts, setCounts] = useState<Record<string, number>>({});
@@ -36,6 +37,16 @@ export default function SupportAdmin() {
   const [openConv, setOpenConv] = useState<string | null>(null);
 
   useEffect(() => { setSecret(sessionStorage.getItem('adminSecret') ?? ''); }, []);
+  // Denúncias abertas: prazo de 24 h prometido à Apple, então o número fica visível na aba.
+  const [reportsOpen, setReportsOpen] = useState(0);
+  useEffect(() => {
+    fetch('/api/admin/moderation').then(r => r.ok ? r.json() : null).then(j => setReportsOpen(j?.open ?? 0)).catch(() => {});
+  }, [tab]);
+  // Link direto para uma aba (ex.: /admin/support?tab=reports, vindo do perfil do aluno).
+  useEffect(() => {
+    const t = new URLSearchParams(window.location.search).get('tab');
+    if (t === 'reports' || t === 'insights' || t === 'faq' || t === 'agents' || t === 'whatsapp') setTab(t);
+  }, []);
 
   const headers = useCallback(() => ({ 'x-admin-secret': secret, 'Content-Type': 'application/json' }), [secret]);
 
@@ -82,6 +93,7 @@ export default function SupportAdmin() {
         <div className={`adm-tab${tab === 'faq' ? ' active' : ''}`} onClick={() => setTab('faq')}>FAQ da IA</div>
         <div className={`adm-tab${tab === 'agents' ? ' active' : ''}`} onClick={() => setTab('agents')}>Atendentes ({agents.length})</div>
         <div className={`adm-tab${tab === 'whatsapp' ? ' active' : ''}`} onClick={() => setTab('whatsapp')}>WhatsApp</div>
+        <div className={`adm-tab${tab === 'reports' ? ' active' : ''}`} onClick={() => setTab('reports')}>Denúncias{reportsOpen > 0 && <span style={{ color: 'var(--err)', fontWeight: 700 }}> ({reportsOpen})</span>}</div>
       </div>
 
       <div className="adm-body">
@@ -129,6 +141,7 @@ export default function SupportAdmin() {
         {tab === 'insights' && <InsightsTab onOpenConversation={setOpenConv} />}
         {tab === 'faq' && <FaqTab />}
         {tab === 'whatsapp' && <WhatsAppTab />}
+        {tab === 'reports' && <ModerationTab />}
 
         {tab === 'agents' && (
           <>

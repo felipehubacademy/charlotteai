@@ -232,7 +232,7 @@ export default function UserCrmPage() {
                       <span style={{ color: 'var(--t3)' }}>fez</span> contra {personLabel(r)} · {REPORT_REASON[r.reason] ?? r.reason}
                     </div>
                   ))}
-                  {(data.social.reportsReceived.length > 0 || data.social.reportsMade.length > 0) && canModerate && <Link href="/admin/moderation" className="adm-btn-sm ghost" style={{ marginTop: 4 }}>Abrir Denúncias</Link>}
+                  {(data.social.reportsReceived.length > 0 || data.social.reportsMade.length > 0) && canModerate && <Link href="/admin/support?tab=reports" className="adm-btn-sm ghost" style={{ marginTop: 4 }}>Abrir Denúncias</Link>}
                 </div>
                 <div>
                   <div className="kpi-label" style={{ marginBottom: 8 }}>Avisos do social (push)</div>
