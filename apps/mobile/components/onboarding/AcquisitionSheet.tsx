@@ -9,6 +9,7 @@ import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
 import { systemIsPt } from '@/lib/systemLang';
 import { track } from '@/lib/analytics';
+import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 
 const C = { navy: '#16131F', navyMid: '#3A3546', volt: '#DCFF4A', chip: '#F4F1EA', border: 'rgba(22,19,31,0.08)' };
 const SCREEN_H = Dimensions.get('window').height;
@@ -28,19 +29,25 @@ export function AcquisitionSheet({ armed }: { armed: boolean }) {
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
   const asked = useRef(false);
+  const { waitForCelebration } = useAchievementsContext();
   const backdrop = useRef(new Animated.Value(0)).current;
   const sheetY = useRef(new Animated.Value(SCREEN_H)).current;
 
   useEffect(() => {
     if (!armed || asked.current) return;
     asked.current = true;
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    supabase.rpc('acquisition_should_ask').then(({ data }) => {
-      // Deixa a comemoração da atividade aparecer primeiro.
-      if (data === true) timer = setTimeout(() => setVisible(true), 1400);
-    });
-    return () => { if (timer) clearTimeout(timer); };
-  }, [armed]);
+    let cancelled = false;
+    (async () => {
+      const { data } = await supabase.rpc('acquisition_should_ask');
+      if (data !== true) return;
+      // Deixa a comemoração da atividade aparecer primeiro e espera a de conquista fechar
+      // (a 1ª atividade costuma desbloquear uma), para não abrir por cima dela.
+      await new Promise(r => setTimeout(r, 1400));
+      await waitForCelebration();
+      if (!cancelled) setVisible(true);
+    })().catch(() => {});
+    return () => { cancelled = true; };
+  }, [armed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (visible) {
@@ -78,7 +85,7 @@ export function AcquisitionSheet({ armed }: { armed: boolean }) {
               {isPt ? 'Como você conheceu o Queizy?' : 'How did you hear about Queizy?'}
             </AppText>
             <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center', marginBottom: 18, lineHeight: 19 }}>
-              {isPt ? 'Um toque só. Ajuda a gente a chegar em mais gente como você.' : 'Just one tap. It helps us reach more people like you.'}
+              {isPt ? 'Um toque só. Ajuda a gente a te conhecer melhor.' : 'Just one tap. It helps us get to know you better.'}
             </AppText>
             <View style={{ gap: 8 }}>
               {OPTIONS.map(o => (
