@@ -8,6 +8,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { notifyAdmins } from '@/lib/admin-push';
+import { reportRecipients } from '@/lib/admin-prefs';
 import { base, h1, p, btn } from '@/lib/email-brand';
 
 export const dynamic = 'force-dynamic';
@@ -51,8 +52,7 @@ export async function POST(req: NextRequest) {
   if ((recent ?? 0) > 0) return NextResponse.json({ alerts, report, skipped: 'avisado nas últimas 12 horas' });
   await supabase.from('checkout_attempts').insert({ kind: ALERT_KEY, email: ALERT_KEY, ip: null } as never);
 
-  const { data: admins } = await supabase.from('admin_members').select('email').eq('role', 'admin').eq('active', true);
-  const to = ((admins ?? []) as { email: string | null }[]).map(m => m.email).filter((e): e is string => !!e);
+  const to = await reportRecipients('capacity');
   const html = base([
     h1('O banco do app está perto do limite'),
     p(`${alerts.join(' ')} O plano gratuito restringe o serviço quando passa do limite. Hora de ligar o plano pago no painel do banco (US$ 25/mês).`),
@@ -60,6 +60,6 @@ export async function POST(req: NextRequest) {
     btn('Abrir o painel do banco', 'https://supabase.com/dashboard/org/_/billing'),
   ].join(''));
   for (const addr of to) await sendEmail({ to: addr, subject: 'Queizy: banco do app perto do limite do plano gratuito', html }).catch(() => false);
-  await notifyAdmins({ title: 'Banco do app perto do limite', body: alerts.join(' '), url: '/admin', tag: 'capacity' }).catch(() => 0);
+  await notifyAdmins({ title: 'Banco do app perto do limite', body: alerts.join(' '), url: '/admin', tag: 'capacity', category: 'capacity' }).catch(() => 0);
   return NextResponse.json({ alerts, report, sent: to.length });
 }

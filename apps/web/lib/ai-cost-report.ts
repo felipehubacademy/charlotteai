@@ -6,6 +6,7 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { notifyAdmins } from '@/lib/admin-push';
+import { reportRecipients } from '@/lib/admin-prefs';
 import { base, h1, p, btn, note } from '@/lib/email-brand';
 import { fxToBrl } from '@/lib/fx';
 
@@ -101,9 +102,9 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
     alerts, sent_at: new Date().toISOString(),
   } as never).eq('day', day);
 
-  const { data: admins } = await supabase.from('admin_members').select('email').eq('role', 'admin').eq('active', true);
   // A caixa do suporte não recebe: lá todo e-mail vira chamado.
-  const to = ((admins ?? []) as { email: string | null }[]).map(a => a.email).filter((e): e is string => !!e && !/^suporte@/i.test(e));
+  // Quem recebe: administradores que não desligaram este relatório em Minha conta (suporte@ fica de fora).
+  const to = (await reportRecipients('ai_costs')).filter(e => !/^suporte@/i.test(e));
   const dayBr = dayLabel;
   const top = (oa?.lines ?? []).filter(l => l.usd >= 0.05).slice(0, 6);
   const html = base([
@@ -120,6 +121,6 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
   const subject = `${alerts.length ? 'Atenção: ' : ''}Custos de IA de ${dayBr}: OpenAI ${oa ? usd(oa.usd) : '—'}${el && el.limit ? `, ElevenLabs ${Math.round((el.used / el.limit) * 100)}%` : ''}`;
   let sent = 0;
   for (const addr of to) if (await sendEmail({ to: addr, subject, html }).catch(() => false)) sent++;
-  if (alerts.length) await notifyAdmins({ title: 'Custos de IA: atenção', body: alerts.join(' ').slice(0, 300), url: '/admin/finance', tag: 'ai-costs' }).catch(() => 0);
+  if (alerts.length) await notifyAdmins({ title: 'Custos de IA: atenção', body: alerts.join(' ').slice(0, 300), url: '/admin/finance', tag: 'ai-costs', category: 'ai_costs' }).catch(() => 0);
   return { sent: sent > 0, openaiUsd: oa?.usd ?? null, openaiError };
 }

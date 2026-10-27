@@ -10,6 +10,7 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { notifyAdmins } from '@/lib/admin-push';
+import { reportRecipients } from '@/lib/admin-prefs';
 import { sendWhatsAppText, sendAlertTemplate } from '@/lib/whatsapp';
 import { grantAccess, type CheckoutRow } from '@/lib/asaas-activation';
 
@@ -46,15 +47,14 @@ async function deliver(alerts: Alert[]): Promise<{ sent: number }> {
   if (!fresh.length) return { sent: 0 };
 
   const text = `Queizy · alerta do checkout\n\n${fresh.map(a => `• ${a.message}`).join('\n')}\n\nPainel: queizy.com/admin/commercial`;
-  const { data: admins } = await supabase.from('admin_members').select('email').eq('role', 'admin').eq('active', true);
-  const to = ((admins ?? []) as { email: string | null }[]).map(m => m.email).filter((e): e is string => !!e);
+  const to = await reportRecipients('checkout');
   let emailOk = false;
   const html = `<div style="font-family:-apple-system,Arial,sans-serif;font-size:15px;line-height:1.6;color:#16131F">
     <p><b>Alerta do checkout do Queizy</b></p><ul>${fresh.map(a => `<li>${a.message.replace(/</g, '&lt;')}</li>`).join('')}</ul>
     <p style="color:#8A8494;font-size:13px">Vigia automático (a cada 5 min). Cada tipo de alerta repete no máximo 1 vez por hora.</p></div>`;
   for (const addr of to) emailOk = (await sendEmail({ to: addr, subject: `Queizy: alerta do checkout (${fresh.length})`, html }).catch(() => false)) || emailOk;
   let waOk = false;
-  await notifyAdmins({ title: `Alerta do checkout (${fresh.length})`, body: fresh.map(a => a.message).join(' · ').slice(0, 300), url: '/admin/commercial', tag: 'checkout' }).catch(() => 0);
+  await notifyAdmins({ title: `Alerta do checkout (${fresh.length})`, body: fresh.map(a => a.message).join(' · ').slice(0, 300), url: '/admin/commercial', tag: 'checkout', category: 'checkout' }).catch(() => 0);
   const wa = process.env.ALERT_WHATSAPP;
   // Texto livre só passa dentro da janela de 24 h; fora dela, o modelo aprovado.
   if (wa) waOk = (await sendWhatsAppText(wa, text)).ok || (await sendAlertTemplate(wa, fresh.map(a => a.message).join(' | '))).ok;

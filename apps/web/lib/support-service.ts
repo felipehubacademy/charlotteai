@@ -139,7 +139,7 @@ export async function escalate(args: {
   await getSupabaseAdmin().from('support_conversations')
     .update({ sla_notified_at: null, ticket_code: ticketCode, taken_by: null, taken_at: null } as never).eq('id', args.conversationId);
   // Push na hora para a gestão (PWA do /admin); o e-mail continua só se ninguém responder.
-  await notifyAdmins({ title: `Chamado ${ticketCode} para atendente`, body: `${args.contact}: ${args.userText}`.slice(0, 200), url: '/admin/support', tag: `ticket-${args.conversationId}` },
+  await notifyAdmins({ title: `Chamado ${ticketCode} para atendente`, body: `${args.contact}: ${args.userText}`.slice(0, 200), url: '/admin/support', tag: `ticket-${args.conversationId}`, category: 'ticket_new' },
     ['admin', 'manager', 'support']).catch(() => 0);
   return { assignedTo: agent?.email ?? null, ticketCode };
 }
@@ -205,7 +205,7 @@ export async function notifyStaleTickets(): Promise<{ notified: number }> {
         ${c.channel === 'whatsapp' || c.channel === 'instagram' ? `<p style="color:#888;font-size:12px;">No ${c.channel === 'whatsapp' ? 'WhatsApp' : 'Instagram'}, só dá para responder livremente até 24 h depois da última mensagem do aluno.</p>` : ''}
       </div>`;
     const ok = await graphSendEmail({ to, subject: `[Suporte] Sem resposta há ${horas} h — ${c.contact}`, html });
-    await notifyAdmins({ title: `Chamado sem resposta há ${horas} h`, body: `${c.contact}${c.subject ? ` · ${c.subject}` : ''}`, url: '/admin/support', tag: `sla-${c.id}` },
+    await notifyAdmins({ title: `Chamado sem resposta há ${horas} h`, body: `${c.contact}${c.subject ? ` · ${c.subject}` : ''}`, url: '/admin/support', tag: `sla-${c.id}`, category: 'ticket_sla' },
       ['admin', 'manager', 'support']).catch(() => 0);
     if (ok) {
       await supabase.from('support_conversations').update({ sla_notified_at: new Date().toISOString() } as never).eq('id', c.id);

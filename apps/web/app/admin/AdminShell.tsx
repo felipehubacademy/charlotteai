@@ -1,12 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Flag, Menu, Wallet, UserCog, KeyRound, GraduationCap, Megaphone, Instagram } from 'lucide-react';
+import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Flag, Menu, Wallet, UserCog, KeyRound, GraduationCap, Megaphone, Instagram, Settings } from 'lucide-react';
 import { getSupabase } from '@/lib/supabase';
 import { AdminMe, AdminMeContext } from '@/lib/admin-context';
-import AdminPushToggle from '@/components/admin/AdminPushToggle';
 import AdminLoading from '@/components/admin/AdminLoading';
 
 // ── Design tokens ───────────────────────────────────────────────────────────
@@ -766,7 +765,12 @@ function Sidebar({ collapsed, onToggle, pathname, onLogout, me, mobileOpen }: {
             <div className="adm-user-role">{me.roleLabel}{me.legacy ? ' · senha mestra' : ''}</div>
           </div>
         </div>
-        {!me.legacy && <AdminPushToggle />}
+        {!me.legacy && (
+          <Link href="/admin/account" className={`adm-nav-item${pathname === '/admin/account' ? ' active' : ''}`} style={{ marginTop: 4 }}>
+            <Settings size={14} className="adm-nav-icon" />
+            <span className="adm-nav-label" style={{ fontSize: 12 }}>Minha conta</span>
+          </Link>
+        )}
         <button onClick={onLogout} className="adm-nav-item"
           style={{ width: '100%', marginTop: 4, background: 'none', border: 'none', textAlign: 'left' }}>
           <LogOut size={14} className="adm-nav-icon" />
@@ -823,6 +827,12 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   };
 
   useEffect(() => { loadMe(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  const homeRedirected = useRef(false);
+  useEffect(() => {
+    if (state !== 'ready' || !me?.homePath || homeRedirected.current) return;
+    homeRedirected.current = true;
+    if (pathname === '/admin' && me.homePath !== '/admin' && areaAllowed(me, me.homePath)) router.replace(me.homePath);
+  }, [state, me, pathname]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     document.documentElement.classList.add('adm-pwa');
     return () => document.documentElement.classList.remove('adm-pwa');

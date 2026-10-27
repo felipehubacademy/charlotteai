@@ -4,6 +4,7 @@
 import webpush from 'web-push';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import type { AdminRole } from '@/lib/admin-roles';
+import { loadPrefs, wantsPush, type PushCategory } from '@/lib/admin-prefs';
 
 let configured: boolean | null = null;
 function configure(): boolean {
@@ -16,17 +17,21 @@ function configure(): boolean {
 
 export const vapidPublicKey = () => process.env.VAPID_PUBLIC_KEY ?? null;
 
-export interface AdminPush { title: string; body: string; url?: string; tag?: string }
+export interface AdminPush { title: string; body: string; url?: string; tag?: string; category: PushCategory }
 
 /**
- * Manda o alerta para os aparelhos da gestão. `roles` limita a quem recebe (padrão: só admin).
+ * Manda o alerta para os aparelhos da gestão. `roles` limita a quem recebe (padrão: só admin);
+ * as preferências de cada pessoa (categoria e horário de silêncio) filtram em seguida.
  * Inscrições mortas (404/410) são apagadas.
  */
 export async function notifyAdmins(msg: AdminPush, roles: AdminRole[] = ['admin']): Promise<number> {
   if (!configure()) return 0;
   const supabase = getSupabaseAdmin();
   const { data: members } = await supabase.from('admin_members').select('user_id, role').eq('active', true).in('role', roles);
-  const ids = ((members ?? []) as { user_id: string | null }[]).map(m => m.user_id).filter((x): x is string => !!x);
+  const all = ((members ?? []) as { user_id: string | null }[]).map(m => m.user_id).filter((x): x is string => !!x);
+  // Preferências de cada um (/admin > Minha conta): categoria desligada ou horário de silêncio.
+  const prefs = await loadPrefs(all);
+  const ids = all.filter(id => wantsPush(prefs.get(id), msg.category));
   if (!ids.length) return 0;
   const { data: subs } = await supabase.from('admin_push_subscriptions').select('id, endpoint, p256dh, auth').in('user_id', ids);
   const payload = JSON.stringify({ title: msg.title, body: msg.body, url: msg.url ?? '/admin', tag: msg.tag });

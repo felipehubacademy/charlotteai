@@ -8,6 +8,7 @@ import { stuckReport } from '@/lib/learn-stuck';
 import { listReports, REASON_PT, SCREEN_PT, exerciseText } from '@/lib/exercise-reports';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { base, h1, p, btn } from '@/lib/email-brand';
+import { reportRecipients } from '@/lib/admin-prefs';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -30,8 +31,7 @@ export async function POST(req: NextRequest) {
   const reports = await listReports({ days, status: 'open' });
   if (!report.alerts.length && !reports.length) return NextResponse.json({ sent: 0, alerts: 0, reports: 0, totals: report.totals });
 
-  const { data } = await getSupabaseAdmin().from('admin_members').select('email').eq('role', 'admin').eq('active', true);
-  const to = ((data ?? []) as { email: string | null }[]).map(m => m.email).filter((e): e is string => !!e);
+  const to = await reportRecipients('learn_alerts');
   const t = report.totals;
   const html = base([
     h1('Onde os alunos travaram'),
