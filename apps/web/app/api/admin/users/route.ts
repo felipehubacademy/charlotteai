@@ -174,6 +174,9 @@ export async function GET(req: NextRequest) {
   const institutional = usersWithEng.filter(u => u.is_institutional).length;
   const subscribers   = (usersWithEng as any[]).filter(u => u.sub_phase === 'pagante').length;
   const onTrial       = (usersWithEng as any[]).filter(u => String(u.sub_phase ?? '').startsWith('teste')).length;
+  // De onde vem o teste: loja (cartão na loja), site (cartão no site) ou sem cartão (teste antigo do app).
+  const trialBy = (phase: string) => (usersWithEng as any[]).filter(u => u.sub_phase === phase).length;
+  const trialSplit = { loja: trialBy('teste_loja'), site: trialBy('teste_site'), semCartao: trialBy('teste_antigo') };
   const trialExpired  = usersWithEng.filter(u => {
     if (u.is_institutional) return false;
     // Conta status='expired' OU status='trial' com data já vencida (cron atrasado)
@@ -202,7 +205,7 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json({
     users: usersWithEng,
-    stats: { total, institutional, subscribers, onTrial, trialExpired, last30, last24h, prev24h, growthPct, activeToday, activeWeek },
+    stats: { total, institutional, subscribers, onTrial, trialSplit, trialExpired, last30, last24h, prev24h, growthPct, activeToday, activeWeek },
   });
 }
 

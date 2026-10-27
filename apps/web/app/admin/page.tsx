@@ -22,6 +22,7 @@ interface User {
 }
 interface Stats {
   total: number; institutional: number; subscribers: number; onTrial: number;
+  trialSplit?: { loja: number; site: number; semCartao: number };
   trialExpired: number; last30: number; last24h?: number; prev24h?: number; growthPct: number | null; activeToday: number; activeWeek: number;
 }
 interface Form {
@@ -404,7 +405,10 @@ export default function AdminUsersPage() {
           <div className="adm-grid">
             <div className="col-3"><StatCard label="Total" value={stats.total} delay={0} /></div>
             <div className="col-3"><StatCard label="Pagantes" value={stats.subscribers} accent="var(--ok)" delay={60} /></div>
-            <div className="col-3"><StatCard label="Em teste grátis" value={stats.onTrial} accent="var(--accent)" delay={120} /></div>
+            <div className="col-3">
+              <StatCard label="Em teste grátis" value={stats.onTrial} accent="var(--accent)" delay={120}
+                sub={stats.trialSplit ? `Loja ${stats.trialSplit.loja} · Site ${stats.trialSplit.site} · Sem cartão ${stats.trialSplit.semCartao}` : undefined} />
+            </div>
             <div className="col-3"><StatCard label="Institucionais" value={stats.institutional} delay={180} /></div>
             <div className="col-3">
               <StatCard label="Novos (24h)" value={stats.last24h ?? 0}
