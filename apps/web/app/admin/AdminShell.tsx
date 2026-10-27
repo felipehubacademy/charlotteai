@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Menu, Wallet, UserCog, KeyRound, GraduationCap, Megaphone, Instagram, Settings } from 'lucide-react';
+import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Menu, Wallet, UserCog, GraduationCap, Megaphone, Instagram, Settings } from 'lucide-react';
 import { getSupabase } from '@/lib/supabase';
 import { AdminMe, AdminMeContext } from '@/lib/admin-context';
 import AdminLoading from '@/components/admin/AdminLoading';
@@ -604,8 +604,8 @@ html.adm-pwa body { height: auto !important; min-height: 100dvh; overflow: visib
 `;
 
 // ── Login ───────────────────────────────────────────────────────────────────
-// Cada pessoa entra com a própria conta do app (mesmo e-mail e senha). A
-// senha mestra antiga continua disponível como alternativa.
+// Cada pessoa entra com a própria conta do app (mesmo e-mail e senha) e depois com o código do
+// app autenticador (duas etapas). A senha mestra saiu da tela: ela pularia a segunda etapa.
 function LoginScreen({ onSignedIn, onLegacy, notice }: {
   onSignedIn: () => void; onLegacy: (secret: string) => void; notice?: string;
 }) {
@@ -668,9 +668,96 @@ function LoginScreen({ onSignedIn, onLegacy, notice }: {
               ? ''
               : 'Mesmo e-mail e senha do app.'}
           </span>
-          <button type="button" onClick={() => { setLegacy(l => !l); setErr(''); setPw(''); }}
-            style={{ alignSelf: 'flex-start', background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontSize: 12, fontWeight: 600, color: 'var(--t2)', display: 'flex', alignItems: 'center', gap: 5 }}>
-            <KeyRound size={12} /> {legacy ? 'Entrar com minha conta' : 'Usar senha mestra'}
+        </div>
+      </form>
+    </div>
+  );
+}
+
+// ── Duas etapas ─────────────────────────────────────────────────────────────
+// Primeiro acesso: cadastra o app autenticador (QR code) e confirma com o primeiro código.
+// Depois: só pede o código de 6 dígitos. O servidor recusa qualquer chamada sem esta etapa.
+function MfaScreen({ onDone, onCancel }: { onDone: () => void; onCancel: () => void }) {
+  const [factorId, setFactorId] = useState<string | null>(null);
+  const [qr, setQr] = useState<string | null>(null);
+  const [secret, setSecret] = useState<string | null>(null);
+  const [code, setCode] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState('');
+
+  useEffect(() => {
+    (async () => {
+      const supabase = getSupabase();
+      if (!supabase) { setErr('Configuração indisponível.'); return; }
+      const { data, error } = await supabase.auth.mfa.listFactors();
+      if (error) { setErr('Não foi possível carregar a verificação. Tente de novo.'); return; }
+      const verified = data.totp.find(f => f.status === 'verified');
+      if (verified) { setFactorId(verified.id); return; }
+      // Cadastro que ficou pela metade: descarta e começa de novo.
+      for (const f of data.all.filter(f => f.factor_type === 'totp' && f.status !== 'verified')) {
+        await supabase.auth.mfa.unenroll({ factorId: f.id });
+      }
+      const { data: en, error: enErr } = await supabase.auth.mfa.enroll({ factorType: 'totp', issuer: 'Queizy Gestão', friendlyName: 'Queizy Gestão' });
+      if (enErr || !en) { setErr('Não foi possível iniciar o cadastro. Tente de novo.'); return; }
+      setFactorId(en.id); setQr(en.totp.qr_code); setSecret(en.totp.secret);
+    })().catch(() => setErr('Erro de conexão. Verifique sua internet.'));
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const supabase = getSupabase();
+    if (!supabase || !factorId) return;
+    setLoading(true); setErr('');
+    try {
+      const { error } = await supabase.auth.mfa.challengeAndVerify({ factorId, code: code.replace(/\s/g, '') });
+      if (error) { setErr('Código incorreto ou vencido. Confira o app e tente de novo.'); return; }
+      onDone();
+    } catch {
+      setErr('Erro de conexão. Verifique sua internet.');
+    } finally { setLoading(false); }
+  };
+
+  return (
+    <div className="adm-login-wrap">
+      <form className="adm-login-card" onSubmit={handleSubmit}>
+        <div className="adm-login-logo" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: 14 }}>
+          <img src="/images/queizy-logo.png" alt="Queizy" style={{ height: 30, width: 'auto' }} />
+          <div>
+            <div className="adm-login-title">Verificação em duas etapas</div>
+            <div className="adm-login-sub">
+              {qr ? 'Primeiro acesso: cadastre o Queizy Gestão no seu app autenticador.' : 'Digite o código do seu app autenticador.'}
+            </div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          {qr && (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
+              <span style={{ fontSize: 12.5, color: 'var(--t2)', lineHeight: 1.5 }}>
+                Abra o Google Authenticator, Microsoft Authenticator ou outro app autenticador, toque em adicionar e leia o código abaixo.
+              </span>
+              <img src={qr} alt="QR code da verificação em duas etapas" style={{ width: 180, height: 180, background: '#fff', borderRadius: 12, padding: 8 }} />
+              {secret && (
+                <span style={{ fontSize: 11.5, color: 'var(--t3)', textAlign: 'center', lineHeight: 1.5 }}>
+                  Sem câmera? Digite a chave: <code style={{ fontFamily: 'var(--font-mono)', color: 'var(--t1)', wordBreak: 'break-all' }}>{secret}</code>
+                </span>
+              )}
+            </div>
+          )}
+          <div className="adm-field">
+            <label>Código de 6 dígitos</label>
+            <input inputMode="numeric" autoComplete="one-time-code" maxLength={7} value={code}
+              onChange={e => setCode(e.target.value.replace(/[^\d ]/g, ''))} placeholder="000000" autoFocus className="adm-input" />
+          </div>
+          {err && <div className="adm-login-err">{err}</div>}
+          <button type="submit" className="adm-btn adm-btn-primary" disabled={loading || !factorId || code.replace(/\s/g, '').length !== 6}>
+            <Shield size={14} />
+            {loading ? 'Verificando...' : 'Confirmar'}
+          </button>
+        </div>
+        <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--b1)' }}>
+          <button type="button" onClick={onCancel}
+            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontSize: 12, fontWeight: 600, color: 'var(--t2)', display: 'flex', alignItems: 'center', gap: 5 }}>
+            <LogOut size={12} /> Sair e entrar com outra conta
           </button>
         </div>
       </form>
@@ -804,7 +891,7 @@ function installAdminFetch() {
 // ── Layout ──────────────────────────────────────────────────────────────────
 export default function AdminShell({ children }: { children: React.ReactNode }) {
   const [me, setMe] = useState<AdminMe | null>(null);
-  const [state, setState] = useState<'loading' | 'login' | 'ready'>('loading');
+  const [state, setState] = useState<'loading' | 'login' | 'mfa' | 'ready'>('loading');
   const [notice, setNotice] = useState<string | undefined>();
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -825,11 +912,16 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
       }
       const { data } = (await getSupabase()?.auth.getSession()) ?? { data: { session: null } };
       // Token vencido numa aba nova: renova a sessão e tenta mais uma vez antes de concluir que não tem acesso.
+      // Senha certa, mas falta o código das duas etapas.
+      if (data?.session && res.status === 401 && (await res.clone().json().catch(() => ({}))).error === 'mfa_required') {
+        setState('mfa'); return;
+      }
       if (data?.session && res.status === 401) {
         const { data: refreshed } = (await getSupabase()?.auth.refreshSession()) ?? { data: { session: null } };
         if (refreshed?.session) {
           const again = await fetch('/api/admin/me');
           if (again.ok) { setMe(await again.json()); setState('ready'); return; }
+          if (again.status === 401 && (await again.json().catch(() => ({}))).error === 'mfa_required') { setState('mfa'); return; }
           if (again.status >= 500) { setNotice('Não foi possível abrir o painel agora. Tente de novo em instantes.'); setState('login'); return; }
         }
       }
@@ -885,6 +977,9 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
               onSignedIn={() => { setState('loading'); loadMe(); }}
               onLegacy={(secret) => { sessionStorage.setItem('adminSecret', secret); setState('loading'); loadMe(); }}
             />
+          )}
+          {state === 'mfa' && (
+            <MfaScreen onDone={() => { setState('loading'); loadMe(); }} onCancel={handleLogout} />
           )}
         </div>
       </>
