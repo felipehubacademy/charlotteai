@@ -149,8 +149,8 @@ export default function StatsScreen() {
           <TouchableOpacity
             hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
             onPress={() => openShare(streak > 0
-              ? { kind: 'streak', big: String(streak), seed: streak, title: isPt ? (streak === 1 ? 'dia seguido' : 'dias seguidos') : (streak === 1 ? 'day in a row' : 'days in a row'), subtitle: streakLine(streak, isPt), badge: isStreakMilestone(streak) ? (isPt ? `Marco de ${streak} dias` : `${streak}-day milestone`) : undefined }
-              : { kind: 'xp', big: totalXP.toLocaleString(isPt ? 'pt-BR' : 'en-US'), title: 'XP', subtitle: isPt ? 'Somando pontos estudando inglês.' : 'Racking up points learning English.' })}
+              ? { kind: 'streak', big: String(streak), seed: streak, title: streak === 1 ? 'dia seguido' : 'dias seguidos', subtitle: streakLine(streak, true), badge: isStreakMilestone(streak) ? `Marco de ${streak} dias` : undefined }
+              : { kind: 'xp', big: totalXP.toLocaleString('pt-BR'), title: 'XP', subtitle: 'Somando pontos estudando inglês.' })}
           >
             <ShareNetwork size={21} color={C.ink} weight="bold" />
           </TouchableOpacity>
@@ -357,7 +357,7 @@ export default function StatsScreen() {
 
       {badgeModal && (
         <BadgeModal cat={badgeModal.cat} earnedAt={badgeModal.earnedAt} isPt={isPt} onClose={() => setBadgeModal(null)}
-          onShare={(title, c) => { setBadgeModal(null); setTimeout(() => openShare({ kind: 'achievement', big: title, title: isPt ? 'Conquista desbloqueada' : 'Achievement unlocked', seed: c.code, rarity: c.rarity as never, category: c.category, badge: c.rarity === 'legendary' ? (isPt ? 'Lendária' : 'Legendary') : undefined }), 400); }} />
+          onShare={(title, c) => { setBadgeModal(null); setTimeout(() => openShare({ kind: 'achievement', big: title, title: 'Conquista desbloqueada', seed: c.code, rarity: c.rarity as never, category: c.category, badge: c.rarity === 'legendary' ? 'Lendária' : undefined }), 400); }} />
       )}
     </View>
   );

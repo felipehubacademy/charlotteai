@@ -98,7 +98,9 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
   const ACTIONS_H = 180; // botões + espaços abaixo do card
   const scale = Math.min(1, Math.max(0.6, (winH - insets.top - insets.bottom - 40 - ACTIONS_H - 44) / H));
   const { profile } = useAuth();
-  const isPt = systemIsPt;
+  const isPt = systemIsPt; // botões desta tela: idioma do aparelho
+  // O card e a mensagem do convite vão sempre em português: são para chamar amigos daqui para estudar.
+  const cardPt = true;
   const cardRef = useRef<View>(null);
   const [link, setLink] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -136,7 +138,7 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
   };
 
   function inviteMessage() {
-    return isPt
+    return cardPt
       ? `Vem estudar inglês comigo no Queizy! ${link ?? 'https://queizy.com'}`
       : `Come study English with me on Queizy! ${link ?? 'https://queizy.com'}`;
   }
@@ -196,15 +198,15 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
               <AppText style={{ fontSize: 14, color: th.text, marginTop: 16, fontWeight: '700' }}>
                 {/* Convite: prova social. Conquistas: vale para qualquer membro da Família. */}
                 {content.invite
-                  ? (isPt ? `${name} já está no Queizy` : `${name} is already on Queizy`)
-                  : (isPt ? `${name}, aprendendo inglês no Queizy` : `${name}, learning English on Queizy`)}
+                  ? (cardPt ? `${name} já está no Queizy` : `${name} is already on Queizy`)
+                  : (cardPt ? `${name}, aprendendo inglês no Queizy` : `${name}, learning English on Queizy`)}
               </AppText>
             )}
           </View>
 
           <View style={{ backgroundColor: th.linkBg, borderRadius: 16, padding: 14 }}>
             <AppText style={{ fontSize: 13, color: th.linkText, fontWeight: '800' }}>
-              {content.invite ? (isPt ? 'Entre pelo link' : 'Join with the link') : (isPt ? 'Vem estudar comigo' : 'Come study with me')}
+              {content.invite ? (cardPt ? 'Entre pelo link' : 'Join with the link') : (cardPt ? 'Vem estudar comigo' : 'Come study with me')}
             </AppText>
             <AppText style={{ fontSize: 13, color: th.linkAccent, fontWeight: '700', marginTop: 2 }}>{shortLink}</AppText>
           </View>

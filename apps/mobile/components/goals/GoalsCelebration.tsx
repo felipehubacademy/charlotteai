@@ -141,7 +141,7 @@ export function GoalsCelebration() {
                 // O iOS não apresenta dois modais juntos: fecha este e abre o card depois.
                 setTimeout(() => openShare({
                   kind: 'challenge', big: `+${c.xp} XP`, seed: c.title,
-                  title: isPt ? 'Desafio da semana concluído' : 'Weekly challenge complete',
+                  title: 'Desafio da semana concluído',
                   subtitle: c.title,
                 }), 450);
               }}

@@ -225,7 +225,7 @@ export function PromotionModal({ event, onClose }: Props) {
             <TouchableOpacity onPress={() => {
               const ev = event;
               onClose();
-              if (ev) setTimeout(() => openShare({ kind: 'level', big: ev.toLevel, title: systemIsPt ? 'Subi de nível no inglês' : 'I leveled up in English', subtitle: `${ev.fromLevel} → ${ev.toLevel}` }), 450);
+              if (ev) setTimeout(() => openShare({ kind: 'level', big: ev.toLevel, title: 'Subi de nível no inglês', subtitle: `${ev.fromLevel} → ${ev.toLevel}` }), 450);
             }} activeOpacity={0.7} style={{ marginTop: 10, paddingVertical: 10, paddingHorizontal: 16 }}>
               <AppText style={{ color: '#16131F', fontSize: 14, fontWeight: '800', textDecorationLine: 'underline' }}>
                 {systemIsPt ? 'Compartilhar' : 'Share'}

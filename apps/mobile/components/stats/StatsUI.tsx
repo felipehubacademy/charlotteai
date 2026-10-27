@@ -225,7 +225,7 @@ export function BadgeModal({ cat, earnedAt, isPt, onClose, onShare }: {
               null
             )}
             {earned && onShare && (
-              <TouchableOpacity onPress={() => onShare(badgeTitle(cat, cat.title, isPt), cat)}
+              <TouchableOpacity onPress={() => onShare(cat.title, cat)}
                 style={{ alignSelf: 'stretch', marginTop: 10, backgroundColor: C.ink, borderRadius: 14, paddingVertical: 13, alignItems: 'center' }}>
                 <AppText style={{ fontSize: 14, fontWeight: '800', color: C.volt }}>{isPt ? 'Compartilhar' : 'Share'}</AppText>
               </TouchableOpacity>

@@ -72,12 +72,10 @@ export function RankLeaderModal({ event, onClose }: { event: RankLeaderEvent | n
     setTimeout(() => openShare({
       kind: 'rank',
       seed: event.level,
-      badge: isPt ? 'Líder do ranking' : 'Leaderboard leader',
+      badge: 'Líder do ranking',
       big: '#1',
-      title: isPt ? `no ranking do ${level}` : `on the ${level} leaderboard`,
-      subtitle: isPt
-        ? `${fmt(event.totalXP, true)} XP${event.players > 1 ? `, à frente de ${fmt(event.players - 1, true)} alunos` : ''}`
-        : `${fmt(event.totalXP, false)} XP${event.players > 1 ? `, ahead of ${fmt(event.players - 1, false)} learners` : ''}`,
+      title: `no ranking do ${level}`,
+      subtitle: `${fmt(event.totalXP, true)} XP${event.players > 1 ? `, à frente de ${fmt(event.players - 1, true)} alunos` : ''}`,
       icon: <Crown size={44} color={INK} weight="fill" />,
     }), 450);
   };
