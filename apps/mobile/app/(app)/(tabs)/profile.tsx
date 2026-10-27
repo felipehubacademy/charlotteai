@@ -566,7 +566,7 @@ export default function ProfileTab() {
 
         </View>
 
-        <PhotoNudge style={{ marginHorizontal: 20, marginTop: 14 }} text={isPt ? 'Ganhe a conquista "Cara do Queizy" e apareça com foto no ranking.' : 'Earn the "Face of Queizy" badge and show your photo on the leaderboard.'} />
+        <PhotoNudge style={{ marginHorizontal: 16, marginTop: 14 }} text={isPt ? 'Ganhe a conquista "Cara do Queizy" e apareça com foto no ranking.' : 'Earn the "Face of Queizy" badge and show your photo on the leaderboard.'} />
 
         <AvatarCropModal
           isOpen={showAvatarModal}
