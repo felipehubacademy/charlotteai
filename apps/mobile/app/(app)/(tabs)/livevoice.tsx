@@ -20,6 +20,7 @@ import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { supabase } from '@/lib/supabase';
+import { fetchMyRank } from '@/lib/myRank';
 import { UserLevel } from '@/lib/levelConfig';
 import { getLiveVoiceStatus, POOL_TRIAL_SECONDS } from '@/lib/liveVoiceUsage';
 import { QueizyWave } from '@/components/ui/QueizyWave';
@@ -550,12 +551,7 @@ export default function LiveVoiceTab() {
       const todayXPVal  = (recent.data ?? []).reduce((s: number, p: { xp_earned?: number | null }) => s + (p.xp_earned ?? 0), 0)
         + (achToday.data ?? []).reduce((s: number, x: { xp_bonus?: number | null }) => s + (x.xp_bonus ?? 0), 0);
 
-      const { count: higherCount } = await supabase
-        .from('charlotte_leaderboard_cache')
-        .select('*', { count: 'exact', head: true })
-        .eq('user_level', level)
-        .gt('total_xp', userTotalXP);
-      const computedRank = (higherCount ?? 0) + 1;
+      const myRank = await fetchMyRank(userId, level, userTotalXP);
 
       const todayStr     = localTodayStr();
       const yesterdayStr = (() => {
@@ -569,7 +565,7 @@ export default function LiveVoiceTab() {
       setStreak(streakDays);
       setTotalXP(userTotalXP);
       setTodayXP(todayXPVal);
-      setRank(userTotalXP > 0 ? computedRank : null);
+      setRank(myRank.rank);
 
       if (lv) {
         setPoolUsed(lv.secondsUsed);

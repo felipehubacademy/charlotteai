@@ -19,6 +19,7 @@ import { systemIsPt } from '@/lib/systemLang';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
+import { fetchMyRank } from '@/lib/myRank';
 import { UserLevel } from '@/lib/levelConfig';
 import type { TrailLevel } from '@/data/trailTypes';
 import { ExtraTracksRow } from '@/components/trail/ExtraTracksStrip';
@@ -277,15 +278,8 @@ export default function HomeTab() {
                           + (achToday.data ?? []).reduce((s: number, a: any) => s + (a.xp_bonus ?? 0), 0);
       const userTotalXP   = prog.data?.total_xp ?? 0;
 
-      const { count: higherCount } = await supabase
-        .from('charlotte_leaderboard_cache')
-        .select('*', { count: 'exact', head: true })
-        .eq('user_level', level)
-        .gt('total_xp', userTotalXP);
-      const computedRank = (higherCount ?? 0) + 1;
       // Conta fora do ranking (equipe, revisão das lojas): sem posição no topo nem celebração.
-      const { data: rankFlag } = await supabase.from('charlotte_users').select('hide_from_ranking').eq('id', userId).maybeSingle();
-      const outOfRanking = !!(rankFlag as { hide_from_ranking?: boolean } | null)?.hide_from_ranking;
+      const { rank: myRank } = await fetchMyRank(userId, level, userTotalXP);
 
       const todayStr = localTodayStr();
       const yesterdayStr = (() => {
@@ -299,12 +293,12 @@ export default function HomeTab() {
       setStreak(streakDays);
       setTotalXP(userTotalXP);
       setTodayXP(todayXPVal);
-      setRank(userTotalXP > 0 && !outOfRanking ? computedRank : null);
+      setRank(myRank);
 
       // Liderança do ranking do nível: celebra uma vez por conquista (perdeu e voltou = celebra de novo).
       // Contas fora do ranking (equipe, revisão das lojas) se veriam como 1º pela contagem acima: ficam de fora.
       const leaderKey = `rank_leader_${userId}_${level}`;
-      if (userTotalXP > 0 && computedRank === 1 && !outOfRanking) {
+      if (myRank === 1) {
         (async () => {
           const seen = await SecureStore.getItemAsync(leaderKey).catch(() => null);
           if (seen) return;
@@ -317,7 +311,7 @@ export default function HomeTab() {
           await splashGate;
           setRankLeader({ level, totalXP: userTotalXP, leadXP: second ? Math.max(0, userTotalXP - second.total_xp) : null, players: players ?? 1 });
         })().catch(() => {});
-      } else if (computedRank > 1) {
+      } else if (myRank != null && myRank > 1) {
         SecureStore.deleteItemAsync(leaderKey).catch(() => {});
       }
 

@@ -14,6 +14,7 @@ import {
   badgeTitle, firstName,
 } from '@/components/stats/StatsUI';
 import { supabase } from '@/lib/supabase';
+import { fetchMyRank, fetchTop } from '@/lib/myRank';
 import { useAuth } from '@/hooks/useAuth';
 import { useGoalsData } from '@/hooks/useGoalsData';
 import { systemIsPt } from '@/lib/systemLang';
@@ -63,6 +64,7 @@ export default function StatsScreen() {
   const [streak, setStreak]     = useState(0);
   const [totalXP, setTotalXP]   = useState(Number(params.totalXP ?? 0));
   const [rank, setRank]         = useState(0);
+  const [outOfRanking, setOutOfRanking] = useState(false);
   const [top3, setTop3]         = useState<TopEntry[]>([]);
   const [earned, setEarned]     = useState<EarnedRow[]>([]);
   const v2Progress = useLearnProgressV2(userId, userLevel as V2Level);
@@ -72,33 +74,17 @@ export default function StatsScreen() {
 
   const loadData = async () => {
     try {
-      const [statsRes, achRes, levelUsersRes] = await Promise.all([
+      const [statsRes, achRes] = await Promise.all([
         supabase.from('charlotte_progress').select('streak_days,total_xp,last_practice_date').eq('user_id', userId).maybeSingle(),
         supabase.from('user_achievements')
           .select('id,achievement_type,achievement_name,rarity,category,earned_at')
           .eq('user_id', userId)
           .order('earned_at', { ascending: false }),
-        supabase.from('charlotte_users').select('id').eq('charlotte_level', userLevel).eq('hide_from_ranking', false), // fora: contas de revisão
       ]);
 
       const xp = statsRes.data?.total_xp ?? Number(params.totalXP ?? 0);
-      const levelIds = (levelUsersRes.data ?? []).map((u: any) => u.id as string);
-
-      const [rankRes, topRes] = await Promise.all([
-        levelIds.length > 0
-          ? supabase.from('charlotte_progress').select('user_id', { count: 'exact', head: true }).in('user_id', levelIds).gt('total_xp', xp)
-          : Promise.resolve({ count: 0 }),
-        levelIds.length > 0
-          ? supabase.from('charlotte_progress').select('user_id,total_xp').in('user_id', levelIds).order('total_xp', { ascending: false }).limit(3)
-          : Promise.resolve({ data: [] }),
-      ]);
-
-      const topRaw = ((topRes as any).data ?? []) as { user_id: string; total_xp: number }[];
-      const { data: names } = topRaw.length > 0
-        ? await supabase.from('charlotte_users').select('id, name').in('id', topRaw.map(r => r.user_id))
-        : { data: [] as any[] };
-      const nameMap: Record<string, string> = {};
-      (names ?? []).forEach((u: any) => { nameMap[u.id] = u.name ?? ''; });
+      // Posição e top 3: mesma fonte das outras telas (lib/myRank; o cache que todos podem ler).
+      const [myRank, top] = await Promise.all([fetchMyRank(userId, userLevel, xp), fetchTop(userLevel, 3)]);
 
       // Mesma regra da Home: sequência só vale se praticou hoje ou ontem.
       const last = statsRes.data?.last_practice_date ?? null;
@@ -106,8 +92,9 @@ export default function StatsScreen() {
       const yesterday = `${y.getFullYear()}-${String(y.getMonth() + 1).padStart(2, '0')}-${String(y.getDate()).padStart(2, '0')}`;
       setStreak(last === localTodayStr() || last === yesterday ? (statsRes.data?.streak_days ?? 0) : 0);
       setTotalXP(xp);
-      setRank(((rankRes as any).count ?? 0) + 1);
-      setTop3(topRaw.map(r => ({ userId: r.user_id, totalXp: r.total_xp ?? 0, name: nameMap[r.user_id] ?? '' })));
+      setRank(myRank.rank ?? 0);
+      setOutOfRanking(myRank.outOfRanking);
+      setTop3(top);
       setEarned((achRes.data ?? []).map((a: any) => ({
         id: a.id, code: a.achievement_type ?? '', title: a.achievement_name ?? '',
         rarity: a.rarity ?? 'common', category: a.category ?? 'general', earnedAt: new Date(a.earned_at),
@@ -209,7 +196,9 @@ export default function StatsScreen() {
               <Trophy size={18} color={C.volt} weight="fill" />
               <AppText display style={{ fontSize: 22, fontWeight: '800', color: '#FFFFFF' }}>{rank > 0 ? (isPt ? `${rank}º` : `#${rank}`) : '—'}</AppText>
               <AppText style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)' }}>
-                {isPt ? `no ranking ${userLevel}` : `in ${userLevel} ranking`}
+                {outOfRanking
+                  ? (isPt ? 'fora do ranking (conta da equipe)' : 'outside the ranking (team account)')
+                  : (isPt ? `no ranking ${userLevel}` : `in ${userLevel} ranking`)}
               </AppText>
             </TouchableOpacity>
           </View>
@@ -296,10 +285,10 @@ export default function StatsScreen() {
                   xp={e.userId === userId ? totalXP : e.totalXp}
                   isUser={e.userId === userId}
                   youLabel={you}
-                  last={i === top3.length - 1 && top3.some(t => t.userId === userId)}
+                  last={i === top3.length - 1 && (top3.some(t => t.userId === userId) || outOfRanking || rank <= 0)}
                 />
               ))}
-              {!top3.some(e => e.userId === userId) && (
+              {!top3.some(e => e.userId === userId) && !outOfRanking && rank > 0 && (
                 <RankRow rank={rank} name={firstName(userName, isPt ? 'Você' : 'You')} xp={totalXP} isUser youLabel={you} last />
               )}
             </>

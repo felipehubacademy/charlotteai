@@ -35,6 +35,7 @@ import { usePaywallContext } from '@/lib/paywallContext';
 import { Achievement } from '@/lib/types/achievement';
 import { UserLevel } from '@/lib/levelConfig';
 import { supabase } from '@/lib/supabase';
+import { fetchMyRank } from '@/lib/myRank';
 import { localTodayStr } from '@/lib/dateUtils';
 import { getLevelAccent } from '@/lib/levelColors';
 import { appAlert } from '@/components/ui/AppAlert';
@@ -205,10 +206,7 @@ export default function PracticeTab() {
       return;
     }
     const userTotalXP = Math.max(prog.data?.total_xp ?? 0, totalXP);
-    const leaderboardCount = await supabase.from('charlotte_leaderboard_cache')
-      .select('*', { count: 'exact', head: true })
-      .eq('user_level', userLevel)
-      .gt('total_xp', userTotalXP);
+    const myRank = await fetchMyRank(userId, userLevel, userTotalXP);
     setHeaderXP(userTotalXP);
     const todayStr = localTodayStr();
     const yesterdayStr = (() => {
@@ -218,7 +216,7 @@ export default function PracticeTab() {
     const lastPractice = prog.data?.last_practice_date ?? null;
     const alive = lastPractice === todayStr || lastPractice === yesterdayStr;
     setStreak(alive ? (prog.data?.streak_days ?? 0) : 0);
-    setRank(userTotalXP > 0 ? (leaderboardCount.count ?? 0) + 1 : null);
+    setRank(myRank.rank);
   }, [userId, userLevel, totalXP]);
 
   useFocusEffect(useCallback(() => { fetchHeaderStats(); }, [fetchHeaderStats]));
