@@ -11,6 +11,11 @@ import AdminLoading from '@/components/admin/AdminLoading';
 
 // ── Design tokens ───────────────────────────────────────────────────────────
 const ADMIN_CSS = `
+/* App instalado (PWA): o globals.css ainda tem regras do PWA antigo do aluno para display-mode standalone
+   (body com overflow hidden e altura fixa, fundo escuro, padding da safe area no html). No /admin isso
+   travava a rolagem e pintava a faixa de cima de escuro. Classe adm-pwa vai no <html> pelo AdminShell. */
+html.adm-pwa { height: auto !important; min-height: 100dvh; padding: 0 !important; background: #FAF7F0 !important; }
+html.adm-pwa body { height: auto !important; min-height: 100dvh; overflow: visible !important; overflow-y: auto !important; background: #FAF7F0 !important; color: inherit; }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 .admin-root {
@@ -818,6 +823,10 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   };
 
   useEffect(() => { loadMe(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    document.documentElement.classList.add('adm-pwa');
+    return () => document.documentElement.classList.remove('adm-pwa');
+  }, []);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
