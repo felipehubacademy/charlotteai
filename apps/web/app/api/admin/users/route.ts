@@ -153,7 +153,7 @@ export async function GET(req: NextRequest) {
   // teste_loja / teste_site: 7 dias grátis com cartão; teste_antigo: teste sem cartão do app (até 21/10).
   const [{ data: paidRows }, { data: siteRows }] = await Promise.all([
     supabase.from('revenue_events').select('app_user_id').gt('price_purchased', 0),
-    supabase.from('asaas_checkouts').select('user_id, trial_days, asaas_payment_id').eq('status', 'paid').eq('sandbox', false).is('refunded_at', null),
+    supabase.from('asaas_checkouts').select('user_id, trial_days, asaas_payment_id, created_at').eq('status', 'paid').eq('sandbox', false).is('refunded_at', null),
   ]);
   const storePaid = new Set(((paidRows ?? []) as { app_user_id: string }[]).map(r => String(r.app_user_id)));
   const sitePaid = new Set(((siteRows ?? []) as { user_id: string; trial_days: number; asaas_payment_id: string | null }[])
@@ -180,18 +180,22 @@ export async function GET(req: NextRequest) {
   // Detalhe do card "Em teste grátis" (no passar do mouse): por origem, quantos vão ser cobrados e quando,
   // e quantos cancelaram durante o teste (seguem com acesso até o fim dos 7 dias, sem cobrança).
   const day = (iso: string | null) => (iso ? new Date(new Date(iso).getTime() - 3 * 3600000).toISOString().slice(0, 10) : '');
+  // Site: o Asaas cobra no fim do teste (início + dias grátis); o acesso tem 1 dia de folga depois disso.
+  const siteChargeDay = new Map(((siteRows ?? []) as { user_id: string; trial_days: number; created_at: string }[])
+    .filter(r => r.trial_days > 0).map(r => [String(r.user_id), day(new Date(new Date(r.created_at).getTime() + r.trial_days * 86400000).toISOString())]));
+  const chargeDay = (u: any) => (String(u.subscription_product ?? '').startsWith('web_') && siteChargeDay.get(String(u.id))) || day(u.subscription_expires_at);
   const detailOf = (phase: string) => {
     const list = (usersWithEng as any[]).filter(u => u.sub_phase === phase);
     const cancelled = list.filter(u => u.subscription_status === 'cancelled');
     const toCharge = list.filter(u => u.subscription_status !== 'cancelled');
     const byDay = new Map<string, number>();
     for (const u of (phase === 'teste_antigo' ? list : toCharge)) {
-      const d = day(phase === 'teste_antigo' ? u.trial_ends_at : u.subscription_expires_at);
+      const d = phase === 'teste_antigo' ? day(u.trial_ends_at) : chargeDay(u);
       if (d) byDay.set(d, (byDay.get(d) ?? 0) + 1);
     }
     return {
       total: list.length, toCharge: toCharge.length, cancelled: cancelled.length,
-      cancelledUntil: cancelled.map(u => day(u.subscription_expires_at)).sort().slice(-1)[0] ?? null,
+      cancelledUntil: cancelled.map(chargeDay).sort().slice(-1)[0] ?? null,
       byDay: [...byDay.entries()].sort().map(([date, count]) => ({ date, count })),
     };
   };
