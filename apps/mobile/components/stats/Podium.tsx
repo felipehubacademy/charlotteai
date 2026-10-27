@@ -59,7 +59,7 @@ function MetalRing({ place, size }: { place: 1 | 2 | 3; size: number }) {
   return (
     <Svg width={size} height={size} style={{ position: 'absolute' }}>
       <Defs><MetalDefs place={place} id={`pr${place}`} /></Defs>
-      <Circle cx={size / 2} cy={size / 2} r={size / 2 - 2.5} stroke={`url(#pr${place})`} strokeWidth={5} fill="none" />
+      <Circle cx={size / 2} cy={size / 2} r={size / 2 - 1.75} stroke={`url(#pr${place})`} strokeWidth={3.5} fill="none" />
     </Svg>
   );
 }
@@ -111,7 +111,7 @@ function Spot({ e, place, isUser, youLabel, rise }: { e: PodiumEntry | undefined
             </Animated.View>
           )}
           <View style={{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }}>
-            <RankAvatar id={e.userId} name={e.name} url={e.avatarUrl} size={size - 10} />
+            <RankAvatar id={e.userId} name={e.name} url={e.avatarUrl} size={size - 7} />
             <MetalRing place={place} size={size} />
             {big && <>
               <Sparkle delay={0} style={{ top: -6, left: -10 }} />
