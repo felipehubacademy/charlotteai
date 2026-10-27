@@ -34,11 +34,12 @@ import { runRallyJobs } from '@/lib/rally-jobs';
 import { notifyStaleTickets, closeIdleConversations } from '@/lib/support-service';
 import { analyzePendingConversations } from '@/lib/support-insights';
 import { runAiCostReport } from '@/lib/ai-cost-report';
+import { processOutbox } from '@/lib/email-outbox';
 import { getSupabase } from '@/lib/supabase';
 
 const CRON_SECRET = process.env.CRON_SECRET ?? '';
 
-type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'rally' | 'support_sla' | 'support_insights' | 'support_autoclose' | 'ai_costs';
+type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'rally' | 'support_sla' | 'support_insights' | 'support_autoclose' | 'ai_costs' | 'email_outbox';
 
 function isAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization') ?? '';
@@ -88,6 +89,9 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
     case 'support_autoclose': // atendimento parado: IA 2 h, atendente 24 h → encerrado (sem mensagem)
       await closeIdleConversations();
       break;
+    case 'email_outbox': // e-mails que falharam no envio (fila). O agendamento de 5 min do GitHub Actions atrasa horas.
+      await processOutbox();
+      break;
     case 'ai_costs': // 8h (Brasília): e-mail de custos de IA (anteontem, já fechado) com alertas (OpenAI e ElevenLabs)
       await runAiCostReport({ force: forced });
       break;
@@ -100,7 +104,7 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
 // Every hourly run invokes every sender. Each sender drops users whose
 // per-user local hour does not match the task's target hour, so this is
 // cheap when no one is at the right local time.
-const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'rally', 'support_sla', 'support_insights', 'support_autoclose', 'ai_costs'];
+const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'rally', 'support_sla', 'support_insights', 'support_autoclose', 'ai_costs', 'email_outbox'];
 
 export async function GET(request: NextRequest) {
   if (!isAuthorized(request)) {
