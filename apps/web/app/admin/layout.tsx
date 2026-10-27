@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   title: 'Queizy Gestão',
   manifest: '/admin-pwa/manifest.json',
   robots: { index: false, follow: false },
-  appleWebApp: { capable: true, title: 'Queizy Gestão', statusBarStyle: 'black-translucent' },
+  appleWebApp: { capable: true, title: 'Queizy Gestão', statusBarStyle: 'default' },
   icons: { apple: '/admin-pwa/apple-touch-icon.png' },
 };
 
-export const viewport: Viewport = { themeColor: '#16131F' };
+export const viewport: Viewport = { themeColor: '#FFFFFF' }; // barra de status clara, igual ao cabeçalho
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return <AdminShell>{children}</AdminShell>;
