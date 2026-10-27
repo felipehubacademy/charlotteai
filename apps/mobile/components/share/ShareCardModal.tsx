@@ -7,7 +7,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { View, Modal, TouchableOpacity, Image, ActivityIndicator, Share, Platform, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ViewShot, Sharing, Clipboard, canShareImage } from '@/lib/nativeOptional';
-import { X, ShareNetwork, LinkSimple, Check, Fire, Medal, GraduationCap, Lightning, Trophy, UsersThree } from 'phosphor-react-native';
+import { X, ShareNetwork, LinkSimple, Check, Fire, Medal, GraduationCap, Lightning, Trophy, UsersThree, Crown } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
@@ -33,7 +33,7 @@ const T: Record<string, Theme> = {
   paperG: { bg: PAPER,     text: INK,       sub: 'rgba(22,19,31,0.7)',    accent: '#08804A', light: false, linkBg: INK,       linkText: '#FFFFFF', linkAccent: VOLT },
   paperP: { bg: PAPER,     text: INK,       sub: 'rgba(22,19,31,0.7)',    accent: '#FF4F8B', light: false, linkBg: '#FF4F8B', linkText: '#FFFFFF', linkAccent: INK },
 };
-const KIND_ICON = { streak: Fire, achievement: Medal, level: GraduationCap, xp: Lightning, challenge: Trophy } as const;
+const KIND_ICON = { streak: Fire, achievement: Medal, level: GraduationCap, xp: Lightning, challenge: Trophy, rank: Crown } as const;
 const STREAK_MILESTONES = new Set([7, 14, 21, 30, 50, 60, 90, 100, 150, 200, 365]);
 export const isStreakMilestone = (n: number) => STREAK_MILESTONES.has(n) || (n > 100 && n % 50 === 0);
 const RARITY_THEME: Record<string, keyof typeof T> = { common: 'green', rare: 'violet', epic: 'pink', legendary: 'volt' };
@@ -54,6 +54,7 @@ function pickTheme(c: ShareCardContent): Theme {
     case 'achievement': return T[RARITY_THEME[c.rarity ?? ''] ?? 'violet'];
     case 'level':       return c.badge ? T.volt : T[LEVEL_THEME[c.big] ?? 'paperV'];
     case 'challenge':   return [T.green, T.violet, T.pink, T.paperG][n % 4];
+    case 'rank':        return T.volt; // liderança do ranking: sempre o volt, a cor mais forte da marca
     default:            return [T.paperG, T.green, T.paperV][n % 3];
   }
 }
@@ -70,7 +71,7 @@ const W = 270;
 const H = 480;
 
 export interface ShareCardContent {
-  kind: 'streak' | 'achievement' | 'level' | 'xp' | 'challenge';
+  kind: 'streak' | 'achievement' | 'level' | 'xp' | 'challenge' | 'rank';
   /** Semente da variação (dia da sequência, código da conquista, semana...). */
   seed?: string | number;
   /** Conquista: raridade (define a cor) e categoria (define o ícone). */

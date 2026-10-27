@@ -431,3 +431,21 @@ export function adminAcceptedTemplate(opts: { inviterName?: string | null; membe
   `);
   return { subject, html };
 }
+
+// ── Teste antigo (sem cartão) terminou: passa para a degustação ───────────────
+
+export function legacyTrialEndedTemplate(opts: { name?: string | null; activities: number; xp: number }) {
+  const first = (opts.name ?? '').trim().split(/\s+/)[0];
+  const subject = 'Seu teste terminou, mas você ainda tem 7 dias grátis';
+  const did = opts.activities > 0
+    ? `Nos últimos dias você concluiu <strong style="color:#16131F;">${opts.activities} ${opts.activities === 1 ? 'atividade' : 'atividades'}</strong> e ganhou <strong style="color:#16131F;">${opts.xp.toLocaleString('pt-BR')} XP</strong>.`
+    : 'Seu teste de 7 dias terminou.';
+  const html = base(`
+    ${h1(`${first ? `${first}, seu` : 'Seu'} teste terminou.<br>Mas ainda tem mais.`)}
+    ${p(`${did} Na loja do seu celular você ainda tem <strong style="color:#16131F;">7 dias grátis</strong> para seguir com tudo: a trilha inteira, a conversa com a Charlotte e as ligações. Se cancelar antes do fim dos 7 dias, não paga nada.`)}
+    ${btn('Começar os 7 dias grátis', SMART_LINK)}
+    ${p(`Prefere ir com calma? Você continua na degustação: um tópico novo da trilha por dia, por 5 dias.`)}
+    ${note('Dúvidas? Responda este e-mail ou escreva para contato@queizy.com.')}
+  `);
+  return { subject, html };
+}

@@ -95,7 +95,7 @@ const STATUS_META: Record<string, { label: string; cls: string }> = {
   trial:     { label: 'Teste antigo', cls: 'badge-accent'  },
   cancelled: { label: 'Cancelado',  cls: 'badge-warn'    },
   expired:   { label: 'Expirado',   cls: 'badge-err'     },
-  none:      { label: 'Sem plano',  cls: 'badge-muted'   },
+  none:      { label: 'Degustação', cls: 'badge-muted'   },
 };
 const LEVEL_META: Record<string, { label: string; cls: string }> = {
   Novice:   { label: 'Novice',   cls: 'badge-brand'   },
@@ -442,7 +442,7 @@ export default function AdminUsersPage() {
             { id: 'trial',         label: `Em teste (${filterCounts.trial ?? 0})` },
             { id: 'expired',       label: `Expirado (${filterCounts.expired ?? 0})` },
             { id: 'institutional', label: `Institucional (${filterCounts.institutional ?? 0})` },
-            { id: 'none',          label: `Sem plano (${filterCounts.none ?? 0})` },
+            { id: 'none',          label: `Degustação (${filterCounts.none ?? 0})` },
           ] as { id: FilterKey; label: string }[]).map(f => (
             <button
               key={f.id}
@@ -732,7 +732,7 @@ export default function AdminUsersPage() {
                         {form.is_institutional
                           ? <option value="none">Institucional (gerenciado)</option>
                           : <>
-                              <option value="none">Sem plano (degustação)</option>
+                              <option value="none">Degustação</option>
                               {/* Trial do app acabou em 14/10: não dá para escolher; só aparece em conta antiga que ainda está nele. */}
                               {form.subscription_status === 'trial' && <option value="trial" disabled>Trial antigo do app</option>}
                               <option value="active">Ativo</option>

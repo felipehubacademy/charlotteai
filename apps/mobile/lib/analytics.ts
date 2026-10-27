@@ -23,6 +23,8 @@ export type AnalyticsEvent =
   | 'subscription_restored'
   | 'paywall_shown'
   | 'taste_call_card_tap'
+  | 'rank_leader_shown'
+  | 'rank_leader_share'
   | 'paywall_dismissed'
   | 'paywall_purchase_tap'
   | 'paywall_purchase_cancelled'

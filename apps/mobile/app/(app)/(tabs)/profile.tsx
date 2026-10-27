@@ -33,6 +33,7 @@ import { supabase } from '@/lib/supabase';
 import { restorePurchases, openManageSubscriptions, syncSubscriptionToSupabase, subscriptionStore } from '@/lib/purchases';
 import { WebSubscriptionSheet } from '@/components/subscription/WebSubscriptionSheet';
 import { systemIsPt, appLangPref, setAppLangPref } from '@/lib/systemLang';
+import { TASTE_DAYS, tasteDayNumber } from '@/lib/tasteDays';
 import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
 import Constants from 'expo-constants';
@@ -436,9 +437,20 @@ export default function ProfileTab() {
     if (subscriptionStatus === 'active')       return { text: isPt ? 'Ativa'         : 'Active',        color: C.greenDark };
     // 'cancelled' = auto-renew desligado mas acesso valido ate expires_at.
     if (subscriptionStatus === 'cancelled')    return { text: isPt ? 'Ativa · cancelada' : 'Active · cancelling', color: C.error };
-    if (subscriptionStatus === 'trial')        return { text: 'Trial',                                  color: C.violet };
+    if (subscriptionStatus === 'trial') {
+      const ends = profile?.trial_ends_at ? new Date(profile.trial_ends_at) : null;
+      if (!ends || ends <= new Date()) return { text: isPt ? 'Teste encerrado' : 'Trial ended', color: C.error };
+      const d = ends.toLocaleDateString(isPt ? 'pt-BR' : 'en-US', { day: '2-digit', month: '2-digit' });
+      return { text: isPt ? `Teste grátis · termina em ${d}` : `Free trial · ends ${d}`, color: C.violet };
+    }
     if (subscriptionStatus === 'expired')      return { text: isPt ? 'Expirada'      : 'Expired',       color: C.error };
-    if (subscriptionStatus === 'none')         return { text: isPt ? 'Degustação'    : 'Free taste',    color: C.violet };
+    // Degustação: em que dia está (1 tópico novo por dia por TASTE_DAYS dias).
+    if (subscriptionStatus === 'none') {
+      const day = tasteDayNumber(profile?.created_at);
+      return day <= TASTE_DAYS
+        ? { text: isPt ? `Degustação · dia ${day} de ${TASTE_DAYS}` : `Free taste · day ${day} of ${TASTE_DAYS}`, color: C.violet }
+        : { text: isPt ? 'Degustação encerrada' : 'Free taste over', color: C.violet };
+    }
     return                                            { text: isPt ? 'Sem acesso'    : 'No access',     color: C.error };
   })();
 

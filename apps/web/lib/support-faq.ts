@@ -34,7 +34,8 @@ O X fecha o aviso; ele volta em alguns dias até você atualizar. Sua conta, seu
 5. Sua foto (ou o avatar): Perfil.` },
   { section: 'Guia do app', question: 'Onde vejo meu XP, minha sequência e minha posição no ranking?', answer:
 `No topo das telas principais há três pílulas: o fogo laranja é a sequência (dias seguidos estudando), o raio verde é o XP total e o troféu é a posição no ranking do seu nível.
-Tocando nas pílulas abre a tela "Seu progresso", com o XP total, o XP ganho hoje ("+X hoje"), os dias seguidos, a posição no ranking, as conquistas, as metas e o ranking completo.` },
+Tocando nas pílulas abre a tela "Seu progresso", com o XP total, o XP ganho hoje ("+X hoje"), os dias seguidos, a posição no ranking, as conquistas, as metas e o ranking completo.
+O ranking completo tem duas abas: "Semana", com o XP desde segunda (zera toda segunda às 0h, horário de Brasília), e "Geral", com o XP total. Quem assume o 1º lugar ganha uma comemoração no app e um card para compartilhar nas redes.` },
   { section: 'Guia do app', question: 'Como ganho XP?', answer:
 `Ganha XP quem estuda: concluindo atividades da trilha (Gramática, Listening & Speaking, Role-play e Guided Chat), mandando mensagens no Practice (Free Chat por texto ou áudio, e Gramática), revisando palavras no Vocabulário e cumprindo as metas. As missões do dia e o desafio da semana pagam XP extra quando concluídos (cada um paga uma vez por período). O XP soma no total, na sequência e no ranking.` },
   { section: 'Guia do app', question: 'Onde vejo meu nível?', answer:
@@ -137,7 +138,7 @@ Na primeira atividade de fala, o botão aparece apagado com o balão "Toque aqui
   // ── Planos e assinatura ──────────────────────────────────────────────────
   { section: 'Planos e assinatura', question: 'Quais são os planos e preços?', answer:
 `Ao criar a conta, você experimenta de graça por 5 dias: a cada dia libera um tópico novo da trilha em cada um dos 3 níveis (com Gramática, Listening & Speaking, Role-play e Guided Chat), mensagens no Practice (10 no primeiro dia e mais 5 a cada dia seguinte) e 3 minutos de Live Voice (uma vez só). Para continuar: Plano Mensal R$ 29,99/mês e Plano Anual R$ 199,99/ano (equivale a cerca de R$ 16,67/mês). O teste de nível também faz parte do plano.
-A degustação dura 5 dias: o que já foi liberado continua disponível depois, mas não libera mais nada. Ao terminar o tópico do dia, a tela de assinatura abre com a opção de seguir agora ou esperar o tópico do dia seguinte. Durante a degustação, o que faz parte do plano aparece com cadeado. Ao tocar nele (ou em "Fazer teste de nível"), a tela de assinatura abre e você pode fechar no X ou em "Continuar na degustação" e seguir usando o que é grátis.
+A degustação dura 5 dias: o que já foi liberado continua disponível depois, mas não libera mais nada. No Perfil aparece em que dia você está ("Degustação · dia 2 de 5"). Ao terminar o tópico do dia, a tela de assinatura abre com a opção de seguir agora ou esperar o tópico do dia seguinte. Durante a degustação, o que faz parte do plano aparece com cadeado. Ao tocar nele (ou em "Fazer teste de nível"), a tela de assinatura abre e você pode fechar no X ou em "Continuar na degustação" e seguir usando o que é grátis.
 Dá para assinar de dois jeitos:
 - No app, pela loja: App Store (iPhone) ou Google Play (Android), com 7 dias grátis para quem nunca assinou. Para começar os 7 dias, a loja pede uma forma de pagamento cadastrada na conta Apple ou Google (no site, o cartão de crédito). A cobrança só começa ao fim dos 7 dias; se cancelar na loja antes disso, não paga nada.
 - Pelo site, em queizy.com/assinar: Mensal no cartão de crédito, Anual no cartão de crédito à vista ou Anual no Pix à vista (veja "Como funciona a assinatura pelo site?").` },

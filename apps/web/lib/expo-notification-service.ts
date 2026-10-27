@@ -335,7 +335,11 @@ interface NotificationType {
     // Estudar junto (duplas)
     | 'buddy_rivalry'
     // Degustação (conta sem plano): fluxo próprio, sendTastePushes
-    | 'taste_daily' | 'taste_nudge' | 'taste_ended' | 'taste_offer';
+    | 'taste_daily' | 'taste_nudge' | 'taste_ended' | 'taste_offer'
+    // Ranking da semana: sendRankingPushes
+    | 'rank_up' | 'rank_lost' | 'rank_threat' | 'rank_week_won'
+    // Fim do teste antigo (lib/legacy-trial.ts)
+    | 'legacy_trial_ended';
 }
 
 // Max sends per user per UTC day, per type. For core types 1/day is a safety
@@ -370,6 +374,11 @@ const FREQUENCY_CAP: Record<NotificationType['id'], number> = {
   taste_nudge:            1,
   taste_ended:            1,
   taste_offer:            1,
+  rank_up:                1,
+  rank_lost:              1,
+  rank_threat:            1,
+  rank_week_won:          1,
+  legacy_trial_ended:     1,
 };
 
 // Re-engagement types are mutually exclusive: the dispatcher picks AT MOST
@@ -397,7 +406,8 @@ async function filterFrequencyCap(
   if (!userIds.length) return userIds;
   // Degustação (conta sem plano): só recebe o fluxo próprio (lib/taste-push.ts). Os avisos genéricos
   // ("sua sequência", "última chance hoje"…) chamavam para um conteúdo que ela não tem.
-  if (!String(type).startsWith('taste_')) {
+  // O ranking vale para todos, inclusive a degustação: é motivo para voltar mesmo sem assinatura.
+  if (!String(type).startsWith('taste_') && !String(type).startsWith('rank_')) {
     const { data: tasters } = await supabase.from('charlotte_users').select('id')
       .in('id', userIds).or('subscription_status.is.null,subscription_status.eq.none').not('is_institutional', 'is', true);
     const skip = new Set(((tasters ?? []) as { id: string }[]).map(t => String(t.id)));
@@ -2054,4 +2064,134 @@ export async function sendTastePushes(supabase: any): Promise<void> {
   } catch (e) {
     console.error('❌ [Expo] taste push error:', e);
   }
+}
+
+// ── Ranking da semana: subiu, perdeu, risco de perder e venceu a semana ──────
+// Roda de hora em hora; cada aluno é avaliado às 19h do fuso dele (segunda 10h para "venceu a semana").
+// Compara com a foto do dia anterior na mesma hora (ranking_snapshots) e manda no máximo 1 aviso de
+// ranking por dia: perdeu > subiu > risco. Só o top 3 de cada nível. Contas fora do ranking não entram.
+const TARGET_HOUR_RANK = 19;
+const TARGET_HOUR_WEEK_WON = 10;
+const RANK_THREAT_XP = 100; // menos que isso de distância = cerca de um dia de estudo
+const LEVEL_NAME: Record<string, string> = { Novice: 'Novice', Inter: 'Intermediate', Advanced: 'Advanced' };
+
+export async function sendRankingPushes(supabase: any): Promise<void> {
+  try {
+    const now = new Date();
+    const plan: { userId: string; token: string; type: NotificationType['id']; title: string; body: string }[] = [];
+    const snaps: { day: string; scope: string; level: string; user_id: string; pos: number; xp: number }[] = [];
+
+    for (const level of ['Novice', 'Inter', 'Advanced']) {
+      const { data: rows } = await supabase.rpc('weekly_ranking', { p_level: level });
+      const list = ((rows ?? []) as { user_id: string; name: string | null; week_xp: number; pos: number }[])
+        .map(r => ({ id: String(r.user_id), name: r.name, xp: Number(r.week_xp), pos: Number(r.pos) }));
+      const ids = list.slice(0, 6).map(r => r.id);
+      if (!ids.length) continue;
+      const { data: users } = await supabase.from('charlotte_users')
+        .select('id, name, expo_push_token, timezone, app_language, charlotte_level').in('id', ids);
+      const uMap = new Map(((users ?? []) as any[]).map(u => [String(u.id), u]));
+      // Foto de ontem deste nível. Sem foto (primeiro dia), não dá para dizer quem subiu ou caiu.
+      const yBrt = new Intl.DateTimeFormat('en-CA', { timeZone: DEFAULT_TZ }).format(new Date(now.getTime() - 86400000));
+      const { data: ySnap } = await supabase.from('ranking_snapshots').select('user_id, pos').eq('day', yBrt).eq('scope', 'week').eq('level', level);
+      const prevMap = new Map(((ySnap ?? []) as { user_id: string; pos: number }[]).map(r => [String(r.user_id), r.pos]));
+
+      for (const r of list.slice(0, 4)) {
+        const u: any = uMap.get(r.id);
+        if (!u) continue;
+        const tz = u.timezone || DEFAULT_TZ;
+        const hour = localHourInTz(now, tz);
+        const today = new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(now);
+        if (hour !== TARGET_HOUR_RANK) continue;
+        snaps.push({ day: today, scope: 'week', level, user_id: r.id, pos: r.pos, xp: r.xp });
+        if (r.pos > 3 || !u.expo_push_token?.startsWith('ExponentPushToken[')) continue;
+
+        const monday = localDayInTz(now, tz) === 1; // semana nova: ontem é de outra semana
+        const hasHistory = !monday && prevMap.size > 0;
+        // A foto guarda só o top 4: sem linha de ontem = estava abaixo disso.
+        const prev = hasHistory ? (prevMap.get(r.id) ?? 99) : null;
+        const pt = pushIsPt(u);
+        const first = (u.name ?? '').split(/[\s\-]+/)[0] || (pt ? 'Oi' : 'Hi');
+        const lv = LEVEL_NAME[level] ?? level;
+        const above = list.find(x => x.pos === r.pos - 1);
+        const below = list.find(x => x.pos === r.pos + 1);
+        const fmt = (n: number) => n.toLocaleString(pt ? 'pt-BR' : 'en-US');
+
+        if (prev != null && prev <= 3 && r.pos > prev && above) {
+          const gap = Math.max(1, above.xp - r.xp + 1);
+          const who = (above.name ?? '').split(/\s+/)[0] || (pt ? 'Alguém' : 'Someone');
+          plan.push({ userId: r.id, token: u.expo_push_token, type: 'rank_lost',
+            title: pt ? `${who} passou você no ranking` : `${who} passed you on the leaderboard`,
+            body: pt ? `${first}, você caiu para o ${r.pos}º lugar da semana no ${lv}. Faltam ${fmt(gap)} XP para recuperar.`
+                     : `${first}, you dropped to #${r.pos} this week in ${lv}. ${fmt(gap)} XP to take it back.` });
+        } else if (prev != null && r.pos < prev) {
+          plan.push({ userId: r.id, token: u.expo_push_token, type: 'rank_up',
+            title: pt ? (r.pos === 1 ? 'Você é o 1º da semana!' : `Você subiu para o ${r.pos}º lugar!`) : (r.pos === 1 ? "You're #1 this week!" : `You moved up to #${r.pos}!`),
+            body: pt ? `${first}, você está em ${r.pos}º no ranking da semana do ${lv}. Continue assim até domingo.`
+                     : `${first}, you're #${r.pos} on this week's ${lv} leaderboard. Keep it up until Sunday.` });
+        } else if (below && r.xp - below.xp < RANK_THREAT_XP) {
+          const gap = Math.max(1, r.xp - below.xp);
+          plan.push({ userId: r.id, token: u.expo_push_token, type: 'rank_threat',
+            title: pt ? `Seu ${r.pos}º lugar está em risco` : `Your #${r.pos} spot is at risk`,
+            body: pt ? `${first}, tem gente a ${fmt(gap)} XP de você no ranking da semana do ${lv}. Uma atividade hoje garante.`
+                     : `${first}, someone is ${fmt(gap)} XP behind you this week in ${lv}. One activity today keeps you ahead.` });
+        }
+      }
+
+    }
+
+    // Venceu a semana: lê a foto de domingo de cada nível.
+    const { data: winners } = await supabase.from('ranking_snapshots').select('user_id, level, xp, day')
+      .eq('scope', 'week').eq('pos', 1).gte('day', new Date(now.getTime() - 2 * 86400000).toISOString().slice(0, 10));
+    for (const w of (winners ?? []) as { user_id: string; level: string; xp: number; day: string }[]) {
+      const { data: u } = await supabase.from('charlotte_users').select('id, name, expo_push_token, timezone, app_language, charlotte_level').eq('id', w.user_id).maybeSingle();
+      if (!u || !(u as any).expo_push_token?.startsWith('ExponentPushToken[')) continue;
+      const tz = (u as any).timezone || DEFAULT_TZ;
+      if (localDayInTz(now, tz) !== 1 || localHourInTz(now, tz) !== TARGET_HOUR_WEEK_WON) continue;
+      const sunday = new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(new Date(now.getTime() - 86400000));
+      if (w.day !== sunday) continue;
+      const pt = pushIsPt(u);
+      const first = ((u as any).name ?? '').split(/[\s\-]+/)[0] || (pt ? 'Oi' : 'Hi');
+      const lv = LEVEL_NAME[w.level] ?? w.level;
+      plan.push({ userId: w.user_id, token: (u as any).expo_push_token, type: 'rank_week_won',
+        title: pt ? 'Você venceu a semana!' : 'You won the week!',
+        body: pt ? `${first}, você terminou a semana em 1º no ranking do ${lv}, com ${Number(w.xp).toLocaleString('pt-BR')} XP. A nova semana já começou.`
+                 : `${first}, you finished the week #1 on the ${lv} leaderboard with ${Number(w.xp).toLocaleString('en-US')} XP. A new week has started.` });
+    }
+
+    if (snaps.length) await supabase.from('ranking_snapshots').upsert(snaps, { onConflict: 'day,scope,level,user_id' });
+    if (!plan.length) return;
+
+    // 1 aviso de ranking por dia; o de risco no máximo a cada 2 dias.
+    const ids = [...new Set(plan.map(p => p.userId))];
+    const { data: recent } = await supabase.from('notification_logs').select('user_id, notification_type, created_at')
+      .in('user_id', ids).like('notification_type', 'rank_%').gte('created_at', new Date(Date.now() - 2 * 86400000).toISOString());
+    const sentToday = new Set<string>(); const threatRecent = new Set<string>();
+    for (const r of (recent ?? []) as { user_id: string; notification_type: string; created_at: string }[]) {
+      if (Date.now() - new Date(r.created_at).getTime() < 20 * 3600000) sentToday.add(String(r.user_id));
+      if (r.notification_type === 'rank_threat') threatRecent.add(String(r.user_id));
+    }
+    const final = plan.filter((p, i) => !sentToday.has(p.userId) && !(p.type === 'rank_threat' && threatRecent.has(p.userId))
+      && plan.findIndex(q => q.userId === p.userId) === i);
+    if (!final.length) return;
+    const messages: ExpoMessage[] = final.map(p => ({ to: p.token, title: p.title, body: p.body, data: { type: p.type }, sound: 'default', priority: 'high' }));
+    const { sent, errors } = await sendExpoPush(messages, supabase);
+    console.log(`✅ [Expo] Ranking: ${sent} enviados, ${errors} erros`);
+    await logRnPushes(supabase, final.map(p => ({ userId: p.userId, type: p.type, title: p.title, body: p.body })));
+  } catch (e) {
+    console.error('❌ [Expo] ranking push error:', e);
+  }
+}
+
+// Fim do teste antigo: push único no dia em que vence (lib/legacy-trial.ts). Respeita o horário de silêncio.
+export async function sendLegacyTrialEndedPush(supabase: any, u: { id: string; name: string | null; expo_push_token: string | null; app_language?: string | null; charlotte_level?: string | null; timezone?: string | null }): Promise<void> {
+  if (!u.expo_push_token?.startsWith('ExponentPushToken[')) return;
+  if (inQuietHours(u.timezone || DEFAULT_TZ)) return;
+  const pt = pushIsPt(u as any);
+  const first = (u.name ?? '').split(/[\s\-]+/)[0] || (pt ? 'Oi' : 'Hi');
+  const title = pt ? 'Seu teste terminou, mas ainda tem mais' : 'Your trial ended, but there is more';
+  const body = pt
+    ? `${first}, você ainda tem 7 dias grátis na loja. Ou siga na degustação: um tópico novo por dia.`
+    : `${first}, you still have a 7-day free trial in the store. Or keep going with one free topic a day.`;
+  const { sent } = await sendExpoPush([{ to: u.expo_push_token, title, body, data: { type: 'legacy_trial_ended' }, sound: 'default', priority: 'high' }], supabase);
+  if (sent) await logRnPushes(supabase, [{ userId: u.id, type: 'legacy_trial_ended', title, body }]);
 }

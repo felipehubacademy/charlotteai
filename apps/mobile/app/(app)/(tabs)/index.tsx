@@ -39,6 +39,7 @@ import { voiceSFX } from '@/lib/voiceSFX';
 import { ArrowDown, ArrowUp } from 'phosphor-react-native';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { TasteCallCard } from '@/components/trail/TasteCallCard';
+import { RankLeaderModal, type RankLeaderEvent } from '@/components/social/RankLeaderModal';
 import { TrailBanner } from '@/components/trail/TrailBanner';
 import { StudyingNow } from '@/components/social/StudyingNow';
 import { UpdateBanner } from '@/components/ui/UpdateBanner';
@@ -149,6 +150,7 @@ export default function HomeTab() {
   const [totalXP,         setTotalXP]         = useState(0);
   const [todayXP,         setTodayXP]         = useState(0);
   const [rank,            setRank]            = useState<number | null>(null);
+  const [rankLeader,      setRankLeader]      = useState<RankLeaderEvent | null>(null);
   const [loading,         setLoading]         = useState(true);
   const [refreshing,      setRefreshing]      = useState(false);
   const [aiGreeting,      setAiGreeting]      = useState<string | null>(null);
@@ -295,6 +297,28 @@ export default function HomeTab() {
       setTotalXP(userTotalXP);
       setTodayXP(todayXPVal);
       setRank(userTotalXP > 0 ? computedRank : null);
+
+      // Liderança do ranking do nível: celebra uma vez por conquista (perdeu e voltou = celebra de novo).
+      // Contas fora do ranking (equipe, revisão das lojas) se veriam como 1º pela contagem acima: ficam de fora.
+      const leaderKey = `rank_leader_${userId}_${level}`;
+      if (userTotalXP > 0 && computedRank === 1) {
+        (async () => {
+          const seen = await SecureStore.getItemAsync(leaderKey).catch(() => null);
+          if (seen) return;
+          const [{ data: me }, { data: top }, { count: players }] = await Promise.all([
+            supabase.from('charlotte_users').select('hide_from_ranking').eq('id', userId).maybeSingle(),
+            supabase.from('charlotte_leaderboard_cache').select('user_id, total_xp').eq('user_level', level).order('total_xp', { ascending: false }).limit(2),
+            supabase.from('charlotte_leaderboard_cache').select('*', { count: 'exact', head: true }).eq('user_level', level),
+          ]);
+          if ((me as { hide_from_ranking?: boolean } | null)?.hide_from_ranking) return;
+          const second = (top ?? []).find((r: { user_id: string }) => String(r.user_id) !== String(userId)) as { total_xp: number } | undefined;
+          await SecureStore.setItemAsync(leaderKey, '1').catch(() => {});
+          await splashGate;
+          setRankLeader({ level, totalXP: userTotalXP, leadXP: second ? Math.max(0, userTotalXP - second.total_xp) : null, players: players ?? 1 });
+        })().catch(() => {});
+      } else if (computedRank > 1) {
+        SecureStore.deleteItemAsync(leaderKey).catch(() => {});
+      }
 
       // Brand intro jingle — so dispara DEPOIS do splash sumir (gate via
       // splashGate Promise resolvida pelo SplashOverlay no fim do fade).
@@ -741,6 +765,7 @@ export default function HomeTab() {
 
       {/* Promotion (level-up) vs Graduation (terminal): renderiza um ou outro
           baseado no discriminator do evento. */}
+      <RankLeaderModal event={rankLeader} onClose={() => setRankLeader(null)} />
       <PromotionModal
         event={promotionEvent?.type === 'level-up' ? promotionEvent : null}
         onClose={ackPromotion}

@@ -132,6 +132,12 @@ export function usePushNotifications(userId?: string) {
           case 'achievement_cheer':
             router.push('/(app)/achievements' as any);
             break;
+          case 'rank_up':        // ranking da semana: abre a tela de Ranking
+          case 'rank_lost':
+          case 'rank_threat':
+          case 'rank_week_won':
+            router.push('/(app)/leaderboard' as any);
+            break;
           case 'xp_milestone':
             router.push('/(app)');  // home → stats visible
             break;
