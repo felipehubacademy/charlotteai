@@ -115,6 +115,19 @@ function coversMost(u: string, expected: string): boolean {
 }
 
 /**
+ * O aluno mandou a própria frase do enunciado (sem corrigir nada)? Usado no "corrigir o erro" para
+ * reprovar e para avisar "você repetiu a frase do exercício". A frase pode vir com contexto antes
+ * da citação ('Awkward: "The matter is..."'), então vale também o trecho entre aspas.
+ */
+export function repeatsPrompt(answer: string, prompt?: string | null): boolean {
+  if (!prompt) return false;
+  const u = normaliseAnswer(answer);
+  if (!u) return false;
+  const quoted = prompt.match(/["“]([^"”]+)["”]/)?.[1];
+  return u === normaliseAnswer(prompt) || (!!quoted && u === normaliseAnswer(quoted));
+}
+
+/**
  * Corretor genérico por tipo de exercício de gramática.
  * `type`: fill_gap | fix_error | read_answer | multiple_choice | word_bank | word_order | short_write | ...
  */
@@ -139,10 +152,7 @@ export function checkGrammarAnswer(
   // fix_error: repetir a frase errada nunca vale. Sem isso, erro de palavra a mais ou a menos
   // passava pela comparação flexível ("Sorry me!" contém "Sorry!"). A frase pode vir com
   // contexto antes da citação ('Awkward: "The matter is..."'), então vale também o trecho entre aspas.
-  if (type === 'fix_error' && wrong) {
-    const quoted = wrong.match(/["“]([^"”]+)["”]/)?.[1];
-    if (u === normaliseAnswer(wrong) || (quoted && u === normaliseAnswer(quoted))) return false;
-  }
+  if (type === 'fix_error' && wrong && repeatsPrompt(answer, wrong)) return false;
 
   if (accepts && accepts.length) {
     const lenient = type === 'read_answer' || type === 'fix_error' || type === 'fill_gap';

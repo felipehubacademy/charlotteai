@@ -23,7 +23,7 @@ import { TrackHostReaction } from '@/components/trail/TrackHostReaction';
 import { systemIsPt } from '@/lib/systemLang';
 import { bestSpeechMatch, normalizeSpeech } from '@/lib/speechMatch';
 import { logAttempt } from '@/lib/learnAttempts';
-import { checkGrammarAnswer } from '@/lib/grammarAnswer';
+import { checkGrammarAnswer, repeatsPrompt } from '@/lib/grammarAnswer';
 import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import { track } from '@/lib/analytics';
 import * as FileSystem from 'expo-file-system/legacy';
@@ -340,6 +340,7 @@ export default function LearnSessionScreen() {
   }, [navigation, isPortuguese]);
   const [userAnswer, setUserAnswer]     = useState('');
   const [isCorrect, setIsCorrect]       = useState<boolean | null>(null);
+  const [repeatedPrompt, setRepeatedPrompt] = useState(false); // "corrigir o erro": mandou a frase do enunciado sem mudar
   const [showHint, setShowHint]         = useState(false);
   const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
   const [shuffledChoices, setShuffledChoices] = useState<string[]>([]);
@@ -580,6 +581,7 @@ export default function LearnSessionScreen() {
     setGStatus('answering');
     setUserAnswer('');
     setIsCorrect(null);
+    setRepeatedPrompt(false);
     setShowHint(false);
     setHelpExplanation(null);
     setHelpLoading(false);
@@ -750,6 +752,7 @@ export default function LearnSessionScreen() {
     const correct = checkGrammar(ex, userAnswer);
     const xp = correct ? 10 : 0;
     setIsCorrect(correct);
+    setRepeatedPrompt(!correct && ex.type === 'fix_error' && repeatsPrompt(userAnswer, ex.sentence));
     setGStatus('submitted');
     setSessionXP(prev => prev + xp);
 
@@ -2291,6 +2294,17 @@ export default function LearnSessionScreen() {
               </AppText>
             </View>
           </View>
+
+          {/* Aluno repetiu a frase do enunciado no "corrigir o erro" */}
+          {!isCorrect && repeatedPrompt && (
+            <View style={{ padding: 12, backgroundColor: 'rgba(107,75,255,0.08)', borderRadius: 12, marginBottom: 10 }}>
+              <AppText style={{ fontSize: 14, color: C.navy, lineHeight: 20 }}>
+                {isPortuguese
+                  ? 'Você repetiu a frase do exercício. A ideia é encontrar o erro e reescrever a frase já corrigida.'
+                  : 'You repeated the sentence from the exercise. Find the mistake and rewrite the sentence correctly.'}
+              </AppText>
+            </View>
+          )}
 
           {/* Correct answer (wrong only) */}
           {!isCorrect && (
