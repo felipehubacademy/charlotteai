@@ -6,6 +6,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { BadgePercent, RefreshCw, Plus, X, Pause, Play } from 'lucide-react';
 import AffiliatesAdmin from '../affiliates/page';
+import { AdsAbTab } from './AdsAbTab';
 import { useBulk, BulkBar, BulkCheckbox } from '@/components/admin/Bulk';
 
 type Coupon = {
@@ -59,7 +60,7 @@ const EMPTY = { code: '', discount_pct: 20, monthly: true, annual: true, starts_
 type Form = typeof EMPTY;
 
 export default function CommercialAdmin() {
-  const [tab, setTab] = useState<'coupons' | 'affiliates' | 'sales' | 'health'>('coupons');
+  const [tab, setTab] = useState<'coupons' | 'affiliates' | 'sales' | 'health' | 'ads'>('coupons');
   const [health, setHealth] = useState<Health | null>(null);
   const [coupons, setCoupons] = useState<Coupon[]>([]);
   const [checkouts, setCheckouts] = useState<Checkout[]>([]);
@@ -134,9 +135,11 @@ export default function CommercialAdmin() {
         <div className={`adm-tab${tab === 'affiliates' ? ' active' : ''}`} onClick={() => setTab('affiliates')}>Afiliados</div>
         <div className={`adm-tab${tab === 'sales' ? ' active' : ''}`} onClick={() => setTab('sales')}>Vendas pelo site</div>
         <div className={`adm-tab${tab === 'health' ? ' active' : ''}`} onClick={() => setTab('health')}>Saúde do checkout</div>
+        <div className={`adm-tab${tab === 'ads' ? ' active' : ''}`} onClick={() => setTab('ads')}>Anúncios A/B</div>
       </div>
 
       {tab === 'affiliates' && <AffiliatesAdmin />}
+      {tab === 'ads' && <AdsAbTab />}
 
       {tab === 'coupons' && (
         <div className="adm-body">

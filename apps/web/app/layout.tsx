@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import { Suspense } from 'react';
 import CookieConsent from '@/components/CookieConsent';
+import AdAttribution from '@/components/AdAttribution';
 
 
 const inter = Inter({ subsets: ['latin'] });
@@ -101,6 +102,7 @@ export default function RootLayout({
           {children}
         </Suspense>
         <CookieConsent />
+        <AdAttribution />
         <Toaster
           position="top-center"
           toastOptions={{

@@ -130,6 +130,8 @@ export function checkoutRowFields(ctx: CheckoutContext, req: NextRequest) {
       consent: req.cookies.get('qz_consent')?.value === 'all',
       fbp: req.cookies.get('_fbp')?.value ?? null, fbc: req.cookies.get('_fbc')?.value ?? null,
       ip: ctx.ip, ua: req.headers.get('user-agent'), url: req.headers.get('referer'),
+      // Campanha do anúncio que trouxe a visita (cookie qz_utm, components/AdAttribution): teste A/B site x lojas.
+      utm: (() => { try { return JSON.parse(decodeURIComponent(req.cookies.get('qz_utm')?.value ?? '')); } catch { return null; } })(),
     },
     coupon_code: couponWins && coupon?.ok ? coupon.code : null, discount_pct: ctx.discountPct,
     // Cupom com duração (ex.: só a 1ª cobrança): o webhook volta a assinatura para este valor
