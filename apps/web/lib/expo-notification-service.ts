@@ -1,4 +1,5 @@
 // lib/expo-notification-service.ts
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { inQuietHours } from './push-quiet-hours';
 import { pickWeekly, periodsFor, missionTexts, goalsFor, type MissionLevel } from '@/lib/missions';
 import { aiFetch } from '@/lib/ai-models';
@@ -2077,6 +2078,9 @@ const LEVEL_NAME: Record<string, string> = { Novice: 'Novice', Inter: 'Intermedi
 
 export async function sendRankingPushes(supabase: any): Promise<void> {
   try {
+    // A foto do ranking (ranking_snapshots) tem RLS sem política: só a chave de serviço lê e grava.
+    // O agendador passa o cliente público, que funciona para o resto (views e RPCs), mas não para ela.
+    const admin = getSupabaseAdmin();
     const now = new Date();
     const plan: { userId: string; token: string; type: NotificationType['id']; title: string; body: string }[] = [];
     const snaps: { day: string; scope: string; level: string; user_id: string; pos: number; xp: number }[] = [];
@@ -2092,7 +2096,7 @@ export async function sendRankingPushes(supabase: any): Promise<void> {
       const uMap = new Map(((users ?? []) as any[]).map(u => [String(u.id), u]));
       // Foto de ontem deste nível. Sem foto (primeiro dia), não dá para dizer quem subiu ou caiu.
       const yBrt = new Intl.DateTimeFormat('en-CA', { timeZone: DEFAULT_TZ }).format(new Date(now.getTime() - 86400000));
-      const { data: ySnap } = await supabase.from('ranking_snapshots').select('user_id, pos').eq('day', yBrt).eq('scope', 'week').eq('level', level);
+      const { data: ySnap } = await admin.from('ranking_snapshots').select('user_id, pos').eq('day', yBrt).eq('scope', 'week').eq('level', level);
       const prevMap = new Map(((ySnap ?? []) as { user_id: string; pos: number }[]).map(r => [String(r.user_id), r.pos]));
 
       for (const r of list.slice(0, 4)) {
@@ -2140,7 +2144,7 @@ export async function sendRankingPushes(supabase: any): Promise<void> {
     }
 
     // Venceu a semana: lê a foto de domingo de cada nível.
-    const { data: winners } = await supabase.from('ranking_snapshots').select('user_id, level, xp, day')
+    const { data: winners } = await admin.from('ranking_snapshots').select('user_id, level, xp, day')
       .eq('scope', 'week').eq('pos', 1).gte('day', new Date(now.getTime() - 2 * 86400000).toISOString().slice(0, 10));
     for (const w of (winners ?? []) as { user_id: string; level: string; xp: number; day: string }[]) {
       const { data: u } = await supabase.from('charlotte_users').select('id, name, expo_push_token, timezone, app_language, charlotte_level').eq('id', w.user_id).maybeSingle();
@@ -2158,7 +2162,11 @@ export async function sendRankingPushes(supabase: any): Promise<void> {
                  : `${first}, you finished the week #1 on the ${lv} leaderboard with ${Number(w.xp).toLocaleString('en-US')} XP. A new week has started.` });
     }
 
-    if (snaps.length) await supabase.from('ranking_snapshots').upsert(snaps, { onConflict: 'day,scope,level,user_id' });
+    if (snaps.length) {
+      const { error: snapErr } = await admin.from('ranking_snapshots').upsert(snaps, { onConflict: 'day,scope,level,user_id' });
+      if (snapErr) console.error('❌ [Expo] ranking snapshot error:', snapErr.message);
+      else console.log(`📸 [Expo] Ranking: foto de ${snaps.length} posições gravada`);
+    }
     if (!plan.length) return;
 
     // 1 aviso de ranking por dia; o de risco no máximo a cada 2 dias.
