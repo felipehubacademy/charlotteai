@@ -177,6 +177,25 @@ export async function GET(req: NextRequest) {
   // De onde vem o teste: loja (cartão na loja), site (cartão no site) ou sem cartão (teste antigo do app).
   const trialBy = (phase: string) => (usersWithEng as any[]).filter(u => u.sub_phase === phase).length;
   const trialSplit = { loja: trialBy('teste_loja'), site: trialBy('teste_site'), semCartao: trialBy('teste_antigo') };
+  // Detalhe do card "Em teste grátis" (no passar do mouse): por origem, quantos vão ser cobrados e quando,
+  // e quantos cancelaram durante o teste (seguem com acesso até o fim dos 7 dias, sem cobrança).
+  const day = (iso: string | null) => (iso ? new Date(new Date(iso).getTime() - 3 * 3600000).toISOString().slice(0, 10) : '');
+  const detailOf = (phase: string) => {
+    const list = (usersWithEng as any[]).filter(u => u.sub_phase === phase);
+    const cancelled = list.filter(u => u.subscription_status === 'cancelled');
+    const toCharge = list.filter(u => u.subscription_status !== 'cancelled');
+    const byDay = new Map<string, number>();
+    for (const u of (phase === 'teste_antigo' ? list : toCharge)) {
+      const d = day(phase === 'teste_antigo' ? u.trial_ends_at : u.subscription_expires_at);
+      if (d) byDay.set(d, (byDay.get(d) ?? 0) + 1);
+    }
+    return {
+      total: list.length, toCharge: toCharge.length, cancelled: cancelled.length,
+      cancelledUntil: cancelled.map(u => day(u.subscription_expires_at)).sort().slice(-1)[0] ?? null,
+      byDay: [...byDay.entries()].sort().map(([date, count]) => ({ date, count })),
+    };
+  };
+  const trialDetail = { loja: detailOf('teste_loja'), site: detailOf('teste_site'), semCartao: detailOf('teste_antigo') };
   const trialExpired  = usersWithEng.filter(u => {
     if (u.is_institutional) return false;
     // Conta status='expired' OU status='trial' com data já vencida (cron atrasado)
@@ -205,7 +224,7 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json({
     users: usersWithEng,
-    stats: { total, institutional, subscribers, onTrial, trialSplit, trialExpired, last30, last24h, prev24h, growthPct, activeToday, activeWeek },
+    stats: { total, institutional, subscribers, onTrial, trialSplit, trialDetail, trialExpired, last30, last24h, prev24h, growthPct, activeToday, activeWeek },
   });
 }
 

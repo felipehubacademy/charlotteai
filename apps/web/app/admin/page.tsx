@@ -23,6 +23,7 @@ interface User {
 interface Stats {
   total: number; institutional: number; subscribers: number; onTrial: number;
   trialSplit?: { loja: number; site: number; semCartao: number };
+  trialDetail?: Record<'loja' | 'site' | 'semCartao', TrialDetail>;
   trialExpired: number; last30: number; last24h?: number; prev24h?: number; growthPct: number | null; activeToday: number; activeWeek: number;
 }
 interface Form {
@@ -104,14 +105,63 @@ const LEVEL_META: Record<string, { label: string; cls: string }> = {
 };
 
 // ── KPI card ─────────────────────────────────────────────────────────────────
-function StatCard({ label, value, sub, accent, delay }: {
-  label: string; value: number | string; sub?: string; accent?: string; delay?: number;
-}) {
+interface TrialDetail { total: number; toCharge: number; cancelled: number; cancelledUntil: string | null; byDay: { date: string; count: number }[] }
+
+const ddmm = (d: string) => `${d.slice(8, 10)}/${d.slice(5, 7)}`;
+
+// Detalhe do "Em teste grátis": cada origem com quem vai ser cobrado (e quando) e quem cancelou no teste.
+function TrialDetailBox({ d }: { d: Record<'loja' | 'site' | 'semCartao', TrialDetail> }) {
+  const rows: { key: 'loja' | 'site' | 'semCartao'; title: string; note: string }[] = [
+    { key: 'site', title: 'Site (cartão)', note: 'cobrança' },
+    { key: 'loja', title: 'Loja (App Store e Play)', note: 'cobrança' },
+    { key: 'semCartao', title: 'Teste antigo (sem cartão)', note: 'termina' },
+  ];
   return (
-    <div className="kpi-card fade-up" style={{ animationDelay: `${delay ?? 0}ms` }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      {rows.filter(r => d[r.key].total > 0).map(r => {
+        const x = d[r.key];
+        return (
+          <div key={r.key}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 700, fontSize: 13, color: 'var(--t1)' }}>
+              <span>{r.title}</span><span>{x.total}</span>
+            </div>
+            {r.key !== 'semCartao' && (
+              <div style={{ fontSize: 12, color: 'var(--t2)', marginTop: 3 }}>
+                {x.toCharge} {x.toCharge === 1 ? 'vai ser cobrado' : 'vão ser cobrados'}
+                {x.cancelled > 0 && <> · <span style={{ color: 'var(--err)' }}>{x.cancelled} {x.cancelled === 1 ? 'cancelou' : 'cancelaram'}</span> (acesso até {x.cancelledUntil ? ddmm(x.cancelledUntil) : '—'}, sem cobrança)</>}
+              </div>
+            )}
+            {x.byDay.length > 0 && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 6 }}>
+                {x.byDay.map(b => (
+                  <span key={b.date} style={{ fontSize: 11.5, background: 'var(--s2)', borderRadius: 999, padding: '2px 8px', color: 'var(--t2)' }}>
+                    {r.note} {ddmm(b.date)}: <strong style={{ color: 'var(--t1)' }}>{b.count}</strong>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function StatCard({ label, value, sub, accent, delay, detail }: {
+  label: string; value: number | string; sub?: string; accent?: string; delay?: number; detail?: React.ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="kpi-card fade-up" style={{ animationDelay: `${delay ?? 0}ms`, position: 'relative', cursor: detail ? 'pointer' : undefined, overflow: 'visible', zIndex: open ? 30 : undefined }}
+      onMouseEnter={() => detail && setOpen(true)} onMouseLeave={() => setOpen(false)} onClick={() => detail && setOpen(o => !o)}>
       <div className="kpi-label">{label}</div>
       <div className="kpi-value" style={accent ? { color: accent } : {}}>{value}</div>
       {sub && <div className="kpi-context" style={{ marginTop: 4 }}>{sub}</div>}
+      {detail && open && (
+        <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, marginTop: 6, minWidth: 280, background: 'var(--s1)', border: '1px solid var(--b2)', borderRadius: 14, padding: 14, boxShadow: '0 12px 32px rgba(0,0,0,0.12)' }}>
+          {detail}
+        </div>
+      )}
     </div>
   );
 }
@@ -407,7 +457,8 @@ export default function AdminUsersPage() {
             <div className="col-3"><StatCard label="Pagantes" value={stats.subscribers} accent="var(--ok)" delay={60} /></div>
             <div className="col-3">
               <StatCard label="Em teste grátis" value={stats.onTrial} accent="var(--accent)" delay={120}
-                sub={stats.trialSplit ? `Loja ${stats.trialSplit.loja} · Site ${stats.trialSplit.site}${stats.trialSplit.semCartao ? ` · Sem cartão ${stats.trialSplit.semCartao}` : ''}` : undefined} />
+                sub={stats.trialSplit ? `Loja ${stats.trialSplit.loja} · Site ${stats.trialSplit.site}${stats.trialSplit.semCartao ? ` · Sem cartão ${stats.trialSplit.semCartao}` : ''}` : undefined}
+                detail={stats.trialDetail ? <TrialDetailBox d={stats.trialDetail} /> : undefined} />
             </div>
             <div className="col-3"><StatCard label="Institucionais" value={stats.institutional} delay={180} /></div>
             <div className="col-3">
