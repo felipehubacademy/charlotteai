@@ -283,6 +283,9 @@ export default function HomeTab() {
         .eq('user_level', level)
         .gt('total_xp', userTotalXP);
       const computedRank = (higherCount ?? 0) + 1;
+      // Conta fora do ranking (equipe, revisão das lojas): sem posição no topo nem celebração.
+      const { data: rankFlag } = await supabase.from('charlotte_users').select('hide_from_ranking').eq('id', userId).maybeSingle();
+      const outOfRanking = !!(rankFlag as { hide_from_ranking?: boolean } | null)?.hide_from_ranking;
 
       const todayStr = localTodayStr();
       const yesterdayStr = (() => {
@@ -296,21 +299,19 @@ export default function HomeTab() {
       setStreak(streakDays);
       setTotalXP(userTotalXP);
       setTodayXP(todayXPVal);
-      setRank(userTotalXP > 0 ? computedRank : null);
+      setRank(userTotalXP > 0 && !outOfRanking ? computedRank : null);
 
       // Liderança do ranking do nível: celebra uma vez por conquista (perdeu e voltou = celebra de novo).
       // Contas fora do ranking (equipe, revisão das lojas) se veriam como 1º pela contagem acima: ficam de fora.
       const leaderKey = `rank_leader_${userId}_${level}`;
-      if (userTotalXP > 0 && computedRank === 1) {
+      if (userTotalXP > 0 && computedRank === 1 && !outOfRanking) {
         (async () => {
           const seen = await SecureStore.getItemAsync(leaderKey).catch(() => null);
           if (seen) return;
-          const [{ data: me }, { data: top }, { count: players }] = await Promise.all([
-            supabase.from('charlotte_users').select('hide_from_ranking').eq('id', userId).maybeSingle(),
+          const [{ data: top }, { count: players }] = await Promise.all([
             supabase.from('charlotte_leaderboard_cache').select('user_id, total_xp').eq('user_level', level).order('total_xp', { ascending: false }).limit(2),
             supabase.from('charlotte_leaderboard_cache').select('*', { count: 'exact', head: true }).eq('user_level', level),
           ]);
-          if ((me as { hide_from_ranking?: boolean } | null)?.hide_from_ranking) return;
           const second = (top ?? []).find((r: { user_id: string }) => String(r.user_id) !== String(userId)) as { total_xp: number } | undefined;
           await SecureStore.setItemAsync(leaderKey, '1').catch(() => {});
           await splashGate;

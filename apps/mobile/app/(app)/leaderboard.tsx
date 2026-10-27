@@ -12,6 +12,7 @@ import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
 import { RecentAchievements } from '@/components/social/RecentAchievements';
+import { Podium } from '@/components/stats/Podium';
 import { FriendSearchEntry } from '@/components/social/FriendSearch';
 
 const isPt = systemIsPt;
@@ -160,8 +161,12 @@ export default function LeaderboardScreen() {
                 : (isPt ? 'O ranking ainda está vazio.' : 'The ranking is still empty.')}
             </AppText>
           ) : (
+            <>
+            {/* Top 3 em pódio; a lista segue do 4º em diante. */}
+            <Podium entries={entries.slice(0, 3).map(e => ({ userId: e.userId, name: e.userId === userId ? userName || e.name : e.name, xp: e.totalXp, rank: e.rank }))} userId={userId} youLabel={you} />
+            {(entries.length > 3 || (!inTop && me && !hidden)) && (
             <Card style={{ paddingVertical: 6 }}>
-              {entries.map((e, i) => (
+              {entries.slice(3).map((e, i) => (
                 <RankRow
                   key={e.userId}
                   rank={e.rank}
@@ -169,7 +174,7 @@ export default function LeaderboardScreen() {
                   xp={e.totalXp}
                   isUser={e.userId === userId}
                   youLabel={you}
-                  last={i === entries.length - 1 && inTop}
+                  last={i === entries.length - 4 && inTop}
                 />
               ))}
               {!inTop && me && !hidden && (
@@ -179,6 +184,8 @@ export default function LeaderboardScreen() {
                 </>
               )}
             </Card>
+            )}
+            </>
           )}
 
           <RecentAchievements />
