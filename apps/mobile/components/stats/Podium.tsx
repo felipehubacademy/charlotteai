@@ -1,6 +1,6 @@
 // components/stats/Podium.tsx — o palco do top 3 do ranking.
-// Cartão grafite com holofote volt atrás do líder; as colunas sobem animadas ao abrir, com a onda rosa da
-// marca no topo e a medalha metálica (ouro, prata, bronze) pendurada; avatar com aro do mesmo metal.
+// Cartão grafite com holofote volt atrás do líder; as colunas sobem animadas ao abrir, com a medalha
+// metálica (ouro, prata, bronze) no topo; avatar com aro do mesmo metal.
 // O líder ganha coroa que quica e brilhos piscando. Tudo em SVG + Animated (funciona por OTA).
 import React, { useEffect, useMemo, useRef } from 'react';
 import { View, Animated, Easing } from 'react-native';
@@ -64,19 +64,6 @@ function MetalRing({ place, size }: { place: 1 | 2 | 3; size: number }) {
   );
 }
 
-/** A onda da marca no topo da coluna. */
-function WaveTop({ width }: { width: number }) {
-  if (width <= 0) return null;
-  const h = 10, step = 12;
-  let d = `M0 ${h / 2}`;
-  for (let x = 0, up = true; x < width; x += step, up = !up) d += ` Q${x + step / 2} ${up ? 1 : h - 1} ${x + step} ${h / 2}`;
-  return (
-    <Svg width={width} height={h} style={{ position: 'absolute', top: 6, left: 0 }}>
-      <Path d={d} stroke={PINK} strokeWidth={3} fill="none" strokeLinecap="round" />
-    </Svg>
-  );
-}
-
 function Sparkle({ style, delay }: { style: object; delay: number }) {
   const v = useRef(new Animated.Value(0)).current;
   useEffect(() => {
@@ -101,8 +88,7 @@ export interface PodiumEntry { userId: string; name: string; xp: number; rank: n
 function Spot({ e, place, isUser, youLabel, rise }: { e: PodiumEntry | undefined; place: 1 | 2 | 3; isUser: boolean; youLabel: string; rise: Animated.Value }) {
   const big = place === 1;
   const size = big ? 74 : 58;
-  const [colW, setColW] = React.useState(0);
-  const bounce = useRef(new Animated.Value(0)).current;
+    const bounce = useRef(new Animated.Value(0)).current;
   useEffect(() => {
     if (!big) return;
     const loop = Animated.loop(Animated.sequence([
@@ -146,12 +132,11 @@ function Spot({ e, place, isUser, youLabel, rise }: { e: PodiumEntry | undefined
           </AppText>
         </Animated.View>
       ) : null}
-      {/* Coluna: sobe ao abrir. A medalha fica pendurada no topo, sobre a onda. */}
-      <Animated.View onLayout={ev => setColW(ev.nativeEvent.layout.width)}
+      {/* Coluna: sobe ao abrir, com a medalha no topo. */}
+      <Animated.View
         style={{ width: '100%', height, borderTopLeftRadius: 16, borderTopRightRadius: 16, alignItems: 'center',
           backgroundColor: big ? 'rgba(255,255,255,0.14)' : 'rgba(255,255,255,0.09)' }}>
-        <WaveTop width={colW} />
-        <Animated.View style={{ marginTop: 18, opacity: fade }}>
+        <Animated.View style={{ marginTop: 14, opacity: fade }}>
           <Medal place={place} size={big ? 50 : 42} />
         </Animated.View>
       </Animated.View>
