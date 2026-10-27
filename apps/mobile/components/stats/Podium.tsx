@@ -1,6 +1,7 @@
 // components/stats/Podium.tsx — pódio do top 3 do ranking, lado a lado como numa competição:
 // 2º à esquerda, 1º no centro (mais alto, com coroa) e 3º à direita.
-// Degraus na cor da marca (grafite, com volt no topo do 1º) e o metal só na medalha de cada degrau:
+// Cartão grafite como os outros cartões escuros do app (Sua posição, Seu progresso), degraus em blocos
+// translúcidos (o 1º com contorno volt) e o metal só na medalha de cada degrau:
 // degradê com brilho (ouro, prata e bronze) em SVG, que já existe no app e funciona por OTA.
 import React from 'react';
 import { View } from 'react-native';
@@ -49,29 +50,29 @@ export interface PodiumEntry { userId: string; name: string; xp: number; rank: n
 
 function Spot({ e, place, isUser, youLabel }: { e: PodiumEntry | undefined; place: 1 | 2 | 3; isUser: boolean; youLabel: string }) {
   const big = place === 1;
-  const size = big ? 62 : 50;
+  const size = big ? 60 : 48;
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
       {e ? (
         <>
-          {big && <Crown size={26} color={C.ink} weight="fill" style={{ marginBottom: 2 }} />}
-          <View style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: big ? C.volt : C.bg, borderWidth: big ? 0 : 2, borderColor: C.border, alignItems: 'center', justifyContent: 'center' }}>
-            <AppText display style={{ fontSize: big ? 26 : 21, fontWeight: '800', color: C.ink }}>
+          {big && <Crown size={24} color={C.volt} weight="fill" style={{ marginBottom: 4 }} />}
+          <View style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: big ? C.volt : 'rgba(255,255,255,0.12)', alignItems: 'center', justifyContent: 'center' }}>
+            <AppText display style={{ fontSize: big ? 25 : 20, fontWeight: '800', color: big ? C.ink : '#FFFFFF' }}>
               {(e.name || '?').trim().charAt(0).toUpperCase()}
             </AppText>
           </View>
-          <AppText numberOfLines={1} style={{ fontSize: 14, fontWeight: '800', color: C.ink, marginTop: 6, maxWidth: '92%' }}>
+          <AppText numberOfLines={1} style={{ fontSize: 14, fontWeight: '800', color: '#FFFFFF', marginTop: 8, maxWidth: '94%' }}>
             {firstName(e.name, `#${place}`)}
           </AppText>
-          {isUser && <AppText style={{ fontSize: 11, fontWeight: '700', color: C.green }}>{youLabel}</AppText>}
-          <AppText style={{ fontSize: 12.5, fontWeight: '700', color: C.mid, marginTop: 1, marginBottom: 8 }}>
+          {isUser && <AppText style={{ fontSize: 11, fontWeight: '800', color: C.volt }}>{youLabel}</AppText>}
+          <AppText style={{ fontSize: 12.5, fontWeight: '700', color: 'rgba(255,255,255,0.6)', marginTop: 1, marginBottom: 10 }}>
             {e.xp.toLocaleString()} XP
           </AppText>
         </>
       ) : <View style={{ height: 40 }} />}
-      <View style={{ width: '100%', height: HEIGHT[place], backgroundColor: C.ink, borderTopLeftRadius: 14, borderTopRightRadius: 14, alignItems: 'center', paddingTop: 10, opacity: e ? 1 : 0.3, overflow: 'hidden' }}>
-        {big && <View style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 6, backgroundColor: C.volt }} />}
-        <Medal place={place} size={big ? 52 : 44} />
+      {/* Degrau: bloco arredondado translúcido, como os blocos dos cartões escuros do app; o 1º com contorno volt. */}
+      <View style={{ width: '100%', height: HEIGHT[place], backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 16, borderWidth: big ? 2 : 0, borderColor: C.volt, alignItems: 'center', paddingTop: 12, opacity: e ? 1 : 0.4 }}>
+        <Medal place={place} size={big ? 50 : 42} />
       </View>
     </View>
   );
@@ -80,7 +81,7 @@ function Spot({ e, place, isUser, youLabel }: { e: PodiumEntry | undefined; plac
 export function Podium({ entries, userId, youLabel }: { entries: PodiumEntry[]; userId: string; youLabel: string }) {
   const at = (p: number) => entries.find(e => e.rank === p) ?? entries[p - 1];
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8, marginHorizontal: 16, marginBottom: 16, paddingHorizontal: 12, paddingTop: 16, backgroundColor: C.card, borderRadius: 24, overflow: 'hidden' }}>
+    <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, marginHorizontal: 16, marginBottom: 16, padding: 16, paddingTop: 20, backgroundColor: C.ink, borderRadius: 24 }}>
       {([2, 1, 3] as const).map(p => {
         const e = at(p);
         return <Spot key={p} e={e} place={p} isUser={!!e && e.userId === userId} youLabel={youLabel} />;

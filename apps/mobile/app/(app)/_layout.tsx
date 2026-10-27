@@ -46,6 +46,7 @@ export default function AppLayout() {
         <Stack.Screen name="placement-test" options={{ animation: 'none' }} />
         <Stack.Screen name="charlotte-intro" options={{ animation: 'none', gestureEnabled: false }} />{/* fim do onboarding, sem vídeo */}
         <Stack.Screen name="leaderboard" />
+        <Stack.Screen name="rank-leader-preview" options={{ animation: 'fade' }} />
         <Stack.Screen name="my-vocabulary" />
         <Stack.Screen name="add-word" />
         <Stack.Screen name="ai-consent" options={{ animation: 'fade', gestureEnabled: false }} />
