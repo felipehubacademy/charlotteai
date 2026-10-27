@@ -95,6 +95,8 @@ O XP entra sozinho: depois de cumprir, ao voltar para a tela inicial (ou abrir "
 - "Convidar amigos": manda o seu código de convite. Quando uma conta nova entra pelo convite (até 14 dias depois do cadastro, em "Recebeu um convite?"), cada um ganha 5 minutos de Live Voice.
 - "Competições": desafie amigos por 24 horas ou 7 dias (quem faz mais XP, quem pratica mais ou quem acerta mais na trilha). Quem vencer ganha 5 minutos de Live Voice. Recebeu o link de uma competição? Com o app instalado, ao tocar no link você já entra na disputa e aparece a tela "Você entrou na competição"; sem o app, baixe, crie a conta e você entra logo depois do cadastro. Para sair de uma competição em andamento, toque no "⋮" no topo do cartão dela e em "Sair da competição"; se sobrar só uma pessoa, a competição é encerrada sem vencedor.
 Pedidos de amizade e convites recebidos aparecem numa linha na tela inicial. Para os amigos te acharem, a opção "Aparecer na busca" precisa estar ligada em Perfil > Preferências.` },
+  { section: 'Guia do app', question: 'Como coloco minha foto no perfil?', answer:
+`No Perfil, toque na sua foto (ou no círculo sem foto) e escolha "Escolher da galeria" ou "Tirar uma foto"; depois arraste ou use os botões para ajustar o enquadramento e salve. A foto aparece no ranking, nas Conquistas recentes e no Estudar junto. Ao colocar a primeira foto, você ganha a conquista "Cara do Queizy" (+20 XP). Para trocar, é só repetir o caminho.` },
   { section: 'Guia do app', question: 'O que tem no Perfil?', answer:
 `Perfil (sua foto na barra de baixo):
 - Conta: Alterar senha e Fazer teste de nível (Refazer teste de nível, depois da primeira vez).

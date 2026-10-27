@@ -3,12 +3,14 @@
 // metálica (ouro, prata, bronze) no topo; avatar com aro do mesmo metal.
 // O líder ganha coroa que quica e brilhos piscando. Tudo em SVG + Animated (funciona por OTA).
 import React, { useEffect, useMemo, useRef } from 'react';
-import { View, Animated, Easing } from 'react-native';
+import { View, Animated, Easing, TouchableOpacity } from 'react-native';
 import Svg, { Circle, Defs, LinearGradient, RadialGradient, Stop, Path, Rect } from 'react-native-svg';
 import { Crown } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { C, firstName } from '@/components/stats/StatsUI';
 import { RankAvatar } from '@/components/stats/RankAvatar';
+import { openPhotoPicker } from '@/components/social/PhotoNudge';
+import { systemIsPt } from '@/lib/systemLang';
 
 const PINK = '#FF4F8B';
 const METAL = {
@@ -113,6 +115,13 @@ function Spot({ e, place, isUser, youLabel, rise }: { e: PodiumEntry | undefined
           <View style={{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }}>
             <RankAvatar id={e.userId} name={e.name} url={e.avatarUrl} size={size - 7} />
             <MetalRing place={place} size={size} />
+            {/* Você no pódio sem foto: o melhor momento para pedir a foto. */}
+            {isUser && !e.avatarUrl && (
+              <TouchableOpacity onPress={openPhotoPicker} hitSlop={8}
+                style={{ position: 'absolute', right: -2, bottom: -2, width: 24, height: 24, borderRadius: 12, backgroundColor: C.volt, borderWidth: 2, borderColor: C.ink, alignItems: 'center', justifyContent: 'center' }}>
+                <AppText style={{ fontSize: 16, lineHeight: 18, fontWeight: '800', color: C.ink }}>+</AppText>
+              </TouchableOpacity>
+            )}
             {big && <>
               <Sparkle delay={0} style={{ top: -6, left: -10 }} />
               <Sparkle delay={500} style={{ top: 10, right: -16 }} />
@@ -126,6 +135,13 @@ function Spot({ e, place, isUser, youLabel, rise }: { e: PodiumEntry | undefined
             <View style={{ backgroundColor: C.volt, borderRadius: 999, paddingHorizontal: 8, paddingVertical: 1, marginTop: 3 }}>
               <AppText style={{ fontSize: 11, fontWeight: '800', color: C.ink }}>{youLabel}</AppText>
             </View>
+          )}
+          {isUser && !e.avatarUrl && (
+            <TouchableOpacity onPress={openPhotoPicker} hitSlop={6}>
+              <AppText style={{ fontSize: 11.5, fontWeight: '800', color: C.volt, marginTop: 4, textDecorationLine: 'underline' }}>
+                {systemIsPt ? 'Coloque sua foto' : 'Add your photo'}
+              </AppText>
+            </TouchableOpacity>
           )}
           <AppText style={{ fontSize: 12.5, fontWeight: '800', color: big ? C.volt : 'rgba(255,255,255,0.6)', marginTop: 2, marginBottom: 12 }}>
             {e.xp.toLocaleString()} XP

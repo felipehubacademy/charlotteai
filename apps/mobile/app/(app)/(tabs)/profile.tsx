@@ -7,7 +7,8 @@ import {
   Linking, ActivityIndicator, Image, TextInput, Switch,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { router, useFocusEffect } from 'expo-router';
+import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
+import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import { fetchSocial } from '@/lib/social';
 import {
   User, Key, DeviceMobile, GraduationCap, Buildings,
@@ -36,6 +37,7 @@ import { systemIsPt, appLangPref, setAppLangPref } from '@/lib/systemLang';
 import { TASTE_DAYS, tasteDayNumber } from '@/lib/tasteDays';
 import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
+import { PhotoNudge } from '@/components/social/PhotoNudge';
 import Constants from 'expo-constants';
 import { Application } from '@/lib/nativeOptional'; // protegido: binário sem o módulo não trava
 import * as Updates from 'expo-updates';
@@ -198,6 +200,12 @@ export default function ProfileTab() {
   const [nameValue,          setNameValue]          = useState(profile?.name ?? '');
   const [savingName,         setSavingName]         = useState(false);
   const [showAvatarModal,    setShowAvatarModal]    = useState(false);
+  // Campanha da foto: o convite (pódio, Estudar junto) abre o Perfil com ?photo=1 e a escolha da foto já aberta.
+  const photoParam = useLocalSearchParams<{ photo?: string }>().photo;
+  useEffect(() => {
+    if (photoParam === '1') { setShowAvatarModal(true); router.setParams({ photo: undefined } as any); }
+  }, [photoParam]);
+  const { checkForNewAchievements } = useAchievementsContext();
   const [deletingAccount,    setDeletingAccount]    = useState(false);
   const [restoringPurchases, setRestoringPurchases] = useState(false);
   const [audioPrefs,         setAudioPrefs]         = useState<AudioPreferences>(getAudioPreferences());
@@ -558,12 +566,14 @@ export default function ProfileTab() {
 
         </View>
 
+        <PhotoNudge style={{ marginHorizontal: 20, marginTop: 14 }} text={isPt ? 'Ganhe a conquista "Cara do Queizy" e apareça com foto no ranking.' : 'Earn the "Face of Queizy" badge and show your photo on the leaderboard.'} />
+
         <AvatarCropModal
           isOpen={showAvatarModal}
           onClose={() => setShowAvatarModal(false)}
           userId={profile?.id ?? ''}
           currentAvatarUrl={profile?.avatar_url}
-          onSaved={() => { setShowAvatarModal(false); refreshProfile(); }}
+          onSaved={() => { setShowAvatarModal(false); refreshProfile(); checkForNewAchievements(800); /* "Cara do Queizy" */ }}
         />
 
         {/* Account */}

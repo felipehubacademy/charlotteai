@@ -10,6 +10,7 @@ import { Users, HandWaving, Crown, Lightning, Gift, PencilSimple, DotsThreeVerti
 import { openUserActions } from '@/lib/moderation';
 import { AppText } from '@/components/ui/Text';
 import { C, ScreenHeader, SectionTitle, Card } from '@/components/stats/StatsUI';
+import { PhotoNudge } from '@/components/social/PhotoNudge';
 import { ShareCardModal, ShareCardContent } from '@/components/share/ShareCardModal';
 import { RallySection } from '@/components/rally/RallySection';
 import { FriendSearchEntry } from '@/components/social/FriendSearch';
@@ -117,6 +118,7 @@ export default function StudyTogetherScreen() {
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <ScreenHeader title={t('Estudar junto', 'Study together')} />
       <ScrollView contentContainerStyle={{ paddingBottom: 48 + insets.bottom }} keyboardShouldPersistTaps="handled" refreshControl={<RefreshControl refreshing={false} onRefresh={load} />}>
+        <PhotoNudge style={{ marginHorizontal: 16, marginTop: 16 }} />
 
         {/* Convite */}
         <View style={{ margin: 16, backgroundColor: C.ink, borderRadius: 24, padding: 22 }}>
