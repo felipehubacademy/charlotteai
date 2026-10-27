@@ -103,6 +103,17 @@ export async function recordRevenueEvent(event: Record<string, any>): Promise<vo
           tax_pct: tax, commission_pct: commission, gross_brl: grossBrl, net_brl: netBrl,
           purchased_at: purchasedAt.toISOString(), finance_entry_id: e.id, raw: event,
         } as never);
+        // Estorno de Pix: devolvemos o valor cheio ao aluno, mas a taxa do Asaas cobrada no recebimento
+        // não volta. Essa diferença (bruto − líquido) vira uma saída nossa.
+        const pixFee = Math.round((grossBrl - netBrl) * 100) / 100;
+        if (store === 'ASAAS' && String(event?.product_id ?? '').includes('pix') && pixFee > 0) {
+          await supabase.from('finance_entries').insert({
+            kind: 'expense', description: `Taxa do Pix não devolvida no estorno: ${product}`,
+            category: 'Lojas e pagamentos', vendor: 'Asaas', amount: pixFee, currency: 'BRL', fx_rate: 1, amount_brl: pixFee,
+            due_date: new Date().toISOString().slice(0, 10), paid_at: new Date().toISOString().slice(0, 10), status: 'paid', recurrence: 'none',
+            notes: `Automático (Asaas). Estorno do Pix no valor cheio (${grossBrl.toFixed(2)} BRL); a taxa de recebimento não é devolvida.`,
+          } as never);
+        }
         await recordAffiliateCommission(event, netBrl, purchasedAt);
         return;
       }
