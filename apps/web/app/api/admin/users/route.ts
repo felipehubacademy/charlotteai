@@ -180,9 +180,10 @@ export async function GET(req: NextRequest) {
   // Detalhe do card "Em teste grátis" (no passar do mouse): por origem, quantos vão ser cobrados e quando,
   // e quantos cancelaram durante o teste (seguem com acesso até o fim dos 7 dias, sem cobrança).
   const day = (iso: string | null) => (iso ? new Date(new Date(iso).getTime() - 3 * 3600000).toISOString().slice(0, 10) : '');
-  // Site: o Asaas cobra no fim do teste (início + dias grátis); o acesso tem 1 dia de folga depois disso.
+  // Site: o Asaas cobra no fim do teste (início + dias grátis, em data UTC, como em lib/asaas.ts ymd); o acesso
+  // tem 1 dia de folga depois disso.
   const siteChargeDay = new Map(((siteRows ?? []) as { user_id: string; trial_days: number; created_at: string }[])
-    .filter(r => r.trial_days > 0).map(r => [String(r.user_id), day(new Date(new Date(r.created_at).getTime() + r.trial_days * 86400000).toISOString())]));
+    .filter(r => r.trial_days > 0).map(r => [String(r.user_id), new Date(new Date(r.created_at).getTime() + r.trial_days * 86400000).toISOString().slice(0, 10)]));
   const chargeDay = (u: any) => (String(u.subscription_product ?? '').startsWith('web_') && siteChargeDay.get(String(u.id))) || day(u.subscription_expires_at);
   const detailOf = (phase: string) => {
     const list = (usersWithEng as any[]).filter(u => u.sub_phase === phase);
