@@ -4,11 +4,13 @@
 //   2. Publica os preparados cuja hora chegou e cujo contêiner já está pronto.
 //   3. Busca comentários novos e deixa a IA tratar os pendentes (lib/instagram-comments).
 //   4. Renova a chave de acesso quando estiver perto de vencer.
+//   5. Domingo a partir das 20h: avisa se a semana seguinte não estiver toda aprovada (lib/instagram-approval-alert).
 // Só sai o que foi aprovado no /admin > Instagram. ?dry=1 mostra o que faria, sem publicar.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { getInstagramAuth, createContainer, containerStatus, publishContainer, refreshInstagramTokenIfNeeded, type IgMedia } from '@/lib/instagram';
 import { runInstagramComments } from '@/lib/instagram-comments';
+import { checkInstagramApproval } from '@/lib/instagram-approval-alert';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 120;
@@ -72,7 +74,8 @@ async function run(dry: boolean) {
   // 3. Comentários; 4. chave.
   const comentarios = dry ? null : await runInstagramComments();
   const chave = dry ? null : await refreshInstagramTokenIfNeeded();
-  return { conta: auth.username, log, comentarios, chave, dry };
+  const aprovacao = dry ? null : await checkInstagramApproval().catch(e => ({ checked: false, erro: String(e) }));
+  return { conta: auth.username, log, comentarios, chave, aprovacao, dry };
 }
 
 export async function GET(req: NextRequest) {
