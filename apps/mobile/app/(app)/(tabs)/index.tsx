@@ -51,6 +51,15 @@ import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
 import { usePromotionPending } from '@/lib/promotionState';
 import { PlacementPromptSheet } from '@/components/onboarding/PlacementPromptSheet';
 
+// Celebração de líder da semana: XP mínimo da semana para valer.
+const WEEK_LEADER_MIN_XP = 100;
+/** Segunda-feira da semana corrente no horário de Brasília (AAAA-MM-DD), igual ao ranking da semana. */
+function brtWeekStart(): string {
+  const brt = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
+  brt.setDate(brt.getDate() - ((brt.getDay() + 6) % 7));
+  return `${brt.getFullYear()}-${String(brt.getMonth() + 1).padStart(2, '0')}-${String(brt.getDate()).padStart(2, '0')}`;
+}
+
 // Module-level flag — persists for the JS session (like the legacy home screen)
 let _streakSoundPlayedThisSession = false;
 // Intro brand jingle: toca em todo cold start (1x por sessao JS — reset somente
@@ -295,25 +304,48 @@ export default function HomeTab() {
       setTodayXP(todayXPVal);
       setRank(myRank);
 
-      // Liderança do ranking do nível: celebra uma vez por conquista (perdeu e voltou = celebra de novo).
+      // Liderança do ranking do nível (XP total) e da semana: celebra uma vez por conquista (perdeu e voltou =
+      // celebra de novo). A da semana vale para a semana corrente (zera segunda, horário de Brasília) e só a partir
+      // de WEEK_LEADER_MIN_XP, para não celebrar quem fez uma atividade na segunda de manhã e está sozinho.
       // Contas fora do ranking (equipe, revisão das lojas) se veriam como 1º pela contagem acima: ficam de fora.
       const leaderKey = `rank_leader_${userId}_${level}`;
-      if (myRank === 1) {
-        (async () => {
-          const seen = await SecureStore.getItemAsync(leaderKey).catch(() => null);
-          if (seen) return;
+      const weekKey = `rank_week_leader_${userId}_${level}_${brtWeekStart()}`;
+      (async () => {
+        let allTime: RankLeaderEvent | null = null;
+        if (myRank === 1 && !(await SecureStore.getItemAsync(leaderKey).catch(() => null))) {
           const [{ data: top }, { count: players }] = await Promise.all([
             supabase.from('charlotte_leaderboard_cache').select('user_id, total_xp').eq('user_level', level).order('total_xp', { ascending: false }).limit(2),
             supabase.from('charlotte_leaderboard_cache').select('*', { count: 'exact', head: true }).eq('user_level', level),
           ]);
           const second = (top ?? []).find((r: { user_id: string }) => String(r.user_id) !== String(userId)) as { total_xp: number } | undefined;
           await SecureStore.setItemAsync(leaderKey, '1').catch(() => {});
-          await splashGate;
-          setRankLeader({ level, totalXP: userTotalXP, leadXP: second ? Math.max(0, userTotalXP - second.total_xp) : null, players: players ?? 1 });
-        })().catch(() => {});
-      } else if (myRank != null && myRank > 1) {
-        SecureStore.deleteItemAsync(leaderKey).catch(() => {});
-      }
+          allTime = { scope: 'all', level, totalXP: userTotalXP, leadXP: second ? Math.max(0, userTotalXP - second.total_xp) : null, players: players ?? 1 };
+        } else if (myRank != null && myRank > 1) {
+          SecureStore.deleteItemAsync(leaderKey).catch(() => {});
+        }
+
+        let week: RankLeaderEvent | null = null;
+        if (myRank != null) {
+          const { data: wk } = await supabase.rpc('weekly_ranking', { p_level: level });
+          const list = (wk ?? []) as { user_id: string; week_xp: number; pos: number }[];
+          const me = list.find(r => String(r.user_id) === String(userId));
+          if (me && Number(me.pos) === 1 && Number(me.week_xp) >= WEEK_LEADER_MIN_XP && list.length >= 3) {
+            if (!(await SecureStore.getItemAsync(weekKey).catch(() => null))) {
+              await SecureStore.setItemAsync(weekKey, '1').catch(() => {});
+              const second = list.find(r => String(r.user_id) !== String(userId));
+              week = { scope: 'week', level, totalXP: Number(me.week_xp), leadXP: second ? Math.max(0, Number(me.week_xp) - Number(second.week_xp)) : null, players: list.length };
+            }
+          } else if (me && Number(me.pos) > 1) {
+            SecureStore.deleteItemAsync(weekKey).catch(() => {});
+          }
+        }
+
+        // Líder nas duas ao mesmo tempo: uma celebração só (a do geral, que é maior).
+        const ev = allTime ?? week;
+        if (!ev) return;
+        await splashGate;
+        setRankLeader(ev);
+      })().catch(() => {});
 
       // Brand intro jingle — so dispara DEPOIS do splash sumir (gate via
       // splashGate Promise resolvida pelo SplashOverlay no fim do fade).

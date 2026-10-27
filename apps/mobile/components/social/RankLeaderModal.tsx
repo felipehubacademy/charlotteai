@@ -1,7 +1,8 @@
 // components/social/RankLeaderModal.tsx — celebração de quem assume o 1º lugar do ranking do nível.
 // Tela cheia escura, coroa que entra com mola, chuva de confete dupla, som e vibração de conquista
 // lendária, e o card para compartilhar nas redes (ShareCardModal, tipo 'rank').
-// Dispara na tela inicial uma vez por conquista da liderança (perdeu e voltou = celebra de novo).
+// Dispara na tela inicial uma vez por conquista da liderança (perdeu e voltou = celebra de novo), do ranking
+// geral do nível ou do ranking da semana (scope 'week').
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Modal, TouchableOpacity, Animated, Easing } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -19,8 +20,9 @@ const VOLT = '#DCFF4A';
 const PAPER = '#FAF7F0';
 
 export interface RankLeaderEvent {
+  scope?: 'all' | 'week'; // ranking geral do nível (padrão) ou da semana
   level: string;      // Novice | Inter | Advanced
-  totalXP: number;
+  totalXP: number;    // na semana: XP da semana
   leadXP: number | null; // vantagem sobre o 2º (null = ninguém atrás)
   players: number;    // alunos no ranking do nível
 }
@@ -53,7 +55,7 @@ export function RankLeaderModal({ event, onClose }: { event: RankLeaderEvent | n
       Animated.timing(glow, { toValue: 0, duration: 1100, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
     ]));
     pulse.start();
-    track('rank_leader_shown', { level: event.level });
+    track('rank_leader_shown', { level: event.level, scope: event.scope ?? 'all' });
     return () => { clearTimeout(h); clearTimeout(w); pulse.stop(); };
   }, [event]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -64,18 +66,19 @@ export function RankLeaderModal({ event, onClose }: { event: RankLeaderEvent | n
   const glowScale = glow.interpolate({ inputRange: [0, 1], outputRange: [1, 1.18] });
   const glowOpacity = glow.interpolate({ inputRange: [0, 1], outputRange: [0.35, 0.7] });
   const textY = text.interpolate({ inputRange: [0, 1], outputRange: [24, 0] });
+  const isWeek = event.scope === 'week';
 
   const share = () => {
-    track('rank_leader_share', { level: event.level });
+    track('rank_leader_share', { level: event.level, scope: event.scope ?? 'all' });
     onClose();
     // O iOS não apresenta dois modais juntos: o card abre depois que este fecha.
     setTimeout(() => openShare({
       kind: 'rank',
       seed: event.level,
-      badge: 'Líder do ranking',
+      badge: isWeek ? 'Líder da semana' : 'Líder do ranking',
       big: '#1',
-      title: `no ranking do ${level}`,
-      subtitle: `${fmt(event.totalXP, true)} XP${event.players > 1 ? `, à frente de ${fmt(event.players - 1, true)} alunos` : ''}`,
+      title: isWeek ? `no ranking da semana do ${level}` : `no ranking do ${level}`,
+      subtitle: `${fmt(event.totalXP, true)} XP${isWeek ? ' nesta semana' : ''}${event.players > 1 ? `, à frente de ${fmt(event.players - 1, true)} alunos` : ''}`,
       icon: <Crown size={44} color={INK} weight="fill" />,
     }), 450);
   };
@@ -95,16 +98,20 @@ export function RankLeaderModal({ event, onClose }: { event: RankLeaderEvent | n
 
         <Animated.View style={{ alignItems: 'center', marginTop: 18, opacity: text, transform: [{ translateY: textY }] }}>
           <AppText style={{ fontSize: 13, fontWeight: '800', letterSpacing: 2, color: VOLT, textTransform: 'uppercase' }}>
-            {isPt ? `Ranking do ${level}` : `${level} leaderboard`}
+            {isWeek
+              ? (isPt ? `Ranking da semana · ${level}` : `${level} · this week`)
+              : (isPt ? `Ranking do ${level}` : `${level} leaderboard`)}
           </AppText>
           <AppText display style={{ fontSize: 96, lineHeight: 100, fontWeight: '800', color: '#FFFFFF', letterSpacing: -3, marginTop: 6 }}>#1</AppText>
           <AppText display style={{ fontSize: 28, lineHeight: 33, fontWeight: '800', color: '#FFFFFF', textAlign: 'center', marginTop: 4 }}>
-            {isPt ? 'Você assumiu a liderança!' : "You're in the lead!"}
+            {isWeek
+              ? (isPt ? 'Você é o 1º da semana!' : "You're #1 this week!")
+              : (isPt ? 'Você assumiu a liderança!' : "You're in the lead!")}
           </AppText>
           <AppText style={{ fontSize: 15, lineHeight: 21, color: 'rgba(255,255,255,0.75)', textAlign: 'center', marginTop: 10 }}>
             {isPt
-              ? `${fmt(event.totalXP, true)} XP${event.leadXP != null ? ` e ${fmt(event.leadXP, true)} à frente do 2º lugar` : ''}. Agora é defender o trono.`
-              : `${fmt(event.totalXP, false)} XP${event.leadXP != null ? `, ${fmt(event.leadXP, false)} ahead of 2nd place` : ''}. Now defend your crown.`}
+              ? `${fmt(event.totalXP, true)} XP${isWeek ? ' nesta semana' : ''}${event.leadXP != null ? ` e ${fmt(event.leadXP, true)} à frente do 2º lugar` : ''}. ${isWeek ? 'Segure a ponta até domingo.' : 'Agora é defender o trono.'}`
+              : `${fmt(event.totalXP, false)} XP${isWeek ? ' this week' : ''}${event.leadXP != null ? `, ${fmt(event.leadXP, false)} ahead of 2nd place` : ''}. ${isWeek ? 'Hold the lead until Sunday.' : 'Now defend your crown.'}`}
           </AppText>
         </Animated.View>
 

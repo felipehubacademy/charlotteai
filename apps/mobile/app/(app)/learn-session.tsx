@@ -54,6 +54,7 @@ import BluetoothMicHint from '@/components/BluetoothMicHint';
 import { supabase } from '@/lib/supabase';
 import { appAlert } from '@/components/ui/AppAlert';
 import { goBack } from '@/lib/goBack';
+import { AcquisitionSheet } from '@/components/onboarding/AcquisitionSheet';
 
 // ── Color helper — rgba() for Android hex+alpha compatibility ──
 function a(hex: string, alpha: number): string {
@@ -1345,6 +1346,8 @@ export default function LearnSessionScreen() {
             <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>{isPortuguese ? 'Voltar' : 'Back'}</AppText>
           </TouchableOpacity>
         </View>
+        {/* 1ª atividade: "Como você conheceu o Queizy?" (só conta criada pela loja, uma vez). */}
+        <AcquisitionSheet armed={isFirstActivity} />
       </SafeAreaView>
     );
   }

@@ -25,6 +25,7 @@ export type AnalyticsEvent =
   | 'taste_call_card_tap'
   | 'rank_leader_shown'
   | 'rank_leader_share'
+  | 'acquisition_answered'
   | 'paywall_dismissed'
   | 'paywall_purchase_tap'
   | 'paywall_purchase_cancelled'

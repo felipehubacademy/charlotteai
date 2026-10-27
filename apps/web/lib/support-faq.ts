@@ -35,7 +35,7 @@ O X fecha o aviso; ele volta em alguns dias até você atualizar. Sua conta, seu
   { section: 'Guia do app', question: 'Onde vejo meu XP, minha sequência e minha posição no ranking?', answer:
 `No topo das telas principais há três pílulas: o fogo laranja é a sequência (dias seguidos estudando), o raio verde é o XP total e o troféu é a posição no ranking do seu nível.
 Tocando nas pílulas abre a tela "Seu progresso", com o XP total, o XP ganho hoje ("+X hoje"), os dias seguidos, a posição no ranking, as conquistas, as metas e o ranking completo.
-O ranking completo tem duas abas: "Semana", com o XP desde segunda (zera toda segunda às 0h, horário de Brasília), e "Geral", com o XP total. Quem assume o 1º lugar ganha uma comemoração no app e um card para compartilhar nas redes.` },
+O ranking completo tem duas abas: "Semana", com o XP desde segunda (zera toda segunda às 0h, horário de Brasília), e "Geral", com o XP total. Quem fica em 1º lugar, no Geral ou na semana, ganha uma comemoração no app e um card para compartilhar nas redes.` },
   { section: 'Guia do app', question: 'Como ganho XP?', answer:
 `Ganha XP quem estuda: concluindo atividades da trilha (Gramática, Listening & Speaking, Role-play e Guided Chat), mandando mensagens no Practice (Free Chat por texto ou áudio, e Gramática), revisando palavras no Vocabulário e cumprindo as metas. As missões do dia e o desafio da semana pagam XP extra quando concluídos (cada um paga uma vez por período). O XP soma no total, na sequência e no ranking.` },
   { section: 'Guia do app', question: 'Onde vejo meu nível?', answer:

@@ -912,10 +912,9 @@
           "answer": "open the window",
           "accepts": [
             "open the window",
-            "open a window",
-            "order food"
+            "open a window"
           ],
-          "explanation": "\"Open the window, would you?\" is a polite request: the tag \"would you?\" softens the order. The speaker also suggests ordering food with \"Let's order food, shall we?\"."
+          "explanation": "The speaker asks the other person to open the window: \"Open the window, would you?\" is a polite request, and the tag \"would you?\" softens the order. \"Let's order food, shall we?\" is different: it is a suggestion to do something together (Let's ... shall we?), not a request for the other person to do it."
         }
       ],
       "listening_speaking": [
