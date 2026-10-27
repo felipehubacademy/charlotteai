@@ -102,7 +102,7 @@ export async function GET(req: NextRequest) {
   };
   type PracticeRow = { user_id: string; created_at: string; xp_earned: number | null };
   type PracticeWideRow = { user_id: string; created_at: string };
-  type ProgressRow = { user_id: string; streak_days: number | null; total_xp: number | null };
+  type ProgressRow = { user_id: string; streak_days: number | null; total_xp: number | null; last_practice_date: string | null };
   type NotifRow = { user_id: string; notification_type: string; status: string; created_at: string };
   type UsageRow = {
     user_id: string | null;
@@ -121,6 +121,7 @@ export async function GET(req: NextRequest) {
   // Fetch bases in parallel.
   // practicesAll (last 90d) powers DAU/WAU/MAU charts and retention cohorts;
   // practicesRange (in selected range) powers funnel + period-specific sums.
+  // Resgates de recompensa (mission_reward_*, weekly_reward_*) ficam fora: não são estudo.
   const d90 = new Date();
   d90.setDate(d90.getDate() - 90);
 
@@ -163,9 +164,9 @@ export async function GET(req: NextRequest) {
 
   const [usersRes, practicesRangeRes, practicesWideRes, progressRes, usageRes, notifRes, placementRes] = await Promise.all([
     paged((a, b) => supabase.from('charlotte_users').select('id, email, name, created_at, charlotte_level, is_institutional, subscription_status, subscription_product, subscription_expires_at, trial_ends_at, placement_test_done, expo_push_token, runtime_version, app_version, app_platform, last_seen_at').order('id').range(a, b)),
-    paged((a, b) => supabase.from('charlotte_practices').select('user_id, created_at, xp_earned').gte('created_at', from.toISOString()).lte('created_at', to.toISOString()).order('id').range(a, b)),
-    paged((a, b) => supabase.from('charlotte_practices').select('user_id, created_at').gte('created_at', d90.toISOString()).order('id').range(a, b)),
-    paged((a, b) => supabase.from('charlotte_progress').select('user_id, streak_days, total_xp').order('user_id').range(a, b)),
+    paged((a, b) => supabase.from('charlotte_practices').select('user_id, created_at, xp_earned').not('practice_type', 'like', '%reward%').gte('created_at', from.toISOString()).lte('created_at', to.toISOString()).order('id').range(a, b)),
+    paged((a, b) => supabase.from('charlotte_practices').select('user_id, created_at').not('practice_type', 'like', '%reward%').gte('created_at', d90.toISOString()).order('id').range(a, b)),
+    paged((a, b) => supabase.from('charlotte_progress').select('user_id, streak_days, total_xp, last_practice_date').order('user_id').range(a, b)),
     // openai_usage: paginado para superar o limite de 1000 rows do PostgREST
     fetchAllUsage(),
     // notification_logs tambem pode nao existir
@@ -233,7 +234,7 @@ export async function GET(req: NextRequest) {
   for (const r of (siteRows ?? []) as { user_id: string; method: string | null; value_brl: number; trial_days: number; asaas_payment_id: string | null }[]) siteCk.set(String(r.user_id), r);
   const isStore = (p: string | null) => p === 'monthly' || p === 'yearly';
   const isSite = (p: string | null) => !!p && p.startsWith('web_');
-  const isAnnual = (p: string | null) => p === 'yearly' || p === 'web_annual';
+  const isAnnual = (p: string | null) => p === 'yearly' || !!p?.startsWith('web_annual'); // web_annual, web_annual_pix, web_annual_12x
   type SubKind = 'paid_store' | 'paid_site' | 'trial_store' | 'trial_site' | 'trial_legacy' | null;
   const kindOf = (u: typeof users[number]): SubKind => {
     if (u.subscription_status === 'trial') return u.trial_ends_at && new Date(u.trial_ends_at).getTime() > nowMs ? 'trial_legacy' : null;
@@ -277,13 +278,14 @@ export async function GET(req: NextRequest) {
   const paidEver = (u: typeof users[number]) => storePaid.has(String(u.id)) || !!siteCk.get(String(u.id))?.asaas_payment_id;
   const endedUnpaid = nonInstitutional.filter(u => {
     if (kinds.get(u.id) || paidEver(u)) return false;
-    const legacyEnded = !!u.trial_ends_at && new Date(u.trial_ends_at).getTime() <= nowMs;
-    const subEnded = (isStore(u.subscription_product) || isSite(u.subscription_product))
+    // Só o teste com cartão (loja e site). O teste antigo sem cartão (até 21/10) não era uma decisão de compra.
+    return (isStore(u.subscription_product) || isSite(u.subscription_product))
       && (u.subscription_status === 'cancelled' || u.subscription_status === 'expired');
-    return legacyEnded || subEnded;
   }).length;
-  const convDen = activeSubs.length + endedUnpaid;
-  const trialConversionPct = convDen === 0 ? null : Math.round((activeSubs.length / convDen) * 100);
+  // Convertidos = pagantes que vieram de um teste (loja sempre tem; site só se teve dias grátis). Pix direto não conta.
+  const convertedFromTrial = activeSubs.filter(u => isStore(u.subscription_product) || (siteCk.get(String(u.id))?.trial_days ?? 0) > 0).length;
+  const convDen = convertedFromTrial + endedUnpaid;
+  const trialConversionPct = convDen === 0 ? null : Math.round((convertedFromTrial / convDen) * 100);
 
   // ── Churn ────────────────────────────────────────────────────────────────
   // Proxy: cancelled + expired entre non-institutional
@@ -309,7 +311,7 @@ export async function GET(req: NextRequest) {
 
   // Mapa user -> [timestamps de practices]
   const practicesByUser = new Map<string, Date[]>();
-  for (const p of practices) {
+  for (const p of practicesWide) { // 90 dias: a coorte é de 60, então o período escolhido não pode cortar a volta
     const uid = String(p.user_id);
     if (!practicesByUser.has(uid)) practicesByUser.set(uid, []);
     practicesByUser.get(uid)!.push(new Date(p.created_at));
@@ -384,9 +386,9 @@ export async function GET(req: NextRequest) {
   // Top 10 users por custo — separa custos do sistema de custos de usuarios reais
   const SYSTEM_IDS = new Set(['system:scheduler', 'system:tts-cache', 'anonymous']);
   const SYSTEM_LABELS: Record<string, string> = {
-    'system:scheduler': 'Notificacoes (scheduler)',
-    'system:tts-cache': 'TTS Cache (vocabulario)',
-    'anonymous':        'Sem usuario (bug)',
+    'system:scheduler': 'Notificações (agendador)',
+    'system:tts-cache': 'Áudios do vocabulário (cache)',
+    'anonymous':        'Sem aluno identificado',
   };
 
   const costByUser: Record<string, number>   = {};
@@ -421,8 +423,9 @@ export async function GET(req: NextRequest) {
     }))
     .sort((a, b) => b.cost - a.cost);
 
-  // Custo medio por assinante ativo (aproximacao — no periodo inteiro)
-  const costPerActiveSub = activeSubs.length === 0 ? 0 : totalCost / activeSubs.length;
+  // Custo médio por aluno ativo no período (quem fez alguma atividade). Por pagante não diz nada enquanto há poucos.
+  const activeInRange = new Set(practices.map(p => String(p.user_id))).size;
+  const costPerActiveSub = activeInRange === 0 ? 0 : totalCost / activeInRange;
 
   // Custo por dia (serie temporal — ultimos 30 buckets do range)
   const costPerDay: Record<string, number> = {};
@@ -549,10 +552,8 @@ export async function GET(req: NextRequest) {
   const didPlacement  = funnelCohort.filter(u => u.placement_test_done === true).length;
   const firstPractice = funnelCohort.filter(u => (funnelPracticeCount.get(String(u.id)) ?? 0) >= 1).length;
   const threePractices = funnelCohort.filter(u => (funnelPracticeCount.get(String(u.id)) ?? 0) >= 3).length;
-  const trialToPaid   = funnelCohort.filter(u =>
-    u.trial_ends_at != null &&
-    (u.subscription_status === 'active' || u.subscription_status === 'cancelled' || u.subscription_status === 'expired')
-  ).length;
+  // Pagou de verdade (cobrança registrada). Estar no teste grátis da loja/site não conta.
+  const trialToPaid   = funnelCohort.filter(paidEver).length;
 
   // Retained 30d entre cohort users com idade ≥ 30 dias.
   const retained30Base = funnelCohort.filter(u => {
@@ -566,12 +567,12 @@ export async function GET(req: NextRequest) {
   }).length;
 
   const funnelStages = [
-    { stage: 'signup',          label: 'Signup',                 count: signups },
-    { stage: 'placement',       label: 'Placement test done',    count: didPlacement },
-    { stage: 'first_practice',  label: '1a pratica',             count: firstPractice },
-    { stage: 'three_practices', label: '3+ praticas',            count: threePractices },
-    { stage: 'trial_to_paid',   label: 'Trial → pago',           count: trialToPaid },
-    { stage: 'retained_30d',    label: 'Retidos 30d',
+    { stage: 'signup',          label: 'Cadastro',                   count: signups },
+    { stage: 'placement',       label: 'Fez o teste de nível',       count: didPlacement },
+    { stage: 'first_practice',  label: '1ª atividade',               count: firstPractice },
+    { stage: 'three_practices', label: '3 ou mais atividades',       count: threePractices },
+    { stage: 'trial_to_paid',   label: 'Pagou',                      count: trialToPaid },
+    { stage: 'retained_30d',    label: 'Ainda ativos após 30 dias',
       count: retained30, eligibleDenominator: retained30Base.length },
   ];
 
@@ -580,11 +581,13 @@ export async function GET(req: NextRequest) {
   // ─────────────────────────────────────────────────────────────────────────
 
   const nonInstIds = new Set(nonInstitutional.map(u => String(u.id)));
+  const streakCutoff = new Date(Date.now() - 3 * 3600000 - oneDay).toISOString().slice(0, 10); // ontem, no horário de Brasília
   const streakBuckets = { '0': 0, '1-3': 0, '4-7': 0, '8-14': 0, '15-30': 0, '30+': 0 };
   let usersWithProgress = 0;
   for (const p of progress) {
     if (!nonInstIds.has(String(p.user_id))) continue;
-    const s = p.streak_days ?? 0;
+    // streak_days só é zerado na próxima prática; sem prática hoje ou ontem, a sequência atual é 0.
+    const s = p.last_practice_date && p.last_practice_date >= streakCutoff ? (p.streak_days ?? 0) : 0;
     usersWithProgress += 1;
     if (s === 0) streakBuckets['0']  += 1;
     else if (s <= 3)  streakBuckets['1-3']  += 1;
@@ -670,18 +673,16 @@ export async function GET(req: NextRequest) {
     const survivalAt = (weeksOffset: number) => {
       if (size === 0) return null;
       const threshold = weeksOffset * 7 * oneDay;
-      const retainedCount = cohort.filter(u => {
-        const age = nowTs - new Date(u.created_at).getTime();
-        if (age < threshold) return null;
+      // Só entra na conta quem já tem idade para a semana (antes dividia pela coorte inteira e a
+      // semana em andamento aparecia como 0%).
+      const eligible = cohort.filter(u => nowTs - new Date(u.created_at).getTime() >= threshold);
+      if (eligible.length === 0) return null;
+      const retainedCount = eligible.filter(u => {
         const tsArr = practicesWideByUser.get(String(u.id)) ?? [];
         const created = new Date(u.created_at).getTime();
         return tsArr.some(t => (t - created) >= threshold);
-      }).filter(Boolean).length;
-      // Eligible = cohort size (they've all aged at least weeksOffset weeks
-      // only if the cohort's end >= weeksOffset weeks ago).
-      const cohortOldestAge = nowTs - start.getTime();
-      if (cohortOldestAge < threshold) return null;
-      return Math.round((retainedCount / size) * 100);
+      }).length;
+      return Math.round((retainedCount / eligible.length) * 100);
     };
     return {
       cohort: start.toISOString().slice(0, 10),

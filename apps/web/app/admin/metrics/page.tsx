@@ -345,8 +345,8 @@ function CohortTable({ rows }: { rows: MetricsResponse['retentionCohorts'] }) {
       <table className="adm-table" style={{ minWidth: 480 }}>
         <thead>
           <tr>
-            <th>Coorte</th><th>Usuários</th>
-            {['W1','W2','W3','W4','W6','W8'].map(w => <th key={w} style={{ textAlign: 'center' }}>{w}</th>)}
+            <th>Semana</th><th>Alunos</th>
+            {['1 sem','2 sem','3 sem','4 sem','6 sem','8 sem'].map(w => <th key={w} style={{ textAlign: 'center' }}>{w}</th>)}
           </tr>
         </thead>
         <tbody>
@@ -668,7 +668,7 @@ export default function MetricsPage() {
       <Sec>Receita</Sec>
       <div className="adm-grid" style={{ marginBottom: 20 }}>
         <div className="col-3"><KpiCard label="Receita mensal (MRR)" display={g ? fmtBRL(g.revenue.mrr) : '—'} ctx={g?.revenue.trialMrrPotential ? `+${fmtBRL(g.revenue.trialMrrPotential)} se os testes atuais pagarem` : 'receita mensal recorrente'} accent="var(--brand)" delay={0} tip="Receita mensal recorrente em reais: soma do valor mensal de quem já pagou (anual ÷ 12; no site, o valor real da compra, com cupom). Quem está no teste grátis não entra." /></div>
-        <div className="col-3"><KpiCard label="Receita anual (ARR)" display={g ? fmtBRL(g.revenue.arr) : '—'} ctx="receita mensal × 12" delay={60} tip="Annual Recurring Revenue — projeção do MRR atual multiplicada por 12." /></div>
+        <div className="col-3"><KpiCard label="Receita anual (ARR)" display={g ? fmtBRL(g.revenue.arr) : '—'} ctx="receita mensal × 12" delay={60} tip="Projeção anual: receita mensal atual × 12." /></div>
         <div className="col-3"><KpiCard label="Assinantes pagantes" value={g?.revenue.activeSubs} ctx={g ? `${g.revenue.monthlySubs} mensais · ${g.revenue.yearlySubs} anuais${g.revenue.subs ? ` · loja ${g.revenue.subs.paidStore} · site ${g.revenue.subs.paidSite}` : ''}` : undefined} delay={120} tip="Quem já foi cobrado e ainda tem acesso (loja: com cobrança registrada; site: compra já paga). Quem está nos 7 dias grátis aparece em Em teste." /></div>
         <div className="col-3"><KpiCard label="Em teste grátis" value={g?.revenue.onTrial} ctx={g?.revenue.subs ? `loja ${g.revenue.subs.trialStore} · site ${g.revenue.subs.trialSite}${g.revenue.subs.trialLegacy ? ` · teste antigo ${g.revenue.subs.trialLegacy}` : ''}` : undefined} delay={180} tip="Loja e site: 7 dias grátis com cartão (a cobrança vem no fim). O teste antigo (sem cartão, até 21/10) some daqui quando o último vencer." /></div>
         <div className="col-3">
@@ -679,7 +679,7 @@ export default function MetricsPage() {
         <div className="col-3">
           <KpiCard label="Conversão do teste" display={fmtPct(g?.revenue.trialConversionPct ?? null)} ctx="teste grátis → pago" delay={300}
             accent={g?.revenue.trialConversionPct != null && g.revenue.trialConversionPct > 15 ? 'var(--ok)' : undefined}
-            tip="Pagantes ÷ (pagantes + testes que terminaram sem pagar). Quem ainda está no teste não entra na conta." />
+            tip="Só o teste com cartão (loja e site): quem pagou depois do teste ÷ (esses + testes que terminaram sem pagar). Quem ainda está no teste não entra, nem compra direta no Pix. O teste antigo sem cartão também não." />
         </div>
         <div className="col-3">
           <KpiCard label="Total de contas" value={g?.revenue.totalUsers}
@@ -770,23 +770,23 @@ export default function MetricsPage() {
       <Sec>Atividade</Sec>
       <div className="adm-grid" style={{ marginBottom: 20 }}>
         <div className="col-3">
-          <KpiCard label="DAU" value={g?.engagement.dau}
+          <KpiCard label="Ativos no dia" value={g?.engagement.dau}
             dlt={prev && g ? pctDelta(g.engagement.dau, prev.dau) : undefined}
             spark={g?.engagement.dauTimeseries.map(d => d.dau)} sparkColor="var(--accent)"
-            ctx="usuários ativos hoje" accent="var(--accent)" delay={0}
-            tip="Daily Active Users — usuários com pelo menos uma prática hoje." />
+            ctx="alunos nas últimas 24 horas" accent="var(--accent)" delay={0}
+            tip="Alunos com pelo menos uma atividade (trilha, conversa, vocabulário…) nas últimas 24 horas. Resgate de recompensa não conta." />
         </div>
-        <div className="col-3"><KpiCard label="WAU" value={g?.engagement.wau} ctx="últimos 7 dias" delay={60} tip="Weekly Active Users — usuários com prática nos últimos 7 dias." /></div>
+        <div className="col-3"><KpiCard label="Ativos na semana" value={g?.engagement.wau} ctx="últimos 7 dias" delay={60} tip="Alunos com alguma atividade nos últimos 7 dias." /></div>
         <div className="col-3">
-          <KpiCard label="MAU" value={g?.engagement.mau}
+          <KpiCard label="Ativos no mês" value={g?.engagement.mau}
             dlt={prev && g ? pctDelta(g.engagement.mau, prev.mau) : undefined}
             ctx="últimos 30 dias" delay={120}
-            tip="Monthly Active Users — usuários com prática nos últimos 30 dias." />
+            tip="Alunos com alguma atividade nos últimos 30 dias." />
         </div>
         <div className="col-3">
-          <KpiCard label="Stickiness" display={fmtPct(g?.engagement.stickinessPct ?? null)} ctx="DAU ÷ MAU" delay={180}
+          <KpiCard label="Hábito diário" display={fmtPct(g?.engagement.stickinessPct ?? null)} ctx="ativos no dia ÷ ativos no mês" delay={180}
             accent={g?.engagement.stickinessPct != null && g.engagement.stickinessPct > 20 ? 'var(--ok)' : undefined}
-            tip="DAU ÷ MAU. Mede o hábito diário. Apps de educação saudáveis ficam acima de 20%." />
+            tip="Ativos no dia ÷ ativos no mês. Apps de educação saudáveis ficam acima de 20%." />
         </div>
       </div>
 
@@ -794,7 +794,7 @@ export default function MetricsPage() {
         <>
           <div className="adm-panel" style={{ marginBottom: 16 }}>
             <div className="adm-panel-hdr">
-              <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>DAU — Série temporal</span>
+              <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Ativos por dia</span>
               <span className="adm-panel-sub">{g.range.days}d</span>
             </div>
             <div className="adm-panel-body">
@@ -806,7 +806,7 @@ export default function MetricsPage() {
             <div className="col-6">
               <div className="adm-panel">
                 <div className="adm-panel-hdr">
-                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Funil de Ativação</span>
+                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Funil de ativação</span>
                 </div>
                 <div className="adm-panel-body">
                   <FunnelBars data={g.activationFunnel.map(f => ({ label: f.label, count: f.count }))} />
@@ -816,7 +816,7 @@ export default function MetricsPage() {
             <div className="col-6">
               <div className="adm-panel">
                 <div className="adm-panel-hdr">
-                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Tempo até 1ª Prática (TTFV) <HelpTip text="Time to First Value — quanto tempo após o cadastro o usuário fez a 1ª prática. Mediana ideal: abaixo de 1h." /></span>
+                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Tempo até a 1ª atividade <HelpTip text="Quanto tempo depois do cadastro o aluno fez a 1ª atividade. Mediana ideal: abaixo de 1 hora." /></span>
                   <span className="adm-panel-sub">{fmtN(g.timeToFirstValue.sampleSize)} usuários</span>
                 </div>
                 <div className="adm-panel-body">
@@ -826,7 +826,7 @@ export default function MetricsPage() {
                       <div style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--ok)' }}>{fmtHrs(g.timeToFirstValue.medianHours)}</div>
                     </div>
                     <div>
-                      <div style={{ fontSize: 10, color: 'var(--t3)', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: 3 }}>P90</div>
+                      <div style={{ fontSize: 10, color: 'var(--t3)', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: 3 }}>9 em cada 10</div>
                       <div style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--warn)' }}>{fmtHrs(g.timeToFirstValue.p90Hours)}</div>
                     </div>
                   </div>
@@ -838,7 +838,7 @@ export default function MetricsPage() {
 
           <div className="adm-panel">
             <div className="adm-panel-hdr">
-              <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Heatmap de Prática</span>
+              <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Horários de estudo</span>
               <span className="adm-panel-sub">dia × hora local</span>
             </div>
             <div className="adm-panel-body">
@@ -853,22 +853,22 @@ export default function MetricsPage() {
   // ── Retention ───────────────────────────────────────────────────────────────
   const tabRetention = () => (
     <>
-      <Sec>Retenção por Período</Sec>
+      <Sec>Retenção por período</Sec>
       <div className="adm-grid" style={{ marginBottom: 20 }}>
         <div className="col-4">
-          <KpiCard label="Retenção D1" display={fmtPct(g?.retention.d1 ?? null)} ctx="volta no dia 1" delay={0}
+          <KpiCard label="Retenção D1" display={fmtPct(g?.retention.d1 ?? null)} ctx="voltou depois do 1º dia" delay={0}
             accent={g?.retention.d1 != null ? (g.retention.d1 > 40 ? 'var(--ok)' : g.retention.d1 > 20 ? 'var(--warn)' : 'var(--err)') : undefined}
-            tip="% dos novos usuários que voltaram e fizeram uma prática no dia seguinte ao cadastro. Benchmark apps de educação: > 40% excelente." />
+            tip="Entre quem se cadastrou nos últimos 60 dias (e já tem 1 dia de conta), quantos fizeram alguma atividade 24 horas ou mais depois do cadastro. Apps de educação: acima de 40% é excelente." />
         </div>
         <div className="col-4">
-          <KpiCard label="Retenção D7" display={fmtPct(g?.retention.d7 ?? null)} ctx="volta na semana 1" delay={60}
+          <KpiCard label="Retenção D7" display={fmtPct(g?.retention.d7 ?? null)} ctx="voltou depois de 7 dias" delay={60}
             accent={g?.retention.d7 != null ? (g.retention.d7 > 25 ? 'var(--ok)' : g.retention.d7 > 10 ? 'var(--warn)' : 'var(--err)') : undefined}
-            tip="% dos novos usuários que voltaram 7 dias após o cadastro. Benchmark: > 25% bom, > 10% aceitável." />
+            tip="Quantos fizeram alguma atividade 7 dias ou mais depois do cadastro (entre quem já tem 7 dias de conta). Acima de 25% é bom; acima de 10%, aceitável." />
         </div>
         <div className="col-4">
-          <KpiCard label="Retenção D30" display={fmtPct(g?.retention.d30 ?? null)} ctx="volta no mês 1" delay={120}
+          <KpiCard label="Retenção D30" display={fmtPct(g?.retention.d30 ?? null)} ctx="voltou depois de 30 dias" delay={120}
             accent={g?.retention.d30 != null ? (g.retention.d30 > 15 ? 'var(--ok)' : g.retention.d30 > 5 ? 'var(--warn)' : 'var(--err)') : undefined}
-            tip="% dos novos usuários que voltaram 30 dias após o cadastro. Benchmark: > 15% bom, > 5% aceitável." />
+            tip="Quantos fizeram alguma atividade 30 dias ou mais depois do cadastro (entre quem já tem 30 dias de conta). Acima de 15% é bom; acima de 5%, aceitável." />
         </div>
       </div>
 
@@ -876,7 +876,7 @@ export default function MetricsPage() {
         <>
           <div className="adm-panel" style={{ marginBottom: 16 }}>
             <div className="adm-panel-hdr">
-              <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Análise de Coorte <HelpTip text="Retenção por semana de cadastro. Cada linha = uma coorte (semana). Colunas = semanas subsequentes. Cores mais fortes = mais usuários retendo." /></span>
+              <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Retenção por semana de cadastro <HelpTip text="Cada linha é a turma que se cadastrou naquela semana. Cada coluna mostra quantos ainda faziam atividade depois de N semanas, contando só quem já tem essa idade de conta." /></span>
               <span className="adm-panel-sub">{g.retentionCohorts.length} coortes</span>
             </div>
             <div className="adm-panel-body">
@@ -884,7 +884,7 @@ export default function MetricsPage() {
             </div>
           </div>
           <div className="adm-panel">
-            <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Distribuição de Streak</span></div>
+            <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Sequência atual dos alunos</span></div>
             <div className="adm-panel-body">
               <BarChart data={g.streakDistribution} labelKey="bucket" valueKey="count" color="var(--brand)" />
             </div>
@@ -900,23 +900,23 @@ export default function MetricsPage() {
       {g?.openai.tableMissing && (
         <div className="adm-alert warn" style={{ marginBottom: 14 }}><TriangleAlert size={14} /> Tabela de custos não encontrada (openai_usage).</div>
       )}
-      <Sec>APIs Externas — Resumo</Sec>
+      <Sec>Custos de IA — resumo</Sec>
       <div className="adm-grid" style={{ marginBottom: 20 }}>
         <div className="col-4">
-          <KpiCard label="Custo Total APIs" display={g ? fmtUSD(g.openai.totalCost) : '—'}
+          <KpiCard label="Custo total de IA" display={g ? fmtUSD(g.openai.totalCost) : '—'}
             dlt={prev && g ? pctDelta(g.openai.totalCost, prev.totalCost) : undefined}
-            ctx="OpenAI + ElevenLabs + Azure" accent="var(--warn)" delay={0}
+            ctx="texto, voz e pronúncia" accent="var(--warn)" delay={0}
             tip="Soma dos custos de OpenAI (GPT, Whisper), ElevenLabs (TTS) e Azure Speech no período selecionado." />
         </div>
-        <div className="col-4"><KpiCard label="Custo/Assinante" display={g ? fmtUSD(g.openai.costPerActiveSub) : '—'} ctx="custo total / assinante ativo" delay={60} tip="Custo total de APIs ÷ assinantes ativos. Indica a margem de custo por usuário pagante." /></div>
-        <div className="col-4"><KpiCard label="Requisições" value={g?.openai.callCount} ctx="chamadas a APIs externas no período" delay={120} tip="Total de chamadas a APIs externas pagas (OpenAI, ElevenLabs, Azure) no período." /></div>
+        <div className="col-4"><KpiCard label="Custo por aluno ativo" display={g ? fmtUSD(g.openai.costPerActiveSub) : '—'} ctx="custo total ÷ alunos com atividade no período" delay={60} tip="Custo total de IA ÷ alunos que fizeram alguma atividade no período. Compare com o valor do plano para ver a margem." /></div>
+        <div className="col-4"><KpiCard label="Requisições" value={g?.openai.callCount} ctx="chamadas pagas no período" delay={120} tip="Total de chamadas a APIs externas pagas (OpenAI, ElevenLabs, Azure) no período." /></div>
       </div>
 
       {g && (
         <div className="adm-grid" style={{ gap: 16 }}>
           <div className="col-12">
             <div className="adm-panel" style={{ marginBottom: 0 }}>
-              <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Custo Diário</span></div>
+              <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Custo por dia</span></div>
               <div className="adm-panel-body">
                 <AreaChart data={g.openai.timeseries} xKey="date" yKey="cost" color="var(--warn)" h={150} />
               </div>
@@ -924,7 +924,7 @@ export default function MetricsPage() {
           </div>
           <div className="col-6">
             <div className="adm-panel">
-              <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Por Endpoint</span></div>
+              <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Por função do app</span></div>
               <table className="adm-table">
                 <thead><tr><th>Endpoint</th><th>Provider</th><th style={{ textAlign: 'right' }}>Custo</th><th style={{ textAlign: 'right' }}>Chamadas</th></tr></thead>
                 <tbody>
@@ -952,7 +952,7 @@ export default function MetricsPage() {
           </div>
           <div className="col-6">
             <div className="adm-panel">
-              <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Por Modelo</span></div>
+              <div className="adm-panel-hdr"><span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Por modelo</span></div>
               <table className="adm-table">
                 <thead><tr><th>Modelo</th><th style={{ textAlign: 'right' }}>Custo</th><th style={{ textAlign: 'right' }}>Tokens</th></tr></thead>
                 <tbody>
@@ -971,7 +971,7 @@ export default function MetricsPage() {
             <div className="col-12">
               <div className="adm-panel">
                 <div className="adm-panel-hdr">
-                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Top Usuários por Custo</span>
+                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Alunos que mais gastam</span>
                   <span className="adm-panel-sub">top {g.openai.topUsers.length}</span>
                 </div>
                 <table className="adm-table">
@@ -996,7 +996,7 @@ export default function MetricsPage() {
             <div className="col-12">
               <div className="adm-panel">
                 <div className="adm-panel-hdr">
-                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Custo do Sistema <HelpTip text="Custos de infraestrutura não atribuíveis a usuários específicos: scheduler de notificações (GPT) e geração de cache de TTS de vocabulário." /></span>
+                  <span className="adm-panel-title" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Custo do sistema <HelpTip text="Custos que não são de um aluno específico: textos das notificações e áudios do vocabulário gerados com antecedência." /></span>
                   
                 </div>
                 <table className="adm-table">
