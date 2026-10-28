@@ -13,6 +13,8 @@ export type AnalyticsEvent =
   | 'placement_test_done'
   | 'lesson_started'
   | 'lesson_completed'
+  | 'lesson_abandoned'
+  | 'screen_view'
   | 'exercise_completed'
   | 'exercise_error'
   | 'chat_message_sent'

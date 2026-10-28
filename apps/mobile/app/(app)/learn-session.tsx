@@ -236,6 +236,19 @@ export default function LearnSessionScreen() {
   const stepIdxRef = useRef(0);
   stepIdxRef.current = stepIdx;
   const [isComplete, setIsComplete]   = useState(false);
+  // Começou e largou: lesson_started ao abrir, lesson_abandoned ao sair sem terminar (em que passo parou).
+  const isCompleteRef = useRef(false);
+  isCompleteRef.current = isComplete;
+  const totalStepsRef = useRef(0);
+  totalStepsRef.current = totalSteps;
+  useEffect(() => {
+    if (!isV2 || !userId) return;
+    const base = { level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null, activity: params.activity ?? 'both', first: isFirstActivity };
+    track('lesson_started', { ...base, total: totalStepsRef.current });
+    return () => {
+      if (!isCompleteRef.current) track('lesson_abandoned', { ...base, step: stepIdxRef.current, total: totalStepsRef.current });
+    };
+  }, [isV2, userId, params.moduleId, params.unitId, params.activity]); // eslint-disable-line react-hooks/exhaustive-deps
   // Conquista não interrompe exercício: o card fica na fila e aparece na tela de conclusão,
   // antes da próxima atividade (que espera ele fechar para tocar áudio).
   // Só pausa depois que a conquista da atividade anterior (se houver) já apareceu e foi fechada.

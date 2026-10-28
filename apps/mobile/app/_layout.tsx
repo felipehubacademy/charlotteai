@@ -23,6 +23,7 @@ import { SplashOverlay } from '@/components/ui/SplashOverlay';
 import { useFonts } from 'expo-font';
 import { useOtaAutoApply } from '@/lib/otaAutoApply';
 import { installApiAuthFetch } from '@/lib/apiAuthFetch';
+import { identifyUser, track } from '@/lib/analytics';
 
 // Prova de login em todo pedido ao servidor; conta apagada → sai da conta (lib/apiAuthFetch).
 installApiAuthFetch();
@@ -94,6 +95,14 @@ function AuthGuard() {
       setConsentFor(uid);
       setConsentReady(true);
     });
+  }, [pathname, profile?.id, profile?.created_at]);
+
+  // Telas vistas nos 2 primeiros dias da conta: mostra onde o aluno novo para antes da 1ª lição.
+  useEffect(() => {
+    if (!profile?.id || !profile.created_at || !pathname) return;
+    if (Date.now() - new Date(profile.created_at).getTime() > 2 * 86400000) return;
+    identifyUser(profile.id, profile.charlotte_level ?? 'Novice'); // antes da tela inicial (que também identifica)
+    track('screen_view', { screen: pathname });
   }, [pathname, profile?.id, profile?.created_at]);
 
   // If auth resolved but profile fetch failed, retry up to 5 times with backoff.
