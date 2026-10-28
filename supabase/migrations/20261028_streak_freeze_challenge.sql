@@ -282,8 +282,11 @@ end $$;
 
 revoke all on function public.streak_status() from public, anon;
 revoke all on function public.accept_streak_challenge() from public, anon;
-revoke all on function public.rn_streak_try_freeze(uuid, date) from public, anon, authenticated;
-revoke all on function public.rn_streak_challenge_tick(uuid, date, boolean) from public, anon, authenticated;
+revoke all on function public.rn_streak_try_freeze(uuid, date) from public, anon;
+revoke all on function public.rn_streak_challenge_tick(uuid, date, boolean) from public, anon;
+-- O trigger de prática roda como o aluno: sem estas duas, toda prática gravada pelo app falha.
+grant execute on function public.rn_streak_try_freeze(uuid, date) to authenticated;
+grant execute on function public.rn_streak_challenge_tick(uuid, date, boolean) to authenticated;
 grant execute on function public.streak_status() to authenticated;
 grant execute on function public.accept_streak_challenge() to authenticated;
 
