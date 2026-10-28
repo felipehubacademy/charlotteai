@@ -190,6 +190,28 @@ export function appUpdateTemplate(opts: { name?: string | null; unsubscribeUrl?:
   return { subject, html };
 }
 
+// ── 6b. Campanha de volta (degustação que parou no 1º dia): "O que te fez parar?" ───────
+// Cada opção é um link de 1 toque (lib/winback.ts) que grava a resposta e credita 5 min de ligação.
+export function winbackTemplate(opts: { name?: string | null; unsubscribeUrl?: string; answerUrls?: { label: string; url: string }[] }) {
+  const first = (opts.name ?? '').trim().split(/\s+/)[0];
+  const ola = first ? `Oi, ${first}!` : 'Oi!';
+  const subject = 'Seu tópico grátis de hoje já está liberado';
+  const unsubscribe = opts.unsubscribeUrl
+    ? `<p style="margin:12px 0 0;font-size:12px;color:#8A8494;line-height:1.7;">Não quer mais receber novidades? <a href="${opts.unsubscribeUrl}" style="color:#8A8494;text-decoration:underline;">Descadastrar</a>.</p>`
+    : '';
+  const options = (opts.answerUrls ?? []).map(o =>
+    `<tr><td style="padding:0 0 8px;"><a href="${o.url}" style="display:block;background:#F4F1EA;border:1px solid #E8E4DA;border-radius:14px;padding:13px 16px;font-size:15px;font-weight:700;color:#16131F;-webkit-text-fill-color:#16131F;text-decoration:none;text-align:left;">${o.label}</a></td></tr>`).join('');
+  const html = base(`
+    ${h1('Tem tópico novo te esperando.')}
+    ${p(`${ola}<br>Mudamos a degustação do Queizy: agora são <strong style="color:#16131F;">5 dias com 1 tópico novo grátis por dia</strong>. O seu de hoje já está liberado na trilha.`)}
+    ${btn('Fazer o tópico de hoje', SMART_LINK)}
+    ${p('<strong style="color:#16131F;">Uma pergunta rápida:</strong> o que te fez parar depois do primeiro dia? Toque em uma opção e ganhe <strong style="color:#16131F;">5 minutos de ligação por voz</strong> para treinar a conversa.')}
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="max-width:400px;margin:8px auto 0;">${options}</table>
+    ${note('Sua resposta ajuda a gente a deixar o Queizy melhor para você.')}
+  `, unsubscribe);
+  return { subject, html };
+}
+
 // ── 6c. Carrinho abandonado (assinatura pelo site): 3 lembretes ──────────────────────
 
 export function cartRecoveryTemplate(opts: {

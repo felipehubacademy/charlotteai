@@ -7,5 +7,5 @@ alter table notifications.notification_logs add constraint notification_logs_not
   'trial_ending_24h','sub_expired_1d','streak_broken','reengagement_3d','reengagement_7d','reengagement_14d','reengagement_30d',
   'practice_reminder','achievement','marketing','scheduler_lock','buddy_rivalry','rally_update','rally_reminder','rally_result',
   'web_sub_notice','taste_daily','taste_nudge','taste_ended','taste_offer','rank_up','rank_lost','rank_threat','rank_week_won',
-  'legacy_trial_ended','release_update','family_grows','app_update'
+  'legacy_trial_ended','release_update','family_grows','app_update','winback'
 ]::text[]));

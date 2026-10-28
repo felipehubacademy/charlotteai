@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
   const needsReset = !taster && (!user.live_voice_reset_date || user.live_voice_reset_date < monthStart(user.timezone || 'America/Sao_Paulo'));
   const used = needsReset ? 0 : Number(user.live_voice_seconds_used ?? 0);
   const pool = taster ? TASTE_LIVE_VOICE_SECONDS : user.subscription_status === 'trial' ? 300 : 1200;
-  const remaining = Math.max(0, pool - used) + (taster ? 0 : Number(user.live_voice_bonus_seconds ?? 0));
+  const remaining = Math.max(0, pool - used) + Number(user.live_voice_bonus_seconds ?? 0); // degustação também usa o bônus
   if (remaining <= 0) return NextResponse.json({ error: 'monthly_pool_exhausted' }, { status: 403 });
 
   const level = (['Novice', 'Inter', 'Advanced'].includes(user.charlotte_level) ? user.charlotte_level : 'Inter') as CallLevel;

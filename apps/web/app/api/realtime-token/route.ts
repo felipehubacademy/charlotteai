@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
             const needsReset   = !taster && (!data.live_voice_reset_date || data.live_voice_reset_date < thisMonth);
             const secondsUsed  = needsReset ? 0 : (data.live_voice_seconds_used ?? 0);
             const pool         = taster ? TASTE_LIVE_VOICE_SECONDS : POOL_SECONDS;
-            const remaining    = Math.max(0, pool - secondsUsed) + (taster ? 0 : Number((data as any).live_voice_bonus_seconds ?? 0));
+            const remaining    = Math.max(0, pool - secondsUsed) + Number((data as any).live_voice_bonus_seconds ?? 0); // degustação também usa o bônus (ex.: os 5 min da pesquisa de volta)
 
             if (remaining <= 0) {
               console.warn('⛔ Live Voice pool exhausted for user:', user.id);

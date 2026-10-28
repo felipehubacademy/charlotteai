@@ -25,7 +25,8 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 // Email do projeto vai por Microsoft Graph (Office 365), o MESMO caminho do
 // reset de senha / signup / welcome. Template no padrao usual do projeto.
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
-import { releaseUpdateTemplate, familyGrowsTemplate, appUpdateTemplate } from '@/lib/email-templates';
+import { releaseUpdateTemplate, familyGrowsTemplate, appUpdateTemplate, winbackTemplate } from '@/lib/email-templates';
+import { WINBACK_ANSWERS, winbackAnswerUrl } from '@/lib/winback';
 import { unsubscribeUrl } from '@/lib/unsubscribe';
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
@@ -54,7 +55,19 @@ const CAMPAIGNS = {
     pushBody: 'Saiu versão nova na App Store e na Google Play, com correções e melhorias. Atualize pela loja para tudo funcionar direitinho.',
     template: appUpdateTemplate,
   },
+  // Campanha de volta (28/10): degustação cadastrada de 20 a 27/10 que não abriu o app depois do dia do cadastro.
+  // E-mail com "O que te fez parar?" de 1 toque (5 min de ligação de presente, /api/winback).
+  winback: {
+    logType: 'winback',
+    pushTitle: 'Seu tópico grátis de hoje chegou',
+    pushBody: 'Agora são 5 dias com 1 tópico novo grátis por dia. O de hoje já está liberado na sua trilha.',
+    template: winbackTemplate,
+  },
 } as const;
+// Janela da campanha de volta (dias do calendário de Brasília: 20/10 a 27/10).
+const WINBACK_FROM = '2026-10-20T03:00:00Z';
+const WINBACK_TO   = '2026-10-28T03:00:00Z';
+const brtDate = (iso: string) => new Date(new Date(iso).getTime() - 3 * 3600_000).toISOString().slice(0, 10);
 const LATEST_STORE_VERSION = '2.0.2';
 type CampaignId = keyof typeof CAMPAIGNS;
 
@@ -84,11 +97,12 @@ export async function POST(req: NextRequest) {
   const channels: string[] = Array.isArray(body?.channels) && body.channels.length
     ? body.channels
     : ['push', 'email'];
-  const campaignId: CampaignId = body?.campaign === 'family' || body?.campaign === 'update' ? body.campaign : 'release';
+  const campaignId: CampaignId = ['family', 'update', 'winback'].includes(body?.campaign) ? body.campaign : 'release';
   const campaign = CAMPAIGNS[campaignId];
   const LOG_TYPE = campaign.logType;
   const PUSH_TITLE = campaign.pushTitle;
   const PUSH_BODY = campaign.pushBody;
+  const renderTemplate = campaign.template as (o: { name?: string | null; unsubscribeUrl?: string; answerUrls?: { label: string; url: string }[] }) => { subject: string; html: string };
 
   // ── Diagnostico de email (nao envia em massa) ──────────────────────────────
   // { diag:true }            -> so reporta se a chave/remetente estao configurados
@@ -103,9 +117,10 @@ export async function POST(req: NextRequest) {
       const res = await supabase
         .from('charlotte_users').select('id, name').eq('email', body.to).maybeSingle();
       const u = res.data as { id: string; name: string | null } | null;
-      const tpl = campaign.template({
+      const tpl = renderTemplate({
         name: u?.name ?? 'Teste',
         unsubscribeUrl: u?.id ? unsubscribeUrl(u.id) : undefined,
+        answerUrls: u?.id ? WINBACK_ANSWERS.map(o => ({ label: o.label, url: winbackAnswerUrl(u.id, o.id) })) : undefined,
       });
       const ok = await graphSendEmail({ to: body.to, subject: tpl.subject, html: tpl.html });
       test = { ok, unsubUserId: u?.id ?? null };
@@ -144,16 +159,36 @@ export async function POST(req: NextRequest) {
   // ── Audiencia ──────────────────────────────────────────────────────────────
   const { data, error } = await supabase
     .from('charlotte_users')
-    .select('id, name, email, expo_push_token, marketing_opt_out, email_bounced, app_version, created_at');
+    .select('id, name, email, expo_push_token, marketing_opt_out, email_bounced, app_version, created_at, subscription_status, is_institutional');
   if (error) {
     return NextResponse.json({ error: `Falha ao buscar usuarios: ${error.message}` }, { status: 500 });
   }
   const before = typeof body?.before === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(body.before) ? body.before : null;
   const isTeam = (e: string | null) => !!e && (/@(hubacademybr\.com|queizy\.com)$/i.test(e) || /^felipe\.xavier1987\+/i.test(e));
-  const rows = ((data ?? []) as (Row & { created_at: string })[])
+  // Campanha de volta: quem abriu o app em algum dia depois do dia do cadastro fica de fora.
+  let returned = new Set<string>();
+  if (campaignId === 'winback') {
+    for (let from = 0; ; from += 1000) {
+      const { data: ev, error: evErr } = await supabase.from('charlotte_analytics_events')
+        .select('user_id, created_at').eq('event_name', 'app_open').gte('created_at', '2026-10-21T03:00:00Z')
+        .order('created_at').range(from, from + 999);
+      if (evErr) return NextResponse.json({ error: `Falha ao ler aberturas: ${evErr.message}` }, { status: 500 });
+      for (const e of (ev ?? []) as { user_id: string; created_at: string }[]) returned.add(`${e.user_id}|${brtDate(e.created_at)}`);
+      if (!ev || ev.length < 1000) break;
+    }
+  }
+  const cameBack = (r: { id: string; created_at: string }) => {
+    const d0 = brtDate(r.created_at);
+    for (const k of returned) { const [uid, d] = k.split('|'); if (uid === r.id && d > d0) return true; }
+    return false;
+  };
+  const rows = ((data ?? []) as (Row & { created_at: string; subscription_status: string | null; is_institutional: boolean | null })[])
     .filter(r => !isTeam(r.email))
     .filter(r => !before || r.created_at < before)
-    .filter(r => campaignId !== 'update' || (!!r.app_version && r.app_version !== LATEST_STORE_VERSION));
+    .filter(r => campaignId !== 'update' || (!!r.app_version && r.app_version !== LATEST_STORE_VERSION))
+    .filter(r => campaignId !== 'winback' || (
+      (!r.subscription_status || r.subscription_status === 'none') && !r.is_institutional
+      && r.created_at >= WINBACK_FROM && r.created_at < WINBACK_TO && !cameBack(r)));
 
   const pushRows = rows.filter(r => r.expo_push_token?.startsWith('ExponentPushToken['));
   // Marketing: exclui descadastrados (LGPD) e emails que ja deram bounce. Push nao e afetado.
@@ -227,7 +262,10 @@ export async function POST(req: NextRequest) {
   if (channels.includes('email')) {
     let sent = 0, errors = 0;
     for (const r of emailRows) {
-      const tpl = campaign.template({ name: r.name, unsubscribeUrl: unsubscribeUrl(r.id) });
+      const tpl = renderTemplate({
+        name: r.name, unsubscribeUrl: unsubscribeUrl(r.id),
+        answerUrls: campaignId === 'winback' ? WINBACK_ANSWERS.map(o => ({ label: o.label, url: winbackAnswerUrl(r.id, o.id) })) : undefined,
+      });
       const ok = await graphSendEmail({ to: r.email!, subject: tpl.subject, html: tpl.html });
       if (ok) sent++; else errors++;
     }
