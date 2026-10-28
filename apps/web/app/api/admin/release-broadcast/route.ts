@@ -192,7 +192,11 @@ export async function POST(req: NextRequest) {
 
   const pushRows = rows.filter(r => r.expo_push_token?.startsWith('ExponentPushToken['));
   // Marketing: exclui descadastrados (LGPD) e emails que ja deram bounce. Push nao e afetado.
-  const emailRows = rows.filter(r => !!r.email && !r.marketing_opt_out && !r.email_bounced);
+  // { part: 1 | 2 }: só a metade 1 ou 2 dos e-mails (ordem por id). Listas grandes (600+) passam dos 5 min da função.
+  const part = body?.part === 1 || body?.part === 2 ? body.part : null;
+  const allEmailRows = rows.filter(r => !!r.email && !r.marketing_opt_out && !r.email_bounced).sort((x, y) => x.id.localeCompare(y.id));
+  const half = Math.ceil(allEmailRows.length / 2);
+  const emailRows = part === 1 ? allEmailRows.slice(0, half) : part === 2 ? allEmailRows.slice(half) : allEmailRows;
   const emailOptedOut = rows.filter(r => !!r.email && r.marketing_opt_out).length;
   const emailBounced = rows.filter(r => !!r.email && r.email_bounced).length;
 
