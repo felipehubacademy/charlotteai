@@ -43,6 +43,15 @@ function parseHashParams(url: string): Record<string, string> {
   return Object.fromEntries(new URLSearchParams(url.slice(hashIndex + 1)));
 }
 
+/** Conta apagada de verdade (o servidor diz que o usuário não existe). Token vencido ("invalid JWT"), sessão
+ *  expirada e falha de rede NÃO contam: antes o teste aceitava qualquer "invalid" e o app saía da conta sozinho
+ *  ao voltar do segundo plano com o token vencido. Mesmo critério do middleware do site. */
+function accountIsGone(ue: unknown): boolean {
+  const e = ue as { code?: string; message?: string } | null;
+  if (!e) return false;
+  return e.code === 'user_not_found' || /user not found|does not exist/i.test(e.message ?? '');
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
@@ -134,7 +143,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           // Sem perfil: a conta pode ter sido apagada com o app aberto. Confere no servidor; se não existe mais,
           // sai da conta (falha de rede não derruba ninguém).
           const { data: u, error: ue } = await supabase.auth.getUser();
-          const gone = !u?.user && !!ue && ((ue as any).status === 401 || (ue as any).status === 403 || /not found|does not exist|invalid/i.test(ue.message ?? ''));
+          const gone = !u?.user && accountIsGone(ue);
           if (gone) { await supabase.auth.signOut({ scope: 'local' }).catch(() => {}); return; }
         }
         // Salvar timezone do device para uso em triggers/crons server-side
@@ -307,7 +316,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             // ficava girando. Confere no servidor se a conta existe; se não existe, encerra a sessão local e o
             // app volta para o login. Falha de rede não derruba ninguém (getUser só erra com conta inválida).
             const { data: u, error: ue } = await supabase.auth.getUser();
-            const gone = !u?.user && !!ue && ((ue as any).status === 401 || (ue as any).status === 403 || /not found|does not exist|invalid/i.test(ue.message ?? ''));
+            const gone = !u?.user && accountIsGone(ue);
             if (gone) {
               console.warn('[AuthProvider] conta não existe mais — encerrando a sessão local');
               await supabase.auth.signOut({ scope: 'local' }).catch(() => {});
