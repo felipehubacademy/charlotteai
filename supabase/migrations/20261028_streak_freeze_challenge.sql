@@ -93,7 +93,12 @@ begin
   v_today := (current_timestamp at time zone v_user_tz)::date;
 
   select last_practice_date into v_last from charlotte.progress where user_id = new.user_id;
-  v_freeze := public.rn_streak_try_freeze(new.user_id, v_today);
+  -- A prática nunca pode falhar por causa da proteção ou do desafio: qualquer erro aqui é ignorado.
+  begin
+    v_freeze := public.rn_streak_try_freeze(new.user_id, v_today);
+  exception when others then
+    v_freeze := false;
+  end;
 
   -- Update XP + streak (congelamento: faltou só ontem e tinha proteção → continua)
   insert into charlotte.progress (user_id, total_xp, streak_days, last_practice_date, updated_at)
@@ -109,7 +114,11 @@ begin
         last_practice_date = v_today,
         updated_at         = now();
 
-  perform public.rn_streak_challenge_tick(new.user_id, v_today, v_last is not null and v_last < v_today - 1 and not v_freeze);
+  begin
+    perform public.rn_streak_challenge_tick(new.user_id, v_today, v_last is not null and v_last < v_today - 1 and not v_freeze);
+  exception when others then
+    null;
+  end;
 
   -- Get user level and display name from charlotte.users (canonical for RN)
   select coalesce(u.charlotte_level, 'Novice'),
