@@ -61,6 +61,7 @@ interface MetricsResponse {
   };
   engagement: {
     dau: number; wau: number; mau: number; stickinessPct: number | null; avgDau30: number;
+    habit?: Record<'d30' | 'd7' | 'd1', { pct: number | null; avgDau: number; days: number }> & { monthly: number };
     dauTimeseries: Array<{ date: string; dau: number }>;
     liveVoice: { calls: number; minutes: number; users: number; byCharacter: Array<{ character: string; calls: number; minutes: number }> };
   };
@@ -659,6 +660,7 @@ export default function MetricsPage() {
   const [levelFilter, setLevelFilter] = useState('');
   const [planFilter,  setPlanFilter]  = useState('');
   const [tab, setTab] = useState<Tab>('overview');
+  const [habitWin, setHabitWin] = useState<'d30' | 'd7' | 'd1'>('d30');
   const [updatedAt, setUpdatedAt] = useState<Date | null>(null);
   const [selectedUser, setSelectedUser] = useState<{ userId: string; name: string | null; email: string | null } | null>(null);
 
@@ -745,6 +747,12 @@ export default function MetricsPage() {
           <KpiCard label="Em degustação" value={g?.taste.total}
             ctx={g ? `1º dia ${g.taste.day1} · ${g.taste.tasteDays}º dia ${g.taste.lastDay} · já esgotaram ${g.taste.exhausted}` : undefined} delay={600}
             tip={`Contas sem assinatura nem teste (fora as da equipe). A degustação libera um pouco por dia durante ${g?.taste.tasteDays ?? 5} dias, contados no calendário de Brasília a partir do dia do cadastro (dia 1). Já esgotaram = passaram do último dia sem começar o teste.`} />
+        </div>
+        <div className="col-3">
+          <KpiCard label="Voltou no dia seguinte" display={fmtPct(g?.retention.d1 ?? null)}
+            ctx={g ? `${fmtN(g.retention.n.d1.retained)} de ${fmtN(g.retention.n.d1.eligible)} contas novas` : undefined} delay={630}
+            accent={g?.retention.d1 != null ? (g.retention.d1 > 40 ? 'var(--ok)' : g.retention.d1 > 20 ? 'var(--warn)' : 'var(--err)') : undefined}
+            tip="Entre quem criou a conta nos últimos 60 dias (e já passou o dia seguinte): quantos fizeram alguma atividade no dia seguinte ao cadastro, no calendário de Brasília. É a Retenção D1 da aba Retenção. Apps de educação: acima de 40% é excelente." />
         </div>
         <div className="col-3">
           <KpiCard label="Total de contas" value={g?.revenue.totalUsers}
@@ -998,9 +1006,21 @@ export default function MetricsPage() {
             tip="Alunos com alguma atividade nos últimos 30 dias do calendário de Brasília, contando hoje. A variação compara com os 30 dias anteriores a esses." />
         </div>
         <div className="col-3">
-          <KpiCard label="Hábito diário" display={fmtPct(g?.engagement.stickinessPct ?? null)} ctx={g ? `média de ${g.engagement.avgDau30.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} por dia ÷ ativos no mês` : 'ativos no dia ÷ ativos no mês'} delay={180}
-            accent={g?.engagement.stickinessPct != null && g.engagement.stickinessPct > 20 ? 'var(--ok)' : undefined}
-            tip="Média de ativos por dia ÷ ativos no mês, nos últimos 30 dias completos (sem hoje). Apps de educação saudáveis ficam acima de 20%." />
+          {(() => {
+            const h = g?.engagement.habit?.[habitWin];
+            const winTxt = habitWin === 'd1' ? 'ontem' : h && h.days < (habitWin === 'd30' ? 30 : 7) ? `${h.days} dias desde o lançamento` : habitWin === 'd30' ? 'últimos 30 dias' : 'últimos 7 dias';
+            return (
+              <KpiCard label="Hábito diário" display={fmtPct(h ? h.pct : g?.engagement.stickinessPct ?? null)}
+                ctx={h ? `${habitWin === 'd1' ? `${fmtN(h.avgDau)} ativos` : `média de ${h.avgDau.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} por dia`} ÷ ${fmtN(g!.engagement.habit!.monthly)} no mês · ${winTxt}` : 'ativos no dia ÷ ativos no mês'} delay={180}
+                accent={h?.pct != null ? (h.pct >= 20 ? 'var(--ok)' : h.pct >= 10 ? 'var(--warn)' : 'var(--err)') : undefined}
+                tip="Média de ativos por dia ÷ ativos no mês (30 dias até ontem). O seletor escolhe de quais dias sai a média: 30 dias, 7 dias ou só ontem. Hoje não entra (está pela metade) e a média começa no lançamento, 20/10/2026. Apps de educação saudáveis ficam acima de 20%." />
+            );
+          })()}
+          <div style={{ display: 'flex', gap: 6, marginTop: 8 }}>
+            {([['d30', '30 dias'], ['d7', '7 dias'], ['d1', 'Ontem']] as const).map(([k, l]) => (
+              <button key={k} className={`range-pill${habitWin === k ? ' active' : ''}`} onClick={() => setHabitWin(k)}>{l}</button>
+            ))}
+          </div>
         </div>
       </div>
 

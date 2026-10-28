@@ -72,6 +72,8 @@ const brtDay = (t: number) => Math.floor((t - BRT) / DAY);
 const brtDayStart = (idx: number) => idx * DAY + BRT;
 /** YYYY-MM-DD do dia de índice idx. */
 const dayKey = (idx: number) => new Date(idx * DAY).toISOString().slice(0, 10);
+/** Lançamento do Queizy nas lojas (20/10/2026): médias de uso começam aqui. */
+const LAUNCH_DAY = brtDay(Date.UTC(2026, 9, 20, 3));
 /** Índice da segunda-feira da semana do dia idx. */
 const mondayOf = (idx: number) => idx - ((new Date(idx * DAY).getUTCDay() + 6) % 7);
 const ms = (s: string | null | undefined) => (s ? new Date(s).getTime() : NaN);
@@ -592,10 +594,23 @@ export async function GET(req: NextRequest) {
     for (let d = a; d <= b; d++) s += activeOnDay.get(d)?.size ?? 0;
     return s / (b - a + 1);
   };
-  // Hábito diário: média de ativos por dia ÷ ativos no mês, nos 30 dias completos (sem hoje, que está pela metade).
+  // Hábito diário: média de ativos por dia ÷ ativos no mês, só com dias completos (sem hoje, que está pela metade).
+  // A média começa no lançamento: os dias antes dele, quase sem alunos, puxariam o número para baixo.
+  // Janelas: 30 dias, 7 dias e ontem; o divisor é sempre os ativos nos 30 dias até ontem.
   const mauComplete = activeBetween(today - 30, today - 1).size;
-  const avgDau30 = avgDaily(today - 30, today - 1);
-  const stickinessPct = mauComplete === 0 ? null : Math.round((avgDau30 / mauComplete) * 100);
+  const habitOver = (days: number) => {
+    const from = Math.max(today - days, LAUNCH_DAY);
+    const span = today - from;
+    const avg = span > 0 ? avgDaily(from, today - 1) : 0;
+    return {
+      pct: mauComplete === 0 || span <= 0 ? null : Math.round((avg / mauComplete) * 100),
+      avgDau: round2(avg),
+      days: Math.max(0, span),
+    };
+  };
+  const habit = { d30: habitOver(30), d7: habitOver(7), d1: habitOver(1), monthly: mauComplete };
+  const avgDau30 = habit.d30.avgDau;
+  const stickinessPct = habit.d30.pct;
   const avgDau7 = avgDaily(today - 7, today - 1);
   const prevAvgDau7 = avgDaily(today - 14, today - 8);
 
@@ -862,7 +877,7 @@ export async function GET(req: NextRequest) {
     });
   }
 
-  if (stickinessPct != null && stickinessPct < 20 && mauComplete >= 20) {
+  if (stickinessPct != null && stickinessPct < 20 && mauComplete >= 20 && habit.d30.days >= 7) {
     alerts.push({
       severity: 'warn',
       message: `Hábito diário (ativos no dia ÷ ativos no mês) em ${stickinessPct}% — abaixo da referência de 20%.`,
@@ -978,6 +993,7 @@ export async function GET(req: NextRequest) {
       dau, wau, mau,
       stickinessPct,
       avgDau30: round2(avgDau30),
+      habit,
       dauTimeseries,
       liveVoice,
     },
