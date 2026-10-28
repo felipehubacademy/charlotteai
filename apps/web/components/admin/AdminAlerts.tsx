@@ -109,7 +109,7 @@ export function AlertsDrawer({ open, onClose, focusId, state }: {
   const { alerts, unread, setRead, readAll, remove, removeRead } = state;
   const [onlyUnread, setOnlyUnread] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
-  useEffect(() => { if (open && focusId) { setExpanded(focusId); setOnlyUnread(false); } }, [open, focusId]);
+  useEffect(() => { if (!open) setExpanded(null); else if (focusId) { setExpanded(focusId); setOnlyUnread(false); } }, [open, focusId]);
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
