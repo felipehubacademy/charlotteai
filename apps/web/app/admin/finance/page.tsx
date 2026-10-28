@@ -729,6 +729,92 @@ function RevenuePanel({ range }: { range: Range }) {
   );
 }
 
+// ── LTV por turma ───────────────────────────────────────────────────────────
+// Quanto cada assinante deixa (líquido), no método que o Duolingo descreveu: turmas pelo mês da 1ª cobrança
+// e projeção pela renovação de cada plano. Até termos assinantes suficientes passando da data de renovar,
+// a renovação usada é a referência publicada pelo Duolingo (marcada como "referência").
+type LtvPlan = { plan: 'monthly' | 'annual'; subscribers: number; avgChargeNet: number; renewalRate: number; renewalSource: 'own' | 'reference';
+  renewalEligible: number; renewalRenewed: number; expectedCharges: number; projectedLtvNet: number; realizedPerSubNet: number };
+type LtvData = { payingSubscribers: number; realizedPerSubNet: number; blendedProjectedLtvNet: number; plans: LtvPlan[];
+  cohorts: { month: string; subscribers: number; monthly: number; annual: number; renewed: number; refunded: number; netRealized: number; netPerSub: number }[];
+  reference: { monthly12m: number; annual12m: number; minSample: number } };
+
+function LtvPanel() {
+  const [d, setD] = useState<LtvData | null>(null);
+  const [err, setErr] = useState('');
+  useEffect(() => {
+    fetch('/api/admin/ltv').then(r => r.ok ? r.json() : Promise.reject(r.status)).then(setD).catch(() => setErr('Não foi possível calcular o LTV.'));
+  }, []);
+  const planLabel = (p: 'monthly' | 'annual') => (p === 'monthly' ? 'Mensal' : 'Anual');
+  return (
+    <div className="adm-panel col-12">
+      <div className="adm-panel-hdr"><div className="adm-panel-title">LTV · quanto cada assinante deixa</div>
+        <div className="adm-panel-sub">líquido, já sem loja, imposto e Asaas</div></div>
+      <div className="adm-panel-body">
+        {err ? <div className="adm-empty-sub">{err}</div> : !d ? <div className="adm-empty-sub">Carregando…</div> : d.payingSubscribers === 0 ? (
+          <div className="adm-empty-sub">Nenhum assinante pagante ainda.</div>
+        ) : (
+          <>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 12, marginBottom: 18 }}>
+              <div className="kpi-card"><div className="kpi-label">LTV projetado (média)</div><div className="kpi-value num">{brl(d.blendedProjectedLtvNet)}</div>
+                <div style={{ fontSize: 11.5, color: 'var(--t3)', marginTop: 4 }}>pela mistura de planos de hoje</div></div>
+              <div className="kpi-card"><div className="kpi-label">Já recebido por assinante</div><div className="kpi-value num">{brl(d.realizedPerSubNet)}</div>
+                <div style={{ fontSize: 11.5, color: 'var(--t3)', marginTop: 4 }}>{d.payingSubscribers} pagantes, menos estornos</div></div>
+              {d.plans.filter(p => p.subscribers > 0).map(p => (
+                <div key={p.plan} className="kpi-card"><div className="kpi-label">LTV {planLabel(p.plan).toLowerCase()}</div><div className="kpi-value num">{brl(p.projectedLtvNet)}</div>
+                  <div style={{ fontSize: 11.5, color: 'var(--t3)', marginTop: 4 }}>
+                    {brl(p.avgChargeNet)} por cobrança × {p.expectedCharges.toLocaleString('pt-BR')} cobranças
+                  </div></div>
+              ))}
+            </div>
+
+            <table className="adm-table">
+              <thead><tr><th>Plano</th><th style={{ textAlign: 'right' }}>Pagantes</th><th style={{ textAlign: 'right' }}>Renovação usada</th><th>Origem da renovação</th></tr></thead>
+              <tbody>
+                {d.plans.map(p => (
+                  <tr key={p.plan}>
+                    <td>{planLabel(p.plan)}</td>
+                    <td style={{ textAlign: 'right' }}>{p.subscribers}</td>
+                    <td style={{ textAlign: 'right', fontWeight: 700 }}>{p.renewalRate.toLocaleString('pt-BR')}%{p.plan === 'monthly' ? ' ao mês' : ' ao ano'}</td>
+                    <td style={{ color: p.renewalSource === 'own' ? 'var(--ok)' : 'var(--t3)' }}>
+                      {p.renewalSource === 'own'
+                        ? `dado próprio: ${p.renewalRenewed} de ${p.renewalEligible} renovaram`
+                        : `referência do Duolingo (${p.renewalEligible} de ${d.reference.minSample} assinantes para usar o nosso)`}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--t1)', margin: '20px 0 8px' }}>Turmas pelo mês da 1ª cobrança</div>
+            <table className="adm-table">
+              <thead><tr><th>Turma</th><th style={{ textAlign: 'right' }}>Pagantes</th><th style={{ textAlign: 'right' }}>Mensal / anual</th><th style={{ textAlign: 'right' }}>Renovaram</th><th style={{ textAlign: 'right' }}>Estornos</th><th style={{ textAlign: 'right' }}>Líquido recebido</th><th style={{ textAlign: 'right' }}>Por assinante</th></tr></thead>
+              <tbody>
+                {d.cohorts.map(c => (
+                  <tr key={c.month}>
+                    <td>{monthLabel(c.month)}</td>
+                    <td style={{ textAlign: 'right' }}>{c.subscribers}</td>
+                    <td style={{ textAlign: 'right' }}>{c.monthly} / {c.annual}</td>
+                    <td style={{ textAlign: 'right' }}>{c.renewed}</td>
+                    <td style={{ textAlign: 'right' }}>{c.refunded}</td>
+                    <td style={{ textAlign: 'right' }}>{brl(c.netRealized)}</td>
+                    <td style={{ textAlign: 'right', fontWeight: 700 }}>{brl(c.netPerSub)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div style={{ fontSize: 12.5, color: 'var(--t2)', marginTop: 10, lineHeight: 1.5 }}>
+              Projeção = líquido médio por cobrança × cobranças esperadas (1 ÷ (1 − renovação)). Enquanto menos de {d.reference.minSample} assinantes de um plano
+              passaram da data de renovar, vale a referência que o Duolingo publicou em 2021: {d.reference.annual12m}% do anual renova depois de 12 meses e
+              {' '}{d.reference.monthly12m}% do mensal ainda paga depois de 12 meses. Pix e 12x do site não renovam sozinhos e entram como anual.
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Página ──────────────────────────────────────────────────────────────────
 export default function FinancePage() {
   const me = useAdminMe();
@@ -913,6 +999,7 @@ export default function FinancePage() {
           </div>
 
           <RevenuePanel range={range} />
+          <LtvPanel />
 
           <AiCostsPanel canWrite={canWrite} onPosted={load} />
 
