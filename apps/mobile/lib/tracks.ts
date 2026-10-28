@@ -35,8 +35,10 @@ export const EXTRA_TRACKS: ExtraTrack[] = [
     titleEn: 'Manual do F#did@', // nome da trilha é marca do Igorfina: igual em qualquer idioma
     hostPt: 'com o Igorfina',
     hostEn: 'with Igorfina',
-    // O "uau": o presidente exagerado ("the best, tremendous") ensinando the best / the worst.
-    tasteUnit: { moduleId: 'M06', unitId: 'F27' },
+    // O "uau": o Igor imitando o astro do basquete, com as gírias do dia a dia (bro, my bad, give me a hand).
+    // Até 28/10/2026 era o F27 (the best / the worst, com o presidente), mas era difícil para a 1ª experiência:
+    // 38% de erro em "worse" e 7 saídas no 3º exercício em um dia.
+    tasteUnit: { moduleId: 'M04', unitId: 'F17' },
     reviewFlag: 'igorfina_trail', // Felipe e Igor: trilha toda aberta para revisar
   },
 ];
