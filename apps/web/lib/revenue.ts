@@ -49,8 +49,15 @@ export async function recordRevenueEvent(event: Record<string, any>): Promise<vo
     const pricePurchased = Math.abs(Number(event?.price_in_purchased_currency ?? 0));
     if (!pricePurchased) return;
 
-    const tax = Number(event?.tax_percentage ?? 0) || 0;
-    const commission = Number(event?.commission_percentage ?? (event?.takehome_percentage != null ? 1 - Number(event.takehome_percentage) : 0)) || 0;
+    let tax = Number(event?.tax_percentage ?? 0) || 0;
+    let commission = Number(event?.commission_percentage ?? (event?.takehome_percentage != null ? 1 - Number(event.takehome_percentage) : 0)) || 0;
+    // Google Play no Brasil: o Play Console mostra imposto zero e repassa 85% (taxa de 15% das assinaturas).
+    // A estimativa do RevenueCat (25% de imposto + 11% de comissão) não bate com o pedido real.
+    // A Apple bate com a tabela de rendimentos do App Store Connect e segue pelo RevenueCat.
+    if (event?.store === 'PLAY_STORE' && String(event?.country_code ?? 'BR').toUpperCase() === 'BR') {
+      tax = 0;
+      commission = 0.15;
+    }
     const fx = await fxToBrl(currency);
     if (!fx) return;
 

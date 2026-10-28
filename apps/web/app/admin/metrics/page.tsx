@@ -15,7 +15,7 @@ interface MetricsResponse {
     trialMrrPotential: number;
     renewals7d: number; charges7d: { firstCharge: number; renewal: number };
     inactivePaying: number; newUsers: number; totalUsers: number;
-    cash: { netBrl: number; charges: number; storeCharges: number; siteCharges: number; refundsBrl: number; refunds: number };
+    cash: { grossBrl?: number; netBrl: number; charges: number; storeCharges: number; siteCharges: number; refundsBrl: number; refunds: number };
   };
   taste: { total: number; day1: number; lastDay: number; inProgress: number; exhausted: number; tasteDays: number };
   tasteFunnel: {
@@ -712,9 +712,9 @@ export default function MetricsPage() {
         <div className="col-3"><KpiCard label="Receita anual (ARR)" display={g ? fmtBRL(g.revenue.arr) : '—'} ctx="receita mensal × 12" delay={60} tip="Projeção anual: receita mensal atual × 12." /></div>
         <div className="col-3">
           <KpiCard label="Receita no caixa" display={g ? fmtBRL(g.revenue.cash.netBrl) : '—'}
-            ctx={g ? `${g.revenue.cash.charges} ${g.revenue.cash.charges === 1 ? 'cobrança' : 'cobranças'} · loja ${g.revenue.cash.storeCharges} · site ${g.revenue.cash.siteCharges}${g.revenue.cash.refunds ? ` · ${g.revenue.cash.refunds} ${g.revenue.cash.refunds === 1 ? 'reembolso' : 'reembolsos'} (${fmtBRL(g.revenue.cash.refundsBrl)})` : ''}` : undefined}
+            ctx={g ? `${g.revenue.cash.grossBrl != null ? `bruto ${fmtBRL(g.revenue.cash.grossBrl)} · ` : ''}${g.revenue.cash.charges} ${g.revenue.cash.charges === 1 ? 'cobrança' : 'cobranças'} · loja ${g.revenue.cash.storeCharges} · site ${g.revenue.cash.siteCharges}${g.revenue.cash.refunds ? ` · ${g.revenue.cash.refunds} ${g.revenue.cash.refunds === 1 ? 'reembolso' : 'reembolsos'} (${fmtBRL(g.revenue.cash.refundsBrl)})` : ''}` : undefined}
             accent="var(--ok)" delay={120}
-            tip="Dinheiro que de fato entrou no período: soma do valor líquido (depois das taxas da loja e do Asaas) de cada cobrança feita no período. Reembolsos não são somados aqui; aparecem no rodapé." />
+            tip="Dinheiro que de fato entrou no período: o número grande é o líquido (o que a loja ou o Asaas repassa, depois de taxa e imposto) e o rodapé mostra o bruto, o que o aluno pagou. Taxas: Apple 32,4% no 1º ano (18% depois, ou desde o início com o programa de pequenas empresas), Google Play 15%, Asaas pela taxa real de cada cobrança. Reembolsos não são somados; aparecem no rodapé." />
         </div>
         <div className="col-3"><KpiCard label="Assinantes pagantes" value={g?.revenue.activeSubs} ctx={g ? `${g.revenue.monthlySubs} mensais · ${g.revenue.yearlySubs} anuais · loja ${g.revenue.subs.paidStore} · site ${g.revenue.subs.paidSite}` : undefined} delay={180} tip="Quem já foi cobrado e segue com a renovação ativa. Quem cancelou e ainda tem acesso aparece em Cancelaram, ainda com acesso; quem está nos 7 dias grátis, em Em teste grátis." /></div>
         <div className="col-3"><KpiCard label="Em teste grátis" value={g?.revenue.onTrial} ctx={g ? `loja ${g.revenue.subs.trialStore} · site ${g.revenue.subs.trialSite}${g.revenue.subs.trialLegacy ? ` · teste antigo ${g.revenue.subs.trialLegacy}` : ''}` : undefined} delay={240} tip="Loja e site: 7 dias grátis com cartão (a cobrança vem no fim), sem quem já cancelou. O teste antigo (sem cartão, termina até 02/11/2026) some daqui quando o último vencer." /></div>

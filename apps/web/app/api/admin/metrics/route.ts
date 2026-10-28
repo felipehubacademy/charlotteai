@@ -199,7 +199,7 @@ export async function GET(req: NextRequest) {
   type PracticeRow = { user_id: string; created_at: string };
   type ProgressRow = { user_id: string; streak_days: number | null; last_practice_date: string | null };
   type UsageRow = { user_id: string | null; endpoint: string; model: string; cost_usd: number | string; total_tokens: number | null; created_at: string };
-  type RevRow = { app_user_id: string; event_type: string; store: string | null; price_purchased: number | null; net_brl: number | null; purchased_at: string | null };
+  type RevRow = { app_user_id: string; event_type: string; store: string | null; price_purchased: number | null; gross_brl: number | null; net_brl: number | null; purchased_at: string | null };
   type CkRow = {
     user_id: string; plan: string | null; method: string | null; value_brl: number; trial_days: number | null; status: string;
     asaas_payment_id: string | null; paid_at: string | null; refunded_at: string | null; created_at: string;
@@ -228,7 +228,7 @@ export async function GET(req: NextRequest) {
       () => supabase.from('openai_usage').select('id', { count: 'exact', head: true }).gte('created_at', prevFromIso).lte('created_at', toIso),
       (a, b) => supabase.from('openai_usage').select(usageCols).gte('created_at', prevFromIso).lte('created_at', toIso).order('id').range(a, b),
     ),
-    paged((a, b) => supabase.from('revenue_events').select('app_user_id, event_type, store, price_purchased, net_brl, purchased_at').order('id').range(a, b)),
+    paged((a, b) => supabase.from('revenue_events').select('app_user_id, event_type, store, price_purchased, gross_brl, net_brl, purchased_at').order('id').range(a, b)),
     paged((a, b) => supabase.from('asaas_checkouts').select('user_id, plan, method, value_brl, trial_days, status, asaas_payment_id, paid_at, refunded_at, created_at, channel, affiliate_code, coupon_code')
       .eq('sandbox', false).order('created_at', { ascending: true }).order('id').range(a, b)),
     supabase.from('app_release').select('platform, latest_version'),
@@ -436,6 +436,7 @@ export async function GET(req: NextRequest) {
   const cashRows = revInScope.filter(r => r.event_type !== 'REFUND' && Number(r.price_purchased) > 0 && inRange(ms(r.purchased_at)));
   const refundRows = revInScope.filter(r => r.event_type === 'REFUND' && inRange(ms(r.purchased_at)));
   const cash = {
+    grossBrl: round2(cashRows.reduce((s, r) => s + Number(r.gross_brl ?? r.price_purchased ?? 0), 0)),
     netBrl: round2(cashRows.reduce((s, r) => s + Number(r.net_brl ?? 0), 0)),
     charges: cashRows.length,
     storeCharges: cashRows.filter(r => r.store !== 'ASAAS').length,
