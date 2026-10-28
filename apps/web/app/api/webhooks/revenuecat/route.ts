@@ -133,11 +133,17 @@ export async function POST(req: NextRequest) {
   }
 
   // ── Update Supabase ───────────────────────────────────────────────────────
+  // Vencimento vem da loja: sem ele, quem renova (ou sai do teste) fica com a data antiga no banco
+  // até abrir o app, e o /admin, os avisos e o suporte enxergam a assinatura como vencida.
+  const expirationMs = Number(event?.expiration_at_ms ?? 0);
+  const expiresIso   = expirationMs > 0 ? new Date(expirationMs).toISOString() : null;
   const { error } = await supabase
     .from('charlotte_users')
     .update({
       subscription_status: subscriptionStatus,
       is_active:           isActive,
+      ...(expiresIso ? { subscription_expires_at: expiresIso } : {}),
+      ...(expiresIso && TRIAL_EVENTS.has(eventType) ? { trial_ends_at: expiresIso } : {}),
       updated_at:          new Date().toISOString(),
     })
     .eq('id', appUserId);

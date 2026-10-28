@@ -56,7 +56,12 @@ export async function recordRevenueEvent(event: Record<string, any>): Promise<vo
 
     const grossBrl = Math.round(pricePurchased * fx * 100) / 100;
     const netBrl = Math.round(pricePurchased * (1 - tax) * (1 - commission) * fx * 100) / 100;
-    const purchasedAt = event?.purchased_at_ms ? new Date(Number(event.purchased_at_ms)) : new Date(Number(event?.event_timestamp_ms ?? Date.now()));
+    // A Apple cobra a renovação (e a 1ª mensalidade depois do teste) horas antes do novo período e o
+    // RevenueCat manda o início do período como purchased_at. Data no futuro = vale a hora em que o
+    // evento chegou, que é quando o dinheiro foi cobrado.
+    const eventAt = Number(event?.event_timestamp_ms ?? Date.now());
+    const purchasedMs = Number(event?.purchased_at_ms ?? 0);
+    const purchasedAt = new Date(purchasedMs && purchasedMs <= eventAt ? purchasedMs : eventAt);
     const day = purchasedAt.toISOString().slice(0, 10);
 
     // Teste (TestFlight / sandbox da Play): fora do caixa, mas a comissão de afiliado sai marcada
