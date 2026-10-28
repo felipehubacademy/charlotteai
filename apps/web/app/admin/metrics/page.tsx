@@ -929,7 +929,7 @@ export default function MetricsPage() {
           <div className="col-4">
             <KpiCard label="Responderam de onde vieram" display={acq.responseRatePct == null ? '—' : `${acq.responseRatePct}%`}
               ctx={acq.since ? `${ofN(acq.answered, acq.base)} contas desde ${new Date(acq.since).toLocaleDateString('pt-BR')} · ${acq.skipped} pularam` : 'pergunta ainda sem respostas'} delay={0}
-              tip="Pergunta 'Como você conheceu a Queizy?' do cadastro. Taxa = respostas (sem quem pulou) ÷ contas criadas desde a 1ª resposta. Vale para todas as contas, não só o período." />
+              tip="Pergunta 'Como você conheceu o Queizy?', feita no fim da 1ª atividade (só contas criadas pela loja). Taxa = respostas (sem quem pulou) ÷ contas criadas desde a 1ª resposta. Vale para todas as contas, não só o período." />
           </div>
           <div className="col-4">
             <KpiCard label="Visitas ao site por anúncio" value={acq.site.visits ?? null} ctx="com campanha marcada, no período" delay={60}
