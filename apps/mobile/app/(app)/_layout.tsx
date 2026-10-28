@@ -12,6 +12,7 @@ import { ActionSheetHost } from '@/components/ui/ActionSheet';
 import { AppAlertHost } from '@/components/ui/AppAlert';
 import { ShareCardProvider } from '@/components/share/ShareCardProvider';
 import { GoalsCelebration } from '@/components/goals/GoalsCelebration';
+import { StreakProvider } from '@/components/streak/StreakProvider';
 
 export default function AppLayout() {
   const { isAuthenticated, profile, mustChangePassword } = useAuth();
@@ -28,6 +29,7 @@ export default function AppLayout() {
     <XPToastProvider>
     <ShareCardProvider>
       <AchievementsProvider>
+      <StreakProvider>
       <PaywallModal />
       <InviteClaimer />
       <RallyJoinedModal />
@@ -51,6 +53,7 @@ export default function AppLayout() {
         <Stack.Screen name="add-word" />
         <Stack.Screen name="ai-consent" options={{ animation: 'fade', gestureEnabled: false }} />
       </Stack>
+      </StreakProvider>
       </AchievementsProvider>
     </ShareCardProvider>
     </XPToastProvider>

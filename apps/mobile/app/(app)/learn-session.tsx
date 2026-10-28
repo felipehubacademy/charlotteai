@@ -40,6 +40,7 @@ import {
 const ASR_AVAILABLE = !!ExpoSpeechRecognitionModule?.start;
 import Constants from 'expo-constants';
 import { useAuth } from '@/hooks/useAuth';
+import { useStreak } from '@/components/streak/StreakProvider';
 import { useTotalXP } from '@/hooks/useTotalXP';
 import { AppText } from '@/components/ui/Text';
 import { TranslatableText } from '@/components/ui/TranslatableText';
@@ -142,6 +143,7 @@ export default function LearnSessionScreen() {
   const isV2        = params.v === 'v2' && !!params.moduleId && !!params.unitId;
 
   const { profile, refreshProfile } = useAuth();
+  const { celebrateStreak } = useStreak();
   const userId      = profile?.id;
   const userLevel   = (profile?.charlotte_level ?? 'Novice') as string;
   // Camada de SUPORTE/chrome (enunciados, feedback, botões) segue o idioma do
@@ -235,6 +237,8 @@ export default function LearnSessionScreen() {
   const stepIdxRef = useRef(0);
   stepIdxRef.current = stepIdx;
   const [isComplete, setIsComplete]   = useState(false);
+  // Atividade concluída: a tela da sequência do dia (1x por dia, depois das conquistas).
+  useEffect(() => { if (isComplete) celebrateStreak(); }, [isComplete]); // eslint-disable-line react-hooks/exhaustive-deps
   // Começou e largou: lesson_started ao abrir, lesson_abandoned ao sair sem terminar (em que passo parou).
   const isCompleteRef = useRef(false);
   isCompleteRef.current = isComplete;

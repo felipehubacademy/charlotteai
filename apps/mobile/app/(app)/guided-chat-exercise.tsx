@@ -36,6 +36,7 @@ import { AppText } from '@/components/ui/Text';
 import ChatBox, { Message } from '@/components/chat/ChatBox';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { useAuth } from '@/hooks/useAuth';
+import { useStreak } from '@/components/streak/StreakProvider';
 import * as SecureStore from 'expo-secure-store';
 import { TASTE_DAYS, tasteDayNumber } from '@/lib/tasteDays';
 import { getModule, listModules } from '@/lib/curriculum-v2/loader';
@@ -81,6 +82,7 @@ export default function GuidedChatExerciseScreen() {
   const unitId   = params.unitId ?? '';
 
   const { profile, isTaster } = useAuth();
+  const { celebrateStreak } = useStreak();
   const { openPaywall } = usePaywallContext();
   const userId      = profile?.id;
   const isPt        = systemIsPt; // suporte/chrome: idioma do device
@@ -222,7 +224,7 @@ export default function GuidedChatExerciseScreen() {
     v2Progress.saveAttempt(moduleId, unitId, 'chat', score)
       .catch(e => console.warn('[guided-chat] saveAttempt failed', e));
     // XP da conversa (conta para sequência, metas e ranking) e correção do inglês no fim.
-    if (userId) recordConversationPractice(userId, 'chat', objectivesMet.size).then(setXpEarned);
+    if (userId) recordConversationPractice(userId, 'chat', objectivesMet.size).then(xp => { setXpEarned(xp); celebrateStreak(); });
     const lines = historyRef.current.filter(h => h.role === 'user').map(h => h.content).filter(Boolean);
     setFeedbackLoading(true);
     fetchConversationFeedback({ level, moduleId, unitId, activity: 'chat', topic: getModule(level, moduleId)?.units.find(u => u.id === unitId)?.title, lines })

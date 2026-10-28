@@ -20,6 +20,7 @@ import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { supabase } from '@/lib/supabase';
+import { fetchStreakStatus } from '@/lib/streak';
 import { fetchMyRank } from '@/lib/myRank';
 import { UserLevel } from '@/lib/levelConfig';
 import { getLiveVoiceStatus, POOL_TRIAL_SECONDS } from '@/lib/liveVoiceUsage';
@@ -563,6 +564,7 @@ export default function LiveVoiceTab() {
       const streakDays  = streakAlive ? (prog.data?.streak_days ?? 0) : 0;
 
       setStreak(streakDays);
+      fetchStreakStatus().then(s => { if (s) setStreak(s.streak); }); // conta a proteção da semana
       setTotalXP(userTotalXP);
       setTodayXP(todayXPVal);
       setRank(myRank.rank);

@@ -28,6 +28,7 @@ import { systemIsPt } from '@/lib/systemLang';
 import { AppText } from '@/components/ui/Text';
 import ChatBox, { Message } from '@/components/chat/ChatBox';
 import { useAuth } from '@/hooks/useAuth';
+import { useStreak } from '@/components/streak/StreakProvider';
 import { useAudioRecorder } from '@/hooks/useAudioRecorder';
 import { getModule } from '@/lib/curriculum-v2/loader';
 import type { Level as V2Level, RolePlay } from '@/lib/curriculum-v2/types';
@@ -71,6 +72,7 @@ export default function RolePlayExerciseScreen() {
   const unitId   = params.unitId ?? '';
 
   const { profile } = useAuth();
+  const { celebrateStreak } = useStreak();
   const userId      = profile?.id;
   const isPt        = systemIsPt; // suporte/chrome: idioma do device
   const insets      = useSafeAreaInsets();
@@ -269,7 +271,7 @@ export default function RolePlayExerciseScreen() {
     v2Progress.saveAttempt(moduleId, unitId, 'roleplay', score)
       .catch(e => console.warn('[roleplay] saveAttempt failed', e));
     // XP da conversa (conta para sequência, metas e ranking) e correção do inglês no fim.
-    if (userId) recordConversationPractice(userId, 'roleplay', objectivesMet.size).then(setXpEarned);
+    if (userId) recordConversationPractice(userId, 'roleplay', objectivesMet.size).then(xp => { setXpEarned(xp); celebrateStreak(); });
     const lines = historyRef.current.filter(h => h.role === 'user').map(h => h.content).filter(Boolean);
     setFeedbackLoading(true);
     fetchConversationFeedback({ level, moduleId, unitId, activity: 'roleplay', topic: getModule(level, moduleId)?.units.find(u => u.id === unitId)?.title, lines })

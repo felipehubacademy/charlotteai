@@ -14,6 +14,7 @@ import {
   badgeTitle, firstName,
 } from '@/components/stats/StatsUI';
 import { supabase } from '@/lib/supabase';
+import { fetchStreakStatus } from '@/lib/streak';
 import { fetchMyRank, fetchTop } from '@/lib/myRank';
 import { useAuth } from '@/hooks/useAuth';
 import { useGoalsData } from '@/hooks/useGoalsData';
@@ -91,6 +92,8 @@ export default function StatsScreen() {
       const y = new Date(); y.setDate(y.getDate() - 1);
       const yesterday = `${y.getFullYear()}-${String(y.getMonth() + 1).padStart(2, '0')}-${String(y.getDate()).padStart(2, '0')}`;
       setStreak(last === localTodayStr() || last === yesterday ? (statsRes.data?.streak_days ?? 0) : 0);
+      // Regra do servidor (conta a proteção da semana): corrige o número se a falta de ontem foi protegida.
+      fetchStreakStatus().then(s => { if (s) setStreak(s.streak); });
       setTotalXP(xp);
       setRank(myRank.rank ?? 0);
       setOutOfRanking(myRank.outOfRanking);

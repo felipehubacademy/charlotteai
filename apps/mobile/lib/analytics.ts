@@ -26,6 +26,8 @@ export type AnalyticsEvent =
   | 'paywall_shown'
   | 'taste_call_card_tap'
   | 'lesson_end_call_tap'
+  | 'streak_celebration_shown'
+  | 'streak_challenge_accepted'
   | 'taste_tomorrow_reminder_tap'
   | 'rank_leader_shown'
   | 'rank_leader_share'

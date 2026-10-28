@@ -35,6 +35,7 @@ import { usePaywallContext } from '@/lib/paywallContext';
 import { Achievement } from '@/lib/types/achievement';
 import { UserLevel } from '@/lib/levelConfig';
 import { supabase } from '@/lib/supabase';
+import { fetchStreakStatus } from '@/lib/streak';
 import { fetchMyRank } from '@/lib/myRank';
 import { localTodayStr } from '@/lib/dateUtils';
 import { getLevelAccent } from '@/lib/levelColors';
@@ -216,6 +217,7 @@ export default function PracticeTab() {
     const lastPractice = prog.data?.last_practice_date ?? null;
     const alive = lastPractice === todayStr || lastPractice === yesterdayStr;
     setStreak(alive ? (prog.data?.streak_days ?? 0) : 0);
+    fetchStreakStatus().then(s => { if (s) setStreak(s.streak); }); // conta a proteção da semana
     setRank(myRank.rank);
   }, [userId, userLevel, totalXP]);
 

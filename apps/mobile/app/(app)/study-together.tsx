@@ -6,7 +6,7 @@ import React, { useCallback, useState } from 'react';
 import { View, ScrollView, TouchableOpacity, TextInput, Image, ActivityIndicator, Modal, Pressable, RefreshControl } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from 'expo-router';
-import { Users, HandWaving, Crown, Lightning, Gift, PencilSimple, DotsThreeVertical } from 'phosphor-react-native';
+import { Users, HandWaving, Crown, Lightning, Gift, PencilSimple, DotsThreeVertical, Fire } from 'phosphor-react-native';
 import { openUserActions } from '@/lib/moderation';
 import { AppText } from '@/components/ui/Text';
 import { C, ScreenHeader, SectionTitle, Card } from '@/components/stats/StatsUI';
@@ -198,6 +198,27 @@ export default function StudyTogetherScreen() {
                     <DotsThreeVertical size={20} color={C.light} weight="bold" />
                   </TouchableOpacity>
                 </View>
+                {/* Sequência com o amigo: dias seguidos em que os dois praticaram, e quem falta hoje. */}
+                {(() => {
+                  const n = b.pairStreak ?? 0;
+                  const who = b.name ?? t('seu amigo', 'your friend');
+                  const hint = b.meToday && b.friendToday ? t('Vocês dois já praticaram hoje.', 'You both practiced today.')
+                    : b.friendToday ? t(`${who} já praticou hoje. Falta você.`, `${who} practiced today. Your turn.`)
+                    : b.meToday ? t(`Falta ${who} hoje. Que tal cutucar?`, `${who} hasn't practiced today. Send a nudge?`)
+                    : n > 0 ? t('Pratiquem hoje para manter a sequência.', 'Practice today to keep it going.')
+                    : t('Pratiquem no mesmo dia para começar uma sequência juntos.', 'Practice on the same day to start a streak together.');
+                  return (
+                    <View style={{ marginTop: 12, flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: n > 0 ? 'rgba(255,138,31,0.10)' : C.ghost, borderRadius: 14, paddingHorizontal: 12, paddingVertical: 10 }}>
+                      <Fire size={20} color={n > 0 ? '#FF8A1F' : C.light} weight="fill" />
+                      <View style={{ flex: 1 }}>
+                        <AppText style={{ fontSize: 13.5, fontWeight: '800', color: C.ink }}>
+                          {n > 0 ? t(`${n} ${n === 1 ? 'dia' : 'dias'} juntos`, `${n} ${n === 1 ? 'day' : 'days'} together`) : t('Sequência juntos', 'Streak together')}
+                        </AppText>
+                        <AppText style={{ fontSize: 12, color: C.mid, marginTop: 1 }}>{hint}</AppText>
+                      </View>
+                    </View>
+                  );
+                })()}
                 {/* XP da semana lado a lado */}
                 <View style={{ marginTop: 14, gap: 8 }}>
                   {[{ label: t('Você', 'You'), xp: info.me.weekXp, color: C.ink }, { label: b.name ?? t('Amigo de estudo', 'Study buddy'), xp: b.weekXp, color: C.pink }].map(row => (

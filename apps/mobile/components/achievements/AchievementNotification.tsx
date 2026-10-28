@@ -93,7 +93,7 @@ const PIECES = Array.from({ length: 70 }, (_, i) => ({
   round: i % 3 === 0,
 }));
 
-function ConfettiRain({ width, height, run }: { width: number; height: number; run: number }) {
+export function ConfettiRain({ width, height, run }: { width: number; height: number; run: number }) {
   const anims = React.useRef(PIECES.map(() => new Animated.Value(0))).current;
   React.useEffect(() => {
     anims.forEach(a => a.setValue(0));

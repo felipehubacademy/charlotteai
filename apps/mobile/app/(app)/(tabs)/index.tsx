@@ -41,6 +41,9 @@ import { ArrowDown, ArrowUp } from 'phosphor-react-native';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { TasteCallCard } from '@/components/trail/TasteCallCard';
 import { TasteTomorrowCard } from '@/components/trail/TasteTomorrowCard';
+import { useStreak } from '@/components/streak/StreakProvider';
+import { StreakProtectedCard } from '@/components/streak/StreakProtectedCard';
+import { protectedYesterday } from '@/lib/streak';
 import { TASTE_DAYS, tasteDayNumber, tasteFreeUnits } from '@/lib/tasteDays';
 import { RankLeaderModal, type RankLeaderEvent } from '@/components/social/RankLeaderModal';
 import { TrailBanner } from '@/components/trail/TrailBanner';
@@ -118,6 +121,7 @@ const MIN_TRAIL_VIEWPORT = 240; // abaixo disso a trilha fixa embaixo do hero fi
 
 export default function HomeTab() {
   const { profile, isTaster, refreshProfile } = useAuth();
+  const { status: streakStatus, refreshStreak, celebrateStreak } = useStreak();
   const { openPaywall }           = usePaywallContext();
   const { colors: T }             = useTheme();
   const userId    = profile?.id ?? '';
@@ -303,6 +307,8 @@ export default function HomeTab() {
       const streakDays  = streakAlive ? (prog.data?.streak_days ?? 0) : 0;
 
       setStreak(streakDays);
+      // Regra do servidor (conta a proteção da semana): corrige o número se a falta de ontem foi protegida.
+      refreshStreak().then(s => { if (s) setStreak(s.streak); });
       setTotalXP(userTotalXP);
       setTodayXP(todayXPVal);
       setRank(myRank);
@@ -380,11 +386,7 @@ export default function HomeTab() {
             // Tambem espera o splash sair antes de tocar.
             splashGate.then(() => {
               setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), introOffset + 800);
-              if (streakDays === 7) {
-                setTimeout(() => voiceSFX.play('streak_7_days').catch(() => {}), introOffset + 2300);
-              } else if (streakDays === 30) {
-                setTimeout(() => voiceSFX.play('streak_30_days').catch(() => {}), introOffset + 2300);
-              }
+              // A voz dos marcos (7 e 30 dias) toca na tela da sequência, no dia em que o marco chega.
             });
           } else {
             _streakSoundPlayedThisSession = true;
@@ -406,7 +408,10 @@ export default function HomeTab() {
     } catch (e) {
       console.warn('[HomeTab] fetchData error:', e);
     }
-  }, [userId, level]);
+  }, [userId, level, refreshStreak]);
+
+  // Praticou hoje por outro caminho (chat livre, ligação): a tela da sequência abre ao voltar para cá.
+  useFocusEffect(useCallback(() => { if (userId) celebrateStreak(); }, [userId, celebrateStreak]));
 
   useEffect(() => {
     if (!userId) return;
@@ -734,6 +739,8 @@ export default function HomeTab() {
         )}
         {/* Degustação sem nenhuma atividade concluída (passada a 1ª meia hora): a ligação como alternativa. */}
         {isTaster && tasterDone === 0 && !!profile?.created_at && Date.now() - new Date(profile.created_at).getTime() > 30 * 60000 && <TasteCallCard />}
+        {/* Faltou ontem e a proteção da semana segurou: avisa e pede a prática de hoje. */}
+        {protectedYesterday(streakStatus) && !streakStatus!.practiced_today && <StreakProtectedCard streak={streakStatus!.streak} />}
         {/* Degustação com o tópico grátis de hoje feito (4 atividades por tópico) e mais dias pela frente: volte amanhã. */}
         {isTaster && tasterDone !== null && !!profile?.created_at && tasterDone >= 4 * tasteFreeUnits(profile.created_at)
           && tasteDayNumber(profile.created_at) < TASTE_DAYS && <TasteTomorrowCard />}

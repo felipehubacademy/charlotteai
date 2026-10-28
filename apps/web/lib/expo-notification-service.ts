@@ -798,12 +798,23 @@ export async function sendStreakReminders(supabase: any): Promise<void> {
     // Se last_practice_date < ontem, o streak já quebrou — não enviar reminder.
     // Usamos UTC como aproximação server-side; a filtragem por hora local (usersAtLocalHour) garante
     // que a notificação chega no horário certo para cada fuso.
-    const { data: atRisk, error: atRiskErr } = await supabase
+    // Proteção da semana (streak_freezes): quem faltou só ontem e ainda tem proteção também está em risco
+    // hoje — se praticar, a sequência continua; se não, zera amanhã.
+    const dayBeforeUTC = new Date(now.getTime() - 2 * 86400000).toISOString().split('T')[0];
+    const { data: atRiskRaw, error: atRiskErr } = await supabase
       .from('charlotte_progress')
       .select('user_id, streak_days, last_practice_date')
       .gt('streak_days', 0)
-      .eq('last_practice_date', yesterdayUTC); // praticou ontem = streak vivo mas em risco hoje
+      .in('last_practice_date', [yesterdayUTC, dayBeforeUTC]);
     if (atRiskErr) { console.error('❌ [Expo] at-risk query error:', atRiskErr.message); return; }
+    const missedYesterday = (atRiskRaw ?? []).filter((r: any) => r.last_practice_date === dayBeforeUTC).map((r: any) => r.user_id);
+    const usedFreeze = new Set<string>();
+    if (missedYesterday.length) {
+      const weekAgo = new Date(now.getTime() - 7 * 86400000).toISOString().split('T')[0];
+      const { data: fr } = await supabase.from('streak_freezes').select('user_id').in('user_id', missedYesterday).gte('day', weekAgo);
+      for (const r of (fr ?? []) as any[]) usedFreeze.add(String(r.user_id));
+    }
+    const atRisk = (atRiskRaw ?? []).filter((r: any) => r.last_practice_date === yesterdayUTC || !usedFreeze.has(String(r.user_id)));
 
     if (!atRisk?.length) { console.log('✅ [Expo] No streak risks today'); return; }
 
@@ -1750,7 +1761,7 @@ function detectEngagementSignal(
       }
       case 'streak_milestone_ahead': {
         // Tomorrow user would hit a 7/30/100 day milestone.
-        const MS = [7, 30, 100, 365];
+        const MS = [7, 30, 50, 100, 200, 365, 500, 730, 1000];
         const upcoming = MS.find(m => user.streak_days === m - 1);
         if (!upcoming) break;
         if (localHour !== ENGAGEMENT_TARGET_HOUR.streak_milestone_ahead) break;
@@ -1861,11 +1872,15 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
     // 2. Fetch progress (streak + total_xp).
     const { data: progressRows } = await supabase
       .from('charlotte_progress')
-      .select('user_id, streak_days, total_xp')
+      .select('user_id, streak_days, total_xp, last_practice_date')
       .in('user_id', userIds);
+    // Sequência viva: praticou ontem ou hoje, ou faltou só ontem (a proteção da semana pode segurar).
+    // Antes valia o número cru, e "salve seus N dias" saía para quem já tinha perdido a sequência.
+    const aliveSince = new Date(now.getTime() - 2 * 86400000).toISOString().split('T')[0];
     const progressMap = new Map<string, { streak: number; totalXp: number }>();
     for (const r of (progressRows ?? []) as any[]) {
-      progressMap.set(r.user_id, { streak: r.streak_days ?? 0, totalXp: r.total_xp ?? 0 });
+      const alive = !!r.last_practice_date && r.last_practice_date >= aliveSince;
+      progressMap.set(r.user_id, { streak: alive ? (r.streak_days ?? 0) : 0, totalXp: r.total_xp ?? 0 });
     }
 
     // 3. Fetch practices: today, this week, prev 4 weeks.

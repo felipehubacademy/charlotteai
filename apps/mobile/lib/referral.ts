@@ -24,6 +24,8 @@ export interface Buddy {
   id: string; name: string | null; avatarUrl: string | null; level: string | null;
   relation: 'sponsor' | 'invited' | 'friend';
   weekXp: number; weekExercises: number; streak: number; lastPractice: string | null; nudgedToday: boolean;
+  // Sequência com amigo: dias seguidos em que os dois praticaram (até hoje ou ontem).
+  pairStreak?: number; meToday?: boolean; friendToday?: boolean;
 }
 export interface ReferralInfo {
   code: string; link: string; invitedCount: number; canClaim: boolean;
