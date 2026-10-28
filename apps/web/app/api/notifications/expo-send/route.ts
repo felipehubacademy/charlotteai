@@ -14,6 +14,7 @@ interface ExpoMessage {
   badge?: number;
   priority?: 'default' | 'normal' | 'high';
   ttl?: number;
+  channelId?: string;
 }
 
 export async function POST(request: NextRequest) {
@@ -46,6 +47,7 @@ export async function POST(request: NextRequest) {
         data: data ?? {},
         sound: 'default',
         priority,
+        channelId: 'charlotte',
       }));
 
       const response = await fetch(EXPO_PUSH_URL, {

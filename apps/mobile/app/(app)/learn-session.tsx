@@ -10,7 +10,7 @@ import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomInset } from '@/lib/useBottomInset';
 import { router, useLocalSearchParams } from 'expo-router';
-import { ArrowLeft, ArrowRight, CheckCircle, XCircle, LightbulbFilament, BookOpen, Microphone, SpeakerLow, SpeakerHigh, Play, Pause, ThumbsUp, ThumbsDown } from 'phosphor-react-native';
+import { ArrowLeft, ArrowRight, CheckCircle, XCircle, LightbulbFilament, BookOpen, Microphone, SpeakerLow, SpeakerHigh, Play, Pause, ThumbsUp, ThumbsDown, Phone } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 import * as SecureStore from 'expo-secure-store';
 import * as Haptics from '@/lib/hapticsGated';
@@ -54,7 +54,6 @@ import BluetoothMicHint from '@/components/BluetoothMicHint';
 import { supabase } from '@/lib/supabase';
 import { appAlert } from '@/components/ui/AppAlert';
 import { goBack } from '@/lib/goBack';
-import { AcquisitionSheet } from '@/components/onboarding/AcquisitionSheet';
 
 // ── Color helper — rgba() for Android hex+alpha compatibility ──
 function a(hex: string, alpha: number): string {
@@ -1223,6 +1222,13 @@ export default function LearnSessionScreen() {
 
   // ── Completion screen ──────────────────────────────────────
   if (isComplete) {
+    const done = completedActivityScore;
+    const passedNow = !!done && done.score >= done.threshold;
+    const nextLabel = isV2 && passedNow
+      ? (done!.activityType === 'grammar' ? 'Listening & Speaking' : done!.activityType === 'speaking' ? 'Role-play' : null)
+      : null;
+    const firstDay = !!profile?.created_at && Date.now() - new Date(profile.created_at).getTime() < 24 * 3600000;
+    const callHost = characterInfo(profile?.active_character).name;
     // ── Tela de conclusão: APRENDIZADO NORMAL ──────────────────
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'left', 'right']}>
@@ -1349,18 +1355,34 @@ export default function LearnSessionScreen() {
                     router.replace('/(app)/(tabs)' as any);
                   }
                 }}
-                style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, paddingHorizontal: 40, marginBottom: 16 }}
+                style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, paddingHorizontal: 40, marginBottom: nextLabel ? 8 : 16 }}
               >
                 <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{isPortuguese ? 'Continuar trilha' : 'Continue trail'}</AppText>
               </TouchableOpacity>
             );
           })()}
+          {/* O que vem agora: quem faz 4+ atividades no 1º dia volta 2x mais no dia seguinte. */}
+          {nextLabel && (
+            <AppText style={{ fontSize: 13, color: C.navyLight, fontWeight: '600', marginBottom: 16, textAlign: 'center' }}>
+              {isPortuguese ? `Próximo: ${nextLabel}` : `Next: ${nextLabel}`}
+            </AppText>
+          )}
+          {/* 1º dia: a ligação com o personagem como alternativa para seguir agora. */}
+          {firstDay && (
+            <TouchableOpacity
+              onPress={() => { track('lesson_end_call_tap', { level, activity: params.activity ?? 'both' }); router.replace('/(app)/(tabs)/livevoice' as any); }}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderWidth: 1.5, borderColor: C.border, borderRadius: 16, paddingVertical: 12, paddingHorizontal: 22, marginBottom: 16 }}
+            >
+              <Phone size={16} color={C.navy} weight="fill" />
+              <AppText style={{ fontSize: 14, fontWeight: '700', color: C.navy }}>
+                {isPortuguese ? `Ou ligue para ${callHost}` : `Or call ${callHost}`}
+              </AppText>
+            </TouchableOpacity>
+          )}
           <TouchableOpacity onPress={() => router.replace('/(app)/(tabs)' as any)}>
             <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>{isPortuguese ? 'Voltar' : 'Back'}</AppText>
           </TouchableOpacity>
         </View>
-        {/* 1ª atividade: "Como você conheceu o Queizy?" (só conta criada pela loja, uma vez). */}
-        <AcquisitionSheet armed={isFirstActivity} />
       </SafeAreaView>
     );
   }

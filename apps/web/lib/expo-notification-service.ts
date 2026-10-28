@@ -11,6 +11,10 @@ import { allFriendPairs } from '@/lib/friends';
 import { tasteDay, TASTE_DAYS } from '@/lib/taste';
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
+const EXPO_RECEIPTS_URL = 'https://exp.host/--/api/v2/push/getReceipts';
+// Canal Android criado pelo app (hooks/usePushNotifications.ts, importância MAX).
+// Sem channelId o Android usa o canal padrão. No iOS o campo é ignorado.
+export const ANDROID_PUSH_CHANNEL = 'charlotte';
 
 interface ExpoMessage {
   to: string;
@@ -19,7 +23,25 @@ interface ExpoMessage {
   data?: Record<string, unknown>;
   sound: 'default';
   priority: 'high';
+  channelId?: string;
 }
+
+// Ticket do Expo (resposta do envio, um por mensagem). status 'ok' traz o id
+// usado depois para buscar o recibo de entrega (checkExpoReceipts).
+interface ExpoTicket {
+  status: 'ok' | 'error';
+  id?: string;
+  message?: string;
+  details?: { error?: string };
+}
+
+// sendExpoPush guarda o ticket de cada mensagem aqui e logRnPushes o consome
+// ao gravar a linha do log. Chave: token + título (os envios do scheduler
+// rodam em paralelo no mesmo processo). Quem teve o token apagado por
+// DeviceNotRegistered fica no segundo mapa, pela id do aluno.
+const ticketByMessage = new Map<string, ExpoTicket>();
+const deadTicketByUser = new Map<string, ExpoTicket>();
+const ticketKey = (token: string, title: string) => `${token}\n${title}`;
 
 // ── Message template (placeholder {name} replaced per user) ─────────────────
 interface MsgTemplate { title: string; body: string }
@@ -474,6 +496,9 @@ async function fetchRecentVariantHashes(
 }
 
 // One row per (user, send attempt). Written after sendExpoPush returns.
+// Grava a plataforma real do aparelho (charlotte_users.app_platform) e o
+// ticket do Expo: ok → metadata.ticket_id (o recibo vem depois, em
+// checkExpoReceipts); erro → status 'failed' com o código em error_message.
 async function logRnPushes(
   supabase: any,
   rows: Array<{
@@ -488,19 +513,50 @@ async function logRnPushes(
   }>,
 ): Promise<void> {
   if (!rows.length) return;
+  const devices = new Map<string, { token: string | null; platform: string | null }>();
+  try {
+    const { data } = await supabase
+      .from('charlotte_users')
+      .select('id, expo_push_token, app_platform')
+      .in('id', [...new Set(rows.map(r => r.userId))]);
+    for (const u of (data ?? []) as any[]) {
+      devices.set(String(u.id), { token: u.expo_push_token ?? null, platform: u.app_platform ?? null });
+    }
+  } catch (e) {
+    console.warn('⚠️ [Expo] notification_logs device lookup error:', e);
+  }
   // Generate ids client-side — the public.notification_logs view path does
   // not always propagate the underlying gen_random_uuid() default on insert.
-  const payload = rows.map(r => ({
-    id:                 randomUUID(),
-    user_id:            r.userId,
-    notification_type:  r.type,
-    status:             r.status ?? 'sent',
-    message_title:      r.title ?? null,
-    message_body:       r.body ?? null,
-    platform:           r.platform ?? 'ios', // Expo push covers both; platform is opaque here
-    error_message:      r.errorMessage ?? null,
-    metadata:           r.variantHash ? { variant_hash: r.variantHash } : null,
-  }));
+  const payload = rows.map(r => {
+    const dev = devices.get(String(r.userId));
+    const platform = r.platform ?? (dev?.platform === 'ios' || dev?.platform === 'android' ? dev.platform : null);
+    let ticket: ExpoTicket | undefined = deadTicketByUser.get(String(r.userId));
+    if (ticket) {
+      deadTicketByUser.delete(String(r.userId));
+    } else if (dev?.token && r.title != null) {
+      const key = ticketKey(dev.token, r.title);
+      ticket = ticketByMessage.get(key);
+      ticketByMessage.delete(key);
+    }
+    const metadata: Record<string, unknown> = {};
+    if (r.variantHash) metadata.variant_hash = r.variantHash;
+    if (ticket?.status === 'ok' && ticket.id) {
+      metadata.ticket_id = ticket.id;
+      if (dev?.token) metadata.push_token = dev.token; // para apagar o token se o recibo vier DeviceNotRegistered
+    }
+    const ticketError = ticket?.status === 'error' ? (ticket.details?.error ?? ticket.message ?? 'unknown') : null;
+    return {
+      id:                 randomUUID(),
+      user_id:            r.userId,
+      notification_type:  r.type,
+      status:             r.status ?? (ticketError ? 'failed' : 'sent'),
+      message_title:      r.title ?? null,
+      message_body:       r.body ?? null,
+      platform,
+      error_message:      r.errorMessage ?? ticketError,
+      metadata:           Object.keys(metadata).length ? metadata : null,
+    };
+  });
   const { error } = await supabase
     .from('notification_logs')
     .insert(payload);
@@ -520,6 +576,12 @@ async function sendExpoPush(
   let errors = 0;
   const BATCH_SIZE = 100;
   const invalidTokens: string[] = [];
+  // Mensagens que nunca foram logadas não podem acumular para sempre.
+  if (ticketByMessage.size > 20000) ticketByMessage.clear();
+  if (deadTicketByUser.size > 20000) deadTicketByUser.clear();
+  const keep = (m: ExpoMessage | undefined, t: ExpoTicket) => {
+    if (m?.to) ticketByMessage.set(ticketKey(m.to, m.title), t);
+  };
 
   for (let i = 0; i < messages.length; i += BATCH_SIZE) {
     const batch = messages.slice(i, i + BATCH_SIZE);
@@ -530,13 +592,23 @@ async function sendExpoPush(
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: JSON.stringify(batch),
+        body: JSON.stringify(batch.map(m => ({ channelId: ANDROID_PUSH_CHANNEL, ...m }))),
       });
       const result = await response.json();
-      const items = result.data ?? [];
+      // Requisição inteira recusada (ex.: tokens de projetos diferentes):
+      // o Expo responde só com `errors`, sem um ticket por mensagem.
+      if (!Array.isArray(result?.data)) {
+        const msg = result?.errors?.[0]?.code ?? result?.errors?.[0]?.message ?? `HTTP ${response.status}`;
+        console.error(`❌ [Expo] batch rejected: ${msg}`);
+        errors += batch.length;
+        batch.forEach(m => keep(m, { status: 'error', message: String(msg) }));
+        continue;
+      }
+      const items = result.data;
       // Per-token accounting — Expo returns one status entry per message
       // in the same order as the request batch.
       items.forEach((r: any, idx: number) => {
+        keep(batch[idx], r);
         if (r.status === 'ok') {
           sent += 1;
         } else {
@@ -554,19 +626,25 @@ async function sendExpoPush(
     } catch (e) {
       console.error('❌ Expo Push batch error:', e);
       errors += batch.length;
+      batch.forEach(m => keep(m, { status: 'error', message: 'request_failed' }));
     }
   }
 
   // Token cleanup — null out dead tokens so we stop trying to send to them.
   if (supabase && invalidTokens.length > 0) {
     try {
-      const { error } = await supabase
+      const { data: cleared, error } = await supabase
         .from('charlotte_users')
         .update({ expo_push_token: null })
-        .in('expo_push_token', invalidTokens);
+        .in('expo_push_token', invalidTokens)
+        .select('id');
       if (error) {
         console.warn('⚠️ [Expo] token cleanup error:', error.message);
       } else {
+        // O token sumiu do cadastro: logRnPushes acha o ticket pela id do aluno.
+        for (const u of (cleared ?? []) as any[]) {
+          deadTicketByUser.set(String(u.id), { status: 'error', message: 'DeviceNotRegistered', details: { error: 'DeviceNotRegistered' } });
+        }
         console.log(`🧹 [Expo] Cleared ${invalidTokens.length} dead token(s)`);
       }
     } catch (e) {
@@ -575,6 +653,94 @@ async function sendExpoPush(
   }
 
   return { sent, errors };
+}
+
+// ── Recibos de entrega ───────────────────────────────────────────────────────
+// O ticket só diz que o Expo aceitou a mensagem; a entrega à Apple/Google sai
+// no recibo, que fica pronto em alguns minutos e some depois de ~24 h. Roda de
+// hora em hora (scheduler): pega os envios de 15 min a 24 h atrás ainda sem
+// recibo. ok → metadata.delivery = 'delivered' (status segue 'sent', que é o
+// que o limite de frequência e o /admin contam); erro → status 'failed',
+// metadata.delivery = 'error' e o código em error_message. DeviceNotRegistered
+// também apaga o token do aluno, se ainda for o mesmo.
+export async function checkExpoReceipts(): Promise<{ checked: number; delivered: number; failed: number }> {
+  const out = { checked: 0, delivered: 0, failed: 0 };
+  try {
+    const supabase = getSupabaseAdmin();
+    const from = new Date(Date.now() - 24 * 3600 * 1000).toISOString();
+    const to = new Date(Date.now() - 15 * 60 * 1000).toISOString();
+    const { data: rows, error } = await supabase
+      .from('notification_logs')
+      .select('id, user_id, metadata')
+      .eq('status', 'sent')
+      .gte('created_at', from)
+      .lte('created_at', to)
+      .not('metadata->>ticket_id', 'is', null)
+      .is('metadata->>delivery', null)
+      .limit(5000);
+    if (error) {
+      console.warn('⚠️ [Expo] receipts query error:', error.message);
+      return out;
+    }
+    const pending = (rows ?? []) as { id: string; user_id: string; metadata: Record<string, any> }[];
+    const deadTokens: { userId: string; token: string }[] = [];
+
+    for (let i = 0; i < pending.length; i += 1000) { // limite do Expo por requisição
+      const chunk = pending.slice(i, i + 1000);
+      let receipts: Record<string, ExpoTicket> = {};
+      try {
+        const resp = await fetch(EXPO_RECEIPTS_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ ids: chunk.map(r => r.metadata.ticket_id) }),
+        });
+        const json = await resp.json();
+        receipts = json?.data ?? {};
+      } catch (e) {
+        console.warn('⚠️ [Expo] getReceipts error:', e);
+        continue;
+      }
+      // Sem recibo ainda = não ficou pronto; tenta de novo na próxima hora.
+      const updates = chunk.filter(r => receipts[r.metadata.ticket_id]);
+      for (let j = 0; j < updates.length; j += 50) {
+        await Promise.all(updates.slice(j, j + 50).map(async r => {
+          const rc = receipts[r.metadata.ticket_id];
+          const ok = rc.status === 'ok';
+          const code = ok ? null : (rc.details?.error ?? rc.message ?? 'unknown');
+          const { error: upErr } = await supabase
+            .from('notification_logs')
+            .update({
+              ...(ok ? {} : { status: 'failed', error_message: code }),
+              metadata: { ...r.metadata, delivery: ok ? 'delivered' : 'error', ...(code ? { delivery_error: code } : {}) },
+            })
+            .eq('id', r.id);
+          if (upErr) {
+            console.warn('⚠️ [Expo] receipt update error:', upErr.message);
+            return;
+          }
+          out.checked += 1;
+          if (ok) out.delivered += 1; else out.failed += 1;
+          if (code === 'DeviceNotRegistered' && r.metadata.push_token) {
+            deadTokens.push({ userId: r.user_id, token: r.metadata.push_token });
+          }
+        }));
+      }
+    }
+
+    // Só apaga se o aluno ainda estiver com o mesmo token (pode ter reinstalado).
+    for (const d of deadTokens) {
+      const { error: clrErr } = await supabase
+        .from('charlotte_users')
+        .update({ expo_push_token: null })
+        .eq('id', d.userId)
+        .eq('expo_push_token', d.token);
+      if (clrErr) console.warn('⚠️ [Expo] receipt token cleanup error:', clrErr.message);
+    }
+    console.log(`[Expo] Recibos: ${out.checked} conferidos, ${out.delivered} entregues, ${out.failed} com erro`);
+  } catch (e) {
+    console.error('❌ [Expo] receipts error:', e);
+  }
+  return out;
 }
 
 // ── helpers ──────────────────────────────────────────────────────────────────

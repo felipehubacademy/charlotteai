@@ -1,10 +1,11 @@
-// "Como você conheceu o Queizy?" — pergunta única no fim da 1ª atividade da trilha.
+// "Como você conheceu o Queizy?" — pergunta única na tela inicial, logo depois da escolha da Família
+// (antes ficava no fim da 1ª atividade e metade das contas novas nunca chegava lá).
 // Só para quem criou a conta pela loja (o servidor confere: sem resposta e sem checkout no site).
-// Um toque responde e fecha; "Pular" também conta como resposta, para a pergunta nunca mais aparecer.
+// Obrigatória: um toque responde e fecha; não tem "Pular" nem fecha tocando fora.
 // Liga ao anúncio quem começou o teste pela loja, onde não há link com utm.
 // Sempre em português, qualquer que seja o idioma do aparelho (o público é brasileiro).
 import React, { useEffect, useRef, useState } from 'react';
-import { Modal, Pressable, View, TouchableOpacity, Dimensions, Animated, Easing } from 'react-native';
+import { Modal, View, TouchableOpacity, Dimensions, Animated, Easing } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
@@ -39,9 +40,9 @@ export function AcquisitionSheet({ armed }: { armed: boolean }) {
     (async () => {
       const { data } = await supabase.rpc('acquisition_should_ask');
       if (data !== true) return;
-      // Deixa a comemoração da atividade aparecer primeiro e espera a de conquista fechar
-      // (a 1ª atividade costuma desbloquear uma), para não abrir por cima dela.
-      await new Promise(r => setTimeout(r, 1400));
+      // Deixa a janela da Família terminar de fechar e espera alguma comemoração de conquista,
+      // para não abrir por cima delas.
+      await new Promise(r => setTimeout(r, 900));
       await waitForCelebration();
       if (!cancelled) setVisible(true);
     })().catch(() => {});
@@ -72,11 +73,9 @@ export function AcquisitionSheet({ armed }: { armed: boolean }) {
   if (!mounted) return null;
 
   return (
-    <Modal visible transparent animationType="none" onRequestClose={() => answer('skipped')} statusBarTranslucent>
+    <Modal visible transparent animationType="none" onRequestClose={() => {}} statusBarTranslucent>
       <View style={{ flex: 1 }}>
-        <Animated.View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.45)', opacity: backdrop }}>
-          <Pressable onPress={() => answer('skipped')} style={{ flex: 1 }} />
-        </Animated.View>
+        <Animated.View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.45)', opacity: backdrop }} />
         <Animated.View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, transform: [{ translateY: sheetY }] }}>
           <View style={{ backgroundColor: '#FFFFFF', borderTopLeftRadius: 24, borderTopRightRadius: 24, paddingHorizontal: 24, paddingTop: 16, paddingBottom: 20 + insets.bottom }}>
             <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 18 }} />
@@ -94,9 +93,6 @@ export function AcquisitionSheet({ armed }: { armed: boolean }) {
                 </TouchableOpacity>
               ))}
             </View>
-            <TouchableOpacity onPress={() => answer('skipped')} activeOpacity={0.7} style={{ paddingVertical: 14, alignItems: 'center', marginTop: 4 }}>
-              <AppText style={{ fontSize: 14, fontWeight: '700', color: C.navyMid }}>Pular</AppText>
-            </TouchableOpacity>
           </View>
         </Animated.View>
       </View>

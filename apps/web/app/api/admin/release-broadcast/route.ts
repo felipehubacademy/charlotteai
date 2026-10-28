@@ -185,7 +185,7 @@ export async function POST(req: NextRequest) {
       const batch = tokens.slice(i, i + BATCH);
       const messages = batch.map(to => ({
         to, title: PUSH_TITLE, body: PUSH_BODY,
-        sound: 'default' as const, priority: 'high' as const,
+        sound: 'default' as const, priority: 'high' as const, channelId: 'charlotte',
         data: { type: LOG_TYPE },
       }));
       try {
@@ -205,18 +205,19 @@ export async function POST(req: NextRequest) {
     }
     result.push = { sent, errors, targeted: tokens.length };
 
-    // log best-effort
+    // Log (é ele que faz a trava de 24 h acima funcionar). Erro do banco vem no retorno, não como exceção.
     try {
-      await supabase.from('notification_logs').insert(
+      const { error: logErr } = await supabase.from('notification_logs').insert(
         pushRows.map(r => ({
           user_id: r.id,
           notification_type: LOG_TYPE,
           status: 'sent',
           message_title: PUSH_TITLE,
           message_body: PUSH_BODY,
-          platform: 'expo',
+          platform: null,
         })),
       );
+      if (logErr) console.warn('release-broadcast log warn:', logErr.message);
     } catch (e) {
       console.warn('release-broadcast log warn:', e);
     }

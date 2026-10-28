@@ -40,6 +40,8 @@ import { voiceSFX } from '@/lib/voiceSFX';
 import { ArrowDown, ArrowUp } from 'phosphor-react-native';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { TasteCallCard } from '@/components/trail/TasteCallCard';
+import { TasteTomorrowCard } from '@/components/trail/TasteTomorrowCard';
+import { TASTE_DAYS, tasteDayNumber, tasteFreeUnits } from '@/lib/tasteDays';
 import { RankLeaderModal, type RankLeaderEvent } from '@/components/social/RankLeaderModal';
 import { TrailBanner } from '@/components/trail/TrailBanner';
 import { StudyingNow } from '@/components/social/StudyingNow';
@@ -50,6 +52,7 @@ import { usePromotion } from '@/lib/curriculum-v2/usePromotion';
 import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
 import { usePromotionPending } from '@/lib/promotionState';
 import { PlacementPromptSheet } from '@/components/onboarding/PlacementPromptSheet';
+import { AcquisitionSheet } from '@/components/onboarding/AcquisitionSheet';
 
 // Celebração de líder da semana: XP mínimo da semana para valer.
 const WEEK_LEADER_MIN_XP = 100;
@@ -731,6 +734,9 @@ export default function HomeTab() {
         )}
         {/* Degustação sem nenhuma atividade concluída (passada a 1ª meia hora): a ligação como alternativa. */}
         {isTaster && tasterDone === 0 && !!profile?.created_at && Date.now() - new Date(profile.created_at).getTime() > 30 * 60000 && <TasteCallCard />}
+        {/* Degustação com o tópico grátis de hoje feito (4 atividades por tópico) e mais dias pela frente: volte amanhã. */}
+        {isTaster && tasterDone !== null && !!profile?.created_at && tasterDone >= 4 * tasteFreeUnits(profile.created_at)
+          && tasteDayNumber(profile.created_at) < TASTE_DAYS && <TasteTomorrowCard />}
         <TrailContent
           userId={userId}
           level={trailLevel}
@@ -792,6 +798,9 @@ export default function HomeTab() {
 
       {/* Promotion (level-up) vs Graduation (terminal): renderiza um ou outro
           baseado no discriminator do evento. */}
+      {/* "Como você conheceu o Queizy?": logo depois da escolha da Família, 1x por conta (o servidor decide).
+          Só contas novas (desde que a pergunta existe), para não empilhar com o convite do teste de nível de quem já usa. */}
+      <AcquisitionSheet armed={familyPickDone && familySheet === null && !loading && (profile?.created_at ?? '') >= '2026-10-27T00:00:00Z'} />
       <RankLeaderModal event={rankLeader} onClose={() => setRankLeader(null)} />
       <PromotionModal
         event={promotionEvent?.type === 'level-up' ? promotionEvent : null}
