@@ -66,6 +66,8 @@ export async function POST(req: NextRequest) {
       const { error: derr } = await supabase.auth.admin.mfa.deleteFactor({ id: factor.id, userId: mem.user_id });
       if (derr) return NextResponse.json({ error: derr.message }, { status: 500 });
     }
+    // Computadores de confiança deixam de valer: o próximo login pede o código novo.
+    await supabase.from('admin_trusted_devices').delete().eq('user_id', mem.user_id);
     // Encerra as sessões abertas: quem estiver com o celular perdido não continua logado.
     await supabase.auth.admin.signOut(mem.user_id, 'global').catch(() => {});
     await audit(admin, 'team.reset_mfa', 'admin_member', mem.id, { email: mem.email, factors: f?.factors?.length ?? 0 });

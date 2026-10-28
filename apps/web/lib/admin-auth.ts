@@ -10,6 +10,7 @@
 // estiver toda com login próprio.
 
 import { NextRequest, NextResponse } from 'next/server';
+import { createHash } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { markInviteAccepted } from '@/lib/admin-invite';
 
@@ -28,6 +29,16 @@ export interface AdminContext {
   mfa: boolean;
 }
 
+/** Computador de confiança (30 dias): o navegador manda a chave no header x-admin-device; aqui só o hash. */
+export const TRUSTED_DEVICE_DAYS = 30;
+export const hashDeviceToken = (t: string) => createHash('sha256').update(t).digest('hex');
+async function isTrustedDevice(userId: string, deviceToken: string): Promise<boolean> {
+  if (!deviceToken || deviceToken.length < 20) return false;
+  const { data } = await getSupabaseAdmin().from('admin_trusted_devices').select('id')
+    .eq('user_id', userId).eq('token_hash', hashDeviceToken(deviceToken)).gt('expires_at', new Date().toISOString()).maybeSingle();
+  return !!data;
+}
+
 /** Nível de garantia do token do Supabase: 'aal2' = passou pela segunda etapa. */
 function tokenAal(token: string): string | null {
   try { return JSON.parse(Buffer.from(token.split('.')[1], 'base64url').toString()).aal ?? null; } catch { return null; }
@@ -43,7 +54,8 @@ export function areasFor(role: AdminRole): AdminArea[] {
 
 /**
  * Identifica quem está chamando. null = não é admin.
- * Login com e-mail exige as duas etapas (código do app autenticador). Só o /api/admin/me aceita
+ * Login com e-mail exige as duas etapas (código do app autenticador), salvo em computador de confiança
+ * (x-admin-device, 30 dias). Só o /api/admin/me aceita
  * o login sem a segunda etapa (allowPendingMfa), para a tela de login saber que falta o código.
  */
 export async function getAdmin(req: NextRequest, opts?: { allowPendingMfa?: boolean }): Promise<AdminContext | null> {
@@ -70,7 +82,8 @@ export async function getAdmin(req: NextRequest, opts?: { allowPendingMfa?: bool
   // Primeiro acesso de quem foi convidado: marca o aceite e avisa quem convidou.
   if (!m.accepted_at) await markInviteAccepted(userData.user.id).catch(e => console.warn('[admin] aceite', e));
 
-  const mfa = tokenAal(token) === 'aal2';
+  // Segunda etapa feita nesta sessão, ou computador marcado como de confiança há menos de 30 dias.
+  const mfa = tokenAal(token) === 'aal2' || await isTrustedDevice(userData.user.id, req.headers.get('x-admin-device') ?? '');
   if (!mfa && !opts?.allowPendingMfa) return null;
   return { userId: userData.user.id, email: m.email, name: m.name, role: m.role, legacy: false, mfa };
 }

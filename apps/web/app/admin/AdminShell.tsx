@@ -682,6 +682,7 @@ function MfaScreen({ onDone, onCancel }: { onDone: () => void; onCancel: () => v
   const [qr, setQr] = useState<string | null>(null);
   const [secret, setSecret] = useState<string | null>(null);
   const [code, setCode] = useState('');
+  const [trust, setTrust] = useState(true);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState('');
 
@@ -711,6 +712,12 @@ function MfaScreen({ onDone, onCancel }: { onDone: () => void; onCancel: () => v
     try {
       const { error } = await supabase.auth.mfa.challengeAndVerify({ factorId, code: code.replace(/\s/g, '') });
       if (error) { setErr('Código incorreto ou vencido. Confira o app e tente de novo.'); return; }
+      if (trust) {
+        // Confiar neste computador: nos próximos 30 dias, entrar com a senha basta aqui.
+        const r = await fetch('/api/admin/trusted-device', { method: 'POST' }).catch(() => null);
+        const j = r?.ok ? await r.json().catch(() => null) : null;
+        if (j?.token) { try { localStorage.setItem(TRUSTED_DEVICE_KEY, j.token); } catch { /* sem armazenamento: pede o código de novo */ } }
+      }
       onDone();
     } catch {
       setErr('Erro de conexão. Verifique sua internet.');
@@ -748,6 +755,10 @@ function MfaScreen({ onDone, onCancel }: { onDone: () => void; onCancel: () => v
             <input inputMode="numeric" autoComplete="one-time-code" maxLength={7} value={code}
               onChange={e => setCode(e.target.value.replace(/[^\d ]/g, ''))} placeholder="000000" autoFocus className="adm-input" />
           </div>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--t2)', cursor: 'pointer' }}>
+            <input type="checkbox" checked={trust} onChange={e => setTrust(e.target.checked)} />
+            Confiar neste computador por 30 dias
+          </label>
           {err && <div className="adm-login-err">{err}</div>}
           <button type="submit" className="adm-btn adm-btn-primary" disabled={loading || !factorId || code.replace(/\s/g, '').length !== 6}>
             <Shield size={14} />
@@ -869,6 +880,8 @@ function Sidebar({ collapsed, onToggle, pathname, onLogout, me, mobileOpen }: {
 
 // Toda chamada a /api/admin leva o token de quem está logado.
 let fetchPatched = false;
+const TRUSTED_DEVICE_KEY = 'adminTrustedDevice';
+
 function installAdminFetch() {
   if (fetchPatched || typeof window === 'undefined') return;
   fetchPatched = true;
@@ -880,6 +893,9 @@ function installAdminFetch() {
       const { data } = (await getSupabase()?.auth.getSession()) ?? { data: { session: null } };
       const token = data?.session?.access_token;
       if (token && !headers.has('authorization')) headers.set('authorization', `Bearer ${token}`);
+      // Computador de confiança (30 dias, depois do código das duas etapas).
+      const device = (() => { try { return localStorage.getItem(TRUSTED_DEVICE_KEY); } catch { return null; } })();
+      if (device && !headers.has('x-admin-device')) headers.set('x-admin-device', device);
       const secret = sessionStorage.getItem('adminSecret');
       if (secret && !headers.get('x-admin-secret')) headers.set('x-admin-secret', secret);
       return original(input, { ...init, headers });
