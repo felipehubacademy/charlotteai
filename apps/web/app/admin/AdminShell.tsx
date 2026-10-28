@@ -7,6 +7,7 @@ import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Head
 import { getSupabase } from '@/lib/supabase';
 import { AdminMe, AdminMeContext } from '@/lib/admin-context';
 import AdminLoading from '@/components/admin/AdminLoading';
+import { useAdminAlerts, AlertsDrawer, ALERTS_CSS } from '@/components/admin/AdminAlerts';
 
 // ── Design tokens ───────────────────────────────────────────────────────────
 const ADMIN_CSS = `
@@ -812,8 +813,9 @@ function firstAllowedHref(me: AdminMe): string {
   return NAV_LINKS.find(l => me.areas.includes(l.area))?.href ?? '/admin';
 }
 
-function Sidebar({ collapsed, onToggle, pathname, onLogout, me, mobileOpen }: {
+function Sidebar({ collapsed, onToggle, pathname, onLogout, me, mobileOpen, unread, onAlerts }: {
   collapsed: boolean; onToggle: () => void; pathname: string | null; onLogout: () => void; me: AdminMe; mobileOpen: boolean;
+  unread: number; onAlerts: () => void;
 }) {
   // Esconde seções sem nenhum item liberado para o papel.
   const visible = NAV.filter((item, i) => {
@@ -841,6 +843,14 @@ function Sidebar({ collapsed, onToggle, pathname, onLogout, me, mobileOpen }: {
       </div>
 
       <div className="adm-nav">
+        {!me.legacy && (
+          <button onClick={onAlerts} className="adm-nav-item" title="Alertas"
+            style={{ width: '100%', background: 'none', border: 'none', textAlign: 'left', font: 'inherit', fontSize: 13.5, fontWeight: 500 }}>
+            <Bell size={16} className="adm-nav-icon" />
+            <span className="adm-nav-label">Alertas</span>
+            {unread > 0 && <span className="adm-badge">{unread > 99 ? '99+' : unread}</span>}
+          </button>
+        )}
         {visible.map((item, i) => {
           if ('section' in item) return <div key={i} className="adm-section-label">{item.section}</div>;
           const isActive = item.href === '/admin' ? pathname === '/admin' : (pathname ?? '').startsWith(item.href);
@@ -914,6 +924,23 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
   useEffect(() => { setMobileOpen(false); }, [pathname]); // fecha a gaveta ao trocar de página
   const router = useRouter();
+  const alertsState = useAdminAlerts(state === 'ready' && !!me && !me.legacy);
+  const [alertsOpen, setAlertsOpen] = useState(false);
+  const [alertFocus, setAlertFocus] = useState<string | null>(null);
+  const openAlerts = () => { setMobileOpen(false); setAlertsOpen(true); alertsState.load(); };
+  // Toque no push: a tela abre com ?alerta=id; mostra o alerta completo no sino e marca como lido.
+  useEffect(() => {
+    if (state !== 'ready' || !me || me.legacy) return;
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('alerta');
+    if (!id) return;
+    params.delete('alerta');
+    const qs = params.toString();
+    window.history.replaceState(null, '', window.location.pathname + (qs ? `?${qs}` : ''));
+    setAlertFocus(id); setAlertsOpen(true);
+    fetch('/api/admin/alerts', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, read: true }) })
+      .then(() => alertsState.load()).catch(() => {});
+  }, [state, me, pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const loadMe = async () => {
     installAdminFetch();
@@ -1004,9 +1031,10 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
 
   return (
     <AdminMeContext.Provider value={me}>
-      <style>{ADMIN_CSS}</style>
+      <style>{ADMIN_CSS + ALERTS_CSS}</style>
       <div className="admin-root" style={{ display: 'flex', minHeight: '100dvh' }}>
-        <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(c => !c)} pathname={pathname} onLogout={handleLogout} me={me} mobileOpen={mobileOpen} />
+        <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(c => !c)} pathname={pathname} onLogout={handleLogout} me={me} mobileOpen={mobileOpen}
+          unread={alertsState.unread} onAlerts={openAlerts} />
         <div className={`adm-backdrop${mobileOpen ? ' show' : ''}`} onClick={() => setMobileOpen(false)} />
         <main className="adm-main" style={{ ['--adm-ml' as string]: collapsed ? '64px' : '240px', flex: 1, minWidth: 0, transition: 'margin-left 280ms cubic-bezier(.4,0,.2,1)' } as React.CSSProperties}>
           {/* Só no celular: barra com o menu (a lateral vira gaveta). */}
@@ -1014,9 +1042,16 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
             <button className="adm-mobilebar-btn" onClick={() => setMobileOpen(true)} aria-label="Abrir menu"><Menu size={18} /></button>
             <img src="/images/queizy-icon.png" alt="" style={{ width: 26, height: 26, borderRadius: 6 }} />
             <div className="adm-mobilebar-title">Gestão</div>
+            {!me.legacy && (
+              <button className="adm-mobilebar-btn" onClick={openAlerts} aria-label="Alertas">
+                <Bell size={18} />
+                {alertsState.unread > 0 && <span className="adm-badge">{alertsState.unread > 99 ? '99+' : alertsState.unread}</span>}
+              </button>
+            )}
           </div>
           {allowedHere ? children : null}
         </main>
+        <AlertsDrawer open={alertsOpen} onClose={() => { setAlertsOpen(false); setAlertFocus(null); }} focusId={alertFocus} state={alertsState} />
       </div>
     </AdminMeContext.Provider>
   );
