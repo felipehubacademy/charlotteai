@@ -58,12 +58,20 @@ export function StreakScene({ status, offer, onClose }: { status: StreakStatus; 
   const [accepting, setAccepting] = useState(false);
   const [accepted, setAccepted] = useState(false);
   const canOffer = offer.show && (!ch || ch.status === 'failed');
+  // Dias da sequência que ficaram antes desta semana (ex.: começou no domingo anterior).
+  const earlier = Math.max(0, n - status.week.filter(d => d.state === 'done' || d.state === 'frozen').length);
 
   const flame = useRef(new Animated.Value(0)).current;
   const flicker = useRef(new Animated.Value(0)).current;
   const content = useRef(new Animated.Value(0)).current;
   const [shown, setShown] = useState(Math.max(0, n - 1));
   const bump = useRef(new Animated.Value(1)).current;
+
+  useEffect(() => {
+    // Relógio e ícones claros sobre o fundo escuro (no Android o StatusBar dentro do Modal não basta).
+    StatusBar.setBarStyle('light-content', true);
+    return () => { StatusBar.setBarStyle('dark-content', true); };
+  }, []);
 
   useEffect(() => {
     if (canOffer) offer.onShown();
@@ -133,8 +141,20 @@ export function StreakScene({ status, offer, onClose }: { status: StreakStatus; 
           <AppText display style={{ fontSize: 26, fontWeight: '800', color: '#FFFFFF', textAlign: 'center', marginTop: 4 }}>{title}</AppText>
           <AppText style={{ fontSize: 15, color: 'rgba(255,255,255,0.72)', textAlign: 'center', marginTop: 8, lineHeight: 21, maxWidth: 320 }}>{sub}</AppText>
 
-          {/* Semana: feitos (laranja), protegidos (gelo), hoje, faltas e dias que ainda vêm. */}
-          <View style={{ flexDirection: 'row', gap: 8, marginTop: 26, backgroundColor: 'rgba(255,255,255,0.06)', borderRadius: 20, paddingVertical: 14, paddingHorizontal: 14 }}>
+          {/* Semana: feitos (laranja), protegidos (gelo), hoje, faltas e dias que ainda vêm.
+              "Esta semana" deixa claro que a sequência pode ter começado antes da segunda. */}
+          <View style={{ marginTop: 26, backgroundColor: 'rgba(255,255,255,0.06)', borderRadius: 20, paddingTop: 10, paddingBottom: 14, paddingHorizontal: 14 }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 }}>
+            <AppText style={{ fontSize: 11, fontWeight: '700', color: 'rgba(255,255,255,0.45)', letterSpacing: 0.6, textTransform: 'uppercase' }}>
+              {isPt ? 'Esta semana' : 'This week'}
+            </AppText>
+            {earlier > 0 && (
+              <AppText style={{ fontSize: 11, fontWeight: '700', color: 'rgba(255,255,255,0.45)' }}>
+                {isPt ? `+${earlier} ${earlier === 1 ? 'dia' : 'dias'} antes` : `+${earlier} earlier`}
+              </AppText>
+            )}
+          </View>
+          <View style={{ flexDirection: 'row', gap: 8 }}>
             {status.week.map((d, i) => {
               const done = d.state === 'done', frozen = d.state === 'frozen';
               return (
@@ -154,6 +174,7 @@ export function StreakScene({ status, offer, onClose }: { status: StreakStatus; 
                 </View>
               );
             })}
+          </View>
           </View>
 
           {/* Desafio dos 7 dias: convite (até 3 vezes), andamento ou conclusão. */}
