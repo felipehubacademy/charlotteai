@@ -85,8 +85,8 @@ export async function GET(req: NextRequest) {
   const cohortRows = [...cohorts.entries()].sort((a, b) => b[0].localeCompare(a[0])).map(([month, list]) => ({
     month,
     subscribers: list.filter(s => s.net - s.refunded > 0.01).length,
-    monthly: list.filter(s => s.plan === 'monthly').length,
-    annual: list.filter(s => s.plan === 'annual').length,
+    monthly: list.filter(s => s.plan === 'monthly' && s.net - s.refunded > 0.01).length,
+    annual: list.filter(s => s.plan === 'annual' && s.net - s.refunded > 0.01).length,
     renewed: list.filter(s => s.charges >= 2).length,
     refunded: list.filter(s => s.refunded > 0).length,
     netRealized: round2(list.reduce((a, s) => a + s.net - s.refunded, 0)),
