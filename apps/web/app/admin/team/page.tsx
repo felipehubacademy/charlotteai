@@ -7,7 +7,7 @@ import { Plus, X, Copy, Check, Minus } from 'lucide-react';
 import { ROLES, AREAS, PERMISSIONS, type AdminRole as Role } from '@/lib/admin-roles';
 import { useAdminMe } from '@/lib/admin-context';
 
-interface Member { id: string; user_id: string; email: string; name: string | null; role: Role; active: boolean; created_at: string; accepted_at: string | null }
+interface Member { id: string; user_id: string; email: string; name: string | null; role: Role; active: boolean; created_at: string; accepted_at: string | null; mfa?: boolean }
 
 
 export default function TeamPage() {
@@ -52,6 +52,16 @@ export default function TeamPage() {
     setNotice(`Convite reenviado para ${m.email}.`);
   };
 
+  const resetMfa = async (m: Member) => {
+    if (!window.confirm(`Refazer a verificação em duas etapas de ${m.name ?? m.email}? O app autenticador atual deixa de valer, a pessoa sai da gestão em todos os aparelhos e cadastra um novo no próximo login.`)) return;
+    setError(''); setNotice('');
+    const r = await fetch('/api/admin/team', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ reset_mfa: true, id: m.id }) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) { setError(j.error ?? 'Não foi possível refazer as duas etapas.'); return; }
+    setNotice(`Duas etapas de ${m.email} zeradas. No próximo login, a pessoa lê um QR code novo no app autenticador.`);
+    load();
+  };
+
   const update = async (m: Member, patch: Partial<Pick<Member, 'role' | 'active'>>) => {
     setError('');
     const r = await fetch('/api/admin/team', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: m.id, ...patch }) });
@@ -89,9 +99,9 @@ export default function TeamPage() {
           <div className="adm-panel col-12">
             <div className="adm-panel-hdr"><div className="adm-panel-title">Membros</div><div className="adm-panel-sub">{members.filter(m => m.active).length} ativos</div></div>
             <table className="adm-table">
-              <thead><tr><th>Pessoa</th><th>Nível de acesso</th><th>Situação</th><th>Desde</th></tr></thead>
+              <thead><tr><th>Pessoa</th><th>Nível de acesso</th><th>Situação</th><th>Duas etapas</th><th>Desde</th></tr></thead>
               <tbody>
-                {loading && <tr><td colSpan={4}>Carregando…</td></tr>}
+                {loading && <tr><td colSpan={5}>Carregando…</td></tr>}
                 {members.map(m => {
                   const isMe = m.email === me?.email;
                   return (
@@ -114,6 +124,14 @@ export default function TeamPage() {
                         )}
                         {m.active && !isMe && (
                           <button className="adm-btn-sm ghost" style={{ marginLeft: 6 }} onClick={() => resend(m)}>Reenviar convite</button>
+                        )}
+                      </td>
+                      <td>
+                        <span style={{ fontSize: 12.5, color: m.mfa ? 'var(--ok)' : 'var(--t3)', fontWeight: 600 }}>
+                          {m.mfa ? 'Ativa' : 'Cadastra no próximo login'}
+                        </span>
+                        {m.mfa && !isMe && (
+                          <button className="adm-btn-sm ghost" style={{ marginLeft: 8 }} onClick={() => resetMfa(m)}>Refazer</button>
                         )}
                       </td>
                       <td>{new Date(m.created_at).toLocaleDateString('pt-BR')}</td>

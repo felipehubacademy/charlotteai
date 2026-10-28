@@ -81,7 +81,9 @@ function AuthGuard() {
   // (re-read after returning from ai-consent screen so the guard unblocks)
   useEffect(() => {
     // Aceite por conta (lib/aiConsent). Sem perfil ainda: o guard espera o perfil de qualquer jeito.
-    if (!profile?.id) { setAiConsent(false); setConsentReady(true); return; }
+    // Sem perfil (saiu da conta): esquece também de qual conta era a leitura. Senão, ao entrar de novo na
+    // mesma conta, o guard achava a leitura pronta (consentFor igual) com o "false" daqui e pedia o aceite.
+    if (!profile?.id) { setAiConsent(false); setConsentFor(null); setConsentReady(true); return; }
     const uid = profile.id;
     hasAiConsent(uid, profile.created_at).then(ok => {
       setAiConsent(ok);

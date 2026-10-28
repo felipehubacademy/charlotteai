@@ -4,6 +4,8 @@
 //          cria com senha temporária (devolvida uma única vez para repassar).
 //          Em todo caso manda o e-mail de convite (papel, acessos e link para criar a senha).
 //   POST   { resend: true, id } manda o e-mail de convite de novo
+//   POST   { reset_mfa: true, id } apaga o app autenticador da pessoa (perdeu o celular):
+//          no próximo login ela cadastra um novo pelo QR code
 //   PATCH  { id, role?, active? } muda o nível de acesso ou desativa/reativa
 import { NextRequest, NextResponse } from 'next/server';
 import { randomBytes } from 'crypto';
@@ -22,7 +24,14 @@ export async function GET(req: NextRequest) {
     .select('id, user_id, email, name, role, active, created_at, accepted_at')
     .order('created_at', { ascending: true });
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ members: data ?? [] });
+  // Verificação em duas etapas: quem já cadastrou o app autenticador.
+  const supabase = getSupabaseAdmin();
+  const members = await Promise.all(((data ?? []) as { user_id: string }[]).map(async m => {
+    const { data: f } = await supabase.auth.admin.mfa.listFactors({ userId: m.user_id }).catch(() => ({ data: null }));
+    const mfa = !!f?.factors?.some(x => x.status === 'verified');
+    return { ...m, mfa };
+  }));
+  return NextResponse.json({ members });
 }
 
 async function findAuthUserId(email: string): Promise<string | null> {
@@ -45,6 +54,23 @@ export async function POST(req: NextRequest) {
   if (admin instanceof NextResponse) return admin;
 
   const body = await req.json().catch(() => ({}));
+  if (body.reset_mfa === true) {
+    const supabase = getSupabaseAdmin();
+    const { data: m } = await supabase.from('admin_members').select('id, user_id, email').eq('id', String(body.id ?? '')).maybeSingle();
+    const mem = m as { id: string; user_id: string; email: string } | null;
+    if (!mem) return NextResponse.json({ error: 'Membro não encontrado.' }, { status: 404 });
+    if (mem.user_id === admin.userId) return NextResponse.json({ error: 'Para refazer as suas duas etapas, peça a outro Administrador.' }, { status: 400 });
+    const { data: f, error: lerr } = await supabase.auth.admin.mfa.listFactors({ userId: mem.user_id });
+    if (lerr) return NextResponse.json({ error: lerr.message }, { status: 500 });
+    for (const factor of f?.factors ?? []) {
+      const { error: derr } = await supabase.auth.admin.mfa.deleteFactor({ id: factor.id, userId: mem.user_id });
+      if (derr) return NextResponse.json({ error: derr.message }, { status: 500 });
+    }
+    // Encerra as sessões abertas: quem estiver com o celular perdido não continua logado.
+    await supabase.auth.admin.signOut(mem.user_id, 'global').catch(() => {});
+    await audit(admin, 'team.reset_mfa', 'admin_member', mem.id, { email: mem.email, factors: f?.factors?.length ?? 0 });
+    return NextResponse.json({ ok: true });
+  }
   if (body.resend === true) {
     const { data: m } = await getSupabaseAdmin().from('admin_members').select('id, email, name, role, active').eq('id', String(body.id ?? '')).maybeSingle();
     const mem = m as { id: string; email: string; name: string | null; role: AdminRole; active: boolean } | null;
