@@ -92,6 +92,8 @@ export const ALERTS_CSS = `
   background: var(--s1); border: 1px solid var(--b1); border-radius: var(--r2);
   padding: 12px 14px; margin-bottom: 8px; cursor: pointer;
 }
+/* Toque no celular não seleciona o texto (o iOS pintava o painel de azul e abria o menu de texto). */
+.adm-alert-item, .adm-nav-item, .adm-mobilebar { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
 .adm-alert-item.unread { border-left: 3px solid var(--err); }
 .adm-alert-item.focus { box-shadow: 0 0 0 2px var(--accent-ring); }
 .adm-alert-meta { display: flex; align-items: center; gap: 8px; font-size: 11.5px; color: var(--t3); margin-bottom: 4px; }
