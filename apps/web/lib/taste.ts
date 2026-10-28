@@ -9,7 +9,7 @@ export const TASTE_PRACTICE_MESSAGES = 10;      // 1º dia
 export const TASTE_PRACTICE_PER_DAY = 5;        // a cada dia seguinte
 export const TASTE_DAYS = 5;
 // Quem já estava na degustação antes da mudança começa a contar daqui.
-const TASTE_DAILY_START = Date.UTC(2026, 9, 28, 3); // 28/10/2026 0h em Brasília
+const TASTE_DAILY_START = Date.UTC(2026, 9, 27, 3); // 27/10/2026 0h em Brasília (em 28/10 quem já tinha conta está no dia 2: um tópico novo)
 
 /** Dia da degustação (1 no dia do cadastro), em dias do calendário de Brasília. */
 export function tasteDay(createdAt: string | null | undefined, now = Date.now()): number {

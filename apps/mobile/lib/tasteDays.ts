@@ -7,7 +7,7 @@
 export const TASTE_DAYS = 5;
 
 // Quem já estava na degustação antes da mudança começa a contar daqui (não ganha 5 tópicos de uma vez).
-const TASTE_DAILY_START = new Date(2026, 9, 28); // 28/10/2026, meia-noite local
+const TASTE_DAILY_START = new Date(2026, 9, 27); // 27/10/2026, meia-noite local (em 28/10 quem já tinha conta está no dia 2: um tópico novo)
 
 /** Dia da degustação: 1 no dia do cadastro, 2 no dia seguinte… (dias do calendário local). */
 export function tasteDayNumber(createdAt: string | null | undefined, now: Date = new Date()): number {
