@@ -35,23 +35,28 @@ export async function GET(req: NextRequest) {
 
   // Um registro por assinante: 1ª cobrança, plano, cobranças, líquido e estornos.
   const subs = new Map<string, { first: number; plan: Plan; store: string; charges: number; net: number; gross: number; refunded: number; last: number }>();
+  // Cobranças primeiro, estornos depois (cobrança e estorno podem ter o mesmo horário).
   for (const r of rows) {
+    if (r.event_type === 'REFUND') continue;
     const t = new Date(r.purchased_at).getTime();
     const s = subs.get(r.app_user_id);
-    if (r.event_type === 'REFUND') {
-      if (s) s.refunded += Number(r.net_brl ?? 0);
-      continue;
-    }
     if (!s) subs.set(r.app_user_id, { first: t, plan: planOf(r.product_id), store: r.store, charges: 1, net: Number(r.net_brl ?? 0), gross: Number(r.gross_brl ?? 0), refunded: 0, last: t });
     else { s.charges++; s.net += Number(r.net_brl ?? 0); s.gross += Number(r.gross_brl ?? 0); s.last = Math.max(s.last, t); }
   }
+  for (const r of rows) {
+    if (r.event_type !== 'REFUND') continue;
+    const s = subs.get(r.app_user_id);
+    if (s) s.refunded += Number(r.net_brl ?? 0);
+  }
   const now = Date.now();
-  const all = [...subs.values()];
+  // Base do LTV: quem pagou e não foi estornado por inteiro (os estornados aparecem só na coluna da turma).
+  const everyone = [...subs.values()];
+  const all = everyone.filter(s => s.net - s.refunded > 0.01);
 
   // Renovação própria: quem já passou da data da 2ª cobrança (mensal 35 dias; anual 380) e se pagou de novo.
   const renewal = (plan: Plan) => {
     const wait = plan === 'monthly' ? 35 : 380;
-    const eligible = all.filter(s => s.plan === plan && now - s.first >= wait * DAY && s.refunded < s.net);
+    const eligible = all.filter(s => s.plan === plan && now - s.first >= wait * DAY);
     const renewed = eligible.filter(s => s.charges >= 2).length;
     const own = eligible.length >= MIN_SAMPLE;
     return { rate: own ? renewed / eligible.length : REF[plan], source: own ? 'own' as const : 'reference' as const, eligible: eligible.length, renewed };
@@ -76,16 +81,16 @@ export async function GET(req: NextRequest) {
   // Turmas pelo mês da 1ª cobrança (calendário de Brasília).
   const monthKey = (t: number) => new Date(t - 3 * 3600000).toISOString().slice(0, 7);
   const cohorts = new Map<string, typeof all>();
-  for (const s of all) { const k = monthKey(s.first); cohorts.set(k, [...(cohorts.get(k) ?? []), s]); }
+  for (const s of everyone) { const k = monthKey(s.first); cohorts.set(k, [...(cohorts.get(k) ?? []), s]); }
   const cohortRows = [...cohorts.entries()].sort((a, b) => b[0].localeCompare(a[0])).map(([month, list]) => ({
     month,
-    subscribers: list.length,
+    subscribers: list.filter(s => s.net - s.refunded > 0.01).length,
     monthly: list.filter(s => s.plan === 'monthly').length,
     annual: list.filter(s => s.plan === 'annual').length,
     renewed: list.filter(s => s.charges >= 2).length,
     refunded: list.filter(s => s.refunded > 0).length,
     netRealized: round2(list.reduce((a, s) => a + s.net - s.refunded, 0)),
-    netPerSub: round2(list.reduce((a, s) => a + s.net - s.refunded, 0) / list.length),
+    netPerSub: round2(list.reduce((a, s) => a + s.net - s.refunded, 0) / Math.max(1, list.filter(s => s.net - s.refunded > 0.01).length)),
   }));
 
   return NextResponse.json({
