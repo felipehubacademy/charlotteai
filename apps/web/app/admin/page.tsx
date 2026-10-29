@@ -25,6 +25,9 @@ interface Stats {
   trialSplit?: { loja: number; site: number; semCartao: number };
   trialDetail?: Record<'loja' | 'site' | 'semCartao', TrialDetail>;
   trialExpired: number; last30: number; last24h?: number; prev24h?: number; growthPct: number | null; activeToday: number; activeWeek: number;
+  totalStudents?: number;
+  taste?: { total: number; active: number; ended: number };
+  cancelled?: { total: number; inTrial: number; paid: number; noAccess: number };
 }
 interface Form {
   email: string; password: string; name: string; charlotte_level: string;
@@ -453,22 +456,44 @@ export default function AdminUsersPage() {
       {stats && (
         <div style={{ padding: '16px 28px 0' }}>
           <div className="adm-grid">
-            <div className="col-3"><StatCard label="Total" value={stats.total} delay={0} /></div>
-            <div className="col-3"><StatCard label="Pagantes" value={stats.subscribers} accent="var(--ok)" delay={60} /></div>
+            {/* Funil: cadastrou → degustação ou teste grátis → pagante; depois quem cancelou. Institucionais ficam fora dos cards. */}
+            <div className="col-3">
+              <StatCard label="Total" value={stats.totalStudents ?? stats.total} delay={0}
+                sub={stats.institutional ? `Sem os ${stats.institutional} institucionais` : undefined} />
+            </div>
+            <div className="col-3">
+              <StatCard label="Degustação" value={stats.taste?.total ?? 0} delay={60}
+                sub={stats.taste ? `${stats.taste.active} nos 5 dias · ${stats.taste.ended} já encerraram` : undefined} />
+            </div>
             <div className="col-3">
               <StatCard label="Em teste grátis" value={stats.onTrial} accent="var(--accent)" delay={120}
                 sub={stats.trialSplit ? `Loja ${stats.trialSplit.loja} · Site ${stats.trialSplit.site}${stats.trialSplit.semCartao ? ` · Sem cartão ${stats.trialSplit.semCartao}` : ''}` : undefined}
                 detail={stats.trialDetail ? <TrialDetailBox d={stats.trialDetail} /> : undefined} />
             </div>
-            <div className="col-3"><StatCard label="Institucionais" value={stats.institutional} delay={180} /></div>
+            <div className="col-3"><StatCard label="Pagantes" value={stats.subscribers} accent="var(--ok)" delay={180} /></div>
+            <div className="col-3">
+              <StatCard label="Cancelados" value={stats.cancelled?.total ?? 0} delay={240}
+                accent={stats.cancelled?.total ? 'var(--warn)' : undefined}
+                sub={stats.cancelled ? `${stats.cancelled.inTrial + stats.cancelled.paid} ainda com acesso` : undefined}
+                detail={stats.cancelled ? (
+                  <div style={{ fontSize: 13, lineHeight: 1.55, color: 'var(--t2)' }}>
+                    <div style={{ fontWeight: 700, color: 'var(--t1)', marginBottom: 6 }}>Desligaram a renovação</div>
+                    <div>{stats.cancelled.inTrial} no teste grátis: usam até o fim dos 7 dias e não são cobrados.</div>
+                    <div>{stats.cancelled.paid} pagantes: usam até o fim do período já pago.</div>
+                    {stats.cancelled.noAccess > 0 && <div>{stats.cancelled.noAccess} já sem acesso (o período acabou).</div>}
+                  </div>
+                ) : undefined} />
+            </div>
+            <div className="col-3"><StatCard label="Teste encerrado" value={stats.trialExpired} accent={stats.trialExpired > 0 ? 'var(--warn)' : undefined} delay={300} /></div>
             <div className="col-3">
               <StatCard label="Novos (24h)" value={stats.last24h ?? 0}
                 sub={`${stats.prev24h ?? 0} nas 24 h anteriores · ${stats.last30} em 30 dias`}
-                delay={240} accent="var(--brand)" />
+                delay={360} accent="var(--brand)" />
             </div>
-            <div className="col-3"><StatCard label="Ativos Hoje" value={stats.activeToday} accent="var(--ok)" delay={300} /></div>
-            <div className="col-3"><StatCard label="Ativos (7d)" value={stats.activeWeek} delay={360} /></div>
-            <div className="col-3"><StatCard label="Teste encerrado" value={stats.trialExpired} accent={stats.trialExpired > 0 ? 'var(--warn)' : undefined} delay={420} /></div>
+            <div className="col-3">
+              <StatCard label="Ativos hoje" value={stats.activeToday} accent="var(--ok)" delay={420}
+                sub={`${stats.activeWeek} nos últimos 7 dias`} />
+            </div>
           </div>
         </div>
       )}

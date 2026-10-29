@@ -209,6 +209,24 @@ export async function GET(req: NextRequest) {
     return false;
   }).length;
 
+  // Funil do painel: alunos (sem institucionais) → degustação ou teste grátis → pagantes; e quem cancelou.
+  const students = (usersWithEng as any[]).filter(u => !u.is_institutional);
+  const totalStudents = students.length;
+  // Degustação: nunca entrou em teste nem pagou (status 'none'). Ela dura 5 dias desde o cadastro (lib/taste).
+  const tasters = students.filter(u => (u.subscription_status ?? 'none') === 'none');
+  const tasteDays = 5;
+  const tasteCut = new Date(now.getTime() - tasteDays * 86400000);
+  const tasteActive = tasters.filter(u => new Date(u.created_at) >= tasteCut).length;
+  const taste = { total: tasters.length, active: tasteActive, ended: tasters.length - tasteActive };
+  // Cancelados: desligaram a renovação. Seguem com acesso até o vencimento (no teste ou já pagantes).
+  const cancelledList = students.filter(u => u.subscription_status === 'cancelled');
+  const cancelled = {
+    total: cancelledList.length,
+    inTrial: cancelledList.filter(u => String(u.sub_phase ?? '').startsWith('teste')).length,
+    paid: cancelledList.filter(u => u.sub_phase === 'pagante').length,
+    noAccess: cancelledList.filter(u => !u.sub_phase).length,
+  };
+
   const d30   = new Date(now); d30.setDate(d30.getDate() - 30);
   const d60   = new Date(now); d60.setDate(d60.getDate() - 60);
   const last30 = usersWithEng.filter(u => new Date(u.created_at) >= d30).length;
@@ -229,7 +247,7 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json({
     users: usersWithEng,
-    stats: { total, institutional, subscribers, onTrial, trialSplit, trialDetail, trialExpired, last30, last24h, prev24h, growthPct, activeToday, activeWeek },
+    stats: { total, totalStudents, taste, cancelled, institutional, subscribers, onTrial, trialSplit, trialDetail, trialExpired, last30, last24h, prev24h, growthPct, activeToday, activeWeek },
   });
 }
 
