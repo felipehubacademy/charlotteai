@@ -10,6 +10,7 @@ import { checkPracticeTaste } from '@/lib/taste';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 import { characterOf, impressionOf, applyCharacterToSystem, type Character, type Impression } from '@/lib/characters';
 import { pedagogicalLevel } from '@/lib/levels';
+import { requestUserId } from '@/lib/request-user';
 
 export const dynamic = 'force-dynamic';
 
@@ -143,7 +144,8 @@ export async function POST(request: NextRequest) {
   // Extraimos userId antes de abrir o ALS, para que todas as chamadas
   // openai.chat.completions.create nos helpers abaixo sejam logadas
   // automaticamente pelo patch acima.
-  const userIdHeader = request.headers.get('x-user-id');
+  // Com prova de login, o aluno é o da prova (o cabeçalho x-user-id dá para forjar; fica para apps antigos).
+  const userIdHeader = (await requestUserId(request)) ?? request.headers.get('x-user-id');
   // Personagem do Free Chat (cabeçalho do app). Só vale no modo conversa; ver handleAssistantPOST.
   const character = characterOf(request.headers.get('x-character'));
   const impression = impressionOf(character, request.headers.get('x-impression')); // imitação desta resposta (decidida pelo app)

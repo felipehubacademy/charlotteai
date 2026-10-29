@@ -8,6 +8,7 @@ import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
 import { createClient } from '@supabase/supabase-js';
 import { logOpenAIUsage } from '@/lib/openai-usage';
+import { requestUserId } from '@/lib/request-user';
 
 export const dynamic = 'force-dynamic';
 
@@ -34,7 +35,9 @@ export async function POST(request: NextRequest) {
     }
 
     const body = (await request.json()) as Partial<Body>;
-    const { userId, userLevel, transcript, durationSeconds, startedAt } = body;
+    const { userLevel, transcript, durationSeconds, startedAt } = body;
+    // Com prova de login, grava na conta da prova (o userId do corpo fica só para apps antigos).
+    const userId = (await requestUserId(request)) ?? body.userId;
 
     if (!userId || !userLevel || !transcript || typeof durationSeconds !== 'number' || !startedAt) {
       return NextResponse.json(
