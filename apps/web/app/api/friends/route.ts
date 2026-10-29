@@ -20,6 +20,9 @@ import { sendDirectPush } from '@/lib/rally';
 import { blockedWith, isBlocked, isOffensiveHandle, isSuspended } from '@/lib/moderation';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 
+// Ids vão para filtros .or() do banco: só aceita UUID (um texto montado de propósito apagava pedidos de todos).
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 export const dynamic = 'force-dynamic';
 const MAX_REQUESTS_PER_DAY = 30;
 
@@ -116,6 +119,7 @@ const canRemind = (r: { created_at: string; reminded_at: string | null }) =>
   Date.now() - new Date(r.reminded_at ?? r.created_at).getTime() > 86400000;
 
 async function becomeFriends(a: string, b: string) {
+  if (!UUID_RE.test(a) || !UUID_RE.test(b)) return;
   const supabase = getSupabaseAdmin();
   const [x, y] = orderedPair(a, b);
   await supabase.from('study_unfriended').delete().eq('user_a', x).eq('user_b', y);
@@ -158,6 +162,7 @@ export async function POST(req: NextRequest) {
 
   if (body.action === 'unfriend') {
     const id = String(body.id ?? '');
+    if (!UUID_RE.test(id)) return NextResponse.json({ error: 'invalid' }, { status: 400 });
     if (!id || id === user.id) return NextResponse.json({ error: 'invalid' }, { status: 400 });
     const [x, y] = orderedPair(user.id, id);
     await Promise.all([
@@ -170,6 +175,7 @@ export async function POST(req: NextRequest) {
 
   if (body.action === 'block' || body.action === 'unblock') {
     const id = String(body.id ?? '');
+    if (!UUID_RE.test(id)) return NextResponse.json({ error: 'invalid' }, { status: 400 });
     if (!id || id === user.id) return NextResponse.json({ error: 'invalid' }, { status: 400 });
     if (body.action === 'unblock') {
       await supabase.from('user_blocks').delete().eq('blocker_id', user.id).eq('blocked_id', id);
@@ -187,6 +193,7 @@ export async function POST(req: NextRequest) {
 
   if (body.action === 'report') {
     const id = String(body.id ?? '');
+    if (!UUID_RE.test(id)) return NextResponse.json({ error: 'invalid' }, { status: 400 });
     const reason = String(body.reason ?? 'other').slice(0, 40);
     const context = String(body.context ?? '').slice(0, 200);
     if (!id || id === user.id) return NextResponse.json({ error: 'invalid' }, { status: 400 });
