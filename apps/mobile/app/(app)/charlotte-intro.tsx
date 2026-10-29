@@ -9,7 +9,6 @@ import { View, TouchableOpacity, Animated, Easing, StatusBar, BackHandler, Activ
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Image } from 'expo-image';
-import Svg, { Defs, RadialGradient, Stop, Circle } from 'react-native-svg';
 import { createAudioPlayer, setAudioModeAsync, AudioPlayer } from 'expo-audio';
 import { ArrowLeft, Check, Gift, Microphone } from 'phosphor-react-native';
 import * as Haptics from '@/lib/hapticsGated';
@@ -100,15 +99,6 @@ function HelloStep({ name, speaking, played, onReplay, onNext, onSkip }: {
   name: string; speaking: boolean; played: boolean; onReplay: () => void; onNext: () => void; onSkip: () => void;
 }) {
   const insets = useSafeAreaInsets();
-  const glow = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    const l = Animated.loop(Animated.sequence([
-      Animated.timing(glow, { toValue: 1, duration: 1600, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
-      Animated.timing(glow, { toValue: 0, duration: 1600, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
-    ]));
-    l.start();
-    return () => l.stop();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const a1 = useFadeIn(200), a2 = useFadeIn(550), a3 = useFadeIn(900);
   return (
     <View style={{ flex: 1, backgroundColor: INK, paddingTop: insets.top, paddingBottom: insets.bottom }}>
@@ -119,23 +109,6 @@ function HelloStep({ name, speaking, played, onReplay, onNext, onSkip }: {
       </View>
 
       <View style={{ flex: 1, minHeight: 240, alignItems: 'center', justifyContent: 'flex-end' }}>
-        <Animated.View style={{
-          position: 'absolute', bottom: 0, width: 320, height: 320,
-          opacity: glow.interpolate({ inputRange: [0, 1], outputRange: [0.75, 1] }),
-          transform: [{ scale: glow.interpolate({ inputRange: [0, 1], outputRange: [1, 1.06] }) }],
-        }}>
-          <Svg width={320} height={320}>
-            <Defs>
-              <RadialGradient id="welcomeGlow" cx="50%" cy="50%" r="50%">
-                <Stop offset="0" stopColor={VOLT} stopOpacity={0.36} />
-                <Stop offset="0.45" stopColor={VOLT} stopOpacity={0.10} />
-                <Stop offset="1" stopColor={VOLT} stopOpacity={0} />
-              </RadialGradient>
-            </Defs>
-            <Circle cx={160} cy={160} r={160} fill="url(#welcomeGlow)" />
-          </Svg>
-        </Animated.View>
-        <View style={{ position: 'absolute', bottom: 6, width: 170, height: 20, borderRadius: 85, backgroundColor: 'rgba(0,0,0,0.45)' }} />
         <Image
           source={require('@/assets/charlotte-welcome.webp')}
           style={{ height: '96%', aspectRatio: 420 / 868 }}
@@ -241,8 +214,10 @@ function PlanStep({ minutes, busy, onBack, onAccept }: { minutes: number; busy: 
   useEffect(() => {
     Animated.stagger(110, pops.map(p => Animated.spring(p, { toValue: 1, friction: 5, tension: 120, useNativeDriver: true }))).start();
     const l = Animated.loop(Animated.sequence([
-      Animated.timing(flame, { toValue: 1, duration: 700, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
-      Animated.timing(flame, { toValue: 0, duration: 700, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+      Animated.timing(flame, { toValue: 1, duration: 260, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+      Animated.timing(flame, { toValue: 0.35, duration: 220, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+      Animated.timing(flame, { toValue: 0.85, duration: 240, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+      Animated.timing(flame, { toValue: 0, duration: 300, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
     ]));
     l.start();
     return () => l.stop();
@@ -257,9 +232,12 @@ function PlanStep({ minutes, busy, onBack, onAccept }: { minutes: number; busy: 
       </View>
 
       <View style={{ alignItems: 'center', paddingTop: 36 }}>
+        {/* Chama tremulando: estica para cima e balança, a partir da base. */}
         <Animated.View style={{ transform: [
-          { scale: flame.interpolate({ inputRange: [0, 1], outputRange: [1, 1.05] }) },
-          { rotate: flame.interpolate({ inputRange: [0, 1], outputRange: ['-2deg', '2deg'] }) },
+          { translateY: flame.interpolate({ inputRange: [0, 1], outputRange: [0, -5] }) },
+          { scaleY: flame.interpolate({ inputRange: [0, 1], outputRange: [0.94, 1.1] }) },
+          { scaleX: flame.interpolate({ inputRange: [0, 1], outputRange: [1.04, 0.95] }) },
+          { rotate: flame.interpolate({ inputRange: [0, 1], outputRange: ['-4deg', '4deg'] }) },
         ] }}>
           <Flame size={96} />
         </Animated.View>
