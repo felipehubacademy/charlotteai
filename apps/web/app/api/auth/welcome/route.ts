@@ -23,7 +23,12 @@ function formatDatePT(iso: string): string {
   return `${d.getUTCDate()} de ${months[d.getUTCMonth()]} de ${d.getUTCFullYear()}`;
 }
 
+// Desligado em 29/10/2026: o teste de nível não manda e-mail. A versão antiga do app ainda chama esta rota
+// depois do teste e mandava "seu teste gratuito está ativo" até para quem estava na degustação.
+const WELCOME_ON_PLACEMENT = false;
+
 export async function POST(req: NextRequest) {
+  if (!WELCOME_ON_PLACEMENT) return NextResponse.json({ skipped: true, reason: 'disabled' });
   // ── 1. Autenticar via JWT do usuario ──────────────────────────────────────
   const authHeader = req.headers.get('authorization') ?? '';
   const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';

@@ -10,6 +10,7 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { fxToBrl } from '@/lib/fx';
 import { recordAffiliateCommission } from '@/lib/affiliates';
+import { revenueDayBRT } from '@/lib/revenue-day';
 
 const MONEY_EVENTS = new Set(['INITIAL_PURCHASE', 'RENEWAL', 'NON_RENEWING_PURCHASE', 'PRODUCT_CHANGE', 'TRIAL_CONVERTED']);
 const REFUND_EVENTS = new Set(['REFUND']);
@@ -69,7 +70,8 @@ export async function recordRevenueEvent(event: Record<string, any>): Promise<vo
     const eventAt = Number(event?.event_timestamp_ms ?? Date.now());
     const purchasedMs = Number(event?.purchased_at_ms ?? 0);
     const purchasedAt = new Date(purchasedMs && purchasedMs <= eventAt ? purchasedMs : eventAt);
-    const day = purchasedAt.toISOString().slice(0, 10);
+    // Dia do lançamento no calendário de Brasília (o site manda só a data, que vale para o próprio dia).
+    const day = revenueDayBRT({ store: String(event?.store ?? ''), purchased_at: purchasedAt.toISOString() });
 
     // Teste (TestFlight / sandbox da Play): fora do caixa, mas a comissão de afiliado sai marcada
     // como teste (não entra no saldo) para dar para testar o fluxo de ponta a ponta.

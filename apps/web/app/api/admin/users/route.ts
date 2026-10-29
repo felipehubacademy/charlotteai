@@ -12,6 +12,7 @@ import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { inviteTemplate } from '@/lib/email-templates';
+import { chargeIndex, subscriptionKind, phaseOfKind, firstChargeDay, type ChargeRevRow, type ChargeCkRow } from '@/lib/admin-subscriptions';
 
 
 interface CharlotteUser {
@@ -148,25 +149,18 @@ export async function GET(req: NextRequest) {
     };
   });
 
-  // ── Fase da assinatura (mesma regra do /admin/metrics) ───────────────────
-  // pagante: já houve cobrança (loja: revenue_events; site: compra paga) e ainda tem acesso;
+  // ── Fase da assinatura (regra única de lib/admin-subscriptions, a mesma de Métricas e Visão geral) ──
+  // pagante: já houve cobrança (loja ou site, sem reembolso total) e ainda tem acesso;
   // teste_loja / teste_site: 7 dias grátis com cartão; teste_antigo: teste sem cartão do app (até 21/10).
-  const [{ data: paidRows }, { data: siteRows }] = await Promise.all([
-    supabase.from('revenue_events').select('app_user_id').gt('price_purchased', 0),
-    supabase.from('asaas_checkouts').select('user_id, trial_days, asaas_payment_id, created_at').eq('status', 'paid').eq('sandbox', false).is('refunded_at', null),
+  const [revRows, siteRows] = await Promise.all([
+    fetchAll<ChargeRevRow>((a, b) => supabase.from('revenue_events').select('app_user_id, event_type, store, price_purchased, purchased_at').order('id').range(a, b), 200000),
+    fetchAll<ChargeCkRow>((a, b) => supabase.from('asaas_checkouts').select('user_id, value_brl, trial_days, status, asaas_payment_id, paid_at, refunded_at, created_at')
+      .eq('sandbox', false).order('created_at', { ascending: true }).order('id').range(a, b), 200000),
   ]);
-  const storePaid = new Set(((paidRows ?? []) as { app_user_id: string }[]).map(r => String(r.app_user_id)));
-  const sitePaid = new Set(((siteRows ?? []) as { user_id: string; trial_days: number; asaas_payment_id: string | null }[])
-    .filter(r => r.asaas_payment_id || !(r.trial_days > 0)).map(r => String(r.user_id)));
-  const phaseOf = (u: { id: string; subscription_status: string; subscription_product: string | null; subscription_expires_at: string | null; trial_ends_at: string | null }) => {
-    if (u.subscription_status === 'trial') return u.trial_ends_at && new Date(u.trial_ends_at) > now ? 'teste_antigo' : null;
-    if (u.subscription_status !== 'active' && u.subscription_status !== 'cancelled') return null;
-    if (!u.subscription_expires_at || new Date(u.subscription_expires_at) <= now) return null;
-    const p = u.subscription_product ?? '';
-    if (p.startsWith('web_')) return sitePaid.has(String(u.id)) ? 'pagante' : 'teste_site';
-    if (p === 'monthly' || p === 'yearly') return storePaid.has(String(u.id)) ? 'pagante' : 'teste_loja';
-    return null;
-  };
+  const { firstChargeAt, siteCk } = chargeIndex(revRows, siteRows);
+  const nowMs = now.getTime();
+  const phaseOf = (u: { id: string; subscription_status: string; subscription_product: string | null; subscription_expires_at: string | null; trial_ends_at: string | null }) =>
+    phaseOfKind(subscriptionKind(u, firstChargeAt.has(String(u.id)), nowMs));
   for (const u of usersWithEng as any[]) u.sub_phase = u.is_institutional ? null : phaseOf(u);
 
   // ── Stats ─────────────────────────────────────────────────────────────────
@@ -180,11 +174,8 @@ export async function GET(req: NextRequest) {
   // Detalhe do card "Em teste grátis" (no passar do mouse): por origem, quantos vão ser cobrados e quando,
   // e quantos cancelaram durante o teste (seguem com acesso até o fim dos 7 dias, sem cobrança).
   const day = (iso: string | null) => (iso ? new Date(new Date(iso).getTime() - 3 * 3600000).toISOString().slice(0, 10) : '');
-  // Site: o Asaas cobra no fim do teste (início + dias grátis, em data UTC, como em lib/asaas.ts ymd); o acesso
-  // tem 1 dia de folga depois disso.
-  const siteChargeDay = new Map(((siteRows ?? []) as { user_id: string; trial_days: number; created_at: string }[])
-    .filter(r => r.trial_days > 0).map(r => [String(r.user_id), new Date(new Date(r.created_at).getTime() + r.trial_days * 86400000).toISOString().slice(0, 10)]));
-  const chargeDay = (u: any) => (String(u.subscription_product ?? '').startsWith('web_') && siteChargeDay.get(String(u.id))) || day(u.subscription_expires_at);
+  // Site: o Asaas cobra no fim do teste (início + dias grátis, em data UTC); o acesso tem 1 dia de folga depois disso.
+  const chargeDay = (u: any) => firstChargeDay(u, siteCk);
   const detailOf = (phase: string) => {
     const list = (usersWithEng as any[]).filter(u => u.sub_phase === phase);
     const cancelled = list.filter(u => u.subscription_status === 'cancelled');
@@ -209,6 +200,24 @@ export async function GET(req: NextRequest) {
     return false;
   }).length;
 
+  // Funil do painel: alunos (sem institucionais) → degustação ou teste grátis → pagantes; e quem cancelou.
+  const students = (usersWithEng as any[]).filter(u => !u.is_institutional);
+  const totalStudents = students.length;
+  // Degustação: nunca entrou em teste nem pagou (status 'none'). Ela dura 5 dias desde o cadastro (lib/taste).
+  const tasters = students.filter(u => (u.subscription_status ?? 'none') === 'none');
+  const tasteDays = 5;
+  const tasteCut = new Date(now.getTime() - tasteDays * 86400000);
+  const tasteActive = tasters.filter(u => new Date(u.created_at) >= tasteCut).length;
+  const taste = { total: tasters.length, active: tasteActive, ended: tasters.length - tasteActive };
+  // Cancelados: desligaram a renovação. Seguem com acesso até o vencimento (no teste ou já pagantes).
+  const cancelledList = students.filter(u => u.subscription_status === 'cancelled');
+  const cancelled = {
+    total: cancelledList.length,
+    inTrial: cancelledList.filter(u => String(u.sub_phase ?? '').startsWith('teste')).length,
+    paid: cancelledList.filter(u => u.sub_phase === 'pagante').length,
+    noAccess: cancelledList.filter(u => !u.sub_phase).length,
+  };
+
   const d30   = new Date(now); d30.setDate(d30.getDate() - 30);
   const d60   = new Date(now); d60.setDate(d60.getDate() - 60);
   const last30 = usersWithEng.filter(u => new Date(u.created_at) >= d30).length;
@@ -229,7 +238,7 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json({
     users: usersWithEng,
-    stats: { total, institutional, subscribers, onTrial, trialSplit, trialDetail, trialExpired, last30, last24h, prev24h, growthPct, activeToday, activeWeek },
+    stats: { total, totalStudents, taste, cancelled, institutional, subscribers, onTrial, trialSplit, trialDetail, trialExpired, last30, last24h, prev24h, growthPct, activeToday, activeWeek },
   });
 }
 

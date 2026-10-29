@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Menu, Wallet, UserCog, GraduationCap, Megaphone, Instagram, Settings } from 'lucide-react';
+import { Users, LayoutDashboard, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut, Headphones, Menu, Wallet, UserCog, GraduationCap, Megaphone, Instagram, Settings } from 'lucide-react';
 import { getSupabase } from '@/lib/supabase';
 import { AdminMe, AdminMeContext } from '@/lib/admin-context';
 import AdminLoading from '@/components/admin/AdminLoading';
@@ -780,8 +780,9 @@ function MfaScreen({ onDone, onCancel }: { onDone: () => void; onCancel: () => v
 // ── Sidebar ─────────────────────────────────────────────────────────────────
 type NavItem = { section: string } | { href: string; icon: typeof Users; label: string; area: string };
 const NAV: NavItem[] = [
+  { href: '/admin',               icon: LayoutDashboard, label: 'Visão geral', area: 'metrics' },
   { section: 'CLIENTES' },
-  { href: '/admin',               icon: Users,      label: 'Usuários',     area: 'users' },
+  { href: '/admin/users',         icon: Users,      label: 'Usuários',     area: 'users' },
   { href: '/admin/learning',      icon: GraduationCap, label: 'Pedagógico', area: 'learning' },
   { href: '/admin/support',       icon: Headphones, label: 'Suporte',      area: 'support' },
   { section: 'NEGÓCIO' },
@@ -797,13 +798,13 @@ const NAV: NavItem[] = [
 type NavLink = { href: string; area: string; label: string };
 const NAV_LINKS = NAV.filter((x): x is NavLink & NavItem => 'href' in x) as NavLink[];
 
-/** Área da página atual pelo prefixo mais longo do menu (/admin/users/... é a ficha de Usuários). */
+/** Área da página atual pelo prefixo mais longo do menu (/admin/users/... é a lista e a ficha de Usuários; /admin é a Visão geral). */
 function areaFor(pathname: string | null): string | null {
   const p = (pathname ?? '').replace(/\/$/, '') || '/admin';
   if (p.startsWith('/admin/users')) return 'users';
   const hit = NAV_LINKS.filter(l => l.href !== '/admin' && p.startsWith(l.href)).sort((a, b) => b.href.length - a.href.length)[0];
   if (hit) return hit.area;
-  return p === '/admin' ? 'users' : null;
+  return p === '/admin' ? 'metrics' : null;
 }
 function areaAllowed(me: AdminMe, pathname: string | null): boolean {
   const area = areaFor(pathname);

@@ -59,10 +59,7 @@ export function areasFor(role: AdminRole): AdminArea[] {
  * o login sem a segunda etapa (allowPendingMfa), para a tela de login saber que falta o código.
  */
 export async function getAdmin(req: NextRequest, opts?: { allowPendingMfa?: boolean }): Promise<AdminContext | null> {
-  const secret = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
-  if (process.env.ADMIN_SECRET && secret && secret === process.env.ADMIN_SECRET) {
-    return { userId: null, email: null, name: 'Senha mestra', role: 'admin', legacy: true, mfa: false };
-  }
+  // A senha mestra não entra mais no /admin (pulava a verificação em duas etapas): só e-mail, senha e código.
 
   const auth = req.headers.get('authorization') ?? '';
   const token = auth.toLowerCase().startsWith('bearer ') ? auth.slice(7).trim() : '';

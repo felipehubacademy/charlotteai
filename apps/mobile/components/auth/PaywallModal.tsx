@@ -14,7 +14,7 @@ import {
   ScrollView, Platform, Linking,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Trophy, MicrophoneStage, ChatCircleText, SignOut, ArrowsClockwise, X, Target } from 'phosphor-react-native';
+import { Trophy, MicrophoneStage, ChatCircleText, SignOut, ArrowsClockwise, X, Smiley } from 'phosphor-react-native';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { PurchasesPackage, PurchasesOffering } from 'react-native-purchases';
 import { HeaderLogo } from '@/components/ui/HeaderLogo';
@@ -54,10 +54,10 @@ const LOSE_ITEMS = [
   { icon: <MicrophoneStage size={18} color={C.greenDark} weight="fill" />, pt: 'Chamadas em voz e feedback de pronúncia', en: 'Voice calls and pronunciation feedback' },
   { icon: <Trophy size={18} color={C.greenDark} weight="fill" />, pt: 'Lições, exercícios e progresso na trilha', en: 'Lessons, exercises and progress on the track' },
 ];
-// Conta nova também ganha o teste de nível (fica no teste de 7 dias).
+// Conta nova: a trilha extra completa da Família (o teste de nível é grátis para todos).
 const GAIN_ITEMS = [
   ...LOSE_ITEMS,
-  { icon: <Target size={18} color={C.greenDark} weight="fill" />, pt: 'Teste de nível: comece no ponto certo da trilha', en: 'Level test: start at the right point of the track' },
+  { icon: <Smiley size={18} color={C.greenDark} weight="fill" />, pt: 'O Manual do F#did@ completo, com o Igorfina', en: 'The full Manual do F#did@, with Igorfina' },
 ];
 
 
@@ -229,6 +229,9 @@ export function PaywallModal() {
       // achar que deu erro e clicar de novo entre purchase success e paywall fechar.
       await syncSubscriptionToSupabase(profile.id, result.customerInfo).catch(() => {});
       await refreshProfile();
+      // Aberta pela degustação (openPaywall), a tela ficava presa nos planos depois da compra:
+      // ela só some sozinha para quem está sem acesso. Comprou → fecha.
+      closePaywall();
       return;
     }
 
@@ -290,6 +293,7 @@ export function PaywallModal() {
       track('subscription_restored', funnelProps());
       await syncSubscriptionToSupabase(profile.id, r.customerInfo).catch(() => {});
       await refreshProfile();
+      if (r.hasPremium) closePaywall();
     }
 
     if (!r.hasPremium) {
@@ -391,16 +395,16 @@ export function PaywallModal() {
   const reasonLine = !isTaster ? null
     : paywallReason === 'placement'
     ? (isPt
-        ? 'O teste de nível faz parte do plano completo: ele descobre seu nível e monta a trilha certa para você.'
-        : 'The level test is part of the full plan: it finds your level and sets up the right path for you.')
+        ? `Seu nível é ${profile?.charlotte_level ?? 'Novice'}. ${anyTrial ? `Comece os ${anyTrial} dias grátis` : 'Assine'} para seguir sua trilha no nível certo.`
+        : `Your level is ${profile?.charlotte_level ?? 'Novice'}. ${anyTrial ? `Start your ${anyTrial}-day free trial` : 'Subscribe'} to follow your path at the right level.`)
     : paywallReason === 'taste_today'
     ? (isPt
-        ? 'Amanhã libera mais um tópico grátis. Ou comece os 7 dias grátis e siga agora, sem esperar.'
-        : 'Another free topic unlocks tomorrow. Or start your 7-day free trial and keep going now.')
+        ? `Amanhã libera mais um tópico grátis. Ou ${anyTrial ? `comece os ${anyTrial} dias grátis` : 'assine'} e siga agora, sem esperar.`
+        : `Another free topic unlocks tomorrow. Or ${anyTrial ? `start your ${anyTrial}-day free trial` : 'subscribe'} and keep going now.`)
     : paywallReason === 'taste_done'
     ? (isPt
-        ? 'Sua degustação terminou. Comece os 7 dias grátis para seguir na trilha, conversar e ligar para a Charlotte.'
-        : 'Your free taste is over. Start your 7-day free trial to keep going, chat and call Charlotte.')
+        ? `Sua degustação terminou. ${anyTrial ? `Comece os ${anyTrial} dias grátis` : 'Assine'} para seguir na trilha, conversar e ligar para a Charlotte.`
+        : `Your free taste is over. ${anyTrial ? `Start your ${anyTrial}-day free trial` : 'Subscribe'} to keep going, chat and call Charlotte.`)
     : paywallReason === 'trail'
     ? (isPt
         ? 'Este tópico faz parte do plano completo, com a trilha inteira, a conversa livre e as ligações com a Charlotte.'

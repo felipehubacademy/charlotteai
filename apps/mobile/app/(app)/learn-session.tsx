@@ -73,6 +73,9 @@ function formatDialogue(s: string): string {
 }
 
 // ── Palette ────────────────────────────────────────────────────
+// Quantas vezes a tela "Agora é sua vez de falar" aparece antes do Listening & Speaking (por conta, por aparelho).
+const LS_INTRO_TIMES = 3;
+
 const C = {
   bg:        '#FAF7F0',
   card:      '#FFFFFF',
@@ -138,6 +141,7 @@ export default function LearnSessionScreen() {
     // Trilha (v2): v=v2 + moduleId/unitId + activity
     v?: string; moduleId?: string; unitId?: string; activity?: string;
     first?: string; // '1' = 1ª lição da conta, vinda da abertura (lib/welcome)
+    intro?: string; // '1' = Listening & Speaking logo depois da Gramática: antes, a tela "Agora é sua vez de falar"
   }>();
   const level       = (params.level ?? 'Novice') as TrailLevel;
   const moduleIndex = parseInt(params.moduleIndex ?? '0', 10);
@@ -147,6 +151,30 @@ export default function LearnSessionScreen() {
   const { profile, refreshProfile } = useAuth();
   const { celebrateStreak, status: streakStatus } = useStreak();
   const firstLesson = params.first === '1';
+  // Tela "Agora é sua vez de falar" antes do L&S que vem logo depois da Gramática. Muita gente saía em segundos
+  // sem tocar no microfone (lugar onde não dá para falar?); "Agora não dá pra falar" volta depois, sem travar.
+  // Só nas 3 primeiras vezes da conta (neste aparelho): depois disso o aluno já conhece a sequência.
+  const lsIntroAsked = params.intro === '1' && params.activity === 'ls';
+  const [lsIntroState, setLsIntroState] = useState<'checking' | 'show' | 'hide'>(lsIntroAsked ? 'checking' : 'hide');
+  const showLsIntro = lsIntroState === 'show';
+  const setShowLsIntro = (v: boolean) => setLsIntroState(v ? 'show' : 'hide');
+  const lsIntroRef = useRef<{ gate: Promise<void>; open: () => void; later: boolean } | null>(null);
+  if (!lsIntroRef.current) {
+    let open = () => {};
+    const gate = lsIntroAsked ? new Promise<void>(r => { open = r; }) : Promise.resolve();
+    lsIntroRef.current = { gate, open, later: false };
+  }
+  useEffect(() => {
+    if (!lsIntroAsked) return;
+    if (!profile?.id) { setLsIntroState('show'); return; }
+    const key = `ls_intro_seen_${profile.id}`;
+    SecureStore.getItemAsync(key).catch(() => null).then(v => {
+      const seen = Number(v) || 0;
+      if (seen >= LS_INTRO_TIMES) { setLsIntroState('hide'); lsIntroRef.current?.open(); return; }
+      SecureStore.setItemAsync(key, String(seen + 1)).catch(() => {});
+      setLsIntroState('show');
+    });
+  }, [lsIntroAsked, profile?.id]); // eslint-disable-line react-hooks/exhaustive-deps
   const userId      = profile?.id;
   const userLevel   = (profile?.charlotte_level ?? 'Novice') as string;
   // Camada de SUPORTE/chrome (enunciados, feedback, botões) segue o idioma do
@@ -253,7 +281,7 @@ export default function LearnSessionScreen() {
     const base = { level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null, activity: params.activity ?? 'both', first: isFirstActivity };
     track('lesson_started', { ...base, total: totalStepsRef.current });
     return () => {
-      if (!isCompleteRef.current) track('lesson_abandoned', { ...base, step: stepIdxRef.current, total: totalStepsRef.current });
+      if (!isCompleteRef.current && !lsIntroRef.current?.later) track('lesson_abandoned', { ...base, step: stepIdxRef.current, total: totalStepsRef.current });
     };
   }, [isV2, userId, params.moduleId, params.unitId, params.activity]); // eslint-disable-line react-hooks/exhaustive-deps
   // Conquista não interrompe exercício: o card fica na fila e aparece na tela de conclusão,
@@ -709,7 +737,7 @@ export default function LearnSessionScreen() {
       const uri = autoplayUri;
       setTimeout(() => {
         // Card de conquista da atividade anterior na tela: toca só depois que ele fechar.
-        waitForCelebration().then(() => {
+        waitForCelebration().then(() => lsIntroRef.current?.gate).then(() => {
           try { toggleAudio(charlottePlayId, uri); } catch {}
         });
       }, 600);
@@ -1380,7 +1408,7 @@ export default function LearnSessionScreen() {
                       if (c.activityType === 'grammar') {
                         router.replace({
                           pathname: '/(app)/learn-session',
-                          params: { v: 'v2', level, moduleId: params.moduleId, unitId: params.unitId, activity: 'ls' } as any,
+                          params: { v: 'v2', level, moduleId: params.moduleId, unitId: params.unitId, activity: 'ls', intro: '1' } as any,
                         });
                         return;
                       }
@@ -1421,6 +1449,49 @@ export default function LearnSessionScreen() {
           )}
           <TouchableOpacity onPress={() => router.replace('/(app)/(tabs)' as any)}>
             <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>{isPortuguese ? 'Voltar' : 'Back'}</AppText>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  if (lsIntroState === 'checking') return <View style={{ flex: 1, backgroundColor: C.navy }} />;
+
+  if (showLsIntro) {
+    const n = totalSteps || 5;
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.navy }} edges={['top', 'bottom', 'left', 'right']}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 }}>
+          <View style={{ width: 112, height: 112, borderRadius: 56, backgroundColor: '#DCFF4A', alignItems: 'center', justifyContent: 'center' }}>
+            <Microphone size={52} color={C.navy} weight="fill" />
+          </View>
+          <AppText display style={{ fontSize: 32, lineHeight: 37, fontWeight: '800', color: '#FFFFFF', textAlign: 'center', letterSpacing: -0.8, marginTop: 28 }}>
+            {isPortuguese ? 'Agora é sua vez\nde falar' : 'Now it’s your\nturn to speak'}
+          </AppText>
+          <AppText style={{ fontSize: 17, lineHeight: 25, color: 'rgba(255,255,255,0.78)', textAlign: 'center', marginTop: 12 }}>
+            {isPortuguese
+              ? `${n} frases, cerca de 1 minuto. Ouça e repita em voz alta.`
+              : `${n} sentences, about 1 minute. Listen and repeat out loud.`}
+          </AppText>
+        </View>
+        <View style={{ paddingHorizontal: 24, paddingBottom: 16 }}>
+          <TouchableOpacity
+            activeOpacity={0.85}
+            onPress={() => { track('ls_intro_go', { level, unitId: params.unitId ?? null }); setShowLsIntro(false); lsIntroRef.current?.open(); }}
+            style={{ height: 58, borderRadius: 29, backgroundColor: '#DCFF4A', alignItems: 'center', justifyContent: 'center' }}
+          >
+            <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>{isPortuguese ? 'Bora!' : "Let's go!"}</AppText>
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => {
+              track('ls_intro_later', { level, unitId: params.unitId ?? null });
+              if (lsIntroRef.current) lsIntroRef.current.later = true;
+              router.replace('/(app)/(tabs)' as any);
+            }}
+            style={{ alignSelf: 'center', paddingVertical: 16, paddingHorizontal: 20 }}
+          >
+            <AppText style={{ fontSize: 15, fontWeight: '600', color: 'rgba(255,255,255,0.7)' }}>{isPortuguese ? 'Agora não dá pra falar' : "I can't speak right now"}</AppText>
           </TouchableOpacity>
         </View>
       </SafeAreaView>

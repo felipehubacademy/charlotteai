@@ -14,6 +14,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { recordRevenueEvent } from '@/lib/revenue';
+import { welcomeSubscriberTemplate } from '@/lib/email-templates';
+import { sendOrQueue } from '@/lib/email-outbox';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -154,5 +156,39 @@ export async function POST(req: NextRequest) {
   }
 
   console.log(`[RC webhook] Updated user ${appUserId} → ${subscriptionStatus}`);
+
+  // Começou o teste grátis pela loja: e-mail de boas-vindas na hora, uma vez só por pessoa.
+  // (A loja manda INITIAL_PURCHASE com period_type TRIAL; TRIAL_STARTED fica por garantia.)
+  const trialStart = TRIAL_EVENTS.has(eventType)
+    || (eventType === 'INITIAL_PURCHASE' && String(event?.period_type ?? '').toUpperCase() === 'TRIAL');
+  if (trialStart) await sendTrialWelcome(appUserId, expiresIso).catch(e => console.error('[RC webhook] trial welcome error:', e));
+
   return NextResponse.json({ received: true, eventType, subscriptionStatus });
+}
+
+const MONTHS_PT = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+
+async function sendTrialWelcome(userId: string, trialEndsIso: string | null): Promise<void> {
+  // Marca antes de enviar: se a loja repetir o aviso, ninguém recebe duas vezes.
+  const { data } = await supabase
+    .from('charlotte_users')
+    .update({ trial_welcome_sent_at: new Date().toISOString() })
+    .eq('id', userId)
+    .is('trial_welcome_sent_at', null)
+    .select('name, email, charlotte_level')
+    .maybeSingle();
+  const u = data as { name: string | null; email: string | null; charlotte_level: string | null } | null;
+  if (!u?.email) return;
+  const end = trialEndsIso ? new Date(trialEndsIso) : null;
+  const trialEndsAt = end
+    ? new Intl.DateTimeFormat('pt-BR', { timeZone: 'America/Sao_Paulo', day: 'numeric' }).format(end) + ' de '
+      + MONTHS_PT[Number(new Intl.DateTimeFormat('en-US', { timeZone: 'America/Sao_Paulo', month: 'numeric' }).format(end)) - 1]
+    : '7 dias';
+  const { subject, html } = welcomeSubscriberTemplate({
+    name: (u.name ?? '').trim().split(/\s+/)[0] || u.email.split('@')[0],
+    level: u.charlotte_level ?? 'Novice',
+    trialEndsAt,
+  });
+  await sendOrQueue({ kind: 'trial_welcome', to: u.email, subject, html });
+  console.log(`[RC webhook] trial welcome → ${u.email}`);
 }

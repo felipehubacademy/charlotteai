@@ -34,6 +34,9 @@ export type AnalyticsEvent =
   | 'welcome_skip'
   | 'welcome_done'
   | 'welcome_first_lesson_open'
+  // Tela antes do Listening & Speaking que vem depois da Gramática (learn-session)
+  | 'ls_intro_go'
+  | 'ls_intro_later'
   | 'taste_tomorrow_reminder_tap'
   | 'rank_leader_shown'
   | 'rank_leader_share'

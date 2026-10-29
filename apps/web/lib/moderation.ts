@@ -32,6 +32,8 @@ export async function blockedWith(userId: string): Promise<Set<string>> {
 }
 
 export async function isBlocked(a: string, b: string): Promise<boolean> {
+  const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  if (!uuid.test(a) || !uuid.test(b)) return true; // id que não é UUID não entra no filtro do banco
   const sus = await suspendedIds();
   if (sus.has(a) || sus.has(b)) return true;
   const { data } = await getSupabaseAdmin().from('user_blocks').select('blocker_id')

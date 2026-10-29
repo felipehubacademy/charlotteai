@@ -26,7 +26,7 @@ function checkAuth(req: NextRequest) {
   // Agendamento da Vercel (a cada 5 minutos, vercel.json) manda Bearer CRON_SECRET.
   const cron = process.env.CRON_SECRET;
   if (cron && req.headers.get('authorization') === `Bearer ${cron}`) return true;
-  const auth = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
+  const auth = req.headers.get('x-admin-secret') ?? '';
   return ADMIN_SECRET && auth === ADMIN_SECRET;
 }
 

@@ -40,6 +40,7 @@ import { runAiCostReport } from '@/lib/ai-cost-report';
 import { processOutbox } from '@/lib/email-outbox';
 import { endLegacyTrials } from '@/lib/legacy-trial';
 import { getSupabase } from '@/lib/supabase';
+import { sendSignupWelcomes } from '@/lib/signup-welcome';
 
 const CRON_SECRET = process.env.CRON_SECRET ?? '';
 
@@ -104,6 +105,7 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
       break;
     case 'email_outbox': // e-mails que falharam no envio (fila). O agendamento de 5 min do GitHub Actions atrasa horas.
       await processOutbox();
+      await sendSignupWelcomes(); // "conta criada" de quem escapou do envio na hora do cadastro
       break;
     case 'push_receipts': // recibos de entrega do Expo dos pushes de 15 min a 24 h atrás (entregue ou erro)
       await checkExpoReceipts();

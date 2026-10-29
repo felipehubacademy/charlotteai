@@ -13,6 +13,9 @@ import {
 } from '@/lib/purchases';
 import { deviceTimezone } from '@/lib/dateUtils';
 import { prefetchGreeting } from '@/lib/greetingCache';
+import Constants from 'expo-constants';
+
+const API_BASE_URL_AUTH = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
 export interface AuthContextType {
   session: Session | null;
@@ -196,7 +199,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     console.log('[AuthProvider] fetchProfile start for:', userId);
     const queryPromise = supabase
       .from('charlotte_users')
-      .select('id, email, name, charlotte_level, placement_test_done, first_welcome_done, is_institutional, is_active, subscription_status, trial_ends_at, must_change_password, avatar_url, subscription_product, subscription_expires_at, beta_features, is_admin, active_character, created_at')
+      .select('id, email, name, charlotte_level, placement_test_done, first_welcome_done, is_institutional, is_active, subscription_status, trial_ends_at, must_change_password, avatar_url, subscription_product, subscription_expires_at, beta_features, is_admin, active_character, family_picked_at, created_at')
       .eq('id', userId)
       .single();
 
@@ -372,6 +375,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       },
     });
     if (error) throw error;
+    // E-mail "Sua conta no Queizy está pronta" na hora (o servidor decide se cabe e manda uma vez só).
+    const token = data.session?.access_token;
+    if (token) {
+      fetch(`${API_BASE_URL_AUTH}/api/signup-welcome`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } }).catch(() => {});
+    }
     return { session: data.session };
   };
 

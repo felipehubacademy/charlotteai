@@ -7,6 +7,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Tag, X, Send, GraduationCap } from 'lucide-react';
 import { useAdminMe, canArea } from '@/lib/admin-context';
+import { revenueDayBRT } from '@/lib/revenue-day';
 
 interface Crm {
   user: Record<string, any>;
@@ -105,7 +106,7 @@ export default function UserCrmPage() {
   return (
     <div className="adm-page">
       <div className="adm-topbar">
-        <Link href="/admin" className="adm-btn-sm ghost"><ArrowLeft size={13} /> Usuários</Link>
+        <Link href="/admin/users" className="adm-btn-sm ghost"><ArrowLeft size={13} /> Usuários</Link>
         <div className="adm-topbar-title">{u.name ?? u.email} </div>
         <span className={`badge ${riskClass(data.risk.label)}`}>Risco {data.risk.label.toLowerCase()}{data.risk.label !== 'Perdido' ? ` · ${data.risk.score}` : ''}</span>
         {canLearning && <Link href={`/admin/learning/${id}`} className="adm-btn-sm ghost" style={{ marginLeft: 'auto' }}><GraduationCap size={13} /> Pedagógico</Link>}
@@ -299,7 +300,7 @@ export default function UserCrmPage() {
                 <div style={{ fontWeight: 700, marginBottom: 6 }}>Pagamentos</div>
                 {data.payments.length === 0 ? <div className="adm-empty-sub">Nenhum pagamento.</div> : data.payments.map((p, i) => (
                   <div key={i} style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--t2)', padding: '3px 0' }}>
-                    <span>{fmt(p.purchased_at)} · {p.event_type === 'REFUND' ? 'Reembolso' : p.event_type === 'RENEWAL' ? 'Renovação' : 'Compra'} · {p.store === 'PLAY_STORE' ? 'Google Play' : 'App Store'}</span>
+                    <span>{fmt(revenueDayBRT(p) ? `${revenueDayBRT(p)}T15:00:00Z` : p.purchased_at)} · {p.event_type === 'REFUND' ? 'Reembolso' : p.event_type === 'RENEWAL' ? 'Renovação' : 'Compra'} · {p.store === 'PLAY_STORE' ? 'Google Play' : p.store === 'ASAAS' ? 'Site' : 'App Store'}</span>
                     <span className="num" style={{ color: p.event_type === 'REFUND' ? 'var(--err)' : 'var(--ok)', fontWeight: 700 }}>{brl(p.net_brl)}</span>
                   </div>
                 ))}

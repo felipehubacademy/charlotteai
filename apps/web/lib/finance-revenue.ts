@@ -6,6 +6,7 @@
 // mensal renova todo mês até o vencimento ser cancelado; anual renova na data de vencimento.
 // Pix e 12x do site não renovam sozinhos e não entram na projeção.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { revenueAtMs } from '@/lib/revenue-day';
 
 export type Channel = 'app_store' | 'play_store' | 'site_monthly' | 'site_annual_card' | 'site_annual_pix' | 'site_annual_12x';
 export const CHANNEL_LABEL: Record<Channel, string> = {
@@ -78,7 +79,7 @@ export async function revenueSummary(months = 12): Promise<RevenueSummary> {
       const o = feeObs.get(c) ?? { gross: 0, fees: 0 };
       o.gross += gross; o.fees += Math.max(0, gross - net); feeObs.set(c, o);
     }
-    if (new Date(e.purchased_at ?? e.created_at) < since) continue;
+    if (revenueAtMs(e) < since.getTime()) continue; // cobrança do site só com data vale para o próprio dia
     const r = rows.get(c) ?? { channel: c, label: CHANNEL_LABEL[c], sales: 0, refunds: 0, gross: 0, fees: 0, net: 0, feePct: 0 };
     if (refund) { r.refunds += 1; r.gross -= gross; r.net -= net; r.fees -= Math.max(0, gross - net); }
     else { r.sales += 1; r.gross += gross; r.net += net; r.fees += Math.max(0, gross - net); }

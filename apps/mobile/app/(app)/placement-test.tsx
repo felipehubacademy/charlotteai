@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { usePaywallContext } from '@/lib/paywallContext';
+import { getOffering, getTrialDays } from '@/lib/purchases';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import { useBottomInset } from '@/lib/useBottomInset';
@@ -317,14 +318,8 @@ type BlockNum = 1 | 2 | 3;
 
 export default function PlacementTestScreen() {
   const { session, refreshProfile, profile, isTaster } = useAuth();
-  // Degustação: o teste de nível faz parte do plano pago. Volta e abre o paywall (com a frase do teste de nível e o X
-  // para seguir na degustação).
+  // Degustação: o teste é livre; a oferta vem depois do resultado ("seguir no nível certo"), não antes.
   const { openPaywall } = usePaywallContext();
-  useEffect(() => {
-    if (!isTaster) return;
-    if (router.canGoBack()) router.back(); else router.replace('/(app)/(tabs)' as any);
-    openPaywall('placement');
-  }, [isTaster, openPaywall]);
   const { toggle: toggleAudio, playingMessageId, stop: stopAudio } = useMessageAudioPlayer();
 
   const firstName = (profile?.name ?? '').split(' ')[0] || (systemIsPt ? 'você' : 'you');
@@ -549,15 +544,7 @@ export default function PlacementTestScreen() {
         if (skipErr) console.warn('[PlacementTest] placement_skips error:', skipErr);
       }
 
-      // Dispara email de boas-vindas em background (fire-and-forget).
-      // Nao bloqueia o fluxo — se falhar, nao afeta o usuario.
-      const accessToken = (await supabase.auth.getSession()).data.session?.access_token;
-      if (accessToken) {
-        fetch(`${API_BASE_URL}/api/auth/welcome`, {
-          method: 'POST',
-          headers: { Authorization: `Bearer ${accessToken}` },
-        }).catch(e => console.warn('[PlacementTest] welcome email error:', e));
-      }
+      // O teste de nível não manda e-mail (antes mandava "seu teste gratuito está ativo" a cada teste feito).
 
       // Do NOT call refreshProfile() here — it would trigger AuthGuard
       // (placement_test_done: true && !first_welcome_done → charlotte-intro)
@@ -578,6 +565,11 @@ export default function PlacementTestScreen() {
       level={level}
       firstName={firstName}
       saveError={saveError}
+      offer={isTaster}
+      onOffer={() => {
+        router.replace('/(app)/(tabs)');
+        refreshProfile().catch(() => {}).finally(() => openPaywall('placement'));
+      }}
       onFinish={() => {
         // Navigate first, then refresh profile in background.
         // Fase 1: vindo do pop da Home ou do "Refazer teste" (direct=1), o
@@ -992,9 +984,11 @@ function SavingScreen() {
 // ── Result screen ──────────────────────────────────────────────────────────────
 
 function ResultScreen({
-  level, firstName, saveError, onFinish,
+  level, firstName, saveError, onFinish, offer, onOffer,
 }: {
   level: Level; firstName: string; saveError: string | null; onFinish: () => void;
+  /** Degustação: o botão principal leva à oferta dos 7 dias grátis; "Agora não" segue na degustação. */
+  offer?: boolean; onOffer?: () => void;
 }) {
   const meta   = LEVEL_META[level];
   const insets = useSafeAreaInsets();
@@ -1006,6 +1000,15 @@ function ResultScreen({
     Animated.timing(anim, { toValue: 1, duration: 480, delay: 80, useNativeDriver: true }).start();
   }, []);
   const translateY = anim.interpolate({ inputRange: [0, 1], outputRange: [24, 0] });
+  // Dias de teste grátis a que a pessoa tem direito (quem já usou o teste na loja não ganha de novo).
+  const [trial, setTrial] = useState(0);
+  useEffect(() => {
+    if (!offer) return;
+    let alive = true;
+    getOffering().then(o => (o ? getTrialDays(o.availablePackages) : {} as Record<string, number>))
+      .then(t => { if (alive) setTrial(Math.max(0, ...Object.values(t))); }).catch(() => {});
+    return () => { alive = false; };
+  }, [offer]);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.navy }} edges={['top']}>
@@ -1079,17 +1082,35 @@ function ResultScreen({
             <View style={{ height: 32 }} />
 
             {/* CTA */}
+            {offer && (
+              <AppText style={{ fontSize: 15, fontWeight: '700', color: C.navy, textAlign: 'center', lineHeight: 22, marginBottom: 14 }}>
+                {systemIsPt
+                  ? `Seu nível é ${level}. ${trial ? `Comece os ${trial} dias grátis` : 'Assine'} para seguir sua trilha no nível certo.`
+                  : `Your level is ${level}. ${trial ? `Start your ${trial}-day free trial` : 'Subscribe'} to follow your path at the right level.`}
+              </AppText>
+            )}
             <TouchableOpacity
-              onPress={onFinish}
+              onPress={offer && onOffer ? onOffer : onFinish}
               activeOpacity={0.85}
               style={{
                 backgroundColor: C.green, borderRadius: 16, paddingVertical: 17,
                 flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
               }}
             >
-              <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>{systemIsPt ? 'Começar a aprender' : 'Start learning'}</AppText>
+              <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>
+                {offer
+                  ? (trial
+                    ? (systemIsPt ? `Começar os ${trial} dias grátis` : `Start my ${trial}-day free trial`)
+                    : (systemIsPt ? 'Seguir no nível certo' : 'Continue at the right level'))
+                  : (systemIsPt ? 'Começar a aprender' : 'Start learning')}
+              </AppText>
               <ArrowRight size={18} color={C.navy} weight="bold" />
             </TouchableOpacity>
+            {offer && (
+              <TouchableOpacity onPress={onFinish} activeOpacity={0.7} style={{ alignSelf: 'center', paddingVertical: 14, paddingHorizontal: 20, marginTop: 4 }}>
+                <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navyMid }}>{systemIsPt ? 'Agora não' : 'Not now'}</AppText>
+              </TouchableOpacity>
+            )}
           </ScrollView>
         </View>
 

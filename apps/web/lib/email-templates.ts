@@ -46,6 +46,20 @@ export function welcomeSubscriberTemplate(opts: {
   return { subject, html };
 }
 
+// ── 2b. Conta criada (degustação) ──────────────────────────────────────────────
+// Sai até 5 minutos depois do cadastro (cron email-outbox → lib/signup-welcome), sem depender do app.
+export function signupWelcomeTemplate(opts: { name: string }) {
+  const subject = `Sua conta no Queizy está pronta, ${opts.name}`;
+  const html = base(`
+    ${h1(`Oi, ${opts.name}!`)}
+    ${p('Sua conta no Queizy está pronta. Nos próximos 5 dias, você experimenta de graça: a cada dia libera um tópico novo da trilha, além de mensagens para praticar com a Charlotte e uma ligação curta para treinar a conversa.')}
+    ${p('Quando quiser seguir sem esperar, é só assinar pelo app. Quem assina pela primeira vez ganha 7 dias grátis.')}
+    ${btn('Abrir o Queizy', SMART_LINK)}
+    ${note('Bons estudos!<br><strong style="color:#16131F;">Equipe Queizy</strong>')}
+  `);
+  return { subject, html };
+}
+
 // ── 3. Redefinicao de senha ────────────────────────────────────────────────────
 
 export function resetPasswordTemplate(opts: {

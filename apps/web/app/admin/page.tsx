@@ -1,145 +1,71 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
+// Visão geral (tela inicial do /admin): o retrato do negócio agora, com dados ao vivo de /api/admin/overview.
+// Mesmas regras de Usuários, Métricas, Financeiro e Suporte; equipe fora. Sem números pedagógicos.
+
+import { useCallback, useEffect, useState } from 'react';
+import Link from 'next/link';
+import { RefreshCw, TriangleAlert, CircleCheck, ArrowRight } from 'lucide-react';
 import { useAdminMe, canArea } from '@/lib/admin-context';
 import AdminLoading from '@/components/admin/AdminLoading';
-import { Search, Plus, Edit2, Trash2, RefreshCw, ExternalLink, ChevronUp, ChevronDown, X, TriangleAlert, Check, Eye, EyeOff } from 'lucide-react';
+import type { Overview, TodayMetric, DayPoint } from '@/lib/admin-overview';
 
-// ── Types ────────────────────────────────────────────────────────────────────
-interface Engagement { totalXP: number; lastActive: string | null; sessionDays: number; lessonCount: number; messageCount: number; }
-interface TrailProgress { novice: number; inter: number; advanced: number; }
-interface User {
-  id: string; email: string; name: string | null; username?: string | null;
-  charlotte_level: 'Novice' | 'Inter' | 'Advanced' | null;
-  placement_test_done: boolean; is_institutional: boolean; is_active: boolean;
-  subscription_status: 'none' | 'trial' | 'active' | 'expired' | 'cancelled';
-  /** pagante | teste_loja | teste_site | teste_antigo | null (mesma regra do /admin/metrics) */
-  sub_phase?: 'pagante' | 'teste_loja' | 'teste_site' | 'teste_antigo' | null;
-  trial_ends_at: string | null; must_change_password: boolean; created_at: string;
-  engagement: Engagement | null; trailProgress: TrailProgress | null;
-  streak: number; longestStreak: number; beta_features: string[];
-  is_admin: boolean;
-}
-interface Stats {
-  total: number; institutional: number; subscribers: number; onTrial: number;
-  trialSplit?: { loja: number; site: number; semCartao: number };
-  trialDetail?: Record<'loja' | 'site' | 'semCartao', TrialDetail>;
-  trialExpired: number; last30: number; last24h?: number; prev24h?: number; growthPct: number | null; activeToday: number; activeWeek: number;
-}
-interface Form {
-  email: string; password: string; name: string; charlotte_level: string;
-  is_institutional: boolean; is_active: boolean; subscription_status: string;
-  must_change_password: boolean; placement_test_done: boolean;
-  beta_karaoke: boolean; beta_new_layout: boolean; beta_openai_tts: boolean; beta_curriculum_v2: boolean; beta_igorfina_trail: boolean;
-  is_admin: boolean;
-}
+// Usuários (consulta leve) a cada 5 s; o resto da tela (lê as atividades de 30 dias) a cada 60 s.
+const USERS_REFRESH_MS = 5_000;
+const AUTO_REFRESH_MS = 60_000;
 
-type SortKey = 'name' | 'level' | 'created_at' | 'xp' | 'lastActive' | 'topics' | 'streak';
-type FilterKey = 'all' | 'institutional' | 'subscriber' | 'trial' | 'expired' | 'none';
-type ModalMode = 'create' | 'edit' | 'delete' | 'bulkDelete' | null;
-
-// ── Helpers ──────────────────────────────────────────────────────────────────
-const fmtDate = (s: string | null) => {
-  if (!s) return '—';
-  return new Date(s).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: '2-digit' });
+// ── Formatação ───────────────────────────────────────────────────────────────
+const int = (n: number) => n.toLocaleString('pt-BR');
+const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const pctFmt = (n: number | null) => (n == null ? '—' : `${n.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}%`);
+const ddmm = (d: string) => `${d.slice(8, 10)}/${d.slice(5, 7)}`;
+const WEEKDAY = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
+const weekday = (d: string) => WEEKDAY[new Date(`${d}T12:00:00Z`).getUTCDay()];
+const hhmm = (iso: string) => {
+  const d = new Date(iso);
+  return `${String(d.getHours()).padStart(2, '0')}h${String(d.getMinutes()).padStart(2, '0')}`;
 };
-const fmtXP = (n: number) => n.toLocaleString('pt-BR');
-const timeAgo = (s: string | null) => {
-  if (!s) return '—';
-  const now  = new Date();
-  const past = new Date(s);
-  // diferença em dias de calendário (local), sem ambiguidade de horário
-  const startOf = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
-  const calDays = Math.round((startOf(now) - startOf(past)) / 86400000);
-  if (calDays === 0) return 'hoje';
-  if (calDays === 1) return 'ontem';
-  if (calDays < 7)  return `${calDays}d`;
-  const weeks  = Math.floor(calDays / 7);
-  if (calDays < 30) return `${weeks}${weeks === 1 ? 'sem' : 'sem'}`;
-  const months = Math.floor(calDays / 30);
-  return `${months}${months === 1 ? 'mês' : 'meses'}`;
-};
+const minutesFmt = (m: number) => (m < 1 ? `${Math.max(1, Math.round(m * 60))} s` : m < 60 ? `${Math.round(m)} min` : `${(m / 60).toLocaleString('pt-BR', { maximumFractionDigits: 1 })} h`);
 
-// ── DateTip — mostra data completa ao hover ───────────────────────────────────
-function DateTip({ iso, children }: { iso: string | null; children: React.ReactNode }) {
-  const [show, setShow] = useState(false);
-  const label = iso ? new Date(iso).toLocaleString('pt-BR', {
-    day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit',
-  }) : null;
-  if (!label) return <>{children}</>;
+// ── Peças ────────────────────────────────────────────────────────────────────
+/** Linha dos últimos 7 dias (hoje pela metade), com o valor de cada dia no passar do mouse. */
+function Sparkline({ series, money }: { series: DayPoint[]; money?: boolean }) {
+  const W = 120, H = 32, P = 3;
+  const max = Math.max(1, ...series.map(p => p.value));
+  const x = (i: number) => P + (i * (W - 2 * P)) / Math.max(1, series.length - 1);
+  const y = (v: number) => H - P - (v / max) * (H - 2 * P);
+  const pts = series.map((p, i) => `${x(i).toFixed(1)},${y(p.value).toFixed(1)}`).join(' ');
+  const last = series[series.length - 1];
   return (
-    <span style={{ position: 'relative', display: 'inline-block' }}
-      onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
-      {children}
-      {show && (
-        <span style={{
-          position: 'absolute', bottom: 'calc(100% + 5px)', left: '50%',
-          transform: 'translateX(-50%)',
-          background: 'rgba(18,18,28,0.97)', border: '1px solid rgba(255,255,255,0.12)',
-          borderRadius: 6, padding: '5px 9px', fontSize: 11, lineHeight: 1.4,
-          color: 'rgba(255,255,255,0.75)', whiteSpace: 'nowrap', zIndex: 100,
-          pointerEvents: 'none', boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
-        }}>{label}</span>
-      )}
-    </span>
+    <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Últimos 7 dias" style={{ display: 'block', overflow: 'visible' }}>
+      <polyline points={pts} fill="none" stroke="var(--accent)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
+      {last && <circle cx={x(series.length - 1)} cy={y(last.value)} r={3} fill="var(--accent)" stroke="var(--s1)" strokeWidth={2} />}
+      {series.map((p, i) => (
+        <rect key={p.date} x={x(i) - (W / series.length) / 2} y={0} width={W / series.length} height={H} fill="transparent">
+          <title>{`${weekday(p.date)} ${ddmm(p.date)}: ${money ? brl(p.value) : int(p.value)}`}</title>
+        </rect>
+      ))}
+    </svg>
   );
 }
 
-const PHASE_META: Record<string, { label: string; cls: string }> = {
-  teste_loja:   { label: 'Teste da loja',  cls: 'badge-accent' },
-  teste_site:   { label: 'Teste do site',  cls: 'badge-accent' },
-  teste_antigo: { label: 'Teste antigo',   cls: 'badge-accent' },
-};
-const STATUS_META: Record<string, { label: string; cls: string }> = {
-  institutional: { label: 'Institucional', cls: 'badge-inst'   },
-  active:    { label: 'Pagante',    cls: 'badge-ok'     },
-  trial:     { label: 'Teste antigo', cls: 'badge-accent'  },
-  cancelled: { label: 'Cancelado',  cls: 'badge-warn'    },
-  expired:   { label: 'Expirado',   cls: 'badge-err'     },
-  none:      { label: 'Degustação', cls: 'badge-muted'   },
-};
-const LEVEL_META: Record<string, { label: string; cls: string }> = {
-  Novice:   { label: 'Novice',   cls: 'badge-brand'   },
-  Inter:    { label: 'Inter',    cls: 'badge-accent'  },
-  Advanced: { label: 'Advanced', cls: 'badge-ok'      },
-};
-
-// ── KPI card ─────────────────────────────────────────────────────────────────
-interface TrialDetail { total: number; toCharge: number; cancelled: number; cancelledUntil: string | null; byDay: { date: string; count: number }[] }
-
-const ddmm = (d: string) => `${d.slice(8, 10)}/${d.slice(5, 7)}`;
-
-// Detalhe do "Em teste grátis": cada origem com quem vai ser cobrado (e quando) e quem cancelou no teste.
-function TrialDetailBox({ d }: { d: Record<'loja' | 'site' | 'semCartao', TrialDetail> }) {
-  const rows: { key: 'loja' | 'site' | 'semCartao'; title: string; note: string }[] = [
-    { key: 'site', title: 'Site (cartão)', note: 'cobrança' },
-    { key: 'loja', title: 'Loja (App Store e Play)', note: 'cobrança' },
-    { key: 'semCartao', title: 'Teste antigo (sem cartão)', note: 'termina' },
-  ];
+/** Barras verticais simples (uma ou duas séries empilhadas). */
+function Bars({ days, height = 84, label }: { days: { date: string; a: number; b?: number }[]; height?: number; label: (d: { date: string; a: number; b?: number }) => string }) {
+  const max = Math.max(1, ...days.map(d => d.a + (d.b ?? 0)));
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      {rows.filter(r => d[r.key].total > 0).map(r => {
-        const x = d[r.key];
+    <div style={{ display: 'flex', alignItems: 'flex-end', gap: 6, height: height + 34 }}>
+      {days.map(d => {
+        const total = d.a + (d.b ?? 0);
+        const hA = (d.a / max) * height, hB = ((d.b ?? 0) / max) * height;
         return (
-          <div key={r.key}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 700, fontSize: 13, color: 'var(--t1)' }}>
-              <span>{r.title}</span><span>{x.total}</span>
+          <div key={d.date} title={label(d)} style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+            <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--t2)', fontVariantNumeric: 'tabular-nums' }}>{total || ''}</div>
+            <div style={{ width: '100%', maxWidth: 34, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', height, gap: hA && hB ? 2 : 0 }}>
+              {hB > 0 && <div style={{ height: hB, background: 'var(--brand)', borderRadius: '4px 4px 0 0' }} />}
+              {hA > 0 && <div style={{ height: hA, background: 'var(--accent)', borderRadius: hB > 0 ? 0 : '4px 4px 0 0' }} />}
+              {total === 0 && <div style={{ height: 2, background: 'var(--b2)', borderRadius: 1 }} />}
             </div>
-            {r.key !== 'semCartao' && (
-              <div style={{ fontSize: 12, color: 'var(--t2)', marginTop: 3 }}>
-                {x.toCharge} {x.toCharge === 1 ? 'vai ser cobrado' : 'vão ser cobrados'}
-                {x.cancelled > 0 && <> · <span style={{ color: 'var(--err)' }}>{x.cancelled} {x.cancelled === 1 ? 'cancelou' : 'cancelaram'}</span> (acesso até {x.cancelledUntil ? ddmm(x.cancelledUntil) : '—'}, sem cobrança)</>}
-              </div>
-            )}
-            {x.byDay.length > 0 && (
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 6 }}>
-                {x.byDay.map(b => (
-                  <span key={b.date} style={{ fontSize: 11.5, background: 'var(--s2)', borderRadius: 999, padding: '2px 8px', color: 'var(--t2)' }}>
-                    {r.note} {ddmm(b.date)}: <strong style={{ color: 'var(--t1)' }}>{b.count}</strong>
-                  </span>
-                ))}
-              </div>
-            )}
+            <div style={{ fontSize: 10.5, color: 'var(--t3)', whiteSpace: 'nowrap' }}>{weekday(d.date)} {ddmm(d.date)}</div>
           </div>
         );
       })}
@@ -147,706 +73,294 @@ function TrialDetailBox({ d }: { d: Record<'loja' | 'site' | 'semCartao', TrialD
   );
 }
 
-function StatCard({ label, value, sub, accent, delay, detail }: {
-  label: string; value: number | string; sub?: string; accent?: string; delay?: number; detail?: React.ReactNode;
+function Panel({ title, sub, href, linkLabel, children, className = 'col-6' }: {
+  title: string; sub?: string; href?: string | null; linkLabel?: string; children: React.ReactNode; className?: string;
 }) {
-  const [open, setOpen] = useState(false);
   return (
-    <div className="kpi-card fade-up" style={{ animationDelay: `${delay ?? 0}ms`, position: 'relative', cursor: detail ? 'pointer' : undefined, overflow: 'visible', zIndex: open ? 30 : undefined }}
-      onMouseEnter={() => detail && setOpen(true)} onMouseLeave={() => setOpen(false)} onClick={() => detail && setOpen(o => !o)}>
-      <div className="kpi-label">{label}</div>
-      <div className="kpi-value" style={accent ? { color: accent } : {}}>{value}</div>
-      {sub && <div className="kpi-context" style={{ marginTop: 4 }}>{sub}</div>}
-      {detail && open && (
-        <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, marginTop: 6, minWidth: 280, background: 'var(--s1)', border: '1px solid var(--b2)', borderRadius: 14, padding: 14, boxShadow: '0 12px 32px rgba(0,0,0,0.12)' }}>
-          {detail}
+    <div className={`adm-panel ${className}`}>
+      <div className="adm-panel-hdr" style={{ gap: 12 }}>
+        <div>
+          <div className="adm-panel-title">{title}</div>
+          {sub && <div className="adm-panel-sub">{sub}</div>}
         </div>
-      )}
+        {href && (
+          <Link href={href} className="adm-btn-sm ghost" style={{ flexShrink: 0 }}>
+            {linkLabel ?? 'Abrir'} <ArrowRight size={12} />
+          </Link>
+        )}
+      </div>
+      <div className="adm-panel-body">{children}</div>
     </div>
   );
 }
 
-// ── SortTh ────────────────────────────────────────────────────────────────────
-function SortTh({ label, sk, sortKey, sortDir, onSort }: {
-  label: string; sk: SortKey; sortKey: SortKey; sortDir: 'asc' | 'desc';
-  onSort: (k: SortKey) => void;
-}) {
-  const active = sortKey === sk;
-  return (
-    <th onClick={() => onSort(sk)} style={{ cursor: 'pointer', userSelect: 'none' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-        {label}
-        {active
-          ? (sortDir === 'asc' ? <ChevronUp size={10} style={{ color: 'var(--accent)' }} /> : <ChevronDown size={10} style={{ color: 'var(--accent)' }} />)
-          : <ChevronDown size={10} style={{ opacity: 0.25 }} />}
-      </div>
-    </th>
-  );
+function Delta({ m }: { m: TodayMetric }) {
+  const fmt = (n: number) => (m.money ? brl(n) : int(n));
+  return <span className="kpi-context">ontem {fmt(m.yesterday)}</span>;
 }
 
-// ── FORM DEFAULTS ─────────────────────────────────────────────────────────────
-const EMPTY_FORM: Form = {
-  email: '', password: '', name: '', charlotte_level: '',
-  is_institutional: false, is_active: true,
-  subscription_status: 'none', must_change_password: false,
-  placement_test_done: false, beta_karaoke: false, beta_new_layout: false, beta_openai_tts: false, beta_curriculum_v2: false, beta_igorfina_trail: false, is_admin: false,
-};
-
 // ════════════════════════════════════════════════════════════════════════════
-export default function AdminUsersPage() {
+export default function AdminOverviewPage() {
   const me = useAdminMe();
-  const canWrite = canArea(me, 'users:write');
-  const canDelete = canArea(me, 'users:delete');
-  const [users, setUsers]       = useState<User[]>([]);
-  const [stats, setStats]       = useState<Stats | null>(null);
-  const [loading, setLoading]   = useState(true); // primeira carga: tela de carregamento até chegar a lista
-  const [error, setError]       = useState('');
-  const [search, setSearch]     = useState('');
-  const [filter, setFilter]     = useState<FilterKey>('all');
-  const [sortKey, setSortKey]   = useState<SortKey>('created_at');
-  const [sortDir, setSortDir]   = useState<'asc' | 'desc'>('desc');
-  const [modal, setModal]       = useState<ModalMode>(null);
-  // Seleção para ações em lote (excluir, desativar, reativar).
-  const [checked, setChecked]   = useState<Set<string>>(new Set());
-  const [bulkMsg, setBulkMsg]   = useState<string | null>(null);
-  const [selected, setSelected] = useState<User | null>(null);
-  const [form, setForm]         = useState<Form>(EMPTY_FORM);
-  const [saving, setSaving]     = useState(false);
-  const [formErr, setFormErr]   = useState('');
-  const [showPwd, setShowPwd]   = useState(false);
-  const [page, setPage]         = useState(1);
-  const PER_PAGE = 25;
+  const [data, setData] = useState<Overview | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  const getSecret = () => sessionStorage.getItem('adminSecret') ?? '';
-
-  const fetchData = useCallback(async () => {
-    // Login próprio: o layout injeta o token; a senha mestra (antiga) é opcional.
-    const secret = getSecret();
-    setLoading(true); setError('');
+  // silent: atualização automática (sem o carregando no botão e sem apagar a tela se falhar uma vez).
+  const load = useCallback(async (silent = false) => {
+    if (!silent) { setLoading(true); setError(''); }
     try {
-      const res = await fetch('/api/admin/users', { headers: { 'x-admin-secret': secret } });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = await res.json();
-      setUsers(json.users ?? []);
-      setStats(json.stats ?? null);
-    } catch (e: any) { setError(e.message); }
-    finally { setLoading(false); }
+      const res = await fetch('/api/admin/overview', { cache: 'no-store' });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(json.error ?? `HTTP ${res.status}`);
+      setData(json as Overview);
+      setError('');
+    } catch (e) { if (!silent) setError((e as Error).message); }
+    finally { if (!silent) setLoading(false); }
   }, []);
-
-  useEffect(() => { fetchData(); }, [fetchData]);
-
-  // Sort
-  const onSort = (k: SortKey) => {
-    if (sortKey === k) { setSortDir(d => d === 'asc' ? 'desc' : 'asc'); }
-    else { setSortKey(k); setSortDir('desc'); }
-  };
-
-  // Filtered + sorted
-  // Mesma regra para a lista filtrada e para as contagens dos filtros rápidos.
-  const inFilter = (u: User, f: FilterKey): boolean =>
-    f === 'all' ? true :
-    f === 'institutional' ? u.is_institutional :
-    f === 'subscriber' ? u.sub_phase === 'pagante' :
-    f === 'trial' ? !!u.sub_phase && u.sub_phase.startsWith('teste') :
-    f === 'expired' ? !u.is_institutional && (
-      u.subscription_status === 'expired' ||
-      (u.subscription_status === 'trial' && !!u.trial_ends_at && new Date(u.trial_ends_at) < new Date())
-    ) :
-    f === 'none' ? u.subscription_status === 'none' && !u.is_institutional : true;
-  const filterCounts = useMemo(() => {
-    const keys: FilterKey[] = ['all', 'subscriber', 'trial', 'expired', 'institutional', 'none'];
-    return Object.fromEntries(keys.map(k => [k, users.filter(u => inFilter(u, k)).length])) as Record<FilterKey, number>;
-  }, [users]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const displayed = useMemo(() => {
-    const q = search.toLowerCase();
-    let list = users.filter(u => {
-      const matchQ = !q || u.email.toLowerCase().includes(q) || (u.name ?? '').toLowerCase().includes(q) || (!!u.username && `@${u.username}`.includes(q.startsWith('@') ? q : `@${q}`));
-      const matchF = inFilter(u, filter);
-      return matchQ && matchF;
-    });
-    list = [...list].sort((a, b) => {
-      let av: any, bv: any;
-      switch (sortKey) {
-        case 'name': av = (a.name ?? '').toLowerCase(); bv = (b.name ?? '').toLowerCase(); break;
-        case 'level': av = a.charlotte_level ?? ''; bv = b.charlotte_level ?? ''; break;
-        case 'created_at': av = a.created_at; bv = b.created_at; break;
-        case 'xp': av = a.engagement?.totalXP ?? -1; bv = b.engagement?.totalXP ?? -1; break;
-        case 'lastActive': av = a.engagement?.lastActive ?? ''; bv = b.engagement?.lastActive ?? ''; break;
-        case 'topics': {
-          const sum = (p: TrailProgress | null) => p ? p.novice + p.inter + p.advanced : -1;
-          av = sum(a.trailProgress); bv = sum(b.trailProgress); break;
-        }
-        case 'streak': av = a.streak ?? -1; bv = b.streak ?? -1; break;
-        default: av = ''; bv = '';
-      }
-      if (av < bv) return sortDir === 'asc' ? -1 : 1;
-      if (av > bv) return sortDir === 'asc' ? 1 : -1;
-      return 0;
-    });
-    return list;
-  }, [users, search, filter, sortKey, sortDir]);
-
-  const expiredCount = useMemo(() => users.filter(u => {
-    if (u.is_institutional) return false;
-    if (u.subscription_status === 'expired') return true;
-    if (u.subscription_status === 'trial' && u.trial_ends_at && new Date(u.trial_ends_at) < new Date()) return true;
-    return false;
-  }).length, [users]);
-
-  const totalPages = Math.ceil(displayed.length / PER_PAGE);
-  const pageUsers  = displayed.slice((page - 1) * PER_PAGE, page * PER_PAGE);
-  useEffect(() => { setPage(1); }, [search, filter]);
-
-  // ── Modal helpers ──────────────────────────────────────────────────────────
-  const openCreate = () => { setForm(EMPTY_FORM); setFormErr(''); setSelected(null); setModal('create'); };
-  const openEdit = (u: User) => {
-    setSelected(u);
-    setForm({
-      email: u.email, password: '', name: u.name ?? '', charlotte_level: u.charlotte_level ?? '',
-      is_institutional: u.is_institutional, is_active: u.is_active,
-      subscription_status: u.subscription_status,
-      must_change_password: u.must_change_password,
-      placement_test_done: u.placement_test_done,
-      beta_karaoke: (u.beta_features ?? []).includes('karaoke'),
-      beta_new_layout: (u.beta_features ?? []).includes('new_layout'),
-      beta_openai_tts: (u.beta_features ?? []).includes('openai_tts'),
-      beta_curriculum_v2: (u.beta_features ?? []).includes('curriculum_v2'),
-      beta_igorfina_trail: (u.beta_features ?? []).includes('igorfina_trail'),
-      is_admin: u.is_admin ?? false,
-    });
-    setFormErr(''); setModal('edit');
-  };
-  const openDelete = (u: User) => { setSelected(u); setModal('delete'); };
-  const closeModal = () => { setModal(null); setSelected(null); setFormErr(''); setShowPwd(false); };
-
-  const patchForm = (k: keyof Form, v: any) => setForm(f => ({ ...f, [k]: v }));
-
-  // ── API actions ────────────────────────────────────────────────────────────
-  const handleCreate = async () => {
-    if (!form.name?.trim() || !form.email?.trim() || !form.password?.trim()) { setFormErr('Nome, e-mail e senha são obrigatórios.'); return; }
-    setSaving(true); setFormErr('');
+  useEffect(() => { load(); }, [load]);
+  // Atualiza sozinha com a aba aberta: usuários a cada 5 s, o resto a cada 60 s; tudo na hora em que a aba volta.
+  const loadUsers = useCallback(async () => {
     try {
-      const res = await fetch('/api/admin/users', {
-        method: 'POST',
-        headers: { 'x-admin-secret': getSecret(), 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: form.email.trim(), password: form.password.trim(), name: form.name.trim(),
-          charlotte_level: form.charlotte_level || null,
-          is_institutional: form.is_institutional, is_active: form.is_active,
-          subscription_status: form.is_institutional ? 'none' : form.subscription_status,
-          must_change_password: form.must_change_password,
-          placement_test_done: form.placement_test_done,
-          is_admin: form.is_admin,
-        }),
-      });
-      if (!res.ok) { const j = await res.json(); throw new Error(j.error ?? `HTTP ${res.status}`); }
-      closeModal(); await fetchData();
-    } catch (e: any) { setFormErr(e.message); }
-    finally { setSaving(false); }
-  };
+      const res = await fetch('/api/admin/overview?part=users', { cache: 'no-store' });
+      if (!res.ok) return;
+      const j = await res.json() as { generatedAt: string; users: Overview['users'] };
+      setData(d => (d ? { ...d, users: j.users, generatedAt: j.generatedAt } : d));
+    } catch { /* tenta de novo no próximo ciclo */ }
+  }, []);
+  useEffect(() => {
+    const visible = () => document.visibilityState === 'visible';
+    const fast = setInterval(() => { if (visible()) loadUsers(); }, USERS_REFRESH_MS);
+    const slow = setInterval(() => { if (visible()) load(true); }, AUTO_REFRESH_MS);
+    const onVisible = () => { if (visible()) load(true); };
+    document.addEventListener('visibilitychange', onVisible);
+    return () => { clearInterval(fast); clearInterval(slow); document.removeEventListener('visibilitychange', onVisible); };
+  }, [load, loadUsers]);
 
-  const handleEdit = async () => {
-    if (!selected) return;
-    setSaving(true); setFormErr('');
-    try {
-      const betaFeatures = [
-        ...(form.beta_karaoke ? ['karaoke'] : []),
-        ...(form.beta_new_layout ? ['new_layout'] : []),
-        ...(form.beta_openai_tts ? ['openai_tts'] : []),
-        ...(form.beta_curriculum_v2 ? ['curriculum_v2'] : []),
-        ...(form.beta_igorfina_trail ? ['igorfina_trail'] : []),
-      ];
-      const body: any = {
-        id: selected.id, name: form.name || null,
-        charlotte_level: form.charlotte_level || null,
-        is_institutional: form.is_institutional, is_active: form.is_active,
-        subscription_status: form.is_institutional ? 'none' : form.subscription_status,
-        must_change_password: form.must_change_password,
-        placement_test_done: form.placement_test_done,
-        beta_features: betaFeatures,
-        is_admin: form.is_admin,
-      };
-      if (form.email !== selected.email) body.email = form.email;
-      const res = await fetch('/api/admin/users', {
-        method: 'PATCH',
-        headers: { 'x-admin-secret': getSecret(), 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-      if (!res.ok) { const j = await res.json(); throw new Error(j.error ?? `HTTP ${res.status}`); }
-      closeModal(); await fetchData();
-    } catch (e: any) { setFormErr(e.message); }
-    finally { setSaving(false); }
-  };
+  if (loading && !data && !error) return <AdminLoading label="Carregando a visão geral…" />;
 
-  const handleDelete = async () => {
-    if (!selected) return;
-    setSaving(true);
-    try {
-      const res = await fetch('/api/admin/users', {
-        method: 'DELETE',
-        headers: { 'x-admin-secret': getSecret(), 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: selected.id }),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      closeModal(); await fetchData();
-    } catch (e: any) { setFormErr(e.message); }
-    finally { setSaving(false); }
-  };
-
-  // ── Ações em lote ──────────────────────────────────────────────────────────
-  const toggleCheck = (id: string) => setChecked(prev => { const n = new Set(prev); if (n.has(id)) n.delete(id); else n.add(id); return n; });
-  const pageAllChecked = pageUsers.length > 0 && pageUsers.every(u => checked.has(u.id));
-  const togglePage = () => setChecked(prev => {
-    const n = new Set(prev);
-    if (pageAllChecked) pageUsers.forEach(u => n.delete(u.id)); else pageUsers.forEach(u => n.add(u.id));
-    return n;
-  });
-  const checkedUsers = users.filter(u => checked.has(u.id));
-
-  // Roda a ação conta por conta (a API é por conta) e conta os resultados.
-  const runBulk = async (label: string, call: (u: User) => Promise<Response>) => {
-    setSaving(true); setBulkMsg(null);
-    let ok = 0; const failed: string[] = [];
-    for (const u of checkedUsers) {
-      try { const r = await call(u); if (r.ok) ok++; else failed.push(u.email ?? u.id); }
-      catch { failed.push(u.email ?? u.id); }
-    }
-    setSaving(false); setModal(null); setChecked(new Set());
-    setBulkMsg(`${label}: ${ok} de ${ok + failed.length}.${failed.length ? ` Falharam: ${failed.slice(0, 5).join(', ')}${failed.length > 5 ? '…' : ''}` : ''}`);
-    await fetchData();
-  };
-  const bulkDelete = () => runBulk('Excluídas', u => fetch('/api/admin/users', {
-    method: 'DELETE', headers: { 'x-admin-secret': getSecret(), 'Content-Type': 'application/json' }, body: JSON.stringify({ id: u.id }),
-  }));
-  const bulkActive = (active: boolean) => runBulk(active ? 'Reativadas' : 'Desativadas', u => fetch('/api/admin/users', {
-    method: 'PATCH', headers: { 'x-admin-secret': getSecret(), 'Content-Type': 'application/json' }, body: JSON.stringify({ id: u.id, is_active: active }),
-  }));
-
-  // ── Render ─────────────────────────────────────────────────────────────────
-  // Primeira carga: tela inteira de carregamento até a lista chegar (no PWA a tela ficava vazia).
-  if (loading && !users.length && !stats && !error) return <AdminLoading label="Carregando usuários…" />;
+  const link = (area: Parameters<typeof canArea>[1], href: string) => (canArea(me, area) ? href : null);
+  const u = data?.users;
+  const problems = data?.alerts.items.filter(i => !i.ok) ?? [];
+  const okItems = data?.alerts.items.filter(i => i.ok) ?? [];
 
   return (
     <div className="adm-page">
-      {/* Top bar */}
       <div className="adm-topbar">
-        <div className="adm-topbar-title" style={{ flex: 1 }}>Usuários</div>
-        <button onClick={fetchData} disabled={loading} className="adm-btn-sm ghost">
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div className="adm-topbar-title">Visão geral</div>
+          {data && <div className="adm-topbar-sub">Dados até {hhmm(data.generatedAt)} · atualiza sozinha (usuários a cada 5 s)</div>}
+        </div>
+        <button onClick={() => load()} disabled={loading} className="adm-btn-sm ghost">
           <RefreshCw size={13} style={{ animation: loading ? 'spin 1s linear infinite' : 'none' }} />
           {loading ? 'Carregando' : 'Atualizar'}
         </button>
-        {canWrite && (
-          <button onClick={openCreate} className="adm-btn-sm primary">
-            <Plus size={14} /> Novo usuário
-          </button>
-        )}
       </div>
 
-      {error && (
-        <div className="adm-alert crit" style={{ margin: '12px 28px 0' }}>
-          <TriangleAlert size={14} /> {error}
-        </div>
-      )}
+      <div className="adm-body">
+        {error && <div className="adm-alert crit" style={{ marginBottom: 16 }}><TriangleAlert size={14} /> {error}</div>}
 
-      {/* Stats */}
-      {stats && (
-        <div style={{ padding: '16px 28px 0' }}>
+        {data && u && (
           <div className="adm-grid">
-            <div className="col-3"><StatCard label="Total" value={stats.total} delay={0} /></div>
-            <div className="col-3"><StatCard label="Pagantes" value={stats.subscribers} accent="var(--ok)" delay={60} /></div>
-            <div className="col-3">
-              <StatCard label="Em teste grátis" value={stats.onTrial} accent="var(--accent)" delay={120}
-                sub={stats.trialSplit ? `Loja ${stats.trialSplit.loja} · Site ${stats.trialSplit.site}${stats.trialSplit.semCartao ? ` · Sem cartão ${stats.trialSplit.semCartao}` : ''}` : undefined}
-                detail={stats.trialDetail ? <TrialDetailBox d={stats.trialDetail} /> : undefined} />
-            </div>
-            <div className="col-3"><StatCard label="Institucionais" value={stats.institutional} delay={180} /></div>
-            <div className="col-3">
-              <StatCard label="Novos (24h)" value={stats.last24h ?? 0}
-                sub={`${stats.prev24h ?? 0} nas 24 h anteriores · ${stats.last30} em 30 dias`}
-                delay={240} accent="var(--brand)" />
-            </div>
-            <div className="col-3"><StatCard label="Ativos Hoje" value={stats.activeToday} accent="var(--ok)" delay={300} /></div>
-            <div className="col-3"><StatCard label="Ativos (7d)" value={stats.activeWeek} delay={360} /></div>
-            <div className="col-3"><StatCard label="Teste encerrado" value={stats.trialExpired} accent={stats.trialExpired > 0 ? 'var(--warn)' : undefined} delay={420} /></div>
-          </div>
-        </div>
-      )}
-
-      {/* Filter bar */}
-      <div style={{ padding: '16px 28px 0', display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-        <div style={{ position: 'relative', flex: '1', minWidth: 200, maxWidth: 340 }}>
-          <Search size={14} style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'var(--t3)', pointerEvents: 'none' }} />
-          <input
-            type="text"
-            placeholder="Buscar por nome, e-mail ou @..."
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            className="adm-input-sm"
-            style={{ paddingLeft: 32, width: '100%', boxSizing: 'border-box' }}
-          />
-        </div>
-        <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
-          {([
-            { id: 'all',           label: `Todos (${filterCounts.all ?? 0})` },
-            { id: 'subscriber',    label: `Pagantes (${filterCounts.subscriber ?? 0})` },
-            { id: 'trial',         label: `Em teste (${filterCounts.trial ?? 0})` },
-            { id: 'expired',       label: `Expirado (${filterCounts.expired ?? 0})` },
-            { id: 'institutional', label: `Institucional (${filterCounts.institutional ?? 0})` },
-            { id: 'none',          label: `Degustação (${filterCounts.none ?? 0})` },
-          ] as { id: FilterKey; label: string }[]).map(f => (
-            <button
-              key={f.id}
-              className={`adm-chip${filter === f.id ? ' active' : ''}`}
-              style={f.id === 'expired' && expiredCount > 0 && filter !== 'expired' ? { color: 'var(--warn)', borderColor: 'var(--warn)' } : undefined}
-              onClick={() => setFilter(f.id)}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
-        <div style={{ marginLeft: 'auto', fontSize: 11, color: 'var(--t3)', flexShrink: 0 }}>
-          {displayed.length} resultado{displayed.length !== 1 ? 's' : ''}
-        </div>
-      </div>
-
-      {/* Barra de ações em lote */}
-      {(checked.size > 0 || bulkMsg) && (
-        <div style={{ margin: '10px 28px 0', padding: '10px 14px', borderRadius: 12, background: 'var(--s2, #F3F1EC)', display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', fontSize: 13 }}>
-          {checked.size > 0 ? (
-            <>
-              <b style={{ color: 'var(--t1)' }}>{checked.size} selecionada{checked.size !== 1 ? 's' : ''}</b>
-              {checked.size < displayed.length && (
-                <button className="adm-btn-sm ghost" onClick={() => setChecked(new Set(displayed.map(u => u.id)))}>Selecionar os {displayed.length} resultados</button>
-              )}
-              <div style={{ flex: 1 }} />
-              <button className="adm-btn-sm ghost" disabled={saving} onClick={() => bulkActive(false)}>Desativar</button>
-              <button className="adm-btn-sm ghost" disabled={saving} onClick={() => bulkActive(true)}>Reativar</button>
-              {canDelete && <button className="adm-btn-sm danger" disabled={saving} onClick={() => setModal('bulkDelete')}><Trash2 size={12} /> Excluir</button>}
-              <button className="adm-btn-sm ghost" onClick={() => setChecked(new Set())}>Limpar</button>
-            </>
-          ) : (
-            <>
-              <span style={{ color: 'var(--t2)' }}>{bulkMsg}</span>
-              <div style={{ flex: 1 }} />
-              <button className="adm-btn-sm ghost" onClick={() => setBulkMsg(null)}><X size={12} /></button>
-            </>
-          )}
-        </div>
-      )}
-
-      {/* Table */}
-      <div style={{ padding: '14px 28px 28px' }}>
-        <div className="adm-panel">
-          {loading && !users.length ? (
-            <div style={{ padding: '40px 0' }}>
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} style={{ display: 'flex', gap: 12, padding: '12px 18px', borderBottom: '1px solid var(--b1)' }}>
-                  <div className="skeleton" style={{ height: 10, width: 160 }} />
-                  <div className="skeleton" style={{ height: 10, width: 100 }} />
-                  <div className="skeleton" style={{ height: 10, width: 60 }} />
+            {/* a. Alertas */}
+            <div className="col-12">
+              {data.alerts.allOk ? (
+                <div className="adm-panel" style={{ padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontWeight: 700, color: 'var(--ok)', fontSize: 13.5 }}>
+                    <CircleCheck size={16} /> Tudo certo agora
+                  </span>
+                  {okItems.map(i => <span key={i.key} className="badge badge-muted" style={{ color: 'var(--t2)' }}>{i.label}</span>)}
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div style={{ overflowX: 'auto' }}>
-              <table className="adm-table">
-                <thead>
-                  <tr>
-                    <th style={{ width: 34 }}>
-                      <input type="checkbox" aria-label="Selecionar a página" checked={pageAllChecked} onChange={togglePage} />
-                    </th>
-                    <SortTh label="Nome / Email" sk="name"       sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-                    <SortTh label="Nível"         sk="level"      sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-                    <th>Status</th>
-                    <SortTh label="XP"            sk="xp"         sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-                    <SortTh label="Streak"        sk="streak"     sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-                    <SortTh label="Ativo"         sk="lastActive" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-                    <SortTh label="Tópicos"       sk="topics"     sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-                    <SortTh label="Criado"        sk="created_at" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-                    <th />
-                  </tr>
-                </thead>
-                <tbody>
-                  {pageUsers.length === 0 ? (
-                    <tr>
-                      <td colSpan={10}>
-                        <div className="adm-empty">
-                          <div className="adm-empty-title">Nenhum usuário encontrado</div>
-                          
-                        </div>
-                      </td>
-                    </tr>
-                  ) : pageUsers.map(u => {
-                    const sm = u.is_institutional ? STATUS_META.institutional
-                      : (u.sub_phase && PHASE_META[u.sub_phase]) ? PHASE_META[u.sub_phase]
-                      : STATUS_META[u.subscription_status];
-                    const lm = u.charlotte_level ? LEVEL_META[u.charlotte_level] : null;
-                    return (
-                      <tr key={u.id} style={checked.has(u.id) ? { background: 'var(--s2, #F3F1EC)' } : undefined}>
-                        <td>
-                          <input type="checkbox" aria-label={`Selecionar ${u.email ?? u.name ?? ''}`} checked={checked.has(u.id)} onChange={() => toggleCheck(u.id)} />
-                        </td>
-                        <td>
-                          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                            <div style={{ fontWeight: 600, fontSize: 13, color: 'var(--t1)' }}>
-                              <a href={`/admin/users/${u.id}`} style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px dashed var(--b3)' }} title="Abrir ficha do aluno">
-                                {u.name ?? <span style={{ color: 'var(--t3)', fontStyle: 'italic' }}>sem nome</span>}
-                              </a>
-                              {!u.is_active && <span className="badge badge-err" style={{ marginLeft: 6, verticalAlign: 'middle' }}>Inativo</span>}
-                            </div>
-                            <div style={{ fontSize: 11.5, color: 'var(--t3)', fontFamily: 'var(--font-mono)' }}>{u.email}</div>
-                          </div>
-                        </td>
-                        <td>{lm ? <span className={`badge ${lm.cls}`}><span className="badge-dot" />  {lm.label}</span> : <span style={{ color: 'var(--t3)' }}>—</span>}</td>
-                        <td><span className={`badge ${sm.cls}`}>{sm.label}</span></td>
-                        <td><span className="num" style={{ color: (u.engagement?.totalXP ?? 0) > 500 ? 'var(--ok)' : 'var(--t2)' }}>{fmtXP(u.engagement?.totalXP ?? 0)}</span></td>
-                        <td>
-                          <span className="num">{u.streak > 0 ? u.streak : '—'}</span>
-                        </td>
-                        <td>
-                          <DateTip iso={u.engagement?.lastActive ?? null}>
-                            <span style={{ fontSize: 12, color: 'var(--t2)' }}>
-                              {timeAgo(u.engagement?.lastActive ?? null)}
-                            </span>
-                          </DateTip>
-                        </td>
-                        <td>
-                          {u.trailProgress ? (
-                            <span className="num" style={{ fontSize: 11.5, letterSpacing: 0 }}>
-                              <span style={{ color: 'var(--brand)',  opacity: u.trailProgress.novice   > 0 ? 1 : 0.35 }}>N {u.trailProgress.novice}</span>
-                              <span style={{ color: 'var(--t3)',     margin: '0 3px' }}>/</span>
-                              <span style={{ color: 'var(--accent)', opacity: u.trailProgress.inter    > 0 ? 1 : 0.35 }}>I {u.trailProgress.inter}</span>
-                              <span style={{ color: 'var(--t3)',     margin: '0 3px' }}>/</span>
-                              <span style={{ color: 'var(--ok)',     opacity: u.trailProgress.advanced > 0 ? 1 : 0.35 }}>A {u.trailProgress.advanced}</span>
-                            </span>
-                          ) : <span style={{ color: 'var(--t3)' }}>—</span>}
-                        </td>
-                        <td><span style={{ fontSize: 11.5, color: 'var(--t3)' }}>{fmtDate(u.created_at)}</span></td>
-                        <td>
-                          <div style={{ display: 'flex', gap: 6, justifyContent: 'flex-end' }}>
-                            {canWrite && (
-                              <button onClick={() => openEdit(u)} className="adm-btn-sm ghost" style={{ padding: '5px 8px' }} title="Editar">
-                                <Edit2 size={13} />
-                              </button>
-                            )}
-                            <a href={`https://app.revenuecat.com/customers?app_user_id=${encodeURIComponent(u.id)}`}
-                              target="_blank" rel="noreferrer" className="adm-btn-sm ghost" style={{ padding: '5px 8px' }} title="RevenueCat">
-                              <ExternalLink size={13} />
-                            </a>
-                            {canDelete && (
-                              <button onClick={() => openDelete(u)} className="adm-btn-sm danger" style={{ padding: '5px 8px' }} title="Excluir">
-                                <Trash2 size={13} />
-                              </button>
-                            )}
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          )}
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div style={{ padding: '12px 18px', borderTop: '1px solid var(--b1)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <div style={{ fontSize: 11.5, color: 'var(--t3)' }}>
-                Mostrando {((page - 1) * PER_PAGE) + 1}–{Math.min(page * PER_PAGE, displayed.length)} de {displayed.length}
-              </div>
-              <div style={{ display: 'flex', gap: 4 }}>
-                <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1} className="adm-btn-sm ghost">‹</button>
-                {Array.from({ length: Math.min(totalPages, 7) }, (_, i) => {
-                  const p = i + 1;
-                  return (
-                    <button key={p} onClick={() => setPage(p)} className={`adm-btn-sm${page === p ? ' primary' : ' ghost'}`}>
-                      {p}
-                    </button>
-                  );
-                })}
-                <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages} className="adm-btn-sm ghost">›</button>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* ── Modal ────────────────────────────────────────────────────────────── */}
-      {modal && (
-        <div className="adm-modal-backdrop" onClick={e => { if (e.target === e.currentTarget) closeModal(); }}>
-          <div className="adm-modal">
-            {/* Header */}
-            <div className="adm-modal-hdr">
-              <div className="adm-modal-title">
-                {modal === 'create' ? 'Novo Usuário' : modal === 'edit' ? 'Editar Usuário' : modal === 'bulkDelete' ? `Excluir ${checkedUsers.length} usuários` : 'Excluir Usuário'}
-              </div>
-              <button onClick={closeModal} className="adm-btn-sm ghost" style={{ padding: '4px 6px' }}>
-                <X size={15} />
-              </button>
-            </div>
-
-            {/* Delete confirmation */}
-            {modal === 'delete' && (
-              <>
-                <div className="adm-modal-body">
-                  <div className="adm-alert crit">
-                    <TriangleAlert size={14} style={{ flexShrink: 0 }} />
-                    <div>
-                      <div style={{ fontWeight: 700, marginBottom: 4 }}>Ação irreversível</div>
-                      <div>Tem certeza que deseja excluir <strong>{selected?.name ?? selected?.email}</strong>? Todos os dados serão perdidos.</div>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {problems.map(i => (
+                    <div key={i.key} className="adm-alert warn" style={{ alignItems: 'center' }}>
+                      <TriangleAlert size={14} style={{ flexShrink: 0 }} />
+                      <span style={{ flex: 1 }}>{i.label}</span>
+                      {i.href && <Link href={i.href} className="adm-btn-sm ghost" style={{ flexShrink: 0 }}>Ver <ArrowRight size={12} /></Link>}
                     </div>
-                  </div>
-                </div>
-                <div className="adm-modal-footer">
-                  <button onClick={closeModal} className="adm-btn-sm ghost">Cancelar</button>
-                  <button onClick={handleDelete} disabled={saving} className="adm-btn-sm danger">
-                    {saving ? 'Excluindo...' : 'Excluir definitivamente'}
-                  </button>
-                </div>
-              </>
-            )}
-
-            {/* Exclusão em lote */}
-            {modal === 'bulkDelete' && (
-              <>
-                <div className="adm-modal-body">
-                  <div className="adm-alert crit">
-                    <TriangleAlert size={14} style={{ flexShrink: 0 }} />
-                    <div>
-                      <div style={{ fontWeight: 700, marginBottom: 4 }}>Ação irreversível</div>
-                      <div>Excluir <strong>{checkedUsers.length}</strong> conta{checkedUsers.length !== 1 ? 's' : ''}? Todos os dados delas serão perdidos.</div>
-                      <div style={{ marginTop: 8, fontSize: 12, fontFamily: 'var(--font-mono)', maxHeight: 140, overflowY: 'auto' }}>
-                        {checkedUsers.map(u => <div key={u.id}>{u.email ?? u.name ?? u.id}</div>)}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="adm-modal-footer">
-                  <button onClick={closeModal} className="adm-btn-sm ghost">Cancelar</button>
-                  <button onClick={bulkDelete} disabled={saving} className="adm-btn-sm danger">
-                    {saving ? 'Excluindo...' : `Excluir ${checkedUsers.length} definitivamente`}
-                  </button>
-                </div>
-              </>
-            )}
-
-            {/* Create / Edit form */}
-            {(modal === 'create' || modal === 'edit') && (
-              <>
-                <div className="adm-modal-body">
-                  <div className="adm-field">
-                    <label>Email *</label>
-                    <input type="email" value={form.email} onChange={e => patchForm('email', e.target.value)} placeholder="aluno@email.com" />
-                  </div>
-                  <div className="adm-field">
-                    <label>{modal === 'create' ? 'Senha *' : 'Nova senha (deixe em branco para manter)'}</label>
-                    <div style={{ position: 'relative', width: '100%' }}>
-                      <input
-                        type={showPwd ? 'text' : 'password'}
-                        value={form.password}
-                        onChange={e => patchForm('password', e.target.value)}
-                        placeholder="••••••••"
-                        style={{ width: '100%', boxSizing: 'border-box', paddingRight: 36 }}
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowPwd(v => !v)}
-                        style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--t3)', padding: 0, display: 'flex', alignItems: 'center' }}
-                      >
-                        {showPwd ? <EyeOff size={15} /> : <Eye size={15} />}
-                      </button>
-                    </div>
-                  </div>
-                  <div className="adm-field">
-                    <label>Nome completo</label>
-                    <input type="text" value={form.name} onChange={e => patchForm('name', e.target.value)} placeholder="Nome do aluno" />
-                  </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-                    <div className="adm-field">
-                      <label>Nível</label>
-                      <select value={form.charlotte_level} onChange={e => patchForm('charlotte_level', e.target.value)}>
-                        <option value="">— Sem nível —</option>
-                        <option value="Novice">Novice</option>
-                        <option value="Inter">Inter</option>
-                        <option value="Advanced">Advanced</option>
-                      </select>
-                    </div>
-                    <div className="adm-field">
-                      <label>Status da assinatura</label>
-                      <select
-                        value={form.is_institutional ? 'none' : form.subscription_status}
-                        onChange={e => patchForm('subscription_status', e.target.value)}
-                        disabled={form.is_institutional}
-                        style={form.is_institutional ? { opacity: 0.4, cursor: 'not-allowed' } : {}}
-                      >
-                        {form.is_institutional
-                          ? <option value="none">Institucional (gerenciado)</option>
-                          : <>
-                              <option value="none">Degustação</option>
-                              {/* Trial do app acabou em 14/10: não dá para escolher; só aparece em conta antiga que ainda está nele. */}
-                              {form.subscription_status === 'trial' && <option value="trial" disabled>Trial antigo do app</option>}
-                              <option value="active">Ativo</option>
-                              <option value="cancelled">Cancelado</option>
-                              <option value="expired">Expirado</option>
-                            </>
-                        }
-                      </select>
-                    </div>
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                    {([
-                      { key: 'is_active',           label: 'Conta ativa' },
-                      { key: 'is_institutional',    label: 'Usuário institucional' },
-                      { key: 'placement_test_done', label: 'Placement test concluído' },
-                      { key: 'must_change_password', label: 'Forçar troca de senha no próximo login' },
-                      { key: 'beta_karaoke',        label: 'Beta: Karaoke (Read Aloud)' },
-                      { key: 'beta_new_layout',     label: 'Beta: New Layout (Tab Nav)' },
-                      { key: 'beta_openai_tts',     label: 'Beta: OpenAI TTS (coral, gpt-4o-mini-tts)' },
-                      { key: 'beta_curriculum_v2',  label: 'Beta: Curriculum v2 (new trail content)' },
-                      { key: 'beta_igorfina_trail', label: 'Revisão: Trilha do Igorfina toda aberta (só equipe e Igor)' },
-                      { key: 'is_admin',            label: 'Admin (OTA + welcome reset)' },
-                    ] as { key: keyof Form; label: string }[]).map(({ key, label }) => (
-                      <label key={key} style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer', fontSize: 13.5, color: 'var(--t2)' }}>
-                        <div
-                          onClick={() => patchForm(key, !form[key])}
-                          style={{
-                            width: 18, height: 18, borderRadius: 4, flexShrink: 0,
-                            background: form[key] ? 'var(--accent)' : 'var(--s2)',
-                            border: `1px solid ${form[key] ? 'var(--accent)' : 'var(--b2)'}`,
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            cursor: 'pointer', transition: 'background 150ms',
-                          }}
-                        >
-                          {form[key] && <Check size={11} color="white" strokeWidth={3} />}
-                        </div>
-                        {label}
-                      </label>
-                    ))}
-                  </div>
-                  {formErr && (
-                    <div className="adm-alert crit">
-                      <TriangleAlert size={14} /> {formErr}
+                  ))}
+                  {okItems.length > 0 && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                      <CircleCheck size={14} style={{ color: 'var(--ok)' }} />
+                      {okItems.map(i => <span key={i.key} className="badge badge-muted" style={{ color: 'var(--t2)' }}>{i.label}</span>)}
                     </div>
                   )}
                 </div>
-                <div className="adm-modal-footer">
-                  <button onClick={closeModal} className="adm-btn-sm ghost">Cancelar</button>
-                  <button
-                    onClick={modal === 'create' ? handleCreate : handleEdit}
-                    disabled={saving}
-                    className="adm-btn-sm primary"
-                  >
-                    {saving ? 'Salvando...' : modal === 'create' ? 'Criar usuário' : 'Salvar alterações'}
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+              )}
+            </div>
 
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+            {/* b. Total de usuários e os quatro grupos (somam o total) */}
+            <div className="col-12">
+              <div style={{ background: 'var(--accent)', color: '#fff', borderRadius: 'var(--r3)', padding: '20px 22px' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+                  <div>
+                    <div className="kpi-label" style={{ color: 'rgba(255,255,255,0.6)' }}>Total de usuários</div>
+                    <div className="kpi-value" style={{ color: '#fff', fontSize: '2.6rem' }}>{int(u.total)}</div>
+                    <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.7)' }}>
+                      <span style={{ color: 'var(--volt)', fontWeight: 700 }}>+{int(u.newToday)} hoje</span> · {int(u.new30d)} nos últimos 30 dias
+                    </div>
+                  </div>
+                  {link('users', '/admin/users') && (
+                    <Link href="/admin/users" className="adm-btn-sm ghost" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.25)' }}>
+                      Usuários <ArrowRight size={12} />
+                    </Link>
+                  )}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginTop: 18 }}>
+                  {[
+                    { label: 'Degustação', value: u.taste, sub: 'sem teste nem assinatura' },
+                    { label: 'Em teste grátis', value: u.trial, sub: u.trialCancelled ? `${int(u.trialCancelled)} ${u.trialCancelled === 1 ? 'cancelou e usa' : 'cancelaram e usam'} até o fim` : `loja ${u.trialStore} · site ${u.trialSite}` },
+                    { label: 'Pagantes', value: u.paying, sub: u.payingCancelled ? `${int(u.payingCancelled)} ${u.payingCancelled === 1 ? 'cancelou e usa' : 'cancelaram e usam'} até o fim` : 'com renovação ativa' },
+                    { label: 'Sem acesso', value: u.noAccess, sub: 'teste ou assinatura encerrados' },
+                  ].map(g => (
+                    <div key={g.label} style={{ background: 'rgba(255,255,255,0.07)', borderRadius: 'var(--r2)', padding: '12px 14px' }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)' }}>{g.label}</div>
+                      <div style={{ fontSize: 24, fontWeight: 700, fontVariantNumeric: 'tabular-nums', margin: '4px 0 2px' }}>{int(g.value)}</div>
+                      <div style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.6)' }}>{g.sub}</div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ marginTop: 10, fontSize: 11.5, color: 'rgba(255,255,255,0.55)', fontVariantNumeric: 'tabular-nums' }}>
+                  {int(u.taste)} + {int(u.trial)} + {int(u.paying)} + {int(u.noAccess)} = {int(u.taste + u.trial + u.paying + u.noAccess)}
+                  {u.taste + u.trial + u.paying + u.noAccess !== u.total && ' (diferente do total: confira)'} · sem as contas da equipe
+                </div>
+              </div>
+            </div>
+
+            {/* c. Hoje x ontem */}
+            <div className="col-12">
+              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--t1)', margin: '4px 0 10px' }}>
+                Hoje, comparado com ontem <span style={{ fontWeight: 400, color: 'var(--t3)' }}>· horário de Brasília, hoje até agora</span>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 12 }}>
+                {data.todayVsYesterday.map(m => (
+                  <div key={m.key} className="kpi-card" style={{ padding: 16 }}>
+                    <div className="kpi-label">{m.label}</div>
+                    <div className="kpi-value" style={{ fontSize: '1.6rem' }}>{m.money ? brl(m.today) : int(m.today)}</div>
+                    <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 8 }}>
+                      <Delta m={m} />
+                      <Sparkline series={m.series} money={m.money} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* d. Funil */}
+            <Panel title="Funil dos últimos 30 dias" sub="Contas criadas nos últimos 30 dias" href={link('metrics', '/admin/metrics')} linkLabel="Métricas">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {data.funnel30d.map(s => (
+                  <div key={s.key}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, fontSize: 13 }}>
+                      <span style={{ color: 'var(--t1)', fontWeight: 600 }}>{s.label}</span>
+                      <span style={{ fontVariantNumeric: 'tabular-nums' }}>
+                        <strong>{int(s.count)}</strong>
+                        {s.key !== 'signups' && <span style={{ color: 'var(--t3)' }}> · {pctFmt(s.pctOfSignups)} dos cadastros</span>}
+                      </span>
+                    </div>
+                    <div style={{ height: 8, background: 'var(--s2)', borderRadius: 4, marginTop: 6, overflow: 'hidden' }}>
+                      <div style={{ height: '100%', width: `${Math.max(s.count ? 1 : 0, s.pctOfSignups ?? 0)}%`, background: 'var(--accent)', borderRadius: 4 }} />
+                    </div>
+                    {s.stepPct != null && s.key !== 'first' && (
+                      <div style={{ fontSize: 11.5, color: 'var(--t3)', marginTop: 4 }}>{pctFmt(s.stepPct)} {s.stepOf}</div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </Panel>
+
+            {/* e. Dinheiro */}
+            <Panel title="Dinheiro" sub="Receita em reais, sem as contas da equipe" href={link('finance', '/admin/finance')} linkLabel="Financeiro">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+                <div>
+                  <div className="kpi-label">Receita recorrente (mês)</div>
+                  <div className="kpi-value" style={{ fontSize: '1.5rem' }}>{brl(data.money.mrr)}</div>
+                  <div className="kpi-context">{int(data.money.renewing)} {data.money.renewing === 1 ? 'assinatura renovando' : 'assinaturas renovando'}</div>
+                  <div className="kpi-context" style={{ marginTop: 2 }}>{brl(data.money.mrrIfTrialsConvert)} se os testes virarem assinatura</div>
+                </div>
+                <div>
+                  <div className="kpi-label" style={{ textTransform: 'uppercase' }}>Receita de {data.money.month.label}</div>
+                  <div className="kpi-value" style={{ fontSize: '1.5rem' }}>{brl(data.money.month.gross)}</div>
+                  <div className="kpi-context">{brl(data.money.month.net)} líquido · {int(data.money.month.charges)} {data.money.month.charges === 1 ? 'cobrança' : 'cobranças'}</div>
+                  {data.money.month.refunds > 0 && (
+                    <div className="kpi-context" style={{ marginTop: 2 }}>{data.money.month.refunds} {data.money.month.refunds === 1 ? 'reembolso' : 'reembolsos'} ({brl(data.money.month.refundsBrl)})</div>
+                  )}
+                </div>
+              </div>
+              <div style={{ marginTop: 18 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8, flexWrap: 'wrap', marginBottom: 8 }}>
+                  <div style={{ fontSize: 12.5, fontWeight: 600 }}>Primeiras cobranças nos próximos 7 dias: {int(data.money.firstCharges7d.total)}</div>
+                  <div style={{ display: 'flex', gap: 10, fontSize: 11, color: 'var(--t2)' }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}><span style={{ width: 8, height: 8, borderRadius: 2, background: 'var(--accent)' }} />Loja</span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}><span style={{ width: 8, height: 8, borderRadius: 2, background: 'var(--brand)' }} />Site</span>
+                  </div>
+                </div>
+                <Bars days={data.money.firstCharges7d.days.map(d => ({ date: d.date, a: d.store, b: d.site }))}
+                  height={60} label={d => `${ddmm(d.date)}: ${d.a} na loja, ${d.b ?? 0} no site`} />
+              </div>
+              <div style={{ marginTop: 12, fontSize: 12.5, color: 'var(--t2)' }}>
+                Cancelaram e ainda têm acesso: <strong style={{ color: 'var(--t1)' }}>{int(data.money.cancelledWithAccess.total)}</strong>
+                {' '}({int(data.money.cancelledWithAccess.trial)} no teste, {int(data.money.cancelledWithAccess.paying)} {data.money.cancelledWithAccess.paying === 1 ? 'pagante' : 'pagantes'})
+              </div>
+            </Panel>
+
+            {/* f. Engajamento */}
+            <Panel title="Engajamento" sub="Usuário ativo = fez alguma atividade no dia" href={link('metrics', '/admin/metrics')} linkLabel="Métricas">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+                <div>
+                  <div className="kpi-label">Voltou no dia seguinte</div>
+                  <div className="kpi-value" style={{ fontSize: '1.5rem' }}>{data.engagement.d1.pct == null ? '—' : `${data.engagement.d1.pct}%`}</div>
+                  <div className="kpi-context">{int(data.engagement.d1.retained)} de {int(data.engagement.d1.eligible)} · cadastros dos últimos 14 dias</div>
+                </div>
+                <div>
+                  <div className="kpi-label">Voltou em 7 dias</div>
+                  <div className="kpi-value" style={{ fontSize: '1.5rem' }}>{data.engagement.d7.pct == null ? '—' : `${data.engagement.d7.pct}%`}</div>
+                  <div className="kpi-context">{int(data.engagement.d7.retained)} de {int(data.engagement.d7.eligible)} · no 7º dia depois do cadastro</div>
+                </div>
+                <div>
+                  <div className="kpi-label">Sequências ativas</div>
+                  <div className="kpi-value" style={{ fontSize: '1.5rem' }}>{int(data.engagement.activeStreaks)}</div>
+                  <div className="kpi-context">{int(data.engagement.practicedToday)} já praticaram hoje</div>
+                </div>
+              </div>
+              <div style={{ marginTop: 18 }}>
+                <div style={{ fontSize: 12.5, fontWeight: 600, marginBottom: 8 }}>Usuários ativos por dia</div>
+                <Bars days={data.engagement.dau7.map(d => ({ date: d.date, a: d.value }))} height={70}
+                  label={d => `${ddmm(d.date)}: ${d.a} ${d.a === 1 ? 'usuário ativo' : 'usuários ativos'}`} />
+              </div>
+            </Panel>
+
+            {/* g. Suporte */}
+            <Panel title="Suporte" sub="E-mail, WhatsApp, Instagram e chat do app" href={link('support', '/admin/support')} linkLabel="Suporte">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+                <div>
+                  <div className="kpi-label">Chamados abertos</div>
+                  <div className="kpi-value" style={{ fontSize: '1.5rem', color: data.support.waitingOverSla ? 'var(--warn)' : undefined }}>{int(data.support.openTickets)}</div>
+                  <div className="kpi-context">
+                    {data.support.waitingOverSla ? `${data.support.waitingOverSla} esperando há mais de 2 h` : 'com atendente'}
+                    {data.support.withAi > 0 && ` · ${data.support.withAi} com a IA`}
+                  </div>
+                </div>
+                <div>
+                  <div className="kpi-label">Conversas na semana</div>
+                  <div className="kpi-value" style={{ fontSize: '1.5rem' }}>{int(data.support.week.total)}</div>
+                  <div className="kpi-context">{data.support.week.byChannel.length ? data.support.week.byChannel.map(c => `${c.label} ${c.count}`).join(' · ') : 'nenhuma nos últimos 7 dias'}</div>
+                </div>
+                <div>
+                  <div className="kpi-label">1ª resposta média</div>
+                  <div className="kpi-value" style={{ fontSize: '1.5rem' }}>{data.support.firstResponse.avgMinutes == null ? '—' : minutesFmt(data.support.firstResponse.avgMinutes)}</div>
+                  <div className="kpi-context">
+                    {data.support.firstResponse.samples === 0 ? 'sem conversas na semana'
+                      : data.support.firstResponse.allByAi ? 'todas respondidas pela IA'
+                      : `${data.support.firstResponse.samples} ${data.support.firstResponse.samples === 1 ? 'conversa' : 'conversas'} da semana`}
+                  </div>
+                </div>
+              </div>
+            </Panel>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

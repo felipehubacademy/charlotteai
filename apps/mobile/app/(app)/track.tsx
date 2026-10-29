@@ -13,6 +13,7 @@ import { ScreenHeader } from '@/components/stats/StatsUI';
 import { TrailBanner } from '@/components/trail/TrailBanner';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { useAuth } from '@/hooks/useAuth';
+import { useLearnProgressV2, type V2Level } from '@/hooks/useLearnProgressV2';
 import { systemIsPt } from '@/lib/systemLang';
 import { useTheme } from '@/lib/theme';
 import { extraTrack, EXTRA_TRACKS, unitImpression } from '@/lib/tracks';
@@ -31,10 +32,22 @@ export default function TrackScreen() {
   const tasteTitle = tasteUnit?.title;
   const tasteImpression = unitImpression(tasteUnit);
   const accent = LEVEL_ACCENT[track.id];
-  const startTaste = () => router.push({
-    pathname: '/(app)/learn-session',
-    params: { v: 'v2', level, moduleId: track.tasteUnit.moduleId, unitId: track.tasteUnit.unitId, activity: 'grammar' },
-  });
+  // O tópico grátis abre a parte que falta (Gramática → Listening & Speaking → Role-play → Guided Chat),
+  // como a trilha; antes abria sempre a Gramática e quem já tinha feito voltava para ela.
+  const progress = useLearnProgressV2(profile?.id, level as V2Level);
+  const { moduleId, unitId } = track.tasteUnit;
+  const grammarDone = progress.isActivityComplete(moduleId, unitId, 'grammar');
+  const startTaste = () => {
+    if (!grammarDone) {
+      router.push({ pathname: '/(app)/learn-session', params: { v: 'v2', level, moduleId, unitId, activity: 'grammar' } });
+    } else if (!progress.isActivityComplete(moduleId, unitId, 'speaking')) {
+      router.push({ pathname: '/(app)/learn-session', params: { v: 'v2', level, moduleId, unitId, activity: 'ls', intro: '1' } });
+    } else if (!progress.isActivityComplete(moduleId, unitId, 'roleplay')) {
+      router.push({ pathname: '/(app)/roleplay-exercise' as any, params: { level, moduleId, unitId } });
+    } else {
+      router.push({ pathname: '/(app)/guided-chat-exercise' as any, params: { level, moduleId, unitId } });
+    }
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: T.bg }}>
@@ -63,7 +76,7 @@ export default function TrackScreen() {
             </View>
             <TouchableOpacity activeOpacity={0.85} onPress={startTaste} accessibilityRole="button"
               style={{ marginTop: 14, borderRadius: 14, paddingVertical: 13, alignItems: 'center', backgroundColor: '#16131F' }}>
-              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFFFFF' }}>{isPt ? 'Começar agora' : 'Start now'}</AppText>
+              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFFFFF' }}>{grammarDone ? (isPt ? 'Continuar' : 'Continue') : (isPt ? 'Começar agora' : 'Start now')}</AppText>
             </TouchableOpacity>
           </View>
         ) : null}

@@ -26,6 +26,9 @@ import Purchases, {
 } from 'react-native-purchases';
 import { Platform } from 'react-native';
 import { supabase } from '@/lib/supabase';
+import Constants from 'expo-constants';
+
+const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
 // ── API Keys ──────────────────────────────────────────────────────────────────
 // Replace REVENUECAT_IOS_KEY and REVENUECAT_ANDROID_KEY with your actual keys
@@ -302,24 +305,23 @@ export async function syncSubscriptionToSupabase(
     return { updated: false, hasPremium: false };
   }
 
-  const update: Record<string, unknown> = {
-    subscription_status:     hasPremium ? (isCancelled ? 'cancelled' : 'active') : 'expired',
-    is_active:               hasPremium,
-    subscription_product:    hasPremium ? product : null,
-    subscription_expires_at: customerInfo.latestExpirationDate ?? null,
-    updated_at:              new Date().toISOString(),
-  };
-
-  const { error } = await supabase
-    .from('charlotte_users')
-    .update(update)
-    .eq('id', userId);
-
-  if (error) {
-    console.warn('[purchases] syncSubscriptionToSupabase error:', error.message);
+  // Quem grava a assinatura é o servidor, que confere direto na loja (a conta do aluno não aceita mais
+  // essa mudança vinda do app). `product` segue calculado acima só para o retorno local.
+  void product; void isCancelled;
+  try {
+    const { data } = await supabase.auth.getSession();
+    const token = data.session?.access_token;
+    const res = await fetch(`${API_BASE}/api/subscription/sync`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+    });
+    if (!res.ok) return { updated: false, hasPremium };
+    const j = await res.json() as { verified?: boolean };
+    return { updated: !!j.verified, hasPremium };
+  } catch (e) {
+    console.warn('[purchases] subscription sync error:', (e as Error).message);
     return { updated: false, hasPremium };
   }
-  return { updated: true, hasPremium };
 }
 
 // ── Teste grátis da loja ──────────────────────────────────────────────────────
