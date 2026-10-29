@@ -106,7 +106,7 @@ export default function UserCrmPage() {
   return (
     <div className="adm-page">
       <div className="adm-topbar">
-        <Link href="/admin" className="adm-btn-sm ghost"><ArrowLeft size={13} /> Usuários</Link>
+        <Link href="/admin/users" className="adm-btn-sm ghost"><ArrowLeft size={13} /> Usuários</Link>
         <div className="adm-topbar-title">{u.name ?? u.email} </div>
         <span className={`badge ${riskClass(data.risk.label)}`}>Risco {data.risk.label.toLowerCase()}{data.risk.label !== 'Perdido' ? ` · ${data.risk.score}` : ''}</span>
         {canLearning && <Link href={`/admin/learning/${id}`} className="adm-btn-sm ghost" style={{ marginLeft: 'auto' }}><GraduationCap size={13} /> Pedagógico</Link>}

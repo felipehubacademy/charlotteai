@@ -21,7 +21,8 @@ interface Data {
 }
 
 const HOME_OPTIONS = [
-  { href: '/admin', label: 'Usuários', area: 'users' },
+  { href: '/admin', label: 'Visão geral', area: 'metrics' },
+  { href: '/admin/users', label: 'Usuários', area: 'users' },
   { href: '/admin/learning', label: 'Pedagógico', area: 'learning' },
   { href: '/admin/support', label: 'Suporte', area: 'support' },
   { href: '/admin/finance', label: 'Financeiro', area: 'finance' },

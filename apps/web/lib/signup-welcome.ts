@@ -68,3 +68,23 @@ async function alertLate(supabase: ReturnType<typeof getSupabaseAdmin>): Promise
     url: '/admin', tag: 'signup_welcome_late', category: 'emails',
   });
 }
+
+/**
+ * Situação agora (para a Visão geral do /admin), na mesma regra do alerta acima, mas sem a janela de
+ * 5 minutos: cadastros das últimas 48 h com mais de 20 minutos e ainda sem o e-mail, e e-mails de
+ * boas-vindas parados na fila há mais de 20 minutos.
+ */
+export async function lateSignupWelcomes(): Promise<{ late: number; stuck: number }> {
+  const supabase = getSupabaseAdmin();
+  const from = new Date(Math.max(Date.parse(SIGNUP_WELCOME_FROM), Date.now() - 48 * 3600_000)).toISOString();
+  const to = new Date(Date.now() - 20 * 60_000).toISOString();
+  if (from >= to) return { late: 0, stuck: 0 };
+  const [{ count: late }, { count: stuck }] = await Promise.all([
+    supabase.from('charlotte_users').select('id', { count: 'exact', head: true })
+      .gte('created_at', from).lt('created_at', to).eq('subscription_status', 'none').eq('is_institutional', false)
+      .is('signup_welcome_sent_at', null),
+    supabase.from('email_outbox').select('id', { count: 'exact', head: true })
+      .in('kind', ['signup_welcome', 'trial_welcome']).is('sent_at', null).gte('created_at', from).lt('created_at', to),
+  ]);
+  return { late: late ?? 0, stuck: stuck ?? 0 };
+}
