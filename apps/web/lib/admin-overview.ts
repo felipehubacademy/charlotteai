@@ -251,8 +251,8 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   };
   const funnel30d = [
     { key: 'signups', label: 'Cadastros', count: f.signups, pctOfSignups: f.signups ? 100 : null, stepPct: null, stepOf: null },
-    { key: 'first', label: 'Fizeram a 1ª lição', count: f.first, pctOfSignups: pct(f.first, f.signups), stepPct: pct(f.first, f.signups), stepOf: 'dos cadastros' },
-    { key: 'trial', label: 'Começaram o teste grátis', count: f.trial, pctOfSignups: pct(f.trial, f.signups), stepPct: pct(f.trial, f.first), stepOf: 'de quem fez a 1ª lição' },
+    { key: 'first', label: 'Fizeram a 1ª atividade', count: f.first, pctOfSignups: pct(f.first, f.signups), stepPct: pct(f.first, f.signups), stepOf: 'dos cadastros' },
+    { key: 'trial', label: 'Começaram o teste grátis', count: f.trial, pctOfSignups: pct(f.trial, f.signups), stepPct: pct(f.trial, f.first), stepOf: 'de quem fez a 1ª atividade' },
     { key: 'paid', label: 'Pagantes', count: f.paid, pctOfSignups: pct(f.paid, f.signups), stepPct: pct(f.paid, f.trial), stepOf: 'de quem começou o teste' },
   ];
 
