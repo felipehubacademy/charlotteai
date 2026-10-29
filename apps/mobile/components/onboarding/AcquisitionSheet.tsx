@@ -1,11 +1,12 @@
-// "Como você conheceu o Queizy?" — pergunta única na tela inicial, logo depois da escolha da Família
-// (antes ficava no fim da 1ª atividade e metade das contas novas nunca chegava lá).
+// "Como você conheceu o Queizy?" — pergunta única na tela inicial, na volta da 1ª atividade concluída
+// (depois da escolha da Família). Desde a abertura nova (2026-10-29) a conta nova cai direto na 1ª lição,
+// então a pergunta vem depois da conquista, e não antes de o aluno fazer qualquer coisa.
 // Só para quem criou a conta pela loja (o servidor confere: sem resposta e sem checkout no site).
 // Obrigatória: um toque responde e fecha; não tem "Pular" nem fecha tocando fora.
 // Liga ao anúncio quem começou o teste pela loja, onde não há link com utm.
 // Sempre em português, qualquer que seja o idioma do aparelho (o público é brasileiro).
 import React, { useEffect, useRef, useState } from 'react';
-import { Modal, View, TouchableOpacity, Dimensions, Animated, Easing } from 'react-native';
+import { Modal, View, TouchableOpacity, Dimensions, Animated, Easing, Image } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
@@ -24,7 +25,7 @@ const OPTIONS: { id: string; label: string }[] = [
 ];
 
 /** Abre sozinho, com um pequeno atraso, quando `armed` vira true e o servidor diz que deve perguntar. */
-export function AcquisitionSheet({ armed }: { armed: boolean }) {
+export function AcquisitionSheet({ armed, onDone }: { armed: boolean; onDone?: () => void }) {
   const insets = useSafeAreaInsets();
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -39,13 +40,13 @@ export function AcquisitionSheet({ armed }: { armed: boolean }) {
     let cancelled = false;
     (async () => {
       const { data } = await supabase.rpc('acquisition_should_ask');
-      if (data !== true) return;
+      if (data !== true) { onDone?.(); return; }
       // Deixa a janela da Família terminar de fechar e espera alguma comemoração de conquista,
       // para não abrir por cima delas.
       await new Promise(r => setTimeout(r, 900));
       await waitForCelebration();
       if (!cancelled) setVisible(true);
-    })().catch(() => {});
+    })().catch(() => { onDone?.(); });
     return () => { cancelled = true; };
   }, [armed]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -68,6 +69,7 @@ export function AcquisitionSheet({ armed }: { armed: boolean }) {
     setVisible(false);
     supabase.rpc('answer_acquisition', { p_source: source }).then(() => {});
     track('acquisition_answered', { source });
+    setTimeout(() => onDone?.(), 400); // depois de a janela descer
   };
 
   if (!mounted) return null;
@@ -79,12 +81,17 @@ export function AcquisitionSheet({ armed }: { armed: boolean }) {
         <Animated.View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, transform: [{ translateY: sheetY }] }}>
           <View style={{ backgroundColor: '#FFFFFF', borderTopLeftRadius: 24, borderTopRightRadius: 24, paddingHorizontal: 24, paddingTop: 16, paddingBottom: 20 + insets.bottom }}>
             <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 18 }} />
-            <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center', marginBottom: 6 }}>
-              Como você conheceu o Queizy?
-            </AppText>
-            <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center', marginBottom: 18, lineHeight: 19 }}>
-              Um toque só. Ajuda a gente a te conhecer melhor.
-            </AppText>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 18 }}>
+              <Image source={require('@/assets/charlotte-avatar.png')} style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: C.navy }} />
+              <View style={{ flex: 1 }}>
+                <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy }}>
+                  Mandou bem! Uma curiosidade:
+                </AppText>
+                <AppText style={{ fontSize: 15, color: C.navyMid, marginTop: 2 }}>
+                  Como você conheceu o Queizy?
+                </AppText>
+              </View>
+            </View>
             <View style={{ gap: 8 }}>
               {OPTIONS.map(o => (
                 <TouchableOpacity key={o.id} onPress={() => answer(o.id)} activeOpacity={0.8}

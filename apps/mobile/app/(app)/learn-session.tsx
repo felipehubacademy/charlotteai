@@ -55,6 +55,7 @@ import BluetoothMicHint from '@/components/BluetoothMicHint';
 import { supabase } from '@/lib/supabase';
 import { appAlert } from '@/components/ui/AppAlert';
 import { goBack } from '@/lib/goBack';
+import { clearFirstLessonPending } from '@/lib/welcome';
 
 // ── Color helper — rgba() for Android hex+alpha compatibility ──
 function a(hex: string, alpha: number): string {
@@ -136,6 +137,7 @@ export default function LearnSessionScreen() {
     level: string; moduleIndex?: string; topicIndex?: string;
     // Trilha (v2): v=v2 + moduleId/unitId + activity
     v?: string; moduleId?: string; unitId?: string; activity?: string;
+    first?: string; // '1' = 1ª lição da conta, vinda da abertura (lib/welcome)
   }>();
   const level       = (params.level ?? 'Novice') as TrailLevel;
   const moduleIndex = parseInt(params.moduleIndex ?? '0', 10);
@@ -143,7 +145,8 @@ export default function LearnSessionScreen() {
   const isV2        = params.v === 'v2' && !!params.moduleId && !!params.unitId;
 
   const { profile, refreshProfile } = useAuth();
-  const { celebrateStreak } = useStreak();
+  const { celebrateStreak, status: streakStatus } = useStreak();
+  const firstLesson = params.first === '1';
   const userId      = profile?.id;
   const userLevel   = (profile?.charlotte_level ?? 'Novice') as string;
   // Camada de SUPORTE/chrome (enunciados, feedback, botões) segue o idioma do
@@ -239,6 +242,7 @@ export default function LearnSessionScreen() {
   const [isComplete, setIsComplete]   = useState(false);
   // Atividade concluída: a tela da sequência do dia (1x por dia, depois das conquistas).
   useEffect(() => { if (isComplete) celebrateStreak(); }, [isComplete]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (isComplete && firstLesson && userId) clearFirstLessonPending(userId); }, [isComplete, firstLesson, userId]);
   // Começou e largou: lesson_started ao abrir, lesson_abandoned ao sair sem terminar (em que passo parou).
   const isCompleteRef = useRef(false);
   isCompleteRef.current = isComplete;
@@ -1237,19 +1241,51 @@ export default function LearnSessionScreen() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'left', 'right']}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 }}>
-          <View style={{
-            width: 88, height: 88, borderRadius: 44,
-            backgroundColor: '#DCFF4A',
-            alignItems: 'center', justifyContent: 'center', marginBottom: 24,
-          }}>
-            <CheckCircle size={44} color={C.navy} weight="fill" />
-          </View>
+          {firstLesson ? (
+            // 1ª lição da conta: a Charlotte comemorando, de corpo inteiro.
+            <Image
+              source={require('@/assets/charlotte-cheer-full.webp')}
+              style={{ height: 220, aspectRatio: 420 / 868, marginBottom: 12 }}
+              contentFit="contain"
+              accessibilityLabel="Charlotte"
+            />
+          ) : (
+            <View style={{
+              width: 88, height: 88, borderRadius: 44,
+              backgroundColor: '#DCFF4A',
+              alignItems: 'center', justifyContent: 'center', marginBottom: 24,
+            }}>
+              <CheckCircle size={44} color={C.navy} weight="fill" />
+            </View>
+          )}
           <AppText display style={{ fontSize: 30, fontWeight: '800', color: C.navy, marginBottom: 8, textAlign: 'center' }}>
-            {isPortuguese ? 'Tópico concluído!' : 'Topic complete!'}
+            {firstLesson
+              ? (isPortuguese ? 'Primeira lição concluída!' : 'First lesson done!')
+              : (isPortuguese ? 'Tópico concluído!' : 'Topic complete!')}
           </AppText>
           <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, marginBottom: 14 }}>
-            {topicTitle}
+            {firstLesson
+              ? (isPortuguese ? 'Seu inglês começou hoje. Amanhã tem mais.' : 'Your English started today. More tomorrow.')
+              : topicTitle}
           </AppText>
+          {/* Desafio dos 7 dias aceito na abertura: o 1º dia já conta. */}
+          {firstLesson && streakStatus?.challenge?.status === 'active' && (
+            <View style={{ width: '100%', maxWidth: 360, backgroundColor: C.navy, borderRadius: 18, padding: 14, marginBottom: 14, gap: 10 }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <AppText display style={{ fontSize: 17, fontWeight: '800', color: '#FFF' }}>
+                  {isPortuguese ? `Dia ${Math.max(1, streakStatus.challenge.day)} de 7` : `Day ${Math.max(1, streakStatus.challenge.day)} of 7`}
+                </AppText>
+                <AppText style={{ fontSize: 12, fontWeight: '700', color: '#DCFF4A' }}>
+                  {isPortuguese ? 'Desafio dos 7 dias' : '7-day challenge'}
+                </AppText>
+              </View>
+              <View style={{ flexDirection: 'row', gap: 6 }}>
+                {Array.from({ length: 7 }, (_, i) => (
+                  <View key={i} style={{ flex: 1, height: 8, borderRadius: 4, backgroundColor: i < Math.max(1, streakStatus.challenge!.day) ? '#DCFF4A' : 'rgba(255,255,255,0.14)' }} />
+                ))}
+              </View>
+            </View>
+          )}
           {/* Destaque "na hora": o que esta sessão teve de especial. */}
           {(() => {
             const c = completedActivityScore;
@@ -1464,6 +1500,17 @@ export default function LearnSessionScreen() {
             </View>
             <QueizyWave progress={progress} height={14} strokeWidth={4} />
           </View>
+
+          {/* 1ª lição da conta: a Charlotte tranquiliza no 1º exercício. */}
+          {firstLesson && stepIdx === 0 && (
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: C.navy, borderRadius: 18, paddingVertical: 12, paddingHorizontal: 14, marginBottom: 16 }}>
+              <CharlotteAvatar size="md" />
+              <AppText style={{ flex: 1, fontSize: 14, lineHeight: 20, color: '#FFF' }}>
+                <AppText style={{ fontSize: 14, fontWeight: '800', color: '#DCFF4A' }}>{isPortuguese ? 'Sua primeira lição! ' : 'Your first lesson! '}</AppText>
+                {isPortuguese ? 'Errar faz parte. Se travar, toque em "Me ajuda" que eu explico.' : 'Mistakes are part of it. If you get stuck, tap "Help me" and I\'ll explain.'}
+              </AppText>
+            </View>
+          )}
 
           {/* ── GRAMMAR (full-screen, no card wrapper) ── */}
           {currentStep.kind === 'grammar' && (

@@ -214,6 +214,10 @@ export default function HomeTab() {
 
   // Uma coisa de cada vez (todos): 1ª abertura = só a Família; o convite do teste de nível vem depois da 1ª atividade.
   const [tasterDone, setTasterDone] = useState<number | null>(null);
+  // "Como você conheceu" (conta nova): na volta da 1ª atividade, depois da Família e antes do convite do teste de nível.
+  const askAcquisition = (profile?.created_at ?? '') >= '2026-10-27T00:00:00Z';
+  const [acquisitionDone, setAcquisitionDone] = useState(false);
+  const acquisitionArmed = askAcquisition && familyPickDone && familySheet === null && !loading && (tasterDone ?? 0) >= 1;
   useFocusEffect(useCallback(() => {
     if (!profile?.id) return;
     supabase.from('learn_history_v2').select('id', { count: 'exact', head: true })
@@ -227,6 +231,7 @@ export default function HomeTab() {
     // nunca empilhado com o aceite e a Família na primeira entrada. Na degustação, some ao fechar o tópico grátis
     // (aí a oferta da degustação já abre sozinha).
     if (tasterDone === null || tasterDone < 1 || (isTaster && tasterDone >= 4)) return;
+    if (askAcquisition && !acquisitionDone) return; // a pergunta de origem vem antes
     if (!placementKey) return;
     // Conta antiga que já fechou o convite na versão anterior (marcação por aparelho) não vê de novo.
     const legacy = profile?.created_at && profile.created_at < '2026-10-22T14:50:00Z'
@@ -237,7 +242,7 @@ export default function HomeTab() {
         return () => clearTimeout(t);
       }
     }).catch(() => {});
-  }, [loading, placementDone, familyPickDone, isTaster, tasterDone, placementKey, profile?.created_at]);
+  }, [loading, placementDone, familyPickDone, isTaster, tasterDone, placementKey, profile?.created_at, askAcquisition, acquisitionDone]);
 
   const dismissPlacementPrompt = useCallback(() => {
     setShowPlacementPrompt(false);
@@ -807,7 +812,7 @@ export default function HomeTab() {
           baseado no discriminator do evento. */}
       {/* "Como você conheceu o Queizy?": logo depois da escolha da Família, 1x por conta (o servidor decide).
           Só contas novas (desde que a pergunta existe), para não empilhar com o convite do teste de nível de quem já usa. */}
-      <AcquisitionSheet armed={familyPickDone && familySheet === null && !loading && (profile?.created_at ?? '') >= '2026-10-27T00:00:00Z'} />
+      <AcquisitionSheet armed={acquisitionArmed} onDone={() => setAcquisitionDone(true)} />
       <RankLeaderModal event={rankLeader} onClose={() => setRankLeader(null)} />
       <PromotionModal
         event={promotionEvent?.type === 'level-up' ? promotionEvent : null}

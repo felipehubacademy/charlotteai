@@ -6,10 +6,11 @@
  * Sempre em PT-BR — consentimento deve ser claro para todos os usuários.
  *
  * Armazena o consentimento em expo-secure-store (chave: ai_consent_v1).
- * Após aceitar, retorna à raiz do app via router.replace('/(app)').
+ * Após aceitar, retorna à raiz do app via router.replace('/(app)'); conta nova saindo da abertura
+ * (app/(app)/charlotte-intro.tsx) vai direto para a 1ª lição.
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View, ScrollView, TouchableOpacity,
   ActivityIndicator, Platform, Linking,
@@ -18,12 +19,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
 import * as Haptics from '@/lib/hapticsGated';
-import { ArrowRight, ShieldCheck, MicrophoneStage, SpeakerHigh, Brain } from 'phosphor-react-native';
+import { ChatCircle, SpeakerHigh, Microphone } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { saveAiConsent } from '@/lib/aiConsent';
 import { useAuth } from '@/hooks/useAuth';
 import { Image } from 'react-native';
 import { systemIsPt } from '@/lib/systemLang';
+import { isFirstLessonPending, firstLessonRoute } from '@/lib/welcome';
+import { track } from '@/lib/analytics';
 
 // Aviso legal/sistema: segue o idioma do aparelho.
 const isPt = systemIsPt;
@@ -48,31 +51,28 @@ const cardShadow = Platform.select({
 interface ServiceRowProps {
   icon: React.ReactNode;
   name: string;
-  purpose: string;
   data: string;
   last?: boolean;
 }
 
-function ServiceRow({ icon, name, purpose, data, last }: ServiceRowProps) {
+function ServiceRow({ icon, name, data, last }: ServiceRowProps) {
   return (
     <View style={{
-      flexDirection: 'row', alignItems: 'flex-start', gap: 12,
-      paddingVertical: 14,
+      flexDirection: 'row', alignItems: 'flex-start', gap: 14,
+      paddingVertical: 16,
       borderBottomWidth: last ? 0 : 1,
       borderBottomColor: C.border,
     }}>
       <View style={{
-        width: 36, height: 36, borderRadius: 10,
-        backgroundColor: C.greenBg,
+        width: 40, height: 40, borderRadius: 12,
+        backgroundColor: '#EEF9E4',
         alignItems: 'center', justifyContent: 'center',
-        marginTop: 1,
       }}>
         {icon}
       </View>
       <View style={{ flex: 1 }}>
-        <AppText style={{ fontSize: 14, fontWeight: '700', color: C.navy }}>{name}</AppText>
-        <AppText style={{ fontSize: 12, color: C.navyMid, marginTop: 2, lineHeight: 17 }}>{purpose}</AppText>
-        <AppText style={{ fontSize: 11, color: C.muted, marginTop: 3, lineHeight: 16 }}>{data}</AppText>
+        <AppText style={{ fontSize: 16, fontWeight: '700', color: C.navy }}>{name}</AppText>
+        <AppText style={{ fontSize: 14, color: C.navyMid, marginTop: 3, lineHeight: 20 }}>{data}</AppText>
       </View>
     </View>
   );
@@ -81,85 +81,67 @@ function ServiceRow({ icon, name, purpose, data, last }: ServiceRowProps) {
 export default function AIConsentScreen() {
   const { profile } = useAuth();
   const [loading, setLoading] = useState(false);
+  // Conta nova saindo da abertura (lib/welcome): daqui vai direto para a 1ª lição.
+  const [firstLesson, setFirstLesson] = useState(false);
+  useEffect(() => {
+    if (profile?.id) isFirstLessonPending(profile.id).then(setFirstLesson).catch(() => {});
+  }, [profile?.id]);
 
   const handleAccept = async () => {
     setLoading(true);
     await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     if (profile?.id) await saveAiConsent(profile.id);
-    router.replace('/(app)');
+    const lesson = firstLesson ? firstLessonRoute(profile?.charlotte_level) : null;
+    if (lesson) { track('welcome_first_lesson_open', {}); router.replace(lesson as any); }
+    else router.replace('/(app)');
   };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'bottom']}>
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 40 }}
+        contentContainerStyle={{ paddingBottom: 16 }}
         showsVerticalScrollIndicator={false}
       >
-        {/* Hero — ícone do Queizy */}
-        <View style={{ alignItems: 'center', paddingTop: 36, paddingBottom: 8 }}>
-          <Image source={require('@/assets/icon.png')} style={{ width: 88, height: 88, borderRadius: 22 }} accessibilityLabel="Queizy" />
-        </View>
-
-        {/* Título + subtítulo */}
-        <View style={{ alignItems: 'center', paddingHorizontal: 28, paddingTop: 16, paddingBottom: 8 }}>
-          <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
-            {isPt ? 'Tecnologias de IA' : 'AI technologies'}
-          </AppText>
-          <AppText style={{ fontSize: 13, color: C.navyMid, marginTop: 8, textAlign: 'center', lineHeight: 19 }}>
-            {isPt
-              ? 'O Queizy usa serviços de Inteligência Artificial para oferecer uma experiência de aprendizado personalizada, com a Charlotte como sua tutora.'
-              : 'Queizy uses Artificial Intelligence services to offer a personalized learning experience, with Charlotte as your tutor.'}
-          </AppText>
+        {/* A Charlotte explica, no mesmo balão da tela inicial */}
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, paddingHorizontal: 24, paddingTop: 28 }}>
+          <Image source={require('@/assets/charlotte-avatar.png')} style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: C.navy }} accessibilityLabel="Charlotte" />
+          <View style={{ flex: 1, backgroundColor: C.card, borderRadius: 20, borderBottomLeftRadius: 6, paddingHorizontal: 18, paddingVertical: 16, ...cardShadow }}>
+            <AppText display style={{ fontSize: 21, lineHeight: 26, fontWeight: '800', color: C.navy }}>
+              {isPt ? 'Rapidinho, antes de começar: como eu funciono.' : 'Real quick before we start: how I work.'}
+            </AppText>
+          </View>
         </View>
 
         {/* Card de serviços */}
-        <View style={{ paddingHorizontal: 24, marginTop: 20 }}>
-          <View style={{ backgroundColor: C.card, borderRadius: 16, paddingHorizontal: 16, ...cardShadow }}>
+        <View style={{ paddingHorizontal: 24, marginTop: 24 }}>
+          <View style={{ backgroundColor: C.card, borderRadius: 22, paddingHorizontal: 18, ...cardShadow }}>
             <ServiceRow
-              icon={<Brain size={18} color={C.greenDark} weight="duotone" />}
-              name={isPt ? 'Inteligência de linguagem' : 'Language intelligence'}
-              purpose={isPt
-                ? 'Gera explicações, exercícios e feedback personalizado nas conversas e na trilha de aprendizado.'
-                : 'Generates explanations, exercises and personalized feedback in conversations and on the learning path.'}
+              icon={<ChatCircle size={22} color={C.greenDark} weight="bold" />}
+              name={isPt ? 'Converso com inteligência artificial' : 'I talk using artificial intelligence'}
               data={isPt
-                ? 'Suas mensagens são enviadas a um provedor de IA para processamento. Nenhum dado é armazenado permanentemente após o processamento.'
-                : 'Your messages are sent to an AI provider for processing. No data is stored permanently after processing.'}
+                ? 'Suas mensagens vão para um provedor de IA só para gerar a resposta. Nada fica guardado lá.'
+                : 'Your messages go to an AI provider only to generate the reply. Nothing is kept there.'}
             />
             <ServiceRow
-              icon={<SpeakerHigh size={18} color={C.greenDark} weight="duotone" />}
-              name={isPt ? 'Síntese de voz' : 'Voice synthesis'}
-              purpose={isPt ? 'Converte texto em voz para as falas da Charlotte, sua tutora.' : 'Turns text into speech for Charlotte, your tutor.'}
-              data={isPt ? 'Apenas texto é enviado. Nenhuma informação pessoal é transmitida.' : 'Only text is sent. No personal information is transmitted.'}
+              icon={<SpeakerHigh size={22} color={C.greenDark} weight="bold" />}
+              name={isPt ? 'Minha voz é gerada por IA' : 'My voice is AI-generated'}
+              data={isPt ? 'Só o texto da fala é enviado, sem dados seus.' : 'Only the text of what I say is sent, none of your data.'}
             />
             <ServiceRow
-              icon={<MicrophoneStage size={18} color={C.greenDark} weight="duotone" />}
-              name={isPt ? 'Análise de pronúncia' : 'Pronunciation analysis'}
-              purpose={isPt ? 'Avalia sua pronúncia e reconhece sua voz nos exercícios.' : 'Scores your pronunciation and recognizes your voice in the exercises.'}
+              icon={<Microphone size={22} color={C.greenDark} weight="bold" />}
+              name={isPt ? 'Escuto sua pronúncia' : 'I listen to your pronunciation'}
               data={isPt
-                ? 'Áudio capturado pelo microfone é enviado a um serviço de análise de fala em tempo real e descartado logo em seguida.'
-                : 'Audio captured by the microphone is sent to a real-time speech analysis service and discarded right after.'}
+                ? 'O áudio do microfone é analisado na hora e descartado em seguida.'
+                : 'Microphone audio is analyzed on the spot and discarded right after.'}
               last
             />
           </View>
 
-          {/* Nota de proteção */}
-          <View style={{
-            flexDirection: 'row', alignItems: 'flex-start', gap: 10,
-            backgroundColor: C.greenBg, borderRadius: 12, padding: 14, marginTop: 16,
-          }}>
-            <ShieldCheck size={18} color={C.greenDark} weight="duotone" style={{ marginTop: 1 }} />
-            <AppText style={{ flex: 1, fontSize: 12, color: C.navyMid, lineHeight: 18 }}>
-              {isPt
-                ? 'Seus dados de aprendizado são armazenados com segurança em nossa infraestrutura. Nunca vendemos nem compartilhamos suas informações pessoais com terceiros.'
-                : 'Your learning data is stored securely on our infrastructure. We never sell or share your personal information with third parties.'}
-            </AppText>
-          </View>
-
           {/* Nota legal */}
-          <AppText style={{ fontSize: 12, color: C.muted, textAlign: 'center', lineHeight: 18, marginTop: 20, marginBottom: 24 }}>
+          <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center', lineHeight: 19, marginTop: 18, paddingHorizontal: 4 }}>
             {isPt
-              ? 'Ao continuar, você concorda com o uso dessas tecnologias conforme descrito acima e na nossa '
-              : 'By continuing, you agree to the use of these technologies as described above and in our '}
+              ? 'Nunca vendemos nem compartilhamos seus dados pessoais. Ao continuar, você concorda com isso e com a nossa '
+              : 'We never sell or share your personal data. By continuing, you agree to this and to our '}
             <AppText
               style={{ color: C.greenDark, textDecorationLine: 'underline' }}
               onPress={() => Linking.openURL('https://queizy.com/privacidade')}
@@ -168,29 +150,27 @@ export default function AIConsentScreen() {
             </AppText>
             .
           </AppText>
-
-          {/* Botão aceitar */}
-          <TouchableOpacity
-            onPress={handleAccept}
-            disabled={loading}
-            style={{
-              backgroundColor: loading ? `${C.green}80` : C.green,
-              borderRadius: 16, paddingVertical: 17,
-              flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
-            }}
-          >
-            {loading
-              ? <ActivityIndicator color={C.navy} size="small" />
-              : <>
-                  <AppText style={{ color: C.navy, fontWeight: '800', fontSize: 15 }}>
-                    {isPt ? 'Entendi e aceito' : 'I understand and accept'}
-                  </AppText>
-                  <ArrowRight size={16} color={C.navy} weight="bold" />
-                </>
-            }
-          </TouchableOpacity>
         </View>
       </ScrollView>
+
+      {/* Botão aceitar */}
+      <View style={{ paddingHorizontal: 24, paddingTop: 12, paddingBottom: 16 }}>
+        <TouchableOpacity
+          onPress={handleAccept}
+          disabled={loading}
+          activeOpacity={0.85}
+          style={{ backgroundColor: C.navy, borderRadius: 29, height: 58, alignItems: 'center', justifyContent: 'center' }}
+        >
+          {loading
+            ? <ActivityIndicator color={C.green} size="small" />
+            : <AppText display style={{ color: C.green, fontWeight: '800', fontSize: 17 }}>
+                {firstLesson
+                  ? (isPt ? 'Fechou, bora pra primeira lição!' : "Deal, let's do my first lesson!")
+                  : (isPt ? 'Fechou, bora!' : "Deal, let's go!")}
+              </AppText>
+          }
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }

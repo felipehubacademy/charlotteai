@@ -36,10 +36,13 @@ O X fecha o aviso; ele volta em alguns dias até você atualizar. Sua conta, seu
 `No topo das telas principais há três pílulas: o fogo laranja é a sequência (dias seguidos estudando), o raio verde é o XP total e o troféu é a posição no ranking do seu nível.
 Tocando nas pílulas abre a tela "Seu progresso", com o XP total, o XP ganho hoje ("+X hoje"), os dias seguidos, a posição no ranking, as conquistas, as metas e o ranking completo.
 O ranking completo tem duas abas: "Semana", com o XP desde segunda (zera toda segunda às 0h, horário de Brasília), e "Geral", com o XP total. Quem fica em 1º lugar, no Geral ou na semana, ganha uma comemoração no app e um card para compartilhar nas redes.` },
+  { section: 'Guia do app', question: 'O que acontece logo depois de criar a conta?', answer:
+`A Charlotte dá as boas-vindas (com voz) e você escolhe quanto tempo quer praticar por dia: 5, 10 ou 15 minutos. Em seguida aparece o seu plano de 7 dias seguidos: tocando em "Aceito o desafio", você entra no desafio dos 7 dias (veja "Como funciona a sequência (dias seguidos)?"). Depois vem o aviso de como a IA funciona no app e, de lá, você vai direto para a primeira lição.
+Se preferir, toque em "Pular" na primeira tela para ir direto ao aviso e à lição. Ao voltar para a tela inicial depois da primeira lição, o app pergunta quem vai te acompanhar (Família Queizy) e como você conheceu o Queizy.` },
   { section: 'Guia do app', question: 'Como funciona a sequência (dias seguidos)?', answer:
 `A sequência conta os dias seguidos em que você estuda: qualquer atividade que dá XP (trilha, Practice ou Vocabulário) vale o dia. Ao concluir a primeira atividade do dia, aparece a tela da sequência com a semana marcada.
 - Proteção da semana: se você faltar um dia, a sequência não zera, desde que volte no dia seguinte. Vale uma vez a cada 7 dias; o dia protegido aparece com um floco de neve na semana.
-- Desafio dos 7 dias: na tela da sequência, toque em "Aceitar o desafio". Praticando 7 dias seguidos a partir do aceite, você ganha 10 minutos de ligação por voz (uma vez por conta).
+- Desafio dos 7 dias: conta nova pode aceitar logo depois do cadastro, na tela "Seu plano" ("Aceito o desafio"); depois, na tela da sequência, toque em "Aceitar o desafio". Praticando 7 dias seguidos a partir do aceite, você ganha 10 minutos de ligação por voz (uma vez por conta).
 - Marcos: conquistas de 3, 7, 14, 30, 50, 100, 200, 365, 500, 730 e 1.000 dias seguidos.
 - Com amigos: em Estudar junto, cada amigo mostra os dias seguidos em que vocês dois praticaram.` },
   { section: 'Guia do app', question: 'Como ganho XP?', answer:
@@ -74,7 +77,7 @@ O app agenda as revisões: quando há palavras para revisar aparece "Revisar hoj
 O reporte chega para a equipe junto com o exercício e a sua resposta, e a gente corrige o que for preciso.` },
   { section: 'Guia do app', question: 'O que é a Família Queizy?', answer:
 `A Família Queizy reúne os personagens do app: a Charlotte (sua tutora) e o Igorfina, comediante e imitador. São personagens do Queizy: as respostas e as vozes deles são geradas por IA, na hora. As imitações do Igorfina também são personagens, não pessoas de verdade; quando ele imita, aparece o selo com o nome da imitação.
-- Para escolher quem te acompanha: no primeiro acesso, o app pergunta "Quem vai te acompanhar?" (o Igorfina já vem marcado; conta nova começa com ele). Para trocar depois, toque na foto ao lado da saudação, na tela inicial, ou vá em Perfil > Você no Queizy > Família Queizy e toque no cartão (o escolhido fica com o selo "Escolhido"). Quem está escolhido fala com você na tela inicial, atende quando você liga (ícone de telefone) e começa as conversas novas do Free Chat.
+- Para escolher quem te acompanha: na primeira vez que você chega à tela inicial (em conta nova, depois da primeira lição), o app pergunta "Quem vai te acompanhar?" (o Igorfina já vem marcado; conta nova começa com ele). Para trocar depois, toque na foto ao lado da saudação, na tela inicial, ou vá em Perfil > Você no Queizy > Família Queizy e toque no cartão (o escolhido fica com o selo "Escolhido"). Quem está escolhido fala com você na tela inicial, atende quando você liga (ícone de telefone) e começa as conversas novas do Free Chat.
 - No Free Chat, "Conversar com" troca com quem é aquela conversa. Cada conversa continua com quem ela foi começada.
 - O Igorfina tem uma trilha própria, o Manual do F#did@ (veja "O que é o Manual do F#did@?"). Ela aparece no cartão da trilha da tela inicial quando ele está escolhido, e no cartão dele na Família, em "Ver trilha".
 A trilha principal, a Gramática, a Pronúncia e o suporte são com a Charlotte.` },

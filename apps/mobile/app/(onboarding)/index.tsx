@@ -1,5 +1,5 @@
 // app/(onboarding)/index.tsx
-// 4-slide onboarding shown once on first launch (before login)
+// 3-slide onboarding shown once on first launch (before login)
 
 import React, { useRef, useState, useEffect } from 'react';
 import {
@@ -330,124 +330,14 @@ function SlideFamily({ active }: { active: boolean }) {
   );
 }
 
-// ── Slide 3 — Daily goal ──────────────────────────────────────────────────────
-
-const GOAL_OPTIONS = [
-  { label: '5 min',  value: 5,  sub: isPt ? 'Suave'    : 'Light'     },
-  { label: '10 min', value: 10, sub: 'Ideal'                            },
-  { label: '15 min', value: 15, sub: isPt ? 'Intenso'  : 'Intense'   },
-  { label: '20 min', value: 20, sub: isPt ? 'Dedicado' : 'Dedicated' },
-];
-
-function Slide3({ active, selectedGoal, onGoalSelect }: {
-  active: boolean;
-  selectedGoal: number;
-  onGoalSelect: (v: number) => void;
-}) {
-  const bubbleO = useRef(new Animated.Value(0)).current;
-  const bubbleY = useRef(new Animated.Value(10)).current;
-  const gridO   = useRef(new Animated.Value(0)).current;
-  const gridY   = useRef(new Animated.Value(14)).current;
-
-  useEffect(() => {
-    if (!active) return;
-    bubbleO.setValue(0); bubbleY.setValue(10); gridO.setValue(0); gridY.setValue(14);
-    Animated.parallel([
-      Animated.timing(bubbleO, { toValue: 1, duration: 350,              useNativeDriver: true }),
-      Animated.timing(bubbleY, { toValue: 0, duration: 350,              useNativeDriver: true }),
-      Animated.timing(gridO,   { toValue: 1, duration: 350, delay: 240,  useNativeDriver: true }),
-      Animated.timing(gridY,   { toValue: 0, duration: 350, delay: 240,  useNativeDriver: true }),
-    ]).start();
-  }, [active]);
-
-  const renderCard = (opt: typeof GOAL_OPTIONS[number]) => {
-    const isSelected = selectedGoal === opt.value;
-    return (
-      <TouchableOpacity
-        key={opt.value}
-        onPress={() => onGoalSelect(opt.value)}
-        activeOpacity={0.75}
-        style={{
-          flex: 1,
-          backgroundColor: isSelected ? C.navy : C.card,
-          borderRadius: 16,
-          borderWidth: 2,
-          borderColor: isSelected ? C.navy : C.border,
-          paddingVertical: 22,
-          alignItems: 'center',
-          ...C.shadow,
-        }}
-      >
-        <AppText style={{
-          fontSize: 22, fontWeight: '900', letterSpacing: -0.5,
-          color: isSelected ? C.green : C.navy,
-        }}>
-          {opt.label}
-        </AppText>
-        <AppText style={{
-          fontSize: 12, fontWeight: '600', marginTop: 3,
-          color: isSelected ? 'rgba(220,255,74,0.7)' : C.navyLight,
-        }}>
-          {opt.sub}
-        </AppText>
-      </TouchableOpacity>
-    );
-  };
-
-  return (
-    <View style={{ width: W, flex: 1, justifyContent: 'center', paddingHorizontal: 28 }}>
-
-      {/* Charlotte + balão no mesmo estilo da Home: balão branco com o
-          rabinho do logo apontando para o avatar. */}
-      <Animated.View style={{
-        opacity: bubbleO,
-        transform: [{ translateY: bubbleY }],
-        flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'center', gap: 8, marginBottom: 32,
-      }}>
-        <Image
-          source={require('@/assets/charlotte-avatar.png')}
-          style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: C.navy }}
-          accessibilityLabel="Charlotte"
-        />
-        <View style={{ maxWidth: '80%', marginBottom: 16 }}>
-          <View style={{
-            backgroundColor: C.card, borderRadius: 18,
-            paddingHorizontal: 16, paddingVertical: 13,
-            ...C.shadow,
-          }}>
-            <AppText display style={{ fontSize: 20, fontWeight: '800', color: C.navy, lineHeight: 25 }}>
-              {isPt ? 'Quanto tempo por dia você quer praticar?' : 'How much time a day do you want to practice?'}
-            </AppText>
-          </View>
-          <Svg width={20} height={14} viewBox="0 0 20 14" style={{ position: 'absolute', left: 8, bottom: -13 }}>
-            <Path d="M19 0 L0 14 L7 0 Z" fill={C.card} />
-          </Svg>
-        </View>
-      </Animated.View>
-
-      {/* Goal grid — 2 x 2 */}
-      <Animated.View style={{ opacity: gridO, transform: [{ translateY: gridY }], gap: 12 }}>
-        <View style={{ flexDirection: 'row', gap: 12 }}>
-          {GOAL_OPTIONS.slice(0, 2).map(renderCard)}
-        </View>
-        <View style={{ flexDirection: 'row', gap: 12 }}>
-          {GOAL_OPTIONS.slice(2, 4).map(renderCard)}
-        </View>
-      </Animated.View>
-
-    </View>
-  );
-}
-
 // ── Main ──────────────────────────────────────────────────────────────────────
 
-const TOTAL = 4;
+const TOTAL = 3;
 
 export default function OnboardingScreen() {
   const scrollRef = useRef<ScrollView>(null);
   const [slide, setSlide]           = useState(0);
   const [ready, setReady]           = useState(false);
-  const [selectedGoal, setSelectedGoal] = useState(10);
 
   const screenO = useRef(new Animated.Value(0)).current;
 
@@ -467,7 +357,6 @@ export default function OnboardingScreen() {
       scrollRef.current?.scrollTo({ x: (slide + 1) * W, animated: true });
     } else {
       await markOnboardingDone();
-      await SecureStore.setItemAsync('DAILY_GOAL_MINUTES', String(selectedGoal));
       goToSignup();
     }
   };
@@ -507,11 +396,7 @@ export default function OnboardingScreen() {
           <Slide1 />
           <Slide2 active={ready && slide === 1} />
           <SlideFamily active={ready && slide === 2} />
-          <Slide3
-            active={ready && slide === 3}
-            selectedGoal={selectedGoal}
-            onGoalSelect={setSelectedGoal}
-          />
+          {/* O ritmo do dia saiu daqui: agora é escolhido na abertura, depois do cadastro (app/(app)/charlotte-intro.tsx). */}
         </ScrollView>
 
         {/* Bottom bar */}

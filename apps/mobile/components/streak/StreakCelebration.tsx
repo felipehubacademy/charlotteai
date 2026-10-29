@@ -24,7 +24,7 @@ const ICE = '#7CC8FF';
 const WEEK_PT = ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'];
 const WEEK_EN = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
-function Flame({ size }: { size: number }) {
+export function Flame({ size }: { size: number }) {
   return (
     <Svg width={size} height={size * 1.2} viewBox="0 0 100 120">
       <Defs>
