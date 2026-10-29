@@ -13,6 +13,9 @@ import {
 } from '@/lib/purchases';
 import { deviceTimezone } from '@/lib/dateUtils';
 import { prefetchGreeting } from '@/lib/greetingCache';
+import Constants from 'expo-constants';
+
+const API_BASE_URL_AUTH = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
 export interface AuthContextType {
   session: Session | null;
@@ -372,6 +375,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       },
     });
     if (error) throw error;
+    // E-mail "Sua conta no Queizy está pronta" na hora (o servidor decide se cabe e manda uma vez só).
+    const token = data.session?.access_token;
+    if (token) {
+      fetch(`${API_BASE_URL_AUTH}/api/signup-welcome`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } }).catch(() => {});
+    }
     return { session: data.session };
   };
 

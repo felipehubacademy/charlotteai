@@ -1,5 +1,6 @@
 // lib/signup-welcome.ts — e-mail de "conta criada" para quem acabou de se cadastrar e está na degustação.
-// Roda junto do cron /api/cron/email-outbox (a cada 5 minutos). Uma vez por pessoa (signup_welcome_sent_at).
+// Sai na hora do cadastro (o app chama /api/signup-welcome); o cron /api/cron/email-outbox e a rotina de hora em
+// hora (/api/notifications/scheduler) pegam quem escapou. Uma vez por pessoa (signup_welcome_sent_at).
 // Quem já entrou com assinatura ou teste (site ou loja) não recebe: tem o e-mail próprio desses fluxos.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { signupWelcomeTemplate } from '@/lib/email-templates';
@@ -21,21 +22,29 @@ export async function sendSignupWelcomes(): Promise<{ sent: number }> {
     .limit(20);
   let sent = 0;
   for (const { id } of (data ?? []) as { id: string }[]) {
-    // Marca antes de enviar: duas rodadas ao mesmo tempo não mandam duas vezes.
-    const { data: u } = await supabase.from('charlotte_users')
-      .update({ signup_welcome_sent_at: new Date().toISOString() })
-      .eq('id', id).is('signup_welcome_sent_at', null)
-      .select('name, email').maybeSingle();
-    const row = u as { name: string | null; email: string | null } | null;
-    if (!row?.email) continue;
-    const first = (row.name ?? '').trim().split(/\s+/)[0] || row.email.split('@')[0];
-    const name = first.charAt(0).toLocaleUpperCase('pt-BR') + first.slice(1);
-    const { subject, html } = signupWelcomeTemplate({ name });
-    await sendOrQueue({ kind: 'signup_welcome', to: row.email, subject, html });
-    sent++;
+    if (await sendSignupWelcomeTo(id)) sent++;
   }
   await alertLate(supabase).catch(() => {});
   return { sent };
+}
+
+/** Envia o "conta criada" para esta conta, se ainda não recebeu e estiver na degustação. Uma vez só. */
+export async function sendSignupWelcomeTo(id: string): Promise<boolean> {
+  const supabase = getSupabaseAdmin();
+  // Marca antes de enviar: o cadastro, o cron e a rotina de hora em hora nunca mandam duas vezes.
+  const { data: u } = await supabase.from('charlotte_users')
+    .update({ signup_welcome_sent_at: new Date().toISOString() })
+    .eq('id', id).is('signup_welcome_sent_at', null)
+    .eq('subscription_status', 'none').eq('is_institutional', false)
+    .gte('created_at', SIGNUP_WELCOME_FROM)
+    .select('name, email').maybeSingle();
+  const row = u as { name: string | null; email: string | null } | null;
+  if (!row?.email) return false;
+  const first = (row.name ?? '').trim().split(/\s+/)[0] || row.email.split('@')[0];
+  const name = first.charAt(0).toLocaleUpperCase('pt-BR') + first.slice(1);
+  const { subject, html } = signupWelcomeTemplate({ name });
+  await sendOrQueue({ kind: 'signup_welcome', to: row.email, subject, html });
+  return true;
 }
 
 // Conferência automática: cadastro de 20 a 25 minutos atrás ainda sem o e-mail (ou com o envio preso na fila)
