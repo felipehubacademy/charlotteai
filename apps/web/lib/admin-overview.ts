@@ -91,6 +91,67 @@ export interface Overview {
   };
 }
 
+type UserRow = {
+  id: string; email: string | null; created_at: string; is_institutional: boolean | null; hide_from_ranking: boolean | null;
+  subscription_status: string | null; subscription_product: string | null; subscription_expires_at: string | null; trial_ends_at: string | null;
+};
+type RevRow = { app_user_id: string; event_type: string; store: string | null; price_purchased: number | null; gross_brl: number | null; net_brl: number | null; purchased_at: string | null; created_at: string | null };
+type CkRow = { user_id: string; value_brl: number; trial_days: number | null; status: string; asaas_payment_id: string | null; paid_at: string | null; refunded_at: string | null; created_at: string };
+
+/** Usuários (sem a equipe) divididos em grupos que somam o total. Usado pela visão geral e pela atualização rápida. */
+function partitionUsers(usersAll: UserRow[], revAll: RevRow[], ckAll: CkRow[], nowMs: number) {
+  const today = brtDay(nowMs);
+  // ── Equipe fora ──────────────────────────────────────────────────────────
+    const teamIds = new Set(usersAll.filter(isTeamAccount).map(u => String(u.id)));
+    const notTeam = (id: string | null | undefined) => !!id && !teamIds.has(String(id));
+    const users = usersAll.filter(u => notTeam(u.id));
+    const rev = revAll.filter(r => notTeam(r.app_user_id));
+    const cks = ckAll.filter(c => notTeam(c.user_id));
+
+    // ── Situação de cada conta (mesma regra de Métricas e Usuários) ──────────
+    const { firstChargeAt, siteCk } = chargeIndex(rev, cks);
+    const kindOf = new Map<string, SubKind>(users.map(u => [String(u.id), subscriptionKind(u, firstChargeAt.has(String(u.id)), nowMs)]));
+    const kind = (u: UserRow) => kindOf.get(String(u.id)) ?? null;
+    const isTaster = (u: UserRow) => !u.subscription_status || u.subscription_status === 'none';
+
+    // Grupos que somam o total: cada conta cai em exatamente um.
+    const tasters = users.filter(isTaster);
+    const trial = users.filter(u => !isTaster(u) && isTrialKind(kind(u)));
+    const paying = users.filter(u => !isTaster(u) && isPaidKind(kind(u)));
+    const noAccess = users.filter(u => !isTaster(u) && !isTrialKind(kind(u)) && !isPaidKind(kind(u)));
+
+    const createdDay = (u: UserRow) => brtDay(ms(u.created_at));
+    const usersBlock = {
+      total: users.length,
+      newToday: users.filter(u => createdDay(u) === today).length,
+      new30d: users.filter(u => createdDay(u) >= today - 29).length,
+      taste: tasters.length,
+      trial: trial.length,
+      trialCancelled: trial.filter(u => u.subscription_status === 'cancelled').length,
+      trialStore: trial.filter(u => kind(u) === 'trial_store').length,
+      trialSite: trial.filter(u => kind(u) === 'trial_site').length,
+      trialLegacy: trial.filter(u => kind(u) === 'trial_legacy').length,
+      paying: paying.length,
+      payingCancelled: paying.filter(u => u.subscription_status === 'cancelled').length,
+      noAccess: noAccess.length,
+    };
+  return { users, rev, cks, notTeam, kind, isTaster, usersBlock, firstChargeAt, siteCk, trial, paying, tasters, noAccess };
+}
+
+/** Só o bloco de usuários (consulta leve), para a tela atualizar a cada poucos segundos. */
+export async function computeUsersBlock(nowMs = Date.now()) {
+  const supabase = getSupabaseAdmin();
+  const [usersAll, revAll, ckAll] = await Promise.all([
+    paged<UserRow>((a, b) => supabase.from('charlotte_users')
+      .select('id, email, created_at, is_institutional, hide_from_ranking, subscription_status, subscription_product, subscription_expires_at, trial_ends_at')
+      .order('id').range(a, b)),
+    paged<RevRow>((a, b) => supabase.from('revenue_events').select('app_user_id, event_type, store, price_purchased, gross_brl, net_brl, purchased_at, created_at').order('id').range(a, b)),
+    paged<CkRow>((a, b) => supabase.from('asaas_checkouts').select('user_id, value_brl, trial_days, status, asaas_payment_id, paid_at, refunded_at, created_at')
+      .eq('sandbox', false).order('created_at', { ascending: true }).order('id').range(a, b)),
+  ]);
+  return { generatedAt: new Date(nowMs).toISOString(), users: partitionUsers(usersAll, revAll, ckAll, nowMs).usersBlock };
+}
+
 export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   const supabase = getSupabaseAdmin();
   const today = brtDay(nowMs);
@@ -99,12 +160,6 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   const practicesFrom = iso(brtDayStart(today - 30));
   const weekAgo = iso(nowMs - 7 * DAY);
 
-  type UserRow = {
-    id: string; email: string | null; created_at: string; is_institutional: boolean | null; hide_from_ranking: boolean | null;
-    subscription_status: string | null; subscription_product: string | null; subscription_expires_at: string | null; trial_ends_at: string | null;
-  };
-  type RevRow = { app_user_id: string; event_type: string; store: string | null; price_purchased: number | null; gross_brl: number | null; net_brl: number | null; purchased_at: string | null; created_at: string | null };
-  type CkRow = { user_id: string; value_brl: number; trial_days: number | null; status: string; asaas_payment_id: string | null; paid_at: string | null; refunded_at: string | null; created_at: string };
   type ConvRow = { id: string; channel: string; status: string; created_at: string; last_inbound_at: string | null };
   type MsgRow = { conversation_id: string; direction: string; author: string | null; created_at: string };
 
@@ -142,40 +197,8 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     lateSignupWelcomes().catch(() => ({ late: 0, stuck: 0 })),
   ]);
 
-  // ── Equipe fora ──────────────────────────────────────────────────────────
-  const teamIds = new Set(usersAll.filter(isTeamAccount).map(u => String(u.id)));
-  const notTeam = (id: string | null | undefined) => !!id && !teamIds.has(String(id));
-  const users = usersAll.filter(u => notTeam(u.id));
-  const rev = revAll.filter(r => notTeam(r.app_user_id));
-  const cks = ckAll.filter(c => notTeam(c.user_id));
-
-  // ── Situação de cada conta (mesma regra de Métricas e Usuários) ──────────
-  const { firstChargeAt, siteCk } = chargeIndex(rev, cks);
-  const kindOf = new Map<string, SubKind>(users.map(u => [String(u.id), subscriptionKind(u, firstChargeAt.has(String(u.id)), nowMs)]));
-  const kind = (u: UserRow) => kindOf.get(String(u.id)) ?? null;
-  const isTaster = (u: UserRow) => !u.subscription_status || u.subscription_status === 'none';
-
-  // Grupos que somam o total: cada conta cai em exatamente um.
-  const tasters = users.filter(isTaster);
-  const trial = users.filter(u => !isTaster(u) && isTrialKind(kind(u)));
-  const paying = users.filter(u => !isTaster(u) && isPaidKind(kind(u)));
-  const noAccess = users.filter(u => !isTaster(u) && !isTrialKind(kind(u)) && !isPaidKind(kind(u)));
-
+  const { users, rev, cks, notTeam, kind, isTaster, usersBlock, firstChargeAt, siteCk, trial, paying } = partitionUsers(usersAll, revAll, ckAll, nowMs);
   const createdDay = (u: UserRow) => brtDay(ms(u.created_at));
-  const usersBlock = {
-    total: users.length,
-    newToday: users.filter(u => createdDay(u) === today).length,
-    new30d: users.filter(u => createdDay(u) >= today - 29).length,
-    taste: tasters.length,
-    trial: trial.length,
-    trialCancelled: trial.filter(u => u.subscription_status === 'cancelled').length,
-    trialStore: trial.filter(u => kind(u) === 'trial_store').length,
-    trialSite: trial.filter(u => kind(u) === 'trial_site').length,
-    trialLegacy: trial.filter(u => kind(u) === 'trial_legacy').length,
-    paying: paying.length,
-    payingCancelled: paying.filter(u => u.subscription_status === 'cancelled').length,
-    noAccess: noAccess.length,
-  };
 
   // ── Atividade por dia (usuários ativos = fez alguma atividade no dia) ─────
   const activeOnDay = new Map<number, Set<string>>();
@@ -412,7 +435,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   if (usage) {
     const costByDay = new Map<number, number>();
     for (const r of usage) {
-      if (r.user_id && teamIds.has(String(r.user_id))) continue; // equipe fora, como em Métricas
+      if (r.user_id && !notTeam(r.user_id)) continue; // equipe fora, como em Métricas
       const d = brtDay(ms(r.created_at));
       costByDay.set(d, (costByDay.get(d) ?? 0) + Number(r.cost_usd || 0));
     }

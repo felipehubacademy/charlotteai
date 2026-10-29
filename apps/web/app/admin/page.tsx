@@ -10,7 +10,9 @@ import { useAdminMe, canArea } from '@/lib/admin-context';
 import AdminLoading from '@/components/admin/AdminLoading';
 import type { Overview, TodayMetric, DayPoint } from '@/lib/admin-overview';
 
-const AUTO_REFRESH_MS = 30_000;
+// Usuários (consulta leve) a cada 5 s; o resto da tela (lê as atividades de 30 dias) a cada 60 s.
+const USERS_REFRESH_MS = 5_000;
+const AUTO_REFRESH_MS = 60_000;
 
 // ── Formatação ───────────────────────────────────────────────────────────────
 const int = (n: number) => n.toLocaleString('pt-BR');
@@ -117,13 +119,23 @@ export default function AdminOverviewPage() {
     finally { if (!silent) setLoading(false); }
   }, []);
   useEffect(() => { load(); }, [load]);
-  // Atualiza sozinha: a cada 30 s com a aba aberta e na hora em que a aba volta a ficar visível.
+  // Atualiza sozinha com a aba aberta: usuários a cada 5 s, o resto a cada 60 s; tudo na hora em que a aba volta.
+  const loadUsers = useCallback(async () => {
+    try {
+      const res = await fetch('/api/admin/overview?part=users', { cache: 'no-store' });
+      if (!res.ok) return;
+      const j = await res.json() as { generatedAt: string; users: Overview['users'] };
+      setData(d => (d ? { ...d, users: j.users, generatedAt: j.generatedAt } : d));
+    } catch { /* tenta de novo no próximo ciclo */ }
+  }, []);
   useEffect(() => {
-    const tick = () => { if (document.visibilityState === 'visible') load(true); };
-    const id = setInterval(tick, AUTO_REFRESH_MS);
-    document.addEventListener('visibilitychange', tick);
-    return () => { clearInterval(id); document.removeEventListener('visibilitychange', tick); };
-  }, [load]);
+    const visible = () => document.visibilityState === 'visible';
+    const fast = setInterval(() => { if (visible()) loadUsers(); }, USERS_REFRESH_MS);
+    const slow = setInterval(() => { if (visible()) load(true); }, AUTO_REFRESH_MS);
+    const onVisible = () => { if (visible()) load(true); };
+    document.addEventListener('visibilitychange', onVisible);
+    return () => { clearInterval(fast); clearInterval(slow); document.removeEventListener('visibilitychange', onVisible); };
+  }, [load, loadUsers]);
 
   if (loading && !data && !error) return <AdminLoading label="Carregando a visão geral…" />;
 
@@ -137,7 +149,7 @@ export default function AdminOverviewPage() {
       <div className="adm-topbar">
         <div style={{ flex: 1, minWidth: 0 }}>
           <div className="adm-topbar-title">Visão geral</div>
-          {data && <div className="adm-topbar-sub">Dados até {hhmm(data.generatedAt)} · atualiza sozinha a cada 30 s</div>}
+          {data && <div className="adm-topbar-sub">Dados até {hhmm(data.generatedAt)} · atualiza sozinha (usuários a cada 5 s)</div>}
         </div>
         <button onClick={() => load()} disabled={loading} className="adm-btn-sm ghost">
           <RefreshCw size={13} style={{ animation: loading ? 'spin 1s linear infinite' : 'none' }} />

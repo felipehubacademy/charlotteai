@@ -8,7 +8,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
-type Sub = { expires_date: string | null; period_type?: string; unsubscribe_detected_at?: string | null; store?: string };
+type Sub = { expires_date: string | null; period_type?: string; unsubscribe_detected_at?: string | null; billing_issues_detected_at?: string | null; store?: string };
 
 export async function GET(req: NextRequest) {
   const admin = await requireAdmin(req, 'finance');
@@ -42,7 +42,8 @@ export async function GET(req: NextRequest) {
       const u = db.get(id);
       const dbActive = !!u && ['active', 'cancelled'].includes(u.subscription_status) && !!u.subscription_expires_at && new Date(u.subscription_expires_at).getTime() > now;
       const dbCancelled = u?.subscription_status === 'cancelled';
-      const rcCancelled = !!sub?.unsubscribe_detected_at;
+      // Cobrança recusada (período de carência da loja) também não renova: no banco fica 'cancelled' até o fim da carência.
+      const rcCancelled = !!sub?.unsubscribe_detected_at || !!sub?.billing_issues_detected_at;
       if (active !== dbActive || (active && rcCancelled !== dbCancelled)) {
         mismatches.push({
           id, email: u?.email ?? null, name: u?.name ?? null,

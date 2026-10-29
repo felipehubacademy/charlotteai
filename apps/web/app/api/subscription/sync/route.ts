@@ -13,7 +13,7 @@ const PRODUCT_YEARLY = 'com.hubacademy.charlotte.yearly';
 type RcSubscriber = {
   subscriber?: {
     entitlements?: Record<string, { expires_date: string | null; product_identifier?: string }>;
-    subscriptions?: Record<string, { unsubscribe_detected_at?: string | null }>;
+    subscriptions?: Record<string, { unsubscribe_detected_at?: string | null; billing_issues_detected_at?: string | null }>;
   };
 };
 
@@ -48,7 +48,9 @@ export async function POST(req: NextRequest) {
   const expiresAt = ent?.expires_date ?? null;
   const hasPremium = !!ent && (!expiresAt || new Date(expiresAt).getTime() > Date.now());
   const productId = ent?.product_identifier ?? '';
-  const willRenew = !j.subscriber?.subscriptions?.[productId]?.unsubscribe_detected_at;
+  const subInfo = j.subscriber?.subscriptions?.[productId];
+  // Cobrança recusada (carência da loja) também não renova, como cancelamento.
+  const willRenew = !subInfo?.unsubscribe_detected_at && !subInfo?.billing_issues_detected_at;
   const product = productId.startsWith(PRODUCT_MONTHLY) ? 'monthly' : productId.startsWith(PRODUCT_YEARLY) ? 'yearly' : null;
 
   const hadPaid = ['active', 'cancelled', 'expired'].includes(user.subscription_status ?? '');
