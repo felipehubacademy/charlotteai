@@ -391,8 +391,8 @@ export function PaywallModal() {
   const reasonLine = !isTaster ? null
     : paywallReason === 'placement'
     ? (isPt
-        ? 'O teste de nível faz parte do plano completo: ele descobre seu nível e monta a trilha certa para você.'
-        : 'The level test is part of the full plan: it finds your level and sets up the right path for you.')
+        ? `Seu nível é ${profile?.charlotte_level ?? 'Novice'}. Comece os 7 dias grátis para seguir sua trilha no nível certo.`
+        : `Your level is ${profile?.charlotte_level ?? 'Novice'}. Start your 7-day free trial to follow your path at the right level.`)
     : paywallReason === 'taste_today'
     ? (isPt
         ? 'Amanhã libera mais um tópico grátis. Ou comece os 7 dias grátis e siga agora, sem esperar.'

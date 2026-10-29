@@ -251,8 +251,6 @@ export default function HomeTab() {
 
   const handleTakePlacement = useCallback(() => {
     dismissPlacementPrompt();
-    // Degustação: o teste de nível é do plano pago. Abre a oferta com essa frase (X / "Continuar na degustação").
-    if (isTaster) { openPaywall('placement'); return; }
     // direct=1: já escolheu fazer o teste no pop → pula o intro do placement.
     router.push('/(app)/placement-test?direct=1');
   }, [dismissPlacementPrompt, isTaster, openPaywall]);

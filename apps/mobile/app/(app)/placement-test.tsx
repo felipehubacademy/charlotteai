@@ -317,14 +317,8 @@ type BlockNum = 1 | 2 | 3;
 
 export default function PlacementTestScreen() {
   const { session, refreshProfile, profile, isTaster } = useAuth();
-  // Degustação: o teste de nível faz parte do plano pago. Volta e abre o paywall (com a frase do teste de nível e o X
-  // para seguir na degustação).
+  // Degustação: o teste é livre; a oferta vem depois do resultado ("seguir no nível certo"), não antes.
   const { openPaywall } = usePaywallContext();
-  useEffect(() => {
-    if (!isTaster) return;
-    if (router.canGoBack()) router.back(); else router.replace('/(app)/(tabs)' as any);
-    openPaywall('placement');
-  }, [isTaster, openPaywall]);
   const { toggle: toggleAudio, playingMessageId, stop: stopAudio } = useMessageAudioPlayer();
 
   const firstName = (profile?.name ?? '').split(' ')[0] || (systemIsPt ? 'você' : 'you');
@@ -578,6 +572,11 @@ export default function PlacementTestScreen() {
       level={level}
       firstName={firstName}
       saveError={saveError}
+      offer={isTaster}
+      onOffer={() => {
+        router.replace('/(app)/(tabs)');
+        refreshProfile().catch(() => {}).finally(() => openPaywall('placement'));
+      }}
       onFinish={() => {
         // Navigate first, then refresh profile in background.
         // Fase 1: vindo do pop da Home ou do "Refazer teste" (direct=1), o
@@ -992,9 +991,11 @@ function SavingScreen() {
 // ── Result screen ──────────────────────────────────────────────────────────────
 
 function ResultScreen({
-  level, firstName, saveError, onFinish,
+  level, firstName, saveError, onFinish, offer, onOffer,
 }: {
   level: Level; firstName: string; saveError: string | null; onFinish: () => void;
+  /** Degustação: o botão principal leva à oferta dos 7 dias grátis; "Agora não" segue na degustação. */
+  offer?: boolean; onOffer?: () => void;
 }) {
   const meta   = LEVEL_META[level];
   const insets = useSafeAreaInsets();
@@ -1079,17 +1080,33 @@ function ResultScreen({
             <View style={{ height: 32 }} />
 
             {/* CTA */}
+            {offer && (
+              <AppText style={{ fontSize: 15, fontWeight: '700', color: C.navy, textAlign: 'center', lineHeight: 22, marginBottom: 14 }}>
+                {systemIsPt
+                  ? `Seu nível é ${level}. Comece os 7 dias grátis para seguir sua trilha no nível certo.`
+                  : `Your level is ${level}. Start your 7-day free trial to follow your path at the right level.`}
+              </AppText>
+            )}
             <TouchableOpacity
-              onPress={onFinish}
+              onPress={offer && onOffer ? onOffer : onFinish}
               activeOpacity={0.85}
               style={{
                 backgroundColor: C.green, borderRadius: 16, paddingVertical: 17,
                 flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
               }}
             >
-              <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>{systemIsPt ? 'Começar a aprender' : 'Start learning'}</AppText>
+              <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>
+                {offer
+                  ? (systemIsPt ? 'Começar os 7 dias grátis' : 'Start my 7-day free trial')
+                  : (systemIsPt ? 'Começar a aprender' : 'Start learning')}
+              </AppText>
               <ArrowRight size={18} color={C.navy} weight="bold" />
             </TouchableOpacity>
+            {offer && (
+              <TouchableOpacity onPress={onFinish} activeOpacity={0.7} style={{ alignSelf: 'center', paddingVertical: 14, paddingHorizontal: 20, marginTop: 4 }}>
+                <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navyMid }}>{systemIsPt ? 'Agora não' : 'Not now'}</AppText>
+              </TouchableOpacity>
+            )}
           </ScrollView>
         </View>
 
