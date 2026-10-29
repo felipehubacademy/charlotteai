@@ -14,7 +14,7 @@ import { aiFetch, transcribeModel, transcribedSeconds } from '@/lib/ai-models';
 import { judgeObjectives } from '@/lib/objective-judge';
 import { logOpenAIUsage, logElevenLabsUsage } from '@/lib/openai-usage';
 import { speak } from '@/lib/charlotte-voice';
-import { characterOf, voiceFor, impressionFromOutfit, wholeActivityImpressionStyle } from '@/lib/characters';
+import { characterOf, voiceSegments, impressionFromOutfit, wholeActivityImpressionStyle, concatMp3 } from '@/lib/characters';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -53,6 +53,13 @@ interface Payload {
   next_objective_id?: number;
   /** Primeiro nome do aluno (Charlotte ja conhece, nao perguntar de novo). */
   user_name?: string | null;
+}
+
+/** Dica de vocabulário para a transcrição: nomes que podem aparecer na fala do aluno. */
+function transcriptionHint(userName?: string | null, persona?: string): string {
+  const first = (userName ?? '').trim().split(/\s+/)[0];
+  const names = [first, persona].filter(Boolean).join(', ');
+  return `A Brazilian student practicing English${names ? `. Names that may be said: ${names}` : ''}. Transcribe exactly what was said, keeping names as they are.`;
 }
 
 // ── Build system prompt with hidden objectives injection ───────────
@@ -342,17 +349,21 @@ Rules for Igorfina in this activity:
 
 async function ttsIgorfina(text: string, userId?: string, outfit?: string): Promise<{ audio: Buffer; mime: string }> {
   // Atividade com imitação (persona_outfit igorfina_president/hoops): a voz da imitação.
-  const voice = voiceFor(characterOf('igorfina'), impressionFromOutfit(outfit));
+  // Português na voz em português do Igor, inglês na voz normal (imitação: tudo na voz dela).
+  const segs = voiceSegments(characterOf('igorfina'), impressionFromOutfit(outfit), text);
   const key = process.env.ELEVENLABS_API_KEY;
-  if (!voice || !key) throw new Error('voz do Igorfina indisponível');
-  const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice.voiceId}?output_format=mp3_44100_128`, {
-    method: 'POST',
-    headers: { 'xi-api-key': key, 'Content-Type': 'application/json', Accept: 'audio/mpeg' },
-    body: JSON.stringify({ text, model_id: 'eleven_multilingual_v2', voice_settings: voice.settings }),
-  });
-  if (!res.ok) throw new Error(`ElevenLabs ${res.status}: ${await res.text()}`);
+  if (!segs.length || !key) throw new Error('voz do Igorfina indisponível');
+  const parts = await Promise.all(segs.map(async sg => {
+    const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${sg.voiceId}?output_format=mp3_44100_128`, {
+      method: 'POST',
+      headers: { 'xi-api-key': key, 'Content-Type': 'application/json', Accept: 'audio/mpeg' },
+      body: JSON.stringify({ text: sg.text, model_id: 'eleven_multilingual_v2', voice_settings: sg.settings }),
+    });
+    if (!res.ok) throw new Error(`ElevenLabs ${res.status}: ${await res.text()}`);
+    return Buffer.from(await res.arrayBuffer());
+  }));
   logElevenLabsUsage({ endpoint: '/api/roleplay/turn:tts', charCount: text.length, model: 'eleven_multilingual_v2', userId: userId ?? undefined, meta: { character: 'igorfina' } });
-  return { audio: Buffer.from(await res.arrayBuffer()), mime: 'audio/mpeg' };
+  return { audio: concatMp3(parts), mime: 'audio/mpeg' };
 }
 
 /** Fala do personagem: Igorfina na voz dele (se falhar, cai na voz padrão); o resto, OpenAI. */
@@ -398,12 +409,22 @@ export async function POST(request: NextRequest) {
 
     // 1) Whisper STT
     const t0 = Date.now();
-    const transcription = await openai.audio.transcriptions.create({
-      file:     audio,
-      model:    transcribeModel(),
-      language: 'en',
-    });
-    const userTranscript = transcription.text;
+    // Áudio ilegível (corrompido, curto demais ou formato que o serviço recusa): trata como "não ouvi" e
+    // pede para repetir, em vez de devolver erro (o aluno ficava só com uma vibração e um balão vazio).
+    let transcription: Awaited<ReturnType<typeof openai.audio.transcriptions.create>> | null = null;
+    try {
+      transcription = await openai.audio.transcriptions.create({
+        file:     audio,
+        model:    transcribeModel(),
+        language: 'en',
+        // Nomes próprios (o do aluno costuma ser em português) como dica: sem isso "I'm Felipe" virava "Amphilippe".
+        prompt:   transcriptionHint(user_name, rp.persona),
+      });
+    } catch (e: any) {
+      if (e?.status !== 400) throw e;
+      console.warn('[roleplay/turn] áudio ilegível, pedindo para repetir:', e?.message);
+    }
+    const userTranscript = transcription?.text ?? '';
 
     // Whisper hallucinations comuns em audio silencioso/curto. Se cair em
     // uma dessas, devolve direto pedindo pra repetir (não desperdiça LLM/TTS).
@@ -420,13 +441,15 @@ export async function POST(request: NextRequest) {
         objectives_met:      [],
         status:              'continue',
         persona:             rp.persona,
+        // Não ouviu (silêncio, áudio vazio ou ilegível): o app não conta como a tentativa do aluno.
+        retry:               true,
       });
     }
 
     logOpenAIUsage({
       endpoint:     '/api/roleplay/turn:whisper',
       model:        transcribeModel(),
-      audioSeconds: transcribedSeconds(transcription),
+      audioSeconds: transcription ? transcribedSeconds(transcription) : 0,
       userId,
       meta:     { ms: Date.now() - t0 },
     });
@@ -529,11 +552,14 @@ export async function POST(request: NextRequest) {
     // (ou contem) o hint_en de algum obj pendente, MARCA esse obj.
     // Garantia: scaffold copiado SEMPRE passa, independe do LLM.
     {
-      const msgNorm = (userTranscript || '').toLowerCase().replace(/[''']/g, "'").trim();
+      // Sem pontuação nos dois lados: a transcrição da fala troca "!" por "." e tira vírgulas.
+      const scaffoldNorm = (t: string) => t.toLowerCase().replace(/[\u2018\u2019\u02BC`]/g, "'")
+        .replace(/[.,!?;:"\u201C\u201D\u2014\u2013…]/g, ' ').replace(/\s+/g, ' ').trim();
+      const msgNorm = scaffoldNorm((userTranscript || ''));
       const pending = rp.objectives.filter(o => !objectivesMet.includes(o.id));
       for (const o of pending) {
         if (!o.hint_en) continue;
-        const hintNorm = o.hint_en.toLowerCase().replace(/[''']/g, "'").trim();
+        const hintNorm = scaffoldNorm(o.hint_en);
         if (hintNorm.length >= 4 && (msgNorm === hintNorm || msgNorm.includes(hintNorm))) {
           objectivesMet.push(o.id);
           console.info('[roleplay/turn] scaffold-exact fallback marked obj', {

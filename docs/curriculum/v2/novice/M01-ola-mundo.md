@@ -66,7 +66,7 @@
 5. **fill_gap** — "A: How are you? B: I'm fine, _____."
    **Hint**: Resposta educada após "I'm fine" (forma curta ou completa)
    **Answer**: thank you
-   **Accepts**: thanks / thanks a lot / thank you so much
+   **Accepts**: thanks / thanks a lot / thank you so much / and you / how about you / thanks, and you / thank you, and you
    **Explanation**: "Thank you" é a forma educada padrão. Em conversa casual, "Thanks" funciona igual — ambas valem. Em inglês falado, "Thanks" é até mais frequente.
 
 6. **fill_gap** — "_____ morning! How are you?"
@@ -77,12 +77,14 @@
 7. **fill_gap** — "A: Goodbye! B: _____ you later!"
    **Hint**: Despedida informal comum
    **Answer**: See
+   **Accepts**: Catch
    **Explanation**: "See you later" é uma forma muito informal de dizer tchau. Entre amigos e colegas próximos.
 
 8. **fix_error** — "Good meet you!"
    **Hint**: Frase padrão ao conhecer alguém
    **Answer**: Nice to meet you!
-   **Explanation**: A frase correta é "Nice to meet you" — "Good meet you" não existe em inglês. Note também o "to" entre "Nice" e "meet".
+   **Accepts**: Good to meet you! / Pleased to meet you!
+   **Explanation**: A frase correta é "Nice to meet you" (ou "Good to meet you") — "Good meet you" não existe em inglês. Note o "to" antes de "meet".
 
 9. **fix_error** — "How you are?"
    **Hint**: Em perguntas, o verbo "to be" vem antes do sujeito
@@ -93,7 +95,8 @@
     **Passage**: "Ana: Good morning! How are you, Tom? Tom: I'm fine, thank you! And you? Ana: I'm great!"
     **Question**: Como Tom está? (responda em inglês com uma palavra)
     **Answer**: fine
-    **Explanation**: Tom diz "I'm / I am fine, thank you" — "fine" significa bem/ótimo em inglês.
+    **Accepts**: good / well / ok / okay
+    **Explanation**: Tom diz "I'm fine, thank you" — "fine" significa bem/ótimo em inglês.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -229,12 +232,12 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 4. **word_bank** — "Hello, _____ John."
    **Choices**: I'm / You're / He's / She's
    **Answer**: I'm
-   **Explanation**: "I'm / I am" é a contração de "I am". Ao se apresentar, você diz "I'm / I am John" (sou o John). Bem mais comum que "I am John".
+   **Explanation**: "I'm" é a contração de "I am". Ao se apresentar, você diz "I'm John" (sou o John). Bem mais comum que "I am John".
 
 5. **fill_gap** — "I am _____ Brazil."
    **Hint**: Preposição de origem
    **Answer**: from
-   **Explanation**: "I'm / I am from Brazil" = "Eu sou do Brasil". A preposição "from" indica origem em inglês.
+   **Explanation**: "I'm from Brazil" = "Eu sou do Brasil". A preposição "from" indica origem em inglês.
 
 6. **fill_gap** — "Her name _____ Maria."
    **Hint**: Verbo "to be" para terceira pessoa
@@ -244,12 +247,13 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 7. **fill_gap** — "Hi! _____ is my friend Tom."
    **Hint**: Use "This" (começa com T) — quando apresenta alguém perto de você, igual "Este é..." em português
    **Answer**: This
+   **Accepts**: He
    **Explanation**: "This is + pessoa" = "Este é + pessoa". Use "This" pra apresentar alguém que está perto de você. Memoriza esse chunk: "This is my friend ___" funciona pra qualquer nome.
 
 8. **fix_error** — "I are a student."
    **Hint**: Verbo "to be" com "I"
    **Answer**: I am a student.
-   **Explanation**: Com "I" sempre se usa "am", nunca "are". A frase correta é "I am a student" (ou contraído: "I'm / I am a student").
+   **Explanation**: Com "I" sempre se usa "am", nunca "are". A frase correta é "I am a student" (ou contraído: "I'm a student").
 
 9. **fix_error** — "My name am Ana."
    **Hint**: "My name" é terceira pessoa
@@ -403,10 +407,10 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Answer**: Where are you from?
    **Explanation**: Em perguntas WH-, a estrutura é: WH-word + auxiliar + sujeito. "Where are you from?" — não "You are from where?".
 
-9. **fix_error** — "Is they French?"
-   **Hint**: "They" é plural
-   **Answer**: Are they French?
-   **Explanation**: "They" é plural, então usa "are", não "is". "Are they French?".
+9. **multiple_choice** — "_____ they French?"
+   **Options**: Are / Is / Am
+   **Answer**: Are
+   **Explanation**: "They" (eles) pede "are": They are French. Na pergunta, o "are" vai para a frente: Are they French?
 
 10. **read_answer**
     **Passage**: "I have two friends abroad. Anna is from Italy and she lives in Rome. Lucas is from Brazil but lives in Lisbon."
@@ -417,7 +421,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 ### 2. Listening/Speaking (5 phrases)
 
 1. **"Where are you from?"** — pergunta padrão de origem
-2. **"I'm from São Paulo, Brazil."** — resposta completa
+2. **"I'm from Brazil."** — resposta completa
 3. **"Are you Brazilian?"** — checando nacionalidade
 4. **"Yes, I am."** — resposta afirmativa curta
 5. **"No, I'm not. I'm Portuguese."** — corrigindo
@@ -461,7 +465,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte simula um match num app de idiomas. Pratica dizer de onde você é e devolver a pergunta."
-**Opening message**: "Hey! Nice to match. Where are you from?"
+**Opening message**: "Hey! We matched! Where are you from?"
 
 **Sub-objectives** (POC base-da-base: 3 objetivos, todos curtos):
 
@@ -496,7 +500,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Hey! Nice to match. Where are you from?"
+1. **Charlotte**: "Hey! We matched! Where are you from?"
 2. **Student**: "I'm from Brazil."
 3. **Charlotte**: "Cool! Are you Brazilian?"
 4. **Student**: "I'm Brazilian."
@@ -538,33 +542,36 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 5. **fill_gap** — "I'm _____ hungry. Let's eat."
    **Hint**: Intensificador (muito, tão)
    **Answer**: so
-   **Explanation**: "So + adjetivo" intensifica: "so hungry" = "com muita fome". Também pode usar "really hungry".
+   **Accepts**: very / really
+   **Explanation**: "So + adjetivo" intensifica: "so hungry" = "com muita fome". "Very hungry" e "really hungry" também valem.
 
-6. **fill_gap** — "_____ are you feeling today?"
-   **Hint**: Pergunta sobre como (não onde, não quando)
+6. **multiple_choice** — "_____ are you feeling today?"
+   **Options**: How / Where / When / Who
    **Answer**: How
-   **Explanation**: "How are you feeling?" pergunta sobre estado emocional/físico. É mais íntimo que "How are you?".
+   **Explanation**: "How" pergunta como. "How are you feeling today?" = como você está se sentindo hoje?
 
-7. **fill_gap** — "She is _____ today. Lots of meetings."
-   **Hint**: Estado de quem tem muita coisa pra fazer
+7. **word_bank** — "She is _____ today: lots of meetings and no free time."
+   **Choices**: busy / tired / hungry / funny
    **Answer**: busy
-   **Explanation**: "Busy" = ocupado. "She is busy today" é resposta natural quando alguém tem muito trabalho.
+   **Explanation**: "Busy" = ocupada. Muitas reuniões e nenhum tempo livre: ela está ocupada. "Tired" é cansada, que pode até ser verdade, mas a frase fala de agenda cheia.
 
 8. **fix_error** — "I tired am."
    **Hint**: Ordem da frase
    **Answer**: I am tired.
    **Explanation**: A ordem em inglês é: sujeito + verbo + complemento. "I am tired" — não "I tired am" (que seria a ordem do PT-BR às vezes).
 
-9. **fix_error** — "How feels you?"
-   **Hint**: Use "to be" + verbo no -ing ("How are you ___ing?")
+9. **word_order**
+   **Context PT**: Monte a pergunta: como você está se sentindo?
+   **Words**: How / are / you / feeling / ?
    **Answer**: How are you feeling?
-   **Explanation**: A forma correta usa "to be" + verbo no -ing: "How are you feeling?" — não "How feels you?". Outra forma comum: "How do you feel?".
+   **Explanation**: Pergunta com "how": How + are + you + verbo com -ing. Nada de "How feels you?".
 
 10. **read_answer**
     **Passage**: "Tom: Hey Ana, are you okay? You look down. Ana: I'm tired and a bit stressed. Work is crazy this week."
     **Question**: Como Ana se sente? (dê uma palavra)
     **Answer**: tired
-    **Explanation**: Ana diz "I'm / I am tired and a bit stressed". A primeira palavra que descreve ela é "tired" (cansada).
+    **Accepts**: stressed
+    **Explanation**: Ana diz "I'm tired and a bit stressed". A primeira palavra que descreve ela é "tired" (cansada).
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -690,11 +697,13 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 5. **fill_gap** — "Goodbye! Have a _____ day."
    **Hint**: Adjetivo positivo
    **Answer**: nice
-   **Explanation**: "Have a nice day" é despedida educada padrão. Também aceita "good day", "great day".
+   **Accepts**: great / good / wonderful / lovely
+   **Explanation**: "Have a nice day!" é a despedida mais comum. "Great", "good" e "wonderful" também funcionam.
 
 6. **fill_gap** — "_____ you next week!"
    **Hint**: Despedida com referência temporal
    **Answer**: See
+   **Accepts**: Catch
    **Explanation**: "See you next week" = "te vejo semana que vem". Padrão para combinar próximo encontro.
 
 7. **fill_gap** — "_____ care of yourself."
@@ -710,6 +719,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 9. **fix_error** — "Take of care!"
    **Hint**: "Take care" é chunk fixo
    **Answer**: Take care!
+   **Accepts**: Take care of yourself!
    **Explanation**: "Take care" é uma expressão fixa, sem "of". "Take CARE of yourself" leva "of" só nessa versão longa.
 
 10. **read_answer**

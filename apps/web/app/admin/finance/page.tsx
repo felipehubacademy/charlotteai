@@ -9,7 +9,7 @@ import { useAdminMe, canArea } from '@/lib/admin-context';
 
 // ── Tipos e catálogos ────────────────────────────────────────────────────────
 type Kind = 'expense' | 'income';
-type Status = 'pending' | 'paid' | 'canceled';
+type Status = 'pending' | 'paid' | 'canceled' | 'refunded';
 type Recurrence = 'none' | 'monthly' | 'yearly';
 interface Entry {
   id: string; kind: Kind; description: string; category: string; vendor: string | null;
@@ -26,7 +26,7 @@ const INCOME_CATEGORIES = ['Assinaturas App Store', 'Assinaturas Google Play', '
 const VENDORS = ['OpenAI', 'Anthropic', 'ElevenLabs', 'Microsoft Azure', 'Vercel', 'Supabase', 'Expo (EAS)', 'RevenueCat', 'Apple', 'Google', 'Cloudflare', 'registro.br', 'Microsoft 365', 'Sentry', 'HubSpot'];
 const CURRENCIES = ['BRL', 'USD', 'EUR'];
 
-const STATUS_LABEL: Record<Status, string> = { pending: 'A pagar', paid: 'Pago', canceled: 'Cancelado' };
+const STATUS_LABEL: Record<Status, string> = { pending: 'A pagar', paid: 'Pago', canceled: 'Cancelado', refunded: 'Estornado' };
 const REC_LABEL: Record<Recurrence, string> = { none: 'Única', monthly: 'Mensal', yearly: 'Anual' };
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
@@ -241,6 +241,7 @@ function EntryModal({ initial, vendors, customCats, onClose, onSaved }: {
                 <option value="paid">{f.kind === 'expense' ? 'Pago' : 'Recebido'}</option>
                 <option value="pending">{f.kind === 'expense' ? 'A pagar' : 'A receber'}</option>
                 <option value="canceled">Cancelado</option>
+                <option value="refunded">Estornado</option>
               </select>
             </div>
             <div className="adm-field">
@@ -339,6 +340,80 @@ interface AiCosts {
   openai: { source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string };
   elevenlabs: { plan: string; used: number; limit: number; resetAt: string | null; nextInvoiceUsd: number | null } | null;
   prev: { openai: { usd: number; lines: { name: string; usd: number }[] }; azure: { total: number; currency: string } | null };
+  voice: { byProduct: { name: string; credits: number }[]; byCharacter: { id: string; name: string; credits: number }[]; error?: string } | null;
+  liveCalls: { id: string; name: string; calls: number; students: number; minutes: number }[];
+}
+
+// Ligações ao vivo por personagem: uso (ligações, alunos, minutos) e custo do mês.
+// Charlotte: linhas realtime da OpenAI. Família: créditos de ligação do fornecedor de voz,
+// repartidos pelos minutos de cada personagem; em R$ quando o plano é legível (preço/créditos).
+function LiveCallsByCharacter({ data, toBrl }: { data: AiCosts; toBrl: (n: number, cur: string) => number }) {
+  const v = data.voice;
+  const callCredits = v?.byProduct.find(p => p.name.startsWith('Ligações'))?.credits ?? 0;
+  const otherCredits = v?.byProduct.find(p => p.name.startsWith('Falas'))?.credits ?? 0;
+  const totalCredits = callCredits + otherCredits;
+  const rate = data.elevenlabs && data.elevenlabs.nextInvoiceUsd != null && data.elevenlabs.limit > 0
+    ? data.elevenlabs.nextInvoiceUsd / data.elevenlabs.limit : null;
+  const charlotteUsd = data.openai.lines.filter(l => isLiveVoice(l.name)).reduce((s, l) => s + l.usd, 0);
+  const familyMinutes = data.liveCalls.filter(c => c.id !== 'charlotte').reduce((s, c) => s + c.minutes, 0);
+  const rows = data.liveCalls.map(c => {
+    let usd: number | null = null;
+    if (c.id === 'charlotte') usd = charlotteUsd;
+    else if (rate != null && familyMinutes > 0) usd = callCredits * rate * (c.minutes / familyMinutes);
+    const credits = c.id === 'charlotte' ? null : (familyMinutes > 0 ? callCredits * (c.minutes / familyMinutes) : 0);
+    return { ...c, usd, credits };
+  });
+  const pct = (n: number) => (totalCredits > 0 ? `${Math.round((n / totalCredits) * 100)}%` : '—');
+  const th: React.CSSProperties = { textAlign: 'left', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 0.6, color: 'var(--t3)', padding: '6px 8px' };
+  const td: React.CSSProperties = { fontSize: 13, padding: '8px', borderTop: '1px solid var(--line, rgba(0,0,0,0.08))' };
+  return (
+    <div style={{ marginTop: 18, display: 'grid', gap: 14 }}>
+      <div style={{ fontWeight: 800, fontSize: 14 }}>Ligações ao vivo por personagem</div>
+      {rows.length === 0 ? <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>Nenhuma ligação salva neste mês.</div> : (
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead><tr>
+              <th style={th}>Personagem</th><th style={th}>Ligações</th><th style={th}>Alunos</th><th style={th}>Minutos</th>
+              <th style={th}>Min/ligação</th><th style={th}>Custo</th><th style={th}>Custo/min</th>
+            </tr></thead>
+            <tbody>
+              {rows.map(r => (
+                <tr key={r.id}>
+                  <td style={{ ...td, fontWeight: 700 }}>{r.name}</td>
+                  <td style={td} className="num">{r.calls}</td>
+                  <td style={td} className="num">{r.students}</td>
+                  <td style={td} className="num">{r.minutes.toLocaleString('pt-BR')}</td>
+                  <td style={td} className="num">{r.calls ? (r.minutes / r.calls).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) : '—'}</td>
+                  <td style={td} className="num">{r.usd != null ? brl(toBrl(r.usd, 'USD')) : r.credits != null ? `${Math.round(r.credits).toLocaleString('pt-BR')} créditos` : '—'}</td>
+                  <td style={td} className="num">{r.usd != null && r.minutes > 0 ? brl(toBrl(r.usd / r.minutes, 'USD')) : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+      {v && !v.error && totalCredits > 0 && (
+        <div style={{ display: 'grid', gap: 8 }}>
+          <div style={{ fontSize: 12.5, color: 'var(--t2)' }}>Fornecedor de voz no mês: {Math.round(totalCredits).toLocaleString('pt-BR')} créditos</div>
+          <div style={{ display: 'flex', height: 10, borderRadius: 999, overflow: 'hidden', background: 'rgba(0,0,0,0.06)' }}>
+            <div style={{ width: pct(callCredits), background: AI_ACCENT.eleven }} />
+            <div style={{ width: pct(otherCredits), background: AI_ACCENT.azure }} />
+          </div>
+          <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', fontSize: 12.5 }}>
+            <span><b style={{ color: AI_ACCENT.eleven }}>●</b> Ligações (Família): {pct(callCredits)}{rate != null ? ` · ${brl(toBrl(callCredits * rate, 'USD'))}` : ''}</span>
+            <span><b style={{ color: AI_ACCENT.azure }}>●</b> Falas e vocabulário: {pct(otherCredits)}{rate != null ? ` · ${brl(toBrl(otherCredits * rate, 'USD'))}` : ''}</span>
+          </div>
+          {v.byCharacter.length > 0 && (
+            <div style={{ fontSize: 12, color: 'var(--t2)' }}>
+              Por voz: {v.byCharacter.map(c => `${c.name} ${pct(c.credits)}`).join(' · ')}
+            </div>
+          )}
+        </div>
+      )}
+      {v?.error && <div style={{ fontSize: 12, color: 'var(--t2)' }}>Não foi possível ler a divisão do fornecedor de voz ({v.error}).</div>}
+      {rate == null && <div style={{ fontSize: 11.5, color: 'var(--t3)' }}>Valores em R$ das ligações da Família aparecem quando a chave do fornecedor de voz tiver a permissão de leitura do plano (user_read).</div>}
+    </div>
+  );
 }
 
 // Cards dos três custos principais de IA: fundo Tinta, cada provedor com sua cor.
@@ -517,6 +592,7 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
           </>
         )}
       </div>
+      {data && <LiveCallsByCharacter data={data} toBrl={toBrl} />}
     </div>
   );
 }
@@ -650,6 +726,92 @@ function RevenuePanel({ range }: { range: Range }) {
         </div>
       </div>
     </>
+  );
+}
+
+// ── LTV por turma ───────────────────────────────────────────────────────────
+// Quanto cada assinante deixa (líquido), no método que o Duolingo descreveu: turmas pelo mês da 1ª cobrança
+// e projeção pela renovação de cada plano. Até termos assinantes suficientes passando da data de renovar,
+// a renovação usada é a referência publicada pelo Duolingo (marcada como "referência").
+type LtvPlan = { plan: 'monthly' | 'annual'; subscribers: number; avgChargeNet: number; renewalRate: number; renewalSource: 'own' | 'reference';
+  renewalEligible: number; renewalRenewed: number; expectedCharges: number; projectedLtvNet: number; realizedPerSubNet: number };
+type LtvData = { payingSubscribers: number; realizedPerSubNet: number; blendedProjectedLtvNet: number; plans: LtvPlan[];
+  cohorts: { month: string; subscribers: number; monthly: number; annual: number; renewed: number; refunded: number; netRealized: number; netPerSub: number }[];
+  reference: { monthly12m: number; annual12m: number; minSample: number } };
+
+function LtvPanel() {
+  const [d, setD] = useState<LtvData | null>(null);
+  const [err, setErr] = useState('');
+  useEffect(() => {
+    fetch('/api/admin/ltv').then(r => r.ok ? r.json() : Promise.reject(r.status)).then(setD).catch(() => setErr('Não foi possível calcular o LTV.'));
+  }, []);
+  const planLabel = (p: 'monthly' | 'annual') => (p === 'monthly' ? 'Mensal' : 'Anual');
+  return (
+    <div className="adm-panel col-12">
+      <div className="adm-panel-hdr"><div className="adm-panel-title">LTV · quanto cada assinante deixa</div>
+        <div className="adm-panel-sub">líquido, já sem loja, imposto e Asaas</div></div>
+      <div className="adm-panel-body">
+        {err ? <div className="adm-empty-sub">{err}</div> : !d ? <div className="adm-empty-sub">Carregando…</div> : d.payingSubscribers === 0 ? (
+          <div className="adm-empty-sub">Nenhum assinante pagante ainda.</div>
+        ) : (
+          <>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 12, marginBottom: 18 }}>
+              <div className="kpi-card"><div className="kpi-label">LTV projetado (média)</div><div className="kpi-value num">{brl(d.blendedProjectedLtvNet)}</div>
+                <div style={{ fontSize: 11.5, color: 'var(--t3)', marginTop: 4 }}>pela mistura de planos de hoje</div></div>
+              <div className="kpi-card"><div className="kpi-label">Já recebido por assinante</div><div className="kpi-value num">{brl(d.realizedPerSubNet)}</div>
+                <div style={{ fontSize: 11.5, color: 'var(--t3)', marginTop: 4 }}>{d.payingSubscribers} pagantes, menos estornos</div></div>
+              {d.plans.filter(p => p.subscribers > 0).map(p => (
+                <div key={p.plan} className="kpi-card"><div className="kpi-label">LTV {planLabel(p.plan).toLowerCase()}</div><div className="kpi-value num">{brl(p.projectedLtvNet)}</div>
+                  <div style={{ fontSize: 11.5, color: 'var(--t3)', marginTop: 4 }}>
+                    {brl(p.avgChargeNet)} por cobrança × {p.expectedCharges.toLocaleString('pt-BR')} cobranças
+                  </div></div>
+              ))}
+            </div>
+
+            <table className="adm-table">
+              <thead><tr><th>Plano</th><th style={{ textAlign: 'right' }}>Pagantes</th><th style={{ textAlign: 'right' }}>Renovação usada</th><th>Origem da renovação</th></tr></thead>
+              <tbody>
+                {d.plans.map(p => (
+                  <tr key={p.plan}>
+                    <td>{planLabel(p.plan)}</td>
+                    <td style={{ textAlign: 'right' }}>{p.subscribers}</td>
+                    <td style={{ textAlign: 'right', fontWeight: 700 }}>{p.renewalRate.toLocaleString('pt-BR')}%{p.plan === 'monthly' ? ' ao mês' : ' ao ano'}</td>
+                    <td style={{ color: p.renewalSource === 'own' ? 'var(--ok)' : 'var(--t3)' }}>
+                      {p.renewalSource === 'own'
+                        ? `dado próprio: ${p.renewalRenewed} de ${p.renewalEligible} renovaram`
+                        : `referência do Duolingo (${p.renewalEligible} de ${d.reference.minSample} assinantes para usar o nosso)`}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--t1)', margin: '20px 0 8px' }}>Turmas pelo mês da 1ª cobrança</div>
+            <table className="adm-table">
+              <thead><tr><th>Turma</th><th style={{ textAlign: 'right' }}>Pagantes</th><th style={{ textAlign: 'right' }}>Mensal / anual</th><th style={{ textAlign: 'right' }}>Renovaram</th><th style={{ textAlign: 'right' }}>Estornos</th><th style={{ textAlign: 'right' }}>Líquido recebido</th><th style={{ textAlign: 'right' }}>Por assinante</th></tr></thead>
+              <tbody>
+                {d.cohorts.map(c => (
+                  <tr key={c.month}>
+                    <td>{monthLabel(c.month)}</td>
+                    <td style={{ textAlign: 'right' }}>{c.subscribers}</td>
+                    <td style={{ textAlign: 'right' }}>{c.monthly} / {c.annual}</td>
+                    <td style={{ textAlign: 'right' }}>{c.renewed}</td>
+                    <td style={{ textAlign: 'right' }}>{c.refunded}</td>
+                    <td style={{ textAlign: 'right' }}>{brl(c.netRealized)}</td>
+                    <td style={{ textAlign: 'right', fontWeight: 700 }}>{brl(c.netPerSub)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div style={{ fontSize: 12.5, color: 'var(--t2)', marginTop: 10, lineHeight: 1.5 }}>
+              Projeção = líquido médio por cobrança × cobranças esperadas (1 ÷ (1 − renovação)). Enquanto menos de {d.reference.minSample} assinantes de um plano
+              passaram da data de renovar, vale a referência que o Duolingo publicou em 2021: {d.reference.annual12m}% do anual renova depois de 12 meses e
+              {' '}{d.reference.monthly12m}% do mensal ainda paga depois de 12 meses. Pix e 12x do site não renovam sozinhos e entram como anual.
+            </div>
+          </>
+        )}
+      </div>
+    </div>
   );
 }
 
@@ -837,6 +999,7 @@ export default function FinancePage() {
           </div>
 
           <RevenuePanel range={range} />
+          <LtvPanel />
 
           <AiCostsPanel canWrite={canWrite} onPosted={load} />
 
@@ -852,7 +1015,7 @@ export default function FinancePage() {
                   <option value="all">Entradas e saídas</option><option value="expense">Só saídas</option><option value="income">Só entradas</option>
                 </select>
                 <select className="adm-select-ghost" value={statusFilter} onChange={e => setStatusFilter(e.target.value as 'all' | Status)}>
-                  <option value="all">Qualquer situação</option><option value="paid">Pagos</option><option value="pending">A pagar</option><option value="canceled">Cancelados</option>
+                  <option value="all">Qualquer situação</option><option value="paid">Pagos</option><option value="pending">A pagar</option><option value="canceled">Cancelados</option><option value="refunded">Estornados</option>
                 </select>
                 <select className="adm-select-ghost" value={catFilter} onChange={e => setCatFilter(e.target.value)}>
                   <option value="">Todas as categorias</option>{categories.map(c => <option key={c}>{c}</option>)}
@@ -881,7 +1044,7 @@ export default function FinancePage() {
                         <td>{e.category}</td>
                         <td>
                           <span className={`badge ${e.status === 'paid' ? 'badge-ok' : e.status === 'pending' ? (daysUntil(e.due_date) < 0 ? 'badge-err' : 'badge-warn') : 'badge-muted'}`}>
-                            {e.status === 'paid' ? (e.kind === 'income' ? 'Recebido' : 'Pago') : e.status === 'pending' ? (e.kind === 'income' ? 'A receber' : 'A pagar') : 'Cancelado'}
+                            {e.status === 'paid' ? (e.kind === 'income' ? 'Recebido' : 'Pago') : e.status === 'pending' ? (e.kind === 'income' ? 'A receber' : 'A pagar') : STATUS_LABEL[e.status]}
                           </span>
                         </td>
                         <td className="num" style={{ textAlign: 'right', fontWeight: 700, color: e.kind === 'income' ? 'var(--ok)' : 'var(--t1)', whiteSpace: 'nowrap' }}>

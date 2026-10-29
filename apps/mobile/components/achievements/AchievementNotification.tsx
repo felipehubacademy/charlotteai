@@ -93,7 +93,7 @@ const PIECES = Array.from({ length: 70 }, (_, i) => ({
   round: i % 3 === 0,
 }));
 
-function ConfettiRain({ width, height, run }: { width: number; height: number; run: number }) {
+export function ConfettiRain({ width, height, run }: { width: number; height: number; run: number }) {
   const anims = React.useRef(PIECES.map(() => new Animated.Value(0))).current;
   React.useEffect(() => {
     anims.forEach(a => a.setValue(0));
@@ -134,10 +134,135 @@ interface Props {
 export default function AchievementNotification({ achievements, onDismiss, isPt = true }: Props) {
   const current = achievements[0];
   if (!current) return null;
+  // Comuns e raras que saem juntas (ex.: 1ª lição = "Olá, Mundo!" + "Na Trilha") viram uma tela só, até 3.
+  // Épicas e lendárias seguem com a tela própria.
+  const group: Achievement[] = [];
+  for (const a of achievements) {
+    if (group.length >= 3 || !GROUPABLE.includes(a.rarity)) break;
+    group.push(a);
+  }
+  if (group.length >= 2) {
+    const dismissAll = () => group.forEach(a => onDismiss(a.id));
+    return (
+      <Modal visible transparent animationType="none" statusBarTranslucent onRequestClose={dismissAll}>
+        <AchievementGroupScene key={group.map(a => a.id).join('|')} group={group} onDone={dismissAll} isPt={isPt} />
+      </Modal>
+    );
+  }
   return (
     <Modal visible transparent animationType="none" statusBarTranslucent onRequestClose={() => onDismiss(current.id)}>
       <AchievementScene key={current.id} current={current} onDismiss={onDismiss} isPt={isPt} />
     </Modal>
+  );
+}
+
+const GROUPABLE: Achievement['rarity'][] = ['common', 'rare'];
+
+/** Várias conquistas de uma vez: medalhas lado a lado, os nomes e o XP somado. */
+function AchievementGroupScene({ group, onDone, isPt }: { group: Achievement[]; onDone: () => void; isPt: boolean }) {
+  const insets = useSafeAreaInsets();
+  const top = group.some(a => a.rarity === 'rare') ? 'rare' : 'common';
+  const s = SCENE[top];
+  const medalSize = group.length >= 3 ? 84 : 112;
+  const fade = React.useRef(new Animated.Value(0)).current;
+  const pops = React.useRef(group.map(() => new Animated.Value(0))).current;
+  const slide = React.useRef(new Animated.Value(0)).current;
+  const doneRef = React.useRef(false);
+  const mountedAtRef = React.useRef(Date.now());
+  const autoRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const xp = group.reduce((n, a) => n + (a.xpBonus ?? 0), 0);
+  const line = CHARLOTTE_LINE[top] ?? CHARLOTTE_LINE.common;
+
+  React.useEffect(() => {
+    soundEngine.play(achievementSound(top)).catch(() => {});
+    achievementHaptic(top).catch(() => {});
+    Animated.timing(fade, { toValue: 1, duration: 180, useNativeDriver: true }).start();
+    Animated.stagger(160, pops.map(p => Animated.spring(p, { toValue: 1, stiffness: 180, damping: 12, mass: 0.9, useNativeDriver: true }))).start();
+    Animated.timing(slide, { toValue: 1, duration: 420, delay: 300, easing: Easing.out(Easing.cubic), useNativeDriver: true }).start();
+    autoRef.current = setTimeout(() => finish(), 12000);
+    return () => { if (autoRef.current) clearTimeout(autoRef.current); };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  function finish(fromTap = false) {
+    if (doneRef.current) return;
+    if (fromTap && Date.now() - mountedAtRef.current < 700) return;
+    doneRef.current = true;
+    if (autoRef.current) clearTimeout(autoRef.current);
+    Animated.timing(fade, { toValue: 0, duration: 200, useNativeDriver: true }).start(() => onDone());
+  }
+
+  const rise = { opacity: slide, transform: [{ translateY: slide.interpolate({ inputRange: [0, 1], outputRange: [24, 0] }) }] };
+
+  return (
+    <>
+      <StatusBar barStyle={s.ink === INK ? 'dark-content' : 'light-content'} />
+      <Animated.View style={{ flex: 1, backgroundColor: s.bg, opacity: fade }}>
+        <View style={{ flex: 1, paddingTop: insets.top + 24, paddingBottom: insets.bottom + 20, paddingHorizontal: 24 }}>
+          <View style={{ alignItems: 'center' }}>
+            <View style={{ backgroundColor: s.ghostBg, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 6 }}>
+              <AppText style={{ color: s.ink, fontSize: 12, fontWeight: '800', letterSpacing: 1.2, textTransform: 'uppercase' }}>
+                {isPt ? `${group.length} conquistas desbloqueadas` : `${group.length} achievements unlocked`}
+              </AppText>
+            </View>
+          </View>
+
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ flexDirection: 'row', gap: 16 }}>
+              {group.map((a, i) => {
+                const cat = catalogOf(a.type);
+                const sc = SCENE[a.rarity] ?? s;
+                return (
+                  <Animated.View key={a.id} style={{ transform: [{ scale: pops[i] }] }}>
+                    <View style={{ width: medalSize + 16, height: medalSize + 16, borderRadius: (medalSize + 16) / 2, borderWidth: 3, borderColor: sc.ring, alignItems: 'center', justifyContent: 'center' }}>
+                      <View style={{
+                        width: medalSize, height: medalSize, borderRadius: medalSize / 2, backgroundColor: sc.medal,
+                        alignItems: 'center', justifyContent: 'center',
+                        shadowColor: INK, shadowOpacity: 0.2, shadowRadius: 12, shadowOffset: { width: 0, height: 6 }, elevation: 6,
+                      }}>
+                        <AchievementIcon category={cat?.category ?? 'general'} color={sc.icon} size={Math.round(medalSize * 0.46)} />
+                      </View>
+                    </View>
+                  </Animated.View>
+                );
+              })}
+            </View>
+
+            <Animated.View style={[{ alignItems: 'center', marginTop: 28, width: '100%', gap: 14 }, rise]}>
+              {group.map(a => {
+                const cat = catalogOf(a.type);
+                const title = cat ? (isPt ? cat.title : (cat.titleEN ?? cat.title)) : a.title;
+                const howTo = cat ? (isPt ? cat.howToEarnPT : cat.howToEarnEN) : a.description;
+                return (
+                  <View key={a.id} style={{ alignItems: 'center' }}>
+                    <AppText display style={{ color: s.ink, fontSize: 26, fontWeight: '800', textAlign: 'center', letterSpacing: -0.5 }}>{title}</AppText>
+                    {!!howTo && <AppText style={{ color: s.sub, fontSize: 14, textAlign: 'center', lineHeight: 20, marginTop: 4, maxWidth: 320 }}>{howTo}</AppText>}
+                  </View>
+                );
+              })}
+              {xp > 0 && (
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: s.ghostBg, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 7 }}>
+                  <Lightning size={14} color={s.ink} weight="fill" />
+                  <AppText style={{ color: s.ink, fontSize: 14, fontWeight: '800' }}>+{xp} XP</AppText>
+                </View>
+              )}
+            </Animated.View>
+          </View>
+
+          <Animated.View style={rise}>
+            <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, marginBottom: 18 }}>
+              <Image source={require('@/assets/charlotte-avatar.png')} style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: INK }} />
+              <View style={{ flex: 1, backgroundColor: WHITE, borderRadius: 18, borderBottomLeftRadius: 4, paddingHorizontal: 14, paddingVertical: 11 }}>
+                <AppText style={{ color: INK, fontSize: 15, fontWeight: '700', lineHeight: 20 }}>{isPt ? line.pt : line.en}</AppText>
+              </View>
+            </View>
+            <TouchableOpacity onPress={() => finish(true)} activeOpacity={0.85}
+              style={{ backgroundColor: s.btnBg, borderRadius: 16, paddingVertical: 17, alignItems: 'center' }}>
+              <AppText style={{ color: s.btnInk, fontSize: 16, fontWeight: '800' }}>{isPt ? 'Continuar' : 'Continue'}</AppText>
+            </TouchableOpacity>
+          </Animated.View>
+        </View>
+      </Animated.View>
+    </>
   );
 }
 
@@ -280,7 +405,7 @@ function AchievementScene({ current, onDismiss, isPt }: { current: Achievement; 
             <TouchableOpacity
               onPress={() => {
                 handleDismiss();
-                setTimeout(() => openShare({ kind: 'achievement', big: title, title: isPt ? 'Conquista desbloqueada' : 'Achievement unlocked', seed: current.type, rarity: current.rarity, category: cat?.category, badge: current.rarity === 'legendary' ? (isPt ? 'Lendária' : 'Legendary') : undefined }), 450);
+                setTimeout(() => openShare({ kind: 'achievement', big: cat?.title ?? title, title: 'Conquista desbloqueada', seed: current.type, rarity: current.rarity, category: cat?.category, badge: current.rarity === 'legendary' ? 'Lendária' : undefined }), 450);
               }}
               activeOpacity={0.85}
               style={{ flexDirection: 'row', gap: 8, justifyContent: 'center', alignItems: 'center', marginTop: 10, borderRadius: 16, paddingVertical: 14, backgroundColor: s.ghostBg }}

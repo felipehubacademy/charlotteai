@@ -1,5 +1,5 @@
 // app/(app)/track.tsx — tela de uma trilha extra da Família Queizy (ex.: Manual do F#did@).
-// Mesmo cartão e mesma trilha da Início, com o nível = id da trilha (lib/tracks.ts).
+// Mesmo cartão e mesma trilha da tela inicial, com o nível = id da trilha (lib/tracks.ts).
 import React from 'react';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -17,7 +17,7 @@ import { systemIsPt } from '@/lib/systemLang';
 import { useTheme } from '@/lib/theme';
 import { extraTrack, EXTRA_TRACKS, unitImpression } from '@/lib/tracks';
 import { ImpressionTag } from '@/components/trail/ImpressionTag';
-import type { TrailLevel } from '@/data/curriculum';
+import type { TrailLevel } from '@/data/trailTypes';
 
 export default function TrackScreen() {
   const { id } = useLocalSearchParams<{ id?: string }>();
@@ -41,7 +41,7 @@ export default function TrackScreen() {
       <ScreenHeader title={systemIsPt ? 'Trilha da Família Queizy' : 'Queizy Family path'} />
       <ScrollView contentContainerStyle={{ paddingTop: 14, paddingBottom: 40 + insets.bottom }} showsVerticalScrollIndicator={false}>
         <View style={{ marginHorizontal: 20, marginBottom: 24, borderRadius: 22, backgroundColor: T.card, overflow: 'hidden' }}>
-          <TrailBanner userId={profile?.id} level={level} useV2 flush />
+          <TrailBanner userId={profile?.id} level={level} flush />
         </View>
         {/* Degustação: a unidade grátis em destaque, para começar direto por ela. */}
         {isTaster && tasteTitle ? (
@@ -67,7 +67,7 @@ export default function TrackScreen() {
             </TouchableOpacity>
           </View>
         ) : null}
-        <TrailContent userId={profile?.id} level={level} showBanner={false} useV2 />
+        <TrailContent userId={profile?.id} level={level} showBanner={false} />
       </ScrollView>
     </View>
   );

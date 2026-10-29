@@ -49,12 +49,12 @@
 2. **multiple_choice** — "I'd like _____ check in for my flight."
    **Options**: to / for / from / at
    **Answer**: to
-   **Explanation**: "I'd / I would like to + verbo" — chunk fixo para pedidos educados. "I'd / I would like to check in" — pedido educado padrão em aeroportos e hotéis.
+   **Explanation**: "I'd like to + verbo" — chunk fixo para pedidos educados. "I'd like to check in" — pedido educado padrão em aeroportos e hotéis.
 
 3. **word_bank** — "My flight _____ delayed by two hours."
    **Choices**: is / are / has / does
    **Answer**: is
-   **Explanation**: Memorize "My flight is delayed" como CHUNK FIXO de aeroporto — não tente analisar a estrutura. Como "I'm / I am tired" ou "I'm / I am ready": é "to be" + adjetivo. "Delayed" funciona como adjetivo aqui (atrasado).
+   **Explanation**: Memorize "My flight is delayed" como CHUNK FIXO de aeroporto — não tente analisar a estrutura. Como "I'm tired" ou "I'm ready": é "to be" + adjetivo. "Delayed" funciona como adjetivo aqui (atrasado).
 
 4. **word_bank** — "_____ I have a window seat, please?"
    **Choices**: Can / Do / Is / Are
@@ -64,6 +64,7 @@
 5. **fill_gap** — "I _____ my passport at the security check — I can't find it anywhere!"
    **Hint**: passado de "lose"
    **Answer**: lost
+   **Accepts**: left / forgot
    **Explanation**: "Lost" — passado simples de "lose". Verbo irregular: lose → lost → lost. "I lost my passport" — frase crítica para reportar perda no aeroporto.
 
 6. **fill_gap** — "_____ does the flight leave?"
@@ -75,7 +76,8 @@
 7. **fill_gap** — "I'm here _____ business."
    **Hint**: preposição para propósito
    **Answer**: for
-   **Explanation**: "I'm / I am here for + propósito" — chunk fixo na imigração. "I'm here for business / vacation / a conference". Preposição "for" é obrigatória.
+   **Accepts**: on
+   **Explanation**: "I'm here for + propósito" — chunk fixo na imigração. "I'm here for business / vacation / a conference". Preposição "for" é obrigatória.
 
 8. **fix_error** — "I lost my luggages at the airport."
    **Hint**: "Luggage" é incontável em inglês
@@ -229,7 +231,7 @@
 2. **multiple_choice** — "I'd like to _____ in, please."
    **Options**: check / checking / checks / checked
    **Answer**: check
-   **Explanation**: Após "I'd / I would like to", sempre verbo no infinitivo sem "to" extra. "Check in" — phrasal verb padrão de hotel.
+   **Explanation**: Após "I'd like to", sempre verbo no infinitivo sem "to" extra. "Check in" — phrasal verb padrão de hotel.
 
 3. **word_bank** — "I have a reservation _____ the name of Silva."
    **Choices**: under / on / at / by
@@ -255,26 +257,27 @@
 7. **fill_gap** — "Is _____ included?"
    **Hint**: refeição da manhã
    **Answer**: breakfast
+   **Accepts**: parking / wifi / Wi-Fi / dinner / lunch
    **Explanation**: "Is breakfast included?" — pergunta padrão sobre o que vem incluído na diária. "Breakfast" não tem artigo neste chunk.
 
 8. **fix_error** — "I want a room for two persons."
    **Hint**: Plural natural de "person" no inglês moderno
    **Answer**: I want a room for two people.
 **Accepts**: I'd like a room for two people.
-   **Explanation**: "People" é o plural natural de "person" em inglês moderno. "Persons" só aparece em contextos legais formais. Melhor ainda: trocar "I want" por "I'd / I would like" (mais educado).
+   **Explanation**: "People" é o plural natural de "person" em inglês moderno. "Persons" só aparece em contextos legais formais. Melhor ainda: trocar "I want" por "I'd like" (mais educado).
 
 9. **fix_error** — "The shower not working in my room."
    **Hint**: Falta o verbo "to be" antes de "not working"
    **Answer**: The shower is not working in my room.
 **Accepts**: The shower isn't working
-   **Explanation**: Inglês exige verbo "to be" em frases negativas com -ing. "Is not working" ou contração "isn't / is not working". Sem "is", a frase fica incompleta.
+   **Explanation**: Inglês exige verbo "to be" em frases negativas com -ing. "Is not working" ou contração "isn't working". Sem "is", a frase fica incompleta.
 
 10. **read_answer**
     **Passage**: "Good evening. I have a reservation under the name of Silva. I'd like a non-smoking room with a king-size bed. Is breakfast included in the rate? And what time is check-out tomorrow?"
     **Question**: Que tipo de cama o hóspede quer?
     **Answer**: king-size
 **Accepts**: a king-size bed
-    **Explanation**: O texto diz "I'd / I would like a non-smoking room with a king-size bed". Pratica identificação de detalhes específicos em pedidos de hotel.
+    **Explanation**: O texto diz "I'd like a non-smoking room with a king-size bed". Pratica identificação de detalhes específicos em pedidos de hotel.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -436,7 +439,7 @@
 7. **fill_gap** — "The post office is _____ from here."
    **Hint**: distância — "far" ou "close/near"
    **Answer**: far
-**Accepts**: near" ou "close
+   **Accepts**: near / close
    **Explanation**: "Far from here" / "near here" / "close to here" — chunks para descrever distância. Todos funcionam aqui.
 
 8. **fix_error** — "How I go to the airport?"
@@ -585,7 +588,7 @@
 1. **multiple_choice** — "I don't _____ well today."
    **Options**: feel / feels / feeling / felt
    **Answer**: feel
-   **Explanation**: "I don't / do not feel + adjetivo" — chunk fixo para reportar mal-estar. Após "don't / do not", sempre verbo no infinitivo.
+   **Explanation**: "I don't feel + adjetivo" — chunk fixo para reportar mal-estar. Após "don't", sempre verbo no infinitivo.
 
 2. **multiple_choice** — "I _____ a headache."
    **Options**: have / has / is / am
@@ -617,6 +620,7 @@
 7. **fill_gap** — "My stomach _____."
    **Hint**: verbo para "dói"
    **Answer**: hurts
+   **Accepts**: aches / is hurting
    **Explanation**: "My stomach hurts" — chunk fixo para "minha barriga dói". "Hurt" é verbo regular: hurts (presente), hurt (passado, idêntico).
 
 8. **fix_error** — "I am sick of the stomach."
@@ -626,8 +630,8 @@
    **Explanation**: "Sick of" significa "cansado de" (idiomático). Para "dor de estômago", use "I have a stomachache" ou "My stomach hurts". Erro de tradução literal.
 
 9. **fix_error** — "I have hot."
-   **Hint**: "Hot" não combina com "have" — pense em "febre" ou em "to be"
-   **Answer**: I have a fever.
+   **Hint**: Calor em inglês é com "to be": I'm hot
+   **Answer**: I'm hot.
 **Accepts**: I am hot.
    **Explanation**: "I have hot" não existe em inglês. Para febre médica: "I have a fever". Para sensação de calor: "I am hot / I feel hot". Erro de tradução literal de "estou com calor/febre".
 
@@ -787,16 +791,19 @@
 5. **fill_gap** — "Can I _____ a message for him, please?"
    **Hint**: verbo para "deixar"
    **Answer**: leave
+   **Accepts**: take
    **Explanation**: "Leave a message" — chunk fixo. "Leave" significa "deixar". Padrão para gravar recado quando a pessoa não está.
 
 6. **fill_gap** — "I'll _____ you back later on the phone."
    **Hint**: phrasal verb de retorno
    **Answer**: call
-   **Explanation**: "Call back" — phrasal verb para "ligar de volta". "I'll / I will call you back" — promessa fixa ao telefone.
+   **Accepts**: phone / ring
+   **Explanation**: "Call back" — phrasal verb para "ligar de volta". "I'll call you back" — promessa fixa ao telefone.
 
 7. **fill_gap** — "Could you _____ that, please?"
    **Hint**: verbo para "repetir"
    **Answer**: repeat
+   **Accepts**: say / spell / explain
    **Explanation**: "Could you repeat that?" — pergunta educada para pedir repetição. Útil quando não se entende algo no telefone.
 
 8. **fix_error** — "Hi, my name is John speaking."
@@ -815,7 +822,7 @@
     **Question**: Quando Maria vai ligar de volta?
     **Answer**: tomorrow at 3 PM
 **Accepts**: at 3 PM tomorrow
-    **Explanation**: O texto diz "I'll / I will call him back tomorrow at 3 PM". Pratica leitura de detalhes em recado telefônico.
+    **Explanation**: O texto diz "I'll call him back tomorrow at 3 PM". Pratica leitura de detalhes em recado telefônico.
 
 ### 2. Listening/Speaking (5 phrases)
 

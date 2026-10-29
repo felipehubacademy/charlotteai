@@ -56,6 +56,7 @@
 6. **fill_gap** — "The exam was _____ difficult as I expected."
    **Hint**: abre a estrutura de igualdade
    **Answer**: as
+   **Accepts**: just as
    **Explanation**: "As difficult as I expected" — the first "as" opens the equality structure with expectation verbs.
 
 7. **fill_gap** — "He works as hard _____ anyone in the office."
@@ -214,17 +215,17 @@
 2. **multiple_choice** — "My new job _____ as stressful as the old one."
    **Options**: isn't / isn't no / not is / no isn't
    **Answer**: isn't
-   **Explanation**: The negation goes on the verb "to be" before "as". "Isn't / Is not as stressful as" = is less stressful than.
+   **Explanation**: The negation goes on the verb "to be" before "as". "Isn't as stressful as" = is less stressful than.
 
 3. **word_bank** — "This book isn't _____ the last one."
    **Choices**: as good as / as good than / so good as / better as
    **Answer**: as good as
-   **Explanation**: "Not as good as" — negative comparison. Note: "isn't / is not as good as" means INFERIOR to the other.
+   **Explanation**: "Not as good as" — negative comparison. Note: "isn't as good as" means INFERIOR to the other.
 
 4. **word_bank** — "She _____ as tall as her sister."
    **Choices**: isn't / no is / doesn't / not is
    **Answer**: isn't
-   **Explanation**: Negation of "to be": "isn't / is not" before "as tall as".
+   **Explanation**: Negation of "to be": "isn't" before "as tall as".
 
 5. **fill_gap** — "The movie wasn't as exciting _____ the book."
    **Hint**: fecha o "not as...as"
@@ -239,7 +240,8 @@
 7. **fill_gap** — "This restaurant _____ as expensive as the one downtown."
    **Hint**: negação de to be 3ª pessoa
    **Answer**: isn't
-   **Explanation**: "Isn't / Is not as expensive as" — lower price than another option.
+   **Accepts**: is not / wasn't
+   **Explanation**: "Isn't as expensive as" — lower price than another option.
 
 8. **fix_error** — "It isn't so hot as yesterday."
    **Hint**: Em inglês moderno, use "as...as" mesmo em negativa
@@ -249,14 +251,14 @@
 9. **fix_error** — "She doesn't as smart as her brother."
    **Hint**: Negação do verbo to be, não usa "doesn't"
    **Answer**: She isn't as smart as her brother.
-   **Explanation**: When the main verb is "to be", the negative uses "isn't/aren't", not "doesn't/don't". "She isn't / is not as smart as her brother".
+   **Explanation**: When the main verb is "to be", the negative uses "isn't/aren't", not "doesn't/don't". "She isn't as smart as her brother".
 
 10. **read_answer**
     **Passage**: "My new apartment isn't as big as the old one, but it isn't as expensive either. The neighborhood isn't as quiet, but it isn't as far from work. Overall, it's a fair trade."
     **Question**: How does the new apartment compare to the old one in size?
     **Answer**: isn't as big
     **Accepts**: smaller
-    **Explanation**: The text says "My new apartment isn't / is not as big as the old one" — meaning the new one is smaller.
+    **Explanation**: The text says "My new apartment isn't as big as the old one" — meaning the new one is smaller.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -407,6 +409,7 @@
 5. **fill_gap** — "He works _____ as hard as his colleague."
    **Hint**: 2x intensificador
    **Answer**: twice
+   **Accepts**: three times / half
    **Explanation**: "Twice as hard as" — doubled effort. "Twice" always comes before the first "as".
 
 6. **fill_gap** — "This apartment is three times as expensive _____ the other."
@@ -417,6 +420,7 @@
 7. **fill_gap** — "She spent _____ as much time on this project as I did."
    **Hint**: 2x (time = uncountable)
    **Answer**: twice
+   **Accepts**: three times / half
    **Explanation**: "Twice as much time as" — time is uncountable, so "much". "Twice" opens the multiplier.
 
 8. **fix_error** — "He's two times faster as me."
@@ -748,7 +752,7 @@
 2. **multiple_choice** — "Today _____ as cold as yesterday."
    **Options**: isn't / not / doesn't / no
    **Answer**: isn't
-   **Explanation**: Negative "to be" + "as...as". "Isn't / Is not as cold as" = less cold than. With "to be" the negation is "isn't / is not", never "doesn't / does not".
+   **Explanation**: Negative "to be" + "as...as". "Isn't as cold as" = less cold than. With "to be" the negation is "isn't", never "doesn't".
 
 3. **word_bank** — "She earns _____ I do."
    **Choices**: twice as much as / two times more than / twice more than / twice as much than
@@ -768,6 +772,7 @@
 6. **fill_gap** — "This trip cost _____ as much as the last one."
    **Hint**: 3x mais
    **Answer**: three times
+   **Accepts**: twice / half
    **Explanation**: "Three times as much as" — multiplier opens the structure before "as much as".
 
 7. **fill_gap** — "_____ harder you try, the more you accomplish."

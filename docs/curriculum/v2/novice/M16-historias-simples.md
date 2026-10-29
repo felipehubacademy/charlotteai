@@ -50,16 +50,19 @@
 5. **fill_gap** — "I _____ home at six after work."
    **Hint**: Passado de "come"
    **Answer**: came
+   **Accepts**: got / went / arrived / walked / drove
    **Explanation**: "Come" → "came" (irregular). Note: pronúncia diferente (kAm vs keIm).
 
 6. **fill_gap** — "She _____ a taxi to the airport."
    **Hint**: Passado de "take"
    **Answer**: took
+   **Accepts**: got / caught / called / ordered
    **Explanation**: "Take" → "took" (irregular). Decorar.
 
 7. **fill_gap** — "I _____ your message yesterday on my phone."
    **Hint**: Passado de "get"
    **Answer**: got
+   **Accepts**: received / saw / read
    **Explanation**: "Get" → "got" (irregular).
 
 8. **fix_error** — "I goed to the store."
@@ -207,7 +210,7 @@
 1. **multiple_choice** — "I _____ a new phone yesterday."
    **Options**: bought / buyed / buys
    **Answer**: bought
-   **Explanation**: "Buy" → "bought" (irregular). Pronúncia /bO:t/.
+   **Explanation**: "Buy" → "bought" (irregular). O "gh" não é pronunciado: soa parecido com "bót".
 
 2. **multiple_choice** — "She _____ a cake to the party."
    **Options**: brought / bringed / brings
@@ -227,11 +230,13 @@
 5. **fill_gap** — "I _____ pizza for dinner with my family."
    **Hint**: Passado de "eat"
    **Answer**: ate
-   **Explanation**: "Eat" → "ate" (irregular). Pronúncia /eIt/.
+   **Accepts**: had / made / ordered / cooked / bought
+   **Explanation**: "Eat" → "ate" (irregular). Soa parecido com "eit", igual a "eight" (oito).
 
 6. **fill_gap** — "She _____ a lot of water after the gym."
    **Hint**: Passado de "drink"
    **Answer**: drank
+   **Accepts**: had
    **Explanation**: "Drink" → "drank" (irregular).
 
 7. **fill_gap** — "He _____ for ten hours last night."
@@ -410,12 +415,14 @@
 6. **fill_gap** — "I _____ you a message on WhatsApp."
    **Hint**: Passado de "send"
    **Answer**: sent
+   **Accepts**: wrote / left
    **Explanation**: "Send" → "sent" (irregular).
 
 7. **fill_gap** — "I _____ that book last week from cover to cover."
    **Hint**: Passado de "read" (escrita igual, pronúncia diferente)
    **Answer**: read
-   **Explanation**: "Read" → "read" — escrita IGUAL, mas pronúncia muda: /ri:d/ presente → /red/ passado.
+   **Accepts**: finished
+   **Explanation**: "Read" → "read" — escrita IGUAL, mas pronúncia muda: no presente soa como "riid"; no passado, como "red".
 
 8. **fix_error** — "I meeted my old friend."
    **Hint**: Meet é irregular
@@ -577,22 +584,25 @@
 4. **word_bank** — "We _____ the document."
    **Choices**: read / readed / reads / reading
    **Answer**: read
-   **Explanation**: "Read" → "read" — IGUAL na escrita, MAS pronúncia muda: /red/ no passado.
+   **Explanation**: "Read" → "read" — IGUAL na escrita, MAS pronúncia muda: no passado soa como "red".
 
 5. **fill_gap** — "I _____ my coat in the closet before dinner."
    **Hint**: Passado de "put" (igual)
    **Answer**: put
+   **Accepts**: hung / left
    **Explanation**: "Put" igual ao presente. Sem -ed.
 
 6. **fill_gap** — "She _____ the apple in half with a knife."
    **Hint**: Passado de "cut" (igual)
    **Answer**: cut
+   **Accepts**: sliced
    **Explanation**: "Cut" igual. Mesma forma.
 
 7. **fill_gap** — "I _____ the article yesterday in the newspaper."
    **Hint**: Passado de "read" — escrita igual, mas atenção à pronúncia
    **Answer**: read
-   **Explanation**: "Read" no passado: escrita /read/, mas se pronuncia /red/. Mudança só fonética.
+   **Accepts**: saw / found
+   **Explanation**: "Read" no passado: escreve-se "read", mas se pronuncia como "red". Mudança só no som.
 
 8. **fix_error** — "She putted the book on the shelf."
    **Hint**: Put não muda no passado
@@ -616,7 +626,7 @@
 1. **"I put the book on the table."** — put unchanged
 2. **"She cut her finger."** — cut unchanged
 3. **"He let me know."** — let unchanged
-4. **"I read the article yesterday."** — read /red/ (past)
+4. **"I read the article yesterday."** — read, pronunciado como "red" (past)
 5. **"We put everything away."** — put + away
 
 ### 3. Role-play
@@ -760,16 +770,19 @@
 5. **fill_gap** — "I _____ a new book at the store."
    **Hint**: Passado de "buy"
    **Answer**: bought
+   **Accepts**: found / got / saw
    **Explanation**: Buy → bought.
 
 6. **fill_gap** — "She _____ home at ten after the party."
    **Hint**: Passado de "come"
    **Answer**: came
+   **Accepts**: went / got / arrived / returned
    **Explanation**: Come → came.
 
 7. **fill_gap** — "I _____ my friend a message on WhatsApp."
    **Hint**: Passado de "send"
    **Answer**: sent
+   **Accepts**: wrote / left
    **Explanation**: Send → sent.
 
 8. **fix_error** — "She goed to the party."

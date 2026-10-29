@@ -55,6 +55,7 @@
 5. **fill_gap** — "I'd like _____ bread, please."
    **Hint**: Quantidade indefinida com incontável
    **Answer**: some
+   **Accepts**: more
    **Explanation**: "Bread" é incontável. "Some bread" = "um pouco de pão / pão" (quantidade não especificada).
 
 6. **fill_gap** — "She has three _____ in her lunch."
@@ -65,16 +66,19 @@
 7. **fill_gap** — "Can I have _____ juice?"
    **Hint**: Quantidade indefinida (juice = incontável)
    **Answer**: some
+   **Accepts**: more
    **Explanation**: "Juice" é incontável → "some juice". Padrão pra pedir bebida.
 
 8. **fix_error** — "I'd like a water, please."
    **Hint**: "Water" é incontável
    **Answer**: I'd like some water, please.
+   **Accepts**: I'd like a glass of water, please. / I'd like water, please. / I'd like a bottle of water, please.
    **Explanation**: "Water" é incontável, não usa "a". Use "some water" ou "a glass of water" (com unidade).
 
 9. **fix_error** — "I have two breads."
    **Hint**: "Bread" é incontável
    **Answer**: I have some bread.
+   **Accepts**: I have two pieces of bread. / I have two slices of bread. / I have two loaves of bread.
    **Explanation**: "Bread" não tem plural com -s. Pra quantificar: "two pieces of bread", "some bread", "a slice of bread".
 
 10. **read_answer**
@@ -217,7 +221,7 @@
 2. **multiple_choice** — "We don't have _____ milk."
    **Options**: any / some / much
    **Answer**: any
-   **Explanation**: Negativa → "any". "We don't / do not have any milk" = "Não temos leite (nenhum)". Any pra negativo.
+   **Explanation**: Negativa → "any". "We don't have any milk" = "Não temos leite (nenhum)". Any pra negativo.
 
 3. **word_bank** — "Is there _____ juice?"
    **Choices**: any / some / many / one
@@ -237,7 +241,7 @@
 6. **fill_gap** — "I don't have _____ time today."
    **Hint**: Negativa
    **Answer**: any
-   **Explanation**: "I don't / do not have any time" — negativa usa any (= nenhum/nenhuma).
+   **Explanation**: "I don't have any time" — negativa usa any (= nenhum/nenhuma).
 
 7. **fill_gap** — "Do you have _____ questions?"
    **Hint**: Pergunta
@@ -252,13 +256,13 @@
 9. **fix_error** — "We don't have some bread."
    **Hint**: Negativa pede "any"
    **Answer**: We don't have any bread.
-   **Explanation**: Negativa usa ANY, não some. "We don't / do not have any bread".
+   **Explanation**: Negativa usa ANY, não some. "We don't have any bread".
 
 10. **read_answer**
     **Passage**: "I have some bread but I don't have any milk. Is there any cheese? Yes, there's some cheese in the fridge."
     **Question**: O que o narrador NÃO tem?
     **Answer**: milk
-    **Explanation**: O texto diz "I don't / do not have any milk".
+    **Explanation**: O texto diz "I don't have any milk".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -566,7 +570,7 @@
 1. **multiple_choice** — "_____ a coffee, please."
    **Options**: I'd like / I want / Give me
    **Answer**: I'd like
-   **Explanation**: "I'd / I would like" (I would like) é o chunk educado pra pedir. "I want" é direto demais; "Give me" é rude.
+   **Explanation**: "I'd like" (I would like) é o chunk educado pra pedir. "I want" é direto demais; "Give me" é rude.
 
 2. **multiple_choice** — "_____ I have the menu?"
    **Options**: Can / Do / Are
@@ -574,9 +578,9 @@
    **Explanation**: "Can I have...?" é pedido educado padrão em restaurantes. Sem "do".
 
 3. **word_bank** — "I'd like _____ pizza, please."
-   **Choices**: a / the / some / one
+   **Choices**: a / the / an / much
    **Answer**: a
-   **Explanation**: "A pizza" — pedido singular contável. "I'd / I would like a pizza".
+   **Explanation**: "A pizza" — pedido singular contável. "I'd like a pizza".
 
 4. **word_bank** — "_____ the bill, please."
    **Choices**: Can I have / I want / Bring me / Give me
@@ -586,11 +590,13 @@
 5. **fill_gap** — "I'd _____ a sandwich and a juice."
    **Hint**: Forma curta de "would"
    **Answer**: like
-   **Explanation**: "I'd / I would like" = "I would like" (eu gostaria). Contração obrigatória em fala.
+   **Accepts**: love
+   **Explanation**: "I'd like" = "I would like" (eu gostaria). Contração obrigatória em fala.
 
 6. **fill_gap** — "Could I _____ the menu, please?"
    **Hint**: Verbo "ter / receber" no pedido
    **Answer**: have
+   **Accepts**: see / get
    **Explanation**: "Could I have the menu?" — versão ainda mais educada que "Can I have". "Have" no sentido de receber.
 
 7. **fill_gap** — "_____ would you like to drink?"
@@ -601,11 +607,13 @@
 8. **fix_error** — "I want one coffee."
    **Hint**: Mais educado em restaurante
    **Answer**: I'd like a coffee.
-   **Explanation**: "I want" é direto demais em contextos sociais/comerciais. "I'd / I would like a coffee" é o padrão educado. Também "a coffee" (não "one coffee").
+   **Accepts**: I'd like one coffee. / Can I have a coffee? / Could I have a coffee, please? / I'd like a coffee, please.
+   **Explanation**: "I want" é direto demais em contextos sociais/comerciais. "I'd like a coffee" é o padrão educado. Também "a coffee" (não "one coffee").
 
 9. **fix_error** — "Give me the menu."
    **Hint**: Forma educada de pedir
    **Answer**: Can I have the menu, please?
+   **Accepts**: Could I have the menu, please? / Can I see the menu, please? / Could I see the menu, please? / May I have the menu, please? / Can I have the menu?
    **Explanation**: "Give me" sem "please" soa rude. "Can I have... please?" é o padrão educado.
 
 10. **read_answer**
@@ -759,6 +767,7 @@
 4. **word_bank** — "Can I have _____ apple, please?"
    **Choices**: an / some / many / one
    **Answer**: an
+   **Accepts**: one
    **Explanation**: "An apple" — singular contável (apple começa com vogal → "an").
 
 5. **fill_gap** — "Is there _____ milk in the fridge?"
@@ -769,6 +778,7 @@
 6. **fill_gap** — "I have _____ cookies and _____ juice."
    **Hint**: Afirmativa (positiva) com ambos
    **Answer**: some / some
+   **Accepts**: some some / some, some
    **Explanation**: Afirmativa usa "some" tanto pra contável quanto incontável. "I have some cookies and some juice".
 
 7. **fill_gap** — "_____ is this sandwich?"
@@ -779,6 +789,7 @@
 8. **fix_error** — "I'd like one tea."
    **Hint**: Tea é incontável
    **Answer**: I'd like some tea.
+   **Accepts**: I'd like a cup of tea.
    **Explanation**: Tea = incontável. Não usa "one". Use "some tea" ou "a cup of tea".
 
 9. **fix_error** — "How many milk do we have?"

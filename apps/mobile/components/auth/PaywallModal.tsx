@@ -8,7 +8,7 @@
  * O botão fica fixo no rodapé (sempre visível, acima da barra do Android).
  */
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import {
   Modal, View, TouchableOpacity, ActivityIndicator,
   ScrollView, Platform, Linking,
@@ -34,6 +34,7 @@ import {
   getTrialDays,
 } from '@/lib/purchases';
 import { appAlert, AppAlertHost } from '@/components/ui/AppAlert';
+import { track } from '@/lib/analytics';
 
 const C = {
   bg:         '#FAF7F0',
@@ -71,7 +72,7 @@ function formatMoney(value: number, currency: string, isPt: boolean): string {
 
 export function PaywallModal() {
   const { profile, hasAccess, isTaster, signOut, refreshProfile } = useAuth();
-  const { paywallOpen, closePaywall } = usePaywallContext();
+  const { paywallOpen, paywallReason, closePaywall } = usePaywallContext();
   const insets = useSafeAreaInsets();
 
   // Paywall = tela de SISTEMA/transacional: idioma segue o device.
@@ -79,6 +80,28 @@ export function PaywallModal() {
 
   const forcedOpen = paywallOpen && !!profile && hasAccess;
   const visible    = (!!profile && !hasAccess) || forcedOpen;
+
+  // Funil do paywall (charlotte_analytics_events): viu -> tocou em assinar -> comprou/cancelou/erro, ou fechou.
+  // `kind`: 'novo' (conta nova, oferta do teste da loja), 'degustacao' (abriu pelo bloco travado), 'sem_acesso'.
+  const shownRef = useRef(false);
+  const purchasedRef = useRef(false);
+  const funnelProps = () => ({
+    kind: !hasAccess ? 'sem_acesso' : (profile?.subscription_status ?? 'none') === 'none' ? 'degustacao' : 'aberto',
+    status: profile?.subscription_status ?? 'none',
+    plan: selected.includes('yearly') ? 'yearly' : 'monthly',
+    trial_days: selTrialRef.current,
+    reason: paywallReason,
+  });
+  const selTrialRef = useRef(0);
+  useEffect(() => {
+    if (visible && !shownRef.current) {
+      shownRef.current = true; purchasedRef.current = false;
+      track('paywall_shown', funnelProps());
+    } else if (!visible && shownRef.current) {
+      shownRef.current = false;
+      if (!purchasedRef.current) track('paywall_dismissed', funnelProps());
+    }
+  }, [visible]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [offering, setOffering]         = useState<PurchasesOffering | null>(null);
   const [selected, setSelected]         = useState<string>(PRODUCT_YEARLY);
@@ -185,11 +208,20 @@ export function PaywallModal() {
     // Salvaguarda: garante que a compra seja vinculada ao UUID do Supabase
     // e não a um $RCAnonymousID. identifyUser é idempotente.
     if (profile?.id) await identifyUser(profile.id);
+    track('paywall_purchase_tap', funnelProps());
     const result = await purchasePackage(pkg);
 
     if (result.cancelled) {
+      track('paywall_purchase_cancelled', funnelProps());
       setLoading(false);
       return;
+    }
+
+    if (result.success) {
+      purchasedRef.current = true;
+      track('subscription_purchased', { ...funnelProps(), product: pkg.product.identifier });
+    } else {
+      track('paywall_purchase_error', { ...funnelProps(), code: result.errorCode ?? null });
     }
 
     if (result.success && result.customerInfo && profile?.id) {
@@ -254,6 +286,8 @@ export function PaywallModal() {
     setLoading(false);
 
     if (r.success && r.customerInfo && profile?.id) {
+      purchasedRef.current = true;
+      track('subscription_restored', funnelProps());
       await syncSubscriptionToSupabase(profile.id, r.customerInfo).catch(() => {});
       await refreshProfile();
     }
@@ -313,6 +347,7 @@ export function PaywallModal() {
   const monthlyTrial = monthlyPkg ? trialDays[monthlyPkg.product.identifier] ?? 0 : 0;
   const isYearlySel  = selected.includes('yearly');
   const selTrial     = isYearlySel ? yearlyTrial : monthlyTrial;
+  selTrialRef.current = selTrial;
   const anyTrial     = Math.max(yearlyTrial, monthlyTrial);
   const selPriceLabel = isYearlySel ? `${yearlyPrice}${isPt ? '/ano' : '/yr'}` : `${monthlyPrice}${isPt ? '/mês' : '/mo'}`;
 
@@ -352,7 +387,31 @@ export function PaywallModal() {
 
   const headline = isNewUser ? newLine : useStreak ? streakLine : useXp ? xpLine : neutralLine;
 
-  const subheadline = isTaster
+  // Degustação: a frase diz por que a oferta abriu (o X e "Continuar na degustação" deixam seguir de graça).
+  const reasonLine = !isTaster ? null
+    : paywallReason === 'placement'
+    ? (isPt
+        ? 'O teste de nível faz parte do plano completo: ele descobre seu nível e monta a trilha certa para você.'
+        : 'The level test is part of the full plan: it finds your level and sets up the right path for you.')
+    : paywallReason === 'taste_today'
+    ? (isPt
+        ? 'Amanhã libera mais um tópico grátis. Ou comece os 7 dias grátis e siga agora, sem esperar.'
+        : 'Another free topic unlocks tomorrow. Or start your 7-day free trial and keep going now.')
+    : paywallReason === 'taste_done'
+    ? (isPt
+        ? 'Sua degustação terminou. Comece os 7 dias grátis para seguir na trilha, conversar e ligar para a Charlotte.'
+        : 'Your free taste is over. Start your 7-day free trial to keep going, chat and call Charlotte.')
+    : paywallReason === 'trail'
+    ? (isPt
+        ? 'Este tópico faz parte do plano completo, com a trilha inteira, a conversa livre e as ligações com a Charlotte.'
+        : 'This topic is part of the full plan, with the whole path, free chat and calls with Charlotte.')
+    : paywallReason === 'track'
+    ? (isPt
+        ? 'O Manual do F#did@ completo, com todos os tópicos do Igorfina, faz parte do plano completo.'
+        : "The full Manual do F#did@, with all of Igorfina's topics, is part of the full plan.")
+    : null;
+
+  const subheadline = reasonLine ?? (isTaster
     ? (isPt
         ? 'Descubra seu nível e libere a trilha inteira, a conversa livre e as chamadas de voz com a Charlotte.'
         : 'Find your level and unlock the whole learning path, free chat and voice calls with Charlotte.')
@@ -362,7 +421,7 @@ export function PaywallModal() {
         : 'Full access to Queizy: voice chat, instant corrections and the whole learning path.')
     : (isPt
         ? 'Não deixe tudo isso ir embora. Continue de onde parou.'
-        : 'Don’t let all of this go. Pick up where you left off.');
+        : 'Don’t let all of this go. Pick up where you left off.'));
 
   // Texto curto sob o botão: com teste, deixa claro quando cobra e como não pagar.
   const ctaNote = selTrial
@@ -600,6 +659,13 @@ export function PaywallModal() {
             <AppText style={{ color: C.muted, fontSize: 11, textAlign: 'center', marginTop: 8, lineHeight: 16 }}>
               {ctaNote}
             </AppText>
+            {forcedOpen && isTaster && (
+              <TouchableOpacity onPress={closePaywall} hitSlop={8} style={{ alignSelf: 'center', paddingVertical: 8, marginTop: 2 }}>
+                <AppText style={{ color: C.navy, fontSize: 14, fontWeight: '700' }}>
+                  {isPt ? 'Continuar na degustação' : 'Keep exploring for free'}
+                </AppText>
+              </TouchableOpacity>
+            )}
             {/* Termos e privacidade (exigidos pelas lojas para assinatura) */}
             <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 16, marginTop: 6 }}>
               <TouchableOpacity onPress={() => Linking.openURL('https://queizy.com/termos')} hitSlop={8}>

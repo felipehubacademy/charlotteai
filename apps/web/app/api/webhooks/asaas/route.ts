@@ -9,40 +9,16 @@
 //   CHECKOUT_EXPIRED/CANCELED  só marca o checkout
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { recordRevenueEvent } from '@/lib/revenue';
-import { getCustomer, paidPaymentsOf, updateSubscriptionValue, WEB_PRODUCT, WEB_ANNUAL_PIX, type WebPlan } from '@/lib/asaas';
-import { sendWebWelcome } from '@/lib/web-welcome';
-import { sendCapiEvent, type MetaTracking } from '@/lib/meta-capi';
+import { getCustomer, disableCustomerNotifications, activeSubscriptionsOf, WEB_PRODUCT, type AsaasPayment } from '@/lib/asaas';
+import { activateTrial, handlePaymentPaid, recordAsaasRevenue, type CheckoutRow } from '@/lib/asaas-activation';
+import { sendPaymentFailed, sendCancelledNotice, sendRefundNotice } from '@/lib/subscription-notices';
+import { logOpsError } from '@/lib/ops-monitor';
 
 export const dynamic = 'force-dynamic';
-const DAY = 86400000;
-const GRACE_DAYS = 3; // tolerância para a cobrança do cartão ser aprovada no dia
+export const preferredRegion = 'gru1'; // perto do banco (São Paulo): várias consultas por evento
 
-type Row = { id: string; user_id: string; plan: WebPlan; method: string | null; trial_days: number; asaas_payment_id?: string | null; status: string; asaas_customer_id: string | null; asaas_subscription_id: string | null };
-type Payment = {
-  id: string; customer: string; subscription?: string | null; installment?: string | null; installmentNumber?: number | null;
-  value: number; netValue?: number | null; billingType?: string; dueDate?: string; paymentDate?: string | null;
-  confirmedDate?: string | null; externalReference?: string | null; checkoutSession?: string | null;
-};
-
-function addMonths(d: Date, n: number): Date {
-  const r = new Date(d); r.setMonth(r.getMonth() + n); return r;
-}
-
-async function restorePriceIfCouponEnded(checkoutId: string, subscriptionId: string) {
-  const supabase = getSupabaseAdmin();
-  try {
-    const { data } = await supabase.from('asaas_checkouts').select('coupon_cycles, full_value_brl, price_restored_at').eq('id', checkoutId).maybeSingle();
-    const ck = data as { coupon_cycles: number | null; full_value_brl: number | null; price_restored_at: string | null } | null;
-    if (!ck?.coupon_cycles || !ck.full_value_brl || ck.price_restored_at) return;
-    const paid = await paidPaymentsOf(subscriptionId);
-    if (paid < ck.coupon_cycles) return;
-    await updateSubscriptionValue(subscriptionId, Number(ck.full_value_brl));
-    await supabase.from('asaas_checkouts').update({ price_restored_at: new Date().toISOString() } as never).eq('id', checkoutId);
-  } catch (e) {
-    console.error('[asaas webhook] restore price failed:', e);
-  }
-}
+type Row = CheckoutRow;
+type Payment = AsaasPayment;
 
 async function findRow(p: { checkoutId?: string | null; externalReference?: string | null; subscription?: string | null; customer?: string | null }): Promise<Row | null> {
   const supabase = getSupabaseAdmin();
@@ -63,53 +39,6 @@ async function findRow(p: { checkoutId?: string | null; externalReference?: stri
     }
   }
   return null;
-}
-
-async function grantAccess(userId: string, plan: WebPlan, until: Date, method?: string | null): Promise<void> {
-  const supabase = getSupabaseAdmin();
-  const { data: cur } = await supabase.from('charlotte_users').select('subscription_expires_at').eq('id', userId).maybeSingle();
-  const prev = (cur as { subscription_expires_at: string | null } | null)?.subscription_expires_at;
-  const expires = prev && new Date(prev).getTime() > until.getTime() ? new Date(prev) : until; // nunca encurta
-  const { error } = await supabase.from('charlotte_users').update({
-    subscription_status: 'active', is_active: true, subscription_product: method === 'annual_pix' ? WEB_ANNUAL_PIX : WEB_PRODUCT[plan],
-    subscription_expires_at: expires.toISOString(), updated_at: new Date().toISOString(),
-  } as never).eq('id', userId);
-  // Falha aqui é grave (pagou e não ganhou acesso): lança para o Asaas reenviar o evento.
-  if (error) throw new Error(`grantAccess falhou: ${error.message}`);
-}
-
-// Conversão para a Meta pelo servidor (só com aceite de cookies no checkout). Mesmo event_id do
-// pixel da tela de sucesso: ck_<checkout>_start (teste grátis) e ck_<checkout>_purchase (1ª cobrança).
-async function metaConversion(checkoutId: string, userId: string, event: 'StartTrial' | 'Purchase', value?: number): Promise<void> {
-  const supabase = getSupabaseAdmin();
-  const [{ data: ck }, { data: u }] = await Promise.all([
-    supabase.from('asaas_checkouts').select('meta_tracking').eq('id', checkoutId).maybeSingle(),
-    supabase.from('charlotte_users').select('email').eq('id', userId).maybeSingle(),
-  ]);
-  await sendCapiEvent({
-    event, eventId: `ck_${checkoutId}_${event === 'StartTrial' ? 'start' : 'purchase'}`,
-    email: (u as { email: string | null } | null)?.email ?? null, userId,
-    value, currency: 'BRL', tracking: (ck as { meta_tracking: MetaTracking | null } | null)?.meta_tracking ?? null,
-  }).catch(() => false);
-}
-
-async function sendWelcome(userId: string, plan: WebPlan, trialDays: number): Promise<void> {
-  await sendWebWelcome(userId, plan, trialDays);
-}
-
-async function revenue(type: 'INITIAL_PURCHASE' | 'RENEWAL' | 'REFUND', row: Row, p: Payment): Promise<void> {
-  const value = Math.abs(Number(p.value) || 0);
-  if (!value) return;
-  const net = p.netValue != null ? Math.abs(Number(p.netValue)) : value;
-  const at = new Date(p.confirmedDate || p.paymentDate || Date.now());
-  // Mesmo formato do evento do RevenueCat: reaproveita Financeiro + comissão de afiliado.
-  await recordRevenueEvent({
-    type, id: `asaas_${type}_${p.id}`, app_user_id: row.user_id, store: 'ASAAS',
-    // product_id com a forma de pagamento (web_monthly, web_annual, web_annual_pix, web_annual_12x): o Financeiro separa por ela.
-    product_id: row.method && row.method !== row.plan ? `web_${row.method}` : WEB_PRODUCT[row.plan], currency: 'BRL', price_in_purchased_currency: value,
-    tax_percentage: 0, commission_percentage: value > 0 ? Math.max(0, (value - net) / value) : 0,
-    purchased_at_ms: at.getTime(), transaction_id: p.id, environment: process.env.ASAAS_ENV === 'sandbox' ? 'SANDBOX' : 'PRODUCTION',
-  });
 }
 
 export async function POST(req: NextRequest) {
@@ -134,11 +63,18 @@ export async function POST(req: NextRequest) {
       if (!row) return NextResponse.json({ ok: true, unmatched: true });
       const status = event === 'CHECKOUT_PAID' ? 'paid' : event === 'CHECKOUT_EXPIRED' ? 'expired' : event === 'CHECKOUT_CANCELED' ? 'canceled' : row.status;
       await supabase.from('asaas_checkouts').update({ status, asaas_customer_id: c.customer ?? row.asaas_customer_id, updated_at: new Date().toISOString() } as never).eq('id', row.id);
+      // Cliente criado pela página do Asaas nasce com os avisos dele ligados: desliga (o aluno fica só com os nossos).
+      if (event === 'CHECKOUT_PAID' && c.customer) {
+        await disableCustomerNotifications(c.customer).catch(e => console.warn('[webhooks/asaas] avisos do cliente:', e instanceof Error ? e.message : e));
+      }
+      // Guarda já o id da assinatura (antes só chegava na 1ª cobrança; sem ele, cancelar pelo app não achava a assinatura).
+      if (event === 'CHECKOUT_PAID' && !row.asaas_subscription_id && row.method !== 'annual_pix') {
+        const { data: uu } = await supabase.from('charlotte_users').select('email').eq('id', row.user_id).maybeSingle();
+        const subs = await activeSubscriptionsOf(row.user_id, false, c.customer, (uu as { email: string } | null)?.email).catch(() => []);
+        if (subs[0]) await supabase.from('asaas_checkouts').update({ asaas_subscription_id: subs[0].id } as never).eq('id', row.id);
+      }
       if (event === 'CHECKOUT_PAID' && row.trial_days > 0) {
-        // Cartão validado e assinatura criada (mensal ou anual): acesso durante o teste (+1 dia para a 1ª cobrança).
-        await grantAccess(row.user_id, row.plan, new Date(Date.now() + (row.trial_days + 1) * DAY), row.method);
-        await sendWelcome(row.user_id, row.plan, row.trial_days);
-        await metaConversion(row.id, row.user_id, 'StartTrial', 0);
+        await activateTrial(row);
       }
       return NextResponse.json({ ok: true });
     }
@@ -152,42 +88,25 @@ export async function POST(req: NextRequest) {
       if (!known) return NextResponse.json({ ok: true, ignored: 'not_from_checkout' });
       const row = await findRow({ checkoutId: p.checkoutSession, subscription: p.subscription, externalReference: p.externalReference });
       if (!row) return NextResponse.json({ ok: true, unmatched: true });
+      if (event === 'PAYMENT_CONFIRMED' || event === 'PAYMENT_RECEIVED') {
+        // CONFIRMED (cartão) e RECEIVED (Pix / dinheiro na conta) podem chegar os dois: roda uma vez por cobrança.
+        await handlePaymentPaid(row, p);
+        return NextResponse.json({ ok: true });
+      }
       const patch: Record<string, unknown> = { updated_at: new Date().toISOString() };
       if (p.subscription && !row.asaas_subscription_id) patch.asaas_subscription_id = p.subscription;
       if (!row.asaas_customer_id) patch.asaas_customer_id = p.customer;
-      if (row.status !== 'paid' && (event === 'PAYMENT_CONFIRMED' || event === 'PAYMENT_RECEIVED')) patch.status = 'paid';
-      // 1º pagamento confirmado: base do reembolso em 7 dias.
-      if (!row.asaas_payment_id && (event === 'PAYMENT_CONFIRMED' || event === 'PAYMENT_RECEIVED')) {
-        patch.asaas_payment_id = p.id;
-        if (p.installment) patch.asaas_installment_id = p.installment;
-        patch.paid_at = new Date().toISOString(); // agora: as datas do Asaas vêm sem hora e encurtariam o prazo do reembolso
-      }
       if (event === 'PAYMENT_REFUNDED') patch.refunded_at = new Date().toISOString();
       await supabase.from('asaas_checkouts').update(patch as never).eq('id', row.id);
 
-      if (event === 'PAYMENT_CONFIRMED' || event === 'PAYMENT_RECEIVED') {
-        // CONFIRMED (cartão) e RECEIVED (Pix / dinheiro na conta) podem chegar os dois: a receita é idempotente
-        // pelo id da cobrança; o acesso usa o maior prazo.
-        const base = new Date(p.dueDate ? `${p.dueDate}T12:00:00Z` : Date.now());
-        const start = base.getTime() < Date.now() - 40 * DAY ? new Date() : base;
-        const firstInstallment = !p.installmentNumber || p.installmentNumber === 1;
-        if (row.plan === 'monthly') {
-          await grantAccess(row.user_id, 'monthly', new Date(addMonths(start, 1).getTime() + GRACE_DAYS * DAY));
-        } else if (firstInstallment) {
-          await grantAccess(row.user_id, 'annual', new Date(addMonths(new Date(), 12).getTime() + GRACE_DAYS * DAY), row.method);
-        }
-        const { count } = await supabase.from('revenue_events').select('id', { count: 'exact', head: true })
-          .eq('app_user_id', row.user_id).eq('store', 'ASAAS').like('event_id', 'asaas_%').not('event_id', 'like', `%${p.id}`);
-        const { count: same } = await supabase.from('revenue_events').select('id', { count: 'exact', head: true }).like('event_id', `asaas_%_${p.id}`);
-        if (!same) await revenue(count ? 'RENEWAL' : 'INITIAL_PURCHASE', row, p);
-        // 1ª cobrança paga do aluno: venda para a Meta (renovações não entram).
-        if (!same && !count) await metaConversion(row.id, row.user_id, 'Purchase', Math.abs(Number(p.value) || 0));
-        // Boas-vindas na 1ª cobrança sem teste (anual ou mensal sem teste).
-        if (!count && !same && !(row.trial_days > 0)) await sendWelcome(row.user_id, row.plan, 0);
-        // Cupom com duração: depois da última cobrança com desconto, as próximas voltam ao preço cheio.
-        if (p.subscription) await restorePriceIfCouponEnded(row.id, p.subscription);
-      } else if (event === 'PAYMENT_REFUNDED' || event === 'PAYMENT_CHARGEBACK_REQUESTED' || event === 'PAYMENT_CHARGEBACK_DISPUTE') {
-        await revenue('REFUND', row, p);
+      // Cartão recusado (renovação ou 1ª cobrança depois do teste): aviso com a nossa marca.
+      if (event === 'PAYMENT_CREDIT_CARD_CAPTURE_REFUSED' || event === 'PAYMENT_OVERDUE') {
+        await sendPaymentFailed(row.id, p).catch(e => console.warn('[webhooks/asaas] aviso de cobrança recusada:', e instanceof Error ? e.message : e));
+      }
+      if (event === 'PAYMENT_REFUNDED' || event === 'PAYMENT_CHARGEBACK_REQUESTED' || event === 'PAYMENT_CHARGEBACK_DISPUTE') {
+        if (!row.sandbox) await recordAsaasRevenue('REFUND', row, p);
+        // Reembolso feito no painel do processador também avisa o aluno (o do app já avisou: sai uma vez só).
+        if (event === 'PAYMENT_REFUNDED') await sendRefundNotice(row.id, p.id, false, Math.abs(Number(p.value) || 0)).catch(() => null);
         await supabase.from('charlotte_users').update({
           subscription_status: 'expired', is_active: false, subscription_expires_at: new Date().toISOString(), updated_at: new Date().toISOString(),
         } as never).eq('id', row.user_id);
@@ -202,11 +121,13 @@ export async function POST(req: NextRequest) {
       if (row) {
         await supabase.from('charlotte_users').update({ subscription_status: 'cancelled', updated_at: new Date().toISOString() } as never)
           .eq('id', row.user_id).in('subscription_product', [WEB_PRODUCT.monthly, WEB_PRODUCT.annual]);
+        await sendCancelledNotice(row.id, s.id).catch(e => console.warn('[webhooks/asaas] aviso de cancelamento:', e instanceof Error ? e.message : e));
       }
       return NextResponse.json({ ok: true });
     }
   } catch (e) {
     console.error('[webhooks/asaas]', event, e);
+    await logOpsError('webhook', `/api/webhooks/asaas (${event})`, e, { eventId });
     // Libera o evento para o Asaas reenviar.
     await supabase.from('asaas_events').delete().eq('id', eventId);
     return NextResponse.json({ error: 'processing_failed' }, { status: 500 });

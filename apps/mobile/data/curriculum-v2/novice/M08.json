@@ -82,6 +82,10 @@
           "sentence": "We _____ music very much — it makes us happy.",
           "hint": "Verbo \"amar\" para \"we\"",
           "answer": "love",
+          "accepts": [
+            "like",
+            "enjoy"
+          ],
           "explanation": "\"We love music\" — plural usa forma base."
         },
         {
@@ -89,6 +93,11 @@
           "sentence": "She _____ horror movies.",
           "hint": "Verbo \"odiar\" 3ª pessoa singular",
           "answer": "hates",
+          "accepts": [
+            "loves",
+            "likes",
+            "enjoys"
+          ],
           "explanation": "\"She hates\" — 3ª pessoa + -s. \"Hate\" → \"hates\"."
         },
         {
@@ -96,6 +105,10 @@
           "sentence": "I _____ this song! It's my favorite!",
           "hint": "Verbo de afeto forte",
           "answer": "love",
+          "accepts": [
+            "like",
+            "adore"
+          ],
           "explanation": "\"I love this song\" — afeto forte por música. \"Love\" + objeto direto."
         },
         {
@@ -335,6 +348,15 @@
           "sentence": "I like _____ in the park.",
           "hint": "Verbo \"correr\" no gerúndio",
           "answer": "running",
+          "accepts": [
+            "walking",
+            "jogging",
+            "playing",
+            "reading",
+            "cycling",
+            "biking",
+            "skating"
+          ],
           "explanation": "\"I like running\" — verbo no -ing após like. \"Run\" → \"running\" (dobra o n antes do -ing)."
         },
         {
@@ -342,6 +364,9 @@
           "sentence": "She hates _____ the dishes.",
           "hint": "Verbo \"lavar\" no gerúndio",
           "answer": "washing",
+          "accepts": [
+            "doing"
+          ],
           "explanation": "\"Hates washing\" — wash + ing = washing. Após hate sempre -ing."
         },
         {
@@ -349,6 +374,17 @@
           "sentence": "We love _____ in the morning.",
           "hint": "Verbo \"caminhar\" no gerúndio",
           "answer": "walking",
+          "accepts": [
+            "running",
+            "jogging",
+            "swimming",
+            "reading",
+            "cooking",
+            "studying",
+            "exercising",
+            "working out",
+            "cycling"
+          ],
           "explanation": "\"Love walking\" — walk + ing. Atividade favorita."
         },
         {
@@ -588,6 +624,14 @@
           "sentence": "Ana likes _____.",
           "hint": "Pronome objeto de \"you\"",
           "answer": "you",
+          "accepts": [
+            "me",
+            "him",
+            "her",
+            "us",
+            "them",
+            "it"
+          ],
           "explanation": "\"You\" funciona como sujeito E objeto: \"You like Ana\" / \"Ana likes you\". Forma única."
         },
         {
@@ -595,6 +639,12 @@
           "sentence": "Can you help _____?",
           "hint": "Pronome objeto de \"we\"",
           "answer": "us",
+          "accepts": [
+            "me",
+            "him",
+            "her",
+            "them"
+          ],
           "explanation": "\"Us\" é o objeto de \"we\". \"Help us\" = \"Ajude a nós/nos ajude\"."
         },
         {
@@ -844,6 +894,24 @@
           "sentence": "I love _____ books.",
           "hint": "Tipo de livro (gênero), sem artigo",
           "answer": "reading",
+          "accepts": [
+            "history",
+            "comic",
+            "comics",
+            "science fiction",
+            "mystery",
+            "romance",
+            "adventure",
+            "fantasy",
+            "horror",
+            "poetry",
+            "children's",
+            "crime",
+            "detective",
+            "travel",
+            "cook",
+            "cooking"
+          ],
           "explanation": "\"I love reading books\" — verbo no -ing após love. Ou pode ser tipo: \"love mystery books\"."
         },
         {
@@ -854,7 +922,24 @@
           "accepts": [
             "pop",
             "rock",
-            "jazz"
+            "jazz",
+            "country",
+            "electronic",
+            "hip-hop",
+            "hip hop",
+            "rap",
+            "samba",
+            "funk",
+            "folk",
+            "latin",
+            "indie",
+            "opera",
+            "blues",
+            "reggae",
+            "soul",
+            "gospel",
+            "k-pop",
+            "sertanejo"
           ],
           "explanation": "\"Classical music\", \"pop music\" — gênero + music. Sem artigo."
         },
@@ -1103,6 +1188,10 @@
           "sentence": "I _____ tea, but I drink coffee anyway.",
           "hint": "Verbo \"preferir\"",
           "answer": "prefer",
+          "accepts": [
+            "like",
+            "love"
+          ],
           "explanation": "\"I prefer tea\" = \"Prefiro chá\". Forma base com \"I\"."
         },
         {

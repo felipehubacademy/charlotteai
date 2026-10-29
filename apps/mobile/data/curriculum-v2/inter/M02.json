@@ -38,7 +38,7 @@
             "had"
           ],
           "answer": "have",
-          "explanation": "Present perfect with I/you/we/they uses \"have\" + past participle. \"I have visited\" or \"I've / I have visited\"."
+          "explanation": "Present perfect with I/you/we/they uses \"have\" + past participle. \"I have visited\" or \"I've visited\"."
         },
         {
           "type": "multiple_choice",
@@ -49,7 +49,7 @@
             "had"
           ],
           "answer": "has",
-          "explanation": "She/he/it uses \"has\" + past participle. \"She has tried\" or \"She's / She is tried\"."
+          "explanation": "She/he/it uses \"has\" + past participle. \"She has tried\" or \"She's tried\"."
         },
         {
           "type": "word_bank",
@@ -73,13 +73,16 @@
             "nothing"
           ],
           "answer": "never",
-          "explanation": "\"I've / I have never seen\" — \"never\" is the standard negative in PP for life experiences."
+          "explanation": "\"I've never seen\" — \"never\" is the standard negative in PP for life experiences."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ never tried that food.",
           "hint": "have/has for I",
           "answer": "have",
+          "accepts": [
+            "'ve"
+          ],
           "explanation": "\"I have never tried\" — present perfect with I."
         },
         {
@@ -94,6 +97,9 @@
           "sentence": "We have _____ been to Japan.",
           "hint": "never (life experience negative)",
           "answer": "never",
+          "accepts": [
+            "already"
+          ],
           "explanation": "\"We have never been\" — common life experience structure."
         },
         {
@@ -147,7 +153,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about your life experiences — travel, food, events.",
-        "scenario_pt": "Charlotte pergunta sobre suas experiências de vida — viagens, comida, eventos.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -156,7 +161,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Dizer onde você esteve (I've been to)",
             "label_en": "Say where you've been (I've been to)",
             "hidden_prompt": "user uses 'I've been to + place' or 'I have visited + place'",
             "hint_en": "I've been to Italy.",
@@ -173,7 +177,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Dizer algo que você nunca fez",
             "label_en": "Say something you've never done",
             "hidden_prompt": "user uses 'I've never + past participle'",
             "hint_en": "I've never tried sushi.",
@@ -190,7 +193,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Have you ever + past participle?'",
             "hint_en": "Have you ever been to Japan?",
@@ -220,12 +222,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about your life experiences. Practice Have you ever / I've never.",
-        "intro_pt": "Charlotte pergunta sobre suas experiências de vida. Pratique 'Have you ever / I've never'.",
         "opening_message": "What's the most adventurous thing you've ever done?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Dizer experiência aventureira",
             "label_en": "Say adventurous experience",
             "hidden_prompt": "user uses 'I've + past participle'",
             "hint_en": "I've gone skydiving.",
@@ -242,7 +242,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Dizer algo nunca feito",
             "label_en": "Say something never done",
             "hidden_prompt": "user uses 'I've never + past participle'",
             "hint_en": "I've never climbed a mountain.",
@@ -259,7 +258,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Have you ever + past participle?'",
             "hint_en": "Have you ever traveled solo?",
@@ -310,7 +308,7 @@
             "red"
           ],
           "answer": "read",
-          "explanation": "\"Read\" past participle = \"read\" (same spelling, /red/ pronunciation)."
+          "explanation": "\"Read\" past participle = \"read\" (same spelling, but pronounced like the color \"red\")."
         },
         {
           "type": "word_bank",
@@ -341,6 +339,11 @@
           "sentence": "I have _____ a great movie.",
           "hint": "past participle of \"see\"",
           "answer": "seen",
+          "accepts": [
+            "watched",
+            "found",
+            "made"
+          ],
           "explanation": "\"See\" → \"saw\" → \"seen\" (past participle)."
         },
         {
@@ -348,6 +351,13 @@
           "sentence": "She has _____ a new book.",
           "hint": "past participle of \"write\"",
           "answer": "written",
+          "accepts": [
+            "read",
+            "bought",
+            "published",
+            "finished",
+            "started"
+          ],
           "explanation": "\"Write\" → \"wrote\" → \"written\"."
         },
         {
@@ -355,6 +365,11 @@
           "sentence": "We have _____ a lot of work.",
           "hint": "past participle of \"do\"",
           "answer": "done",
+          "accepts": [
+            "had",
+            "finished",
+            "got"
+          ],
           "explanation": "\"Do\" → \"did\" → \"done\"."
         },
         {
@@ -387,7 +402,7 @@
         },
         {
           "text": "She has read that book.",
-          "context": "read /red/",
+          "context": "read (pronounced like \"red\")",
           "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/de55a814d38cf727.flac"
         },
         {
@@ -408,7 +423,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about your accomplishments and experiences.",
-        "scenario_pt": "Charlotte pergunta sobre suas conquistas e experiências.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -417,7 +431,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Lugar onde você esteve",
             "label_en": "Place you've been",
             "hidden_prompt": "user uses 'I've been to + place'",
             "hint_en": "I've been to Argentina.",
@@ -437,7 +450,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Comida que você comeu (eaten/tried)",
             "label_en": "Food you've eaten (eaten/tried)",
             "hidden_prompt": "user uses 'I've eaten + food' or 'I've tried + food'",
             "hint_en": "I've eaten sushi.",
@@ -457,7 +469,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Algo que você fez (done/seen/read)",
             "label_en": "Something you've done (done/seen/read)",
             "hidden_prompt": "user uses 'I've done/seen/read + something'",
             "hint_en": "I've read three books this month.",
@@ -490,12 +501,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about your life list. Practice past participles.",
-        "intro_pt": "Charlotte pergunta sobre sua lista de vida. Pratique past participles.",
         "opening_message": "What have you achieved in your life so far?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Falar sobre conquista (feito/aprendido/terminado)",
             "label_en": "Achievement (done/learned/finished)",
             "hidden_prompt": "user uses 'I've done/learned/finished + something'",
             "hint_en": "I've learned English.",
@@ -515,7 +524,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra experiência",
             "label_en": "Another experience",
             "hidden_prompt": "user uses another past participle",
             "hint_en": "I've traveled to Europe.",
@@ -535,7 +543,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What have you done?'",
             "hint_en": "What have you achieved?",
@@ -611,13 +618,16 @@
             "since"
           ],
           "answer": "yet",
-          "explanation": "\"Yet\" at end of negative sentence: \"I haven't / have not seen it yet\" = ainda não."
+          "explanation": "\"Yet\" at end of negative sentence: \"I haven't seen it yet\" = ainda não."
         },
         {
           "type": "fill_gap",
           "sentence": "She has _____ left the office.",
           "hint": "a moment ago",
           "answer": "just",
+          "accepts": [
+            "already"
+          ],
           "explanation": "\"Just\" — recent action. \"She has just left\"."
         },
         {
@@ -625,7 +635,10 @@
           "sentence": "I've _____ done my homework — finished an hour ago.",
           "hint": "sooner than expected",
           "answer": "already",
-          "explanation": "\"Already\" = before now (sooner). \"I've / I have already done\"."
+          "accepts": [
+            "just"
+          ],
+          "explanation": "\"Already\" = before now (sooner). \"I've already done\"."
         },
         {
           "type": "fill_gap",
@@ -639,6 +652,10 @@
           "sentence": "I've yet seen that movie.",
           "hint": "yet goes at end, not middle",
           "answer": "I haven't seen that movie yet.",
+          "accepts": [
+            "I've already seen that movie.",
+            "I have already seen that movie."
+          ],
           "explanation": "\"Yet\" goes at END of negative/question, not between have/has and verb. Used with negative."
         },
         {
@@ -653,7 +670,7 @@
           "passage": "I've just finished my report. I've already eaten lunch. I haven't called my mom yet — I'll do it soon.",
           "question": "What hasn't the speaker done yet?",
           "answer": "called my mom",
-          "explanation": "The text says \"I haven't / have not called my mom yet\"."
+          "explanation": "The text says \"I haven't called my mom yet\"."
         }
       ],
       "listening_speaking": [
@@ -685,7 +702,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte checks your progress on a list of tasks.",
-        "scenario_pt": "Charlotte verifica seu progresso em uma lista de tarefas.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -694,7 +710,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Dizer o que você já fez",
             "label_en": "Say what you've already done",
             "hidden_prompt": "user uses 'I've already + past participle'",
             "hint_en": "I've already finished my report.",
@@ -711,7 +726,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Dizer o que você acabou de fazer",
             "label_en": "Say what you just did",
             "hidden_prompt": "user uses 'I've just + past participle'",
             "hint_en": "I've just had lunch.",
@@ -728,7 +742,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Dizer o que você ainda não fez",
             "label_en": "Say what you haven't done yet",
             "hidden_prompt": "user uses 'I haven't + past participle + yet'",
             "hint_en": "I haven't called my mom yet.",
@@ -758,12 +771,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about today's completed and pending tasks. Practice just/already/yet.",
-        "intro_pt": "Charlotte pergunta sobre as tarefas concluídas e pendentes de hoje. Pratique just/already/yet.",
         "opening_message": "What have you already done today?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Já feito",
             "label_en": "Already done",
             "hidden_prompt": "user uses 'I've already + past participle'",
             "hint_en": "I've already worked out.",
@@ -780,7 +791,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Ainda não",
             "label_en": "Not yet",
             "hidden_prompt": "user uses 'I haven't + past participle + yet'",
             "hint_en": "I haven't started cooking yet.",
@@ -797,7 +807,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_en": "How about you?",
@@ -886,7 +895,10 @@
           "sentence": "\"No, she _____.\" (response to \"Has she finished?\")",
           "hint": "Short answer negative (contracted)",
           "answer": "hasn't",
-          "explanation": "\"No, she hasn't / has not\" — short negative answer."
+          "accepts": [
+            "has not"
+          ],
+          "explanation": "\"No, she hasn't\" — short negative answer."
         },
         {
           "type": "fill_gap",
@@ -907,6 +919,9 @@
           "sentence": "Have you ever go to Italy?",
           "hint": "After Have, past participle",
           "answer": "Have you ever been to Italy?",
+          "accepts": [
+            "Have you ever gone to Italy?"
+          ],
           "explanation": "After \"Have\", use past participle. For experiences = \"been\" (not \"go\" or \"gone\")."
         },
         {
@@ -917,7 +932,7 @@
           "accepts": [
             "she hasn't"
           ],
-          "explanation": "The text says \"No, she hasn't / has not\"."
+          "explanation": "The text says \"No, she hasn't\"."
         }
       ],
       "listening_speaking": [
@@ -949,7 +964,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte plays \"experiences quiz\" with you.",
-        "scenario_pt": "Charlotte faz um quiz de experiências com você.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -958,7 +972,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pergunta com 'Have you ever'",
             "label_en": "Question with 'Have you ever'",
             "hidden_prompt": "user asks 'Have you ever + past participle?'",
             "hint_en": "Have you ever traveled abroad?",
@@ -978,7 +991,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra pergunta 'Have you'",
             "label_en": "Another 'Have you' question",
             "hidden_prompt": "user asks another 'Have you + past participle?'",
             "hint_en": "Have you eaten sushi?",
@@ -998,7 +1010,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar sobre alguém (Has)",
             "label_en": "Ask about someone (Has)",
             "hidden_prompt": "user asks 'Has + 3rd person + past participle?'",
             "hint_en": "Has your sister been to Europe?",
@@ -1031,12 +1042,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats about lifetime experiences. Practice Have/Has questions.",
-        "intro_pt": "Charlotte conversa sobre experiências de vida. Pratique perguntas com Have/Has.",
         "opening_message": "What's something you've always wanted to do?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder e contar experiência",
             "label_en": "Answer and tell experience",
             "hidden_prompt": "user uses 'I've always wanted to + base' or 'I've + past participle'",
             "hint_en": "I've always wanted to visit Japan.",
@@ -1056,7 +1065,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Perguntar 'Have you ever'",
             "label_en": "Ask 'Have you ever'",
             "hidden_prompt": "user asks 'Have you ever + past participle?'",
             "hint_en": "Have you ever been there?",
@@ -1076,7 +1084,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Mais uma pergunta",
             "label_en": "One more question",
             "hidden_prompt": "user asks another 'Have you...?'",
             "hint_en": "Have you traveled solo?",
@@ -1128,7 +1135,7 @@
             "red"
           ],
           "answer": "read",
-          "explanation": "Past participle of read = read (same spelling, /red/)."
+          "explanation": "Past participle of read = read (same spelling, pronounced like \"red\")."
         },
         {
           "type": "word_bank",
@@ -1159,6 +1166,12 @@
           "sentence": "I have _____ finished my project.",
           "hint": "just (recent)",
           "answer": "just",
+          "accepts": [
+            "already",
+            "finally",
+            "nearly",
+            "almost"
+          ],
           "explanation": "\"I have just finished\" — recent."
         },
         {
@@ -1166,6 +1179,9 @@
           "sentence": "She has _____ eaten breakfast.",
           "hint": "already (sooner)",
           "answer": "already",
+          "accepts": [
+            "just"
+          ],
           "explanation": "\"Already\" — between has and past participle."
         },
         {
@@ -1226,7 +1242,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks for your \"life summary\".",
-        "scenario_pt": "Charlotte pede seu \"resumo de vida\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1235,7 +1250,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Falar sobre experiência importante (I've + past participle)",
             "label_en": "Major experience (I've + past participle)",
             "hidden_prompt": "user uses 'I've + past participle' for major experience",
             "hint_en": "I've traveled to Italy.",
@@ -1252,7 +1266,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Falar sobre conquista (just/already)",
             "label_en": "Achievement (just/already)",
             "hidden_prompt": "user uses 'I've just/already + past participle'",
             "hint_en": "I've just finished my degree.",
@@ -1269,7 +1282,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Algo ainda não feito",
             "label_en": "Something not yet done",
             "hidden_prompt": "user uses 'I haven't + past participle + yet'",
             "hint_en": "I haven't traveled to Asia yet.",
@@ -1299,12 +1311,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites life reflection. Integrate all PP forms.",
-        "intro_pt": "Charlotte convida para uma reflexão sobre a vida. Integre todas as formas de PP.",
         "opening_message": "What's your life story so far in three sentences?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Falar sobre experiência principal",
             "label_en": "Main experience",
             "hidden_prompt": "user uses 'I've + past participle'",
             "hint_en": "I've grown up in Brazil.",
@@ -1321,7 +1331,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Recente (just/already)",
             "label_en": "Recent (just/already)",
             "hidden_prompt": "user uses 'I've just/already + past participle'",
             "hint_en": "I've just started learning English.",
@@ -1338,7 +1347,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What about you?'",
             "hint_en": "How about you?",

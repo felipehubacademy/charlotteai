@@ -94,6 +94,9 @@
           "sentence": "This test is _____ than the last one — only ten questions!",
           "hint": "Comparativo de \"easy\"",
           "answer": "easier",
+          "accepts": [
+            "shorter"
+          ],
           "explanation": "\"Easy\" → \"easier\" (y → ier). Adjetivos em -y trocam y por -ier."
         },
         {
@@ -119,7 +122,7 @@
             "her",
             "his brother"
           ],
-          "explanation": "O texto diz \"he's / he is older than me\" se referindo ao irmão."
+          "explanation": "O texto diz \"he's older than me\" se referindo ao irmão."
         }
       ],
       "listening_speaking": [
@@ -335,6 +338,11 @@
           "sentence": "Yoga is _____ than running — perfect for stress.",
           "hint": "Comparativo longo de \"relaxing\"",
           "answer": "more relaxing",
+          "accepts": [
+            "calmer",
+            "more calming",
+            "more peaceful"
+          ],
           "explanation": "\"Relaxing\" tem 3 sílabas → \"more relaxing\"."
         },
         {
@@ -342,6 +350,12 @@
           "sentence": "This puzzle is _____ than the last one — it's taking hours.",
           "hint": "Comparativo longo de \"challenging\"",
           "answer": "more challenging",
+          "accepts": [
+            "harder",
+            "more difficult",
+            "more complicated",
+            "longer"
+          ],
           "explanation": "\"Challenging\" 3+ sílabas → \"more challenging\"."
         },
         {
@@ -349,6 +363,11 @@
           "sentence": "She is _____ than him — she always solves the hardest problems.",
           "hint": "Comparativo longo de \"intelligent\"",
           "answer": "more intelligent",
+          "accepts": [
+            "smarter",
+            "cleverer",
+            "brighter"
+          ],
           "explanation": "\"Intelligent\" 4 sílabas → \"more intelligent\". Sem -er."
         },
         {
@@ -602,6 +621,9 @@
           "sentence": "He has _____ friends than me.",
           "hint": "Comparativo de \"few/little\" (mais)",
           "answer": "more",
+          "accepts": [
+            "fewer"
+          ],
           "explanation": "\"More\" é o comparativo de quantidade — tanto countable quanto uncountable."
         },
         {
@@ -840,6 +862,11 @@
           "sentence": "My car is _____ better than my old one.",
           "hint": "Intensifier (muito mais)",
           "answer": "much",
+          "accepts": [
+            "far",
+            "a lot",
+            "way"
+          ],
           "explanation": "\"Much better\" = bem melhor. Padrão pra intensificar comparativos."
         },
         {
@@ -847,6 +874,12 @@
           "sentence": "She is _____ more patient than I am.",
           "hint": "Modificador suave (um pouco)",
           "answer": "a little",
+          "accepts": [
+            "a bit",
+            "much",
+            "far",
+            "a lot"
+          ],
           "explanation": "\"A little more patient\" = um pouco mais paciente. Suaviza."
         },
         {
@@ -854,6 +887,12 @@
           "sentence": "This room is _____ smaller than that one.",
           "hint": "Modificador suave (um pouco)",
           "answer": "a bit",
+          "accepts": [
+            "a little",
+            "much",
+            "far",
+            "a lot"
+          ],
           "explanation": "\"A bit smaller\" = um pouco menor. Sinônimo de \"a little\"."
         },
         {
@@ -861,6 +900,12 @@
           "sentence": "She is very taller than me.",
           "hint": "\"Very\" não vai com comparativo",
           "answer": "She is much taller than me.",
+          "accepts": [
+            "She is far taller than me.",
+            "She is a lot taller than me.",
+            "She is a bit taller than me.",
+            "She is a little taller than me."
+          ],
           "explanation": "Com comparativo usa \"much\", não \"very\". \"Very + adjetivo simples\" (very tall); \"Much + comparativo\" (much taller)."
         },
         {
@@ -976,7 +1021,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_pt": "Charlotte explora intensidades de comparação. Pratica much/a little/a bit + comparativo.",
-        "opening_message": "Big or small differences this week?",
+        "opening_message": "Was this week very different from last week, or just a little?",
         "objectives": [
           {
             "id": 1,
@@ -1028,7 +1073,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Subtle observations!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Big or small differences this week?\"\n2. **Student**: \"Today is much hotter.\"\n3. **Charlotte**: \"Small ones?\"\n4. **Student**: \"My coffee is a little stronger today.\"\n5. **Charlotte**: \"Interesting.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Same hot week here. Subtle observations!\"\n\n> N04 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Was this week very different from last week, or just a little?\"\n2. **Student**: \"Today is much hotter.\"\n3. **Charlotte**: \"Small ones?\"\n4. **Student**: \"My coffee is a little stronger today.\"\n5. **Charlotte**: \"Interesting.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Same hot week here. Subtle observations!\"\n\n> N04 chat = LLM puro.\n\n---"
       }
     },
     {
@@ -1130,7 +1175,7 @@
             "her sister",
             "the sister"
           ],
-          "explanation": "O texto diz \"She's / She is a better listener\" — se referindo à irmã (melhor ouvinte que o falante e o irmão)."
+          "explanation": "O texto diz \"She's a better listener\" — se referindo à irmã (melhor ouvinte que o falante e o irmão)."
         }
       ],
       "listening_speaking": [
@@ -1166,7 +1211,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 90,
-        "opening_line": "Three comparisons — one short adj, one long, one irregular!",
+        "opening_line": "Give me three comparisons: one with a short adjective, one with a long adjective and one irregular!",
         "objectives": [
           {
             "id": 1,
@@ -1218,7 +1263,7 @@
           }
         ],
         "closing_cue": "Charlotte fecha com \"Comparison master!\" quando obj_3 baterem.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three comparisons — one short adj, one long, one irregular!\"\n2. **Student**: ~\"I'm taller than my sister.\"\n3. **Charlotte**: \"Long adj?\"\n4. **Student**: ~\"This is more interesting than that.\"\n5. **Charlotte**: \"Irregular?\"\n6. **Student**: ~\"Today is better than yesterday.\"\n7. **Charlotte**: \"Comparison master!\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Give me three comparisons: one with a short adjective, one with a long adjective and one irregular!\"\n2. **Student**: ~\"I'm taller than my sister.\"\n3. **Charlotte**: \"Long adj?\"\n4. **Student**: ~\"This is more interesting than that.\"\n5. **Charlotte**: \"Irregular?\"\n6. **Student**: ~\"Today is better than yesterday.\"\n7. **Charlotte**: \"Comparison master!\"",
         "evaluation_focus": [
           "Tipo correto por tamanho de adjetivo",
           "Irregular memorizado",
@@ -1231,7 +1276,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_pt": "Charlotte abre chat de comparações variadas. Mostra que domina curtos, longos e irregulares.",
-        "opening_message": "Compare three things in your life right now.",
+        "opening_message": "Let's compare! Pick three things in your life and compare them.",
         "objectives": [
           {
             "id": 1,
@@ -1283,7 +1328,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"All comparison types covered!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Compare three things in your life right now.\"\n2. **Student**: \"Coffee is cheaper than wine.\"\n3. **Charlotte**: \"Long adj next?\"\n4. **Student**: \"My job is more difficult now.\"\n5. **Charlotte**: \"Tough.\"\n6. **Student**: \"My life is better today.\"\n7. **Charlotte**: \"All comparison types covered!\"\n\n> N05 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Let's compare! Pick three things in your life and compare them.\"\n2. **Student**: \"Coffee is cheaper than wine.\"\n3. **Charlotte**: \"Long adj next?\"\n4. **Student**: \"My job is more difficult now.\"\n5. **Charlotte**: \"Tough.\"\n6. **Student**: \"My life is better today.\"\n7. **Charlotte**: \"All comparison types covered!\"\n\n> N05 chat = LLM puro.\n\n---"
       }
     }
   ],

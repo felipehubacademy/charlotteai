@@ -107,7 +107,8 @@
           "hint": "\"Não\" informal que termina em \"pe\"",
           "answer": "Nope",
           "accepts": [
-            "Nah"
+            "Nah",
+            "No"
           ],
           "explanation": "\"Nope\" é \"não\" informal, mais seco que \"nah\". Os dois são para conversa entre amigos."
         },
@@ -136,23 +137,28 @@
       "listening_speaking": [
         {
           "text": "For real? That's crazy, my friend!",
-          "context": "reagir a uma novidade"
+          "context": "reagir a uma novidade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/0394e8e5a12c50f3.mp3"
         },
         {
           "text": "No way! The concert is free?",
-          "context": "surpresa boa"
+          "context": "surpresa boa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/a7f5841b16155f0e.mp3"
         },
         {
           "text": "Nah, I'm good, thanks a lot.",
-          "context": "recusar com leveza"
+          "context": "recusar com leveza",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/443af21d76bd8203.mp3"
         },
         {
           "text": "Yeah, for sure! Let's go tonight.",
-          "context": "aceitar animado"
+          "context": "aceitar animado",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/81ce7b5ad30218fc.mp3"
         },
         {
           "text": "For real, I swear it's true.",
-          "context": "confirmar que é sério"
+          "context": "confirmar que é sério",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/bd8e81469b9be4b4.mp3"
         }
       ],
       "roleplay": {
@@ -336,6 +342,11 @@
           "sentence": "What's _____, bro? Long time no see!",
           "hint": "E aí? (What's ___?)",
           "answer": "up",
+          "accepts": [
+            "good",
+            "new",
+            "happening"
+          ],
           "explanation": "\"What's up?\" = e aí? Resposta comum: \"Not much!\" ou \"All good!\"."
         },
         {
@@ -364,6 +375,10 @@
           "sentence": "My bad, I'm sorry very much.",
           "hint": "Deixe só o pedido informal (ou \"I'm so sorry\")",
           "answer": "My bad, I'm so sorry.",
+          "accepts": [
+            "My bad, I'm very sorry.",
+            "My bad, I'm really sorry."
+          ],
           "explanation": "\"I'm sorry very much\" não existe. Use \"I'm so sorry\" ou só \"My bad\" para coisas pequenas."
         },
         {
@@ -377,23 +392,28 @@
       "listening_speaking": [
         {
           "text": "What's up, bro? Long time no see!",
-          "context": "cumprimentar um amigo"
+          "context": "cumprimentar um amigo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/a69041c5d865a3d1.mp3"
         },
         {
           "text": "Bro, can you give me a hand?",
-          "context": "pedir ajuda informal"
+          "context": "pedir ajuda informal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/895ebafd926cac61.mp3"
         },
         {
           "text": "My bad, bro, that was my fault.",
-          "context": "foi mal"
+          "context": "foi mal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/6fd98924dac8066b.mp3"
         },
         {
           "text": "No worries, we're all good here.",
-          "context": "de boa"
+          "context": "de boa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/7a927f219892d107.mp3"
         },
         {
           "text": "Let's go! One more game, my friend!",
-          "context": "energia na quadra"
+          "context": "energia na quadra",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/5650c00ae26f595a.mp3"
         }
       ],
       "roleplay": {
@@ -584,6 +604,9 @@
           "sentence": "Excuse me, could you be _____, please?",
           "hint": "Quieto, em silêncio",
           "answer": "quiet",
+          "accepts": [
+            "silent"
+          ],
           "explanation": "O jeito seguro de pedir silêncio para qualquer pessoa."
         },
         {
@@ -598,6 +621,12 @@
           "sentence": "Shut up, please, the movie started.",
           "hint": "\"Shut up\" é rude; troque pelo pedido educado",
           "answer": "Could you be quiet, please? The movie started.",
+          "accepts": [
+            "Can you be quiet, please? The movie started.",
+            "Could you please be quiet? The movie started.",
+            "Please be quiet, the movie started.",
+            "Could you be quiet, please?"
+          ],
           "explanation": "Mesmo com \"please\", \"shut up\" é grosseiro com desconhecidos. Use \"Could you be quiet, please?\"."
         },
         {
@@ -618,23 +647,28 @@
       "listening_speaking": [
         {
           "text": "Get out of here! That's amazing news!",
-          "context": "surpresa boa"
+          "context": "surpresa boa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/81e43fa46c4d989b.mp3"
         },
         {
           "text": "Could you be quiet, please? Thank you.",
-          "context": "pedir silêncio com educação"
+          "context": "pedir silêncio com educação",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/073a6146a587bdc2.mp3"
         },
         {
           "text": "No way! Get out of here, for real?",
-          "context": "reação animada"
+          "context": "reação animada",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/397ea8f57b1843d8.mp3"
         },
         {
           "text": "Excuse me, could you please be quiet?",
-          "context": "pedir silêncio no cinema"
+          "context": "pedir silêncio no cinema",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8f423010e5f3a474.mp3"
         },
         {
           "text": "That's amazing, I'm so happy for you!",
-          "context": "comemorar com alguém"
+          "context": "comemorar com alguém",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/05a856ceafa1570f.mp3"
         }
       ],
       "roleplay": {
@@ -842,6 +876,13 @@
           "sentence": "Damn, sir, can you help me?",
           "hint": "Com desconhecidos, troque o palavrão por algo neutro",
           "answer": "Excuse me, sir, can you help me?",
+          "accepts": [
+            "Sorry, sir, can you help me?",
+            "Hi, sir, can you help me?",
+            "Hello, sir, can you help me?",
+            "Sir, can you help me?",
+            "Excuse me, can you help me?"
+          ],
           "explanation": "Palavrão com desconhecido soa grosseiro. Com \"Excuse me\" você chega com educação."
         },
         {
@@ -862,23 +903,28 @@
       "listening_speaking": [
         {
           "text": "Oh no! I missed the bus again.",
-          "context": "frustração do jeito seguro"
+          "context": "frustração do jeito seguro",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/5b315bb162012cc6.mp3"
         },
         {
           "text": "That's not true, I was there!",
-          "context": "discordar sem palavrão"
+          "context": "discordar sem palavrão",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/efa661e07e7b2fab.mp3"
         },
         {
           "text": "The museum isn't open on Monday.",
-          "context": "forma padrão no lugar de \"ain't\""
+          "context": "forma padrão no lugar de \"ain't\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/1a4d5776a1281505.mp3"
         },
         {
           "text": "I'm not hungry right now, thanks.",
-          "context": "negar sem gíria"
+          "context": "negar sem gíria",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e3dfe727179a96fc.mp3"
         },
         {
           "text": "Oh man, that's not right!",
-          "context": "reclamar sem ofender"
+          "context": "reclamar sem ofender",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/f190056e9ab60378.mp3"
         }
       ],
       "roleplay": {
@@ -1090,6 +1136,9 @@
           "sentence": "That ain't fair, bro.",
           "hint": "Troque a gíria pela forma padrão",
           "answer": "That isn't fair, bro.",
+          "accepts": [
+            "That is not fair, bro."
+          ],
           "explanation": "\"That isn't fair\" (ou \"That's not fair\"). Revisão da F19."
         },
         {
@@ -1103,23 +1152,28 @@
       "listening_speaking": [
         {
           "text": "No way! Did you see that dunk?",
-          "context": "reagir a uma jogada"
+          "context": "reagir a uma jogada",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/c843b742ddfc26b2.mp3"
         },
         {
           "text": "For real, that was championship stuff!",
-          "context": "comentar o jogo"
+          "context": "comentar o jogo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/ef05d10a7402e05f.mp3"
         },
         {
           "text": "Bro, can you give me a hand here?",
-          "context": "pedir ajuda na arquibancada"
+          "context": "pedir ajuda na arquibancada",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/dedc7d38c61fa1de.mp3"
         },
         {
           "text": "My bad, I spilled your soda, bro.",
-          "context": "foi mal"
+          "context": "foi mal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e7e834cba1955e67.mp3"
         },
         {
           "text": "Let's go! We got this, my friend!",
-          "context": "torcer"
+          "context": "torcer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/c100bf07dac840f5.mp3"
         }
       ],
       "roleplay": {

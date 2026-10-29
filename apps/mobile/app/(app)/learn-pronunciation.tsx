@@ -12,6 +12,7 @@ import {
   CheckCircle, XCircle, SpeakerHigh, Headphones,
 } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
+import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import * as Haptics from '@/lib/hapticsGated';
 import * as FileSystem from 'expo-file-system/legacy';
 import { useAuth } from '@/hooks/useAuth';
@@ -23,6 +24,7 @@ import Constants from 'expo-constants';
 import { useAudioRecorder, RecordingPresets, RecordingOptions, IOSOutputFormat, AudioQuality } from 'expo-audio';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
 import BluetoothMicHint from '@/components/BluetoothMicHint';
+import { goBack } from '@/lib/goBack';
 
 // ── Palette ────────────────────────────────────────────────────
 const C = {
@@ -395,7 +397,7 @@ export default function LearnPronunciationScreen() {
           >
             <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>Start again</AppText>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.back()}>
+          <TouchableOpacity onPress={() => goBack()}>
             <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>Back to home</AppText>
           </TouchableOpacity>
         </View>
@@ -413,9 +415,16 @@ export default function LearnPronunciationScreen() {
         borderBottomWidth: 1, borderBottomColor: C.border,
         backgroundColor: C.card,
       }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
-          <ArrowLeft size={22} color={C.navy} weight="bold" />
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+          <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+            <ArrowLeft size={22} color={C.navy} weight="bold" />
+          </TouchableOpacity>
+          {/* Reportar problema neste exercício. */}
+          <ReportIssueButton
+            kind="speech"
+            getContext={() => ({ screen: 'practice-pronunciation', level: userLevel, exercise: { phrase, result: assessmentResult } as unknown as Record<string, unknown>, transcript: (assessmentResult as { recognizedText?: string } | null)?.recognizedText ?? null })}
+          />
+        </View>
         <View style={{ flex: 1, alignItems: 'center' }}>
           <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>
             Pronunciation
@@ -426,7 +435,7 @@ export default function LearnPronunciationScreen() {
         </TouchableOpacity>
       </View>
 
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
         <ScrollView
           style={{ flex: 1, backgroundColor: C.bg }}
           contentContainerStyle={{ padding: 20, paddingBottom: 24, flexGrow: 1 }}

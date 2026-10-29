@@ -80,6 +80,9 @@
           "sentence": "I have _____ money on me.",
           "hint": "small amount (uncountable)",
           "answer": "a little",
+          "accepts": [
+            "some"
+          ],
           "explanation": "\"Money\" uncountable → \"a little\"."
         },
         {
@@ -87,6 +90,11 @@
           "sentence": "She invited _____ friends.",
           "hint": "small number (countable)",
           "answer": "a few",
+          "accepts": [
+            "some",
+            "several",
+            "many"
+          ],
           "explanation": "\"Friends\" countable → \"a few\"."
         },
         {
@@ -94,6 +102,10 @@
           "sentence": "Add _____ salt.",
           "hint": "uncountable",
           "answer": "a little",
+          "accepts": [
+            "some",
+            "more"
+          ],
           "explanation": "\"Salt\" uncountable → \"a little\"."
         },
         {
@@ -147,7 +159,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about your resources — friends, time, money.",
-        "scenario_pt": "Charlotte pergunta sobre seus recursos — amigos, tempo, dinheiro.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -156,7 +167,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Quantidade contável",
             "label_en": "Countable quantity",
             "hidden_prompt": "user uses 'I have a few + plural'",
             "hint_en": "I have a few close friends.",
@@ -176,7 +186,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Quantidade incontável",
             "label_en": "Uncountable quantity",
             "hidden_prompt": "user uses 'I have a little + uncountable'",
             "hint_en": "I have a little time.",
@@ -196,7 +205,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Mais um quantificador",
             "label_en": "One more quantifier",
             "hidden_prompt": "user uses a few or a little correctly",
             "hint_en": "I have a little money.",
@@ -229,12 +237,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about your kitchen. Practice 'a few/a little'.",
-        "intro_pt": "Charlotte pergunta sobre sua cozinha. Pratique 'a few/a little'.",
         "opening_message": "What do you have in your kitchen right now?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Item contável",
             "label_en": "Countable item",
             "hidden_prompt": "user uses 'a few + plural noun'",
             "hint_en": "I have a few apples.",
@@ -254,7 +260,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Item incontável",
             "label_en": "Uncountable item",
             "hidden_prompt": "user uses 'a little + uncountable'",
             "hint_en": "I have a little milk.",
@@ -274,7 +279,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what she has",
             "hint_en": "What do you have?",
@@ -429,7 +433,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte distinguishes positive vs negative quantities.",
-        "scenario_pt": "Charlotte distingue quantidades positivas de negativas.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -438,7 +441,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Poucas negativas",
             "label_en": "Few negative",
             "hidden_prompt": "user uses 'few + plural' meaning almost none",
             "hint_en": "I have few options.",
@@ -458,7 +460,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Dizer alguns positivos",
             "label_en": "A few positive",
             "hidden_prompt": "user uses 'a few + plural' meaning some",
             "hint_en": "I have a few hobbies.",
@@ -478,7 +479,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Diferenciar 'little' ou 'a little'",
             "label_en": "Little or a little",
             "hidden_prompt": "user uses 'little' or 'a little' with uncountable",
             "hint_en": "I have little time.",
@@ -511,12 +511,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores subtle quantifiers.",
-        "intro_pt": "Charlotte explora quantificadores sutis.",
         "opening_message": "Tell me: little or a little?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Negativo",
             "label_en": "Negative",
             "hidden_prompt": "user uses 'few/little' (negative)",
             "hint_en": "I have little patience today.",
@@ -536,7 +534,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Positivo",
             "label_en": "Positive",
             "hidden_prompt": "user uses 'a few/a little' (positive)",
             "hint_en": "I have a few free hours.",
@@ -556,7 +553,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_en": "How about you?",
@@ -639,6 +635,11 @@
           "sentence": "I have _____ books to read this summer.",
           "hint": "lots",
           "answer": "plenty of",
+          "accepts": [
+            "a lot of",
+            "lots of",
+            "many"
+          ],
           "explanation": "\"Plenty of books\" — abundance."
         },
         {
@@ -646,6 +647,11 @@
           "sentence": "There's _____ rain this year.",
           "hint": "almost none",
           "answer": "hardly any",
+          "accepts": [
+            "little",
+            "no",
+            "not much"
+          ],
           "explanation": "\"Hardly any rain\" — scarcity."
         },
         {
@@ -653,6 +659,10 @@
           "sentence": "We had _____ visitors yesterday.",
           "hint": "very few",
           "answer": "hardly any",
+          "accepts": [
+            "few",
+            "no"
+          ],
           "explanation": "\"Hardly any visitors\" — almost no one came."
         },
         {
@@ -710,7 +720,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about your resources — abundance vs scarcity.",
-        "scenario_pt": "Charlotte pergunta sobre seus recursos — abundância vs escassez.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -719,7 +728,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Falar sobre abundância",
             "label_en": "Abundance",
             "hidden_prompt": "user uses 'I have plenty of + noun'",
             "hint_en": "I have plenty of books.",
@@ -736,7 +744,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Escassez",
             "label_en": "Scarcity",
             "hidden_prompt": "user uses 'I have hardly any + noun'",
             "hint_en": "I have hardly any free time.",
@@ -753,7 +760,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Mais um",
             "label_en": "One more",
             "hidden_prompt": "user uses another plenty of or hardly any",
             "hint_en": "We have plenty of work.",
@@ -783,17 +789,15 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores resources. Practice plenty of / hardly any.",
-        "intro_pt": "Charlotte explora recursos. Pratique plenty of / hardly any.",
         "opening_message": "What's in abundance in your life right now?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Falar sobre abundância",
             "label_en": "Abundance",
             "hidden_prompt": "user uses 'plenty of'",
-            "hint_en": "Plenty of work.",
+            "hint_en": "I have plenty of work.",
             "examples_pass": [
-              "Plenty of work.",
+              "I have plenty of work.",
               "We have plenty of time.",
               "I have hardly any money."
             ],
@@ -805,7 +809,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Escassez",
             "label_en": "Scarcity",
             "hidden_prompt": "user uses 'hardly any'",
             "hint_en": "Hardly any sleep.",
@@ -822,7 +825,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_en": "How about you?",
@@ -839,7 +841,7 @@
           }
         ],
         "closing_cue": "Charlotte closes with \"Life snapshot!\" when obj_3 hits.",
-        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What's in abundance in your life right now?\"\n2. **Student**: \"Plenty of work.\"\n3. **Charlotte**: \"Scarce?\"\n4. **Student**: \"Hardly any sleep.\"\n5. **Charlotte**: \"Common pairing.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Plenty of books, hardly any quiet. Life snapshot!\"\n\n> I03 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What's in abundance in your life right now?\"\n2. **Student**: \"I have plenty of work.\"\n3. **Charlotte**: \"Scarce?\"\n4. **Student**: \"Hardly any sleep.\"\n5. **Charlotte**: \"Common pairing.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Plenty of books, hardly any quiet. Life snapshot!\"\n\n> I03 chat = LLM puro.\n\n---"
       }
     },
     {
@@ -902,6 +904,12 @@
           "sentence": "There are _____ ways to do this.",
           "hint": "more than a few (3+)",
           "answer": "several",
+          "accepts": [
+            "many",
+            "a few",
+            "some",
+            "lots of"
+          ],
           "explanation": "\"Several ways\" — multiple options."
         },
         {
@@ -909,6 +917,12 @@
           "sentence": "_____ people like coffee.",
           "hint": "majority",
           "answer": "Most",
+          "accepts": [
+            "Many",
+            "Some",
+            "A lot of",
+            "Lots of"
+          ],
           "explanation": "\"Most people\" — general majority."
         },
         {
@@ -916,6 +930,13 @@
           "sentence": "_____ of my friends live abroad.",
           "hint": "majority of specific group",
           "answer": "Most",
+          "accepts": [
+            "Many",
+            "Some",
+            "A few",
+            "Several",
+            "All"
+          ],
           "explanation": "\"Most of + the/my + plural\"."
         },
         {
@@ -975,16 +996,14 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about your collections and majorities.",
-        "scenario_pt": "Charlotte pergunta sobre suas coleções e maiorias.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 180,
-        "opening_line": "Tell me using 'several' and 'most'.",
+        "opening_line": "Tell me about the things you collect. Try to use 'several' and 'most'.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo com vários",
             "label_en": "Something with several",
             "hidden_prompt": "user uses 'several + plural'",
             "hint_en": "I have several hobbies.",
@@ -1004,7 +1023,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Most + plural geral",
             "label_en": "Most + general plural",
             "hidden_prompt": "user uses 'Most + general plural'",
             "hint_en": "Most people drink coffee.",
@@ -1024,7 +1042,6 @@
           },
           {
             "id": 3,
-            "label_pt": "A maioria dos/as",
             "label_en": "Most of the/my",
             "hidden_prompt": "user uses 'Most of the/my + plural'",
             "hint_en": "Most of my friends live in São Paulo.",
@@ -1044,7 +1061,7 @@
           }
         ],
         "closing_cue": "Charlotte closes with \"Precise quantities!\" when obj_3 hits.",
-        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Tell me using 'several' and 'most'.\"\n2. **Student**: ~\"I have several hobbies.\"\n3. **Charlotte**: \"Majority?\"\n4. **Student**: ~\"Most people drink coffee.\"\n5. **Charlotte**: \"Specific?\"\n6. **Student**: ~\"Most of my friends live in São Paulo.\"\n7. **Charlotte**: \"Precise quantities!\"",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Tell me about the things you collect. Try to use 'several' and 'most'.\"\n2. **Student**: ~\"I have several hobbies.\"\n3. **Charlotte**: \"Majority?\"\n4. **Student**: ~\"Most people drink coffee.\"\n5. **Charlotte**: \"Specific?\"\n6. **Student**: ~\"Most of my friends live in São Paulo.\"\n7. **Charlotte**: \"Precise quantities!\"",
         "evaluation_focus": [
           "Several for 3+ countable",
           "Most + general plural",
@@ -1057,12 +1074,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores patterns. Practice several / most.",
-        "intro_pt": "Charlotte explora padrões. Pratique several / most.",
         "opening_message": "What do most of your friends do?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "A maioria dos meus amigos",
             "label_en": "Most of my friends",
             "hidden_prompt": "user uses 'Most of my friends + verb'",
             "hint_en": "Most of my friends work in tech.",
@@ -1082,7 +1097,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Vários de algo",
             "label_en": "Several of something",
             "hidden_prompt": "user uses 'several + plural'",
             "hint_en": "Several of them play soccer.",
@@ -1102,7 +1116,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about your friends?'",
             "hint_en": "How about yours?",
@@ -1140,10 +1153,10 @@
           "options": [
             "a little",
             "a few",
-            "plenty of",
-            "hardly any"
+            "many",
+            "few"
           ],
-          "answer": "a little (any of these correct, but a little for \"some, small amount\")",
+          "answer": "a little",
           "explanation": "\"A little\" with uncountable."
         },
         {
@@ -1187,7 +1200,8 @@
           "hint": "small amount",
           "answer": "a little",
           "accepts": [
-            "some"
+            "some",
+            "little"
           ],
           "explanation": "\"A little food\" — small positive amount."
         },
@@ -1196,6 +1210,12 @@
           "sentence": "_____ of my coworkers are friendly.",
           "hint": "majority of specific",
           "answer": "Most",
+          "accepts": [
+            "Many",
+            "Some",
+            "All",
+            "A few"
+          ],
           "explanation": "\"Most of my coworkers\"."
         },
         {
@@ -1259,7 +1279,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks for a quantifier-rich description of your life.",
-        "scenario_pt": "Charlotte pede uma descrição rica em quantificadores da sua vida.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1268,7 +1287,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Quantificador positivo (a few/a little/plenty of)",
             "label_en": "Positive quantifier (a few/a little/plenty of)",
             "hidden_prompt": "user uses a few/a little/plenty of",
             "hint_en": "I have plenty of work.",
@@ -1285,7 +1303,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Quantificador negativo (poucos/pouco/quase nenhum)",
             "label_en": "Negative quantifier (few/little/hardly any)",
             "hidden_prompt": "user uses few/little/hardly any",
             "hint_en": "I have hardly any time.",
@@ -1302,7 +1319,6 @@
           },
           {
             "id": 3,
-            "label_pt": "A maioria ou vários",
             "label_en": "Most or several",
             "hidden_prompt": "user uses 'most + plural' or 'several + plural'",
             "hint_en": "Most of my friends live abroad.",
@@ -1332,12 +1348,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks for a quantifier mix. Use several types.",
-        "intro_pt": "Charlotte pede uma mistura de quantificadores. Use vários tipos.",
         "opening_message": "Use 3 different quantifiers in your reply.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Primeiro quantificador",
             "label_en": "First quantifier",
             "hidden_prompt": "user uses a quantifier (plenty of/a few/several)",
             "hint_en": "I have several books.",
@@ -1354,7 +1368,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Segundo quantificador",
             "label_en": "Second quantifier",
             "hidden_prompt": "user uses another quantifier",
             "hint_en": "Most people are kind.",
@@ -1371,7 +1384,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Terceiro quantificador",
             "label_en": "Third quantifier",
             "hidden_prompt": "user uses one more quantifier",
             "hint_en": "I have hardly any free time.",

@@ -54,11 +54,13 @@
 6. **fill_gap** — "The teacher _____ teaches us is great."
    **Hint**: person, subject
    **Answer**: who
+   **Accepts**: that
    **Explanation**: "Who teaches".
 
 7. **fill_gap** — "He's the guy _____ won the race."
    **Hint**: person
    **Answer**: who
+   **Accepts**: that
    **Explanation**: "Who won".
 
 8. **fix_error** — "He's the man which called me."
@@ -66,8 +68,9 @@
    **Answer**: He's the man who called me.
    **Explanation**: "Who" for people, "which" for things.
 
-9. **fix_error** — "She's the girl, who lives here." (defining = no comma)
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: No comma in defining clause
+   **Options**: She's the girl who lives here. / She's the girl, who lives here. / She's, the girl who lives here.
    **Answer**: She's the girl who lives here.
    **Explanation**: Defining clauses have NO commas. Identifies which girl.
 
@@ -232,7 +235,7 @@
 6. **fill_gap** — "The phone _____ I bought is broken."
    **Hint**: thing, object of clause
    **Answer**: that
-   **Accepts**: which, / omitted
+   **Accepts**: which
    **Explanation**: "The phone that I bought" — object: that/which/omitted.
 
 7. **fill_gap** — "It's the song _____ I love."
@@ -246,10 +249,10 @@
    **Answer**: The book that I read was great.
    **Explanation**: Book = thing → "that" or "which".
 
-9. **fix_error** — "He has a car, which is red." (defining = no comma)
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: No comma in defining
+   **Options**: He has a car which is red. / He has a car, which is red. / He has, a car which is red.
    **Answer**: He has a car which is red.
-   **Accepts**: He has a red car
    **Explanation**: Defining → no comma. Non-defining (info adicional) → comma — but M19 covers that.
 
 10. **read_answer**
@@ -274,7 +277,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Describe three things using 'which' or 'that'."
+**Opening line**: "Tell me about three things in your life, using 'which' or 'that'."
 
 **Sub-objectives** (3):
 
@@ -309,7 +312,7 @@
 
 **Suggested flow** (6 turns):
 
-1. **Charlotte**: "Describe three things using 'which' or 'that'."
+1. **Charlotte**: "Tell me about three things in your life, using 'which' or 'that'."
 2. **Student**: ~"It's a book that changed my life."
 3. **Charlotte**: "Cool. Tech?"
 4. **Student**: ~"I have a phone which never breaks."
@@ -406,17 +409,20 @@
 5. **fill_gap** — "It's a restaurant _____ they serve great pasta."
    **Hint**: place
    **Answer**: where
+   **Accepts**: in which
    **Explanation**: "Restaurant where they serve".
 
 6. **fill_gap** — "I remember the park _____ we used to play."
    **Hint**: place
    **Answer**: where
+   **Accepts**: in which
    **Explanation**: "Park where we played".
 
 7. **fill_gap** — "She lives in a country _____ it's always sunny."
    **Hint**: place
    **Answer**: where
-   **Explanation**: "Country where it's / it is sunny".
+   **Accepts**: in which
+   **Explanation**: "Country where it's sunny".
 
 8. **fix_error** — "It's the city which I grew up."
    **Hint**: For places use where (or "in which")
@@ -759,6 +765,7 @@
 5. **fill_gap** — "He's the doctor _____ helped me."
    **Hint**: person
    **Answer**: who
+   **Accepts**: that
    **Explanation**: Who for people.
 
 6. **fill_gap** — "I have a phone _____ takes great photos."
@@ -770,6 +777,7 @@
 7. **fill_gap** — "The school _____ I studied is famous."
    **Hint**: place
    **Answer**: where
+   **Accepts**: in which / at which
    **Explanation**: Where for places.
 
 8. **fix_error** — "He's the man which I met."
@@ -780,6 +788,7 @@
 9. **fix_error** — "The book who I read."
    **Hint**: thing needs that/which
    **Answer**: The book that I read.
+   **Accepts**: The book which I read.
    **Explanation**: Book = thing → that.
 
 10. **read_answer**

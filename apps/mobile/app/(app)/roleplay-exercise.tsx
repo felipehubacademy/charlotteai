@@ -28,6 +28,7 @@ import { systemIsPt } from '@/lib/systemLang';
 import { AppText } from '@/components/ui/Text';
 import ChatBox, { Message } from '@/components/chat/ChatBox';
 import { useAuth } from '@/hooks/useAuth';
+import { useStreak } from '@/components/streak/StreakProvider';
 import { useAudioRecorder } from '@/hooks/useAudioRecorder';
 import { getModule } from '@/lib/curriculum-v2/loader';
 import type { Level as V2Level, RolePlay } from '@/lib/curriculum-v2/types';
@@ -35,8 +36,11 @@ import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { recordConversationPractice, fetchConversationFeedback, ConversationFeedback } from '@/lib/trailFeedback';
 import { ConversationFeedbackBlock } from '@/components/trail/ConversationFeedbackBlock';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
+import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import { useTotalXP } from '@/hooks/useTotalXP';
 import { soundEngine } from '@/lib/soundEngine';
+import { goBack } from '@/lib/goBack';
+import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -68,6 +72,7 @@ export default function RolePlayExerciseScreen() {
   const unitId   = params.unitId ?? '';
 
   const { profile } = useAuth();
+  const { celebrateStreak } = useStreak();
   const userId      = profile?.id;
   const isPt        = systemIsPt; // suporte/chrome: idioma do device
   const insets      = useSafeAreaInsets();
@@ -136,6 +141,7 @@ export default function RolePlayExerciseScreen() {
 
   // v2 progress (write on completion)
   const v2Progress = useLearnProgressV2(userId, level);
+  const { waitForCelebration } = useAchievementsContext();
   // XP no topo, igual à trilha: +5 a cada objetivo cumprido e +10 ao concluir.
   const baseTotalXP = useTotalXP(userId);
 
@@ -232,6 +238,8 @@ export default function RolePlayExerciseScreen() {
         timestamp: new Date(),
       }]);
       setIsProcessing(false);
+      // Card de conquista da atividade anterior na tela: a abertura toca só depois que ele fechar.
+      await waitForCelebration();
       const p = playerRef.current;
       if (p) {
         p.replace({ uri: localUri });
@@ -239,7 +247,7 @@ export default function RolePlayExerciseScreen() {
         try { p.play(); } catch {}
       }
     } catch (e) { console.warn('[roleplay] opener TTS failed', e); setIsProcessing(false); }
-  }, [userId]);
+  }, [userId, waitForCelebration]);
 
   // Save attempt to learn_history_v2 when session completes (or timer expires).
   // Score = % objectives met. COMPLETION-BASED: threshold roleplay=0,
@@ -263,7 +271,7 @@ export default function RolePlayExerciseScreen() {
     v2Progress.saveAttempt(moduleId, unitId, 'roleplay', score)
       .catch(e => console.warn('[roleplay] saveAttempt failed', e));
     // XP da conversa (conta para sequência, metas e ranking) e correção do inglês no fim.
-    if (userId) recordConversationPractice(userId, 'roleplay', objectivesMet.size).then(setXpEarned);
+    if (userId) recordConversationPractice(userId, 'roleplay', objectivesMet.size).then(xp => { setXpEarned(xp); celebrateStreak(); });
     const lines = historyRef.current.filter(h => h.role === 'user').map(h => h.content).filter(Boolean);
     setFeedbackLoading(true);
     fetchConversationFeedback({ level, moduleId, unitId, activity: 'roleplay', topic: getModule(level, moduleId)?.units.find(u => u.id === unitId)?.title, lines })
@@ -361,6 +369,8 @@ export default function RolePlayExerciseScreen() {
           type: isWav ? 'audio/wav' : 'audio/x-m4a',
         } as unknown as Blob);
         if (userId) sFormData.append('userId', userId);
+        // Nomes que podem aparecer na fala (o do aluno costuma ser em português): dica para a transcrição.
+        sFormData.append('names', [profile?.name?.split(' ')[0], rp.persona].filter(Boolean).join(', '));
 
         const sRes = await fetch(`${API_BASE_URL}/api/transcribe`, { method: 'POST', body: sFormData });
         if (!sRes.ok) throw new Error('transcribe failed');
@@ -462,13 +472,20 @@ export default function RolePlayExerciseScreen() {
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error ?? 'turn failed');
 
-      // Update user bubble with transcript
-      setMessages(prev => prev.map(m => m.id === userMsgId
-        ? { ...m, content: data.user_transcript ?? '' }
-        : m
-      ));
-      setLastUserTranscript(data.user_transcript ?? '');
-      historyRef.current.push({ role: 'user', content: data.user_transcript ?? '' });
+      // Não ouviu (silêncio, áudio vazio ou ilegível): o personagem pede para repetir e a fala NÃO conta como
+      // a tentativa do aluno (antes, no Role-play de um objetivo só, o exercício fechava aqui).
+      const isRetry = data.retry === true;
+      if (isRetry) {
+        setMessages(prev => prev.filter(m => m.id !== userMsgId));
+      } else {
+        // Update user bubble with transcript
+        setMessages(prev => prev.map(m => m.id === userMsgId
+          ? { ...m, content: data.user_transcript ?? '' }
+          : m
+        ));
+        setLastUserTranscript(data.user_transcript ?? '');
+        historyRef.current.push({ role: 'user', content: data.user_transcript ?? '' });
+      }
 
       // Persist assistant audio locally + render
       const aMsgId = `assist_${Date.now()}`;
@@ -483,7 +500,7 @@ export default function RolePlayExerciseScreen() {
         audioUrl: localUri,
         messageType: 'audio', timestamp: new Date(),
       }]);
-      historyRef.current.push({ role: 'assistant', content: data.assistant_text ?? '' });
+      if (!isRetry) historyRef.current.push({ role: 'assistant', content: data.assistant_text ?? '' });
 
       // Tick checklist + haptic celebration por objetivo batido nesse turno.
       // Atualiza stuckTurnsRef: novo objetivo bateu → zera; nada bateu → +1.
@@ -501,7 +518,7 @@ export default function RolePlayExerciseScreen() {
           for (const n of newOnes) next.add(n);
           return next;
         });
-      } else {
+      } else if (!isRetry) {
         stuckTurnsRef.current += 1;
       }
 
@@ -524,7 +541,7 @@ export default function RolePlayExerciseScreen() {
       const totalObj  = rp.objectives.length;
       const willBeMet = objectivesMet.size + newOnes.length;
       const singleObjBaseUnit = totalObj === 1;
-      const shouldComplete = singleObjBaseUnit || data.status === 'complete' || willBeMet >= totalObj;
+      const shouldComplete = !isRetry && (singleObjBaseUnit || data.status === 'complete' || willBeMet >= totalObj);
       if (shouldComplete) {
         if (willBeMet >= totalObj) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         setTimeout(() => setSessionComplete(true), 2500);
@@ -532,6 +549,8 @@ export default function RolePlayExerciseScreen() {
     } catch (e: any) {
       console.warn('[roleplay] turn failed', e);
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+      // Sem resposta (internet, servidor): tira o balão vazio da fala do aluno para ele tentar de novo.
+      setMessages(prev => prev.filter(m => !(m.role === 'user' && !m.content)));
     } finally {
       setIsProcessing(false);
     }
@@ -653,7 +672,7 @@ export default function RolePlayExerciseScreen() {
         paddingHorizontal: 16, paddingVertical: 10,
         backgroundColor: C.card,
       }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+        <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1 }}>
@@ -665,6 +684,19 @@ export default function RolePlayExerciseScreen() {
           </AppText>
         </View>
         {/* Timer pill — fica vermelho nos últimos 30s */}
+        {/* Reportar problema nesta atividade (vai com as últimas falas da conversa). */}
+        <ReportIssueButton
+          kind="chat"
+          getContext={() => {
+            const hist = historyRef.current.slice(-6);
+            const lastUser = [...hist].reverse().find(m => m.role === 'user');
+            return {
+              screen: 'roleplay', level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null, activity: 'roleplay',
+              exercise: { persona: rp.persona, conversation: hist },
+              transcript: lastUser?.content ?? null,
+            };
+          }}
+        />
         <View style={{ marginRight: 8 }}>
           <AnimatedXPBadge xp={baseTotalXP + (xpEarned > 0 ? xpEarned : objectivesMet.size * 5)} iconSize={13} fontSize={13} padH={10} padV={5} />
         </View>

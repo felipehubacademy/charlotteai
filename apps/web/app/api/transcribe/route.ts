@@ -62,6 +62,7 @@ export async function POST(request: NextRequest) {
     const formData = await request.formData();
     const audioFile = formData.get('audio') as File;
     const userId   = (formData.get('userId') as string | null) ?? null;
+    const hintNames = ((formData.get('names') as string | null) ?? '').replace(/[^\p{L}\p{N} ,'-]/gu, '').slice(0, 120).trim();
 
     if (!audioFile) {
       return NextResponse.json(
@@ -104,7 +105,9 @@ export async function POST(request: NextRequest) {
       language: 'en',
       response_format: 'json',
       temperature: 0.2,
-      prompt: 'Transcribe exactly what was said, word for word, without correcting or improving the speech.',
+      // names (opcional): nomes que podem aparecer na fala (do aluno, do personagem). Sem a dica, nome em
+      // português vira palavra inventada ("I'm Felipe" -> "Amphilippe").
+      prompt: `Transcribe exactly what was said, word for word, without correcting or improving the speech.${hintNames ? ` Names that may be said: ${hintNames}.` : ''}`,
     });
 
     logOpenAIUsage({
@@ -122,6 +125,12 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error: any) {
+    // Áudio ilegível (corrompido, curto demais): não é erro do servidor. Devolve transcrição vazia e o app
+    // mostra "Não ouvimos nada, fale de novo" em vez de uma tela de erro.
+    if (error?.status === 400) {
+      console.warn('Transcription: áudio ilegível:', error?.message);
+      return NextResponse.json({ transcription: '', success: true, unreadable: true });
+    }
     console.error('Transcription error:', error);
     
     // Diferentes tipos de erro

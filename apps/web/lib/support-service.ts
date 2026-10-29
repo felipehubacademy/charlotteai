@@ -5,6 +5,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
 import { SupportUserContext } from '@/lib/support-agent';
 import { isTasterRow, TASTE_LIVE_VOICE_SECONDS } from '@/lib/taste';
+import { notifyAdmins } from '@/lib/admin-push';
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://queizy.com';
 
@@ -137,6 +138,9 @@ export async function escalate(args: {
   const ticketCode = newTicketCode();
   await getSupabaseAdmin().from('support_conversations')
     .update({ sla_notified_at: null, ticket_code: ticketCode, taken_by: null, taken_at: null } as never).eq('id', args.conversationId);
+  // Push na hora para a gestão (PWA do /admin); o e-mail continua só se ninguém responder.
+  await notifyAdmins({ title: `Chamado ${ticketCode} para atendente`, body: `${args.contact}: ${args.userText}`.slice(0, 200), url: '/admin/support', tag: `ticket-${args.conversationId}`, category: 'ticket_new' },
+    ['admin', 'manager', 'support']).catch(() => 0);
   return { assignedTo: agent?.email ?? null, ticketCode };
 }
 
@@ -193,14 +197,16 @@ export async function notifyStaleTickets(): Promise<{ notified: number }> {
     const horas = Math.round((Date.now() - new Date(c.last_inbound_at).getTime()) / 3600000);
     const html = `
       <div style="font-family:Arial,sans-serif;color:#16131F;">
-        <h2>Ticket sem resposta há ${horas} h (${c.channel === 'whatsapp' ? 'WhatsApp' : 'e-mail'})</h2>
+        <h2>Ticket sem resposta há ${horas} h (${({ whatsapp: 'WhatsApp', instagram: 'Instagram', app: 'chat do app' } as Record<string, string>)[c.channel] ?? 'e-mail'})</h2>
         <p><strong>Aluno:</strong> ${c.contact}${c.subject ? ` · ${c.subject}` : ''}</p>
         <p><strong>Última mensagem:</strong></p>
         <blockquote style="border-left:3px solid #ccc;padding-left:12px;color:#333;">${String(lastIn?.[0]?.body ?? '').replace(/</g, '&lt;').slice(0, 1200)}</blockquote>
         <p><a href="${APP_URL}/admin/support">Responder no /admin</a></p>
-        ${c.channel === 'whatsapp' ? '<p style="color:#888;font-size:12px;">No WhatsApp, só dá para responder livremente até 24 h depois da última mensagem do aluno.</p>' : ''}
+        ${c.channel === 'whatsapp' || c.channel === 'instagram' ? `<p style="color:#888;font-size:12px;">No ${c.channel === 'whatsapp' ? 'WhatsApp' : 'Instagram'}, só dá para responder livremente até 24 h depois da última mensagem do aluno.</p>` : ''}
       </div>`;
     const ok = await graphSendEmail({ to, subject: `[Suporte] Sem resposta há ${horas} h — ${c.contact}`, html });
+    await notifyAdmins({ title: `Chamado sem resposta há ${horas} h`, body: `${c.contact}${c.subject ? ` · ${c.subject}` : ''}`, url: '/admin/support', tag: `sla-${c.id}`, category: 'ticket_sla' },
+      ['admin', 'manager', 'support']).catch(() => 0);
     if (ok) {
       await supabase.from('support_conversations').update({ sla_notified_at: new Date().toISOString() } as never).eq('id', c.id);
       notified++;

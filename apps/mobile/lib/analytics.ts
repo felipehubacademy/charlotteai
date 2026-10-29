@@ -8,10 +8,13 @@ import { Platform } from 'react-native';
 import Constants from 'expo-constants';
 
 export type AnalyticsEvent =
+  | 'family_call_start' | 'family_call_end' | 'family_call_pause' | 'family_call_resume'
   | 'app_open'
   | 'placement_test_done'
   | 'lesson_started'
   | 'lesson_completed'
+  | 'lesson_abandoned'
+  | 'screen_view'
   | 'exercise_completed'
   | 'exercise_error'
   | 'chat_message_sent'
@@ -21,14 +24,33 @@ export type AnalyticsEvent =
   | 'subscription_purchased'
   | 'subscription_restored'
   | 'paywall_shown'
+  | 'taste_call_card_tap'
+  | 'lesson_end_call_tap'
+  | 'streak_celebration_shown'
+  | 'streak_challenge_accepted'
+  // Abertura de conta nova (app/(app)/charlotte-intro.tsx)
+  | 'welcome_step'
+  | 'welcome_voice'
+  | 'welcome_skip'
+  | 'welcome_done'
+  | 'welcome_first_lesson_open'
+  | 'taste_tomorrow_reminder_tap'
+  | 'rank_leader_shown'
+  | 'rank_leader_share'
+  | 'acquisition_answered'
   | 'paywall_dismissed'
+  | 'paywall_purchase_tap'
+  | 'paywall_purchase_cancelled'
+  | 'paywall_purchase_error'
   | 'share_streak'
   | 'share_achievement'
   | 'share_card'
   | 'share_story'
   | 'share_invite_link'
   | 'account_deleted'
-  | 'notification_tapped';
+  | 'notification_tapped'
+  | 'ota_status'
+  | 'mic_start';
 
 interface EventProps {
   [key: string]: string | number | boolean | null;

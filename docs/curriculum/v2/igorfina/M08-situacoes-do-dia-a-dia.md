@@ -70,7 +70,7 @@
 6. **fill_gap** — "A: What flavor? B: _____, please."
    **Hint**: Um sabor (ex.: chocolate, morango, baunilha)
    **Answer**: Chocolate
-   **Accepts**: Strawberry / Vanilla
+   **Accepts**: Strawberry / Vanilla / chocolate / strawberry / vanilla
    **Explanation**: Responda só com o sabor + "please": "Chocolate, please". Também vale strawberry (morango) e vanilla (baunilha).
 
 7. **fill_gap** — "Can I get the check, _____?"
@@ -81,6 +81,7 @@
 8. **fix_error** — "I want eggs." (para o garçom)
    **Hint**: Use a forma educada de pedir
    **Answer**: I would like eggs, please.
+   **Accepts**: I'd like eggs, please. / I would like some eggs, please. / I'd like some eggs, please. / Can I get eggs, please? / Could I have eggs, please? / Can I get some eggs, please? / I would like eggs.
    **Explanation**: "I want" soa seco. "I would like..., please" é o jeito educado.
 
 9. **fix_error** — "Can I get the count, please?"
@@ -98,7 +99,7 @@
 
 Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
-1. **"I would like mixed eggs and a waffle."** — pedir o café da manhã
+1. **"I would like scrambled eggs and a waffle."** — pedir o café da manhã
 2. **"A chocolate milkshake, please. Thank you!"** — escolher o sabor
 3. **"For here, please. We're eating inside."** — comer no local
 4. **"Can I get the check, please?"** — pedir a conta
@@ -226,7 +227,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **Answer**: snacks
    **Explanation**: Frase do curso: "I'd like milk, some snacks and ham". "Snacks" = salgadinhos, lanchinhos.
 
-5. **fill_gap** — "Excuse me, where can I find the _____? I need eggs."
+5. **fill_gap** — "Excuse me, where can I find the _____? I want to make an omelet."
    **Hint**: Ovos
    **Answer**: eggs
    **Explanation**: "Where can I find the eggs?" = onde ficam os ovos?
@@ -234,6 +235,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 6. **fill_gap** — "A: May I help you? B: Yes, _____! I'm looking for ham."
    **Hint**: Por favor
    **Answer**: please
+   **Accepts**: sure
    **Explanation**: "Yes, please!" é a resposta educada a uma oferta de ajuda.
 
 7. **fill_gap** — "The snacks are in aisle number _____." (5)
@@ -403,11 +405,13 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 7. **fill_gap** — "A: How much? B: It's 25 _____."
    **Hint**: Gíria para dólares
    **Answer**: bucks
+   **Accepts**: dollars
    **Explanation**: "Bucks" = dólares, na gíria. "25 bucks" = 25 dólares.
 
 8. **fix_error** — "I'd like to cut my hair." (para o barbeiro)
    **Hint**: Quem corta é o barbeiro; peça "a haircut"
    **Answer**: I'd like a haircut.
+   **Accepts**: I would like a haircut. / Can I get a haircut? / I'd like to get a haircut. / I'd like to get my hair cut. / A haircut, please.
    **Explanation**: "I'd like to cut my hair" soa como se você mesmo fosse cortar. Na barbearia: "I'd like a haircut".
 
 9. **fix_error** — "Pretty low in the sides."
@@ -583,6 +587,7 @@ Igorfina fala no estilo do astro do basquete (imitação). Aluno repete; a pron�
 8. **fix_error** — "How much costs this?"
    **Hint**: Use "How much is..."
    **Answer**: How much is this?
+   **Accepts**: How much does this cost? / How much does it cost? / How much is it?
    **Explanation**: Em inglês a pergunta mais simples é "How much is this?". "How much does this cost?" também está certo.
 
 9. **fix_error** — "Keep the troco."

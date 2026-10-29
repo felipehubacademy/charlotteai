@@ -38,7 +38,7 @@ const TYPE_LABEL: Record<string, string> = {
   text_message: 'Mensagens', audio_message: 'Áudios', grammar_message: 'Gramática', learn_session: 'Trilha',
   live_voice: 'Live Voice', pronunciation: 'Pronúncia', vocab_review: 'Revisão de vocabulário', roleplay: 'Role-play', guided_chat: 'Guided Chat', learn_exercise: 'Trilha',
 };
-const STATUS_LABEL: Record<string, string> = { active: 'Assinante', trial: 'Teste grátis', cancelled: 'Cancelou renovação', expired: 'Expirado', none: 'Sem plano' };
+const STATUS_LABEL: Record<string, string> = { active: 'Assinante', trial: 'Teste grátis', cancelled: 'Cancelou renovação', expired: 'Expirado', none: 'Degustação' };
 const SUGGESTED_TAGS = ['vip', 'b2b', 'reclamou', 'promotor', 'precisa contato', 'parceiro igor'];
 
 const fmt = (s: string | null | undefined) => (s ? new Date(s).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }) : '—');
@@ -232,7 +232,7 @@ export default function UserCrmPage() {
                       <span style={{ color: 'var(--t3)' }}>fez</span> contra {personLabel(r)} · {REPORT_REASON[r.reason] ?? r.reason}
                     </div>
                   ))}
-                  {(data.social.reportsReceived.length > 0 || data.social.reportsMade.length > 0) && canModerate && <Link href="/admin/moderation" className="adm-btn-sm ghost" style={{ marginTop: 4 }}>Abrir Denúncias</Link>}
+                  {(data.social.reportsReceived.length > 0 || data.social.reportsMade.length > 0) && canModerate && <Link href="/admin/support?tab=reports" className="adm-btn-sm ghost" style={{ marginTop: 4 }}>Abrir Denúncias</Link>}
                 </div>
                 <div>
                   <div className="kpi-label" style={{ marginBottom: 8 }}>Avisos do social (push)</div>

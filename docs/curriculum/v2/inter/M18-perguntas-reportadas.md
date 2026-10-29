@@ -53,6 +53,7 @@
 5. **fill_gap** — Direct: "Are you happy?" Reported: "He asked _____ I _____ happy."
    **Hint**: if / was
    **Answer**: if / was
+   **Accepts**: if was / whether was / if, was
    **Explanation**: "If" + statement word order + backshift "are" → "was".
 
 6. **fill_gap** — Direct: "Do you speak English?" Reported: "She asked if I _____ English."
@@ -392,6 +393,7 @@
 2. **multiple_choice** — Direct: "Don't wait for me." Reported: "She told me _____ for her."
    **Options**: not to wait / to not wait / don't wait / not waiting
    **Answer**: not to wait
+   **Accepts**: to not wait
    **Explanation**: Negative command: "NOT TO + base". "Told me not to wait" — "not" before "to".
 
 3. **word_bank** — Direct: "Be quiet." Reported: "He told us _____ quiet."
@@ -402,6 +404,7 @@
 4. **word_bank** — Direct: "Don't speak loudly." Reported: "She told them _____ loudly."
    **Choices**: not to speak / to not speak / don't speak / not speaking
    **Answer**: not to speak
+   **Accepts**: to not speak
    **Explanation**: Standard negative: "not to + base". "Not to speak loudly".
 
 5. **fill_gap** — Direct: "Open the window." Reported: "He told me _____ the window."
@@ -427,7 +430,7 @@
 9. **fix_error** — Direct: "Don't shout." Reported: "She told me to don't shout."
    **Hint**: "Not to + base", sem "don't"
    **Answer**: She told me not to shout.
-   **Explanation**: In reported speech, "don't / do not" disappears. The negative is "NOT TO + base". "To don't / do not shout" doesn't exist.
+   **Explanation**: In reported speech, "don't" disappears. The negative is "NOT TO + base". "To don't shout" doesn't exist.
 
 10. **read_answer**
     **Passage**: "He told me to close the door. She told me not to wait. He told us to be quiet. She told them not to speak loudly. He told me to open the window."
@@ -570,6 +573,7 @@
 2. **multiple_choice** — Direct: "Please don't tell anyone." Reported: "He asked me _____ anyone."
    **Options**: not to tell / to not tell / don't tell / not telling
    **Answer**: not to tell
+   **Accepts**: to not tell
    **Explanation**: Negative request: "asked me not to tell". "Not" before "to".
 
 3. **word_bank** — Direct: "Please be careful." Reported: "She _____ me to be careful."
@@ -595,6 +599,7 @@
 7. **fill_gap** — Direct: "Please try harder." Reported: "She _____ me to try harder."
    **Hint**: urged (encorajamento forte)
    **Answer**: urged
+   **Accepts**: asked / told / encouraged / begged / wanted
    **Explanation**: "Urged + person + to + base" — emphatic request, encouragement.
 
 8. **fix_error** — Direct: "Please help me." Reported: "She asked me please to help her."
@@ -768,6 +773,7 @@
 6. **fill_gap** — Direct: "Can you help?" Reported: "He asked _____ I _____ help."
    **Hint**: if / could
    **Answer**: if / could
+   **Accepts**: if could / whether could / if, could
    **Explanation**: "Asked if + subject + could". Backshift "can" → "could".
 
 7. **fill_gap** — Direct: "I've finished." Reported: "She said she _____ finished."

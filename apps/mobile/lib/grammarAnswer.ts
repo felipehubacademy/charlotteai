@@ -8,11 +8,40 @@
 // "'ve lived" = "have lived"), e trata a ambiguidade de present perfect
 // ('s = is/has, 'd = would/had) testando as duas leituras.
 
+const US_TO_UK: Record<string, string> = {};
+for (const [us, uk] of [
+  ['realize', 'realise'], ['realized', 'realised'], ['realizing', 'realising'],
+  ['recognize', 'recognise'], ['recognized', 'recognised'], ['organize', 'organise'], ['organized', 'organised'],
+  ['apologize', 'apologise'], ['apologized', 'apologised'], ['standardizing', 'standardising'],
+  ['reorganization', 'reorganisation'], ['polarized', 'polarised'],
+  ['favorite', 'favourite'], ['favorites', 'favourites'], ['behavior', 'behaviour'], ['humor', 'humour'],
+  ['color', 'colour'], ['colors', 'colours'], ['honor', 'honour'], ['neighbor', 'neighbour'], ['neighbors', 'neighbours'],
+  ['canceled', 'cancelled'], ['traveled', 'travelled'], ['traveling', 'travelling'],
+  ['center', 'centre'], ['theater', 'theatre'], ['gray', 'grey'],
+]) US_TO_UK[us] = uk;
+
 export function normaliseAnswer(s: string): string {
   return s.trim().toLowerCase()
-    .replace(/[‘’‚‛]/g, "'")   // smart quotes (iOS) -> apóstrofo ASCII
-    .replace(/[“”„‟]/g, '"')
-    .replace(/\s+/g, ' ');
+    .replace(/[‘’‚‛`´]/g, "'")   // smart quotes (iOS) e acentos usados como apóstrofo -> apóstrofo ASCII
+    // Pista entre parênteses na frase ("I'm tween (12) years old"): se o aluno copiar junto, não conta.
+    .replace(/\([^)]*\)/g, ' ')
+    // Pontuação não conta: "Can you help me please?" = "Can you help me, please ?".
+    // Ponto e dois-pontos só no fim de palavra (mantém 8:30 e 2.5).
+    .replace(/[“”„‟",!?¿¡;()]/g, ' ')
+    .replace(/[.:](?=\s|$)/g, ' ')
+    // Travessão também não conta ("the last straw — I'm quitting" = "the last straw, I'm quitting");
+    // hífen dentro da palavra fica (double-edged).
+    .replace(/[–—]|(^|\s)-+(?=\s|$)/g, ' ')
+    // Grafia americana vale igual à britânica do gabarito (realize = realise, favorite = favourite).
+    .replace(/\b(\w+)\b/g, w => US_TO_UK[w] ?? w)
+    // Contração digitada sem apóstrofo (comum no celular): wasnt -> wasn't, cant -> can't, im -> i'm.
+    .replace(/\b(was|is|are|were|do|does|did|has|have|had|could|should|would|wo|must|need)nt\b/g, "$1n't")
+    .replace(/\bcant\b/g, "can't")
+    .replace(/\bim\b/g, "i'm")
+    // Teclado em português troca "to" por "tô" ("Nice tô meet you").
+    .replace(/(^|\s)tô(?=\s|$)/g, '$1to')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 export function expandContractions(s: string, sTo: 'is' | 'has' = 'is', dTo: 'would' | 'had' = 'would'): string {
@@ -21,7 +50,6 @@ export function expandContractions(s: string, sTo: 'is' | 'has' = 'is', dTo: 'wo
     .replace(/won't/g, 'will not')
     .replace(/can't/g, 'cannot')
     .replace(/shan't/g, 'shall not')
-    .replace(/ain't/g, 'is not')
     .replace(/n't/g, ' not')
     // Sujeito + contração
     .replace(/\b(i|you|we|they|who)'ve\b/g, '$1 have')
@@ -54,10 +82,49 @@ function auxVariants(s: string): string[] {
 export function contractionMatch(u: string, c: string, bothWays: boolean): boolean {
   for (const uu of auxVariants(u)) {
     for (const cc of auxVariants(c)) {
-      if (uu === cc || uu.includes(cc) || (bothWays && cc.includes(uu))) return true;
+      if (uu === cc || hasWords(uu, cc) || (bothWays && coversMost(uu, cc))) return true;
     }
   }
   return false;
+}
+
+// Algarismo -> número por extenso (0 a 100): "4" = "four", "35" = "thirty-five".
+// Só no read_answer, onde o número é a resposta e não o conteúdo ensinado; nos exercícios
+// que ensinam a escrever o número (fill_gap/word_bank do módulo de números) "12" não vale "twelve".
+const UNITS = ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve',
+  'thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+const TENS = ['', '', 'twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+function numberToWords(n: number): string {
+  if (n < 20) return UNITS[n];
+  if (n === 100) return 'one hundred';
+  return TENS[Math.floor(n / 10)] + (n % 10 ? `-${UNITS[n % 10]}` : '');
+}
+function digitsToWords(s: string): string {
+  return s.replace(/\b\d{1,3}\b/g, d => { const n = Number(d); return n <= 100 ? numberToWords(n) : d; });
+}
+
+// Comparação por PALAVRAS inteiras (antes era por letras: "this" continha "is", e um pedaço
+// qualquer da resposta certa passava, como só "help" para "Can you help me, please?").
+function hasWords(hay: string, needle: string): boolean {
+  return !!needle && ` ${hay} `.includes(` ${needle} `);
+}
+/** A resposta do aluno é um trecho da esperada com pelo menos 80% das palavras dela. */
+function coversMost(u: string, expected: string): boolean {
+  if (!hasWords(expected, u)) return false;
+  return u.split(' ').length >= Math.ceil(expected.split(' ').length * 0.8);
+}
+
+/**
+ * O aluno mandou a própria frase do enunciado (sem corrigir nada)? Usado no "corrigir o erro" para
+ * reprovar e para avisar "você repetiu a frase do exercício". A frase pode vir com contexto antes
+ * da citação ('Awkward: "The matter is..."'), então vale também o trecho entre aspas.
+ */
+export function repeatsPrompt(answer: string, prompt?: string | null): boolean {
+  if (!prompt) return false;
+  const u = normaliseAnswer(answer);
+  if (!u) return false;
+  const quoted = prompt.match(/["“]([^"”]+)["”]/)?.[1];
+  return u === normaliseAnswer(prompt) || (!!quoted && u === normaliseAnswer(quoted));
 }
 
 /**
@@ -69,35 +136,48 @@ export function checkGrammarAnswer(
   answer: string,
   correct: string,
   accepts?: string[],
+  wrong?: string,
 ): boolean {
+  // Múltipla escolha: o aluno toca numa alternativa, então compara a alternativa exata
+  // (a normalização ignora pontuação, e há questões em que só a pontuação muda entre as opções).
+  if (type === 'multiple_choice') {
+    const k = (s: string) => s.trim().toLowerCase().replace(/[‘’‚‛`´]/g, "'");
+    return k(answer) === k(correct) || !!accepts?.some(a => k(a) === k(answer));
+  }
+
   const u = normaliseAnswer(answer);
   const c = normaliseAnswer(correct);
   if (u === c) return true;
+
+  // fix_error: repetir a frase errada nunca vale. Sem isso, erro de palavra a mais ou a menos
+  // passava pela comparação flexível ("Sorry me!" contém "Sorry!"). A frase pode vir com
+  // contexto antes da citação ('Awkward: "The matter is..."'), então vale também o trecho entre aspas.
+  if (type === 'fix_error' && wrong && repeatsPrompt(answer, wrong)) return false;
 
   if (accepts && accepts.length) {
     const lenient = type === 'read_answer' || type === 'fix_error' || type === 'fill_gap';
     for (const a of accepts) {
       const na = normaliseAnswer(a);
       if (na === u) return true;
-      if (lenient && (u.includes(na) || na.includes(u))) return true;
+      if (lenient && (hasWords(u, na) || coversMost(u, na))) return true;
     }
   }
 
   if (type === 'multiple_choice' || type === 'word_bank' || type === 'word_order') return false;
 
   if (type === 'fill_gap') {
-    if (u.includes(c)) return true;               // aceita frase inteira
+    if (hasWords(u, c)) return true;              // aceita frase inteira
     if (contractionMatch(u, c, false)) return true;
     return false;
   }
   if (type === 'fix_error') {
-    if (u.includes(c) || c.includes(u)) return true;
+    if (hasWords(u, c) || coversMost(u, c)) return true;
     if (contractionMatch(u, c, true)) return true;
     return false;
   }
   if (type === 'read_answer') {
-    const cExp = expandContractions(c);
-    const uExp = expandContractions(u);
+    const cExp = expandContractions(digitsToWords(c));
+    const uExp = expandContractions(digitsToWords(u));
     const words = cExp.split(' ').filter(w => w.length > 2);
     return words.length > 0 && words.filter(w => uExp.includes(w)).length >= Math.ceil(words.length * 0.6);
   }

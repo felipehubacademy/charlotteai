@@ -9,7 +9,7 @@ const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'htt
 
 export type ConversationActivity = 'roleplay' | 'chat';
 export interface Correction { said: string; correct: string; tip: string }
-export interface ConversationFeedback { errorFree: boolean; corrections: Correction[] }
+export interface ConversationFeedback { errorFree: boolean; corrections: Correction[]; praise?: string }
 
 /** XP da conversa: 10 por terminar + 5 por objetivo cumprido. Conta para sequência, metas e ranking. */
 export function conversationXP(objectivesMet: number): number {

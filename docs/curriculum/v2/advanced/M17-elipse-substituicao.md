@@ -35,12 +35,12 @@
 1. **multiple_choice** — "Are you coming to the meeting?" "I want to, but I _____."
    **Options**: can't / can't to / can't go / cannot
    **Answer**: can't
-   **Explanation**: Ellipsis after modal: "I can't / cannot [come to the meeting]" — the verb phrase is omitted because it's recoverable from the question. "I can't / cannot to" is wrong (no "to" needed after modals). "I can't / cannot go" is grammatically correct but unnecessarily explicit; native speakers prefer the elliptical "I can't / cannot".
+   **Explanation**: Ellipsis after modal: "I can't [come to the meeting]" — the verb phrase is omitted because it's recoverable from the question. "I can't to" is wrong (no "to" needed after modals). "I can't go" is grammatically correct but unnecessarily explicit; native speakers prefer the elliptical "I can't".
 
 2. **multiple_choice** — "Will you call him?" "I'd like _____, but I don't have his number."
    **Options**: to / to call him / it / so
    **Answer**: to
-   **Explanation**: Ellipsis after "to": "I'd / I would like to [call him]" — the infinitive verb is omitted but "to" remains as the marker. Standard ellipsis pattern: "would like to / want to / mean to / hope to + ellipsis" — the "to" stays.
+   **Explanation**: Ellipsis after "to": "I'd like to [call him]" — the infinitive verb is omitted but "to" remains as the marker. Standard ellipsis pattern: "would like to / want to / mean to / hope to + ellipsis" — the "to" stays.
 
 3. **fill_gap** — "Did you go to the party?" "I planned _____, but something came up."
    **Hint**: Infinitive marker retained
@@ -57,7 +57,7 @@
    **Passage**: "She had been invited to three events that evening. She would have gone to all of them if she could have. She would have liked to at least drop in on one. In the end, she didn't go to any. 'I meant to,' she said the next day. 'I just couldn't.'"
    **Question**: What word is omitted after "couldn't" in her final line?
    **Answer**: go (the verb is elided)
-   **Explanation**: Four ellipses in five sentences: "if she could have [gone]", "She would have liked to [drop in / go]", "didn't / did not go to any [of them]", "I meant to [go]", "I just couldn't / could not [go]". Verb phrases recovered from context — fluent C2 economy.
+   **Explanation**: Four ellipses in five sentences: "if she could have [gone]", "She would have liked to [drop in / go]", "didn't go to any [of them]", "I meant to [go]", "I just couldn't [go]". Verb phrases recovered from context — fluent C2 economy.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -188,17 +188,17 @@
 1. **multiple_choice** — "Is the train on time?" "I _____."
    **Options**: think so / think it / think yes / think to
    **Answer**: think so
-   **Explanation**: "I think so" — "so" replaces the entire clause "that the train is on time". Common verbs: think, hope, believe, suppose, expect, guess. Negative: "I don't / do not think so" (with "not" after the verb, not "I think not", although the latter exists in formal register).
+   **Explanation**: "I think so" — "so" replaces the entire clause "that the train is on time". Common verbs: think, hope, believe, suppose, expect, guess. Negative: "I don't think so" (with "not" after the verb, not "I think not", although the latter exists in formal register).
 
 2. **multiple_choice** — "Will it rain tomorrow?" "I hope _____."
    **Options**: not / not so / no / never
    **Answer**: not
-   **Explanation**: "I hope not" — "not" replaces the negative version of the clause ("that it won't / will not rain"). Same pattern: "I'm / I am afraid not", "I guess not", "I suppose not". The negative substitute is "not" placed directly after the verb.
+   **Explanation**: "I hope not" — "not" replaces the negative version of the clause ("that it won't rain"). Same pattern: "I'm afraid not", "I guess not", "I suppose not". The negative substitute is "not" placed directly after the verb.
 
 3. **fill_gap** — "Are you sure about the date?" "I _____, but let me double-check."
    **Hint**: "Believe so" or "think so"
    **Answer**: believe so
-   **Accepts**: think so
+   **Accepts**: think so / guess so / suppose so
    **Explanation**: "I believe so" — substitution after believe. Same pattern with other thinking verbs: think, suppose, imagine, presume, gather. All take "so" or "not" as clause replacements in conversation.
 
 4. **fix_error** — "Will she come? I think yes."
@@ -210,7 +210,7 @@
    **Passage**: "The meeting was full of softened uncertainties. 'Will the deal close this quarter?' 'I think so.' 'Are we still on track for launch?' 'I hope so.' 'Is the CFO going to push back?' 'I'm afraid so.' 'And the board?' 'I expect not.' Four answers, each carrying just enough to keep the conversation moving."
    **Question**: How does the speaker respond to whether the board will push back?
    **Answer**: I expect not (he/she doesn't expect them to push back)
-   **Explanation**: Four substitutions in five exchanges: "I think so", "I hope so", "I'm / I am afraid so", "I expect not". Each replaces a whole clause. Conversation moves on without restating.
+   **Explanation**: Four substitutions in five exchanges: "I think so", "I hope so", "I'm afraid so", "I expect not". Each replaces a whole clause. Conversation moves on without restating.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -504,19 +504,20 @@
 3. **fill_gap** — "I told her I would email Monday, but she suggested I _____ today instead."
    **Hint**: "Do it" or "do so"
    **Answer**: do so
-   **Accepts**: do it
+   **Accepts**: do it / do that
    **Explanation**: "Do so" or "do it" — both replace "email" here. "Do so" leans formal; "do it" leans conversational. C2 speakers choose by register.
 
 4. **fix_error** — "She walked into the room. He did so." (Stylistically — too repetitive of action)
    **Hint**: Native English often uses "He did the same" or "He did too"
    **Answer**: She walked into the room. He did the same.
-   **Accepts**: She walked into the room. He did too.
+   **Accepts**: She walked into the room. He did too. / She walked into the room. He did likewise.
    **Explanation**: "He did so" is grammatical but stylistically heavy in narrative — feels formal-stilted. "Did the same" or "did too" or "followed" reads more naturally. Register-aware substitution: "do so" for formal, "do the same / do too" for everyday narrative.
 
 5. **read_answer**
    **Passage**: "When the senior partner offered his resignation, the deputy did the same within the week. When pressed by the board, the chief financial officer initially refused; she would do so only after a private conversation with the chairman. By the end of the month, three of five executives had resigned, and the remaining two were widely expected to do likewise."
    **Question**: How many verb-phrase substitutions appear in the passage?
-   **Answer**: three — "did the same" (resigned), "would do so" (refuse / give resignation), "do likewise" (resign)
+   **Answer**: three
+   **Accepts**: 3 / did the same / would do so / do likewise
    **Explanation**: Three substitutions for "resign": "did the same", "would do so", "do likewise". Each replaces the action verb to avoid repetition. Different forms suit different points in the paragraph.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -651,21 +652,20 @@
    **Explanation**: "So do I" — echo for positive statements. Pattern: "So + auxiliary + subject". Match the auxiliary to the original sentence: "I love" → "So do I". For "I am happy" → "So am I". For "I can swim" → "So can I". The auxiliary mirrors the original.
 
 2. **multiple_choice** — "I haven't seen that film." "_____."
-   **Options**: Neither have I / So have I / Either have I / Me neither
+   **Options**: Neither have I / So have I / Either have I / Neither I have
    **Answer**: Neither have I
-   **Accepts**: Me neither" in casual register
    **Explanation**: "Neither have I" — echo for negative statements. Pattern: "Neither + auxiliary + subject". Both work: "Neither have I" (formal) and "Me neither" (informal). Some speakers say "Nor have I" — synonymous with "Neither have I".
 
 3. **fill_gap** — "She was tired." "_____."
    **Hint**: Echo with "so + was + subject"
    **Answer**: So was I
-   **Accepts**: So was he / So was everyone
+   **Accepts**: So was he / So was everyone / Me too / So was everybody / So were we
    **Explanation**: Past simple of "be" → "So was + subject". Pattern: match the auxiliary form ("was") and invert with the subject. The whole verb phrase is replaced by the auxiliary echo.
 
 4. **fix_error** — "I don't like coffee." "Me too."
    **Hint**: For negative agreement, use "Me neither" or "Neither do I"
    **Answer**: I don't like coffee. — Me neither.
-   **Accepts**: Neither do I.
+   **Accepts**: Neither do I. / Me neither / Me either / Nor do I
    **Explanation**: "Me too" is for positive agreement ("I like coffee. — Me too"). For negative agreement, use "Me neither" or "Neither do I". Common L2 error — defaulting to "me too" for all agreement.
 
 5. **read_answer**

@@ -38,18 +38,19 @@
 1. **multiple_choice** — "He hasn't answered his phone all day. He _____ be travelling."
    **Options**: must / will / should / can
    **Answer**: must
-   **Explanation**: "Must" — strong inference from evidence. "He hasn't / has not answered" → conclusion: "he must be travelling". "Will" would be slightly weaker (logical expectation), "should" weaker still (expected but uncertain), "can" doesn't fit here. "Must" matches the strength of the evidence-driven conclusion.
+   **Explanation**: "Must" — strong inference from evidence. "He hasn't answered" → conclusion: "he must be travelling". "Will" would be slightly weaker (logical expectation), "should" weaker still (expected but uncertain), "can" doesn't fit here. "Must" matches the strength of the evidence-driven conclusion.
 
 2. **multiple_choice** — "That _____ be the postman at the door."
    **Options**: will / must / should / can
    **Answer**: will
    **Accepts**: must
-   **Explanation**: "Will" — high-certainty prediction based on routine ("It's / It is the time he usually comes"). "Must" works too if there's stronger evidence (a specific knock). The English habit of using "will" for confident predictions about the present surprises learners. "That'll be him" is everyday English.
+   **Explanation**: "Will" — high-certainty prediction based on routine ("It's the time he usually comes"). "Must" works too if there's stronger evidence (a specific knock). The English habit of using "will" for confident predictions about the present surprises learners. "That'll be him" is everyday English.
 
 3. **fill_gap** — "She _____ be home by now — her shift ended at six."
    **Hint**: Modal of expected outcome based on schedule
    **Answer**: should
-   **Explanation**: "Should" — mild expectation based on knowledge of routine. Weaker than "must" or "will". Implies "based on what I know, this is expected — but I'm / I am not certain". Common for time-based expectations.
+   **Accepts**: ought to / must
+   **Explanation**: "Should" — mild expectation based on knowledge of routine. Weaker than "must" or "will". Implies "based on what I know, this is expected — but I'm not certain". Common for time-based expectations.
 
 4. **fix_error** — "He hasn't replied to the email. He must has been busy."
    **Hint**: After modals (must/should/will), use base form — not "has been"
@@ -59,7 +60,8 @@
 5. **read_answer**
    **Passage**: "The radio silence had lasted three days. He must be off the grid — there was no other explanation. Or he might have lost his phone again, which would not be the first time. He should be back in range by Friday, but the team had stopped relying on his promises long ago."
    **Question**: According to the passage, what are the three possible explanations for his silence?
-   **Answer**: he's off the grid (must), he lost his phone (might have), he should be back by Friday
+   **Answer**: off the grid, lost phone, back by Friday
+   **Accepts**: off the grid / lost his phone / should be back by Friday
    **Explanation**: Three modal shades calibrating certainty: "must be off the grid" (strong inference), "might have lost his phone" (weaker possibility), "should be back by Friday" (expected but uncertain). Each modal does specific epistemic work.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -201,7 +203,8 @@
 3. **fill_gap** — "We _____ be wrong about this — but the data so far supports our reading."
    **Hint**: "May" + well
    **Answer**: may well
-   **Explanation**: "May well + base form" — hedged probability. "We may well be wrong" = "It's quite possible we're / we are wrong, even likely". Formal register equivalent of "might well". Choice between "may well" / "might well" / "could well" often comes down to register.
+   **Accepts**: might well / could well / may / might / could
+   **Explanation**: "May well + base form" — hedged probability. "We may well be wrong" = "It's quite possible we're wrong, even likely". Formal register equivalent of "might well". Choice between "may well" / "might well" / "could well" often comes down to register.
 
 4. **fix_error** — "He might good be right."
    **Hint**: It's "might WELL", not "might good"
@@ -211,7 +214,8 @@
 5. **read_answer**
    **Passage**: "The analysts were cautious in print but emphatic in private. 'The merger may well close in the second quarter — every leak points that way. The valuation could well climb another fifteen percent before announcement. And the regulators, who have stayed quiet so far, might well intervene only after the press cycle has moved on.'"
    **Question**: How does the analyst frame each claim?
-   **Answer**: each one is hedged but probable — using 'may well', 'could well', 'might well'
+   **Answer**: hedged with 'may well', 'could well', 'might well'
+   **Accepts**: 'may well' / 'could well' / 'might well' / hedged but probable
    **Explanation**: Three hedged-probable modals: "may well close", "could well climb", "might well intervene". Each signals likelihood without certainty. The phrase carries quiet confidence — the speaker isn't asserting, but isn't doubting either. Analyst-grade register.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -230,7 +234,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three uncertain situations. Use 'might well / could well / may well' to mark probable outcomes."
+**Opening line**: "I've got three uncertain situations for you. Say what will probably happen with 'might well', 'could well' or 'may well'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -265,7 +269,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three uncertain situations. Use 'might well / could well / may well' to mark probable outcomes."
+1. **Charlotte**: "I've got three uncertain situations for you. Say what will probably happen with 'might well', 'could well' or 'may well'."
 2. **Student**: ~"Given how the conversation has been going, the negotiation might well end this week."
 3. **Charlotte**: "Plausible scenario?"
 4. **Student**: ~"If oil prices stay high for another quarter, inflation could well force another rate hike before year-end."
@@ -353,12 +357,13 @@
 3. **fill_gap** — Habitual past: "When I was a child, my grandmother _____ read to me every evening."
    **Hint**: Modal for habitual past
    **Answer**: would
+   **Accepts**: used to
    **Explanation**: "Would + base" for habitual past — repeated actions in a past period. Similar to "used to" but emphasises the routine. "She would read to me every evening" = it was her habit. Note: only works for repeated actions, not for past states ("She would be tall" doesn't work for past states; use "was").
 
 4. **fix_error** — Habitual past: "Every summer, we use to visit my aunt in Coimbra."
    **Hint**: Past tense — "used to" or "would"
    **Answer**: Every summer, we used to visit my aunt in Coimbra.
-   **Accepts**: ...we would visit my aunt in Coimbra.
+   **Accepts**: Every summer, we would visit my aunt in Coimbra.
    **Explanation**: "Use to" needs past form "used to" (note the d). Or replace with "would" for habitual past. Common spelling error — "use to" sounds like "used to" but only "used to" is grammatical past form.
 
 5. **read_answer**
@@ -383,7 +388,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three contexts. Use 'ought to', 'shall', or 'would' — formal modal choice."
+**Opening line**: "I've got three formal situations for you. Choose between 'ought to', 'shall' and 'would'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -418,7 +423,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three contexts. Use 'ought to', 'shall', or 'would' — formal modal choice."
+1. **Charlotte**: "I've got three formal situations for you. Choose between 'ought to', 'shall' and 'would'."
 2. **Student**: ~"If the error was ours, we ought to take responsibility publicly — even if the legal team prefers we say less."
 3. **Charlotte**: "Contractual?"
 4. **Student**: ~"The supplier shall deliver no later than the fifteenth of each month; any delay shall be reported in writing within twenty-four hours."
@@ -506,6 +511,7 @@
 3. **fill_gap** — Probability: "The weather forecast says rain _____ continue through the weekend."
    **Hint**: Likelihood structure
    **Answer**: is likely to
+   **Accepts**: will / may / might / could / is expected to / is going to
    **Explanation**: "Is likely to + base" — probability statement. Common in forecasts, predictions, analysis. "Is unlikely to" for the negative. C2 register uses these instead of "will probably" for slightly more analytical tone.
 
 4. **fix_error** — "He is supposed call me at three."
@@ -516,7 +522,8 @@
 5. **read_answer**
    **Passage**: "The launch was supposed to happen on Monday. By all internal measures, the team was bound to make it. But the regulator was unlikely to issue final approval in time, and the marketing campaign was meant to align with broader industry events that had now shifted. Three layers of expectation, three layers of slippage."
    **Question**: According to the passage, why was the launch likely to slip?
-   **Answer**: the regulator was unlikely to approve in time / marketing was meant to align with shifted industry events
+   **Answer**: regulator unlikely to approve, marketing misaligned
+   **Accepts**: regulator unlikely to approve in time / marketing campaign misaligned / approval and marketing timing
    **Explanation**: Four quasi-modals layered: "was supposed to happen" (planned), "was bound to make it" (high probability), "was unlikely to issue" (probability negative), "was meant to align" (convention/plan). Each carries a slightly different shade of expectation.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -648,7 +655,7 @@
 1. **multiple_choice** — Layered possibility + necessity: "If sales fall further, we _____ cut the budget."
    **Options**: might have to / will must / can have to / would can
    **Answer**: might have to
-   **Explanation**: English doesn't allow two true modals together (e.g., "might must"). Instead, layer with quasi-modal: "might have to + base" (possibility + necessity). "Might have to cut" = "it's possible we'll / we will need to cut". Standard C2 layered modality.
+   **Explanation**: English doesn't allow two true modals together (e.g., "might must"). Instead, layer with quasi-modal: "might have to + base" (possibility + necessity). "Might have to cut" = "it's possible we'll need to cut". Standard C2 layered modality.
 
 2. **multiple_choice** — Hypothetical obligation: "If the proposal passes, we _____ restructure the team."
    **Options**: would have to / will have to / would must / will must
@@ -658,17 +665,20 @@
 3. **fill_gap** — Anticipated obligation: "Given the new regulations, we _____ adjust our reporting process by next quarter."
    **Hint**: "Are going to" + "have to"
    **Answer**: are going to have to
+   **Accepts**: will have to / will need to / need to / have to / must
    **Explanation**: "Be going to have to + base" — anticipated forced obligation. Combines "going to" (future intention/anticipation) with "have to" (necessity). Conveys that the obligation is approaching whether we like it or not. Slightly weary tone.
 
 4. **fix_error** — "She might must work overtime this week."
    **Hint**: Two modals can't stack — use a quasi-modal
    **Answer**: She might have to work overtime this week.
+   **Accepts**: She may have to work overtime this week. / She might need to work overtime this week.
    **Explanation**: "Might must" is ungrammatical — English doesn't permit two true modals together. Replace one with a quasi-modal: "might have to" or "may need to". This is one of the most common L2 errors for Spanish/Portuguese speakers, whose languages allow modal-modal sequences.
 
 5. **read_answer**
    **Passage**: "The project manager laid out the scenarios. 'If the budget holds, we should be able to finish on time. If costs rise by another five percent, we might have to drop one of the integrations. And if the regulators raise concerns at any point, we would have to pause work entirely until we have a written response. Three contingencies, three layered obligations.'"
    **Question**: What would force a complete pause?
-   **Answer**: if the regulators raise concerns (we would have to pause until written response)
+   **Answer**: if regulators raise concerns
+   **Accepts**: regulators raise concerns / pause until written response / regulator concerns
    **Explanation**: Three layered modal structures: "should be able to" (modal + quasi-modal), "might have to drop" (possibility + necessity), "would have to pause" (hypothetical + necessity). Each combines two modal meanings.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -768,9 +778,9 @@
    **label_pt**: "Perguntar a Charlotte"
    **label_en**: "Ask Charlotte"
    **hidden_prompt**: "user asks Charlotte where the line of acceptable is"
-   **hint_pt**: "Where's your line of acceptable?"
-   **hint_en**: "Where's your line of acceptable?"
-   **example_pass**: Where's your line of acceptable?
+   **hint_pt**: "Where do you draw the line?"
+   **hint_en**: "Where do you draw the line?"
+   **example_pass**: Where do you draw the line?
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Contingencies, modally layered. C2 modal subtlety, complete." once obj_3 lands.
@@ -782,7 +792,7 @@
 3. **Charlotte**: "And further below?"
 4. **Student**: "If we close more than thirty percent below, we would have to revisit the entire two-year plan — at that point, the strategy isn't the same business."
 5. **Charlotte**: "That's the line I've been circling without naming."
-6. **Student**: "Where's your line of acceptable?"
+6. **Student**: "Where do you draw the line?"
 7. **Charlotte**: "About fifteen percent below. Below that, every scenario starts to look like a different company. Contingencies, modally layered. C2 modal subtlety, complete."
 
 > A05 chat = full LLM. Scaffold via hint_pt/hint_en.

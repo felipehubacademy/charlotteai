@@ -91,6 +91,10 @@
           "sentence": "I _____ at eleven on weekends because I am tired.",
           "hint": "Verbo \"dormir\" forma base",
           "answer": "sleep",
+          "accepts": [
+            "wake up",
+            "get up"
+          ],
           "explanation": "\"I sleep at eleven\" = \"Eu durmo às onze\". Forma base do verbo com \"I\". \"On weekends\" indica padrão semanal."
         },
         {
@@ -98,6 +102,9 @@
           "sentence": "I _____ breakfast at seven-thirty.",
           "hint": "Verbo pra refeição (forma base)",
           "answer": "have",
+          "accepts": [
+            "eat"
+          ],
           "explanation": "\"I have breakfast\" = \"Tomo café da manhã\". \"Have\" aqui é verbo lexical (comer/tomar), não \"have got\" (possuir)."
         },
         {
@@ -105,6 +112,9 @@
           "sentence": "We _____ orange juice every morning.",
           "hint": "Verbo \"beber\" forma base",
           "answer": "drink",
+          "accepts": [
+            "have"
+          ],
           "explanation": "\"We drink orange juice\" — forma base com \"we\" (plural). \"Drink\" sem -s."
         },
         {
@@ -355,6 +365,11 @@
           "sentence": "We _____ English on Mondays and Wednesdays at school.",
           "hint": "Verbo \"estudar\"",
           "answer": "study",
+          "accepts": [
+            "learn",
+            "have",
+            "practice"
+          ],
           "explanation": "\"We study English\" — pronome plural com forma base. Sem -s."
         },
         {
@@ -599,6 +614,11 @@
           "sentence": "I _____ a sandwich for lunch every day.",
           "hint": "Verbo \"comer\"",
           "answer": "eat",
+          "accepts": [
+            "have",
+            "make",
+            "buy"
+          ],
           "explanation": "\"I eat a sandwich\" — forma base. \"Eat\" = comer. \"A sandwich\" = chunk com artigo indefinido."
         },
         {
@@ -606,6 +626,10 @@
           "sentence": "We _____ coffee in the morning at the cafe.",
           "hint": "Verbo \"beber\"",
           "answer": "drink",
+          "accepts": [
+            "have",
+            "buy"
+          ],
           "explanation": "\"We drink coffee\" — plural, forma base. \"Drink\" = beber."
         },
         {
@@ -613,6 +637,9 @@
           "sentence": "I _____ lunch at noon.",
           "hint": "Verbo pra refeição (mesmo padrão de breakfast/dinner)",
           "answer": "have",
+          "accepts": [
+            "eat"
+          ],
           "explanation": "\"I have lunch\" = \"Eu almoço\". \"Have lunch\" / \"have breakfast\" / \"have dinner\" são chunks fixos."
         },
         {
@@ -858,6 +885,11 @@
           "sentence": "I _____ to work at eight every day.",
           "hint": "Verbo \"ir\" forma base",
           "answer": "go",
+          "accepts": [
+            "drive",
+            "walk",
+            "get"
+          ],
           "explanation": "\"I go to work\" — forma base com \"I\". Estrutura: \"I go to + lugar + at + time\"."
         },
         {
@@ -865,6 +897,10 @@
           "sentence": "We _____ home together after class on foot.",
           "hint": "Verbo \"vir / voltar\"",
           "answer": "come",
+          "accepts": [
+            "walk",
+            "go"
+          ],
           "explanation": "\"We come home\" — plural, forma base. \"Come home\" = \"voltar pra casa\". Chunk fixo."
         },
         {
@@ -872,6 +908,11 @@
           "sentence": "I _____ to the park on Sundays to run.",
           "hint": "Verbo \"ir\"",
           "answer": "go",
+          "accepts": [
+            "walk",
+            "drive",
+            "come"
+          ],
           "explanation": "\"I go to the park\" — atividade dominical. Forma base com \"I\"."
         },
         {
@@ -1088,7 +1129,7 @@
             "no"
           ],
           "answer": "never",
-          "explanation": "\"Never\" (nunca) é advérbio de frequência negativo. Posição: antes do verbo. \"I never work on weekends\" — não precisa de \"don't / do not\", o \"never\" já carrega a negação."
+          "explanation": "\"Never\" (nunca) é advérbio de frequência negativo. Posição: antes do verbo. \"I never work on weekends\" — não precisa de \"don't\", o \"never\" já carrega a negação."
         },
         {
           "type": "word_bank",
@@ -1126,6 +1167,11 @@
           "sentence": "We _____ eat pizza — only on Fridays.",
           "hint": "Advérbio de frequência média/ocasional",
           "answer": "sometimes",
+          "accepts": [
+            "often",
+            "usually",
+            "occasionally"
+          ],
           "explanation": "\"Sometimes\" = às vezes (~30-50%). \"Only on Fridays\" indica ocasional, então \"sometimes\" cabe."
         },
         {
@@ -1133,6 +1179,11 @@
           "sentence": "I _____ go to bed at eleven on weekdays.",
           "hint": "Advérbio de frequência alta mas não absoluta",
           "answer": "usually",
+          "accepts": [
+            "often",
+            "normally",
+            "generally"
+          ],
           "explanation": "\"Usually\" = geralmente (~80%). \"On weekdays\" indica padrão típico mas não 100% absoluto."
         },
         {
@@ -1355,7 +1406,7 @@
             "three's"
           ],
           "answer": "three",
-          "explanation": "\"It's / It is three o'clock\" — chunk fixo de horário cheio. Sem artigo antes do número. \"O'clock\" só com horas cheias (3:00, 7:00), nunca com minutos."
+          "explanation": "\"It's three o'clock\" — chunk fixo de horário cheio. Sem artigo antes do número. \"O'clock\" só com horas cheias (3:00, 7:00), nunca com minutos."
         },
         {
           "type": "word_bank",
@@ -1415,7 +1466,7 @@
           "sentence": "What's hour?",
           "hint": "Chunk fixo começa com \"What time...\"",
           "answer": "What time is it?",
-          "explanation": "\"What's / What is hour?\" é tradução literal errada de \"que horas?\". O chunk correto é \"What time is it?\". Sempre com \"time\" e \"is it\" no fim. Erro muito comum entre lusófonos iniciantes."
+          "explanation": "\"What's hour?\" é tradução literal errada de \"que horas?\". O chunk correto é \"What time is it?\". Sempre com \"time\" e \"is it\" no fim. Erro muito comum entre lusófonos iniciantes."
         },
         {
           "type": "fix_error",
@@ -1425,7 +1476,7 @@
           "accepts": [
             "It's three o'clock."
           ],
-          "explanation": "\"It's / It is three o'clock\" — sem \"the\" e sem \"a\". Horário inglês não usa artigos. Erro de tradução literal de \"são três horas\"."
+          "explanation": "\"It's three o'clock\" — sem \"the\" e sem \"a\". Horário inglês não usa artigos. Erro de tradução literal de \"são três horas\"."
         },
         {
           "type": "read_answer",

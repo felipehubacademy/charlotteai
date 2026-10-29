@@ -76,7 +76,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   updates: {
     url: 'https://u.expo.dev/da14586b-2944-4150-b8ad-5ff7e32af6e2',
     enabled: true,
-    fallbackToCacheTimeout: 0,
+    // Na abertura, espera até 5 s (durante a tela de abertura) para aplicar a atualização nova antes de
+    // abrir. Com 0, quem acabou de baixar da loja passava a 1ª sessão no código que veio no binário, sem
+    // as correções mais recentes (casos reais em 2026-10-20: microfone do L&S e assinatura do site).
+    // Sem internet ou sem atualização nova, abre na hora com o que já tem.
+    fallbackToCacheTimeout: 5000,
     checkAutomatically: 'ON_LOAD',
   },
   // Bumped 2026-05-13 (livevoice-reset): novo binario tem CharlotteAudioSession
@@ -142,8 +146,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     'expo-web-browser',
     // Fix Xcode 16 build error ('memory' file not found) pro react-native-webrtc.
     // Idempotente (marker guard), afeta so o target react-native-webrtc.
-    // LiveKit (WebRTC da ligação com a Família no ElevenLabs e da ligação da Charlotte).
-    '@livekit/react-native-expo-plugin',
     './plugins/withWebRTCXcode16Fix',
     // Linka ReplayKit no app target: o withWebRTCXcode16Fix desliga os modulos
     // do react-native-webrtc, o que mata o autolink da ReplayKit e quebra o

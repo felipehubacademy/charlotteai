@@ -8,7 +8,7 @@ import { View, Modal, TouchableOpacity, Image, ActivityIndicator, Share, Platfor
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ViewShot, Sharing, Clipboard, canShareImage, RNShare } from '@/lib/nativeOptional';
 import Constants from 'expo-constants';
-import { X, ShareNetwork, LinkSimple, Check, InstagramLogo, Fire, Medal, GraduationCap, Lightning, Trophy, UsersThree } from 'phosphor-react-native';
+import { X, ShareNetwork, LinkSimple, Check, InstagramLogo, Fire, Medal, GraduationCap, Lightning, Trophy, UsersThree, Crown } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { systemIsPt } from '@/lib/systemLang';
@@ -34,7 +34,7 @@ const T: Record<string, Theme> = {
   paperG: { bg: PAPER,     text: INK,       sub: 'rgba(22,19,31,0.7)',    accent: '#08804A', light: false, linkBg: INK,       linkText: '#FFFFFF', linkAccent: VOLT },
   paperP: { bg: PAPER,     text: INK,       sub: 'rgba(22,19,31,0.7)',    accent: '#FF4F8B', light: false, linkBg: '#FF4F8B', linkText: '#FFFFFF', linkAccent: INK },
 };
-const KIND_ICON = { streak: Fire, achievement: Medal, level: GraduationCap, xp: Lightning, challenge: Trophy } as const;
+const KIND_ICON = { streak: Fire, achievement: Medal, level: GraduationCap, xp: Lightning, challenge: Trophy, rank: Crown } as const;
 const STREAK_MILESTONES = new Set([7, 14, 21, 30, 50, 60, 90, 100, 150, 200, 365]);
 export const isStreakMilestone = (n: number) => STREAK_MILESTONES.has(n) || (n > 100 && n % 50 === 0);
 const RARITY_THEME: Record<string, keyof typeof T> = { common: 'green', rare: 'violet', epic: 'pink', legendary: 'volt' };
@@ -55,6 +55,7 @@ function pickTheme(c: ShareCardContent): Theme {
     case 'achievement': return T[RARITY_THEME[c.rarity ?? ''] ?? 'violet'];
     case 'level':       return c.badge ? T.volt : T[LEVEL_THEME[c.big] ?? 'paperV'];
     case 'challenge':   return [T.green, T.violet, T.pink, T.paperG][n % 4];
+    case 'rank':        return T.volt; // liderança do ranking: sempre o volt, a cor mais forte da marca
     default:            return [T.paperG, T.green, T.paperV][n % 3];
   }
 }
@@ -71,7 +72,7 @@ const W = 270;
 const H = 480;
 
 export interface ShareCardContent {
-  kind: 'streak' | 'achievement' | 'level' | 'xp' | 'challenge';
+  kind: 'streak' | 'achievement' | 'level' | 'xp' | 'challenge' | 'rank';
   /** Semente da variação (dia da sequência, código da conquista, semana...). */
   seed?: string | number;
   /** Conquista: raridade (define a cor) e categoria (define o ícone). */
@@ -98,7 +99,9 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
   const ACTIONS_H = 180; // botões + espaços abaixo do card
   const scale = Math.min(1, Math.max(0.6, (winH - insets.top - insets.bottom - 40 - ACTIONS_H - 44) / H));
   const { profile } = useAuth();
-  const isPt = systemIsPt;
+  const isPt = systemIsPt; // botões desta tela: idioma do aparelho
+  // O card e a mensagem do convite vão sempre em português: são para chamar amigos daqui para estudar.
+  const cardPt = true;
   const cardRef = useRef<View>(null);
   const [link, setLink] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -157,7 +160,7 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
   };
 
   function inviteMessage() {
-    return isPt
+    return cardPt
       ? `Vem estudar inglês comigo no Queizy! ${link ?? 'https://queizy.com'}`
       : `Come study English with me on Queizy! ${link ?? 'https://queizy.com'}`;
   }
@@ -217,15 +220,15 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
               <AppText style={{ fontSize: 14, color: th.text, marginTop: 16, fontWeight: '700' }}>
                 {/* Convite: prova social. Conquistas: vale para qualquer membro da Família. */}
                 {content.invite
-                  ? (isPt ? `${name} já está no Queizy` : `${name} is already on Queizy`)
-                  : (isPt ? `${name}, aprendendo inglês no Queizy` : `${name}, learning English on Queizy`)}
+                  ? (cardPt ? `${name} já está no Queizy` : `${name} is already on Queizy`)
+                  : (cardPt ? `${name}, aprendendo inglês no Queizy` : `${name}, learning English on Queizy`)}
               </AppText>
             )}
           </View>
 
           <View style={{ backgroundColor: th.linkBg, borderRadius: 16, padding: 14 }}>
             <AppText style={{ fontSize: 13, color: th.linkText, fontWeight: '800' }}>
-              {content.invite ? (isPt ? 'Entre pelo link' : 'Join with the link') : (isPt ? 'Vem estudar comigo' : 'Come study with me')}
+              {content.invite ? (cardPt ? 'Entre pelo link' : 'Join with the link') : (cardPt ? 'Vem estudar comigo' : 'Come study with me')}
             </AppText>
             <AppText style={{ fontSize: 13, color: th.linkAccent, fontWeight: '700', marginTop: 2 }}>{shortLink}</AppText>
           </View>

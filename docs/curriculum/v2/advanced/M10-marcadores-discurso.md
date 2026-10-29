@@ -47,6 +47,7 @@
 3. **fill_gap** — "We weren't expecting an offer that high. _____, we were ready to negotiate for less."
    **Hint**: Past clarification marker
    **Answer**: As a matter of fact
+   **Accepts**: In fact / Actually
    **Explanation**: "As a matter of fact" introduces a behind-the-scenes truth that softens or surprises. Used when adding context that adjusts the interlocutor's mental model.
 
 4. **fix_error** — "Actually, I don't think that's correct, in fact."
@@ -199,6 +200,7 @@
 3. **fill_gap** — "_____, I might have done the same thing in his position."
    **Hint**: "Granted" or "Admittedly" or "Then again"
    **Answer**: Then again
+   **Accepts**: Granted / Admittedly
    **Explanation**: "Then again" introduces a reconsideration — second-guessing your own assertion. Punctuation: comma after. Slightly more reflective than "that said"; suggests the speaker is genuinely reconsidering, not just balancing.
 
 4. **fix_error** — "She's talented. However, that said, she's also lazy."
@@ -351,11 +353,14 @@
 3. **fill_gap** — "She's not just busy. _____, she's overwhelmed."
    **Hint**: Correction marker
    **Answer**: Or rather
+   **Accepts**: In fact / Actually / Rather / More accurately
    **Explanation**: "Or rather" introduces a self-correction — replacing a less-accurate term with a more-accurate one. Comma after. Used when you realise mid-sentence that you've understated or misstated something.
 
-4. **fix_error** — "The data suggests, in other words, a downward trend."
+4. **short_write** — "The data suggests, in other words, a downward trend."
    **Hint**: "In other words" doesn't fit mid-clause when there's no paraphrase
    **Answer**: The data suggests a downward trend. In other words, sales are slipping.
+   **Prompt**: Fix the sentence: use "In other words" only to introduce a paraphrase.
+   **Example answer**: The data suggests a downward trend. In other words, sales are slipping.
    **Explanation**: "In other words" introduces a restatement of a prior idea. It needs something to restate. Inserting it without a paraphrase makes it filler. Use only when you're actually paraphrasing.
 
 5. **read_answer**
@@ -498,11 +503,12 @@
 2. **multiple_choice** — "The product is well-designed. _____, the price is unbeatable."
    **Options**: What's more / What more / What's most / What is the more
    **Answer**: What's more
-   **Explanation**: "What's / What is more" introduces an additional point that strengthens the case. Less climactic than "above all" — used mid-list to keep escalating. Fixed contraction with apostrophe.
+   **Explanation**: "What's more" introduces an additional point that strengthens the case. Less climactic than "above all" — used mid-list to keep escalating. Fixed contraction with apostrophe.
 
 3. **fill_gap** — "He's a great teacher — _____, the students adore him."
    **Hint**: "Not least"
    **Answer**: not least
+   **Accepts**: indeed / in fact
    **Explanation**: "Not least" introduces a specifically important point, often understated. Fixed phrase. Means "and not at all unimportantly". Often introduces the most concrete or compelling evidence in a list.
 
 4. **fix_error** — "Above all of, she's reliable."
@@ -514,7 +520,7 @@
    **Passage**: "The job offer was strong on every front. The pay was generous. What's more, the team was small and experienced. Not least, the office was a fifteen-minute walk from her flat. Above all, she would finally be working for someone she respected without reservation. She had said yes before the call ended."
    **Question**: According to the passage, what was the most important factor in her decision?
    **Answer**: she would finally be working for someone she respected
-   **Explanation**: Four emphatic markers building a climax: "What's / What is more" (adding), "Not least" (emphasising), "Above all" (final crown). Each marker escalates the emphasis. The marker "above all" signals the most important item.
+   **Explanation**: Four emphatic markers building a climax: "What's more" (adding), "Not least" (emphasising), "Above all" (final crown). Each marker escalates the emphasis. The marker "above all" signals the most important item.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -655,6 +661,7 @@
 3. **fill_gap** — "The contract was breached; _____, we are entitled to compensation."
    **Hint**: Formal causal marker
    **Answer**: hence
+   **Accepts**: therefore / thus / consequently / accordingly
    **Explanation**: "Hence" = therefore, formal. Fixed marker introducing a consequence. Synonym: "accordingly", "thus". Common in legal, academic, business prose. Note: "hence" can also mean "from now" ("five years hence") but as discourse marker means "therefore".
 
 4. **fix_error** — "On balance of, the decision was sound."

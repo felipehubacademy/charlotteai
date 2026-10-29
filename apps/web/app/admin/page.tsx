@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useAdminMe, canArea } from '@/lib/admin-context';
+import AdminLoading from '@/components/admin/AdminLoading';
 import { Search, Plus, Edit2, Trash2, RefreshCw, ExternalLink, ChevronUp, ChevronDown, X, TriangleAlert, Check, Eye, EyeOff } from 'lucide-react';
 
 // ── Types ────────────────────────────────────────────────────────────────────
@@ -12,6 +13,8 @@ interface User {
   charlotte_level: 'Novice' | 'Inter' | 'Advanced' | null;
   placement_test_done: boolean; is_institutional: boolean; is_active: boolean;
   subscription_status: 'none' | 'trial' | 'active' | 'expired' | 'cancelled';
+  /** pagante | teste_loja | teste_site | teste_antigo | null (mesma regra do /admin/metrics) */
+  sub_phase?: 'pagante' | 'teste_loja' | 'teste_site' | 'teste_antigo' | null;
   trial_ends_at: string | null; must_change_password: boolean; created_at: string;
   engagement: Engagement | null; trailProgress: TrailProgress | null;
   streak: number; longestStreak: number; beta_features: string[];
@@ -19,7 +22,9 @@ interface User {
 }
 interface Stats {
   total: number; institutional: number; subscribers: number; onTrial: number;
-  trialExpired: number; last30: number; growthPct: number | null; activeToday: number; activeWeek: number;
+  trialSplit?: { loja: number; site: number; semCartao: number };
+  trialDetail?: Record<'loja' | 'site' | 'semCartao', TrialDetail>;
+  trialExpired: number; last30: number; last24h?: number; prev24h?: number; growthPct: number | null; activeToday: number; activeWeek: number;
 }
 interface Form {
   email: string; password: string; name: string; charlotte_level: string;
@@ -80,13 +85,18 @@ function DateTip({ iso, children }: { iso: string | null; children: React.ReactN
   );
 }
 
+const PHASE_META: Record<string, { label: string; cls: string }> = {
+  teste_loja:   { label: 'Teste da loja',  cls: 'badge-accent' },
+  teste_site:   { label: 'Teste do site',  cls: 'badge-accent' },
+  teste_antigo: { label: 'Teste antigo',   cls: 'badge-accent' },
+};
 const STATUS_META: Record<string, { label: string; cls: string }> = {
   institutional: { label: 'Institucional', cls: 'badge-inst'   },
-  active:    { label: 'Ativo',      cls: 'badge-ok'     },
-  trial:     { label: 'Trial',      cls: 'badge-accent'  },
+  active:    { label: 'Pagante',    cls: 'badge-ok'     },
+  trial:     { label: 'Teste antigo', cls: 'badge-accent'  },
   cancelled: { label: 'Cancelado',  cls: 'badge-warn'    },
   expired:   { label: 'Expirado',   cls: 'badge-err'     },
-  none:      { label: 'Sem plano',  cls: 'badge-muted'   },
+  none:      { label: 'Degustação', cls: 'badge-muted'   },
 };
 const LEVEL_META: Record<string, { label: string; cls: string }> = {
   Novice:   { label: 'Novice',   cls: 'badge-brand'   },
@@ -95,14 +105,63 @@ const LEVEL_META: Record<string, { label: string; cls: string }> = {
 };
 
 // ── KPI card ─────────────────────────────────────────────────────────────────
-function StatCard({ label, value, sub, accent, delay }: {
-  label: string; value: number | string; sub?: string; accent?: string; delay?: number;
-}) {
+interface TrialDetail { total: number; toCharge: number; cancelled: number; cancelledUntil: string | null; byDay: { date: string; count: number }[] }
+
+const ddmm = (d: string) => `${d.slice(8, 10)}/${d.slice(5, 7)}`;
+
+// Detalhe do "Em teste grátis": cada origem com quem vai ser cobrado (e quando) e quem cancelou no teste.
+function TrialDetailBox({ d }: { d: Record<'loja' | 'site' | 'semCartao', TrialDetail> }) {
+  const rows: { key: 'loja' | 'site' | 'semCartao'; title: string; note: string }[] = [
+    { key: 'site', title: 'Site (cartão)', note: 'cobrança' },
+    { key: 'loja', title: 'Loja (App Store e Play)', note: 'cobrança' },
+    { key: 'semCartao', title: 'Teste antigo (sem cartão)', note: 'termina' },
+  ];
   return (
-    <div className="kpi-card fade-up" style={{ animationDelay: `${delay ?? 0}ms` }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      {rows.filter(r => d[r.key].total > 0).map(r => {
+        const x = d[r.key];
+        return (
+          <div key={r.key}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 700, fontSize: 13, color: 'var(--t1)' }}>
+              <span>{r.title}</span><span>{x.total}</span>
+            </div>
+            {r.key !== 'semCartao' && (
+              <div style={{ fontSize: 12, color: 'var(--t2)', marginTop: 3 }}>
+                {x.toCharge} {x.toCharge === 1 ? 'vai ser cobrado' : 'vão ser cobrados'}
+                {x.cancelled > 0 && <> · <span style={{ color: 'var(--err)' }}>{x.cancelled} {x.cancelled === 1 ? 'cancelou' : 'cancelaram'}</span> (acesso até {x.cancelledUntil ? ddmm(x.cancelledUntil) : '—'}, sem cobrança)</>}
+              </div>
+            )}
+            {x.byDay.length > 0 && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 6 }}>
+                {x.byDay.map(b => (
+                  <span key={b.date} style={{ fontSize: 11.5, background: 'var(--s2)', borderRadius: 999, padding: '2px 8px', color: 'var(--t2)' }}>
+                    {r.note} {ddmm(b.date)}: <strong style={{ color: 'var(--t1)' }}>{b.count}</strong>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function StatCard({ label, value, sub, accent, delay, detail }: {
+  label: string; value: number | string; sub?: string; accent?: string; delay?: number; detail?: React.ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="kpi-card fade-up" style={{ animationDelay: `${delay ?? 0}ms`, position: 'relative', cursor: detail ? 'pointer' : undefined, overflow: 'visible', zIndex: open ? 30 : undefined }}
+      onMouseEnter={() => detail && setOpen(true)} onMouseLeave={() => setOpen(false)} onClick={() => detail && setOpen(o => !o)}>
       <div className="kpi-label">{label}</div>
       <div className="kpi-value" style={accent ? { color: accent } : {}}>{value}</div>
       {sub && <div className="kpi-context" style={{ marginTop: 4 }}>{sub}</div>}
+      {detail && open && (
+        <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, marginTop: 6, minWidth: 280, background: 'var(--s1)', border: '1px solid var(--b2)', borderRadius: 14, padding: 14, boxShadow: '0 12px 32px rgba(0,0,0,0.12)' }}>
+          {detail}
+        </div>
+      )}
     </div>
   );
 }
@@ -140,7 +199,7 @@ export default function AdminUsersPage() {
   const canDelete = canArea(me, 'users:delete');
   const [users, setUsers]       = useState<User[]>([]);
   const [stats, setStats]       = useState<Stats | null>(null);
-  const [loading, setLoading]   = useState(false);
+  const [loading, setLoading]   = useState(true); // primeira carga: tela de carregamento até chegar a lista
   const [error, setError]       = useState('');
   const [search, setSearch]     = useState('');
   const [filter, setFilter]     = useState<FilterKey>('all');
@@ -183,20 +242,27 @@ export default function AdminUsersPage() {
   };
 
   // Filtered + sorted
+  // Mesma regra para a lista filtrada e para as contagens dos filtros rápidos.
+  const inFilter = (u: User, f: FilterKey): boolean =>
+    f === 'all' ? true :
+    f === 'institutional' ? u.is_institutional :
+    f === 'subscriber' ? u.sub_phase === 'pagante' :
+    f === 'trial' ? !!u.sub_phase && u.sub_phase.startsWith('teste') :
+    f === 'expired' ? !u.is_institutional && (
+      u.subscription_status === 'expired' ||
+      (u.subscription_status === 'trial' && !!u.trial_ends_at && new Date(u.trial_ends_at) < new Date())
+    ) :
+    f === 'none' ? u.subscription_status === 'none' && !u.is_institutional : true;
+  const filterCounts = useMemo(() => {
+    const keys: FilterKey[] = ['all', 'subscriber', 'trial', 'expired', 'institutional', 'none'];
+    return Object.fromEntries(keys.map(k => [k, users.filter(u => inFilter(u, k)).length])) as Record<FilterKey, number>;
+  }, [users]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const displayed = useMemo(() => {
     const q = search.toLowerCase();
     let list = users.filter(u => {
       const matchQ = !q || u.email.toLowerCase().includes(q) || (u.name ?? '').toLowerCase().includes(q) || (!!u.username && `@${u.username}`.includes(q.startsWith('@') ? q : `@${q}`));
-      const matchF =
-        filter === 'all' ? true :
-        filter === 'institutional' ? u.is_institutional :
-        filter === 'subscriber' ? u.subscription_status === 'active' :
-        filter === 'trial' ? u.subscription_status === 'trial' && !u.is_institutional :
-        filter === 'expired' ? !u.is_institutional && (
-          u.subscription_status === 'expired' ||
-          (u.subscription_status === 'trial' && !!u.trial_ends_at && new Date(u.trial_ends_at) < new Date())
-        ) :
-        filter === 'none' ? u.subscription_status === 'none' && !u.is_institutional : true;
+      const matchF = inFilter(u, filter);
       return matchQ && matchF;
     });
     list = [...list].sort((a, b) => {
@@ -258,14 +324,14 @@ export default function AdminUsersPage() {
 
   // ── API actions ────────────────────────────────────────────────────────────
   const handleCreate = async () => {
-    if (!form.email || !form.password) { setFormErr('Email e senha são obrigatórios.'); return; }
+    if (!form.name?.trim() || !form.email?.trim() || !form.password?.trim()) { setFormErr('Nome, e-mail e senha são obrigatórios.'); return; }
     setSaving(true); setFormErr('');
     try {
       const res = await fetch('/api/admin/users', {
         method: 'POST',
         headers: { 'x-admin-secret': getSecret(), 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: form.email, password: form.password, name: form.name || null,
+          email: form.email.trim(), password: form.password.trim(), name: form.name.trim(),
           charlotte_level: form.charlotte_level || null,
           is_institutional: form.is_institutional, is_active: form.is_active,
           subscription_status: form.is_institutional ? 'none' : form.subscription_status,
@@ -358,6 +424,9 @@ export default function AdminUsersPage() {
   }));
 
   // ── Render ─────────────────────────────────────────────────────────────────
+  // Primeira carga: tela inteira de carregamento até a lista chegar (no PWA a tela ficava vazia).
+  if (loading && !users.length && !stats && !error) return <AdminLoading label="Carregando usuários…" />;
+
   return (
     <div className="adm-page">
       {/* Top bar */}
@@ -385,17 +454,21 @@ export default function AdminUsersPage() {
         <div style={{ padding: '16px 28px 0' }}>
           <div className="adm-grid">
             <div className="col-3"><StatCard label="Total" value={stats.total} delay={0} /></div>
-            <div className="col-3"><StatCard label="Assinantes" value={stats.subscribers} accent="var(--ok)" delay={60} /></div>
-            <div className="col-3"><StatCard label="Em Trial" value={stats.onTrial} accent="var(--accent)" delay={120} /></div>
+            <div className="col-3"><StatCard label="Pagantes" value={stats.subscribers} accent="var(--ok)" delay={60} /></div>
+            <div className="col-3">
+              <StatCard label="Em teste grátis" value={stats.onTrial} accent="var(--accent)" delay={120}
+                sub={stats.trialSplit ? `Loja ${stats.trialSplit.loja} · Site ${stats.trialSplit.site}${stats.trialSplit.semCartao ? ` · Sem cartão ${stats.trialSplit.semCartao}` : ''}` : undefined}
+                detail={stats.trialDetail ? <TrialDetailBox d={stats.trialDetail} /> : undefined} />
+            </div>
             <div className="col-3"><StatCard label="Institucionais" value={stats.institutional} delay={180} /></div>
             <div className="col-3">
-              <StatCard label="Novos (30d)" value={stats.last30}
-                sub={stats.growthPct != null ? `${stats.growthPct > 0 ? '+' : ''}${stats.growthPct.toFixed(1)}% vs anterior` : undefined}
+              <StatCard label="Novos (24h)" value={stats.last24h ?? 0}
+                sub={`${stats.prev24h ?? 0} nas 24 h anteriores · ${stats.last30} em 30 dias`}
                 delay={240} accent="var(--brand)" />
             </div>
             <div className="col-3"><StatCard label="Ativos Hoje" value={stats.activeToday} accent="var(--ok)" delay={300} /></div>
             <div className="col-3"><StatCard label="Ativos (7d)" value={stats.activeWeek} delay={360} /></div>
-            <div className="col-3"><StatCard label="Trial Expirado" value={stats.trialExpired} accent={stats.trialExpired > 0 ? 'var(--warn)' : undefined} delay={420} /></div>
+            <div className="col-3"><StatCard label="Teste encerrado" value={stats.trialExpired} accent={stats.trialExpired > 0 ? 'var(--warn)' : undefined} delay={420} /></div>
           </div>
         </div>
       )}
@@ -415,12 +488,12 @@ export default function AdminUsersPage() {
         </div>
         <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
           {([
-            { id: 'all',           label: `Todos (${users.length})` },
-            { id: 'subscriber',    label: 'Assinantes' },
-            { id: 'trial',         label: 'Trial' },
-            { id: 'expired',       label: `Expirado${expiredCount > 0 ? ` (${expiredCount})` : ''}` },
-            { id: 'institutional', label: 'Institucional' },
-            { id: 'none',          label: 'Sem plano' },
+            { id: 'all',           label: `Todos (${filterCounts.all ?? 0})` },
+            { id: 'subscriber',    label: `Pagantes (${filterCounts.subscriber ?? 0})` },
+            { id: 'trial',         label: `Em teste (${filterCounts.trial ?? 0})` },
+            { id: 'expired',       label: `Expirado (${filterCounts.expired ?? 0})` },
+            { id: 'institutional', label: `Institucional (${filterCounts.institutional ?? 0})` },
+            { id: 'none',          label: `Degustação (${filterCounts.none ?? 0})` },
           ] as { id: FilterKey; label: string }[]).map(f => (
             <button
               key={f.id}
@@ -505,7 +578,9 @@ export default function AdminUsersPage() {
                       </td>
                     </tr>
                   ) : pageUsers.map(u => {
-                    const sm = u.is_institutional ? STATUS_META.institutional : STATUS_META[u.subscription_status];
+                    const sm = u.is_institutional ? STATUS_META.institutional
+                      : (u.sub_phase && PHASE_META[u.sub_phase]) ? PHASE_META[u.sub_phase]
+                      : STATUS_META[u.subscription_status];
                     const lm = u.charlotte_level ? LEVEL_META[u.charlotte_level] : null;
                     return (
                       <tr key={u.id} style={checked.has(u.id) ? { background: 'var(--s2, #F3F1EC)' } : undefined}>
@@ -708,8 +783,9 @@ export default function AdminUsersPage() {
                         {form.is_institutional
                           ? <option value="none">Institucional (gerenciado)</option>
                           : <>
-                              <option value="none">Sem plano</option>
-                              <option value="trial">Trial</option>
+                              <option value="none">Degustação</option>
+                              {/* Trial do app acabou em 14/10: não dá para escolher; só aparece em conta antiga que ainda está nele. */}
+                              {form.subscription_status === 'trial' && <option value="trial" disabled>Trial antigo do app</option>}
                               <option value="active">Ativo</option>
                               <option value="cancelled">Cancelado</option>
                               <option value="expired">Expirado</option>

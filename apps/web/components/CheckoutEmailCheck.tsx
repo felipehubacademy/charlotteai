@@ -1,6 +1,7 @@
 'use client';
 // Tela de sucesso do site: "Mandamos o acesso para fulano@gmial.com. Não é esse? Corrigir".
 // Só oferece a correção enquanto a conta, criada pela compra, nunca foi usada no app.
+// "Não chegou? Reenviar": manda de novo o e-mail com o link de criar a senha (1 por minuto).
 import { useEffect, useState } from 'react';
 import { suggestEmailCorrection } from '@/lib/email-validation';
 import { track } from '@/lib/meta-pixel';
@@ -43,6 +44,17 @@ export default function CheckoutEmailCheck() {
     } finally { setBusy(false); }
   }
 
+  async function resend() {
+    setBusy(true); setMsg(null);
+    try {
+      const r = await fetch('/api/checkout/asaas/email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'resend' }) });
+      const j = await r.json().catch(() => ({}));
+      setMsg(r.ok
+        ? { ok: true, text: 'Reenviamos. Pode levar alguns minutos; confira também a caixa de spam.' }
+        : { ok: false, text: j.error ?? 'Não foi possível reenviar agora.' });
+    } finally { setBusy(false); }
+  }
+
   const suggestion = suggestEmailCorrection(email);
   return (
     <div style={{ background: '#fff', border: '1px solid #E6E2EC', borderRadius: 16, padding: '14px 16px', marginBottom: 22, textAlign: 'left', fontSize: 14.5, color: MID, lineHeight: 1.5 }}>
@@ -60,6 +72,15 @@ export default function CheckoutEmailCheck() {
           <button type="button" disabled={busy} onClick={save}
             style={{ padding: '10px 16px', borderRadius: 10, border: 0, background: INK, color: '#DDFF4A', fontWeight: 800, cursor: 'pointer' }}>
             {busy ? 'Salvando…' : 'Salvar'}
+          </button>
+        </div>
+      )}
+      {!editing && (
+        <div style={{ marginTop: 6, fontSize: 13.5 }}>
+          Não chegou?{' '}
+          <button type="button" disabled={busy} onClick={resend}
+            style={{ background: 'none', border: 0, padding: 0, color: '#6B4BFF', fontWeight: 700, cursor: 'pointer', fontSize: 13.5 }}>
+            {busy ? 'Reenviando…' : 'Reenviar o e-mail'}
           </button>
         </div>
       )}

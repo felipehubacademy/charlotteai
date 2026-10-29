@@ -6,8 +6,10 @@ import { Plus, RefreshCw, Check, X, Pencil, Headphones } from 'lucide-react';
 import { InsightsTab } from './InsightsTab';
 import { FaqTab } from './FaqTab';
 import { WhatsAppTab } from './WhatsAppTab';
+import { ModerationTab } from './ModerationTab';
 import { useBulk, BulkBar, BulkCheckbox } from '@/components/admin/Bulk';
 
+const CHANNEL_LABEL: Record<string, string> = { app: 'chat do app', whatsapp: 'WhatsApp', instagram: 'Instagram', email: 'e-mail' };
 interface Agent { id: string; name: string; email: string | null; whatsapp: string | null; is_active: boolean; }
 interface Conversation {
   id: string; channel: string; contact: string; subject: string | null; status: string;
@@ -25,7 +27,7 @@ const fmt = (s: string | null) => s ? new Date(s).toLocaleString('pt-BR', { day:
 
 export default function SupportAdmin() {
   const [secret, setSecret] = useState('');
-  const [tab, setTab] = useState<'agents' | 'queue' | 'insights' | 'faq' | 'whatsapp'>('queue');
+  const [tab, setTab] = useState<'agents' | 'queue' | 'insights' | 'faq' | 'whatsapp' | 'reports'>('queue');
   const [agents, setAgents] = useState<Agent[]>([]);
   const [convs, setConvs] = useState<Conversation[]>([]);
   const [counts, setCounts] = useState<Record<string, number>>({});
@@ -35,6 +37,16 @@ export default function SupportAdmin() {
   const [openConv, setOpenConv] = useState<string | null>(null);
 
   useEffect(() => { setSecret(sessionStorage.getItem('adminSecret') ?? ''); }, []);
+  // Denúncias abertas: prazo de 24 h prometido à Apple, então o número fica visível na aba.
+  const [reportsOpen, setReportsOpen] = useState(0);
+  useEffect(() => {
+    fetch('/api/admin/moderation').then(r => r.ok ? r.json() : null).then(j => setReportsOpen(j?.open ?? 0)).catch(() => {});
+  }, [tab]);
+  // Link direto para uma aba (ex.: /admin/support?tab=reports, vindo do perfil do aluno).
+  useEffect(() => {
+    const t = new URLSearchParams(window.location.search).get('tab');
+    if (t === 'reports' || t === 'insights' || t === 'faq' || t === 'agents' || t === 'whatsapp') setTab(t);
+  }, []);
 
   const headers = useCallback(() => ({ 'x-admin-secret': secret, 'Content-Type': 'application/json' }), [secret]);
 
@@ -81,6 +93,7 @@ export default function SupportAdmin() {
         <div className={`adm-tab${tab === 'faq' ? ' active' : ''}`} onClick={() => setTab('faq')}>FAQ da IA</div>
         <div className={`adm-tab${tab === 'agents' ? ' active' : ''}`} onClick={() => setTab('agents')}>Atendentes ({agents.length})</div>
         <div className={`adm-tab${tab === 'whatsapp' ? ' active' : ''}`} onClick={() => setTab('whatsapp')}>WhatsApp</div>
+        <div className={`adm-tab${tab === 'reports' ? ' active' : ''}`} onClick={() => setTab('reports')}>Denúncias{reportsOpen > 0 && <span style={{ color: 'var(--err)', fontWeight: 700 }}> ({reportsOpen})</span>}</div>
       </div>
 
       <div className="adm-body">
@@ -108,7 +121,7 @@ export default function SupportAdmin() {
                       <tr key={c.id} onClick={() => setOpenConv(c.id)} style={{ cursor: 'pointer', ...(bulk.checked.has(c.id) ? { background: 'var(--s2, #F3F1EC)' } : {}) }}>
                         <td onClick={e => e.stopPropagation()}><BulkCheckbox bulk={bulk} id={c.id} label={`Selecionar ${c.contact}`} /></td>
                         <td style={{ color: 'var(--t1)', fontWeight: 500 }}>{c.contact}{c.ticketCode && c.status === 'escalated' ? <div style={{ fontSize: 11, color: 'var(--t3)', fontWeight: 400 }}>Chamado #{c.ticketCode}</div> : null}</td>
-                        <td>{c.channel === 'app' ? 'chat do app' : c.channel}</td>
+                        <td>{CHANNEL_LABEL[c.channel] ?? c.channel}</td>
                         <td style={{ maxWidth: 340 }}>
                           <div style={{ color: 'var(--t1)' }}>{c.subject || '—'}</div>
                           {c.last && <div style={{ fontSize: 11.5, color: 'var(--t3)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 340 }}>{c.last.intent ? `[${c.last.intent}] ` : ''}{c.last.body}</div>}
@@ -128,6 +141,7 @@ export default function SupportAdmin() {
         {tab === 'insights' && <InsightsTab onOpenConversation={setOpenConv} />}
         {tab === 'faq' && <FaqTab />}
         {tab === 'whatsapp' && <WhatsAppTab />}
+        {tab === 'reports' && <ModerationTab />}
 
         {tab === 'agents' && (
           <>
@@ -222,16 +236,16 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
   };
 
   const c = data?.conversation;
-  const canReply = c?.channel === 'email' || c?.channel === 'whatsapp' || c?.channel === 'app';
-  // WhatsApp: a Meta só deixa responder livremente até 24 h depois da última mensagem do aluno.
-  const waClosed = c?.channel === 'whatsapp' && !!c.lastInboundAt && Date.now() - new Date(c.lastInboundAt).getTime() > 24 * 3600000;
+  const canReply = c?.channel === 'email' || c?.channel === 'whatsapp' || c?.channel === 'app' || c?.channel === 'instagram';
+  // WhatsApp e Instagram: a Meta só deixa responder livremente até 24 h depois da última mensagem do aluno.
+  const waClosed = (c?.channel === 'whatsapp' || c?.channel === 'instagram') && !!c.lastInboundAt && Date.now() - new Date(c.lastInboundAt).getTime() > 24 * 3600000;
   return (
     <div className="adm-modal-backdrop" onClick={onClose}>
       <div className="adm-modal" style={{ width: 'min(720px, 94vw)', maxHeight: '88vh', display: 'flex', flexDirection: 'column' }} onClick={e => e.stopPropagation()}>
         <div className="adm-modal-hdr">
           <div style={{ minWidth: 0 }}>
             <div className="adm-modal-title">{c?.subject || 'Conversa'}</div>
-            {c && <div style={{ fontSize: 12, color: 'var(--t3)', marginTop: 2 }}>{c.contact} · {c.channel === 'app' ? 'chat do app' : c.channel} · {STATUS_LABEL[c.status] ?? c.status}{c.ticketCode ? ` · chamado #${c.ticketCode}` : ''}{c.takenBy ? ` · com ${c.takenBy}` : c.agentName ? ` · ${c.agentName}` : ''}</div>}
+            {c && <div style={{ fontSize: 12, color: 'var(--t3)', marginTop: 2 }}>{c.contact} · {CHANNEL_LABEL[c.channel] ?? c.channel} · {STATUS_LABEL[c.status] ?? c.status}{c.ticketCode ? ` · chamado #${c.ticketCode}` : ''}{c.takenBy ? ` · com ${c.takenBy}` : c.agentName ? ` · ${c.agentName}` : ''}</div>}
           </div>
           <button className="adm-btn-sm ghost" onClick={onClose}><X size={13} /></button>
         </div>
@@ -260,10 +274,10 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
         {c && (
           <div className="adm-modal-footer" style={{ flexDirection: 'column', alignItems: 'stretch', gap: 8 }}>
             {waClosed && (
-              <div style={{ fontSize: 12.5, color: 'var(--err)' }}>Já passaram 24 h desde a última mensagem do aluno. O WhatsApp só permite responder depois que ele escrever de novo.</div>
+              <div style={{ fontSize: 12.5, color: 'var(--err)' }}>Já passaram 24 h desde a última mensagem do aluno. {c.channel === 'instagram' ? 'O Instagram' : 'O WhatsApp'} só permite responder depois que ele escrever de novo.</div>
             )}
             {canReply && !waClosed ? (
-              <textarea className="adm-input" rows={4} value={reply} onChange={e => setReply(e.target.value)} placeholder={`Responder ${c.channel === 'whatsapp' ? 'pelo WhatsApp' : c.channel === 'app' ? 'no chat do app (o aluno recebe um aviso)' : 'por e-mail'} para ${c.contact}…`} style={{ resize: 'vertical' }} />
+              <textarea className="adm-input" rows={4} value={reply} onChange={e => setReply(e.target.value)} placeholder={`Responder ${c.channel === 'whatsapp' ? 'pelo WhatsApp' : c.channel === 'instagram' ? 'pelo Direct do Instagram' : c.channel === 'app' ? 'no chat do app (o aluno recebe um aviso)' : 'por e-mail'} para ${c.contact}…`} style={{ resize: 'vertical' }} />
             ) : !canReply ? (
               <div style={{ fontSize: 12.5, color: 'var(--t3)' }}>Este canal não tem resposta pelo /admin.</div>
             ) : null}

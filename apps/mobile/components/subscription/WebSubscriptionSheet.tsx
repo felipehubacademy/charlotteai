@@ -1,6 +1,7 @@
 // WebSubscriptionSheet — "Gerenciar assinatura" de quem assinou pelo site (Asaas).
-// Mostra plano, forma de pagamento e até quando vai o acesso; oferece pedir reembolso
-// (até 7 dias do pagamento, o servidor confere) e cancelar a renovação (só no cartão).
+// Mostra plano, forma de pagamento e até quando vai o acesso. No teste grátis não houve cobrança:
+// mostra a data da 1ª cobrança e só oferece cancelar (sem reembolso). Depois de pago, o reembolso
+// aparece só dentro dos 7 dias (o servidor informa o prazo e confere de novo no pedido).
 // Confirmações acontecem dentro da própria tela, sem alerta do sistema.
 import React, { useEffect, useRef, useState } from 'react';
 import { Modal, View, Animated, TouchableOpacity, Pressable, ActivityIndicator, StyleSheet } from 'react-native';
@@ -19,6 +20,7 @@ const C = {
 };
 
 type Step = 'main' | 'refund' | 'cancel' | 'busy' | 'done';
+type Info = { found: boolean; inTrial?: boolean; firstChargeAt?: string | null; value?: number; refundableUntil?: string | null; refundPending?: boolean };
 
 interface Props {
   visible: boolean;
@@ -36,6 +38,24 @@ export function WebSubscriptionSheet({ visible, isPt, product, status, expiresAt
   const backdrop = useRef(new Animated.Value(0)).current;
   const [step, setStep] = useState<Step>('main');
   const [done, setDone] = useState<{ title: string; text: string; ok: boolean } | null>(null);
+  const [info, setInfo] = useState<Info | null>(null);
+
+  // Situação da assinatura no servidor (teste grátis, 1ª cobrança, prazo do reembolso).
+  useEffect(() => {
+    if (!visible) return;
+    let alive = true;
+    setInfo(null);
+    (async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session?.access_token) throw new Error('No session');
+        const res = await fetch(`${API_BASE_URL}/api/checkout/asaas?mine=1`, { headers: { Authorization: `Bearer ${session.access_token}` } });
+        const j = await res.json();
+        if (alive) setInfo(res.ok ? j : { found: false });
+      } catch { if (alive) setInfo({ found: false }); }
+    })();
+    return () => { alive = false; };
+  }, [visible]);
 
   useEffect(() => {
     if (visible) {
@@ -52,7 +72,14 @@ export function WebSubscriptionSheet({ visible, isPt, product, status, expiresAt
   const isPix = product === 'web_annual_pix';
   const isAnnual = product.startsWith('web_annual');
   const cancelled = status === 'cancelled';
-  const until = expiresAt ? new Date(expiresAt).toLocaleDateString(isPt ? 'pt-BR' : 'en-US') : null;
+  const fmt = (iso: string) => new Date(iso).toLocaleDateString(isPt ? 'pt-BR' : 'en-US');
+  const inTrial = !!info?.inTrial && !isPix;
+  const firstCharge = info?.firstChargeAt ? fmt(info.firstChargeAt) : null;
+  // No teste grátis o acesso vai até a véspera da 1ª cobrança (o prazo técnico tem 1 dia de folga).
+  const trialEnd = info?.firstChargeAt ? fmt(new Date(new Date(info.firstChargeAt).getTime() - 86400000).toISOString()) : null;
+  const until = inTrial && trialEnd ? trialEnd : expiresAt ? fmt(expiresAt) : null;
+  const refundUntil = info?.refundableUntil ? fmt(info.refundableUntil) : null;
+  const price = info?.value ? info.value.toLocaleString(isPt ? 'pt-BR' : 'en-US', { style: 'currency', currency: 'BRL' }) : null;
 
   const planName = isAnnual ? (isPt ? 'Plano Anual' : 'Annual Plan') : (isPt ? 'Plano Mensal' : 'Monthly Plan');
   const payName = isPix ? (isPt ? 'Pix à vista' : 'Pix, paid upfront') : isAnnual ? (isPt ? 'Cartão de crédito à vista' : 'Credit card, paid yearly') : (isPt ? 'Cartão de crédito, todo mês' : 'Credit card, monthly');
@@ -85,8 +112,11 @@ export function WebSubscriptionSheet({ visible, isPt, product, status, expiresAt
             : (isPt ? 'O estorno aparece na fatura do cartão (pode levar até duas faturas). Seu acesso foi encerrado.' : 'The refund shows on your card statement (may take up to two statements). Your access has ended.') });
         onChanged();
       } else {
-        setDone({ ok: true, title: isPt ? 'Renovação cancelada' : 'Renewal cancelled',
-          text: (isPt ? 'Não haverá novas cobranças.' : 'You will not be charged again.') + (until ? (isPt ? ` Seu acesso continua até ${until}.` : ` Access continues until ${until}.`) : '') });
+        setDone(inTrial
+          ? { ok: true, title: isPt ? 'Assinatura cancelada' : 'Subscription cancelled',
+              text: (isPt ? 'Nada será cobrado.' : 'You will not be charged.') + (until ? (isPt ? ` Você continua usando o Queizy até o fim do teste grátis, em ${until}.` : ` You can keep using Queizy until your free trial ends on ${until}.`) : '') }
+          : { ok: true, title: isPt ? 'Renovação cancelada' : 'Renewal cancelled',
+              text: (isPt ? 'Não haverá novas cobranças.' : 'You will not be charged again.') + (until ? (isPt ? ` Seu acesso continua até ${until}.` : ` Access continues until ${until}.`) : '') });
         onChanged();
       }
     } catch {
@@ -134,11 +164,33 @@ export function WebSubscriptionSheet({ visible, isPt, product, status, expiresAt
                 </View>
               </View>
               <Row label={isPt ? 'Pagamento' : 'Payment'} value={payName} />
-              {until && <Row label={isPt ? 'Acesso até' : 'Access until'} value={until} />}
-              <Row label={isPt ? 'Renovação' : 'Renewal'} value={renewal} />
+              {inTrial ? (
+                <>
+                  {trialEnd && <Row label={isPt ? 'Teste grátis' : 'Free trial'} value={isPt ? `até ${trialEnd}` : `until ${trialEnd}`} />}
+                  <Row label={isPt ? 'Primeira cobrança' : 'First charge'}
+                    value={cancelled ? (isPt ? 'Cancelada, nada será cobrado' : 'Cancelled, no charge')
+                      : firstCharge ? `${firstCharge}${price ? ` · ${price}` : ''}` : '-'} />
+                </>
+              ) : (
+                <>
+                  {until && <Row label={isPt ? 'Acesso até' : 'Access until'} value={until} />}
+                  <Row label={isPt ? 'Renovação' : 'Renewal'} value={renewal} />
+                  {info?.refundPending && <Row label={isPt ? 'Reembolso' : 'Refund'} value={isPt ? 'Pedido registrado' : 'Request received'} />}
+                  {refundUntil && <Row label={isPt ? 'Reembolso' : 'Refund'} value={isPt ? `pode pedir até ${refundUntil}` : `available until ${refundUntil}`} />}
+                </>
+              )}
 
-              <Btn label={isPt ? 'Pedir reembolso' : 'Request refund'} onPress={() => setStep('refund')} />
-              {!isPix && !cancelled && <Btn label={isPt ? 'Cancelar renovação' : 'Cancel renewal'} kind="danger" onPress={() => setStep('cancel')} />}
+              {!info ? (
+                <View style={{ paddingVertical: 18, alignItems: 'center' }}><ActivityIndicator color={C.navy} /></View>
+              ) : (
+                <>
+                  {!inTrial && refundUntil && <Btn label={isPt ? 'Pedir reembolso' : 'Request refund'} onPress={() => setStep('refund')} />}
+                  {!isPix && !cancelled && (
+                    <Btn label={inTrial ? (isPt ? 'Cancelar assinatura' : 'Cancel subscription') : (isPt ? 'Cancelar renovação' : 'Cancel renewal')}
+                      kind="danger" onPress={() => setStep('cancel')} />
+                  )}
+                </>
+              )}
               <Btn label={isPt ? 'Fechar' : 'Close'} kind="primary" onPress={onClose} />
             </>
           )}
@@ -148,8 +200,8 @@ export function WebSubscriptionSheet({ visible, isPt, product, status, expiresAt
               <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, marginBottom: 8 }}>{isPt ? 'Pedir reembolso?' : 'Request a refund?'}</AppText>
               <AppText style={{ fontSize: 15, color: C.navyMid, lineHeight: 22 }}>
                 {isPt
-                  ? `Vale até 7 dias depois do pagamento. ${isPix ? 'O valor volta para a mesma conta do Pix em instantes' : 'O estorno aparece na fatura do cartão'} e o acesso termina na hora.`
-                  : `Available up to 7 days after payment. ${isPix ? 'The money goes back to your Pix account in moments' : 'The refund shows on your card statement'} and access ends right away.`}
+                  ? `Vale até ${refundUntil ?? '7 dias depois do pagamento'}. ${isPix ? 'O valor volta para a mesma conta do Pix em instantes' : 'O estorno aparece na fatura do cartão'} e o acesso termina na hora.`
+                  : `Available until ${refundUntil ?? '7 days after payment'}. ${isPix ? 'The money goes back to your Pix account in moments' : 'The refund shows on your card statement'} and access ends right away.`}
               </AppText>
               <Btn label={isPt ? 'Sim, pedir reembolso' : 'Yes, request refund'} kind="danger" onPress={() => call('refund')} />
               <Btn label={isPt ? 'Voltar' : 'Back'} onPress={() => setStep('main')} />
@@ -158,13 +210,20 @@ export function WebSubscriptionSheet({ visible, isPt, product, status, expiresAt
 
           {step === 'cancel' && (
             <>
-              <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, marginBottom: 8 }}>{isPt ? 'Cancelar a renovação?' : 'Cancel renewal?'}</AppText>
-              <AppText style={{ fontSize: 15, color: C.navyMid, lineHeight: 22 }}>
-                {isPt
-                  ? `Não haverá novas cobranças.${until ? ` Você continua com acesso até ${until}.` : ''}`
-                  : `You won't be charged again.${until ? ` You keep access until ${until}.` : ''}`}
+              <AppText display style={{ fontSize: 22, fontWeight: '800', color: C.navy, marginBottom: 8 }}>
+                {inTrial ? (isPt ? 'Cancelar a assinatura?' : 'Cancel your subscription?') : (isPt ? 'Cancelar a renovação?' : 'Cancel renewal?')}
               </AppText>
-              <Btn label={isPt ? 'Sim, cancelar renovação' : 'Yes, cancel renewal'} kind="danger" onPress={() => call('cancel')} />
+              <AppText style={{ fontSize: 15, color: C.navyMid, lineHeight: 22 }}>
+                {inTrial
+                  ? (isPt
+                      ? `Você está no teste grátis e nada foi cobrado. Cancelando agora, a cobrança${firstCharge ? ` de ${firstCharge}` : ''} não acontece${until ? ` e você continua usando o Queizy até ${until}` : ''}.`
+                      : `You're on the free trial and haven't been charged. If you cancel now, the charge${firstCharge ? ` on ${firstCharge}` : ''} won't happen${until ? ` and you can keep using Queizy until ${until}` : ''}.`)
+                  : (isPt
+                      ? `Não haverá novas cobranças.${until ? ` Você continua com acesso até ${until}.` : ''}`
+                      : `You won't be charged again.${until ? ` You keep access until ${until}.` : ''}`)}
+              </AppText>
+              <Btn label={inTrial ? (isPt ? 'Sim, cancelar assinatura' : 'Yes, cancel subscription') : (isPt ? 'Sim, cancelar renovação' : 'Yes, cancel renewal')}
+                kind="danger" onPress={() => call('cancel')} />
               <Btn label={isPt ? 'Voltar' : 'Back'} onPress={() => setStep('main')} />
             </>
           )}

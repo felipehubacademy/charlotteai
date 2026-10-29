@@ -12,12 +12,14 @@ import {
   LightbulbFilament,
 } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
+import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import * as Haptics from '@/lib/hapticsGated';
 import { useAuth } from '@/hooks/useAuth';
 import { useTotalXP } from '@/hooks/useTotalXP';
 import { QueizyWave } from '@/components/ui/QueizyWave';
 import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
+import { goBack } from '@/lib/goBack';
 
 // ── Palette ────────────────────────────────────────────────────
 const C = {
@@ -265,7 +267,7 @@ const EXERCISES: Record<string, Record<ExerciseType, Exercise[]>> = {
 // Corretor compartilhado (lib/grammarAnswer) — aceita contração <-> forma cheia
 // (inclusive "solta" no fill_gap) e trata os tipos de exercício de gramática.
 function checkAnswer(ex: Exercise, userAnswer: string): boolean {
-  return checkGrammarAnswer(ex.type, userAnswer, ex.answer, (ex as { accepts?: string[] }).accepts);
+  return checkGrammarAnswer(ex.type, userAnswer, ex.answer, (ex as { accepts?: string[] }).accepts, (ex as { sentence?: string }).sentence);
 }
 
 // ── Sequence ────────────────────────────────────────────────────
@@ -402,7 +404,7 @@ export default function LearnGrammarScreen() {
           >
             <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>Start again</AppText>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.back()}>
+          <TouchableOpacity onPress={() => goBack()}>
             <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>Back to home</AppText>
           </TouchableOpacity>
         </View>
@@ -419,9 +421,16 @@ export default function LearnGrammarScreen() {
         paddingHorizontal: 16, height: 52,
         borderBottomWidth: 1, borderBottomColor: C.border, backgroundColor: C.card,
       }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
-          <ArrowLeft size={22} color={C.navy} weight="bold" />
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+          <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+            <ArrowLeft size={22} color={C.navy} weight="bold" />
+          </TouchableOpacity>
+          {/* Reportar problema neste exercício. */}
+          <ReportIssueButton
+            kind="grammar"
+            getContext={() => ({ screen: 'practice-grammar', level: userLevel, exercise: exercise as unknown as Record<string, unknown>, userAnswer: userAnswer || null })}
+          />
+        </View>
         <View style={{ flex: 1, alignItems: 'center' }}>
           <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }}>Grammar</AppText>
         </View>
@@ -430,7 +439,7 @@ export default function LearnGrammarScreen() {
         </TouchableOpacity>
       </View>
 
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
         <ScrollView
           style={{ flex: 1, backgroundColor: C.bg }}
           keyboardShouldPersistTaps="handled"

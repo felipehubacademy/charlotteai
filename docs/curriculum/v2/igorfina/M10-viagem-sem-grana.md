@@ -65,6 +65,7 @@
 5. **fill_gap** — "The park is free to _____."
    **Hint**: Visitar
    **Answer**: visit
+   **Accepts**: enter / explore
    **Explanation**: "Free to visit" = de graça para visitar. Parques, praias e ruas famosas costumam ser.
 
 6. **fill_gap** — "A: How much is it? B: It's _____! No ticket!"
@@ -80,11 +81,13 @@
 8. **fix_error** — "It's gratis?"
    **Hint**: "Grátis" em inglês é outra palavra
    **Answer**: Is it free?
+   **Accepts**: Is it for free?
    **Explanation**: "Free" e ordem de pergunta: "Is it free?". "Gratis" existe, mas quase ninguém usa na rua.
 
 9. **fix_error** — "Have a free tour here?"
    **Hint**: Use "Is there...?"
    **Answer**: Is there a free tour here?
+   **Accepts**: Is there a free tour? / Do you have a free tour here? / Do you have a free tour?
    **Explanation**: Em português "tem um tour?"; em inglês, "Is there a tour?". Não use "have" para "existir".
 
 10. **read_answer**
@@ -233,7 +236,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 6. **fill_gap** — "I _____ take the bus, it's cheaper."
    **Hint**: Vou (futuro decidido agora)
    **Answer**: will
-   **Accepts**: 'll
+   **Accepts**: 'll / am gonna / 'm gonna / am going to / 'm going to
    **Explanation**: "I will take the bus" (ou "I'll take the bus"). Revisão do M03.
 
 7. **fill_gap** — "Is the beach _____ from here? Can we walk?"
@@ -412,6 +415,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 9. **fix_error** — "Is there a cheap local around here?"
    **Hint**: "Lugar" em inglês é outra palavra
    **Answer**: Is there a cheap place around here?
+   **Accepts**: Is there a cheap restaurant around here? / Is there a cheap spot around here?
    **Explanation**: "Local" em inglês é "local, da região". Lugar = "place".
 
 10. **read_answer**

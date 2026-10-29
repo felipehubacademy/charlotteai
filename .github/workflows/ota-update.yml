@@ -1,5 +1,8 @@
 # .github/workflows/ota-update.yml
-# Publica OTA automaticamente a cada push na branch main.
+# Publica OTA da branch main em lote: 2 vezes por dia (12h e 22h de Brasília), só se apps/mobile mudou
+# desde a última publicada. Cada OTA faz o aparelho baixar o pacote inteiro de novo (~6 MB); publicar a
+# cada push (7+ por dia) fazia o download recomeçar sem parar e muita gente nunca saía do código da loja
+# (2026-10-21). Correção urgente: rodar na hora com `gh workflow run ota-update.yml` (Actions > Run workflow).
 # IMPORTANTE: deve rodar em macos-latest para que o hermesc (compilador
 # Hermes) produza bytecode compativel com o binario iOS gerado pelo EAS.
 # Linux hermesc gera formato diferente e causa crash no app.
@@ -7,10 +10,10 @@
 name: OTA Update (production)
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'apps/mobile/**'
+  schedule:
+    - cron: '0 15 * * *'   # 12h de Brasília
+    - cron: '0 1 * * *'    # 22h de Brasília
+  workflow_dispatch:
 
 # Um OTA por vez: dois pushes seguidos publicavam em paralelo e o mais antigo, terminando por
 # último, virava o "mais recente" (o app perdia a correção do push mais novo). Na fila, a execução
@@ -30,6 +33,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -48,7 +54,26 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
           packager: npm
 
+      # A mensagem de cada OTA leva o commit ("OTA [abc1234]: ..."); sem mudança em apps/mobile desde ele, não publica.
+      - name: Check for app changes since last OTA
+        id: changes
+        run: |
+          LAST=$(eas update:list --branch production --limit 1 --json --non-interactive 2>/dev/null \
+            | python3 -c "import json,sys,re; d=json.load(sys.stdin); g=d.get('currentPage', d); m=re.search(r'OTA \[([0-9a-f]{7,40})\]', (g[0].get('message') or '') if g else ''); print(m.group(1) if m else '')" || true)
+          echo "Última OTA: ${LAST:-desconhecida}"
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -n "$LAST" ] && git cat-file -e "$LAST^{commit}" 2>/dev/null \
+             && git diff --quiet "$LAST" HEAD -- . ; then
+            echo "Nada mudou em apps/mobile desde a última OTA."
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+            N=$( [ -n "$LAST" ] && git cat-file -e "$LAST^{commit}" 2>/dev/null && git rev-list --count "$LAST"..HEAD -- . || echo 1)
+            SUBJ=$(git log -1 --format=%s -- . | cut -c1-80)
+            echo "msg=OTA [$(git rev-parse --short=7 HEAD)]: ${N} mudança(s), última: ${SUBJ}" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Publish OTA (iOS)
+        if: steps.changes.outputs.publish == 'true'
         env:
           EXPO_PUBLIC_API_BASE_URL: https://charlotte.hubacademybr.com
           EXPO_PUBLIC_SUPABASE_URL: https://fnvjibzreepubageztoi.supabase.co
@@ -59,14 +84,13 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: hub-academy
           SENTRY_PROJECT: charlotte-mobile
-          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          MSG: ${{ steps.changes.outputs.msg }}
         run: |
-          MSG=$(printf '%s' "$COMMIT_MSG" | head -n 1 | cut -c1-100)
           CI=1 eas update \
             --branch production \
             --platform ios \
-            --message "OTA: $MSG"
+            --message "$MSG"
           CI=1 eas update \
             --branch production \
             --platform android \
-            --message "OTA: $MSG"
+            --message "$MSG"

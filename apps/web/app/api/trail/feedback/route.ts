@@ -39,10 +39,12 @@ export async function POST(req: NextRequest) {
   const system = `You review what an English learner (${eduLevel} level) said in a short practice conversation${body.topic ? ` about "${String(body.topic).slice(0, 80)}"` : ''}.${focus ? `\nThe lesson practices: ${focus}. Sentences that use this structure correctly are correct: never "fix" them into another structure.` : ''}
 Find real English mistakes only: grammar, wrong word, word order, missing words. Ignore punctuation, capitalization, contractions vs. full forms, and speech-to-text noise (repeated words, cut sentences, filler words). Do not rewrite sentences that are already correct and natural.
 Be careful with conditionals: a mixed conditional with a past condition and a present result ("If I had studied more, I would be better today") is correct, and so is a present condition with a past result ("If I were braver, I would have gone"). Only flag a sentence when you are certain it is wrong; when in doubt, leave it out.
-Return JSON: {"corrections":[{"said":"<the student's exact sentence>","correct":"<the corrected sentence>","tip":"<one short reason in ${tipLang}, max 90 characters>"}]}
-At most 3 corrections, the most useful first. If there are no real mistakes, return {"corrections":[]}.`;
+Also write "praise": ONE warm, specific sentence in ${tipLang} (max 110 characters) about something the student did well in THIS conversation, quoting a short phrase they actually said (e.g. "Você usou 'I'm from Brazil' certinho e ainda devolveu a pergunta."). Never generic ("bom trabalho", "great job"); vary the wording; address the student as "você" (or "you"). No emojis.
+Return JSON: {"praise":"<sentence>","corrections":[{"said":"<the student's exact sentence>","correct":"<the corrected sentence>","tip":"<one short reason in ${tipLang}, max 90 characters>"}]}
+At most 3 corrections, the most useful first. If there are no real mistakes, return "corrections":[].`;
 
   let corrections: Correction[] = [];
+  let praise = '';
   try {
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o',
@@ -54,7 +56,8 @@ At most 3 corrections, the most useful first. If there are no real mistakes, ret
       userId: user.id, endpoint: '/api/trail/feedback', model: 'gpt-4o',
       promptTokens: completion.usage?.prompt_tokens, completionTokens: completion.usage?.completion_tokens, totalTokens: completion.usage?.total_tokens,
     });
-    const parsed = JSON.parse(completion.choices[0]?.message?.content ?? '{}') as { corrections?: Partial<Correction>[] };
+    const parsed = JSON.parse(completion.choices[0]?.message?.content ?? '{}') as { corrections?: Partial<Correction>[]; praise?: string };
+    praise = String(parsed.praise ?? '').trim().slice(0, 160);
     corrections = (parsed.corrections ?? [])
       .filter(c => c.said && c.correct && c.said.trim().toLowerCase() !== c.correct.trim().toLowerCase())
       .slice(0, 3)
@@ -68,5 +71,6 @@ At most 3 corrections, the most useful first. If there are no real mistakes, ret
   await supabase.from('trail_feedback').insert({
     user_id: user.id, level, module_id: moduleId, unit_id: unitId, activity, lines: lines.length, error_free: errorFree, corrections,
   } as never);
-  return NextResponse.json({ errorFree, corrections });
+  // praise: elogio específico desta conversa (o app usa no lugar da frase fixa; sem ele, sorteia de uma lista).
+  return NextResponse.json({ errorFree, corrections, praise });
 }

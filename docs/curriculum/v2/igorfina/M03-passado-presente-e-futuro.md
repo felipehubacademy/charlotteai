@@ -401,6 +401,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 6. **fill_gap** — "A: Where are you? B: I'm _____ the station."
    **Hint**: Preposição de lugar: na (estação)
    **Answer**: at
+   **Accepts**: in / near
    **Explanation**: "At the station" = na estação. "At" é para um ponto, um lugar específico.
 
 7. **fill_gap** — "_____ you take the train every day?"
@@ -559,7 +560,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 5. **fill_gap** — "Don't worry, I _____ be there at nine."
    **Hint**: Verbo auxiliar do futuro (vou)
    **Answer**: will
-   **Accepts**: 'll
+   **Accepts**: 'll / am gonna / 'm gonna / am going to / 'm going to
    **Explanation**: "I will be there" (ou "I'll be there") = vou estar aí. Frase pronta para combinar horário.
 
 6. **fill_gap** — "Next week I'm _____ to visit Miami."
@@ -729,12 +730,13 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 6. **fill_gap** — "Today I'm _____ to Brooklyn."
    **Hint**: Indo (go com -ing)
    **Answer**: going
+   **Accepts**: flying / driving / heading
    **Explanation**: "I'm going to Brooklyn" = estou indo para o Brooklyn (hoje, agora).
 
 7. **fill_gap** — "Next week I _____ visit my friend in Boston."
    **Hint**: Verbo auxiliar do futuro (vou)
    **Answer**: will
-   **Accepts**: 'll
+   **Accepts**: 'll / am going to / 'm going to / am gonna / 'm gonna
    **Explanation**: "I will visit" (ou "I'll visit") = vou visitar. Revisão da F14.
 
 8. **fix_error** — "Yesterday I am at the museum."

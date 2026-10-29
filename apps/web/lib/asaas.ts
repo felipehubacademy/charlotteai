@@ -65,18 +65,23 @@ export function asaasConfigured(): boolean {
   return !!process.env.ASAAS_API_KEY;
 }
 
-function baseUrl(): string {
-  return process.env.ASAAS_ENV === 'sandbox' ? 'https://api-sandbox.asaas.com/v3' : 'https://api.asaas.com/v3';
+function baseUrl(sandbox = false): string {
+  return sandbox || process.env.ASAAS_ENV === 'sandbox' ? 'https://api-sandbox.asaas.com/v3' : 'https://api.asaas.com/v3';
+}
+
+/** Ambiente de testes do checkout próprio (ASAAS_SANDBOX_API_KEY). Nada ali é cobrança de verdade. */
+export function asaasSandboxConfigured(): boolean {
+  return !!process.env.ASAAS_SANDBOX_API_KEY;
 }
 
 export class AsaasError extends Error {
   constructor(message: string, public status: number, public body: unknown) { super(message); }
 }
 
-async function asaas<T>(path: string, init: { method?: string; body?: unknown } = {}): Promise<T> {
-  const key = process.env.ASAAS_API_KEY;
-  if (!key) throw new AsaasError('ASAAS_API_KEY ausente', 503, null);
-  const res = await fetch(`${baseUrl()}${path}`, {
+async function asaas<T>(path: string, init: { method?: string; body?: unknown; sandbox?: boolean } = {}): Promise<T> {
+  const key = init.sandbox ? process.env.ASAAS_SANDBOX_API_KEY : process.env.ASAAS_API_KEY;
+  if (!key) throw new AsaasError(init.sandbox ? 'ASAAS_SANDBOX_API_KEY ausente' : 'ASAAS_API_KEY ausente', 503, null);
+  const res = await fetch(`${baseUrl(init.sandbox)}${path}`, {
     method: init.method ?? 'GET',
     headers: { 'Content-Type': 'application/json', 'User-Agent': 'Queizy', access_token: key },
     body: init.body ? JSON.stringify(init.body) : undefined,
@@ -134,6 +139,13 @@ export interface CheckoutInput {
   trialDays: number;       // só monthly / annual
   userId: string;
   customerId: string | null; // cliente já criado no Asaas (evita o Asaas pedir endereço)
+  customerData?: CheckoutCustomerData | null; // dados do pagador já preenchidos no nosso formulário
+}
+
+/** Dados do pagador que o checkout já recebe preenchidos (o aluno só digita o cartão). */
+export interface CheckoutCustomerData {
+  name: string; cpfCnpj: string; email: string; phone: string;
+  postalCode: string; address: string; addressNumber: string; complement?: string; province: string; city: number;
 }
 
 export interface AsaasCheckout { id: string; link: string | null; status: string }
@@ -158,6 +170,10 @@ export async function createCheckout(input: CheckoutInput): Promise<AsaasCheckou
       successUrl: `${SITE}/assinar/sucesso`,
       cancelUrl: `${SITE}/assinar?cancelado=1`,
       expiredUrl: `${SITE}/assinar?expirado=1`,
+      // Volta sozinho para a nossa tela de sucesso depois do pagamento (sem isso o aluno parava na
+      // tela "Pagamento confirmado" do processador e a conversão do navegador não disparava).
+      // Exige que queizy.com seja o domínio cadastrado nos dados comerciais da conta.
+      autoRedirect: true,
     },
     items: [{
       name: m === 'monthly' ? 'Queizy Mensal' : 'Queizy Anual',
@@ -169,20 +185,39 @@ export async function createCheckout(input: CheckoutInput): Promise<AsaasCheckou
   };
   if (m === 'monthly' || m === 'annual') body.subscription = { cycle: m === 'monthly' ? 'MONTHLY' : 'YEARLY', nextDueDate: ymd(firstCharge) };
   if (m === 'annual_12x') body.installment = { maxInstallmentCount: ANNUAL_MAX_INSTALLMENTS };
-  // Com o cliente já criado, o checkout não pede endereço. Se o Asaas recusar o campo,
-  // cria sem cliente e a própria página do Asaas pede os dados.
+  // Com o cliente (ou os dados dele), o checkout só pede o cartão. Se o Asaas recusar,
+  // cria sem e a própria página do Asaas pede os dados.
   let r: AsaasCheckout;
+  // Se a API recusar o autoRedirect, cria sem ele (a venda nunca pode parar por isso).
+  const withoutAutoRedirect = (b: Record<string, unknown>) => {
+    const cb = { ...(b.callback as Record<string, unknown>) }; delete cb.autoRedirect;
+    return { ...b, callback: cb };
+  };
+  const post = async (b: Record<string, unknown>) => {
+    try { return await asaas<AsaasCheckout>('/checkouts', { method: 'POST', body: b }); }
+    catch (e) {
+      if (e instanceof AsaasError && e.status === 400 && JSON.stringify(e.body ?? '').toLowerCase().includes('redirect')) {
+        console.warn('[asaas] autoRedirect recusado, criando sem:', e.body);
+        return asaas<AsaasCheckout>('/checkouts', { method: 'POST', body: withoutAutoRedirect(b) });
+      }
+      throw e;
+    }
+  };
+  // Cliente que já pagou antes: usa o cadastro dele. Senão, manda os dados do nosso formulário
+  // (customerData). Os dois não podem ir juntos.
+  const first = input.customerId ? { ...body, customer: input.customerId }
+    : input.customerData ? { ...body, customerData: input.customerData } : null;
   try {
-    r = await asaas<AsaasCheckout>('/checkouts', { method: 'POST', body: input.customerId ? { ...body, customer: input.customerId } : body });
+    r = await post(first ?? body);
   } catch (e) {
-    if (!input.customerId) throw e;
+    if (!first) throw e;
     console.warn('[asaas] checkout com cliente recusado, tentando sem:', e instanceof AsaasError ? e.body : e);
     // Guarda o motivo para diagnóstico (asaas_events, evento CHECKOUT_FALLBACK).
     try {
       const { getSupabaseAdmin } = await import('@/lib/supabase-admin');
-      await getSupabaseAdmin().from('asaas_events').insert({ id: `fallback_${Date.now()}`, event: 'CHECKOUT_FALLBACK', payload: { error: e instanceof AsaasError ? e.body : String(e), method: m } } as never);
+      await getSupabaseAdmin().from('asaas_events').insert({ id: `fallback_${Date.now()}`, event: 'CHECKOUT_FALLBACK', payload: { error: e instanceof AsaasError ? e.body : String(e), method: m, via: input.customerId ? 'customer' : 'customerData' } } as never);
     } catch { /* só diagnóstico */ }
-    r = await asaas<AsaasCheckout>('/checkouts', { method: 'POST', body });
+    r = await post(body);
   }
   return { id: r.id, link: r.link ?? `https://www.asaas.com/checkoutSession/show?id=${r.id}`, status: r.status };
 }
@@ -203,7 +238,23 @@ export const getCustomer = (id: string) => asaas<AsaasCustomer>(`/customers/${id
 
 export interface AsaasSubscription { id: string; customer: string; status: string; nextDueDate: string; value: number; cycle: string; externalReference?: string | null; checkoutSession?: string | null }
 export const getSubscription = (id: string) => asaas<AsaasSubscription>(`/subscriptions/${id}`);
-export const cancelSubscription = (id: string) => asaas<{ deleted: boolean }>(`/subscriptions/${id}`, { method: 'DELETE' });
+/** Assinaturas ativas criadas para a conta (externalReference = id da conta). No checkout da página do
+ *  processador, o id da assinatura só chegava com a 1ª cobrança; aqui ele é achado na hora. */
+export async function activeSubscriptionsOf(userId: string, sandbox = false, customerId?: string | null, email?: string | null): Promise<AsaasSubscription[]> {
+  const r = await asaas<{ data: AsaasSubscription[] }>(`/subscriptions?externalReference=${encodeURIComponent(userId)}&status=ACTIVE&limit=10`, { sandbox });
+  if (r.data?.length) return r.data;
+  // A página do processador não repassa o externalReference nem devolve o cliente: busca pelo cliente
+  // guardado ou pelo e-mail da conta (o mesmo que foi preenchido no checkout).
+  const customers = customerId ? [customerId]
+    : email ? ((await asaas<{ data: { id: string }[] }>(`/customers?email=${encodeURIComponent(email)}&limit=5`, { sandbox })).data ?? []).map(c => c.id) : [];
+  const out: AsaasSubscription[] = [];
+  for (const c of customers) {
+    const s = await asaas<{ data: AsaasSubscription[] }>(`/subscriptions?customer=${encodeURIComponent(c)}&status=ACTIVE&limit=10`, { sandbox });
+    out.push(...(s.data ?? []));
+  }
+  return out;
+}
+export const cancelSubscription = (id: string, sandbox = false) => asaas<{ deleted: boolean }>(`/subscriptions/${id}`, { method: 'DELETE', sandbox });
 /** 4 últimos dígitos do cartão de uma cobrança (null no Pix). Usado para conferir quem pagou. */
 export async function getPaymentCard(paymentId: string): Promise<{ last4: string | null; billingType: string }> {
   const p = await asaas<{ billingType: string; creditCard?: { creditCardNumber?: string | null } | null }>(`/payments/${encodeURIComponent(paymentId)}`);
@@ -211,6 +262,10 @@ export async function getPaymentCard(paymentId: string): Promise<{ last4: string
   return { last4: n ? n.slice(-4) : null, billingType: p.billingType };
 }
 /** Troca o e-mail do cliente no Asaas (recibos e avisos de cobrança vão para o e-mail certo). */
+/** Desliga os e-mails/SMS do Asaas para o aluno (cobrança criada, vencendo, removida...): o aluno
+ *  recebe só os avisos do app e os nossos e-mails. */
+export const disableCustomerNotifications = (customerId: string, sandbox = false) =>
+  asaas<AsaasCustomer>(`/customers/${encodeURIComponent(customerId)}`, { method: 'PUT', body: { notificationDisabled: true }, sandbox });
 export const updateCustomerEmail = (customerId: string, email: string) =>
   asaas<AsaasCustomer>(`/customers/${encodeURIComponent(customerId)}`, { method: 'PUT', body: { email } });
 /** Quantas cobranças da assinatura já foram pagas (confirmadas ou recebidas). */
@@ -236,4 +291,80 @@ export function validCpf(raw: string): boolean {
     return r === 10 ? 0 : r;
   };
   return dv(9) === Number(c[9]) && dv(10) === Number(c[10]);
+}
+
+// ---------------------------------------------------------------------------------------------
+// Checkout próprio (cartão e Pix no queizy.com). Os dados do cartão só passam por aqui a caminho
+// do Asaas: nunca são gravados, nem em log (os erros do Asaas não repetem o cartão).
+// `sandbox: true` usa o ambiente de testes (ASAAS_SANDBOX_API_KEY).
+
+export interface PayerData {
+  name: string; email: string; cpfCnpj: string; phone: string;
+  postalCode: string; address: string; addressNumber: string; complement?: string; province: string;
+}
+export interface CardData { holderName: string; number: string; expiryMonth: string; expiryYear: string; ccv: string }
+
+/** Acha o cliente pelo CPF ou cria (com endereço, que o cartão exige). */
+export async function ensurePayer(p: PayerData, userId: string, sandbox: boolean): Promise<string> {
+  const found = await asaas<{ data: { id: string }[] }>(`/customers?cpfCnpj=${encodeURIComponent(p.cpfCnpj)}&limit=1`, { sandbox }).catch(() => ({ data: [] }));
+  if (found.data?.[0]?.id) return found.data[0].id;
+  const r = await asaas<{ id: string }>('/customers', {
+    method: 'POST', sandbox,
+    body: {
+      name: p.name, email: p.email, cpfCnpj: p.cpfCnpj, mobilePhone: p.phone, postalCode: p.postalCode,
+      address: p.address, addressNumber: p.addressNumber, complement: p.complement, province: p.province,
+      externalReference: userId, notificationDisabled: true,
+    },
+  });
+  return r.id;
+}
+
+const SUB_DESC: Record<'monthly' | 'annual', string> = { monthly: 'Queizy Mensal', annual: 'Queizy Anual' };
+
+/** Assinatura no cartão. O Asaas valida o cartão na criação; a 1ª cobrança é no fim do teste (ou hoje). */
+export async function createCardSubscription(input: {
+  customer: string; plan: 'monthly' | 'annual'; value: number; trialDays: number; userId: string;
+  card: CardData; payer: PayerData; remoteIp: string; sandbox: boolean;
+}): Promise<AsaasSubscription> {
+  const first = new Date(Date.now() + input.trialDays * 86400000);
+  return asaas<AsaasSubscription>('/subscriptions', {
+    method: 'POST', sandbox: input.sandbox,
+    body: {
+      customer: input.customer, billingType: 'CREDIT_CARD', cycle: input.plan === 'monthly' ? 'MONTHLY' : 'YEARLY',
+      value: input.value, nextDueDate: ymd(first), description: SUB_DESC[input.plan], externalReference: input.userId,
+      creditCard: input.card,
+      creditCardHolderInfo: {
+        name: input.payer.name, email: input.payer.email, cpfCnpj: input.payer.cpfCnpj, postalCode: input.payer.postalCode,
+        addressNumber: input.payer.addressNumber, addressComplement: input.payer.complement, phone: input.payer.phone, mobilePhone: input.payer.phone,
+      },
+      remoteIp: input.remoteIp,
+    },
+  });
+}
+
+export interface AsaasPayment {
+  id: string; customer: string; subscription?: string | null; installment?: string | null; installmentNumber?: number | null;
+  status: string; value: number; netValue?: number | null; billingType?: string; dueDate?: string; paymentDate?: string | null;
+  confirmedDate?: string | null; externalReference?: string | null; checkoutSession?: string | null;
+}
+export const PAID_STATUSES = ['CONFIRMED', 'RECEIVED', 'RECEIVED_IN_CASH'];
+
+/** Pix avulso (Anual): a cobrança e o QR code para mostrar na nossa página. */
+export async function createPixPayment(input: { customer: string; value: number; userId: string; sandbox: boolean }):
+  Promise<{ payment: AsaasPayment; qr: { encodedImage: string; payload: string; expirationDate: string } }> {
+  const payment = await asaas<AsaasPayment>('/payments', {
+    method: 'POST', sandbox: input.sandbox,
+    body: {
+      customer: input.customer, billingType: 'PIX', value: input.value, dueDate: ymd(new Date()),
+      description: 'Queizy Anual: acesso completo por 12 meses, pagamento único no Pix', externalReference: input.userId,
+    },
+  });
+  const qr = await asaas<{ encodedImage: string; payload: string; expirationDate: string }>(`/payments/${payment.id}/pixQrCode`, { sandbox: input.sandbox });
+  return { payment, qr };
+}
+
+export const getPaymentIn = (id: string, sandbox: boolean) => asaas<AsaasPayment>(`/payments/${encodeURIComponent(id)}`, { sandbox });
+export async function paymentsOfSubscription(subscriptionId: string, sandbox: boolean): Promise<AsaasPayment[]> {
+  const r = await asaas<{ data: AsaasPayment[] }>(`/payments?subscription=${encodeURIComponent(subscriptionId)}&limit=10`, { sandbox });
+  return r.data ?? [];
 }

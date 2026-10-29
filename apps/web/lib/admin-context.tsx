@@ -12,6 +12,7 @@ export interface AdminMe {
   roleLabel: string;
   areas: string[];
   legacy: boolean;
+  homePath?: string | null;
 }
 
 export const AdminMeContext = createContext<AdminMe | null>(null);

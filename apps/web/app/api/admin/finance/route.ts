@@ -18,7 +18,7 @@ const FIELDS = 'id, kind, description, category, vendor, amount, currency, fx_ra
 type Entry = {
   id: string; kind: 'expense' | 'income'; description: string; category: string; vendor: string | null;
   amount: number; currency: string; fx_rate: number; amount_brl: number; due_date: string;
-  paid_at: string | null; status: 'pending' | 'paid' | 'canceled'; recurrence: 'none' | 'monthly' | 'yearly';
+  paid_at: string | null; status: 'pending' | 'paid' | 'canceled' | 'refunded'; recurrence: 'none' | 'monthly' | 'yearly';
   recurrence_of: string | null; scope: string; notes: string | null; attachment_url: string | null;
 };
 
@@ -52,7 +52,7 @@ function clean(body: Record<string, unknown>): Partial<Entry> & { error?: string
     }
   }
   if (body.status !== undefined) {
-    if (!['pending', 'paid', 'canceled'].includes(String(body.status))) return { error: 'Status inválido' };
+    if (!['pending', 'paid', 'canceled', 'refunded'].includes(String(body.status))) return { error: 'Status inválido' };
     out.status = body.status;
   }
   if (body.recurrence !== undefined) {

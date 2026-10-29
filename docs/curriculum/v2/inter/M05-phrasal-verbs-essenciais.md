@@ -49,15 +49,17 @@
 5. **fill_gap** — "Please _____ the TV — I want to watch the news."
    **Hint**: switch on
    **Answer**: turn on
+   **Accepts**: switch on / put on
    **Explanation**: "Turn on the TV" — common chunk.
 
 6. **fill_gap** — "We _____ for dinner with friends."
    **Hint**: leave home (phrasal "go" + particle)
    **Answer**: went out
+   **Accepts**: went
    **Explanation**: "Go out" = leave home (often for social activity).
 
 7. **fill_gap** — "He _____ the meeting." (left the meeting)
-   **Hint**: phrasal verb "leave"
+   **Hint**: past tense of "leave"
    **Answer**: left
    **Explanation**: Sometimes simple verbs work too. "Left the meeting".
 
@@ -226,11 +228,13 @@
 5. **fill_gap** — "He's _____ a new job."
    **Hint**: searching
    **Answer**: looking for
+   **Accepts**: searching for
    **Explanation**: "Looking for a job" — searching.
 
 6. **fill_gap** — "Can you _____ my dog while I'm away?"
    **Hint**: take care of
    **Answer**: look after
+   **Accepts**: take care of / watch
    **Explanation**: "Look after my dog" — take care.
 
 7. **fill_gap** — "I _____ the painting for a long time."
@@ -404,16 +408,18 @@
 5. **fill_gap** — "I _____ the truth yesterday."
    **Hint**: discovered
    **Answer**: found out
+   **Accepts**: learned / discovered / heard
    **Explanation**: Past simple of "find out".
 
 6. **fill_gap** — "He _____ coffee three months ago."
    **Hint**: quit
    **Answer**: gave up
+   **Accepts**: quit / stopped
    **Explanation**: "Gave up coffee" = stopped drinking.
 
-7. **fill_gap** — "I'll _____ you at 7."
-   **Hint**: fetch
-   **Answer**: pick up
+7. **fill_gap** — "I'll _____ you up at 7."
+   **Hint**: pick someone up = fetch someone
+   **Answer**: pick
    **Explanation**: "Pick you up" (or "pick up you" — but "you" between).
 
 8. **fix_error** — "I picked up him at the station."
@@ -431,7 +437,7 @@
     **Question**: When will the speaker pick you up?
     **Answer**: at 8
     **Accepts**: 8
-    **Explanation**: The text says "I'll / I will pick you up at 8".
+    **Explanation**: The text says "I'll pick you up at 8".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -581,6 +587,7 @@
 5. **fill_gap** — "Please turn the music _____."
    **Hint**: switch off
    **Answer**: off
+   **Accepts**: down / up
    **Explanation**: With noun, can separate: "turn the music off" OR "turn off the music". Both correct.
 
 6. **fill_gap** — "Can you pick me _____ at 8?"
@@ -759,16 +766,19 @@
 5. **fill_gap** — "I'm _____ a new apartment."
    **Hint**: searching for (-ing)
    **Answer**: looking for
+   **Accepts**: searching for
    **Explanation**: "Looking for" — present continuous.
 
 6. **fill_gap** — "He _____ smoking last year."
    **Hint**: quit (past)
    **Answer**: gave up
+   **Accepts**: quit / stopped
    **Explanation**: "Gave up" — past of give up.
 
 7. **fill_gap** — "She _____ her cat every day."
    **Hint**: takes care of
    **Answer**: looks after
+   **Accepts**: takes care of / feeds
    **Explanation**: "Looks after" — present 3rd person.
 
 8. **fix_error** — "I picked up him at the airport."
@@ -927,18 +937,19 @@
 3. **word_bank** — Confirming you are the person being asked for: "Yes, _____."
    **Choices**: speaking / I'm here / it's me / talking
    **Answer**: speaking
-   **Explanation**: "Yes, speaking" — concise phone-specific confirmation that you are the person being asked for. Fixed phone convention. "Yes, it's / it is me" works casually but "speaking" is more professional.
+   **Accepts**: it's me
+   **Explanation**: "Yes, speaking" — concise phone-specific confirmation that you are the person being asked for. Fixed phone convention. "Yes, it's me" works casually but "speaking" is more professional.
 
 4. **word_bank** — Transferring a call: "I'll _____ you through."
    **Choices**: put / pass / get / send
    **Answer**: put
-   **Explanation**: "I'll / I will put you through" — phrasal verb meaning "transfer". Fixed phone English. "Put you through to [department]" or just "put you through" (when context is clear). Common in receptionist/secretary speak.
+   **Explanation**: "I'll put you through" — phrasal verb meaning "transfer". Fixed phone English. "Put you through to [department]" or just "put you through" (when context is clear). Common in receptionist/secretary speak.
 
 5. **fill_gap** — "She's on _____ line right now. Can I take a message?"
    **Hint**: indefinite article + word for telephone connection
    **Answer**: another
    **Accepts**: the other
-   **Explanation**: "She's / She is on another line" / "She's / She is on the other line" — phone English for "she's / she is busy with another call". "Another line" suggests there are multiple; "the other line" implies a specific second line.
+   **Explanation**: "She's on another line" / "She's on the other line" — phone English for "she's busy with another call". "Another line" suggests there are multiple; "the other line" implies a specific second line.
 
 6. **fill_gap** — "Sorry, we were _____ off."
    **Hint**: phrasal for connection drop
@@ -948,7 +959,7 @@
 7. **fill_gap** — "I'll _____ back to you tomorrow."
    **Hint**: phrasal verb for "respond later"
    **Answer**: get
-   **Explanation**: "I'll / I will get back to you" — phrasal verb for "I'll / I will respond later" or "I'll / I will follow up". Standard professional phone close when you can't answer immediately. Different from "call you back" (which means literally make another call).
+   **Explanation**: "I'll get back to you" — phrasal verb for "I'll respond later" or "I'll follow up". Standard professional phone close when you can't answer immediately. Different from "call you back" (which means literally make another call).
 
 8. **fix_error** — On the phone: "Hello, my name is John."
    **Hint**: On phone — use "This is John"
@@ -963,7 +974,8 @@
 10. **read_answer**
     **Passage**: "Hello, this is Maria speaking. Can I speak to Pedro, please? Oh, he's on another line. Can you take a message? Please tell him to call me back when he's free. My number is 555-1234. Thanks — sorry, I think we're being cut off. I'll get back to you later. Bye!"
     **Question**: What two phone-specific phrasal verbs appear?
-    **Answer**: "cut off" (connection lost) and "get back to" (respond later). Also: "call me back" (return call), "speak to" (talk with).
+    **Answer**: cut off, get back to
+    **Accepts**: cut off / get back to / call me back
     **Explanation**: Phone English vocabulary: "this is...speaking" (identification), "speak to" (talk with), "on another line" (busy), "take a message" (record), "call back" (return call), "cut off" (lose connection), "get back to" (respond later). Each is a fixed phone convention.
 
 ### 2. Listening/Speaking (5 phrases)

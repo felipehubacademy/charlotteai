@@ -80,7 +80,7 @@ async function sendPush(token: string | null, title: string, body: string, data:
   try {
     await fetch('https://exp.host/--/api/v2/push/send', {
       method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify([{ to: token, title, body, sound: 'default', data }]),
+      body: JSON.stringify([{ to: token, title, body, sound: 'default', channelId: 'charlotte', data }]),
     });
   } catch { /* push é melhor esforço */ }
 }
@@ -101,12 +101,15 @@ export async function GET(req: NextRequest) {
   if (ids.length) {
     const since = weekStartIso();
     const dayAgo = new Date(Date.now() - DAY).toISOString();
-    const [profiles, progress, practices, nudges] = await Promise.all([
+    const [profiles, progress, practices, nudges, pairs] = await Promise.all([
       supabase.from('charlotte_users').select('id, name, avatar_url, charlotte_level').in('id', ids),
       supabase.from('charlotte_progress').select('user_id, streak_days, last_practice_date').in('user_id', ids),
       supabase.from('charlotte_practices').select('user_id, xp_earned, practice_type').in('user_id', [...ids, user.id]).gte('created_at', since).limit(20000),
       supabase.from('buddy_nudges').select('to_id').eq('from_id', user.id).gte('created_at', dayAgo),
+      // Sequência com amigo: dias seguidos em que os dois praticaram (supabase/migrations/20261028_friend_streaks.sql).
+      supabase.rpc('friend_streaks', { p_user: user.id, p_ids: ids }),
     ]);
+    const pair = new Map(((pairs.data ?? []) as { friend_id: string; streak: number; me_today: boolean; friend_today: boolean }[]).map(r => [r.friend_id, r]));
     const weekXp = new Map<string, number>();
     const weekLessons = new Map<string, number>();
     ((practices.data ?? []) as { user_id: string; xp_earned: number | null; practice_type: string }[]).forEach(p => {
@@ -126,6 +129,9 @@ export async function GET(req: NextRequest) {
       streak: prog.get(p.id)?.streak_days ?? 0,
       lastPractice: prog.get(p.id)?.last_practice_date ?? null,
       nudgedToday: nudged.has(p.id),
+      pairStreak: pair.get(p.id)?.streak ?? 0,
+      meToday: pair.get(p.id)?.me_today ?? false,
+      friendToday: pair.get(p.id)?.friend_today ?? false,
     }));
     const myXp = weekXp.get(user.id) ?? 0;
     return NextResponse.json({

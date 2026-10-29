@@ -50,11 +50,13 @@
 5. **fill_gap** — "He plays soccer _____ basketball."
    **Hint**: Soma de atividades
    **Answer**: and
+   **Accepts**: or
    **Explanation**: "And" — ambos esportes.
 
 6. **fill_gap** — "I want to travel _____ I don't have money."
    **Hint**: Contraste
    **Answer**: but
+   **Accepts**: although / though
    **Explanation**: "But" — quero mas não posso.
 
 7. **fill_gap** — "Tea, coffee, _____ juice?"
@@ -70,7 +72,7 @@
 9. **fix_error** — "I like dogs and cats but birds."
    **Hint**: Estrutura paralela
    **Answer**: I like dogs, cats, and birds.
-   **Accepts**: use "but" with opposite idea
+   **Accepts**: I like dogs, cats and birds. / I like dogs and cats and birds. / I like dogs and cats, but not birds.
    **Explanation**: "But" sem ideia oposta soa estranho. Use "and" pra lista. "But" exigiria contraste.
 
 10. **read_answer**
@@ -78,7 +80,7 @@
     **Question**: O narrador gosta de refrigerante?
     **Answer**: no
     **Accepts**: doesn't like
-    **Explanation**: O texto diz "I don't / do not like soda".
+    **Explanation**: O texto diz "I don't like soda".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -151,7 +153,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte abre chat sobre suas preferências conectadas. Pratica and/but/so."
-**Opening message**: "What do you like and don't like?"
+**Opening message**: "What do you like, and what don't you like?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -186,7 +188,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "What do you like and don't like?"
+1. **Charlotte**: "What do you like, and what don't you like?"
 2. **Student**: "I like reading and traveling."
 3. **Charlotte**: "Contrast?"
 4. **Student**: "I like sweets but not too much."
@@ -209,12 +211,12 @@
 1. **multiple_choice** — "I'm tired _____ I worked all day."
    **Options**: because / so / but
    **Answer**: because
-   **Explanation**: "Because" introduz a CAUSA. "I'm / I am tired because I worked" — cansado por trabalhar.
+   **Explanation**: "Because" introduz a CAUSA. "I'm tired because I worked" — cansado por trabalhar.
 
 2. **multiple_choice** — "I'm tired _____ I'll rest."
    **Options**: so / because / but
    **Answer**: so
-   **Explanation**: "So" introduz a CONSEQUÊNCIA. "I'm tired so I'll / I will rest" — cansado, então descanso.
+   **Explanation**: "So" introduz a CONSEQUÊNCIA. "I'm tired so I'll rest" — cansado, então descanso.
 
 3. **word_bank** — "She studies a lot _____ she wants to pass."
    **Choices**: because / so / but / and
@@ -224,21 +226,25 @@
 4. **word_bank** — "He likes coffee _____ he drinks it every day."
    **Choices**: so / because / but / and
    **Answer**: so
+   **Accepts**: and
    **Explanation**: "Likes coffee SO drinks" — consequência.
 
 5. **fill_gap** — "I went home early _____ I was sick."
    **Hint**: Motivo (causa)
    **Answer**: because
+   **Accepts**: since / as
    **Explanation**: "Because I was sick" — explicação.
 
 6. **fill_gap** — "It rained yesterday, _____ we stayed inside."
    **Hint**: Resultado
    **Answer**: so
+   **Accepts**: and
    **Explanation**: "So we stayed" — consequência da chuva. "Rained" é past simple (M15).
 
 7. **fill_gap** — "She is happy _____ she got a job."
    **Hint**: Causa
    **Answer**: because
+   **Accepts**: since / as
    **Explanation**: "Because she got a job" — explicação da felicidade.
 
 8. **fix_error** — "I'm tired so I worked all day."
@@ -407,16 +413,19 @@
 5. **fill_gap** — "She always laughs _____ at funny jokes."
    **Hint**: Advérbio de "happy" (y → ily)
    **Answer**: happily
+   **Accepts**: loudly
    **Explanation**: "Happy" → "happily" (y → ily). Regra de spelling.
 
 6. **fill_gap** — "He walks _____ in the morning — never in a rush."
    **Hint**: Advérbio de "slow"
    **Answer**: slowly
+   **Accepts**: calmly
    **Explanation**: "Slow" + ly = "slowly".
 
 7. **fill_gap** — "Please speak _____ — the baby is sleeping."
    **Hint**: Advérbio de "quiet"
    **Answer**: quietly
+   **Accepts**: softly
    **Explanation**: "Quiet" → "quietly". Manter o "t".
 
 8. **fix_error** — "She speaks quick."
@@ -574,7 +583,7 @@
 3. **word_bank** — "_____ he's tired, he keeps working."
    **Choices**: Although / Because / So / And
    **Answer**: Although
-   **Explanation**: "Although he's / he is tired" — embora cansado.
+   **Explanation**: "Although he's tired" — embora cansado.
 
 4. **word_bank** — "She studied a lot. _____, she didn't pass."
    **Choices**: However / Because / Although / And
@@ -584,25 +593,29 @@
 5. **fill_gap** — "_____ I love coffee, I drink tea sometimes."
    **Hint**: Embora (concessão)
    **Answer**: Although
+   **Accepts**: Though / Even though / While
    **Explanation**: "Although I love coffee" — apesar de amar.
 
 6. **fill_gap** — "It's raining. _____, we'll go anyway."
    **Hint**: No entanto (contraste forte)
    **Answer**: However
-   **Explanation**: "However, we'll / we will go" — contraste após pausa.
+   **Accepts**: But / Still / Nevertheless
+   **Explanation**: "However, we'll go" — contraste após pausa.
 
 7. **fill_gap** — "_____ she's young, she's very smart."
    **Hint**: Embora
    **Answer**: Although
-   **Explanation**: "Although she's / she is young" — concessão.
+   **Accepts**: Though / Even though / While
+   **Explanation**: "Although she's young" — concessão.
 
 8. **fix_error** — "Although it's cold but I'll go out."
    **Hint**: Não use although + but juntos
    **Answer**: Although it's cold, I'll go out.
    **Explanation**: "Although" já carrega o contraste — não precisa de "but" também. É erro de dupla conjunção.
 
-9. **fix_error** — "It's raining, however we'll go."
+9. **multiple_choice** — Qual frase está com a pontuação certa?
    **Hint**: However precisa de pontuação forte
+   **Options**: It's raining. However, we'll go. / It's raining, however we'll go. / It's raining however, we'll go.
    **Answer**: It's raining. However, we'll go.
    **Explanation**: "However" normalmente começa nova frase ou após ponto e vírgula. Com vírgula simples soa errado.
 
@@ -767,11 +780,13 @@
 6. **fill_gap** — "She speaks English _____ — almost like a native."
    **Hint**: Advérbio de "well" (good irregular)
    **Answer**: well
+   **Accepts**: fluently / perfectly
    **Explanation**: "Speak well" — well é irregular.
 
 7. **fill_gap** — "I love English _____ it opens doors."
    **Hint**: Causa
    **Answer**: because
+   **Accepts**: since / as
    **Explanation**: Because + causa.
 
 8. **fix_error** — "She no like coffee."

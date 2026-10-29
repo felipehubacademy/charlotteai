@@ -45,12 +45,13 @@
 3. **fill_gap** — Hedge in casual speech: "She's _____ the best manager I've ever had."
    **Hint**: "Kind of" or "sort of"
    **Answer**: kind of
-   **Accepts**: sort of
+   **Accepts**: sort of / kinda
    **Explanation**: "Kind of" / "sort of" — hedges. Soften the absoluteness of "the best". "Kind of the best" = approximately the best, hesitant to claim full superlative. In writing this hedge is light; in speech it's heavy and frequent.
 
 4. **fix_error** — Casual speech, but over-filled: "Like, you know, I mean, like, the project was, sort of, really hard, you know?"
    **Hint**: Three or more fillers in one sentence is too many
    **Answer**: The project was really hard, you know?
+   **Accepts**: The project was really hard. / Honestly, the project was really hard. / The project was, you know, really hard.
    **Explanation**: Over-filling sounds nervous or under-prepared. C2 fluency = strategic filler use. One filler per sentence is natural; two is borderline; three or more weakens. Remove some and keep one well-placed.
 
 5. **read_answer**
@@ -188,23 +189,23 @@
 1. **multiple_choice** — Add the correct tag: "It's a beautiful day, _____"
    **Options**: isn't it? / is it? / isn't is? / it isn't?
    **Answer**: isn't it?
-   **Explanation**: Tag question rule: positive statement + negative tag. "It's / It is beautiful" (positive, "is") → "isn't / is not it?" (negative). Tags reverse polarity. Common pattern: "She's coming, isn't / is not she?" / "They've left, haven't / have not they?" / "You like coffee, don't / do not you?". Agreement-seeking move.
+   **Explanation**: Tag question rule: positive statement + negative tag. "It's beautiful" (positive, "is") → "isn't it?" (negative). Tags reverse polarity. Common pattern: "She's coming, isn't she?" / "They've left, haven't they?" / "You like coffee, don't you?". Agreement-seeking move.
 
 2. **multiple_choice** — Add the correct tag: "She doesn't speak French, _____"
    **Options**: does she? / doesn't she? / is she? / she does?
    **Answer**: does she?
-   **Explanation**: Negative statement → positive tag. "She doesn't / does not speak" (negative, "doesn't / does not") → "does she?" (positive). Reverse polarity. Common error: matching the polarity. The point of the tag is to flip and check.
+   **Explanation**: Negative statement → positive tag. "She doesn't speak" (negative, "doesn't") → "does she?" (positive). Reverse polarity. Common error: matching the polarity. The point of the tag is to flip and check.
 
 3. **fill_gap** — Casual tag for "It's good weather today, _____" (very informal British)
    **Hint**: Universal informal tag
    **Answer**: innit
-   **Accepts**: isn't it" formal
+   **Accepts**: isn't it / is it not
    **Explanation**: "Innit" — universal informal tag in British English, especially Cockney/London. Stands in for any positive→negative tag ("isn't it / aren't they / haven't they / didn't he"). Use cautiously — works in casual peer-to-peer speech but reads as too informal in professional contexts.
 
-4. **fix_error** — Tag mismatched: "You've been to Paris, haven't you?"
-   **Hint**: Actually, that's correct. Try: "You haven't been to Paris, have you?"
-   **Answer**: You haven't been to Paris, have you? (negative → positive tag)
-   **Explanation**: Common L2 error is matching polarity. Native English always reverses: pos → neg tag, neg → pos tag. "You've / You have been" (positive perfect) + "haven't / have not you?" (negative). "You haven't / have not been" (negative) + "have you?" (positive). Polarity always inverts.
+4. **fix_error** — Tag mismatched: "You haven't been to Paris, haven't you?"
+   **Hint**: Negative statement → positive tag
+   **Answer**: You haven't been to Paris, have you?
+   **Explanation**: Common L2 error is matching polarity. Native English always reverses: pos → neg tag, neg → pos tag. "You've been" (positive perfect) + "haven't you?" (negative). "You haven't been" (negative) + "have you?" (positive). Polarity always inverts.
 
 5. **read_answer**
    **Passage**: "Tags do different work depending on intonation. 'It's a lovely day, isn't it?' with rising tag = genuinely asking, expecting agreement. With falling tag = rhetorical, not really seeking confirmation. Tags can also soften assertion: 'You'd rather not come, would you?' is gentler than 'You don't want to come.' English speech relies on these constantly."
@@ -228,7 +229,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three statements. Add a tag — agreement, confirmation, or soft challenge."
+**Opening line**: "I'll make three statements. Add a tag question to each one: to agree, to check or to gently challenge me."
 
 **Sub-objectives** (3 objetivos):
 
@@ -263,7 +264,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three statements. Add a tag — agreement, confirmation, or soft challenge."
+1. **Charlotte**: "I'll make three statements. Add a tag question to each one: to agree, to check or to gently challenge me."
 2. **Student**: ~"She's the strongest writer on the team, isn't she? The way she frames an argument is in a different category."
 3. **Charlotte**: "Confirmation?"
 4. **Student**: ~"You haven't met the new product manager yet, have you? She started two weeks ago and seems to be everywhere at once."
@@ -341,7 +342,7 @@
 1. **multiple_choice** — Most natural backchannel during someone telling a story:
    **Options**: Mm-hm. Right. Yeah. / Yes, I am listening. / I understand what you're saying. / Continue, please.
    **Answer**: Mm-hm. Right. Yeah.
-   **Explanation**: Native speakers signal listening with short interjections — not full sentences. "Mm-hm", "right", "yeah", "okay", "oh", "gotcha" — each is a small confirmation that the listener is tracking. Long acknowledgements ("I understand what you're / you are saying") interrupt and feel formal.
+   **Explanation**: Native speakers signal listening with short interjections — not full sentences. "Mm-hm", "right", "yeah", "okay", "oh", "gotcha" — each is a small confirmation that the listener is tracking. Long acknowledgements ("I understand what you're saying") interrupt and feel formal.
 
 2. **multiple_choice** — Backchannel signalling surprise:
    **Options**: Really? / Yes, indeed. / I see your point. / Acknowledged.
@@ -351,7 +352,7 @@
 3. **fill_gap** — Backchannel meaning "I'm tracking, keep going": "_____"
    **Hint**: Single syllable, neutral confirmation
    **Answer**: Right
-   **Accepts**: Mm-hm / Yeah
+   **Accepts**: Mm-hm / Yeah / Uh-huh / Sure / Okay / OK / Mm
    **Explanation**: "Right" — neutral confirmation backchannel. Often timed during pauses or at the end of a sentence. Allows the speaker to continue without seeking more elaborate confirmation. Stress-pattern: short, rising-falling pitch, almost throwaway.
 
 4. **fix_error** — Over-elaborate backchannel: "I am listening to your account with great interest."
@@ -363,7 +364,8 @@
 5. **read_answer**
    **Passage**: "Native conversation has its own rhythm. The speaker tells the story. The listener punctuates with quiet sounds — 'mm-hm... right... yeah... oh, really?... no way.' These tiny words do enormous work. They tell the speaker the listener is present, paying attention, and emotionally tracking. Without them, the speaker feels alone on the line."
    **Question**: According to the passage, what work do backchannels do?
-   **Answer**: tell the speaker the listener is present, paying attention, and emotionally tracking
+   **Answer**: show listener is present and attentive
+   **Accepts**: listener is present / paying attention / emotionally tracking
    **Explanation**: Three functions: presence, attention, emotional tracking. All carried by single-word interjections. C2 conversational mastery includes producing these naturally — and noticing when other speakers go silent (a signal to wrap up or shift).
 
 ### 2. Listening/Speaking (5 phrases)
@@ -495,7 +497,7 @@
 1. **multiple_choice** — Opener signalling about-to-share-an-honest-opinion: "_____, the proposal isn't strong enough."
    **Options**: Honestly / Yes / Look here / Apologies
    **Answer**: Honestly
-   **Explanation**: "Honestly, ..." — opens a candid statement. Slightly informal. Synonyms: "Frankly, ...", "To be honest, ...", "I'll / I will be honest with you, ...". Marks that the speaker is dropping diplomatic cover. Common in feedback or honest assessments.
+   **Explanation**: "Honestly, ..." — opens a candid statement. Slightly informal. Synonyms: "Frankly, ...", "To be honest, ...", "I'll be honest with you, ...". Marks that the speaker is dropping diplomatic cover. Common in feedback or honest assessments.
 
 2. **multiple_choice** — Opener softening disagreement before a counterpoint: "_____, the data does support a different reading."
    **Options**: To be fair / Of course / Listen here / In all honesty
@@ -505,13 +507,14 @@
 3. **fill_gap** — Casual opener for sensitive topic: "_____, I think we should reconsider."
    **Hint**: Attention-getter with deliberate pause
    **Answer**: Look
-   **Explanation**: "Look, ..." — informal attention-getter, often preceding a sensitive or direct statement. Casual register. Synonyms: "Listen, ...". Signals "I'm / I am about to be direct" — used in interpersonal conversation, feedback, or persuasion.
+   **Accepts**: Listen / Honestly
+   **Explanation**: "Look, ..." — informal attention-getter, often preceding a sensitive or direct statement. Casual register. Synonyms: "Listen, ...". Signals "I'm about to be direct" — used in interpersonal conversation, feedback, or persuasion.
 
 4. **fix_error** — Awkward sensitivity-opener: "With no offence, but you're wrong."
    **Hint**: "No offence" is the fixed phrase
    **Answer**: No offence, but you're wrong.
    **Accepts**: With all due respect, but you're wrong.
-   **Explanation**: "No offence" — set phrase preceding a potentially insulting statement. "With no offence" is non-standard. The phrase preempts any negative reaction: "I'm / I am not trying to insult you, but...". Often softens what follows.
+   **Explanation**: "No offence" — set phrase preceding a potentially insulting statement. "With no offence" is non-standard. The phrase preempts any negative reaction: "I'm not trying to insult you, but...". Often softens what follows.
 
 5. **read_answer**
    **Passage**: "Pragmatic openers do real work. 'Honestly, I don't think it'll work' signals candour. 'To be fair, the other side has a point' signals balance. 'No offence, but this isn't the strongest case' signals diplomacy before disagreement. 'Look, we need to talk' signals seriousness. Each opener primes the listener for what's about to come."
@@ -653,16 +656,17 @@
 2. **multiple_choice** — Native conversational proposal opener:
    **Options**: I'll tell you what — let's just call her and ask. / I will tell you which — let's call her. / Tell I you what — call her. / I'll tell you so — call.
    **Answer**: I'll tell you what — let's just call her and ask.
-   **Explanation**: "I'll / I will tell you what, ..." or "Tell you what, ..." — opens a casual proposal. Comes with the rhythm of someone arriving at an idea on the spot. Common in spoken English; rare in writing.
+   **Explanation**: "I'll tell you what, ..." or "Tell you what, ..." — opens a casual proposal. Comes with the rhythm of someone arriving at an idea on the spot. Common in spoken English; rare in writing.
 
 3. **fill_gap** — Opener inviting shared opinion: "_____ but I think we should rethink the whole approach."
    **Hint**: "I don't know about you, but..."
    **Answer**: I don't know about you,
-   **Explanation**: "I don't / do not know about you, but ..." — opens a personal opinion in a way that invites the listener's response. Hedges the assertion as personal. Common in casual feedback and informal opinion-sharing.
+   **Explanation**: "I don't know about you, but ..." — opens a personal opinion in a way that invites the listener's response. Hedges the assertion as personal. Common in casual feedback and informal opinion-sharing.
 
 4. **fix_error** — Awkward: "The matter is that we don't have time."
    **Hint**: Use "The thing is" instead
    **Answer**: The thing is, we don't have time.
+   **Accepts**: The thing is that we don't have time. / The point is, we don't have time. / The problem is, we don't have time. / Here's the thing: we don't have time.
    **Explanation**: "The matter is" sounds formal-translated. Native English casual conversation uses "The thing is" or "Here's the thing". These openers feel native; "the matter is" reads as translation from another language.
 
 5. **read_answer**

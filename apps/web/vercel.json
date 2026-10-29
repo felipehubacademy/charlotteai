@@ -17,12 +17,84 @@
     },
     "app/api/transcribe/route.ts": {
       "maxDuration": 30
+    },
+    "app/api/checkout/asaas/route.ts": {
+      "regions": [
+        "gru1"
+      ]
+    },
+    "app/api/checkout/asaas/direct/route.ts": {
+      "regions": [
+        "gru1"
+      ],
+      "maxDuration": 30
+    },
+    "app/api/checkout/asaas/email/route.ts": {
+      "regions": [
+        "gru1"
+      ]
+    },
+    "app/api/webhooks/asaas/route.ts": {
+      "regions": [
+        "gru1"
+      ]
+    },
+    "app/api/auth/send-email/route.ts": {
+      "regions": [
+        "gru1"
+      ]
+    },
+    "app/api/cron/email-outbox/route.ts": {
+      "regions": [
+        "gru1"
+      ]
+    },
+    "app/api/cron/capacity-alert/route.ts": {
+      "regions": [
+        "gru1"
+      ]
+    },
+    "app/api/cron/subscription-notices/route.ts": {
+      "regions": [
+        "gru1"
+      ],
+      "maxDuration": 120
+    },
+    "app/api/cron/checkout-watch/route.ts": {
+      "regions": [
+        "gru1"
+      ],
+      "maxDuration": 60
+    },
+    "app/api/cron/instagram/route.ts": {
+      "maxDuration": 120
     }
   },
   "crons": [
     {
       "path": "/api/cron/chat-audio-cleanup",
       "schedule": "0 7 * * *"
+    },
+    {
+      "path": "/api/cron/support-email",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/access-help",
+      "schedule": "17 * * * *"
+    },
+    {
+      "path": "/api/cron/subscription-notices",
+      "schedule": "0 13 * * *"
+    },
+    {
+      "path": "/api/cron/checkout-watch",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/instagram",
+      "schedule": "*/5 * * * *"
     }
-  ]
+  ],
+  "ignoreCommand": "[ -n \"$VERCEL_GIT_PREVIOUS_SHA\" ] && [ \"$VERCEL_GIT_PREVIOUS_SHA\" != \"$VERCEL_GIT_COMMIT_SHA\" ] && git cat-file -e \"$VERCEL_GIT_PREVIOUS_SHA\" 2>/dev/null && git diff --quiet \"$VERCEL_GIT_PREVIOUS_SHA\" HEAD -- ."
 }

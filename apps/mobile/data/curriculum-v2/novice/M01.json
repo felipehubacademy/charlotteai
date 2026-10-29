@@ -97,7 +97,11 @@
           "accepts": [
             "thanks",
             "thanks a lot",
-            "thank you so much"
+            "thank you so much",
+            "and you",
+            "how about you",
+            "thanks, and you",
+            "thank you, and you"
           ],
           "explanation": "\"Thank you\" é a forma educada padrão. Em conversa casual, \"Thanks\" funciona igual — ambas valem. Em inglês falado, \"Thanks\" é até mais frequente."
         },
@@ -113,6 +117,9 @@
           "sentence": "A: Goodbye! B: _____ you later!",
           "hint": "Despedida informal comum",
           "answer": "See",
+          "accepts": [
+            "Catch"
+          ],
           "explanation": "\"See you later\" é uma forma muito informal de dizer tchau. Entre amigos e colegas próximos."
         },
         {
@@ -120,7 +127,11 @@
           "sentence": "Good meet you!",
           "hint": "Frase padrão ao conhecer alguém",
           "answer": "Nice to meet you!",
-          "explanation": "A frase correta é \"Nice to meet you\" — \"Good meet you\" não existe em inglês. Note também o \"to\" entre \"Nice\" e \"meet\"."
+          "accepts": [
+            "Good to meet you!",
+            "Pleased to meet you!"
+          ],
+          "explanation": "A frase correta é \"Nice to meet you\" (ou \"Good to meet you\") — \"Good meet you\" não existe em inglês. Note o \"to\" antes de \"meet\"."
         },
         {
           "type": "fix_error",
@@ -134,7 +145,13 @@
           "passage": "Ana: Good morning! How are you, Tom? Tom: I'm fine, thank you! And you? Ana: I'm great!",
           "question": "Como Tom está? (responda em inglês com uma palavra)",
           "answer": "fine",
-          "explanation": "Tom diz \"I'm / I am fine, thank you\" — \"fine\" significa bem/ótimo em inglês."
+          "accepts": [
+            "good",
+            "well",
+            "ok",
+            "okay"
+          ],
+          "explanation": "Tom diz \"I'm fine, thank you\" — \"fine\" significa bem/ótimo em inglês."
         }
       ],
       "listening_speaking": [
@@ -320,14 +337,14 @@
             "She's"
           ],
           "answer": "I'm",
-          "explanation": "\"I'm / I am\" é a contração de \"I am\". Ao se apresentar, você diz \"I'm / I am John\" (sou o John). Bem mais comum que \"I am John\"."
+          "explanation": "\"I'm\" é a contração de \"I am\". Ao se apresentar, você diz \"I'm John\" (sou o John). Bem mais comum que \"I am John\"."
         },
         {
           "type": "fill_gap",
           "sentence": "I am _____ Brazil.",
           "hint": "Preposição de origem",
           "answer": "from",
-          "explanation": "\"I'm / I am from Brazil\" = \"Eu sou do Brasil\". A preposição \"from\" indica origem em inglês."
+          "explanation": "\"I'm from Brazil\" = \"Eu sou do Brasil\". A preposição \"from\" indica origem em inglês."
         },
         {
           "type": "fill_gap",
@@ -341,6 +358,9 @@
           "sentence": "Hi! _____ is my friend Tom.",
           "hint": "Use \"This\" (começa com T) — quando apresenta alguém perto de você, igual \"Este é...\" em português",
           "answer": "This",
+          "accepts": [
+            "He"
+          ],
           "explanation": "\"This is + pessoa\" = \"Este é + pessoa\". Use \"This\" pra apresentar alguém que está perto de você. Memoriza esse chunk: \"This is my friend ___\" funciona pra qualquer nome."
         },
         {
@@ -348,7 +368,7 @@
           "sentence": "I are a student.",
           "hint": "Verbo \"to be\" com \"I\"",
           "answer": "I am a student.",
-          "explanation": "Com \"I\" sempre se usa \"am\", nunca \"are\". A frase correta é \"I am a student\" (ou contraído: \"I'm / I am a student\")."
+          "explanation": "Com \"I\" sempre se usa \"am\", nunca \"are\". A frase correta é \"I am a student\" (ou contraído: \"I'm a student\")."
         },
         {
           "type": "fix_error",
@@ -577,11 +597,15 @@
           "explanation": "Em perguntas WH-, a estrutura é: WH-word + auxiliar + sujeito. \"Where are you from?\" — não \"You are from where?\"."
         },
         {
-          "type": "fix_error",
-          "sentence": "Is they French?",
-          "hint": "\"They\" é plural",
-          "answer": "Are they French?",
-          "explanation": "\"They\" é plural, então usa \"are\", não \"is\". \"Are they French?\"."
+          "type": "multiple_choice",
+          "sentence": "_____ they French?",
+          "options": [
+            "Are",
+            "Is",
+            "Am"
+          ],
+          "answer": "Are",
+          "explanation": "\"They\" (eles) pede \"are\": They are French. Na pergunta, o \"are\" vai para a frente: Are they French?"
         },
         {
           "type": "read_answer",
@@ -598,9 +622,9 @@
           "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/2f94522912c725b8.flac"
         },
         {
-          "text": "I'm from São Paulo, Brazil.",
+          "text": "I'm from Brazil.",
           "context": "resposta completa",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/46ae9ae4aa4d8ecf.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7f07e5fca7ed8a95.flac"
         },
         {
           "text": "Are you Brazilian?",
@@ -656,7 +680,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_pt": "Charlotte simula um match num app de idiomas. Pratica dizer de onde você é e devolver a pergunta.",
-        "opening_message": "Hey! Nice to match. Where are you from?",
+        "opening_message": "Hey! We matched! Where are you from?",
         "objectives": [
           {
             "id": 1,
@@ -713,7 +737,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Awesome! Talk soon.\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hey! Nice to match. Where are you from?\"\n2. **Student**: \"I'm from Brazil.\"\n3. **Charlotte**: \"Cool! Are you Brazilian?\"\n4. **Student**: \"I'm Brazilian.\"\n5. **Charlotte**: \"First time chatting with someone from Brazil.\"\n6. **Student**: \"Where are you from?\"\n7. **Charlotte**: \"I'm from New York. Awesome — talk soon!\"\n\n> N03 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hey! We matched! Where are you from?\"\n2. **Student**: \"I'm from Brazil.\"\n3. **Charlotte**: \"Cool! Are you Brazilian?\"\n4. **Student**: \"I'm Brazilian.\"\n5. **Charlotte**: \"First time chatting with someone from Brazil.\"\n6. **Student**: \"Where are you from?\"\n7. **Charlotte**: \"I'm from New York. Awesome — talk soon!\"\n\n> N03 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
       }
     },
     {
@@ -776,21 +800,35 @@
           "sentence": "I'm _____ hungry. Let's eat.",
           "hint": "Intensificador (muito, tão)",
           "answer": "so",
-          "explanation": "\"So + adjetivo\" intensifica: \"so hungry\" = \"com muita fome\". Também pode usar \"really hungry\"."
+          "accepts": [
+            "very",
+            "really"
+          ],
+          "explanation": "\"So + adjetivo\" intensifica: \"so hungry\" = \"com muita fome\". \"Very hungry\" e \"really hungry\" também valem."
         },
         {
-          "type": "fill_gap",
+          "type": "multiple_choice",
           "sentence": "_____ are you feeling today?",
-          "hint": "Pergunta sobre como (não onde, não quando)",
+          "options": [
+            "How",
+            "Where",
+            "When",
+            "Who"
+          ],
           "answer": "How",
-          "explanation": "\"How are you feeling?\" pergunta sobre estado emocional/físico. É mais íntimo que \"How are you?\"."
+          "explanation": "\"How\" pergunta como. \"How are you feeling today?\" = como você está se sentindo hoje?"
         },
         {
-          "type": "fill_gap",
-          "sentence": "She is _____ today. Lots of meetings.",
-          "hint": "Estado de quem tem muita coisa pra fazer",
+          "type": "word_bank",
+          "sentence": "She is _____ today: lots of meetings and no free time.",
+          "choices": [
+            "busy",
+            "tired",
+            "hungry",
+            "funny"
+          ],
           "answer": "busy",
-          "explanation": "\"Busy\" = ocupado. \"She is busy today\" é resposta natural quando alguém tem muito trabalho."
+          "explanation": "\"Busy\" = ocupada. Muitas reuniões e nenhum tempo livre: ela está ocupada. \"Tired\" é cansada, que pode até ser verdade, mas a frase fala de agenda cheia."
         },
         {
           "type": "fix_error",
@@ -800,18 +838,27 @@
           "explanation": "A ordem em inglês é: sujeito + verbo + complemento. \"I am tired\" — não \"I tired am\" (que seria a ordem do PT-BR às vezes)."
         },
         {
-          "type": "fix_error",
-          "sentence": "How feels you?",
-          "hint": "Use \"to be\" + verbo no -ing (\"How are you ___ing?\")",
+          "type": "word_order",
           "answer": "How are you feeling?",
-          "explanation": "A forma correta usa \"to be\" + verbo no -ing: \"How are you feeling?\" — não \"How feels you?\". Outra forma comum: \"How do you feel?\"."
+          "explanation": "Pergunta com \"how\": How + are + you + verbo com -ing. Nada de \"How feels you?\".",
+          "context_pt": "Monte a pergunta: como você está se sentindo?",
+          "words": [
+            "How",
+            "are",
+            "you",
+            "feeling",
+            "?"
+          ]
         },
         {
           "type": "read_answer",
           "passage": "Tom: Hey Ana, are you okay? You look down. Ana: I'm tired and a bit stressed. Work is crazy this week.",
           "question": "Como Ana se sente? (dê uma palavra)",
           "answer": "tired",
-          "explanation": "Ana diz \"I'm / I am tired and a bit stressed\". A primeira palavra que descreve ela é \"tired\" (cansada)."
+          "accepts": [
+            "stressed"
+          ],
+          "explanation": "Ana diz \"I'm tired and a bit stressed\". A primeira palavra que descreve ela é \"tired\" (cansada)."
         }
       ],
       "listening_speaking": [
@@ -1003,13 +1050,22 @@
           "sentence": "Goodbye! Have a _____ day.",
           "hint": "Adjetivo positivo",
           "answer": "nice",
-          "explanation": "\"Have a nice day\" é despedida educada padrão. Também aceita \"good day\", \"great day\"."
+          "accepts": [
+            "great",
+            "good",
+            "wonderful",
+            "lovely"
+          ],
+          "explanation": "\"Have a nice day!\" é a despedida mais comum. \"Great\", \"good\" e \"wonderful\" também funcionam."
         },
         {
           "type": "fill_gap",
           "sentence": "_____ you next week!",
           "hint": "Despedida com referência temporal",
           "answer": "See",
+          "accepts": [
+            "Catch"
+          ],
           "explanation": "\"See you next week\" = \"te vejo semana que vem\". Padrão para combinar próximo encontro."
         },
         {
@@ -1031,6 +1087,9 @@
           "sentence": "Take of care!",
           "hint": "\"Take care\" é chunk fixo",
           "answer": "Take care!",
+          "accepts": [
+            "Take care of yourself!"
+          ],
           "explanation": "\"Take care\" é uma expressão fixa, sem \"of\". \"Take CARE of yourself\" leva \"of\" só nessa versão longa."
         },
         {

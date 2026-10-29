@@ -37,7 +37,7 @@
             "go to"
           ],
           "answer": "going to",
-          "explanation": "\"Going to + verbo base\" pra planos: \"I'm / I am going to travel\"."
+          "explanation": "\"Going to + verbo base\" pra planos: \"I'm going to travel\"."
         },
         {
           "type": "multiple_choice",
@@ -72,14 +72,14 @@
             "goes to"
           ],
           "answer": "going to",
-          "explanation": "\"He's / He is going to start\" — contração \"he is\" + going to."
+          "explanation": "\"He's going to start\" — contração \"he is\" + going to."
         },
         {
           "type": "fill_gap",
           "sentence": "I'm _____ to learn Spanish.",
           "hint": "Verbo de movimento (going)",
           "answer": "going",
-          "explanation": "\"I'm / I am going to learn\" — chunk fixo. \"Going\" antes do \"to\"."
+          "explanation": "\"I'm going to learn\" — chunk fixo. \"Going\" antes do \"to\"."
         },
         {
           "type": "fill_gap",
@@ -288,7 +288,7 @@
             "don't going"
           ],
           "answer": "not going to",
-          "explanation": "Negativa: \"I'm / I am not going to + base\". O \"not\" vai entre \"am/is/are\" e \"going to\"."
+          "explanation": "Negativa: \"I'm not going to + base\". O \"not\" vai entre \"am/is/are\" e \"going to\"."
         },
         {
           "type": "multiple_choice",
@@ -299,7 +299,7 @@
             "doesn't go"
           ],
           "answer": "isn't going to",
-          "explanation": "\"She isn't / is not going to\" — contração de \"is not\"."
+          "explanation": "\"She isn't going to\" — contração de \"is not\"."
         },
         {
           "type": "word_bank",
@@ -311,7 +311,7 @@
             "no go"
           ],
           "answer": "aren't going to",
-          "explanation": "\"We aren't / are not going to\" — contração \"are not\"."
+          "explanation": "\"We aren't going to\" — contração \"are not\"."
         },
         {
           "type": "word_bank",
@@ -323,42 +323,42 @@
             "not go"
           ],
           "answer": "isn't going to",
-          "explanation": "He → \"isn't / is not going to\"."
+          "explanation": "He → \"isn't going to\"."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ going to call her.",
           "hint": "Negativa entre \"am\" e \"going\"",
           "answer": "'m not",
-          "explanation": "\"I'm / I am not going to\" — contraído. \"Am not\" = \"'m not\"."
+          "explanation": "\"I'm not going to\" — contraído. \"Am not\" = \"'m not\"."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ going to come.",
           "hint": "Negativa de \"she is\" (contraída)",
           "answer": "isn't",
-          "explanation": "\"She isn't / is not going to\" — is + not = isn't."
+          "explanation": "\"She isn't going to\" — is + not = isn't."
         },
         {
           "type": "fill_gap",
           "sentence": "They _____ going to leave early.",
           "hint": "Negativa de \"they are\" (contraída)",
           "answer": "aren't",
-          "explanation": "\"They aren't / are not going to\" — are + not = aren't."
+          "explanation": "\"They aren't going to\" — are + not = aren't."
         },
         {
           "type": "fix_error",
           "sentence": "I don't going to work.",
           "hint": "Going to não usa \"don't\"",
           "answer": "I'm not going to work.",
-          "explanation": "Going to negativa usa \"not\" entre to-be e going. NÃO \"don't / do not going to\"."
+          "explanation": "Going to negativa usa \"not\" entre to-be e going. NÃO \"don't going to\"."
         },
         {
           "type": "fix_error",
           "sentence": "She isn't go to call.",
           "hint": "Falta \"ing\" e \"to\"",
           "answer": "She isn't going to call.",
-          "explanation": "\"Going to\" sempre completo: \"going to + base\". \"isn't / is not going to call\"."
+          "explanation": "\"Going to\" sempre completo: \"going to + base\". \"isn't going to call\"."
         },
         {
           "type": "read_answer",
@@ -368,7 +368,7 @@
           "accepts": [
             "day off"
           ],
-          "explanation": "O texto diz \"It's / It is my day off\"."
+          "explanation": "O texto diz \"It's my day off\"."
         }
       ],
       "listening_speaking": [
@@ -624,7 +624,7 @@
           "accepts": [
             "she isn't"
           ],
-          "explanation": "The text says \"No, she isn't / is not\"."
+          "explanation": "The text says \"No, she isn't\"."
         }
       ],
       "listening_speaking": [
@@ -854,7 +854,16 @@
           "sentence": "I'm going to finish _____.",
           "hint": "Marcador \"em breve\"",
           "answer": "soon",
-          "explanation": "\"I'm / I am going to finish soon\" = vou terminar em breve."
+          "accepts": [
+            "today",
+            "tomorrow",
+            "later",
+            "tonight",
+            "next week",
+            "on time",
+            "it"
+          ],
+          "explanation": "\"I'm going to finish soon\" = vou terminar em breve."
         },
         {
           "type": "fix_error",
@@ -875,7 +884,7 @@
           "passage": "I'm going to travel tomorrow. Next week I'm going to be in Italy. In two months I'm going to come back home.",
           "question": "Quando o narrador vai viajar?",
           "answer": "tomorrow",
-          "explanation": "O texto diz \"I'm / I am going to travel tomorrow\"."
+          "explanation": "O texto diz \"I'm going to travel tomorrow\"."
         }
       ],
       "listening_speaking": [
@@ -1049,7 +1058,7 @@
             "going"
           ],
           "answer": "going to",
-          "explanation": "Afirmativa simples: \"I'm / I am going to + base\"."
+          "explanation": "Afirmativa simples: \"I'm going to + base\"."
         },
         {
           "type": "multiple_choice",
@@ -1060,7 +1069,7 @@
             "doesn't"
           ],
           "answer": "isn't",
-          "explanation": "Negativa 3ª pessoa: \"She isn't / is not going to\"."
+          "explanation": "Negativa 3ª pessoa: \"She isn't going to\"."
         },
         {
           "type": "word_bank",
@@ -1091,6 +1100,13 @@
           "sentence": "I'm going to _____ a new job next month.",
           "hint": "Verbo \"começar\" base",
           "answer": "start",
+          "accepts": [
+            "begin",
+            "get",
+            "find",
+            "look for",
+            "apply for"
+          ],
           "explanation": "\"Going to + base\": \"going to start\"."
         },
         {
@@ -1098,7 +1114,7 @@
           "sentence": "She _____ going to call tonight.",
           "hint": "Negativa \"is not\"",
           "answer": "isn't",
-          "explanation": "\"She isn't / is not going to call\"."
+          "explanation": "\"She isn't going to call\"."
         },
         {
           "type": "fill_gap",
@@ -1112,14 +1128,14 @@
           "sentence": "I don't going to work.",
           "hint": "Going to não usa \"don't\"",
           "answer": "I'm not going to work.",
-          "explanation": "Negativa usa \"to be + not + going to\". Sem \"don't / do not\"."
+          "explanation": "Negativa usa \"to be + not + going to\". Sem \"don't\"."
         },
         {
           "type": "fix_error",
           "sentence": "She going to travel tomorrow.",
           "hint": "Falta verbo to be",
           "answer": "She's going to travel tomorrow.",
-          "explanation": "Going to precisa de \"to be\" antes. \"She's / She is going to\" (she + is)."
+          "explanation": "Going to precisa de \"to be\" antes. \"She's going to\" (she + is)."
         },
         {
           "type": "read_answer",
@@ -1304,7 +1320,7 @@
             "I'm great to eat."
           ],
           "answer": "I'm going to eat.",
-          "explanation": "\"Gonna\" é a redução falada de \"going to\". Em fala nativa rápida, \"going to\" comprime em \"gonna\" /ˈɡənə/. Não escrita formal — apenas oral. Reconhecer essa redução é essencial pra entender filmes e conversa real."
+          "explanation": "\"Gonna\" é a redução falada de \"going to\". Em fala nativa rápida, \"going to\" comprime em \"gonna\". Não escrita formal — apenas oral. Reconhecer essa redução é essencial pra entender filmes e conversa real."
         },
         {
           "type": "multiple_choice",
@@ -1316,7 +1332,7 @@
             "I am going."
           ],
           "answer": "I want to go.",
-          "explanation": "\"Wanna\" = redução falada de \"want to\". Em fala natural, \"want to\" se funde em \"wanna\" /ˈwɒnə/. Só ouvir — escrita formal sempre \"want to\"."
+          "explanation": "\"Wanna\" = redução falada de \"want to\". Em fala natural, \"want to\" se funde em \"wanna\". Só ouvir — escrita formal sempre \"want to\"."
         },
         {
           "type": "word_bank",
@@ -1347,7 +1363,7 @@
           "sentence": "Em fala formal escrita, \"I'm gonna\" se escreve como \"I'm _____ to\".",
           "hint": "\"Gonna\" expandido fica \"___ to\"",
           "answer": "going",
-          "explanation": "\"Gonna\" só existe em fala informal ou textos que simulam fala (legendas, redes sociais). Em escrita formal, sempre \"I'm / I am going to\". Reconhecer a forma falada e saber a forma escrita."
+          "explanation": "\"Gonna\" só existe em fala informal ou textos que simulam fala (legendas, redes sociais). Em escrita formal, sempre \"I'm going to\". Reconhecer a forma falada e saber a forma escrita."
         },
         {
           "type": "fill_gap",
@@ -1364,7 +1380,7 @@
           "accepts": [
             "got"
           ],
-          "explanation": "\"Gotta\" = \"have got to\" / \"got to\" (com sentido de obrigação). \"I gotta go\" = \"I have to go\" / \"I've / I have got to go\". Reconhecer em fala rápida — usar forma completa em escrita."
+          "explanation": "\"Gotta\" = \"have got to\" / \"got to\" (com sentido de obrigação). \"I gotta go\" = \"I have to go\" / \"I've got to go\". Reconhecer em fala rápida — usar forma completa em escrita."
         },
         {
           "type": "fix_error",
@@ -1394,7 +1410,7 @@
           "accepts": [
             "I've got to finish this email"
           ],
-          "explanation": "\"I gotta finish this email\" em escrita formal seria \"I have to finish this email\" ou \"I've / I have got to finish this email\". \"Gotta\" carrega o sentido de obrigação. Reconhecer a redução em fala e saber a forma formal."
+          "explanation": "\"I gotta finish this email\" em escrita formal seria \"I have to finish this email\" ou \"I've got to finish this email\". \"Gotta\" carrega o sentido de obrigação. Reconhecer a redução em fala e saber a forma formal."
         }
       ],
       "listening_speaking": [

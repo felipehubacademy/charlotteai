@@ -53,26 +53,31 @@
 5. **fill_gap** — "The product is expensive. _____, the quality is excellent."
    **Hint**: Conector de contraste no início de frase
    **Answer**: However
+   **Accepts**: But / Still / Nevertheless / Even so / That said
    **Explanation**: "However" links contrasting evaluations. Common in reviews or analyses.
 
 6. **fill_gap** — "The weather was bad. _____, we had fun."
    **Hint**: Mesmo assim — Nevertheless
    **Answer**: Nevertheless
+   **Accepts**: However / Still / Even so / Nonetheless / But
    **Explanation**: "Nevertheless" — despite everything. Emphatic contrast.
 
 7. **fill_gap** — "He's introverted. _____, she's very outgoing."
    **Hint**: Contraste paralelo — On the other hand
    **Answer**: On the other hand
+   **Accepts**: However / In contrast / By contrast
    **Explanation**: "On the other hand" for comparison between two people/things.
 
-8. **fix_error** — "I love pizza, however, I can't eat it daily."
+8. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: "However" precisa de ponto antes (não vírgula)
+   **Options**: I love pizza. However, I can't eat it daily. / I love pizza, however, I can't eat it daily. / I love pizza however I can't eat it daily.
    **Answer**: I love pizza. However, I can't eat it daily.
    **Explanation**: "However" starts a new sentence, separated by a period. A comma before creates a comma splice. Correct punctuation: period + However + comma.
 
-9. **fix_error** — "However the weather, we went out."
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Falta vírgula após "However" no início
-   **Answer**: However, the weather was bad. We went out.
+   **Options**: The weather was bad. However we went out. / The weather was bad. However, we went out. / The weather was bad, however we went out.
+   **Answer**: The weather was bad. However, we went out.
    **Explanation**: "However" always takes a comma AFTER when starting a sentence. And it doesn't replace "although" (which joins clauses).
 
 10. **read_answer**
@@ -231,16 +236,19 @@
 5. **fill_gap** — "_____ the difficulty, we succeeded."
    **Hint**: Despite + substantivo
    **Answer**: Despite
+   **Accepts**: In spite of
    **Explanation**: "Despite the difficulty" — noun following "despite".
 
 6. **fill_gap** — "_____ she's young, she's very mature."
    **Hint**: Although + cláusula
    **Answer**: Although
-   **Explanation**: "Although she's / she is young" — full clause after "although".
+   **Accepts**: Though / Even though / While
+   **Explanation**: "Although she's young" — full clause after "although".
 
 7. **fill_gap** — "_____ having a bad day, he stayed kind."
    **Hint**: Despite + -ing
    **Answer**: Despite
+   **Accepts**: In spite of
    **Explanation**: "Despite having" — gerund after "despite". Equivalent to "in spite of having".
 
 8. **fix_error** — "Despite it was raining, we went out."
@@ -257,10 +265,10 @@
 
 10. **read_answer**
     **Passage**: "Although it was raining, we went out. Despite the cold, we enjoyed the picnic. Although he is rich, he isn't happy. Despite being tired, she finished the project."
-    **Question**: Why is the rich man not happy?
-    **Answer**: he isn't happy
-    **Accepts**: the text doesn't say why
-    **Explanation**: The text states "Although he is rich, he isn't / is not happy" — the contrast is between wealth and happiness, no further reason given.
+    **Question**: Is the rich man happy?
+    **Answer**: No
+    **Accepts**: he isn't happy / he is not happy / no, he isn't / not happy
+    **Explanation**: The text states "Although he is rich, he isn't happy" — the contrast is between wealth and happiness, no further reason given.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -411,27 +419,31 @@
 5. **fill_gap** — "I overslept. _____, I missed the bus."
    **Hint**: As a result (resultado)
    **Answer**: As a result
+   **Accepts**: So / Therefore / Consequently / Because of that
    **Explanation**: "As a result I missed" — direct consequence of the prior action.
 
 6. **fill_gap** — "The project failed. _____, the team was disbanded."
    **Hint**: Consequently
    **Answer**: Consequently
+   **Accepts**: As a result / Therefore / So
    **Explanation**: Failure → disbanding. Formal "consequently".
 
 7. **fill_gap** — "He's allergic to peanuts. _____, he avoids them."
    **Hint**: For that reason
    **Answer**: For that reason
+   **Accepts**: Therefore / So / As a result / That's why / Consequently
    **Explanation**: "For that reason" = for that reason. Links motive to behavior.
 
-8. **fix_error** — "Sales dropped therefore we cut the budget."
+8. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Falta pontuação — ponto e vírgula
+   **Options**: Sales dropped. Therefore, we cut the budget. / Sales dropped therefore we cut the budget. / Sales dropped, therefore we cut the budget.
    **Answer**: Sales dropped. Therefore, we cut the budget.
    **Explanation**: Sentence connectors need a period before and a comma after. No punctuation = comma splice.
 
-9. **fix_error** — "He was sick, therefore he didn't come."
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: "Therefore" prefere ponto/ponto-e-vírgula antes
+   **Options**: He was sick, therefore he didn't come. / He was sick. Therefore, he didn't come. / He was sick therefore, he didn't come.
    **Answer**: He was sick. Therefore, he didn't come.
-   **Accepts**: He was sick; therefore, he didn't come.
    **Explanation**: A simple comma isn't strong enough for "therefore". Use a period or semicolon.
 
 10. **read_answer**
@@ -590,20 +602,24 @@
 5. **fill_gap** — "Brazil is huge. _____, it has many cultures."
    **Hint**: Adição formal
    **Answer**: Furthermore
+   **Accepts**: Moreover / In addition / Also / Besides
    **Explanation**: "Furthermore" — adding another fact to the same argument.
 
 6. **fill_gap** — "Many fruits are healthy, _____ apples and oranges."
    **Hint**: For example, such as (introduzem exemplos)
    **Answer**: such as
+   **Accepts**: like / including
    **Explanation**: "Such as" introduces direct examples after a noun. Comma before is optional.
 
 7. **fill_gap** — "I love hiking. _____, last weekend I climbed a mountain."
    **Hint**: For example, for instance
    **Answer**: For example
+   **Accepts**: For instance / In fact
    **Explanation**: "For example" introduces a concrete example after a generalization.
 
-8. **fix_error** — "He's smart, furthermore he's funny."
+8. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Pontuação — ponto antes de "furthermore"
+   **Options**: He's smart, furthermore he's funny. / He's smart. Furthermore, he's funny. / He's smart furthermore, he's funny.
    **Answer**: He's smart. Furthermore, he's funny.
    **Explanation**: Formal sentence connectors need a period before, comma after. Comma splice = incorrect.
 
@@ -768,25 +784,30 @@
 5. **fill_gap** — "_____, three points emerged from the discussion."
    **Hint**: To sum up (resumir)
    **Answer**: To sum up
+   **Accepts**: In summary / In short / Overall / In conclusion
    **Explanation**: "To sum up" introduz síntese dos pontos.
 
 6. **fill_gap** — "_____, the year was challenging but rewarding."
    **Hint**: All in all (balanço geral)
    **Answer**: All in all
+   **Accepts**: Overall / In conclusion / To sum up / In short
    **Explanation**: "All in all" — balanço final ponderado.
 
 7. **fill_gap** — "_____, we should proceed with the launch."
    **Hint**: In conclusion (decisão formal)
    **Answer**: In conclusion
+   **Accepts**: To sum up / Therefore / So / Overall
    **Explanation**: "In conclusion" — formal decision/recommendation.
 
-8. **fix_error** — "In conclusion the project was successful."
+8. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Falta vírgula após o conector
+   **Options**: In conclusion the project was successful. / In conclusion, the project was successful. / In conclusion the project, was successful.
    **Answer**: In conclusion, the project was successful.
    **Explanation**: "In conclusion" at the start needs a comma after. Universal rule for opening discourse markers.
 
-9. **fix_error** — "All in all I learned a lot this year."
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Vírgula obrigatória após
+   **Options**: All in all I learned a lot this year. / All in all, I learned a lot this year. / All, in all I learned a lot this year.
    **Answer**: All in all, I learned a lot this year.
    **Explanation**: "All in all" at the start = comma required. Same for informal connectors.
 
@@ -926,6 +947,7 @@
 1. **multiple_choice** — "I work _____ a tech company."
    **Options**: for / at / in / by
    **Answer**: for
+   **Accepts**: at
    **Explanation**: "Work for + company name" — preposition for employer relationship. "I work for Google / for a startup". Different from "work at" (location) or "work in" (industry/field). Common error: using "in" instead of "for".
 
 2. **multiple_choice** — "I work _____ marketing."
@@ -946,6 +968,7 @@
 5. **fill_gap** — "I got a 5% _____ this year."
    **Hint**: salary increase
    **Answer**: raise
+   **Accepts**: increase / pay rise / bonus
    **Explanation**: "Raise" = salary increase (American English). British English: "rise". "Bonus" is a one-time payment, not a permanent increase. "Promotion" is moving up in title/role, often with raise. Different concepts.
 
 6. **fill_gap** — "I work _____ — three days in office, two at home."
@@ -975,6 +998,7 @@
     **Passage**: "I work for a fintech startup in São Paulo. I've been in software engineering for eight years. We're a hybrid team — three days in the office, two remote. My manager is great, the team is small, and I got a promotion last quarter. The hours are long, but the work is exciting."
     **Question**: What's the speaker's work mode?
     **Answer**: hybrid (three days in office, two remote)
+    **Accepts**: hybrid
     **Explanation**: The text uses workplace vocabulary: "work for [company]", "in software engineering" (field), "hybrid team" (work mode), "manager", "got a promotion". Each is a high-frequency professional chunk.
 
 ### 2. Listening/Speaking (5 phrases)

@@ -49,13 +49,14 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 3. **fill_gap** — Open the next sentence with a casual filler that fits the register: "I knew what was coming. _____, it still surprised me when it actually arrived."
    **Hint**: Casual filler that signals casual register
    **Answer**: I mean
-   **Accepts**: you know / honestly
+   **Accepts**: you know / honestly / Even so / Look
    **Explanation**: Casual filler drawn from M21 — "I mean" / "you know" / "honestly". Marks the shift from observation to feeling. Native narrative often uses one such filler per paragraph, particularly at moments of emotional pivot.
 
-4. **fix_error** — Sentence too long and dense for narrative rhythm: "She had spent fifteen years working at the company and during that time she had built three teams, launched two products, and somehow managed to keep her sense of humour intact throughout every reorganisation and budget cut."
+4. **short_write** — Sentence too long and dense for narrative rhythm: "She had spent fifteen years working at the company and during that time she had built three teams, launched two products, and somehow managed to keep her sense of humour intact throughout every reorganisation and budget cut."
    **Hint**: Vary rhythm — long sentence + short follow-up or fragment
    **Answer**: She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation.
-   **Accepts**: similar rhythm-varied version
+   **Prompt**: Rewrite the sentence varying the rhythm: a long sentence plus short follow-ups or fragments.
+   **Example answer**: She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation.
    **Explanation**: Long sentence + tricolon fragment + emphatic repetition. Drawn from M14 (rhythm) and M13 (tricolon). Native narrative breaks dense sentences for breath. The fragment "Three teams. Two products." emphasises the scale.
 
 5. **read_answer**
@@ -203,18 +204,21 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 3. **fill_gap** — Open with an inverted concession: "_____ has a single regulation produced such fierce debate as the proposed framework now before parliament."
    **Hint**: "Rarely" or "Seldom"
    **Answer**: Rarely
-   **Accepts**: Seldom
+   **Accepts**: Seldom / Never / Hardly ever
    **Explanation**: Fronted negative frequency adverb triggers inversion — opener of choice for argumentative emphasis. "Rarely has..." opens with weight, signals importance. M02 inversion in argumentative service.
 
-4. **fix_error** — Argumentative opener too casual: "AI is a big deal. People disagree about it. Some say it'll ruin things, others say it'll save us. What do you think?"
+4. **short_write** — Argumentative opener too casual: "AI is a big deal. People disagree about it. Some say it'll ruin things, others say it'll save us. What do you think?"
    **Hint**: Rewrite for academic register with at least one structural device
    **Answer**: Rarely has a technology generated as polarised a debate as artificial intelligence has in the past decade. It is increasingly clear, however, that the question is not whether AI will reshape society but how — and on whose terms.
+   **Prompt**: Rewrite this opener in academic register, with at least one structural device (like inversion).
+   **Example answer**: Rarely has a technology generated as polarised a debate as artificial intelligence has in the past decade. It is increasingly clear, however, that the question is not whether AI will reshape society but how — and on whose terms.
    **Explanation**: Casual opener → academic opener with inversion ("Rarely has..."), formal vocabulary ("polarised debate", "increasingly clear"), and clausal complexity. Reframed argument question ("not whether... but how... and on whose terms"). Heavy integration of M02, M03, M12, M13.
 
 5. **read_answer**
    **Passage**: "Rarely has a single technology divided expert opinion as sharply as artificial intelligence has in the past decade. It is widely believed that AI will reshape the nature of work, though it could be argued that the reshaping has already begun. What is genuinely at stake is not whether change is coming, but how the gains will be distributed — and whose voices will shape that distribution. This essay argues for a third path: a regulatory framework that prioritises distributive justice over both reflexive enthusiasm and reflexive caution."
    **Question**: According to the opening, what is genuinely at stake?
-   **Answer**: how the gains will be distributed (and whose voices will shape that distribution)
+   **Answer**: how gains will be distributed
+   **Accepts**: distribution of gains / whose voices shape distribution / distribution
    **Explanation**: The opening integrates: inversion ("Rarely has..."), impersonal passive ("It is widely believed..."), hedged cleft ("it could be argued..."), pseudo-cleft reframe ("What is genuinely at stake is not... but..."), academic thesis statement. Five distinct C2 devices in five sentences. Op-ed opening grade.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -346,7 +350,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 1. **multiple_choice** — Most diplomatic refusal:
    **Options**: With respect, I'd see it differently — though I take your point about timeline. / You're wrong. / No, that's not right. / I disagree completely.
    **Answer**: With respect, I'd see it differently — though I take your point about timeline.
-   **Explanation**: Three diplomatic moves in one sentence: "With respect" (formal hedge), "I'd / I would see it differently" (soft contrast), "I take your point about" (concession). Drawn from M08 (hedging) and M10 (concession markers). Disagreement without damage.
+   **Explanation**: Three diplomatic moves in one sentence: "With respect" (formal hedge), "I'd see it differently" (soft contrast), "I take your point about" (concession). Drawn from M08 (hedging) and M10 (concession markers). Disagreement without damage.
 
 2. **multiple_choice** — Which feedback opener is most face-saving?
    **Options**: Honestly — and I mean this constructively — I'd push back on one specific point. / You're completely wrong. / This is bad. / I don't like it.
@@ -356,18 +360,21 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 3. **fill_gap** — Diplomatic reframe of a strong position: "_____ that the proposal has merit — but the timing concerns are non-trivial."
    **Hint**: "I can see / Granted / It's true"
    **Answer**: I can see
-   **Accepts**: Granted / It's true
-   **Explanation**: Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. "Granted, X — but Y" / "I can see X, but Y" / "It's / It is true that X — but Y". Diplomatic argument pivots on acknowledging the other side first.
+   **Accepts**: Granted / It's true / I accept / I agree / I admit / I grant
+   **Explanation**: Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. "Granted, X — but Y" / "I can see X, but Y" / "It's true that X — but Y". Diplomatic argument pivots on acknowledging the other side first.
 
-4. **fix_error** — Blunt feedback: "Your slides are bad and the message is confused."
+4. **short_write** — Blunt feedback: "Your slides are bad and the message is confused."
    **Hint**: Rewrite diplomatically with at least three softening moves
    **Answer**: Honestly — and I mean this only because I want the deck to land well — I think the message could be tighter, and the slides might benefit from another pass. To be fair, the substance is all there; it's just buried.
+   **Prompt**: Rewrite this feedback diplomatically, with at least three softening moves.
+   **Example answer**: Honestly — and I mean this only because I want the deck to land well — I think the message could be tighter, and the slides might benefit from another pass. To be fair, the substance is all there; it's just buried.
    **Explanation**: Diplomatic rewrite uses: "Honestly" (M21), "I mean this only because" (intentional reassurance), "could be tighter / might benefit" (modal hedges M19), "To be fair" (M10 concession), positive framing ("the substance is all there"). Same critique, preserved relationship.
 
 5. **read_answer**
    **Passage**: "She knew the only way the message would land was through the long route. 'I can see why you'd frame it that way — and to be fair, the data does support the topline argument. That said, the deeper question, it seems to me, is whether we're optimising for the right outcome. With respect, I'd push back on the framing of success here.' Three concessions before a single disagreement. The other person leaned in instead of away."
    **Question**: How many diplomatic devices does the speaker use before reaching the disagreement?
-   **Answer**: at least three — 'I can see why', 'to be fair', 'that said', 'with respect' (4 if all counted)
+   **Answer**: at least three
+   **Accepts**: three / 3 / I can see why / to be fair / that said / with respect
    **Explanation**: Diplomatic disagreement requires layered concession. The speaker grants ground three or four times before pivoting — each acknowledgement keeps the listener engaged. By the time the disagreement arrives, the relationship is intact. Integrates M08, M10, M11, M21.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -499,28 +506,31 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 1. **multiple_choice** — Most natural casual register:
    **Options**: I'm gonna grab a coffee — wanna come? / I am going to obtain coffee — would you like to accompany me? / I am going for coffee. / I'd like to fetch coffee.
    **Answer**: I'm gonna grab a coffee — wanna come?
-   **Explanation**: Casual register integrates contractions ("I'm / I am"), reduced "going to" → "gonna", noun→verb conversion ("grab"), reduced "want to" → "wanna". All drawn from M16 (conversion) and M20 (pronunciation reductions). The other options sound formal, translated, or alien.
+   **Explanation**: Casual register integrates contractions ("I'm"), reduced "going to" → "gonna", noun→verb conversion ("grab"), reduced "want to" → "wanna". All drawn from M16 (conversion) and M20 (pronunciation reductions). The other options sound formal, translated, or alien.
 
 2. **multiple_choice** — Most native conversational reply to "Are you free Saturday?":
    **Options**: Should be — what's up? / I am free on Saturday. May I ask why? / Yes. / I shall be free, I believe.
    **Answer**: Should be — what's up?
-   **Explanation**: "Should be" — ellipsis-rich casual reply (drops "I"; "be" replaces full verb phrase). "What's / What is up?" — informal opener inviting continuation. Integrates M17 (ellipsis), M20 (contractions), M21 (informal opener). Native short-answer pattern.
+   **Explanation**: "Should be" — ellipsis-rich casual reply (drops "I"; "be" replaces full verb phrase). "What's up?" — informal opener inviting continuation. Integrates M17 (ellipsis), M20 (contractions), M21 (informal opener). Native short-answer pattern.
 
 3. **fill_gap** — Casual reply with tag: "We're meeting at the usual place, _____"
    **Hint**: Tag for confirmation
    **Answer**: aren't we
-   **Accepts**: right?
-   **Explanation**: Tag question "aren't / are not we?" for soft confirmation. Drawn from M21. Or universal "right?" for casual register. Both work; "aren't / are not we?" is slightly more polished, "right?" slightly more casual.
+   **Accepts**: right? / right / yeah / yes
+   **Explanation**: Tag question "aren't we?" for soft confirmation. Drawn from M21. Or universal "right?" for casual register. Both work; "aren't we?" is slightly more polished, "right?" slightly more casual.
 
-4. **fix_error** — Too formal for casual context: "I will see you on Saturday. Would you be inclined to arrive at noon?"
+4. **short_write** — Too formal for casual context: "I will see you on Saturday. Would you be inclined to arrive at noon?"
    **Hint**: Casual contractions and conversational rhythm
    **Answer**: I'll see you Saturday. Wanna meet at noon? (or: See you Saturday — noon work for you?)
-   **Explanation**: Casual rewrite: "I'll / I will" (contraction), drop "on" before "Saturday" in casual register, "Wanna meet" (gonna/wanna conversion), question framed as "X work for you?" — short native pattern. Removes formal phrasing not needed in casual exchange.
+   **Prompt**: Rewrite this so it sounds casual (for a friend): "I will see you on Saturday. Would you be inclined to arrive at noon?"
+   **Example answer**: I'll see you Saturday. Wanna meet at noon?
+   **Explanation**: Casual rewrite: "I'll" (contraction), drop "on" before "Saturday" in casual register, "Wanna meet" (gonna/wanna conversion), question framed as "X work for you?" — short native pattern. Removes formal phrasing not needed in casual exchange.
 
 5. **read_answer**
    **Passage**: "The conversation flowed. 'You been working late again?' 'Mm-hm. Should be done by Friday, though.' 'Want to grab a drink after, yeah?' 'I'd love to. Same place as last time?' 'Yeah, sounds good.' 'Cool — text me when you're heading out.' Six exchanges, twelve seconds, zero formality."
    **Question**: How many native conversational features can you spot?
-   **Answer**: at least six — 'You been' (dropped 'have'), 'Mm-hm' (backchannel), 'Should be' (ellipsis), 'grab' (verb), 'yeah?' (tag), 'I'd love to' (ellipsis+contraction), 'sounds good' (ellipsis)
+   **Answer**: at least six
+   **Accepts**: six / 6 / You been / Mm-hm / Should be / grab / yeah? / I'd love to / sounds good
    **Explanation**: Tight casual exchange packed with native features: dropped auxiliary, backchannel, ellipsis, verb conversion, tag, contraction, set phrase. C2 conversational mastery looks like this — every utterance shaped by native instincts simultaneously.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -657,7 +667,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 2. **multiple_choice** — Register-appropriate reply to "We haven't seen each other in ages":
    **Options**: I know, right? It's been crazy. / Indeed. The intervening period has been considerable. / Yes. Time has elapsed. / It is correct that we have not met for an extended period.
    **Answer**: I know, right? It's been crazy.
-   **Explanation**: Casual personal opener → casual personal reply. Contracted ("I know, right? It's / It is been"), informal vocabulary ("crazy"), tag question for warmth. Mismatching with formality would feel cold or robotic. Drawn from M11 (register) and M21 (casual register).
+   **Explanation**: Casual personal opener → casual personal reply. Contracted ("I know, right? It's been"), informal vocabulary ("crazy"), tag question for warmth. Mismatching with formality would feel cold or robotic. Drawn from M11 (register) and M21 (casual register).
 
 3. **fill_gap** — Diplomatic transition between casual and formal: "_____ — coming back to the actual decision in front of us..."
    **Hint**: Phrase that pivots from casual aside to substantive content
@@ -665,15 +675,18 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **Accepts**: But to be serious for a moment / OK, getting back to it,
    **Explanation**: "Anyway" — universal pivot from digression back to topic. Casual register marker that doubles as a structural device. Drawn from M21. Native speakers code-switch within a single conversation, and "anyway" is one of the standard pivot points.
 
-4. **fix_error** — Same-register monotone across all turns: "Yes. Indeed. Yes. Indeed. Yes. The findings support that. Indeed. Yes."
+4. **short_write** — Same-register monotone across all turns: "Yes. Indeed. Yes. Indeed. Yes. The findings support that. Indeed. Yes."
    **Hint**: Vary registers — formal, casual, backchannels mixed
    **Answer**: Yes. Right — mm-hm. The findings do support that. Yeah. And, you know, the implications are pretty striking when you stack them up. Mm-hm, exactly.
+   **Prompt**: Rewrite these turns mixing registers: formal lines, casual lines and backchannels.
+   **Example answer**: Yes. Right — mm-hm. The findings do support that. Yeah. And, you know, the implications are pretty striking when you stack them up. Mm-hm, exactly.
    **Explanation**: Real conversation modulates: short backchannels ("Right — mm-hm"), substantive points ("The findings do support that"), informal connectors ("you know"), confirmations. Monotone replies sound like a chatbot. C2 fluency is rhythm + register variation.
 
 5. **read_answer**
    **Passage**: "She moved through her morning at three registers. To the board, she wrote: 'It is recommended that the committee defer action pending a full review of the regulatory landscape.' To her co-founder, she texted: 'we need to push the board call to next week, the lawyers aren't ready.' To her best friend over coffee, she said: 'Honestly? The board's about to drive me up the wall — three months of this, and they still haven't read the brief.' Three registers, one truth underneath."
    **Question**: How does the speaker phrase the same underlying message to her best friend?
-   **Answer**: 'Honestly? The board's about to drive me up the wall — three months of this, and they still haven't read the brief.'
+   **Answer**: "Honestly? The board's about to drive me up the wall..."
+   **Accepts**: the board's about to drive me up the wall / three months of this, still haven't read the brief / frustration with the board
    **Explanation**: Three registers, same content: formal board language ("It is recommended that..."), casual co-founder text ("we need to push..."), intimate friend chat ("Honestly? The board's about to drive me up the wall..."). C2 final mastery = effortless register switching, the right English for each room.
 
 ### 2. Listening/Speaking (5 phrases)

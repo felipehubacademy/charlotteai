@@ -53,7 +53,7 @@
    **Answer**: purpose
    **Explanation**: "Purpose" é o propósito, o motivo. "What's the purpose of your trip?" é a pergunta clássica da imigração. Dica do Igor: ouviu "purpose", é o motivo da viagem.
 
-2. **multiple_choice** — "My trip is just _____."
+2. **multiple_choice** — "I'm just on _____."
    **Options**: vacation / vacations / a vacation trip
    **Answer**: vacation
    **Explanation**: Nos Estados Unidos se diz "vacation" (férias), no singular. "It's just vacation" ou "I'm here on vacation".
@@ -64,7 +64,7 @@
    **Explanation**: "On vacation" é o jeito fixo de dizer "de férias". Frase pronta: "I'm here on vacation".
 
 4. **word_bank** — "I'm here _____ work."
-   **Choices**: for / on / to / at
+   **Choices**: for / on / to / by
    **Answer**: for
    **Explanation**: "I'm here for work" = estou aqui a trabalho. Com "work" e "business" também vale "for": "I'm here for business".
 
@@ -81,7 +81,7 @@
 7. **fill_gap** — "A: What's the purpose of your trip? B: _____."
    **Hint**: Resposta curta: férias
    **Answer**: Vacation
-   **Accepts**: Just vacation / Holiday / Tourism
+   **Accepts**: Just vacation / Holiday / Tourism / Pleasure / Sightseeing
    **Explanation**: Na imigração, resposta curta funciona: "Vacation." Não precisa contar a história toda.
 
 8. **fix_error** — "I'm here in vacation."
@@ -89,9 +89,9 @@
    **Answer**: I'm here on vacation.
    **Explanation**: É "on vacation", nunca "in vacation". Decore o bloco inteiro: "on vacation".
 
-9. **fix_error** — "My trip is vacations."
+9. **fix_error** — "I'm on vacations."
    **Hint**: No inglês americano, "vacation" fica no singular
-   **Answer**: My trip is vacation.
+   **Answer**: I'm on vacation.
    **Explanation**: "Vacation" no singular. "Vacations" soa estranho nessa frase.
 
 10. **read_answer**
@@ -235,6 +235,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 5. **fill_gap** — "I'm a _____. I fly planes."
    **Hint**: Profissão de quem pilota avião
    **Answer**: pilot
+   **Accepts**: co-pilot / captain
    **Explanation**: "Pilot" é piloto. Repare: "I'm a pilot", com o "a" antes.
 
 6. **fill_gap** — "I _____ in sales."
@@ -403,11 +404,13 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 6. **fill_gap** — "A: How long are you staying? B: Just two _____."
    **Hint**: Semanas
    **Answer**: weeks
+   **Accepts**: days / months / nights
    **Explanation**: "Just two weeks" = só duas semanas. "Just" deixa a resposta leve e natural.
 
 7. **fill_gap** — "Do you have a return _____?"
    **Hint**: Passagem (bilhete de volta)
    **Answer**: ticket
+   **Accepts**: flight
    **Explanation**: "Return ticket" é a passagem de volta. É bom ter no celular para mostrar se pedirem.
 
 8. **fix_error** — "I'm staying in ten days."
@@ -587,6 +590,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
     **Passage**: "Officer: Anything to declare? Igor: No, nothing to declare. Officer: How much money did you bring? Igor: I brought six hundred dollars in cash."
     **Question**: Quanto dinheiro o Igor trouxe? (responda em inglês, como ele disse)
     **Answer**: Six hundred dollars
+    **Accepts**: 600 dollars / $600 / 600
     **Explanation**: Ele disse "six hundred dollars in cash": seiscentos dólares em espécie. E "nothing to declare" = nada a declarar.
 
 ### 2. Listening/Speaking (5 phrases)

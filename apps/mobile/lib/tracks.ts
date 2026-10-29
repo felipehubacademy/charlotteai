@@ -1,6 +1,6 @@
 // lib/tracks.ts — trilhas extras da Família Queizy (trilhas de influenciadores).
 //
-// Ficam fora do seletor de nível: aparecem na faixa "Trilhas da Família Queizy" da Início e
+// Ficam fora do seletor de nível: aparecem na faixa "Trilhas da Família Queizy" da tela inicial e
 // abrem numa tela própria (/(app)/track). Cada trilha é um "nível" do curriculum v2 (pasta
 // própria em data/curriculum-v2), com o progresso em learn_history_v2 pelo id da trilha.
 //
@@ -32,11 +32,13 @@ export const EXTRA_TRACKS: ExtraTrack[] = [
     id: 'Igorfina',
     character: 'igorfina',
     titlePt: 'Manual do F#did@',
-    titleEn: 'Survival Manual',
+    titleEn: 'Manual do F#did@', // nome da trilha é marca do Igorfina: igual em qualquer idioma
     hostPt: 'com o Igorfina',
     hostEn: 'with Igorfina',
-    // O "uau": o presidente exagerado ("the best, tremendous") ensinando the best / the worst.
-    tasteUnit: { moduleId: 'M06', unitId: 'F27' },
+    // O "uau": o Igor imitando o astro do basquete, com as gírias do dia a dia (bro, my bad, give me a hand).
+    // Até 28/10/2026 era o F27 (the best / the worst, com o presidente), mas era difícil para a 1ª experiência:
+    // 38% de erro em "worse" e 7 saídas no 3º exercício em um dia.
+    tasteUnit: { moduleId: 'M04', unitId: 'F17' },
     reviewFlag: 'igorfina_trail', // Felipe e Igor: trilha toda aberta para revisar
   },
 ];

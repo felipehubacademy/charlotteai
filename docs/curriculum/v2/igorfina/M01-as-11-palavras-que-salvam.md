@@ -76,6 +76,7 @@
 5. **fill_gap** — "_____ me? Can you repeat, please?"
    **Hint**: Com licença / como é? (quando não entendeu)
    **Answer**: Excuse
+   **Accepts**: Pardon
    **Explanation**: "Excuse me?" com tom de pergunta quer dizer "como é? não entendi". Serve para pedir que a pessoa repita.
 
 6. **fill_gap** — "_____! My name is Lucas."
@@ -84,10 +85,11 @@
    **Accepts**: Hi / Hey
    **Explanation**: "Hello", "Hi" e "Hey" são cumprimentos. "Hi" e "Hey" são mais informais, ótimos para o dia a dia.
 
-7. **fill_gap** — "_____, I'm late! Sorry!"
+7. **fill_gap** — "_____, can I get through? I'm late!"
    **Hint**: Com licença (para passar pelas pessoas)
    **Answer**: Excuse me
-   **Explanation**: Para pedir passagem no metrô lotado, diga "Excuse me". O "sorry" no fim reforça a educação.
+   **Accepts**: Sorry / Pardon me / Sorry, excuse me
+   **Explanation**: Para pedir passagem no metrô lotado, diga "Excuse me". "Sorry" é para pedir desculpas depois de esbarrar em alguém.
 
 8. **fix_error** — "Excuse, where is the bus?"
    **Hint**: A expressão de "com licença" tem duas palavras
@@ -97,6 +99,7 @@
 9. **fix_error** — "Sorry me!"
    **Hint**: Para pedir desculpas basta uma palavra
    **Answer**: Sorry!
+   **Accepts**: Excuse me! / I'm sorry! / So sorry!
    **Explanation**: "Sorry" já é o pedido de desculpas completo. "Sorry me" não existe; quem leva o "me" é o "excuse".
 
 10. **read_answer**
@@ -109,7 +112,7 @@
 
 Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
-1. **"Hello! Excuse me, one question, please."** — abordar um desconhecido na rua
+1. **"Excuse me, one question, please."** — abordar um desconhecido na rua
 2. **"Sorry, I don't understand. Again, please?"** — quando não entendeu nada
 3. **"Excuse me, I need to get off here."** — pedir passagem no metrô lotado
 4. **"Oh, sorry! Are you OK, my friend?"** — depois de esbarrar em alguém
@@ -233,16 +236,18 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 8. **fix_error** — "You can help me, please?"
    **Hint**: Em perguntas, o "can" vem antes de "you"
    **Answer**: Can you help me, please?
+   **Accepts**: Can you help me?
    **Explanation**: Na pergunta, o "can" vai para a frente: "Can you...?". "You can..." é afirmação ("você pode").
 
 9. **fix_error** — "Thank you very much much!"
    **Hint**: Basta um "much"
    **Answer**: Thank you very much!
+   **Accepts**: Thank you so much! / Thanks so much! / Thanks a lot! / Thank you!
    **Explanation**: "Thank you very much" ou "Thank you so much": um "much" só. Repetir não deixa mais educado.
 
 10. **read_answer**
     **Passage**: "Igor: Excuse me, can you help me, please? Man: Sure! Igor: Where is the bus stop? Man: It's right there. Igor: Thank you so much!"
-    **Question**: O homem ajudou o Igor? Que palavra ele usou para dizer que sim? (responda em inglês)
+    **Question**: Que palavra o homem usou para dizer que ajuda o Igor? (responda em inglês)
     **Answer**: Sure
     **Explanation**: "Sure!" quer dizer "claro!". É a resposta mais comum quando alguém aceita ajudar.
 
@@ -549,7 +554,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 6. **fill_gap** — "Where is the _____? I need the train."
    **Hint**: Metrô em inglês americano
    **Answer**: subway
-   **Accepts**: metro
+   **Accepts**: metro / station / train station / subway station / metro station
    **Explanation**: Nos Estados Unidos, metrô é "subway". Em outros países você também vai ouvir "metro" ou "underground".
 
 7. **fill_gap** — "Excuse me, _____ is the taxi stand?"
@@ -560,6 +565,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 8. **fix_error** — "Where is the taxis?"
    **Hint**: "Taxis" está no plural
    **Answer**: Where are the taxis?
+   **Accepts**: Where is the taxi?
    **Explanation**: Plural pede "are". Regra rápida: uma coisa, "is"; várias, "are".
 
 9. **fix_error** — "Where the subway is?"
@@ -571,6 +577,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
     **Passage**: "Igor: Excuse me, where are the taxis? Officer: The taxis are outside, on the right. The subway is downstairs."
     **Question**: Onde ficam os táxis? (responda em inglês, como o policial disse)
     **Answer**: Outside, on the right
+    **Accepts**: Outside
     **Explanation**: "Outside, on the right" é lá fora, à direita. E o metrô está "downstairs", no andar de baixo.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -734,6 +741,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
     **Passage**: "Igor: Hello, excuse me, can you help me, please? I need to go to the airport. Driver: Sure, get in! Igor: Thank you so much!"
     **Question**: Para onde o Igor precisa ir? (responda em inglês)
     **Answer**: To the airport
+    **Accepts**: airport
     **Explanation**: Ele disse "I need to go to the airport", ou seja, precisa ir para o aeroporto.
 
 ### 2. Listening/Speaking (5 phrases)

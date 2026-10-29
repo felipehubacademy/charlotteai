@@ -79,6 +79,13 @@
           "sentence": "I _____ home at six after work.",
           "hint": "Passado de \"come\"",
           "answer": "came",
+          "accepts": [
+            "got",
+            "went",
+            "arrived",
+            "walked",
+            "drove"
+          ],
           "explanation": "\"Come\" → \"came\" (irregular). Note: pronúncia diferente (kAm vs keIm)."
         },
         {
@@ -86,6 +93,12 @@
           "sentence": "She _____ a taxi to the airport.",
           "hint": "Passado de \"take\"",
           "answer": "took",
+          "accepts": [
+            "got",
+            "caught",
+            "called",
+            "ordered"
+          ],
           "explanation": "\"Take\" → \"took\" (irregular). Decorar."
         },
         {
@@ -93,6 +106,11 @@
           "sentence": "I _____ your message yesterday on my phone.",
           "hint": "Passado de \"get\"",
           "answer": "got",
+          "accepts": [
+            "received",
+            "saw",
+            "read"
+          ],
           "explanation": "\"Get\" → \"got\" (irregular)."
         },
         {
@@ -296,7 +314,7 @@
             "buys"
           ],
           "answer": "bought",
-          "explanation": "\"Buy\" → \"bought\" (irregular). Pronúncia /bO:t/."
+          "explanation": "\"Buy\" → \"bought\" (irregular). O \"gh\" não é pronunciado: soa parecido com \"bót\"."
         },
         {
           "type": "multiple_choice",
@@ -338,13 +356,23 @@
           "sentence": "I _____ pizza for dinner with my family.",
           "hint": "Passado de \"eat\"",
           "answer": "ate",
-          "explanation": "\"Eat\" → \"ate\" (irregular). Pronúncia /eIt/."
+          "accepts": [
+            "had",
+            "made",
+            "ordered",
+            "cooked",
+            "bought"
+          ],
+          "explanation": "\"Eat\" → \"ate\" (irregular). Soa parecido com \"eit\", igual a \"eight\" (oito)."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ a lot of water after the gym.",
           "hint": "Passado de \"drink\"",
           "answer": "drank",
+          "accepts": [
+            "had"
+          ],
           "explanation": "\"Drink\" → \"drank\" (irregular)."
         },
         {
@@ -609,6 +637,10 @@
           "sentence": "I _____ you a message on WhatsApp.",
           "hint": "Passado de \"send\"",
           "answer": "sent",
+          "accepts": [
+            "wrote",
+            "left"
+          ],
           "explanation": "\"Send\" → \"sent\" (irregular)."
         },
         {
@@ -616,7 +648,10 @@
           "sentence": "I _____ that book last week from cover to cover.",
           "hint": "Passado de \"read\" (escrita igual, pronúncia diferente)",
           "answer": "read",
-          "explanation": "\"Read\" → \"read\" — escrita IGUAL, mas pronúncia muda: /ri:d/ presente → /red/ passado."
+          "accepts": [
+            "finished"
+          ],
+          "explanation": "\"Read\" → \"read\" — escrita IGUAL, mas pronúncia muda: no presente soa como \"riid\"; no passado, como \"red\"."
         },
         {
           "type": "fix_error",
@@ -856,13 +891,17 @@
             "reading"
           ],
           "answer": "read",
-          "explanation": "\"Read\" → \"read\" — IGUAL na escrita, MAS pronúncia muda: /red/ no passado."
+          "explanation": "\"Read\" → \"read\" — IGUAL na escrita, MAS pronúncia muda: no passado soa como \"red\"."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ my coat in the closet before dinner.",
           "hint": "Passado de \"put\" (igual)",
           "answer": "put",
+          "accepts": [
+            "hung",
+            "left"
+          ],
           "explanation": "\"Put\" igual ao presente. Sem -ed."
         },
         {
@@ -870,6 +909,9 @@
           "sentence": "She _____ the apple in half with a knife.",
           "hint": "Passado de \"cut\" (igual)",
           "answer": "cut",
+          "accepts": [
+            "sliced"
+          ],
           "explanation": "\"Cut\" igual. Mesma forma."
         },
         {
@@ -877,7 +919,11 @@
           "sentence": "I _____ the article yesterday in the newspaper.",
           "hint": "Passado de \"read\" — escrita igual, mas atenção à pronúncia",
           "answer": "read",
-          "explanation": "\"Read\" no passado: escrita /read/, mas se pronuncia /red/. Mudança só fonética."
+          "accepts": [
+            "saw",
+            "found"
+          ],
+          "explanation": "\"Read\" no passado: escreve-se \"read\", mas se pronuncia como \"red\". Mudança só no som."
         },
         {
           "type": "fix_error",
@@ -922,7 +968,7 @@
         },
         {
           "text": "I read the article yesterday.",
-          "context": "read /red/ (past)",
+          "context": "read, pronunciado como \"red\" (past)",
           "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8620969a06489ae9.flac"
         },
         {
@@ -1125,6 +1171,11 @@
           "sentence": "I _____ a new book at the store.",
           "hint": "Passado de \"buy\"",
           "answer": "bought",
+          "accepts": [
+            "found",
+            "got",
+            "saw"
+          ],
           "explanation": "Buy → bought."
         },
         {
@@ -1132,6 +1183,12 @@
           "sentence": "She _____ home at ten after the party.",
           "hint": "Passado de \"come\"",
           "answer": "came",
+          "accepts": [
+            "went",
+            "got",
+            "arrived",
+            "returned"
+          ],
           "explanation": "Come → came."
         },
         {
@@ -1139,6 +1196,10 @@
           "sentence": "I _____ my friend a message on WhatsApp.",
           "hint": "Passado de \"send\"",
           "answer": "sent",
+          "accepts": [
+            "wrote",
+            "left"
+          ],
           "explanation": "Send → sent."
         },
         {

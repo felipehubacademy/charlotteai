@@ -1,6 +1,6 @@
 // components/trail/TrailBanner.tsx
 // Card-resumo do módulo: level icon + nome + N módulos · M tópicos + % + barra
-// + "X de Y concluídos". Usado no hero da Home (fixo) e legacy LearnTrailScreen.
+// + "X de Y concluídos". Usado no hero da Home (fixo) e na tela das trilhas extras (track).
 // TrailContent pode ocultar via showBanner={false} pra não duplicar.
 
 import { systemIsPt } from '@/lib/systemLang';
@@ -10,8 +10,7 @@ import { useFocusEffect } from 'expo-router';
 import { BookOpen } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { QueizyWave } from '@/components/ui/QueizyWave';
-import { CURRICULUM, TrailLevel } from '@/data/curriculum';
-import { useLearnProgress } from '@/hooks/useLearnProgress';
+import type { TrailLevel } from '@/data/trailTypes';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { LevelDropdown } from './LevelDropdown';
 import type { Level } from '@/lib/curriculum-v2/types';
@@ -58,50 +57,26 @@ interface TrailBannerProps {
   currentLevel?: TrailLevel;
   /** Callback ao trocar de nivel via dropdown. Se ausente, dropdown nao aparece. */
   onLevelChange?: (level: TrailLevel) => void;
-  /** Se true, usa curriculum v2 (22 modulos por nivel) pra contagem em vez de v1. */
-  useV2?: boolean;
 }
 
-export function TrailBanner({ userId, level, flush = false, currentLevel, onLevelChange, useV2 = false }: TrailBannerProps) {
+export function TrailBanner({ userId, level, flush = false, currentLevel, onLevelChange }: TrailBannerProps) {
   const isPortuguese = systemIsPt; // chrome: idioma do aparelho
   const accent       = LEVEL_COLOR[level];
-  const v2Summaries  = useV2 ? listModuleSummaries(level as Level) : [];
-  const modules      = useV2 ? v2Summaries : CURRICULUM[level];
-
-  const { progress, refetch }   = useLearnProgress(useV2 ? undefined : userId, level); // v2 não lê a trilha antiga
-  const v2Progress              = useLearnProgressV2(userId, level as Level);
+  const modules      = listModuleSummaries(level as Level);
+  const v2Progress   = useLearnProgressV2(userId, level as Level);
 
   useFocusEffect(useCallback(() => {
-    refetch();
-    if (useV2) v2Progress.refetch();
-  }, [refetch, useV2, v2Progress.refetch])); // eslint-disable-line react-hooks/exhaustive-deps
+    v2Progress.refetch();
+  }, [v2Progress.refetch])); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Contagem ──
   // Hierarquia: Nivel > Modulos (22) > Topicos (110 = 22*5) > Exercicios (440 = 110*4)
-  // v1: progresso por módulos completos (legado).
-  // v2: progresso por TOPICOS completos (= unidade com todas 4 atividades done).
-  //     Sensacao de progresso a cada topico fechado.
-  const completedSet = progress?.completed ?? [];
-  const v2AllUnits = useV2
-    ? listModules(level as Level).flatMap(m => m.units.map(u => ({ moduleId: m.id, unitId: u.id })))
-    : [];
-  const v2TotalTopics     = v2AllUnits.length;
-  const v2CompletedTopics = useV2
-    ? v2AllUnits.filter(u => v2Progress.isUnitComplete(u.moduleId, u.unitId)).length
-    : 0;
-
-  const completed = useV2
-    ? v2CompletedTopics
-    : modules.reduce((n, mod: any, mIdx) => {
-        const allDone = mod.topics?.every((_: any, tIdx: number) =>
-          completedSet.some(k => k.m === mIdx && k.t === tIdx));
-        return allDone ? n + 1 : n;
-      }, 0);
-  const total           = useV2 ? v2TotalTopics : modules.length;
-  const moduleCount     = modules.length;
-  const itemLabel       = useV2
-    ? (isPortuguese ? 'tópicos' : 'topics')
-    : (isPortuguese ? 'módulos' : 'modules');
+  // Progresso por TOPICOS completos (= unidade com todas 4 atividades done): sensação de progresso a cada tópico fechado.
+  const allUnits    = listModules(level as Level).flatMap(m => m.units.map(u => ({ moduleId: m.id, unitId: u.id })));
+  const total       = allUnits.length;
+  const completed   = allUnits.filter(u => v2Progress.isUnitComplete(u.moduleId, u.unitId)).length;
+  const moduleCount = modules.length;
+  const itemLabel   = isPortuguese ? 'tópicos' : 'topics';
   const pct       = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
 
   const wrapperStyle = flush
@@ -140,7 +115,7 @@ export function TrailBanner({ userId, level, flush = false, currentLevel, onLeve
             selectedLevel={level as Level}
             currentLevel={(currentLevel ?? level) as Level}
             onSelect={(l) => onLevelChange(l as TrailLevel)}
-            userId={useV2 ? userId : undefined}
+            userId={userId}
           />
         ) : (
           <AppText display style={{ fontSize: 18, fontWeight: '900', color: accent }}>{pct}%</AppText>

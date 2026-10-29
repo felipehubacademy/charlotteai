@@ -55,6 +55,7 @@
 3. **fill_gap** — "Why don't you _____ for dinner this weekend?"
    **Hint**: "Come round" (visit)
    **Answer**: come round
+   **Accepts**: come over
    **Explanation**: "Come round" = visit casually (British). Also: "come round to + idea" = gradually accept. "He came round to my point of view." Multiple meanings: drop by, regain consciousness, change mind. Context-dependent.
 
 4. **fix_error** — "She brought up the change in policy through her advocacy work."
@@ -65,7 +66,8 @@
 5. **read_answer**
    **Passage**: "The decade had brought about changes nobody could have foreseen. Old colleagues he hadn't seen in years would come round unannounced, sit in his kitchen, and tell him things they hadn't told their own families. It took a long time to bring some of them round to the idea that he was no longer the same person they had once known."
    **Question**: What three meanings of "bring/come round" appear in the passage?
-   **Answer**: 'brought about' = caused (changes); 'come round' = visit unannounced; 'bring round' = persuade/convince
+   **Answer**: caused, visit, persuade
+   **Accepts**: brought about = caused / come round = visit / bring round = persuade
    **Explanation**: Three phrasal verbs with shared form but distinct meanings: "brought about" (caused), "come round" (visit), "bring some of them round" (persuade). C2 readers track which meaning fits which context fluidly.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -360,6 +362,7 @@
 3. **fill_gap** — "Let's _____ the last few disagreements before we sign."
    **Hint**: "Iron + out" — resolve
    **Answer**: iron out
+   **Accepts**: sort out / smooth out / work out
    **Explanation**: "Iron out" = smooth out, resolve (problems, disagreements, wrinkles). The image: ironing a wrinkled shirt smooth. Separable phrasal — "iron them out" works too. Common in business negotiation.
 
 4. **fix_error** — "We need to live up the customer's expectations."
@@ -513,6 +516,7 @@
 3. **fill_gap** — "She couldn't quite _____ the feeling that something was wrong."
    **Hint**: "Shake + off"
    **Answer**: shake off
+   **Accepts**: shake
    **Explanation**: "Shake off" = recover from, get rid of (a feeling, illness, pursuer). Separable: "shake the feeling off" also works. Common with abstract objects: doubt, dread, fear, a cold.
 
 4. **fix_error** — "He worn me down with constant complaints."
@@ -542,7 +546,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three interpersonal moments. Use 'talk down to', 'wear down', 'shake off', or 'bear out'."
+**Opening line**: "I've got three moments between people for you. Describe them with 'talk down to', 'wear down', 'shake off' or 'bear out'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -577,7 +581,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three interpersonal moments. Use 'talk down to', 'wear down', 'shake off', or 'bear out'."
+1. **Charlotte**: "I've got three moments between people for you. Describe them with 'talk down to', 'wear down', 'shake off' or 'bear out'."
 2. **Student**: ~"He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot."
 3. **Charlotte**: "Exhaustion?"
 4. **Student**: ~"Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items."

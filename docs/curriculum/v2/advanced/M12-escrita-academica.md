@@ -47,6 +47,7 @@
 3. **fill_gap** — Verbal "Companies are adopting AI tools quickly." Nominalise: "_____ of AI tools by companies has accelerated."
    **Hint**: noun form of "adopt" + adjective
    **Answer**: The rapid adoption
+   **Accepts**: The quick adoption / The swift adoption / The fast adoption / Rapid adoption
    **Explanation**: "Adopt" → "adoption". Adjective "rapid" carries the adverbial sense ("quickly"). Original subject becomes prepositional ("BY companies"). Academic style favours such compressions for density and impersonal tone.
 
 4. **fix_error** — "The increasing of climate awareness has changed policy."
@@ -202,16 +203,18 @@
    **Accepts**: The results indicate / The findings show
    **Explanation**: Academic prose lets the evidence speak. "The data suggest" — note plural verb (data is technically plural, though "data shows" is now common). "The findings indicate", "The results demonstrate" — all variations of the impersonal evidence-as-agent construction.
 
-4. **fix_error** — Academic register: "I believe this hypothesis is correct."
+4. **short_write** — Academic register: "I believe this hypothesis is correct."
    **Hint**: Replace "I believe" with impersonal alternative
    **Answer**: There is reason to believe this hypothesis is correct.
-   **Accepts**: The evidence supports this hypothesis.
+   **Prompt**: Rewrite this in an impersonal academic register (no "I believe").
+   **Example answer**: There is reason to believe this hypothesis is correct.
    **Explanation**: "I believe" is too subjective for academic prose. Alternatives: "There is reason to believe", "The evidence supports", "It is plausible that", "It can be argued that". Each preserves the modesty of a claim while removing the speaker.
 
 5. **read_answer**
    **Passage**: "The introduction set the tone. 'This paper examines the relationship between sleep and creative output among knowledge workers. It is widely accepted that sleep affects cognition, yet relatively little is known about its effects on specifically creative tasks. The present study addresses this gap. The data suggest that even modest sleep restriction reduces divergent thinking by a measurable margin.'"
    **Question**: According to the introduction, what does the data suggest?
-   **Answer**: even modest sleep restriction reduces divergent thinking (by a measurable margin)
+   **Answer**: sleep restriction reduces divergent thinking
+   **Accepts**: modest sleep restriction reduces divergent thinking / sleep reduces creativity / less sleep, less divergent thinking
    **Explanation**: Four impersonal frames in four sentences: "This paper examines...", "It is widely accepted that...", "The present study addresses...", "The data suggest that...". The author never appears as "I" — every claim has an institutional or evidential agent.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -353,12 +356,14 @@
 3. **fill_gap** — Hedged conclusion: "_____ that the relationship is causal, though further study is needed."
    **Hint**: "There is reason to believe"
    **Answer**: There is reason to believe
+   **Accepts**: It seems likely / The evidence suggests / It appears / There is evidence
    **Explanation**: "There is reason to believe that..." — moderate-strong hedge often paired with "though further study is needed" or "but this remains to be confirmed". Pattern: hedge + qualifier. Marks intellectual humility while still advancing the claim.
 
-4. **fix_error** — Academic register: "This proves that the drug works."
+4. **short_write** — Academic register: "This proves that the drug works."
    **Hint**: Academic register avoids "proves" — use a hedged verb
    **Answer**: This suggests that the drug is effective.
-   **Accepts**: The evidence supports the conclusion that the drug is effective.
+   **Prompt**: Rewrite this with a hedged academic verb instead of "proves".
+   **Example answer**: This suggests that the drug is effective.
    **Explanation**: "Proves" implies certainty that scientific epistemology rarely warrants. Even strong findings use "supports", "suggests", "indicates", or "is consistent with". The hedge isn't false modesty — it's accurate representation of evidence.
 
 5. **read_answer**
@@ -506,11 +511,13 @@
 3. **fill_gap** — Building on prior work: "_____ research on this topic, the present study extends the analysis to non-Western contexts."
    **Hint**: "Building on" or "Extending"
    **Answer**: Building on
+   **Accepts**: Extending
    **Explanation**: "Building on + noun phrase" — academic frame for positioning your work as continuous with prior research. Alternatives: "Extending the work of", "Drawing on", "In line with". Each signals different relationship to the cited body.
 
 4. **fix_error** — "Smith (2020) said that the policy failed."
    **Hint**: Replace "said" with academic citation verb
-   **Answer**: Smith (2020) argues that the policy failed. (or: Smith (2020) contends that the policy failed.)
+   **Answer**: Smith (2020) argues that the policy failed.
+   **Accepts**: Smith (2020) contends that the policy failed. / Smith (2020) claims that the policy failed. / Smith (2020) maintains that the policy failed. / Smith (2020) asserts that the policy failed. / Smith (2020) argued that the policy failed. / Smith (2020) concludes that the policy failed. / Smith (2020) concluded that the policy failed. / Smith (2020) found that the policy failed. / Smith (2020) shows that the policy failed. / Smith (2020) demonstrates that the policy failed. / Smith (2020) notes that the policy failed. / Smith (2020) observes that the policy failed. / Smith (2020) reports that the policy failed.
    **Explanation**: "Said" is too conversational for academic citation. Standard verbs: "argues", "contends", "claims", "demonstrates", "suggests", "posits", "asserts", "maintains", "concludes". Each carries different connotation about how strongly the claim is being defended.
 
 5. **read_answer**
@@ -655,21 +662,24 @@
    **Answer**: By contrast
    **Explanation**: "By contrast, ..." opens a paragraph that presents opposing evidence or interpretation. Synonyms: "However, ...", "Conversely, ...", "On the other hand, ...". "By contrast" is academic-formal. Note: "in contrast TO + noun" is another pattern (different from "by contrast" as standalone).
 
-3. **fill_gap** — Cumulative argument: "_____ findings together suggest a more general principle."
+3. **fill_gap** — Cumulative argument: "_____, these findings suggest a more general principle."
    **Hint**: "Taken together" or "Considered jointly"
    **Answer**: Taken together
+   **Accepts**: Considered together / Considered jointly / Together
    **Explanation**: "Taken together, these findings..." — academic frame for synthesising multiple results. Marks the cumulative move from individual evidence to general claim. Other patterns: "Considered jointly", "In aggregate", "Across the studies reviewed".
 
-4. **fix_error** — Paragraph opener: "Also, the third experiment found similar results."
+4. **short_write** — Paragraph opener: "Also, the third experiment found similar results."
    **Hint**: "Also" is too casual to open an academic paragraph
    **Answer**: Furthermore, the third experiment yielded similar results.
-   **Accepts**: A third experiment yielded similar results, reinforcing the pattern.
+   **Prompt**: Rewrite this paragraph opener in academic register.
+   **Example answer**: Furthermore, the third experiment yielded similar results.
    **Explanation**: "Also" is conversational. Academic register uses "Furthermore", "Moreover", "In addition", or restructures: "A third experiment...". Paragraph openers carry the connective load — too casual undercuts the register.
 
 5. **read_answer**
    **Passage**: "The article moved methodically. 'The first study found a small but consistent effect across all three age groups. This pattern raises a related question about gender differences, which the second study addressed. By contrast, the third study, conducted in a non-Western sample, produced a more complex picture. Taken together, these findings suggest that the underlying mechanism is robust, but its expression is culturally inflected.'"
    **Question**: What does the article conclude when the findings are taken together?
-   **Answer**: the underlying mechanism is robust, but its expression is culturally inflected
+   **Answer**: mechanism is robust, expression is culturally inflected
+   **Accepts**: mechanism is robust / expression is culturally inflected / robust but culturally inflected
    **Explanation**: Four cohesion devices in four sentences: "The first study found..." (anchoring), "This pattern raises a related question..." (carrying forward), "By contrast, the third study..." (signalling shift), "Taken together, these findings suggest..." (synthesising). Paragraph architecture at C2.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -688,7 +698,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "I'll give a topic sentence. Build three follow-up paragraph openers — forward link, contrast, synthesis."
+**Opening line**: "I'll give you a topic sentence. Then write three openers for the next paragraphs: one that moves forward, one that contrasts and one that sums up."
 
 **Sub-objectives** (3 objetivos):
 
@@ -723,7 +733,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "I'll give a topic sentence. Build three follow-up paragraph openers — forward link, contrast, synthesis."
+1. **Charlotte**: "I'll give you a topic sentence. Then write three openers for the next paragraphs: one that moves forward, one that contrasts and one that sums up."
 2. **Student**: ~"This finding raises a related question about how the effect varies by income level."
 3. **Charlotte**: "Contrast?"
 4. **Student**: ~"By contrast, longitudinal studies in similar populations show a weaker effect over time."

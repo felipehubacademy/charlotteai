@@ -19,10 +19,12 @@ import { supabase } from '@/lib/supabase';
 import { AppText } from '@/components/ui/Text';
 import { systemIsPt as isPt } from '@/lib/systemLang';
 import { appAlert, AppAlertHost } from '@/components/ui/AppAlert';
+import { MarkerText } from '@/components/ui/MarkerText';
+import { Camera, Images, Medal } from 'phosphor-react-native';
 
 // ─── Theme ────────────────────────────────────────────────────────────────────
 const C = {
-  bg:        '#FFFFFF',
+  bg:        '#FAF7F0', // creme do app
   navy:      '#16131F',
   navyMid:   '#4D4858',
   navyLight: '#8A8494',
@@ -318,32 +320,51 @@ export default function AvatarCropModal({
           {phase === 'pick' ? (
             /* ── Pick phase ─────────────────────────────────── */
             <View style={styles.pickContainer}>
-              {/* Current avatar preview */}
+              {/* Foto atual (com aro volt) ou o convite: círculo volt com a câmera. */}
               {currentAvatarUrl ? (
-                <Image
-                  source={{ uri: currentAvatarUrl }}
-                  style={styles.currentAvatar}
-                />
+                <View style={{ padding: 4, borderRadius: 72, backgroundColor: C.green }}>
+                  <Image source={{ uri: currentAvatarUrl }} style={{ width: 132, height: 132, borderRadius: 66 }} />
+                </View>
               ) : (
-                <View style={styles.avatarPlaceholder}>
-                  <AppText style={styles.avatarPlaceholderText}>{isPt ? 'Sem foto' : 'No photo'}</AppText>
+                <View style={{ width: 140, height: 140, borderRadius: 70, backgroundColor: C.green, alignItems: 'center', justifyContent: 'center' }}>
+                  <Camera size={58} color={C.navy} weight="duotone" />
+                  <View style={{ position: 'absolute', right: 4, bottom: 6, width: 36, height: 36, borderRadius: 18, backgroundColor: C.navy, alignItems: 'center', justifyContent: 'center', borderWidth: 3, borderColor: C.bg }}>
+                    <AppText style={{ fontSize: 22, lineHeight: 24, fontWeight: '800', color: C.green }}>+</AppText>
+                  </View>
                 </View>
               )}
 
-              <AppText style={styles.pickTitle}>{isPt ? 'Escolha uma foto' : 'Choose a photo'}</AppText>
+              <View style={{ marginTop: 18, alignItems: 'center' }}>
+                <MarkerText display style={{ fontSize: 30, lineHeight: 36, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
+                  {currentAvatarUrl ? (isPt ? 'Trocar sua foto' : 'Change your photo') : (isPt ? 'Mostre quem é você' : 'Show who you are')}
+                </MarkerText>
+              </View>
               <AppText style={styles.pickSubtitle}>
                 {isPt
-                  ? 'Escolha da galeria ou tire uma nova foto.\nVocê pode recortar e dar zoom antes de salvar.'
-                  : 'Pick from your library or take a new photo.\nYou can crop and zoom before saving.'}
+                  ? 'Sua foto aparece no ranking, nas conquistas e no Estudar junto. Você ajusta o enquadramento antes de salvar.'
+                  : 'Your photo shows on the leaderboard, in achievements and in Study together. You can adjust it before saving.'}
               </AppText>
 
-              <TouchableOpacity style={styles.pickButton} onPress={pickFromLibrary}>
-                <AppText style={styles.pickButtonText}>{isPt ? 'Escolher da galeria' : 'Choose from library'}</AppText>
-              </TouchableOpacity>
+              {!currentAvatarUrl && (
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.navy, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8 }}>
+                  <Medal size={16} color={C.green} weight="fill" />
+                  <AppText style={{ fontSize: 13.5, fontWeight: '800', color: '#FFFFFF' }}>
+                    {isPt ? 'Conquista Cara do Queizy' : 'Face of Queizy badge'}
+                  </AppText>
+                  <AppText style={{ fontSize: 13.5, fontWeight: '800', color: C.green }}>+100 XP</AppText>
+                </View>
+              )}
 
-              <TouchableOpacity style={[styles.pickButton, styles.pickButtonSecondary]} onPress={pickFromCamera}>
-                <AppText style={[styles.pickButtonText, { color: C.navy }]}>{isPt ? 'Tirar uma foto' : 'Take a photo'}</AppText>
-              </TouchableOpacity>
+              <View style={{ alignSelf: 'stretch', gap: 12, marginTop: 14 }}>
+                <TouchableOpacity activeOpacity={0.85} style={styles.pickButton} onPress={pickFromLibrary}>
+                  <Images size={20} color={C.navy} weight="bold" />
+                  <AppText style={styles.pickButtonText}>{isPt ? 'Escolher da galeria' : 'Choose from library'}</AppText>
+                </TouchableOpacity>
+                <TouchableOpacity activeOpacity={0.85} style={[styles.pickButton, styles.pickButtonSecondary]} onPress={pickFromCamera}>
+                  <Camera size={20} color={C.navy} weight="bold" />
+                  <AppText style={[styles.pickButtonText, { color: C.navy }]}>{isPt ? 'Tirar uma foto' : 'Take a photo'}</AppText>
+                </TouchableOpacity>
+              </View>
             </View>
           ) : (
             /* ── Crop phase ─────────────────────────────────── */
@@ -470,8 +491,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 32,
-    gap: 16,
+    paddingHorizontal: 28,
+    gap: 14,
   },
   currentAvatar: {
     width: 96,
@@ -503,25 +524,29 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   pickSubtitle: {
-    fontSize: 13,
-    color: C.navyLight,
+    fontSize: 15,
+    color: C.navyMid,
     textAlign: 'center',
-    lineHeight: 20,
+    lineHeight: 22,
   },
   pickButton: {
     width: '100%',
-    height: 50,
-    borderRadius: 14,
+    height: 54,
+    borderRadius: 999,
     backgroundColor: C.green,
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row',
+    gap: 8,
   },
   pickButtonSecondary: {
-    backgroundColor: 'rgba(22,19,31,0.06)',
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1.5,
+    borderColor: C.navy,
   },
   pickButtonText: {
-    fontSize: 15,
-    fontWeight: '700',
+    fontSize: 16,
+    fontWeight: '800',
     color: C.navy,
   },
 

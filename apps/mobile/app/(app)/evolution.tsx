@@ -87,10 +87,6 @@ export default function EvolutionScreen() {
   useFocusEffect(useCallback(() => { load(); }, [load]));
 
   const pctText = (v: number | null) => (v == null ? '—' : `${v}%`);
-    const trainTopic = (f: TopicStat) => router.push({
-    pathname: '/(app)/learn-session',
-    params: { level: f.level, moduleIndex: String(f.moduleIndex), topicIndex: String(f.topicIndex) },
-  } as any);
   // Trilha nova: título da unidade vem do conteúdo local; Treinar abre a mesma atividade.
   const v2Title = (f: NonNullable<Evolution['focusV2']>[number]) => {
     const unit = getModule(f.level as V2Level, f.moduleId)?.units.find(u => u.id === f.unitId);
@@ -185,20 +181,6 @@ export default function EvolutionScreen() {
                       </AppText>
                     </View>
                     <TrainButton label={t('Treinar', 'Practice')} onPress={() => trainV2(f)} />
-                  </View>
-                ))}
-              </Card>
-            )}
-            {data.focus.length > 0 && (
-              <Card style={{ paddingVertical: 6 }}>
-                {data.focus.map((f, i) => (
-                  <View key={`${f.level}${f.moduleIndex}${f.topicIndex}`} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 16, paddingVertical: 12, borderTopWidth: i ? 1 : 0, borderTopColor: C.border }}>
-                    <Target size={20} color="#D12A64" weight="bold" />
-                    <View style={{ flex: 1 }}>
-                      <AppText style={{ fontSize: 14.5, fontWeight: '700', color: C.ink }}>{f.topic}</AppText>
-                      <AppText style={{ fontSize: 12, color: C.light, marginTop: 1 }}>{t(`${f.accuracy}% de acerto`, `${f.accuracy}% correct`)}</AppText>
-                    </View>
-                    <TrainButton label={t('Treinar', 'Practice')} onPress={() => trainTopic(f)} />
                   </View>
                 ))}
               </Card>

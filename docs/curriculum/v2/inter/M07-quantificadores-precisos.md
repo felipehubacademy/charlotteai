@@ -49,16 +49,19 @@
 5. **fill_gap** — "I have _____ money on me."
    **Hint**: small amount (uncountable)
    **Answer**: a little
+   **Accepts**: some
    **Explanation**: "Money" uncountable → "a little".
 
 6. **fill_gap** — "She invited _____ friends."
    **Hint**: small number (countable)
    **Answer**: a few
+   **Accepts**: some / several / many
    **Explanation**: "Friends" countable → "a few".
 
 7. **fill_gap** — "Add _____ salt."
    **Hint**: uncountable
    **Answer**: a little
+   **Accepts**: some / more
    **Explanation**: "Salt" uncountable → "a little".
 
 8. **fix_error** — "I have a few money."
@@ -404,16 +407,19 @@
 5. **fill_gap** — "I have _____ books to read this summer."
    **Hint**: lots
    **Answer**: plenty of
+   **Accepts**: a lot of / lots of / many
    **Explanation**: "Plenty of books" — abundance.
 
 6. **fill_gap** — "There's _____ rain this year."
    **Hint**: almost none
    **Answer**: hardly any
+   **Accepts**: little / no / not much
    **Explanation**: "Hardly any rain" — scarcity.
 
 7. **fill_gap** — "We had _____ visitors yesterday."
    **Hint**: very few
    **Answer**: hardly any
+   **Accepts**: few / no
    **Explanation**: "Hardly any visitors" — almost no one came.
 
 8. **fix_error** — "I have plenty time."
@@ -512,9 +518,9 @@
    **label_pt**: "Abundância"
    **label_en**: "Abundance"
    **hidden_prompt**: "user uses 'plenty of'"
-   **hint_pt**: "Plenty of work."
-   **hint_en**: "Plenty of work."
-   **example_pass**: Plenty of work. | We have plenty of time. | I have hardly any money.
+   **hint_pt**: "I have plenty of work."
+   **hint_en**: "I have plenty of work."
+   **example_pass**: I have plenty of work. | We have plenty of time. | I have hardly any money.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 2. **id**: 2
@@ -540,7 +546,7 @@
 **Script** (7 turns):
 
 1. **Charlotte**: "What's in abundance in your life right now?"
-2. **Student**: "Plenty of work."
+2. **Student**: "I have plenty of work."
 3. **Charlotte**: "Scarce?"
 4. **Student**: "Hardly any sleep."
 5. **Charlotte**: "Common pairing."
@@ -582,16 +588,19 @@
 5. **fill_gap** — "There are _____ ways to do this."
    **Hint**: more than a few (3+)
    **Answer**: several
+   **Accepts**: many / a few / some / lots of
    **Explanation**: "Several ways" — multiple options.
 
 6. **fill_gap** — "_____ people like coffee."
    **Hint**: majority
    **Answer**: Most
+   **Accepts**: Many / Some / A lot of / Lots of
    **Explanation**: "Most people" — general majority.
 
 7. **fill_gap** — "_____ of my friends live abroad."
    **Hint**: majority of specific group
    **Answer**: Most
+   **Accepts**: Many / Some / A few / Several / All
    **Explanation**: "Most of + the/my + plural".
 
 8. **fix_error** — "I have several time."
@@ -628,7 +637,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Tell me using 'several' and 'most'."
+**Opening line**: "Tell me about the things you collect. Try to use 'several' and 'most'."
 
 **Sub-objectives** (3):
 
@@ -663,7 +672,7 @@
 
 **Suggested flow** (6 turns):
 
-1. **Charlotte**: "Tell me using 'several' and 'most'."
+1. **Charlotte**: "Tell me about the things you collect. Try to use 'several' and 'most'."
 2. **Student**: ~"I have several hobbies."
 3. **Charlotte**: "Majority?"
 4. **Student**: ~"Most people drink coffee."
@@ -739,8 +748,8 @@
 ### 1. Grammar (10 exercises)
 
 1. **multiple_choice** — "I have _____ time today."
-   **Options**: a little / a few / plenty of / hardly any
-   **Answer**: a little (any of these correct, but a little for "some, small amount")
+   **Options**: a little / a few / many / few
+   **Answer**: a little
    **Explanation**: "A little" with uncountable.
 
 2. **multiple_choice** — "She has _____ close friends."
@@ -761,12 +770,13 @@
 5. **fill_gap** — "There's _____ food in the fridge."
    **Hint**: small amount
    **Answer**: a little
-   **Accepts**: some
+   **Accepts**: some / little
    **Explanation**: "A little food" — small positive amount.
 
 6. **fill_gap** — "_____ of my coworkers are friendly."
    **Hint**: majority of specific
    **Answer**: Most
+   **Accepts**: Many / Some / All / A few
    **Explanation**: "Most of my coworkers".
 
 7. **fill_gap** — "I have _____ patience for delays today."

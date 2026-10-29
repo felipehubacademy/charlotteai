@@ -13,7 +13,7 @@ import * as Updates from 'expo-updates';
 import Constants from 'expo-constants';
 import { AuthProvider } from '@/components/auth/AuthProvider';
 import { useAuth } from '@/hooks/useAuth';
-import { AI_CONSENT_KEY } from '@/lib/aiConsent';
+import { hasAiConsent } from '@/lib/aiConsent';
 import { OfflineBanner } from '@/components/ui/OfflineBanner';
 import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
@@ -22,6 +22,11 @@ import { ThemeProvider, useTheme } from '@/lib/theme';
 import { SplashOverlay } from '@/components/ui/SplashOverlay';
 import { useFonts } from 'expo-font';
 import { useOtaAutoApply } from '@/lib/otaAutoApply';
+import { installApiAuthFetch } from '@/lib/apiAuthFetch';
+import { identifyUser, track } from '@/lib/analytics';
+
+// Prova de login em todo pedido ao servidor; conta apagada → sai da conta (lib/apiAuthFetch).
+installApiAuthFetch();
 
 // Mantém a splash screen visível enquanto carrega
 SplashScreen.preventAutoHideAsync();
@@ -69,18 +74,36 @@ function AuthGuard() {
   useOtaAutoApply(pathname);
   const [aiConsent,    setAiConsent]    = useState<boolean | null>(null); // null = still loading
   const [consentReady, setConsentReady] = useState(false);
+  // De qual conta é o aceite lido: o guard só decide quando bate com a conta que está entrando
+  // (senão usa o "false" de antes do perfil carregar e manda para o aceite a cada abertura).
+  const [consentFor, setConsentFor] = useState<string | null>(null);
 
   // Read AI consent from secure store on mount and whenever pathname changes
   // (re-read after returning from ai-consent screen so the guard unblocks)
   useEffect(() => {
-    SecureStore.getItemAsync(AI_CONSENT_KEY).then(val => {
-      setAiConsent(val === '1');
+    // Aceite por conta (lib/aiConsent). Sem perfil ainda: o guard espera o perfil de qualquer jeito.
+    // Sem perfil (saiu da conta): esquece também de qual conta era a leitura. Senão, ao entrar de novo na
+    // mesma conta, o guard achava a leitura pronta (consentFor igual) com o "false" daqui e pedia o aceite.
+    if (!profile?.id) { setAiConsent(false); setConsentFor(null); setConsentReady(true); return; }
+    const uid = profile.id;
+    hasAiConsent(uid, profile.created_at).then(ok => {
+      setAiConsent(ok);
+      setConsentFor(uid);
       setConsentReady(true);
     }).catch(() => {
       setAiConsent(false);
+      setConsentFor(uid);
       setConsentReady(true);
     });
-  }, [pathname]);
+  }, [pathname, profile?.id, profile?.created_at]);
+
+  // Telas vistas nos 2 primeiros dias da conta: mostra onde o aluno novo para antes da 1ª lição.
+  useEffect(() => {
+    if (!profile?.id || !profile.created_at || !pathname) return;
+    if (Date.now() - new Date(profile.created_at).getTime() > 2 * 86400000) return;
+    identifyUser(profile.id, profile.charlotte_level ?? 'Novice'); // antes da tela inicial (que também identifica)
+    track('screen_view', { screen: pathname });
+  }, [pathname, profile?.id, profile?.created_at]);
 
   // If auth resolved but profile fetch failed, retry up to 5 times with backoff.
   useEffect(() => {
@@ -98,6 +121,7 @@ function AuthGuard() {
     if (isLoading) return;
     if (!consentReady) return;                        // wait for SecureStore read
     if (isAuthenticated && profile === null) return;  // wait for profile
+    if (isAuthenticated && profile && consentFor !== profile.id) return; // wait for this account's AI consent
 
     let target: string;
     if (!isAuthenticated) {
@@ -136,7 +160,7 @@ function AuthGuard() {
     if (lastRoute.current === target) return;
     lastRoute.current = target;
     router.replace(target as any);
-  }, [isLoading, consentReady, isAuthenticated, mustChangePassword, isPasswordRecovery, profile, profile?.placement_test_done, profile?.first_welcome_done, aiConsent, pathname]);
+  }, [isLoading, consentReady, consentFor, isAuthenticated, mustChangePassword, isPasswordRecovery, profile, profile?.placement_test_done, profile?.first_welcome_done, aiConsent, pathname]);
 
   return null;
 }

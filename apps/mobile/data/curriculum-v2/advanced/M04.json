@@ -110,7 +110,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte casts you as the writer of formal motions. You produce three mandative subjunctive sentences.",
-        "scenario_pt": "Charlotte te coloca como redator de moções formais. Você produz três frases no mandative subjunctive.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -119,7 +118,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Sugestão com 'suggest that... be'",
             "label_en": "Suggestion with 'suggest that... be'",
             "hidden_prompt": "user uses 'I suggest that + subject + be + adj/past participle'",
             "hint_en": "I suggest that the proposal be reviewed by an external auditor.",
@@ -138,7 +136,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Recomendação com forma base",
             "label_en": "Recommendation with base form",
             "hidden_prompt": "user uses 'I recommend that + subject + base form'",
             "hint_en": "I recommend that the team adopt a stricter review process.",
@@ -157,7 +154,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Exigir com 'demand/insist that... be'",
             "label_en": "Demand with 'demand/insist that... be'",
             "hidden_prompt": "user uses 'demand/insist that + subject + be/base'",
             "hint_en": "I insist that every member be informed before the vote.",
@@ -189,12 +185,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte plays committee chair. Make formal recommendations using subjunctive.",
-        "intro_pt": "Charlotte finge ser presidente de comitê. Faça recomendações formais usando subjunctive.",
         "opening_message": "The committee is reviewing our hiring practices. What would you recommend?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Recomendação formal com subjuntivo",
             "label_en": "Formal recommendation with subjunctive",
             "hidden_prompt": "user uses 'I recommend/suggest that + subject + base'",
             "hint_en": "I recommend that every candidate be interviewed by at least three panel members.",
@@ -212,7 +206,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Adicionar outra recomendação",
             "label_en": "Add another recommendation",
             "hidden_prompt": "user uses another mandative subjunctive",
             "hint_en": "I also propose that hiring criteria be made public on the company website.",
@@ -231,7 +224,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if she'll bring it to vote",
             "hint_en": "Will you bring it to a vote?",
@@ -295,6 +287,10 @@
           "sentence": "It was imperative that the troops _____ before dawn.",
           "hint": "base form \"withdraw\"",
           "answer": "withdraw",
+          "accepts": [
+            "pull out",
+            "retreat"
+          ],
           "explanation": "\"It was imperative that + subject + base form\". Note: even when the main clause is past (\"was imperative\"), the subjunctive in the that-clause stays in base form. No backshift."
         },
         {
@@ -308,7 +304,13 @@
           "type": "read_answer",
           "passage": "The protocol was unambiguous. 'It is vital that all personnel be briefed before deployment. It is crucial that no detail be omitted from the report. It is imperative that the chain of command be respected at every step.' Procedural language at its most formal.",
           "question": "What three things does the protocol demand?",
-          "answer": "all personnel be briefed before deployment, no detail be omitted from the report, the chain of command be respected",
+          "answer": "brief all personnel, omit no detail, respect chain of command",
+          "accepts": [
+            "brief all personnel",
+            "omit no detail",
+            "respect chain of command",
+            "everyone briefed, no detail omitted, chain of command respected"
+          ],
           "explanation": "Three stacked \"It is [vital/crucial/imperative] that + subject + be + past participle\" — passive subjunctive used for impersonal formality. Procedural writing leans heavily on this register."
         }
       ],
@@ -341,7 +343,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites you to write three impersonal necessity statements for a formal context.",
-        "scenario_pt": "Charlotte te convida a escrever três declarações de necessidade impessoal para um contexto formal.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -350,7 +351,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar 'It is essential that' + base/be",
             "label_en": "'It is essential that' + base/be",
             "hidden_prompt": "user uses 'It is essential that + subject + base/be'",
             "hint_en": "It is essential that every employee receive proper training.",
@@ -369,7 +369,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'It is vital that' + base passiva/be",
             "label_en": "'It is vital that' + passive base/be",
             "hidden_prompt": "user uses 'It is vital that + subject + be + past participle'",
             "hint_en": "It is vital that confidential data be protected at all times.",
@@ -388,7 +387,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'It is imperative that'",
             "label_en": "'It is imperative that'",
             "hidden_prompt": "user uses 'It is imperative that + subject + base'",
             "hint_en": "It is imperative that the process remain transparent.",
@@ -420,12 +418,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte drafts a handbook. Use 'It is essential/vital/crucial that + subjunctive'.",
-        "intro_pt": "Charlotte elabora um manual. Use 'It is essential/vital/crucial that + subjunctive'.",
         "opening_message": "We're writing the employee handbook. What's the first non-negotiable principle?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Princípio formal com subjuntivo",
             "label_en": "Formal principle with subjunctive",
             "hidden_prompt": "user uses 'It is essential/vital/crucial that + subject + base/be'",
             "hint_en": "It is essential that every voice be heard in team decisions.",
@@ -444,7 +440,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Adicionar segundo princípio",
             "label_en": "Add second principle",
             "hidden_prompt": "user uses another subjunctive necessity statement",
             "hint_en": "It is crucial that feedback be given respectfully and in private.",
@@ -463,7 +458,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for her contribution",
             "hint_en": "What would you add?",
@@ -526,7 +520,7 @@
           "sentence": "I'd rather you _____ smoke in the house.",
           "hint": "past simple negative \"smoke\"",
           "answer": "didn't",
-          "explanation": "\"I'd / I would rather + subject + past simple\" for preference about another person's behaviour. Strictly speaking, \"didn't / did not smoke\" is the past subjunctive form here — same surface as past simple, but mood is hypothetical."
+          "explanation": "\"I'd rather + subject + past simple\" for preference about another person's behaviour. Strictly speaking, \"didn't smoke\" is the past subjunctive form here — same surface as past simple, but mood is hypothetical."
         },
         {
           "type": "fix_error",
@@ -539,7 +533,12 @@
           "type": "read_answer",
           "passage": "Stevens watched the rain pool on the gravel drive. 'If only it were summer,' he said, 'and if I were ten years younger, I would walk to the village without a coat. I wish I were the kind of man who didn't notice weather. But I am not, and never was.'",
           "question": "What three things does Stevens wish?",
-          "answer": "that it were summer, that he were ten years younger, that he were the kind of man who didn't notice weather",
+          "answer": "summer, ten years younger, not notice weather",
+          "accepts": [
+            "if it were summer",
+            "if I were ten years younger",
+            "wish I didn't notice weather"
+          ],
           "explanation": "Three stacked subjunctive \"were\" forms — formal, literary register. Note final \"I am not, and never was\" — switches back to indicative for present/past fact."
         }
       ],
@@ -572,7 +571,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites three \"were\"-form sentences across wishes, advice, and comparisons.",
-        "scenario_pt": "Charlotte convida para três frases na forma \"were\" em desejos, conselhos e comparações.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -581,7 +579,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Desejo com 'were'",
             "label_en": "Wish with 'were'",
             "hidden_prompt": "user uses 'I wish I/he/she/it were + element'",
             "hint_en": "I wish I were better at saying no.",
@@ -596,7 +593,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'If I were you'",
             "label_en": "'If I were you'",
             "hidden_prompt": "user uses 'If I were you, I would + base'",
             "hint_en": "If I were you, I'd take the longer view.",
@@ -611,7 +607,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'As if + were'",
             "label_en": "'As if + were'",
             "hidden_prompt": "user uses 'X acts/talks/looks as if + subject + were'",
             "hint_en": "He talks as if he were already in charge.",
@@ -639,12 +634,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte trades subjunctive 'were' freely. Mirror her register.",
-        "intro_pt": "Charlotte usa subjuntivo 'were' livremente. Espelhe o registro dela.",
         "opening_message": "I wish I were the kind of person who actually enjoys mornings. Are you a morning person?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Próprio desejo com 'were'",
             "label_en": "Own wish with 'were'",
             "hidden_prompt": "user uses 'I wish I were + element'",
             "hint_en": "I wish I were less attached to my phone.",
@@ -659,7 +652,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Frase condicional com 'were'",
             "label_en": "If clause with 'were'",
             "hidden_prompt": "user uses 'If I were + element/person'",
             "hint_en": "If I were braver, I'd already have deleted the apps.",
@@ -674,7 +666,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if she's tried becoming a morning person",
             "hint_en": "Have you tried becoming one?",
@@ -782,7 +773,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte writes diplomatic-style speech. You produce three fossilised subjunctive expressions in context.",
-        "scenario_pt": "Charlotte escreve discurso em estilo diplomático. Você produz três expressões fossilizadas de subjuntivo em contexto.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -791,7 +781,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar 'Be that as it may'",
             "label_en": "'Be that as it may'",
             "hidden_prompt": "user uses 'Be that as it may, + clause'",
             "hint_en": "Be that as it may, the deadline is non-negotiable.",
@@ -806,7 +795,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'Come what may'",
             "label_en": "'Come what may'",
             "hidden_prompt": "user uses 'Come what may, + clause'",
             "hint_en": "Come what may, I'll see this through to the end.",
@@ -821,7 +809,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'Suffice it to say' ou 'lest'",
             "label_en": "'Suffice it to say' or 'lest'",
             "hidden_prompt": "user uses 'Suffice it to say...' or 'lest + subjunctive'",
             "hint_en": "Suffice it to say, the meeting did not go well.",
@@ -849,12 +836,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte writes essay-style. Contribute lines with fossilised subjunctive.",
-        "intro_pt": "Charlotte escreve em estilo de ensaio. Contribua com linhas usando subjuntivo fossilizado.",
         "opening_message": "Be that as it may, learning a language in your forties is no joke. What's your take?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com subjuntivo fossilizado",
             "label_en": "Reply with fossilised subjunctive",
             "hidden_prompt": "user uses 'Be that as it may' or 'Come what may' in a reply",
             "hint_en": "Come what may, I'm not stopping until I can read novels in English.",
@@ -871,7 +856,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra expressão fossilizada",
             "label_en": "Another fossilised expression",
             "hidden_prompt": "user uses 'Suffice it to say' or 'lest + subjunctive'",
             "hint_en": "Suffice it to say, the grammar still surprises me weekly.",
@@ -886,7 +870,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how she keeps her own English sharp",
             "hint_en": "How do you keep yours sharp?",
@@ -955,7 +938,12 @@
           "type": "read_answer",
           "passage": "The professor closed her lecture with a quiet line: 'I would only ask that you remember three things. That you read what challenges you. That you write what scares you. And that, lest you become comfortable, you teach what you have only just begun to understand.' The room was silent for a long second.",
           "question": "What three things does she ask students to remember?",
-          "answer": "read what challenges you, write what scares you, teach what you have only just begun to understand",
+          "answer": "read what challenges, write what scares, teach what you just learned",
+          "accepts": [
+            "read what challenges you",
+            "write what scares you",
+            "teach what you have just begun to understand"
+          ],
           "explanation": "Three mandative subjunctives (\"that you read\", \"that you write\", \"that you teach\"), capped by a \"lest\" subjunctive (\"lest you become comfortable\"). Layered C1 grammar in service of memorable speech."
         }
       ],
@@ -988,7 +976,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites three subjunctive structures across the spectrum — mandative, hypothetical, fossilised.",
-        "scenario_pt": "Charlotte convida para três estruturas subjuntivas ao longo do espectro — mandativa, hipotética, fossilizada.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -997,7 +984,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar subjuntivo mandativo",
             "label_en": "Mandative subjunctive",
             "hidden_prompt": "user uses 'suggest/recommend/insist that + subject + base'",
             "hint_en": "I recommend that the proposal be revised before the next meeting.",
@@ -1012,7 +998,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Hipotético com 'were'",
             "label_en": "Hypothetical with 'were'",
             "hidden_prompt": "user uses 'If I/he/she were' or 'I wish I were'",
             "hint_en": "If I were in charge, I'd cancel half the meetings.",
@@ -1027,7 +1012,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Expressão fossilizada",
             "label_en": "Fossilised expression",
             "hidden_prompt": "user uses 'Be that as it may' / 'Come what may' / 'Suffice it to say'",
             "hint_en": "Be that as it may, the launch happens Monday.",
@@ -1057,12 +1041,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte runs a scenario. Use subjunctive across the register spectrum.",
-        "intro_pt": "Charlotte conduz um cenário. Use subjunctive em todo o espectro de registros.",
         "opening_message": "A senior colleague keeps missing deadlines. What would you propose, and how would you handle it personally?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Recomendação formal",
             "label_en": "Formal recommendation",
             "hidden_prompt": "user uses 'I would recommend that + subject + base'",
             "hint_en": "I would recommend that we establish clearer ownership for each deliverable.",
@@ -1077,7 +1059,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Reflexão pessoal com 'were'",
             "label_en": "Personal reflection with 'were'",
             "hidden_prompt": "user uses 'If I were... I would'",
             "hint_en": "If I were her manager, I'd ask a direct question before assuming intent.",
@@ -1092,7 +1073,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how she'd open the conversation",
             "hint_en": "How would you open it?",

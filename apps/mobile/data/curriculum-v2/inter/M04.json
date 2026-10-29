@@ -91,6 +91,12 @@
           "sentence": "We used to _____ in Rio.",
           "hint": "base verb \"live\"",
           "answer": "live",
+          "accepts": [
+            "work",
+            "study",
+            "stay",
+            "be"
+          ],
           "explanation": "After \"used to\", base form: \"live\"."
         },
         {
@@ -147,7 +153,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks what you used to do as a child.",
-        "scenario_pt": "Charlotte pergunta o que você 'used to' fazer quando criança.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -156,7 +161,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hábito passado",
             "label_en": "Past habit",
             "hidden_prompt": "user uses 'I used to + base'",
             "hint_en": "I used to play outside.",
@@ -173,7 +177,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outro hábito",
             "label_en": "Another habit",
             "hidden_prompt": "user uses another 'I used to'",
             "hint_en": "I used to read comics.",
@@ -190,7 +193,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Hábito familiar",
             "label_en": "Family habit",
             "hidden_prompt": "user uses 'My X used to + base'",
             "hint_en": "My family used to travel a lot.",
@@ -220,12 +222,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about your past habits. Practice 'used to + base'.",
-        "intro_pt": "Charlotte pergunta sobre seus hábitos passados. Pratique 'used to + base'.",
         "opening_message": "What's something you used to love as a kid?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Used to love",
             "label_en": "Used to love",
             "hidden_prompt": "user uses 'I used to love + noun/verb-ing'",
             "hint_en": "I used to love cartoons.",
@@ -242,7 +242,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outro hábito",
             "label_en": "Another habit",
             "hidden_prompt": "user uses another 'I used to + base'",
             "hint_en": "I used to collect stickers.",
@@ -259,7 +258,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What did you use to do?'",
             "hint_en": "What did you use to do?",
@@ -297,7 +295,7 @@
             "don't use to"
           ],
           "answer": "didn't use to",
-          "explanation": "Negative: \"didn't / did not use to + base\". Note: \"use\" (no -d) after didn't."
+          "explanation": "Negative: \"didn't use to + base\". Note: \"use\" (no -d) after didn't."
         },
         {
           "type": "multiple_choice",
@@ -320,7 +318,7 @@
             "no use to"
           ],
           "answer": "didn't use to",
-          "explanation": "Negative uses \"didn't / did not use to\" (base \"use\", not \"used\")."
+          "explanation": "Negative uses \"didn't use to\" (base \"use\", not \"used\")."
         },
         {
           "type": "word_bank",
@@ -339,7 +337,7 @@
           "sentence": "I didn't use _____ exercise.",
           "hint": "particle \"to\"",
           "answer": "to",
-          "explanation": "\"Didn't / Did not use TO + base\"."
+          "explanation": "\"Didn't use TO + base\"."
         },
         {
           "type": "fill_gap",
@@ -353,14 +351,14 @@
           "sentence": "She didn't _____ to drink tea.",
           "hint": "form of \"use\" after didn't",
           "answer": "use",
-          "explanation": "After \"didn't / did not\", base form: \"use\" (not \"used\")."
+          "explanation": "After \"didn't\", base form: \"use\" (not \"used\")."
         },
         {
           "type": "fix_error",
           "sentence": "I didn't used to like coffee.",
           "hint": "After didn't, base \"use\"",
           "answer": "I didn't use to like coffee.",
-          "explanation": "After \"didn't / did not\", base form: \"use\" (not \"used\"). Common mistake."
+          "explanation": "After \"didn't\", base form: \"use\" (not \"used\"). Common mistake."
         },
         {
           "type": "fix_error",
@@ -377,7 +375,7 @@
           "accepts": [
             "didn't use to"
           ],
-          "explanation": "The text says \"I didn't / did not use to like coffee\"."
+          "explanation": "The text says \"I didn't use to like coffee\"."
         }
       ],
       "listening_speaking": [
@@ -409,7 +407,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte explores what you didn't used to do.",
-        "scenario_pt": "Charlotte explora o que você não costumava fazer.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -418,7 +415,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Não costumava gostar",
             "label_en": "Didn't use to like",
             "hidden_prompt": "user uses 'I didn't use to + base'",
             "hint_en": "I didn't use to like coffee.",
@@ -435,7 +431,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outro didn't use to",
             "label_en": "Another didn't use to",
             "hidden_prompt": "user uses another 'I didn't use to'",
             "hint_en": "I didn't use to exercise.",
@@ -452,7 +447,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte (Did you use to)",
             "label_en": "Ask Charlotte (Did you use to)",
             "hidden_prompt": "user asks 'Did you use to + base?'",
             "hint_en": "Did you use to play sports?",
@@ -482,12 +476,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about changes in preferences. Practice negatives and questions.",
-        "intro_pt": "Charlotte pergunta sobre mudanças de preferências. Pratique negativas e perguntas.",
         "opening_message": "What didn't you use to do that you do now?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hábito atual que você não tinha",
             "label_en": "Current habit you didn't have",
             "hidden_prompt": "user uses 'I didn't use to + base'",
             "hint_en": "I didn't use to meditate.",
@@ -504,7 +496,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra mudança",
             "label_en": "Another change",
             "hidden_prompt": "user uses another 'I didn't use to'",
             "hint_en": "I didn't use to like vegetables.",
@@ -521,7 +512,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Did you use to...?'",
             "hint_en": "Did you use to live abroad?",
@@ -615,6 +605,11 @@
           "sentence": "My dad would _____ me to school.",
           "hint": "base verb (drive)",
           "answer": "drive",
+          "accepts": [
+            "take",
+            "walk",
+            "bring"
+          ],
           "explanation": "After would, base form."
         },
         {
@@ -671,7 +666,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks about childhood routines with \"would\".",
-        "scenario_pt": "Charlotte pergunta sobre rotinas da infância usando \"would\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -680,7 +674,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Rotina passada repetida (would)",
             "label_en": "Repeated past routine (would)",
             "hidden_prompt": "user uses 'We/I would + base'",
             "hint_en": "We would go to the park.",
@@ -700,7 +693,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra rotina com would",
             "label_en": "Another would routine",
             "hidden_prompt": "user uses another 'would + base'",
             "hint_en": "My mom would read to me.",
@@ -720,7 +712,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Mais um com 'every X'",
             "label_en": "One more with 'every X'",
             "hidden_prompt": "user uses 'Every + day/week/summer, X would + base'",
             "hint_en": "Every summer, we would travel.",
@@ -753,12 +744,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks about repeated past actions. Practice 'would + base'.",
-        "intro_pt": "Charlotte pergunta sobre ações passadas repetidas. Pratique 'would + base'.",
-        "opening_message": "Share a childhood memory — repeated activity.",
+        "opening_message": "Tell me about something you used to do all the time as a kid.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Atividade repetida",
             "label_en": "Repeated activity",
             "hidden_prompt": "user uses 'I/We would + base'",
             "hint_en": "We would play board games.",
@@ -778,7 +767,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outro",
             "label_en": "Another",
             "hidden_prompt": "user uses another 'would + base'",
             "hint_en": "My dad would tell jokes.",
@@ -798,7 +786,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about her past with would",
             "hint_en": "What would you do as a kid?",
@@ -818,7 +805,7 @@
           }
         ],
         "closing_cue": "Charlotte closes with \"Childhood echoes!\" when obj_3 hits.",
-        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Share a childhood memory — repeated activity.\"\n2. **Student**: \"We would play board games.\"\n3. **Charlotte**: \"Cool.\"\n4. **Student**: \"My dad would tell jokes.\"\n5. **Charlotte**: \"Sweet.\"\n6. **Student**: \"What would you do as a kid?\"\n7. **Charlotte**: \"I would draw all day. Childhood echoes!\"\n\n> I03 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Tell me about something you used to do all the time as a kid.\"\n2. **Student**: \"We would play board games.\"\n3. **Charlotte**: \"Cool.\"\n4. **Student**: \"My dad would tell jokes.\"\n5. **Charlotte**: \"Sweet.\"\n6. **Student**: \"What would you do as a kid?\"\n7. **Charlotte**: \"I would draw all day. Childhood echoes!\"\n\n> I03 chat = LLM puro.\n\n---"
       }
     },
     {
@@ -874,7 +861,7 @@
             "used to",
             "both work"
           ],
-          "answer": "would",
+          "answer": "both work",
           "explanation": "For repeated past action narrative, \"would\" works (used to also works)."
         },
         {
@@ -952,7 +939,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks you to use both used to and would in a story.",
-        "scenario_pt": "Charlotte pede para você usar 'used to' e 'would' em uma história.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -961,7 +947,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Used to + estado",
             "label_en": "Used to + state",
             "hidden_prompt": "user uses 'I used to be/live/have/like + something'",
             "hint_en": "I used to be shy.",
@@ -978,7 +963,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Would + ação repetida",
             "label_en": "Would + repeated action",
             "hidden_prompt": "user uses 'We/I would + action verb'",
             "hint_en": "We would play soccer every day.",
@@ -995,7 +979,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Mais um com 'used to' ou 'would'",
             "label_en": "One more with used to or would",
             "hidden_prompt": "user uses another used to or would",
             "hint_en": "I used to live in Rio.",
@@ -1025,12 +1008,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks for nostalgic stories. Use both used to and would correctly.",
-        "intro_pt": "Charlotte pede histórias nostálgicas. Use 'used to' e 'would' corretamente.",
         "opening_message": "Tell me about a place where you used to live.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Used to + estado/lugar",
             "label_en": "Used to + state/place",
             "hidden_prompt": "user uses 'I used to live + place'",
             "hint_en": "I used to live in a small town.",
@@ -1047,7 +1028,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Would + ação repetida",
             "label_en": "Would + repeated action",
             "hidden_prompt": "user uses 'I/We would + action'",
             "hint_en": "We would walk to school.",
@@ -1064,7 +1044,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about her past with used to or would",
             "hint_en": "Where did you use to live?",
@@ -1154,6 +1133,11 @@
           "sentence": "She used to _____ piano.",
           "hint": "base form (play)",
           "answer": "play",
+          "accepts": [
+            "teach",
+            "study",
+            "practice"
+          ],
           "explanation": "After used to, base."
         },
         {
@@ -1175,7 +1159,7 @@
           "sentence": "I didn't used to drink coffee.",
           "hint": "After didn't, \"use\" (no -d)",
           "answer": "I didn't use to drink coffee.",
-          "explanation": "\"Didn't / Did not use to\" — base \"use\"."
+          "explanation": "\"Didn't use to\" — base \"use\"."
         },
         {
           "type": "read_answer",
@@ -1214,7 +1198,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites a \"then vs now\" comparison.",
-        "scenario_pt": "Charlotte convida para uma comparação \"então vs agora\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1223,7 +1206,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hábito passado vs presente",
             "label_en": "Past vs present habit",
             "hidden_prompt": "user contrasts past (used to/would) with present",
             "hint_en": "I used to smoke, but now I don't.",
@@ -1240,7 +1222,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outro contraste",
             "label_en": "Another contrast",
             "hidden_prompt": "user uses another contrast",
             "hint_en": "I would exercise daily, but now I'm lazy.",
@@ -1257,7 +1238,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Não costumava, mas agora faz",
             "label_en": "Didn't use to but now does",
             "hidden_prompt": "user uses 'I didn't use to + base + but now + present'",
             "hint_en": "I didn't use to like vegetables, but now I do.",
@@ -1287,12 +1267,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores how you've changed. Integrate used to + would + now.",
-        "intro_pt": "Charlotte explora como você mudou. Integre used to + would + now.",
         "opening_message": "What's a habit that changed over the years?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hábito que mudou",
             "label_en": "Habit that changed",
             "hidden_prompt": "user uses 'I used to + base + but now + present'",
             "hint_en": "I used to wake up late, but now I'm up at 6.",
@@ -1309,7 +1287,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra mudança",
             "label_en": "Another change",
             "hidden_prompt": "user uses 'would' or 'used to' for contrast",
             "hint_en": "I would go out a lot.",
@@ -1326,7 +1303,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_en": "How about you?",

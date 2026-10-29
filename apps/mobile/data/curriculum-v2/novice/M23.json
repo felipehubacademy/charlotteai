@@ -64,7 +64,7 @@
             "at"
           ],
           "answer": "to",
-          "explanation": "\"I'd / I would like to + verbo\" — chunk fixo para pedidos educados. \"I'd / I would like to check in\" — pedido educado padrão em aeroportos e hotéis."
+          "explanation": "\"I'd like to + verbo\" — chunk fixo para pedidos educados. \"I'd like to check in\" — pedido educado padrão em aeroportos e hotéis."
         },
         {
           "type": "word_bank",
@@ -76,7 +76,7 @@
             "does"
           ],
           "answer": "is",
-          "explanation": "Memorize \"My flight is delayed\" como CHUNK FIXO de aeroporto — não tente analisar a estrutura. Como \"I'm / I am tired\" ou \"I'm / I am ready\": é \"to be\" + adjetivo. \"Delayed\" funciona como adjetivo aqui (atrasado)."
+          "explanation": "Memorize \"My flight is delayed\" como CHUNK FIXO de aeroporto — não tente analisar a estrutura. Como \"I'm tired\" ou \"I'm ready\": é \"to be\" + adjetivo. \"Delayed\" funciona como adjetivo aqui (atrasado)."
         },
         {
           "type": "word_bank",
@@ -95,6 +95,10 @@
           "sentence": "I _____ my passport at the security check — I can't find it anywhere!",
           "hint": "passado de \"lose\"",
           "answer": "lost",
+          "accepts": [
+            "left",
+            "forgot"
+          ],
           "explanation": "\"Lost\" — passado simples de \"lose\". Verbo irregular: lose → lost → lost. \"I lost my passport\" — frase crítica para reportar perda no aeroporto."
         },
         {
@@ -112,7 +116,10 @@
           "sentence": "I'm here _____ business.",
           "hint": "preposição para propósito",
           "answer": "for",
-          "explanation": "\"I'm / I am here for + propósito\" — chunk fixo na imigração. \"I'm here for business / vacation / a conference\". Preposição \"for\" é obrigatória."
+          "accepts": [
+            "on"
+          ],
+          "explanation": "\"I'm here for + propósito\" — chunk fixo na imigração. \"I'm here for business / vacation / a conference\". Preposição \"for\" é obrigatória."
         },
         {
           "type": "fix_error",
@@ -334,7 +341,7 @@
             "checked"
           ],
           "answer": "check",
-          "explanation": "Após \"I'd / I would like to\", sempre verbo no infinitivo sem \"to\" extra. \"Check in\" — phrasal verb padrão de hotel."
+          "explanation": "Após \"I'd like to\", sempre verbo no infinitivo sem \"to\" extra. \"Check in\" — phrasal verb padrão de hotel."
         },
         {
           "type": "word_bank",
@@ -382,6 +389,13 @@
           "sentence": "Is _____ included?",
           "hint": "refeição da manhã",
           "answer": "breakfast",
+          "accepts": [
+            "parking",
+            "wifi",
+            "Wi-Fi",
+            "dinner",
+            "lunch"
+          ],
           "explanation": "\"Is breakfast included?\" — pergunta padrão sobre o que vem incluído na diária. \"Breakfast\" não tem artigo neste chunk."
         },
         {
@@ -392,7 +406,7 @@
           "accepts": [
             "I'd like a room for two people."
           ],
-          "explanation": "\"People\" é o plural natural de \"person\" em inglês moderno. \"Persons\" só aparece em contextos legais formais. Melhor ainda: trocar \"I want\" por \"I'd / I would like\" (mais educado)."
+          "explanation": "\"People\" é o plural natural de \"person\" em inglês moderno. \"Persons\" só aparece em contextos legais formais. Melhor ainda: trocar \"I want\" por \"I'd like\" (mais educado)."
         },
         {
           "type": "fix_error",
@@ -402,7 +416,7 @@
           "accepts": [
             "The shower isn't working"
           ],
-          "explanation": "Inglês exige verbo \"to be\" em frases negativas com -ing. \"Is not working\" ou contração \"isn't / is not working\". Sem \"is\", a frase fica incompleta."
+          "explanation": "Inglês exige verbo \"to be\" em frases negativas com -ing. \"Is not working\" ou contração \"isn't working\". Sem \"is\", a frase fica incompleta."
         },
         {
           "type": "read_answer",
@@ -412,7 +426,7 @@
           "accepts": [
             "a king-size bed"
           ],
-          "explanation": "O texto diz \"I'd / I would like a non-smoking room with a king-size bed\". Pratica identificação de detalhes específicos em pedidos de hotel."
+          "explanation": "O texto diz \"I'd like a non-smoking room with a king-size bed\". Pratica identificação de detalhes específicos em pedidos de hotel."
         }
       ],
       "listening_speaking": [
@@ -656,7 +670,8 @@
           "hint": "distância — \"far\" ou \"close/near\"",
           "answer": "far",
           "accepts": [
-            "near\" ou \"close"
+            "near",
+            "close"
           ],
           "explanation": "\"Far from here\" / \"near here\" / \"close to here\" — chunks para descrever distância. Todos funcionam aqui."
         },
@@ -868,7 +883,7 @@
             "felt"
           ],
           "answer": "feel",
-          "explanation": "\"I don't / do not feel + adjetivo\" — chunk fixo para reportar mal-estar. Após \"don't / do not\", sempre verbo no infinitivo."
+          "explanation": "\"I don't feel + adjetivo\" — chunk fixo para reportar mal-estar. Após \"don't\", sempre verbo no infinitivo."
         },
         {
           "type": "multiple_choice",
@@ -931,6 +946,10 @@
           "sentence": "My stomach _____.",
           "hint": "verbo para \"dói\"",
           "answer": "hurts",
+          "accepts": [
+            "aches",
+            "is hurting"
+          ],
           "explanation": "\"My stomach hurts\" — chunk fixo para \"minha barriga dói\". \"Hurt\" é verbo regular: hurts (presente), hurt (passado, idêntico)."
         },
         {
@@ -946,8 +965,8 @@
         {
           "type": "fix_error",
           "sentence": "I have hot.",
-          "hint": "\"Hot\" não combina com \"have\" — pense em \"febre\" ou em \"to be\"",
-          "answer": "I have a fever.",
+          "hint": "Calor em inglês é com \"to be\": I'm hot",
+          "answer": "I'm hot.",
           "accepts": [
             "I am hot."
           ],
@@ -1191,6 +1210,9 @@
           "sentence": "Can I _____ a message for him, please?",
           "hint": "verbo para \"deixar\"",
           "answer": "leave",
+          "accepts": [
+            "take"
+          ],
           "explanation": "\"Leave a message\" — chunk fixo. \"Leave\" significa \"deixar\". Padrão para gravar recado quando a pessoa não está."
         },
         {
@@ -1198,13 +1220,22 @@
           "sentence": "I'll _____ you back later on the phone.",
           "hint": "phrasal verb de retorno",
           "answer": "call",
-          "explanation": "\"Call back\" — phrasal verb para \"ligar de volta\". \"I'll / I will call you back\" — promessa fixa ao telefone."
+          "accepts": [
+            "phone",
+            "ring"
+          ],
+          "explanation": "\"Call back\" — phrasal verb para \"ligar de volta\". \"I'll call you back\" — promessa fixa ao telefone."
         },
         {
           "type": "fill_gap",
           "sentence": "Could you _____ that, please?",
           "hint": "verbo para \"repetir\"",
           "answer": "repeat",
+          "accepts": [
+            "say",
+            "spell",
+            "explain"
+          ],
           "explanation": "\"Could you repeat that?\" — pergunta educada para pedir repetição. Útil quando não se entende algo no telefone."
         },
         {
@@ -1232,7 +1263,7 @@
           "accepts": [
             "at 3 PM tomorrow"
           ],
-          "explanation": "O texto diz \"I'll / I will call him back tomorrow at 3 PM\". Pratica leitura de detalhes em recado telefônico."
+          "explanation": "O texto diz \"I'll call him back tomorrow at 3 PM\". Pratica leitura de detalhes em recado telefônico."
         }
       ],
       "listening_speaking": [

@@ -17,6 +17,11 @@ export interface CatalogEntry {
 export const GENERAL_ACHIEVEMENTS: CatalogEntry[] = [
   // Estudar junto: padrinho (amigos trazidos) e rallies vencidos.
   {
+    code: 'profile_photo', title: 'Cara do Queizy', titleEN: 'Face of Queizy', category: 'social', rarity: 'common', xpReward: 100,
+    howToEarnPT: 'Coloque sua foto no Perfil.',
+    howToEarnEN: 'Add your photo in Profile.',
+  },
+  {
     code: 'sponsor_1', title: 'Trouxe um Amigo', titleEN: 'Bring a Friend', category: 'social', rarity: 'common', xpReward: 30,
     howToEarnPT: 'Um amigo entra no Queizy pelo seu convite.',
     howToEarnEN: 'A friend joins Queizy with your invite.',
@@ -87,24 +92,59 @@ export const GENERAL_ACHIEVEMENTS: CatalogEntry[] = [
     howToEarnEN: 'Complete 500 total practices.',
   },
   {
-    code: 'streak_3', title: 'Consistente', titleEN: 'Consistent', category: 'streak', rarity: 'common', xpReward: 25,
+    code: 'streak_3', title: 'Consistente', titleEN: 'Consistent', category: 'streak', rarity: 'common', xpReward: 30,
     howToEarnPT: 'Pratique 3 dias seguidos.',
     howToEarnEN: 'Practice 3 days in a row.',
   },
   {
-    code: 'streak_7', title: 'Semana Completa', titleEN: 'Full Week', category: 'streak', rarity: 'rare', xpReward: 60,
+    code: 'streak_7', title: 'Semana Completa', titleEN: 'Full Week', category: 'streak', rarity: 'rare', xpReward: 75,
     howToEarnPT: 'Pratique 7 dias seguidos.',
     howToEarnEN: 'Practice 7 days in a row.',
   },
   {
-    code: 'streak_14', title: 'Duas Semanas', titleEN: 'Two Weeks', category: 'streak', rarity: 'epic', xpReward: 100,
+    code: 'streak_14', title: 'Duas Semanas', titleEN: 'Two Weeks', category: 'streak', rarity: 'epic', xpReward: 150,
     howToEarnPT: 'Pratique 14 dias seguidos.',
     howToEarnEN: 'Practice 14 days in a row.',
   },
   {
-    code: 'streak_30', title: 'Mês de Ouro', titleEN: 'Golden Month', category: 'streak', rarity: 'legendary', xpReward: 200,
+    code: 'streak_30', title: 'Mês de Ouro', titleEN: 'Golden Month', category: 'streak', rarity: 'legendary', xpReward: 400,
     howToEarnPT: 'Pratique 30 dias seguidos.',
     howToEarnEN: 'Practice 30 days in a row.',
+  },
+  {
+    code: 'streak_50', title: 'Cinquentão', titleEN: 'Fifty Strong', category: 'streak', rarity: 'legendary', xpReward: 500,
+    howToEarnPT: 'Pratique 50 dias seguidos.',
+    howToEarnEN: 'Practice 50 days in a row.',
+  },
+  {
+    code: 'streak_100', title: 'Centenário', titleEN: 'Centurion', category: 'streak', rarity: 'legendary', xpReward: 800,
+    howToEarnPT: 'Pratique 100 dias seguidos.',
+    howToEarnEN: 'Practice 100 days in a row.',
+  },
+  {
+    code: 'streak_200', title: 'Duzentos', titleEN: 'Two Hundred', category: 'streak', rarity: 'legendary', xpReward: 1200,
+    howToEarnPT: 'Pratique 200 dias seguidos.',
+    howToEarnEN: 'Practice 200 days in a row.',
+  },
+  {
+    code: 'streak_365', title: 'Um Ano Inteiro', titleEN: 'One Full Year', category: 'streak', rarity: 'legendary', xpReward: 2000,
+    howToEarnPT: 'Pratique 365 dias seguidos.',
+    howToEarnEN: 'Practice 365 days in a row.',
+  },
+  {
+    code: 'streak_500', title: 'Quinhentos', titleEN: 'Five Hundred', category: 'streak', rarity: 'legendary', xpReward: 2500,
+    howToEarnPT: 'Pratique 500 dias seguidos.',
+    howToEarnEN: 'Practice 500 days in a row.',
+  },
+  {
+    code: 'streak_730', title: 'Dois Anos', titleEN: 'Two Years', category: 'streak', rarity: 'legendary', xpReward: 3500,
+    howToEarnPT: 'Pratique 730 dias seguidos.',
+    howToEarnEN: 'Practice 730 days in a row.',
+  },
+  {
+    code: 'streak_1000', title: 'Mil Dias', titleEN: 'A Thousand Days', category: 'streak', rarity: 'legendary', xpReward: 5000,
+    howToEarnPT: 'Pratique 1.000 dias seguidos.',
+    howToEarnEN: 'Practice 1,000 days in a row.',
   },
   {
     code: 'text_25', title: 'Comunicativo', titleEN: 'Talkative', category: 'text', rarity: 'rare', xpReward: 20,

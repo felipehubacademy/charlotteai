@@ -1,35 +1,33 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useFocusEffect, useNavigation } from 'expo-router';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import {
   View, ScrollView, TouchableOpacity, TextInput,
-  Platform, Animated,
+  Platform, Animated, Linking, AppState,
   ActivityIndicator, Pressable, Modal, useWindowDimensions,
 } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useBottomInset } from '@/lib/useBottomInset';
 import { router, useLocalSearchParams } from 'expo-router';
-import {
-  ArrowLeft, ArrowRight, CheckCircle, XCircle,
-  LightbulbFilament, BookOpen, Microphone,
-  SpeakerLow, SpeakerHigh, Play, Pause, ArrowsClockwise,
-  ThumbsUp, ThumbsDown,
-} from 'phosphor-react-native';
+import { ArrowLeft, ArrowRight, CheckCircle, XCircle, LightbulbFilament, BookOpen, Microphone, SpeakerLow, SpeakerHigh, Play, Pause, ThumbsUp, ThumbsDown, Phone } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 import * as SecureStore from 'expo-secure-store';
 import * as Haptics from '@/lib/hapticsGated';
 import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { extraTrack, unitImpression as impressionOfUnit } from '@/lib/tracks';
-import { getModule } from '@/lib/curriculum-v2/loader';
+import { getModule, listModules } from '@/lib/curriculum-v2/loader';
 import { characterInfo } from '@/lib/characters';
 import { TrackHostReaction } from '@/components/trail/TrackHostReaction';
 import { systemIsPt } from '@/lib/systemLang';
-import { checkGrammarAnswer } from '@/lib/grammarAnswer';
-import { scheduleReviews, markReviewDone, rescheduleReview } from '@/lib/spacedRepetition';
+import { bestSpeechMatch, normalizeSpeech } from '@/lib/speechMatch';
+import { logAttempt } from '@/lib/learnAttempts';
+import { checkGrammarAnswer, repeatsPrompt } from '@/lib/grammarAnswer';
+import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import { track } from '@/lib/analytics';
 import * as FileSystem from 'expo-file-system/legacy';
-import { useAudioRecorder, setAudioModeAsync, setIsAudioActiveAsync, RecordingPresets } from 'expo-audio';
+import { useAudioRecorder, setAudioModeAsync, setIsAudioActiveAsync, RecordingPresets, requestRecordingPermissionsAsync, getRecordingPermissionsAsync } from 'expo-audio';
 import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';
 import { Image } from 'expo-image';
 import {
@@ -42,25 +40,22 @@ import {
 const ASR_AVAILABLE = !!ExpoSpeechRecognitionModule?.start;
 import Constants from 'expo-constants';
 import { useAuth } from '@/hooks/useAuth';
+import { useStreak } from '@/components/streak/StreakProvider';
 import { useTotalXP } from '@/hooks/useTotalXP';
 import { AppText } from '@/components/ui/Text';
 import { TranslatableText } from '@/components/ui/TranslatableText';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { QueizyWave } from '@/components/ui/QueizyWave';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
-import { useLearnProgress } from '@/hooks/useLearnProgress';
-import {
-  CURRICULUM, TrailLevel, GrammarEx, PronStep,
-  getTopic,
-} from '@/data/curriculum';
+import type { TrailLevel, GrammarEx, PronStep } from '@/data/trailTypes';
 import { getV2TopicForUnit } from '@/lib/curriculum-v2/adapter';
 import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
-import { checkLevelPromotion, promoteUserLevel, NEXT_LEVEL } from '@/lib/levelPromotion';
-import PromotionModal from '@/components/ui/PromotionModal';
 import BluetoothMicHint from '@/components/BluetoothMicHint';
 import { supabase } from '@/lib/supabase';
 import { appAlert } from '@/components/ui/AppAlert';
+import { goBack } from '@/lib/goBack';
+import { clearFirstLessonPending } from '@/lib/welcome';
 
 // ── Color helper — rgba() for Android hex+alpha compatibility ──
 function a(hex: string, alpha: number): string {
@@ -116,7 +111,7 @@ type SessionStep = GrammarStep | PronStepWrap;
 // (aceita contração <-> forma cheia, inclusive "solta" no fill_gap). Este
 // wrapper só adapta a assinatura GrammarEx.
 function checkGrammar(ex: GrammarEx, answer: string): boolean {
-  return checkGrammarAnswer(ex.type, answer, ex.answer, ex.accepts);
+  return checkGrammarAnswer(ex.type, answer, ex.answer, ex.accepts, ex.sentence);
 }
 
 // ── Pronunciation helpers ──────────────────────────────────────
@@ -134,20 +129,15 @@ function pickNoviceCorrectMessage(host = 'Charlotte'): string {
   return NOVICE_CORRECT_MESSAGES_PT[Math.floor(Math.random() * NOVICE_CORRECT_MESSAGES_PT.length)].replace('{host}', host);
 }
 
-function wordMatchPercent(spoken: string, reference: string): number {
-  const ref = reference.trim().toLowerCase().replace(/[.,!?;:]/g, '').split(' ').filter(w => w.length > 0);
-  const sp  = spoken.trim().toLowerCase().replace(/[.,!?;:]/g, '');
-  if (ref.length === 0) return 0;
-  const matched = ref.filter(w => sp.includes(w)).length;
-  return (matched / ref.length) * 100;
-}
+// Comparação da fala com a frase: lib/speechMatch (números por extenso = algarismos, contrações).
 
 // ── Main screen ────────────────────────────────────────────────
 export default function LearnSessionScreen() {
   const params = useLocalSearchParams<{
-    level: string; moduleIndex: string; topicIndex: string; reviewId?: string;
-    // v2 params — if v=v2, load from curriculum-v2 by moduleId/unitId
+    level: string; moduleIndex?: string; topicIndex?: string;
+    // Trilha (v2): v=v2 + moduleId/unitId + activity
     v?: string; moduleId?: string; unitId?: string; activity?: string;
+    first?: string; // '1' = 1ª lição da conta, vinda da abertura (lib/welcome)
   }>();
   const level       = (params.level ?? 'Novice') as TrailLevel;
   const moduleIndex = parseInt(params.moduleIndex ?? '0', 10);
@@ -155,6 +145,8 @@ export default function LearnSessionScreen() {
   const isV2        = params.v === 'v2' && !!params.moduleId && !!params.unitId;
 
   const { profile, refreshProfile } = useAuth();
+  const { celebrateStreak, status: streakStatus } = useStreak();
+  const firstLesson = params.first === '1';
   const userId      = profile?.id;
   const userLevel   = (profile?.charlotte_level ?? 'Novice') as string;
   // Camada de SUPORTE/chrome (enunciados, feedback, botões) segue o idioma do
@@ -165,16 +157,22 @@ export default function LearnSessionScreen() {
   const isNoviceLike = level === 'Novice' || !!extraTrack(level);
   const baseTotalXP = useTotalXP(userId);
   const insets      = useSafeAreaInsets();
+  const bottomInset = useBottomInset();
   // Charlotte de corpo inteiro encolhe em telas mais baixas para as opções caberem sem rolar.
   const { height: winH } = useWindowDimensions();
-  // Trilha antiga só fora do modo v2 (sem userId o hook não lê nem grava nada).
-  const learnProgress = useLearnProgress(isV2 ? undefined : userId, level);
-  // v2 mode: skip v1-specific learn_history (uses learn_history_v2 via v2Progress),
-  // mas AINDA escreve XP em charlotte_practices pra o pill da home / leaderboard
-  // / progresso global funcionarem normal.
-  const saveTopicComplete = isV2 ? (async () => {}) : learnProgress.saveTopicComplete;
+  // Progresso da atividade vai para learn_history_v2 (v2Progress); aqui cada resposta grava
+  // o XP em charlotte_practices (pill da home, ranking, progresso global).
   const saveExercise = useCallback(async (params: any) => {
-    if (!isV2) return learnProgress.saveExercise(params);
+    if (!isV2) return;
+    // Gramática: cada resposta vai para learn_attempts (a fala é registrada em finishPronAttempt,
+    // com as leituras do reconhecimento).
+    if (params?.exerciseType && params.exerciseType !== 'repeat') {
+      logAttempt(userId, {
+        level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null, activityType: 'grammar',
+        stepIdx: stepIdxRef.current, expected: params.exerciseData?.correctAnswer ?? params.exerciseData?.question ?? null,
+        answer: params.exerciseData?.userAnswer ?? null, passed: !!params.isCorrect, source: 'typed',
+      });
+    }
     // v2 path: só XP via charlotte_practices (sem learn_history v1)
     if (!userId || typeof params?.xpEarned !== 'number') return;
     try {
@@ -184,7 +182,7 @@ export default function LearnSessionScreen() {
         xp_earned:     params.xpEarned,
       });
     } catch (e) { console.warn('[v2] charlotte_practices insert failed', e); }
-  }, [isV2, userId, learnProgress.saveExercise]);
+  }, [isV2, userId, level]);
   const v2Progress        = useLearnProgressV2(userId, level as V2Level);
 
   // v2 score trackers — populated during the session, persisted on completion
@@ -193,14 +191,8 @@ export default function LearnSessionScreen() {
   const pronScoresRef    = useRef<Map<number, number>>(new Map());
   const grammarTotalRef  = useRef(0);
   const grammarCorrectRef = useRef(0);
-  const { pauseNotifications } = useAchievementsContext();
+  const { pauseNotifications, waitForCelebration } = useAchievementsContext();
 
-  useFocusEffect(
-    useCallback(() => {
-      pauseNotifications(true);
-      return () => pauseNotifications(false);
-    }, [pauseNotifications])
-  );
 
   const topic = isV2
     ? getV2TopicForUnit(
@@ -209,11 +201,28 @@ export default function LearnSessionScreen() {
         params.unitId!,
         (params.activity as 'grammar' | 'ls' | 'both') ?? 'both'
       )
-    : getTopic(level, moduleIndex, topicIndex);
+    : null;
+
+  // Sem os parâmetros da trilha (link antigo da trilha removida): volta para a tela inicial.
+  useEffect(() => {
+    if (!isV2) router.replace('/(app)/(tabs)' as any);
+  }, [isV2]);
+
+  // 1ª atividade da trilha (gramática da 1ª unidade do nível, ou a unidade grátis da trilha extra):
+  // só 5 exercícios e sem reprovação. Quase metade das contas novas parava antes de terminar os 10,
+  // e 1 em cada 5 que terminavam reprovava logo na primeira experiência.
+  const isFirstActivity = useMemo(() => {
+    if (!isV2 || params.activity !== 'grammar' || !params.moduleId || !params.unitId) return false;
+    const t = extraTrack(level);
+    if (t) return t.tasteUnit.moduleId === params.moduleId && t.tasteUnit.unitId === params.unitId;
+    const first = listModules(level as V2Level)[0];
+    return !!first && first.id === params.moduleId && first.units[0]?.id === params.unitId;
+  }, [isV2, level, params.activity, params.moduleId, params.unitId]);
+  const FIRST_ACTIVITY_EXERCISES = 5;
 
   // ── Build flat steps array ─────────────────────────────────
   const steps: SessionStep[] = [
-    ...(topic?.grammar.map(ex => ({ kind: 'grammar' as const, exercise: ex })) ?? []),
+    ...((isFirstActivity ? topic?.grammar.slice(0, FIRST_ACTIVITY_EXERCISES) : topic?.grammar)?.map(ex => ({ kind: 'grammar' as const, exercise: ex })) ?? []),
     ...(topic?.pronunciation.map(ph => ({ kind: 'pronunciation' as const, phrase: ph })) ?? []),
   ];
   const totalSteps = steps.length;
@@ -222,19 +231,43 @@ export default function LearnSessionScreen() {
   const [sessionXP, setSessionXP] = useState(0);
   const [sessionErrors, setSessionErrors] = useState(0);
 
-  // ── Promotion state ────────────────────────────────────────
-  const [showPromotion, setShowPromotion] = useState(false);
-  const [promotionNextLevel, setPromotionNextLevel] = useState<string>('');
-
   // ── Step index — with resume from SecureStore ──────────────
-  const resumeKey = userId
-    ? (isV2
-        ? `learn_step_v2_${userId}_${params.moduleId}_${params.unitId}_${params.activity ?? 'both'}`
-        : `learn_step_${userId}_${level}_${moduleIndex}_${topicIndex}`)
+  const resumeKey = userId && isV2
+    ? `learn_step_v2_${userId}_${params.moduleId}_${params.unitId}_${params.activity ?? 'both'}`
     : null;
 
   const [stepIdx, setStepIdx]         = useState(0);
+  const stepIdxRef = useRef(0);
+  stepIdxRef.current = stepIdx;
   const [isComplete, setIsComplete]   = useState(false);
+  // Atividade concluída: a tela da sequência do dia (1x por dia, depois das conquistas).
+  useEffect(() => { if (isComplete) celebrateStreak(); }, [isComplete]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (isComplete && firstLesson && userId) clearFirstLessonPending(userId); }, [isComplete, firstLesson, userId]);
+  // Começou e largou: lesson_started ao abrir, lesson_abandoned ao sair sem terminar (em que passo parou).
+  const isCompleteRef = useRef(false);
+  isCompleteRef.current = isComplete;
+  const totalStepsRef = useRef(0);
+  totalStepsRef.current = totalSteps;
+  useEffect(() => {
+    if (!isV2 || !userId) return;
+    const base = { level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null, activity: params.activity ?? 'both', first: isFirstActivity };
+    track('lesson_started', { ...base, total: totalStepsRef.current });
+    return () => {
+      if (!isCompleteRef.current) track('lesson_abandoned', { ...base, step: stepIdxRef.current, total: totalStepsRef.current });
+    };
+  }, [isV2, userId, params.moduleId, params.unitId, params.activity]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Conquista não interrompe exercício: o card fica na fila e aparece na tela de conclusão,
+  // antes da próxima atividade (que espera ele fechar para tocar áudio).
+  // Só pausa depois que a conquista da atividade anterior (se houver) já apareceu e foi fechada.
+  const [celebrationClear, setCelebrationClear] = useState(false);
+  useEffect(() => { waitForCelebration().then(() => setCelebrationClear(true)); }, [waitForCelebration]);
+  useFocusEffect(
+    useCallback(() => {
+      if (isComplete || !celebrationClear) return;
+      pauseNotifications(true);
+      return () => pauseNotifications(false);
+    }, [pauseNotifications, isComplete, celebrationClear])
+  );
   // Pulse anim para o botao redondo de mic durante gravacao
   const micRingAnim = useRef(new Animated.Value(0)).current;
   // "Me ajuda" — explicacao contextual via LLM (PT-BR Novice, EN Inter+)
@@ -315,6 +348,8 @@ export default function LearnSessionScreen() {
   // O passo atual fica salvo (resumeKey), então ao voltar o aluno continua desta pergunta.
   const navigation = useNavigation();
   const inProgressRef = useRef(false);
+  const exitInfoRef = useRef({ userId, level });
+  exitInfoRef.current = { userId, level };
   inProgressRef.current = !isComplete && (stepIdx > 0 || gStatus === 'submitted');
   useEffect(() => {
     const sub = navigation.addListener('beforeRemove', (e: any) => {
@@ -325,7 +360,12 @@ export default function LearnSessionScreen() {
         isPortuguese ? 'Quando voltar, você continua desta pergunta.' : "When you come back, you'll pick up from this question.",
         [
           { text: isPortuguese ? 'Continuar' : 'Keep going', style: 'cancel' },
-          { text: isPortuguese ? 'Sair' : 'Leave', style: 'destructive', onPress: () => navigation.dispatch(e.data.action) },
+          { text: isPortuguese ? 'Sair' : 'Leave', style: 'destructive', onPress: () => {
+            // Saída no meio da atividade: registra em que passo o aluno parou.
+            logAttempt(exitInfoRef.current.userId, { level: exitInfoRef.current.level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null,
+              activityType: params.activity === 'ls' ? 'speaking' : 'grammar', stepIdx: stepIdxRef.current, event: 'exit' });
+            navigation.dispatch(e.data.action);
+          } },
         ],
       );
     });
@@ -333,6 +373,7 @@ export default function LearnSessionScreen() {
   }, [navigation, isPortuguese]);
   const [userAnswer, setUserAnswer]     = useState('');
   const [isCorrect, setIsCorrect]       = useState<boolean | null>(null);
+  const [repeatedPrompt, setRepeatedPrompt] = useState(false); // "corrigir o erro": mandou a frase do enunciado sem mudar
   const [showHint, setShowHint]         = useState(false);
   const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
   const [shuffledChoices, setShuffledChoices] = useState<string[]>([]);
@@ -350,7 +391,8 @@ export default function LearnSessionScreen() {
   // ── Pronunciation state ────────────────────────────────────
   type PronStatus = 'loading_audio' | 'listening' | 'recording' | 'assessing' | 'result' | 'error' | 'retry';
   type PronFeedbackState = 'correct' | 'close' | 'error';
-  type PronFeedback = { state: PronFeedbackState; message: string; xp: number } | null;
+  // missing = palavras esperadas que não apareceram; listenAgain = 2ª falha seguida na frase.
+  type PronFeedback = { state: PronFeedbackState; message: string; xp: number; missing?: string[]; listenAgain?: boolean } | null;
   const [pronStatus, setPronStatus]           = useState<PronStatus>('loading_audio');
   const [charlotteAudioUri, setCharlotteAudioUri] = useState<string | null>(null);
   const [listenWriteAnswer, setListenWriteAnswer] = useState('');
@@ -365,6 +407,21 @@ export default function LearnSessionScreen() {
   const pronFeedbackAnim = useRef(new Animated.Value(0)).current;
   // on-device ASR transcript (repeat)
   const speechTranscriptRef = useRef('');
+  // Todas as leituras do reconhecimento (o celular devolve mais de uma); a correção fica com a melhor.
+  const speechAltsRef = useRef<string[]>([]);
+  // Último erro do reconhecimento nesta gravação; se for de serviço indisponível (ex.: Android sem
+  // inglês instalado), as próximas gravações passam a ser conferidas pelo servidor.
+  const asrErrorRef = useRef<string | null>(null);
+  const asrBrokenRef = useRef(false);
+  const usedAsrRef = useRef(false);
+  // Falhas seguidas na frase atual (zera ao trocar de frase).
+  const stepFailsRef = useRef(0);
+  // Microfone negado: mostra aviso com atalho para os Ajustes, em vez de o botão não fazer nada.
+  const [micBlocked, setMicBlocked] = useState(false);
+  // Microfone ainda não liberado: o botão vira "toque para liberar" e o toque só pede a permissão.
+  // Antes o pedido do sistema abria no meio do "segurar para falar": o aluno soltava o dedo com o
+  // aviso na tela e a primeira gravação dava erro (AudioRecorder.stop rejeitado, ~1 em cada aluno novo no Android).
+  const [micAsk, setMicAsk] = useState(false);
 
   // Loop de pulso do mic ring durante gravacao.
   // (declarado aqui, apos o useState de pronStatus, para evitar TDZ.)
@@ -386,11 +443,12 @@ export default function LearnSessionScreen() {
   // ── Speech recognition events (no-op on builds without native module) ──
   useSpeechRecognitionEvent('result', (event) => {
     if (!ASR_AVAILABLE) return;
-    const transcript = event.results[0]?.transcript;
-    if (transcript) speechTranscriptRef.current = transcript;
+    const alts = (event.results ?? []).map(r => r?.transcript).filter((t): t is string => !!t);
+    if (alts.length) { speechTranscriptRef.current = alts[0]; speechAltsRef.current = alts; }
   });
-  useSpeechRecognitionEvent('error', () => {
-    // keep whatever transcript we have so far
+  useSpeechRecognitionEvent('error', (event) => {
+    // Mantém o que já foi entendido; guarda o motivo para decidir o plano B.
+    asrErrorRef.current = (event as { error?: string })?.error ?? 'unknown';
   });
 
   const { playingMessageId, toggle: toggleAudio, stop: stopAudio } = useMessageAudioPlayer();
@@ -556,6 +614,7 @@ export default function LearnSessionScreen() {
     setGStatus('answering');
     setUserAnswer('');
     setIsCorrect(null);
+    setRepeatedPrompt(false);
     setShowHint(false);
     setHelpExplanation(null);
     setHelpLoading(false);
@@ -581,6 +640,7 @@ export default function LearnSessionScreen() {
   const loadPronStep = useCallback(async (ph: PronStep) => {
     setPronStatus('loading_audio');
     setPronFeedback(null);
+    stepFailsRef.current = 0;
     pronFeedbackAnim.setValue(0);
     setListenWriteAnswer('');
     setListenWriteCorrect(null);
@@ -646,11 +706,15 @@ export default function LearnSessionScreen() {
     // Autoplay (padrao Duolingo): toca uma vez ao entrar no step.
     // Categoria ja foi setada acima — toggleAudio nao precisa fazer swap.
     if (autoplayUri && ph.type !== 'sentence_stress') {
+      const uri = autoplayUri;
       setTimeout(() => {
-        try { toggleAudio(charlottePlayId, autoplayUri!); } catch {}
+        // Card de conquista da atividade anterior na tela: toca só depois que ele fechar.
+        waitForCelebration().then(() => {
+          try { toggleAudio(charlottePlayId, uri); } catch {}
+        });
       }, 600);
     }
-  }, [fetchTTS, stopAudio, pronFeedbackAnim, toggleAudio]);
+  }, [fetchTTS, stopAudio, pronFeedbackAnim, toggleAudio, waitForCelebration]);
 
   // ── Initialise & step transitions ──────────────────────────
   useEffect(() => {
@@ -660,8 +724,24 @@ export default function LearnSessionScreen() {
     } else {
       loadPronStep(currentStep.phrase);
     }
+  // Unidade na chave também: um link para outra unidade reaproveita a tela e pode cair no mesmo passo.
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stepIdx]);
+  }, [stepIdx, params.moduleId, params.unitId, params.activity]);
+
+  // ── Grammar: botão "Ouvir" (exercícios sobre som) ──────────
+  const [grammarListenLoading, setGrammarListenLoading] = useState(false);
+  const playGrammarListen = useCallback(async (text: string) => {
+    if (grammarListenLoading) return;
+    setGrammarListenLoading(true);
+    try {
+      const uri = await fetchTTS(text);
+      if (!uri) return;
+      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false, interruptionMode: 'doNotMix' }).catch(() => {});
+      toggleAudio(`grammar-listen-${stepIdx}`, uri);
+    } finally {
+      setGrammarListenLoading(false);
+    }
+  }, [fetchTTS, toggleAudio, stepIdx, grammarListenLoading]);
 
   // ── Grammar: check answer ──────────────────────────────────
   const handleGrammarSubmit = () => {
@@ -705,6 +785,7 @@ export default function LearnSessionScreen() {
     const correct = checkGrammar(ex, userAnswer);
     const xp = correct ? 10 : 0;
     setIsCorrect(correct);
+    setRepeatedPrompt(!correct && ex.type === 'fix_error' && repeatsPrompt(userAnswer, ex.sentence));
     setGStatus('submitted');
     setSessionXP(prev => prev + xp);
 
@@ -758,13 +839,214 @@ export default function LearnSessionScreen() {
     setPronFeedback(null);
     pronFeedbackAnim.setValue(0);
     speechTranscriptRef.current = '';
+    speechAltsRef.current = [];
     setPronStatus('listening');
   };
 
+  // Pular a frase (registra para o painel de onde os alunos travam).
+  const handleSkipPron = () => {
+    logAttempt(userId, { ...pronLogBase(), event: 'skip', score: pronScoresRef.current.get(stepIdx) ?? null });
+    handleNext();
+  };
+
+  // "Ouvir de novo" depois de errar duas vezes: volta para a frase e toca o áudio.
+  const handleListenAgain = () => {
+    handleRetryPron();
+    setTimeout(() => { if (charlotteAudioUriRef.current) toggleAudio(charlottePlayId, charlotteAudioUriRef.current); }, 150);
+  };
+
+  const pronLogBase = () => ({
+    level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null, activityType: 'speaking' as const,
+    stepIdx, expected: currentStep?.kind === 'pronunciation' ? (currentStep.phrase.text ?? null) : null,
+  });
+
+  // Palavras da frase como aparecem na tela, marcando as que faltaram (para "Faltou: ...").
+  const missingDisplay = (phrase: string, missing: string[]): string[] => {
+    if (!missing.length) return [];
+    const miss = new Set(missing);
+    const out: string[] = [];
+    for (const tok of phrase.split(/\s+/)) {
+      const clean = tok.replace(/^[^\w$]+|[^\w%]+$/g, '');
+      if (!clean) continue;
+      const norm = normalizeSpeech(clean).split(' ').filter(Boolean);
+      if (norm.length && norm.some(w => miss.has(w))) out.push(clean);
+    }
+    return out.slice(0, 6);
+  };
+
+  // Corrige a tentativa (todas as leituras do reconhecimento) e mostra o resultado.
+  const finishPronAttempt = (alts: string[], source: 'device' | 'server') => {
+    if (!currentStep || currentStep.kind !== 'pronunciation') return;
+    const phraseText = currentStep.phrase.text ?? '';
+    const m = alts.length ? bestSpeechMatch(alts, phraseText) : { percent: 0, missing: [], transcript: '' };
+    const pct = m.percent;
+    // Sem a pontuação final da transcrição (senão a mensagem fica com 'thank you.".').
+    const transcript = (m.transcript ?? '').replace(/[.!?…]+\s*$/, '');
+    const missing = missingDisplay(phraseText, m.missing);
+    const missLine = missing.length && transcript
+      ? (isPortuguese ? ` Faltou: ${missing.join(', ')}.` : ` Missing: ${missing.join(', ')}.`) : '';
+
+    // A frase é uma pergunta e o aluno RESPONDEU ("I'm fine", "Yes, I was") em vez de repetir: diz isso.
+    const answered = /\?\s*["')]*\s*$/.test(phraseText.trim()) && !!transcript
+      && /^(yes|yeah|yep|no|nope|i|i'm|im|fine|good|great|ok|okay|sure|we|it|my|they|he|she)\b/i.test(transcript.trim());
+    const answeredMsg = isPortuguese
+      ? `É para repetir a pergunta, não responder. Entendemos: "${transcript}". Ouça e diga a pergunta igual.`
+      : `Repeat the question, don't answer it. We heard: "${transcript}". Listen and say the same question.`;
+
+    let feedback: NonNullable<PronFeedback>;
+    // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
+    if (isNoviceLike) {
+      if (pct >= 70) {
+        feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage(hostName) : 'Nice! Pronunciation ok.' };
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        soundEngine.play('answer_correct').catch(() => {});
+      } else {
+        feedback = { state: 'error', xp: 0, message: transcript
+          ? (answered ? answeredMsg : isPortuguese ? `Tente de novo. Entendemos: "${transcript}".${missLine}` : `Try again. We heard: "${transcript}".${missLine}`)
+          : (isPortuguese ? 'Não ouvimos nada. Segure o botão enquanto fala, perto do microfone.' : "We didn't hear anything. Hold the button while you speak, close to the mic.") };
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+        soundEngine.play('answer_wrong').catch(() => {});
+        setSessionErrors(prev => prev + 1);
+      }
+    } else if (pct >= 85) {
+      feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Ótima pronúncia.' : 'Perfect! Great pronunciation.' };
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      soundEngine.play('answer_correct').catch(() => {});
+    } else if (pct >= 50) {
+      feedback = { state: 'close', xp: 8, message: answered ? answeredMsg : isPortuguese ? `Quase! Entendemos: "${transcript}".${missLine} Tente de novo.` : `Close! We heard: "${transcript}".${missLine} Try again.` };
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+    } else {
+      feedback = { state: 'error', xp: 0, message: transcript
+        ? (answered ? answeredMsg : isPortuguese ? `Tente de novo. Entendemos: "${transcript}".${missLine}` : `Try again. We heard: "${transcript}".${missLine}`)
+        : (isPortuguese ? 'Não ouvimos nada. Segure o botão enquanto fala, perto do microfone.' : "We didn't hear anything. Hold the button while you speak, close to the mic.") };
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+      soundEngine.play('answer_wrong').catch(() => {});
+      setSessionErrors(prev => prev + 1);
+    }
+    if (feedback.state === 'correct') stepFailsRef.current = 0;
+    else { stepFailsRef.current += 1; if (stepFailsRef.current >= 2) feedback.listenAgain = true; }
+    feedback.missing = missing;
+    // v2: Novice binário (100/0), outros níveis score real. Map por stepIdx
+    // garante que retry sobrescreve a tentativa anterior do mesmo step.
+    if (isV2) {
+      pronScoresRef.current.set(stepIdx,
+        isNoviceLike ? (feedback.state === 'correct' ? 100 : 0) : pct
+      );
+    }
+    saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
+      exerciseData: { question: phraseText, score: pct, userAnswer: transcript } });
+    logAttempt(userId, { ...pronLogBase(), answer: transcript, alternatives: alts, score: pct,
+      passed: feedback.state === 'correct', source, errorCode: asrErrorRef.current });
+    showPronResult(feedback);
+  };
+
   // ── Pronunciation: record (repeat = on-device ASR, fallback = Whisper) ──
+  // Erros do reconhecimento que significam "serviço indisponível neste aparelho" (sem inglês
+  // instalado, sem serviço de voz, rede do serviço fora): daí em diante a conferência vai pelo
+  // servidor. "no-speech", "speech-timeout" e "aborted" são normais (o aluno não falou / soltou).
+  const ASR_BROKEN = new Set(['language-not-supported', 'service-not-allowed', 'network', 'client', 'busy', 'audio-capture', 'unknown']);
+
+  const blockMic = () => {
+    recordingRef.current = false;
+    setMicBlocked(true);
+    setPronStatus('listening');
+    logAttempt(userId, { ...pronLogBase(), event: 'mic_blocked' });
+  };
+
+  // Grava DESDE O TOQUE (gravador do aparelho, que liga em milissegundos) e só depois reconhece:
+  //   iPhone: o reconhecimento do próprio iPhone lê o arquivo WAV (grátis, no aparelho);
+  //   Android (o reconhecimento só lê PCM bruto, que o gravador não gera) ou se o iPhone falhar: servidor.
+  // Antes o app ligava o reconhecimento ao vivo no toque, que demorava até ~1 s para começar a ouvir e
+  // cortava o começo da fala ("Good morning, everyone!" virava "Ever won").
+  const micReadyRef = useRef(false);
+  // Android: o gravador leva ~0,6 s para se preparar; fica preparado antes do toque (o toque só grava).
+  const recorderPreparedRef = useRef(false);
+  // Uma preparação por vez: duas seguidas (ex.: o toque que liberou o microfone e a volta do app ao
+  // primeiro plano) deixavam o gravador do Android travado e o "segurar para falar" não gravava.
+  const preparingRef = useRef<Promise<void> | null>(null);
+  const prepareRecorderAhead = async () => {
+    if (Platform.OS !== 'android' || recorderPreparedRef.current || recordingRef.current) return;
+    if (preparingRef.current) return preparingRef.current;
+    preparingRef.current = (async () => {
+      try {
+        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+        await recorder.prepareToRecordAsync();
+        recorderPreparedRef.current = true;
+      } catch { recorderPreparedRef.current = false; }
+    })();
+    try { await preparingRef.current; } finally { preparingRef.current = null; }
+  };
+  const fileAsrEndRef = useRef<(() => void) | null>(null);
+  useSpeechRecognitionEvent('end', () => { fileAsrEndRef.current?.(); });
+
+  const micGranted = async () => {
+    if (micReadyRef.current) return;
+    micReadyRef.current = true;
+    if (Platform.OS === 'ios' && ASR_AVAILABLE) await ExpoSpeechRecognitionModule.requestPermissionsAsync().catch(() => null);
+    setMicAsk(false);
+    setMicBlocked(false);
+    await prepareRecorderAhead();
+  };
+
+  // Quando o exercício de fala aparece, só CONFERE a permissão (sem abrir o pedido do sistema).
+  const checkMicPermission = async () => {
+    try {
+      const perm = await getRecordingPermissionsAsync();
+      if (perm.granted) { await micGranted(); return; }
+      if (perm.canAskAgain) setMicAsk(true);
+      else { setMicAsk(false); setMicBlocked(true); }
+    } catch { setMicAsk(true); }
+  };
+  useEffect(() => {
+    if (!currentStep || currentStep.kind !== 'pronunciation' || currentStep.phrase.type !== 'repeat' || micReadyRef.current) return;
+    checkMicPermission();
+  }, [stepIdx]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Volta dos Ajustes do celular: confere de novo (o aluno pode ter liberado lá).
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', st => {
+      if (st === 'active' && !micReadyRef.current && (micBlocked || micAsk)) checkMicPermission();
+    });
+    return () => sub.remove();
+  }, [micBlocked, micAsk]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /** Toque no botão enquanto o microfone não está liberado: pede a permissão (sem gravar). */
+  const requestMic = async () => {
+    try {
+      const perm = await requestRecordingPermissionsAsync();
+      if (perm.granted) { await micGranted(); return; }
+      if (!perm.canAskAgain) { setMicAsk(false); blockMic(); }
+    } catch { /* continua em "toque para liberar" */ }
+  };
+  /** Toque com o microfone bloqueado: tenta o pedido do sistema (o Android às vezes marca "não pedir
+   *  de novo" sem ser verdade) e, se ele não liberar, abre os Ajustes do app. */
+  const openMicSettings = async () => {
+    const perm = await requestRecordingPermissionsAsync().catch(() => null);
+    if (perm?.granted) { await micGranted(); return; }
+    Linking.openSettings().catch(() => {});
+  };
+
+  /** Reconhecimento do iPhone sobre o arquivo gravado. Devolve as leituras (vazio se não entendeu). */
+  const recognizeFile = (uri: string): Promise<string[]> => new Promise(resolve => {
+    speechTranscriptRef.current = '';
+    speechAltsRef.current = [];
+    asrErrorRef.current = null;
+    let done = false;
+    const finish = () => {
+      if (done) return; done = true; fileAsrEndRef.current = null;
+      resolve(speechAltsRef.current.length ? speechAltsRef.current : (speechTranscriptRef.current ? [speechTranscriptRef.current] : []));
+    };
+    fileAsrEndRef.current = finish;
+    setTimeout(finish, 6000);
+    try {
+      ExpoSpeechRecognitionModule.start({ lang: 'en-US', interimResults: false, maxAlternatives: 3, audioSource: { uri } });
+    } catch { finish(); }
+  });
+
   const startRecording = async () => {
     if (recordingRef.current) return;
     if (!currentStep || currentStep.kind !== 'pronunciation') return;
+    // Sem permissão o botão está em "toque para liberar" (requestMic); aqui nunca abre o pedido do sistema.
+    if (!micReadyRef.current) return;
 
     // Para o áudio de referência se estiver tocando. Antes o mic ficava
     // desabilitado enquanto a frase tocava (isPlaying), e ao pedir pra repetir
@@ -774,31 +1056,27 @@ export default function LearnSessionScreen() {
     recordingRef.current = true;
     recordingStartRef.current = Date.now();
     speechTranscriptRef.current = '';
+    speechAltsRef.current = [];
+    asrErrorRef.current = null;
     setPronStatus('recording');
+    // Vibração junto com a animação: a gravação começa neste toque.
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
     try {
-      if (currentStep.phrase.type === 'repeat' && ASR_AVAILABLE) {
-        // On-device ASR — no audio file needed
-        const perm = await ExpoSpeechRecognitionModule.requestPermissionsAsync();
-        if (!perm.granted) {
-          recordingRef.current = false;
-          setPronStatus('listening');
-          return;
-        }
-        // Registra a sessão no expo-audio antes do módulo nativo configurar a AVAudioSession.
-        // Sem isso, o setAudioModeAsync do reset não consegue sobrescrever o estado que o
-        // ExpoSpeechRecognitionModule deixa — causa earpiece persistente no iOS.
-        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
-        await setIsAudioActiveAsync(true).catch(() => {});
-        ExpoSpeechRecognitionModule.start({ lang: 'en-US', interimResults: true, continuous: true });
+      setMicBlocked(false);
+      usedAsrRef.current = false;
+      if (preparingRef.current) await preparingRef.current;
+      if (recorderPreparedRef.current) {
+        recorderPreparedRef.current = false;
+        recorder.record();
       } else {
-        // Recorder — Whisper fallback (when on-device ASR unavailable)
         await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
         await setIsAudioActiveAsync(true).catch(() => {});
         await recorder.prepareToRecordAsync();
         recorder.record();
       }
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+      // Quanto o gravador levou do toque até gravar, por aparelho (diagnóstico).
+      track('mic_start', { ms: Date.now() - recordingStartRef.current, platform: Platform.OS });
     } catch {
       recordingRef.current = false;
       setPronStatus('listening');
@@ -813,14 +1091,11 @@ export default function LearnSessionScreen() {
     // Ignore accidental releases shorter than 300ms
     if (elapsed < 300) {
       recordingRef.current = false;
-      if (ASR_AVAILABLE) {
-        ExpoSpeechRecognitionModule.abort();
-      } else {
-        try { await recorder.stop(); } catch {}
-      }
+      try { await recorder.stop(); } catch {}
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
       await setIsAudioActiveAsync(true).catch(() => {});
       setPronStatus('listening');
+      prepareRecorderAhead();
       return;
     }
 
@@ -829,111 +1104,45 @@ export default function LearnSessionScreen() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
     try {
-      if (ASR_AVAILABLE) {
-        // ── REPEAT: on-device ASR + string similarity ────────────
-        ExpoSpeechRecognitionModule.stop();
-        // Give ~300ms for final result event to fire
-        await new Promise(r => setTimeout(r, 300));
-        // Restore speaker routing — ASR leaves iOS audio session in earpiece mode
+      await recorder.stop();
+      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+      await setIsAudioActiveAsync(true).catch(() => {});
+      const audioUri = recorder.uri;
+      if (!audioUri) { setPronStatus('error'); return; }
+      const isWav = audioUri.toLowerCase().endsWith('.wav');
+
+      // iPhone: reconhecimento do aparelho sobre o arquivo.
+      if (Platform.OS === 'ios' && isWav && ASR_AVAILABLE && !asrBrokenRef.current) {
+        const alts = await recognizeFile(audioUri);
+        // O reconhecimento usa a sessão de áudio: devolve o som para o alto-falante.
         await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
         await setIsAudioActiveAsync(true).catch(() => {});
-
-        const transcript = speechTranscriptRef.current;
-        const pct = transcript ? wordMatchPercent(transcript, currentStep.phrase.text ?? '') : 0;
-
-        let feedback: NonNullable<PronFeedback>;
-        // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
-        if (isNoviceLike) {
-          if (pct >= 70) {
-            feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage(hostName) : 'Nice! Pronunciation ok.' };
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-            soundEngine.play('answer_correct').catch(() => {});
-          } else {
-            feedback = { state: 'error', xp: 0, message: isPortuguese ? `Tente de novo. Entendemos: "${transcript}".` : `Try again. We heard: "${transcript}".` };
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-            soundEngine.play('answer_wrong').catch(() => {});
-            setSessionErrors(prev => prev + 1);
-          }
-        } else if (pct >= 85) {
-          feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Ótima pronúncia.' : 'Perfect! Great pronunciation.' };
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-          soundEngine.play('answer_correct').catch(() => {});
-        } else if (pct >= 50) {
-          feedback = { state: 'close', xp: 8, message: isPortuguese ? `Quase! Entendemos: "${transcript}". Tente de novo.` : `Close! We heard: "${transcript}". Try again.` };
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
-        } else {
-          feedback = { state: 'error', xp: 0, message: isPortuguese ? 'Não conseguimos entender. Fale mais perto do microfone.' : "We didn't catch that. Speak closer to the mic." };
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-          soundEngine.play('answer_wrong').catch(() => {});
-          setSessionErrors(prev => prev + 1);
+        if (alts.length) { usedAsrRef.current = true; finishPronAttempt(alts, 'device'); return; }
+        const err = asrErrorRef.current;
+        if (err && ASR_BROKEN.has(err)) {
+          asrBrokenRef.current = true;
+          logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: err });
         }
-        // v2: Novice binário (100/0), outros níveis score real. Map por stepIdx
-        // garante que retry sobrescreve a tentativa anterior do mesmo step.
-        if (isV2) {
-          pronScoresRef.current.set(stepIdx,
-            isNoviceLike ? (feedback.state === 'correct' ? 100 : 0) : pct
-          );
-        }
-        saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
-          exerciseData: { question: currentStep.phrase.text, score: pct, userAnswer: transcript } });
-        showPronResult(feedback);
-
-      } else {
-        // ── REPEAT fallback: Whisper transcription (no native ASR) ──
-        await recorder.stop();
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
-        await setIsAudioActiveAsync(true).catch(() => {});
-        const audioUri = recorder.uri;
-        if (!audioUri) { setPronStatus('error'); return; }
-
-        const isWav = audioUri.toLowerCase().endsWith('.wav');
-        const formData = new FormData();
-        formData.append('audio', { uri: audioUri, name: isWav ? 'recording.wav' : 'recording.m4a', type: isWav ? 'audio/wav' : 'audio/x-m4a' } as unknown as Blob);
-        if (userId) formData.append('userId', userId);
-
-        const res = await fetch(`${API_BASE_URL}/api/transcribe`, { method: 'POST', body: formData });
-        if (!res.ok) throw new Error('Transcription failed');
-        const data = await res.json();
-
-        const transcript = (data.transcription as string) ?? '';
-        const pct = transcript ? wordMatchPercent(transcript, currentStep.phrase.text ?? '') : 0;
-
-        let feedback: NonNullable<PronFeedback>;
-        // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
-        if (isNoviceLike) {
-          if (pct >= 70) {
-            feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage(hostName) : 'Nice! Pronunciation ok.' };
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-            soundEngine.play('answer_correct').catch(() => {});
-          } else {
-            feedback = { state: 'error', xp: 0, message: isPortuguese ? `Tente de novo. Entendemos: "${transcript}".` : `Try again. We heard: "${transcript}".` };
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-            soundEngine.play('answer_wrong').catch(() => {});
-            setSessionErrors(prev => prev + 1);
-          }
-        } else if (pct >= 85) {
-          feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Ótima pronúncia.' : 'Perfect! Great pronunciation.' };
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-          soundEngine.play('answer_correct').catch(() => {});
-        } else if (pct >= 50) {
-          feedback = { state: 'close', xp: 8, message: isPortuguese ? `Quase! Entendemos: "${transcript}". Tente de novo.` : `Close! We heard: "${transcript}". Try again.` };
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
-        } else {
-          feedback = { state: 'error', xp: 0, message: isPortuguese ? 'Não conseguimos entender. Fale mais perto do microfone.' : "We didn't catch that. Speak closer to the mic." };
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-          soundEngine.play('answer_wrong').catch(() => {});
-          setSessionErrors(prev => prev + 1);
-        }
-        if (isV2) {
-          pronScoresRef.current.set(stepIdx,
-            isNoviceLike ? (feedback.state === 'correct' ? 100 : 0) : pct
-          );
-        }
-        saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
-          exerciseData: { question: currentStep.phrase.text, score: pct, userAnswer: transcript } });
-        showPronResult(feedback);
+        // Nada entendido no aparelho: confere pelo servidor antes de reprovar.
       }
-    } catch { setPronStatus('error'); }
+
+      // Android (e reserva do iPhone): transcrição pelo servidor.
+      const formData = new FormData();
+      formData.append('audio', { uri: audioUri, name: isWav ? 'recording.wav' : 'recording.m4a', type: isWav ? 'audio/wav' : 'audio/x-m4a' } as unknown as Blob);
+      if (userId) formData.append('userId', userId);
+
+      const res = await fetch(`${API_BASE_URL}/api/transcribe`, { method: 'POST', body: formData });
+      if (!res.ok) throw new Error('Transcription failed');
+      const data = await res.json();
+
+      const transcript = (data.transcription as string) ?? '';
+      finishPronAttempt(transcript ? [transcript] : [], 'server');
+    } catch (e) {
+      logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: e instanceof Error ? e.message.slice(0, 60) : 'erro' });
+      setPronStatus('error');
+    } finally {
+      prepareRecorderAhead(); // próxima tentativa (ou próxima frase) já com o gravador pronto
+    }
   };
 
   // ── Pronunciation: listen_write check ─────────────────────
@@ -970,8 +1179,6 @@ export default function LearnSessionScreen() {
     setWordOrderPool([]);
     const next = stepIdx + 1;
     if (next >= totalSteps) {
-      await saveTopicComplete(level, moduleIndex, topicIndex);
-
       // v2 progress write — compute score, save to learn_history_v2.
       // 1 retentativa de exercício não conta como erro extra (sessionErrors
       // só incrementa na PRIMEIRA falha de cada step). Score = % de steps
@@ -992,13 +1199,13 @@ export default function LearnSessionScreen() {
           rawScore = Math.round(((totalSteps - sessionErrors) / totalSteps) * 100);
         }
         const finalScore = Math.max(0, Math.min(100, rawScore));
-        const threshold = activityType === 'grammar' ? 70 : activityType === 'speaking' ? 60 : 100;
+        const threshold = isFirstActivity ? 0 : activityType === 'grammar' ? 70 : activityType === 'speaking' ? 60 : 100;
         const prevRow = v2Progress.get(params.moduleId, params.unitId, activityType);
         const previous = typeof prevRow?.score === 'number' && (prevRow?.attempts ?? 0) > 0 ? prevRow.score : null;
         setCompletedActivityScore({ score: finalScore, threshold, activityType, previous });
         try {
           await v2Progress.saveAttempt(
-            params.moduleId, params.unitId, activityType, finalScore,
+            params.moduleId, params.unitId, activityType, finalScore, isFirstActivity,
           );
         } catch (e) {
           console.warn('[v2Progress] save attempt failed', e);
@@ -1006,64 +1213,8 @@ export default function LearnSessionScreen() {
       }
 
       setIsComplete(true);
-      if (userId) track('lesson_completed', { level, module: moduleIndex, topic: topicIndex, isReview: !!params.reviewId, v2: isV2 });
-      // Revisões e promoção da trilha antiga: só fora do modo v2 (a v2 promove pela Home).
-      if (userId && !isV2) {
-        // Agendar revisões espaçadas (3, 7, 14, 30 dias) — somente se NÃO for uma revisão
-        if (!params.reviewId) {
-          scheduleReviews(userId, level, moduleIndex, topicIndex, topic?.title ?? '').catch(console.warn);
-        } else {
-          // Marcar revisão como concluída — ou reagendar se houve erros
-          if (sessionErrors > 0) {
-            rescheduleReview(
-              params.reviewId,
-              userId,
-              level,
-              moduleIndex,
-              topicIndex,
-              topic?.title ?? '',
-            ).catch(console.warn);
-          } else {
-            markReviewDone(params.reviewId).catch(console.warn);
-          }
-        }
-
-        // Check level promotion after topic complete (only when NOT a review)
-        if (!params.reviewId) {
-          try {
-            const { data: progressData } = await supabase
-              .from('learn_progress')
-              .select('completed')
-              .eq('user_id', userId)
-              .eq('level', level)
-              .maybeSingle();
-            const completedCount = (progressData?.completed ?? []).length;
-            const status = await checkLevelPromotion(userId, level, completedCount);
-            if (status.eligible && status.nextLevel) {
-              setPromotionNextLevel(status.nextLevel);
-              setShowPromotion(true);
-            }
-          } catch (e) {
-            console.warn('[Promotion] check error:', e);
-          }
-        }
-      }
-      // Celebracao de conclusao: detecta se foi modulo completo (ultimo topico)
-      const moduleData = CURRICULUM[level]?.[moduleIndex];
-      const isLastTopic = !!moduleData && topicIndex === moduleData.topics.length - 1;
-      const isModuleComplete = isLastTopic && !params.reviewId;
-
-      // Trilha v2: tópico = a unidade inteira; o som de tópico/módulo concluído sai do saveAttempt
-      // quando a atividade fecha a unidade (ver useLearnProgressV2). Aqui é só a trilha antiga.
-      if (!isV2) {
-        if (isModuleComplete) {
-          // SFX grande + voz "Module complete!" (delay interno no soundEngine)
-          soundEngine.play('module_complete').catch(() => {});
-        } else {
-          // Topico finalizado: SFX curto + voz "Topic done!"
-          soundEngine.play('topic_complete').catch(() => {});
-        }
-      }
+      if (userId) track('lesson_completed', { level, module: moduleIndex, topic: topicIndex, isReview: false, v2: isV2 });
+      // O som de tópico/módulo concluído sai do saveAttempt quando a atividade fecha a unidade (useLearnProgressV2).
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
       setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 120);
       setTimeout(() => Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success), 280);
@@ -1072,131 +1223,69 @@ export default function LearnSessionScreen() {
     }
   };
 
-  const handlePromotion = async () => {
-    if (!userId || !promotionNextLevel) return;
-    try {
-      await promoteUserLevel(userId, promotionNextLevel);
-      await refreshProfile(); // refresh auth context so level updates everywhere
-    } catch (e) {
-      console.error('[Promotion] error:', e);
-    }
-    setShowPromotion(false);
-    router.replace('/(app)'); // go home
-  };
-
   const progress = totalSteps > 0 ? (stepIdx + 1) / totalSteps : 0;
 
-  const modTitle   = CURRICULUM[level]?.[moduleIndex]?.title ?? '';
   const topicTitle = topic?.title ?? '';
   const tenseTag   = (topic && (topic as any).tense) ? String((topic as any).tense) : '';
 
   // ── Completion screen ──────────────────────────────────────
   if (isComplete) {
-    // ── Tela de conclusão: REVISÃO ─────────────────────────────
-    if (params.reviewId) {
-      const perfect = sessionErrors === 0;
-      return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'left', 'right']}>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 }}>
-            {/* Ícone */}
-            <View style={{
-              width: 80, height: 80, borderRadius: 40,
-              backgroundColor: perfect ? C.greenBg : C.violetBg,
-              borderWidth: 2, borderColor: perfect ? C.green : C.violet,
-              alignItems: 'center', justifyContent: 'center', marginBottom: 24,
-            }}>
-              {perfect
-                ? <CheckCircle size={40} color={C.green} weight="fill" />
-                : <ArrowsClockwise size={40} color={C.violet} weight="fill" />
-              }
-            </View>
-
-            {/* Badge revisão */}
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5,
-              backgroundColor: C.violetBg, borderRadius: 10,
-              paddingHorizontal: 10, paddingVertical: 4, marginBottom: 16 }}>
-              <ArrowsClockwise size={11} color={C.violet} weight="bold" />
-              <AppText style={{ fontSize: 11, fontWeight: '700', color: C.violet }}>
-                {isPortuguese ? 'Revisão' : 'Review'}
-              </AppText>
-            </View>
-
-            <AppText display style={{ fontSize: 30, fontWeight: '800', color: C.navy, marginBottom: 8, textAlign: 'center' }}>
-              {perfect
-                ? (isPortuguese ? 'Revisão perfeita!' : 'Perfect review!')
-                : (isPortuguese ? 'Revisão concluída!' : 'Review complete!')}
-            </AppText>
-            <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, marginBottom: 8 }}>
-              {topicTitle}
-            </AppText>
-            <AppText style={{ fontSize: 13, color: C.navyLight, textAlign: 'center', lineHeight: 20, marginBottom: 12 }}>
-              {sessionXP} {isPortuguese ? 'XP ganhos' : 'XP earned'}
-            </AppText>
-
-            {/* Feedback de erros / reagendamento */}
-            <View style={{
-              backgroundColor: perfect ? C.greenBg : C.violetBg,
-              borderRadius: 14, paddingHorizontal: 20, paddingVertical: 12,
-              marginBottom: 32, alignItems: 'center',
-            }}>
-              <AppText style={{ fontSize: 13, color: perfect ? C.green : C.violet, fontWeight: '600', textAlign: 'center', lineHeight: 20 }}>
-                {perfect
-                  ? (isPortuguese
-                    ? 'Excelente! Memória consolidada — próxima revisão em breve.'
-                    : 'Excellent! Memory consolidated — next review coming up.')
-                  : (isPortuguese
-                    ? `${sessionErrors} erro${sessionErrors > 1 ? 's' : ''} detectado${sessionErrors > 1 ? 's' : ''}. Revisão reagendada para daqui a 3 dias.`
-                    : `${sessionErrors} mistake${sessionErrors > 1 ? 's' : ''} detected. Review rescheduled for 3 days from now.`)
-                }
-              </AppText>
-            </View>
-
-            <TouchableOpacity
-              onPress={() => router.replace('/(app)')}
-              style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, paddingHorizontal: 40, marginBottom: 16 }}
-            >
-              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>
-                {isPortuguese ? 'Voltar ao início' : 'Back to home'}
-              </AppText>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => router.replace('/(app)/learn-trail')}>
-              <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>
-                {isPortuguese ? 'Ver trilha' : 'View trail'}
-              </AppText>
-            </TouchableOpacity>
-          </View>
-        </SafeAreaView>
-      );
-    }
-
+    const done = completedActivityScore;
+    const passedNow = !!done && done.score >= done.threshold;
+    const nextLabel = isV2 && passedNow
+      ? (done!.activityType === 'grammar' ? 'Listening & Speaking' : done!.activityType === 'speaking' ? 'Role-play' : null)
+      : null;
+    const firstDay = !!profile?.created_at && Date.now() - new Date(profile.created_at).getTime() < 24 * 3600000;
+    const callHost = characterInfo(profile?.active_character).name;
     // ── Tela de conclusão: APRENDIZADO NORMAL ──────────────────
-    const modules = CURRICULUM[level];
-    let nextModuleIdx = moduleIndex;
-    let nextTopicIdx = topicIndex + 1;
-
-    if (modules[nextModuleIdx] && nextTopicIdx >= modules[nextModuleIdx].topics.length) {
-      nextModuleIdx = moduleIndex + 1;
-      nextTopicIdx = 0;
-    }
-
-    const hasNextTopic = nextModuleIdx < modules.length && modules[nextModuleIdx]?.topics[nextTopicIdx] !== undefined;
-
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'left', 'right']}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 }}>
-          <View style={{
-            width: 88, height: 88, borderRadius: 44,
-            backgroundColor: '#DCFF4A',
-            alignItems: 'center', justifyContent: 'center', marginBottom: 24,
-          }}>
-            <CheckCircle size={44} color={C.navy} weight="fill" />
-          </View>
+          {firstLesson ? (
+            // 1ª lição da conta: a Charlotte comemorando, de corpo inteiro.
+            <Image
+              source={require('@/assets/charlotte-cheer-full.webp')}
+              style={{ height: 220, aspectRatio: 420 / 868, marginBottom: 12 }}
+              contentFit="contain"
+              accessibilityLabel="Charlotte"
+            />
+          ) : (
+            <View style={{
+              width: 88, height: 88, borderRadius: 44,
+              backgroundColor: '#DCFF4A',
+              alignItems: 'center', justifyContent: 'center', marginBottom: 24,
+            }}>
+              <CheckCircle size={44} color={C.navy} weight="fill" />
+            </View>
+          )}
           <AppText display style={{ fontSize: 30, fontWeight: '800', color: C.navy, marginBottom: 8, textAlign: 'center' }}>
-            {isPortuguese ? 'Tópico concluído!' : 'Topic complete!'}
+            {firstLesson
+              ? (isPortuguese ? 'Primeira lição concluída!' : 'First lesson done!')
+              : (isPortuguese ? 'Tópico concluído!' : 'Topic complete!')}
           </AppText>
           <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, marginBottom: 14 }}>
-            {topicTitle}
+            {firstLesson
+              ? (isPortuguese ? 'Seu inglês começou hoje. Amanhã tem mais.' : 'Your English started today. More tomorrow.')
+              : topicTitle}
           </AppText>
+          {/* Desafio dos 7 dias aceito na abertura: o 1º dia já conta. */}
+          {firstLesson && streakStatus?.challenge?.status === 'active' && (
+            <View style={{ width: '100%', maxWidth: 360, backgroundColor: C.navy, borderRadius: 18, padding: 14, marginBottom: 14, gap: 10 }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <AppText display style={{ fontSize: 17, fontWeight: '800', color: '#FFF' }}>
+                  {isPortuguese ? `Dia ${Math.max(1, streakStatus.challenge.day)} de 7` : `Day ${Math.max(1, streakStatus.challenge.day)} of 7`}
+                </AppText>
+                <AppText style={{ fontSize: 12, fontWeight: '700', color: '#DCFF4A' }}>
+                  {isPortuguese ? 'Desafio dos 7 dias' : '7-day challenge'}
+                </AppText>
+              </View>
+              <View style={{ flexDirection: 'row', gap: 6 }}>
+                {Array.from({ length: 7 }, (_, i) => (
+                  <View key={i} style={{ flex: 1, height: 8, borderRadius: 4, backgroundColor: i < Math.max(1, streakStatus.challenge!.day) ? '#DCFF4A' : 'rgba(255,255,255,0.14)' }} />
+                ))}
+              </View>
+            </View>
+          )}
           {/* Destaque "na hora": o que esta sessão teve de especial. */}
           {(() => {
             const c = completedActivityScore;
@@ -1304,30 +1393,36 @@ export default function LearnSessionScreen() {
                       }
                     }
                     router.replace('/(app)/(tabs)' as any);
-                  } else if (hasNextTopic) {
-                    router.replace({
-                      pathname: '/(app)/learn-session',
-                      params: { level, moduleIndex: String(nextModuleIdx), topicIndex: String(nextTopicIdx) },
-                    });
-                  } else {
-                    router.replace('/(app)/learn-trail');
                   }
                 }}
-                style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, paddingHorizontal: 40, marginBottom: 16 }}
+                style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, paddingHorizontal: 40, marginBottom: nextLabel ? 8 : 16 }}
               >
                 <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{isPortuguese ? 'Continuar trilha' : 'Continue trail'}</AppText>
               </TouchableOpacity>
             );
           })()}
-          <TouchableOpacity onPress={() => router.replace(isV2 ? '/(app)/(tabs)' as any : '/(app)/learn-trail')}>
+          {/* O que vem agora: quem faz 4+ atividades no 1º dia volta 2x mais no dia seguinte. */}
+          {nextLabel && (
+            <AppText style={{ fontSize: 13, color: C.navyLight, fontWeight: '600', marginBottom: 16, textAlign: 'center' }}>
+              {isPortuguese ? `Próximo: ${nextLabel}` : `Next: ${nextLabel}`}
+            </AppText>
+          )}
+          {/* 1º dia: a ligação com o personagem como alternativa para seguir agora. */}
+          {firstDay && (
+            <TouchableOpacity
+              onPress={() => { track('lesson_end_call_tap', { level, activity: params.activity ?? 'both' }); router.replace('/(app)/(tabs)/livevoice' as any); }}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderWidth: 1.5, borderColor: C.border, borderRadius: 16, paddingVertical: 12, paddingHorizontal: 22, marginBottom: 16 }}
+            >
+              <Phone size={16} color={C.navy} weight="fill" />
+              <AppText style={{ fontSize: 14, fontWeight: '700', color: C.navy }}>
+                {isPortuguese ? `Ou ligue para ${callHost}` : `Or call ${callHost}`}
+              </AppText>
+            </TouchableOpacity>
+          )}
+          <TouchableOpacity onPress={() => router.replace('/(app)/(tabs)' as any)}>
             <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>{isPortuguese ? 'Voltar' : 'Back'}</AppText>
           </TouchableOpacity>
         </View>
-        <PromotionModal
-          isOpen={showPromotion}
-          nextLevel={promotionNextLevel}
-          onConfirm={handlePromotion}
-        />
       </SafeAreaView>
     );
   }
@@ -1344,26 +1439,29 @@ export default function LearnSessionScreen() {
         borderBottomWidth: 1, borderBottomColor: C.border,
         position: 'relative',
       }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }} style={{ zIndex: 2 }}>
-          <ArrowLeft size={22} color={C.navy} weight="bold" />
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 18, zIndex: 2 }}>
+          <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+            <ArrowLeft size={22} color={C.navy} weight="bold" />
+          </TouchableOpacity>
+          {/* Reportar problema neste exercício (vai com o que está na tela). */}
+          <ReportIssueButton
+            kind={currentStep.kind === 'pronunciation' ? 'speech' : 'grammar'}
+            getContext={() => ({
+              screen: 'learn-session', level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null,
+              activity: params.activity ?? null, stepIdx,
+              exercise: (currentStep.kind === 'pronunciation' ? currentStep.phrase : currentStep.exercise) as unknown as Record<string, unknown>,
+              userAnswer: currentStep.kind === 'pronunciation' ? null : (userAnswer || null),
+              transcript: currentStep.kind === 'pronunciation' ? (speechTranscriptRef.current || null) : null,
+            })}
+          />
+        </View>
         {/* Titulo absoluto — centraliza na largura TOTAL do header, nao
             entre o arrow e o badge. pointerEvents:none deixa toques passarem. */}
         <View pointerEvents="none" style={{ position: 'absolute', left: 100, right: 100, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
-          {params.reviewId && (
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4,
-              backgroundColor: C.violetBg, borderRadius: 8,
-              paddingHorizontal: 8, paddingVertical: 2, marginBottom: 2 }}>
-              <ArrowsClockwise size={10} color={C.violet} weight="bold" />
-              <AppText style={{ fontSize: 9, fontWeight: '700', color: C.violet, textTransform: 'uppercase', letterSpacing: 1 }}>
-                {isPortuguese ? 'Revisão' : 'Review'}
-              </AppText>
-            </View>
-          )}
           <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '100%', textAlign: 'center' }} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
             {topicTitle}
           </AppText>
-          {!!tenseTag && !params.reviewId && (
+          {!!tenseTag && (
             <AppText numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7} style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>
               {tenseTag}
             </AppText>
@@ -1374,7 +1472,7 @@ export default function LearnSessionScreen() {
         </TouchableOpacity>
       </View>
 
-      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FAF7F0' }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FAF7F0' }} behavior="padding">
         <ScrollView
           ref={scrollRef}
           style={{ flex: 1, backgroundColor: '#FAF7F0' }}
@@ -1403,13 +1501,26 @@ export default function LearnSessionScreen() {
             <QueizyWave progress={progress} height={14} strokeWidth={4} />
           </View>
 
+          {/* 1ª lição da conta: a Charlotte tranquiliza no 1º exercício. */}
+          {firstLesson && stepIdx === 0 && (
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: C.navy, borderRadius: 18, paddingVertical: 12, paddingHorizontal: 14, marginBottom: 16 }}>
+              <CharlotteAvatar size="md" />
+              <AppText style={{ flex: 1, fontSize: 14, lineHeight: 20, color: '#FFF' }}>
+                <AppText style={{ fontSize: 14, fontWeight: '800', color: '#DCFF4A' }}>{isPortuguese ? 'Sua primeira lição! ' : 'Your first lesson! '}</AppText>
+                {isPortuguese ? 'Errar faz parte. Se travar, toque em "Me ajuda" que eu explico.' : 'Mistakes are part of it. If you get stuck, tap "Help me" and I\'ll explain.'}
+              </AppText>
+            </View>
+          )}
+
           {/* ── GRAMMAR (full-screen, no card wrapper) ── */}
           {currentStep.kind === 'grammar' && (
             <View style={{ flex: 1 }}>
               {/* Instruction — bubble na cor do nível, sem avatar, centralizado */}
               <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center' }}>
                 <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
-                  {currentStep.exercise.type === 'multiple_choice'
+                  {currentStep.exercise.type === 'multiple_choice' && currentStep.exercise.listen
+                    ? (isPortuguese ? 'Ouça e escolha a opção correta.' : 'Listen and choose the correct option.')
+                    : currentStep.exercise.type === 'multiple_choice'
                     ? (() => {
                         // Label smart: passage = leia texto / gap = completar frase /
                         // resto = escolha generica (perguntas tipo 'Qual soa MAIS natural?').
@@ -1429,6 +1540,22 @@ export default function LearnSessionScreen() {
                     :                                                   (isPortuguese ? 'Leia o texto e responda à pergunta.'                : 'Read the text and answer the question.')}
                 </AppText>
               </View>
+
+              {/* Exercício sobre som: botão para ouvir a palavra/frase (sem símbolo fonético na escrita). */}
+              {!!currentStep.exercise.listen && (
+                <TouchableOpacity
+                  onPress={() => playGrammarListen(currentStep.exercise.listen!)}
+                  activeOpacity={0.85}
+                  accessibilityRole="button"
+                  accessibilityLabel={isPortuguese ? 'Ouvir' : 'Listen'}
+                  style={{ alignSelf: 'center', flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 999, borderWidth: 1.5, borderColor: accent, paddingHorizontal: 18, paddingVertical: 10, marginBottom: 14 }}
+                >
+                  {grammarListenLoading
+                    ? <ActivityIndicator size="small" color={accent} />
+                    : <SpeakerHigh size={18} color={accent} weight="fill" />}
+                  <AppText style={{ fontSize: 14.5, fontWeight: '800', color: accent }}>{isPortuguese ? 'Ouvir' : 'Listen'}</AppText>
+                </TouchableOpacity>
+              )}
 
               {/* Row: Charlotte LEFT + sentence/passage RIGHT (Duo style).
                   WebP com alpha real — sem crop hack. */}
@@ -1603,7 +1730,7 @@ export default function LearnSessionScreen() {
                   lineHeight: currentStep.exercise.type === 'read_answer' ? 26 : 34,
                   marginBottom: gStatus === 'answering' ? 0 : 20,
                 }}>
-                  {formatDialogue(String(currentStep.exercise.type === 'read_answer' ? currentStep.exercise.question : currentStep.exercise.sentence) ?? '')}
+                  {formatDialogue(String((currentStep.exercise.type === 'read_answer' ? currentStep.exercise.question : currentStep.exercise.sentence) ?? ''))}
                 </AppText>
               )
               )}
@@ -1616,7 +1743,7 @@ export default function LearnSessionScreen() {
                 <View style={{ gap: 10 }}>
                   {shuffledOptions.map((opt, i) => {
                     const selected = userAnswer === opt;
-                    const isCorrectOpt = opt === currentStep.exercise.answer;
+                    const isCorrectOpt = opt === currentStep.exercise.answer || !!currentStep.exercise.accepts?.includes(opt);
                     // locked state colours (after submit)
                     let borderColor = selected ? accent : C.border;
                     let bgColor     = selected ? accentBg : C.card;
@@ -1725,8 +1852,8 @@ export default function LearnSessionScreen() {
                     ))}
                   </View>
 
-                  {/* Word pool — available chips */}
-                  <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+                  {/* Word pool — available chips (centralizadas) */}
+                  <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, justifyContent: 'center' }}>
                     {wordOrderPool.map((w, i) => (
                       <TouchableOpacity
                         key={i}
@@ -1814,7 +1941,10 @@ export default function LearnSessionScreen() {
               <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center' }}>
                 <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
                   {currentStep.phrase.type === 'repeat'
-                    ? (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e repita a frase.` : `Listen to ${hostName} and repeat the phrase.`)
+                    // Frase que é pergunta: muitos alunos respondiam ("I'm fine") em vez de repetir.
+                    ? ((currentStep.phrase.text ?? '').trim().endsWith('?')
+                      ? (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e repita a pergunta (não é para responder).` : `Listen to ${hostName} and repeat the question (don't answer it).`)
+                      : (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e repita a frase.` : `Listen to ${hostName} and repeat the phrase.`))
                     : currentStep.phrase.type === 'minimal_pairs'
                     ? (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e toque na palavra que ${hostSaidPt}.` : `Listen to ${hostName} and tap the word you heard.`)
                     : currentStep.phrase.type === 'sentence_stress'
@@ -1849,8 +1979,11 @@ export default function LearnSessionScreen() {
               {currentStep.phrase.type === 'repeat'
                 && pronStatus !== 'result' && pronStatus !== 'error'
                 && pronStatus !== 'loading_audio' && pronStatus !== 'assessing' && (() => {
-                  const bg = pronStatus === 'recording' ? '#D12A64' : '#6B4BFF';
                   const isRec = pronStatus === 'recording';
+                  // Microfone não liberado: botão apagado com balão; o toque pede a permissão
+                  // (ou abre os Ajustes, se o aluno negou de vez).
+                  const needsMic = !isRec && (micAsk || micBlocked);
+                  const bg = isRec ? '#D12A64' : needsMic ? '#B9B4C9' : '#6B4BFF';
                   return (
                     // Mic encostado no fim do espaço disponível (marginTop auto): cabe em qualquer altura de
                     // tela sem cortar o "Segure para falar" (antes era marginTop fixo de 420).
@@ -1879,10 +2012,23 @@ export default function LearnSessionScreen() {
                             }}
                           />
                         ))}
+                        {needsMic && (
+                          <View pointerEvents="none" style={{ position: 'absolute', top: -30, left: -90, right: -90, alignItems: 'center', zIndex: 2 }}>
+                            <View style={{ backgroundColor: C.navy, borderRadius: 12, paddingHorizontal: 14, paddingVertical: 8 }}>
+                              <AppText style={{ fontSize: 13, fontWeight: '700', color: '#FFF', textAlign: 'center' }}>
+                                {micBlocked
+                                  ? (isPortuguese ? 'Microfone bloqueado: toque para abrir os Ajustes' : 'Microphone blocked: tap to open Settings')
+                                  : (isPortuguese ? 'Toque aqui para liberar o microfone' : 'Tap here to allow the microphone')}
+                              </AppText>
+                            </View>
+                            <View style={{ width: 0, height: 0, borderLeftWidth: 7, borderRightWidth: 7, borderTopWidth: 7, borderLeftColor: 'transparent', borderRightColor: 'transparent', borderTopColor: C.navy }} />
+                          </View>
+                        )}
                         <TouchableOpacity
                           activeOpacity={0.85}
-                          onPressIn={startRecording}
-                          onPressOut={stopRecording}
+                          onPress={needsMic ? (micBlocked ? openMicSettings : requestMic) : undefined}
+                          onPressIn={needsMic ? undefined : startRecording}
+                          onPressOut={needsMic ? undefined : stopRecording}
                           style={{
                             width: 120, height: 120, borderRadius: 60,
                             backgroundColor: bg,
@@ -1903,9 +2049,11 @@ export default function LearnSessionScreen() {
                       }}>
                         {isRec
                           ? (isPortuguese ? 'Solte para parar' : 'Release to stop')
-                          : (isPortuguese ? 'Segure para falar' : 'Hold to speak')}
+                          : needsMic
+                            ? (isPortuguese ? 'Microfone ainda não liberado' : 'Microphone not allowed yet')
+                            : (isPortuguese ? 'Segure para falar' : 'Hold to speak')}
                       </AppText>
-                      {!isRec && (
+                      {!isRec && !needsMic && (
                         <BluetoothMicHint level={level} style={{ marginTop: 14, marginHorizontal: 0, maxWidth: 320 }} />
                       )}
                     </View>
@@ -2056,7 +2204,7 @@ export default function LearnSessionScreen() {
               {/* Error fallback — shown when assessment failed */}
               {pronStatus === 'error' && (
                 <AppText style={{ color: C.red, fontSize: 13, textAlign: 'center', marginBottom: 12, marginTop: 8 }}>
-                  {isPortuguese ? 'Não foi possível avaliar. Toque em Próximo para continuar.' : 'Could not assess. Tap Next to continue.'}
+                  {isPortuguese ? 'Não foi possível conferir agora. Tente de novo ou pule esta frase.' : "Couldn't check it right now. Try again or skip this phrase."}
                 </AppText>
               )}
 
@@ -2068,7 +2216,7 @@ export default function LearnSessionScreen() {
             tanto pra grammar quanto pra pronunciation ── */}
         <View style={{
           paddingHorizontal: 20, paddingTop: 12,
-          paddingBottom: insets.bottom + 12,
+          paddingBottom: bottomInset + 12,
           backgroundColor: '#FAF7F0',
         }}>
           {/* ── Grammar ── */}
@@ -2161,11 +2309,34 @@ export default function LearnSessionScreen() {
                 Botao redondo de mic renderiza no main area acima (centralizado). */}
           {currentStep.kind === 'pronunciation' && currentStep.phrase.type === 'repeat' && (
             pronStatus === 'error' ? (
-              <TouchableOpacity onPress={handleNext}
-                style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Próximo' : 'Next')}</AppText>
-                {stepIdx + 1 < totalSteps && <ArrowRight size={18} color="#FFF" weight="bold" />}
-              </TouchableOpacity>
+              <View>
+                <TouchableOpacity onPress={handleRetryPron}
+                  style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                  <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{isPortuguese ? 'Tentar de novo' : 'Try again'}</AppText>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={handleSkipPron} style={{ alignItems: 'center', marginTop: 12 }}>
+                  <AppText style={{ fontSize: 13, color: C.navyLight, fontWeight: '600' }}>
+                    {stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir mesmo assim' : 'Finish anyway') : (isPortuguese ? 'Pular' : 'Skip')}
+                  </AppText>
+                </TouchableOpacity>
+              </View>
+            ) : micBlocked && pronStatus === 'listening' ? (
+              <View style={{ backgroundColor: 'rgba(255,79,139,0.08)', borderRadius: 16, padding: 14, gap: 10 }}>
+                <AppText style={{ fontSize: 13.5, color: C.navy, lineHeight: 19, textAlign: 'center' }}>
+                  {isPortuguese
+                    ? 'O Queizy está sem acesso ao microfone. Libere nos Ajustes do celular para fazer este exercício.'
+                    : "Queizy can't access your microphone. Allow it in your phone's Settings to do this exercise."}
+                </AppText>
+                <TouchableOpacity onPress={openMicSettings}
+                  style={{ backgroundColor: C.navy, borderRadius: 14, paddingVertical: 13, alignItems: 'center' }}>
+                  <AppText style={{ fontSize: 14.5, fontWeight: '800', color: '#FFF' }}>{isPortuguese ? 'Abrir Ajustes' : 'Open Settings'}</AppText>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={handleSkipPron} style={{ alignItems: 'center' }}>
+                  <AppText style={{ fontSize: 13, color: C.navyLight, fontWeight: '600' }}>
+                    {stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir mesmo assim' : 'Finish anyway') : (isPortuguese ? 'Pular' : 'Skip')}
+                  </AppText>
+                </TouchableOpacity>
+              </View>
             ) : pronStatus === 'loading_audio' ? (
               <View style={{ alignItems: 'center', paddingVertical: 12 }}>
                 <ActivityIndicator color={accent} />
@@ -2205,7 +2376,7 @@ export default function LearnSessionScreen() {
           backgroundColor: isCorrect ? '#F1FFB8' : '#FFEEF4',
           borderTopLeftRadius: 24, borderTopRightRadius: 24,
           paddingHorizontal: 24, paddingTop: 20,
-          paddingBottom: insets.bottom + 20,
+          paddingBottom: bottomInset + 20,
           transform: [{ translateY: feedbackAnim.interpolate({ inputRange: [0, 1], outputRange: [300, 0] }) }],
         }}>
           {/* Header row: icon + title + XP badge */}
@@ -2224,6 +2395,17 @@ export default function LearnSessionScreen() {
               </AppText>
             </View>
           </View>
+
+          {/* Aluno repetiu a frase do enunciado no "corrigir o erro" */}
+          {!isCorrect && repeatedPrompt && (
+            <View style={{ padding: 12, backgroundColor: 'rgba(107,75,255,0.08)', borderRadius: 12, marginBottom: 10 }}>
+              <AppText style={{ fontSize: 14, color: C.navy, lineHeight: 20 }}>
+                {isPortuguese
+                  ? 'Você repetiu a frase do exercício. A ideia é encontrar o erro e reescrever a frase já corrigida.'
+                  : 'You repeated the sentence from the exercise. Find the mistake and rewrite the sentence correctly.'}
+              </AppText>
+            </View>
+          )}
 
           {/* Correct answer (wrong only) */}
           {!isCorrect && (
@@ -2299,7 +2481,7 @@ export default function LearnSessionScreen() {
         const fb = pronFeedback;
         const isCorrectState = fb.state === 'correct';
         const isCloseState   = fb.state === 'close';
-        const panelBg    = isCorrectState ? '#E3F6EC' : isCloseState ? '#EFECFF' : '#FFEEF4';
+        const panelBg    = isCorrectState ? '#F1FFB8' : isCloseState ? '#EFECFF' : '#FFEEF4';
         const panelBorder = isCorrectState ? 'rgba(8,128,74,0.25)' : isCloseState ? 'rgba(107,75,255,0.30)' : 'rgba(255,79,139,0.30)';
         const textColor   = isCorrectState ? C.green : isCloseState ? C.violet : C.red;
         const btnColor    = isCorrectState ? C.green : isCloseState ? C.violet : C.red;
@@ -2316,7 +2498,7 @@ export default function LearnSessionScreen() {
             backgroundColor: panelBg,
             borderTopLeftRadius: 24, borderTopRightRadius: 24,
             paddingHorizontal: 24, paddingTop: 20,
-            paddingBottom: insets.bottom + 20,
+            paddingBottom: bottomInset + 20,
             transform: [{ translateY: pronFeedbackAnim.interpolate({ inputRange: [0, 1], outputRange: [300, 0] }) }],
           }}>
             {/* Header: icon + title + XP badge */}
@@ -2349,6 +2531,15 @@ export default function LearnSessionScreen() {
               </View>
             )}
 
+            {/* Segunda falha seguida na frase: ouvir de novo antes de tentar */}
+            {canRetry && fb.listenAgain && !!charlotteAudioUri && (
+              <TouchableOpacity onPress={handleListenAgain} activeOpacity={0.85}
+                style={{ borderRadius: 16, paddingVertical: 13, marginBottom: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, borderWidth: 1.5, borderColor: btnColor }}>
+                <SpeakerHigh size={18} color={btnColor} weight="fill" />
+                <AppText style={{ fontSize: 14.5, fontWeight: '800', color: btnColor }}>{isPortuguese ? 'Ouvir a frase de novo' : 'Hear the phrase again'}</AppText>
+              </TouchableOpacity>
+            )}
+
             {/* Primary button */}
             <TouchableOpacity
               onPress={canRetry && !isCorrectState ? handleRetryPron : handleNext}
@@ -2365,7 +2556,7 @@ export default function LearnSessionScreen() {
 
             {/* Skip link for close/error on audio types */}
             {canRetry && (
-              <TouchableOpacity onPress={handleNext} style={{ alignItems: 'center', marginTop: 12 }}>
+              <TouchableOpacity onPress={handleSkipPron} style={{ alignItems: 'center', marginTop: 12 }}>
                 <AppText style={{ fontSize: 13, color: textColor, fontWeight: '600', opacity: 0.7 }}>
                   {stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir mesmo assim' : 'Finish anyway') : (isPortuguese ? 'Pular' : 'Skip')}
                 </AppText>
@@ -2387,7 +2578,7 @@ export default function LearnSessionScreen() {
             backgroundColor: '#FFF',
             borderTopLeftRadius: 24, borderTopRightRadius: 24,
             paddingHorizontal: 24, paddingTop: 20,
-            paddingBottom: insets.bottom + 24,
+            paddingBottom: bottomInset + 24,
           }}>
             {/* Handle */}
             <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,19,31,0.15)', alignSelf: 'center', marginBottom: 20 }} />

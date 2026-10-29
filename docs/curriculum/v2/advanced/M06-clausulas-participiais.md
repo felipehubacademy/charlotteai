@@ -51,7 +51,7 @@
 4. **fix_error** — "Walking down the street, the rain started suddenly."
    **Hint**: Subject of participle must match subject of main clause
    **Answer**: While I was walking down the street, the rain started suddenly.
-   **Accepts**: Walking down the street, I felt the rain start suddenly.
+   **Accepts**: Walking down the street, I felt the rain start suddenly. / As I was walking down the street, the rain started suddenly. / When I was walking down the street, the rain started suddenly. / While I was walking down the street, it started raining suddenly.
    **Explanation**: As written, the participle "walking" attaches to "the rain" — the rain wasn't walking! Classic dangling participle. Fix by adding a subject clause or rewriting so the participle subject matches the main clause.
 
 5. **read_answer**
@@ -199,6 +199,7 @@
 3. **fill_gap** — "_____ by the team in only six weeks, the prototype exceeded expectations."
    **Hint**: past participle "develop"
    **Answer**: Developed
+   **Accepts**: Built / Designed
    **Explanation**: "Developed by the team in only six weeks" — passive past participle clause with agent. Subject of clause = "prototype" (which was developed).
 
 4. **fix_error** — "Building in 1900, the bridge is still standing."
@@ -246,9 +247,9 @@
    **label_pt**: "Biografia ('Born in...')"
    **label_en**: "Biography ('Born in...')"
    **hidden_prompt**: "user uses 'Born + place/time, + main clause'"
-   **hint_pt**: "Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms."
-   **hint_en**: "Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms."
-   **example_pass**: Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms. | Born in Recife and raised in São Paulo, she carries traces of both cities in her speech. | Born in the middle of a snowstorm, she's been told the story every winter of her life. | Born in a small fishing town and educated in Paris, he moves between worlds with ease. | Born just after the war, my grandfather grew up with stories nobody wanted to tell twice.
+   **hint_pt**: "Born in Recife and raised in Belo Horizonte, she speaks Portuguese with two distinct rhythms."
+   **hint_en**: "Born in Recife and raised in Belo Horizonte, she speaks Portuguese with two distinct rhythms."
+   **example_pass**: Born in Recife and raised in Belo Horizonte, she speaks Portuguese with two distinct rhythms. | Born in Recife and raised in São Paulo, she carries traces of both cities in her speech. | Born in the middle of a snowstorm, she's been told the story every winter of her life. | Born in a small fishing town and educated in Paris, he moves between worlds with ease. | Born just after the war, my grandfather grew up with stories nobody wanted to tell twice.
    **example_fail**: finished (bare participle, no clause) | After I had finished the report, I sent it (full clause, not participial) | I worked all day (off-topic, no participial reduction)
 
 3. **id**: 3
@@ -267,7 +268,7 @@
 1. **Charlotte**: "Three descriptions opening with a past participle clause. 'Built... Born... Made...'"
 2. **Student**: ~"Built in 1872, the old town hall still hosts weekly markets."
 3. **Charlotte**: "Biography?"
-4. **Student**: ~"Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms."
+4. **Student**: ~"Born in Recife and raised in Belo Horizonte, she speaks Portuguese with two distinct rhythms."
 5. **Charlotte**: "Trait?"
 6. **Student**: ~"Surrounded by trees on three sides, the cabin is invisible from the road."
 7. **Charlotte**: "Compressions, descriptive grade."
@@ -352,17 +353,20 @@
 3. **fill_gap** — "_____ for an hour, I finally gave up and called a cab."
    **Hint**: "Having" + past participle "wait"
    **Answer**: Having waited
+   **Accepts**: After waiting
    **Explanation**: "Having waited for an hour" — the waiting was completed (or felt completed) before the main action of giving up. Past perfect compressed.
 
 4. **fix_error** — "Finished my work, I went home."
    **Hint**: Use "Having finished" to mark completion before the main action
    **Answer**: Having finished my work, I went home.
+   **Accepts**: After finishing my work, I went home. / Having finished work, I went home.
    **Explanation**: Bare "Finished my work" reads as past participle adjective ("being in a finished state"), which is awkward here. "Having finished" clearly marks the sequence: first finish, then go.
 
 5. **read_answer**
    **Passage**: "Having spent twenty years in the same office, she felt a kind of vertigo on her first morning of retirement. Having earned the right to rest, she didn't quite know what to do with it. Having always defined herself by what she made, she had to learn what she was without making anything at all."
    **Question**: What three things had she done by the time of her retirement morning?
-   **Answer**: spent twenty years in the same office, earned the right to rest, always defined herself by what she made
+   **Answer**: twenty years in office, earned right to rest, defined by what she made
+   **Accepts**: spent twenty years in the same office / earned the right to rest / defined herself by what she made
    **Explanation**: Three perfect participle openers ("Having spent... Having earned... Having always defined") layered to compress a whole biography of completed actions into one paragraph. Common in essay and biography.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -381,7 +385,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three stories or thoughts, each starting with 'Having + past participle'."
+**Opening line**: "Give me three stories or thoughts, each one starting with 'Having' plus a past participle."
 
 **Sub-objectives** (3 objetivos):
 
@@ -416,7 +420,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three stories or thoughts, each starting with 'Having + past participle'."
+1. **Charlotte**: "Give me three stories or thoughts, each one starting with 'Having' plus a past participle."
 2. **Student**: ~"Having finished my morning run, I felt ready for the meeting."
 3. **Charlotte**: "Endorphins. Long experience?"
 4. **Student**: ~"Having worked from home for two years, I forgot how loud offices are."
@@ -509,12 +513,14 @@
 4. **fix_error** — "Being told the news, she immediately called her mother."
    **Hint**: For completed action before main, use "Having been told"
    **Answer**: Having been told the news, she immediately called her mother.
+   **Accepts**: After being told the news, she immediately called her mother. / Told the news, she immediately called her mother.
    **Explanation**: "Being told" suggests simultaneity (as she was being told). For a completed event BEFORE her call, "Having been told" is clearer. Both grammatical, but C1 precision favours the perfect form here.
 
 5. **read_answer**
    **Passage**: "Having been raised by two demanding teachers, he had assumed all parents were like that. Having been corrected at every dinner table, he had grown into someone who corrected gently. Having been loved fiercely if formally, he loved the same way — and was loved back the same way too."
    **Question**: How was he raised, according to the passage?
-   **Answer**: by two demanding teachers / corrected at every dinner table / loved fiercely but formally
+   **Answer**: by two demanding teachers
+   **Accepts**: corrected at every dinner table / loved fiercely but formally / demanding teachers
    **Explanation**: Three "Having been + past participle" openers compress three formative passive experiences into a portrait. Each shaped a present trait.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -533,7 +539,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three formative passive moments — 'Having been told... Having been raised... Having been...'"
+**Opening line**: "Tell me about three moments that shaped you, each one starting with 'Having been...', like 'Having been told...' or 'Having been raised...'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -568,7 +574,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three formative passive moments — 'Having been told... Having been raised... Having been...'"
+1. **Charlotte**: "Tell me about three moments that shaped you, each one starting with 'Having been...', like 'Having been told...' or 'Having been raised...'."
 2. **Student**: ~"Having been raised by two musicians, I can't imagine a quiet house."
 3. **Charlotte**: "Background determines tolerance for chaos. Warning?"
 4. **Student**: ~"Having been warned about the traffic, I left an hour earlier."
@@ -666,7 +672,8 @@
 5. **read_answer**
    **Passage**: "The waiter, balancing four plates and wearing the practised smile of someone who'd done this a thousand times, made it through the crowded dining room without spilling a drop. With diners watching, with chefs shouting, with the room nearly full to capacity, he placed each plate down as if the night were quiet."
    **Question**: How does the passage compress the waiter's situation?
-   **Answer**: with three "with + noun + -ing" clauses (diners watching, chefs shouting, room nearly full)
+   **Answer**: with diners watching, chefs shouting, room nearly full
+   **Accepts**: with diners watching / with chefs shouting / with room nearly full
    **Explanation**: Two reduced relatives open ("balancing four plates and wearing the practised smile") followed by three with-clauses ("With diners watching, with chefs shouting, with the room nearly full"). Compressed atmospheric writing.
 
 ### 2. Listening/Speaking (5 phrases)

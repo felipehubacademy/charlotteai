@@ -223,7 +223,7 @@ export function AddWordModal({
     <Modal visible={visible} animationType="fade" transparent statusBarTranslucent>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        behavior="padding"
       >
         {/* Backdrop */}
         <TouchableOpacity

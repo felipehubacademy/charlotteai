@@ -89,6 +89,9 @@
           "sentence": "The exam was _____ difficult as I expected.",
           "hint": "abre a estrutura de igualdade",
           "answer": "as",
+          "accepts": [
+            "just as"
+          ],
           "explanation": "\"As difficult as I expected\" — the first \"as\" opens the equality structure with expectation verbs."
         },
         {
@@ -152,7 +155,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte sugere que você compare três pares de coisas/pessoas da sua vida que são equivalentes em alguma qualidade — pode ser pessoas da família, lugares conhecidos, ou hábitos seus.",
-        "scenario_pt": "Charlotte sugere que você compare três pares de coisas ou pessoas da sua vida que são equivalentes em alguma qualidade — pode ser pessoas da família, lugares conhecidos ou hábitos seus.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -161,7 +163,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Comparação de igualdade entre pessoas",
             "label_en": "Equality comparison between people",
             "hidden_prompt": "user uses 'X is as + adj + as Y' to compare two people (family/friends)",
             "hint_en": "I'm as tall as my mother.",
@@ -178,7 +179,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Comparação entre coisas ou lugares",
             "label_en": "Comparison between things or places",
             "hidden_prompt": "user uses 'as + adj + as' to compare objects, cities, or items",
             "hint_en": "My phone is as fast as my laptop.",
@@ -195,7 +195,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Comparação envolvendo tempo, clima ou expectativa",
             "label_en": "Comparison involving time, weather, or expectation",
             "hidden_prompt": "user uses 'as + adj + as' with weather/expectation/days",
             "hint_en": "Today is as cold as yesterday.",
@@ -225,12 +224,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites you to share what's equally good or equally hard in life. Practice 'as...as' naturally.",
-        "intro_pt": "Charlotte te convida a compartilhar o que é igualmente bom ou difícil na vida. Pratica 'as...as' naturalmente.",
         "opening_message": "I think coffee is as enjoyable as tea. What's something you find equally good?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Duas coisas igualmente boas",
             "label_en": "Two equally good things",
             "hidden_prompt": "user states 'X is as + good/enjoyable/fun + as Y'",
             "hint_en": "Books are as fun as movies.",
@@ -247,7 +244,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Duas coisas igualmente difíceis ou cansativas",
             "label_en": "Two equally hard or tiring things",
             "hidden_prompt": "user uses 'as + difficult/tiring/hard + as'",
             "hint_en": "Studying is as tiring as exercise.",
@@ -264,7 +260,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar a Charlotte sobre algo igualmente bom para ela",
             "label_en": "Ask Charlotte about something equally good for her",
             "hidden_prompt": "user asks Charlotte 'what's as + adj + as ... for you?' or 'how about you?'",
             "hint_en": "How about you?",
@@ -315,7 +310,7 @@
             "no isn't"
           ],
           "answer": "isn't",
-          "explanation": "The negation goes on the verb \"to be\" before \"as\". \"Isn't / Is not as stressful as\" = is less stressful than."
+          "explanation": "The negation goes on the verb \"to be\" before \"as\". \"Isn't as stressful as\" = is less stressful than."
         },
         {
           "type": "word_bank",
@@ -327,7 +322,7 @@
             "better as"
           ],
           "answer": "as good as",
-          "explanation": "\"Not as good as\" — negative comparison. Note: \"isn't / is not as good as\" means INFERIOR to the other."
+          "explanation": "\"Not as good as\" — negative comparison. Note: \"isn't as good as\" means INFERIOR to the other."
         },
         {
           "type": "word_bank",
@@ -339,7 +334,7 @@
             "not is"
           ],
           "answer": "isn't",
-          "explanation": "Negation of \"to be\": \"isn't / is not\" before \"as tall as\"."
+          "explanation": "Negation of \"to be\": \"isn't\" before \"as tall as\"."
         },
         {
           "type": "fill_gap",
@@ -360,7 +355,11 @@
           "sentence": "This restaurant _____ as expensive as the one downtown.",
           "hint": "negação de to be 3ª pessoa",
           "answer": "isn't",
-          "explanation": "\"Isn't / Is not as expensive as\" — lower price than another option."
+          "accepts": [
+            "is not",
+            "wasn't"
+          ],
+          "explanation": "\"Isn't as expensive as\" — lower price than another option."
         },
         {
           "type": "fix_error",
@@ -374,7 +373,7 @@
           "sentence": "She doesn't as smart as her brother.",
           "hint": "Negação do verbo to be, não usa \"doesn't\"",
           "answer": "She isn't as smart as her brother.",
-          "explanation": "When the main verb is \"to be\", the negative uses \"isn't/aren't\", not \"doesn't/don't\". \"She isn't / is not as smart as her brother\"."
+          "explanation": "When the main verb is \"to be\", the negative uses \"isn't/aren't\", not \"doesn't/don't\". \"She isn't as smart as her brother\"."
         },
         {
           "type": "read_answer",
@@ -384,7 +383,7 @@
           "accepts": [
             "smaller"
           ],
-          "explanation": "The text says \"My new apartment isn't / is not as big as the old one\" — meaning the new one is smaller."
+          "explanation": "The text says \"My new apartment isn't as big as the old one\" — meaning the new one is smaller."
         }
       ],
       "listening_speaking": [
@@ -416,7 +415,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pergunta se algumas coisas estão à altura das suas expectativas — você usa \"not as...as\" para corrigir suposições otimistas dela.",
-        "scenario_pt": "Charlotte pergunta se algumas coisas estão à altura das suas expectativas — você usa \"not as...as\" para corrigir suposições otimistas dela.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -425,7 +423,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Não tão...quanto comparação sobre um lugar ou casa",
             "label_en": "Not as...as comparison about a place or home",
             "hidden_prompt": "user uses 'X isn't as + adj + as Y' for a place/home",
             "hint_en": "My new place isn't as quiet as the old one.",
@@ -442,7 +439,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Não tão...quanto recente vs passado",
             "label_en": "Not as...as recent vs past",
             "hidden_prompt": "user uses 'X isn't as + adj + as Y' for recent vs past",
             "hint_en": "This week isn't as busy as last week.",
@@ -459,7 +455,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Não tão...quanto sobre você mesmo",
             "label_en": "Not as...as about yourself",
             "hidden_prompt": "user uses 'I'm not as + adj + as ...' (self-comparison)",
             "hint_en": "I'm not as organized as my sister.",
@@ -489,12 +484,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte explores disappointments — things that weren't as great as expected. Practice 'not as...as' to express softer disappointment.",
-        "intro_pt": "Charlotte explora decepções — coisas que não foram tão boas quanto esperado. Pratique 'not as...as' para expressar decepção mais suave.",
         "opening_message": "Have you ever tried something that wasn't as good as people said?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo que não era tão bom quanto dito",
             "label_en": "Something that wasn't as good as said",
             "hidden_prompt": "user uses 'X wasn't as + good/great + as ...' for a disappointing experience",
             "hint_en": "The movie wasn't as good as I expected.",
@@ -511,7 +504,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Algo não tão difícil quanto parece",
             "label_en": "Something not as hard as it seems",
             "hidden_prompt": "user uses 'X isn't as + difficult/hard + as ...' (positive surprise)",
             "hint_en": "Cooking isn't as hard as it seems.",
@@ -528,7 +520,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar a Charlotte sobre uma decepção dela",
             "label_en": "Ask Charlotte about a disappointment of hers",
             "hidden_prompt": "user asks 'what wasn't as + adj + as for you?' or 'how about you?'",
             "hint_en": "How about you?",
@@ -612,6 +603,10 @@
           "sentence": "He works _____ as hard as his colleague.",
           "hint": "2x intensificador",
           "answer": "twice",
+          "accepts": [
+            "three times",
+            "half"
+          ],
           "explanation": "\"Twice as hard as\" — doubled effort. \"Twice\" always comes before the first \"as\"."
         },
         {
@@ -626,6 +621,10 @@
           "sentence": "She spent _____ as much time on this project as I did.",
           "hint": "2x (time = uncountable)",
           "answer": "twice",
+          "accepts": [
+            "three times",
+            "half"
+          ],
           "explanation": "\"Twice as much time as\" — time is uncountable, so \"much\". \"Twice\" opens the multiplier."
         },
         {
@@ -682,7 +681,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte conversa sobre coisas na sua vida que aumentaram ou diminuíram drasticamente — dinheiro, tempo, trabalho — e quer que você use multiplicadores para enfatizar a magnitude.",
-        "scenario_pt": "Charlotte quer saber sobre mudanças drásticas na sua vida. Pratica multiplicadores para mostrar magnitude.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -691,7 +689,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo dobrado (twice as much/many/adj)",
             "label_en": "Something doubled (twice as much/many/adj)",
             "hidden_prompt": "user uses 'twice as + much/many/adj + as'",
             "hint_en": "I drink twice as much coffee as last year.",
@@ -708,7 +705,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Algo triplicado+ (three/four times)",
             "label_en": "Something tripled+ (three/four times)",
             "hidden_prompt": "user uses 'three times as + adj/much/many + as'",
             "hint_en": "My commute is three times as long as before.",
@@ -725,7 +721,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Comparação multiplicada com outra pessoa",
             "label_en": "Multiplied comparison with another person",
             "hidden_prompt": "user uses 'X is twice/three times as + adj + as Y' comparing people",
             "hint_en": "My brother is twice as patient as I am.",
@@ -755,12 +750,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats about scaled changes in life. Use multipliers like 'twice as' and 'three times as'.",
-        "intro_pt": "Charlotte conversa sobre mudanças em escala na vida. Use multiplicadores como 'twice as' e 'three times as'.",
         "opening_message": "What costs twice as much now as it did five years ago?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo custando 2x ou 3x",
             "label_en": "Something costing 2x or 3x",
             "hidden_prompt": "user uses 'X costs twice/three times as much as + reference'",
             "hint_en": "Coffee costs twice as much as before.",
@@ -777,7 +770,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra mudança escalonada (tempo, trabalho)",
             "label_en": "Another scaled change (time, work)",
             "hidden_prompt": "user uses 'twice/three times as + adj/much + as'",
             "hint_en": "I work twice as much as I used to.",
@@ -794,7 +786,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar a Charlotte sobre uma mudança gradual dela",
             "label_en": "Ask Charlotte a scaled change of hers",
             "hidden_prompt": "user asks Charlotte 'what's twice/three times as... for you?'",
             "hint_en": "How about you?",
@@ -948,7 +939,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede reflexões filosóficas sobre como certas coisas crescem juntas na sua vida — quanto mais você faz X, mais Y acontece. Quer três observações suas.",
-        "scenario_pt": "Charlotte pede reflexões filosóficas sobre como certas coisas crescem juntas na sua vida — quanto mais você faz X, mais Y acontece. Quer três observações suas.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -957,7 +947,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Observação sobre estudo, trabalho ou crescimento",
             "label_en": "Observation about study, work, or growth",
             "hidden_prompt": "user uses 'The more I + verb, the more/better I + verb'",
             "hint_en": "The more I read, the more I learn.",
@@ -974,7 +963,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Observação sobre relacionamentos ou tempo",
             "label_en": "Observation about relationships or time",
             "hidden_prompt": "user uses 'The more X, the more Y' about people or time",
             "hint_en": "The more I see her, the more I appreciate her.",
@@ -991,7 +979,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Observação sobre dinheiro, esforço ou saúde",
             "label_en": "Observation about money, effort, or health",
             "hidden_prompt": "user uses 'The harder/more X, the more Y'",
             "hint_en": "The harder I exercise, the better I sleep.",
@@ -1021,12 +1008,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites philosophical 'the more X, the more Y' reflections. Practice parallel comparatives.",
-        "intro_pt": "Charlotte convida para reflexões filosóficas 'the more X, the more Y'. Pratique comparativos paralelos.",
         "opening_message": "I've noticed: the more I listen, the more I learn. What's your version?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reflexão pessoal com 'the more...the more'",
             "label_en": "Personal reflection with 'the more...the more'",
             "hidden_prompt": "user uses 'The more + clause, the more + clause' for personal insight",
             "hint_en": "The more I travel, the more curious I become.",
@@ -1043,7 +1028,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra reflexão (pode usar less ou comparativo curto)",
             "label_en": "Another reflection (can use less or short comparative)",
             "hidden_prompt": "user uses 'The less/harder/older + clause, the more/better/happier + clause'",
             "hint_en": "The less I worry, the happier I feel.",
@@ -1060,7 +1044,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar a Charlotte sobre seu paralelo",
             "label_en": "Ask Charlotte about her parallel",
             "hidden_prompt": "user asks 'How about you?' or 'What's your parallel?'",
             "hint_en": "How about you?",
@@ -1111,7 +1094,7 @@
             "no"
           ],
           "answer": "isn't",
-          "explanation": "Negative \"to be\" + \"as...as\". \"Isn't / Is not as cold as\" = less cold than. With \"to be\" the negation is \"isn't / is not\", never \"doesn't / does not\"."
+          "explanation": "Negative \"to be\" + \"as...as\". \"Isn't as cold as\" = less cold than. With \"to be\" the negation is \"isn't\", never \"doesn't\"."
         },
         {
           "type": "word_bank",
@@ -1149,6 +1132,10 @@
           "sentence": "This trip cost _____ as much as the last one.",
           "hint": "3x mais",
           "answer": "three times",
+          "accepts": [
+            "twice",
+            "half"
+          ],
           "explanation": "\"Three times as much as\" — multiplier opens the structure before \"as much as\"."
         },
         {
@@ -1212,7 +1199,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte pede uma descrição comparativa rica da sua vida atual versus passada — você tem que usar pelo menos três tipos diferentes de comparação na mesma fala.",
-        "scenario_pt": "Charlotte pede uma descrição comparativa rica da sua vida atual versus passada — você tem que usar pelo menos três tipos diferentes de comparação na mesma fala.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -1221,7 +1207,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Igualdade ou desigualdade",
             "label_en": "Equality or inequality",
             "hidden_prompt": "user uses 'as + adj + as' or 'not as + adj + as'",
             "hint_en": "I'm as busy as I was, but not as stressed.",
@@ -1238,7 +1223,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Comparação com multiplicador",
             "label_en": "Comparison with multiplier",
             "hidden_prompt": "user uses 'twice/three times as + adj/much/many + as'",
             "hint_en": "I have twice as many responsibilities now.",
@@ -1255,7 +1239,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Reflexão paralela com 'the more X, the more Y'",
             "label_en": "Parallel reflection with 'the more X, the more Y'",
             "hidden_prompt": "user uses 'The more X, the more Y'",
             "hint_en": "The more I grow, the more grateful I become.",
@@ -1285,12 +1268,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats about how modern life compares to the past. Use all four comparison structures.",
-        "intro_pt": "Charlotte conversa sobre como a vida moderna se compara ao passado. Use todas as quatro estruturas de comparação.",
         "opening_message": "Modern life isn't as simple as before, but it's not all bad. What do you think?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Comparação simples (as...as ou not as...as)",
             "label_en": "Simple comparison (as...as or not as...as)",
             "hidden_prompt": "user uses 'as + adj + as' or 'not as + adj + as'",
             "hint_en": "Modern life isn't as peaceful as before.",
@@ -1307,7 +1288,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Multiplicador ou paralelo",
             "label_en": "Multiplier or parallel",
             "hidden_prompt": "user uses 'twice/three times as' or 'the more X, the more Y'",
             "hint_en": "We're twice as connected but not always closer.",
@@ -1324,7 +1304,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Pedir a Charlotte sua comparação",
             "label_en": "Ask Charlotte for her comparison",
             "hidden_prompt": "user asks 'How about you?' or 'What do you think?'",
             "hint_en": "How about you?",

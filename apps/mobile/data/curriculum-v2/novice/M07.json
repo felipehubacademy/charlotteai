@@ -82,6 +82,10 @@
           "sentence": "I _____ drive a car.",
           "hint": "Verbo modal de habilidade",
           "answer": "can",
+          "accepts": [
+            "can't",
+            "cannot"
+          ],
           "explanation": "\"I can drive\" — habilidade. Note: \"I drive\" significa \"eu dirijo (frequente)\"; \"I can drive\" significa \"eu sei dirigir / sou capaz\"."
         },
         {
@@ -89,6 +93,10 @@
           "sentence": "My sister _____ dance very well.",
           "hint": "Verbo de habilidade (forma única)",
           "answer": "can",
+          "accepts": [
+            "can't",
+            "cannot"
+          ],
           "explanation": "\"My sister can dance\" — can para qualquer pessoa, sem mudança."
         },
         {
@@ -96,6 +104,10 @@
           "sentence": "They _____ play soccer.",
           "hint": "Modal \"saber/poder fazer\"",
           "answer": "can",
+          "accepts": [
+            "can't",
+            "cannot"
+          ],
           "explanation": "\"They can play\" — plural usa can igual: forma única."
         },
         {
@@ -291,7 +303,7 @@
             "no can"
           ],
           "answer": "can't",
-          "explanation": "Negativa de \"can\" é \"can't / cannot\" (cannot). \"I can't / cannot swim\" = \"Eu não sei nadar\". Pronúncia: /kænt/ (americano) ou /kɑːnt/ (britânico)."
+          "explanation": "Negativa de \"can\" é \"can't\" (cannot). \"I can't swim\" = \"Eu não sei nadar\". No inglês americano, a vogal de \"can't\" é mais aberta e longa que a de \"can\"; no britânico, soa parecido com \"cânt\"."
         },
         {
           "type": "multiple_choice",
@@ -302,7 +314,7 @@
             "no can"
           ],
           "answer": "can't",
-          "explanation": "\"She can't / cannot drive\" — negativa de can é can't pra todas as pessoas. Sem -s, sem auxiliar."
+          "explanation": "\"She can't drive\" — negativa de can é can't pra todas as pessoas. Sem -s, sem auxiliar."
         },
         {
           "type": "word_bank",
@@ -314,7 +326,7 @@
             "no can"
           ],
           "answer": "can't",
-          "explanation": "\"We can't / cannot speak\" — can't é a única forma negativa de can."
+          "explanation": "\"We can't speak\" — can't é a única forma negativa de can."
         },
         {
           "type": "word_bank",
@@ -326,42 +338,51 @@
             "no can"
           ],
           "answer": "can't",
-          "explanation": "\"He can't / cannot cook at all\" = \"Ele não sabe cozinhar nada\". \"At all\" intensifica a negação."
+          "explanation": "\"He can't cook at all\" = \"Ele não sabe cozinhar nada\". \"At all\" intensifica a negação."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ ride a bike — I never learned.",
           "hint": "Negativa de can",
           "answer": "can't",
-          "explanation": "\"I can't / cannot ride a bike\" = \"Não sei andar de bicicleta\". Forma contraída de \"cannot\"."
+          "accepts": [
+            "cannot"
+          ],
+          "explanation": "\"I can't ride a bike\" = \"Não sei andar de bicicleta\". Forma contraída de \"cannot\"."
         },
         {
           "type": "fill_gap",
           "sentence": "My father _____ sing — he's terrible at it.",
           "hint": "Negativa de can (3ª pessoa também usa can't)",
           "answer": "can't",
-          "explanation": "\"My father can't / cannot sing\" — mesmo na 3ª pessoa singular, can't."
+          "accepts": [
+            "cannot"
+          ],
+          "explanation": "\"My father can't sing\" — mesmo na 3ª pessoa singular, can't."
         },
         {
           "type": "fill_gap",
           "sentence": "Sorry, I _____ help you right now — I'm too busy.",
           "hint": "Negativa polida com can",
           "answer": "can't",
-          "explanation": "\"I can't / cannot help\" — usado pra recusar polidamente. Comum em contextos sociais."
+          "accepts": [
+            "cannot"
+          ],
+          "explanation": "\"I can't help\" — usado pra recusar polidamente. Comum em contextos sociais."
         },
         {
           "type": "fix_error",
           "sentence": "She doesn't can drive.",
           "hint": "Negativa de can não usa doesn't",
           "answer": "She can't drive.",
-          "explanation": "Modais formam negativa direta com \"not\" (contraído: -n't). NÃO usa doesn't/don't. \"She can't / cannot drive\", nunca \"She doesn't / does not can\"."
+          "explanation": "Modais formam negativa direta com \"not\" (contraído: -n't). NÃO usa doesn't/don't. \"She can't drive\", nunca \"She doesn't can\"."
         },
         {
           "type": "fix_error",
           "sentence": "I no can swim.",
           "hint": "Forma da negativa em inglês",
           "answer": "I can't swim.",
-          "explanation": "\"No can\" é influência do português. A negativa correta é \"can't / cannot\" (cannot). Forma fixa."
+          "explanation": "\"No can\" é influência do português. A negativa correta é \"can't\" (cannot). Forma fixa."
         },
         {
           "type": "read_answer",
@@ -371,7 +392,7 @@
           "accepts": [
             "write French"
           ],
-          "explanation": "O texto diz \"she can't / cannot write it well\"."
+          "explanation": "O texto diz \"she can't write it well\"."
         }
       ],
       "listening_speaking": [
@@ -848,6 +869,18 @@
           "sentence": "I can play the _____ very well.",
           "hint": "Instrumento musical",
           "answer": "piano",
+          "accepts": [
+            "guitar",
+            "violin",
+            "drums",
+            "flute",
+            "saxophone",
+            "bass",
+            "cello",
+            "trumpet",
+            "keyboard",
+            "ukulele"
+          ],
           "explanation": "\"Play the piano\" — chunk com \"the\" obrigatório pra instrumentos musicais. Exemplo: play the guitar, play the violin."
         },
         {
@@ -859,7 +892,13 @@
             "English",
             "German",
             "French",
-            "Italian"
+            "Italian",
+            "Portuguese",
+            "Chinese",
+            "Russian",
+            "Japanese",
+            "Arabic",
+            "Korean"
           ],
           "explanation": "Idiomas após \"speak\" — sem artigo. \"Spanish\", \"English\", \"German\"."
         },
@@ -871,7 +910,17 @@
           "accepts": [
             "tennis",
             "basketball",
-            "volleyball"
+            "volleyball",
+            "football",
+            "golf",
+            "baseball",
+            "chess",
+            "cards",
+            "games",
+            "video games",
+            "rugby",
+            "handball",
+            "futsal"
           ],
           "explanation": "\"Play + esporte\" sem artigo. \"Play soccer\", \"play tennis\", \"play basketball\"."
         },
@@ -892,7 +941,7 @@
         {
           "type": "read_answer",
           "passage": "I can speak two languages: English and Italian. My brother can play the guitar. My sister can play tennis very well.",
-          "question": "O que a irmã sabe tocar?",
+          "question": "O que a irmã sabe jogar?",
           "answer": "tennis",
           "explanation": "O texto diz \"My sister can play tennis very well\"."
         }
@@ -1070,7 +1119,7 @@
             "not"
           ],
           "answer": "can't",
-          "explanation": "Contraste positiva + negativa. \"I can swim but I can't / cannot dive\" = \"Sei nadar mas não sei mergulhar\". A negativa de \"can\" é \"can't / cannot\"."
+          "explanation": "Contraste positiva + negativa. \"I can swim but I can't dive\" = \"Sei nadar mas não sei mergulhar\". A negativa de \"can\" é \"can't\"."
         },
         {
           "type": "multiple_choice",
@@ -1112,7 +1161,10 @@
           "sentence": "I _____ drive yet — I'm only fifteen.",
           "hint": "Negativa de can",
           "answer": "can't",
-          "explanation": "\"I can't / cannot drive yet\" = \"Ainda não sei dirigir\". \"Yet\" indica que vai aprender no futuro."
+          "accepts": [
+            "cannot"
+          ],
+          "explanation": "\"I can't drive yet\" = \"Ainda não sei dirigir\". \"Yet\" indica que vai aprender no futuro."
         },
         {
           "type": "fill_gap",
@@ -1126,6 +1178,10 @@
           "sentence": "We _____ both play the guitar.",
           "hint": "Modal de habilidade positivo",
           "answer": "can",
+          "accepts": [
+            "can't",
+            "cannot"
+          ],
           "explanation": "\"We can both play\" — ambos podem. \"Can\" igual pra qualquer pessoa."
         },
         {
@@ -1248,7 +1304,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_pt": "Charlotte quer um retrato completo das suas habilidades — positiva, negativa, e devolva a pergunta.",
-        "opening_message": "Skills check! What can you do, what can't you?",
+        "opening_message": "Skills check! What can you do, and what can't you do?",
         "objectives": [
           {
             "id": 1,
@@ -1300,7 +1356,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Skill swap complete!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Skills check! What can you do, what can't you?\"\n2. **Student**: \"I can swim.\"\n3. **Charlotte**: \"Nice. Limitation?\"\n4. **Student**: \"I can't drive.\"\n5. **Charlotte**: \"Yet!\"\n6. **Student**: \"Can you cook?\"\n7. **Charlotte**: \"A little. Skill swap complete!\"\n\n> N05 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Skills check! What can you do, and what can't you do?\"\n2. **Student**: \"I can swim.\"\n3. **Charlotte**: \"Nice. Limitation?\"\n4. **Student**: \"I can't drive.\"\n5. **Charlotte**: \"Yet!\"\n6. **Student**: \"Can you cook?\"\n7. **Charlotte**: \"A little. Skill swap complete!\"\n\n> N05 chat = LLM puro.\n\n---"
       }
     }
   ],

@@ -61,6 +61,7 @@
 7. **fill_gap** — "He was _____ his car with soap when I called."
    **Hint**: verb "wash" in -ing form
    **Answer**: washing
+   **Accepts**: cleaning / scrubbing / rinsing
    **Explanation**: "Wash" + ing = "washing". "With soap" makes it clear the verb is "wash" (not "fix" / "drive"). Note: simple -ing, no doubled consonant.
 
 8. **fix_error** — "I were studying yesterday."
@@ -208,47 +209,51 @@
 1. **multiple_choice** — "I _____ sleeping. I was studying."
    **Options**: wasn't / weren't / didn't
    **Answer**: wasn't
-   **Explanation**: Past continuous negative with I: "I wasn't / was not" (was not).
+   **Explanation**: Past continuous negative with I: "I wasn't" (was not).
 
 2. **multiple_choice** — "They _____ playing soccer; they were watching TV."
    **Options**: weren't / wasn't / didn't
    **Answer**: weren't
-   **Explanation**: Plural past continuous negative: "weren't / were not" (were not).
+   **Explanation**: Plural past continuous negative: "weren't" (were not).
 
 3. **word_bank** — "She _____ cooking; she was on the phone."
    **Choices**: wasn't / weren't / didn't / no was
    **Answer**: wasn't
-   **Explanation**: She → "wasn't / was not".
+   **Explanation**: She → "wasn't".
 
 4. **word_bank** — "We _____ talking when you came in."
    **Choices**: weren't / wasn't / didn't / no were
    **Answer**: weren't
-   **Explanation**: We plural → "weren't / were not".
+   **Explanation**: We plural → "weren't".
 
 5. **fill_gap** — "He _____ working at home yesterday."
    **Hint**: Past continuous negative (contracted)
    **Answer**: wasn't
-   **Explanation**: "He wasn't / was not working" — 3rd person negative contracted.
+   **Accepts**: was not
+   **Explanation**: "He wasn't working" — 3rd person negative contracted.
 
 6. **fill_gap** — "I _____ studying when you called."
    **Hint**: Past continuous negative with I
    **Answer**: wasn't
-   **Explanation**: "I wasn't / was not" — past continuous negative.
+   **Accepts**: was not
+   **Explanation**: "I wasn't" — past continuous negative.
 
 7. **fill_gap** — "They _____ paying attention."
    **Hint**: Plural past continuous negative
    **Answer**: weren't
-   **Explanation**: "They weren't / were not paying" — plural negative.
+   **Accepts**: were not
+   **Explanation**: "They weren't paying" — plural negative.
 
 8. **fix_error** — "I didn't studying yesterday."
    **Hint**: Past continuous doesn't use "didn't"
    **Answer**: I wasn't studying yesterday.
-   **Explanation**: Past continuous negative uses was/were + not + -ing, not "didn't / did not". "I wasn't / was not studying", not "I didn't / did not studying".
+   **Accepts**: I didn't study yesterday.
+   **Explanation**: Past continuous negative uses was/were + not + -ing, not "didn't". "I wasn't studying", not "I didn't studying".
 
 9. **fix_error** — "She weren't cooking."
    **Hint**: She is singular
    **Answer**: She wasn't cooking.
-   **Explanation**: She → "wasn't / was not" (was not). "Weren't / Were not" is for plurals.
+   **Explanation**: She → "wasn't" (was not). "Weren't" is for plurals.
 
 10. **read_answer**
     **Passage**: "I wasn't sleeping at midnight — I was reading. My sister wasn't working either. We weren't doing anything special."
@@ -431,6 +436,7 @@
     **Passage**: "Q: Were you studying yesterday at 8pm? A: Yes, I was. Q: Was your sister with you? A: No, she wasn't. She was at the gym."
     **Question**: Where was the sister?
     **Answer**: at the gym
+    **Accepts**: gym
     **Explanation**: The text says "She was at the gym".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -580,9 +586,10 @@
    **Explanation**: After "while", use past continuous: "while she was working".
 
 5. **fill_gap** — "I was reading when my friend _____."
-   **Hint**: past simple of "call"
+   **Hint**: past simple: the action that interrupted (e.g. "call")
    **Answer**: called
-   **Explanation**: Event (interruption) = past simple: "called".
+   **Accepts**: arrived / came / came in / came over / came by / came home / showed up / dropped by / phoned / rang / texted / knocked / walked in
+   **Explanation**: Event (interruption) = past simple: "called", "arrived", "came"... The long action ("was reading") uses past continuous.
 
 6. **fill_gap** — "While she _____ TV, the lights went off."
    **Hint**: past continuous of "watch"
@@ -592,6 +599,7 @@
 7. **fill_gap** — "As I _____ home, I saw an accident."
    **Hint**: past continuous of "walk"
    **Answer**: was walking
+   **Accepts**: was going / was driving / was coming / was running / was riding / was cycling / was heading
    **Explanation**: "As" similar to "while" — background action.
 
 8. **fix_error** — "I was cooking when she was arriving."
@@ -764,9 +772,10 @@
 6. **fill_gap** — "She _____ the bus when it started to rain."
    **Hint**: past continuous of "wait for"
    **Answer**: was waiting for
+   **Accepts**: was taking / was catching / was getting on / was riding / was boarding / was waiting at
    **Explanation**: "Was waiting for the bus" — background.
 
-7. **fill_gap** — "While we _____ for lunch, it started to rain."
+7. **fill_gap** — "While we _____ (cook) for lunch, it started to rain."
    **Hint**: past continuous of "cook"
    **Answer**: were cooking
    **Explanation**: "Were cooking" — plural past continuous.
@@ -875,9 +884,9 @@
    **label_pt**: "Adicionar evento com when"
    **label_en**: "Add event with when"
    **hidden_prompt**: "user adds event with 'when + past simple'"
-   **hint_pt**: "When I met an old friend by chance."
-   **hint_en**: "When I met an old friend by chance."
-   **example_pass**: When I met an old friend by chance. | They were eating dinner at 8pm. | We were watching TV last night.
+   **hint_pt**: "I was walking home when I met an old friend by chance."
+   **hint_en**: "I was walking home when I met an old friend by chance."
+   **example_pass**: I was walking home when I met an old friend by chance. | They were eating dinner at 8pm. | We were watching TV last night.
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 3. **id**: 3
@@ -896,7 +905,7 @@
 1. **Charlotte**: "Tell me about a memorable moment from this year."
 2. **Student**: "I was traveling in Italy."
 3. **Charlotte**: "Nice. And then?"
-4. **Student**: "When I met an old friend by chance."
+4. **Student**: "I was walking home when I met an old friend by chance."
 5. **Charlotte**: "Small world!"
 6. **Student**: "How about you?"
 7. **Charlotte**: "I was at a café when I met someone special. Cool memory!"

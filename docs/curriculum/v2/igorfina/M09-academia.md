@@ -238,6 +238,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 7. **fill_gap** — "Can I _____ this machine?"
    **Hint**: Usar
    **Answer**: use
+   **Accepts**: try
    **Explanation**: "Can I use this machine?" = posso usar esse aparelho? Pergunta educada na academia.
 
 8. **fix_error** — "Three series of eight repetitions."
@@ -574,6 +575,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 9. **fix_error** — "Squat works my arms."
    **Hint**: Agachamento trabalha outra parte
    **Answer**: Squat works my legs.
+   **Accepts**: Squats work my legs.
    **Explanation**: Squat = pernas (e glúteos). Curl é que trabalha braço.
 
 10. **read_answer**
@@ -717,7 +719,7 @@ Igorfina fala no estilo do astro do basquete (imitação). Aluno repete; a pron�
 5. **fill_gap** — "That workout was so _____. I need a nap!"
    **Hint**: Cansativo (o que cansa)
    **Answer**: tiring
-   **Accepts**: exhausting / hard
+   **Accepts**: exhausting / hard / difficult
    **Explanation**: "Tiring" = cansativo. A pessoa fica "tired"; o treino é "tiring".
 
 6. **fill_gap** — "I go to the _____ five days a week."

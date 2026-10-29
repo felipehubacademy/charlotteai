@@ -359,6 +359,7 @@ function parseGrammarExercise(raw) {
   const wordsField     = field(raw, 'Words');
   const prompt         = field(raw, 'Prompt');
   const example_answer = field(raw, 'Example answer') || field(raw, 'Example');
+  const listen         = field(raw, 'Listen');   // texto que o botão "Ouvir" toca
 
   if (passage)        ex.passage = stripQuotes(passage);
   if (question)       ex.question = question;
@@ -372,6 +373,7 @@ function parseGrammarExercise(raw) {
   if (wordsField)     ex.words = splitSlash(wordsField);
   if (prompt)         ex.prompt = prompt;
   if (example_answer) ex.example_answer = example_answer;
+  if (listen)         ex.listen = listen;
 
   return ex;
 }
@@ -640,11 +642,19 @@ function loadAudioManifest() {
   }
 }
 
+// Trilha de personagem (Igorfina): a chave leva o personagem e a imitação da unidade, senão uma
+// frase igual à da Charlotte pegaria o áudio dela (voz errada). Mesma regra em generate-ls-audio.mjs.
+export function audioKey(mod, unit, text) {
+  if (String(mod.level).toLowerCase() !== 'igorfina') return ttsHash(text);
+  const imp = unit?.roleplay?.persona_outfit?.match(/^igorfina_(president|hoops)$/)?.[1] ?? 'base';
+  return ttsHash(`igorfina|${imp}|${text}`);
+}
+
 function stampAudioUrls(mod, audioManifest) {
   for (const unit of mod.units) {
     for (const phrase of unit.listening_speaking ?? []) {
-      const h = ttsHash(phrase.text);
-      if (audioManifest[h]) phrase.audio_url = audioManifest[h];
+      const url = audioManifest[audioKey(mod, unit, phrase.text)];
+      if (url) phrase.audio_url = url; else delete phrase.audio_url;
     }
   }
 }

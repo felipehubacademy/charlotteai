@@ -64,7 +64,8 @@
           "hint": "\"Kind of\" or \"sort of\"",
           "answer": "kind of",
           "accepts": [
-            "sort of"
+            "sort of",
+            "kinda"
           ],
           "explanation": "\"Kind of\" / \"sort of\" — hedges. Soften the absoluteness of \"the best\". \"Kind of the best\" = approximately the best, hesitant to claim full superlative. In writing this hedge is light; in speech it's heavy and frequent."
         },
@@ -73,6 +74,11 @@
           "sentence": "Casual speech, but over-filled: \"Like, you know, I mean, like, the project was, sort of, really hard, you know?\"",
           "hint": "Three or more fillers in one sentence is too many",
           "answer": "The project was really hard, you know?",
+          "accepts": [
+            "The project was really hard.",
+            "Honestly, the project was really hard.",
+            "The project was, you know, really hard."
+          ],
           "explanation": "Over-filling sounds nervous or under-prepared. C2 fluency = strategic filler use. One filler per sentence is natural; two is borderline; three or more weakens. Remove some and keep one well-placed."
         },
         {
@@ -112,7 +118,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three statements. You restate each with a single, well-placed filler to sound natural.",
-        "scenario_pt": "Charlotte dá três afirmações. Você reformula cada uma com um filler bem colocado para soar natural.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -121,7 +126,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Preenchedor 'you know'",
             "label_en": "Filler 'you know'",
             "hidden_prompt": "user adds one 'you know' to sound casual",
             "hint_en": "It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening.",
@@ -139,7 +143,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Preenchedor 'I mean'",
             "label_en": "Filler 'I mean'",
             "hidden_prompt": "user opens or pivots with 'I mean'",
             "hint_en": "I mean, the project wasn't bad — it just wasn't what anyone hoped it would be.",
@@ -157,7 +160,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Atenuar com 'kind of / sort of'",
             "label_en": "Hedge 'kind of / sort of'",
             "hidden_prompt": "user uses 'kind of' or 'sort of' to soften",
             "hint_en": "It's sort of one of those situations where there isn't a right answer, just a less wrong one.",
@@ -188,12 +190,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte uses fillers naturally. Match her without overfilling.",
-        "intro_pt": "Charlotte usa fillers naturalmente. Acompanhe sem exagerar.",
         "opening_message": "I mean, the whole thing kind of fell apart in week three. You know how it is — one decision, three weeks later, total restart.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Resposta casual com preenchimento",
             "label_en": "Casual reply with filler",
             "hidden_prompt": "user uses 'I mean' or 'you know' once",
             "hint_en": "I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive.",
@@ -212,7 +212,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Aprofundar com mitigação",
             "label_en": "Deepen with hedge",
             "hidden_prompt": "user uses 'kind of' or 'sort of' softener",
             "hint_en": "It's sort of the design version of compound interest — small wrong calls in the first week add up by the third.",
@@ -230,7 +229,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what specifically broke",
             "hint_en": "What was the one decision that did it?",
@@ -275,7 +273,7 @@
             "it isn't?"
           ],
           "answer": "isn't it?",
-          "explanation": "Tag question rule: positive statement + negative tag. \"It's / It is beautiful\" (positive, \"is\") → \"isn't / is not it?\" (negative). Tags reverse polarity. Common pattern: \"She's coming, isn't / is not she?\" / \"They've left, haven't / have not they?\" / \"You like coffee, don't / do not you?\". Agreement-seeking move."
+          "explanation": "Tag question rule: positive statement + negative tag. \"It's beautiful\" (positive, \"is\") → \"isn't it?\" (negative). Tags reverse polarity. Common pattern: \"She's coming, isn't she?\" / \"They've left, haven't they?\" / \"You like coffee, don't you?\". Agreement-seeking move."
         },
         {
           "type": "multiple_choice",
@@ -287,7 +285,7 @@
             "she does?"
           ],
           "answer": "does she?",
-          "explanation": "Negative statement → positive tag. \"She doesn't / does not speak\" (negative, \"doesn't / does not\") → \"does she?\" (positive). Reverse polarity. Common error: matching the polarity. The point of the tag is to flip and check."
+          "explanation": "Negative statement → positive tag. \"She doesn't speak\" (negative, \"doesn't\") → \"does she?\" (positive). Reverse polarity. Common error: matching the polarity. The point of the tag is to flip and check."
         },
         {
           "type": "fill_gap",
@@ -295,16 +293,17 @@
           "hint": "Universal informal tag",
           "answer": "innit",
           "accepts": [
-            "isn't it\" formal"
+            "isn't it",
+            "is it not"
           ],
           "explanation": "\"Innit\" — universal informal tag in British English, especially Cockney/London. Stands in for any positive→negative tag (\"isn't it / aren't they / haven't they / didn't he\"). Use cautiously — works in casual peer-to-peer speech but reads as too informal in professional contexts."
         },
         {
           "type": "fix_error",
-          "sentence": "Tag mismatched: \"You've been to Paris, haven't you?\"",
-          "hint": "Actually, that's correct. Try: \"You haven't been to Paris, have you?\"",
-          "answer": "You haven't been to Paris, have you? (negative → positive tag)",
-          "explanation": "Common L2 error is matching polarity. Native English always reverses: pos → neg tag, neg → pos tag. \"You've / You have been\" (positive perfect) + \"haven't / have not you?\" (negative). \"You haven't / have not been\" (negative) + \"have you?\" (positive). Polarity always inverts."
+          "sentence": "Tag mismatched: \"You haven't been to Paris, haven't you?\"",
+          "hint": "Negative statement → positive tag",
+          "answer": "You haven't been to Paris, have you?",
+          "explanation": "Common L2 error is matching polarity. Native English always reverses: pos → neg tag, neg → pos tag. \"You've been\" (positive perfect) + \"haven't you?\" (negative). \"You haven't been\" (negative) + \"have you?\" (positive). Polarity always inverts."
         },
         {
           "type": "read_answer",
@@ -343,16 +342,14 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three statements. You add a tag question — agreement-seeking, confirmation, or soft challenge.",
-        "scenario_pt": "Charlotte dá três afirmações. Você adiciona uma tag question — buscando concordância, confirmação ou um desafio suave.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 300,
-        "opening_line": "Three statements. Add a tag — agreement, confirmation, or soft challenge.",
+        "opening_line": "I'll make three statements. Add a tag question to each one: to agree, to check or to gently challenge me.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Tag de concordância",
             "label_en": "Agreement tag",
             "hidden_prompt": "user adds rising tag for genuine agreement-seeking",
             "hint_en": "She's the strongest writer on the team, isn't she? The way she frames an argument is in a different category.",
@@ -368,7 +365,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Tag de confirmação",
             "label_en": "Confirmation tag",
             "hidden_prompt": "user adds tag for confirming a fact",
             "hint_en": "You haven't met the new product manager yet, have you? She started two weeks ago and seems to be everywhere at once.",
@@ -383,7 +379,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Desafio suave",
             "label_en": "Soft challenge tag",
             "hidden_prompt": "user adds tag that softly challenges or pushes back",
             "hint_en": "We probably should have flagged this sooner, shouldn't we? — even if nobody likes to admit it now.",
@@ -398,7 +393,7 @@
           }
         ],
         "closing_cue": "Charlotte closes with \"Tags, doing pragmatic work.\" once obj_3 lands.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three statements. Add a tag — agreement, confirmation, or soft challenge.\"\n2. **Student**: ~\"She's the strongest writer on the team, isn't she? The way she frames an argument is in a different category.\"\n3. **Charlotte**: \"Confirmation?\"\n4. **Student**: ~\"You haven't met the new product manager yet, have you? She started two weeks ago and seems to be everywhere at once.\"\n5. **Charlotte**: \"Soft challenge?\"\n6. **Student**: ~\"We probably should have flagged this sooner, shouldn't we? — even if nobody likes to admit it now.\"\n7. **Charlotte**: \"Tags, doing pragmatic work.\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I'll make three statements. Add a tag question to each one: to agree, to check or to gently challenge me.\"\n2. **Student**: ~\"She's the strongest writer on the team, isn't she? The way she frames an argument is in a different category.\"\n3. **Charlotte**: \"Confirmation?\"\n4. **Student**: ~\"You haven't met the new product manager yet, have you? She started two weeks ago and seems to be everywhere at once.\"\n5. **Charlotte**: \"Soft challenge?\"\n6. **Student**: ~\"We probably should have flagged this sooner, shouldn't we? — even if nobody likes to admit it now.\"\n7. **Charlotte**: \"Tags, doing pragmatic work.\"",
         "evaluation_focus": [
           "Polarity reversed (pos→neg, neg→pos)",
           "Auxiliary matches main verb tense",
@@ -411,12 +406,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte uses tag questions constantly. Match her style.",
-        "intro_pt": "Charlotte usa tag questions constantemente. Combine com o estilo dela.",
         "opening_message": "The book club meets at six, doesn't it? I've forgotten if it was six or six-thirty.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com tag",
             "label_en": "Reply with tag",
             "hidden_prompt": "user replies with a tag question",
             "hint_en": "Six, I think. Although we sometimes started at six-thirty when the host couldn't get there earlier, didn't we?",
@@ -432,7 +425,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra tag na conversa",
             "label_en": "Another tag in conversation",
             "hidden_prompt": "user adds another tag",
             "hint_en": "You're reading the new one this month, aren't you? The one with the unreliable narrator everyone's been arguing about.",
@@ -447,7 +439,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about the book",
             "hint_en": "Are you actually enjoying it?",
@@ -491,7 +482,7 @@
             "Continue, please."
           ],
           "answer": "Mm-hm. Right. Yeah.",
-          "explanation": "Native speakers signal listening with short interjections — not full sentences. \"Mm-hm\", \"right\", \"yeah\", \"okay\", \"oh\", \"gotcha\" — each is a small confirmation that the listener is tracking. Long acknowledgements (\"I understand what you're / you are saying\") interrupt and feel formal."
+          "explanation": "Native speakers signal listening with short interjections — not full sentences. \"Mm-hm\", \"right\", \"yeah\", \"okay\", \"oh\", \"gotcha\" — each is a small confirmation that the listener is tracking. Long acknowledgements (\"I understand what you're saying\") interrupt and feel formal."
         },
         {
           "type": "multiple_choice",
@@ -512,7 +503,12 @@
           "answer": "Right",
           "accepts": [
             "Mm-hm",
-            "Yeah"
+            "Yeah",
+            "Uh-huh",
+            "Sure",
+            "Okay",
+            "OK",
+            "Mm"
           ],
           "explanation": "\"Right\" — neutral confirmation backchannel. Often timed during pauses or at the end of a sentence. Allows the speaker to continue without seeking more elaborate confirmation. Stress-pattern: short, rising-falling pitch, almost throwaway."
         },
@@ -532,7 +528,12 @@
           "type": "read_answer",
           "passage": "Native conversation has its own rhythm. The speaker tells the story. The listener punctuates with quiet sounds — 'mm-hm... right... yeah... oh, really?... no way.' These tiny words do enormous work. They tell the speaker the listener is present, paying attention, and emotionally tracking. Without them, the speaker feels alone on the line.",
           "question": "According to the passage, what work do backchannels do?",
-          "answer": "tell the speaker the listener is present, paying attention, and emotionally tracking",
+          "answer": "show listener is present and attentive",
+          "accepts": [
+            "listener is present",
+            "paying attention",
+            "emotionally tracking"
+          ],
           "explanation": "Three functions: presence, attention, emotional tracking. All carried by single-word interjections. C2 conversational mastery includes producing these naturally — and noticing when other speakers go silent (a signal to wrap up or shift)."
         }
       ],
@@ -565,7 +566,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte tells you a short story. You backchannel at appropriate moments — short interjections only.",
-        "scenario_pt": "Charlotte conta uma história curta. Use backchannel nos momentos apropriados — apenas interjeições curtas.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -574,7 +574,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Canal de retorno neutro",
             "label_en": "Neutral backchannel",
             "hidden_prompt": "user produces 'mm-hm' or 'right' or 'yeah'",
             "hint_en": "Right — go on. Mm-hm, I'm following.",
@@ -589,7 +588,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Surpresa",
             "label_en": "Surprise",
             "hidden_prompt": "user produces 'really?' or 'no way' or 'oh'",
             "hint_en": "Really? In the middle of the meeting? No way.",
@@ -604,7 +602,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Compreensão",
             "label_en": "Understanding",
             "hidden_prompt": "user produces 'gotcha' / 'I see' / 'okay'",
             "hint_en": "Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now.",
@@ -632,12 +629,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte tells an anecdote. Backchannel and ask short follow-ups.",
-        "intro_pt": "Charlotte conta uma anedota. Use backchannel e faça perguntas curtas de acompanhamento.",
         "opening_message": "So I'm at the airport last week, and the gate agent decides I need to repack my bag — in front of everyone.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reagir com backchannel inicial",
             "label_en": "Initial backchannel + reaction",
             "hidden_prompt": "user uses backchannel and short reaction",
             "hint_en": "Oh no. Right — and you'd already been waiting how long?",
@@ -652,7 +647,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Surpresa no backchannel",
             "label_en": "Surprise backchannel",
             "hidden_prompt": "user produces 'no way' or 'really?' at a turn in the story",
             "hint_en": "No way. She actually opened it in front of the whole queue?",
@@ -667,7 +661,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Pergunta curta de encerramento",
             "label_en": "Short closing question",
             "hidden_prompt": "user asks short closing question",
             "hint_en": "Did you make the flight?",
@@ -707,7 +700,7 @@
             "Apologies"
           ],
           "answer": "Honestly",
-          "explanation": "\"Honestly, ...\" — opens a candid statement. Slightly informal. Synonyms: \"Frankly, ...\", \"To be honest, ...\", \"I'll / I will be honest with you, ...\". Marks that the speaker is dropping diplomatic cover. Common in feedback or honest assessments."
+          "explanation": "\"Honestly, ...\" — opens a candid statement. Slightly informal. Synonyms: \"Frankly, ...\", \"To be honest, ...\", \"I'll be honest with you, ...\". Marks that the speaker is dropping diplomatic cover. Common in feedback or honest assessments."
         },
         {
           "type": "multiple_choice",
@@ -726,7 +719,11 @@
           "sentence": "Casual opener for sensitive topic: \"_____, I think we should reconsider.\"",
           "hint": "Attention-getter with deliberate pause",
           "answer": "Look",
-          "explanation": "\"Look, ...\" — informal attention-getter, often preceding a sensitive or direct statement. Casual register. Synonyms: \"Listen, ...\". Signals \"I'm / I am about to be direct\" — used in interpersonal conversation, feedback, or persuasion."
+          "accepts": [
+            "Listen",
+            "Honestly"
+          ],
+          "explanation": "\"Look, ...\" — informal attention-getter, often preceding a sensitive or direct statement. Casual register. Synonyms: \"Listen, ...\". Signals \"I'm about to be direct\" — used in interpersonal conversation, feedback, or persuasion."
         },
         {
           "type": "fix_error",
@@ -736,7 +733,7 @@
           "accepts": [
             "With all due respect, but you're wrong."
           ],
-          "explanation": "\"No offence\" — set phrase preceding a potentially insulting statement. \"With no offence\" is non-standard. The phrase preempts any negative reaction: \"I'm / I am not trying to insult you, but...\". Often softens what follows."
+          "explanation": "\"No offence\" — set phrase preceding a potentially insulting statement. \"With no offence\" is non-standard. The phrase preempts any negative reaction: \"I'm not trying to insult you, but...\". Often softens what follows."
         },
         {
           "type": "read_answer",
@@ -775,7 +772,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three sensitive statements. You add a pragmatic opener that primes the listener for the tone.",
-        "scenario_pt": "Charlotte apresenta três declarações sensíveis. Você adiciona uma abertura pragmática que prepara o ouvinte para o tom.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -784,7 +780,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar 'Honestly' / 'To be honest'",
             "label_en": "'Honestly' / 'To be honest'",
             "hidden_prompt": "user opens with 'Honestly' or 'To be honest'",
             "hint_en": "Honestly, I've stopped reading her emails carefully — they're so dense that the actual decision usually requires a follow-up phone call.",
@@ -799,7 +794,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'To be fair'",
             "label_en": "'To be fair'",
             "hidden_prompt": "user opens with 'To be fair'",
             "hint_en": "To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it.",
@@ -814,7 +808,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'No offence' / 'Look'",
             "label_en": "'No offence' / 'Look'",
             "hidden_prompt": "user opens with 'No offence' or 'Look'",
             "hint_en": "Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision.",
@@ -842,12 +835,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte raises a delicate workplace issue. Respond with pragmatic openers.",
-        "intro_pt": "Charlotte levanta uma questão delicada no trabalho. Responda com aberturas pragmáticas.",
         "opening_message": "One of my senior team members has been quietly disengaged for months. I don't know how to start the conversation.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar 'Honestly' / 'To be fair'",
             "label_en": "'Honestly' / 'To be fair'",
             "hidden_prompt": "user opens with 'Honestly' or 'To be fair' to suggest something",
             "hint_en": "Honestly, the longer you wait, the harder it'll be — the disengagement starts to feel mutual once enough weeks pass.",
@@ -862,7 +853,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'To be honest' ou 'Look'",
             "label_en": "'To be honest' or 'Look'",
             "hidden_prompt": "user uses another pragmatic opener",
             "hint_en": "Look, the opening question matters more than the script — something like 'I've noticed something, and I want to understand what's going on' opens space.",
@@ -877,7 +867,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what she suspects is going on",
             "hint_en": "What do you think is actually going on?",
@@ -926,20 +915,26 @@
             "I'll tell you so — call."
           ],
           "answer": "I'll tell you what — let's just call her and ask.",
-          "explanation": "\"I'll / I will tell you what, ...\" or \"Tell you what, ...\" — opens a casual proposal. Comes with the rhythm of someone arriving at an idea on the spot. Common in spoken English; rare in writing."
+          "explanation": "\"I'll tell you what, ...\" or \"Tell you what, ...\" — opens a casual proposal. Comes with the rhythm of someone arriving at an idea on the spot. Common in spoken English; rare in writing."
         },
         {
           "type": "fill_gap",
           "sentence": "Opener inviting shared opinion: \"_____ but I think we should rethink the whole approach.\"",
           "hint": "\"I don't know about you, but...\"",
           "answer": "I don't know about you,",
-          "explanation": "\"I don't / do not know about you, but ...\" — opens a personal opinion in a way that invites the listener's response. Hedges the assertion as personal. Common in casual feedback and informal opinion-sharing."
+          "explanation": "\"I don't know about you, but ...\" — opens a personal opinion in a way that invites the listener's response. Hedges the assertion as personal. Common in casual feedback and informal opinion-sharing."
         },
         {
           "type": "fix_error",
           "sentence": "Awkward: \"The matter is that we don't have time.\"",
           "hint": "Use \"The thing is\" instead",
           "answer": "The thing is, we don't have time.",
+          "accepts": [
+            "The thing is that we don't have time.",
+            "The point is, we don't have time.",
+            "The problem is, we don't have time.",
+            "Here's the thing: we don't have time."
+          ],
           "explanation": "\"The matter is\" sounds formal-translated. Native English casual conversation uses \"The thing is\" or \"Here's the thing\". These openers feel native; \"the matter is\" reads as translation from another language."
         },
         {
@@ -979,7 +974,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three scenarios. You open each with a native conversational opener — the thing is, here's the thing, I'll tell you what, I don't know about you but.",
-        "scenario_pt": "Charlotte apresenta três cenários. Você começa cada um com uma abertura conversacional nativa — 'the thing is', 'here's the thing', 'I'll tell you what', 'I don't know about you but'.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -988,7 +982,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar 'The thing is' / 'Here's the thing'",
             "label_en": "'The thing is' / 'Here's the thing'",
             "hidden_prompt": "user opens with 'The thing is' or 'Here's the thing'",
             "hint_en": "Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks.",
@@ -1003,7 +996,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'I'll tell you what'",
             "label_en": "'I'll tell you what'",
             "hidden_prompt": "user opens with 'I'll tell you what'",
             "hint_en": "I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions.",
@@ -1018,7 +1010,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'I don't know about you, but'",
             "label_en": "'I don't know about you, but'",
             "hidden_prompt": "user opens with 'I don't know about you, but'",
             "hint_en": "I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet.",
@@ -1046,12 +1037,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte opens problem-naming. Respond with native conversational openers.",
-        "intro_pt": "Charlotte inicia uma conversa sobre problemas. Responda com aberturas de conversa nativas.",
         "opening_message": "The thing is, we keep hiring brilliant people and losing them within eighteen months. I'm starting to think the issue isn't the people.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com abertura nativa",
             "label_en": "Reply with native opener",
             "hidden_prompt": "user replies with native opener like 'Here's the thing'",
             "hint_en": "Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there.",
@@ -1066,7 +1055,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Adicionar com outra abertura",
             "label_en": "Add with another opener",
             "hidden_prompt": "user uses 'I'll tell you what' or 'I don't know about you, but'",
             "hint_en": "I'll tell you what — exit interviews almost never tell you the real story. The honest answers are in the second job they take, six months later.",
@@ -1082,7 +1070,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what pattern she's seeing",
             "hint_en": "What's the pattern you keep seeing?",

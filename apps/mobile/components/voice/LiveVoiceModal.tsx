@@ -29,9 +29,7 @@ import {
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { requestRecordingPermissionsAsync, setAudioModeAsync } from 'expo-audio';
-// WebRTC do LiveKit (fork do react-native-webrtc, mesma API): o SDK do ElevenLabs (ligação com a Família)
-// usa este pacote, e os dois não convivem no mesmo app.
-import { RTCPeerConnection, mediaDevices } from '@livekit/react-native-webrtc';
+import { RTCPeerConnection, mediaDevices } from 'react-native-webrtc';
 import CharlotteAudioSession from 'charlotte-audio-session';
 import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Headphones, Pause, ArrowCounterClockwise, ArrowLeft, ChatCircle, ClosedCaptioning } from 'phosphor-react-native';
 import { ScrollView } from 'react-native';
@@ -39,6 +37,7 @@ import * as Haptics from '@/lib/hapticsGated';
 import * as SecureStore from 'expo-secure-store';
 import { systemIsPt } from '@/lib/systemLang';
 import { LiveVoiceWave } from './LiveVoiceWave';
+import { useCallLevels } from '@/lib/callLevels';
 import { AppText } from '@/components/ui/Text';
 import { useCallTimer } from '@/hooks/useCallTimer';
 import Constants from 'expo-constants';
@@ -114,13 +113,17 @@ const SYSTEM_PROMPTS: Record<'Novice' | 'Inter' | 'Advanced', string> = {
 Esta é uma conversa de telefone, não uma aula. Flua naturalmente como amiga ao telefone:
 
 TURNO 1 (greeting): só cumprimente e pergunte como vai. NADA além disso. Curto.
-TURNO 2: depois que {NAME} responde, troque cortesia ("Tudo bem comigo também!") e proponha CASUALMENTE praticar inglês juntos ("Que tal a gente misturar um pouco de inglês na conversa?").
-TURNO 3+: comece a conversa real (sobre o dia, hobbies, planos), introduzindo inglês gradualmente. Comece com palavras simples embutidas. Vá aumentando a proporção EN conforme {NAME} responde bem.
+TURNO 2: depois que {NAME} responde, reaja ao que ele/ela disse de verdade (se disse que está bem: "Que bom! Eu também!"; se contou outra coisa, comente isso; nunca uma frase pronta que não combina com a resposta) e proponha CASUALMENTE praticar inglês juntos ("Que tal a gente misturar um pouco de inglês na conversa?").
+TURNO 3+: comece a conversa real (sobre o dia, hobbies, planos) com o inglês entrando AOS POUCOS, nesta rampa:
+  - TURNOS 3 a 5: a resposta é em português e termina com UMA pergunta curta e simples em inglês (até 6 palavras, palavras bem comuns), seguida da mesma pergunta em português entre parênteses. Ex.: "Que dia corrido! What did you eat today? (O que você comeu hoje?)". Essa pergunta é a ÚNICA frase em inglês do turno: reação e comentário ficam em português ("Que legal!", não "That's cool!"). Não faça a mesma pergunta em português antes dela: o português da pergunta aparece só na tradução entre parênteses (errado: "Como foi seu dia? How was your day? (Como foi seu dia?)").
+  - TURNO 6 em diante: se {NAME} já está respondendo em inglês, use até duas frases curtas em inglês por turno (ainda com a tradução das palavras difíceis); se responde em português, continue como nos turnos 3 a 5.
+  - Cada frase é inteira em um idioma só. Nunca misture português e inglês dentro da mesma frase.
 
 Regras gerais:
 - Respostas CURTAS (1-2 frases). É telefone, não monólogo.
 - Mix PT/EN por frase completa — nunca code-switch mid-sentence (errado: "Do you like ouvir música").
 - Quando {NAME} comete um erro em inglês, corrija EMBUTINDO a forma certa naturalmente, sem rotular ("o certo é").
+- ZERO meta-narração: nunca anuncie o que vai fazer ("vou responder", "vou puxar uma pergunta em inglês", "deixa eu pensar"). Só faça.
 - Calorosa, paciente, curiosa. Amiga, não professora.
 
 Comece com: "{GREETING}"`,
@@ -447,6 +450,9 @@ export default function LiveVoiceModal({
   const warnStartRef            = React.useRef<number>(0);
 
   const callTime = useCallTimer(status === 'connected' && !isPaused);
+  // Volume do microfone do aluno (estatísticas do WebRTC): a linha segue a voz dele na vez dele.
+  // Só leitura; não mexe na sessão de áudio.
+  const micLevels = useCallLevels(status === 'connected' && !isPaused, async () => (pcRef.current ? [await (pcRef.current as any).getStats()] : []));
 
   // ── Helpers: clear timers ─────────────────────────────────────────────────
   const clearSessionInterval = React.useCallback(() => {
@@ -576,6 +582,8 @@ export default function LiveVoiceModal({
           // realmente chegue na UI native — setValue() puro nao propaga
           // depois que o Animated.Value foi tocado por animacao nativa
           // (bug conhecido do RN). Duration 80ms < intervalo 100ms = sem fila.
+          Animated.timing(ringScale,   { toValue: targetScale,   duration: 80, useNativeDriver: true }).start();
+          Animated.timing(ringOpacity, { toValue: targetOpacity, duration: 80, useNativeDriver: true }).start();
 
           // Log mais frequente (5 ticks = 500ms) com scale tambem
           audioLevelLogCounterRef.current = (audioLevelLogCounterRef.current + 1) % 5;
@@ -686,8 +694,11 @@ export default function LiveVoiceModal({
     inactivityIntervalRef.current = setInterval(() => {
       const idleSec = Math.floor((Date.now() - lastActivityRef.current) / 1000);
       if (idleSec >= INACTIVITY_PAUSE_SEC) {
-        // Pausar por inatividade
-        return; // será tratado pelo useEffect abaixo
+        // Pausar por inatividade: zera a contagem para o useEffect abaixo disparar a pausa.
+        // (Antes só retornava; a contagem parava em 1 s e a ligação nunca pausava.)
+        setInactivityWarning(true);
+        setWarningCountdown(0);
+        return;
       }
       if (idleSec >= INACTIVITY_WARN_SEC) {
         if (!warnStartRef.current) warnStartRef.current = Date.now();
@@ -880,6 +891,10 @@ export default function LiveVoiceModal({
     setStatus('connecting');
     setErrorMsg('');
     setIsPaused(false);
+    // A tela fica montada entre ligações: sem isto, o mudo da ligação anterior passava para a
+    // próxima ("Microfone desligado" e o aluno falando sem ser ouvido).
+    setIsMuted(false);
+    isMutedRef.current = false;
     setInactivityWarning(false);
     setWarningCountdown(30);
 
@@ -1563,9 +1578,18 @@ export default function LiveVoiceModal({
   // Sincroniza o icone do botao com a rota de audio REAL. O nativo re-roteia
   // sozinho (ex: forca speaker ao tirar AirPods); sem isto o icone ficava
   // preso no estado anterior. Deriva de getCurrentRoute (portType:portName).
+  // Android é diferente: getCurrentRoute devolve a LISTA de saídas conectadas
+  // ("speaker:...,earpiece:...,bt_sco:...") e "uninitialized" antes do start. Ler isso como rota
+  // ativa fazia a ligação começar no fone do celular (o "uninitialized" da montagem zerava o
+  // alto-falante antes do start). Lá o fone vem da lista e o alto-falante segue a escolha do aluno.
   const syncRouteState = React.useCallback(() => {
     try {
       const r = (CharlotteAudioSession.getCurrentRoute() || '').toLowerCase();
+      if (Platform.OS === 'android') {
+        if (!r || r === 'uninitialized') return;
+        setOnHeadphones(/wired_head|bt_|usb/.test(r));
+        return;
+      }
       const headphones = r.includes('bluetooth') || r.includes('headphone');
       const onSpk = r.includes('speaker'); // builtInSpeaker
       setOnHeadphones(headphones);
@@ -1780,22 +1804,31 @@ export default function LiveVoiceModal({
 
           {/* ── TOP: Nome + Timer + Pool badge ─────────────────────── */}
           <View style={{ alignItems: 'center', paddingTop: 8 }}>
-            <AppText style={{ color: 'rgba(22,19,31,0.5)', fontSize: 13, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>
+            {status === 'connected' && !isPaused && (
+              <View style={{ backgroundColor: 'rgba(107,75,255,0.10)', borderRadius: 999, paddingHorizontal: 12, paddingVertical: 5, marginBottom: 8 }}>
+                <AppText style={{ color: '#6B4BFF', fontSize: 13, fontWeight: '800', letterSpacing: 1,
+                  ...(Platform.OS === 'ios' ? { fontVariant: ['tabular-nums'] } : {}) }}>
+                  {callTime}
+                </AppText>
+              </View>
+            )}
+            <AppText display style={{ color: '#16131F', fontSize: 30, fontWeight: '800' }}>
               Charlotte
             </AppText>
-            {status === 'connected' && !isPaused && (
-              <AppText style={{ color: 'rgba(22,19,31,0.85)', fontSize: 15, letterSpacing: 2,
-                ...(Platform.OS === 'ios'
-                  ? { fontVariant: ['tabular-nums'] }
-                  : { fontFamily: 'monospace' }) }}>
-                {callTime}
-              </AppText>
-            )}
-            {status === 'connecting' && (
-              <AppText style={{ color: '#4D4858', fontSize: 13 }}>
-                {isPtUI ? 'Chamando...' : 'Calling...'}
-              </AppText>
-            )}
+            {/* Estado da conversa: quem está falando, ou a vez do aluno */}
+            {(status === 'connecting' || (status === 'connected' && !isPaused)) && (() => {
+              const yourTurn = status === 'connected' && !charlotteSpeaking;
+              return (
+                <View style={{ marginTop: 8, backgroundColor: yourTurn && !isMuted ? '#FF4F8B' : 'rgba(22,19,31,0.06)', borderRadius: 999, paddingHorizontal: 14, paddingVertical: 6 }}>
+                  <AppText style={{ fontSize: 14, fontWeight: '700', color: '#16131F' }}>
+                    {status === 'connecting' ? (isPtUI ? 'Chamando a Charlotte…' : 'Calling Charlotte…')
+                      : charlotteSpeaking ? (isPtUI ? 'Charlotte está falando' : 'Charlotte is talking')
+                      : isMuted ? (isPtUI ? 'Microfone desligado' : 'Mic off')
+                      : (isPtUI ? 'Pode falar' : 'Your turn')}
+                  </AppText>
+                </View>
+              );
+            })()}
             {isPaused && (
               <AppText style={{ color: '#D12A64', fontSize: 13, letterSpacing: 0.5 }}>
                 {isPtUI ? 'Pausado por inatividade' : 'Paused — inactive'}
@@ -1843,7 +1876,12 @@ export default function LiveVoiceModal({
               abaixo, então ligar/desligar caption não muda a posição do avatar. */}
           <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%', height: 360 }}>
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-              {/* Sem anéis: quem mostra o estado da conversa é a onda abaixo. */}
+              {/* Anel: pulsa com a voz da Charlotte (volume real, getStats). A vez do aluno é a linha abaixo. */}
+              <Animated.View pointerEvents="none" style={{
+                position: 'absolute', width: 132, height: 132, borderRadius: 66, backgroundColor: '#6B4BFF',
+                opacity: status === 'connected' && charlotteSpeaking && !isPaused ? ringOpacity : 0,
+                transform: [{ scale: ringScale }],
+              }} />
               <Image
                 source={require('../../assets/charlotte-avatar.png')}
                 style={{
@@ -1867,12 +1905,9 @@ export default function LiveVoiceModal({
 
             {/* Onda queizy → crazy: rosa irregular quando você fala, verde
                 suave quando a Charlotte fala, reta no silêncio. */}
-            {(status === 'connected' || status === 'connecting') && !isPaused && (
+            {status === 'connected' && !isPaused && !charlotteSpeaking && !isMuted && (
               <View pointerEvents="none" style={{ position: 'absolute', top: 236, left: 0, right: 0, alignItems: 'center' }}>
-                <LiveVoiceWave
-                  mode={status === 'connecting' ? 'connecting' : charlotteSpeaking ? 'charlotte' : userSpeaking ? 'user' : 'idle'}
-                  levelRef={voiceLevelRef}
-                />
+                <LiveVoiceWave mode="user" userLevelRef={micLevels.local} width={240} />
               </View>
             )}
 
@@ -1911,20 +1946,19 @@ export default function LiveVoiceModal({
                       : 'CHARLOTTE'}
                   </AppText>
                 </View>
-                <AppText
-                  style={{
-                    color: '#16131F',
-                    fontSize: 16,
-                    lineHeight: 22,
-                    fontWeight: '500',
-                    textAlign: 'center',
-                    minHeight: 44,
-                  }}
-                  numberOfLines={5}
-                  ellipsizeMode="head"
-                >
-                  {liveCaption}
-                </AppText>
+                <View style={{
+                  backgroundColor: captionSpeaker === 'user' ? '#16131F' : '#FFFFFF', borderRadius: 16,
+                  paddingHorizontal: 14, paddingVertical: 10, maxWidth: '100%',
+                  shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 8, shadowOffset: { width: 0, height: 2 }, elevation: 1,
+                }}>
+                  <AppText
+                    style={{ color: captionSpeaker === 'user' ? '#FFFFFF' : '#16131F', fontSize: 16, lineHeight: 22, fontWeight: '500', textAlign: 'center' }}
+                    numberOfLines={5}
+                    ellipsizeMode="head"
+                  >
+                    {liveCaption}
+                  </AppText>
+                </View>
                 {captionTranslation && (
                   <AppText
                     style={{
@@ -2002,7 +2036,7 @@ export default function LiveVoiceModal({
                 </View>
               )}
 
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 48 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 26 }}>
                 {/* Mute */}
                 <TouchableOpacity
                   onPress={handleMute}
@@ -2012,16 +2046,14 @@ export default function LiveVoiceModal({
                     : (isPtUI ? 'Silenciar microfone' : 'Mute microphone')}
                   accessibilityRole="button"
                   style={{
-                    width: 64, height: 64, borderRadius: 32,
-                    backgroundColor: isMuted ? 'rgba(255,79,139,0.12)' : 'rgba(22,19,31,0.06)',
-                    borderWidth: 1,
-                    borderColor: isMuted ? 'rgba(255,79,139,0.4)' : 'rgba(22,19,31,0.10)',
+                    width: 62, height: 62, borderRadius: 31,
+                    backgroundColor: isMuted ? '#16131F' : 'rgba(22,19,31,0.06)',
                     alignItems: 'center', justifyContent: 'center',
                   }}
                 >
                   {isMuted
-                    ? <MicrophoneSlash size={24} color="#D12A64" weight="regular" />
-                    : <Microphone     size={24} color="rgba(22,19,31,0.65)" weight="regular" />
+                    ? <MicrophoneSlash size={26} color="#FFFFFF" weight="fill" />
+                    : <Microphone     size={26} color="#16131F" weight="fill" />
                   }
                 </TouchableOpacity>
 
@@ -2032,15 +2064,12 @@ export default function LiveVoiceModal({
                   accessibilityLabel={isPtUI ? 'Encerrar chamada' : 'End call'}
                   accessibilityRole="button"
                   style={{
-                    width: 64, height: 64, borderRadius: 32,
-                    backgroundColor: '#D12A64',
+                    width: 76, height: 76, borderRadius: 38,
+                    backgroundColor: '#E5484D',
                     alignItems: 'center', justifyContent: 'center',
-                    shadowColor: '#D12A64',
-                    shadowOffset: { width: 0, height: 4 },
-                    shadowOpacity: 0.5, shadowRadius: 12, elevation: 8,
                   }}
                 >
-                  <PhoneSlash size={26} color="#fff" weight="fill" />
+                  <PhoneSlash size={32} color="#fff" weight="fill" />
                 </TouchableOpacity>
 
                 {/* Speaker / Ouvido */}
@@ -2054,18 +2083,16 @@ export default function LiveVoiceModal({
                       : (isPtUI ? 'Usar alto-falante' : 'Switch to speaker')}
                   accessibilityRole="button"
                   style={{
-                    width: 64, height: 64, borderRadius: 32,
-                    backgroundColor: isSpeaker ? 'rgba(8,128,74,0.12)' : 'rgba(22,19,31,0.06)',
-                    borderWidth: 1,
-                    borderColor: isSpeaker ? 'rgba(8,128,74,0.4)' : 'rgba(22,19,31,0.10)',
+                    width: 62, height: 62, borderRadius: 31,
+                    backgroundColor: isSpeaker && !onHeadphones ? '#16131F' : 'rgba(22,19,31,0.06)',
                     alignItems: 'center', justifyContent: 'center',
                   }}
                 >
                   {onHeadphones
-                    ? <Headphones size={24} color="rgba(22,19,31,0.65)" weight="regular" />
+                    ? <Headphones size={26} color="#16131F" weight="fill" />
                     : isSpeaker
-                      ? <SpeakerHigh size={24} color="#08804A" weight="regular" />
-                      : <Ear         size={24} color="rgba(22,19,31,0.65)" weight="regular" />
+                      ? <SpeakerHigh size={26} color="#FFFFFF" weight="fill" />
+                      : <Ear         size={26} color="#16131F" weight="fill" />
                   }
                 </TouchableOpacity>
               </View>

@@ -45,19 +45,20 @@
 3. **fill_gap** — Cultural metaphor: "Attention is _____ — finite, contested, and exploited."
    **Hint**: "the new currency" or "the new oil"
    **Answer**: the new oil
-   **Accepts**: the new currency
+   **Accepts**: the new currency / the new gold
    **Explanation**: "X is the new Y" — modern metaphorical equation. "Attention is the new oil" is a famous tech-era metaphor (resource that drives the economy, and that one is extracted). This pattern compresses a whole argument into a phrase.
 
 4. **fix_error** — "She moved like she was walking on glass."
    **Hint**: "Like + clause" is informal; use "as if" or "as though"
    **Answer**: She moved as if she were walking on glass.
+   **Accepts**: She moved as though she were walking on glass. / She moved as if she was walking on glass. / She moved as though she was walking on glass.
    **Explanation**: "Like she was walking" is spoken English. Formal/literary prose prefers "as if + subject + were" (subjunctive). The "were" maintains the hypothetical mood across persons. C2 literary writing observes the distinction.
 
 5. **read_answer**
    **Passage**: "The metaphor ran through the essay. 'Memory is a city you have lived in too long. Its streets seem familiar, but you no longer notice them. Then one afternoon, after months away, you walk past a corner you have crossed a thousand times — and the light is different, and the city is again strange to you, and you realise you were never going to see it clearly while you lived inside it.'"
    **Question**: How does the passage extend the central metaphor?
-   **Answer**: by treating returning to a familiar place after absence as the only way to see it again
-   **Accepts**: through the image of walking back into a place you stopped seeing
+   **Answer**: returning after absence to see clearly
+   **Accepts**: see familiar place anew after absence / only see city clearly after leaving / familiar becomes strange after time away
    **Explanation**: Extended metaphor: "Memory is a city" — and the paragraph develops the comparison across multiple sentences (streets you stopped noticing, walking back after months, light is different, never see clearly while inside). Literary craft sustains the metaphor without re-stating it.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -201,16 +202,18 @@
    **Answer**: refused
    **Explanation**: "Refused" attributes will to hope — an abstract feeling acting like a person who chooses to stay. Personification turns abstract states into actors. The image becomes vivid because hope behaves like a stubborn houseguest.
 
-4. **fix_error** — Personification attempt: "The wind was strong yesterday."
+4. **short_write** — Personification attempt: "The wind was strong yesterday."
    **Hint**: To personify, give the wind a human-style verb or quality
    **Answer**: The wind argued with the trees all afternoon.
-   **Accepts**: The wind shouldered its way down the street.
+   **Prompt**: Rewrite the sentence personifying the wind (give it a human action).
+   **Example answer**: The wind argued with the trees all afternoon.
    **Explanation**: The original is just description, not personification. To personify, give the wind a human action ("argued", "shouldered", "wrestled"). Personification makes the description active, not flat.
 
 5. **read_answer**
    **Passage**: "The city slept badly that summer. The heat refused to release its grip even at three a.m. Buses sighed through the empty streets, half-empty themselves. Behind every shuttered window, a fan was arguing with the air. By dawn, the buildings looked tired, and the river was already glittering its way through another day it hadn't asked for."
    **Question**: Find three personifications in the passage.
-   **Answer**: the city slept badly, the heat refused to release its grip, buses sighed, a fan was arguing with the air, the buildings looked tired, the river was glittering its way through a day it hadn't asked for
+   **Answer**: city slept badly, heat refused to release, buses sighed
+   **Accepts**: city slept badly / heat refused to release / buses sighed / fan was arguing / buildings looked tired / river was glittering its way
    **Explanation**: Six personifications in five sentences: the city sleeps badly, heat refuses, buses sigh, fans argue, buildings look tired, the river was glittering through a day it hadn't asked for. Each gives a non-human entity human agency or feeling. Literary description at C2.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -349,16 +352,18 @@
    **Answer**: glared
    **Explanation**: "Glared" — verb that already contains the angry quality. Replaces "looked angrily" (which spells out the emotion). Strong verbs make adverbs redundant. C2 prose almost always prefers the single vivid verb.
 
-3. **fill_gap** — Specific noun: "She drove past in a _____, headlights cutting through the rain."
+3. **short_write** — Specific noun: "She drove past in a _____, headlights cutting through the rain."
    **Hint**: Specific car model + colour or detail
    **Answer**: a red Toyota
-   **Accepts**: a dented Volvo / any specific car
-   **Explanation**: Replacing "a car" with "a red Toyota" or similar specific image. Specific nouns ground prose in concrete reality. Mark Twain: "Don't / Do not say the old lady screamed. Bring her on and let her scream." Same principle: bring on the specific car.
+   **Prompt**: Complete the sentence with a specific noun (a car model, colour or detail).
+   **Example answer**: She drove past in a red Toyota, headlights cutting through the rain.
+   **Explanation**: Replacing "a car" with "a red Toyota" or similar specific image. Specific nouns ground prose in concrete reality. Mark Twain: "Don't say the old lady screamed. Bring her on and let her scream." Same principle: bring on the specific car.
 
-4. **fix_error** — "He walked slowly into the room, looking sadly at her, and then said something quietly."
+4. **short_write** — "He walked slowly into the room, looking sadly at her, and then said something quietly."
    **Hint**: Replace verb+adverb pairs with vivid verbs
    **Answer**: He trudged into the room, gazed sadly at her, and murmured something.
-   **Accepts**: He shuffled in, met her eyes, and whispered.
+   **Prompt**: Rewrite the sentence replacing verb + adverb pairs with vivid verbs.
+   **Example answer**: He trudged into the room, gazed sadly at her, and murmured something.
    **Explanation**: Three verb+adverb pairs: "walked slowly", "looked sadly", "said quietly". Each can become a single vivid verb: "trudged", "gazed" (still keeping "sadly" optionally), "murmured" / "whispered". Tightens prose, increases rhythm.
 
 5. **read_answer**
@@ -503,21 +508,25 @@
    **Answer**: Empty.
    **Explanation**: Sentence fragments — incomplete grammatical units — are legitimate in literary writing for emphasis. "Empty." stands alone as a single image. Academic writing rejects fragments; literary and journalistic prose use them strategically.
 
-3. **fill_gap** — Long sentence followed by short: "We had walked for hours, through the empty fields and along the river that we hadn't seen since childhood, talking about nothing in particular and everything at once — and then, suddenly, the silence. _____"
+3. **short_write** — Long sentence followed by short: "We had walked for hours, through the empty fields and along the river that we hadn't seen since childhood, talking about nothing in particular and everything at once — and then, suddenly, the silence. _____"
    **Hint**: A short impact sentence or fragment
    **Answer**: Neither of us spoke for a long time.
-   **Accepts**: Just the river. / Just walking. / Nobody.
+   **Prompt**: Add a short impact sentence or fragment after the long sentence.
+   **Example answer**: Neither of us spoke for a long time.
    **Explanation**: After a long sweeping sentence, the next move is contraction. A short sentence or fragment ("Just the river.") drops the rhythm down dramatically. This is rhythm-as-meaning — the silence the long sentence describes is enacted by the short one.
 
-4. **fix_error** — All-long-sentences paragraph: "She walked into the room which was empty except for a chair by the window where her mother used to sit and read in the afternoons before everything changed and now nobody sat there at all."
+4. **short_write** — All-long-sentences paragraph: "She walked into the room which was empty except for a chair by the window where her mother used to sit and read in the afternoons before everything changed and now nobody sat there at all."
    **Hint**: Break for rhythm — at least one short sentence or fragment
    **Answer**: She walked into the room. It was empty except for a chair by the window — her mother's chair, where she used to read in the afternoons. Before everything. Now nobody sat there.
+   **Prompt**: Rewrite the paragraph breaking it up for rhythm (at least one short sentence or fragment).
+   **Example answer**: She walked into the room. It was empty except for a chair by the window — her mother's chair, where she used to read in the afternoons. Before everything. Now nobody sat there.
    **Explanation**: The original runs without pause. Break it: a short opener, a medium-length description, a fragment ("Before everything."), a short close. Rhythm now varies, and the meaning lands.
 
 5. **read_answer**
    **Passage**: "He had spent thirty years building the business — through three recessions, two divorces, and one funeral that he had not been able to attend because the company needed him in Singapore. The company, now, didn't need him anywhere. The board had voted. Unanimously. He was free."
    **Question**: How does the passage use sentence length for effect?
-   **Answer**: opens with one long sentence describing decades; follows with short sentences/fragments ("Unanimously. He was free.") to deliver the rupture
+   **Answer**: long sentence then short fragments
+   **Accepts**: long sentence then short / opens long, ends short / short fragments for effect
    **Explanation**: The long opening sentence builds the weight of three decades. The short sentences and fragment ("Unanimously. He was free.") deliver the consequence with rhythmic shock. Length contrast IS the meaning.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -649,28 +658,32 @@
 1. **multiple_choice** — Show, don't tell: which version "shows" nervousness?
    **Options**: She was extremely nervous. / Her thumbnail kept tracking the seam of her jacket. / She felt anxiety. / The situation made her nervous.
    **Answer**: Her thumbnail kept tracking the seam of her jacket.
-   **Explanation**: "Show, don't / do not tell" — convey emotion through observable detail. The thumbnail tracking the seam is a small physical tic readers recognise as nervous behaviour. The reader infers the emotion; the writer doesn't name it. C2 literary discipline.
+   **Explanation**: "Show, don't tell" — convey emotion through observable detail. The thumbnail tracking the seam is a small physical tic readers recognise as nervous behaviour. The reader infers the emotion; the writer doesn't name it. C2 literary discipline.
 
 2. **multiple_choice** — Shown anger: "_____."
    **Options**: He was very angry / He didn't sit down. He didn't sit down for the entire meeting. / He felt rage / The argument made him mad.
    **Answer**: He didn't sit down. He didn't sit down for the entire meeting.
-   **Explanation**: The repeated short sentence — "He didn't / did not sit down. He didn't sit down for the entire meeting." — shows the contained, pressurised anger through a behavioural detail. The repetition itself enacts the refusal. Reader infers fury.
+   **Explanation**: The repeated short sentence — "He didn't sit down. He didn't sit down for the entire meeting." — shows the contained, pressurised anger through a behavioural detail. The repetition itself enacts the refusal. Reader infers fury.
 
-3. **fill_gap** — Convert "She was sad" to a shown version: "She _____"
+3. **short_write** — Convert "She was sad" to a shown version: "She _____"
    **Hint**: An observable detail or action that implies sadness
    **Answer**: kept the wedding photo turned face-down for three weeks
-   **Accepts**: any specific behavioural detail
+   **Prompt**: Show, don't tell: complete "She..." with an observable action that implies sadness.
+   **Example answer**: She kept the wedding photo turned face-down for three weeks.
    **Explanation**: Show sadness through behaviour — the face-down photo implies refusal to look, time passing, unresolved grief. Specific actions carry emotion more reliably than abstract emotion words. The reader does the inferring; the prose stays concrete.
 
-4. **fix_error** — "He was happy about the news."
+4. **short_write** — "He was happy about the news."
    **Hint**: Convey happiness through detail rather than the abstract word
    **Answer**: He read it twice, then a third time. He set the letter down, picked it up again, and went to find his wife.
+   **Prompt**: Rewrite it showing happiness through details instead of the word "happy".
+   **Example answer**: He read it twice, then a third time. He set the letter down, picked it up again, and went to find his wife.
    **Explanation**: "Happy" is abstract. Showing the rereading, the inability to set it down, the impulse to share — these observable actions communicate joy more vividly. The reader experiences the news landing, instead of being told the character is happy.
 
 5. **read_answer**
    **Passage**: "She had been waiting two hours. She did not look at her phone. She did not stand to stretch. She had finished her coffee and ordered another, then a third, paying each time in exact change. When his name appeared in the doorway, she stood without hurry, smiled without warmth, and gestured to the seat across from her as if the meeting had been arranged for her convenience all along."
    **Question**: Without using the word, what emotion is the woman conveying?
-   **Answer**: anger, or controlled fury, or being kept waiting / refusing to show it
+   **Answer**: anger
+   **Accepts**: controlled fury / kept waiting / refusing to show anger
    **Explanation**: No emotion word appears. Yet readers infer: contained anger, deliberate composure, asserting power. The details — "exact change", "stood without hurry", "smiled without warmth", "as if... her convenience" — show what's felt. Reader does the work; writer trusts the reader.
 
 ### 2. Listening/Speaking (5 phrases)

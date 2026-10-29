@@ -70,7 +70,8 @@
 5. **read_answer**
    **Passage**: "The consultant's first report was diplomatic but unmistakable. 'You've hit the nail on the head on customer churn, but that's only the tip of the iceberg. The real elephant in the room is the leadership culture — and reading between the lines of your own employee survey, your people already know it.'"
    **Question**: According to the consultant, what is the bigger issue beneath customer churn?
-   **Answer**: the leadership culture (or "the elephant in the room — leadership culture")
+   **Answer**: leadership culture
+   **Accepts**: the elephant in the room / leadership culture issue / leadership
    **Explanation**: Four C1 idioms stacked: "hit the nail on the head" (precise diagnosis), "the tip of the iceberg" (visible portion), "the elephant in the room" (avoided real problem), "reading between the lines" (decoding implicit messages). Consulting-grade prose.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -365,6 +366,7 @@
 3. **fill_gap** — "Take what he says with a _____ of salt — he exaggerates."
    **Hint**: small unit of salt
    **Answer**: grain
+   **Accepts**: pinch
    **Explanation**: "Take with a grain of salt" = treat with healthy scepticism. British variant: "pinch of salt". The image: a small dose of salt was once thought to neutralise poisons; metaphorically, a small dose of doubt neutralises misleading claims.
 
 4. **fix_error** — "She's a hard nut to broke."
@@ -395,7 +397,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three scenarios. Use food idioms — 'piece of cake', 'spill the beans', 'grain of salt', 'tough nut to crack'."
+**Opening line**: "I've got three scenarios for you. Answer with food idioms like 'piece of cake', 'spill the beans', 'a grain of salt' or 'a tough nut to crack'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -430,7 +432,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three scenarios. Use food idioms — 'piece of cake', 'spill the beans', 'grain of salt', 'tough nut to crack'."
+1. **Charlotte**: "I've got three scenarios for you. Answer with food idioms like 'piece of cake', 'spill the beans', 'a grain of salt' or 'a tough nut to crack'."
 2. **Student**: ~"The migration turned out to be a piece of cake compared to what we feared."
 3. **Charlotte**: "Leaked secret?"
 4. **Student**: ~"Someone in marketing spilled the beans about the rebrand a week early."
@@ -548,7 +550,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three project moments. Respond with 'kill two birds', 'ball is in your court', 'on the same page', or 'play it by ear'."
+**Opening line**: "I've got three project moments for you. Respond with 'kill two birds with one stone', 'the ball is in your court', 'on the same page' or 'play it by ear'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -583,7 +585,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three project moments. Respond with 'kill two birds', 'ball is in your court', 'on the same page', or 'play it by ear'."
+1. **Charlotte**: "I've got three project moments for you. Respond with 'kill two birds with one stone', 'the ball is in your court', 'on the same page' or 'play it by ear'."
 2. **Student**: ~"If we record the demo and the training in one session, we kill two birds with one stone."
 3. **Charlotte**: "Smart. Status?"
 4. **Student**: ~"We're on the same page internally — now the ball is in the client's court."
@@ -700,7 +702,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three contexts. Use 'crystal clear', 'low-hanging fruit', 'double-edged sword', or 'blessing in disguise'."
+**Opening line**: "I've got three situations for you. Try 'crystal clear', 'low-hanging fruit', 'a double-edged sword' or 'a blessing in disguise'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -735,7 +737,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three contexts. Use 'crystal clear', 'low-hanging fruit', 'double-edged sword', or 'blessing in disguise'."
+1. **Charlotte**: "I've got three situations for you. Try 'crystal clear', 'low-hanging fruit', 'a double-edged sword' or 'a blessing in disguise'."
 2. **Student**: ~"The new policy on remote work is crystal clear — three days a week, no exceptions."
 3. **Charlotte**: "Easy wins?"
 4. **Student**: ~"We started with the low-hanging fruit and saw a 10% lift in two weeks."
@@ -755,7 +757,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em EN)**: "Charlotte reflects on a career pivot. Mix classical idioms with modern metaphor."
-**Opening message**: "Leaving the corporate job felt like the end of the world at the time. In retrospect, blessing in disguise. Have you had a moment like that?"
+**Opening message**: "Leaving the corporate job felt like the end of the world at the time. In retrospect, it was a blessing in disguise. Have you had a moment like that?"
 
 **Sub-objectives** (3 objetivos):
 
@@ -790,7 +792,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Leaving the corporate job felt like the end of the world at the time. In retrospect, blessing in disguise. Have you had a moment like that?"
+1. **Charlotte**: "Leaving the corporate job felt like the end of the world at the time. In retrospect, it was a blessing in disguise. Have you had a moment like that?"
 2. **Student**: "Getting laid off in 2020 turned out to be a blessing in disguise — I started the consulting work I'd been afraid to try."
 3. **Charlotte**: "Forced choices sometimes reveal the right one."
 4. **Student**: "Independence is a double-edged sword — full agency, but also full responsibility for finding the next project."

@@ -38,7 +38,7 @@
 2. **multiple_choice** — "She _____ work so much."
    **Options**: shouldn't / wouldn't / didn't
    **Answer**: shouldn't
-   **Explanation**: "Shouldn't / Should not" = não deveria. Aconselhamento negativo.
+   **Explanation**: "Shouldn't" = não deveria. Aconselhamento negativo.
 
 3. **word_bank** — "We _____ help her."
    **Choices**: should / are / do / will
@@ -48,21 +48,24 @@
 4. **word_bank** — "He _____ eat junk food."
    **Choices**: shouldn't / can't / doesn't / didn't
    **Answer**: shouldn't
-   **Explanation**: "He shouldn't / should not eat junk food" = ele não deveria.
+   **Explanation**: "He shouldn't eat junk food" = ele não deveria.
 
 5. **fill_gap** — "You _____ study more."
    **Hint**: Conselho positivo
    **Answer**: should
+   **Accepts**: need to / must / have to / ought to
    **Explanation**: "You should study" = você deveria estudar.
 
 6. **fill_gap** — "She _____ stay up late."
    **Hint**: Conselho negativo
    **Answer**: shouldn't
-   **Explanation**: "She shouldn't / should not stay up late" = ela não deveria ficar acordada.
+   **Accepts**: mustn't
+   **Explanation**: "She shouldn't stay up late" = ela não deveria ficar acordada.
 
 7. **fill_gap** — "I think you _____ try yoga."
    **Hint**: Conselho com "I think"
    **Answer**: should
+   **Accepts**: could / can
    **Explanation**: "I think you should try" = acho que você deveria tentar.
 
 8. **fix_error** — "She shoulds rest."
@@ -80,7 +83,7 @@
     **Question**: O que a pessoa não deveria fazer?
     **Answer**: work so late
     **Accepts**: work late
-    **Explanation**: O texto diz "You shouldn't / should not work so late".
+    **Explanation**: O texto diz "You shouldn't work so late".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -179,9 +182,9 @@
    **label_pt**: "Perguntar à Charlotte se ela tem outras dicas"
    **label_en**: "Ask Charlotte for more tips"
    **hidden_prompt**: "user asks 'What should I + base?' or 'Any other tips?'"
-   **hint_pt**: "What should I do too?"
-   **hint_en**: "What should I do too?"
-   **example_pass**: What should I do too?
+   **hint_pt**: "What else should I do?"
+   **hint_en**: "What else should I do?"
+   **example_pass**: What else should I do?
    **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Great advice exchange!" quando obj_3 baterem.
@@ -193,7 +196,7 @@
 3. **Charlotte**: "Good. Anything to avoid?"
 4. **Student**: "You shouldn't translate everything."
 5. **Charlotte**: "Smart!"
-6. **Student**: "What should I do too?"
+6. **Student**: "What else should I do?"
 7. **Charlotte**: "Talk to natives! Great advice exchange!"
 
 > N01 chat = LLM puro.
@@ -231,16 +234,19 @@
 5. **fill_gap** — "I _____ finish this report."
    **Hint**: Obrigação com I
    **Answer**: have to
+   **Accepts**: need to / must / should / have got to
    **Explanation**: "I have to finish" — obrigação.
 
 6. **fill_gap** — "Lucas _____ wear a uniform."
    **Hint**: Obrigação com nome (he)
    **Answer**: has to
+   **Accepts**: needs to / must / has got to
    **Explanation**: Lucas = he → "has to".
 
 7. **fill_gap** — "They _____ wake up early."
    **Hint**: Obrigação plural
    **Answer**: have to
+   **Accepts**: need to / must
    **Explanation**: "They have to" — plural.
 
 8. **fix_error** — "She have to work late."
@@ -389,54 +395,54 @@
 1. **multiple_choice** — "I _____ have to work on Sundays."
    **Options**: don't / doesn't / wasn't
    **Answer**: don't
-   **Explanation**: Negativa: "don't / do not have to" = não precisa. Com I/you/we/they.
+   **Explanation**: Negativa: "don't have to" = não precisa. Com I/you/we/they.
 
 2. **multiple_choice** — "She _____ have to come."
    **Options**: doesn't / don't / wasn't
    **Answer**: doesn't
-   **Explanation**: 3ª pessoa: "doesn't / does not have to".
+   **Explanation**: 3ª pessoa: "doesn't have to".
 
 3. **word_bank** — "We _____ have to pay anything."
    **Choices**: don't / doesn't / aren't / isn't
    **Answer**: don't
-   **Explanation**: "We don't / do not have to" — plural.
+   **Explanation**: "We don't have to" — plural.
 
 4. **word_bank** — "He _____ have to wear a tie."
    **Choices**: doesn't / don't / isn't / can't
    **Answer**: doesn't
-   **Explanation**: "He doesn't / does not have to" — 3ª pessoa.
+   **Explanation**: "He doesn't have to" — 3ª pessoa.
 
 5. **fill_gap** — "I _____ have to study tonight."
    **Hint**: Negativa de "have to" com I
    **Answer**: don't
-   **Explanation**: "I don't / do not have to" — ausência de obrigação.
+   **Explanation**: "I don't have to" — ausência de obrigação.
 
 6. **fill_gap** — "She _____ have to wake up early."
    **Hint**: Negativa de "has to"
    **Answer**: doesn't
-   **Explanation**: "She doesn't / does not have to" — 3ª pessoa.
+   **Explanation**: "She doesn't have to" — 3ª pessoa.
 
 7. **fill_gap** — "You _____ have to come if you don't want."
    **Hint**: Negativa do "have to"
    **Answer**: don't
-   **Explanation**: "You don't / do not have to come" — opcional.
+   **Explanation**: "You don't have to come" — opcional.
 
 8. **fix_error** — "She don't have to work."
    **Hint**: 3ª pessoa usa "doesn't"
    **Answer**: She doesn't have to work.
-   **Explanation**: She → "doesn't / does not", não "don't / do not".
+   **Explanation**: She → "doesn't", não "don't".
 
 9. **fix_error** — "I doesn't have to go."
    **Hint**: I usa "don't"
    **Answer**: I don't have to go.
-   **Explanation**: Com I sempre "don't / do not", não "doesn't / does not".
+   **Explanation**: Com I sempre "don't", não "doesn't".
 
 10. **read_answer**
     **Passage**: "I don't have to work tomorrow — it's my day off. She doesn't have to come if she's busy. We don't have to do anything special."
     **Question**: Por que o narrador não precisa trabalhar amanhã?
     **Answer**: it's my day off
     **Accepts**: day off
-    **Explanation**: O texto diz "it's / it is my day off".
+    **Explanation**: O texto diz "it's my day off".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -587,11 +593,13 @@
 5. **fill_gap** — "_____ I help you?"
    **Hint**: Oferta com should
    **Answer**: Should
+   **Accepts**: Can / May / Could / Shall
    **Explanation**: "Should I help you?" — oferta polida.
 
 6. **fill_gap** — "_____ he take a taxi or walk?"
    **Hint**: Conselho 3ª pessoa
    **Answer**: Should
+   **Accepts**: Will / Can / Could / Shall
    **Explanation**: "Should he take a taxi?" — pedido de conselho sobre ele.
 
 7. **fill_gap** — "_____ I have to wear a tie?"
@@ -614,7 +622,7 @@
     **Question**: A pessoa precisa trazer o passaporte?
     **Answer**: no
     **Accepts**: doesn't have to
-    **Explanation**: The text says "No, you don't / do not have to".
+    **Explanation**: The text says "No, you don't have to".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -755,7 +763,7 @@
 3. **word_bank** — "You _____ go if you don't want."
    **Choices**: don't have to / shouldn't / can't / mustn't
    **Answer**: don't have to
-   **Explanation**: "Don't / Do not have to" = não precisa, opcional. "Shouldn't / Should not" = não deveria (conselho).
+   **Explanation**: "Don't have to" = não precisa, opcional. "Shouldn't" = não deveria (conselho).
 
 4. **word_bank** — "She _____ buy groceries — we're out of milk."
    **Choices**: needs to / has to / should / will
@@ -765,16 +773,19 @@
 5. **fill_gap** — "I _____ see a doctor about this."
    **Hint**: Conselho leve
    **Answer**: should
+   **Accepts**: need to / have to / must
    **Explanation**: "I should see" — sugestão suave. "Have to" seria mais forte.
 
 6. **fill_gap** — "She _____ leave at 7 — strict company rule."
    **Hint**: Obrigação forte
    **Answer**: has to
+   **Accepts**: must / needs to / has got to
    **Explanation**: "She has to leave" — obrigação imposta.
 
 7. **fill_gap** — "We _____ buy more bread."
    **Hint**: Necessidade prática
    **Answer**: need to
+   **Accepts**: have to / should / must
    **Explanation**: "We need to buy" — necessidade. "Need to" é o mais comum pra coisas práticas.
 
 8. **fix_error** — "You should to study."

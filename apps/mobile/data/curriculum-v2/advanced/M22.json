@@ -54,19 +54,20 @@
           "answer": "I mean",
           "accepts": [
             "you know",
-            "honestly"
+            "honestly",
+            "Even so",
+            "Look"
           ],
           "explanation": "Casual filler drawn from M21 — \"I mean\" / \"you know\" / \"honestly\". Marks the shift from observation to feeling. Native narrative often uses one such filler per paragraph, particularly at moments of emotional pivot."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Sentence too long and dense for narrative rhythm: \"She had spent fifteen years working at the company and during that time she had built three teams, launched two products, and somehow managed to keep her sense of humour intact throughout every reorganisation and budget cut.\"",
           "hint": "Vary rhythm — long sentence + short follow-up or fragment",
           "answer": "She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation.",
-          "accepts": [
-            "similar rhythm-varied version"
-          ],
-          "explanation": "Long sentence + tricolon fragment + emphatic repetition. Drawn from M14 (rhythm) and M13 (tricolon). Native narrative breaks dense sentences for breath. The fragment \"Three teams. Two products.\" emphasises the scale."
+          "explanation": "Long sentence + tricolon fragment + emphatic repetition. Drawn from M14 (rhythm) and M13 (tricolon). Native narrative breaks dense sentences for breath. The fragment \"Three teams. Two products.\" emphasises the scale.",
+          "prompt": "Rewrite the sentence varying the rhythm: a long sentence plus short follow-ups or fragments.",
+          "example_answer": "She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation."
         },
         {
           "type": "read_answer",
@@ -105,7 +106,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites a short personal narrative. You weave cleft sentences, a participle clause, a casual filler, and a closing fragment.",
-        "scenario_pt": "Charlotte convida para uma narrativa pessoal curta. Você entrelaça frases clivadas, uma oração de particípio, um preenchimento casual e um fragmento de encerramento.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -114,7 +114,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Começar com clivagem",
             "label_en": "Opening with cleft",
             "hidden_prompt": "user opens with 'It was + element + that...'",
             "hint_en": "It was a Sunday in late August that I finally decided to apply — three months later than I should have, and only because my sister sent me a single text I couldn't ignore.",
@@ -133,7 +132,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Oração de particípio no meio da história",
             "label_en": "Participle clause mid-story",
             "hidden_prompt": "user uses participle clause + filler",
             "hint_en": "Sitting on the floor of my living room, I read the requirements three times, hoping — you know — that something would tell me whether I was qualified or just stubborn.",
@@ -151,7 +149,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Fragmento de encerramento",
             "label_en": "Closing fragment",
             "hidden_prompt": "user closes with sentence fragment",
             "hint_en": "I clicked submit before I could change my mind. Done. Whatever happened next, it would not be the version of me that had spent the year not trying.",
@@ -182,12 +179,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites a continuation. Extend the narrative integrating C2 moves.",
-        "intro_pt": "Charlotte convida para uma continuação. Estenda a narrativa integrando movimentos de nível C2.",
         "opening_message": "Three weeks later, the reply came. What did you feel reading it?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com particípio + cleft",
             "label_en": "Reply with participle + cleft",
             "hidden_prompt": "user uses participle clause + cleft",
             "hint_en": "Opening the email, I knew before I'd read a word. It was the second sentence that confirmed it — three lines down, between the formalities and the contract details.",
@@ -205,7 +200,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Reflexão com pseudo-cleft",
             "label_en": "Reflection with pseudo-cleft",
             "hidden_prompt": "user uses 'What surprised me was...'",
             "hint_en": "What surprised me was how immediately my body knew before my mind had read the words — shoulders dropping, breath finally arriving without being asked.",
@@ -224,7 +218,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for her version of the moment",
             "hint_en": "What about you — what was the email that changed your year?",
@@ -283,22 +276,31 @@
           "hint": "\"Rarely\" or \"Seldom\"",
           "answer": "Rarely",
           "accepts": [
-            "Seldom"
+            "Seldom",
+            "Never",
+            "Hardly ever"
           ],
           "explanation": "Fronted negative frequency adverb triggers inversion — opener of choice for argumentative emphasis. \"Rarely has...\" opens with weight, signals importance. M02 inversion in argumentative service."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Argumentative opener too casual: \"AI is a big deal. People disagree about it. Some say it'll ruin things, others say it'll save us. What do you think?\"",
           "hint": "Rewrite for academic register with at least one structural device",
           "answer": "Rarely has a technology generated as polarised a debate as artificial intelligence has in the past decade. It is increasingly clear, however, that the question is not whether AI will reshape society but how — and on whose terms.",
-          "explanation": "Casual opener → academic opener with inversion (\"Rarely has...\"), formal vocabulary (\"polarised debate\", \"increasingly clear\"), and clausal complexity. Reframed argument question (\"not whether... but how... and on whose terms\"). Heavy integration of M02, M03, M12, M13."
+          "explanation": "Casual opener → academic opener with inversion (\"Rarely has...\"), formal vocabulary (\"polarised debate\", \"increasingly clear\"), and clausal complexity. Reframed argument question (\"not whether... but how... and on whose terms\"). Heavy integration of M02, M03, M12, M13.",
+          "prompt": "Rewrite this opener in academic register, with at least one structural device (like inversion).",
+          "example_answer": "Rarely has a technology generated as polarised a debate as artificial intelligence has in the past decade. It is increasingly clear, however, that the question is not whether AI will reshape society but how — and on whose terms."
         },
         {
           "type": "read_answer",
           "passage": "Rarely has a single technology divided expert opinion as sharply as artificial intelligence has in the past decade. It is widely believed that AI will reshape the nature of work, though it could be argued that the reshaping has already begun. What is genuinely at stake is not whether change is coming, but how the gains will be distributed — and whose voices will shape that distribution. This essay argues for a third path: a regulatory framework that prioritises distributive justice over both reflexive enthusiasm and reflexive caution.",
           "question": "According to the opening, what is genuinely at stake?",
-          "answer": "how the gains will be distributed (and whose voices will shape that distribution)",
+          "answer": "how gains will be distributed",
+          "accepts": [
+            "distribution of gains",
+            "whose voices shape distribution",
+            "distribution"
+          ],
           "explanation": "The opening integrates: inversion (\"Rarely has...\"), impersonal passive (\"It is widely believed...\"), hedged cleft (\"it could be argued...\"), pseudo-cleft reframe (\"What is genuinely at stake is not... but...\"), academic thesis statement. Five distinct C2 devices in five sentences. Op-ed opening grade."
         }
       ],
@@ -331,7 +333,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives an essay topic. You draft an opening paragraph integrating inversion, cleft, hedge, and academic register.",
-        "scenario_pt": "Charlotte dá um tema de redação. Você elabora um parágrafo de abertura integrando inversão, cleft, hedge e registro acadêmico.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -340,7 +341,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Começar com inversão",
             "label_en": "Opening with inversion",
             "hidden_prompt": "user opens with inverted negative adverbial",
             "hint_en": "Rarely has a workplace reform produced as broad a coalition of advocates — and as deep a bench of sceptics — as the four-day workweek.",
@@ -355,7 +355,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Cleft + hedge",
             "label_en": "Cleft + hedge",
             "hidden_prompt": "user uses 'It is X that' + hedge",
             "hint_en": "It is increasingly accepted that the standard five-day week reflects historical accident more than productive necessity, though it could be argued that the four-day alternative has yet to prove itself outside knowledge work.",
@@ -370,7 +369,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Tese com pseudo-cleft",
             "label_en": "Thesis with pseudo-cleft",
             "hidden_prompt": "user uses 'What this paper argues is...'",
             "hint_en": "What this paper argues is that the question is no longer whether to pilot the four-day week, but how to design pilots that produce learning rather than predetermined conclusions.",
@@ -398,12 +396,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte invites an op-ed opening. Integrate all argumentative devices.",
-        "intro_pt": "Charlotte convida para a abertura de um artigo de opinião. Integre todos os dispositivos argumentativos.",
         "opening_message": "Topic: the case against measuring everything. Open an op-ed paragraph.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Abrir com inversão",
             "label_en": "Inverted opening",
             "hidden_prompt": "user opens with inversion",
             "hint_en": "Rarely has a management orthodoxy lasted as long, or done as much damage in plain sight, as the conviction that what gets measured gets managed.",
@@ -418,7 +414,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Cleft + reframe",
             "label_en": "Cleft + reframe",
             "hidden_prompt": "user uses cleft + reframes question",
             "hint_en": "It is widely accepted that data improves decisions, but what too often goes unsaid is that bad metrics actively make decisions worse — distorting the very behaviours they were meant to measure.",
@@ -433,7 +428,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte where the op-ed goes next",
             "hint_en": "Where does the op-ed go from here?",
@@ -472,7 +466,7 @@
             "I disagree completely."
           ],
           "answer": "With respect, I'd see it differently — though I take your point about timeline.",
-          "explanation": "Three diplomatic moves in one sentence: \"With respect\" (formal hedge), \"I'd / I would see it differently\" (soft contrast), \"I take your point about\" (concession). Drawn from M08 (hedging) and M10 (concession markers). Disagreement without damage."
+          "explanation": "Three diplomatic moves in one sentence: \"With respect\" (formal hedge), \"I'd see it differently\" (soft contrast), \"I take your point about\" (concession). Drawn from M08 (hedging) and M10 (concession markers). Disagreement without damage."
         },
         {
           "type": "multiple_choice",
@@ -493,22 +487,36 @@
           "answer": "I can see",
           "accepts": [
             "Granted",
-            "It's true"
+            "It's true",
+            "I accept",
+            "I agree",
+            "I admit",
+            "I grant"
           ],
-          "explanation": "Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. \"Granted, X — but Y\" / \"I can see X, but Y\" / \"It's / It is true that X — but Y\". Diplomatic argument pivots on acknowledging the other side first."
+          "explanation": "Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. \"Granted, X — but Y\" / \"I can see X, but Y\" / \"It's true that X — but Y\". Diplomatic argument pivots on acknowledging the other side first."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Blunt feedback: \"Your slides are bad and the message is confused.\"",
           "hint": "Rewrite diplomatically with at least three softening moves",
           "answer": "Honestly — and I mean this only because I want the deck to land well — I think the message could be tighter, and the slides might benefit from another pass. To be fair, the substance is all there; it's just buried.",
-          "explanation": "Diplomatic rewrite uses: \"Honestly\" (M21), \"I mean this only because\" (intentional reassurance), \"could be tighter / might benefit\" (modal hedges M19), \"To be fair\" (M10 concession), positive framing (\"the substance is all there\"). Same critique, preserved relationship."
+          "explanation": "Diplomatic rewrite uses: \"Honestly\" (M21), \"I mean this only because\" (intentional reassurance), \"could be tighter / might benefit\" (modal hedges M19), \"To be fair\" (M10 concession), positive framing (\"the substance is all there\"). Same critique, preserved relationship.",
+          "prompt": "Rewrite this feedback diplomatically, with at least three softening moves.",
+          "example_answer": "Honestly — and I mean this only because I want the deck to land well — I think the message could be tighter, and the slides might benefit from another pass. To be fair, the substance is all there; it's just buried."
         },
         {
           "type": "read_answer",
           "passage": "She knew the only way the message would land was through the long route. 'I can see why you'd frame it that way — and to be fair, the data does support the topline argument. That said, the deeper question, it seems to me, is whether we're optimising for the right outcome. With respect, I'd push back on the framing of success here.' Three concessions before a single disagreement. The other person leaned in instead of away.",
           "question": "How many diplomatic devices does the speaker use before reaching the disagreement?",
-          "answer": "at least three — 'I can see why', 'to be fair', 'that said', 'with respect' (4 if all counted)",
+          "answer": "at least three",
+          "accepts": [
+            "three",
+            "3",
+            "I can see why",
+            "to be fair",
+            "that said",
+            "with respect"
+          ],
           "explanation": "Diplomatic disagreement requires layered concession. The speaker grants ground three or four times before pivoting — each acknowledgement keeps the listener engaged. By the time the disagreement arrives, the relationship is intact. Integrates M08, M10, M11, M21."
         }
       ],
@@ -541,7 +549,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte states a strong position. You disagree diplomatically, integrating concession, hedging, and pragmatic openers.",
-        "scenario_pt": "Charlotte afirma uma posição forte. Você discorda diplomaticamente, integrando concessão, cautela e introduções pragmáticas.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -550,7 +557,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Fazer concessão inicial",
             "label_en": "Initial concession",
             "hidden_prompt": "user opens with concession marker",
             "hint_en": "I can see why you'd want to fast-track this — the market window is genuinely closing, and the data on early-mover advantage is hard to argue with.",
@@ -565,7 +571,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Atenuar e reformular",
             "label_en": "Hedge + reframe",
             "hidden_prompt": "user uses hedge and reframe",
             "hint_en": "That said, with respect, I think the deeper question is whether we have the operational capacity to actually deliver if we win the early-mover position.",
@@ -580,7 +585,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Fechamento construtivo",
             "label_en": "Constructive close",
             "hidden_prompt": "user closes with constructive proposal",
             "hint_en": "What I'd propose, honestly, is a six-week pilot at limited scope — close enough to the full plan that we'd learn fast, narrow enough that we wouldn't break anything in the process.",
@@ -608,12 +612,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte takes a position. Disagree diplomatically across the exchange.",
-        "intro_pt": "Charlotte toma uma posição. Discorde diplomaticamente durante a conversa.",
         "opening_message": "I think we should let the underperforming team member go. Six months of warnings and no real change.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Concessão",
             "label_en": "Concession",
             "hidden_prompt": "user opens with concession",
             "hint_en": "I can see the case — six months is genuinely long, and most of the pattern data points the way you're describing.",
@@ -628,7 +630,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Resistência diplomática",
             "label_en": "Diplomatic pushback",
             "hidden_prompt": "user pushes back with hedge",
             "hint_en": "With respect, the question I'd want answered first is whether the warnings were specific enough to act on — sometimes 'no real change' means the brief was the problem, not the person.",
@@ -643,7 +644,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what specifically was asked",
             "hint_en": "What did the warnings actually ask for?",
@@ -682,7 +682,7 @@
             "I'd like to fetch coffee."
           ],
           "answer": "I'm gonna grab a coffee — wanna come?",
-          "explanation": "Casual register integrates contractions (\"I'm / I am\"), reduced \"going to\" → \"gonna\", noun→verb conversion (\"grab\"), reduced \"want to\" → \"wanna\". All drawn from M16 (conversion) and M20 (pronunciation reductions). The other options sound formal, translated, or alien."
+          "explanation": "Casual register integrates contractions (\"I'm\"), reduced \"going to\" → \"gonna\", noun→verb conversion (\"grab\"), reduced \"want to\" → \"wanna\". All drawn from M16 (conversion) and M20 (pronunciation reductions). The other options sound formal, translated, or alien."
         },
         {
           "type": "multiple_choice",
@@ -694,7 +694,7 @@
             "I shall be free, I believe."
           ],
           "answer": "Should be — what's up?",
-          "explanation": "\"Should be\" — ellipsis-rich casual reply (drops \"I\"; \"be\" replaces full verb phrase). \"What's / What is up?\" — informal opener inviting continuation. Integrates M17 (ellipsis), M20 (contractions), M21 (informal opener). Native short-answer pattern."
+          "explanation": "\"Should be\" — ellipsis-rich casual reply (drops \"I\"; \"be\" replaces full verb phrase). \"What's up?\" — informal opener inviting continuation. Integrates M17 (ellipsis), M20 (contractions), M21 (informal opener). Native short-answer pattern."
         },
         {
           "type": "fill_gap",
@@ -702,22 +702,38 @@
           "hint": "Tag for confirmation",
           "answer": "aren't we",
           "accepts": [
-            "right?"
+            "right?",
+            "right",
+            "yeah",
+            "yes"
           ],
-          "explanation": "Tag question \"aren't / are not we?\" for soft confirmation. Drawn from M21. Or universal \"right?\" for casual register. Both work; \"aren't / are not we?\" is slightly more polished, \"right?\" slightly more casual."
+          "explanation": "Tag question \"aren't we?\" for soft confirmation. Drawn from M21. Or universal \"right?\" for casual register. Both work; \"aren't we?\" is slightly more polished, \"right?\" slightly more casual."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Too formal for casual context: \"I will see you on Saturday. Would you be inclined to arrive at noon?\"",
           "hint": "Casual contractions and conversational rhythm",
           "answer": "I'll see you Saturday. Wanna meet at noon? (or: See you Saturday — noon work for you?)",
-          "explanation": "Casual rewrite: \"I'll / I will\" (contraction), drop \"on\" before \"Saturday\" in casual register, \"Wanna meet\" (gonna/wanna conversion), question framed as \"X work for you?\" — short native pattern. Removes formal phrasing not needed in casual exchange."
+          "explanation": "Casual rewrite: \"I'll\" (contraction), drop \"on\" before \"Saturday\" in casual register, \"Wanna meet\" (gonna/wanna conversion), question framed as \"X work for you?\" — short native pattern. Removes formal phrasing not needed in casual exchange.",
+          "prompt": "Rewrite this so it sounds casual (for a friend): \"I will see you on Saturday. Would you be inclined to arrive at noon?\"",
+          "example_answer": "I'll see you Saturday. Wanna meet at noon?"
         },
         {
           "type": "read_answer",
           "passage": "The conversation flowed. 'You been working late again?' 'Mm-hm. Should be done by Friday, though.' 'Want to grab a drink after, yeah?' 'I'd love to. Same place as last time?' 'Yeah, sounds good.' 'Cool — text me when you're heading out.' Six exchanges, twelve seconds, zero formality.",
           "question": "How many native conversational features can you spot?",
-          "answer": "at least six — 'You been' (dropped 'have'), 'Mm-hm' (backchannel), 'Should be' (ellipsis), 'grab' (verb), 'yeah?' (tag), 'I'd love to' (ellipsis+contraction), 'sounds good' (ellipsis)",
+          "answer": "at least six",
+          "accepts": [
+            "six",
+            "6",
+            "You been",
+            "Mm-hm",
+            "Should be",
+            "grab",
+            "yeah?",
+            "I'd love to",
+            "sounds good"
+          ],
           "explanation": "Tight casual exchange packed with native features: dropped auxiliary, backchannel, ellipsis, verb conversion, tag, contraction, set phrase. C2 conversational mastery looks like this — every utterance shaped by native instincts simultaneously."
         }
       ],
@@ -750,7 +766,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte opens a casual conversation. You match her register with contractions, fillers, tags, and short answers throughout.",
-        "scenario_pt": "Charlotte abre uma conversa casual. Você acompanha o tom dela usando contrações, fillers, tags e respostas curtas.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -759,7 +774,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Resposta casual com contrações",
             "label_en": "Casual reply with contractions",
             "hidden_prompt": "user uses contractions and informal register",
             "hint_en": "Yeah, I've been swamped — barely had time to eat properly. You been busy too, or just chilling this week?",
@@ -774,7 +788,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Pergunta casual com tag",
             "label_en": "Casual tag question",
             "hidden_prompt": "user adds tag and casual filler",
             "hint_en": "We're still doing the thing on Saturday, right? I want to make sure I haven't double-booked myself.",
@@ -792,7 +805,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Fechamento casual + preenchimento",
             "label_en": "Casual close + filler",
             "hidden_prompt": "user closes casually with filler",
             "hint_en": "Cool. I'll, you know, text you Friday afternoon — make sure we're still on.",
@@ -823,12 +835,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte catches up casually. Match every register cue — contractions, fillers, backchannels, short answers.",
-        "intro_pt": "Charlotte conversa casualmente. Acompanhe cada pista de registro — contrações, fillers, backchannels, respostas curtas.",
         "opening_message": "Hey, how've you been? Haven't seen you since the dinner thing.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Resposta casual com preenchimento",
             "label_en": "Casual reply with filler",
             "hidden_prompt": "user replies casually with contractions and filler",
             "hint_en": "Yeah, I know — it's been months, hasn't it? I've been buried under this project, honestly.",
@@ -846,7 +856,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Pergunta casual",
             "label_en": "Casual question",
             "hidden_prompt": "user asks casual reciprocal question",
             "hint_en": "How's stuff with you? Still doing the freelance thing, or did the full-time offer come through?",
@@ -861,7 +870,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Plano acordado",
             "label_en": "Plan agreed",
             "hidden_prompt": "user proposes a casual catch-up plan",
             "hint_en": "We should grab dinner before another six months go by — I'm free, like, two Fridays from now?",
@@ -912,7 +920,7 @@
             "It is correct that we have not met for an extended period."
           ],
           "answer": "I know, right? It's been crazy.",
-          "explanation": "Casual personal opener → casual personal reply. Contracted (\"I know, right? It's / It is been\"), informal vocabulary (\"crazy\"), tag question for warmth. Mismatching with formality would feel cold or robotic. Drawn from M11 (register) and M21 (casual register)."
+          "explanation": "Casual personal opener → casual personal reply. Contracted (\"I know, right? It's been\"), informal vocabulary (\"crazy\"), tag question for warmth. Mismatching with formality would feel cold or robotic. Drawn from M11 (register) and M21 (casual register)."
         },
         {
           "type": "fill_gap",
@@ -926,17 +934,24 @@
           "explanation": "\"Anyway\" — universal pivot from digression back to topic. Casual register marker that doubles as a structural device. Drawn from M21. Native speakers code-switch within a single conversation, and \"anyway\" is one of the standard pivot points."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "Same-register monotone across all turns: \"Yes. Indeed. Yes. Indeed. Yes. The findings support that. Indeed. Yes.\"",
           "hint": "Vary registers — formal, casual, backchannels mixed",
           "answer": "Yes. Right — mm-hm. The findings do support that. Yeah. And, you know, the implications are pretty striking when you stack them up. Mm-hm, exactly.",
-          "explanation": "Real conversation modulates: short backchannels (\"Right — mm-hm\"), substantive points (\"The findings do support that\"), informal connectors (\"you know\"), confirmations. Monotone replies sound like a chatbot. C2 fluency is rhythm + register variation."
+          "explanation": "Real conversation modulates: short backchannels (\"Right — mm-hm\"), substantive points (\"The findings do support that\"), informal connectors (\"you know\"), confirmations. Monotone replies sound like a chatbot. C2 fluency is rhythm + register variation.",
+          "prompt": "Rewrite these turns mixing registers: formal lines, casual lines and backchannels.",
+          "example_answer": "Yes. Right — mm-hm. The findings do support that. Yeah. And, you know, the implications are pretty striking when you stack them up. Mm-hm, exactly."
         },
         {
           "type": "read_answer",
           "passage": "She moved through her morning at three registers. To the board, she wrote: 'It is recommended that the committee defer action pending a full review of the regulatory landscape.' To her co-founder, she texted: 'we need to push the board call to next week, the lawyers aren't ready.' To her best friend over coffee, she said: 'Honestly? The board's about to drive me up the wall — three months of this, and they still haven't read the brief.' Three registers, one truth underneath.",
           "question": "How does the speaker phrase the same underlying message to her best friend?",
-          "answer": "'Honestly? The board's about to drive me up the wall — three months of this, and they still haven't read the brief.'",
+          "answer": "\"Honestly? The board's about to drive me up the wall...\"",
+          "accepts": [
+            "the board's about to drive me up the wall",
+            "three months of this, still haven't read the brief",
+            "frustration with the board"
+          ],
           "explanation": "Three registers, same content: formal board language (\"It is recommended that...\"), casual co-founder text (\"we need to push...\"), intimate friend chat (\"Honestly? The board's about to drive me up the wall...\"). C2 final mastery = effortless register switching, the right English for each room."
         }
       ],
@@ -969,7 +984,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte presents three different moments — formal meeting, casual chat with a peer, intimate conversation with a close friend. You produce the right register for each.",
-        "scenario_pt": "Charlotte apresenta três momentos diferentes — reunião formal, conversa casual com colega, conversa íntima com amigo próximo. Produza o registro correto para cada.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -978,7 +992,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Registro formal",
             "label_en": "Formal register",
             "hidden_prompt": "user produces formal academic/business register",
             "hint_en": "In the formal setting: 'I would propose, with respect, that we defer the decision pending a fuller review of the operational risks — particularly those flagged in the legal team's memo from last week.'",
@@ -993,7 +1006,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Registro casual entre pares",
             "label_en": "Casual peer register",
             "hidden_prompt": "user produces casual professional register",
             "hint_en": "To the peer: 'Look — between us, I think they're nowhere near ready. We're going to need to push the whole thing back a week, maybe two. Let's just be honest with each other about it before the next meeting.'",
@@ -1008,7 +1020,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar registro íntimo com amigo",
             "label_en": "Intimate friend register",
             "hidden_prompt": "user produces intimate casual register",
             "hint_en": "To the friend: 'Honestly? I'm exhausted. Three months of this, and I'm starting to wonder whether I'm built for senior leadership or just stubbornly pretending I am.'",
@@ -1036,12 +1047,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte plays three roles. Shift register every turn. End-of-curriculum integration.",
-        "intro_pt": "Charlotte assume três papéis. Mude o registro a cada turno. Integração de fim de currículo.",
         "opening_message": "(As your manager) Walk me through your assessment of the Q1 priorities.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Resposta formal ao gerente",
             "label_en": "Formal reply to manager",
             "hidden_prompt": "user uses formal academic/professional register",
             "hint_en": "I'd group them into three categories: structural commitments we cannot defer, market opportunities with closing windows, and capacity-building investments that the next two quarters will demand. The first category, in my view, is non-negotiable for Q1; the second deserves a sharper prioritisation conversation; the third is the one we keep postponing at our peril.",
@@ -1056,7 +1065,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Resposta casual para par",
             "label_en": "Casual reply to peer",
             "hidden_prompt": "user shifts to casual professional register",
             "hint_en": "Honestly? Between us — half the so-called priorities are theatre. The real Q1 question is whether we finally have the conversation about the engineering bottleneck, or whether we ride out another quarter pretending we don't have one.",
@@ -1071,7 +1079,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Responder intimamente a amigo",
             "label_en": "Intimate reply to friend",
             "hidden_prompt": "user shifts to intimate register",
             "hint_en": "Look, the truth is I'm tired. Three quarters in a row of running on inherited problems and pretending they're my new initiatives. I don't know how much longer I want to keep doing it — and that's a sentence I would never say in a meeting.",

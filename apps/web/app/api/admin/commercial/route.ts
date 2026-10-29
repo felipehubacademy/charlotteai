@@ -5,6 +5,7 @@
 //   POST { action: 'toggle_coupon', code, active }    pausa ou reativa (finance)
 // Os cupons valem só no site (Asaas). Afiliados ficam em /api/admin/affiliates.
 import { NextRequest, NextResponse } from 'next/server';
+import { cleanCampaign } from '@/lib/ad-attribution';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
 
@@ -29,6 +30,59 @@ export async function GET(req: NextRequest) {
   if (admin instanceof NextResponse) return admin;
   const supabase = getSupabaseAdmin();
   const view = req.nextUrl.searchParams.get('view') ?? 'coupons';
+
+  // Saúde do checkout (24 h): compras, recusas, Pix, erros das rotas críticas e alertas do vigia.
+  if (view === 'health') {
+    const since = new Date(Date.now() - 86400000).toISOString();
+    const [{ data: cks }, { data: att }, { data: errs }, { data: alerts }] = await Promise.all([
+      supabase.from('asaas_checkouts').select('status, method, channel, pending_payment_id').eq('sandbox', false).gte('created_at', since),
+      supabase.from('checkout_attempts').select('ok').eq('kind', 'card').gte('created_at', since),
+      supabase.from('ops_errors').select('created_at, area, route, message').gte('created_at', since).order('created_at', { ascending: false }).limit(50),
+      supabase.from('ops_alerts').select('created_at, kind, message, sent_email, sent_whatsapp').order('created_at', { ascending: false }).limit(20),
+    ]);
+    const c = (cks ?? []) as { status: string; method: string | null; channel: string; pending_payment_id: string | null }[];
+    const a = (att ?? []) as { ok: boolean | null }[];
+    const pix = c.filter(r => r.method === 'annual_pix');
+    return NextResponse.json({
+      health: {
+        checkouts: c.length, paid: c.filter(r => r.status === 'paid').length,
+        hosted: c.filter(r => r.channel === 'hosted').length, direct: c.filter(r => r.channel === 'direct').length,
+        cardOk: a.filter(r => r.ok === true).length, cardDeclined: a.filter(r => r.ok === false).length,
+        pixCreated: pix.length, pixPaid: pix.filter(r => r.status === 'paid').length,
+      },
+      errors: errs ?? [], alerts: alerts ?? [],
+    });
+  }
+
+  // Teste A/B de anúncios: lado "loja" (cliques no /baixar) x lado "site" (visitas com utm e compras no site).
+  // As instalações pela loja não chegam aqui: ficam em App Store Connect › Campanhas e no Play Console.
+  if (view === 'ads') {
+    const days = Math.min(90, Math.max(1, Number(req.nextUrl.searchParams.get('days') ?? 14)));
+    const since = new Date(Date.now() - days * 86400000).toISOString();
+    const [{ data: ev }, { data: cks }] = await Promise.all([
+      supabase.from('ad_events').select('kind, arm, campaign, platform').gte('created_at', since).limit(50000),
+      supabase.from('asaas_checkouts').select('status, asaas_payment_id, value_brl, meta_tracking, created_at')
+        .eq('sandbox', false).gte('created_at', since).not('meta_tracking->utm', 'is', null),
+    ]);
+    type Row = { campaign: string; clicks: number; ios: number; android: number; desktop: number; visits: number; checkouts: number; started: number; charged: number; revenue: number };
+    const map = new Map<string, Row>();
+    const row = (c: string) => { if (!map.has(c)) map.set(c, { campaign: c, clicks: 0, ios: 0, android: 0, desktop: 0, visits: 0, checkouts: 0, started: 0, charged: 0, revenue: 0 }); return map.get(c)!; };
+    for (const e of (ev ?? []) as { kind: string; campaign: string; platform: string | null }[]) {
+      const r = row(e.campaign);
+      if (e.kind === 'click') { r.clicks++; if (e.platform === 'ios') r.ios++; else if (e.platform === 'android') r.android++; else r.desktop++; }
+      else r.visits++;
+    }
+    for (const c of (cks ?? []) as { status: string; asaas_payment_id: string | null; value_brl: number; meta_tracking: { utm?: { c?: string } } | null }[]) {
+      const raw = String(c.meta_tracking?.utm?.c ?? '');
+      const camp = raw ? cleanCampaign(raw) : ''; // mesma limpeza das visitas e cliques (lib/ad-attribution)
+      if (!camp) continue;
+      const r = row(camp);
+      r.checkouts++;
+      if (c.status === 'paid') r.started++;
+      if (c.asaas_payment_id) { r.charged++; r.revenue += Number(c.value_brl) || 0; }
+    }
+    return NextResponse.json({ days, ads: [...map.values()].sort((a, b) => (b.clicks + b.visits) - (a.clicks + a.visits)) });
+  }
 
   if (view === 'checkouts') {
     const { data } = await supabase.from('asaas_checkouts')

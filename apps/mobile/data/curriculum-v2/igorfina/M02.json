@@ -59,7 +59,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "My trip is just _____.",
+          "sentence": "I'm just on _____.",
           "options": [
             "vacation",
             "vacations",
@@ -87,7 +87,7 @@
             "for",
             "on",
             "to",
-            "at"
+            "by"
           ],
           "answer": "for",
           "explanation": "\"I'm here for work\" = estou aqui a trabalho. Com \"work\" e \"business\" também vale \"for\": \"I'm here for business\"."
@@ -114,7 +114,9 @@
           "accepts": [
             "Just vacation",
             "Holiday",
-            "Tourism"
+            "Tourism",
+            "Pleasure",
+            "Sightseeing"
           ],
           "explanation": "Na imigração, resposta curta funciona: \"Vacation.\" Não precisa contar a história toda."
         },
@@ -127,9 +129,9 @@
         },
         {
           "type": "fix_error",
-          "sentence": "My trip is vacations.",
+          "sentence": "I'm on vacations.",
           "hint": "No inglês americano, \"vacation\" fica no singular",
-          "answer": "My trip is vacation.",
+          "answer": "I'm on vacation.",
           "explanation": "\"Vacation\" no singular. \"Vacations\" soa estranho nessa frase."
         },
         {
@@ -143,23 +145,28 @@
       "listening_speaking": [
         {
           "text": "What's the purpose of your trip?",
-          "context": "a pergunta do oficial (para reconhecer)"
+          "context": "a pergunta do oficial (para reconhecer)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/c370d5a9874ae450.mp3"
         },
         {
           "text": "It's just vacation, officer.",
-          "context": "responder que é turismo"
+          "context": "responder que é turismo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/e0247ce45532e0c6.mp3"
         },
         {
           "text": "I'm here on vacation for two weeks.",
-          "context": "férias e quanto tempo"
+          "context": "férias e quanto tempo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/f43d127254f848a3.mp3"
         },
         {
           "text": "I'm here for business, a short meeting.",
-          "context": "viagem de trabalho"
+          "context": "viagem de trabalho",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/6d7afa8187a93dd5.mp3"
         },
         {
           "text": "It's a work exchange program in Florida.",
-          "context": "intercâmbio de trabalho"
+          "context": "intercâmbio de trabalho",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8487051fedac3426.mp3"
         }
       ],
       "roleplay": {
@@ -343,6 +350,10 @@
           "sentence": "I'm a _____. I fly planes.",
           "hint": "Profissão de quem pilota avião",
           "answer": "pilot",
+          "accepts": [
+            "co-pilot",
+            "captain"
+          ],
           "explanation": "\"Pilot\" é piloto. Repare: \"I'm a pilot\", com o \"a\" antes."
         },
         {
@@ -385,23 +396,27 @@
         {
           "text": "What do you do for a living?",
           "context": "a pergunta sobre profissão (para reconhecer)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d6a70eeac100736c.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/dfc7aa00487ce100.mp3"
         },
         {
           "text": "I'm a teacher at a public school.",
-          "context": "profissão com local de trabalho"
+          "context": "profissão com local de trabalho",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/044b5e9d4eedbe39.mp3"
         },
         {
           "text": "I work in sales for a big company.",
-          "context": "área de trabalho"
+          "context": "área de trabalho",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/bb2f9803c42e296b.mp3"
         },
         {
           "text": "I make music for a living, officer.",
-          "context": "dizer do que você vive"
+          "context": "dizer do que você vive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/bee497a05c10c2b1.mp3"
         },
         {
           "text": "I'm an engineer and I live in Brazil.",
-          "context": "profissão e onde mora"
+          "context": "profissão e onde mora",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/5f597adb58b9ef00.mp3"
         }
       ],
       "roleplay": {
@@ -593,6 +608,11 @@
           "sentence": "A: How long are you staying? B: Just two _____.",
           "hint": "Semanas",
           "answer": "weeks",
+          "accepts": [
+            "days",
+            "months",
+            "nights"
+          ],
           "explanation": "\"Just two weeks\" = só duas semanas. \"Just\" deixa a resposta leve e natural."
         },
         {
@@ -600,6 +620,9 @@
           "sentence": "Do you have a return _____?",
           "hint": "Passagem (bilhete de volta)",
           "answer": "ticket",
+          "accepts": [
+            "flight"
+          ],
           "explanation": "\"Return ticket\" é a passagem de volta. É bom ter no celular para mostrar se pedirem."
         },
         {
@@ -627,23 +650,28 @@
       "listening_speaking": [
         {
           "text": "How long are you staying in the country?",
-          "context": "pergunta do oficial (para reconhecer)"
+          "context": "pergunta do oficial (para reconhecer)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/ccecf37d55e76eae.mp3"
         },
         {
           "text": "I'm staying for ten days, officer.",
-          "context": "dizer quanto tempo fica"
+          "context": "dizer quanto tempo fica",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/5d855d5904e826f2.mp3"
         },
         {
           "text": "I'm staying at a hotel in Manhattan.",
-          "context": "dizer onde se hospeda"
+          "context": "dizer onde se hospeda",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/adb34973c9bf5a4f.mp3"
         },
         {
           "text": "Here is my passport and my return ticket.",
-          "context": "entregar os documentos"
+          "context": "entregar os documentos",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/4759dbccb0aac33e.mp3"
         },
         {
           "text": "Sorry, can you repeat that slowly, please?",
-          "context": "quando o oficial fala rápido"
+          "context": "quando o oficial fala rápido",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/aee9d8ceea3e1160.mp3"
         }
       ],
       "roleplay": {
@@ -862,29 +890,39 @@
           "passage": "Officer: Anything to declare? Igor: No, nothing to declare. Officer: How much money did you bring? Igor: I brought six hundred dollars in cash.",
           "question": "Quanto dinheiro o Igor trouxe? (responda em inglês, como ele disse)",
           "answer": "Six hundred dollars",
+          "accepts": [
+            "600 dollars",
+            "$600",
+            "600"
+          ],
           "explanation": "Ele disse \"six hundred dollars in cash\": seiscentos dólares em espécie. E \"nothing to declare\" = nada a declarar."
         }
       ],
       "listening_speaking": [
         {
           "text": "How much money did you bring with you?",
-          "context": "pergunta da alfândega (para reconhecer)"
+          "context": "pergunta da alfândega (para reconhecer)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/9a3eeec62317eef3.mp3"
         },
         {
           "text": "I brought five hundred dollars in cash.",
-          "context": "dizer o valor"
+          "context": "dizer o valor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/34b82f3575392737.mp3"
         },
         {
           "text": "I have one thousand dollars on my card.",
-          "context": "dinheiro no cartão"
+          "context": "dinheiro no cartão",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/f54d4287276d76f4.mp3"
         },
         {
           "text": "No, sir, I have nothing to declare.",
-          "context": "nada a declarar"
+          "context": "nada a declarar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/92938a5f63da1a83.mp3"
         },
         {
           "text": "Fifteen or fifty? Sorry, can you repeat?",
-          "context": "confirmar um número"
+          "context": "confirmar um número",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/8f38f33c4ad2de1e.mp3"
         }
       ],
       "roleplay": {
@@ -1109,23 +1147,28 @@
       "listening_speaking": [
         {
           "text": "Good morning, officer. Here is my passport.",
-          "context": "abrir a entrevista"
+          "context": "abrir a entrevista",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/4f60085aff6e5e8e.mp3"
         },
         {
           "text": "I'm here on vacation for ten days.",
-          "context": "motivo e duração numa frase"
+          "context": "motivo e duração numa frase",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/34ec79e556a276b6.mp3"
         },
         {
           "text": "I'm a teacher and I work in Brazil.",
-          "context": "profissão e vínculo com o Brasil"
+          "context": "profissão e vínculo com o Brasil",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/42d49421dd364de8.mp3"
         },
         {
           "text": "I'm staying at a hotel near the beach.",
-          "context": "onde vai ficar"
+          "context": "onde vai ficar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/d27691f4b04dfec0.mp3"
         },
         {
           "text": "Sorry, can you speak more slowly, please?",
-          "context": "pedir para falar devagar"
+          "context": "pedir para falar devagar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/65690b940db8f312.mp3"
         }
       ],
       "roleplay": {

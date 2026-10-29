@@ -32,30 +32,35 @@
 ### 1. Grammar (5 exercises)
 
 1. **multiple_choice** — Where is the stress in "photograph"?
+   **Listen**: photograph
    **Options**: PHO-tograph / pho-TO-graph / pho-to-GRAPH / equally stressed
    **Answer**: PHO-tograph
    **Explanation**: "PHO-tograph" — stress on first syllable. Compare with "phoTOgraphy" (stress on second) and "photoGRAphic" (stress on third). The same root shifts stress based on the suffix. C2 mastery includes knowing how word formation shifts stress.
 
-2. **multiple_choice** — Noun-verb pair: which has stress on the first syllable as a noun?
-   **Options**: REcord (noun) — reCORD (verb) / Record (both) / Record (verb) — reCORD (noun) / no difference
-   **Answer**: REcord (noun) — reCORD (verb)
-   **Explanation**: Many two-syllable noun-verb pairs follow the pattern: NOUN stress on first, VERB stress on second. "REcord" (a recording, noun) vs "reCORD" (to record, verb). Similar pairs: PROduce / proDUCE, CONtract / conTRACT, OBject / obJECT, PERmit / perMIT. Native speakers signal the part of speech via stress.
+2. **multiple_choice** — "I bought a record": where is the stress in "record"?
+   **Listen**: I bought a record.
+   **Options**: At the start: REcord / At the end: reCORD
+   **Answer**: At the start: REcord
+   **Explanation**: As a thing (a record), the stress goes at the start: REcord. As an action (to record), it moves to the end: "I want to reCORD it". Same with PREsent / preSENT and PERmit / perMIT.
 
-3. **fill_gap** — Which syllable carries stress in "comfortable"? _____
-   **Hint**: First syllable
-   **Answer**: COM-fortable (first syllable: COM)
-   **Explanation**: "COMfortable" — stress on "COM". Native speakers often reduce to "COMF-tər-bəl" (three syllables in fast speech). Many learners stress "comFORTable" or "comforTABLE", which sounds foreign. C2 awareness includes the first-syllable stress on "comfortable" and similar long Latinate words.
+3. **multiple_choice** — Which syllable is stressed in "comfortable"?
+   **Listen**: comfortable
+   **Options**: 1st (COM) / 2nd (FOR) / 3rd (TA) / 4th (BLE)
+   **Answer**: 1st (COM)
+   **Explanation**: "COMfortable" — stress on the first syllable. In fast speech natives often say it in three syllables ("COMF-ter-ble"). Many learners stress "comFORtable", which sounds foreign. Long words like this often keep the stress at the start.
 
-4. **fix_error** — Which is correct stress for "develop"?
-   **Hint**: Second syllable
-   **Answer**: deVELop (stress on VEL)
+4. **multiple_choice** — Where is the stress in "develop"?
+   **Listen**: develop
+   **Options**: DEvelop (1st syllable) / deVELop (2nd syllable) / deveLOP (3rd syllable) / equal stress
+   **Answer**: deVELop (2nd syllable)
    **Explanation**: "deVELop" — stress on second syllable. Pattern for similar verbs: deCIDE, reMEMber, beGIN, dis-COVer, sup-PORT. Two-or-three-syllable verbs often stress the second syllable (especially with prefixes de-, re-, dis-). Wrong stress in everyday verbs is a major C2 fluency leak.
 
 5. **read_answer**
-   **Passage**: "Stress shifts can change meaning entirely. PROduce (noun: vegetables and fruit) is different from proDUCE (verb: to make). PERmit (noun: a licence) differs from perMIT (verb: to allow). OBject (noun: a thing) sits opposite obJECT (verb: to oppose). For every misplaced stress, a momentary parse failure passes through the listener's mind."
-   **Question**: What does the passage say happens when stress is misplaced?
-   **Answer**: a momentary parse failure passes through the listener's mind
-   **Explanation**: Three noun-verb pairs with stress contrast: PROduce/proDUCE, PERmit/perMIT, OBject/obJECT. Each pair shares spelling but differs in stress, and the stress signals the part of speech. C2 listeners hear this shift instantly; speakers must produce it.
+   **Passage**: "A: What's in the box? B: A present for you. I want to present it at dinner tonight, in front of everyone."
+   **Question**: What does B want to do at dinner?
+   **Answer**: give A the present in front of everyone
+   **Accepts**: give the present / give it to A / present it / give you the present / give the gift
+   **Explanation**: "A PREsent" is the gift; "to preSENT" is to give it formally. Same letters, different stress, different meaning.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -183,31 +188,36 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — In the sentence "I want a cup of tea", which words are stressed?
+1. **multiple_choice** — "I want a cup of tea": which words are stressed?
+   **Listen**: I want a cup of tea.
    **Options**: I, want, cup, tea / I, want, cup, of, tea / want, a, tea / I, of, a
-   **Answer**: I, want, cup, tea (sometimes also "I" reduced)
+   **Answer**: I, want, cup, tea
    **Explanation**: Content words (nouns: cup, tea; verbs: want; sometimes pronouns: I) carry stress. Function words (a, of, the, am, is) weaken. In normal speech: "I WANT a CUP of TEA" with "a" and "of" reduced to schwa /ə/. Stress = meaning markers.
 
-2. **multiple_choice** — Weak form of "of" in connected speech:
-   **Options**: /əv/ / /oʊf/ / /ʊf/ / /əf/ (strong)
-   **Answer**: /əv/
-   **Explanation**: "Of" weakens to /əv/ in normal speech — schwa + soft v. "Cup of tea" → "cupəv tea". Native speakers almost never say "OFF" with full stress unless contrasting ("It's / It is of the BOOK, not from it"). Weak forms are nearly invisible but constant.
+2. **multiple_choice** — "A cup of tea": how does "of" sound?
+   **Listen**: a cup of tea
+   **Options**: Short and weak, almost swallowed / Strong and clear, like "off" / Completely silent / Long, like "oaf"
+   **Answer**: Short and weak, almost swallowed
+   **Explanation**: Function words like "of", "to", "a" and "for" lose their full vowel in connected speech and become short and weak. Only the content words (cup, tea) keep full stress. Saying "of" clearly every time is one of the strongest markers of a non-native rhythm.
 
-3. **fill_gap** — Identify weak form of "to": "I want to go" → "I want _____ go." (in connected fast speech)
-   **Hint**: schwa + t
-   **Answer**: tə (schwa)
-   **Explanation**: "To" weakens to /tə/ in connected speech. "Want to" often blends into "wanna" /ˈwɒnə/ in casual register. C2 listeners parse "wanna / gonna / gotta" as "want to / going to / got to" — and produce them naturally in informal contexts.
+3. **multiple_choice** — "I want to go": how does "to" sound?
+   **Listen**: I want to go
+   **Options**: Short and weak, like "tuh" / Strong, like "two" / Completely silent / Long, like "toe"
+   **Answer**: Short and weak, like "tuh"
+   **Explanation**: In connected speech "to" is unstressed and its vowel reduces to a short, neutral sound: "I want tuh go". In very fast casual speech it merges further into "wanna". The full "two" is only used for emphasis or at the end of a sentence ("Where do you want to?").
 
-4. **fix_error** — Which sentence has the more native rhythm? "I AM going TO the STORE" or "I'm going to the STORE"?
-   **Hint**: Native English weakens auxiliaries and uses contractions
-   **Answer**: I'm going to the STORE.
-   **Explanation**: Equal stress on every word ("I AM going TO the STORE") sounds robotic. Native rhythm contracts ("I'm / I am") and weakens function words ("going tə the"). Only content words get full stress: "I'm / I am GOing to the STORE". Stress-timed rhythm.
+4. **multiple_choice** — What did she say?
+   **Listen**: I'm going to the store.
+   **Options**: I AM going TO the STORE / I'm going to the STORE / I AM GOING TO THE STORE
+   **Answer**: I'm going to the STORE
+   **Explanation**: Equal stress on every word ("I AM going TO the STORE") sounds robotic. Native rhythm contracts ("I'm") and weakens function words ("going tə the"). Only content words get full stress: "I'm GOing to the STORE". Stress-timed rhythm.
 
 5. **read_answer**
-   **Passage**: "English is stress-timed. The amount of time between stressed syllables stays roughly constant, no matter how many unstressed syllables sit between them. 'BEN went HOME' takes about the same time as 'BENjamin has GONE to the HOUSE' — the function words and unstressed syllables compress to keep the beat. Native rhythm is built on this compression."
-   **Question**: How does English keep the same rhythm even with more words?
-   **Answer**: by compressing function words and unstressed syllables between content words (stressed beats stay roughly evenly spaced)
-   **Explanation**: Stress-timed language: the rhythm is set by stressed syllables, and everything else fits between them. Portuguese is syllable-timed (each syllable roughly equal); English compresses unstressed syllables. C2 spoken fluency = mastery of this compression.
+   **Passage**: "A: Do you want to grab a coffee before the meeting? B: I'd love to, but I've got to finish this report first."
+   **Question**: Why can't B get a coffee now?
+   **Answer**: B has to finish a report first
+   **Accepts**: finish the report / finish a report / the report / has to finish
+   **Explanation**: In fast speech "I've got to" sounds almost like "I've gotta", and "want to" like "wanna". The stressed words carry the meaning: COFfee, MEETing, FInish, REport.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -335,31 +345,36 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — In natural speech, "an apple" sounds like:
+1. **multiple_choice** — How does "an apple" sound?
+   **Listen**: an apple
    **Options**: a-napple (linked) / an apple (separated) / an-apple (with pause) / no difference
    **Answer**: a-napple (linked)
    **Explanation**: Linking: when a word ends in a consonant and the next begins with a vowel, the consonant attaches to the next word in connected speech. "An apple" → "a-NAP-pl". "Stop it" → "sto-PIT". "Find out" → "fine-DOUT". Native rhythm relies on this linking.
 
-2. **multiple_choice** — "Law and order" in natural British English includes which intrusive sound?
-   **Options**: /r/ — "law-r-and order" / /j/ — "law-y-and order" / /w/ — "law-w-and order" / none
-   **Answer**: /r/ — "law-r-and order"
-   **Explanation**: Intrusive /r/: a sound inserted between two vowels where no "r" exists in spelling. "Law and order" → "law-r-and order". Common in British English. Same pattern: "drawing" → "draw-r-ing" (heard especially in fast speech). American English uses it less.
+2. **multiple_choice** — How does "pick it up" sound?
+   **Listen**: Pick it up.
+   **Options**: Like one long word / Like three separate words, with pauses
+   **Answer**: Like one long word
+   **Explanation**: Natives link the words: "pi-ki-tup". A word ending in a consonant joins the next word starting with a vowel. Same with "turn it off" ("tur-ni-toff") and "an apple" ("a-napple").
 
-3. **fill_gap** — In fast connected speech, "I am" becomes "I-_-am" (intrusive sound)
-   **Hint**: Intrusive /j/ between "I" /aɪ/ and "am" /æm/
-   **Answer**: y (/j/ sound)
-   **Explanation**: Intrusive /j/: a "y" sound bridges two vowels. "I am" /aɪ-jæm/ "go away" /goʊ-wəweɪ/ uses intrusive /w/. These sounds aren't in spelling but native speakers produce them automatically to avoid awkward vowel-to-vowel transitions.
+3. **multiple_choice** — What did she say?
+   **Listen**: Whaddaya wanna do?
+   **Options**: What do you want to do? / What did you want to do? / Where do you want to go?
+   **Answer**: What do you want to do?
+   **Explanation**: In fast casual speech "what do you" becomes "whaddaya" and "want to" becomes "wanna". You will hear this all the time in films and conversations.
 
-4. **fix_error** — Which is closer to natural fast speech of "don't you know"?
-   **Hint**: Assimilation creates "doncha"
-   **Answer**: "doncha know" (assimilation: don't + you → doncha)
-   **Explanation**: Assimilation: when adjacent sounds change to be more similar. "Don't / Do not you" → "doncha" /ˈdoʊnʧə/. "Did you" → "didja" /ˈdɪʤə/. "Would you" → "wouldja". These aren't lazy — they're the natural shape of fast English. C2 awareness includes both producing and parsing them.
+4. **multiple_choice** — What did she say?
+   **Listen**: Dunno, gotta go.
+   **Options**: I don't know, I've got to go. / I didn't know, I got to go. / Don't go, I've got it.
+   **Answer**: I don't know, I've got to go.
+   **Explanation**: "Dunno" = I don't know; "gotta" = (I've) got to. Natives drop and merge sounds when they speak fast.
 
 5. **read_answer**
-   **Passage**: "Native English in flow rarely sounds like written English. 'I'm going to find out what he said' compresses to 'I'm-gonna-fine-DOUT what-he-SAID' — linking, weak forms, elision. The written words are unchanged. The sounds are barely recognisable to learners taught only the careful version. Connected speech is the gap between textbook and spoken English."
-   **Question**: According to the passage, what is the gap between textbook and spoken English?
-   **Answer**: connected speech (linking, weak forms, elision, assimilation that the textbook doesn't show)
-   **Explanation**: Three phenomena named: linking (across word boundaries), weak forms (function-word reduction), elision (sound drops like /t/ in fast speech). All three are normal native pronunciation, but textbooks rarely show them, leaving learners surprised when they encounter real speech.
+   **Passage**: "A: Whaddaya wanna do tonight? B: Dunno. Gonna stay in, I guess. I'm kinda tired."
+   **Question**: What is B probably going to do tonight?
+   **Answer**: stay in
+   **Accepts**: stay home / stay at home / stay in / rest
+   **Explanation**: "Whaddaya wanna" = what do you want to; "dunno" = I don't know; "gonna" = going to; "kinda" = kind of. This is how the sentences really sound in casual speech.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -487,31 +502,36 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — Typical intonation pattern for "Are you ready?":
+1. **multiple_choice** — "Are you ready?": what does the voice do at the end?
+   **Listen**: Are you ready?
    **Options**: Rising at the end / Falling at the end / Flat / Rising-falling
    **Answer**: Rising at the end
    **Explanation**: Yes/no questions typically end with rising intonation. "Are you ready?" rises on "ready". Compare with wh-questions ("What time is it?") which fall on the last content word. Rising intonation signals expectation of yes/no answer.
 
-2. **multiple_choice** — Typical intonation for "What time is it?":
+2. **multiple_choice** — "What time is it?": what does the voice do at the end?
+   **Listen**: What time is it?
    **Options**: Falling at the end / Rising at the end / Flat / Rising-falling
    **Answer**: Falling at the end
    **Explanation**: Wh-questions typically fall at the end. "What time is it?" — falling pitch on "is it". The question word itself signals that a specific answer is expected, so the rising pattern of yes/no questions isn't needed.
 
-3. **fill_gap** — For a list, the intonation pattern is typically: rise-rise-rise-_____.
-   **Hint**: Final intonation when list is complete
-   **Answer**: fall (falling on the last item)
-   **Explanation**: List intonation: rise, rise, rise, FALL. "I need apples, oranges, bananas, and bread" — rising on each item until "bread", which falls to signal "end of list". If the list continued, all items would rise. The falling final = closure.
+3. **multiple_choice** — What does the voice do on the last item of the list?
+   **Listen**: I need eggs, milk, bread and butter.
+   **Options**: It goes down / It goes up / It stays flat / It stops suddenly
+   **Answer**: It goes down
+   **Explanation**: In a list, the voice goes up on each item ("eggs, milk, bread") and comes down on the last one ("and butter") to show the list is finished. If it stays up, the listener waits for more.
 
-4. **fix_error** — How would you make "Really?" sound like genuine surprise vs sarcasm?
-   **Hint**: Pitch pattern differs
-   **Answer**: Surprise: rising-then-rising "Really?" (high pitch). Sarcasm: falling "Really." (low, flat, with stress on first syllable).
-   **Explanation**: Same word, two intonations. Genuine surprise rises sharply ("REAL-ly?" high). Sarcastic disbelief falls and flattens ("REAL-ly." low, slow). Intonation carries the emotional content that words alone don't. C2 speakers control this consciously.
+4. **multiple_choice** — Is she asking or telling?
+   **Listen**: You're coming tonight?
+   **Options**: Asking / Telling
+   **Answer**: Asking
+   **Explanation**: The words are a statement ("You're coming tonight"), but the voice goes up at the end, so it's a question. In casual English, intonation alone can turn a statement into a question.
 
 5. **read_answer**
-   **Passage**: "Intonation is the second language inside English. The same words — 'You're going' — can be a statement (falling), a question (rising), an accusation (high pitch on 'YOU'), or a sceptical echo (falling on 'you', rising on 'going'). Without intonation, the words deliver only half their meaning."
-   **Question**: According to the passage, how many different meanings can 'You're going' carry through intonation?
-   **Answer**: at least four — statement, question, accusation, sceptical echo
-   **Explanation**: Four intonation contours for the same words: statement (falling), question (rising), accusation (high on 'YOU'), sceptical echo (falling-rising). Each delivers a different speech act. C2 listeners parse intonation; C2 speakers control it.
+   **Passage**: "A: I just finished my first marathon! B: You finished a marathon? That's amazing!"
+   **Question**: How does B feel?
+   **Answer**: surprised
+   **Accepts**: surprised and happy / impressed / amazed / excited / happy for A
+   **Explanation**: B repeats the news with the voice going up ("You finished a marathon?") to show surprise, then confirms with "That's amazing!".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -642,28 +662,31 @@
 1. **multiple_choice** — Contraction of "he is going":
    **Options**: he's going / he'is going / he is going / hes going
    **Answer**: he's going
-   **Explanation**: "He's / He is going" — contraction of "he is". The apostrophe replaces the missing letter. C2 speakers default to contractions in spoken English. Writing without contractions reads as formal or stiff; speaking without contractions reads as foreign.
+   **Explanation**: "He's going" — contraction of "he is". The apostrophe replaces the missing letter. C2 speakers default to contractions in spoken English. Writing without contractions reads as formal or stiff; speaking without contractions reads as foreign.
 
 2. **multiple_choice** — Negative contraction of "should have":
    **Options**: shouldn't have / shouldn'tve / should'nt have / shouldnt'have
-   **Answer**: shouldn't have (often pronounced "shouldn'ta" in casual speech)
-   **Explanation**: "Shouldn't / Should not have" — standard written contraction of "should not have". In casual fast speech, often produced as "shouldn'ta" /ˈʃʊdn(ə)tə/ — the "have" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register.
+   **Answer**: shouldn't have
+   **Explanation**: "Shouldn't have" — standard written contraction of "should not have". In casual fast speech, often produced as "shouldn'ta" /ˈʃʊdn(ə)tə/ — the "have" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register.
 
-3. **multiple_choice** — In fast speech, how is "next month" most likely pronounced?
-   **Options**: nex' month (/t/ elided) / next-uh month / next monf / nex monf
-   **Answer**: nex' month (/t/ elided)
-   **Explanation**: Elision: dropping a sound, usually /t/ or /d/, between consonant clusters. "Next month" → "nex' month". Same with "old man" → "ol' man", "first place" → "firs' place". The dropped sound is too hard to say cleanly between adjacent consonants, so native speakers skip it.
+3. **multiple_choice** — What did she say?
+   **Listen**: I'm gonna call ya later.
+   **Options**: I'm going to call you later. / I'm calling you later. / I'm gone, call you later.
+   **Answer**: I'm going to call you later.
+   **Explanation**: "Gonna" = going to; "ya" = you. This is how the sentence really sounds in casual speech.
 
-4. **fix_error** — Native English speaker would most likely say which?
-   **Hint**: Contracted form
-   **Answer**: "I'd've gone if I'd known."
-   **Explanation**: "I would have gone if I had known" → casual contracted: "I'd / I would've gone if I'd known". Two contractions stacked: "I'd / I would" (I would) and "'ve" (have). In writing, "I would've" is common; "I'd / I would've" is very informal and mostly spoken. C2 listeners recognise these even when they don't appear in print.
+4. **multiple_choice** — What did she say?
+   **Listen**: I'd've gone if I'd known.
+   **Options**: I'd've gone if I'd known. / I would of gone if I would know. / I'd gone if I'd knew. / I have gone if I knew.
+   **Answer**: I'd've gone if I'd known.
+   **Explanation**: "I would have gone if I had known" → casual contracted: "I'd've gone if I'd known". Two contractions stacked: "I'd" (I would) and "'ve" (have). In writing, "I would've" is common; "I'd've" is very informal and mostly spoken. C2 listeners recognise these even when they don't appear in print.
 
 5. **read_answer**
-   **Passage**: "Native speech is built on contraction and elision. 'Should not have' becomes 'shouldn't've' or 'shouldn'ta'. 'Next month' becomes 'nex' month'. 'Going to' becomes 'gonna'. None of these are lazy — they are the natural sound shape of the language at speed. Speaking only the full forms is the marker of either great formality or great foreignness."
-   **Question**: How does the passage describe contractions and elisions?
-   **Answer**: as the natural sound shape of the language at speed (not lazy)
-   **Explanation**: The point: contracted/elided forms are normal English, not careless English. Native speakers use them constantly; learners who avoid them sound either over-formal or non-native. C2 mastery includes natural use of these forms.
+   **Passage**: "A: You shouldn't've told him. B: I know. I'll call him next month and say sorry."
+   **Question**: When will B call him?
+   **Answer**: next month
+   **Accepts**: next month / in a month
+   **Explanation**: "Shouldn't've" = should not have, said fast; "next month" sounds like "nex' month". Natives drop sounds like this all the time.
 
 ### 2. Listening/Speaking (5 phrases)
 

@@ -39,39 +39,39 @@
 1. **multiple_choice** — "How do you spell 5?"
    **Options**: five / fife / fivve
    **Answer**: five
-   **Explanation**: O número 5 em inglês é "five". Pronúncia: /faɪv/. Atenção: tem "v", não "f" no final.
+   **Explanation**: O número 5 em inglês é "five". Atenção: termina com som de "v", não de "f".
 
 2. **multiple_choice** — "I am _____ years old."
    **Options**: ten / tenth / tens
    **Answer**: ten
    **Explanation**: "Ten" (10) é o número cardinal. "Tenth" é "décimo" (ordinal, usado para datas/ranking). Para idade usamos o cardinal.
 
-3. **word_bank** — "Room number _____."
+3. **word_bank** — "Room number _____ (12)."
    **Choices**: twelve / twin / twenty / twice
    **Answer**: twelve
    **Explanation**: "Twelve" = 12. "Twin" = gêmeo (não é número). "Twenty" = 20. "Twice" = duas vezes.
 
-4. **word_bank** — "My number is _____."
+4. **word_bank** — "My number is _____ (17)."
    **Choices**: seventeen / seventy / seven / sixteen
    **Answer**: seventeen
    **Explanation**: "Seventeen" = 17. "Seventy" = 70. "Seven" = 7. Cuidado com a confusão -teen (17) vs -ty (70) — stress muda.
 
-5. **fill_gap** — "I am _____ years old."
+5. **fill_gap** — "I am _____ (18) years old."
    **Hint**: Número 18 por extenso
    **Answer**: eighteen
    **Explanation**: 18 = "eighteen". Atenção: tem "gh" silencioso (escrito mas não pronunciado).
 
-6. **fill_gap** — "She is _____ years old."
+6. **fill_gap** — "She is _____ (11) years old."
    **Hint**: Número 11 por extenso
    **Answer**: eleven
    **Explanation**: 11 = "eleven". Único formato — não segue o padrão -teen como 13-19.
 
-7. **fill_gap** — "My phone number is _____."
+7. **fill_gap** — "I have _____ (9) cousins."
    **Hint**: Número 9 por extenso
    **Answer**: nine
-   **Explanation**: 9 = "nine". Som parecido com "none" (nenhum) mas significado totalmente diferente. Pronúncia: /naɪn/.
+   **Explanation**: 9 = "nine". Som parecido com "none" (nenhum) mas significado totalmente diferente.
 
-8. **fix_error** — "I'm tween years old."
+8. **fix_error** — "I'm tween (12) years old."
    **Hint**: 12 em inglês não segue padrão -teen
    **Answer**: I'm twelve years old.
    **Explanation**: 12 = "twelve", não "tween". "Tween" é gíria para "pré-adolescente" — não é número. Os números 11 e 12 têm formato único.
@@ -92,7 +92,7 @@
 Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronúncia.
 
 1. **"I am eighteen years old."** — declarando idade adolescente
-2. **"My phone number is five five five."** — soletrando dígitos
+2. **"My phone number is five five five, one two three four."** — soletrando dígitos
 3. **"Floor twelve, please."** — pedindo andar no elevador
 4. **"Room sixteen."** — referenciando quarto de hotel
 5. **"Page nineteen."** — referenciando página de livro
@@ -214,27 +214,29 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Answer**: twenty-five
    **Explanation**: 25 = "twenty-five" (COM hífen). É a forma padrão para números compostos 21-99: dezena-unidade. Sem hífen ou colado é erro.
 
-3. **word_bank** — "She is _____ years old."
+3. **word_bank** — "She is _____ (40) years old."
    **Choices**: forty / fourty / fortee / forteen
    **Answer**: forty
    **Explanation**: 40 = "forty" — NÃO tem "u" no meio. É um dos números mais erradamente escritos. Cuidado: "four" (4) tem "u", mas "forty" não.
 
-4. **word_bank** — "My grandma is _____."
+4. **word_bank** — "My grandma is _____ (90)."
    **Choices**: ninety / nine / ninetee / ninth
    **Answer**: ninety
    **Explanation**: "Ninety" = 90. "Nine" = 9. "Ninth" = 9º. Para idade idosa: "She is ninety years old".
 
-5. **fill_gap** — "I am _____ years old."
+5. **fill_gap** — "I am _____ (35) years old."
    **Hint**: 35 por extenso
    **Answer**: thirty-five
+   **Accepts**: thirty five
    **Explanation**: 35 = "thirty-five" (com hífen entre dezena e unidade). Mesma regra: 21=twenty-one, 47=forty-seven, 99=ninety-nine.
 
-6. **fill_gap** — "The temperature is _____ degrees."
+6. **fill_gap** — "The temperature is _____ (100) degrees."
    **Hint**: 100 por extenso
    **Answer**: one hundred
+   **Accepts**: a hundred
    **Explanation**: 100 = "one hundred" ou "a hundred". Para 101-199: "one hundred and one", "one hundred and two", etc.
 
-7. **fill_gap** — "It's _____ dollars."
+7. **fill_gap** — "It's _____ (50) dollars."
    **Hint**: 50 por extenso
    **Answer**: fifty
    **Explanation**: 50 = "fifty". Atenção: NÃO é "fivety". Diferente de "fifteen" (15) — fifty é 50.
@@ -390,17 +392,17 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Answer**: Argentina
    **Explanation**: País = "Argentina". Nacionalidade = "Argentinian". "Argentine" também existe mas é menos comum em fala cotidiana.
 
-5. **fill_gap** — "I'm from _____."
+5. **fill_gap** — "I'm from _____ (Japão)."
    **Hint**: País asiático cuja capital é Tokyo
    **Answer**: Japan
-   **Explanation**: "Japan" é o país. Nacionalidade: "Japanese". Não confundir — "I'm / I am from Japan" (país) vs "I'm / I am Japanese" (nacionalidade).
+   **Explanation**: "Japan" é o país. Nacionalidade: "Japanese". Não confundir — "I'm from Japan" (país) vs "I'm Japanese" (nacionalidade).
 
-6. **fill_gap** — "She is from _____."
+6. **fill_gap** — "She is from _____ (França)."
    **Hint**: País europeu, capital Paris
    **Answer**: France
    **Explanation**: "France" é o país. Nacionalidade: "French". Capital: Paris. Note que aqui o foco é o país, não a capital.
 
-7. **fill_gap** — "We are from _____."
+7. **fill_gap** — "We are from _____ (Austrália)."
    **Hint**: País dos cangurus, no hemisfério sul
    **Answer**: Australia
    **Explanation**: "Australia" é o país do canguru. Nacionalidade: "Australian". País grande, ilha-continente.
@@ -571,11 +573,13 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 7. **fill_gap** — "Are you _____?"
    **Hint**: Nacionalidade do Reino Unido (UK)
    **Answer**: British
+   **Accepts**: from the UK
    **Explanation**: "British" = britânico/a (cobre Inglaterra, Escócia, País de Gales, Irlanda do Norte). "English" é específico da Inglaterra. UK inteiro = "British".
 
 8. **fix_error** — "I am Brazil."
    **Hint**: "I am" pede nacionalidade, não país
    **Answer**: I am Brazilian.
+   **Accepts**: I'm from Brazil. / I am from Brazil.
    **Explanation**: "I am" + nacionalidade (Brazilian). "I am from" + país (Brazil). Confundir os dois é o erro mais comum. Você É brasileiro, você É DE Brasil.
 
 9. **fix_error** — "She is Americaner."
@@ -708,7 +712,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 1. **multiple_choice** — "I'm _____. I'm from São Paulo, Brazil."
    **Options**: Brazilian / Brazil / Brazilians
    **Answer**: Brazilian
-   **Explanation**: Nacionalidade = adjetivo (Brazilian). País = nome próprio (Brazil). Esta frase combina ambos: "I'm / I am Brazilian, I'm from São Paulo, Brazil".
+   **Explanation**: Nacionalidade = adjetivo (Brazilian). País = nome próprio (Brazil). Esta frase combina ambos: "I'm Brazilian, I'm from São Paulo, Brazil".
 
 2. **multiple_choice** — "_____ is twenty-five years old."
    **Options**: She / Her / Hers
@@ -718,7 +722,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 3. **word_bank** — "Hi, _____ Felipe. I'm from Brazil."
    **Choices**: I'm / I am / My / Me
    **Answer**: I'm
-   **Explanation**: "I'm / I am" é a contração de "I am" — forma padrão pra se apresentar. "My" é possessivo (My name is...). "Me" é pronome objeto.
+   **Explanation**: "I'm" é a contração de "I am" — forma padrão pra se apresentar. "My" é possessivo (My name is...). "Me" é pronome objeto.
 
 4. **word_bank** — "She is thirty years old. She is _____."
    **Choices**: Spanish / Spain / Spainian / Spanishly
@@ -738,6 +742,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 7. **fill_gap** — "_____ name is Felipe."
    **Hint**: Possessivo de primeira pessoa
    **Answer**: My
+   **Accepts**: His / Your
    **Explanation**: "My" = meu/minha. "My name is Felipe" = "Meu nome é Felipe". É um chunk fixo de apresentação.
 
 8. **fix_error** — "I'm from Brazilian."
@@ -754,7 +759,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
     **Passage**: "Hello! My name is Ana. I'm twenty-six years old. I'm from São Paulo, Brazil. I'm Brazilian. Nice to meet you!"
     **Question**: Qual é a nacionalidade de Ana?
     **Answer**: Brazilian
-    **Explanation**: Ana diz "I'm / I am Brazilian". A nacionalidade dela é "Brazilian" (o adjetivo).
+    **Explanation**: Ana diz "I'm Brazilian". A nacionalidade dela é "Brazilian" (o adjetivo).
 
 ### 2. Listening/Speaking (5 phrases)
 

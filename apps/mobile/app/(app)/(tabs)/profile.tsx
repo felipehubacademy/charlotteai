@@ -7,7 +7,8 @@ import {
   Linking, ActivityIndicator, Image, TextInput, Switch,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { router, useFocusEffect } from 'expo-router';
+import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
+import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import { fetchSocial } from '@/lib/social';
 import {
   User, Key, DeviceMobile, GraduationCap, Buildings,
@@ -15,7 +16,7 @@ import {
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
   CaretRight, SpeakerHigh, Vibrate, ChatCircleText,
   CreditCard, Lifebuoy, UsersThree, ChartLineUp, Sparkle,
-  MagnifyingGlass, Translate,
+  MagnifyingGlass, Translate, Bell,
 } from 'phosphor-react-native';
 import { fetchMyHandle, setSearchable } from '@/lib/friends';
 import {
@@ -33,13 +34,16 @@ import { supabase } from '@/lib/supabase';
 import { restorePurchases, openManageSubscriptions, syncSubscriptionToSupabase, subscriptionStore } from '@/lib/purchases';
 import { WebSubscriptionSheet } from '@/components/subscription/WebSubscriptionSheet';
 import { systemIsPt, appLangPref, setAppLangPref } from '@/lib/systemLang';
+import { TASTE_DAYS, tasteDayNumber } from '@/lib/tasteDays';
 import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
+import { PhotoNudge } from '@/components/social/PhotoNudge';
 import Constants from 'expo-constants';
 import { Application } from '@/lib/nativeOptional'; // protegido: binário sem o módulo não trava
 import * as Updates from 'expo-updates';
 import * as SecureStore from 'expo-secure-store';
 import { appAlert } from '@/components/ui/AppAlert';
+import { reminderHourLabel } from '@/lib/reminderTime';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -196,6 +200,12 @@ export default function ProfileTab() {
   const [nameValue,          setNameValue]          = useState(profile?.name ?? '');
   const [savingName,         setSavingName]         = useState(false);
   const [showAvatarModal,    setShowAvatarModal]    = useState(false);
+  // Campanha da foto: o convite (pódio, Estudar junto) abre o Perfil com ?photo=1 e a escolha da foto já aberta.
+  const photoParam = useLocalSearchParams<{ photo?: string }>().photo;
+  useEffect(() => {
+    if (photoParam === '1') { setShowAvatarModal(true); router.setParams({ photo: undefined } as any); }
+  }, [photoParam]);
+  const { checkForNewAchievements } = useAchievementsContext();
   const [deletingAccount,    setDeletingAccount]    = useState(false);
   const [restoringPurchases, setRestoringPurchases] = useState(false);
   const [audioPrefs,         setAudioPrefs]         = useState<AudioPreferences>(getAudioPreferences());
@@ -225,6 +235,16 @@ export default function ProfileTab() {
     fetchSocial().then(s => { if (alive && s) setSocialPending((s.pendingRequests?.length ?? 0) + (s.rallyInvites?.length ?? 0)); });
     return () => { alive = false; };
   }, []));
+
+  // Horário do lembrete (tela própria); relê ao voltar dela.
+  const [reminderHour, setReminderHour] = useState<number | null>(null);
+  useFocusEffect(useCallback(() => {
+    if (!profile?.id) return;
+    let alive = true;
+    supabase.from('charlotte_users').select('reminder_hour').eq('id', profile.id).maybeSingle()
+      .then(({ data }) => { if (alive) setReminderHour((data as { reminder_hour?: number | null } | null)?.reminder_hour ?? null); });
+    return () => { alive = false; };
+  }, [profile?.id]));
 
   const handleSaveName = async () => {
     const trimmed = nameValue.trim();
@@ -425,9 +445,20 @@ export default function ProfileTab() {
     if (subscriptionStatus === 'active')       return { text: isPt ? 'Ativa'         : 'Active',        color: C.greenDark };
     // 'cancelled' = auto-renew desligado mas acesso valido ate expires_at.
     if (subscriptionStatus === 'cancelled')    return { text: isPt ? 'Ativa · cancelada' : 'Active · cancelling', color: C.error };
-    if (subscriptionStatus === 'trial')        return { text: 'Trial',                                  color: C.violet };
+    if (subscriptionStatus === 'trial') {
+      const ends = profile?.trial_ends_at ? new Date(profile.trial_ends_at) : null;
+      if (!ends || ends <= new Date()) return { text: isPt ? 'Teste encerrado' : 'Trial ended', color: C.error };
+      const d = ends.toLocaleDateString(isPt ? 'pt-BR' : 'en-US', { day: '2-digit', month: '2-digit' });
+      return { text: isPt ? `Teste grátis · termina em ${d}` : `Free trial · ends ${d}`, color: C.violet };
+    }
     if (subscriptionStatus === 'expired')      return { text: isPt ? 'Expirada'      : 'Expired',       color: C.error };
-    if (subscriptionStatus === 'none')         return { text: isPt ? 'Degustação'    : 'Free taste',    color: C.violet };
+    // Degustação: em que dia está (1 tópico novo por dia por TASTE_DAYS dias).
+    if (subscriptionStatus === 'none') {
+      const day = tasteDayNumber(profile?.created_at);
+      return day <= TASTE_DAYS
+        ? { text: isPt ? `Degustação · dia ${day} de ${TASTE_DAYS}` : `Free taste · day ${day} of ${TASTE_DAYS}`, color: C.violet }
+        : { text: isPt ? 'Degustação encerrada' : 'Free taste over', color: C.violet };
+    }
     return                                            { text: isPt ? 'Sem acesso'    : 'No access',     color: C.error };
   })();
 
@@ -535,12 +566,14 @@ export default function ProfileTab() {
 
         </View>
 
+        <PhotoNudge style={{ marginHorizontal: 16, marginTop: 14 }} text={isPt ? 'Ganhe a conquista "Cara do Queizy" e apareça com foto no ranking.' : 'Earn the "Face of Queizy" badge and show your photo on the leaderboard.'} />
+
         <AvatarCropModal
           isOpen={showAvatarModal}
           onClose={() => setShowAvatarModal(false)}
           userId={profile?.id ?? ''}
           currentAvatarUrl={profile?.avatar_url}
-          onSaved={() => { setShowAvatarModal(false); refreshProfile(); }}
+          onSaved={() => { setShowAvatarModal(false); refreshProfile(); checkForNewAchievements(800); /* "Cara do Queizy" */ }}
         />
 
         {/* Account */}
@@ -590,6 +623,13 @@ export default function ProfileTab() {
             description={isPt ? 'Amigos podem te achar pelo nome ou @ para estudar junto.' : 'Friends can find you by name or @ to study together.'}
             value={searchable}
             onValueChange={(v: boolean) => { setSearchableState(v); setSearchable(v); }}
+          />
+          <SettingRow
+            icon={<Bell size={18} color={C.navy} weight="regular" />}
+            label={isPt ? 'Horário do lembrete' : 'Reminder time'}
+            value={reminderHourLabel(reminderHour, isPt)}
+            onPress={() => router.push('/(app)/reminder-time')}
+            chevron
           />
           <SettingRow
             icon={<Translate size={18} color={C.navy} weight="regular" />}

@@ -31,12 +31,12 @@
 1. **multiple_choice** — "I _____ visited Italy."
    **Options**: have / has / had
    **Answer**: have
-   **Explanation**: Present perfect with I/you/we/they uses "have" + past participle. "I have visited" or "I've / I have visited".
+   **Explanation**: Present perfect with I/you/we/they uses "have" + past participle. "I have visited" or "I've visited".
 
 2. **multiple_choice** — "She _____ tried sushi before."
    **Options**: has / have / had
    **Answer**: has
-   **Explanation**: She/he/it uses "has" + past participle. "She has tried" or "She's / She is tried".
+   **Explanation**: She/he/it uses "has" + past participle. "She has tried" or "She's tried".
 
 3. **word_bank** — "_____ you ever been to Brazil?"
    **Choices**: Have / Has / Did / Are
@@ -46,11 +46,12 @@
 4. **word_bank** — "I have _____ seen that movie."
    **Choices**: never / no / not / nothing
    **Answer**: never
-   **Explanation**: "I've / I have never seen" — "never" is the standard negative in PP for life experiences.
+   **Explanation**: "I've never seen" — "never" is the standard negative in PP for life experiences.
 
 5. **fill_gap** — "I _____ never tried that food."
    **Hint**: have/has for I
    **Answer**: have
+   **Accepts**: 've
    **Explanation**: "I have never tried" — present perfect with I.
 
 6. **fill_gap** — "_____ she ever traveled abroad?"
@@ -61,6 +62,7 @@
 7. **fill_gap** — "We have _____ been to Japan."
    **Hint**: never (life experience negative)
    **Answer**: never
+   **Accepts**: already
    **Explanation**: "We have never been" — common life experience structure.
 
 8. **fix_error** — "I have visit Italy."
@@ -213,7 +215,7 @@
 2. **multiple_choice** — "She has _____ a great book."
    **Options**: read / readed / red
    **Answer**: read
-   **Explanation**: "Read" past participle = "read" (same spelling, /red/ pronunciation).
+   **Explanation**: "Read" past participle = "read" (same spelling, but pronounced like the color "red").
 
 3. **word_bank** — "We have _____ pizza for lunch."
    **Choices**: eaten / ate / eated / eating
@@ -228,16 +230,19 @@
 5. **fill_gap** — "I have _____ a great movie."
    **Hint**: past participle of "see"
    **Answer**: seen
+   **Accepts**: watched / found / made
    **Explanation**: "See" → "saw" → "seen" (past participle).
 
 6. **fill_gap** — "She has _____ a new book."
    **Hint**: past participle of "write"
    **Answer**: written
+   **Accepts**: read / bought / published / finished / started
    **Explanation**: "Write" → "wrote" → "written".
 
 7. **fill_gap** — "We have _____ a lot of work."
    **Hint**: past participle of "do"
    **Answer**: done
+   **Accepts**: had / finished / got
    **Explanation**: "Do" → "did" → "done".
 
 8. **fix_error** — "I have went to Italy."
@@ -259,7 +264,7 @@
 ### 2. Listening/Speaking (5 phrases)
 
 1. **"I've been to ten countries."** — been
-2. **"She has read that book."** — read /red/
+2. **"She has read that book."** — read (pronounced like "red")
 3. **"We have eaten pizza."** — eaten
 4. **"He has spoken three languages."** — spoken
 5. **"I have seen that movie."** — seen
@@ -400,17 +405,19 @@
 4. **word_bank** — "I haven't seen that movie _____."
    **Choices**: yet / just / already / since
    **Answer**: yet
-   **Explanation**: "Yet" at end of negative sentence: "I haven't / have not seen it yet" = ainda não.
+   **Explanation**: "Yet" at end of negative sentence: "I haven't seen it yet" = ainda não.
 
 5. **fill_gap** — "She has _____ left the office."
    **Hint**: a moment ago
    **Answer**: just
+   **Accepts**: already
    **Explanation**: "Just" — recent action. "She has just left".
 
 6. **fill_gap** — "I've _____ done my homework — finished an hour ago."
    **Hint**: sooner than expected
    **Answer**: already
-   **Explanation**: "Already" = before now (sooner). "I've / I have already done".
+   **Accepts**: just
+   **Explanation**: "Already" = before now (sooner). "I've already done".
 
 7. **fill_gap** — "Have they arrived _____?"
    **Hint**: question with yet
@@ -420,6 +427,7 @@
 8. **fix_error** — "I've yet seen that movie."
    **Hint**: yet goes at end, not middle
    **Answer**: I haven't seen that movie yet.
+   **Accepts**: I've already seen that movie. / I have already seen that movie.
    **Explanation**: "Yet" goes at END of negative/question, not between have/has and verb. Used with negative.
 
 9. **fix_error** — "She has just leave."
@@ -431,7 +439,7 @@
     **Passage**: "I've just finished my report. I've already eaten lunch. I haven't called my mom yet — I'll do it soon."
     **Question**: What hasn't the speaker done yet?
     **Answer**: called my mom
-    **Explanation**: The text says "I haven't / have not called my mom yet".
+    **Explanation**: The text says "I haven't called my mom yet".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -587,7 +595,8 @@
 6. **fill_gap** — "No, she _____." (response to "Has she finished?")
    **Hint**: Short answer negative (contracted)
    **Answer**: hasn't
-   **Explanation**: "No, she hasn't / has not" — short negative answer.
+   **Accepts**: has not
+   **Explanation**: "No, she hasn't" — short negative answer.
 
 7. **fill_gap** — "_____ you eaten breakfast?"
    **Hint**: Have/Has for you
@@ -602,6 +611,7 @@
 9. **fix_error** — "Have you ever go to Italy?"
    **Hint**: After Have, past participle
    **Answer**: Have you ever been to Italy?
+   **Accepts**: Have you ever gone to Italy?
    **Explanation**: After "Have", use past participle. For experiences = "been" (not "go" or "gone").
 
 10. **read_answer**
@@ -609,7 +619,7 @@
     **Question**: Has the sister tried sushi?
     **Answer**: no
     **Accepts**: she hasn't
-    **Explanation**: The text says "No, she hasn't / has not".
+    **Explanation**: The text says "No, she hasn't".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -745,7 +755,7 @@
 2. **multiple_choice** — "She has _____ that book."
    **Options**: read / readed / red
    **Answer**: read
-   **Explanation**: Past participle of read = read (same spelling, /red/).
+   **Explanation**: Past participle of read = read (same spelling, pronounced like "red").
 
 3. **word_bank** — "We have _____ traveled together."
    **Choices**: never / no / not / nothing
@@ -760,11 +770,13 @@
 5. **fill_gap** — "I have _____ finished my project."
    **Hint**: just (recent)
    **Answer**: just
+   **Accepts**: already / finally / nearly / almost
    **Explanation**: "I have just finished" — recent.
 
 6. **fill_gap** — "She has _____ eaten breakfast."
    **Hint**: already (sooner)
    **Answer**: already
+   **Accepts**: just
    **Explanation**: "Already" — between has and past participle.
 
 7. **fill_gap** — "I haven't called him _____."

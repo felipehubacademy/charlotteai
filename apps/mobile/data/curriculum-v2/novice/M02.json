@@ -44,7 +44,7 @@
             "fivve"
           ],
           "answer": "five",
-          "explanation": "O número 5 em inglês é \"five\". Pronúncia: /faɪv/. Atenção: tem \"v\", não \"f\" no final."
+          "explanation": "O número 5 em inglês é \"five\". Atenção: termina com som de \"v\", não de \"f\"."
         },
         {
           "type": "multiple_choice",
@@ -59,7 +59,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "Room number _____.",
+          "sentence": "Room number _____ (12).",
           "choices": [
             "twelve",
             "twin",
@@ -71,7 +71,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "My number is _____.",
+          "sentence": "My number is _____ (17).",
           "choices": [
             "seventeen",
             "seventy",
@@ -83,28 +83,28 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I am _____ years old.",
+          "sentence": "I am _____ (18) years old.",
           "hint": "Número 18 por extenso",
           "answer": "eighteen",
           "explanation": "18 = \"eighteen\". Atenção: tem \"gh\" silencioso (escrito mas não pronunciado)."
         },
         {
           "type": "fill_gap",
-          "sentence": "She is _____ years old.",
+          "sentence": "She is _____ (11) years old.",
           "hint": "Número 11 por extenso",
           "answer": "eleven",
           "explanation": "11 = \"eleven\". Único formato — não segue o padrão -teen como 13-19."
         },
         {
           "type": "fill_gap",
-          "sentence": "My phone number is _____.",
+          "sentence": "I have _____ (9) cousins.",
           "hint": "Número 9 por extenso",
           "answer": "nine",
-          "explanation": "9 = \"nine\". Som parecido com \"none\" (nenhum) mas significado totalmente diferente. Pronúncia: /naɪn/."
+          "explanation": "9 = \"nine\". Som parecido com \"none\" (nenhum) mas significado totalmente diferente."
         },
         {
           "type": "fix_error",
-          "sentence": "I'm tween years old.",
+          "sentence": "I'm tween (12) years old.",
           "hint": "12 em inglês não segue padrão -teen",
           "answer": "I'm twelve years old.",
           "explanation": "12 = \"twelve\", não \"tween\". \"Tween\" é gíria para \"pré-adolescente\" — não é número. Os números 11 e 12 têm formato único."
@@ -131,9 +131,9 @@
           "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/b8b7deef724cb5f1.flac"
         },
         {
-          "text": "My phone number is five five five.",
+          "text": "My phone number is five five five, one two three four.",
           "context": "soletrando dígitos",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/48e3be0c2d2993b4.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0afb4f98adb50617.flac"
         },
         {
           "text": "Floor twelve, please.",
@@ -303,7 +303,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "She is _____ years old.",
+          "sentence": "She is _____ (40) years old.",
           "choices": [
             "forty",
             "fourty",
@@ -315,7 +315,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "My grandma is _____.",
+          "sentence": "My grandma is _____ (90).",
           "choices": [
             "ninety",
             "nine",
@@ -327,21 +327,27 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I am _____ years old.",
+          "sentence": "I am _____ (35) years old.",
           "hint": "35 por extenso",
           "answer": "thirty-five",
+          "accepts": [
+            "thirty five"
+          ],
           "explanation": "35 = \"thirty-five\" (com hífen entre dezena e unidade). Mesma regra: 21=twenty-one, 47=forty-seven, 99=ninety-nine."
         },
         {
           "type": "fill_gap",
-          "sentence": "The temperature is _____ degrees.",
+          "sentence": "The temperature is _____ (100) degrees.",
           "hint": "100 por extenso",
           "answer": "one hundred",
+          "accepts": [
+            "a hundred"
+          ],
           "explanation": "100 = \"one hundred\" ou \"a hundred\". Para 101-199: \"one hundred and one\", \"one hundred and two\", etc."
         },
         {
           "type": "fill_gap",
-          "sentence": "It's _____ dollars.",
+          "sentence": "It's _____ (50) dollars.",
           "hint": "50 por extenso",
           "answer": "fifty",
           "explanation": "50 = \"fifty\". Atenção: NÃO é \"fivety\". Diferente de \"fifteen\" (15) — fifty é 50."
@@ -571,21 +577,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I'm from _____.",
+          "sentence": "I'm from _____ (Japão).",
           "hint": "País asiático cuja capital é Tokyo",
           "answer": "Japan",
-          "explanation": "\"Japan\" é o país. Nacionalidade: \"Japanese\". Não confundir — \"I'm / I am from Japan\" (país) vs \"I'm / I am Japanese\" (nacionalidade)."
+          "explanation": "\"Japan\" é o país. Nacionalidade: \"Japanese\". Não confundir — \"I'm from Japan\" (país) vs \"I'm Japanese\" (nacionalidade)."
         },
         {
           "type": "fill_gap",
-          "sentence": "She is from _____.",
+          "sentence": "She is from _____ (França).",
           "hint": "País europeu, capital Paris",
           "answer": "France",
           "explanation": "\"France\" é o país. Nacionalidade: \"French\". Capital: Paris. Note que aqui o foco é o país, não a capital."
         },
         {
           "type": "fill_gap",
-          "sentence": "We are from _____.",
+          "sentence": "We are from _____ (Austrália).",
           "hint": "País dos cangurus, no hemisfério sul",
           "answer": "Australia",
           "explanation": "\"Australia\" é o país do canguru. Nacionalidade: \"Australian\". País grande, ilha-continente."
@@ -831,6 +837,9 @@
           "sentence": "Are you _____?",
           "hint": "Nacionalidade do Reino Unido (UK)",
           "answer": "British",
+          "accepts": [
+            "from the UK"
+          ],
           "explanation": "\"British\" = britânico/a (cobre Inglaterra, Escócia, País de Gales, Irlanda do Norte). \"English\" é específico da Inglaterra. UK inteiro = \"British\"."
         },
         {
@@ -838,6 +847,10 @@
           "sentence": "I am Brazil.",
           "hint": "\"I am\" pede nacionalidade, não país",
           "answer": "I am Brazilian.",
+          "accepts": [
+            "I'm from Brazil.",
+            "I am from Brazil."
+          ],
           "explanation": "\"I am\" + nacionalidade (Brazilian). \"I am from\" + país (Brazil). Confundir os dois é o erro mais comum. Você É brasileiro, você É DE Brasil."
         },
         {
@@ -1016,7 +1029,7 @@
             "Brazilians"
           ],
           "answer": "Brazilian",
-          "explanation": "Nacionalidade = adjetivo (Brazilian). País = nome próprio (Brazil). Esta frase combina ambos: \"I'm / I am Brazilian, I'm from São Paulo, Brazil\"."
+          "explanation": "Nacionalidade = adjetivo (Brazilian). País = nome próprio (Brazil). Esta frase combina ambos: \"I'm Brazilian, I'm from São Paulo, Brazil\"."
         },
         {
           "type": "multiple_choice",
@@ -1039,7 +1052,7 @@
             "Me"
           ],
           "answer": "I'm",
-          "explanation": "\"I'm / I am\" é a contração de \"I am\" — forma padrão pra se apresentar. \"My\" é possessivo (My name is...). \"Me\" é pronome objeto."
+          "explanation": "\"I'm\" é a contração de \"I am\" — forma padrão pra se apresentar. \"My\" é possessivo (My name is...). \"Me\" é pronome objeto."
         },
         {
           "type": "word_bank",
@@ -1072,6 +1085,10 @@
           "sentence": "_____ name is Felipe.",
           "hint": "Possessivo de primeira pessoa",
           "answer": "My",
+          "accepts": [
+            "His",
+            "Your"
+          ],
           "explanation": "\"My\" = meu/minha. \"My name is Felipe\" = \"Meu nome é Felipe\". É um chunk fixo de apresentação."
         },
         {
@@ -1093,7 +1110,7 @@
           "passage": "Hello! My name is Ana. I'm twenty-six years old. I'm from São Paulo, Brazil. I'm Brazilian. Nice to meet you!",
           "question": "Qual é a nacionalidade de Ana?",
           "answer": "Brazilian",
-          "explanation": "Ana diz \"I'm / I am Brazilian\". A nacionalidade dela é \"Brazilian\" (o adjetivo)."
+          "explanation": "Ana diz \"I'm Brazilian\". A nacionalidade dela é \"Brazilian\" (o adjetivo)."
         }
       ],
       "listening_speaking": [

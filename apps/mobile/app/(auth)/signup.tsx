@@ -14,6 +14,7 @@ import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { isValidEmailFormat, isDisposableEmail, suggestEmailCorrection } from '@/lib/emailValidation';
 import { systemIsPt } from '@/lib/systemLang';
+import { prefetchWelcomeVoice } from '@/lib/welcome';
 
 const C = {
   bg:        '#FAF7F0',
@@ -71,6 +72,8 @@ export default function SignupScreen() {
     setLoading(true);
     try {
       const { session } = await signUp(email.trim().toLowerCase(), password, name.trim());
+      // A fala da Charlotte com o nome leva ~2 s para gerar: começa já, para a abertura tocar na hora.
+      if (session) prefetchWelcomeVoice(name);
       // Auto-confirm ligado no Supabase -> já veio sessão: o AuthProvider pega o
       // login e o AuthGuard leva pro trial. Não mostramos o muro de "verifique
       // seu e-mail". Sem sessão -> confirmação exigida -> mostra o muro.
@@ -170,7 +173,7 @@ export default function SignupScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
+      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
         <ScrollView
           contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingHorizontal: 28, paddingVertical: 32 }}
           keyboardShouldPersistTaps="handled"

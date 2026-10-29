@@ -51,16 +51,19 @@
 5. **fill_gap** — "She is _____ in the team — nobody beats her time."
    **Hint**: Superlativo de "fast"
    **Answer**: the fastest
+   **Accepts**: the best / the quickest
    **Explanation**: "Fast" → "fastest". "The fastest" = a mais rápida.
 
 6. **fill_gap** — "This is _____ exam of the semester — only basic questions."
    **Hint**: Superlativo de "easy"
    **Answer**: the easiest
+   **Accepts**: the simplest / the shortest
    **Explanation**: "Easy" → "easiest" (y → iest). "The easiest exam".
 
 7. **fill_gap** — "São Paulo is _____ city in Brazil."
    **Hint**: Superlativo de "big"
    **Answer**: the biggest
+   **Accepts**: the largest
    **Explanation**: "Big" → "biggest" (dobra o g). "The biggest city in Brazil".
 
 8. **fix_error** — "He is tallest in our class."
@@ -150,7 +153,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte explora rankings na sua vida. Pratica 'the + adj-est'."
-**Opening message**: "Tell me three superlatives about your world."
+**Opening message**: "What are the best, the biggest and the most fun things in your world?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -185,7 +188,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Tell me three superlatives about your world."
+1. **Charlotte**: "What are the best, the biggest and the most fun things in your world?"
 2. **Student**: "I'm the oldest in my family."
 3. **Charlotte**: "Big sibling energy. City?"
 4. **Student**: "São Paulo is the biggest city."
@@ -228,16 +231,19 @@
 5. **fill_gap** — "She is _____ teacher in the school — she never gets angry."
    **Hint**: Superlativo longo de "patient"
    **Answer**: the most patient
+   **Accepts**: the best / the calmest / the nicest / the kindest
    **Explanation**: "Patient" → "the most patient" (2 sílabas+, usa "most").
 
 6. **fill_gap** — "It's _____ topic of the year — everyone is talking about it."
    **Hint**: Superlativo longo de "popular"
    **Answer**: the most popular
+   **Accepts**: the hottest / the biggest / the most talked-about / the most important / the most discussed
    **Explanation**: "Popular" → "the most popular". Sempre "most" antes de adj longo.
 
 7. **fill_gap** — "This is _____ book in the library — I almost fell asleep."
    **Hint**: Superlativo longo de "boring"
    **Answer**: the most boring
+   **Accepts**: the dullest / the worst
    **Explanation**: "Boring" (2 sílabas) → "the most boring".
 
 8. **fix_error** — "He is the interestingest person."
@@ -405,16 +411,19 @@
 5. **fill_gap** — "He is _____ teacher in the school — students love his classes."
    **Hint**: Irregular superlativo de "good"
    **Answer**: the best
+   **Accepts**: the most popular / the nicest / the funniest
    **Explanation**: "The best" — superlativo de "good". Decora a lista: good/better/best.
 
 6. **fill_gap** — "It's _____ thing about Mondays — waking up so early!"
    **Hint**: Irregular superlativo de "bad"
    **Answer**: the worst
+   **Accepts**: the hardest
    **Explanation**: "The worst" — superlativo de "bad". Lista: bad/worse/worst.
 
 7. **fill_gap** — "She has _____ ideas of all."
    **Hint**: Quantidade máxima (mais)
    **Answer**: the most
+   **Accepts**: the best
    **Explanation**: "The most ideas" = mais ideias. "The most + noun" pra quantidades.
 
 8. **fix_error** — "This is the goodest restaurant."
@@ -504,7 +513,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte abre chat sobre favoritos e piores. Pratica irregulares de superlativo."
-**Opening message**: "Best meal in your city?"
+**Opening message**: "What's the best meal in your city?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -539,7 +548,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Best meal in your city?"
+1. **Charlotte**: "What's the best meal in your city?"
 2. **Student**: "The best meal was pasta."
 3. **Charlotte**: "Italian style."
 4. **Student**: "The worst day was Monday."
@@ -760,16 +769,19 @@
 5. **fill_gap** — "It's _____ time in NYC."
    **Hint**: 1st (ordinal de 1)
    **Answer**: my first
+   **Accepts**: the first / our first / her first / his first
    **Explanation**: "My first time in NYC" — primeira visita. Ordinal especial.
 
 6. **fill_gap** — "São Paulo is _____ city in Brazil."
    **Hint**: Superlativo curto de "big"
    **Answer**: the biggest
+   **Accepts**: the largest
    **Explanation**: "Big" → "the biggest" (dobra g).
 
 7. **fill_gap** — "She is _____ student in class — top grades every test."
    **Hint**: Irregular superlativo de "good"
    **Answer**: the best
+   **Accepts**: the smartest / the brightest / the top
    **Explanation**: Good → the best (irregular).
 
 8. **fix_error** — "He is the most tall."
@@ -867,9 +879,9 @@
    **label_pt**: "Dizer 'o melhor' de algo"
    **label_en**: "Say 'the best'"
    **hidden_prompt**: "user uses 'the best + noun' or 'X is the best'"
-   **hint_pt**: "The best trip was Italy."
-   **hint_en**: "The best trip was Italy."
-   **example_pass**: The best trip was Italy.
+   **hint_pt**: "My best trip was to Italy."
+   **hint_en**: "My best trip was to Italy."
+   **example_pass**: My best trip was to Italy.
    **example_fail**: Pasta (bare noun) | Best (bare adjective) | I like pasta (no superlative)
 
 2. **id**: 2
@@ -895,7 +907,7 @@
 **Script** (referencial, 7 turnos):
 
 1. **Charlotte**: "Best thing this month? First time doing something?"
-2. **Student**: "The best trip was Italy."
+2. **Student**: "My best trip was to Italy."
 3. **Charlotte**: "Wow."
 4. **Student**: "It's my first time skiing."
 5. **Charlotte**: "Adventure!"

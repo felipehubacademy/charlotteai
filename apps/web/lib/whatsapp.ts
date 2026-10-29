@@ -116,3 +116,38 @@ export async function subscribeAppToWaba() {
   const r = await graph(`${WHATSAPP_WABA_ID}/subscribed_apps`, { method: 'POST' });
   return r.ok ? { ok: true } : { ok: false, error: r.json?.error?.message ?? `HTTP ${r.status}` };
 }
+
+// ── Alertas internos (vigia do checkout) ─────────────────────────────────────────
+// Fora da janela de 24 h, a Meta só deixa mandar modelo aprovado. Modelo "alerta_checkout" (Utilidade, pt_BR):
+// "Alerta do checkout do Queizy: {{1}}".
+export const ALERT_TEMPLATE = 'alerta_checkout';
+
+export async function createAlertTemplate() {
+  const r = await graph(`${WHATSAPP_WABA_ID}/message_templates`, {
+    method: 'POST',
+    body: {
+      name: ALERT_TEMPLATE, language: 'pt_BR', category: 'UTILITY',
+      components: [{ type: 'BODY', text: 'Alerta do checkout do Queizy: {{1}}. Detalhes no e-mail e no /admin, aba Saúde do checkout.', example: { body_text: [['3 erros no checkout nos últimos 10 min']] } }],
+    },
+  });
+  return r.ok ? { ok: true, id: r.json.id, status: r.json.status } : { ok: false, error: r.json?.error?.error_user_msg ?? r.json?.error?.message ?? `HTTP ${r.status}` };
+}
+
+export async function alertTemplateStatus() {
+  const r = await graph(`${WHATSAPP_WABA_ID}/message_templates?name=${ALERT_TEMPLATE}&fields=name,status,language`);
+  return r.ok ? (r.json.data ?? []) : { error: r.json?.error?.message ?? `HTTP ${r.status}` };
+}
+
+/** Manda o modelo de alerta (vale fora da janela de 24 h, depois de aprovado). */
+export async function sendAlertTemplate(to: string, summary: string): Promise<{ ok: boolean; error?: string }> {
+  const id = process.env.WHATSAPP_PHONE_NUMBER_ID;
+  if (!id) return { ok: false, error: 'WhatsApp não configurado' };
+  const r = await graph(`${id}/messages`, {
+    method: 'POST',
+    body: {
+      messaging_product: 'whatsapp', to, type: 'template',
+      template: { name: ALERT_TEMPLATE, language: { code: 'pt_BR' }, components: [{ type: 'body', parameters: [{ type: 'text', text: summary.replace(/\s+/g, ' ').slice(0, 900) }] }] },
+    },
+  });
+  return r.ok ? { ok: true } : { ok: false, error: r.json?.error?.message ?? `HTTP ${r.status}` };
+}

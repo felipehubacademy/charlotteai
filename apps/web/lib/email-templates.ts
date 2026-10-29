@@ -169,6 +169,49 @@ export function familyGrowsTemplate(opts: { name?: string | null; unsubscribeUrl
   return { subject, html };
 }
 
+// ── 6b2. Atualize o app (campanha: quem ainda não está na versão mais recente das lojas) ──────
+
+export function appUpdateTemplate(opts: { name?: string | null; unsubscribeUrl?: string }) {
+  const appStore  = 'https://apps.apple.com/app/id6760943273';
+  const playStore = 'https://play.google.com/store/apps/details?id=com.hubacademy.charlotte';
+  const first = (opts.name ?? '').trim().split(/\s+/)[0];
+  const ola = first ? `Olá, ${first}!` : 'Olá!';
+  const subject = 'Tem versão nova do Queizy nas lojas';
+  const unsubscribe = opts.unsubscribeUrl
+    ? `<p style="margin:12px 0 0;font-size:12px;color:#8A8494;line-height:1.7;">Não quer mais receber novidades? <a href="${opts.unsubscribeUrl}" style="color:#8A8494;text-decoration:underline;">Descadastrar</a>.</p>`
+    : '';
+  const html = base(`
+    ${h1('Atualize o seu Queizy.')}
+    ${p(`${ola}<br>Saiu uma versão nova do app na App Store e na Google Play, com correções e melhorias de estabilidade. O seu aparelho ainda está com uma versão anterior.`)}
+    ${p('Atualize pela loja para tudo funcionar direitinho. Sua conta, seu progresso e sua assinatura continuam iguais.')}
+    ${storeBadges(appStore, playStore)}
+    ${p('Já atualizou? Então está tudo certo, pode ignorar este e-mail.')}
+  `, unsubscribe);
+  return { subject, html };
+}
+
+// ── 6b. Campanha de volta (degustação que parou no 1º dia): "O que te fez parar?" ───────
+// Cada opção é um link de 1 toque (lib/winback.ts) que grava a resposta e credita 5 min de ligação.
+export function winbackTemplate(opts: { name?: string | null; unsubscribeUrl?: string; answerUrls?: { label: string; url: string }[] }) {
+  const first = (opts.name ?? '').trim().split(/\s+/)[0];
+  const ola = first ? `Oi, ${first}!` : 'Oi!';
+  const subject = 'Seu tópico grátis de hoje já está liberado';
+  const unsubscribe = opts.unsubscribeUrl
+    ? `<p style="margin:12px 0 0;font-size:12px;color:#8A8494;line-height:1.7;">Não quer mais receber novidades? <a href="${opts.unsubscribeUrl}" style="color:#8A8494;text-decoration:underline;">Descadastrar</a>.</p>`
+    : '';
+  const options = (opts.answerUrls ?? []).map(o =>
+    `<tr><td style="padding:0 0 8px;"><a href="${o.url}" style="display:block;background:#F4F1EA;border:1px solid #E8E4DA;border-radius:14px;padding:13px 16px;font-size:15px;font-weight:700;color:#16131F;-webkit-text-fill-color:#16131F;text-decoration:none;text-align:left;">${o.label}</a></td></tr>`).join('');
+  const html = base(`
+    ${h1('Tem tópico novo te esperando.')}
+    ${p(`${ola}<br>Mudamos a degustação do Queizy: agora são <strong style="color:#16131F;">5 dias com 1 tópico novo grátis por dia</strong>. O seu de hoje já está liberado na trilha.`)}
+    ${btn('Fazer o tópico de hoje', SMART_LINK)}
+    ${p('<strong style="color:#16131F;">Uma pergunta rápida:</strong> o que te fez parar depois do primeiro dia? Toque em uma opção e ganhe <strong style="color:#16131F;">5 minutos de ligação por voz</strong> para treinar a conversa.')}
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="max-width:400px;margin:8px auto 0;">${options}</table>
+    ${note('Sua resposta ajuda a gente a deixar o Queizy melhor para você.')}
+  `, unsubscribe);
+  return { subject, html };
+}
+
 // ── 6c. Carrinho abandonado (assinatura pelo site): 3 lembretes ──────────────────────
 
 export function cartRecoveryTemplate(opts: {
@@ -245,6 +288,186 @@ export function webSubscriptionWelcomeTemplate(opts: {
     ${storeBadges()}
     ${refund}
     ${note('Dúvidas? É só responder este e-mail.')}
+  `);
+  return { subject, html };
+}
+
+// ── Avisos da assinatura pelo site (tudo com a marca Queizy; o processador não manda nada ao aluno) ──
+
+const PLAN_NAME = (plan: 'monthly' | 'annual') => (plan === 'monthly' ? 'Plano Mensal' : 'Plano Anual');
+const firstName = (name?: string | null) => (name ?? '').trim().split(/\s+/)[0];
+const MANAGE_PATH = 'Perfil &gt; Assinatura &gt; Gerenciar assinatura';
+
+/** 2 dias antes da 1ª cobrança do teste grátis. */
+export function webTrialEndingTemplate(opts: { name?: string | null; plan: 'monthly' | 'annual'; chargeDate: string; trialEnd: string; value: string }) {
+  const first = firstName(opts.name);
+  const planName = PLAN_NAME(opts.plan);
+  const subject = `Seu teste grátis do Queizy termina em ${opts.trialEnd}`;
+  const html = base(`
+    ${h1(first ? `${first}, seu teste grátis está acabando` : 'Seu teste grátis está acabando')}
+    ${p(`Seus dias grátis do ${planName} vão até <strong style="color:#16131F;">${opts.trialEnd}</strong>. Em ${opts.chargeDate}, a assinatura começa e fazemos a primeira cobrança no cartão.`)}
+    ${meta([
+      { label: 'Plano', value: planName },
+      { label: 'Primeira cobrança', value: opts.chargeDate },
+      { label: 'Valor', value: `${opts.value}${opts.plan === 'monthly' ? ' por mês' : ' por ano'}` },
+    ])}
+    ${p('Quer continuar estudando? Não precisa fazer nada.')}
+    ${p(`Prefere não continuar? Cancele até ${opts.trialEnd} no app, em ${MANAGE_PATH} &gt; Cancelar assinatura, e nada será cobrado.`)}
+    ${btn('Abrir o Queizy', SMART_LINK)}
+    ${note('Dúvidas? É só responder este e-mail.')}
+  `);
+  return { subject, html };
+}
+
+/** Cobrança aprovada (1ª depois do teste grátis e renovações). */
+export function webPaymentReceiptTemplate(opts: { name?: string | null; plan: 'monthly' | 'annual'; method: string | null; value: string; paidAt: string; nextCharge: string | null; accessUntil: string | null; refundUntil: string | null }) {
+  const first = firstName(opts.name);
+  const planName = PLAN_NAME(opts.plan);
+  const pay = opts.method === 'annual_pix' ? 'Pix' : 'Cartão de crédito';
+  const subject = `Recebemos o pagamento do seu ${planName}`;
+  const rows = [
+    { label: 'Plano', value: planName },
+    { label: 'Valor', value: opts.value },
+    { label: 'Pagamento', value: `${pay}, em ${opts.paidAt}` },
+  ];
+  if (opts.nextCharge) rows.push({ label: 'Próxima cobrança', value: opts.nextCharge });
+  else if (opts.accessUntil) rows.push({ label: 'Acesso até', value: opts.accessUntil });
+  const html = base(`
+    ${h1(first ? `Tudo certo, ${first}!` : 'Pagamento confirmado')}
+    ${p(`Recebemos o pagamento do seu ${planName}. Seu acesso ao Queizy continua liberado.`)}
+    ${meta(rows)}
+    ${opts.refundUntil ? note(`Mudou de ideia? Você pode pedir o reembolso até ${opts.refundUntil} no app, em ${MANAGE_PATH} &gt; Pedir reembolso.`) : ''}
+    ${note('Dúvidas? É só responder este e-mail.')}
+  `);
+  return { subject, html };
+}
+
+/** Cobrança do cartão recusada (renovação ou 1ª depois do teste). */
+export function webPaymentFailedTemplate(opts: { name?: string | null; plan: 'monthly' | 'annual'; value: string; accessUntil: string | null }) {
+  const first = firstName(opts.name);
+  const planName = PLAN_NAME(opts.plan);
+  const subject = 'Não conseguimos cobrar a sua assinatura do Queizy';
+  const html = base(`
+    ${h1(first ? `${first}, a cobrança não passou` : 'A cobrança não passou')}
+    ${p(`Tentamos cobrar ${opts.value} do seu ${planName}, mas o cartão recusou. Isso costuma acontecer por falta de limite, cartão vencido ou bloqueio do banco.`)}
+    ${p(`Confira o cartão com o seu banco e responda este e-mail: a gente te ajuda a regularizar ou trocar o cartão.${opts.accessUntil ? ` Seu acesso continua até ${opts.accessUntil}.` : ''}`)}
+    ${btn('Falar com o suporte', 'mailto:suporte@queizy.com?subject=Cobran%C3%A7a%20da%20assinatura')}
+    ${note('Se preferir, assine de novo em queizy.com/assinar com o mesmo e-mail: o acesso continua na mesma conta.')}
+  `);
+  return { subject, html };
+}
+
+/** Assinatura cancelada (pelo app ou pelo suporte). */
+export function webCancelledTemplate(opts: { name?: string | null; plan: 'monthly' | 'annual'; inTrial: boolean; accessUntil: string | null }) {
+  const first = firstName(opts.name);
+  const planName = PLAN_NAME(opts.plan);
+  const subject = 'Sua assinatura do Queizy foi cancelada';
+  const status = opts.inTrial
+    ? `Você estava no teste grátis e nada foi cobrado. Nada será cobrado daqui para a frente.${opts.accessUntil ? ` Você continua usando o Queizy até ${opts.accessUntil}.` : ''}`
+    : `Não haverá novas cobranças.${opts.accessUntil ? ` Seu acesso continua até ${opts.accessUntil}.` : ''}`;
+  const html = base(`
+    ${h1(first ? `${first}, sua assinatura foi cancelada` : 'Sua assinatura foi cancelada')}
+    ${p(`Confirmamos o cancelamento do seu ${planName}. ${status}`)}
+    ${p('Sentiremos sua falta. Se quiser voltar, é só assinar de novo com o mesmo e-mail: seu progresso continua salvo.')}
+    ${btn('Assinar de novo', 'https://queizy.com/assinar')}
+    ${note('Não foi você que cancelou? Responda este e-mail.')}
+  `);
+  return { subject, html };
+}
+
+/** Reembolso feito (ou pedido registrado, quando o processador não devolveu na hora). */
+export function webRefundTemplate(opts: { name?: string | null; plan: 'monthly' | 'annual'; method: string | null; value: string; queued: boolean }) {
+  const first = firstName(opts.name);
+  const planName = PLAN_NAME(opts.plan);
+  const isPix = opts.method === 'annual_pix';
+  const subject = opts.queued ? 'Recebemos seu pedido de reembolso' : 'Seu reembolso foi feito';
+  const how = isPix
+    ? 'O valor volta para a mesma conta do Pix em instantes.'
+    : 'O estorno aparece na fatura do cartão em até duas faturas, conforme o seu banco.';
+  const html = base(`
+    ${h1(opts.queued ? (first ? `${first}, recebemos seu pedido` : 'Recebemos seu pedido') : (first ? `${first}, seu reembolso foi feito` : 'Seu reembolso foi feito'))}
+    ${p(opts.queued
+      ? `Registramos o pedido de reembolso do seu ${planName}. Devolvemos o valor em até 2 dias úteis e avisamos por e-mail quando sair.`
+      : `Devolvemos o pagamento do seu ${planName}. ${how}`)}
+    ${meta([
+      { label: 'Plano', value: planName },
+      { label: 'Valor', value: opts.value },
+      { label: 'Forma', value: isPix ? 'Pix' : 'Cartão de crédito' },
+    ])}
+    ${p(opts.queued ? 'Enquanto isso, seu acesso continua.' : 'Seu acesso ao Queizy foi encerrado e não haverá novas cobranças. Seu progresso continua salvo, se quiser voltar.')}
+    ${opts.queued ? '' : btn('Assinar de novo', 'https://queizy.com/assinar')}
+    ${note('Dúvidas? É só responder este e-mail.')}
+  `);
+  return { subject, html };
+}
+
+/** Ajuda de acesso: aluno que assinou pelo site e não conseguiu entrar (ex.: link de senha que falhou do nosso lado).
+ *  Tom de acompanhamento pessoal, com o passo a passo. `when` = "ontem" / "hoje" / "no dia 21/10". */
+export function accessHelpTemplate(opts: { name?: string | null; email: string; when: string; passwordUrl: string }) {
+  const first = firstName(opts.name);
+  const subject = first ? `${first}, vimos que você ainda não conseguiu entrar no Queizy` : 'Vimos que você ainda não conseguiu entrar no Queizy';
+  const steps = [
+    'Toque no botão <strong style="color:#16131F;">Criar minha senha</strong>, aqui embaixo. Vai abrir uma página do Queizy: digite a senha que quiser duas vezes e toque em "Salvar senha".',
+    'Se ainda não tiver o app, baixe o Queizy na App Store ou no Google Play.',
+    `Abra o app, toque em "Entrar" e use este e-mail (<strong style="color:#16131F;">${opts.email}</strong>) com a senha que você acabou de criar.`,
+  ].map((s, i) => `<li style="margin:0 0 12px;padding-left:4px;"><strong style="color:#16131F;">${i + 1}.</strong> ${s}</li>`).join('');
+  const html = base(`
+    ${h1(first ? `Oi, ${first}!` : 'Oi!')}
+    ${p(`Aqui é a equipe do Queizy. Estamos acompanhando de perto quem acabou de chegar e notamos que você assinou ${opts.when}, mas ainda não conseguiu entrar no app.`)}
+    ${p('Descobrimos que o link de criar a senha não funcionava bem em alguns celulares e computadores, então o problema muito provavelmente foi do nosso lado. Já corrigimos, e pedimos desculpas pelo transtorno.')}
+    ${p('Para entrar, são só 3 passos:')}
+    <ul style="margin:8px auto 8px;padding:0;max-width:420px;font-size:15px;color:#3A3546;line-height:1.55;text-align:left;list-style:none;">${steps}</ul>
+    ${btn('Criar minha senha', opts.passwordUrl)}
+    ${storeBadges()}
+    ${note('Se travar em qualquer passo, é só responder este e-mail que a gente te ajuda na hora.<br>Um abraço, Equipe Queizy')}
+  `);
+  return { subject, html };
+}
+
+/** Convite para a gestão (/admin): papel, o que a pessoa acessa e o link para criar a senha. */
+export function adminInviteTemplate(opts: { name?: string | null; email: string; roleLabel: string; roleDesc: string; areas: string[]; passwordUrl: string }) {
+  const first = firstName(opts.name);
+  const subject = `${first ? `${first}, você` : 'Você'} recebeu acesso à gestão do Queizy`;
+  const html = base(`
+    ${h1(first ? `Oi, ${first}!` : 'Oi!')}
+    ${p(`Você recebeu acesso à gestão do Queizy como <strong style="color:#16131F;">${opts.roleLabel}</strong>. ${opts.roleDesc}`)}
+    ${p('O que você vai poder fazer:')}
+    ${features(opts.areas)}
+    ${p(`Para entrar, crie a sua senha no botão abaixo e depois acesse <strong style="color:#16131F;">queizy.com/admin</strong> com este e-mail (<strong style="color:#16131F;">${opts.email}</strong>) e a senha que criou.`)}
+    ${btn('Criar minha senha', opts.passwordUrl)}
+    ${note('O link vale por pouco tempo. Se ele expirar, a própria página deixa pedir um novo.<br>Se você já tem senha no Queizy, pode ignorar o botão e entrar direto em queizy.com/admin.')}
+  `);
+  return { subject, html };
+}
+
+/** Aviso para quem convidou: a pessoa aceitou o convite (primeiro acesso à gestão). */
+export function adminAcceptedTemplate(opts: { inviterName?: string | null; memberName?: string | null; memberEmail: string; roleLabel: string }) {
+  const first = firstName(opts.inviterName);
+  const who = opts.memberName?.trim() || opts.memberEmail;
+  const subject = `${who} aceitou o convite para a gestão do Queizy`;
+  const html = base(`
+    ${h1(first ? `Oi, ${first}!` : 'Oi!')}
+    ${p(`<strong style="color:#16131F;">${who}</strong> (${opts.memberEmail}) aceitou o seu convite e acabou de entrar na gestão do Queizy como <strong style="color:#16131F;">${opts.roleLabel}</strong>.`)}
+    ${btn('Ver a equipe', 'https://queizy.com/admin/team')}
+    ${note('Para mudar o nível de acesso ou desativar a pessoa, use a tela Equipe no /admin.')}
+  `);
+  return { subject, html };
+}
+
+// ── Teste antigo (sem cartão) terminou: passa para a degustação ───────────────
+
+export function legacyTrialEndedTemplate(opts: { name?: string | null; activities: number; xp: number }) {
+  const first = (opts.name ?? '').trim().split(/\s+/)[0];
+  const subject = 'Seu teste terminou, mas você ainda tem 7 dias grátis';
+  const did = opts.activities > 0
+    ? `Nos últimos dias você concluiu <strong style="color:#16131F;">${opts.activities} ${opts.activities === 1 ? 'atividade' : 'atividades'}</strong> e ganhou <strong style="color:#16131F;">${opts.xp.toLocaleString('pt-BR')} XP</strong>.`
+    : 'Seu teste de 7 dias terminou.';
+  const html = base(`
+    ${h1(`${first ? `${first}, seu` : 'Seu'} teste terminou.<br>Mas ainda tem mais.`)}
+    ${p(`${did} Na loja do seu celular você ainda tem <strong style="color:#16131F;">7 dias grátis</strong> para seguir com tudo: a trilha inteira, a conversa com a Charlotte e as ligações. Se cancelar antes do fim dos 7 dias, não paga nada.`)}
+    ${btn('Começar os 7 dias grátis', SMART_LINK)}
+    ${p(`Prefere ir com calma? Você continua na degustação: um tópico novo da trilha por dia, por 5 dias.`)}
+    ${note('Dúvidas? Responda este e-mail ou escreva para contato@queizy.com.')}
   `);
   return { subject, html };
 }

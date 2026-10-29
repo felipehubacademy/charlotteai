@@ -99,7 +99,7 @@ export default function TermosPage() {
         </Section>
 
         <Section title="6. Conteúdo Gerado por IA e Consentimento">
-          <p style={{ marginBottom: 14 }}>O Queizy usa serviços de Inteligência Artificial de terceiros (OpenAI GPT-4o, ElevenLabs e Microsoft Azure Speech) para gerar respostas, sintetizar voz e avaliar pronúncia. Ao utilizar o aplicativo pela primeira vez, você consente explicitamente com o envio de dados a esses serviços, conforme detalhado na nossa <a href="/privacidade" style={{ color: '#6B4BFF' }}>Política de Privacidade</a>.</p>
+          <p style={{ marginBottom: 14 }}>O Queizy usa serviços de Inteligência Artificial de terceiros para gerar respostas, sintetizar voz e avaliar pronúncia. Ao utilizar o aplicativo pela primeira vez, você consente explicitamente com o envio de dados a esses serviços, conforme detalhado na nossa <a href="/privacidade" style={{ color: '#6B4BFF' }}>Política de Privacidade</a>.</p>
           <List items={[
             'O conteúdo gerado pela IA é para fins educacionais e pode conter imprecisões',
             'As respostas não substituem instrução profissional de idiomas',

@@ -8,6 +8,7 @@ import Constants from 'expo-constants';
 import { router } from 'expo-router';
 import { supabase } from '@/lib/supabase';
 import { systemIsPt } from '@/lib/systemLang';
+import { track } from '@/lib/analytics';
 
 // Expo Go uses executionEnvironment === 'storeClient' OR appOwnership === 'expo'.
 // TestFlight and production builds use 'standalone'.
@@ -72,19 +73,25 @@ export function usePushNotifications(userId?: string) {
     let mounted = true;
 
     const setup = async () => {
+      // Canal Android ANTES da permissão e do token: no Android 13+ o pedido de
+      // permissão só aparece direito se já existir um canal. O servidor manda
+      // channelId 'charlotte' em todo push (lib/expo-notification-service.ts).
+      if (Platform.OS === 'android') {
+        try {
+          await Notifications.setNotificationChannelAsync('charlotte', {
+            name: 'Queizy',
+            importance: Notifications.AndroidImportance.MAX,
+            vibrationPattern: [0, 250, 250, 250],
+            lightColor: '#DCFF4A',
+          });
+        } catch (e) {
+          console.warn('Android notification channel failed:', e);
+        }
+      }
+
       const token = await registerForPushNotifications();
       if (token && mounted) {
         await saveTokenToSupabase(userId, token);
-      }
-
-      // Android notification channel
-      if (Platform.OS === 'android') {
-        await Notifications.setNotificationChannelAsync('charlotte', {
-          name: 'Queizy',
-          importance: Notifications.AndroidImportance.MAX,
-          vibrationPattern: [0, 250, 250, 250],
-          lightColor: '#DCFF4A',
-        });
       }
     };
 
@@ -99,6 +106,22 @@ export function usePushNotifications(userId?: string) {
     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
       const data = response.notification.request.content.data as any;
       console.log('Push tapped:', data);
+
+      // Toque no push → analytics. Com o app fechado, o toque chega antes da
+      // tela inicial identificar o aluno (identifyUser); a espera cobre a
+      // abertura. Se ainda assim não houver aluno identificado, o evento se perde.
+      try {
+        const props: Record<string, string | number | boolean | null> = {
+          type: typeof data?.type === 'string' ? data.type : 'unknown',
+        };
+        for (const k of ['screen', 'kind', 'challenge', 'campaign', 'category']) {
+          const v = data?.[k];
+          if (typeof v === 'string' || typeof v === 'number') props[k] = v;
+        }
+        const cat = response.notification.request.content.categoryIdentifier;
+        if (cat && !props.category) props.category = cat;
+        setTimeout(() => track('notification_tapped', props), 5000);
+      } catch { /* analytics nunca atrapalha a navegação */ }
 
       // Map notification type → app route
       try {
@@ -119,6 +142,9 @@ export function usePushNotifications(userId?: string) {
           case 'buddy_joined':
             router.push('/(app)/study-together' as any);
             break;
+          case 'web_sub_notice': // assinatura do site: fim do teste, cobrança recusada → Perfil (Gerenciar assinatura)
+            router.push('/(app)/(tabs)/profile' as any);
+            break;
           case 'support_reply': // equipe respondeu no chat de suporte
             router.push('/(app)/support-chat' as any);
             break;
@@ -128,6 +154,12 @@ export function usePushNotifications(userId?: string) {
             break;
           case 'achievement_cheer':
             router.push('/(app)/achievements' as any);
+            break;
+          case 'rank_up':        // ranking da semana: abre a tela de Ranking
+          case 'rank_lost':
+          case 'rank_threat':
+          case 'rank_week_won':
+            router.push('/(app)/leaderboard' as any);
             break;
           case 'xp_milestone':
             router.push('/(app)');  // home → stats visible

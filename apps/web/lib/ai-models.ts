@@ -14,6 +14,8 @@ const DEFAULT_REMAP: Record<string, string> = {
   'gpt-4o-mini': 'gpt-6-luna',
   'gpt-4.1-mini': 'gpt-6-luna',
   'gpt-4o': 'gpt-6-luna',
+  // 2026-10-23: a OpenAI desativou o 4.1-nano (o /api/translate devolvia 404).
+  'gpt-4.1-nano': 'gpt-6-luna',
 };
 
 function envRemap(): Record<string, string> {

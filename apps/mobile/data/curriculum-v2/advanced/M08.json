@@ -59,30 +59,39 @@
             "I hope"
           ],
           "answer": "I was hoping",
-          "explanation": "\"I was hoping that...\" — past continuous of hope, used to introduce a soft request. Equivalent to \"I'm / I am wondering\" but with slight emotional warmth. \"I hope\" reads as already-committed; the past form softens."
+          "explanation": "\"I was hoping that...\" — past continuous of hope, used to introduce a soft request. Equivalent to \"I'm wondering\" but with slight emotional warmth. \"I hope\" reads as already-committed; the past form softens."
         },
         {
           "type": "fill_gap",
           "sentence": "_____ if you'd mind looking over this draft when you have a moment.",
           "hint": "\"I was wondering\"",
           "answer": "I was wondering",
-          "explanation": "Soft request opener. The full structure: \"I was wondering if you'd / you would mind + -ing\". Double softening: past continuous + \"would you mind\" + -ing."
+          "accepts": [
+            "I wonder",
+            "I'm wondering",
+            "I was just wondering"
+          ],
+          "explanation": "Soft request opener. The full structure: \"I was wondering if you'd mind + -ing\". Double softening: past continuous + \"would you mind\" + -ing."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "I want you to look at this report.",
           "hint": "Soften with \"I was wondering if you could...\"",
           "answer": "I was wondering if you could take a look at this report.",
-          "accepts": [
-            "I was hoping you might look at this report."
-          ],
-          "explanation": "\"I want you to\" is direct and can read as demanding. The softer C1 register uses \"I was wondering if you could...\" or similar hedged forms. Especially important when asking up the hierarchy."
+          "explanation": "\"I want you to\" is direct and can read as demanding. The softer C1 register uses \"I was wondering if you could...\" or similar hedged forms. Especially important when asking up the hierarchy.",
+          "prompt": "Rewrite this request so it sounds polite and indirect.",
+          "example_answer": "I was wondering if you could take a look at this report."
         },
         {
           "type": "read_answer",
           "passage": "The email began the way the senior partner's emails always did. 'I was wondering if you'd have a moment this afternoon. There's a small matter I was hoping to discuss in person — nothing urgent, but it would be helpful to talk it through.' She had learned that 'nothing urgent' from him often meant exactly the opposite.",
           "question": "How did the senior partner soften the request?",
-          "answer": "with \"I was wondering if you'd have a moment\" + \"I was hoping to discuss\"",
+          "answer": "\"I was wondering if you'd have a moment\"",
+          "accepts": [
+            "I was hoping to discuss",
+            "nothing urgent",
+            "softened with polite phrasing"
+          ],
           "explanation": "Two past-continuous hedges layered (\"I was wondering... I was hoping...\"), plus \"small matter\", \"nothing urgent\", and \"it would be helpful\". Diplomatic register building room for both parties."
         }
       ],
@@ -115,7 +124,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte plays your skip-level manager. You make three soft requests using \"I was wondering if / I was hoping...\".",
-        "scenario_pt": "Charlotte finge ser sua gerente de nível superior. Faça três pedidos sutis usando 'I was wondering if / I was hoping...'.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -124,7 +132,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pedido de tempo com 'I was wondering if'",
             "label_en": "Time request with 'I was wondering if'",
             "hidden_prompt": "user uses 'I was wondering if + clause'",
             "hint_en": "I was wondering if you'd have twenty minutes this week to talk through my project.",
@@ -139,7 +146,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Pedido de conselho com 'I was hoping'",
             "label_en": "Advice request with 'I was hoping'",
             "hidden_prompt": "user uses 'I was hoping + clause'",
             "hint_en": "I was hoping you might share your view on the new structure.",
@@ -154,7 +160,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Pedido sensível",
             "label_en": "Sensitive request",
             "hidden_prompt": "user uses another softened hedge ('I was wondering whether...')",
             "hint_en": "I was wondering whether there's room to revisit the timeline.",
@@ -182,12 +187,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte plays busy senior. Use past-continuous hedges for politeness.",
-        "intro_pt": "Charlotte finge ser uma superior ocupada. Use past-continuous hedges para ser educado.",
         "opening_message": "You wanted to talk. What's on your mind?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Abertura suave",
             "label_en": "Soft opener",
             "hidden_prompt": "user uses 'I was wondering if / I was hoping' to open",
             "hint_en": "I was wondering if you could give me feedback on my proposal before Friday.",
@@ -202,7 +205,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Aprofundar com mitigação",
             "label_en": "Deepen with hedge",
             "hidden_prompt": "user uses another hedged structure",
             "hint_en": "I was hoping for your view on which sections to prioritise.",
@@ -217,7 +219,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Concluir com agradecimento suave",
             "label_en": "Close with soft thanks",
             "hidden_prompt": "user closes politely",
             "hint_en": "Thank you for taking the time.",
@@ -276,17 +277,19 @@
           "sentence": "_____ wish to revisit this decision later.",
           "hint": "\"You may\" (formal modal hedge)",
           "answer": "You may",
+          "accepts": [
+            "You might"
+          ],
           "explanation": "\"You may wish to + base\" — formal-polite suggestion. Common in written business and academic prose. Slightly more elevated than \"you might want to\"."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "You should fix the introduction.",
           "hint": "Soften with hedged suggestion",
           "answer": "It might be worth revisiting the introduction.",
-          "accepts": [
-            "You might want to look at the introduction again."
-          ],
-          "explanation": "\"You should\" can land as criticism. Hedged forms preserve face — same content, different relational impact. C1 register often demands the softer version."
+          "explanation": "\"You should\" can land as criticism. Hedged forms preserve face — same content, different relational impact. C1 register often demands the softer version.",
+          "prompt": "Rewrite this feedback as a softer, hedged suggestion.",
+          "example_answer": "It might be worth revisiting the introduction."
         },
         {
           "type": "read_answer",
@@ -329,7 +332,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives you three drafts. You suggest improvements without sounding harsh.",
-        "scenario_pt": "Charlotte dá três rascunhos. Você sugere melhorias sem soar rude.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -338,7 +340,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Sugestão com 'It might be worth + -ing'",
             "label_en": "Suggestion with 'It might be worth + -ing'",
             "hidden_prompt": "user uses 'It might be worth + -ing'",
             "hint_en": "It might be worth tightening the second paragraph.",
@@ -353,7 +354,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Sugestão com 'You might want to + base'",
             "label_en": "Suggestion with 'You might want to + base'",
             "hidden_prompt": "user uses 'You might want to + base'",
             "hint_en": "You might want to lead with the strongest example.",
@@ -368,7 +368,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Sugestão como pergunta ('Have you considered + -ing?')",
             "label_en": "Suggestion as question ('Have you considered + -ing?')",
             "hidden_prompt": "user uses 'Have you considered + -ing?'",
             "hint_en": "Have you considered moving the conclusion earlier?",
@@ -396,12 +395,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares a draft. Suggest with hedged language.",
-        "intro_pt": "Charlotte compartilha um rascunho. Sugira com linguagem cautelosa.",
         "opening_message": "I drafted a one-page project summary. Anything you'd tweak?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Fazer sugestão suave inicial",
             "label_en": "Initial soft suggestion",
             "hidden_prompt": "user uses 'It might be worth' or 'You might want to'",
             "hint_en": "It might be worth clarifying who the primary audience is.",
@@ -416,7 +413,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Outra sugestão como pergunta",
             "label_en": "Another suggestion as question",
             "hidden_prompt": "user uses 'Have you considered + -ing?' or 'Perhaps + clause'",
             "hint_en": "Have you considered adding a single metric of success?",
@@ -431,7 +427,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Fechamento positivo",
             "label_en": "Positive close",
             "hidden_prompt": "user offers positive close",
             "hint_en": "Overall, the structure works well — these are small tweaks.",
@@ -490,23 +485,27 @@
           "sentence": "_____ entirely sure I agree with that framing.",
           "hint": "\"I'm not\"",
           "answer": "I'm not",
-          "explanation": "\"I'm / I am not entirely sure I agree\" — soft disagreement. \"Not entirely\" hedges; \"I'm / I am not sure I agree\" is softer than \"I disagree\". Common in academic and professional contexts."
+          "explanation": "\"I'm not entirely sure I agree\" — soft disagreement. \"Not entirely\" hedges; \"I'm not sure I agree\" is softer than \"I disagree\". Common in academic and professional contexts."
         },
         {
-          "type": "fix_error",
+          "type": "short_write",
           "sentence": "You're wrong about that.",
           "hint": "Soften with \"I'd see it differently\"",
           "answer": "I'd see it a little differently.",
-          "accepts": [
-            "With respect, I'd see it differently."
-          ],
-          "explanation": "\"You're / You are wrong\" is blunt and damaging. \"I'd / I would see it differently\" presents the same disagreement without attacking the other person. Crucial diplomatic shift."
+          "explanation": "\"You're wrong\" is blunt and damaging. \"I'd see it differently\" presents the same disagreement without attacking the other person. Crucial diplomatic shift.",
+          "prompt": "Rewrite this so you disagree politely.",
+          "example_answer": "I'd see it a little differently."
         },
         {
           "type": "read_answer",
           "passage": "The diplomat had a phrase for every situation. 'With respect, I'd see the geography rather differently. I take your point about the timeline, but the local context complicates it. I'm not entirely convinced we're talking about the same problem.' Each disagreement was delivered like a gift, wrapped carefully.",
           "question": "How does the diplomat disagree without offending?",
-          "answer": "hedged each disagreement (\"With respect\", \"I take your point but\", \"I'm not entirely convinced\")",
+          "answer": "hedged disagreement",
+          "accepts": [
+            "\"with respect\"",
+            "\"I take your point but\"",
+            "\"I'm not entirely convinced\""
+          ],
           "explanation": "Three diplomatic disagreement patterns layered. Each preserves the other's face while expressing genuine difference. Diplomat-grade C1."
         }
       ],
@@ -539,7 +538,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte states three opinions. You disagree with each diplomatically.",
-        "scenario_pt": "Charlotte afirma três opiniões. Você discorda de cada uma diplomaticamente.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -548,7 +546,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Discordância com 'With respect'",
             "label_en": "Disagreement with 'With respect'",
             "hidden_prompt": "user uses 'With respect, + counter'",
             "hint_en": "With respect, I'd see the timeline issue rather differently.",
@@ -563,7 +560,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Reconhecer e mudar",
             "label_en": "Acknowledge and pivot",
             "hidden_prompt": "user uses 'I take your point, but + counter'",
             "hint_en": "I take your point about cost, but the long-term return justifies it.",
@@ -578,7 +574,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Negação suave com 'I'm not entirely sure'",
             "label_en": "Soft denial with 'I'm not entirely sure'",
             "hidden_prompt": "user uses 'I'm not entirely + counter'",
             "hint_en": "I'm not entirely convinced that's the root cause.",
@@ -606,12 +601,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte argues a position. Disagree diplomatically across turns.",
-        "intro_pt": "Charlotte defende uma posição. Discorde diplomaticamente ao longo das falas.",
         "opening_message": "Remote work has run its course. People are more productive in offices. Don't you think?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Discordar educadamente no início",
             "label_en": "Initial polite disagreement",
             "hidden_prompt": "user uses 'With respect' or 'I take your point but' or 'I'm not entirely'",
             "hint_en": "With respect, the productivity data hasn't really shown that.",
@@ -626,7 +619,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Aprofundar contra-argumento",
             "label_en": "Deepen counter-argument",
             "hidden_prompt": "user adds another hedged disagreement",
             "hint_en": "I take your point about collaboration, but most of that happens through screens anyway now.",
@@ -641,7 +633,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what evidence convinced her",
             "hint_en": "What's making you think this?",
@@ -700,6 +691,12 @@
           "sentence": "_____ that there are no simple solutions here.",
           "hint": "\"One might say\"",
           "answer": "One might say",
+          "accepts": [
+            "One could say",
+            "One might argue",
+            "It could be argued",
+            "It might be said"
+          ],
           "explanation": "\"One might say that...\" — impersonal hedging. Common in academic writing and op-eds. Distances the speaker from the claim while still introducing it."
         },
         {
@@ -710,7 +707,7 @@
           "accepts": [
             "It's arguably the best film of the decade."
           ],
-          "explanation": "\"Arguably\" is an adverb — attaches to a clause. \"Arguably is\" treats it as a verb form, which fails. Either fronted (\"Arguably, X is...\") or mid-position (\"It's / It is arguably the best...\")."
+          "explanation": "\"Arguably\" is an adverb — attaches to a clause. \"Arguably is\" treats it as a verb form, which fails. Either fronted (\"Arguably, X is...\") or mid-position (\"It's arguably the best...\")."
         },
         {
           "type": "read_answer",
@@ -749,16 +746,14 @@
       ],
       "roleplay": {
         "scenario": "Charlotte invites you to comment on three topics impersonally — using \"It could be argued\", \"One might say\", \"In a sense\" or \"Arguably\".",
-        "scenario_pt": "Charlotte te convida a comentar três tópicos de forma impessoal — usando 'It could be argued', 'One might say', 'In a sense' ou 'Arguably'.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 300,
-        "opening_line": "Three impersonal hedges. 'It could be argued', 'One might say', 'In a sense', 'Arguably'.",
+        "opening_line": "Let's discuss three topics in an impersonal way. Try 'It could be argued', 'One might say', 'In a sense' or 'Arguably'.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar 'It could be argued that'",
             "label_en": "'It could be argued that'",
             "hidden_prompt": "user uses 'It could be argued that + clause'",
             "hint_en": "It could be argued that social media has changed how we form opinions.",
@@ -777,7 +772,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'One might say' ou 'In a sense'",
             "label_en": "'One might say' or 'In a sense'",
             "hidden_prompt": "user uses 'One might say + clause' or 'In a sense, + clause'",
             "hint_en": "In a sense, every generation thinks the next one has it easier.",
@@ -796,7 +790,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'Arguably' como advérbio",
             "label_en": "'Arguably' as adverb",
             "hidden_prompt": "user uses 'Arguably, + clause' or 'It's arguably + adj'",
             "hint_en": "Arguably, the best companies are built in downturns.",
@@ -815,7 +808,7 @@
           }
         ],
         "closing_cue": "Charlotte closes with \"Positions floated, not planted.\" once obj_3 lands.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three impersonal hedges. 'It could be argued', 'One might say', 'In a sense', 'Arguably'.\"\n2. **Student**: ~\"It could be argued that social media has changed how we form opinions.\"\n3. **Charlotte**: \"Generational?\"\n4. **Student**: ~\"In a sense, every generation thinks the next one has it easier.\"\n5. **Charlotte**: \"Business?\"\n6. **Student**: ~\"Arguably, the best companies are built in downturns.\"\n7. **Charlotte**: \"Positions floated, not planted.\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Let's discuss three topics in an impersonal way. Try 'It could be argued', 'One might say', 'In a sense' or 'Arguably'.\"\n2. **Student**: ~\"It could be argued that social media has changed how we form opinions.\"\n3. **Charlotte**: \"Generational?\"\n4. **Student**: ~\"In a sense, every generation thinks the next one has it easier.\"\n5. **Charlotte**: \"Business?\"\n6. **Student**: ~\"Arguably, the best companies are built in downturns.\"\n7. **Charlotte**: \"Positions floated, not planted.\"",
         "evaluation_focus": [
           "Impersonal voice",
           "Speaker doesn't fully commit",
@@ -828,12 +821,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte debates a tricky topic. Float positions impersonally.",
-        "intro_pt": "Charlotte debate um tópico complicado. Apresente posições de forma impessoal.",
         "opening_message": "It could be argued that working less actually makes us more productive. Your read?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Posição impessoal",
             "label_en": "Impersonal position",
             "hidden_prompt": "user uses 'One might say' or 'In a sense'",
             "hint_en": "In a sense, focus matters more than hours.",
@@ -851,7 +842,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Nuance impessoal",
             "label_en": "Impersonal nuance",
             "hidden_prompt": "user uses 'It could be argued' or 'Arguably'",
             "hint_en": "Arguably, the four-day week works only in certain industries.",
@@ -870,7 +860,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte where she'd apply it",
             "hint_en": "Where would you apply it?",
@@ -931,6 +920,11 @@
           "sentence": "It cost ten thousand euros, _____.",
           "hint": "\"give or take\"",
           "answer": "give or take",
+          "accepts": [
+            "more or less",
+            "or so",
+            "roughly"
+          ],
           "explanation": "\"Give or take\" — idiomatic phrase meaning \"plus or minus a small amount\". Placed at end of clause, after the figure. Casual register."
         },
         {
@@ -939,7 +933,11 @@
           "hint": "\"Somewhat\" modifies adjective/adverb, not verb directly. Use \"kind of agree\" or \"somewhat agreeable\"",
           "answer": "I kind of agree with you.",
           "accepts": [
-            "I somewhat agree with you, with the right rhythm."
+            "I somewhat agree with you, with the right rhythm.",
+            "I somewhat agree with you.",
+            "I sort of agree with you.",
+            "I partly agree with you.",
+            "I agree with you to some extent."
           ],
           "explanation": "\"Somewhat\" modifies adjectives/adverbs in formal usage (\"somewhat strange\"). Modern spoken English does allow \"I somewhat agree\", but \"kind of agree\" / \"sort of agree\" is more natural."
         },
@@ -983,7 +981,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks three \"how much / how many\" questions. You answer with vague-language hedges.",
-        "scenario_pt": "Charlotte faz três perguntas 'how much / how many'. Você responde com linguagem vaga.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -992,7 +989,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Aproximação numérica ('roughly', 'about', 'give or take')",
             "label_en": "Numerical approximation ('roughly', 'about', 'give or take')",
             "hidden_prompt": "user uses 'roughly', 'about', or 'give or take'",
             "hint_en": "Roughly thirty people came, give or take a few.",
@@ -1009,7 +1005,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Sentimento aproximado ('sort of', 'kind of')",
             "label_en": "Approximate feeling ('sort of', 'kind of')",
             "hidden_prompt": "user uses 'sort of' or 'kind of'",
             "hint_en": "I'm sort of relieved and sort of disappointed.",
@@ -1024,7 +1019,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Resumo geral ('more or less', 'somewhat')",
             "label_en": "Overall summary ('more or less', 'somewhat')",
             "hidden_prompt": "user uses 'more or less' or 'somewhat'",
             "hint_en": "More or less, the year went as planned.",
@@ -1052,12 +1046,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats casually. Use vague-language hedges naturally.",
-        "intro_pt": "Charlotte conversa casualmente. Use vague-language hedges naturalmente.",
         "opening_message": "How many meetings did you have this week? Roughly?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com 'roughly' ou 'give or take'",
             "label_en": "Reply with 'roughly' or 'give or take'",
             "hidden_prompt": "user uses 'roughly', 'about', or 'give or take' for numbers",
             "hint_en": "I had about twelve, give or take the ones that got cancelled.",
@@ -1074,7 +1066,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Sentimento com 'sort of'",
             "label_en": "Feeling with 'sort of'",
             "hidden_prompt": "user uses 'sort of' or 'kind of' for feeling",
             "hint_en": "I'm sort of fried but sort of proud of what we got done.",
@@ -1089,7 +1080,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Resumo com 'more or less'",
             "label_en": "Summary with 'more or less'",
             "hidden_prompt": "user uses 'more or less' for summary",
             "hint_en": "More or less, the week went the way I planned.",

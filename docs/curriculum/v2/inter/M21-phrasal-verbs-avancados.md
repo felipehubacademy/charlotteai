@@ -61,6 +61,7 @@
 5. **fill_gap** — "He's used _____ alone."
    **Hint**: to + -ing form "live"
    **Answer**: to living
+   **Accepts**: to being / to eating / to working
    **Explanation**: "Used to living" — accustomed to. Note: different from "used to live" (used to / habitual past) — the clue is "TO + -ing", not "TO + base".
 
 6. **fill_gap** — "I object _____ on weekends."
@@ -88,7 +89,7 @@
     **Question**: What is she getting used to?
     **Answer**: waking up early
     **Accepts**: waking up early for work
-    **Explanation**: The text says "She's / She is getting used to waking up early for work".
+    **Explanation**: The text says "She's getting used to waking up early for work".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -239,6 +240,7 @@
 5. **fill_gap** — "She _____ time before the deadline."
    **Hint**: ran + out + of
    **Answer**: ran out of
+   **Accepts**: is running out of
    **Explanation**: "Ran out of time" — very common chunk, running out of time.
 
 6. **fill_gap** — "How do you _____ that smell?"
@@ -249,7 +251,7 @@
 7. **fill_gap** — "He won't _____ cheating this time."
    **Hint**: get away with
    **Answer**: get away with
-   **Explanation**: "Won't / Will not get away with cheating" — won't escape consequences.
+   **Explanation**: "Won't get away with cheating" — won't escape consequences.
 
 8. **fix_error** — "I can't put with this noise."
    **Hint**: 3 partes — put UP with
@@ -411,11 +413,12 @@
 4. **word_bank** — "We don't _____ each other."
    **Choices**: get along with / get up with / get on / get along
    **Answer**: get along with
-   **Explanation**: "Don't / Do not get along with each other" — bad relationship. Always with "with".
+   **Explanation**: "Don't get along with each other" — bad relationship. Always with "with".
 
 5. **fill_gap** — "I really _____ my old boss — she was inspiring."
    **Hint**: look up to (admirar)
    **Answer**: look up to
+   **Accepts**: looked up to
    **Explanation**: "Look up to" — to admire as a role model.
 
 6. **fill_gap** — "He's hard to _____ — very stubborn."
@@ -426,6 +429,7 @@
 7. **fill_gap** — "She _____ poor people, which is awful."
    **Hint**: looks down on
    **Answer**: looks down on
+   **Accepts**: looked down on
    **Explanation**: "Looks down on poor people" — contemptuous behavior worth criticizing.
 
 8. **fix_error** — "I get along my coworkers."
@@ -598,6 +602,7 @@
 6. **fill_gap** — "I _____ the news every morning."
    **Hint**: catch up on
    **Answer**: catch up on
+   **Accepts**: read / watch / check / keep up with
    **Explanation**: "Catch up on the news" — get up to date on the news.
 
 7. **fill_gap** — "Sorry for being late — I'll _____ it tomorrow."
@@ -638,7 +643,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Three areas — what to catch up on, make up for, or go through with."
+**Opening line**: "Tell me about three things: something you need to catch up on, something you want to make up for and something you'll go through with."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -673,7 +678,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three areas — what to catch up on, make up for, or go through with."
+1. **Charlotte**: "Tell me about three things: something you need to catch up on, something you want to make up for and something you'll go through with."
 2. **Student**: ~"I need to catch up on sleep this weekend."
 3. **Charlotte**: "Real need. Compensate?"
 4. **Student**: ~"I want to make up for lost time with my family."
@@ -771,16 +776,19 @@
 5. **fill_gap** — "_____, the project is fine — let's move on."
    **Hint**: By and large (no geral, em sua maioria)
    **Answer**: By and large
+   **Accepts**: Overall / All in all / On the whole
    **Explanation**: "By and large" = generally speaking. Chunk for qualified summary.
 
 6. **fill_gap** — "_____, you're absolutely right."
    **Hint**: On second thought
    **Answer**: On second thought
+   **Accepts**: Actually / On reflection
    **Explanation**: "On second thought" — reconsideração. Mudou de ideia.
 
 7. **fill_gap** — "_____, exercise is what makes the difference."
    **Hint**: In the long run
    **Answer**: In the long run
+   **Accepts**: In the end / Ultimately / At the end of the day / Over time
    **Explanation**: "In the long run" — perspectiva de longo prazo.
 
 8. **fix_error** — "In the end of the day, it doesn't matter."

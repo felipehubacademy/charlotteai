@@ -1,4 +1,6 @@
 // lib/expo-notification-service.ts
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { inQuietHours } from './push-quiet-hours';
 import { pickWeekly, periodsFor, missionTexts, goalsFor, type MissionLevel } from '@/lib/missions';
 import { aiFetch } from '@/lib/ai-models';
 // Sends push notifications to React Native (Charlotte AI) via Expo Push API
@@ -6,8 +8,13 @@ import { aiFetch } from '@/lib/ai-models';
 import { randomUUID } from 'crypto';
 import { logOpenAIUsage } from './openai-usage';
 import { allFriendPairs } from '@/lib/friends';
+import { tasteDay, TASTE_DAYS } from '@/lib/taste';
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
+const EXPO_RECEIPTS_URL = 'https://exp.host/--/api/v2/push/getReceipts';
+// Canal Android criado pelo app (hooks/usePushNotifications.ts, importância MAX).
+// Sem channelId o Android usa o canal padrão. No iOS o campo é ignorado.
+export const ANDROID_PUSH_CHANNEL = 'charlotte';
 
 interface ExpoMessage {
   to: string;
@@ -16,7 +23,25 @@ interface ExpoMessage {
   data?: Record<string, unknown>;
   sound: 'default';
   priority: 'high';
+  channelId?: string;
 }
+
+// Ticket do Expo (resposta do envio, um por mensagem). status 'ok' traz o id
+// usado depois para buscar o recibo de entrega (checkExpoReceipts).
+interface ExpoTicket {
+  status: 'ok' | 'error';
+  id?: string;
+  message?: string;
+  details?: { error?: string };
+}
+
+// sendExpoPush guarda o ticket de cada mensagem aqui e logRnPushes o consome
+// ao gravar a linha do log. Chave: token + título (os envios do scheduler
+// rodam em paralelo no mesmo processo). Quem teve o token apagado por
+// DeviceNotRegistered fica no segundo mapa, pela id do aluno.
+const ticketByMessage = new Map<string, ExpoTicket>();
+const deadTicketByUser = new Map<string, ExpoTicket>();
+const ticketKey = (token: string, title: string) => `${token}\n${title}`;
 
 // ── Message template (placeholder {name} replaced per user) ─────────────────
 interface MsgTemplate { title: string; body: string }
@@ -325,11 +350,19 @@ interface NotificationType {
     | 'micro_checkin' | 'cadence_drop' | 'weekly_recap' | 'charlotte_checkin'
     // Revenue
     | 'trial_ending_72h' | 'trial_ending_24h' | 'sub_expired_1d'
+    // Assinatura pelo site (avisos transacionais: fim do teste, cobrança recusada)
+    | 'web_sub_notice'
     // Winback
     | 'streak_broken'
     | 'reengagement_3d' | 'reengagement_7d' | 'reengagement_14d' | 'reengagement_30d'
     // Estudar junto (duplas)
-    | 'buddy_rivalry';
+    | 'buddy_rivalry'
+    // Degustação (conta sem plano): fluxo próprio, sendTastePushes
+    | 'taste_daily' | 'taste_nudge' | 'taste_ended' | 'taste_offer'
+    // Ranking da semana: sendRankingPushes
+    | 'rank_up' | 'rank_lost' | 'rank_threat' | 'rank_week_won'
+    // Fim do teste antigo (lib/legacy-trial.ts)
+    | 'legacy_trial_ended';
 }
 
 // Max sends per user per UTC day, per type. For core types 1/day is a safety
@@ -353,12 +386,22 @@ const FREQUENCY_CAP: Record<NotificationType['id'], number> = {
   trial_ending_72h:       1,
   trial_ending_24h:       1,
   sub_expired_1d:         1,
+  web_sub_notice:         5,
   streak_broken:          1,
   reengagement_3d:        1,
   reengagement_7d:        1,
   reengagement_14d:       1,
   reengagement_30d:       1,
   buddy_rivalry:          1,
+  taste_daily:            1,
+  taste_nudge:            1,
+  taste_ended:            1,
+  taste_offer:            1,
+  rank_up:                1,
+  rank_lost:              1,
+  rank_threat:            1,
+  rank_week_won:          1,
+  legacy_trial_ended:     1,
 };
 
 // Re-engagement types are mutually exclusive: the dispatcher picks AT MOST
@@ -384,6 +427,16 @@ async function filterFrequencyCap(
   type: NotificationType['id'],
 ): Promise<string[]> {
   if (!userIds.length) return userIds;
+  // Degustação (conta sem plano): só recebe o fluxo próprio (lib/taste-push.ts). Os avisos genéricos
+  // ("sua sequência", "última chance hoje"…) chamavam para um conteúdo que ela não tem.
+  // O ranking vale para todos, inclusive a degustação: é motivo para voltar mesmo sem assinatura.
+  if (!String(type).startsWith('taste_') && !String(type).startsWith('rank_')) {
+    const { data: tasters } = await supabase.from('charlotte_users').select('id')
+      .in('id', userIds).or('subscription_status.is.null,subscription_status.eq.none').not('is_institutional', 'is', true);
+    const skip = new Set(((tasters ?? []) as { id: string }[]).map(t => String(t.id)));
+    if (skip.size) userIds = userIds.filter(uid => !skip.has(String(uid)));
+    if (!userIds.length) return userIds;
+  }
   const cap = FREQUENCY_CAP[type];
   // Rolling 24h window instead of UTC midnight — avoids double-sends for users
   // in negative-offset timezones (e.g., Americas) where UTC midnight falls in
@@ -443,6 +496,9 @@ async function fetchRecentVariantHashes(
 }
 
 // One row per (user, send attempt). Written after sendExpoPush returns.
+// Grava a plataforma real do aparelho (charlotte_users.app_platform) e o
+// ticket do Expo: ok → metadata.ticket_id (o recibo vem depois, em
+// checkExpoReceipts); erro → status 'failed' com o código em error_message.
 async function logRnPushes(
   supabase: any,
   rows: Array<{
@@ -457,19 +513,50 @@ async function logRnPushes(
   }>,
 ): Promise<void> {
   if (!rows.length) return;
+  const devices = new Map<string, { token: string | null; platform: string | null }>();
+  try {
+    const { data } = await supabase
+      .from('charlotte_users')
+      .select('id, expo_push_token, app_platform')
+      .in('id', [...new Set(rows.map(r => r.userId))]);
+    for (const u of (data ?? []) as any[]) {
+      devices.set(String(u.id), { token: u.expo_push_token ?? null, platform: u.app_platform ?? null });
+    }
+  } catch (e) {
+    console.warn('⚠️ [Expo] notification_logs device lookup error:', e);
+  }
   // Generate ids client-side — the public.notification_logs view path does
   // not always propagate the underlying gen_random_uuid() default on insert.
-  const payload = rows.map(r => ({
-    id:                 randomUUID(),
-    user_id:            r.userId,
-    notification_type:  r.type,
-    status:             r.status ?? 'sent',
-    message_title:      r.title ?? null,
-    message_body:       r.body ?? null,
-    platform:           r.platform ?? 'ios', // Expo push covers both; platform is opaque here
-    error_message:      r.errorMessage ?? null,
-    metadata:           r.variantHash ? { variant_hash: r.variantHash } : null,
-  }));
+  const payload = rows.map(r => {
+    const dev = devices.get(String(r.userId));
+    const platform = r.platform ?? (dev?.platform === 'ios' || dev?.platform === 'android' ? dev.platform : null);
+    let ticket: ExpoTicket | undefined = deadTicketByUser.get(String(r.userId));
+    if (ticket) {
+      deadTicketByUser.delete(String(r.userId));
+    } else if (dev?.token && r.title != null) {
+      const key = ticketKey(dev.token, r.title);
+      ticket = ticketByMessage.get(key);
+      ticketByMessage.delete(key);
+    }
+    const metadata: Record<string, unknown> = {};
+    if (r.variantHash) metadata.variant_hash = r.variantHash;
+    if (ticket?.status === 'ok' && ticket.id) {
+      metadata.ticket_id = ticket.id;
+      if (dev?.token) metadata.push_token = dev.token; // para apagar o token se o recibo vier DeviceNotRegistered
+    }
+    const ticketError = ticket?.status === 'error' ? (ticket.details?.error ?? ticket.message ?? 'unknown') : null;
+    return {
+      id:                 randomUUID(),
+      user_id:            r.userId,
+      notification_type:  r.type,
+      status:             r.status ?? (ticketError ? 'failed' : 'sent'),
+      message_title:      r.title ?? null,
+      message_body:       r.body ?? null,
+      platform,
+      error_message:      r.errorMessage ?? ticketError,
+      metadata:           Object.keys(metadata).length ? metadata : null,
+    };
+  });
   const { error } = await supabase
     .from('notification_logs')
     .insert(payload);
@@ -489,6 +576,12 @@ async function sendExpoPush(
   let errors = 0;
   const BATCH_SIZE = 100;
   const invalidTokens: string[] = [];
+  // Mensagens que nunca foram logadas não podem acumular para sempre.
+  if (ticketByMessage.size > 20000) ticketByMessage.clear();
+  if (deadTicketByUser.size > 20000) deadTicketByUser.clear();
+  const keep = (m: ExpoMessage | undefined, t: ExpoTicket) => {
+    if (m?.to) ticketByMessage.set(ticketKey(m.to, m.title), t);
+  };
 
   for (let i = 0; i < messages.length; i += BATCH_SIZE) {
     const batch = messages.slice(i, i + BATCH_SIZE);
@@ -499,13 +592,23 @@ async function sendExpoPush(
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: JSON.stringify(batch),
+        body: JSON.stringify(batch.map(m => ({ channelId: ANDROID_PUSH_CHANNEL, ...m }))),
       });
       const result = await response.json();
-      const items = result.data ?? [];
+      // Requisição inteira recusada (ex.: tokens de projetos diferentes):
+      // o Expo responde só com `errors`, sem um ticket por mensagem.
+      if (!Array.isArray(result?.data)) {
+        const msg = result?.errors?.[0]?.code ?? result?.errors?.[0]?.message ?? `HTTP ${response.status}`;
+        console.error(`❌ [Expo] batch rejected: ${msg}`);
+        errors += batch.length;
+        batch.forEach(m => keep(m, { status: 'error', message: String(msg) }));
+        continue;
+      }
+      const items = result.data;
       // Per-token accounting — Expo returns one status entry per message
       // in the same order as the request batch.
       items.forEach((r: any, idx: number) => {
+        keep(batch[idx], r);
         if (r.status === 'ok') {
           sent += 1;
         } else {
@@ -523,19 +626,25 @@ async function sendExpoPush(
     } catch (e) {
       console.error('❌ Expo Push batch error:', e);
       errors += batch.length;
+      batch.forEach(m => keep(m, { status: 'error', message: 'request_failed' }));
     }
   }
 
   // Token cleanup — null out dead tokens so we stop trying to send to them.
   if (supabase && invalidTokens.length > 0) {
     try {
-      const { error } = await supabase
+      const { data: cleared, error } = await supabase
         .from('charlotte_users')
         .update({ expo_push_token: null })
-        .in('expo_push_token', invalidTokens);
+        .in('expo_push_token', invalidTokens)
+        .select('id');
       if (error) {
         console.warn('⚠️ [Expo] token cleanup error:', error.message);
       } else {
+        // O token sumiu do cadastro: logRnPushes acha o ticket pela id do aluno.
+        for (const u of (cleared ?? []) as any[]) {
+          deadTicketByUser.set(String(u.id), { status: 'error', message: 'DeviceNotRegistered', details: { error: 'DeviceNotRegistered' } });
+        }
         console.log(`🧹 [Expo] Cleared ${invalidTokens.length} dead token(s)`);
       }
     } catch (e) {
@@ -544,6 +653,94 @@ async function sendExpoPush(
   }
 
   return { sent, errors };
+}
+
+// ── Recibos de entrega ───────────────────────────────────────────────────────
+// O ticket só diz que o Expo aceitou a mensagem; a entrega à Apple/Google sai
+// no recibo, que fica pronto em alguns minutos e some depois de ~24 h. Roda de
+// hora em hora (scheduler): pega os envios de 15 min a 24 h atrás ainda sem
+// recibo. ok → metadata.delivery = 'delivered' (status segue 'sent', que é o
+// que o limite de frequência e o /admin contam); erro → status 'failed',
+// metadata.delivery = 'error' e o código em error_message. DeviceNotRegistered
+// também apaga o token do aluno, se ainda for o mesmo.
+export async function checkExpoReceipts(): Promise<{ checked: number; delivered: number; failed: number }> {
+  const out = { checked: 0, delivered: 0, failed: 0 };
+  try {
+    const supabase = getSupabaseAdmin();
+    const from = new Date(Date.now() - 24 * 3600 * 1000).toISOString();
+    const to = new Date(Date.now() - 15 * 60 * 1000).toISOString();
+    const { data: rows, error } = await supabase
+      .from('notification_logs')
+      .select('id, user_id, metadata')
+      .eq('status', 'sent')
+      .gte('created_at', from)
+      .lte('created_at', to)
+      .not('metadata->>ticket_id', 'is', null)
+      .is('metadata->>delivery', null)
+      .limit(5000);
+    if (error) {
+      console.warn('⚠️ [Expo] receipts query error:', error.message);
+      return out;
+    }
+    const pending = (rows ?? []) as { id: string; user_id: string; metadata: Record<string, any> }[];
+    const deadTokens: { userId: string; token: string }[] = [];
+
+    for (let i = 0; i < pending.length; i += 1000) { // limite do Expo por requisição
+      const chunk = pending.slice(i, i + 1000);
+      let receipts: Record<string, ExpoTicket> = {};
+      try {
+        const resp = await fetch(EXPO_RECEIPTS_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ ids: chunk.map(r => r.metadata.ticket_id) }),
+        });
+        const json = await resp.json();
+        receipts = json?.data ?? {};
+      } catch (e) {
+        console.warn('⚠️ [Expo] getReceipts error:', e);
+        continue;
+      }
+      // Sem recibo ainda = não ficou pronto; tenta de novo na próxima hora.
+      const updates = chunk.filter(r => receipts[r.metadata.ticket_id]);
+      for (let j = 0; j < updates.length; j += 50) {
+        await Promise.all(updates.slice(j, j + 50).map(async r => {
+          const rc = receipts[r.metadata.ticket_id];
+          const ok = rc.status === 'ok';
+          const code = ok ? null : (rc.details?.error ?? rc.message ?? 'unknown');
+          const { error: upErr } = await supabase
+            .from('notification_logs')
+            .update({
+              ...(ok ? {} : { status: 'failed', error_message: code }),
+              metadata: { ...r.metadata, delivery: ok ? 'delivered' : 'error', ...(code ? { delivery_error: code } : {}) },
+            })
+            .eq('id', r.id);
+          if (upErr) {
+            console.warn('⚠️ [Expo] receipt update error:', upErr.message);
+            return;
+          }
+          out.checked += 1;
+          if (ok) out.delivered += 1; else out.failed += 1;
+          if (code === 'DeviceNotRegistered' && r.metadata.push_token) {
+            deadTokens.push({ userId: r.user_id, token: r.metadata.push_token });
+          }
+        }));
+      }
+    }
+
+    // Só apaga se o aluno ainda estiver com o mesmo token (pode ter reinstalado).
+    for (const d of deadTokens) {
+      const { error: clrErr } = await supabase
+        .from('charlotte_users')
+        .update({ expo_push_token: null })
+        .eq('id', d.userId)
+        .eq('expo_push_token', d.token);
+      if (clrErr) console.warn('⚠️ [Expo] receipt token cleanup error:', clrErr.message);
+    }
+    console.log(`[Expo] Recibos: ${out.checked} conferidos, ${out.delivered} entregues, ${out.failed} com erro`);
+  } catch (e) {
+    console.error('❌ [Expo] receipts error:', e);
+  }
+  return out;
 }
 
 // ── helpers ──────────────────────────────────────────────────────────────────
@@ -601,12 +798,23 @@ export async function sendStreakReminders(supabase: any): Promise<void> {
     // Se last_practice_date < ontem, o streak já quebrou — não enviar reminder.
     // Usamos UTC como aproximação server-side; a filtragem por hora local (usersAtLocalHour) garante
     // que a notificação chega no horário certo para cada fuso.
-    const { data: atRisk, error: atRiskErr } = await supabase
+    // Proteção da semana (streak_freezes): quem faltou só ontem e ainda tem proteção também está em risco
+    // hoje — se praticar, a sequência continua; se não, zera amanhã.
+    const dayBeforeUTC = new Date(now.getTime() - 2 * 86400000).toISOString().split('T')[0];
+    const { data: atRiskRaw, error: atRiskErr } = await supabase
       .from('charlotte_progress')
       .select('user_id, streak_days, last_practice_date')
       .gt('streak_days', 0)
-      .eq('last_practice_date', yesterdayUTC); // praticou ontem = streak vivo mas em risco hoje
+      .in('last_practice_date', [yesterdayUTC, dayBeforeUTC]);
     if (atRiskErr) { console.error('❌ [Expo] at-risk query error:', atRiskErr.message); return; }
+    const missedYesterday = (atRiskRaw ?? []).filter((r: any) => r.last_practice_date === dayBeforeUTC).map((r: any) => r.user_id);
+    const usedFreeze = new Set<string>();
+    if (missedYesterday.length) {
+      const weekAgo = new Date(now.getTime() - 7 * 86400000).toISOString().split('T')[0];
+      const { data: fr } = await supabase.from('streak_freezes').select('user_id').in('user_id', missedYesterday).gte('day', weekAgo);
+      for (const r of (fr ?? []) as any[]) usedFreeze.add(String(r.user_id));
+    }
+    const atRisk = (atRiskRaw ?? []).filter((r: any) => r.last_practice_date === yesterdayUTC || !usedFreeze.has(String(r.user_id)));
 
     if (!atRisk?.length) { console.log('✅ [Expo] No streak risks today'); return; }
 
@@ -683,7 +891,7 @@ export async function sendDailyReminders(supabase: any): Promise<void> {
     // 2) Todos os usuários com token e timezone.
     const { data: cuUsers, error: usersErr } = await supabase
       .from('charlotte_users')
-      .select('id, name, expo_push_token, charlotte_level, app_language, timezone')
+      .select('id, name, expo_push_token, charlotte_level, app_language, timezone, reminder_hour')
       .not('expo_push_token', 'is', null);
     if (usersErr) { console.error('❌ [Expo] users query error:', usersErr.message); return; }
 
@@ -695,8 +903,11 @@ export async function sendDailyReminders(supabase: any): Promise<void> {
     });
     if (!withToken.length) { console.log('✅ [Expo] No eligible users for daily reminder'); return; }
 
-    const tzFiltered = usersAtLocalHour(withToken, TARGET_HOUR_DAILY);
-    if (!tzFiltered.length) { console.log(`⏱️ [Expo] daily: no users at local ${TARGET_HOUR_DAILY}h this run`); return; }
+    // Hora do lembrete: a escolhida pelo aluno no Perfil (9h a 20h) ou, no automático, 11h.
+    const now = new Date();
+    const tzFiltered = withToken.filter((u: any) =>
+      localHourInTz(now, u.timezone || DEFAULT_TZ) === (u.reminder_hour ?? TARGET_HOUR_DAILY));
+    if (!tzFiltered.length) { console.log('⏱️ [Expo] daily: no users at their reminder hour this run'); return; }
 
     const allowedIds = await filterFrequencyCap(
       supabase,
@@ -926,6 +1137,29 @@ export async function sendXPMilestoneNotification(
   }
 }
 
+// ── Avisos da assinatura do site (transacional: sem limite diário de push) ────
+// Fim do teste grátis, cobrança recusada etc. Abre o Perfil, onde fica "Gerenciar assinatura".
+export async function sendSubscriptionPush(
+  supabase: any, userId: string, msg: { pt: { title: string; body: string }; en: { title: string; body: string } }, kind: string,
+): Promise<boolean> {
+  const type = 'web_sub_notice' as const;
+  try {
+    const { data: user } = await supabase.from('charlotte_users')
+      .select('expo_push_token, charlotte_level, app_language').eq('id', userId).single();
+    if (!user?.expo_push_token?.startsWith('ExponentPushToken[')) return false;
+    const m = pushIsPt(user as any) ? msg.pt : msg.en;
+    const { sent } = await sendExpoPush([{
+      to: user.expo_push_token, title: m.title, body: m.body,
+      data: { screen: 'profile', type, kind }, sound: 'default', priority: 'high',
+    }], supabase);
+    await logRnPushes(supabase, [{ userId, type, variantHash: type, title: m.title, body: m.body }]);
+    return sent > 0;
+  } catch (e) {
+    console.error('[Expo] subscription push error:', e);
+    return false;
+  }
+}
+
 // ── 5. Goal reminders ────────────────────────────────────────────────────────
 // Desafio da semana quase lá: de quinta a domingo, à tarde (hora local), quem passou de 60% do
 // desafio e ainda não concluiu recebe quanto falta, qual é e quanto vale (lib/missions). Abre Metas.
@@ -1137,6 +1371,7 @@ interface EngagementUser {
   subscription_status: string | null;
   subscription_expires_at: string | null;
   is_institutional: boolean | null;
+  reminder_hour: number | null; // horário escolhido no Perfil (null = automático)
   total_xp: number;
   streak_days: number;
   practiced_today: boolean;
@@ -1486,6 +1721,10 @@ function detectEngagementSignal(
   const firstName = user.name?.split(/[\s\-]+/)[0] ?? 'there';
   const isNovice  = pushIsPt(user); // true = português
 
+  // Fora da janela das 9h às 21h (horário do aluno) nenhum sinal dispara. Vale também para o
+  // "oi da Charlotte" (micro_checkin), cujo horário é dinâmico: se cair fora, não sai naquele dia.
+  if (inQuietHours(tz, now)) return null;
+
   // Iterate priority order; return first matching signal.
   for (const type of ENGAGEMENT_PRIORITY) {
     // Institutional users are admin-managed — skip revenue + winback
@@ -1522,7 +1761,7 @@ function detectEngagementSignal(
       }
       case 'streak_milestone_ahead': {
         // Tomorrow user would hit a 7/30/100 day milestone.
-        const MS = [7, 30, 100, 365];
+        const MS = [7, 30, 50, 100, 200, 365, 500, 730, 1000];
         const upcoming = MS.find(m => user.streak_days === m - 1);
         if (!upcoming) break;
         if (localHour !== ENGAGEMENT_TARGET_HOUR.streak_milestone_ahead) break;
@@ -1573,6 +1812,8 @@ function detectEngagementSignal(
       case 'micro_checkin': {
         // User's usual practice hour has passed by ≥ 2h and they still have
         // not practiced today. Keeps the "Charlotte is around" feeling.
+        // Quem escolheu o horário do lembrete no Perfil recebe só o lembrete nessa hora, sem o "oi".
+        if (user.reminder_hour != null) break;
         const usual = usualLocalPracticeHour(user.recent_practice_timestamps, tz);
         if (usual == null) break;
         if (user.practiced_today) break;
@@ -1619,7 +1860,7 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
     //    PostgREST in this project).
     const { data: users, error: usersErr } = await supabase
       .from('charlotte_users')
-      .select('id, name, expo_push_token, charlotte_level, app_language, timezone, last_practice_at, trial_ends_at, subscription_status, subscription_expires_at, is_institutional')
+      .select('id, name, expo_push_token, charlotte_level, app_language, timezone, last_practice_at, trial_ends_at, subscription_status, subscription_expires_at, is_institutional, reminder_hour')
       .not('expo_push_token', 'is', null);
     if (usersErr) { console.error('❌ [Engagement] users query:', usersErr.message); return; }
     const withToken = (users ?? []).filter((u: any) =>
@@ -1631,11 +1872,15 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
     // 2. Fetch progress (streak + total_xp).
     const { data: progressRows } = await supabase
       .from('charlotte_progress')
-      .select('user_id, streak_days, total_xp')
+      .select('user_id, streak_days, total_xp, last_practice_date')
       .in('user_id', userIds);
+    // Sequência viva: praticou ontem ou hoje, ou faltou só ontem (a proteção da semana pode segurar).
+    // Antes valia o número cru, e "salve seus N dias" saía para quem já tinha perdido a sequência.
+    const aliveSince = new Date(now.getTime() - 2 * 86400000).toISOString().split('T')[0];
     const progressMap = new Map<string, { streak: number; totalXp: number }>();
     for (const r of (progressRows ?? []) as any[]) {
-      progressMap.set(r.user_id, { streak: r.streak_days ?? 0, totalXp: r.total_xp ?? 0 });
+      const alive = !!r.last_practice_date && r.last_practice_date >= aliveSince;
+      progressMap.set(r.user_id, { streak: alive ? (r.streak_days ?? 0) : 0, totalXp: r.total_xp ?? 0 });
     }
 
     // 3. Fetch practices: today, this week, prev 4 weeks.
@@ -1708,6 +1953,7 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
         subscription_status: raw.subscription_status,
         subscription_expires_at: raw.subscription_expires_at,
         is_institutional: raw.is_institutional,
+        reminder_hour: raw.reminder_hour ?? null,
         total_xp: prog.totalXp,
         streak_days: prog.streak,
         practiced_today: todayPractices.has(raw.id),
@@ -1915,4 +2161,226 @@ export async function sendBuddyRivalry(supabase: any): Promise<void> {
   } catch (e) {
     console.error('[Expo] Buddy rivalry error:', e);
   }
+}
+
+// ── Degustação: fluxo próprio de push ────────────────────────────────────────
+// Quem está na degustação (conta sem plano) não recebe os avisos genéricos (filterFrequencyCap os
+// tira) e ganha esta sequência, no máximo 1 por dia, na hora do lembrete do aluno (padrão 11h):
+//   dias 2 a 4: o tópico grátis do dia está liberado (ou, se não estudou ontem, um lembrete leve);
+//   dia 5: último dia da degustação; dia 6: acabou, com o convite para os 7 dias grátis;
+//   dia 9: última lembrança do teste grátis. Depois disso, nada.
+const TASTE_COPY: Record<'taste_daily' | 'taste_last' | 'taste_nudge' | 'taste_ended' | 'taste_offer', { pt: MsgTemplate; en: MsgTemplate }> = {
+  taste_daily: {
+    pt: { title: 'Seu tópico de hoje chegou', body: '{name}, mais um tópico grátis da trilha está liberado. Leva poucos minutos.' },
+    en: { title: "Today's topic is here", body: '{name}, a new free topic is unlocked on your path. It only takes a few minutes.' },
+  },
+  taste_last: {
+    pt: { title: 'Último tópico grátis', body: '{name}, hoje é o último dia da sua degustação. Seu tópico já está liberado.' },
+    en: { title: 'Last free topic', body: "{name}, today is the last day of your free taste. Your topic is ready." },
+  },
+  taste_nudge: {
+    pt: { title: 'Seu tópico grátis está esperando', body: '{name}, ele continua liberado. Cinco minutinhos hoje já contam.' },
+    en: { title: 'Your free topic is waiting', body: "{name}, it's still unlocked. Five minutes today already count." },
+  },
+  taste_ended: {
+    pt: { title: 'Sua degustação terminou', body: '{name}, gostou? Comece os 7 dias grátis e siga na trilha, no chat e nas ligações.' },
+    en: { title: 'Your free taste is over', body: '{name}, enjoyed it? Start your 7-day free trial and keep going.' },
+  },
+  taste_offer: {
+    pt: { title: 'Seus 7 dias grátis continuam disponíveis', body: '{name}, dá para voltar de onde parou. Sem cobrança nos 7 primeiros dias.' },
+    en: { title: 'Your 7-day free trial is still available', body: '{name}, pick up where you left off. No charge for the first 7 days.' },
+  },
+};
+
+export async function sendTastePushes(supabase: any): Promise<void> {
+  try {
+    const since = new Date(Date.now() - 12 * 86400000).toISOString();
+    const { data: rows, error } = await supabase
+      .from('charlotte_users')
+      .select('id, name, expo_push_token, charlotte_level, app_language, timezone, reminder_hour, created_at, subscription_status, is_institutional')
+      .or('subscription_status.is.null,subscription_status.eq.none')
+      .not('is_institutional', 'is', true)
+      .not('expo_push_token', 'is', null)
+      .gte('created_at', since);
+    if (error) { console.error('❌ [Expo] taste users query error:', error.message); return; }
+
+    const now = new Date();
+    const atHour = (rows ?? []).filter((u: any) =>
+      u.expo_push_token?.startsWith('ExponentPushToken[')
+      && localHourInTz(now, u.timezone || DEFAULT_TZ) === (u.reminder_hour ?? TARGET_HOUR_DAILY));
+    if (!atHour.length) return;
+
+    // Um push da degustação por dia, qualquer que seja o tipo.
+    const ids = atHour.map((u: any) => String(u.id));
+    const { data: recent } = await supabase.from('notification_logs').select('user_id')
+      .in('user_id', ids).like('notification_type', 'taste_%').gte('created_at', new Date(Date.now() - 20 * 3600000).toISOString());
+    const already = new Set(((recent ?? []) as { user_id: string }[]).map(r => String(r.user_id)));
+
+    const { data: prog } = await supabase.from('charlotte_progress').select('user_id, last_practice_date').in('user_id', ids);
+    const lastPractice = new Map(((prog ?? []) as { user_id: string; last_practice_date: string | null }[]).map(r => [String(r.user_id), r.last_practice_date]));
+
+    const plan: { u: any; type: NotificationType['id']; copy: keyof typeof TASTE_COPY }[] = [];
+    for (const u of atHour) {
+      if (already.has(String(u.id))) continue;
+      const day = tasteDay(u.created_at, now.getTime());
+      const yesterday = new Intl.DateTimeFormat('en-CA', { timeZone: u.timezone || DEFAULT_TZ }).format(new Date(now.getTime() - 86400000));
+      const studiedYesterday = (lastPractice.get(String(u.id)) ?? '') >= yesterday;
+      if (day >= 2 && day < TASTE_DAYS) plan.push({ u, type: studiedYesterday ? 'taste_daily' : 'taste_nudge', copy: studiedYesterday ? 'taste_daily' : 'taste_nudge' });
+      else if (day === TASTE_DAYS) plan.push({ u, type: 'taste_daily', copy: 'taste_last' });
+      else if (day === TASTE_DAYS + 1) plan.push({ u, type: 'taste_ended', copy: 'taste_ended' });
+      else if (day === TASTE_DAYS + 4) plan.push({ u, type: 'taste_offer', copy: 'taste_offer' });
+    }
+    if (!plan.length) return;
+
+    const messages: ExpoMessage[] = plan.map(({ u, type, copy }) => {
+      const firstName = u.name?.split(/[\s\-]+/)[0] || (pushIsPt(u) ? 'Oi' : 'Hi');
+      const tpl = TASTE_COPY[copy][pushIsPt(u) ? 'pt' : 'en'];
+      return {
+        to: u.expo_push_token, title: tpl.title, body: tpl.body.replace('{name}', firstName),
+        data: { type }, sound: 'default', priority: 'high',
+      };
+    });
+    const { sent, errors } = await sendExpoPush(messages, supabase);
+    console.log(`✅ [Expo] Degustação: ${sent} enviados, ${errors} erros`);
+    await logRnPushes(supabase, plan.map((p, i) => ({ userId: p.u.id, type: p.type, title: messages[i].title, body: messages[i].body })));
+  } catch (e) {
+    console.error('❌ [Expo] taste push error:', e);
+  }
+}
+
+// ── Ranking da semana: subiu, perdeu, risco de perder e venceu a semana ──────
+// Roda de hora em hora; cada aluno é avaliado às 19h do fuso dele (segunda 10h para "venceu a semana").
+// Compara com a foto do dia anterior na mesma hora (ranking_snapshots) e manda no máximo 1 aviso de
+// ranking por dia: perdeu > subiu > risco. Só o top 3 de cada nível. Contas fora do ranking não entram.
+const TARGET_HOUR_RANK = 19;
+const TARGET_HOUR_WEEK_WON = 10;
+const RANK_THREAT_XP = 100; // menos que isso de distância = cerca de um dia de estudo
+const LEVEL_NAME: Record<string, string> = { Novice: 'Novice', Inter: 'Intermediate', Advanced: 'Advanced' };
+
+export async function sendRankingPushes(supabase: any): Promise<void> {
+  try {
+    // A foto do ranking (ranking_snapshots) tem RLS sem política: só a chave de serviço lê e grava.
+    // O agendador passa o cliente público, que funciona para o resto (views e RPCs), mas não para ela.
+    const admin = getSupabaseAdmin();
+    const now = new Date();
+    const plan: { userId: string; token: string; type: NotificationType['id']; title: string; body: string }[] = [];
+    const snaps: { day: string; scope: string; level: string; user_id: string; pos: number; xp: number }[] = [];
+
+    for (const level of ['Novice', 'Inter', 'Advanced']) {
+      const { data: rows } = await supabase.rpc('weekly_ranking', { p_level: level });
+      const list = ((rows ?? []) as { user_id: string; name: string | null; week_xp: number; pos: number }[])
+        .map(r => ({ id: String(r.user_id), name: r.name, xp: Number(r.week_xp), pos: Number(r.pos) }));
+      const ids = list.slice(0, 6).map(r => r.id);
+      if (!ids.length) continue;
+      const { data: users } = await supabase.from('charlotte_users')
+        .select('id, name, expo_push_token, timezone, app_language, charlotte_level').in('id', ids);
+      const uMap = new Map(((users ?? []) as any[]).map(u => [String(u.id), u]));
+      // Foto de ontem deste nível. Sem foto (primeiro dia), não dá para dizer quem subiu ou caiu.
+      const yBrt = new Intl.DateTimeFormat('en-CA', { timeZone: DEFAULT_TZ }).format(new Date(now.getTime() - 86400000));
+      const { data: ySnap } = await admin.from('ranking_snapshots').select('user_id, pos').eq('day', yBrt).eq('scope', 'week').eq('level', level);
+      const prevMap = new Map(((ySnap ?? []) as { user_id: string; pos: number }[]).map(r => [String(r.user_id), r.pos]));
+
+      for (const r of list.slice(0, 4)) {
+        const u: any = uMap.get(r.id);
+        if (!u) continue;
+        const tz = u.timezone || DEFAULT_TZ;
+        const hour = localHourInTz(now, tz);
+        const today = new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(now);
+        if (hour !== TARGET_HOUR_RANK) continue;
+        snaps.push({ day: today, scope: 'week', level, user_id: r.id, pos: r.pos, xp: r.xp });
+        if (r.pos > 3 || !u.expo_push_token?.startsWith('ExponentPushToken[')) continue;
+
+        const monday = localDayInTz(now, tz) === 1; // semana nova: ontem é de outra semana
+        const hasHistory = !monday && prevMap.size > 0;
+        // A foto guarda só o top 4: sem linha de ontem = estava abaixo disso.
+        const prev = hasHistory ? (prevMap.get(r.id) ?? 99) : null;
+        const pt = pushIsPt(u);
+        const first = (u.name ?? '').split(/[\s\-]+/)[0] || (pt ? 'Oi' : 'Hi');
+        const lv = LEVEL_NAME[level] ?? level;
+        const above = list.find(x => x.pos === r.pos - 1);
+        const below = list.find(x => x.pos === r.pos + 1);
+        const fmt = (n: number) => n.toLocaleString(pt ? 'pt-BR' : 'en-US');
+
+        if (prev != null && prev <= 3 && r.pos > prev && above) {
+          const gap = Math.max(1, above.xp - r.xp + 1);
+          const who = (above.name ?? '').split(/\s+/)[0] || (pt ? 'Alguém' : 'Someone');
+          plan.push({ userId: r.id, token: u.expo_push_token, type: 'rank_lost',
+            title: pt ? `${who} passou você no ranking` : `${who} passed you on the leaderboard`,
+            body: pt ? `${first}, você caiu para o ${r.pos}º lugar da semana no ${lv}. Faltam ${fmt(gap)} XP para recuperar.`
+                     : `${first}, you dropped to #${r.pos} this week in ${lv}. ${fmt(gap)} XP to take it back.` });
+        } else if (prev != null && r.pos < prev) {
+          plan.push({ userId: r.id, token: u.expo_push_token, type: 'rank_up',
+            title: pt ? (r.pos === 1 ? 'Você é o 1º da semana!' : `Você subiu para o ${r.pos}º lugar!`) : (r.pos === 1 ? "You're #1 this week!" : `You moved up to #${r.pos}!`),
+            body: pt ? `${first}, você está em ${r.pos}º no ranking da semana do ${lv}. Continue assim até domingo.`
+                     : `${first}, you're #${r.pos} on this week's ${lv} leaderboard. Keep it up until Sunday.` });
+        } else if (below && r.xp - below.xp < RANK_THREAT_XP) {
+          const gap = Math.max(1, r.xp - below.xp);
+          plan.push({ userId: r.id, token: u.expo_push_token, type: 'rank_threat',
+            title: pt ? `Seu ${r.pos}º lugar está em risco` : `Your #${r.pos} spot is at risk`,
+            body: pt ? `${first}, tem gente a ${fmt(gap)} XP de você no ranking da semana do ${lv}. Uma atividade hoje garante.`
+                     : `${first}, someone is ${fmt(gap)} XP behind you this week in ${lv}. One activity today keeps you ahead.` });
+        }
+      }
+
+    }
+
+    // Venceu a semana: lê a foto de domingo de cada nível.
+    const { data: winners } = await admin.from('ranking_snapshots').select('user_id, level, xp, day')
+      .eq('scope', 'week').eq('pos', 1).gte('day', new Date(now.getTime() - 2 * 86400000).toISOString().slice(0, 10));
+    for (const w of (winners ?? []) as { user_id: string; level: string; xp: number; day: string }[]) {
+      const { data: u } = await supabase.from('charlotte_users').select('id, name, expo_push_token, timezone, app_language, charlotte_level').eq('id', w.user_id).maybeSingle();
+      if (!u || !(u as any).expo_push_token?.startsWith('ExponentPushToken[')) continue;
+      const tz = (u as any).timezone || DEFAULT_TZ;
+      if (localDayInTz(now, tz) !== 1 || localHourInTz(now, tz) !== TARGET_HOUR_WEEK_WON) continue;
+      const sunday = new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(new Date(now.getTime() - 86400000));
+      if (w.day !== sunday) continue;
+      const pt = pushIsPt(u);
+      const first = ((u as any).name ?? '').split(/[\s\-]+/)[0] || (pt ? 'Oi' : 'Hi');
+      const lv = LEVEL_NAME[w.level] ?? w.level;
+      plan.push({ userId: w.user_id, token: (u as any).expo_push_token, type: 'rank_week_won',
+        title: pt ? 'Você venceu a semana!' : 'You won the week!',
+        body: pt ? `${first}, você terminou a semana em 1º no ranking do ${lv}, com ${Number(w.xp).toLocaleString('pt-BR')} XP. A nova semana já começou.`
+                 : `${first}, you finished the week #1 on the ${lv} leaderboard with ${Number(w.xp).toLocaleString('en-US')} XP. A new week has started.` });
+    }
+
+    if (snaps.length) {
+      const { error: snapErr } = await admin.from('ranking_snapshots').upsert(snaps, { onConflict: 'day,scope,level,user_id' });
+      if (snapErr) console.error('❌ [Expo] ranking snapshot error:', snapErr.message);
+      else console.log(`📸 [Expo] Ranking: foto de ${snaps.length} posições gravada`);
+    }
+    if (!plan.length) return;
+
+    // 1 aviso de ranking por dia; o de risco no máximo a cada 2 dias.
+    const ids = [...new Set(plan.map(p => p.userId))];
+    const { data: recent } = await supabase.from('notification_logs').select('user_id, notification_type, created_at')
+      .in('user_id', ids).like('notification_type', 'rank_%').gte('created_at', new Date(Date.now() - 2 * 86400000).toISOString());
+    const sentToday = new Set<string>(); const threatRecent = new Set<string>();
+    for (const r of (recent ?? []) as { user_id: string; notification_type: string; created_at: string }[]) {
+      if (Date.now() - new Date(r.created_at).getTime() < 20 * 3600000) sentToday.add(String(r.user_id));
+      if (r.notification_type === 'rank_threat') threatRecent.add(String(r.user_id));
+    }
+    const final = plan.filter((p, i) => !sentToday.has(p.userId) && !(p.type === 'rank_threat' && threatRecent.has(p.userId))
+      && plan.findIndex(q => q.userId === p.userId) === i);
+    if (!final.length) return;
+    const messages: ExpoMessage[] = final.map(p => ({ to: p.token, title: p.title, body: p.body, data: { type: p.type }, sound: 'default', priority: 'high' }));
+    const { sent, errors } = await sendExpoPush(messages, supabase);
+    console.log(`✅ [Expo] Ranking: ${sent} enviados, ${errors} erros`);
+    await logRnPushes(supabase, final.map(p => ({ userId: p.userId, type: p.type, title: p.title, body: p.body })));
+  } catch (e) {
+    console.error('❌ [Expo] ranking push error:', e);
+  }
+}
+
+// Fim do teste antigo: push único no dia em que vence (lib/legacy-trial.ts). Respeita o horário de silêncio.
+export async function sendLegacyTrialEndedPush(supabase: any, u: { id: string; name: string | null; expo_push_token: string | null; app_language?: string | null; charlotte_level?: string | null; timezone?: string | null }): Promise<void> {
+  if (!u.expo_push_token?.startsWith('ExponentPushToken[')) return;
+  if (inQuietHours(u.timezone || DEFAULT_TZ)) return;
+  const pt = pushIsPt(u as any);
+  const first = (u.name ?? '').split(/[\s\-]+/)[0] || (pt ? 'Oi' : 'Hi');
+  const title = pt ? 'Seu teste terminou, mas ainda tem mais' : 'Your trial ended, but there is more';
+  const body = pt
+    ? `${first}, você ainda tem 7 dias grátis na loja. Ou siga na degustação: um tópico novo por dia.`
+    : `${first}, you still have a 7-day free trial in the store. Or keep going with one free topic a day.`;
+  const { sent } = await sendExpoPush([{ to: u.expo_push_token, title, body, data: { type: 'legacy_trial_ended' }, sound: 'default', priority: 'high' }], supabase);
+  if (sent) await logRnPushes(supabase, [{ userId: u.id, type: 'legacy_trial_ended', title, body }]);
 }

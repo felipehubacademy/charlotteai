@@ -11,14 +11,12 @@
     "curriculum:compile": "node scripts/compile-curriculum-v2.mjs"
   },
   "dependencies": {
-    "@elevenlabs/react-native": "^1.2.30",
-    "@livekit/react-native": "^2.12.0",
-    "@livekit/react-native-expo-plugin": "^1.1.0",
-    "@livekit/react-native-webrtc": "^144.2.0",
+    "@elevenlabs/client": "^1.28.0",
     "@react-native-community/netinfo": "^12.0.1",
     "@sentry/react-native": "~7.2.0",
     "@supabase/supabase-js": "^2.39.0",
     "charlotte-audio-session": "file:./modules/charlotte-audio-session",
+    "event-target-shim": "^5.0.1",
     "expo": "^54.0.0",
     "expo-application": "~7.0.8",
     "expo-asset": "~12.0.12",
@@ -47,6 +45,7 @@
     "expo-updates": "~29.0.16",
     "expo-video": "~3.0.16",
     "expo-web-browser": "~15.0.11",
+    "fast-text-encoding": "^1.0.6",
     "livekit-client": "^2.23.0",
     "nativewind": "^4.0.1",
     "phosphor-react-native": "^3.0.3",
@@ -62,9 +61,12 @@
     "react-native-screens": "~4.16.0",
     "react-native-share": "^12.3.1",
     "react-native-svg": "~15.15.4",
+    "react-native-url-polyfill": "^2.0.0",
     "react-native-view-shot": "4.0.3",
+    "react-native-webrtc": "124.0.7",
     "react-native-worklets": "0.5.1",
-    "tailwindcss": "^3.4.0"
+    "tailwindcss": "^3.4.0",
+    "web-streams-polyfill": "^4.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
@@ -78,7 +80,7 @@
     "doctor": {
       "reactNativeDirectoryCheck": {
         "exclude": [
-          "@livekit/react-native-webrtc"
+          "react-native-webrtc"
         ]
       }
     }

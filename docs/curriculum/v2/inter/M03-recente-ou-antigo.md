@@ -39,6 +39,7 @@
 3. **word_bank** — "She _____ this morning."
    **Choices**: called / has called / had called / is calling
    **Answer**: has called
+   **Accepts**: called
    **Explanation**: "This morning" (if it's still morning) = unfinished → PP. If morning is over → past simple "called".
 
 4. **word_bank** — "We _____ yesterday."
@@ -46,9 +47,10 @@
    **Answer**: met
    **Explanation**: "Yesterday" = finished → past simple.
 
-5. **fill_gap** — "I _____ him in 2010 and I _____ him many times since."
-   **Hint**: 1st = met (2010 specific), 2nd = have met
-   **Answer**: met
+5. **fill_gap** — "I met him in 2010 and I _____ him many times since."
+   **Hint**: "since" pede present perfect: have + past participle
+   **Answer**: have seen
+   **Accepts**: have met / 've seen / 've met
    **Explanation**: "In 2010" = specific past → "met". (Second blank would be "have seen/met").
 
 6. **fill_gap** — "She _____ this year." (job stayed)
@@ -59,6 +61,7 @@
 7. **fill_gap** — "He _____ Brazil three years ago."
    **Hint**: ago = past simple
    **Answer**: visited
+   **Accepts**: left / toured
    **Explanation**: "Ago" always with past simple. "Visited Brazil three years ago".
 
 8. **fix_error** — "I have seen her yesterday."
@@ -236,6 +239,7 @@
 7. **fill_gap** — "How long have you _____ here?"
    **Hint**: past participle of "live"
    **Answer**: lived
+   **Accepts**: been / worked / stayed
    **Explanation**: "How long have you lived here?" — common question.
 
 8. **fix_error** — "I have lived here since two years."
@@ -757,9 +761,10 @@
    **Answer**: has left
    **Explanation**: "Already" without specific time → PP.
 
-5. **fill_gap** — "I _____ her in 2010 and we _____ best friends since."
-   **Hint**: 1=met; 2=have been
-   **Answer**: met
+5. **fill_gap** — "I met her in 2010 and we _____ best friends since."
+   **Hint**: "since" pede present perfect: have been
+   **Answer**: have been
+   **Accepts**: 've been / have become / 've become
    **Explanation**: "In 2010" = past simple "met". Second part would be "have been".
 
 6. **fill_gap** — "He _____ five books this year." (year not finished)
@@ -770,6 +775,7 @@
 7. **fill_gap** — "I _____ her last week." (specific past)
    **Hint**: past simple "see"
    **Answer**: saw
+   **Accepts**: met / called / visited
    **Explanation**: "Last week" = past simple.
 
 8. **fix_error** — "I have seen her yesterday."

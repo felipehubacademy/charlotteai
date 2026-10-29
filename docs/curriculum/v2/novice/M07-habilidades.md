@@ -55,16 +55,19 @@
 5. **fill_gap** — "I _____ drive a car."
    **Hint**: Verbo modal de habilidade
    **Answer**: can
+   **Accepts**: can't / cannot
    **Explanation**: "I can drive" — habilidade. Note: "I drive" significa "eu dirijo (frequente)"; "I can drive" significa "eu sei dirigir / sou capaz".
 
 6. **fill_gap** — "My sister _____ dance very well."
    **Hint**: Verbo de habilidade (forma única)
    **Answer**: can
+   **Accepts**: can't / cannot
    **Explanation**: "My sister can dance" — can para qualquer pessoa, sem mudança.
 
 7. **fill_gap** — "They _____ play soccer."
    **Hint**: Modal "saber/poder fazer"
    **Answer**: can
+   **Accepts**: can't / cannot
    **Explanation**: "They can play" — plural usa can igual: forma única.
 
 8. **fix_error** — "She cans speak English."
@@ -212,54 +215,57 @@
 1. **multiple_choice** — "I _____ swim well."
    **Options**: can't / don't can / no can
    **Answer**: can't
-   **Explanation**: Negativa de "can" é "can't / cannot" (cannot). "I can't / cannot swim" = "Eu não sei nadar". Pronúncia: /kænt/ (americano) ou /kɑːnt/ (britânico).
+   **Explanation**: Negativa de "can" é "can't" (cannot). "I can't swim" = "Eu não sei nadar". No inglês americano, a vogal de "can't" é mais aberta e longa que a de "can"; no britânico, soa parecido com "cânt".
 
 2. **multiple_choice** — "She _____ drive a car."
    **Options**: can't / doesn't can / no can
    **Answer**: can't
-   **Explanation**: "She can't / cannot drive" — negativa de can é can't pra todas as pessoas. Sem -s, sem auxiliar.
+   **Explanation**: "She can't drive" — negativa de can é can't pra todas as pessoas. Sem -s, sem auxiliar.
 
 3. **word_bank** — "We _____ speak Japanese."
    **Choices**: can't / don't can / aren't can / no can
    **Answer**: can't
-   **Explanation**: "We can't / cannot speak" — can't é a única forma negativa de can.
+   **Explanation**: "We can't speak" — can't é a única forma negativa de can.
 
 4. **word_bank** — "He _____ cook at all."
    **Choices**: can't / doesn't can / cannot to / no can
    **Answer**: can't
-   **Explanation**: "He can't / cannot cook at all" = "Ele não sabe cozinhar nada". "At all" intensifica a negação.
+   **Explanation**: "He can't cook at all" = "Ele não sabe cozinhar nada". "At all" intensifica a negação.
 
 5. **fill_gap** — "I _____ ride a bike — I never learned."
    **Hint**: Negativa de can
    **Answer**: can't
-   **Explanation**: "I can't / cannot ride a bike" = "Não sei andar de bicicleta". Forma contraída de "cannot".
+   **Accepts**: cannot
+   **Explanation**: "I can't ride a bike" = "Não sei andar de bicicleta". Forma contraída de "cannot".
 
 6. **fill_gap** — "My father _____ sing — he's terrible at it."
    **Hint**: Negativa de can (3ª pessoa também usa can't)
    **Answer**: can't
-   **Explanation**: "My father can't / cannot sing" — mesmo na 3ª pessoa singular, can't.
+   **Accepts**: cannot
+   **Explanation**: "My father can't sing" — mesmo na 3ª pessoa singular, can't.
 
 7. **fill_gap** — "Sorry, I _____ help you right now — I'm too busy."
    **Hint**: Negativa polida com can
    **Answer**: can't
-   **Explanation**: "I can't / cannot help" — usado pra recusar polidamente. Comum em contextos sociais.
+   **Accepts**: cannot
+   **Explanation**: "I can't help" — usado pra recusar polidamente. Comum em contextos sociais.
 
 8. **fix_error** — "She doesn't can drive."
    **Hint**: Negativa de can não usa doesn't
    **Answer**: She can't drive.
-   **Explanation**: Modais formam negativa direta com "not" (contraído: -n't). NÃO usa doesn't/don't. "She can't / cannot drive", nunca "She doesn't / does not can".
+   **Explanation**: Modais formam negativa direta com "not" (contraído: -n't). NÃO usa doesn't/don't. "She can't drive", nunca "She doesn't can".
 
 9. **fix_error** — "I no can swim."
    **Hint**: Forma da negativa em inglês
    **Answer**: I can't swim.
-   **Explanation**: "No can" é influência do português. A negativa correta é "can't / cannot" (cannot). Forma fixa.
+   **Explanation**: "No can" é influência do português. A negativa correta é "can't" (cannot). Forma fixa.
 
 10. **read_answer**
     **Passage**: "I can swim but I can't dive. My friend can speak French but she can't write it well. We can both ride a bike."
     **Question**: O que o amigo NÃO sabe fazer bem?
     **Answer**: write
     **Accepts**: write French
-    **Explanation**: O texto diz "she can't / cannot write it well".
+    **Explanation**: O texto diz "she can't write it well".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -587,18 +593,19 @@
 5. **fill_gap** — "I can play the _____ very well."
    **Hint**: Instrumento musical
    **Answer**: piano
+   **Accepts**: guitar / violin / drums / flute / saxophone / bass / cello / trumpet / keyboard / ukulele
    **Explanation**: "Play the piano" — chunk com "the" obrigatório pra instrumentos musicais. Exemplo: play the guitar, play the violin.
 
 6. **fill_gap** — "She can speak French and _____."
    **Hint**: Idioma (qualquer um)
    **Answer**: Spanish
-**Accepts**: English / German / French / Italian
+**Accepts**: English / German / French / Italian / Portuguese / Chinese / Russian / Japanese / Arabic / Korean
    **Explanation**: Idiomas após "speak" — sem artigo. "Spanish", "English", "German".
 
 7. **fill_gap** — "We can play _____ on Saturdays."
    **Hint**: Esporte ou jogo
    **Answer**: soccer
-**Accepts**: tennis / basketball / volleyball
+   **Accepts**: tennis / basketball / volleyball / football / golf / baseball / chess / cards / games / video games / rugby / handball / futsal
    **Explanation**: "Play + esporte" sem artigo. "Play soccer", "play tennis", "play basketball".
 
 8. **fix_error** — "I can play piano."
@@ -613,7 +620,7 @@
 
 10. **read_answer**
     **Passage**: "I can speak two languages: English and Italian. My brother can play the guitar. My sister can play tennis very well."
-    **Question**: O que a irmã sabe tocar?
+    **Question**: O que a irmã sabe jogar?
     **Answer**: tennis
     **Explanation**: O texto diz "My sister can play tennis very well".
 
@@ -746,7 +753,7 @@
 1. **multiple_choice** — "I can swim but I _____ dive."
    **Options**: can't / can / don't / not
    **Answer**: can't
-   **Explanation**: Contraste positiva + negativa. "I can swim but I can't / cannot dive" = "Sei nadar mas não sei mergulhar". A negativa de "can" é "can't / cannot".
+   **Explanation**: Contraste positiva + negativa. "I can swim but I can't dive" = "Sei nadar mas não sei mergulhar". A negativa de "can" é "can't".
 
 2. **multiple_choice** — "She _____ speak Italian."
    **Options**: can / cans / can to
@@ -766,7 +773,8 @@
 5. **fill_gap** — "I _____ drive yet — I'm only fifteen."
    **Hint**: Negativa de can
    **Answer**: can't
-   **Explanation**: "I can't / cannot drive yet" = "Ainda não sei dirigir". "Yet" indica que vai aprender no futuro.
+   **Accepts**: cannot
+   **Explanation**: "I can't drive yet" = "Ainda não sei dirigir". "Yet" indica que vai aprender no futuro.
 
 6. **fill_gap** — "_____ your sister speak French?"
    **Hint**: Pergunta sobre habilidade
@@ -776,6 +784,7 @@
 7. **fill_gap** — "We _____ both play the guitar."
    **Hint**: Modal de habilidade positivo
    **Answer**: can
+   **Accepts**: can't / cannot
    **Explanation**: "We can both play" — ambos podem. "Can" igual pra qualquer pessoa.
 
 8. **fix_error** — "She cans speak Japanese."
@@ -865,7 +874,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte quer um retrato completo das suas habilidades — positiva, negativa, e devolva a pergunta."
-**Opening message**: "Skills check! What can you do, what can't you?"
+**Opening message**: "Skills check! What can you do, and what can't you do?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -900,7 +909,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Skills check! What can you do, what can't you?"
+1. **Charlotte**: "Skills check! What can you do, and what can't you do?"
 2. **Student**: "I can swim."
 3. **Charlotte**: "Nice. Limitation?"
 4. **Student**: "I can't drive."

@@ -2,14 +2,16 @@
 // Live Voice tab — hero com video da Charlotte + ring de pool mensal +
 // resumo da última chamada + botão Start now. Beta only (new_layout).
 
-import React, { useState, useCallback, useMemo } from 'react';
+import { characterInfo } from '@/lib/characters';
+import { FamilyCallModal } from '@/components/voice/FamilyCallModal';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import {
   View, ScrollView, TouchableOpacity, ActivityIndicator,
   RefreshControl, Modal, Pressable, Dimensions, Animated, Easing, Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path as SvgPath } from 'react-native-svg';
-import { useFocusEffect, router } from 'expo-router';
+import { useFocusEffect, router, useLocalSearchParams } from 'expo-router';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { Image } from 'expo-image';
 import { Phone, XCircle, ClockCounterClockwise, CaretRight, Trash, Question, X, Plus, Crown } from 'phosphor-react-native';
@@ -18,6 +20,8 @@ import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { supabase } from '@/lib/supabase';
+import { fetchStreakStatus } from '@/lib/streak';
+import { fetchMyRank } from '@/lib/myRank';
 import { UserLevel } from '@/lib/levelConfig';
 import { getLiveVoiceStatus, POOL_TRIAL_SECONDS } from '@/lib/liveVoiceUsage';
 import { QueizyWave } from '@/components/ui/QueizyWave';
@@ -60,18 +64,20 @@ interface LastCall {
   duration_seconds: number;
   summary:          string | null;
   transcript:       string | null;
+  /** Quem atendeu: 'charlotte' (padrão) ou um membro da Família Queizy. */
+  character?:       string | null;
 }
 
 // ── Helpers de label ──────────────────────────────────────────────────────────
 
 function poolStatusLabel(
   isPt: boolean, isLimitReached: boolean, isUnlimited: boolean,
-  remainingSec: number, isKnown: boolean, isTaster = false,
+  remainingSec: number, isKnown: boolean, isTaster = false, hostName = 'Charlotte',
 ): string {
   if (!isKnown) return isPt ? 'Carregando…' : 'Loading…';
   if (isLimitReached && isTaster) return isPt ? 'Degustação usada' : 'Free taste used';
   if (isLimitReached) return isPt ? 'Limite mensal atingido' : 'Monthly limit reached';
-  return isPt ? 'Charlotte disponível' : 'Charlotte available';
+  return isPt ? `${hostName} disponível` : `${hostName} available`;
 }
 
 /** Dias de calendário (local) entre a data e hoje: 0 = hoje, 1 = ontem. */
@@ -188,9 +194,12 @@ function CallListItem({ call, isPt, onPress, onDelete }: {
         disabled={!hasTranscript}
         style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8 }}
       >
+        <Image source={characterInfo(call.character).avatar} style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: '#16131F' }} />
         <View style={{ flex: 1 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-            <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16131F' }}>{whenLabel}</AppText>
+            <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16131F' }}>{characterInfo(call.character).name}</AppText>
+            <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,19,31,0.3)' }} />
+            <AppText style={{ fontSize: 12, fontWeight: '700', color: 'rgba(22,19,31,0.55)' }}>{whenLabel}</AppText>
             <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,19,31,0.3)' }} />
             <AppText style={{ fontSize: 12, fontWeight: '600', color: 'rgba(22,19,31,0.55)' }}>{durLabel}</AppText>
           </View>
@@ -334,7 +343,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
   const turns = useMemo(() => {
     if (!call?.transcript) return [] as Array<{ role: 'user' | 'assistant'; text: string }>;
     return call.transcript.split('\n').reduce((acc, line) => {
-      const m = line.match(/^(User|Charlotte):\s*(.+)$/);
+      const m = line.match(/^(User|[A-Z][A-Za-z]+):\s*(.+)$/);
       if (m) {
         acc.push({ role: m[1] === 'User' ? 'user' : 'assistant', text: m[2] });
       } else if (acc.length > 0) {
@@ -381,7 +390,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
           {/* Header */}
           <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 24, marginBottom: 16 }}>
             <AppText style={{ fontSize: 16, fontWeight: '800', color: '#16131F', flex: 1 }}>
-              {isPt ? 'Conversa anterior' : 'Previous conversation'}
+              {isPt ? `Conversa com ${characterInfo(call.character).name}` : `Conversation with ${characterInfo(call.character).name}`}
             </AppText>
             <TouchableOpacity onPress={onClose} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
               <XCircle size={22} color="rgba(22,19,31,0.3)" weight="fill" />
@@ -423,7 +432,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
                   <View key={i} style={{ flexDirection: 'row', justifyContent: isUser ? 'flex-end' : 'flex-start' }}>
                     {!isUser && (
                       <Image
-                        source={require('@/assets/charlotte-avatar.png')}
+                        source={characterInfo(call.character).avatar}
                         style={{ width: 26, height: 26, borderRadius: 13, marginRight: 8, marginTop: 2, flexShrink: 0, backgroundColor: '#16131F' }}
                       />
                     )}
@@ -479,6 +488,21 @@ export default function LiveVoiceTab() {
   const [selectedCall,    setSelectedCall]    = useState<LastCall | null>(null);
   const transcriptFromList = React.useRef(false); // voltar da chamada reabre a lista
   const [showCallsDrawer, setShowCallsDrawer] = useState(false);
+  // Quem atende a ligação: o membro da Família escolhido (Perfil > Família Queizy > "Falar na tela inicial").
+  const hostId = characterInfo(profile?.active_character).id;
+  const host = characterInfo(hostId);
+  const hostArticle = hostId === 'charlotte' ? 'a ' : hostId === 'igorfina' ? 'o ' : '';
+  const [showFamilyCall, setShowFamilyCall] = useState(false);
+  // Fim de uma ligação com a Família ("Ver conversa e resumo"): abre o histórico e relê a lista
+  // depois de alguns segundos (o resumo é gerado no servidor logo após a ligação).
+  const params = useLocalSearchParams<{ history?: string }>();
+  useEffect(() => {
+    if (params.history !== '1') return;
+    setShowCallsDrawer(true);
+    const t = setTimeout(() => { loadData(); }, 4000);
+    try { router.setParams({ history: undefined } as never); } catch {}
+    return () => clearTimeout(t);
+  }, [params.history]); // eslint-disable-line react-hooks/exhaustive-deps
   const [showLiveVoice,   setShowLiveVoice]   = useState(false);
   const [showLimitSheet,  setShowLimitSheet]  = useState(false);
   const [limitExhausted,  setLimitExhausted]  = useState(true); // false = aberto pelo cartão, antes de acabar
@@ -518,7 +542,7 @@ export default function LiveVoiceTab() {
           .eq('user_id', userId)
           .gte('earned_at', todayISO),
         supabase.from('charlotte_live_calls')
-          .select('id,started_at,duration_seconds,summary,transcript')
+          .select('id,started_at,duration_seconds,summary,transcript,character')
           .eq('user_id', userId)
           .order('started_at', { ascending: false })
           .limit(10),
@@ -528,12 +552,7 @@ export default function LiveVoiceTab() {
       const todayXPVal  = (recent.data ?? []).reduce((s: number, p: { xp_earned?: number | null }) => s + (p.xp_earned ?? 0), 0)
         + (achToday.data ?? []).reduce((s: number, x: { xp_bonus?: number | null }) => s + (x.xp_bonus ?? 0), 0);
 
-      const { count: higherCount } = await supabase
-        .from('charlotte_leaderboard_cache')
-        .select('*', { count: 'exact', head: true })
-        .eq('user_level', level)
-        .gt('total_xp', userTotalXP);
-      const computedRank = (higherCount ?? 0) + 1;
+      const myRank = await fetchMyRank(userId, level, userTotalXP);
 
       const todayStr     = localTodayStr();
       const yesterdayStr = (() => {
@@ -545,9 +564,10 @@ export default function LiveVoiceTab() {
       const streakDays  = streakAlive ? (prog.data?.streak_days ?? 0) : 0;
 
       setStreak(streakDays);
+      fetchStreakStatus().then(s => { if (s) setStreak(s.streak); }); // conta a proteção da semana
       setTotalXP(userTotalXP);
       setTodayXP(todayXPVal);
-      setRank(userTotalXP > 0 ? computedRank : null);
+      setRank(myRank.rank);
 
       if (lv) {
         setPoolUsed(lv.secondsUsed);
@@ -619,8 +639,8 @@ export default function LiveVoiceTab() {
     // rejeita com "tried to set AmbientSound... skipping" durante recording.
     // Mutar aqui zera essa fila.
     voiceSFX.setMuted(true);
-    setShowLiveVoice(true);
-  }, [poolKnown, poolUnlimited, poolRemaining]);
+    if (hostId !== 'charlotte') setShowFamilyCall(true); else setShowLiveVoice(true);
+  }, [poolKnown, poolUnlimited, poolRemaining, hostId]);
 
   // Só considera "limite atingido" quando o pool é CONHECIDO — enquanto a
   // leitura não confirma, mostramos "carregando", nunca um limite/pool falso.
@@ -637,13 +657,13 @@ export default function LiveVoiceTab() {
       ? (isSubscriber ? (isPt ? 'Comprar minutos' : 'Buy minutes')
          : isTaster   ? (isPt ? 'Começar 7 dias grátis' : 'Start 7-day free trial')
                       : (isPt ? 'Assinar Premium' : 'Subscribe to Premium'))
-      : (isPt ? 'Conversar com a Charlotte' : 'Talk with Charlotte');
+      : (isPt ? `Conversar com ${hostArticle}${host.name}` : `Talk with ${host.name}`);
   const onCtaPress = !poolKnown
     ? () => loadData()
     : isLimitReached
       // Trial só tem uma ação (assinar) -> vai direto ao paywall, sem o bottom
       // sheet redundante. Assinante abre o sheet (escolha real de +10/+30 min).
-      ? (isSubscriber ? () => { setLimitExhausted(true); setShowLimitSheet(true); } : openPaywall)
+      ? (isSubscriber ? () => { setLimitExhausted(true); setShowLimitSheet(true); } : () => openPaywall())
       : startCall;
 
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
@@ -685,7 +705,8 @@ export default function LiveVoiceTab() {
   const innerH = screenH - insets.top - insets.bottom - 48;
   // Ajuste fino +12px sobre o calculo nominal pra bater com a posicao
   // visual real do avatar no modal (iPhone 15 Pro).
-  const modalAvatarCenterY = insets.top + 24 + 50 + Math.max(0, (innerH - 500) / 2) + 180 + 9;
+  // Topo da chamada com nome em destaque e selo de estado (~90): o centro desce ~20 em relação ao antigo (50).
+  const modalAvatarCenterY = insets.top + 24 + 70 + Math.max(0, (innerH - 490) / 2) + 180 + 9;
   // Balão + Charlotte formam um bloco: o balão fica sempre colado acima do
   // avatar (rabinho apontando para ela). O avatar começa na Y da tela de
   // chamada; se o cartão de minutos descer até o balão (telas mais baixas,
@@ -740,7 +761,7 @@ export default function LiveVoiceTab() {
               overflow: 'hidden',
             }}>
               <Image
-                source={require('@/assets/charlotte-avatar.png')}
+                source={host.avatar}
                 style={{ width: '100%', height: '100%' }}
                 contentFit="cover"
               />
@@ -778,7 +799,9 @@ export default function LiveVoiceTab() {
               shadowOffset: { width: 0, height: 4 }, elevation: 2,
             }}>
               <AppText display style={{ fontSize: 18, fontWeight: '800', color: C.textWhite, lineHeight: 23, textAlign: 'center' }}>
-                {isPt ? 'Bora conversar? Pode errar à vontade.' : "Let's talk! Mistakes are welcome here."}
+                {hostId === 'charlotte'
+                  ? (isPt ? 'Bora conversar? Pode errar à vontade.' : "Let's talk! Mistakes are welcome here.")
+                  : (isPt ? 'Bora rir e falar inglês?' : "Let's laugh and speak English!")}
               </AppText>
             </View>
             <Svg width={20} height={14} viewBox="0 0 20 14" style={{ position: 'absolute', left: '42%', bottom: -13 }}>
@@ -833,7 +856,7 @@ export default function LiveVoiceTab() {
                   backgroundColor: !poolKnown ? C.textDim : isLimitReached ? C.red : C.greenDark,
                 }} />
                 <AppText style={{ fontSize: 13, color: C.textMuted, fontWeight: '500' }}>
-                  {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown, isTaster)}
+                  {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolRemaining, poolKnown, isTaster, host.name)}
                 </AppText>
               </View>
 
@@ -843,7 +866,7 @@ export default function LiveVoiceTab() {
                 Fica visível até o pool renovar (dia 1º). Toque -> paywall. */}
             {isLimitReached && !isSubscriber && (
               <TouchableOpacity
-                onPress={openPaywall}
+                onPress={() => openPaywall()}
                 activeOpacity={0.85}
                 style={{
                   marginHorizontal: 24, marginBottom: 4,
@@ -891,7 +914,7 @@ export default function LiveVoiceTab() {
             {showPoolCard && (
               <TouchableOpacity
                 onLayout={e => setCardY(e.nativeEvent.layout.y)}
-                onPress={isTaster ? openPaywall : () => { setLimitExhausted(isLimitReached); setShowLimitSheet(true); }}
+                onPress={isTaster ? () => openPaywall() : () => { setLimitExhausted(isLimitReached); setShowLimitSheet(true); }}
                 activeOpacity={0.8}
                 accessibilityRole="button"
                 accessibilityLabel={isPt ? 'Ver pacotes de minutos' : 'See minute packs'}
@@ -994,6 +1017,19 @@ export default function LiveVoiceTab() {
           />
 
         </View>
+      )}
+
+      {showFamilyCall && (
+        <FamilyCallModal
+          character={hostId}
+          onClose={() => {
+            setShowFamilyCall(false);
+            soundEngine.setMuted(false);
+            voiceSFX.setMuted(false);
+            loadData();
+            setTimeout(() => { loadData(); }, 2000);
+          }}
+        />
       )}
 
       {showLiveVoice && (

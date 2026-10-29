@@ -19,14 +19,18 @@ import { systemIsPt } from '@/lib/systemLang';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
+import { fetchMyRank } from '@/lib/myRank';
 import { UserLevel } from '@/lib/levelConfig';
-import type { TrailLevel } from '@/data/curriculum';
+import type { TrailLevel } from '@/data/trailTypes';
 import { ExtraTracksRow } from '@/components/trail/ExtraTracksStrip';
 import { useTheme } from '@/lib/theme';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { identifyUser, track } from '@/lib/analytics';
+import { reportOtaStatus } from '@/lib/otaDiagnostics';
 import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greetingCache';
-import { characterInfo } from '@/lib/characters';
+import { characterInfo, type CharacterId } from '@/lib/characters';
+import { FamilyPickSheet } from '@/components/family/FamilyPickSheet';
+import { markFamilyMemberPicked } from '@/lib/familyInvite';
 import { fetchGoals } from '@/lib/missions';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
@@ -35,8 +39,16 @@ import { getAppVersionFields } from '@/lib/appVersion';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { ArrowDown, ArrowUp } from 'phosphor-react-native';
 import { TrailContent } from '@/components/trail/TrailContent';
+import { TasteCallCard } from '@/components/trail/TasteCallCard';
+import { TasteTomorrowCard } from '@/components/trail/TasteTomorrowCard';
+import { useStreak } from '@/components/streak/StreakProvider';
+import { StreakProtectedCard } from '@/components/streak/StreakProtectedCard';
+import { protectedYesterday } from '@/lib/streak';
+import { TASTE_DAYS, tasteDayNumber, tasteFreeUnits } from '@/lib/tasteDays';
+import { RankLeaderModal, type RankLeaderEvent } from '@/components/social/RankLeaderModal';
 import { TrailBanner } from '@/components/trail/TrailBanner';
 import { StudyingNow } from '@/components/social/StudyingNow';
+import { UpdateBanner } from '@/components/ui/UpdateBanner';
 import { PromotionModal } from '@/components/trail/PromotionModal';
 import { GraduationModal } from '@/components/trail/GraduationModal';
 import { usePromotion } from '@/lib/curriculum-v2/usePromotion';
@@ -44,6 +56,16 @@ import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
 import { usePromotionPending } from '@/lib/promotionState';
 import { PlacementPromptSheet } from '@/components/onboarding/PlacementPromptSheet';
 import { maybeRequestReview } from '@/lib/storeReview';
+import { AcquisitionSheet } from '@/components/onboarding/AcquisitionSheet';
+
+// Celebração de líder da semana: XP mínimo da semana para valer.
+const WEEK_LEADER_MIN_XP = 100;
+/** Segunda-feira da semana corrente no horário de Brasília (AAAA-MM-DD), igual ao ranking da semana. */
+function brtWeekStart(): string {
+  const brt = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
+  brt.setDate(brt.getDate() - ((brt.getDay() + 6) % 7));
+  return `${brt.getFullYear()}-${String(brt.getMonth() + 1).padStart(2, '0')}-${String(brt.getDate()).padStart(2, '0')}`;
+}
 
 // Module-level flag — persists for the JS session (like the legacy home screen)
 let _streakSoundPlayedThisSession = false;
@@ -99,7 +121,8 @@ function TypingDots() {
 const MIN_TRAIL_VIEWPORT = 240; // abaixo disso a trilha fixa embaixo do hero fica inutilizável
 
 export default function HomeTab() {
-  const { profile, isTaster } = useAuth();
+  const { profile, isTaster, refreshProfile } = useAuth();
+  const { status: streakStatus, refreshStreak, celebrateStreak } = useStreak();
   const { openPaywall }           = usePaywallContext();
   const { colors: T }             = useTheme();
   const userId    = profile?.id ?? '';
@@ -151,6 +174,7 @@ export default function HomeTab() {
   const [totalXP,         setTotalXP]         = useState(0);
   const [todayXP,         setTodayXP]         = useState(0);
   const [rank,            setRank]            = useState<number | null>(null);
+  const [rankLeader,      setRankLeader]      = useState<RankLeaderEvent | null>(null);
   const [loading,         setLoading]         = useState(true);
   const [refreshing,      setRefreshing]      = useState(false);
   const [aiGreeting,      setAiGreeting]      = useState<string | null>(null);
@@ -159,33 +183,91 @@ export default function HomeTab() {
   // teste. Sempre dispensável. Flag por device em SecureStore.
   const [showPlacementPrompt, setShowPlacementPrompt] = useState(false);
   const placementDone = profile?.placement_test_done === true;
+  // Convite visto/fechado: por conta (antes era por aparelho e uma conta nova no mesmo celular nunca via).
+  const placementKey = profile?.id ? `placement_prompt_dismissed_${profile.id}` : null;
+
+  // Família Queizy: "Quem vai te acompanhar?" 1x por conta neste aparelho (Igorfina marcado), e de novo
+  // ao tocar na foto da saudação. Vem antes da janela do teste de nível (uma de cada vez).
+  const [familySheet, setFamilySheet] = useState<'first' | 'switch' | null>(null);
+  const [familyPickDone, setFamilyPickDone] = useState(false);
+  const [familySaving, setFamilySaving] = useState(false);
+  const familyKey = profile?.id ? `family_pick_done_${profile.id}` : null;
+  useEffect(() => {
+    if (!familyKey) return;
+    let alive = true;
+    SecureStore.getItemAsync(familyKey).catch(() => null).then(v => {
+      if (!alive) return;
+      if (v) { setFamilyPickDone(true); return; }
+      splashGate.then(() => setTimeout(() => { if (alive) setFamilySheet('first'); }, 700));
+    });
+    return () => { alive = false; };
+  }, [familyKey]);
+  const confirmFamily = useCallback(async (id: CharacterId) => {
+    if (!profile?.id || familySaving) return;
+    setFamilySaving(true);
+    try {
+      if (id !== characterInfo(profile.active_character).id) {
+        const { error } = await supabase.from('charlotte_users').update({ active_character: id }).eq('id', profile.id);
+        if (!error) await refreshProfile();
+      }
+      if (familyKey) await SecureStore.setItemAsync(familyKey, id).catch(() => {});
+      markFamilyMemberPicked(); // some o convite "Conheça a Família Queizy"
+    } finally {
+      setFamilySaving(false);
+      setFamilySheet(null);
+      setFamilyPickDone(true);
+    }
+  }, [profile?.id, profile?.active_character, familyKey, familySaving, refreshProfile]);
+
+  // Uma coisa de cada vez (todos): 1ª abertura = só a Família; o convite do teste de nível vem depois da 1ª atividade.
+  const [tasterDone, setTasterDone] = useState<number | null>(null);
+  // "Como você conheceu" (conta nova): na volta da 1ª atividade, depois da Família e antes do convite do teste de nível.
+  const askAcquisition = (profile?.created_at ?? '') >= '2026-10-27T00:00:00Z';
+  const [acquisitionDone, setAcquisitionDone] = useState(false);
+  const acquisitionArmed = askAcquisition && familyPickDone && familySheet === null && !loading && (tasterDone ?? 0) >= 1;
+  useFocusEffect(useCallback(() => {
+    if (!profile?.id) return;
+    supabase.from('learn_history_v2').select('id', { count: 'exact', head: true })
+      .eq('user_id', profile.id).eq('completed', true)
+      .then(({ count }) => setTasterDone(count ?? 0));
+  }, [profile?.id]));
 
   useEffect(() => {
-    // Degustação: o teste de nível faz parte do teste de 7 dias; a janela aparece depois de assinar.
-    if (loading || placementDone || isTaster) return;
-    SecureStore.getItemAsync('PLACEMENT_PROMPT_DISMISSED').then(v => {
+    if (loading || placementDone || !familyPickDone) return;
+    // Mesma experiência para todos (degustação ou assinante): o convite vem depois da 1ª atividade concluída,
+    // nunca empilhado com o aceite e a Família na primeira entrada. Na degustação, some ao fechar o tópico grátis
+    // (aí a oferta da degustação já abre sozinha).
+    if (tasterDone === null || tasterDone < 1 || (isTaster && tasterDone >= 4)) return;
+    if (askAcquisition && !acquisitionDone) return; // a pergunta de origem vem antes
+    if (!placementKey) return;
+    // Conta antiga que já fechou o convite na versão anterior (marcação por aparelho) não vê de novo.
+    const legacy = profile?.created_at && profile.created_at < '2026-10-22T14:50:00Z'
+      ? SecureStore.getItemAsync('PLACEMENT_PROMPT_DISMISSED').catch(() => null) : Promise.resolve(null);
+    Promise.all([SecureStore.getItemAsync(placementKey), legacy]).then(([own, old]) => { const v = own || old;
       if (!v) {
         const t = setTimeout(() => setShowPlacementPrompt(true), 800);
         return () => clearTimeout(t);
       }
     }).catch(() => {});
-  }, [loading, placementDone, isTaster]);
+  }, [loading, placementDone, familyPickDone, isTaster, tasterDone, placementKey, profile?.created_at, askAcquisition, acquisitionDone]);
 
   const dismissPlacementPrompt = useCallback(() => {
     setShowPlacementPrompt(false);
-    SecureStore.setItemAsync('PLACEMENT_PROMPT_DISMISSED', '1').catch(() => {});
-  }, []);
+    if (placementKey) SecureStore.setItemAsync(placementKey, '1').catch(() => {});
+  }, [placementKey]);
 
   const handleTakePlacement = useCallback(() => {
     dismissPlacementPrompt();
+    // Degustação: o teste de nível é do plano pago. Abre a oferta com essa frase (X / "Continuar na degustação").
+    if (isTaster) { openPaywall('placement'); return; }
     // direct=1: já escolheu fazer o teste no pop → pula o intro do placement.
     router.push('/(app)/placement-test?direct=1');
-  }, [dismissPlacementPrompt]);
+  }, [dismissPlacementPrompt, isTaster, openPaywall]);
 
   // Charlotte greeting animado em WebP com alpha. expo-image faz loop nativo
   // e não toca AVAudioSession (substitui expo-video que floodava MediaPlayback
   // events no Live Voice — benchmark 2026-05-15).
-  // Família Queizy: quem fala na Início é o personagem escolhido (padrão Charlotte).
+  // Família Queizy: quem fala na tela inicial é o personagem escolhido (padrão Charlotte).
   const avatarSrc = characterInfo(profile?.active_character).avatar;
   // Hora da saudação: recalcula quando o app volta para o primeiro plano
   // (quem abriu de manhã e voltou à tarde vê "Good afternoon").
@@ -224,12 +306,8 @@ export default function HomeTab() {
                           + (achToday.data ?? []).reduce((s: number, a: any) => s + (a.xp_bonus ?? 0), 0);
       const userTotalXP   = prog.data?.total_xp ?? 0;
 
-      const { count: higherCount } = await supabase
-        .from('charlotte_leaderboard_cache')
-        .select('*', { count: 'exact', head: true })
-        .eq('user_level', level)
-        .gt('total_xp', userTotalXP);
-      const computedRank = (higherCount ?? 0) + 1;
+      // Conta fora do ranking (equipe, revisão das lojas): sem posição no topo nem celebração.
+      const { rank: myRank } = await fetchMyRank(userId, level, userTotalXP);
 
       const todayStr = localTodayStr();
       const yesterdayStr = (() => {
@@ -241,24 +319,72 @@ export default function HomeTab() {
       const streakDays  = streakAlive ? (prog.data?.streak_days ?? 0) : 0;
 
       setStreak(streakDays);
+      // Regra do servidor (conta a proteção da semana): corrige o número se a falta de ontem foi protegida.
+      refreshStreak().then(s => { if (s) setStreak(s.streak); });
       setTotalXP(userTotalXP);
       setTodayXP(todayXPVal);
-      setRank(userTotalXP > 0 ? computedRank : null);
+      setRank(myRank);
+
+      // Liderança do ranking do nível (XP total) e da semana: celebra uma vez por conquista (perdeu e voltou =
+      // celebra de novo). A da semana vale para a semana corrente (zera segunda, horário de Brasília) e só a partir
+      // de WEEK_LEADER_MIN_XP, para não celebrar quem fez uma atividade na segunda de manhã e está sozinho.
+      // Contas fora do ranking (equipe, revisão das lojas) se veriam como 1º pela contagem acima: ficam de fora.
+      const leaderKey = `rank_leader_${userId}_${level}`;
+      const weekKey = `rank_week_leader_${userId}_${level}_${brtWeekStart()}`;
+      (async () => {
+        let allTime: RankLeaderEvent | null = null;
+        if (myRank === 1 && !(await SecureStore.getItemAsync(leaderKey).catch(() => null))) {
+          const [{ data: top }, { count: players }] = await Promise.all([
+            supabase.from('charlotte_leaderboard_cache').select('user_id, total_xp').eq('user_level', level).order('total_xp', { ascending: false }).limit(2),
+            supabase.from('charlotte_leaderboard_cache').select('*', { count: 'exact', head: true }).eq('user_level', level),
+          ]);
+          const second = (top ?? []).find((r: { user_id: string }) => String(r.user_id) !== String(userId)) as { total_xp: number } | undefined;
+          await SecureStore.setItemAsync(leaderKey, '1').catch(() => {});
+          allTime = { scope: 'all', level, totalXP: userTotalXP, leadXP: second ? Math.max(0, userTotalXP - second.total_xp) : null, players: players ?? 1 };
+        } else if (myRank != null && myRank > 1) {
+          SecureStore.deleteItemAsync(leaderKey).catch(() => {});
+        }
+
+        let week: RankLeaderEvent | null = null;
+        if (myRank != null) {
+          const { data: wk } = await supabase.rpc('weekly_ranking', { p_level: level });
+          const list = (wk ?? []) as { user_id: string; week_xp: number; pos: number }[];
+          const me = list.find(r => String(r.user_id) === String(userId));
+          if (me && Number(me.pos) === 1 && Number(me.week_xp) >= WEEK_LEADER_MIN_XP && list.length >= 3) {
+            if (!(await SecureStore.getItemAsync(weekKey).catch(() => null))) {
+              await SecureStore.setItemAsync(weekKey, '1').catch(() => {});
+              const second = list.find(r => String(r.user_id) !== String(userId));
+              week = { scope: 'week', level, totalXP: Number(me.week_xp), leadXP: second ? Math.max(0, Number(me.week_xp) - Number(second.week_xp)) : null, players: list.length };
+            }
+          } else if (me && Number(me.pos) > 1) {
+            SecureStore.deleteItemAsync(weekKey).catch(() => {});
+          }
+        }
+
+        // Líder nas duas ao mesmo tempo: uma celebração só (a do geral, que é maior).
+        const ev = allTime ?? week;
+        if (!ev) return;
+        await splashGate;
+        setRankLeader(ev);
+      })().catch(() => {});
 
       // Brand intro jingle — so dispara DEPOIS do splash sumir (gate via
       // splashGate Promise resolvida pelo SplashOverlay no fim do fade).
       // Sem isso, o intro tocava por baixo do splash e terminava antes
       // do user ver a home.
       const introWillPlay = !_introPlayedThisJsSession;
+      // Igorfina escolhido na Família: depois do jingle, uma fala gravada por ele (rodízio entre aberturas).
+      const igorOpening = introWillPlay && characterInfo(profile?.active_character).id === 'igorfina';
       if (introWillPlay) {
         _introPlayedThisJsSession = true;
         splashGate.then(() => {
           soundEngine.play('intro_app').catch(() => {});
+          if (igorOpening) setTimeout(() => { voiceSFX.playIgorOpening().catch(() => {}); }, 3100);
         });
       }
       // Offset usado pra shiftar streak_alive e Tier 4 quando o intro toca primeiro.
-      // intro dura ~3s => proximos sons em t=splash_done+3100ms.
-      const introOffset = introWillPlay ? 3100 : 0;
+      // intro dura ~3s => proximos sons em t=splash_done+3100ms (+ a fala do Igor, até ~3,5s).
+      const introOffset = introWillPlay ? 3100 + (igorOpening ? 3500 : 0) : 0;
 
       // Streak sound + Tier 4 (voz)
       if (!_streakSoundPlayedThisSession && streakDays > 0) {
@@ -272,11 +398,7 @@ export default function HomeTab() {
             // Tambem espera o splash sair antes de tocar.
             splashGate.then(() => {
               setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), introOffset + 800);
-              if (streakDays === 7) {
-                setTimeout(() => voiceSFX.play('streak_7_days').catch(() => {}), introOffset + 2300);
-              } else if (streakDays === 30) {
-                setTimeout(() => voiceSFX.play('streak_30_days').catch(() => {}), introOffset + 2300);
-              }
+              // A voz dos marcos (7 e 30 dias) toca na tela da sequência, no dia em que o marco chega.
             });
           } else {
             _streakSoundPlayedThisSession = true;
@@ -298,12 +420,16 @@ export default function HomeTab() {
     } catch (e) {
       console.warn('[HomeTab] fetchData error:', e);
     }
-  }, [userId, level]);
+  }, [userId, level, refreshStreak]);
+
+  // Praticou hoje por outro caminho (chat livre, ligação): a tela da sequência abre ao voltar para cá.
+  useFocusEffect(useCallback(() => { if (userId) celebrateStreak(); }, [userId, celebrateStreak]));
 
   useEffect(() => {
     if (!userId) return;
     identifyUser(userId, level);
     track('app_open');
+    reportOtaStatus();
     supabase.from('charlotte_users').update({ last_seen_at: new Date().toISOString(), ...getAppVersionFields() }).eq('id', userId).then(() => {});
     setLoading(true);
     fetchData().finally(() => setLoading(false));
@@ -313,7 +439,7 @@ export default function HomeTab() {
     if (!userId) return;
     fetchData();
     // Metas: o servidor credita o XP das missões concluídas e a comemoração aparece (GoalsCelebration).
-    // Ao voltar de uma lição para a Início, o aluno já vê a missão concluída.
+    // Ao voltar de uma lição para a tela inicial, o aluno já vê a missão concluída.
     // Se creditou agora, recarrega para o XP do topo já somar.
     fetchGoals().then(g => { if (g?.granted.length) fetchData(); });
   }, [fetchData]));
@@ -419,6 +545,7 @@ export default function HomeTab() {
   //   1 = o card do nível (e trilhas extras) rola junto com a trilha; a saudação continua fixa.
   //   2 = caso extremo: a saudação também rola.
   const [scrollLevel, setScrollLevel] = useState<0 | 1 | 2>(0);
+  const updateBannerHRef = useRef(0);
   const topBlockHRef = useRef(0);
   // Trilha finalizada (nenhum modulo ativo) — reportado pelo TrailContent.
   // Fonte de verdade pro goDown: evita usar um activeTopicYRef obsoleto que
@@ -521,12 +648,15 @@ export default function HomeTab() {
           centralizado, com a saudação em destaque e a fala da IA embaixo. */}
       <View style={{ marginHorizontal: 20, marginTop: 20 }}>
         <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'center', gap: 8 }}>
-          <Image
-            source={avatarSrc}
-            style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: C.navy }}
-            contentFit="cover"
-            accessibilityLabel={characterInfo(profile?.active_character).name}
-          />
+          {/* Tocar na foto troca quem fala com você (Família Queizy). */}
+          <TouchableOpacity activeOpacity={0.8} onPress={() => setFamilySheet('switch')} hitSlop={8}
+            accessibilityLabel={isPt ? `Trocar quem fala com você (agora: ${characterInfo(profile?.active_character).name})` : `Change who talks to you (now: ${characterInfo(profile?.active_character).name})`}>
+            <Image
+              source={avatarSrc}
+              style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: C.navy }}
+              contentFit="cover"
+            />
+          </TouchableOpacity>
           <TouchableOpacity activeOpacity={0.8} onPress={() => router.push('/(app)/evolution' as any)} style={{ maxWidth: '78%', marginBottom: 16 }}
             accessibilityLabel={isPt ? 'Ver minha evolução' : 'See my progress'}>
             <View style={{
@@ -570,7 +700,6 @@ export default function HomeTab() {
             level={trailLevel}
             currentLevel={currentLevel}
             onLevelChange={handleLevelChange}
-            useV2
             flush
           />
           {/* Trilhas extras da Família Queizy (influenciadores): linha fina no próprio cartão. */}
@@ -593,6 +722,9 @@ export default function HomeTab() {
         isPt={isPt}
       />
 
+      {/* Aviso de versão nova da loja: fixo logo abaixo do topo (fora da rolagem, nunca fica cortado). */}
+      <UpdateBanner style={{ marginHorizontal: 20, marginTop: 10 }} onHeight={h => { updateBannerHRef.current = h ? h + 10 : 0; }} />
+
       {/* Saudação e card do nível fixos no topo; em tela baixa passam a rolar com a trilha (scrollLevel). */}
       {scrollLevel < 2 && heroBlock}
       {scrollLevel < 1 && levelBlock}
@@ -603,7 +735,8 @@ export default function HomeTab() {
         style={{ flex: 1, marginTop: scrollLevel ? 0 : 10 }}
         contentContainerStyle={{ paddingTop: scrollLevel ? 0 : 24, paddingBottom: 40 }}
         onLayout={e => {
-          if (scrollLevel < 2 && e.nativeEvent.layout.height < MIN_TRAIL_VIEWPORT) setScrollLevel(l => (l + 1) as 1 | 2);
+          // O card de versão nova (fechável) não conta: sem ele a tela é grande o bastante.
+          if (scrollLevel < 2 && e.nativeEvent.layout.height + updateBannerHRef.current < MIN_TRAIL_VIEWPORT) setScrollLevel(l => (l + 1) as 1 | 2);
         }}
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={32}
@@ -616,6 +749,13 @@ export default function HomeTab() {
             {levelBlock}
           </View>
         )}
+        {/* Degustação sem nenhuma atividade concluída (passada a 1ª meia hora): a ligação como alternativa. */}
+        {isTaster && tasterDone === 0 && !!profile?.created_at && Date.now() - new Date(profile.created_at).getTime() > 30 * 60000 && <TasteCallCard />}
+        {/* Faltou ontem e a proteção da semana segurou: avisa e pede a prática de hoje. */}
+        {protectedYesterday(streakStatus) && !streakStatus!.practiced_today && <StreakProtectedCard streak={streakStatus!.streak} />}
+        {/* Degustação com o tópico grátis de hoje feito (4 atividades por tópico) e mais dias pela frente: volte amanhã. */}
+        {isTaster && tasterDone !== null && !!profile?.created_at && tasterDone >= 4 * tasteFreeUnits(profile.created_at)
+          && tasteDayNumber(profile.created_at) < TASTE_DAYS && <TasteTomorrowCard />}
         <TrailContent
           userId={userId}
           level={trailLevel}
@@ -632,7 +772,6 @@ export default function HomeTab() {
             // goDown caia no ramo de andamento, nao usa posicao obsoleta.
             if (finished) activeTopicYRef.current = 0;
           }}
-          useV2
         />
       </ScrollView>
 
@@ -659,6 +798,16 @@ export default function HomeTab() {
 
 
 
+      <FamilyPickSheet
+        visible={familySheet !== null}
+        mode={familySheet ?? 'switch'}
+        isPt={systemIsPt}
+        current={characterInfo(profile?.active_character).id}
+        saving={familySaving}
+        onConfirm={confirmFamily}
+        onClose={() => setFamilySheet(null)}
+      />
+
       <PlacementPromptSheet
         visible={showPlacementPrompt}
         isPt={systemIsPt}
@@ -668,6 +817,10 @@ export default function HomeTab() {
 
       {/* Promotion (level-up) vs Graduation (terminal): renderiza um ou outro
           baseado no discriminator do evento. */}
+      {/* "Como você conheceu o Queizy?": logo depois da escolha da Família, 1x por conta (o servidor decide).
+          Só contas novas (desde que a pergunta existe), para não empilhar com o convite do teste de nível de quem já usa. */}
+      <AcquisitionSheet armed={acquisitionArmed} onDone={() => setAcquisitionDone(true)} />
+      <RankLeaderModal event={rankLeader} onClose={() => setRankLeader(null)} />
       <PromotionModal
         event={promotionEvent?.type === 'level-up' ? promotionEvent : null}
         onClose={ackPromotion}

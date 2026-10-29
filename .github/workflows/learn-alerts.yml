@@ -1,0 +1,25 @@
+name: "Alerta - onde os alunos travaram (24h)"
+
+on:
+  schedule:
+    # Todo dia às 11h UTC (8h em Brasília). Só manda e-mail quando há alerta (lib/learn-stuck).
+    - cron: '0 11 * * *'
+  workflow_dispatch: # permite rodar manualmente
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Call learn alerts
+        run: |
+          response=$(curl -s -o /tmp/out.json -w "%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -H "User-Agent: github-actions-cron" \
+            -d '{}' \
+            "https://queizy.com/api/cron/learn-alerts")
+          echo "Response status: $response"
+          cat /tmp/out.json | head -c 2000
+          if [ "$response" != "200" ]; then exit 1; fi

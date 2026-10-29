@@ -44,6 +44,7 @@
 3. **fill_gap** — "The proposal was rejected for three reasons: cost, timing, and political risk. _____ three concerns shaped the rest of the discussion."
    **Hint**: "These" + the three reasons just listed
    **Answer**: These
+   **Accepts**: Those
    **Explanation**: "These three concerns" — "these" because the antecedent is plural ("three reasons"). The demonstrative gathers the just-listed items and names them with a summary noun ("concerns"). This pattern — "These X..." — is essential for extended discourse cohesion.
 
 4. **fix_error** — "The team missed two deadlines. This deadlines worried the client."
@@ -197,17 +198,21 @@
 3. **fill_gap** — Lexical chain: "She rescued a stray dog last winter. _____ animal had been on the street for weeks."
    **Hint**: Superordinate of "dog"
    **Answer**: The (animal)
+   **Accepts**: That / This
    **Explanation**: "The animal" — moves up from specific ("dog") to superordinate ("animal"). The article "the" signals shared knowledge. This is cohesion through hyponym → superordinate, sustained by definite article.
 
-4. **fix_error** — "He bought a Tesla. He bought a Tesla. He bought a Tesla last year, and a Tesla is expensive to maintain."
+4. **short_write** — "He bought a Tesla. He bought a Tesla. He bought a Tesla last year, and a Tesla is expensive to maintain."
    **Hint**: Vary with synonyms / superordinates
    **Answer**: He bought a Tesla last year. The car has been expensive to maintain — the technology is unforgiving when something breaks.
+   **Prompt**: Rewrite it without the repetition, using synonyms or a general word like "the car".
+   **Example answer**: He bought a Tesla last year. The car has been expensive to maintain — the technology is unforgiving when something breaks.
    **Explanation**: Triple repetition of "Tesla" is heavy. Cohesion through variation: Tesla → the car → the technology. Each refers to the same purchase, but the prose breathes.
 
 5. **read_answer**
    **Passage**: "She had brought home a rescue puppy in March. The dog was nervous of everyone, especially men. The little creature would not let anyone but her near it for three weeks. By June, the animal had begun to trust the postman. By autumn, the once-fearful pup followed her into every room."
    **Question**: How does the passage avoid repeating 'puppy' / 'dog'?
-   **Answer**: through a lexical chain — puppy → the dog → the little creature → the animal → the once-fearful pup
+   **Answer**: lexical chain: puppy, dog, creature, animal, pup
+   **Accepts**: lexical chain / puppy, dog, creature, animal, pup / different words for puppy
    **Explanation**: Five lexical variants for the same referent: rescue puppy, the dog, the little creature, the animal, the once-fearful pup. Each adds a slight nuance (age, size, fear, recovery). Cohesion via varied lexicon — typical of C2 narrative.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -502,7 +507,7 @@
 3. **fill_gap** — Information flow: "We discussed the budget. _____ revealed significant risks."
    **Hint**: Reference back with old info first
    **Answer**: That discussion
-   **Accepts**: The discussion
+   **Accepts**: The discussion / This discussion
    **Explanation**: "That discussion" (referring back) → "revealed significant risks" (new info). Or "The discussion" — definite article carries old info. The sentence builds on what was just mentioned.
 
 4. **fix_error** — Reverse information flow: "Significant risks were revealed by our discussion of the budget."
@@ -513,7 +518,8 @@
 5. **read_answer**
    **Passage**: "The committee made three decisions in its first hour. The first was to extend the deadline. This extension would relieve the most acute pressure on the team. The second was to bring in an external auditor. That auditor would arrive on Monday. The third decision was the hardest: to reassign the lead engineer."
    **Question**: How does each sentence begin?
-   **Answer**: with old information referring back to what was just said (the first / This extension / The second / That auditor / The third decision)
+   **Answer**: with old information
+   **Accepts**: referring back / old information first / the first, this extension, the second, that auditor, the third decision
    **Explanation**: Every sentence begins with an old-information anchor referring back: "The first" / "This extension" / "The second" / "That auditor" / "The third decision". Each closes with new information. Information flow is invisible because it works.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -549,9 +555,9 @@
    **label_pt**: "Outro exemplo de fluxo"
    **label_en**: "Another flow example"
    **hidden_prompt**: "user uses theme-rheme correctly"
-   **hint_pt**: "First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.'"
-   **hint_en**: "First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.'"
-   **example_pass**: First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.' | We launched the new product in June. The launch went more smoothly than any in the previous three years. | She joined the company in February. Her first project shipped within six weeks. | The board reviewed the strategy in March. The review surfaced three concerns we hadn't fully anticipated. | He moved to the new role last summer. The role has expanded considerably since he took it on.
+   **hint_pt**: "First: 'We launched the new product in June.' Follow: 'The launch went more smoothly than any in the previous three years.'"
+   **hint_en**: "First: 'We launched the new product in June.' Follow: 'The launch went more smoothly than any in the previous three years.'"
+   **example_pass**: First: 'We launched the new product in June.' Follow: 'The launch went more smoothly than any in the previous three years.' | We launched the new product in June. The launch went more smoothly than any in the previous three years. | She joined the company in February. Her first project shipped within six weeks. | The board reviewed the strategy in March. The review surfaced three concerns we hadn't fully anticipated. | He moved to the new role last summer. The role has expanded considerably since he took it on.
    **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
@@ -570,7 +576,7 @@
 1. **Charlotte**: "Three first sentences. Each follow-up should begin with old information and end with new."
 2. **Student**: ~"First: 'The interview lasted ninety minutes.' Follow: 'That length was deliberate — the panel wanted to see how she handled fatigue.'"
 3. **Charlotte**: "Another?"
-4. **Student**: ~"First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.'"
+4. **Student**: ~"First: 'We launched the new product in June.' Follow: 'The launch went more smoothly than any in the previous three years.'"
 5. **Charlotte**: "Counter-example?"
 6. **Student**: ~"Wrong order: 'A clear winner emerged from the discussion.' Better: 'The discussion produced a clear winner.'"
 7. **Charlotte**: "Information flow, naturally forward."
@@ -644,17 +650,18 @@
 
 1. **multiple_choice** — Bridging without explicit marker: "The car wouldn't start. _____ was completely dead."
    **Options**: The battery / The car / The engine / The starter
-   **Answer**: The battery (or any car part — bridging via inference)
+   **Answer**: The battery
    **Explanation**: Bridging cohesion: the reader infers that "the battery" belongs to "the car" without it being stated. Native readers fill the gap. The definite article "the" signals shared knowledge. Common in fluent prose — no "the car's battery", just "the battery".
 
 2. **multiple_choice** — Ambiguous: "Maria told her sister that she would arrive late." Who would arrive late?
    **Options**: Maria / Her sister / Unclear / Both
    **Answer**: Unclear
-   **Explanation**: "She" is ambiguous — could refer to Maria or her sister. C2 writing fixes this. Clearer: "Maria told her sister that Maria would arrive late" (repetition) or "Maria told her sister, 'I'll / I will be late.'" (direct speech) or "Maria warned her sister of her own late arrival." (rephrase).
+   **Explanation**: "She" is ambiguous — could refer to Maria or her sister. C2 writing fixes this. Clearer: "Maria told her sister that Maria would arrive late" (repetition) or "Maria told her sister, 'I'll be late.'" (direct speech) or "Maria warned her sister of her own late arrival." (rephrase).
 
 3. **fill_gap** — Disambiguate: "When Maria saw her colleague at the conference, she was already heading to the door. To be clear: _____ was heading to the door."
    **Hint**: Specify Maria or the colleague
-   **Answer**: Maria (or "the colleague" — whichever the writer intended)
+   **Answer**: Maria
+   **Accepts**: the colleague / her colleague
    **Explanation**: When pronouns risk ambiguity, name the referent. Repetition of the name is preferable to confusion. C2 writers do this — explicit > elegant when stakes are high.
 
 4. **fix_error** — Ambiguous reference: "I gave the report to my manager, but it was incomplete."
@@ -666,7 +673,8 @@
 5. **read_answer**
    **Passage**: "She walked into the room and turned on the light. The bulb flickered, hesitated, then steadied. Books lined three walls. The shelves were her grandfather's — every piece of wood pulled from a barn he had grown up in. She did not touch them yet. The room had a way of letting itself be entered slowly."
    **Question**: How does the passage establish cohesion without explicit connectives?
-   **Answer**: through bridging — "the light" implies "in the room", "the bulb" implies "the light", "the shelves" implies "the walls", "the room" returns to the initial subject. Each definite article signals shared knowledge built from the previous sentence.
+   **Answer**: bridging with definite articles
+   **Accepts**: bridging / definite articles / shared knowledge from previous sentence
    **Explanation**: Six bridges: "the room" → "the light" → "the bulb" → "the walls" → "the shelves" → "the room". No "however" or "therefore" — just shared knowledge of the scene. C2 prose at its most fluent.
 
 ### 2. Listening/Speaking (5 phrases)

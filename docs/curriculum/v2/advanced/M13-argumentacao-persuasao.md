@@ -48,12 +48,13 @@
 3. **fill_gap** — Argument climax: "One reason is that the policy saves money. Another is that it saves lives. _____, it restores public trust."
    **Hint**: marcador de clímax argumentativo
    **Answer**: Most importantly
+   **Accepts**: Most significantly / Importantly / Above all / Crucially / Most crucially / Finally
    **Explanation**: Cascade pattern: each marker ranks the next claim higher. "Most importantly" (or "Above all", "Crucially") signals the strongest point — the climax of the argument.
 
 4. **fix_error** — "Firstly the policy works. Secondly it's affordable. Lastly people support it."
    **Hint**: Punctuation — commas after enumerative adverbs
    **Answer**: First, the policy works. Second, it is affordable. Finally, people support it.
-   **Explanation**: Adverbial sequencers ("First", "Second", "Finally") take a comma when fronted. Also: avoid contractions in formal argument ("it is", not "it's / it is"). "Lastly" exists but "Finally" is the C2 norm for argumentative climax.
+   **Explanation**: Adverbial sequencers ("First", "Second", "Finally") take a comma when fronted. Also: avoid contractions in formal argument ("it is", not "it's"). "Lastly" exists but "Finally" is the C2 norm for argumentative climax.
 
 5. **read_answer**
    **Passage**: "The case for the new programme rests on three pillars. First, the pilot study showed measurable gains in literacy across all participating schools. Second, the cost per student remains within budget — well below the threshold for similar interventions. Most importantly, the teachers themselves are asking for it. The evidence is unambiguous: this programme deserves expansion."
@@ -201,11 +202,14 @@
 3. **fill_gap** — Cautioning against assumption: "_____ that the trend will continue indefinitely. Markets, after all, are not linear."
    **Hint**: "It would be a mistake to assume"
    **Answer**: It would be a mistake to assume
+   **Accepts**: It would be wrong to assume / It is a mistake to assume / It would be naive to assume / We should not assume / It would be unwise to assume
    **Explanation**: "It would be a mistake to assume..." — pre-emptive rebuttal of an implicit assumption. Standard C2 argument move. Variants: "It would be premature to conclude", "We should be wary of assuming".
 
-4. **fix_error** — "Some peoples say the policy is too expensive but they are wrong."
+4. **short_write** — "Some peoples say the policy is too expensive but they are wrong."
    **Hint**: "Some people say... however" is more polished than "some are wrong"
    **Answer**: Some may object that the policy is too expensive. However, this overlooks the long-term savings.
+   **Prompt**: Rewrite this as a polished counter-argument: present the objection, then answer it.
+   **Example answer**: Some may object that the policy is too expensive. However, this overlooks the long-term savings.
    **Explanation**: "Some peoples" — wrong noun form. "But they are wrong" — bluntly dismissive, weak rhetorically. The polished form acknowledges the objection ("Some may object that...") and refutes specifically ("this overlooks...").
 
 5. **read_answer**
@@ -355,16 +359,18 @@
    **Answer**: we conquered
    **Explanation**: Tricolon — a three-part structure with parallel grammar. "Veni, vidi, vici" — Latin original. Used for memorability and rhythm. Modern: "of the people, by the people, for the people" (Lincoln). Three is the rhetorical number — fewer feels incomplete, more feels excessive.
 
-4. **fix_error** — Make tricolon: "He fought injustice, he overcame poverty, his courage was admirable."
+4. **short_write** — Make tricolon: "He fought injustice, he overcame poverty, his courage was admirable."
    **Hint**: Match grammatical structure — all three parts as subject-verb-object
    **Answer**: He fought injustice, he overcame poverty, he inspired courage.
-   **Accepts**: He fought injustice, overcame poverty, and inspired courage.
+   **Prompt**: Rewrite as a tricolon (three parallel parts): "He fought injustice, he overcame poverty, his courage was admirable."
+   **Example answer**: He fought injustice, he overcame poverty, he inspired courage.
    **Explanation**: Tricolon requires parallel structure. The third clause broke parallelism ("his courage was admirable" — different subject). Restoring "he" + verb + object pattern makes the rhythm work. Or compress into one subject across three verbs.
 
 5. **read_answer**
    **Passage**: "Her closing argument used every classical device. 'We are not asking for charity. We are not asking for permission. We are asking — finally — to be heard. Not after the next crisis. Not after the next election. Now. Tomorrow is too late, and yesterday is gone.' The room rose to its feet before she had finished."
    **Question**: What three rhetorical devices appear?
-   **Answer**: anaphora ("We are not asking..."), tricolon ("we are asking... not after... not after... Now"), antithesis ("Tomorrow is too late, and yesterday is gone")
+   **Answer**: anaphora, tricolon, antithesis
+   **Accepts**: anaphora / tricolon / antithesis
    **Explanation**: Three anaphoras ("We are not asking..."), then tricolon climax ("Not after... Not after... Now."), capped by antithesis ("Tomorrow is too late, and yesterday is gone"). Classical rhetoric concentrated.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -383,7 +389,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Position: 'Climate action cannot wait.' Craft three lines — anaphora, antithesis, tricolon."
+**Opening line**: "Here's my position: 'Climate action cannot wait.' Give me three lines to support it: one with anaphora, one with antithesis and one with a tricolon."
 
 **Sub-objectives** (3 objetivos):
 
@@ -418,7 +424,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Position: 'Climate action cannot wait.' Craft three lines — anaphora, antithesis, tricolon."
+1. **Charlotte**: "Here's my position: 'Climate action cannot wait.' Give me three lines to support it: one with anaphora, one with antithesis and one with a tricolon."
 2. **Student**: ~"We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future."
 3. **Charlotte**: "Antithesis?"
 4. **Student**: ~"The cost of acting is high. The cost of waiting is higher."
@@ -506,12 +512,14 @@
 3. **fill_gap** — Causal climax: "Resources shrank, talent left, morale collapsed — _____, the project failed."
    **Hint**: "Inevitably" or "As a result" or "Hence"
    **Answer**: as a result
-   **Accepts**: inevitably / hence
+   **Accepts**: inevitably / hence / therefore / consequently / thus / unsurprisingly / in the end / ultimately
    **Explanation**: After a cascade of negative causes, a closing marker delivers the consequence. "As a result", "Hence", "Inevitably", "Consequently" — each works. "As a result" is neutral; "Inevitably" claims the outcome was unavoidable; "Hence" is formal.
 
-4. **fix_error** — "A causes B, which causes C, this causes D."
+4. **short_write** — "A causes B, which causes C, this causes D."
    **Hint**: For a clean chain, use "which in turn causes" not "this causes" mid-chain
    **Answer**: A causes B, which in turn causes C, which in turn causes D.
+   **Prompt**: Rewrite this causal chain so it reads smoothly: "A causes B, which causes C, this causes D."
+   **Example answer**: A causes B, which in turn causes C, which in turn causes D.
    **Explanation**: "This causes" mid-chain breaks the embedded structure. Cleaner: keep "which in turn" links. The chain stays grammatically tight and the cumulative causality is more visible.
 
 5. **read_answer**
@@ -654,12 +662,13 @@
 2. **multiple_choice** — Conditional warning close: "_____ to act now, we will lose the window entirely."
    **Options**: If we fail / Should we fail / Were we to fail / If we will fail
    **Answer**: If we fail
-   **Accepts**: Should we fail
+   **Accepts**: Should we fail / Were we to fail
    **Explanation**: "If we fail to + base" — direct conditional close. Or inverted formal: "Should we fail to + base". Both work; the formal inverted version (M01-style) registers more gravity. "If we will fail" is grammatically wrong (no "will" in if-clauses).
 
 3. **fill_gap** — Strong frame: "_____ before us is clear: pay the cost of action now or pay a higher one later."
    **Hint**: "The choice"
    **Answer**: The choice
+   **Accepts**: The decision
    **Explanation**: "The choice before us is clear: X or Y" — binary-frame conclusion. Reframes the entire argument as a single decision. Common in op-eds, manifestos, and political speeches. The colon introduces the two options.
 
 4. **fix_error** — "The stakes are not higher anywhere."
@@ -671,7 +680,8 @@
 5. **read_answer**
    **Passage**: "She landed her closing without flourish. 'What is at stake is not whether this policy is popular, but whether this generation chooses to leave the next one with options. The stakes could not be higher. The choice before us is clear: take the harder road now, or accept that we have decided, by inaction, to make the harder road our children's.' She sat down. The room sat with her for a long second."
    **Question**: How does the speaker frame the choice?
-   **Answer**: take the harder road now, or accept we have made it our children's
+   **Answer**: take the harder road now or make it our children's
+   **Accepts**: take the harder road now / accept we made it our children's / harder road now or for children
    **Explanation**: Three classical conclusion devices: "What is at stake is not X, but Y" (stakes reframe), "The stakes could not be higher" (fixed climactic phrase), "The choice before us is clear: X or Y" (binary frame). Conclusion architecture at C2.
 
 ### 2. Listening/Speaking (5 phrases)

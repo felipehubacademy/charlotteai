@@ -10,7 +10,9 @@
 // estiver toda com login próprio.
 
 import { NextRequest, NextResponse } from 'next/server';
+import { createHash } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { markInviteAccepted } from '@/lib/admin-invite';
 
 import { PERMISSIONS, ROLE_LABEL, type AdminRole, type AdminArea } from '@/lib/admin-roles';
 
@@ -23,6 +25,23 @@ export interface AdminContext {
   name: string | null;
   role: AdminRole;
   legacy: boolean;
+  /** Login confirmado com o código do app autenticador (duas etapas). */
+  mfa: boolean;
+}
+
+/** Computador de confiança (30 dias): o navegador manda a chave no header x-admin-device; aqui só o hash. */
+export const TRUSTED_DEVICE_DAYS = 30;
+export const hashDeviceToken = (t: string) => createHash('sha256').update(t).digest('hex');
+async function isTrustedDevice(userId: string, deviceToken: string): Promise<boolean> {
+  if (!deviceToken || deviceToken.length < 20) return false;
+  const { data } = await getSupabaseAdmin().from('admin_trusted_devices').select('id')
+    .eq('user_id', userId).eq('token_hash', hashDeviceToken(deviceToken)).gt('expires_at', new Date().toISOString()).maybeSingle();
+  return !!data;
+}
+
+/** Nível de garantia do token do Supabase: 'aal2' = passou pela segunda etapa. */
+function tokenAal(token: string): string | null {
+  try { return JSON.parse(Buffer.from(token.split('.')[1], 'base64url').toString()).aal ?? null; } catch { return null; }
 }
 
 export function can(role: AdminRole, area: AdminArea): boolean {
@@ -33,11 +52,16 @@ export function areasFor(role: AdminRole): AdminArea[] {
   return PERMISSIONS[role] ?? [];
 }
 
-/** Identifica quem está chamando. null = não é admin. */
-export async function getAdmin(req: NextRequest): Promise<AdminContext | null> {
+/**
+ * Identifica quem está chamando. null = não é admin.
+ * Login com e-mail exige as duas etapas (código do app autenticador), salvo em computador de confiança
+ * (x-admin-device, 30 dias). Só o /api/admin/me aceita
+ * o login sem a segunda etapa (allowPendingMfa), para a tela de login saber que falta o código.
+ */
+export async function getAdmin(req: NextRequest, opts?: { allowPendingMfa?: boolean }): Promise<AdminContext | null> {
   const secret = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
   if (process.env.ADMIN_SECRET && secret && secret === process.env.ADMIN_SECRET) {
-    return { userId: null, email: null, name: 'Senha mestra', role: 'admin', legacy: true };
+    return { userId: null, email: null, name: 'Senha mestra', role: 'admin', legacy: true, mfa: false };
   }
 
   const auth = req.headers.get('authorization') ?? '';
@@ -50,13 +74,18 @@ export async function getAdmin(req: NextRequest): Promise<AdminContext | null> {
 
   const { data: member } = await supabase
     .from('admin_members')
-    .select('role, active, name, email')
+    .select('role, active, name, email, accepted_at')
     .eq('user_id', userData.user.id)
     .maybeSingle();
-  const m = member as { role: AdminRole; active: boolean; name: string | null; email: string } | null;
+  const m = member as { role: AdminRole; active: boolean; name: string | null; email: string; accepted_at: string | null } | null;
   if (!m || !m.active) return null;
+  // Primeiro acesso de quem foi convidado: marca o aceite e avisa quem convidou.
+  if (!m.accepted_at) await markInviteAccepted(userData.user.id).catch(e => console.warn('[admin] aceite', e));
 
-  return { userId: userData.user.id, email: m.email, name: m.name, role: m.role, legacy: false };
+  // Segunda etapa feita nesta sessão, ou computador marcado como de confiança há menos de 30 dias.
+  const mfa = tokenAal(token) === 'aal2' || await isTrustedDevice(userData.user.id, req.headers.get('x-admin-device') ?? '');
+  if (!mfa && !opts?.allowPendingMfa) return null;
+  return { userId: userData.user.id, email: m.email, name: m.name, role: m.role, legacy: false, mfa };
 }
 
 /**

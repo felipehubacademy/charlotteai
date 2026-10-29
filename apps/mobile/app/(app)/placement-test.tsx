@@ -14,6 +14,8 @@ import {
 import { router, useLocalSearchParams } from 'expo-router';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ReportIssueButton } from '@/components/ui/ReportIssue';
+import { useBottomInset } from '@/lib/useBottomInset';
 import { StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
 import {
@@ -315,18 +317,21 @@ type BlockNum = 1 | 2 | 3;
 
 export default function PlacementTestScreen() {
   const { session, refreshProfile, profile, isTaster } = useAuth();
-  // Degustação: o teste de nível faz parte do teste de 7 dias. Volta e abre o paywall.
+  // Degustação: o teste de nível faz parte do plano pago. Volta e abre o paywall (com a frase do teste de nível e o X
+  // para seguir na degustação).
   const { openPaywall } = usePaywallContext();
   useEffect(() => {
     if (!isTaster) return;
     if (router.canGoBack()) router.back(); else router.replace('/(app)/(tabs)' as any);
-    openPaywall();
+    openPaywall('placement');
   }, [isTaster, openPaywall]);
   const { toggle: toggleAudio, playingMessageId, stop: stopAudio } = useMessageAudioPlayer();
 
   const firstName = (profile?.name ?? '').split(' ')[0] || (systemIsPt ? 'você' : 'you');
 
   const insets = useSafeAreaInsets();
+
+  const bottomInset = useBottomInset();
 
   // Reset contador Tier 4 ao iniciar o teste
   useEffect(() => { soundEngine.resetStreak(); }, []);
@@ -612,9 +617,18 @@ export default function PlacementTestScreen() {
           <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navyLight, letterSpacing: 0.5 }}>
             {systemIsPt ? `Etapa ${block} de 3` : `Step ${block} of 3`}
           </AppText>
-          <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyLight }}>
-            {`${qIndex + 1} / ${blockQuestions.length}`}
-          </AppText>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyLight }}>
+              {`${qIndex + 1} / ${blockQuestions.length}`}
+            </AppText>
+            {/* Reportar problema nesta pergunta. */}
+            <ReportIssueButton
+              kind="grammar" size={18}
+              getContext={() => ({ screen: 'placement', activity: `block_${block}`, stepIdx: qIndex,
+                exercise: currentQ as unknown as Record<string, unknown>,
+                userAnswer: selected !== null ? String(currentQ?.options?.[selected] ?? selected) : null })}
+            />
+          </View>
         </View>
         <QueizyWave progress={progress} height={14} strokeWidth={4} />
       </View>
@@ -699,7 +713,7 @@ export default function PlacementTestScreen() {
 
       {/* Verificar button — fixed above bottom safe area */}
       {!verified && (
-        <View style={{ paddingHorizontal: 24, paddingBottom: insets.bottom + 16, paddingTop: 12, backgroundColor: C.bg }}>
+        <View style={{ paddingHorizontal: 24, paddingBottom: bottomInset + 16, paddingTop: 12, backgroundColor: C.bg }}>
           <TouchableOpacity
             onPress={handleVerify}
             disabled={selected === null}
@@ -726,7 +740,7 @@ export default function PlacementTestScreen() {
           borderTopWidth: 1,
           borderColor: currentIsCorrect ? '#DCFF4A40' : '#D12A6440',
           paddingHorizontal: 24, paddingTop: 24,
-          paddingBottom: insets.bottom + 20,
+          paddingBottom: bottomInset + 20,
           transform: [{ translateY: feedbackTranslateY }],
         }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 }}>
@@ -984,6 +998,7 @@ function ResultScreen({
 }) {
   const meta   = LEVEL_META[level];
   const insets = useSafeAreaInsets();
+  const bottomInset = useBottomInset();
   const L: 'pt' | 'en' = systemIsPt ? 'pt' : 'en'; // resultado no idioma do device
 
   const anim = useRef(new Animated.Value(0)).current;
@@ -1020,7 +1035,7 @@ function ResultScreen({
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{
               paddingHorizontal: 28, paddingTop: 28,
-              paddingBottom: insets.bottom + 16,
+              paddingBottom: bottomInset + 16,
               flexGrow: 1,
             }}
           >

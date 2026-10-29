@@ -29,15 +29,21 @@ import {
   sendWeeklyChallenges,
   sendEngagementPushes,
   sendBuddyRivalry,
+  sendTastePushes,
+  sendRankingPushes,
+  checkExpoReceipts,
 } from '@/lib/expo-notification-service';
 import { runRallyJobs } from '@/lib/rally-jobs';
 import { notifyStaleTickets, closeIdleConversations } from '@/lib/support-service';
 import { analyzePendingConversations } from '@/lib/support-insights';
+import { runAiCostReport } from '@/lib/ai-cost-report';
+import { processOutbox } from '@/lib/email-outbox';
+import { endLegacyTrials } from '@/lib/legacy-trial';
 import { getSupabase } from '@/lib/supabase';
 
 const CRON_SECRET = process.env.CRON_SECRET ?? '';
 
-type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'rally' | 'support_sla' | 'support_insights' | 'support_autoclose';
+type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'taste' | 'ranking' | 'legacy_trial' | 'rally' | 'support_sla' | 'support_insights' | 'support_autoclose' | 'ai_costs' | 'email_outbox' | 'push_receipts';
 
 function isAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization') ?? '';
@@ -49,7 +55,7 @@ function isAuthorized(request: NextRequest): boolean {
   return false;
 }
 
-async function runTask(task: TaskType): Promise<{ task: TaskType }> {
+async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType }> {
   const supabase = getSupabase();
   if (!supabase) throw new Error('Supabase client unavailable');
 
@@ -72,6 +78,15 @@ async function runTask(task: TaskType): Promise<{ task: TaskType }> {
     case 'buddy':
       await sendBuddyRivalry(supabase);
       break;
+    case 'legacy_trial': // teste antigo venceu → degustação + push e e-mail com os 7 dias grátis da loja
+      await endLegacyTrials();
+      break;
+    case 'ranking': // ranking da semana: subiu, perdeu, risco de perder (19h) e venceu a semana (segunda 10h)
+      await sendRankingPushes(supabase);
+      break;
+    case 'taste': // degustação: 1 push por dia, fluxo próprio (os genéricos não vão para ela)
+      await sendTastePushes(supabase);
+      break;
     case 'rally':
       await runRallyJobs();
       break;
@@ -87,6 +102,15 @@ async function runTask(task: TaskType): Promise<{ task: TaskType }> {
     case 'support_autoclose': // atendimento parado: IA 2 h, atendente 24 h → encerrado (sem mensagem)
       await closeIdleConversations();
       break;
+    case 'email_outbox': // e-mails que falharam no envio (fila). O agendamento de 5 min do GitHub Actions atrasa horas.
+      await processOutbox();
+      break;
+    case 'push_receipts': // recibos de entrega do Expo dos pushes de 15 min a 24 h atrás (entregue ou erro)
+      await checkExpoReceipts();
+      break;
+    case 'ai_costs': // 8h (Brasília): e-mail de custos de IA (anteontem, já fechado) com alertas (OpenAI e ElevenLabs)
+      await runAiCostReport({ force: forced });
+      break;
     default:
       throw new Error(`Unknown task: ${task}`);
   }
@@ -96,7 +120,7 @@ async function runTask(task: TaskType): Promise<{ task: TaskType }> {
 // Every hourly run invokes every sender. Each sender drops users whose
 // per-user local hour does not match the task's target hour, so this is
 // cheap when no one is at the right local time.
-const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'rally', 'support_sla', 'support_insights', 'support_autoclose'];
+const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'taste', 'ranking', 'legacy_trial', 'rally', 'support_sla', 'support_insights', 'support_autoclose', 'ai_costs', 'email_outbox', 'push_receipts'];
 
 export async function GET(request: NextRequest) {
   if (!isAuthorized(request)) {
@@ -109,7 +133,7 @@ export async function GET(request: NextRequest) {
   // force_task: synchronous — caller waits for result
   if (forceTask) {
     try {
-      const result = await runTask(forceTask);
+      const result = await runTask(forceTask, true);
       return NextResponse.json({
         success: true,
         forced: true,
@@ -131,7 +155,7 @@ export async function GET(request: NextRequest) {
   // (maxDuration: 120s in vercel.json) via after().
   const now = new Date();
   after(async () => {
-    await Promise.allSettled(HOURLY_TASKS.map(runTask));
+    await Promise.allSettled(HOURLY_TASKS.map(t => runTask(t)));
   });
 
   return NextResponse.json({

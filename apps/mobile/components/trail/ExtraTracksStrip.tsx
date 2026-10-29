@@ -1,4 +1,4 @@
-// components/trail/ExtraTracksStrip.tsx — faixa "Trilhas da Família Queizy" na Início.
+// components/trail/ExtraTracksStrip.tsx — faixa "Trilhas da Família Queizy" na tela inicial.
 // Um cartão por trilha extra (lib/tracks.ts): avatar, nome, com quem é e o progresso.
 // Com uma trilha só, o cartão ocupa a largura toda; com mais, a faixa desliza para o lado.
 import React, { useCallback, useState } from 'react';
@@ -54,7 +54,7 @@ function TrackCard({ track, width }: { track: ExtraTrack; width: number }) {
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 7, alignSelf: 'flex-start', backgroundColor: LEVEL_ACCENT_BG[track.id], borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3 }}>
             <Gift size={13} color={accent} weight="bold" />
             <AppText style={{ fontSize: 12, fontWeight: '700', color: accent }}>
-              {isPt ? '1 tópico grátis' : '1 free topic'}
+              {isPt ? '1 tópico grátis por dia' : '1 free topic a day'}
             </AppText>
           </View>
         ) : (
@@ -98,11 +98,11 @@ export function ExtraTracksStrip({ onLayoutHeight }: { onLayoutHeight?: (h: numb
 }
 
 /**
- * Versão em linha, dentro do cartão da trilha da Início (sempre visível: a Início rola sozinha
+ * Versão em linha, dentro do cartão da trilha da tela inicial (sempre visível: a tela inicial rola sozinha
  * até o tópico ativo, então uma faixa acima da trilha ficaria escondida para quem está no meio).
- * Mostra só a trilha de quem o aluno escolheu na Família (quem fala na Início): com várias
- * trilhas de influenciadores, a Início não vira uma lista. As outras ficam na tela Família.
- * Com a Charlotte na Início, aparece no lugar o convite para conhecer a Família (FamilyInviteRow).
+ * Mostra só a trilha de quem o aluno escolheu na Família (quem fala na tela inicial): com várias
+ * trilhas de influenciadores, a tela inicial não vira uma lista. As outras ficam na tela Família.
+ * Com a Charlotte na tela inicial, aparece no lugar o convite para conhecer a Família (FamilyInviteRow).
  */
 export function ExtraTracksRow() {
   const { profile, isTaster } = useAuth();
@@ -167,7 +167,7 @@ function FamilyInviteRow() {
   const host = characterInfo(withTrack?.character ?? others[0]?.id).name;
   const subtitle = withTrack
     ? (isTaster
-        ? (isPt ? `O ${host} tem um tópico grátis para você` : `${host} has a free topic for you`)
+        ? (isPt ? `O ${host} tem um tópico grátis por dia para você` : `${host} has a free topic a day for you`)
         : (isPt ? `O ${host} tem uma trilha só dele` : `${host} has a trail of his own`))
     : (isPt ? `Converse com o comediante ${host}` : `Chat with comedian ${host}`);
 

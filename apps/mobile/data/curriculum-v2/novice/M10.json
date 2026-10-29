@@ -84,6 +84,9 @@
           "sentence": "I'd like _____ bread, please.",
           "hint": "Quantidade indefinida com incontável",
           "answer": "some",
+          "accepts": [
+            "more"
+          ],
           "explanation": "\"Bread\" é incontável. \"Some bread\" = \"um pouco de pão / pão\" (quantidade não especificada)."
         },
         {
@@ -98,6 +101,9 @@
           "sentence": "Can I have _____ juice?",
           "hint": "Quantidade indefinida (juice = incontável)",
           "answer": "some",
+          "accepts": [
+            "more"
+          ],
           "explanation": "\"Juice\" é incontável → \"some juice\". Padrão pra pedir bebida."
         },
         {
@@ -105,6 +111,11 @@
           "sentence": "I'd like a water, please.",
           "hint": "\"Water\" é incontável",
           "answer": "I'd like some water, please.",
+          "accepts": [
+            "I'd like a glass of water, please.",
+            "I'd like water, please.",
+            "I'd like a bottle of water, please."
+          ],
           "explanation": "\"Water\" é incontável, não usa \"a\". Use \"some water\" ou \"a glass of water\" (com unidade)."
         },
         {
@@ -112,6 +123,11 @@
           "sentence": "I have two breads.",
           "hint": "\"Bread\" é incontável",
           "answer": "I have some bread.",
+          "accepts": [
+            "I have two pieces of bread.",
+            "I have two slices of bread.",
+            "I have two loaves of bread."
+          ],
           "explanation": "\"Bread\" não tem plural com -s. Pra quantificar: \"two pieces of bread\", \"some bread\", \"a slice of bread\"."
         },
         {
@@ -317,7 +333,7 @@
             "much"
           ],
           "answer": "any",
-          "explanation": "Negativa → \"any\". \"We don't / do not have any milk\" = \"Não temos leite (nenhum)\". Any pra negativo."
+          "explanation": "Negativa → \"any\". \"We don't have any milk\" = \"Não temos leite (nenhum)\". Any pra negativo."
         },
         {
           "type": "word_bank",
@@ -355,7 +371,7 @@
           "sentence": "I don't have _____ time today.",
           "hint": "Negativa",
           "answer": "any",
-          "explanation": "\"I don't / do not have any time\" — negativa usa any (= nenhum/nenhuma)."
+          "explanation": "\"I don't have any time\" — negativa usa any (= nenhum/nenhuma)."
         },
         {
           "type": "fill_gap",
@@ -376,14 +392,14 @@
           "sentence": "We don't have some bread.",
           "hint": "Negativa pede \"any\"",
           "answer": "We don't have any bread.",
-          "explanation": "Negativa usa ANY, não some. \"We don't / do not have any bread\"."
+          "explanation": "Negativa usa ANY, não some. \"We don't have any bread\"."
         },
         {
           "type": "read_answer",
           "passage": "I have some bread but I don't have any milk. Is there any cheese? Yes, there's some cheese in the fridge.",
           "question": "O que o narrador NÃO tem?",
           "answer": "milk",
-          "explanation": "O texto diz \"I don't / do not have any milk\"."
+          "explanation": "O texto diz \"I don't have any milk\"."
         }
       ],
       "listening_speaking": [
@@ -814,7 +830,7 @@
             "Give me"
           ],
           "answer": "I'd like",
-          "explanation": "\"I'd / I would like\" (I would like) é o chunk educado pra pedir. \"I want\" é direto demais; \"Give me\" é rude."
+          "explanation": "\"I'd like\" (I would like) é o chunk educado pra pedir. \"I want\" é direto demais; \"Give me\" é rude."
         },
         {
           "type": "multiple_choice",
@@ -833,11 +849,11 @@
           "choices": [
             "a",
             "the",
-            "some",
-            "one"
+            "an",
+            "much"
           ],
           "answer": "a",
-          "explanation": "\"A pizza\" — pedido singular contável. \"I'd / I would like a pizza\"."
+          "explanation": "\"A pizza\" — pedido singular contável. \"I'd like a pizza\"."
         },
         {
           "type": "word_bank",
@@ -856,13 +872,20 @@
           "sentence": "I'd _____ a sandwich and a juice.",
           "hint": "Forma curta de \"would\"",
           "answer": "like",
-          "explanation": "\"I'd / I would like\" = \"I would like\" (eu gostaria). Contração obrigatória em fala."
+          "accepts": [
+            "love"
+          ],
+          "explanation": "\"I'd like\" = \"I would like\" (eu gostaria). Contração obrigatória em fala."
         },
         {
           "type": "fill_gap",
           "sentence": "Could I _____ the menu, please?",
           "hint": "Verbo \"ter / receber\" no pedido",
           "answer": "have",
+          "accepts": [
+            "see",
+            "get"
+          ],
           "explanation": "\"Could I have the menu?\" — versão ainda mais educada que \"Can I have\". \"Have\" no sentido de receber."
         },
         {
@@ -877,13 +900,26 @@
           "sentence": "I want one coffee.",
           "hint": "Mais educado em restaurante",
           "answer": "I'd like a coffee.",
-          "explanation": "\"I want\" é direto demais em contextos sociais/comerciais. \"I'd / I would like a coffee\" é o padrão educado. Também \"a coffee\" (não \"one coffee\")."
+          "accepts": [
+            "I'd like one coffee.",
+            "Can I have a coffee?",
+            "Could I have a coffee, please?",
+            "I'd like a coffee, please."
+          ],
+          "explanation": "\"I want\" é direto demais em contextos sociais/comerciais. \"I'd like a coffee\" é o padrão educado. Também \"a coffee\" (não \"one coffee\")."
         },
         {
           "type": "fix_error",
           "sentence": "Give me the menu.",
           "hint": "Forma educada de pedir",
           "answer": "Can I have the menu, please?",
+          "accepts": [
+            "Could I have the menu, please?",
+            "Can I see the menu, please?",
+            "Could I see the menu, please?",
+            "May I have the menu, please?",
+            "Can I have the menu?"
+          ],
           "explanation": "\"Give me\" sem \"please\" soa rude. \"Can I have... please?\" é o padrão educado."
         },
         {
@@ -1105,6 +1141,9 @@
             "one"
           ],
           "answer": "an",
+          "accepts": [
+            "one"
+          ],
           "explanation": "\"An apple\" — singular contável (apple começa com vogal → \"an\")."
         },
         {
@@ -1119,6 +1158,10 @@
           "sentence": "I have _____ cookies and _____ juice.",
           "hint": "Afirmativa (positiva) com ambos",
           "answer": "some / some",
+          "accepts": [
+            "some some",
+            "some, some"
+          ],
           "explanation": "Afirmativa usa \"some\" tanto pra contável quanto incontável. \"I have some cookies and some juice\"."
         },
         {
@@ -1133,6 +1176,9 @@
           "sentence": "I'd like one tea.",
           "hint": "Tea é incontável",
           "answer": "I'd like some tea.",
+          "accepts": [
+            "I'd like a cup of tea."
+          ],
           "explanation": "Tea = incontável. Não usa \"one\". Use \"some tea\" ou \"a cup of tea\"."
         },
         {

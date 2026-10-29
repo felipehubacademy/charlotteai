@@ -43,6 +43,15 @@ function parseHashParams(url: string): Record<string, string> {
   return Object.fromEntries(new URLSearchParams(url.slice(hashIndex + 1)));
 }
 
+/** Conta apagada de verdade (o servidor diz que o usuário não existe). Token vencido ("invalid JWT"), sessão
+ *  expirada e falha de rede NÃO contam: antes o teste aceitava qualquer "invalid" e o app saía da conta sozinho
+ *  ao voltar do segundo plano com o token vencido. Mesmo critério do middleware do site. */
+function accountIsGone(ue: unknown): boolean {
+  const e = ue as { code?: string; message?: string } | null;
+  if (!e) return false;
+  return e.code === 'user_not_found' || /user not found|does not exist/i.test(e.message ?? '');
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
@@ -130,6 +139,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         // 2) Re-lê profile (agora possivelmente corrigido pelo sync acima).
         const updated = await fetchProfile(userId).catch(() => null);
         if (updated) setProfile(updated);
+        else {
+          // Sem perfil: a conta pode ter sido apagada com o app aberto. Confere no servidor; se não existe mais,
+          // sai da conta (falha de rede não derruba ninguém).
+          const { data: u, error: ue } = await supabase.auth.getUser();
+          const gone = !u?.user && accountIsGone(ue);
+          if (gone) { await supabase.auth.signOut({ scope: 'local' }).catch(() => {}); return; }
+        }
         // Salvar timezone do device para uso em triggers/crons server-side
         void (async () => {
           const tz = deviceTimezone();
@@ -295,6 +311,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           if (!mounted) return;
           console.log('[AuthProvider] fetchProfile deferred start for:', userId);
           const userProfile = await fetchProfile(userId);
+          if (mounted && !userProfile) {
+            // Conta apagada (ex.: pelo /admin) com a sessão ainda salva no aparelho: o perfil nunca vem e a tela
+            // ficava girando. Confere no servidor se a conta existe; se não existe, encerra a sessão local e o
+            // app volta para o login. Falha de rede não derruba ninguém (getUser só erra com conta inválida).
+            const { data: u, error: ue } = await supabase.auth.getUser();
+            const gone = !u?.user && accountIsGone(ue);
+            if (gone) {
+              console.warn('[AuthProvider] conta não existe mais — encerrando a sessão local');
+              await supabase.auth.signOut({ scope: 'local' }).catch(() => {});
+              return;
+            }
+          }
           if (mounted && userProfile) {
             // Pre-fetch the home greeting BEFORE setProfile so the API call is
             // already in-flight by the time HomeScreen mounts and its effect runs.

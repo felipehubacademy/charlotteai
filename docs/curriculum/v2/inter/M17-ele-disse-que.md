@@ -62,7 +62,7 @@
 7. **fill_gap** — Direct: "I don't understand." Reported: "She said she _____ understand."
    **Hint**: past simple negative "didn't"
    **Answer**: didn't
-   **Explanation**: "Don't / Do not" (present) → "didn't / did not" (past) in reported speech.
+   **Explanation**: "Don't" (present) → "didn't" (past) in reported speech.
 
 8. **fix_error** — Direct: "I'm tired." Reported: "He said that he is tired."
    **Hint**: Após "said" (passado), present muda para past
@@ -235,11 +235,13 @@
 6. **fill_gap** — "He _____ that he didn't want to come."
    **Hint**: said (sem objeto direto)
    **Answer**: said
+   **Accepts**: explained / mentioned / replied
    **Explanation**: "Said that" — the verb "say" doesn't take a direct object before the that-clause.
 
 7. **fill_gap** — "She _____ the children a story."
    **Hint**: told (tell + pessoa + coisa)
    **Answer**: told
+   **Accepts**: read
    **Explanation**: "Told the children a story" — natural structure with tell.
 
 8. **fix_error** — "She said me that she was tired."
@@ -418,7 +420,7 @@
 7. **fill_gap** — Direct: "I read that book." Reported: "He said he _____ that book."
    **Hint**: had + past participle "read"
    **Answer**: had read
-   **Explanation**: "Read" (past) → "had read" (past perfect). Note: pronounced /red/ in both.
+   **Explanation**: "Read" (past) → "had read" (past perfect). Note: pronounced like "red" in both.
 
 8. **fix_error** — Direct: "I finished it." Reported: "He said he finished it."
    **Hint**: Past simple precisa ir para past perfect
@@ -586,12 +588,12 @@
 5. **fill_gap** — Direct: "I won't be there." Reported: "He said he _____ be there."
    **Hint**: would + not (wouldn't)
    **Answer**: wouldn't
-   **Explanation**: "Won't / Will not" (will not) → "wouldn't / would not" (would not) em reported.
+   **Explanation**: "Won't" (will not) → "wouldn't" (would not) em reported.
 
 6. **fill_gap** — Direct: "I can't do it." Reported: "She said she _____ do it."
    **Hint**: couldn't (can't → couldn't)
    **Answer**: couldn't
-   **Explanation**: "Can't / Cannot" → "couldn't / could not" em reported. Backshift padrão.
+   **Explanation**: "Can't" → "couldn't" em reported. Backshift padrão.
 
 7. **fill_gap** — Direct: "I'll send the email." Reported: "He said he _____ send the email."
    **Hint**: would (will → would)
@@ -749,6 +751,7 @@
 2. **multiple_choice** — Direct: "I'll come tomorrow." Reported: "She said she would come _____."
    **Options**: the next day / tomorrow / the day after / next day
    **Answer**: the next day
+   **Accepts**: the day after
    **Explanation**: "Tomorrow" → "the next day" (or "the following day") in reported speech.
 
 3. **word_bank** — Direct: "I was here yesterday." Reported: "He said he had been _____ the day before."
@@ -759,6 +762,7 @@
 4. **word_bank** — Direct: "I saw it yesterday." Reported: "She said she had seen it _____."
    **Choices**: the day before / yesterday / the previous day / one day before
    **Answer**: the day before
+   **Accepts**: the previous day
    **Explanation**: "Yesterday" → "the day before" (or "the previous day") in reported speech.
 
 5. **fill_gap** — Direct: "I love this song." Reported: "He said he loved _____ song."
@@ -769,6 +773,7 @@
 6. **fill_gap** — Direct: "I'll call you next week." Reported: "She said she would call me the _____ week."
    **Hint**: "next" → "following"
    **Answer**: following
+   **Accepts**: next
    **Explanation**: "Next week" → "the following week" in reported speech.
 
 7. **fill_gap** — Direct: "I came here last year." Reported: "He said he had come _____ the year before."

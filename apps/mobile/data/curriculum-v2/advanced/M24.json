@@ -89,7 +89,12 @@
           "type": "read_answer",
           "passage": "She'd been planning to confront him for weeks, but every time she saw him, she lost her nerve. Finally, she bit the bullet over coffee on a Tuesday. He listened, then gave her the cold shoulder for the next three months. She, who normally wore her heart on her sleeve, learned to keep her feelings closer to her chest.",
           "question": "What three body-part idioms appear in the passage?",
-          "answer": "\"bit the bullet\" (forced herself to act), \"gave her the cold shoulder\" (ignored her), \"wore her heart on her sleeve\" (showed emotions openly)",
+          "answer": "bit the bullet, cold shoulder, heart on sleeve",
+          "accepts": [
+            "bit the bullet",
+            "gave the cold shoulder",
+            "wore her heart on her sleeve"
+          ],
           "explanation": "Three idioms layered: she bit the bullet (decisive action despite difficulty), he gave her the cold shoulder (deliberate rejection), she normally wore her heart on her sleeve (her usual emotional openness — now changed). Each idiom does specific narrative work."
         }
       ],
@@ -122,7 +127,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three life situations. You describe each using a body-part idiom.",
-        "scenario_pt": "Charlotte apresenta três situações da vida. Você as descreve usando um idiom de parte do corpo.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -131,7 +135,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Expressão idiomática 'cost an arm and a leg' ou 'wear heart on sleeve'",
             "label_en": "Idiom 'cost an arm and a leg' or 'wear heart on sleeve'",
             "hidden_prompt": "user uses 'cost an arm and a leg' or 'wear heart on sleeve'",
             "hint_en": "I went to that new restaurant downtown — the meal cost an arm and a leg, but the food was extraordinary.",
@@ -148,7 +151,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Expressão idiomática 'cold shoulder'",
             "label_en": "Idiom 'cold shoulder'",
             "hidden_prompt": "user uses 'cold shoulder'",
             "hint_en": "My brother gave me the cold shoulder for two weeks after our argument — finally we talked it out.",
@@ -165,7 +167,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Expressão idiomática 'bite the bullet'",
             "label_en": "Idiom 'bite the bullet'",
             "hidden_prompt": "user uses 'bite the bullet'",
             "hint_en": "I'd been putting off the dentist for a year, but yesterday I bit the bullet and went.",
@@ -196,12 +197,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shares a story. Respond with body-part idioms.",
-        "intro_pt": "Charlotte compartilha uma história. Responda com expressões idiomáticas relacionadas a partes do corpo.",
         "opening_message": "My aunt and uncle haven't spoken in five years. Family events are awkward.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Comentar com 'cold shoulder'",
             "label_en": "Comment with 'cold shoulder'",
             "hidden_prompt": "user uses 'cold shoulder' to describe the situation",
             "hint_en": "Five years of giving each other the cold shoulder must make every Christmas dinner painful.",
@@ -216,7 +215,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Sugerir intervenção com 'bite the bullet'",
             "label_en": "Suggest intervention with 'bite the bullet'",
             "hidden_prompt": "user suggests 'bite the bullet' to reconcile",
             "hint_en": "Someone needs to bite the bullet and play mediator before another family event.",
@@ -233,7 +231,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar com 'heart on sleeve'",
             "label_en": "Ask with 'heart on sleeve'",
             "hidden_prompt": "user asks about feelings using 'heart on sleeve'",
             "hint_en": "Are either of them the kind to wear their heart on their sleeve, or do they both keep things bottled up?",
@@ -307,7 +304,13 @@
           "type": "read_answer",
           "passage": "The meeting started cordially, but everyone was avoiding the elephant in the room — the upcoming layoffs. When Maria finally let the cat out of the bag by mentioning specific names, the room went silent. The CEO had been barking up the wrong tree all morning, focusing on revenue when the real fear was jobs. Asked when announcements would come, he said 'soon' — which, knowing him, meant when pigs fly.",
           "question": "Which four idioms appear in the passage?",
-          "answer": "\"elephant in the room\", \"let the cat out of the bag\", \"barking up the wrong tree\", \"when pigs fly\"",
+          "answer": "elephant in the room, let the cat out of the bag, barking up the wrong tree, when pigs fly",
+          "accepts": [
+            "elephant in the room",
+            "let the cat out of the bag",
+            "barking up the wrong tree",
+            "when pigs fly"
+          ],
           "explanation": "Four idioms threaded through the passage: the avoided topic (elephant), the accidental reveal (cat out of bag), the misguided focus (wrong tree), and the impossibility (pigs fly). Each does specific narrative work, replacing longer explanations with vivid images."
         }
       ],
@@ -340,7 +343,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte gives three workplace scenarios. You comment using animal idioms.",
-        "scenario_pt": "Charlotte dá três cenários de trabalho. Você comenta usando expressões idiomáticas com animais.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -349,7 +351,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Expressão idiomática 'barking up the wrong tree'",
             "label_en": "Idiom 'barking up the wrong tree'",
             "hidden_prompt": "user uses 'barking up the wrong tree'",
             "hint_en": "Honestly, if they're blaming the engineering team for the missed deadline, they're barking up the wrong tree — the spec changed three times in two weeks.",
@@ -364,7 +365,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Expressão idiomática 'elephant in the room' ou 'cat out of bag'",
             "label_en": "Idiom 'elephant in the room' or 'cat out of bag'",
             "hidden_prompt": "user uses 'elephant in the room' or 'let the cat out of the bag'",
             "hint_en": "Someone needs to address the elephant in the room — half the team is exhausted and we're still planning aggressive Q4 targets.",
@@ -379,7 +379,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Expressão idiomática 'when pigs fly'",
             "label_en": "Idiom 'when pigs fly'",
             "hidden_prompt": "user uses 'when pigs fly'",
             "hint_en": "Will the budget include design tools next year? Sure — when pigs fly. They've been promising that for three years.",
@@ -407,12 +406,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte vents. Respond with animal idioms.",
-        "intro_pt": "Charlotte desabafa. Responda com expressões idiomáticas de animais.",
         "opening_message": "Our director just announced a re-org, but he kept skirting around what it actually means for headcount.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Comentar com 'elephant in the room'",
             "label_en": "Comment with 'elephant in the room'",
             "hidden_prompt": "user uses 'elephant in the room'",
             "hint_en": "Layoffs are the obvious elephant in the room, and his refusal to name it makes the silence worse.",
@@ -427,7 +424,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Comentar com 'let cat out of bag'",
             "label_en": "Comment with 'let cat out of bag'",
             "hidden_prompt": "user uses 'let the cat out of the bag'",
             "hint_en": "Someone will accidentally let the cat out of the bag in a Slack channel before management makes it official — they always do.",
@@ -444,7 +440,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Comentar com 'pigs fly'",
             "label_en": "Comment with 'pigs fly'",
             "hidden_prompt": "user uses 'when pigs fly'",
             "hint_en": "Will they give the team warning before the cuts? When pigs fly — corporate transparency is a one-way street.",
@@ -516,7 +511,13 @@
           "type": "read_answer",
           "passage": "Time flies when you're not paying attention. I hadn't seen Marco in years — we used to be close, but life moves and we lost touch. Then, out of the blue, he called last Tuesday. We met for coffee that same week. He was tired — he'd been burning the midnight oil on a startup that was either about to take off or crash, with no in-between. I told him to take a rain check on his other commitments and rest. He laughed, but the laugh was thin.",
           "question": "Which time-related idioms appear in the passage?",
-          "answer": "\"Time flies\", \"out of the blue\", \"burning the midnight oil\", \"take a rain check\"",
+          "answer": "time flies, out of the blue, burning the midnight oil, take a rain check",
+          "accepts": [
+            "time flies",
+            "out of the blue",
+            "burning the midnight oil",
+            "take a rain check"
+          ],
           "explanation": "Four time idioms layered: time flies (time passes quickly), out of the blue (unexpectedly), burning the midnight oil (working late), take a rain check (postpone). Each compresses a longer concept into a vivid image."
         }
       ],
@@ -549,7 +550,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks you about your week and recent life events. You respond using time idioms.",
-        "scenario_pt": "Charlotte pergunta sobre sua semana e eventos recentes. Você responde usando expressões idiomáticas de tempo.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -558,7 +558,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Expressão idiomática 'out of the blue'",
             "label_en": "Idiom 'out of the blue'",
             "hidden_prompt": "user uses 'out of the blue'",
             "hint_en": "Actually yes — completely out of the blue, my old university roommate called last week after eight years of silence.",
@@ -573,7 +572,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Expressão idiomática 'burn the midnight oil' ou 'once in a blue moon'",
             "label_en": "Idiom 'burn the midnight oil' or 'once in a blue moon'",
             "hidden_prompt": "user uses 'burn the midnight oil' or 'once in a blue moon'",
             "hint_en": "I've been burning the midnight oil all month — there's a product launch on the 15th and we're nowhere near ready.",
@@ -588,7 +586,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Expressão idiomática 'take a rain check' ou 'time flies'",
             "label_en": "Idiom 'take a rain check' or 'time flies'",
             "hidden_prompt": "user uses 'rain check' or 'time flies'",
             "hint_en": "My friends wanted to do brunch this weekend, but I had to take a rain check — I just need a real day off.",
@@ -616,12 +613,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte reflects on time. Respond with time idioms.",
-        "intro_pt": "Charlotte reflete sobre o tempo. Responda com expressões idiomáticas sobre tempo.",
         "opening_message": "It's already August. Where did this year go? I had so many plans for things that haven't happened.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Comentar com 'time flies'",
             "label_en": "Comment with 'time flies'",
             "hidden_prompt": "user uses 'time flies'",
             "hint_en": "Time really does fly when you're not looking — the year between January and August disappears the moment you blink.",
@@ -636,7 +631,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Comentar com 'once in a blue moon'",
             "label_en": "Comment with 'once in a blue moon'",
             "hidden_prompt": "user uses 'once in a blue moon'",
             "hint_en": "I only see most of my old friends once in a blue moon now — and I miss those weekly coffees we used to have.",
@@ -651,7 +645,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Reflexão com 'out of the blue'",
             "label_en": "Reflection with 'out of the blue'",
             "hidden_prompt": "user uses 'out of the blue'",
             "hint_en": "Sometimes the best things still happen out of the blue, though — the right book in the wrong week, a stranger's kindness on a hard day.",
@@ -723,7 +716,14 @@
           "type": "read_answer",
           "passage": "After two years of patches and workarounds, we finally threw in the towel on the legacy system. It wasn't one big failure — it was the slow accumulation of cutting corners on every release. The data loss on Tuesday was the last straw. We're back to square one now, designing a proper replacement. The ball is in the procurement team's court — they need to approve the budget by Friday.",
           "question": "Which five action idioms appear in the passage?",
-          "answer": "\"threw in the towel\", \"cutting corners\", \"the last straw\", \"back to square one\", \"the ball is in [their] court\"",
+          "answer": "threw in the towel, cutting corners, last straw, back to square one, ball is in their court",
+          "accepts": [
+            "threw in the towel",
+            "cutting corners",
+            "last straw",
+            "back to square one",
+            "ball is in their court"
+          ],
           "explanation": "Five idioms tracking a project's failure and reset: gave up (threw in the towel), accumulated shortcuts (cutting corners), final breaking point (the last straw), starting over (back to square one), now their turn (ball in their court). Each carries a stage of the story."
         }
       ],
@@ -756,7 +756,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte presents three project failure scenarios. You comment using action idioms.",
-        "scenario_pt": "Charlotte apresenta três cenários de falha de projeto. Comente usando idioms de ação.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -765,7 +764,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Expressão idiomática 'cutting corners' ou 'the last straw'",
             "label_en": "Idiom 'cutting corners' or 'the last straw'",
             "hidden_prompt": "user uses 'cutting corners' or 'the last straw'",
             "hint_en": "They'd been cutting corners on QA for months, and the production outage last week was the last straw — leadership finally invested in proper testing.",
@@ -780,7 +778,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Expressão idiomática 'throw in the towel' ou 'back to square one'",
             "label_en": "Idiom 'throw in the towel' or 'back to square one'",
             "hidden_prompt": "user uses 'throw in the towel' or 'back to square one'",
             "hint_en": "After three failed pivots, the founder finally threw in the towel and shut the company down — six years of work, back to square one for everyone.",
@@ -797,7 +794,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Expressão idiomática 'ball is in your court'",
             "label_en": "Idiom 'ball is in your court'",
             "hidden_prompt": "user uses 'ball is in your court'",
             "hint_en": "We've sent the proposal, demonstrated the prototype, and answered every question. The ball is firmly in their court now — we wait.",
@@ -825,12 +821,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte vents about a stuck project. Respond with action idioms.",
-        "intro_pt": "Charlotte desabafa sobre um projeto emperrado. Responda com expressões idiomáticas de ação.",
         "opening_message": "I've been trying to launch this side project for six months. Every time I get close, something breaks. I'm exhausted.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Incentivar com 'throw in the towel'",
             "label_en": "Encourage with 'throw in the towel'",
             "hidden_prompt": "user encourages with 'don't throw in the towel'",
             "hint_en": "Don't throw in the towel yet — six months of effort is usually right before the breakthrough or the honest admission it's not the right project.",
@@ -847,7 +841,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Diagnosticar com 'cutting corners' ou 'back to square one'",
             "label_en": "Diagnose with 'cutting corners' or 'back to square one'",
             "hidden_prompt": "user diagnoses with 'cutting corners' or 'back to square one'",
             "hint_en": "Are you cutting corners somewhere you shouldn't? Sometimes the breaks are signal that an earlier shortcut needs revisiting — even if it means back to square one for one component.",
@@ -864,7 +857,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Reformular com 'ball is in your court'",
             "label_en": "Reframe with 'ball is in your court'",
             "hidden_prompt": "user reframes with 'ball is in your court'",
             "hint_en": "The ball is in your court for the next decision — keep pushing, redesign one piece, or pause for a month. Any of those is a valid move.",
@@ -936,7 +928,14 @@
           "type": "read_answer",
           "passage": "I was nervous about the meeting — I always struggle to break the ice with new clients. But Maria opened with a joke, and her first question hit the nail on the head: she asked the one thing nobody else had thought of. As a rule of thumb, I let her lead from there. Speak of the devil — she's just walked in. The presentation that took us a week to prepare turned out to be a piece of cake when she ran it.",
           "question": "Which five conversational idioms appear?",
-          "answer": "\"break the ice\", \"hit the nail on the head\", \"as a rule of thumb\", \"speak of the devil\", \"a piece of cake\"",
+          "answer": "break the ice, hit the nail on the head, rule of thumb, speak of the devil, piece of cake",
+          "accepts": [
+            "break the ice",
+            "hit the nail on the head",
+            "rule of thumb",
+            "speak of the devil",
+            "piece of cake"
+          ],
           "explanation": "Five conversational idioms in one short passage: starting conversation (break the ice), being exactly right (hit the nail on the head), general principle (rule of thumb), coincidental appearance (speak of the devil), easy task (piece of cake). All high-frequency native conversational currency."
         }
       ],
@@ -969,7 +968,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte runs a meeting. You use conversational idioms naturally as the meeting unfolds.",
-        "scenario_pt": "Charlotte conduz uma reunião. Use expressões idiomáticas de forma natural conforme a reunião se desenrola.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -978,7 +976,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Sugerir como 'break the ice'",
             "label_en": "Suggest how to 'break the ice'",
             "hidden_prompt": "user suggests an icebreaker",
             "hint_en": "Open with something light — 'Quick question to break the ice — what was the best part of your weekend?' That gets the room talking before the agenda kicks in.",
@@ -993,7 +990,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Comentar com 'hit the nail on the head'",
             "label_en": "Comment with 'hit the nail on the head'",
             "hidden_prompt": "user uses 'hit the nail on the head'",
             "hint_en": "When Maria summarised the problem in one sentence, she hit the nail on the head — everyone in the room nodded at the same time.",
@@ -1010,7 +1006,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Comentar com 'piece of cake' ou 'rule of thumb'",
             "label_en": "Comment with 'piece of cake' or 'rule of thumb'",
             "hidden_prompt": "user uses 'piece of cake' or 'rule of thumb'",
             "hint_en": "As a rule of thumb, the first half of a meeting is for context, the second half for decisions — and if we keep to that, this one's going to be a piece of cake.",
@@ -1038,12 +1033,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte chats. Use conversational idioms.",
-        "intro_pt": "Charlotte conversa. Use expressões idiomáticas de conversação.",
         "opening_message": "The board presentation went so much better than I expected. I was dreading it for weeks.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Comentar com 'piece of cake'",
             "label_en": "Comment with 'piece of cake'",
             "hidden_prompt": "user uses 'piece of cake'",
             "hint_en": "Sounds like it ended up being a piece of cake — funny how the things we dread for weeks turn out to be the easiest part.",
@@ -1062,7 +1055,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Perguntar com 'break the ice'",
             "label_en": "Ask with 'break the ice'",
             "hidden_prompt": "user asks about how she broke the ice",
             "hint_en": "How did you break the ice with the board? That first thirty seconds usually decides how the rest of the room sits with you.",
@@ -1079,7 +1071,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Expressão idiomática 'speak of the devil' ou 'hit the nail on the head'",
             "label_en": "Idiom 'speak of the devil' or 'hit the nail on the head'",
             "hidden_prompt": "user uses 'speak of the devil' or 'hit the nail on the head'",
             "hint_en": "Speak of the devil — your assistant just walked in with what looks like the board's written feedback. Hopefully someone hit the nail on the head with the praise.",

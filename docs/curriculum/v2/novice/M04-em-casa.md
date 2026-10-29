@@ -61,16 +61,19 @@
 5. **fill_gap** — "_____ kitchen is small."
    **Hint**: Possessivo de "I"
    **Answer**: My
+   **Accepts**: Our / His / Her / Your / Their
    **Explanation**: "My kitchen" — falando da própria cozinha. Pra dizer "a minha cozinha", usa "my + substantivo".
 
 6. **fill_gap** — "This is _____ bedroom. It is great."
    **Hint**: Possessivo (mostrando algo seu)
    **Answer**: my
+   **Accepts**: your / our / his / her
    **Explanation**: "This is my bedroom" pra apresentar o próprio quarto. "My" possessivo.
 
 7. **fill_gap** — "Welcome to _____ home!"
    **Hint**: Possessivo (sua casa)
    **Answer**: my
+   **Accepts**: our / your
    **Explanation**: "Welcome to my home" — receber alguém na sua casa. Chunk fixo de hospitalidade.
 
 8. **fix_error** — "I house is big."
@@ -238,6 +241,7 @@
 5. **fill_gap** — "_____ a big bed in my bedroom."
    **Hint**: There + verbo to be singular
    **Answer**: There is
+   **Accepts**: There's
    **Explanation**: "There is a big bed" — "tem uma cama grande". Singular = "there is".
 
 6. **fill_gap** — "_____ two windows in the kitchen."
@@ -258,6 +262,7 @@
 9. **fix_error** — "It have a window in my room."
    **Hint**: Em inglês usa "there is/are", não "it has/have"
    **Answer**: There is a window in my room.
+   **Accepts**: There's a window in my room.
    **Explanation**: Em português dizemos "tem", mas em inglês NÃO se traduz como "it has/have". A estrutura correta é "there is/there are" pra indicar existência.
 
 10. **read_answer**
@@ -572,12 +577,12 @@
 1. **multiple_choice** — "I've got _____ apple."
    **Options**: an / a / the
    **Answer**: an
-   **Explanation**: "An" antes de palavras com som de vogal. "Apple" começa com /æ/ (vogal). "An apple".
+   **Explanation**: "An" antes de palavras com som de vogal. "Apple" começa com som de vogal. "An apple".
 
 2. **multiple_choice** — "There is _____ door in my room."
    **Options**: a / an / the
    **Answer**: a
-   **Explanation**: "A" antes de som de consoante. "Door" começa com /d/ (consoante). "A door".
+   **Explanation**: "A" antes de som de consoante. "Door" começa com som de D (consoante). "A door".
 
 3. **word_bank** — "_____ kitchen is small."
    **Choices**: The / A / An / I
@@ -592,22 +597,25 @@
 5. **fill_gap** — "There is _____ chair next to the table."
    **Hint**: Artigo indefinido antes de "chair"
    **Answer**: a
-   **Explanation**: "A" antes de "chair" (consoante /ʧ/). "A chair" = "uma cadeira".
+   **Accepts**: one
+   **Explanation**: "A" antes de "chair" (começa com som de consoante, o "tch"). "A chair" = "uma cadeira".
 
 6. **fill_gap** — "Welcome to _____ house — this is where I live."
    **Hint**: Artigo definido (referência específica)
    **Answer**: the
+   **Accepts**: my
    **Explanation**: "The house" se refere a uma casa específica já em contexto. "The" é o artigo definido.
 
 7. **fill_gap** — "She is _____ teacher."
    **Hint**: Artigo indefinido antes de profissão
    **Answer**: a
+   **Accepts**: my / the / our / your
    **Explanation**: "A teacher" — para profissões, sempre artigo indefinido (a/an). "A teacher" porque "teacher" começa com consoante.
 
 8. **fix_error** — "I've got a apple."
    **Hint**: Apple começa com som de vogal
    **Answer**: I've got an apple.
-   **Explanation**: "Apple" começa com som /æ/ (vogal), então usa "an", não "a". Regra: "an" antes de SOM de vogal.
+   **Explanation**: "Apple" começa com som de vogal, então usa "an", não "a". Regra: "an" antes de SOM de vogal.
 
 9. **fix_error** — "I am the teacher in my school."
    **Hint**: Profissão usa artigo indefinido
@@ -774,6 +782,7 @@
 6. **fill_gap** — "_____ a chair next to my bed."
    **Hint**: Singular para indicar existência
    **Answer**: There is
+   **Accepts**: There's
    **Explanation**: "There is a chair" = "tem uma cadeira" (singular).
 
 7. **fill_gap** — "I've got two _____ in my kitchen."
@@ -813,7 +822,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "Welcome! Start with your house overall."
+**Opening line**: "Welcome! First, tell me about your house in general."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -848,7 +857,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Welcome! Start with your house overall."
+1. **Charlotte**: "Welcome! First, tell me about your house in general."
 2. **Student**: ~"My house is big."
 3. **Charlotte**: "Nice. How many bedrooms?"
 4. **Student**: ~"There are three bedrooms."

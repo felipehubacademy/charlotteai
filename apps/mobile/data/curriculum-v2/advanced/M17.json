@@ -44,7 +44,7 @@
             "cannot"
           ],
           "answer": "can't",
-          "explanation": "Ellipsis after modal: \"I can't / cannot [come to the meeting]\" — the verb phrase is omitted because it's recoverable from the question. \"I can't / cannot to\" is wrong (no \"to\" needed after modals). \"I can't / cannot go\" is grammatically correct but unnecessarily explicit; native speakers prefer the elliptical \"I can't / cannot\"."
+          "explanation": "Ellipsis after modal: \"I can't [come to the meeting]\" — the verb phrase is omitted because it's recoverable from the question. \"I can't to\" is wrong (no \"to\" needed after modals). \"I can't go\" is grammatically correct but unnecessarily explicit; native speakers prefer the elliptical \"I can't\"."
         },
         {
           "type": "multiple_choice",
@@ -56,7 +56,7 @@
             "so"
           ],
           "answer": "to",
-          "explanation": "Ellipsis after \"to\": \"I'd / I would like to [call him]\" — the infinitive verb is omitted but \"to\" remains as the marker. Standard ellipsis pattern: \"would like to / want to / mean to / hope to + ellipsis\" — the \"to\" stays."
+          "explanation": "Ellipsis after \"to\": \"I'd like to [call him]\" — the infinitive verb is omitted but \"to\" remains as the marker. Standard ellipsis pattern: \"would like to / want to / mean to / hope to + ellipsis\" — the \"to\" stays."
         },
         {
           "type": "fill_gap",
@@ -80,7 +80,7 @@
           "passage": "She had been invited to three events that evening. She would have gone to all of them if she could have. She would have liked to at least drop in on one. In the end, she didn't go to any. 'I meant to,' she said the next day. 'I just couldn't.'",
           "question": "What word is omitted after \"couldn't\" in her final line?",
           "answer": "go (the verb is elided)",
-          "explanation": "Four ellipses in five sentences: \"if she could have [gone]\", \"She would have liked to [drop in / go]\", \"didn't / did not go to any [of them]\", \"I meant to [go]\", \"I just couldn't / could not [go]\". Verb phrases recovered from context — fluent C2 economy."
+          "explanation": "Four ellipses in five sentences: \"if she could have [gone]\", \"She would have liked to [drop in / go]\", \"didn't go to any [of them]\", \"I meant to [go]\", \"I just couldn't [go]\". Verb phrases recovered from context — fluent C2 economy."
         }
       ],
       "listening_speaking": [
@@ -112,7 +112,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks three questions. You answer with elliptical structures (verb phrase omitted).",
-        "scenario_pt": "Charlotte faz três perguntas. Você responde com estruturas elípticas (frase verbal omitida).",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -121,7 +120,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Elipse após 'to'",
             "label_en": "Ellipsis after 'to'",
             "hidden_prompt": "user answers 'I want to' / 'I'd like to' with elided verb",
             "hint_en": "Q: 'Will you come?' A: 'I'd like to, but I have a conflict that evening.'",
@@ -138,7 +136,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Elipse após modal",
             "label_en": "Ellipsis after modal",
             "hidden_prompt": "user uses 'I can't / I won't' with elided verb",
             "hint_en": "Q: 'Are you applying?' A: 'I should, but I keep putting it off.'",
@@ -155,7 +152,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Elipse reflexiva",
             "label_en": "Reflexive ellipsis",
             "hidden_prompt": "user uses 'I meant to / I tried to'",
             "hint_en": "Q: 'Did you reply to the email?' A: 'I meant to. The day got away from me.'",
@@ -183,12 +179,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks casually. Use elliptical replies.",
-        "intro_pt": "Charlotte pergunta casualmente. Use respostas elípticas.",
         "opening_message": "Did you ever finish that book you were reading?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Resposta elíptica com 'to'",
             "label_en": "Elliptical reply with 'to'",
             "hidden_prompt": "user replies with elliptical 'I meant to / I tried to'",
             "hint_en": "I meant to, but I got distracted by another one halfway through.",
@@ -203,7 +197,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Aprofundar com outra elipse",
             "label_en": "Deepen with another ellipsis",
             "hidden_prompt": "user uses another elliptical structure",
             "hint_en": "I should, really — it was on my reading list for a reason.",
@@ -220,7 +213,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if she finished hers",
             "hint_en": "Did you finish yours?",
@@ -260,7 +252,7 @@
             "think to"
           ],
           "answer": "think so",
-          "explanation": "\"I think so\" — \"so\" replaces the entire clause \"that the train is on time\". Common verbs: think, hope, believe, suppose, expect, guess. Negative: \"I don't / do not think so\" (with \"not\" after the verb, not \"I think not\", although the latter exists in formal register)."
+          "explanation": "\"I think so\" — \"so\" replaces the entire clause \"that the train is on time\". Common verbs: think, hope, believe, suppose, expect, guess. Negative: \"I don't think so\" (with \"not\" after the verb, not \"I think not\", although the latter exists in formal register)."
         },
         {
           "type": "multiple_choice",
@@ -272,7 +264,7 @@
             "never"
           ],
           "answer": "not",
-          "explanation": "\"I hope not\" — \"not\" replaces the negative version of the clause (\"that it won't / will not rain\"). Same pattern: \"I'm / I am afraid not\", \"I guess not\", \"I suppose not\". The negative substitute is \"not\" placed directly after the verb."
+          "explanation": "\"I hope not\" — \"not\" replaces the negative version of the clause (\"that it won't rain\"). Same pattern: \"I'm afraid not\", \"I guess not\", \"I suppose not\". The negative substitute is \"not\" placed directly after the verb."
         },
         {
           "type": "fill_gap",
@@ -280,7 +272,9 @@
           "hint": "\"Believe so\" or \"think so\"",
           "answer": "believe so",
           "accepts": [
-            "think so"
+            "think so",
+            "guess so",
+            "suppose so"
           ],
           "explanation": "\"I believe so\" — substitution after believe. Same pattern with other thinking verbs: think, suppose, imagine, presume, gather. All take \"so\" or \"not\" as clause replacements in conversation."
         },
@@ -296,7 +290,7 @@
           "passage": "The meeting was full of softened uncertainties. 'Will the deal close this quarter?' 'I think so.' 'Are we still on track for launch?' 'I hope so.' 'Is the CFO going to push back?' 'I'm afraid so.' 'And the board?' 'I expect not.' Four answers, each carrying just enough to keep the conversation moving.",
           "question": "How does the speaker respond to whether the board will push back?",
           "answer": "I expect not (he/she doesn't expect them to push back)",
-          "explanation": "Four substitutions in five exchanges: \"I think so\", \"I hope so\", \"I'm / I am afraid so\", \"I expect not\". Each replaces a whole clause. Conversation moves on without restating."
+          "explanation": "Four substitutions in five exchanges: \"I think so\", \"I hope so\", \"I'm afraid so\", \"I expect not\". Each replaces a whole clause. Conversation moves on without restating."
         }
       ],
       "listening_speaking": [
@@ -328,7 +322,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte asks three yes/no questions. You answer with so/not substitutions, never full clauses.",
-        "scenario_pt": "Charlotte faz três perguntas de sim/não. Você responde com substituições de so/not, nunca frases completas.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -337,7 +330,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Afirmar com 'I think so / I believe so'",
             "label_en": "Affirm with 'I think so / I believe so'",
             "hidden_prompt": "user uses 'I think so / I believe so / I suppose so'",
             "hint_en": "Q: 'Will the package arrive Monday?' A: 'I believe so — the tracking suggested two more days.'",
@@ -352,7 +344,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Negar com 'I don't think so / I hope not'",
             "label_en": "Deny with 'I don't think so / I hope not'",
             "hidden_prompt": "user uses 'I don't think so / I hope not / I expect not'",
             "hint_en": "Q: 'Will the meeting get cancelled again?' A: 'I hope not — we've already rescheduled twice.'",
@@ -367,7 +358,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Confirmação suave com 'I'm afraid so'",
             "label_en": "Soft confirmation with 'I'm afraid so'",
             "hidden_prompt": "user uses 'I'm afraid so'",
             "hint_en": "Q: 'Did the project get delayed again?' A: 'I'm afraid so. We lost the lead engineer last week.'",
@@ -395,12 +385,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte asks practical yes/no questions. Use 'so/not' substitution.",
-        "intro_pt": "Charlotte faz perguntas práticas de sim/não. Use substituição 'so/not'.",
         "opening_message": "Is the new policy going through this week?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Resposta afirmativa",
             "label_en": "Affirmative answer",
             "hidden_prompt": "user uses 'I believe so' or 'I think so'",
             "hint_en": "I believe so — the legal review wrapped up yesterday.",
@@ -415,7 +403,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Adicionar uma dúvida",
             "label_en": "Add a doubt",
             "hidden_prompt": "user uses 'I hope not / I'm afraid so'",
             "hint_en": "Though I'm afraid there's still one signature missing from the executive sponsor — we may slip by a day.",
@@ -430,7 +417,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if she'll attend the kickoff",
             "hint_en": "Will you be at the kickoff?",
@@ -535,7 +521,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte offers three choices. You respond with \"one/ones\" substitution naturally.",
-        "scenario_pt": "Charlotte oferece três opções. Você responde naturalmente com substituição de \"one/ones\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -544,7 +529,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Singular com 'one'",
             "label_en": "Singular with 'one'",
             "hidden_prompt": "user uses 'a/the + adjective + one'",
             "hint_en": "Q: 'Which book?' A: 'The blue one on the second shelf — the one I lent you last summer.'",
@@ -559,7 +543,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Plural com 'ones'",
             "label_en": "Plural with 'ones'",
             "hidden_prompt": "user uses 'adjective + ones' for plural",
             "hint_en": "Q: 'Which shoes?' A: 'The black ones, definitely — the brown ones are starting to wear out.'",
@@ -576,7 +559,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'those of' academicamente",
             "label_en": "Academic with 'those of'",
             "hidden_prompt": "user uses 'those of + reference'",
             "hint_en": "Our findings differ from those of the original 2018 study in two important respects.",
@@ -604,12 +586,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte shops. Use 'one/ones' substitution naturally.",
-        "intro_pt": "Charlotte faz compras. Use a substituição 'one/ones' naturalmente.",
         "opening_message": "These two jackets are basically identical. Which one would you go for?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com 'the X one'",
             "label_en": "Reply with 'the X one'",
             "hidden_prompt": "user uses 'the + adj + one'",
             "hint_en": "Honestly, I'd take the navy one — the cut sits better at the shoulders.",
@@ -624,7 +604,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Comparação com 'the other one'",
             "label_en": "Comparison with 'the other one'",
             "hidden_prompt": "user uses 'the other one' or another substitution",
             "hint_en": "The other one looks like it was made for someone slightly taller — the proportions are off.",
@@ -639,7 +618,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte's preference",
             "hint_en": "Which one do you keep coming back to?",
@@ -702,7 +680,8 @@
           "hint": "\"Do it\" or \"do so\"",
           "answer": "do so",
           "accepts": [
-            "do it"
+            "do it",
+            "do that"
           ],
           "explanation": "\"Do so\" or \"do it\" — both replace \"email\" here. \"Do so\" leans formal; \"do it\" leans conversational. C2 speakers choose by register."
         },
@@ -712,7 +691,8 @@
           "hint": "Native English often uses \"He did the same\" or \"He did too\"",
           "answer": "She walked into the room. He did the same.",
           "accepts": [
-            "She walked into the room. He did too."
+            "She walked into the room. He did too.",
+            "She walked into the room. He did likewise."
           ],
           "explanation": "\"He did so\" is grammatical but stylistically heavy in narrative — feels formal-stilted. \"Did the same\" or \"did too\" or \"followed\" reads more naturally. Register-aware substitution: \"do so\" for formal, \"do the same / do too\" for everyday narrative."
         },
@@ -720,7 +700,13 @@
           "type": "read_answer",
           "passage": "When the senior partner offered his resignation, the deputy did the same within the week. When pressed by the board, the chief financial officer initially refused; she would do so only after a private conversation with the chairman. By the end of the month, three of five executives had resigned, and the remaining two were widely expected to do likewise.",
           "question": "How many verb-phrase substitutions appear in the passage?",
-          "answer": "three — \"did the same\" (resigned), \"would do so\" (refuse / give resignation), \"do likewise\" (resign)",
+          "answer": "three",
+          "accepts": [
+            "3",
+            "did the same",
+            "would do so",
+            "do likewise"
+          ],
           "explanation": "Three substitutions for \"resign\": \"did the same\", \"would do so\", \"do likewise\". Each replaces the action verb to avoid repetition. Different forms suit different points in the paragraph."
         }
       ],
@@ -753,7 +739,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte describes someone doing something. You echo with a substitute verb-phrase to describe a second person doing the same.",
-        "scenario_pt": "Charlotte descreve alguém fazendo algo. Você repete com uma locução verbal substituta para descrever uma segunda pessoa fazendo o mesmo.",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -762,7 +747,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Usar 'Did the same' (informal)",
             "label_en": "'Did the same' (informal)",
             "hidden_prompt": "user uses 'did the same' to echo action",
             "hint_en": "My brother went vegetarian last year, and my sister-in-law did the same a few months later.",
@@ -780,7 +764,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Usar 'Did so' (formal)",
             "label_en": "'Did so' (formal)",
             "hidden_prompt": "user uses 'did so' formally",
             "hint_en": "The chief executive resigned in March. The chief financial officer did so two weeks later, citing personal reasons.",
@@ -798,7 +781,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Usar 'Do likewise'",
             "label_en": "'Do likewise'",
             "hidden_prompt": "user uses 'do likewise'",
             "hint_en": "If I were you, I'd switch to the new system this quarter — the early adopters have, and the rest will need to do likewise by year-end.",
@@ -829,12 +811,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte sets a scenario of collective behaviour. Echo with do-substitutes.",
-        "intro_pt": "Charlotte estabelece um cenário de comportamento coletivo. Responda com do-substitutes.",
         "opening_message": "I made the switch to a four-day workweek last year. Several colleagues followed. Tell me about a change you made.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Seu troco",
             "label_en": "Your change",
             "hidden_prompt": "user describes their change, with possible echo",
             "hint_en": "I cut my caffeine in half last spring. My partner did the same a few weeks later — sympathy headaches, mostly.",
@@ -852,7 +832,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Aprofundar com 'do so'",
             "label_en": "Deepen with 'do so'",
             "hidden_prompt": "user uses 'do so' or 'did so'",
             "hint_en": "Two of my friends had been thinking of doing so for months — my switch seemed to give them permission.",
@@ -870,7 +849,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if anyone copied her four-day week",
             "hint_en": "Who copied your four-day week?",
@@ -921,12 +899,9 @@
             "Neither have I",
             "So have I",
             "Either have I",
-            "Me neither"
+            "Neither I have"
           ],
           "answer": "Neither have I",
-          "accepts": [
-            "Me neither\" in casual register"
-          ],
           "explanation": "\"Neither have I\" — echo for negative statements. Pattern: \"Neither + auxiliary + subject\". Both work: \"Neither have I\" (formal) and \"Me neither\" (informal). Some speakers say \"Nor have I\" — synonymous with \"Neither have I\"."
         },
         {
@@ -936,7 +911,10 @@
           "answer": "So was I",
           "accepts": [
             "So was he",
-            "So was everyone"
+            "So was everyone",
+            "Me too",
+            "So was everybody",
+            "So were we"
           ],
           "explanation": "Past simple of \"be\" → \"So was + subject\". Pattern: match the auxiliary form (\"was\") and invert with the subject. The whole verb phrase is replaced by the auxiliary echo."
         },
@@ -946,7 +924,10 @@
           "hint": "For negative agreement, use \"Me neither\" or \"Neither do I\"",
           "answer": "I don't like coffee. — Me neither.",
           "accepts": [
-            "Neither do I."
+            "Neither do I.",
+            "Me neither",
+            "Me either",
+            "Nor do I"
           ],
           "explanation": "\"Me too\" is for positive agreement (\"I like coffee. — Me too\"). For negative agreement, use \"Me neither\" or \"Neither do I\". Common L2 error — defaulting to \"me too\" for all agreement."
         },
@@ -987,7 +968,6 @@
       ],
       "roleplay": {
         "scenario": "Charlotte states three things. You echo each with the correct \"So + aux + I\" or \"Neither + aux + I\".",
-        "scenario_pt": "Charlotte afirma três coisas. Você ecoa cada uma com o correto \"So + aux + I\" ou \"Neither + aux + I\".",
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
@@ -996,7 +976,6 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Eco positivo no presente ('So do/am/can I')",
             "label_en": "Positive present echo ('So do/am/can I')",
             "hidden_prompt": "user echoes positive with 'So + aux + I'",
             "hint_en": "Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get anything done.'",
@@ -1015,7 +994,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Eco positivo no passado ('So did I')",
             "label_en": "Positive past echo ('So did I')",
             "hidden_prompt": "user echoes positive past with 'So did I / So was I'",
             "hint_en": "Q: 'I loved the trip to Lisbon.' A: 'So did I — it was the best vacation I've taken in years.'",
@@ -1034,7 +1012,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Eco negativo ('Neither / Nor')",
             "label_en": "Negative echo ('Neither / Nor')",
             "hidden_prompt": "user echoes negative with 'Neither / Nor + aux + I'",
             "hint_en": "Q: 'I haven't been to that restaurant yet.' A: 'Neither have I — let's go this weekend.'",
@@ -1065,12 +1042,10 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_en": "Charlotte trades preferences. Echo with the correct auxiliary.",
-        "intro_pt": "Charlotte troca preferências. Reflita com o auxiliar correto.",
         "opening_message": "I never check email before coffee.",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Eco presente negativo",
             "label_en": "Negative present echo",
             "hidden_prompt": "user echoes with 'Neither do I'",
             "hint_en": "Neither do I — the first hour belongs to me, not to whoever wrote at 6 a.m.",
@@ -1089,7 +1064,6 @@
           },
           {
             "id": 2,
-            "label_pt": "Eco positivo em outra dimensão",
             "label_en": "Positive echo in another dimension",
             "hidden_prompt": "user uses 'So do I' for another preference",
             "hint_en": "I always read for twenty minutes before bed — and so do I, even when the day was a wreck.",
@@ -1108,7 +1082,6 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for one more habit",
             "hint_en": "What else do you protect?",

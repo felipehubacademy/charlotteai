@@ -35,17 +35,17 @@
 1. **multiple_choice** — "I _____ working right now."
    **Options**: am / is / are
    **Answer**: am
-   **Explanation**: Com "I" usa "am" no present continuous: "I am working" ou contraído "I'm / I am working".
+   **Explanation**: Com "I" usa "am" no present continuous: "I am working" ou contraído "I'm working".
 
 2. **multiple_choice** — "She _____ sleeping."
    **Options**: is / am / are
    **Answer**: is
-   **Explanation**: Com he/she/it usa "is": "She is sleeping" ou "She's / She is sleeping".
+   **Explanation**: Com he/she/it usa "is": "She is sleeping" ou "She's sleeping".
 
 3. **word_bank** — "They _____ playing soccer."
    **Choices**: are / is / am / be
    **Answer**: are
-   **Explanation**: Com they/we/you usa "are": "They are playing" ou "They're / They are playing".
+   **Explanation**: Com they/we/you usa "are": "They are playing" ou "They're playing".
 
 4. **word_bank** — "I'm _____ a book."
    **Choices**: reading / read / readed / readinge
@@ -60,11 +60,13 @@
 6. **fill_gap** — "We are _____ in the park for exercise."
    **Hint**: Verbo "correr" no -ing (dobra o n)
    **Answer**: running
+   **Accepts**: walking / jogging / cycling / exercising / training / biking / skating
    **Explanation**: Verbos curtos terminados em consoante-vogal-consoante dobram a última consoante antes de -ing: run → running, sit → sitting, swim → swimming.
 
 7. **fill_gap** — "She is _____ a cake for the party."
    **Hint**: Verbo "fazer" no -ing (drop o -e)
    **Answer**: making
+   **Accepts**: baking
    **Explanation**: Verbos terminados em -e mudo perdem o e antes de -ing: make → making, write → writing, take → taking.
 
 8. **fix_error** — "I am work right now."
@@ -75,7 +77,7 @@
 9. **fix_error** — "She working."
    **Hint**: Falta verbo "to be"
    **Answer**: She is working.
-   **Explanation**: Present continuous SEMPRE precisa de "to be" + verb-ing. "She is working" ou "She's / She is working", nunca "She working".
+   **Explanation**: Present continuous SEMPRE precisa de "to be" + verb-ing. "She is working" ou "She's working", nunca "She working".
 
 10. **read_answer**
     **Passage**: "I'm working from home today. My sister is studying upstairs. My mother is cooking lunch. We are all busy!"
@@ -212,53 +214,56 @@
 1. **multiple_choice** — "I _____ working today. It's Sunday."
    **Options**: am not / is not / don't
    **Answer**: am not
-   **Explanation**: Negativa com "I": "I am not working" ou "I'm / I am not working". Não usa don't (que é present simple).
+   **Explanation**: Negativa com "I": "I am not working" ou "I'm not working". Não usa don't (que é present simple).
 
 2. **multiple_choice** — "She _____ sleeping; she's reading."
    **Options**: isn't / aren't / doesn't
    **Answer**: isn't
-   **Explanation**: "She isn't / is not sleeping" — 3ª pessoa negativa = is + not = isn't. Forma contraída padrão.
+   **Explanation**: "She isn't sleeping" — 3ª pessoa negativa = is + not = isn't. Forma contraída padrão.
 
 3. **word_bank** — "We _____ eating; we're talking."
    **Choices**: aren't / isn't / am not / don't
    **Answer**: aren't
-   **Explanation**: "We aren't / are not" — plural negativa = are + not = aren't.
+   **Explanation**: "We aren't" — plural negativa = are + not = aren't.
 
 4. **word_bank** — "He _____ working today; he's sick."
    **Choices**: isn't / aren't / doesn't / no
    **Answer**: isn't
-   **Explanation**: "He isn't / is not working" — 3ª pessoa singular negativa.
+   **Explanation**: "He isn't working" — 3ª pessoa singular negativa.
 
 5. **fill_gap** — "I _____ studying right now."
    **Hint**: Negativa com "I" (forma contraída)
    **Answer**: 'm not
-   **Explanation**: "I'm / I am not studying" — "am not" contrai pra "'m not". Não existe "amn't" em inglês padrão.
+   **Accepts**: am not
+   **Explanation**: "I'm not studying" — "am not" contrai pra "'m not". Não existe "amn't" em inglês padrão.
 
 6. **fill_gap** — "She _____ cooking."
    **Hint**: Negativa de "she is" (forma contraída)
    **Answer**: isn't
-   **Explanation**: "She isn't / is not cooking" — is + not contrai pra "isn't / is not".
+   **Accepts**: is not
+   **Explanation**: "She isn't cooking" — is + not contrai pra "isn't".
 
 7. **fill_gap** — "They _____ watching TV; they're playing games."
    **Hint**: Negativa de "they are" (contraída)
    **Answer**: aren't
-   **Explanation**: "They aren't / are not watching" — are + not = aren't.
+   **Accepts**: are not
+   **Explanation**: "They aren't watching" — are + not = aren't.
 
 8. **fix_error** — "She don't working."
    **Hint**: Present continuous negativa usa "isn't"
    **Answer**: She isn't working.
-   **Explanation**: Present continuous negativa = forma de "to be" + not + verb-ing. NÃO usa don't/doesn't (que é present simple). "She isn't / is not working".
+   **Explanation**: Present continuous negativa = forma de "to be" + not + verb-ing. NÃO usa don't/doesn't (que é present simple). "She isn't working".
 
 9. **fix_error** — "I amn't sleeping."
    **Hint**: "Amn't" não existe em inglês padrão
    **Answer**: I'm not sleeping.
-   **Explanation**: "Amn't" NÃO existe — apenas "I'm / I am not". A contração de "am not" é só "'m not".
+   **Explanation**: "Amn't" NÃO existe — apenas "I'm not". A contração de "am not" é só "'m not".
 
 10. **read_answer**
     **Passage**: "I'm not working today. My brother isn't studying — he's playing games. We aren't eating yet."
     **Question**: O que o irmão não está fazendo?
     **Answer**: studying
-    **Explanation**: O texto diz "My brother isn't / is not studying".
+    **Explanation**: O texto diz "My brother isn't studying".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -435,7 +440,7 @@
     **Passage**: "Q: Are you working today? A: No, I'm not. I'm reading. Q: Is your sister studying? A: Yes, she is. She's preparing for an exam."
     **Question**: O que o narrador está fazendo?
     **Answer**: reading
-    **Explanation**: O texto diz "I'm / I am reading".
+    **Explanation**: O texto diz "I'm reading".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -453,7 +458,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "Hey! Ask me what I'm doing right now."
+**Opening line**: "Hey! Guess what I'm doing right now. Go on, ask me!"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -488,7 +493,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Hey! Ask me what I'm doing right now."
+1. **Charlotte**: "Hey! Guess what I'm doing right now. Go on, ask me!"
 2. **Student**: ~"What are you doing?"
 3. **Charlotte**: "Reading. Next?"
 4. **Student**: ~"Are you working?"
@@ -586,20 +591,23 @@
 5. **fill_gap** — "I'm reading a great book _____."
    **Hint**: Marcador temporal pra agora
    **Answer**: right now
+   **Accepts**: at the moment / now / today / at this moment / this week
    **Explanation**: "Right now" enfatiza a ação no momento. Continuous + right now é combinação natural.
 
 6. **fill_gap** — "She is staying with us _____."
    **Hint**: Marcador de período curto (semana atual)
    **Answer**: this week
+   **Accepts**: at the moment / this month / now / right now / today / for a few days / this weekend
    **Explanation**: "This week" — período presente e específico. Combina com continuous.
 
 7. **fill_gap** — "They're traveling _____."
    **Hint**: Marcador de período atual (mês)
    **Answer**: this month
+   **Accepts**: at the moment / this week / this year / now / right now / this summer / these days
    **Explanation**: "This month" — atividade temporária em curso.
 
-8. **fix_error** — "I'm working every day right now."
-   **Hint**: "Every day" indica rotina, não momento
+8. **fix_error** — "I work a lot right now."
+   **Hint**: "Right now" (agora, temporário) pede o presente contínuo
    **Answer**: I'm working a lot right now.
    **Explanation**: "Every day" + present continuous é contradição. Use "every day" com simple, ou "right now / today" com continuous. Aqui: troca pra "a lot right now".
 
@@ -763,16 +771,19 @@
 5. **fill_gap** — "He _____ to the gym every day after work."
    **Hint**: rotina, 3ª pessoa
    **Answer**: goes
+   **Accepts**: drives / walks / runs
    **Explanation**: "Every day" indica rotina → present simple. "He goes to the gym" — 3ª pessoa singular, "go" vira "goes".
 
 6. **fill_gap** — "She _____ Italian — she's a translator."
    **Hint**: Profissão / habilidade permanente
    **Answer**: speaks
+   **Accepts**: knows / teaches
    **Explanation**: Habilidade permanente usa present simple: "She speaks Italian". Não continuous.
 
 7. **fill_gap** — "Look! It _____."
    **Hint**: Continuous (acontecendo agora)
    **Answer**: is raining
+   **Accepts**: is snowing
    **Explanation**: "Look! It is raining" — ação que está acontecendo neste momento. Continuous.
 
 8. **fix_error** — "I am working in a bank every day."
@@ -789,7 +800,7 @@
     **Passage**: "I usually wake up at seven, but today I'm waking up at nine — it's Sunday! My brother always cooks on Sundays. He's making pancakes right now."
     **Question**: O que o irmão está fazendo agora?
     **Answer**: pancakes
-    **Explanation**: O texto diz "He's / He is making pancakes right now".
+    **Explanation**: O texto diz "He's making pancakes right now".
 
 ### 2. Listening/Speaking (5 phrases)
 

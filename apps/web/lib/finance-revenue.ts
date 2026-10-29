@@ -19,7 +19,7 @@ export const CHANNEL_LABEL: Record<Channel, string> = {
 
 // Taxa usada quando o canal ainda não tem venda para medir (fração do bruto).
 const DEFAULT_FEE: Record<Channel, number> = {
-  app_store: 0.15, play_store: 0.15,            // programa de pequenas empresas (15%), sem imposto
+  app_store: 0.324, play_store: 0.15,           // Apple no Brasil: 32,4% no 1º ano (tabela do App Store Connect); Google: 15%, sem imposto
   site_monthly: 0.0299, site_annual_card: 0.0299, // cartão à vista/recorrente no Asaas (+ R$ 0,49)
   site_annual_pix: 0.01, site_annual_12x: 0.0399,
 };

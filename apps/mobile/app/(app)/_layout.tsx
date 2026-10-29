@@ -12,6 +12,7 @@ import { ActionSheetHost } from '@/components/ui/ActionSheet';
 import { AppAlertHost } from '@/components/ui/AppAlert';
 import { ShareCardProvider } from '@/components/share/ShareCardProvider';
 import { GoalsCelebration } from '@/components/goals/GoalsCelebration';
+import { StreakProvider } from '@/components/streak/StreakProvider';
 
 export default function AppLayout() {
   const { isAuthenticated, profile, mustChangePassword } = useAuth();
@@ -28,6 +29,7 @@ export default function AppLayout() {
     <XPToastProvider>
     <ShareCardProvider>
       <AchievementsProvider>
+      <StreakProvider>
       <PaywallModal />
       <InviteClaimer />
       <RallyJoinedModal />
@@ -40,17 +42,18 @@ export default function AppLayout() {
         <Stack.Screen name="(tabs)" options={{ animation: 'none' }} />
         <Stack.Screen name="learn-grammar" />
         <Stack.Screen name="learn-pronunciation" />
-        <Stack.Screen name="learn-trail" />
-        <Stack.Screen name="learn-intro" />
         <Stack.Screen name="learn-session" />
         <Stack.Screen name="change-password" />
+        <Stack.Screen name="reminder-time" />
         <Stack.Screen name="placement-test" options={{ animation: 'none' }} />
         <Stack.Screen name="charlotte-intro" options={{ animation: 'none', gestureEnabled: false }} />{/* fim do onboarding, sem vídeo */}
         <Stack.Screen name="leaderboard" />
+        <Stack.Screen name="rank-leader-preview" options={{ animation: 'fade' }} />
         <Stack.Screen name="my-vocabulary" />
         <Stack.Screen name="add-word" />
         <Stack.Screen name="ai-consent" options={{ animation: 'fade', gestureEnabled: false }} />
       </Stack>
+      </StreakProvider>
       </AchievementsProvider>
     </ShareCardProvider>
     </XPToastProvider>

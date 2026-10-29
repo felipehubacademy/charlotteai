@@ -65,6 +65,7 @@
 5. **fill_gap** — "_____ brother is fifteen years old."
    **Hint**: Possessivo de "I"
    **Answer**: My
+   **Accepts**: His / Her / Our / Your / Their
    **Explanation**: "My brother" = "meu irmão". Após "My" vem o substantivo possuído.
 
 6. **fill_gap** — "He is from Brazil. _____ name is Lucas."
@@ -222,17 +223,17 @@
 1. **multiple_choice** — "I _____ two brothers."
    **Options**: have got / has got / am got
    **Answer**: have got
-   **Explanation**: "I have got" (ou contraído "I've / I have got") é a forma simples pra dizer "eu tenho". Com "I", "you", "we", "they" usa "have got".
+   **Explanation**: "I have got" (ou contraído "I've got") é a forma simples pra dizer "eu tenho". Com "I", "you", "we", "they" usa "have got".
 
 2. **multiple_choice** — "She _____ one sister."
    **Options**: has got / have got / is got
    **Answer**: has got
-   **Explanation**: "She has got" — "she" é terceira pessoa singular, usa "has got". Forma contraída: "She's / She is got".
+   **Explanation**: "She has got" — "she" é terceira pessoa singular, usa "has got". Forma contraída: "She's got".
 
 3. **word_bank** — "He _____ three friends."
    **Choices**: has got / have got / has / had got
    **Answer**: has got
-   **Explanation**: "He has got" = "ele tem". Forma curta: "He's / He is got three friends". Com "he/she/it" sempre "has".
+   **Explanation**: "He has got" = "ele tem". Forma curta: "He's got three friends". Com "he/she/it" sempre "has".
 
 4. **word_bank** — "We _____ a big family."
    **Choices**: have got / has got / are got / are have
@@ -242,12 +243,14 @@
 5. **fill_gap** — "I _____ two sisters."
    **Hint**: Forma de "have got" para "I"
    **Answer**: have got
-   **Explanation**: "I have got" ou contraído "I've / I have got". Pra "I" sempre "have", nunca "has".
+   **Accepts**: have
+   **Explanation**: "I have got" ou contraído "I've got". Pra "I" sempre "have", nunca "has".
 
 6. **fill_gap** — "She _____ one brother and two sisters."
    **Hint**: Forma de "have got" para "she"
    **Answer**: has got
-   **Explanation**: "She has got" — terceira pessoa singular. Contração: "She's / She is got".
+   **Accepts**: has
+   **Explanation**: "She has got" — terceira pessoa singular. Contração: "She's got".
 
 7. **fill_gap** — "How many brothers _____ you got?"
    **Hint**: Auxiliar de pergunta com "have got"
@@ -257,12 +260,14 @@
 8. **fix_error** — "She have got a sister."
    **Hint**: "She" é terceira pessoa
    **Answer**: She has got a sister.
+   **Accepts**: She has a sister.
    **Explanation**: Com "she/he/it" usa "has got", não "have got". A frase correta: "She has got a sister".
 
 9. **fix_error** — "I has got a friend."
    **Hint**: "I" não usa "has"
    **Answer**: I have got a friend.
-   **Explanation**: Com "I" sempre "have got", não "has got". A frase correta: "I have got a friend" ou contraído "I've / I have got a friend".
+   **Accepts**: I have a friend.
+   **Explanation**: Com "I" sempre "have got", não "has got". A frase correta: "I have got a friend" ou contraído "I've got a friend".
 
 10. **read_answer**
     **Passage**: "I've got a small family. I have got one brother and one sister. My brother is twenty-five. My sister is fifteen."
@@ -286,7 +291,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "Family quick — how many brothers have you got?"
+**Opening line**: "Quick family question — how many brothers have you got?"
 
 **Sub-objectives** (M03 gradiente: 3 objetivos):
 
@@ -312,21 +317,21 @@
    **label_pt**: "Perguntar a Charlotte se ela tem irmãos"
    **label_en**: "Ask Charlotte if she has siblings"
    **hidden_prompt**: "user asks Charlotte about siblings with 'Have you got + brothers/sisters', 'how about you', or 'and you'"
-   **hint_pt**: "Have you got any?"
-   **hint_en**: "Have you got any?"
-   **example_pass**: Have you got any?
+   **hint_pt**: "Have you got any brothers or sisters?"
+   **hint_en**: "Have you got any brothers or sisters?"
+   **example_pass**: Have you got any brothers or sisters?
    **example_fail**: Yes I have (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Nice! Family map done." quando obj_3 baterem.
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Family quick — how many brothers have you got?"
+1. **Charlotte**: "Quick family question — how many brothers have you got?"
 2. **Student**: ~"I've got two brothers."
 3. **Charlotte**: "Cool. And sisters?"
 4. **Student**: ~"I've got one sister."
 5. **Charlotte**: "Got it."
-6. **Student**: ~"Have you got any?"
+6. **Student**: ~"Have you got any brothers or sisters?"
 7. **Charlotte**: "Yes — one sister. Nice! Family map done."
 
 **Evaluation focus**:
@@ -429,6 +434,7 @@
 7. **fill_gap** — "_____ wife is from Italy."
    **Hint**: Possessivo de "he"
    **Answer**: His
+   **Accepts**: My / Your / Our / Their
    **Explanation**: "His wife" = "a esposa dele". "His" é o possessivo de "he" (ele).
 
 8. **fix_error** — "Maria is my wifey."
@@ -596,6 +602,7 @@
 5. **fill_gap** — "_____ name is Ana."
    **Hint**: Possessivo de "she"
    **Answer**: Her
+   **Accepts**: My / Your
    **Explanation**: "Her name" = "o nome dela". "Her" é o possessivo de "she" (ela).
 
 6. **fill_gap** — "My friend is Brazilian. _____ name is Lucas."
@@ -606,6 +613,7 @@
 7. **fill_gap** — "Ana is _____ best friend. We are twenty-five."
    **Hint**: Possessivo de "I"
    **Answer**: my
+   **Accepts**: our / your / his / her
    **Explanation**: "My best friend" = "a minha melhor amiga". "My" é o possessivo de "I".
 
 8. **fix_error** — "Him is my friend."
@@ -750,7 +758,7 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "I'd like to introduce my family. _____ is Felipe."
+1. **multiple_choice** — "Let me introduce myself. _____ is Felipe."
    **Options**: My name / My / I
    **Answer**: My name
    **Explanation**: "My name is Felipe" é a apresentação padrão. Pra começar uma apresentação familiar, começa pelo seu próprio nome.
@@ -768,6 +776,7 @@
 4. **word_bank** — "I've got a big family. _____ are five people total."
    **Choices**: We / Us / Our / They
    **Answer**: We
+   **Accepts**: There
    **Explanation**: "We are" = "nós somos". "We" é o sujeito pra grupo incluindo você mesmo.
 
 5. **fill_gap** — "My brother is twenty. _____ is from Brazil."
@@ -778,6 +787,7 @@
 6. **fill_gap** — "_____ family is great."
    **Hint**: Possessivo de "I"
    **Answer**: My
+   **Accepts**: Our / His / Her / Your / Their
    **Explanation**: "My family" = "a minha família". "My" antes do substantivo.
 
 7. **fill_gap** — "She is my sister. _____ is fifteen years old."

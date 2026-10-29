@@ -55,7 +55,8 @@
 5. **read_answer**
    **Passage**: "The investigation continues. It is reported that three witnesses came forward last night. It is believed that the suspect was acting alone. It cannot yet be confirmed that any property was stolen — but it is widely suspected that this is the work of the same group responsible for the previous incidents."
    **Question**: What is widely suspected?
-   **Answer**: that this is the work of the same group responsible for previous incidents
+   **Answer**: same group responsible
+   **Accepts**: work of the same group / same group as previous incidents / group responsible for previous incidents
    **Explanation**: Three impersonal passives layered ("It is reported... It is believed... It cannot be confirmed... it is widely suspected"). News register at its most cautious.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -197,6 +198,7 @@
 3. **fill_gap** — "They _____ to be considering a merger."
    **Hint**: "are" + past participle of "think"
    **Answer**: are thought
+   **Accepts**: are believed / are said / are reported
    **Explanation**: "They are thought to be considering" — continuous infinitive after "to". The subject "they" is reported as currently considering something.
 
 4. **fix_error** — "He is said that he is wealthy."
@@ -350,11 +352,13 @@
 3. **fill_gap** — "We need to _____ this contract _____ by Friday."
    **Hint**: "have/get" / past participle "review"
    **Answer**: have / reviewed
+   **Accepts**: have reviewed / get / reviewed / get reviewed / have it reviewed / have this contract reviewed / get this contract reviewed
    **Explanation**: "Have this contract reviewed by Friday" — passive causative with deadline. Implies the reviewing will be done by someone else (a lawyer, an editor), arranged by us.
 
 4. **fix_error** — "I cut my hair last week" (you mean someone else cut it).
    **Hint**: To make clear someone else did it, use causative
    **Answer**: I had my hair cut last week.
+   **Accepts**: I got my hair cut last week.
    **Explanation**: "I cut my hair" implies you did it yourself with scissors at home. To indicate a barber did it, use the causative: "I had/got my hair cut". Crucial precision in C1 communication.
 
 5. **read_answer**
@@ -502,11 +506,13 @@
 3. **fill_gap** — "We _____ our house _____ while we were away."
    **Hint**: "had" / past participle "burgle"
    **Answer**: had / burgled
+   **Accepts**: had burgled / got / burgled / got burgled / had our house burgled / got our house burgled / had / robbed / had robbed / had our house robbed / had / broken into / had our house broken into
    **Explanation**: "Had our house burgled" — passive misfortune, no agency on the homeowners' part. The structure mirrors causative but the meaning is its opposite.
 
 4. **fix_error** — "I cut my hair by a hairdresser yesterday."
    **Hint**: To name the agent, use causative + "by"
    **Answer**: I had my hair cut by a hairdresser yesterday.
+   **Accepts**: I got my hair cut by a hairdresser yesterday.
    **Explanation**: "I cut my hair" implies you did it. To attribute action to someone else AND name them, use causative + "by + agent". "I had/got my hair cut by..."
 
 5. **read_answer**
@@ -612,9 +618,9 @@
    **label_pt**: "Perguntar a Charlotte"
    **label_en**: "Ask Charlotte"
    **hidden_prompt**: "user asks Charlotte how she resolved the passport mess"
-   **hint_pt**: "How did you sort the passport?"
-   **hint_en**: "How did you sort the passport?"
-   **example_pass**: How did you sort the passport?
+   **hint_pt**: "How did you sort out the passport?"
+   **hint_en**: "How did you sort out the passport?"
+   **example_pass**: How did you sort out the passport?
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Minor agonies, mutual." once obj_3 lands.
@@ -626,7 +632,7 @@
 3. **Charlotte**: "The phantom delivery — modern classic."
 4. **Student**: "I had my reservation cancelled at the last minute."
 5. **Charlotte**: "And no compensation, I assume."
-6. **Student**: "How did you sort the passport?"
+6. **Student**: "How did you sort out the passport?"
 7. **Charlotte**: "Three weeks, four calls, one consulate. Minor agonies, mutual."
 
 > A04 chat = full LLM. Scaffold via hint_pt/hint_en.
@@ -654,11 +660,13 @@
 3. **fill_gap** — "I need to _____ my passport _____ before I travel."
    **Hint**: "have" / "renew" past participle
    **Answer**: have / renewed
+   **Accepts**: have renewed / get / renewed / get renewed / have my passport renewed / get my passport renewed
    **Explanation**: Causative: "Have my passport renewed" — arranging the service. Distinct from "renew my passport" (you doing the renewal yourself, which makes less sense since governments issue them).
 
 4. **fix_error** — "I had stolen my bike last week."
    **Hint**: For misfortune, the structure is "had + object + past participle" (your bike was stolen)
    **Answer**: I had my bike stolen last week.
+   **Accepts**: I got my bike stolen last week.
    **Explanation**: "I had stolen my bike" reads as "I had committed the theft of my bike" (past perfect active). To describe the misfortune of being stolen from, use "I had + object + past participle".
 
 5. **read_answer**

@@ -46,7 +46,7 @@
 4. **word_bank** — "Tom, _____ I've known for years, just got married."
    **Choices**: who / that / which / whose
    **Answer**: who
-   **Explanation**: "Who I've / I have known for years" — extra info about Tom. Specific person, commas.
+   **Explanation**: "Who I've known for years" — extra info about Tom. Specific person, commas.
 
 5. **fill_gap** — "My sister, _____ studies medicine, lives in São Paulo."
    **Hint**: relative pronoun para pessoa em non-defining
@@ -56,6 +56,7 @@
 6. **fill_gap** — "Ana, _____ I work with, just had a baby."
    **Hint**: who
    **Answer**: who
+   **Accepts**: whom
    **Explanation**: "Who I work with" — extra info about Ana. Note: stranded preposition at the end is acceptable.
 
 7. **fill_gap** — "Mr. Silva, _____ teaches English, is from Portugal."
@@ -68,8 +69,9 @@
    **Answer**: My brother, who lives in Rio, is a teacher.
    **Explanation**: Common error: using "that" in non-defining. "That" only in defining clauses (no commas). For non-defining: "who".
 
-9. **fix_error** — "Maria who I met yesterday is from Spain."
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Non-defining precisa de vírgulas
+   **Options**: Maria who I met yesterday is from Spain. / Maria, who I met yesterday, is from Spain. / Maria, who I met yesterday is from Spain.
    **Answer**: Maria, who I met yesterday, is from Spain.
    **Explanation**: Maria is already specific (proper name). The information is EXTRA, it doesn't identify. So, commas are needed (non-defining).
 
@@ -205,7 +207,7 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "The Amazon, _____ is the longest river, runs through Brazil."
+1. **multiple_choice** — "The Amazon, _____ is the largest river in the world, runs through Brazil."
    **Options**: which / that / who / where
    **Answer**: which
    **Explanation**: Non-defining for thing/place: "which". "That" doesn't work in non-defining. "The Amazon" is already identified, so the info is EXTRA.
@@ -245,8 +247,9 @@
    **Answer**: The Amazon, which is the longest river, runs through Brazil.
    **Explanation**: "That" only in defining clauses (no commas). For non-defining: "which".
 
-9. **fix_error** — "My phone which I bought last week broke already."
+9. **multiple_choice** — Which sentence is punctuated correctly?
    **Hint**: Non-defining precisa de vírgulas
+   **Options**: My phone which I bought last week broke already. / My phone, which I bought last week, broke already. / My phone which I bought last week, broke already.
    **Answer**: My phone, which I bought last week, broke already.
    **Explanation**: If the info is EXTRA (doesn't identify among several phones), use commas. Without commas, it would be defining (among several, the one I bought last week).
 
@@ -273,7 +276,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Describe three things or places with 'which + comma' — extra info style."
+**Opening line**: "Describe three things or places and add extra information with ', which...'."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -308,7 +311,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Describe three things or places with 'which + comma' — extra info style."
+1. **Charlotte**: "Describe three things or places and add extra information with ', which...'."
 2. **Student**: ~"Rio, which is famous for its beaches, has amazing views."
 3. **Charlotte**: "Tourist favorite. Object?"
 4. **Student**: ~"My car, which I bought last year, is electric."
@@ -584,16 +587,19 @@
 5. **fill_gap** — "São Paulo, _____ I work, is a huge city."
    **Hint**: where (lugar)
    **Answer**: where
+   **Accepts**: in which
    **Explanation**: "Where I work" — specific place of work.
 
 6. **fill_gap** — "March, _____ I was born, is my favorite month."
    **Hint**: when (tempo)
    **Answer**: when
+   **Accepts**: in which
    **Explanation**: "When I was born" — specific time.
 
 7. **fill_gap** — "The university, _____ I studied, is famous."
    **Hint**: where
    **Answer**: where
+   **Accepts**: in which
    **Explanation**: "Where I studied" — place of study.
 
 8. **fix_error** — "Paris, which I lived for a year, is beautiful."
@@ -762,6 +768,7 @@
 5. **fill_gap** — Defining: "The woman _____ lives next door is a doctor."
    **Hint**: who/that (defining para pessoa)
    **Answer**: who
+   **Accepts**: that
    **Explanation**: Defining identifies WHO (among several women). "Who" works; "that" does too.
 
 6. **fill_gap** — Non-defining: "My mother, _____ is a doctor, lives next door."
@@ -772,6 +779,7 @@
 7. **fill_gap** — Defining: "The town _____ I grew up is small."
    **Hint**: where (lugar em defining)
    **Answer**: where
+   **Accepts**: in which
    **Explanation**: Defining "where" with no commas. "The town where I grew up" — identifies which town.
 
 8. **fix_error** — Non-defining: "My brother, that lives in Rio, is a teacher."
@@ -807,7 +815,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Three pairs — one defining and one non-defining for each topic."
+**Opening line**: "Let's do three pairs. For each topic, give me one sentence with 'who' or 'that' and one with extra information between commas."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -815,9 +823,9 @@
    **label_pt**: "Frase defining + non-defining sobre pessoa"
    **label_en**: "Defining + non-defining for person"
    **hidden_prompt**: "user uses both defining and non-defining for a person"
-   **hint_pt**: "The teacher who taught me French... My French teacher, who is from Paris,..."
-   **hint_en**: "The teacher who taught me French... My French teacher, who is from Paris,..."
-   **example_pass**: The teacher who taught me French... My French teacher, who is from Paris,... | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great. | My friend Maria, who lives in Rio and works as a teacher, is visiting. | My uncle, who's a doctor and lives in Spain, called. | My boss, who's been mentoring me for years, retired.
+   **hint_pt**: "The teacher who taught me French was strict. My French teacher, who is from Paris, was very patient."
+   **hint_en**: "The teacher who taught me French was strict. My French teacher, who is from Paris, was very patient."
+   **example_pass**: The teacher who taught me French was strict. My French teacher, who is from Paris, was very patient. | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great. | My friend Maria, who lives in Rio and works as a teacher, is visiting. | My uncle, who's a doctor and lives in Spain, called. | My boss, who's been mentoring me for years, retired.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 2. **id**: 2
@@ -842,7 +850,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three pairs — one defining and one non-defining for each topic."
+1. **Charlotte**: "Let's do three pairs. For each topic, give me one sentence with 'who' or 'that' and one with extra information between commas."
 2. **Student**: ~"The teacher who taught me French was great. My French teacher, who is from Paris, was great."
 3. **Charlotte**: "Same idea, different style. Place?"
 4. **Student**: ~"The city where I work is huge. São Paulo, where I work, is huge."

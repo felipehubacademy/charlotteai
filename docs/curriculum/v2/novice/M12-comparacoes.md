@@ -61,6 +61,7 @@
 7. **fill_gap** — "This test is _____ than the last one — only ten questions!"
    **Hint**: Comparativo de "easy"
    **Answer**: easier
+   **Accepts**: shorter
    **Explanation**: "Easy" → "easier" (y → ier). Adjetivos em -y trocam y por -ier.
 
 8. **fix_error** — "He is taller as me."
@@ -78,7 +79,7 @@
     **Question**: Quem é mais velho que o narrador?
     **Answer**: my brother
     **Accepts**: her/his brother
-    **Explanation**: O texto diz "he's / he is older than me" se referindo ao irmão.
+    **Explanation**: O texto diz "he's older than me" se referindo ao irmão.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -229,16 +230,19 @@
 5. **fill_gap** — "Yoga is _____ than running — perfect for stress."
    **Hint**: Comparativo longo de "relaxing"
    **Answer**: more relaxing
+   **Accepts**: calmer / more calming / more peaceful
    **Explanation**: "Relaxing" tem 3 sílabas → "more relaxing".
 
 6. **fill_gap** — "This puzzle is _____ than the last one — it's taking hours."
    **Hint**: Comparativo longo de "challenging"
    **Answer**: more challenging
+   **Accepts**: harder / more difficult / more complicated / longer
    **Explanation**: "Challenging" 3+ sílabas → "more challenging".
 
 7. **fill_gap** — "She is _____ than him — she always solves the hardest problems."
    **Hint**: Comparativo longo de "intelligent"
    **Answer**: more intelligent
+   **Accepts**: smarter / cleverer / brighter
    **Explanation**: "Intelligent" 4 sílabas → "more intelligent". Sem -er.
 
 8. **fix_error** — "This book is interestinger than that one."
@@ -416,6 +420,7 @@
 7. **fill_gap** — "He has _____ friends than me."
    **Hint**: Comparativo de "few/little" (mais)
    **Answer**: more
+   **Accepts**: fewer
    **Explanation**: "More" é o comparativo de quantidade — tanto countable quanto uncountable.
 
 8. **fix_error** — "She is gooder at math."
@@ -583,21 +588,25 @@
 5. **fill_gap** — "My car is _____ better than my old one."
    **Hint**: Intensifier (muito mais)
    **Answer**: much
+   **Accepts**: far / a lot / way
    **Explanation**: "Much better" = bem melhor. Padrão pra intensificar comparativos.
 
 6. **fill_gap** — "She is _____ more patient than I am."
    **Hint**: Modificador suave (um pouco)
    **Answer**: a little
+   **Accepts**: a bit / much / far / a lot
    **Explanation**: "A little more patient" = um pouco mais paciente. Suaviza.
 
 7. **fill_gap** — "This room is _____ smaller than that one."
    **Hint**: Modificador suave (um pouco)
    **Answer**: a bit
+   **Accepts**: a little / much / far / a lot
    **Explanation**: "A bit smaller" = um pouco menor. Sinônimo de "a little".
 
 8. **fix_error** — "She is very taller than me."
    **Hint**: "Very" não vai com comparativo
    **Answer**: She is much taller than me.
+   **Accepts**: She is far taller than me. / She is a lot taller than me. / She is a bit taller than me. / She is a little taller than me.
    **Explanation**: Com comparativo usa "much", não "very". "Very + adjetivo simples" (very tall); "Much + comparativo" (much taller).
 
 9. **fix_error** — "I'm a little more better today."
@@ -682,7 +691,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte explora intensidades de comparação. Pratica much/a little/a bit + comparativo."
-**Opening message**: "Big or small differences this week?"
+**Opening message**: "Was this week very different from last week, or just a little?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -717,7 +726,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Big or small differences this week?"
+1. **Charlotte**: "Was this week very different from last week, or just a little?"
 2. **Student**: "Today is much hotter."
 3. **Charlotte**: "Small ones?"
 4. **Student**: "My coffee is a little stronger today."
@@ -787,7 +796,7 @@
     **Question**: Quem é o melhor ouvinte?
     **Answer**: my sister
     **Accepts**: her sister / the sister
-    **Explanation**: O texto diz "She's / She is a better listener" — se referindo à irmã (melhor ouvinte que o falante e o irmão).
+    **Explanation**: O texto diz "She's a better listener" — se referindo à irmã (melhor ouvinte que o falante e o irmão).
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -805,7 +814,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "Three comparisons — one short adj, one long, one irregular!"
+**Opening line**: "Give me three comparisons: one with a short adjective, one with a long adjective and one irregular!"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -840,7 +849,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three comparisons — one short adj, one long, one irregular!"
+1. **Charlotte**: "Give me three comparisons: one with a short adjective, one with a long adjective and one irregular!"
 2. **Student**: ~"I'm taller than my sister."
 3. **Charlotte**: "Long adj?"
 4. **Student**: ~"This is more interesting than that."
@@ -860,7 +869,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte abre chat de comparações variadas. Mostra que domina curtos, longos e irregulares."
-**Opening message**: "Compare three things in your life right now."
+**Opening message**: "Let's compare! Pick three things in your life and compare them."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -895,7 +904,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Compare three things in your life right now."
+1. **Charlotte**: "Let's compare! Pick three things in your life and compare them."
 2. **Student**: "Coffee is cheaper than wine."
 3. **Charlotte**: "Long adj next?"
 4. **Student**: "My job is more difficult now."

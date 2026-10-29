@@ -25,13 +25,13 @@ const withWebRTCXcode16Fix = (config) => {
       let contents = readFileSync(podfilePath, 'utf8');
 
       // Idempotency guard — don't double-inject
-      const marker = '# webrtc-xcode16-fix-v3';
+      const marker = '# webrtc-xcode16-fix-v2';
       if (contents.includes(marker)) return config;
 
       const fixBlock = `
     ${marker}: disable Clang modules + explicit C++ stdlib path for Xcode 16
     installer.pods_project.targets.each do |t|
-      next unless ['react-native-webrtc', 'livekit-react-native-webrtc'].include?(t.name)
+      next unless t.name == 'react-native-webrtc'
       t.build_configurations.each do |cfg|
         # Disable module system so <memory> resolves via traditional header search
         cfg.build_settings['CLANG_ENABLE_MODULES'] = 'NO'

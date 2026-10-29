@@ -50,16 +50,19 @@
 5. **fill_gap** — "The car _____ if it makes that sound."
    **Hint**: should be + past participle "check"
    **Answer**: should be checked
+   **Accepts**: must be checked / needs to be checked / should be repaired / should be fixed
    **Explanation**: "Should be checked" — passive recommendation about the car.
 
 6. **fill_gap** — "Children _____ unsupervised."
    **Hint**: shouldn't be + past participle "leave"
    **Answer**: shouldn't be left
-   **Explanation**: "Shouldn't / Should not be left unsupervised" — passive prohibition.
+   **Accepts**: mustn't be left / should not be left
+   **Explanation**: "Shouldn't be left unsupervised" — passive prohibition.
 
 7. **fill_gap** — "The package _____ at this point — it's been weeks."
    **Hint**: must have been + past participle "lose"
    **Answer**: must have been lost
+   **Accepts**: might have been lost / may have been lost
    **Explanation**: "Must have been lost" — modal perfect passive. Strong inference about the past in passive voice.
 
 8. **fix_error** — "The report must finished by Friday."
@@ -70,7 +73,7 @@
 9. **fix_error** — "Children shouldn't left alone."
    **Hint**: Falta "be"
    **Answer**: Children shouldn't be left alone.
-   **Explanation**: "Shouldn't / Should not BE left" — modal + be + past participle. Fixed form.
+   **Explanation**: "Shouldn't BE left" — modal + be + past participle. Fixed form.
 
 10. **read_answer**
     **Passage**: "The report must be finished by Friday. This room should be cleaned every day. Children shouldn't be left alone. The form must be filled in blue ink."
@@ -227,16 +230,19 @@
 5. **fill_gap** — "Dinner _____ at 7 PM."
    **Hint**: will be + past participle "serve"
    **Answer**: will be served
+   **Accepts**: is served / is going to be served
    **Explanation**: "Will be served at 7" — standard future passive.
 
 6. **fill_gap** — "The bridge _____ in 2030."
    **Hint**: will be + past participle "complete"
    **Answer**: will be completed
+   **Accepts**: will be finished / will be built / will be opened / is going to be completed
    **Explanation**: "Will be completed" — future passive about construction.
 
 7. **fill_gap** — "The meeting _____ next week."
    **Hint**: is going to be + past participle "hold"
    **Answer**: is going to be held
+   **Accepts**: will be held
    **Explanation**: "Is going to be held" — planned-future passive. "Hold" → past participle "held".
 
 8. **fix_error** — "The winner will announced tomorrow."
@@ -561,16 +567,19 @@
 1. **multiple_choice** — "She _____ in a car accident last week."
    **Options**: got hurt / hurt / was hurt / has hurt
    **Answer**: got hurt
+   **Accepts**: was hurt
    **Explanation**: "Get + past participle" = informal passive, especially for state changes or accidents. "Got hurt" — common in speech.
 
 2. **multiple_choice** — "They _____ last summer."
    **Options**: got married / married / were married / get married
    **Answer**: got married
+   **Accepts**: were married
    **Explanation**: "Got married" — fixed chunk. "Get" passive is heavily used for life events.
 
 3. **word_bank** — "He _____ for the company last month."
    **Choices**: got hired / hired / was hired / has hired
    **Answer**: got hired
+   **Accepts**: was hired
    **Explanation**: "Got hired" — informal alternative for "was hired". Common in speech.
 
 4. **word_bank** — "I always _____ in the rain."
@@ -581,16 +590,19 @@
 5. **fill_gap** — "My phone _____ stolen yesterday."
    **Hint**: got + past participle
    **Answer**: got
+   **Accepts**: was
    **Explanation**: "Got stolen" — informal passive of "was stolen". Common in storytelling.
 
 6. **fill_gap** — "They _____ engaged last month."
    **Hint**: got + past participle "engage"
    **Answer**: got engaged
+   **Accepts**: got married
    **Explanation**: "Got engaged" — life event in get-passive.
 
 7. **fill_gap** — "I _____ lost in the city."
    **Hint**: got + past participle "lose"
    **Answer**: got lost
+   **Accepts**: was lost
    **Explanation**: "Got lost" — common in storytelling. "Lose" → past participle "lost".
 
 8. **fix_error** — "She get married last summer."
@@ -754,21 +766,25 @@
 4. **word_bank** — "She _____ married last weekend."
    **Choices**: got / was / is / has been
    **Answer**: got
+   **Accepts**: was
    **Explanation**: "Got married" — chunk informal de evento de vida.
 
 5. **fill_gap** — "This room _____ regularly."
    **Hint**: should be + past participle "clean"
    **Answer**: should be cleaned
+   **Accepts**: is cleaned / must be cleaned / needs to be cleaned
    **Explanation**: Modal passive recomendação. "Should be cleaned".
 
 6. **fill_gap** — "The package _____ tomorrow."
    **Hint**: will be + past participle "deliver"
    **Answer**: will be delivered
+   **Accepts**: is going to be delivered / is being delivered
    **Explanation**: Future passive. "Will be delivered tomorrow".
 
 7. **fill_gap** — "I _____ lost in the city."
    **Hint**: got + past participle "lose"
    **Answer**: got lost
+   **Accepts**: was lost
    **Explanation**: Get passive narrativo. "Got lost in the city".
 
 8. **fix_error** — "The report must finished by Friday."
@@ -803,7 +819,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Mix passive forms — modal, future, with 'by', and informal 'got'."
+**Opening line**: "Give me four passive sentences: one with a modal, one about the future, one with 'by' and one with 'got'."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -838,7 +854,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Mix passive forms — modal, future, with 'by', and informal 'got'."
+1. **Charlotte**: "Give me four passive sentences: one with a modal, one about the future, one with 'by' and one with 'got'."
 2. **Student**: ~"The report must be sent today."
 3. **Charlotte**: "Strict. With agent?"
 4. **Student**: ~"The book was written by a famous author."

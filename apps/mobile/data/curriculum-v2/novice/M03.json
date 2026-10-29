@@ -94,6 +94,13 @@
           "sentence": "_____ brother is fifteen years old.",
           "hint": "Possessivo de \"I\"",
           "answer": "My",
+          "accepts": [
+            "His",
+            "Her",
+            "Our",
+            "Your",
+            "Their"
+          ],
           "explanation": "\"My brother\" = \"meu irmão\". Após \"My\" vem o substantivo possuído."
         },
         {
@@ -315,7 +322,7 @@
             "am got"
           ],
           "answer": "have got",
-          "explanation": "\"I have got\" (ou contraído \"I've / I have got\") é a forma simples pra dizer \"eu tenho\". Com \"I\", \"you\", \"we\", \"they\" usa \"have got\"."
+          "explanation": "\"I have got\" (ou contraído \"I've got\") é a forma simples pra dizer \"eu tenho\". Com \"I\", \"you\", \"we\", \"they\" usa \"have got\"."
         },
         {
           "type": "multiple_choice",
@@ -326,7 +333,7 @@
             "is got"
           ],
           "answer": "has got",
-          "explanation": "\"She has got\" — \"she\" é terceira pessoa singular, usa \"has got\". Forma contraída: \"She's / She is got\"."
+          "explanation": "\"She has got\" — \"she\" é terceira pessoa singular, usa \"has got\". Forma contraída: \"She's got\"."
         },
         {
           "type": "word_bank",
@@ -338,7 +345,7 @@
             "had got"
           ],
           "answer": "has got",
-          "explanation": "\"He has got\" = \"ele tem\". Forma curta: \"He's / He is got three friends\". Com \"he/she/it\" sempre \"has\"."
+          "explanation": "\"He has got\" = \"ele tem\". Forma curta: \"He's got three friends\". Com \"he/she/it\" sempre \"has\"."
         },
         {
           "type": "word_bank",
@@ -357,14 +364,20 @@
           "sentence": "I _____ two sisters.",
           "hint": "Forma de \"have got\" para \"I\"",
           "answer": "have got",
-          "explanation": "\"I have got\" ou contraído \"I've / I have got\". Pra \"I\" sempre \"have\", nunca \"has\"."
+          "accepts": [
+            "have"
+          ],
+          "explanation": "\"I have got\" ou contraído \"I've got\". Pra \"I\" sempre \"have\", nunca \"has\"."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ one brother and two sisters.",
           "hint": "Forma de \"have got\" para \"she\"",
           "answer": "has got",
-          "explanation": "\"She has got\" — terceira pessoa singular. Contração: \"She's / She is got\"."
+          "accepts": [
+            "has"
+          ],
+          "explanation": "\"She has got\" — terceira pessoa singular. Contração: \"She's got\"."
         },
         {
           "type": "fill_gap",
@@ -378,6 +391,9 @@
           "sentence": "She have got a sister.",
           "hint": "\"She\" é terceira pessoa",
           "answer": "She has got a sister.",
+          "accepts": [
+            "She has a sister."
+          ],
           "explanation": "Com \"she/he/it\" usa \"has got\", não \"have got\". A frase correta: \"She has got a sister\"."
         },
         {
@@ -385,7 +401,10 @@
           "sentence": "I has got a friend.",
           "hint": "\"I\" não usa \"has\"",
           "answer": "I have got a friend.",
-          "explanation": "Com \"I\" sempre \"have got\", não \"has got\". A frase correta: \"I have got a friend\" ou contraído \"I've / I have got a friend\"."
+          "accepts": [
+            "I have a friend."
+          ],
+          "explanation": "Com \"I\" sempre \"have got\", não \"has got\". A frase correta: \"I have got a friend\" ou contraído \"I've got a friend\"."
         },
         {
           "type": "read_answer",
@@ -428,7 +447,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 90,
-        "opening_line": "Family quick — how many brothers have you got?",
+        "opening_line": "Quick family question — how many brothers have you got?",
         "objectives": [
           {
             "id": 1,
@@ -471,10 +490,10 @@
             "label_pt": "Perguntar a Charlotte se ela tem irmãos",
             "label_en": "Ask Charlotte if she has siblings",
             "hidden_prompt": "user asks Charlotte about siblings with 'Have you got + brothers/sisters', 'how about you', or 'and you'",
-            "hint_pt": "Have you got any?",
-            "hint_en": "Have you got any?",
+            "hint_pt": "Have you got any brothers or sisters?",
+            "hint_en": "Have you got any brothers or sisters?",
             "examples_pass": [
-              "Have you got any?"
+              "Have you got any brothers or sisters?"
             ],
             "examples_fail": [
               "Yes I have (statement)",
@@ -484,7 +503,7 @@
           }
         ],
         "closing_cue": "Charlotte fecha com \"Nice! Family map done.\" quando obj_3 baterem.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Family quick — how many brothers have you got?\"\n2. **Student**: ~\"I've got two brothers.\"\n3. **Charlotte**: \"Cool. And sisters?\"\n4. **Student**: ~\"I've got one sister.\"\n5. **Charlotte**: \"Got it.\"\n6. **Student**: ~\"Have you got any?\"\n7. **Charlotte**: \"Yes — one sister. Nice! Family map done.\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Quick family question — how many brothers have you got?\"\n2. **Student**: ~\"I've got two brothers.\"\n3. **Charlotte**: \"Cool. And sisters?\"\n4. **Student**: ~\"I've got one sister.\"\n5. **Charlotte**: \"Got it.\"\n6. **Student**: ~\"Have you got any brothers or sisters?\"\n7. **Charlotte**: \"Yes — one sister. Nice! Family map done.\"",
         "evaluation_focus": [
           "Aluno usa \"I've got + number + family member\"",
           "Aluno devolve a pergunta usando \"Have you got\"",
@@ -630,6 +649,12 @@
           "sentence": "_____ wife is from Italy.",
           "hint": "Possessivo de \"he\"",
           "answer": "His",
+          "accepts": [
+            "My",
+            "Your",
+            "Our",
+            "Their"
+          ],
           "explanation": "\"His wife\" = \"a esposa dele\". \"His\" é o possessivo de \"he\" (ele)."
         },
         {
@@ -875,6 +900,10 @@
           "sentence": "_____ name is Ana.",
           "hint": "Possessivo de \"she\"",
           "answer": "Her",
+          "accepts": [
+            "My",
+            "Your"
+          ],
           "explanation": "\"Her name\" = \"o nome dela\". \"Her\" é o possessivo de \"she\" (ela)."
         },
         {
@@ -889,6 +918,12 @@
           "sentence": "Ana is _____ best friend. We are twenty-five.",
           "hint": "Possessivo de \"I\"",
           "answer": "my",
+          "accepts": [
+            "our",
+            "your",
+            "his",
+            "her"
+          ],
           "explanation": "\"My best friend\" = \"a minha melhor amiga\". \"My\" é o possessivo de \"I\"."
         },
         {
@@ -1087,7 +1122,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "I'd like to introduce my family. _____ is Felipe.",
+          "sentence": "Let me introduce myself. _____ is Felipe.",
           "options": [
             "My name",
             "My",
@@ -1129,6 +1164,9 @@
             "They"
           ],
           "answer": "We",
+          "accepts": [
+            "There"
+          ],
           "explanation": "\"We are\" = \"nós somos\". \"We\" é o sujeito pra grupo incluindo você mesmo."
         },
         {
@@ -1143,6 +1181,13 @@
           "sentence": "_____ family is great.",
           "hint": "Possessivo de \"I\"",
           "answer": "My",
+          "accepts": [
+            "Our",
+            "His",
+            "Her",
+            "Your",
+            "Their"
+          ],
           "explanation": "\"My family\" = \"a minha família\". \"My\" antes do substantivo."
         },
         {

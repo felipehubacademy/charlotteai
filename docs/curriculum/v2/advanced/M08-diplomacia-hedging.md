@@ -43,23 +43,26 @@
 2. **multiple_choice** — "_____ you might be able to help with something."
    **Options**: I was hoping / I hoped / I am hoping / I hope
    **Answer**: I was hoping
-   **Explanation**: "I was hoping that..." — past continuous of hope, used to introduce a soft request. Equivalent to "I'm / I am wondering" but with slight emotional warmth. "I hope" reads as already-committed; the past form softens.
+   **Explanation**: "I was hoping that..." — past continuous of hope, used to introduce a soft request. Equivalent to "I'm wondering" but with slight emotional warmth. "I hope" reads as already-committed; the past form softens.
 
 3. **fill_gap** — "_____ if you'd mind looking over this draft when you have a moment."
    **Hint**: "I was wondering"
    **Answer**: I was wondering
-   **Explanation**: Soft request opener. The full structure: "I was wondering if you'd / you would mind + -ing". Double softening: past continuous + "would you mind" + -ing.
+   **Accepts**: I wonder / I'm wondering / I was just wondering
+   **Explanation**: Soft request opener. The full structure: "I was wondering if you'd mind + -ing". Double softening: past continuous + "would you mind" + -ing.
 
-4. **fix_error** — "I want you to look at this report."
+4. **short_write** — "I want you to look at this report."
    **Hint**: Soften with "I was wondering if you could..."
    **Answer**: I was wondering if you could take a look at this report.
-   **Accepts**: I was hoping you might look at this report.
+   **Prompt**: Rewrite this request so it sounds polite and indirect.
+   **Example answer**: I was wondering if you could take a look at this report.
    **Explanation**: "I want you to" is direct and can read as demanding. The softer C1 register uses "I was wondering if you could..." or similar hedged forms. Especially important when asking up the hierarchy.
 
 5. **read_answer**
    **Passage**: "The email began the way the senior partner's emails always did. 'I was wondering if you'd have a moment this afternoon. There's a small matter I was hoping to discuss in person — nothing urgent, but it would be helpful to talk it through.' She had learned that 'nothing urgent' from him often meant exactly the opposite."
    **Question**: How did the senior partner soften the request?
-   **Answer**: with "I was wondering if you'd have a moment" + "I was hoping to discuss"
+   **Answer**: "I was wondering if you'd have a moment"
+   **Accepts**: I was hoping to discuss / nothing urgent / softened with polite phrasing
    **Explanation**: Two past-continuous hedges layered ("I was wondering... I was hoping..."), plus "small matter", "nothing urgent", and "it would be helpful". Diplomatic register building room for both parties.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -201,12 +204,14 @@
 3. **fill_gap** — "_____ wish to revisit this decision later."
    **Hint**: "You may" (formal modal hedge)
    **Answer**: You may
+   **Accepts**: You might
    **Explanation**: "You may wish to + base" — formal-polite suggestion. Common in written business and academic prose. Slightly more elevated than "you might want to".
 
-4. **fix_error** — "You should fix the introduction."
+4. **short_write** — "You should fix the introduction."
    **Hint**: Soften with hedged suggestion
    **Answer**: It might be worth revisiting the introduction.
-   **Accepts**: You might want to look at the introduction again.
+   **Prompt**: Rewrite this feedback as a softer, hedged suggestion.
+   **Example answer**: It might be worth revisiting the introduction.
    **Explanation**: "You should" can land as criticism. Hedged forms preserve face — same content, different relational impact. C1 register often demands the softer version.
 
 5. **read_answer**
@@ -355,18 +360,20 @@
 3. **fill_gap** — "_____ entirely sure I agree with that framing."
    **Hint**: "I'm not"
    **Answer**: I'm not
-   **Explanation**: "I'm / I am not entirely sure I agree" — soft disagreement. "Not entirely" hedges; "I'm / I am not sure I agree" is softer than "I disagree". Common in academic and professional contexts.
+   **Explanation**: "I'm not entirely sure I agree" — soft disagreement. "Not entirely" hedges; "I'm not sure I agree" is softer than "I disagree". Common in academic and professional contexts.
 
-4. **fix_error** — "You're wrong about that."
+4. **short_write** — "You're wrong about that."
    **Hint**: Soften with "I'd see it differently"
    **Answer**: I'd see it a little differently.
-   **Accepts**: With respect, I'd see it differently.
-   **Explanation**: "You're / You are wrong" is blunt and damaging. "I'd / I would see it differently" presents the same disagreement without attacking the other person. Crucial diplomatic shift.
+   **Prompt**: Rewrite this so you disagree politely.
+   **Example answer**: I'd see it a little differently.
+   **Explanation**: "You're wrong" is blunt and damaging. "I'd see it differently" presents the same disagreement without attacking the other person. Crucial diplomatic shift.
 
 5. **read_answer**
    **Passage**: "The diplomat had a phrase for every situation. 'With respect, I'd see the geography rather differently. I take your point about the timeline, but the local context complicates it. I'm not entirely convinced we're talking about the same problem.' Each disagreement was delivered like a gift, wrapped carefully."
    **Question**: How does the diplomat disagree without offending?
-   **Answer**: hedged each disagreement ("With respect", "I take your point but", "I'm not entirely convinced")
+   **Answer**: hedged disagreement
+   **Accepts**: "with respect" / "I take your point but" / "I'm not entirely convinced"
    **Explanation**: Three diplomatic disagreement patterns layered. Each preserves the other's face while expressing genuine difference. Diplomat-grade C1.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -508,13 +515,14 @@
 3. **fill_gap** — "_____ that there are no simple solutions here."
    **Hint**: "One might say"
    **Answer**: One might say
+   **Accepts**: One could say / One might argue / It could be argued / It might be said
    **Explanation**: "One might say that..." — impersonal hedging. Common in academic writing and op-eds. Distances the speaker from the claim while still introducing it.
 
 4. **fix_error** — "Arguably is the best film of the decade."
    **Hint**: "Arguably" needs to attach to a clause, not stand alone
    **Answer**: Arguably, it's the best film of the decade.
    **Accepts**: It's arguably the best film of the decade.
-   **Explanation**: "Arguably" is an adverb — attaches to a clause. "Arguably is" treats it as a verb form, which fails. Either fronted ("Arguably, X is...") or mid-position ("It's / It is arguably the best...").
+   **Explanation**: "Arguably" is an adverb — attaches to a clause. "Arguably is" treats it as a verb form, which fails. Either fronted ("Arguably, X is...") or mid-position ("It's arguably the best...").
 
 5. **read_answer**
    **Passage**: "The reviewer hedged everywhere. 'It could be argued that this is the author's strongest work. One might say the prose has matured considerably. In a sense, the book completes a trilogy that began twenty years ago. Arguably, the ending falters — but only slightly.' Even the critique was wrapped in conditionals."
@@ -538,7 +546,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three impersonal hedges. 'It could be argued', 'One might say', 'In a sense', 'Arguably'."
+**Opening line**: "Let's discuss three topics in an impersonal way. Try 'It could be argued', 'One might say', 'In a sense' or 'Arguably'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -573,7 +581,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three impersonal hedges. 'It could be argued', 'One might say', 'In a sense', 'Arguably'."
+1. **Charlotte**: "Let's discuss three topics in an impersonal way. Try 'It could be argued', 'One might say', 'In a sense' or 'Arguably'."
 2. **Student**: ~"It could be argued that social media has changed how we form opinions."
 3. **Charlotte**: "Generational?"
 4. **Student**: ~"In a sense, every generation thinks the next one has it easier."
@@ -661,12 +669,13 @@
 3. **fill_gap** — "It cost ten thousand euros, _____."
    **Hint**: "give or take"
    **Answer**: give or take
+   **Accepts**: more or less / or so / roughly
    **Explanation**: "Give or take" — idiomatic phrase meaning "plus or minus a small amount". Placed at end of clause, after the figure. Casual register.
 
 4. **fix_error** — "I'm somewhat agree with you."
    **Hint**: "Somewhat" modifies adjective/adverb, not verb directly. Use "kind of agree" or "somewhat agreeable"
    **Answer**: I kind of agree with you.
-   **Accepts**: I somewhat agree with you, with the right rhythm.
+   **Accepts**: I somewhat agree with you, with the right rhythm. / I somewhat agree with you. / I sort of agree with you. / I partly agree with you. / I agree with you to some extent.
    **Explanation**: "Somewhat" modifies adjectives/adverbs in formal usage ("somewhat strange"). Modern spoken English does allow "I somewhat agree", but "kind of agree" / "sort of agree" is more natural.
 
 5. **read_answer**

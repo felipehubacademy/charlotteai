@@ -14,20 +14,18 @@ import {
   BookOpen, Microphone, Play, ChatCircle, CaretRight, CaretDown, Lock,
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
-import { CURRICULUM, TrailLevel, topicHasContent } from '@/data/curriculum';
-import { MODULE_INTROS } from '@/data/moduleIntros';
+import type { TrailLevel } from '@/data/trailTypes';
 import { listModules as listV2Modules } from '@/lib/curriculum-v2/loader';
 import { usePlacementSkips } from '@/lib/curriculum-v2/usePlacementSkips';
 import type { Level as V2LevelType } from '@/lib/curriculum-v2/types';
 import type { Level as V2Level } from '@/lib/curriculum-v2/types';
-import { useLearnProgress } from '@/hooks/useLearnProgress';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
-import { supabase } from '@/lib/supabase';
 import * as SecureStore from 'expo-secure-store';
 import { useAuth } from '@/hooks/useAuth';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { LEVEL_ACCENT } from '@/lib/levelColors';
 import { extraTrack, unitImpression } from '@/lib/tracks';
+import { TASTE_DAYS, tasteDayNumber, tasteFreeUnits } from '@/lib/tasteDays';
 import { ImpressionTag } from '@/components/trail/ImpressionTag';
 import { LEVEL_ACCENT_BG } from '@/lib/levelColors';
 import type { CharacterId, ImpressionId } from '@/lib/characters';
@@ -56,7 +54,6 @@ const LEVEL_COLOR = LEVEL_ACCENT;
 
 // ── Node types — fixed cycle per position within module ───────────────────────
 type NodeType = 'grammar' | 'speaking' | 'roleplay' | 'chat';
-const TYPE_CYCLE: NodeType[] = ['grammar', 'speaking', 'roleplay', 'chat'];
 
 const NODE_CONFIG: Record<NodeType, {
   color: string; Icon: any; label: string; labelPt: string;
@@ -68,7 +65,6 @@ const NODE_CONFIG: Record<NodeType, {
 };
 
 const NEXT_GREEN = '#DCFF4A'; // Volt — próximo passo da trilha
-const TOPICS_PER_MODULE = 4;
 
 // ── Domain ────────────────────────────────────────────────────────────────────
 type LessonState = 'done' | 'next' | 'locked';
@@ -81,13 +77,13 @@ interface Lesson {
   hasContent: boolean;
   moduleIdx:  number;
   topicIdx:   number;        // -1 quando intro
-  isIntro:    boolean;
-  slideCount?: number;
   score?:     number | null; // 0-100, calculado de learn_history
   // v2 — preenchido quando o trail vem do curriculum v2
   v2ModuleId?: string;
   v2UnitId?:   string;
   v2Activity?: NodeType;
+  /** Cadeado da degustação: tocável, abre a oferta (com X para seguir na degustação). */
+  paywall?:    boolean;
 }
 
 interface ModuleData {
@@ -100,6 +96,7 @@ interface ModuleData {
   state:          'done' | 'active' | 'locked';
   avgScore:       number | null; // média dos scores das lessons concluídas
   impression?:    ImpressionId;  // trilha do Igorfina: tópico com imitação (selo no cartão)
+  paywall?:       boolean;       // travado só pela degustação: o toque abre a oferta
 }
 
 // ── Score colors (lógica da marca: abaixo da meta = queizy, passou = crazy) ──
@@ -175,7 +172,7 @@ function LessonRow({
   return (
     <TouchableOpacity
       onPress={onPress}
-      disabled={isLocked}
+      disabled={isLocked && !lesson.paywall}
       activeOpacity={0.7}
       style={{
         flexDirection: 'row', alignItems: 'center', gap: 12,
@@ -320,8 +317,8 @@ function ModuleCard({
         ...elevation,
       }}>
       <TouchableOpacity
-        onPress={onToggle}
-        disabled={isLocked}
+        onPress={isLocked && data.paywall && data.lessons[0] ? () => onStartLesson(data.lessons[0]) : onToggle}
+        disabled={isLocked && !data.paywall}
         activeOpacity={0.85}
         style={{ paddingHorizontal: 18, paddingVertical: 16 }}
       >
@@ -410,19 +407,16 @@ interface TrailContentProps {
   /** Sinaliza ao pai se a trilha esta finalizada (nenhum modulo ativo).
    *  Fonte de verdade pro FAB decidir "down = fim" vs "down = modulo ativo". */
   onTrailFinished?:   (finished: boolean) => void;
-  useV2?:             boolean;   // when true, loads modules from curriculum-v2
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
-export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY, onTrailFinished, useV2 }: TrailContentProps) {
+export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY, onTrailFinished }: TrailContentProps) {
   const track   = extraTrack(level);
   const isPt    = systemIsPt; // chrome da trilha: idioma do aparelho (o conteúdo dos exercícios não muda)
   const accent  = LEVEL_COLOR[level];
 
   // v2: cada UNIT vira um card. Dentro: 4 rows fixas, uma por atividade.
-  // Cap TOPICS_PER_MODULE=4 nao restringe porque sao exatamente 4 atividades.
-  const v2Wrapped = useMemo(() => {
-    if (!useV2) return null;
+  const modules = useMemo(() => {
     const labels = {
       grammar:  isPt ? 'Gramática'            : 'Grammar',
       speaking: isPt ? 'Listening & Speaking' : 'Listening & Speaking',
@@ -461,158 +455,72 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
         };
       })
     );
-  }, [useV2, level, isPt]);
-
-  const modules = (v2Wrapped ?? CURRICULUM[level]) as Array<{
-    title: string;
-    _v2ModuleId?: string;
-    _v2ModuleTitle?: string;
-    _v2PrevUnitId?: string;
-    _v2PrevModuleId?: string;
-    _impression?: ImpressionId;
-    topics: Array<{ title: string; _v2ModuleId?: string; _v2UnitId?: string; _v2Activity?: NodeType }>;
-  }>;
-
-  const {
-    loading, refetch,
-    isTopicComplete, isCurrent, isLocked, isIntroDone,
-  } = useLearnProgress(useV2 ? undefined : userId, level); // v2 não lê a trilha antiga
+  }, [level, isPt]);
 
   // Placement skips: nivel pulado → cascade desligado (tudo destravado).
   const { cascadeMode, isAccessible } = usePlacementSkips();
-  // Degustação (conta nova sem assinatura): o 1º bloco dos 3 níveis fica aberto, inclusive
-  // nos níveis ainda não liberados. Os blocos seguintes abrem o paywall.
+  // Degustação (conta nova sem assinatura): 1 tópico por dia nos 3 níveis, inclusive nos níveis
+  // ainda não liberados. Os outros abrem a oferta.
   const { isTaster, profile } = useAuth();
+  // Degustação diária: 1 tópico novo por dia (lib/tasteDays). Recalcula ao voltar para a tela.
+  const [tasteNow, setTasteNow] = useState(() => new Date());
+  useFocusEffect(useCallback(() => { setTasteNow(new Date()); }, []));
+  const tasteDay = tasteDayNumber(profile?.created_at, tasteNow);
+  const freeUnits = tasteFreeUnits(profile?.created_at, tasteNow);
+  // Unidades da degustação por posição na trilha. Trilha extra: a unidade do "uau" primeiro, depois as do início.
+  const tasteOrder = useMemo(() => {
+    const keys = modules.map(m => `${m._v2ModuleId}/${m.topics[0]._v2UnitId}`);
+    if (!track) return keys;
+    const uau = `${track.tasteUnit.moduleId}/${track.tasteUnit.unitId}`;
+    return [uau, ...keys.filter(k => k !== uau)];
+  }, [modules, track]);
+  const tasteRank = useCallback((moduleId: string, unitId: string) => tasteOrder.indexOf(`${moduleId}/${unitId}`), [tasteOrder]);
   // Revisão (equipe e dono da trilha, chave reviewFlag): todas as unidades abertas. Alunos seguem em ordem.
   const reviewAll = !!track?.reviewFlag && !isTaster && (profile?.beta_features ?? []).includes(track.reviewFlag);
   const v2Cascade = reviewAll ? 'unlocked' : cascadeMode(level as V2LevelType);
   // Preview mode: aluno entrou em nivel ainda nao desbloqueado.
   // Tudo aparece lockado (read-only sneak peek do curriculo).
   const { openPaywall } = usePaywallContext();
-  const isPreview = useV2 && !isTaster && !isAccessible(level as V2LevelType);
+  const isPreview = !isTaster && !isAccessible(level as V2LevelType);
 
-  // v2 progress — só lê quando useV2 (sem custo extra em v1)
   const v2Progress = useLearnProgressV2(userId, level as V2Level, v2Cascade);
   useFocusEffect(useCallback(() => {
-    if (useV2) v2Progress.refetch();
-  }, [useV2, v2Progress.refetch])); // eslint-disable-line react-hooks/exhaustive-deps
+    v2Progress.refetch();
+  }, [v2Progress.refetch])); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useFocusEffect(useCallback(() => { refetch(); }, [refetch]));
-
-  // ── Fetch per-lesson scores from learn_history (% correct + pronunciation score) ──
-  const [scoreMap, setScoreMap] = useState<Record<string, number>>({});
-  useEffect(() => {
-    if (!userId || useV2) return; // notas da trilha antiga: só fora do modo v2
-    let cancelled = false;
-    (async () => {
-      const { data, error } = await supabase
-        .from('learn_history')
-        .select('module_index, topic_index, is_correct, score')
-        .eq('user_id', userId)
-        .eq('level', level);
-      if (error || cancelled || !data) return;
-
-      const acc: Record<string, { sum: number; n: number }> = {};
-      for (const row of data) {
-        const key = `m${row.module_index}_t${row.topic_index}`;
-        // Prefer pronunciation `score` (0-100) when present; else is_correct → 0/100
-        const v = typeof row.score === 'number'
-          ? Math.max(0, Math.min(100, row.score))
-          : row.is_correct ? 100 : 0;
-        const bucket = acc[key] ?? { sum: 0, n: 0 };
-        bucket.sum += v;
-        bucket.n   += 1;
-        acc[key]    = bucket;
-      }
-      const map: Record<string, number> = {};
-      for (const k of Object.keys(acc)) {
-        map[k] = acc[k].sum / acc[k].n;
-      }
-      if (!cancelled) setScoreMap(map);
-    })();
-    return () => { cancelled = true; };
-  }, [userId, level, useV2]);
-
-  // Build module data — each module gets up to 4 lessons (intro + topics, capped at 4)
+  // Build module data — cada unidade vira um card com as 4 atividades (Gramática, L&S, Role-play, Guided Chat).
+  // Estado (locked/next/done) e nota vêm do useLearnProgressV2.
   const moduleData: ModuleData[] = useMemo(() => {
     return modules.map((mod, mIdx) => {
-      const lessons: Lesson[] = [];
-      let pos = 0;
-
-      const intro = useV2 ? null : MODULE_INTROS[level]?.[mIdx];
-      if (intro) {
-        const done = isIntroDone(mIdx);
-        const introLocked = mIdx > 0 &&
-          modules[mIdx - 1].topics.some((_, t) => !isTopicComplete(mIdx - 1, t));
-        lessons.push({
-          key:        `m${mIdx}_intro`,
-          label:      intro.title,
-          type:       TYPE_CYCLE[pos++] ?? 'grammar',
-          state:      done ? 'done' : introLocked ? 'locked' : 'next',
+      const fixed: Lesson[] = mod.topics.map((topic, tIdx) => {
+        const v2Activity = topic._v2Activity;
+        const row = v2Progress.get(topic._v2ModuleId, topic._v2UnitId, v2Activity);
+        const complete = !isPreview && !!row?.completed;
+        // Degustação numa trilha extra: a unidade grátis abre como se fosse a primeira.
+        const isTasteUnit = !!track && isTaster
+          && track.tasteUnit.moduleId === topic._v2ModuleId && track.tasteUnit.unitId === topic._v2UnitId;
+        // Degustação: libera 1 tópico por dia (posição < tópicos liberados hoje). O resto aparece com
+        // cadeado, e o toque abre a oferta (com X para seguir).
+        const tasterLocked = isTaster && tasteRank(topic._v2ModuleId, topic._v2UnitId) >= freeUnits;
+        // Tópico grátis da trilha extra: as 4 atividades abertas desde o início, em qualquer ordem.
+        const locked = isPreview || tasterLocked || (!isTasteUnit && !v2Progress.isActivityUnlocked(
+          topic._v2ModuleId, topic._v2UnitId, v2Activity,
+          isTasteUnit ? undefined : mod._v2PrevUnitId, isTasteUnit ? undefined : mod._v2PrevModuleId,
+        ));
+        return {
+          key:        `m${mIdx}_t${tIdx}`,
+          label:      topic.title,
+          type:       v2Activity,
+          state:      complete ? 'done' : locked ? 'locked' : 'next',
           hasContent: true,
           moduleIdx:  mIdx,
-          topicIdx:   -1,
-          isIntro:    true,
-          slideCount: intro.slides.length,
-          // Intros vao receber exercicios em breve — usar score real se houver,
-          // senao 100 quando concluida (intro = "aula assistida").
-          score:      done ? (scoreMap[`m${mIdx}_intro`] ?? 100) : null,
-        });
-      }
-
-      mod.topics.forEach((topic: any, tIdx: number) => {
-        if (pos >= TOPICS_PER_MODULE) return;
-        const key      = `m${mIdx}_t${tIdx}`;
-        const v2Activity: NodeType | undefined = topic._v2Activity;
-        const lessonType = useV2 && v2Activity ? v2Activity : (TYPE_CYCLE[pos] ?? 'grammar');
-        if (!(useV2 && v2Activity)) pos++;
-
-        let complete: boolean;
-        let locked:   boolean;
-        let lessonScore: number | null;
-
-        if (useV2 && v2Activity && topic._v2ModuleId && topic._v2UnitId) {
-          const row = v2Progress.get(topic._v2ModuleId, topic._v2UnitId, v2Activity);
-          complete    = !isPreview && !!row?.completed;
-          // Degustação numa trilha extra: a unidade grátis abre como se fosse a primeira.
-          const isTasteUnit = !!track && isTaster
-            && track.tasteUnit.moduleId === topic._v2ModuleId && track.tasteUnit.unitId === topic._v2UnitId;
-          locked      = isPreview || !v2Progress.isActivityUnlocked(
-                          topic._v2ModuleId, topic._v2UnitId, v2Activity,
-                          isTasteUnit ? undefined : mod._v2PrevUnitId, isTasteUnit ? undefined : mod._v2PrevModuleId,
-                        );
-          lessonScore = isPreview ? null : (typeof row?.score === 'number' ? row.score : null);
-        } else {
-          complete    = isTopicComplete(mIdx, tIdx);
-          const miniReq = tIdx === 0 && !isIntroDone(mIdx);
-          locked      = !complete && (miniReq || isLocked(mIdx, tIdx));
-          lessonScore = complete && scoreMap[key] !== undefined ? scoreMap[key] : null;
-        }
-
-        lessons.push({
-          key,
-          label:      topic.title,
-          type:       lessonType,
-          state:      complete ? 'done' : locked ? 'locked' : 'next',
-          hasContent: useV2 ? true : topicHasContent(level, mIdx, tIdx),
-          moduleIdx:  mIdx,
           topicIdx:   tIdx,
-          isIntro:    false,
-          score:      lessonScore,
+          score:      isPreview ? null : (typeof row?.score === 'number' ? row.score : null),
           v2ModuleId: topic._v2ModuleId,
           v2UnitId:   topic._v2UnitId,
           v2Activity,
-        });
-      });
-
-      // v1: progressive lock — first non-done becomes 'next', rest 'locked'.
-      // v2: já vem com locked/next/done corretos do hook useLearnProgressV2.
-      let foundNext = false;
-      const fixed = lessons.map(l => {
-        if (useV2) return l;
-        if (l.state === 'done') return l;
-        if (!foundNext && l.state === 'next') { foundNext = true; return l; }
-        return { ...l, state: 'locked' as LessonState };
+          paywall:    tasterLocked && !complete,
+        };
       });
 
       const completedCount = fixed.filter(l => l.state === 'done').length;
@@ -624,6 +532,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
       else if (fixed.some(l => l.state === 'next'))                state = 'active';
       else                                                          state = 'locked';
 
+      const paywall = state === 'locked' && fixed.some(l => l.paywall);
       const scored = fixed.filter(l => typeof l.score === 'number') as (Lesson & { score: number })[];
       const avgScore = scored.length > 0
         ? scored.reduce((s, l) => s + l.score, 0) / scored.length
@@ -631,10 +540,10 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
 
       return {
         idx: mIdx, title: mod.title, lessons: fixed, impression: mod._impression,
-        completedCount, totalCount, pct, state, avgScore,
+        completedCount, totalCount, pct, state, avgScore, paywall,
       };
     });
-  }, [modules, level, useV2, isTopicComplete, isLocked, isIntroDone, scoreMap, v2Progress.rows, isPreview]);
+  }, [modules, v2Progress.rows, isPreview, track, isTaster, freeUnits, tasteRank]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const activeIdx = useMemo(
     () => moduleData.findIndex(m => m.state === 'active'),
@@ -655,40 +564,39 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
     if (activeIdx >= 0) setExpandedIdx(activeIdx);
   }, [activeIdx]);
 
-  // Fim da degustação neste nível: terminou o 1º bloco → paywall uma vez (por nível).
+  // Degustação: terminou os tópicos liberados até hoje → oferta uma vez por dia (por nível). Nos dias
+  // seguintes ela diz que amanhã libera mais; no último, que a degustação acabou.
   // Só com a Home em foco: a trilha fica montada por baixo do exercício e não pode abrir o
   // paywall por cima da tela "Missão concluída"; abre quando o aluno toca em Continuar.
   const isFocused = useIsFocused();
-  const tasteDone = isTaster && useV2 && (track
-    ? v2Progress.isUnitComplete(track.tasteUnit.moduleId, track.tasteUnit.unitId)
-    : moduleData[0]?.state === 'done');
+  const tasteDone = isTaster && tasteOrder.length > 0 && tasteOrder.slice(0, freeUnits).every(k => {
+    const [m, u] = k.split('/');
+    return v2Progress.isUnitComplete(m, u);
+  });
+  const lastTasteDay = tasteDay >= TASTE_DAYS;
   useEffect(() => {
     if (!tasteDone || !isFocused) return;
-    const key = `taste_paywall_${level}`;
+    const key = `taste_paywall_${level}_${Math.min(tasteDay, TASTE_DAYS)}`;
     let cancelled = false;
     (async () => {
       const seen = await SecureStore.getItemAsync(key).catch(() => null);
       if (seen || cancelled) return;
       await SecureStore.setItemAsync(key, '1').catch(() => {});
-      openPaywall();
+      openPaywall(lastTasteDay ? 'taste_done' : 'taste_today');
     })();
     return () => { cancelled = true; };
-  }, [tasteDone, isFocused, level, openPaywall]);
+  }, [tasteDone, isFocused, level, openPaywall, tasteDay, lastTasteDay]);
 
   const handleStartLesson = useCallback((lesson: Lesson) => {
     // Trilha extra na degustação: só a unidade grátis; o resto (até com cadeado) abre o paywall.
-    if (isTaster && track && !(lesson.v2ModuleId === track.tasteUnit.moduleId && lesson.v2UnitId === track.tasteUnit.unitId)) { openPaywall(); return; }
+    // Degustação: tópico ainda não liberado. Se libera num dos próximos dias, a oferta diz isso.
+    if (isTaster && lesson.v2ModuleId && lesson.v2UnitId) {
+      const rank = tasteRank(lesson.v2ModuleId, lesson.v2UnitId);
+      if (rank >= freeUnits) { openPaywall(rank < TASTE_DAYS ? 'taste_today' : track ? 'track' : 'trail'); return; }
+    }
     if (lesson.state === 'locked' || !lesson.hasContent) return;
-    if (isTaster && !track && lesson.moduleIdx > 0) { openPaywall(); return; }
-    if (lesson.isIntro) {
-      router.push({
-        pathname: '/(app)/learn-intro',
-        params: { level, moduleIndex: String(lesson.moduleIdx), topicIndex: '0' },
-      });
-    } else if (lesson.v2ModuleId && lesson.v2UnitId) {
-      // v2 routing: o tipo ciclado (grammar/speaking/roleplay/chat) define
-      // qual fatia do unit abre. Mesma posicao → mesma atividade, igual v15
-      // visual mas agora funcional.
+    if (lesson.v2ModuleId && lesson.v2UnitId) {
+      // O tipo da atividade (grammar/speaking/roleplay/chat) define qual fatia da unidade abre.
       switch (lesson.type) {
         case 'grammar':
           router.push({
@@ -715,13 +623,8 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
           });
           return;
       }
-    } else {
-      router.push({
-        pathname: '/(app)/learn-session',
-        params: { level, moduleIndex: String(lesson.moduleIdx), topicIndex: String(lesson.topicIdx) },
-      });
     }
-  }, [level, isTaster, openPaywall, track]);
+  }, [level, isTaster, openPaywall, track, tasteRank, freeUnits]);
 
   // Ref pra scroll-to-active module
   const activeRef = useRef<View | null>(null);
@@ -742,18 +645,6 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
       onCurrentTopicRef(activeRef.current);
     }
   }, [onCurrentTopicRef]));
-
-  // ── Loading ──────────────────────────────────────────────────────────────
-  if (loading) {
-    return (
-      <View style={{ alignItems: 'center', paddingTop: 40 }}>
-        <ActivityIndicator color={accent} />
-        <AppText style={{ color: C.navyLight, marginTop: 12, fontSize: 13 }}>
-          {isPt ? 'Carregando sua trilha...' : 'Loading your trail...'}
-        </AppText>
-      </View>
-    );
-  }
 
   return (
     <View style={{ paddingTop: 4, paddingBottom: 40 }}>
@@ -777,7 +668,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
       {moduleData.map((m, i) => {
         const prevModId = i > 0 ? modules[i - 1]?._v2ModuleId : undefined;
         const currModId = modules[i]?._v2ModuleId;
-        const showDivider = useV2 && !!currModId && currModId !== prevModId;
+        const showDivider = !!currModId && currModId !== prevModId;
         const divTitle    = modules[i]?._v2ModuleTitle;
         return (
           <React.Fragment key={`mod_${m.idx}`}>
@@ -822,7 +713,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
         );
       })}
       {/* Divisor final indicando proximo nivel (so v2, com modulos compilados) */}
-      {useV2 && moduleData.length > 0 && (() => {
+      {moduleData.length > 0 && (() => {
         const nextLabel = level === 'Novice' ? 'INTERMEDIATE'
           : level === 'Inter' ? 'ADVANCED' : null;
         if (!nextLabel) return null;

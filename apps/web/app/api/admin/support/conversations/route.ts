@@ -14,6 +14,7 @@ import { getAdmin, can, audit } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { sendWhatsAppText } from '@/lib/whatsapp';
+import { sendInstagramText } from '@/lib/instagram';
 import { logMessage, setConversationStatus, supportReplyHtml, ticketTakenText } from '@/lib/support-service';
 import { notifyAppReply } from '@/lib/support-app';
 import { guessLang } from '@/lib/support-agent';
@@ -124,6 +125,9 @@ export async function POST(req: NextRequest) {
     if (c.channel === 'whatsapp') {
       const r = await sendWhatsAppText(c.external_id, text);
       if (!r.ok) return `Não foi possível avisar pelo WhatsApp: ${r.error}`;
+    } else if (c.channel === 'instagram') {
+      const r = await sendInstagramText(c.external_id, text);
+      if (!r.ok) return `Não foi possível avisar pelo Instagram: ${r.error}`;
     }
     const { data: ag } = admin.email ? await supabase.from('support_agents').select('id').ilike('email', admin.email).maybeSingle() : { data: null };
     await supabase.from('support_conversations').update({
@@ -150,6 +154,9 @@ export async function POST(req: NextRequest) {
     if (c.channel === 'whatsapp') {
       const r = await sendWhatsAppText(c.external_id, text);
       if (!r.ok) return NextResponse.json({ error: `Não foi possível enviar pelo WhatsApp: ${r.error}` }, { status: 502 });
+    } else if (c.channel === 'instagram') {
+      const r = await sendInstagramText(c.external_id, text);
+      if (!r.ok) return NextResponse.json({ error: `Não foi possível enviar pelo Instagram: ${r.error}` }, { status: 502 });
     } else if (c.channel === 'email') {
       const subject = c.subject ? (/^re:/i.test(c.subject) ? c.subject : `Re: ${c.subject}`) : 'Queizy — Suporte';
       const ok = await sendEmail({ to: c.contact, subject, html: supportReplyHtml(text) });

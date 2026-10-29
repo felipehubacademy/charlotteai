@@ -1,0 +1,19 @@
+name: "Regras da ligação: app x servidor"
+
+on:
+  push:
+    paths:
+      - 'apps/mobile/components/voice/LiveVoiceModal.tsx'
+      - 'apps/web/lib/live-voice-rules.ts'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/check-live-voice-rules.mjs

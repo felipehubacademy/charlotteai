@@ -24,6 +24,7 @@ import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { getLevelAccent } from '@/lib/levelColors';
 import { appAlert } from '@/components/ui/AppAlert';
+import { goBack } from '@/lib/goBack';
 
 const C = {
   bg:        '#FAF7F0',
@@ -156,7 +157,7 @@ export default function MyVocabularyScreen() {
           paddingVertical: 14, gap: 12,
           borderBottomWidth: 1, borderBottomColor: C.border,
         }}>
-          <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
+          <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
             <ArrowLeft size={22} color={C.navy} weight="bold" />
           </TouchableOpacity>
           <AppText display style={{ flex: 1, fontSize: 20, fontWeight: '800', color: C.navy }}>

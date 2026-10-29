@@ -122,7 +122,7 @@ export default function AchievementsScreen() {
 
       {modal && (
         <BadgeModal cat={modal} earnedAt={earnedAt[modal.code]} isPt={isPt} onClose={() => setModal(null)}
-          onShare={(title, c) => { setModal(null); setTimeout(() => openShare({ kind: 'achievement', big: title, title: isPt ? 'Conquista desbloqueada' : 'Achievement unlocked', seed: c.code, rarity: c.rarity as never, category: c.category, badge: c.rarity === 'legendary' ? (isPt ? 'Lendária' : 'Legendary') : undefined }), 400); }} />
+          onShare={(title, c) => { setModal(null); setTimeout(() => openShare({ kind: 'achievement', big: title, title: 'Conquista desbloqueada', seed: c.code, rarity: c.rarity as never, category: c.category, badge: c.rarity === 'legendary' ? 'Lendária' : undefined }), 400); }} />
       )}
     </View>
   );

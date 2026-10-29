@@ -76,8 +76,8 @@
    **Answer**: I will call you.
    **Explanation**: Will + base (sem "to"): "will call", não "will to call".
 
-9. **fix_error** — "She will rains."
-   **Hint**: Sujeito errado e verbo com -s
+9. **fix_error** — "It will rains."
+   **Hint**: Depois de "will", o verbo fica sem -s
    **Answer**: It will rain.
    **Explanation**: Chuva é "it". Will + base "rain" (sem -s mesmo em 3ª pessoa).
 
@@ -216,13 +216,13 @@
 1. **multiple_choice** — "I _____ help you with that."
    **Options**: 'll / am / do
    **Answer**: 'll
-   **Explanation**: Decisão espontânea: "I'll / I will help" (I will). Forma contraída padrão pra decisões na hora.
+   **Explanation**: Decisão espontânea: "I'll help" (I will). Forma contraída padrão pra decisões na hora.
 
 2. **multiple_choice** — "She _____ come if it rains."
    **Options**: won't / doesn't / isn't
    **Answer**: won't
    **Accepts**: will not / isn't going to / aren't going to
-   **Explanation**: "Won't / Will not" = will not. "She won't / will not come" = ela não vai vir.
+   **Explanation**: "Won't" = will not. "She won't come" = ela não vai vir.
 
 3. **word_bank** — "I _____ call you tonight."
    **Choices**: will / am will / do will / would
@@ -234,42 +234,42 @@
    **Choices**: won't / doesn't / isn't / can't
    **Answer**: won't
    **Accepts**: will not / isn't going to / aren't going to
-   **Explanation**: "He won't / will not tell" — promessa negativa.
+   **Explanation**: "He won't tell" — promessa negativa.
 
 5. **fill_gap** — "I _____ get the door!"
    **Hint**: Decisão espontânea com I (contraída)
    **Answer**: 'll
-   **Explanation**: "I'll / I will get it!" — decisão na hora. Forma curta natural.
+   **Explanation**: "I'll get it!" — decisão na hora. Forma curta natural.
 
 6. **fill_gap** — "She _____ be late again."
    **Hint**: Negativa de will (contraída)
    **Answer**: won't
    **Accepts**: will not / isn't going to / aren't going to
-   **Explanation**: "She won't / will not be late" — won't = will not.
+   **Explanation**: "She won't be late" — won't = will not.
 
 7. **fill_gap** — "I promise I _____ tell anyone."
    **Hint**: Negativa "won't"
    **Answer**: won't
    **Accepts**: will not / isn't going to / aren't going to
-   **Explanation**: "I won't / will not tell" — promessa de não fazer.
+   **Explanation**: "I won't tell" — promessa de não fazer.
 
 8. **fix_error** — "I will not to help."
    **Hint**: Sem "to" após will
    **Answer**: I will not help.
    **Accepts**: I won't help.
-   **Explanation**: Will + base, sem "to". "I won't / will not help" ou "I will not help".
+   **Explanation**: Will + base, sem "to". "I won't help" ou "I will not help".
 
 9. **fix_error** — "She willn't come."
    **Hint**: Contração correta de will not
    **Answer**: She won't come.
-   **Explanation**: "Willn't" não existe. Forma correta: "won't / will not" (will + not).
+   **Explanation**: "Willn't" não existe. Forma correta: "won't" (will + not).
 
 10. **read_answer**
     **Passage**: "It's raining. I'll get an umbrella! She won't go out today. I promise I'll call you when I arrive."
     **Question**: O que o narrador promete?
     **Answer**: I'll call you (when I arrive)
     **Accepts**: to call
-    **Explanation**: O texto diz "I promise I'll / I will call you".
+    **Explanation**: O texto diz "I promise I'll call you".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -400,12 +400,12 @@
 1. **multiple_choice** — "I have a ticket — I _____ travel tomorrow."
    **Options**: 'm going to / will / am
    **Answer**: 'm going to
-   **Explanation**: "I have a ticket" = plano firme → going to. "I'm / I am going to travel".
+   **Explanation**: "I have a ticket" = plano firme → going to. "I'm going to travel".
 
 2. **multiple_choice** — "The phone is ringing — I _____ get it!"
    **Options**: 'll / 'm going to / am
    **Answer**: 'll
-   **Explanation**: Decisão espontânea → will. "I'll / I will get it!".
+   **Explanation**: Decisão espontânea → will. "I'll get it!".
 
 3. **word_bank** — "I made plans — I _____ visit my friend Saturday."
    **Choices**: 'm going to / 'll / am / do
@@ -427,13 +427,13 @@
    **Hint**: Plano feito de antemão
    **Answer**: 'm going to
    **Accepts**: am going to
-   **Explanation**: "I'm / I am going to go" — plano firme.
+   **Explanation**: "I'm going to go" — plano firme.
 
 7. **fill_gap** — "Oh, I forgot my wallet! I _____ run home."
    **Hint**: Decisão na hora
    **Answer**: 'll
    **Accepts**: will
-   **Explanation**: "I'll / I will run home" — decisão espontânea agora.
+   **Explanation**: "I'll run home" — decisão espontânea agora.
 
 8. **fix_error** — "I have a ticket — I will travel tomorrow."
    **Hint**: Plano firme pede going to
@@ -443,7 +443,7 @@
 9. **fix_error** — "The doorbell — I'm going to answer it."
    **Hint**: Decisão espontânea pede will
    **Answer**: The doorbell — I'll answer it.
-   **Explanation**: Reação imediata = will (spontaneous), não going to. "I'll / I will answer".
+   **Explanation**: Reação imediata = will (spontaneous), não going to. "I'll answer".
 
 10. **read_answer**
     **Passage**: "I'm going to travel next month — I have tickets. But right now? Oh, the phone! I'll get it. I think it'll be my mom."
@@ -540,9 +540,9 @@
    **label_pt**: "Reação com will"
    **label_en**: "Reaction with will"
    **hidden_prompt**: "user uses 'I'll + base'"
-   **hint_pt**: "I'll help if you need."
-   **hint_en**: "I'll help if you need."
-   **example_pass**: I'll help if you need.
+   **hint_pt**: "I'll help if you need me."
+   **hint_en**: "I'll help if you need me."
+   **example_pass**: I'll help if you need me.
    **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
@@ -561,7 +561,7 @@
 1. **Charlotte**: "Plan something AND react to something."
 2. **Student**: "I'm going to study tonight."
 3. **Charlotte**: "Cool."
-4. **Student**: "I'll help if you need."
+4. **Student**: "I'll help if you need me."
 5. **Charlotte**: "Thanks!"
 6. **Student**: "How about you?"
 7. **Charlotte**: "I'm going to read, and I'll text if I'm bored. Two-tense mastery!"
@@ -586,35 +586,37 @@
 2. **multiple_choice** — "I _____ pay for this."
    **Options**: 'll / am / do
    **Answer**: 'll
-   **Explanation**: Oferta espontânea: "I'll / I will pay" = "Eu pago" (decisão na hora).
+   **Explanation**: Oferta espontânea: "I'll pay" = "Eu pago" (decisão na hora).
 
 3. **word_bank** — "I _____ help you with that."
    **Choices**: will / am / do / 'm going
    **Answer**: will
    **Accepts**: 'll / is going to / are going to
-   **Explanation**: Oferta espontânea: "I will help" — decisão no momento de ajudar. "I'll / I will help" também.
+   **Explanation**: Oferta espontânea: "I will help" — decisão no momento de ajudar. "I'll help" também.
 
 4. **word_bank** — "I promise I _____ be on time."
    **Choices**: will / 'm going / am / do
    **Answer**: will
    **Accepts**: 'll / is going to / are going to
-   **Explanation**: "I promise I will" — promessa formal. "I'll / I will" também.
+   **Explanation**: "I promise I will" — promessa formal. "I'll" também.
 
 5. **fill_gap** — "I _____ get you a coffee."
    **Hint**: Oferta espontânea (contraída)
    **Answer**: 'll
-   **Explanation**: "I'll / I will get you" — oferta.
+   **Accepts**: will / can
+   **Explanation**: "I'll get you" — oferta.
 
 6. **fill_gap** — "_____ you open the door, please?"
    **Hint**: Pedido educado
    **Answer**: Will
+   **Accepts**: Can / Could / Would
    **Explanation**: "Will you open?" — pedido polido.
 
 7. **fill_gap** — "I promise I _____ tell anyone."
    **Hint**: Promessa negativa
    **Answer**: won't
    **Accepts**: will not / isn't going to / aren't going to
-   **Explanation**: "I won't / will not tell" — promessa de não fazer.
+   **Explanation**: "I won't tell" — promessa de não fazer.
 
 8. **fix_error** — "Will you to help?"
    **Hint**: Sem "to" após will
@@ -624,13 +626,13 @@
 9. **fix_error** — "I am going help you."
    **Hint**: Going to ou will, escolha um
    **Answer**: I'll help you.
-   **Explanation**: Pra oferta espontânea, "I'll / I will help" (will). Ou plano: "I'm / I am going to help".
+   **Explanation**: Pra oferta espontânea, "I'll help" (will). Ou plano: "I'm going to help".
 
 10. **read_answer**
     **Passage**: "Will you help me move? Sure, I'll come tomorrow. I promise I'll bring snacks too!"
     **Question**: O que o narrador promete trazer?
     **Answer**: snacks
-    **Explanation**: O texto diz "I'll / I will bring snacks too".
+    **Explanation**: O texto diz "I'll bring snacks too".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -790,7 +792,7 @@
    **Hint**: Negativa de will
    **Answer**: won't
    **Accepts**: will not / isn't going to / aren't going to
-   **Explanation**: "She won't / will not come" — predição negativa.
+   **Explanation**: "She won't come" — predição negativa.
 
 7. **fill_gap** — "I think they _____ love the gift."
    **Hint**: Predição
@@ -812,7 +814,7 @@
     **Passage**: "I'm going to travel next month — I have tickets. I think it will be a great trip. I'll send postcards too!"
     **Question**: O que o narrador vai fazer no mês que vem?
     **Answer**: travel
-    **Explanation**: O texto diz "I'm / I am going to travel next month".
+    **Explanation**: O texto diz "I'm going to travel next month".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -953,16 +955,17 @@
 3. **word_bank** — "What's the _____ like?"
    **Choices**: weather / climate / time / day
    **Answer**: weather
-   **Explanation**: "What's / What is the weather like?" — pergunta padrão sobre como está o tempo. "Weather" é tempo do dia; "climate" é o padrão geral de uma região (mais formal/longo prazo).
+   **Explanation**: "What's the weather like?" — pergunta padrão sobre como está o tempo. "Weather" é tempo do dia; "climate" é o padrão geral de uma região (mais formal/longo prazo).
 
 4. **word_bank** — "It's going to _____ tomorrow."
    **Choices**: rain / raining / rained / rains
    **Answer**: rain
-   **Explanation**: "Going to + verb base" — previsão futura. "It's / It is going to rain tomorrow". Após "going to", sempre verbo no infinitivo sem "to" adicional.
+   **Explanation**: "Going to + verb base" — previsão futura. "It's going to rain tomorrow". Após "going to", sempre verbo no infinitivo sem "to" adicional.
 
 5. **fill_gap** — "It's _____ today — really cold!"
    **Hint**: clima muito frio
    **Answer**: freezing
+   **Accepts**: cold / very cold / so cold / icy / chilly
    **Explanation**: "Freezing" — adjetivo intensivo para "very cold". Outros intensivos: "boiling" (very hot), "soaking" (very wet). Não usar "very freezing" — o adjetivo já é intensificado.
 
 6. **fill_gap** — "_____ is my favorite season."
@@ -974,7 +977,7 @@
 7. **fill_gap** — "It'll _____ sunny tomorrow."
    **Hint**: verbo "to be" no futuro com will
    **Answer**: be
-   **Explanation**: "It will be sunny" / "It'll / It will be sunny" — futuro com "will" + "be" + adjetivo. Não esquecer o "be" — erro comum dizer só "It will sunny".
+   **Explanation**: "It will be sunny" / "It'll be sunny" — futuro com "will" + "be" + adjetivo. Não esquecer o "be" — erro comum dizer só "It will sunny".
 
 8. **fix_error** — "Is making cold today."
    **Hint**: Clima em inglês usa "It is + adjetivo" (sem "making")

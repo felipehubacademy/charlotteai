@@ -1,0 +1,26 @@
+name: "Alerta - capacidade do banco"
+
+on:
+  schedule:
+    # De hora em hora (pico dos anúncios). Só manda e-mail quando passa do limite de aviso, no máximo
+    # um a cada 12 horas.
+    - cron: '7 * * * *'
+  workflow_dispatch: # permite rodar manualmente
+
+jobs:
+  capacity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Call capacity alert
+        run: |
+          response=$(curl -s -o /tmp/out.json -w "%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -H "User-Agent: github-actions-cron" \
+            -d '{}' \
+            "https://queizy.com/api/cron/capacity-alert")
+          echo "Response status: $response"
+          cat /tmp/out.json | head -c 2000
+          if [ "$response" != "200" ]; then exit 1; fi

@@ -200,6 +200,7 @@
 3. **fill_gap** — "I suggest _____ the meeting until next week."
    **Hint**: -ing form of "postpone"
    **Answer**: postponing
+   **Accepts**: delaying / moving / pushing back
    **Explanation**: "Suggest + -ing" is the most natural form. Alternative: "suggest that we postpone..." (mandative subjunctive from M04). Both work; "+ -ing" is more compact.
 
 4. **fix_error** — "She denied to take the money."
@@ -352,6 +353,7 @@
 3. **fill_gap** — "They offered _____ him to the station."
    **Hint**: "to + base form of drive"
    **Answer**: to drive
+   **Accepts**: to take
    **Explanation**: "Offer + to + infinitive" — the offered action is in infinitive form. Same pattern: "offered to help, offered to pay, offered to wait".
 
 4. **fix_error** — "He threatened leaving the team."
@@ -504,7 +506,8 @@
 
 3. **fill_gap** — "They talked her _____ the meeting."
    **Hint**: preposition + -ing
-   **Answer**: into attending (or out of attending — both grammatical, different meaning)
+   **Answer**: into attending
+   **Accepts**: out of attending
    **Explanation**: "Talk + person + into + -ing" (persuaded to do) or "out of + -ing" (dissuaded from doing). Both prepositional patterns common with "talk".
 
 4. **fix_error** — "He discouraged me to apply."
@@ -662,7 +665,7 @@
 4. **fix_error** — "According me, the meeting was a waste of time."
    **Hint**: "According to + person", not used for own opinion
    **Answer**: In my opinion, the meeting was a waste of time.
-   **Accepts**: I think the meeting was a waste of time.
+   **Accepts**: I think the meeting was a waste of time. / In my view, the meeting was a waste of time. / To me, the meeting was a waste of time.
    **Explanation**: "According to" is for citing OTHERS, not yourself. "According to me" is grammatically possible but stylistically wrong. Use "In my opinion" or "I think" for your own view.
 
 5. **read_answer**
@@ -687,7 +690,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three hedged claims, three different sources or markers — 'According to', 'allegedly', 'apparently/reportedly'."
+**Opening line**: "I'm your editor today. Give me three careful claims, each with a different marker: 'according to', 'allegedly' and 'apparently' or 'reportedly'."
 
 **Sub-objectives** (3 objetivos):
 
@@ -722,7 +725,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three hedged claims, three different sources or markers — 'According to', 'allegedly', 'apparently/reportedly'."
+1. **Charlotte**: "I'm your editor today. Give me three careful claims, each with a different marker: 'according to', 'allegedly' and 'apparently' or 'reportedly'."
 2. **Student**: ~"According to the financial filing, profits doubled in the third quarter."
 3. **Charlotte**: "Source cited. Legal hedge?"
 4. **Student**: ~"The accountant allegedly transferred funds to a personal account."

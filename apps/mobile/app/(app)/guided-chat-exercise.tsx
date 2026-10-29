@@ -36,14 +36,19 @@ import { AppText } from '@/components/ui/Text';
 import ChatBox, { Message } from '@/components/chat/ChatBox';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { useAuth } from '@/hooks/useAuth';
+import { useStreak } from '@/components/streak/StreakProvider';
+import * as SecureStore from 'expo-secure-store';
+import { TASTE_DAYS, tasteDayNumber } from '@/lib/tasteDays';
 import { getModule, listModules } from '@/lib/curriculum-v2/loader';
 import type { Level as V2Level, GuidedChat } from '@/lib/curriculum-v2/types';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { recordConversationPractice, fetchConversationFeedback, ConversationFeedback } from '@/lib/trailFeedback';
 import { ConversationFeedbackBlock } from '@/components/trail/ConversationFeedbackBlock';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
+import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import { useTotalXP } from '@/hooks/useTotalXP';
 import { soundEngine } from '@/lib/soundEngine';
+import { goBack } from '@/lib/goBack';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -77,6 +82,7 @@ export default function GuidedChatExerciseScreen() {
   const unitId   = params.unitId ?? '';
 
   const { profile, isTaster } = useAuth();
+  const { celebrateStreak } = useStreak();
   const { openPaywall } = usePaywallContext();
   const userId      = profile?.id;
   const isPt        = systemIsPt; // suporte/chrome: idioma do device
@@ -218,7 +224,7 @@ export default function GuidedChatExerciseScreen() {
     v2Progress.saveAttempt(moduleId, unitId, 'chat', score)
       .catch(e => console.warn('[guided-chat] saveAttempt failed', e));
     // XP da conversa (conta para sequência, metas e ranking) e correção do inglês no fim.
-    if (userId) recordConversationPractice(userId, 'chat', objectivesMet.size).then(setXpEarned);
+    if (userId) recordConversationPractice(userId, 'chat', objectivesMet.size).then(xp => { setXpEarned(xp); celebrateStreak(); });
     const lines = historyRef.current.filter(h => h.role === 'user').map(h => h.content).filter(Boolean);
     setFeedbackLoading(true);
     fetchConversationFeedback({ level, moduleId, unitId, activity: 'chat', topic: getModule(level, moduleId)?.units.find(u => u.id === unitId)?.title, lines })
@@ -420,7 +426,7 @@ export default function GuidedChatExerciseScreen() {
         paddingHorizontal: 16, paddingVertical: 10,
         backgroundColor: C.card,
       }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+        <TouchableOpacity onPress={() => goBack()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1 }}>
@@ -431,6 +437,19 @@ export default function GuidedChatExerciseScreen() {
             {isPt ? 'Chat Guiado' : 'Guided Chat'}
           </AppText>
         </View>
+        {/* Reportar problema nesta atividade (vai com as últimas falas da conversa). */}
+        <ReportIssueButton
+          kind="chat"
+          getContext={() => {
+            const hist = historyRef.current.slice(-6);
+            const lastUser = [...hist].reverse().find(m => m.role === 'user');
+            return {
+              screen: 'guided-chat', level, moduleId: params.moduleId ?? null, unitId: params.unitId ?? null, activity: 'guided-chat',
+              exercise: { persona: gc.persona, conversation: hist },
+              transcript: lastUser?.content ?? null,
+            };
+          }}
+        />
         <View style={{ marginRight: 8 }}>
           <AnimatedXPBadge xp={baseTotalXP + (xpEarned > 0 ? xpEarned : objectivesMet.size * 5)} iconSize={13} fontSize={13} padH={10} padV={5} />
         </View>
@@ -751,11 +770,14 @@ export default function GuidedChatExerciseScreen() {
                   //   - eh ultima unit do ultimo modulo → home (com spinner
                   //     pra cobrir o gap ate o PromotionModal aparecer)
                   if (!allObjectivesDone) { router.back(); return; }
-                  // Degustação: terminou o 1º bloco deste nível (qualquer nível) → Home + paywall.
-                  // Abre daqui porque a Home volta no nível da conta, não no deste bloco.
+                  // Degustação: terminou um tópico grátis → Home + oferta (amanhã libera outro; no último dia,
+                  // a degustação acabou). Abre daqui porque a Home volta no nível da conta, não no deste tópico.
+                  // A mesma chave da trilha evita a oferta abrir de novo ao voltar para ela hoje.
                   if (isTaster) {
+                    const day = Math.min(tasteDayNumber(profile?.created_at), TASTE_DAYS);
+                    SecureStore.setItemAsync(`taste_paywall_${level}_${day}`, '1').catch(() => {});
                     router.replace('/(app)/(tabs)' as any);
-                    setTimeout(() => openPaywall(), 600);
+                    setTimeout(() => openPaywall(day >= TASTE_DAYS ? 'taste_done' : 'taste_today'), 600);
                     return;
                   }
                   const allMods = listModules(level as any);

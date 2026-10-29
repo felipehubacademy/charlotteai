@@ -62,7 +62,15 @@ export default function StoreCTA({ variant, label, className, direct, plan }: Pr
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     // O site recebe só tráfego de fora da loja (influenciador, anúncio, conteúdo): assina pelo site.
-    if (!direct) { window.location.href = plan ? `/assinar?plano=${plan}` : '/assinar'; return; }
+    if (!direct) {
+      // Leva junto o modo de teste/novo do checkout (?checkout=teste): sem isso, quem testava caía na cobrança real.
+      const ck = new URLSearchParams(window.location.search).get('checkout');
+      const qs = new URLSearchParams();
+      if (plan) qs.set('plano', plan);
+      if (ck) qs.set('checkout', ck);
+      window.location.href = qs.toString() ? `/assinar?${qs}` : '/assinar';
+      return;
+    }
     trackCustom('AppStoreClick', { variant });
     // Link de afiliado: o código vai junto para a loja (referrer da Play / área de transferência no iPhone).
     if (platform === 'android') {

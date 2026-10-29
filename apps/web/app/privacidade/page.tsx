@@ -24,7 +24,7 @@ export default function PrivacidadePage() {
             Política de Privacidade
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, margin: 0 }}>
-            Última atualização: 16 de outubro de 2026
+            Última atualização: 19 de outubro de 2026
           </p>
         </div>
       </div>
@@ -48,11 +48,11 @@ export default function PrivacidadePage() {
           <DataTable rows={[
             ['Dados de cadastro', 'Nome, e-mail e senha (armazenada com hash seguro).'],
             ['Perfil público e amigos', 'Seu @, foto de perfil, nível, amigos de estudo, pedidos de amizade, cutucadas, parabéns e competições de que você participa.'],
-            ['Dados de uso', 'Histórico de conversas com a IA, progresso nas lições, streak diário, nível de inglês e preferências de aprendizado.'],
-            ['Dados de áudio', 'Gravações de voz em exercícios de pronúncia e conversas. Na pronúncia e no Live Voice, o áudio é processado em tempo real e descartado. No Free Chat, os áudios das conversas (os seus e as respostas faladas) ficam guardados por 90 dias, num espaço privado, para você ouvir de novo; depois disso, fica só o texto.'],
+            ['Dados de uso', 'Histórico de conversas com a IA, progresso nas lições, streak diário, nível de inglês e preferências de aprendizado. Nas ligações (Live Voice, com a Charlotte ou com a Família Queizy), guardamos a transcrição em texto, um resumo e anotações curtas da conversa para o personagem lembrar do assunto na próxima ligação; você vê e apaga cada ligação em "Conversas anteriores".'],
+            ['Dados de áudio', 'Gravações de voz em exercícios de pronúncia e conversas. Na pronúncia e nas ligações (Live Voice), o áudio é processado em tempo real e não é gravado. No Free Chat, os áudios das conversas (os seus e as respostas faladas) ficam guardados por 90 dias, num espaço privado, para você ouvir de novo; depois disso, fica só o texto.'],
 ['Dados de dispositivo', 'Token de notificações push, sistema operacional e versão do app (para lembretes de estudo).'],
-            ['Dados de pagamento', 'Processados pela App Store ou Google Play (via RevenueCat) ou, na assinatura pelo site, pelo Asaas. Não armazenamos dados de cartão nem bancários.'],
-            ['Cookies do site (queizy.com)', 'Só com o seu aceite no aviso de cookies: o pixel da Meta (Facebook e Instagram) mede visitas, início de assinatura e vendas que vieram de anúncios. Na assinatura pelo site, com o aceite, também enviamos à Meta o seu e-mail criptografado (hash) para ligar a venda ao anúncio. Escolhendo "Só os essenciais", nada disso é usado e o site funciona do mesmo jeito.'],
+            ['Dados de pagamento', 'Processados pela App Store ou Google Play ou, na assinatura pelo site, por um parceiro de pagamentos. Na assinatura pelo site, CPF, celular e endereço informados no formulário são repassados ao parceiro de pagamentos só para a cobrança, sem ficar guardados no Queizy. Não armazenamos dados de cartão nem bancários.'],
+            ['Cookies do site (queizy.com)', 'Só com o seu aceite no aviso de cookies: o pixel da Meta (Facebook e Instagram) e as tags do Google (Google Ads, pelo Google Tag Manager) medem visitas, início de assinatura e vendas que vieram de anúncios. Na assinatura pelo site, com o aceite, também enviamos à Meta o seu e-mail criptografado (hash) para ligar a venda ao anúncio. Escolhendo "Só os essenciais", nada disso é usado e o site funciona do mesmo jeito.'],
           ]} />
         </Section>
 
@@ -81,11 +81,10 @@ export default function PrivacidadePage() {
           <p style={{ marginBottom: 16 }}><b>O que outros alunos veem:</b> seu nome, seu @, sua foto de perfil e seu nível aparecem para outros alunos no ranking, na busca de amigos, nas conquistas recentes e nas competições. Seu e-mail nunca é mostrado. Você pode sair da busca em Perfil → Preferências → Aparecer na busca, bloquear qualquer usuário e denunciar abusos no app.</p>
           <p style={{ marginBottom: 16 }}>Não vendemos seus dados. Compartilhamos somente com os parceiros abaixo, contratualmente obrigados a protegê-los:</p>
           <DataTable rows={[
-            ['Supabase', 'Banco de dados e autenticação.'],
-            ['OpenAI', 'Geração de respostas, explicações e exercícios via inteligência artificial (GPT-4o). Suas mensagens são processadas e descartadas conforme a política de dados da OpenAI.'],
-            ['ElevenLabs', 'Síntese de voz (text-to-speech) para as falas da Charlotte. Apenas texto é transmitido.'],
-            ['Microsoft Azure Speech', 'Reconhecimento e avaliação de pronúncia. Áudio enviado em tempo real e descartado imediatamente após a análise.'],
-            ['RevenueCat', 'Gestão de assinaturas e pagamentos.'],
+            ['Infraestrutura em nuvem', 'Banco de dados, autenticação e hospedagem do app e do site.'],
+            ['Inteligência artificial', 'Geração de respostas, explicações, exercícios e resumos. Suas mensagens são processadas para gerar a resposta e não são usadas para treinar modelos.'],
+            ['Voz e fala', 'Síntese de voz das falas dos personagens, reconhecimento de fala, avaliação de pronúncia e as ligações ao vivo (áudio processado em tempo real, sem gravação de voz; a transcrição guardada pelo fornecedor é apagada em até 7 dias).'],
+            ['Pagamentos e assinaturas', 'Gestão das assinaturas e processamento do pagamento pelo site.'],
             ['Apple / Google', 'Distribuição do app e compras in-app.'],
             ['Autoridades públicas', 'Quando exigido por lei ou ordem judicial.'],
           ]} />
@@ -94,9 +93,9 @@ export default function PrivacidadePage() {
         <Section title="6. Inteligência Artificial e tratamento de dados">
           <p style={{ marginBottom: 14 }}>O Queizy utiliza serviços de IA de terceiros para personalizar sua experiência de aprendizado. Antes do primeiro uso, o aplicativo solicita seu consentimento explícito para o envio de dados a esses serviços.</p>
           <DataTable rows={[
-            ['OpenAI GPT-4o', 'Suas mensagens de chat e respostas a exercícios são enviadas à API da OpenAI para geração de respostas personalizadas. A OpenAI não usa esses dados para treinar modelos por padrão (API usage).'],
-            ['ElevenLabs TTS', 'Texto das respostas da Charlotte é enviado para síntese de voz. Nenhuma informação pessoal identificável é transmitida.'],
-            ['Azure Speech Services', 'Áudio capturado pelo microfone é enviado ao Azure para reconhecimento de fala e avaliação de pronúncia em tempo real. O áudio é descartado imediatamente após o processamento e não é retido pela Microsoft para fins de treino.'],
+            ['Respostas e exercícios', 'Suas mensagens de chat e respostas a exercícios são enviadas a um serviço de IA para gerar respostas personalizadas. Esses dados não são usados para treinar modelos.'],
+            ['Voz dos personagens e ligações', 'O texto das respostas dos personagens é enviado para síntese de voz. Nas ligações, o áudio da conversa é processado em tempo real para a resposta do personagem, junto com o seu primeiro nome, o seu nível e o assunto que você está estudando.'],
+            ['Fala e pronúncia', 'O áudio capturado pelo microfone é enviado para reconhecimento de fala e avaliação de pronúncia em tempo real e descartado logo depois, sem uso para treino.'],
           ]} />
           <p style={{ marginTop: 16 }}>Você pode revogar seu consentimento de uso de IA a qualquer momento entrando em contato pelo e-mail <a href="mailto:privacidade@queizy.com" style={{ color: '#6B4BFF' }}>privacidade@queizy.com</a>, ficando ciente de que o aplicativo não funcionará sem esses serviços.</p>
         </Section>
@@ -131,7 +130,7 @@ export default function PrivacidadePage() {
         <Section title="9. Segurança">
           <List items={[
             'Criptografia em trânsito (TLS/HTTPS) e em repouso',
-            'Autenticação segura via Supabase Auth',
+            'Autenticação segura',
             'Senhas armazenadas com hash — nunca em texto plano',
             'Acesso restrito aos dados por equipe autorizada',
           ]} />

@@ -109,7 +109,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 **Persona**: Igorfina
 **Persona outfit**: `igorfina_casual`
 **Time budget**: 90s
-**Opening line**: "You can take the bus, the subway or a taxi. What do you want?"
+**Opening line**: "You can take the bus, the subway or a taxi. Which one do you want?"
 
 **Sub-objectives** (2 objetivos):
 
@@ -213,45 +213,47 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **Answer**: the best
    **Explanation**: "The best" = o melhor (de todos). Superlativo sempre com "the". Dica do Igor: o presidente fala "the best" a cada três palavras.
 
-3. **word_bank** — "The traffic today is _____ than yesterday."
-   **Choices**: worse / badder / worst / more bad
+3. **multiple_choice** — "Today is _____ than yesterday."
+   **Options**: worse / more bad / badder
    **Answer**: worse
-   **Explanation**: "Bad" também é irregular: bad → worse → the worst. "Worse than" = pior que.
+   **Explanation**: "Bad" também é irregular: bad → worse → the worst. "Worse than" = pior que. "More bad" e "badder" não existem (fora de música).
 
-4. **word_bank** — "Today is _____ day I've had in a long time."
+4. **word_bank** — "The traffic today is _____ than yesterday."
+   **Choices**: worse / badder / bad / more bad
+   **Answer**: worse
+   **Explanation**: De novo: bad → worse. "Worse than" = pior que, para comparar duas coisas (hoje e ontem).
+
+5. **word_bank** — "Today is _____ day I've had in a long time."
    **Choices**: the worst / the worse / worst of / bad
    **Answer**: the worst
-   **Explanation**: Frase do curso: "Today is the worst day I've had in a long time" = hoje é o pior dia que tive em muito tempo.
+   **Explanation**: "The worst" = o pior (de todos): bad → worse → the worst. Frase do curso: "Today is the worst day I've had in a long time" = hoje é o pior dia que tive em muito tempo.
 
-5. **fill_gap** — "Folks, this hotel is _____ best hotel. Believe me."
+6. **fill_gap** — "Folks, this hotel is _____ best hotel. Believe me."
    **Hint**: Artigo que vem antes do superlativo
    **Answer**: the
    **Explanation**: Superlativo pede "the": "the best", "the worst", "the biggest".
 
-6. **fill_gap** — "My English is _____ than last year!"
+7. **fill_gap** — "My English is _____ than last year!"
    **Hint**: Melhor (comparativo de good)
    **Answer**: better
    **Explanation**: "My English is better than last year" = meu inglês está melhor que no ano passado. Frase para se orgulhar.
 
-7. **fill_gap** — "This is the _____ coffee ever. I can't drink it!"
-   **Hint**: O pior (superlativo de bad)
+8. **word_bank** — "Yuck! This is the _____ coffee ever. I can't drink it!"
+   **Hint**: O café está horrível: o pior de todos
+   **Choices**: worst / worse / best / baddest
    **Answer**: worst
-   **Explanation**: "The worst coffee ever" = o pior café da vida. "Ever" reforça: de todos os tempos.
+   **Explanation**: "The worst coffee ever" = o pior café da vida. "Ever" reforça: de todos os tempos. "Worse" é só para comparar dois ("worse than").
 
-8. **fix_error** — "This is the most good pizza."
-   **Hint**: "Good" tem superlativo irregular
-   **Answer**: This is the best pizza.
+9. **multiple_choice** — "This is _____ pizza."
+   **Options**: the best / the most good / the goodest
+   **Answer**: the best
    **Explanation**: Nada de "most good": o superlativo de "good" é "the best".
-
-9. **fix_error** — "Today is more bad than yesterday."
-   **Hint**: "Bad" tem comparativo irregular
-   **Answer**: Today is worse than yesterday.
-   **Explanation**: "Bad" → "worse". "More bad" e "badder" não existem (fora de música).
 
 10. **read_answer**
     **Passage**: "Igor (as the president): Folks, this burger is tremendous. The best burger. Better than any burger. The fries? The worst. Terrible fries. Sad!"
-    **Question**: O que é "the worst" para o presidente? (responda em inglês)
+    **Question**: Para o presidente, qual comida é "the worst"? (responda em inglês, com a palavra do texto)
     **Answer**: The fries
+    **Accepts**: fries
     **Explanation**: Ele achou o hambúrguer "the best" e as batatas "the worst". Repare: "better than" para comparar dois, "the best / the worst" para o extremo.
 
 ### 2. Listening/Speaking (5 phrases)

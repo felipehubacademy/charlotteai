@@ -1,13 +1,12 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { RefreshCw, Play, CheckCircle, XCircle, Clock, Wifi, WifiOff, ChevronLeft, ChevronRight } from 'lucide-react';
+import { RefreshCw, Moon, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 interface TokenStats { total: number; withToken: number; withoutToken: number; }
 interface PeriodStats { sent: number; failed: number; deliveryRate?: number; }
 interface ByType     { type: string; sent: number; failed: number; uniqueUsers: number; }
-interface ByCategory { core: number; prevention: number; revenue: number; winback: number; }
 interface Ts         { date: string; count: number; }
 interface Log {
   id: string; user_id: string; notification_type: string; status: string;
@@ -17,49 +16,65 @@ interface Log {
 }
 interface Data {
   tokenStats: TokenStats; stats24h: PeriodStats; stats7d: PeriodStats;
-  byType: ByType[]; byCategory: ByCategory; timeseries: Ts[];
+  byType: ByType[]; timeseries: Ts[];
   logs: Log[]; page: number; total: number; perPage: number;
 }
 
-type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement';
-
-// ── Schedule reference ────────────────────────────────────────────────────────
-const TASKS: { key: TaskType; label: string; schedule: string; color: string }[] = [
-  { key: 'daily',      label: 'Daily Reminder',   schedule: '11h (local)',       color: 'var(--accent)' },
-  { key: 'goal',       label: 'Goal Reminder',     schedule: '16h (local)',       color: 'var(--brand)'  },
-  { key: 'streak',     label: 'Streak Reminder',   schedule: '18h (local)',       color: 'var(--warn)'   },
-  { key: 'praise',     label: 'Charlotte Praise',  schedule: '18h (local)',       color: 'var(--ok)'     },
-  { key: 'weekly',     label: 'Weekly Challenge',  schedule: 'seg 9h (local)',    color: 'var(--accent)' },
-  { key: 'engagement', label: 'Engagement Push',   schedule: 'dinâmico',          color: 'var(--err)'    },
-];
-
-const TYPE_COLORS: Record<string, string> = {
-  daily_reminder:    'var(--accent)',
-  streak_reminder:   'var(--warn)',
-  goal_reminder:     'var(--brand)',
-  charlotte_message: 'var(--ok)',
-  weekly_challenge:  'var(--accent)',
-  engagement:        'var(--err)',
+// ── Catálogo: o que cada aviso é e quando sai (horário local do aluno) ─────────
+// Fonte: lib/expo-notification-service.ts (TARGET_HOUR_* e ENGAGEMENT_TARGET_HOUR) e lib/rally-jobs.ts.
+type Group = 'Degustação' | 'Ranking' | 'Rotina' | 'Para não esfriar' | 'Assinatura' | 'Reativação';
+const GROUP_COLOR: Record<Group, string> = {
+  'Degustação': 'var(--brand)', 'Ranking': 'var(--ok)', 'Rotina': 'var(--accent)', 'Para não esfriar': 'var(--ok)', 'Assinatura': 'var(--brand)', 'Reativação': 'var(--warn)',
 };
-
-const CAT_META: { key: keyof ByCategory; label: string; color: string }[] = [
-  { key: 'core',       label: 'Core',       color: 'var(--accent)' },
-  { key: 'prevention', label: 'Prevenção',  color: 'var(--ok)'     },
-  { key: 'revenue',    label: 'Receita',    color: 'var(--brand)'  },
-  { key: 'winback',    label: 'Reativação', color: 'var(--warn)'   },
-];
+const CATALOG: Record<string, { label: string; when: string; group: Group }> = {
+  taste_daily:            { label: 'Tópico do dia liberado',      when: 'Dias 2 a 5 do cadastro, na hora do lembrete (no 5º, "último tópico grátis")', group: 'Degustação' },
+  taste_nudge:            { label: 'Tópico grátis esperando',     when: 'Dias 2 a 4, no lugar do anterior, para quem não estudou na véspera', group: 'Degustação' },
+  taste_ended:            { label: 'Degustação terminou',         when: 'Dia 6, com o convite para os 7 dias grátis', group: 'Degustação' },
+  taste_offer:            { label: 'Teste grátis ainda disponível', when: 'Dia 9, última lembrança', group: 'Degustação' },
+  rank_up:                { label: 'Subiu no ranking',            when: '19h, entrou no top 3 da semana ou subiu dentro dele', group: 'Ranking' },
+  rank_lost:              { label: 'Perdeu a posição',            when: '19h, foi ultrapassado e caiu dentro ou fora do top 3', group: 'Ranking' },
+  rank_threat:            { label: 'Posição em risco',            when: '19h, top 3 com alguém a menos de 100 XP (no máximo a cada 2 dias)', group: 'Ranking' },
+  rank_week_won:          { label: 'Venceu a semana',             when: 'Segunda, 10h, para o 1º da semana anterior', group: 'Ranking' },
+  legacy_trial_ended:     { label: 'Teste antigo terminou',       when: 'No dia em que o teste sem cartão vence (passa para a degustação)', group: 'Degustação' },
+  daily_reminder:         { label: 'Lembrete diário',             when: 'No horário escolhido pelo aluno (padrão 11h)', group: 'Rotina' },
+  charlotte_message:      { label: 'Elogio da Charlotte',         when: '18h, para quem estudou no dia', group: 'Rotina' },
+  streak_reminder:        { label: 'Aviso de sequência',          when: '18h, para quem ainda não estudou', group: 'Rotina' },
+  goal_reminder:          { label: 'Meta da semana',              when: '16h', group: 'Rotina' },
+  weekly_challenge:       { label: 'Desafio da semana',           when: 'Segunda, 9h', group: 'Rotina' },
+  xp_milestone:           { label: 'Marco de XP',                 when: 'Quando o aluno atinge o marco', group: 'Rotina' },
+  buddy_rivalry:          { label: 'Estudar junto',               when: '19h, entre amigos', group: 'Rotina' },
+  rally_reminder:         { label: 'Desafio entre amigos',        when: 'Durante o desafio', group: 'Rotina' },
+  rally_update:           { label: 'Desafio entre amigos (placar)', when: 'Durante o desafio', group: 'Rotina' },
+  rally_result:           { label: 'Desafio entre amigos (resultado)', when: 'No fim do desafio', group: 'Rotina' },
+  micro_checkin:          { label: '"Oi" da Charlotte',           when: '2h depois do horário em que costuma estudar (não vai para quem fixou horário)', group: 'Para não esfriar' },
+  charlotte_checkin:      { label: 'Conversa da Charlotte',       when: 'Terça e quinta, 15h, quem estudou nos últimos 4 dias', group: 'Para não esfriar' },
+  cadence_drop:           { label: 'Queda de ritmo',              when: '12h, semana abaixo da média', group: 'Para não esfriar' },
+  streak_saver:           { label: 'Salvar a sequência',          when: '20h, sequência de 3+ dias em risco', group: 'Para não esfriar' },
+  streak_milestone_ahead: { label: 'Marco de sequência amanhã',   when: '20h', group: 'Para não esfriar' },
+  level_imminent:         { label: 'Perto de subir de nível',     when: '17h', group: 'Para não esfriar' },
+  weekly_recap:           { label: 'Resumo da semana',            when: 'Domingo, 19h', group: 'Para não esfriar' },
+  trial_ending_72h:       { label: 'Teste acaba em 3 dias',       when: '10h', group: 'Assinatura' },
+  trial_ending_24h:       { label: 'Teste acaba amanhã',          when: '10h', group: 'Assinatura' },
+  sub_expired_1d:         { label: 'Assinatura venceu',           when: '11h, no dia seguinte', group: 'Assinatura' },
+  streak_broken:          { label: 'Sequência perdida',           when: '12h', group: 'Reativação' },
+  reengagement_3d:        { label: 'Sentimos sua falta (3 dias)',  when: '12h', group: 'Reativação' },
+  reengagement_7d:        { label: 'Sentimos sua falta (7 dias)',  when: '12h', group: 'Reativação' },
+  reengagement_14d:       { label: 'Sentimos sua falta (14 dias)', when: '12h', group: 'Reativação' },
+  reengagement_30d:       { label: 'Sentimos sua falta (30 dias)', when: '12h, último aviso', group: 'Reativação' },
+};
+const typeLabel = (t: string) => CATALOG[t]?.label ?? t.replace(/_/g, ' ');
+const typeColor = (t: string) => CATALOG[t] ? GROUP_COLOR[CATALOG[t].group] : 'var(--t3)';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 const fmtDate = (s: string | null) => {
   if (!s) return '—';
   return new Date(s).toLocaleString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 };
-const fmtType = (t: string) => t.replace(/_/g, ' ');
 
 // ── Status badge ─────────────────────────────────────────────────────────────
 function StatusDot({ status }: { status: string }) {
   const cls = status === 'sent' ? 'badge-ok' : status === 'failed' ? 'badge-err' : 'badge-muted';
-  return <span className={`badge ${cls}`}>{status}</span>;
+  return <span className={`badge ${cls}`}>{status === 'sent' ? 'Enviado' : status === 'failed' ? 'Falhou' : status}</span>;
 }
 
 // ── Area chart (lightweight SVG) ──────────────────────────────────────────────
@@ -118,55 +133,42 @@ export default function AdminNotificationsPage() {
   const [error, setError]       = useState('');
   const [page, setPage]         = useState(1);
   const [typeFilter, setType]   = useState('');
-  const [statusFilter, setSt]   = useState('');
-  const [trigger, setTrigger]   = useState<{ task: TaskType; loading: boolean; result: string } | null>(null);
   const [updatedAt, setUpdated] = useState<Date | null>(null);
-
-  const secret = typeof window !== 'undefined' ? sessionStorage.getItem('adminSecret') ?? '' : '';
 
   const fetchData = useCallback(async (p = page) => {
     setLoading(true); setError('');
     try {
       const params = new URLSearchParams({ page: String(p) });
-      if (typeFilter)   params.set('type', typeFilter);
-      if (statusFilter) params.set('status', statusFilter);
-      const res = await fetch(`/api/admin/notifications?${params}`, {
-        headers: { 'x-admin-secret': secret },
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      if (typeFilter) params.set('type', typeFilter);
+      const res = await fetch(`/api/admin/notifications?${params}`);
+      if (!res.ok) throw new Error(`Erro ${res.status}`);
       setData(await res.json());
       setUpdated(new Date());
-    } catch (e: any) { setError(e.message); }
-    finally { setLoading(false); }
-  }, [page, typeFilter, statusFilter, secret]);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Não foi possível carregar.');
+    } finally { setLoading(false); }
+  }, [page, typeFilter]);
 
-  useEffect(() => { fetchData(1); setPage(1); }, [typeFilter, statusFilter]);
-  useEffect(() => { fetchData(page); }, [page]);
-
-  const handleTrigger = async (task: TaskType) => {
-    setTrigger({ task, loading: true, result: '' });
-    try {
-      const res  = await fetch('/api/admin/notifications', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-admin-secret': secret },
-        body: JSON.stringify({ task }),
-      });
-      const json = await res.json();
-      setTrigger({ task, loading: false, result: json.ok ? `Concluido em ${json.ms}ms` : `Erro: ${json.error}` });
-      setTimeout(() => fetchData(1), 1500);
-    } catch (e: any) {
-      setTrigger({ task, loading: false, result: `Erro: ${e.message}` });
-    }
-  };
+  useEffect(() => { fetchData(1); setPage(1); }, [typeFilter]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { fetchData(page); }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const d          = data;
   const totalPages = d ? Math.ceil(d.total / d.perPage) : 1;
   const tokenPct   = d ? Math.round((d.tokenStats.withToken / Math.max(d.tokenStats.total, 1)) * 100) : 0;
-  const catTotal   = d ? Object.values(d.byCategory).reduce((a, b) => a + b, 0) || 1 : 1;
+  const reached7d  = d ? Math.max(0, ...d.byType.map(t => t.uniqueUsers)) : 0;
+
+  // Catálogo agrupado, com o volume da semana (tipos sem envio também aparecem).
+  const sentByType = new Map((d?.byType ?? []).map(t => [t.type, t]));
+  const groups = (Object.keys(GROUP_COLOR) as Group[]).map(g => ({
+    group: g,
+    rows: Object.entries(CATALOG).filter(([, c]) => c.group === g)
+      .map(([type, c]) => ({ type, ...c, sent: sentByType.get(type)?.sent ?? 0, users: sentByType.get(type)?.uniqueUsers ?? 0 }))
+      .sort((x, y) => y.sent - x.sent),
+  }));
+  const unknown = (d?.byType ?? []).filter(t => !CATALOG[t.type]);
 
   return (
     <div className="adm-page">
-      {/* Top bar */}
       <div className="adm-topbar">
         <div style={{ flex: 1 }}>
           <div className="adm-topbar-title">Notificações</div>
@@ -186,241 +188,104 @@ export default function AdminNotificationsPage() {
       <div className="adm-body">
         {error && <div className="adm-alert crit" style={{ marginBottom: 16 }}>{error}</div>}
 
-        {/* ── Row 1: KPI Cards ─────────────────────────────────────────────── */}
         <div className="adm-grid" style={{ marginBottom: 20 }}>
           <div className="col-3">
             <div className="kpi-card fade-up">
               <div className="kpi-label">Enviadas (24h)</div>
-              <div className="kpi-value" style={{ color: 'var(--ok)' }}>
-                {d ? d.stats24h.sent.toLocaleString('pt-BR') : '—'}
-              </div>
-              {d && <div className="kpi-context">{d.stats24h.failed} falhas</div>}
+              <div className="kpi-value" style={{ color: 'var(--ok)' }}>{d ? d.stats24h.sent.toLocaleString('pt-BR') : '—'}</div>
+              {d && d.stats24h.failed > 0 && <div className="kpi-context" style={{ color: 'var(--err)' }}>{d.stats24h.failed} falharam</div>}
             </div>
           </div>
           <div className="col-3">
             <div className="kpi-card fade-up" style={{ animationDelay: '60ms' }}>
-              <div className="kpi-label">Enviadas (7d)</div>
+              <div className="kpi-label">Enviadas (7 dias)</div>
               <div className="kpi-value">{d ? d.stats7d.sent.toLocaleString('pt-BR') : '—'}</div>
-              {d && <div className="kpi-context">{d.stats7d.failed} falhas</div>}
+              {d && <div className="kpi-context">média de {Math.round(d.stats7d.sent / 7).toLocaleString('pt-BR')} por dia</div>}
             </div>
           </div>
           <div className="col-3">
             <div className="kpi-card fade-up" style={{ animationDelay: '120ms' }}>
-              <div className="kpi-label">Taxa de Entrega (7d)</div>
-              <div className="kpi-value"
-                style={{ color: d && (d.stats7d.deliveryRate ?? 100) >= 90 ? 'var(--ok)' : 'var(--warn)' }}>
-                {d ? `${d.stats7d.deliveryRate ?? 100}%` : '—'}
-              </div>
-              <div className="kpi-context">sent / (sent + failed)</div>
+              <div className="kpi-label">Alunos com push ativo</div>
+              <div className="kpi-value">{d ? d.tokenStats.withToken.toLocaleString('pt-BR') : '—'}</div>
+              {d && <div className="kpi-context">{tokenPct}% das {d.tokenStats.total.toLocaleString('pt-BR')} contas (o resto negou a permissão ou não abriu o app)</div>}
             </div>
           </div>
           <div className="col-3">
             <div className="kpi-card fade-up" style={{ animationDelay: '180ms' }}>
-              <div className="kpi-label">Usuários com Token</div>
-              <div className="kpi-value">{d ? d.tokenStats.withToken : '—'}</div>
-              {d && (
-                <div className="kpi-context">
-                  {tokenPct}% dos {d.tokenStats.total} usuários
-                </div>
-              )}
+              <div className="kpi-label">Aviso que mais alcança (7 dias)</div>
+              <div className="kpi-value">{d ? reached7d.toLocaleString('pt-BR') : '—'}</div>
+              {d && d.byType[0] && <div className="kpi-context">alunos diferentes · {typeLabel([...d.byType].sort((a, b) => b.uniqueUsers - a.uniqueUsers)[0].type)}</div>}
             </div>
           </div>
         </div>
 
-        {/* ── Row 2: Manual Trigger + Token Health ─────────────────────────── */}
-        <div className="adm-grid" style={{ gap: 16, marginBottom: 16 }}>
-          <div className="col-8">
-            <div className="adm-panel">
-              <div className="adm-panel-hdr">
-                <span className="adm-panel-title">Disparo Manual</span>
-                
-              </div>
-              <div className="adm-panel-body">
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  {TASKS.map(t => {
-                    const isRunning = trigger?.task === t.key && trigger.loading;
-                    const isDone    = trigger?.task === t.key && !trigger.loading && !!trigger.result;
-                    return (
-                      <div key={t.key} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                        <button
-                          onClick={() => handleTrigger(t.key)}
-                          disabled={!!trigger?.loading}
-                          className="adm-btn-sm ghost"
-                          style={{ minWidth: 130, display: 'flex', alignItems: 'center', gap: 6, borderColor: t.color, color: t.color }}
-                        >
-                          <Play size={11} />
-                          {isRunning ? 'Enviando...' : t.label}
-                        </button>
-                        <span style={{ fontSize: 11.5, color: 'var(--t3)', minWidth: 110 }}>
-                          <Clock size={10} style={{ marginRight: 4, verticalAlign: 'middle' }} />
-                          {t.schedule}
-                        </span>
-                        {isDone && (
-                          <span style={{ fontSize: 11.5, display: 'flex', alignItems: 'center', gap: 4,
-                            color: trigger.result.startsWith('Erro') ? 'var(--err)' : 'var(--ok)' }}>
-                            {trigger.result.startsWith('Erro') ? <XCircle size={12} /> : <CheckCircle size={12} />}
-                            {trigger.result}
-                          </span>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-4">
-            <div className="adm-panel" style={{ height: '100%' }}>
-              <div className="adm-panel-hdr"><span className="adm-panel-title">Token Health</span></div>
-              <div className="adm-panel-body" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <Wifi size={16} color="var(--ok)" />
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 12, color: 'var(--t2)', marginBottom: 6 }}>
-                      {d?.tokenStats.withToken ?? '—'} com token ({tokenPct}%)
-                    </div>
-                    <div style={{ height: 6, borderRadius: 3, background: 'var(--b2)', overflow: 'hidden' }}>
-                      <div style={{ height: '100%', width: `${tokenPct}%`,
-                        background: tokenPct >= 80 ? 'var(--ok)' : 'var(--warn)',
-                        borderRadius: 3, transition: 'width 600ms ease' }} />
-                    </div>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <WifiOff size={16} color="var(--t3)" />
-                  <div>
-                    <div style={{ fontSize: 12, color: 'var(--t3)' }}>
-                      {d?.tokenStats.withoutToken ?? '—'} sem token
-                    </div>
-                    <div style={{ fontSize: 11, color: 'var(--t3)', marginTop: 2 }}>
-                      não instalaram o app ou negaram permissão
-                    </div>
-                  </div>
-                </div>
-                <div style={{ fontSize: 11, color: 'var(--t3)', borderTop: '1px solid var(--b1)', paddingTop: 10 }}>
-                  Total: <strong style={{ color: 'var(--t2)' }}>{d?.tokenStats.total ?? '—'}</strong> usuários
-                </div>
-              </div>
+        <div className="adm-panel" style={{ marginBottom: 16 }}>
+          <div className="adm-panel-body" style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+            <Moon size={18} color="var(--accent)" style={{ flexShrink: 0, marginTop: 2 }} />
+            <div style={{ fontSize: 13, color: 'var(--t2)', lineHeight: 1.55 }}>
+              <strong style={{ color: 'var(--t1)' }}>Horário de silêncio: das 21h às 9h</strong>, no fuso de cada aluno. Nada sai nesse intervalo.
+              Os envios são automáticos: o agendador confere de hora em hora quem deve receber cada aviso, no máximo um aviso de engajamento por hora. Quem está na degustação recebe só os avisos da degustação, um por dia.
+              O aluno escolhe o horário do lembrete em Perfil &gt; Horário do lembrete.
             </div>
           </div>
         </div>
 
-        {/* ── Row 3: Timeline + Por Categoria ──────────────────────────────── */}
-        <div className="adm-grid" style={{ gap: 16, marginBottom: 16 }}>
-          <div className="col-8">
-            <div className="adm-panel">
-              <div className="adm-panel-hdr">
-                <span className="adm-panel-title">Volume Diário (30d)</span>
-                
-              </div>
-              <div className="adm-panel-body">
-                <MiniArea data={d?.timeseries ?? []} color="var(--brand)" h={90} />
-              </div>
-            </div>
-          </div>
-
-          <div className="col-4">
-            <div className="adm-panel" style={{ height: '100%' }}>
-              <div className="adm-panel-hdr">
-                <span className="adm-panel-title">Por Categoria (7d)</span>
-              </div>
-              <div className="adm-panel-body" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                {CAT_META.map(({ key, label, color }) => {
-                  const val = d?.byCategory[key] ?? 0;
-                  const pct = d ? Math.round((val / catTotal) * 100) : 0;
-                  return (
-                    <div key={key}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                        <span style={{ fontSize: 11.5, color: 'var(--t2)' }}>{label}</span>
-                        <span style={{ fontSize: 11.5, fontFamily: 'var(--font-mono)', color: 'var(--t1)', fontWeight: 600 }}>
-                          {val.toLocaleString('pt-BR')}
-                          <span style={{ fontSize: 10, color: 'var(--t3)', marginLeft: 4 }}>({pct}%)</span>
-                        </span>
-                      </div>
-                      <div style={{ height: 5, borderRadius: 3, background: 'var(--b2)', overflow: 'hidden' }}>
-                        <div style={{ height: '100%', width: `${pct}%`, background: color,
-                          borderRadius: 3, transition: 'width 600ms ease' }} />
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+        <div className="adm-panel" style={{ marginBottom: 16 }}>
+          <div className="adm-panel-hdr"><span className="adm-panel-title">Envios por dia (30 dias)</span></div>
+          <div className="adm-panel-body"><MiniArea data={d?.timeseries ?? []} color="var(--brand)" h={90} /></div>
         </div>
 
-        {/* ── Row 4: Por Tipo ──────────────────────────────────────────────── */}
-        {d && d.byType.length > 0 && (
-          <div className="adm-panel" style={{ marginBottom: 16 }}>
-            <div className="adm-panel-hdr">
-              <span className="adm-panel-title">Por Tipo (7d)</span>
-              <span className="adm-panel-sub">{d.byType.length} tipos ativos</span>
-            </div>
+        <div className="adm-panel" style={{ marginBottom: 16 }}>
+          <div className="adm-panel-hdr">
+            <span className="adm-panel-title">Avisos e quando saem</span>
+            <span className="adm-panel-sub">envios dos últimos 7 dias</span>
+          </div>
+          <div style={{ overflowX: 'auto' }}>
             <table className="adm-table">
               <thead>
                 <tr>
-                  <th>Tipo</th>
-                  <th style={{ textAlign: 'right' }}>Enviadas</th>
-                  <th style={{ textAlign: 'right' }}>Falhas</th>
-                  <th style={{ textAlign: 'right' }}>Usuários únicos</th>
-                  <th>Taxa</th>
+                  <th>Aviso</th>
+                  <th>Quando sai</th>
+                  <th style={{ textAlign: 'right' }}>Enviados</th>
+                  <th style={{ textAlign: 'right' }}>Alunos</th>
                 </tr>
               </thead>
               <tbody>
-                {d.byType.map(r => {
-                  const rate  = r.sent + r.failed === 0 ? 100 : Math.round((r.sent / (r.sent + r.failed)) * 100);
-                  const color = TYPE_COLORS[r.type] ?? 'var(--t3)';
-                  return (
-                    <tr key={r.type}>
-                      <td>
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color }}>{fmtType(r.type)}</span>
-                      </td>
-                      <td style={{ textAlign: 'right' }}>
-                        <span className="num" style={{ color: 'var(--ok)' }}>{r.sent.toLocaleString('pt-BR')}</span>
-                      </td>
-                      <td style={{ textAlign: 'right' }}>
-                        <span className="num" style={{ color: r.failed > 0 ? 'var(--err)' : 'var(--t3)' }}>{r.failed}</span>
-                      </td>
-                      <td style={{ textAlign: 'right' }}>
-                        <span className="num">{r.uniqueUsers}</span>
-                      </td>
-                      <td style={{ width: 100 }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <div style={{ flex: 1, height: 4, borderRadius: 2, background: 'var(--b2)', overflow: 'hidden' }}>
-                            <div style={{ height: '100%', width: `${rate}%`,
-                              background: rate >= 90 ? 'var(--ok)' : 'var(--warn)', borderRadius: 2 }} />
-                          </div>
-                          <span style={{ fontSize: 10, color: 'var(--t3)', minWidth: 28, textAlign: 'right' }}>{rate}%</span>
-                        </div>
-                      </td>
+                {groups.map(g => [
+                  <tr key={`g-${g.group}`}>
+                    <td colSpan={4} style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.04em', color: GROUP_COLOR[g.group], paddingTop: 14 }}>
+                      {g.group}
+                    </td>
+                  </tr>,
+                  ...g.rows.map(r => (
+                    <tr key={r.type} style={{ opacity: r.sent ? 1 : 0.55 }}>
+                      <td style={{ fontWeight: 600, color: 'var(--t1)', fontSize: 12.5 }}>{r.label}</td>
+                      <td style={{ fontSize: 12, color: 'var(--t3)' }}>{r.when}</td>
+                      <td style={{ textAlign: 'right' }}><span className="num">{r.sent.toLocaleString('pt-BR')}</span></td>
+                      <td style={{ textAlign: 'right' }}><span className="num">{r.users.toLocaleString('pt-BR')}</span></td>
                     </tr>
-                  );
-                })}
+                  )),
+                ])}
+                {unknown.map(t => (
+                  <tr key={t.type}>
+                    <td style={{ fontWeight: 600, fontSize: 12.5 }}>{typeLabel(t.type)}</td>
+                    <td style={{ fontSize: 12, color: 'var(--t3)' }}>—</td>
+                    <td style={{ textAlign: 'right' }}><span className="num">{t.sent.toLocaleString('pt-BR')}</span></td>
+                    <td style={{ textAlign: 'right' }}><span className="num">{t.uniqueUsers.toLocaleString('pt-BR')}</span></td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
-        )}
+        </div>
 
-        {/* ── Row 5: Logs Recentes ─────────────────────────────────────────── */}
         <div className="adm-panel">
           <div className="adm-panel-hdr">
-            <span className="adm-panel-title">Logs Recentes</span>
-            <div style={{ display: 'flex', gap: 8 }}>
-              <select className="adm-select-ghost" value={typeFilter}
-                onChange={e => { setType(e.target.value); setPage(1); }}>
-                <option value="">Todos os tipos</option>
-                {d?.byType.map(t => (
-                  <option key={t.type} value={t.type}>{fmtType(t.type)}</option>
-                ))}
-              </select>
-              <select className="adm-select-ghost" value={statusFilter}
-                onChange={e => { setSt(e.target.value); setPage(1); }}>
-                <option value="">Todos os status</option>
-                <option value="sent">Sent</option>
-                <option value="failed">Failed</option>
-              </select>
-            </div>
+            <span className="adm-panel-title">Últimos envios</span>
+            <select className="adm-select-ghost" value={typeFilter} onChange={e => { setType(e.target.value); setPage(1); }}>
+              <option value="">Todos os avisos</option>
+              {d?.byType.map(t => <option key={t.type} value={t.type}>{typeLabel(t.type)}</option>)}
+            </select>
           </div>
 
           {loading ? (
@@ -430,81 +295,49 @@ export default function AdminNotificationsPage() {
               <div className="skeleton" style={{ height: 14, width: '70%', margin: '0 auto' }} />
             </div>
           ) : d && d.logs.length === 0 ? (
-            <div style={{ padding: 32, textAlign: 'center', color: 'var(--t3)', fontSize: 13 }}>
-              Nenhum log encontrado.
-            </div>
+            <div style={{ padding: 32, textAlign: 'center', color: 'var(--t3)', fontSize: 13 }}>Nenhum envio encontrado.</div>
           ) : (
-            <table className="adm-table">
-              <thead>
-                <tr>
-                  <th>Usuário</th>
-                  <th>Tipo</th>
-                  <th>Mensagem</th>
-                  <th>Status</th>
-                  <th>Data</th>
-                </tr>
-              </thead>
-              <tbody>
-                {(d?.logs ?? []).map(log => (
-                  <tr key={log.id}>
-                    <td>
-                      <div style={{ fontWeight: 600, fontSize: 12.5, color: 'var(--t1)' }}>
-                        {log.userName ?? <span style={{ color: 'var(--t3)', fontStyle: 'italic' }}>sem nome</span>}
-                      </div>
-                      {log.userEmail && (
-                        <div style={{ fontSize: 11, color: 'var(--t3)', fontFamily: 'var(--font-mono)' }}>
-                          {log.userEmail}
+            <div style={{ overflowX: 'auto' }}>
+              <table className="adm-table">
+                <thead>
+                  <tr><th>Aluno</th><th>Aviso</th><th>Mensagem</th><th>Situação</th><th>Data</th></tr>
+                </thead>
+                <tbody>
+                  {(d?.logs ?? []).map(log => (
+                    <tr key={log.id}>
+                      <td>
+                        <div style={{ fontWeight: 600, fontSize: 12.5, color: 'var(--t1)' }}>
+                          {log.userName ?? <span style={{ color: 'var(--t3)', fontStyle: 'italic' }}>sem nome</span>}
                         </div>
-                      )}
-                    </td>
-                    <td>
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11,
-                        color: TYPE_COLORS[log.notification_type] ?? 'var(--t2)' }}>
-                        {fmtType(log.notification_type)}
-                      </span>
-                    </td>
-                    <td style={{ maxWidth: 260 }}>
-                      {log.message_title && (
-                        <div style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--t1)', marginBottom: 2,
-                          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                          {log.message_title}
-                        </div>
-                      )}
-                      {log.message_body && (
-                        <div style={{ fontSize: 11.5, color: 'var(--t3)',
-                          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                          {log.message_body}
-                        </div>
-                      )}
-                      {log.error_message && (
-                        <div style={{ fontSize: 11, color: 'var(--err)', marginTop: 2 }}>{log.error_message}</div>
-                      )}
-                    </td>
-                    <td><StatusDot status={log.status} /></td>
-                    <td style={{ fontSize: 11.5, color: 'var(--t3)', whiteSpace: 'nowrap' }}>
-                      {fmtDate(log.created_at)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                        {log.userEmail && <div style={{ fontSize: 11, color: 'var(--t3)', fontFamily: 'var(--font-mono)' }}>{log.userEmail}</div>}
+                      </td>
+                      <td><span style={{ fontSize: 12, fontWeight: 600, color: typeColor(log.notification_type) }}>{typeLabel(log.notification_type)}</span></td>
+                      <td style={{ maxWidth: 280 }}>
+                        {log.message_title && (
+                          <div style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--t1)', marginBottom: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{log.message_title}</div>
+                        )}
+                        {log.message_body && (
+                          <div style={{ fontSize: 11.5, color: 'var(--t3)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{log.message_body}</div>
+                        )}
+                        {log.error_message && <div style={{ fontSize: 11, color: 'var(--err)', marginTop: 2 }}>{log.error_message}</div>}
+                      </td>
+                      <td><StatusDot status={log.status} /></td>
+                      <td style={{ fontSize: 11.5, color: 'var(--t3)', whiteSpace: 'nowrap' }}>{fmtDate(log.created_at)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
 
           {totalPages > 1 && (
-            <div style={{ padding: '12px 18px', borderTop: '1px solid var(--b1)',
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ padding: '12px 18px', borderTop: '1px solid var(--b1)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div style={{ fontSize: 11.5, color: 'var(--t3)' }}>
-                {d && `${((page - 1) * d.perPage) + 1}–${Math.min(page * d.perPage, d.total)} de ${d.total}`}
+                {d && `${((page - 1) * d.perPage) + 1}–${Math.min(page * d.perPage, d.total)} de ${d.total.toLocaleString('pt-BR')}`}
               </div>
               <div style={{ display: 'flex', gap: 4 }}>
-                <button onClick={() => setPage(p => Math.max(1, p - 1))}
-                  disabled={page === 1} className="adm-btn-sm ghost">
-                  <ChevronLeft size={13} />
-                </button>
-                <button onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                  disabled={page === totalPages} className="adm-btn-sm ghost">
-                  <ChevronRight size={13} />
-                </button>
+                <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1} className="adm-btn-sm ghost"><ChevronLeft size={13} /></button>
+                <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages} className="adm-btn-sm ghost"><ChevronRight size={13} /></button>
               </div>
             </div>
           )}

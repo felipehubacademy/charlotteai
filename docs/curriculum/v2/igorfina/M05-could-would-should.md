@@ -64,7 +64,7 @@
 5. **fill_gap** — "_____ you help me with my bag, please?"
    **Hint**: Você poderia...? (pedido educado)
    **Answer**: Could
-   **Accepts**: Can
+   **Accepts**: Can / Would
    **Explanation**: "Could you help me?" é mais educado; "Can you help me?" também funciona.
 
 6. **fill_gap** — "May I _____ a question?"
@@ -398,6 +398,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 6. **fill_gap** — "Tea or coffee? I'd rather _____ coffee."
    **Hint**: Tomar (verbo "have")
    **Answer**: have
+   **Accepts**: drink / get
    **Explanation**: "I'd rather have coffee" = prefiro café. Com comida e bebida, use "have".
 
 7. **fill_gap** — "Would you like some cake? Yes, I'd _____ to!"
@@ -561,7 +562,7 @@ Igorfina fala no estilo do presidente (imitação). Aluno repete; a pronúncia �
 6. **fill_gap** — "I'm tired. I _____ stay at the hotel tonight."
    **Hint**: Talvez (~70%)
    **Answer**: might
-   **Accepts**: may
+   **Accepts**: may / could
    **Explanation**: "I might stay at the hotel" = talvez eu fique no hotel.
 
 7. **fill_gap** — "A: Are you coming? B: I'm _____! 100%!"
@@ -725,6 +726,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 6. **fill_gap** — "You don't _____ to pay. It's free!"
    **Hint**: Precisar (você não precisa)
    **Answer**: have
+   **Accepts**: need
    **Explanation**: "You don't have to pay" = você não precisa pagar. Atenção: "don't have to" é "não precisa", não é "não pode".
 
 7. **fill_gap** — "Sorry, I have to _____. See you tomorrow!"

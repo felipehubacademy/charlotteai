@@ -60,7 +60,8 @@
 5. **read_answer**
    **Passage**: "The audit's findings were unflinching. The decisions had been irresponsible, the reporting illegal, and the executive's denials immoral. Several mid-level managers, who had felt powerless to disagree, were now offered immunity in exchange for testimony. The CEO, displaying the unrepentant tone of someone unprepared for consequences, dismissed the report as illegitimate."
    **Question**: How does the passage describe the CEO's reaction?
-   **Answer**: he dismissed the report as illegitimate (and showed an unrepentant tone)
+   **Answer**: dismissed the report as illegitimate
+   **Accepts**: unrepentant tone / dismissed as illegitimate
    **Explanation**: Eight negation prefixes in three sentences: unflinching (un-), irresponsible (ir-), illegal (il-), immoral (im-), powerless (-less suffix, not prefix but contrast), unrepentant (un-), unprepared (un-), illegitimate (il-). Each prefix correctly chosen by root.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -212,7 +213,8 @@
 5. **read_answer**
    **Passage**: "The institution's annual report read like a study in formal abstraction. 'Development continued across all departments. Recognition of contribution increased measurably. Leadership demonstrated greater accountability. Membership numbers held steady. The relationship between governance and execution improved markedly. The organisation's overall maturity is now beyond question.'"
    **Question**: How many abstract nouns appear in the passage?
-   **Answer**: at least eight (development, recognition, contribution, leadership, accountability, membership, relationship, governance, execution, organisation, maturity)
+   **Answer**: at least 8
+   **Accepts**: eight / 8 / development, recognition, contribution, leadership, accountability, membership, relationship, governance, execution, organisation, maturity
    **Explanation**: The passage is built almost entirely on abstract nouns — typical of corporate/academic register. Suffixes used: -ment, -tion, -ship, -ity, -ance, -ence. Nominal density is a marker of formal English.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -518,7 +520,8 @@
 5. **read_answer**
    **Passage**: "The newspaper headline was, as always, a study in compound forms. 'WELL-KNOWN LIGHTHOUSE KEEPER MAKES POST OFFICE PEACE WITH LONG-LOST HALF-SISTER'. The reader was momentarily stunned: a closed compound (lighthouse), an open one (post office), two hyphenated ones (well-known, half-sister, long-lost) — and a sentence that managed to be charming despite saying almost nothing concrete."
    **Question**: How many compound forms can you identify in the headline?
-   **Answer**: at least five — well-known (hyphenated), lighthouse (closed), post office (open), long-lost (hyphenated), half-sister (hyphenated)
+   **Answer**: at least 5
+   **Accepts**: five / 5 / well-known / lighthouse / post office / long-lost / half-sister
    **Explanation**: Five compounds in one headline: one closed (lighthouse), one open (post office), three hyphenated (well-known, long-lost, half-sister). C2 awareness includes recognising the spacing decisions native writers make instinctively.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -671,7 +674,8 @@
 5. **read_answer**
    **Passage**: "The verbs in the office had quietly evolved. 'Did you slack him?' someone asked. 'Yes, but he hasn't pinged back.' 'Try emailing — or just text.' 'I friended him on the new platform last week, so maybe message there.' Five years ago, none of those verbs existed in their current form. Now they were grammar."
    **Question**: How many conversion-verbs appear in the passage?
-   **Answer**: at least five — slack, ping, email, text, friend, message (all converted from nouns or names to verbs)
+   **Answer**: at least 5
+   **Accepts**: five / 5 / slack / ping / email / text / friend / message
    **Explanation**: Modern English aggressively converts nouns to verbs: slack (the app) → to slack, ping → to ping, email → to email, text → to text, friend (noun) → to friend (verb). C2 awareness includes recognising and producing these conversions.
 
 ### 2. Listening/Speaking (5 phrases)

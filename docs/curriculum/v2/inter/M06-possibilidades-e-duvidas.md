@@ -48,6 +48,7 @@
 5. **fill_gap** — "I _____ visit my parents this weekend."
    **Hint**: possibility modal
    **Answer**: might
+   **Accepts**: may / could / will
    **Explanation**: "I might visit" — uncertain plan.
 
 6. **fill_gap** — "She might _____ tired."
@@ -225,16 +226,19 @@
 5. **fill_gap** — "She _____ be at home."
    **Hint**: possibility (formal)
    **Answer**: may
+   **Accepts**: might / could
    **Explanation**: "May be at home" — possibility.
 
 6. **fill_gap** — "It may _____ tomorrow."
    **Hint**: base "rain"
    **Answer**: rain
+   **Accepts**: snow
    **Explanation**: "May rain" — possibility about weather.
 
 7. **fill_gap** — "_____ I leave early today?" (formal request)
    **Hint**: formal polite request
    **Answer**: May
+   **Accepts**: Can / Could / Might
    **Explanation**: "May I + base?" — formal polite request.
 
 8. **fix_error** — "She mays come."
@@ -348,10 +352,10 @@
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
    **label_en**: "Ask Charlotte"
-   **hidden_prompt**: "user asks 'What may you do?'"
-   **hint_pt**: "What may you do?"
-   **hint_en**: "What may you do?"
-   **example_pass**: What may you do? | It may rain later. | How about you? | What should I do? | Any advice? | What would you do?
+   **hidden_prompt**: "user asks 'What might you do?'"
+   **hint_pt**: "What might you do?"
+   **hint_en**: "What might you do?"
+   **example_pass**: What might you do? | It may rain later. | How about you? | What should I do? | Any advice? | What would you do?
    **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 **Closing cue**: Charlotte closes with "Open scenarios!" when obj_3 hits.
@@ -363,7 +367,7 @@
 3. **Charlotte**: "Work?"
 4. **Student**: "My boss may call me."
 5. **Charlotte**: "Hope it's good."
-6. **Student**: "What may you do?"
+6. **Student**: "What might you do?"
 7. **Charlotte**: "I may take a day off. Open scenarios!"
 
 > I02 chat = LLM puro.
@@ -401,6 +405,7 @@
 5. **fill_gap** — "That _____ be the answer."
    **Hint**: possibility modal
    **Answer**: could
+   **Accepts**: might / may
    **Explanation**: "Could be the answer" — possible.
 
 6. **fill_gap** — "She could _____ a doctor."
@@ -411,6 +416,7 @@
 7. **fill_gap** — "_____ you help me?" (polite request)
    **Hint**: polite modal
    **Answer**: Could
+   **Accepts**: Can / Would / Will
    **Explanation**: "Could you + base?" — polite request.
 
 8. **fix_error** — "She coulds come."
@@ -446,7 +452,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "What could we do this weekend? Suggest possibilities."
+**Opening line**: "What could we do this weekend? Give me some ideas!"
 
 **Sub-objectives** (3):
 
@@ -481,7 +487,7 @@
 
 **Suggested flow** (6 turns):
 
-1. **Charlotte**: "What could we do this weekend? Suggest possibilities."
+1. **Charlotte**: "What could we do this weekend? Give me some ideas!"
 2. **Student**: ~"We could go hiking."
 3. **Charlotte**: "Or?"
 4. **Student**: ~"We could see a movie."
@@ -558,7 +564,7 @@
 1. **multiple_choice** — "That _____ be true!"
    **Options**: can't / mustn't / shouldn't
    **Answer**: can't
-   **Explanation**: "Can't / Cannot" for logical impossibility — "It can't / cannot be true!" = it's impossible.
+   **Explanation**: "Can't" for logical impossibility — "It can't be true!" = it's impossible.
 
 2. **multiple_choice** — "He _____ be there now — I just saw him here."
    **Options**: can't / shouldn't / mustn't
@@ -568,7 +574,7 @@
 3. **word_bank** — "It _____ be that easy."
    **Choices**: can't / shouldn't / wouldn't / wasn't
    **Answer**: can't
-   **Explanation**: "Can't / Cannot be" — logical impossibility.
+   **Explanation**: "Can't be" — logical impossibility.
 
 4. **word_bank** — "She _____ be 100 — she looks 30."
    **Choices**: can't / mustn't / wouldn't / shouldn't
@@ -578,22 +584,25 @@
 5. **fill_gap** — "That _____ be right — it's wrong."
    **Hint**: impossibility
    **Answer**: can't
-   **Explanation**: "Can't / Cannot be right" — impossible.
+   **Accepts**: cannot / couldn't
+   **Explanation**: "Can't be right" — impossible.
 
 6. **fill_gap** — "They _____ be coming — it's too late."
    **Hint**: impossibility (continuous)
    **Answer**: can't
-   **Explanation**: "Can't / Cannot be coming" — impossibility with continuous.
+   **Accepts**: cannot
+   **Explanation**: "Can't be coming" — impossibility with continuous.
 
-7. **fill_gap** — "He _____ be at home — his car is here."
-   **Hint**: logical conclusion
+7. **fill_gap** — "He _____ be at home — his car isn't here."
+   **Hint**: logical conclusion (impossible)
    **Answer**: can't
-   **Explanation**: Logical: if car here, he's not home.
+   **Accepts**: cannot / couldn't
+   **Explanation**: Logical conclusion: his car isn't here, so he can't be at home. (If the car were here, we'd say "he must be at home".)
 
 8. **fix_error** — "She mustn't be at home." (meaning impossible)
    **Hint**: For impossibility, use can't
    **Answer**: She can't be at home.
-   **Explanation**: "Mustn't / Must not" = prohibition. "Can't / Cannot" = impossibility.
+   **Explanation**: "Mustn't" = prohibition. "Can't" = impossibility.
 
 9. **fix_error** — "It can't to be true."
    **Hint**: No "to" after can't
@@ -605,7 +614,7 @@
     **Question**: Why is it not John?
     **Answer**: he's in Paris
     **Accepts**: in Paris
-    **Explanation**: The text says "he's / he is in Paris" — reason it can't be him.
+    **Explanation**: The text says "he's in Paris" — reason it can't be him.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -762,11 +771,13 @@
 6. **fill_gap** — "That _____ be true — it's impossible!"
    **Hint**: impossibility
    **Answer**: can't
-   **Explanation**: "Can't / Cannot be" — logical impossibility.
+   **Accepts**: cannot
+   **Explanation**: "Can't be" — logical impossibility.
 
 7. **fill_gap** — "_____ I borrow your pen?" (formal polite)
    **Hint**: may/might for formal
    **Answer**: May
+   **Accepts**: Might
    **Explanation**: "May I" — formal request.
 
 8. **fix_error** — "She maybe come." (verb structure)

@@ -2,12 +2,17 @@
 //   GET    lista membros
 //   POST   { email, name, role } adiciona. Se a pessoa ainda não tem conta,
 //          cria com senha temporária (devolvida uma única vez para repassar).
+//          Em todo caso manda o e-mail de convite (papel, acessos e link para criar a senha).
+//   POST   { resend: true, id } manda o e-mail de convite de novo
+//   POST   { reset_mfa: true, id } apaga o app autenticador da pessoa (perdeu o celular):
+//          no próximo login ela cadastra um novo pelo QR code
 //   PATCH  { id, role?, active? } muda o nível de acesso ou desativa/reativa
 import { NextRequest, NextResponse } from 'next/server';
 import { randomBytes } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit, AdminRole } from '@/lib/admin-auth';
 import { isAdminRole } from '@/lib/admin-roles';
+import { sendAdminInvite } from '@/lib/admin-invite';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,10 +21,17 @@ export async function GET(req: NextRequest) {
   if (admin instanceof NextResponse) return admin;
   const { data, error } = await getSupabaseAdmin()
     .from('admin_members')
-    .select('id, user_id, email, name, role, active, created_at')
+    .select('id, user_id, email, name, role, active, created_at, accepted_at')
     .order('created_at', { ascending: true });
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ members: data ?? [] });
+  // Verificação em duas etapas: quem já cadastrou o app autenticador.
+  const supabase = getSupabaseAdmin();
+  const members = await Promise.all(((data ?? []) as { user_id: string }[]).map(async m => {
+    const { data: f } = await supabase.auth.admin.mfa.listFactors({ userId: m.user_id }).catch(() => ({ data: null }));
+    const mfa = !!f?.factors?.some(x => x.status === 'verified');
+    return { ...m, mfa };
+  }));
+  return NextResponse.json({ members });
 }
 
 async function findAuthUserId(email: string): Promise<string | null> {
@@ -42,11 +54,38 @@ export async function POST(req: NextRequest) {
   if (admin instanceof NextResponse) return admin;
 
   const body = await req.json().catch(() => ({}));
+  if (body.reset_mfa === true) {
+    const supabase = getSupabaseAdmin();
+    const { data: m } = await supabase.from('admin_members').select('id, user_id, email').eq('id', String(body.id ?? '')).maybeSingle();
+    const mem = m as { id: string; user_id: string; email: string } | null;
+    if (!mem) return NextResponse.json({ error: 'Membro não encontrado.' }, { status: 404 });
+    if (mem.user_id === admin.userId) return NextResponse.json({ error: 'Para refazer as suas duas etapas, peça a outro Administrador.' }, { status: 400 });
+    const { data: f, error: lerr } = await supabase.auth.admin.mfa.listFactors({ userId: mem.user_id });
+    if (lerr) return NextResponse.json({ error: lerr.message }, { status: 500 });
+    for (const factor of f?.factors ?? []) {
+      const { error: derr } = await supabase.auth.admin.mfa.deleteFactor({ id: factor.id, userId: mem.user_id });
+      if (derr) return NextResponse.json({ error: derr.message }, { status: 500 });
+    }
+    // Computadores de confiança deixam de valer: o próximo login pede o código novo.
+    await supabase.from('admin_trusted_devices').delete().eq('user_id', mem.user_id);
+    // Encerra as sessões abertas: quem estiver com o celular perdido não continua logado.
+    await supabase.auth.admin.signOut(mem.user_id, 'global').catch(() => {});
+    await audit(admin, 'team.reset_mfa', 'admin_member', mem.id, { email: mem.email, factors: f?.factors?.length ?? 0 });
+    return NextResponse.json({ ok: true });
+  }
+  if (body.resend === true) {
+    const { data: m } = await getSupabaseAdmin().from('admin_members').select('id, email, name, role, active').eq('id', String(body.id ?? '')).maybeSingle();
+    const mem = m as { id: string; email: string; name: string | null; role: AdminRole; active: boolean } | null;
+    if (!mem || !mem.active) return NextResponse.json({ error: 'Membro não encontrado ou desativado.' }, { status: 404 });
+    const emailSent = await sendAdminInvite({ email: mem.email, name: mem.name, role: mem.role });
+    await audit(admin, 'team.resend_invite', 'admin_member', mem.id, { email: mem.email, emailSent });
+    return emailSent ? NextResponse.json({ emailSent }) : NextResponse.json({ error: 'Não foi possível enviar o e-mail.' }, { status: 500 });
+  }
   const email = String(body.email ?? '').trim().toLowerCase();
   const name = String(body.name ?? '').trim() || null;
   const role = String(body.role ?? '') as AdminRole;
-  if (!email.includes('@') || !isAdminRole(role)) {
-    return NextResponse.json({ error: 'E-mail e nível de acesso válidos são obrigatórios.' }, { status: 400 });
+  if (!email.includes('@') || !isAdminRole(role) || !name) {
+    return NextResponse.json({ error: 'Nome, e-mail e nível de acesso válidos são obrigatórios.' }, { status: 400 });
   }
 
   const supabase = getSupabaseAdmin();
@@ -68,12 +107,13 @@ export async function POST(req: NextRequest) {
   const { data: member, error } = await supabase
     .from('admin_members')
     .upsert({ user_id: userId, email, name, role, active: true, invited_by: admin.userId, updated_at: new Date().toISOString() } as never, { onConflict: 'user_id' })
-    .select('id, user_id, email, name, role, active, created_at')
+    .select('id, user_id, email, name, role, active, created_at, accepted_at')
     .single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-  await audit(admin, 'team.add', 'admin_member', (member as { id: string }).id, { email, role, newAccount: !!tempPassword });
-  return NextResponse.json({ member, tempPassword });
+  const emailSent = await sendAdminInvite({ email, name, role });
+  await audit(admin, 'team.add', 'admin_member', (member as { id: string }).id, { email, role, newAccount: !!tempPassword, emailSent });
+  return NextResponse.json({ member, tempPassword, emailSent });
 }
 
 export async function PATCH(req: NextRequest) {
@@ -106,7 +146,7 @@ export async function PATCH(req: NextRequest) {
   }
 
   const { data, error } = await supabase.from('admin_members').update(update as never).eq('id', id)
-    .select('id, user_id, email, name, role, active, created_at').single();
+    .select('id, user_id, email, name, role, active, created_at, accepted_at').single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
   await audit(admin, 'team.update', 'admin_member', id, update);

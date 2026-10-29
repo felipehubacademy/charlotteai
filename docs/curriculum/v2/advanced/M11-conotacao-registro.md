@@ -50,13 +50,13 @@
 3. **fill_gap** — "She's not stingy with the budget — she's _____."
    **Hint**: positive word for careful with money
    **Answer**: thrifty
-   **Accepts**: frugal
+   **Accepts**: frugal / economical / careful / prudent
    **Explanation**: "Stingy" is strongly negative (selfishly cheap). "Thrifty" is positive (wisely economical). "Frugal" is neutral-positive (austere by choice). "Cheap" sits negative when applied to a person. Reframing "stingy" as "thrifty" reverses the moral charge while describing the same act.
 
 4. **fix_error** — "Your essay was great — really skinny and direct."
    **Hint**: "Skinny" is mildly negative for body, wrong word for prose
    **Answer**: Your essay was great — really lean and direct.
-   **Accepts**: tight, concise
+   **Accepts**: tight, concise / Your essay was great — really concise and direct. / Your essay was great — really tight and direct. / Your essay was great — really crisp and direct.
    **Explanation**: "Skinny" carries unkind body-image weight. Applied to writing, the better word is "lean" or "tight" or "concise" — all positive. Connotation matters: "slim" leans neutral, "slender" leans positive, "skinny/scrawny" lean negative.
 
 5. **read_answer**
@@ -205,11 +205,14 @@
 3. **fill_gap** — Formal: "The investigation will _____ whether the claim is valid."
    **Hint**: Formal verb for "find out"
    **Answer**: ascertain
+   **Accepts**: determine / establish
    **Explanation**: "Ascertain" — formal Latinate verb meaning to find out for certain. Common in legal, investigative, academic writing. Informal counterpart: "find out" or "check". Register placement matters.
 
-4. **fix_error** — Formal email: "We need to kick off the project."
+4. **short_write** — Formal email: "We need to kick off the project."
    **Hint**: For formal context, use "commence" instead
    **Answer**: We need to commence the project.
+   **Prompt**: Rewrite this for a formal email: "We need to kick off the project."
+   **Example answer**: We need to commence the project.
    **Explanation**: "Kick off" is sports-informal, common in casual business speech but jarring in a formal email. The register-correct version uses "commence" or "begin" or "initiate". C1 awareness of register includes detecting these mismatches.
 
 5. **read_answer**
@@ -357,12 +360,13 @@
 3. **fill_gap** — "Three hundred employees were _____ in the restructuring."
    **Hint**: Corporate euphemism for "fired"
    **Answer**: let go
-   **Accepts**: laid off
+   **Accepts**: laid off / made redundant / laid-off / released
    **Explanation**: "Let go" — corporate euphemism for "fired". "Laid off" specifically implies layoffs (no fault of the worker). "Fired" implies cause/fault. C1 register knows when each fits. Press releases prefer "let go" or "laid off"; HR conversations may use both depending on circumstance.
 
 4. **fix_error** — Funeral condolence: "Sorry about your grandmother — she died Tuesday, right?"
    **Hint**: Use "passed away" in condolence context
    **Answer**: Sorry about your grandmother — she passed away Tuesday, right?
+   **Accepts**: Sorry about your grandmother — she passed Tuesday, right? / Sorry about your grandmother — she passed on Tuesday, right? / Sorry about your grandmother — she passed away on Tuesday, right?
    **Explanation**: "Died" in a direct condolence reads as blunt. Even when factually identical, "passed away" honours the social moment. Register-awareness is part of C1 fluency, not just vocabulary range.
 
 5. **read_answer**
@@ -388,7 +392,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 300s
-**Opening line**: "Three direct sentences. Soften each with a euphemism — death, unemployment, firing."
+**Opening line**: "I'll say three blunt sentences, about death, unemployment and getting fired. Soften each one with a euphemism."
 
 **Sub-objectives** (3 objetivos):
 
@@ -423,7 +427,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Three direct sentences. Soften each with a euphemism — death, unemployment, firing."
+1. **Charlotte**: "I'll say three blunt sentences, about death, unemployment and getting fired. Soften each one with a euphemism."
 2. **Student**: ~"Direct: 'His mother died last month.' Softened: 'His mother passed away last month.'"
 3. **Charlotte**: "Job?"
 4. **Student**: ~"Direct: 'He's unemployed right now.' Softened: 'He's between jobs at the moment.'"
@@ -511,7 +515,8 @@
 3. **fill_gap** — Offered cake: "Well, _____."
    **Hint**: Litotes meaning "yes, please"
    **Answer**: I wouldn't say no
-   **Explanation**: "I wouldn't / would not say no" — litotes for accepting eagerly. Polite-British register. Saying "I wouldn't / would not say no" to cake is much warmer than "yes". Cultural code: the litotes signals you want it but won't be greedy about asking.
+   **Accepts**: I won't say no
+   **Explanation**: "I wouldn't say no" — litotes for accepting eagerly. Polite-British register. Saying "I wouldn't say no" to cake is much warmer than "yes". Cultural code: the litotes signals you want it but won't be greedy about asking.
 
 4. **fix_error** — "The new apartment isn't cheap exactly."
    **Hint**: Word order — "not exactly cheap"
@@ -524,7 +529,7 @@
    **Question**: How does the reviewer feel about returning to the restaurant?
    **Answer**: positive / wants to return
    **Accepts**: would happily return
-   **Explanation**: Four litotes in four sentences: "not without its charms" (charming), "no small achievement" (impressive), "not exactly modest... not without reason" (justifiably proud), "wouldn't / would not say no" (would say yes). British-style understatement runs the whole passage.
+   **Explanation**: Four litotes in four sentences: "not without its charms" (charming), "no small achievement" (impressive), "not exactly modest... not without reason" (justifiably proud), "wouldn't say no" (would say yes). British-style understatement runs the whole passage.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -665,13 +670,14 @@
 3. **fill_gap** — Tech meeting among engineers: "We need to _____ the deployment script before merging."
    **Hint**: Verb that fits engineer-casual register
    **Answer**: refactor
-   **Accepts**: rewrite", "clean up
+   **Accepts**: rewrite / clean up / tidy up / rework
    **Explanation**: Engineer-register prefers technical verbs in casual contexts. "Refactor" is technical but conversational. "Restructure" would be formal-corporate. "Fix" would be too vague. C1 register fluency includes knowing the verb each subculture defaults to.
 
-4. **fix_error** — Slack message to your boss: "Yo, can you pop into the call?"
+4. **short_write** — Slack message to your boss: "Yo, can you pop into the call?"
    **Hint**: "Yo" is too casual for any boss except in very informal cultures
    **Answer**: Hey, do you have a moment to join the call?
-   **Accepts**: Could you join the call?
+   **Prompt**: Rewrite this Slack message to your boss so it sounds professional: "Yo, can you pop into the call?"
+   **Example answer**: Hey, do you have a moment to join the call?
    **Explanation**: "Yo" is youth-register, fits only specific subcultures. Most professional contexts read "yo" as too casual or jarring. Even in informal Slack cultures, "hey" is safer. Register-reading is part of professional C1.
 
 5. **read_answer**
@@ -819,7 +825,7 @@
 3. **fill_gap** — In American English, the past participle of "get" is often "_____" rather than British "got".
    **Hint**: alternative past participle form
    **Answer**: gotten
-   **Explanation**: "Gotten" — American past participle of "get". British English uses "got" for past participle. "I've / I have gotten better at this" (American) vs "I've / I have got better at this" (British). Note: "have got" meaning "have/possess" uses "got" in both.
+   **Explanation**: "Gotten" — American past participle of "get". British English uses "got" for past participle. "I've gotten better at this" (American) vs "I've got better at this" (British). Note: "have got" meaning "have/possess" uses "got" in both.
 
 4. **fix_error** — Por português falar 'pretender', você diz em inglês: "I pretend to leave tomorrow."
    **Hint**: false cognate — "pretend" doesn't mean "intend"
@@ -830,7 +836,8 @@
 5. **read_answer**
    **Passage**: "I'm on holiday in London — sorry, vacation as you'd say. The flat I rented has no lift, so I'm climbing four floors of stairs every day. The pavement outside is wet from yesterday's rain. I queued for an hour at the museum. I should've intended to book online — but I always say I'll do it later and then forget. By the way, I actually realised today that I've gotten quite good at British English."
    **Question**: Which two false cognates were used correctly in the passage?
-   **Answer**: "intended" (correctly used instead of "pretended"); "actually" (correctly meaning "in fact", not "currently"); "realised" (meaning "understood", not Portuguese "realizar" = to perform/carry out)
+   **Answer**: intended, actually, realised
+   **Accepts**: intended / actually / realised
    **Explanation**: The passage models British vocabulary (holiday/flat/lift/pavement/queue) and demonstrates correct usage of common false-cognate traps (intend, actually, realise). False cognates remain a C1 challenge — careful awareness prevents fossilised errors.
 
 ### 2. Listening/Speaking (5 phrases)

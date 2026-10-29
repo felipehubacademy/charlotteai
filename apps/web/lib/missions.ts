@@ -44,7 +44,7 @@ const HOME = '/(app)/(tabs)';
 const PRACTICE = '/(app)/(tabs)/practice';
 const VOCAB = '/(app)/(tabs)/vocabulary';
 const ACT = { one: { pt: 'atividade', en: 'activity' }, many: { pt: 'atividades', en: 'activities' } };
-const TRAIL_WHERE = { pt: 'Na Início, na sua trilha', en: 'On Home, in your trail' };
+const TRAIL_WHERE = { pt: 'Na tela inicial, na sua trilha', en: 'On Home, in your trail' };
 const n = (v: number) => () => v;
 
 // ── Missões do dia ──────────────────────────────────────────────────────────

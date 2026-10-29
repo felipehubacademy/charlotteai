@@ -15,6 +15,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import * as SecureStore from 'expo-secure-store';
 import { useAuth } from '@/hooks/useAuth';
+import { characterInfo } from '@/lib/characters';
 import { systemIsPt } from '@/lib/systemLang';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import Constants from 'expo-constants';
@@ -34,6 +35,8 @@ import { usePaywallContext } from '@/lib/paywallContext';
 import { Achievement } from '@/lib/types/achievement';
 import { UserLevel } from '@/lib/levelConfig';
 import { supabase } from '@/lib/supabase';
+import { fetchStreakStatus } from '@/lib/streak';
+import { fetchMyRank } from '@/lib/myRank';
 import { localTodayStr } from '@/lib/dateUtils';
 import { getLevelAccent } from '@/lib/levelColors';
 import { appAlert } from '@/components/ui/AppAlert';
@@ -106,6 +109,15 @@ export default function PracticeTab() {
     activeSessionId, closeSession, loadSession,
     character, startConversationWith,
   } = useChat({ userLevel, userName, userId, mode });
+
+  // Família Queizy: o Free Chat começa com a pessoa escolhida na Família (Perfil > Família Queizy).
+  // Só quando não há conversa em andamento; "Conversar com" continua trocando para esta conversa.
+  // Gramática e Pronúncia seguem com a Charlotte.
+  const preferredCharacter = characterInfo(profile?.active_character).id;
+  useEffect(() => {
+    if (mode !== 'chat' || historyLoading || activeSessionId) return;
+    if (messages.length <= 1 && preferredCharacter !== character) startConversationWith(preferredCharacter);
+  }, [preferredCharacter, mode, historyLoading]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Família Queizy: "Conversar" na tela da Família abre o Free Chat com o personagem.
   // Só troca se não há conversa em andamento (não interrompe o aluno).
@@ -195,10 +207,7 @@ export default function PracticeTab() {
       return;
     }
     const userTotalXP = Math.max(prog.data?.total_xp ?? 0, totalXP);
-    const leaderboardCount = await supabase.from('charlotte_leaderboard_cache')
-      .select('*', { count: 'exact', head: true })
-      .eq('user_level', userLevel)
-      .gt('total_xp', userTotalXP);
+    const myRank = await fetchMyRank(userId, userLevel, userTotalXP);
     setHeaderXP(userTotalXP);
     const todayStr = localTodayStr();
     const yesterdayStr = (() => {
@@ -208,7 +217,8 @@ export default function PracticeTab() {
     const lastPractice = prog.data?.last_practice_date ?? null;
     const alive = lastPractice === todayStr || lastPractice === yesterdayStr;
     setStreak(alive ? (prog.data?.streak_days ?? 0) : 0);
-    setRank(userTotalXP > 0 ? (leaderboardCount.count ?? 0) + 1 : null);
+    fetchStreakStatus().then(s => { if (s) setStreak(s.streak); }); // conta a proteção da semana
+    setRank(myRank.rank);
   }, [userId, userLevel, totalXP]);
 
   useFocusEffect(useCallback(() => { fetchHeaderStats(); }, [fetchHeaderStats]));
@@ -432,17 +442,15 @@ export default function PracticeTab() {
       <View style={{ flex: 1, position: 'relative' }}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        // iOS: 'padding' soma padding interno = keyboard - offset.
-        // Android: 'height' encolhe a View pela altura do teclado - offset.
-        // Em ambos, offset = tabBarHeight pra compensar que a tab bar já
-        // ocupa esse espaço entre o KAV e o fundo da tela (o sistema só
-        // empurra/encolhe ATÉ o topo do teclado; a tab bar fica embaixo
-        // do KAV mas dentro do que o sistema considera "espaço da janela").
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        // 'padding' soma um padding interno = parte do bloco coberta pelo teclado.
+        // iOS: offset = tab bar + área inferior (ajuste fino que já funcionava).
+        // Android: offset = tab bar + barra de status. Sem a barra de status, o campo ficava meio coberto
+        // pelo teclado (Samsung com tela inteira: faltavam exatamente os ~36 pt da barra de status).
+        behavior="padding"
         keyboardVerticalOffset={
           Platform.OS === 'ios'
             ? tabBarHeight + insets.bottom + 12
-            : tabBarHeight
+            : tabBarHeight + insets.top
         }
       >
         {/* ── Toggle pill (3 modos) + menu ⋯ (nova conversa, histórico, ajuda) ── */}
