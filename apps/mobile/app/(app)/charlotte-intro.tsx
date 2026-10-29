@@ -9,6 +9,7 @@ import { View, TouchableOpacity, Animated, Easing, StatusBar, BackHandler, Activ
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Image } from 'expo-image';
+import Svg, { Defs, RadialGradient, Stop, Circle } from 'react-native-svg';
 import { createAudioPlayer, setAudioModeAsync, AudioPlayer } from 'expo-audio';
 import { ArrowLeft, Check, Gift, Microphone } from 'phosphor-react-native';
 import * as Haptics from '@/lib/hapticsGated';
@@ -119,10 +120,21 @@ function HelloStep({ name, speaking, played, onReplay, onNext, onSkip }: {
 
       <View style={{ flex: 1, minHeight: 240, alignItems: 'center', justifyContent: 'flex-end' }}>
         <Animated.View style={{
-          position: 'absolute', bottom: 30, width: 280, height: 280, borderRadius: 140, backgroundColor: VOLT,
-          opacity: glow.interpolate({ inputRange: [0, 1], outputRange: [0.10, 0.18] }),
+          position: 'absolute', bottom: 0, width: 320, height: 320,
+          opacity: glow.interpolate({ inputRange: [0, 1], outputRange: [0.75, 1] }),
           transform: [{ scale: glow.interpolate({ inputRange: [0, 1], outputRange: [1, 1.06] }) }],
-        }} />
+        }}>
+          <Svg width={320} height={320}>
+            <Defs>
+              <RadialGradient id="welcomeGlow" cx="50%" cy="50%" r="50%">
+                <Stop offset="0" stopColor={VOLT} stopOpacity={0.36} />
+                <Stop offset="0.45" stopColor={VOLT} stopOpacity={0.10} />
+                <Stop offset="1" stopColor={VOLT} stopOpacity={0} />
+              </RadialGradient>
+            </Defs>
+            <Circle cx={160} cy={160} r={160} fill="url(#welcomeGlow)" />
+          </Svg>
+        </Animated.View>
         <View style={{ position: 'absolute', bottom: 6, width: 170, height: 20, borderRadius: 85, backgroundColor: 'rgba(0,0,0,0.45)' }} />
         <Image
           source={require('@/assets/charlotte-welcome.webp')}
