@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { usePaywallContext } from '@/lib/paywallContext';
+import { getOffering, getTrialDays } from '@/lib/purchases';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import { useBottomInset } from '@/lib/useBottomInset';
@@ -1007,6 +1008,15 @@ function ResultScreen({
     Animated.timing(anim, { toValue: 1, duration: 480, delay: 80, useNativeDriver: true }).start();
   }, []);
   const translateY = anim.interpolate({ inputRange: [0, 1], outputRange: [24, 0] });
+  // Dias de teste grátis a que a pessoa tem direito (quem já usou o teste na loja não ganha de novo).
+  const [trial, setTrial] = useState(0);
+  useEffect(() => {
+    if (!offer) return;
+    let alive = true;
+    getOffering().then(o => (o ? getTrialDays(o.availablePackages) : {} as Record<string, number>))
+      .then(t => { if (alive) setTrial(Math.max(0, ...Object.values(t))); }).catch(() => {});
+    return () => { alive = false; };
+  }, [offer]);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.navy }} edges={['top']}>
@@ -1083,8 +1093,8 @@ function ResultScreen({
             {offer && (
               <AppText style={{ fontSize: 15, fontWeight: '700', color: C.navy, textAlign: 'center', lineHeight: 22, marginBottom: 14 }}>
                 {systemIsPt
-                  ? `Seu nível é ${level}. Comece os 7 dias grátis para seguir sua trilha no nível certo.`
-                  : `Your level is ${level}. Start your 7-day free trial to follow your path at the right level.`}
+                  ? `Seu nível é ${level}. ${trial ? `Comece os ${trial} dias grátis` : 'Assine'} para seguir sua trilha no nível certo.`
+                  : `Your level is ${level}. ${trial ? `Start your ${trial}-day free trial` : 'Subscribe'} to follow your path at the right level.`}
               </AppText>
             )}
             <TouchableOpacity
@@ -1097,7 +1107,9 @@ function ResultScreen({
             >
               <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>
                 {offer
-                  ? (systemIsPt ? 'Começar os 7 dias grátis' : 'Start my 7-day free trial')
+                  ? (trial
+                    ? (systemIsPt ? `Começar os ${trial} dias grátis` : `Start my ${trial}-day free trial`)
+                    : (systemIsPt ? 'Seguir no nível certo' : 'Continue at the right level'))
                   : (systemIsPt ? 'Começar a aprender' : 'Start learning')}
               </AppText>
               <ArrowRight size={18} color={C.navy} weight="bold" />
