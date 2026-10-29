@@ -24,6 +24,10 @@ import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { TASTE_DAYS } from '@/lib/taste';
 import { revenueAtMs } from '@/lib/revenue-day';
+import {
+  DAY, BRT, brtDay, brtDayStart, dayKey, ms, isTeamAccount, chargeIndex, subscriptionKind, monthlyValueOf,
+  isStoreProduct as isStore, isSiteProduct as isSite, isAnnualProduct as isAnnual, isPaidKind, isTrialKind, type SubKind,
+} from '@/lib/admin-subscriptions';
 
 type DbError = { message: string } | null;
 
@@ -60,28 +64,12 @@ async function pagedParallel(
   return { data, error: null as DbError };
 }
 
-// Preços atuais (R$) da loja; no site vale o valor de cada compra (com cupom).
-const MONTHLY_PRICE_BRL = 29.99;
-const YEARLY_PRICE_BRL  = 199.99;
-
-// ── Calendário de Brasília (UTC-3, sem horário de verão) ────────────────────
-const DAY = 86400000;
-const BRT = 3 * 3600000;
-/** Índice do dia no calendário de Brasília. */
-const brtDay = (t: number) => Math.floor((t - BRT) / DAY);
-/** 00h de Brasília do dia de índice idx, em ms UTC. */
-const brtDayStart = (idx: number) => idx * DAY + BRT;
-/** YYYY-MM-DD do dia de índice idx. */
-const dayKey = (idx: number) => new Date(idx * DAY).toISOString().slice(0, 10);
+// Calendário de Brasília, preços, equipe e situação da assinatura: lib/admin-subscriptions.ts
+// (as mesmas regras da lista de Usuários e da Visão geral).
 /** Lançamento do Queizy nas lojas (20/10/2026): médias de uso começam aqui. */
 const LAUNCH_DAY = brtDay(Date.UTC(2026, 9, 20, 3));
 /** Índice da segunda-feira da semana do dia idx. */
 const mondayOf = (idx: number) => idx - ((new Date(idx * DAY).getUTCDay() + 6) % 7);
-const ms = (s: string | null | undefined) => (s ? new Date(s).getTime() : NaN);
-
-// Contas da equipe (mesmo padrão de release-broadcast) + hide_from_ranking + institucional.
-const TEAM_EMAIL = (e: string | null | undefined) =>
-  !!e && (/@(hubacademybr\.com|queizy\.com)$/i.test(e) || /^felipe\.xavier1987\+/i.test(e));
 
 // Endpoints que não são uso de aluno (suporte, Instagram, admin, testes): ficam fora do custo por aluno.
 const isInternalEndpoint = (e: string) => !e.startsWith('/api/') || e.startsWith('/api/admin');
@@ -251,7 +239,7 @@ export async function GET(req: NextRequest) {
 
   // ── Equipe fora de tudo ──────────────────────────────────────────────────
   const usersAll = (usersRes.data ?? []) as UserRow[];
-  const teamIds = new Set(usersAll.filter(u => u.is_institutional || u.hide_from_ranking || TEAM_EMAIL(u.email)).map(u => String(u.id)));
+  const teamIds = new Set(usersAll.filter(isTeamAccount).map(u => String(u.id)));
   const notTeam = (id: string | null | undefined) => !id || !teamIds.has(String(id));
   const baseUsers = usersAll.filter(u => notTeam(u.id));
 
@@ -264,58 +252,12 @@ export async function GET(req: NextRequest) {
   const ckAll       = ((ckRes.data ?? []) as CkRow[]).filter(c => notTeam(c.user_id));
   const usageTableMissing = Boolean(usageRes.error);
 
-  // ── Cobranças ────────────────────────────────────────────────────────────
-  // Compra reembolsada por inteiro não conta como cobrança.
-  const purchases = new Map<string, number>();
-  const refunds = new Map<string, number>();
-  for (const r of revAll) {
-    const uid = String(r.app_user_id);
-    if (r.event_type === 'REFUND') refunds.set(uid, (refunds.get(uid) ?? 0) + 1);
-    else if (Number(r.price_purchased) > 0) purchases.set(uid, (purchases.get(uid) ?? 0) + 1);
-  }
-  const fullyRefunded = (uid: string) => (refunds.get(uid) ?? 0) > 0 && (refunds.get(uid) ?? 0) >= (purchases.get(uid) ?? 0);
-
-  // 1ª cobrança de cada conta: revenue_events (loja e site) e compras do site já cobradas.
-  const firstChargeAt = new Map<string, number>();
-  const noteCharge = (uid: string, t: number) => {
-    if (!Number.isFinite(t)) return;
-    const cur = firstChargeAt.get(uid);
-    if (cur == null || t < cur) firstChargeAt.set(uid, t);
-  };
-  for (const r of revAll) {
-    const uid = String(r.app_user_id);
-    if (r.event_type === 'REFUND' || !(Number(r.price_purchased) > 0) || fullyRefunded(uid)) continue;
-    noteCharge(uid, revenueAtMs(r)); // cobrança do site só com data vale para o próprio dia
-  }
-  const siteCk = new Map<string, CkRow>(); // última compra concluída no site (sem reembolso)
-  for (const c of ckAll) {
-    if (c.status !== 'paid' || c.refunded_at) continue;
-    const uid = String(c.user_id);
-    siteCk.set(uid, c);
-    if (c.paid_at) noteCharge(uid, ms(c.paid_at));
-    else if (!((c.trial_days ?? 0) > 0)) noteCharge(uid, ms(c.created_at)); // Pix/cartão sem teste: cobrado na hora
-    else if (c.asaas_payment_id) noteCharge(uid, ms(c.created_at) + (c.trial_days ?? 0) * DAY);
-  }
+  // ── Cobranças e situação de cada conta (lib/admin-subscriptions) ─────────
+  const { firstChargeAt, siteCk } = chargeIndex(revAll, ckAll);
   const paidEver = (u: UserRow) => firstChargeAt.has(String(u.id));
-
-  const isStore  = (p: string | null) => p === 'monthly' || p === 'yearly';
-  const isSite   = (p: string | null) => !!p && p.startsWith('web_');
-  const isAnnual = (p: string | null) => p === 'yearly' || !!p?.startsWith('web_annual'); // web_annual, web_annual_pix, web_annual_12x
-
-  // Situação atual de cada conta com acesso.
-  type SubKind = 'paid_store' | 'paid_site' | 'trial_store' | 'trial_site' | 'trial_legacy' | null;
-  const kindOf = (u: UserRow): SubKind => {
-    if (u.subscription_status === 'trial') return u.trial_ends_at && ms(u.trial_ends_at) > nowMs ? 'trial_legacy' : null;
-    if (u.subscription_status !== 'active' && u.subscription_status !== 'cancelled') return null;
-    if (!u.subscription_expires_at || ms(u.subscription_expires_at) <= nowMs) return null;
-    if (isStore(u.subscription_product)) return paidEver(u) ? 'paid_store' : 'trial_store';
-    if (isSite(u.subscription_product)) return paidEver(u) ? 'paid_site' : 'trial_site';
-    return null;
-  };
+  const kindOf = (u: UserRow): SubKind => subscriptionKind(u, paidEver(u), nowMs);
   const kinds = new Map(baseUsers.map(u => [String(u.id), kindOf(u)] as const));
   const kindOfId = (u: UserRow) => kinds.get(String(u.id)) ?? null;
-  const isPaidKind  = (k: SubKind) => k === 'paid_store' || k === 'paid_site';
-  const isTrialKind = (k: SubKind) => k === 'trial_store' || k === 'trial_site' || k === 'trial_legacy';
   const isTaster = (u: UserRow) => !u.subscription_status || u.subscription_status === 'none';
 
   // ── Filtros de nível e plano ─────────────────────────────────────────────
@@ -379,11 +321,7 @@ export async function GET(req: NextRequest) {
   };
   const monthlySubs = activeSubs.filter(u => !isAnnual(u.subscription_product)).length;
   const yearlySubs  = activeSubs.filter(u => isAnnual(u.subscription_product)).length;
-  const monthlyValue = (u: UserRow): number => {
-    const ck = isSite(u.subscription_product) ? siteCk.get(String(u.id)) : null;
-    if (ck) return isAnnual(u.subscription_product) ? Number(ck.value_brl) / 12 : Number(ck.value_brl);
-    return isAnnual(u.subscription_product) ? YEARLY_PRICE_BRL / 12 : MONTHLY_PRICE_BRL;
-  };
+  const monthlyValue = (u: UserRow): number => monthlyValueOf(u, siteCk);
   // MRR: só quem pagou e segue com renovação ativa (quem cancelou aparece à parte).
   const mrr = activeSubs.reduce((sum, u) => sum + monthlyValue(u), 0);
   const arr = mrr * 12;
