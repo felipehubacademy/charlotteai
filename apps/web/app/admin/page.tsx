@@ -10,6 +10,8 @@ import { useAdminMe, canArea } from '@/lib/admin-context';
 import AdminLoading from '@/components/admin/AdminLoading';
 import type { Overview, TodayMetric, DayPoint } from '@/lib/admin-overview';
 
+const AUTO_REFRESH_MS = 30_000;
+
 // ── Formatação ───────────────────────────────────────────────────────────────
 const int = (n: number) => n.toLocaleString('pt-BR');
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -102,17 +104,26 @@ export default function AdminOverviewPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const load = useCallback(async () => {
-    setLoading(true); setError('');
+  // silent: atualização automática (sem o carregando no botão e sem apagar a tela se falhar uma vez).
+  const load = useCallback(async (silent = false) => {
+    if (!silent) { setLoading(true); setError(''); }
     try {
-      const res = await fetch('/api/admin/overview');
+      const res = await fetch('/api/admin/overview', { cache: 'no-store' });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(json.error ?? `HTTP ${res.status}`);
       setData(json as Overview);
-    } catch (e) { setError((e as Error).message); }
-    finally { setLoading(false); }
+      setError('');
+    } catch (e) { if (!silent) setError((e as Error).message); }
+    finally { if (!silent) setLoading(false); }
   }, []);
   useEffect(() => { load(); }, [load]);
+  // Atualiza sozinha: a cada 30 s com a aba aberta e na hora em que a aba volta a ficar visível.
+  useEffect(() => {
+    const tick = () => { if (document.visibilityState === 'visible') load(true); };
+    const id = setInterval(tick, AUTO_REFRESH_MS);
+    document.addEventListener('visibilitychange', tick);
+    return () => { clearInterval(id); document.removeEventListener('visibilitychange', tick); };
+  }, [load]);
 
   if (loading && !data && !error) return <AdminLoading label="Carregando a visão geral…" />;
 
@@ -126,9 +137,9 @@ export default function AdminOverviewPage() {
       <div className="adm-topbar">
         <div style={{ flex: 1, minWidth: 0 }}>
           <div className="adm-topbar-title">Visão geral</div>
-          {data && <div className="adm-topbar-sub">Dados até {hhmm(data.generatedAt)}</div>}
+          {data && <div className="adm-topbar-sub">Dados até {hhmm(data.generatedAt)} · atualiza sozinha a cada 30 s</div>}
         </div>
-        <button onClick={load} disabled={loading} className="adm-btn-sm ghost">
+        <button onClick={() => load()} disabled={loading} className="adm-btn-sm ghost">
           <RefreshCw size={13} style={{ animation: loading ? 'spin 1s linear infinite' : 'none' }} />
           {loading ? 'Carregando' : 'Atualizar'}
         </button>
