@@ -23,6 +23,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { TASTE_DAYS } from '@/lib/taste';
+import { revenueAtMs } from '@/lib/revenue-day';
 
 type DbError = { message: string } | null;
 
@@ -284,7 +285,7 @@ export async function GET(req: NextRequest) {
   for (const r of revAll) {
     const uid = String(r.app_user_id);
     if (r.event_type === 'REFUND' || !(Number(r.price_purchased) > 0) || fullyRefunded(uid)) continue;
-    noteCharge(uid, ms(r.purchased_at));
+    noteCharge(uid, revenueAtMs(r)); // cobrança do site só com data vale para o próprio dia
   }
   const siteCk = new Map<string, CkRow>(); // última compra concluída no site (sem reembolso)
   for (const c of ckAll) {
@@ -433,8 +434,8 @@ export async function GET(req: NextRequest) {
 
   // ── Receita real do caixa no período (líquida) ───────────────────────────
   const revInScope = revAll.filter(r => !hasFilter || filteredIds.has(String(r.app_user_id)));
-  const cashRows = revInScope.filter(r => r.event_type !== 'REFUND' && Number(r.price_purchased) > 0 && inRange(ms(r.purchased_at)));
-  const refundRows = revInScope.filter(r => r.event_type === 'REFUND' && inRange(ms(r.purchased_at)));
+  const cashRows = revInScope.filter(r => r.event_type !== 'REFUND' && Number(r.price_purchased) > 0 && inRange(revenueAtMs(r)));
+  const refundRows = revInScope.filter(r => r.event_type === 'REFUND' && inRange(revenueAtMs(r)));
   const cash = {
     grossBrl: round2(cashRows.reduce((s, r) => s + Number(r.gross_brl ?? r.price_purchased ?? 0), 0)),
     netBrl: round2(cashRows.reduce((s, r) => s + Number(r.net_brl ?? 0), 0)),

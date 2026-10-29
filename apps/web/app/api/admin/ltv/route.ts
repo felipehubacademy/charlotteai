@@ -8,6 +8,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin } from '@/lib/admin-auth';
+import { revenueAtMs } from '@/lib/revenue-day';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,7 +39,7 @@ export async function GET(req: NextRequest) {
   // Cobranças primeiro, estornos depois (cobrança e estorno podem ter o mesmo horário).
   for (const r of rows) {
     if (r.event_type === 'REFUND') continue;
-    const t = new Date(r.purchased_at).getTime();
+    const t = revenueAtMs(r); // cobrança do site só com data vale para o próprio dia (Brasília)
     const s = subs.get(r.app_user_id);
     if (!s) subs.set(r.app_user_id, { first: t, plan: planOf(r.product_id), store: r.store, charges: 1, net: Number(r.net_brl ?? 0), gross: Number(r.gross_brl ?? 0), refunded: 0, last: t });
     else { s.charges++; s.net += Number(r.net_brl ?? 0); s.gross += Number(r.gross_brl ?? 0); s.last = Math.max(s.last, t); }
