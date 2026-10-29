@@ -73,6 +73,9 @@ function formatDialogue(s: string): string {
 }
 
 // ── Palette ────────────────────────────────────────────────────
+// Quantas vezes a tela "Agora é sua vez de falar" aparece antes do Listening & Speaking (por conta, por aparelho).
+const LS_INTRO_TIMES = 3;
+
 const C = {
   bg:        '#FAF7F0',
   card:      '#FFFFFF',
@@ -150,13 +153,28 @@ export default function LearnSessionScreen() {
   const firstLesson = params.first === '1';
   // Tela "Agora é sua vez de falar" antes do L&S que vem logo depois da Gramática. Muita gente saía em segundos
   // sem tocar no microfone (lugar onde não dá para falar?); "Agora não dá pra falar" volta depois, sem travar.
-  const [showLsIntro, setShowLsIntro] = useState(params.intro === '1' && params.activity === 'ls');
+  // Só nas 3 primeiras vezes da conta (neste aparelho): depois disso o aluno já conhece a sequência.
+  const lsIntroAsked = params.intro === '1' && params.activity === 'ls';
+  const [lsIntroState, setLsIntroState] = useState<'checking' | 'show' | 'hide'>(lsIntroAsked ? 'checking' : 'hide');
+  const showLsIntro = lsIntroState === 'show';
+  const setShowLsIntro = (v: boolean) => setLsIntroState(v ? 'show' : 'hide');
   const lsIntroRef = useRef<{ gate: Promise<void>; open: () => void; later: boolean } | null>(null);
   if (!lsIntroRef.current) {
     let open = () => {};
-    const gate = showLsIntro ? new Promise<void>(r => { open = r; }) : Promise.resolve();
+    const gate = lsIntroAsked ? new Promise<void>(r => { open = r; }) : Promise.resolve();
     lsIntroRef.current = { gate, open, later: false };
   }
+  useEffect(() => {
+    if (!lsIntroAsked) return;
+    if (!profile?.id) { setLsIntroState('show'); return; }
+    const key = `ls_intro_seen_${profile.id}`;
+    SecureStore.getItemAsync(key).catch(() => null).then(v => {
+      const seen = Number(v) || 0;
+      if (seen >= LS_INTRO_TIMES) { setLsIntroState('hide'); lsIntroRef.current?.open(); return; }
+      SecureStore.setItemAsync(key, String(seen + 1)).catch(() => {});
+      setLsIntroState('show');
+    });
+  }, [lsIntroAsked, profile?.id]); // eslint-disable-line react-hooks/exhaustive-deps
   const userId      = profile?.id;
   const userLevel   = (profile?.charlotte_level ?? 'Novice') as string;
   // Camada de SUPORTE/chrome (enunciados, feedback, botões) segue o idioma do
@@ -1436,6 +1454,8 @@ export default function LearnSessionScreen() {
       </SafeAreaView>
     );
   }
+
+  if (lsIntroState === 'checking') return <View style={{ flex: 1, backgroundColor: C.navy }} />;
 
   if (showLsIntro) {
     const n = totalSteps || 5;
