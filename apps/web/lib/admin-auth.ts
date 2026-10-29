@@ -59,7 +59,8 @@ export function areasFor(role: AdminRole): AdminArea[] {
  * o login sem a segunda etapa (allowPendingMfa), para a tela de login saber que falta o código.
  */
 export async function getAdmin(req: NextRequest, opts?: { allowPendingMfa?: boolean }): Promise<AdminContext | null> {
-  const secret = req.headers.get('x-admin-secret') ?? req.nextUrl.searchParams.get('secret') ?? '';
+  // Só no cabeçalho: senha no link fica no histórico do navegador e nos logs.
+  const secret = req.headers.get('x-admin-secret') ?? '';
   if (process.env.ADMIN_SECRET && secret && secret === process.env.ADMIN_SECRET) {
     return { userId: null, email: null, name: 'Senha mestra', role: 'admin', legacy: true, mfa: false };
   }
