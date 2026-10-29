@@ -70,7 +70,8 @@ class CharlotteAudioSessionModule : Module() {
         mp.setAudioAttributes(
           AudioAttributes.Builder()
             .setUsage(AudioAttributes.USAGE_VOICE_COMMUNICATION)
-            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            // SPEECH: o toque de chamada sai como áudio de ligação (antes, SONIFICATION ficava mudo no silencioso).
+            .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
             .build()
         )
         mp.isLooping = true

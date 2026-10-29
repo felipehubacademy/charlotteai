@@ -104,6 +104,7 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
   const cardPt = true;
   const cardRef = useRef<View>(null);
   const [link, setLink] = useState<string | null>(null);
+  const [storyTip, setStoryTip] = useState(false); // aviso "copiamos @queizyapp" antes de abrir o Story
   const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -146,6 +147,12 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
     if (!cardRef.current || !RNShare || !ViewShot || !facebookAppId) return;
     setBusy(true);
     try {
+      // O Instagram não deixa o app marcar o perfil: copia o @ para a pessoa colar no Story.
+      if (Clipboard) {
+        await Clipboard.setStringAsync('@queizyapp').catch(() => {});
+        setStoryTip(true);
+        await new Promise(r => setTimeout(r, 1400));
+      }
       const uri = await ViewShot.captureRef(cardRef, { format: 'png', quality: 1, width: 1080, height: 1920, result: 'tmpfile' });
       await RNShare.shareSingle({
         social: RNShare.Social.INSTAGRAM_STORIES as never,
@@ -156,7 +163,7 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
     } catch {
       // Sem Instagram instalado (ou cancelado): cai no compartilhar normal da imagem.
       await shareImage();
-    } finally { setBusy(false); }
+    } finally { setBusy(false); setStoryTip(false); }
   };
 
   function inviteMessage() {
@@ -198,7 +205,11 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
               ? <AchievementIcon category={content.category} color={th.light ? '#FFFFFF' : INK} size={decor.size} />
               : <DecorIcon size={decor.size} color={th.light ? '#FFFFFF' : INK} weight="fill" />}
           </View>
-          <Image source={th.light ? require('@/assets/logo-lockup-light.png') : require('@/assets/logo-lockup.png')} style={{ height: 26, width: 112 }} resizeMode="contain" />
+          {/* Logo e o @ do Instagram: quem vê o Story sabe onde achar o Queizy (o app não consegue marcar o perfil). */}
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Image source={th.light ? require('@/assets/logo-lockup-light.png') : require('@/assets/logo-lockup.png')} style={{ height: 26, width: 112 }} resizeMode="contain" />
+            <AppText style={{ fontSize: 13, fontWeight: '800', color: th.text }}>@queizyapp</AppText>
+          </View>
 
           <View style={{ flex: 1, justifyContent: 'center' }}>
             {content.icon && <View style={{ marginBottom: 14 }}>{content.icon}</View>}
@@ -238,6 +249,13 @@ export function ShareCardModal({ content, onClose }: { content: ShareCardContent
 
         {/* Ações */}
         <View style={{ width: W + 40, marginTop: 22, gap: 10 }}>
+          {storyTip && (
+            <View style={{ backgroundColor: '#FFFFFF', borderRadius: 14, paddingVertical: 10, paddingHorizontal: 14 }}>
+              <AppText style={{ fontSize: 14, fontWeight: '700', color: INK, textAlign: 'center' }}>
+                {isPt ? 'Copiamos @queizyapp: cole no Story para marcar o Queizy.' : 'We copied @queizyapp: paste it in your Story to tag Queizy.'}
+              </AppText>
+            </View>
+          )}
           <TouchableOpacity onPress={content.invite ? shareLink : shareImage} disabled={busy}
             style={{ backgroundColor: VOLT, borderRadius: 999, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
             {busy ? <ActivityIndicator color={INK} /> : <ShareNetwork size={20} color={INK} weight="bold" />}
