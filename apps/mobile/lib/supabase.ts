@@ -162,6 +162,7 @@ export interface UserProfile {
   subscription_expires_at: string | null;            // ISO timestamp do latest expiration
   beta_features: string[];
   is_admin: boolean;
-  active_character?: string | null;   // Família Queizy: quem fala na tela inicial (padrão 'charlotte')
+  active_character?: string | null;   // Família Queizy: quem fala na tela inicial (padrão 'igorfina' no banco)
+  family_picked_at?: string | null;   // quando escolheu em "Quem vai te acompanhar?" (vale em qualquer aparelho)
   created_at?: string | null;         // criação da conta (convite da Família nos primeiros 7 dias)
 }

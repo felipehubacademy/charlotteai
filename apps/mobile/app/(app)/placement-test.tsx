@@ -544,15 +544,7 @@ export default function PlacementTestScreen() {
         if (skipErr) console.warn('[PlacementTest] placement_skips error:', skipErr);
       }
 
-      // Dispara email de boas-vindas em background (fire-and-forget).
-      // Nao bloqueia o fluxo — se falhar, nao afeta o usuario.
-      const accessToken = (await supabase.auth.getSession()).data.session?.access_token;
-      if (accessToken) {
-        fetch(`${API_BASE_URL}/api/auth/welcome`, {
-          method: 'POST',
-          headers: { Authorization: `Bearer ${accessToken}` },
-        }).catch(e => console.warn('[PlacementTest] welcome email error:', e));
-      }
+      // O teste de nível não manda e-mail (antes mandava "seu teste gratuito está ativo" a cada teste feito).
 
       // Do NOT call refreshProfile() here — it would trigger AuthGuard
       // (placement_test_done: true && !first_welcome_done → charlotte-intro)

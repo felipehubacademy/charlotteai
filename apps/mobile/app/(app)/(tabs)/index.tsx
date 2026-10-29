@@ -188,21 +188,28 @@ export default function HomeTab() {
   useEffect(() => {
     if (!familyKey) return;
     let alive = true;
+    // A escolha fica na conta (family_picked_at), para não perguntar de novo em outro aparelho.
+    // Marca antiga só deste aparelho: vale e passa para a conta.
+    if (profile?.family_picked_at) { setFamilyPickDone(true); return; }
     SecureStore.getItemAsync(familyKey).catch(() => null).then(v => {
       if (!alive) return;
-      if (v) { setFamilyPickDone(true); return; }
+      if (v) {
+        setFamilyPickDone(true);
+        if (profile?.id) supabase.from('charlotte_users').update({ family_picked_at: new Date().toISOString() }).eq('id', profile.id).then(() => {}, () => {});
+        return;
+      }
       splashGate.then(() => setTimeout(() => { if (alive) setFamilySheet('first'); }, 700));
     });
     return () => { alive = false; };
-  }, [familyKey]);
+  }, [familyKey, profile?.family_picked_at]); // eslint-disable-line react-hooks/exhaustive-deps
   const confirmFamily = useCallback(async (id: CharacterId) => {
     if (!profile?.id || familySaving) return;
     setFamilySaving(true);
     try {
-      if (id !== characterInfo(profile.active_character).id) {
-        const { error } = await supabase.from('charlotte_users').update({ active_character: id }).eq('id', profile.id);
-        if (!error) await refreshProfile();
-      }
+      // Grava sempre (mesmo mantendo o mesmo personagem): é o que marca que a conta já escolheu.
+      const { error } = await supabase.from('charlotte_users')
+        .update({ active_character: id, family_picked_at: new Date().toISOString() }).eq('id', profile.id);
+      if (!error) await refreshProfile();
       if (familyKey) await SecureStore.setItemAsync(familyKey, id).catch(() => {});
       markFamilyMemberPicked(); // some o convite "Conheça a Família Queizy"
     } finally {
