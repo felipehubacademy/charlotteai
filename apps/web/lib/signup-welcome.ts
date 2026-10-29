@@ -4,6 +4,7 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { signupWelcomeTemplate } from '@/lib/email-templates';
 import { sendOrQueue } from '@/lib/email-outbox';
+import { notifyAdmins } from '@/lib/admin-push';
 
 // Só contas criadas a partir do lançamento deste e-mail (ninguém antigo recebe de repente).
 const SIGNUP_WELCOME_FROM = '2026-10-29T21:30:00Z';
@@ -33,5 +34,28 @@ export async function sendSignupWelcomes(): Promise<{ sent: number }> {
     await sendOrQueue({ kind: 'signup_welcome', to: row.email, subject, html });
     sent++;
   }
+  await alertLate(supabase).catch(() => {});
   return { sent };
+}
+
+// Conferência automática: cadastro de 20 a 25 minutos atrás ainda sem o e-mail (ou com o envio preso na fila)
+// vira alerta no sino do /admin. A janela tem o tamanho de uma rodada do cron, então cada conta avisa uma vez só.
+async function alertLate(supabase: ReturnType<typeof getSupabaseAdmin>): Promise<void> {
+  const from = new Date(Math.max(Date.parse(SIGNUP_WELCOME_FROM), Date.now() - 25 * 60_000)).toISOString();
+  const to = new Date(Date.now() - 20 * 60_000).toISOString();
+  if (from >= to) return;
+  const { data: late } = await supabase.from('charlotte_users').select('email')
+    .gte('created_at', from).lt('created_at', to).eq('subscription_status', 'none').eq('is_institutional', false)
+    .is('signup_welcome_sent_at', null);
+  const { count: stuck } = await supabase.from('email_outbox').select('id', { count: 'exact', head: true })
+    .in('kind', ['signup_welcome', 'trial_welcome']).is('sent_at', null).gte('created_at', from).lt('created_at', to);
+  const n = (late ?? []).length;
+  if (!n && !stuck) return;
+  await notifyAdmins({
+    title: 'E-mail de boas-vindas atrasado',
+    body: n
+      ? `${n} cadastro(s) com mais de 20 minutos sem o e-mail "Sua conta no Queizy está pronta".`
+      : `${stuck} e-mail(s) de boas-vindas parados na fila de reenvio.`,
+    url: '/admin', tag: 'signup_welcome_late', category: 'emails',
+  });
 }
