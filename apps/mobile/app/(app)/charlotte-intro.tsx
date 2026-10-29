@@ -15,6 +15,7 @@ import { ArrowLeft, Check, Gift, Microphone } from 'phosphor-react-native';
 import * as Haptics from '@/lib/hapticsGated';
 import { AppText } from '@/components/ui/Text';
 import { Flame } from '@/components/streak/StreakCelebration';
+import { QueizyWave } from '@/components/ui/QueizyWave';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { hasAiConsent } from '@/lib/aiConsent';
@@ -50,10 +51,11 @@ function useFadeIn(delay: number, deps: unknown[] = []) {
   return { opacity: o, transform: [{ translateY: y }] };
 }
 
+// A barra do app: a onda do Queizy que vai endireitando (queizy → crazy).
 function ProgressBar({ value, dark }: { value: number; dark?: boolean }) {
   return (
-    <View style={{ flex: 1, height: 8, borderRadius: 4, backgroundColor: dark ? 'rgba(255,255,255,0.12)' : 'rgba(22,19,31,0.08)', overflow: 'hidden' }}>
-      <View style={{ width: `${value * 100}%`, height: 8, borderRadius: 4, backgroundColor: dark ? VOLT : GREEN }} />
+    <View style={{ flex: 1 }}>
+      <QueizyWave progress={value} height={14} strokeWidth={4} doneColor={dark ? VOLT : GREEN} />
     </View>
   );
 }
@@ -124,9 +126,9 @@ function HelloStep({ name, speaking, played, onReplay, onNext, onSkip }: {
           <Svg width="100%" height="100%">
             <Defs>
               <RadialGradient id="welcomeLight" cx="50%" cy="52%" r="50%">
-                <Stop offset="0" stopColor={VOLT} stopOpacity={0.16} />
-                <Stop offset="0.45" stopColor={VOLT} stopOpacity={0.06} />
-                <Stop offset="0.8" stopColor={VOLT} stopOpacity={0.015} />
+                <Stop offset="0" stopColor={VOLT} stopOpacity={0.22} />
+                <Stop offset="0.45" stopColor={VOLT} stopOpacity={0.085} />
+                <Stop offset="0.8" stopColor={VOLT} stopOpacity={0.022} />
                 <Stop offset="1" stopColor={VOLT} stopOpacity={0} />
               </RadialGradient>
             </Defs>
@@ -134,16 +136,16 @@ function HelloStep({ name, speaking, played, onReplay, onNext, onSkip }: {
           </Svg>
         </Animated.View>
         {/* Sombra no chão: elipse esfumada colada aos pés. */}
-        <View pointerEvents="none" style={{ position: 'absolute', bottom: -10, width: 190, height: 30 }}>
-          <Svg width={190} height={30}>
+        <View pointerEvents="none" style={{ position: 'absolute', bottom: -12, width: 210, height: 34 }}>
+          <Svg width={210} height={34}>
             <Defs>
               <RadialGradient id="welcomeShadow" cx="50%" cy="50%" r="50%">
-                <Stop offset="0" stopColor="#000000" stopOpacity={0.55} />
-                <Stop offset="0.55" stopColor="#000000" stopOpacity={0.22} />
+                <Stop offset="0" stopColor="#000000" stopOpacity={0.9} />
+                <Stop offset="0.55" stopColor="#000000" stopOpacity={0.45} />
                 <Stop offset="1" stopColor="#000000" stopOpacity={0} />
               </RadialGradient>
             </Defs>
-            <Ellipse cx={95} cy={15} rx={95} ry={15} fill="url(#welcomeShadow)" />
+            <Ellipse cx={105} cy={17} rx={105} ry={17} fill="url(#welcomeShadow)" />
           </Svg>
         </View>
         <Image
@@ -195,7 +197,8 @@ function RhythmStep({ value, onPick, onBack, onNext }: { value: number; onPick: 
         <ProgressBar value={1 / 3} />
       </View>
 
-      <Animated.View style={[{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, paddingHorizontal: 24, paddingTop: 36 }, a1]}>
+      <View style={{ flex: 1, justifyContent: 'center', paddingVertical: 16 }}>
+      <Animated.View style={[{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, paddingHorizontal: 24 }, a1]}>
         <Image source={require('@/assets/charlotte-avatar.png')} style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: INK }} />
         <View style={{ flex: 1, backgroundColor: '#FFFFFF', borderRadius: 20, borderBottomLeftRadius: 6, paddingHorizontal: 18, paddingVertical: 16 }}>
           <AppText display style={{ fontSize: 21, lineHeight: 26, fontWeight: '800', color: INK }}>
@@ -229,9 +232,9 @@ function RhythmStep({ value, onPick, onBack, onNext }: { value: number; onPick: 
           );
         })}
       </Animated.View>
+      </View>
 
-      <View style={{ flex: 1 }} />
-      <View style={{ paddingHorizontal: 24, paddingTop: 24, paddingBottom: 24 }}>
+      <View style={{ paddingHorizontal: 24, paddingTop: 8, paddingBottom: 24 }}>
         <PrimaryButton label={isPt ? 'Continuar' : 'Continue'} onPress={onNext} dark />
       </View>
     </View>
@@ -268,7 +271,8 @@ function PlanStep({ minutes, busy, onBack, onAccept }: { minutes: number; busy: 
         <ProgressBar value={2 / 3} dark />
       </View>
 
-      <View style={{ alignItems: 'center', paddingTop: 36 }}>
+      <View style={{ flex: 1, justifyContent: 'center', paddingVertical: 16 }}>
+      <View style={{ alignItems: 'center' }}>
         {/* Chama tremulando: estica para cima e balança, a partir da base. */}
         <Animated.View style={{ transform: [
           { translateY: flame.interpolate({ inputRange: [0, 1], outputRange: [0, -5] }) },
@@ -276,7 +280,7 @@ function PlanStep({ minutes, busy, onBack, onAccept }: { minutes: number; busy: 
           { scaleX: flame.interpolate({ inputRange: [0, 1], outputRange: [1.04, 0.95] }) },
           { rotate: flame.interpolate({ inputRange: [0, 1], outputRange: ['-4deg', '4deg'] }) },
         ] }}>
-          <Flame size={96} />
+          <Flame size={128} />
         </Animated.View>
       </View>
 
@@ -314,9 +318,9 @@ function PlanStep({ minutes, busy, onBack, onAccept }: { minutes: number; busy: 
           {isPt ? 'Complete os 7 dias e ganhe 10 minutos de conversa por voz com a Charlotte.' : 'Complete all 7 days and earn 10 minutes of voice conversation with Charlotte.'}
         </AppText>
       </Animated.View>
+      </View>
 
-      <View style={{ flex: 1 }} />
-      <View style={{ paddingHorizontal: 24, paddingTop: 24, paddingBottom: 24 }}>
+      <View style={{ paddingHorizontal: 24, paddingTop: 8, paddingBottom: 24 }}>
         <PrimaryButton label={isPt ? 'Aceito o desafio' : 'I accept the challenge'} onPress={onAccept} busy={busy} />
       </View>
     </View>
