@@ -229,6 +229,9 @@ export function PaywallModal() {
       // achar que deu erro e clicar de novo entre purchase success e paywall fechar.
       await syncSubscriptionToSupabase(profile.id, result.customerInfo).catch(() => {});
       await refreshProfile();
+      // Aberta pela degustação (openPaywall), a tela ficava presa nos planos depois da compra:
+      // ela só some sozinha para quem está sem acesso. Comprou → fecha.
+      closePaywall();
       return;
     }
 
@@ -290,6 +293,7 @@ export function PaywallModal() {
       track('subscription_restored', funnelProps());
       await syncSubscriptionToSupabase(profile.id, r.customerInfo).catch(() => {});
       await refreshProfile();
+      if (r.hasPremium) closePaywall();
     }
 
     if (!r.hasPremium) {
