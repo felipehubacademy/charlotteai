@@ -9,6 +9,7 @@ import { View, TouchableOpacity, Animated, Easing, StatusBar, BackHandler, Activ
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Image } from 'expo-image';
+import Svg, { Defs, RadialGradient, Stop, Rect, Ellipse } from 'react-native-svg';
 import { createAudioPlayer, setAudioModeAsync, AudioPlayer } from 'expo-audio';
 import { ArrowLeft, Check, Gift, Microphone } from 'phosphor-react-native';
 import * as Haptics from '@/lib/hapticsGated';
@@ -100,6 +101,15 @@ function HelloStep({ name, speaking, played, onReplay, onNext, onSkip }: {
 }) {
   const insets = useSafeAreaInsets();
   const a1 = useFadeIn(200), a2 = useFadeIn(550), a3 = useFadeIn(900);
+  const glow = useRef(new Animated.Value(0.75)).current;
+  useEffect(() => {
+    const l = Animated.loop(Animated.sequence([
+      Animated.timing(glow, { toValue: 1, duration: 2200, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+      Animated.timing(glow, { toValue: 0.75, duration: 2200, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+    ]));
+    l.start();
+    return () => l.stop();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <View style={{ flex: 1, backgroundColor: INK, paddingTop: insets.top, paddingBottom: insets.bottom }}>
       <View style={{ flexDirection: 'row', justifyContent: 'flex-end', paddingHorizontal: 24, paddingTop: 8 }}>
@@ -109,6 +119,33 @@ function HelloStep({ name, speaking, played, onReplay, onNext, onSkip }: {
       </View>
 
       <View style={{ flex: 1, minHeight: 240, alignItems: 'center', justifyContent: 'flex-end' }}>
+        {/* Luz de palco: degradê do Volt que some antes das bordas (nada de disco chapado), respirando devagar. */}
+        <Animated.View pointerEvents="none" style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, opacity: glow }}>
+          <Svg width="100%" height="100%">
+            <Defs>
+              <RadialGradient id="welcomeLight" cx="50%" cy="52%" r="50%">
+                <Stop offset="0" stopColor={VOLT} stopOpacity={0.16} />
+                <Stop offset="0.45" stopColor={VOLT} stopOpacity={0.06} />
+                <Stop offset="0.8" stopColor={VOLT} stopOpacity={0.015} />
+                <Stop offset="1" stopColor={VOLT} stopOpacity={0} />
+              </RadialGradient>
+            </Defs>
+            <Rect x="0" y="0" width="100%" height="100%" fill="url(#welcomeLight)" />
+          </Svg>
+        </Animated.View>
+        {/* Sombra no chão: elipse esfumada colada aos pés. */}
+        <View pointerEvents="none" style={{ position: 'absolute', bottom: -10, width: 190, height: 30 }}>
+          <Svg width={190} height={30}>
+            <Defs>
+              <RadialGradient id="welcomeShadow" cx="50%" cy="50%" r="50%">
+                <Stop offset="0" stopColor="#000000" stopOpacity={0.55} />
+                <Stop offset="0.55" stopColor="#000000" stopOpacity={0.22} />
+                <Stop offset="1" stopColor="#000000" stopOpacity={0} />
+              </RadialGradient>
+            </Defs>
+            <Ellipse cx={95} cy={15} rx={95} ry={15} fill="url(#welcomeShadow)" />
+          </Svg>
+        </View>
         <Image
           source={require('@/assets/charlotte-welcome.webp')}
           style={{ height: '96%', aspectRatio: 420 / 868 }}
