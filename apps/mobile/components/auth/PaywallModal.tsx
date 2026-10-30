@@ -225,13 +225,12 @@ export function PaywallModal() {
     }
 
     if (result.success && result.customerInfo && profile?.id) {
-      // Mantém loading até o listener destravar hasAccess — evita usuário
-      // achar que deu erro e clicar de novo entre purchase success e paywall fechar.
-      await syncSubscriptionToSupabase(profile.id, result.customerInfo).catch(() => {});
-      await refreshProfile();
-      // Aberta pela degustação (openPaywall), a tela ficava presa nos planos depois da compra:
-      // ela só some sozinha para quem está sem acesso. Comprou → fecha.
+      // Comprou → fecha na hora (o acesso já libera no aparelho pelo aviso da loja). A conferência no
+      // servidor e a atualização do perfil seguem por trás; antes a tela esperava esse 1–2 s parada.
+      // (Aberta pela degustação, a tela também ficava presa nos planos: ela só some sozinha sem acesso.)
       closePaywall();
+      syncSubscriptionToSupabase(profile.id, result.customerInfo).catch(() => {})
+        .then(() => refreshProfile()).catch(() => {});
       return;
     }
 
