@@ -15,7 +15,7 @@ import { useAchievementsContext } from '@/components/achievements/AchievementsPr
 import { soundEngine } from '@/lib/soundEngine';
 import { systemIsPt } from '@/lib/systemLang';
 import { usePaywallContext } from '@/lib/paywallContext';
-import { characterInfo, isImpressionReply, pickImpression, type CharacterId, type ImpressionId } from '@/lib/characters';
+import { characterInfo, impressionInfo, isImpressionReply, pickImpression, type CharacterId, type ImpressionId } from '@/lib/characters';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -184,6 +184,10 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
   const replyCountRef = useRef(0);
   const lastImpressionRef = useRef<ImpressionId | null>(null); // última imitação (evita repetir a mesma)
   const setCharacter = useCallback((id: CharacterId) => { characterRef.current = id; setCharacterState(id); }, []);
+  // Conversa inteira com uma imitação do personagem (ex.: Presidente). null = o personagem, com imitações de vez em quando.
+  const [impression, setImpressionState] = useState<ImpressionId | null>(null);
+  const impressionRef = useRef<ImpressionId | null>(null);
+  const setImpression = useCallback((id: ImpressionId | null) => { impressionRef.current = id; setImpressionState(id); }, []);
 
   // Auto-clear rate limit when retry window expires
   React.useEffect(() => {
@@ -216,7 +220,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
   React.useEffect(() => {
     if (initialModeRef.current === mode) return;
     initialModeRef.current = mode;
-    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
+    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current, impressionRef.current)]);
     contextManagerRef.current = new ConversationContextManager(userLevel, userName);
     setActiveSessionId(null);
     activeSessionIdRef.current = null;
@@ -244,7 +248,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       .maybeSingle()
       .then(({ data: sessionRow }) => {
         setHistoryLoading(false);
-        setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
+        setMessages([buildWelcome(mode, userLevel, userName, characterRef.current, impressionRef.current)]);
 
         if (!sessionRow) return;
 
@@ -271,7 +275,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
 
     const { data, error } = await supabase
       .from('charlotte_chat_sessions')
-      .insert({ user_id: userId, character: characterRef.current })
+      .insert({ user_id: userId, character: characterRef.current, ...(impressionRef.current ? { impression: impressionRef.current } : {}) })
       .select('id')
       .single();
     if (error || !data) {
@@ -314,7 +318,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       // Mesmo sem session ativa, limpa state pra mensagens efêmeras
       replyCountRef.current = 0;
       lastImpressionRef.current = null;
-      setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
+      setMessages([buildWelcome(mode, userLevel, userName, characterRef.current, impressionRef.current)]);
       return;
     }
 
@@ -337,15 +341,16 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     // Limpa state local
     replyCountRef.current = 0;
     lastImpressionRef.current = null;
-    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
+    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current, impressionRef.current)]);
     contextManagerRef.current = new ConversationContextManager(userLevel, userName);
   }, [mode, userLevel, userName, userId]);
 
   // ── Nova conversa com um personagem (Free Chat) ───────────────────────────
-  const startConversationWith = useCallback(async (id: CharacterId): Promise<void> => {
+  const startConversationWith = useCallback(async (id: CharacterId, imp: ImpressionId | null = null): Promise<void> => {
     setCharacter(id);
+    setImpression(impressionInfo(characterInfo(id), imp) ? imp : null);
     await closeSession();
-  }, [closeSession, setCharacter]);
+  }, [closeSession, setCharacter, setImpression]);
 
   // ── Carrega session específica (do drawer histórico) ──────────────────────
   // Se já há outra session ativa diferente, encerra antes (evita 2 abertas).
@@ -376,7 +381,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       .then(({ error }) => { if (error) console.warn('loadSession reopen:', error.message); });
 
     const [{ data: sess }, { data, error }] = await Promise.all([
-      supabase.from('charlotte_chat_sessions').select('character').eq('id', sessionId).maybeSingle(),
+      supabase.from('charlotte_chat_sessions').select('character, impression').eq('id', sessionId).maybeSingle(),
       supabase
         .from('chat_messages')
         .select('role, content, created_at, impression, audio_path, audio_duration')
@@ -386,12 +391,13 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     ]);
     // A conversa continua com quem ela foi começada.
     setCharacter(((sess as { character?: string } | null)?.character as CharacterId) ?? 'charlotte');
+    setImpression(((sess as { impression?: string | null } | null)?.impression as ImpressionId) ?? null);
     replyCountRef.current = (data ?? []).filter(r => r.role === 'assistant').length;
     lastImpressionRef.current = (([...(data ?? [])].reverse().find(r => (r as { impression?: string | null }).impression) as { impression?: string } | undefined)?.impression as ImpressionId) ?? null;
 
     setHistoryLoading(false);
     if (error || !data) {
-      setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
+      setMessages([buildWelcome(mode, userLevel, userName, characterRef.current, impressionRef.current)]);
       return;
     }
 
@@ -425,13 +431,13 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       };
     });
 
-    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current), ...historyMsgs]);
+    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current, impressionRef.current), ...historyMsgs]);
   }, [mode, userLevel, userName, userId]);
 
   // Welcome message on mount — only for non-chat modes (chat shows history or welcome async)
   React.useEffect(() => {
     if (mode === 'chat') return; // handled above with history
-    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
+    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current, impressionRef.current)]);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const addMessage = useCallback((msg: Message) => {
@@ -447,9 +453,11 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       const contextString = contextManagerRef.current.generateContextForAssistant();
       // Free Chat com personagem: quem fala e, nesta resposta, se é uma imitação.
       const who = mode === 'chat' ? characterRef.current : 'charlotte';
-      const impression = who !== 'charlotte' && isImpressionReply(replyCountRef.current + 1, activeSessionIdRef.current ?? '')
+      // Conversa com a imitação escolhida: toda resposta é dela. Senão, o app decide quando sai uma imitação.
+      const whole = who !== 'charlotte' ? impressionRef.current : null;
+      const impression = whole ?? (who !== 'charlotte' && isImpressionReply(replyCountRef.current + 1, activeSessionIdRef.current ?? '')
         ? pickImpression(characterInfo(who), userMessage, lastImpressionRef.current)
-        : null;
+        : null);
       if (impression) lastImpressionRef.current = impression;
 
       const response = await fetch(`${API_BASE_URL}/api/assistant`, {
@@ -459,6 +467,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
           ...(userId ? { 'x-user-id': userId } : {}),
           ...(who !== 'charlotte' ? { 'x-character': who } : {}),
           ...(impression ? { 'x-impression': impression } : {}),
+          ...(whole ? { 'x-impression-mode': 'whole' } : {}),
           'x-lang': systemIsPt ? 'pt' : 'en',
         },
         body: JSON.stringify({
@@ -1106,7 +1115,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
   // Reseta msgs pra welcome only (sem tocar no DB). Útil pra pronunciation
   // refresh: usuário toca pra trocar de frase → tela limpa.
   const resetMessages = useCallback(() => {
-    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current)]);
+    setMessages([buildWelcome(mode, userLevel, userName, characterRef.current, impressionRef.current)]);
     contextManagerRef.current = new ConversationContextManager(userLevel, userName);
   }, [mode, userLevel, userName]);
 
@@ -1128,13 +1137,14 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     loadSession,
     // Família Queizy: personagem da conversa atual e troca (nova conversa com outro personagem)
     character,
+    impression,
     startConversationWith,
   };
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-function buildWelcome(mode: ChatMode, userLevel: string, userName: string, character: CharacterId = 'charlotte'): Message {
+function buildWelcome(mode: ChatMode, userLevel: string, userName: string, character: CharacterId = 'charlotte', impression: ImpressionId | null = null): Message {
   // Use only the first name for a warmer, more personal greeting
   const firstName = userName.split(/[\s\-]+/)[0];
   const welcomeMessages: Record<string, Record<string, string>> = {
@@ -1154,6 +1164,12 @@ function buildWelcome(mode: ChatMode, userLevel: string, userName: string, chara
       Novice: `Hi ${firstName}! Let's practice English today. (Você pode escrever em português se quiser, mas vou responder em inglês simples.)`,
     },
   };
+  // Conversa com uma imitação: abertura no jeito dela (mesma regra de idioma por nível).
+  const imp = mode === 'chat' && character !== 'charlotte' ? impressionInfo(characterInfo(character), impression) : null;
+  if (imp) {
+    const text = (imp.welcome[userLevel as keyof typeof imp.welcome] ?? imp.welcome.Inter).replace(/\{name\}/g, firstName);
+    return { id: 'welcome-0', role: 'assistant', content: text, messageType: 'text', timestamp: new Date(), impression: imp.id } as Message;
+  }
   // Igorfina no Free Chat: abertura no jeito dele (mesma regra de idioma por nível).
   if (mode === 'chat' && character === 'igorfina') {
     const igor: Record<string, string> = {

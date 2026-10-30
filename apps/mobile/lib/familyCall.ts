@@ -74,14 +74,15 @@ export interface FamilyCallStart {
 
 /** Pede ao servidor a ligação (confere minutos e a liberação) — erro 'monthly_pool_exhausted' / 'not_available'. */
 /** resume = últimas falas, ao retomar depois da pausa por inatividade (o personagem segue o assunto). */
-export async function requestFamilyCall(character: string, topic?: string | null, trackTopic?: string | null, resume?: { who: 'ai' | 'user'; text: string }[] | null): Promise<FamilyCallStart> {
+/** impression = ligação inteira com uma imitação do personagem (toda fala na voz dela). */
+export async function requestFamilyCall(character: string, topic?: string | null, trackTopic?: string | null, resume?: { who: 'ai' | 'user'; text: string }[] | null, impression?: string | null): Promise<FamilyCallStart> {
   const { data } = await supabase.auth.getSession();
   const token = data.session?.access_token;
   if (!token) throw new Error('not_signed_in');
   const r = await fetch(`${API_BASE_URL}/api/family-call/session`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-    body: JSON.stringify({ character, topic, trackTopic, resume: resume?.length ? resume.slice(-8) : undefined }),
+    body: JSON.stringify({ character, ...(impression ? { impression } : {}), topic, trackTopic, resume: resume?.length ? resume.slice(-8) : undefined }),
   });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(j.error || 'failed');
@@ -130,7 +131,7 @@ export async function familyCallStats(conversation: any): Promise<any[]> {
 }
 
 /** Salva a ligação no histórico (transcrição, resumo e memória para a próxima). Falha em silêncio. */
-export async function saveFamilyCall(p: { character: string; startedAt: string; durationSeconds: number; lines: { who: 'ai' | 'user'; text: string }[] }) {
+export async function saveFamilyCall(p: { character: string; impression?: string | null; startedAt: string; durationSeconds: number; lines: { who: 'ai' | 'user'; text: string }[] }) {
   try {
     const { data } = await supabase.auth.getSession();
     const token = data.session?.access_token;

@@ -5,13 +5,32 @@
 export type CharacterId = 'charlotte' | 'igorfina';
 export type ImpressionId = 'president' | 'hoops';
 
+/** Imitação do personagem. Aparece no meio das conversas dele e também dá para conversar ou ligar
+ *  só com ela (Família, "Conversar com" do Free Chat e ligação). Imitação nova = um item a mais na lista
+ *  (com o mesmo id em apps/web/lib/characters.ts, que tem a voz e o jeito de falar). */
+export interface ImpressionInfo {
+  id: ImpressionId;
+  labelPt: string;
+  labelEn: string;
+  /** Etiqueta da voz no agente de ligação (mesma de apps/web/lib/characters.ts). */
+  callTag: string;
+  /** Artigo em português ("Ligar para o Presidente"). */
+  articlePt: string;
+  /** Foto do personagem fantasiado (quando houver); sem ela, usa a do personagem. */
+  avatar?: number;
+  taglinePt: string;
+  taglineEn: string;
+  /** Primeira mensagem do Free Chat com a imitação, por nível (mesma regra de idioma da conversa). */
+  welcome: { Novice: string; Inter: string; Advanced: string };
+}
+
 export interface CharacterInfo {
   id: CharacterId;
   name: string;
   avatar: number; // require(...) do PNG
   taglinePt: string;
   taglineEn: string;
-  impressions?: { id: ImpressionId; labelPt: string; labelEn: string }[];
+  impressions?: ImpressionInfo[];
 }
 
 export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
@@ -29,8 +48,26 @@ export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
     taglinePt: 'Comediante e imitador. No meio da conversa, ele solta uma imitação.',
     taglineEn: 'Comedian and impressionist. Mid-chat, he drops an impression.',
     impressions: [
-      { id: 'president', labelPt: 'Presidente', labelEn: 'President' },
-      { id: 'hoops', labelPt: 'Astro do basquete', labelEn: 'Hoops star' },
+      {
+        id: 'president', labelPt: 'Presidente', labelEn: 'President', callTag: 'President', articlePt: 'o ',
+        taglinePt: 'O Igor imitando um presidente cheio de si. Tudo é incrível, enorme, o melhor.',
+        taglineEn: 'Igor as a larger-than-life president. Everything is tremendous, huge, the best.',
+        welcome: {
+          Novice: 'Hi {name}! Your English is going to be tremendous, believe me. (Pode escrever em português se quiser; eu respondo em inglês simples.)',
+          Inter: 'Hello {name}! Great to have you here, really great. Tell me, how is your day going?',
+          Advanced: 'Folks, {name} is here. Tremendous. Tell me something great about your week, and believe me, I want details.',
+        },
+      },
+      {
+        id: 'hoops', labelPt: 'Astro do basquete', labelEn: 'Hoops star', callTag: 'Hoops', articlePt: 'o ',
+        taglinePt: 'O Igor imitando um astro do basquete. Papo de vestiário, foco e treino.',
+        taglineEn: 'Igor as a basketball superstar. Locker-room talk, focus and grind.',
+        welcome: {
+          Novice: "Yo {name}! Let's go, teammate. (Pode escrever em português se quiser; eu respondo em inglês simples.)",
+          Inter: "Yo {name}, let's go! We're locked in today. How's your day going?",
+          Advanced: "Listen up, {name}. Championship English starts with practice. So, what's been keeping you busy?",
+        },
+      },
     ],
   },
 };
@@ -44,6 +81,17 @@ export function characterInfo(id: string | null | undefined): CharacterInfo {
 export function impressionLabel(c: CharacterInfo, id: string | null | undefined, isPt: boolean): string | null {
   const imp = c.impressions?.find(i => i.id === id);
   return imp ? (isPt ? imp.labelPt : imp.labelEn) : null;
+}
+
+export function impressionInfo(c: CharacterInfo, id: string | null | undefined): ImpressionInfo | null {
+  return c.impressions?.find(i => i.id === id) ?? null;
+}
+
+/** Quem está na conversa: o personagem ou, se a conversa toda é com uma imitação, ela (nome e foto). */
+export function personaDisplay(character: string | null | undefined, impression: string | null | undefined, isPt: boolean): { name: string; avatar: number; impression: ImpressionInfo | null } {
+  const c = characterInfo(character);
+  const imp = impressionInfo(c, impression);
+  return imp ? { name: isPt ? imp.labelPt : imp.labelEn, avatar: imp.avatar ?? c.avatar, impression: imp } : { name: c.name, avatar: c.avatar, impression: null };
 }
 
 // Imitações do Igorfina (como no show do Igor): de vez em quando uma resposta sai imitando.

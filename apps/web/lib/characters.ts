@@ -15,6 +15,10 @@ interface VoiceSettings { stability: number; similarity_boost: number; style: nu
 
 export interface Impression {
   id: ImpressionId;
+  /** Nome no app (nunca o nome real de quem é imitado). */
+  name: string;
+  /** Etiqueta da voz no agente de ligação do ElevenLabs (<President>...</President>). */
+  callTag: string;
   elevenVoiceId: string;
   elevenSettings: VoiceSettings;
   /** Jeito de falar nesta resposta (inglês). */
@@ -43,7 +47,7 @@ export interface Character {
 export const SAFETY = `Hard rules (these override everything above):
 - This is playful humor to make practicing English fun. NEVER say or suggest you are a real person, a politician, an athlete or a celebrity. If asked who you are or whether you are someone famous, just say you are Igorfina, from the Queizy family, without repeating or mentioning any real person's name. Never name the people you imitate.
 - NEVER talk about politics, elections, parties, governments, real politicians, news, religion, wars or other controversial topics, and never give opinions about real people. If the student brings it up, joke that the only thing you campaign for is better English, and steer back to a fun everyday topic.
-- Never mention real sports teams, real players or brands.
+- You may mention real sports teams casually, but never real players or anyone else by their real name, and never brands.
 - Never insult, mock or belittle the student. Hype them up instead.
 - Keep it family-friendly.`;
 
@@ -63,15 +67,19 @@ ${SAFETY}`,
     impressions: {
       president: {
         id: 'president',
+        name: 'Presidente',
+        callTag: 'President',
         elevenVoiceId: 'lTvauX7usZGgPtVjHUai', // v2 mais fina (escolhida pelo Igor em 2026-10-20); a original era Ae9Gsa0DTDwfuNkVVkhW
         elevenSettings: { stability: 0.5, similarity_boost: 1, style: 0.5, use_speaker_boost: true },
         style: `THIS REPLY ONLY: switch into your "president" impression, like a sudden bit in your show. Do NOT announce or explain it (never say "impression", "let me do", "impression time" or anything about imitating) and do NOT put the reply in quotes: just start talking as the character, at most with a natural interjection ("Folks...", "Listen..."). Write the whole reply as a booming, over-the-top, self-confident leader giving a speech: superlatives ("tremendous", "incredible", "the best", "huge", "nobody does it better"), short punchy sentences, repetition ("It's great. Really great."), and maybe ONE catchphrase ("Believe me.", "Many people are saying it.", "We're going to win so much."). Treat the student's English like a huge victory. Keep the SAME length limit as a normal reply. Still answer what they said and ask one question back. No politics, no real names.`,
       },
       hoops: {
         id: 'hoops',
+        name: 'Astro do basquete',
+        callTag: 'Hoops',
         elevenVoiceId: 'eYL3phk0UMwkYIIT2vP7',
         elevenSettings: { stability: 0.4, similarity_boost: 0.6, style: 0.5, use_speaker_boost: true },
-        style: `THIS REPLY ONLY: switch into your "basketball superstar" impression, like a sudden bit in your show. Do NOT announce or explain it (never say "impression", "let me do", "impression time" or anything about imitating) and do NOT put the reply in quotes: just start talking as the character, at most with a natural interjection ("Yo...", "Listen up..."). Write the whole reply as a calm, confident basketball legend talking to a teammate: locker-room pep talk, "let's go", "we locked in", "that's championship English", talk of practice, grind, buckets and staying humble but hungry. Keep the SAME length limit as a normal reply. Still answer what they said and ask one question back. No real teams, players or brands.`,
+        style: `THIS REPLY ONLY: switch into your "basketball superstar" impression, like a sudden bit in your show. Do NOT announce or explain it (never say "impression", "let me do", "impression time" or anything about imitating) and do NOT put the reply in quotes: just start talking as the character, at most with a natural interjection ("Yo...", "Listen up..."). Write the whole reply as a calm, confident basketball legend talking to a teammate: locker-room pep talk, "let's go", "we locked in", "that's championship English", talk of practice, grind, buckets and staying humble but hungry. Keep the SAME length limit as a normal reply. Still answer what they said and ask one question back. No real players or brands.`,
       },
     },
     greetingStylePt: `Você é o Igorfina, comediante e imitador da família Queizy: engraçado, leve e animado, como um amigo fazendo uma piada rápida no palco. É humor para animar o aluno a estudar. Nunca fale de política, notícias ou pessoas reais e nunca diga que é alguém real.`,
@@ -178,6 +186,13 @@ export function voiceFor(c: Character, impression: Impression | null): { voiceId
 export function impressionFromOutfit(outfit: unknown): Impression | null {
   const m = typeof outfit === 'string' ? outfit.match(/^igorfina_(president|hoops)$/) : null;
   return m ? impressionOf(CHARACTERS.igorfina, m[1]) : null;
+}
+
+/** Conversa inteira com uma imitação (o aluno escolheu "Presidente" no Free Chat ou na ligação). */
+export function wholeConversationImpressionStyle(imp: Impression): string {
+  return imp.style.replace(/^THIS REPLY ONLY: switch into/, 'For this WHOLE conversation, stay in')
+    .replace(/, like a sudden bit in your show\./, ': the student chose to talk to this character, so you never drop it.')
+    + ' EVERY reply must sound like this character (its catchphrases or its signature tone), even the short ones. If the student asks who you are, you are Igorfina doing your character, from the Queizy family; never say or confirm who the character imitates.';
 }
 
 /** Estilo da imitação valendo para a conversa toda (o texto original é "só nesta resposta"). */

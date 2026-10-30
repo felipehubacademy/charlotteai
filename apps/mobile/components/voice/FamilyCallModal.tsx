@@ -28,7 +28,7 @@ import * as Haptics from '@/lib/hapticsGated';
 import { AppText } from '@/components/ui/Text';
 import { LiveVoiceWave } from './LiveVoiceWave';
 import { systemIsPt } from '@/lib/systemLang';
-import { characterInfo, isImpressionReply, pickImpression, type ImpressionId } from '@/lib/characters';
+import { CHARACTER_LIST, characterInfo, impressionInfo, isImpressionReply, pickImpression, type ImpressionId } from '@/lib/characters';
 import { router } from 'expo-router';
 import { consumeLiveVoiceSeconds } from '@/lib/liveVoiceUsage';
 import { requestFamilyCall, startFamilyConversation, familyCallStats, saveFamilyCall } from '@/lib/familyCall';
@@ -59,16 +59,15 @@ const THEME: Record<string, { bg: string; ink: string; sub: string; you: string;
   igorfina: { bg: VOLT, ink: INK, sub: 'rgba(22,19,31,0.65)', you: PINK, chip: 'rgba(22,19,31,0.08)', bubble: '#FFFFFF', ring: INK },
   default:  { bg: '#6B4BFF', ink: '#FFFFFF', sub: 'rgba(255,255,255,0.75)', you: VOLT, chip: 'rgba(255,255,255,0.14)', bubble: '#FFFFFF', ring: '#FFFFFF' },
 };
-// Imitações: tag de voz do agente → selo na tela.
-const IMPRESSION_BADGE: Record<string, { pt: string; en: string }> = {
-  President: { pt: 'Presidente', en: 'President' },
-  Hoops: { pt: 'Astro do basquete', en: 'Basketball star' },
-};
+// Imitações: tag de voz do agente → selo na tela (da lista de imitações em lib/characters).
+const IMPRESSION_BADGE: Record<string, { pt: string; en: string }> = Object.fromEntries(
+  CHARACTER_LIST.flatMap(c => c.impressions ?? []).map(i => [i.callTag, { pt: i.labelPt, en: i.labelEn }]));
 
 type Status = 'calling' | 'connected' | 'reconnecting' | 'paused' | 'ended' | 'error';
 type Line = { who: 'ai' | 'user'; text: string };
 
-export function FamilyCallModal({ character, onClose }: { character: string | null; onClose: () => void }) {
+/** impression = ligação inteira com uma imitação do personagem (escolhida na aba de ligação ou na Família). */
+export function FamilyCallModal({ character, impression = null, onClose }: { character: string | null; impression?: ImpressionId | null; onClose: () => void }) {
   const isPt = systemIsPt;
   const { profile } = useAuth();
   const insets = useSafeAreaInsets();
@@ -79,7 +78,10 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
   // Centro da foto dentro da área do meio. Tela baixa: foto no alto da área, para a legenda
   // (até 3 linhas + tradução) caber abaixo sem encostar nos botões.
   const AV_Y = compact ? AV / 2 + 6 : CENTER_H / 2;
-  const info = characterInfo(character);
+  const base = characterInfo(character);
+  const whole = impressionInfo(base, impression);
+  // Quem aparece na tela: o personagem ou a imitação escolhida (nome e foto dela, quando houver).
+  const info = whole ? { ...base, name: isPt ? whole.labelPt : whole.labelEn, avatar: whole.avatar ?? base.avatar } : base;
   const th = THEME[character ?? ''] ?? THEME.default;
   const level = (profile?.charlotte_level ?? 'Inter') as 'Novice' | 'Inter' | 'Advanced';
 
@@ -191,9 +193,9 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
     closingRef.current = true;
     await closeSegment();
     if (firstStartRef.current && transcriptRef.current.length) {
-      saveFamilyCall({ character: character ?? '', startedAt: new Date(firstStartRef.current).toISOString(), durationSeconds: usedRef.current, lines: transcriptRef.current });
+      saveFamilyCall({ character: character ?? '', impression: whole?.id ?? null, startedAt: new Date(firstStartRef.current).toISOString(), durationSeconds: usedRef.current, lines: transcriptRef.current });
     }
-    track('family_call_end', { character: character ?? '', seconds: usedRef.current, reason });
+    track('family_call_end', { character: character ?? '', impression: whole?.id ?? '', seconds: usedRef.current, reason });
     setWarning(null);
     setStatus(s => (s === 'error' ? s : 'ended'));
   }, [character, closeSegment]);
@@ -246,7 +248,7 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
           uid ? currentTopicTitle(uid, level) : Promise.resolve(null),
           uid && charTrack ? currentTopicTitle(uid, charTrack.id) : Promise.resolve(null),
         ]);
-        const s = await requestFamilyCall(character, topic, trackTopic, resuming ? transcriptRef.current.slice(-8) : null);
+        const s = await requestFamilyCall(character, topic, trackTopic, resuming ? transcriptRef.current.slice(-8) : null, whole?.id ?? null);
         const ringLeft = MIN_RING_MS - (Date.now() - ringStartedAt);
         if (ringLeft > 0) await new Promise(r => setTimeout(r, ringLeft));
         if (!alive) return;
@@ -259,7 +261,7 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
             lastActivityRef.current = Date.now();
             setMic(true); // abre só depois da primeira fala do personagem
             setTimeout(() => { if (firstTurnRef.current) { firstTurnRef.current = false; setMic(mutedRef.current); } }, 9000);
-            track(resuming ? 'family_call_resume' : 'family_call_start', { character });
+            track(resuming ? 'family_call_resume' : 'family_call_start', { character, impression: whole?.id ?? '' });
           },
           onDisconnect: () => { if (!closingRef.current) finish('remote'); },
           onStatusChange: st => {
@@ -286,13 +288,15 @@ export function FamilyCallModal({ character, onClose }: { character: string | nu
               // Novice: a próxima fala dele é o turno upcoming + 1 (a abertura é o turno 1). Imitação só
               // a partir do turno 6, depois da rampa de inglês (antes ela vinha toda em inglês e longa).
               const noviceTooEarly = level === 'Novice' && upcoming + 1 < 6;
-              if (!farewellRef.current && !noviceTooEarly && isImpressionReply(upcoming, sessionKeyRef.current)) {
-                const imp = pickImpression(info, lastUserTextRef.current, lastImpressionRef.current);
-                const t = imp === 'hoops' ? 'Hoops' : imp === 'president' ? 'President' : null;
-                if (imp && t) {
+              // Ligação com a imitação escolhida: toda fala já é dela, sem avisos de imitação.
+              if (!whole && !farewellRef.current && !noviceTooEarly && isImpressionReply(upcoming, sessionKeyRef.current)) {
+                const imp = pickImpression(base, lastUserTextRef.current, lastImpressionRef.current);
+                const impInfo = impressionInfo(base, imp);
+                const t = impInfo?.callTag ?? null;
+                if (imp && impInfo && t) {
                   lastImpressionRef.current = imp;
                   try {
-                    convRef.current?.sendContextualUpdate(`IMPRESSION TIME: make your next reply your ${imp === 'hoops' ? 'basketball superstar' : 'president'} impression, the whole reply wrapped in <${t}>...</${t}>, still answering what the student says. Keep EVERY level and language rule of a normal reply${level === 'Novice' ? ' (beginner: ONE short catchphrase of the impression in English, max 5 words, then Portuguese, ending with ONE short English question plus its translation in parentheses)' : ''} and at most TWO short sentences. Right after it, go back to your normal voice.`);
+                    convRef.current?.sendContextualUpdate(`IMPRESSION TIME: make your next reply your ${impInfo.labelEn.toLowerCase()} impression, the whole reply wrapped in <${t}>...</${t}>, still answering what the student says. Keep EVERY level and language rule of a normal reply${level === 'Novice' ? ' (beginner: ONE short catchphrase of the impression in English, max 5 words, then Portuguese, ending with ONE short English question plus its translation in parentheses)' : ''} and at most TWO short sentences. Right after it, go back to your normal voice.`);
                   } catch { /* sem aviso, segue normal */ }
                 }
               }
