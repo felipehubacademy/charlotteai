@@ -39,7 +39,7 @@ import { analyzePendingConversations } from '@/lib/support-insights';
 import { runAiCostReport } from '@/lib/ai-cost-report';
 import { processOutbox } from '@/lib/email-outbox';
 import { endLegacyTrials } from '@/lib/legacy-trial';
-import { getSupabase } from '@/lib/supabase';
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendSignupWelcomes } from '@/lib/signup-welcome';
 import { syncProviderCosts } from '@/lib/cost-sync';
 
@@ -58,8 +58,8 @@ function isAuthorized(request: NextRequest): boolean {
 }
 
 async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType }> {
-  const supabase = getSupabase();
-  if (!supabase) throw new Error('Supabase client unavailable');
+  // Chave de servidor: as views do banco são security_invoker (29/10), a chave pública não lê mais usuários e atividades.
+  const supabase = getSupabaseAdmin();
 
   switch (task) {
     case 'daily':
