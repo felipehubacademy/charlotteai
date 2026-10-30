@@ -111,10 +111,13 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
     case 'push_receipts': // recibos de entrega do Expo dos pushes de 15 min a 24 h atrás (entregue ou erro)
       await checkExpoReceipts();
       break;
-    case 'cost_sync': // custo real dos provedores por uso (OpenAI, Azure, Vercel) → linha do mês no Financeiro
+    case 'cost_sync': // (mantido para chamada manual) mesma coisa da 1ª etapa de 'ai_costs'
       console.log('[SCHEDULER] cost_sync', JSON.stringify(await syncProviderCosts()));
       break;
-    case 'ai_costs': // 8h (Brasília): e-mail de custos de IA (anteontem, já fechado) com alertas (OpenAI e ElevenLabs)
+    case 'ai_costs': // 1) custo real dos provedores por uso → linha do mês no Financeiro (toda hora);
+      //              2) 8h (Brasília): e-mail de custos de IA. Em sequência: as duas consultam a API de custos da OpenAI
+      //                 e, juntas, levavam 429.
+      console.log('[SCHEDULER] cost_sync', JSON.stringify(await syncProviderCosts().catch(e => [{ erro: String(e) }])));
       await runAiCostReport({ force: forced });
       break;
     default:
@@ -126,7 +129,7 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
 // Every hourly run invokes every sender. Each sender drops users whose
 // per-user local hour does not match the task's target hour, so this is
 // cheap when no one is at the right local time.
-const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'taste', 'ranking', 'legacy_trial', 'rally', 'support_sla', 'support_insights', 'support_autoclose', 'ai_costs', 'cost_sync', 'email_outbox', 'push_receipts'];
+const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'taste', 'ranking', 'legacy_trial', 'rally', 'support_sla', 'support_insights', 'support_autoclose', 'ai_costs', 'email_outbox', 'push_receipts'];
 
 export async function GET(request: NextRequest) {
   if (!isAuthorized(request)) {

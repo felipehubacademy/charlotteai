@@ -866,9 +866,9 @@ function PnlPanel() {
                 <div className="kpi-context">hoje {b.payers} · {b.ticketNet == null ? 'sem assinatura renovando' : `${brl(b.ticketNet)} líquidos por pagante`}</div>
               </div>
               <div>
-                <div className="kpi-label">Receita mensal para empatar</div>
+                <div className="kpi-label">Meta de receita mensal</div>
                 <div className="kpi-value num" style={{ fontSize: '1.5rem' }}>{b.revenueNeeded == null ? '—' : brl(b.revenueNeeded)}</div>
-                <div className="kpi-context">bruta, recorrente, cobre o custo de {cur.label}</div>
+                <div className="kpi-context">o que precisa entrar por mês para cobrir o custo de {cur.label} (entrou {brl(cur.gross)})</div>
               </div>
               <div>
                 <div className="kpi-label">Conversão para empatar</div>
