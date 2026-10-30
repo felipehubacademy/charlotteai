@@ -11,7 +11,7 @@ import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import { fetchSocial } from '@/lib/social';
 import {
-  User, Key, DeviceMobile, GraduationCap, Buildings,
+  User, Key, GraduationCap,
   SignOut, FileText,
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
   CaretRight, SpeakerHigh, Vibrate, ChatCircleText,
@@ -715,21 +715,6 @@ export default function ProfileTab() {
           />
         </SettingGroup>
 
-        {/* About */}
-        <SectionTitle label={isPt ? 'Sobre' : 'About'} />
-        <SettingGroup>
-          <SettingRow
-            icon={<DeviceMobile size={18} color={C.navy} weight="regular" />}
-            label="Queizy"
-            // Versão do app instalado (loja/TestFlight), não a da config que vem no OTA.
-            value={`v${Application?.nativeApplicationVersion ?? Constants.expoConfig?.version ?? '1.0.0'}${isStaff && Application?.nativeBuildVersion ? ` (${Application.nativeBuildVersion})` : ''}`}
-          />
-          <SettingRow
-            icon={<Buildings size={18} color={C.navy} weight="regular" />}
-            label="Hub Academy"
-          />
-        </SettingGroup>
-
         {/* Session */}
         <SectionTitle label={isPt ? 'Sessão' : 'Session'} />
         <SettingGroup>
@@ -751,11 +736,15 @@ export default function ProfileTab() {
           />
         </SettingGroup>
 
-        {/* Versão já aparece em Sobre; aqui só o id do OTA para admin e beta. */}
+        {/* Rodapé: versão do app instalado (loja/TestFlight, não a da config do OTA) e a empresa.
+            Equipe: número do build e o id do OTA, para saber o que está rodando. */}
         <View style={{ paddingVertical: 28, alignItems: 'center', gap: 4 }}>
+          <AppText style={{ fontSize: 12, color: C.navyLight }}>
+            {`Queizy v${Application?.nativeApplicationVersion ?? Constants.expoConfig?.version ?? '1.0.0'} · by Hub Academy`}
+          </AppText>
           {isStaff && (
             <AppText style={{ fontSize: 10, color: C.navyLight, opacity: 0.6, letterSpacing: 0.2 }}>
-              {`OTA: ${Updates.updateId ? Updates.updateId.slice(0, 8) : 'embedded'}`}
+              {`build ${Application?.nativeBuildVersion ?? '-'} · OTA: ${Updates.updateId ? Updates.updateId.slice(0, 8) : 'embedded'}`}
             </AppText>
           )}
         </View>

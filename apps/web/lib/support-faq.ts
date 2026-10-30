@@ -114,8 +114,9 @@ Pedidos de amizade e convites recebidos aparecem numa linha na tela inicial. Par
 - Assinatura: situação da assinatura, Gerenciar assinatura e Restaurar compras.
 - Você no Queizy: Minha evolução, Estudar junto e Família Queizy.
 - Ajuda: Ajuda e suporte.
-- Política de Privacidade, Termos de Uso e Sobre.
-- Sessão: Sair da conta e Excluir minha conta.` },
+- Política de Privacidade e Termos de Uso.
+- Sessão: Sair da conta e Excluir minha conta.
+No fim da tela aparece a versão do app (por exemplo, Queizy v2.0.3).` },
   { section: 'Guia do app', question: 'Como mudo o idioma do app?', answer:
 `Em Perfil > Idioma do app, escolha Automático (do celular), Português ou English. O app reinicia e passa a mostrar as telas e os avisos no idioma escolhido.
 O conteúdo das lições continua no idioma do seu nível: na Novice as explicações são em português; no Inter e no Advanced, em inglês.` },
