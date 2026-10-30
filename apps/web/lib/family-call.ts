@@ -4,7 +4,7 @@
 // <President>, <Hoops>) e só aceita conexão com token gerado aqui. A cada ligação o servidor
 // monta o prompt (personalidade do Free Chat em lib/characters + regras de voz e do nível do
 // aluno + nome e tópico) e a primeira fala, que vão como "overrides" da sessão.
-import { CHARACTERS, PT_VOICE_TAG, impressionOf, type Character, type Impression } from '@/lib/characters';
+import { CHARACTERS, PT_VOICE_TAG, impressionOf, isPortugueseText, type Character, type Impression } from '@/lib/characters';
 import { SYSTEM_PROMPTS } from '@/lib/live-voice-rules';
 
 export type CallLevel = 'Novice' | 'Inter' | 'Advanced';
@@ -71,7 +71,7 @@ function wholeImpressionBlock(imp: Impression): string {
     .replace(/, like a sudden bit in your show\./, ': the student chose to call this character, so you never drop it.')
     .replace(/Keep the SAME length limit as a normal reply\.?/i, 'Keep the same two-sentence limit.');
   return `THIS CALL IS WITH YOUR "${imp.name.toUpperCase()}" CHARACTER (the student picked it). ${style}
-Wrap EVERY reply, from the first to the last, in <${imp.callTag}>...</${imp.callTag}> (the tag switches to this character's voice), including the Portuguese parts. Never speak outside the tag and never use any other voice tag. Never write in ALL CAPS and use at most one exclamation mark per turn: in the voice, caps and stacked exclamations turn into shouting. Every reply follows the SAME level and language rules and the two-sentence limit (for a beginner: Portuguese, ending with one short English question and its translation).
+Wrap EVERY reply, from the first to the last, in <${imp.callTag}>...</${imp.callTag}> (the tag switches to this character's voice), including the Portuguese parts. Never speak outside the tag and never use any other voice tag. Never write in ALL CAPS and use at most one exclamation mark per turn: in the voice, caps and stacked exclamations turn into shouting. Every reply follows the SAME level and language rules and the two-sentence limit. For a beginner (Novice), each reply after the greeting is, like an impression turn: ONE short catchphrase of the character in English (max 5 words), then a short reaction in Portuguese, ending with ONE short English question and its translation in parentheses.
 If the student asks who you are, you are Igorfina doing your character, from the Queizy family; never say or confirm who the character imitates.`;
 }
 
@@ -208,7 +208,8 @@ export async function generateOpener(opts: {
   const novice = opts.level === 'Novice';
   const whole = opts.impressionId ? impressionOf(c, opts.impressionId) : null;
   const impressionHint = whole
-    ? `Open AS your "${whole.name}" character (the student chose to call it): ${whole.style.replace(/^THIS REPLY ONLY: switch into[^:]*:\s*/, '').split('Keep the SAME')[0].trim()} Wrap the whole line in <${whole.callTag}>...</${whole.callTag}>.`
+    // Só o tom do personagem: o estilo inteiro (bordões em inglês, histórias) fazia a abertura sair longa e em inglês no Novice.
+    ? `Open AS your "${whole.name}" character (the student chose to call it): its tone, at most ONE very short signature word or expression. Correct, natural English only (never broken grammar). The language and length rule above always wins.`
     : !novice && Math.random() < 0.2
     ? 'This time, open as ONE of your impressions, wrapped in its voice tag (<President>...</President> or <Hoops>...</Hoops>).'
     : 'Open in your normal voice (no tags).';
@@ -216,8 +217,9 @@ export async function generateOpener(opts: {
     ? `Write ONLY your first line, in Brazilian Portuguese only (no English yet): greet ${name} by name with your humor and END by asking how they are ("Tudo bem?" or "Como você tá?"). Do not ask anything else (no "pronto pra...?", no questions about plans). Max 15 words.`
     : `Write ONLY your first line, in English: a warm, funny greeting using their name plus ONE easy question to get them talking. Max 2 short sentences, max 25 words. Use AT MOST one detail from the context (pick what makes the best opener; often just the time of day or a follow-up on the last call).`;
   const system = `${c.persona.split('Hard rules')[0]}
-You are opening a live voice call with ${name}, an English student (${opts.level} level). ${task} No emojis, no quotes, no stage directions. ${impressionHint}
-Never mention politics, news, real people, teams or brands.`;
+You are opening a live voice call with ${name}, an English student (${opts.level} level). No emojis, no quotes, no stage directions. ${impressionHint}
+Never mention politics, news, real people, teams or brands.
+${task}`;
   try {
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 2500);
@@ -231,6 +233,10 @@ Never mention politics, news, real people, teams or brands.`;
     if (!r.ok) return opts.fallback;
     const j = await r.json();
     let text = String(j.choices?.[0]?.message?.content ?? '').trim().replace(/^["“]|["”]$/g, '');
+    // Regra do TURNO 1 conferida: Novice curto e em português; os outros, curto. Fora disso, a lista fixa.
+    const plain = text.replace(/<\/?[A-Za-z]+>/g, '');
+    const words = plain.split(/\s+/).filter(Boolean).length;
+    if (novice ? (words > 18 || !isPortugueseText(plain)) : words > 32) return opts.fallback;
     // Ligação com a imitação: a fala inteira na voz dela, mesmo se o modelo esquecer a etiqueta.
     if (whole) text = `<${whole.callTag}>${text.replace(/<\/?[A-Za-z]+>/g, '').trim()}</${whole.callTag}>`;
     return text.replace(/<\/?[A-Za-z]+>/g, '').length >= 8 && text.length <= 300 ? text : opts.fallback;

@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import { View, ScrollView, TouchableOpacity, Image, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
-import { Check, BookOpenText, CaretRight, ChatCircleDots, Phone } from 'phosphor-react-native';
+import { Check, BookOpenText, CaretRight, CaretDown, ChatCircleDots, Phone } from 'phosphor-react-native';
 import { ScreenHeader } from '@/components/stats/StatsUI';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
@@ -35,6 +35,7 @@ export default function FamilyScreen() {
   const tracks = visibleTracks(profile?.beta_features);
   const current = characterInfo(profile?.active_character).id;
   const [saving, setSaving] = useState<CharacterId | null>(null);
+  const [openImpressions, setOpenImpressions] = useState<CharacterId | null>(null); // lista de imitações aberta (dropdown)
 
   const choose = async (id: CharacterId) => {
     if (!profile?.id || id === current || saving) return;
@@ -108,10 +109,20 @@ export default function FamilyScreen() {
               ) : null}
               {c.impressions?.length ? (
                 <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: C.border, gap: 12 }}>
-                  <AppText style={{ fontSize: 12, fontWeight: '800', color: C.inkLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>
-                    {isPt ? `Imitações do ${c.name}` : `${c.name}'s impressions`}
-                  </AppText>
-                  {c.impressions.map(imp => {
+                  {/* Dropdown: fechado mostra só a linha com a quantidade; aberto, a lista com Conversar e Ligar. */}
+                  <TouchableOpacity onPress={() => setOpenImpressions(o => (o === c.id ? null : c.id))} activeOpacity={0.7}
+                    accessibilityRole="button" accessibilityState={{ expanded: openImpressions === c.id }}
+                    style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                    <AppText style={{ flex: 1, fontSize: 13, color: C.inkMid }}>
+                      {isPt ? `Imitações do ${c.name}: ` : `${c.name}'s impressions: `}
+                      <AppText style={{ fontSize: 13, fontWeight: '800', color: C.ink }}>{c.impressions.length}</AppText>
+                    </AppText>
+                    <AppText style={{ fontSize: 13, fontWeight: '700', color: C.ink }}>{openImpressions === c.id ? (isPt ? 'Fechar' : 'Close') : (isPt ? 'Ver todas' : 'See all')}</AppText>
+                    <View style={{ transform: [{ rotate: openImpressions === c.id ? '180deg' : '0deg' }] }}>
+                      <CaretDown size={12} color={C.ink} weight="bold" />
+                    </View>
+                  </TouchableOpacity>
+                  {openImpressions === c.id && c.impressions.map(imp => {
                     const label = isPt ? imp.labelPt : imp.labelEn;
                     return (
                       <View key={imp.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
