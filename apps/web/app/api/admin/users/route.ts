@@ -26,6 +26,8 @@ interface CharlotteUser {
   last_seen_at: string | null;
   [key: string]: unknown;
 }
+type EngRow = { user_id: string; total_xp: number | string; last_active: string | null; lesson_count: number | string; message_count: number | string; session_days: number | string };
+
 interface Practice {
   user_id: string; xp_earned: number | null;
   practice_type: string; created_at: string;
@@ -57,7 +59,8 @@ export async function GET(req: NextRequest) {
     // PostgREST devolve no máximo 1000 linhas por consulta: tudo aqui é paginado.
     fetchAll<CharlotteUser>((a, b) => supabase.from('charlotte_users').select('*').order('created_at', { ascending: false }).range(a, b), 200000)
       .then(data => ({ data, error: null as { message: string } | null })),
-    fetchAll<Practice>((a, b) => supabase.from('charlotte_practices').select('user_id, xp_earned, practice_type, created_at').order('id').range(a, b), 500000)
+    // Engajamento já somado por aluno no banco (antes vinham todas as práticas, ~40 páginas, e a tela levava 15 s).
+    fetchAll<EngRow>((a, b) => supabase.rpc('admin_user_engagement').order('user_id').range(a, b) as never, 200000)
       .then(data => ({ data, error: null })),
     fetchAll<{ user_id: string; level: string; module_id: string; unit_id: string; activity_type: string }>((a, b) =>
       supabase.from('learn_history_v2').select('user_id, level, module_id, unit_id, activity_type').eq('completed', true).order('id').range(a, b), 200000)
@@ -75,21 +78,17 @@ export async function GET(req: NextRequest) {
 
   type EngMap = Record<string, {
     totalXP: number; lastActive: string | null;
-    lessonCount: number; messageCount: number; sessionDays: Set<string>;
+    lessonCount: number; messageCount: number; sessionDays: number;
   }>;
   const engMap: EngMap = {};
 
-  for (const p of (practices ?? [])) {
-    const uid = String(p.user_id).toLowerCase();
-    if (!engMap[uid]) {
-      engMap[uid] = { totalXP: 0, lastActive: null, lessonCount: 0, messageCount: 0, sessionDays: new Set() };
-    }
-    const e = engMap[uid];
-    e.totalXP += (p.xp_earned ?? 0);
-    if (!e.lastActive || p.created_at > e.lastActive) e.lastActive = p.created_at;
-    e.sessionDays.add((p.created_at as string).slice(0, 10));
-    if (p.practice_type === 'learn_exercise') e.lessonCount++;
-    if (['text_message', 'audio_message', 'grammar_message'].includes(p.practice_type)) e.messageCount++;
+  for (const r of (practices ?? [])) {
+    engMap[r.user_id] = {
+      totalXP: Number(r.total_xp ?? 0),
+      lastActive: r.last_active ? new Date(r.last_active).toISOString() : null,
+      lessonCount: Number(r.lesson_count ?? 0), messageCount: Number(r.message_count ?? 0),
+      sessionDays: Number(r.session_days ?? 0),
+    };
   }
 
   // ── Trilha nova: unidades concluídas (as 4 atividades) por nível ─────────
@@ -141,7 +140,7 @@ export async function GET(req: NextRequest) {
         // do charlotte_progress (fonte confiável, não sofre truncamento de 1000 rows),
         // e last_seen_at (abertura do app).
         lastActive:   [e.lastActive, prog?.lastPracticeDate, u.last_seen_at].filter(Boolean).sort().at(-1) ?? null,
-        sessionDays:  e.sessionDays.size,
+        sessionDays:  e.sessionDays,
         lessonCount:  e.lessonCount,
         messageCount: e.messageCount,
       } : (prog ? { totalXP: prog.totalXP, lastActive: [prog.lastPracticeDate, u.last_seen_at].filter(Boolean).sort().at(-1) ?? null, sessionDays: 0, lessonCount: 0, messageCount: 0 } : null),
