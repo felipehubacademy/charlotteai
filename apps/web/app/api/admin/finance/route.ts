@@ -13,13 +13,14 @@ import { revenueSummary } from '@/lib/finance-revenue';
 
 export const dynamic = 'force-dynamic';
 
-const FIELDS = 'id, kind, description, category, vendor, amount, currency, fx_rate, amount_brl, due_date, paid_at, status, recurrence, recurrence_of, scope, notes, attachment_url, created_at, updated_at';
+const FIELDS = 'id, kind, description, category, vendor, amount, currency, fx_rate, amount_brl, due_date, paid_at, status, recurrence, recurrence_of, scope, notes, attachment_url, unit_cost, created_at, updated_at';
 
 type Entry = {
   id: string; kind: 'expense' | 'income'; description: string; category: string; vendor: string | null;
   amount: number; currency: string; fx_rate: number; amount_brl: number; due_date: string;
   paid_at: string | null; status: 'pending' | 'paid' | 'canceled' | 'refunded'; recurrence: 'none' | 'monthly' | 'yearly';
   recurrence_of: string | null; scope: string; notes: string | null; attachment_url: string | null;
+  unit_cost: boolean | null;
 };
 
 const today = () => new Date().toISOString().slice(0, 10);
@@ -55,6 +56,8 @@ function clean(body: Record<string, unknown>): Partial<Entry> & { error?: string
     if (!['pending', 'paid', 'canceled', 'refunded'].includes(String(body.status))) return { error: 'Status inválido' };
     out.status = body.status;
   }
+  // Entra no custo por usuário (true), fica de fora (false) ou segue a categoria (null).
+  if (body.unit_cost !== undefined) out.unit_cost = body.unit_cost === null ? null : body.unit_cost === true;
   if (body.recurrence !== undefined) {
     if (!['none', 'monthly', 'yearly'].includes(String(body.recurrence))) return { error: 'Recorrência inválida' };
     out.recurrence = body.recurrence;
@@ -164,7 +167,7 @@ export async function PATCH(req: NextRequest) {
         kind: saved.kind, description: saved.description, category: saved.category, vendor: saved.vendor,
         amount: saved.amount, currency: saved.currency, fx_rate: saved.fx_rate, amount_brl: saved.amount_brl,
         due_date: nextDue, status: 'pending', recurrence: saved.recurrence, recurrence_of: root,
-        scope: saved.scope, notes: saved.notes, created_by: admin.userId,
+        scope: saved.scope, notes: saved.notes, unit_cost: saved.unit_cost, created_by: admin.userId,
       } as never).select(FIELDS).single();
       created = (n as unknown as Entry) ?? null;
     }

@@ -6,6 +6,7 @@
 //  - Dias no calendário de Brasília; hoje está pela metade.
 //  - Os quatro grupos de usuários (degustação, teste grátis, pagantes, sem acesso) somam exatamente o total.
 // Sem números pedagógicos (lições, onde travaram): isso fica no Pedagógico.
+import { countsInUnitCost } from '@/lib/unit-cost';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { revenueAtMs } from '@/lib/revenue-day';
 import { lateSignupWelcomes } from '@/lib/signup-welcome';
@@ -59,9 +60,8 @@ export interface DayPoint { date: string; value: number }
 export interface TodayMetric { key: string; label: string; today: number; yesterday: number; series: DayPoint[]; money?: boolean }
 export interface AlertItem { key: string; ok: boolean; label: string; href?: string }
 
-// Custo de servir por usuário no mês: lançamentos do Financeiro nas categorias de operação
+// Custo de servir por usuário no mês: lançamentos do Financeiro marcados como custo de operação
 // + taxas de venda retidas na fonte (lojas e site = bruto - líquido de cada cobrança).
-export const UNIT_COST_CATEGORIES = ['Inteligência artificial', 'Infraestrutura e hospedagem', 'Lojas e pagamentos', 'Domínios e e-mail'] as const;
 export interface UnitCost {
   label: string;
   total: number;
@@ -211,7 +211,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     supabase.from('email_outbox').select('id', { count: 'exact', head: true }).is('sent_at', null).gte('attempts', 3),
     lateSignupWelcomes().catch(() => ({ late: 0, stuck: 0 })),
     // Despesas do mês corrente no Financeiro (para o custo por usuário).
-    supabase.from('finance_entries').select('category, amount_brl, status').eq('kind', 'expense').neq('status', 'canceled')
+    supabase.from('finance_entries').select('category, amount_brl, status, unit_cost').eq('kind', 'expense').neq('status', 'canceled')
       .gte('due_date', `${monthKey}-01`).lt('due_date', nextMonthFirst).limit(2000),
   ]);
 
@@ -323,10 +323,10 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   }
   const charge7Days = chargeDays.map(date => ({ date, ...charge7.get(date)! }));
 
-  // Custo por usuário no mês: despesas lançadas (categorias de operação) + taxas de venda, ÷ ativos do mês e ÷ pagantes.
+  // Custo por usuário no mês: despesas lançadas que contam como operação + taxas de venda, ÷ ativos do mês e ÷ pagantes.
   const costByCat = new Map<string, number>();
-  for (const e of (financeRes.data ?? []) as { category: string; amount_brl: number | string | null }[]) {
-    if (!(UNIT_COST_CATEGORIES as readonly string[]).includes(e.category)) continue;
+  for (const e of (financeRes.data ?? []) as { category: string; amount_brl: number | string | null; unit_cost: boolean | null }[]) {
+    if (!countsInUnitCost(e)) continue;
     costByCat.set(e.category, (costByCat.get(e.category) ?? 0) + Number(e.amount_brl ?? 0));
   }
   const salesFees = monthCharges.reduce((s, r) => s + Math.max(0, grossOf(r) - Number(r.net_brl ?? 0)), 0);
@@ -336,7 +336,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   const unitCost: UnitCost = {
     label: monthLabel,
     total: round2(unitTotal),
-    byCategory: UNIT_COST_CATEGORIES.map(category => ({ category, brl: round2(costByCat.get(category) ?? 0) })),
+    byCategory: [...costByCat].map(([category, v]) => ({ category, brl: round2(v) })).sort((a, b) => b.brl - a.brl),
     salesFees: round2(salesFees),
     activeUsers: activeMonth.size,
     perActive: activeMonth.size ? round2(unitTotal / activeMonth.size) : null,

@@ -6,6 +6,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Plus, Download, FileText, Check, Edit2, Trash2, X, Search, RefreshCw, Repeat, Send } from 'lucide-react';
 import { useAdminMe, canArea } from '@/lib/admin-context';
+import { unitCostByCategory } from '@/lib/unit-cost';
 
 // ── Tipos e catálogos ────────────────────────────────────────────────────────
 type Kind = 'expense' | 'income';
@@ -15,7 +16,7 @@ interface Entry {
   id: string; kind: Kind; description: string; category: string; vendor: string | null;
   amount: number; currency: string; fx_rate: number; amount_brl: number;
   due_date: string; paid_at: string | null; status: Status; recurrence: Recurrence;
-  recurrence_of: string | null; notes: string | null; created_at: string;
+  recurrence_of: string | null; notes: string | null; unit_cost: boolean | null; created_at: string;
 }
 
 const EXPENSE_CATEGORIES = [
@@ -107,10 +108,11 @@ interface FormState {
   id?: string; kind: Kind; description: string; category: string; vendor: string;
   amount: string; currency: string; fx_rate: string; due_date: string; status: Status;
   paid_at: string; recurrence: Recurrence; notes: string;
+  unit_cost: boolean | null; // null = segue a categoria até alguém escolher
 }
 const emptyForm = (kind: Kind = 'expense'): FormState => ({
   kind, description: '', category: kind === 'expense' ? EXPENSE_CATEGORIES[0] : INCOME_CATEGORIES[0], vendor: '',
-  amount: '', currency: 'BRL', fx_rate: '1', due_date: todayISO(), status: 'paid', paid_at: todayISO(), recurrence: 'none', notes: '',
+  amount: '', currency: 'BRL', fx_rate: '1', due_date: todayISO(), status: 'paid', paid_at: todayISO(), recurrence: 'none', notes: '', unit_cost: null,
 });
 
 const NEW_CATEGORY = '__new__';
@@ -141,6 +143,7 @@ function EntryModal({ initial, vendors, customCats, onClose, onSaved }: {
   // Categorias criadas em lançamentos anteriores entram na lista, antes de "Outros".
   const extra = customCats[f.kind].filter(c => !baseCats.includes(c));
   const cats = [...baseCats.filter(c => c !== 'Outros'), ...extra, 'Outros'];
+  const unitCost = f.unit_cost ?? unitCostByCategory(f.category.trim());
 
   const save = async () => {
     setErr('');
@@ -153,6 +156,7 @@ function EntryModal({ initial, vendors, customCats, onClose, onSaved }: {
       amount: amountNum, currency: f.currency, fx_rate: f.currency === 'BRL' ? 1 : fxNum,
       due_date: f.due_date, status: f.status, paid_at: f.status === 'paid' ? (f.paid_at || f.due_date) : null,
       recurrence: f.recurrence, notes: f.notes || null,
+      unit_cost: f.kind === 'expense' ? unitCost : null,
     };
     const res = await fetch('/api/admin/finance', {
       method: f.id ? 'PATCH' : 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
@@ -251,6 +255,15 @@ function EntryModal({ initial, vendors, customCats, onClose, onSaved }: {
               </select>
             </div>
           </div>
+          {f.kind === 'expense' && (
+            <div className="adm-field">
+              <label>Custo por usuário</label>
+              <select value={unitCost ? 'in' : 'out'} onChange={e => set('unit_cost', e.target.value === 'in')}>
+                <option value="in">Entra: custo de operação (atender e construir o app)</option>
+                <option value="out">Fica de fora (marketing, equipe, impostos, reembolsos…)</option>
+              </select>
+            </div>
+          )}
           {f.status === 'paid' && (
             <div className="adm-field" style={{ maxWidth: 200 }}>
               <label>{f.kind === 'expense' ? 'Pago em' : 'Recebido em'}</label>
@@ -906,7 +919,7 @@ export default function FinancePage() {
   const edit = (e: Entry) => setModal({
     id: e.id, kind: e.kind, description: e.description, category: e.category, vendor: e.vendor ?? '',
     amount: String(e.amount).replace('.', ','), currency: e.currency, fx_rate: String(e.fx_rate), due_date: e.due_date,
-    status: e.status, paid_at: e.paid_at ?? todayISO(), recurrence: e.recurrence, notes: e.notes ?? '',
+    status: e.status, paid_at: e.paid_at ?? todayISO(), recurrence: e.recurrence, notes: e.notes ?? '', unit_cost: e.unit_cost,
   });
 
   const exportCsv = () => {
