@@ -41,10 +41,11 @@ import { processOutbox } from '@/lib/email-outbox';
 import { endLegacyTrials } from '@/lib/legacy-trial';
 import { getSupabase } from '@/lib/supabase';
 import { sendSignupWelcomes } from '@/lib/signup-welcome';
+import { syncProviderCosts } from '@/lib/cost-sync';
 
 const CRON_SECRET = process.env.CRON_SECRET ?? '';
 
-type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'taste' | 'ranking' | 'legacy_trial' | 'rally' | 'support_sla' | 'support_insights' | 'support_autoclose' | 'ai_costs' | 'email_outbox' | 'push_receipts';
+type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'taste' | 'ranking' | 'legacy_trial' | 'rally' | 'support_sla' | 'support_insights' | 'support_autoclose' | 'ai_costs' | 'cost_sync' | 'email_outbox' | 'push_receipts';
 
 function isAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization') ?? '';
@@ -110,6 +111,9 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
     case 'push_receipts': // recibos de entrega do Expo dos pushes de 15 min a 24 h atrás (entregue ou erro)
       await checkExpoReceipts();
       break;
+    case 'cost_sync': // custo real dos provedores por uso (OpenAI, Azure, Vercel) → linha do mês no Financeiro
+      console.log('[SCHEDULER] cost_sync', JSON.stringify(await syncProviderCosts()));
+      break;
     case 'ai_costs': // 8h (Brasília): e-mail de custos de IA (anteontem, já fechado) com alertas (OpenAI e ElevenLabs)
       await runAiCostReport({ force: forced });
       break;
@@ -122,7 +126,7 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
 // Every hourly run invokes every sender. Each sender drops users whose
 // per-user local hour does not match the task's target hour, so this is
 // cheap when no one is at the right local time.
-const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'taste', 'ranking', 'legacy_trial', 'rally', 'support_sla', 'support_insights', 'support_autoclose', 'ai_costs', 'email_outbox', 'push_receipts'];
+const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'taste', 'ranking', 'legacy_trial', 'rally', 'support_sla', 'support_insights', 'support_autoclose', 'ai_costs', 'cost_sync', 'email_outbox', 'push_receipts'];
 
 export async function GET(request: NextRequest) {
   if (!isAuthorized(request)) {
