@@ -21,10 +21,6 @@ const pctFmt = (n: number | null) => (n == null ? '—' : `${n.toLocaleString('p
 const ddmm = (d: string) => `${d.slice(8, 10)}/${d.slice(5, 7)}`;
 const WEEKDAY = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
 const weekday = (d: string) => WEEKDAY[new Date(`${d}T12:00:00Z`).getUTCDay()];
-const hhmm = (iso: string) => {
-  const d = new Date(iso);
-  return `${String(d.getHours()).padStart(2, '0')}h${String(d.getMinutes()).padStart(2, '0')}`;
-};
 const minutesFmt = (m: number) => (m < 1 ? `${Math.max(1, Math.round(m * 60))} s` : m < 60 ? `${Math.round(m)} min` : `${(m / 60).toLocaleString('pt-BR', { maximumFractionDigits: 1 })} h`);
 
 // ── Peças ────────────────────────────────────────────────────────────────────
@@ -149,7 +145,6 @@ export default function AdminOverviewPage() {
       <div className="adm-topbar">
         <div style={{ flex: 1, minWidth: 0 }}>
           <div className="adm-topbar-title">Visão geral</div>
-          {data && <div className="adm-topbar-sub">Dados até {hhmm(data.generatedAt)} · atualiza sozinha (usuários a cada 5 s)</div>}
         </div>
         <button onClick={() => load()} disabled={loading} className="adm-btn-sm ghost">
           <RefreshCw size={13} style={{ animation: loading ? 'spin 1s linear infinite' : 'none' }} />
