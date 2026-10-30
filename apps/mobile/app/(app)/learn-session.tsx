@@ -483,6 +483,9 @@ export default function LearnSessionScreen() {
   const charlottePlayId = 'learn-session-phrase';
   const isPlaying = playingMessageId === charlottePlayId;
   const isPlayingRef = useRef(false);
+  // Microfone travado na 1ª vez que a frase toca em cada exercício (o aluno ouve antes de falar).
+  // Sempre destrava: quando o áudio termina, ou pelos limites de tempo abaixo (áudio que não começa ou não avisa o fim).
+  const [micLocked, setMicLocked] = useState(false);
   isPlayingRef.current = isPlaying;
 
   // Charlotte animated WebPs com alpha (rembg + isnet + alpha-matting).
@@ -738,6 +741,7 @@ export default function LearnSessionScreen() {
       await setIsAudioActiveAsync(true).catch(() => {});
       if (Platform.OS === 'ios') recorderPreparedRef.current = false; // modo de tocar desfaz o gravador pronto
       phrasePlayedRef.current = false;
+      setMicLocked(!!autoplayUri && ph.type === 'repeat');
     } catch {}
 
     // Always transition to listening — record button must always appear
@@ -1050,6 +1054,14 @@ export default function LearnSessionScreen() {
     const t = setTimeout(() => { if (!isPlayingRef.current) prepareIosWhenQuiet(); }, 250);
     return () => clearTimeout(t);
   }, [isPlaying, pronStatus, stepIdx]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Destrava: a frase terminou; ou tocou e não avisou o fim em 12 s; ou não começou em 4 s (com a lição à vista).
+  useEffect(() => {
+    if (!micLocked) return;
+    if (!isPlaying && phrasePlayedRef.current) { setMicLocked(false); return; }
+    if (lsIntroState !== 'hide') return;
+    const t = setTimeout(() => setMicLocked(false), isPlaying ? 12000 : 4000);
+    return () => clearTimeout(t);
+  }, [micLocked, isPlaying, lsIntroState]);
   const fileAsrEndRef = useRef<(() => void) | null>(null);
   useSpeechRecognitionEvent('end', () => { fileAsrEndRef.current?.(); });
 
@@ -2100,7 +2112,8 @@ export default function LearnSessionScreen() {
                   // Microfone não liberado: botão apagado com balão; o toque pede a permissão
                   // (ou abre os Ajustes, se o aluno negou de vez).
                   const needsMic = !isRec && (micAsk || micBlocked);
-                  const bg = isRec ? '#D12A64' : needsMic ? '#B9B4C9' : '#6B4BFF';
+                  const locked = !isRec && !needsMic && micLocked; // ouvindo a frase: cinza, sem texto
+                  const bg = isRec ? '#D12A64' : (needsMic || locked) ? '#B9B4C9' : '#6B4BFF';
                   return (
                     // Mic encostado no fim do espaço disponível (marginTop auto): cabe em qualquer altura de
                     // tela sem cortar o "Segure para falar" (antes era marginTop fixo de 420).
@@ -2144,8 +2157,9 @@ export default function LearnSessionScreen() {
                         <TouchableOpacity
                           activeOpacity={0.85}
                           onPress={needsMic ? (micBlocked ? openMicSettings : requestMic) : undefined}
-                          onPressIn={needsMic ? undefined : startRecording}
-                          onPressOut={needsMic ? undefined : stopRecording}
+                          disabled={locked}
+                          onPressIn={needsMic || locked ? undefined : startRecording}
+                          onPressOut={needsMic || locked ? undefined : stopRecording}
                           style={{
                             width: 120, height: 120, borderRadius: 60,
                             backgroundColor: bg,
@@ -2164,7 +2178,9 @@ export default function LearnSessionScreen() {
                         marginTop: 14, fontSize: 12, color: C.navyLight,
                         fontWeight: '600', letterSpacing: 0.4,
                       }}>
-                        {isRec
+                        {locked
+                          ? ' '
+                          : isRec
                           ? (isPortuguese ? 'Solte para parar' : 'Release to stop')
                           : needsMic
                             ? (isPortuguese ? 'Microfone ainda não liberado' : 'Microphone not allowed yet')
