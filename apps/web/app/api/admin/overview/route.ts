@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
   const admin = await requireAdmin(req, part === 'pnl' ? 'finance' : 'metrics');
   if (admin instanceof NextResponse) return admin;
   try {
-    if (part === 'pnl') return NextResponse.json((await computeOverview()).money.pnl);
+    if (part === 'pnl') { const m = (await computeOverview()).money; return NextResponse.json({ ...m.pnl, unitCost: m.unitCost }); }
     // ?part=users: só o bloco de usuários (leve), para a tela atualizar a cada 5 s.
     if (part === 'users') return NextResponse.json(await computeUsersBlock());
     return NextResponse.json(await computeOverview());

@@ -831,10 +831,11 @@ function LtvPanel() {
 // ── Página ──────────────────────────────────────────────────────────────────
 // ── Resultado (EBITDA) e ponto de equilíbrio ────────────────────────────────
 interface PnlMonth { month: string; label: string; gross: number; salesFees: number; refunds: number; taxes: number; netRevenue: number; opex: number; ebitda: number; marginPct: number | null }
+interface UnitCost { label: string; total: number; byCategory: { category: string; brl: number }[]; salesFees: number; activeUsers: number; perActive: number | null; payers: number; perPayer: number | null }
 interface Breakeven { ticketNet: number | null; payers: number; payersNeeded: number | null; revenueNeeded: number | null; activeUsers: number; conversionPct: number | null; minConversionPct: number | null }
 
 function PnlPanel() {
-  const [d, setD] = useState<{ months: PnlMonth[]; breakeven: Breakeven } | null>(null);
+  const [d, setD] = useState<{ months: PnlMonth[]; breakeven: Breakeven; unitCost: UnitCost } | null>(null);
   const [err, setErr] = useState('');
   useEffect(() => {
     fetch('/api/admin/overview?part=pnl', { cache: 'no-store' }).then(r => r.json())
@@ -891,6 +892,17 @@ function PnlPanel() {
                   ))}
                 </tbody>
               </table>
+            </div>
+            <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--b1)' }}>
+              <div className="kpi-label">Custo por usuário em {d.unitCost.label}</div>
+              <div style={{ fontSize: 13, color: 'var(--t2)', marginTop: 4 }}>
+                <strong style={{ color: 'var(--t1)' }}>{d.unitCost.perActive == null ? '—' : brl(d.unitCost.perActive)}</strong> por usuário ativo ({d.unitCost.activeUsers})
+                {' · '}<strong style={{ color: 'var(--t1)' }}>{d.unitCost.perPayer == null ? '—' : brl(d.unitCost.perPayer)}</strong> por pagante ({d.unitCost.payers})
+              </div>
+              <div className="kpi-context" style={{ marginTop: 6 }}>
+                Custo do mês {brl(d.unitCost.total)}: {[...d.unitCost.byCategory.filter(c => c.brl > 0).map(c => `${c.category} ${brl(c.brl)}`), `Taxas de venda ${brl(d.unitCost.salesFees)}`].join(' · ')}.
+                {' '}Entram as despesas marcadas como custo de operação no lançamento; as taxas de venda entram sozinhas.
+              </div>
             </div>
             <div className="kpi-context" style={{ marginTop: 10 }}>
               Pagantes para empatar = custos de operação do mês ÷ receita líquida por pagante. Trial e degustação consomem custo e entram na conta. O mês atual vai mudando conforme as despesas são lançadas.

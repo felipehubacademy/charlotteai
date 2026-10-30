@@ -361,7 +361,6 @@ export default function AdminOverviewPage() {
               </div>
               {(() => {
                 const uc = data.money.unitCost;
-                const parts = [...uc.byCategory.filter(c => c.brl > 0).map(c => `${c.category} ${brl(c.brl)}`), `Taxas de venda ${brl(uc.salesFees)}`];
                 return (
                   <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--b1)' }}>
                     <div className="kpi-label" style={{ textTransform: 'uppercase' }}>Custo por usuário em {uc.label}</div>
@@ -385,9 +384,6 @@ export default function AdminOverviewPage() {
                         </div>
                       );
                     })()}
-                    <div className="kpi-context" style={{ marginTop: 6 }}>
-                      Custo do mês {brl(uc.total)}: {parts.join(' · ')}. Vem do que está lançado no Financeiro; as taxas de venda entram sozinhas.
-                    </div>
                   </div>
                 );
               })()}
