@@ -3,7 +3,7 @@
 // o aluno escolheu na Família (charlotte_users.active_character). O resto do app segue com a Charlotte.
 
 export type CharacterId = 'charlotte' | 'igorfina';
-export type ImpressionId = 'president' | 'hoops';
+export type ImpressionId = 'president' | 'hoops' | 'rodela' | 'olimpia' | 'cariri' | 'jalim' | 'allday';
 
 /** Imitação do personagem. Aparece no meio das conversas dele e também dá para conversar ou ligar
  *  só com ela (Família, "Conversar com" do Free Chat e ligação). Imitação nova = um item a mais na lista
@@ -68,6 +68,56 @@ export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
           Advanced: "Listen up, {name}. Championship English starts with practice. So, what's been keeping you busy?",
         },
       },
+      {
+        id: 'rodela', labelPt: 'Filósofo Rodela', labelEn: 'Philosopher Rodela', callTag: 'Rodela', articlePt: 'o ',
+        taglinePt: 'O Igor imitando um filósofo de fala calma. Toda conversa vira uma reflexão sobre a vida.',
+        taglineEn: 'Igor as a calm-voiced philosopher. Every chat turns into a reflection on life.',
+        welcome: {
+          Novice: 'Hello {name}. Every word in English is a small step. (Pode escrever em português se quiser; eu respondo em inglês simples.)',
+          Inter: 'Hello {name}. You see, learning is a way of living better. How is your day going?',
+          Advanced: 'Hello {name}. Life is too short to be small, so let us talk about something that matters. What has been on your mind lately?',
+        },
+      },
+      {
+        id: 'olimpia', labelPt: 'Mister Olimpia', labelEn: 'Mister Olimpia', callTag: 'Olimpia', articlePt: 'o ',
+        taglinePt: 'O Igor imitando uma lenda do fisiculturismo. Cada frase certa é um recorde.',
+        taglineEn: 'Igor as a bodybuilding legend. Every right sentence is a new record.',
+        welcome: {
+          Novice: "Hi {name}! Time for heavy English, champ. (Pode escrever em português se quiser; eu respondo em inglês simples.)",
+          Inter: "Hey {name}! Heavy English today, champ. How's your day going?",
+          Advanced: "{name}, champ! We're lifting heavy English today. Tell me, what did you crush this week?",
+        },
+      },
+      {
+        id: 'cariri', labelPt: 'Cariri', labelEn: 'Cariri', callTag: 'Cariri', articlePt: 'o ',
+        taglinePt: 'O Igor imitando um influenciador fitness sem desculpas. Disciplina, rotina e dieta.',
+        taglineEn: 'Igor as a no-excuses fitness influencer. Discipline, routine and diet.',
+        welcome: {
+          Novice: "Hi {name}! No excuses today. (Pode escrever em português se quiser; eu respondo em inglês simples.)",
+          Inter: "Hey {name}, no excuses today. How's your routine going?",
+          Advanced: "{name}, discipline beats motivation. So tell me, what does your daily routine look like?",
+        },
+      },
+      {
+        id: 'jalim', labelPt: 'Jalim Rabei', labelEn: 'Jalim Rabei', callTag: 'Jalim', articlePt: 'o ',
+        taglinePt: 'O companheiro de viagem do Igor, da Índia. Histórias de estrada, comida e aeroporto.',
+        taglineEn: "Igor's travel buddy from India. Road stories, food and airports.",
+        welcome: {
+          Novice: 'Hello my dear friend {name}! (Pode escrever em português se quiser; eu respondo em inglês simples.)',
+          Inter: 'Hello my dear friend {name}! Kindly tell me, how is your day going?',
+          Advanced: 'My dear friend {name}! Every trip starts with a good conversation. Where would you love to travel next?',
+        },
+      },
+      {
+        id: 'allday', labelPt: 'Allday Negin', labelEn: 'Allday Negin', callTag: 'Allday', articlePt: 'o ',
+        taglinePt: 'O Igor imitando um influenciador fitness motivado o dia todo. Foco e constância.',
+        taglineEn: 'Igor as a fitness influencer hyped all day. Focus and consistency.',
+        welcome: {
+          Novice: "Hi {name}! Let's go, all day! (Pode escrever em português se quiser; eu respondo em inglês simples.)",
+          Inter: "Let's go, {name}! All day, every day. How's your day going?",
+          Advanced: "{name}, all day, every day! What small win are you proud of today?",
+        },
+      },
     ],
   },
 };
@@ -124,7 +174,13 @@ export function isImpressionReply(n: number, sessionKey: string): boolean {
   return n > last && (n - last) % 12 === 0;
 }
 
+// Assuntos que puxam cada imitação no meio da conversa do Igorfina (com mais de uma, sorteia entre elas).
 const TOPICS: Record<ImpressionId, RegExp> = {
+  rodela: /\b(vida|life|sentido|meaning|prop[oó]sito|purpose|felicidade|happiness|happy|feliz|fam[ií]lia|family|tempo|time|futuro|future|sonhos?|dreams?|valores?|values?|amizade|friendship|filosofia|philosophy|estud\w+|study\w*|aprend\w+|learn\w*)\b/i,
+  olimpia: /\b(academia|gym|muscula[cç][aã]o|bodybuilding|m[uú]scul\w+|muscles?|for[cç]a|strength|strong|pesos?|weights?|supino|bench|agachamento|squats?|treino\w*|workout|lift\w*|hipertrofia|gains?)\b/i,
+  cariri: /\b(dieta|diet|comida|food|comer|eat\w*|almo[cç]o|lunch|jantar|dinner|caf[eé] da manh[aã]|breakfast|prote[ií]na|protein|frango|chicken|arroz|rice|rotina|routine|disciplina|discipline|sono|sleep|dormir|acordar|wake)\b/i,
+  jalim: /\b(viage\w+|viajar|viajei|travel\w*|trip|f[eé]rias|vacation|holiday|aeroporto|airport|avi[aã]o|plane|flight|voo|hotel|passaporte|passport|turismo|tourist|praia|beach|pa[ií]s|country|[IÍ]ndia|india)\b/i,
+  allday: /\b(motiva\w+|motivat\w+|foco|focus|meta|metas|goals?|pregui[cç]a|lazy|cansad\w+|tired|const[aâ]ncia|consistency|todo dia|every day|manh[aã]|morning|desist\w+|give up|h[aá]bito|habits?)\b/i,
   hoops: /\b(sports?|esportes?|academia|gym|treino\w*|trein\w+|workout|train\w*|jog(o|os|ar)|games?|match|partida|teams?|basquete|basketball|nba|futebol|soccer|football|corr(ida|er|i)|run(ning)?|bike|pedal\w*|nad(ar|ei|o)|swim\w*|competi\w+|campeonato|cardio|squats?|agachamento|m[uú]scul\w+|muscle|fitness|crossfit|quadra|court|bola|ball)\b/i,
   president: /\b(trabalh\w*|work(ing)?|jobs?|emprego|chefe|boss|reuni[aã]o|meetings?|neg[oó]cio\w*|business|deals?|empresa|company|dinheiro|money|sal[aá]rio|salary|provas?|exams?|tests?|entrevista|interview|apresenta\w+|presentation|discurso|speech|promo[cç][aã]o|promotion|projetos?|projects?|conquist\w+|achievement|vendas?|sales?|clientes?|clients?|lideran[cç]a|leader\w*)\b/i,
 };

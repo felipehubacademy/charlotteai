@@ -93,6 +93,26 @@ const IMPRESSION_FIRST_MESSAGES: Record<string, { default: string[]; Novice: str
     default: ["Yo {name}! Let's go, we're locked in today. How's your day going?", "{name}, my teammate! Good to hear you. What have you been up to?"],
     Novice: ["Fala, {name}! Bora, time. Tudo certo com você?"],
   },
+  rodela: {
+    default: ["{name}, what a pleasure. You see, every conversation is a small chance to grow. How has your day been?"],
+    Novice: ["Olá, {name}. Que bom ouvir você. Como você está?"],
+  },
+  olimpia: {
+    default: ["{name}! Time for some heavy English today. How's your day going, champ?"],
+    Novice: ["Fala, {name}! Bora treinar esse inglês pesado. Tudo bem com você?"],
+  },
+  cariri: {
+    default: ["{name}, no excuses today. Tell me, how's your routine going?"],
+    Novice: ["E aí, {name}! Sem desculpas hoje, hein? Tudo bem com você?"],
+  },
+  jalim: {
+    default: ["My dear friend {name}! Kindly tell me, how is your day going?"],
+    Novice: ["Meu querido amigo {name}! Que alegria. Tudo bem com você?"],
+  },
+  allday: {
+    default: ["{name}, let's go! All day, every day. How's your day going?"],
+    Novice: ["Bora, {name}! Todo dia, o dia todo. Tudo certo com você?"],
+  },
 };
 // Novice: como a Charlotte, o TURNO 1 é só cumprimentar e perguntar como vai, em português.
 const FIRST_MESSAGES_NOVICE: Record<string, string[]> = {
