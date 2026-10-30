@@ -96,7 +96,7 @@ function Delta({ m }: { m: TodayMetric }) {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// Contador até a próxima atualização dos usuários (5, 4, 3, 2, 1): anel que esvazia e o número no meio.
+// Contador até a próxima atualização dos usuários (5, 4, 3, 2, 1): só o número, na linha do título.
 function RefreshCountdown({ tick }: { tick: number }) {
   const [left, setLeft] = useState(USERS_REFRESH_MS / 1000);
   const since = useRef(Date.now());
@@ -108,35 +108,29 @@ function RefreshCountdown({ tick }: { tick: number }) {
     }, 250);
     return () => clearInterval(id);
   }, []);
-  const total = USERS_REFRESH_MS / 1000;
-  const r = 7, c = 2 * Math.PI * r;
   return (
-    <span title="Próxima atualização" style={{ position: 'relative', width: 18, height: 18, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" style={{ position: 'absolute', inset: 0, transform: 'rotate(-90deg)' }}>
-        <circle cx="9" cy="9" r={r} fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="2" />
-        <circle cx="9" cy="9" r={r} fill="none" stroke="var(--volt)" strokeWidth="2" strokeLinecap="round"
-          strokeDasharray={c} strokeDashoffset={c * (1 - left / total)} style={{ transition: 'stroke-dashoffset 0.25s linear' }} />
-      </svg>
-      <span style={{ fontSize: 9.5, fontWeight: 700, color: 'rgba(255,255,255,0.75)', lineHeight: 1 }}>{left}</span>
-    </span>
+    <span title="Próxima atualização" style={{
+      fontSize: 10.5, fontWeight: 700, lineHeight: 1, color: 'var(--volt)',
+      fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums',
+    }}>{left}</span>
   );
 }
 
-// Total de usuários ao vivo: brilho sutil a cada atualização; se entrou gente, sobe contando e acende em verde-limão.
+// Total de usuários ao vivo: pulsa em verde-limão a cada atualização; se entrou gente, sobe contando e fica aceso por mais tempo.
 function LiveTotal({ value, tick }: { value: number; tick: number }) {
   const [shown, setShown] = useState(value);
-  const [glow, setGlow] = useState<'none' | 'soft' | 'up'>('none');
+  const [glow, setGlow] = useState<'none' | 'pulse' | 'up'>('none');
   const prev = useRef(value);
   useEffect(() => {
     const from = prev.current, to = value;
     prev.current = value;
     if (to === from) {
-      setGlow('soft');
-      const t = setTimeout(() => setGlow('none'), 450);
+      setGlow('pulse');
+      const t = setTimeout(() => setGlow('none'), 380);
       return () => clearTimeout(t);
     }
     setGlow('up');
-    const start = performance.now(), dur = 700;
+    const start = performance.now(), dur = 900;
     let raf = 0;
     const step = (now: number) => {
       const k = Math.min(1, (now - start) / dur);
@@ -144,16 +138,19 @@ function LiveTotal({ value, tick }: { value: number; tick: number }) {
       if (k < 1) raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
-    const t = setTimeout(() => setGlow('none'), 1600);
+    const t = setTimeout(() => setGlow('none'), 2200);
     return () => { cancelAnimationFrame(raf); clearTimeout(t); };
   }, [value, tick]);
+  const lit = glow !== 'none';
   return (
     <div className="kpi-value" style={{
-      fontSize: '2.6rem',
-      color: glow === 'up' ? 'var(--volt)' : '#fff',
-      opacity: glow === 'soft' ? 0.72 : 1,
-      textShadow: glow === 'up' ? '0 0 18px rgba(220,255,74,0.45)' : 'none',
-      transition: 'color 0.6s ease, opacity 0.45s ease, text-shadow 0.6s ease',
+      fontSize: '2.6rem', display: 'inline-block', transformOrigin: 'left center',
+      color: lit ? 'var(--volt)' : '#fff',
+      transform: glow === 'up' ? 'scale(1.1)' : glow === 'pulse' ? 'scale(1.06)' : 'scale(1)',
+      textShadow: lit ? '0 0 22px rgba(220,255,74,0.6)' : '0 0 0 rgba(220,255,74,0)',
+      transition: lit
+        ? 'color 0.15s ease, transform 0.2s cubic-bezier(.2,.9,.3,1.4), text-shadow 0.15s ease'
+        : 'color 0.7s ease, transform 0.5s ease, text-shadow 0.7s ease',
     }}>{int(shown)}</div>
   );
 }
@@ -254,11 +251,11 @@ export default function AdminOverviewPage() {
               <div style={{ background: 'var(--accent)', color: '#fff', borderRadius: 'var(--r3)', padding: '20px 22px' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
                   <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <div className="kpi-label" style={{ color: 'rgba(255,255,255,0.6)' }}>Total de usuários</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                      <div className="kpi-label" style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 0 }}>Total de usuários</div>
                       <RefreshCountdown tick={usersTick} />
                     </div>
-                    <LiveTotal value={u.total} tick={usersTick} />
+                    <div><LiveTotal value={u.total} tick={usersTick} /></div>
                     <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.7)' }}>
                       <span style={{ color: 'var(--volt)', fontWeight: 700 }}>+{int(u.newToday)} hoje</span> · {int(u.new30d)} nos últimos 30 dias
                     </div>
