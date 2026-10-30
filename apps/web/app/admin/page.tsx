@@ -375,6 +375,16 @@ export default function AdminOverviewPage() {
                         <div className="kpi-context">por pagante ({int(uc.payers)})</div>
                       </div>
                     </div>
+                    {(() => {
+                      const pm = data.money.pnl.months[data.money.pnl.months.length - 1];
+                      const be = data.money.pnl.breakeven;
+                      return (
+                        <div style={{ marginTop: 10, fontSize: 12.5, color: 'var(--t2)' }}>
+                          EBITDA de {pm.label}: <strong style={{ color: pm.ebitda < 0 ? 'var(--err)' : 'var(--ok)' }}>{brl(pm.ebitda)}</strong>
+                          {be.payersNeeded != null && <> · empata com <strong style={{ color: 'var(--t1)' }}>{int(be.payersNeeded)} pagantes</strong> (hoje {int(be.payers)})</>}
+                        </div>
+                      );
+                    })()}
                     <div className="kpi-context" style={{ marginTop: 6 }}>
                       Custo do mês {brl(uc.total)}: {parts.join(' · ')}. Vem do que está lançado no Financeiro; as taxas de venda entram sozinhas.
                     </div>

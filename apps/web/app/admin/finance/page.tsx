@@ -829,6 +829,79 @@ function LtvPanel() {
 }
 
 // ── Página ──────────────────────────────────────────────────────────────────
+// ── Resultado (EBITDA) e ponto de equilíbrio ────────────────────────────────
+interface PnlMonth { month: string; label: string; gross: number; salesFees: number; refunds: number; taxes: number; netRevenue: number; opex: number; ebitda: number; marginPct: number | null }
+interface Breakeven { ticketNet: number | null; payers: number; payersNeeded: number | null; revenueNeeded: number | null; activeUsers: number; conversionPct: number | null; minConversionPct: number | null }
+
+function PnlPanel() {
+  const [d, setD] = useState<{ months: PnlMonth[]; breakeven: Breakeven } | null>(null);
+  const [err, setErr] = useState('');
+  useEffect(() => {
+    fetch('/api/admin/overview?part=pnl', { cache: 'no-store' }).then(r => r.json())
+      .then(j => { if (j.error) setErr(j.error); else setD(j); }).catch(e => setErr(String(e)));
+  }, []);
+  const cur = d?.months[d.months.length - 1];
+  const b = d?.breakeven;
+  const pct = (n: number | null) => n == null ? '—' : `${n.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}%`;
+  return (
+    <div className="adm-panel col-12">
+      <div className="adm-panel-hdr">
+        <div className="adm-panel-title">Resultado e ponto de equilíbrio</div>
+        <div className="adm-panel-sub">EBITDA = receita líquida (bruto - taxas de venda - reembolsos - impostos) - custos de operação (todas as saídas, menos impostos e reembolsos)</div>
+      </div>
+      <div className="adm-panel-body">
+        {err && <div className="adm-alert crit">{err}</div>}
+        {!d && !err && <div className="adm-empty-sub">Calculando…</div>}
+        {cur && b && (
+          <>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 16, marginBottom: 18 }}>
+              <div>
+                <div className="kpi-label">EBITDA de {cur.label}</div>
+                <div className="kpi-value num" style={{ fontSize: '1.5rem', color: cur.ebitda < 0 ? 'var(--err)' : 'var(--ok)' }}>{brl(cur.ebitda)}</div>
+                <div className="kpi-context">{cur.marginPct == null ? 'sem receita no mês' : `margem de ${cur.marginPct}%`}</div>
+              </div>
+              <div>
+                <div className="kpi-label">Pagantes para empatar</div>
+                <div className="kpi-value num" style={{ fontSize: '1.5rem' }}>{b.payersNeeded ?? '—'}</div>
+                <div className="kpi-context">hoje {b.payers} · {b.ticketNet == null ? 'sem assinatura renovando' : `${brl(b.ticketNet)} líquidos por pagante`}</div>
+              </div>
+              <div>
+                <div className="kpi-label">Receita mensal para empatar</div>
+                <div className="kpi-value num" style={{ fontSize: '1.5rem' }}>{b.revenueNeeded == null ? '—' : brl(b.revenueNeeded)}</div>
+                <div className="kpi-context">bruta, recorrente, cobre o custo de {cur.label}</div>
+              </div>
+              <div>
+                <div className="kpi-label">Conversão para empatar</div>
+                <div className="kpi-value num" style={{ fontSize: '1.5rem' }}>{pct(b.minConversionPct)}</div>
+                <div className="kpi-context">hoje {pct(b.conversionPct)} · pagantes ÷ {b.activeUsers} ativos no mês</div>
+              </div>
+            </div>
+            <div style={{ overflowX: 'auto' }}>
+              <table className="adm-table" style={{ width: '100%', fontSize: 12.5 }}>
+                <thead><tr><th>Mês</th><th className="num">Bruto</th><th className="num">Taxas</th><th className="num">Reembolsos</th><th className="num">Impostos</th><th className="num">Receita líquida</th><th className="num">Custos</th><th className="num">EBITDA</th><th className="num">Margem</th></tr></thead>
+                <tbody>
+                  {[...d.months].reverse().map(m => (
+                    <tr key={m.month}>
+                      <td style={{ textTransform: 'capitalize' }}>{m.label}</td>
+                      <td className="num">{brl(m.gross)}</td><td className="num">{brl(m.salesFees)}</td><td className="num">{brl(m.refunds)}</td><td className="num">{brl(m.taxes)}</td>
+                      <td className="num">{brl(m.netRevenue)}</td><td className="num">{brl(m.opex)}</td>
+                      <td className="num" style={{ fontWeight: 700, color: m.ebitda < 0 ? 'var(--err)' : 'var(--ok)' }}>{brl(m.ebitda)}</td>
+                      <td className="num">{m.marginPct == null ? '—' : `${m.marginPct}%`}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="kpi-context" style={{ marginTop: 10 }}>
+              Pagantes para empatar = custos de operação do mês ÷ receita líquida por pagante. Trial e degustação consomem custo e entram na conta. O mês atual vai mudando conforme as despesas são lançadas.
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function FinancePage() {
   const me = useAdminMe();
   const canWrite = canArea(me, 'finance:write');
@@ -1010,6 +1083,8 @@ export default function FinancePage() {
             <div className="adm-panel-hdr"><div className="adm-panel-title">Saídas por categoria</div><div className="adm-panel-sub">{RANGE_LABEL[range]} · {brl(expense)}</div></div>
             <div className="adm-panel-body"><CategoryBars rows={byCategory} total={expense || 1} /></div>
           </div>
+
+          <PnlPanel />
 
           <RevenuePanel range={range} />
           <LtvPanel />

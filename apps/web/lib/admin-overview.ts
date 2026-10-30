@@ -71,6 +71,24 @@ export interface UnitCost {
   payers: number; perPayer: number | null;
 }
 
+// Resultado por mês (regime de competência das cobranças, despesas pelo vencimento) e ponto de equilíbrio do mês atual.
+// Receita líquida = bruto - taxas de venda - reembolsos - impostos (DAS do Simples, dedução da receita).
+// Custos de operação = todas as despesas do mês, menos impostos e reembolsos (que já saíram da receita).
+// EBITDA = receita líquida - custos de operação. Trial e degustação consomem custo e entram na conta:
+// o ponto de equilíbrio é quantos pagantes cobrem o custo do mês inteiro.
+export interface PnlMonth {
+  month: string; label: string;
+  gross: number; salesFees: number; refunds: number; taxes: number; netRevenue: number;
+  opex: number; ebitda: number; marginPct: number | null;
+}
+export interface Breakeven {
+  ticketNet: number | null;      // receita líquida por pagante por mês (preço médio - taxas - impostos)
+  payers: number; payersNeeded: number | null;
+  revenueNeeded: number | null;  // receita bruta mensal recorrente que empata o custo do mês
+  activeUsers: number; conversionPct: number | null; minConversionPct: number | null;
+}
+const PNL_EXCLUDED = ['Impostos', 'Reembolsos e estornos'];
+
 export interface Overview {
   generatedAt: string;
   today: string;
@@ -90,6 +108,7 @@ export interface Overview {
     firstCharges7d: { total: number; days: { date: string; store: number; site: number }[] };
     cancelledWithAccess: { total: number; trial: number; paying: number };
     unitCost: UnitCost;
+    pnl: { months: PnlMonth[]; breakeven: Breakeven };
   };
   engagement: {
     d1: { pct: number | null; retained: number; eligible: number };
@@ -173,6 +192,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   const practicesFrom = iso(brtDayStart(today - 30));
   const weekAgo = iso(nowMs - 7 * DAY);
   const monthKey = dayKey(today).slice(0, 7);
+  const pnlFrom = (() => { const [y, m] = monthKey.split('-').map(Number); return new Date(Date.UTC(y, m - 6, 1)).toISOString().slice(0, 10); })();
   const nextMonthFirst = (() => { const [y, m] = monthKey.split('-').map(Number); return new Date(Date.UTC(y, m, 1)).toISOString().slice(0, 10); })();
 
   type ConvRow = { id: string; channel: string; status: string; created_at: string; last_inbound_at: string | null };
@@ -210,9 +230,9 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     supabase.from('ops_errors').select('area').in('area', ['checkout', 'webhook', 'asaas']).gte('created_at', iso(nowMs - 3600000)).limit(200),
     supabase.from('email_outbox').select('id', { count: 'exact', head: true }).is('sent_at', null).gte('attempts', 3),
     lateSignupWelcomes().catch(() => ({ late: 0, stuck: 0 })),
-    // Despesas do mês corrente no Financeiro (para o custo por usuário).
-    supabase.from('finance_entries').select('category, amount_brl, status, unit_cost').eq('kind', 'expense').neq('status', 'canceled')
-      .gte('due_date', `${monthKey}-01`).lt('due_date', nextMonthFirst).limit(2000),
+    // Despesas dos últimos 6 meses no Financeiro (custo por usuário no mês atual e resultado mês a mês).
+    supabase.from('finance_entries').select('category, amount_brl, status, unit_cost, due_date').eq('kind', 'expense').neq('status', 'canceled')
+      .gte('due_date', pnlFrom).lt('due_date', nextMonthFirst).limit(5000),
   ]);
 
   const { users, rev, cks, notTeam, kind, isTaster, usersBlock, firstChargeAt, siteCk, trial, paying } = partitionUsers(usersAll, revAll, ckAll, nowMs);
@@ -325,8 +345,10 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
 
   // Custo por usuário no mês: despesas lançadas que contam como operação + taxas de venda, ÷ ativos do mês e ÷ pagantes.
   const costByCat = new Map<string, number>();
-  for (const e of (financeRes.data ?? []) as { category: string; amount_brl: number | string | null; unit_cost: boolean | null }[]) {
-    if (!countsInUnitCost(e)) continue;
+  type FinRow = { category: string; amount_brl: number | string | null; unit_cost: boolean | null; due_date: string };
+  const finRows = (financeRes.data ?? []) as FinRow[];
+  for (const e of finRows) {
+    if (!e.due_date.startsWith(monthKey) || !countsInUnitCost(e)) continue;
     costByCat.set(e.category, (costByCat.get(e.category) ?? 0) + Number(e.amount_brl ?? 0));
   }
   const salesFees = monthCharges.reduce((s, r) => s + Math.max(0, grossOf(r) - Number(r.net_brl ?? 0)), 0);
@@ -342,6 +364,44 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     perActive: activeMonth.size ? round2(unitTotal / activeMonth.size) : null,
     payers: usersBlock.paying,
     perPayer: usersBlock.paying ? round2(unitTotal / usersBlock.paying) : null,
+  };
+
+  // Resultado mês a mês (6 meses) e ponto de equilíbrio do mês atual.
+  const pnlKeys = Array.from({ length: 6 }, (_, i) => { const [y, m] = monthKey.split('-').map(Number); return new Date(Date.UTC(y, m - 6 + i, 1)).toISOString().slice(0, 7); });
+  const revMonth = (r: RevRow) => dayKey(brtDay(revenueAtMs(r))).slice(0, 7);
+  const pnlMonths: PnlMonth[] = pnlKeys.map(key => {
+    const charges = rev.filter(r => isCharge(r) && revMonth(r) === key);
+    const gross = charges.reduce((s, r) => s + grossOf(r), 0);
+    const fees = charges.reduce((s, r) => s + Math.max(0, grossOf(r) - Number(r.net_brl ?? 0)), 0);
+    const refunds = rev.filter(r => r.event_type === 'REFUND' && revMonth(r) === key).reduce((s, r) => s + Math.abs(Number(r.net_brl ?? 0)), 0);
+    const rows = finRows.filter(e => e.due_date.startsWith(key));
+    const taxes = rows.filter(e => e.category === 'Impostos').reduce((s, e) => s + Number(e.amount_brl ?? 0), 0);
+    const opex = rows.filter(e => !PNL_EXCLUDED.includes(e.category)).reduce((s, e) => s + Number(e.amount_brl ?? 0), 0);
+    const netRevenue = gross - fees - refunds - taxes;
+    const ebitda = netRevenue - opex;
+    return {
+      month: key,
+      label: new Date(Date.parse(`${key}-15T12:00:00Z`)).toLocaleDateString('pt-BR', { month: 'long', timeZone: 'UTC' }),
+      gross: round2(gross), salesFees: round2(fees), refunds: round2(refunds), taxes: round2(taxes), netRevenue: round2(netRevenue),
+      opex: round2(opex), ebitda: round2(ebitda), marginPct: netRevenue > 0 ? Math.round((ebitda / netRevenue) * 100) : null,
+    };
+  }).filter((m, i, all) => m.gross > 0 || m.opex > 0 || i === all.length - 1);
+  // Taxas e impostos como fração do bruto: 3 últimos meses com receita (amostra pequena num mês só).
+  const recent3 = pnlMonths.slice(-3);
+  const g3 = recent3.reduce((s, m) => s + m.gross, 0);
+  const deductRate = g3 > 0 ? (recent3.reduce((s, m) => s + m.salesFees + m.taxes, 0) / g3) : 0;
+  const cur = pnlMonths[pnlMonths.length - 1];
+  const priceAvg = renewing.length ? mrr / renewing.length : null;
+  const ticketNet = priceAvg != null ? priceAvg * (1 - deductRate) : null;
+  const payersNeeded = ticketNet && ticketNet > 0 ? Math.ceil(cur.opex / ticketNet) : null;
+  const breakeven: Breakeven = {
+    ticketNet: ticketNet != null ? round2(ticketNet) : null,
+    payers: usersBlock.paying,
+    payersNeeded,
+    revenueNeeded: deductRate < 1 ? round2(cur.opex / (1 - deductRate)) : null,
+    activeUsers: activeMonth.size,
+    conversionPct: activeMonth.size ? Math.round((usersBlock.paying / activeMonth.size) * 1000) / 10 : null,
+    minConversionPct: payersNeeded != null && activeMonth.size ? Math.round((payersNeeded / activeMonth.size) * 1000) / 10 : null,
   };
 
   const money = {
@@ -364,6 +424,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
       paying: usersBlock.payingCancelled,
     },
     unitCost,
+    pnl: { months: pnlMonths, breakeven },
   };
 
   // ── Engajamento ──────────────────────────────────────────────────────────
