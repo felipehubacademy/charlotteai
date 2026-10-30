@@ -352,6 +352,7 @@ interface AiCosts {
   azure: { currency: string; total: number; lines: { name: string; amount: number }[]; error?: string } | null;
   openai: { source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string };
   elevenlabs: { plan: string; used: number; limit: number; resetAt: string | null; nextInvoiceUsd: number | null } | null;
+  elevenBilledBrl?: number;
   prev: { openai: { usd: number; lines: { name: string; usd: number }[] }; azure: { total: number; currency: string } | null };
   voice: { byProduct: { name: string; credits: number }[]; byCharacter: { id: string; name: string; credits: number }[]; error?: string } | null;
   liveCalls: { id: string; name: string; calls: number; students: number; minutes: number }[];
@@ -365,8 +366,9 @@ function LiveCallsByCharacter({ data, toBrl }: { data: AiCosts; toBrl: (n: numbe
   const callCredits = v?.byProduct.find(p => p.name.startsWith('Ligações'))?.credits ?? 0;
   const otherCredits = v?.byProduct.find(p => p.name.startsWith('Falas'))?.credits ?? 0;
   const totalCredits = callCredits + otherCredits;
-  const rate = data.elevenlabs && data.elevenlabs.nextInvoiceUsd != null && data.elevenlabs.limit > 0
-    ? data.elevenlabs.nextInvoiceUsd / data.elevenlabs.limit : null;
+  // US$ por crédito: fatura lançada no Financeiro no mês ÷ créditos do plano.
+  const billedUsd = data.elevenBilledBrl && data.fx ? data.elevenBilledBrl / data.fx : null;
+  const rate = data.elevenlabs && billedUsd && data.elevenlabs.limit > 0 ? billedUsd / data.elevenlabs.limit : null;
   const charlotteUsd = data.openai.lines.filter(l => isLiveVoice(l.name)).reduce((s, l) => s + l.usd, 0);
   const familyMinutes = data.liveCalls.filter(c => c.id !== 'charlotte').reduce((s, c) => s + c.minutes, 0);
   const rows = data.liveCalls.map(c => {
@@ -583,11 +585,11 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
                 <>
                   <div>
                     <div className="num" style={{ fontSize: 30, fontWeight: 800, color: AI_ACCENT.eleven, lineHeight: 1.1 }}>
-                      {data.elevenlabs.nextInvoiceUsd != null ? brl(toBrl(data.elevenlabs.nextInvoiceUsd, 'USD')) : '—'}
+                      {data.elevenBilledBrl ? brl(data.elevenBilledBrl) : '—'}
                     </div>
                     <div style={{ fontSize: 12.5, color: AI_CARD.mid, marginTop: 6 }}>
-                      {data.elevenlabs.nextInvoiceUsd != null ? `${usdFmt(data.elevenlabs.nextInvoiceUsd)} na próxima fatura` : 'Sem fatura prevista'}
-                      {data.elevenlabs.resetAt ? ` · ${fmtDate(data.elevenlabs.resetAt.slice(0, 10))}` : ''}
+                      {data.elevenBilledBrl ? 'lançado no Financeiro no mês' : 'nada lançado no mês: lance a fatura (plano + excedente)'}
+                      {data.elevenlabs.resetAt ? ` · próximo ciclo ${fmtDate(data.elevenlabs.resetAt.slice(0, 10))}` : ''}
                     </div>
                   </div>
                   <div>
@@ -848,7 +850,7 @@ function PnlPanel() {
     <div className="adm-panel col-12">
       <div className="adm-panel-hdr">
         <div className="adm-panel-title">Resultado e ponto de equilíbrio</div>
-        <div className="adm-panel-sub">EBITDA = receita líquida (bruto - taxas de venda - reembolsos - impostos) - custos de operação (todas as saídas, menos impostos e reembolsos)</div>
+        <div className="adm-panel-sub">EBITDA = receita líquida (bruto - taxas de venda - reembolsos - impostos) - custos de operação (todas as saídas, menos impostos e reembolsos). Despesa anual entra como 1/12 por mês.</div>
       </div>
       <div className="adm-panel-body">
         {err && <div className="adm-alert crit">{err}</div>}
@@ -1054,7 +1056,7 @@ export default function FinancePage() {
           {[
             { label: 'Entradas', value: income, ctx: RANGE_LABEL[range], color: 'var(--ok)' },
             { label: 'Saídas', value: expense, ctx: RANGE_LABEL[range], color: 'var(--t1)' },
-            { label: 'Resultado', value: result, ctx: income > 0 ? `Margem de ${Math.round((result / income) * 100)}%` : RANGE_LABEL[range], color: result < 0 ? 'var(--err)' : 'var(--t1)' },
+            { label: 'Resultado de caixa', value: result, ctx: `${income > 0 ? `Margem de ${Math.round((result / income) * 100)}% · ` : ''}só o que já foi pago e recebido; o EBITDA abaixo conta também o que está a pagar`, color: result < 0 ? 'var(--err)' : 'var(--t1)' },
             { label: 'A pagar em 30 dias', value: toPay30, ctx: overdue ? `${overdue} vencido${overdue > 1 ? 's' : ''}` : `${upcoming.length} vencimento${upcoming.length === 1 ? '' : 's'}`, color: overdue ? 'var(--err)' : 'var(--t1)' },
           ].map(k => (
             <div key={k.label} className="kpi-card col-3">

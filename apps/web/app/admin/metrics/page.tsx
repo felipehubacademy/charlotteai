@@ -7,7 +7,7 @@ import { RefreshCw, TriangleAlert, ChevronUp, ChevronDown, Minus } from 'lucide-
 interface MetricsResponse {
   range: { from: string; to: string; days: number };
   revenue: {
-    mrr: number; arr: number; activeSubs: number; monthlySubs: number; yearlySubs: number;
+    mrr: number; arr: number; activeSubs: number; payingTotal?: number; monthlySubs: number; yearlySubs: number;
     onTrial: number; trialConversionPct: number | null; churnPct: number | null;
     trialConversion: { converted: number; total: number };
     churn: { lost: number; base: number };
@@ -716,13 +716,13 @@ export default function MetricsPage() {
             accent="var(--ok)" delay={120}
             tip="Dinheiro que de fato entrou no período: o número grande é o líquido (o que a loja ou o Asaas repassa, depois de taxa e imposto) e o rodapé mostra o bruto, o que o aluno pagou. Taxas: Apple 32,4% no 1º ano (18% depois, ou desde o início com o programa de pequenas empresas), Google Play 15%, Asaas pela taxa real de cada cobrança. Reembolsos não são somados; aparecem no rodapé." />
         </div>
-        <div className="col-3"><KpiCard label="Assinantes pagantes" value={g?.revenue.activeSubs} ctx={g ? `${g.revenue.monthlySubs} mensais · ${g.revenue.yearlySubs} anuais · loja ${g.revenue.subs.paidStore} · site ${g.revenue.subs.paidSite}` : undefined} delay={180} tip="Quem já foi cobrado e segue com a renovação ativa. Quem cancelou e ainda tem acesso aparece em Cancelaram, ainda com acesso; quem está nos 7 dias grátis, em Em teste grátis." /></div>
-        <div className="col-3"><KpiCard label="Em teste grátis" value={g?.revenue.onTrial} ctx={g ? `loja ${g.revenue.subs.trialStore} · site ${g.revenue.subs.trialSite}${g.revenue.subs.trialLegacy ? ` · teste antigo ${g.revenue.subs.trialLegacy}` : ''}` : undefined} delay={240} tip="Loja e site: 7 dias grátis com cartão (a cobrança vem no fim), sem quem já cancelou. O teste antigo (sem cartão, termina até 02/11/2026) some daqui quando o último vencer." /></div>
+        <div className="col-3"><KpiCard label="Pagantes" value={g?.revenue.payingTotal ?? g?.revenue.activeSubs} ctx={g ? `${g.revenue.activeSubs} renovando (${g.revenue.monthlySubs} mensais · ${g.revenue.yearlySubs} anuais)${g.revenue.subs.cancelledPaid ? ` · ${g.revenue.subs.cancelledPaid} cancelou e usa até o fim` : ''}` : undefined} delay={180} tip="Quem já foi cobrado e ainda tem acesso, como na Visão geral e em Usuários. Inclui quem cancelou a renovação e usa até o fim do período pago." /></div>
+        <div className="col-3"><KpiCard label="Em teste grátis" value={g?.revenue.onTrial} ctx={g ? `loja ${g.revenue.subs.trialStore} · site ${g.revenue.subs.trialSite}${g.revenue.subs.trialLegacy ? ` · teste antigo ${g.revenue.subs.trialLegacy}` : ''}${g.revenue.subs.cancelledTrial ? ` · ${g.revenue.subs.cancelledTrial} cancelaram e usam até o fim` : ''}` : undefined} delay={240} tip="Quem está nos 7 dias grátis, como na Visão geral e em Usuários, inclusive quem já cancelou (usa até o fim do teste e não é cobrado). O teste antigo (sem cartão, termina até 02/11/2026) some daqui quando o último vencer." /></div>
         <div className="col-3">
           <KpiCard label="Cancelaram, ainda com acesso" value={g?.revenue.subs.cancelledWithAccess}
             ctx={g ? `${g.revenue.subs.cancelledPaid} já pagaram · ${g.revenue.subs.cancelledTrial} no teste` : undefined} delay={300}
             accent={g && g.revenue.subs.cancelledWithAccess > 0 ? 'var(--warn)' : undefined}
-            tip="Cancelaram a renovação, mas o acesso só termina no fim do ciclo pago ou do teste. Não entram na receita mensal nem em Em teste grátis." />
+            tip="Cancelaram a renovação, mas o acesso só termina no fim do ciclo pago ou do teste. Já estão contados em Pagantes ou em Em teste grátis; não entram na receita mensal." />
         </div>
         <div className="col-3">
           <KpiCard label="Cancelamentos no período" display={fmtPct(g?.revenue.churnPct ?? null)}
@@ -736,7 +736,7 @@ export default function MetricsPage() {
             accent={g?.revenue.trialConversionPct != null && g.revenue.trialConversionPct > 15 ? 'var(--ok)' : undefined}
             tip="Só o teste com cartão (loja e site): quem teve o teste e depois foi cobrado (mesmo que tenha cancelado depois) ÷ (esses + testes que terminaram sem cobrança). Quem ainda está no teste não entra, nem compra direta no Pix, nem o teste antigo sem cartão." />
         </div>
-        <div className="col-3"><KpiCard label="Cobranças em 7 dias" value={g?.revenue.renewals7d} ctx={g ? `1ª cobrança do teste ${g.revenue.charges7d.firstCharge} · renovação ${g.revenue.charges7d.renewal}` : undefined} delay={480} tip="Assinaturas ativas (loja e site, sem as canceladas) com cobrança nos próximos 7 dias: a 1ª cobrança de quem está no teste grátis e a renovação de quem já paga." /></div>
+        <div className="col-3"><KpiCard label="Cobranças em 7 dias" value={g?.revenue.renewals7d} ctx={g ? `1ª cobrança do teste ${g.revenue.charges7d.firstCharge} · renovação ${g.revenue.charges7d.renewal}` : undefined} delay={480} tip="Assinaturas ativas (loja e site, sem as canceladas) com cobrança hoje e nos 6 dias seguintes, pelo calendário de Brasília (a mesma janela da Visão geral): a 1ª cobrança de quem está no teste grátis e a renovação de quem já paga." /></div>
         <div className="col-3">
           <KpiCard label="Pagantes sem estudar há 14 dias" value={g?.revenue.inactivePaying}
             ctx={g ? `de ${fmtN(g.revenue.activeSubs)} pagantes` : undefined} delay={540}

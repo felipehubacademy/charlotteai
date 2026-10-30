@@ -7,6 +7,7 @@
 //  - Os quatro grupos de usuários (degustação, teste grátis, pagantes, sem acesso) somam exatamente o total.
 // Sem números pedagógicos (lições, onde travaram): isso fica no Pedagógico.
 import { countsInUnitCost } from '@/lib/unit-cost';
+import { cachedCost, openaiDaily } from '@/lib/provider-costs';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { revenueAtMs } from '@/lib/revenue-day';
 import { lateSignupWelcomes } from '@/lib/signup-welcome';
@@ -192,14 +193,15 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   const practicesFrom = iso(brtDayStart(today - 30));
   const weekAgo = iso(nowMs - 7 * DAY);
   const monthKey = dayKey(today).slice(0, 7);
-  const pnlFrom = (() => { const [y, m] = monthKey.split('-').map(Number); return new Date(Date.UTC(y, m - 6, 1)).toISOString().slice(0, 10); })();
+  // 12 meses para trás: despesa anual entra como 1/12 em cada mês dos 12 a partir do vencimento.
+  const pnlFrom = (() => { const [y, m] = monthKey.split('-').map(Number); return new Date(Date.UTC(y, m - 12, 1)).toISOString().slice(0, 10); })();
   const nextMonthFirst = (() => { const [y, m] = monthKey.split('-').map(Number); return new Date(Date.UTC(y, m, 1)).toISOString().slice(0, 10); })();
 
   type ConvRow = { id: string; channel: string; status: string; created_at: string; last_inbound_at: string | null };
   type MsgRow = { conversation_id: string; direction: string; author: string | null; created_at: string };
 
   const [
-    usersAll, practices, progress, revAll, ckAll, purchaseEvents, usage,
+    usersAll, practices, progress, revAll, ckAll, purchaseEvents, daily,
     weekConvs, openConvs, capacityRes, opsAlertsRes, opsErrorsRes, outboxStuckRes, welcome, financeRes,
   ] = await Promise.all([
     paged<UserRow>((a, b) => supabase.from('charlotte_users')
@@ -218,11 +220,8 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     // Compra na loja (início do teste grátis de 7 dias), registrada pelo app.
     paged<{ user_id: string; created_at: string }>((a, b) => supabase.from('charlotte_analytics_events').select('user_id, created_at')
       .eq('event_name', 'subscription_purchased').order('id').range(a, b)),
-    // Custo de IA: hoje e os 7 dias anteriores (para a média).
-    pagedParallel<{ user_id: string | null; cost_usd: number | string; created_at: string }>(
-      () => supabase.from('openai_usage').select('id', { count: 'exact', head: true }).gte('created_at', iso(brtDayStart(today - 7))),
-      (a, b) => supabase.from('openai_usage').select('user_id, cost_usd, created_at').gte('created_at', iso(brtDayStart(today - 7))).order('id').range(a, b),
-    ).catch(() => null),
+    // Custo de IA: valor real diário da OpenAI, guardado pela sincronização (renova se tiver mais de 2 h).
+    cachedCost('openai-daily', 2 * 3600_000, () => openaiDaily(8)).catch(() => null),
     paged<ConvRow>((a, b) => supabase.from('support_conversations').select('id, channel, status, created_at, last_inbound_at').gte('created_at', weekAgo).order('id').range(a, b)),
     paged<ConvRow>((a, b) => supabase.from('support_conversations').select('id, channel, status, created_at, last_inbound_at').in('status', ['escalated', 'open']).order('id').range(a, b)),
     supabase.rpc('capacity_usage'),
@@ -231,7 +230,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     supabase.from('email_outbox').select('id', { count: 'exact', head: true }).is('sent_at', null).gte('attempts', 3),
     lateSignupWelcomes().catch(() => ({ late: 0, stuck: 0 })),
     // Despesas dos últimos 6 meses no Financeiro (custo por usuário no mês atual e resultado mês a mês).
-    supabase.from('finance_entries').select('category, amount_brl, status, unit_cost, due_date').eq('kind', 'expense').neq('status', 'canceled')
+    supabase.from('finance_entries').select('category, amount_brl, status, unit_cost, due_date, recurrence').eq('kind', 'expense').neq('status', 'canceled')
       .gte('due_date', pnlFrom).lt('due_date', nextMonthFirst).limit(5000),
   ]);
 
@@ -345,11 +344,18 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
 
   // Custo por usuário no mês: despesas lançadas que contam como operação + taxas de venda, ÷ ativos do mês e ÷ pagantes.
   const costByCat = new Map<string, number>();
-  type FinRow = { category: string; amount_brl: number | string | null; unit_cost: boolean | null; due_date: string };
+  type FinRow = { category: string; amount_brl: number | string | null; unit_cost: boolean | null; due_date: string; recurrence: string | null };
   const finRows = (financeRes.data ?? []) as FinRow[];
+  // Quanto de uma despesa cai no mês: anual = 1/12 nos 12 meses a partir do vencimento; o resto, inteira no mês do vencimento.
+  const monthIdx = (k: string) => { const [y, m] = k.split('-').map(Number); return y * 12 + m - 1; };
+  const shareIn = (e: FinRow, key: string) => {
+    const diff = monthIdx(key) - monthIdx(e.due_date.slice(0, 7));
+    if (e.recurrence === 'yearly') return diff >= 0 && diff < 12 ? Number(e.amount_brl ?? 0) / 12 : 0;
+    return diff === 0 ? Number(e.amount_brl ?? 0) : 0;
+  };
   for (const e of finRows) {
-    if (!e.due_date.startsWith(monthKey) || !countsInUnitCost(e)) continue;
-    costByCat.set(e.category, (costByCat.get(e.category) ?? 0) + Number(e.amount_brl ?? 0));
+    const v = countsInUnitCost(e) ? shareIn(e, monthKey) : 0;
+    if (v) costByCat.set(e.category, (costByCat.get(e.category) ?? 0) + v);
   }
   const salesFees = monthCharges.reduce((s, r) => s + Math.max(0, grossOf(r) - Number(r.net_brl ?? 0)), 0);
   const activeMonth = new Set<string>();
@@ -374,9 +380,8 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     const gross = charges.reduce((s, r) => s + grossOf(r), 0);
     const fees = charges.reduce((s, r) => s + Math.max(0, grossOf(r) - Number(r.net_brl ?? 0)), 0);
     const refunds = rev.filter(r => r.event_type === 'REFUND' && revMonth(r) === key).reduce((s, r) => s + Math.abs(Number(r.net_brl ?? 0)), 0);
-    const rows = finRows.filter(e => e.due_date.startsWith(key));
-    const taxes = rows.filter(e => e.category === 'Impostos').reduce((s, e) => s + Number(e.amount_brl ?? 0), 0);
-    const opex = rows.filter(e => !PNL_EXCLUDED.includes(e.category)).reduce((s, e) => s + Number(e.amount_brl ?? 0), 0);
+    const taxes = finRows.filter(e => e.category === 'Impostos').reduce((s, e) => s + shareIn(e, key), 0);
+    const opex = finRows.filter(e => !PNL_EXCLUDED.includes(e.category)).reduce((s, e) => s + shareIn(e, key), 0);
     const netRevenue = gross - fees - refunds - taxes;
     const ebitda = netRevenue - opex;
     return {
@@ -532,18 +537,13 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
       : { key: 'capacity', ok: true, label: `Banco em ${dbPct}% do limite` });
   }
 
-  // Custo de IA hoje (US$) x média dos 7 dias anteriores; aviso se hoje já passou do dobro da média.
-  if (usage) {
-    const costByDay = new Map<number, number>();
-    for (const r of usage) {
-      if (r.user_id && !notTeam(r.user_id)) continue; // equipe fora, como em Métricas
-      const d = brtDay(ms(r.created_at));
-      costByDay.set(d, (costByDay.get(d) ?? 0) + Number(r.cost_usd || 0));
-    }
-    const costToday = costByDay.get(today) ?? 0;
-    let sum = 0;
-    for (let d = today - 7; d <= today - 1; d++) sum += costByDay.get(d) ?? 0;
-    const avg = sum / 7;
+  // Custo de IA hoje (US$, valor real da OpenAI guardado pela sincronização de hora em hora) x média dos 7 dias anteriores;
+  // aviso se hoje já passou do dobro da média. Os dias seguem o calendário da OpenAI (UTC).
+  if (daily?.value?.length) {
+    const todayUtc = new Date(nowMs).toISOString().slice(0, 10);
+    const costToday = daily.value.find(d => d.date === todayUtc)?.usd ?? 0;
+    const prev = daily.value.filter(d => d.date < todayUtc).slice(-7);
+    const avg = prev.length ? prev.reduce((a, d) => a + d.usd, 0) / prev.length : 0;
     const fmt = (n: number) => n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     items.push({
       key: 'ai', ok: !(avg > 0 && costToday > avg * 2),

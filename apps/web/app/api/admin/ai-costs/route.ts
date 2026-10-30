@@ -20,7 +20,7 @@ import { requireAdmin, audit } from '@/lib/admin-auth';
 import { runAiCostReport } from '@/lib/ai-cost-report';
 import { fxToBrl } from '@/lib/fx';
 import { CHARACTERS } from '@/lib/characters';
-import { monthRange, openaiReal, azureReal, type Cost } from '@/lib/provider-costs';
+import { monthRange, openaiReal, azureReal, cachedCost, type Cost } from '@/lib/provider-costs';
 
 export const dynamic = 'force-dynamic';
 
@@ -127,17 +127,18 @@ export async function GET(req: NextRequest) {
 
   const prevMonth = (() => { const d = new Date(`${month}-01T12:00:00Z`); d.setUTCMonth(d.getUTCMonth() - 1); return d.toISOString().slice(0, 7); })();
 
-  const openaiFor = async (m: string): Promise<{ source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string }> => {
-    try {
-      const real = await openaiReal(m);
-      return real ? { source: 'real', ...real } : { source: 'estimate', ...(await openaiEstimate(m)) };
-    } catch (e) {
-      return { source: 'estimate', ...(await openaiEstimate(m)), error: e instanceof Error ? e.message : 'erro' };
-    }
+  // Valor real guardado (lib/provider-costs → provider_cost_cache): mês atual vale 30 min, meses fechados 1 dia.
+  // Abrir a tela não consulta mais a OpenAI/Azure toda vez (as APIs recusavam com 429 e a tela caía na estimativa).
+  const maxAge = (m: string) => (m === new Date().toISOString().slice(0, 7) ? 30 * 60_000 : 24 * 3600_000);
+  const openaiFor = async (m: string): Promise<{ source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string; at?: string | null }> => {
+    const c = await cachedCost(`openai:${m}`, maxAge(m), () => openaiReal(m));
+    if (c.value) return { source: 'real', ...c.value, at: c.at };
+    return { source: 'estimate', ...(await openaiEstimate(m)), error: c.error };
   };
   const azureFor = async (m: string): Promise<(Cost & { error?: string }) | null> => {
-    try { return await azureReal(m); }
-    catch (e) { return { currency: 'USD', total: 0, lines: [], error: e instanceof Error ? e.message : 'erro' }; }
+    const c = await cachedCost(`azure:${m}`, maxAge(m), () => azureReal(m));
+    if (c.value) return c.value;
+    return c.error ? { currency: 'USD', total: 0, lines: [], error: c.error } : null;
   };
 
   // Mês escolhido e mês anterior em paralelo, para a variação dos cards.
@@ -150,9 +151,15 @@ export async function GET(req: NextRequest) {
   const { data: posted } = await getSupabaseAdmin().from('finance_entries')
     .select('vendor').eq('category', 'Inteligência artificial').like('notes', `%[ai-cost ${month}]%`);
   const postedVendors = ((posted ?? []) as { vendor: string }[]).map(p => p.vendor);
+  // ElevenLabs: a API não informa o valor cobrado (a próxima fatura vem zerada); vale o que está lançado no Financeiro no mês.
+  const { end: monthEnd } = monthRange(month);
+  const { data: elRows } = await getSupabaseAdmin().from('finance_entries').select('amount_brl')
+    .eq('kind', 'expense').eq('vendor', 'ElevenLabs').neq('status', 'canceled')
+    .gte('due_date', `${month}-01`).lt('due_date', monthEnd.toISOString().slice(0, 10));
+  const elevenBilledBrl = Math.round(((elRows ?? []) as { amount_brl: number }[]).reduce((a, r) => a + Number(r.amount_brl ?? 0), 0) * 100) / 100;
 
   return NextResponse.json({
-    month, prevMonth, fx, openai, azure, elevenlabs: eleven, voice, liveCalls, posted: postedVendors,
+    month, prevMonth, fx, openai, azure, elevenlabs: eleven, elevenBilledBrl, voice, liveCalls, posted: postedVendors,
     prev: {
       openai: { usd: openaiPrev.usd, lines: openaiPrev.lines },
       azure: azurePrev && !azurePrev.error ? { total: azurePrev.total, currency: azurePrev.currency } : null,

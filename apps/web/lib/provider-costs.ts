@@ -1,6 +1,8 @@
 // Custo real dos provedores cobrados por uso (APIs de custo de cada um), por mês.
 // Usado na tela de custos de IA e na sincronização automática com o Financeiro (lib/cost-sync).
 
+import { getSupabaseAdmin as cacheDb } from '@/lib/supabase-admin';
+
 export function monthRange(month: string) {
   const [y, m] = month.split('-').map(Number);
   const start = new Date(Date.UTC(y, m - 1, 1));
@@ -110,4 +112,46 @@ export async function vercelReal(month: string): Promise<Cost | null> {
   }
   const arr = [...lines].map(([name, amount]) => ({ name, amount })).sort((a, b) => b.amount - a.amount);
   return { currency, total: arr.reduce((s, l) => s + l.amount, 0), lines: arr };
+}
+
+// ── Leitura guardada ────────────────────────────────────────────────────────
+// As APIs de custo recusam (429) quando são chamadas demais. A tela e a sincronização leem daqui:
+// se a última leitura real tem menos de maxAgeMs, usa ela; senão consulta o provedor e guarda.
+// Se o provedor falhar, devolve a última leitura guardada (com stale: true) em vez de cair na estimativa.
+
+export async function cachedCost<T>(key: string, maxAgeMs: number, read: () => Promise<T | null>): Promise<{ value: T | null; at: string | null; stale: boolean; error?: string }> {
+  const db = cacheDb();
+  const { data } = await db.from('provider_cost_cache').select('payload, updated_at').eq('key', key).maybeSingle();
+  const row = data as { payload: T; updated_at: string } | null;
+  if (row && Date.now() - new Date(row.updated_at).getTime() < maxAgeMs) return { value: row.payload, at: row.updated_at, stale: false };
+  try {
+    const value = await read();
+    if (value != null) {
+      const at = new Date().toISOString();
+      await db.from('provider_cost_cache').upsert({ key, payload: value as never, updated_at: at } as never);
+      return { value, at, stale: false };
+    }
+    return { value: null, at: null, stale: false };
+  } catch (e) {
+    const error = e instanceof Error ? e.message : String(e);
+    return row ? { value: row.payload, at: row.updated_at, stale: true, error } : { value: null, at: null, stale: false, error };
+  }
+}
+
+// OpenAI: custo real por dia (calendário UTC da API), dos últimos `days` dias até hoje.
+export async function openaiDaily(days = 8): Promise<{ date: string; usd: number }[] | null> {
+  const key = process.env.OPENAI_ADMIN_KEY;
+  if (!key) return null;
+  const start = new Date(); start.setUTCHours(0, 0, 0, 0); start.setUTCDate(start.getUTCDate() - (days - 1));
+  const url = new URL('https://api.openai.com/v1/organization/costs');
+  url.searchParams.set('start_time', String(Math.floor(start.getTime() / 1000)));
+  url.searchParams.set('bucket_width', '1d');
+  url.searchParams.set('limit', String(days + 1));
+  const r = await fetch(url, { headers: { Authorization: `Bearer ${key}` }, cache: 'no-store' });
+  if (!r.ok) throw new Error(`OpenAI costs ${r.status}`);
+  const j = await r.json();
+  return (j.data ?? []).map((b: { start_time: number; results?: { amount?: { value?: number } }[] }) => ({
+    date: new Date(b.start_time * 1000).toISOString().slice(0, 10),
+    usd: (b.results ?? []).reduce((s, x) => s + Number(x.amount?.value ?? 0), 0),
+  }));
 }

@@ -3,6 +3,8 @@
 //   GET  ?days=30               panorama da turma inteira + lista de alunos
 //   GET  ?userId=&days=30       ficha pedagógica de um aluno
 //   POST { userId, body }       anotação pedagógica (exige learning:notes)
+import { swrCached } from '@/lib/swr-cache';
+import { isTeamAccount } from '@/lib/admin-subscriptions';
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
@@ -23,10 +25,15 @@ export async function GET(req: NextRequest) {
   const supabase = getSupabaseAdmin();
 
   if (userId) return studentSheet(userId, since, days);
+  // O cálculo leva ~20 s: a tela recebe o último guardado na hora e ele se renova por trás a cada 2 minutos.
+  return NextResponse.json(await swrCached(`admin:learning:${days}`, 2 * 60_000, 60 * 60_000, () => learningSummary(days, since)));
+}
 
-  const [users, progress, practices, msgs, v2, tfAll] = await Promise.all([
-    fetchAll<{ id: string; name: string | null; charlotte_level: string | null; is_active: boolean | null; created_at: string }>((a, b) =>
-      supabase.from('charlotte_users').select('id, name, charlotte_level, is_active, created_at').order('created_at', { ascending: false }).range(a, b)),
+async function learningSummary(days: number, since: string) {
+  const supabase = getSupabaseAdmin();
+  const [usersAll, progressAll, practicesAll, msgsAll, v2All, tfAll] = await Promise.all([
+    fetchAll<{ id: string; name: string | null; charlotte_level: string | null; is_active: boolean | null; created_at: string; email: string | null; is_institutional: boolean | null; hide_from_ranking: boolean | null }>((a, b) =>
+      supabase.from('charlotte_users').select('id, name, charlotte_level, is_active, created_at, email, is_institutional, hide_from_ranking').order('created_at', { ascending: false }).range(a, b)),
     fetchAll<{ user_id: string; total_xp: number; streak_days: number; last_practice_date: string | null }>((a, b) =>
       supabase.from('charlotte_progress').select('user_id, total_xp, streak_days, last_practice_date').range(a, b)),
     fetchAll<{ user_id: string; practice_type: string; created_at: string }>((a, b) =>
@@ -38,6 +45,15 @@ export async function GET(req: NextRequest) {
     fetchAll<TrailFeedbackRow>((a, b) =>
       supabase.from('trail_feedback').select('error_free, corrections, created_at').gte('created_at', since).range(a, b), 50000),
   ]);
+
+  // Equipe fora (mesma regra da Visão geral, Usuários e Métricas).
+  const teamIds = new Set(usersAll.filter(isTeamAccount).map(u => String(u.id)));
+  const notTeam = (id: string | null | undefined) => !id || !teamIds.has(String(id));
+  const users = usersAll.filter(u => notTeam(u.id));
+  const progress = progressAll.filter(p => notTeam(p.user_id));
+  const practices = practicesAll.filter(p => notTeam(p.user_id));
+  const msgs = msgsAll.filter(m => notTeam((m as { user_id?: string }).user_id));
+  const v2 = v2All.filter(r => notTeam(r.user_id));
 
   const v2By = new Map<string, V2Row[]>();
   v2.forEach(r => v2By.set(r.user_id, [...(v2By.get(r.user_id) ?? []), r]));
@@ -84,7 +100,7 @@ export async function GET(req: NextRequest) {
   const g = grammarWithTrail(msgs, tfAll);
   const accAll = v2Accuracy(v2);
 
-  return NextResponse.json({
+  return {
     days,
     summary: {
       students: users.length,
@@ -100,7 +116,7 @@ export async function GET(req: NextRequest) {
     mispronounced: pron.topWords,
     idle,
     students,
-  });
+  };
 }
 
 async function studentSheet(userId: string, since: string, days: number) {

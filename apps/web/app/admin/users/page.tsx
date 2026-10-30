@@ -27,6 +27,7 @@ interface Stats {
   trialExpired: number; last30: number; last24h?: number; prev24h?: number; growthPct: number | null; activeToday: number; activeWeek: number;
   totalStudents?: number;
   taste?: { total: number; active: number; ended: number };
+  team?: number; noAccess?: number;
   cancelled?: { total: number; inTrial: number; paid: number; noAccess: number };
 }
 interface Form {
@@ -459,7 +460,7 @@ export default function AdminUsersPage() {
             {/* Funil: cadastrou → degustação ou teste grátis → pagante; depois quem cancelou. Institucionais ficam fora dos cards. */}
             <div className="col-3">
               <StatCard label="Total" value={stats.totalStudents ?? stats.total} delay={0}
-                sub={stats.institutional ? `Sem os ${stats.institutional} institucionais` : undefined} />
+                sub={stats.team ? `Sem as ${stats.team} contas da equipe` : undefined} />
             </div>
             <div className="col-3">
               <StatCard label="Degustação" value={stats.taste?.total ?? 0} delay={60}
@@ -484,7 +485,7 @@ export default function AdminUsersPage() {
                   </div>
                 ) : undefined} />
             </div>
-            <div className="col-3"><StatCard label="Teste encerrado" value={stats.trialExpired} accent={stats.trialExpired > 0 ? 'var(--warn)' : undefined} delay={300} /></div>
+            <div className="col-3"><StatCard label="Sem acesso" value={stats.noAccess ?? stats.trialExpired} delay={300} sub="teste ou assinatura encerrados" /></div>
             <div className="col-3">
               <StatCard label="Novos (24h)" value={stats.last24h ?? 0}
                 sub={`${stats.prev24h ?? 0} nas 24 h anteriores · ${stats.last30} em 30 dias`}
@@ -492,7 +493,7 @@ export default function AdminUsersPage() {
             </div>
             <div className="col-3">
               <StatCard label="Ativos hoje" value={stats.activeToday} accent="var(--ok)" delay={420}
-                sub={`${stats.activeWeek} nos últimos 7 dias`} />
+                sub={`fizeram alguma atividade · ${stats.activeWeek} nos últimos 7 dias`} />
             </div>
           </div>
         </div>

@@ -26,7 +26,7 @@ import { TASTE_DAYS } from '@/lib/taste';
 import { revenueAtMs } from '@/lib/revenue-day';
 import {
   DAY, BRT, brtDay, brtDayStart, dayKey, ms, isTeamAccount, chargeIndex, subscriptionKind, monthlyValueOf,
-  isStoreProduct as isStore, isSiteProduct as isSite, isAnnualProduct as isAnnual, isPaidKind, isTrialKind, type SubKind,
+  isStoreProduct as isStore, isSiteProduct as isSite, isAnnualProduct as isAnnual, isPaidKind, isTrialKind, firstChargeDay, type SubKind,
 } from '@/lib/admin-subscriptions';
 
 type DbError = { message: string } | null;
@@ -327,7 +327,9 @@ export async function GET(req: NextRequest) {
   const arr = mrr * 12;
   // MRR que entra se os testes atuais (não cancelados) virarem pagantes.
   const trialMrrPotential = trialsActive.reduce((sum, u) => sum + monthlyValue(u), 0);
-  const onTrial = subs.trialStore + subs.trialSite + subs.trialLegacy;
+  // Cards de pagantes e de teste contam também quem cancelou e ainda tem acesso (mesma regra da Visão geral e de Usuários).
+  const onTrial = subs.trialStore + subs.trialSite + subs.trialLegacy + subs.cancelledTrial;
+  const payingTotal = activeSubs.length + subs.cancelledPaid;
 
   // ── Conversão do teste com cartão ────────────────────────────────────────
   // Teve teste com cartão: loja (sempre tem) ou site com dias grátis. Convertido = teve alguma cobrança,
@@ -358,8 +360,10 @@ export async function GET(req: NextRequest) {
   const churnPct = payingAtStart.length === 0 ? null : Math.round((churnedFromStart / payingAtStart.length) * 100);
 
   // ── Cobranças dos próximos 7 dias ────────────────────────────────────────
-  const in7d = nowMs + 7 * DAY;
-  const due7d = (u: UserRow) => { const e = expMs(u); return e > nowMs && e <= in7d; };
+  // Mesma janela da Visão geral: hoje e os 6 dias seguintes (calendário de Brasília), pelo dia de cobrança.
+  const todayIdx = brtDay(nowMs);
+  const days7 = new Set(Array.from({ length: 7 }, (_, i) => dayKey(todayIdx + i)));
+  const due7d = (u: UserRow) => days7.has(firstChargeDay(u, siteCk));
   const firstCharges7d = trialsActive.filter(due7d).length;
   const renewalCharges7d = activeSubs.filter(due7d).length;
 
@@ -887,6 +891,7 @@ export async function GET(req: NextRequest) {
       mrr: round2(mrr),
       arr: round2(arr),
       activeSubs: activeSubs.length,
+      payingTotal,
       monthlySubs,
       yearlySubs,
       onTrial,

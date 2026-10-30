@@ -4,17 +4,19 @@
 // A linha conta no custo por usuário (unit_cost) e fica "a pagar" até o mês fechar; aí vira paga.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { fxToBrl } from '@/lib/fx';
-import { monthRange, openaiReal, azureReal, vercelReal } from '@/lib/provider-costs';
+import { monthRange, openaiReal, azureReal, vercelReal, cachedCost, openaiDaily } from '@/lib/provider-costs';
 
 type Reading = { amount: number; currency: string; note: string };
 type Provider = { vendor: string; label: string; category: string; read: (month: string) => Promise<Reading | null> };
 
 const PROVIDERS: Provider[] = [
   { vendor: 'OpenAI', label: 'OpenAI', category: 'Inteligência artificial', read: async m => {
-    const r = await openaiReal(m); return r && { amount: r.usd, currency: 'USD', note: 'Valor real (API de custos da OpenAI).' };
+    const c = await cachedCost(`openai:${m}`, 0, () => openaiReal(m)); if (!c.value && c.error) throw new Error(c.error);
+    const r = c.value; return r && { amount: r.usd, currency: 'USD', note: 'Valor real (API de custos da OpenAI).' };
   } },
   { vendor: 'Microsoft Azure', label: 'Azure', category: 'Inteligência artificial', read: async m => {
-    const r = await azureReal(m); return r && { amount: r.total, currency: r.currency, note: 'Valor real (Azure Cost Management).' };
+    const c = await cachedCost(`azure:${m}`, 0, () => azureReal(m)); if (!c.value && c.error) throw new Error(c.error);
+    const r = c.value; return r && { amount: r.total, currency: r.currency, note: 'Valor real (Azure Cost Management).' };
   } },
   { vendor: 'Vercel', label: 'Vercel', category: 'Infraestrutura e hospedagem', read: async m => {
     const r = await vercelReal(m); return r && { amount: r.total, currency: r.currency, note: 'Valor real (API de faturamento da Vercel).' };
@@ -30,6 +32,8 @@ export async function syncProviderCosts(nowMs = Date.now()): Promise<{ month: st
   const months = [current];
   if (Number(new Date(nowMs - 3 * 3600_000).toISOString().slice(8, 10)) <= 3) months.unshift(monthKeyOf(Date.parse(`${current}-01T12:00:00Z`) - 86400_000));
   const out: { month: string; vendor: string; result: string }[] = [];
+  // Custo diário real da OpenAI (faixa do topo da Visão geral) renovado junto.
+  await cachedCost('openai-daily', 0, () => openaiDaily(8)).catch(() => null);
 
   for (const month of months) {
     const { end } = monthRange(month);

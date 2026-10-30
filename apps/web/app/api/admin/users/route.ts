@@ -12,6 +12,8 @@ import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { inviteTemplate } from '@/lib/email-templates';
+import { computeUsersBlock } from '@/lib/admin-overview';
+import { isTeamAccount, brtDay, brtDayStart } from '@/lib/admin-subscriptions';
 import { chargeIndex, subscriptionKind, phaseOfKind, firstChargeDay, type ChargeRevRow, type ChargeCkRow } from '@/lib/admin-subscriptions';
 
 
@@ -228,17 +230,29 @@ export async function GET(req: NextRequest) {
   const prev30 = usersWithEng.filter(u => new Date(u.created_at) >= d60 && new Date(u.created_at) < d30).length;
   const growthPct = prev30 === 0 ? null : Math.round(((last30 - prev30) / prev30) * 100);
 
-  // Engagement stats
-  const activeToday = usersWithEng.filter(u =>
-    u.engagement?.lastActive && new Date(u.engagement.lastActive) >= d1
-  ).length;
-  const activeWeek = usersWithEng.filter(u =>
-    u.engagement?.lastActive && new Date(u.engagement.lastActive) >= d7
-  ).length;
+  // Engagement stats — mesma regra da Visão geral: ativo = fez alguma atividade (não só abriu o app),
+  // hoje no calendário de Brasília; equipe fora.
+  const todayStartIso = new Date(brtDayStart(brtDay(now.getTime()))).toISOString();
+  const d7StartIso = new Date(brtDayStart(brtDay(now.getTime()) - 6)).toISOString();
+  const practiceLast = (u: any) => engMap[String(u.id).toLowerCase()]?.lastActive ?? null;
+  const notTeamUsers = (usersWithEng as any[]).filter(u => !isTeamAccount(u));
+  const activeToday = notTeamUsers.filter(u => (practiceLast(u) ?? '') >= todayStartIso).length;
+  const activeWeek = notTeamUsers.filter(u => (practiceLast(u) ?? '') >= d7StartIso).length;
+
+  // Números dos cards: a mesma partição da Visão geral (lib/admin-overview), para baterem sempre.
+  const ub = (await computeUsersBlock()).users;
 
   return NextResponse.json({
     users: usersWithEng,
-    stats: { total, totalStudents, taste, cancelled, institutional, subscribers, onTrial, trialSplit, trialDetail, trialExpired, last30, last24h, prev24h, growthPct, activeToday, activeWeek },
+    stats: {
+      total, totalStudents: ub.total, team: total - ub.total, institutional,
+      taste: { ...taste, total: ub.taste },
+      cancelled: { ...cancelled, inTrial: ub.trialCancelled, paid: ub.payingCancelled },
+      subscribers: ub.paying, onTrial: ub.trial,
+      trialSplit: { loja: ub.trialStore, site: ub.trialSite, semCartao: ub.trialLegacy },
+      trialDetail, trialExpired, noAccess: ub.noAccess,
+      last30, last24h, prev24h, growthPct, activeToday, activeWeek,
+    },
   });
 }
 

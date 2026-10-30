@@ -7,6 +7,7 @@ export const dynamic = 'force-dynamic';
  * Sem disparo manual: o agendador (/api/notifications/scheduler) roda de hora em hora sozinho.
  */
 
+import { isTeamAccount } from '@/lib/admin-subscriptions';
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
@@ -52,7 +53,7 @@ export async function GET(req: NextRequest) {
     logsPage,
     logsCount,
   ] = await Promise.all([
-    fetchAll<{ expo_push_token: string | null }>((f, t) => supabase.from('charlotte_users').select('expo_push_token').order('id').range(f, t) as never),
+    fetchAll<{ expo_push_token: string | null; email: string | null; is_institutional: boolean | null; hide_from_ranking: boolean | null }>((f, t) => supabase.from('charlotte_users').select('expo_push_token, email, is_institutional, hide_from_ranking').order('id').range(f, t) as never),
     fetchAll<{ status: string }>((f, t) => supabase.from('notification_logs').select('status').gte('created_at', ago24h).order('created_at').range(f, t) as never),
     fetchAll<{ user_id: string; notification_type: string; status: string }>((f, t) =>
       supabase.from('notification_logs').select('user_id, notification_type, status').gte('created_at', ago7d).order('created_at').range(f, t) as never),
@@ -84,7 +85,7 @@ export async function GET(req: NextRequest) {
   ]);
 
   // ── Token health ────────────────────────────────────────────────────────────
-  const allUsers   = tokenRes;
+  const allUsers   = tokenRes.filter(u => !isTeamAccount(u)); // equipe fora, como nas outras telas
   const withToken  = allUsers.filter(u => u.expo_push_token?.startsWith('ExponentPushToken[')).length;
   const tokenStats = { total: allUsers.length, withToken, withoutToken: allUsers.length - withToken };
 
