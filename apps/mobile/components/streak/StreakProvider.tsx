@@ -9,6 +9,7 @@ import { useAchievementsContext } from '@/components/achievements/AchievementsPr
 import { StreakCelebrationModal } from '@/components/streak/StreakCelebration';
 import { fetchStreakStatus, StreakStatus } from '@/lib/streak';
 import { track } from '@/lib/analytics';
+import { supabase } from '@/lib/supabase';
 
 interface StreakContextValue {
   status: StreakStatus | null;
@@ -50,6 +51,12 @@ export function StreakProvider({ children }: { children: React.ReactNode }) {
       if (!s || !s.practiced_today || s.streak < 1) return;
       const seenKey = `streak_celebrated_${userId}_${s.today}`;
       if (await SecureStore.getItemAsync(seenKey).catch(() => null)) return;
+      // Visto hoje em outro aparelho (a conta guarda o dia): não repete.
+      const { data: seenRow } = await supabase.from('charlotte_users').select('streak_celebrated_on').eq('id', userId).maybeSingle();
+      if ((seenRow as { streak_celebrated_on?: string | null } | null)?.streak_celebrated_on === s.today) {
+        SecureStore.setItemAsync(seenKey, '1').catch(() => {});
+        return;
+      }
       // Convite do desafio: no máximo 3 vezes, uma por dia.
       const offersKey = `streak_challenge_offers_${userId}`;
       const raw = await SecureStore.getItemAsync(offersKey).catch(() => null);
@@ -76,7 +83,10 @@ export function StreakProvider({ children }: { children: React.ReactNode }) {
 
   // "Visto hoje" só ao fechar: se outra tela cheia impedir a abertura, a próxima chamada tenta de novo.
   const close = useCallback(() => {
-    if (userId && showing) SecureStore.setItemAsync(`streak_celebrated_${userId}_${showing.today}`, '1').catch(() => {});
+    if (userId && showing) {
+      SecureStore.setItemAsync(`streak_celebrated_${userId}_${showing.today}`, '1').catch(() => {});
+      supabase.from('charlotte_users').update({ streak_celebrated_on: showing.today }).eq('id', userId).then(() => {}, () => {});
+    }
     openRef.current = false;
     setShowing(null);
     refreshStreak();

@@ -482,6 +482,8 @@ export default function LearnSessionScreen() {
   const { playingMessageId, toggle: toggleAudio, stop: stopAudio } = useMessageAudioPlayer();
   const charlottePlayId = 'learn-session-phrase';
   const isPlaying = playingMessageId === charlottePlayId;
+  const isPlayingRef = useRef(false);
+  isPlayingRef.current = isPlaying;
 
   // Charlotte animated WebPs com alpha (rembg + isnet + alpha-matting).
   // expo-image faz loop nativo; trocar source faz cross-fade entre idle/cheering.
@@ -601,7 +603,15 @@ export default function LearnSessionScreen() {
       // 0. Curriculum v2 pre-generated audio (CDN URL stamped at compile time).
       // Cache key derived from URL hash so different voices/versions don't collide.
       if (preferredUrl) {
-        const urlKey = preferredUrl.split('/').pop()?.replace(/[^a-zA-Z0-9.]/g, '_') ?? fileKey;
+        // Nome do arquivo termina na extensão de verdade (".flac"/".mp3"): com a versão no fim do endereço
+        // (".flac?v=2") o nome virava ".flac_v_2" e o iPhone não reconhecia o áudio (frase muda).
+        const [pathPart, query = ''] = preferredUrl.split('?');
+        const base = pathPart.split('/').pop() ?? '';
+        const dot = base.lastIndexOf('.');
+        const stem = (dot > 0 ? base.slice(0, dot) : base).replace(/[^a-zA-Z0-9]/g, '_') || fileKey;
+        const ext = dot > 0 ? base.slice(dot + 1).replace(/[^a-zA-Z0-9]/g, '') : 'mp3';
+        const ver = (query.match(/(?:^|&)v=([^&]+)/)?.[1] ?? '').replace(/[^a-zA-Z0-9]/g, '');
+        const urlKey = `${stem}${ver ? `_v${ver}` : ''}.${ext}`;
         const v2Uri  = `${cacheDir}v2_${urlKey}`;
         const v2Info = await FileSystem.getInfoAsync(v2Uri);
         if (v2Info.exists) return v2Uri;
@@ -726,6 +736,8 @@ export default function LearnSessionScreen() {
       // acontece sob demanda no startRecording (aceitavel 100-300ms hit).
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false, interruptionMode: 'doNotMix' }).catch(() => {});
       await setIsAudioActiveAsync(true).catch(() => {});
+      if (Platform.OS === 'ios') recorderPreparedRef.current = false; // modo de tocar desfaz o gravador pronto
+      phrasePlayedRef.current = false;
     } catch {}
 
     // Always transition to listening — record button must always appear
@@ -837,7 +849,7 @@ export default function LearnSessionScreen() {
 
   // ── Pronunciation: play ────────────────────────────────────
   const handlePlayCharlotte = () => {
-    if (charlotteAudioUri) toggleAudio(charlottePlayId, charlotteAudioUri);
+    if (charlotteAudioUri) playPhrase(charlotteAudioUri);
   };
 
   // Ondas animadas no icone de speaker quando audio toca: alterna entre
@@ -880,7 +892,7 @@ export default function LearnSessionScreen() {
   // "Ouvir de novo" depois de errar duas vezes: volta para a frase e toca o áudio.
   const handleListenAgain = () => {
     handleRetryPron();
-    setTimeout(() => { if (charlotteAudioUriRef.current) toggleAudio(charlottePlayId, charlotteAudioUriRef.current); }, 150);
+    setTimeout(() => { if (charlotteAudioUriRef.current) playPhrase(charlotteAudioUriRef.current); }, 150);
   };
 
   const pronLogBase = () => ({
@@ -1004,6 +1016,40 @@ export default function LearnSessionScreen() {
     })();
     try { await preparingRef.current; } finally { preparingRef.current = null; }
   };
+  // iPhone: no modo de gravar o iOS manda o som para o alto-falante de ligação. Por isso o gravador só fica
+  // pronto DEPOIS que a frase da Charlotte (ou do Igorfina) termina; o toque no microfone grava na hora.
+  // Ouvir de novo volta antes para o modo de tocar (alto-falante principal).
+  const phrasePlayedRef = useRef(false);
+  const prepareIosWhenQuiet = async () => {
+    if (Platform.OS !== 'ios' || recorderPreparedRef.current || recordingRef.current || !micReadyRef.current) return;
+    if (preparingRef.current) return preparingRef.current;
+    preparingRef.current = (async () => {
+      try {
+        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+        await setIsAudioActiveAsync(true).catch(() => {});
+        await recorder.prepareToRecordAsync();
+        recorderPreparedRef.current = true;
+      } catch { recorderPreparedRef.current = false; }
+    })();
+    try { await preparingRef.current; } finally { preparingRef.current = null; }
+  };
+  const playPhrase = async (uri: string) => {
+    if (Platform.OS === 'ios' && recorderPreparedRef.current && !recordingRef.current) {
+      recorderPreparedRef.current = false;
+      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false, interruptionMode: 'doNotMix' }).catch(() => {});
+      await setIsAudioActiveAsync(true).catch(() => {});
+    }
+    toggleAudio(charlottePlayId, uri);
+  };
+  // A frase tocou e acabou (e o aluno está na hora de falar): prepara o gravador no iPhone.
+  useEffect(() => {
+    if (Platform.OS !== 'ios') return;
+    if (isPlaying) { phrasePlayedRef.current = true; return; }
+    if (!phrasePlayedRef.current || pronStatus !== 'listening') return;
+    if (!currentStep || currentStep.kind !== 'pronunciation' || currentStep.phrase.type !== 'repeat') return;
+    const t = setTimeout(() => { if (!isPlayingRef.current) prepareIosWhenQuiet(); }, 250);
+    return () => clearTimeout(t);
+  }, [isPlaying, pronStatus, stepIdx]); // eslint-disable-line react-hooks/exhaustive-deps
   const fileAsrEndRef = useRef<(() => void) | null>(null);
   useSpeechRecognitionEvent('end', () => { fileAsrEndRef.current?.(); });
 
