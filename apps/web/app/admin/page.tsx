@@ -280,10 +280,11 @@ export default function AdminOverviewPage() {
                     </div>
                   ))}
                 </div>
-                <div style={{ marginTop: 10, fontSize: 11.5, color: 'rgba(255,255,255,0.55)', fontVariantNumeric: 'tabular-nums' }}>
-                  {int(u.taste)} + {int(u.trial)} + {int(u.paying)} + {int(u.noAccess)} = {int(u.taste + u.trial + u.paying + u.noAccess)}
-                  {u.taste + u.trial + u.paying + u.noAccess !== u.total && ' (diferente do total: confira)'} · sem as contas da equipe
-                </div>
+                {u.taste + u.trial + u.paying + u.noAccess !== u.total && (
+                  <div style={{ marginTop: 10, fontSize: 11.5, color: 'var(--volt)' }}>
+                    Os quatro grupos somam {int(u.taste + u.trial + u.paying + u.noAccess)}, diferente do total: confira.
+                  </div>
+                )}
               </div>
             </div>
 
