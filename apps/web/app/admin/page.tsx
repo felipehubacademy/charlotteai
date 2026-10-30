@@ -359,6 +359,28 @@ export default function AdminOverviewPage() {
                 <Bars days={data.money.firstCharges7d.days.map(d => ({ date: d.date, a: d.store, b: d.site }))}
                   height={60} label={d => `${ddmm(d.date)}: ${d.a} na loja, ${d.b ?? 0} no site`} />
               </div>
+              {(() => {
+                const uc = data.money.unitCost;
+                const parts = [...uc.byCategory.filter(c => c.brl > 0).map(c => `${c.category} ${brl(c.brl)}`), `Taxas de venda ${brl(uc.salesFees)}`];
+                return (
+                  <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--b1)' }}>
+                    <div className="kpi-label" style={{ textTransform: 'uppercase' }}>Custo por usuário em {uc.label}</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+                      <div>
+                        <div className="kpi-value" style={{ fontSize: '1.5rem' }}>{uc.perActive == null ? '—' : brl(uc.perActive)}</div>
+                        <div className="kpi-context">por usuário ativo no mês ({int(uc.activeUsers)})</div>
+                      </div>
+                      <div>
+                        <div className="kpi-value" style={{ fontSize: '1.5rem' }}>{uc.perPayer == null ? '—' : brl(uc.perPayer)}</div>
+                        <div className="kpi-context">por pagante ({int(uc.payers)})</div>
+                      </div>
+                    </div>
+                    <div className="kpi-context" style={{ marginTop: 6 }}>
+                      Custo do mês {brl(uc.total)}: {parts.join(' · ')}. Vem do que está lançado no Financeiro; as taxas de venda entram sozinhas.
+                    </div>
+                  </div>
+                );
+              })()}
               <div style={{ marginTop: 12, fontSize: 12.5, color: 'var(--t2)' }}>
                 Cancelaram e ainda têm acesso: <strong style={{ color: 'var(--t1)' }}>{int(data.money.cancelledWithAccess.total)}</strong>
                 {' '}({int(data.money.cancelledWithAccess.trial)} no teste, {int(data.money.cancelledWithAccess.paying)} {data.money.cancelledWithAccess.paying === 1 ? 'pagante' : 'pagantes'})

@@ -59,6 +59,18 @@ export interface DayPoint { date: string; value: number }
 export interface TodayMetric { key: string; label: string; today: number; yesterday: number; series: DayPoint[]; money?: boolean }
 export interface AlertItem { key: string; ok: boolean; label: string; href?: string }
 
+// Custo de servir por usuário no mês: lançamentos do Financeiro nas categorias de operação
+// + taxas de venda retidas na fonte (lojas e site = bruto - líquido de cada cobrança).
+export const UNIT_COST_CATEGORIES = ['Inteligência artificial', 'Infraestrutura e hospedagem', 'Lojas e pagamentos', 'Domínios e e-mail'] as const;
+export interface UnitCost {
+  label: string;
+  total: number;
+  byCategory: { category: string; brl: number }[];
+  salesFees: number;
+  activeUsers: number; perActive: number | null;
+  payers: number; perPayer: number | null;
+}
+
 export interface Overview {
   generatedAt: string;
   today: string;
@@ -77,6 +89,7 @@ export interface Overview {
     month: { label: string; gross: number; net: number; charges: number; refunds: number; refundsBrl: number };
     firstCharges7d: { total: number; days: { date: string; store: number; site: number }[] };
     cancelledWithAccess: { total: number; trial: number; paying: number };
+    unitCost: UnitCost;
   };
   engagement: {
     d1: { pct: number | null; retained: number; eligible: number };
@@ -159,13 +172,15 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   // Atividades: 31 dias cobrem o funil (30 dias), a retenção (coorte de 14 dias) e os gráficos de 7 dias.
   const practicesFrom = iso(brtDayStart(today - 30));
   const weekAgo = iso(nowMs - 7 * DAY);
+  const monthKey = dayKey(today).slice(0, 7);
+  const nextMonthFirst = (() => { const [y, m] = monthKey.split('-').map(Number); return new Date(Date.UTC(y, m, 1)).toISOString().slice(0, 10); })();
 
   type ConvRow = { id: string; channel: string; status: string; created_at: string; last_inbound_at: string | null };
   type MsgRow = { conversation_id: string; direction: string; author: string | null; created_at: string };
 
   const [
     usersAll, practices, progress, revAll, ckAll, purchaseEvents, usage,
-    weekConvs, openConvs, capacityRes, opsAlertsRes, opsErrorsRes, outboxStuckRes, welcome,
+    weekConvs, openConvs, capacityRes, opsAlertsRes, opsErrorsRes, outboxStuckRes, welcome, financeRes,
   ] = await Promise.all([
     paged<UserRow>((a, b) => supabase.from('charlotte_users')
       .select('id, email, created_at, is_institutional, hide_from_ranking, subscription_status, subscription_product, subscription_expires_at, trial_ends_at')
@@ -195,6 +210,9 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     supabase.from('ops_errors').select('area').in('area', ['checkout', 'webhook', 'asaas']).gte('created_at', iso(nowMs - 3600000)).limit(200),
     supabase.from('email_outbox').select('id', { count: 'exact', head: true }).is('sent_at', null).gte('attempts', 3),
     lateSignupWelcomes().catch(() => ({ late: 0, stuck: 0 })),
+    // Despesas do mês corrente no Financeiro (para o custo por usuário).
+    supabase.from('finance_entries').select('category, amount_brl, status').eq('kind', 'expense').neq('status', 'canceled')
+      .gte('due_date', `${monthKey}-01`).lt('due_date', nextMonthFirst).limit(2000),
   ]);
 
   const { users, rev, cks, notTeam, kind, isTaster, usersBlock, firstChargeAt, siteCk, trial, paying } = partitionUsers(usersAll, revAll, ckAll, nowMs);
@@ -305,6 +323,27 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   }
   const charge7Days = chargeDays.map(date => ({ date, ...charge7.get(date)! }));
 
+  // Custo por usuário no mês: despesas lançadas (categorias de operação) + taxas de venda, ÷ ativos do mês e ÷ pagantes.
+  const costByCat = new Map<string, number>();
+  for (const e of (financeRes.data ?? []) as { category: string; amount_brl: number | string | null }[]) {
+    if (!(UNIT_COST_CATEGORIES as readonly string[]).includes(e.category)) continue;
+    costByCat.set(e.category, (costByCat.get(e.category) ?? 0) + Number(e.amount_brl ?? 0));
+  }
+  const salesFees = monthCharges.reduce((s, r) => s + Math.max(0, grossOf(r) - Number(r.net_brl ?? 0)), 0);
+  const activeMonth = new Set<string>();
+  for (let d = monthStartIdx; d <= today; d++) for (const id of activeOnDay.get(d) ?? []) activeMonth.add(id);
+  const unitTotal = [...costByCat.values()].reduce((a, b) => a + b, 0) + salesFees;
+  const unitCost: UnitCost = {
+    label: monthLabel,
+    total: round2(unitTotal),
+    byCategory: UNIT_COST_CATEGORIES.map(category => ({ category, brl: round2(costByCat.get(category) ?? 0) })),
+    salesFees: round2(salesFees),
+    activeUsers: activeMonth.size,
+    perActive: activeMonth.size ? round2(unitTotal / activeMonth.size) : null,
+    payers: usersBlock.paying,
+    perPayer: usersBlock.paying ? round2(unitTotal / usersBlock.paying) : null,
+  };
+
   const money = {
     mrr: round2(mrr),
     renewing: renewing.length,
@@ -324,6 +363,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
       trial: usersBlock.trialCancelled,
       paying: usersBlock.payingCancelled,
     },
+    unitCost,
   };
 
   // ── Engajamento ──────────────────────────────────────────────────────────
@@ -448,6 +488,15 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
       key: 'ai', ok: !(avg > 0 && costToday > avg * 2),
       label: `Custo de IA hoje US$ ${fmt(costToday)} (média US$ ${fmt(avg)} por dia)`,
       href: avg > 0 && costToday > avg * 2 ? '/admin/finance' : undefined,
+    });
+  }
+
+  // Custo por usuário no mês (detalhe no painel Dinheiro).
+  if (unitCost.perActive != null) {
+    const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    items.push({
+      key: 'unit_cost', ok: true,
+      label: `Custo por usuário em ${unitCost.label} ${brl(unitCost.perActive)}${unitCost.perPayer != null ? ` (por pagante ${brl(unitCost.perPayer)})` : ''}`,
     });
   }
 
