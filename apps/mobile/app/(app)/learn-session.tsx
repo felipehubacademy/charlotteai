@@ -601,7 +601,15 @@ export default function LearnSessionScreen() {
       // 0. Curriculum v2 pre-generated audio (CDN URL stamped at compile time).
       // Cache key derived from URL hash so different voices/versions don't collide.
       if (preferredUrl) {
-        const urlKey = preferredUrl.split('/').pop()?.replace(/[^a-zA-Z0-9.]/g, '_') ?? fileKey;
+        // Nome do arquivo termina na extensão de verdade (".flac"/".mp3"): com a versão no fim do endereço
+        // (".flac?v=2") o nome virava ".flac_v_2" e o iPhone não reconhecia o áudio (frase muda).
+        const [pathPart, query = ''] = preferredUrl.split('?');
+        const base = pathPart.split('/').pop() ?? '';
+        const dot = base.lastIndexOf('.');
+        const stem = (dot > 0 ? base.slice(0, dot) : base).replace(/[^a-zA-Z0-9]/g, '_') || fileKey;
+        const ext = dot > 0 ? base.slice(dot + 1).replace(/[^a-zA-Z0-9]/g, '') : 'mp3';
+        const ver = (query.match(/(?:^|&)v=([^&]+)/)?.[1] ?? '').replace(/[^a-zA-Z0-9]/g, '');
+        const urlKey = `${stem}${ver ? `_v${ver}` : ''}.${ext}`;
         const v2Uri  = `${cacheDir}v2_${urlKey}`;
         const v2Info = await FileSystem.getInfoAsync(v2Uri);
         if (v2Info.exists) return v2Uri;

@@ -75,14 +75,15 @@ export function StreakScene({ status, offer, onClose }: { status: StreakStatus; 
 
   useEffect(() => {
     if (canOffer) offer.onShown();
-    Animated.sequence([
-      Animated.spring(flame, { toValue: 1, friction: 5, tension: 70, useNativeDriver: true }),
-      // Três tremidas e para: vivo, sem ficar repetindo na tela.
-      Animated.loop(Animated.sequence([
-        Animated.timing(flicker, { toValue: 1, duration: 260, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
-        Animated.timing(flicker, { toValue: 0, duration: 260, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
-      ]), { iterations: 3 }),
-    ]).start();
+    Animated.spring(flame, { toValue: 1, friction: 5, tension: 70, useNativeDriver: true }).start();
+    // Chama tremulando o tempo todo (como no plano da abertura): estica, balança e baixa, sem parar.
+    const flick = Animated.loop(Animated.sequence([
+      Animated.timing(flicker, { toValue: 1, duration: 260, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+      Animated.timing(flicker, { toValue: 0.35, duration: 220, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+      Animated.timing(flicker, { toValue: 0.85, duration: 240, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+      Animated.timing(flicker, { toValue: 0, duration: 300, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+    ]));
+    flick.start();
     const t = setTimeout(() => {
       setShown(n);
       Animated.sequence([
@@ -95,7 +96,7 @@ export function StreakScene({ status, offer, onClose }: { status: StreakStatus; 
       else if (n === 30) setTimeout(() => voiceSFX.play('streak_30_days').catch(() => {}), 900);
     }, 650);
     Animated.timing(content, { toValue: 1, duration: 420, delay: 500, easing: Easing.out(Easing.cubic), useNativeDriver: true }).start();
-    return () => clearTimeout(t);
+    return () => { clearTimeout(t); flick.stop(); };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const title = n === 1
@@ -128,7 +129,10 @@ export function StreakScene({ status, offer, onClose }: { status: StreakStatus; 
         <Animated.View style={{
           transform: [
             { scale: flame.interpolate({ inputRange: [0, 1], outputRange: [0.4, 1] }) },
-            { scaleY: flicker.interpolate({ inputRange: [0, 1], outputRange: [1, 1.06] }) },
+            { translateY: flicker.interpolate({ inputRange: [0, 1], outputRange: [0, -5] }) },
+            { scaleY: flicker.interpolate({ inputRange: [0, 1], outputRange: [0.94, 1.1] }) },
+            { scaleX: flicker.interpolate({ inputRange: [0, 1], outputRange: [1.04, 0.95] }) },
+            { rotate: flicker.interpolate({ inputRange: [0, 1], outputRange: ['-4deg', '4deg'] }) },
           ],
           opacity: flame,
         }}>
