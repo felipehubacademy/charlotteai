@@ -42,6 +42,9 @@ const CANCELLED_EVENTS  = new Set(['CANCELLATION']);
 const EXPIRED_EVENTS    = new Set(['EXPIRATION', 'REFUND', 'BILLING_ISSUE']);
 const TRIAL_EVENTS      = new Set(['TRIAL_STARTED']);
 const TRIAL_CONVERTED   = new Set(['TRIAL_CONVERTED']);
+// A loja empurrou o vencimento (Google/Apple estendem teste ou período; a RevenueCat dá acesso
+// temporário quando a loja está fora). Só move o prazo para frente; cancelado continua cancelado.
+const EXTENSION_EVENTS  = new Set(['SUBSCRIPTION_EXTENDED', 'TEMPORARY_ENTITLEMENT_GRANT']);
 
 export async function POST(req: NextRequest) {
   // ── Auth ─────────────────────────────────────────────────────────────────
@@ -97,6 +100,40 @@ export async function POST(req: NextRequest) {
 
     console.log(`[RC webhook] minutes grant user ${appUserId} +${seconds}s (${productId}) granted=${granted}`);
     return NextResponse.json({ received: true, eventType, productId, seconds, granted });
+  }
+
+  // ── Extensão de prazo ─────────────────────────────────────────────────────
+  if (EXTENSION_EVENTS.has(eventType)) {
+    const extMs = Number(event?.expiration_at_ms ?? 0);
+    if (!(extMs > 0)) return NextResponse.json({ received: true, action: 'ignored_no_expiration', eventType });
+    const { data: cur } = await supabase
+      .from('charlotte_users')
+      .select('is_institutional, subscription_status, subscription_expires_at, trial_ends_at')
+      .eq('id', appUserId)
+      .maybeSingle();
+    if (!cur) return NextResponse.json({ received: true, action: 'unknown_user', eventType });
+    if (cur.is_institutional) return NextResponse.json({ received: true, action: 'skipped_institutional', eventType });
+    const curMs = cur.subscription_expires_at ? new Date(cur.subscription_expires_at).getTime() : 0;
+    if (extMs <= curMs) return NextResponse.json({ received: true, action: 'already_later', eventType });
+    const extIso = new Date(extMs).toISOString();
+    const keep = ['active', 'trial', 'cancelled'].includes(cur.subscription_status ?? '');
+    const inTrial = String(event?.period_type ?? '').toUpperCase() === 'TRIAL';
+    const { error: extErr } = await supabase
+      .from('charlotte_users')
+      .update({
+        subscription_expires_at: extIso,
+        is_active: true,
+        ...(keep ? {} : { subscription_status: 'active' }),
+        ...(inTrial && cur.trial_ends_at ? { trial_ends_at: extIso } : {}),
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', appUserId);
+    if (extErr) {
+      console.error('[RC webhook] extension update error:', extErr.message);
+      return NextResponse.json({ error: 'DB update failed' }, { status: 500 });
+    }
+    console.log(`[RC webhook] ${eventType} user ${appUserId} → expira ${extIso}`);
+    return NextResponse.json({ received: true, eventType, expires: extIso });
   }
 
   // ── Map event → subscription_status ──────────────────────────────────────
