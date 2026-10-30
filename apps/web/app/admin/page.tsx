@@ -3,7 +3,7 @@
 // Visão geral (tela inicial do /admin): o retrato do negócio agora, com dados ao vivo de /api/admin/overview.
 // Mesmas regras de Usuários, Métricas, Financeiro e Suporte; equipe fora. Sem números pedagógicos.
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { RefreshCw, TriangleAlert, CircleCheck, ArrowRight } from 'lucide-react';
 import { useAdminMe, canArea } from '@/lib/admin-context';
@@ -96,6 +96,68 @@ function Delta({ m }: { m: TodayMetric }) {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
+// Contador até a próxima atualização dos usuários (5, 4, 3, 2, 1): anel que esvazia e o número no meio.
+function RefreshCountdown({ tick }: { tick: number }) {
+  const [left, setLeft] = useState(USERS_REFRESH_MS / 1000);
+  const since = useRef(Date.now());
+  useEffect(() => { since.current = Date.now(); setLeft(USERS_REFRESH_MS / 1000); }, [tick]);
+  useEffect(() => {
+    const id = setInterval(() => {
+      const s = Math.max(1, Math.ceil((USERS_REFRESH_MS - (Date.now() - since.current)) / 1000));
+      setLeft(s);
+    }, 250);
+    return () => clearInterval(id);
+  }, []);
+  const total = USERS_REFRESH_MS / 1000;
+  const r = 7, c = 2 * Math.PI * r;
+  return (
+    <span title="Próxima atualização" style={{ position: 'relative', width: 18, height: 18, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" style={{ position: 'absolute', inset: 0, transform: 'rotate(-90deg)' }}>
+        <circle cx="9" cy="9" r={r} fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="2" />
+        <circle cx="9" cy="9" r={r} fill="none" stroke="var(--volt)" strokeWidth="2" strokeLinecap="round"
+          strokeDasharray={c} strokeDashoffset={c * (1 - left / total)} style={{ transition: 'stroke-dashoffset 0.25s linear' }} />
+      </svg>
+      <span style={{ fontSize: 9.5, fontWeight: 700, color: 'rgba(255,255,255,0.75)', lineHeight: 1 }}>{left}</span>
+    </span>
+  );
+}
+
+// Total de usuários ao vivo: brilho sutil a cada atualização; se entrou gente, sobe contando e acende em verde-limão.
+function LiveTotal({ value, tick }: { value: number; tick: number }) {
+  const [shown, setShown] = useState(value);
+  const [glow, setGlow] = useState<'none' | 'soft' | 'up'>('none');
+  const prev = useRef(value);
+  useEffect(() => {
+    const from = prev.current, to = value;
+    prev.current = value;
+    if (to === from) {
+      setGlow('soft');
+      const t = setTimeout(() => setGlow('none'), 450);
+      return () => clearTimeout(t);
+    }
+    setGlow('up');
+    const start = performance.now(), dur = 700;
+    let raf = 0;
+    const step = (now: number) => {
+      const k = Math.min(1, (now - start) / dur);
+      setShown(Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3))));
+      if (k < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    const t = setTimeout(() => setGlow('none'), 1600);
+    return () => { cancelAnimationFrame(raf); clearTimeout(t); };
+  }, [value, tick]);
+  return (
+    <div className="kpi-value" style={{
+      fontSize: '2.6rem',
+      color: glow === 'up' ? 'var(--volt)' : '#fff',
+      opacity: glow === 'soft' ? 0.72 : 1,
+      textShadow: glow === 'up' ? '0 0 18px rgba(220,255,74,0.45)' : 'none',
+      transition: 'color 0.6s ease, opacity 0.45s ease, text-shadow 0.6s ease',
+    }}>{int(shown)}</div>
+  );
+}
+
 export default function AdminOverviewPage() {
   const me = useAdminMe();
   const [data, setData] = useState<Overview | null>(null);
@@ -116,12 +178,14 @@ export default function AdminOverviewPage() {
   }, []);
   useEffect(() => { load(); }, [load]);
   // Atualiza sozinha com a aba aberta: usuários a cada 5 s, o resto a cada 60 s; tudo na hora em que a aba volta.
+  const [usersTick, setUsersTick] = useState(0); // conta as atualizações rápidas (contador e efeito no total)
   const loadUsers = useCallback(async () => {
     try {
       const res = await fetch('/api/admin/overview?part=users', { cache: 'no-store' });
       if (!res.ok) return;
       const j = await res.json() as { generatedAt: string; users: Overview['users'] };
       setData(d => (d ? { ...d, users: j.users, generatedAt: j.generatedAt } : d));
+      setUsersTick(t => t + 1);
     } catch { /* tenta de novo no próximo ciclo */ }
   }, []);
   useEffect(() => {
@@ -190,8 +254,11 @@ export default function AdminOverviewPage() {
               <div style={{ background: 'var(--accent)', color: '#fff', borderRadius: 'var(--r3)', padding: '20px 22px' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
                   <div>
-                    <div className="kpi-label" style={{ color: 'rgba(255,255,255,0.6)' }}>Total de usuários</div>
-                    <div className="kpi-value" style={{ color: '#fff', fontSize: '2.6rem' }}>{int(u.total)}</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <div className="kpi-label" style={{ color: 'rgba(255,255,255,0.6)' }}>Total de usuários</div>
+                      <RefreshCountdown tick={usersTick} />
+                    </div>
+                    <LiveTotal value={u.total} tick={usersTick} />
                     <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.7)' }}>
                       <span style={{ color: 'var(--volt)', fontWeight: 700 }}>+{int(u.newToday)} hoje</span> · {int(u.new30d)} nos últimos 30 dias
                     </div>
