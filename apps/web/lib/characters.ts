@@ -21,6 +21,11 @@ export interface Impression {
   callTag: string;
   elevenVoiceId: string;
   elevenSettings: VoiceSettings;
+  /** Voz em português da imitação (clone gravado em português): as partes em português saem nela, o inglês na voz
+   *  normal (como o Igor). Para o sotaque brasileiro também no inglês, basta pôr o clone em português em elevenVoiceId. */
+  elevenVoiceIdPt?: string;
+  /** Etiqueta da voz em português no agente de ligação (ex.: 'RodelaPt'); precisa existir no agente do ElevenLabs. */
+  callTagPt?: string;
   /** Modelo de voz do ElevenLabs (padrão: eleven_multilingual_v2). O v3 entende marcações de som como [hiccups]. */
   elevenModel?: 'eleven_v3';
   /** Sons característicos do personagem no áudio (só com eleven_v3): entram no áudio, nunca no texto da tela. */
@@ -183,13 +188,14 @@ export function splitByLanguage(text: string): { text: string; pt: boolean }[] {
   return out.map(x => ({ ...x, text: x.text.trim() })).filter(x => x.text);
 }
 
-/** Trechos da fala com a voz de cada um: português na voz em português do personagem (se tiver), o resto na voz normal.
- *  Imitação fala tudo na voz dela. */
+/** Trechos da fala com a voz de cada um: português na voz em português do personagem ou da imitação (se tiver),
+ *  o resto na voz normal. Imitação sem voz em português fala tudo na voz dela. */
 export function voiceSegments(c: Character, impression: Impression | null, text: string): { voiceId: string; settings?: VoiceSettings; model?: string; text: string }[] {
   const base = voiceFor(c, impression);
   if (!base) return [];
-  if (impression || !c.elevenVoiceIdPt) return [{ ...base, text }];
-  return splitByLanguage(text).map(seg => ({ voiceId: seg.pt ? c.elevenVoiceIdPt! : base.voiceId, settings: base.settings, text: seg.text }));
+  const ptVoice = impression ? impression.elevenVoiceIdPt : c.elevenVoiceIdPt;
+  if (!ptVoice) return [{ ...base, text }];
+  return splitByLanguage(text).map(seg => ({ voiceId: seg.pt ? ptVoice : base.voiceId, settings: base.settings, model: base.model, text: seg.text }));
 }
 
 /** Emenda mp3 de vozes diferentes num áudio só. Cada pedaço do ElevenLabs vem com etiqueta ID3 e um quadro "Info"

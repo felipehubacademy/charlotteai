@@ -4,7 +4,7 @@
 // <President>, <Hoops>) e só aceita conexão com token gerado aqui. A cada ligação o servidor
 // monta o prompt (personalidade do Free Chat em lib/characters + regras de voz e do nível do
 // aluno + nome e tópico) e a primeira fala, que vão como "overrides" da sessão.
-import { CHARACTERS, PT_VOICE_TAG, impressionOf, isPortugueseText, type Character, type Impression } from '@/lib/characters';
+import { CHARACTERS, PT_VOICE_TAG, impressionOf, isPortugueseText, splitByLanguage, type Character, type Impression } from '@/lib/characters';
 import { SYSTEM_PROMPTS } from '@/lib/live-voice-rules';
 
 export type CallLevel = 'Novice' | 'Inter' | 'Advanced';
@@ -64,6 +64,13 @@ function impressionsBlock(c: Character): string {
 ${list.join('\n')}`;
 }
 
+/** Fala inteira na voz da imitação: com voz em português, cada trecho na etiqueta do idioma dele. */
+function tagImpression(imp: Impression, text: string): string {
+  const plain = text.replace(/<\/?[A-Za-z]+>/g, '').trim();
+  if (!imp.callTagPt) return `<${imp.callTag}>${plain}</${imp.callTag}>`;
+  return splitByLanguage(plain).map(s => { const t = s.pt ? imp.callTagPt! : imp.callTag; return `<${t}>${s.text}</${t}>`; }).join(' ');
+}
+
 /** Ligação inteira com uma imitação (o aluno escolheu "Presidente" na ligação): toda fala na voz dela. */
 function wholeImpressionBlock(imp: Impression): string {
   const style = imp.style
@@ -71,7 +78,9 @@ function wholeImpressionBlock(imp: Impression): string {
     .replace(/, like a sudden bit in your show\./, ': the student chose to call this character, so you never drop it.')
     .replace(/Keep the SAME length limit as a normal reply\.?/i, 'Keep the same two-sentence limit.');
   return `THIS CALL IS WITH YOUR "${imp.name.toUpperCase()}" CHARACTER (the student picked it). ${style}
-Wrap EVERY reply, from the first to the last, in <${imp.callTag}>...</${imp.callTag}> (the tag switches to this character's voice), including the Portuguese parts. Never speak outside the tag and never use any other voice tag. Never write in ALL CAPS and use at most one exclamation mark per turn: in the voice, caps and stacked exclamations turn into shouting. Every reply follows the SAME level and language rules and the two-sentence limit. For a beginner (Novice), each reply after the greeting is, like an impression turn: ONE short catchphrase of the character in English (max 5 words), then a short reaction in Portuguese, ending with ONE short English question and its translation in parentheses.
+${imp.callTagPt
+    ? `Wrap EVERY English part in <${imp.callTag}>...</${imp.callTag}> and EVERY Portuguese part in <${imp.callTagPt}>...</${imp.callTagPt}> (the tags switch to this character's English and Brazilian Portuguese voices). Never speak outside these tags and never use any other voice tag.`
+    : `Wrap EVERY reply, from the first to the last, in <${imp.callTag}>...</${imp.callTag}> (the tag switches to this character's voice), including the Portuguese parts. Never speak outside the tag and never use any other voice tag.`} Never write in ALL CAPS and use at most one exclamation mark per turn: in the voice, caps and stacked exclamations turn into shouting. Every reply follows the SAME level and language rules and the two-sentence limit. For a beginner (Novice), each reply after the greeting is, like an impression turn: ONE short catchphrase of the character in English (max 5 words), then a short reaction in Portuguese, ending with ONE short English question and its translation in parentheses.
 If the student asks who you are, you are Igorfina doing your character, from the Queizy family; never say or confirm who the character imitates.`;
 }
 
@@ -183,7 +192,7 @@ ${AGENT_NOTES}${topic}${memory}${resume}${opts.level === 'Novice' ? `\n\n${NOVIC
     : (opts.level === 'Novice' ? FIRST_MESSAGES_NOVICE : FIRST_MESSAGES)[c.id] ?? [];
   const pick = (pool[Math.floor(Math.random() * pool.length)] ?? 'Hey {name}!').replace(/\{name\}/g, name);
   // Imitação: a primeira fala também sai na voz dela.
-  const firstMessage = whole ? `<${whole.callTag}>${pick}</${whole.callTag}>` : pick;
+  const firstMessage = whole ? tagImpression(whole, pick) : pick;
   return { agentId: FAMILY_AGENTS[c.id], prompt, firstMessage, characterName: whole ? whole.name : c.name, impression: whole };
 }
 
@@ -238,7 +247,7 @@ ${task}`;
     const words = plain.split(/\s+/).filter(Boolean).length;
     if (novice ? (words > 18 || !isPortugueseText(plain)) : words > 32) return opts.fallback;
     // Ligação com a imitação: a fala inteira na voz dela, mesmo se o modelo esquecer a etiqueta.
-    if (whole) text = `<${whole.callTag}>${text.replace(/<\/?[A-Za-z]+>/g, '').trim()}</${whole.callTag}>`;
+    if (whole) text = tagImpression(whole, text);
     return text.replace(/<\/?[A-Za-z]+>/g, '').length >= 8 && text.length <= 300 ? text : opts.fallback;
   } catch {
     return opts.fallback;
