@@ -291,7 +291,7 @@ export default function AdminOverviewPage() {
             {/* c. Hoje x ontem */}
             <div className="col-12">
               <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--t1)', margin: '4px 0 10px' }}>
-                Hoje, comparado com ontem <span style={{ fontWeight: 400, color: 'var(--t3)' }}>· horário de Brasília, hoje até agora</span>
+                Hoje, comparado com ontem
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 12 }}>
                 {data.todayVsYesterday.map(m => (
