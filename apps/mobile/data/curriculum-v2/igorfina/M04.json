@@ -334,6 +334,7 @@
             "worry",
             "problems"
           ],
+          "hint": "Sempre no plural",
           "answer": "worries",
           "explanation": "\"No worries\" = de boa, sem problema. Primo do \"no problem\"."
         },
@@ -406,9 +407,8 @@
           "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/6fd98924dac8066b.mp3"
         },
         {
-          "text": "No worries, we're all good here.",
-          "context": "de boa",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/igorfina/7a927f219892d107.mp3"
+          "text": "No worries, bro. It's all good.",
+          "context": "de boa"
         },
         {
           "text": "Let's go! One more game, my friend!",
@@ -1100,6 +1100,7 @@
             "problems",
             "way"
           ],
+          "hint": "Sempre no plural",
           "answer": "worries",
           "explanation": "\"No worries\" = de boa."
         },

@@ -225,6 +225,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 4. **word_bank** — "A: Sorry I'm late! B: No _____, bro."
    **Choices**: worries / problem of / worry / problems
+   **Hint**: Sempre no plural
    **Answer**: worries
    **Explanation**: "No worries" = de boa, sem problema. Primo do "no problem".
 
@@ -268,7 +269,7 @@ Igorfina fala no estilo do astro do basquete (imitação). Aluno repete; a pron�
 1. **"What's up, bro? Long time no see!"** — cumprimentar um amigo
 2. **"Bro, can you give me a hand?"** — pedir ajuda informal
 3. **"My bad, bro, that was my fault."** — foi mal
-4. **"No worries, we're all good here."** — de boa
+4. **"No worries, bro. It's all good."** — de boa
 5. **"Let's go! One more game, my friend!"** — energia na quadra
 
 ### 3. Role-play
@@ -720,6 +721,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 4. **word_bank** — "A: Sorry! B: No _____, bro. It happens."
    **Choices**: worries / worry / problems / way
+   **Hint**: Sempre no plural
    **Answer**: worries
    **Explanation**: "No worries" = de boa.
 

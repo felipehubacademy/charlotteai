@@ -90,19 +90,15 @@
           "explanation": "\"See you later\" é uma despedida informal muito comum. Significa \"até mais tarde\" ou simplesmente \"até mais\"."
         },
         {
-          "type": "fill_gap",
+          "type": "word_bank",
           "sentence": "A: How are you? B: I'm fine, _____.",
-          "hint": "Resposta educada após \"I'm fine\" (forma curta ou completa)",
-          "answer": "thank you",
-          "accepts": [
-            "thanks",
-            "thanks a lot",
-            "thank you so much",
-            "and you",
-            "how about you",
-            "thanks, and you",
-            "thank you, and you"
+          "choices": [
+            "thank you",
+            "please",
+            "sorry",
+            "welcome"
           ],
+          "answer": "thank you",
           "explanation": "\"Thank you\" é a forma educada padrão. Em conversa casual, \"Thanks\" funciona igual — ambas valem. Em inglês falado, \"Thanks\" é até mais frequente."
         },
         {
@@ -125,11 +121,13 @@
         {
           "type": "fix_error",
           "sentence": "Good meet you!",
-          "hint": "Frase padrão ao conhecer alguém",
+          "hint": "Falta uma palavrinha antes de \"meet\"",
           "answer": "Nice to meet you!",
           "accepts": [
             "Good to meet you!",
-            "Pleased to meet you!"
+            "Pleased to meet you!",
+            "Good to see you!",
+            "Nice to see you!"
           ],
           "explanation": "A frase correta é \"Nice to meet you\" (ou \"Good to meet you\") — \"Good meet you\" não existe em inglês. Note o \"to\" antes de \"meet\"."
         },
@@ -592,7 +590,7 @@
         {
           "type": "fix_error",
           "sentence": "You are from where?",
-          "hint": "Ordem da pergunta WH",
+          "hint": "Não responda: reescreva a pergunta começando com \"Where\"",
           "answer": "Where are you from?",
           "explanation": "Em perguntas WH-, a estrutura é: WH-word + auxiliar + sujeito. \"Where are you from?\" — não \"You are from where?\"."
         },

@@ -63,10 +63,9 @@
    **Answer**: later
    **Explanation**: "See you later" é uma despedida informal muito comum. Significa "até mais tarde" ou simplesmente "até mais".
 
-5. **fill_gap** — "A: How are you? B: I'm fine, _____."
-   **Hint**: Resposta educada após "I'm fine" (forma curta ou completa)
+5. **word_bank** — "A: How are you? B: I'm fine, _____."
+   **Choices**: thank you / please / sorry / welcome
    **Answer**: thank you
-   **Accepts**: thanks / thanks a lot / thank you so much / and you / how about you / thanks, and you / thank you, and you
    **Explanation**: "Thank you" é a forma educada padrão. Em conversa casual, "Thanks" funciona igual — ambas valem. Em inglês falado, "Thanks" é até mais frequente.
 
 6. **fill_gap** — "_____ morning! How are you?"
@@ -81,9 +80,9 @@
    **Explanation**: "See you later" é uma forma muito informal de dizer tchau. Entre amigos e colegas próximos.
 
 8. **fix_error** — "Good meet you!"
-   **Hint**: Frase padrão ao conhecer alguém
+   **Hint**: Falta uma palavrinha antes de "meet"
    **Answer**: Nice to meet you!
-   **Accepts**: Good to meet you! / Pleased to meet you!
+   **Accepts**: Good to meet you! / Pleased to meet you! / Good to see you! / Nice to see you!
    **Explanation**: A frase correta é "Nice to meet you" (ou "Good to meet you") — "Good meet you" não existe em inglês. Note o "to" antes de "meet".
 
 9. **fix_error** — "How you are?"
@@ -403,7 +402,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Explanation**: Pergunta de sim/não em inglês inverte o verbo: "Are you...?" em vez de "You are...".
 
 8. **fix_error** — "You are from where?"
-   **Hint**: Ordem da pergunta WH
+   **Hint**: Não responda: reescreva a pergunta começando com "Where"
    **Answer**: Where are you from?
    **Explanation**: Em perguntas WH-, a estrutura é: WH-word + auxiliar + sujeito. "Where are you from?" — não "You are from where?".
 
