@@ -24,7 +24,7 @@ export interface Impression {
   /** Modelo de voz do ElevenLabs (padrão: eleven_multilingual_v2). O v3 entende marcações de som como [hiccups]. */
   elevenModel?: 'eleven_v3';
   /** Sons característicos do personagem no áudio (só com eleven_v3): entram no áudio, nunca no texto da tela. */
-  vocalTics?: { opening: string; middle: string };
+  vocalTics?: { tag: string; rate: number };
   /** Jeito de falar nesta resposta (inglês). */
   style: string;
 }
@@ -123,11 +123,11 @@ ${SAFETY}`,
         name: 'Allday Negin',
         callTag: 'Allday',
         elevenVoiceId: 'PkLQErqx4L4jdvTCurly',
-        // Marca dele: pigarro e soluço. Só o v3 faz os sons; estabilidade no máximo segura o timbre do clone
+        // Marca dele: o soluço, com bastante frequência (pedido do Felipe em 2026-10-31; pigarro saiu). Só o v3 faz o som; estabilidade no máximo segura o timbre do clone
         // (testado com o Felipe em 2026-10-31: v3 "Robust" ficou melhor que o v4).
         elevenModel: 'eleven_v3',
         elevenSettings: { stability: 1, similarity_boost: 0.8, style: 0, use_speaker_boost: true },
-        vocalTics: { opening: '[clears throat]', middle: '[hiccups]' },
+        vocalTics: { tag: '[hiccups]', rate: 0.75 },
         style: `THIS REPLY ONLY: switch into your "all-day hype coach" impression, like a sudden bit in your show. Do NOT announce or explain it (never say "impression", "let me do", "impression time" or anything about imitating) and do NOT put the reply in quotes: just start talking as the character, at most with a natural interjection ("Bro...", "Let's go..."). Write the whole reply as an upbeat Brazilian fitness influencer who is motivated all day: hype, focus, constancy, morning routines, "all day, every day" energy, celebrating small daily wins and pushing the student to keep going ("All day, every day!", "Constancy is everything."). Keep the SAME length limit as a normal reply. Still answer what they said and ask one question back. No real names, no brands, no supplements or drugs.`,
       },
     },
@@ -250,15 +250,20 @@ export function wholeActivityImpressionStyle(imp: Impression): string {
     + ' EVERY reply in this activity must sound like this character (at least one of its catchphrases or its signature tone), even the short ones. Prefer its catchphrases over "my friend".';
 }
 
-/** Sons do personagem no áudio (ex.: Allday: pigarro no começo, soluço no meio), sem mudar o texto da tela.
- *  Sorteio leve para não cansar: pigarro em ~40% das falas, soluço em ~60% das que têm mais de uma frase. */
+/** Som do personagem no áudio (ex.: o soluço do Allday), sem mudar o texto da tela: entra depois de cada
+ *  frase com a chance de `rate`, e toda fala tem pelo menos um. */
 export function withVocalTics(imp: Impression | null, text: string): string {
   if (!imp?.vocalTics || imp.elevenModel !== 'eleven_v3') return text;
-  const sentences = text.match(/[^.!?…]+[.!?…]*["')\]]*\s*/g) ?? [text];
-  if (sentences.length > 1 && Math.random() < 0.6) {
-    const at = 1 + Math.floor(Math.random() * (sentences.length - 1));
-    sentences.splice(at, 0, `${imp.vocalTics.middle} `);
+  const { tag, rate } = imp.vocalTics;
+  const parts = (text.match(/[^.!?…,]+[.!?…,]*["')\]]*\s*/g) ?? [text]).map(p => p.trim()).filter(Boolean);
+  const gaps = parts.length - 1;
+  const hits = new Set<number>();
+  for (let g = 0; g < gaps; g++) if (/[.!?…]["')\]]*$/.test(parts[g]) && Math.random() < rate) hits.add(g);
+  if (!hits.size) {
+    // Nenhum sorteado (ou fala de uma frase só): um soluço depois de uma vírgula, senão no começo.
+    const commas = parts.slice(0, -1).map((p, g) => (p.endsWith(',') ? g : -1)).filter(g => g >= 0);
+    if (commas.length) hits.add(commas[Math.floor(Math.random() * commas.length)]);
+    else return `${tag} ${parts.join(' ')}`;
   }
-  const out = sentences.join('').trim();
-  return Math.random() < 0.4 ? `${imp.vocalTics.opening} ${out}` : out;
+  return parts.map((p, g) => (hits.has(g) ? `${p} ${tag}` : p)).join(' ');
 }
