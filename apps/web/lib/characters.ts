@@ -21,6 +21,10 @@ export interface Impression {
   callTag: string;
   elevenVoiceId: string;
   elevenSettings: VoiceSettings;
+  /** Modelo de voz do ElevenLabs (padrão: eleven_multilingual_v2). O v3 entende marcações de som como [hiccups]. */
+  elevenModel?: 'eleven_v3';
+  /** Sons característicos do personagem no áudio (só com eleven_v3): entram no áudio, nunca no texto da tela. */
+  vocalTics?: { opening: string; middle: string };
   /** Jeito de falar nesta resposta (inglês). */
   style: string;
 }
@@ -119,7 +123,11 @@ ${SAFETY}`,
         name: 'Allday Negin',
         callTag: 'Allday',
         elevenVoiceId: 'PkLQErqx4L4jdvTCurly',
-        elevenSettings: { stability: 0.5, similarity_boost: 0.8, style: 0.4, use_speaker_boost: true },
+        // Marca dele: pigarro e soluço. Só o v3 faz os sons; estabilidade no máximo segura o timbre do clone
+        // (testado com o Felipe em 2026-10-31: v3 "Robust" ficou melhor que o v4).
+        elevenModel: 'eleven_v3',
+        elevenSettings: { stability: 1, similarity_boost: 0.8, style: 0, use_speaker_boost: true },
+        vocalTics: { opening: '[clears throat]', middle: '[hiccups]' },
         style: `THIS REPLY ONLY: switch into your "all-day hype coach" impression, like a sudden bit in your show. Do NOT announce or explain it (never say "impression", "let me do", "impression time" or anything about imitating) and do NOT put the reply in quotes: just start talking as the character, at most with a natural interjection ("Bro...", "Let's go..."). Write the whole reply as an upbeat Brazilian fitness influencer who is motivated all day: hype, focus, constancy, morning routines, "all day, every day" energy, celebrating small daily wins and pushing the student to keep going ("All day, every day!", "Constancy is everything."). Keep the SAME length limit as a normal reply. Still answer what they said and ask one question back. No real names, no brands, no supplements or drugs.`,
       },
     },
@@ -177,7 +185,7 @@ export function splitByLanguage(text: string): { text: string; pt: boolean }[] {
 
 /** Trechos da fala com a voz de cada um: português na voz em português do personagem (se tiver), o resto na voz normal.
  *  Imitação fala tudo na voz dela. */
-export function voiceSegments(c: Character, impression: Impression | null, text: string): { voiceId: string; settings?: VoiceSettings; text: string }[] {
+export function voiceSegments(c: Character, impression: Impression | null, text: string): { voiceId: string; settings?: VoiceSettings; model?: string; text: string }[] {
   const base = voiceFor(c, impression);
   if (!base) return [];
   if (impression || !c.elevenVoiceIdPt) return [{ ...base, text }];
@@ -215,8 +223,8 @@ export function tagPortuguese(text: string): string {
 }
 
 /** Voz do ElevenLabs para uma fala: a da imitação, senão a do personagem. */
-export function voiceFor(c: Character, impression: Impression | null): { voiceId: string; settings?: VoiceSettings } | null {
-  if (impression) return { voiceId: impression.elevenVoiceId, settings: impression.elevenSettings };
+export function voiceFor(c: Character, impression: Impression | null): { voiceId: string; settings?: VoiceSettings; model?: string } | null {
+  if (impression) return { voiceId: impression.elevenVoiceId, settings: impression.elevenSettings, model: impression.elevenModel };
   return c.elevenVoiceId ? { voiceId: c.elevenVoiceId, settings: c.elevenSettings } : null;
 }
 
@@ -240,4 +248,17 @@ export function wholeConversationImpressionStyle(imp: Impression): string {
 export function wholeActivityImpressionStyle(imp: Impression): string {
   return imp.style.replace(/^THIS REPLY ONLY: switch into/, 'For this WHOLE activity, stay in')
     + ' EVERY reply in this activity must sound like this character (at least one of its catchphrases or its signature tone), even the short ones. Prefer its catchphrases over "my friend".';
+}
+
+/** Sons do personagem no áudio (ex.: Allday: pigarro no começo, soluço no meio), sem mudar o texto da tela.
+ *  Sorteio leve para não cansar: pigarro em ~40% das falas, soluço em ~60% das que têm mais de uma frase. */
+export function withVocalTics(imp: Impression | null, text: string): string {
+  if (!imp?.vocalTics || imp.elevenModel !== 'eleven_v3') return text;
+  const sentences = text.match(/[^.!?…]+[.!?…]*["')\]]*\s*/g) ?? [text];
+  if (sentences.length > 1 && Math.random() < 0.6) {
+    const at = 1 + Math.floor(Math.random() * (sentences.length - 1));
+    sentences.splice(at, 0, `${imp.vocalTics.middle} `);
+  }
+  const out = sentences.join('').trim();
+  return Math.random() < 0.4 ? `${imp.vocalTics.opening} ${out}` : out;
 }
