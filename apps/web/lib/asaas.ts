@@ -238,6 +238,9 @@ export const getCustomer = (id: string) => asaas<AsaasCustomer>(`/customers/${id
 
 export interface AsaasSubscription { id: string; customer: string; status: string; nextDueDate: string; value: number; cycle: string; externalReference?: string | null; checkoutSession?: string | null }
 export const getSubscription = (id: string) => asaas<AsaasSubscription>(`/subscriptions/${id}`);
+export interface AsaasPayment { id: string; status: string; value: number; dueDate: string; paymentDate?: string | null; confirmedDate?: string | null; billingType?: string; deleted?: boolean }
+/** Cobranças de uma assinatura (mais recentes primeiro). */
+export const subscriptionPayments = (id: string) => asaas<{ data: AsaasPayment[] }>(`/subscriptions/${id}/payments?limit=20`).then(r => r.data ?? []);
 /** Assinaturas ativas criadas para a conta (externalReference = id da conta). No checkout da página do
  *  processador, o id da assinatura só chegava com a 1ª cobrança; aqui ele é achado na hora. */
 export async function activeSubscriptionsOf(userId: string, sandbox = false, customerId?: string | null, email?: string | null): Promise<AsaasSubscription[]> {
