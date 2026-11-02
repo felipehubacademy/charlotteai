@@ -6,6 +6,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { reconcileStoreSubscription, logRcEvent } from '@/lib/rc-subscription';
+import { reconcileLapsedSiteSubscriptions } from '@/lib/asaas-reconcile';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 120;
@@ -54,5 +55,8 @@ export async function POST(req: NextRequest) {
     }));
   }
   console.log(`[rc-reconcile] ${ids.length} conferidos`, counts);
-  return NextResponse.json({ checked: ids.length, counts, changes });
+  // Mesma conferência para o site: assinatura com prazo vencido, perguntando ao processador.
+  const site = await reconcileLapsedSiteSubscriptions().catch(e => ({ error: e instanceof Error ? e.message : 'erro' }));
+  console.log('[rc-reconcile] site', site);
+  return NextResponse.json({ checked: ids.length, counts, changes, site });
 }

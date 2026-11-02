@@ -9,7 +9,7 @@
 //   com acesso e sem renovar          → 'cancelled' (desligou a renovação ou a cobrança falhou e está na carência)
 //   sem acesso                        → 'expired'
 // Carência da loja (cobrança recusada): o acesso vale até o fim da carência, como na loja.
-// Não mexe em conta institucional nem em assinatura do site (web_*), que têm regras próprias.
+// Não mexe em conta institucional nem em assinatura do site (web_*) ainda válida, que têm regras próprias.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 export const RC_ENTITLEMENT = 'Premium';
@@ -101,7 +101,10 @@ export async function reconcileStoreSubscription(userId: string): Promise<Reconc
   const user = data as UserRow | null;
   if (!user) return { action: 'skipped', reason: 'no_account' };
   if (user.is_institutional) return { action: 'skipped', reason: 'institutional' };
-  if ((user.subscription_product ?? '').startsWith('web_')) return { action: 'skipped', reason: 'site' };
+  // Assinatura do site ainda válida: quem manda é o processador. Vencida: vale o que houver na loja.
+  const siteValid = (user.subscription_product ?? '').startsWith('web_') && ['active', 'cancelled'].includes(user.subscription_status ?? '')
+    && ms(user.subscription_expires_at) > Date.now();
+  if (siteValid) return { action: 'skipped', reason: 'site' };
 
   const j = await fetchRcSubscriber(userId);
   if (!j) return { action: 'skipped', reason: 'store_unavailable' };
