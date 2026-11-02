@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
       supabase.from('asaas_checkouts').select('status, method, channel, pending_payment_id').eq('sandbox', false).gte('created_at', since),
       supabase.from('checkout_attempts').select('ok').eq('kind', 'card').gte('created_at', since),
       supabase.from('ops_errors').select('created_at, area, route, message').gte('created_at', since).order('created_at', { ascending: false }).limit(50),
-      supabase.from('ops_alerts').select('created_at, kind, message, sent_email, sent_whatsapp').order('created_at', { ascending: false }).limit(20),
+      supabase.from('ops_alerts').select('created_at, kind, message, sent_email, sent_whatsapp').neq('kind', 'instagram_aprovacao').order('created_at', { ascending: false }).limit(20),
     ]);
     const c = (cks ?? []) as { status: string; method: string | null; channel: string; pending_payment_id: string | null }[];
     const a = (att ?? []) as { ok: boolean | null }[];

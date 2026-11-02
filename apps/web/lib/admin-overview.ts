@@ -202,7 +202,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
 
   const [
     usersAll, practices, progress, revAll, ckAll, purchaseEvents, daily,
-    weekConvs, openConvs, capacityRes, opsAlertsRes, opsErrorsRes, outboxStuckRes, welcome, financeRes,
+    weekConvs, openConvs, capacityRes, opsAlertsRes, opsErrorsRes, instagramDrafts, outboxStuckRes, welcome, financeRes,
   ] = await Promise.all([
     paged<UserRow>((a, b) => supabase.from('charlotte_users')
       .select('id, email, created_at, is_institutional, hide_from_ranking, subscription_status, subscription_product, subscription_expires_at, trial_ends_at')
@@ -227,6 +227,9 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     supabase.rpc('capacity_usage'),
     supabase.from('ops_alerts').select('kind, message, created_at').gte('created_at', iso(nowMs - DAY)).order('created_at', { ascending: false }).limit(50),
     supabase.from('ops_errors').select('area').in('area', ['checkout', 'webhook', 'asaas']).gte('created_at', iso(nowMs - 3600000)).limit(200),
+    // Instagram: rascunhos que já deveriam estar aprovados (regra em lib/instagram-approval-alert).
+    supabase.from('instagram_posts').select('id', { count: 'exact', head: true }).eq('status', 'rascunho')
+      .gte('scheduled_at', iso(nowMs)).lt('scheduled_at', iso(instagramApprovalDeadlineMs(nowMs))),
     supabase.from('email_outbox').select('id', { count: 'exact', head: true }).is('sent_at', null).gte('attempts', 3),
     lateSignupWelcomes().catch(() => ({ late: 0, stuck: 0 })),
     // Despesas dos últimos 6 meses no Financeiro (custo por usuário no mês atual e resultado mês a mês).
@@ -515,7 +518,8 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     : { key: 'support', ok: true, label: 'Nenhum chamado esperando' });
 
   // Pagamentos: alertas do vigia do checkout nas últimas 24 h e erros nas rotas de pagamento na última hora.
-  const opsAlerts = ((opsAlertsRes.data ?? []) as { kind: string; message: string }[]).filter(a => a.kind !== 'email_stuck');
+  const allOpsAlerts = (opsAlertsRes.data ?? []) as { kind: string; message: string }[];
+  const opsAlerts = allOpsAlerts.filter(a => a.kind !== 'email_stuck' && a.kind !== INSTAGRAM_ALERT_KIND);
   const opsErrors = (opsErrorsRes.data ?? []).length;
   if (opsAlerts.length || opsErrors) {
     const parts: string[] = [];
@@ -525,6 +529,15 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     items.push({ key: 'payments', ok: false, label: parts.join(' · '), href: '/admin/commercial' });
   } else {
     items.push({ key: 'payments', ok: true, label: 'Pagamentos sem falha' });
+  }
+
+  // Instagram: conta os posts pendentes agora (some assim que aprovar). Semana sem nenhum post: o aviso do domingo.
+  const igPending = instagramDrafts.count ?? 0;
+  const igEmptyWeek = allOpsAlerts.find(a => a.kind === INSTAGRAM_ALERT_KIND && a.message.includes('não tem nenhum post'));
+  if (igPending) {
+    items.push({ key: 'instagram', ok: false, label: `Instagram: ${igPending} ${igPending === 1 ? 'post aguarda' : 'posts aguardam'} aprovação. Sem aprovação, não saem.`, href: '/admin/instagram' });
+  } else if (igEmptyWeek) {
+    items.push({ key: 'instagram', ok: false, label: igEmptyWeek.message, href: '/admin/instagram' });
   }
 
   const cap = capacityRes.error ? null : (capacityRes.data as { db_bytes: number; storage_bytes: number } | null);
@@ -572,4 +585,15 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     engagement,
     support,
   };
+}
+
+const INSTAGRAM_ALERT_KIND = 'instagram_aprovacao';
+
+/** Até quando os posts já deveriam estar aprovados: fim da semana atual (segunda 00:00 em Brasília);
+ *  a partir de domingo 20h, inclui a semana seguinte (o prazo de aprovação dela é domingo 20h). */
+function instagramApprovalDeadlineMs(nowMs: number): number {
+  const br = new Date(nowMs - 3 * 3600000); // relógio de Brasília (UTC-3) nos campos UTC
+  const dow = br.getUTCDay();
+  const nextMonday = Date.UTC(br.getUTCFullYear(), br.getUTCMonth(), br.getUTCDate() + (dow === 0 ? 1 : 8 - dow)) + 3 * 3600000;
+  return dow === 0 && br.getUTCHours() >= 20 ? nextMonday + 7 * 86400000 : nextMonday;
 }
