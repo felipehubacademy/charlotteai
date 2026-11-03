@@ -102,9 +102,12 @@ export async function POST(req: NextRequest) {
 
       // Cartão recusado (renovação ou 1ª cobrança depois do teste): aviso com a nossa marca.
       // A conta fica sem acesso até pagar (PAYMENT_CONFIRMED devolve); Pix vencido não é falha de cobrança.
-      if (event === 'PAYMENT_CREDIT_CARD_CAPTURE_REFUSED' || event === 'PAYMENT_CREDIT_CARD_INVALID' || event === 'PAYMENT_OVERDUE') {
+      if (event === 'PAYMENT_CREDIT_CARD_CAPTURE_REFUSED' || event === 'PAYMENT_CREDIT_CARD_INVALID' || event === 'PAYMENT_OVERDUE' || event === 'PAYMENT_REPROVED_BY_RISK_ANALYSIS') {
         await blockForFailedCharge(row.id, p).catch(e => console.warn('[webhooks/asaas] cobrança recusada:', e instanceof Error ? e.message : e));
       }
+      // Mexem em dinheiro e pedem alguém olhando. Os demais eventos de cobrança ficam só registrados em asaas_events.
+      const teamAlert = TEAM_ALERTS[event];
+      if (teamAlert && !row.sandbox) await alertTeam(event, `${teamAlert} Cobrança ${p.id}, R$ ${Math.abs(Number(p.value) || 0).toFixed(2).replace('.', ',')}.`).catch(e => console.warn('[webhooks/asaas] alerta à equipe:', e instanceof Error ? e.message : e));
       if (event === 'PAYMENT_REFUNDED' || event === 'PAYMENT_CHARGEBACK_REQUESTED' || event === 'PAYMENT_CHARGEBACK_DISPUTE') {
         if (!row.sandbox) await recordAsaasRevenue('REFUND', row, p);
         // Reembolso feito no painel do processador também avisa o aluno (o do app já avisou: sai uma vez só).
@@ -135,4 +138,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'processing_failed' }, { status: 500 });
   }
   return NextResponse.json({ ok: true });
+}
+
+const TEAM_ALERTS: Record<string, string> = {
+  PAYMENT_REFUND_DENIED: 'Estorno negado pelo processador: o aluno pode achar que recebeu.',
+  PAYMENT_PARTIALLY_REFUNDED: 'Estorno parcial: conferir a receita lançada.',
+  PAYMENT_AWAITING_CHARGEBACK_REVERSAL: 'Disputa de chargeback encerrada, aguardando repasse.',
+  PAYMENT_RECEIVED_IN_CASH_UNDONE: 'Recebimento desfeito: conferir a assinatura do aluno.',
+  PAYMENT_DELETED: 'Cobrança de assinatura removida: conferir se foi feito de propósito.',
+};
+
+/** Aviso à equipe pelo mesmo caminho dos alertas do checkout (Visão geral e Comercial do /admin). */
+async function alertTeam(event: string, message: string): Promise<void> {
+  await getSupabaseAdmin().from('ops_alerts').insert({ kind: `asaas_${event.toLowerCase()}`, message: `Processador: ${message}`, sent_email: false, sent_whatsapp: false } as never);
 }
