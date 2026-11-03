@@ -249,8 +249,9 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Accepts**: He
    **Explanation**: "This is + pessoa" = "Este é + pessoa". Use "This" pra apresentar alguém que está perto de você. Memoriza esse chunk: "This is my friend ___" funciona pra qualquer nome.
 
-8. **fix_error** — "I are a student."
-   **Hint**: Verbo "to be" com "I"
+8. **word_order**
+   **Context PT**: Monte a frase: eu sou estudante. Uma das palavras sobra.
+   **Words**: I / am / are / a / student / .
    **Answer**: I am a student.
    **Explanation**: Com "I" sempre se usa "am", nunca "are". A frase correta é "I am a student" (ou contraído: "I'm a student").
 
@@ -401,8 +402,9 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Answer**: Are
    **Explanation**: Pergunta de sim/não em inglês inverte o verbo: "Are you...?" em vez de "You are...".
 
-8. **fix_error** — "You are from where?"
-   **Hint**: Não responda: reescreva a pergunta começando com "Where"
+8. **word_order**
+   **Context PT**: Monte a pergunta: de onde você é?
+   **Words**: Where / are / you / from / ?
    **Answer**: Where are you from?
    **Explanation**: Em perguntas WH-, a estrutura é: WH-word + auxiliar + sujeito. "Where are you from?" — não "You are from where?".
 

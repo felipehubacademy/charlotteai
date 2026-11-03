@@ -362,11 +362,18 @@
           "explanation": "\"This is + pessoa\" = \"Este é + pessoa\". Use \"This\" pra apresentar alguém que está perto de você. Memoriza esse chunk: \"This is my friend ___\" funciona pra qualquer nome."
         },
         {
-          "type": "fix_error",
-          "sentence": "I are a student.",
-          "hint": "Verbo \"to be\" com \"I\"",
+          "type": "word_order",
           "answer": "I am a student.",
-          "explanation": "Com \"I\" sempre se usa \"am\", nunca \"are\". A frase correta é \"I am a student\" (ou contraído: \"I'm a student\")."
+          "explanation": "Com \"I\" sempre se usa \"am\", nunca \"are\". A frase correta é \"I am a student\" (ou contraído: \"I'm a student\").",
+          "context_pt": "Monte a frase: eu sou estudante. Uma das palavras sobra.",
+          "words": [
+            "I",
+            "am",
+            "are",
+            "a",
+            "student",
+            "."
+          ]
         },
         {
           "type": "fix_error",
@@ -588,11 +595,17 @@
           "explanation": "Pergunta de sim/não em inglês inverte o verbo: \"Are you...?\" em vez de \"You are...\"."
         },
         {
-          "type": "fix_error",
-          "sentence": "You are from where?",
-          "hint": "Não responda: reescreva a pergunta começando com \"Where\"",
+          "type": "word_order",
           "answer": "Where are you from?",
-          "explanation": "Em perguntas WH-, a estrutura é: WH-word + auxiliar + sujeito. \"Where are you from?\" — não \"You are from where?\"."
+          "explanation": "Em perguntas WH-, a estrutura é: WH-word + auxiliar + sujeito. \"Where are you from?\" — não \"You are from where?\".",
+          "context_pt": "Monte a pergunta: de onde você é?",
+          "words": [
+            "Where",
+            "are",
+            "you",
+            "from",
+            "?"
+          ]
         },
         {
           "type": "multiple_choice",

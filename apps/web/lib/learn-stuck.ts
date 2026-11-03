@@ -82,6 +82,15 @@ async function fetchAttempts(since: string): Promise<AttemptRow[]> {
   return out;
 }
 
+// Android às vezes recusa parar a gravação e o app volta para "segure e fale": se o aluno acertou o
+// mesmo passo em até 3 minutos, não travou e não entra no alerta.
+function recoveredFromStop(r: AttemptRow, rows: AttemptRow[]): boolean {
+  const t = new Date(r.created_at).getTime();
+  return rows.some(a => a.event === 'attempt' && a.passed === true && a.user_id === r.user_id
+    && a.module_id === r.module_id && a.unit_id === r.unit_id && a.step_idx === r.step_idx
+    && new Date(a.created_at).getTime() > t && new Date(a.created_at).getTime() - t <= 3 * 60000);
+}
+
 function stuckBy(rows: AttemptRow[], activity: 'speaking' | 'grammar'): StuckItem[] {
   const map = new Map<string, { item: StuckItem; perUser: Map<string, number>; users: Set<string>; scoreSum: number; scoreN: number }>();
   for (const r of rows) {
@@ -128,6 +137,7 @@ export async function stuckReport(days: number): Promise<StuckReport> {
       const g = exitsMap.get(k) ?? { level: r.level, module: r.module_id, unit: r.unit_id, activity: r.activity_type, step: r.step_idx, count: 0, users: new Set<string>() };
       g.count++; g.users.add(r.user_id); exitsMap.set(k, g);
     } else if (r.event === 'asr_error' || r.event === 'mic_blocked') {
+      if (r.error_code === 'stop_rejected' && recoveredFromStop(r, rows)) continue;
       const k = `${r.event}|${r.error_code}|${r.platform}|${r.app_version}`;
       const g = failMap.get(k) ?? { kind: r.event, code: r.error_code ?? '—', platform: r.platform ?? '—', version: r.app_version ?? '—', count: 0, users: new Set<string>() };
       g.count++; g.users.add(r.user_id); failMap.set(k, g);

@@ -332,9 +332,9 @@
             "worries",
             "problem of",
             "worry",
-            "problems"
+            "worrying"
           ],
-          "hint": "Sempre no plural",
+          "hint": "De boa (No ___), sempre no plural",
           "answer": "worries",
           "explanation": "\"No worries\" = de boa, sem problema. Primo do \"no problem\"."
         },
@@ -1097,10 +1097,10 @@
           "choices": [
             "worries",
             "worry",
-            "problems",
+            "worrying",
             "way"
           ],
-          "hint": "Sempre no plural",
+          "hint": "De boa (No ___), sempre no plural",
           "answer": "worries",
           "explanation": "\"No worries\" = de boa."
         },
