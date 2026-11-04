@@ -258,6 +258,7 @@ export async function activeSubscriptionsOf(userId: string, sandbox = false, cus
   return out;
 }
 export const cancelSubscription = (id: string, sandbox = false) => asaas<{ deleted: boolean }>(`/subscriptions/${id}`, { method: 'DELETE', sandbox });
+export const deletePayment = (id: string) => asaas<{ deleted: boolean }>(`/payments/${id}`, { method: 'DELETE' });
 /** 4 últimos dígitos do cartão de uma cobrança (null no Pix). Usado para conferir quem pagou. */
 export async function getPaymentCard(paymentId: string): Promise<{ last4: string | null; billingType: string }> {
   const p = await asaas<{ billingType: string; creditCard?: { creditCardNumber?: string | null } | null }>(`/payments/${encodeURIComponent(paymentId)}`);

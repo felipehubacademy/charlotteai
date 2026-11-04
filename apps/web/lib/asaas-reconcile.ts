@@ -3,9 +3,9 @@
 // conferência a cada 6 h (/api/cron/rc-reconcile), que pega o que o aviso não trouxe. Quando o pagamento passa,
 // handlePaymentPaid devolve o acesso. Se a pessoa tem assinatura válida na loja, vale a da loja e não sai o aviso.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { subscriptionPayments, PAID_STATUSES, type AsaasPayment } from '@/lib/asaas';
+import { subscriptionPayments, cancelSubscription, deletePayment, PAID_STATUSES, type AsaasPayment } from '@/lib/asaas';
 import { sendPaymentFailed } from '@/lib/subscription-notices';
-import { reconcileStoreSubscription } from '@/lib/rc-subscription';
+import { reconcileStoreSubscription, logRcEvent } from '@/lib/rc-subscription';
 
 type CheckoutLite = { id: string; user_id: string; method: string | null; asaas_subscription_id: string | null };
 
@@ -20,7 +20,10 @@ export async function blockForFailedCharge(checkoutId: string, p: AsaasPayment):
     .eq('id', ck.user_id).like('subscription_product', 'web_%').not('is_institutional', 'is', true).select('id');
   if (!(updated ?? []).length) return 'ignored';
   const rc = await reconcileStoreSubscription(ck.user_id).catch(() => null);
-  if (rc && rc.action !== 'skipped' && rc.state.hasPremium) return 'store';
+  if (rc && rc.action !== 'skipped' && rc.state.hasPremium) {
+    await closeSiteAfterStore(ck.user_id).catch(e => console.warn('[asaas-reconcile] encerrar site:', e instanceof Error ? e.message : e));
+    return 'store';
+  }
   await sendPaymentFailed(ck.id, p);
   return 'blocked';
 }
@@ -39,6 +42,36 @@ export async function hasUnpaidCharge(subscriptionId: string): Promise<boolean> 
   const overdue = payments.find(p => p.status === 'OVERDUE');
   // Cobrança paga depois da vencida: a assinatura está em dia.
   return !!overdue && !payments.some(p => PAID_STATUSES.includes(p.status) && p.dueDate >= overdue.dueDate);
+}
+
+/** Assinou na loja com cobrança do site que não passou: encerra a assinatura do site e apaga as cobranças em aberto,
+ *  para o aluno não pagar nos dois lugares. Quem tem o site em dia não entra aqui. */
+export async function closeSiteAfterStore(userId: string): Promise<number> {
+  const supabase = getSupabaseAdmin();
+  const { data } = await supabase.from('asaas_checkouts').select('asaas_subscription_id')
+    .eq('user_id', userId).eq('status', 'paid').eq('sandbox', false).is('refunded_at', null).not('asaas_subscription_id', 'is', null);
+  let closed = 0;
+  for (const sub of new Set(((data ?? []) as { asaas_subscription_id: string }[]).map(r => r.asaas_subscription_id))) {
+    const { data: gone } = await supabase.from('asaas_events').select('id').eq('event', 'SUBSCRIPTION_DELETED')
+      .filter('payload->subscription->>id', 'eq', sub).limit(1).maybeSingle();
+    if (gone || !(await hasUnpaidCharge(sub))) continue;
+    // Uma vez só por assinatura; se o processador falhar, libera para a próxima tentativa.
+    const lockId = `site_closed_${sub}`;
+    const { error: locked } = await supabase.from('asaas_events').insert({ id: lockId, event: 'SITE_CLOSED_LOCK', payload: { subscription: sub, user: userId } } as never);
+    if (locked) continue;
+    try {
+      await cancelSubscription(sub);
+      for (const p of await subscriptionPayments(sub)) {
+        if (p.status === 'PENDING' || p.status === 'OVERDUE') await deletePayment(p.id);
+      }
+      await logRcEvent({ event_id: lockId, event_type: 'SITE_CLOSED', app_user_id: userId, result: { subscription: sub } });
+      closed++;
+    } catch (e) {
+      await supabase.from('asaas_events').delete().eq('id', lockId);
+      console.warn('[asaas-reconcile] encerrar site', sub, e instanceof Error ? e.message : e);
+    }
+  }
+  return closed;
 }
 
 /** Assinaturas do site marcadas com acesso e com o prazo já vencido: confere a cobrança vencida no processador. */

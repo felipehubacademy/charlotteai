@@ -6,7 +6,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { reconcileStoreSubscription, logRcEvent } from '@/lib/rc-subscription';
-import { reconcileLapsedSiteSubscriptions } from '@/lib/asaas-reconcile';
+import { reconcileLapsedSiteSubscriptions, closeSiteAfterStore } from '@/lib/asaas-reconcile';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 120;
@@ -47,6 +47,7 @@ export async function POST(req: NextRequest) {
         if (r.action === 'updated') {
           changes.push({ id, before: r.before, after: r.after });
           await logRcEvent({ event_id: `reconcile:${day}:${id}`, event_type: 'RECONCILE', app_user_id: id, result: r });
+          if (r.state.hasPremium) await closeSiteAfterStore(id);
         }
       } catch (e) {
         counts.error = (counts.error ?? 0) + 1;

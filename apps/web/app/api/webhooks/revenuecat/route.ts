@@ -22,6 +22,7 @@ import { recordRevenueEvent } from '@/lib/revenue';
 import { welcomeSubscriberTemplate } from '@/lib/email-templates';
 import { sendOrQueue } from '@/lib/email-outbox';
 import { reconcileStoreSubscription, logRcEvent, type ReconcileResult } from '@/lib/rc-subscription';
+import { closeSiteAfterStore } from '@/lib/asaas-reconcile';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -128,6 +129,10 @@ export async function POST(req: NextRequest) {
   }
   if (rc && !(rc.action === 'skipped' && rc.reason === 'store_unavailable')) {
     await logEvent(rc);
+    // Assinou na loja depois de cartão recusado no site: não paga nos dois lugares.
+    if (rc.action !== 'skipped' && rc.state.hasPremium) {
+      await closeSiteAfterStore(appUserId).catch(e => console.error('[RC webhook] encerrar site:', e));
+    }
     // Começou o teste grátis pela loja: e-mail de boas-vindas, uma vez só por pessoa.
     if (rc.action !== 'skipped' && isTrialStart(eventType, event)) {
       await sendTrialWelcome(appUserId, rc.state.expiresAt).catch(e => console.error('[RC webhook] trial welcome error:', e));
