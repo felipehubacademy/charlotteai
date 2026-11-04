@@ -124,9 +124,10 @@ export async function POST(req: NextRequest) {
       if (!s?.id) return NextResponse.json({ ok: true });
       const row = await findRow({ subscription: s.id, customer: s.customer });
       if (row) {
-        await supabase.from('charlotte_users').update({ subscription_status: 'cancelled', updated_at: new Date().toISOString() } as never)
-          .eq('id', row.user_id).in('subscription_product', [WEB_PRODUCT.monthly, WEB_PRODUCT.annual]);
-        await sendCancelledNotice(row.id, s.id).catch(e => console.warn('[webhooks/asaas] aviso de cancelamento:', e instanceof Error ? e.message : e));
+        const { data: onSite } = await supabase.from('charlotte_users').update({ subscription_status: 'cancelled', updated_at: new Date().toISOString() } as never)
+          .eq('id', row.user_id).in('subscription_product', [WEB_PRODUCT.monthly, WEB_PRODUCT.annual]).select('id');
+        // Quem já está na loja não recebe aviso de que perdeu o acesso do site.
+        if ((onSite ?? []).length) await sendCancelledNotice(row.id, s.id).catch(e => console.warn('[webhooks/asaas] aviso de cancelamento:', e instanceof Error ? e.message : e));
       }
       return NextResponse.json({ ok: true });
     }

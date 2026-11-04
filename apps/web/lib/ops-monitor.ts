@@ -13,6 +13,8 @@ import { notifyAdmins } from '@/lib/admin-push';
 import { reportRecipients } from '@/lib/admin-prefs';
 import { sendWhatsAppText, sendAlertTemplate } from '@/lib/whatsapp';
 import { grantAccess, type CheckoutRow } from '@/lib/asaas-activation';
+import { hasUnpaidCharge } from '@/lib/asaas-reconcile';
+import { reconcileStoreSubscription } from '@/lib/rc-subscription';
 
 const MIN = 60000;
 const HOUR = 60 * MIN;
@@ -116,6 +118,19 @@ export async function runCheckoutWatch(): Promise<{ alerts: Alert[]; fixed: numb
       ? new Date(new Date(r.created_at).getTime() + (r.trial_days + 1) * DAY)
       : new Date(base.getTime() + (r.plan === 'monthly' ? 33 : 368) * DAY);
     if (until.getTime() < Date.now()) continue; // período já acabou: não é caso de devolver
+    // Assinatura válida na loja: tem acesso e vale a da loja, não é para gravar o plano do site por cima.
+    const storeValid = ['monthly', 'yearly'].includes(user.subscription_product ?? '') && ['active', 'cancelled'].includes(user.subscription_status ?? '')
+      && !!user.subscription_expires_at && new Date(user.subscription_expires_at).getTime() > Date.now();
+    if (storeValid) continue;
+    try {
+      // Cobrança que não passou bloqueia de propósito (lib/asaas-reconcile); só o pagamento devolve o acesso.
+      if (r.asaas_subscription_id && await hasUnpaidCharge(r.asaas_subscription_id)) continue;
+      const rc = await reconcileStoreSubscription(r.user_id);
+      if (rc.action !== 'skipped' && rc.state.hasPremium) continue;
+    } catch (e) {
+      console.warn('[ops-monitor] conferência antes de devolver acesso:', r.user_id, e instanceof Error ? e.message : e);
+      continue; // sem confirmar, não devolve: o vigia tenta de novo em 5 min
+    }
     await grantAccess(r.user_id, r.plan, until, r.method).catch(() => null);
     fixed++; fixedEmails.push(user.email);
   }

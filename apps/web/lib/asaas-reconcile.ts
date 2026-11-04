@@ -25,6 +25,22 @@ export async function blockForFailedCharge(checkoutId: string, p: AsaasPayment):
   return 'blocked';
 }
 
+const FAILED_EVENTS = ['PAYMENT_CREDIT_CARD_CAPTURE_REFUSED', 'PAYMENT_CREDIT_CARD_INVALID', 'PAYMENT_OVERDUE', 'PAYMENT_REPROVED_BY_RISK_ANALYSIS', 'PAYMENT_CHARGEBACK_REQUESTED', 'PAYMENT_CHARGEBACK_DISPUTE'];
+const PAID_EVENTS = ['PAYMENT_CONFIRMED', 'PAYMENT_RECEIVED'];
+
+/** Cobrança recusada, vencida ou em disputa e não paga depois: quem está nessa situação fica sem acesso até pagar. */
+export async function hasUnpaidCharge(subscriptionId: string): Promise<boolean> {
+  // Recusa de cartão continua PENDING no processador: só o último aviso recebido mostra que falhou.
+  const { data } = await getSupabaseAdmin().from('asaas_events').select('event')
+    .filter('payload->payment->>subscription', 'eq', subscriptionId).in('event', [...FAILED_EVENTS, ...PAID_EVENTS])
+    .order('created_at', { ascending: false }).limit(1).maybeSingle();
+  if (FAILED_EVENTS.includes((data as { event: string } | null)?.event ?? '')) return true;
+  const payments = await subscriptionPayments(subscriptionId);
+  const overdue = payments.find(p => p.status === 'OVERDUE');
+  // Cobrança paga depois da vencida: a assinatura está em dia.
+  return !!overdue && !payments.some(p => PAID_STATUSES.includes(p.status) && p.dueDate >= overdue.dueDate);
+}
+
 /** Assinaturas do site marcadas com acesso e com o prazo já vencido: confere a cobrança vencida no processador. */
 export async function reconcileLapsedSiteSubscriptions(): Promise<{ checked: number; blocked: number; store: number; leftAlone: number; errors: number }> {
   const supabase = getSupabaseAdmin();
