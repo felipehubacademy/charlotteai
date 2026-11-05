@@ -2,13 +2,14 @@
 // anterior a ontem (já fechado na OpenAI).
 // Valores REAIS: OpenAI pela API de custos da organização (por item) e ElevenLabs pela assinatura.
 // O registro interno (openai_usage) subestima: não conta o Live Voice nem as escritas de cache.
-// Alertas: ElevenLabs passou de 80/90/95% ou vai acabar antes de renovar; OpenAI do dia acima do teto.
+// Alerta: OpenAI do dia acima do teto. ElevenLabs só informa o consumo (a recarga automática está ligada).
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { notifyAdmins } from '@/lib/admin-push';
 import { reportRecipients } from '@/lib/admin-prefs';
 import { base, h1, p, btn, note } from '@/lib/email-brand';
 import { fxToBrl } from '@/lib/fx';
+import { cachedCost, openaiDaily } from '@/lib/provider-costs';
 
 const OPENAI_DAILY_LIMIT_USD = Number(process.env.AI_DAILY_ALERT_USD || 5);
 const DAY = 86400000;
@@ -43,6 +44,23 @@ async function openaiDay(start: number, end: number): Promise<{ usd: number; lin
   return { usd: arr.reduce((s, l) => s + l.usd, 0), lines: arr };
 }
 
+/** A API de custos da OpenAI só aceita 30 consultas por minuto, e a sincronização com o Financeiro roda logo antes.
+ *  Espera a janela passar; se ainda recusar, usa o total do dia já guardado (sem a divisão por item). */
+async function openaiDayResilient(day: string, start: number, end: number): ReturnType<typeof openaiDay> {
+  let lastError: unknown;
+  for (const waitMs of [0, 20000, 45000]) {
+    if (waitMs) await new Promise(r => setTimeout(r, waitMs));
+    try { return await openaiDay(start, end); } catch (e) {
+      lastError = e;
+      if (!/\b429\b/.test(String((e as Error).message))) throw e;
+    }
+  }
+  const saved = await cachedCost('openai-daily', 26 * 3600000, () => openaiDaily(8)).catch(() => null);
+  const total = saved?.value?.find(d => d.date === day);
+  if (total) return { usd: total.usd, lines: [] };
+  throw lastError;
+}
+
 async function elevenSub(): Promise<{ used: number; limit: number; resetAt: Date | null; plan: string } | null> {
   const key = process.env.ELEVENLABS_API_KEY;
   if (!key) return null;
@@ -69,7 +87,7 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
   if (!opts.force && !(claimed ?? []).length) return { sent: false, reason: 'já enviado' };
 
   let openaiError: string | undefined;
-  const [oa, el, fx] = await Promise.all([openaiDay(start, end).catch(e => { console.error('[ai-cost-report] openai', e); openaiError = String(e?.message ?? e); return null; }), elevenSub().catch(() => null), fxToBrl('USD').catch(() => 5.5)]);
+  const [oa, el, fx] = await Promise.all([openaiDayResilient(day, start, end).catch(e => { console.error('[ai-cost-report] openai', e); openaiError = String(e?.message ?? e); return null; }), elevenSub().catch(() => null), fxToBrl('USD').catch(() => 5.5)]);
   const alerts: string[] = [];
 
   const dayLabel = dateBr(new Date(Date.parse(day) + 12 * 3600000));
