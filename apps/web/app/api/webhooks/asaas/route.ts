@@ -107,11 +107,11 @@ export async function POST(req: NextRequest) {
       }
       // Mexem em dinheiro e pedem alguém olhando. Os demais eventos de cobrança ficam só registrados em asaas_events.
       const teamAlert = TEAM_ALERTS[event];
-      // Cobrança apagada pelo encerramento automático (assinou na loja depois da recusa): já é esperado, não alerta.
-      const { data: closedByUs } = event === 'PAYMENT_DELETED' && p.subscription
-        ? await supabase.from('asaas_events').select('id').eq('id', `site_closed_${p.subscription}`).maybeSingle()
+      // Cobrança apagada porque a assinatura inteira saiu (cancelamento ou encerramento automático): é esperado, não alerta.
+      const { data: subGone } = event === 'PAYMENT_DELETED' && p.subscription
+        ? await supabase.from('asaas_events').select('id').or(`id.eq.site_closed_${p.subscription},and(event.eq.SUBSCRIPTION_DELETED,payload->subscription->>id.eq.${p.subscription})`).limit(1)
         : { data: null };
-      if (teamAlert && !row.sandbox && !closedByUs) await alertTeam(event, `${teamAlert} Cobrança ${p.id}, R$ ${Math.abs(Number(p.value) || 0).toFixed(2).replace('.', ',')}.`).catch(e => console.warn('[webhooks/asaas] alerta à equipe:', e instanceof Error ? e.message : e));
+      if (teamAlert && !row.sandbox && !(subGone ?? []).length) await alertTeam(event, `${teamAlert} Cobrança ${p.id}, R$ ${Math.abs(Number(p.value) || 0).toFixed(2).replace('.', ',')}.`).catch(e => console.warn('[webhooks/asaas] alerta à equipe:', e instanceof Error ? e.message : e));
       if (event === 'PAYMENT_REFUNDED' || event === 'PAYMENT_CHARGEBACK_REQUESTED' || event === 'PAYMENT_CHARGEBACK_DISPUTE') {
         if (!row.sandbox) await recordAsaasRevenue('REFUND', row, p);
         // Reembolso feito no painel do processador também avisa o aluno (o do app já avisou: sai uma vez só).
@@ -127,6 +127,11 @@ export async function POST(req: NextRequest) {
       const s = body.subscription as { id: string; customer?: string } | undefined;
       if (!s?.id) return NextResponse.json({ ok: true });
       const row = await findRow({ subscription: s.id, customer: s.customer });
+      // O aviso da cobrança removida chega segundos antes deste: tira o alerta dela, porque a assinatura inteira saiu.
+      const { data: removed } = await supabase.from('asaas_events').select('payload').eq('event', 'PAYMENT_DELETED').filter('payload->payment->>subscription', 'eq', s.id);
+      for (const r of (removed ?? []) as { payload: { payment?: { id?: string } } }[]) {
+        if (r.payload.payment?.id) await supabase.from('ops_alerts').delete().eq('kind', 'asaas_payment_deleted').like('message', `%${r.payload.payment.id}%`);
+      }
       if (row) {
         const { data: onSite } = await supabase.from('charlotte_users').update({ subscription_status: 'cancelled', updated_at: new Date().toISOString() } as never)
           .eq('id', row.user_id).in('subscription_product', [WEB_PRODUCT.monthly, WEB_PRODUCT.annual]).select('id');

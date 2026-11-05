@@ -233,7 +233,7 @@ export default function CommercialAdmin() {
                     <thead><tr><th>Alerta</th><th>Mensagem</th><th>Enviado</th></tr></thead>
                     <tbody>{health.alerts.map((a, i) => (
                       <tr key={i}><td style={{ whiteSpace: 'nowrap' }}>{when(a.created_at)}</td><td style={{ fontSize: 12 }}>{a.message}</td>
-                        <td style={{ fontSize: 12 }}>{[a.sent_email && 'e-mail', a.sent_whatsapp && 'WhatsApp'].filter(Boolean).join(' e ') || 'falhou'}</td></tr>
+                        <td style={{ fontSize: 12 }}>{[a.sent_email && 'e-mail', a.sent_whatsapp && 'WhatsApp'].filter(Boolean).join(' e ') || (a.kind.startsWith('asaas_') ? 'só no painel' : 'falhou')}</td></tr>
                     ))}</tbody>
                   </table>
                 )}
