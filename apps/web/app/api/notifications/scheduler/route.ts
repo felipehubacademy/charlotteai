@@ -115,8 +115,7 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
       console.log('[SCHEDULER] cost_sync', JSON.stringify(await syncProviderCosts()));
       break;
     case 'ai_costs': // 1) custo real dos provedores por uso → linha do mês no Financeiro (toda hora);
-      //              2) 8h (Brasília): e-mail de custos de IA. Em sequência: as duas consultam a API de custos da OpenAI
-      //                 e, juntas, levavam 429.
+      //              2) 8h (Brasília): e-mail de custos de IA. As duas usam a mesma leitura da OpenAI (lib/provider-costs).
       console.log('[SCHEDULER] cost_sync', JSON.stringify(await syncProviderCosts().catch(e => [{ erro: String(e) }])));
       await runAiCostReport({ force: forced });
       break;

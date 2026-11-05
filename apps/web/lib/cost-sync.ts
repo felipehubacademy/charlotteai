@@ -41,7 +41,7 @@ export async function syncProviderCosts(nowMs = Date.now()): Promise<{ month: st
     const closed = month !== current;
     for (const p of PROVIDERS) {
       let reading: Reading | null;
-      // 429 da API de custos: a tarefa do e-mail de custos de IA consulta a mesma API na mesma hora; tenta de novo.
+      // 429 da API de custos do provedor: tenta de novo.
       const readWithRetry = async () => {
         for (let i = 0; ; i++) {
           try { return await p.read(month); } catch (e) {

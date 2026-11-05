@@ -9,56 +9,27 @@ import { notifyAdmins } from '@/lib/admin-push';
 import { reportRecipients } from '@/lib/admin-prefs';
 import { base, h1, p, btn, note } from '@/lib/email-brand';
 import { fxToBrl } from '@/lib/fx';
-import { cachedCost, openaiDaily } from '@/lib/provider-costs';
+import { openaiCostDays } from '@/lib/provider-costs';
 
 const OPENAI_DAILY_LIMIT_USD = Number(process.env.AI_DAILY_ALERT_USD || 5);
 const DAY = 86400000;
 
-/** Dia relatado (YYYY-MM-DD) e o intervalo dele em segundos. É ANTEONTEM: a OpenAI leva cerca de um
+/** Dia relatado (YYYY-MM-DD). É ANTEONTEM: a OpenAI leva cerca de um
  *  dia para lançar os custos dos modelos de texto (às 8h do dia seguinte eles ainda vinham zerados, só o áudio
- *  aparecia). A API agrupa por dia UTC, então o intervalo vai de 00:00 a 24:00 UTC desse dia. */
-function reportDay(): { day: string; start: number; end: number } {
+ *  aparecia). A API agrupa por dia UTC. */
+function reportDay(): { day: string } {
   const nowBrt = new Date(Date.now() - 3 * 3600000);
   const day = new Date(Date.UTC(nowBrt.getUTCFullYear(), nowBrt.getUTCMonth(), nowBrt.getUTCDate()) - 2 * DAY);
-  const start = day.getTime() / 1000;
-  return { day: day.toISOString().slice(0, 10), start, end: start + 86400 };
+  return { day: day.toISOString().slice(0, 10) };
 }
 
-async function openaiDay(start: number, end: number): Promise<{ usd: number; lines: { name: string; usd: number }[] } | null> {
-  const key = process.env.OPENAI_ADMIN_KEY;
-  if (!key) return null;
-  const url = new URL('https://api.openai.com/v1/organization/costs');
-  url.searchParams.set('start_time', String(start));
-  url.searchParams.set('end_time', String(end));
-  url.searchParams.set('bucket_width', '1d');
-  url.searchParams.append('group_by', 'line_item');
-  const r = await fetch(url, { headers: { Authorization: `Bearer ${key}` }, cache: 'no-store' });
-  if (!r.ok) throw new Error(`OpenAI costs ${r.status}: ${(await r.text()).slice(0, 200)}`);
-  const j = await r.json();
-  const lines = new Map<string, number>();
-  for (const bucket of j.data ?? []) for (const res of bucket.results ?? []) {
-    const name = res.line_item ?? 'Outros';
-    lines.set(name, (lines.get(name) ?? 0) + Number(res.amount?.value ?? 0));
-  }
-  const arr = [...lines.entries()].map(([name, usd]) => ({ name, usd })).sort((a, b) => b.usd - a.usd);
-  return { usd: arr.reduce((s, l) => s + l.usd, 0), lines: arr };
-}
-
-/** A API de custos da OpenAI só aceita 30 consultas por minuto, e a sincronização com o Financeiro roda logo antes.
- *  Espera a janela passar; se ainda recusar, usa o total do dia já guardado (sem a divisão por item). */
-async function openaiDayResilient(day: string, start: number, end: number): ReturnType<typeof openaiDay> {
-  let lastError: unknown;
-  for (const waitMs of [0, 20000, 45000]) {
-    if (waitMs) await new Promise(r => setTimeout(r, waitMs));
-    try { return await openaiDay(start, end); } catch (e) {
-      lastError = e;
-      if (!/\b429\b/.test(String((e as Error).message))) throw e;
-    }
-  }
-  const saved = await cachedCost('openai-daily', 26 * 3600000, () => openaiDaily(8)).catch(() => null);
-  const total = saved?.value?.find(d => d.date === day);
-  if (total) return { usd: total.usd, lines: [] };
-  throw lastError;
+async function openaiDay(day: string): Promise<{ usd: number; lines: { name: string; usd: number }[] } | null> {
+  const c = await openaiCostDays();
+  if (!c.value) { if (c.error) throw new Error(c.error); return null; }
+  const found = c.value.find(d => d.date === day);
+  // Dia sem linha numa leitura atual é dia sem gasto; numa leitura antiga, ainda não se sabe.
+  if (!found && c.stale) throw new Error(c.error ?? 'leitura antiga sem esse dia');
+  return found ? { usd: found.usd, lines: found.lines } : { usd: 0, lines: [] };
 }
 
 async function elevenSub(): Promise<{ used: number; limit: number; resetAt: Date | null; plan: string } | null> {
@@ -81,13 +52,13 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
   const hourBrt = new Date(Date.now() - 3 * 3600000).getUTCHours();
   if (!opts.force && hourBrt !== 8) return { sent: false, reason: 'fora do horário' };
   const supabase = getSupabaseAdmin();
-  const { day, start, end } = reportDay();
+  const { day } = reportDay();
   // Trava: só quem criar a linha do dia manda o e-mail.
   const { data: claimed } = await supabase.from('ai_cost_daily').upsert({ day } as never, { onConflict: 'day', ignoreDuplicates: true }).select('day');
   if (!opts.force && !(claimed ?? []).length) return { sent: false, reason: 'já enviado' };
 
   let openaiError: string | undefined;
-  const [oa, el, fx] = await Promise.all([openaiDayResilient(day, start, end).catch(e => { console.error('[ai-cost-report] openai', e); openaiError = String(e?.message ?? e); return null; }), elevenSub().catch(() => null), fxToBrl('USD').catch(() => 5.5)]);
+  const [oa, el, fx] = await Promise.all([openaiDay(day).catch(e => { console.error('[ai-cost-report] openai', e); openaiError = String(e?.message ?? e); return null; }), elevenSub().catch(() => null), fxToBrl('USD').catch(() => 5.5)]);
   const alerts: string[] = [];
 
   const dayLabel = dateBr(new Date(Date.parse(day) + 12 * 3600000));

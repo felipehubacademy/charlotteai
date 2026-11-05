@@ -10,34 +10,67 @@ export function monthRange(month: string) {
   return { start, end };
 }
 
-export async function openaiReal(month: string): Promise<{ usd: number; lines: { name: string; usd: number }[] } | null> {
-  const key = process.env.OPENAI_ADMIN_KEY;
-  if (!key) return null;
-  const { start, end } = monthRange(month);
-  const lines = new Map<string, number>();
+// OpenAI: uma consulta só, por dia e por item, cobrindo o mês atual e o anterior. Financeiro, e-mail de custos,
+// telas do /admin e faixa da Visão geral leem daqui. A API aceita 30 consultas por minuto; consultar separado para
+// cada finalidade levava 429 às 8h.
+export type OpenAICostDay = { date: string; usd: number; lines: { name: string; usd: number }[] };
+const OPENAI_DAYS = 70;
+
+async function fetchOpenAICostDays(key: string): Promise<OpenAICostDay[]> {
+  const start = new Date(); start.setUTCHours(0, 0, 0, 0); start.setUTCDate(start.getUTCDate() - (OPENAI_DAYS - 1));
+  const days = new Map<string, Map<string, number>>();
   let page: string | null = null;
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     const url = new URL('https://api.openai.com/v1/organization/costs');
     url.searchParams.set('start_time', String(Math.floor(start.getTime() / 1000)));
-    url.searchParams.set('end_time', String(Math.floor(end.getTime() / 1000)));
     url.searchParams.set('bucket_width', '1d');
-    url.searchParams.set('limit', '31');
+    url.searchParams.set('limit', String(OPENAI_DAYS + 1));
     url.searchParams.append('group_by', 'line_item');
     if (page) url.searchParams.set('page', page);
-    const r = await fetch(url, { headers: { Authorization: `Bearer ${key}` }, cache: 'no-store' });
-    if (!r.ok) throw new Error(`OpenAI costs ${r.status}`);
+    let r: Response | null = null;
+    for (const waitMs of [0, 20000, 45000]) {
+      if (waitMs) await new Promise(res => setTimeout(res, waitMs));
+      r = await fetch(url, { headers: { Authorization: `Bearer ${key}` }, cache: 'no-store' });
+      if (r.status !== 429) break;
+    }
+    if (!r?.ok) throw new Error(`OpenAI costs ${r?.status}`);
     const j = await r.json();
     for (const bucket of j.data ?? []) {
+      const date = new Date(bucket.start_time * 1000).toISOString().slice(0, 10);
+      const lines = days.get(date) ?? new Map<string, number>();
       for (const res of bucket.results ?? []) {
         const name = res.line_item ?? 'Outros';
         lines.set(name, (lines.get(name) ?? 0) + Number(res.amount?.value ?? 0));
       }
+      days.set(date, lines);
     }
     if (!j.has_more || !j.next_page) break;
     page = j.next_page;
   }
+  return [...days.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([date, lines]) => {
+    const arr = [...lines.entries()].map(([name, usd]) => ({ name, usd })).sort((a, b) => b.usd - a.usd);
+    return { date, usd: arr.reduce((t, l) => t + l.usd, 0), lines: arr };
+  });
+}
+
+/** Leitura compartilhada, guardada por 10 min. Se a API falhar, devolve a última guardada (stale: true). */
+export function openaiCostDays() {
+  const key = process.env.OPENAI_ADMIN_KEY;
+  return cachedCost<OpenAICostDay[]>('openai-days', 10 * 60_000, async () => (key ? fetchOpenAICostDays(key) : null));
+}
+
+export async function openaiReal(month: string): Promise<{ usd: number; lines: { name: string; usd: number }[] } | null> {
+  const { start, end } = monthRange(month);
+  const c = await openaiCostDays();
+  if (!c.value) { if (c.error) throw new Error(c.error); return null; }
+  const from = start.toISOString().slice(0, 10), to = end.toISOString().slice(0, 10);
+  const lines = new Map<string, number>();
+  for (const d of c.value) {
+    if (d.date < from || d.date >= to) continue;
+    for (const l of d.lines) lines.set(l.name, (lines.get(l.name) ?? 0) + l.usd);
+  }
   const arr = [...lines.entries()].map(([name, usd]) => ({ name, usd })).sort((a, b) => b.usd - a.usd);
-  return { usd: arr.reduce((s, l) => s + l.usd, 0), lines: arr };
+  return { usd: arr.reduce((t, l) => t + l.usd, 0), lines: arr };
 }
 
 export type Cost = { currency: string; total: number; lines: { name: string; amount: number }[] };
@@ -140,18 +173,7 @@ export async function cachedCost<T>(key: string, maxAgeMs: number, read: () => P
 
 // OpenAI: custo real por dia (calendário UTC da API), dos últimos `days` dias até hoje.
 export async function openaiDaily(days = 8): Promise<{ date: string; usd: number }[] | null> {
-  const key = process.env.OPENAI_ADMIN_KEY;
-  if (!key) return null;
-  const start = new Date(); start.setUTCHours(0, 0, 0, 0); start.setUTCDate(start.getUTCDate() - (days - 1));
-  const url = new URL('https://api.openai.com/v1/organization/costs');
-  url.searchParams.set('start_time', String(Math.floor(start.getTime() / 1000)));
-  url.searchParams.set('bucket_width', '1d');
-  url.searchParams.set('limit', String(days + 1));
-  const r = await fetch(url, { headers: { Authorization: `Bearer ${key}` }, cache: 'no-store' });
-  if (!r.ok) throw new Error(`OpenAI costs ${r.status}`);
-  const j = await r.json();
-  return (j.data ?? []).map((b: { start_time: number; results?: { amount?: { value?: number } }[] }) => ({
-    date: new Date(b.start_time * 1000).toISOString().slice(0, 10),
-    usd: (b.results ?? []).reduce((s, x) => s + Number(x.amount?.value ?? 0), 0),
-  }));
+  const c = await openaiCostDays();
+  if (!c.value) { if (c.error) throw new Error(c.error); return null; }
+  return c.value.slice(-days).map(d => ({ date: d.date, usd: d.usd }));
 }
