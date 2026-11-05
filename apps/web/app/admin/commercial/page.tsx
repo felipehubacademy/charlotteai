@@ -61,6 +61,11 @@ type Form = typeof EMPTY;
 
 export default function CommercialAdmin() {
   const [tab, setTab] = useState<'coupons' | 'affiliates' | 'sales' | 'health' | 'ads'>('coupons');
+  // Link direto para uma aba (?tab=health): os alertas do checkout abrem em "Saúde do checkout".
+  useEffect(() => {
+    const t = new URLSearchParams(window.location.search).get('tab');
+    if (t === 'affiliates' || t === 'sales' || t === 'health' || t === 'ads') setTab(t);
+  }, []);
   const [health, setHealth] = useState<Health | null>(null);
   const [coupons, setCoupons] = useState<Coupon[]>([]);
   const [checkouts, setCheckouts] = useState<Checkout[]>([]);

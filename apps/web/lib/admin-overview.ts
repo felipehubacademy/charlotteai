@@ -526,7 +526,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     if (opsErrors) parts.push(`${opsErrors} ${opsErrors === 1 ? 'erro' : 'erros'} no checkout ou no pagamento na última hora`);
     const kinds = [...new Set(opsAlerts.map(a => a.kind))];
     if (kinds.length) parts.push(`${opsAlerts.length} ${opsAlerts.length === 1 ? 'alerta' : 'alertas'} do checkout nas últimas 24 h: ${opsAlerts[0].message}`);
-    items.push({ key: 'payments', ok: false, label: parts.join(' · '), href: '/admin/commercial' });
+    items.push({ key: 'payments', ok: false, label: parts.join(' · '), href: '/admin/commercial?tab=health' });
   } else {
     items.push({ key: 'payments', ok: true, label: 'Pagamentos sem falha' });
   }

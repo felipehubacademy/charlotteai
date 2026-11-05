@@ -107,7 +107,11 @@ export async function POST(req: NextRequest) {
       }
       // Mexem em dinheiro e pedem alguém olhando. Os demais eventos de cobrança ficam só registrados em asaas_events.
       const teamAlert = TEAM_ALERTS[event];
-      if (teamAlert && !row.sandbox) await alertTeam(event, `${teamAlert} Cobrança ${p.id}, R$ ${Math.abs(Number(p.value) || 0).toFixed(2).replace('.', ',')}.`).catch(e => console.warn('[webhooks/asaas] alerta à equipe:', e instanceof Error ? e.message : e));
+      // Cobrança apagada pelo encerramento automático (assinou na loja depois da recusa): já é esperado, não alerta.
+      const { data: closedByUs } = event === 'PAYMENT_DELETED' && p.subscription
+        ? await supabase.from('asaas_events').select('id').eq('id', `site_closed_${p.subscription}`).maybeSingle()
+        : { data: null };
+      if (teamAlert && !row.sandbox && !closedByUs) await alertTeam(event, `${teamAlert} Cobrança ${p.id}, R$ ${Math.abs(Number(p.value) || 0).toFixed(2).replace('.', ',')}.`).catch(e => console.warn('[webhooks/asaas] alerta à equipe:', e instanceof Error ? e.message : e));
       if (event === 'PAYMENT_REFUNDED' || event === 'PAYMENT_CHARGEBACK_REQUESTED' || event === 'PAYMENT_CHARGEBACK_DISPUTE') {
         if (!row.sandbox) await recordAsaasRevenue('REFUND', row, p);
         // Reembolso feito no painel do processador também avisa o aluno (o do app já avisou: sai uma vez só).

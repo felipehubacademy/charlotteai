@@ -48,7 +48,7 @@ async function deliver(alerts: Alert[]): Promise<{ sent: number }> {
   for (const a of alerts) if (!(await recentlyAlerted(a.kind))) fresh.push(a);
   if (!fresh.length) return { sent: 0 };
 
-  const text = `Queizy · alerta do checkout\n\n${fresh.map(a => `• ${a.message}`).join('\n')}\n\nPainel: queizy.com/admin/commercial`;
+  const text = `Queizy · alerta do checkout\n\n${fresh.map(a => `• ${a.message}`).join('\n')}\n\nPainel: queizy.com/admin/commercial?tab=health`;
   const to = await reportRecipients('checkout');
   let emailOk = false;
   const html = `<div style="font-family:-apple-system,Arial,sans-serif;font-size:15px;line-height:1.6;color:#16131F">
@@ -56,7 +56,7 @@ async function deliver(alerts: Alert[]): Promise<{ sent: number }> {
     <p style="color:#8A8494;font-size:13px">Vigia automático (a cada 5 min). Cada tipo de alerta repete no máximo 1 vez por hora.</p></div>`;
   for (const addr of to) emailOk = (await sendEmail({ to: addr, subject: `Queizy: alerta do checkout (${fresh.length})`, html }).catch(() => false)) || emailOk;
   let waOk = false;
-  await notifyAdmins({ title: `Alerta do checkout (${fresh.length})`, body: fresh.map(a => a.message).join(' · ').slice(0, 300), url: '/admin/commercial', tag: 'checkout', category: 'checkout' }).catch(() => 0);
+  await notifyAdmins({ title: `Alerta do checkout (${fresh.length})`, body: fresh.map(a => a.message).join(' · ').slice(0, 300), url: '/admin/commercial?tab=health', tag: 'checkout', category: 'checkout' }).catch(() => 0);
   const wa = process.env.ALERT_WHATSAPP;
   // Texto livre só passa dentro da janela de 24 h; fora dela, o modelo aprovado.
   if (wa) waOk = (await sendWhatsAppText(wa, text)).ok || (await sendAlertTemplate(wa, fresh.map(a => a.message).join(' | '))).ok;
