@@ -11,7 +11,6 @@ import { base, h1, p, btn, note } from '@/lib/email-brand';
 import { fxToBrl } from '@/lib/fx';
 
 const OPENAI_DAILY_LIMIT_USD = Number(process.env.AI_DAILY_ALERT_USD || 5);
-const ELEVEN_STEPS = [95, 90, 80]; // 80%: hora de ligar a recarga automática (o Felipe liga na mão)
 const DAY = 86400000;
 
 /** Dia relatado (YYYY-MM-DD) e o intervalo dele em segundos. É ANTEONTEM: a OpenAI leva cerca de um
@@ -86,14 +85,12 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
     if (last && el.used >= last.eleven_used) perDay = (el.used - last.eleven_used) / Math.max(1, (Date.parse(day) - Date.parse(last.day)) / DAY);
     else if (el.resetAt) perDay = el.used / Math.max(1, (Date.now() - (el.resetAt.getTime() - 30 * DAY)) / DAY);
     const left = el.limit - el.used;
-    const runOut = perDay && perDay > 0 ? new Date(Date.now() + (left / perDay) * DAY) : null;
+    // Passou do plano: a recarga automática está cobrindo, não existe data em que os créditos acabam.
+    const runOut = left > 0 && perDay && perDay > 0 ? new Date(Date.now() + (left / perDay) * DAY) : null;
     elevenLine = `ElevenLabs (plano ${el.plan}): ${el.used.toLocaleString('pt-BR')} de ${el.limit.toLocaleString('pt-BR')} créditos (${pct}%)`
       + (perDay ? `, cerca de ${Math.round(perDay).toLocaleString('pt-BR')} por dia` : '')
       + (el.resetAt ? `. Renova em ${dateBr(el.resetAt)}` : '')
-      + (runOut ? `; nesse ritmo acaba em ${dateBr(runOut)}.` : '.');
-    const step = ELEVEN_STEPS.find(s => pct >= s);
-    if (step) alerts.push(`ElevenLabs passou de ${step}% dos créditos do ciclo (${pct}%). Ligue a recarga automática no painel da ElevenLabs.`);
-    if (runOut && el.resetAt && runOut < el.resetAt) alerts.push(`ElevenLabs: nesse ritmo os créditos acabam em ${dateBr(runOut)}, antes da renovação em ${dateBr(el.resetAt)}. Sem recarga automática, as vozes dos personagens e as ligações param.`);
+      + (runOut ? `; nesse ritmo o plano acaba em ${dateBr(runOut)} e a recarga automática cobre o resto.` : left <= 0 ? '; acima do plano, coberto pela recarga automática.' : '.');
   }
 
   await supabase.from('ai_cost_daily').update({
