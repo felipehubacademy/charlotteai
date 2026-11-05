@@ -11,7 +11,7 @@ export interface AdminAlert { id: string; title: string; body: string; url: stri
 
 const CATEGORY_LABEL: Record<string, string> = {
   checkout: 'Checkout', ticket_new: 'Suporte', ticket_sla: 'Suporte', capacity: 'Banco',
-  ai_costs: 'Custos de IA', instagram: 'Instagram',
+  ai_costs: 'Custos de IA', instagram: 'Instagram', pushes: 'Pushes',
 };
 const PAGE_LABEL: [string, string][] = [
   ['/admin/finance', 'Abrir o Financeiro'], ['/admin/support', 'Abrir o Suporte'], ['/admin/commercial', 'Abrir o Comercial'],

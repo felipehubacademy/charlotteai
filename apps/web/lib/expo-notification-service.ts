@@ -6,6 +6,7 @@ import { aiFetch } from '@/lib/ai-models';
 // Sends push notifications to React Native (Charlotte AI) via Expo Push API
 
 import { randomUUID } from 'crypto';
+import { notifyAdmins } from '@/lib/admin-push';
 import { logOpenAIUsage } from './openai-usage';
 import { allFriendPairs } from '@/lib/friends';
 import { tasteDay, TASTE_DAYS } from '@/lib/taste';
@@ -583,22 +584,42 @@ async function sendExpoPush(
     if (m?.to) ticketByMessage.set(ticketKey(m.to, m.title), t);
   };
 
+  // Lote que caiu inteiro (rede, tempo esgotado, Expo fora): conta para o alerta da gestão.
+  let lostInRequest = 0;
+  let lastRequestError = '';
   for (let i = 0; i < messages.length; i += BATCH_SIZE) {
     const batch = messages.slice(i, i + BATCH_SIZE);
     try {
-      const response = await fetch(EXPO_PUSH_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(batch.map(m => ({ channelId: ANDROID_PUSH_CHANNEL, ...m }))),
-      });
-      const result = await response.json();
+      // Até 3 tentativas: falha de rede, tempo esgotado, 429 ou 5xx do Expo costumam passar em segundos.
+      let result: any = null;
+      let httpStatus = 0;
+      // Se um lote já caiu de vez, o Expo está fora: os seguintes tentam uma vez só, para não estourar o tempo.
+      const waits = lostInRequest ? [0] : [0, 3000, 8000];
+      for (const [n, waitMs] of waits.entries()) {
+        if (waitMs) await new Promise(r => setTimeout(r, waitMs));
+        try {
+          const response = await fetch(EXPO_PUSH_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            },
+            body: JSON.stringify(batch.map(m => ({ channelId: ANDROID_PUSH_CHANNEL, ...m }))),
+            signal: AbortSignal.timeout(15000),
+          });
+          httpStatus = response.status;
+          if (response.status === 429 || response.status >= 500) throw new Error(`HTTP ${response.status}`);
+          result = await response.json();
+          break;
+        } catch (e) {
+          lastRequestError = e instanceof Error ? e.message : String(e);
+          if (n === waits.length - 1) throw e;
+        }
+      }
       // Requisição inteira recusada (ex.: tokens de projetos diferentes):
       // o Expo responde só com `errors`, sem um ticket por mensagem.
       if (!Array.isArray(result?.data)) {
-        const msg = result?.errors?.[0]?.code ?? result?.errors?.[0]?.message ?? `HTTP ${response.status}`;
+        const msg = result?.errors?.[0]?.code ?? result?.errors?.[0]?.message ?? `HTTP ${httpStatus}`;
         console.error(`❌ [Expo] batch rejected: ${msg}`);
         errors += batch.length;
         batch.forEach(m => keep(m, { status: 'error', message: String(msg) }));
@@ -626,8 +647,16 @@ async function sendExpoPush(
     } catch (e) {
       console.error('❌ Expo Push batch error:', e);
       errors += batch.length;
-      batch.forEach(m => keep(m, { status: 'error', message: 'request_failed' }));
+      lostInRequest += batch.length;
+      batch.forEach(m => keep(m, { status: 'error', message: `request_failed: ${lastRequestError}`.slice(0, 200) }));
     }
+  }
+  if (lostInRequest > 0) {
+    await notifyAdmins({
+      title: 'Pushes para os alunos não saíram',
+      body: `${lostInRequest} de ${messages.length} pushes falharam no envio, mesmo depois de 3 tentativas (${lastRequestError}). Exemplo: "${messages[0]?.title ?? ''}".`.slice(0, 300),
+      url: '/admin/notifications', tag: 'push-failed', category: 'pushes',
+    }).catch(e => console.warn('[Expo] alerta da gestão falhou:', e));
   }
 
   // Token cleanup — null out dead tokens so we stop trying to send to them.

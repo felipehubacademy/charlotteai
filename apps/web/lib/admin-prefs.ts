@@ -3,7 +3,7 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import type { AdminRole } from '@/lib/admin-roles';
 
-export type PushCategory = 'checkout' | 'ticket_new' | 'ticket_sla' | 'capacity' | 'ai_costs' | 'instagram' | 'emails';
+export type PushCategory = 'checkout' | 'ticket_new' | 'ticket_sla' | 'capacity' | 'ai_costs' | 'instagram' | 'emails' | 'pushes';
 export type EmailReport = 'ai_costs' | 'learn_alerts' | 'checkout' | 'capacity' | 'instagram';
 
 export const PUSH_CATEGORIES: { key: PushCategory; label: string; critical: boolean }[] = [
@@ -12,6 +12,7 @@ export const PUSH_CATEGORIES: { key: PushCategory; label: string; critical: bool
   { key: 'ticket_sla', label: 'Chamado sem resposta há 2 horas', critical: false },
   { key: 'capacity', label: 'Banco perto do limite', critical: true },
   { key: 'emails', label: 'E-mail de boas-vindas atrasado', critical: true },
+  { key: 'pushes', label: 'Pushes para os alunos que não saíram', critical: true },
   { key: 'ai_costs', label: 'Custos de IA acima do esperado', critical: false },
   { key: 'instagram', label: 'Instagram: semana seguinte sem aprovação (domingo, 20h)', critical: false },
 ];
