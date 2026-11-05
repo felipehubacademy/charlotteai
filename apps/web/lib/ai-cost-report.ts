@@ -1,5 +1,5 @@
-// lib/ai-cost-report.ts — e-mail diário de custos de IA (tarefa ai_costs do scheduler, às 8h), do dia
-// anterior a ontem (já fechado na OpenAI).
+// lib/ai-cost-report.ts — custos de IA (tarefa ai_costs do scheduler, às 8h), do dia anterior a ontem (já fechado
+// na OpenAI). Grava todo dia para o /admin; e-mail e alerta no celular só quando há alerta.
 // Valores REAIS: OpenAI pela API de custos da organização (por item) e ElevenLabs pela assinatura.
 // O registro interno (openai_usage) subestima: não conta o Live Voice nem as escritas de cache.
 // Alerta: OpenAI do dia acima do teto. ElevenLabs só informa o consumo (a recarga automática está ligada).
@@ -90,6 +90,9 @@ export async function runAiCostReport(opts: { force?: boolean } = {}): Promise<{
 
   // A caixa do suporte não recebe: lá todo e-mail vira chamado.
   // Quem recebe: administradores que não desligaram este relatório em Minha conta (suporte@ fica de fora).
+  // Sem alerta, os números ficam só no /admin.
+  if (!alerts.length && !opts.force) return { sent: false, reason: 'sem alerta', openaiUsd: oa?.usd ?? null, openaiError };
+
   const to = (await reportRecipients('ai_costs')).filter(e => !/^suporte@/i.test(e));
   const dayBr = dayLabel;
   const top = (oa?.lines ?? []).filter(l => l.usd >= 0.05).slice(0, 6);

@@ -16,7 +16,7 @@ export const PUSH_CATEGORIES: { key: PushCategory; label: string; critical: bool
   { key: 'instagram', label: 'Instagram: semana seguinte sem aprovação (domingo, 20h)', critical: false },
 ];
 export const EMAIL_REPORTS: { key: EmailReport; label: string }[] = [
-  { key: 'ai_costs', label: 'Custos de IA (diário, 8h)' },
+  { key: 'ai_costs', label: 'Custos de IA (só com alerta)' },
   { key: 'learn_alerts', label: 'Onde os alunos travaram (diário)' },
   { key: 'checkout', label: 'Alertas do checkout' },
   { key: 'capacity', label: 'Banco perto do limite' },
