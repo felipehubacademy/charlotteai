@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { fetchAll } from '@/lib/learning-stats';
+import { readAll } from '@/lib/db-batch';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
@@ -57,15 +57,16 @@ export async function GET(req: NextRequest) {
     { data: userProgress },
   ] = await Promise.all([
     // PostgREST devolve no máximo 1000 linhas por consulta: tudo aqui é paginado.
-    fetchAll<CharlotteUser>((a, b) => supabase.from('charlotte_users').select('*').order('created_at', { ascending: false }).range(a, b), 200000)
+    // readAll (lib/db-batch): ordem única para as páginas não pularem linhas e erro explícito em vez de lista vazia.
+    readAll<CharlotteUser>('alunos', () => supabase.from('charlotte_users').select('*').order('created_at', { ascending: false }).order('id'))
       .then(data => ({ data, error: null as { message: string } | null })),
     // Engajamento já somado por aluno no banco (antes vinham todas as práticas, ~40 páginas, e a tela levava 15 s).
-    fetchAll<EngRow>((a, b) => supabase.rpc('admin_user_engagement').order('user_id').range(a, b) as never, 200000)
+    readAll<EngRow>('engajamento', () => supabase.rpc('admin_user_engagement').order('user_id'))
       .then(data => ({ data, error: null })),
-    fetchAll<{ user_id: string; level: string; module_id: string; unit_id: string; activity_type: string }>((a, b) =>
-      supabase.from('learn_history_v2').select('user_id, level, module_id, unit_id, activity_type').eq('completed', true).order('id').range(a, b), 200000)
+    readAll<{ user_id: string; level: string; module_id: string; unit_id: string; activity_type: string }>('trilha', () =>
+      supabase.from('learn_history_v2').select('user_id, level, module_id, unit_id, activity_type').eq('completed', true).order('id'))
       .then(data => ({ data, error: null })),
-    fetchAll<UserProgress>((a, b) => supabase.from('charlotte_progress').select('user_id, streak_days, total_xp, last_practice_date').order('user_id').range(a, b), 200000)
+    readAll<UserProgress>('progresso', () => supabase.from('charlotte_progress').select('user_id, streak_days, total_xp, last_practice_date').order('user_id'))
       .then(data => ({ data, error: null })),
   ]);
 
@@ -154,9 +155,9 @@ export async function GET(req: NextRequest) {
   // pagante: já houve cobrança (loja ou site, sem reembolso total) e ainda tem acesso;
   // teste_loja / teste_site: 7 dias grátis com cartão; teste_antigo: teste sem cartão do app (até 21/10).
   const [revRows, siteRows] = await Promise.all([
-    fetchAll<ChargeRevRow>((a, b) => supabase.from('revenue_events').select('app_user_id, event_type, store, price_purchased, purchased_at').order('id').range(a, b), 200000),
-    fetchAll<ChargeCkRow>((a, b) => supabase.from('asaas_checkouts').select('user_id, value_brl, trial_days, status, asaas_payment_id, paid_at, refunded_at, created_at')
-      .eq('sandbox', false).order('created_at', { ascending: true }).order('id').range(a, b), 200000),
+    readAll<ChargeRevRow>('receita', () => supabase.from('revenue_events').select('app_user_id, event_type, store, price_purchased, purchased_at').order('id')),
+    readAll<ChargeCkRow>('checkouts do site', () => supabase.from('asaas_checkouts').select('user_id, value_brl, trial_days, status, asaas_payment_id, paid_at, refunded_at, created_at')
+      .eq('sandbox', false).order('created_at', { ascending: true }).order('id')),
   ]);
   const { firstChargeAt, siteCk } = chargeIndex(revRows, siteRows);
   const nowMs = now.getTime();

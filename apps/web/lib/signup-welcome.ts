@@ -53,12 +53,13 @@ async function alertLate(supabase: ReturnType<typeof getSupabaseAdmin>): Promise
   const from = new Date(Math.max(Date.parse(SIGNUP_WELCOME_FROM), Date.now() - 25 * 60_000)).toISOString();
   const to = new Date(Date.now() - 20 * 60_000).toISOString();
   if (from >= to) return;
-  const { data: late } = await supabase.from('charlotte_users').select('email')
+  // Só a contagem (sem baixar linhas, que param em 1.000).
+  const { count: late } = await supabase.from('charlotte_users').select('id', { count: 'exact', head: true })
     .gte('created_at', from).lt('created_at', to).eq('subscription_status', 'none').eq('is_institutional', false)
     .is('signup_welcome_sent_at', null);
   const { count: stuck } = await supabase.from('email_outbox').select('id', { count: 'exact', head: true })
     .in('kind', ['signup_welcome', 'trial_welcome']).is('sent_at', null).gte('created_at', from).lt('created_at', to);
-  const n = (late ?? []).length;
+  const n = late ?? 0;
   if (!n && !stuck) return;
   await notifyAdmins({
     title: 'E-mail de boas-vindas atrasado',

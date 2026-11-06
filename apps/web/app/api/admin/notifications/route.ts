@@ -11,21 +11,11 @@ import { isTeamAccount } from '@/lib/admin-subscriptions';
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll } from '@/lib/db-batch';
 
 async function checkAuth(req: NextRequest) {
   const admin = await getAdmin(req);
   return !!admin && can(admin.role, 'notifications');
-}
-
-// O PostgREST devolve no máximo 1000 linhas por consulta; a semana passa disso.
-async function fetchAll<T>(build: (from: number, to: number) => PromiseLike<{ data: T[] | null }>): Promise<T[]> {
-  const out: T[] = [];
-  for (let from = 0; from < 50000; from += 1000) {
-    const { data } = await build(from, from + 999);
-    out.push(...(data ?? []));
-    if (!data || data.length < 1000) break;
-  }
-  return out;
 }
 
 // ── GET ───────────────────────────────────────────────────────────────────────
@@ -53,12 +43,14 @@ export async function GET(req: NextRequest) {
     logsPage,
     logsCount,
   ] = await Promise.all([
-    fetchAll<{ expo_push_token: string | null; email: string | null; is_institutional: boolean | null; hide_from_ranking: boolean | null }>((f, t) => supabase.from('charlotte_users').select('expo_push_token, email, is_institutional, hide_from_ranking').order('id').range(f, t) as never),
-    fetchAll<{ status: string }>((f, t) => supabase.from('notification_logs').select('status').gte('created_at', ago24h).order('created_at').range(f, t) as never),
-    fetchAll<{ user_id: string; notification_type: string; status: string }>((f, t) =>
-      supabase.from('notification_logs').select('user_id, notification_type, status').gte('created_at', ago7d).order('created_at').range(f, t) as never),
-    fetchAll<{ created_at: string }>((f, t) =>
-      supabase.from('notification_logs').select('created_at').gte('created_at', ago30d).eq('status', 'sent').order('created_at').range(f, t) as never),
+    // Tudo em páginas (a API devolve no máximo 1.000 linhas), com ordem por id para as páginas não pularem nem
+    // repetirem linhas, e sem teto: antes, leitura que falhava ou passava de 50.000 linhas saía cortada sem aviso.
+    readAll<{ expo_push_token: string | null; email: string | null; is_institutional: boolean | null; hide_from_ranking: boolean | null }>('alunos', () => supabase.from('charlotte_users').select('expo_push_token, email, is_institutional, hide_from_ranking').order('id')),
+    readAll<{ status: string }>('envios 24 h', () => supabase.from('notification_logs').select('status').gte('created_at', ago24h).order('id')),
+    readAll<{ user_id: string; notification_type: string; status: string }>('envios 7 dias', () =>
+      supabase.from('notification_logs').select('user_id, notification_type, status').gte('created_at', ago7d).order('id')),
+    readAll<{ created_at: string }>('envios 30 dias', () =>
+      supabase.from('notification_logs').select('created_at').gte('created_at', ago30d).eq('status', 'sent').order('id')),
 
     // Recent logs (paginated)
     (() => {

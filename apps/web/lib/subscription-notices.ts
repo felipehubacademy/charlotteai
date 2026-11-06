@@ -9,6 +9,7 @@
 //
 // Cada aviso sai uma vez só: trava em asaas_events (notice_<tipo>_<chave>).
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll } from '@/lib/db-batch';
 import { sendOrQueue } from '@/lib/email-outbox';
 import { sendSubscriptionPush } from '@/lib/expo-notification-service';
 import {
@@ -45,10 +46,11 @@ async function loadCk(id: string): Promise<Ck | null> {
 /** Cron diário: quem tem a 1ª cobrança do teste grátis nas próximas 24 a 48 horas. */
 export async function sendTrialEndingNotices(): Promise<{ sent: number; checked: number }> {
   const supabase = getSupabaseAdmin();
-  const { data } = await supabase.from('asaas_checkouts').select(CK_COLS)
+  // Em páginas e com erro explícito: com mais de 1.000 testes no mês, parte das pessoas ficaria sem o aviso
+  // antes da primeira cobrança.
+  const rows = await readAll<Ck>('testes do site', () => supabase.from('asaas_checkouts').select(CK_COLS)
     .eq('status', 'paid').gt('trial_days', 0).is('asaas_payment_id', null)
-    .gte('created_at', new Date(Date.now() - 30 * DAY).toISOString());
-  const rows = (data ?? []) as Ck[];
+    .gte('created_at', new Date(Date.now() - 30 * DAY).toISOString()).order('id'));
   let sent = 0;
   for (const r of rows) {
     const firstCharge = new Date(new Date(r.created_at).getTime() + r.trial_days * DAY);

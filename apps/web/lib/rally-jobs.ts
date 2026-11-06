@@ -4,6 +4,7 @@
 //  3. encerramento        -> vencedor ganha minutos de Live Voice; todos recebem o resultado
 // Push só das 9h às 21h no horário de cada um (lib/push-quiet-hours); fora disso o aviso não sai.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll, readIn } from '@/lib/db-batch';
 import { pushIsPt } from '@/lib/expo-notification-service';
 import { inQuietHours } from '@/lib/push-quiet-hours';
 import {
@@ -15,21 +16,23 @@ type PushUser = { id: string; expo_push_token: string | null; charlotte_level: s
 
 function pushIfAwake(u: PushUser, title: string, body: string, data: Record<string, unknown>) {
   if (inQuietHours(u.timezone)) return null;
-  return pushIfAwake(u, title, body, data);
+  return sendDirectPush(u.expo_push_token, title, body, data);
 }
 
 export async function runRallyJobs(): Promise<{ updates: number; reminders: number; finalized: number }> {
   const supabase = getSupabaseAdmin();
   const now = Date.now();
-  const { data } = await supabase.from('rallies').select('*').eq('finalized', false).limit(2000);
-  const rallies = (data ?? []) as unknown as RallyRow[];
+  // Em páginas e com erro explícito: o .limit(2000) não valia (máximo de 1.000 linhas por leitura) e, se a leitura
+  // falhava, nenhuma competição era encerrada sem aviso.
+  const rallies = await readAll<RallyRow>('competições abertas', () => supabase.from('rallies').select('*').eq('finalized', false).order('id'));
   if (!rallies.length) return { updates: 0, reminders: 0, finalized: 0 };
 
   const standings = await computeStandings(rallies);
   const ids = [...new Set([...standings.values()].flat().map(s => s.userId))];
-  const { data: us } = await supabase.from('charlotte_users')
-    .select('id, expo_push_token, charlotte_level, app_language, live_voice_bonus_seconds, timezone').in('id', ids.length ? ids : ['-']);
-  const people = new Map(((us ?? []) as PushUser[]).map(u => [u.id, u]));
+  // Ids em lotes: com mais de ~600 participantes a leitura falhava e ninguém recebia push nem o prêmio certo.
+  const us = await readIn<PushUser>('participantes', ids, chunk => supabase.from('charlotte_users')
+    .select('id, expo_push_token, charlotte_level, app_language, live_voice_bonus_seconds, timezone').in('id', chunk).order('id'));
+  const people = new Map(us.map(u => [u.id, u]));
   const ord = (n: number, pt: boolean) => (pt ? `${n}º` : n === 1 ? '1st' : n === 2 ? '2nd' : n === 3 ? '3rd' : `${n}th`);
   let updates = 0, reminders = 0, finalized = 0;
 

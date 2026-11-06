@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
 import { attributeUser, balanceOf, cleanAffiliateCode, type Affiliate } from '@/lib/affiliates';
+import { readAll, readIn } from '@/lib/db-batch';
 
 export const dynamic = 'force-dynamic';
 const SITE = 'https://queizy.com';
@@ -22,44 +23,51 @@ export async function GET(req: NextRequest) {
   const id = req.nextUrl.searchParams.get('id');
 
   if (id) {
-    const [{ data: aff }, { data: attrs }, { data: comms }] = await Promise.all([
+    // Comissões em páginas: o saldo sai da lista inteira (com .limit(1000) um afiliado grande teria saldo errado).
+    const [{ data: aff }, { data: attrs }, comms] = await Promise.all([
       supabase.from('affiliates').select('*').eq('id', id).maybeSingle(),
       supabase.from('affiliate_attributions').select('*').eq('affiliate_id', id).order('attributed_at', { ascending: false }).limit(500),
-      supabase.from('affiliate_commissions').select('*').eq('affiliate_id', id).order('created_at', { ascending: false }).limit(1000),
+      readAll<Comm>('comissões do afiliado', () => supabase.from('affiliate_commissions').select('*').eq('affiliate_id', id)
+        .order('created_at', { ascending: false }).order('id', { ascending: false })),
     ]);
     if (!aff) return NextResponse.json({ error: 'not_found' }, { status: 404 });
-    const ids = [...new Set([...(attrs ?? []).map(a => (a as Attr).user_id), ...(comms ?? []).map(c => (c as Comm).user_id)])];
-    const { data: users } = ids.length
-      ? await supabase.from('charlotte_users').select('id, name, email, subscription_status, created_at').in('id', ids)
-      : { data: [] as unknown[] };
-    return NextResponse.json({ affiliate: aff, link: `${SITE}/a/${(aff as unknown as Affiliate).code}`, attributions: attrs ?? [], commissions: comms ?? [], users: users ?? [], balance: balanceOf((comms ?? []) as Comm[]) });
+    const ids = [...new Set([...(attrs ?? []).map(a => (a as Attr).user_id), ...comms.map(c => c.user_id)])];
+    // Ids em lotes: centenas de alunos atribuídos estouram o tamanho do endereço.
+    const users = await readIn('alunos do afiliado', ids, chunk => supabase.from('charlotte_users').select('id, name, email, subscription_status, created_at').in('id', chunk).order('id'));
+    return NextResponse.json({ affiliate: aff, link: `${SITE}/a/${(aff as unknown as Affiliate).code}`, attributions: attrs ?? [], commissions: comms, users, balance: balanceOf(comms) });
   }
 
   const since30 = new Date(Date.now() - 30 * DAY).toISOString();
-  const [{ data: affs }, { data: clicks }, { data: clicks30 }, { data: attrs }, { data: comms }] = await Promise.all([
-    supabase.from('affiliates').select('*').order('created_at', { ascending: false }),
-    supabase.from('affiliate_clicks').select('affiliate_id').limit(100000),
-    supabase.from('affiliate_clicks').select('affiliate_id').gte('created_at', since30).limit(100000),
-    supabase.from('affiliate_attributions').select('user_id, affiliate_id').limit(100000),
-    supabase.from('affiliate_commissions').select('affiliate_id, user_id, kind, net_brl, amount_brl, status, available_at, is_test').limit(100000),
+  // O .limit(100000) não valia: a API devolve no máximo 1.000 linhas, e cliques, cadastros e comissões saíam cortados.
+  // Cliques viram contagem por afiliado (sem baixar as linhas); o resto vem em páginas, com erro explícito.
+  const { data: affs, error: affErr } = await supabase.from('affiliates').select('*').order('created_at', { ascending: false });
+  if (affErr) return NextResponse.json({ error: affErr.message }, { status: 500 });
+  const affList = (affs ?? []) as unknown as Affiliate[];
+  const countClicks = async (affId: string, since?: string) => {
+    let q = supabase.from('affiliate_clicks').select('id', { count: 'exact', head: true }).eq('affiliate_id', affId);
+    if (since) q = q.gte('created_at', since);
+    const { count, error } = await q;
+    if (error) throw new Error(`[cliques do afiliado] ${error.message}`);
+    return count ?? 0;
+  };
+  const [clickCounts, attrRows, comms] = await Promise.all([
+    Promise.all(affList.map(async a => [a.id, { all: await countClicks(a.id), d30: await countClicks(a.id, since30) }] as const)).then(r => new Map(r)),
+    readAll<Pick<Attr, 'user_id' | 'affiliate_id'>>('cadastros de afiliados', () => supabase.from('affiliate_attributions').select('user_id, affiliate_id').order('user_id')),
+    readAll<Comm>('comissões', () => supabase.from('affiliate_commissions').select('id, affiliate_id, user_id, kind, net_brl, amount_brl, status, available_at, is_test').order('id')),
   ]);
-  const attrRows = (attrs ?? []) as Pick<Attr, 'user_id' | 'affiliate_id'>[];
   const userIds = [...new Set(attrRows.map(a => a.user_id))];
-  const { data: subs } = userIds.length
-    ? await supabase.from('charlotte_users').select('id, subscription_status').in('id', userIds)
-    : { data: [] as unknown[] };
-  const statusOf = new Map(((subs ?? []) as { id: string; subscription_status: string | null }[]).map(u => [u.id, u.subscription_status]));
-  const count = (rows: { affiliate_id: string }[] | null, affId: string) => (rows ?? []).filter(r => r.affiliate_id === affId).length;
+  const subs = await readIn<{ id: string; subscription_status: string | null }>('situação dos atribuídos', userIds, chunk => supabase.from('charlotte_users').select('id, subscription_status').in('id', chunk).order('id'));
+  const statusOf = new Map(subs.map(u => [u.id, u.subscription_status]));
 
-  const list = ((affs ?? []) as unknown as Affiliate[]).map(a => {
+  const list = affList.map(a => {
     const mine = attrRows.filter(r => r.affiliate_id === a.id);
-    const myComms = ((comms ?? []) as Comm[]).filter(c => c.affiliate_id === a.id);
+    const myComms = comms.filter(c => c.affiliate_id === a.id);
     const valid = myComms.filter(c => c.kind === 'commission' && c.status !== 'reversed' && !c.is_test);
     return {
       ...a,
       link: `${SITE}/a/${a.code}`,
-      clicks: count(clicks as { affiliate_id: string }[] | null, a.id),
-      clicks30: count(clicks30 as { affiliate_id: string }[] | null, a.id),
+      clicks: clickCounts.get(a.id)?.all ?? 0,
+      clicks30: clickCounts.get(a.id)?.d30 ?? 0,
       signups: mine.length,
       trials: mine.filter(r => statusOf.get(r.user_id) === 'trial').length,
       subscribers: mine.filter(r => ['active', 'cancelled'].includes(statusOf.get(r.user_id) ?? '')).length,

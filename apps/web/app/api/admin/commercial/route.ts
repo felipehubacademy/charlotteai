@@ -8,6 +8,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cleanCampaign } from '@/lib/ad-attribution';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
+import { readAll } from '@/lib/db-batch';
 
 export const dynamic = 'force-dynamic';
 
@@ -34,9 +35,10 @@ export async function GET(req: NextRequest) {
   // Saúde do checkout (24 h): compras, recusas, Pix, erros das rotas críticas e alertas do vigia.
   if (view === 'health') {
     const since = new Date(Date.now() - 86400000).toISOString();
-    const [{ data: cks }, { data: att }, { data: errs }, { data: alerts }] = await Promise.all([
-      supabase.from('asaas_checkouts').select('status, method, channel, pending_payment_id').eq('sandbox', false).gte('created_at', since),
-      supabase.from('checkout_attempts').select('ok').eq('kind', 'card').gte('created_at', since),
+    // Checkouts e tentativas do dia em páginas: a leitura para em 1.000 linhas e os números sairiam menores.
+    const [cks, att, { data: errs }, { data: alerts }] = await Promise.all([
+      readAll('checkouts do dia', () => supabase.from('asaas_checkouts').select('id, status, method, channel, pending_payment_id').eq('sandbox', false).gte('created_at', since).order('id')),
+      readAll('tentativas de cartão', () => supabase.from('checkout_attempts').select('id, ok').eq('kind', 'card').gte('created_at', since).order('id')),
       supabase.from('ops_errors').select('created_at, area, route, message').gte('created_at', since).order('created_at', { ascending: false }).limit(50),
       supabase.from('ops_alerts').select('created_at, kind, message, sent_email, sent_whatsapp').neq('kind', 'instagram_aprovacao').order('created_at', { ascending: false }).limit(20),
     ]);
@@ -59,10 +61,11 @@ export async function GET(req: NextRequest) {
   if (view === 'ads') {
     const days = Math.min(90, Math.max(1, Number(req.nextUrl.searchParams.get('days') ?? 14)));
     const since = new Date(Date.now() - days * 86400000).toISOString();
-    const [{ data: ev }, { data: cks }] = await Promise.all([
-      supabase.from('ad_events').select('kind, arm, campaign, platform').gte('created_at', since).limit(50000),
-      supabase.from('asaas_checkouts').select('status, asaas_payment_id, value_brl, meta_tracking, created_at')
-        .eq('sandbox', false).gte('created_at', since).not('meta_tracking->utm', 'is', null),
+    // Em páginas: o .limit(50000) não valia, a API devolve no máximo 1.000 linhas e cliques e visitas saíam cortados.
+    const [ev, cks] = await Promise.all([
+      readAll('cliques e visitas', () => supabase.from('ad_events').select('id, kind, arm, campaign, platform').gte('created_at', since).order('id')),
+      readAll('checkouts com utm', () => supabase.from('asaas_checkouts').select('id, status, asaas_payment_id, value_brl, meta_tracking, created_at')
+        .eq('sandbox', false).gte('created_at', since).not('meta_tracking->utm', 'is', null).order('id')),
     ]);
     type Row = { campaign: string; clicks: number; ios: number; android: number; desktop: number; visits: number; checkouts: number; started: number; charged: number; revenue: number };
     const map = new Map<string, Row>();
@@ -117,9 +120,10 @@ export async function GET(req: NextRequest) {
     });
   }
 
-  const [{ data: coupons }, { data: paid }] = await Promise.all([
+  // Usos dos cupons em páginas: o .limit(100000) não valia (máximo de 1.000 linhas por leitura) e os usos saíam menores.
+  const [{ data: coupons }, paid] = await Promise.all([
     supabase.from('coupons').select('*').order('created_at', { ascending: false }),
-    supabase.from('asaas_checkouts').select('coupon_code, value_brl').eq('status', 'paid').not('coupon_code', 'is', null).limit(100000),
+    readAll('usos de cupom', () => supabase.from('asaas_checkouts').select('id, coupon_code, value_brl').eq('status', 'paid').not('coupon_code', 'is', null).order('id')),
   ]);
   const uses = new Map<string, { n: number; revenue: number }>();
   for (const r of (paid ?? []) as { coupon_code: string; value_brl: number }[]) {

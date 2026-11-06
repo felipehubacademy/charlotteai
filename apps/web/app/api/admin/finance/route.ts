@@ -7,6 +7,7 @@
 //   DELETE ?id=      apaga
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll } from '@/lib/db-batch';
 import { requireAdmin, audit } from '@/lib/admin-auth';
 import { fxToBrl } from '@/lib/fx';
 import { revenueSummary } from '@/lib/finance-revenue';
@@ -90,11 +91,15 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(await revenueSummary(m));
   }
 
-  const { data, error } = await getSupabaseAdmin()
-    .from('finance_entries').select(FIELDS)
-    .order('due_date', { ascending: false }).limit(5000);
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ entries: data ?? [] });
+  // Em páginas: o .limit(5000) não valia (máximo de 1.000 linhas por leitura) e os lançamentos mais antigos sumiam.
+  try {
+    const data = await readAll('lançamentos', () => getSupabaseAdmin()
+      .from('finance_entries').select(FIELDS)
+      .order('due_date', { ascending: false }).order('id'));
+    return NextResponse.json({ entries: data });
+  } catch (e) {
+    return NextResponse.json({ error: e instanceof Error ? e.message : String(e) }, { status: 500 });
+  }
 }
 
 export async function POST(req: NextRequest) {

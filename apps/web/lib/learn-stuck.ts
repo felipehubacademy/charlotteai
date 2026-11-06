@@ -73,12 +73,15 @@ async function fetchAttempts(since: string): Promise<AttemptRow[]> {
   for (let from = 0; from < 50000; from += 1000) {
     const { data, error } = await supabase.from('learn_attempts')
       .select('user_id, level, module_id, unit_id, activity_type, step_idx, event, expected, answer, score, passed, source, error_code, platform, app_version, created_at')
-      .gte('created_at', since).order('created_at', { ascending: false }).range(from, from + 999);
+      // Desempate por id: só created_at não é único e as páginas podiam pular ou repetir tentativas.
+      .gte('created_at', since).order('created_at', { ascending: false }).order('id', { ascending: false }).range(from, from + 999);
     if (error) throw new Error(error.message);
     const rows = (data ?? []) as AttemptRow[];
     out.push(...rows);
-    if (rows.length < 1000) break;
+    if (rows.length < 1000) return out;
   }
+  // Teto de 50.000 tentativas (memória e tempo da função): avisa em vez de cortar calado.
+  console.warn(`[learn-stuck] janela desde ${since} passou de 50.000 tentativas; o relatório usa só as mais recentes`);
   return out;
 }
 

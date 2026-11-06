@@ -9,6 +9,7 @@ import { pushIsPt } from '@/lib/expo-notification-service';
 import { firstName, sendDirectPush } from '@/lib/rally';
 import { friendsOf } from '@/lib/friends';
 import { blockedWith, isBlocked } from '@/lib/moderation';
+import { readAll, readIn } from '@/lib/db-batch';
 
 export const dynamic = 'force-dynamic';
 const NOW_WINDOW_MIN = 15;
@@ -26,18 +27,20 @@ export async function GET(req: NextRequest) {
   const supabase = getSupabaseAdmin();
 
   const since = new Date(Date.now() - NOW_WINDOW_MIN * 60000).toISOString();
-  const [{ data: recent }, { data: me }, friends] = await Promise.all([
-    supabase.from('charlotte_practices').select('user_id').gte('created_at', since).limit(5000),
+  // Práticas dos últimos 15 min em páginas: o .limit(5000) não valia (máximo de 1.000 linhas por leitura) e,
+  // com muita gente estudando, "estudando agora" e os amigos ativos saíam cortados.
+  const [recent, { data: me }, friends] = await Promise.all([
+    readAll<{ user_id: string }>('estudando agora', () => supabase.from('charlotte_practices').select('id, user_id').gte('created_at', since).order('id')),
     supabase.from('charlotte_users').select('charlotte_level').eq('id', user.id).maybeSingle(),
     friendsOf(user.id),
   ]);
-  const active = new Set(((recent ?? []) as { user_id: string }[]).map(r => r.user_id));
+  const active = new Set(recent.map(r => r.user_id));
   active.delete(user.id);
   const buddyIds = [...friends.keys()].filter(id => active.has(id));
   let buddiesNow: string[] = [];
   if (buddyIds.length) {
-    const { data } = await supabase.from('charlotte_users').select('name').in('id', buddyIds);
-    buddiesNow = ((data ?? []) as { name: string | null }[]).map(u => firstName(u.name)).filter(Boolean) as string[];
+    const data = await readIn<{ name: string | null }>('amigos estudando', buddyIds, chunk => supabase.from('charlotte_users').select('id, name').in('id', chunk).order('id'));
+    buddiesNow = data.map(u => firstName(u.name)).filter(Boolean) as string[];
   }
 
   // Conquistas recentes de quem está no mesmo ranking (nível).

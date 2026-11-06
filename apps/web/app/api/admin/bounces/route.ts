@@ -15,6 +15,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { listBounceRecipients } from '@/lib/microsoft-graph-email-service';
+import { readAll, writeIn } from '@/lib/db-batch';
 
 // Login próprio (Bearer) com papel que acessa 'notifications', ou a senha mestra antiga.
 async function checkAuth(req: NextRequest) {
@@ -50,8 +51,13 @@ export async function POST(req: NextRequest) {
   const bounceSet = new Set(scan.emails);
 
   const supabase = getSupabaseAdmin();
-  const { data, error } = await supabase.from('charlotte_users').select('id, email, email_bounced');
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  // Todos os alunos, em páginas: a leitura para em 1.000 linhas e quem estava depois disso nunca era marcado.
+  let data: { id: string; email: string | null; email_bounced: boolean }[];
+  try {
+    data = await readAll('alunos', () => supabase.from('charlotte_users').select('id, email, email_bounced').order('id'));
+  } catch (e) {
+    return NextResponse.json({ error: e instanceof Error ? e.message : String(e) }, { status: 500 });
+  }
 
   const matched = (data ?? []).filter(
     (u: any) => u.email && bounceSet.has(String(u.email).toLowerCase()),
@@ -60,9 +66,12 @@ export async function POST(req: NextRequest) {
   let applied = 0;
   if (apply && matched.length) {
     const ids = matched.map(u => u.id);
-    const { error: upErr } = await supabase
-      .from('charlotte_users').update({ email_bounced: true }).in('id', ids);
-    if (upErr) return NextResponse.json({ error: `Falha ao marcar: ${upErr.message}` }, { status: 500 });
+    try {
+      await writeIn('marcar e-mail que voltou', ids, chunk => supabase
+        .from('charlotte_users').update({ email_bounced: true }).in('id', chunk));
+    } catch (e) {
+      return NextResponse.json({ error: `Falha ao marcar: ${e instanceof Error ? e.message : String(e)}` }, { status: 500 });
+    }
     applied = ids.length;
   }
 

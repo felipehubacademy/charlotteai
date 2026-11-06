@@ -8,6 +8,7 @@
 // Sinais: erro em rota crítica; processador fora do ar ou no limite; pico de cartão recusado (robôs);
 // vendas pararam; pagou e ficou sem acesso (corrige sozinho); webhook mudo; fila de e-mails travada.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll, readIn } from '@/lib/db-batch';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { notifyAdmins } from '@/lib/admin-push';
 import { reportRecipients } from '@/lib/admin-prefs';
@@ -101,14 +102,27 @@ export async function runCheckoutWatch(): Promise<{ alerts: Alert[]; fixed: numb
   }
 
   // 4. Pagou e ficou sem acesso: corrige sozinho e avisa.
-  const { data: paid } = await supabase.from('asaas_checkouts')
-    .select('id, user_id, plan, method, trial_days, created_at, paid_at, asaas_payment_id, status, asaas_customer_id, asaas_subscription_id, sandbox, refunded_at')
-    .eq('status', 'paid').eq('sandbox', false).is('refunded_at', null).gte('created_at', since(400 * DAY));
+  // Compras pagas em páginas (a leitura para em 1.000 linhas e quem estava depois nunca era conferido) e as contas
+  // em lotes de ids, em vez de uma consulta por compra a cada 5 min.
+  // Se a leitura falhar, vira alerta e os outros itens do vigia continuam.
+  type PaidRow = CheckoutRow & { created_at: string; paid_at: string | null; refunded_at: string | null };
+  type PaidUser = { id: string; email: string; subscription_status: string | null; subscription_product: string | null; subscription_expires_at: string | null };
+  let paid: PaidRow[] = [];
+  let paidUsers = new Map<string, PaidUser>();
+  try {
+    paid = await readAll<PaidRow>('compras pagas', () => supabase.from('asaas_checkouts')
+      .select('id, user_id, plan, method, trial_days, created_at, paid_at, asaas_payment_id, status, asaas_customer_id, asaas_subscription_id, sandbox, refunded_at')
+      .eq('status', 'paid').eq('sandbox', false).is('refunded_at', null).gte('created_at', since(400 * DAY)).order('id'));
+    paidUsers = new Map((await readIn<PaidUser>('contas das compras', paid.map(r => r.user_id), chunk => supabase.from('charlotte_users')
+      .select('id, email, subscription_status, subscription_product, subscription_expires_at').in('id', chunk).order('id'))).map(u => [String(u.id), u]));
+  } catch (e) {
+    paid = [];
+    alerts.push({ kind: 'access_check_failed', message: `Não deu para conferir quem pagou e ficou sem acesso: ${e instanceof Error ? e.message : String(e)}` });
+  }
   let fixed = 0;
   const fixedEmails: string[] = [];
-  for (const r of (paid ?? []) as (CheckoutRow & { created_at: string; paid_at: string | null; refunded_at: string | null })[]) {
-    const { data: u } = await supabase.from('charlotte_users').select('email, subscription_status, subscription_product, subscription_expires_at').eq('id', r.user_id).maybeSingle();
-    const user = u as { email: string; subscription_status: string | null; subscription_product: string | null; subscription_expires_at: string | null } | null;
+  for (const r of paid) {
+    const user = paidUsers.get(String(r.user_id)) ?? null;
     if (!user) continue;
     const okNow = (user.subscription_product ?? '').startsWith('web_') && ['active', 'cancelled'].includes(user.subscription_status ?? '');
     if (okNow) continue;

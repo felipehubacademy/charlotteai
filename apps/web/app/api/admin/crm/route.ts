@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
 import { computeRisk } from '@/lib/crm-risk';
+import { readAll, readIn } from '@/lib/db-batch';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,7 +24,9 @@ export async function GET(req: NextRequest) {
   const [userR, progR, pracR, sessR, supR, revR, notesR, tagsR] = await Promise.all([
     supabase.from('charlotte_users').select('id, email, name, username, charlotte_level, is_institutional, is_active, subscription_status, subscription_product, subscription_expires_at, trial_ends_at, created_at, last_seen_at, last_practice_at, app_version, app_platform, avatar_url, marketing_opt_out').eq('id', userId).maybeSingle(),
     supabase.from('charlotte_progress').select('total_xp, streak_days, last_practice_date').eq('user_id', userId).maybeSingle(),
-    supabase.from('charlotte_practices').select('practice_type, xp_earned, created_at').eq('user_id', userId).gte('created_at', since).order('created_at', { ascending: false }).limit(2000),
+    // 60 dias de um aluno muito ativo passam de 1.000 práticas: em páginas para a atividade por dia não sair cortada.
+    readAll('práticas do aluno', () => supabase.from('charlotte_practices').select('id, practice_type, xp_earned, created_at').eq('user_id', userId).gte('created_at', since)
+      .order('created_at', { ascending: false }).order('id', { ascending: false })).then(data => ({ data })),
     supabase.from('charlotte_chat_sessions').select('id, title, summary, started_at, message_count').eq('user_id', userId).order('started_at', { ascending: false }).limit(10),
     supabase.from('support_conversations').select('id, channel, subject, status, created_at, last_message_at').eq('user_id', userId).order('created_at', { ascending: false }).limit(10),
     supabase.from('revenue_events').select('event_type, product_id, store, net_brl, gross_brl, purchased_at').eq('app_user_id', userId).order('purchased_at', { ascending: false }).limit(20),
@@ -131,7 +134,7 @@ async function socialOf(userId: string) {
     ...((rOut.data ?? []) as { reported_id: string }[]).map(r => r.reported_id),
     ...((rIn.data ?? []) as { reporter_id: string }[]).map(r => r.reporter_id),
   ])];
-  const { data: people } = ids.length ? await supabase.from('charlotte_users').select('id, name, username').in('id', ids) : { data: [] };
+  const people = await readIn('pessoas ligadas ao aluno', ids, chunk => supabase.from('charlotte_users').select('id, name, username').in('id', chunk).order('id'));
   const p = new Map(((people ?? []) as { id: string; name: string | null; username: string | null }[]).map(x => [x.id, x]));
   const who = (id: string) => ({ id, name: p.get(id)?.name ?? null, username: p.get(id)?.username ?? null });
   return {

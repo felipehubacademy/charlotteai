@@ -7,6 +7,7 @@
 // Conta nova: criada aqui pelo e-mail; depois do pagamento chega o e-mail para criar a senha.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll } from '@/lib/db-batch';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { affiliateByCode, cleanAffiliateCode } from '@/lib/affiliates';
 import {
@@ -85,9 +86,10 @@ export async function POST(req: NextRequest) {
     if (!process.env.ADMIN_SECRET || req.headers.get('x-admin-secret') !== process.env.ADMIN_SECRET) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    const { data } = await supabase.from('asaas_checkouts').select('id, user_id, method, asaas_subscription_id, asaas_customer_id, charlotte_users!inner(email)')
-      .eq('status', 'paid').eq('sandbox', false).neq('method', 'annual_pix');
-    const rows = (data ?? []) as unknown as { id: string; user_id: string; method: string; asaas_subscription_id: string | null; asaas_customer_id: string | null; charlotte_users: { email: string } }[];
+    // Em páginas: a leitura para em 1.000 linhas e as compras depois disso ficavam de fora.
+    const data = await readAll('compras pagas', () => supabase.from('asaas_checkouts').select('id, user_id, method, asaas_subscription_id, asaas_customer_id, charlotte_users!inner(email)')
+      .eq('status', 'paid').eq('sandbox', false).neq('method', 'annual_pix').order('id'));
+    const rows = data as unknown as { id: string; user_id: string; method: string; asaas_subscription_id: string | null; asaas_customer_id: string | null; charlotte_users: { email: string } }[];
     const isTest = (e: string) => /^felipe\.xavier1987\+.*@gmail\.com$/i.test(e) || /@hubacademybr\.com$/i.test(e);
     const out: Record<string, unknown>[] = [];
     for (const r of rows) {
@@ -113,8 +115,8 @@ export async function POST(req: NextRequest) {
     if (!process.env.ADMIN_SECRET || req.headers.get('x-admin-secret') !== process.env.ADMIN_SECRET) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    const { data } = await supabase.from('asaas_checkouts').select('asaas_customer_id').eq('sandbox', false).not('asaas_customer_id', 'is', null);
-    const ids = [...new Set(((data ?? []) as { asaas_customer_id: string }[]).map(r => r.asaas_customer_id))];
+    const data = await readAll<{ asaas_customer_id: string }>('clientes do site', () => supabase.from('asaas_checkouts').select('id, asaas_customer_id').eq('sandbox', false).not('asaas_customer_id', 'is', null).order('id'));
+    const ids = [...new Set(data.map(r => r.asaas_customer_id))];
     let ok = 0; const failed: string[] = [];
     for (const id of ids) { try { await disableCustomerNotifications(id); ok++; } catch { failed.push(id); } }
     return NextResponse.json({ total: ids.length, ok, failed });

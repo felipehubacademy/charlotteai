@@ -12,6 +12,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { pushIsPt } from '@/lib/expo-notification-service';
 import { friendsOf } from '@/lib/friends';
 import { attributeUser } from '@/lib/affiliates';
+import { readIn } from '@/lib/db-batch';
 
 export const dynamic = 'force-dynamic';
 
@@ -101,10 +102,12 @@ export async function GET(req: NextRequest) {
   if (ids.length) {
     const since = weekStartIso();
     const dayAgo = new Date(Date.now() - DAY).toISOString();
+    // Amigos em lotes e práticas da semana em páginas: lista longa de ids estoura o endereço e
+    // a leitura para em 1.000 linhas (a semana de poucos amigos ativos já passa disso).
     const [profiles, progress, practices, nudges, pairs] = await Promise.all([
-      supabase.from('charlotte_users').select('id, name, avatar_url, charlotte_level').in('id', ids),
-      supabase.from('charlotte_progress').select('user_id, streak_days, last_practice_date').in('user_id', ids),
-      supabase.from('charlotte_practices').select('user_id, xp_earned, practice_type').in('user_id', [...ids, user.id]).gte('created_at', since).limit(20000),
+      readIn('amigos', ids, chunk => supabase.from('charlotte_users').select('id, name, avatar_url, charlotte_level').in('id', chunk).order('id')).then(data => ({ data })),
+      readIn('sequência dos amigos', ids, chunk => supabase.from('charlotte_progress').select('user_id, streak_days, last_practice_date').in('user_id', chunk).order('user_id')).then(data => ({ data })),
+      readIn('práticas da semana', [...ids, user.id], chunk => supabase.from('charlotte_practices').select('id, user_id, xp_earned, practice_type').in('user_id', chunk).gte('created_at', since).order('id')).then(data => ({ data })),
       supabase.from('buddy_nudges').select('to_id').eq('from_id', user.id).gte('created_at', dayAgo),
       // Sequência com amigo: dias seguidos em que os dois praticaram (supabase/migrations/20261028_friend_streaks.sql).
       supabase.rpc('friend_streaks', { p_user: user.id, p_ids: ids }),

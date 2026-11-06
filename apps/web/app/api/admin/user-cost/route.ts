@@ -9,6 +9,7 @@ export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll } from '@/lib/db-batch';
 
 
 // Login próprio (Bearer) com papel que acessa 'metrics', ou a senha mestra antiga.
@@ -37,13 +38,15 @@ export async function GET(req: NextRequest) {
   const supabase = getSupabaseAdmin();
 
   // Sem cast — usa o padrão correto do projeto
-  const result = await supabase
+  // Em páginas: o .limit(5000) não valia (máximo de 1.000 linhas por leitura) e o custo de quem usa muito saía menor.
+  const result = await readAll('custo do aluno', () => supabase
     .from('openai_usage')
     .select('endpoint, model, total_tokens, cost_usd, user_id')
     .eq('user_id', userId)
     .gte('created_at', fromDate.toISOString())
     .lte('created_at', toDate.toISOString())
-    .limit(5000);
+    .order('id'))
+    .then(data => ({ data, error: null as { message: string } | null }), (e: Error) => ({ data: null, error: { message: e.message } }));
 
   const rows = (result.data ?? []) as Array<{
     endpoint: string; model: string;

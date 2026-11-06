@@ -9,6 +9,7 @@ import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
 import { v2HardestUnits, v2ByActivity, type V2Row as LV2Row } from '@/lib/learning-v2';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll } from '@/lib/db-batch';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 import {
   DAY, isStudy, pronunciation, grammarWithTrail, currentStreak, type TrailFeedbackRow,
@@ -53,10 +54,13 @@ export async function GET(req: NextRequest) {
   const [userR, progR, msgR, pracR, tfR, v2R] = await Promise.all([
     supabase.from('charlotte_users').select('name, charlotte_level').eq('id', user.id).maybeSingle(),
     supabase.from('charlotte_progress').select('total_xp, streak_days, last_practice_date').eq('user_id', user.id).maybeSingle(),
-    supabase.from('chat_messages').select('user_id, role, mode, content, created_at').eq('user_id', user.id).in('mode', ['pronunciation', 'grammar']).gte('created_at', since60).order('created_at', { ascending: false }).limit(3000),
-    supabase.from('charlotte_practices').select('practice_type, created_at').eq('user_id', user.id).gte('created_at', since56).limit(10000),
+    // Os .limit(3000/10000/5000) não valiam (máximo de 1.000 linhas por leitura): em páginas, o painel de evolução
+    // de quem estuda muito não sai cortado.
+    readAll('mensagens', () => supabase.from('chat_messages').select('user_id, role, mode, content, created_at').eq('user_id', user.id).in('mode', ['pronunciation', 'grammar']).gte('created_at', since60)
+      .order('created_at', { ascending: false }).order('id', { ascending: false })).then(data => ({ data })),
+    readAll('práticas', () => supabase.from('charlotte_practices').select('practice_type, created_at').eq('user_id', user.id).gte('created_at', since56).order('id')).then(data => ({ data })),
     supabase.from('trail_feedback').select('error_free, corrections, created_at').eq('user_id', user.id).gte('created_at', since60).limit(500),
-    supabase.from('learn_history_v2').select('user_id, level, module_id, unit_id, activity_type, score, completed, updated_at').eq('user_id', user.id).gte('updated_at', since60).limit(5000),
+    readAll('trilha', () => supabase.from('learn_history_v2').select('user_id, level, module_id, unit_id, activity_type, score, completed, updated_at').eq('user_id', user.id).gte('updated_at', since60).order('id')).then(data => ({ data })),
   ]);
 
   const u = userR.data as { name: string | null; charlotte_level: string | null } | null;

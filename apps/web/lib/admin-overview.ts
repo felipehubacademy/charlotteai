@@ -233,8 +233,9 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     supabase.from('email_outbox').select('id', { count: 'exact', head: true }).is('sent_at', null).gte('attempts', 3),
     lateSignupWelcomes().catch(() => ({ late: 0, stuck: 0 })),
     // Despesas dos últimos 6 meses no Financeiro (custo por usuário no mês atual e resultado mês a mês).
-    supabase.from('finance_entries').select('category, amount_brl, status, unit_cost, due_date, recurrence').eq('kind', 'expense').neq('status', 'canceled')
-      .gte('due_date', pnlFrom).lt('due_date', nextMonthFirst).limit(5000),
+    // Em páginas: o .limit(5000) não valia (máximo de 1.000 linhas por leitura).
+    paged<FinRow>((a, b) => supabase.from('finance_entries').select('category, amount_brl, status, unit_cost, due_date, recurrence').eq('kind', 'expense').neq('status', 'canceled')
+      .gte('due_date', pnlFrom).lt('due_date', nextMonthFirst).order('id').range(a, b)).then(data => ({ data })),
   ]);
 
   const { users, rev, cks, notTeam, kind, isTaster, usersBlock, firstChargeAt, siteCk, trial, paying } = partitionUsers(usersAll, revAll, ckAll, nowMs);

@@ -7,9 +7,10 @@ import { swrCached } from '@/lib/swr-cache';
 import { isTeamAccount } from '@/lib/admin-subscriptions';
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll } from '@/lib/db-batch';
 import { requireAdmin, audit } from '@/lib/admin-auth';
 import {
-  DAY, isStudy, pronunciation, grammarWithTrail, currentStreak, fetchAll, type TrailFeedbackRow,
+  DAY, isStudy, pronunciation, grammarWithTrail, currentStreak, type TrailFeedbackRow,
   type MsgRow,
 } from '@/lib/learning-stats';
 import { V2_SELECT, v2Accuracy, v2ByActivity, v2HardestUnits, v2Position, type V2Row } from '@/lib/learning-v2';
@@ -31,19 +32,21 @@ export async function GET(req: NextRequest) {
 
 async function learningSummary(days: number, since: string) {
   const supabase = getSupabaseAdmin();
+  // Tudo em páginas com ordem única (id) e erro explícito: antes, sem ordem estável as páginas podiam pular ou
+  // repetir linhas, leitura que falhava virava "sem dados" e os tetos (20.000 alunos, 100.000 práticas) cortavam calados.
   const [usersAll, progressAll, practicesAll, msgsAll, v2All, tfAll] = await Promise.all([
-    fetchAll<{ id: string; name: string | null; charlotte_level: string | null; is_active: boolean | null; created_at: string; email: string | null; is_institutional: boolean | null; hide_from_ranking: boolean | null }>((a, b) =>
-      supabase.from('charlotte_users').select('id, name, charlotte_level, is_active, created_at, email, is_institutional, hide_from_ranking').order('created_at', { ascending: false }).range(a, b)),
-    fetchAll<{ user_id: string; total_xp: number; streak_days: number; last_practice_date: string | null }>((a, b) =>
-      supabase.from('charlotte_progress').select('user_id, total_xp, streak_days, last_practice_date').range(a, b)),
-    fetchAll<{ user_id: string; practice_type: string; created_at: string }>((a, b) =>
-      supabase.from('charlotte_practices').select('user_id, practice_type, created_at').gte('created_at', since).range(a, b), 100000),
-    fetchAll<MsgRow>((a, b) =>
-      supabase.from('chat_messages').select('user_id, role, mode, content, created_at').in('mode', ['pronunciation', 'grammar']).gte('created_at', since).range(a, b), 50000),
-    fetchAll<V2Row>((a, b) =>
-      supabase.from('learn_history_v2').select(V2_SELECT).gte('updated_at', since).range(a, b), 100000),
-    fetchAll<TrailFeedbackRow>((a, b) =>
-      supabase.from('trail_feedback').select('error_free, corrections, created_at').gte('created_at', since).range(a, b), 50000),
+    readAll<{ id: string; name: string | null; charlotte_level: string | null; is_active: boolean | null; created_at: string; email: string | null; is_institutional: boolean | null; hide_from_ranking: boolean | null }>('alunos', () =>
+      supabase.from('charlotte_users').select('id, name, charlotte_level, is_active, created_at, email, is_institutional, hide_from_ranking').order('created_at', { ascending: false }).order('id')),
+    readAll<{ user_id: string; total_xp: number; streak_days: number; last_practice_date: string | null }>('progresso', () =>
+      supabase.from('charlotte_progress').select('user_id, total_xp, streak_days, last_practice_date').order('user_id')),
+    readAll<{ user_id: string; practice_type: string; created_at: string }>('práticas', () =>
+      supabase.from('charlotte_practices').select('user_id, practice_type, created_at').gte('created_at', since).order('id')),
+    readAll<MsgRow>('mensagens', () =>
+      supabase.from('chat_messages').select('user_id, role, mode, content, created_at').in('mode', ['pronunciation', 'grammar']).gte('created_at', since).order('id')),
+    readAll<V2Row>('trilha', () =>
+      supabase.from('learn_history_v2').select(V2_SELECT).gte('updated_at', since).order('id')),
+    readAll<TrailFeedbackRow>('retorno da trilha', () =>
+      supabase.from('trail_feedback').select('error_free, corrections, created_at').gte('created_at', since).order('id')),
   ]);
 
   // Equipe fora (mesma regra da Visão geral, Usuários e Métricas).
@@ -124,13 +127,15 @@ async function studentSheet(userId: string, since: string, days: number) {
   const [userR, progR, msgR, pracR, vocabR, srR, sessR, notesR, v2R, tfR] = await Promise.all([
     supabase.from('charlotte_users').select('id, name, username, charlotte_level, placement_test_done, created_at, timezone').eq('id', userId).maybeSingle(),
     supabase.from('charlotte_progress').select('total_xp, streak_days, last_practice_date').eq('user_id', userId).maybeSingle(),
-    supabase.from('chat_messages').select('user_id, role, mode, content, created_at').eq('user_id', userId).in('mode', ['pronunciation', 'grammar']).gte('created_at', since).order('created_at', { ascending: false }).limit(2000),
-    supabase.from('charlotte_practices').select('practice_type, created_at').eq('user_id', userId).gte('created_at', since).limit(5000),
+    // Os .limit(2000/5000) não valiam (máximo de 1.000 linhas por leitura): em páginas, a ficha de um aluno ativo sai inteira.
+    readAll('mensagens do aluno', () => supabase.from('chat_messages').select('user_id, role, mode, content, created_at').eq('user_id', userId).in('mode', ['pronunciation', 'grammar']).gte('created_at', since)
+      .order('created_at', { ascending: false }).order('id', { ascending: false })).then(data => ({ data })),
+    readAll('práticas do aluno', () => supabase.from('charlotte_practices').select('practice_type, created_at').eq('user_id', userId).gte('created_at', since).order('id')).then(data => ({ data })),
     supabase.from('user_vocabulary').select('id', { count: 'exact', head: true }).eq('user_id', userId),
     supabase.from('sr_items').select('id', { count: 'exact', head: true }).eq('user_id', userId).lte('next_review_at', new Date().toISOString()),
     supabase.from('charlotte_chat_sessions').select('id, title, summary, started_at, message_count').eq('user_id', userId).order('started_at', { ascending: false }).limit(8),
     supabase.from('crm_notes').select('id, body, author_name, created_at').eq('user_id', userId).order('created_at', { ascending: false }).limit(50),
-    supabase.from('learn_history_v2').select(V2_SELECT).eq('user_id', userId).limit(5000),
+    readAll('trilha do aluno', () => supabase.from('learn_history_v2').select(V2_SELECT).eq('user_id', userId).order('id')).then(data => ({ data })),
     supabase.from('trail_feedback').select('error_free, corrections, created_at').eq('user_id', userId).gte('created_at', since).limit(500),
   ]);
   const u = userR.data as { id: string; name: string | null; username: string | null; charlotte_level: string | null; placement_test_done: boolean | null; created_at: string } | null;

@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { getSubscription, subscriptionPayments } from '@/lib/asaas';
+import { readIn } from '@/lib/db-batch';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -19,9 +20,11 @@ export async function GET(req: NextRequest) {
     .eq('status', 'paid').eq('sandbox', false).not('asaas_subscription_id', 'is', null).order('created_at', { ascending: false }).limit(200);
   const checkouts = (data ?? []) as Row[];
   const ids = [...new Set(checkouts.map(c => c.user_id).filter(Boolean))];
-  const [{ data: users }, { data: revenue }] = await Promise.all([
-    supabase.from('charlotte_users').select('id, email, subscription_status, subscription_product, subscription_expires_at').in('id', ids),
-    supabase.from('revenue_events').select('app_user_id, event_type, gross_brl, purchased_at').eq('store', 'ASAAS').in('app_user_id', ids),
+  // Em lotes e páginas (as cobranças de 200 assinantes passam de 1.000 linhas) e com erro explícito:
+  // leitura que falha não pode virar "sem receita" na conferência.
+  const [users, revenue] = await Promise.all([
+    readIn('contas do site', ids, chunk => supabase.from('charlotte_users').select('id, email, subscription_status, subscription_product, subscription_expires_at').in('id', chunk).order('id')),
+    readIn('receita do site', ids, chunk => supabase.from('revenue_events').select('id, app_user_id, event_type, gross_brl, purchased_at').eq('store', 'ASAAS').in('app_user_id', chunk).order('id')),
   ]);
   const userOf = new Map(((users ?? []) as { id: string; email: string; subscription_status: string | null; subscription_product: string | null; subscription_expires_at: string | null }[]).map(u => [String(u.id), u]));
   const revOf = new Map<string, number>();

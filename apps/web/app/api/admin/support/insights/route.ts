@@ -12,6 +12,7 @@ export const maxDuration = 120;
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can, audit } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll } from '@/lib/db-batch';
 import { analyzePendingConversations } from '@/lib/support-insights';
 import { invalidateFaqCache } from '@/lib/support-faq';
 
@@ -37,10 +38,12 @@ export async function GET(req: NextRequest) {
   const supabase = getSupabaseAdmin();
 
   const [{ data, error }, { count: totalConvs }, { data: pendingFaq }] = await Promise.all([
-    supabase.from('support_insights')
+    // Em páginas: o .limit(2000) não valia (máximo de 1.000 linhas por leitura).
+    readAll('análises do período', () => supabase.from('support_insights')
       .select('conversation_id, analyzed_at, category, topic, screen, sentiment, resolution, summary, faq_gap, faq_question, faq_answer, faq_status, ux_issue, feature_request, support_conversations!inner(channel, contact, last_message_at)')
       .gte('support_conversations.last_message_at', since)
-      .order('analyzed_at', { ascending: false }).limit(2000),
+      .order('analyzed_at', { ascending: false }).order('conversation_id'))
+      .then(data => ({ data, error: null as { message: string } | null }), (e: Error) => ({ data: null, error: { message: e.message } })),
     supabase.from('support_conversations').select('id', { count: 'exact', head: true }).gte('last_message_at', since),
     // Sugestões pendentes aparecem sempre, mesmo fora do período.
     supabase.from('support_insights')

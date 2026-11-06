@@ -7,6 +7,7 @@
 // Pix e 12x do site não renovam sozinhos e não entram na projeção.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { revenueAtMs } from '@/lib/revenue-day';
+import { readAll } from '@/lib/db-batch';
 
 export type Channel = 'app_store' | 'play_store' | 'site_monthly' | 'site_annual_card' | 'site_annual_pix' | 'site_annual_12x';
 export const CHANNEL_LABEL: Record<Channel, string> = {
@@ -61,10 +62,11 @@ export interface RevenueSummary {
 export async function revenueSummary(months = 12): Promise<RevenueSummary> {
   const supabase = getSupabaseAdmin();
   const since = new Date(); since.setMonth(since.getMonth() - months); since.setDate(1);
-  const { data: evs } = await supabase.from('revenue_events')
-    .select('app_user_id, store, product_id, event_type, gross_brl, net_brl, purchased_at, created_at')
-    .order('created_at', { ascending: true }).limit(50000);
-  const all = (evs ?? []) as Ev[];
+  // Em páginas: o .limit(50000) não valia (máximo de 1.000 linhas por leitura) e, como a ordem é da mais antiga
+  // para a mais nova, eram justamente as vendas recentes que ficavam de fora.
+  const all = await readAll<Ev>('receita', () => supabase.from('revenue_events')
+    .select('id, app_user_id, store, product_id, event_type, gross_brl, net_brl, purchased_at, created_at')
+    .order('created_at', { ascending: true }).order('id', { ascending: true }));
 
   // ── Canais (período) ──
   const rows = new Map<Channel, ChannelRow>();
@@ -98,9 +100,9 @@ export async function revenueSummary(months = 12): Promise<RevenueSummary> {
   };
 
   // ── Projeção ──
-  const { data: users } = await supabase.from('charlotte_users')
+  const users = await readAll<{ id: string; subscription_expires_at: string | null; is_institutional: boolean | null }>('assinantes ativos', () => supabase.from('charlotte_users')
     .select('id, subscription_status, subscription_expires_at, is_institutional')
-    .eq('subscription_status', 'active').limit(100000);
+    .eq('subscription_status', 'active').order('id'));
   const lastPaid = new Map<string, Ev>();
   for (const e of all) if (e.app_user_id && e.event_type !== 'REFUND' && Number(e.gross_brl) > 0) lastPaid.set(e.app_user_id, e);
 
@@ -117,7 +119,7 @@ export async function revenueSummary(months = 12): Promise<RevenueSummary> {
   };
 
   let active = 0; let inTrial = 0;
-  for (const u of (users ?? []) as { id: string; subscription_expires_at: string | null; is_institutional: boolean | null }[]) {
+  for (const u of users) {
     if (u.is_institutional) continue;
     active += 1;
     const ev = lastPaid.get(u.id);

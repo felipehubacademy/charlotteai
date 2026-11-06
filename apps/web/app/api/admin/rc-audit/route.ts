@@ -4,6 +4,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll, readIn } from '@/lib/db-batch';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -17,13 +18,14 @@ export async function GET(req: NextRequest) {
   if (!key) return NextResponse.json({ error: 'no_key' }, { status: 503 });
   const supabase = getSupabaseAdmin();
 
-  const [{ data: withPlan }, { data: tapped }] = await Promise.all([
-    supabase.from('charlotte_users').select('id').in('subscription_product', ['monthly', 'yearly']),
-    supabase.from('charlotte_analytics_events').select('user_id').in('event_name', ['paywall_purchase_tap', 'subscription_purchased', 'subscription_restored']),
+  // Leituras em páginas e ids em lotes: com mais de 1.000 eventos ou assinantes a lista vinha cortada sem aviso.
+  const [withPlan, tapped] = await Promise.all([
+    readAll<{ id: string }>('assinantes da loja', () => supabase.from('charlotte_users').select('id').in('subscription_product', ['monthly', 'yearly']).order('id')),
+    readAll<{ user_id: string }>('toques em assinar', () => supabase.from('charlotte_analytics_events').select('id, user_id').in('event_name', ['paywall_purchase_tap', 'subscription_purchased', 'subscription_restored']).order('id')),
   ]);
-  const ids = [...new Set([...(withPlan ?? []), ...(tapped ?? [])].map(r => String((r as { id?: string; user_id?: string }).id ?? (r as { user_id?: string }).user_id)))].slice(0, 400);
-  const { data: rows } = await supabase.from('charlotte_users')
-    .select('id, name, email, subscription_status, subscription_product, subscription_expires_at').in('id', ids);
+  const ids = [...new Set([...withPlan.map(r => String(r.id)), ...tapped.map(r => String(r.user_id))])].slice(0, 400);
+  const rows = await readIn('contas conferidas', ids, chunk => supabase.from('charlotte_users')
+    .select('id, name, email, subscription_status, subscription_product, subscription_expires_at').in('id', chunk).order('id'));
   const db = new Map(((rows ?? []) as { id: string; name: string | null; email: string; subscription_status: string; subscription_product: string | null; subscription_expires_at: string | null }[]).map(r => [r.id, r]));
 
   const now = Date.now();

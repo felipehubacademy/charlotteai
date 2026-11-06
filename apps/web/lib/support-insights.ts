@@ -6,6 +6,7 @@ import { aiFetch } from '@/lib/ai-models';
 // alimenta a aba Insights do /admin/suporte. Se a conversa recebe mensagens novas,
 // a análise é refeita (mantendo a decisão já tomada sobre a sugestão de FAQ).
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readIn } from '@/lib/db-batch';
 import { getSupportFaq } from '@/lib/support-faq';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 
@@ -124,9 +125,11 @@ export async function analyzePendingConversations(limit = 25, budgetMs = 80_000)
     .order('last_message_at', { ascending: false }).limit(500);
   const list = (convs ?? []) as { id: string; last_message_at: string }[];
   if (!list.length) return { analyzed: 0, pending: 0 };
-  const { data: done } = await supabase.from('support_insights').select('conversation_id, analyzed_at')
-    .in('conversation_id', list.map(c => c.id));
-  const at = new Map(((done ?? []) as { conversation_id: string; analyzed_at: string }[]).map(d => [d.conversation_id, d.analyzed_at]));
+  // Ids em lotes e erro explícito: se a leitura falhasse (500 ids beiram o limite do endereço), todas as conversas
+  // pareceriam sem análise e seriam analisadas de novo, pagando IA à toa.
+  const done = await readIn<{ conversation_id: string; analyzed_at: string }>('análises feitas', list.map(c => c.id), chunk => supabase.from('support_insights')
+    .select('conversation_id, analyzed_at').in('conversation_id', chunk).order('conversation_id'));
+  const at = new Map(done.map(d => [d.conversation_id, d.analyzed_at]));
   const todo = list.filter(c => !at.has(c.id) || at.get(c.id)! < c.last_message_at);
   let analyzed = 0;
   // Teto de tempo: o agendador roda dentro de uma função de 120 s junto com as outras tarefas.

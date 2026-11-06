@@ -236,6 +236,10 @@ export async function GET(req: NextRequest) {
 
   if (usersRes.error) return NextResponse.json({ error: usersRes.error.message }, { status: 500 });
   if (wideRes.error)  return NextResponse.json({ error: wideRes.error.message },  { status: 500 });
+  // Receita, cobranças, progresso e eventos também: leitura que falha não pode virar número menor no painel.
+  for (const r of [progressRes, revRes, ckRes, evRes, acqRes, liveRes]) {
+    if (r.error) return NextResponse.json({ error: r.error.message }, { status: 500 });
+  }
 
   // ── Equipe fora de tudo ──────────────────────────────────────────────────
   const usersAll = (usersRes.data ?? []) as UserRow[];
