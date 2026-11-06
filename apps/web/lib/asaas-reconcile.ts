@@ -2,6 +2,7 @@
 // Usado pelo webhook (PAYMENT_CREDIT_CARD_CAPTURE_REFUSED, PAYMENT_CREDIT_CARD_INVALID, PAYMENT_OVERDUE) e pela
 // conferência a cada 6 h (/api/cron/rc-reconcile), que pega o que o aviso não trouxe. Quando o pagamento passa,
 // handlePaymentPaid devolve o acesso. Se a pessoa tem assinatura válida na loja, vale a da loja e não sai o aviso.
+import { readAll } from '@/lib/db-batch';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { subscriptionPayments, cancelSubscription, deletePayment, PAID_STATUSES, type AsaasPayment } from '@/lib/asaas';
 import { sendPaymentFailed } from '@/lib/subscription-notices';
@@ -77,12 +78,18 @@ export async function closeSiteAfterStore(userId: string): Promise<number> {
 /** Assinaturas do site marcadas com acesso e com o prazo já vencido: confere a cobrança vencida no processador. */
 export async function reconcileLapsedSiteSubscriptions(): Promise<{ checked: number; blocked: number; store: number; leftAlone: number; errors: number }> {
   const supabase = getSupabaseAdmin();
-  const { data: users } = await supabase.from('charlotte_users').select('id')
+  // Todos os vencidos, 100 por rodada a partir de um ponto que muda a cada dia: antes era .limit(100) sem
+  // ordem, e quem fica "em dia" continua na lista, então passando de 100 os mesmos voltavam sempre.
+  const all = (await readAll<{ id: string }>('site vencido', () => supabase.from('charlotte_users').select('id')
     .like('subscription_product', 'web_%').in('subscription_status', ['active', 'cancelled'])
-    .lt('subscription_expires_at', new Date(Date.now() - 2 * 3600000).toISOString()).not('is_institutional', 'is', true).limit(100);
-  const ids = ((users ?? []) as { id: string }[]).map(u => String(u.id));
+    .lt('subscription_expires_at', new Date(Date.now() - 2 * 3600000).toISOString()).not('is_institutional', 'is', true)
+    .order('id'))).map(u => String(u.id));
+  const start = all.length > 100 ? Math.floor(Date.now() / 86400000) * 100 % all.length : 0;
+  const ids = [...all.slice(start), ...all.slice(0, start)].slice(0, 100);
   const out = { checked: ids.length, blocked: 0, store: 0, leftAlone: 0, errors: 0 };
+  const started = Date.now();
   for (const id of ids) {
+    if (Date.now() - started > 40_000) break; // o resto entra na próxima rodada
     try {
       const { data } = await supabase.from('asaas_checkouts').select('id, user_id, method, asaas_subscription_id')
         .eq('user_id', id).eq('status', 'paid').eq('sandbox', false).not('asaas_subscription_id', 'is', null)
