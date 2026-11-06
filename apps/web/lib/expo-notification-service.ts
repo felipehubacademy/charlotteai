@@ -422,6 +422,54 @@ const NOVELTY_WINDOW = 3;
 
 // Returns the set of userIds that have already received `type` today and
 // should be skipped. Single round-trip for the whole send batch.
+// ── Leitura do banco em lotes ────────────────────────────────────────────────
+// Duas armadilhas da API do banco, que já pararam pushes sem ninguém saber:
+// - lista grande de ids em .in() estoura o tamanho do endereço (acima de ~600 ids
+//   o banco responde 400), e a consulta volta com erro;
+// - toda leitura para em 1.000 linhas, sem aviso.
+// O código antigo ignorava o erro e seguia como se não houvesse ninguém: os pushes
+// de engajamento ficaram parados de 27/10 a 06/11/2026. Aqui os ids vão em lotes,
+// as linhas vêm em páginas, e qualquer erro avisa a gestão e interrompe o envio.
+const IN_CHUNK = 200;
+const PAGE = 1000;
+const queryAlerted = new Set<string>();
+
+async function pushQueryFailed(label: string, message: string): Promise<never> {
+  console.error(`❌ [Expo] leitura falhou (${label}):`, message);
+  if (!queryAlerted.has(label)) {
+    queryAlerted.add(label);
+    await notifyAdmins({
+      title: 'Pushes para os alunos não saíram',
+      body: `A leitura do banco para os pushes falhou (${label}: ${message}). Esse envio foi interrompido.`.slice(0, 300),
+      url: '/admin/notifications', tag: `push-query-${label}`, category: 'pushes',
+    }).catch(e => console.warn('[Expo] alerta da gestão falhou:', e));
+  }
+  throw new Error(`[${label}] ${message}`);
+}
+
+/** Todas as linhas da consulta, página por página. `build` monta a consulta com ordem estável. */
+async function readAll<T = any>(label: string, build: () => any): Promise<T[]> {
+  const out: T[] = [];
+  for (let from = 0; ;) {
+    const { data, error } = await build().range(from, from + PAGE - 1);
+    if (error) await pushQueryFailed(label, error.message);
+    const rows = (data ?? []) as T[];
+    if (!rows.length) return out;
+    out.push(...rows);
+    from += rows.length;
+  }
+}
+
+/** Todas as linhas para uma lista de ids, com os ids em lotes. */
+async function readIn<T = any>(label: string, ids: string[], build: (chunk: string[]) => any): Promise<T[]> {
+  const out: T[] = [];
+  for (let i = 0; i < ids.length; i += IN_CHUNK) {
+    const chunk = ids.slice(i, i + IN_CHUNK);
+    out.push(...await readAll<T>(label, () => build(chunk)));
+  }
+  return out;
+}
+
 async function filterFrequencyCap(
   supabase: any,
   userIds: string[],
@@ -432,9 +480,9 @@ async function filterFrequencyCap(
   // ("sua sequência", "última chance hoje"…) chamavam para um conteúdo que ela não tem.
   // O ranking vale para todos, inclusive a degustação: é motivo para voltar mesmo sem assinatura.
   if (!String(type).startsWith('taste_') && !String(type).startsWith('rank_')) {
-    const { data: tasters } = await supabase.from('charlotte_users').select('id')
-      .in('id', userIds).or('subscription_status.is.null,subscription_status.eq.none').not('is_institutional', 'is', true);
-    const skip = new Set(((tasters ?? []) as { id: string }[]).map(t => String(t.id)));
+    const tasters = await readIn<{ id: string }>('degustação', userIds, chunk => supabase.from('charlotte_users').select('id')
+      .in('id', chunk).or('subscription_status.is.null,subscription_status.eq.none').not('is_institutional', 'is', true).order('id'));
+    const skip = new Set(tasters.map(t => String(t.id)));
     if (skip.size) userIds = userIds.filter(uid => !skip.has(String(uid)));
     if (!userIds.length) return userIds;
   }
@@ -444,21 +492,17 @@ async function filterFrequencyCap(
   // the middle of their local day.
   const since24hAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
 
-  const { data, error } = await supabase
+  const data = await readIn<{ user_id: string }>(`limite ${type}`, userIds, chunk => supabase
     .from('notification_logs')
-    .select('user_id')
-    .in('user_id', userIds)
+    .select('id, user_id')
+    .in('user_id', chunk)
     .eq('notification_type', type)
     .eq('status', 'sent')
-    .gte('created_at', since24hAgo.toISOString());
-
-  if (error) {
-    console.warn(`⚠️ [Expo] frequency-cap query error (${type}):`, error.message);
-    return userIds; // fail open — better to send than to silently block
-  }
+    .gte('created_at', since24hAgo.toISOString())
+    .order('id'));
 
   const counts = new Map<string, number>();
-  for (const row of (data ?? []) as any[]) {
+  for (const row of data) {
     counts.set(row.user_id, (counts.get(row.user_id) ?? 0) + 1);
   }
   return userIds.filter(uid => (counts.get(uid) ?? 0) < cap);
@@ -475,18 +519,15 @@ async function fetchRecentVariantHashes(
   // Last 14 days is more than enough — templates refresh daily via GPT
   // anyway, so older hashes are unlikely to reappear.
   const since = new Date(Date.now() - 14 * 86400 * 1000).toISOString();
-  const { data, error } = await supabase
+  const data = await readIn<any>(`variações ${type}`, userIds, chunk => supabase
     .from('notification_logs')
-    .select('user_id, metadata, created_at')
-    .in('user_id', userIds)
+    .select('id, user_id, metadata, created_at')
+    .in('user_id', chunk)
     .eq('notification_type', type)
     .gte('created_at', since)
-    .order('created_at', { ascending: false });
-  if (error) {
-    console.warn(`⚠️ [Expo] recent-variants query error (${type}):`, error.message);
-    return out;
-  }
-  for (const row of (data ?? []) as any[]) {
+    .order('created_at', { ascending: false })
+    .order('id'));
+  for (const row of data) {
     const hash = row.metadata?.variant_hash;
     if (!hash) continue;
     const set = out.get(row.user_id) ?? new Set<string>();
@@ -516,11 +557,12 @@ async function logRnPushes(
   if (!rows.length) return;
   const devices = new Map<string, { token: string | null; platform: string | null }>();
   try {
-    const { data } = await supabase
+    const data = await readIn<any>('registro do envio', [...new Set(rows.map(r => r.userId))], chunk => supabase
       .from('charlotte_users')
       .select('id, expo_push_token, app_platform')
-      .in('id', [...new Set(rows.map(r => r.userId))]);
-    for (const u of (data ?? []) as any[]) {
+      .in('id', chunk)
+      .order('id'));
+    for (const u of data) {
       devices.set(String(u.id), { token: u.expo_push_token ?? null, platform: u.app_platform ?? null });
     }
   } catch (e) {
@@ -796,12 +838,13 @@ interface NotifUser {
 /** Fetch charlotte_users rows for a list of user_ids (token + name + level + tz). */
 async function fetchCharlotteUsers(supabase: any, userIds: string[]): Promise<NotifUser[]> {
   if (!userIds.length) return [];
-  const { data } = await supabase
+  const data = await readIn<any>('alunos', userIds, chunk => supabase
     .from('charlotte_users')
     .select('id, name, expo_push_token, charlotte_level, app_language, timezone')
-    .in('id', userIds)
-    .not('expo_push_token', 'is', null);
-  return (data ?? []).filter((u: any) => u.expo_push_token?.startsWith('ExponentPushToken[')) as NotifUser[];
+    .in('id', chunk)
+    .not('expo_push_token', 'is', null)
+    .order('id'));
+  return data.filter((u: any) => u.expo_push_token?.startsWith('ExponentPushToken[')) as NotifUser[];
 }
 
 // ── Per-type target LOCAL hour (in each user's own timezone) ────────────────
@@ -830,20 +873,21 @@ export async function sendStreakReminders(supabase: any): Promise<void> {
     // Proteção da semana (streak_freezes): quem faltou só ontem e ainda tem proteção também está em risco
     // hoje — se praticar, a sequência continua; se não, zera amanhã.
     const dayBeforeUTC = new Date(now.getTime() - 2 * 86400000).toISOString().split('T')[0];
-    const { data: atRiskRaw, error: atRiskErr } = await supabase
+    const atRiskRaw = await readAll<any>('sequência em risco', () => supabase
       .from('charlotte_progress')
       .select('user_id, streak_days, last_practice_date')
       .gt('streak_days', 0)
-      .in('last_practice_date', [yesterdayUTC, dayBeforeUTC]);
-    if (atRiskErr) { console.error('❌ [Expo] at-risk query error:', atRiskErr.message); return; }
-    const missedYesterday = (atRiskRaw ?? []).filter((r: any) => r.last_practice_date === dayBeforeUTC).map((r: any) => r.user_id);
+      .in('last_practice_date', [yesterdayUTC, dayBeforeUTC])
+      .order('user_id'));
+    const missedYesterday = atRiskRaw.filter((r: any) => r.last_practice_date === dayBeforeUTC).map((r: any) => r.user_id);
     const usedFreeze = new Set<string>();
     if (missedYesterday.length) {
       const weekAgo = new Date(now.getTime() - 7 * 86400000).toISOString().split('T')[0];
-      const { data: fr } = await supabase.from('streak_freezes').select('user_id').in('user_id', missedYesterday).gte('day', weekAgo);
-      for (const r of (fr ?? []) as any[]) usedFreeze.add(String(r.user_id));
+      const fr = await readIn<any>('proteção da sequência', missedYesterday, chunk => supabase.from('streak_freezes')
+        .select('user_id, day').in('user_id', chunk).gte('day', weekAgo).order('user_id').order('day'));
+      for (const r of fr) usedFreeze.add(String(r.user_id));
     }
-    const atRisk = (atRiskRaw ?? []).filter((r: any) => r.last_practice_date === yesterdayUTC || !usedFreeze.has(String(r.user_id)));
+    const atRisk = atRiskRaw.filter((r: any) => r.last_practice_date === yesterdayUTC || !usedFreeze.has(String(r.user_id)));
 
     if (!atRisk?.length) { console.log('✅ [Expo] No streak risks today'); return; }
 
@@ -910,22 +954,23 @@ export async function sendDailyReminders(supabase: any): Promise<void> {
   console.log('⏰ [Expo] Sending daily reminders...');
   try {
     // 1) last_practice_date de cada usuário (fuso-aware via trigger).
-    const { data: progressRows } = await supabase
+    const progressRows = await readAll<any>('prática do dia', () => supabase
       .from('charlotte_progress')
-      .select('user_id, last_practice_date');
+      .select('user_id, last_practice_date')
+      .order('user_id'));
     const lastPracticeMap = new Map<string, string>(
-      (progressRows ?? []).map((r: any) => [String(r.user_id), r.last_practice_date ?? ''])
+      progressRows.map((r: any) => [String(r.user_id), r.last_practice_date ?? ''])
     );
 
     // 2) Todos os usuários com token e timezone.
-    const { data: cuUsers, error: usersErr } = await supabase
+    const cuUsers = await readAll<any>('alunos', () => supabase
       .from('charlotte_users')
       .select('id, name, expo_push_token, charlotte_level, app_language, timezone, reminder_hour')
-      .not('expo_push_token', 'is', null);
-    if (usersErr) { console.error('❌ [Expo] users query error:', usersErr.message); return; }
+      .not('expo_push_token', 'is', null)
+      .order('id'));
 
     // 3) Filtrar quem ainda não praticou hoje no seu próprio fuso.
-    const withToken = (cuUsers ?? []).filter((u: any) => {
+    const withToken = cuUsers.filter((u: any) => {
       if (!u.expo_push_token?.startsWith('ExponentPushToken[')) return false;
       const localToday = localDateForTz(u.timezone);
       return lastPracticeMap.get(String(u.id)) !== localToday;
@@ -949,11 +994,12 @@ export async function sendDailyReminders(supabase: any): Promise<void> {
     const eligible = tzFiltered.filter((u: any) => allowed.has(u.id));
     if (!eligible.length) return;
 
-    const { data: progRows } = await supabase
+    const progRows = await readIn<any>('sequência', allowedIds, chunk => supabase
       .from('charlotte_progress')
       .select('user_id, streak_days')
-      .in('user_id', allowedIds);
-    const streakMap = Object.fromEntries((progRows ?? []).map((r: any) => [r.user_id, r.streak_days ?? 0]));
+      .in('user_id', chunk)
+      .order('user_id'));
+    const streakMap = Object.fromEntries(progRows.map((r: any) => [r.user_id, r.streak_days ?? 0]));
 
     const hasAnyStreak = eligible.some((u: any) => (streakMap[u.id] ?? 0) > 0);
 
@@ -1005,21 +1051,23 @@ export async function sendCharlotteMessages(supabase: any): Promise<void> {
   console.log('💬 [Expo] Sending Charlotte praise messages...');
   try {
     // Quem praticou hoje no seu próprio fuso: last_practice_date = localToday(tz).
-    const { data: progressRows } = await supabase
+    const progressRows = await readAll<any>('prática do dia', () => supabase
       .from('charlotte_progress')
-      .select('user_id, last_practice_date');
-    if (!progressRows?.length) { console.log('✅ [Expo] No practice data yet'); return; }
+      .select('user_id, last_practice_date')
+      .order('user_id'));
+    if (!progressRows.length) { console.log('✅ [Expo] No practice data yet'); return; }
 
-    const { data: allUsers } = await supabase
+    const allUsers = await readAll<any>('alunos', () => supabase
       .from('charlotte_users')
       .select('id, name, expo_push_token, charlotte_level, app_language, timezone')
-      .not('expo_push_token', 'is', null);
+      .not('expo_push_token', 'is', null)
+      .order('id'));
 
     const progressByUser = new Map<string, string>(
       progressRows.map((r: any) => [String(r.user_id), r.last_practice_date ?? ''])
     );
 
-    const practicedTodayUsers = (allUsers ?? []).filter((u: any) => {
+    const practicedTodayUsers = allUsers.filter((u: any) => {
       if (!u.expo_push_token?.startsWith('ExponentPushToken[')) return false;
       const localToday = localDateForTz(u.timezone);
       return progressByUser.get(String(u.id)) === localToday;
@@ -1044,21 +1092,23 @@ export async function sendCharlotteMessages(supabase: any): Promise<void> {
     if (!cuUsers.length) return;
 
     // Fetch XP and streak per user
-    const { data: progRows } = await supabase
+    const progRows = await readIn<any>('sequência e XP', allowedIds, chunk => supabase
       .from('charlotte_progress')
       .select('user_id, streak_days, total_xp')
-      .in('user_id', allowedIds);
-    const xpMap     = Object.fromEntries((progRows ?? []).map((r: any) => [r.user_id, r.total_xp ?? 0]));
-    const streakMap = Object.fromEntries((progRows ?? []).map((r: any) => [r.user_id, r.streak_days ?? 0]));
+      .in('user_id', chunk)
+      .order('user_id'));
+    const xpMap     = Object.fromEntries(progRows.map((r: any) => [r.user_id, r.total_xp ?? 0]));
+    const streakMap = Object.fromEntries(progRows.map((r: any) => [r.user_id, r.streak_days ?? 0]));
 
     // Fetch last 48h of practices — covers all user timezones regardless of UTC offset.
     // XP is then counted per user based on their own local date (same pattern used everywhere).
     const since48h = new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString();
-    const { data: todayRows } = await supabase
+    const todayRows = await readIn<any>('práticas de hoje', allowedIds, chunk => supabase
       .from('charlotte_practices')
-      .select('user_id, xp_earned, created_at')
+      .select('id, user_id, xp_earned, created_at')
       .gte('created_at', since48h)
-      .in('user_id', allowedIds);
+      .in('user_id', chunk)
+      .order('id'));
     const userTzMap = Object.fromEntries(cuUsers.map((u: any) => [String(u.id), u.timezone as string]));
     const todayXpMap: Record<string, number> = {};
     for (const r of (todayRows ?? [])) {
@@ -1197,9 +1247,9 @@ export async function sendGoalReminders(supabase: any): Promise<void> {
   console.log('[Expo] Checking weekly challenge reminders...');
   try {
     const since = new Date(Date.now() - 4 * 86400000).toISOString();
-    const { data: rows, error } = await supabase.from('charlotte_practices').select('user_id').gte('created_at', since);
-    if (error) { console.error('[Expo] goal query error:', error.message); return; }
-    const activeIds = [...new Set(((rows ?? []) as any[]).map(r => r.user_id))] as string[];
+    const rows = await readAll<any>('ativos do desafio', () => supabase.from('charlotte_practices')
+      .select('id, user_id').gte('created_at', since).order('id'));
+    const activeIds = [...new Set(rows.map(r => r.user_id))] as string[];
     if (!activeIds.length) return;
 
     const allUsers = await fetchCharlotteUsers(supabase, activeIds);
@@ -1254,12 +1304,12 @@ export async function sendWeeklyChallenges(supabase: any): Promise<void> {
     const lastWeek = new Date(now.getTime() - 7 * 86400000);
 
     // Users active in last 7 days
-    const { data: activeRows, error: activeErr } = await supabase
+    const activeRows = await readAll<any>('ativos da semana', () => supabase
       .from('charlotte_practices')
-      .select('user_id')
-      .gte('created_at', lastWeek.toISOString());
-    if (activeErr) { console.error('❌ [Expo] active-users query error:', activeErr.message); return; }
-    const activeIds = [...new Set((activeRows ?? []).map((r: any) => r.user_id))] as string[];
+      .select('id, user_id')
+      .gte('created_at', lastWeek.toISOString())
+      .order('id'));
+    const activeIds = [...new Set(activeRows.map((r: any) => r.user_id))] as string[];
     if (!activeIds.length) { console.log('✅ [Expo] No active users last week'); return; }
 
     const allUsers = await fetchCharlotteUsers(supabase, activeIds);
@@ -1887,43 +1937,45 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
     //    20260423_reengagement_types.sql which recreates it to include the
     //    new last_practice_at column — custom schemas are not exposed by
     //    PostgREST in this project).
-    const { data: users, error: usersErr } = await supabase
+    const users = await readAll<any>('alunos', () => supabase
       .from('charlotte_users')
       .select('id, name, expo_push_token, charlotte_level, app_language, timezone, last_practice_at, trial_ends_at, subscription_status, subscription_expires_at, is_institutional, reminder_hour')
-      .not('expo_push_token', 'is', null);
-    if (usersErr) { console.error('❌ [Engagement] users query:', usersErr.message); return; }
-    const withToken = (users ?? []).filter((u: any) =>
+      .not('expo_push_token', 'is', null)
+      .order('id'));
+    const withToken = users.filter((u: any) =>
       u.expo_push_token?.startsWith('ExponentPushToken['));
     if (!withToken.length) { console.log('🎯 [Engagement] no users with tokens'); return; }
 
     const userIds = withToken.map((u: any) => u.id);
 
     // 2. Fetch progress (streak + total_xp).
-    const { data: progressRows } = await supabase
+    const progressRows = await readIn<any>('sequência e XP', userIds, chunk => supabase
       .from('charlotte_progress')
       .select('user_id, streak_days, total_xp, last_practice_date')
-      .in('user_id', userIds);
+      .in('user_id', chunk)
+      .order('user_id'));
     // Sequência viva: praticou ontem ou hoje, ou faltou só ontem (a proteção da semana pode segurar).
     // Antes valia o número cru, e "salve seus N dias" saía para quem já tinha perdido a sequência.
     const aliveSince = new Date(now.getTime() - 2 * 86400000).toISOString().split('T')[0];
     const progressMap = new Map<string, { streak: number; totalXp: number }>();
-    for (const r of (progressRows ?? []) as any[]) {
+    for (const r of progressRows) {
       const alive = !!r.last_practice_date && r.last_practice_date >= aliveSince;
       progressMap.set(r.user_id, { streak: alive ? (r.streak_days ?? 0) : 0, totalXp: r.total_xp ?? 0 });
     }
 
     // 3. Fetch practices: today, this week, prev 4 weeks.
-    const { data: recentPractices } = await supabase
+    const recentPractices = await readIn<any>('práticas de 4 semanas', userIds, chunk => supabase
       .from('charlotte_practices')
-      .select('user_id, created_at')
-      .in('user_id', userIds)
-      .gte('created_at', fourWeeksAgo);
+      .select('id, user_id, created_at')
+      .in('user_id', chunk)
+      .gte('created_at', fourWeeksAgo)
+      .order('id'));
 
     const todayPractices   = new Set<string>();
     const thisWeekCount    = new Map<string, number>();
     const prev4weekCount   = new Map<string, number>();
     const historyByUser    = new Map<string, string[]>();
-    for (const r of (recentPractices ?? []) as any[]) {
+    for (const r of recentPractices) {
       if (r.created_at >= `${todayUtc}T00:00:00Z`) todayPractices.add(r.user_id);
       if (r.created_at >= weekAgo) {
         thisWeekCount.set(r.user_id, (thisWeekCount.get(r.user_id) ?? 0) + 1);
@@ -1949,12 +2001,13 @@ export async function sendEngagementPushes(supabase: any): Promise<void> {
 
     // 5. Exclude users who already received ANY engagement push today (hard
     //    cap on the whole category, not per-type).
-    const { data: engagedTodayRows } = await supabase
+    const engagedTodayRows = await readIn<any>('pushes de hoje', userIds, chunk => supabase
       .from('notification_logs')
-      .select('user_id, notification_type')
-      .in('user_id', userIds)
+      .select('id, user_id, notification_type')
+      .in('user_id', chunk)
       .gte('created_at', `${todayUtc}T00:00:00Z`)
-      .eq('status', 'sent');
+      .eq('status', 'sent')
+      .order('id'));
     const alreadyEngaged = new Set<string>();
     for (const r of (engagedTodayRows ?? []) as any[]) {
       if (ENGAGEMENT_TYPES.has(r.notification_type)) {
@@ -2140,10 +2193,10 @@ export async function sendBuddyRivalry(supabase: any): Promise<void> {
     const candidates = usersAtLocalHour(await fetchCharlotteUsers(supabase, allowed), TARGET_HOUR_BUDDY);
     if (!candidates.length) return;
 
-    const [{ data: practices }, { data: progress }, { data: names }] = await Promise.all([
-      supabase.from('charlotte_practices').select('user_id, xp_earned, created_at').in('user_id', everyone).gte('created_at', buddyWeekStartIso()).limit(50000),
-      supabase.from('charlotte_progress').select('user_id, last_practice_date').in('user_id', everyone),
-      supabase.from('charlotte_users').select('id, name').in('id', everyone),
+    const [practices, progress, names] = await Promise.all([
+      readIn<any>('práticas dos amigos', everyone, c => supabase.from('charlotte_practices').select('id, user_id, xp_earned, created_at').in('user_id', c).gte('created_at', buddyWeekStartIso()).order('id')),
+      readIn<any>('prática dos amigos', everyone, c => supabase.from('charlotte_progress').select('user_id, last_practice_date').in('user_id', c).order('user_id')),
+      readIn<any>('nomes dos amigos', everyone, c => supabase.from('charlotte_users').select('id, name').in('id', c).order('id')),
     ]);
     const weekXp = new Map<string, number>();
     const lastPracticeAt = new Map<string, number>();

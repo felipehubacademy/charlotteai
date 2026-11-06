@@ -42,10 +42,11 @@ import { endLegacyTrials } from '@/lib/legacy-trial';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendSignupWelcomes } from '@/lib/signup-welcome';
 import { syncProviderCosts } from '@/lib/cost-sync';
+import { runPushWatch } from '@/lib/push-watch';
 
 const CRON_SECRET = process.env.CRON_SECRET ?? '';
 
-type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'taste' | 'ranking' | 'legacy_trial' | 'rally' | 'support_sla' | 'support_insights' | 'support_autoclose' | 'ai_costs' | 'cost_sync' | 'email_outbox' | 'push_receipts';
+type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement' | 'buddy' | 'taste' | 'ranking' | 'legacy_trial' | 'rally' | 'support_sla' | 'support_insights' | 'support_autoclose' | 'ai_costs' | 'cost_sync' | 'email_outbox' | 'push_receipts' | 'push_watch';
 
 function isAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization') ?? '';
@@ -111,6 +112,9 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
     case 'push_receipts': // recibos de entrega do Expo dos pushes de 15 min a 24 h atrás (entregue ou erro)
       await checkExpoReceipts();
       break;
+    case 'push_watch': // 12h (Brasília): push diário que parou de sair (lib/push-watch) avisa a gestão
+      console.log('[SCHEDULER] push_watch', JSON.stringify(await runPushWatch(forced)));
+      break;
     case 'cost_sync': // (mantido para chamada manual) mesma coisa da 1ª etapa de 'ai_costs'
       console.log('[SCHEDULER] cost_sync', JSON.stringify(await syncProviderCosts()));
       break;
@@ -128,7 +132,7 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
 // Every hourly run invokes every sender. Each sender drops users whose
 // per-user local hour does not match the task's target hour, so this is
 // cheap when no one is at the right local time.
-const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'taste', 'ranking', 'legacy_trial', 'rally', 'support_sla', 'support_insights', 'support_autoclose', 'ai_costs', 'email_outbox', 'push_receipts'];
+const HOURLY_TASKS: TaskType[] = ['daily', 'goal', 'praise', 'streak', 'weekly', 'engagement', 'buddy', 'taste', 'ranking', 'legacy_trial', 'rally', 'support_sla', 'support_insights', 'support_autoclose', 'ai_costs', 'email_outbox', 'push_receipts', 'push_watch'];
 
 export async function GET(request: NextRequest) {
   if (!isAuthorized(request)) {
