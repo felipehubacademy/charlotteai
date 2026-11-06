@@ -106,3 +106,11 @@ export function grammarWithTrail(msgs: MsgRow[], tf: TrailFeedbackRow[]) {
   ].sort((a, b) => b.at.localeCompare(a.at));
   return { analyzed, errorFree: pct(ok, analyzed), corrections };
 }
+
+/** Mesma conta de grammarWithTrail (sem as correções), a partir das contagens já feitas no banco. */
+export function grammarWithTrailCounts(chatAnalyzed: number, chatWithErrors: number, tfTotal: number, tfOk: number) {
+  const errorFree = pct(chatAnalyzed - chatWithErrors, chatAnalyzed);
+  const okChat = Math.round(((errorFree ?? 0) * chatAnalyzed) / 100);
+  const analyzed = chatAnalyzed + tfTotal;
+  return { analyzed, errorFree: pct(okChat + tfOk, analyzed) };
+}

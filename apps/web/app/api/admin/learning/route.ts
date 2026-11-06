@@ -4,7 +4,6 @@
 //   GET  ?userId=&days=30       ficha pedagógica de um aluno
 //   POST { userId, body }       anotação pedagógica (exige learning:notes)
 import { swrCached } from '@/lib/swr-cache';
-import { isTeamAccount } from '@/lib/admin-subscriptions';
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { readAll } from '@/lib/db-batch';
@@ -14,6 +13,7 @@ import {
   type MsgRow,
 } from '@/lib/learning-stats';
 import { V2_SELECT, v2Accuracy, v2ByActivity, v2HardestUnits, v2Position, type V2Row } from '@/lib/learning-v2';
+import { learningSummary } from '@/lib/admin-learning';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,100 +26,8 @@ export async function GET(req: NextRequest) {
   const supabase = getSupabaseAdmin();
 
   if (userId) return studentSheet(userId, since, days);
-  // O cálculo leva ~20 s: a tela recebe o último guardado na hora e ele se renova por trás a cada 2 minutos.
+  // O cálculo levava ~20 s (hoje as contas são no banco): a tela recebe o último guardado na hora e ele se renova por trás a cada 2 minutos.
   return NextResponse.json(await swrCached(`admin:learning:${days}`, 2 * 60_000, 60 * 60_000, () => learningSummary(days, since)));
-}
-
-async function learningSummary(days: number, since: string) {
-  const supabase = getSupabaseAdmin();
-  // Tudo em páginas com ordem única (id) e erro explícito: antes, sem ordem estável as páginas podiam pular ou
-  // repetir linhas, leitura que falhava virava "sem dados" e os tetos (20.000 alunos, 100.000 práticas) cortavam calados.
-  const [usersAll, progressAll, practicesAll, msgsAll, v2All, tfAll] = await Promise.all([
-    readAll<{ id: string; name: string | null; charlotte_level: string | null; is_active: boolean | null; created_at: string; email: string | null; is_institutional: boolean | null; hide_from_ranking: boolean | null }>('alunos', () =>
-      supabase.from('charlotte_users').select('id, name, charlotte_level, is_active, created_at, email, is_institutional, hide_from_ranking').order('created_at', { ascending: false }).order('id')),
-    readAll<{ user_id: string; total_xp: number; streak_days: number; last_practice_date: string | null }>('progresso', () =>
-      supabase.from('charlotte_progress').select('user_id, total_xp, streak_days, last_practice_date').order('user_id')),
-    readAll<{ user_id: string; practice_type: string; created_at: string }>('práticas', () =>
-      supabase.from('charlotte_practices').select('user_id, practice_type, created_at').gte('created_at', since).order('id')),
-    readAll<MsgRow>('mensagens', () =>
-      supabase.from('chat_messages').select('user_id, role, mode, content, created_at').in('mode', ['pronunciation', 'grammar']).gte('created_at', since).order('id')),
-    readAll<V2Row>('trilha', () =>
-      supabase.from('learn_history_v2').select(V2_SELECT).gte('updated_at', since).order('id')),
-    readAll<TrailFeedbackRow>('retorno da trilha', () =>
-      supabase.from('trail_feedback').select('error_free, corrections, created_at').gte('created_at', since).order('id')),
-  ]);
-
-  // Equipe fora (mesma regra da Visão geral, Usuários e Métricas).
-  const teamIds = new Set(usersAll.filter(isTeamAccount).map(u => String(u.id)));
-  const notTeam = (id: string | null | undefined) => !id || !teamIds.has(String(id));
-  const users = usersAll.filter(u => notTeam(u.id));
-  const progress = progressAll.filter(p => notTeam(p.user_id));
-  const practices = practicesAll.filter(p => notTeam(p.user_id));
-  const msgs = msgsAll.filter(m => notTeam((m as { user_id?: string }).user_id));
-  const v2 = v2All.filter(r => notTeam(r.user_id));
-
-  const v2By = new Map<string, V2Row[]>();
-  v2.forEach(r => v2By.set(r.user_id, [...(v2By.get(r.user_id) ?? []), r]));
-  const study = practices.filter(p => isStudy(p.practice_type));
-  const progressBy = new Map(progress.map(p => [p.user_id, p]));
-  const practicesBy = new Map<string, number>();
-  const lastBy = new Map<string, string>();
-  study.forEach(p => {
-    practicesBy.set(p.user_id, (practicesBy.get(p.user_id) ?? 0) + 1);
-    if (!lastBy.has(p.user_id) || p.created_at > lastBy.get(p.user_id)!) lastBy.set(p.user_id, p.created_at);
-  });
-  const pron = pronunciation(msgs);
-  const pronBy = new Map<string, number[]>();
-  pron.items.forEach(i => pronBy.set(i.user, [...(pronBy.get(i.user) ?? []), i.score]));
-
-  const byLevel: Record<string, number> = {};
-  users.forEach(u => { const l = u.charlotte_level ?? 'Sem nível'; byLevel[l] = (byLevel[l] ?? 0) + 1; });
-
-  // Prática por tipo (estudo)
-  const byType: Record<string, number> = {};
-  study.forEach(p => { byType[p.practice_type] = (byType[p.practice_type] ?? 0) + 1; });
-
-  const students = users.map(u => {
-    const pr = progressBy.get(u.id);
-    const acc = v2Accuracy(v2By.get(u.id) ?? []);
-    const ps = pronBy.get(u.id);
-    const last = lastBy.get(u.id) ?? (pr?.last_practice_date ? `${pr.last_practice_date}T12:00:00Z` : null);
-    return {
-      id: u.id, name: u.name, level: u.charlotte_level,
-      xp: pr?.total_xp ?? 0, streak: currentStreak(pr?.streak_days, pr?.last_practice_date),
-      lastPractice: last,
-      practices: practicesBy.get(u.id) ?? 0,
-      trailAccuracy: acc.accuracy, trailAnswers: acc.answers,
-      pronunciation: ps ? Math.round(ps.reduce((s, x) => s + x, 0) / ps.length) : null,
-    };
-  }).sort((a, b) => (b.lastPractice ?? '').localeCompare(a.lastPractice ?? ''));
-
-  const now = Date.now();
-  const idle = students
-    .filter(s => s.lastPractice && now - new Date(s.lastPractice).getTime() > 7 * DAY && (progressBy.get(s.id)?.total_xp ?? 0) > 0)
-    .map(s => ({ id: s.id, name: s.name, level: s.level, days: Math.floor((now - new Date(s.lastPractice!).getTime()) / DAY) }))
-    .sort((a, b) => a.days - b.days).slice(0, 15);
-
-  const g = grammarWithTrail(msgs, tfAll);
-  const accAll = v2Accuracy(v2);
-
-  return {
-    days,
-    summary: {
-      students: users.length,
-      active: new Set(study.map(p => p.user_id)).size,
-      practices: study.length,
-      trailAccuracy: accAll.accuracy, trailAnswers: accAll.answers,
-      pronunciationAvg: pron.avg, pronunciationAttempts: pron.items.length,
-      grammarAnalyzed: g.analyzed, grammarErrorFree: g.errorFree,
-    },
-    byLevel, byType,
-    byExercise: v2ByActivity(v2),
-    hardestTopics: v2HardestUnits(v2, 3).slice(0, 8),
-    mispronounced: pron.topWords,
-    idle,
-    students,
-  };
 }
 
 async function studentSheet(userId: string, since: string, days: number) {
