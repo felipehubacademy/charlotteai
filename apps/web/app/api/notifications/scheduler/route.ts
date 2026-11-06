@@ -67,6 +67,7 @@ function isAuthorized(request: NextRequest): boolean {
 
 const SHARD_SIZE = 5000;
 const SLOW_MS = 60_000;
+const NOT_PUSH: TaskType[] = ['ai_costs', 'cost_sync', 'support_insights', 'support_sla', 'support_autoclose', 'email_outbox', 'push_receipts'];
 const SHARDED: TaskType[] = ['daily', 'praise', 'goal', 'weekly', 'engagement'];
 const ALL: PushShard = { i: 0, n: 1 };
 
@@ -223,7 +224,8 @@ async function runTimed(tasks: TaskType[], shard: PushShard): Promise<void> {
     try { await runTask(t, false, SHARDED.includes(t) ? shard : ALL); }
     finally {
       const ms = Date.now() - t0;
-      if (ms > SLOW_MS) slow.push(`${t} ${Math.round(ms / 1000)} s`);
+      // Só tarefas que mandam push: ai_costs espera a API de custos (até 65 s de novas tentativas) e não é push.
+      if (ms > SLOW_MS && !NOT_PUSH.includes(t)) slow.push(`${t} ${Math.round(ms / 1000)} s`);
     }
   }));
   if (slow.length) {

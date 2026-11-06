@@ -466,10 +466,12 @@ async function filterFrequencyCap(
     if (!userIds.length) return userIds;
   }
   const cap = FREQUENCY_CAP[type];
-  // Rolling 24h window instead of UTC midnight — avoids double-sends for users
-  // in negative-offset timezones (e.g., Americas) where UTC midnight falls in
-  // the middle of their local day.
-  const since24hAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+  // Janela de 20 h, e não de 24 h nem de meia-noite UTC. Meia-noite UTC cai no meio do dia de quem está nas
+  // Américas e deixava sair dois no mesmo dia. 24 h exatas barravam o envio do dia seguinte na mesma hora:
+  // em 06/11 o lembrete diário conferiu o limite às 11h01m09s, e o de 05/11 tinha sido gravado às 11h01m38s.
+  // Ficaram 826 de 829 alunos sem lembrete. Envios diários saem sempre na mesma hora local, então 20 h
+  // seguram a repetição no mesmo dia sem pegar o dia seguinte.
+  const since24hAgo = new Date(Date.now() - 20 * 60 * 60 * 1000);
 
   const data = await readIn<{ user_id: string }>(`limite ${type}`, userIds, chunk => supabase
     .from('notification_logs')
