@@ -207,3 +207,77 @@ export async function usersListPayload() {
     },
   };
 }
+
+// ── Lista paginada no servidor (GET /api/admin/users?page=&per=&q=&filter=&sort=&dir=) ─────────────────────
+// Antes a tela recebia todos os alunos (com 10 mil alunos, mais de 10 MB a cada abertura) e filtrava, ordenava
+// e paginava no navegador. Agora recebe só a página, as contagens dos filtros e os números dos cards. A conta
+// completa fica 30 s em memória para trocar de página, buscar ou ordenar sem refazer tudo; `fresh` refaz.
+export type UsersFilter = 'all' | 'institutional' | 'subscriber' | 'trial' | 'expired' | 'none';
+export type UsersSort = 'name' | 'level' | 'created_at' | 'xp' | 'lastActive' | 'topics' | 'streak';
+type ListUser = Awaited<ReturnType<typeof usersListPayload>>['users'][number] & Record<string, any>;
+
+let cached: { at: number; data: Awaited<ReturnType<typeof usersListPayload>> } | null = null;
+async function payloadCached(fresh: boolean) {
+  if (!fresh && cached && Date.now() - cached.at < 30_000) return cached.data;
+  const data = await usersListPayload();
+  cached = { at: Date.now(), data };
+  return data;
+}
+
+function inFilter(u: ListUser, f: UsersFilter, now: Date): boolean {
+  return f === 'all' ? true :
+    f === 'institutional' ? !!u.is_institutional :
+    f === 'subscriber' ? u.sub_phase === 'pagante' :
+    f === 'trial' ? !!u.sub_phase && String(u.sub_phase).startsWith('teste') :
+    f === 'expired' ? !u.is_institutional && (
+      u.subscription_status === 'expired' ||
+      (u.subscription_status === 'trial' && !!u.trial_ends_at && new Date(u.trial_ends_at) < now)
+    ) :
+    f === 'none' ? u.subscription_status === 'none' && !u.is_institutional : true;
+}
+
+function sortValue(u: ListUser, k: UsersSort): any {
+  switch (k) {
+    case 'name': return (u.name ?? '').toLowerCase();
+    case 'level': return u.charlotte_level ?? '';
+    case 'created_at': return u.created_at;
+    case 'xp': return u.engagement?.totalXP ?? -1;
+    case 'lastActive': return u.engagement?.lastActive ?? '';
+    case 'topics': { const p = u.trailProgress; return p ? p.novice + p.inter + p.advanced : -1; }
+    case 'streak': return u.streak ?? -1;
+    default: return '';
+  }
+}
+
+export async function usersListQuery(o: {
+  page: number; per: number; q: string; filter: UsersFilter; sort: UsersSort; dir: 'asc' | 'desc'; fresh: boolean; idsOnly: boolean;
+}) {
+  const { users, stats } = await payloadCached(o.fresh);
+  const now = new Date();
+  const q = o.q.toLowerCase();
+  const keys: UsersFilter[] = ['all', 'subscriber', 'trial', 'expired', 'institutional', 'none'];
+  const filterCounts = Object.fromEntries(keys.map(k => [k, (users as ListUser[]).filter(u => inFilter(u, k, now)).length]));
+  const list = (users as ListUser[]).filter(u => {
+    const matchQ = !q || String(u.email ?? '').toLowerCase().includes(q) || (u.name ?? '').toLowerCase().includes(q)
+      || (!!u.username && `@${u.username}`.includes(q.startsWith('@') ? q : `@${q}`));
+    return matchQ && inFilter(u, o.filter, now);
+  });
+  // Mesmo critério da tela antiga: sort estável, empates mantêm a ordem de cadastro (mais novos primeiro).
+  list.sort((a, b) => {
+    const av = sortValue(a, o.sort), bv = sortValue(b, o.sort);
+    if (av < bv) return o.dir === 'asc' ? -1 : 1;
+    if (av > bv) return o.dir === 'asc' ? 1 : -1;
+    return 0;
+  });
+  // "Selecionar todos os resultados": só id, e-mail e nome de todos os filtrados.
+  if (o.idsOnly) return { users: list.map(u => ({ id: u.id, email: u.email, name: u.name })), total: list.length };
+  const per = Math.min(Math.max(o.per, 1), 200);
+  const page = Math.max(o.page, 1);
+  return {
+    users: list.slice((page - 1) * per, page * per),
+    total: list.length,
+    filterCounts,
+    expiredCount: filterCounts.expired,
+    stats,
+  };
+}

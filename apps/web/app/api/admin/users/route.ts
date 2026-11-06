@@ -11,7 +11,7 @@ import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { inviteTemplate } from '@/lib/email-templates';
-import { usersListPayload } from '@/lib/admin-users-list';
+import { usersListQuery, type UsersFilter, type UsersSort } from '@/lib/admin-users-list';
 
 
 // Login próprio (Bearer) com papel que acessa 'users', ou a senha mestra antiga.
@@ -20,11 +20,21 @@ async function checkAuth(req: NextRequest, area: 'users' | 'users:write' | 'user
   return !!admin && can(admin.role, area);
 }
 
-// ── GET /api/admin/users — list all users + stats + engagement ────────────────
+// ── GET /api/admin/users — página da lista (filtro, busca e ordem no servidor) + contagens + números dos cards ────────────────
 export async function GET(req: NextRequest) {
   if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  return NextResponse.json(await usersListPayload());
+  const sp = req.nextUrl.searchParams;
+  return NextResponse.json(await usersListQuery({
+    page: Number(sp.get('page') ?? 1) || 1,
+    per: Number(sp.get('per') ?? 25) || 25,
+    q: sp.get('q') ?? '',
+    filter: (sp.get('filter') ?? 'all') as UsersFilter,
+    sort: (sp.get('sort') ?? 'created_at') as UsersSort,
+    dir: sp.get('dir') === 'asc' ? 'asc' : 'desc',
+    fresh: sp.get('fresh') === '1',
+    idsOnly: sp.get('ids') === '1',
+  }));
 }
 
 // ── POST /api/admin/users — create a new user ─────────────────────────────────

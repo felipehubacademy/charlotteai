@@ -211,7 +211,8 @@ export default function AdminUsersPage() {
   const [sortDir, setSortDir]   = useState<'asc' | 'desc'>('desc');
   const [modal, setModal]       = useState<ModalMode>(null);
   // Seleção para ações em lote (excluir, desativar, reativar).
-  const [checked, setChecked]   = useState<Set<string>>(new Set());
+  // Seleção por id, com e-mail e nome guardados: a lista vem do servidor página por página.
+  const [checked, setChecked]   = useState<Map<string, Pick<User, 'id' | 'email' | 'name'>>>(new Map());
   const [bulkMsg, setBulkMsg]   = useState<string | null>(null);
   const [selected, setSelected] = useState<User | null>(null);
   const [form, setForm]         = useState<Form>(EMPTY_FORM);
@@ -219,25 +220,38 @@ export default function AdminUsersPage() {
   const [formErr, setFormErr]   = useState('');
   const [showPwd, setShowPwd]   = useState(false);
   const [page, setPage]         = useState(1);
+  const [total, setTotal]       = useState(0);
+  const [filterCounts, setFilterCounts] = useState<Record<FilterKey, number>>({} as Record<FilterKey, number>);
+  const [expiredCount, setExpiredCount] = useState(0);
+  const [qDebounced, setQDebounced] = useState('');
   const PER_PAGE = 25;
 
   const getSecret = () => sessionStorage.getItem('adminSecret') ?? '';
 
-  const fetchData = useCallback(async () => {
+  // Busca, filtro, ordem e página vão para o servidor (GET /api/admin/users), que devolve só a página.
+  const listParams = (extra: Record<string, string> = {}) => new URLSearchParams({
+    page: String(page), per: String(PER_PAGE), q: qDebounced, filter, sort: sortKey, dir: sortDir, ...extra,
+  }).toString();
+  const fetchData = useCallback(async (fresh = false) => {
     // Login próprio: o layout injeta o token; a senha mestra (antiga) é opcional.
     const secret = getSecret();
     setLoading(true); setError('');
     try {
-      const res = await fetch('/api/admin/users', { headers: { 'x-admin-secret': secret } });
+      const res = await fetch(`/api/admin/users?${listParams(fresh ? { fresh: '1' } : {})}`, { headers: { 'x-admin-secret': secret } });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json = await res.json();
       setUsers(json.users ?? []);
+      setTotal(json.total ?? 0);
+      setFilterCounts(json.filterCounts ?? {});
+      setExpiredCount(json.expiredCount ?? 0);
       setStats(json.stats ?? null);
     } catch (e: any) { setError(e.message); }
     finally { setLoading(false); }
-  }, []);
+  }, [page, qDebounced, filter, sortKey, sortDir]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => { fetchData(); }, [fetchData]);
+  useEffect(() => { const t = setTimeout(() => setQDebounced(search.trim()), 300); return () => clearTimeout(t); }, [search]);
+  const refresh = () => fetchData(true);
 
   // Sort
   const onSort = (k: SortKey) => {
@@ -245,62 +259,9 @@ export default function AdminUsersPage() {
     else { setSortKey(k); setSortDir('desc'); }
   };
 
-  // Filtered + sorted
-  // Mesma regra para a lista filtrada e para as contagens dos filtros rápidos.
-  const inFilter = (u: User, f: FilterKey): boolean =>
-    f === 'all' ? true :
-    f === 'institutional' ? u.is_institutional :
-    f === 'subscriber' ? u.sub_phase === 'pagante' :
-    f === 'trial' ? !!u.sub_phase && u.sub_phase.startsWith('teste') :
-    f === 'expired' ? !u.is_institutional && (
-      u.subscription_status === 'expired' ||
-      (u.subscription_status === 'trial' && !!u.trial_ends_at && new Date(u.trial_ends_at) < new Date())
-    ) :
-    f === 'none' ? u.subscription_status === 'none' && !u.is_institutional : true;
-  const filterCounts = useMemo(() => {
-    const keys: FilterKey[] = ['all', 'subscriber', 'trial', 'expired', 'institutional', 'none'];
-    return Object.fromEntries(keys.map(k => [k, users.filter(u => inFilter(u, k)).length])) as Record<FilterKey, number>;
-  }, [users]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const displayed = useMemo(() => {
-    const q = search.toLowerCase();
-    let list = users.filter(u => {
-      const matchQ = !q || u.email.toLowerCase().includes(q) || (u.name ?? '').toLowerCase().includes(q) || (!!u.username && `@${u.username}`.includes(q.startsWith('@') ? q : `@${q}`));
-      const matchF = inFilter(u, filter);
-      return matchQ && matchF;
-    });
-    list = [...list].sort((a, b) => {
-      let av: any, bv: any;
-      switch (sortKey) {
-        case 'name': av = (a.name ?? '').toLowerCase(); bv = (b.name ?? '').toLowerCase(); break;
-        case 'level': av = a.charlotte_level ?? ''; bv = b.charlotte_level ?? ''; break;
-        case 'created_at': av = a.created_at; bv = b.created_at; break;
-        case 'xp': av = a.engagement?.totalXP ?? -1; bv = b.engagement?.totalXP ?? -1; break;
-        case 'lastActive': av = a.engagement?.lastActive ?? ''; bv = b.engagement?.lastActive ?? ''; break;
-        case 'topics': {
-          const sum = (p: TrailProgress | null) => p ? p.novice + p.inter + p.advanced : -1;
-          av = sum(a.trailProgress); bv = sum(b.trailProgress); break;
-        }
-        case 'streak': av = a.streak ?? -1; bv = b.streak ?? -1; break;
-        default: av = ''; bv = '';
-      }
-      if (av < bv) return sortDir === 'asc' ? -1 : 1;
-      if (av > bv) return sortDir === 'asc' ? 1 : -1;
-      return 0;
-    });
-    return list;
-  }, [users, search, filter, sortKey, sortDir]);
-
-  const expiredCount = useMemo(() => users.filter(u => {
-    if (u.is_institutional) return false;
-    if (u.subscription_status === 'expired') return true;
-    if (u.subscription_status === 'trial' && u.trial_ends_at && new Date(u.trial_ends_at) < new Date()) return true;
-    return false;
-  }).length, [users]);
-
-  const totalPages = Math.ceil(displayed.length / PER_PAGE);
-  const pageUsers  = displayed.slice((page - 1) * PER_PAGE, page * PER_PAGE);
-  useEffect(() => { setPage(1); }, [search, filter]);
+  const totalPages = Math.ceil(total / PER_PAGE);
+  const pageUsers  = users;
+  useEffect(() => { setPage(1); }, [qDebounced, filter, sortKey, sortDir]);
 
   // ── Modal helpers ──────────────────────────────────────────────────────────
   const openCreate = () => { setForm(EMPTY_FORM); setFormErr(''); setSelected(null); setModal('create'); };
@@ -345,7 +306,7 @@ export default function AdminUsersPage() {
         }),
       });
       if (!res.ok) { const j = await res.json(); throw new Error(j.error ?? `HTTP ${res.status}`); }
-      closeModal(); await fetchData();
+      closeModal(); await fetchData(true);
     } catch (e: any) { setFormErr(e.message); }
     finally { setSaving(false); }
   };
@@ -378,7 +339,7 @@ export default function AdminUsersPage() {
         body: JSON.stringify(body),
       });
       if (!res.ok) { const j = await res.json(); throw new Error(j.error ?? `HTTP ${res.status}`); }
-      closeModal(); await fetchData();
+      closeModal(); await fetchData(true);
     } catch (e: any) { setFormErr(e.message); }
     finally { setSaving(false); }
   };
@@ -393,32 +354,40 @@ export default function AdminUsersPage() {
         body: JSON.stringify({ id: selected.id }),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      closeModal(); await fetchData();
+      closeModal(); await fetchData(true);
     } catch (e: any) { setFormErr(e.message); }
     finally { setSaving(false); }
   };
 
   // ── Ações em lote ──────────────────────────────────────────────────────────
-  const toggleCheck = (id: string) => setChecked(prev => { const n = new Set(prev); if (n.has(id)) n.delete(id); else n.add(id); return n; });
+  const pick = (u: User) => ({ id: u.id, email: u.email, name: u.name });
+  const toggleCheck = (u: User) => setChecked(prev => { const n = new Map(prev); if (n.has(u.id)) n.delete(u.id); else n.set(u.id, pick(u)); return n; });
   const pageAllChecked = pageUsers.length > 0 && pageUsers.every(u => checked.has(u.id));
   const togglePage = () => setChecked(prev => {
-    const n = new Set(prev);
-    if (pageAllChecked) pageUsers.forEach(u => n.delete(u.id)); else pageUsers.forEach(u => n.add(u.id));
+    const n = new Map(prev);
+    if (pageAllChecked) pageUsers.forEach(u => n.delete(u.id)); else pageUsers.forEach(u => n.set(u.id, pick(u)));
     return n;
   });
-  const checkedUsers = users.filter(u => checked.has(u.id));
+  // Todos os resultados do filtro atual (não só a página): o servidor manda id, e-mail e nome.
+  const checkAllResults = async () => {
+    const res = await fetch(`/api/admin/users?${listParams({ ids: '1' })}`, { headers: { 'x-admin-secret': getSecret() } });
+    if (!res.ok) { setError(`HTTP ${res.status}`); return; }
+    const json = await res.json();
+    setChecked(new Map((json.users ?? []).map((u: Pick<User, 'id' | 'email' | 'name'>) => [u.id, u])));
+  };
+  const checkedUsers = [...checked.values()];
 
   // Roda a ação conta por conta (a API é por conta) e conta os resultados.
-  const runBulk = async (label: string, call: (u: User) => Promise<Response>) => {
+  const runBulk = async (label: string, call: (u: Pick<User, 'id' | 'email' | 'name'>) => Promise<Response>) => {
     setSaving(true); setBulkMsg(null);
     let ok = 0; const failed: string[] = [];
     for (const u of checkedUsers) {
       try { const r = await call(u); if (r.ok) ok++; else failed.push(u.email ?? u.id); }
       catch { failed.push(u.email ?? u.id); }
     }
-    setSaving(false); setModal(null); setChecked(new Set());
+    setSaving(false); setModal(null); setChecked(new Map());
     setBulkMsg(`${label}: ${ok} de ${ok + failed.length}.${failed.length ? ` Falharam: ${failed.slice(0, 5).join(', ')}${failed.length > 5 ? '…' : ''}` : ''}`);
-    await fetchData();
+    await fetchData(true);
   };
   const bulkDelete = () => runBulk('Excluídas', u => fetch('/api/admin/users', {
     method: 'DELETE', headers: { 'x-admin-secret': getSecret(), 'Content-Type': 'application/json' }, body: JSON.stringify({ id: u.id }),
@@ -436,7 +405,7 @@ export default function AdminUsersPage() {
       {/* Top bar */}
       <div className="adm-topbar">
         <div className="adm-topbar-title" style={{ flex: 1 }}>Usuários</div>
-        <button onClick={fetchData} disabled={loading} className="adm-btn-sm ghost">
+        <button onClick={refresh} disabled={loading} className="adm-btn-sm ghost">
           <RefreshCw size={13} style={{ animation: loading ? 'spin 1s linear infinite' : 'none' }} />
           {loading ? 'Carregando' : 'Atualizar'}
         </button>
@@ -532,7 +501,7 @@ export default function AdminUsersPage() {
           ))}
         </div>
         <div style={{ marginLeft: 'auto', fontSize: 11, color: 'var(--t3)', flexShrink: 0 }}>
-          {displayed.length} resultado{displayed.length !== 1 ? 's' : ''}
+          {total} resultado{total !== 1 ? 's' : ''}
         </div>
       </div>
 
@@ -542,14 +511,14 @@ export default function AdminUsersPage() {
           {checked.size > 0 ? (
             <>
               <b style={{ color: 'var(--t1)' }}>{checked.size} selecionada{checked.size !== 1 ? 's' : ''}</b>
-              {checked.size < displayed.length && (
-                <button className="adm-btn-sm ghost" onClick={() => setChecked(new Set(displayed.map(u => u.id)))}>Selecionar os {displayed.length} resultados</button>
+              {checked.size < total && (
+                <button className="adm-btn-sm ghost" onClick={checkAllResults}>Selecionar os {total} resultados</button>
               )}
               <div style={{ flex: 1 }} />
               <button className="adm-btn-sm ghost" disabled={saving} onClick={() => bulkActive(false)}>Desativar</button>
               <button className="adm-btn-sm ghost" disabled={saving} onClick={() => bulkActive(true)}>Reativar</button>
               {canDelete && <button className="adm-btn-sm danger" disabled={saving} onClick={() => setModal('bulkDelete')}><Trash2 size={12} /> Excluir</button>}
-              <button className="adm-btn-sm ghost" onClick={() => setChecked(new Set())}>Limpar</button>
+              <button className="adm-btn-sm ghost" onClick={() => setChecked(new Map())}>Limpar</button>
             </>
           ) : (
             <>
@@ -611,7 +580,7 @@ export default function AdminUsersPage() {
                     return (
                       <tr key={u.id} style={checked.has(u.id) ? { background: 'var(--s2, #F3F1EC)' } : undefined}>
                         <td>
-                          <input type="checkbox" aria-label={`Selecionar ${u.email ?? u.name ?? ''}`} checked={checked.has(u.id)} onChange={() => toggleCheck(u.id)} />
+                          <input type="checkbox" aria-label={`Selecionar ${u.email ?? u.name ?? ''}`} checked={checked.has(u.id)} onChange={() => toggleCheck(u)} />
                         </td>
                         <td>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -679,7 +648,7 @@ export default function AdminUsersPage() {
           {totalPages > 1 && (
             <div style={{ padding: '12px 18px', borderTop: '1px solid var(--b1)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div style={{ fontSize: 11.5, color: 'var(--t3)' }}>
-                Mostrando {((page - 1) * PER_PAGE) + 1}–{Math.min(page * PER_PAGE, displayed.length)} de {displayed.length}
+                Mostrando {((page - 1) * PER_PAGE) + 1}–{Math.min(page * PER_PAGE, total)} de {total}
               </div>
               <div style={{ display: 'flex', gap: 4 }}>
                 <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1} className="adm-btn-sm ghost">‹</button>
