@@ -10,6 +10,7 @@ import { notifyAdmins } from '@/lib/admin-push';
 import { logOpenAIUsage } from './openai-usage';
 import { allFriendPairs } from '@/lib/friends';
 import { tasteDay, TASTE_DAYS } from '@/lib/taste';
+import { readAll as dbReadAll, readIn as dbReadIn } from '@/lib/db-batch';
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 const EXPO_RECEIPTS_URL = 'https://exp.host/--/api/v2/push/getReceipts';
@@ -422,53 +423,25 @@ const NOVELTY_WINDOW = 3;
 
 // Returns the set of userIds that have already received `type` today and
 // should be skipped. Single round-trip for the whole send batch.
-// ── Leitura do banco em lotes ────────────────────────────────────────────────
-// Duas armadilhas da API do banco, que já pararam pushes sem ninguém saber:
-// - lista grande de ids em .in() estoura o tamanho do endereço (acima de ~600 ids
-//   o banco responde 400), e a consulta volta com erro;
-// - toda leitura para em 1.000 linhas, sem aviso.
-// O código antigo ignorava o erro e seguia como se não houvesse ninguém: os pushes
-// de engajamento ficaram parados de 27/10 a 06/11/2026. Aqui os ids vão em lotes,
-// as linhas vêm em páginas, e qualquer erro avisa a gestão e interrompe o envio.
-const IN_CHUNK = 200;
-const PAGE = 1000;
+// ── Leitura do banco em lotes (lib/db-batch) ─────────────────────────────────
+// Os pushes de engajamento ficaram parados de 27/10 a 06/11/2026: a lista de ids passou do limite
+// do endereço e o erro era ignorado, como se não houvesse ninguém. Qualquer erro de leitura aqui
+// avisa a gestão e interrompe o envio.
 const queryAlerted = new Set<string>();
 
-async function pushQueryFailed(label: string, message: string): Promise<never> {
+async function pushQueryFailed(label: string, message: string): Promise<void> {
   console.error(`❌ [Expo] leitura falhou (${label}):`, message);
-  if (!queryAlerted.has(label)) {
-    queryAlerted.add(label);
-    await notifyAdmins({
-      title: 'Pushes para os alunos não saíram',
-      body: `A leitura do banco para os pushes falhou (${label}: ${message}). Esse envio foi interrompido.`.slice(0, 300),
-      url: '/admin/notifications', tag: `push-query-${label}`, category: 'pushes',
-    }).catch(e => console.warn('[Expo] alerta da gestão falhou:', e));
-  }
-  throw new Error(`[${label}] ${message}`);
+  if (queryAlerted.has(label)) return;
+  queryAlerted.add(label);
+  await notifyAdmins({
+    title: 'Pushes para os alunos não saíram',
+    body: `A leitura do banco para os pushes falhou (${label}: ${message}). Esse envio foi interrompido.`.slice(0, 300),
+    url: '/admin/notifications', tag: `push-query-${label}`, category: 'pushes',
+  }).catch(e => console.warn('[Expo] alerta da gestão falhou:', e));
 }
 
-/** Todas as linhas da consulta, página por página. `build` monta a consulta com ordem estável. */
-async function readAll<T = any>(label: string, build: () => any): Promise<T[]> {
-  const out: T[] = [];
-  for (let from = 0; ;) {
-    const { data, error } = await build().range(from, from + PAGE - 1);
-    if (error) await pushQueryFailed(label, error.message);
-    const rows = (data ?? []) as T[];
-    if (!rows.length) return out;
-    out.push(...rows);
-    from += rows.length;
-  }
-}
-
-/** Todas as linhas para uma lista de ids, com os ids em lotes. */
-async function readIn<T = any>(label: string, ids: string[], build: (chunk: string[]) => any): Promise<T[]> {
-  const out: T[] = [];
-  for (let i = 0; i < ids.length; i += IN_CHUNK) {
-    const chunk = ids.slice(i, i + IN_CHUNK);
-    out.push(...await readAll<T>(label, () => build(chunk)));
-  }
-  return out;
-}
+const readAll = <T = any>(label: string, build: () => any) => dbReadAll<T>(label, build, pushQueryFailed);
+const readIn = <T = any>(label: string, ids: readonly string[], build: (chunk: string[]) => any) => dbReadIn<T>(label, ids, build, pushQueryFailed);
 
 async function filterFrequencyCap(
   supabase: any,
@@ -2277,29 +2250,29 @@ const TASTE_COPY: Record<'taste_daily' | 'taste_last' | 'taste_nudge' | 'taste_e
 export async function sendTastePushes(supabase: any): Promise<void> {
   try {
     const since = new Date(Date.now() - 12 * 86400000).toISOString();
-    const { data: rows, error } = await supabase
+    const rows = await readAll<any>('degustação', () => supabase
       .from('charlotte_users')
       .select('id, name, expo_push_token, charlotte_level, app_language, timezone, reminder_hour, created_at, subscription_status, is_institutional')
       .or('subscription_status.is.null,subscription_status.eq.none')
       .not('is_institutional', 'is', true)
       .not('expo_push_token', 'is', null)
-      .gte('created_at', since);
-    if (error) { console.error('❌ [Expo] taste users query error:', error.message); return; }
+      .gte('created_at', since)
+      .order('id'));
 
     const now = new Date();
-    const atHour = (rows ?? []).filter((u: any) =>
+    const atHour = rows.filter((u: any) =>
       u.expo_push_token?.startsWith('ExponentPushToken[')
       && localHourInTz(now, u.timezone || DEFAULT_TZ) === (u.reminder_hour ?? TARGET_HOUR_DAILY));
     if (!atHour.length) return;
 
     // Um push da degustação por dia, qualquer que seja o tipo.
     const ids = atHour.map((u: any) => String(u.id));
-    const { data: recent } = await supabase.from('notification_logs').select('user_id')
-      .in('user_id', ids).like('notification_type', 'taste_%').gte('created_at', new Date(Date.now() - 20 * 3600000).toISOString());
-    const already = new Set(((recent ?? []) as { user_id: string }[]).map(r => String(r.user_id)));
+    const recent = await readIn<{ user_id: string }>('degustação de hoje', ids, c => supabase.from('notification_logs').select('id, user_id')
+      .in('user_id', c).like('notification_type', 'taste_%').gte('created_at', new Date(Date.now() - 20 * 3600000).toISOString()).order('id'));
+    const already = new Set(recent.map(r => String(r.user_id)));
 
-    const { data: prog } = await supabase.from('charlotte_progress').select('user_id, last_practice_date').in('user_id', ids);
-    const lastPractice = new Map(((prog ?? []) as { user_id: string; last_practice_date: string | null }[]).map(r => [String(r.user_id), r.last_practice_date]));
+    const prog = await readIn<any>('prática da degustação', ids, c => supabase.from('charlotte_progress').select('user_id, last_practice_date').in('user_id', c).order('user_id'));
+    const lastPractice = new Map((prog as { user_id: string; last_practice_date: string | null }[]).map(r => [String(r.user_id), r.last_practice_date]));
 
     const plan: { u: any; type: NotificationType['id']; copy: keyof typeof TASTE_COPY }[] = [];
     for (const u of atHour) {
