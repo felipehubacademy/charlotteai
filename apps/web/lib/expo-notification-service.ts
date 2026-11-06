@@ -738,7 +738,9 @@ export async function checkExpoReceipts(): Promise<{ checked: number; delivered:
     const supabase = getSupabaseAdmin();
     const from = new Date(Date.now() - 24 * 3600 * 1000).toISOString();
     const to = new Date(Date.now() - 15 * 60 * 1000).toISOString();
-    const { data: rows, error } = await supabase
+    // Todos os pendentes, os mais antigos primeiro (o recibo some em ~24 h). Antes era .limit(5000), que na
+    // prática parava em 1.000 linhas: com mais de 1.000 pushes por dia, parte nunca era conferida.
+    const pending = await readAll<{ id: string; user_id: string; metadata: Record<string, any> }>('recibos', () => supabase
       .from('notification_logs')
       .select('id, user_id, metadata')
       .eq('status', 'sent')
@@ -746,15 +748,13 @@ export async function checkExpoReceipts(): Promise<{ checked: number; delivered:
       .lte('created_at', to)
       .not('metadata->>ticket_id', 'is', null)
       .is('metadata->>delivery', null)
-      .limit(5000);
-    if (error) {
-      console.warn('⚠️ [Expo] receipts query error:', error.message);
-      return out;
-    }
-    const pending = (rows ?? []) as { id: string; user_id: string; metadata: Record<string, any> }[];
+      .order('created_at')
+      .order('id'));
+    const started = Date.now();
     const deadTokens: { userId: string; token: string }[] = [];
 
     for (let i = 0; i < pending.length; i += 1000) { // limite do Expo por requisição
+      if (Date.now() - started > 70_000) break; // o resto fica para a próxima hora (os mais antigos já foram)
       const chunk = pending.slice(i, i + 1000);
       let receipts: Record<string, ExpoTicket> = {};
       try {
