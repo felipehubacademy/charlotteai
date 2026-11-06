@@ -21,7 +21,8 @@ export async function GET(req: NextRequest) {
   // Leituras em páginas e ids em lotes: com mais de 1.000 eventos ou assinantes a lista vinha cortada sem aviso.
   const [withPlan, tapped] = await Promise.all([
     readAll<{ id: string }>('assinantes da loja', () => supabase.from('charlotte_users').select('id').in('subscription_product', ['monthly', 'yearly']).order('id')),
-    readAll<{ user_id: string }>('toques em assinar', () => supabase.from('charlotte_analytics_events').select('id, user_id').in('event_name', ['paywall_purchase_tap', 'subscription_purchased', 'subscription_restored']).order('id')),
+    // Agrupado no banco: um aluno por linha, na ordem do primeiro toque (a mesma ordem da lista de eventos).
+    readAll<{ user_id: string }>('toques em assinar', () => supabase.rpc('rc_candidate_user_ids', { p_since: null }).order('first_id')),
   ]);
   const ids = [...new Set([...withPlan.map(r => String(r.id)), ...tapped.map(r => String(r.user_id))])].slice(0, 400);
   const rows = await readIn('contas conferidas', ids, chunk => supabase.from('charlotte_users')

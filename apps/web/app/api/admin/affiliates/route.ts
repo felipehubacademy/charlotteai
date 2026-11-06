@@ -39,41 +39,31 @@ export async function GET(req: NextRequest) {
 
   const since30 = new Date(Date.now() - 30 * DAY).toISOString();
   // O .limit(100000) não valia: a API devolve no máximo 1.000 linhas, e cliques, cadastros e comissões saíam cortados.
-  // Cliques viram contagem por afiliado (sem baixar as linhas); o resto vem em páginas, com erro explícito.
+  // Agora o funil e as comissões são somados no banco, uma linha por afiliado (antes vinham todos os cadastros e
+  // todas as comissões). Somas em dinheiro chegam como texto (mesma soma em ponto flutuante, na ordem de antes) e o
+  // arredondamento continua aqui, igual ao de balanceOf.
   const { data: affs, error: affErr } = await supabase.from('affiliates').select('*').order('created_at', { ascending: false });
   if (affErr) return NextResponse.json({ error: affErr.message }, { status: 500 });
   const affList = (affs ?? []) as unknown as Affiliate[];
-  const countClicks = async (affId: string, since?: string) => {
-    let q = supabase.from('affiliate_clicks').select('id', { count: 'exact', head: true }).eq('affiliate_id', affId);
-    if (since) q = q.gte('created_at', since);
-    const { count, error } = await q;
-    if (error) throw new Error(`[cliques do afiliado] ${error.message}`);
-    return count ?? 0;
-  };
-  const [clickCounts, attrRows, comms] = await Promise.all([
-    Promise.all(affList.map(async a => [a.id, { all: await countClicks(a.id), d30: await countClicks(a.id, since30) }] as const)).then(r => new Map(r)),
-    readAll<Pick<Attr, 'user_id' | 'affiliate_id'>>('cadastros de afiliados', () => supabase.from('affiliate_attributions').select('user_id, affiliate_id').order('user_id')),
-    readAll<Comm>('comissões', () => supabase.from('affiliate_commissions').select('id, affiliate_id, user_id, kind, net_brl, amount_brl, status, available_at, is_test').order('id')),
-  ]);
-  const userIds = [...new Set(attrRows.map(a => a.user_id))];
-  const subs = await readIn<{ id: string; subscription_status: string | null }>('situação dos atribuídos', userIds, chunk => supabase.from('charlotte_users').select('id, subscription_status').in('id', chunk).order('id'));
-  const statusOf = new Map(subs.map(u => [u.id, u.subscription_status]));
+  type Totals = { affiliate_id: string; clicks: number; clicks30: number; signups: number; trials: number; subscribers: number; paying_users: number; revenue_net: string | null; bal_pending: string | null; bal_available: string | null; bal_paid: string | null };
+  const totals = await readAll<Totals>('funil dos afiliados', () => supabase.rpc('affiliate_totals', { p_since30: since30, p_now: new Date().toISOString() }).order('affiliate_id'));
+  const totalsOf = new Map(totals.map(t => [t.affiliate_id, t]));
+  const round2 = (n: number) => Math.round(n * 100) / 100;
+  const num = (v: string | null | undefined) => Number(v ?? 0);
 
   const list = affList.map(a => {
-    const mine = attrRows.filter(r => r.affiliate_id === a.id);
-    const myComms = comms.filter(c => c.affiliate_id === a.id);
-    const valid = myComms.filter(c => c.kind === 'commission' && c.status !== 'reversed' && !c.is_test);
+    const t = totalsOf.get(a.id);
     return {
       ...a,
       link: `${SITE}/a/${a.code}`,
-      clicks: clickCounts.get(a.id)?.all ?? 0,
-      clicks30: clickCounts.get(a.id)?.d30 ?? 0,
-      signups: mine.length,
-      trials: mine.filter(r => statusOf.get(r.user_id) === 'trial').length,
-      subscribers: mine.filter(r => ['active', 'cancelled'].includes(statusOf.get(r.user_id) ?? '')).length,
-      payingUsers: new Set(valid.map(c => c.user_id)).size,
-      revenueNet: Math.round(valid.reduce((s, c) => s + Number(c.net_brl), 0) * 100) / 100,
-      balance: balanceOf(myComms),
+      clicks: t?.clicks ?? 0,
+      clicks30: t?.clicks30 ?? 0,
+      signups: t?.signups ?? 0,
+      trials: t?.trials ?? 0,
+      subscribers: t?.subscribers ?? 0,
+      payingUsers: t?.paying_users ?? 0,
+      revenueNet: round2(num(t?.revenue_net)),
+      balance: { pending: round2(num(t?.bal_pending)), available: round2(num(t?.bal_available)), paid: round2(num(t?.bal_paid)) },
     };
   });
   return NextResponse.json({ affiliates: list });

@@ -26,12 +26,11 @@ export async function POST(req: NextRequest) {
   const supabase = getSupabaseAdmin();
   const since = new Date(Date.now() - 60 * 86400000).toISOString();
   // Leituras em páginas e com erro explícito: antes, com mais de 1.000 eventos a lista de candidatos vinha cortada
-  // e, se a leitura falhava, a conferência rodava com zero contas sem avisar.
+  // e, se a leitura falhava, a conferência rodava com zero contas sem avisar. Os toques em assinar vêm do banco
+  // já agrupados (um aluno por linha, na ordem do primeiro toque), em vez de todos os eventos.
   const [withPlan, tapped] = await Promise.all([
     readAll<{ id: string }>('assinantes da loja', () => supabase.from('charlotte_users').select('id').in('subscription_product', ['monthly', 'yearly']).order('id')),
-    readAll<{ user_id: string | null }>('toques em assinar', () => supabase.from('charlotte_analytics_events').select('id, user_id')
-      .in('event_name', ['paywall_purchase_tap', 'subscription_purchased', 'subscription_restored'])
-      .gte('created_at', since).order('id')),
+    readAll<{ user_id: string | null }>('toques em assinar', () => supabase.rpc('rc_candidate_user_ids', { p_since: since }).order('first_id')),
   ]);
   const all = [...new Set([
     ...withPlan.map(r => String(r.id)),

@@ -12,7 +12,6 @@
 //   POST { action: 'resolve_comment', id }         marca como resolvido sem responder
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { readAll } from '@/lib/db-batch';
 import { requireAdmin, audit } from '@/lib/admin-auth';
 import { getInstagramAuth, replyToComment, hideComment, instagramConfigured } from '@/lib/instagram';
 
@@ -33,10 +32,11 @@ export async function GET(req: NextRequest) {
   }
   if (view === 'status') {
     const { data } = await supabase.from('instagram_auth').select('username, expires_at, refreshed_at').eq('id', 1).maybeSingle();
-    // Todos os posts, em páginas: depois de 1.000 posts a contagem por situação sairia cortada.
-    const st = await readAll<{ status: string }>('posts por situação', () => supabase.from('instagram_posts').select('id, status').order('id'));
+    // Contagem por situação feita no banco (uma linha por situação), em vez de baixar todos os posts.
+    const { data: st, error: stErr } = await supabase.rpc('instagram_status_counts');
+    if (stErr) throw new Error(`[posts por situação] ${stErr.message}`);
     const counts: Record<string, number> = {};
-    for (const r of st) counts[r.status] = (counts[r.status] ?? 0) + 1;
+    for (const r of (st ?? []) as { status: string; n: number }[]) counts[r.status] = r.n;
     const { count: escalados } = await supabase.from('instagram_comments').select('id', { count: 'exact', head: true }).eq('action', 'escalado');
     return NextResponse.json({ configured: instagramConfigured(), auth: data ?? null, counts, escalados: escalados ?? 0 });
   }

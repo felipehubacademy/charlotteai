@@ -57,14 +57,17 @@ export async function buildPartnerReport(period: string): Promise<PartnerReport>
     supabase.from('charlotte_users').select('id', { count: 'exact', head: true }).gte('created_at', start).lt('created_at', end),
     supabase.from('charlotte_users').select('id', { count: 'exact', head: true }).eq('subscription_status', 'active').eq('is_institutional', false),
     supabase.from('charlotte_users').select('id', { count: 'exact', head: true }).eq('subscription_status', 'trial'),
-    // Práticas e vendas do mês em páginas: o .limit() não valia (máximo de 1.000 linhas por leitura) e
-    // "ativos no mês" e as vendas saíam muito menores (o mês tem dezenas de milhares de práticas).
-    readAll<{ user_id: string }>('práticas do mês', () => supabase.from('charlotte_practices').select('user_id').gte('created_at', start).lt('created_at', end).order('id')),
-    readAll<{ event_type: string }>('vendas do mês', () => supabase.from('revenue_events').select('event_type').gte('purchased_at', start).lt('purchased_at', end).order('id')),
+    // "Ativos no mês" e vendas por tipo contados no banco (o mês tem dezenas de milhares de práticas):
+    // volta só o número de alunos distintos e uma linha por tipo de venda.
+    supabase.rpc('admin_active_users_between', { p_start: start, p_end: end }),
+    supabase.rpc('revenue_event_type_counts', { p_start: start, p_end: end }),
   ]);
   for (const r of [total, newIn, paying, trial]) if (r.error) throw new Error(`[alunos do relatório] ${r.error.message}`);
-  const active = new Set(practices.map(p => p.user_id)).size;
-  const ev = revenue;
+  if (practices.error) throw new Error(`[práticas do mês] ${practices.error.message}`);
+  if (revenue.error) throw new Error(`[vendas do mês] ${revenue.error.message}`);
+  const active = Number(practices.data ?? 0);
+  const salesBy = new Map(((revenue.data ?? []) as { event_type: string; n: number }[]).map(r => [r.event_type, r.n]));
+  const salesOf = (types: string[]) => types.reduce((s, t) => s + (salesBy.get(t) ?? 0), 0);
   const [y, m] = period.split('-').map(Number);
   const label = new Date(y, m - 1, 1).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
   const result = cur.income - cur.expense;
@@ -77,9 +80,9 @@ export async function buildPartnerReport(period: string): Promise<PartnerReport>
     aiCost: cur.expenseBy.find(c => c.category === 'Inteligência artificial')?.amount ?? 0,
     students: { total: total.count ?? 0, newInMonth: newIn.count ?? 0, activeInMonth: active, paying: paying.count ?? 0, trial: trial.count ?? 0 },
     sales: {
-      purchases: ev.filter(e => ['INITIAL_PURCHASE', 'NON_RENEWING_PURCHASE', 'TRIAL_CONVERTED'].includes(e.event_type)).length,
-      renewals: ev.filter(e => e.event_type === 'RENEWAL').length,
-      refunds: ev.filter(e => e.event_type === 'REFUND').length,
+      purchases: salesOf(['INITIAL_PURCHASE', 'NON_RENEWING_PURCHASE', 'TRIAL_CONVERTED']),
+      renewals: salesOf(['RENEWAL']),
+      refunds: salesOf(['REFUND']),
     },
   };
 }

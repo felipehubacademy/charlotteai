@@ -61,19 +61,19 @@ export async function GET(req: NextRequest) {
   if (view === 'ads') {
     const days = Math.min(90, Math.max(1, Number(req.nextUrl.searchParams.get('days') ?? 14)));
     const since = new Date(Date.now() - days * 86400000).toISOString();
-    // Em páginas: o .limit(50000) não valia, a API devolve no máximo 1.000 linhas e cliques e visitas saíam cortados.
+    // Cliques e visitas contados no banco por campanha (na ordem do primeiro evento), em vez de todas as linhas.
+    // Checkouts com utm seguem em páginas: a campanha passa pela mesma limpeza das visitas (lib/ad-attribution).
     const [ev, cks] = await Promise.all([
-      readAll('cliques e visitas', () => supabase.from('ad_events').select('id, kind, arm, campaign, platform').gte('created_at', since).order('id')),
+      readAll<{ campaign: string; clicks: number; ios: number; android: number; desktop: number; visits: number }>('cliques e visitas', () => supabase.rpc('ad_campaign_counts', { p_since: since }).order('first_id')),
       readAll('checkouts com utm', () => supabase.from('asaas_checkouts').select('id, status, asaas_payment_id, value_brl, meta_tracking, created_at')
         .eq('sandbox', false).gte('created_at', since).not('meta_tracking->utm', 'is', null).order('id')),
     ]);
     type Row = { campaign: string; clicks: number; ios: number; android: number; desktop: number; visits: number; checkouts: number; started: number; charged: number; revenue: number };
     const map = new Map<string, Row>();
     const row = (c: string) => { if (!map.has(c)) map.set(c, { campaign: c, clicks: 0, ios: 0, android: 0, desktop: 0, visits: 0, checkouts: 0, started: 0, charged: 0, revenue: 0 }); return map.get(c)!; };
-    for (const e of (ev ?? []) as { kind: string; campaign: string; platform: string | null }[]) {
+    for (const e of ev) {
       const r = row(e.campaign);
-      if (e.kind === 'click') { r.clicks++; if (e.platform === 'ios') r.ios++; else if (e.platform === 'android') r.android++; else r.desktop++; }
-      else r.visits++;
+      r.clicks += e.clicks; r.ios += e.ios; r.android += e.android; r.desktop += e.desktop; r.visits += e.visits;
     }
     for (const c of (cks ?? []) as { status: string; asaas_payment_id: string | null; value_brl: number; meta_tracking: { utm?: { c?: string } } | null }[]) {
       const raw = String(c.meta_tracking?.utm?.c ?? '');
@@ -120,17 +120,13 @@ export async function GET(req: NextRequest) {
     });
   }
 
-  // Usos dos cupons em páginas: o .limit(100000) não valia (máximo de 1.000 linhas por leitura) e os usos saíam menores.
+  // Usos dos cupons somados no banco (uma linha por código), em vez de todos os checkouts pagos com cupom.
+  // A receita vem como texto (soma exata em ponto flutuante, na ordem de antes): Number() devolve o mesmo valor.
   const [{ data: coupons }, paid] = await Promise.all([
     supabase.from('coupons').select('*').order('created_at', { ascending: false }),
-    readAll('usos de cupom', () => supabase.from('asaas_checkouts').select('id, coupon_code, value_brl').eq('status', 'paid').not('coupon_code', 'is', null).order('id')),
+    readAll<{ coupon_code: string; uses: number; revenue: string }>('usos de cupom', () => supabase.rpc('coupon_use_totals').order('coupon_code')),
   ]);
-  const uses = new Map<string, { n: number; revenue: number }>();
-  for (const r of (paid ?? []) as { coupon_code: string; value_brl: number }[]) {
-    const u = uses.get(r.coupon_code) ?? { n: 0, revenue: 0 };
-    u.n += 1; u.revenue += Number(r.value_brl || 0);
-    uses.set(r.coupon_code, u);
-  }
+  const uses = new Map<string, { n: number; revenue: number }>(paid.map(r => [r.coupon_code, { n: r.uses, revenue: Number(r.revenue) }]));
   const now = Date.now();
   const list = ((coupons ?? []) as Coupon[]).map(c => {
     const u = uses.get(c.code) ?? { n: 0, revenue: 0 };

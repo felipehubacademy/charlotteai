@@ -12,7 +12,6 @@ export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can, audit } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { readAll } from '@/lib/db-batch';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { sendWhatsAppText } from '@/lib/whatsapp';
 import { sendInstagramText } from '@/lib/instagram';
@@ -62,10 +61,11 @@ export async function GET(req: NextRequest) {
   }
 
   // contadores por status
-  // Em páginas: depois de 1.000 conversas os contadores sairiam cortados.
-  const allStatus = await readAll<{ status: string }>('conversas por situação', () => supabase.from('support_conversations').select('id, status').order('id'));
+  // Contados no banco (uma linha por situação), em vez de baixar todas as conversas.
+  const { data: byStatus, error: stErr } = await supabase.rpc('support_status_counts');
+  if (stErr) throw new Error(`[conversas por situação] ${stErr.message}`);
   const counts: Record<string, number> = {};
-  for (const r of allStatus) counts[r.status] = (counts[r.status] ?? 0) + 1;
+  for (const r of (byStatus ?? []) as { status: string; n: number }[]) counts[r.status] = r.n;
 
   const conversations = rows.map(c => ({
     id: c.id,

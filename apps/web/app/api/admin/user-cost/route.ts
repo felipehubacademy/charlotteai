@@ -9,7 +9,6 @@ export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { readAll } from '@/lib/db-batch';
 
 
 // Login próprio (Bearer) com papel que acessa 'metrics', ou a senha mestra antiga.
@@ -37,64 +36,43 @@ export async function GET(req: NextRequest) {
 
   const supabase = getSupabaseAdmin();
 
-  // Sem cast — usa o padrão correto do projeto
-  // Em páginas: o .limit(5000) não valia (máximo de 1.000 linhas por leitura) e o custo de quem usa muito saía menor.
-  const result = await readAll('custo do aluno', () => supabase
-    .from('openai_usage')
-    .select('endpoint, model, total_tokens, cost_usd, user_id')
-    .eq('user_id', userId)
-    .gte('created_at', fromDate.toISOString())
-    .lte('created_at', toDate.toISOString())
-    .order('id'))
-    .then(data => ({ data, error: null as { message: string } | null }), (e: Error) => ({ data: null, error: { message: e.message } }));
-
-  const rows = (result.data ?? []) as Array<{
-    endpoint: string; model: string;
-    total_tokens: number | null; cost_usd: number | string | null;
-    user_id: string | null;
-  }>;
-
-  if (result.error) {
-    return NextResponse.json({ error: result.error.message }, { status: 500 });
+  // Somado no banco: uma linha por endpoint, por modelo e o total (antes vinham todas as chamadas do período).
+  // O custo chega como texto (mesma soma em ponto flutuante, na ordem das chamadas): Number() devolve o mesmo valor.
+  const { data, error } = await supabase.rpc('user_cost_breakdown', {
+    p_user: userId, p_from: fromDate.toISOString(), p_to: toDate.toISOString(),
+  });
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
+  const groups = (data ?? []) as Array<{ grp: 'endpoint' | 'model' | 'total'; key: string | null; cost: string | null; calls: number; tokens: number }>;
 
-  // Breakdown por endpoint
+  // Breakdown por endpoint (na ordem da primeira chamada, como antes)
   const byEndpoint: Record<string, { cost: number; calls: number; tokens: number }> = {};
-  for (const r of rows) {
-    const key = r.endpoint || 'unknown';
-    if (!byEndpoint[key]) byEndpoint[key] = { cost: 0, calls: 0, tokens: 0 };
-    byEndpoint[key].cost   += Number(r.cost_usd || 0);
-    byEndpoint[key].calls  += 1;
-    byEndpoint[key].tokens += (r.total_tokens || 0);
-  }
+  for (const g of groups) if (g.grp === 'endpoint') byEndpoint[g.key!] = { cost: Number(g.cost ?? 0), calls: g.calls, tokens: Number(g.tokens) };
   const breakdown = Object.entries(byEndpoint)
     .map(([endpoint, v]) => ({ endpoint, cost: round6(v.cost), calls: v.calls, tokens: v.tokens }))
     .sort((a, b) => b.cost - a.cost);
 
   // Breakdown por modelo
   const byModel: Record<string, { cost: number; calls: number }> = {};
-  for (const r of rows) {
-    const key = r.model || 'unknown';
-    if (!byModel[key]) byModel[key] = { cost: 0, calls: 0 };
-    byModel[key].cost  += Number(r.cost_usd || 0);
-    byModel[key].calls += 1;
-  }
+  for (const g of groups) if (g.grp === 'model') byModel[g.key!] = { cost: Number(g.cost ?? 0), calls: g.calls };
   const byModelArr = Object.entries(byModel)
     .map(([model, v]) => ({ model, cost: round6(v.cost), calls: v.calls }))
     .sort((a, b) => b.cost - a.cost);
 
-  const totalCost  = round6(rows.reduce((s, r) => s + Number(r.cost_usd || 0), 0));
-  const totalCalls = rows.length;
+  const total = groups.find(g => g.grp === 'total');
+  const totalCost  = round6(Number(total?.cost ?? 0));
+  const totalCalls = total?.calls ?? 0;
 
-  // Debug: mostra o range exato usado e amostra dos user_ids encontrados
-  const sampleUserIds = [...new Set(rows.slice(0, 5).map(r => r.user_id))];
+  // Debug: mostra o range exato usado e amostra dos user_ids encontrados (todos são o próprio aluno)
+  const sampleUserIds = totalCalls ? [userId] : [];
 
   return NextResponse.json({
     userId, totalCost, totalCalls, breakdown, byModel: byModelArr,
     _debug: {
       from: fromDate.toISOString(),
       to:   toDate.toISOString(),
-      rowCount: rows.length,
+      rowCount: totalCalls,
       sampleUserIds,
     },
   });

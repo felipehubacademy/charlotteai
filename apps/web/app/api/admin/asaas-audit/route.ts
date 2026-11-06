@@ -20,17 +20,20 @@ export async function GET(req: NextRequest) {
     .eq('status', 'paid').eq('sandbox', false).not('asaas_subscription_id', 'is', null).order('created_at', { ascending: false }).limit(200);
   const checkouts = (data ?? []) as Row[];
   const ids = [...new Set(checkouts.map(c => c.user_id).filter(Boolean))];
-  // Em lotes e páginas (as cobranças de 200 assinantes passam de 1.000 linhas) e com erro explícito:
-  // leitura que falha não pode virar "sem receita" na conferência.
+  // Contas em lotes e com erro explícito: leitura que falha não pode virar "sem receita" na conferência.
+  // As cobranças do site (fora reembolsos) vêm contadas do banco, uma linha por aluno (antes vinham todas,
+  // e 200 assinantes com renovações mensais passam de milhares de linhas).
   const [users, revenue] = await Promise.all([
     readIn('contas do site', ids, chunk => supabase.from('charlotte_users').select('id, email, subscription_status, subscription_product, subscription_expires_at').in('id', chunk).order('id')),
-    readIn('receita do site', ids, chunk => supabase.from('revenue_events').select('id, app_user_id, event_type, gross_brl, purchased_at').eq('store', 'ASAAS').in('app_user_id', chunk).order('id')),
+    ids.length
+      ? supabase.rpc('asaas_revenue_counts', { p_ids: ids }).then(({ data, error }) => {
+        if (error) throw new Error(`[receita do site] ${error.message}`);
+        return (data ?? []) as { app_user_id: string; n: number }[];
+      })
+      : Promise.resolve([] as { app_user_id: string; n: number }[]),
   ]);
   const userOf = new Map(((users ?? []) as { id: string; email: string; subscription_status: string | null; subscription_product: string | null; subscription_expires_at: string | null }[]).map(u => [String(u.id), u]));
-  const revOf = new Map<string, number>();
-  for (const r of (revenue ?? []) as { app_user_id: string; event_type: string }[]) {
-    if (r.event_type !== 'REFUND') revOf.set(String(r.app_user_id), (revOf.get(String(r.app_user_id)) ?? 0) + 1);
-  }
+  const revOf = new Map<string, number>(revenue.map(r => [String(r.app_user_id), r.n]));
 
   const rows: unknown[] = [];
   for (let i = 0; i < checkouts.length; i += 6) {
