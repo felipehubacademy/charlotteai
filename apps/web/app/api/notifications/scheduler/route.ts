@@ -18,6 +18,11 @@
  *
  * Also supports manual triggering via POST or `?force_task=TYPE` query
  * param (same CRON_SECRET).
+ *
+ * Base grande: a rodada de hora em hora conta os alunos com push e divide os pushes que leem a base
+ * toda (lembrete diário, elogio, desafios e engajamento) em fatias de até SHARD_SIZE alunos. A chamada
+ * principal faz a fatia 0 e chama esta mesma rota com `?shard=i&of=n` para as outras, cada uma com seus
+ * 120 s. Se uma rodada passar de SLOW_MS, a gestão é avisada antes de estourar o tempo.
  */
 
 import { NextRequest, NextResponse, after } from 'next/server';
@@ -43,6 +48,8 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendSignupWelcomes } from '@/lib/signup-welcome';
 import { syncProviderCosts } from '@/lib/cost-sync';
 import { runPushWatch } from '@/lib/push-watch';
+import { notifyAdmins } from '@/lib/admin-push';
+import type { PushShard } from '@/lib/expo-notification-service';
 
 const CRON_SECRET = process.env.CRON_SECRET ?? '';
 
@@ -58,25 +65,30 @@ function isAuthorized(request: NextRequest): boolean {
   return false;
 }
 
-async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType }> {
+const SHARD_SIZE = 5000;
+const SLOW_MS = 60_000;
+const SHARDED: TaskType[] = ['daily', 'praise', 'goal', 'weekly', 'engagement'];
+const ALL: PushShard = { i: 0, n: 1 };
+
+async function runTask(task: TaskType, forced = false, shard: PushShard = ALL): Promise<{ task: TaskType }> {
   // Chave de servidor: as views do banco são security_invoker (29/10), a chave pública não lê mais usuários e atividades.
   const supabase = getSupabaseAdmin();
 
   switch (task) {
     case 'daily':
-      await sendDailyReminders(supabase);
+      await sendDailyReminders(supabase, shard);
       break;
     case 'praise':
-      await sendCharlotteMessages(supabase);
+      await sendCharlotteMessages(supabase, shard);
       break;
     case 'streak':
       await sendStreakReminders(supabase);
       break;
     case 'goal':
-      await sendGoalReminders(supabase);
+      await sendGoalReminders(supabase, shard);
       break;
     case 'weekly':
-      await sendWeeklyChallenges(supabase);
+      await sendWeeklyChallenges(supabase, shard);
       break;
     case 'buddy':
       await sendBuddyRivalry(supabase);
@@ -94,7 +106,7 @@ async function runTask(task: TaskType, forced = false): Promise<{ task: TaskType
       await runRallyJobs();
       break;
     case 'engagement':
-      await sendEngagementPushes(supabase);
+      await sendEngagementPushes(supabase, shard);
       break;
     case 'support_sla': // ticket de suporte sem resposta há 2 h → e-mail ao atendente
       await notifyStaleTickets();
@@ -166,9 +178,25 @@ export async function GET(request: NextRequest) {
   // then continue processing all tasks inside the Vercel function lifetime
   // (maxDuration: 120s in vercel.json) via after().
   const now = new Date();
-  after(async () => {
-    await Promise.allSettled(HOURLY_TASKS.map(t => runTask(t)));
-  });
+  const shardParam = url.searchParams.get('shard');
+  if (shardParam !== null) {
+    // Fatia chamada pela rodada principal: só os pushes que leem a base toda.
+    const shard = { i: Number(shardParam), n: Number(url.searchParams.get('of') ?? 1) };
+    after(() => runTimed(SHARDED, shard));
+    return NextResponse.json({ success: true, scheduled: true, shard });
+  }
+  const n = await shardCount();
+  if (n > 1) {
+    await Promise.allSettled(Array.from({ length: n - 1 }, (_, k) =>
+      fetch(`${url.origin}/api/notifications/scheduler?shard=${k + 1}&of=${n}`, {
+        headers: { Authorization: `Bearer ${CRON_SECRET}` }, signal: AbortSignal.timeout(15000),
+      }).then(r => { if (!r.ok) throw new Error(`fatia ${k + 1}: HTTP ${r.status}`); })
+        .catch(e => notifyAdmins({
+          title: 'Pushes para os alunos não saíram', body: `A fatia ${k + 1} de ${n} da rodada não começou (${e instanceof Error ? e.message : e}).`,
+          url: '/admin/notifications', tag: `push-shard-${k + 1}`, category: 'pushes',
+        }).catch(() => {}))));
+  }
+  after(() => runTimed(HOURLY_TASKS, { i: 0, n }));
 
   return NextResponse.json({
     success: true,
@@ -176,6 +204,36 @@ export async function GET(request: NextRequest) {
     hourUTC: now.getUTCHours(),
     timestamp: now.toISOString(),
   });
+}
+
+// Quantas fatias: alunos com push / SHARD_SIZE. Sem CRON_SECRET (desenvolvimento) não há como chamar as fatias.
+async function shardCount(): Promise<number> {
+  if (!CRON_SECRET) return 1;
+  const { count, error } = await getSupabaseAdmin().from('charlotte_users')
+    .select('id', { count: 'exact', head: true }).like('expo_push_token', 'ExponentPushToken[%');
+  if (error) { console.error('[SCHEDULER] contagem de alunos falhou:', error.message); return 1; }
+  return Math.max(1, Math.ceil((count ?? 0) / SHARD_SIZE));
+}
+
+// Roda as tarefas em paralelo e avisa a gestão se alguma passar de SLOW_MS (limite da rodada: 120 s).
+async function runTimed(tasks: TaskType[], shard: PushShard): Promise<void> {
+  const slow: string[] = [];
+  await Promise.allSettled(tasks.map(async t => {
+    const t0 = Date.now();
+    try { await runTask(t, false, SHARDED.includes(t) ? shard : ALL); }
+    finally {
+      const ms = Date.now() - t0;
+      if (ms > SLOW_MS) slow.push(`${t} ${Math.round(ms / 1000)} s`);
+    }
+  }));
+  if (slow.length) {
+    console.warn('[SCHEDULER] rodada lenta', shard, slow);
+    await notifyAdmins({
+      title: 'Rodada dos pushes perto do limite de tempo',
+      body: `Fatia ${shard.i + 1} de ${shard.n}: ${slow.join(', ')} (limite de 120 s). Diminuir SHARD_SIZE no scheduler antes que pushes deixem de sair.`.slice(0, 300),
+      url: '/admin/notifications', tag: 'push-slow', category: 'pushes',
+    }).catch(() => {});
+  }
 }
 
 export async function POST(request: NextRequest) {
