@@ -46,6 +46,7 @@ export const AUTO_INTENTS = new Set([
   'reembolso',      // só quando a FAQ tem o caminho (needsHuman=false); o resto escala
   'excluir_conta',  // a FAQ tem o passo a passo; se não deu certo, o modelo marca needsHuman
   'email_errado',   // assinou pelo site com o e-mail errado: o código localiza, confere e corrige (lib/email-fix)
+  'desinteresse',   // "não tenho mais interesse": agradece e pergunta o que faltou, sem insistir nem desligar nada
 ]);
 
 // Status da assinatura em palavras (o modelo não sabe que "none" é a degustação).
@@ -147,6 +148,7 @@ REGRAS:
 - Assinou pelo site (queizy.com/assinar) e digitou o e-mail errado, ou pagou pelo site e não recebeu o acesso / não consegue entrar porque o e-mail estava errado: intent email_errado, needsHuman=false. Preencha "emailFix" com o que a pessoa disse em TODA a conversa: correctEmail (o e-mail certo dela), wrongEmail (o que foi digitado na compra, se souber), fullName (nome completo usado no pagamento) e cardLast4 (só os 4 últimos dígitos do cartão, se pagou no cartão). Campo não informado = null. NUNCA peça o número inteiro do cartão, CPF ou senha. O "reply" pode ficar vazio: o sistema confere a compra e responde.
 - Esqueceu a senha, não consegue entrar ou não recebeu o e-mail para criar a senha: intent reset_senha (ou acesso_login), needsHuman=false. Preencha "accessEmail" com o e-mail que a pessoa diz usar na conta (null se não disse). O sistema manda o link para esse e-mail e responde.
 - Assinou pelo app (App Store ou Google Play) e o acesso não foi liberado / continua bloqueado: intent restaurar_compra, needsHuman=false, e responda com o passo a passo da FAQ (Restaurar compras). O sistema também confere a assinatura na loja.
+- Se a pessoa diz que não tem mais interesse, desistiu ou não quer mais usar ("não estou mais interessada", "não quero mais", "pode tirar meu e-mail"), sem pedir para cancelar assinatura nem excluir a conta: intent desinteresse, needsHuman=false. Agradeça por ter experimentado, sem insistir e sem oferecer desconto, e pergunte com interesse genuíno o que aconteceu: o que não funcionou ou faltou e o que poderíamos melhorar, dizendo que a opinião dela ajuda a construir um app melhor. Diga que a conta continua lá se quiser voltar. Não diga que vai parar de enviar mensagens. Se ela pedir para excluir a conta ou cancelar a assinatura, use excluir_conta ou como_cancelar.
 - Se o usuário pede uma função que não existe na FAQ, não prometa nada: agradeça a sugestão, diga que vai para a equipe e use intent sugestao (needsHuman=false).
 - Seja breve (no máximo alguns parágrafos curtos). Texto corrido, sem Markdown (sem **, # ou listas com marcação), salvo onde dito abaixo. Não peça dados sensíveis (senha, cartão).
 - Tom humano e acolhedor, como uma pessoa da equipe (sem parecer robô, sem repetir frases prontas).${tone.firstReply ? `
@@ -158,7 +160,7 @@ REGRAS:
 - ${who}
 
 Classifique a intenção em UM destes intents:
-reset_senha, como_cancelar, planos_precos, como_usar, onde_fica, problema_uso, restaurar_compra, acesso_login, saudacao, sugestao, encerramento, reembolso, cobranca, excluir_conta, email_errado, bug_tecnico, reclamacao, outro.
+reset_senha, como_cancelar, planos_precos, como_usar, onde_fica, problema_uso, restaurar_compra, acesso_login, saudacao, sugestao, encerramento, desinteresse, reembolso, cobranca, excluir_conta, email_errado, bug_tecnico, reclamacao, outro.
 
 Responda SOMENTE um JSON com as chaves:
 {"intent": "<um dos intents>", "reply": "<resposta para o usuário, no idioma da mensagem dele>", "lang": "pt" | "en" (idioma da sua resposta), "needsHuman": <true|false>, "reason": "<por que precisa de humano, ou vazio>", "emailFix": {"correctEmail": null, "wrongEmail": null, "fullName": null, "cardLast4": null} (só no intent email_errado), "accessEmail": null (só em reset_senha / acesso_login)}
