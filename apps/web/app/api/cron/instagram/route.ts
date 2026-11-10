@@ -10,7 +10,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { getInstagramAuth, createContainer, containerStatus, publishContainer, refreshInstagramTokenIfNeeded, type IgMedia } from '@/lib/instagram';
 import { runInstagramComments } from '@/lib/instagram-comments';
-import { checkInstagramApproval } from '@/lib/instagram-approval-alert';
+import { checkInstagramApproval, checkInstagramApprovalDaily } from '@/lib/instagram-approval-alert';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 120;
@@ -75,7 +75,8 @@ async function run(dry: boolean) {
   const comentarios = dry ? null : await runInstagramComments();
   const chave = dry ? null : await refreshInstagramTokenIfNeeded();
   const aprovacao = dry ? null : await checkInstagramApproval().catch(e => ({ checked: false, erro: String(e) }));
-  return { conta: auth.username, log, comentarios, chave, aprovacao, dry };
+  const aprovacaoDia = dry ? null : await checkInstagramApprovalDaily().catch(e => ({ checked: false, erro: String(e) }));
+  return { conta: auth.username, log, comentarios, chave, aprovacao, aprovacaoDia, dry };
 }
 
 export async function GET(req: NextRequest) {

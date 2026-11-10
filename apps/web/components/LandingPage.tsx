@@ -51,8 +51,11 @@ const PRACTICE = [
 
 // variant 'v1': página para teste de anúncio (/v1). O botão da primeira dobra leva aos planos, e não direto ao
 // formulário, e a seção de planos já avisa do cartão. A página principal (/) continua igual.
-export default function LandingPage({ variant }: { variant?: 'v1' }) {
-  const v1 = variant === 'v1';
+// variant 'v2' (/v2): igual à v1, mas o Anual mostra o custo por mês em destaque (R$ 16,67) e o valor do ano
+// pequeno embaixo, para comparar mês com mês com o Mensal.
+export default function LandingPage({ variant }: { variant?: 'v1' | 'v2' }) {
+  const v1 = variant === 'v1' || variant === 'v2';
+  const monthlyFirst = variant === 'v2';
   return (
     <div className="qz">
       <AffiliateCapture />
@@ -334,8 +337,14 @@ export default function LandingPage({ variant }: { variant?: 'v1' }) {
               <div className="plan best">
                 <span className="tag">MELHOR VALOR</span>
                 <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--mid)' }}>Anual</div>
-                <div className="price d">R$ 199,99</div>
-                <div style={{ fontSize: 13, color: 'var(--mid)' }}>por ano · cerca de R$ 16,67 por mês</div>
+                {monthlyFirst ? <>
+                  <div className="price d">R$ 16,67</div>
+                  <div style={{ fontSize: 13, color: 'var(--mid)' }}>por mês</div>
+                  <div style={{ fontSize: 12, color: 'var(--light)', marginTop: 4 }}>cobrado R$ 199,99 por ano</div>
+                </> : <>
+                  <div className="price d">R$ 199,99</div>
+                  <div style={{ fontSize: 13, color: 'var(--mid)' }}>por ano · cerca de R$ 16,67 por mês</div>
+                </>}
               </div>
             </div>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
