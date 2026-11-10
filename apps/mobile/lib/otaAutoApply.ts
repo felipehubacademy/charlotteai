@@ -8,8 +8,14 @@
 //   - procura e baixa atualização nova (no máximo a cada 30 min);
 //   - se já há uma baixada e o app ficou fora 10 min ou mais, recarrega na hora,
 //     menos no meio de exercício, ligação ou conversa (rotas em BUSY_ROUTES): aí espera a próxima volta.
+//
+// App recém-instalado da loja (pacote embutido): a atualização baixada na abertura só valeria na próxima,
+// e a 1ª sessão do aluno (a degustação) rodava com o conteúdo do dia do build. Então, rodando o pacote
+// embutido e com a atualização já baixada, recarrega assim que o aluno estiver numa aba tranquila
+// (tela inicial, Vocabulário ou Perfil), nunca no cadastro, no onboarding ou no meio de algo.
 import { useEffect, useRef } from 'react';
 import { AppState } from 'react-native';
+import { useSegments } from 'expo-router';
 import * as Updates from 'expo-updates';
 
 const RELOAD_AFTER_AWAY_MS = 10 * 60_000;
@@ -20,8 +26,22 @@ const BUSY_ROUTES = [
   'change-password', 'first-access',
 ];
 
+const CALM_TABS = ['index', 'vocabulary', 'profile'];
+
 export function useOtaAutoApply(pathname: string | null) {
   const { isUpdatePending } = Updates.useUpdates();
+  const segments = useSegments() as string[];
+  const firstRunReloaded = useRef(false);
+
+  // Pacote da loja + atualização baixada: aplica já, numa aba tranquila (ver o topo do arquivo).
+  const calmTab = segments[0] === '(app)' && segments[1] === '(tabs)' && CALM_TABS.includes(segments[2] ?? 'index');
+  useEffect(() => {
+    if (__DEV__ || !Updates.isEnabled || !Updates.isEmbeddedLaunch) return;
+    if (!isUpdatePending || !calmTab || firstRunReloaded.current) return;
+    firstRunReloaded.current = true;
+    Updates.reloadAsync().catch(() => { firstRunReloaded.current = false; });
+  }, [isUpdatePending, calmTab]);
+
   const pendingRef = useRef(isUpdatePending);
   const pathRef = useRef(pathname);
   const bgAt = useRef<number | null>(null);
