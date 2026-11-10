@@ -6,7 +6,7 @@
 // mensal renova todo mês até o vencimento ser cancelado; anual renova na data de vencimento.
 // Pix e 12x do site não renovam sozinhos e não entram na projeção.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { revenueAtMs } from '@/lib/revenue-day';
+import { readAll } from '@/lib/db-batch';
 
 export type Channel = 'app_store' | 'play_store' | 'site_monthly' | 'site_annual_card' | 'site_annual_pix' | 'site_annual_12x';
 export const CHANNEL_LABEL: Record<Channel, string> = {
@@ -61,29 +61,25 @@ export interface RevenueSummary {
 export async function revenueSummary(months = 12): Promise<RevenueSummary> {
   const supabase = getSupabaseAdmin();
   const since = new Date(); since.setMonth(since.getMonth() - months); since.setDate(1);
-  const { data: evs } = await supabase.from('revenue_events')
-    .select('app_user_id, store, product_id, event_type, gross_brl, net_brl, purchased_at, created_at')
-    .order('created_at', { ascending: true }).limit(50000);
-  const all = (evs ?? []) as Ev[];
+  // Somado no banco, uma linha por canal (antes vinha a tabela de receita inteira, que cresce a cada cobrança).
+  // As somas chegam como texto: é a mesma soma em ponto flutuante, linha por linha e na mesma ordem de antes
+  // (created_at, id), e Number() devolve exatamente o mesmo valor. O instante de cada cobrança segue
+  // lib/revenue-day (linha do site só com data vale para o próprio dia, 00h de Brasília).
+  type ChannelAgg = { channel: Channel; first_pos: number | null; sales: number; refunds: number; gross: string | null; fees: string | null; net: string | null; has_obs: boolean; obs_gross: string | null; obs_fees: string | null };
+  const { data: chData, error: chErr } = await supabase.rpc('finance_revenue_channels', { p_since: since.toISOString() });
+  if (chErr) throw new Error(`[receita] ${chErr.message}`);
+  const aggs = (chData ?? []) as ChannelAgg[];
 
   // ── Canais (período) ──
   const rows = new Map<Channel, ChannelRow>();
   const feeObs = new Map<Channel, { gross: number; fees: number }>();
-  for (const e of all) {
-    const c = channelOf(e.store, e.product_id);
-    if (!c) continue;
-    const gross = Number(e.gross_brl) || 0;
-    const net = Number(e.net_brl) || 0;
-    const refund = e.event_type === 'REFUND';
-    if (!refund && gross > 0) {
-      const o = feeObs.get(c) ?? { gross: 0, fees: 0 };
-      o.gross += gross; o.fees += Math.max(0, gross - net); feeObs.set(c, o);
-    }
-    if (revenueAtMs(e) < since.getTime()) continue; // cobrança do site só com data vale para o próprio dia
-    const r = rows.get(c) ?? { channel: c, label: CHANNEL_LABEL[c], sales: 0, refunds: 0, gross: 0, fees: 0, net: 0, feePct: 0 };
-    if (refund) { r.refunds += 1; r.gross -= gross; r.net -= net; r.fees -= Math.max(0, gross - net); }
-    else { r.sales += 1; r.gross += gross; r.net += net; r.fees += Math.max(0, gross - net); }
-    rows.set(c, r);
+  for (const a of aggs) if (a.has_obs) feeObs.set(a.channel, { gross: Number(a.obs_gross ?? 0), fees: Number(a.obs_fees ?? 0) });
+  // Mesma ordem de entrada de antes (primeira cobrança do canal no período): desempata a ordenação por bruto.
+  for (const a of aggs.filter(x => x.first_pos != null).sort((x, y) => Number(x.first_pos) - Number(y.first_pos))) {
+    rows.set(a.channel, {
+      channel: a.channel, label: CHANNEL_LABEL[a.channel], sales: a.sales, refunds: a.refunds,
+      gross: Number(a.gross ?? 0), fees: Number(a.fees ?? 0), net: Number(a.net ?? 0), feePct: 0,
+    });
   }
   const channels = [...rows.values()].map(r => ({
     ...r, gross: round2(r.gross), fees: round2(r.fees), net: round2(r.net),
@@ -98,11 +94,11 @@ export async function revenueSummary(months = 12): Promise<RevenueSummary> {
   };
 
   // ── Projeção ──
-  const { data: users } = await supabase.from('charlotte_users')
-    .select('id, subscription_status, subscription_expires_at, is_institutional')
-    .eq('subscription_status', 'active').limit(100000);
-  const lastPaid = new Map<string, Ev>();
-  for (const e of all) if (e.app_user_id && e.event_type !== 'REFUND' && Number(e.gross_brl) > 0) lastPaid.set(e.app_user_id, e);
+  // Cada assinante ativo já com a última cobrança paga (o banco escolhe; antes era a receita inteira em memória).
+  type ActiveRow = { id: string; subscription_expires_at: string | null; is_institutional: boolean | null; has_paid: boolean; store: string; product_id: string | null; gross_brl: number };
+  const users = await readAll<ActiveRow>('assinantes ativos', () => supabase.rpc('finance_active_last_paid').order('id'));
+  const lastPaid = new Map<string, Pick<Ev, 'store' | 'product_id' | 'gross_brl'>>();
+  for (const u of users) if (u.has_paid) lastPaid.set(u.id, { store: u.store, product_id: u.product_id, gross_brl: u.gross_brl });
 
   const now = new Date();
   const projection: ProjectionMonth[] = Array.from({ length: 12 }, (_, i) => {
@@ -117,7 +113,7 @@ export async function revenueSummary(months = 12): Promise<RevenueSummary> {
   };
 
   let active = 0; let inTrial = 0;
-  for (const u of (users ?? []) as { id: string; subscription_expires_at: string | null; is_institutional: boolean | null }[]) {
+  for (const u of users) {
     if (u.is_institutional) continue;
     active += 1;
     const ev = lastPaid.get(u.id);

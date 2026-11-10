@@ -2,6 +2,7 @@
 // quem virou amigo pela busca (study_friends, depois de pedido + aceite).
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { blockedWith, allBlockedPairs, isSuspended, suspendedIds } from '@/lib/moderation';
+import { readAll } from '@/lib/db-batch';
 
 export type FriendRelation = 'sponsor' | 'invited' | 'friend';
 
@@ -34,17 +35,18 @@ export async function friendsOf(userId: string): Promise<Map<string, FriendRelat
 /** Todos os pares de amigos (para os pushes de competição da dupla). */
 export async function allFriendPairs(): Promise<Array<[string, string]>> {
   const supabase = getSupabaseAdmin();
+  // Em páginas: o .limit(20000) não valia (máximo de 1.000 linhas por leitura) e duplas ficavam sem push sem aviso.
   const [ref, sf, blocked, un, sus] = await Promise.all([
-    supabase.from('referrals').select('inviter_id, invitee_id').limit(20000),
-    supabase.from('study_friends').select('user_a, user_b').limit(20000),
+    readAll<{ inviter_id: string; invitee_id: string }>('convites', () => supabase.from('referrals').select('inviter_id, invitee_id').order('invitee_id')),
+    readAll<{ user_a: string; user_b: string }>('amigos da busca', () => supabase.from('study_friends').select('user_a, user_b').order('user_a').order('user_b')),
     allBlockedPairs(),
-    supabase.from('study_unfriended').select('user_a, user_b').limit(20000),
+    readAll<{ user_a: string; user_b: string }>('deixaram de estudar junto', () => supabase.from('study_unfriended').select('user_a, user_b').order('user_a').order('user_b')),
     suspendedIds(),
   ]);
-  for (const r of (un.data ?? []) as { user_a: string; user_b: string }[]) { blocked.add(`${r.user_a}|${r.user_b}`); blocked.add(`${r.user_b}|${r.user_a}`); }
+  for (const r of un) { blocked.add(`${r.user_a}|${r.user_b}`); blocked.add(`${r.user_b}|${r.user_a}`); }
   const pairs: Array<[string, string]> = [
-    ...((ref.data ?? []) as { inviter_id: string; invitee_id: string }[]).map(r => [r.inviter_id, r.invitee_id] as [string, string]),
-    ...((sf.data ?? []) as { user_a: string; user_b: string }[]).map(r => [r.user_a, r.user_b] as [string, string]),
+    ...ref.map(r => [r.inviter_id, r.invitee_id] as [string, string]),
+    ...sf.map(r => [r.user_a, r.user_b] as [string, string]),
   ];
   return pairs.filter(([a, b]) => !blocked.has(`${a}|${b}`) && !sus.has(a) && !sus.has(b));
 }

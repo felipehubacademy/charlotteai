@@ -5,7 +5,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { RefreshCw, TriangleAlert, CircleCheck, ArrowRight } from 'lucide-react';
+import { RefreshCw, TriangleAlert, CircleCheck, ArrowRight, Check } from 'lucide-react';
 import { useAdminMe, canArea } from '@/lib/admin-context';
 import AdminLoading from '@/components/admin/AdminLoading';
 import type { Overview, TodayMetric, DayPoint } from '@/lib/admin-overview';
@@ -96,7 +96,7 @@ function Delta({ m }: { m: TodayMetric }) {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// Contador até a próxima atualização dos usuários (5, 4, 3, 2, 1): anel que esvazia e o número no meio.
+// Contador até a próxima atualização dos usuários (5, 4, 3, 2, 1): só o número, na linha do título.
 function RefreshCountdown({ tick }: { tick: number }) {
   const [left, setLeft] = useState(USERS_REFRESH_MS / 1000);
   const since = useRef(Date.now());
@@ -108,35 +108,29 @@ function RefreshCountdown({ tick }: { tick: number }) {
     }, 250);
     return () => clearInterval(id);
   }, []);
-  const total = USERS_REFRESH_MS / 1000;
-  const r = 7, c = 2 * Math.PI * r;
   return (
-    <span title="Próxima atualização" style={{ position: 'relative', width: 18, height: 18, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" style={{ position: 'absolute', inset: 0, transform: 'rotate(-90deg)' }}>
-        <circle cx="9" cy="9" r={r} fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="2" />
-        <circle cx="9" cy="9" r={r} fill="none" stroke="var(--volt)" strokeWidth="2" strokeLinecap="round"
-          strokeDasharray={c} strokeDashoffset={c * (1 - left / total)} style={{ transition: 'stroke-dashoffset 0.25s linear' }} />
-      </svg>
-      <span style={{ fontSize: 9.5, fontWeight: 700, color: 'rgba(255,255,255,0.75)', lineHeight: 1 }}>{left}</span>
-    </span>
+    <span title="Próxima atualização" style={{
+      fontSize: 10.5, fontWeight: 700, lineHeight: 1, color: 'var(--volt)',
+      fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums',
+    }}>{left}</span>
   );
 }
 
-// Total de usuários ao vivo: brilho sutil a cada atualização; se entrou gente, sobe contando e acende em verde-limão.
+// Total de usuários ao vivo: pulsa em verde-limão a cada atualização; se entrou gente, sobe contando e fica aceso por mais tempo.
 function LiveTotal({ value, tick }: { value: number; tick: number }) {
   const [shown, setShown] = useState(value);
-  const [glow, setGlow] = useState<'none' | 'soft' | 'up'>('none');
+  const [glow, setGlow] = useState<'none' | 'pulse' | 'up'>('none');
   const prev = useRef(value);
   useEffect(() => {
     const from = prev.current, to = value;
     prev.current = value;
     if (to === from) {
-      setGlow('soft');
-      const t = setTimeout(() => setGlow('none'), 450);
+      setGlow('pulse');
+      const t = setTimeout(() => setGlow('none'), 380);
       return () => clearTimeout(t);
     }
     setGlow('up');
-    const start = performance.now(), dur = 700;
+    const start = performance.now(), dur = 900;
     let raf = 0;
     const step = (now: number) => {
       const k = Math.min(1, (now - start) / dur);
@@ -144,16 +138,19 @@ function LiveTotal({ value, tick }: { value: number; tick: number }) {
       if (k < 1) raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
-    const t = setTimeout(() => setGlow('none'), 1600);
+    const t = setTimeout(() => setGlow('none'), 2200);
     return () => { cancelAnimationFrame(raf); clearTimeout(t); };
   }, [value, tick]);
+  const lit = glow !== 'none';
   return (
     <div className="kpi-value" style={{
-      fontSize: '2.6rem',
-      color: glow === 'up' ? 'var(--volt)' : '#fff',
-      opacity: glow === 'soft' ? 0.72 : 1,
-      textShadow: glow === 'up' ? '0 0 18px rgba(220,255,74,0.45)' : 'none',
-      transition: 'color 0.6s ease, opacity 0.45s ease, text-shadow 0.6s ease',
+      fontSize: '2.6rem', display: 'inline-block', transformOrigin: 'left center',
+      color: lit ? 'var(--volt)' : '#fff',
+      transform: glow === 'up' ? 'scale(1.1)' : glow === 'pulse' ? 'scale(1.06)' : 'scale(1)',
+      textShadow: lit ? '0 0 22px rgba(220,255,74,0.6)' : '0 0 0 rgba(220,255,74,0)',
+      transition: lit
+        ? 'color 0.15s ease, transform 0.2s cubic-bezier(.2,.9,.3,1.4), text-shadow 0.15s ease'
+        : 'color 0.7s ease, transform 0.5s ease, text-shadow 0.7s ease',
     }}>{int(shown)}</div>
   );
 }
@@ -177,6 +174,22 @@ export default function AdminOverviewPage() {
     finally { if (!silent) setLoading(false); }
   }, []);
   useEffect(() => { load(); }, [load]);
+  // Botão "Resolvido" dos alertas do checkout: some na hora; o servidor grava e recalcula a Visão geral.
+  const [resolving, setResolving] = useState(false);
+  const resolveAlerts = useCallback(async (key: string) => {
+    setResolving(true);
+    try {
+      const res = await fetch('/api/admin/ops-alerts', { method: 'PATCH' });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(json.error ?? `HTTP ${res.status}`);
+      setData(d => {
+        if (!d) return d;
+        const items = d.alerts.items.map(i => i.key === key ? { ...i, ok: true, resolvable: false, href: undefined, label: 'Pagamentos sem falha' } : i);
+        return { ...d, alerts: { allOk: items.every(i => i.ok), items } };
+      });
+    } catch (e) { setError(`Não deu para marcar como resolvido: ${(e as Error).message}`); }
+    finally { setResolving(false); }
+  }, []);
   // Atualiza sozinha com a aba aberta: usuários a cada 5 s, o resto a cada 60 s; tudo na hora em que a aba volta.
   const [usersTick, setUsersTick] = useState(0); // conta as atualizações rápidas (contador e efeito no total)
   const loadUsers = useCallback(async () => {
@@ -236,6 +249,11 @@ export default function AdminOverviewPage() {
                     <div key={i.key} className="adm-alert warn" style={{ alignItems: 'center' }}>
                       <TriangleAlert size={14} style={{ flexShrink: 0 }} />
                       <span style={{ flex: 1 }}>{i.label}</span>
+                      {i.resolvable && (
+                        <button onClick={() => resolveAlerts(i.key)} disabled={resolving} className="adm-btn-sm ghost" style={{ flexShrink: 0 }}>
+                          <Check size={12} /> {resolving ? 'Salvando' : 'Resolvido'}
+                        </button>
+                      )}
                       {i.href && <Link href={i.href} className="adm-btn-sm ghost" style={{ flexShrink: 0 }}>Ver <ArrowRight size={12} /></Link>}
                     </div>
                   ))}
@@ -254,11 +272,11 @@ export default function AdminOverviewPage() {
               <div style={{ background: 'var(--accent)', color: '#fff', borderRadius: 'var(--r3)', padding: '20px 22px' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
                   <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <div className="kpi-label" style={{ color: 'rgba(255,255,255,0.6)' }}>Total de usuários</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                      <div className="kpi-label" style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 0 }}>Total de usuários</div>
                       <RefreshCountdown tick={usersTick} />
                     </div>
-                    <LiveTotal value={u.total} tick={usersTick} />
+                    <div><LiveTotal value={u.total} tick={usersTick} /></div>
                     <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.7)' }}>
                       <span style={{ color: 'var(--volt)', fontWeight: 700 }}>+{int(u.newToday)} hoje</span> · {int(u.new30d)} nos últimos 30 dias
                     </div>
@@ -283,17 +301,18 @@ export default function AdminOverviewPage() {
                     </div>
                   ))}
                 </div>
-                <div style={{ marginTop: 10, fontSize: 11.5, color: 'rgba(255,255,255,0.55)', fontVariantNumeric: 'tabular-nums' }}>
-                  {int(u.taste)} + {int(u.trial)} + {int(u.paying)} + {int(u.noAccess)} = {int(u.taste + u.trial + u.paying + u.noAccess)}
-                  {u.taste + u.trial + u.paying + u.noAccess !== u.total && ' (diferente do total: confira)'} · sem as contas da equipe
-                </div>
+                {u.taste + u.trial + u.paying + u.noAccess !== u.total && (
+                  <div style={{ marginTop: 10, fontSize: 11.5, color: 'var(--volt)' }}>
+                    Os quatro grupos somam {int(u.taste + u.trial + u.paying + u.noAccess)}, diferente do total: confira.
+                  </div>
+                )}
               </div>
             </div>
 
             {/* c. Hoje x ontem */}
             <div className="col-12">
               <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--t1)', margin: '4px 0 10px' }}>
-                Hoje, comparado com ontem <span style={{ fontWeight: 400, color: 'var(--t3)' }}>· horário de Brasília, hoje até agora</span>
+                Hoje, comparado com ontem
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 12 }}>
                 {data.todayVsYesterday.map(m => (
@@ -361,6 +380,34 @@ export default function AdminOverviewPage() {
                 <Bars days={data.money.firstCharges7d.days.map(d => ({ date: d.date, a: d.store, b: d.site }))}
                   height={60} label={d => `${ddmm(d.date)}: ${d.a} na loja, ${d.b ?? 0} no site`} />
               </div>
+              {(() => {
+                const uc = data.money.unitCost;
+                return (
+                  <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--b1)' }}>
+                    <div className="kpi-label" style={{ textTransform: 'uppercase' }}>Custo por usuário em {uc.label}</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+                      <div>
+                        <div className="kpi-value" style={{ fontSize: '1.5rem' }}>{uc.perActive == null ? '—' : brl(uc.perActive)}</div>
+                        <div className="kpi-context">por usuário ativo no mês ({int(uc.activeUsers)})</div>
+                      </div>
+                      <div>
+                        <div className="kpi-value" style={{ fontSize: '1.5rem' }}>{uc.perPayer == null ? '—' : brl(uc.perPayer)}</div>
+                        <div className="kpi-context">por pagante ({int(uc.payers)})</div>
+                      </div>
+                    </div>
+                    {(() => {
+                      const pm = data.money.pnl.months[data.money.pnl.months.length - 1];
+                      const be = data.money.pnl.breakeven;
+                      return (
+                        <div style={{ marginTop: 10, fontSize: 12.5, color: 'var(--t2)' }}>
+                          EBITDA de {pm.label}: <strong style={{ color: pm.ebitda < 0 ? 'var(--err)' : 'var(--ok)' }}>{brl(pm.ebitda)}</strong>
+                          {be.payersNeeded != null && <> · empata com <strong style={{ color: 'var(--t1)' }}>{int(be.payersNeeded)} pagantes</strong> (hoje {int(be.payers)})</>}
+                        </div>
+                      );
+                    })()}
+                  </div>
+                );
+              })()}
               <div style={{ marginTop: 12, fontSize: 12.5, color: 'var(--t2)' }}>
                 Cancelaram e ainda têm acesso: <strong style={{ color: 'var(--t1)' }}>{int(data.money.cancelledWithAccess.total)}</strong>
                 {' '}({int(data.money.cancelledWithAccess.trial)} no teste, {int(data.money.cancelledWithAccess.paying)} {data.money.cancelledWithAccess.paying === 1 ? 'pagante' : 'pagantes'})

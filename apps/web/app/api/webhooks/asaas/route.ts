@@ -13,6 +13,7 @@ import { getCustomer, disableCustomerNotifications, activeSubscriptionsOf, WEB_P
 import { activateTrial, handlePaymentPaid, recordAsaasRevenue, type CheckoutRow } from '@/lib/asaas-activation';
 import { sendPaymentFailed, sendCancelledNotice, sendRefundNotice } from '@/lib/subscription-notices';
 import { logOpsError } from '@/lib/ops-monitor';
+import { blockForFailedCharge } from '@/lib/asaas-reconcile';
 
 export const dynamic = 'force-dynamic';
 export const preferredRegion = 'gru1'; // perto do banco (São Paulo): várias consultas por evento
@@ -100,9 +101,17 @@ export async function POST(req: NextRequest) {
       await supabase.from('asaas_checkouts').update(patch as never).eq('id', row.id);
 
       // Cartão recusado (renovação ou 1ª cobrança depois do teste): aviso com a nossa marca.
-      if (event === 'PAYMENT_CREDIT_CARD_CAPTURE_REFUSED' || event === 'PAYMENT_OVERDUE') {
-        await sendPaymentFailed(row.id, p).catch(e => console.warn('[webhooks/asaas] aviso de cobrança recusada:', e instanceof Error ? e.message : e));
+      // A conta fica sem acesso até pagar (PAYMENT_CONFIRMED devolve); Pix vencido não é falha de cobrança.
+      if (event === 'PAYMENT_CREDIT_CARD_CAPTURE_REFUSED' || event === 'PAYMENT_CREDIT_CARD_INVALID' || event === 'PAYMENT_OVERDUE' || event === 'PAYMENT_REPROVED_BY_RISK_ANALYSIS') {
+        await blockForFailedCharge(row.id, p).catch(e => console.warn('[webhooks/asaas] cobrança recusada:', e instanceof Error ? e.message : e));
       }
+      // Mexem em dinheiro e pedem alguém olhando. Os demais eventos de cobrança ficam só registrados em asaas_events.
+      const teamAlert = TEAM_ALERTS[event];
+      // Cobrança apagada porque a assinatura inteira saiu (cancelamento ou encerramento automático): é esperado, não alerta.
+      const { data: subGone } = event === 'PAYMENT_DELETED' && p.subscription
+        ? await supabase.from('asaas_events').select('id').or(`id.eq.site_closed_${p.subscription},and(event.eq.SUBSCRIPTION_DELETED,payload->subscription->>id.eq.${p.subscription})`).limit(1)
+        : { data: null };
+      if (teamAlert && !row.sandbox && !(subGone ?? []).length) await alertTeam(event, `${teamAlert} Cobrança ${p.id}, R$ ${Math.abs(Number(p.value) || 0).toFixed(2).replace('.', ',')}.`).catch(e => console.warn('[webhooks/asaas] alerta à equipe:', e instanceof Error ? e.message : e));
       if (event === 'PAYMENT_REFUNDED' || event === 'PAYMENT_CHARGEBACK_REQUESTED' || event === 'PAYMENT_CHARGEBACK_DISPUTE') {
         if (!row.sandbox) await recordAsaasRevenue('REFUND', row, p);
         // Reembolso feito no painel do processador também avisa o aluno (o do app já avisou: sai uma vez só).
@@ -118,10 +127,16 @@ export async function POST(req: NextRequest) {
       const s = body.subscription as { id: string; customer?: string } | undefined;
       if (!s?.id) return NextResponse.json({ ok: true });
       const row = await findRow({ subscription: s.id, customer: s.customer });
+      // O aviso da cobrança removida chega segundos antes deste: tira o alerta dela, porque a assinatura inteira saiu.
+      const { data: removed } = await supabase.from('asaas_events').select('payload').eq('event', 'PAYMENT_DELETED').filter('payload->payment->>subscription', 'eq', s.id);
+      for (const r of (removed ?? []) as { payload: { payment?: { id?: string } } }[]) {
+        if (r.payload.payment?.id) await supabase.from('ops_alerts').delete().eq('kind', 'asaas_payment_deleted').like('message', `%${r.payload.payment.id}%`);
+      }
       if (row) {
-        await supabase.from('charlotte_users').update({ subscription_status: 'cancelled', updated_at: new Date().toISOString() } as never)
-          .eq('id', row.user_id).in('subscription_product', [WEB_PRODUCT.monthly, WEB_PRODUCT.annual]);
-        await sendCancelledNotice(row.id, s.id).catch(e => console.warn('[webhooks/asaas] aviso de cancelamento:', e instanceof Error ? e.message : e));
+        const { data: onSite } = await supabase.from('charlotte_users').update({ subscription_status: 'cancelled', updated_at: new Date().toISOString() } as never)
+          .eq('id', row.user_id).in('subscription_product', [WEB_PRODUCT.monthly, WEB_PRODUCT.annual]).select('id');
+        // Quem já está na loja não recebe aviso de que perdeu o acesso do site.
+        if ((onSite ?? []).length) await sendCancelledNotice(row.id, s.id).catch(e => console.warn('[webhooks/asaas] aviso de cancelamento:', e instanceof Error ? e.message : e));
       }
       return NextResponse.json({ ok: true });
     }
@@ -133,4 +148,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'processing_failed' }, { status: 500 });
   }
   return NextResponse.json({ ok: true });
+}
+
+const TEAM_ALERTS: Record<string, string> = {
+  PAYMENT_REFUND_DENIED: 'Estorno negado pelo processador: o aluno pode achar que recebeu.',
+  PAYMENT_PARTIALLY_REFUNDED: 'Estorno parcial: conferir a receita lançada.',
+  PAYMENT_AWAITING_CHARGEBACK_REVERSAL: 'Disputa de chargeback encerrada, aguardando repasse.',
+  PAYMENT_RECEIVED_IN_CASH_UNDONE: 'Recebimento desfeito: conferir a assinatura do aluno.',
+  PAYMENT_DELETED: 'Cobrança de assinatura removida: conferir se foi feito de propósito.',
+};
+
+/** Aviso à equipe pelo mesmo caminho dos alertas do checkout (Visão geral e Comercial do /admin). */
+async function alertTeam(event: string, message: string): Promise<void> {
+  await getSupabaseAdmin().from('ops_alerts').insert({ kind: `asaas_${event.toLowerCase()}`, message: `Processador: ${message}`, sent_email: false, sent_whatsapp: false } as never);
 }

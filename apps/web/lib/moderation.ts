@@ -3,11 +3,13 @@
 // com o outro (busca, pedidos, cutucadas, parabéns, competições, pushes).
 // Suspensão (feita pela equipe no /admin) equivale a bloqueio com todo mundo.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll } from '@/lib/db-batch';
 
 /** Alunos suspensos do social pela equipe. */
 export async function suspendedIds(): Promise<Set<string>> {
-  const { data } = await getSupabaseAdmin().from('social_suspensions').select('user_id').limit(5000);
-  return new Set(((data ?? []) as { user_id: string }[]).map(r => r.user_id));
+  // Em páginas e com erro explícito: leitura que falha não pode virar "ninguém suspenso".
+  const rows = await readAll<{ user_id: string }>('suspensos', () => getSupabaseAdmin().from('social_suspensions').select('user_id').order('user_id'));
+  return new Set(rows.map(r => r.user_id));
 }
 
 export async function isSuspended(userId: string): Promise<boolean> {
@@ -43,9 +45,12 @@ export async function isBlocked(a: string, b: string): Promise<boolean> {
 
 /** Todos os pares bloqueados ("a|b" nos dois sentidos), para os jobs de push. */
 export async function allBlockedPairs(): Promise<Set<string>> {
-  const { data } = await getSupabaseAdmin().from('user_blocks').select('blocker_id, blocked_id').limit(20000);
+  // Em páginas (o .limit(20000) não valia: máximo de 1.000 linhas por leitura) e com erro explícito,
+  // para um bloqueio nunca ficar de fora dos pushes.
+  const data = await readAll<{ blocker_id: string; blocked_id: string }>('bloqueios', () => getSupabaseAdmin().from('user_blocks')
+    .select('blocker_id, blocked_id').order('blocker_id').order('blocked_id'));
   const out = new Set<string>();
-  for (const r of (data ?? []) as { blocker_id: string; blocked_id: string }[]) {
+  for (const r of data) {
     out.add(`${r.blocker_id}|${r.blocked_id}`); out.add(`${r.blocked_id}|${r.blocker_id}`);
   }
   return out;

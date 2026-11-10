@@ -61,9 +61,11 @@ export async function GET(req: NextRequest) {
   }
 
   // contadores por status
-  const { data: allStatus } = await supabase.from('support_conversations').select('status');
+  // Contados no banco (uma linha por situação), em vez de baixar todas as conversas.
+  const { data: byStatus, error: stErr } = await supabase.rpc('support_status_counts');
+  if (stErr) throw new Error(`[conversas por situação] ${stErr.message}`);
   const counts: Record<string, number> = {};
-  for (const r of (allStatus ?? []) as { status: string }[]) counts[r.status] = (counts[r.status] ?? 0) + 1;
+  for (const r of (byStatus ?? []) as { status: string; n: number }[]) counts[r.status] = r.n;
 
   const conversations = rows.map(c => ({
     id: c.id,

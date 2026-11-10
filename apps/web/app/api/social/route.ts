@@ -9,6 +9,7 @@ import { pushIsPt } from '@/lib/expo-notification-service';
 import { firstName, sendDirectPush } from '@/lib/rally';
 import { friendsOf } from '@/lib/friends';
 import { blockedWith, isBlocked } from '@/lib/moderation';
+import { readIn } from '@/lib/db-batch';
 
 export const dynamic = 'force-dynamic';
 const NOW_WINDOW_MIN = 15;
@@ -26,18 +27,22 @@ export async function GET(req: NextRequest) {
   const supabase = getSupabaseAdmin();
 
   const since = new Date(Date.now() - NOW_WINDOW_MIN * 60000).toISOString();
-  const [{ data: recent }, { data: me }, friends] = await Promise.all([
-    supabase.from('charlotte_practices').select('user_id').gte('created_at', since).limit(5000),
+  const [{ data: me }, friends] = await Promise.all([
     supabase.from('charlotte_users').select('charlotte_level').eq('id', user.id).maybeSingle(),
     friendsOf(user.id),
   ]);
-  const active = new Set(((recent ?? []) as { user_id: string }[]).map(r => r.user_id));
-  active.delete(user.id);
-  const buddyIds = [...friends.keys()].filter(id => active.has(id));
+  // "Estudando agora" contado no banco: antes cada abertura baixava todas as práticas dos últimos 15 min.
+  // Volta uma linha só: quantas pessoas (fora o aluno) e quais dos amigos estão entre elas.
+  const { data: nowRows, error: nowErr } = await supabase.rpc('social_studying_now', { p_user: user.id, p_since: since, p_friends: [...friends.keys()] });
+  if (nowErr) throw new Error(`[estudando agora] ${nowErr.message}`);
+  const now = ((nowRows ?? []) as { studying: number; buddies: string[] | null }[])[0];
+  const studyingNow = now?.studying ?? 0;
+  const activeFriends = new Set(now?.buddies ?? []);
+  const buddyIds = [...friends.keys()].filter(id => activeFriends.has(id));
   let buddiesNow: string[] = [];
   if (buddyIds.length) {
-    const { data } = await supabase.from('charlotte_users').select('name').in('id', buddyIds);
-    buddiesNow = ((data ?? []) as { name: string | null }[]).map(u => firstName(u.name)).filter(Boolean) as string[];
+    const data = await readIn<{ name: string | null }>('amigos estudando', buddyIds, chunk => supabase.from('charlotte_users').select('id, name').in('id', chunk).order('id'));
+    buddiesNow = data.map(u => firstName(u.name)).filter(Boolean) as string[];
   }
 
   // Conquistas recentes de quem está no mesmo ranking (nível).
@@ -80,7 +85,7 @@ export async function GET(req: NextRequest) {
   const pendingRequests = reqIds.map(id => pn.get(id)).filter(Boolean) as string[];
   const rallyInvites = invIds.map(id => pn.get(id)).filter(Boolean) as string[];
 
-  return NextResponse.json({ studyingNow: active.size, buddiesNow, pendingRequests, rallyInvites, feed });
+  return NextResponse.json({ studyingNow, buddiesNow, pendingRequests, rallyInvites, feed });
 }
 
 export async function POST(req: NextRequest) {

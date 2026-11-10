@@ -3,19 +3,9 @@
 // POST (Bearer) → { status, hasPremium, verified }. Sem a chave da RevenueCat, não mexe (o webhook segue valendo).
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { reconcileStoreSubscription } from '@/lib/rc-subscription';
 
 export const dynamic = 'force-dynamic';
-
-const ENTITLEMENT = 'Premium';
-const PRODUCT_MONTHLY = 'com.hubacademy.charlotte.monthly';
-const PRODUCT_YEARLY = 'com.hubacademy.charlotte.yearly';
-
-type RcSubscriber = {
-  subscriber?: {
-    entitlements?: Record<string, { expires_date: string | null; product_identifier?: string }>;
-    subscriptions?: Record<string, { unsubscribe_detected_at?: string | null; billing_issues_detected_at?: string | null }>;
-  };
-};
 
 export async function POST(req: NextRequest) {
   const h = req.headers.get('authorization') ?? '';
@@ -25,44 +15,13 @@ export async function POST(req: NextRequest) {
   const userId = auth?.user?.id;
   if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const { data: u } = await supabase.from('charlotte_users')
-    .select('is_institutional, subscription_status, subscription_product').eq('id', userId).maybeSingle();
-  const user = u as { is_institutional: boolean | null; subscription_status: string | null; subscription_product: string | null } | null;
-  if (!user) return NextResponse.json({ error: 'not_found' }, { status: 404 });
-  // Institucional e assinatura pelo site: quem manda é a equipe e o webhook do site.
-  if (user.is_institutional || (user.subscription_product ?? '').startsWith('web_')) {
-    return NextResponse.json({ status: user.subscription_status, hasPremium: null, verified: false });
+  // Mesma regra do webhook e da conferência diária (lib/rc-subscription): o estado atual na RevenueCat.
+  const rc = await reconcileStoreSubscription(userId);
+  const { data: u } = await supabase.from('charlotte_users').select('subscription_status').eq('id', userId).maybeSingle();
+  const status = (u as { subscription_status: string | null } | null)?.subscription_status ?? null;
+  if (rc.action === 'skipped') {
+    const verified = rc.reason === 'never_subscribed';
+    return NextResponse.json({ status, hasPremium: verified ? false : null, verified, ...(verified ? {} : { reason: rc.reason }) });
   }
-
-  const key = process.env.REVENUECAT_SECRET_KEY;
-  if (!key) return NextResponse.json({ status: user.subscription_status, hasPremium: null, verified: false, reason: 'no_key' });
-  const r = await fetch(`https://api.revenuecat.com/v1/subscribers/${encodeURIComponent(userId)}`, {
-    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-    cache: 'no-store',
-  }).catch(() => null);
-  if (!r?.ok) return NextResponse.json({ status: user.subscription_status, hasPremium: null, verified: false, reason: 'store_unavailable' });
-  const j = await r.json() as RcSubscriber;
-
-  // Mesma regra de antes no app (lib/purchases syncSubscriptionToSupabase): ativo, cancelado (com acesso) ou vencido.
-  const ent = j.subscriber?.entitlements?.[ENTITLEMENT];
-  const expiresAt = ent?.expires_date ?? null;
-  const hasPremium = !!ent && (!expiresAt || new Date(expiresAt).getTime() > Date.now());
-  const productId = ent?.product_identifier ?? '';
-  const subInfo = j.subscriber?.subscriptions?.[productId];
-  // Cobrança recusada (carência da loja) também não renova, como cancelamento.
-  const willRenew = !subInfo?.unsubscribe_detected_at && !subInfo?.billing_issues_detected_at;
-  const product = productId.startsWith(PRODUCT_MONTHLY) ? 'monthly' : productId.startsWith(PRODUCT_YEARLY) ? 'yearly' : null;
-
-  const hadPaid = ['active', 'cancelled', 'expired'].includes(user.subscription_status ?? '');
-  if (!hasPremium && !hadPaid) return NextResponse.json({ status: user.subscription_status, hasPremium: false, verified: true });
-
-  const status = hasPremium ? (willRenew ? 'active' : 'cancelled') : 'expired';
-  await supabase.from('charlotte_users').update({
-    subscription_status: status,
-    is_active: hasPremium,
-    subscription_product: hasPremium ? product : null,
-    subscription_expires_at: expiresAt,
-    updated_at: new Date().toISOString(),
-  } as never).eq('id', userId);
-  return NextResponse.json({ status, hasPremium, verified: true });
+  return NextResponse.json({ status, hasPremium: rc.state.hasPremium, verified: true });
 }

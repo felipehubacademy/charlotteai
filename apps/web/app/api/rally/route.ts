@@ -8,6 +8,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { randomBytes } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readIn } from '@/lib/db-batch';
 import { pushIsPt } from '@/lib/expo-notification-service';
 import { friendsOf } from '@/lib/friends';
 import { isBlocked, isSuspended } from '@/lib/moderation';
@@ -32,8 +33,8 @@ const cleanCode = (c: unknown) => String(c ?? '').trim().toUpperCase().replace(/
 type PushUser = { id: string; name: string | null; expo_push_token: string | null; charlotte_level: string | null; app_language: string | null };
 async function usersById(ids: string[]): Promise<Map<string, PushUser>> {
   if (!ids.length) return new Map();
-  const { data } = await getSupabaseAdmin().from('charlotte_users').select('id, name, expo_push_token, charlotte_level, app_language').in('id', ids);
-  return new Map(((data ?? []) as PushUser[]).map(u => [u.id, u]));
+  const data = await readIn<PushUser>('alunos da competição', ids, chunk => getSupabaseAdmin().from('charlotte_users').select('id, name, expo_push_token, charlotte_level, app_language').in('id', chunk).order('id'));
+  return new Map(data.map(u => [u.id, u]));
 }
 
 /** Só amigos de estudo (convite ou busca) podem ser convidados pelo app. */
@@ -93,8 +94,10 @@ export async function GET(req: NextRequest) {
   if (!ids.length) return NextResponse.json({ active: [], finished: [], invites: [] });
 
   const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString();
-  const { data: rows } = await supabase.from('rallies').select('*').in('id', ids).gte('ends_at', weekAgo).order('ends_at', { ascending: true });
-  const rallies = (rows ?? []) as unknown as RallyRow[];
+  // Ids em lotes: quem já entrou em centenas de competições estouraria o tamanho do endereço e veria a lista vazia.
+  // Cada lote vem ordenado à parte, então a ordem por fim da competição é refeita aqui.
+  const rallies = (await readIn<RallyRow>('competições do aluno', ids, chunk => supabase.from('rallies').select('*').in('id', chunk).gte('ends_at', weekAgo).order('id')))
+    .sort((a, b) => a.ends_at.localeCompare(b.ends_at));
   const standings = await computeStandings(rallies);
   const creators = await usersById([...new Set(rallies.map(r => r.creator_id))]);
   const now = Date.now();

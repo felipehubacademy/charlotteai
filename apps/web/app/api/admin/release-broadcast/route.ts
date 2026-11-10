@@ -22,6 +22,7 @@ export const maxDuration = 300;
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll } from '@/lib/db-batch';
 // Email do projeto vai por Microsoft Graph (Office 365), o MESMO caminho do
 // reset de senha / signup / welcome. Template no padrao usual do projeto.
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
@@ -157,25 +158,31 @@ export async function POST(req: NextRequest) {
   }
 
   // ── Audiencia ──────────────────────────────────────────────────────────────
-  const { data, error } = await supabase
-    .from('charlotte_users')
-    .select('id, name, email, expo_push_token, marketing_opt_out, email_bounced, app_version, created_at, subscription_status, is_institutional');
-  if (error) {
-    return NextResponse.json({ error: `Falha ao buscar usuarios: ${error.message}` }, { status: 500 });
+  // Todos os alunos, em páginas: a leitura para em 1.000 linhas, e a campanha saía só para os primeiros 1.000.
+  let data: unknown[];
+  try {
+    data = await readAll('alunos da campanha', () => supabase
+      .from('charlotte_users')
+      .select('id, name, email, expo_push_token, marketing_opt_out, email_bounced, app_version, created_at, subscription_status, is_institutional')
+      .order('id'));
+  } catch (e) {
+    return NextResponse.json({ error: `Falha ao buscar usuários: ${e instanceof Error ? e.message : String(e)}` }, { status: 500 });
   }
   const before = typeof body?.before === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(body.before) ? body.before : null;
   const isTeam = (e: string | null) => !!e && (/@(hubacademybr\.com|queizy\.com)$/i.test(e) || /^felipe\.xavier1987\+/i.test(e));
   // Campanha de volta: quem abriu o app em algum dia depois do dia do cadastro fica de fora.
   let returned = new Set<string>();
   if (campaignId === 'winback') {
-    for (let from = 0; ; from += 1000) {
-      const { data: ev, error: evErr } = await supabase.from('charlotte_analytics_events')
-        .select('user_id, created_at').eq('event_name', 'app_open').gte('created_at', '2026-10-21T03:00:00Z')
-        .order('created_at').range(from, from + 999);
-      if (evErr) return NextResponse.json({ error: `Falha ao ler aberturas: ${evErr.message}` }, { status: 500 });
-      for (const e of (ev ?? []) as { user_id: string; created_at: string }[]) returned.add(`${e.user_id}|${brtDate(e.created_at)}`);
-      if (!ev || ev.length < 1000) break;
+    // Ordem por id (única): com ordem só por created_at as páginas podiam pular ou repetir aberturas.
+    let ev: { user_id: string; created_at: string }[];
+    try {
+      ev = await readAll('aberturas do app', () => supabase.from('charlotte_analytics_events')
+        .select('id, user_id, created_at').eq('event_name', 'app_open').gte('created_at', '2026-10-21T03:00:00Z')
+        .order('id'));
+    } catch (e) {
+      return NextResponse.json({ error: `Falha ao ler aberturas: ${e instanceof Error ? e.message : String(e)}` }, { status: 500 });
     }
+    for (const e of ev) returned.add(`${e.user_id}|${brtDate(e.created_at)}`);
   }
   const cameBack = (r: { id: string; created_at: string }) => {
     const d0 = brtDate(r.created_at);

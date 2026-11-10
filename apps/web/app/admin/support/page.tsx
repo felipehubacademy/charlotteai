@@ -100,11 +100,15 @@ export default function SupportAdmin() {
         {tab === 'queue' && (
           <>
             <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
-              {['', 'escalated', 'open', 'auto_resolved'].map(s => (
-                <div key={s} className={`adm-chip${statusFilter === s ? ' active' : ''}`} onClick={() => setStatusFilter(s)}>
-                  {s === '' ? 'Todas' : STATUS_LABEL[s]}{s && counts[s] != null ? ` (${counts[s]})` : ''}
-                </div>
-              ))}
+              {/* Todos os status, sempre com o número (inclusive zero), para ficar claro onde está cada conversa. */}
+              {['', 'escalated', 'open', 'auto_resolved', 'closed'].map(s => {
+                const n = s ? (counts[s] ?? 0) : Object.values(counts).reduce((a, b) => a + (b ?? 0), 0);
+                return (
+                  <div key={s} className={`adm-chip${statusFilter === s ? ' active' : ''}`} onClick={() => setStatusFilter(s)}>
+                    {s === '' ? 'Todas' : STATUS_LABEL[s]} ({n})
+                  </div>
+                );
+              })}
             </div>
             <BulkBar bulk={bulk} total={convs.length} allIds={convs.map(c => c.id)} noun={['atendimento', 'atendimentos']} actions={[
               { label: 'Fechar', confirm: 'Fechar {n} atendimentos sem responder? O aluno não recebe mensagem.', run: id => setConvStatus(id, 'closed'), after: loadQueue },
@@ -115,18 +119,18 @@ export default function SupportAdmin() {
                 <div className="adm-empty"><div className="adm-empty-title">{loading ? 'Carregando…' : 'Nenhuma conversa'}</div></div>
               ) : (
                 <table className="adm-table">
-                  <thead><tr><th style={{ width: 34 }}><BulkCheckbox bulk={bulk} page /></th><th>Contato</th><th>Canal</th><th>Assunto / última</th><th>Status</th><th>Atendente</th><th>Quando</th></tr></thead>
+                  <thead><tr><th style={{ width: 34 }}><BulkCheckbox bulk={bulk} page /></th><th>Contato</th><th>Status</th><th>Canal</th><th>Assunto / última</th><th>Atendente</th><th>Quando</th></tr></thead>
                   <tbody>
                     {convs.map(c => (
                       <tr key={c.id} onClick={() => setOpenConv(c.id)} style={{ cursor: 'pointer', ...(bulk.checked.has(c.id) ? { background: 'var(--s2, #F3F1EC)' } : {}) }}>
                         <td onClick={e => e.stopPropagation()}><BulkCheckbox bulk={bulk} id={c.id} label={`Selecionar ${c.contact}`} /></td>
                         <td style={{ color: 'var(--t1)', fontWeight: 500 }}>{c.contact}{c.ticketCode && c.status === 'escalated' ? <div style={{ fontSize: 11, color: 'var(--t3)', fontWeight: 400 }}>Chamado #{c.ticketCode}</div> : null}</td>
+                        <td><span className={`badge ${STATUS_BADGE[c.status] ?? 'badge-muted'}`}>{STATUS_LABEL[c.status] ?? c.status}</span></td>
                         <td>{CHANNEL_LABEL[c.channel] ?? c.channel}</td>
                         <td style={{ maxWidth: 340 }}>
                           <div style={{ color: 'var(--t1)' }}>{c.subject || '—'}</div>
                           {c.last && <div style={{ fontSize: 11.5, color: 'var(--t3)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 340 }}>{c.last.intent ? `[${c.last.intent}] ` : ''}{c.last.body}</div>}
                         </td>
-                        <td><span className={`badge ${STATUS_BADGE[c.status] ?? 'badge-muted'}`}>{STATUS_LABEL[c.status] ?? c.status}</span></td>
                         <td>{c.takenBy ? <span>{c.takenBy}</span> : c.agentName ?? <span style={{ color: 'var(--t3)' }}>—</span>}{c.status === 'escalated' && !c.takenBy ? <div style={{ fontSize: 11, color: 'var(--warn)' }}>ninguém assumiu</div> : null}</td>
                         <td className="num" style={{ fontSize: 12 }}>{fmt(c.lastMessageAt)}</td>
                       </tr>

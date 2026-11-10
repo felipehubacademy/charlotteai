@@ -1,12 +1,13 @@
 // /api/family-call/end — salva a ligação com a Família no histórico (charlotte_live_calls, o mesmo das
 // ligações da Charlotte), com transcrição, resumo e memória para a próxima conversa.
-//   POST { character, startedAt, durationSeconds, lines: [{ who: 'ai' | 'user', text }] }  (Bearer do aluno)
+//   POST { character, impression?, startedAt, durationSeconds, lines: [{ who: 'ai' | 'user', text }] }  (Bearer do aluno)
+//   impression = ligação inteira com uma imitação do personagem (histórico mostra o nome dela).
 // Resumo no idioma da regra das ligações (Novice em português; Inter e Advanced em inglês), como em
 // /api/summarize-call. Memória: anotações curtas em inglês para o prompt da próxima ligação. Só texto,
 // sem áudio.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { CHARACTERS } from '@/lib/characters';
+import { CHARACTERS, impressionOf } from '@/lib/characters';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 
 export const dynamic = 'force-dynamic';
@@ -22,6 +23,7 @@ export async function POST(req: NextRequest) {
   const characterId = String(body.character ?? '');
   const c = CHARACTERS[characterId as keyof typeof CHARACTERS];
   if (!c || characterId === 'charlotte') return NextResponse.json({ error: 'unknown_character' }, { status: 400 });
+  const impression = impressionOf(c, body.impression);
   const lines = (Array.isArray(body.lines) ? body.lines : []).slice(0, 400)
     .map((l: any) => ({ who: l?.who === 'ai' ? 'ai' : 'user', text: String(l?.text ?? '').replace(/<\/?[A-Za-z]+>/g, '').trim().slice(0, 600) }))
     .filter((l: { text: string }) => l.text && !/^[.\s…]+$/.test(l.text));
@@ -67,7 +69,7 @@ export async function POST(req: NextRequest) {
   }
 
   const { data, error } = await supabase.from('charlotte_live_calls').insert({
-    user_id: auth.user.id, character: characterId, started_at: startedAt, duration_seconds: durationSeconds,
+    user_id: auth.user.id, character: characterId, impression: impression?.id ?? null, started_at: startedAt, duration_seconds: durationSeconds,
     summary, memory, transcript,
   } as never).select('id').single();
   if (error) return NextResponse.json({ error: 'save_failed' }, { status: 500 });

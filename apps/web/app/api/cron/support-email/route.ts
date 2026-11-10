@@ -19,6 +19,9 @@ const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
 const SUPPORT_ADDR = (process.env.SUPPORT_INBOX ?? 'suporte@hubacademybr.com').toLowerCase();
 // Endereços de suporte aceitos (o antigo e o do Queizy chegam na mesma caixa).
 const SUPPORT_ADDRS = [SUPPORT_ADDR, 'suporte@queizy.com'];
+// Endereço de resposta dos nossos e-mails (boas-vindas, lembretes, campanhas): o aluno que responde cai aqui.
+// Só vira atendimento se o remetente for aluno cadastrado (o resto, como fornecedores, fica para a equipe).
+const REPLY_ADDR = 'contato@queizy.com';
 // Nossos próprios remetentes (avisos do sistema, relatórios, respostas): nunca viram chamado.
 const SELF = ['charlotte@hubacademybr.com', 'noreply@queizy.com', 'contato@queizy.com', (process.env.EMAIL_SENDER_ADDRESS || '').toLowerCase()].filter(Boolean);
 
@@ -49,7 +52,7 @@ function isNoise(m: InboxMessage): boolean {
   const subj = m.subject.toLowerCase();
   if (/out of office|automatic reply|resposta autom|ausência|aus[eê]ncia|f[ée]rias|vacation|não é possível entregar|nao e possivel entregar|undeliverable/.test(subj)) return true;
   // só o que foi endereçado ao suporte
-  if (!SUPPORT_ADDRS.some(a => m.to.includes(a))) return true;
+  if (!SUPPORT_ADDRS.some(a => m.to.includes(a)) && !m.to.includes(REPLY_ADDR)) return true;
   return false;
 }
 
@@ -74,9 +77,11 @@ export async function POST(req: NextRequest) {
   for (const m of msgs) {
     if (isNoise(m)) { skipped++; continue; }
     if (await isMessageProcessed(m.id)) { skipped++; continue; }
+    const context = await findUserContext(m.from);
+    // Chegou só pelo endereço de resposta e não é aluno: não é atendimento.
+    if (!SUPPORT_ADDRS.some(a => m.to.includes(a)) && !context.userId) { skipped++; continue; }
     processed++;
 
-    const context = await findUserContext(m.from);
     const convId = await upsertConversation({
       channel: 'email', externalId: m.conversationId || m.from, contact: m.from, subject: m.subject,
       userId: context.userId ?? null,
@@ -97,7 +102,9 @@ export async function POST(req: NextRequest) {
       continue;
     }
 
-    const decision = await runSupportAgent({ userText, context, contactEmail: m.from });
+    // Resposta a um e-mail nosso traz o original citado: a IA lê só o texto novo do aluno.
+    const agentText = fresh ? `${m.subject}\n\n${fresh}`.slice(0, 4000) : userText;
+    const decision = await runSupportAgent({ userText: agentText, context, contactEmail: m.from });
 
     if (decision.autoSend) {
       await graphSendEmail({ to: m.from, subject: `Re: ${m.subject}`, html: replyHtml(decision.reply) });

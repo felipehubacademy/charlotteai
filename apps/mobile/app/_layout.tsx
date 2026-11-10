@@ -36,7 +36,7 @@ loadAudioPreferences().catch(() => {});
 
 // Sentry — captura crashes nativos (Java/Obj-C) que o ErrorBoundary não pega,
 // JS errors não-tratados, e device info pra debug em produção. DSN em
-// expoConfig.extra.sentryDsn (vem do app.config.ts → process.env.SENTRY_DSN).
+// expoConfig.extra.sentryDsn (vem do app.config.ts → process.env.EXPO_PUBLIC_SENTRY_DSN).
 const SENTRY_DSN = (Constants.expoConfig?.extra as Record<string, unknown> | undefined)?.sentryDsn as string | undefined;
 if (SENTRY_DSN) {
   Sentry.init({

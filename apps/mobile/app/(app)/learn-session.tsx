@@ -1190,7 +1190,16 @@ export default function LearnSessionScreen() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
     try {
-      await recorder.stop();
+      // Android às vezes recusa parar uma gravação que não chegou a começar direito ("AudioRecorder.stop has been
+      // rejected"). Não é erro do aluno: volta para "segure e fale" com o gravador preparado de novo.
+      try { await recorder.stop(); } catch {
+        logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: 'stop_rejected' });
+        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+        await setIsAudioActiveAsync(true).catch(() => {});
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
+        setPronStatus('listening');
+        return;
+      }
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
       await setIsAudioActiveAsync(true).catch(() => {});
       const audioUri = recorder.uri;

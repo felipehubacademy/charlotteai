@@ -364,7 +364,7 @@ export function webPaymentFailedTemplate(opts: { name?: string | null; plan: 'mo
   const html = base(`
     ${h1(first ? `${first}, a cobrança não passou` : 'A cobrança não passou')}
     ${p(`Tentamos cobrar ${opts.value} do seu ${planName}, mas o cartão recusou. Isso costuma acontecer por falta de limite, cartão vencido ou bloqueio do banco.`)}
-    ${p(`Confira o cartão com o seu banco e responda este e-mail: a gente te ajuda a regularizar ou trocar o cartão.${opts.accessUntil ? ` Seu acesso continua até ${opts.accessUntil}.` : ''}`)}
+    ${p(`Seu acesso ao Queizy fica pausado até a cobrança passar. Confira o cartão com o seu banco e responda este e-mail: a gente te ajuda a regularizar ou trocar o cartão.`)}
     ${btn('Falar com o suporte', 'mailto:suporte@queizy.com?subject=Cobran%C3%A7a%20da%20assinatura')}
     ${note('Se preferir, assine de novo em queizy.com/assinar com o mesmo e-mail: o acesso continua na mesma conta.')}
   `);

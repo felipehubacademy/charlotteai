@@ -28,6 +28,8 @@ interface Props {
   direct?: boolean;
   /** Plano já escolhido no /assinar. */
   plan?: 'mensal' | 'anual';
+  /** Desce até esta seção da página em vez de sair dela. */
+  scrollTo?: string;
 }
 
 type Platform = 'ios' | 'android' | 'desktop';
@@ -40,7 +42,7 @@ function detectPlatform(): Platform {
   return 'desktop';
 }
 
-export default function StoreCTA({ variant, label, className, direct, plan }: Props) {
+export default function StoreCTA({ variant, label, className, direct, plan, scrollTo }: Props) {
   const [platform, setPlatform] = useState<Platform>('desktop');
   const [modalOpen, setModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -61,6 +63,10 @@ export default function StoreCTA({ variant, label, className, direct, plan }: Pr
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    if (scrollTo) {
+      document.getElementById(scrollTo)?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
     // O site recebe só tráfego de fora da loja (influenciador, anúncio, conteúdo): assina pelo site.
     if (!direct) {
       // Leva junto o modo de teste/novo do checkout (?checkout=teste): sem isso, quem testava caía na cobrança real.
@@ -118,7 +124,7 @@ export default function StoreCTA({ variant, label, className, direct, plan }: Pr
         <path d="M12 2L3 14h9l-1 8 10-12h-9l1-8z"/>
       </svg>
       <div>
-        <div style={{ fontSize: 10, opacity: 0.6, lineHeight: 1 }}>Experimente</div>
+        {!scrollTo && <div style={{ fontSize: 10, opacity: 0.6, lineHeight: 1 }}>Experimente</div>}
         <div style={{ fontSize: 16, fontWeight: 800, lineHeight: 1.3 }}>{label}</div>
       </div>
     </>

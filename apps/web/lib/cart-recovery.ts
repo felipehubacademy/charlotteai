@@ -9,6 +9,7 @@ import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { cartRecoveryTemplate } from '@/lib/email-templates';
 import { unsubscribeUrl } from '@/lib/unsubscribe';
 import { resolveCoupon } from '@/lib/asaas';
+import { readAll, readIn } from '@/lib/db-batch';
 
 const HOUR = 3600000;
 const STAGE_AFTER_H: Record<1 | 2 | 3, number> = { 1: 3, 2: 24, 3: 72 };
@@ -22,10 +23,11 @@ export async function runCartRecovery(opts: { dryRun?: boolean; onlyEmail?: stri
   const supabase = getSupabaseAdmin();
   const now = Date.now();
   const since = new Date(now - MAX_AGE_H * HOUR).toISOString();
-  const { data } = await supabase.from('asaas_checkouts')
+  // Em páginas (o .limit(2000) não valia: máximo de 1.000 linhas por leitura). Cortado, um checkout pago mais
+  // antigo ficava de fora e a pessoa que já assinou podia receber o lembrete.
+  const rows = await readAll<Row>('checkouts da semana', () => supabase.from('asaas_checkouts')
     .select('id, user_id, plan, method, trial_days, status, created_at, recovery_stage')
-    .gte('created_at', since).order('created_at', { ascending: false }).limit(2000);
-  const rows = (data ?? []) as Row[];
+    .gte('created_at', since).order('created_at', { ascending: false }).order('id', { ascending: false }));
 
   // Por pessoa, só o checkout mais recente conta; se ela pagou qualquer um, nada de lembrete.
   const paidUsers = new Set(rows.filter(r => r.status === 'paid').map(r => r.user_id));
@@ -34,10 +36,10 @@ export async function runCartRecovery(opts: { dryRun?: boolean; onlyEmail?: stri
   const pending = [...latest.values()].filter(r => r.status !== 'paid' && !paidUsers.has(r.user_id) && r.recovery_stage < 3);
   if (!pending.length) return { checked: rows.length, sent: 0, items: [] as unknown[] };
 
-  const { data: us } = await supabase.from('charlotte_users')
+  const us = await readIn<User>('contas dos checkouts', pending.map(r => r.user_id), chunk => supabase.from('charlotte_users')
     .select('id, name, email, subscription_status, subscription_expires_at, is_institutional, marketing_opt_out, email_bounced')
-    .in('id', pending.map(r => r.user_id));
-  const users = new Map(((us ?? []) as User[]).map(u => [u.id, u]));
+    .in('id', chunk).order('id'));
+  const users = new Map(us.map(u => [u.id, u]));
   const coupon = await resolveCoupon(RECOVERY_COUPON).catch(() => null);
   const { data: c } = coupon?.ok ? await supabase.from('coupons').select('duration_cycles').eq('code', RECOVERY_COUPON).maybeSingle() : { data: null };
   const recoveryCoupon = coupon?.ok && coupon.kind === 'coupon'

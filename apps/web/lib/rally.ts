@@ -5,6 +5,7 @@
 //   accuracy  nota média da trilha (Gramática + Listening & Speaking), mínimo 3 atividades
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { isStudy } from '@/lib/learning-stats';
+import { readIn } from '@/lib/db-batch';
 
 export type RallyMetric = 'xp' | 'practices' | 'accuracy';
 export const RALLY_METRICS: RallyMetric[] = ['xp', 'practices', 'accuracy'];
@@ -44,9 +45,12 @@ export async function computeStandings(rallies: RallyRow[]): Promise<Map<string,
   const out = new Map<string, Standing[]>();
   if (!rallies.length) return out;
   const supabase = getSupabaseAdmin();
-  const { data: parts } = await supabase.from('rally_participants').select('rally_id, user_id').in('rally_id', rallies.map(r => r.id));
+  // Tudo em lotes de ids e em páginas, com erro explícito: o placar decide vencedor e prêmio, então leitura
+  // cortada (máximo de 1.000 linhas; o .limit(50000) não valia) ou que falha não pode virar placar zerado.
+  const parts = await readIn<{ rally_id: string; user_id: string }>('participantes', rallies.map(r => r.id), chunk => supabase.from('rally_participants')
+    .select('rally_id, user_id').in('rally_id', chunk).order('rally_id').order('user_id'));
   const byRally = new Map<string, string[]>();
-  for (const p of (parts ?? []) as { rally_id: string; user_id: string }[]) {
+  for (const p of parts) {
     byRally.set(p.rally_id, [...(byRally.get(p.rally_id) ?? []), p.user_id]);
   }
   const users = [...new Set([...byRally.values()].flat())];
@@ -54,14 +58,17 @@ export async function computeStandings(rallies: RallyRow[]): Promise<Map<string,
   const from = new Date(Math.min(...rallies.map(r => new Date(r.starts_at).getTime()))).toISOString();
   const needAcc = rallies.some(r => r.metric === 'accuracy');
 
-  const [profiles, practices, hist2] = await Promise.all([
-    supabase.from('charlotte_users').select('id, name, avatar_url').in('id', users),
-    supabase.from('charlotte_practices').select('user_id, xp_earned, practice_type, created_at').in('user_id', users).gte('created_at', from).limit(50000),
-    needAcc ? supabase.from('learn_history_v2').select('user_id, activity_type, score, updated_at').in('user_id', users).gte('updated_at', from).limit(20000) : Promise.resolve({ data: [] }),
+  const [profiles, pr, hist2] = await Promise.all([
+    readIn<{ id: string; name: string | null; avatar_url: string | null }>('perfis', users, chunk => supabase.from('charlotte_users').select('id, name, avatar_url').in('id', chunk).order('id')),
+    readIn<{ user_id: string; xp_earned: number | null; practice_type: string; created_at: string }>('práticas', users, chunk => supabase.from('charlotte_practices')
+      .select('id, user_id, xp_earned, practice_type, created_at').in('user_id', chunk).gte('created_at', from).order('id')),
+    needAcc
+      ? readIn<{ user_id: string; activity_type: string; score: number | string | null; updated_at: string }>('trilha', users, chunk => supabase.from('learn_history_v2')
+        .select('id, user_id, activity_type, score, updated_at').in('user_id', chunk).gte('updated_at', from).order('id'))
+      : Promise.resolve([]),
   ]);
-  const prof = new Map(((profiles.data ?? []) as { id: string; name: string | null; avatar_url: string | null }[]).map(p => [p.id, p]));
-  const pr = (practices.data ?? []) as { user_id: string; xp_earned: number | null; practice_type: string; created_at: string }[];
-  const h2 = ((hist2.data ?? []) as { user_id: string; activity_type: string; score: number | string | null; updated_at: string }[])
+  const prof = new Map(profiles.map(p => [p.id, p]));
+  const h2 = hist2
     .filter(r => (r.activity_type === 'grammar' || r.activity_type === 'speaking') && r.score != null);
 
   const now = Date.now();

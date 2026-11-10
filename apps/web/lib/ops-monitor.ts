@@ -8,11 +8,14 @@
 // Sinais: erro em rota crítica; processador fora do ar ou no limite; pico de cartão recusado (robôs);
 // vendas pararam; pagou e ficou sem acesso (corrige sozinho); webhook mudo; fila de e-mails travada.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll, readIn } from '@/lib/db-batch';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { notifyAdmins } from '@/lib/admin-push';
 import { reportRecipients } from '@/lib/admin-prefs';
 import { sendWhatsAppText, sendAlertTemplate } from '@/lib/whatsapp';
 import { grantAccess, type CheckoutRow } from '@/lib/asaas-activation';
+import { hasUnpaidCharge } from '@/lib/asaas-reconcile';
+import { reconcileStoreSubscription } from '@/lib/rc-subscription';
 
 const MIN = 60000;
 const HOUR = 60 * MIN;
@@ -34,6 +37,9 @@ export async function logOpsError(area: OpsArea, route: string, err: unknown, de
 
 type Alert = { kind: string; message: string };
 
+/** Tipos que o vigia confere a cada rodada (e por isso consegue dar como resolvidos sozinho). */
+const WATCH_KINDS = ['error_checkout', 'error_webhook', 'error_auth', 'error_asaas', 'card_declines', 'no_sales', 'access_check_failed', 'webhook_silent', 'email_stuck'];
+
 async function recentlyAlerted(kind: string): Promise<boolean> {
   const { count } = await getSupabaseAdmin().from('ops_alerts').select('id', { count: 'exact', head: true })
     .eq('kind', kind).gte('created_at', new Date(Date.now() - ALERT_EVERY_MS).toISOString());
@@ -46,7 +52,7 @@ async function deliver(alerts: Alert[]): Promise<{ sent: number }> {
   for (const a of alerts) if (!(await recentlyAlerted(a.kind))) fresh.push(a);
   if (!fresh.length) return { sent: 0 };
 
-  const text = `Queizy · alerta do checkout\n\n${fresh.map(a => `• ${a.message}`).join('\n')}\n\nPainel: queizy.com/admin/commercial`;
+  const text = `Queizy · alerta do checkout\n\n${fresh.map(a => `• ${a.message}`).join('\n')}\n\nPainel: queizy.com/admin/commercial?tab=health`;
   const to = await reportRecipients('checkout');
   let emailOk = false;
   const html = `<div style="font-family:-apple-system,Arial,sans-serif;font-size:15px;line-height:1.6;color:#16131F">
@@ -54,12 +60,14 @@ async function deliver(alerts: Alert[]): Promise<{ sent: number }> {
     <p style="color:#8A8494;font-size:13px">Vigia automático (a cada 5 min). Cada tipo de alerta repete no máximo 1 vez por hora.</p></div>`;
   for (const addr of to) emailOk = (await sendEmail({ to: addr, subject: `Queizy: alerta do checkout (${fresh.length})`, html }).catch(() => false)) || emailOk;
   let waOk = false;
-  await notifyAdmins({ title: `Alerta do checkout (${fresh.length})`, body: fresh.map(a => a.message).join(' · ').slice(0, 300), url: '/admin/commercial', tag: 'checkout', category: 'checkout' }).catch(() => 0);
+  await notifyAdmins({ title: `Alerta do checkout (${fresh.length})`, body: fresh.map(a => a.message).join(' · ').slice(0, 300), url: '/admin/commercial?tab=health', tag: 'checkout', category: 'checkout' }).catch(() => 0);
   const wa = process.env.ALERT_WHATSAPP;
   // Texto livre só passa dentro da janela de 24 h; fora dela, o modelo aprovado.
   if (wa) waOk = (await sendWhatsAppText(wa, text)).ok || (await sendAlertTemplate(wa, fresh.map(a => a.message).join(' | '))).ok;
   for (const a of fresh) {
-    await supabase.from('ops_alerts').insert({ kind: a.kind, message: a.message, sent_email: emailOk, sent_whatsapp: waOk } as never);
+    // "Acesso devolvido" já nasce resolvido: o vigia corrigiu sozinho, o aviso é só para saber.
+    const done = a.kind === 'access_fixed' ? { resolved_at: new Date().toISOString(), resolved_by: 'vigia', resolved_how: 'auto' } : {};
+    await supabase.from('ops_alerts').insert({ kind: a.kind, message: a.message, sent_email: emailOk, sent_whatsapp: waOk, ...done } as never);
   }
   return { sent: fresh.length };
 }
@@ -99,14 +107,27 @@ export async function runCheckoutWatch(): Promise<{ alerts: Alert[]; fixed: numb
   }
 
   // 4. Pagou e ficou sem acesso: corrige sozinho e avisa.
-  const { data: paid } = await supabase.from('asaas_checkouts')
-    .select('id, user_id, plan, method, trial_days, created_at, paid_at, asaas_payment_id, status, asaas_customer_id, asaas_subscription_id, sandbox, refunded_at')
-    .eq('status', 'paid').eq('sandbox', false).is('refunded_at', null).gte('created_at', since(400 * DAY));
+  // Compras pagas em páginas (a leitura para em 1.000 linhas e quem estava depois nunca era conferido) e as contas
+  // em lotes de ids, em vez de uma consulta por compra a cada 5 min.
+  // Se a leitura falhar, vira alerta e os outros itens do vigia continuam.
+  type PaidRow = CheckoutRow & { created_at: string; paid_at: string | null; refunded_at: string | null };
+  type PaidUser = { id: string; email: string; subscription_status: string | null; subscription_product: string | null; subscription_expires_at: string | null };
+  let paid: PaidRow[] = [];
+  let paidUsers = new Map<string, PaidUser>();
+  try {
+    paid = await readAll<PaidRow>('compras pagas', () => supabase.from('asaas_checkouts')
+      .select('id, user_id, plan, method, trial_days, created_at, paid_at, asaas_payment_id, status, asaas_customer_id, asaas_subscription_id, sandbox, refunded_at')
+      .eq('status', 'paid').eq('sandbox', false).is('refunded_at', null).gte('created_at', since(400 * DAY)).order('id'));
+    paidUsers = new Map((await readIn<PaidUser>('contas das compras', paid.map(r => r.user_id), chunk => supabase.from('charlotte_users')
+      .select('id, email, subscription_status, subscription_product, subscription_expires_at').in('id', chunk).order('id'))).map(u => [String(u.id), u]));
+  } catch (e) {
+    paid = [];
+    alerts.push({ kind: 'access_check_failed', message: `Não deu para conferir quem pagou e ficou sem acesso: ${e instanceof Error ? e.message : String(e)}` });
+  }
   let fixed = 0;
   const fixedEmails: string[] = [];
-  for (const r of (paid ?? []) as (CheckoutRow & { created_at: string; paid_at: string | null; refunded_at: string | null })[]) {
-    const { data: u } = await supabase.from('charlotte_users').select('email, subscription_status, subscription_product, subscription_expires_at').eq('id', r.user_id).maybeSingle();
-    const user = u as { email: string; subscription_status: string | null; subscription_product: string | null; subscription_expires_at: string | null } | null;
+  for (const r of paid) {
+    const user = paidUsers.get(String(r.user_id)) ?? null;
     if (!user) continue;
     const okNow = (user.subscription_product ?? '').startsWith('web_') && ['active', 'cancelled'].includes(user.subscription_status ?? '');
     if (okNow) continue;
@@ -116,6 +137,19 @@ export async function runCheckoutWatch(): Promise<{ alerts: Alert[]; fixed: numb
       ? new Date(new Date(r.created_at).getTime() + (r.trial_days + 1) * DAY)
       : new Date(base.getTime() + (r.plan === 'monthly' ? 33 : 368) * DAY);
     if (until.getTime() < Date.now()) continue; // período já acabou: não é caso de devolver
+    // Assinatura válida na loja: tem acesso e vale a da loja, não é para gravar o plano do site por cima.
+    const storeValid = ['monthly', 'yearly'].includes(user.subscription_product ?? '') && ['active', 'cancelled'].includes(user.subscription_status ?? '')
+      && !!user.subscription_expires_at && new Date(user.subscription_expires_at).getTime() > Date.now();
+    if (storeValid) continue;
+    try {
+      // Cobrança que não passou bloqueia de propósito (lib/asaas-reconcile); só o pagamento devolve o acesso.
+      if (r.asaas_subscription_id && await hasUnpaidCharge(r.asaas_subscription_id)) continue;
+      const rc = await reconcileStoreSubscription(r.user_id);
+      if (rc.action !== 'skipped' && rc.state.hasPremium) continue;
+    } catch (e) {
+      console.warn('[ops-monitor] conferência antes de devolver acesso:', r.user_id, e instanceof Error ? e.message : e);
+      continue; // sem confirmar, não devolve: o vigia tenta de novo em 5 min
+    }
     await grantAccess(r.user_id, r.plan, until, r.method).catch(() => null);
     fixed++; fixedEmails.push(user.email);
   }
@@ -133,6 +167,15 @@ export async function runCheckoutWatch(): Promise<{ alerts: Alert[]; fixed: numb
   // 6. Fila de e-mails travada (3+ tentativas sem sair).
   const { count: stuck } = await supabase.from('email_outbox').select('id', { count: 'exact', head: true }).is('sent_at', null).gte('attempts', 3);
   if ((stuck ?? 0) > 0) alerts.push({ kind: 'email_stuck', message: `${stuck} e-mail(s) presos na fila depois de 3 tentativas (pode ser link de senha de quem comprou).` });
+
+  // Resolução automática: alerta em aberto cujo problema não apareceu nesta rodada sai da Visão geral do /admin.
+  // "Vendas pararam" só é conferido das 8h à meia-noite; fora disso não dá para dizer que passou.
+  const still = new Set(alerts.map(a => a.kind));
+  const gone = WATCH_KINDS.filter(k => !still.has(k) && !(k === 'no_sales' && h < 8));
+  if (gone.length) {
+    await supabase.from('ops_alerts').update({ resolved_at: new Date().toISOString(), resolved_by: 'vigia', resolved_how: 'auto' } as never)
+      .in('kind', gone).is('resolved_at', null);
+  }
 
   const { sent } = await deliver(alerts);
   return { alerts, fixed, sent };

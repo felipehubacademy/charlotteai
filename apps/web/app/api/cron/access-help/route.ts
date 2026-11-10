@@ -1,9 +1,11 @@
 // /api/cron/access-help — de hora em hora (vercel.json): quem pagou no site há mais de 24 h e nunca entrou no app
 // recebe o e-mail de ajuda com link novo de criar senha (lib/access-help), uma única vez por compra.
+// access_help_sent_at marca a compra como resolvida: e-mail enviado ou aluno que já entrou.
 // Prevenção: antes dependia de alguém olhar os dados ou do aluno escrever para o suporte.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendAccessHelp, whenLabel } from '@/lib/access-help';
+import { readAll } from '@/lib/db-batch';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -19,13 +21,22 @@ async function run(dryRun: boolean) {
   const supabase = getSupabaseAdmin();
   const cutoff = new Date(Date.now() - 24 * 3_600_000).toISOString();
   const since = new Date(Date.now() - 20 * 86_400_000).toISOString(); // compras recentes (não reabre casos antigos)
-  const { data } = await supabase.from('asaas_checkouts').select('id, user_id, created_at')
+  // Todas as compras na fila (antes .limit(50) sem ordem: passando de 50, as mesmas voltavam a cada hora e
+  // ninguém novo recebia). Quem já entrou no app também é marcado e sai da fila. Limite de tempo da rota: 45 s.
+  const data = await readAll<{ id: string; user_id: string; created_at: string }>('ajuda de acesso', () => supabase
+    .from('asaas_checkouts').select('id, user_id, created_at')
     .eq('status', 'paid').eq('sandbox', false).is('access_help_sent_at', null).is('refunded_at', null)
-    .lt('created_at', cutoff).gt('created_at', since).limit(50);
+    .lt('created_at', cutoff).gt('created_at', since).order('created_at').order('id'));
   const out: { email: string; sent: boolean }[] = [];
-  for (const c of (data ?? []) as { id: string; user_id: string; created_at: string }[]) {
+  const started = Date.now();
+  for (const c of data) {
+    if (Date.now() - started > 45_000) break; // o resto fica para a próxima hora
     const { data: auth } = await supabase.auth.admin.getUserById(c.user_id);
-    if (!auth?.user || auth.user.last_sign_in_at) continue; // já entrou
+    if (!auth?.user) continue;
+    if (auth.user.last_sign_in_at) { // já entrou: não precisa de ajuda
+      if (!dryRun) await supabase.from('asaas_checkouts').update({ access_help_sent_at: new Date().toISOString() } as never).eq('id', c.id);
+      continue;
+    }
     const { data: u } = await supabase.from('charlotte_users').select('id, name, email').eq('id', c.user_id).maybeSingle();
     const user = u as { id: string; name: string | null; email: string } | null;
     if (!user?.email || /^felipe\.xavier1987\+/i.test(user.email)) continue;
@@ -34,7 +45,7 @@ async function run(dryRun: boolean) {
     if (r.ok) await supabase.from('asaas_checkouts').update({ access_help_sent_at: new Date().toISOString() } as never).eq('id', c.id);
     out.push({ email: user.email, sent: r.ok });
   }
-  return { checked: (data ?? []).length, sent: out.filter(o => o.sent).length, dryRun, list: out };
+  return { checked: data.length, sent: out.filter(o => o.sent).length, dryRun, list: out };
 }
 
 export async function GET(req: NextRequest) {

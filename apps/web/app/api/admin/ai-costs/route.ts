@@ -20,45 +20,9 @@ import { requireAdmin, audit } from '@/lib/admin-auth';
 import { runAiCostReport } from '@/lib/ai-cost-report';
 import { fxToBrl } from '@/lib/fx';
 import { CHARACTERS } from '@/lib/characters';
+import { monthRange, openaiReal, azureReal, cachedCost, type Cost } from '@/lib/provider-costs';
 
 export const dynamic = 'force-dynamic';
-
-function monthRange(month: string) {
-  const [y, m] = month.split('-').map(Number);
-  const start = new Date(Date.UTC(y, m - 1, 1));
-  const end = new Date(Date.UTC(y, m, 1));
-  return { start, end };
-}
-
-async function openaiReal(month: string): Promise<{ usd: number; lines: { name: string; usd: number }[] } | null> {
-  const key = process.env.OPENAI_ADMIN_KEY;
-  if (!key) return null;
-  const { start, end } = monthRange(month);
-  const lines = new Map<string, number>();
-  let page: string | null = null;
-  for (let i = 0; i < 10; i++) {
-    const url = new URL('https://api.openai.com/v1/organization/costs');
-    url.searchParams.set('start_time', String(Math.floor(start.getTime() / 1000)));
-    url.searchParams.set('end_time', String(Math.floor(end.getTime() / 1000)));
-    url.searchParams.set('bucket_width', '1d');
-    url.searchParams.set('limit', '31');
-    url.searchParams.append('group_by', 'line_item');
-    if (page) url.searchParams.set('page', page);
-    const r = await fetch(url, { headers: { Authorization: `Bearer ${key}` }, cache: 'no-store' });
-    if (!r.ok) throw new Error(`OpenAI costs ${r.status}`);
-    const j = await r.json();
-    for (const bucket of j.data ?? []) {
-      for (const res of bucket.results ?? []) {
-        const name = res.line_item ?? 'Outros';
-        lines.set(name, (lines.get(name) ?? 0) + Number(res.amount?.value ?? 0));
-      }
-    }
-    if (!j.has_more || !j.next_page) break;
-    page = j.next_page;
-  }
-  const arr = [...lines.entries()].map(([name, usd]) => ({ name, usd })).sort((a, b) => b.usd - a.usd);
-  return { usd: arr.reduce((s, l) => s + l.usd, 0), lines: arr };
-}
 
 async function openaiEstimate(month: string): Promise<{ usd: number; lines: { name: string; usd: number }[] }> {
   const { start, end } = monthRange(month);
@@ -76,51 +40,6 @@ async function openaiEstimate(month: string): Promise<{ usd: number; lines: { na
   }
   const arr = [...lines.entries()].map(([name, usd]) => ({ name, usd })).sort((a, b) => b.usd - a.usd);
   return { usd: arr.reduce((s, l) => s + l.usd, 0), lines: arr };
-}
-
-type Cost = { currency: string; total: number; lines: { name: string; amount: number }[] };
-
-async function azureReal(month: string): Promise<Cost | null> {
-  const sub = process.env.AZURE_COST_SUBSCRIPTION_ID;
-  const tenant = process.env.AZURE_TENANT_ID;
-  const clientId = process.env.AZURE_COST_CLIENT_ID || process.env.AZURE_CLIENT_ID;
-  const secret = process.env.AZURE_COST_CLIENT_SECRET || process.env.AZURE_CLIENT_SECRET;
-  if (!sub || !tenant || !clientId || !secret) return null;
-
-  const tok = await fetch(`https://login.microsoftonline.com/${tenant}/oauth2/v2.0/token`, {
-    method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, cache: 'no-store',
-    body: new URLSearchParams({ grant_type: 'client_credentials', client_id: clientId, client_secret: secret, scope: 'https://management.azure.com/.default' }),
-  });
-  if (!tok.ok) throw new Error(`Azure token ${tok.status}`);
-  const { access_token } = await tok.json();
-
-  const { start, end } = monthRange(month);
-  const to = new Date(Math.min(end.getTime() - 1000, Date.now()));
-  const r = await fetch(`https://management.azure.com/subscriptions/${sub}/providers/Microsoft.CostManagement/query?api-version=2023-03-01`, {
-    method: 'POST', cache: 'no-store',
-    headers: { Authorization: `Bearer ${access_token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      type: 'ActualCost', timeframe: 'Custom',
-      timePeriod: { from: start.toISOString(), to: to.toISOString() },
-      dataset: {
-        granularity: 'None',
-        aggregation: { totalCost: { name: 'Cost', function: 'Sum' } },
-        grouping: [{ type: 'Dimension', name: 'ServiceName' }],
-      },
-    }),
-  });
-  if (!r.ok) throw new Error(`Azure custos ${r.status}`);
-  const j = await r.json();
-  const cols: string[] = (j.properties?.columns ?? []).map((c: { name: string }) => c.name);
-  const iCost = cols.indexOf('Cost'), iName = cols.indexOf('ServiceName'), iCur = cols.indexOf('Currency');
-  let currency = 'USD';
-  const lines: { name: string; amount: number }[] = [];
-  for (const row of j.properties?.rows ?? []) {
-    if (iCur >= 0 && row[iCur]) currency = String(row[iCur]);
-    lines.push({ name: String(row[iName] ?? 'Outros'), amount: Number(row[iCost] ?? 0) });
-  }
-  lines.sort((a, b) => b.amount - a.amount);
-  return { currency, total: lines.reduce((s, l) => s + l.amount, 0), lines };
 }
 
 async function elevenlabs(): Promise<{ plan: string; used: number; limit: number; resetAt: string | null; nextInvoiceUsd: number | null } | null> {
@@ -208,17 +127,18 @@ export async function GET(req: NextRequest) {
 
   const prevMonth = (() => { const d = new Date(`${month}-01T12:00:00Z`); d.setUTCMonth(d.getUTCMonth() - 1); return d.toISOString().slice(0, 7); })();
 
-  const openaiFor = async (m: string): Promise<{ source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string }> => {
-    try {
-      const real = await openaiReal(m);
-      return real ? { source: 'real', ...real } : { source: 'estimate', ...(await openaiEstimate(m)) };
-    } catch (e) {
-      return { source: 'estimate', ...(await openaiEstimate(m)), error: e instanceof Error ? e.message : 'erro' };
-    }
+  // Valor real guardado (lib/provider-costs → provider_cost_cache): mês atual vale 30 min, meses fechados 1 dia.
+  // Abrir a tela não consulta mais a OpenAI/Azure toda vez (as APIs recusavam com 429 e a tela caía na estimativa).
+  const maxAge = (m: string) => (m === new Date().toISOString().slice(0, 7) ? 30 * 60_000 : 24 * 3600_000);
+  const openaiFor = async (m: string): Promise<{ source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string; at?: string | null }> => {
+    const c = await cachedCost(`openai:${m}`, maxAge(m), () => openaiReal(m));
+    if (c.value) return { source: 'real', ...c.value, at: c.at };
+    return { source: 'estimate', ...(await openaiEstimate(m)), error: c.error };
   };
   const azureFor = async (m: string): Promise<(Cost & { error?: string }) | null> => {
-    try { return await azureReal(m); }
-    catch (e) { return { currency: 'USD', total: 0, lines: [], error: e instanceof Error ? e.message : 'erro' }; }
+    const c = await cachedCost(`azure:${m}`, maxAge(m), () => azureReal(m));
+    if (c.value) return c.value;
+    return c.error ? { currency: 'USD', total: 0, lines: [], error: c.error } : null;
   };
 
   // Mês escolhido e mês anterior em paralelo, para a variação dos cards.
@@ -231,9 +151,15 @@ export async function GET(req: NextRequest) {
   const { data: posted } = await getSupabaseAdmin().from('finance_entries')
     .select('vendor').eq('category', 'Inteligência artificial').like('notes', `%[ai-cost ${month}]%`);
   const postedVendors = ((posted ?? []) as { vendor: string }[]).map(p => p.vendor);
+  // ElevenLabs: a API não informa o valor cobrado (a próxima fatura vem zerada); vale o que está lançado no Financeiro no mês.
+  const { end: monthEnd } = monthRange(month);
+  const { data: elRows } = await getSupabaseAdmin().from('finance_entries').select('amount_brl')
+    .eq('kind', 'expense').eq('vendor', 'ElevenLabs').neq('status', 'canceled')
+    .gte('due_date', `${month}-01`).lt('due_date', monthEnd.toISOString().slice(0, 10));
+  const elevenBilledBrl = Math.round(((elRows ?? []) as { amount_brl: number }[]).reduce((a, r) => a + Number(r.amount_brl ?? 0), 0) * 100) / 100;
 
   return NextResponse.json({
-    month, prevMonth, fx, openai, azure, elevenlabs: eleven, voice, liveCalls, posted: postedVendors,
+    month, prevMonth, fx, openai, azure, elevenlabs: eleven, elevenBilledBrl, voice, liveCalls, posted: postedVendors,
     prev: {
       openai: { usd: openaiPrev.usd, lines: openaiPrev.lines },
       azure: azurePrev && !azurePrev.error ? { total: azurePrev.total, currency: azurePrev.currency } : null,

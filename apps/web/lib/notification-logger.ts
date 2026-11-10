@@ -2,6 +2,7 @@
 // Registra entrega, engajamento e erros de notificações
 
 import { getSupabase } from './supabase';
+import { readAll } from '@/lib/db-batch';
 
 export type NotificationLogType = 
   | 'practice_reminder' 
@@ -83,15 +84,13 @@ export class NotificationLogger {
         throw new Error('Supabase not available');
       }
 
-      const { data, error } = await supabase
+      // Em páginas: o período tem mais de 1.000 envios (cerca de 1.100 por dia) e as métricas saíam cortadas.
+      const data = await readAll<any>('envios do período', () => supabase
         .from('notification_logs')
         .select('notification_type, status, platform, created_at')
         .gte('created_at', startDate)
-        .lte('created_at', endDate);
-
-      if (error) {
-        throw error;
-      }
+        .lte('created_at', endDate)
+        .order('id'));
 
       // Processar métricas
       const metrics = {

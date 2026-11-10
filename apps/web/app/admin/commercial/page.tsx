@@ -61,6 +61,11 @@ type Form = typeof EMPTY;
 
 export default function CommercialAdmin() {
   const [tab, setTab] = useState<'coupons' | 'affiliates' | 'sales' | 'health' | 'ads'>('coupons');
+  // Link direto para uma aba (?tab=health): os alertas do checkout abrem em "Saúde do checkout".
+  useEffect(() => {
+    const t = new URLSearchParams(window.location.search).get('tab');
+    if (t === 'affiliates' || t === 'sales' || t === 'health' || t === 'ads') setTab(t);
+  }, []);
   const [health, setHealth] = useState<Health | null>(null);
   const [coupons, setCoupons] = useState<Coupon[]>([]);
   const [checkouts, setCheckouts] = useState<Checkout[]>([]);
@@ -228,7 +233,7 @@ export default function CommercialAdmin() {
                     <thead><tr><th>Alerta</th><th>Mensagem</th><th>Enviado</th></tr></thead>
                     <tbody>{health.alerts.map((a, i) => (
                       <tr key={i}><td style={{ whiteSpace: 'nowrap' }}>{when(a.created_at)}</td><td style={{ fontSize: 12 }}>{a.message}</td>
-                        <td style={{ fontSize: 12 }}>{[a.sent_email && 'e-mail', a.sent_whatsapp && 'WhatsApp'].filter(Boolean).join(' e ') || 'falhou'}</td></tr>
+                        <td style={{ fontSize: 12 }}>{[a.sent_email && 'e-mail', a.sent_whatsapp && 'WhatsApp'].filter(Boolean).join(' e ') || (a.kind.startsWith('asaas_') ? 'só no painel' : 'falhou')}</td></tr>
                     ))}</tbody>
                   </table>
                 )}

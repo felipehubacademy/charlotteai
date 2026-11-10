@@ -2,11 +2,13 @@
 // O aluno escolhe quem o acompanha (charlotte_users.active_character): fala na tela inicial, atende a
 // ligação (aba de ligação) e começa o Free Chat ("Conversar com" troca só a conversa). O cartão
 // inteiro é o seletor; a trilha própria de quem está escolhido aparece na tela inicial ("Ver trilha" abre).
+// Quem tem imitações (Igorfina) mostra a lista delas: "Conversar" abre o Free Chat e "Ligar" liga só com
+// aquela imitação, sem trocar quem fala na tela inicial (sempre o personagem principal).
 import React, { useState } from 'react';
 import { View, ScrollView, TouchableOpacity, Image, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
-import { Check, BookOpenText, CaretRight } from 'phosphor-react-native';
+import { Check, BookOpenText, CaretRight, CaretDown, ChatCircleDots, Phone } from 'phosphor-react-native';
 import { ScreenHeader } from '@/components/stats/StatsUI';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
@@ -33,6 +35,7 @@ export default function FamilyScreen() {
   const tracks = visibleTracks(profile?.beta_features);
   const current = characterInfo(profile?.active_character).id;
   const [saving, setSaving] = useState<CharacterId | null>(null);
+  const [openImpressions, setOpenImpressions] = useState<CharacterId | null>(null); // lista de imitações aberta (dropdown)
 
   const choose = async (id: CharacterId) => {
     if (!profile?.id || id === current || saving) return;
@@ -103,6 +106,45 @@ export default function FamilyScreen() {
                   <AppText style={{ fontSize: 13, fontWeight: '700', color: C.ink }}>{isPt ? 'Ver trilha' : 'View trail'}</AppText>
                   <CaretRight size={12} color={C.ink} weight="bold" />
                 </TouchableOpacity>
+              ) : null}
+              {c.impressions?.length ? (
+                <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: C.border, gap: 12 }}>
+                  {/* Dropdown: fechado mostra só a linha com a quantidade; aberto, a lista com Conversar e Ligar. */}
+                  <TouchableOpacity onPress={() => setOpenImpressions(o => (o === c.id ? null : c.id))} activeOpacity={0.7}
+                    accessibilityRole="button" accessibilityState={{ expanded: openImpressions === c.id }}
+                    style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                    <AppText style={{ flex: 1, fontSize: 13, color: C.inkMid }}>
+                      {isPt ? `Imitações do ${c.name}: ` : `${c.name}'s impressions: `}
+                      <AppText style={{ fontSize: 13, fontWeight: '800', color: C.ink }}>{c.impressions.length}</AppText>
+                    </AppText>
+                    <AppText style={{ fontSize: 13, fontWeight: '700', color: C.ink }}>{openImpressions === c.id ? (isPt ? 'Fechar' : 'Close') : (isPt ? 'Ver todas' : 'See all')}</AppText>
+                    <View style={{ transform: [{ rotate: openImpressions === c.id ? '180deg' : '0deg' }] }}>
+                      <CaretDown size={12} color={C.ink} weight="bold" />
+                    </View>
+                  </TouchableOpacity>
+                  {openImpressions === c.id && c.impressions.map(imp => {
+                    const label = isPt ? imp.labelPt : imp.labelEn;
+                    return (
+                      <View key={imp.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                        <Image source={imp.avatar ?? c.avatar} style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: C.ink }} />
+                        <View style={{ flex: 1, minWidth: 0 }}>
+                          <AppText style={{ fontSize: 15, fontWeight: '800', color: C.ink }}>{label}</AppText>
+                          <AppText style={{ fontSize: 12, color: C.inkMid, marginTop: 2, lineHeight: 16 }}>{isPt ? imp.taglinePt : imp.taglineEn}</AppText>
+                        </View>
+                        <TouchableOpacity onPress={() => router.push({ pathname: '/(app)/(tabs)/practice', params: { mode: 'chat', character: c.id, impression: imp.id } } as any)}
+                          activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={isPt ? `Conversar com ${imp.articlePt}${label}` : `Chat with ${label}`}
+                          style={{ width: 38, height: 38, borderRadius: 19, backgroundColor: 'rgba(22,19,31,0.06)', alignItems: 'center', justifyContent: 'center' }}>
+                          <ChatCircleDots size={20} color={C.ink} weight="bold" />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => router.push({ pathname: '/(app)/(tabs)/livevoice', params: { call: c.id, impression: imp.id } } as any)}
+                          activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={isPt ? `Ligar para ${imp.articlePt}${label}` : `Call ${label}`}
+                          style={{ width: 38, height: 38, borderRadius: 19, backgroundColor: C.volt, alignItems: 'center', justifyContent: 'center' }}>
+                          <Phone size={20} color={C.ink} weight="fill" />
+                        </TouchableOpacity>
+                      </View>
+                    );
+                  })}
+                </View>
               ) : null}
             </TouchableOpacity>
           );

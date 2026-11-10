@@ -15,7 +15,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import * as SecureStore from 'expo-secure-store';
 import { useAuth } from '@/hooks/useAuth';
-import { characterInfo } from '@/lib/characters';
+import { characterInfo, impressionInfo, personaDisplay } from '@/lib/characters';
 import { systemIsPt } from '@/lib/systemLang';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import Constants from 'expo-constants';
@@ -75,6 +75,7 @@ interface ChatSession {
   title:         string | null;
   message_count: number;
   character?:    string | null; // Família Queizy: com quem foi a conversa
+  impression?:   string | null; // conversa inteira com uma imitação (ex.: Presidente)
 }
 
 const API_BASE_URL =
@@ -91,7 +92,7 @@ export default function PracticeTab() {
   const accent    = getLevelAccent(userLevel);
 
   // Mode state — vem do URL ?mode=, default 'chat'
-  const params = useLocalSearchParams<{ mode?: string; words?: string; character?: string }>();
+  const params = useLocalSearchParams<{ mode?: string; words?: string; character?: string; impression?: string }>();
   // "Treinar" em Palavras para caprichar (Minha evolução) traz as palavras.
   const [targetWords, setTargetWords] = useState<string[] | null>(null);
   useEffect(() => {
@@ -107,7 +108,7 @@ export default function PracticeTab() {
     sessionXP, totalXP, rateLimited,
     sendTextMessage, sendAudioMessage, sendSilentMessage, resetMessages,
     activeSessionId, closeSession, loadSession,
-    character, startConversationWith,
+    character, impression, startConversationWith,
   } = useChat({ userLevel, userName, userId, mode });
 
   // Família Queizy: o Free Chat começa com a pessoa escolhida na Família (Perfil > Família Queizy).
@@ -119,16 +120,17 @@ export default function PracticeTab() {
     if (messages.length <= 1 && preferredCharacter !== character) startConversationWith(preferredCharacter);
   }, [preferredCharacter, mode, historyLoading]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Família Queizy: "Conversar" na tela da Família abre o Free Chat com o personagem.
-  // Só troca se não há conversa em andamento (não interrompe o aluno).
+  // Família Queizy: "Conversar" na tela da Família abre o Free Chat com o personagem ou com uma imitação dele.
+  // Escolha feita na Família: começa a conversa nova com quem foi escolhido (a atual vai para o histórico).
   useEffect(() => {
     const wanted = params.character;
     if (!wanted || mode !== 'chat') return;
-    if (messages.length <= 1 && (wanted === 'charlotte' || wanted === 'igorfina') && wanted !== character) {
-      startConversationWith(wanted);
+    const wantedImp = params.impression && impressionInfo(characterInfo(wanted), params.impression) ? params.impression : null;
+    if ((wanted === 'charlotte' || wanted === 'igorfina') && (wanted !== character || wantedImp !== (impression ?? null) || messages.length > 1)) {
+      startConversationWith(wanted, wantedImp as any);
     }
-    router.setParams({ character: undefined } as any);
-  }, [params.character]); // eslint-disable-line react-hooks/exhaustive-deps
+    router.setParams({ character: undefined, impression: undefined } as any);
+  }, [params.character, params.impression]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const { playingMessageId, toggle } = useMessageAudioPlayer();
   const [achievements, setAchievements] = useState<Achievement[]>([]);
@@ -228,7 +230,7 @@ export default function PracticeTab() {
     if (!userId || mode !== 'chat') return;
     const { data } = await supabase
       .from('charlotte_chat_sessions')
-      .select('id,started_at,ended_at,summary,title,message_count,character')
+      .select('id,started_at,ended_at,summary,title,message_count,character,impression')
       .eq('user_id', userId)
       .not('ended_at', 'is', null)
       .order('started_at', { ascending: false })
@@ -551,6 +553,7 @@ export default function PracticeTab() {
                 onTopic={handleTopicSelect}
                 onSample={sendTextMessage}
                 character={character}
+                impression={impression}
                 onCharacter={startConversationWith}
               />
             </ScrollView>
@@ -893,7 +896,7 @@ function ChatSessionItem({ session, isPt, isActive, onPress, onDelete }: {
         style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10 }}
       >
         {/* Com quem foi a conversa (como no WhatsApp) */}
-        <CharacterAvatar character={session.character} size="md" />
+        <CharacterAvatar character={session.character} impression={session.impression} size="md" />
         <View style={{ flex: 1 }}>
           <AppText display numberOfLines={1} style={{ fontSize: 16, fontWeight: '800', color: C.navy }}>
             {session.title ?? (isPt ? 'Conversa' : 'Conversation')}

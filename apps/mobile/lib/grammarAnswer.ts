@@ -23,6 +23,8 @@ for (const [us, uk] of [
 export function normaliseAnswer(s: string): string {
   return s.trim().toLowerCase()
     .replace(/[‘’‚‛`´]/g, "'")   // smart quotes (iOS) e acentos usados como apóstrofo -> apóstrofo ASCII
+    // Vírgula no lugar do apóstrofo, colada na contração: "I,m" = "I'm", "don,t" = "don't".
+    .replace(/(\w),(m|s|t|re|ve|ll|d)\b/g, "$1'$2")
     // Pista entre parênteses na frase ("I'm tween (12) years old"): se o aluno copiar junto, não conta.
     .replace(/\([^)]*\)/g, ' ')
     // Pontuação não conta: "Can you help me please?" = "Can you help me, please ?".

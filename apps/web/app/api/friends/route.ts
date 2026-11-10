@@ -19,6 +19,7 @@ import { friendsOf, orderedPair } from '@/lib/friends';
 import { sendDirectPush } from '@/lib/rally';
 import { blockedWith, isBlocked, isOffensiveHandle, isSuspended } from '@/lib/moderation';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
+import { readIn } from '@/lib/db-batch';
 
 // Ids vão para filtros .or() do banco: só aceita UUID (um texto montado de propósito apagava pedidos de todos).
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -50,8 +51,9 @@ export async function GET(req: NextRequest) {
     const { data } = await supabase.from('user_blocks').select('blocked_id').eq('blocker_id', user.id);
     const ids = ((data ?? []) as { blocked_id: string }[]).map(r => r.blocked_id);
     if (!ids.length) return NextResponse.json({ blocked: [] });
-    const { data: us } = await supabase.from('charlotte_users').select('id, name, username, charlotte_level, avatar_url').in('id', ids);
-    return NextResponse.json({ blocked: ((us ?? []) as U[]).map(u => ({ id: u.id, name: displayName(u.name), username: u.username, level: u.charlotte_level, avatarUrl: u.avatar_url })) });
+    // Ids em lotes: lista longa de bloqueados estouraria o tamanho do endereço e voltaria vazia.
+    const us = await readIn<U>('bloqueados', ids, chunk => supabase.from('charlotte_users').select('id, name, username, charlotte_level, avatar_url').in('id', chunk).order('id'));
+    return NextResponse.json({ blocked: us.map(u => ({ id: u.id, name: displayName(u.name), username: u.username, level: u.charlotte_level, avatarUrl: u.avatar_url })) });
   }
 
   if (req.nextUrl.searchParams.get('me')) {

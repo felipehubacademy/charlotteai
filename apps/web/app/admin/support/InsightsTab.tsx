@@ -19,7 +19,7 @@ interface Insights {
 
 const CATEGORY: Record<string, string> = {
   conta: 'Conta', assinatura: 'Assinatura', duvida_uso: 'Dúvida de uso', bug: 'Bug', conteudo: 'Conteúdo',
-  sugestao: 'Sugestão', elogio: 'Elogio', outro: 'Outro',
+  sugestao: 'Sugestão', desinteresse: 'Sem interesse', elogio: 'Elogio', outro: 'Outro',
 };
 const RESOLUTION: Record<string, string> = { ia: 'Resolvida pela IA', humano: 'Resolvida por atendente', sem_resposta: 'Sem resposta', em_aberto: 'Em aberto' };
 const SCREEN: Record<string, string> = {

@@ -68,6 +68,12 @@
     },
     "app/api/cron/instagram/route.ts": {
       "maxDuration": 120
+    },
+    "app/api/cron/rc-reconcile/route.ts": {
+      "regions": [
+        "gru1"
+      ],
+      "maxDuration": 120
     }
   },
   "crons": [
@@ -94,6 +100,14 @@
     {
       "path": "/api/cron/instagram",
       "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/email-outbox",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/rc-reconcile",
+      "schedule": "0 */6 * * *"
     }
   ],
   "ignoreCommand": "[ -n \"$VERCEL_GIT_PREVIOUS_SHA\" ] && [ \"$VERCEL_GIT_PREVIOUS_SHA\" != \"$VERCEL_GIT_COMMIT_SHA\" ] && git cat-file -e \"$VERCEL_GIT_PREVIOUS_SHA\" 2>/dev/null && git diff --quiet \"$VERCEL_GIT_PREVIOUS_SHA\" HEAD -- ."

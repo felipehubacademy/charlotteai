@@ -7,6 +7,7 @@
 // Travas: só contas criadas pelo checkout, nunca usadas no app (sem login), dos últimos 30 dias,
 // e o e-mail novo não pode ter conta. Se algo não bate, o suporte passa para um atendente.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { readAll, readIn } from '@/lib/db-batch';
 import { getCustomer, getPaymentCard, updateCustomerEmail, type WebPlan } from '@/lib/asaas';
 import { isValidEmailFormat, isDisposableEmail } from '@/lib/email-validation';
 import { sendWebWelcome } from '@/lib/web-welcome';
@@ -137,19 +138,27 @@ export async function resolveSupportEmailFix(input: SupportFixInput): Promise<Su
   const correct = normEmail(input.correctEmail);
   if (!correct || !isValidEmailFormat(correct)) return { status: 'need_info', missing: ['correctEmail'] };
 
-  const { data: owner } = await supabase.from('charlotte_users').select('id').ilike('email', correct).maybeSingle();
+  const { data: owner, error: ownerErr } = await supabase.from('charlotte_users').select('id').ilike('email', correct).maybeSingle();
+  // Leitura que falha (inclusive mais de uma conta parecida) não pode virar "e-mail livre".
+  if (ownerErr) return { status: 'escalate', reason: `Não deu para conferir se o e-mail certo já tem conta (${ownerErr.message}).` };
   if (owner) return { status: 'escalate', reason: 'O e-mail certo já tem conta: juntar as contas é com um atendente.' };
 
   const since = new Date(Date.now() - WINDOW_DAYS * DAY).toISOString();
-  const { data: rows } = await supabase.from('asaas_checkouts')
-    .select('id, user_id, plan, trial_days, status, created_at, asaas_customer_id, asaas_payment_id, created_account')
-    .eq('status', 'paid').eq('created_account', true).gte('created_at', since).limit(500);
-  const checkouts = (rows ?? []) as (Checkout & { created_account: boolean })[];
-  if (!checkouts.length) return { status: 'escalate', reason: 'Nenhuma compra recente pelo site que possa ser a do aluno.' };
-
-  const ids = [...new Set(checkouts.map(c => c.user_id))];
-  const { data: users } = await supabase.from('charlotte_users').select('id, email, name, last_seen_at').in('id', ids);
-  const byId = new Map(((users ?? []) as Account[]).map(u => [u.id, u]));
+  // Todas as compras da janela, em páginas, e contas com ids em lotes: com .limit(500) sem ordem a compra certa
+  // podia ficar de fora, e mais de ~600 ids estouram o endereço (a leitura falhava e virava "nenhuma compra").
+  let checkouts: (Checkout & { created_account: boolean })[];
+  let users: Account[];
+  try {
+    checkouts = await readAll('compras do site', () => supabase.from('asaas_checkouts')
+      .select('id, user_id, plan, trial_days, status, created_at, asaas_customer_id, asaas_payment_id, created_account')
+      .eq('status', 'paid').eq('created_account', true).gte('created_at', since).order('id'));
+    if (!checkouts.length) return { status: 'escalate', reason: 'Nenhuma compra recente pelo site que possa ser a do aluno.' };
+    users = await readIn('contas das compras', checkouts.map(c => c.user_id), chunk => supabase.from('charlotte_users')
+      .select('id, email, name, last_seen_at').in('id', chunk).order('id'));
+  } catch (e) {
+    return { status: 'escalate', reason: `Não deu para ler as compras recentes (${e instanceof Error ? e.message : 'erro'}).` };
+  }
+  const byId = new Map(users.map(u => [u.id, u]));
   const wrong = normEmail(input.wrongEmail);
   const candidates = checkouts.filter(c => {
     const u = byId.get(c.user_id);

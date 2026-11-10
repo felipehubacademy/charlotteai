@@ -7,6 +7,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
+import { readAll, readIn } from '@/lib/db-batch';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,21 +19,24 @@ export async function GET(req: NextRequest) {
   if (admin instanceof NextResponse) return admin;
   const supabase = getSupabaseAdmin();
 
-  const [repR, susR] = await Promise.all([
+  // Suspensos em páginas e pessoas/bloqueios com ids em lotes: 300 denúncias já dão até 600 ids (limite do endereço)
+  // e os bloqueios dessas pessoas passam de 1.000 linhas.
+  const [repR, suspensions] = await Promise.all([
     supabase.from('user_reports').select('*').order('handled').order('created_at', { ascending: false }).limit(300),
-    supabase.from('social_suspensions').select('user_id, reason, created_by, created_at').order('created_at', { ascending: false }),
+    readAll<{ user_id: string; reason: string | null; created_by: string | null; created_at: string }>('suspensos', () => supabase.from('social_suspensions')
+      .select('user_id, reason, created_by, created_at').order('created_at', { ascending: false }).order('user_id')),
   ]);
+  if (repR.error) return NextResponse.json({ error: repR.error.message }, { status: 500 });
   const reports = (repR.data ?? []) as Report[];
-  const suspensions = (susR.data ?? []) as { user_id: string; reason: string | null; created_by: string | null; created_at: string }[];
 
   const ids = [...new Set([...reports.flatMap(r => [r.reporter_id, r.reported_id]), ...suspensions.map(s => s.user_id)])];
-  const [peopleR, blocksR] = await Promise.all([
-    ids.length ? supabase.from('charlotte_users').select('id, name, username, email, avatar_url').in('id', ids) : Promise.resolve({ data: [] }),
-    ids.length ? supabase.from('user_blocks').select('blocked_id').in('blocked_id', ids) : Promise.resolve({ data: [] }),
+  const [peopleRows, blockRows] = await Promise.all([
+    readIn<Person>('pessoas da moderação', ids, chunk => supabase.from('charlotte_users').select('id, name, username, email, avatar_url').in('id', chunk).order('id')),
+    readIn<{ blocked_id: string }>('bloqueios', ids, chunk => supabase.from('user_blocks').select('blocked_id, blocker_id').in('blocked_id', chunk).order('blocked_id').order('blocker_id')),
   ]);
-  const people = new Map(((peopleR.data ?? []) as Person[]).map(p => [p.id, p]));
+  const people = new Map(peopleRows.map(p => [p.id, p]));
   const blockedCount = new Map<string, number>();
-  for (const b of (blocksR.data ?? []) as { blocked_id: string }[]) blockedCount.set(b.blocked_id, (blockedCount.get(b.blocked_id) ?? 0) + 1);
+  for (const b of blockRows) blockedCount.set(b.blocked_id, (blockedCount.get(b.blocked_id) ?? 0) + 1);
   const reportCount = new Map<string, number>();
   for (const r of reports) reportCount.set(r.reported_id, (reportCount.get(r.reported_id) ?? 0) + 1);
   const suspended = new Set(suspensions.map(s => s.user_id));

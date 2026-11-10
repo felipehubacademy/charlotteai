@@ -8,6 +8,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cleanCampaign } from '@/lib/ad-attribution';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { requireAdmin, audit } from '@/lib/admin-auth';
+import { readAll } from '@/lib/db-batch';
 
 export const dynamic = 'force-dynamic';
 
@@ -34,11 +35,12 @@ export async function GET(req: NextRequest) {
   // Saúde do checkout (24 h): compras, recusas, Pix, erros das rotas críticas e alertas do vigia.
   if (view === 'health') {
     const since = new Date(Date.now() - 86400000).toISOString();
-    const [{ data: cks }, { data: att }, { data: errs }, { data: alerts }] = await Promise.all([
-      supabase.from('asaas_checkouts').select('status, method, channel, pending_payment_id').eq('sandbox', false).gte('created_at', since),
-      supabase.from('checkout_attempts').select('ok').eq('kind', 'card').gte('created_at', since),
+    // Checkouts e tentativas do dia em páginas: a leitura para em 1.000 linhas e os números sairiam menores.
+    const [cks, att, { data: errs }, { data: alerts }] = await Promise.all([
+      readAll('checkouts do dia', () => supabase.from('asaas_checkouts').select('id, status, method, channel, pending_payment_id').eq('sandbox', false).gte('created_at', since).order('id')),
+      readAll('tentativas de cartão', () => supabase.from('checkout_attempts').select('id, ok').eq('kind', 'card').gte('created_at', since).order('id')),
       supabase.from('ops_errors').select('created_at, area, route, message').gte('created_at', since).order('created_at', { ascending: false }).limit(50),
-      supabase.from('ops_alerts').select('created_at, kind, message, sent_email, sent_whatsapp').order('created_at', { ascending: false }).limit(20),
+      supabase.from('ops_alerts').select('created_at, kind, message, sent_email, sent_whatsapp').not('kind', 'like', 'instagram_%').order('created_at', { ascending: false }).limit(20),
     ]);
     const c = (cks ?? []) as { status: string; method: string | null; channel: string; pending_payment_id: string | null }[];
     const a = (att ?? []) as { ok: boolean | null }[];
@@ -59,18 +61,19 @@ export async function GET(req: NextRequest) {
   if (view === 'ads') {
     const days = Math.min(90, Math.max(1, Number(req.nextUrl.searchParams.get('days') ?? 14)));
     const since = new Date(Date.now() - days * 86400000).toISOString();
-    const [{ data: ev }, { data: cks }] = await Promise.all([
-      supabase.from('ad_events').select('kind, arm, campaign, platform').gte('created_at', since).limit(50000),
-      supabase.from('asaas_checkouts').select('status, asaas_payment_id, value_brl, meta_tracking, created_at')
-        .eq('sandbox', false).gte('created_at', since).not('meta_tracking->utm', 'is', null),
+    // Cliques e visitas contados no banco por campanha (na ordem do primeiro evento), em vez de todas as linhas.
+    // Checkouts com utm seguem em páginas: a campanha passa pela mesma limpeza das visitas (lib/ad-attribution).
+    const [ev, cks] = await Promise.all([
+      readAll<{ campaign: string; clicks: number; ios: number; android: number; desktop: number; visits: number }>('cliques e visitas', () => supabase.rpc('ad_campaign_counts', { p_since: since }).order('first_id')),
+      readAll('checkouts com utm', () => supabase.from('asaas_checkouts').select('id, status, asaas_payment_id, value_brl, meta_tracking, created_at')
+        .eq('sandbox', false).gte('created_at', since).not('meta_tracking->utm', 'is', null).order('id')),
     ]);
     type Row = { campaign: string; clicks: number; ios: number; android: number; desktop: number; visits: number; checkouts: number; started: number; charged: number; revenue: number };
     const map = new Map<string, Row>();
     const row = (c: string) => { if (!map.has(c)) map.set(c, { campaign: c, clicks: 0, ios: 0, android: 0, desktop: 0, visits: 0, checkouts: 0, started: 0, charged: 0, revenue: 0 }); return map.get(c)!; };
-    for (const e of (ev ?? []) as { kind: string; campaign: string; platform: string | null }[]) {
+    for (const e of ev) {
       const r = row(e.campaign);
-      if (e.kind === 'click') { r.clicks++; if (e.platform === 'ios') r.ios++; else if (e.platform === 'android') r.android++; else r.desktop++; }
-      else r.visits++;
+      r.clicks += e.clicks; r.ios += e.ios; r.android += e.android; r.desktop += e.desktop; r.visits += e.visits;
     }
     for (const c of (cks ?? []) as { status: string; asaas_payment_id: string | null; value_brl: number; meta_tracking: { utm?: { c?: string } } | null }[]) {
       const raw = String(c.meta_tracking?.utm?.c ?? '');
@@ -117,16 +120,13 @@ export async function GET(req: NextRequest) {
     });
   }
 
-  const [{ data: coupons }, { data: paid }] = await Promise.all([
+  // Usos dos cupons somados no banco (uma linha por código), em vez de todos os checkouts pagos com cupom.
+  // A receita vem como texto (soma exata em ponto flutuante, na ordem de antes): Number() devolve o mesmo valor.
+  const [{ data: coupons }, paid] = await Promise.all([
     supabase.from('coupons').select('*').order('created_at', { ascending: false }),
-    supabase.from('asaas_checkouts').select('coupon_code, value_brl').eq('status', 'paid').not('coupon_code', 'is', null).limit(100000),
+    readAll<{ coupon_code: string; uses: number; revenue: string }>('usos de cupom', () => supabase.rpc('coupon_use_totals').order('coupon_code')),
   ]);
-  const uses = new Map<string, { n: number; revenue: number }>();
-  for (const r of (paid ?? []) as { coupon_code: string; value_brl: number }[]) {
-    const u = uses.get(r.coupon_code) ?? { n: 0, revenue: 0 };
-    u.n += 1; u.revenue += Number(r.value_brl || 0);
-    uses.set(r.coupon_code, u);
-  }
+  const uses = new Map<string, { n: number; revenue: number }>(paid.map(r => [r.coupon_code, { n: r.uses, revenue: Number(r.revenue) }]));
   const now = Date.now();
   const list = ((coupons ?? []) as Coupon[]).map(c => {
     const u = uses.get(c.code) ?? { n: 0, revenue: 0 };

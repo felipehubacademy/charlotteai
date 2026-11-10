@@ -108,6 +108,9 @@ export const PRICING = {
   'eleven_multilingual_v2': {
     perChar: 0.00008,          // USD / character
   },
+  'eleven_v3': {
+    perChar: 0.00008,
+  },
   'eleven_turbo_v2_5': {
     perChar: 0.00004,
   },

@@ -6,6 +6,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Plus, Download, FileText, Check, Edit2, Trash2, X, Search, RefreshCw, Repeat, Send } from 'lucide-react';
 import { useAdminMe, canArea } from '@/lib/admin-context';
+import { unitCostByCategory } from '@/lib/unit-cost';
 
 // ── Tipos e catálogos ────────────────────────────────────────────────────────
 type Kind = 'expense' | 'income';
@@ -15,7 +16,7 @@ interface Entry {
   id: string; kind: Kind; description: string; category: string; vendor: string | null;
   amount: number; currency: string; fx_rate: number; amount_brl: number;
   due_date: string; paid_at: string | null; status: Status; recurrence: Recurrence;
-  recurrence_of: string | null; notes: string | null; created_at: string;
+  recurrence_of: string | null; notes: string | null; unit_cost: boolean | null; created_at: string;
 }
 
 const EXPENSE_CATEGORIES = [
@@ -107,10 +108,11 @@ interface FormState {
   id?: string; kind: Kind; description: string; category: string; vendor: string;
   amount: string; currency: string; fx_rate: string; due_date: string; status: Status;
   paid_at: string; recurrence: Recurrence; notes: string;
+  unit_cost: boolean | null; // null = segue a categoria até alguém escolher
 }
 const emptyForm = (kind: Kind = 'expense'): FormState => ({
   kind, description: '', category: kind === 'expense' ? EXPENSE_CATEGORIES[0] : INCOME_CATEGORIES[0], vendor: '',
-  amount: '', currency: 'BRL', fx_rate: '1', due_date: todayISO(), status: 'paid', paid_at: todayISO(), recurrence: 'none', notes: '',
+  amount: '', currency: 'BRL', fx_rate: '1', due_date: todayISO(), status: 'paid', paid_at: todayISO(), recurrence: 'none', notes: '', unit_cost: null,
 });
 
 const NEW_CATEGORY = '__new__';
@@ -141,6 +143,7 @@ function EntryModal({ initial, vendors, customCats, onClose, onSaved }: {
   // Categorias criadas em lançamentos anteriores entram na lista, antes de "Outros".
   const extra = customCats[f.kind].filter(c => !baseCats.includes(c));
   const cats = [...baseCats.filter(c => c !== 'Outros'), ...extra, 'Outros'];
+  const unitCost = f.unit_cost ?? unitCostByCategory(f.category.trim());
 
   const save = async () => {
     setErr('');
@@ -153,6 +156,7 @@ function EntryModal({ initial, vendors, customCats, onClose, onSaved }: {
       amount: amountNum, currency: f.currency, fx_rate: f.currency === 'BRL' ? 1 : fxNum,
       due_date: f.due_date, status: f.status, paid_at: f.status === 'paid' ? (f.paid_at || f.due_date) : null,
       recurrence: f.recurrence, notes: f.notes || null,
+      unit_cost: f.kind === 'expense' ? unitCost : null,
     };
     const res = await fetch('/api/admin/finance', {
       method: f.id ? 'PATCH' : 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
@@ -251,6 +255,15 @@ function EntryModal({ initial, vendors, customCats, onClose, onSaved }: {
               </select>
             </div>
           </div>
+          {f.kind === 'expense' && (
+            <div className="adm-field">
+              <label>Custo por usuário</label>
+              <select value={unitCost ? 'in' : 'out'} onChange={e => set('unit_cost', e.target.value === 'in')}>
+                <option value="in">Entra: custo de operação (atender e construir o app)</option>
+                <option value="out">Fica de fora (marketing, equipe, impostos, reembolsos…)</option>
+              </select>
+            </div>
+          )}
           {f.status === 'paid' && (
             <div className="adm-field" style={{ maxWidth: 200 }}>
               <label>{f.kind === 'expense' ? 'Pago em' : 'Recebido em'}</label>
@@ -339,6 +352,7 @@ interface AiCosts {
   azure: { currency: string; total: number; lines: { name: string; amount: number }[]; error?: string } | null;
   openai: { source: 'real' | 'estimate'; usd: number; lines: { name: string; usd: number }[]; error?: string };
   elevenlabs: { plan: string; used: number; limit: number; resetAt: string | null; nextInvoiceUsd: number | null } | null;
+  elevenBilledBrl?: number;
   prev: { openai: { usd: number; lines: { name: string; usd: number }[] }; azure: { total: number; currency: string } | null };
   voice: { byProduct: { name: string; credits: number }[]; byCharacter: { id: string; name: string; credits: number }[]; error?: string } | null;
   liveCalls: { id: string; name: string; calls: number; students: number; minutes: number }[];
@@ -352,8 +366,9 @@ function LiveCallsByCharacter({ data, toBrl }: { data: AiCosts; toBrl: (n: numbe
   const callCredits = v?.byProduct.find(p => p.name.startsWith('Ligações'))?.credits ?? 0;
   const otherCredits = v?.byProduct.find(p => p.name.startsWith('Falas'))?.credits ?? 0;
   const totalCredits = callCredits + otherCredits;
-  const rate = data.elevenlabs && data.elevenlabs.nextInvoiceUsd != null && data.elevenlabs.limit > 0
-    ? data.elevenlabs.nextInvoiceUsd / data.elevenlabs.limit : null;
+  // US$ por crédito: fatura lançada no Financeiro no mês ÷ créditos do plano.
+  const billedUsd = data.elevenBilledBrl && data.fx ? data.elevenBilledBrl / data.fx : null;
+  const rate = data.elevenlabs && billedUsd && data.elevenlabs.limit > 0 ? billedUsd / data.elevenlabs.limit : null;
   const charlotteUsd = data.openai.lines.filter(l => isLiveVoice(l.name)).reduce((s, l) => s + l.usd, 0);
   const familyMinutes = data.liveCalls.filter(c => c.id !== 'charlotte').reduce((s, c) => s + c.minutes, 0);
   const rows = data.liveCalls.map(c => {
@@ -570,11 +585,11 @@ function AiCostsPanel({ canWrite, onPosted }: { canWrite: boolean; onPosted: () 
                 <>
                   <div>
                     <div className="num" style={{ fontSize: 30, fontWeight: 800, color: AI_ACCENT.eleven, lineHeight: 1.1 }}>
-                      {data.elevenlabs.nextInvoiceUsd != null ? brl(toBrl(data.elevenlabs.nextInvoiceUsd, 'USD')) : '—'}
+                      {data.elevenBilledBrl ? brl(data.elevenBilledBrl) : '—'}
                     </div>
                     <div style={{ fontSize: 12.5, color: AI_CARD.mid, marginTop: 6 }}>
-                      {data.elevenlabs.nextInvoiceUsd != null ? `${usdFmt(data.elevenlabs.nextInvoiceUsd)} na próxima fatura` : 'Sem fatura prevista'}
-                      {data.elevenlabs.resetAt ? ` · ${fmtDate(data.elevenlabs.resetAt.slice(0, 10))}` : ''}
+                      {data.elevenBilledBrl ? 'lançado no Financeiro no mês' : 'nada lançado no mês: lance a fatura (plano + excedente)'}
+                      {data.elevenlabs.resetAt ? ` · próximo ciclo ${fmtDate(data.elevenlabs.resetAt.slice(0, 10))}` : ''}
                     </div>
                   </div>
                   <div>
@@ -816,6 +831,91 @@ function LtvPanel() {
 }
 
 // ── Página ──────────────────────────────────────────────────────────────────
+// ── Resultado (EBITDA) e ponto de equilíbrio ────────────────────────────────
+interface PnlMonth { month: string; label: string; gross: number; salesFees: number; refunds: number; taxes: number; netRevenue: number; opex: number; ebitda: number; marginPct: number | null }
+interface UnitCost { label: string; total: number; byCategory: { category: string; brl: number }[]; salesFees: number; activeUsers: number; perActive: number | null; payers: number; perPayer: number | null }
+interface Breakeven { ticketNet: number | null; payers: number; payersNeeded: number | null; revenueNeeded: number | null; activeUsers: number; conversionPct: number | null; minConversionPct: number | null }
+
+function PnlPanel() {
+  const [d, setD] = useState<{ months: PnlMonth[]; breakeven: Breakeven; unitCost: UnitCost } | null>(null);
+  const [err, setErr] = useState('');
+  useEffect(() => {
+    fetch('/api/admin/overview?part=pnl', { cache: 'no-store' }).then(r => r.json())
+      .then(j => { if (j.error) setErr(j.error); else setD(j); }).catch(e => setErr(String(e)));
+  }, []);
+  const cur = d?.months[d.months.length - 1];
+  const b = d?.breakeven;
+  const pct = (n: number | null) => n == null ? '—' : `${n.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}%`;
+  return (
+    <div className="adm-panel col-12">
+      <div className="adm-panel-hdr">
+        <div className="adm-panel-title">Resultado e ponto de equilíbrio</div>
+        <div className="adm-panel-sub">EBITDA = receita líquida (bruto - taxas de venda - reembolsos - impostos) - custos de operação (todas as saídas, menos impostos e reembolsos). Despesa anual entra como 1/12 por mês.</div>
+      </div>
+      <div className="adm-panel-body">
+        {err && <div className="adm-alert crit">{err}</div>}
+        {!d && !err && <div className="adm-empty-sub">Calculando…</div>}
+        {cur && b && (
+          <>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 16, marginBottom: 18 }}>
+              <div>
+                <div className="kpi-label">EBITDA de {cur.label}</div>
+                <div className="kpi-value num" style={{ fontSize: '1.5rem', color: cur.ebitda < 0 ? 'var(--err)' : 'var(--ok)' }}>{brl(cur.ebitda)}</div>
+                <div className="kpi-context">{cur.marginPct == null ? 'sem receita no mês' : `margem de ${cur.marginPct}%`}</div>
+              </div>
+              <div>
+                <div className="kpi-label">Pagantes para empatar</div>
+                <div className="kpi-value num" style={{ fontSize: '1.5rem' }}>{b.payersNeeded ?? '—'}</div>
+                <div className="kpi-context">hoje {b.payers} · {b.ticketNet == null ? 'sem assinatura renovando' : `${brl(b.ticketNet)} líquidos por pagante`}</div>
+              </div>
+              <div>
+                <div className="kpi-label">Meta de receita mensal</div>
+                <div className="kpi-value num" style={{ fontSize: '1.5rem' }}>{b.revenueNeeded == null ? '—' : brl(b.revenueNeeded)}</div>
+                <div className="kpi-context">o que precisa entrar por mês para cobrir o custo de {cur.label} (entrou {brl(cur.gross)})</div>
+              </div>
+              <div>
+                <div className="kpi-label">Conversão para empatar</div>
+                <div className="kpi-value num" style={{ fontSize: '1.5rem' }}>{pct(b.minConversionPct)}</div>
+                <div className="kpi-context">hoje {pct(b.conversionPct)} · pagantes ÷ {b.activeUsers} ativos no mês</div>
+              </div>
+            </div>
+            <div style={{ overflowX: 'auto' }}>
+              <table className="adm-table" style={{ width: '100%', fontSize: 12.5 }}>
+                <thead><tr><th>Mês</th><th className="num">Bruto</th><th className="num">Taxas</th><th className="num">Reembolsos</th><th className="num">Impostos</th><th className="num">Receita líquida</th><th className="num">Custos</th><th className="num">EBITDA</th><th className="num">Margem</th></tr></thead>
+                <tbody>
+                  {[...d.months].reverse().map(m => (
+                    <tr key={m.month}>
+                      <td style={{ textTransform: 'capitalize' }}>{m.label}</td>
+                      <td className="num">{brl(m.gross)}</td><td className="num">{brl(m.salesFees)}</td><td className="num">{brl(m.refunds)}</td><td className="num">{brl(m.taxes)}</td>
+                      <td className="num">{brl(m.netRevenue)}</td><td className="num">{brl(m.opex)}</td>
+                      <td className="num" style={{ fontWeight: 700, color: m.ebitda < 0 ? 'var(--err)' : 'var(--ok)' }}>{brl(m.ebitda)}</td>
+                      <td className="num">{m.marginPct == null ? '—' : `${m.marginPct}%`}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--b1)' }}>
+              <div className="kpi-label">Custo por usuário em {d.unitCost.label}</div>
+              <div style={{ fontSize: 13, color: 'var(--t2)', marginTop: 4 }}>
+                <strong style={{ color: 'var(--t1)' }}>{d.unitCost.perActive == null ? '—' : brl(d.unitCost.perActive)}</strong> por usuário ativo ({d.unitCost.activeUsers})
+                {' · '}<strong style={{ color: 'var(--t1)' }}>{d.unitCost.perPayer == null ? '—' : brl(d.unitCost.perPayer)}</strong> por pagante ({d.unitCost.payers})
+              </div>
+              <div className="kpi-context" style={{ marginTop: 6 }}>
+                Custo do mês {brl(d.unitCost.total)}: {[...d.unitCost.byCategory.filter(c => c.brl > 0).map(c => `${c.category} ${brl(c.brl)}`), `Taxas de venda ${brl(d.unitCost.salesFees)}`].join(' · ')}.
+                {' '}Entram as despesas marcadas como custo de operação no lançamento; as taxas de venda entram sozinhas.
+              </div>
+            </div>
+            <div className="kpi-context" style={{ marginTop: 10 }}>
+              Pagantes para empatar = custos de operação do mês ÷ receita líquida por pagante. Trial e degustação consomem custo e entram na conta. O mês atual vai mudando conforme as despesas são lançadas.
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function FinancePage() {
   const me = useAdminMe();
   const canWrite = canArea(me, 'finance:write');
@@ -906,7 +1006,7 @@ export default function FinancePage() {
   const edit = (e: Entry) => setModal({
     id: e.id, kind: e.kind, description: e.description, category: e.category, vendor: e.vendor ?? '',
     amount: String(e.amount).replace('.', ','), currency: e.currency, fx_rate: String(e.fx_rate), due_date: e.due_date,
-    status: e.status, paid_at: e.paid_at ?? todayISO(), recurrence: e.recurrence, notes: e.notes ?? '',
+    status: e.status, paid_at: e.paid_at ?? todayISO(), recurrence: e.recurrence, notes: e.notes ?? '', unit_cost: e.unit_cost,
   });
 
   const exportCsv = () => {
@@ -956,7 +1056,7 @@ export default function FinancePage() {
           {[
             { label: 'Entradas', value: income, ctx: RANGE_LABEL[range], color: 'var(--ok)' },
             { label: 'Saídas', value: expense, ctx: RANGE_LABEL[range], color: 'var(--t1)' },
-            { label: 'Resultado', value: result, ctx: income > 0 ? `Margem de ${Math.round((result / income) * 100)}%` : RANGE_LABEL[range], color: result < 0 ? 'var(--err)' : 'var(--t1)' },
+            { label: 'Resultado de caixa', value: result, ctx: `${income > 0 ? `Margem de ${Math.round((result / income) * 100)}% · ` : ''}só o que já foi pago e recebido; o EBITDA abaixo conta também o que está a pagar`, color: result < 0 ? 'var(--err)' : 'var(--t1)' },
             { label: 'A pagar em 30 dias', value: toPay30, ctx: overdue ? `${overdue} vencido${overdue > 1 ? 's' : ''}` : `${upcoming.length} vencimento${upcoming.length === 1 ? '' : 's'}`, color: overdue ? 'var(--err)' : 'var(--t1)' },
           ].map(k => (
             <div key={k.label} className="kpi-card col-3">
@@ -997,6 +1097,8 @@ export default function FinancePage() {
             <div className="adm-panel-hdr"><div className="adm-panel-title">Saídas por categoria</div><div className="adm-panel-sub">{RANGE_LABEL[range]} · {brl(expense)}</div></div>
             <div className="adm-panel-body"><CategoryBars rows={byCategory} total={expense || 1} /></div>
           </div>
+
+          <PnlPanel />
 
           <RevenuePanel range={range} />
           <LtvPanel />

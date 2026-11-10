@@ -22,10 +22,12 @@ export const isCorrection = (s: string) => s.includes('❌') || /^Error:/m.test(
 export interface HistRow { user_id: string; level: string; module_index: number; topic_index: number; exercise_type: string; is_correct: boolean; answered_at: string }
 export interface MsgRow { user_id: string; role: string; mode: string; content: string; created_at: string }
 
-export async function fetchAll<T>(build: (from: number, to: number) => PromiseLike<{ data: unknown }>, max = 20000): Promise<T[]> {
+/** @deprecated Use readAll de lib/db-batch (sem teto e com ordem estável). Mantido só para compatibilidade. */
+export async function fetchAll<T>(build: (from: number, to: number) => PromiseLike<{ data: unknown; error?: { message: string } | null }>, max = 20000): Promise<T[]> {
   const out: T[] = [];
   for (let from = 0; from < max; from += 1000) {
-    const { data } = await build(from, from + 999);
+    const { data, error } = await build(from, from + 999);
+    if (error) throw new Error(error.message); // leitura que falha não vira "vazio"
     const rows = (data ?? []) as T[];
     out.push(...rows);
     if (rows.length < 1000) break;
@@ -103,4 +105,12 @@ export function grammarWithTrail(msgs: MsgRow[], tf: TrailFeedbackRow[]) {
     ...tf.flatMap(r => (r.corrections ?? []).map(c => ({ wrong: c.said, right: c.correct, at: r.created_at }))),
   ].sort((a, b) => b.at.localeCompare(a.at));
   return { analyzed, errorFree: pct(ok, analyzed), corrections };
+}
+
+/** Mesma conta de grammarWithTrail (sem as correções), a partir das contagens já feitas no banco. */
+export function grammarWithTrailCounts(chatAnalyzed: number, chatWithErrors: number, tfTotal: number, tfOk: number) {
+  const errorFree = pct(chatAnalyzed - chatWithErrors, chatAnalyzed);
+  const okChat = Math.round(((errorFree ?? 0) * chatAnalyzed) / 100);
+  const analyzed = chatAnalyzed + tfTotal;
+  return { analyzed, errorFree: pct(okChat + tfOk, analyzed) };
 }

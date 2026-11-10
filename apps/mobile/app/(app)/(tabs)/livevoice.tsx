@@ -2,7 +2,7 @@
 // Live Voice tab — hero com video da Charlotte + ring de pool mensal +
 // resumo da última chamada + botão Start now. Beta only (new_layout).
 
-import { characterInfo } from '@/lib/characters';
+import { characterInfo, impressionInfo, personaDisplay, type ImpressionId } from '@/lib/characters';
 import { FamilyCallModal } from '@/components/voice/FamilyCallModal';
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import {
@@ -66,6 +66,7 @@ interface LastCall {
   transcript:       string | null;
   /** Quem atendeu: 'charlotte' (padrão) ou um membro da Família Queizy. */
   character?:       string | null;
+  impression?:      string | null; // ligação inteira com uma imitação (ex.: Presidente)
 }
 
 // ── Helpers de label ──────────────────────────────────────────────────────────
@@ -194,10 +195,10 @@ function CallListItem({ call, isPt, onPress, onDelete }: {
         disabled={!hasTranscript}
         style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8 }}
       >
-        <Image source={characterInfo(call.character).avatar} style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: '#16131F' }} />
+        <Image source={personaDisplay(call.character, call.impression, isPt).avatar} style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: '#16131F' }} />
         <View style={{ flex: 1 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-            <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16131F' }}>{characterInfo(call.character).name}</AppText>
+            <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16131F' }}>{personaDisplay(call.character, call.impression, isPt).name}</AppText>
             <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,19,31,0.3)' }} />
             <AppText style={{ fontSize: 12, fontWeight: '700', color: 'rgba(22,19,31,0.55)' }}>{whenLabel}</AppText>
             <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,19,31,0.3)' }} />
@@ -390,7 +391,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
           {/* Header */}
           <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 24, marginBottom: 16 }}>
             <AppText style={{ fontSize: 16, fontWeight: '800', color: '#16131F', flex: 1 }}>
-              {isPt ? `Conversa com ${characterInfo(call.character).name}` : `Conversation with ${characterInfo(call.character).name}`}
+              {isPt ? `Conversa com ${personaDisplay(call.character, call.impression, isPt).name}` : `Conversation with ${personaDisplay(call.character, call.impression, isPt).name}`}
             </AppText>
             <TouchableOpacity onPress={onClose} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
               <XCircle size={22} color="rgba(22,19,31,0.3)" weight="fill" />
@@ -432,7 +433,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
                   <View key={i} style={{ flexDirection: 'row', justifyContent: isUser ? 'flex-end' : 'flex-start' }}>
                     {!isUser && (
                       <Image
-                        source={characterInfo(call.character).avatar}
+                        source={personaDisplay(call.character, call.impression, isPt).avatar}
                         style={{ width: 26, height: 26, borderRadius: 13, marginRight: 8, marginTop: 2, flexShrink: 0, backgroundColor: '#16131F' }}
                       />
                     )}
@@ -489,13 +490,30 @@ export default function LiveVoiceTab() {
   const transcriptFromList = React.useRef(false); // voltar da chamada reabre a lista
   const [showCallsDrawer, setShowCallsDrawer] = useState(false);
   // Quem atende a ligação: o membro da Família escolhido (Perfil > Família Queizy > "Falar na tela inicial").
-  const hostId = characterInfo(profile?.active_character).id;
-  const host = characterInfo(hostId);
-  const hostArticle = hostId === 'charlotte' ? 'a ' : hostId === 'igorfina' ? 'o ' : '';
+  // "Ligar" na tela da Família troca só para esta visita (callOverride). Com quem tem imitações, o aluno
+  // escolhe nos chips acima do botão se liga para o personagem ou para uma imitação (a ligação inteira com ela).
+  const [callOverride, setCallOverride] = useState<string | null>(null);
+  const [callImpression, setCallImpression] = useState<ImpressionId | null>(null);
+  const hostId = characterInfo(callOverride ?? profile?.active_character).id;
+  const hostBase = characterInfo(hostId);
+  const hostImp = impressionInfo(hostBase, callImpression);
+  const host = hostImp ? { ...hostBase, name: isPt ? hostImp.labelPt : hostImp.labelEn, avatar: hostImp.avatar ?? hostBase.avatar } : hostBase;
+  const hostArticle = hostImp ? hostImp.articlePt : hostId === 'charlotte' ? 'a ' : hostId === 'igorfina' ? 'o ' : '';
+  const autoCallRef = React.useRef(false); // "Ligar" da Família: liga assim que os minutos forem conferidos
   const [showFamilyCall, setShowFamilyCall] = useState(false);
   // Fim de uma ligação com a Família ("Ver conversa e resumo"): abre o histórico e relê a lista
   // depois de alguns segundos (o resumo é gerado no servidor logo após a ligação).
-  const params = useLocalSearchParams<{ history?: string }>();
+  const params = useLocalSearchParams<{ history?: string; call?: string; impression?: string }>();
+  useEffect(() => {
+    if (!params.call) return;
+    const c = characterInfo(params.call);
+    if (c.id !== 'charlotte') {
+      setCallOverride(c.id);
+      setCallImpression(impressionInfo(c, params.impression) ? (params.impression as ImpressionId) : null);
+      autoCallRef.current = true;
+    }
+    try { router.setParams({ call: undefined, impression: undefined } as never); } catch {}
+  }, [params.call, params.impression]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (params.history !== '1') return;
     setShowCallsDrawer(true);
@@ -542,7 +560,7 @@ export default function LiveVoiceTab() {
           .eq('user_id', userId)
           .gte('earned_at', todayISO),
         supabase.from('charlotte_live_calls')
-          .select('id,started_at,duration_seconds,summary,transcript,character')
+          .select('id,started_at,duration_seconds,summary,transcript,character,impression')
           .eq('user_id', userId)
           .order('started_at', { ascending: false })
           .limit(10),
@@ -641,6 +659,13 @@ export default function LiveVoiceTab() {
     voiceSFX.setMuted(true);
     if (hostId !== 'charlotte') setShowFamilyCall(true); else setShowLiveVoice(true);
   }, [poolKnown, poolUnlimited, poolRemaining, hostId]);
+
+  // "Ligar" na Família: liga sozinho quando os minutos forem conferidos (sem minutos, fica na tela com o aviso).
+  useEffect(() => {
+    if (!autoCallRef.current || !poolKnown) return;
+    autoCallRef.current = false;
+    if (poolUnlimited || poolRemaining > 0) startCall();
+  }, [poolKnown, poolUnlimited, poolRemaining, startCall]);
 
   // Só considera "limite atingido" quando o pool é CONHECIDO — enquanto a
   // leitura não confirma, mostramos "carregando", nunca um limite/pool falso.
@@ -962,6 +987,24 @@ export default function LiveVoiceTab() {
               </TouchableOpacity>
             )}
 
+            {/* Imitações de quem atende (ex.: Igorfina): ligar para ele ou para uma imitação, a ligação inteira com ela. */}
+            {!!hostBase.impressions?.length && !isLimitReached && (
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ flexGrow: 0, marginBottom: 12 }}
+                contentContainerStyle={{ gap: 8, paddingHorizontal: 24, flexGrow: 1, justifyContent: 'center' }}>
+                {[{ id: null as ImpressionId | null, label: hostBase.name }, ...hostBase.impressions.map(i => ({ id: i.id as ImpressionId | null, label: isPt ? i.labelPt : i.labelEn }))].map(opt => {
+                  const on = (callImpression ?? null) === opt.id;
+                  return (
+                    <TouchableOpacity key={opt.id ?? 'self'} onPress={() => setCallImpression(opt.id)} activeOpacity={0.8}
+                      accessibilityRole="button" accessibilityState={{ selected: on }}
+                      style={{ paddingHorizontal: 14, paddingVertical: 8, borderRadius: 18, backgroundColor: on ? C.textWhite : C.panel,
+                        borderWidth: 1, borderColor: on ? C.textWhite : 'rgba(22,19,31,0.10)' }}>
+                      <AppText style={{ fontSize: 13, fontWeight: '700', color: on ? C.greenAccent : C.textWhite }}>{opt.label}</AppText>
+                    </TouchableOpacity>
+                  );
+                })}
+              </ScrollView>
+            )}
+
             {/* ── CTA primário: conversar / comprar / assinar / carregando ── */}
             <TouchableOpacity
               onPress={onCtaPress}
@@ -1022,8 +1065,11 @@ export default function LiveVoiceTab() {
       {showFamilyCall && (
         <FamilyCallModal
           character={hostId}
+          impression={hostImp?.id ?? null}
           onClose={() => {
             setShowFamilyCall(false);
+            // "Ligar" da Família valia só para essa ligação: volta para quem atende normalmente.
+            if (callOverride) { setCallOverride(null); setCallImpression(null); }
             soundEngine.setMuted(false);
             voiceSFX.setMuted(false);
             loadData();

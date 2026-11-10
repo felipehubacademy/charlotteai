@@ -1,5 +1,6 @@
 // /api/family-call/session — libera uma ligação ao vivo com um membro da Família Queizy (ElevenLabs).
-//   POST { character: 'igorfina', topic?: string, trackTopic?: string, resume?: [{who, text}] }  (Bearer do aluno)
+//   POST { character: 'igorfina', impression?: 'president', topic?: string, trackTopic?: string, resume?: [{who, text}] }  (Bearer do aluno)
+//   impression = ligação inteira com uma imitação do personagem (toda fala na voz dela).
 //   resume = retomada depois da pausa por inatividade: segue a conversa, sem cumprimentar de novo.
 //   → { token, agentId, prompt, firstMessage, remainingSeconds }
 // Confere os minutos do mês (mesma cota do Live Voice). A chave do ElevenLabs nunca sai do servidor: o app recebe só um
@@ -43,6 +44,7 @@ export async function POST(req: NextRequest) {
 
   const level = (['Novice', 'Inter', 'Advanced'].includes(user.charlotte_level) ? user.charlotte_level : 'Inter') as CallLevel;
   const characterId = String(body.character ?? 'igorfina');
+  const impressionId = typeof body.impression === 'string' && body.impression ? body.impression : null;
   const topic = typeof body.topic === 'string' ? body.topic.slice(0, 120) : null;
   const trackTopic = typeof body.trackTopic === 'string' ? body.trackTopic.slice(0, 120) : null;
   const resume = Array.isArray(body.resume)
@@ -58,7 +60,7 @@ export async function POST(req: NextRequest) {
     supabase.from('charlotte_progress').select('streak_days').eq('user_id', auth.user.id).maybeSingle(),
   ]);
   const memories = ((calls ?? []) as { memory: string | null; summary: string | null }[]).map(c => c.memory || c.summary || '').filter(Boolean);
-  const session = buildCallSession({ characterId, level, name: user.name ?? '', topic, trackTopic, memories, resume });
+  const session = buildCallSession({ characterId, impressionId, level, name: user.name ?? '', topic, trackTopic, memories, resume });
   if (!session) return NextResponse.json({ error: 'unknown_character' }, { status: 400 });
 
   const tz = user.timezone || 'America/Sao_Paulo';
@@ -67,7 +69,7 @@ export async function POST(req: NextRequest) {
   const weekday = new Intl.DateTimeFormat('en-US', { timeZone: tz, weekday: 'long' }).format(now);
   // Retomada: usa a frase fixa de volta (sem gerar cumprimento novo).
   const openerP = resume?.length ? Promise.resolve(session.firstMessage) : generateOpener({
-    characterId, level, name: user.name ?? '', fallback: session.firstMessage, localHour, weekday,
+    characterId, impressionId, level, name: user.name ?? '', fallback: session.firstMessage, localHour, weekday,
     streak: Number((prog as { streak_days?: number } | null)?.streak_days ?? 0), topic, trackTopic, memories,
   });
 
@@ -82,5 +84,5 @@ export async function POST(req: NextRequest) {
   const firstMessage = c.elevenVoiceIdPt ? tagPortuguese(await openerP) : await openerP;
   // A regra do TURNO 1 cita a primeira fala: entra no prompt depois de pronta.
   const prompt = session.prompt.replace('{GREETING}', firstMessage.replace(/<\/?[A-Za-z]+>/g, ''));
-  return NextResponse.json({ token, agentId: session.agentId, prompt, firstMessage, characterName: session.characterName, remainingSeconds: remaining });
+  return NextResponse.json({ token, agentId: session.agentId, prompt, firstMessage, characterName: session.characterName, impression: session.impression?.id ?? null, remainingSeconds: remaining });
 }

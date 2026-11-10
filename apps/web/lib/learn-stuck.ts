@@ -8,13 +8,6 @@
 // Usado pelo /admin (Pedagógico) e pelo alerta diário (/api/cron/learn-alerts).
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
-export interface AttemptRow {
-  user_id: string; level: string; module_id: string | null; unit_id: string | null; activity_type: string;
-  step_idx: number | null; event: string; expected: string | null; answer: string | null; score: number | null;
-  passed: boolean | null; source: string | null; error_code: string | null; platform: string | null;
-  app_version: string | null; created_at: string;
-}
-
 export interface StuckItem {
   level: string; module: string | null; unit: string | null; expected: string;
   attempts: number; fails: number; students: number; stuckStudents: number; skips: number;
@@ -67,83 +60,57 @@ function looksLikeAppIssue(item: StuckItem, activity: 'speaking' | 'grammar'): b
   });
 }
 
-async function fetchAttempts(since: string): Promise<AttemptRow[]> {
-  const supabase = getSupabaseAdmin();
-  const out: AttemptRow[] = [];
-  for (let from = 0; from < 50000; from += 1000) {
-    const { data, error } = await supabase.from('learn_attempts')
-      .select('user_id, level, module_id, unit_id, activity_type, step_idx, event, expected, answer, score, passed, source, error_code, platform, app_version, created_at')
-      .gte('created_at', since).order('created_at', { ascending: false }).range(from, from + 999);
-    if (error) throw new Error(error.message);
-    const rows = (data ?? []) as AttemptRow[];
-    out.push(...rows);
-    if (rows.length < 1000) break;
-  }
-  return out;
+// Item agregado pelo banco (learn_stuck_report): contagens prontas; percentuais e média ficam aqui para
+// arredondar exatamente como antes (fails / attempts * 100 e soma / n em ponto flutuante).
+interface StuckRow {
+  activity: 'speaking' | 'grammar'; level: string; module: string | null; unit: string | null; expected: string;
+  attempts: number; fails: number; skips: number; students: number; stuckStudents: number;
+  scoreSum: string | null; scoreN: number; samples: string[];
 }
 
-function stuckBy(rows: AttemptRow[], activity: 'speaking' | 'grammar'): StuckItem[] {
-  const map = new Map<string, { item: StuckItem; perUser: Map<string, number>; users: Set<string>; scoreSum: number; scoreN: number }>();
-  for (const r of rows) {
-    if (r.activity_type !== activity || !r.expected || (r.event !== 'attempt' && r.event !== 'skip')) continue;
-    const key = `${r.level}|${r.module_id}|${r.unit_id}|${r.expected}`;
-    let g = map.get(key);
-    if (!g) {
-      g = { item: { level: r.level, module: r.module_id, unit: r.unit_id, expected: r.expected, attempts: 0, fails: 0, students: 0, stuckStudents: 0, skips: 0, failRate: 0, avgScore: null, samples: [] },
-        perUser: new Map(), users: new Set(), scoreSum: 0, scoreN: 0 };
-      map.set(key, g);
-    }
-    g.users.add(r.user_id);
-    if (r.event === 'skip') { g.item.skips++; continue; }
-    g.item.attempts++;
-    if (typeof r.score === 'number') { g.scoreSum += Number(r.score); g.scoreN++; }
-    if (r.passed === false) {
-      g.item.fails++;
-      g.perUser.set(r.user_id, (g.perUser.get(r.user_id) ?? 0) + 1);
-      const a = (r.answer ?? '').trim();
-      if (a && g.item.samples.length < 4 && !g.item.samples.includes(a)) g.item.samples.push(a);
-    }
-  }
-  return [...map.values()].map(g => ({
-    ...g.item,
-    students: g.users.size,
-    stuckStudents: [...g.perUser.values()].filter(n => n >= 2).length,
-    failRate: g.item.attempts ? Math.round((g.item.fails / g.item.attempts) * 100) : 0,
-    avgScore: g.scoreN ? Math.round(g.scoreSum / g.scoreN) : null,
-  }))
-    .filter(i => i.fails > 0 || i.skips > 0)
-    .sort((a, b) => (b.stuckStudents - a.stuckStudents) || (b.fails + b.skips - a.fails - a.skips))
-    .slice(0, 40);
+interface StuckAggregates {
+  totals: StuckReport['totals'];
+  stuck: StuckRow[];
+  exits: StuckReport['exits'];
+  failures: StuckReport['failures'];
+}
+
+// Agrupamento no banco (migration 20261106160000_learn_stuck_aggregates): devolve só o resultado (até 40
+// itens por atividade, 30 saídas, falhas agrupadas e totais), sem teto de tentativas na janela. A regra do
+// "stop_rejected" recuperado (Android recusa parar a gravação e o aluno acerta o mesmo passo em até
+// 3 minutos) também é aplicada lá.
+async function fetchAggregates(since: string): Promise<StuckAggregates> {
+  const { data, error } = await getSupabaseAdmin().rpc('learn_stuck_report', { p_since: since });
+  if (error) throw new Error(error.message);
+  return data as StuckAggregates;
+}
+
+function toItems(rows: StuckRow[], activity: 'speaking' | 'grammar'): StuckItem[] {
+  // Já vêm na ordem do relatório (alunos presos, depois erros + pulos, depois o mais recente).
+  return rows.filter(r => r.activity === activity).map(r => ({
+    level: r.level, module: r.module, unit: r.unit, expected: r.expected,
+    attempts: r.attempts, fails: r.fails, students: r.students, stuckStudents: r.stuckStudents, skips: r.skips,
+    failRate: r.attempts ? Math.round((r.fails / r.attempts) * 100) : 0,
+    avgScore: r.scoreN ? Math.round(Number(r.scoreSum) / r.scoreN) : null,
+    samples: r.samples,
+  }));
 }
 
 export async function stuckReport(days: number): Promise<StuckReport> {
   const since = new Date(Date.now() - days * 86400000).toISOString();
-  const rows = await fetchAttempts(since);
+  const agg = await fetchAggregates(since);
 
-  const exitsMap = new Map<string, { level: string; module: string | null; unit: string | null; activity: string; step: number | null; count: number; users: Set<string> }>();
-  const failMap = new Map<string, { kind: string; code: string; platform: string; version: string; count: number; users: Set<string> }>();
-  for (const r of rows) {
-    if (r.event === 'exit') {
-      const k = `${r.level}|${r.module_id}|${r.unit_id}|${r.activity_type}|${r.step_idx}`;
-      const g = exitsMap.get(k) ?? { level: r.level, module: r.module_id, unit: r.unit_id, activity: r.activity_type, step: r.step_idx, count: 0, users: new Set<string>() };
-      g.count++; g.users.add(r.user_id); exitsMap.set(k, g);
-    } else if (r.event === 'asr_error' || r.event === 'mic_blocked') {
-      const k = `${r.event}|${r.error_code}|${r.platform}|${r.app_version}`;
-      const g = failMap.get(k) ?? { kind: r.event, code: r.error_code ?? '—', platform: r.platform ?? '—', version: r.app_version ?? '—', count: 0, users: new Set<string>() };
-      g.count++; g.users.add(r.user_id); failMap.set(k, g);
-    }
-  }
-
-  const speaking = stuckBy(rows, 'speaking');
-  const grammar = stuckBy(rows, 'grammar');
-  const exits = [...exitsMap.values()].map(({ users, ...e }) => ({ ...e, students: users.size })).sort((a, b) => b.students - a.students || b.count - a.count).slice(0, 30);
-  const failures = [...failMap.values()].map(({ users, ...f }) => ({ ...f, students: users.size })).sort((a, b) => b.students - a.students || b.count - a.count);
+  const speaking = toItems(agg.stuck, 'speaking');
+  const grammar = toItems(agg.stuck, 'grammar');
+  // Remonta na ordem de campos de antes (o jsonb reordena as chaves) para a resposta da rota sair igual.
+  const exits = agg.exits.map(e => ({ level: e.level, module: e.module, unit: e.unit, activity: e.activity, step: e.step, count: e.count, students: e.students }));
+  const failures = agg.failures.map(f => ({ kind: f.kind, code: f.code, platform: f.platform, version: f.version, count: f.count, students: f.students }));
 
   const where = (i: { level: string; module: string | null; unit: string | null }) => `${i.level} ${i.module ?? ''}${i.unit ? `/${i.unit}` : ''}`.trim();
   // Limites proporcionais ao movimento: com mais alunos, "2 alunos travaram" deixa de ser sinal. Conta
   // a FATIA dos alunos que fizeram o exercício e ficaram presos. Suspeita de falha do app tem limite menor
   // (é bug, vale olhar mesmo com poucos alunos).
-  const totalStudents = new Set(rows.map(r => r.user_id)).size;
+  const totalStudents = agg.totals.students;
   const exitMin = Math.max(2, Math.ceil(totalStudents * 0.03));
   const groups: StuckReport['alertGroups'] = { app: [], content: [], exits: [], tech: [] };
   const evalItems = (items: StuckItem[], activity: 'speaking' | 'grammar') => {
@@ -170,13 +137,8 @@ export async function stuckReport(days: number): Promise<StuckReport> {
   return {
     since,
     totals: {
-      attempts: rows.filter(r => r.event === 'attempt').length,
-      students: totalStudents,
-      fails: rows.filter(r => r.event === 'attempt' && r.passed === false).length,
-      skips: rows.filter(r => r.event === 'skip').length,
-      exits: rows.filter(r => r.event === 'exit').length,
-      asrErrors: rows.filter(r => r.event === 'asr_error').length,
-      micBlocked: rows.filter(r => r.event === 'mic_blocked').length,
+      attempts: agg.totals.attempts, students: agg.totals.students, fails: agg.totals.fails, skips: agg.totals.skips,
+      exits: agg.totals.exits, asrErrors: agg.totals.asrErrors, micBlocked: agg.totals.micBlocked,
     },
     speaking, grammar, exits, failures, alerts, alertGroups: groups,
   };

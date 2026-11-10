@@ -5,7 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { logOpenAIUsage, logElevenLabsUsage } from '@/lib/openai-usage';
-import { characterOf, impressionOf, voiceFor, voiceSegments, concatMp3 } from '@/lib/characters';
+import { characterOf, impressionOf, voiceFor, voiceSegments, concatMp3, withVocalTics } from '@/lib/characters';
 import { speak } from '@/lib/charlotte-voice';
 import { createHash } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
@@ -13,13 +13,13 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 export const dynamic = 'force-dynamic';
 
 // ── ElevenLabs (voz do personagem) ───────────────────────────────────────────
-async function ttsElevenLabs(text: string, voiceId: string, settings: unknown): Promise<Buffer> {
+async function ttsElevenLabs(text: string, voiceId: string, settings: unknown, model = 'eleven_multilingual_v2'): Promise<Buffer> {
   const key = process.env.ELEVENLABS_API_KEY;
   if (!key) throw new Error('ElevenLabs não configurado');
   const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`, {
     method: 'POST',
     headers: { 'xi-api-key': key, 'Content-Type': 'application/json', Accept: 'audio/mpeg' },
-    body: JSON.stringify({ text, model_id: 'eleven_multilingual_v2', voice_settings: settings }),
+    body: JSON.stringify({ text, model_id: model, voice_settings: settings }),
   });
   if (!res.ok) throw new Error(`ElevenLabs TTS error: ${res.status} ${await res.text()}`);
   return Buffer.from(await res.arrayBuffer());
@@ -57,14 +57,15 @@ export async function POST(request: NextRequest) {
       }
       try {
         // Português na voz em português do personagem e inglês na voz normal, emendados num áudio só.
-        const segs = voiceSegments(c, imp, text);
-        const parts = await Promise.all(segs.map(sg => ttsElevenLabs(sg.text, sg.voiceId, sg.settings)));
+        // Sons do personagem (ex.: Allday) entram só no áudio; na trilha não, para o áudio guardado ficar igual para todos.
+        const segs = voiceSegments(c, imp, source === 'learn' ? text : withVocalTics(imp, text));
+        const parts = await Promise.all(segs.map(sg => ttsElevenLabs(sg.text, sg.voiceId, sg.settings, sg.model)));
         const buf = concatMp3(parts);
         if (cachePath) {
           await getSupabaseAdmin().storage.from(LS_BUCKET).upload(cachePath, buf, { contentType: 'audio/mpeg', upsert: true })
             .catch((e: unknown) => console.warn('TTS cache upload falhou:', e));
         }
-        logElevenLabsUsage({ endpoint: '/api/tts', charCount: text.length, model: 'eleven_multilingual_v2', userId: userId || undefined, meta: { source: source ?? null, character: c.id, impression: imp?.id ?? null } });
+        logElevenLabsUsage({ endpoint: '/api/tts', charCount: text.length, model: imp?.elevenModel ?? 'eleven_multilingual_v2', userId: userId || undefined, meta: { source: source ?? null, character: c.id, impression: imp?.id ?? null } });
         return NextResponse.json({ audio: buf.toString('base64'), mimeType: 'audio/mpeg' });
       } catch (e) {
         console.error('TTS ElevenLabs (personagem) falhou, usando voz padrão:', e);

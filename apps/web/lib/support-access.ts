@@ -9,12 +9,10 @@
 //    v1 do RevenueCat); sem ela, devolve 'unavailable' e o agente segue com o passo a passo.
 import { createClient } from '@supabase/supabase-js';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { reconcileStoreSubscription } from '@/lib/rc-subscription';
 import { sendWebWelcome } from '@/lib/web-welcome';
 import type { WebPlan } from '@/lib/asaas';
 
-const ENTITLEMENT = 'Premium';
-const PRODUCT_MONTHLY = 'com.hubacademy.charlotte.monthly';
-const PRODUCT_YEARLY = 'com.hubacademy.charlotte.yearly';
 
 export type AccessLinkResult = 'sent_welcome' | 'sent_reset' | 'no_account' | 'invalid' | 'failed';
 
@@ -59,28 +57,17 @@ export async function checkStoreSubscription(userId: string | null | undefined):
   if (!user) return { status: 'no_account' };
   if (user.is_institutional || (user.subscription_product ?? '').startsWith('web_')) return { status: 'web_or_institutional' };
 
-  const r = await fetch(`https://api.revenuecat.com/v1/subscribers/${encodeURIComponent(userId)}`, {
-    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-  });
-  if (!r.ok) return { status: 'unavailable' };
-  const j = await r.json() as { subscriber?: { entitlements?: Record<string, { expires_date: string | null; product_identifier?: string }>; subscriptions?: Record<string, { store?: string; unsubscribe_detected_at?: string | null; period_type?: string }> } };
-  const ent = j.subscriber?.entitlements?.[ENTITLEMENT];
-  if (!ent) return { status: 'not_found' };
-  const expires = ent.expires_date ? new Date(ent.expires_date) : null;
-  if (expires && expires.getTime() < Date.now()) return { status: 'expired' };
-
-  const productId = ent.product_identifier ?? '';
-  const sub = j.subscriber?.subscriptions?.[productId];
-  const product = productId.startsWith(PRODUCT_MONTHLY) ? 'monthly' : productId.startsWith(PRODUCT_YEARLY) ? 'yearly' : null;
-  const status = sub?.unsubscribe_detected_at ? 'cancelled' : sub?.period_type === 'trial' ? 'trial' : 'active';
-  const expiresAt = (expires ?? new Date(Date.now() + 365 * 86400000)).toISOString();
-  const already = user.subscription_status === status && !!user.subscription_expires_at
-    && new Date(user.subscription_expires_at).getTime() > Date.now();
-  if (!already) {
-    await supabase.from('charlotte_users').update({
-      subscription_status: status, is_active: true, subscription_expires_at: expiresAt,
-      ...(product ? { subscription_product: product } : {}), updated_at: new Date().toISOString(),
-    } as never).eq('id', userId);
+  // Mesma regra do webhook e da sincronização do app (lib/rc-subscription): o estado atual na RevenueCat.
+  const before = user.subscription_status;
+  const rc = await reconcileStoreSubscription(userId);
+  if (rc.action === 'skipped') {
+    if (rc.reason === 'store_unavailable') return { status: 'unavailable' };
+    if (rc.reason === 'never_subscribed') return { status: 'not_found' };
+    if (rc.reason === 'no_account') return { status: 'no_account' };
+    return { status: 'web_or_institutional' };
   }
-  return { status: already ? 'already_active' : 'activated', expiresAt, store: sub?.store ?? null };
+  if (!rc.state.hasPremium) return { status: rc.state.expiresAt ? 'expired' : 'not_found' };
+  const expiresAt = rc.state.expiresAt ?? new Date(Date.now() + 365 * 86400000).toISOString();
+  const already = rc.action === 'unchanged' && ['active', 'cancelled'].includes(before ?? '');
+  return { status: already ? 'already_active' : 'activated', expiresAt, store: rc.state.store };
 }

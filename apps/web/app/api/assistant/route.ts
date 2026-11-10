@@ -8,7 +8,7 @@ import { grammarAnalysisService } from '@/lib/grammar-analysis';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { checkPracticeTaste } from '@/lib/taste';
 import { logOpenAIUsage } from '@/lib/openai-usage';
-import { characterOf, impressionOf, applyCharacterToSystem, type Character, type Impression } from '@/lib/characters';
+import { characterOf, impressionOf, applyCharacterToSystem, wholeConversationImpressionStyle, type Character, type Impression } from '@/lib/characters';
 import { pedagogicalLevel } from '@/lib/levels';
 import { requestUserId } from '@/lib/request-user';
 
@@ -23,7 +23,7 @@ const openai = new OpenAI({ fetch: aiFetch,
 // por vários helpers. Em vez de passar userId por cada assinatura, usamos
 // um ALS setado no entry point da POST e um patch do método create para
 // logar automaticamente. Escopo do patch é APENAS esta instancia do openai.
-const assistantCtx = new AsyncLocalStorage<{ userId: string | null; endpoint: string; character: Character; impression: Impression | null; chatMode: boolean }>();
+const assistantCtx = new AsyncLocalStorage<{ userId: string | null; endpoint: string; character: Character; impression: Impression | null; wholeImpression?: boolean; chatMode: boolean }>();
 
 (function patchOpenAIForLogging() {
   const originalCreate = openai.chat.completions.create.bind(openai.chat.completions);
@@ -35,9 +35,11 @@ const assistantCtx = new AsyncLocalStorage<{ userId: string | null; endpoint: st
       const c = assistantCtx.getStore();
       if (c?.chatMode && c.character.id !== 'charlotte' && Array.isArray(params?.messages)) {
         const messages = params.messages.map((m: any) =>
-          m?.role === 'system' && typeof m.content === 'string' ? { ...m, content: applyCharacterToSystem(m.content, c.character, c.impression) } : m);
+          m?.role === 'system' && typeof m.content === 'string' ? { ...m, content: applyCharacterToSystem(m.content, c.character, c.wholeImpression ? null : c.impression) } : m);
         // Imitação: repete a instrução por último (vence as regras de tom do prompt de cada nível).
-        if (c.impression) messages.push({ role: 'system', content: `${c.impression.style}\nThis overrides the tone and style rules above for this reply only (keep the level, language and length rules).` });
+        // Conversa inteira com a imitação (o aluno escolheu, por ex., o Presidente): vale para todas as respostas.
+        if (c.impression && c.wholeImpression) messages.push({ role: 'system', content: `${wholeConversationImpressionStyle(c.impression)}\nThis overrides the tone and style rules above (keep the level, language and length rules).` });
+        else if (c.impression) messages.push({ role: 'system', content: `${c.impression.style}\nThis overrides the tone and style rules above for this reply only (keep the level, language and length rules).` });
         params = { ...params, messages };
       }
     } catch { /* sem personagem, segue a Charlotte */ }
@@ -149,7 +151,8 @@ export async function POST(request: NextRequest) {
   // Personagem do Free Chat (cabeçalho do app). Só vale no modo conversa; ver handleAssistantPOST.
   const character = characterOf(request.headers.get('x-character'));
   const impression = impressionOf(character, request.headers.get('x-impression')); // imitação desta resposta (decidida pelo app)
-  return assistantCtx.run({ userId: userIdHeader, endpoint: '/api/assistant', character, impression, chatMode: false }, () => handleAssistantPOST(request, userIdHeader));
+  const wholeImpression = request.headers.get('x-impression-mode') === 'whole'; // a conversa toda é com a imitação
+  return assistantCtx.run({ userId: userIdHeader, endpoint: '/api/assistant', character, impression, wholeImpression, chatMode: false }, () => handleAssistantPOST(request, userIdHeader));
 }
 
 async function handleAssistantPOST(request: NextRequest, userId: string | null) {
