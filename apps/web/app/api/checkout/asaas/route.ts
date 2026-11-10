@@ -6,6 +6,7 @@
 //   POST { action: 'refund' }  (Bearer do aluno)   reembolso em até 7 dias do 1º pagamento (Pix, 12x ou cartão)
 // Conta nova: criada aqui pelo e-mail; depois do pagamento chega o e-mail para criar a senha.
 import { NextRequest, NextResponse } from 'next/server';
+import { cancelSiteSubscription } from '@/lib/site-subscription';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { readAll } from '@/lib/db-batch';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
@@ -179,39 +180,11 @@ export async function POST(req: NextRequest) {
     const { data: auth } = h.startsWith('Bearer ') ? await supabase.auth.getUser(h.slice(7)) : { data: null };
     const user = auth?.user;
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    const { data: row } = await supabase.from('asaas_checkouts').select('id, method, asaas_subscription_id, asaas_customer_id, sandbox')
-      .eq('user_id', user.id).eq('status', 'paid').order('created_at', { ascending: false }).limit(1).maybeSingle();
-    const ck = row as { id: string; method: string | null; asaas_subscription_id: string | null; asaas_customer_id: string | null; sandbox: boolean | null } | null;
-    // Pix não renova sozinho: não há o que cancelar.
-    if (!ck || ck.method === 'annual_pix') return NextResponse.json({ ok: true, noRenewal: true });
-    const sandbox = !!ck.sandbox;
-    try {
-      // Compra pela página do processador: o id da assinatura pode ainda não estar guardado (só chega na 1ª cobrança).
-      const ids = ck.asaas_subscription_id ? [ck.asaas_subscription_id] : (await activeSubscriptionsOf(user.id, sandbox, ck.asaas_customer_id, user.email)).map(s => s.id);
-      if (!ids.length) {
-        await logOpsError('checkout', '/api/checkout/asaas (cancelar)', new Error('assinatura não encontrada no processador'), { user: user.id, checkout: ck.id });
-        return NextResponse.json({ error: 'Não encontramos a assinatura para cancelar. Escreva para suporte@queizy.com que cancelamos para você.' }, { status: 404 });
-      }
-      if (!ck.asaas_subscription_id) await supabase.from('asaas_checkouts').update({ asaas_subscription_id: ids[0] } as never).eq('id', ck.id);
-      for (const id of ids) await cancelSubscription(id, sandbox);
-    } catch (e) {
-      await logOpsError('checkout', '/api/checkout/asaas (cancelar)', e, { user: user.id });
-      return NextResponse.json({ error: e instanceof AsaasError ? e.message : 'Não foi possível cancelar agora.' }, { status: 502 });
-    }
-    // Fora do teste: o acesso segue até o fim do período pago (subscription_expires_at).
-    // No teste grátis: a cobrança não vai acontecer, então o acesso termina no último dia grátis às 23h59
-    // (Brasília), igual ao que o app mostra ("Teste grátis até DD/MM"). Antes ficava a folga de 1 dia depois da
-    // data da cobrança, pensada para quem paga, e a data real não batia com a da tela.
-    const { data: tr } = await supabase.from('asaas_checkouts').select('created_at, trial_days, asaas_payment_id').eq('id', ck.id).maybeSingle();
-    const t = tr as { created_at: string; trial_days: number; asaas_payment_id: string | null } | null;
-    const patch: Record<string, unknown> = { subscription_status: 'cancelled', updated_at: new Date().toISOString() };
-    if (t && t.trial_days > 0 && !t.asaas_payment_id) {
-      const charge = new Date(new Date(t.created_at).getTime() + t.trial_days * 86_400_000);
-      const chargeDay = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(charge); // AAAA-MM-DD
-      const lastFree = new Date(`${chargeDay}T00:00:00-03:00`);
-      patch.subscription_expires_at = new Date(lastFree.getTime() - 1000).toISOString(); // véspera da cobrança, 23h59m59
-    }
-    await supabase.from('charlotte_users').update(patch as never).eq('id', user.id);
+    // Regra única em lib/site-subscription (também usada pela IA do suporte e pelo /admin).
+    const r = await cancelSiteSubscription(user.id, { email: user.email, source: 'app' });
+    if (r.status === 'not_site' || r.status === 'no_renewal') return NextResponse.json({ ok: true, noRenewal: true });
+    if (r.status === 'not_found') return NextResponse.json({ error: 'Não encontramos a assinatura para cancelar. Escreva para suporte@queizy.com que cancelamos para você.' }, { status: 404 });
+    if (r.status === 'error') return NextResponse.json({ error: r.message }, { status: 502 });
     return NextResponse.json({ ok: true });
   }
 

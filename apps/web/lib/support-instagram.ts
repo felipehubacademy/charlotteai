@@ -4,7 +4,7 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendInstagramText, instagramProfile, type IncomingInstagramDM } from '@/lib/instagram';
 import { runSupportAgent, type SupportTurn, type SupportUserContext } from '@/lib/support-agent';
-import { aiShouldStaySilent, findUserContext, upsertConversation, logMessage, setConversationStatus, escalate, ticketOpenedText } from '@/lib/support-service';
+import { aiShouldStaySilent, findUserContext, upsertConversation, logMessage, setConversationStatus, escalate, ticketOpenedText, noteCancelReason } from '@/lib/support-service';
 
 const NOT_TEXT = 'Por enquanto eu só consigo ler mensagens de texto. Pode escrever a sua dúvida?';
 const EMAIL_RE = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
@@ -57,6 +57,7 @@ export async function handleInstagramDM(m: IncomingInstagramDM) {
     userText: m.text, history, context, channel: 'instagram',
     firstName: firstNameOf(profile?.name), firstReply: !recentOut,
   });
+  await noteCancelReason(convId, decision);
 
   if (decision.autoSend) {
     await reply(convId, m.from, decision.reply, decision.intent);

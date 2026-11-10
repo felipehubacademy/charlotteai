@@ -3,6 +3,7 @@ import { aiFetch } from '@/lib/ai-models';
 // Núcleo do agente de suporte (canal-agnóstico). Recebe a mensagem do usuário +
 // contexto + histórico, consulta a FAQ e decide: responder sozinho (só intents
 // da whitelist — Fase 1) ou escalar para um humano.
+import { cancelSiteSubscription } from '@/lib/site-subscription';
 import { getSupportFaq } from './support-faq';
 import { logOpenAIUsage } from './openai-usage';
 import glossary from './app-ui-glossary.json';
@@ -47,6 +48,7 @@ export const AUTO_INTENTS = new Set([
   'excluir_conta',  // a FAQ tem o passo a passo; se não deu certo, o modelo marca needsHuman
   'email_errado',   // assinou pelo site com o e-mail errado: o código localiza, confere e corrige (lib/email-fix)
   'desinteresse',   // "não tenho mais interesse": agradece e pergunta o que faltou, sem insistir nem desligar nada
+  'cancelamento',   // quer cancelar a PRÓPRIA assinatura: entende o motivo, uma tentativa de reverter e cancela (site) ou orienta (loja)
 ]);
 
 // Status da assinatura em palavras (o modelo não sabe que "none" é a degustação).
@@ -79,6 +81,11 @@ export interface SupportUserContext {
   appVersion?: string | null;
   verified?: boolean;                 // confirmado pelo código do app (ou e-mail do próprio remetente)
   emailNotFound?: string | null;      // e-mail digitado que não tem cadastro
+  subscriptionSource?: 'site' | 'apple' | 'google' | null; // por onde assinou (site = dá para cancelar daqui)
+  subscriptionPlan?: 'monthly' | 'yearly' | null;
+  accountAgeDays?: number | null;     // dias desde o cadastro
+  lastPracticeDaysAgo?: number | null; // dias desde a última atividade (null = nunca praticou)
+  activeDays14?: number | null;       // em quantos dos últimos 14 dias praticou
 }
 
 export interface SupportTurn { role: 'user' | 'assistant'; content: string; }
@@ -104,6 +111,10 @@ function systemPrompt(ctx: SupportUserContext, faq: string, channel?: string, to
     ctx.placementTestDone != null ? (ctx.placementTestDone ? 'já fez o teste de nível' : 'ainda não fez o teste de nível') : null,
     ctx.platform ? `celular ${ctx.platform === 'ios' ? 'iPhone' : ctx.platform === 'android' ? 'Android' : ctx.platform}` : null,
     ctx.appVersion ? `app versão ${ctx.appVersion}` : null,
+    ctx.subscriptionSource ? `assinou pelo ${ctx.subscriptionSource === 'site' ? 'site (queizy.com)' : ctx.subscriptionSource === 'apple' ? 'App Store (Apple)' : 'Google Play'}${ctx.subscriptionPlan ? `, plano ${ctx.subscriptionPlan === 'yearly' ? 'Anual' : 'Mensal'}` : ''}` : null,
+    ctx.accountAgeDays != null ? `conta criada há ${ctx.accountAgeDays} dia(s)` : null,
+    ctx.lastPracticeDaysAgo != null ? `última atividade há ${ctx.lastPracticeDaysAgo} dia(s)` : (ctx.identified ? 'nunca fez uma atividade' : null),
+    ctx.activeDays14 != null ? `estudou em ${ctx.activeDays14} dos últimos 14 dias` : null,
   ].filter(Boolean).join(', ') : '';
   const APP_BUTTON = 'no app, em Perfil > Ajuda > Ajuda e suporte > Falar no WhatsApp (assim a conta é reconhecida na hora)';
   const who = ctx.identified && ctx.verified !== false
@@ -148,7 +159,12 @@ REGRAS:
 - Assinou pelo site (queizy.com/assinar) e digitou o e-mail errado, ou pagou pelo site e não recebeu o acesso / não consegue entrar porque o e-mail estava errado: intent email_errado, needsHuman=false. Preencha "emailFix" com o que a pessoa disse em TODA a conversa: correctEmail (o e-mail certo dela), wrongEmail (o que foi digitado na compra, se souber), fullName (nome completo usado no pagamento) e cardLast4 (só os 4 últimos dígitos do cartão, se pagou no cartão). Campo não informado = null. NUNCA peça o número inteiro do cartão, CPF ou senha. O "reply" pode ficar vazio: o sistema confere a compra e responde.
 - Esqueceu a senha, não consegue entrar ou não recebeu o e-mail para criar a senha: intent reset_senha (ou acesso_login), needsHuman=false. Preencha "accessEmail" com o e-mail que a pessoa diz usar na conta (null se não disse). O sistema manda o link para esse e-mail e responde.
 - Assinou pelo app (App Store ou Google Play) e o acesso não foi liberado / continua bloqueado: intent restaurar_compra, needsHuman=false, e responda com o passo a passo da FAQ (Restaurar compras). O sistema também confere a assinatura na loja.
-- Se a pessoa diz que não tem mais interesse, desistiu ou não quer mais usar ("não estou mais interessada", "não quero mais", "pode tirar meu e-mail"), sem pedir para cancelar assinatura nem excluir a conta: intent desinteresse, needsHuman=false. Agradeça por ter experimentado, sem insistir e sem oferecer desconto, e pergunte com interesse genuíno o que aconteceu: o que não funcionou ou faltou e o que poderíamos melhorar, dizendo que a opinião dela ajuda a construir um app melhor. Diga que a conta continua lá se quiser voltar. Não diga que vai parar de enviar mensagens. Se ela pedir para excluir a conta ou cancelar a assinatura, use excluir_conta ou como_cancelar.
+- PEDIDO PARA CANCELAR A PRÓPRIA ASSINATURA (ou o teste grátis): intent cancelamento, needsHuman=false. Siga em ordem, olhando o histórico da conversa:
+  1) Primeira mensagem sobre cancelar, sem motivo dito: NÃO mande passo a passo, NÃO pergunte se a pessoa "já decidiu" e ainda NÃO diga que dá para cancelar por aqui. Acolha em uma frase e pergunte o MOTIVO, com interesse genuíno, citando um dado concreto da conta quando houver (dias de uso, última atividade). Ex.: "Vi que você estudou nos dois primeiros dias e depois não voltou. Aconteceu alguma coisa? Me conta o que não funcionou para você." cancelNow=false.
+  2) Motivo dito (agora ou antes): faça UMA única tentativa de reverter, ligada ao motivo, curta e sem pressão, e pergunte se quer tentar ou se prefere cancelar mesmo. cancelNow=false. Ideias por motivo (só o que a FAQ confirma): falta de tempo → 5 minutos por dia já fazem diferença e dá para escolher o horário do lembrete (Perfil > Horário do lembrete); difícil ou fácil demais → refazer o teste de nível (Perfil > Refazer teste de nível); problema no app → resolva com a FAQ ou passe para a equipe (needsHuman=true); preço → o plano Anual sai por cerca de R$ 16,67 por mês. NUNCA ofereça desconto, cupom, mês grátis ou reembolso que não esteja na FAQ.
+  3) Pessoa mantém o pedido depois da tentativa, OU já veio decidida e firme ("cancela agora", "já decidi", "não quero conversa", segunda vez que pede), OU fala de cobrança indevida: cancele sem nova tentativa. Se assinou pelo site: cancelNow=true e a resposta confirma de forma simples que a assinatura foi cancelada e que nenhuma cobrança nova será feita (o sistema cancela e ajusta o texto se der erro); se ainda não disse o motivo, pergunte por último, em uma frase, o que podemos melhorar. Se assinou pela App Store ou Google Play: a equipe não consegue cancelar por lá; passe o caminho da FAQ SÓ da loja dele (sem perguntar onde assinou), cancelNow=false. Não sabe por onde assinou: pergunte.
+  Nunca insista mais de uma vez. Nunca peça para a pessoa justificar o cancelamento como condição. Se a pessoa só quer SABER como cancelar (dúvida geral, sem dizer que quer cancelar), use como_cancelar.
+- Se a pessoa diz que não tem mais interesse, desistiu ou não quer mais usar ("não estou mais interessada", "não quero mais", "pode tirar meu e-mail"), sem pedir para cancelar assinatura nem excluir a conta: intent desinteresse, needsHuman=false. Agradeça por ter experimentado, sem insistir e sem oferecer desconto, e pergunte com interesse genuíno o que aconteceu: o que não funcionou ou faltou e o que poderíamos melhorar, dizendo que a opinião dela ajuda a construir um app melhor. Diga que a conta continua lá se quiser voltar. Não diga que vai parar de enviar mensagens. Se ela pedir para excluir a conta ou cancelar a assinatura, use excluir_conta ou cancelamento.
 - Se o usuário pede uma função que não existe na FAQ, não prometa nada: agradeça a sugestão, diga que vai para a equipe e use intent sugestao (needsHuman=false).
 - Seja breve (no máximo alguns parágrafos curtos). Texto corrido, sem Markdown (sem **, # ou listas com marcação), salvo onde dito abaixo. Não peça dados sensíveis (senha, cartão).
 - Tom humano e acolhedor, como uma pessoa da equipe (sem parecer robô, sem repetir frases prontas).${tone.firstReply ? `
@@ -160,10 +176,10 @@ REGRAS:
 - ${who}
 
 Classifique a intenção em UM destes intents:
-reset_senha, como_cancelar, planos_precos, como_usar, onde_fica, problema_uso, restaurar_compra, acesso_login, saudacao, sugestao, encerramento, desinteresse, reembolso, cobranca, excluir_conta, email_errado, bug_tecnico, reclamacao, outro.
+reset_senha, como_cancelar, cancelamento, planos_precos, como_usar, onde_fica, problema_uso, restaurar_compra, acesso_login, saudacao, sugestao, encerramento, desinteresse, reembolso, cobranca, excluir_conta, email_errado, bug_tecnico, reclamacao, outro.
 
 Responda SOMENTE um JSON com as chaves:
-{"intent": "<um dos intents>", "reply": "<resposta para o usuário, no idioma da mensagem dele>", "lang": "pt" | "en" (idioma da sua resposta), "needsHuman": <true|false>, "reason": "<por que precisa de humano, ou vazio>", "emailFix": {"correctEmail": null, "wrongEmail": null, "fullName": null, "cardLast4": null} (só no intent email_errado), "accessEmail": null (só em reset_senha / acesso_login)}
+{"intent": "<um dos intents>", "reply": "<resposta para o usuário, no idioma da mensagem dele>", "lang": "pt" | "en" (idioma da sua resposta), "needsHuman": <true|false>, "reason": "<por que precisa de humano, ou vazio>", "emailFix": {"correctEmail": null, "wrongEmail": null, "fullName": null, "cardLast4": null} (só no intent email_errado), "accessEmail": null (só em reset_senha / acesso_login), "cancelNow": false (true só no intent cancelamento, passo 3, assinatura pelo site), "cancelReason": "<motivo do cancelamento em poucas palavras, ou vazio>"}
 
 FAQ:
 ${faq}`;
@@ -191,7 +207,7 @@ export async function runSupportAgent(input: {
     { role: 'user', content: input.userText },
   ];
 
-  let parsed: { intent?: string; reply?: string; lang?: string; needsHuman?: boolean; reason?: string; emailFix?: Record<string, string | null>; accessEmail?: string | null } = {};
+  let parsed: { intent?: string; reply?: string; lang?: string; needsHuman?: boolean; reason?: string; emailFix?: Record<string, string | null>; accessEmail?: string | null; cancelNow?: boolean; cancelReason?: string } = {};
   try {
     const res = await aiFetch(OPENAI_URL, {
       method: 'POST',
@@ -277,13 +293,37 @@ export async function runSupportAgent(input: {
     }
   }
 
+  // Cancelamento confirmado de assinatura do site: o código cancela (e apaga cobrança em aberto) antes de responder.
+  // Só para conta confirmada (e-mail do próprio remetente, código do app ou WhatsApp verificado).
+  if (intent === 'cancelamento' && parsed.cancelNow === true) {
+    const ctx = input.context;
+    if (!ctx.userId || ctx.verified === false || ctx.subscriptionSource !== 'site') {
+      needsHuman = true; reason = `Pediu para cancelar e a IA não pôde cancelar sozinha (${!ctx.userId ? 'conta não identificada' : ctx.verified === false ? 'conta não confirmada' : 'assinatura não é do site'}).`;
+    } else {
+      const r = await cancelSiteSubscription(ctx.userId, { deleteOpen: true, email: ctx.email, source: 'suporte-ia' })
+        .catch(e => ({ status: 'error' as const, message: e instanceof Error ? e.message : String(e) }));
+      if (r.status === 'cancelled' || r.status === 'no_renewal') {
+        // A resposta do modelo já confirma; fica só garantir que diga que não haverá cobrança.
+        if (!/cobran|charge/i.test(reply)) {
+          reply += replyLang === 'en' ? '\n\nNo new charges will be made.' : '\n\nNenhuma cobrança nova será feita.';
+        }
+      } else {
+        needsHuman = true; reason = `Pediu para cancelar a assinatura do site e o cancelamento automático falhou (${r.status}${'message' in r ? `: ${r.message}` : ''}).`;
+        reply = replyLang === 'en'
+          ? 'I asked our team to cancel your subscription right now. You will get a confirmation shortly, and no new charges will be made.'
+          : 'Pedi para a equipe cancelar a sua assinatura agora. Você recebe a confirmação em seguida, e nenhuma cobrança nova será feita.';
+      }
+    }
+  }
+  if (intent === 'cancelamento' && parsed.cancelReason) reason = reason ? `${reason} Motivo: ${parsed.cancelReason}` : `Motivo do cancelamento: ${parsed.cancelReason}`;
+
   // Só auto-envia se o modelo não pediu humano E o intent está na whitelist E há resposta.
   // Sugestão de função: agradece e registra (a análise da conversa leva para o /admin).
   const autoSend = !needsHuman && (AUTO_INTENTS.has(intent) || intent === 'sugestao') && reply.length > 0;
   // Celular em inglês: telas e botões citados entre aspas saem com o nome que aparece no app.
   let finalReply = input.lang === 'en' ? toEnglishLabels(reply) : reply;
   // Resposta a uma dúvida termina com uma pergunta (mantém a conversa e mostra se resolveu).
-  if (autoSend && !['encerramento', 'saudacao', 'sugestao', 'email_errado'].includes(intent) && !/\?\s*$/.test(reply)) {
+  if (autoSend && !['encerramento', 'saudacao', 'sugestao', 'email_errado', 'cancelamento'].includes(intent) && !/\?\s*$/.test(reply)) {
     const asks = replyLang === 'en'
       ? ['Did that help?', 'Any other questions?', 'Did it work?', 'Is that what you needed?']
       : ['Consegui ajudar?', 'Ficou alguma dúvida?', 'Deu certo por aí?', 'Era isso que você precisava?'];

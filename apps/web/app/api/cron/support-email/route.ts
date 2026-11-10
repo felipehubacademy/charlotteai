@@ -10,9 +10,10 @@ export const maxDuration = 300;
 import { NextRequest, NextResponse } from 'next/server';
 import { listInboxMessages, sendEmail as graphSendEmail, InboxMessage } from '@/lib/microsoft-graph-email-service';
 import { runSupportAgent } from '@/lib/support-agent';
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import {
   findUserContext, isMessageProcessed, upsertConversation, logMessage,
-  setConversationStatus, escalate, aiShouldStaySilent, isPureAck,
+  setConversationStatus, escalate, aiShouldStaySilent, isPureAck, noteCancelReason,
 } from '@/lib/support-service';
 
 const ADMIN_SECRET = process.env.ADMIN_SECRET ?? '';
@@ -104,7 +105,13 @@ export async function POST(req: NextRequest) {
 
     // Resposta a um e-mail nosso traz o original citado: a IA lê só o texto novo do aluno.
     const agentText = fresh ? `${m.subject}\n\n${fresh}`.slice(0, 4000) : userText;
-    const decision = await runSupportAgent({ userText: agentText, context, contactEmail: m.from });
+    // Histórico da conversa (mesma thread do e-mail), para a IA seguir o fio (ex.: motivo do cancelamento já dito).
+    const { data: hist } = await getSupabaseAdmin().from('support_messages').select('direction, body')
+      .eq('conversation_id', convId).neq('author', 'system').order('created_at', { ascending: false }).limit(9);
+    const history = ((hist ?? []) as { direction: string; body: string }[]).slice(1).reverse()
+      .map(h => ({ role: (h.direction === 'in' ? 'user' : 'assistant') as 'user' | 'assistant', content: freshText(h.body) || h.body }));
+    const decision = await runSupportAgent({ userText: agentText, history, context, contactEmail: m.from });
+    await noteCancelReason(convId, decision);
 
     if (decision.autoSend) {
       await graphSendEmail({ to: m.from, subject: `Re: ${m.subject}`, html: replyHtml(decision.reply) });

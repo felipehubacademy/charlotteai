@@ -4,7 +4,7 @@
 // O aluno está logado, então é sempre identificado e confirmado.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { runSupportAgent, guessLang, type SupportTurn } from '@/lib/support-agent';
-import { aiShouldStaySilent, findUserContext, upsertConversation, logMessage, setConversationStatus, escalate, ticketOpenedText } from '@/lib/support-service';
+import { aiShouldStaySilent, findUserContext, upsertConversation, logMessage, setConversationStatus, escalate, ticketOpenedText, noteCancelReason } from '@/lib/support-service';
 import { sendDirectPush } from '@/lib/rally';
 
 const WAITING_PT = 'Recebido! A equipe já está com o seu caso e responde por aqui.';
@@ -53,7 +53,7 @@ export async function handleAppMessage(userId: string, rawText: string, lang: 'p
   }
 
   const { data: hist } = await supabase.from('support_messages').select('direction, body')
-    .eq('conversation_id', convId).order('created_at', { ascending: false }).limit(9);
+    .eq('conversation_id', convId).neq('author', 'system').order('created_at', { ascending: false }).limit(9);
   const history: SupportTurn[] = ((hist ?? []) as { direction: string; body: string }[]).slice(1).reverse()
     .map(h => ({ role: h.direction === 'in' ? 'user' : 'assistant', content: h.body }));
   const { count: recentOut } = await supabase.from('support_messages').select('id', { count: 'exact', head: true })
@@ -63,6 +63,7 @@ export async function handleAppMessage(userId: string, rawText: string, lang: 'p
     userText: text, history, context, channel: 'app', lang,
     firstName: (context.name ?? '').trim().split(/\s+/)[0] || null, firstReply: !recentOut,
   });
+  await noteCancelReason(convId, decision);
 
   // Mesmo critério do WhatsApp: resposta automática só para os assuntos liberados; o resto vira ticket.
   if (decision.autoSend) {
