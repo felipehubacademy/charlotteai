@@ -37,6 +37,9 @@ export async function logOpsError(area: OpsArea, route: string, err: unknown, de
 
 type Alert = { kind: string; message: string };
 
+/** Tipos que o vigia confere a cada rodada (e por isso consegue dar como resolvidos sozinho). */
+const WATCH_KINDS = ['error_checkout', 'error_webhook', 'error_auth', 'error_asaas', 'card_declines', 'no_sales', 'access_check_failed', 'webhook_silent', 'email_stuck'];
+
 async function recentlyAlerted(kind: string): Promise<boolean> {
   const { count } = await getSupabaseAdmin().from('ops_alerts').select('id', { count: 'exact', head: true })
     .eq('kind', kind).gte('created_at', new Date(Date.now() - ALERT_EVERY_MS).toISOString());
@@ -62,7 +65,9 @@ async function deliver(alerts: Alert[]): Promise<{ sent: number }> {
   // Texto livre só passa dentro da janela de 24 h; fora dela, o modelo aprovado.
   if (wa) waOk = (await sendWhatsAppText(wa, text)).ok || (await sendAlertTemplate(wa, fresh.map(a => a.message).join(' | '))).ok;
   for (const a of fresh) {
-    await supabase.from('ops_alerts').insert({ kind: a.kind, message: a.message, sent_email: emailOk, sent_whatsapp: waOk } as never);
+    // "Acesso devolvido" já nasce resolvido: o vigia corrigiu sozinho, o aviso é só para saber.
+    const done = a.kind === 'access_fixed' ? { resolved_at: new Date().toISOString(), resolved_by: 'vigia', resolved_how: 'auto' } : {};
+    await supabase.from('ops_alerts').insert({ kind: a.kind, message: a.message, sent_email: emailOk, sent_whatsapp: waOk, ...done } as never);
   }
   return { sent: fresh.length };
 }
@@ -162,6 +167,15 @@ export async function runCheckoutWatch(): Promise<{ alerts: Alert[]; fixed: numb
   // 6. Fila de e-mails travada (3+ tentativas sem sair).
   const { count: stuck } = await supabase.from('email_outbox').select('id', { count: 'exact', head: true }).is('sent_at', null).gte('attempts', 3);
   if ((stuck ?? 0) > 0) alerts.push({ kind: 'email_stuck', message: `${stuck} e-mail(s) presos na fila depois de 3 tentativas (pode ser link de senha de quem comprou).` });
+
+  // Resolução automática: alerta em aberto cujo problema não apareceu nesta rodada sai da Visão geral do /admin.
+  // "Vendas pararam" só é conferido das 8h à meia-noite; fora disso não dá para dizer que passou.
+  const still = new Set(alerts.map(a => a.kind));
+  const gone = WATCH_KINDS.filter(k => !still.has(k) && !(k === 'no_sales' && h < 8));
+  if (gone.length) {
+    await supabase.from('ops_alerts').update({ resolved_at: new Date().toISOString(), resolved_by: 'vigia', resolved_how: 'auto' } as never)
+      .in('kind', gone).is('resolved_at', null);
+  }
 
   const { sent } = await deliver(alerts);
   return { alerts, fixed, sent };

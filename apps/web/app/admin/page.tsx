@@ -5,7 +5,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { RefreshCw, TriangleAlert, CircleCheck, ArrowRight } from 'lucide-react';
+import { RefreshCw, TriangleAlert, CircleCheck, ArrowRight, Check } from 'lucide-react';
 import { useAdminMe, canArea } from '@/lib/admin-context';
 import AdminLoading from '@/components/admin/AdminLoading';
 import type { Overview, TodayMetric, DayPoint } from '@/lib/admin-overview';
@@ -174,6 +174,22 @@ export default function AdminOverviewPage() {
     finally { if (!silent) setLoading(false); }
   }, []);
   useEffect(() => { load(); }, [load]);
+  // Botão "Resolvido" dos alertas do checkout: some na hora; o servidor grava e recalcula a Visão geral.
+  const [resolving, setResolving] = useState(false);
+  const resolveAlerts = useCallback(async (key: string) => {
+    setResolving(true);
+    try {
+      const res = await fetch('/api/admin/ops-alerts', { method: 'PATCH' });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(json.error ?? `HTTP ${res.status}`);
+      setData(d => {
+        if (!d) return d;
+        const items = d.alerts.items.map(i => i.key === key ? { ...i, ok: true, resolvable: false, href: undefined, label: 'Pagamentos sem falha' } : i);
+        return { ...d, alerts: { allOk: items.every(i => i.ok), items } };
+      });
+    } catch (e) { setError(`Não deu para marcar como resolvido: ${(e as Error).message}`); }
+    finally { setResolving(false); }
+  }, []);
   // Atualiza sozinha com a aba aberta: usuários a cada 5 s, o resto a cada 60 s; tudo na hora em que a aba volta.
   const [usersTick, setUsersTick] = useState(0); // conta as atualizações rápidas (contador e efeito no total)
   const loadUsers = useCallback(async () => {
@@ -233,6 +249,11 @@ export default function AdminOverviewPage() {
                     <div key={i.key} className="adm-alert warn" style={{ alignItems: 'center' }}>
                       <TriangleAlert size={14} style={{ flexShrink: 0 }} />
                       <span style={{ flex: 1 }}>{i.label}</span>
+                      {i.resolvable && (
+                        <button onClick={() => resolveAlerts(i.key)} disabled={resolving} className="adm-btn-sm ghost" style={{ flexShrink: 0 }}>
+                          <Check size={12} /> {resolving ? 'Salvando' : 'Resolvido'}
+                        </button>
+                      )}
                       {i.href && <Link href={i.href} className="adm-btn-sm ghost" style={{ flexShrink: 0 }}>Ver <ArrowRight size={12} /></Link>}
                     </div>
                   ))}

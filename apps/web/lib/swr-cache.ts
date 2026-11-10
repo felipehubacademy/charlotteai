@@ -20,3 +20,13 @@ export async function swrCached<T>(key: string, freshMs: number, staleMs: number
   await save(value).catch(() => {});
   return value;
 }
+
+/** Recalcula e guarda por trás (depois da resposta), para a próxima leitura já vir atualizada. */
+export function refreshCached<T>(key: string, compute: () => Promise<T>): void {
+  after(async () => {
+    try {
+      const value = await compute();
+      await getSupabaseAdmin().from('provider_cost_cache').upsert({ key, payload: value as never, updated_at: new Date().toISOString() } as never);
+    } catch (e) { console.error('[swr-cache]', key, e); }
+  });
+}

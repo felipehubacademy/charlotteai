@@ -38,7 +38,8 @@ const CHANNEL_LABEL: Record<string, string> = { email: 'E-mail', whatsapp: 'What
 
 export interface DayPoint { date: string; value: number }
 export interface TodayMetric { key: string; label: string; today: number; yesterday: number; series: DayPoint[]; money?: boolean }
-export interface AlertItem { key: string; ok: boolean; label: string; href?: string }
+/** resolvable: mostra o botão "Resolvido" (alertas do checkout guardados em ops_alerts). */
+export interface AlertItem { key: string; ok: boolean; label: string; href?: string; resolvable?: boolean }
 
 // Custo de servir por usuário no mês: lançamentos do Financeiro marcados como custo de operação
 // + taxas de venda retidas na fonte (lojas e site = bruto - líquido de cada cobrança).
@@ -159,7 +160,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     paged<ConvRow>((a, b) => supabase.from('support_conversations').select('id, channel, status, created_at, last_inbound_at').gte('created_at', weekAgo).order('id').range(a, b)),
     paged<ConvRow>((a, b) => supabase.from('support_conversations').select('id, channel, status, created_at, last_inbound_at').in('status', ['escalated', 'open']).order('id').range(a, b)),
     supabase.rpc('capacity_usage'),
-    supabase.from('ops_alerts').select('kind, message, created_at').gte('created_at', iso(nowMs - DAY)).order('created_at', { ascending: false }).limit(50),
+    supabase.from('ops_alerts').select('kind, message, created_at').is('resolved_at', null).gte('created_at', iso(nowMs - DAY)).order('created_at', { ascending: false }).limit(50),
     supabase.from('ops_errors').select('area').in('area', ['checkout', 'webhook', 'asaas']).gte('created_at', iso(nowMs - 3600000)).limit(200),
     // Instagram: rascunhos que já deveriam estar aprovados (regra em lib/instagram-approval-alert).
     supabase.from('instagram_posts').select('id', { count: 'exact', head: true }).eq('status', 'rascunho')
@@ -393,14 +394,15 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
 
   // Pagamentos: alertas do vigia do checkout nas últimas 24 h e erros nas rotas de pagamento na última hora.
   const allOpsAlerts = (opsAlertsRes.data ?? []) as { kind: string; message: string }[];
-  const opsAlerts = allOpsAlerts.filter(a => a.kind !== 'email_stuck' && a.kind !== INSTAGRAM_ALERT_KIND);
+  // Avisos do Instagram (domingo e diário) têm cartão próprio, que some sozinho ao aprovar os posts.
+  const opsAlerts = allOpsAlerts.filter(a => a.kind !== 'email_stuck' && !a.kind.startsWith('instagram_'));
   const opsErrors = (opsErrorsRes.data ?? []).length;
   if (opsAlerts.length || opsErrors) {
     const parts: string[] = [];
     if (opsErrors) parts.push(`${opsErrors} ${opsErrors === 1 ? 'erro' : 'erros'} no checkout ou no pagamento na última hora`);
     const kinds = [...new Set(opsAlerts.map(a => a.kind))];
     if (kinds.length) parts.push(`${opsAlerts.length} ${opsAlerts.length === 1 ? 'alerta' : 'alertas'} do checkout nas últimas 24 h: ${opsAlerts[0].message}`);
-    items.push({ key: 'payments', ok: false, label: parts.join(' · '), href: '/admin/commercial?tab=health' });
+    items.push({ key: 'payments', ok: false, label: parts.join(' · '), href: '/admin/commercial?tab=health', resolvable: opsAlerts.length > 0 });
   } else {
     items.push({ key: 'payments', ok: true, label: 'Pagamentos sem falha' });
   }
