@@ -119,20 +119,20 @@ export default function AIConsentScreen() {
               icon={<ChatCircle size={22} color={C.greenDark} weight="bold" />}
               name={isPt ? 'Converso com inteligência artificial' : 'I talk using artificial intelligence'}
               data={isPt
-                ? 'Suas mensagens vão para um provedor de IA só para gerar a resposta. Nada fica guardado lá.'
-                : 'Your messages go to an AI provider only to generate the reply. Nothing is kept there.'}
+                ? 'Suas mensagens, sua voz nas conversas e seu primeiro nome vão para a OpenAI só para gerar a resposta. Não são usados para treinar a IA.'
+                : 'Your messages, your voice in conversations and your first name go to OpenAI only to generate the reply. They are not used to train the AI.'}
             />
             <ServiceRow
               icon={<SpeakerHigh size={22} color={C.greenDark} weight="bold" />}
               name={isPt ? 'Minha voz é gerada por IA' : 'My voice is AI-generated'}
-              data={isPt ? 'Só o texto da fala é enviado, sem dados seus.' : 'Only the text of what I say is sent, none of your data.'}
+              data={isPt ? 'Só o texto da fala vai para a OpenAI e a ElevenLabs, que geram as vozes. Nenhum dado seu.' : 'Only the text of what I say goes to OpenAI and ElevenLabs, which create the voices. None of your data.'}
             />
             <ServiceRow
               icon={<Microphone size={22} color={C.greenDark} weight="bold" />}
               name={isPt ? 'Escuto sua pronúncia' : 'I listen to your pronunciation'}
               data={isPt
-                ? 'O áudio do microfone é analisado na hora e descartado em seguida.'
-                : 'Microphone audio is analyzed on the spot and discarded right after.'}
+                ? 'O áudio do microfone é analisado na hora pelo reconhecimento de fala do seu celular (Apple ou Google), pela OpenAI e pela Microsoft, e descartado em seguida.'
+                : 'Microphone audio is analyzed on the spot by your phone\'s speech recognition (Apple or Google), OpenAI and Microsoft, then discarded.'}
               last
             />
           </View>
@@ -140,8 +140,8 @@ export default function AIConsentScreen() {
           {/* Nota legal */}
           <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center', lineHeight: 19, marginTop: 18, paddingHorizontal: 4 }}>
             {isPt
-              ? 'Nunca vendemos nem compartilhamos seus dados pessoais. Ao continuar, você concorda com isso e com a nossa '
-              : 'We never sell or share your personal data. By continuing, you agree to this and to our '}
+              ? 'Não vendemos seus dados. Só compartilhamos com esses serviços o necessário para o app funcionar. Ao tocar no botão abaixo, você autoriza esse envio e concorda com a nossa '
+              : 'We don\'t sell your data. We only share with these services what the app needs to work. By tapping the button below, you allow this and agree to our '}
             <AppText
               style={{ color: C.greenDark, textDecorationLine: 'underline' }}
               onPress={() => Linking.openURL('https://queizy.com/privacidade')}

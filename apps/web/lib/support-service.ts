@@ -19,17 +19,18 @@ function brtMonthStart(): string {
 export async function findUserContext(email?: string | null, userId?: string | null): Promise<SupportUserContext> {
   if (!email && !userId) return { identified: false };
   const supabase = getSupabaseAdmin();
-  const cols = 'id, name, email, charlotte_level, subscription_status, is_institutional, app_platform, app_version, live_voice_seconds_used, live_voice_reset_date, live_voice_bonus_seconds, placement_test_done';
+  const cols = 'id, name, email, charlotte_level, subscription_status, subscription_product, created_at, is_institutional, app_platform, app_version, live_voice_seconds_used, live_voice_reset_date, live_voice_bonus_seconds, placement_test_done';
   const q = supabase.from('charlotte_users').select(cols);
   const { data } = userId ? await q.eq('id', userId).maybeSingle() : await q.eq('email', email!.toLowerCase()).maybeSingle();
   const u = data as {
     id: string; name: string | null; email: string; charlotte_level: string | null; subscription_status: string | null;
     is_institutional: boolean | null; app_platform: string | null; app_version: string | null;
     live_voice_seconds_used: number | null; live_voice_reset_date: string | null; live_voice_bonus_seconds: number | null;
-    placement_test_done: boolean | null;
+    placement_test_done: boolean | null; subscription_product: string | null; created_at: string;
   } | null;
   if (!u) return { identified: false, email: email ?? null };
   const { data: prog } = await supabase.from('charlotte_progress').select('total_xp, streak_days').eq('user_id', u.id).maybeSingle();
+  const usage = await subscriptionAndUsage(u.id, u.subscription_product, u.app_platform, u.created_at).catch(() => ({}));
   const p = prog as { total_xp: number | null; streak_days: number | null } | null;
   // Mesma regra do app (lib/liveVoiceUsage.ts) e do /api/realtime-token: 20 min Premium/institucional,
   // 5 min no resto; degustação = 3 min uma vez só (sem renovação e sem bônus); bônus não vence.
@@ -48,6 +49,37 @@ export async function findUserContext(email?: string | null, userId?: string | n
     totalXP: p?.total_xp ?? 0, streakDays: p?.streak_days ?? 0,
     liveVoiceMinutesLeft: Math.floor(left / 60),
     platform: u.app_platform, appVersion: u.app_version,
+    ...usage,
+  };
+}
+
+const DAY_MS = 86_400_000;
+
+/** Por onde assinou e como tem usado o app (para a IA entender um pedido de cancelamento). */
+async function subscriptionAndUsage(userId: string, product: string | null, platform: string | null, createdAt: string): Promise<Partial<SupportUserContext>> {
+  const supabase = getSupabaseAdmin();
+  let source: SupportUserContext['subscriptionSource'] = null;
+  if ((product ?? '').startsWith('web_')) source = 'site';
+  else if (product) {
+    // Loja: a do último aviso do RevenueCat; sem aviso, a do celular.
+    const { data: ev } = await supabase.from('rc_webhook_events').select('payload').eq('app_user_id', userId)
+      .order('created_at', { ascending: false }).limit(1).maybeSingle();
+    const store = String((ev as { payload?: { store?: string } } | null)?.payload?.store ?? '');
+    source = store === 'APP_STORE' ? 'apple' : store === 'PLAY_STORE' ? 'google' : platform === 'ios' ? 'apple' : platform === 'android' ? 'google' : null;
+  }
+  const plan: SupportUserContext['subscriptionPlan'] = /year|annual|anual/i.test(product ?? '') ? 'yearly' : product ? 'monthly' : null;
+  const since = new Date(Date.now() - 14 * DAY_MS).toISOString();
+  const [{ data: last }, { data: recent }] = await Promise.all([
+    supabase.from('charlotte_practices').select('created_at').eq('user_id', userId).order('created_at', { ascending: false }).limit(1).maybeSingle(),
+    supabase.from('charlotte_practices').select('created_at').eq('user_id', userId).gte('created_at', since).limit(1000),
+  ]);
+  const lastAt = (last as { created_at: string } | null)?.created_at;
+  const days = new Set(((recent ?? []) as { created_at: string }[]).map(r => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(new Date(r.created_at))));
+  return {
+    subscriptionSource: source, subscriptionPlan: plan,
+    accountAgeDays: Math.floor((Date.now() - new Date(createdAt).getTime()) / DAY_MS),
+    lastPracticeDaysAgo: lastAt ? Math.floor((Date.now() - new Date(lastAt).getTime()) / DAY_MS) : null,
+    activeDays14: days.size,
   };
 }
 
@@ -279,4 +311,11 @@ export async function aiShouldStaySilent(conversationId: string, text: string): 
   const last = outs[0];
   const closedRecently = !!last && last.intent === 'encerramento' && now - new Date(last.created_at).getTime() < 30 * 60000;
   return closedRecently && isPureAck(text);
+}
+
+/** Pedido de cancelamento: guarda o motivo (e se a IA cancelou) como nota interna da conversa,
+ *  para a equipe e os Insights verem por que as pessoas cancelam. Não entra no histórico da IA. */
+export async function noteCancelReason(conversationId: string, d: { intent: string; reason: string }): Promise<void> {
+  if (d.intent !== 'cancelamento' || !d.reason) return;
+  await logMessage({ conversationId, direction: 'out', author: 'system', body: d.reason, intent: 'cancelamento' }).catch(() => {});
 }

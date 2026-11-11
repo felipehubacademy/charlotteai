@@ -7,9 +7,11 @@ export const dynamic = 'force-dynamic';
  * GET ?id=                                 conversa completa + aluno
  * POST { id, action: 'reply', body, close } responde (e-mail, WhatsApp ou chat do app + push) e registra
  * POST { id, action: 'status', status }    muda o status
+ * POST { id, action: 'cancel_site' }       cancela a assinatura do site do aluno e apaga cobrança em aberto
  * POST { id, action: 'take' }              assume o atendimento (avisa o aluno com o nome do atendente)
  */
 import { NextRequest, NextResponse } from 'next/server';
+import { cancelSiteSubscription } from '@/lib/site-subscription';
 import { getAdmin, can, audit } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
@@ -93,8 +95,8 @@ async function conversationDetail(id: string) {
   const [{ data: msgs }, userR] = await Promise.all([
     supabase.from('support_messages').select('id, direction, author, author_name, body, intent, auto_sent, created_at').eq('conversation_id', id).order('created_at').limit(500),
     c.user_id
-      ? supabase.from('charlotte_users').select('id, name, username, email, charlotte_level, subscription_status, is_institutional').eq('id', c.user_id).maybeSingle()
-      : supabase.from('charlotte_users').select('id, name, username, email, charlotte_level, subscription_status, is_institutional').ilike('email', c.contact).maybeSingle(),
+      ? supabase.from('charlotte_users').select('id, name, username, email, charlotte_level, subscription_status, subscription_product, is_institutional').eq('id', c.user_id).maybeSingle()
+      : supabase.from('charlotte_users').select('id, name, username, email, charlotte_level, subscription_status, subscription_product, is_institutional').ilike('email', c.contact).maybeSingle(),
   ]);
   return NextResponse.json({
     conversation: { id: c.id, channel: c.channel, contact: c.contact, subject: c.subject, status: c.status, agentName: c.support_agents?.name ?? null, createdAt: c.created_at, lastMessageAt: c.last_message_at, lastInboundAt: c.last_inbound_at,
@@ -174,6 +176,26 @@ export async function POST(req: NextRequest) {
     await setConversationStatus(c.id, body.close ? 'closed' : 'escalated');
     await audit(admin, 'support.reply', 'support_conversation', c.id);
     return NextResponse.json({ ok: true });
+  }
+
+  // Atendente cancela a assinatura do site do aluno (mesma regra do app e da IA) e apaga cobrança em aberto.
+  if (body.action === 'cancel_site') {
+    const { data: full } = await supabase.from('support_conversations').select('user_id').eq('id', c.id).maybeSingle();
+    let userId = (full as { user_id: string | null } | null)?.user_id ?? null;
+    if (!userId && c.channel === 'email') {
+      const { data: u } = await supabase.from('charlotte_users').select('id').ilike('email', c.contact).maybeSingle();
+      userId = (u as { id: string } | null)?.id ?? null;
+    }
+    if (!userId) return NextResponse.json({ error: 'Conta do aluno não encontrada nesta conversa.' }, { status: 404 });
+    const r = await cancelSiteSubscription(userId, { deleteOpen: true, source: `admin ${admin.email ?? ''}`.trim() });
+    await audit(admin, 'support.cancel_site', 'support_conversation', c.id, { user: userId, result: r.status });
+    if (r.status === 'cancelled') {
+      await logMessage({ conversationId: c.id, direction: 'out', author: 'system', body: `Assinatura do site cancelada por ${firstName ?? 'atendente'}${r.deletedCharges ? ` (${r.deletedCharges} cobrança(s) em aberto apagada(s))` : ''}.` });
+      return NextResponse.json({ ok: true, deletedCharges: r.deletedCharges });
+    }
+    const msg = r.status === 'not_site' ? 'Esta conta não tem assinatura pelo site.' : r.status === 'no_renewal' ? 'Compra no Pix anual: não renova, não há o que cancelar.'
+      : r.status === 'not_found' ? 'Assinatura não encontrada no processador.' : r.message;
+    return NextResponse.json({ error: msg }, { status: r.status === 'error' ? 502 : 400 });
   }
 
   if (body.action === 'status') {

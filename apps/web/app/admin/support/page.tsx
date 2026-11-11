@@ -214,7 +214,7 @@ function AgentModal({ mode, agent, onClose, onSave }: {
 interface Thread {
   conversation: { id: string; channel: string; contact: string; subject: string | null; status: string; agentName: string | null; createdAt: string; lastInboundAt: string | null; userVerified?: boolean; ticketCode?: string | null; takenBy?: string | null };
   messages: { id: string; direction: string; author: string; author_name: string | null; body: string; intent: string | null; auto_sent: boolean; created_at: string }[];
-  user: { id: string; name: string | null; username: string | null; email: string; charlotte_level: string | null; subscription_status: string; is_institutional: boolean } | null;
+  user: { id: string; name: string | null; username: string | null; email: string; charlotte_level: string | null; subscription_status: string; subscription_product?: string | null; is_institutional: boolean } | null;
 }
 const AUTHOR: Record<string, string> = { user: 'Aluno', agent: 'Agente automático', human: 'Atendente', system: 'Aviso ao aluno' };
 
@@ -289,6 +289,11 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
               <div style={{ display: 'flex', gap: 6 }}>
                 {c.status === 'escalated' && !c.takenBy && c.channel !== 'email' && (
                   <button className="adm-btn-sm primary" disabled={busy} onClick={() => post({ action: 'take' })}>Assumir atendimento</button>
+                )}
+                {(data?.user?.subscription_product ?? '').startsWith('web_') && data?.user?.subscription_status !== 'none' && (
+                  <button className="adm-btn-sm ghost" disabled={busy} onClick={() => {
+                    if (window.confirm('Cancelar a assinatura do site deste aluno? A renovação é desligada e cobranças em aberto são apagadas. O aluno não recebe mensagem automática.')) post({ action: 'cancel_site' });
+                  }}>Cancelar assinatura do site</button>
                 )}
                 {c.status !== 'closed'
                   ? <button className="adm-btn-sm ghost" disabled={busy} onClick={() => post({ action: 'status', status: 'closed' })}><Check size={12} /> Fechar sem responder</button>
