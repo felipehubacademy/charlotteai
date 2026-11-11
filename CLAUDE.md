@@ -54,3 +54,20 @@ botão, menu ou fluxo que o aluno usa:
 
 O workflow `.github/workflows/support-faq-check.yml` roda o check a cada push em
 `apps/mobile` e diariamente; se falhar, corrija a FAQ antes de seguir.
+
+## Revisão do Codex nos PRs (autorizada pelo Felipe em 2026-11-11)
+
+O Codex (GitHub) revisa sozinho todo PR aberto neste repositório; regras de revisão em `AGENTS.md`.
+
+**Quando usar PR:** mudanças em pagamentos, assinaturas, banco/migrations, pushes e e-mails em massa, IA do suporte
+e mudanças grandes. Ajustes de texto, de tela e urgências podem ir direto na `main`, como antes.
+
+**Fluxo:**
+1. Branch a partir da `main` atualizada, commit e `gh pr create`.
+2. `node scripts/codex-review.mjs <número do PR>` (espera ~5 min). Timeout: comentar `@codex review` e rodar de novo.
+3. Achados: **P0 e P1** corrigir no PR, enviar e comentar `@codex review` para nova revisão; **P2** corrigir se fizer
+   sentido agora, senão anotar no PR o porquê; **P3+** ignorar.
+4. **Codex sem achados P0/P1 (ou todos corrigidos e revisados de novo): fazer o merge sozinho** (`gh pr merge N --squash`),
+   sem pedir confirmação ao Felipe, e conferir o build da `main` na Vercel.
+
+PRs e outras branches não geram build de prévia na Vercel (`apps/web/scripts/vercel-ignore.sh`); só a `main` builda.
