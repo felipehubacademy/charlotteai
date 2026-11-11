@@ -93,9 +93,9 @@ export default function PrivacidadePage() {
         <Section title="6. Inteligência Artificial e tratamento de dados">
           <p style={{ marginBottom: 14 }}>O Queizy utiliza serviços de IA de terceiros para personalizar sua experiência de aprendizado. Antes do primeiro uso, o aplicativo solicita seu consentimento explícito para o envio de dados a esses serviços.</p>
           <DataTable rows={[
-            ['Respostas e exercícios', 'Suas mensagens de chat e respostas a exercícios são enviadas a um serviço de IA para gerar respostas personalizadas. Esses dados não são usados para treinar modelos.'],
-            ['Voz dos personagens e ligações', 'O texto das respostas dos personagens é enviado para síntese de voz. Nas ligações, o áudio da conversa é processado em tempo real para a resposta do personagem, junto com o seu primeiro nome, o seu nível e o assunto que você está estudando.'],
-            ['Fala e pronúncia', 'O áudio capturado pelo microfone é enviado para reconhecimento de fala e avaliação de pronúncia em tempo real e descartado logo depois, sem uso para treino.'],
+            ['Respostas e exercícios', 'Suas mensagens de chat e respostas a exercícios são enviadas à OpenAI para gerar respostas personalizadas. Esses dados não são usados para treinar modelos.'],
+            ['Voz dos personagens e ligações', 'O texto das respostas dos personagens é enviado à OpenAI e à ElevenLabs para síntese de voz. Nas ligações, o áudio da conversa é processado em tempo real pela OpenAI (Charlotte) ou pela ElevenLabs (demais personagens) para a resposta do personagem, junto com o seu primeiro nome, o seu nível e o assunto que você está estudando.'],
+            ['Fala e pronúncia', 'O áudio capturado pelo microfone é analisado em tempo real pelo reconhecimento de fala do próprio celular (Apple ou Google), pela OpenAI (transcrição) e pela Microsoft (avaliação de pronúncia), e descartado logo depois, sem uso para treino.'],
           ]} />
           <p style={{ marginTop: 16 }}>Você pode revogar seu consentimento de uso de IA a qualquer momento entrando em contato pelo e-mail <a href="mailto:privacidade@queizy.com" style={{ color: '#6B4BFF' }}>privacidade@queizy.com</a>, ficando ciente de que o aplicativo não funcionará sem esses serviços.</p>
         </Section>
