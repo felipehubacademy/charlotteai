@@ -40,7 +40,7 @@ function friendlyError(e: any, isPt: boolean): string {
     return isPt ? 'Sem conexão com o servidor. Confira a internet e tente de novo.' : 'No server connection. Check your internet and try again.';
   }
   if (code === 'PLAY_SERVICES_NOT_AVAILABLE') {
-    return isPt ? 'Este aparelho não tem o Google Play Services atualizado. Use o e-mail e a senha.' : 'This device doesn’t have up-to-date Google Play Services. Use your email and password.';
+    return isPt ? 'Os serviços do sistema deste aparelho precisam de atualização para entrar assim. Use o e-mail e a senha.' : 'This device’s system services need an update to sign in this way. Use your email and password.';
   }
   return isPt ? 'Não foi possível entrar agora. Tente de novo ou use o e-mail e a senha.' : 'We couldn’t sign you in right now. Try again or use your email and password.';
 }
