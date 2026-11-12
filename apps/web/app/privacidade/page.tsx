@@ -46,7 +46,7 @@ export default function PrivacidadePage() {
 
         <Section title="2. Dados que coletamos">
           <DataTable rows={[
-            ['Dados de cadastro', 'Nome, e-mail e senha (armazenada com hash seguro).'],
+            ['Dados de cadastro', 'Nome, e-mail e senha (armazenada com hash seguro). Se você entrar com a conta de uma loja de aplicativos ou de um serviço de login, recebemos dele apenas o seu nome e o seu e-mail (ou um e-mail oculto, se você escolher essa opção), sem acesso à sua senha nem a outros dados da conta.'],
             ['Perfil público e amigos', 'Seu @, foto de perfil, nível, amigos de estudo, pedidos de amizade, cutucadas, parabéns e competições de que você participa.'],
             ['Dados de uso', 'Histórico de conversas com a IA, progresso nas lições, streak diário, nível de inglês e preferências de aprendizado. Nas ligações (Live Voice, com a Charlotte ou com a Família Queizy), guardamos a transcrição em texto, um resumo e anotações curtas da conversa para o personagem lembrar do assunto na próxima ligação; você vê e apaga cada ligação em "Conversas anteriores".'],
             ['Dados de áudio', 'Gravações de voz em exercícios de pronúncia e conversas. Na pronúncia e nas ligações (Live Voice), o áudio é processado em tempo real e não é gravado. No Free Chat, os áudios das conversas (os seus e as respostas faladas) ficam guardados por 90 dias, num espaço privado, para você ouvir de novo; depois disso, fica só o texto.'],

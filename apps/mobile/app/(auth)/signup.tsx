@@ -12,6 +12,7 @@ import {
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
+import { SocialButtons } from '@/components/auth/SocialButtons';
 import { isValidEmailFormat, isDisposableEmail, suggestEmailCorrection } from '@/lib/emailValidation';
 import { systemIsPt } from '@/lib/systemLang';
 import { prefetchWelcomeVoice } from '@/lib/welcome';
@@ -203,6 +204,9 @@ export default function SignupScreen() {
               {isPt ? 'Comece grátis, sem cartão.' : 'Start free, no card needed.'}
             </AppText>
           </View>
+
+          {/* ── Apple / Google ── */}
+          <SocialButtons onError={setError} disabled={loading} />
 
           {/* ── Campos ── */}
           <View style={{ gap: 12, marginBottom: 24 }}>

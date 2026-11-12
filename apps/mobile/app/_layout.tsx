@@ -144,7 +144,7 @@ function AuthGuard() {
       // fired null, redirected to login, then TOKEN_REFRESHED brought a valid session),
       // navigate into the app. Skip if already inside (app) to avoid clobbering navigation.
       const onAuthScreen = pathname === '/' ||
-        pathname.includes('login') || pathname.includes('onboarding') ||
+        pathname.includes('login') || pathname.includes('signup') || pathname.includes('onboarding') ||
         pathname.includes('forgot') || pathname.includes('callback') ||
         pathname.includes('reset-password');
       if (!onAuthScreen) {

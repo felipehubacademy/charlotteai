@@ -4,6 +4,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { revokeAppleAuthorization } from '@/lib/apple-signin';
 
 export async function POST(request: NextRequest) {
   try {
@@ -77,7 +78,15 @@ export async function POST(request: NextRequest) {
       if (error) console.warn(`Cleanup warning (${table}):`, error.message);
     }
 
-    // 5. Deletar o usuario do auth (cascata cuida do resto via FK)
+    // 5. Login da Apple: desfaz o vínculo com o Apple ID (exigência da Apple). Best-effort.
+    const body = await request.json().catch(() => ({})) as { appleAuthorizationCode?: string | null };
+    const hasApple = user.identities?.some(i => i.provider === 'apple') ?? false;
+    if (hasApple && typeof body.appleAuthorizationCode === 'string' && body.appleAuthorizationCode) {
+      const revoked = await revokeAppleAuthorization(body.appleAuthorizationCode);
+      console.log(`Apple revoke for ${userId}: ${revoked ? 'ok' : 'falhou'}`);
+    }
+
+    // 6. Deletar o usuario do auth (cascata cuida do resto via FK)
     const { error: deleteErr } = await supabase.auth.admin.deleteUser(userId);
     if (deleteErr) {
       console.error('Failed to delete auth user:', deleteErr.message);

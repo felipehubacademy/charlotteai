@@ -12,7 +12,8 @@ Revise em português do Brasil. Priorize o que quebra produção, perde dinheiro
 - **Sem emojis** em arquivos do projeto (exceção: texto de push).
 - **Fornecedores:** texto público não cita nome de fornecedor de tecnologia (usar "inteligência artificial",
   "infraestrutura em nuvem" etc.). Exceção: a tela de consentimento de IA (`apps/mobile/app/(app)/ai-consent.tsx`) e a
-  seção 6 da política de privacidade, que nomeiam os serviços de IA por exigência da Apple.
+  seção 6 da política de privacidade, que nomeiam os serviços de IA por exigência da Apple. Apple e Google como lojas
+  (App Store, Google Play) e como botões de login ("Continuar com a Apple/o Google", exigência das duas) podem ser citados.
 - **Banco (Supabase/PostgREST):** leitura para em 1.000 linhas e `.in()` com mais de ~600 ids dá erro 400. Leituras grandes
   usam `apps/web/lib/db-batch` (`readAll`/`readIn`). Leitura que pode passar de 1.000 linhas sem paginação é P1.
 - **XP:** tipo novo de prática que dá XP precisa entrar no guard `charlotte.guard_practice_insert` (migration nova).

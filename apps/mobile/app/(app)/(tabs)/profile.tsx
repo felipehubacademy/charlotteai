@@ -30,6 +30,7 @@ import { openLink } from '@/lib/openLink';
 import { AppText } from '@/components/ui/Text';
 import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import { useAuth } from '@/hooks/useAuth';
+import { appleAuthorizationCodeForRevoke, sessionHasApple } from '@/lib/socialAuth';
 import { supabase } from '@/lib/supabase';
 import { restorePurchases, openManageSubscriptions, syncSubscriptionToSupabase, subscriptionStore } from '@/lib/purchases';
 import { WebSubscriptionSheet } from '@/components/subscription/WebSubscriptionSheet';
@@ -309,9 +310,13 @@ export default function ProfileTab() {
                     try {
                       const { data: { session } } = await supabase.auth.getSession();
                       if (!session?.access_token) throw new Error('No session');
+                      // Conta com login da Apple: a Apple exige desfazer o vínculo ao excluir. Pede um código
+                      // novo (janela da Apple) e o servidor revoga. Se a pessoa fechar, a exclusão segue igual.
+                      const appleAuthorizationCode = sessionHasApple(session) ? await appleAuthorizationCodeForRevoke() : null;
                       const res = await fetch(`${API_BASE_URL}/api/delete-account`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.access_token}` },
+                        body: JSON.stringify({ appleAuthorizationCode }),
                       });
                       if (!res.ok) throw new Error('Delete failed');
                       await signOut();

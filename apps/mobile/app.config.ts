@@ -5,11 +5,19 @@ import { withAndroidManifest } from '@expo/config-plugins';
 // GOOGLE_SERVICES_JSON is a file-type EAS secret — EAS writes the file
 // to a temp path and sets the env var to that path automatically.
 
+// Login com Google (ids públicos, não são segredo). O cliente iOS vira também o esquema de URL
+// que o SDK do Google usa para voltar ao app. Vazio = botão do Google não aparece.
+const GOOGLE_WEB_CLIENT_ID: string = '664193430418-7puhnj4179ur5dr8rbs6qgju15vqshtv.apps.googleusercontent.com';
+const GOOGLE_IOS_CLIENT_ID: string = '664193430418-i176jrci0jbjoks83o5chac1b9fs85t3.apps.googleusercontent.com';
+const googleIosUrlScheme = GOOGLE_IOS_CLIENT_ID
+  ? `com.googleusercontent.apps.${GOOGLE_IOS_CLIENT_ID.replace('.apps.googleusercontent.com', '')}`
+  : null;
+
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'Queizy',
   slug: 'charlotte-rn',
-  version: '2.0.3',
+  version: '2.0.4',
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
@@ -24,6 +32,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: false,
     bundleIdentifier: 'com.hubacademy.charlotte',
+    // "Continuar com a Apple" (entitlement com.apple.developer.applesignin).
+    usesAppleSignIn: true,
     // associatedDomains removido temporariamente: Xcode 26 exige perfil atualizado.
     // Reativar após regenerar provisioning profile via: eas credentials --platform ios
     infoPlist: {
@@ -94,7 +104,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   // recebe os OTAs do Queizy e continua Charlotte até atualizar pela loja.
   // 2.2.0: binário com expo-store-review e react-native-share (build 2.0.2). OTA do main só
   // chega a este binário depois do merge da branch native/2.0.2.
-  runtimeVersion: '2.2.0',
+  // 2.3.0: binário 2.0.4 com login da Apple e do Google (expo-apple-authentication, google-signin, expo-crypto).
+  runtimeVersion: '2.3.0',
   // Textos das permissões do iOS em português (InfoPlist.strings); o inglês fica no infoPlist.
   locales: {
     'pt-BR': './locales/pt-BR.json',
@@ -144,6 +155,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     'expo-updates',
     'expo-video',
     'expo-web-browser',
+    'expo-apple-authentication',
+    ...(googleIosUrlScheme ? [['@react-native-google-signin/google-signin', { iosUrlScheme: googleIosUrlScheme }] as [string, unknown]] : []),
     // Fix Xcode 16 build error ('memory' file not found) pro react-native-webrtc.
     // Idempotente (marker guard), afeta so o target react-native-webrtc.
     './plugins/withWebRTCXcode16Fix',
@@ -198,6 +211,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     typedRoutes: true,
   },
   extra: {
+    googleWebClientId: GOOGLE_WEB_CLIENT_ID || undefined,
+    googleIosClientId: GOOGLE_IOS_CLIENT_ID || undefined,
     supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL,
     supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY,
     apiBaseUrl: process.env.EXPO_PUBLIC_API_BASE_URL,

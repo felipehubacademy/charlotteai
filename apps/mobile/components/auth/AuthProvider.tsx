@@ -14,6 +14,8 @@ import {
 import { deviceTimezone } from '@/lib/dateUtils';
 import { prefetchGreeting } from '@/lib/greetingCache';
 import Constants from 'expo-constants';
+import { signInWithApple, signInWithGoogle, signOutSocial, type SocialProvider, type SocialResult } from '@/lib/socialAuth';
+import { prefetchWelcomeVoice } from '@/lib/welcome';
 
 const API_BASE_URL_AUTH = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -32,6 +34,8 @@ export interface AuthContextType {
   // vem null (precisa confirmar). Com auto-confirm, session vem preenchida e o
   // app entra direto no trial (sem muro de "verifique seu e-mail").
   signUp: (email: string, password: string, name: string) => Promise<{ session: Session | null }>;
+  // Entrar ou criar conta com Google / Apple (janela nativa). Lança SocialCancelled se a pessoa fechar.
+  signInWithSocial: (provider: SocialProvider) => Promise<SocialResult>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
   refreshProfile: () => Promise<void>;
@@ -383,7 +387,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { session: data.session };
   };
 
+  const signInWithSocial = async (provider: SocialProvider) => {
+    const result = provider === 'apple' ? await signInWithApple() : await signInWithGoogle();
+    if (result.name) {
+      // A Apple só entrega o nome agora: recarrega o perfil para a recepção já chamar a pessoa pelo nome.
+      const fresh = await fetchProfile(result.session.user.id).catch(() => null);
+      if (fresh) setProfile(fresh);
+    }
+    if (result.isNew) {
+      // Conta nova: mesma recepção do cadastro por e-mail (fala com o nome + e-mail "Sua conta está pronta").
+      if (result.name) prefetchWelcomeVoice(result.name);
+      fetch(`${API_BASE_URL_AUTH}/api/signup-welcome`, {
+        method: 'POST', headers: { Authorization: `Bearer ${result.session.access_token}` },
+      }).catch(() => {});
+    }
+    return result;
+  };
+
   const signOut = async () => {
+    signOutSocial();
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
     // Navigate immediately after sign-out so the user never sees the blank screen
@@ -457,6 +479,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       clearPasswordRecovery,
       signIn,
       signUp,
+      signInWithSocial,
       signOut,
       resetPassword,
       refreshProfile,
