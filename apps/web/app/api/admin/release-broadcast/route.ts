@@ -50,6 +50,8 @@ const CAMPAIGNS = {
     template: familyGrowsTemplate,
   },
   // Só quem já abriu o app e está numa versão de loja anterior à mais recente (LATEST_STORE_VERSION).
+  // Exige { platform: 'ios' | 'android' }: cada loja aprova num tempo, então o aviso sai por plataforma,
+  // com texto e link da loja certa (UPDATE_PUSH) e trava de 24 h própria (app_update_ios / app_update_android).
   update: {
     logType: 'app_update',
     pushTitle: 'Atualize o Queizy',
@@ -69,7 +71,17 @@ const CAMPAIGNS = {
 const WINBACK_FROM = '2026-10-20T03:00:00Z';
 const WINBACK_TO   = '2026-10-28T03:00:00Z';
 const brtDate = (iso: string) => new Date(new Date(iso).getTime() - 3 * 3600_000).toISOString().slice(0, 10);
-const LATEST_STORE_VERSION = '2.0.2';
+const UPDATE_PUSH = {
+  ios:     { title: 'Atualize o Queizy', body: 'Saiu versão nova na App Store, com novidades e melhorias. Atualize para tudo funcionar direitinho.' },
+  android: { title: 'Atualize o Queizy', body: 'Saiu versão nova na Google Play, com novidades e melhorias. Atualize para tudo funcionar direitinho.' },
+} as const;
+type Platform = keyof typeof UPDATE_PUSH;
+// "2.0.10" > "2.0.9": compara número a número.
+const olderThan = (v: string, latest: string) => {
+  const a = v.split('.').map(Number), b = latest.split('.').map(Number);
+  for (let i = 0; i < Math.max(a.length, b.length); i++) { const d = (a[i] ?? 0) - (b[i] ?? 0); if (d) return d < 0; }
+  return false;
+};
 type CampaignId = keyof typeof CAMPAIGNS;
 
 // Login próprio (Bearer) com papel que acessa 'notifications', ou a senha mestra antiga.
@@ -86,6 +98,7 @@ interface Row {
   marketing_opt_out: boolean | null;
   email_bounced: boolean | null;
   app_version: string | null;
+  app_platform: string | null;
 }
 
 export async function POST(req: NextRequest) {
@@ -100,10 +113,15 @@ export async function POST(req: NextRequest) {
     : ['push', 'email'];
   const campaignId: CampaignId = ['family', 'update', 'winback'].includes(body?.campaign) ? body.campaign : 'release';
   const campaign = CAMPAIGNS[campaignId];
-  const LOG_TYPE = campaign.logType;
-  const PUSH_TITLE = campaign.pushTitle;
-  const PUSH_BODY = campaign.pushBody;
-  const renderTemplate = campaign.template as (o: { name?: string | null; unsubscribeUrl?: string; answerUrls?: { label: string; url: string }[] }) => { subject: string; html: string };
+  const platform: Platform | null = body?.platform === 'ios' || body?.platform === 'android' ? body.platform : null;
+  if (campaignId === 'update' && !platform) {
+    return NextResponse.json({ error: "Campanha 'update' exige { platform: 'ios' | 'android' }." }, { status: 400 });
+  }
+  const LOG_TYPE = campaignId === 'update' ? `${campaign.logType}_${platform}` : campaign.logType;
+  const PUSH_TITLE = campaignId === 'update' ? UPDATE_PUSH[platform!].title : campaign.pushTitle;
+  const PUSH_BODY = campaignId === 'update' ? UPDATE_PUSH[platform!].body : campaign.pushBody;
+  const renderTemplate = (o: { name?: string | null; unsubscribeUrl?: string; answerUrls?: { label: string; url: string }[] }) =>
+    (campaign.template as (x: typeof o & { platform?: Platform | null }) => { subject: string; html: string })({ ...o, platform });
 
   // ── Diagnostico de email (nao envia em massa) ──────────────────────────────
   // { diag:true }            -> so reporta se a chave/remetente estao configurados
@@ -141,6 +159,14 @@ export async function POST(req: NextRequest) {
 
   const supabase = getSupabaseAdmin();
 
+  // Versão mais nova da loja daquela plataforma: a mesma tabela que liga o card "Tem versão nova" no app.
+  let latest: string | null = null;
+  if (campaignId === 'update') {
+    const { data: rel } = await supabase.from('app_release').select('latest_version').eq('platform', platform!).maybeSingle();
+    latest = (rel as { latest_version: string | null } | null)?.latest_version ?? null;
+    if (!latest) return NextResponse.json({ error: `app_release sem latest_version para ${platform}.` }, { status: 500 });
+  }
+
   // ── Guarda de idempotencia: nao reenviar se ja houve release_update < 24h ──
   if (!force && !dryRun) {
     const ago24h = new Date(Date.now() - 24 * 3600 * 1000).toISOString();
@@ -163,7 +189,7 @@ export async function POST(req: NextRequest) {
   try {
     data = await readAll('alunos da campanha', () => supabase
       .from('charlotte_users')
-      .select('id, name, email, expo_push_token, marketing_opt_out, email_bounced, app_version, created_at, subscription_status, is_institutional')
+      .select('id, name, email, expo_push_token, marketing_opt_out, email_bounced, app_version, app_platform, created_at, subscription_status, is_institutional')
       .order('id'));
   } catch (e) {
     return NextResponse.json({ error: `Falha ao buscar usuários: ${e instanceof Error ? e.message : String(e)}` }, { status: 500 });
@@ -192,7 +218,7 @@ export async function POST(req: NextRequest) {
   const rows = ((data ?? []) as (Row & { created_at: string; subscription_status: string | null; is_institutional: boolean | null })[])
     .filter(r => !isTeam(r.email))
     .filter(r => !before || r.created_at < before)
-    .filter(r => campaignId !== 'update' || (!!r.app_version && r.app_version !== LATEST_STORE_VERSION))
+    .filter(r => campaignId !== 'update' || (r.app_platform === platform && !!r.app_version && olderThan(r.app_version, latest!)))
     .filter(r => campaignId !== 'winback' || (
       (!r.subscription_status || r.subscription_status === 'none') && !r.is_institutional
       && r.created_at >= WINBACK_FROM && r.created_at < WINBACK_TO && !cameBack(r)));
@@ -211,6 +237,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       dryRun: true,
       campaign: campaignId,
+      ...(campaignId === 'update' ? { platform, latest } : {}),
       totalUsers: rows.length,
       ...(campaignId === 'update' ? { byVersion: rows.reduce<Record<string, number>>((a, r) => { a[r.app_version!] = (a[r.app_version!] ?? 0) + 1; return a; }, {}) } : {}),
       wouldPush: channels.includes('push') ? pushRows.length : 0,
@@ -260,7 +287,7 @@ export async function POST(req: NextRequest) {
           status: 'sent',
           message_title: PUSH_TITLE,
           message_body: PUSH_BODY,
-          platform: null,
+          platform,
         })),
       );
       if (logErr) console.warn('release-broadcast log warn:', logErr.message);
