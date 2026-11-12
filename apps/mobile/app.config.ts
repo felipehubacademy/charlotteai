@@ -7,8 +7,8 @@ import { withAndroidManifest } from '@expo/config-plugins';
 
 // Login com Google (ids públicos, não são segredo). O cliente iOS vira também o esquema de URL
 // que o SDK do Google usa para voltar ao app. Vazio = botão do Google não aparece.
-const GOOGLE_WEB_CLIENT_ID: string = '';
-const GOOGLE_IOS_CLIENT_ID: string = '';
+const GOOGLE_WEB_CLIENT_ID: string = '664193430418-7puhnj4179ur5dr8rbs6qgju15vqshtv.apps.googleusercontent.com';
+const GOOGLE_IOS_CLIENT_ID: string = '664193430418-i176jrci0jbjoks83o5chac1b9fs85t3.apps.googleusercontent.com';
 const googleIosUrlScheme = GOOGLE_IOS_CLIENT_ID
   ? `com.googleusercontent.apps.${GOOGLE_IOS_CLIENT_ID.replace('.apps.googleusercontent.com', '')}`
   : null;
