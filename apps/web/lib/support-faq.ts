@@ -203,14 +203,19 @@ Se continuar bloqueado, um atendente confere o pagamento.` },
 
   // ── Conta e acesso ───────────────────────────────────────────────────────
   { section: 'Conta e acesso', question: 'Como redefinir a senha?', answer:
-`Na tela de login, toque em "Esqueceu sua senha?", informe o e-mail do cadastro e siga o link enviado. Logado, dá para trocar em Perfil > Conta > Alterar senha. O suporte também pode enviar um e-mail de redefinição para o e-mail cadastrado.` },
+`Na tela de login, toque em "Esqueceu sua senha?", informe o e-mail do cadastro e siga o link enviado. Logado, dá para trocar em Perfil > Conta > Alterar senha. O suporte também pode enviar um e-mail de redefinição para o e-mail cadastrado.
+Quem criou a conta com "Continuar com o Google" ou "Continuar com a Apple" não tem senha do Queizy: basta entrar de novo pelo mesmo botão.` },
+  { section: 'Conta e acesso', question: 'Dá para entrar com Google ou Apple?', answer:
+`Sim, a partir da versão 2.0.4 do app. Nas telas de login e de criar conta há os botões "Continuar com o Google" (iPhone e Android) e "Continuar com a Apple" (só no iPhone). Eles servem tanto para criar a conta quanto para entrar depois, sem senha. Em versões mais antigas, atualize o app pela loja para ver os botões.
+Se você já tem conta com e-mail e senha e entrar com o Google ou a Apple usando o MESMO e-mail, cai na mesma conta, com o mesmo progresso e a mesma assinatura.
+Na Apple, se você escolher "Ocultar meu e-mail", a conta fica com um endereço da Apple (termina em privaterelay.appleid.com) e vira uma conta separada de qualquer conta antiga. Para usar uma conta que já existe, escolha "Compartilhar meu e-mail" ou entre com e-mail e senha.` },
   { section: 'Conta e acesso', question: 'Não consigo entrar na conta', answer:
-`O Queizy entra com e-mail e senha (não há entrada com Apple ou Google). Confirme que está usando o mesmo e-mail do cadastro e tente redefinir a senha em "Esqueceu sua senha?".
+`Entre do mesmo jeito que criou a conta: com e-mail e senha, ou pelos botões "Continuar com o Google" / "Continuar com a Apple" (versão 2.0.4 ou mais nova). Se usou e-mail e senha, confirme que está usando o mesmo e-mail do cadastro e tente redefinir a senha em "Esqueceu sua senha?".
 O e-mail de redefinição chega de noreply@queizy.com em alguns minutos; se não aparecer, confira as pastas de spam e lixo eletrônico. Se ainda assim não chegar, o suporte pode enviar de novo para o e-mail cadastrado.
 Se assinou e o acesso não liberou, veja a pergunta sobre o app bloqueado depois de assinar.
-A mesma conta funciona em mais de um celular, iPhone ou Android: entre com o mesmo e-mail e senha, e o progresso é o mesmo em todos.` },
+A mesma conta funciona em mais de um celular, iPhone ou Android: entre com o mesmo e-mail e senha (ou o mesmo botão do Google), e o progresso é o mesmo em todos. Conta criada com a Apple no iPhone: no Android, entre com o mesmo e-mail e use "Esqueceu sua senha?" para criar uma senha (não vale para e-mail oculto da Apple).` },
   { section: 'Conta e acesso', question: 'Como excluir a conta?', answer:
-`Perfil > Sessão > Excluir minha conta. É permanente: apaga a conta e os dados. Excluir a conta não cancela a assinatura na loja; cancele antes pela App Store ou pelo Google Play. Pedidos de exclusão pelo suporte são confirmados por um atendente.` },
+`Perfil > Sessão > Excluir minha conta. É permanente: apaga a conta e os dados. Em conta criada com a Apple, a janela da Apple aparece uma vez para desfazer o vínculo do Queizy com o seu Apple ID. Excluir a conta não cancela a assinatura na loja; cancele antes pela App Store ou pelo Google Play. Pedidos de exclusão pelo suporte são confirmados por um atendente.` },
 
   // ── Contato ──────────────────────────────────────────────────────────────
   { section: 'Contato', question: 'Como falar com o suporte?', answer:

@@ -24,6 +24,7 @@ import { AppText } from '@/components/ui/Text';
 import { HeaderLogo } from '@/components/ui/HeaderLogo';
 import { MarkerText } from '@/components/ui/MarkerText';
 import { useAuth } from '@/hooks/useAuth';
+import { SocialButtons } from '@/components/auth/SocialButtons';
 import { systemIsPt } from '@/lib/systemLang';
 
 // Light theme
@@ -117,6 +118,9 @@ export default function LoginScreen() {
             </AppText>
 
           </View>
+
+          {/* ── Apple / Google ── */}
+          <SocialButtons onError={setError} disabled={loading} />
 
           {/* ── Campos ── */}
           <View style={{ gap: 12, marginBottom: 24 }}>
