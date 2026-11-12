@@ -71,7 +71,8 @@ export function meta(rows: { label: string; value: string }[]): string {
 export function btn(text: string, url: string): string {
   // bgcolor + -webkit-text-fill-color evitam que o modo escuro do Gmail
   // inverta as cores do botão.
-  return `<table cellpadding="0" cellspacing="0" style="margin:28px auto 0;text-align:center;">
+  // Respiro também embaixo: texto logo depois do botão (p() não tem margem em cima) ficava colado nele.
+  return `<table cellpadding="0" cellspacing="0" style="margin:28px auto 28px;text-align:center;">
     <tr>
       <td align="center" bgcolor="${VOLT}" style="background:${VOLT};border-radius:980px;">
         <a href="${url}" style="display:inline-block;padding:15px 34px;font-size:15px;font-weight:800;color:${INK};-webkit-text-fill-color:${INK};background-color:${VOLT};text-decoration:none;border-radius:980px;">${text}</a>
