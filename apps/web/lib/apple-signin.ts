@@ -4,7 +4,7 @@
 // pedimos a revogação.
 //
 // Precisa de uma chave "Sign in with Apple" (.p8) do Apple Developer, em variáveis de ambiente:
-//   APPLE_TEAM_ID, APPLE_SIWA_KEY_ID, APPLE_SIWA_PRIVATE_KEY (conteúdo do .p8; \n literal é aceito)
+//   APPLE_SIWA_KEY_ID, APPLE_SIWA_PRIVATE_KEY (conteúdo do .p8; \n literal é aceito)
 // Sem elas, a revogação é pulada (a exclusão da conta segue normalmente) e o log avisa.
 
 import { createPrivateKey, sign } from 'crypto';
@@ -12,13 +12,15 @@ import { createPrivateKey, sign } from 'crypto';
 const APPLE = 'https://appleid.apple.com';
 // Login nativo no iPhone: o "client_id" é o bundle id do app.
 const CLIENT_ID = 'com.hubacademy.charlotte';
+// Team ID da Hub Academy no Apple Developer (público, o mesmo do apple-app-site-association).
+const TEAM_ID = 'S3BGJ3648D';
 
 function b64url(input: Buffer | string): string {
   return Buffer.from(input).toString('base64').replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');
 }
 
 function clientSecret(): string | null {
-  const teamId = process.env.APPLE_TEAM_ID;
+  const teamId = TEAM_ID;
   const keyId = process.env.APPLE_SIWA_KEY_ID;
   const pem = process.env.APPLE_SIWA_PRIVATE_KEY?.replace(/\\n/g, '\n');
   if (!teamId || !keyId || !pem) return null;
@@ -36,7 +38,7 @@ export async function revokeAppleAuthorization(authorizationCode: string): Promi
   try {
     const secret = clientSecret();
     if (!secret) {
-      console.warn('[apple-signin] revogação pulada: faltam APPLE_TEAM_ID / APPLE_SIWA_KEY_ID / APPLE_SIWA_PRIVATE_KEY');
+      console.warn('[apple-signin] revogação pulada: faltam APPLE_SIWA_KEY_ID / APPLE_SIWA_PRIVATE_KEY');
       return false;
     }
     const tokenRes = await fetch(`${APPLE}/auth/token`, {
