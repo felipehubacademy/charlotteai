@@ -12,11 +12,15 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 
 const MAX_ATTEMPTS = 8;
+
+// Tipos essenciais saem pelo serviço reserva se a Microsoft estiver fora (lib/microsoft-graph-email-service).
+const ESSENTIAL_KINDS = new Set(['signup_welcome', 'trial_welcome', 'web_welcome', 'web_notice']);
+export const isEssentialKind = (kind: string) => kind.startsWith('auth_') || ESSENTIAL_KINDS.has(kind);
 const BATCH = 20;
 
 /** Envia; se falhar, guarda na fila para o cron reenviar. Devolve true se saiu agora. */
 export async function sendOrQueue(e: { kind: string; to: string; subject: string; html: string }): Promise<boolean> {
-  const ok = await sendEmail({ to: e.to, subject: e.subject, html: e.html }).catch(() => false);
+  const ok = await sendEmail({ to: e.to, subject: e.subject, html: e.html, essential: isEssentialKind(e.kind) }).catch(() => false);
   if (!ok) await enqueue({ kind: e.kind, to_email: e.to, subject: e.subject, html: e.html });
   return ok;
 }
@@ -50,7 +54,7 @@ export async function processOutbox(): Promise<{ sent: number; failed: number; p
         const p = r.payload ?? {};
         ok = await sendWebWelcomeNow(String(p.userId ?? ''), (p.plan === 'annual' ? 'annual' : 'monthly'), Number(p.trialDays ?? 0));
       } else if (r.to_email && r.subject && r.html) {
-        ok = await sendEmail({ to: r.to_email, subject: r.subject, html: r.html });
+        ok = await sendEmail({ to: r.to_email, subject: r.subject, html: r.html, essential: isEssentialKind(r.kind) });
       } else {
         err = 'item incompleto';
       }

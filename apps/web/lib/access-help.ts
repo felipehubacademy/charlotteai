@@ -10,7 +10,7 @@ export async function sendAccessHelp(user: { id: string; name: string | null; em
   const url = link?.properties?.action_link;
   if (error || !url) return { ok: false, error: 'Não foi possível gerar o link.' };
   const { subject, html } = accessHelpTemplate({ name: user.name, email: user.email, when, passwordUrl: url });
-  const ok = await sendEmail({ to: user.email, subject, html }).catch(() => false);
+  const ok = await sendEmail({ to: user.email, subject, html, essential: true }).catch(() => false);
   return ok ? { ok: true, subject } : { ok: false, error: 'Não foi possível enviar o e-mail.' };
 }
 

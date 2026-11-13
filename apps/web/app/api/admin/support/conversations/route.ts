@@ -163,7 +163,7 @@ export async function POST(req: NextRequest) {
       if (!r.ok) return NextResponse.json({ error: `Não foi possível enviar pelo Instagram: ${r.error}` }, { status: 502 });
     } else if (c.channel === 'email') {
       const subject = c.subject ? (/^re:/i.test(c.subject) ? c.subject : `Re: ${c.subject}`) : 'Queizy — Suporte';
-      const ok = await sendEmail({ to: c.contact, subject, html: supportReplyHtml(text) });
+      const ok = await sendEmail({ to: c.contact, subject, html: supportReplyHtml(text), essential: true });
       if (!ok) return NextResponse.json({ error: 'Não foi possível enviar o e-mail.' }, { status: 502 });
     } else if (c.channel !== 'app') {
       return NextResponse.json({ error: 'Canal sem resposta pelo /admin.' }, { status: 400 });

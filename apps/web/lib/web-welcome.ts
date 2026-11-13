@@ -14,7 +14,7 @@ export async function sendWebWelcomeNow(userId: string, plan: WebPlan, trialDays
   const { data: link } = await supabase.auth.admin.generateLink({ type: 'recovery', email: user.email, options: { redirectTo: 'https://queizy.com/open' } });
   const passwordUrl = link?.properties?.action_link ?? 'https://queizy.com/open';
   const { subject, html } = webSubscriptionWelcomeTemplate({ name: user.name, email: user.email, plan, trialDays, passwordUrl });
-  return sendEmail({ to: user.email, subject, html }).catch(() => false);
+  return sendEmail({ to: user.email, subject, html, essential: true }).catch(() => false);
 }
 
 /** Envia; se o serviço de e-mail recusar (ex.: pico de envios), entra na fila e sai em alguns minutos

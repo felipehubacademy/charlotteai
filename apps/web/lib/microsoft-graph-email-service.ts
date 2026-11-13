@@ -21,7 +21,7 @@ const FALLBACK_FROM = 'contato@queizy.com';
 let cachedToken: string | null = null;
 let tokenExpiresAt = 0;
 
-async function getAccessToken(): Promise<string> {
+async function getAccessToken(signal?: AbortSignal): Promise<string> {
   if (cachedToken && Date.now() < tokenExpiresAt - 60_000) return cachedToken;
 
   const res = await fetch(
@@ -29,6 +29,7 @@ async function getAccessToken(): Promise<string> {
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      signal,
       body: new URLSearchParams({
         grant_type:    'client_credentials',
         client_id:     CLIENT_ID,
@@ -50,17 +51,55 @@ async function getAccessToken(): Promise<string> {
 }
 
 // ── Send ──────────────────────────────────────────────────────────────────────
+//
+// Reserva (13/11/2026, depois de 18 h de queda do Exchange da Microsoft): e-mails ESSENCIAIS
+// (login e senha, boas-vindas, acesso depois da compra, avisos da assinatura, convites, resposta do
+// suporte) passam a sair pelo serviço reserva quando a Microsoft falha por indisponibilidade
+// (5xx, 429, demora ou erro de rede). Campanhas em massa NÃO usam o reserva: o plano dele é pequeno
+// (cerca de 100 por dia, dividido com o site da Hub) e massa por lá prejudicaria a reputação.
+// Recusa de verdade (destinatário inválido etc.) também não muda de caminho.
+// Liga sozinho quando RESEND_API_KEY existe; o remetente continua noreply@queizy.com (domínio
+// verificado no reserva com DKIM próprio, sem mexer nos registros da Microsoft).
 
 export interface SendEmailOptions {
   to: string;
   subject: string;
   html: string;
   text?: string;
+  /** E-mail essencial: se a Microsoft estiver fora, sai pelo serviço reserva. */
+  essential?: boolean;
 }
 
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
+// Depois de uma falha de indisponibilidade, os essenciais vão direto pelo reserva por 10 min,
+// sem esperar a Microsoft de novo (na queda de 12/11 cada tentativa levava ~20 s até o erro, e o
+// hook de e-mail do login tem só alguns segundos). Vale por instância da função; basta para não
+// empilhar esperas.
+const GRAPH_PAUSE_MS = 10 * 60_000;
+// Essencial espera a Microsoft no máximo isto antes de ir para o reserva.
+const ESSENTIAL_GRAPH_TIMEOUT_MS = 4_000;
+let graphPausedUntil = 0;
+
+type GraphResult = 'ok' | 'down' | 'rejected';
+
 export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
+  const canFallback = !!opts.essential && !!process.env.RESEND_API_KEY;
+
+  if (canFallback && Date.now() < graphPausedUntil) {
+    return sendViaFallback(opts, 'Microsoft em pausa após falha recente');
+  }
+
+  const r = await sendViaGraph(opts, canFallback);
+  if (r === 'ok') return true;
+  if (r === 'down') {
+    graphPausedUntil = Date.now() + GRAPH_PAUSE_MS;
+    if (canFallback) return sendViaFallback(opts, 'Microsoft indisponível');
+  }
+  return false;
+}
+
+async function sendViaGraph(opts: SendEmailOptions, fastFail: boolean): Promise<GraphResult> {
   let fromAddress = SENDER_EMAIL;
   const payload = {
     message: {
@@ -78,22 +117,25 @@ export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
   // timeout de qualquer forma. Então: refresh de token no 401 e 1-2 retentativas
   // curtas em 429/503 (só honra Retry-After quando <= 2s). Throttling sustentado
   // do O365 continua sendo problema de capacidade/limite, não de retry.
+  // Com reserva disponível (fastFail), indisponibilidade não tenta de novo: vai direto para o reserva.
   const MAX_ATTEMPTS = 3;
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     try {
-      const token = await getAccessToken();
+      const signal = fastFail ? AbortSignal.timeout(ESSENTIAL_GRAPH_TIMEOUT_MS) : undefined;
+      const token = await getAccessToken(signal);
       const res = await fetch(
         `https://graph.microsoft.com/v1.0/users/${INBOX_EMAIL}/sendMail`,
         {
           method: 'POST',
           headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
+          signal,
         }
       );
 
       if (res.ok) {
         console.log(`[Graph] Email enviado para ${opts.to} — "${opts.subject}"`);
-        return true;
+        return 'ok';
       }
 
       const status = res.status;
@@ -117,8 +159,10 @@ export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
         continue;
       }
 
-      // Throttling / indisponibilidade transitoria -> backoff curto.
-      if ((status === 429 || status === 503) && attempt < MAX_ATTEMPTS) {
+      const unavailable = status === 429 || status >= 500;
+
+      // Throttling / indisponibilidade transitoria -> backoff curto (só sem reserva).
+      if (!fastFail && (status === 429 || status === 503) && attempt < MAX_ATTEMPTS) {
         const retryAfterSec = Number(res.headers.get('retry-after')) || 0;
         const waitMs = retryAfterSec > 0 && retryAfterSec <= 2
           ? retryAfterSec * 1000
@@ -129,17 +173,78 @@ export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
       }
 
       console.error('[Graph] sendMail error:', status, errText);
-      return false;
+      return unavailable ? 'down' : 'rejected';
     } catch (e) {
-      if (attempt < MAX_ATTEMPTS) {
+      if (!fastFail && attempt < MAX_ATTEMPTS) {
         await sleep(Math.min(500 * attempt, 1500));
         continue;
       }
       console.error('[Graph] sendEmail exception:', e);
-      return false;
+      return 'down';
     }
   }
-  return false;
+  return 'down';
+}
+
+// ── Reserva ───────────────────────────────────────────────────────────────────
+
+let fallbackClient: import('resend').Resend | null = null;
+
+async function sendViaFallback(opts: SendEmailOptions, reason: string): Promise<boolean> {
+  try {
+    if (!fallbackClient) {
+      const { Resend } = await import('resend');
+      fallbackClient = new Resend(process.env.RESEND_API_KEY);
+    }
+    const { error } = await fallbackClient.emails.send({
+      from: `${FROM_NAME} <${SENDER_EMAIL}>`,
+      to: opts.to,
+      replyTo: REPLY_TO,
+      subject: opts.subject,
+      html: opts.html,
+      ...(opts.text ? { text: opts.text } : {}),
+    });
+    if (error) {
+      console.error(`[EmailReserva] erro ao enviar para ${opts.to}:`, error.name, error.message);
+      return false;
+    }
+    console.warn(`[EmailReserva] Email enviado pelo reserva (${reason}) para ${opts.to} — "${opts.subject}"`);
+    // O alerta não segura a resposta do envio (o hook do login tem poucos segundos): roda depois da
+    // resposta HTTP com after(), que mantém a função viva até terminar. Fora de uma requisição, roda solto.
+    try {
+      const { after } = await import('next/server');
+      after(() => alertFallbackInUse(reason));
+    } catch {
+      void alertFallbackInUse(reason);
+    }
+    return true;
+  } catch (e) {
+    console.error('[EmailReserva] exception:', e);
+    return false;
+  }
+}
+
+// Avisa a administração (push do /admin, não depende de e-mail) no máximo 1 vez por hora.
+// Trava atômica entre instâncias: cada hora vira um id fixo (negativo, fora da sequência normal) em
+// ops_alerts; só a instância que consegue inserir esse id manda o aviso.
+let lastFallbackAlertAt = 0;
+async function alertFallbackInUse(reason: string): Promise<void> {
+  if (Date.now() - lastFallbackAlertAt < 60 * 60_000) return;
+  lastFallbackAlertAt = Date.now();
+  try {
+    const { getSupabaseAdmin } = await import('@/lib/supabase-admin');
+    const supabase = getSupabaseAdmin();
+    const hourKey = -Math.floor(Date.now() / (60 * 60_000));
+    const message = `O envio de e-mail da Microsoft falhou (${reason}). E-mails essenciais (login, senha, boas-vindas, compra) estão saindo pelo serviço reserva; campanhas esperam a Microsoft voltar.`;
+    const { data: claimed, error } = await supabase.from('ops_alerts')
+      .upsert({ id: hourKey, kind: 'email_fallback', message, sent_email: false, sent_whatsapp: false } as never, { onConflict: 'id', ignoreDuplicates: true })
+      .select('id');
+    if (error || !claimed?.length) return;
+    const { notifyAdmins } = await import('@/lib/admin-push');
+    await notifyAdmins({ title: 'E-mail no serviço reserva', body: message, url: '/admin', tag: 'email_fallback', category: 'emails' });
+  } catch (e) {
+    console.error('[EmailReserva] alerta falhou:', e);
+  }
 }
 
 // ── Leitura de bounces (NDRs) das caixas de envio e do suporte ────────────────
