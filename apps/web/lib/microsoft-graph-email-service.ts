@@ -21,7 +21,7 @@ const FALLBACK_FROM = 'contato@queizy.com';
 let cachedToken: string | null = null;
 let tokenExpiresAt = 0;
 
-async function getAccessToken(): Promise<string> {
+async function getAccessToken(signal?: AbortSignal): Promise<string> {
   if (cachedToken && Date.now() < tokenExpiresAt - 60_000) return cachedToken;
 
   const res = await fetch(
@@ -29,6 +29,7 @@ async function getAccessToken(): Promise<string> {
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      signal,
       body: new URLSearchParams({
         grant_type:    'client_credentials',
         client_id:     CLIENT_ID,
@@ -121,7 +122,7 @@ async function sendViaGraph(opts: SendEmailOptions, fastFail: boolean): Promise<
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     try {
       const signal = fastFail ? AbortSignal.timeout(ESSENTIAL_GRAPH_TIMEOUT_MS) : undefined;
-      const token = await getAccessToken();
+      const token = await getAccessToken(signal);
       const res = await fetch(
         `https://graph.microsoft.com/v1.0/users/${INBOX_EMAIL}/sendMail`,
         {
@@ -208,7 +209,8 @@ async function sendViaFallback(opts: SendEmailOptions, reason: string): Promise<
       return false;
     }
     console.warn(`[EmailReserva] Email enviado pelo reserva (${reason}) para ${opts.to} — "${opts.subject}"`);
-    await alertFallbackInUse(reason);
+    // O alerta não segura a resposta do envio (o hook do login tem poucos segundos).
+    void alertFallbackInUse(reason);
     return true;
   } catch (e) {
     console.error('[EmailReserva] exception:', e);
