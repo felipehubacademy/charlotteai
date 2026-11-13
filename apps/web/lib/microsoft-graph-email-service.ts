@@ -219,6 +219,8 @@ async function sendViaFallback(opts: SendEmailOptions, reason: string): Promise<
 }
 
 // Avisa a administração (push do /admin, não depende de e-mail) no máximo 1 vez por hora.
+// Trava atômica entre instâncias: cada hora vira um id fixo (negativo, fora da sequência normal) em
+// ops_alerts; só a instância que consegue inserir esse id manda o aviso.
 let lastFallbackAlertAt = 0;
 async function alertFallbackInUse(reason: string): Promise<void> {
   if (Date.now() - lastFallbackAlertAt < 60 * 60_000) return;
@@ -226,11 +228,12 @@ async function alertFallbackInUse(reason: string): Promise<void> {
   try {
     const { getSupabaseAdmin } = await import('@/lib/supabase-admin');
     const supabase = getSupabaseAdmin();
-    const { count } = await supabase.from('ops_alerts').select('id', { count: 'exact', head: true })
-      .eq('kind', 'email_fallback').gte('created_at', new Date(Date.now() - 60 * 60_000).toISOString());
-    if ((count ?? 0) > 0) return;
+    const hourKey = -Math.floor(Date.now() / (60 * 60_000));
     const message = `O envio de e-mail da Microsoft falhou (${reason}). E-mails essenciais (login, senha, boas-vindas, compra) estão saindo pelo serviço reserva; campanhas esperam a Microsoft voltar.`;
-    await supabase.from('ops_alerts').insert({ kind: 'email_fallback', message, sent_email: false, sent_whatsapp: false } as never);
+    const { data: claimed, error } = await supabase.from('ops_alerts')
+      .upsert({ id: hourKey, kind: 'email_fallback', message, sent_email: false, sent_whatsapp: false } as never, { onConflict: 'id', ignoreDuplicates: true })
+      .select('id');
+    if (error || !claimed?.length) return;
     const { notifyAdmins } = await import('@/lib/admin-push');
     await notifyAdmins({ title: 'E-mail no serviço reserva', body: message, url: '/admin', tag: 'email_fallback', category: 'emails' });
   } catch (e) {
