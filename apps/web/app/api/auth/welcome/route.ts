@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
 
   const { subject, html } = welcomeSubscriberTemplate({ name, level, trialEndsAt });
 
-  const ok = await sendEmail({ to, subject, html });
+  const ok = await sendEmail({ to, subject, html, essential: true });
   if (!ok) {
     return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
   }

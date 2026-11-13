@@ -102,7 +102,7 @@ export async function POST(req: NextRequest) {
   const confirmationUrl = buildConfirmationUrl(emailData);
   const html = tmpl.html.replace(/\{\{\s*\.ConfirmationURL\s*\}\}/g, confirmationUrl);
 
-  const ok = await sendEmail({ to, subject: tmpl.subject, html });
+  const ok = await sendEmail({ to, subject: tmpl.subject, html, essential: true });
   if (!ok) {
     // Pico de envios (o serviço de e-mail limita por minuto): guarda na fila e responde OK, para o
     // aluno não ver erro; o cron reenvia em poucos minutos (o link do login vale 1 hora).

@@ -16,7 +16,7 @@ export async function sendAdminInvite(opts: { email: string; name: string | null
   const { subject, html } = adminInviteTemplate({
     name: opts.name, email: opts.email, roleLabel: role.label, roleDesc: role.desc, areas, passwordUrl: link.properties.action_link,
   });
-  return sendEmail({ to: opts.email, subject, html }).catch(() => false);
+  return sendEmail({ to: opts.email, subject, html, essential: true }).catch(() => false);
 }
 
 /**
