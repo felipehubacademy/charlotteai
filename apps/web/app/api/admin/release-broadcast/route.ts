@@ -233,12 +233,15 @@ export async function POST(req: NextRequest) {
   // Cada e-mail enviado fica em notification_logs (tipo `${LOG_TYPE}_email`). Quem já recebeu esta campanha
   // nos últimos 7 dias é pulado: rodar de novo depois de um timeout continua de onde parou, sem mandar em dobro.
   const EMAIL_LOG_TYPE = `${LOG_TYPE}_email`;
+  const emailVersionKey = campaignId === 'update' ? latest! : 'campaign';
   let alreadyEmailed = new Set<string>();
   if (channels.includes('email')) {
     try {
       const logged = await readAll<{ id: string; user_id: string }>('e-mails já enviados', () => supabase
         .from('notification_logs').select('id, user_id')
         .eq('notification_type', EMAIL_LOG_TYPE)
+        // Aviso de versão: só conta quem recebeu o aviso DESTA versão (o de uma versão anterior não bloqueia o próximo).
+        .eq('metadata->>version', emailVersionKey)
         .gte('created_at', new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString())
         .order('id'));
       alreadyEmailed = new Set(logged.map(l => l.user_id));
@@ -338,6 +341,7 @@ export async function POST(req: NextRequest) {
       const { error: logErr } = await supabase.from('notification_logs').insert({
         id: randomUUID(), created_at: new Date().toISOString(),
         user_id: r.id, notification_type: EMAIL_LOG_TYPE, status: 'sent', message_title: tpl.subject, platform,
+        metadata: { version: emailVersionKey },
       });
       // Sem registro, a próxima chamada reenviaria: para aqui e avisa.
       if (logErr) { logErrors++; console.error('release-broadcast email log error:', logErr.message); break; }
