@@ -23,6 +23,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { readAll } from '@/lib/db-batch';
+import { randomUUID } from 'crypto';
 // Email do projeto vai por Microsoft Graph (Office 365), o MESMO caminho do
 // reset de senha / signup / welcome. Template no padrao usual do projeto.
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
@@ -245,10 +246,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: `Falha ao ler e-mails já enviados: ${e instanceof Error ? e.message : String(e)}` }, { status: 500 });
     }
   }
-  const allEmailRows = rows.filter(r => !!r.email && !r.marketing_opt_out && !r.email_bounced && !alreadyEmailed.has(r.id)).sort((x, y) => x.id.localeCompare(y.id));
-  const emailAlreadySent = rows.filter(r => !!r.email && alreadyEmailed.has(r.id)).length;
+  // As metades saem da audiência inteira; só depois tira quem já recebeu (senão a parte 2 pularia gente).
+  const allEmailRows = rows.filter(r => !!r.email && !r.marketing_opt_out && !r.email_bounced).sort((x, y) => x.id.localeCompare(y.id));
   const half = Math.ceil(allEmailRows.length / 2);
-  const emailRows = part === 1 ? allEmailRows.slice(0, half) : part === 2 ? allEmailRows.slice(half) : allEmailRows;
+  const partRows = part === 1 ? allEmailRows.slice(0, half) : part === 2 ? allEmailRows.slice(half) : allEmailRows;
+  const emailRows = partRows.filter(r => !alreadyEmailed.has(r.id));
+  const emailAlreadySent = partRows.length - emailRows.length;
   const emailOptedOut = rows.filter(r => !!r.email && r.marketing_opt_out).length;
   const emailBounced = rows.filter(r => !!r.email && r.email_bounced).length;
 
@@ -331,15 +334,18 @@ export async function POST(req: NextRequest) {
       const ok = await graphSendEmail({ to: r.email!, subject: tpl.subject, html: tpl.html });
       if (!ok) { errors++; continue; }
       sent++;
+      // A view repassa NEW.* para a tabela: id e created_at precisam ir explícitos.
       const { error: logErr } = await supabase.from('notification_logs').insert({
+        id: randomUUID(), created_at: new Date().toISOString(),
         user_id: r.id, notification_type: EMAIL_LOG_TYPE, status: 'sent', message_title: tpl.subject, platform,
       });
-      if (logErr) { logErrors++; console.warn('release-broadcast email log warn:', logErr.message); }
+      // Sem registro, a próxima chamada reenviaria: para aqui e avisa.
+      if (logErr) { logErrors++; console.error('release-broadcast email log error:', logErr.message); break; }
     }
     result.email = {
       sent, errors, targeted: emailRows.length, alreadySent: emailAlreadySent,
       remaining: emailRows.length - attempted + errors, stoppedByTime: attempted < emailRows.length,
-      ...(logErrors ? { logErrors } : {}),
+      ...(logErrors ? { logErrors, logError: 'Falha ao registrar o envio; parei para não reenviar. Corrija antes de chamar de novo.' } : {}),
     };
   }
 
