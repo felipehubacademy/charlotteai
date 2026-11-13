@@ -209,8 +209,14 @@ async function sendViaFallback(opts: SendEmailOptions, reason: string): Promise<
       return false;
     }
     console.warn(`[EmailReserva] Email enviado pelo reserva (${reason}) para ${opts.to} — "${opts.subject}"`);
-    // O alerta não segura a resposta do envio (o hook do login tem poucos segundos).
-    void alertFallbackInUse(reason);
+    // O alerta não segura a resposta do envio (o hook do login tem poucos segundos): roda depois da
+    // resposta HTTP com after(), que mantém a função viva até terminar. Fora de uma requisição, roda solto.
+    try {
+      const { after } = await import('next/server');
+      after(() => alertFallbackInUse(reason));
+    } catch {
+      void alertFallbackInUse(reason);
+    }
     return true;
   } catch (e) {
     console.error('[EmailReserva] exception:', e);
