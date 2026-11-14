@@ -42,9 +42,10 @@ No near-duplicates (not "have something done" and "need to have something done")
 ("+ object +", "something", "sb", "sth"): write a concrete chunk the student can say ("get my car fixed").
 Terms are short and reusable outside this lesson: max 4 words, and at least 2 items are single words or 2-word collocations
 (nouns, verbs, adjectives the situation needs). Do not turn whole sentences of the lesson into terms.
-At most ONE item may illustrate the lesson's grammar point, as a concrete chunk with category "grammar". Each item:
+Only words and expressions: no grammar words (pronouns, prepositions, auxiliaries, modals), no grammar structures, no questions,
+nothing that explains grammar. Each item:
 - term: as it appears or in dictionary form (lowercase unless a proper expression starts a sentence). Max 40 chars.
-- category: "word" | "idiom" (fixed expression/chunk/collocation) | "phrasal_verb" | "grammar".
+- category: "word" | "idiom" (fixed expression/chunk/collocation) | "phrasal_verb".
 - definition: ${PT ? 'short meaning in Brazilian Portuguese with correct accents (ex.: "prazer em conhecer"), max 80 chars' : 'short learner-friendly meaning in English, max 90 chars'}.
 - example: one natural English sentence using the term, preferably taken from the lesson content, max 110 chars.
 ${PT ? '- example_pt: the example translated into natural Brazilian Portuguese with correct accents.\n' : ''}Return JSON: {"items":[...]}. No emojis.`;
@@ -102,6 +103,56 @@ const keyOf = (m, u) => `${m.id}/${u.id}`;
 // --refine: passa o filtro do "dia a dia" nos tópicos já gerados (não gera nada novo). Fica só o que se usa em
 // conversa comum; termo técnico, raro, pedaço de pergunta/frase ou rótulo de gramática sai. Quem quiser algo
 // mais específico adiciona à mão.
+// --strict: regra do Felipe (14/11/2026) — o Vocabulário é só palavra e expressão. Sai palavra gramatical
+// (pronome, preposição, artigo, auxiliar, modal, conjunção: "my", "at", "can", "for", "than"), estrutura ou pedaço
+// de frase ("is from", "his name is", "what I need is"), pergunta ("can you come?") e rótulo de gramática. Fica
+// palavra de conteúdo e expressão fixa ("keep the change", "if I were you"). Significado explicativo ("used to
+// emphasize...", "forma negativa de...") vira o sentido simples.
+if (args.strict) {
+  const STRICT = `You clean a vocabulary list for Brazilian learners of English (level: ${LEVEL}). The list must contain ONLY
+words and expressions a person would look up and reuse: content words (nouns, verbs, adjectives, adverbs), collocations,
+phrasal verbs and fixed expressions/idioms.
+REMOVE: grammar words (pronouns, possessives, prepositions, articles, auxiliaries, modals, conjunctions, question words:
+"my", "at", "can", "for", "since", "than", "when", "how long", "I'm", "isn't"); grammar structures or sentence pieces
+("is from", "his name is", "can you", "what I need is", "the most expensive", "more beautiful", "I wish I were");
+any question ("Where are you from?", "May I help you?"); anything whose point is to illustrate grammar.
+KEEP fixed expressions people say as a unit ("keep the change", "if I were you", "under no circumstances", "take a break").
+For each kept item, write "definition" as the plain meaning only — ${PT ? 'in Brazilian Portuguese with correct accents' : 'in simple English'},
+max 70 chars, never explaining grammar or usage ("used to...", "forma de...", "pergunta com..."). Example: "under no circumstances" →
+${PT ? '"de jeito nenhum; em hipótese alguma"' : '"never, in any situation"'}.
+Return JSON {"keep":[{"i":index,"definition":"..."}]} with the 0-based indexes given.`;
+  const keys = Object.keys(out).filter(k => (args.unit ? k === args.unit : true));
+  let removed = 0, i = 0;
+  const q = [...keys];
+  async function sw() {
+    while (q.length) {
+      const k = q.shift();
+      const items = out[k];
+      try {
+        const r = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST', headers: { Authorization: `Bearer ${KEY}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ model: 'gpt-4.1', temperature: 0, response_format: { type: 'json_object' },
+            messages: [{ role: 'system', content: STRICT }, { role: 'user', content: items.map((it, n) => `${n}. ${it.term} — ${it.definition}`).join('\n') }] }),
+        });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const keep = (JSON.parse((await r.json()).choices[0].message.content).keep || []);
+        const next = keep.filter(x => items[Number(x.i)]).map(x => {
+          const it = items[Number(x.i)];
+          const def = clip(x.definition, 120);
+          return { ...it, category: it.category === 'grammar' ? 'idiom' : it.category, definition: def || it.definition };
+        });
+        removed += items.length - next.length; out[k] = next;
+      } catch (e) { console.error(`${k}: ${e.message}`); }
+      if (++i % 25 === 0) console.log(`  ${i}/${keys.length}`);
+    }
+  }
+  await Promise.all(Array.from({ length: 6 }, sw));
+  for (const k of Object.keys(out)) if (!out[k].length) delete out[k];
+  fs.writeFileSync(outFile, JSON.stringify(sortKeys(out)));
+  console.log(`${LEVEL}: só palavras e expressões em ${keys.length} tópicos, ${removed} itens removidos`);
+  process.exit(0);
+}
+
 if (args.refine) {
   const REFINE = `You review a vocabulary list from one English lesson for Brazilian learners (level: ${LEVEL}).
 KEEP only items a typical adult would really use in everyday conversation: common words, frequent collocations,

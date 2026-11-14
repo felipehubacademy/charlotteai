@@ -37,6 +37,8 @@ export async function POST(req: NextRequest) {
   const system = `From a voice call between an English student (${level} level, Brazilian) and an English tutor, pick up to 5 items
 worth saving to the student's vocabulary: everyday words, collocations, phrasal verbs or common idioms that
 (a) the TUTOR used and are useful for this student's level, or (b) the student struggled with, asked about or said in Portuguese.
+Only words and expressions (content words, collocations, phrasal verbs, fixed expressions): no grammar words (pronouns,
+prepositions, auxiliaries, modals), no grammar structures, no questions, nothing that explains grammar.
 Only things a typical adult uses in everyday conversation: no jargon, no rare words, no names, no sentence fragments,
 nothing too basic for the level (never "hi", "thank you", "yes", "go home"; for Inter/Advanced also skip words like "good", "house", "work").
 If the student said something in Portuguese or translated literally from Portuguese (e.g. "turn the night" for "virar a noite"),
@@ -44,7 +46,7 @@ the term is the CORRECT English way to say it ("stay up all night"), never the s
 Each item:
 - term: short (max 4 words), dictionary form.
 - category: "word" | "idiom" | "phrasal_verb".
-- definition: ${pt ? 'short meaning in Brazilian Portuguese with correct accents, max 80 chars' : 'short learner-friendly meaning in English, max 90 chars'}.
+- definition: the plain meaning only, never explaining usage ("used to..."): ${pt ? 'in Brazilian Portuguese with correct accents, max 80 chars' : 'in simple English, max 90 chars'}.
 - example: the sentence from the call where it appeared (fix small errors), max 110 chars.
 ${pt ? '- example_pt: the example translated into natural Brazilian Portuguese with correct accents.\n' : ''}Return JSON {"items":[...]}; empty list if nothing is worth saving. No emojis.`;
 
