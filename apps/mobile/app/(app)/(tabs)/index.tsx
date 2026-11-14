@@ -140,7 +140,7 @@ export default function HomeTab() {
   // Promocao organica: checa apos cada focus da home.
   const { event: promotionEvent, ack: ackPromotion, checkAndPromote } = usePromotion();
   useFocusEffect(useCallback(() => { checkAndPromote(); }, [checkAndPromote]));
-  // Avaliação na loja: ao voltar para a Início depois de concluir tópicos (regras em lib/storeReview).
+  // Avaliação na loja: ao voltar para a tela inicial depois de concluir tópicos (regras em lib/storeReview).
   // Espera um pouco para não aparecer junto com a transição de tela ou a promoção de nível.
   useFocusEffect(useCallback(() => {
     const t = setTimeout(() => { maybeRequestReview(profile?.created_at); }, 2500);
