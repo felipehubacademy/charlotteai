@@ -88,6 +88,26 @@ function reviewLabel(nextReview: string | null, isPt: boolean): { label: string;
   return { label: isPt ? `Em ${diff} dias` : `In ${diff} days`, color: C.muted, bg: C.inputBg };
 }
 
+/** A coleção inteira, em páginas de 1.000 (o servidor devolve no máximo 1.000 linhas por leitura, e a trilha
+ *  enche a coleção sozinha). null se a primeira leitura falhar. */
+async function fetchAllVocab(userId: string): Promise<VocabItem[] | null> {
+  const PAGE = 1000;
+  const all: VocabItem[] = [];
+  for (let from = 0; from < 20000; from += PAGE) {
+    const { data, error } = await supabase
+      .from('user_vocabulary')
+      .select('id, term, definition, example, example_translation, phonetic, category, source, next_review_at, repetitions, created_at')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false })
+      .order('id', { ascending: true })
+      .range(from, from + PAGE - 1);
+    if (error) return from === 0 ? null : all;
+    all.push(...((data ?? []) as VocabItem[]));
+    if (!data || data.length < PAGE) break;
+  }
+  return all;
+}
+
 export default function VocabularyTab() {
   const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const { profile, session } = useAuth();
@@ -172,11 +192,7 @@ export default function VocabularyTab() {
       setTipAdded(true);
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       // Refresh list
-      const { data } = await supabase
-        .from('user_vocabulary')
-        .select('id, term, definition, example, example_translation, phonetic, category, source, next_review_at, repetitions, created_at')
-        .eq('user_id', userId)
-        .order('created_at', { ascending: false });
+      const data = await fetchAllVocab(userId);
       if (data) setItems(data);
     } catch {
       appAlert(isPt ? 'Erro' : 'Error', isPt ? 'Não foi possível adicionar.' : 'Could not add word.');
@@ -190,11 +206,7 @@ export default function VocabularyTab() {
     setTipAdded(false); // reset tip state on each focus
     setLoading(true);
     const [vocabRes, srRes] = await Promise.all([
-      supabase
-        .from('user_vocabulary')
-        .select('id, term, definition, example, example_translation, phonetic, category, source, next_review_at, repetitions, created_at')
-        .eq('user_id', userId)
-        .order('created_at', { ascending: false }),
+      fetchAllVocab(userId).then(data => ({ data, error: data ? null : true })),
       supabase
         .from('user_vocabulary')
         .select('id', { count: 'exact', head: true })
@@ -286,6 +298,8 @@ export default function VocabularyTab() {
   const MASTERED_AT = 5;
   const masteredCount = items.filter(i => (i.repetitions ?? 0) >= MASTERED_AT).length;
   const reviewMinutes = Math.max(1, Math.ceil((dueCount * 20) / 60));
+  // Quase esquecidas: revisão atrasada há 3 dias ou mais (a memória da palavra está indo embora).
+  const forgettingCount = items.filter(i => i.next_review_at && Date.now() - new Date(i.next_review_at).getTime() >= 3 * 86400000).length;
 
   const SpeakerButton = ({ k, text, size = 34, slow = false }: { k: string; text: string; size?: number; slow?: boolean }) => {
     const active = playingKey === k || ttsLoading === k;
@@ -400,7 +414,9 @@ export default function VocabularyTab() {
               </AppText>
               <AppText style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', marginTop: 1 }}>
                 {dueCount > 0
-                  ? `~${reviewMinutes} min`
+                  ? `~${reviewMinutes} min` + (forgettingCount > 0
+                      ? (isPt ? ` · ${forgettingCount} quase ${forgettingCount === 1 ? 'esquecida' : 'esquecidas'}` : ` · ${forgettingCount} almost forgotten`)
+                      : '')
                   : (isPt ? 'Volte amanhã para a próxima revisão.' : 'Come back tomorrow for the next review.')}
               </AppText>
             </View>

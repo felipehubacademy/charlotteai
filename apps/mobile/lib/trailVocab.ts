@@ -37,12 +37,11 @@ function firstReviewAt(): string {
   return d.toISOString();
 }
 
-/** Adiciona as palavras do tópico que o aluno ainda não tem. Devolve quantas entraram (0 em erro). */
-export async function addTrailVocab(userId: string, level: string, moduleId: string, unitId: string): Promise<number> {
-  const items = unitVocab(level, moduleId, unitId);
+/** Salva palavras no Vocabulário do aluno sem duplicar (confere o termo exato e em minúsculas).
+ *  pt = guardar a tradução do exemplo (níveis com explicação em português). Devolve quantas entraram. */
+export async function saveVocabItems(userId: string, items: TrailVocabItem[], source: 'learn_trail' | 'charlotte', pt: boolean): Promise<number> {
   if (!userId || !items.length) return 0;
   try {
-    // Confere pelo termo exato e pela forma em minúsculas (o aluno pode ter salvo com outra capitalização).
     const variants = Array.from(new Set(items.flatMap(i => [i.term, i.term.toLowerCase()])));
     const { data: have, error } = await supabase
       .from('user_vocabulary').select('term').eq('user_id', userId).in('term', variants);
@@ -50,8 +49,6 @@ export async function addTrailVocab(userId: string, level: string, moduleId: str
     const owned = new Set((have ?? []).map((r: { term: string }) => r.term.toLowerCase()));
     const fresh = items.filter(i => !owned.has(i.term.toLowerCase()));
     if (!fresh.length) return 0;
-    // Significado e tradução seguem o nível (conteúdo pedagógico): Novice e Igorfina em português.
-    const pt = level === 'Novice' || level === 'Igorfina';
     const next = firstReviewAt();
     const { error: insErr } = await supabase.from('user_vocabulary').insert(fresh.map(i => ({
       user_id: userId,
@@ -60,9 +57,15 @@ export async function addTrailVocab(userId: string, level: string, moduleId: str
       example: i.example,
       example_translation: pt ? i.example_pt ?? null : null,
       category: i.category,
-      source: 'learn_trail',
+      source,
       next_review_at: next,
     })));
     return insErr ? 0 : fresh.length;
   } catch { return 0; }
+}
+
+/** Adiciona as palavras do tópico que o aluno ainda não tem. Devolve quantas entraram (0 em erro). */
+export async function addTrailVocab(userId: string, level: string, moduleId: string, unitId: string): Promise<number> {
+  // Significado e tradução seguem o nível (conteúdo pedagógico): Novice e Igorfina em português.
+  return saveVocabItems(userId, unitVocab(level, moduleId, unitId), 'learn_trail', level === 'Novice' || level === 'Igorfina');
 }

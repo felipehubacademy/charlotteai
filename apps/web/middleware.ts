@@ -13,7 +13,7 @@ const SKIP = /^\/api\/(webhooks|cron|admin|auth|support-test|leads|affiliate|met
 // Rotas que usam IA paga (ou gravam no nome de um aluno). Hoje: pedido sem prova de login é contado em
 // public.api_auth_misses (por dia e rota). Quando a contagem zerar (versões antigas fora de uso), ENFORCE = true
 // passa a recusar com 401.
-const AI_ROUTES = /^\/api\/(assistant|realtime-token|transcribe|tts|tts-cached|pronunciation|pronunciation-semantic|translate|learn-grammar|demo-sentence|enrich-term|guided-chat|roleplay|exercise-help|vocabulary|chat-title|summarize-chat|summarize-call|greeting|trail|family-call)(\/|$)/;
+const AI_ROUTES = /^\/api\/(assistant|realtime-token|transcribe|tts|tts-cached|pronunciation|pronunciation-semantic|translate|learn-grammar|demo-sentence|enrich-term|guided-chat|roleplay|exercise-help|vocabulary|chat-title|summarize-chat|summarize-call|greeting|trail|family-call|call-vocab)(\/|$)/;
 const ENFORCE = false;
 
 function noteMiss(route: string): Promise<void> {

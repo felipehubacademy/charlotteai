@@ -99,6 +99,42 @@ async function gen(mod, u) {
 }
 
 const keyOf = (m, u) => `${m.id}/${u.id}`;
+// --refine: passa o filtro do "dia a dia" nos tópicos já gerados (não gera nada novo). Fica só o que se usa em
+// conversa comum; termo técnico, raro, pedaço de pergunta/frase ou rótulo de gramática sai. Quem quiser algo
+// mais específico adiciona à mão.
+if (args.refine) {
+  const REFINE = `You review a vocabulary list from one English lesson for Brazilian learners (level: ${LEVEL}).
+KEEP only items a typical adult would really use in everyday conversation: common words, frequent collocations,
+common phrasal verbs and well-known idioms. DROP: technical or academic jargon (e.g. "mean-reverting"), rare words,
+sentence or question fragments (e.g. "Did you use to", "Does your brother live here?"), grammar labels or patterns,
+and near-duplicates of another kept item. Return JSON {"keep":[indexes]} using the 0-based indexes given.`;
+  const keys = Object.keys(out).filter(k => (args.unit ? k === args.unit : true));
+  let removed = 0, i = 0;
+  const q = [...keys];
+  async function rw() {
+    while (q.length) {
+      const k = q.shift();
+      const items = out[k];
+      try {
+        const r = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST', headers: { Authorization: `Bearer ${KEY}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ model: 'gpt-4.1', temperature: 0, response_format: { type: 'json_object' },
+            messages: [{ role: 'system', content: REFINE }, { role: 'user', content: items.map((it, n) => `${n}. ${it.term} — ${it.definition}`).join('\n') }] }),
+        });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const keep = new Set((JSON.parse((await r.json()).choices[0].message.content).keep || []).map(Number));
+        const next = items.filter((_, n) => keep.has(n));
+        if (next.length) { removed += items.length - next.length; out[k] = next; }
+      } catch (e) { console.error(`${k}: ${e.message}`); }
+      if (++i % 25 === 0) console.log(`  ${i}/${keys.length}`);
+    }
+  }
+  await Promise.all(Array.from({ length: 6 }, rw));
+  fs.writeFileSync(outFile, JSON.stringify(sortKeys(out)));
+  console.log(`${LEVEL}: filtro do dia a dia em ${keys.length} tópicos, ${removed} itens removidos`);
+  process.exit(0);
+}
+
 const units = modules.flatMap(m => m.units.map(u => ({ m, u, k: keyOf(m, u) })))
   .filter(({ k }) => (args.unit ? k === args.unit : true))
   .filter(({ k }) => args.force || !out[k]);
