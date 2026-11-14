@@ -1,6 +1,7 @@
 // components/streak/WeekStrip.tsx — a semana da sequência na tela inicial, numa linha só abaixo do balão
 // da Charlotte: 7 bolinhas de segunda a domingo com a letra do dia, as mesmas cores da tela da sequência (feito = laranja,
-// protegido = gelo). Hoje ainda sem prática e com sequência viva: a bolinha de hoje pulsa (sequência em risco).
+// protegido = gelo; falta = contorno mais escuro que o dos dias que ainda vêm; antes do cadastro = só a letra
+// apagada, sem contorno, para a semana de quem começou no meio não parecer cheia de faltas). Hoje ainda sem prática e com sequência viva: a bolinha de hoje pulsa (sequência em risco).
 // Sem sequência e sem nenhum dia feito na semana, não aparece (aluno novo não vê 7 bolinhas vazias).
 // Toque abre a tela da semana para consultar (StreakProvider.openStreakWeek).
 import React, { useEffect, useRef } from 'react';
@@ -12,7 +13,8 @@ import { useStreak } from '@/components/streak/StreakProvider';
 const INK = '#16131F';
 const ORANGE = '#FF8A1F';
 const ICE = '#7CC8FF';
-const GHOST = 'rgba(22,19,31,0.14)';
+const GHOST = 'rgba(22,19,31,0.12)';   // dia que ainda vem
+const MISSED = 'rgba(22,19,31,0.32)';  // dia que passou sem estudo: contorno mais firme, sem cor de erro
 const MUTED = '#8A8494';
 const WEEK_PT = ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'];
 const WEEK_EN = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
@@ -55,16 +57,17 @@ export function WeekStrip() {
       }}>
       {week.map((d, i) => {
         const done = d.state === 'done', frozen = d.state === 'frozen';
+        const missed = d.state === 'missed', before = d.state === 'before_start';
         const isToday = d.date === status.today;
         const letter = (isPt ? WEEK_PT : WEEK_EN)[i];
         const dot = (
           <View style={{
             width: DOT, height: DOT, borderRadius: DOT / 2, alignItems: 'center', justifyContent: 'center',
             backgroundColor: done ? ORANGE : frozen ? ICE : 'transparent',
-            borderWidth: done || frozen ? 0 : isToday ? 2 : 1.5,
-            borderColor: isToday ? ORANGE : GHOST,
+            borderWidth: done || frozen || before ? 0 : isToday ? 2 : 1.5,
+            borderColor: isToday ? ORANGE : missed ? MISSED : GHOST,
           }}>
-            <AppText style={{ fontSize: 10, fontWeight: '800', color: done || frozen ? INK : isToday ? ORANGE : d.state === 'missed' ? 'rgba(138,132,148,0.55)' : MUTED }}>{letter}</AppText>
+            <AppText style={{ fontSize: 10, fontWeight: '800', color: done || frozen ? INK : isToday ? ORANGE : before ? 'rgba(138,132,148,0.30)' : missed ? '#6E6878' : MUTED }}>{letter}</AppText>
           </View>
         );
         if (isToday && atRisk) {

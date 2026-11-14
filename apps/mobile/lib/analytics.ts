@@ -28,6 +28,7 @@ export type AnalyticsEvent =
   | 'lesson_end_call_tap'
   | 'streak_celebration_shown'
   | 'streak_week_opened'
+  | 'vocab_review_card_tap'
   | 'streak_challenge_accepted'
   // Abertura de conta nova (app/(app)/charlotte-intro.tsx)
   | 'welcome_step'

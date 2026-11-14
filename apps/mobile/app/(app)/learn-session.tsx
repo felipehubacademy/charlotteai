@@ -10,6 +10,7 @@ import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomInset } from '@/lib/useBottomInset';
 import { router, useLocalSearchParams } from 'expo-router';
+import { addTrailVocab } from '@/lib/trailVocab';
 import { ArrowLeft, ArrowRight, CheckCircle, XCircle, LightbulbFilament, BookOpen, Microphone, SpeakerLow, SpeakerHigh, Play, Pause, ThumbsUp, ThumbsDown, Phone } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 import * as SecureStore from 'expo-secure-store';
@@ -268,6 +269,8 @@ export default function LearnSessionScreen() {
   const stepIdxRef = useRef(0);
   stepIdxRef.current = stepIdx;
   const [isComplete, setIsComplete]   = useState(false);
+  // Palavras do tópico que entraram agora no Vocabulário (lib/trailVocab): aparece na tela de conclusão.
+  const [newWords, setNewWords]       = useState(0);
   // Atividade concluída: a tela da sequência do dia (1x por dia, depois das conquistas).
   useEffect(() => { if (isComplete) celebrateStreak(); }, [isComplete]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (isComplete && firstLesson && userId) clearFirstLessonPending(userId); }, [isComplete, firstLesson, userId]);
@@ -1307,6 +1310,9 @@ export default function LearnSessionScreen() {
         }
       }
 
+      if (isV2 && userId && params.moduleId && params.unitId) {
+        addTrailVocab(userId, level, params.moduleId, params.unitId).then(n => { if (n > 0) setNewWords(n); });
+      }
       setIsComplete(true);
       if (userId) track('lesson_completed', { level, module: moduleIndex, topic: topicIndex, isReview: false, v2: isV2 });
       // O som de tópico/módulo concluído sai do saveAttempt quando a atividade fecha a unidade (useLearnProgressV2).
@@ -1411,11 +1417,22 @@ export default function LearnSessionScreen() {
               </View>
             );
           })()}
-          <View style={{ backgroundColor: C.navy, borderRadius: 20, paddingHorizontal: 14, paddingVertical: 6, marginBottom: 32 }}>
+          <View style={{ backgroundColor: C.navy, borderRadius: 20, paddingHorizontal: 14, paddingVertical: 6, marginBottom: newWords > 0 ? 12 : 32 }}>
             <AppText style={{ fontSize: 14, fontWeight: '800', color: '#DCFF4A' }}>
               +{sessionXP} XP
             </AppText>
           </View>
+          {/* A coleção cresce sozinha: as palavras do tópico entraram no Vocabulário (revisão a partir de amanhã). */}
+          {newWords > 0 && (
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: '#F1FFB8', borderRadius: 14, paddingHorizontal: 14, paddingVertical: 9, marginBottom: 32, maxWidth: 340 }}>
+              <BookOpen size={17} color={C.navy} weight="fill" />
+              <AppText style={{ flexShrink: 1, fontSize: 13.5, fontWeight: '700', color: C.navy, lineHeight: 19 }}>
+                {isPortuguese
+                  ? `${newWords} ${newWords === 1 ? 'palavra nova entrou' : 'palavras novas entraram'} no seu Vocabulário`
+                  : `${newWords} new ${newWords === 1 ? 'word' : 'words'} added to your Vocabulary`}
+              </AppText>
+            </View>
+          )}
 
           {/* Banner: score < threshold ⇒ proxima atividade nao destrava */}
           {(() => {

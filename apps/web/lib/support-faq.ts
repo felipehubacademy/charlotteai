@@ -73,7 +73,8 @@ No menu ⋯ de cada modo: no Free Chat, "Nova conversa" e "Conversas anteriores"
 Na Pronúncia, segure o botão do microfone enquanto fala uma frase em inglês; a Charlotte avalia a pronúncia.` },
   { section: 'Guia do app', question: 'Como funciona o Vocabulário?', answer:
 `No ícone de bloco de notas ficam a "Palavra do dia" e "Sua coleção". Dá para incluir palavras em "Adicionar palavra" e ouvir a pronúncia normal ou devagar.
-O app agenda as revisões: quando há palavras para revisar aparece "Revisar hoje". Cada palavra mostra o estado: Nova, Aprendendo ou Dominada.` },
+As palavras de cada tópico da trilha entram sozinhas na sua coleção quando você conclui a Gramática ou o Listening & Speaking do tópico (a tela de conclusão avisa quantas entraram). A primeira revisão fica para o dia seguinte.
+O app agenda as revisões: quando há palavras para revisar aparece "Revisar hoje", e na tela inicial aparece o cartão "Revisão rápida" com quantas palavras estão esperando; tocando nele a revisão abre direto. Cada palavra mostra o estado: Nova, Aprendendo ou Dominada.` },
   { section: 'Guia do app', question: 'Como reporto um problema num exercício?', answer:
 `Em todo exercício (trilha, Role-play, Guided Chat, Practice, teste de nível e revisão de vocabulário) tem uma bandeira no topo da tela. Toque nela, escolha o que aconteceu (por exemplo, "Minha resposta estava certa" ou "O app não entendeu minha fala"), escreva mais se quiser e toque em "Enviar".
 O reporte chega para a equipe junto com o exercício e a sua resposta, e a gente corrige o que for preciso.` },

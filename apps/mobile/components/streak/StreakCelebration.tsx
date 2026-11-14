@@ -175,14 +175,15 @@ export function StreakScene({ status, offer, onClose, mode = 'celebrate' }: { st
               const done = d.state === 'done', frozen = d.state === 'frozen';
               return (
                 <View key={d.date} style={{ alignItems: 'center', gap: 6 }}>
-                  <AppText style={{ fontSize: 11, fontWeight: '700', color: d.date === status.today ? '#FFFFFF' : 'rgba(255,255,255,0.45)' }}>
+                  <AppText style={{ fontSize: 11, fontWeight: '700', color: d.date === status.today ? '#FFFFFF' : d.state === 'before_start' ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.45)' }}>
                     {(isPt ? WEEK_PT : WEEK_EN)[i]}
                   </AppText>
                   <View style={{
                     width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center',
                     backgroundColor: done ? ORANGE : frozen ? ICE : 'transparent',
-                    borderWidth: done || frozen ? 0 : 2,
-                    borderColor: d.state === 'missed' ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.22)',
+                    // Antes do cadastro: sem contorno (não é falta). Falta: contorno mais firme que o dos dias que vêm.
+                    borderWidth: done || frozen || d.state === 'before_start' ? 0 : 2,
+                    borderColor: d.state === 'missed' ? 'rgba(255,255,255,0.34)' : 'rgba(255,255,255,0.16)',
                   }}>
                     {done && <Check size={16} color={INK} weight="bold" />}
                     {frozen && <Snowflake size={16} color={INK} weight="bold" />}
