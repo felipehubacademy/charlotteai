@@ -97,6 +97,13 @@
         "appleId": "felipe.xavier1987@gmail.com",
         "ascAppId": "6760943273"
       }
+    },
+    "internal": {
+      "android": {
+        "serviceAccountKeyPath": "./google-service-account.json",
+        "track": "internal",
+        "releaseStatus": "completed"
+      }
     }
   }
 }

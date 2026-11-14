@@ -57,6 +57,7 @@ import { usePromotion } from '@/lib/curriculum-v2/usePromotion';
 import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
 import { usePromotionPending } from '@/lib/promotionState';
 import { PlacementPromptSheet } from '@/components/onboarding/PlacementPromptSheet';
+import { maybeRequestReview } from '@/lib/storeReview';
 import { AcquisitionSheet } from '@/components/onboarding/AcquisitionSheet';
 
 // Celebração de líder da semana: XP mínimo da semana para valer.
@@ -139,6 +140,12 @@ export default function HomeTab() {
   // Promocao organica: checa apos cada focus da home.
   const { event: promotionEvent, ack: ackPromotion, checkAndPromote } = usePromotion();
   useFocusEffect(useCallback(() => { checkAndPromote(); }, [checkAndPromote]));
+  // Avaliação na loja: ao voltar para a tela inicial depois de concluir tópicos (regras em lib/storeReview).
+  // Espera um pouco para não aparecer junto com a transição de tela ou a promoção de nível.
+  useFocusEffect(useCallback(() => {
+    const t = setTimeout(() => { maybeRequestReview(profile?.created_at); }, 2500);
+    return () => clearTimeout(t);
+  }, [profile?.created_at]));
 
   // Pre-fetch do video de promocao assim que entra na home, se o aluno
   // estiver no nivel atual (Novice -> Inter video, Inter -> Advanced).
