@@ -43,6 +43,7 @@ import { TasteCallCard } from '@/components/trail/TasteCallCard';
 import { TasteTomorrowCard } from '@/components/trail/TasteTomorrowCard';
 import { useStreak } from '@/components/streak/StreakProvider';
 import { StreakProtectedCard } from '@/components/streak/StreakProtectedCard';
+import { WeekStrip } from '@/components/streak/WeekStrip';
 import { protectedYesterday } from '@/lib/streak';
 import { TASTE_DAYS, tasteDayNumber, tasteFreeUnits } from '@/lib/tasteDays';
 import { RankLeaderModal, type RankLeaderEvent } from '@/components/social/RankLeaderModal';
@@ -683,6 +684,8 @@ export default function HomeTab() {
             </Svg>
           </TouchableOpacity>
         </View>
+        {/* Semana da sequência (some para aluno sem sequência e sem dia feito na semana). */}
+        <WeekStrip />
         <StudyingNow />
       </View>
 

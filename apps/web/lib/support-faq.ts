@@ -41,6 +41,7 @@ O ranking completo tem duas abas: "Semana", com o XP desde segunda (zera toda se
 Se preferir, toque em "Pular" na primeira tela para ir direto ao aviso e à lição. Ao voltar para a tela inicial depois da primeira lição, o app pergunta quem vai te acompanhar (Família Queizy) e como você conheceu o Queizy.` },
   { section: 'Guia do app', question: 'Como funciona a sequência (dias seguidos)?', answer:
 `A sequência conta os dias seguidos em que você estuda: qualquer atividade que dá XP (trilha, Practice ou Vocabulário) vale o dia. Ao concluir a primeira atividade do dia, aparece a tela da sequência com a semana marcada.
+- Semana na tela inicial: logo abaixo do balão da saudação ficam as bolinhas da semana, de segunda a domingo. Laranja é dia estudado e azul-claro é dia protegido. Se a bolinha de hoje estiver pulsando, falta estudar hoje para manter a sequência. Tocando nelas, a tela da sequência abre para consulta.
 - Proteção da semana: se você faltar um dia, a sequência não zera, desde que volte no dia seguinte. Vale uma vez a cada 7 dias; o dia protegido aparece com um floco de neve na semana.
 - Desafio dos 7 dias: conta nova pode aceitar logo depois do cadastro, na tela "Seu plano" ("Aceito o desafio"); depois, na tela da sequência, toque em "Aceitar o desafio". Praticando 7 dias seguidos a partir do aceite, você ganha 10 minutos de ligação por voz (uma vez por conta).
 - Marcos: conquistas de 3, 7, 14, 30, 50, 100, 200, 365, 500, 730 e 1.000 dias seguidos.
