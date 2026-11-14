@@ -7,6 +7,10 @@ export type FunnelStep = 'plans' | 'checkout' | 'form' | 'submit' | 'error';
 
 function readUtm(): { c?: string; s?: string; lp?: string } | null {
   try {
+    // Anúncio que leva direto a esta página: a campanha da URL vale mesmo antes de o AdAttribution gravar o cookie.
+    const q = new URLSearchParams(window.location.search);
+    const fromUrl = q.get('utm_campaign');
+    if (fromUrl) return { c: fromUrl, s: q.get('utm_source') ?? '', lp: window.location.pathname };
     const m = document.cookie.match(/(?:^|;\s*)qz_utm=([^;]+)/);
     return m ? JSON.parse(decodeURIComponent(m[1])) : null;
   } catch { return null; }
