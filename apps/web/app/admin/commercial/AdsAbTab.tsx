@@ -5,7 +5,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Copy, Check, RefreshCw } from 'lucide-react';
 
-interface AdRow { campaign: string; clicks: number; ios: number; android: number; desktop: number; visits: number; checkouts: number; started: number; charged: number; revenue: number }
+interface AdRow { campaign: string; clicks: number; ios: number; android: number; desktop: number; visits: number; plans: number; checkoutViews: number; formStarts: number; submits: number; errors: number; checkouts: number; started: number; charged: number; revenue: number }
 
 const slug = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -77,6 +77,10 @@ export function AdsAbTab() {
                 <th style={{ textAlign: 'right' }}>Cliques p/ loja</th>
                 <th style={{ textAlign: 'right' }}>iPhone · Android · PC</th>
                 <th style={{ textAlign: 'right' }}>Visitas no site</th>
+                <th style={{ textAlign: 'right' }} title="Viram a seção de planos">Viram planos</th>
+                <th style={{ textAlign: 'right' }} title="Abriram a página de assinatura">Abriram assinatura</th>
+                <th style={{ textAlign: 'right' }} title="Começaram a preencher o formulário">Preencheram</th>
+                <th style={{ textAlign: 'right' }} title="Tocaram em pagar · voltaram com erro (cartão recusado etc.)">Tentaram pagar · erro</th>
                 <th style={{ textAlign: 'right' }}>Checkouts</th>
                 <th style={{ textAlign: 'right' }}>Teste/assinatura</th>
                 <th style={{ textAlign: 'right' }}>Cobrados</th>
@@ -85,15 +89,19 @@ export function AdsAbTab() {
             </thead>
             <tbody>
               {loading ? (
-                <tr><td colSpan={8} style={{ textAlign: 'center', color: 'var(--t3)', padding: 24 }}>Carregando…</td></tr>
+                <tr><td colSpan={12} style={{ textAlign: 'center', color: 'var(--t3)', padding: 24 }}>Carregando…</td></tr>
               ) : rows.length === 0 ? (
-                <tr><td colSpan={8} style={{ textAlign: 'center', color: 'var(--t3)', padding: 24 }}>Nenhum clique ou visita de anúncio no período.</td></tr>
+                <tr><td colSpan={12} style={{ textAlign: 'center', color: 'var(--t3)', padding: 24 }}>Nenhum clique ou visita de anúncio no período.</td></tr>
               ) : rows.map(r => (
                 <tr key={r.campaign}>
                   <td style={{ fontFamily: 'var(--font-mono)', fontSize: 12.5 }}>{r.campaign}</td>
                   <td style={{ textAlign: 'right' }}><span className="num">{r.clicks || '—'}</span></td>
                   <td style={{ textAlign: 'right', color: 'var(--t3)', fontSize: 12.5 }}>{r.clicks ? `${r.ios} · ${r.android} · ${r.desktop}` : '—'}</td>
                   <td style={{ textAlign: 'right' }}><span className="num">{r.visits || '—'}</span></td>
+                  <td style={{ textAlign: 'right' }}><span className="num">{r.plans || '—'}</span></td>
+                  <td style={{ textAlign: 'right' }}><span className="num">{r.checkoutViews || '—'}</span></td>
+                  <td style={{ textAlign: 'right' }}><span className="num">{r.formStarts || '—'}</span></td>
+                  <td style={{ textAlign: 'right' }}><span className="num">{r.submits || '—'}</span>{r.errors ? <span style={{ color: 'var(--t3)', fontSize: 12.5 }}> · {r.errors}</span> : null}</td>
                   <td style={{ textAlign: 'right' }}><span className="num">{r.checkouts || '—'}</span></td>
                   <td style={{ textAlign: 'right' }}><span className="num">{r.started || '—'}</span></td>
                   <td style={{ textAlign: 'right' }}><span className="num">{r.charged || '—'}</span></td>
@@ -106,7 +114,8 @@ export function AdsAbTab() {
         <div style={{ padding: '10px 16px', fontSize: 12, color: 'var(--t3)', lineHeight: 1.5 }}>
           Lado loja: a instalação acontece na loja e não chega aqui. Para comparar, use os cliques daqui e as instalações da
           campanha em App Store Connect › Análise › Campanhas e no Play Console. Lado site: a compra fica ligada à campanha
-          por 30 dias depois da visita.
+          por 30 dias depois da visita. Os passos do funil (planos, assinatura, preenchimento, pagamento) contam uma vez por
+          sessão e começaram a ser medidos em 13/11/2026.
         </div>
       </div>
     </div>

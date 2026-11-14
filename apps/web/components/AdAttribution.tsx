@@ -9,7 +9,7 @@ export default function AdAttribution() {
       const q = new URLSearchParams(window.location.search);
       const c = q.get('utm_campaign');
       if (!c) return;
-      const utm = { s: q.get('utm_source') ?? '', m: q.get('utm_medium') ?? '', c, ct: q.get('utm_content') ?? '', at: new Date().toISOString() };
+      const utm = { s: q.get('utm_source') ?? '', m: q.get('utm_medium') ?? '', c, ct: q.get('utm_content') ?? '', lp: window.location.pathname, at: new Date().toISOString() };
       document.cookie = `qz_utm=${encodeURIComponent(JSON.stringify(utm))}; Max-Age=${30 * 86400}; Path=/; SameSite=Lax`;
       // Uma vez por sessão e campanha (recarregar a página não conta de novo).
       const key = `qz_utm_seen_${c}`;
