@@ -52,6 +52,7 @@ export type AnalyticsEvent =
   | 'share_streak'
   | 'share_achievement'
   | 'share_card'
+  | 'share_story'
   | 'share_invite_link'
   | 'account_deleted'
   | 'notification_tapped'

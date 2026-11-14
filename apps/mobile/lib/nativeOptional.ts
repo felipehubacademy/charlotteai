@@ -16,5 +16,9 @@ export const Sharing = optional(() => require('expo-sharing') as typeof import('
 export const Clipboard = optional(() => require('expo-clipboard') as typeof import('expo-clipboard'));
 export const Application = optional(() => require('expo-application') as typeof import('expo-application'));
 
+// Binário 2.0.2 (runtime 2.2.0): Story do Instagram e avaliação na loja.
+export const RNShare = optional(() => require('react-native-share').default as typeof import('react-native-share').default);
+export const StoreReview = optional(() => require('expo-store-review') as typeof import('expo-store-review'));
+
 /** Dá para gerar e compartilhar o card como imagem neste binário. */
 export const canShareImage = !!(ViewShot && Sharing);
