@@ -34,8 +34,15 @@ com as env vars `AZURE_TENANT_ID` / `AZURE_CLIENT_ID` / `AZURE_CLIENT_SECRET`.
 É o que os fluxos de auth usam (reset de senha, confirmação de signup, welcome,
 via o Send Email Hook do Supabase em `/api/auth/send-email`).
 
-`apps/web/lib/simple-email-service.ts` (Resend) é um caminho legado/NÃO
-configurado em produção — **não usar** para envios novos; prefira o Microsoft Graph.
+**Reserva (desde 2026-11-13):** se a Microsoft ficar indisponível (5xx, 429, demora), e-mails
+marcados `essential: true` em `sendEmail` saem pelo Resend, com o mesmo remetente
+noreply@queizy.com (domínio verificado no Resend, região São Paulo; chave `RESEND_API_KEY`).
+Essenciais: login e senha (hook), boas-vindas, acesso depois da compra, avisos da assinatura,
+convites e resposta do suporte (`isEssentialKind` na fila `email_outbox`). Campanhas em massa
+**nunca** usam o reserva (plano grátis, ~100/dia, dividido com o site da Hub). Ao usar o reserva,
+a administração recebe um alerta no /admin (1 por hora).
+
+`apps/web/lib/simple-email-service.ts` é um caminho legado — **não usar** para envios novos.
 
 ## REGRA — Mudou tela ou botão do app? Atualize a FAQ do suporte na mesma tarefa
 

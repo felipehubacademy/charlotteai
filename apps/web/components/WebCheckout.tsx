@@ -9,6 +9,7 @@ import { captureAffiliateFromUrl, storedAffiliate } from '@/lib/affiliateTrackin
 import StoreCTA from '@/components/StoreCTA';
 import { suggestEmailCorrection, isDisposableEmail } from '@/lib/email-validation';
 import { track } from '@/lib/meta-pixel';
+import { trackFunnel } from '@/lib/site-funnel';
 import { lookupCep, type CepInfo } from '@/lib/cep';
 
 const INK = '#14121A';
@@ -53,7 +54,7 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
   const emailSuggestion = email.includes('@') ? suggestEmailCorrection(email) : null;
   useEffect(() => { setConfirmedEmail(false); }, [email]);
   // Pixel (só com aceite): abriu a página de assinar.
-  useEffect(() => { track('ViewContent', { content_name: 'assinar' }); }, []);
+  useEffect(() => { track('ViewContent', { content_name: 'assinar' }); trackFunnel('checkout'); }, []);
   const [phone, setPhone] = useState('');
   // Dados do pagador: pedidos uma vez aqui e enviados já preenchidos para a página de pagamento,
   // onde o aluno só digita o cartão.
@@ -214,6 +215,7 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
       return;
     }
     if (isDisposableEmail(email)) { setError('Use um e-mail que você acessa: é com ele que você entra no app.'); return; }
+    if (mode !== 'sandbox') trackFunnel('submit');
     if (mode !== 'hosted') return submitDirect();
     return submitHosted();
   }
@@ -230,6 +232,7 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
       });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || !j.id) {
+        if (mode !== 'sandbox') trackFunnel('error');
         setError(j.error ?? 'Não foi possível concluir agora.'); setFallback(!!j.fallback && mode !== 'sandbox'); setBusy(false); return;
       }
       if (mode !== 'sandbox' && !(ownCard && cardTrackedRef.current)) track('InitiateCheckout', { value: j.value, currency: 'BRL', content_name: method }, `ck_${j.id}_checkout`);
@@ -250,7 +253,7 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
         body: JSON.stringify({ method, name, email, phone, cpf, cep, number: addrNumber, street, aff, coupon }),
       });
       const j = await r.json().catch(() => ({}));
-      if (!r.ok || !j.url) { setError(j.error ?? 'Não foi possível abrir o pagamento agora.'); setBusy(false); return; }
+      if (!r.ok || !j.url) { trackFunnel('error'); setError(j.error ?? 'Não foi possível abrir o pagamento agora.'); setBusy(false); return; }
       // Pixel (só com aceite): foi para o pagamento.
       track('InitiateCheckout', { value: j.value, currency: 'BRL', content_name: method }, j.checkoutId ? `ck_${j.checkoutId}_checkout` : undefined);
       window.location.href = j.url;
@@ -429,7 +432,7 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
           <p className="wc-addr">Valor: {brl(annual)}, pagamento único, sem renovação automática.</p>
         </div>
       ) : (
-      <form onSubmit={submit} style={{ marginTop: 10 }}>
+      <form onSubmit={submit} onFocus={() => { if (mode !== 'sandbox') trackFunnel('form'); }} style={{ marginTop: 10 }}>
         <label htmlFor="wc-name">Nome completo</label>
         <input id="wc-name" value={name} onChange={e => setName(e.target.value)} autoComplete="name" required />
         <label htmlFor="wc-email">E-mail (é com ele que você entra no app)</label>

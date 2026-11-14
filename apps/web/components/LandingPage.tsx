@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Bricolage_Grotesque } from 'next/font/google';
 import StoreCTA from '@/components/StoreCTA';
+import FunnelSectionWatch from '@/components/FunnelSectionWatch';
 import AffiliateCapture from '@/components/AffiliateCapture';
 import IgorAudioButton from '@/components/IgorAudioButton';
 
@@ -323,6 +324,7 @@ export default function LandingPage({ variant }: { variant?: 'v1' | 'v2' }) {
 
       {/* ── Planos ────────────────────────────────────────────────────── */}
       <section id="planos" style={{ paddingTop: 0 }}>
+        <FunnelSectionWatch id="planos" step="plans" />
         <div className="wrap" style={{ maxWidth: 720 }}>
           <div className="card" style={{ padding: '44px 40px', textAlign: 'center' }}>
             <span className="eyebrow">Planos</span>

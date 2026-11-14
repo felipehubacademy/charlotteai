@@ -17,7 +17,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'Queizy',
   slug: 'charlotte-rn',
-  version: '2.0.4',
+  version: '2.0.3',
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
@@ -102,10 +102,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   // e usuarios em '1.0.0' so atualizam baixando a nova versao da App Store.
   // 2.1.0: binário Queizy (módulos nativos novos). O app antigo (2.0.0) não
   // recebe os OTAs do Queizy e continua Charlotte até atualizar pela loja.
-  // 2.2.0: binário com expo-store-review e react-native-share (build 2.0.2). OTA do main só
-  // chega a este binário depois do merge da branch native/2.0.2.
-  // 2.3.0: binário 2.0.4 com login da Apple e do Google (expo-apple-authentication, google-signin, expo-crypto).
-  runtimeVersion: '2.3.0',
+  // 2.2.0: binário 2.0.3 (expo-store-review e react-native-share). REGRA: versão nova da loja
+  // (2.0.4 em diante) fica NESTE runtime e só troca de lugar com a anterior; módulo nativo novo
+  // entra protegido em lib/nativeOptional. O CI publica a mesma OTA também para o 2.1.0 (2.0.2)
+  // passando OTA_RUNTIME_VERSION, até a 2.0.2 sair de uso.
+  // A 2.0.4 (login da Apple e do Google) também fica aqui: os módulos entram protegidos.
+  runtimeVersion: process.env.OTA_RUNTIME_VERSION || '2.2.0',
   // Textos das permissões do iOS em português (InfoPlist.strings); o inglês fica no infoPlist.
   locales: {
     'pt-BR': './locales/pt-BR.json',

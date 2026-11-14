@@ -64,16 +64,17 @@ export async function GET(req: NextRequest) {
     // Cliques e visitas contados no banco por campanha (na ordem do primeiro evento), em vez de todas as linhas.
     // Checkouts com utm seguem em páginas: a campanha passa pela mesma limpeza das visitas (lib/ad-attribution).
     const [ev, cks] = await Promise.all([
-      readAll<{ campaign: string; clicks: number; ios: number; android: number; desktop: number; visits: number }>('cliques e visitas', () => supabase.rpc('ad_campaign_counts', { p_since: since }).order('first_id')),
+      readAll<{ campaign: string; clicks: number; ios: number; android: number; desktop: number; visits: number; plans: number; checkout_views: number; form_starts: number; submits: number; errors: number }>('cliques e visitas', () => supabase.rpc('ad_campaign_counts', { p_since: since }).order('first_id')),
       readAll('checkouts com utm', () => supabase.from('asaas_checkouts').select('id, status, asaas_payment_id, value_brl, meta_tracking, created_at')
         .eq('sandbox', false).gte('created_at', since).not('meta_tracking->utm', 'is', null).order('id')),
     ]);
-    type Row = { campaign: string; clicks: number; ios: number; android: number; desktop: number; visits: number; checkouts: number; started: number; charged: number; revenue: number };
+    type Row = { campaign: string; clicks: number; ios: number; android: number; desktop: number; visits: number; plans: number; checkoutViews: number; formStarts: number; submits: number; errors: number; checkouts: number; started: number; charged: number; revenue: number };
     const map = new Map<string, Row>();
-    const row = (c: string) => { if (!map.has(c)) map.set(c, { campaign: c, clicks: 0, ios: 0, android: 0, desktop: 0, visits: 0, checkouts: 0, started: 0, charged: 0, revenue: 0 }); return map.get(c)!; };
+    const row = (c: string) => { if (!map.has(c)) map.set(c, { campaign: c, clicks: 0, ios: 0, android: 0, desktop: 0, visits: 0, plans: 0, checkoutViews: 0, formStarts: 0, submits: 0, errors: 0, checkouts: 0, started: 0, charged: 0, revenue: 0 }); return map.get(c)!; };
     for (const e of ev) {
       const r = row(e.campaign);
       r.clicks += e.clicks; r.ios += e.ios; r.android += e.android; r.desktop += e.desktop; r.visits += e.visits;
+      r.plans += e.plans ?? 0; r.checkoutViews += e.checkout_views ?? 0; r.formStarts += e.form_starts ?? 0; r.submits += e.submits ?? 0; r.errors += e.errors ?? 0;
     }
     for (const c of (cks ?? []) as { status: string; asaas_payment_id: string | null; value_brl: number; meta_tracking: { utm?: { c?: string } } | null }[]) {
       const raw = String(c.meta_tracking?.utm?.c ?? '');

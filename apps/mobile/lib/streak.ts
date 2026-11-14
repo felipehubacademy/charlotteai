@@ -3,7 +3,8 @@
 // a sequência não zera), semana marcada e desafio dos 7 dias (supabase/migrations/20261028_streak_freeze_challenge.sql).
 import { supabase } from '@/lib/supabase';
 
-export type StreakDayState = 'done' | 'frozen' | 'today' | 'missed' | 'future';
+/** before_start = dia antes do cadastro (não é falta; 20261114120000_streak_status_before_start.sql). */
+export type StreakDayState = 'done' | 'frozen' | 'today' | 'missed' | 'future' | 'before_start';
 
 export interface StreakChallenge {
   status: 'active' | 'completed' | 'failed';

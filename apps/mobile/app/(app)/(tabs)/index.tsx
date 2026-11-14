@@ -43,6 +43,8 @@ import { TasteCallCard } from '@/components/trail/TasteCallCard';
 import { TasteTomorrowCard } from '@/components/trail/TasteTomorrowCard';
 import { useStreak } from '@/components/streak/StreakProvider';
 import { StreakProtectedCard } from '@/components/streak/StreakProtectedCard';
+import { WeekStrip } from '@/components/streak/WeekStrip';
+import { VocabReviewCard } from '@/components/vocabulary/VocabReviewCard';
 import { protectedYesterday } from '@/lib/streak';
 import { TASTE_DAYS, tasteDayNumber, tasteFreeUnits } from '@/lib/tasteDays';
 import { RankLeaderModal, type RankLeaderEvent } from '@/components/social/RankLeaderModal';
@@ -138,7 +140,7 @@ export default function HomeTab() {
   // Promocao organica: checa apos cada focus da home.
   const { event: promotionEvent, ack: ackPromotion, checkAndPromote } = usePromotion();
   useFocusEffect(useCallback(() => { checkAndPromote(); }, [checkAndPromote]));
-  // Avaliação na loja: ao voltar para a Início depois de concluir tópicos (regras em lib/storeReview).
+  // Avaliação na loja: ao voltar para a tela inicial depois de concluir tópicos (regras em lib/storeReview).
   // Espera um pouco para não aparecer junto com a transição de tela ou a promoção de nível.
   useFocusEffect(useCallback(() => {
     const t = setTimeout(() => { maybeRequestReview(profile?.created_at); }, 2500);
@@ -690,6 +692,8 @@ export default function HomeTab() {
             </Svg>
           </TouchableOpacity>
         </View>
+        {/* Semana da sequência (some para aluno sem sequência e sem dia feito na semana). */}
+        <WeekStrip />
         <StudyingNow />
       </View>
 
@@ -758,6 +762,8 @@ export default function HomeTab() {
         {isTaster && tasterDone === 0 && !!profile?.created_at && Date.now() - new Date(profile.created_at).getTime() > 30 * 60000 && <TasteCallCard />}
         {/* Faltou ontem e a proteção da semana segurou: avisa e pede a prática de hoje. */}
         {protectedYesterday(streakStatus) && !streakStatus!.practiced_today && <StreakProtectedCard streak={streakStatus!.streak} />}
+        {/* Palavras do Vocabulário vencidas (3 ou mais): revisão rápida direto daqui. */}
+        {!isTaster && <VocabReviewCard userId={userId} />}
         {/* Degustação com o tópico grátis de hoje feito (4 atividades por tópico) e mais dias pela frente: volte amanhã. */}
         {isTaster && tasterDone !== null && !!profile?.created_at && tasterDone >= 4 * tasteFreeUnits(profile.created_at)
           && tasteDayNumber(profile.created_at) < TASTE_DAYS && <TasteTomorrowCard />}

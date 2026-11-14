@@ -17,6 +17,7 @@
 import React from 'react';
 import { View, Modal, TouchableOpacity, Image, Animated, ActivityIndicator, useWindowDimensions, Platform, StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { CallVocabCard } from '@/components/vocabulary/CallVocabCard';
 import * as SecureStore from 'expo-secure-store';
 import { requestRecordingPermissionsAsync, setAudioModeAsync } from 'expo-audio';
 import CharlotteAudioSession from 'charlotte-audio-session';
@@ -524,6 +525,10 @@ export function FamilyCallModal({ character, impression = null, onClose }: { cha
             </View>
           ) : status === 'ended' || status === 'error' ? (
             <View style={{ gap: 10, width: '100%' }}>
+              {/* Palavras desta ligação: salvar no Vocabulário com um toque (some se a conversa foi curta). */}
+              {status === 'ended' && transcriptRef.current.length >= 4 && (
+                <CallVocabCard key={attempt} compact lines={transcriptRef.current} />
+              )}
               <View style={{ backgroundColor: th.chip, borderRadius: 20, padding: 16, marginBottom: 6, alignItems: 'center' }}>
                 {status === 'ended' ? (
                   <>

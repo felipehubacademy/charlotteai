@@ -46,25 +46,30 @@ export function Flame({ size }: { size: number }) {
 /** Quantos convites do desafio já apareceram (para não insistir: no máximo 3, um por dia). */
 export interface ChallengeOffer { show: boolean; onShown: () => void }
 
-export function StreakScene({ status, offer, onClose }: { status: StreakStatus; offer: ChallengeOffer; onClose: () => void }) {
+/** 'celebrate' = comemoração do dia (som, número subindo, confete nos marcos); 'view' = o aluno tocou na
+ *  semana da tela inicial para consultar: mesma tela, sem som nem comemoração e sem convite do desafio. */
+export type StreakSceneMode = 'celebrate' | 'view';
+
+export function StreakScene({ status, offer, onClose, mode = 'celebrate' }: { status: StreakStatus; offer: ChallengeOffer; onClose: () => void; mode?: StreakSceneMode }) {
   const isPt = systemIsPt;
+  const viewing = mode === 'view';
   const insets = useSafeAreaInsets();
   const { width, height } = useWindowDimensions();
   const n = status.streak;
-  const milestone = STREAK_MILESTONES.includes(n) && n >= 7;
+  const milestone = !viewing && STREAK_MILESTONES.includes(n) && n >= 7;
   const ch = status.challenge;
   const challengeDoneToday = ch?.status === 'completed' && !!ch.completed_at
     && new Date(ch.completed_at).getTime() > Date.now() - 20 * 3600000;
   const [accepting, setAccepting] = useState(false);
   const [accepted, setAccepted] = useState(false);
-  const canOffer = offer.show && (!ch || ch.status === 'failed');
+  const canOffer = !viewing && offer.show && (!ch || ch.status === 'failed');
   // Dias da sequência que ficaram antes desta semana (ex.: começou no domingo anterior).
   const earlier = Math.max(0, n - status.week.filter(d => d.state === 'done' || d.state === 'frozen').length);
 
   const flame = useRef(new Animated.Value(0)).current;
   const flicker = useRef(new Animated.Value(0)).current;
   const content = useRef(new Animated.Value(0)).current;
-  const [shown, setShown] = useState(Math.max(0, n - 1));
+  const [shown, setShown] = useState(viewing ? n : Math.max(0, n - 1));
   const bump = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
@@ -84,6 +89,8 @@ export function StreakScene({ status, offer, onClose }: { status: StreakStatus; 
       Animated.timing(flicker, { toValue: 0, duration: 300, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
     ]));
     flick.start();
+    Animated.timing(content, { toValue: 1, duration: 420, delay: viewing ? 150 : 500, easing: Easing.out(Easing.cubic), useNativeDriver: true }).start();
+    if (viewing) return () => flick.stop();
     const t = setTimeout(() => {
       setShown(n);
       Animated.sequence([
@@ -95,16 +102,21 @@ export function StreakScene({ status, offer, onClose }: { status: StreakStatus; 
       if (n === 7) setTimeout(() => voiceSFX.play('streak_7_days').catch(() => {}), 900);
       else if (n === 30) setTimeout(() => voiceSFX.play('streak_30_days').catch(() => {}), 900);
     }, 650);
-    Animated.timing(content, { toValue: 1, duration: 420, delay: 500, easing: Easing.out(Easing.cubic), useNativeDriver: true }).start();
     return () => { clearTimeout(t); flick.stop(); };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const title = n === 1
+  // Consulta sem ter praticado hoje: a sequência está esperando a prática de hoje.
+  const pending = viewing && !status.practiced_today;
+  const title = pending
+    ? (n === 0 ? (isPt ? 'Comece sua sequência' : 'Start your streak') : (isPt ? `${n} ${n === 1 ? 'dia' : 'dias'} seguidos` : `${n} ${n === 1 ? 'day' : 'days'} in a row`))
+    : n === 1
     ? (isPt ? 'Sequência iniciada!' : 'Streak started!')
     : milestone
     ? (isPt ? `Marco de ${n} dias!` : `${n}-day milestone!`)
     : (isPt ? `${n} dias seguidos!` : `${n} days in a row!`);
-  const sub = protectedYesterday(status)
+  const sub = pending
+    ? (n === 0 ? (isPt ? 'Pratique hoje para começar.' : 'Practice today to begin.') : (isPt ? 'Pratique hoje para manter sua sequência.' : 'Practice today to keep your streak.'))
+    : protectedYesterday(status)
     ? (isPt ? 'Ontem a proteção da semana segurou sua sequência. Hoje ela continua.' : 'Yesterday your weekly protection saved your streak. Today it keeps going.')
     : n === 1
     ? (isPt ? 'Volte amanhã para fazer 2 dias.' : 'Come back tomorrow to make it 2 days.')
@@ -163,14 +175,15 @@ export function StreakScene({ status, offer, onClose }: { status: StreakStatus; 
               const done = d.state === 'done', frozen = d.state === 'frozen';
               return (
                 <View key={d.date} style={{ alignItems: 'center', gap: 6 }}>
-                  <AppText style={{ fontSize: 11, fontWeight: '700', color: d.date === status.today ? '#FFFFFF' : 'rgba(255,255,255,0.45)' }}>
+                  <AppText style={{ fontSize: 11, fontWeight: '700', color: d.date === status.today ? '#FFFFFF' : d.state === 'before_start' ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.45)' }}>
                     {(isPt ? WEEK_PT : WEEK_EN)[i]}
                   </AppText>
                   <View style={{
                     width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center',
                     backgroundColor: done ? ORANGE : frozen ? ICE : 'transparent',
-                    borderWidth: done || frozen ? 0 : 2,
-                    borderColor: d.state === 'missed' ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.22)',
+                    // Antes do cadastro: sem contorno (não é falta). Falta: contorno mais firme que o dos dias que vêm.
+                    borderWidth: done || frozen || d.state === 'before_start' ? 0 : 2,
+                    borderColor: d.state === 'missed' ? 'rgba(255,255,255,0.34)' : 'rgba(255,255,255,0.16)',
                   }}>
                     {done && <Check size={16} color={INK} weight="bold" />}
                     {frozen && <Snowflake size={16} color={INK} weight="bold" />}
@@ -240,11 +253,11 @@ export function StreakScene({ status, offer, onClose }: { status: StreakStatus; 
   );
 }
 
-export function StreakCelebrationModal({ status, offer, onClose }: { status: StreakStatus | null; offer: ChallengeOffer; onClose: () => void }) {
+export function StreakCelebrationModal({ status, offer, onClose, mode }: { status: StreakStatus | null; offer: ChallengeOffer; onClose: () => void; mode?: StreakSceneMode }) {
   if (!status) return null;
   return (
     <Modal visible transparent={false} animationType="fade" statusBarTranslucent onRequestClose={onClose}>
-      <StreakScene status={status} offer={offer} onClose={onClose} />
+      <StreakScene status={status} offer={offer} onClose={onClose} mode={mode} />
     </Modal>
   );
 }

@@ -34,7 +34,10 @@ export function storeUrlFor(platform: AdPlatform, campaign: string, source = 'me
   return `https://queizy.com/?utm_source=${source}&utm_medium=ads&utm_campaign=${encodeURIComponent(campaign)}`;
 }
 
-export async function logAdEvent(e: { kind: 'click' | 'visit'; arm: string; campaign: string; source?: string | null; platform: AdPlatform; path?: string | null }) {
+export const SITE_FUNNEL_KINDS = ['plans', 'checkout', 'form', 'submit', 'error'] as const;
+export type AdEventKind = 'click' | 'visit' | typeof SITE_FUNNEL_KINDS[number];
+
+export async function logAdEvent(e: { kind: AdEventKind; arm: string; campaign: string; source?: string | null; platform: AdPlatform; path?: string | null }) {
   try {
     await getSupabaseAdmin().from('ad_events').insert({
       kind: e.kind, arm: e.arm.slice(0, 20), campaign: cleanCampaign(e.campaign),

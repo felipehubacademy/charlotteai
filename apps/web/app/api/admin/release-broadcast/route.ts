@@ -23,6 +23,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAdmin, can } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { readAll } from '@/lib/db-batch';
+import { randomUUID } from 'crypto';
 // Email do projeto vai por Microsoft Graph (Office 365), o MESMO caminho do
 // reset de senha / signup / welcome. Template no padrao usual do projeto.
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
@@ -102,6 +103,7 @@ interface Row {
 }
 
 export async function POST(req: NextRequest) {
+  const startedAt = Date.now();
   if (!(await checkAuth(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   let body: any = {};
@@ -225,11 +227,34 @@ export async function POST(req: NextRequest) {
 
   const pushRows = rows.filter(r => r.expo_push_token?.startsWith('ExponentPushToken['));
   // Marketing: exclui descadastrados (LGPD) e emails que ja deram bounce. Push nao e afetado.
-  // { part: 1 | 2 }: só a metade 1 ou 2 dos e-mails (ordem por id). Listas grandes (600+) passam dos 5 min da função.
+  // { part: 1 | 2 }: só a metade 1 ou 2 dos e-mails (ordem por id). Hoje é opcional: o envio para sozinho antes dos 5 min
+  // e a próxima chamada continua de onde parou (ver EMAIL_LOG_TYPE).
   const part = body?.part === 1 || body?.part === 2 ? body.part : null;
+  // Cada e-mail enviado fica em notification_logs (tipo `${LOG_TYPE}_email`). Quem já recebeu esta campanha
+  // nos últimos 7 dias é pulado: rodar de novo depois de um timeout continua de onde parou, sem mandar em dobro.
+  const EMAIL_LOG_TYPE = `${LOG_TYPE}_email`;
+  const emailVersionKey = campaignId === 'update' ? latest! : 'campaign';
+  let alreadyEmailed = new Set<string>();
+  if (channels.includes('email')) {
+    try {
+      const logged = await readAll<{ id: string; user_id: string }>('e-mails já enviados', () => supabase
+        .from('notification_logs').select('id, user_id')
+        .eq('notification_type', EMAIL_LOG_TYPE)
+        // Aviso de versão: só conta quem recebeu o aviso DESTA versão (o de uma versão anterior não bloqueia o próximo).
+        .eq('metadata->>version', emailVersionKey)
+        .gte('created_at', new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString())
+        .order('id'));
+      alreadyEmailed = new Set(logged.map(l => l.user_id));
+    } catch (e) {
+      return NextResponse.json({ error: `Falha ao ler e-mails já enviados: ${e instanceof Error ? e.message : String(e)}` }, { status: 500 });
+    }
+  }
+  // As metades saem da audiência inteira; só depois tira quem já recebeu (senão a parte 2 pularia gente).
   const allEmailRows = rows.filter(r => !!r.email && !r.marketing_opt_out && !r.email_bounced).sort((x, y) => x.id.localeCompare(y.id));
   const half = Math.ceil(allEmailRows.length / 2);
-  const emailRows = part === 1 ? allEmailRows.slice(0, half) : part === 2 ? allEmailRows.slice(half) : allEmailRows;
+  const partRows = part === 1 ? allEmailRows.slice(0, half) : part === 2 ? allEmailRows.slice(half) : allEmailRows;
+  const emailRows = partRows.filter(r => !alreadyEmailed.has(r.id));
+  const emailAlreadySent = partRows.length - emailRows.length;
   const emailOptedOut = rows.filter(r => !!r.email && r.marketing_opt_out).length;
   const emailBounced = rows.filter(r => !!r.email && r.email_bounced).length;
 
@@ -244,6 +269,7 @@ export async function POST(req: NextRequest) {
       wouldEmail: channels.includes('email') ? emailRows.length : 0,
       emailOptedOut,
       emailBounced,
+      emailAlreadySent,
     });
   }
 
@@ -298,16 +324,33 @@ export async function POST(req: NextRequest) {
 
   // ── EMAIL (Resend) ─────────────────────────────────────────────────────────
   if (channels.includes('email')) {
-    let sent = 0, errors = 0;
+    let sent = 0, errors = 0, logErrors = 0, attempted = 0;
+    // Para antes dos 300 s da função e responde quantos faltam: é só chamar de novo para continuar.
+    const deadline = startedAt + 230_000;
     for (const r of emailRows) {
+      if (Date.now() > deadline) break;
+      attempted++;
       const tpl = renderTemplate({
         name: r.name, unsubscribeUrl: unsubscribeUrl(r.id),
         answerUrls: campaignId === 'winback' ? WINBACK_ANSWERS.map(o => ({ label: o.label, url: winbackAnswerUrl(r.id, o.id) })) : undefined,
       });
       const ok = await graphSendEmail({ to: r.email!, subject: tpl.subject, html: tpl.html });
-      if (ok) sent++; else errors++;
+      if (!ok) { errors++; continue; }
+      sent++;
+      // A view repassa NEW.* para a tabela: id e created_at precisam ir explícitos.
+      const { error: logErr } = await supabase.from('notification_logs').insert({
+        id: randomUUID(), created_at: new Date().toISOString(),
+        user_id: r.id, notification_type: EMAIL_LOG_TYPE, status: 'sent', message_title: tpl.subject, platform,
+        metadata: { version: emailVersionKey },
+      });
+      // Sem registro, a próxima chamada reenviaria: para aqui e avisa.
+      if (logErr) { logErrors++; console.error('release-broadcast email log error:', logErr.message); break; }
     }
-    result.email = { sent, errors, targeted: emailRows.length };
+    result.email = {
+      sent, errors, targeted: emailRows.length, alreadySent: emailAlreadySent,
+      remaining: emailRows.length - attempted + errors, stoppedByTime: attempted < emailRows.length,
+      ...(logErrors ? { logErrors, logError: 'Falha ao registrar o envio; parei para não reenviar. Corrija antes de chamar de novo.' } : {}),
+    };
   }
 
   return NextResponse.json({ ok: true, ...result });

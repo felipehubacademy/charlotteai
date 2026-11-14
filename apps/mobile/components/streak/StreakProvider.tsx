@@ -2,6 +2,8 @@
 // estado lido do servidor (lib/streak.ts) para quem quiser usar sem consultar de novo.
 // celebrateStreak(): chamado ao concluir uma atividade e ao voltar para a tela inicial. Só abre se o aluno
 // praticou hoje e ainda não viu a tela hoje; espera a comemoração de conquista fechar antes.
+// openStreakWeek(): o aluno tocou na semana da tela inicial; abre a mesma tela só para consultar (sem som,
+// sem convite do desafio) e não conta como a comemoração do dia.
 import React, { createContext, useCallback, useContext, useRef, useState } from 'react';
 import * as SecureStore from 'expo-secure-store';
 import { useAuth } from '@/hooks/useAuth';
@@ -15,12 +17,14 @@ interface StreakContextValue {
   status: StreakStatus | null;
   refreshStreak: () => Promise<StreakStatus | null>;
   celebrateStreak: () => Promise<void>;
+  openStreakWeek: () => void;
 }
 
 const StreakContext = createContext<StreakContextValue>({
   status: null,
   refreshStreak: async () => null,
   celebrateStreak: async () => {},
+  openStreakWeek: () => {},
 });
 
 export const useStreak = () => useContext(StreakContext);
@@ -34,6 +38,7 @@ export function StreakProvider({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<StreakStatus | null>(null);
   const [showing, setShowing] = useState<StreakStatus | null>(null);
   const [offerShow, setOfferShow] = useState(false);
+  const [viewing, setViewing] = useState(false);
   const busy = useRef(false);
   const openRef = useRef(false);
 
@@ -65,6 +70,7 @@ export function StreakProvider({ children }: { children: React.ReactNode }) {
       await waitForCelebration();
       track('streak_celebration_shown', { streak: s.streak });
       openRef.current = true;
+      setViewing(false);
       setShowing(s);
     } finally {
       busy.current = false;
@@ -81,21 +87,30 @@ export function StreakProvider({ children }: { children: React.ReactNode }) {
     });
   }, [userId, showing]);
 
+  const openStreakWeek = useCallback(() => {
+    if (!status || openRef.current) return;
+    track('streak_week_opened', { streak: status.streak, practiced_today: status.practiced_today });
+    openRef.current = true;
+    setOfferShow(false);
+    setViewing(true);
+    setShowing(status);
+  }, [status]);
+
   // "Visto hoje" só ao fechar: se outra tela cheia impedir a abertura, a próxima chamada tenta de novo.
   const close = useCallback(() => {
-    if (userId && showing) {
+    if (userId && showing && !viewing) {
       SecureStore.setItemAsync(`streak_celebrated_${userId}_${showing.today}`, '1').catch(() => {});
       supabase.from('charlotte_users').update({ streak_celebrated_on: showing.today }).eq('id', userId).then(() => {}, () => {});
     }
     openRef.current = false;
     setShowing(null);
     refreshStreak();
-  }, [userId, showing, refreshStreak]);
+  }, [userId, showing, viewing, refreshStreak]);
 
   return (
-    <StreakContext.Provider value={{ status, refreshStreak, celebrateStreak }}>
+    <StreakContext.Provider value={{ status, refreshStreak, celebrateStreak, openStreakWeek }}>
       {children}
-      {showing && <StreakCelebrationModal status={showing} offer={{ show: offerShow, onShown: onOfferShown }} onClose={close} />}
+      {showing && <StreakCelebrationModal status={showing} offer={{ show: offerShow, onShown: onOfferShown }} onClose={close} mode={viewing ? 'view' : 'celebrate'} />}
     </StreakContext.Provider>
   );
 }

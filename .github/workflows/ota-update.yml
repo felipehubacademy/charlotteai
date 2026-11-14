@@ -88,12 +88,17 @@ jobs:
           SENTRY_ORG: hub-academy
           SENTRY_PROJECT: charlotte-mobile
           MSG: ${{ steps.changes.outputs.msg }}
+          # Story do Instagram (2.0.3): App ID público do app "Queizy" na Meta; sem ele o botão some na OTA.
+          EXPO_PUBLIC_FACEBOOK_APP_ID: '2587814891641165'
+        # O mesmo código vai para as versões da loja ainda em uso: 2.2.0 = app 2.0.3 (e as próximas),
+        # 2.1.0 = app 2.0.2. Tirar o 2.1.0 da lista quando a 2.0.2 sair de uso.
         run: |
-          CI=1 eas update \
-            --branch production \
-            --platform ios \
-            --message "$MSG"
-          CI=1 eas update \
-            --branch production \
-            --platform android \
-            --message "$MSG"
+          for RT in 2.2.0 2.1.0; do
+            for PLAT in ios android; do
+              echo "Publicando $PLAT para o runtime $RT"
+              OTA_RUNTIME_VERSION=$RT CI=1 eas update \
+                --branch production \
+                --platform $PLAT \
+                --message "$MSG"
+            done
+          done

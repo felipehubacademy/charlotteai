@@ -8,7 +8,10 @@
  *   - Separado do review-session (exercícios de gramática da trilha)
  *
  * UX:
- *   Frente  → termo + fonética + categoria
+ *   Frente  → termo + fonética + categoria (cartão clássico: reconhecer o significado)
+ *   Falado  → nas revisões ímpares (1ª, 3ª...) a frente mostra o SIGNIFICADO e o aluno FALA a palavra em
+ *             inglês (grava, /api/transcribe, confere). Alterna reconhecer e produzir; "Mostrar resposta"
+ *             sempre vira o cartão. A nota (Difícil/Ok/Fácil) continua com o aluno.
  *   Verso   → definição + exemplo + tradução (Novice)
  *   Rating  → Hard / Ok / Easy (slide-up após flip)
  *   Summary → XP earned, streak de acertos, próxima revisão
@@ -22,8 +25,9 @@ import {
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import {
-  ArrowLeft, SpeakerHigh, Lightning,
+  ArrowLeft, SpeakerHigh, Lightning, Microphone, Stop, CheckCircle,
 } from 'phosphor-react-native';
+import { useAudioRecorder, transcribeAudio, PRONUNCIATION_RECORDING_OPTIONS } from '@/hooks/useAudioRecorder';
 import { ReportIssueButton } from '@/components/ui/ReportIssue';
 import * as Haptics from '@/lib/hapticsGated';
 import { AppText } from '@/components/ui/Text';
@@ -77,6 +81,39 @@ const cardShadow = Platform.select({
 }) as object;
 
 const XP: Record<SRRating, number> = { hard: 5, ok: 10, easy: 15 };
+
+// ── Revisão falada: conferir o que o aluno disse com a palavra ───────────────
+const norm = (t: string) => t.toLowerCase().replace(/[’`]/g, "'").replace(/'/g, '').replace(/[^a-z\s]/g, ' ').replace(/\s+/g, ' ').trim();
+function lev(a: string, b: string): number {
+  const d = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    let prev = d[0]; d[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const tmp = d[j];
+      d[j] = Math.min(d[j] + 1, d[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1));
+      prev = tmp;
+    }
+  }
+  return d[b.length];
+}
+/** Acertou se a fala contém a palavra, ou chega bem perto dela (o reconhecimento erra uma letra ou outra). */
+export function spokenMatches(heard: string, term: string): boolean {
+  const h = norm(heard), t = norm(term).replace(/^(to|a|an|the) /, '');
+  if (!h || !t) return false;
+  if (` ${h} `.includes(` ${t} `)) return true;
+  // Janela do mesmo tamanho da palavra dentro da fala, tolerando ~20% de diferença.
+  // Palavra curta (até 4 letras) só vale exata: "life" não é "wife".
+  const tol = t.length < 5 ? 0 : Math.max(1, Math.floor(t.length * 0.2));
+  const hw = h.split(' '), n = t.split(' ').length;
+  for (let i = 0; i + n <= hw.length; i++) {
+    const w = hw.slice(i, i + n).join(' ');
+    if (lev(w, t) <= tol) return true;
+  }
+  return false;
+}
+/** Revisões ímpares viram faladas (a 1ª revisão de palavra nova é clássica: primeiro reconhecer). */
+const isSpokenCard = (c: { repetitions: number; term: string } | undefined) =>
+  !!c && (c.repetitions ?? 0) % 2 === 1 && c.term.split(/\s+/).length <= 5;
 
 // ── Selo de XP total: a cada nota o número sobe contando e o selo dá um pulinho
 function SessionXPPill({ xp }: { xp: number }) {
@@ -176,6 +213,10 @@ export default function VocabReview() {
   const [baseXP,   setBaseXP]   = useState<number | null>(null); // XP total do aluno ao abrir
   const [ttsLoading, setTtsLoading] = useState<string | null>(null);
   const [playingKey, setPlayingKey] = useState<string | null>(null);
+  // Revisão falada: estado da fala do cartão atual e o que o app ouviu.
+  const [speak, setSpeak] = useState<'idle' | 'recording' | 'checking' | 'right' | 'wrong'>('idle');
+  const [heard, setHeard] = useState('');
+  const mic = useAudioRecorder(PRONUNCIATION_RECORDING_OPTIONS as any, 15);
   const showSRInfo = () => appAlert(
     isPt ? 'Como funciona?' : 'How does this work?',
     isPt
@@ -215,6 +256,7 @@ export default function VocabReview() {
   }, [userId]);
 
   const current = cards[idx];
+  const spoken = isSpokenCard(current);
 
   // ── Interpolations — real 3D flip ───────────────────────────────────────────
   const frontRotate = flipAnim.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '180deg'] });
@@ -234,6 +276,32 @@ export default function VocabReview() {
       ]).start();
     });
   }, [flipped, flipAnim, btnAnim, btnOpac]);
+
+  // ── Revisão falada: tocar para falar, tocar de novo para conferir ──────────
+  const toggleSpeak = useCallback(async () => {
+    if (!current || flipped) return;
+    if (speak === 'recording') {
+      setSpeak('checking');
+      const rec = await mic.stopRecording();
+      const text = rec?.uri ? (await transcribeAudio(rec.uri)) ?? '' : '';
+      const ok = spokenMatches(text, current.term);
+      setHeard(text.trim());
+      setSpeak(ok ? 'right' : 'wrong');
+      soundEngine.play(ok ? 'answer_correct' : 'answer_wrong').catch(() => {});
+      Haptics.notificationAsync(ok ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Warning);
+      handleFlip();
+      return;
+    }
+    if (speak !== 'idle') return;
+    try { playerRef.current?.pause(); } catch { /* ignore */ }
+    await mic.startRecording();
+    setSpeak('recording');
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+  }, [current, flipped, speak, mic, handleFlip]);
+  // A gravação para sozinha no limite (15 s): confere do mesmo jeito.
+  useEffect(() => {
+    if (speak === 'recording' && mic.state === 'idle') toggleSpeak();
+  }, [mic.state]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── TTS ─────────────────────────────────────────────────────────────────────
   const handleTts = useCallback(async (key: string, text?: string) => {
@@ -335,6 +403,8 @@ export default function VocabReview() {
       btnAnim.setValue(60);
       btnOpac.setValue(0);
       setFlipped(false);
+      setSpeak('idle');
+      setHeard('');
       setIdx(prev => prev + 1);
       Animated.timing(opacAnim, { toValue: 1, duration: 200, useNativeDriver: true }).start();
     });
@@ -517,7 +587,9 @@ export default function VocabReview() {
             <View style={{ flexShrink: 1, marginBottom: 12 }}>
               <View style={{ backgroundColor: C.card, borderRadius: 16, paddingHorizontal: 14, paddingVertical: 10, ...cardShadow }}>
                 <AppText display style={{ fontSize: 16, fontWeight: '800', color: C.navy, lineHeight: 21 }}>
-                  {isPt ? 'Lembra o que significa?' : 'Remember what it means?'}
+                  {spoken
+                    ? (isPt ? 'Como se diz em inglês?' : 'How do you say it in English?')
+                    : (isPt ? 'Lembra o que significa?' : 'Remember what it means?')}
                 </AppText>
               </View>
               <Svg width={16} height={11} viewBox="0 0 16 11" style={{ position: 'absolute', left: 8, bottom: -10 }}>
@@ -537,9 +609,9 @@ export default function VocabReview() {
               transform: [{ perspective: 1200 }, { rotateY: frontRotate }],
             }}>
             <TouchableOpacity
-              
               activeOpacity={0.95}
-              onPress={handleFlip}
+              onPress={spoken ? undefined : handleFlip}
+              disabled={spoken}
               style={{
                 backgroundColor: C.card, borderRadius: 28,
                 padding: 32, minHeight: 320,
@@ -556,7 +628,8 @@ export default function VocabReview() {
                       : CATEGORY_LABELS[current.category] ?? current.category}
                   </AppText>
                 </View>
-                <TouchableOpacity
+                {/* Cartão falado: sem o botão de ouvir (entregaria a resposta). */}
+                {!spoken && <TouchableOpacity
                   onPress={() => handleTts('term')}
                   hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
                   accessibilityLabel={isPt ? 'Ouvir' : 'Listen'}
@@ -566,9 +639,17 @@ export default function VocabReview() {
                     ? <ActivityIndicator size="small" color={C.navy} />
                     : <SpeakerHigh size={21} color={C.navy} weight="fill" />
                   }
-                </TouchableOpacity>
+                </TouchableOpacity>}
               </View>
 
+              {/* Cartão falado: o significado; o aluno diz a palavra em inglês. */}
+              {spoken ? (
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingVertical: 24 }}>
+                  <AppText display style={{ fontSize: current.definition.length > 40 ? 22 : 28, fontWeight: '800', color: C.navy, textAlign: 'center', lineHeight: current.definition.length > 40 ? 29 : 35 }}>
+                    {current.definition}
+                  </AppText>
+                </View>
+              ) : (<>
               {/* Term */}
               <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingVertical: 24 }}>
                 <AppText display style={{
@@ -585,7 +666,34 @@ export default function VocabReview() {
                 ) : null}
               </View>
 
-              {/* Tap hint */}
+              </>)}
+
+              {spoken ? (
+                <View style={{ alignItems: 'center', gap: 12 }}>
+                  <TouchableOpacity onPress={toggleSpeak} disabled={speak === 'checking'} activeOpacity={0.85}
+                    accessibilityRole="button"
+                    accessibilityLabel={speak === 'recording' ? (isPt ? 'Parar e conferir' : 'Stop and check') : (isPt ? 'Falar a palavra' : 'Say the word')}
+                    style={{ width: 72, height: 72, borderRadius: 36, alignItems: 'center', justifyContent: 'center',
+                      backgroundColor: speak === 'recording' ? C.pink : C.navy }}>
+                    {speak === 'checking' ? <ActivityIndicator color="#FFFFFF" />
+                      : speak === 'recording' ? <Stop size={28} color="#FFFFFF" weight="fill" />
+                      : <Microphone size={30} color={C.volt} weight="fill" />}
+                  </TouchableOpacity>
+                  <AppText style={{ fontSize: 13, fontWeight: '700', color: C.navyMid }}>
+                    {speak === 'recording' ? (isPt ? 'Falando... toque para conferir' : 'Listening... tap to check')
+                      : speak === 'checking' ? (isPt ? 'Conferindo...' : 'Checking...')
+                      : (isPt ? 'Toque e fale em inglês' : 'Tap and say it in English')}
+                  </AppText>
+                  {speak === 'idle' && (
+                    <TouchableOpacity onPress={handleFlip} hitSlop={{ top: 8, bottom: 8, left: 12, right: 12 }}>
+                      <AppText style={{ fontSize: 14, fontWeight: '800', color: C.navy, textDecorationLine: 'underline' }}>
+                        {isPt ? 'Mostrar resposta' : 'Show answer'}
+                      </AppText>
+                    </TouchableOpacity>
+                  )}
+                </View>
+              ) : (
+              /* Tap hint */
               <View style={{ alignItems: 'center' }}>
                 <View style={{ backgroundColor: C.navy, borderRadius: 14, paddingHorizontal: 20, paddingVertical: 11 }}>
                   <AppText style={{ fontSize: 14, fontWeight: '800', color: '#FFFFFF' }}>
@@ -593,6 +701,7 @@ export default function VocabReview() {
                   </AppText>
                 </View>
               </View>
+              )}
             </TouchableOpacity>
           </Animated.View>
 
@@ -609,6 +718,20 @@ export default function VocabReview() {
               padding: 28, minHeight: 320,
               ...cardShadow,
             }}>
+              {/* Resultado da revisão falada. */}
+              {(speak === 'right' || speak === 'wrong') && (
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, alignSelf: 'flex-start', marginBottom: 14, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 7,
+                  backgroundColor: speak === 'right' ? C.greenBg : C.pinkBg }}>
+                  {speak === 'right' && <CheckCircle size={16} color={C.green} weight="fill" />}
+                  <AppText style={{ flexShrink: 1, fontSize: 13.5, fontWeight: '800', color: speak === 'right' ? C.green : C.pink }}>
+                    {speak === 'right'
+                      ? (isPt ? 'Você falou certo!' : 'You said it right!')
+                      : heard
+                        ? (isPt ? `Ouvi: "${heard.slice(0, 60)}"` : `I heard: "${heard.slice(0, 60)}"`)
+                        : (isPt ? 'Não consegui ouvir. Confira a resposta.' : "I couldn't hear you. Check the answer.")}
+                  </AppText>
+                </View>
+              )}
               <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 14 }}>
                 <View style={{ flex: 1 }}>
                   <MarkerText display style={{ fontSize: 24, fontWeight: '800', color: C.navy, lineHeight: 30 }}>

@@ -38,6 +38,7 @@ import * as SecureStore from 'expo-secure-store';
 import { systemIsPt } from '@/lib/systemLang';
 import { LiveVoiceWave } from './LiveVoiceWave';
 import { useCallLevels } from '@/lib/callLevels';
+import { CallVocabCard } from '@/components/vocabulary/CallVocabCard';
 import { AppText } from '@/components/ui/Text';
 import { useCallTimer } from '@/hooks/useCallTimer';
 import Constants from 'expo-constants';
@@ -1720,7 +1721,10 @@ export default function LiveVoiceModal({
                 </AppText>
               </View>
             ) : (
-              conversationTurns.map((turn, i) => {
+              <>
+              {/* Palavras desta ligação: salvar no Vocabulário com um toque (some se a conversa foi curta). */}
+              <CallVocabCard lines={conversationTurns.map(t => ({ who: t.role === 'user' ? 'user' as const : 'ai' as const, text: t.text }))} />
+              {conversationTurns.map((turn, i) => {
                 const isUser = turn.role === 'user';
                 return (
                   <View key={i} style={{ flexDirection: 'row', justifyContent: isUser ? 'flex-end' : 'flex-start', marginBottom: 4 }}>
@@ -1746,7 +1750,8 @@ export default function LiveVoiceModal({
                     </View>
                   </View>
                 );
-              })
+              })}
+              </>
             )}
           </ScrollView>
 
