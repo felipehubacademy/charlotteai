@@ -35,7 +35,7 @@ export function VocabReviewCard({ userId }: { userId: string | null | undefined 
 
   if (due < MIN_DUE) return null;
   const n = Math.min(due, SESSION_MAX);
-  const minutes = Math.max(1, Math.round((n * 12) / 60));
+  const minutes = Math.max(1, Math.ceil((n * 20) / 60)); // mesma conta da aba Vocabulário (20 s por cartão)
 
   return (
     <TouchableOpacity activeOpacity={0.85}
