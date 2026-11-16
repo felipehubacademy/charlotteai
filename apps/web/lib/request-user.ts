@@ -7,6 +7,9 @@ const cache = new Map<string, { id: string | null; at: number }>();
 const TTL_MS = 5 * 60_000;
 
 export async function requestUserId(req: NextRequest): Promise<string | null> {
+  // Já conferido no middleware (que apaga o cabeçalho vindo de fora): não precisa ir ao Supabase de novo.
+  const checked = req.headers.get('x-auth-user');
+  if (checked) return checked;
   const h = req.headers.get('authorization') ?? '';
   const token = h.startsWith('Bearer ') ? h.slice(7).trim() : '';
   if (token.split('.').length !== 3) return null;

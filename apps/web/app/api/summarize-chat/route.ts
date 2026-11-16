@@ -4,6 +4,7 @@
 // como o resto da interface. Sem `lang` (app antigo), segue o nível:
 // Novice/Inter → PT-BR, Advanced → EN.
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
@@ -34,7 +35,8 @@ export async function POST(request: NextRequest) {
     }
 
     const body = (await request.json()) as Partial<Body>;
-    const { sessionId, userId, userLevel, lang } = body;
+    const { sessionId, userLevel, lang } = body;
+    const userId = await requestUserId(request); // só o aluno do login (o userId do corpo não vale)
 
     if (!sessionId || !userId || !userLevel) {
       return NextResponse.json(
@@ -103,7 +105,8 @@ Return only the sentence, no quotes, no extra text.`;
     const { error: updateError } = await supabase
       .from('charlotte_chat_sessions')
       .update({ summary, message_count: realMessages.length })
-      .eq('id', sessionId);
+      .eq('id', sessionId)
+      .eq('user_id', userId); // só a conversa do próprio aluno
     if (updateError) {
       console.warn('[summarize-chat] update error:', updateError);
     }

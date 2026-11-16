@@ -8,6 +8,7 @@
 // → parse [OBJECTIVE_MET:n] → strip markers → OpenAI TTS (coral/onyx based on
 // persona gender) → return base64 flac.
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch, transcribeModel, transcribedSeconds } from '@/lib/ai-models';
@@ -398,7 +399,7 @@ export async function POST(request: NextRequest) {
     const formData = await request.formData();
     const audio    = formData.get('audio') as File | null;
     const payload  = formData.get('payload') as string | null;
-    const userId   = (formData.get('user_id') as string | null) ?? undefined;
+    const userId   = (await requestUserId(request)) ?? undefined; // aluno do login (o user_id do formulário não vale)
     if (!audio || !payload) {
       return NextResponse.json({ error: 'Missing audio or payload' }, { status: 400 });
     }

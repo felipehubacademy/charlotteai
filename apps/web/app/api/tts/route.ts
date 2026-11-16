@@ -3,6 +3,7 @@
 // (ex.: Igorfina): ElevenLabs com a voz do personagem (body.character). tts-cached continua no
 // ElevenLabs (vocabulário).
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import { logOpenAIUsage, logElevenLabsUsage } from '@/lib/openai-usage';
 import { characterOf, impressionOf, voiceFor, voiceSegments, concatMp3, withVocalTics } from '@/lib/characters';
@@ -38,27 +39,31 @@ function lsAudioPath(characterId: string, impressionId: string | null, text: str
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { text, userId, source, character, impression } = body as { text: string; userId?: string; source?: string; character?: string; impression?: string };
+    const { text, source, character, impression } = body as { text: string; source?: string; character?: string; impression?: string };
+    const userId = await requestUserId(request); // aluno do login (o userId do corpo não vale)
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json({ error: 'Missing text field' }, { status: 400 });
     }
+    if (text.length > 1500) return NextResponse.json({ error: 'Text too long' }, { status: 413 });
 
     // Personagem com voz própria: ElevenLabs. Se falhar, cai na voz padrão (o aluno não fica sem áudio).
     const c = characterOf(character);
     const imp = impressionOf(c, impression);
     const voice = voiceFor(c, imp);
     if (voice) {
-      // Trilha (source 'learn'): tenta o arquivo pronto antes de gerar.
-      const cachePath = source === 'learn' && c.id !== 'charlotte' ? lsAudioPath(c.id, imp?.id ?? null, text) : null;
+      // Trilha (source 'learn') e abertura do role-play (texto fixo do currículo): tenta o arquivo pronto
+      // antes de gerar; a abertura era gerada de novo para cada aluno (auditoria de 16/11).
+      const fixedText = source === 'learn' || source === 'roleplay-opener';
+      const cachePath = fixedText && c.id !== 'charlotte' ? lsAudioPath(c.id, imp?.id ?? null, text) : null;
       if (cachePath) {
         const { data } = await getSupabaseAdmin().storage.from(LS_BUCKET).download(cachePath);
         if (data) return NextResponse.json({ audio: Buffer.from(await data.arrayBuffer()).toString('base64'), mimeType: 'audio/mpeg', cached: true });
       }
       try {
         // Português na voz em português do personagem e inglês na voz normal, emendados num áudio só.
-        // Sons do personagem (ex.: Allday) entram só no áudio; na trilha não, para o áudio guardado ficar igual para todos.
-        const segs = voiceSegments(c, imp, source === 'learn' ? text : withVocalTics(imp, text));
+        // Sons do personagem (ex.: Allday) entram só no áudio; na trilha e na abertura não, para o áudio guardado ficar igual para todos.
+        const segs = voiceSegments(c, imp, fixedText ? text : withVocalTics(imp, text));
         const parts = await Promise.all(segs.map(sg => ttsElevenLabs(sg.text, sg.voiceId, sg.settings, sg.model)));
         const buf = concatMp3(parts);
         if (cachePath) {

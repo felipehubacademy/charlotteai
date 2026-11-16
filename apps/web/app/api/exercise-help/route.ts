@@ -6,6 +6,7 @@
 //
 // Custo: ~$0.0005 por chamada (gpt-4o-mini, ~200 tokens out).
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
@@ -78,7 +79,7 @@ export async function POST(request: NextRequest) {
       model:            'gpt-4o-mini',
       promptTokens:     completion.usage?.prompt_tokens,
       completionTokens: completion.usage?.completion_tokens,
-      userId:           body.user_id,
+      userId:           (await requestUserId(request)) ?? undefined,
     });
 
     return NextResponse.json({ explanation, lang });

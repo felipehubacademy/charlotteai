@@ -5,6 +5,7 @@
 // O client_secret retornado é de curta duração (~1 min) e usado apenas para
 // a troca de SDP — a API key nunca sai do servidor.
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import { isTasterRow, TASTE_LIVE_VOICE_SECONDS } from '@/lib/taste';
 import { createClient } from '@supabase/supabase-js';
@@ -29,55 +30,42 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { userLevel, userName, accessToken } = body;
+    const { userLevel, userName } = body;
 
-    // ── Validação de pool (opcional mas recomendada) ─────────────────────────
-    // Se o app enviou o accessToken, verificamos o pool no servidor.
-    // Sem accessToken, deixamos a validação client-side fazer o trabalho.
-    if (accessToken && process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
-      try {
-        const supabase = createClient(
-          process.env.NEXT_PUBLIC_SUPABASE_URL,
-          process.env.SUPABASE_SERVICE_ROLE_KEY,
+    // ── Login e limite de minutos: obrigatórios ──────────────────────────────
+    // O aluno vem da prova de login conferida no middleware. Sem aluno, sem cadastro ou com erro na
+    // checagem do limite, recusa (antes deixava passar e a chave de voz saía para qualquer um).
+    const userId = await requestUserId(request);
+    if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      return NextResponse.json({ error: 'pool_check_unavailable' }, { status: 503 });
+    }
+    {
+      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
+      const { data, error: dbErr } = await supabase
+        .from('charlotte_users')
+        .select('live_voice_seconds_used, live_voice_reset_date, is_institutional, timezone, subscription_status, live_voice_bonus_seconds')
+        .eq('id', userId)
+        .single();
+      if (dbErr || !data) {
+        console.warn('⛔ Pool check failed for user:', userId, dbErr?.message);
+        return NextResponse.json({ error: 'pool_check_unavailable' }, { status: 503 });
+      }
+      // Institucional segue o mesmo limite do pago (20 min/mês).
+      const tz           = (data as any).timezone || 'UTC';
+      const thisMonth    = thisMonthFirstDayInTz(tz);
+      // Degustação (sem assinatura): 3 min uma vez só, sem a renovação do mês.
+      const taster       = isTasterRow(data as never);
+      const needsReset   = !taster && (!data.live_voice_reset_date || data.live_voice_reset_date < thisMonth);
+      const secondsUsed  = needsReset ? 0 : (data.live_voice_seconds_used ?? 0);
+      const pool         = taster ? TASTE_LIVE_VOICE_SECONDS : POOL_SECONDS;
+      const remaining    = Math.max(0, pool - secondsUsed) + Number((data as any).live_voice_bonus_seconds ?? 0); // degustação também usa o bônus (ex.: os 5 min da pesquisa de volta)
+      if (remaining <= 0) {
+        console.warn('⛔ Live Voice pool exhausted for user:', userId);
+        return NextResponse.json(
+          { error: 'monthly_pool_exhausted', message: 'Monthly Live Voice allowance used up.' },
+          { status: 403 }
         );
-
-        // Verificar usuário a partir do token JWT
-        const { data: { user }, error: authErr } = await supabase.auth.getUser(accessToken);
-        if (authErr || !user) {
-          return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
-
-        const { data, error: dbErr } = await supabase
-          .from('charlotte_users')
-          .select('live_voice_seconds_used, live_voice_reset_date, is_institutional, timezone, subscription_status, live_voice_bonus_seconds')
-          .eq('id', user.id)
-          .single();
-
-        if (!dbErr && data) {
-          // Institucional segue o mesmo limite do pago (20 min/mês).
-          {
-            const tz           = (data as any).timezone || 'UTC';
-            const thisMonth    = thisMonthFirstDayInTz(tz);
-            // Degustação (sem assinatura): 3 min uma vez só, sem a renovação do mês.
-            const taster       = isTasterRow(data as never);
-            const needsReset   = !taster && (!data.live_voice_reset_date || data.live_voice_reset_date < thisMonth);
-            const secondsUsed  = needsReset ? 0 : (data.live_voice_seconds_used ?? 0);
-            const pool         = taster ? TASTE_LIVE_VOICE_SECONDS : POOL_SECONDS;
-            const remaining    = Math.max(0, pool - secondsUsed) + Number((data as any).live_voice_bonus_seconds ?? 0); // degustação também usa o bônus (ex.: os 5 min da pesquisa de volta)
-
-            if (remaining <= 0) {
-              console.warn('⛔ Live Voice pool exhausted for user:', user.id);
-              return NextResponse.json(
-                { error: 'monthly_pool_exhausted', message: 'Monthly Live Voice allowance used up.' },
-                { status: 403 }
-              );
-            }
-            console.log(`✅ Pool check: ${remaining}s remaining for user ${user.id}`);
-          }
-        }
-      } catch (poolErr) {
-        // Falha na verificação do pool → deixa passar (client-side é o backstop)
-        console.warn('⚠️ Pool check skipped due to error:', poolErr);
       }
     }
 

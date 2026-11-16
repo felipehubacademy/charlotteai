@@ -2,6 +2,7 @@
 // Generates definition, example, phonetic and category for a given term.
 // Called by the Add Word modal in the RN app.
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
@@ -13,7 +14,9 @@ const openai = new OpenAI({ fetch: aiFetch, apiKey: process.env.OPENAI_API_KEY |
 
 export async function POST(request: NextRequest) {
   try {
-    const { term, level, userId } = await request.json() as { term: string; level: string; userId?: string };
+    const { term, level } = await request.json() as { term: string; level: string };
+    const userId = await requestUserId(request);
+    if (typeof term === 'string' && term.length > 80) return NextResponse.json({ error: 'Term too long' }, { status: 413 });
     if (!term?.trim()) {
       return NextResponse.json({ error: 'term required' }, { status: 400 });
     }

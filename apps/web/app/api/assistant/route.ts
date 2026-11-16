@@ -147,7 +147,7 @@ export async function POST(request: NextRequest) {
   // openai.chat.completions.create nos helpers abaixo sejam logadas
   // automaticamente pelo patch acima.
   // Com prova de login, o aluno é o da prova (o cabeçalho x-user-id dá para forjar; fica para apps antigos).
-  const userIdHeader = (await requestUserId(request)) ?? request.headers.get('x-user-id');
+  const userIdHeader = await requestUserId(request); // x-user-id não vale mais (dava para forjar)
   // Personagem do Free Chat (cabeçalho do app). Só vale no modo conversa; ver handleAssistantPOST.
   const character = characterOf(request.headers.get('x-character'));
   const impression = impressionOf(character, request.headers.get('x-impression')); // imitação desta resposta (decidida pelo app)

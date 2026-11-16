@@ -37,6 +37,11 @@ export async function GET(req: NextRequest) {
   if (!term) {
     return NextResponse.json({ error: 'Missing term' }, { status: 400 });
   }
+  // Só termos de vocabulário em inglês: o nome do arquivo descarta o resto e um texto qualquer podia
+  // gravar outra fala no arquivo de uma palavra real (auditoria de 16/11).
+  if (term.length > 60 || !/^[A-Za-z0-9 '’.,?!-]+$/.test(term)) {
+    return NextResponse.json({ error: 'Invalid term' }, { status: 400 });
+  }
 
   const normalizedTerm = term.toLowerCase().trim();
   const slug           = termToSlug(term);

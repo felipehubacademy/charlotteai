@@ -8,6 +8,7 @@
 // The Azure SDK cannot catch these because it scores the word as heard;
 // only semantic context reveals the error.
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
@@ -31,7 +32,8 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { text, userId } = body as { text: string; userId?: string };
+    const { text } = body as { text: string };
+    const userId = await requestUserId(request);
 
     if (!text || text.trim().length < 3) {
       return NextResponse.json({ corrections: [] });
