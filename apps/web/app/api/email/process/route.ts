@@ -5,9 +5,10 @@ export async function POST(request: NextRequest) {
   try {
     // Verificar se é uma chamada autorizada (pode ser um webhook do cron)
     const authHeader = request.headers.get('authorization');
-    const expectedToken = process.env.CRON_SECRET_TOKEN;
+    // Sem segredo configurado, recusa (antes ficava aberta quando CRON_SECRET_TOKEN não existia).
+    const expectedToken = process.env.CRON_SECRET_TOKEN || process.env.CRON_SECRET;
     
-    if (expectedToken && authHeader !== `Bearer ${expectedToken}`) {
+    if (!expectedToken || authHeader !== `Bearer ${expectedToken}`) {
       return NextResponse.json(
         { error: 'Não autorizado' },
         { status: 401 }
