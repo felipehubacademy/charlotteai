@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "eyebrow": "Aula 1 · Novice",
+    "title": "Oi! Tudo bem?",
+    "subtitle": "Cumprimentos em inglês",
+    "hud": "Aula 1",
+    "endTitle": "Agora é a sua vez!",
+    "endSub": "Pratique o tópico {Oi! Tudo bem?} na trilha e converse com a Charlotte.",
+    "endCta": "Praticar agora"
+  },
+  "sceneByLine": {
+    "l01": "intro",
+    "l02": "street",
+    "l03": "street",
+    "l04": "street",
+    "l05": "explain",
+    "l06": "explain",
+    "l07": "time",
+    "l08": "time",
+    "l09": "time",
+    "l10": "meet",
+    "l11": "meet",
+    "l12": "meet",
+    "l13": "meet",
+    "l14": "meet",
+    "l15": "recap"
+  },
+  "sprites": {
+    "welcome": "apps/mobile/assets/charlotte-welcome.webp",
+    "greeting": "apps/mobile/assets/charlotte-greeting.webp",
+    "cheer": "apps/mobile/assets/charlotte-cheer-full.webp"
+  },
+  "stills": {
+    "charlotteStand": "apps/mobile/assets/charlotte-welcome.webp#0",
+    "charlottePoint": "apps/mobile/assets/charlotte-pointing-left.png",
+    "igor": "scripts/aula-motion/assets/igorfina-corpo-inteiro.png"
+  },
+  "storyboard": [
+    [
+      "01-abertura",
+      "t:1.9"
+    ],
+    [
+      "02-charlotte-se-apresenta",
+      "l01:0.6"
+    ],
+    [
+      "03-hi-igor",
+      "l02:0.6"
+    ],
+    [
+      "04-im-good-thanks",
+      "l03:0.8"
+    ],
+    [
+      "05-cartoes-how-are-you",
+      "l05:0.95"
+    ],
+    [
+      "06-pausa-1",
+      "cp1"
+    ],
+    [
+      "07-hora-do-dia",
+      "l07:0.95"
+    ],
+    [
+      "08-good-night",
+      "l08:0.6"
+    ],
+    [
+      "09-pausa-2",
+      "cp2"
+    ],
+    [
+      "10-nice-to-meet-you",
+      "l10:0.7"
+    ],
+    [
+      "11-explicacao-nice",
+      "l11:0.6"
+    ],
+    [
+      "12-see-you-later",
+      "l12:0.7"
+    ],
+    [
+      "13-pausa-3-fala",
+      "cp3"
+    ],
+    [
+      "14-revisao",
+      "l15:0.97"
+    ],
+    [
+      "15-sua-vez",
+      "end:2.4"
+    ]
+  ]
+}

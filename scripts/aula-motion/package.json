@@ -1,0 +1,9 @@
+{
+  "name": "queizy-aula-motion",
+  "private": true,
+  "type": "module",
+  "description": "Gerador das aulas em motion graphics (vozes, cena em HTML, mp4). Ferramenta interna, fora do app.",
+  "devDependencies": {
+    "playwright-core": "1.65.0"
+  }
+}

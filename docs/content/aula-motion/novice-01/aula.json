@@ -1,0 +1,76 @@
+{
+  "id": "novice-01",
+  "level": "Novice",
+  "module": "M01",
+  "unit": "N01",
+  "title": "Oi! Tudo bem?",
+  "subtitle": "Cumprimentos em inglês",
+  "source": "apps/mobile/data/curriculum-v2/novice/M01.json (unidade N01)",
+  "note": "Fonte única da aula. Texto entre chaves {assim} é inglês destacado na tela; a voz lê sem as chaves. Falas em inglês trazem a tradução em pt.",
+  "speakers": {
+    "charlotte": { "name": "Charlotte", "engine": "charlotte-voice", "voice": "coral" },
+    "igor": { "name": "Igorfina", "engine": "character-voice", "voice": "9QtRgQhaZY2Ge2ttjy5x", "model": "eleven_multilingual_v2" }
+  },
+  "keys": [
+    { "id": "how-are-you", "en": "How are you?", "pt": "Tudo bem?" },
+    { "id": "im-good", "en": "I'm good, thanks!", "pt": "Tô bem, obrigado!" },
+    { "id": "good-morning", "en": "Good morning", "pt": "Bom dia" },
+    { "id": "nice-to-meet-you", "en": "Nice to meet you", "pt": "Prazer em te conhecer" },
+    { "id": "see-you-later", "en": "See you later", "pt": "Até mais" }
+  ],
+  "lines": [
+    { "id": "l01", "speaker": "charlotte", "toCamera": true, "text": "Oi! Eu sou a Charlotte. Hoje você vai aprender a cumprimentar alguém em inglês. Vem comigo!" },
+    { "id": "l02", "speaker": "charlotte", "lang": "en", "text": "Hi, Igor! How are you?", "pt": "Oi, Igor! Tudo bem?", "key": "how-are-you" },
+    { "id": "l03", "speaker": "igor", "lang": "en", "text": "I'm good, thanks! And you?", "pt": "Tô bem, obrigado! E você?", "key": "im-good" },
+    { "id": "l04", "speaker": "charlotte", "lang": "en", "text": "I'm great!", "pt": "Tô ótima!" },
+    { "id": "l05", "speaker": "charlotte", "text": "{How are you?} é o nosso \"tudo bem?\". E a resposta mais comum é: {I'm good, thanks!}" },
+    { "id": "l06", "speaker": "charlotte", "text": "Sua vez! O Igor pergunta: {How are you?} O que você responde?", "checkpoint": "cp1" },
+    { "id": "l07", "speaker": "charlotte", "text": "Também dá para cumprimentar pela hora do dia. De manhã: {Good morning}. À tarde: {Good afternoon}. À noite: {Good evening}.", "key": "good-morning" },
+    { "id": "l08", "speaker": "charlotte", "text": "Cuidado: {Good night} não é cumprimento. É só para se despedir, antes de dormir." },
+    { "id": "l09", "speaker": "charlotte", "text": "São nove da manhã e você chega na aula. O que você diz?", "checkpoint": "cp2" },
+    { "id": "l10", "speaker": "igor", "lang": "en", "toCamera": true, "text": "Hi! I'm Igor. Nice to meet you!", "pt": "Oi! Eu sou o Igor. Prazer em te conhecer!", "key": "nice-to-meet-you" },
+    { "id": "l11", "speaker": "charlotte", "text": "{Nice to meet you} é \"prazer em te conhecer\". Só se usa na primeira vez que você vê a pessoa." },
+    { "id": "l12", "speaker": "igor", "lang": "en", "text": "Well, I have to go. See you later!", "pt": "Bom, preciso ir. Até mais!", "key": "see-you-later" },
+    { "id": "l13", "speaker": "charlotte", "lang": "en", "text": "See you!", "pt": "Até!" },
+    { "id": "l14", "speaker": "charlotte", "text": "{See you later} é o nosso \"até mais\". Agora fale você! Alguém novo diz: {Hi, I'm Igor}. Como você responde?", "checkpoint": "cp3" },
+    { "id": "l15", "speaker": "charlotte", "toCamera": true, "text": "Revisando: {How are you?}, {I'm good, thanks!}, {Good morning}, {Nice to meet you} e {See you later}. Agora é a sua vez de praticar!" }
+  ],
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "mode": "tap",
+      "question": "O Igor pergunta: \"How are you?\". O que você responde?",
+      "options": ["I'm good, thanks!", "Yes, I am.", "I'm 25."],
+      "answer": "I'm good, thanks!",
+      "speak": ["i'm good", "im good", "i am good", "i'm fine", "i am fine", "i'm great", "good thanks", "fine thanks"],
+      "feedback": {
+        "ok": { "id": "f1ok", "text": "Isso! {I'm good, thanks!}" },
+        "no": { "id": "f1no", "text": "Quase! Para {How are you?}, responda: {I'm good, thanks!}" }
+      }
+    },
+    {
+      "id": "cp2",
+      "mode": "tap",
+      "question": "São 9 da manhã e você chega na aula. O que você diz?",
+      "options": ["Good night!", "Good morning!", "Good noon!"],
+      "answer": "Good morning!",
+      "speak": ["good morning", "morning"],
+      "feedback": {
+        "ok": { "id": "f2ok", "text": "Perfeito! De manhã é {Good morning}." },
+        "no": { "id": "f2no", "text": "Quase! De manhã, o certo é {Good morning}." }
+      }
+    },
+    {
+      "id": "cp3",
+      "mode": "speak",
+      "question": "Alguém novo diz: \"Hi, I'm Igor.\" Fale a resposta.",
+      "options": ["See you later!", "Nice to meet you!", "Good night!"],
+      "answer": "Nice to meet you!",
+      "speak": ["nice to meet you", "nice meeting you", "good to meet you", "pleased to meet you", "nice to meet ya"],
+      "feedback": {
+        "ok": { "id": "f3ok", "text": "Muito bem! {Nice to meet you!}" },
+        "no": { "id": "f3no", "text": "Quase! Repita comigo: {Nice to meet you!}" }
+      }
+    }
+  ]
+}

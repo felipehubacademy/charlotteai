@@ -1,0 +1,254 @@
+{
+  "l01": {
+    "hash": "d97bde212a1e",
+    "speaker": "charlotte",
+    "text": "Oi! Eu sou a Charlotte. Hoje você vai aprender a cumprimentar alguém em inglês. Vem comigo!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00314,
+    "at": "2026-11-16T17:44:40.034Z"
+  },
+  "l02": {
+    "hash": "0482042f182a",
+    "speaker": "charlotte",
+    "text": "Hi, Igor! How are you?",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00139,
+    "at": "2026-11-16T17:44:42.164Z"
+  },
+  "l03": {
+    "hash": "e219ed4c7cbd",
+    "speaker": "igor",
+    "text": "I'm good, thanks! And you?",
+    "model": "eleven_multilingual_v2",
+    "calls": [
+      "eleven_multilingual_v2"
+    ],
+    "credits": 26,
+    "usd": 0.00208,
+    "at": "2026-11-16T17:44:43.071Z"
+  },
+  "l04": {
+    "hash": "db717845b079",
+    "speaker": "charlotte",
+    "text": "I'm great!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00071,
+    "at": "2026-11-16T17:44:44.396Z"
+  },
+  "l05": {
+    "hash": "e62e6bb15646",
+    "speaker": "charlotte",
+    "text": "How are you? é o nosso \"tudo bem?\". E a resposta mais comum é: I'm good, thanks!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00326,
+    "at": "2026-11-16T17:44:46.321Z"
+  },
+  "l06": {
+    "hash": "678004edc768",
+    "speaker": "charlotte",
+    "text": "Sua vez! O Igor pergunta: How are you? O que você responde?",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00254,
+    "at": "2026-11-16T17:44:48.198Z"
+  },
+  "l07": {
+    "hash": "54a2c5d451c8",
+    "speaker": "charlotte",
+    "text": "Também dá para cumprimentar pela hora do dia. De manhã: Good morning. À tarde: Good afternoon. À noite: Good evening.",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00428,
+    "at": "2026-11-16T17:44:50.432Z"
+  },
+  "l08": {
+    "hash": "8d84ecd1d18b",
+    "speaker": "charlotte",
+    "text": "Cuidado: Good night não é cumprimento. É só para se despedir, antes de dormir.",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00272,
+    "at": "2026-11-16T17:44:52.053Z"
+  },
+  "l09": {
+    "hash": "f2cd52a3d491",
+    "speaker": "charlotte",
+    "text": "São nove da manhã e você chega na aula. O que você diz?",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00236,
+    "at": "2026-11-16T17:44:53.914Z"
+  },
+  "l10": {
+    "hash": "6470cb262538",
+    "speaker": "igor",
+    "text": "Hi! I'm Igor. Nice to meet you!",
+    "model": "eleven_multilingual_v2",
+    "calls": [
+      "eleven_multilingual_v2"
+    ],
+    "credits": 31,
+    "usd": 0.00248,
+    "at": "2026-11-16T17:44:54.776Z"
+  },
+  "l11": {
+    "hash": "cd39d7f5dd40",
+    "speaker": "charlotte",
+    "text": "Nice to meet you é \"prazer em te conhecer\". Só se usa na primeira vez que você vê a pessoa.",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.0029,
+    "at": "2026-11-16T17:44:56.640Z"
+  },
+  "l12": {
+    "hash": "fb884053f3b0",
+    "speaker": "igor",
+    "text": "Well, I have to go. See you later!",
+    "model": "eleven_multilingual_v2",
+    "calls": [
+      "eleven_multilingual_v2"
+    ],
+    "credits": 34,
+    "usd": 0.00272,
+    "at": "2026-11-16T17:44:57.207Z"
+  },
+  "l13": {
+    "hash": "3274b695ded5",
+    "speaker": "charlotte",
+    "text": "See you!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00061,
+    "at": "2026-11-16T17:44:58.368Z"
+  },
+  "l14": {
+    "hash": "ae1afe959533",
+    "speaker": "charlotte",
+    "text": "See you later é o nosso \"até mais\". Agora fale você! Alguém novo diz: Hi, I'm Igor. Como você responde?",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00398,
+    "at": "2026-11-16T17:45:00.315Z"
+  },
+  "l15": {
+    "hash": "4a97352c1a38",
+    "speaker": "charlotte",
+    "text": "Revisando: How are you?, I'm good, thanks!, Good morning, Nice to meet you e See you later. Agora é a sua vez de praticar!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00453,
+    "at": "2026-11-16T17:45:02.575Z"
+  },
+  "f1ok": {
+    "hash": "068db45fe820",
+    "speaker": "charlotte",
+    "text": "Isso! I'm good, thanks!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00143,
+    "at": "2026-11-16T17:45:04.534Z"
+  },
+  "f1no": {
+    "hash": "a76031e45dc9",
+    "speaker": "charlotte",
+    "text": "Quase! Para How are you?, responda: I'm good, thanks!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00242,
+    "at": "2026-11-16T17:45:06.810Z"
+  },
+  "f2ok": {
+    "hash": "8488a3972319",
+    "speaker": "charlotte",
+    "text": "Perfeito! De manhã é Good morning.",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00161,
+    "at": "2026-11-16T17:45:10.018Z"
+  },
+  "f2no": {
+    "hash": "d05e35984ec7",
+    "speaker": "charlotte",
+    "text": "Quase! De manhã, o certo é Good morning.",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00223,
+    "at": "2026-11-16T17:45:12.274Z"
+  },
+  "f3ok": {
+    "hash": "5515b2a840e3",
+    "speaker": "charlotte",
+    "text": "Muito bem! Nice to meet you!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00133,
+    "at": "2026-11-16T17:45:13.916Z"
+  },
+  "f3no": {
+    "hash": "124d5530669d",
+    "speaker": "charlotte",
+    "text": "Quase! Repita comigo: Nice to meet you!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00187,
+    "at": "2026-11-16T17:45:15.585Z"
+  }
+}
