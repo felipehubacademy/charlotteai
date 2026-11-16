@@ -469,10 +469,12 @@ export function PaywallModal() {
     const a = `${acts} ${acts === 1 ? 'activity' : 'activities'}`;
     return words > 0 ? `${when} did ${a} and saved ${words} ${words === 1 ? 'word' : 'words'}.` : `${when} did ${a}.`;
   })();
+  // "Sem esperar até amanhã" só quando amanhã libera mais (não no último dia nem depois do teste de nível).
+  const moreTomorrow = paywallReason === 'taste_today' || paywallReason === 'taste_extra';
   const proofLine = isTaster && (tasteReason || paywallReason === 'placement')
     ? (isPt
-        ? `Assinantes do Queizy fazem ${SUBSCRIBER_ACTIVITY_MULTIPLIER} vezes mais atividades nas duas primeiras semanas.`
-        : `Queizy subscribers do ${SUBSCRIBER_ACTIVITY_MULTIPLIER} times more activities in their first two weeks.`)
+        ? `Assinantes do Queizy fazem ${SUBSCRIBER_ACTIVITY_MULTIPLIER} vezes mais atividades.${moreTomorrow ? ' Acelere seu ritmo sem esperar até amanhã.' : ''}`
+        : `Queizy subscribers do ${SUBSCRIBER_ACTIVITY_MULTIPLIER} times more activities.${moreTomorrow ? ' Speed up your pace without waiting until tomorrow.' : ''}`)
     : null;
 
   const subheadline = reasonLine ?? (isTaster
