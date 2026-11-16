@@ -4,10 +4,18 @@
 <meta charset="utf-8">
 <!--
   Cena da aula em motion novice-01 ("Oi! Tudo bem?"). Vertical 720x1280, para o celular.
-  Motion graphics feitos à mão: HTML + SVG animados por uma função determinística seek(t),
-  capturada quadro a quadro pelo gerador (scripts/aula-motion/make-aula.mjs). Sem bibliotecas.
-  Falas e tempos chegam por window.setup(data); nada de texto da aula fica fixo aqui além
-  dos rótulos de cena.
+  HTML + SVG animados por uma função determinística seek(t), capturada quadro a quadro pelo gerador
+  (scripts/aula-motion/make-aula.mjs). Sem bibliotecas.
+
+  Direção de animação (v2, pedido do Felipe em 16/11):
+  - Personagem NUNCA pulsa nem pula. Fica parado e bem enquadrado enquanto fala; os gestos das
+    poses do app (aceno, apresentação, comemoração) tocam UMA vez, no momento certo, e voltam ao neutro.
+  - Quem fala ganha destaque por enquadramento (câmera vai até ele), foco e luz; quem escuta fica
+    levemente desfocado e mais apagado. Nada de escala ligada ao volume.
+  - Câmera lenta (zoom e pan suaves) com parallax entre fundo e personagens.
+  - Entradas e saídas com easing suave, sem "overshoot". Tipografia cinética nas expressões
+    (palavras sobem por máscara) e nas falas em inglês (palavras entram no ritmo da voz).
+  - Troca de cena por máscara circular com borda Volt, sem cortina inclinada.
 -->
 <style>
   @font-face { font-family: "Bricolage"; font-weight: 700; src: url("../../../apps/mobile/assets/fonts/BricolageGrotesque96pt-Bold.ttf"); }
@@ -19,50 +27,57 @@
   * { box-sizing: border-box; }
   html, body { margin: 0; width: 720px; height: 1280px; overflow: hidden; background: var(--papel); }
   body { font-family: -apple-system, "SF Pro Text", system-ui, sans-serif; color: var(--tinta); position: relative; }
-  .layer { position: absolute; inset: 0; }
-  .scene { position: absolute; inset: 0; opacity: 0; }
+  .scene { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
+  .bg, .fg { position: absolute; inset: -60px; transform-origin: 50% 60%; will-change: transform; }
+  .fg { inset: 0; }
+  img.char { position: absolute; transform-origin: 50% 100%; will-change: transform, filter, opacity; }
+  .spot { position: absolute; width: 520px; height: 150px; margin-left: -260px; border-radius: 50%; mix-blend-mode: normal;
+    background: radial-gradient(closest-side, rgba(255,255,255,.95), rgba(255,255,255,0)); opacity: 0; }
+  #s-street .spot { background: radial-gradient(closest-side, rgba(220,255,74,.75), rgba(220,255,74,0)); }
   .h { font-family: Bricolage, system-ui, sans-serif; letter-spacing: -.02em; }
-  img.char { position: absolute; transform-origin: 50% 100%; will-change: transform; }
+  .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .08em; margin-bottom: -.08em; }
+  .w > span { display: inline-block; will-change: transform; }
 
   /* Título */
   #s-title { background: var(--tinta); color: var(--papel); }
   #s-title .eyebrow { position: absolute; left: 60px; top: 430px; padding: 10px 20px; border-radius: 999px; background: var(--volt); color: var(--tinta); font-size: 26px; font-weight: 800; }
-  #s-title h1 { position: absolute; left: 56px; top: 500px; margin: 0; font-size: 112px; line-height: .98; font-weight: 800; white-space: nowrap; }
-  #s-title h1 span { display: inline-block; }
+  #s-title h1 { position: absolute; left: 56px; top: 500px; margin: 0; font-size: 112px; line-height: 1; font-weight: 800; white-space: nowrap; }
   #s-title p { position: absolute; left: 60px; top: 640px; margin: 0; font-size: 34px; color: #CFCADB; }
   #s-title .logo { position: absolute; left: 60px; bottom: 90px; height: 56px; }
   #wave { position: absolute; left: 0; top: 760px; }
 
   /* HUD */
-  #hud { position: absolute; left: 0; right: 0; top: 0; height: 104px; display: flex; justify-content: space-between; align-items: center; padding: 34px 32px 0; }
+  #hud { position: absolute; left: 0; right: 0; top: 0; height: 104px; display: flex; justify-content: space-between; align-items: center; padding: 34px 32px 0; z-index: 5; }
   #hud .logo { height: 34px; }
   #hud .right { display: flex; align-items: center; gap: 12px; padding: 9px 16px; border-radius: 999px; background: rgba(22,19,31,.86); color: var(--papel); font-size: 17px; font-weight: 700; }
-  #hud .dot { width: 13px; height: 13px; border-radius: 50%; background: rgba(250,247,240,.22); }
-  #hud .dot.on { background: var(--volt); box-shadow: 0 0 12px rgba(220,255,74,.8); }
+  #hud .dot { width: 13px; height: 13px; border-radius: 50%; background: rgba(250,247,240,.22); position: relative; overflow: hidden; }
+  #hud .dot i { position: absolute; inset: 0; border-radius: 50%; background: var(--volt); opacity: 0; }
 
   /* Balão de fala (legenda) */
-  #bubble { position: absolute; left: 32px; right: 32px; top: 0; padding: 22px 26px 24px; border-radius: 28px; background: #fff; box-shadow: 0 18px 50px rgba(22,19,31,.18); transform-origin: 50% 0; }
+  #bubble { position: absolute; left: 32px; right: 32px; top: 0; padding: 22px 26px 24px; border-radius: 28px; background: #fff; box-shadow: 0 18px 50px rgba(22,19,31,.16); z-index: 4; }
   #bubble::before { content: ""; position: absolute; top: -13px; left: var(--tail, 50%); width: 28px; height: 28px; background: #fff; transform: translateX(-50%) rotate(45deg); border-radius: 5px; }
   #bubble .who { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--violeta); margin-bottom: 8px; position: relative; }
-  #bubble .bars { display: flex; gap: 3px; align-items: center; height: 18px; }
-  #bubble .bars i { display: block; width: 4px; border-radius: 2px; background: var(--pink); }
+  #bubble .who i { width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
   #bubble .txt { font-size: 32px; line-height: 1.24; font-weight: 700; position: relative; }
-  #bubble .txt.en { font-family: Bricolage, system-ui, sans-serif; font-size: 40px; letter-spacing: -.01em; }
+  #bubble .txt.en { font-family: Bricolage, system-ui, sans-serif; font-size: 42px; letter-spacing: -.01em; line-height: 1.15; }
   #bubble .pt { margin-top: 8px; font-size: 22px; color: var(--cinza); font-weight: 500; position: relative; }
   mark { background: linear-gradient(var(--volt), var(--volt)) no-repeat 0 88% / calc(var(--p, 0) * 100%) 55%; color: inherit; padding: 0 3px; margin: 0 -3px; border-radius: 4px; font-family: Bricolage, system-ui, sans-serif; letter-spacing: -.01em; }
 
-  /* Cartões de expressão */
-  .card { position: absolute; left: 40px; right: 40px; padding: 22px 28px; border-radius: 26px; background: var(--tinta); color: var(--papel); display: flex; align-items: center; gap: 22px; transform-origin: 0 50%; }
+  /* Cartões de expressão (revelados por máscara, palavras sobem) */
+  .card { position: absolute; left: 40px; right: 40px; padding: 22px 28px; border-radius: 26px; background: var(--tinta); color: var(--papel); display: flex; align-items: center; gap: 22px; }
   .card .num { flex: none; width: 54px; height: 54px; border-radius: 50%; background: var(--volt); color: var(--tinta); display: grid; place-items: center; font-size: 26px; font-weight: 800; font-family: Bricolage, system-ui, sans-serif; }
   .card .en { white-space: nowrap; font-family: Bricolage, system-ui, sans-serif; font-size: 44px; font-weight: 800; line-height: 1.05; }
   .card .pt { font-size: 24px; color: #CFCADB; margin-top: 4px; }
-  .card.light { background: #fff; color: var(--tinta); box-shadow: 0 14px 40px rgba(22,19,31,.12); }
+  .card.light { background: #fff; color: var(--tinta); box-shadow: 0 14px 40px rgba(22,19,31,.10); }
   .card.light .pt { color: var(--cinza); }
   .card .icon { flex: none; width: 64px; height: 64px; }
   .card .tag { margin-left: auto; flex: none; padding: 6px 12px; border-radius: 999px; font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+  #tm-cards .card .en { font-size: 38px; }
+  #tm-cards .card { gap: 16px; padding: 18px 22px; left: 232px; right: 24px; }
+  #rc-cards .card { padding: 16px 24px; }
 
   /* Pergunta (pausa interativa) */
-  #question { position: absolute; left: 32px; right: 32px; top: 0; padding: 28px 28px 30px; border-radius: 30px; background: var(--tinta); color: var(--papel); transform-origin: 50% 100%; box-shadow: 0 24px 60px rgba(22,19,31,.35); }
+  #question { position: absolute; left: 32px; right: 32px; top: 0; padding: 28px 28px 30px; border-radius: 30px; background: var(--tinta); color: var(--papel); box-shadow: 0 24px 60px rgba(22,19,31,.35); z-index: 4; }
   #question .eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px; border-radius: 999px; background: var(--pink); color: #fff; font-size: 16px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
   #question .q { margin: 18px 0 20px; font-size: 32px; line-height: 1.22; font-weight: 700; }
   #question .opt { display: flex; align-items: center; gap: 16px; padding: 18px 22px; margin-top: 12px; border-radius: 20px; background: rgba(250,247,240,.08); border: 2px solid rgba(250,247,240,.18); font-family: Bricolage, system-ui, sans-serif; font-size: 32px; font-weight: 700; }
@@ -74,110 +89,109 @@
   #question .mic span { width: 58px; height: 58px; border-radius: 50%; background: var(--volt); display: grid; place-items: center; }
 
   /* Recapitulação e cartão final */
-  #tm-cards .card .en { font-size: 38px; }
-  #tm-cards .card { gap: 16px; padding: 18px 22px; }
   #s-recap { background: var(--tinta); color: var(--papel); }
   #s-recap .eyebrow { position: absolute; left: 40px; top: 140px; color: var(--volt); font-size: 22px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
-  #s-end { background: var(--volt); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 22px; padding: 0 50px; }
-  #s-end .big { font-size: 96px; line-height: .98; font-weight: 800; }
-  #s-end .big span { display: inline-block; }
+  #s-end { background: var(--volt); }
+  #s-end .fg { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 22px; padding: 0 50px; }
+  #s-end .big { font-size: 96px; line-height: 1; font-weight: 800; }
   #s-end .sub { font-size: 32px; line-height: 1.3; font-weight: 600; }
   #s-end .cta { margin-top: 12px; padding: 20px 34px; border-radius: 20px; background: var(--tinta); color: var(--volt); font-size: 30px; font-weight: 800; }
   #s-end .logo { position: absolute; bottom: 90px; height: 50px; }
 
-  #wipe { position: absolute; left: -400px; top: 0; width: 1500px; height: 1280px; transform: translateX(1600px) skewX(-12deg); }
-  #wipe .a { position: absolute; inset: 0; background: var(--volt); }
-  #wipe .b { position: absolute; top: 0; bottom: 0; left: -80px; width: 60px; background: var(--pink); }
+  #ring { position: absolute; inset: 0; pointer-events: none; z-index: 6; }
 </style>
 </head>
 <body>
 <!-- Título -->
-<div id="s-title" class="scene">
+<div id="s-title" class="scene"><div class="fg">
   <svg id="wave" width="720" height="200" viewBox="0 0 720 200"><path id="wave-p" d="" fill="none" stroke="#FF4F8B" stroke-width="22" stroke-linecap="round"/><path id="wave-l" d="" fill="none" stroke="#DCFF4A" stroke-width="22" stroke-linecap="round"/></svg>
   <span class="eyebrow h" id="t-eyebrow"></span>
   <h1 class="h" id="t-h1"></h1>
   <p id="t-sub"></p>
   <img class="logo" src="../../../branding/logo/queizy-logo-branco.svg" alt="">
-</div>
+</div></div>
 
 <!-- Abertura: Charlotte para a câmera -->
 <div id="s-intro" class="scene">
-  <svg class="layer" width="720" height="1280"><circle id="intro-blob" cx="360" cy="560" r="300" fill="#DCFF4A"/><circle cx="600" cy="230" r="40" fill="#FF4F8B" id="intro-dot"/><circle cx="110" cy="820" r="26" fill="#6B4BFF" id="intro-dot2"/></svg>
-  <img class="char" id="intro-ch" alt="">
+  <div class="bg"><svg width="840" height="1400" style="position:absolute;left:0;top:0"><circle id="intro-blob" cx="420" cy="620" r="300" fill="#DCFF4A"/><circle cx="660" cy="290" r="40" fill="#FF4F8B"/><circle cx="170" cy="880" r="26" fill="#6B4BFF"/></svg></div>
+  <div class="fg"><img class="char" id="intro-ch" alt=""></div>
 </div>
 
 <!-- Rua: encontro com o Igor -->
 <div id="s-street" class="scene">
-  <svg class="layer" width="720" height="1280" viewBox="0 0 720 1280">
-    <rect width="720" height="1280" fill="#EDE8FF"/>
+  <div class="bg"><svg width="840" height="1400" viewBox="-60 -60 840 1400" style="position:absolute;left:0;top:0">
+    <rect x="-60" y="-60" width="840" height="1400" fill="#EDE8FF"/>
     <circle cx="560" cy="250" r="70" fill="#DCFF4A"/>
     <g id="skyline" fill="#6B4BFF"></g>
-    <rect y="760" width="720" height="520" fill="#FAF7F0"/>
-    <rect y="752" width="720" height="10" fill="#16131F" opacity=".9"/>
+    <rect x="-60" y="760" width="840" height="600" fill="#FAF7F0"/>
+    <rect x="-60" y="752" width="840" height="10" fill="#16131F" opacity=".9"/>
     <g id="tiles" stroke="#16131F" stroke-opacity=".08" stroke-width="3"></g>
-  </svg>
-  <img class="char" id="st-charlotte" alt="">
-  <img class="char" id="st-igor" alt="">
+  </svg></div>
+  <div class="fg">
+    <div class="spot" id="st-light-c"></div><div class="spot" id="st-light-i"></div>
+    <img class="char" id="st-charlotte" alt="">
+    <img class="char" id="st-igor" alt="">
+  </div>
 </div>
 
 <!-- Explicações (cartões) com a Charlotte apontando -->
 <div id="s-explain" class="scene">
-  <svg class="layer" width="720" height="1280"><circle cx="600" cy="700" r="230" fill="#DCFF4A" opacity=".55"/></svg>
-  <img class="char" id="ex-ch" alt="">
-  <div id="ex-cards"></div>
+  <div class="bg"><svg width="840" height="1400" style="position:absolute;left:0;top:0"><circle cx="660" cy="760" r="230" fill="#DCFF4A" opacity=".55"/></svg></div>
+  <div class="fg"><img class="char" id="ex-ch" alt=""><div id="ex-cards"></div></div>
 </div>
 
 <!-- Hora do dia -->
 <div id="s-time" class="scene">
-  <svg class="layer" width="720" height="1280"><circle cx="110" cy="780" r="190" fill="#DCFF4A" opacity=".5"/></svg>
-  <img class="char" id="tm-ch" alt="">
-  <div id="tm-cards"></div>
+  <div class="bg"><svg width="840" height="1400" style="position:absolute;left:0;top:0"><circle cx="170" cy="840" r="190" fill="#DCFF4A" opacity=".5"/></svg></div>
+  <div class="fg"><img class="char" id="tm-ch" alt=""><div id="tm-cards"></div></div>
 </div>
 
-<!-- Igor para a câmera -->
+<!-- Igor para a câmera, Charlotte explica, despedida -->
 <div id="s-meet" class="scene">
-  <svg class="layer" width="720" height="1280"><rect width="720" height="1280" fill="#6B4BFF"/><circle id="meet-blob" cx="360" cy="600" r="290" fill="#DCFF4A"/></svg>
-  <img class="char" id="mt-igor" alt="">
-  <img class="char" id="mt-ch" alt="">
-  <div id="mt-cards"></div>
+  <div class="bg"><svg width="840" height="1400" style="position:absolute;left:0;top:0"><rect width="840" height="1400" fill="#6B4BFF"/><circle id="meet-blob" cx="420" cy="660" r="290" fill="#DCFF4A"/></svg></div>
+  <div class="fg">
+    <div class="spot" id="mt-light-c"></div><div class="spot" id="mt-light-i"></div>
+    <img class="char" id="mt-igor" alt="">
+    <img class="char" id="mt-ch" alt="">
+    <div id="mt-cards"></div>
+  </div>
 </div>
 
 <!-- Recapitulação -->
-<div id="s-recap" class="scene">
+<div id="s-recap" class="scene"><div class="fg">
   <span class="eyebrow h">Revisando</span>
   <div id="rc-cards"></div>
   <img class="char" id="rc-ch" alt="">
-</div>
+</div></div>
 
 <!-- Cartão final -->
-<div id="s-end" class="scene">
+<div id="s-end" class="scene"><div class="fg">
   <div class="big h" id="end-big"></div>
   <div class="sub" id="end-sub"></div>
   <div class="cta h" id="end-cta"></div>
   <img class="logo" src="../../../branding/logo/queizy-logo-preto.svg" alt="">
-</div>
+</div></div>
 
 <div id="hud"><img class="logo" id="hud-logo" alt=""><span class="right"><span id="hud-label"></span><span id="dots" style="display:flex;gap:7px"></span></span></div>
-<div id="bubble"><div class="who"><span class="bars" id="bars"></span><span id="who"></span></div><div class="txt" id="b-txt"></div><div class="pt" id="b-pt"></div></div>
+<div id="bubble"><div class="who"><i></i><span id="who"></span></div><div class="txt" id="b-txt"></div><div class="pt" id="b-pt"></div></div>
 <div id="question"></div>
-<div id="wipe"><div class="a"></div><div class="b"></div></div>
+<svg id="ring" width="720" height="1280"><circle id="ring-c" cx="360" cy="640" r="0" fill="none" stroke="#DCFF4A" stroke-width="14"/></svg>
 
 <script>
 const $ = (id) => document.getElementById(id);
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const prog = (t, a, b) => clamp((t - a) / (b - a));
-const easeOut = (x) => 1 - Math.pow(1 - x, 3);
+const easeOut = (x) => 1 - Math.pow(1 - x, 4);                 // quart: chega macio, sem passar do ponto
 const easeInOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
-const backOut = (x) => { const c1 = 1.7, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
 const lerp = (a, b, x) => a + (b - a) * x;
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 const marked = (s) => esc(s).replace(/\{([^}]*)\}/g, (_, x) => `<mark>${x}</mark>`);
+const words = (s) => s.split(" ").map((w) => `<span class="w"><span>${esc(w)}</span></span>`).join(" ");
 
-let D;           // dados do gerador
-const L = {};    // falas por id
-let marks = [];  // trechos destacados {line, el, at}
+let D;
+const L = {};
 
-// Momento em que um trecho {x} é dito, estimado pela posição no texto (a voz é corrida).
+// Momento em que um trecho {x} (ou um caractere) é dito, estimado pela posição no texto.
 function phraseTime(line, idx) {
   const parts = line.text.split(/\{|\}/);
   const plain = parts.join("");
@@ -186,58 +200,75 @@ function phraseTime(line, idx) {
   return line.start + (line.end - line.start) * (pos / plain.length) - 0.1;
 }
 
-function sprite(name, t, fps = 18) {
+// Gesto de uma pose animada do app: toca UMA vez a partir de `at` e volta ao quadro neutro (0).
+function gesture(name, t, at, fps = 24) {
   const fr = D.sprites[name];
-  if (!fr) return D.stills[name];
-  const n = fr.length, cyc = 2 * n - 2;
-  let i = Math.floor(t * fps) % cyc;
-  if (i >= n) i = cyc - i;
-  return fr[i];
+  const i = Math.floor((t - at) * fps);
+  return fr[i >= 0 && i < fr.length ? i : 0];
 }
-// Aceno da Charlotte: só os quadros com a mão no alto (5 a 17), indo e voltando; o 8 tem um defeito.
-function waveFrame(dt) {
-  const fr = D.sprites.greeting, lo = 5, hi = 17, cyc = 2 * (hi - lo);
-  let i = Math.max(0, Math.floor(dt * 14)) % cyc;
-  i = lo + (i <= hi - lo ? i : cyc - i);
-  return fr[i === 8 ? 9 : i];
+// Pose da Charlotte: o gesto que estiver tocando; fora dos gestos, o quadro neutro em alta resolução.
+function pose(t, list) {
+  for (const g of list) {
+    const fr = D.sprites[g.name];
+    const i = Math.floor((t - g.at) * (g.fps || 24));
+    if (i >= 0 && i < fr.length) return fr[i];
+  }
+  return D.stills.charlotteStand;
 }
 function setSrc(img, src) { if (img.getAttribute("src") !== src) img.setAttribute("src", src); }
 
-// Volume da fala no instante t (0 a 1), para o "pulo" de quem fala e as barras.
-function amp(id, t) {
-  const l = L[id];
-  if (!l || t < l.start || t > l.end) return 0;
-  const a = D.amp[id];
-  return a[Math.min(a.length - 1, Math.floor((t - l.start) * D.fps))] || 0;
-}
-function speakingNow(t) {
-  for (const l of D.lines) if (t >= l.start - 0.05 && t <= l.holdEnd) return l;
-  return null;
+// Peso de fala (0 a 1) de um personagem: sobe um pouco antes da fala e desce depois dela.
+function talk(speaker, t) {
+  let w = 0;
+  for (const l of D.lines) if (l.speaker === speaker) w = Math.max(w, easeInOut(prog(t, l.start - 0.35, l.start + 0.05)) * (1 - easeInOut(prog(t, l.holdEnd, l.holdEnd + 0.45))));
+  return w;
 }
 
-function placeChar(img, { x, bottom, h, flip = false, scale = 1, opacity = 1, a = 0, t = 0, phase = 0 }) {
-  const breath = Math.sin(t * 2.2 + phase) * 0.006;
-  const s = scale * (1 + breath + a * 0.025);
+// Personagem parado: posição, entrada/saída e foco. Sem pulo e sem escala ligada à voz.
+// O respiro é de 0,25%: quase imperceptível, só para a imagem não parecer congelada.
+function placeChar(img, { x, bottom, h, flip = false, opacity = 1, dy = 0, dx = 0, focus = 1, t = 0, phase = 0 }) {
+  const s = 1 + Math.sin(t * 1.6 + phase) * 0.0025;
   img.style.height = `${h}px`;
   img.style.left = `${x}px`;
   img.style.top = `${bottom - h}px`;
-  img.style.transform = `translateX(-50%) translateY(${-a * 6}px) scale(${flip ? -s : s}, ${s})`;
+  img.style.transform = `translate(calc(-50% + ${dx}px), ${dy}px) scale(${flip ? -s : s}, ${s})`;
   img.style.opacity = opacity;
+  const d = 1 - focus;   // desfoque e luz de quem escuta
+  img.style.filter = d > 0.01 ? `brightness(${1 - 0.1 * d}) saturate(${1 - 0.35 * d}) blur(${(1.6 * d).toFixed(2)}px)` : "none";
+}
+function placeLight(el, x, bottom, w) { el.style.left = `${x}px`; el.style.top = `${bottom - 90}px`; el.style.opacity = 0.85 * w; }
+
+// Câmera: zoom lento durante a cena, pan até quem fala; o fundo anda menos (parallax).
+function camera(sceneEl, sc, t, { panX = 0, panY = 0, zoom = 0.05, originY = 60 } = {}) {
+  const k = easeInOut(prog(t, sc.at - 0.4, sc.until + 0.4));
+  const z = 1 + zoom * k;
+  const fg = sceneEl.querySelector(".fg"), bg = sceneEl.querySelector(".bg");
+  fg.style.transformOrigin = `50% ${originY}%`;
+  fg.style.transform = `translate(${panX}px, ${panY}px) scale(${z})`;
+  if (bg) { bg.style.transformOrigin = `50% ${originY}%`; bg.style.transform = `translate(${panX * 0.4}px, ${panY * 0.4}px) scale(${1 + zoom * 0.4 * k})`; }
 }
 
 function card(parent, { num, en, pt, light, icon, tag, tagColor }) {
   const el = document.createElement("div");
   el.className = `card${light ? " light" : ""}`;
-  el.innerHTML = `${num ? `<span class="num">${num}</span>` : ""}${icon || ""}<div><div class="en">${esc(en)}</div>${pt ? `<div class="pt">${esc(pt)}</div>` : ""}</div>${tag ? `<span class="tag" style="background:${tagColor};color:#fff">${tag}</span>` : ""}`;
+  el.innerHTML = `${num ? `<span class="num">${num}</span>` : ""}${icon || ""}<div><div class="en">${words(en)}</div>${pt ? `<div class="pt">${esc(pt)}</div>` : ""}</div>${tag ? `<span class="tag" style="background:${tagColor};color:#fff">${tag}</span>` : ""}`;
   parent.appendChild(el);
   return el;
 }
+// Cartão: fundo revelado por máscara da esquerda para a direita, palavras sobem uma a uma, tradução aparece.
 function showCard(el, t, at, top, out = 1e9) {
-  const p = backOut(prog(t, at, at + 0.45));
-  const o = prog(t, at, at + 0.2) * (1 - prog(t, out, out + 0.3));
+  const m = easeOut(prog(t, at, at + 0.55));
+  const o = 1 - easeInOut(prog(t, out, out + 0.35));
   el.style.top = `${top}px`;
+  el.style.clipPath = `inset(0 ${(1 - m) * 100}% 0 0 round 26px)`;
   el.style.opacity = o;
-  el.style.transform = `translateX(${(1 - p) * -60}px) scale(${0.9 + 0.1 * p})`;
+  el.style.transform = `translateY(${-10 * (1 - o)}px)`;
+  el.querySelectorAll(".w > span").forEach((s, i) => { s.style.transform = `translateY(${(1 - easeOut(prog(t, at + 0.18 + i * 0.07, at + 0.68 + i * 0.07))) * 110}%)`; });
+  const pt = el.querySelector(".pt"); if (pt) pt.style.opacity = easeOut(prog(t, at + 0.4, at + 0.8));
+  el.querySelectorAll(".num,.icon,.tag").forEach((n) => { n.style.opacity = easeOut(prog(t, at + 0.15, at + 0.5)); });
+}
+function wordsIn(container, t, at, step = 0.08, dur = 0.55) {
+  container.querySelectorAll(".w > span").forEach((s, i) => { s.style.transform = `translateY(${(1 - easeOut(prog(t, at + i * step, at + i * step + dur))) * 110}%)`; });
 }
 
 const ICONS = {
@@ -250,32 +281,26 @@ const ICONS = {
 window.setup = (data) => {
   D = data;
   for (const l of D.lines) L[l.id] = l;
-  const T = D.t;
 
-  // Título
   $("t-eyebrow").textContent = D.meta.eyebrow;
-  $("t-h1").innerHTML = [...D.meta.title].map((c) => `<span>${c === " " ? "&nbsp;" : esc(c)}</span>`).join("");
+  $("t-h1").innerHTML = words(D.meta.title);
   $("t-sub").textContent = D.meta.subtitle;
   $("hud-label").textContent = D.meta.hud;
-  $("dots").innerHTML = D.keys.map(() => `<span class="dot"></span>`).join("");
-  $("bars").innerHTML = "<i></i>".repeat(5);
-  $("end-big").innerHTML = D.meta.endTitle.split(" ").map((w) => `<span>${esc(w)}</span>`).join(" ");
+  $("dots").innerHTML = D.keys.map(() => `<span class="dot"><i></i></span>`).join("");
+  $("end-big").innerHTML = words(D.meta.endTitle);
   $("end-sub").innerHTML = marked(D.meta.endSub);
   $("end-cta").textContent = D.meta.endCta;
 
-  // Prédios da rua
-  let x = -20, sk = "";
-  const hs = [260, 330, 220, 380, 280, 340, 240];
+  let x = -60, sk = "";
+  const hs = [260, 330, 220, 380, 280, 340, 240, 300];
   hs.forEach((h, i) => { const w = 96 + (i % 3) * 18; sk += `<rect x="${x}" y="${752 - h}" width="${w}" height="${h}" rx="10" opacity="${0.18 + (i % 2) * 0.1}"/>`; for (let r = 0; r < Math.floor(h / 60) - 1; r++) for (let c = 0; c < 2; c++) sk += `<rect x="${x + 18 + c * (w / 2 - 6)}" y="${752 - h + 26 + r * 56}" width="${w / 2 - 34}" height="26" rx="4" fill="#FAF7F0" opacity=".55"/>`; x += w + 6; });
   $("skyline").innerHTML = sk;
-  let tl = ""; for (let i = 0; i < 9; i++) tl += `<path d="M${i * 110 - 60} 1280 L${i * 90 + 40} 762"/>`; $("tiles").innerHTML = tl;
+  let tl = ""; for (let i = 0; i < 10; i++) tl += `<path d="M${i * 110 - 120} 1340 L${i * 90 - 20} 762"/>`; $("tiles").innerHTML = tl;
 
-  // Cartões de cada cena
   const K = Object.fromEntries(D.keys.map((k, i) => [k.id, { ...k, num: i + 1 }]));
-  const ex = $("ex-cards");
   D.c = {
-    exHow: card(ex, { num: 1, en: K["how-are-you"].en, pt: K["how-are-you"].pt }),
-    exGood: card(ex, { num: 2, en: K["im-good"].en, pt: K["im-good"].pt }),
+    exHow: card($("ex-cards"), { num: 1, en: K["how-are-you"].en, pt: K["how-are-you"].pt }),
+    exGood: card($("ex-cards"), { num: 2, en: K["im-good"].en, pt: K["im-good"].pt }),
     tmMorning: card($("tm-cards"), { light: true, icon: ICONS.sun, en: "Good morning", pt: "de manhã" }),
     tmAfternoon: card($("tm-cards"), { light: true, icon: ICONS.dusk, en: "Good afternoon", pt: "à tarde" }),
     tmEvening: card($("tm-cards"), { light: true, icon: ICONS.moon, en: "Good evening", pt: "à noite" }),
@@ -284,222 +309,220 @@ window.setup = (data) => {
     mtSee: card($("mt-cards"), { num: 5, en: K["see-you-later"].en, pt: K["see-you-later"].pt }),
     recap: D.keys.map((k, i) => card($("rc-cards"), { num: i + 1, en: k.en, pt: k.pt })),
   };
-
-  // Destaques das falas: momento em que cada {trecho} é dito.
-  marks = [];
   for (const l of D.lines) {
     const n = (l.text.match(/\{/g) || []).length;
     l.markAt = Array.from({ length: n }, (_, i) => phraseTime(l, i));
   }
-  // Recapitulação: cada expressão entra quando é dita.
-  D.c.recapAt = L.l15.markAt;
-  D.c.timeAt = L.l07.markAt;
+  for (const k of D.keys) k.firstAt = Math.min(...D.lines.filter((l) => l.key === k.id).map((l) => l.start));
 
-  // Logo do topo: preto nas cenas claras, branco na revisão (fundo Tinta).
   const abs = (rel) => new URL(rel, location.href).href;
   D.logoDark = abs("../../../branding/logo/queizy-logo-preto.svg");
   D.logoLight = abs("../../../branding/logo/queizy-logo-branco.svg");
   setSrc($("hud-logo"), D.logoDark);
   new Image().src = D.logoLight;
-  // Sprites: todos os quadros já carregados antes da captura.
-  return Promise.all([...document.images].map((im) => (im.complete ? 0 : new Promise((r) => (im.onload = im.onerror = r))))).then(() => document.fonts.ready);
+  return document.fonts.ready;
 };
 
-// Qual cena está na tela em t (as cortinas trocam a cena no meio da passagem).
-function sceneAt(t) {
-  let cur = D.scenes[0];
-  for (const s of D.scenes) if (t >= s.at) cur = s;
-  return cur.name;
-}
+// ---------- cenas: cada uma desenha o seu estado no instante t ----------
+const S = {};
+
+S.title = (t) => {
+  wordsIn($("t-h1"), t, 0.35, 0.12, 0.7);
+  const e = easeOut(prog(t, 0.1, 0.7));
+  $("t-eyebrow").style.opacity = e; $("t-eyebrow").style.transform = `translateY(${(1 - e) * 16}px)`;
+  const s = easeOut(prog(t, 0.9, 1.5));
+  $("t-sub").style.opacity = s; $("t-sub").style.transform = `translateY(${(1 - s) * 12}px)`;
+  // A onda rosa da marca se desenha e termina na linha Volt.
+  const w = easeInOut(prog(t, 0.3, 1.8));
+  let d = "M60 100";
+  for (let x = 60; x <= 330 * w + 60; x += 6) d += ` L${x} ${100 + Math.sin((x - 60) / 22) * 34 * (1 - ((x - 60) / 330) * 0.4)}`;
+  $("wave-p").setAttribute("d", d);
+  const lw = easeOut(prog(t, 1.5, 2.4));
+  $("wave-l").setAttribute("d", lw > 0 ? `M400 100 L${400 + 260 * lw} 100` : "");
+};
+
+S.intro = (t, sc) => {
+  const l = L.l01;
+  const e = easeOut(prog(t, sc.at, sc.at + 0.9));
+  $("intro-blob").setAttribute("r", lerp(220, 300, easeOut(prog(t, sc.at - 0.3, sc.at + 1.0))));
+  setSrc($("intro-ch"), pose(t, [{ name: "welcome", at: l.start + 0.2 }]));
+  placeChar($("intro-ch"), { x: 360, bottom: 900, h: 740, opacity: e, dy: (1 - e) * 30, t });
+  camera($("s-intro"), sc, t, { zoom: 0.06, originY: 45 });
+};
+
+S.street = (t, sc) => {
+  const wC = talk("charlotte", t), wI = talk("igor", t);
+  // O Igor entra deslizando e aparecendo, chega antes da primeira fala.
+  const inI = easeOut(prog(t, sc.at + 0.1, sc.at + 1.1));
+  setSrc($("st-charlotte"), pose(t, [{ name: "greeting", at: L.l02.start - 0.25, fps: 22 }]));
+  const listenC = wI * (1 - wC), listenI = wC * (1 - wI);
+  placeChar($("st-charlotte"), { x: 210, bottom: 900, h: 600, focus: 1 - listenC, t });
+  setSrc($("st-igor"), D.stills.igor);
+  placeChar($("st-igor"), { x: 520, bottom: 900, h: 640, opacity: inI, dx: (1 - inI) * 80, focus: 1 - listenI, t, phase: 1.3 });
+  placeLight($("st-light-c"), 210, 900, wC);
+  placeLight($("st-light-i"), 520, 900, wI * inI);
+  // Pan até quem fala: a câmera chega 26 px mais perto do lado de quem fala.
+  camera($("s-street"), sc, t, { panX: 26 * wC - 26 * wI, zoom: 0.06, originY: 62 });
+};
+
+S.explain = (t, sc) => {
+  const e = easeOut(prog(t, sc.at, sc.at + 0.9));
+  setSrc($("ex-ch"), D.stills.charlottePoint);
+  placeChar($("ex-ch"), { x: 560, bottom: 940, h: 640, opacity: e, dx: (1 - e) * 60, t });
+  const m = L.l05.markAt;
+  showCard(D.c.exHow, t, m[0], 200);
+  showCard(D.c.exGood, t, m[1], 340, L.l06.start - 0.2);
+  camera($("s-explain"), sc, t, { zoom: 0.04, originY: 30 });
+};
+
+S.time = (t, sc) => {
+  const e = easeOut(prog(t, sc.at, sc.at + 0.9));
+  setSrc($("tm-ch"), pose(t, [{ name: "welcome", at: L.l07.start + 0.3 }]));
+  placeChar($("tm-ch"), { x: 150, bottom: 960, h: 560, flip: true, opacity: e, dx: (1 - e) * -60, t });
+  const m = L.l07.markAt;
+  const qOut = L.l09.start - 0.2;
+  showCard(D.c.tmMorning, t, m[0], 140, qOut);
+  showCard(D.c.tmAfternoon, t, m[1], 270, qOut);
+  showCard(D.c.tmEvening, t, m[2], 400, qOut);
+  showCard(D.c.tmNight, t, L.l08.markAt[0], 560, qOut);
+  camera($("s-time"), sc, t, { zoom: 0.04, originY: 30 });
+};
+
+S.meet = (t, sc) => {
+  const l = L.l10;
+  const wC = talk("charlotte", t), wI = talk("igor", t);
+  const into = easeOut(prog(t, sc.at, sc.at + 0.9));
+  $("meet-blob").setAttribute("r", lerp(220, 290, easeOut(prog(t, sc.at - 0.3, sc.at + 1.0))));
+  // Reenquadramento: o Igor sozinho no centro; na explicação ele vai para a esquerda e a Charlotte entra.
+  const k = easeInOut(prog(t, L.l11.start - 0.7, L.l11.start + 0.3));
+  // Depois do "See you!", o Igor sai suavemente pela esquerda.
+  const gone = easeInOut(prog(t, L.l13.end + 0.2, L.l13.end + 1.1));
+  setSrc($("mt-igor"), D.stills.igor);
+  const listenC = wI * (1 - wC), listenI = wC * (1 - wI);
+  placeChar($("mt-igor"), { x: lerp(360, 200, k), bottom: lerp(940, 960, k), h: lerp(760, 560, k), opacity: into * (1 - gone), dy: (1 - into) * 30, dx: -90 * gone, focus: 1 - listenI * k, t, phase: 1.3 });
+  setSrc($("mt-ch"), pose(t, [{ name: "welcome", at: L.l11.start - 0.2 }, { name: "greeting", at: L.l13.start - 0.3, fps: 22 }]));
+  placeChar($("mt-ch"), { x: 540, bottom: 960, h: 560, opacity: k, dx: (1 - k) * 90, focus: 1 - listenC, t });
+  placeLight($("mt-light-i"), lerp(360, 200, k) - 90 * gone, lerp(940, 960, k), wI * (1 - gone));
+  placeLight($("mt-light-c"), 540, 960, wC * k);
+  if (t < L.l12.start) {
+    showCard(D.c.mtNice, t, L.l11.markAt[0], 170, L.l12.start - 0.4);
+    D.c.mtSee.style.opacity = 0;
+  } else {
+    D.c.mtNice.style.opacity = 0;
+    showCard(D.c.mtSee, t, L.l14.markAt[0], 170, L.l14.markAt[1] - 0.3);
+  }
+  // Na explicação a câmera abre; com o Igor sozinho, ela fica mais perto.
+  camera($("s-meet"), sc, t, { panX: k * (24 * wC - 24 * wI), zoom: 0.05, originY: 58 });
+};
+
+S.recap = (t, sc) => {
+  const e = easeOut(prog(t, sc.at + 0.2, sc.at + 1.1));
+  setSrc($("rc-ch"), gesture("cheer", t, L.l15.end - 2.4));
+  placeChar($("rc-ch"), { x: 560, bottom: 1290, h: 600, opacity: e, dx: (1 - e) * 70, t });
+  D.c.recap.forEach((el, i) => showCard(el, t, L.l15.markAt[i], 200 + i * 116));
+  camera($("s-recap"), sc, t, { zoom: 0.03, originY: 20 });
+};
+
+S.end = (t, sc) => {
+  wordsIn($("end-big"), t, sc.at + 0.25, 0.12, 0.7);
+  const s = easeOut(prog(t, sc.at + 0.8, sc.at + 1.3));
+  $("end-sub").style.opacity = s; $("end-sub").style.transform = `translateY(${(1 - s) * 14}px)`;
+  const c = easeOut(prog(t, sc.at + 1.2, sc.at + 1.7));
+  $("end-cta").style.opacity = c; $("end-cta").style.transform = `translateY(${(1 - c) * 14}px)`;
+};
+
+// ---------- transição: máscara circular com borda Volt ----------
+const TR = 0.4; // meia duração da máscara (s)
+function maskOrigin(name) { return { intro: [360, 620], street: [360, 700], explain: [560, 600], time: [150, 700], meet: [360, 640], recap: [360, 640], end: [360, 640] }[name] || [360, 640]; }
 
 window.seek = (t) => {
-  const T = D.t;
-  const name = sceneAt(t);
-  for (const s of ["title", "intro", "street", "explain", "time", "meet", "recap", "end"]) $(`s-${s}`).style.opacity = s === name ? 1 : 0;
-
-  // ---------- título ----------
-  if (name === "title") {
-    [...$("t-h1").children].forEach((sp, i) => {
-      const p = backOut(prog(t, 0.3 + i * 0.05, 0.75 + i * 0.05));
-      sp.style.transform = `translateY(${(1 - p) * 60}px)`;
-      sp.style.opacity = prog(t, 0.3 + i * 0.05, 0.5 + i * 0.05);
-    });
-    const e = easeOut(prog(t, 0.1, 0.6));
-    $("t-eyebrow").style.opacity = e; $("t-eyebrow").style.transform = `translateY(${(1 - e) * 20}px)`;
-    $("t-sub").style.opacity = prog(t, 1.1, 1.6);
-    // Onda da marca: rosa ondulada que vira uma linha Volt.
-    const w = easeInOut(prog(t, 0.2, 1.8));
-    let d = "M60 100";
-    for (let x = 60; x <= 330 * w + 60; x += 6) d += ` L${x} ${100 + Math.sin((x - 60) / 22 + t * 3) * 34 * (1 - (x - 60) / 330 * 0.4)}`;
-    $("wave-p").setAttribute("d", d);
-    const lw = easeOut(prog(t, 1.2, 2.2));
-    $("wave-l").setAttribute("d", lw > 0 ? `M400 100 L${400 + 260 * lw} 100` : "");
+  // Cena atual e, durante a máscara, a anterior por baixo.
+  let i = 0;
+  for (let k = 0; k < D.scenes.length; k++) if (t >= D.scenes[k].at - TR) i = k;
+  const cur = D.scenes[i], prev = D.scenes[i - 1];
+  const inMask = i > 0 && t < cur.at + TR;
+  for (const s of D.scenes) {
+    const el = $(`s-${s.name}`);
+    el.style.visibility = "hidden"; el.style.clipPath = "none"; el.style.zIndex = 0;
   }
+  if (inMask && prev) { $(`s-${prev.name}`).style.visibility = "visible"; S[prev.name](t, prev); }
+  const curEl = $(`s-${cur.name}`);
+  curEl.style.visibility = "visible"; curEl.style.zIndex = 1;
+  S[cur.name](t, cur);
+  const ring = $("ring-c");
+  if (inMask) {
+    const p = easeInOut(prog(t, cur.at - TR, cur.at + TR));
+    const [cx, cy] = maskOrigin(cur.name);
+    const r = p * 1500;
+    curEl.style.clipPath = `circle(${r}px at ${cx}px ${cy}px)`;
+    ring.setAttribute("cx", cx); ring.setAttribute("cy", cy); ring.setAttribute("r", r);
+    ring.style.opacity = r > 1 && p < 1 ? 1 : 0;
+  } else ring.style.opacity = 0;
 
-  // ---------- abertura ----------
-  if (name === "intro") {
-    const l = L.l01, a = amp("l01", t);
-    const p = backOut(prog(t, l.start - 0.7, l.start - 0.1));
-    $("intro-blob").setAttribute("r", 300 * easeOut(prog(t, l.start - 0.9, l.start - 0.2)));
-    setSrc($("intro-ch"), sprite("welcome", t - l.start));
-    placeChar($("intro-ch"), { x: 360, bottom: 900, h: 740, scale: 0.8 + 0.2 * p, opacity: prog(t, l.start - 0.7, l.start - 0.4), a, t });
-    $("intro-dot").setAttribute("cy", 230 + Math.sin(t * 1.4) * 14);
-    $("intro-dot2").setAttribute("cy", 820 + Math.cos(t * 1.2) * 12);
-  }
-
-  // ---------- rua ----------
-  if (name === "street") {
-    const s = D.scenes.find((x) => x.name === "street");
-    const aC = amp("l02", t) + amp("l04", t);
-    const aI = amp("l03", t);
-    const wave = t >= L.l02.start - 0.3 && t <= L.l02.end + 0.2;
-    setSrc($("st-charlotte"), wave ? waveFrame(t - L.l02.start + 0.3) : D.stills.charlotteStand);
-    placeChar($("st-charlotte"), { x: 210, bottom: 900, h: 610, a: aC, t });
-    // O Igor chega pela direita, andando.
-    const ix = lerp(900, 520, easeOut(prog(t, s.at + 0.1, L.l02.start + 0.3)));
-    const walk = Math.abs(Math.sin(t * 9)) * (1 - prog(t, L.l02.start, L.l02.start + 0.3));
-    setSrc($("st-igor"), D.stills.igor);
-    placeChar($("st-igor"), { x: ix, bottom: 900 - walk * 10, h: 640, a: aI, t, phase: 1.3 });
-  }
-
-  // ---------- explicação (How are you? / I'm good) ----------
-  if (name === "explain") {
-    const a = amp("l05", t) + amp("l06", t);
-    setSrc($("ex-ch"), D.stills.charlottePoint);
-    placeChar($("ex-ch"), { x: 560, bottom: 940, h: 640, a, t });
-    const m = L.l05.markAt;
-    showCard(D.c.exHow, t, m[0], 200);
-    showCard(D.c.exGood, t, m[1], 340, L.l06.start - 0.2);
-  }
-
-  // ---------- hora do dia ----------
-  if (name === "time") {
-    const a = amp("l07", t) + amp("l08", t) + amp("l09", t);
-    setSrc($("tm-ch"), sprite("welcome", t));
-    placeChar($("tm-ch"), { x: 150, bottom: 960, h: 560, flip: true, a, t });
-    const m = D.c.timeAt;
-    showCard(D.c.tmMorning, t, m[0], 140);
-    showCard(D.c.tmAfternoon, t, m[1], 270);
-    showCard(D.c.tmEvening, t, m[2], 400);
-    showCard(D.c.tmNight, t, L.l08.markAt[0], 560);
-    for (const el of [D.c.tmMorning, D.c.tmAfternoon, D.c.tmEvening, D.c.tmNight]) { el.style.left = "232px"; el.style.right = "24px"; }
-    // Na pergunta, os cartões somem (a resposta não pode estar na tela).
-    const qOut = L.l09.start - 0.1;
-    for (const el of [D.c.tmMorning, D.c.tmAfternoon, D.c.tmEvening, D.c.tmNight]) el.style.opacity = Math.min(Number(el.style.opacity), 1 - prog(t, qOut, qOut + 0.3));
-  }
-
-  // ---------- Igor para a câmera + explicação ----------
-  if (name === "meet") {
-    const l = L.l10;
-    const aI = amp("l10", t) + amp("l12", t), aC = amp("l11", t) + amp("l13", t) + amp("l14", t);
-    const into = backOut(prog(t, l.start - 0.8, l.start - 0.1));
-    $("meet-blob").setAttribute("r", 290 * easeOut(prog(t, l.start - 0.9, l.start - 0.3)));
-    // Na explicação, o Igor diminui para a esquerda e a Charlotte entra pela direita.
-    const k = easeInOut(prog(t, L.l11.start - 0.5, L.l11.start + 0.2));
-    setSrc($("mt-igor"), D.stills.igor);
-    // Depois do "See you!", o Igor sai andando pela esquerda.
-    const gone = easeInOut(prog(t, L.l13.end + 0.1, L.l13.end + 1.2));
-    const walk = Math.abs(Math.sin(t * 9)) * (gone > 0 && gone < 1 ? 1 : 0);
-    placeChar($("mt-igor"), { x: lerp(360, 200, k) - gone * 460, bottom: lerp(940, 960, k) - walk * 10, h: lerp(760, 560, k), scale: 0.85 + 0.15 * into, opacity: prog(t, l.start - 0.8, l.start - 0.5), a: aI, t });
-    const wave = t >= L.l13.start - 0.4 && t <= L.l13.end + 0.6;
-    setSrc($("mt-ch"), wave ? waveFrame(t - L.l13.start + 0.4) : sprite("welcome", t));
-    placeChar($("mt-ch"), { x: lerp(860, 540, k), bottom: 960, h: 560, a: aC, t, opacity: k });
-    // 1ª passagem (l10, l11): "Nice to meet you". 2ª (l14): "See you later", que sai na pergunta.
-    if (t < L.l12.start) {
-      showCard(D.c.mtNice, t, L.l11.markAt[0], 170);
-      D.c.mtSee.style.opacity = 0;
-    } else {
-      D.c.mtNice.style.opacity = 0;
-      showCard(D.c.mtSee, t, L.l14.markAt[0], 170, L.l14.markAt[1] - 0.3);
-    }
-  }
-
-  // ---------- recapitulação ----------
-  if (name === "recap") {
-    const a = amp("l15", t);
-    setSrc($("rc-ch"), sprite("cheer", t, 16));
-    placeChar($("rc-ch"), { x: 560, bottom: 1290, h: 600, a, t, opacity: prog(t, L.l15.start - 0.6, L.l15.start - 0.2) });
-    D.c.recap.forEach((el, i) => showCard(el, t, D.c.recapAt[i], 200 + i * 116));
-    D.c.recap.forEach((el) => { el.style.right = "40px"; el.style.padding = "16px 24px"; });
-  }
-
-  // ---------- cartão final ----------
-  if (name === "end") {
-    [...$("end-big").children].forEach((sp, i) => {
-      const p = backOut(prog(t, T.endCard + 0.1 + i * 0.12, T.endCard + 0.55 + i * 0.12));
-      sp.style.transform = `translateY(${(1 - p) * 50}px) scale(${0.8 + 0.2 * p})`;
-      sp.style.opacity = prog(t, T.endCard + 0.1 + i * 0.12, T.endCard + 0.3 + i * 0.12);
-    });
-    $("end-sub").style.opacity = prog(t, T.endCard + 0.7, T.endCard + 1.1);
-    const c = backOut(prog(t, T.endCard + 1.1, T.endCard + 1.6));
-    $("end-cta").style.opacity = prog(t, T.endCard + 1.1, T.endCard + 1.3);
-    $("end-cta").style.transform = `scale(${0.8 + 0.2 * c})`;
-  }
-
+  const name = cur.name;
   // ---------- HUD ----------
-  const hudOn = name !== "title" && name !== "end";
-  $("hud").style.opacity = hudOn ? 1 : 0;
+  $("hud").style.opacity = 1 - easeInOut(Math.max(prog(t, D.t.endCard - TR, D.t.endCard), 1 - prog(t, D.scenes[1].at - TR, D.scenes[1].at + TR)));
   setSrc($("hud-logo"), name === "recap" ? D.logoLight : D.logoDark);
-  [...$("dots").children].forEach((dot, i) => {
-    const k = D.keys[i];
-    const firstAt = Math.min(...D.lines.filter((l) => l.key === k.id).map((l) => l.start));
-    dot.classList.toggle("on", t >= firstAt);
-  });
+  [...$("dots").children].forEach((dot, k) => { dot.firstChild.style.opacity = easeOut(prog(t, D.keys[k].firstAt, D.keys[k].firstAt + 0.4)); });
 
   // ---------- balão de fala (legenda) ----------
-  const cur = speakingNow(t);
+  const cpNow = D.checkpoints.find((c) => t >= c.showAt - 0.05 && t <= c.revealEnd + 0.4);
+  const line = D.lines.find((l) => t >= l.start - 0.2 && t <= l.holdEnd + 0.3);
   const bubble = $("bubble");
-  const cp = D.checkpoints.find((c) => t >= c.showAt - 0.05 && t <= c.revealEnd + 0.3);
-  if (cur && !(cp && t >= cp.showAt) && name !== "recap" && name !== "end") {
-    const sp = D.speakers[cur.speaker];
+  if (line && !(cpNow && t >= cpNow.showAt) && name !== "recap" && name !== "end") {
+    const sp = D.speakers[line.speaker];
     $("who").textContent = sp.name;
-    $("who").style.color = cur.speaker === "igor" ? "#FF4F8B" : "#6B4BFF";
+    $("who").parentElement.style.color = line.speaker === "igor" ? "#FF4F8B" : "#6B4BFF";
     const txt = $("b-txt");
-    if (txt.dataset.id !== cur.id) {
-      txt.dataset.id = cur.id;
-      txt.innerHTML = cur.lang === "en" ? esc(cur.text) : marked(cur.text);
-      txt.className = `txt${cur.lang === "en" ? " en" : ""}`;
-      $("b-pt").textContent = cur.pt || "";
-      $("b-pt").style.display = cur.pt ? "block" : "none";
+    if (txt.dataset.id !== line.id) {
+      txt.dataset.id = line.id;
+      txt.innerHTML = line.lang === "en" ? words(line.text) : marked(line.text);
+      txt.className = `txt${line.lang === "en" ? " en" : ""}`;
+      $("b-pt").textContent = line.pt || "";
+      $("b-pt").style.display = line.pt ? "block" : "none";
     }
-    [...txt.querySelectorAll("mark")].forEach((m, i) => m.style.setProperty("--p", easeOut(prog(t, cur.markAt[i], cur.markAt[i] + 0.4))));
-    const p = backOut(prog(t, cur.start - 0.05, cur.start + 0.25));
-    const out = prog(t, cur.holdEnd - 0.12, cur.holdEnd);
-    // Posição: abaixo do palco; a ponta do balão aponta para quem fala.
+    if (line.lang === "en") {
+      // Inglês: cada palavra sobe no momento em que é dita (tipografia cinética no ritmo da voz).
+      const ws = [...txt.querySelectorAll(".w > span")];
+      let pos = 0;
+      ws.forEach((s) => { const at = line.start + (line.end - line.start) * (pos / line.text.length) - 0.12; pos += s.textContent.length + 1; s.style.transform = `translateY(${(1 - easeOut(prog(t, at, at + 0.4))) * 110}%)`; });
+      $("b-pt").style.opacity = easeOut(prog(t, line.start + 0.3, line.start + 0.8));
+    } else {
+      [...txt.querySelectorAll("mark")].forEach((m, k) => m.style.setProperty("--p", easeOut(prog(t, line.markAt[k], line.markAt[k] + 0.5))));
+    }
+    const a = easeOut(prog(t, line.start - 0.2, line.start + 0.2));
+    const z = 1 - easeInOut(prog(t, line.holdEnd - 0.05, line.holdEnd + 0.25));
     const tails = { street: { charlotte: 210, igor: 520 }, intro: { charlotte: 360 }, meet: { igor: 200, charlotte: 540 }, explain: { charlotte: 560 }, time: { charlotte: 150 } };
-    let tail = (tails[name] || {})[cur.speaker] ?? 360;
-    if (name === "meet" && cur.id === "l10") tail = 360;
+    let tail = (tails[name] || {})[line.speaker] ?? 360;
+    if (name === "meet" && line.id === "l10") tail = 360;
     bubble.style.setProperty("--tail", `${tail - 32}px`);
     bubble.style.top = `${name === "explain" || name === "time" ? 960 : 930}px`;
-    bubble.style.opacity = Math.min(prog(t, cur.start - 0.05, cur.start + 0.12), 1 - out);
-    bubble.style.transform = `scale(${0.92 + 0.08 * p})`;
-    const a = amp(cur.id, t);
-    [...$("bars").children].forEach((b, i) => { b.style.height = `${4 + 14 * a * (0.5 + 0.5 * Math.abs(Math.sin(t * 13 + i * 1.7)))}px`; });
+    // Entre falas seguidas o balão fica; só o texto troca.
+    const nextSame = D.lines.find((l) => l.start > line.start && l.start - line.holdEnd < 0.6);
+    const prevSame = D.lines.find((l) => l.start < line.start && line.start - l.holdEnd < 0.6);
+    bubble.style.opacity = Math.min(prevSame ? 1 : a, nextSame ? 1 : z);
+    bubble.style.transform = `translateY(${(1 - (prevSame ? 1 : a)) * 14}px)`;
   } else bubble.style.opacity = 0;
 
-  // ---------- pergunta (pausa interativa) ----------
+  // ---------- pergunta ----------
   const q = $("question");
-  if (cp) {
-    if (q.dataset.id !== cp.id) {
-      q.dataset.id = cp.id;
-      q.innerHTML = `<span class="eyebrow">${cp.mode === "speak" ? "Sua vez · fale" : "Sua vez · toque"}</span><div class="q">${esc(cp.question)}</div>` +
-        cp.options.map((o, i) => `<div class="opt" data-o="${esc(o)}"><b>${"ABC"[i]}</b>${esc(o)}</div>`).join("") +
-        (cp.mode === "speak" ? `<div class="mic"><span><svg width="26" height="26" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="13" rx="4" fill="#16131F"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4" stroke="#16131F" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></span>Toque no microfone e fale em inglês</div>` : "");
+  if (cpNow) {
+    if (q.dataset.id !== cpNow.id) {
+      q.dataset.id = cpNow.id;
+      q.innerHTML = `<span class="eyebrow">${cpNow.mode === "speak" ? "Sua vez · fale" : "Sua vez · toque"}</span><div class="q">${esc(cpNow.question)}</div>` +
+        cpNow.options.map((o, k) => `<div class="opt" data-o="${esc(o)}"><b>${"ABC"[k]}</b>${esc(o)}</div>`).join("") +
+        (cpNow.mode === "speak" ? `<div class="mic"><span><svg width="26" height="26" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="13" rx="4" fill="#16131F"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4" stroke="#16131F" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></span>Toque no microfone e fale em inglês</div>` : "");
     }
-    const p = backOut(prog(t, cp.showAt, cp.showAt + 0.4));
-    q.style.top = `${cp.mode === "speak" ? 610 : 680}px`;
-    q.style.opacity = prog(t, cp.showAt, cp.showAt + 0.2) * (1 - prog(t, cp.revealEnd, cp.revealEnd + 0.3));
-    q.style.transform = `translateY(${(1 - p) * 80}px)`;
-    const rev = t >= cp.at + 0.15;
+    const p = easeOut(prog(t, cpNow.showAt, cpNow.showAt + 0.5));
+    q.style.top = `${cpNow.mode === "speak" ? 610 : 680}px`;
+    q.style.opacity = p * (1 - easeInOut(prog(t, cpNow.revealEnd, cpNow.revealEnd + 0.35)));
+    q.style.transform = `translateY(${(1 - p) * 30}px)`;
+    const rev = t >= cpNow.at + 0.15;
     [...q.querySelectorAll(".opt")].forEach((el) => {
-      el.classList.toggle("ok", rev && el.dataset.o === cp.answer);
-      el.classList.toggle("dim", rev && el.dataset.o !== cp.answer);
+      el.classList.toggle("ok", rev && el.dataset.o === cpNow.answer);
+      el.classList.toggle("dim", rev && el.dataset.o !== cpNow.answer);
     });
   } else q.style.opacity = 0;
-
-  // ---------- cortina ----------
-  const w = D.wipes.find((x) => t >= x - 0.45 && t <= x + 0.45);
-  $("wipe").style.transform = w === undefined ? "translateX(1600px) skewX(-12deg)" : `translateX(${lerp(1600, -1700, easeInOut(prog(t, w - 0.45, w + 0.45)))}px) skewX(-12deg)`;
 };
 </script>
 </body>

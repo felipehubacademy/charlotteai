@@ -25,6 +25,8 @@ import { chromium } from "playwright-core";
 const ID = process.argv[2];
 if (!ID) throw new Error("uso: node scripts/aula-motion/make-aula.mjs <id da aula>");
 const STILLS = process.argv.includes("--stills");
+// --range=10:25 grava só esse trecho (com som) em <aula>/trecho-10-25.mp4, para aprovar estilo antes dos 90 s.
+const RANGE = process.argv.find((a) => a.startsWith("--range="))?.slice(8).split(":").map(Number);
 const FPS = 30;
 const ROOT = resolve(new URL("../..", import.meta.url).pathname);
 const OUT = join(ROOT, "docs/content/aula-motion", ID);
@@ -186,7 +188,7 @@ if (!STILLS) {
   let n = lines.length;
   const sfx = [];
   for (const w of wipes)
-    sfx.push({ at: w - 0.4, src: "anoisesrc=color=pink:amplitude=0.16:sample_rate=48000:d=0.8,highpass=f=600,lowpass=f=5000,afade=t=in:d=0.4,afade=t=out:st=0.4:d=0.4" });
+    sfx.push({ at: w - 0.4, src: "anoisesrc=color=pink:amplitude=0.08:sample_rate=48000:d=0.8,highpass=f=600,lowpass=f=5000,afade=t=in:d=0.4,afade=t=out:st=0.4:d=0.4" });
   // Resposta revelada: dois tons ascendentes.
   for (const c of checkpoints)
     sfx.push({ at: c.at + 0.15, src: "aevalsrc=0.22*sin(2*PI*880*t)*exp(-7*t)*lt(t\\,0.12)+0.22*sin(2*PI*1320*(t-0.12))*exp(-6*(t-0.12))*gte(t\\,0.12):s=48000:d=0.6" });
@@ -199,14 +201,15 @@ if (!STILLS) {
   run("ffmpeg", ["-v", "error", "-y", ...inputs, "-filter_complex", filters.join(";"), "-map", "[out]", "-ar", "48000", "-ac", "1", mix]);
 
   console.log("quadros…");
-  const mp4 = join(OUT, "aula.mp4");
+  const mp4 = RANGE ? join(OUT, `trecho-${RANGE[0]}-${RANGE[1]}.mp4`) : join(OUT, "aula.mp4");
+  const [r0, r1] = RANGE || [0, DURATION];
   const ff = spawn("ffmpeg", [
-    "-v", "error", "-y", "-f", "image2pipe", "-framerate", String(FPS), "-c:v", "mjpeg", "-i", "-", "-i", mix,
+    "-v", "error", "-y", "-f", "image2pipe", "-framerate", String(FPS), "-c:v", "mjpeg", "-i", "-", "-ss", String(r0), "-i", mix,
     "-c:v", "libx264", "-preset", "slow", "-crf", "27", "-pix_fmt", "yuv420p", "-profile:v", "high",
     "-c:a", "aac", "-b:a", "80k", "-movflags", "+faststart", "-shortest", mp4,
   ], { stdio: ["pipe", "ignore", "inherit"] });
-  const total = Math.round(DURATION * FPS);
-  for (let f = 0; f < total; f++) {
+  const total = Math.round(r1 * FPS);
+  for (let f = Math.round(r0 * FPS); f < total; f++) {
     await page.evaluate((x) => window.seek(x), f / FPS);
     const jpg = await page.screenshot({ type: "jpeg", quality: 92 });
     if (!ff.stdin.write(jpg)) await new Promise((r) => ff.stdin.once("drain", r));
@@ -214,6 +217,7 @@ if (!STILLS) {
   }
   ff.stdin.end();
   await new Promise((r, j) => ff.on("close", (c) => (c === 0 ? r() : j(new Error(`ffmpeg ${c}`)))));
+  if (RANGE) { console.log(`ok: ${mp4}`); await browser.close(); process.exit(0); }
 
   await page.evaluate((x) => window.seek(x), when("l03:0.8"));
   await page.screenshot({ path: join(OUT, "poster.jpg"), type: "jpeg", quality: 80 });

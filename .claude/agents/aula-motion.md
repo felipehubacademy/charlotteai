@@ -46,6 +46,30 @@ tópico pede. Arquivos do piloto:
 - **Não mexa no app (`apps/mobile`), no banco nem publique OTA.** As aulas ficam em `docs/` e `scripts/`
   até o Felipe decidir como entram no app.
 
+## Direção de animação (regra do Felipe, 16/11/2026)
+
+A 1ª versão do piloto tinha personagens pulsando e pulando no ritmo da voz, e o Felipe reprovou
+("péssimo"). A referência é aula de app premium e motion de marca.
+
+- **NUNCA personagem pulsando ou pulando.** Nada de escala, pulo ou tremida ligados ao volume da fala,
+  nem entrada com "overshoot" (efeito elástico). Os personagens são imagens paradas: tratá-las como tal.
+- Enquanto fala, o personagem fica **parado e bem enquadrado**. No máximo um respiro de 0,25% de escala,
+  quase imperceptível.
+- **Gestos das poses do app tocam UMA vez**, no momento certo (aceno no "Hi!", apresentação no início da
+  explicação, comemoração na revisão), e voltam ao quadro neutro. Nunca em loop nem indo e voltando.
+- **Quem fala ganha destaque por enquadramento, foco e luz**: a câmera anda alguns pixels até ele, uma luz
+  suave aparece no chão atrás dele, e quem escuta fica levemente desfocado e apagado. Nunca por escala.
+- **Câmera**: zoom e pan lentos durante a cena, com parallax (o fundo anda menos que os personagens).
+- **Entradas e saídas** com easing suave (quart), por opacidade e deslize curto. Personagem não "anda"
+  aos pulos: aparece deslizando ou sai deslizando.
+- **Tipografia cinética**: nos cartões, o fundo se revela por máscara e as palavras sobem uma a uma; nas
+  falas em inglês, cada palavra sobe no momento em que é dita; no português, o marca-texto Volt corre
+  sobre o inglês quando ele é dito.
+- **Transições** por máscara circular com borda Volt (ou corte limpo). Nada de cortina inclinada.
+- Antes de renderizar a aula inteira, mande ao Felipe 2 ou 3 quadros ou um trecho de 10 a 15 s
+  (`--range=a:b`) quando mudar o estilo. Os helpers prontos ficam em `scripts/aula-motion/novice-01/scene.html`
+  (`placeChar`, `pose`, `talk`, `camera`, `showCard`, `wordsIn`, máscara em `seek`).
+
 ## Processo
 
 ### 1. Ler o tópico na trilha
@@ -89,8 +113,8 @@ tópico pede. Arquivos do piloto:
   (textos da tela, `sceneByLine`, poses, quadros do storyboard) e o `scene.html` (cartões e coreografia
   de cada cena). Cada troca de cena custa ~1,2 s de cortina: reaproveite cenas para caber em 90 s.
 - Poses animadas da Charlotte (fundo transparente, quadros extraídos sozinhos):
-  `apps/mobile/assets/charlotte-welcome.webp` (fala/apresenta), `charlotte-greeting.webp` (aceno; use os
-  quadros 5 a 17, o 8 tem defeito), `charlotte-cheer-full.webp` (comemora), `charlotte-error.webp`;
+  `apps/mobile/assets/charlotte-welcome.webp` (fala/apresenta), `charlotte-greeting.webp` (aceno; toca uma vez,
+  em 22 quadros por segundo), `charlotte-cheer-full.webp` (comemora), `charlotte-error.webp`;
   paradas: `charlotte-pointing-left.png`, `charlotte-bust.png`. Igorfina de corpo inteiro:
   `scripts/aula-motion/assets/igorfina-corpo-inteiro.png`. Não gere personagem por API de imagem (muda o
   rosto): pose nova o Felipe faz e manda.
@@ -99,6 +123,7 @@ tópico pede. Arquivos do piloto:
 - Itere pelo storyboard (rápido) e olhe os quadros antes de renderizar:
   ```
   node scripts/aula-motion/make-aula.mjs <id> --stills
+  node scripts/aula-motion/make-aula.mjs <id> --range=8:23   # trecho de 15 s para aprovar estilo
   node scripts/aula-motion/make-aula.mjs <id>          # ~10 min, rode em segundo plano
   ```
   Confira nos quadros: texto cortado ou sobreposto, resposta visível na pergunta, logo legível no fundo.
