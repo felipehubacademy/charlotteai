@@ -15,7 +15,7 @@
 // alto-falante virava uma "resposta" falsa do aluno).
 // Aberta pela aba de ligação quando o membro escolhido na Família não é a Charlotte.
 import React from 'react';
-import { View, Modal, TouchableOpacity, Image, Animated, ActivityIndicator, useWindowDimensions, Platform, StatusBar } from 'react-native';
+import { View, Modal, TouchableOpacity, Image, Animated, ActivityIndicator, useWindowDimensions, Platform, StatusBar, AppState } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CallVocabCard } from '@/components/vocabulary/CallVocabCard';
 import * as SecureStore from 'expo-secure-store';
@@ -68,7 +68,8 @@ type Status = 'calling' | 'connected' | 'reconnecting' | 'paused' | 'ended' | 'e
 type Line = { who: 'ai' | 'user'; text: string };
 
 /** impression = ligação inteira com uma imitação do personagem (escolhida na aba de ligação ou na Família). */
-export function FamilyCallModal({ character, impression = null, onClose }: { character: string | null; impression?: ImpressionId | null; onClose: () => void }) {
+/** onLimitReached: os minutos acabaram nesta ligação (ou já estavam no fim): a tela mostra a oferta ao fechar. */
+export function FamilyCallModal({ character, impression = null, onClose, onLimitReached }: { character: string | null; impression?: ImpressionId | null; onClose: () => void; onLimitReached?: () => void }) {
   const isPt = systemIsPt;
   const { profile } = useAuth();
   const insets = useSafeAreaInsets();
@@ -319,11 +320,11 @@ export function FamilyCallModal({ character, impression = null, onClose }: { cha
         CharlotteAudioSession.stopRingback().catch(() => {});
         if (!alive) return;
         const code = String(e?.message ?? '');
-        if (code === 'monthly_pool_exhausted') setPoolOut(true);
+        if (code === 'monthly_pool_exhausted') { setPoolOut(true); onLimitReached?.(); }
         setError(code === 'mic'
           ? (isPt ? 'Permita o microfone para ligar.' : 'Allow the microphone to call.')
           : code === 'monthly_pool_exhausted'
-            ? (isPt ? 'Seus minutos de ligação deste mês acabaram.' : "You're out of call minutes this month.")
+            ? (isPt ? 'Seus minutos de ligação acabaram.' : "You're out of call minutes.")
             : (isPt ? 'Não foi possível ligar agora. Tente de novo.' : "Couldn't connect right now. Try again."));
         setStatus('error');
         CharlotteAudioSession.stop().catch(() => {});
@@ -334,6 +335,15 @@ export function FamilyCallModal({ character, impression = null, onClose }: { cha
 
   // Fecha tudo ao sair da tela.
   React.useEffect(() => () => { finish('unmount'); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // App em segundo plano: o cronômetro do JS para, mas a ligação seguia e passava do limite (degustação de
+  // 3 min chegou a 6 min). Ligação com poucos minutos (degustação e teste) pausa ao sair do app.
+  React.useEffect(() => {
+    const sub = AppState.addEventListener('change', st => {
+      if (st === 'background' && segStartRef.current && limitRef.current > 0 && limitRef.current <= 600) pause();
+    });
+    return () => sub.remove();
+  }, [pause]);
 
   // Cronômetro, minutos do mês (despedida e fim) e inatividade.
   React.useEffect(() => {
@@ -349,7 +359,7 @@ export function FamilyCallModal({ character, impression = null, onClose }: { cha
           convRef.current?.sendContextualUpdate(`TIME IS UP: the student's call minutes for this month end in a few seconds. Right now, in your normal voice, say a warm, short goodbye (one or two short sentences) and tell them you'll talk again soon. Do not ask any question.`);
         } catch { /* sem aviso, cai no limite */ }
       }
-      if (limitRef.current && left <= 0 && (modeRef.current !== 'speaking' || left <= -12)) { setPoolOut(true); finish('limit'); return; }
+      if (limitRef.current && left <= 0 && (modeRef.current !== 'speaking' || left <= -12)) { setPoolOut(true); onLimitReached?.(); finish('limit'); return; }
       // Inatividade: só a fala do aluno (transcrita) conta, como na Charlotte; ruído do ambiente e a
       // fala do personagem não seguram a ligação aberta. Enquanto ele fala, não avisa nem pausa.
       if (modeRef.current === 'speaking') { setWarning(null); return; }
@@ -535,7 +545,7 @@ export function FamilyCallModal({ character, impression = null, onClose }: { cha
                     <AppText style={{ fontSize: 15, fontWeight: '800', color: th.ink }}>{isPt ? `Vocês conversaram ${fmt(secs)}` : `You talked for ${fmt(secs)}`}</AppText>
                     <AppText style={{ fontSize: 13, color: th.sub, marginTop: 4, textAlign: 'center' }}>
                       {poolOut
-                        ? (isPt ? 'Seus minutos de ligação deste mês acabaram.' : "You're out of call minutes this month.")
+                        ? (isPt ? 'Seus minutos de ligação acabaram.' : "You're out of call minutes.")
                         : (isPt ? `Restam ${minutesLeftEnd} min de ligação neste mês` : `${minutesLeftEnd} call minutes left this month`)}
                     </AppText>
                   </>

@@ -1066,6 +1066,7 @@ export default function LiveVoiceTab() {
         <FamilyCallModal
           character={hostId}
           impression={hostImp?.id ?? null}
+          onLimitReached={() => { justHitLimitRef.current = true; }}
           onClose={() => {
             setShowFamilyCall(false);
             // "Ligar" da Família valia só para essa ligação: volta para quem atende normalmente.
@@ -1074,6 +1075,11 @@ export default function LiveVoiceTab() {
             voiceSFX.setMuted(false);
             loadData();
             setTimeout(() => { loadData(); }, 2000);
+            // Minutos acabaram nesta ligação: mesma oferta da ligação com a Charlotte (assinar ou comprar minutos).
+            if (justHitLimitRef.current) {
+              justHitLimitRef.current = false;
+              setTimeout(() => { setLimitExhausted(true); setShowLimitSheet(true); }, 400);
+            }
           }}
         />
       )}
