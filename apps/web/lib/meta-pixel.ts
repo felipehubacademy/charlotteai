@@ -1,4 +1,4 @@
-// lib/meta-pixel.ts — medição de anúncios no site, só com o aceite de cookies (ver CookieConsent):
+// lib/meta-pixel.ts — medição de anúncios no site, em todas as visitas (ver CookieConsent):
 //   Pixel da Meta "Queizy" (BM Hub Academy) e Google Tag Manager "queizy.com" (conta Hub Academy),
 //   onde ficam as tags do Google Ads. Os IDs são públicos: vão no HTML de qualquer site.
 // Cada evento vai para os dois: track('InitiateCheckout' | 'StartTrial' | 'Purchase') também entra no
@@ -10,12 +10,11 @@ export const CONSENT_COOKIE = 'qz_consent'; // 'all' (aceitou) | 'essential' (s�
 type Fbq = ((...args: unknown[]) => void) & { callMethod?: unknown; queue?: unknown[]; loaded?: boolean; version?: string; push?: unknown };
 declare global { interface Window { fbq?: Fbq; _fbq?: Fbq; dataLayer?: Record<string, unknown>[]; __gtmLoaded?: boolean } }
 
-/** Carrega o Google Tag Manager (uma vez), já com o consentimento concedido (só é chamado após o aceite). */
+/** Carrega o Google Tag Manager (uma vez), com a medição liberada. */
 function loadGtm() {
   if (typeof window === 'undefined' || window.__gtmLoaded || !GTM_ID) return;
   window.__gtmLoaded = true;
   window.dataLayer = window.dataLayer || [];
-  // Modo de consentimento do Google: quem chega aqui aceitou os cookies de medição de anúncios.
   // eslint-disable-next-line prefer-rest-params
   const gtag = function (..._args: unknown[]) { window.dataLayer!.push(arguments as unknown as Record<string, unknown>); };
   gtag('consent', 'default', { ad_storage: 'granted', analytics_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
@@ -53,7 +52,7 @@ export function loadPixel() {
   loadGtm();
 }
 
-/** Evento padrão da Meta e o equivalente no Google (só com aceite, quando os dois estão carregados). */
+/** Evento padrão da Meta e o equivalente no Google (quando os dois estão carregados). */
 export function track(event: string, params?: Record<string, unknown>, eventId?: string) {
   if (typeof window === 'undefined' || !window.fbq) return;
   window.fbq('track', event, params ?? {}, eventId ? { eventID: eventId } : undefined);

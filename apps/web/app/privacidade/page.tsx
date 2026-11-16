@@ -52,7 +52,7 @@ export default function PrivacidadePage() {
             ['Dados de áudio', 'Gravações de voz em exercícios de pronúncia e conversas. Na pronúncia e nas ligações (Live Voice), o áudio é processado em tempo real e não é gravado. No Free Chat, os áudios das conversas (os seus e as respostas faladas) ficam guardados por 90 dias, num espaço privado, para você ouvir de novo; depois disso, fica só o texto.'],
 ['Dados de dispositivo', 'Token de notificações push, sistema operacional e versão do app (para lembretes de estudo).'],
             ['Dados de pagamento', 'Processados pela App Store ou Google Play ou, na assinatura pelo site, por um parceiro de pagamentos. Na assinatura pelo site, CPF, celular e endereço informados no formulário são repassados ao parceiro de pagamentos só para a cobrança, sem ficar guardados no Queizy. Não armazenamos dados de cartão nem bancários.'],
-            ['Cookies do site (queizy.com)', 'Só com o seu aceite no aviso de cookies: o pixel da Meta (Facebook e Instagram) e as tags do Google (Google Ads, pelo Google Tag Manager) medem visitas, início de assinatura e vendas que vieram de anúncios. Na assinatura pelo site, com o aceite, também enviamos à Meta o seu e-mail criptografado (hash) para ligar a venda ao anúncio. Escolhendo "Só os essenciais", nada disso é usado e o site funciona do mesmo jeito.'],
+            ['Cookies do site (queizy.com)', 'O pixel da Meta (Facebook e Instagram) e as tags do Google (Google Ads, pelo Google Tag Manager) medem visitas, início de assinatura e vendas que vieram de anúncios. A visita também é informada à Meta pelo nosso servidor (endereço IP e navegador), para a medição não depender do navegador. Na assinatura pelo site, também enviamos à Meta o seu e-mail criptografado (hash) para ligar a venda ao anúncio. Você pode bloquear ou apagar esses cookies nas configurações do seu navegador.'],
           ]} />
         </Section>
 
@@ -72,7 +72,7 @@ export default function PrivacidadePage() {
           <DataTable rows={[
             ['Execução de contrato (art. 7º, V)', 'Criação de conta, uso do app e pagamentos.'],
             ['Consentimento (art. 7º, I)', 'Notificações push e acesso ao microfone/câmera.'],
-            ['Legítimo interesse (art. 7º, IX)', 'Segurança, personalização e melhoria do serviço.'],
+            ['Legítimo interesse (art. 7º, IX)', 'Segurança, personalização, melhoria do serviço e medição dos nossos anúncios no site.'],
             ['Obrigação legal (art. 7º, II)', 'Quando exigido por lei ou autoridade competente.'],
           ]} />
         </Section>

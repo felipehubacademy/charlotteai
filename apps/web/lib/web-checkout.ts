@@ -125,9 +125,9 @@ export function checkoutRowFields(ctx: CheckoutContext, req: NextRequest) {
   return {
     user_id: ctx.u.id, plan: ctx.plan, method, value_brl: ctx.value, trial_days: ctx.trialDays,
     affiliate_code: ctx.affiliate?.code ?? null, created_account: ctx.isNewAccount,
-    // Aceite de cookies + identificadores do navegador: base da conversão enviada pelo servidor.
+    // Identificadores do navegador: base da conversão enviada pelo servidor (o site mede todas as visitas).
     meta_tracking: {
-      consent: req.cookies.get('qz_consent')?.value === 'all',
+      consent: true,
       fbp: req.cookies.get('_fbp')?.value ?? null, fbc: req.cookies.get('_fbc')?.value ?? null,
       ip: ctx.ip, ua: req.headers.get('user-agent'), url: req.headers.get('referer'),
       // Campanha do anúncio que trouxe a visita (cookie qz_utm, components/AdAttribution): teste A/B site x lojas.

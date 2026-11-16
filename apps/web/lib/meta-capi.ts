@@ -1,5 +1,5 @@
 // lib/meta-capi.ts — API de Conversões da Meta (servidor): a conversão chega mesmo quando o
-// navegador bloqueia o pixel. Só para checkouts com aceite de cookies (meta_tracking.consent).
+// navegador bloqueia o pixel. Vale para todas as visitas e checkouts (o site mede todo mundo desde 16/11/2026).
 // Mesmo event_id do pixel no navegador: a Meta junta os dois e não conta em dobro.
 // Precisa de META_CAPI_TOKEN (Gestor de Eventos > Pixel Queizy > Definições > API de Conversões);
 // sem ele, não envia nada.
@@ -11,13 +11,13 @@ export type MetaTracking = { consent?: boolean; fbp?: string | null; fbc?: strin
 const sha = (v: string) => createHash('sha256').update(v.trim().toLowerCase()).digest('hex');
 
 export async function sendCapiEvent(input: {
-  event: 'StartTrial' | 'Purchase' | 'InitiateCheckout';
+  event: 'StartTrial' | 'Purchase' | 'InitiateCheckout' | 'PageView';
   eventId: string; email?: string | null; userId?: string | null;
   value?: number; currency?: string; tracking?: MetaTracking | null;
   testEventCode?: string; // aba "Testar eventos" do Gestor de Eventos (só para conferir)
 }): Promise<boolean> {
   const token = process.env.META_CAPI_TOKEN;
-  if (!token || !input.tracking?.consent) return false;
+  if (!token || !input.tracking) return false;
   const t = input.tracking;
   const body = {
     data: [{
