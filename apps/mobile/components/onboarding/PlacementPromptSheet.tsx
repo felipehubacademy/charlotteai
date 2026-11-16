@@ -28,11 +28,13 @@ const SCREEN_H = Dimensions.get('window').height;
 interface Props {
   visible: boolean;
   isPt: boolean;
+  /** 'start': depois da 1ª atividade. 'topic_done': degustação, ao terminar o tópico do dia (antes da oferta). */
+  moment?: 'start' | 'topic_done';
   onTakeTest: () => void;
   onStartFromZero: () => void;
 }
 
-export function PlacementPromptSheet({ visible, isPt, onTakeTest, onStartFromZero }: Props) {
+export function PlacementPromptSheet({ visible, isPt, moment = 'start', onTakeTest, onStartFromZero }: Props) {
   const insets = useSafeAreaInsets(); // barra de navegação do Android / home indicator
   const [mounted, setMounted] = useState(false);
   const backdropOpacity = useRef(new Animated.Value(0)).current;
@@ -56,12 +58,19 @@ export function PlacementPromptSheet({ visible, isPt, onTakeTest, onStartFromZer
 
   if (!mounted) return null;
 
-  const title = isPt ? 'Comece no ponto certo' : 'Start at the right level';
-  const body  = isPt
-    ? 'Já sabe um pouco de inglês? Um teste rápido posiciona você no nível ideal. Prefere começar do zero? Também dá — e você pode fazer o teste depois, no seu perfil.'
-    : 'Already know some English? A quick test places you at the right level. Prefer to start from scratch? That works too — you can take the test later from your profile.';
-  const primary   = isPt ? 'Fazer teste rápido' : 'Take the quick test';
-  const secondary = isPt ? 'Começar do zero'    : 'Start from scratch';
+  const done = moment === 'topic_done';
+  const title = done
+    ? (isPt ? 'Tópico de hoje concluído!' : "Today's topic done!")
+    : (isPt ? 'Comece no ponto certo' : 'Start at the right level');
+  const body  = done
+    ? (isPt
+        ? 'Agora descubra seu nível de inglês: um teste rápido, de graça, mostra onde você está e em qual nível seguir.'
+        : 'Now find out your English level: a quick free test shows where you are and which level to follow.')
+    : (isPt
+        ? 'Já sabe um pouco de inglês? Um teste rápido posiciona você no nível ideal. Prefere começar do zero? Também dá — e você pode fazer o teste depois, no seu perfil.'
+        : 'Already know some English? A quick test places you at the right level. Prefer to start from scratch? That works too — you can take the test later from your profile.');
+  const primary   = done ? (isPt ? 'Descobrir meu nível' : 'Find my level') : (isPt ? 'Fazer teste rápido' : 'Take the quick test');
+  const secondary = done ? (isPt ? 'Agora não' : 'Not now') : (isPt ? 'Começar do zero' : 'Start from scratch');
 
   return (
     <Modal visible transparent animationType="none" onRequestClose={onStartFromZero} statusBarTranslucent>

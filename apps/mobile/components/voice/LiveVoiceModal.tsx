@@ -265,6 +265,8 @@ interface LiveVoiceModalProps {
   onXPGained?: (amount: number) => void;
   /** Dispara quando o pool mensal esgota nesta sessão (pra o upsell). */
   onLimitReached?: () => void;
+  /** Fim da ligação: duração e quantas falas do aluno (o resumo da degustação usa). */
+  onCallSummary?: (s: { secs: number; userTurns: number }) => void;
 }
 
 export default function LiveVoiceModal({
@@ -274,7 +276,10 @@ export default function LiveVoiceModal({
   userName = 'Student',
   onXPGained,
   onLimitReached,
+  onCallSummary,
 }: LiveVoiceModalProps) {
+  const onCallSummaryRef = React.useRef(onCallSummary);
+  onCallSummaryRef.current = onCallSummary;
   const insets = useSafeAreaInsets();
   const [status, setStatus] = React.useState<ConnectionStatus>('idle');
   const [isMuted, setIsMuted] = React.useState(false);
@@ -735,6 +740,9 @@ export default function LiveVoiceModal({
   const saveCallRecord = React.useCallback(async (secsUsed: number) => {
     if (callRecordSavedRef.current) return;
     if (!callStartedAtRef.current) return;
+    try {
+      onCallSummaryRef.current?.({ secs: secsUsed, userTurns: conversationTurnsRef.current.filter(t => t.role === 'user' && t.text.trim()).length });
+    } catch { /* noop */ }
     const turns = conversationTurnsRef.current;
     if (turns.length === 0 && secsUsed < 5) return; // chamada vazia/curta
 

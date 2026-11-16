@@ -407,10 +407,13 @@ interface TrailContentProps {
   /** Sinaliza ao pai se a trilha esta finalizada (nenhum modulo ativo).
    *  Fonte de verdade pro FAB decidir "down = fim" vs "down = modulo ativo". */
   onTrailFinished?:   (finished: boolean) => void;
+  /** Degustação: terminou o tópico do dia. O pai pode mostrar algo antes da oferta (convite do teste de nível)
+   *  e chamar openOffer depois; devolve true se cuidou disso, false para a oferta abrir direto. */
+  onTasteTopicDone?:  (openOffer: () => void) => boolean;
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
-export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY, onTrailFinished }: TrailContentProps) {
+export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY, onTrailFinished, onTasteTopicDone }: TrailContentProps) {
   const track   = extraTrack(level);
   const isPt    = systemIsPt; // chrome da trilha: idioma do aparelho (o conteúdo dos exercícios não muda)
   const accent  = LEVEL_COLOR[level];
@@ -574,6 +577,14 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
     return v2Progress.isUnitComplete(m, u);
   });
   const lastTasteDay = tasteDay >= TASTE_DAYS;
+  // Próximo tópico (o que libera amanhã): vira a "atividade extra" da oferta do fim do tópico (lib/tasteExtra).
+  const tasteNext = useMemo(() => {
+    if (!isTaster || lastTasteDay || freeUnits >= tasteOrder.length) return null;
+    const [moduleId, unitId] = tasteOrder[freeUnits].split('/');
+    return moduleId && unitId ? { level: String(level), moduleId, unitId } : null;
+  }, [isTaster, lastTasteDay, freeUnits, tasteOrder, level]);
+  const onTasteTopicDoneRef = useRef(onTasteTopicDone);
+  onTasteTopicDoneRef.current = onTasteTopicDone;
   useEffect(() => {
     if (!tasteDone || !isFocused) return;
     const key = `taste_paywall_${level}_${Math.min(tasteDay, TASTE_DAYS)}`;
@@ -582,17 +593,23 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
       const seen = await SecureStore.getItemAsync(key).catch(() => null);
       if (seen || cancelled) return;
       await SecureStore.setItemAsync(key, '1').catch(() => {});
-      openPaywall(lastTasteDay ? 'taste_done' : 'taste_today');
+      const openOffer = () => openPaywall(lastTasteDay ? 'taste_done' : 'taste_today', tasteNext);
+      if (onTasteTopicDoneRef.current?.(openOffer)) return;
+      openOffer();
     })();
     return () => { cancelled = true; };
-  }, [tasteDone, isFocused, level, openPaywall, tasteDay, lastTasteDay]);
+  }, [tasteDone, isFocused, level, openPaywall, tasteDay, lastTasteDay, tasteNext]);
 
   const handleStartLesson = useCallback((lesson: Lesson) => {
     // Trilha extra na degustação: só a unidade grátis; o resto (até com cadeado) abre o paywall.
     // Degustação: tópico ainda não liberado. Se libera num dos próximos dias, a oferta diz isso.
     if (isTaster && lesson.v2ModuleId && lesson.v2UnitId) {
       const rank = tasteRank(lesson.v2ModuleId, lesson.v2UnitId);
-      if (rank >= freeUnits) { openPaywall(rank < TASTE_DAYS ? 'taste_today' : track ? 'track' : 'trail'); return; }
+      if (rank >= freeUnits) {
+        // Tocou no tópico de amanhã depois de terminar o de hoje: a oferta traz a atividade extra.
+        openPaywall(rank < TASTE_DAYS ? 'taste_today' : track ? 'track' : 'trail', rank === freeUnits && tasteDone ? tasteNext : null);
+        return;
+      }
     }
     if (lesson.state === 'locked' || !lesson.hasContent) return;
     if (lesson.v2ModuleId && lesson.v2UnitId) {
@@ -624,7 +641,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
           return;
       }
     }
-  }, [level, isTaster, openPaywall, track, tasteRank, freeUnits]);
+  }, [level, isTaster, openPaywall, track, tasteRank, freeUnits, tasteDone, tasteNext]);
 
   // Ref pra scroll-to-active module
   const activeRef = useRef<View | null>(null);

@@ -32,6 +32,8 @@ import { voiceSFX } from '@/lib/voiceSFX';
 import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 import { LiveVoiceWave } from '@/components/voice/LiveVoiceWave';
 import { LiveVoiceLimitSheet } from '@/components/voice/LiveVoiceLimitSheet';
+import { TasteCallSummarySheet } from '@/components/voice/TasteCallSummarySheet';
+import { track } from '@/lib/analytics';
 import { getLevelAccent } from '@/lib/levelColors';
 import { appAlert } from '@/components/ui/AppAlert';
 
@@ -525,6 +527,19 @@ export default function LiveVoiceTab() {
   const [showLimitSheet,  setShowLimitSheet]  = useState(false);
   const [limitExhausted,  setLimitExhausted]  = useState(true); // false = aberto pelo cartão, antes de acabar
   const justHitLimitRef = React.useRef(false); // pool esgotou na chamada atual?
+  // Degustação: resumo da ligação grátis (tempo e falas) com a oferta para continuar conversando.
+  const callSummaryRef = React.useRef<{ secs: number; userTurns: number } | null>(null);
+  const [tasteSummary, setTasteSummary] = React.useState<{ secs: number; userTurns: number; exhausted: boolean } | null>(null);
+  const onCallSummary = React.useCallback((s: { secs: number; userTurns: number }) => { callSummaryRef.current = s; }, []);
+  // Ao fechar a ligação: na degustação, com conversa de verdade, o resumo vem no lugar da oferta de minutos.
+  const showTasteSummaryAfterCall = React.useCallback((hitLimit: boolean) => {
+    const s = callSummaryRef.current;
+    callSummaryRef.current = null;
+    if (!isTaster || !s || s.secs < 20) return false;
+    track('taste_call_summary_shown', { secs: s.secs, user_turns: s.userTurns, exhausted: hitLimit });
+    setTimeout(() => setTasteSummary({ ...s, exhausted: hitLimit }), 400);
+    return true;
+  }, [isTaster]);
   const [showTranscript,  setShowTranscript]  = useState(false);
   const [showHelp,        setShowHelp]        = useState(false);
   const [loading,         setLoading]         = useState(true);
@@ -1067,6 +1082,7 @@ export default function LiveVoiceTab() {
           character={hostId}
           impression={hostImp?.id ?? null}
           onLimitReached={() => { justHitLimitRef.current = true; }}
+          onCallSummary={onCallSummary}
           onClose={() => {
             setShowFamilyCall(false);
             // "Ligar" da Família valia só para essa ligação: volta para quem atende normalmente.
@@ -1076,10 +1092,10 @@ export default function LiveVoiceTab() {
             loadData();
             setTimeout(() => { loadData(); }, 2000);
             // Minutos acabaram nesta ligação: mesma oferta da ligação com a Charlotte (assinar ou comprar minutos).
-            if (justHitLimitRef.current) {
-              justHitLimitRef.current = false;
-              setTimeout(() => { setLimitExhausted(true); setShowLimitSheet(true); }, 400);
-            }
+            const hit = justHitLimitRef.current;
+            justHitLimitRef.current = false;
+            if (showTasteSummaryAfterCall(hit)) return;
+            if (hit) setTimeout(() => { setLimitExhausted(true); setShowLimitSheet(true); }, 400);
           }}
         />
       )}
@@ -1090,6 +1106,7 @@ export default function LiveVoiceTab() {
           userLevel={level}
           userName={(profile?.name ?? 'Student').trim().split(/\s+/)[0]}
           onLimitReached={() => { justHitLimitRef.current = true; }}
+          onCallSummary={onCallSummary}
           onClose={() => {
             setShowLiveVoice(false);
             soundEngine.setMuted(false);
@@ -1100,13 +1117,24 @@ export default function LiveVoiceTab() {
             setTimeout(() => { loadData(); }, 2000);
             // Se o tempo acabou nesta chamada, mostra o popup de upsell logo
             // depois que o modal fecha (delay pro fade do modal terminar).
-            if (justHitLimitRef.current) {
-              justHitLimitRef.current = false;
-              setTimeout(() => { setLimitExhausted(true); setShowLimitSheet(true); }, 400);
-            }
+            const hit = justHitLimitRef.current;
+            justHitLimitRef.current = false;
+            if (showTasteSummaryAfterCall(hit)) return;
+            if (hit) setTimeout(() => { setLimitExhausted(true); setShowLimitSheet(true); }, 400);
           }}
         />
       )}
+
+      <TasteCallSummarySheet
+        visible={!!tasteSummary}
+        isPt={isPt}
+        hostName={host.name}
+        secs={tasteSummary?.secs ?? 0}
+        userTurns={tasteSummary?.userTurns ?? 0}
+        exhausted={!!tasteSummary?.exhausted}
+        onContinue={() => { track('taste_call_summary_continue', {}); setTasteSummary(null); setTimeout(() => openPaywall(), 300); }}
+        onClose={() => setTasteSummary(null)}
+      />
 
       <LiveVoiceLimitSheet
         visible={showLimitSheet}
