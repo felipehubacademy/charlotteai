@@ -1,6 +1,7 @@
 // app/api/translate/route.ts
 // Traducao server-side via GPT para usuarios Novice (Free Chat).
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
@@ -32,7 +33,9 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { text, userLevel: rawLevel, userId } = body as { text?: string; userLevel?: string; userId?: string };
+    const { text, userLevel: rawLevel } = body as { text?: string; userLevel?: string };
+    const userId = await requestUserId(request);
+    if (typeof text === 'string' && text.length > 2000) return NextResponse.json({ error: 'Text too long' }, { status: 413 });
     const userLevel = pedagogicalLevel(rawLevel);
 
     if (!text || typeof text !== 'string') {

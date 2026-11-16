@@ -10,6 +10,7 @@
 //   - Otherwise identical pipeline (structured JSON, hidden objectives,
 //     auto-nudge when stuck)
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
@@ -333,8 +334,9 @@ export async function POST(request: NextRequest) {
     const body = (await request.json()) as Payload & { user_id?: string };
     const {
       history, guided_chat: gc, level: rawLevel, user_message, unit_title,
-      stuck_turns, next_objective_id, user_id: userId, user_name,
+      stuck_turns, next_objective_id, user_name,
     } = body;
+    const userId = (await requestUserId(request)) ?? undefined; // aluno do login
     // Trilha do Igorfina = público do Novice (regras de simplicidade e de fluxo do iniciante).
     const level = rawLevel === 'Igorfina' ? 'Novice' : rawLevel;
 

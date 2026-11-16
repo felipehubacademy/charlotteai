@@ -2,6 +2,7 @@
 // Generates a short, punchy home-screen greeting via GPT-4o-mini.
 // Charlotte personality: direct, warm, real — never generic, never verbose.
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
@@ -109,7 +110,7 @@ export async function POST(request: NextRequest) {
     });
 
     logOpenAIUsage({
-      userId: body.userId ?? null,
+      userId: (await requestUserId(request)) ?? null,
       endpoint: '/api/greeting',
       model: 'gpt-4o-mini',
       promptTokens:     completion.usage?.prompt_tokens,

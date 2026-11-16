@@ -8,11 +8,11 @@ export async function GET(request: NextRequest) {
   try {
     console.log('📊 [ANALYTICS API] Getting notification metrics...');
     
-    // Validação opcional de autenticação (remover em produção se não necessário)
-    // const authHeader = request.headers.get('authorization');
-    // if (authHeader !== `Bearer ${process.env.ADMIN_SECRET}`) {
-    //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    // }
+    // Só com o segredo do cron (antes ficava aberta e mostrava o histórico de notificações de qualquer aluno).
+    const secret = process.env.CRON_SECRET;
+    if (!secret || request.headers.get('authorization') !== `Bearer ${secret}`) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
     const { searchParams } = new URL(request.url);
     const startDate = searchParams.get('startDate') || new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(); // 7 dias atrás

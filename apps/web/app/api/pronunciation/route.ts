@@ -1,5 +1,6 @@
 // app/api/pronunciation/route.ts - IMPLEMENTAÇÃO DEFINITIVA COM CONVERSÃO DE ÁUDIO
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch, transcribeModel } from '@/lib/ai-models';
@@ -107,7 +108,7 @@ export async function POST(request: NextRequest) {
     const formData = await request.formData();
     const audioFile = formData.get('audio') as File;
     const referenceText = formData.get('referenceText') as string;
-    const userId = (formData.get('userId') as string | null) || null;
+    const userId = await requestUserId(request); // aluno do login
 
     if (!audioFile) {
       return NextResponse.json({

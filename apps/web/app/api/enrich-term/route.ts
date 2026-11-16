@@ -12,6 +12,7 @@
  * Response: { success: true, data: { definition, example, example_translation, phonetic, category }, cached: boolean }
  */
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import OpenAI from 'openai';
@@ -31,7 +32,8 @@ function normalizeTerm(term: string): string {
 export async function GET(req: NextRequest) {
   const raw    = req.nextUrl.searchParams.get('term')?.trim();
   const level  = req.nextUrl.searchParams.get('level') ?? 'Inter';
-  const userId = req.nextUrl.searchParams.get('userId');
+  const userId = await requestUserId(req); // aluno do login
+  if (raw && raw.length > 80) return NextResponse.json({ error: 'Term too long' }, { status: 413 });
 
   if (!raw) {
     return NextResponse.json({ error: 'Missing term' }, { status: 400 });

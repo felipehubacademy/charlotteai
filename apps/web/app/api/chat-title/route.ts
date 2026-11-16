@@ -5,6 +5,7 @@
 // Sem `text`, busca a primeira mensagem do aluno na session (backfill de
 // conversas antigas).
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
@@ -34,7 +35,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'OpenAI not configured' }, { status: 500 });
     }
 
-    const { sessionId, userId, lang = 'en', text } = (await request.json()) as Partial<Body>;
+    const { sessionId, lang = 'en', text } = (await request.json()) as Partial<Body>;
+    const userId = await requestUserId(request); // só o aluno do login (o userId do corpo não vale)
     if (!sessionId || !userId) {
       return NextResponse.json({ success: false, error: 'sessionId, userId required' }, { status: 400 });
     }

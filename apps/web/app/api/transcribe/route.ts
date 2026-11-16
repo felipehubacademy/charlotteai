@@ -1,5 +1,6 @@
 // app/api/transcribe/route.ts
 
+import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { aiFetch, transcribeModel, transcribedSeconds } from '@/lib/ai-models';
@@ -61,7 +62,7 @@ export async function POST(request: NextRequest) {
     // Obter o FormData do request
     const formData = await request.formData();
     const audioFile = formData.get('audio') as File;
-    const userId   = (formData.get('userId') as string | null) ?? null;
+    const userId   = await requestUserId(request); // aluno do login
     const hintNames = ((formData.get('names') as string | null) ?? '').replace(/[^\p{L}\p{N} ,'-]/gu, '').slice(0, 120).trim();
 
     if (!audioFile) {
