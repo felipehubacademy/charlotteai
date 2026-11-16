@@ -41,6 +41,7 @@ import {
 const ASR_AVAILABLE = !!ExpoSpeechRecognitionModule?.start;
 import Constants from 'expo-constants';
 import { useAuth } from '@/hooks/useAuth';
+import { usePaywallContext } from '@/lib/paywallContext';
 import { useStreak } from '@/components/streak/StreakProvider';
 import { useTotalXP } from '@/hooks/useTotalXP';
 import { AppText } from '@/components/ui/Text';
@@ -143,13 +144,16 @@ export default function LearnSessionScreen() {
     v?: string; moduleId?: string; unitId?: string; activity?: string;
     first?: string; // '1' = 1ª lição da conta, vinda da abertura (lib/welcome)
     intro?: string; // '1' = Listening & Speaking logo depois da Gramática: antes, a tela "Agora é sua vez de falar"
+    extra?: string; // '1' = degustação: "atividade extra" do tópico de amanhã (lib/tasteExtra); no fim, a oferta
   }>();
   const level       = (params.level ?? 'Novice') as TrailLevel;
   const moduleIndex = parseInt(params.moduleIndex ?? '0', 10);
   const topicIndex  = parseInt(params.topicIndex  ?? '0', 10);
   const isV2        = params.v === 'v2' && !!params.moduleId && !!params.unitId;
 
-  const { profile, refreshProfile } = useAuth();
+  const { profile, refreshProfile, isTaster } = useAuth();
+  const { openPaywall } = usePaywallContext();
+  const isTasteExtra = params.extra === '1' && isTaster;
   const { celebrateStreak, status: streakStatus } = useStreak();
   const firstLesson = params.first === '1';
   // Tela "Agora é sua vez de falar" antes do L&S que vem logo depois da Gramática. Muita gente saía em segundos
@@ -1333,10 +1337,10 @@ export default function LearnSessionScreen() {
   if (isComplete) {
     const done = completedActivityScore;
     const passedNow = !!done && done.score >= done.threshold;
-    const nextLabel = isV2 && passedNow
+    const nextLabel = isV2 && passedNow && !isTasteExtra
       ? (done!.activityType === 'grammar' ? 'Listening & Speaking' : done!.activityType === 'speaking' ? 'Role-play' : null)
       : null;
-    const firstDay = !!profile?.created_at && Date.now() - new Date(profile.created_at).getTime() < 24 * 3600000;
+    const firstDay = !isTasteExtra && !!profile?.created_at && Date.now() - new Date(profile.created_at).getTime() < 24 * 3600000;
     const callHost = characterInfo(profile?.active_character).name;
     // ── Tela de conclusão: APRENDIZADO NORMAL ──────────────────
     return (
@@ -1486,6 +1490,13 @@ export default function LearnSessionScreen() {
             return (
               <TouchableOpacity
                 onPress={() => {
+                  // Atividade extra da degustação: o resto do tópico libera amanhã; agora, a oferta.
+                  if (isTasteExtra) {
+                    track('taste_extra_done', { level, passed: !!(c && c.score >= c.threshold) });
+                    router.replace('/(app)/(tabs)' as any);
+                    setTimeout(() => openPaywall('taste_extra'), 400);
+                    return;
+                  }
                   if (isV2) {
                     const passed = c && c.score >= c.threshold;
                     if (passed && params.moduleId && params.unitId) {

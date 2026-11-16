@@ -35,6 +35,13 @@ import {
 } from '@/lib/purchases';
 import { appAlert, AppAlertHost } from '@/components/ui/AppAlert';
 import { track } from '@/lib/analytics';
+import { router } from 'expo-router';
+import { tasteDayNumber } from '@/lib/tasteDays';
+import { tasteExtraUsed, markTasteExtraUsed } from '@/lib/tasteExtra';
+
+// Dado real (contas de 20/10 a 02/11/2026): nas 2 primeiras semanas, assinantes concluíram 41 atividades
+// da trilha em média e a degustação 2,5 (16x). Rever o número a cada mês para a frase seguir verdadeira.
+const SUBSCRIBER_ACTIVITY_MULTIPLIER = 16;
 
 const C = {
   bg:         '#FAF7F0',
@@ -72,7 +79,7 @@ function formatMoney(value: number, currency: string, isPt: boolean): string {
 
 export function PaywallModal() {
   const { profile, hasAccess, isTaster, signOut, refreshProfile } = useAuth();
-  const { paywallOpen, paywallReason, closePaywall } = usePaywallContext();
+  const { paywallOpen, paywallReason, paywallNext, closePaywall } = usePaywallContext();
   const insets = useSafeAreaInsets();
 
   // Paywall = tela de SISTEMA/transacional: idioma segue o device.
@@ -160,6 +167,37 @@ export function PaywallModal() {
         setProgressLoaded(true);
       });
   }, [visible, profile?.id]);
+
+  // Degustação: o progresso da pessoa na oferta ("Em 2 dias você fez 6 atividades e guardou 4 palavras").
+  const tasteReason = paywallReason === 'taste_today' || paywallReason === 'taste_done' || paywallReason === 'taste_extra';
+  const [tasteStats, setTasteStats] = useState<{ acts: number; words: number } | null>(null);
+  const [extraAvailable, setExtraAvailable] = useState(false);
+  const tasteDayNow = tasteDayNumber(profile?.created_at);
+  useEffect(() => {
+    if (!visible || !profile?.id || !isTaster) return;
+    let alive = true;
+    Promise.all([
+      supabase.from('learn_history_v2').select('id', { count: 'exact', head: true }).eq('user_id', profile.id).eq('completed', true),
+      supabase.from('user_vocabulary').select('id', { count: 'exact', head: true }).eq('user_id', profile.id),
+    ]).then(([a, w]) => { if (alive) setTasteStats({ acts: a.count ?? 0, words: w.count ?? 0 }); }).catch(() => {});
+    if (paywallNext && paywallReason === 'taste_today') {
+      tasteExtraUsed(profile.id, tasteDayNow).then(used => { if (alive) setExtraAvailable(!used); });
+    } else setExtraAvailable(false);
+    return () => { alive = false; };
+  }, [visible, profile?.id, isTaster, paywallNext, paywallReason, tasteDayNow]);
+
+  const startTasteExtra = useCallback(() => {
+    if (!profile?.id || !paywallNext) return;
+    track('taste_extra_start', { level: paywallNext.level, day: tasteDayNow });
+    markTasteExtraUsed(profile.id, tasteDayNow);
+    setExtraAvailable(false);
+    closePaywall();
+    const next = paywallNext;
+    setTimeout(() => router.push({
+      pathname: '/(app)/learn-session',
+      params: { v: 'v2', level: next.level, moduleId: next.moduleId, unitId: next.unitId, activity: 'grammar', extra: '1' },
+    } as any), 250);
+  }, [profile?.id, paywallNext, tasteDayNow, closePaywall]);
 
   // No Android o id vem com o plano básico ("...yearly:annual-plan"); compara também pelo prefixo.
   // Sem isso, o anual pré-selecionado não casava e a compra caía no primeiro pacote (o mensal).
@@ -400,6 +438,10 @@ export function PaywallModal() {
     ? (isPt
         ? `Amanhã libera mais um tópico grátis. Ou ${anyTrial ? `comece os ${anyTrial} dias grátis` : 'assine'} e siga agora, sem esperar.`
         : `Another free topic unlocks tomorrow. Or ${anyTrial ? `start your ${anyTrial}-day free trial` : 'subscribe'} and keep going now.`)
+    : paywallReason === 'taste_extra'
+    ? (isPt
+        ? `Você está embalado! ${anyTrial ? `Comece os ${anyTrial} dias grátis` : 'Assine'} e siga na trilha agora, sem esperar até amanhã.`
+        : `You're on a roll! ${anyTrial ? `Start your ${anyTrial}-day free trial` : 'Subscribe'} and keep going now, no waiting until tomorrow.`)
     : paywallReason === 'taste_done'
     ? (isPt
         ? `Sua degustação terminou. ${anyTrial ? `Comece os ${anyTrial} dias grátis` : 'Assine'} para seguir na trilha, conversar e ligar para a Charlotte.`
@@ -412,6 +454,27 @@ export function PaywallModal() {
     ? (isPt
         ? 'O Manual do F#did@ completo, com todos os tópicos do Igorfina, faz parte do plano completo.'
         : "The full Manual do F#did@, with all of Igorfina's topics, is part of the full plan.")
+    : null;
+
+  // Progresso real da pessoa (só com algo feito) e a comparação com quem assina.
+  const progressLine = !isTaster || !tasteReason || !tasteStats || tasteStats.acts < 1 ? null : (() => {
+    const d = Math.max(1, tasteDayNow);
+    const acts = tasteStats.acts, words = tasteStats.words;
+    if (isPt) {
+      const when = d === 1 ? 'Hoje você' : `Em ${d} dias você`;
+      const a = `${acts} ${acts === 1 ? 'atividade' : 'atividades'}`;
+      return words > 0 ? `${when} fez ${a} e guardou ${words} ${words === 1 ? 'palavra' : 'palavras'}.` : `${when} fez ${a}.`;
+    }
+    const when = d === 1 ? 'Today you' : `In ${d} days you`;
+    const a = `${acts} ${acts === 1 ? 'activity' : 'activities'}`;
+    return words > 0 ? `${when} did ${a} and saved ${words} ${words === 1 ? 'word' : 'words'}.` : `${when} did ${a}.`;
+  })();
+  // "Sem esperar até amanhã" só quando amanhã libera mais (não no último dia nem depois do teste de nível).
+  const moreTomorrow = paywallReason === 'taste_today' || paywallReason === 'taste_extra';
+  const proofLine = isTaster && (tasteReason || paywallReason === 'placement')
+    ? (isPt
+        ? `Assinantes do Queizy fazem ${SUBSCRIBER_ACTIVITY_MULTIPLIER} vezes mais atividades.${moreTomorrow ? ' Acelere seu ritmo sem esperar até amanhã.' : ''}`
+        : `Queizy subscribers do ${SUBSCRIBER_ACTIVITY_MULTIPLIER} times more activities.${moreTomorrow ? ' Speed up your pace without waiting until tomorrow.' : ''}`)
     : null;
 
   const subheadline = reasonLine ?? (isTaster
@@ -481,12 +544,24 @@ export function PaywallModal() {
           }}>
             {headline}
           </AppText>
+          {progressLine && (
+            <AppText style={{ fontSize: 15, fontWeight: '800', color: C.navy, textAlign: 'center', marginBottom: 6, lineHeight: 21 }}>
+              {progressLine}
+            </AppText>
+          )}
           <AppText style={{
             fontSize: 14, color: C.navyMid,
-            textAlign: 'center', marginBottom: 28, lineHeight: 20,
+            textAlign: 'center', marginBottom: proofLine ? 12 : 28, lineHeight: 20,
           }}>
             {subheadline}
           </AppText>
+          {proofLine && (
+            <View style={{ alignSelf: 'stretch', backgroundColor: C.card, borderRadius: 14, borderWidth: 1, borderColor: C.cardBorder, paddingVertical: 10, paddingHorizontal: 14, marginBottom: 24 }}>
+              <AppText style={{ fontSize: 13, fontWeight: '700', color: C.navy, textAlign: 'center', lineHeight: 18 }}>
+                {proofLine}
+              </AppText>
+            </View>
+          )}
 
           {/* O que vai perder */}
           <View style={{
@@ -662,6 +737,17 @@ export function PaywallModal() {
             <AppText style={{ color: C.muted, fontSize: 11, textAlign: 'center', marginTop: 8, lineHeight: 16 }}>
               {ctaNote}
             </AppText>
+            {forcedOpen && isTaster && extraAvailable && (
+              <TouchableOpacity
+                onPress={startTasteExtra}
+                activeOpacity={0.85}
+                style={{ alignSelf: 'stretch', borderWidth: 1.5, borderColor: C.navy, borderRadius: 16, paddingVertical: 13, alignItems: 'center', marginTop: 10 }}
+              >
+                <AppText style={{ color: C.navy, fontSize: 15, fontWeight: '800' }}>
+                  {isPt ? 'Fazer mais uma atividade grátis' : 'Do one more activity for free'}
+                </AppText>
+              </TouchableOpacity>
+            )}
             {forcedOpen && isTaster && (
               <TouchableOpacity onPress={closePaywall} hitSlop={8} style={{ alignSelf: 'center', paddingVertical: 8, marginTop: 2 }}>
                 <AppText style={{ color: C.navy, fontSize: 14, fontWeight: '700' }}>

@@ -69,7 +69,10 @@ type Line = { who: 'ai' | 'user'; text: string };
 
 /** impression = ligação inteira com uma imitação do personagem (escolhida na aba de ligação ou na Família). */
 /** onLimitReached: os minutos acabaram nesta ligação (ou já estavam no fim): a tela mostra a oferta ao fechar. */
-export function FamilyCallModal({ character, impression = null, onClose, onLimitReached }: { character: string | null; impression?: ImpressionId | null; onClose: () => void; onLimitReached?: () => void }) {
+/** onCallSummary: fim da ligação, com a duração e quantas falas foram do aluno (resumo da degustação). */
+export function FamilyCallModal({ character, impression = null, onClose, onLimitReached, onCallSummary }: { character: string | null; impression?: ImpressionId | null; onClose: () => void; onLimitReached?: () => void; onCallSummary?: (s: { secs: number; userTurns: number }) => void }) {
+  const onCallSummaryRef = React.useRef(onCallSummary);
+  onCallSummaryRef.current = onCallSummary;
   const isPt = systemIsPt;
   const { profile } = useAuth();
   const insets = useSafeAreaInsets();
@@ -198,6 +201,7 @@ export function FamilyCallModal({ character, impression = null, onClose, onLimit
       saveFamilyCall({ character: character ?? '', impression: whole?.id ?? null, startedAt: new Date(firstStartRef.current).toISOString(), durationSeconds: usedRef.current, lines: transcriptRef.current });
     }
     track('family_call_end', { character: character ?? '', impression: whole?.id ?? '', seconds: usedRef.current, reason });
+    try { onCallSummaryRef.current?.({ secs: usedRef.current, userTurns: transcriptRef.current.filter(l => l.who === 'user').length }); } catch { /* noop */ }
     setWarning(null);
     setStatus(s => (s === 'error' ? s : 'ended'));
   }, [character, closeSegment]);

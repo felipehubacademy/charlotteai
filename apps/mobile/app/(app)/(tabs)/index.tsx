@@ -184,6 +184,10 @@ export default function HomeTab() {
   // Placement opcional (Fase 1): pop único na Home pra quem ainda não fez o
   // teste. Sempre dispensável. Flag por device em SecureStore.
   const [showPlacementPrompt, setShowPlacementPrompt] = useState(false);
+  // 'start' = convite depois da 1ª atividade; 'topic_done' = degustação, ao terminar o tópico do dia, antes da
+  // oferta (a oferta depois do teste de nível converte o dobro das outras; só 18% das contas faziam o teste).
+  const [placementMoment, setPlacementMoment] = useState<'start' | 'topic_done'>('start');
+  const pendingOfferRef = useRef<(() => void) | null>(null);
   const placementDone = profile?.placement_test_done === true;
   // Convite visto/fechado: por conta (antes era por aparelho e uma conta nova no mesmo celular nunca via).
   const placementKey = profile?.id ? `placement_prompt_dismissed_${profile.id}` : null;
@@ -254,7 +258,10 @@ export default function HomeTab() {
       ? SecureStore.getItemAsync('PLACEMENT_PROMPT_DISMISSED').catch(() => null) : Promise.resolve(null);
     Promise.all([SecureStore.getItemAsync(placementKey), legacy]).then(([own, old]) => { const v = own || old;
       if (!v) {
-        const t = setTimeout(() => setShowPlacementPrompt(true), 800);
+        const t = setTimeout(() => {
+          setPlacementMoment('start'); setShowPlacementPrompt(true);
+          track('placement_prompt_shown', { moment: 'start' });
+        }, 800);
         return () => clearTimeout(t);
       }
     }).catch(() => {});
@@ -262,14 +269,35 @@ export default function HomeTab() {
 
   const dismissPlacementPrompt = useCallback(() => {
     setShowPlacementPrompt(false);
-    if (placementKey) SecureStore.setItemAsync(placementKey, '1').catch(() => {});
-  }, [placementKey]);
+    if (placementMoment === 'start' && placementKey) SecureStore.setItemAsync(placementKey, '1').catch(() => {});
+  }, [placementKey, placementMoment]);
+
+  // "Agora não": no fim do tópico, segue para a oferta da degustação que estava esperando.
+  const declinePlacementPrompt = useCallback(() => {
+    track('placement_prompt_declined', { moment: placementMoment });
+    dismissPlacementPrompt();
+    const offer = pendingOfferRef.current;
+    pendingOfferRef.current = null;
+    if (offer) setTimeout(offer, 350);
+  }, [dismissPlacementPrompt, placementMoment]);
+
+  // Degustação, tópico do dia concluído: quem ainda não fez o teste de nível é convidado antes da oferta.
+  const handleTasteTopicDone = useCallback((openOffer: () => void) => {
+    if (!isTaster || placementDone) return false;
+    pendingOfferRef.current = openOffer;
+    setPlacementMoment('topic_done');
+    setShowPlacementPrompt(true);
+    track('placement_prompt_shown', { moment: 'topic_done' });
+    return true;
+  }, [isTaster, placementDone]);
 
   const handleTakePlacement = useCallback(() => {
+    track('placement_prompt_accepted', { moment: placementMoment });
+    pendingOfferRef.current = null; // o resultado do teste já traz a oferta
     dismissPlacementPrompt();
     // direct=1: já escolheu fazer o teste no pop → pula o intro do placement.
     router.push('/(app)/placement-test?direct=1');
-  }, [dismissPlacementPrompt, isTaster, openPaywall]);
+  }, [dismissPlacementPrompt, isTaster, openPaywall, placementMoment]);
 
   // Charlotte greeting animado em WebP com alpha. expo-image faz loop nativo
   // e não toca AVAudioSession (substitui expo-video que floodava MediaPlayback
@@ -777,6 +805,7 @@ export default function HomeTab() {
             // measureLayout (tryScroll) as vezes falha silencioso.
             if (y > 0) activeTopicYRef.current = y + (scrollLevel ? topBlockHRef.current : 0);
           }}
+          onTasteTopicDone={handleTasteTopicDone}
           onTrailFinished={(finished) => {
             trailFinishedRef.current = finished;
             // Limpa o Y do (ex-)modulo ativo ao finalizar — assim mesmo que o
@@ -822,8 +851,9 @@ export default function HomeTab() {
       <PlacementPromptSheet
         visible={showPlacementPrompt}
         isPt={systemIsPt}
+        moment={placementMoment}
         onTakeTest={handleTakePlacement}
-        onStartFromZero={dismissPlacementPrompt}
+        onStartFromZero={declinePlacementPrompt}
       />
 
       {/* Promotion (level-up) vs Graduation (terminal): renderiza um ou outro

@@ -42,6 +42,13 @@ export type AnalyticsEvent =
   | 'ls_intro_go'
   | 'ls_intro_later'
   | 'taste_tomorrow_reminder_tap'
+  | 'taste_extra_start'        // degustação: "Fazer mais uma atividade grátis" na oferta do fim do tópico
+  | 'taste_extra_done'         // terminou a atividade extra (a oferta abre de novo)
+  | 'placement_prompt_shown'   // convite do teste de nível (moment: start | topic_done)
+  | 'placement_prompt_accepted'
+  | 'placement_prompt_declined'
+  | 'taste_call_summary_shown' // degustação: resumo no fim da ligação grátis
+  | 'taste_call_summary_continue'
   | 'rank_leader_shown'
   | 'rank_leader_share'
   | 'acquisition_answered'
