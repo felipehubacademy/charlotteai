@@ -129,6 +129,7 @@ export function checkoutRowFields(ctx: CheckoutContext, req: NextRequest) {
     meta_tracking: {
       consent: true,
       fbp: req.cookies.get('_fbp')?.value ?? null, fbc: req.cookies.get('_fbc')?.value ?? null,
+      externalId: req.cookies.get('qz_vid')?.value ?? null, // mesma visita do pixel (lib/meta-pixel browserIds)
       ip: ctx.ip, ua: req.headers.get('user-agent'), url: req.headers.get('referer'),
       // Campanha do anúncio que trouxe a visita (cookie qz_utm, components/AdAttribution): teste A/B site x lojas.
       utm: (() => { try { return JSON.parse(decodeURIComponent(req.cookies.get('qz_utm')?.value ?? '')); } catch { return null; } })(),

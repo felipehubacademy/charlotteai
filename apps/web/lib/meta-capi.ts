@@ -6,7 +6,7 @@
 import { createHash } from 'crypto';
 import { META_PIXEL_ID } from '@/lib/meta-pixel';
 
-export type MetaTracking = { consent?: boolean; fbp?: string | null; fbc?: string | null; ip?: string | null; ua?: string | null; url?: string | null };
+export type MetaTracking = { consent?: boolean; fbp?: string | null; fbc?: string | null; ip?: string | null; ua?: string | null; url?: string | null; externalId?: string | null };
 
 const sha = (v: string) => createHash('sha256').update(v.trim().toLowerCase()).digest('hex');
 
@@ -28,7 +28,8 @@ export async function sendCapiEvent(input: {
       event_source_url: t.url ?? 'https://queizy.com/assinar',
       user_data: {
         ...(input.email ? { em: [sha(input.email)] } : {}),
-        ...(input.userId ? { external_id: [sha(input.userId)] } : {}),
+        // external_id: id da conta (checkout) e o qz_vid do navegador (o mesmo que o pixel manda no init).
+        ...(input.userId || t.externalId ? { external_id: [input.userId ? sha(input.userId) : null, t.externalId ? sha(t.externalId) : null].filter(Boolean) } : {}),
         ...(t.fbp ? { fbp: t.fbp } : {}), ...(t.fbc ? { fbc: t.fbc } : {}),
         ...(t.ip ? { client_ip_address: t.ip } : {}), ...(t.ua ? { client_user_agent: t.ua } : {}),
       },

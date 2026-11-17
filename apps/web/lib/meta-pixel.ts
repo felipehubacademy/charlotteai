@@ -36,9 +36,42 @@ export function saveConsent(v: 'all' | 'essential') {
   document.cookie = `${CONSENT_COOKIE}=${v}; path=/; max-age=${365 * 86400}; samesite=lax; secure`;
 }
 
+function readCookie(name: string): string | null {
+  const m = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
+function writeCookie(name: string, value: string, days: number) {
+  const domain = /(^|\.)queizy\.com$/.test(location.hostname) ? '; domain=.queizy.com' : '';
+  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${days * 86400}; samesite=lax; secure${domain}`;
+}
+
+/**
+ * Identificação do navegador para a Meta, criada já na 1ª página (antes, o cookie _fbp só existia depois que o
+ * pixel carregava, e a visita pelo servidor ia sem ela: nota baixa de correspondência). O pixel reaproveita o
+ * _fbp que já existe. qz_vid = identificação nossa da visita (external_id), igual no navegador e no servidor.
+ */
+export function browserIds(): { fbp: string; vid: string } | null {
+  if (typeof document === 'undefined') return null;
+  try {
+    let fbp = readCookie('_fbp');
+    if (!fbp || !/^fb\.\d\.\d+\.\d+$/.test(fbp)) {
+      fbp = `fb.1.${Date.now()}.${Math.floor(Math.random() * 9e9) + 1e9}`;
+      writeCookie('_fbp', fbp, 90);
+    }
+    let vid = readCookie('qz_vid');
+    if (!vid || !/^[a-z0-9-]{16,40}$/.test(vid)) {
+      vid = (crypto.randomUUID?.() ?? `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 14)}`).toLowerCase();
+      writeCookie('qz_vid', vid, 365);
+    }
+    return { fbp, vid };
+  } catch { return null; }
+}
+
 /** Carrega o pixel (uma vez) e registra a visita. */
 export function loadPixel() {
   if (typeof window === 'undefined' || window.fbq) return;
+  const ids = browserIds();
   const fbq: Fbq = function (...args: unknown[]) {
     // eslint-disable-next-line prefer-rest-params
     if (fbq.callMethod) (fbq.callMethod as (...a: unknown[]) => void)(...args); else fbq.queue!.push(args);
@@ -48,7 +81,7 @@ export function loadPixel() {
   const s = document.createElement('script');
   s.async = true; s.src = 'https://connect.facebook.net/en_US/fbevents.js';
   document.head.appendChild(s);
-  fbq('init', META_PIXEL_ID);
+  fbq('init', META_PIXEL_ID, ids ? { external_id: ids.vid } : undefined);
   loadGtm();
 }
 
