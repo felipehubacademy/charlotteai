@@ -198,7 +198,8 @@ export async function usersListPayload() {
     users: usersWithEng,
     stats: {
       total, totalStudents: ub.total, team: total - ub.total, institutional,
-      taste: { ...taste, total: ub.taste },
+      // Card = só quem está nos 5 dias (mesma regra da Visão geral); quem passou deles conta em Sem acesso.
+      taste: { ...taste, total: ub.taste, active: ub.taste, ended: ub.tasteEnded ?? taste.ended },
       cancelled: { ...cancelled, inTrial: ub.trialCancelled, paid: ub.payingCancelled },
       subscribers: ub.paying, onTrial: ub.trial,
       trialSplit: { loja: ub.trialStore, site: ub.trialSite, semCartao: ub.trialLegacy },

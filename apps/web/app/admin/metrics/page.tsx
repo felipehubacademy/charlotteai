@@ -744,9 +744,9 @@ export default function MetricsPage() {
             tip="Pagantes com renovação ativa que não fizeram nenhuma atividade nos últimos 14 dias: risco de cancelar." />
         </div>
         <div className="col-3">
-          <KpiCard label="Em degustação" value={g?.taste.total}
-            ctx={g ? `1º dia ${g.taste.day1} · ${g.taste.tasteDays}º dia ${g.taste.lastDay} · já esgotaram ${g.taste.exhausted}` : undefined} delay={600}
-            tip={`Contas sem assinatura nem teste (fora as da equipe). A degustação libera um pouco por dia durante ${g?.taste.tasteDays ?? 5} dias, contados no calendário de Brasília a partir do dia do cadastro (dia 1). Já esgotaram = passaram do último dia sem começar o teste.`} />
+          <KpiCard label="Em degustação" value={g ? g.taste.total - g.taste.exhausted : undefined}
+            ctx={g ? `1º dia ${g.taste.day1} · ${g.taste.tasteDays}º dia ${g.taste.lastDay} · já encerraram ${g.taste.exhausted}` : undefined} delay={600}
+            tip={`Contas nos ${g?.taste.tasteDays ?? 5} dias da degustação, sem assinatura nem teste (fora as da equipe): ainda podem converter com as ofertas da degustação. Os dias contam no calendário de Brasília a partir do dia do cadastro (dia 1). Já encerraram = passaram do último dia sem começar o teste; na Visão geral, contam em Sem acesso.`} />
         </div>
         <div className="col-3">
           <KpiCard label="Voltou no dia seguinte" display={fmtPct(g?.retention.d1 ?? null)}

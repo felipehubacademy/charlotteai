@@ -433,7 +433,7 @@ export default function AdminUsersPage() {
             </div>
             <div className="col-3">
               <StatCard label="Degustação" value={stats.taste?.total ?? 0} delay={60}
-                sub={stats.taste ? `${stats.taste.active} nos 5 dias · ${stats.taste.ended} já encerraram` : undefined} />
+                sub="nos 5 dias, ainda podem converter" />
             </div>
             <div className="col-3">
               <StatCard label="Em teste grátis" value={stats.onTrial} accent="var(--accent)" delay={120}
@@ -454,7 +454,7 @@ export default function AdminUsersPage() {
                   </div>
                 ) : undefined} />
             </div>
-            <div className="col-3"><StatCard label="Sem acesso" value={stats.noAccess ?? stats.trialExpired} delay={300} sub="teste ou assinatura encerrados" /></div>
+            <div className="col-3"><StatCard label="Sem acesso" value={stats.noAccess ?? stats.trialExpired} delay={300} sub={stats.taste ? `${stats.taste.ended} da degustação · ${(stats.noAccess ?? 0) - stats.taste.ended} de teste ou assinatura` : "degustação, teste ou assinatura encerrados"} /></div>
             <div className="col-3">
               <StatCard label="Novos (24h)" value={stats.last24h ?? 0}
                 sub={`${stats.prev24h ?? 0} nas 24 h anteriores · ${stats.last30} em 30 dias`}

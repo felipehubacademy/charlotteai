@@ -289,10 +289,10 @@ export default function AdminOverviewPage() {
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginTop: 18 }}>
                   {[
-                    { label: 'Degustação', value: u.taste, sub: 'sem teste nem assinatura' },
+                    { label: 'Degustação', value: u.taste, sub: 'nos 5 dias, ainda podem converter' },
                     { label: 'Em teste grátis', value: u.trial, sub: u.trialCancelled ? `${int(u.trialCancelled)} ${u.trialCancelled === 1 ? 'cancelou e usa' : 'cancelaram e usam'} até o fim` : `loja ${u.trialStore} · site ${u.trialSite}` },
                     { label: 'Pagantes', value: u.paying, sub: u.payingCancelled ? `${int(u.payingCancelled)} ${u.payingCancelled === 1 ? 'cancelou e usa' : 'cancelaram e usam'} até o fim` : 'com renovação ativa' },
-                    { label: 'Sem acesso', value: u.noAccess, sub: 'teste ou assinatura encerrados' },
+                    { label: 'Sem acesso', value: u.noAccess, sub: u.tasteEnded != null ? `${int(u.tasteEnded)} da degustação · ${int(u.noAccess - u.tasteEnded)} de teste ou assinatura` : 'degustação, teste ou assinatura encerrados' },
                   ].map(g => (
                     <div key={g.label} style={{ background: 'rgba(255,255,255,0.07)', borderRadius: 'var(--r2)', padding: '12px 14px' }}>
                       <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)' }}>{g.label}</div>

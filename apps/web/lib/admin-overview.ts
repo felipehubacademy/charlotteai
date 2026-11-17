@@ -76,7 +76,8 @@ export interface Overview {
   alerts: { allOk: boolean; items: AlertItem[] };
   users: {
     total: number; newToday: number; new30d: number;
-    taste: number;
+    taste: number; // só quem está nos 5 dias da degustação (supabase/migrations/20261117120000)
+    tasteEnded?: number; // passaram dos 5 dias sem teste nem assinatura: já contam em noAccess
     trial: number; trialCancelled: number; trialStore: number; trialSite: number; trialLegacy: number;
     paying: number; payingCancelled: number;
     noAccess: number;
