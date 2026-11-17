@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: "Bricolage"; font-weight: 700; src: url("../../../apps/mobile/assets/fonts/BricolageGrotesque96pt-Bold.ttf"); }
+  @font-face { font-family: "Bricolage"; font-weight: 800; src: url("../../../apps/mobile/assets/fonts/BricolageGrotesque96pt-ExtraBold.ttf"); }
+  :root { --volt: #DCFF4A; --tinta: #16131F; --pink: #FF4F8B; --papel: #FAF7F0; --violeta: #6B4BFF; --verde: #2BD97C; }
+  html, body { margin: 0; width: 1280px; height: 720px; overflow: hidden; background: var(--tinta); font-family: system-ui, sans-serif; }
+  .scene { position: absolute; inset: 0; overflow: hidden; }
+  /* ---------- rua (quadrinho animado) ---------- */
+  #street-img { position: absolute; left: 0; top: 0; width: 1280px; height: 723px; transform-origin: 0 0; will-change: transform; }
+  #sun { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
+         background: radial-gradient(60% 70% at 78% 8%, rgba(255,214,140,.35), transparent 60%); }
+  #dust { position: absolute; inset: 0; }
+  #vig { position: absolute; inset: 0; background: radial-gradient(120% 100% at 50% 45%, transparent 55%, rgba(22,19,31,.45)); }
+  #shade { position: absolute; inset: 0; background: var(--tinta); }
+  #title { position: absolute; left: 80px; top: 230px; color: var(--papel); }
+  #title .k { font: 800 22px Bricolage, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--volt); }
+  #title .t { font: 800 108px/1 Bricolage, sans-serif; letter-spacing: -.03em; margin-top: 10px; }
+  .w { display: inline-block; }
+  .bubble { position: absolute; background: #fff; border-radius: 26px; padding: 16px 22px 18px; box-shadow: 0 18px 40px rgba(22,19,31,.28); opacity: 0; }
+  .bubble::after { content: ""; position: absolute; left: var(--tx, 50%); top: -14px; margin-left: -14px; border: 14px solid transparent; border-top: 0; border-bottom-color: #fff; }
+  .bubble .who { font: 800 14px Bricolage, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--violeta); }
+  .bubble .en { font: 800 40px/1.1 Bricolage, sans-serif; color: var(--tinta); letter-spacing: -.01em; margin-top: 2px; white-space: nowrap; }
+  .bubble .pt { font: 500 20px system-ui, sans-serif; color: #6A6478; margin-top: 6px; }
+  /* ---------- tipografia ---------- */
+  #type { background: var(--tinta); }
+  #blobs { position: absolute; inset: -100px; filter: blur(70px); opacity: .55; }
+  #blobs i { position: absolute; border-radius: 50%; }
+  #grain { position: absolute; inset: 0; opacity: .08; }
+  .big { position: absolute; font: 800 104px/1 Bricolage, sans-serif; letter-spacing: -.03em; color: var(--papel); white-space: nowrap; }
+  .lab { position: absolute; font: 600 26px system-ui, sans-serif; color: rgba(250,247,240,.6); white-space: nowrap; }
+  .pt2 { position: absolute; font: 800 64px/1 Bricolage, sans-serif; color: var(--papel); white-space: nowrap; letter-spacing: -.02em; }
+  mark { color: inherit; background: linear-gradient(var(--volt), var(--volt)) no-repeat 0 92% / calc(var(--p, 0) * 100%) 34%; padding: 0 6px; margin: 0 -6px; }
+  #answer { position: absolute; left: 640px; top: 470px; transform: translateX(-50%); background: var(--volt); color: var(--tinta); border-radius: 999px;
+            padding: 18px 44px 22px; font: 800 72px/1 Bricolage, sans-serif; white-space: nowrap; letter-spacing: -.02em; display: flex; align-items: center; gap: 22px; opacity: 0; }
+  #answer svg { width: 52px; height: 52px; }
+  #eq { position: absolute; height: 6px; background: var(--volt); border-radius: 3px; transform-origin: 0 50%; }
+  /* ---------- pergunta ---------- */
+  #q { position: absolute; left: 640px; bottom: 54px; transform: translateX(-50%); width: 760px; background: rgba(22,19,31,.92); border-radius: 30px; padding: 22px 26px 24px;
+       color: var(--papel); opacity: 0; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+  #q .h { font: 800 30px Bricolage, sans-serif; }
+  #q .opts { display: flex; gap: 12px; margin-top: 14px; }
+  #q .o { flex: 1; text-align: center; padding: 14px 10px; border-radius: 18px; border: 2px solid rgba(250,247,240,.2); font: 700 24px Bricolage, sans-serif; opacity: 0; }
+  #turn { position: absolute; left: 60px; top: 60px; background: var(--pink); color: var(--tinta); font: 800 34px Bricolage, sans-serif; padding: 10px 22px 12px; border-radius: 16px; opacity: 0; transform: rotate(-4deg); }
+  /* ---------- narradora e marca ---------- */
+  #narr { position: absolute; left: 34px; bottom: 30px; display: flex; align-items: center; gap: 12px; opacity: 0; }
+  #narr .av { width: 58px; height: 58px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 3px var(--volt); background: #EDE7DD; }
+  #narr .av img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; }
+  #narr .n { font: 800 18px Bricolage, sans-serif; color: var(--papel); }
+  #narr .s { font: 500 14px system-ui, sans-serif; color: rgba(250,247,240,.65); }
+  #logo { position: absolute; right: 34px; top: 30px; height: 30px; }
+  #mask { position: absolute; inset: 0; pointer-events: none; }
+</style></head>
+<body>
+<div class="scene" id="street">
+  <img id="street-img" src="../../../docs/content/aula-motion/ia-teste/cena-rua.jpg">
+  <div id="sun"></div><canvas id="dust" width="1280" height="720"></canvas><div id="vig"></div>
+  <div id="shade"></div>
+  <div id="title"><div class="k">Aula 1 · Novice</div><div class="t"><span class="w">Oi!</span> <span class="w">Tudo</span> <span class="w">bem?</span></div></div>
+  <div class="bubble" id="b-l02"></div><div class="bubble" id="b-l03"></div><div class="bubble" id="b-l04"></div><div class="bubble" id="b-ask"></div>
+  <div id="turn">Sua vez!</div>
+  <div id="q"><div class="h">O Igor pergunta “How are you?”. O que você responde?</div>
+    <div class="opts"><div class="o">Yes, I am.</div><div class="o">I'm good, thanks!</div><div class="o">I'm 25.</div></div></div>
+</div>
+<div class="scene" id="type">
+  <div id="blobs"><i style="width:520px;height:520px;background:#6B4BFF;left:-60px;top:-40px"></i><i style="width:420px;height:420px;background:#DCFF4A;right:-40px;bottom:-60px;opacity:.5"></i><i style="width:360px;height:360px;background:#FF4F8B;right:260px;top:-120px;opacity:.45"></i></div>
+  <canvas id="grain" width="640" height="360" style="width:1280px;height:720px"></canvas>
+  <div class="big" id="k-how"><span class="w">How</span> <span class="w">are</span> <span class="w">you?</span></div>
+  <div class="lab" id="k-eq">é o nosso</div>
+  <div class="pt2" id="k-tudo"><span class="w">tudo</span> <span class="w">bem?</span></div>
+  <div class="lab" id="k-lab">a resposta mais comum</div>
+  <div id="answer"><span><span class="w">I'm</span> <span class="w">good,</span> <span class="w">thanks!</span></span>
+    <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" fill="#16131F"/><path id="chk" d="M14 27 L23 36 L39 18" fill="none" stroke="#DCFF4A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</div>
+<svg id="mask" width="1280" height="720"><defs><clipPath id="mc"><circle id="mcc" cx="640" cy="360" r="0"/></clipPath></defs>
+  <circle id="ring" cx="640" cy="360" r="0" fill="none" stroke="#DCFF4A" stroke-width="10"/></svg>
+<div id="narr"><div class="av"><img src="../../../apps/mobile/assets/charlotte-bust.png"></div><div><div class="n">Charlotte</div><div class="s">sua tutora</div></div></div>
+<img id="logo" src="../../../branding/logo/queizy-logo-branco.svg">
+<script>
+  const $ = (id) => document.getElementById(id);
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const prog = (t, a, b) => clamp((t - a) / (b - a));
+  const ease = (x) => (x < .5 ? 8 * x ** 4 : 1 - (-2 * x + 2) ** 4 / 2);
+  const out = (x) => 1 - (1 - x) ** 4;
+  const lerp = (a, b, k) => a + (b - a) * k;
+  let D, T = {};
+  const IMG = { w: 1280, h: 723 };
+  const HEAD = { charlotte: [0.361 * 1280, 0.271 * 723], igor: [0.634 * 1280, 0.218 * 723] };
+
+  // poeira de sol (determinística)
+  const motes = Array.from({ length: 60 }, (_, i) => ({ x: (i * 397) % 1280, y: (i * 211) % 720, r: 1 + (i % 3), s: .2 + (i % 5) * .08, p: i }));
+  function dust(t) {
+    const c = $("dust").getContext("2d"); c.clearRect(0, 0, 1280, 720);
+    for (const m of motes) {
+      const x = (m.x + t * 14 * m.s + Math.sin(t * .6 + m.p) * 12) % 1280, y = (m.y - t * 8 * m.s + 720) % 720;
+      c.fillStyle = `rgba(255,236,190,${.18 + .12 * Math.sin(t + m.p)})`; c.beginPath(); c.arc(x, y, m.r, 0, 6.3); c.fill();
+    }
+  }
+  function grain(t) {
+    if (grain.done) return; grain.done = true; const c = $("grain").getContext("2d"), im = c.createImageData(640, 360); let s = 49297;
+    for (let i = 0; i < im.data.length; i += 4) { s = (s * 9301 + 49297) % 233280; const v = (s / 233280) * 255; im.data[i] = im.data[i + 1] = im.data[i + 2] = v; im.data[i + 3] = 255; }
+    c.putImageData(im, 0, 0);
+  }
+
+  function bubbleHTML(who, words, pt) {
+    return `<div class="who">${who}</div><div class="en">${words.map((w) => `<span class="w">${w}</span>`).join(" ")}</div>${pt ? `<div class="pt">${pt}</div>` : ""}`;
+  }
+  window.setup = (d) => {
+    D = d;
+    const L = (id) => D.lines[id];
+    $("b-l02").innerHTML = bubbleHTML("Charlotte", ["Hi,", "Igor!", "How", "are", "you?"], "Oi, Igor! Tudo bem?");
+    $("b-l03").innerHTML = bubbleHTML("Igor", ["I'm", "good,", "thanks!", "And", "you?"], "Tô bem, obrigado! E você?");
+    $("b-l04").innerHTML = bubbleHTML("Charlotte", ["I'm", "great!"], "Tô ótima!");
+    $("b-ask").innerHTML = bubbleHTML("Igor", ["How", "are", "you?"], "");
+    T = D.T;
+  };
+  // tempo em que a palavra i da fala id é dita
+  const wt = (id, i) => D.lines[id].start + D.words[id][Math.min(i, D.words[id].length - 1)].start;
+  const wend = (id, i) => D.lines[id].start + D.words[id][Math.min(i, D.words[id].length - 1)].end;
+
+  function cam(t) {
+    // câmera do quadrinho: plano geral, entra na Charlotte, passa para o Igor, volta para os dois
+    const keys = [
+      [0, { x: 640, y: 380, s: 1.04 }],
+      [D.lines.l02.start - .5, { x: 520, y: 330, s: 1.38 }],
+      [D.lines.l03.start - .35, { x: 840, y: 300, s: 1.38 }],
+      [D.lines.l04.start - .3, { x: 640, y: 330, s: 1.16 }],
+      [T.toStreet, { x: 860, y: 280, s: 1.55 }],
+    ];
+    let c = keys[0][1];
+    for (let i = 1; i < keys.length; i++) {
+      const [at, v] = keys[i]; const k = ease(prog(t, at, at + 1.0));
+      if (t >= at) c = { x: lerp(c.x, v.x, k), y: lerp(c.y, v.y, k), s: lerp(c.s, v.s, k) };
+    }
+    c.s *= 1 + .012 * Math.sin(t * .35); // respiro de câmera, lento
+    return c;
+  }
+  const scr = (c, x, y) => ({ x: (x - c.x) * c.s + 640, y: (y - c.y) * c.s + 360 });
+
+  function bubble(el, t, a, b, words, anchor, c, place = "above") {
+    const vis = prog(t, a - .15, a + .15) * (1 - prog(t, b, b + .25));
+    el.style.opacity = vis; if (vis <= 0) return;
+    const p = scr(c, anchor[0], anchor[1]);
+    const w = el.offsetWidth, h = el.offsetHeight;
+    const left = clamp(p.x - w / 2, 30, 1250 - w);
+    el.style.left = left + "px"; el.style.top = Math.min(720 - h - 24, p.y + 92 * c.s) + "px";
+    el.style.setProperty("--tx", clamp(p.x - left, 40, w - 40) + "px");
+    el.style.transform = `translateY(${(1 - out(prog(t, a - .15, a + .25))) * -12}px)`;
+    el.querySelectorAll(".en .w").forEach((s, i) => {
+      const k = out(prog(t, words[i] - .06, words[i] + .22));
+      s.style.opacity = .12 + .88 * k; s.style.transform = `translateY(${(1 - k) * 10}px)`;
+    });
+    const pt = el.querySelector(".pt"); if (pt) pt.style.opacity = out(prog(t, words[words.length - 1], words[words.length - 1] + .4));
+  }
+
+  function maskTo(t, at, origin) { // máscara circular com borda Volt; devolve progresso 0..1
+    const k = ease(prog(t, at, at + .7)), R = 1500 * k;
+    $("mcc").setAttribute("cx", origin[0]); $("mcc").setAttribute("cy", origin[1]); $("mcc").setAttribute("r", R);
+    $("ring").setAttribute("cx", origin[0]); $("ring").setAttribute("cy", origin[1]); $("ring").setAttribute("r", R);
+    $("ring").setAttribute("opacity", k > 0 && k < 1 ? 1 : 0);
+    return k;
+  }
+
+  window.seek = (t) => {
+    const L = D.lines;
+    // ---- quem aparece ----
+    const kType = maskTo(t, T.toType, [640, 360]);
+    const backT = T.toStreet;
+    let showType = t >= T.toType && t < backT, kBack = 0;
+    if (t >= backT) { kBack = maskTo(t, backT, [860, 260]); }
+    $("type").style.clipPath = t < T.toType ? "circle(0px at 640px 360px)" : t < backT ? `circle(${1500 * kType}px at 640px 360px)` : `circle(${1500 * (1 - 0)}px at 640px 360px)`;
+    $("type").style.display = t >= T.toType && (t < backT + .8) ? "block" : "none";
+    $("street").style.clipPath = t >= backT ? `circle(${1500 * kBack}px at 860px 260px)` : "none";
+    $("street").style.zIndex = t >= backT ? 2 : 0; $("type").style.zIndex = 1;
+    if (t < backT && t >= T.toType + .7) $("street").style.visibility = "hidden"; else $("street").style.visibility = "visible";
+
+    // ---- rua ----
+    const c = cam(t);
+    $("street-img").style.transform = `translate(${640 - c.x * c.s}px, ${360 - c.y * c.s}px) scale(${c.s})`;
+    $("sun").style.opacity = .7 + .3 * Math.sin(t * .5);
+    dust(t);
+    const titleOut = prog(t, 1.9, 2.4);
+    $("shade").style.opacity = .55 * (1 - ease(prog(t, 1.8, 2.6))) + .0;
+    $("title").style.opacity = 1 - titleOut; $("title").style.transform = `translateY(${-titleOut * 20}px)`;
+    $("title").querySelectorAll(".t .w").forEach((s, i) => { const k = out(prog(t, .3 + i * .18, .75 + i * .18)); s.style.opacity = k; s.style.transform = `translateY(${(1 - k) * 40}px)`; });
+    $("title").querySelector(".k").style.opacity = out(prog(t, .1, .5));
+    const words = (id, n) => Array.from({ length: n }, (_, i) => wt(id, i));
+    bubble($("b-l02"), t, L.l02.start, L.l02.end + .35, words("l02", 5), HEAD.charlotte, c);
+    bubble($("b-l03"), t, L.l03.start, L.l03.end + .3, words("l03", 5), HEAD.igor, c);
+    bubble($("b-l04"), t, L.l04.start, T.toType - .1, words("l04", 2), HEAD.charlotte, c);
+    // volta: "Sua vez!", o Igor pergunta, a pergunta aparece
+    const l6 = (i) => wt("l06", i);
+    bubble($("b-ask"), t, l6(5), 1e9, [l6(5), l6(6), l6(7)], HEAD.igor, c);
+    const tn = out(prog(t, l6(0), l6(0) + .3));
+    $("turn").style.opacity = t >= backT ? tn : 0; $("turn").style.transform = `rotate(-4deg) translateY(${(1 - tn) * -16}px)`;
+    const qk = out(prog(t, l6(8) - .1, l6(8) + .4));
+    $("q").style.opacity = qk; $("q").style.transform = `translateX(-50%) translateY(${(1 - qk) * 30}px)`;
+    $("q").querySelectorAll(".o").forEach((o, i) => { const k = out(prog(t, l6(9) + i * .12, l6(9) + .35 + i * .12)); o.style.opacity = k; o.style.transform = `translateY(${(1 - k) * 12}px)`; });
+
+    // ---- tipografia (explicação em narração) ----
+    if (t >= T.toType - .1 && t < backT + .8) {
+      grain(t);
+      $("blobs").style.transform = `translate(${Math.sin(t * .3) * 40}px, ${Math.cos(t * .25) * 30}px) rotate(${t * 2}deg)`;
+      const lift = ease(prog(t, wt("l05", 9) - .2, wt("l05", 9) + .5)); // sobe tudo quando vem a resposta
+      const how = $("k-how"); how.style.left = "640px"; how.style.top = (250 - lift * 110) + "px";
+      how.style.transform = `translateX(-50%) scale(${1 - .25 * lift})`;
+      how.querySelectorAll(".w").forEach((s, i) => { const k = out(prog(t, wt("l05", i) - .05, wt("l05", i) + .25)); s.style.opacity = k; s.style.transform = `translateY(${(1 - k) * 36}px)`; s.style.color = k > .99 && t > wend("l05", 2) ? "#DCFF4A" : "#FAF7F0"; });
+      const eq = $("k-eq"); const eqk = out(prog(t, wt("l05", 3), wt("l05", 5) + .2)); eq.style.left = "640px"; eq.style.top = (372 - lift * 128) + "px";
+      eq.style.opacity = eqk * (1 - .4 * lift); eq.style.transform = `translateX(-50%) translateY(${(1 - eqk) * 10}px) scale(${1 - .2 * lift})`;
+      const tudo = $("k-tudo"); tudo.style.left = "640px"; tudo.style.top = (414 - lift * 150) + "px"; tudo.style.transform = `translateX(-50%) scale(${1 - .3 * lift})`;
+      tudo.querySelectorAll(".w").forEach((s, i) => { const k = out(prog(t, wt("l05", 6 + i) - .05, wt("l05", 6 + i) + .25)); s.style.opacity = k; s.style.transform = `translateY(${(1 - k) * 28}px)`; });
+      const lab = $("k-lab"); const lk = out(prog(t, wt("l05", 10), wt("l05", 12))); lab.style.left = "640px"; lab.style.top = "405px"; lab.style.opacity = lk; lab.style.transform = `translateX(-50%) translateY(${(1 - lk) * 14}px)`;
+      const ans = $("answer"); const ak = out(prog(t, wt("l05", 14) - .25, wt("l05", 14) + .2));
+      ans.style.opacity = ak; ans.style.transform = `translateX(-50%) translateY(${(1 - ak) * 30}px)`;
+      ans.querySelectorAll(".w").forEach((s, i) => { const k = out(prog(t, wt("l05", 14 + i) - .05, wt("l05", 14 + i) + .22)); s.style.opacity = .15 + .85 * k; });
+      const ck = ease(prog(t, wend("l05", 16), wend("l05", 16) + .45)); $("chk").style.strokeDasharray = 40; $("chk").style.strokeDashoffset = 40 * (1 - ck);
+    }
+
+    // ---- narradora: aparece quando a Charlotte explica (não no diálogo) ----
+    const narr = (t >= L.l05.start - .3 && t < L.l05.end + .3) || (t >= L.l06.start - .3);
+    const nk = Math.max(prog(t, L.l05.start - .4, L.l05.start) * (1 - prog(t, L.l05.end + .2, L.l05.end + .5)), prog(t, L.l06.start - .4, L.l06.start));
+    $("narr").style.opacity = nk; $("narr").style.transform = `translateY(${(1 - out(nk)) * 12}px)`;
+  };
+</script>
+</body></html>
