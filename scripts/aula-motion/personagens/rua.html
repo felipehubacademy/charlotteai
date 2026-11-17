@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: "Bricolage"; font-weight: 700; src: url("../../../apps/mobile/assets/fonts/BricolageGrotesque96pt-Bold.ttf"); }
+  @font-face { font-family: "Bricolage"; font-weight: 800; src: url("../../../apps/mobile/assets/fonts/BricolageGrotesque96pt-ExtraBold.ttf"); }
+  html, body { margin: 0; width: 720px; height: 1280px; overflow: hidden; background: #EFEAFF; }
+  svg#w { position: absolute; inset: 0; }
+  #hud { position: absolute; left: 32px; right: 32px; top: 40px; display: flex; justify-content: space-between; align-items: center; }
+  #hud img { height: 32px; }
+  #hud .tag { font: 800 18px Bricolage, sans-serif; color: #16131F; background: #DCFF4A; padding: 8px 14px; border-radius: 999px; letter-spacing: .02em; }
+  .bubble { position: absolute; max-width: 540px; background: #fff; border-radius: 28px; padding: 18px 24px 20px; box-shadow: 0 14px 34px rgba(22,19,31,.16);
+            transform-origin: var(--tx) 100%; }
+  .bubble::after { content: ""; position: absolute; left: calc(var(--tx) - 14px); bottom: -16px; border: 16px solid transparent; border-bottom: 0; border-top-color: #fff; }
+  .bubble .who { font: 800 17px Bricolage, sans-serif; color: #6B4BFF; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+  .bubble .txt { font: 800 40px/1.12 Bricolage, sans-serif; color: #16131F; letter-spacing: -.01em; }
+  .bubble .txt.pt { font: 600 30px/1.3 system-ui, sans-serif; letter-spacing: 0; }
+  .bubble .tr { font: 500 24px/1.3 system-ui, sans-serif; color: #6A6478; margin-top: 6px; }
+  .bubble .w { display: inline-block; }
+  mark { background: linear-gradient(#DCFF4A, #DCFF4A) no-repeat 0 85% / calc(var(--p, 1) * 100%) 60%; color: inherit; padding: 0 4px; margin: 0 -4px; border-radius: 5px; }
+</style></head>
+<body>
+<svg id="w" viewBox="0 0 720 1280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E4DCFF"/><stop offset="1" stop-color="#F6F2FF"/></linearGradient>
+  </defs>
+  <rect width="720" height="1280" fill="url(#sky)"/>
+  <g id="far"></g>
+  <g id="near"></g>
+  <g id="chars"><g id="igor"></g><g id="charlotte"></g></g>
+</svg>
+<div id="hud"><img src="../../../branding/logo/queizy-logo-preto.svg"><span class="tag">Aula 1 · Novice</span></div>
+<div id="bubbles"></div>
+<script src="bonecos.js"></script>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const prog = (t, a, b) => clamp((t - a) / (b - a));
+  const ease = (x) => (x < .5 ? 8 * x ** 4 : 1 - (-2 * x + 2) ** 4 / 2);
+  const easeOut = (x) => 1 - (1 - x) ** 4;
+  const lerp = (a, b, k) => a + (b - a) * k;
+
+  // ---------- cenário: rua com fachadas (camada de trás anda menos que a da frente) ----------
+  function win(x, y, w, h, c = "#FAF7F0") { return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${c}"/>`; }
+  function building(x, w, top, color, rows, cols, warm) {
+    let s = `<rect x="${x}" y="${top}" width="${w}" height="${1100 - top}" fill="${color}"/>`;
+    s += `<rect x="${x - 6}" y="${top - 14}" width="${w + 12}" height="18" rx="4" fill="${color}" opacity=".85"/>`;
+    const gw = (w - 40) / cols;
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+      const lit = warm && (r + c) % 3 === 1;
+      s += win(x + 20 + c * gw + 8, top + 34 + r * 96, gw - 16, 62, lit ? "#FFF6C9" : "rgba(250,247,240,.9)");
+    }
+    return s;
+  }
+  $("far").innerHTML =
+    building(-120, 260, 300, "#B9A8FF", 6, 3) + building(140, 220, 380, "#A28CFF", 5, 2) + building(360, 280, 250, "#B9A8FF", 7, 3) + building(640, 260, 340, "#A28CFF", 6, 3);
+  // fachada do café e calçada (camada da frente)
+  const stripes = Array.from({ length: 12 }, (_, i) => `<path d="M${-40 + i * 66},640 h66 v58 q-33,26 -66,0 z" fill="${i % 2 ? "#16131F" : "#DCFF4A"}"/>`).join("");
+  $("near").innerHTML = `
+    <rect x="-200" y="560" width="1200" height="560" fill="#6B4BFF"/>
+    <rect x="-200" y="560" width="1200" height="22" fill="#5537E8"/>
+    <rect x="60" y="590" width="300" height="40" rx="8" fill="#16131F"/>
+    <text x="210" y="619" text-anchor="middle" font-family="Bricolage, sans-serif" font-weight="800" font-size="26" fill="#DCFF4A" letter-spacing="4">COFFEE</text>
+    ${stripes}
+    <rect x="-80" y="740" width="420" height="300" rx="18" fill="#2A2246"/>
+    <rect x="-64" y="756" width="388" height="268" rx="12" fill="#3A2F63"/>
+    <path d="M-40 790 L120 790 M-40 840 L60 840" stroke="rgba(250,247,240,.25)" stroke-width="10" stroke-linecap="round"/>
+    <rect x="420" y="740" width="150" height="300" rx="14" fill="#16131F"/>
+    <circle cx="545" cy="895" r="7" fill="#DCFF4A"/>
+    <rect x="610" y="740" width="320" height="300" rx="18" fill="#2A2246"/>
+    <rect x="626" y="756" width="300" height="268" rx="12" fill="#3A2F63"/>
+    <g transform="translate(395 1010)"><rect x="-30" y="-60" width="60" height="62" rx="10" fill="#FF4F8B"/>
+      <circle cx="-14" cy="-80" r="26" fill="#2BD97C"/><circle cx="14" cy="-92" r="30" fill="#22C06C"/><circle cx="0" cy="-70" r="22" fill="#2BD97C"/></g>
+    <rect x="-200" y="1040" width="1200" height="260" fill="#E8E1D3"/>
+    <rect x="-200" y="1040" width="1200" height="12" fill="#D6CDBB"/>
+    ${Array.from({ length: 12 }, (_, i) => `<path d="M${-120 + i * 110} 1052 l-30 240" stroke="#DCD3C2" stroke-width="4"/>`).join("")}
+    <g transform="translate(700 0)"><rect x="-9" y="380" width="18" height="680" rx="9" fill="#16131F"/>
+      <path d="M0 400 q0 -40 -50 -40" stroke="#16131F" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <path d="M-78 360 h56 l-8 26 h-40 z" fill="#16131F"/><ellipse cx="-50" cy="392" rx="18" ry="6" fill="#FFF6C9"/></g>`;
+
+  // ---------- personagens ----------
+  const char = new Boneco($("charlotte"), "charlotte");
+  const igor = new Boneco($("igor"), "igor");
+  const POS = { charlotte: { x: 225, y: 1335, s: 1.3 }, igor: { x: 505, y: 1345, s: 1.28 } };
+
+  let D;
+  window.setup = (d) => { D = d; buildBubbles(); };
+
+  function ampAt(sp, t, avg = 0) {
+    if (avg) { let s = 0, n = 0; for (let d = -avg; d <= avg; d += 1 / 30) { s += ampAt(sp, t + d); n++; } return s / n; }
+    for (const l of D.lines) {
+      if (l.speaker !== sp || t < l.start || t >= l.end) continue;
+      const a = D.amp[l.id]; const i = (t - l.start) * D.fps; const k = Math.floor(i);
+      return lerp(a[Math.min(a.length - 1, k)] ?? 0, a[Math.min(a.length - 1, k + 1)] ?? 0, i - k);
+    }
+    return 0;
+  }
+
+  // ---------- câmera: perto da Charlotte quando ela fala com o aluno; plano dos dois no diálogo ----------
+  function camAt(t) {
+    const close = { cx: 235, cy: 850, s: 1.3 }, wide = { cx: 360, cy: 760, s: 1 };
+    const k = ease(prog(t, D.igorIn, D.igorIn + 1.1));
+    let c = { cx: lerp(close.cx, wide.cx, k), cy: lerp(close.cy, wide.cy, k), s: lerp(close.s, wide.s, k) };
+    c.s *= 1 + 0.03 * prog(t, 0, D.igorIn); // aproximação lenta na abertura
+    // no diálogo, a câmera anda um pouco até quem fala
+    let lean = 0;
+    for (const l of D.lines) if (l.start > D.igorIn) {
+      const target = l.speaker === "charlotte" ? -1 : 1;
+      const x = ease(prog(t, l.start - .3, l.start + .4));
+      if (t >= l.start - .3) lean = lerp(lean, target, x);
+    }
+    c.cx += lean * 22 * k; c.s *= 1 + .035 * Math.abs(lean) * k;
+    return c;
+  }
+  const toScreen = (c, x, y, par = 1) => ({ x: (x - c.cx) * c.s * par + 360 + (1 - par) * 0, y: (y - c.cy) * c.s * par + 640 });
+  function place(el, c, x, y, s, par = 1) {
+    const p = toScreen(c, x, y, par);
+    el.setAttribute("transform", `translate(${p.x.toFixed(2)} ${p.y.toFixed(2)}) scale(${(s * c.s).toFixed(4)})`);
+  }
+
+  // ---------- balões ----------
+  function rich(text) { return text.replace(/\{([^}]+)\}/g, "<mark>$1</mark>"); }
+  function buildBubbles() {
+    $("bubbles").innerHTML = D.lines.map((l) => {
+      const en = l.lang === "en";
+      return `<div class="bubble" id="b-${l.id}"><div class="who">${l.speaker === "igor" ? "Igor" : "Charlotte"}</div>
+        <div class="txt ${en ? "" : "pt"}">${rich(l.text)}</div>${en && l.pt ? `<div class="tr">${l.pt}</div>` : ""}</div>`;
+    }).join("");
+  }
+  function bubbles(t, c) {
+    for (const l of D.lines) {
+      const el = $("b-" + l.id);
+      const vis = prog(t, l.start - .1, l.start + .15) * (1 - prog(t, l.end + .05, l.end + .2));
+      el.style.opacity = vis;
+      if (vis <= 0) continue;
+      const P = POS[l.speaker], who = l.speaker === "igor" ? igorX(t) : P.x;
+      const head = toScreen(c, who, P.y - 470 * P.s);
+      const w = el.offsetWidth, h = el.offsetHeight;
+      const left = clamp(head.x - w / 2, 24, 720 - 24 - w);
+      el.style.left = left + "px";
+      el.style.top = Math.max(110, head.y - h - 20) + "px";
+      el.style.setProperty("--tx", clamp(head.x - left, 40, w - 40) + "px");
+      el.style.transform = `translateY(${(1 - easeOut(prog(t, l.start - .15, l.start + .25))) * 18}px)`;
+    }
+  }
+  const igorX = (t) => lerp(900, POS.igor.x, easeOut(prog(t, D.igorIn + .1, D.igorIn + 1.1)));
+
+  window.seek = (t) => {
+    const c = camAt(t);
+    $("far").setAttribute("transform", `translate(${((360 - c.cx) * .35).toFixed(2)} ${((640 - c.cy) * .25).toFixed(2)})`);
+    $("near").setAttribute("transform", `translate(360 640) scale(${c.s}) translate(${-c.cx} ${-c.cy})`);
+    place($("charlotte"), c, POS.charlotte.x, POS.charlotte.y, POS.charlotte.s);
+    place($("igor"), c, igorX(t), POS.igor.y, POS.igor.s);
+    $("charlotte").style.opacity = easeOut(prog(t, 0, .5));
+
+    const lineOf = (id) => D.lines.find((l) => l.id === id);
+    // aceno da Charlotte: no "Oi!" (para o aluno) e no "Hi, Igor!"
+    let waveArm = null;
+    for (const [id, len] of [["l01", 1.5], ["l02", 1.4]]) {
+      const l = lineOf(id); if (!l) continue;
+      const a = l.start - .25, up = ease(prog(t, a, a + .45)) * (1 - ease(prog(t, a + len, a + len + .5)));
+      if (up > 0) waveArm = lerp(10, 158, up) + Math.sin((t - a) * Math.PI * 3.2) * 11 * up;
+    }
+    const charTalking = ampAt("charlotte", t, .3), igorTalking = ampAt("igor", t, .3);
+    const igorSpeaks = D.lines.some((l) => l.speaker === "igor" && t >= l.start - .2 && t < l.end + .2);
+    const dialog = t > D.igorIn + .6;
+    char.update({ t, amp: ampAt("charlotte", t), talkAvg: charTalking, look: dialog ? .9 : 0, arms: waveArm != null ? { L: waveArm } : {} });
+    const igorArm = igorSpeaks ? { R: lerp(-8, -38, ease(prog(t, lineOf("l03").start - .2, lineOf("l03").start + .3)) * (1 - ease(prog(t, lineOf("l03").end, lineOf("l03").end + .5)))) } : {};
+    igor.update({ t, amp: ampAt("igor", t), talkAvg: igorTalking, look: -.9, arms: igorArm });
+    bubbles(t, c);
+  };
+</script>
+</body></html>
