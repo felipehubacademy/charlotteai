@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: "Bricolage"; font-weight: 800; src: url("../../../apps/mobile/assets/fonts/BricolageGrotesque96pt-ExtraBold.ttf"); }
+  body { margin: 0; width: 1600px; background: #FAF7F0; font-family: system-ui, sans-serif; color: #16131F; }
+  h1 { font-family: Bricolage, sans-serif; font-size: 44px; margin: 36px 48px 4px; letter-spacing: -.02em; }
+  p.sub { margin: 0 48px 18px; color: #5a5566; font-size: 18px; }
+  .row { display: flex; gap: 8px; padding: 0 32px; align-items: flex-end; }
+  .cell { text-align: center; font-size: 16px; color: #5a5566; }
+  .cell svg { display: block; }
+  .full svg { width: 300px; height: 600px; }
+  .face svg { width: 200px; height: 220px; overflow: hidden; margin-bottom: 6px; }
+  .ref img { height: 600px; }
+</style></head>
+<body>
+<h1>Charlotte em motion · folha de modelo</h1>
+<p class="sub">Boneco em peças para as aulas animadas. À esquerda, a referência do app.</p>
+<div class="row" id="full"></div>
+<div class="row" id="faces" style="margin-top:18px; padding-bottom:36px"></div>
+<script src="charlotte.js"></script>
+<script>
+  const full = [
+    ["Neutra", {}],
+    ["Acena", { armR: { s: -142, e: -22, w: -8 }, handR: "open", mouth: .5, brow: .5 }],
+    ["Aponta", { armL: { s: 78, e: 8, w: -6 }, handL: "point", head: -3, gaze: [-1, 0] }],
+    ["Apresenta", { armL: { s: 16, e: 46, w: 18 }, handL: "open", mouth: .35, head: 2.5 }],
+  ];
+  const faces = [
+    ["Boca fechada", { mouth: 0 }], ["Meio aberta", { mouth: .35 }], ["Aberta", { mouth: .75 }], ["Bem aberta", { mouth: 1 }],
+    ["Piscando", { blink: 1 }], ["Surpresa", { brow: 1, mouth: .55 }], ["Olha para o lado", { gaze: [1, -.2], head: 4 }],
+  ];
+  const ref = document.createElement("div"); ref.className = "cell ref";
+  ref.innerHTML = `<img src="../../../apps/mobile/assets/charlotte-pointing-left.png"><div>Referência 3D</div>`;
+  document.getElementById("full").append(ref);
+  for (const [label, st] of full) {
+    const d = document.createElement("div"); d.className = "cell full";
+    d.innerHTML = Charlotte.svg() + `<div>${label}</div>`; Charlotte.apply(d, st);
+    document.getElementById("full").append(d);
+  }
+  for (const [label, st] of faces) {
+    const d = document.createElement("div"); d.className = "cell face";
+    d.innerHTML = Charlotte.svg() + `<div>${label}</div>`; Charlotte.apply(d, st);
+    d.querySelector("svg").setAttribute("viewBox", "190 130 220 250");
+    document.getElementById("faces").append(d);
+  }
+</script>
+</body></html>
