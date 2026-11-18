@@ -789,7 +789,7 @@ export default function HomeTab() {
         {/* Degustação sem nenhuma atividade concluída (passada a 1ª meia hora): a ligação como alternativa. */}
         {isTaster && tasterDone === 0 && !!profile?.created_at && Date.now() - new Date(profile.created_at).getTime() > 30 * 60000 && <TasteCallCard />}
         {/* Faltou ontem e a proteção da semana segurou: avisa e pede a prática de hoje. */}
-        {protectedYesterday(streakStatus) && !streakStatus!.practiced_today && <StreakProtectedCard streak={streakStatus!.streak} />}
+        {protectedYesterday(streakStatus) && !streakStatus!.practiced_today && <StreakProtectedCard streak={streakStatus!.streak} protectedDay={streakStatus!.protected_day!} />}
         {/* Palavras do Vocabulário vencidas (3 ou mais): revisão rápida direto daqui. */}
         {!isTaster && <VocabReviewCard userId={userId} />}
         {/* Degustação com o tópico grátis de hoje feito (4 atividades por tópico) e mais dias pela frente: volte amanhã. */}

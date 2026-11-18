@@ -29,6 +29,8 @@ export type AnalyticsEvent =
   | 'streak_celebration_shown'
   | 'streak_week_opened'
   | 'vocab_review_card_tap'
+  | 'vocab_review_card_dismiss'
+  | 'streak_protected_card_dismiss'
   | 'call_vocab_shown'
   | 'call_vocab_saved'
   | 'streak_challenge_accepted'
