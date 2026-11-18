@@ -64,3 +64,8 @@ export async function POST(req: NextRequest) {
   }
   return NextResponse.json({ sent, alerts: report.alerts.length, reports: reports.length });
 }
+
+// Vercel Cron chama por GET com Authorization: Bearer CRON_SECRET (o agendamento do GitHub atrasava horas).
+export async function GET(req: NextRequest) {
+  return POST(req);
+}

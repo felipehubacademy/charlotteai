@@ -1,9 +1,7 @@
 name: "Alerta - onde os alunos travaram (24h)"
 
 on:
-  schedule:
-    # Todo dia às 11h UTC (8h em Brasília). Só manda e-mail quando há alerta (lib/learn-stuck).
-    - cron: '0 11 * * *'
+  # Agendamento passou para o Vercel Cron (apps/web/vercel.json): o do GitHub atrasava de 5 a 10 horas.
   workflow_dispatch: # permite rodar manualmente
 
 jobs:

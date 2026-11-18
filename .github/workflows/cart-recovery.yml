@@ -1,9 +1,7 @@
 name: Carrinho abandonado (assinatura pelo site)
 
 on:
-  schedule:
-    # De hora em hora, no minuto 15. Cada lembrete sai uma vez por checkout (lib/cart-recovery).
-    - cron: '15 * * * *'
+  # Agendamento passou para o Vercel Cron (apps/web/vercel.json): o do GitHub atrasava de 5 a 10 horas.
   workflow_dispatch: # permite rodar manualmente
 
 jobs:

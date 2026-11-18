@@ -108,6 +108,14 @@
     {
       "path": "/api/cron/rc-reconcile",
       "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/cron/learn-alerts",
+      "schedule": "0 11 * * *"
+    },
+    {
+      "path": "/api/cron/cart-recovery",
+      "schedule": "15 * * * *"
     }
   ],
   "ignoreCommand": "sh scripts/vercel-ignore.sh"

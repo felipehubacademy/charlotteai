@@ -20,3 +20,8 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
   return NextResponse.json(await runCartRecovery({ dryRun: body?.dryRun === true, onlyEmail: typeof body?.onlyEmail === 'string' ? body.onlyEmail : null }));
 }
+
+// Vercel Cron chama por GET com Authorization: Bearer CRON_SECRET (o agendamento do GitHub atrasava horas).
+export async function GET(req: NextRequest) {
+  return POST(req);
+}
