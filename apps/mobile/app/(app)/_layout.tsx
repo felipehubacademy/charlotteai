@@ -43,6 +43,7 @@ export default function AppLayout() {
         <Stack.Screen name="learn-grammar" />
         <Stack.Screen name="learn-pronunciation" />
         <Stack.Screen name="learn-session" />
+        <Stack.Screen name="aula" />{/* aula em vídeo do tópico (beta aula_motion) */}
         <Stack.Screen name="change-password" />
         <Stack.Screen name="reminder-time" />
         <Stack.Screen name="placement-test" options={{ animation: 'none' }} />

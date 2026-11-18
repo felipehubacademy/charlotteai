@@ -27,6 +27,7 @@ import { LEVEL_ACCENT } from '@/lib/levelColors';
 import { extraTrack, unitImpression } from '@/lib/tracks';
 import { TASTE_DAYS, tasteDayNumber, tasteFreeUnits } from '@/lib/tasteDays';
 import { ImpressionTag } from '@/components/trail/ImpressionTag';
+import { aulaForUnit, aulaLength } from '@/lib/aulas';
 import { LEVEL_ACCENT_BG } from '@/lib/levelColors';
 import type { CharacterId, ImpressionId } from '@/lib/characters';
 
@@ -97,6 +98,8 @@ interface ModuleData {
   avgScore:       number | null; // média dos scores das lessons concluídas
   impression?:    ImpressionId;  // trilha do Igorfina: tópico com imitação (selo no cartão)
   paywall?:       boolean;       // travado só pela degustação: o toque abre a oferta
+  /** Aula em vídeo do tópico (só com a chave beta aula_motion). Fica fora das 4 atividades e da contagem. */
+  aula?:          { id: string; length: string };
 }
 
 // ── Score colors (lógica da marca: abaixo da meta = queizy, passou = crazy) ──
@@ -275,6 +278,46 @@ function LessonRow({
   );
 }
 
+// ── Aula em vídeo (beta aula_motion) ─────────────────────────────────────────
+function AulaRow({ aula, isPt }: { aula: { id: string; length: string }; isPt: boolean }) {
+  return (
+    <TouchableOpacity
+      onPress={() => router.push({ pathname: '/(app)/aula' as any, params: { id: aula.id } })}
+      activeOpacity={0.7}
+      style={{
+        flexDirection: 'row', alignItems: 'center', gap: 12,
+        paddingVertical: 12,
+        borderBottomWidth: 1, borderBottomColor: C.hairline,
+      }}
+    >
+      <View style={{
+        width: 32, height: 32, borderRadius: 10,
+        backgroundColor: C.navy,
+        alignItems: 'center', justifyContent: 'center',
+      }}>
+        <Play size={16} color={NEXT_GREEN} weight="fill" />
+      </View>
+      <View style={{ flex: 1, minWidth: 0 }}>
+        <AppText numberOfLines={1} style={{ fontSize: 14, fontWeight: '600', color: C.navy, lineHeight: 18 }}>
+          {isPt ? 'Aula em vídeo' : 'Video lesson'}
+        </AppText>
+        <AppText style={{ fontSize: 10, fontWeight: '700', color: C.navyLight, letterSpacing: 0.8, marginTop: 2, textTransform: 'uppercase' }}>
+          {`${aula.length} · beta`}
+        </AppText>
+      </View>
+      <View style={{
+        minWidth: 56, paddingHorizontal: 10, paddingVertical: 6, borderRadius: 10,
+        borderWidth: 1, borderColor: C.borderMid,
+        alignItems: 'center', justifyContent: 'center',
+      }}>
+        <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navy }}>
+          {isPt ? 'Assistir' : 'Watch'}
+        </AppText>
+      </View>
+    </TouchableOpacity>
+  );
+}
+
 // ── Module card ───────────────────────────────────────────────────────────────
 function ModuleCard({
   data, accent, expanded, onToggle, onStartLesson, isPt, isCurrentModule, onRef, onLayoutY, host, tagBg,
@@ -379,6 +422,9 @@ function ModuleCard({
           borderTopWidth: 1, borderTopColor: C.border,
           paddingTop: 6,
         }}>
+          {data.aula && (
+            <AulaRow aula={data.aula} isPt={isPt} />
+          )}
           {data.lessons.map((l, i) => (
             <LessonRow
               key={l.key}
@@ -541,12 +587,17 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
         ? scored.reduce((s, l) => s + l.score, 0) / scored.length
         : null;
 
+      // Aula em vídeo do tópico: só para a chave beta, fora das atividades e da contagem.
+      const aulaDef = isPreview ? null
+        : aulaForUnit(profile?.beta_features, String(level), mod.topics[0]._v2ModuleId, mod.topics[0]._v2UnitId);
+      const aula = aulaDef ? { id: aulaDef.id, length: aulaLength(aulaDef) } : undefined;
+
       return {
         idx: mIdx, title: mod.title, lessons: fixed, impression: mod._impression,
-        completedCount, totalCount, pct, state, avgScore, paywall,
+        completedCount, totalCount, pct, state, avgScore, paywall, aula,
       };
     });
-  }, [modules, v2Progress.rows, isPreview, track, isTaster, freeUnits, tasteRank]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [modules, v2Progress.rows, isPreview, track, isTaster, freeUnits, tasteRank, profile?.beta_features, level]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const activeIdx = useMemo(
     () => moduleData.findIndex(m => m.state === 'active'),
