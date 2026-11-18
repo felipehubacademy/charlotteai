@@ -592,7 +592,8 @@ export default function AdminUsersPage() {
                               <a href={`/admin/users/${u.id}`} style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px dashed var(--b3)' }} title="Abrir ficha do aluno">
                                 {u.name ?? <span style={{ color: 'var(--t3)', fontStyle: 'italic' }}>sem nome</span>}
                               </a>
-                              {!u.is_active && <span className="badge badge-err" style={{ marginLeft: 6, verticalAlign: 'middle' }}>Inativo</span>}
+                              {/* Só para quem está sem acesso: institucional entra mesmo com a marca desligada. */}
+                              {!u.is_active && !u.is_institutional && <span className="badge badge-err" style={{ marginLeft: 6, verticalAlign: 'middle' }}>Inativo</span>}
                             </div>
                             <div style={{ fontSize: 11.5, color: 'var(--t3)', fontFamily: 'var(--font-mono)' }}>{u.email}</div>
                           </div>
@@ -809,7 +810,11 @@ export default function AdminUsersPage() {
                     ] as { key: keyof Form; label: string }[]).map(({ key, label }) => (
                       <label key={key} style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer', fontSize: 13.5, color: 'var(--t2)' }}>
                         <div
-                          onClick={() => patchForm(key, !form[key])}
+                          onClick={() => {
+                            patchForm(key, !form[key]);
+                            // Virou institucional: a conta passa a ter acesso, então fica ativa também.
+                            if (key === 'is_institutional' && !form.is_institutional) patchForm('is_active', true);
+                          }}
                           style={{
                             width: 18, height: 18, borderRadius: 4, flexShrink: 0,
                             background: form[key] ? 'var(--accent)' : 'var(--s2)',
