@@ -109,7 +109,11 @@ export default function AulaScreen() {
         if (status === 'readyToPlay') setReady(true);
         if (status === 'error') setFailed(true);
       }),
-      player.addListener('playToEnd', () => { setEnded(true); setPlaying(false); }),
+      player.addListener('playToEnd', () => {
+        setEnded(true); setPlaying(false);
+        // O cartão de fim fica no topo da lista: mostra ele mesmo se o aluno estava lendo a legenda.
+        scrollRef.current?.scrollTo({ y: 0, animated: true });
+      }),
     ];
     return () => subs.forEach(s => s.remove());
   }, [player, aula]);
