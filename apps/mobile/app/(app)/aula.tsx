@@ -7,7 +7,8 @@
 // idioma do aparelho.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { View, ScrollView, TouchableOpacity, ActivityIndicator, Dimensions, Platform, StyleSheet } from 'react-native';
+import { View, ScrollView, TouchableOpacity, ActivityIndicator, Dimensions, Platform, StyleSheet, Animated, Easing } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useLocalSearchParams } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -15,7 +16,7 @@ import { VideoView, useVideoPlayer } from 'expo-video';
 import { Image } from 'expo-image';
 import { createAudioPlayer, setAudioModeAsync, type AudioPlayer } from 'expo-audio';
 import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
-import { ArrowLeft, Play, Pause, Microphone, CheckCircle, ArrowCounterClockwise } from 'phosphor-react-native';
+import { ArrowLeft, Play, Pause, Microphone, CheckCircle, ArrowCounterClockwise, X } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { goBack } from '@/lib/goBack';
 import { systemIsPt } from '@/lib/systemLang';
@@ -29,6 +30,11 @@ const K = {
   bg: '#16131F', card: '#221E2E', line: '#2E2940', text: '#FAF7F0', muted: '#A39EB3',
   volt: '#DCFF4A', pink: '#FF4F8B', green: '#2BD97C', greenText: '#8BF0B9', pinkText: '#FF9BBD',
 };
+
+// Dicas da primeira vez (aparecem uma vez por aparelho, só quando fazem falta).
+const HINT_ANSWER = 'aula_hint_answer_seen';
+const HINT_TRANSCRIPT = 'aula_hint_transcript_seen';
+const NUDGE_MS = 8000;
 
 const norm = (s: string) => s.toLowerCase().replace(/[’']/g, "'").replace(/[^a-z' ]/g, ' ').replace(/\s+/g, ' ').trim();
 const plain = (s: string) => s.replace(/[{}]/g, '');
@@ -110,6 +116,11 @@ export default function AulaScreen() {
   const heardRef = useRef('');
   const scrollRef = useRef<ScrollView>(null);
   const userPaused = useRef(false);
+  // Dicas: a da pausa (se o aluno não fizer nada) e a da legenda (depois da primeira pergunta).
+  const [hintSeen, setHintSeen] = useState<{ answer: boolean; transcript: boolean } | null>(null);
+  const [nudge, setNudge] = useState(false);
+  const [legendaTip, setLegendaTip] = useState(false);
+  const pulse = useRef(new Animated.Value(1)).current;
   const kick = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   const player = useVideoPlayer(aula ? aulaUrl(aula, 'aula.mp4') : null, (p) => {
@@ -184,6 +195,45 @@ export default function AulaScreen() {
     userPaused.current = false;
     player.play();
   };
+
+  useEffect(() => {
+    Promise.all([HINT_ANSWER, HINT_TRANSCRIPT].map(k => SecureStore.getItemAsync(k).catch(() => null)))
+      .then(([a, b]) => setHintSeen({ answer: !!a, transcript: !!b }));
+  }, []);
+  const markSeen = (k: string) => SecureStore.setItemAsync(k, '1').catch(() => {});
+
+  // Pausa sem resposta por alguns segundos: balão no microfone e o botão pulsa (só na primeira vez).
+  const quizId = quiz?.id;
+  const answered = !!(quizId && results[quizId]);
+  useEffect(() => {
+    if (!quizId || answered || !hintSeen || hintSeen.answer) return;
+    const tm = setTimeout(() => {
+      setNudge(true);
+      setHintSeen(h => h && { ...h, answer: true });
+      markSeen(HINT_ANSWER);
+    }, NUDGE_MS);
+    return () => clearTimeout(tm);
+  }, [quizId, answered, hintSeen]);
+  useEffect(() => {
+    if (!nudge || answered || listening) { setNudge(false); pulse.setValue(1); return; }
+    const loop = Animated.loop(Animated.sequence([
+      Animated.timing(pulse, { toValue: 1.12, duration: 550, easing: Easing.inOut(Easing.quad), useNativeDriver: true }),
+      Animated.timing(pulse, { toValue: 1, duration: 550, easing: Easing.inOut(Easing.quad), useNativeDriver: true }),
+    ]));
+    loop.start();
+    return () => loop.stop();
+  }, [nudge, answered, listening, pulse]);
+
+  // Depois da primeira pergunta: dica de que dá para tocar numa fala da legenda (uma vez).
+  const doneCount = Object.keys(results).length;
+  useEffect(() => {
+    if (quiz || doneCount < 1 || !hintSeen || hintSeen.transcript) return;
+    setLegendaTip(true);
+    setHintSeen(h => h && { ...h, transcript: true });
+    markSeen(HINT_TRANSCRIPT);
+    const tm = setTimeout(() => setLegendaTip(false), 10000);
+    return () => clearTimeout(tm);
+  }, [quiz, doneCount, hintSeen]);
 
   // ---------- pergunta ----------
   const resume = useCallback(() => {
@@ -367,6 +417,18 @@ export default function AulaScreen() {
         <AppText style={{ fontSize: 12.5, color: K.muted, fontVariant: ['tabular-nums'] }}>{fmt(now)}</AppText>
       </View>
 
+        {/* Dica da legenda (uma vez) */}
+        {legendaTip && !quiz && (
+          <View style={{ marginHorizontal: 16, marginBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 10, paddingLeft: 14, paddingRight: 10, borderRadius: 14, backgroundColor: K.card, borderWidth: 1.5, borderColor: K.volt }}>
+            <AppText style={{ flex: 1, fontSize: 14, fontWeight: '600', color: K.text, lineHeight: 19 }}>
+              {t('Dica: toque numa fala da legenda para ouvir de novo.', 'Tip: tap a line in the transcript to hear it again.')}
+            </AppText>
+            <TouchableOpacity onPress={() => setLegendaTip(false)} hitSlop={10} accessibilityRole="button" accessibilityLabel={t('Fechar', 'Close')}>
+              <X size={16} color={K.muted} weight="bold" />
+            </TouchableOpacity>
+          </View>
+        )}
+
       <ScrollView ref={scrollRef} contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: insets.bottom + 32, gap: 14 }}>
         {/* Pergunta da pausa */}
         {quiz && (
@@ -378,12 +440,25 @@ export default function AulaScreen() {
             </View>
             <AppText style={{ fontSize: 17, fontWeight: '700', color: K.text, lineHeight: 23 }}>{quiz.question}</AppText>
 
+            {nudge && !res && (
+              <View style={{ alignSelf: 'flex-start', maxWidth: '100%', paddingHorizontal: 12, paddingVertical: 9, borderRadius: 12, backgroundColor: K.volt }}>
+                <AppText style={{ fontSize: 14, fontWeight: '700', color: K.bg, lineHeight: 19 }}>
+                  {ASR_AVAILABLE
+                    ? t('Toque no microfone e fale a resposta em inglês, ou toque numa das opções.', 'Tap the mic and say your answer in English, or tap one of the options.')
+                    : t('Toque numa das opções para responder.', 'Tap one of the options to answer.')}
+                </AppText>
+                {ASR_AVAILABLE ? <View style={{ position: 'absolute', bottom: -6, left: 20, width: 12, height: 12, backgroundColor: K.volt, transform: [{ rotate: '45deg' }] }} /> : null}
+              </View>
+            )}
+
             {ASR_AVAILABLE && !res && (
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                <TouchableOpacity onPress={listen} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={t('Falar a resposta', 'Speak your answer')}
+                <Animated.View style={{ transform: [{ scale: pulse }] }}>
+                <TouchableOpacity onPress={() => { setNudge(false); listen(); }} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={t('Falar a resposta', 'Speak your answer')}
                   style={{ width: 52, height: 52, borderRadius: 26, alignItems: 'center', justifyContent: 'center', backgroundColor: listening ? K.pink : K.volt }}>
                   <Microphone size={24} color={K.bg} weight="fill" />
                 </TouchableOpacity>
+                </Animated.View>
                 <AppText style={{ flex: 1, fontSize: 14, color: heard ? K.text : K.muted, fontStyle: heard ? 'italic' : 'normal' }}>
                   {heard || micMsg || (listening ? t('Ouvindo…', 'Listening…')
                     : quiz.mode === 'speak' ? t('Toque e fale em inglês. Ou toque numa resposta.', 'Tap and speak in English. Or tap an answer.')
@@ -398,7 +473,7 @@ export default function AulaScreen() {
                 const isWrong = !!res && o === res.chosen && !res.ok;
                 return (
                   <TouchableOpacity key={o} disabled={!!res || listening} activeOpacity={0.8}
-                    onPress={() => answer(quiz, o === quiz.answer, o)}
+                    onPress={() => { setNudge(false); answer(quiz, o === quiz.answer, o); }}
                     style={{
                       flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 14, paddingVertical: 13, borderRadius: 14,
                       backgroundColor: isRight ? K.green : K.bg, borderWidth: 2, borderColor: isRight ? K.green : isWrong ? K.pink : K.line,
