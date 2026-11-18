@@ -375,7 +375,9 @@ export default function AulaScreen() {
       {/* Vídeo */}
       <View style={{ width: W, height: videoH, backgroundColor: '#000' }}>
         <VideoView player={player} style={{ width: W, height: videoH }} contentFit="contain" nativeControls={false}
-          allowsFullscreen={false} allowsPictureInPicture={false} />
+          allowsFullscreen={false} allowsPictureInPicture={false}
+          // Sem o reconhecimento de texto do iPhone no vídeo parado (botão de texto e "Translate" por cima da aula).
+          allowsVideoFrameAnalysis={false} />
         {!started && (
           <View style={[StyleSheet.absoluteFillObject, { alignItems: 'center', justifyContent: 'center' }]}>
             <Image source={{ uri: aulaUrl(aula, 'poster.jpg') }} style={{ position: 'absolute', width: W, height: videoH }} contentFit="cover" />
