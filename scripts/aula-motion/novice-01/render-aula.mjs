@@ -2,6 +2,7 @@
 // Aula inteira horizontal (1280x720) no formato sem personagem falando: quadrinho animado + tipografia + pausas.
 //   node scripts/aula-motion/novice-01/render-aula.mjs            # aula.mp4, poster.jpg, legendas.vtt, timings.json, storyboard
 //   node scripts/aula-motion/novice-01/render-aula.mjs --stills   # só o storyboard (rápido)
+//   node scripts/aula-motion/novice-01/render-aula.mjs --audio    # refaz só o som e troca no aula.mp4 existente
 // Usa as vozes guardadas (audio/*.mp3), os tempos das palavras (scripts/aula-motion/palavras.mjs)
 // e as imagens das cenas em cenas/. Não chama nenhuma API.
 import { execFileSync, spawn } from "node:child_process";
@@ -15,7 +16,7 @@ const OUT = join(ROOT, "docs/content/aula-motion/novice-01");
 const CACHE = join(ROOT, "scripts/aula-motion/.cache/aula-h");
 const BOARD = join(OUT, "storyboard");
 mkdirSync(CACHE, { recursive: true });
-const FPS = 30, STILLS = process.argv.includes("--stills");
+const FPS = 30, STILLS = process.argv.includes("--stills"), AUDIO = process.argv.includes("--audio");
 const dur = (f) => Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).toString());
 const run = (args) => execFileSync("ffmpeg", ["-y", "-v", "error", ...args]);
 const aula = JSON.parse(readFileSync(join(OUT, "aula.json"), "utf8"));
@@ -79,24 +80,23 @@ const board = [
   ["09-pausa-2", cps[1].at + .5], ["10-igor-se-apresenta", lines.l10.end + .2], ["11-nice-to-meet-you", lines.l11.end - .2], ["12-see-you-later", lines.l12.end],
   ["13-ate-mais", w("l14", 7) + .5], ["14-pausa-3", cps[2].at + .5], ["15-revisao", lines.l15.end - .3], ["16-final", total - .3],
 ];
-rmSync(BOARD, { recursive: true, force: true }); mkdirSync(BOARD);
+if (!AUDIO) { rmSync(BOARD, { recursive: true, force: true }); mkdirSync(BOARD);
 for (const [name, s] of board) {
   await page.evaluate((x) => window.seek(x), s);
   const png = join(CACHE, `${name}.png`);
   await page.screenshot({ path: png });
   run(["-i", png, "-vf", "scale=480:-1:flags=lanczos", join(BOARD, `${name}.png`)]);
 }
-console.log("storyboard ok:", BOARD);
+console.log("storyboard ok:", BOARD); }
 if (STILLS) { await browser.close(); process.exit(0); }
 
 // ---------- som ----------
 const parts = [];
 const sfx = (name, args) => { const f = join(CACHE, name + ".wav"); run([...args, "-ar", "44100", "-ac", "1", f]); return f; };
-const whoosh = sfx("whoosh", ["-f", "lavfi", "-i", "anoisesrc=color=pink:duration=0.7:seed=7", "-af", "bandpass=f=900:w=1400,afade=t=in:d=0.35:curve=exp,afade=t=out:st=0.35:d=0.35,volume=0.5"]);
+const whoosh = sfx("whoosh", ["-f", "lavfi", "-i", "anoisesrc=color=pink:duration=0.7:seed=7", "-af", "bandpass=f=1100:w=900,afade=t=in:d=0.3:curve=exp,afade=t=out:st=0.3:d=0.4,volume=0.18"]);
 const tick = sfx("tick", ["-f", "lavfi", "-i", "sine=frequency=1320:duration=0.06", "-af", "afade=t=out:st=0.005:d=0.055,volume=0.10"]);
 const pop = sfx("pop", ["-f", "lavfi", "-i", "sine=frequency=520:duration=0.09", "-af", "afade=t=out:st=0.01:d=0.08,volume=0.16"]);
 const chime = sfx("chime", ["-f", "lavfi", "-i", "aevalsrc=0.22*sin(2*PI*880*t)*exp(-7*t)*lt(t\\,0.12)+0.22*sin(2*PI*1320*(t-0.12))*exp(-6*(t-0.12))*gte(t\\,0.12):s=44100:d=0.6"]);
-const amb = sfx("amb", ["-f", "lavfi", "-i", `anoisesrc=color=brown:duration=${total}:seed=3`, "-af", "lowpass=f=500,volume=0.045"]);
 parts.push([whoosh, 1.8]);
 for (const k of ["type1", "street2", "sky", "igor", "type2", "bye", "type3", "igor2", "review", "end"]) parts.push([whoosh, T[k] - .1]);
 // toque a cada palavra destacada da tipografia e "pop" quando entra um cartão
@@ -108,11 +108,17 @@ parts.push([pop, w("l08", 7)], [pop, w("l09", 0)]);
 for (const c of cps) parts.push([pop, c.showAt], [chime, c.at + .15]);
 for (const id of Object.keys(lines)) parts.push([mp3(id), lines[id].start]);
 const mixf = join(CACHE, "mix.wav");
-run(["-i", amb, ...parts.flatMap(([f]) => ["-i", f]), "-filter_complex",
-  "[0:a]anull[b];" + parts.map(([, s], i) => `[${i + 1}:a]aresample=44100,adelay=${Math.round(s * 1000)}:all=1[a${i}]`).join(";") + ";" +
-  "[b]" + parts.map((_, i) => `[a${i}]`).join("") + `amix=inputs=${parts.length + 1}:normalize=0:duration=longest,apad,loudnorm=I=-16:TP=-1.5:LRA=11[o]`,
+// sem ruído de fundo: um "ambiente" de ruído vira chiado de vento depois da normalização
+run([...parts.flatMap(([f]) => ["-i", f]), "-filter_complex",
+  parts.map(([, s], i) => `[${i}:a]aresample=44100,adelay=${Math.round(s * 1000)}:all=1[a${i}]`).join(";") + ";" +
+  parts.map((_, i) => `[a${i}]`).join("") + `amix=inputs=${parts.length}:normalize=0:duration=longest,apad,loudnorm=I=-16:TP=-1.5:LRA=11:linear=true[o]`,
   "-map", "[o]", "-ac", "1", "-ar", "44100", "-t", String(total), mixf]);
 console.log("som ok");
+if (AUDIO) {
+  const cur = join(OUT, "aula.mp4"), tmp = join(CACHE, "aula-novo-som.mp4");
+  run(["-i", cur, "-i", mixf, "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart", "-shortest", tmp]);
+  execFileSync("mv", [tmp, cur]); await browser.close(); console.log("ok (só som):", cur); process.exit(0);
+}
 
 // ---------- vídeo ----------
 const out = join(OUT, "aula.mp4");
