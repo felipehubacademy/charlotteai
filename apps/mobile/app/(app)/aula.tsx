@@ -225,16 +225,16 @@ export default function AulaScreen() {
     return () => loop.stop();
   }, [nudge, answered, listening, pulse]);
 
-  // Depois da primeira pergunta: dica de que dá para tocar numa fala da legenda (uma vez).
-  const doneCount = Object.keys(results).length;
+  // Dica da legenda num momento calmo: quando o aluno pausa o vídeo ou quando a aula termina (uma vez).
+  const calm = !quiz && (ended || (started && !playing && userPaused.current));
   useEffect(() => {
-    if (quiz || doneCount < 1 || !hintSeen || hintSeen.transcript) return;
+    if (!calm || !hintSeen || hintSeen.transcript) return;
     setLegendaTip(true);
     setHintSeen(h => h && { ...h, transcript: true });
     markSeen(HINT_TRANSCRIPT);
-    const tm = setTimeout(() => setLegendaTip(false), 10000);
-    return () => clearTimeout(tm);
-  }, [quiz, doneCount, hintSeen]);
+  }, [calm, hintSeen]);
+  // Some quando o vídeo volta a tocar.
+  useEffect(() => { if (playing) setLegendaTip(false); }, [playing]);
 
   // Pausa aberta: leva a pergunta para o topo depois de desenhar (a rolagem da legenda podia passar por cima).
   useEffect(() => {
