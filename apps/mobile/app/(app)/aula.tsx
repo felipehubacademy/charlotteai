@@ -72,7 +72,9 @@ export default function AulaScreen() {
   resultsRef.current = results;
   const fbPlayer = useRef<AudioPlayer | null>(null);
   const autoNext = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const fbStart = useRef<ReturnType<typeof setTimeout> | null>(null);
   const heardRef = useRef('');
+  const scrollRef = useRef<ScrollView>(null);
 
   const player = useVideoPlayer(aula ? aulaUrl(aula, 'aula.mp4') : null, (p) => {
     p.loop = false;
@@ -94,6 +96,8 @@ export default function AulaScreen() {
             setNow(cp.at);
             setQuiz(cp);
             setHeard(''); setMicMsg('');
+            // A pergunta fica no topo da lista: volta para ela se o aluno estava lendo a legenda.
+            scrollRef.current?.scrollTo({ y: 0, animated: true });
             return;
           }
         }
@@ -113,6 +117,7 @@ export default function AulaScreen() {
   useEffect(() => () => {
     fbPlayer.current?.remove();
     if (autoNext.current) clearTimeout(autoNext.current);
+    if (fbStart.current) clearTimeout(fbStart.current);
     if (ASR_AVAILABLE) try { ExpoSpeechRecognitionModule.abort(); } catch { /* nada */ }
   }, []);
 
@@ -140,6 +145,8 @@ export default function AulaScreen() {
   // ---------- pergunta ----------
   const resume = useCallback(() => {
     if (autoNext.current) { clearTimeout(autoNext.current); autoNext.current = null; }
+    // A correção ainda não começou: cancela, para não tocar por cima do vídeo.
+    if (fbStart.current) { clearTimeout(fbStart.current); fbStart.current = null; }
     fbPlayer.current?.pause();
     setQuiz(null);
     lastT.current = player.currentTime;
@@ -153,6 +160,7 @@ export default function AulaScreen() {
     // Correção falada da Charlotte e, quando termina, a aula segue sozinha.
     try {
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
+      if (quizRef.current?.id !== cp.id) return; // o aluno já continuou a aula
       fbPlayer.current?.remove();
       const p = createAudioPlayer(aulaUrl(aula, `audio/${(ok ? cp.feedback.ok : cp.feedback.no).id}.mp3`));
       fbPlayer.current = p;
@@ -162,7 +170,10 @@ export default function AulaScreen() {
           autoNext.current = setTimeout(() => { if (quizRef.current?.id === cp.id) resume(); }, 900);
         }
       });
-      setTimeout(() => p.play(), 350);
+      fbStart.current = setTimeout(() => {
+        fbStart.current = null;
+        if (quizRef.current?.id === cp.id) p.play();
+      }, 350);
     } catch { /* sem áudio, o botão continua */ }
   }, [aula, resume]);
 
@@ -208,7 +219,6 @@ export default function AulaScreen() {
     const c = aula.cues.find(x => x.id === cur);
     return c && now <= c.end + 0.6 ? c.id : null;
   }, [aula, now]);
-  const scrollRef = useRef<ScrollView>(null);
   const cueY = useRef<Record<string, number>>({});
   const listTop = useRef(0);
   useEffect(() => {
