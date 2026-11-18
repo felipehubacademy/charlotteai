@@ -76,6 +76,8 @@ export default function AulaScreen() {
   const fbStart = useRef<ReturnType<typeof setTimeout> | null>(null);
   const heardRef = useRef('');
   const scrollRef = useRef<ScrollView>(null);
+  const userPaused = useRef(false);
+  const kick = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   const player = useVideoPlayer(aula ? aulaUrl(aula, 'aula.mp4') : null, (p) => {
     p.loop = false;
@@ -123,18 +125,20 @@ export default function AulaScreen() {
     fbPlayer.current?.remove();
     if (autoNext.current) clearTimeout(autoNext.current);
     if (fbStart.current) clearTimeout(fbStart.current);
+    kick.current.forEach(clearTimeout);
     if (ASR_AVAILABLE) try { ExpoSpeechRecognitionModule.abort(); } catch { /* nada */ }
   }, []);
 
   const play = useCallback(() => {
     setStarted(true);
     if (ended) { setEnded(false); player.currentTime = 0; lastT.current = 0; setResults({}); }
+    userPaused.current = false;
     player.play();
   }, [player, ended]);
 
   const toggle = () => {
     if (quiz) return;
-    if (!started || !playing) play(); else player.pause();
+    if (!started || !playing) play(); else { userPaused.current = true; player.pause(); }
   };
 
   const seekTo = (s: number) => {
@@ -144,6 +148,7 @@ export default function AulaScreen() {
     setNow(s);
     setEnded(false);
     setStarted(true);
+    userPaused.current = false;
     player.play();
   };
 
@@ -155,8 +160,16 @@ export default function AulaScreen() {
     fbPlayer.current?.pause();
     setQuiz(null);
     lastT.current = player.currentTime;
+    userPaused.current = false;
     player.play();
-  }, [player]);
+    // No iPhone, o fim do áudio da correção (ou do microfone) pode desligar a sessão de som logo depois do
+    // play e o vídeo para sozinho. Confere e dá play de novo, a menos que o aluno tenha pausado.
+    kick.current.forEach(clearTimeout);
+    kick.current = [500, 1300, 2500].map(ms => setTimeout(() => {
+      if (!quizRef.current && !userPaused.current && !player.playing
+        && player.currentTime < (aula?.duration ?? Infinity) - 0.5) player.play();
+    }, ms));
+  }, [player, aula]);
 
   const answer = useCallback(async (cp: AulaCheckpoint, ok: boolean, chosen?: string, said?: string) => {
     if (!aula || resultsRef.current[cp.id]) return;
@@ -167,7 +180,9 @@ export default function AulaScreen() {
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
       if (quizRef.current?.id !== cp.id) return; // o aluno já continuou a aula
       fbPlayer.current?.remove();
-      const p = createAudioPlayer(aulaUrl(aula, `audio/${(ok ? cp.feedback.ok : cp.feedback.no).id}.mp3`));
+      // keepAudioSessionActive: sem isso, ao terminar ou pausar, a correção desliga a sessão de som do
+      // iPhone e leva o vídeo junto.
+      const p = createAudioPlayer(aulaUrl(aula, `audio/${(ok ? cp.feedback.ok : cp.feedback.no).id}.mp3`), { keepAudioSessionActive: true });
       fbPlayer.current = p;
       const sub = p.addListener('playbackStatusUpdate', (st) => {
         if (st.didJustFinish) {
