@@ -15,6 +15,7 @@ Fase de teste: nada disto está no app. O processo completo está no agente
 | Voz da Charlotte (15 falas + 6 correções) | modelo de áudio barato, 21 chamadas, todas certas na 1ª | US$ 0,043 |
 | Voz do Igorfina (3 falas) | 91 créditos do plano de voz (multilingual v2) | US$ 0,007 no preço de API |
 | Imagens das cenas (3) | gerador de imagem do plano de voz, 1 imagem por cena | 3 do saldo de imagens do plano |
+| Som de rua (loop de 30 s) | efeitos sonoros do plano de voz, gerado uma vez em `sons/`, serve para todas as aulas na rua | 400 créditos (uma vez) |
 | Tempo de cada palavra | transcrição das falas guardadas, uma vez | cerca de US$ 0,01 |
 | Montagem do vídeo | Chromium + ffmpeg locais, ~6 min no Mac | sem custo |
 | **Total** | | **cerca de US$ 0,06, 91 créditos de voz e 3 imagens** |

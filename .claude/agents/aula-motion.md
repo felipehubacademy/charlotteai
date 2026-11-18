@@ -64,6 +64,9 @@ por IA ("movimentos muito ruins"). Aprovou o formato **sem personagem falando**:
 - **Cenas desenhadas em código** quando a ideia é abstrata (ex.: céu que muda de manhã para a noite, relógio 9:00).
 - **Transições** por máscara circular com borda Volt e som de passagem; toque suave em cada palavra da
   tipografia; dois tons na revelação da resposta certa.
+- **Som de ambiente real** (`docs/content/aula-motion/sons/`, gerado uma vez no site de efeitos sonoros do plano
+  de voz, loop de 30 s): inteiro nas cenas com imagem, baixo nas outras, com ducking sob a voz. **Nunca ambiente
+  feito de ruído sintético** (vira chiado de vento depois da normalização). Voz em -16 LUFS por ganho fixo medido.
 - **NUNCA personagem pulsando, pulando ou falando por animação.**
 - Antes de renderizar a aula inteira de um estilo novo, mande 2 ou 3 quadros ao Felipe.
 

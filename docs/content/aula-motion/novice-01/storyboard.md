@@ -16,7 +16,10 @@ Quadros capturados da própria cena (`node scripts/aula-motion/novice-01/render-
   canto como narradora.
 - **Hora do dia desenhada em código**: um céu que muda de manhã para tarde, noite e volta para a manhã.
 - **Transições** por máscara circular com borda Volt e som de passagem. Toque suave em cada palavra da
-  tipografia e dois tons na revelação da resposta certa. Ambiente leve de rua por baixo.
+  tipografia e dois tons na revelação da resposta certa.
+- **Som de rua real** ([`../sons/rua-dia.flac`](../sons/rua-dia.flac)): trânsito, buzinas ao longe e pessoas
+  conversando. Inteiro nas cenas de rua, bem baixo na tipografia e no céu, e abaixa sozinho quando alguém fala.
+  Voz em -16 LUFS; a rua fica cerca de 19 dB abaixo.
 - Paleta Queizy, títulos em Bricolage Grotesque, logo branco no alto (preto no cartão final).
 
 ## Quadros

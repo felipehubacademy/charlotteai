@@ -5,7 +5,7 @@
 //   node scripts/aula-motion/novice-01/render-aula.mjs --audio    # refaz só o som e troca no aula.mp4 existente
 // Usa as vozes guardadas (audio/*.mp3), os tempos das palavras (scripts/aula-motion/palavras.mjs)
 // e as imagens das cenas em cenas/. Não chama nenhuma API.
-import { execFileSync, spawn } from "node:child_process";
+import { execFileSync, spawn, spawnSync } from "node:child_process";
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -96,7 +96,7 @@ const sfx = (name, args) => { const f = join(CACHE, name + ".wav"); run([...args
 const whoosh = sfx("whoosh", ["-f", "lavfi", "-i", "anoisesrc=color=pink:duration=0.7:seed=7", "-af", "bandpass=f=1100:w=900,afade=t=in:d=0.3:curve=exp,afade=t=out:st=0.3:d=0.4,volume=0.18"]);
 const tick = sfx("tick", ["-f", "lavfi", "-i", "sine=frequency=1320:duration=0.06", "-af", "afade=t=out:st=0.005:d=0.055,volume=0.10"]);
 const pop = sfx("pop", ["-f", "lavfi", "-i", "sine=frequency=520:duration=0.09", "-af", "afade=t=out:st=0.01:d=0.08,volume=0.16"]);
-const chime = sfx("chime", ["-f", "lavfi", "-i", "aevalsrc=0.22*sin(2*PI*880*t)*exp(-7*t)*lt(t\\,0.12)+0.22*sin(2*PI*1320*(t-0.12))*exp(-6*(t-0.12))*gte(t\\,0.12):s=44100:d=0.6"]);
+const chime = sfx("chime", ["-f", "lavfi", "-i", "aevalsrc=0.08*sin(2*PI*880*t)*exp(-7*t)*lt(t\\,0.12)+0.08*sin(2*PI*1320*(t-0.12))*exp(-6*(t-0.12))*gte(t\\,0.12):s=44100:d=0.6"]);
 parts.push([whoosh, 1.8]);
 for (const k of ["type1", "street2", "sky", "igor", "type2", "bye", "type3", "igor2", "review", "end"]) parts.push([whoosh, T[k] - .1]);
 // toque a cada palavra destacada da tipografia e "pop" quando entra um cartão
@@ -108,22 +108,41 @@ parts.push([pop, w("l08", 7)], [pop, w("l09", 0)]);
 for (const c of cps) parts.push([pop, c.showAt], [chime, c.at + .15]);
 for (const id of Object.keys(lines)) parts.push([mp3(id), lines[id].start]);
 const mixf = join(CACHE, "mix.wav");
-// sem ruído de fundo: um "ambiente" de ruído vira chiado de vento depois da normalização
-run([...parts.flatMap(([f]) => ["-i", f]), "-filter_complex",
-  parts.map(([, s], i) => `[${i}:a]aresample=44100,adelay=${Math.round(s * 1000)}:all=1[a${i}]`).join(";") + ";" +
-  parts.map((_, i) => `[a${i}]`).join("") + `amix=inputs=${parts.length}:normalize=0:duration=longest,apad,loudnorm=I=-16:TP=-1.5:LRA=11:linear=true[o]`,
-  "-map", "[o]", "-ac", "1", "-ar", "44100", "-t", String(total), mixf]);
+const bus = (out, list, extra = "") => run([...list.flatMap(([f]) => ["-i", f]), "-filter_complex",
+  list.map(([, s], i) => `[${i}:a]aresample=44100,pan=mono|c0=c0,adelay=${Math.round(s * 1000)}:all=1[a${i}]`).join(";") + ";" +
+  list.map((_, i) => `[a${i}]`).join("") + `amix=inputs=${list.length}:normalize=0:duration=longest,apad${extra}[o]`,
+  "-map", "[o]", "-ac", "1", "-ar", "44100", "-t", String(total), out]);
+// 1) vozes + efeitos, levados a -16 LUFS por ganho fixo (medido), sem compressão nos silêncios
+const pre = join(CACHE, "pre.wav"), key = join(CACHE, "key.wav");
+bus(pre, parts);
+bus(key, parts.filter(([f]) => f.endsWith(".mp3")));
+const loud = (() => { const r = spawnSync("ffmpeg", ["-hide_banner", "-i", pre, "-af", "ebur128", "-f", "null", "-"], { encoding: "utf8" }); return Number(r.stderr.match(/I:\s+(-?[\d.]+) LUFS\s*\n\s*Threshold/)[1]); })();
+const gain = (-16 - loud).toFixed(2);
+// 2) som de rua (loop de 30 s, gerado uma vez em docs/content/aula-motion/sons/): inteiro nas cenas de rua,
+//    bem baixo na tipografia e no céu, some no cartão final; abaixa sozinho quando alguém fala.
+const AMB = join(ROOT, "docs/content/aula-motion/sons/rua-dia.flac");
+const BED = 1.0, LOW = 0.14, RAMP = 0.7;
+const ruas = [[0, T.type1], [T.street2, T.sky], [T.igor, T.type2], [T.bye, T.type3], [T.igor2, T.review]];
+const win = ([a, b]) => `min(clip((t-${a.toFixed(2)})/${RAMP},0,1),clip((${(b + RAMP).toFixed(2)}-t)/${RAMP},0,1))`;
+const env = `${BED}*(${LOW}+(1-${LOW})*${ruas.map(win).reduce((x, y) => `max(${x},${y})`)})*clip((${(T.end + 1.2).toFixed(2)}-t)/1.2,0,1)*clip(t/1.2,0,1)`;
+run(["-stream_loop", "-1", "-i", AMB, "-i", pre, "-i", key, "-filter_complex",
+  `[0:a]aresample=44100,atrim=0:${total},asetpts=N/SR/TB,volume='${env}':eval=frame[amb];` +
+  `[2:a]volume=${gain}dB,pan=stereo|c0=c0|c1=c0[k];` +
+  `[amb][k]sidechaincompress=threshold=0.03:ratio=5:attack=60:release=600[duck];` +
+  `[1:a]volume=${gain}dB,pan=stereo|c0=0.7071*c0|c1=0.7071*c0[v];` +
+  `[v][duck]amix=inputs=2:normalize=0:duration=first,alimiter=limit=0.84:level=false[o]`,
+  "-map", "[o]", "-ac", "2", "-ar", "44100", "-t", String(total), mixf]);
 console.log("som ok");
 if (AUDIO) {
   const cur = join(OUT, "aula.mp4"), tmp = join(CACHE, "aula-novo-som.mp4");
-  run(["-i", cur, "-i", mixf, "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart", "-shortest", tmp]);
+  run(["-i", cur, "-i", mixf, "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", "-shortest", tmp]);
   execFileSync("mv", [tmp, cur]); await browser.close(); console.log("ok (só som):", cur); process.exit(0);
 }
 
 // ---------- vídeo ----------
 const out = join(OUT, "aula.mp4");
 const ff = spawn("ffmpeg", ["-y", "-v", "error", "-f", "image2pipe", "-framerate", String(FPS), "-c:v", "mjpeg", "-i", "-", "-i", mixf, "-map", "0:v", "-map", "1:a",
-  "-c:v", "libx264", "-preset", "slow", "-crf", "23", "-pix_fmt", "yuv420p", "-profile:v", "high", "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart", "-shortest", out],
+  "-c:v", "libx264", "-preset", "slow", "-crf", "23", "-pix_fmt", "yuv420p", "-profile:v", "high", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", "-shortest", out],
   { stdio: ["pipe", "inherit", "inherit"] });
 const N = Math.round(total * FPS);
 for (let f = 0; f < N; f++) {
