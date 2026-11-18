@@ -415,7 +415,8 @@ export default function AulaScreen() {
               <TouchableOpacity key={c.id} onPress={() => seekTo(c.start + 0.01)} disabled={!!quiz} activeOpacity={0.7}
                 onLayout={e => { cueY.current[c.id] = e.nativeEvent.layout.y; }}
                 style={{ flexDirection: 'row', gap: 10, paddingVertical: 9, paddingHorizontal: 10, borderRadius: 12, backgroundColor: on ? K.card : 'transparent' }}>
-                <AppText style={{ width: 70, fontSize: 11, fontWeight: '800', letterSpacing: 0.5, textTransform: 'uppercase', color: on ? K.volt : K.muted, paddingTop: 3 }}>
+                <AppText numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.8}
+                  style={{ width: 82, fontSize: 11, fontWeight: '800', letterSpacing: 0.3, textTransform: 'uppercase', color: on ? K.volt : K.muted, paddingTop: 3 }}>
                   {aula.speakers[c.speaker] ?? c.speaker}
                 </AppText>
                 <View style={{ flex: 1, minWidth: 0 }}>
