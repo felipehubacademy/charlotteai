@@ -7,7 +7,7 @@
 // idioma do aparelho.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { View, ScrollView, TouchableOpacity, ActivityIndicator, Dimensions, Platform, StyleSheet, Animated, Easing } from 'react-native';
+import { View, ScrollView, TouchableOpacity, ActivityIndicator, Dimensions, Platform, StyleSheet, Animated, Easing, AppState } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useLocalSearchParams } from 'expo-router';
@@ -117,6 +117,9 @@ export default function AulaScreen() {
   const heardRef = useRef('');
   const scrollRef = useRef<ScrollView>(null);
   const userPaused = useRef(false);
+  const startedRef = useRef(false);
+  const endedRef = useRef(false);
+  const retries = useRef<number[]>([]);
   // Dicas: a da pausa (se o aluno não fizer nada) e a da legenda (depois da primeira pergunta).
   const [hintSeen, setHintSeen] = useState<{ answer: boolean; transcript: boolean } | null>(null);
   const [nudge, setNudge] = useState(false);
@@ -138,6 +141,7 @@ export default function AulaScreen() {
         if (!quizRef.current && player.playing) {
           const cp = aula.checkpoints.find(c => !resultsRef.current[c.id] && lastT.current < c.at && tt >= c.at - 0.12);
           if (cp) {
+            quizRef.current = cp; // antes do pause: a parada é da aula, não um corte do som
             player.pause();
             player.currentTime = cp.at;
             lastT.current = cp.at;
@@ -152,12 +156,26 @@ export default function AulaScreen() {
         lastT.current = tt;
         setNow(tt);
       }),
-      player.addListener('playingChange', ({ isPlaying }) => setPlaying(isPlaying)),
+      player.addListener('playingChange', ({ isPlaying }) => {
+        setPlaying(isPlaying);
+        // No iPhone, outro som do app (o toque de um botão, por exemplo) desliga a sessão de som ao
+        // terminar e o vídeo para sozinho. Se não foi o aluno, nem uma pausa da aula, nem o fim, volta a tocar.
+        if (isPlaying || !startedRef.current || userPaused.current || quizRef.current || endedRef.current) return;
+        if (AppState.currentState !== 'active') return;
+        const nowMs = Date.now();
+        retries.current = retries.current.filter(x => nowMs - x < 10000);
+        if (retries.current.length >= 4) return; // não fica em laço se algo de fato impede o vídeo
+        retries.current.push(nowMs);
+        setTimeout(() => {
+          try { if (!userPaused.current && !quizRef.current && !endedRef.current && !player.playing) player.play(); } catch { /* tela já fechou */ }
+        }, 250);
+      }),
       player.addListener('statusChange', ({ status }) => {
         if (status === 'readyToPlay') setReady(true);
         if (status === 'error') setFailed(true);
       }),
       player.addListener('playToEnd', () => {
+        endedRef.current = true;
         setEnded(true); setPlaying(false);
         // O cartão de fim fica no topo da lista: mostra ele mesmo se o aluno estava lendo a legenda.
         scrollRef.current?.scrollTo({ y: 0, animated: true });
@@ -167,6 +185,7 @@ export default function AulaScreen() {
   }, [player, aula]);
 
   useEffect(() => () => {
+    endedRef.current = true; // saiu da tela: nada de dar play de novo
     fbPlayer.current?.remove();
     if (autoNext.current) clearTimeout(autoNext.current);
     if (fbStart.current) clearTimeout(fbStart.current);
@@ -176,7 +195,9 @@ export default function AulaScreen() {
 
   const play = useCallback(() => {
     setStarted(true);
+    startedRef.current = true;
     if (ended) { setEnded(false); player.currentTime = 0; lastT.current = 0; setResults({}); }
+    endedRef.current = false;
     userPaused.current = false;
     player.play();
   }, [player, ended]);
@@ -192,7 +213,9 @@ export default function AulaScreen() {
     lastT.current = s;
     setNow(s);
     setEnded(false);
+    endedRef.current = false;
     setStarted(true);
+    startedRef.current = true;
     userPaused.current = false;
     player.play();
   };
