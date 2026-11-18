@@ -1,0 +1,240 @@
+{
+ "_fonte": "Gerado de docs/content/aula-motion/novice-01 (aula.json + timings.json). Refez a aula? Gere de novo e publique os arquivos com nova versão (scripts/aula-motion/publicar.mjs).",
+ "id": "novice-01",
+ "version": "v1",
+ "title": "Oi! Tudo bem?",
+ "level": "Novice",
+ "moduleId": "M01",
+ "unitId": "N01",
+ "duration": 90.901,
+ "speakers": {
+  "charlotte": "Charlotte",
+  "igor": "Igorfina"
+ },
+ "cues": [
+  {
+   "id": "l01",
+   "speaker": "charlotte",
+   "lang": "pt",
+   "text": "Oi! Eu sou a Charlotte. Hoje você vai aprender a cumprimentar alguém em inglês. Vem comigo!",
+   "pt": null,
+   "start": 2.8,
+   "end": 9.1
+  },
+  {
+   "id": "l02",
+   "speaker": "charlotte",
+   "lang": "en",
+   "text": "Hi, Igor! How are you?",
+   "pt": "Oi, Igor! Tudo bem?",
+   "start": 9.15,
+   "end": 11.9
+  },
+  {
+   "id": "l03",
+   "speaker": "igor",
+   "lang": "en",
+   "text": "I'm good, thanks! And you?",
+   "pt": "Tô bem, obrigado! E você?",
+   "start": 11.95,
+   "end": 13.783
+  },
+  {
+   "id": "l04",
+   "speaker": "charlotte",
+   "lang": "en",
+   "text": "I'm great!",
+   "pt": "Tô ótima!",
+   "start": 13.833,
+   "end": 15.533
+  },
+  {
+   "id": "l05",
+   "speaker": "charlotte",
+   "lang": "pt",
+   "text": "{How are you?} é o nosso \"tudo bem?\". E a resposta mais comum é: {I'm good, thanks!}",
+   "pt": null,
+   "start": 16.383,
+   "end": 22.983
+  },
+  {
+   "id": "l06",
+   "speaker": "charlotte",
+   "lang": "pt",
+   "text": "Sua vez! O Igor pergunta: {How are you?} O que você responde?",
+   "pt": null,
+   "start": 23.783,
+   "end": 28.983
+  },
+  {
+   "id": "l07",
+   "speaker": "charlotte",
+   "lang": "pt",
+   "text": "Também dá para cumprimentar pela hora do dia. De manhã: {Good morning}. À tarde: {Good afternoon}. À noite: {Good evening}.",
+   "pt": null,
+   "start": 31.783,
+   "end": 40.533
+  },
+  {
+   "id": "l08",
+   "speaker": "charlotte",
+   "lang": "pt",
+   "text": "Cuidado: {Good night} não é cumprimento. É só para se despedir, antes de dormir.",
+   "pt": null,
+   "start": 40.583,
+   "end": 45.983
+  },
+  {
+   "id": "l09",
+   "speaker": "charlotte",
+   "lang": "pt",
+   "text": "São nove da manhã e você chega na aula. O que você diz?",
+   "pt": null,
+   "start": 46.033,
+   "end": 50.933
+  },
+  {
+   "id": "l10",
+   "speaker": "igor",
+   "lang": "en",
+   "text": "Hi! I'm Igor. Nice to meet you!",
+   "pt": "Oi! Eu sou o Igor. Prazer em te conhecer!",
+   "start": 53.733,
+   "end": 56.051
+  },
+  {
+   "id": "l11",
+   "speaker": "charlotte",
+   "lang": "pt",
+   "text": "{Nice to meet you} é \"prazer em te conhecer\". Só se usa na primeira vez que você vê a pessoa.",
+   "pt": null,
+   "start": 56.801,
+   "end": 62.501
+  },
+  {
+   "id": "l12",
+   "speaker": "igor",
+   "lang": "en",
+   "text": "Well, I have to go. See you later!",
+   "pt": "Bom, preciso ir. Até mais!",
+   "start": 63.201,
+   "end": 65.451
+  },
+  {
+   "id": "l13",
+   "speaker": "charlotte",
+   "lang": "en",
+   "text": "See you!",
+   "pt": "Até!",
+   "start": 65.501,
+   "end": 66.951
+  },
+  {
+   "id": "l14",
+   "speaker": "charlotte",
+   "lang": "pt",
+   "text": "{See you later} é o nosso \"até mais\". Agora fale você! Alguém novo diz: {Hi, I'm Igor}. Como você responde?",
+   "pt": null,
+   "start": 67.701,
+   "end": 75.851
+  },
+  {
+   "id": "l15",
+   "speaker": "charlotte",
+   "lang": "pt",
+   "text": "Revisando: {How are you?}, {I'm good, thanks!}, {Good morning}, {Nice to meet you} e {See you later}. Agora é a sua vez de praticar!",
+   "pt": null,
+   "start": 78.601,
+   "end": 87.701
+  }
+ ],
+ "checkpoints": [
+  {
+   "id": "cp1",
+   "at": 28.983,
+   "mode": "tap",
+   "question": "O Igor pergunta: \"How are you?\". O que você responde?",
+   "options": [
+    "I'm good, thanks!",
+    "Yes, I am.",
+    "I'm 25."
+   ],
+   "answer": "I'm good, thanks!",
+   "speak": [
+    "i'm good",
+    "im good",
+    "i am good",
+    "i'm fine",
+    "i am fine",
+    "i'm great",
+    "good thanks",
+    "fine thanks"
+   ],
+   "feedback": {
+    "ok": {
+     "id": "f1ok",
+     "text": "Isso! {I'm good, thanks!}"
+    },
+    "no": {
+     "id": "f1no",
+     "text": "Quase! Para {How are you?}, responda: {I'm good, thanks!}"
+    }
+   }
+  },
+  {
+   "id": "cp2",
+   "at": 50.933,
+   "mode": "tap",
+   "question": "São 9 da manhã e você chega na aula. O que você diz?",
+   "options": [
+    "Good night!",
+    "Good morning!",
+    "Good noon!"
+   ],
+   "answer": "Good morning!",
+   "speak": [
+    "good morning",
+    "morning"
+   ],
+   "feedback": {
+    "ok": {
+     "id": "f2ok",
+     "text": "Perfeito! De manhã é {Good morning}."
+    },
+    "no": {
+     "id": "f2no",
+     "text": "Quase! De manhã, o certo é {Good morning}."
+    }
+   }
+  },
+  {
+   "id": "cp3",
+   "at": 75.851,
+   "mode": "speak",
+   "question": "Alguém novo diz: \"Hi, I'm Igor.\" Fale a resposta.",
+   "options": [
+    "See you later!",
+    "Nice to meet you!",
+    "Good night!"
+   ],
+   "answer": "Nice to meet you!",
+   "speak": [
+    "nice to meet you",
+    "nice meeting you",
+    "good to meet you",
+    "pleased to meet you",
+    "nice to meet ya"
+   ],
+   "feedback": {
+    "ok": {
+     "id": "f3ok",
+     "text": "Muito bem! {Nice to meet you!}"
+    },
+    "no": {
+     "id": "f3no",
+     "text": "Quase! Repita comigo: {Nice to meet you!}"
+    }
+   }
+  }
+ ]
+}
