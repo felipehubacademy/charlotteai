@@ -19,7 +19,6 @@ import { ArrowLeft, Play, Pause, Microphone, CheckCircle, ArrowCounterClockwise 
 import { AppText } from '@/components/ui/Text';
 import { goBack } from '@/lib/goBack';
 import { systemIsPt } from '@/lib/systemLang';
-import { soundEngine } from '@/lib/soundEngine';
 import { expandContractions } from '@/lib/grammarAnswer';
 import { getAula, aulaUrl, type AulaCheckpoint } from '@/lib/aulas';
 
@@ -205,7 +204,7 @@ export default function AulaScreen() {
   const answer = useCallback(async (cp: AulaCheckpoint, ok: boolean, chosen?: string, said?: string) => {
     if (!aula || resultsRef.current[cp.id]) return;
     setResults(r => ({ ...r, [cp.id]: { ok, chosen, heard: said } }));
-    soundEngine.play(ok ? 'answer_correct' : 'answer_wrong').catch(() => {});
+    // Sem o som padrão de acerto/erro do app: a correção é falada e os dois se misturavam.
     // Correção falada da Charlotte e, quando termina, a aula segue sozinha.
     try {
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
