@@ -47,6 +47,37 @@ function Marked({ text, size = 15, color = K.text, weight = '500' as const }: { 
   );
 }
 
+/** Fala da legenda com a palavra dita agora acesa em rosa e sublinhada (karaokê). {inglês} em Volt. */
+function Spoken({ text, words, now, on, size, color, weight, enStyle }: {
+  text: string; words?: number[]; now: number; on: boolean; size: number; color: string;
+  weight: '500' | '700'; enStyle: boolean;
+}) {
+  const toks = text.split(/\s+/).filter(Boolean);
+  let cur = -1;
+  if (on && words && words.length === toks.length) for (let i = 0; i < words.length; i++) if (now >= words[i] - 0.03) cur = i;
+  let inside = false;
+  return (
+    <AppText display={enStyle} style={{ fontSize: size, lineHeight: size * 1.35, color, fontWeight: weight }}>
+      {toks.map((tk, i) => {
+        const opens = tk.includes('{');
+        const en = !enStyle && (inside || opens);
+        if (opens && !tk.includes('}')) inside = true;
+        if (tk.includes('}')) inside = false;
+        const isNow = i === cur;
+        return (
+          <AppText key={i} display={enStyle || en} style={{
+            fontSize: size, fontWeight: en ? '800' : weight,
+            color: isNow ? K.pink : en ? K.volt : color,
+            textDecorationLine: isNow ? 'underline' : 'none', textDecorationColor: K.pink,
+          }}>
+            {tk.replace(/[{}]/g, '')}{i < toks.length - 1 ? ' ' : ''}
+          </AppText>
+        );
+      })}
+    </AppText>
+  );
+}
+
 type Result = { ok: boolean; heard?: string; chosen?: string };
 
 export default function AulaScreen() {
@@ -437,11 +468,11 @@ export default function AulaScreen() {
                 <View style={{ flex: 1, minWidth: 0 }}>
                   {c.lang === 'en' ? (
                     <>
-                      <AppText display style={{ fontSize: 16, fontWeight: '700', color: K.text }}>{plain(c.text)}</AppText>
+                      <Spoken text={plain(c.text)} words={c.words} now={now} on={on} size={16} color={K.text} weight="700" enStyle />
                       {c.pt ? <AppText style={{ fontSize: 13, color: K.muted, marginTop: 2 }}>{c.pt}</AppText> : null}
                     </>
                   ) : (
-                    <Marked text={c.text} size={15} color={on ? K.text : K.muted} />
+                    <Spoken text={c.text} words={c.words} now={now} on={on} size={15} color={on ? K.text : K.muted} weight="500" enStyle={false} />
                   )}
                 </View>
               </TouchableOpacity>

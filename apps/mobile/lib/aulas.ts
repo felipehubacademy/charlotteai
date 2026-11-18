@@ -19,6 +19,7 @@ export interface AulaCue {
   pt: string | null;      // tradução das falas em inglês
   start: number;
   end: number;
+  words?: number[];       // segundo em que cada palavra do texto (separada por espaço) começa
 }
 
 export interface AulaCheckpoint {

@@ -19,7 +19,25 @@
    "text": "Oi! Eu sou a Charlotte. Hoje você vai aprender a cumprimentar alguém em inglês. Vem comigo!",
    "pt": null,
    "start": 2.8,
-   "end": 9.1
+   "end": 9.1,
+   "words": [
+    2.8,
+    3.52,
+    3.72,
+    3.86,
+    4,
+    5.02,
+    5.1,
+    5.36,
+    5.58,
+    5.84,
+    6.22,
+    6.58,
+    6.86,
+    7.1,
+    7.86,
+    7.92
+   ]
   },
   {
    "id": "l02",
@@ -28,7 +46,14 @@
    "text": "Hi, Igor! How are you?",
    "pt": "Oi, Igor! Tudo bem?",
    "start": 9.15,
-   "end": 11.9
+   "end": 11.9,
+   "words": [
+    9.15,
+    9.55,
+    10.25,
+    10.41,
+    10.63
+   ]
   },
   {
    "id": "l03",
@@ -37,7 +62,14 @@
    "text": "I'm good, thanks! And you?",
    "pt": "Tô bem, obrigado! E você?",
    "start": 11.95,
-   "end": 13.783
+   "end": 13.783,
+   "words": [
+    11.95,
+    12.21,
+    12.67,
+    12.99,
+    13.15
+   ]
   },
   {
    "id": "l04",
@@ -46,7 +78,11 @@
    "text": "I'm great!",
    "pt": "Tô ótima!",
    "start": 13.833,
-   "end": 15.533
+   "end": 15.533,
+   "words": [
+    13.83,
+    14.11
+   ]
   },
   {
    "id": "l05",
@@ -55,7 +91,26 @@
    "text": "{How are you?} é o nosso \"tudo bem?\". E a resposta mais comum é: {I'm good, thanks!}",
    "pt": null,
    "start": 16.383,
-   "end": 22.983
+   "end": 22.983,
+   "words": [
+    16.38,
+    16.68,
+    17.1,
+    17.6,
+    17.6,
+    17.74,
+    18.16,
+    18.42,
+    18.66,
+    19.12,
+    19.34,
+    19.58,
+    19.94,
+    20.2,
+    20.52,
+    21.02,
+    21.42
+   ]
   },
   {
    "id": "l06",
@@ -64,7 +119,21 @@
    "text": "Sua vez! O Igor pergunta: {How are you?} O que você responde?",
    "pt": null,
    "start": 23.783,
-   "end": 28.983
+   "end": 28.983,
+   "words": [
+    23.78,
+    24.2,
+    25.28,
+    25.28,
+    25.32,
+    26.22,
+    26.36,
+    26.6,
+    27.2,
+    27.28,
+    27.42,
+    27.66
+   ]
   },
   {
    "id": "l07",
@@ -73,7 +142,29 @@
    "text": "Também dá para cumprimentar pela hora do dia. De manhã: {Good morning}. À tarde: {Good afternoon}. À noite: {Good evening}.",
    "pt": null,
    "start": 31.783,
-   "end": 40.533
+   "end": 40.533,
+   "words": [
+    31.78,
+    32.48,
+    32.84,
+    33.21,
+    33.58,
+    33.76,
+    34,
+    34.24,
+    35.26,
+    35.26,
+    35.54,
+    35.72,
+    36.82,
+    36.82,
+    37.1,
+    37.22,
+    38.26,
+    38.46,
+    38.8,
+    38.94
+   ]
   },
   {
    "id": "l08",
@@ -82,7 +173,23 @@
    "text": "Cuidado: {Good night} não é cumprimento. É só para se despedir, antes de dormir.",
    "pt": null,
    "start": 40.583,
-   "end": 45.983
+   "end": 45.983,
+   "words": [
+    40.58,
+    41.48,
+    41.64,
+    41.86,
+    42.06,
+    42.3,
+    43.16,
+    43.28,
+    43.44,
+    43.6,
+    43.8,
+    44.22,
+    44.54,
+    44.84
+   ]
   },
   {
    "id": "l09",
@@ -91,7 +198,22 @@
    "text": "São nove da manhã e você chega na aula. O que você diz?",
    "pt": null,
    "start": 46.033,
-   "end": 50.933
+   "end": 50.933,
+   "words": [
+    46.03,
+    46.4,
+    46.77,
+    46.95,
+    47.27,
+    47.63,
+    47.99,
+    48.23,
+    48.49,
+    49.13,
+    49.19,
+    49.31,
+    49.61
+   ]
   },
   {
    "id": "l10",
@@ -100,7 +222,16 @@
    "text": "Hi! I'm Igor. Nice to meet you!",
    "pt": "Oi! Eu sou o Igor. Prazer em te conhecer!",
    "start": 53.733,
-   "end": 56.051
+   "end": 56.051,
+   "words": [
+    53.73,
+    54.11,
+    54.27,
+    54.77,
+    54.87,
+    55.03,
+    55.11
+   ]
   },
   {
    "id": "l11",
@@ -109,7 +240,29 @@
    "text": "{Nice to meet you} é \"prazer em te conhecer\". Só se usa na primeira vez que você vê a pessoa.",
    "pt": null,
    "start": 56.801,
-   "end": 62.501
+   "end": 62.501,
+   "words": [
+    56.8,
+    57.2,
+    57.44,
+    57.6,
+    57.84,
+    58.02,
+    58.54,
+    58.7,
+    58.86,
+    59.68,
+    59.68,
+    59.96,
+    60.02,
+    60.18,
+    60.5,
+    60.74,
+    60.86,
+    61.1,
+    61.18,
+    61.42
+   ]
   },
   {
    "id": "l12",
@@ -118,7 +271,17 @@
    "text": "Well, I have to go. See you later!",
    "pt": "Bom, preciso ir. Até mais!",
    "start": 63.201,
-   "end": 65.451
+   "end": 65.451,
+   "words": [
+    63.2,
+    63.48,
+    63.52,
+    63.7,
+    63.88,
+    64.38,
+    64.52,
+    64.64
+   ]
   },
   {
    "id": "l13",
@@ -127,7 +290,11 @@
    "text": "See you!",
    "pt": "Até!",
    "start": 65.501,
-   "end": 66.951
+   "end": 66.951,
+   "words": [
+    65.5,
+    65.82
+   ]
   },
   {
    "id": "l14",
@@ -136,7 +303,29 @@
    "text": "{See you later} é o nosso \"até mais\". Agora fale você! Alguém novo diz: {Hi, I'm Igor}. Como você responde?",
    "pt": null,
    "start": 67.701,
-   "end": 75.851
+   "end": 75.851,
+   "words": [
+    67.7,
+    68.06,
+    68.26,
+    68.52,
+    68.72,
+    68.84,
+    69.12,
+    69.36,
+    70.36,
+    70.36,
+    70.6,
+    71.46,
+    71.64,
+    71.98,
+    72.24,
+    73.04,
+    73.16,
+    73.64,
+    73.74,
+    74.02
+   ]
   },
   {
    "id": "l15",
@@ -145,7 +334,33 @@
    "text": "Revisando: {How are you?}, {I'm good, thanks!}, {Good morning}, {Nice to meet you} e {See you later}. Agora é a sua vez de praticar!",
    "pt": null,
    "start": 78.601,
-   "end": 87.701
+   "end": 87.701,
+   "words": [
+    79.26,
+    79.92,
+    80.02,
+    80.36,
+    80.9,
+    81.14,
+    81.64,
+    82.22,
+    82.4,
+    83,
+    83.06,
+    83.4,
+    83.4,
+    83.67,
+    83.94,
+    84.08,
+    84.28,
+    85,
+    85.28,
+    85.46,
+    85.56,
+    85.78,
+    85.92,
+    86.24
+   ]
   }
  ],
  "checkpoints": [
