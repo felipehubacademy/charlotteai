@@ -10,6 +10,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { View, ScrollView, TouchableOpacity, ActivityIndicator, Dimensions, Platform, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useLocalSearchParams } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { VideoView, useVideoPlayer } from 'expo-video';
 import { Image } from 'expo-image';
 import { createAudioPlayer, setAudioModeAsync, type AudioPlayer } from 'expo-audio';
@@ -247,6 +248,8 @@ export default function AulaScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: K.bg }}>
+      {/* Tela escura: barra de status clara (volta ao normal ao sair) */}
+      <StatusBar style="light" backgroundColor={K.bg} />
       {/* Cabeçalho */}
       <View style={{ paddingTop: insets.top + 6, paddingHorizontal: 16, paddingBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
         <TouchableOpacity onPress={() => goBack()} hitSlop={12} accessibilityRole="button" accessibilityLabel={t('Voltar', 'Back')}>
