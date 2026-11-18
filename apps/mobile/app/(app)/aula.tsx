@@ -415,13 +415,12 @@ export default function AulaScreen() {
           style={{ width: 38, height: 38, borderRadius: 19, backgroundColor: K.card, alignItems: 'center', justifyContent: 'center', opacity: quiz ? 0.4 : 1 }}>
           {playing ? <Pause size={16} color={K.text} weight="fill" /> : <Play size={16} color={K.text} weight="fill" />}
         </TouchableOpacity>
-        {/* A onda da Queizy: reta verde no que já passou, onda rosa no que falta; bolinhas nas perguntas. */}
-        <View style={{ flex: 1, height: 22, justifyContent: 'center' }}>
-          <QueizyWave progress={now / aula.duration} height={22} strokeWidth={4} doneColor={K.green} todoColor={K.pink} />
+        <View style={{ flex: 1, height: 6, borderRadius: 3, backgroundColor: K.line, justifyContent: 'center' }}>
+          <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, borderRadius: 3, backgroundColor: K.volt, width: `${Math.min(100, (now / aula.duration) * 100)}%` }} />
           {aula.checkpoints.map(c => (
             <View key={c.id} style={{
-              position: 'absolute', left: `${(c.at / aula.duration) * 100}%`, marginLeft: -8, top: 3, width: 16, height: 16, borderRadius: 8,
-              backgroundColor: results[c.id] ? K.green : K.bg, borderWidth: 3, borderColor: results[c.id] ? K.green : K.volt,
+              position: 'absolute', left: `${(c.at / aula.duration) * 100}%`, marginLeft: -7, width: 14, height: 14, borderRadius: 7,
+              backgroundColor: results[c.id] ? K.green : K.bg, borderWidth: 3, borderColor: results[c.id] ? K.green : K.pink,
             }} />
           ))}
         </View>
@@ -569,6 +568,19 @@ export default function AulaScreen() {
         </View>
         {Platform.OS === 'android' ? <View style={{ height: 8 }} /> : null}
       </ScrollView>
+
+      {/* Rodapé: perguntas feitas na onda da Queizy (o placar de acertos fica no cartão do fim). */}
+      {started && !ended && (
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingTop: 10,
+          paddingBottom: insets.bottom + 10, borderTopWidth: 1, borderTopColor: K.line, backgroundColor: K.bg }}>
+          <AppText style={{ fontSize: 12.5, fontWeight: '700', color: K.muted, fontVariant: ['tabular-nums'] }}>
+            {t(`Perguntas ${done.length} de ${aula.checkpoints.length}`, `Questions ${done.length} of ${aula.checkpoints.length}`)}
+          </AppText>
+          <View style={{ flex: 1 }}>
+            <QueizyWave progress={done.length / aula.checkpoints.length} height={18} strokeWidth={4} doneColor={K.green} todoColor={K.pink} />
+          </View>
+        </View>
+      )}
     </View>
   );
 }
