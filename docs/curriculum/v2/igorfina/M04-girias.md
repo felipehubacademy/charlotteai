@@ -215,6 +215,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 
 2. **multiple_choice** — "Can you give me a _____ with this bag?"
    **Options**: hand / arm / help
+   **Hint**: Parte do corpo: em português também se diz "me dá uma mão"
    **Answer**: hand
    **Explanation**: "Give me a hand" = me dá uma mão, me ajuda. Igualzinho ao português, só que em inglês.
 

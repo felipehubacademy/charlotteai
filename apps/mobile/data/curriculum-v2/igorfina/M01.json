@@ -131,7 +131,7 @@
         {
           "type": "fix_error",
           "sentence": "Excuse, where is the bus?",
-          "hint": "A expressão de \"com licença\" tem duas palavras",
+          "hint": "Falta uma palavra depois de \"Excuse\". Reescreva a frase em inglês",
           "answer": "Excuse me, where is the bus?",
           "explanation": "Sozinho, \"excuse\" fica incompleto. A expressão é sempre \"Excuse me\"."
         },
@@ -603,12 +603,15 @@
           "sentence": "What time it is?",
           "hint": "Em pergunta direta, o \"is\" vem antes do \"it\"",
           "answer": "What time is it?",
+          "accepts": [
+            "Do you know what time it is?"
+          ],
           "explanation": "Pergunta direta: \"What time is it?\". Mas com \"Do you know\" a ordem muda: \"Do you know what time it is?\"."
         },
         {
           "type": "fix_error",
-          "sentence": "You know where is the bus?",
-          "hint": "Comece com \"Do\" e, depois de \"where\", use \"the bus is\"",
+          "sentence": "Do you know where is the bus?",
+          "hint": "Depois de \"where\", a ordem fica \"the bus is\"",
           "answer": "Do you know where the bus is?",
           "explanation": "Com \"Do you know where...\", a ordem fica \"where the bus is\". Parece estranho, mas é assim que o nativo fala."
         },

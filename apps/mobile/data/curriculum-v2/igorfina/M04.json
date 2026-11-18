@@ -310,6 +310,7 @@
             "arm",
             "help"
           ],
+          "hint": "Parte do corpo: em português também se diz \"me dá uma mão\"",
           "answer": "hand",
           "explanation": "\"Give me a hand\" = me dá uma mão, me ajuda. Igualzinho ao português, só que em inglês."
         },

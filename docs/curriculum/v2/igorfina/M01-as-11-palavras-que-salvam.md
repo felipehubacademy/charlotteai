@@ -92,7 +92,7 @@
    **Explanation**: Para pedir passagem no metrô lotado, diga "Excuse me". "Sorry" é para pedir desculpas depois de esbarrar em alguém.
 
 8. **fix_error** — "Excuse, where is the bus?"
-   **Hint**: A expressão de "com licença" tem duas palavras
+   **Hint**: Falta uma palavra depois de "Excuse". Reescreva a frase em inglês
    **Answer**: Excuse me, where is the bus?
    **Explanation**: Sozinho, "excuse" fica incompleto. A expressão é sempre "Excuse me".
 
@@ -401,10 +401,11 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
 8. **fix_error** — "What time it is?"
    **Hint**: Em pergunta direta, o "is" vem antes do "it"
    **Answer**: What time is it?
+   **Accepts**: Do you know what time it is?
    **Explanation**: Pergunta direta: "What time is it?". Mas com "Do you know" a ordem muda: "Do you know what time it is?".
 
-9. **fix_error** — "You know where is the bus?"
-   **Hint**: Comece com "Do" e, depois de "where", use "the bus is"
+9. **fix_error** — "Do you know where is the bus?"
+   **Hint**: Depois de "where", a ordem fica "the bus is"
    **Answer**: Do you know where the bus is?
    **Explanation**: Com "Do you know where...", a ordem fica "where the bus is". Parece estranho, mas é assim que o nativo fala.
 

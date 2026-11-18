@@ -1700,7 +1700,7 @@ export default function LearnSessionScreen() {
                       })()
                     : currentStep.exercise.type === 'word_bank'      ? (isPortuguese ? 'Toque na palavra correta para preencher o espaço.' : 'Tap the correct word to fill the blank.')
                     : currentStep.exercise.type === 'fill_gap'       ? (isPortuguese ? 'Digite a palavra que falta na lacuna.'            : 'Type the missing word in the blank.')
-                    : currentStep.exercise.type === 'fix_error'      ? (isPortuguese ? 'Encontre o erro e reescreva a frase corretamente.'  : 'Find the mistake and rewrite the sentence correctly.')
+                    : currentStep.exercise.type === 'fix_error'      ? (isPortuguese ? 'Encontre o erro e reescreva a frase corretamente, em inglês.'  : 'Find the mistake and rewrite the sentence correctly.')
                     : currentStep.exercise.type === 'word_order'     ? (isPortuguese ? 'Toque nas palavras abaixo para montar a frase na ordem correta.' : 'Tap the words below to build the sentence in the correct order.')
                     : currentStep.exercise.type === 'short_write'    ? (isPortuguese ? 'Escreva sua resposta em inglês. Depois, veja o exemplo.' : 'Write your answer in English. Then see the model answer.')
                     :                                                   (isPortuguese ? 'Leia o texto e responda à pergunta.'                : 'Read the text and answer the question.')}
