@@ -282,6 +282,10 @@
       const k = ease(prog(t, at, at + dur)); c = { x: lerp(c.x, v.x, k), y: lerp(c.y, v.y, k), s: lerp(c.s, v.s, k) };
     }
     c.s *= 1 + .012 * Math.sin(t * .35); // respiro de câmera, lento
+    // a imagem sempre cobre a tela: a câmera nunca passa da borda (senão aparece faixa escura)
+    c.s = Math.max(c.s, 1.0);
+    c.x = clamp(c.x, 640 / c.s, 1280 - 640 / c.s);
+    c.y = clamp(c.y, 360 / c.s, 723 - 360 / c.s);
     return c;
   }
   const scr = (c, x, y) => ({ x: (x - c.x) * c.s + 640, y: (y - c.y) * c.s + 360 });
