@@ -18,6 +18,7 @@ import { createAudioPlayer, setAudioModeAsync, type AudioPlayer } from 'expo-aud
 import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
 import { ArrowLeft, Play, Pause, Microphone, CheckCircle, ArrowCounterClockwise, X } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { QueizyWave } from '@/components/ui/QueizyWave';
 import { goBack } from '@/lib/goBack';
 import { systemIsPt } from '@/lib/systemLang';
 import { expandContractions } from '@/lib/grammarAnswer';
@@ -235,6 +236,13 @@ export default function AulaScreen() {
     return () => clearTimeout(tm);
   }, [quiz, doneCount, hintSeen]);
 
+  // Pausa aberta: leva a pergunta para o topo depois de desenhar (a rolagem da legenda podia passar por cima).
+  useEffect(() => {
+    if (!quizId) return;
+    const tm = setTimeout(() => scrollRef.current?.scrollTo({ y: 0, animated: true }), 120);
+    return () => clearTimeout(tm);
+  }, [quizId]);
+
   // ---------- pergunta ----------
   const resume = useCallback(() => {
     if (autoNext.current) { clearTimeout(autoNext.current); autoNext.current = null; }
@@ -325,7 +333,7 @@ export default function AulaScreen() {
   const cueY = useRef<Record<string, number>>({});
   const listTop = useRef(0);
   useEffect(() => {
-    if (!cueNow || !playing) return;
+    if (!cueNow || !playing || quizRef.current) return;
     const y = cueY.current[cueNow];
     if (y != null) scrollRef.current?.scrollTo({ y: Math.max(0, listTop.current + y - 260), animated: true });
   }, [cueNow, playing]);
@@ -405,12 +413,13 @@ export default function AulaScreen() {
           style={{ width: 38, height: 38, borderRadius: 19, backgroundColor: K.card, alignItems: 'center', justifyContent: 'center', opacity: quiz ? 0.4 : 1 }}>
           {playing ? <Pause size={16} color={K.text} weight="fill" /> : <Play size={16} color={K.text} weight="fill" />}
         </TouchableOpacity>
-        <View style={{ flex: 1, height: 6, borderRadius: 3, backgroundColor: K.line, justifyContent: 'center' }}>
-          <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, borderRadius: 3, backgroundColor: K.volt, width: `${Math.min(100, (now / aula.duration) * 100)}%` }} />
+        {/* A onda da Queizy: reta verde no que já passou, onda rosa no que falta; bolinhas nas perguntas. */}
+        <View style={{ flex: 1, height: 22, justifyContent: 'center' }}>
+          <QueizyWave progress={now / aula.duration} height={22} strokeWidth={4} doneColor={K.green} todoColor={K.pink} />
           {aula.checkpoints.map(c => (
             <View key={c.id} style={{
-              position: 'absolute', left: `${(c.at / aula.duration) * 100}%`, marginLeft: -7, width: 14, height: 14, borderRadius: 7,
-              backgroundColor: results[c.id] ? K.green : K.bg, borderWidth: 3, borderColor: results[c.id] ? K.green : K.pink,
+              position: 'absolute', left: `${(c.at / aula.duration) * 100}%`, marginLeft: -8, top: 3, width: 16, height: 16, borderRadius: 8,
+              backgroundColor: results[c.id] ? K.green : K.bg, borderWidth: 3, borderColor: results[c.id] ? K.green : K.volt,
             }} />
           ))}
         </View>
@@ -556,11 +565,6 @@ export default function AulaScreen() {
             );
           })}
         </View>
-        {done.length > 0 && !ended && (
-          <AppText style={{ fontSize: 13, color: K.muted }}>
-            {t(`Perguntas: ${right} de ${done.length} certas`, `Questions: ${right} of ${done.length} right`)}
-          </AppText>
-        )}
         {Platform.OS === 'android' ? <View style={{ height: 8 }} /> : null}
       </ScrollView>
     </View>
