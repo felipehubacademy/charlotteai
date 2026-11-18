@@ -18,7 +18,6 @@ import { createAudioPlayer, setAudioModeAsync, type AudioPlayer } from 'expo-aud
 import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
 import { ArrowLeft, Play, Pause, Microphone, CheckCircle, ArrowCounterClockwise, X } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
-import { QueizyWave } from '@/components/ui/QueizyWave';
 import { goBack } from '@/lib/goBack';
 import { systemIsPt } from '@/lib/systemLang';
 import { expandContractions } from '@/lib/grammarAnswer';
@@ -291,6 +290,16 @@ export default function AulaScreen() {
     // Sem o som padrão de acerto/erro do app: a correção é falada e os dois se misturavam.
     // Correção falada da Charlotte e, quando termina, a aula segue sozinha.
     try {
+      // Fecha o microfone e tira o iPhone do modo de gravação: senão a correção sai no alto-falante de
+      // ligação (o de cima, baixinho) em vez do alto-falante normal.
+      if (ASR_AVAILABLE) {
+        try { ExpoSpeechRecognitionModule.abort(); } catch { /* nada */ }
+        if (Platform.OS === 'ios') {
+          try {
+            ExpoSpeechRecognitionModule.setCategoryIOS({ category: 'playback', categoryOptions: ['mixWithOthers'], mode: 'default' });
+          } catch { /* nada */ }
+        }
+      }
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
       if (quizRef.current?.id !== cp.id) return; // o aluno já continuou a aula
       fbPlayer.current?.remove();
@@ -338,7 +347,11 @@ export default function AulaScreen() {
     if (!perm?.granted) { setMicMsg(t('Sem permissão do microfone. Toque na resposta.', 'No microphone permission. Tap an answer.')); return; }
     heardRef.current = ''; setHeard(''); setMicMsg('');
     try {
-      ExpoSpeechRecognitionModule.start({ lang: 'en-US', interimResults: true, maxAlternatives: 3, continuous: false });
+      ExpoSpeechRecognitionModule.start({
+        lang: 'en-US', interimResults: true, maxAlternatives: 3, continuous: false,
+        // Enquanto ouve, qualquer som sai no alto-falante normal (não no de ligação).
+        iosCategory: { category: 'playAndRecord', categoryOptions: ['defaultToSpeaker', 'allowBluetooth'], mode: 'default' },
+      });
       setListening(true);
     } catch {
       setMicMsg(t('Não deu para ouvir. Toque na resposta.', "Couldn't listen. Tap an answer."));
@@ -592,18 +605,6 @@ export default function AulaScreen() {
         {Platform.OS === 'android' ? <View style={{ height: 8 }} /> : null}
       </ScrollView>
 
-      {/* Rodapé: perguntas feitas na onda da Queizy (o placar de acertos fica no cartão do fim). */}
-      {started && !ended && (
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingTop: 10,
-          paddingBottom: insets.bottom + 10, borderTopWidth: 1, borderTopColor: K.line, backgroundColor: K.bg }}>
-          <AppText style={{ fontSize: 12.5, fontWeight: '700', color: K.muted, fontVariant: ['tabular-nums'] }}>
-            {t(`Perguntas ${done.length} de ${aula.checkpoints.length}`, `Questions ${done.length} of ${aula.checkpoints.length}`)}
-          </AppText>
-          <View style={{ flex: 1 }}>
-            <QueizyWave progress={done.length / aula.checkpoints.length} height={18} strokeWidth={4} doneColor={K.green} todoColor={K.pink} />
-          </View>
-        </View>
-      )}
     </View>
   );
 }
