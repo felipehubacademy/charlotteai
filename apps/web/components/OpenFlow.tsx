@@ -47,6 +47,9 @@ export default function OpenFlow() {
   const [pw2, setPw2] = useState('');
   const [pwErr, setPwErr] = useState('');
   const [saving, setSaving] = useState(false);
+  // Conta da equipe com verificação em duas etapas: o login só deixa trocar a senha depois do código do autenticador.
+  const [needsCode, setNeedsCode] = useState(false);
+  const [mfaCode, setMfaCode] = useState('');
   const [accountEmail, setAccountEmail] = useState('');
   // Convite da gestão (?next=admin): no fim leva ao /admin, não ao app.
   const [forAdmin, setForAdmin] = useState(false);
@@ -73,6 +76,20 @@ export default function OpenFlow() {
     try {
       const { data, error } = await sb.auth.setSession(tokensRef.current);
       if (error) throw error;
+      const aal = await sb.auth.mfa.getAuthenticatorAssuranceLevel();
+      if (aal.data?.nextLevel === 'aal2' && aal.data.currentLevel !== 'aal2') {
+        const code = mfaCode.replace(/\s/g, '');
+        if (!needsCode || !/^\d{6}$/.test(code)) {
+          setNeedsCode(true);
+          if (needsCode) setPwErr('Digite os 6 números do aplicativo autenticador.');
+          return;
+        }
+        const { data: f } = await sb.auth.mfa.listFactors();
+        const factor = f?.totp?.find(x => x.status === 'verified');
+        if (!factor) throw new Error('mfa');
+        const { error: eCode } = await sb.auth.mfa.challengeAndVerify({ factorId: factor.id, code });
+        if (eCode) { setPwErr('Código incorreto ou vencido. Confira no autenticador e tente de novo.'); return; }
+      }
       const { error: e2 } = await sb.auth.updateUser({ password: pw });
       if (e2) throw e2;
       setAccountEmail(data.user?.email ?? '');
@@ -310,6 +327,13 @@ export default function OpenFlow() {
                 value={pw} onChange={e => setPw(e.target.value)} />
               <input className="pw" type="password" autoComplete="new-password" placeholder="Repita a senha"
                 value={pw2} onChange={e => setPw2(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') savePassword(); }} />
+              {needsCode ? (
+                <>
+                  <p className="sub" style={{ marginTop: 12 }}>Sua conta tem verificação em duas etapas. Digite o código de 6 números do aplicativo autenticador.</p>
+                  <input className="pw" type="text" inputMode="numeric" autoComplete="one-time-code" maxLength={7} placeholder="Código de 6 números"
+                    value={mfaCode} onChange={e => setMfaCode(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') savePassword(); }} />
+                </>
+              ) : null}
               {pwErr ? <p className="pw-err">{pwErr}</p> : null}
               <button className="pw-btn" onClick={savePassword} disabled={saving}>{saving ? 'Salvando…' : 'Salvar senha'}</button>
             </>
