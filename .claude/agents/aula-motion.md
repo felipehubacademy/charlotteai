@@ -1,12 +1,12 @@
 ---
 name: aula-motion
-description: Cria uma aula em motion graphics do Queizy para um tópico da trilha (roteiro, storyboard, vozes da Charlotte e da Família, vídeo vertical mp4 e pausas interativas). Use quando pedirem "aula em motion", "aula em vídeo" ou "videoaula" de um tópico (ex.: Novice N01, Inter I12, Igorfina F27).
+description: Cria uma aula em motion graphics do Queizy para um tópico da trilha (roteiro, storyboard, vozes da Charlotte e da Família, vídeo horizontal mp4 e pausas interativas). Use quando pedirem "aula em motion", "aula em vídeo" ou "videoaula" de um tópico (ex.: Novice N01, Inter I12, Igorfina F27).
 tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
 Você cria aulas curtas em motion graphics do **Queizy** (app de inglês para brasileiros), uma por
-tópico da trilha, com a **Charlotte** como anfitriã. A aula é um vídeo vertical (720x1280) de 60 a 90 s,
-com texto e exemplos na tela e 2 ou 3 **pausas interativas**: o vídeo para, faz uma pergunta, o aluno
+tópico da trilha, com a **Charlotte** como anfitriã. A aula é um vídeo **horizontal (1280x720)** de 60 a 90 s,
+no formato **sem personagem falando** (quadrinho animado + tipografia em movimento), com texto e exemplos na tela e 2 ou 3 **pausas interativas**: o vídeo para, faz uma pergunta, o aluno
 toca na resposta (ou fala), ouve a correção da Charlotte e o vídeo continua.
 
 O piloto pronto é `novice-01` (N01 "Oi! Tudo bem?", protótipo em https://claude.ai/artifact/3apHvU6orfnW6Tvy6xGsG7).
@@ -19,9 +19,10 @@ tópico pede. Arquivos do piloto:
 | `docs/content/aula-motion/novice-01/roteiro.md` | Roteiro para o Felipe ler e aprovar |
 | `docs/content/aula-motion/novice-01/storyboard.md` | Quadros reais do vídeo (gerados) |
 | `scripts/aula-motion/voices.mjs` | Gera as vozes UMA vez e guarda (com custo) |
-| `scripts/aula-motion/novice-01/cena.json` | Textos da tela, cena de cada fala, poses, quadros do storyboard |
-| `scripts/aula-motion/novice-01/scene.html` | A cena: HTML/SVG com `setup(data)` e `seek(t)` determinístico |
-| `scripts/aula-motion/make-aula.mjs` | Linha do tempo, quadros, mixagem e mp4 |
+| `docs/content/aula-motion/novice-01/cenas/*.jpg` | Imagens das cenas (geradas uma vez e guardadas) |
+| `scripts/aula-motion/palavras.mjs` | Tempo de cada palavra das falas (uma vez, guardado em `audio/<id>.words.json`) |
+| `scripts/aula-motion/novice-01/aula.html` | A cena: HTML/SVG com `setup(data)` e `seek(t)` determinístico |
+| `scripts/aula-motion/novice-01/render-aula.mjs` | Linha do tempo, storyboard, mixagem, mp4, legenda e `timings.json` |
 | `scripts/aula-motion/build-prototipo.mjs` + `prototipo.template.html` | Protótipo navegável (Artifact) |
 
 ## Regras do projeto (obrigatórias)
@@ -46,29 +47,25 @@ tópico pede. Arquivos do piloto:
 - **Não mexa no app (`apps/mobile`), no banco nem publique OTA.** As aulas ficam em `docs/` e `scripts/`
   até o Felipe decidir como entram no app.
 
-## Direção de animação (regra do Felipe, 16/11/2026)
+## Direção visual (decidida com o Felipe em 16 a 18/11/2026)
 
-A 1ª versão do piloto tinha personagens pulsando e pulando no ritmo da voz, e o Felipe reprovou
-("péssimo"). A referência é aula de app premium e motion de marca.
+O Felipe reprovou, em sequência: personagem pulsando no ritmo da voz, recorte das imagens, boneco SVG da
+Charlotte ("cópia barata"), bonecos geométricos, boca sincronizada por IA ("dura, engessada") e gestos em vídeo
+por IA ("movimentos muito ruins"). Aprovou o formato **sem personagem falando**:
 
-- **NUNCA personagem pulsando ou pulando.** Nada de escala, pulo ou tremida ligados ao volume da fala,
-  nem entrada com "overshoot" (efeito elástico). Os personagens são imagens paradas: tratá-las como tal.
-- Enquanto fala, o personagem fica **parado e bem enquadrado**. No máximo um respiro de 0,25% de escala,
-  quase imperceptível.
-- **Gestos das poses do app tocam UMA vez**, no momento certo (aceno no "Hi!", apresentação no início da
-  explicação, comemoração na revisão), e voltam ao quadro neutro. Nunca em loop nem indo e voltando.
-- **Quem fala ganha destaque por enquadramento, foco e luz**: a câmera anda alguns pixels até ele, uma luz
-  suave aparece no chão atrás dele, e quem escuta fica levemente desfocado e apagado. Nunca por escala.
-- **Câmera**: zoom e pan lentos durante a cena, com parallax (o fundo anda menos que os personagens).
-- **Entradas e saídas** com easing suave (quart), por opacidade e deslize curto. Personagem não "anda"
-  aos pulos: aparece deslizando ou sai deslizando.
-- **Tipografia cinética**: nos cartões, o fundo se revela por máscara e as palavras sobem uma a uma; nas
-  falas em inglês, cada palavra sobe no momento em que é dita; no português, o marca-texto Volt corre
-  sobre o inglês quando ele é dito.
-- **Transições** por máscara circular com borda Volt (ou corte limpo). Nada de cortina inclinada.
-- Antes de renderizar a aula inteira, mande ao Felipe 2 ou 3 quadros ou um trecho de 10 a 15 s
-  (`--range=a:b`) quando mudar o estilo. Os helpers prontos ficam em `scripts/aula-motion/novice-01/scene.html`
-  (`placeChar`, `pose`, `talk`, `camera`, `showCard`, `wordsIn`, máscara em `seek`).
+- **Quadrinho animado nas cenas**: imagem parada da cena (Charlotte e Igor em 3D, gerada uma vez com as imagens
+  de referência deles) com câmera lenta (zoom e pan com easing, respiro quase imperceptível), luz de sol e poeira.
+  **Ninguém mexe a boca nem o corpo.** A câmera vai até quem fala.
+- **Balões** abaixo do rosto de quem fala (ou ao lado, quando há espaço vazio), com o nome, cada palavra
+  acendendo no momento em que é dita (tempos de `palavras.mjs`) e a tradução embaixo.
+- **Explicação em tipografia animada** num fundo Tinta com manchas de cor desfocadas e granulado: o inglês se
+  monta palavra por palavra no ritmo da voz e fica Volt; o português entra embaixo; a resposta vira pílula Volt.
+  A Charlotte aparece como narradora (foto e nome no canto). Nada de lousa (fica "escolinha").
+- **Cenas desenhadas em código** quando a ideia é abstrata (ex.: céu que muda de manhã para a noite, relógio 9:00).
+- **Transições** por máscara circular com borda Volt e som de passagem; toque suave em cada palavra da
+  tipografia; dois tons na revelação da resposta certa.
+- **NUNCA personagem pulsando, pulando ou falando por animação.**
+- Antes de renderizar a aula inteira de um estilo novo, mande 2 ou 3 quadros ao Felipe.
 
 ## Processo
 
@@ -80,10 +77,11 @@ A 1ª versão do piloto tinha personagens pulsando e pulando no ritmo da voz, e 
   com as mesmas frases: o aluno vê no vídeo e depois pratica na trilha.
 
 ### 2. Roteiro (`roteiro.md`) e `aula.json`
-- 60 a 90 s de vídeo (sem contar as pausas). Use cerca de 15 falas; o piloto tem 64 s de fala e 90 s no total.
-- Estrutura que funcionou: título (3 s) → Charlotte se apresenta para a câmera → cena curta de diálogo
-  com um personagem → cartões explicando as expressões → **pausa 1** → nova ideia → **pausa 2** →
-  outra cena → **pausa 3 (de fala)** → revisão com todas as expressões → cartão final "Agora é a sua vez!".
+- 60 a 90 s de vídeo (sem contar as pausas). Use cerca de 15 falas; o piloto tem 64 s de fala e 91 s no total.
+- Estrutura que funcionou: título (3 s) sobre a cena → a câmera chega na Charlotte e ela se apresenta (texto ao
+  lado) → diálogo curto em balões → tipografia explicando a expressão → **pausa 1** na cena → nova ideia
+  (cena em código) → **pausa 2** → o personagem fala para a câmera → tipografia → despedida em balões →
+  tipografia → **pausa 3 (de fala)** com o personagem → revisão com todas as expressões → cartão final Volt.
 - 3 a 5 expressões-chave (`keys`), com tradução.
 - Em `aula.json`, texto entre chaves `{assim}` é inglês destacado na tela; a voz lê sem as chaves.
   Falas em inglês levam `lang: "en"` e `pt` (tradução da legenda).
@@ -108,29 +106,34 @@ A 1ª versão do piloto tinha personagens pulsando e pulando no ritmo da voz, e 
   mudou, reaproveita e não cobra. Mudou uma fala? Só ela é refeita. Nunca apague `audio/` para "refazer tudo".
 - Informe no fim: créditos de personagem e US$ gastos (o script imprime).
 
-### 4. Cena e vídeo
-- Copie `scripts/aula-motion/novice-01/` para `scripts/aula-motion/<id>/` e ajuste `cena.json`
-  (textos da tela, `sceneByLine`, poses, quadros do storyboard) e o `scene.html` (cartões e coreografia
-  de cada cena). Cada troca de cena custa ~1,2 s de cortina: reaproveite cenas para caber em 90 s.
-- Poses animadas da Charlotte (fundo transparente, quadros extraídos sozinhos):
-  `apps/mobile/assets/charlotte-welcome.webp` (fala/apresenta), `charlotte-greeting.webp` (aceno; toca uma vez,
-  em 22 quadros por segundo), `charlotte-cheer-full.webp` (comemora), `charlotte-error.webp`;
-  paradas: `charlotte-pointing-left.png`, `charlotte-bust.png`. Igorfina de corpo inteiro:
-  `scripts/aula-motion/assets/igorfina-corpo-inteiro.png`. Não gere personagem por API de imagem (muda o
-  rosto): pose nova o Felipe faz e manda.
-- Requisitos: `ffmpeg`, `python3` com Pillow e, uma vez, `npm install` em `scripts/aula-motion`
-  (playwright-core 1.65.0; o Chromium vem do cache do Playwright em `~/Library/Caches/ms-playwright`).
+### 4. Imagens das cenas (custo!)
+- 2 a 4 imagens por aula, 16:9, geradas **uma vez** e guardadas em `<id>/cenas/`. Reaproveite as cenas que
+  já existem (a rua do piloto serve para várias aulas) e só gere o que o roteiro pede.
+- Onde: gerador de imagem do plano de voz (aba Image & Video, modelo Seedream 5.5, 16:9, 2K, 1 imagem), com as
+  3 referências salvas: `charlotte-retrato.png` (Image 1), `igorfina-corpo-inteiro.png` (Image 2) e
+  `igorfina-avatar.png` (Image 3). Use "Recreate" numa imagem anterior para herdar as referências e troque só o
+  texto. Escreva "Image 1" sem "@" (o "@" abre um menu). Termine sempre com "Pixar-like 3D render, cinematic 16:9.
+  No text, no letters, no signs with words." e deixe espaço vazio onde vão balões e texto.
+- Cada imagem gasta 1 do saldo de imagens do plano (o piloto usou 3). Baixe, converta para JPEG
+  (`sips -s format jpeg`) e marque no `aula.html` o ponto da cabeça de cada personagem (coordenadas em 1280x723).
+
+### 5. Cena e vídeo
+- Tempos das palavras (uma vez, custo de centavos): `node scripts/aula-motion/palavras.mjs docs/content/aula-motion/<id> l01 l02 ...`
+- Copie `scripts/aula-motion/novice-01/aula.html` e `render-aula.mjs` para `scripts/aula-motion/<id>/` e ajuste:
+  camadas (`L-*`), `SEQ` (ordem das cenas), uma função `R.<cena>(t)` por camada e a linha do tempo no render.
+- Requisitos: `ffmpeg` e, uma vez, `npm install` em `scripts/aula-motion` (playwright-core 1.65.0; o Chromium vem
+  do cache do Playwright em `~/Library/Caches/ms-playwright`).
 - Itere pelo storyboard (rápido) e olhe os quadros antes de renderizar:
   ```
-  node scripts/aula-motion/make-aula.mjs <id> --stills
-  node scripts/aula-motion/make-aula.mjs <id> --range=8:23   # trecho de 15 s para aprovar estilo
-  node scripts/aula-motion/make-aula.mjs <id>          # ~10 min, rode em segundo plano
+  node scripts/aula-motion/<id>/render-aula.mjs --stills
+  node scripts/aula-motion/<id>/render-aula.mjs          # ~6 min, rode em segundo plano
   ```
-  Confira nos quadros: texto cortado ou sobreposto, resposta visível na pergunta, logo legível no fundo.
+  Confira nos quadros: balão tapando rosto, texto cortado ou sobreposto, resposta visível na pergunta.
 - Saída em `docs/content/aula-motion/<id>/`: `aula.mp4`, `poster.jpg`, `legendas.vtt`, `timings.json`,
   `storyboard/*.png`. Escreva `storyboard.md` com os quadros e o que acontece em cada um.
+- A versão vertical antiga (`make-aula.mjs`, `scene.html`, `cena.json`) fica só como histórico.
 
-### 5. Pausas interativas e protótipo
+### 6. Pausas interativas e protótipo
 - `timings.json` traz, para cada pausa, `at` (onde o player para), `showAt` e `revealEnd`, e as falas
   com início e fim (legenda interativa).
 - Protótipo: `node scripts/aula-motion/build-prototipo.mjs <id>` gera `prototipo.html` (na pasta da aula). Publique com
@@ -138,8 +141,8 @@ A 1ª versão do piloto tinha personagens pulsando e pulando no ritmo da voz, e 
   e `audio/f*.mp3` da pasta da aula, e `capabilities: {dictation: {}}` (microfone onde o navegador
   permitir; no resto, o aluno toca na resposta). Republique no mesmo endereço quando refizer a aula.
 
-### 6. Entrega
+### 7. Entrega
 - Commit na branch da tarefa (sem PR, salvo pedido). Não faça commit de `scripts/aula-motion/.cache`
   nem de `node_modules`.
 - Relatório ao Felipe: link do protótipo, caminho do mp4 (tamanho em MB e duração), custo das vozes
-  (créditos de personagem e US$), e o que mudou em relação ao piloto.
+  (créditos de personagem e US$), imagens geradas, e o que mudou em relação ao piloto.

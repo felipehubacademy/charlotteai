@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<!-- Aula inteira (horizontal 1280x720) no formato sem personagem falando:
+     quadrinho animado nas cenas (imagem parada + câmera + balões no ritmo da voz),
+     explicação em tipografia animada, cenas de hora do dia desenhadas em código e as 3 pausas.
+     window.setup(data) recebe a linha do tempo de render-aula.mjs; window.seek(t) desenha o quadro t. -->
+<style>
+  @font-face { font-family: "Bricolage"; font-weight: 700; src: url("../../../apps/mobile/assets/fonts/BricolageGrotesque96pt-Bold.ttf"); }
+  @font-face { font-family: "Bricolage"; font-weight: 800; src: url("../../../apps/mobile/assets/fonts/BricolageGrotesque96pt-ExtraBold.ttf"); }
+  :root { --volt: #DCFF4A; --tinta: #16131F; --pink: #FF4F8B; --papel: #FAF7F0; --violeta: #6B4BFF; --verde: #2BD97C; }
+  html, body { margin: 0; width: 1280px; height: 720px; overflow: hidden; background: var(--tinta); font-family: system-ui, sans-serif; }
+  .layer { position: absolute; inset: 0; overflow: hidden; display: none; }
+  .w { display: inline-block; }
+  /* ---------- cenas com imagem ---------- */
+  .img { position: absolute; left: 0; top: 0; width: 1280px; height: 723px; transform-origin: 0 0; }
+  .sun { position: absolute; inset: 0; mix-blend-mode: screen; background: radial-gradient(60% 70% at 78% 8%, rgba(255,214,140,.35), transparent 60%); }
+  .dust { position: absolute; inset: 0; }
+  .vig { position: absolute; inset: 0; background: radial-gradient(120% 100% at 50% 45%, transparent 55%, rgba(22,19,31,.45)); }
+  .bubble { position: absolute; background: #fff; border-radius: 26px; padding: 16px 22px 18px; box-shadow: 0 18px 40px rgba(22,19,31,.28); opacity: 0; }
+  .bubble::after { content: ""; position: absolute; left: var(--tx, 50%); top: -14px; margin-left: -14px; border: 14px solid transparent; border-top: 0; border-bottom-color: #fff; }
+  .bubble.side::after { left: auto; right: -14px; top: var(--ty, 40px); margin: -14px 0 0; border: 14px solid transparent; border-right: 0; border-left-color: #fff; }
+  .bubble .who { font: 800 14px Bricolage, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--violeta); }
+  .bubble .en { font: 800 40px/1.1 Bricolage, sans-serif; color: var(--tinta); letter-spacing: -.01em; margin-top: 2px; white-space: nowrap; }
+  .bubble .pt { font: 500 20px system-ui, sans-serif; color: #6A6478; margin-top: 6px; }
+  #shade { position: absolute; inset: 0; background: var(--tinta); }
+  #title { position: absolute; left: 80px; top: 230px; color: var(--papel); }
+  #title .k { font: 800 22px Bricolage, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--volt); }
+  #title .t { font: 800 108px/1 Bricolage, sans-serif; letter-spacing: -.03em; margin-top: 10px; }
+  #intro { position: absolute; left: 0; top: 0; bottom: 0; width: 640px; background: linear-gradient(90deg, rgba(22,19,31,.86) 0%, rgba(22,19,31,.6) 70%, transparent); opacity: 0; }
+  #intro .box { position: absolute; left: 70px; top: 150px; color: var(--papel); }
+  #intro .hi { font: 800 34px Bricolage, sans-serif; color: rgba(250,247,240,.75); }
+  #intro .name { font: 800 104px/1 Bricolage, sans-serif; letter-spacing: -.03em; margin-top: 4px; }
+  #intro .role { display: inline-block; margin-top: 14px; padding: 6px 14px; border-radius: 999px; background: var(--volt); color: var(--tinta); font: 800 18px Bricolage, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+  #intro .today { margin-top: 46px; font: 600 24px system-ui, sans-serif; color: rgba(250,247,240,.65); }
+  #intro .goal { font: 800 44px/1.1 Bricolage, sans-serif; margin-top: 6px; max-width: 520px; }
+  #intro .go { display: inline-block; margin-top: 26px; padding: 12px 24px 14px; border-radius: 999px; background: var(--pink); color: var(--tinta); font: 800 30px Bricolage, sans-serif; }
+  /* ---------- tipografia ---------- */
+  .type { background: var(--tinta); }
+  .blobs { position: absolute; inset: -100px; filter: blur(70px); opacity: .55; }
+  .blobs i { position: absolute; border-radius: 50%; }
+  .grain { position: absolute; inset: 0; opacity: .08; width: 1280px; height: 720px; }
+  .big { position: absolute; left: 640px; font: 800 104px/1 Bricolage, sans-serif; letter-spacing: -.03em; color: var(--papel); white-space: nowrap; }
+  .lab { position: absolute; left: 640px; font: 600 26px system-ui, sans-serif; color: rgba(250,247,240,.6); white-space: nowrap; }
+  .pt2 { position: absolute; left: 640px; font: 800 64px/1 Bricolage, sans-serif; color: var(--papel); white-space: nowrap; letter-spacing: -.02em; }
+  .pill { position: absolute; left: 640px; background: var(--volt); color: var(--tinta); border-radius: 999px; padding: 18px 44px 22px; font: 800 72px/1 Bricolage, sans-serif;
+          white-space: nowrap; letter-spacing: -.02em; display: flex; align-items: center; gap: 22px; opacity: 0; }
+  .pill svg { width: 52px; height: 52px; }
+  .badge { position: absolute; left: 640px; display: flex; align-items: center; gap: 18px; color: var(--papel); font: 800 48px Bricolage, sans-serif; white-space: nowrap; opacity: 0; }
+  .badge b { display: grid; place-items: center; width: 84px; height: 84px; border-radius: 50%; background: var(--pink); color: var(--tinta); font: 800 34px Bricolage, sans-serif; }
+  /* revisão */
+  #rv-h { position: absolute; left: 640px; top: 84px; transform: translateX(-50%); font: 800 22px Bricolage, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--volt); }
+  #rv-wrap { position: absolute; left: 50px; right: 50px; top: 150px; display: flex; flex-wrap: wrap; justify-content: center; gap: 22px 20px; }
+  .rv { position: relative; padding: 18px 28px 20px; border-radius: 24px; background: rgba(250,247,240,.07); border: 2px solid rgba(250,247,240,.14); opacity: 0; }
+  .rv .e { font: 800 46px/1 Bricolage, sans-serif; color: var(--papel); white-space: nowrap; letter-spacing: -.01em; }
+  .rv .p { font: 500 20px system-ui, sans-serif; color: rgba(250,247,240,.6); margin-top: 8px; }
+  .rv.on { background: var(--volt); border-color: var(--volt); }
+  .rv.on .e { color: var(--tinta); } .rv.on .p { color: rgba(22,19,31,.7); }
+  #rv-go { position: absolute; left: 640px; top: 590px; font: 800 40px Bricolage, sans-serif; color: var(--papel); white-space: nowrap; opacity: 0; }
+  #rv-go span { color: var(--volt); }
+  /* ---------- céu (hora do dia) ---------- */
+  #sky-bg { position: absolute; inset: 0; }
+  #stars { position: absolute; inset: 0; }
+  #orb { position: absolute; width: 150px; height: 150px; margin: -75px 0 0 -75px; border-radius: 50%; }
+  #moon { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; }
+  #hills { position: absolute; left: -40px; right: -40px; bottom: 0; height: 230px; }
+  #sky-h { position: absolute; left: 640px; top: 74px; font: 600 28px system-ui, sans-serif; color: var(--papel); white-space: nowrap; text-shadow: 0 2px 12px rgba(22,19,31,.3); }
+  #sky-h b { font: 800 30px Bricolage, sans-serif; color: var(--volt); }
+  .tod { position: absolute; top: 420px; width: 330px; padding: 22px 24px 24px; border-radius: 28px; background: rgba(22,19,31,.82); color: var(--papel); opacity: 0;
+         box-shadow: 0 18px 40px rgba(22,19,31,.3); border: 3px solid transparent; }
+  .tod svg { width: 54px; height: 54px; }
+  .tod .e { font: 800 46px/1 Bricolage, sans-serif; margin-top: 10px; white-space: nowrap; letter-spacing: -.01em; }
+  .tod .p { font: 600 21px system-ui, sans-serif; color: rgba(250,247,240,.62); margin-top: 8px; }
+  .tod.on { border-color: var(--volt); }
+  .tod.on .e { color: var(--volt); }
+  #gn { position: absolute; left: 640px; top: 200px; text-align: center; color: var(--papel); opacity: 0; }
+  #gn .e { font: 800 120px/1 Bricolage, sans-serif; letter-spacing: -.03em; white-space: nowrap; }
+  #gn .x { margin-top: 26px; font: 700 34px Bricolage, sans-serif; white-space: nowrap; }
+  #gn .x s { text-decoration-thickness: 5px; text-decoration-color: var(--pink); color: rgba(250,247,240,.7); }
+  #gn .y { margin-top: 18px; font: 600 28px system-ui, sans-serif; color: rgba(250,247,240,.75); white-space: nowrap; }
+  #stamp { position: absolute; left: 920px; top: 330px; padding: 10px 26px 14px; border: 5px solid var(--pink); border-radius: 18px; color: var(--pink); font: 800 52px Bricolage, sans-serif; opacity: 0; }
+  #clock { position: absolute; left: 640px; top: 150px; text-align: center; color: var(--tinta); opacity: 0; }
+  #clock .h { font: 800 150px/1 Bricolage, sans-serif; letter-spacing: -.03em; }
+  #clock .s { font: 700 34px Bricolage, sans-serif; margin-top: 6px; }
+  /* ---------- final ---------- */
+  #end { background: var(--volt); }
+  #end .t { position: absolute; left: 640px; top: 200px; font: 800 112px/1 Bricolage, sans-serif; color: var(--tinta); letter-spacing: -.03em; white-space: nowrap; }
+  #end .s { position: absolute; left: 640px; top: 350px; width: 760px; text-align: center; font: 600 30px/1.35 system-ui, sans-serif; color: rgba(22,19,31,.78); }
+  #end .b { position: absolute; left: 640px; top: 470px; padding: 20px 46px 22px; border-radius: 999px; background: var(--tinta); color: var(--volt); font: 800 34px Bricolage, sans-serif; white-space: nowrap; }
+  #end img { position: absolute; left: 640px; bottom: 50px; height: 40px; transform: translateX(-50%); }
+  /* ---------- por cima de tudo ---------- */
+  #q { position: absolute; left: 640px; bottom: 50px; width: 800px; background: rgba(22,19,31,.93); border-radius: 30px; padding: 22px 26px 24px;
+       color: var(--papel); opacity: 0; box-shadow: 0 20px 50px rgba(0,0,0,.35); z-index: 20; }
+  #q .h { display: flex; align-items: center; gap: 14px; font: 800 30px/1.2 Bricolage, sans-serif; }
+  #q .h svg { flex: none; width: 46px; height: 46px; }
+  #q .opts { display: flex; gap: 12px; margin-top: 16px; }
+  #q .o { flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 10px; border-radius: 18px; border: 2px solid rgba(250,247,240,.2); font: 700 24px Bricolage, sans-serif; opacity: 0; white-space: nowrap; }
+  #q .o.ok { background: var(--verde); border-color: var(--verde); color: var(--tinta); }
+  #turn { position: absolute; left: 60px; top: 56px; background: var(--pink); color: var(--tinta); font: 800 34px Bricolage, sans-serif; padding: 10px 22px 12px; border-radius: 16px; opacity: 0; z-index: 20; }
+  #narr { position: absolute; left: 34px; bottom: 30px; display: flex; align-items: center; gap: 12px; opacity: 0; z-index: 20; }
+  #narr .av { width: 58px; height: 58px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 3px var(--volt); background: #EDE7DD; }
+  #narr .av img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; }
+  #narr .n { font: 800 18px Bricolage, sans-serif; color: var(--papel); text-shadow: 0 1px 8px rgba(22,19,31,.5); }
+  #narr .s { font: 500 14px system-ui, sans-serif; color: rgba(250,247,240,.75); text-shadow: 0 1px 8px rgba(22,19,31,.5); }
+  #logo { position: absolute; right: 34px; top: 30px; height: 30px; z-index: 20; }
+  #mask { position: absolute; inset: 0; pointer-events: none; z-index: 30; }
+</style></head>
+<body>
+<!-- rua: título, a Charlotte se apresenta, diálogo, pausa 1 -->
+<div class="layer" id="L-street">
+  <img class="img" src="../../../docs/content/aula-motion/novice-01/cenas/rua.jpg">
+  <div class="sun"></div><canvas class="dust" width="1280" height="720"></canvas><div class="vig"></div>
+  <div id="shade"></div>
+  <div id="title"><div class="k">Aula 1 · Novice</div><div class="t"><span class="w">Oi!</span> <span class="w">Tudo</span> <span class="w">bem?</span></div></div>
+  <div id="intro"><div class="box">
+    <div class="hi">Oi! Eu sou a</div><div class="name">Charlotte</div><div class="role">sua tutora</div>
+    <div class="today">Hoje você vai aprender a</div><div class="goal">cumprimentar alguém em inglês</div>
+    <div class="go">Vem comigo!</div></div></div>
+  <div class="bubble" id="b-l02"></div><div class="bubble" id="b-l03"></div><div class="bubble" id="b-l04"></div><div class="bubble" id="b-ask1"></div>
+</div>
+<!-- How are you? -->
+<div class="layer type" id="L-type1">
+  <div class="blobs"><i style="width:520px;height:520px;background:#6B4BFF;left:-60px;top:-40px"></i><i style="width:420px;height:420px;background:#DCFF4A;right:-40px;bottom:-60px;opacity:.5"></i><i style="width:360px;height:360px;background:#FF4F8B;right:260px;top:-120px;opacity:.45"></i></div>
+  <canvas class="grain" width="640" height="360"></canvas>
+  <div class="big" id="k1-how"><span class="w">How</span> <span class="w">are</span> <span class="w">you?</span></div>
+  <div class="lab" id="k1-eq">é o nosso</div>
+  <div class="pt2" id="k1-pt"><span class="w">tudo</span> <span class="w">bem?</span></div>
+  <div class="lab" id="k1-lab">a resposta mais comum</div>
+  <div class="pill" id="k1-ans"><span><span class="w">I'm</span> <span class="w">good,</span> <span class="w">thanks!</span></span>
+    <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" fill="#16131F"/><path class="chk" d="M14 27 L23 36 L39 18" fill="none" stroke="#DCFF4A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</div>
+<!-- céu: hora do dia, Good night, pausa 2 -->
+<div class="layer" id="L-sky">
+  <div id="sky-bg"></div><canvas id="stars" width="1280" height="720"></canvas>
+  <div id="orb"></div>
+  <svg id="moon" viewBox="0 0 120 120"><defs><mask id="mm"><rect width="120" height="120" fill="#fff"/><circle cx="84" cy="44" r="46" fill="#000"/></mask></defs><circle cx="60" cy="60" r="52" fill="#FAF7F0" mask="url(#mm)"/></svg>
+  <svg id="hills" viewBox="0 0 1360 230" preserveAspectRatio="none"><path id="h1" d="M0 120 C200 40 420 60 620 110 C820 160 1080 70 1360 100 V230 H0 Z"/><path id="h2" d="M0 170 C260 120 520 150 760 175 C1000 200 1200 140 1360 160 V230 H0 Z"/></svg>
+  <div id="sky-h">Cumprimente pela <b>hora do dia</b></div>
+  <div class="tod" id="tod0" style="left:95px"><svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="11" fill="#FFC94A"/><g stroke="#FFC94A" stroke-width="4" stroke-linecap="round"><path d="M27 4v7M27 43v7M4 27h7M43 27h7M10.7 10.7l5 5M38.3 38.3l5 5M10.7 43.3l5-5M38.3 15.7l5-5"/></g></svg>
+    <div class="e">Good morning</div><div class="p">de manhã · bom dia</div></div>
+  <div class="tod" id="tod1" style="left:475px"><svg viewBox="0 0 54 54"><path d="M12 36a15 15 0 0 1 30 0z" fill="#FF8A3D"/><g stroke="#FF8A3D" stroke-width="4" stroke-linecap="round"><path d="M27 8v7M9 18l5 4M45 18l-5 4"/></g><path d="M4 42h46" stroke="#FAF7F0" stroke-width="4" stroke-linecap="round"/></svg>
+    <div class="e">Good afternoon</div><div class="p">à tarde · boa tarde</div></div>
+  <div class="tod" id="tod2" style="left:855px"><svg viewBox="0 0 54 54"><defs><mask id="tm"><rect width="54" height="54" fill="#fff"/><circle cx="36" cy="20" r="17" fill="#000"/></mask></defs><circle cx="27" cy="27" r="20" fill="#C9BDFF" mask="url(#tm)"/></svg>
+    <div class="e">Good evening</div><div class="p">à noite · boa noite</div></div>
+  <div id="gn"><div class="e">Good night</div><div class="x">não é <s>cumprimento</s></div><div class="y">só para se despedir, antes de dormir</div></div>
+  <div id="stamp">tchau!</div>
+  <div id="clock"><div class="h">9:00</div><div class="s">da manhã · você chega na aula</div></div>
+</div>
+<!-- o Igor para a câmera (l10) e de novo na pausa 3 -->
+<div class="layer" id="L-igor">
+  <img class="img" src="../../../docs/content/aula-motion/novice-01/cenas/igor-camera.jpg">
+  <div class="sun"></div><canvas class="dust" width="1280" height="720"></canvas><div class="vig"></div>
+  <div class="bubble side" id="b-l10"></div><div class="bubble side" id="b-ask3"></div>
+</div>
+<!-- Nice to meet you -->
+<div class="layer type" id="L-type2">
+  <div class="blobs"><i style="width:520px;height:520px;background:#FF4F8B;right:-60px;top:-60px;opacity:.6"></i><i style="width:460px;height:460px;background:#6B4BFF;left:-80px;bottom:-80px"></i><i style="width:300px;height:300px;background:#DCFF4A;left:380px;top:-140px;opacity:.4"></i></div>
+  <canvas class="grain" width="640" height="360"></canvas>
+  <div class="big" id="k2-en"><span class="w">Nice</span> <span class="w">to</span> <span class="w">meet</span> <span class="w">you</span></div>
+  <div class="lab" id="k2-eq">é</div>
+  <div class="pt2" id="k2-pt"><span class="w">prazer</span> <span class="w">em</span> <span class="w">te</span> <span class="w">conhecer</span></div>
+  <div class="badge" id="k2-1"><b>1ª</b><span>só na primeira vez</span></div>
+  <div class="lab" id="k2-lab">que você vê a pessoa</div>
+</div>
+<!-- despedida -->
+<div class="layer" id="L-bye">
+  <img class="img" src="../../../docs/content/aula-motion/novice-01/cenas/despedida.jpg">
+  <div class="sun"></div><canvas class="dust" width="1280" height="720"></canvas><div class="vig"></div>
+  <div class="bubble" id="b-l12"></div><div class="bubble" id="b-l13"></div>
+</div>
+<!-- See you later -->
+<div class="layer type" id="L-type3">
+  <div class="blobs"><i style="width:520px;height:520px;background:#2BD97C;left:-80px;top:-60px;opacity:.45"></i><i style="width:460px;height:460px;background:#6B4BFF;right:-60px;bottom:-80px"></i><i style="width:300px;height:300px;background:#FF4F8B;left:520px;bottom:-160px;opacity:.4"></i></div>
+  <canvas class="grain" width="640" height="360"></canvas>
+  <div class="big" id="k3-en"><span class="w">See</span> <span class="w">you</span> <span class="w">later</span></div>
+  <div class="lab" id="k3-eq">é o nosso</div>
+  <div class="pt2" id="k3-pt"><span class="w">até</span> <span class="w">mais</span></div>
+</div>
+<!-- revisão -->
+<div class="layer type" id="L-review">
+  <div class="blobs"><i style="width:520px;height:520px;background:#6B4BFF;left:-60px;top:-40px"></i><i style="width:420px;height:420px;background:#DCFF4A;right:-40px;bottom:-60px;opacity:.45"></i></div>
+  <canvas class="grain" width="640" height="360"></canvas>
+  <div id="rv-h">Revisando</div>
+  <div id="rv-wrap">
+  <div class="rv" id="rv0"><div class="e">How are you?</div><div class="p">Tudo bem?</div></div>
+  <div class="rv" id="rv1"><div class="e">I'm good, thanks!</div><div class="p">Tô bem, obrigado!</div></div>
+  <div class="rv" id="rv2"><div class="e">Good morning</div><div class="p">Bom dia</div></div>
+  <div class="rv" id="rv3"><div class="e">Nice to meet you</div><div class="p">Prazer em te conhecer</div></div>
+  <div class="rv" id="rv4"><div class="e">See you later</div><div class="p">Até mais</div></div>
+  </div>
+  <div id="rv-go">Agora é a <span>sua vez</span> de praticar!</div>
+</div>
+<!-- cartão final -->
+<div class="layer" id="L-end">
+  <div id="end" style="position:absolute;inset:0">
+    <div class="t">Agora é a sua vez!</div>
+    <div class="s">Pratique o tópico “Oi! Tudo bem?” na trilha e converse com a Charlotte.</div>
+    <div class="b">Praticar agora</div>
+    <img src="../../../branding/logo/queizy-logo-preto.svg">
+  </div>
+</div>
+
+<div id="turn">Sua vez!</div>
+<div id="q"><div class="h"></div><div class="opts"></div></div>
+<div id="narr"><div class="av"><img src="../../../apps/mobile/assets/charlotte-bust.png"></div><div><div class="n">Charlotte</div><div class="s">sua tutora</div></div></div>
+<img id="logo" src="../../../branding/logo/queizy-logo-branco.svg">
+<svg id="mask" width="1280" height="720"><circle id="ring" cx="640" cy="360" r="0" fill="none" stroke="#DCFF4A" stroke-width="10"/></svg>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const prog = (t, a, b) => clamp((t - a) / (b - a));
+  const ease = (x) => (x < .5 ? 8 * x ** 4 : 1 - (-2 * x + 2) ** 4 / 2);
+  const out = (x) => 1 - (1 - x) ** 4;
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const rgb = (c) => (c.startsWith("#") ? [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16)) : c.match(/\d+/g).map(Number));
+  const mix = (c1, c2, k) => { const a = rgb(c1), b = rgb(c2); return `rgb(${a.map((v, i) => Math.round(lerp(v, b[i], k))).join(",")})`; };
+  let D, T, L, SEQ;
+  const wt = (id, i) => L[id].start + D.words[id][Math.min(i, D.words[id].length - 1)].start;
+  const wend = (id, i) => L[id].start + D.words[id][Math.min(i, D.words[id].length - 1)].end;
+  const words = (id, idx) => idx.map((i) => wt(id, i));
+  // pontos das cabeças em cada imagem (coordenadas da imagem em 1280x723)
+  const HEAD = {
+    street: { charlotte: [462, 196], igor: [811, 158] },
+    igor: { igor: [832, 174] },
+    bye: { charlotte: [384, 206], igor: [960, 238] },
+  };
+
+  // ---------- texturas determinísticas ----------
+  const motes = Array.from({ length: 60 }, (_, i) => ({ x: (i * 397) % 1280, y: (i * 211) % 720, r: 1 + (i % 3), s: .2 + (i % 5) * .08, p: i }));
+  function dust(cv, t) {
+    const c = cv.getContext("2d"); c.clearRect(0, 0, 1280, 720);
+    for (const m of motes) {
+      const x = (m.x + t * 14 * m.s + Math.sin(t * .6 + m.p) * 12) % 1280, y = (m.y - t * 8 * m.s + 720) % 720;
+      c.fillStyle = `rgba(255,236,190,${.18 + .12 * Math.sin(t + m.p)})`; c.beginPath(); c.arc(x, y, m.r, 0, 6.3); c.fill();
+    }
+  }
+  function grains() {
+    document.querySelectorAll(".grain").forEach((cv, n) => {
+      const c = cv.getContext("2d"), im = c.createImageData(640, 360); let s = 49297 + n * 7;
+      for (let i = 0; i < im.data.length; i += 4) { s = (s * 9301 + 49297) % 233280; const v = (s / 233280) * 255; im.data[i] = im.data[i + 1] = im.data[i + 2] = v; im.data[i + 3] = 255; }
+      c.putImageData(im, 0, 0);
+    });
+    const c = $("stars").getContext("2d");
+    for (let i = 0; i < 110; i++) { const x = (i * 571) % 1280, y = (i * 263) % 470, r = .6 + (i % 4) * .45; c.fillStyle = `rgba(250,247,240,${.35 + (i % 5) * .12})`; c.beginPath(); c.arc(x, y, r, 0, 6.3); c.fill(); }
+  }
+
+  function bubbleHTML(who, ws, pt) {
+    return `<div class="who">${who}</div><div class="en">${ws.map((w) => `<span class="w">${w}</span>`).join(" ")}</div>${pt ? `<div class="pt">${pt}</div>` : ""}`;
+  }
+
+  window.setup = (d) => {
+    D = d; T = d.T; L = d.lines;
+    $("b-l02").innerHTML = bubbleHTML("Charlotte", ["Hi,", "Igor!", "How", "are", "you?"], "Oi, Igor! Tudo bem?");
+    $("b-l03").innerHTML = bubbleHTML("Igor", ["I'm", "good,", "thanks!", "And", "you?"], "Tô bem, obrigado! E você?");
+    $("b-l04").innerHTML = bubbleHTML("Charlotte", ["I'm", "great!"], "Tô ótima!");
+    $("b-ask1").innerHTML = bubbleHTML("Igor", ["How", "are", "you?"], "");
+    $("b-l10").innerHTML = bubbleHTML("Igor", ["Hi!", "I'm", "Igor.", "Nice", "to", "meet", "you!"], "Oi! Eu sou o Igor. Prazer em te conhecer!");
+    $("b-l12").innerHTML = bubbleHTML("Igor", ["Well,", "I", "have", "to", "go.", "See", "you", "later!"], "Bom, preciso ir. Até mais!");
+    $("b-l13").innerHTML = bubbleHTML("Charlotte", ["See", "you!"], "Até!");
+    $("b-ask3").innerHTML = bubbleHTML("Alguém novo", ["Hi,", "I'm", "Igor."], "");
+    // ordem das cenas; cada troca é uma máscara circular com borda Volt a partir de "o"
+    SEQ = [
+      { id: "street", at: -1 },
+      { id: "type1", at: T.type1, o: [640, 360] },
+      { id: "street", at: T.street2, o: [860, 260] },
+      { id: "sky", at: T.sky, o: [640, 360] },
+      { id: "igor", at: T.igor, o: [830, 200] },
+      { id: "type2", at: T.type2, o: [640, 360] },
+      { id: "bye", at: T.bye, o: [640, 360] },
+      { id: "type3", at: T.type3, o: [640, 360] },
+      { id: "igor", at: T.igor2, o: [830, 200] },
+      { id: "review", at: T.review, o: [640, 360] },
+      { id: "end", at: T.end, o: [640, 600] },
+    ];
+    grains();
+  };
+
+  // ---------- câmera das cenas com imagem ----------
+  function camAt(t, keys) {
+    let c = { ...keys[0][1] };
+    for (let i = 1; i < keys.length; i++) {
+      const [at, v, dur = 1.0] = keys[i]; if (t < at) break;
+      const k = ease(prog(t, at, at + dur)); c = { x: lerp(c.x, v.x, k), y: lerp(c.y, v.y, k), s: lerp(c.s, v.s, k) };
+    }
+    c.s *= 1 + .012 * Math.sin(t * .35); // respiro de câmera, lento
+    return c;
+  }
+  const scr = (c, x, y) => ({ x: (x - c.x) * c.s + 640, y: (y - c.y) * c.s + 360 });
+  function placeImg(layer, c, t) {
+    layer.querySelector(".img").style.transform = `translate(${640 - c.x * c.s}px, ${360 - c.y * c.s}px) scale(${c.s})`;
+    layer.querySelector(".sun").style.opacity = .7 + .3 * Math.sin(t * .5);
+    dust(layer.querySelector(".dust"), t);
+  }
+
+  // balão: "below" fica abaixo do rosto com a ponta para cima; "side" fica à esquerda com a ponta para a direita
+  function bubble(el, t, a, b, ws, anchor, c, place = "below") {
+    const vis = prog(t, a - .15, a + .15) * (1 - prog(t, b, b + .25));
+    el.style.opacity = vis; if (vis <= 0) return;
+    const p = scr(c, anchor[0], anchor[1]);
+    const w = el.offsetWidth, h = el.offsetHeight;
+    if (place === "side") {
+      const left = clamp(p.x - 110 * c.s - w, 30, 1250 - w), top = clamp(p.y - 40, 90, 700 - h);
+      el.style.left = left + "px"; el.style.top = top + "px"; el.style.setProperty("--ty", clamp(p.y - top, 30, h - 30) + "px");
+    } else {
+      const left = clamp(p.x - w / 2, 30, 1250 - w);
+      el.style.left = left + "px"; el.style.top = Math.min(720 - h - 24, p.y + 92 * c.s) + "px";
+      el.style.setProperty("--tx", clamp(p.x - left, 40, w - 40) + "px");
+    }
+    el.style.transform = `translateY(${(1 - out(prog(t, a - .15, a + .25))) * -12}px)`;
+    el.querySelectorAll(".en .w").forEach((s, i) => { const k = out(prog(t, ws[i] - .06, ws[i] + .22)); s.style.opacity = .12 + .88 * k; s.style.transform = `translateY(${(1 - k) * 10}px)`; });
+    const pt = el.querySelector(".pt"); if (pt) pt.style.opacity = out(prog(t, ws[ws.length - 1], ws[ws.length - 1] + .4));
+  }
+  // palavras que entram de baixo no ritmo da voz
+  function rise(el, t, ws, dy = 36, base = 0) {
+    el.querySelectorAll(".w").forEach((s, i) => { const k = out(prog(t, ws[i] - .05, ws[i] + .25)); s.style.opacity = base + (1 - base) * k; s.style.transform = `translateY(${(1 - k) * dy}px)`; });
+  }
+  const pos = (el, top, sc = 1, op = 1, dy = 0) => { el.style.top = top + "px"; el.style.transform = `translateX(-50%) translateY(${dy}px) scale(${sc})`; el.style.opacity = op; };
+
+  // ---------- cada cena ----------
+  const R = {};
+  R.street = (t) => {
+    const H = HEAD.street;
+    const c = camAt(t, [
+      [0, { x: 640, y: 380, s: 1.04 }],
+      [L.l01.start - .8, { x: 400, y: 300, s: 1.7 }, 1.4],
+      [L.l02.start - .6, { x: 520, y: 330, s: 1.38 }],
+      [L.l03.start - .35, { x: 840, y: 300, s: 1.38 }],
+      [L.l04.start - .3, { x: 640, y: 330, s: 1.16 }],
+      [T.street2 - .1, { x: 860, y: 280, s: 1.55 }, .01],
+    ]);
+    placeImg($("L-street"), c, t);
+    const titleOut = prog(t, 1.9, 2.4);
+    $("shade").style.opacity = .55 * (1 - ease(prog(t, 1.8, 2.6)));
+    $("title").style.opacity = 1 - titleOut; $("title").style.transform = `translateY(${-titleOut * 20}px)`;
+    $("title").querySelectorAll(".t .w").forEach((s, i) => { const k = out(prog(t, .3 + i * .18, .75 + i * .18)); s.style.opacity = k; s.style.transform = `translateY(${(1 - k) * 40}px)`; });
+    $("title").querySelector(".k").style.opacity = out(prog(t, .1, .5));
+    // a Charlotte se apresenta: texto à esquerda, câmera nela
+    const ik = out(prog(t, L.l01.start - .5, L.l01.start)) * (1 - prog(t, L.l01.end + .1, L.l01.end + .5));
+    $("intro").style.opacity = ik;
+    const part = (sel, a) => { const e = $("intro").querySelector(sel), k = out(prog(t, a - .1, a + .3)); e.style.opacity = k; e.style.transform = `translateY(${(1 - k) * 18}px)`; };
+    part(".hi", wt("l01", 0)); part(".name", wt("l01", 4)); part(".role", wt("l01", 4) + .35);
+    part(".today", wt("l01", 5)); part(".goal", wt("l01", 10)); part(".go", wt("l01", 14));
+    bubble($("b-l02"), t, L.l02.start, L.l02.end + .35, words("l02", [0, 1, 2, 3, 4]), H.charlotte, c);
+    bubble($("b-l03"), t, L.l03.start, L.l03.end + .3, words("l03", [0, 1, 2, 3, 4]), H.igor, c);
+    bubble($("b-l04"), t, L.l04.start, T.type1 - .1, words("l04", [0, 1]), H.charlotte, c);
+    bubble($("b-ask1"), t, wt("l06", 5), T.sky, words("l06", [5, 6, 7]), H.igor, c);
+  };
+
+  R.type1 = (t) => {
+    $("L-type1").querySelector(".blobs").style.transform = `translate(${Math.sin(t * .3) * 40}px, ${Math.cos(t * .25) * 30}px) rotate(${t * 2}deg)`;
+    const lift = ease(prog(t, wt("l05", 9) - .2, wt("l05", 9) + .5));
+    const how = $("k1-how"); pos(how, 250 - lift * 110, 1 - .25 * lift);
+    how.querySelectorAll(".w").forEach((s, i) => { const k = out(prog(t, wt("l05", i) - .05, wt("l05", i) + .25)); s.style.opacity = k; s.style.transform = `translateY(${(1 - k) * 36}px)`; s.style.color = t > wend("l05", 2) ? "#DCFF4A" : "#FAF7F0"; });
+    const eqk = out(prog(t, wt("l05", 3), wt("l05", 5) + .2)); pos($("k1-eq"), 372 - lift * 128, 1 - .2 * lift, eqk * (1 - .4 * lift), (1 - eqk) * 10);
+    pos($("k1-pt"), 414 - lift * 150, 1 - .3 * lift); rise($("k1-pt"), t, words("l05", [6, 7]), 28);
+    const lk = out(prog(t, wt("l05", 10), wt("l05", 12))); pos($("k1-lab"), 405, 1, lk, (1 - lk) * 14);
+    const ak = out(prog(t, wt("l05", 14) - .25, wt("l05", 14) + .2)); pos($("k1-ans"), 470, 1, ak, (1 - ak) * 30);
+    rise($("k1-ans"), t, words("l05", [14, 15, 16]), 0, .15);
+    const ck = ease(prog(t, wend("l05", 16), wend("l05", 16) + .45)); const p = $("k1-ans").querySelector(".chk"); p.style.strokeDasharray = 40; p.style.strokeDashoffset = 40 * (1 - ck);
+  };
+
+  // céu: manhã, tarde, noite; Good night; volta para a manhã na pausa 2
+  const SKY = { m: ["#8FD0FF", "#FFE2A8"], a: ["#FF9F6B", "#FFD27A"], e: ["#3B2F86", "#B06AB3"], n: ["#0B0A1C", "#241D52"] };
+  R.sky = (t) => {
+    const k1 = ease(prog(t, wt("l07", 12) - .2, wt("l07", 12) + .6)), k2 = ease(prog(t, wt("l07", 16) - .2, wt("l07", 16) + .6));
+    const kn = ease(prog(t, L.l08.start - .3, L.l08.start + .5)), km = ease(prog(t, L.l09.start - .5, L.l09.start + .3));
+    let top = SKY.m[0], bot = SKY.m[1];
+    const blend = (pair, k) => { top = mix(top, pair[0], k); bot = mix(bot, pair[1], k); };
+    blend(SKY.a, k1); blend(SKY.e, k2); blend(SKY.n, kn); blend(SKY.m, km);
+    $("sky-bg").style.background = `linear-gradient(${top}, ${bot})`;
+    const night = Math.max(k2 * .6, kn) * (1 - km);
+    $("stars").style.opacity = night;
+    // o sol percorre o arco (nasce, alto, se põe); a lua sobe à noite
+    const sunX = lerp(lerp(lerp(260, 640, k1), 1060, k2), 1060, km), sunY = lerp(lerp(lerp(250, 150, k1), 520, k2), 190, km);
+    $("orb").style.left = sunX + "px"; $("orb").style.top = sunY + "px";
+    $("orb").style.background = `radial-gradient(circle, ${mix("#FFE58A", "#FF8A3D", k1 * (1 - km))} 55%, rgba(255,200,120,0) 72%)`;
+    $("orb").style.boxShadow = `0 0 120px 40px ${k1 > .5 && km < .5 ? "rgba(255,138,61,.35)" : "rgba(255,229,138,.35)"}`;
+    $("orb").style.opacity = 1 - Math.max(k2, kn) * (1 - km);
+    const mk = Math.max(k2, kn) * (1 - km);
+    $("moon").style.left = lerp(1000, 980, kn) + "px"; $("moon").style.top = lerp(320, 170, mk) + "px"; $("moon").style.opacity = mk;
+    $("h1").setAttribute("fill", mix(mix(mix("#7BC67E", "#C9895A", k1), "#3A2F6E", Math.max(k2, kn)), "#7BC67E", km));
+    $("h2").setAttribute("fill", mix(mix(mix("#4FA36A", "#A0623F", k1), "#241D52", Math.max(k2, kn)), "#4FA36A", km));
+    $("hills").style.transform = `translateX(${Math.sin(t * .2) * 10}px)`;
+    // título e cartões de l07
+    const hk = out(prog(t, wt("l07", 4) - .1, wt("l07", 7) + .2)) * (1 - prog(t, L.l08.start - .3, L.l08.start));
+    pos($("sky-h"), 74, 1, hk, (1 - hk) * 12);
+    [10, 14, 18].forEach((wi, i) => {
+      const e = $("tod" + i), k = out(prog(t, wt("l07", wi - 2) - .1, wt("l07", wi) + .2)), gone = prog(t, L.l08.start - .3, L.l08.start + .1);
+      e.style.opacity = k * (1 - gone); e.style.transform = `translateY(${(1 - k) * 40 + gone * 60}px)`;
+      const on = t >= wt("l07", wi) - .05 && (i === 2 || t < wt("l07", [14, 18][i]) - .2); e.classList.toggle("on", on);
+    });
+    // Good night
+    const gk = out(prog(t, wt("l08", 1) - .15, wt("l08", 2) + .2)), gout = prog(t, L.l09.start - .5, L.l09.start - .1);
+    $("gn").style.opacity = gk * (1 - gout); $("gn").style.transform = `translateX(-50%) translateY(${(1 - gk) * 30}px)`;
+    $("gn").querySelector(".x").style.opacity = out(prog(t, wt("l08", 3), wt("l08", 5) + .2));
+    const sk = ease(prog(t, wt("l08", 3) - .1, wt("l08", 5) + .3)); $("gn").querySelector("s").style.textDecorationColor = sk > .5 ? "#FF4F8B" : "transparent";
+    $("gn").querySelector(".y").style.opacity = out(prog(t, wt("l08", 7), wt("l08", 10) + .2));
+    const st = out(prog(t, wt("l08", 7) - .1, wt("l08", 7) + .25));
+    $("stamp").style.opacity = st * (1 - gout); $("stamp").style.transform = `rotate(${lerp(-24, -10, st)}deg) scale(${lerp(1.5, 1, st)})`;
+    // 9:00 da manhã
+    const ck = out(prog(t, wt("l09", 0), wt("l09", 1) + .3));
+    $("clock").style.opacity = ck; $("clock").style.transform = `translateX(-50%) translateY(${(1 - ck) * 30 - prog(t, wt("l09", 9), wt("l09", 9) + .6) * 60}px)`;
+    $("clock").querySelector(".s").style.opacity = out(prog(t, wt("l09", 2), wt("l09", 8)));
+  };
+
+  R.igor = (t) => {
+    const second = t >= T.igor2 - .01;
+    const c = second
+      ? camAt(t, [[T.igor2, { x: 700, y: 330, s: 1.2 }], [T.igor2 + .1, { x: 760, y: 300, s: 1.36 }, 6]])
+      : camAt(t, [[T.igor, { x: 640, y: 380, s: 1.06 }], [T.igor + .1, { x: 700, y: 330, s: 1.22 }, 5]]);
+    placeImg($("L-igor"), c, t);
+    $("b-l10").style.display = second ? "none" : "block"; $("b-ask3").style.display = second ? "block" : "none";
+    bubble($("b-l10"), t, L.l10.start, T.type2, words("l10", [0, 1, 2, 3, 4, 5, 6]), HEAD.igor.igor, c, "side");
+    bubble($("b-ask3"), t, second ? wt("l14", 14) : 1e9, 1e9, words("l14", [14, 15, 16]), HEAD.igor.igor, c, "side");
+  };
+
+  R.type2 = (t) => {
+    $("L-type2").querySelector(".blobs").style.transform = `translate(${Math.cos(t * .3) * 40}px, ${Math.sin(t * .25) * 30}px) rotate(${-t * 2}deg)`;
+    const lift = ease(prog(t, wt("l11", 9) - .2, wt("l11", 9) + .5));
+    const en = $("k2-en"); pos(en, 230 - lift * 110, 1 - .25 * lift); rise(en, t, words("l11", [0, 1, 2, 3]));
+    en.querySelectorAll(".w").forEach((s) => (s.style.color = t > wend("l11", 3) ? "#DCFF4A" : "#FAF7F0"));
+    const eqk = out(prog(t, wt("l11", 4) - .1, wt("l11", 4) + .3)); pos($("k2-eq"), 352 - lift * 120, 1 - .2 * lift, eqk * (1 - .4 * lift), (1 - eqk) * 10);
+    pos($("k2-pt"), 400 - lift * 150, 1 - .3 * lift); rise($("k2-pt"), t, words("l11", [5, 6, 7, 8]), 28);
+    const bk = out(prog(t, wt("l11", 13) - .25, wt("l11", 13) + .2)); pos($("k2-1"), 400, lerp(.8, 1, bk), bk);
+    const lk = out(prog(t, wt("l11", 15), wt("l11", 19))); pos($("k2-lab"), 506, 1, lk, (1 - lk) * 12);
+  };
+
+  R.bye = (t) => {
+    const H = HEAD.bye;
+    const c = camAt(t, [
+      [T.bye, { x: 640, y: 360, s: 1.04 }],
+      [T.bye + .1, { x: 760, y: 340, s: 1.22 }, Math.max(1, L.l12.end - T.bye)],
+      [L.l13.start - .35, { x: 560, y: 340, s: 1.2 }],
+    ]);
+    placeImg($("L-bye"), c, t);
+    bubble($("b-l12"), t, L.l12.start, L.l12.end + .3, words("l12", [0, 1, 2, 3, 4, 5, 6, 7]), H.igor, c);
+    bubble($("b-l13"), t, L.l13.start, T.type3, words("l13", [0, 1]), H.charlotte, c);
+  };
+
+  R.type3 = (t) => {
+    $("L-type3").querySelector(".blobs").style.transform = `translate(${Math.sin(t * .28) * 40}px, ${Math.cos(t * .3) * 30}px) rotate(${t * 2}deg)`;
+    const en = $("k3-en"); pos(en, 230); rise(en, t, words("l14", [0, 1, 2]));
+    en.querySelectorAll(".w").forEach((s) => (s.style.color = t > wend("l14", 2) ? "#DCFF4A" : "#FAF7F0"));
+    const eqk = out(prog(t, wt("l14", 3), wt("l14", 5) + .2)); pos($("k3-eq"), 360, 1, eqk, (1 - eqk) * 10);
+    pos($("k3-pt"), 410, 1.25); rise($("k3-pt"), t, words("l14", [6, 7]), 28);
+  };
+
+  R.review = (t) => {
+    $("L-review").querySelector(".blobs").style.transform = `translate(${Math.sin(t * .3) * 40}px, ${Math.cos(t * .25) * 30}px) rotate(${t * 2}deg)`;
+    const hk = out(prog(t, L.l15.start - .1, L.l15.start + .4)); $("rv-h").style.opacity = hk;
+    const at = [1, 4, 7, 9, 14], until = [4, 7, 9, 14, 17];
+    at.forEach((wi, i) => {
+      const e = $("rv" + i), k = out(prog(t, wt("l15", wi) - .2, wt("l15", wi) + .2));
+      e.style.opacity = k; e.style.transform = `translateY(${(1 - k) * 30}px) scale(${lerp(.92, 1, k)})`;
+      e.classList.toggle("on", t >= wt("l15", wi) - .1 && t < wt("l15", until[i]) - .1);
+    });
+    const gk = out(prog(t, wt("l15", 17) - .1, wt("l15", 17) + .35)); pos($("rv-go"), 590, 1, gk, (1 - gk) * 16);
+  };
+
+  R.end = (t) => {
+    const s = (sel, a, dy = 24) => { const e = document.querySelector(sel), k = out(prog(t, a, a + .45)); e.style.opacity = k; e.style.transform = `translateX(-50%) translateY(${(1 - k) * dy}px)`; };
+    s("#end .t", T.end + .3); s("#end .s", T.end + .6); s("#end .b", T.end + .9); s("#end img", T.end + 1.1, 10);
+  };
+
+  // ---------- pergunta (desenhada no vídeo; o player interativo pausa no "at") ----------
+  const MIC = '<svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="23" fill="#DCFF4A"/><rect x="17" y="9" width="12" height="19" rx="6" fill="#16131F"/><path d="M12 22a11 11 0 0 0 22 0M23 33v5" stroke="#16131F" stroke-width="3" fill="none" stroke-linecap="round"/></svg>';
+  const CHECK = '<svg width="26" height="26" viewBox="0 0 26 26"><circle cx="13" cy="13" r="12" fill="#16131F"/><path d="M7 13.5l4 4 8-9" stroke="#2BD97C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  let qFor = null;
+  function question(t) {
+    const cp = D.cps.find((c) => t >= c.showAt - .2 && t < c.revealEnd + .45);
+    $("q").style.opacity = 0; $("turn").style.opacity = 0;
+    if (!cp) return;
+    if (qFor !== cp.id) {
+      qFor = cp.id;
+      $("q").querySelector(".h").innerHTML = (cp.mode === "speak" ? MIC : "") + `<span>${cp.question.replace(/"([^"]+)"/g, "“$1”")}</span>`;
+      $("q").querySelector(".opts").innerHTML = cp.options.map((o) => `<div class="o" data-ok="${o === cp.answer ? 1 : 0}"><span>${o}</span></div>`).join("");
+    }
+    const k = out(prog(t, cp.showAt - .2, cp.showAt + .25)) * (1 - prog(t, cp.revealEnd + .1, cp.revealEnd + .4));
+    $("q").style.opacity = k; $("q").style.transform = `translateX(-50%) translateY(${(1 - k) * 30}px)`;
+    $("q").querySelectorAll(".o").forEach((o, i) => {
+      const ok = out(prog(t, cp.showAt + .15 + i * .12, cp.showAt + .5 + i * .12)); o.style.opacity = ok; o.style.transform = `translateY(${(1 - ok) * 12}px)`;
+      const rev = o.dataset.ok === "1" && t >= cp.at + .1;
+      o.classList.toggle("ok", rev);
+      if (rev && !o.querySelector("svg")) o.insertAdjacentHTML("afterbegin", CHECK); if (!rev) o.querySelector("svg")?.remove();
+      if (!rev && t >= cp.at + .1) o.style.opacity = ok * .4;
+    });
+    const tk = out(prog(t, cp.turnAt, cp.turnAt + .3)) * k;
+    $("turn").style.opacity = tk; $("turn").style.transform = `rotate(-4deg) translateY(${(1 - tk) * -16}px)`;
+  }
+
+  // ---------- narradora: só quando a Charlotte explica em português, fora das cenas de diálogo ----------
+  function narrator(t) {
+    const ids = ["l05", "l06", "l07", "l08", "l09", "l11", "l14", "l15"];
+    let k = 0;
+    for (const id of ids) k = Math.max(k, prog(t, L[id].start - .4, L[id].start) * (1 - prog(t, L[id].end + .3, L[id].end + .6)));
+    for (const c of D.cps) if (t >= c.showAt && t < c.revealEnd + .3) k = 1;
+    $("narr").style.opacity = k; $("narr").style.transform = `translateY(${(1 - out(k)) * 12}px)`;
+  }
+
+  window.seek = (t) => {
+    let i = 0; for (let j = 0; j < SEQ.length; j++) if (t >= SEQ[j].at) i = j;
+    const cur = SEQ[i], prev = SEQ[i - 1];
+    const k = cur.o ? ease(prog(t, cur.at, cur.at + .7)) : 1;
+    document.querySelectorAll(".layer").forEach((e) => { e.style.display = "none"; e.style.clipPath = "none"; e.style.zIndex = 0; });
+    if (prev && k < 1 && prev.id !== cur.id) { $("L-" + prev.id).style.display = "block"; $("L-" + prev.id).style.zIndex = 1; R[prev.id](t); }
+    const el = $("L-" + cur.id);
+    el.style.display = "block"; el.style.zIndex = 2;
+    if (k < 1) el.style.clipPath = `circle(${1500 * k}px at ${cur.o[0]}px ${cur.o[1]}px)`;
+    R[cur.id](t);
+    const ring = $("ring"); ring.setAttribute("cx", cur.o?.[0] ?? 0); ring.setAttribute("cy", cur.o?.[1] ?? 0); ring.setAttribute("r", 1500 * k); ring.setAttribute("opacity", k > 0 && k < 1 ? 1 : 0);
+    question(t); narrator(t);
+    $("logo").style.opacity = cur.id === "end" ? 1 - k : 1;
+  };
+</script>
+</body></html>

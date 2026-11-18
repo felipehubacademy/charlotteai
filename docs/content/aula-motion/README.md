@@ -6,7 +6,7 @@ Fase de teste: nada disto está no app. O processo completo está no agente
 
 | Aula | Tópico | Duração | mp4 | Protótipo |
 |---|---|---|---|---|
-| [novice-01](novice-01/roteiro.md) | Novice N01 "Oi! Tudo bem?" | 90 s, 3 pausas | 4,3 MB | [link](https://claude.ai/artifact/3apHvU6orfnW6Tvy6xGsG7) (privado) |
+| [novice-01](novice-01/roteiro.md) | Novice N01 "Oi! Tudo bem?" | 91 s, 3 pausas, horizontal | 9,3 MB | [link](https://claude.ai/artifact/3apHvU6orfnW6Tvy6xGsG7) (privado) |
 
 ## Custo por aula (piloto novice-01)
 
@@ -14,8 +14,10 @@ Fase de teste: nada disto está no app. O processo completo está no agente
 |---|---|---|
 | Voz da Charlotte (15 falas + 6 correções) | modelo de áudio barato, 21 chamadas, todas certas na 1ª | US$ 0,043 |
 | Voz do Igorfina (3 falas) | 91 créditos do plano de voz (multilingual v2) | US$ 0,007 no preço de API |
-| Montagem do vídeo | Chromium + ffmpeg locais, ~10 min no Mac | sem custo |
-| **Total de voz** | | **cerca de US$ 0,05 e 91 créditos** |
+| Imagens das cenas (3) | gerador de imagem do plano de voz, 1 imagem por cena | 3 do saldo de imagens do plano |
+| Tempo de cada palavra | transcrição das falas guardadas, uma vez | cerca de US$ 0,01 |
+| Montagem do vídeo | Chromium + ffmpeg locais, ~6 min no Mac | sem custo |
+| **Total** | | **cerca de US$ 0,06, 91 créditos de voz e 3 imagens** |
 
 - Créditos: o plano Creator tem cerca de 100 mil créditos por mês; uma aula usa menos de 0,1% deles. Mesmo com o dobro
   de falas de personagem, uma aula fica em 100 a 200 créditos.
@@ -28,14 +30,14 @@ Fase de teste: nada disto está no app. O processo completo está no agente
 - **Onde:** dentro do tópico, como primeiro item ("Aula · 1:30") antes do Grammar, sem travar a progressão
   (quem pular segue normalmente). Também serve para a degustação: liberar a aula do 1º tópico e pedir uma
   nota ao final ("Essa aula te ajudou?").
-- **Formato:** um mp4 vertical 720x1280 (H.264, ~4 a 5 MB por 90 s) + `aula.json` e `timings.json`
+- **Formato:** um mp4 horizontal 1280x720 (H.264, ~9 MB por 90 s; dá para baixar para ~5 MB em 960x540) + `aula.json` e `timings.json`
   (alguns KB) + 6 correções em mp3 (~20 KB cada). As perguntas não são "gravadas" como botão: o player
-  nativo pausa no tempo da pausa e desenha o cartão por cima, como no protótipo. O vídeo também funciona
+  nativo pausa no tempo da pausa e mostra o cartão logo abaixo do vídeo, como no protótipo. O vídeo também funciona
   sozinho (mostra a pergunta e depois a resposta).
 - **Player:** `expo-video` já está no app; a fala usa o reconhecimento no aparelho que o Listening & Speaking
   já usa (`expo-speech-recognition`). Dá para lançar por OTA, sem build nativo.
 - **Hospedagem:** Storage do Supabase com CDN, como os áudios da trilha (`curriculum-audio`). Não entra no
-  pacote do app: 100 aulas seriam ~450 MB.
+  pacote do app: 100 aulas seriam ~900 MB.
 - **Offline:** ao abrir o tópico (ou no Wi-Fi, a aula do próximo tópico), baixar o mp4 e as correções com
   `expo-file-system` para o cache do app e tocar do arquivo local. Sem internet e sem cache, mostrar a aula
   como indisponível e deixar seguir para o Grammar.
