@@ -64,13 +64,16 @@ function Spoken({ text, words, now, on, size, color, weight, enStyle }: {
         if (tk.includes('}')) inside = false;
         const isNow = i === cur;
         return (
-          <AppText key={i} display={enStyle || en} style={{
-            fontSize: size, fontWeight: en ? '800' : weight,
-            color: isNow ? K.pink : en ? K.volt : color,
-            textDecorationLine: isNow ? 'underline' : 'none', textDecorationColor: K.pink,
-          }}>
-            {tk.replace(/[{}]/g, '')}{i < toks.length - 1 ? ' ' : ''}
-          </AppText>
+          <React.Fragment key={i}>
+            <AppText display={enStyle || en} style={{
+              fontSize: size, fontWeight: en ? '800' : weight,
+              color: isNow ? K.pink : en ? K.volt : color,
+              textDecorationLine: isNow ? 'underline' : 'none', textDecorationColor: K.pink,
+            }}>
+              {tk.replace(/[{}]/g, '')}
+            </AppText>
+            {i < toks.length - 1 ? ' ' : ''}
+          </React.Fragment>
         );
       })}
     </AppText>
