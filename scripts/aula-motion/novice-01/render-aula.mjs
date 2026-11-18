@@ -121,7 +121,7 @@ const gain = (-16 - loud).toFixed(2);
 // 2) som de rua (loop de 30 s, gerado uma vez em docs/content/aula-motion/sons/): inteiro nas cenas de rua,
 //    bem baixo na tipografia e no céu, some no cartão final; abaixa sozinho quando alguém fala.
 const AMB = join(ROOT, "docs/content/aula-motion/sons/rua-dia.flac");
-const BED = 1.0, LOW = 0.14, RAMP = 0.7;
+const BED = 0.6, LOW = 0.14, RAMP = 0.7;
 const ruas = [[0, T.type1], [T.street2, T.sky], [T.igor, T.type2], [T.bye, T.type3], [T.igor2, T.review]];
 const win = ([a, b]) => `min(clip((t-${a.toFixed(2)})/${RAMP},0,1),clip((${(b + RAMP).toFixed(2)}-t)/${RAMP},0,1))`;
 const env = `${BED}*(${LOW}+(1-${LOW})*${ruas.map(win).reduce((x, y) => `max(${x},${y})`)})*clip((${(T.end + 1.2).toFixed(2)}-t)/1.2,0,1)*clip(t/1.2,0,1)`;

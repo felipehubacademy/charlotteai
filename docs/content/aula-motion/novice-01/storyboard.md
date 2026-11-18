@@ -19,7 +19,7 @@ Quadros capturados da própria cena (`node scripts/aula-motion/novice-01/render-
   tipografia e dois tons na revelação da resposta certa.
 - **Som de rua real** ([`../sons/rua-dia.flac`](../sons/rua-dia.flac)): trânsito, buzinas ao longe e pessoas
   conversando. Inteiro nas cenas de rua, bem baixo na tipografia e no céu, e abaixa sozinho quando alguém fala.
-  Voz em -16 LUFS; a rua fica cerca de 19 dB abaixo.
+  Voz em -16 LUFS; a rua fica cerca de 24 dB abaixo.
 - Paleta Queizy, títulos em Bricolage Grotesque, logo branco no alto (preto no cartão final).
 
 ## Quadros
