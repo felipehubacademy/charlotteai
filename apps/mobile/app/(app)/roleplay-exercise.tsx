@@ -783,6 +783,7 @@ export default function RolePlayExerciseScreen() {
           userLevel={level}
           mode="chat"
           character={rp?.voiced_by === 'igorfina' ? 'igorfina' : 'charlotte'}
+          impression={rp?.voiced_by === 'igorfina' ? (rp.persona_outfit ?? '').match(/^igorfina_(president|hoops)$/)?.[1] ?? null : null}
           onPlayAudio={onPlayAudio}
           playingMessageId={playingMessageId}
           topBanner={

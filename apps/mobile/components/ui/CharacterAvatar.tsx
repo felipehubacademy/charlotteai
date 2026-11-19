@@ -22,7 +22,10 @@ export default function CharacterAvatar({ character, impression, size = 'md' }: 
 
 /** Personagem do chat atual, para os avatares dentro do ChatBox. */
 export const ChatCharacterContext = React.createContext<string>('charlotte');
+/** Conversa inteira com uma imitação: os balões mostram a foto dela (fantasiado). */
+export const ChatImpressionContext = React.createContext<string | null>(null);
 export function ChatCharacterAvatar({ size = 'xs' }: { size?: AvatarSize }) {
   const character = React.useContext(ChatCharacterContext);
-  return <CharacterAvatar character={character} size={size} />;
+  const impression = React.useContext(ChatImpressionContext);
+  return <CharacterAvatar character={character} impression={impression} size={size} />;
 }

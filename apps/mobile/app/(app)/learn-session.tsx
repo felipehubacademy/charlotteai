@@ -1730,7 +1730,7 @@ export default function LearnSessionScreen() {
                 <View style={{ width: hostTrack ? Math.max(CHAR_W, Math.min(96, CHAR_H)) + 8 : CHAR_W, alignItems: 'center' }}>
                   {hostTrack ? (
                     // Trilha extra: o anfitrião (ex.: Igorfina) reage no lugar da Charlotte.
-                    <TrackHostReaction character={hostTrack.character} trackId={hostTrack.id} size={Math.max(CHAR_W, Math.min(96, CHAR_H))}
+                    <TrackHostReaction character={hostTrack.character} impression={unitImpression} trackId={hostTrack.id} size={Math.max(CHAR_W, Math.min(96, CHAR_H))}
                       mood={showCheering ? 'cheer' : showError ? 'error' : 'idle'} />
                   ) : (
                   <Image

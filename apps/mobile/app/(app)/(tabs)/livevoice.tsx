@@ -2,7 +2,7 @@
 // Live Voice tab — hero com video da Charlotte + ring de pool mensal +
 // resumo da última chamada + botão Start now. Beta only (new_layout).
 
-import { characterInfo, impressionInfo, personaDisplay, type ImpressionId } from '@/lib/characters';
+import { characterInfo, impressionInfo, personaDisplay, visibleImpressions, type ImpressionId } from '@/lib/characters';
 import { FamilyCallModal } from '@/components/voice/FamilyCallModal';
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import {
@@ -1003,10 +1003,10 @@ export default function LiveVoiceTab() {
             )}
 
             {/* Imitações de quem atende (ex.: Igorfina): ligar para ele ou para uma imitação, a ligação inteira com ela. */}
-            {!!hostBase.impressions?.length && !isLimitReached && (
+            {!!visibleImpressions(hostBase).length && !isLimitReached && (
               <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ flexGrow: 0, marginBottom: 12 }}
                 contentContainerStyle={{ gap: 8, paddingHorizontal: 24, flexGrow: 1, justifyContent: 'center' }}>
-                {[{ id: null as ImpressionId | null, label: hostBase.name }, ...hostBase.impressions.map(i => ({ id: i.id as ImpressionId | null, label: isPt ? i.labelPt : i.labelEn }))].map(opt => {
+                {[{ id: null as ImpressionId | null, label: hostBase.name }, ...visibleImpressions(hostBase).map(i => ({ id: i.id as ImpressionId | null, label: isPt ? i.labelPt : i.labelEn }))].map(opt => {
                   const on = (callImpression ?? null) === opt.id;
                   return (
                     <TouchableOpacity key={opt.id ?? 'self'} onPress={() => setCallImpression(opt.id)} activeOpacity={0.8}

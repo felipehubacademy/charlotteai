@@ -539,6 +539,7 @@ export default function PracticeTab() {
             playingMessageId={playingMessageId}
             onExplainMore={mode === 'grammar' ? handleExplainMore : undefined}
             character={character}
+            impression={impression}
           />
 
           {/* Estado inicial (só o welcome): balão da Charlotte + sugestões */}

@@ -16,8 +16,13 @@ export interface ImpressionInfo {
   callTag: string;
   /** Artigo em português ("Ligar para o Presidente"). */
   articlePt: string;
-  /** Foto do personagem fantasiado (quando houver); sem ela, usa a do personagem. */
+  /** Foto do personagem fantasiado (quando houver); sem ela, usa a do personagem. Aparece quando a
+   *  conversa ou a ligação inteira é com a imitação e nos tópicos dela na trilha; a imitação no meio
+   *  de uma conversa normal segue com a foto do personagem. */
   avatar?: number;
+  /** Escondida: fora das escolhas (Família, Free Chat, ligação) e do sorteio no meio das conversas.
+   *  O histórico de quem já conversou com ela continua com nome e foto. */
+  hidden?: boolean;
   taglinePt: string;
   taglineEn: string;
   /** Primeira mensagem do Free Chat com a imitação, por nível (mesma regra de idioma da conversa). */
@@ -49,7 +54,7 @@ export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
     taglineEn: 'Comedian and impressionist. Mid-chat, he drops an impression.',
     impressions: [
       {
-        id: 'president', labelPt: 'Presidente', labelEn: 'President', callTag: 'President', articlePt: 'o ',
+        id: 'president', labelPt: 'Presidente', labelEn: 'President', callTag: 'President', articlePt: 'o ', avatar: require('../assets/igorfina-president.png'),
         taglinePt: 'O Igor imitando um presidente cheio de si. Tudo é incrível, enorme, o melhor.',
         taglineEn: 'Igor as a larger-than-life president. Everything is tremendous, huge, the best.',
         welcome: {
@@ -59,7 +64,7 @@ export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
         },
       },
       {
-        id: 'hoops', labelPt: 'Astro do basquete', labelEn: 'Hoops star', callTag: 'Hoops', articlePt: 'o ',
+        id: 'hoops', labelPt: 'Astro do basquete', labelEn: 'Hoops star', callTag: 'Hoops', articlePt: 'o ', avatar: require('../assets/igorfina-hoops.png'),
         taglinePt: 'O Igor imitando um astro do basquete. Papo de vestiário, foco e treino.',
         taglineEn: 'Igor as a basketball superstar. Locker-room talk, focus and grind.',
         welcome: {
@@ -69,7 +74,7 @@ export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
         },
       },
       {
-        id: 'rodela', labelPt: 'Filósofo Rodela', labelEn: 'Philosopher Rodela', callTag: 'Rodela', articlePt: 'o ',
+        id: 'rodela', labelPt: 'Filósofo Rodela', labelEn: 'Philosopher Rodela', callTag: 'Rodela', articlePt: 'o ', hidden: true, // voz em ajuste (19/11/2026)
         taglinePt: 'O Igor imitando um filósofo de fala calma. Toda conversa vira uma reflexão sobre a vida.',
         taglineEn: 'Igor as a calm-voiced philosopher. Every chat turns into a reflection on life.',
         welcome: {
@@ -79,7 +84,7 @@ export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
         },
       },
       {
-        id: 'olimpia', labelPt: 'Mister Olimpia', labelEn: 'Mister Olimpia', callTag: 'Olimpia', articlePt: 'o ',
+        id: 'olimpia', labelPt: 'Mister Olimpia', labelEn: 'Mister Olimpia', callTag: 'Olimpia', articlePt: 'o ', avatar: require('../assets/igorfina-olimpia.png'),
         taglinePt: 'O Igor imitando uma lenda do fisiculturismo. Cada frase certa é um recorde.',
         taglineEn: 'Igor as a bodybuilding legend. Every right sentence is a new record.',
         welcome: {
@@ -89,7 +94,7 @@ export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
         },
       },
       {
-        id: 'cariri', labelPt: 'Cariri', labelEn: 'Cariri', callTag: 'Cariri', articlePt: 'o ',
+        id: 'cariri', labelPt: 'Cariri', labelEn: 'Cariri', callTag: 'Cariri', articlePt: 'o ', hidden: true, // voz em ajuste (19/11/2026)
         taglinePt: 'O Igor imitando um influenciador fitness sem desculpas. Disciplina, rotina e dieta.',
         taglineEn: 'Igor as a no-excuses fitness influencer. Discipline, routine and diet.',
         welcome: {
@@ -99,7 +104,7 @@ export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
         },
       },
       {
-        id: 'jalim', labelPt: 'Jalim Rabei', labelEn: 'Jalim Rabei', callTag: 'Jalim', articlePt: 'o ',
+        id: 'jalim', labelPt: 'Jalim Rabei', labelEn: 'Jalim Rabei', callTag: 'Jalim', articlePt: 'o ', avatar: require('../assets/igorfina-jalim.png'),
         taglinePt: 'O companheiro de viagem do Igor, da Índia. Histórias de estrada, comida e aeroporto.',
         taglineEn: "Igor's travel buddy from India. Road stories, food and airports.",
         welcome: {
@@ -109,7 +114,7 @@ export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
         },
       },
       {
-        id: 'allday', labelPt: 'Allday Negin', labelEn: 'Allday Negin', callTag: 'Allday', articlePt: 'o ',
+        id: 'allday', labelPt: 'Allday Negin', labelEn: 'Allday Negin', callTag: 'Allday', articlePt: 'o ', hidden: true, // voz em ajuste (19/11/2026)
         taglinePt: 'O Igor imitando um influenciador fitness motivado o dia todo. Foco e constância.',
         taglineEn: 'Igor as a fitness influencer hyped all day. Focus and consistency.',
         welcome: {
@@ -126,6 +131,11 @@ export const CHARACTER_LIST: CharacterInfo[] = [CHARACTERS.charlotte, CHARACTERS
 
 export function characterInfo(id: string | null | undefined): CharacterInfo {
   return id && id in CHARACTERS ? CHARACTERS[id as CharacterId] : CHARACTERS.charlotte;
+}
+
+/** Imitações que o aluno pode escolher e que entram no sorteio (sem as escondidas). */
+export function visibleImpressions(c: CharacterInfo): ImpressionInfo[] {
+  return (c.impressions ?? []).filter(i => !i.hidden);
 }
 
 export function impressionLabel(c: CharacterInfo, id: string | null | undefined, isPt: boolean): string | null {
@@ -187,7 +197,7 @@ const TOPICS: Record<ImpressionId, RegExp> = {
 
 /** Qual imitação usar nesta resposta, pelo assunto da mensagem do aluno e pela anterior. */
 export function pickImpression(c: CharacterInfo, userText: string, lastImpression: ImpressionId | null): ImpressionId | null {
-  const ids = (c.impressions ?? []).map(i => i.id);
+  const ids = visibleImpressions(c).map(i => i.id);
   if (!ids.length) return null;
   const hits = ids.filter(id => TOPICS[id]?.test(userText));
   if (hits.length === 1) return hits[0];

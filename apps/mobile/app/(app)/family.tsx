@@ -14,7 +14,7 @@ import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { systemIsPt } from '@/lib/systemLang';
-import { CHARACTER_LIST, characterInfo, type CharacterId } from '@/lib/characters';
+import { CHARACTER_LIST, characterInfo, visibleImpressions, type CharacterId } from '@/lib/characters';
 import { visibleTracks } from '@/lib/tracks';
 import { markFamilyMemberPicked } from '@/lib/familyInvite';
 import { LEVEL_ACCENT, LEVEL_ACCENT_BG } from '@/lib/levelColors';
@@ -107,7 +107,7 @@ export default function FamilyScreen() {
                   <CaretRight size={12} color={C.ink} weight="bold" />
                 </TouchableOpacity>
               ) : null}
-              {c.impressions?.length ? (
+              {visibleImpressions(c).length ? (
                 <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: C.border, gap: 12 }}>
                   {/* Dropdown: fechado mostra só a linha com a quantidade; aberto, a lista com Conversar e Ligar. */}
                   <TouchableOpacity onPress={() => setOpenImpressions(o => (o === c.id ? null : c.id))} activeOpacity={0.7}
@@ -115,14 +115,14 @@ export default function FamilyScreen() {
                     style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                     <AppText style={{ flex: 1, fontSize: 13, color: C.inkMid }}>
                       {isPt ? `Imitações do ${c.name}: ` : `${c.name}'s impressions: `}
-                      <AppText style={{ fontSize: 13, fontWeight: '800', color: C.ink }}>{c.impressions.length}</AppText>
+                      <AppText style={{ fontSize: 13, fontWeight: '800', color: C.ink }}>{visibleImpressions(c).length}</AppText>
                     </AppText>
                     <AppText style={{ fontSize: 13, fontWeight: '700', color: C.ink }}>{openImpressions === c.id ? (isPt ? 'Fechar' : 'Close') : (isPt ? 'Ver todas' : 'See all')}</AppText>
                     <View style={{ transform: [{ rotate: openImpressions === c.id ? '180deg' : '0deg' }] }}>
                       <CaretDown size={12} color={C.ink} weight="bold" />
                     </View>
                   </TouchableOpacity>
-                  {openImpressions === c.id && c.impressions.map(imp => {
+                  {openImpressions === c.id && visibleImpressions(c).map(imp => {
                     const label = isPt ? imp.labelPt : imp.labelEn;
                     return (
                       <View key={imp.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>

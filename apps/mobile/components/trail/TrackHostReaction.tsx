@@ -3,11 +3,11 @@
 // que pula quando o aluno acerta e balança quando erra.
 import React, { useEffect, useRef } from 'react';
 import { Animated, Image, View } from 'react-native';
-import { characterInfo } from '@/lib/characters';
+import { characterInfo, impressionInfo } from '@/lib/characters';
 import { LEVEL_VIVID } from '@/lib/levelColors';
 
-export function TrackHostReaction({ character, trackId, size, mood }: {
-  character: string; trackId: string; size: number; mood: 'idle' | 'cheer' | 'error';
+export function TrackHostReaction({ character, impression, trackId, size, mood }: {
+  character: string; impression?: string | null; trackId: string; size: number; mood: 'idle' | 'cheer' | 'error';
 }) {
   const scale = useRef(new Animated.Value(1)).current;
   const shift = useRef(new Animated.Value(0)).current;
@@ -32,7 +32,7 @@ export function TrackHostReaction({ character, trackId, size, mood }: {
         transform: [{ scale }, { translateX: shift }],
         padding: 3, borderRadius: (size + 6) / 2, borderWidth: 3, borderColor: LEVEL_VIVID[trackId] ?? '#F59E0B',
       }}>
-        <Image source={c.avatar} style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: '#16131F' }} resizeMode="cover" />
+        <Image source={impressionInfo(c, impression)?.avatar ?? c.avatar} style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: '#16131F' }} resizeMode="cover" />
       </Animated.View>
     </View>
   );

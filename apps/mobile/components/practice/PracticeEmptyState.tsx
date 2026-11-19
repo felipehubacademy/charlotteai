@@ -12,7 +12,7 @@ import { View, TouchableOpacity, Image, ScrollView } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { AppText } from '@/components/ui/Text';
 import { NOVICE_TOPICS, Topic } from './TopicPills';
-import { CHARACTER_LIST, characterInfo, personaDisplay, type CharacterId, type ImpressionId } from '@/lib/characters';
+import { CHARACTER_LIST, characterInfo, personaDisplay, visibleImpressions, type CharacterId, type ImpressionId } from '@/lib/characters';
 
 type Mode = 'chat' | 'grammar' | 'pronunciation';
 
@@ -70,13 +70,13 @@ function CharacterPicker({ value, impression, onChange, isPt, disabled }: { valu
         })}
       </View>
       {/* Imitações de quem está escolhido: a conversa inteira com ela. Rola de lado quando a lista cresce. */}
-      {!!current.impressions?.length && (
+      {!!visibleImpressions(current).length && (
         <View style={{ marginTop: 12, alignSelf: 'stretch', alignItems: 'center' }}>
           <AppText style={{ fontSize: 11, color: '#8A8494', fontWeight: '700', marginBottom: 6 }}>
             {isPt ? `Ou com uma imitação do ${current.name}:` : `Or with one of ${current.name}'s impressions:`}
           </AppText>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingHorizontal: 4, flexGrow: 1, justifyContent: 'center' }}>
-            {current.impressions.map(imp => {
+            {visibleImpressions(current).map(imp => {
               const on = impression === imp.id;
               return (
                 <TouchableOpacity key={imp.id} disabled={disabled} activeOpacity={0.8} onPress={() => !on && onChange(value, imp.id)}

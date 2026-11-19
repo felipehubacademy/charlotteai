@@ -20,7 +20,7 @@ import {
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { systemIsPt } from '@/lib/systemLang';
-import { ChatCharacterContext, ChatCharacterAvatar } from '@/components/ui/CharacterAvatar';
+import { ChatCharacterContext, ChatImpressionContext, ChatCharacterAvatar } from '@/components/ui/CharacterAvatar';
 import { characterInfo, impressionLabel } from '@/lib/characters';
 import { translationService, TranslationResult } from '@/lib/translation-service';
 import PronunciationScoreCard, { PronunciationData } from '@/components/chat/PronunciationScoreCard';
@@ -90,6 +90,8 @@ interface ChatBoxProps {
   topBanner?: React.ReactNode;
   /** Família Queizy: personagem da conversa (Free Chat). Padrão: Charlotte. */
   character?: string;
+  /** Conversa inteira com uma imitação do personagem (ou tópico da trilha com imitação): foto fantasiada nos balões. */
+  impression?: string | null;
 }
 
 // Typing indicator — dots for text, mic pulse for audio
@@ -551,6 +553,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({
   onExplainMore,
   topBanner,
   character = 'charlotte',
+  impression = null,
 }) => {
   const flatListRef = React.useRef<FlatList>(null);
 
@@ -595,6 +598,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({
 
   return (
     <ChatCharacterContext.Provider value={mode === 'chat' ? character : 'charlotte'}>
+    <ChatImpressionContext.Provider value={mode === 'chat' ? impression : null}>
     <View style={{ flex: 1, backgroundColor: '#FAF7F0' }}>
       {/* Subtle dot texture — like WhatsApp */}
       <Svg style={StyleSheet.absoluteFill}>
@@ -642,6 +646,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({
         }
       />
     </View>
+    </ChatImpressionContext.Provider>
     </ChatCharacterContext.Provider>
   );
 };
