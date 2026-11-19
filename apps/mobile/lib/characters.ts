@@ -94,7 +94,7 @@ export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
         },
       },
       {
-        id: 'cariri', labelPt: 'Cariri', labelEn: 'Cariri', callTag: 'Cariri', articlePt: 'o ', hidden: true, // voz em ajuste (19/11/2026)
+        id: 'cariri', labelPt: 'Cariri', labelEn: 'Cariri', callTag: 'Cariri', articlePt: 'o ',
         taglinePt: 'O Igor imitando um influenciador fitness sem desculpas. Disciplina, rotina e dieta.',
         taglineEn: 'Igor as a no-excuses fitness influencer. Discipline, routine and diet.',
         welcome: {
@@ -114,7 +114,7 @@ export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
         },
       },
       {
-        id: 'allday', labelPt: 'Allday Negin', labelEn: 'Allday Negin', callTag: 'Allday', articlePt: 'o ', hidden: true, // voz em ajuste (19/11/2026)
+        id: 'allday', labelPt: 'Allday Negin', labelEn: 'Allday Negin', callTag: 'Allday', articlePt: 'o ',
         taglinePt: 'O Igor imitando um influenciador fitness motivado o dia todo. Foco e constância.',
         taglineEn: 'Igor as a fitness influencer hyped all day. Focus and consistency.',
         welcome: {
