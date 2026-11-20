@@ -112,18 +112,22 @@ type PostRef = { id: string; ig_media_id: string };
 
 /** Busca os comentários de um post e grava os novos. Os mais velhos que HORAS_ANTIGO (post antigo
  *  conferido pela primeira vez) entram como 'ignorado': responder semanas depois soaria estranho. */
-async function collectFrom(auth: IgAuth, p: PostRef): Promise<number> {
+async function collectFrom(auth: IgAuth, p: PostRef): Promise<number | null> {
   const supabase = getSupabaseAdmin();
   const r = await listComments(auth, p.ig_media_id);
-  if (!r.ok) { console.error('[instagram-comments] listar', p.ig_media_id, r.error); return 0; }
+  if (!r.ok) { console.error('[instagram-comments] listar', p.ig_media_id, r.error); return null; }
   const corte = Date.now() - HORAS_ANTIGO * 3600000;
   const rows = r.data.filter(c => c.username !== auth.username && c.fromId !== auth.igUserId)
     .map(c => ({
       id: c.id, post_id: p.id, media_id: p.ig_media_id, username: c.username, text: c.text, commented_at: c.timestamp,
-      ...(new Date(c.timestamp).getTime() < corte ? { action: 'ignorado', note: 'Comentário antigo achado depois; sem resposta automática' } : {}),
+      // Todas as linhas com as mesmas colunas: no envio em lote, coluna ausente vira null (e action é obrigatória).
+      ...(new Date(c.timestamp).getTime() < corte
+        ? { action: 'ignorado', note: 'Comentário antigo achado depois; sem resposta automática' }
+        : { action: 'pendente', note: null }),
     }));
   if (!rows.length) return 0;
-  const { data } = await supabase.from('instagram_comments').upsert(rows as never, { onConflict: 'id', ignoreDuplicates: true }).select('id');
+  const { data, error } = await supabase.from('instagram_comments').upsert(rows as never, { onConflict: 'id', ignoreDuplicates: true }).select('id');
+  if (error) { console.error('[instagram-comments] gravar', p.ig_media_id, error.message); return null; }
   return (data ?? []).length;
 }
 
@@ -134,7 +138,7 @@ export async function collectComments(auth: IgAuth): Promise<number> {
   const since = new Date(Date.now() - DIAS_OLHANDO * 86400000).toISOString();
   const { data: posts } = await supabase.from('instagram_posts').select('id, ig_media_id').eq('status', 'publicado').gte('published_at', since).not('ig_media_id', 'is', null);
   let novos = 0;
-  for (const p of (posts ?? []) as PostRef[]) novos += await collectFrom(auth, p);
+  for (const p of (posts ?? []) as PostRef[]) novos += (await collectFrom(auth, p)) ?? 0;
 
   // Posts antigos: uma conferência por hora (uma chamada traz o total de todos os posts).
   const sinceOld = new Date(Date.now() - DIAS_ANTIGOS * 86400000);
@@ -150,7 +154,11 @@ export async function collectComments(auth: IgAuth): Promise<number> {
   for (const p of antigos) {
     const n = total.get(p.ig_media_id);
     if (n == null) continue;
-    if (p.comments_count == null || n > p.comments_count) novos += await collectFrom(auth, p);
+    if (p.comments_count == null || n > p.comments_count) {
+      const r = await collectFrom(auth, p);
+      if (r == null) continue; // falhou: guarda o total só depois de buscar, para tentar de novo na próxima hora
+      novos += r;
+    }
     await supabase.from('instagram_posts').update({ comments_count: n, comments_checked_at: agora } as never).eq('id', p.id);
   }
   return novos;
