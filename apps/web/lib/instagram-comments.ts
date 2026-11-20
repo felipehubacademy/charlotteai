@@ -6,10 +6,12 @@ import { aiFetch } from '@/lib/ai-models';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { getSupportFaq } from '@/lib/support-faq';
 import { logOpenAIUsage } from '@/lib/openai-usage';
-import { getInstagramAuth, listComments, replyToComment, hideComment, type IgAuth } from '@/lib/instagram';
+import { getInstagramAuth, listComments, listMediaCommentCounts, replyToComment, hideComment, type IgAuth } from '@/lib/instagram';
 
 const MODEL = 'gpt-4o-mini';
-const DIAS_OLHANDO = 7;      // comentários de posts publicados nos últimos N dias
+const DIAS_OLHANDO = 7;      // posts dos últimos N dias: comentários conferidos a cada rodada (5 min)
+const DIAS_ANTIGOS = 90;     // posts de até N dias: conferidos de hora em hora, só os que ganharam comentário
+const HORAS_ANTIGO = 72;     // comentário mais velho que isso, achado agora em post antigo: guardado sem resposta
 const POR_RODADA = 20;       // respostas por execução do cron
 
 type Acao = 'responder' | 'escalar' | 'ocultar' | 'ignorar';
@@ -106,20 +108,58 @@ export async function decidir(comment: string, post: string, previous: string[] 
   } catch { return null; }
 }
 
-/** Grava comentários novos (dos nossos posts recentes) como pendentes. */
+type PostRef = { id: string; ig_media_id: string };
+
+/** Busca os comentários de um post e grava os novos. Os mais velhos que HORAS_ANTIGO (post antigo
+ *  conferido pela primeira vez) entram como 'ignorado': responder semanas depois soaria estranho. */
+async function collectFrom(auth: IgAuth, p: PostRef): Promise<number | null> {
+  const supabase = getSupabaseAdmin();
+  const r = await listComments(auth, p.ig_media_id);
+  if (!r.ok) { console.error('[instagram-comments] listar', p.ig_media_id, r.error); return null; }
+  const corte = Date.now() - HORAS_ANTIGO * 3600000;
+  const rows = r.data.filter(c => c.username !== auth.username && c.fromId !== auth.igUserId)
+    .map(c => ({
+      id: c.id, post_id: p.id, media_id: p.ig_media_id, username: c.username, text: c.text, commented_at: c.timestamp,
+      // Todas as linhas com as mesmas colunas: no envio em lote, coluna ausente vira null (e action é obrigatória).
+      ...(new Date(c.timestamp).getTime() < corte
+        ? { action: 'ignorado', note: 'Comentário antigo achado depois; sem resposta automática' }
+        : { action: 'pendente', note: null }),
+    }));
+  if (!rows.length) return 0;
+  const { data, error } = await supabase.from('instagram_comments').upsert(rows as never, { onConflict: 'id', ignoreDuplicates: true }).select('id');
+  if (error) { console.error('[instagram-comments] gravar', p.ig_media_id, error.message); return null; }
+  return (data ?? []).length;
+}
+
+/** Grava comentários novos como pendentes: posts recentes a cada rodada; os de até DIAS_ANTIGOS dias
+ *  de hora em hora, abrindo só os posts em que o total de comentários na Meta subiu. */
 export async function collectComments(auth: IgAuth): Promise<number> {
   const supabase = getSupabaseAdmin();
   const since = new Date(Date.now() - DIAS_OLHANDO * 86400000).toISOString();
   const { data: posts } = await supabase.from('instagram_posts').select('id, ig_media_id').eq('status', 'publicado').gte('published_at', since).not('ig_media_id', 'is', null);
   let novos = 0;
-  for (const p of (posts ?? []) as { id: string; ig_media_id: string }[]) {
-    const r = await listComments(auth, p.ig_media_id);
-    if (!r.ok) { console.error('[instagram-comments] listar', p.ig_media_id, r.error); continue; }
-    const rows = r.data.filter(c => c.username !== auth.username && c.fromId !== auth.igUserId)
-      .map(c => ({ id: c.id, post_id: p.id, media_id: p.ig_media_id, username: c.username, text: c.text, commented_at: c.timestamp }));
-    if (!rows.length) continue;
-    const { data } = await supabase.from('instagram_comments').upsert(rows as never, { onConflict: 'id', ignoreDuplicates: true }).select('id');
-    novos += (data ?? []).length;
+  for (const p of (posts ?? []) as PostRef[]) novos += (await collectFrom(auth, p)) ?? 0;
+
+  // Posts antigos: uma conferência por hora (uma chamada traz o total de todos os posts).
+  const sinceOld = new Date(Date.now() - DIAS_ANTIGOS * 86400000);
+  const { data: old } = await supabase.from('instagram_posts').select('id, ig_media_id, comments_count, comments_checked_at')
+    .eq('status', 'publicado').lt('published_at', since).gte('published_at', sinceOld.toISOString()).not('ig_media_id', 'is', null);
+  const antigos = (old ?? []) as (PostRef & { comments_count: number | null; comments_checked_at: string | null })[];
+  const ultima = Math.max(0, ...antigos.map(p => (p.comments_checked_at ? new Date(p.comments_checked_at).getTime() : 0)));
+  if (!antigos.length || Date.now() - ultima < 3600000) return novos;
+  const counts = await listMediaCommentCounts(auth, sinceOld);
+  if (!counts.ok) { console.error('[instagram-comments] totais', counts.error); return novos; }
+  const total = new Map(counts.data.map(m => [m.id, m.count]));
+  const agora = new Date().toISOString();
+  for (const p of antigos) {
+    const n = total.get(p.ig_media_id);
+    if (n == null) continue;
+    if (p.comments_count == null || n > p.comments_count) {
+      const r = await collectFrom(auth, p);
+      if (r == null) continue; // falhou: guarda o total só depois de buscar, para tentar de novo na próxima hora
+      novos += r;
+    }
+    await supabase.from('instagram_posts').update({ comments_count: n, comments_checked_at: agora } as never).eq('id', p.id);
   }
   return novos;
 }
