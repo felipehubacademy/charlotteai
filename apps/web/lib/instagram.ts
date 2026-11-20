@@ -134,6 +134,20 @@ export async function listComments(auth: IgAuth, mediaId: string): Promise<IgRes
   return { ok: true, data: r.data.data.map(c => ({ id: c.id, text: c.text ?? '', username: c.username ?? null, timestamp: c.timestamp, fromId: c.from?.id ?? null })) };
 }
 
+/** Total de comentários de cada post da conta, do mais novo para o mais velho, até a data de corte. */
+export async function listMediaCommentCounts(auth: IgAuth, since: Date): Promise<IgResult<{ id: string; count: number; timestamp: string }[]>> {
+  const out: { id: string; count: number; timestamp: string }[] = [];
+  let next: string | null = `${auth.igUserId}/media?fields=id,comments_count,timestamp&limit=100`;
+  for (let page = 0; next && page < 3; page++) {
+    const r: IgResult<{ data: { id: string; comments_count?: number; timestamp: string }[]; paging?: { next?: string } }> = await call('GET', next, auth.token);
+    if (!r.ok) return r;
+    for (const m of r.data.data) out.push({ id: m.id, count: m.comments_count ?? 0, timestamp: m.timestamp });
+    const last: { timestamp: string } | undefined = r.data.data[r.data.data.length - 1];
+    next = last && new Date(last.timestamp) > since ? r.data.paging?.next ?? null : null;
+  }
+  return { ok: true, data: out.filter(m => new Date(m.timestamp) > since) };
+}
+
 export async function replyToComment(auth: IgAuth, commentId: string, message: string): Promise<IgResult<string>> {
   const r = await call<{ id: string }>('POST', `${commentId}/replies`, auth.token, { message });
   return r.ok ? { ok: true, data: r.data.id } : r;
