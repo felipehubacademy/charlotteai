@@ -1,0 +1,281 @@
+{
+  "l01": {
+    "hash": "ab4eec63e0e5",
+    "speaker": "charlotte",
+    "text": "Oi! Eu sou a Charlotte, sua tutora. Você não precisa saber nada de inglês para começar. Hoje você vai aprender suas primeiras palavras. Vem comigo!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00529,
+    "at": "2026-11-21T22:14:39.819Z"
+  },
+  "l02": {
+    "hash": "6aa9341eea94",
+    "speaker": "charlotte",
+    "text": "Sabia que você já fala inglês? OK, pizza, hotel: tudo isso é inglês. Agora vamos aprender mais.",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00416,
+    "at": "2026-11-21T22:14:42.080Z"
+  },
+  "l03": {
+    "hash": "3d1bef480c85",
+    "speaker": "charlotte",
+    "text": "Hi, Igor!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00097,
+    "at": "2026-11-21T22:14:43.263Z"
+  },
+  "l04": {
+    "hash": "b417c19d4b19",
+    "speaker": "igor",
+    "text": "Hello, Charlotte!",
+    "model": "eleven_multilingual_v2",
+    "calls": [
+      "eleven_multilingual_v2"
+    ],
+    "credits": 17,
+    "usd": 0.00136,
+    "at": "2026-11-21T22:14:43.953Z"
+  },
+  "l05": {
+    "hash": "331c5ec77dbb",
+    "speaker": "charlotte",
+    "text": "Hi é \"oi\". Hello é \"olá\". Os dois começam com um sopro leve: em português o h é mudo, em inglês ele se pronuncia. Hi. Hello.",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00563,
+    "at": "2026-11-21T22:14:46.422Z"
+  },
+  "l06": {
+    "hash": "0ec93071f19a",
+    "speaker": "charlotte",
+    "text": "Sua vez! O Igor acena para você. O que você diz?",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00246,
+    "at": "2026-11-21T22:14:47.954Z"
+  },
+  "l07": {
+    "hash": "004b8217542e",
+    "speaker": "charlotte",
+    "text": "Coffee?",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00097,
+    "at": "2026-11-21T22:14:49.376Z"
+  },
+  "l08": {
+    "hash": "f6b1dbd2a70c",
+    "speaker": "igor",
+    "text": "Yes!",
+    "model": "eleven_multilingual_v2",
+    "calls": [
+      "eleven_multilingual_v2"
+    ],
+    "credits": 4,
+    "usd": 0.00032,
+    "at": "2026-11-21T22:14:49.844Z"
+  },
+  "l09": {
+    "hash": "48f379f31856",
+    "speaker": "charlotte",
+    "text": "Pizza?",
+    "model": "gpt-audio-1.5",
+    "calls": [
+      "gpt-audio-mini",
+      "gpt-audio-mini",
+      "gpt-audio-1.5"
+    ],
+    "credits": 0,
+    "usd": 0.00609,
+    "at": "2026-11-21T22:14:53.566Z"
+  },
+  "l10": {
+    "hash": "b80f27cbfb51",
+    "speaker": "igor",
+    "text": "No!",
+    "model": "eleven_multilingual_v2",
+    "calls": [
+      "eleven_multilingual_v2"
+    ],
+    "credits": 3,
+    "usd": 0.00024,
+    "at": "2026-11-21T22:14:54.055Z"
+  },
+  "l11": {
+    "hash": "9505a3632dda",
+    "speaker": "charlotte",
+    "text": "Yes é \"sim\". No é \"não\". E OK você já sabe: é \"tá bom\". Repare: em yes, o y soa como i. Yes. No.",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00549,
+    "at": "2026-11-21T22:14:56.310Z"
+  },
+  "l12": {
+    "hash": "52f28fee62b3",
+    "speaker": "charlotte",
+    "text": "Sua vez! Eu pergunto: Coffee? Você quer café. O que você responde?",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00298,
+    "at": "2026-11-21T22:14:57.992Z"
+  },
+  "l13": {
+    "hash": "840b86bf7ee7",
+    "speaker": "igor",
+    "text": "Bye, Charlotte!",
+    "model": "eleven_multilingual_v2",
+    "calls": [
+      "eleven_multilingual_v2"
+    ],
+    "credits": 15,
+    "usd": 0.0012,
+    "at": "2026-11-21T22:14:58.429Z"
+  },
+  "l14": {
+    "hash": "f8cccb38c018",
+    "speaker": "charlotte",
+    "text": "Bye, Igor!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00083,
+    "at": "2026-11-21T22:14:59.681Z"
+  },
+  "l15": {
+    "hash": "7cf12c811b7f",
+    "speaker": "charlotte",
+    "text": "Bye é \"tchau\". Termina no som de \"ai\", sem \"ê\" no fim. Bye.",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00304,
+    "at": "2026-11-21T22:15:01.388Z"
+  },
+  "l16": {
+    "hash": "cb68925e329d",
+    "speaker": "charlotte",
+    "text": "Agora é com você! Eu digo: Hi! I'm Charlotte. Diga oi para mim!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini",
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00612,
+    "at": "2026-11-21T22:15:05.281Z"
+  },
+  "l17": {
+    "hash": "6f83f64b8ce6",
+    "speaker": "charlotte",
+    "text": "Hoje você aprendeu: hi, hello, yes, no, OK e bye. Agora vamos praticar!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00364,
+    "at": "2026-11-21T22:15:06.975Z"
+  },
+  "f1ok": {
+    "hash": "feaa24cc3b3a",
+    "speaker": "charlotte",
+    "text": "Isso! Hi!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00103,
+    "at": "2026-11-21T22:15:08.057Z"
+  },
+  "f1no": {
+    "hash": "6b470a60fd34",
+    "speaker": "charlotte",
+    "text": "Quase! Para dizer oi, é: Hi!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00183,
+    "at": "2026-11-21T22:15:09.238Z"
+  },
+  "f2ok": {
+    "hash": "a2d70423e835",
+    "speaker": "charlotte",
+    "text": "Perfeito! Yes, sim!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00165,
+    "at": "2026-11-21T22:15:10.474Z"
+  },
+  "f2no": {
+    "hash": "812e847e5cb6",
+    "speaker": "charlotte",
+    "text": "Quase! Para dizer sim, é: Yes!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00199,
+    "at": "2026-11-21T22:15:11.851Z"
+  },
+  "f3ok": {
+    "hash": "b787d739e391",
+    "speaker": "charlotte",
+    "text": "Você acabou de falar inglês comigo! Hi!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00169,
+    "at": "2026-11-21T22:15:13.000Z"
+  },
+  "f3no": {
+    "hash": "27288135956b",
+    "speaker": "charlotte",
+    "text": "Quase! Repita comigo: Hi, Charlotte!",
+    "model": "gpt-audio-mini",
+    "calls": [
+      "gpt-audio-mini"
+    ],
+    "credits": 0,
+    "usd": 0.00217,
+    "at": "2026-11-21T22:15:14.310Z"
+  }
+}

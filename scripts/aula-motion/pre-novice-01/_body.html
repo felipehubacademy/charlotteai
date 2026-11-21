@@ -1,0 +1,153 @@
+<style>
+  /* ---------- PN01: você já fala inglês ---------- */
+  #k0-h { position: absolute; left: 640px; top: 92px; font: 800 30px Bricolage, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--volt); white-space: nowrap; }
+  #k0-row { position: absolute; left: 0; right: 0; top: 190px; display: flex; justify-content: center; gap: 34px; }
+  .card { width: 300px; height: 270px; border-radius: 34px; background: rgba(250,247,240,.07); border: 3px solid rgba(250,247,240,.16);
+          display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; opacity: 0; }
+  .card svg { width: 96px; height: 96px; }
+  .card .e { font: 800 72px/1 Bricolage, sans-serif; color: var(--papel); letter-spacing: -.02em; }
+  .card .ic { fill: #FAF7F0; } .card .ic2 { fill: #DCFF4A; } .card .ln { stroke: #FAF7F0; }
+  .card.on { background: var(--volt); border-color: var(--volt); }
+  .card.on .e { color: var(--tinta); } .card.on .ic { fill: #16131F; } .card.on .ln { stroke: #16131F; }
+  #k0-lab { position: absolute; left: 640px; top: 520px; font: 800 52px Bricolage, sans-serif; color: var(--papel); white-space: nowrap; }
+  #k0-lab span { color: var(--volt); }
+  /* ---------- hi e hello, o sopro do h ---------- */
+  #h-row { position: absolute; left: 0; right: 0; top: 120px; display: flex; justify-content: center; gap: 220px; }
+  .wd { text-align: center; }
+  .wd .e { position: relative; font: 800 168px/1 Bricolage, sans-serif; color: var(--papel); letter-spacing: -.03em; }
+  .wd .e b { position: relative; }
+  .wd .e svg { position: absolute; left: -78px; top: 20px; width: 80px; height: 90px; }
+  .wd .e svg path { fill: none; stroke: #DCFF4A; stroke-width: 6; stroke-linecap: round; stroke-dasharray: 70; }
+  .wd .p { font: 800 46px Bricolage, sans-serif; color: rgba(250,247,240,.75); margin-top: 16px; opacity: 0; }
+  .wd .p::before { content: "= "; color: rgba(250,247,240,.4); }
+  #h-tip { position: absolute; left: 640px; top: 448px; display: flex; align-items: center; gap: 18px; padding: 18px 30px 20px; border-radius: 26px; background: rgba(250,247,240,.08); border: 2px solid rgba(220,255,74,.5); white-space: nowrap; }
+  #h-tip .t1 { font: 800 36px Bricolage, sans-serif; color: var(--papel); }
+  #h-tip .t1 span { color: var(--volt); }
+  #h-tip2 { position: absolute; left: 640px; top: 560px; font: 600 28px system-ui, sans-serif; color: rgba(250,247,240,.7); white-space: nowrap; }
+  #h-tip2 strong { color: var(--papel); }
+  /* ---------- yes, no, OK ---------- */
+  #yn { position: absolute; left: 0; right: 0; top: 96px; display: flex; flex-direction: column; align-items: center; gap: 26px; }
+  .yn { display: flex; align-items: center; gap: 30px; opacity: 0; }
+  .yn .e { display: flex; align-items: center; gap: 18px; min-width: 300px; justify-content: center; padding: 14px 36px 18px; border-radius: 999px; font: 800 80px/1 Bricolage, sans-serif; letter-spacing: -.02em; }
+  .yn .e svg { width: 54px; height: 54px; }
+  .yn .p { font: 800 54px Bricolage, sans-serif; color: var(--papel); opacity: 0; min-width: 260px; }
+  .yn .p::before { content: "= "; color: rgba(250,247,240,.4); }
+  #yn0 .e { background: var(--verde); color: var(--tinta); }
+  #yn1 .e { background: var(--pink); color: var(--tinta); }
+  #yn2 .e { background: var(--volt); color: var(--tinta); }
+  #yn-y { position: absolute; left: 640px; top: 600px; font: 600 30px system-ui, sans-serif; color: rgba(250,247,240,.78); white-space: nowrap; }
+  #yn-y b { font: 800 34px Bricolage, sans-serif; color: var(--volt); }
+  /* ---------- bye ---------- */
+  #by-en { position: absolute; left: 640px; top: 150px; font: 800 200px/1 Bricolage, sans-serif; letter-spacing: -.03em; color: var(--papel); white-space: nowrap; }
+  #by-pt { position: absolute; left: 640px; top: 380px; font: 800 72px/1 Bricolage, sans-serif; color: var(--papel); white-space: nowrap; }
+  #by-pt::before { content: "= "; color: rgba(250,247,240,.4); }
+  #by-tip { position: absolute; left: 640px; top: 520px; font: 600 30px system-ui, sans-serif; color: rgba(250,247,240,.78); white-space: nowrap; }
+  #by-tip b { font: 800 34px Bricolage, sans-serif; color: var(--volt); }
+  #by-tip s { text-decoration-thickness: 4px; text-decoration-color: var(--pink); color: rgba(250,247,240,.6); }
+  /* ---------- revisão com 6 palavras ---------- */
+  #rv-wrap { position: absolute; left: 120px; right: 120px; top: 150px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 22px; }
+  .rv { text-align: center; }
+  .rv .e { font: 800 60px/1 Bricolage, sans-serif; }
+  .rv .p { font: 500 24px system-ui, sans-serif; }
+</style>
+<!-- rua: título, a Charlotte se apresenta, hi e hello -->
+<div class="layer" id="L-street">
+  <img class="img" src="../../../docs/content/aula-motion/novice-01/cenas/rua.jpg">
+  <div class="sun"></div><canvas class="dust" width="1280" height="720"></canvas><div class="vig"></div>
+  <div id="shade"></div>
+  <div id="title"><div class="k">Primeiros passos · Aula 1</div><div class="t"><span class="w">Oi!</span></div></div>
+  <div id="intro"><div class="box">
+    <div class="hi">Oi! Eu sou a</div><div class="name">Charlotte</div><div class="role">sua tutora</div>
+    <div class="today">Não precisa saber nada de inglês.</div><div class="goal">Hoje: suas primeiras palavras</div>
+    <div class="go">Vem comigo!</div></div></div>
+  <div class="bubble" id="b-l03"></div><div class="bubble" id="b-l04"></div>
+</div>
+<!-- você já fala inglês -->
+<div class="layer type" id="L-type0">
+  <div class="blobs"><i style="width:520px;height:520px;background:#6B4BFF;left:-60px;top:-40px"></i><i style="width:420px;height:420px;background:#DCFF4A;right:-40px;bottom:-60px;opacity:.5"></i><i style="width:360px;height:360px;background:#FF4F8B;right:260px;top:-120px;opacity:.45"></i></div>
+  <canvas class="grain" width="640" height="360"></canvas>
+  <div id="k0-h">Você já fala inglês</div>
+  <div id="k0-row">
+    <div class="card" id="c0"><svg viewBox="0 0 96 96"><path class="ic" d="M30 44 L44 18 C50 16 54 20 52 28 L49 40 H72 C78 40 81 46 79 51 L72 74 C70 79 66 81 62 81 H30 Z"/><rect class="ic" x="14" y="44" width="12" height="37" rx="4"/></svg><div class="e">OK</div></div>
+    <div class="card" id="c1"><svg viewBox="0 0 96 96"><path class="ic" d="M48 86 L14 22 C34 10 62 10 82 22 Z"/><path class="ic2" d="M48 86 L20 32 C38 24 58 24 76 32 Z" style="opacity:.9"/><circle class="ic" cx="40" cy="42" r="6"/><circle class="ic" cx="57" cy="48" r="5"/><circle class="ic" cx="48" cy="62" r="5"/></svg><div class="e">pizza</div></div>
+    <div class="card" id="c2"><svg viewBox="0 0 96 96"><rect class="ln" x="22" y="22" width="52" height="64" rx="4" fill="none" stroke-width="5"/><rect class="ic" x="30" y="8" width="36" height="14" rx="3"/><g class="ic"><rect x="32" y="34" width="10" height="9"/><rect x="54" y="34" width="10" height="9"/><rect x="32" y="52" width="10" height="9"/><rect x="54" y="52" width="10" height="9"/><rect x="42" y="70" width="12" height="16"/></g></svg><div class="e">hotel</div></div>
+  </div>
+  <div id="k0-lab">tudo isso é <span>inglês</span></div>
+</div>
+<!-- hi e hello -->
+<div class="layer type" id="L-type1">
+  <div class="blobs"><i style="width:520px;height:520px;background:#FF4F8B;right:-60px;top:-60px;opacity:.6"></i><i style="width:460px;height:460px;background:#6B4BFF;left:-80px;bottom:-80px"></i><i style="width:300px;height:300px;background:#DCFF4A;left:380px;top:-140px;opacity:.4"></i></div>
+  <canvas class="grain" width="640" height="360"></canvas>
+  <div id="h-row">
+    <div class="wd" id="w-hi"><div class="e"><b>h<svg viewBox="0 0 80 90"><path d="M70 18 C52 22 40 18 24 10"/><path d="M70 45 C50 45 34 45 10 45"/><path d="M70 72 C52 68 40 72 24 80"/></svg></b>i</div><div class="p">oi</div></div>
+    <div class="wd" id="w-hello"><div class="e"><b>h<svg viewBox="0 0 80 90"><path d="M70 18 C52 22 40 18 24 10"/><path d="M70 45 C50 45 34 45 10 45"/><path d="M70 72 C52 68 40 72 24 80"/></svg></b>ello</div><div class="p">olá</div></div>
+  </div>
+  <div id="h-tip"><div class="t1">o <span>h</span> do começo é um sopro leve</div></div>
+  <div id="h-tip2">em português o h é mudo; <strong>em inglês, não</strong></div>
+</div>
+<!-- o Igor acena para a câmera (pausa 1) -->
+<div class="layer" id="L-igor">
+  <img class="img" src="../../../docs/content/aula-motion/novice-01/cenas/igor-camera.jpg">
+  <div class="sun"></div><canvas class="dust" width="1280" height="720"></canvas><div class="vig"></div>
+</div>
+<!-- café: Coffee? Yes! Pizza? No! e pausa 2 -->
+<div class="layer" id="L-cafe">
+  <img class="img" src="../../../docs/content/aula-motion/pre-novice-01/cenas/cafe.jpg">
+  <div class="sun"></div><canvas class="dust" width="1280" height="720"></canvas><div class="vig"></div>
+  <div class="bubble" id="b-l07"></div><div class="bubble" id="b-l08"></div><div class="bubble" id="b-l09"></div><div class="bubble" id="b-l10"></div><div class="bubble" id="b-ask2"></div>
+</div>
+<!-- yes, no, OK -->
+<div class="layer type" id="L-type2">
+  <div class="blobs"><i style="width:520px;height:520px;background:#2BD97C;left:-80px;top:-60px;opacity:.45"></i><i style="width:460px;height:460px;background:#6B4BFF;right:-60px;bottom:-80px"></i><i style="width:300px;height:300px;background:#FF4F8B;left:520px;bottom:-160px;opacity:.4"></i></div>
+  <canvas class="grain" width="640" height="360"></canvas>
+  <div id="yn">
+    <div class="yn" id="yn0"><div class="e"><svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="#16131F"/><path d="M15 28l8 8 16-18" stroke="#2BD97C" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>yes</div><div class="p">sim</div></div>
+    <div class="yn" id="yn1"><div class="e"><svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="#16131F"/><path d="M18 18l18 18M36 18L18 36" stroke="#FF4F8B" stroke-width="5" fill="none" stroke-linecap="round"/></svg>no</div><div class="p">não</div></div>
+    <div class="yn" id="yn2"><div class="e">OK</div><div class="p">tá bom</div></div>
+  </div>
+  <div id="yn-y">em <b>yes</b>, o <b>y</b> soa como <b>i</b></div>
+</div>
+<!-- despedida e pausa 3 -->
+<div class="layer" id="L-bye">
+  <img class="img" src="../../../docs/content/aula-motion/novice-01/cenas/despedida.jpg">
+  <div class="sun"></div><canvas class="dust" width="1280" height="720"></canvas><div class="vig"></div>
+  <div class="bubble" id="b-l13"></div><div class="bubble" id="b-l14"></div><div class="bubble" id="b-ask3"></div>
+</div>
+<!-- bye -->
+<div class="layer type" id="L-type3">
+  <div class="blobs"><i style="width:520px;height:520px;background:#6B4BFF;left:-60px;top:-40px"></i><i style="width:420px;height:420px;background:#FF4F8B;right:-40px;bottom:-60px;opacity:.5"></i></div>
+  <canvas class="grain" width="640" height="360"></canvas>
+  <div id="by-en">bye</div>
+  <div id="by-pt">tchau</div>
+  <div id="by-tip">termina em <b>“ai”</b>, <s>sem “ê” no fim</s></div>
+</div>
+<!-- revisão -->
+<div class="layer type" id="L-review">
+  <div class="blobs"><i style="width:520px;height:520px;background:#6B4BFF;left:-60px;top:-40px"></i><i style="width:420px;height:420px;background:#DCFF4A;right:-40px;bottom:-60px;opacity:.45"></i></div>
+  <canvas class="grain" width="640" height="360"></canvas>
+  <div id="rv-h">Hoje você aprendeu</div>
+  <div id="rv-wrap">
+  <div class="rv" id="rv0"><div class="e">hi</div><div class="p">oi</div></div>
+  <div class="rv" id="rv1"><div class="e">hello</div><div class="p">olá</div></div>
+  <div class="rv" id="rv2"><div class="e">yes</div><div class="p">sim</div></div>
+  <div class="rv" id="rv3"><div class="e">no</div><div class="p">não</div></div>
+  <div class="rv" id="rv4"><div class="e">OK</div><div class="p">tá bom</div></div>
+  <div class="rv" id="rv5"><div class="e">bye</div><div class="p">tchau</div></div>
+  </div>
+  <div id="rv-go">Agora vamos <span>praticar!</span></div>
+</div>
+<!-- cartão final -->
+<div class="layer" id="L-end">
+  <div id="end" style="position:absolute;inset:0">
+    <div class="t">Agora é a sua vez!</div>
+    <div class="s">Pratique as palavras da aula na trilha.</div>
+    <div class="b">Praticar as palavras</div>
+    <img src="../../../branding/logo/queizy-logo-preto.svg">
+  </div>
+</div>
+
+<div id="turn">Sua vez!</div>
+<div id="q"><div class="h"></div><div class="opts"></div></div>
+<div id="narr"><div class="av"><img src="../../../apps/mobile/assets/charlotte-bust.png"></div><div><div class="n">Charlotte</div><div class="s">sua tutora</div></div></div>
+<img id="logo" src="../../../branding/logo/queizy-logo-branco.svg">
+<svg id="mask" width="1280" height="720"><circle id="ring" cx="640" cy="360" r="0" fill="none" stroke="#DCFF4A" stroke-width="10"/></svg>

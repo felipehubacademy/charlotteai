@@ -82,7 +82,7 @@ async function charlotteOnce(text, model) {
       model,
       modalities: ["text", "audio"],
       audio: { voice: "coral", format: "mp3" },
-      messages: [{ role: "system", content: READER_PROMPT }, ...READER_SHOTS, { role: "user", content: `SCRIPT:\n${text}` }],
+      messages: [{ role: "system", content: READER_PROMPT + (aula.readerNote ? ` ${aula.readerNote}` : "") }, ...READER_SHOTS, { role: "user", content: `SCRIPT:\n${text}` }],
     }),
   });
   if (!res.ok) throw new Error(`voz da Charlotte: ${res.status} ${await res.text()}`);

@@ -1,12 +1,13 @@
 {
   "id": "pre-novice-01",
-  "level": "Pre-Novice",
+  "level": "Pré-Novice",
   "module": "PM01",
   "unit": "PN01",
   "title": "Oi!",
   "subtitle": "Primeiros passos · Aula 1",
   "source": "docs/pre-novice/PN01-oi.md, seção 1 (branch claude/pre-novice-85d846)",
   "note": "Fonte única da aula. Texto entre chaves {assim} é inglês destacado na tela; a voz lê sem as chaves. Falas em inglês trazem a tradução em pt. Público: quem nunca estudou inglês; cada palavra em inglês é dita 2 vezes, mais devagar. Esta aula CONTA como atividade da unidade (decisão do Felipe, 21/11/2026).",
+  "readerNote": "This lesson is for absolute beginners: read every English word slowly and very clearly, with a short pause before and after it. Keep the Portuguese parts warm and unhurried.",
   "speakers": {
     "charlotte": { "name": "Charlotte", "engine": "charlotte-voice", "voice": "coral" },
     "igor": { "name": "Igorfina", "engine": "character-voice", "voice": "9QtRgQhaZY2Ge2ttjy5x", "model": "eleven_multilingual_v2" }
@@ -54,7 +55,7 @@
     {
       "id": "cp2",
       "mode": "tap",
-      "question": "A Charlotte pergunta: \"Coffee?\". Você quer café. O que você responde?",
+      "question": "Você quer café. O que você responde para a Charlotte?",
       "options": ["Yes!", "No!", "Hello!"],
       "answer": "Yes!",
       "speak": ["yes", "yeah", "yes please", "yes coffee"],

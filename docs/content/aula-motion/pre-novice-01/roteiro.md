@@ -4,7 +4,7 @@
 `docs/pre-novice/PN01-oi.md`, seção 1 (branch `claude/pre-novice-85d846`). Mesmo formato do piloto `novice-01`.
 
 - **Nível:** Pré-Novice. A Charlotte explica em português; as palavras em inglês aparecem em Volt.
-- **Duração estimada:** cerca de 80 s de vídeo (cerca de 60 s de fala), horizontal 1280x720, mais as 3 pausas.
+- **Duração:** 107 s de vídeo (85 s de fala), horizontal 1280x720, mais as 3 pausas. A 1ª pausa chega aos 46 s.
 - **Formato:** sem personagem falando. Quadrinho animado (imagens 3D paradas da Charlotte e do Igor, câmera lenta,
   balões no ritmo da voz) e explicação em tipografia animada, com a Charlotte como narradora.
 - **Personagens:** **Charlotte** (tutora) e **Igorfina** (Igor), que se encontram na rua, tomam um café e se despedem.
@@ -92,7 +92,7 @@ Tipografia: **yes** = sim (pílula verde com visto) · **no** = não (pílula pi
 
 ### Pausa 2 (cerca de 1:02, toque) · `cafe`
 A câmera fecha na Charlotte com a xícara; balão "Coffee?".
-- Pergunta: "A Charlotte pergunta: Coffee?. Você quer café. O que você responde?"
+- Pergunta: "Você quer café. O que você responde para a Charlotte?"
 - **Yes!** (certa) / No! / Hello!
 - Correção: "Perfeito! Yes, sim!" / "Quase! Para dizer sim, é: Yes!"
 
@@ -108,7 +108,7 @@ Tipografia: **bye** = tchau.
 > **CHARLOTTE:** **Bye** é "tchau". Termina no som de "ai", sem "ê" no fim. **Bye.**
 
 ### Pausa 3 (cerca de 1:20, fala) · `despedida`, close na Charlotte
-A Charlotte olha para a câmera (o Igor já saiu do quadro); balão "Hi! I'm Charlotte."
+A Charlotte olha para a câmera (o Igor já saiu do quadro); balão "Hi! I'm Charlotte." ao lado do rosto.
 
 > **CHARLOTTE:** Agora é com você! Eu digo: **Hi! I'm Charlotte.** Diga oi para mim!
 
