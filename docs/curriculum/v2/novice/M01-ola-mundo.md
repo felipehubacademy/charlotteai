@@ -46,7 +46,8 @@
 1. **multiple_choice** — "_____ to meet you!"
    **Options**: Nice / Fine / Happy
    **Answer**: Nice
-   **Explanation**: "Nice to meet you" é a saudação padrão ao conhecer alguém pela primeira vez ("Good to meet you" também existe). Já "Fine to meet you" não se usa: "fine" é para dizer como você está ("I'm fine").
+   **Accepts**: Happy
+   **Explanation**: "Nice to meet you" é a saudação padrão ao conhecer alguém pela primeira vez ("Good to meet you" também existe). "Happy to meet you" também vale, mas soa menos natural no dia a dia: prefira "Nice". Já "Fine to meet you" não se usa: "fine" é para dizer como você está ("I'm fine").
 
 2. **multiple_choice** — "How _____ you today?"
    **Options**: are / is / am

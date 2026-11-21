@@ -22,3 +22,8 @@ Números sem a equipe (institucional, fora do ranking, e-mails da equipe).
    - Depois: dica "Cumprimento para puxar conversa com alguém (o \"oi\")".
    - Motivo: enunciado pouco claro. Alunos escolhem "Sorry" (que a própria trilha aceita para chamar a atenção em outro exercício).
    - Números (72 h): 4 alunos escolheram "Sorry" (5 reprovações em 17 tentativas).
+
+## 21/11/2026 (decisão do Felipe, depois da rotina)
+
+- **Novice N01, "_____ to meet you!"**: "Happy" passa a ser aceito (Accepts), com a explicação de que soa menos natural que "Nice". Motivo: "Happy to meet you" é inglês usado; 2 alunos reprovados.
+- **Igorfina F01, "_____! Can you help me?"**: "Sorry" passa a ser aceito (Accepts), com a explicação de que funciona como "desculpe incomodar". Motivo: coerência com outro exercício da trilha que aceita "Sorry" para chamar a atenção; 4 alunos reprovados.

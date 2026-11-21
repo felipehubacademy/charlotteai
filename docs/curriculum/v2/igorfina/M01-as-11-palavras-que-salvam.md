@@ -57,7 +57,8 @@
    **Hint**: Cumprimento para puxar conversa com alguém (o "oi")
    **Options**: Hello / Sorry / Thanks
    **Answer**: Hello
-   **Explanation**: Para começar a conversa com alguém, o primeiro passo é cumprimentar: "Hello". Dica do Igor: um "Hello" com sorriso abre qualquer porta.
+   **Accepts**: Sorry
+   **Explanation**: Para começar a conversa com alguém, o primeiro passo é cumprimentar: "Hello". "Sorry! Can you help me?" também vale, como um "desculpe incomodar" para chamar a atenção. Dica do Igor: um "Hello" com sorriso abre qualquer porta.
 
 2. **multiple_choice** — "Oops! _____! Are you OK?"
    **Options**: Sorry / Hello / Please
