@@ -74,7 +74,7 @@ export const CHARACTERS: Record<CharacterId, CharacterInfo> = {
         },
       },
       {
-        id: 'rodela', labelPt: 'Filósofo Rodela', labelEn: 'Philosopher Rodela', callTag: 'Rodela', articlePt: 'o ', hidden: true, // voz em ajuste (19/11/2026)
+        id: 'rodela', labelPt: 'Filósofo Rodela', labelEn: 'Philosopher Rodela', callTag: 'Rodela', articlePt: 'o ', avatar: require('../assets/igorfina-rodela.png'), hidden: true, // voz em ajuste (19/11/2026)
         taglinePt: 'O Igor imitando um filósofo de fala calma. Toda conversa vira uma reflexão sobre a vida.',
         taglineEn: 'Igor as a calm-voiced philosopher. Every chat turns into a reflection on life.',
         welcome: {
