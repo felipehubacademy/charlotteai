@@ -326,7 +326,7 @@ Também não serve pôr os tópicos como módulos dentro do Novice (por exemplo,
 | Área | Impacto | Onde |
 |---|---|---|
 | **Banco** | 1 migration com 3 colunas em `charlotte_users`: `start_from_zero boolean not null default false`, `onboarding_level_answer text` e `prenovice_group text` (controle ou Pré-Novice). Nenhum CHECK muda. | nova migration |
-| **XP (guard)** | **Sem mudança**: os tipos continuam `learn_exercise`, `roleplay` e `guided_chat`. O aquecimento e a fala a partir do português são `learn_exercise`. O `learn_card` não grava XP. Se o Felipe quiser XP no cartão, precisa entrar no guard. | `20261029203000_lock_xp_writes.sql` |
+| **XP (guard)** | **1 tipo novo, `aula`** (decisão do Felipe em 21/11: a aula é interativa e dá XP): 10 XP por pausa acertada de primeira, teto `when 'aula' then 10` no guard, sem XP ao rever. Migration aplicada antes da OTA. Os exercícios seguem `learn_exercise`, sem mudança. O `learn_card` não grava XP. Detalhes em `docs/pre-novice/PN01-oi.md`, seção 4. | `20261029203000_lock_xp_writes.sql` + migration nova |
 | **learn_history_v2** | Linhas com `level = 'PreNovice'`. A coluna é texto livre, então nada muda. | — |
 | **Promoção** | Não afeta Novice para Inter. A saída do Pré-Novice (no PN05) é só o modal e a troca da flag. | `usePromotion.ts`, `PromotionModal` |
 | **Teste de nível** | Opção "Não sei", corte novo, link de saída, cartão de resultado, "Começar do zero" levando ao Pré-Novice. | `placement-test.tsx` |

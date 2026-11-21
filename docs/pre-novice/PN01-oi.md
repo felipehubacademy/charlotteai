@@ -117,7 +117,35 @@ Pratica só o que a aula ensinou. No erro, a explicação em português de até 
 
 Fica anotado aqui para não perder; nada disso foi feito.
 
-- **Aula como atividade:** hoje a aula é beta (`aula_motion`), fica fora da contagem e não dá XP (`lib/aulas.ts`). No Pré-Novice ela passa a contar para concluir a unidade. Se der XP, o tipo novo precisa entrar no guard `charlotte.guard_practice_insert` (migration nova).
+- **Aula como atividade:** hoje a aula é beta (`aula_motion`), fica fora da contagem e não dá XP (`lib/aulas.ts`). No Pré-Novice ela passa a contar para concluir a unidade e dá XP (decisão do Felipe em 21/11/2026, porque é interativa). O XP está detalhado na seção 4.
 - **Unidade com 2 atividades:** a liberação da unidade seguinte, o "tópico do dia concluído" da degustação e o progresso da trilha contam 4 atividades. Para o Pré-Novice, passam a contar as atividades que a unidade tem.
 - **Passo 8 de Palavras:** um passo de fala dentro do exercício de palavras, com o reconhecimento no aparelho que o Listening & Speaking já usa.
 - **`learn_card`:** passo novo, com o balão de tradução tocando o som.
+
+---
+
+## 4. XP da aula (decidido: a aula dá XP)
+
+Conferido no `main` em 21/11/2026:
+
+- O XP que o app grava passa pelo guard `charlotte.guard_practice_insert` (`supabase/migrations/20261029203000_lock_xp_writes.sql`). Ele só aceita os tipos da lista, cada um com um teto por linha (`learn_exercise` = 15, `roleplay` = 25, `guided_chat` = 30). **Tipo fora da lista dá erro**, e o XP se perde.
+- Os exercícios de Palavras do Pré-Novice já são `learn_exercise` (10 XP por acerto na escolha, como no Novice). **Não precisam de mudança no guard.**
+- A promoção do Novice para o Inter conta tópicos concluídos (`usePromotion`), não XP. A regra antiga por XP (`checkLevelPromotion` em `lib/levelPromotion.ts`) não é chamada em lugar nenhum. Por isso, o XP do Pré-Novice não adianta a promoção de ninguém.
+
+**Proposta para a aula:**
+
+| Item | Valor |
+|---|---|
+| Tipo novo de prática | `aula` |
+| Quando grava | 1 linha por pausa respondida, no momento da resposta, como na Gramática |
+| Quanto | 10 XP no acerto de primeira, 0 no erro. O PN01 tem 3 pausas, então dá até 30 XP. |
+| Teto no guard | `when 'aula' then 10` |
+| Rever a aula | Não dá XP de novo: só grava se a aula ainda não estiver concluída em `learn_history_v2` |
+| Vale também para | A aula do N01, que hoje está em teste para a chave beta, quando ela passar a dar XP |
+
+**O que entra na implementação:**
+
+1. Uma migration nova que recria `charlotte.guard_practice_insert` com `when 'aula' then 10`, mantendo os outros tipos iguais. Aplicar no banco **antes** da OTA, porque sem isso o insert do app dá erro.
+2. A tela `aula.tsx` grava a prática em cada pausa.
+3. Teste no aparelho (Samsung e simulador iOS) com a conta de teste: responder as 3 pausas, conferir as 3 linhas em `charlotte_practices` com 10 XP cada e o XP subindo na tela inicial. Depois rever a aula e conferir que nada novo foi gravado.
+4. O /admin já lista os tipos de prática por aluno; `aula` aparece sozinho. Conferir se as métricas que somam "aprendizado" precisam incluir o tipo novo.
