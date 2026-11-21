@@ -457,6 +457,19 @@ export default function LearnSessionScreen() {
   // Antes o pedido do sistema abria no meio do "segurar para falar": o aluno soltava o dedo com o
   // aviso na tela e a primeira gravação dava erro (AudioRecorder.stop rejeitado, ~1 em cada aluno novo no Android).
   const [micAsk, setMicAsk] = useState(false);
+  // Aviso curto embaixo do microfone depois de um toque rápido demais ("segure, não é só tocar").
+  const [pronHint, setPronHint] = useState<string | null>(null);
+  const pronHintTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Cada gravação ganha um número; resultado que chega depois de trocar de frase (ou do tempo-limite) é ignorado.
+  const pronAttemptRef = useRef(0);
+  // Dedo no botão, gravador ainda ligando: "Espere…" (o "Pode falar" só aparece quando já está gravando).
+  const [micStarting, setMicStarting] = useState(false);
+  const showPronHint = (msg: string) => {
+    if (pronHintTimerRef.current) clearTimeout(pronHintTimerRef.current);
+    setPronHint(msg);
+    pronHintTimerRef.current = setTimeout(() => setPronHint(null), 4000);
+  };
+  useEffect(() => () => { if (pronHintTimerRef.current) clearTimeout(pronHintTimerRef.current); }, []);
 
   // Loop de pulso do mic ring durante gravacao.
   // (declarado aqui, apos o useState de pronStatus, para evitar TDZ.)
@@ -686,6 +699,8 @@ export default function LearnSessionScreen() {
   useEffect(() => { charlotteAudioUriRef.current = charlotteAudioUri; }, [charlotteAudioUri]);
 
   const loadPronStep = useCallback(async (ph: PronStep) => {
+    pronAttemptRef.current += 1; // resultado atrasado da frase anterior não aparece nesta
+    setPronHint(null);
     setPronStatus('loading_audio');
     setPronFeedback(null);
     stepFailsRef.current = 0;
@@ -944,6 +959,11 @@ export default function LearnSessionScreen() {
       ? `É para repetir a pergunta, não responder. Entendemos: "${transcript}". Ouça e diga a pergunta igual.`
       : `Repeat the question, don't answer it. We heard: "${transcript}". Listen and say the same question.`;
 
+    // Nada entendido: quase sempre o aluno soltou o botão cedo ou falou antes de o microfone ligar.
+    const noSpeechMsg = isPortuguese
+      ? 'Não ouvimos sua voz. Segure o botão, espere aparecer "Pode falar" e só solte depois de dizer a frase inteira.'
+      : 'We couldn\'t hear you. Hold the button, wait for "Speak now" and only let go after saying the whole phrase.';
+
     let feedback: NonNullable<PronFeedback>;
     // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
     if (isNoviceLike) {
@@ -954,7 +974,7 @@ export default function LearnSessionScreen() {
       } else {
         feedback = { state: 'error', xp: 0, message: transcript
           ? (answered ? answeredMsg : isPortuguese ? `Tente de novo. Entendemos: "${transcript}".${missLine}` : `Try again. We heard: "${transcript}".${missLine}`)
-          : (isPortuguese ? 'Não ouvimos nada. Segure o botão enquanto fala, perto do microfone.' : "We didn't hear anything. Hold the button while you speak, close to the mic.") };
+          : noSpeechMsg };
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
         soundEngine.play('answer_wrong').catch(() => {});
         setSessionErrors(prev => prev + 1);
@@ -969,7 +989,7 @@ export default function LearnSessionScreen() {
     } else {
       feedback = { state: 'error', xp: 0, message: transcript
         ? (answered ? answeredMsg : isPortuguese ? `Tente de novo. Entendemos: "${transcript}".${missLine}` : `Try again. We heard: "${transcript}".${missLine}`)
-        : (isPortuguese ? 'Não ouvimos nada. Segure o botão enquanto fala, perto do microfone.' : "We didn't hear anything. Hold the button while you speak, close to the mic.") };
+        : noSpeechMsg };
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
       soundEngine.play('answer_wrong').catch(() => {});
       setSessionErrors(prev => prev + 1);
@@ -995,10 +1015,16 @@ export default function LearnSessionScreen() {
   // Erros do reconhecimento que significam "serviço indisponível neste aparelho" (sem inglês
   // instalado, sem serviço de voz, rede do serviço fora): daí em diante a conferência vai pelo
   // servidor. "no-speech", "speech-timeout" e "aborted" são normais (o aluno não falou / soltou).
-  const ASR_BROKEN = new Set(['language-not-supported', 'service-not-allowed', 'network', 'client', 'busy', 'audio-capture', 'unknown']);
+  // "not-allowed" = reconhecimento de fala negado nos Ajustes do iPhone (o microfone pode estar liberado):
+  // vai direto para o servidor em vez de tentar o aparelho a cada frase.
+  const ASR_BROKEN = new Set(['language-not-supported', 'service-not-allowed', 'not-allowed', 'network', 'client', 'busy', 'audio-capture', 'unknown']);
 
   const blockMic = () => {
     recordingRef.current = false;
+    // Volta dos Ajustes confere de novo (o AppState só reconfere enquanto o microfone não está pronto).
+    micReadyRef.current = false;
+    recorderPreparedRef.current = false;
+    setMicAsk(false);
     setMicBlocked(true);
     setPronStatus('listening');
     logAttempt(userId, { ...pronLogBase(), event: 'mic_blocked' });
@@ -1135,8 +1161,48 @@ export default function LearnSessionScreen() {
     } catch { finish(); }
   });
 
-  const startRecording = async () => {
-    if (recordingRef.current) return;
+  // Gravação em andamento: o toque inicia (startPromiseRef) e o soltar só para DEPOIS de o início terminar.
+  // Antes, no Android, soltar enquanto o gravador ainda se preparava fazia o stop chegar antes do record():
+  // o gravador seguia gravando sem ninguém parar, e os toques seguintes não faziam nada ("não para").
+  const startPromiseRef = useRef<Promise<void> | null>(null);
+  const recordStartedAtRef = useRef(0); // quando o record() de fato rodou (0 = não começou)
+  const stoppingRef = useRef(false);    // parando/processando: o botão não aceita novo toque
+
+  const withTimeout = <T,>(p: Promise<T>, ms: number): Promise<T> => new Promise((resolve, reject) => {
+    const t = setTimeout(() => reject(new Error('timeout')), ms);
+    p.then(v => { clearTimeout(t); resolve(v); }, e => { clearTimeout(t); reject(e); });
+  });
+  const wait = (ms: number) => new Promise<void>(r => setTimeout(r, ms));
+
+  /** Microfone negado no sistema? (o iPhone grava silêncio sem avisar quando o microfone está bloqueado) */
+  const micDenied = async () => {
+    const perm = await getRecordingPermissionsAsync().catch(() => null);
+    return !!perm && !perm.granted;
+  };
+
+  const resetAudioAfterRecording = async () => {
+    await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+    await setIsAudioActiveAsync(true).catch(() => {});
+  };
+
+  /** Para o gravador. O Android recusa parar logo depois de começar (ainda sem som gravado): espera e tenta de novo.
+   *  Devolve true só se parou de verdade com um arquivo válido. */
+  const stopRecorderSafely = async (): Promise<boolean> => {
+    // Garante um mínimo de gravação real antes de parar (o MediaRecorder do Android recusa parar sem dados).
+    const since = recordStartedAtRef.current ? Date.now() - recordStartedAtRef.current : 0;
+    if (Platform.OS === 'android' && since < 600) await wait(600 - since);
+    for (let i = 0; i < 2; i++) {
+      try { await withTimeout(recorder.stop(), 4000); return true; } catch { /* tenta de novo */ }
+      let still = false;
+      try { still = !!recorder.getStatus().isRecording; } catch { /* sem status */ }
+      if (!still) return false; // o sistema já soltou o gravador; o arquivo não vale
+      await wait(500);
+    }
+    return false;
+  };
+
+  const startRecording = () => {
+    if (recordingRef.current || stoppingRef.current) return;
     if (!currentStep || currentStep.kind !== 'pronunciation') return;
     // Sem permissão o botão está em "toque para liberar" (requestMic); aqui nunca abre o pedido do sistema.
     if (!micReadyRef.current) return;
@@ -1146,69 +1212,108 @@ export default function LearnSessionScreen() {
     // o usuário "não conseguia repetir" se o áudio ainda estava/ficava tocando.
     stopAudio();
 
+    pronAttemptRef.current += 1;
     recordingRef.current = true;
     recordingStartRef.current = Date.now();
+    recordStartedAtRef.current = 0;
     speechTranscriptRef.current = '';
     speechAltsRef.current = [];
     asrErrorRef.current = null;
-    setPronStatus('recording');
-    // Vibração junto com a animação: a gravação começa neste toque.
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    setPronHint(null);
+    setMicBlocked(false);
+    setMicStarting(true);
+    usedAsrRef.current = false;
 
-    try {
-      setMicBlocked(false);
-      usedAsrRef.current = false;
-      if (preparingRef.current) await preparingRef.current;
-      if (recorderPreparedRef.current) {
-        recorderPreparedRef.current = false;
+    const p = (async () => {
+      try {
+        if (preparingRef.current) await preparingRef.current;
+        if (recorderPreparedRef.current) {
+          recorderPreparedRef.current = false;
+        } else {
+          await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+          await setIsAudioActiveAsync(true).catch(() => {});
+          try { await recorder.prepareToRecordAsync(); } catch {
+            // Gravador preso de uma tentativa anterior: solta e prepara de novo.
+            await recorder.stop().catch(() => {});
+            await recorder.prepareToRecordAsync();
+          }
+        }
         recorder.record();
-      } else {
-        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
-        await setIsAudioActiveAsync(true).catch(() => {});
-        await recorder.prepareToRecordAsync();
-        recorder.record();
+        recordStartedAtRef.current = Date.now();
+        // O "sinal": o botão fica vermelho com "Pode falar" e vibra só quando o gravador já está gravando.
+        // Antes ficava vermelho no toque, e quem falava logo perdia o começo (ou tudo, se soltava rápido).
+        setMicStarting(false);
+        if (recordingRef.current) {
+          setPronStatus('recording');
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {});
+        }
+        // Quanto o gravador levou do toque até gravar, por aparelho (diagnóstico).
+        track('mic_start', { ms: Date.now() - recordingStartRef.current, platform: Platform.OS });
+      } catch {
+        recordStartedAtRef.current = 0;
+        setMicStarting(false);
+        if (recordingRef.current) {
+          recordingRef.current = false;
+          if (await micDenied()) blockMic(); else setPronStatus('listening');
+        }
       }
-      // Quanto o gravador levou do toque até gravar, por aparelho (diagnóstico).
-      track('mic_start', { ms: Date.now() - recordingStartRef.current, platform: Platform.OS });
-    } catch {
-      recordingRef.current = false;
-      setPronStatus('listening');
-    }
+    })();
+    startPromiseRef.current = p;
+    p.finally(() => { if (startPromiseRef.current === p) startPromiseRef.current = null; });
   };
 
   const stopRecording = async () => {
-    if (!recordingRef.current || !currentStep || currentStep.kind !== 'pronunciation') return;
+    if (!recordingRef.current || stoppingRef.current || !currentStep || currentStep.kind !== 'pronunciation') return;
 
-    const elapsed = Date.now() - recordingStartRef.current;
-
-    // Ignore accidental releases shorter than 300ms
-    if (elapsed < 300) {
-      recordingRef.current = false;
-      try { await recorder.stop(); } catch {}
-      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
-      await setIsAudioActiveAsync(true).catch(() => {});
-      setPronStatus('listening');
-      prepareRecorderAhead();
-      return;
-    }
-
+    const attempt = pronAttemptRef.current;
+    const stale = () => pronAttemptRef.current !== attempt;
+    const heldMs = Date.now() - recordingStartRef.current;
     recordingRef.current = false;
+    stoppingRef.current = true;
+    setMicStarting(false);
+    // "Processando": o botão some até o gravador parar de verdade e a fala ser conferida.
     setPronStatus('assessing');
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+
+    // Tempo-limite de segurança: o botão nunca fica preso (gravador ou internet que não respondem).
+    const safety = setTimeout(() => {
+      if (stale()) return;
+      pronAttemptRef.current += 1; // o que chegar depois é ignorado
+      stoppingRef.current = false;
+      logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: 'stop_timeout' });
+      resetAudioAfterRecording();
+      setPronStatus('error');
+    }, 25000);
 
     try {
-      // Android às vezes recusa parar uma gravação que não chegou a começar direito ("AudioRecorder.stop has been
-      // rejected"). Não é erro do aluno: volta para "segure e fale" com o gravador preparado de novo.
-      try { await recorder.stop(); } catch {
-        logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: 'stop_rejected' });
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
-        await setIsAudioActiveAsync(true).catch(() => {});
+      // Espera o início terminar (o gravador pode ainda estar ligando).
+      if (startPromiseRef.current) await withTimeout(startPromiseRef.current, 5000).catch(() => {});
+      if (stale()) return;
+      const started = recordStartedAtRef.current > 0;
+
+      // Toque rápido (sem segurar) ou soltou antes de o microfone ligar: não corrige, só orienta.
+      if (!started || heldMs < 300) {
+        if (started) await stopRecorderSafely();
+        await resetAudioAfterRecording();
+        if (stale()) return;
+        if (!started && await micDenied()) { blockMic(); return; }
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
+        showPronHint(isPortuguese ? 'Segure o botão (não é só tocar) e fale a frase.' : "Hold the button (don't just tap it) and say the phrase.");
         setPronStatus('listening');
         return;
       }
-      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
-      await setIsAudioActiveAsync(true).catch(() => {});
+
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => {});
+      const stopped = await stopRecorderSafely();
+      await resetAudioAfterRecording();
+      if (stale()) return;
+      if (!stopped) {
+        // O sistema não entregou a gravação (Android). Não é erro do aluno: pede para gravar de novo.
+        logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: 'stop_rejected' });
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
+        showPronHint(isPortuguese ? 'Não deu para gravar. Segure o botão de novo e fale a frase.' : "Couldn't record that. Hold the button again and say the phrase.");
+        setPronStatus('listening');
+        return;
+      }
       const audioUri = recorder.uri;
       if (!audioUri) { setPronStatus('error'); return; }
       const isWav = audioUri.toLowerCase().endsWith('.wav');
@@ -1217,8 +1322,8 @@ export default function LearnSessionScreen() {
       if (Platform.OS === 'ios' && isWav && ASR_AVAILABLE && !asrBrokenRef.current) {
         const alts = await recognizeFile(audioUri);
         // O reconhecimento usa a sessão de áudio: devolve o som para o alto-falante.
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
-        await setIsAudioActiveAsync(true).catch(() => {});
+        await resetAudioAfterRecording();
+        if (stale()) return;
         if (alts.length) { usedAsrRef.current = true; finishPronAttempt(alts, 'device'); return; }
         const err = asrErrorRef.current;
         if (err && ASR_BROKEN.has(err)) {
@@ -1236,13 +1341,20 @@ export default function LearnSessionScreen() {
       const res = await fetch(`${API_BASE_URL}/api/transcribe`, { method: 'POST', body: formData });
       if (!res.ok) throw new Error('Transcription failed');
       const data = await res.json();
+      if (stale()) return;
 
       const transcript = (data.transcription as string) ?? '';
+      // Nada ouvido e microfone negado: mostra o caminho para liberar em vez de "não ouvimos" de novo.
+      if (!transcript && await micDenied()) { if (!stale()) blockMic(); return; }
+      if (stale()) return;
       finishPronAttempt(transcript ? [transcript] : [], 'server');
     } catch (e) {
+      if (stale()) return;
       logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: e instanceof Error ? e.message.slice(0, 60) : 'erro' });
       setPronStatus('error');
     } finally {
+      clearTimeout(safety);
+      stoppingRef.current = false;
       prepareRecorderAhead(); // próxima tentativa (ou próxima frase) já com o gravador pronto
     }
   };
@@ -2104,13 +2216,21 @@ export default function LearnSessionScreen() {
           {currentStep.kind === 'pronunciation' && (
             <View style={{ flex: 1 }}>
               {/* Bubble centralizada (sem avatar embedded) */}
-              <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center' }}>
+              <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center', maxWidth: '100%' }}>
+                {currentStep.phrase.type === 'repeat' && (
+                  // Título em destaque: é para REPETIR em voz alta. Alunos respondiam "I'm fine, thanks"
+                  // a "Hi! How are you?" em vez de repetir a frase.
+                  <AppText style={{ fontSize: 15, color: accent, fontWeight: '800', textAlign: 'center', marginBottom: 2 }}>
+                    {(currentStep.phrase.text ?? '').trim().endsWith('?')
+                      ? (isPortuguese ? 'Repita a pergunta em voz alta' : 'Repeat the question out loud')
+                      : (isPortuguese ? 'Repita a frase em voz alta' : 'Repeat the phrase out loud')}
+                  </AppText>
+                )}
                 <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
                   {currentStep.phrase.type === 'repeat'
-                    // Frase que é pergunta: muitos alunos respondiam ("I'm fine") em vez de repetir.
                     ? ((currentStep.phrase.text ?? '').trim().endsWith('?')
-                      ? (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e repita a pergunta (não é para responder).` : `Listen to ${hostName} and repeat the question (don't answer it).`)
-                      : (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e repita a frase.` : `Listen to ${hostName} and repeat the phrase.`))
+                      ? (isPortuguese ? `Diga igual ${hostTrack ? 'o' : 'a'} ${hostName}. Não é para responder.` : `Say it just like ${hostName}. Don't answer it.`)
+                      : (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e diga igual.` : `Listen to ${hostName} and say it the same way.`))
                     : currentStep.phrase.type === 'minimal_pairs'
                     ? (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e toque na palavra que ${hostSaidPt}.` : `Listen to ${hostName} and tap the word you heard.`)
                     : currentStep.phrase.type === 'sentence_stress'
@@ -2184,7 +2304,9 @@ export default function LearnSessionScreen() {
                             <View style={{ backgroundColor: C.navy, borderRadius: 12, paddingHorizontal: 14, paddingVertical: 8 }}>
                               <AppText style={{ fontSize: 13, fontWeight: '700', color: '#FFF', textAlign: 'center' }}>
                                 {micBlocked
-                                  ? (isPortuguese ? 'Microfone bloqueado: toque para abrir os Ajustes' : 'Microphone blocked: tap to open Settings')
+                                  ? (Platform.OS === 'ios'
+                                    ? (isPortuguese ? 'Microfone bloqueado: toque para abrir os Ajustes' : 'Microphone blocked: tap to open Settings')
+                                    : (isPortuguese ? 'Microfone bloqueado: toque para abrir as Configurações' : 'Microphone blocked: tap to open Settings'))
                                   : (isPortuguese ? 'Toque aqui para liberar o microfone' : 'Tap here to allow the microphone')}
                               </AppText>
                             </View>
@@ -2218,11 +2340,20 @@ export default function LearnSessionScreen() {
                         {locked
                           ? ' '
                           : isRec
-                          ? (isPortuguese ? 'Solte para parar' : 'Release to stop')
+                          // O sinal de que o microfone está ouvindo: botão vermelho + vibração + "Pode falar".
+                          ? (isPortuguese ? 'Pode falar! Solte no fim da frase' : 'Speak now! Let go at the end')
                           : needsMic
                             ? (isPortuguese ? 'Microfone ainda não liberado' : 'Microphone not allowed yet')
+                            : micStarting
+                            ? (isPortuguese ? 'Espere, ligando o microfone…' : 'Wait, turning on the mic…')
                             : (isPortuguese ? 'Segure para falar' : 'Hold to speak')}
                       </AppText>
+                      {!isRec && !needsMic && !locked && !micStarting && (
+                        // Dica curta: o aluno só começa a falar depois do sinal ("Pode falar").
+                        <AppText style={{ marginTop: 4, fontSize: 12, color: pronHint ? '#D12A64' : C.navyLight, fontWeight: pronHint ? '700' : '500', textAlign: 'center', maxWidth: 300 }}>
+                          {pronHint ?? (isPortuguese ? 'Fale quando aparecer "Pode falar"' : 'Start talking when you see "Speak now"')}
+                        </AppText>
+                      )}
                       {!isRec && !needsMic && (
                         <BluetoothMicHint level={level} style={{ marginTop: 14, marginHorizontal: 0, maxWidth: 320 }} />
                       )}
@@ -2493,13 +2624,21 @@ export default function LearnSessionScreen() {
             ) : micBlocked && pronStatus === 'listening' ? (
               <View style={{ backgroundColor: 'rgba(255,79,139,0.08)', borderRadius: 16, padding: 14, gap: 10 }}>
                 <AppText style={{ fontSize: 13.5, color: C.navy, lineHeight: 19, textAlign: 'center' }}>
-                  {isPortuguese
-                    ? 'O Queizy está sem acesso ao microfone. Libere nos Ajustes do celular para fazer este exercício.'
-                    : "Queizy can't access your microphone. Allow it in your phone's Settings to do this exercise."}
+                  {Platform.OS === 'ios'
+                    ? (isPortuguese
+                      ? 'O Queizy está sem acesso ao microfone. Toque em "Abrir Ajustes", ative o Microfone e volte para o app.'
+                      : 'Queizy can\'t access your microphone. Tap "Open Settings", turn on Microphone and come back to the app.')
+                    : (isPortuguese
+                      ? 'O Queizy está sem acesso ao microfone. Toque em "Abrir Configurações", depois em Permissões > Microfone, escolha Permitir e volte para o app.'
+                      : 'Queizy can\'t access your microphone. Tap "Open Settings", then Permissions > Microphone, choose Allow and come back to the app.')}
                 </AppText>
                 <TouchableOpacity onPress={openMicSettings}
                   style={{ backgroundColor: C.navy, borderRadius: 14, paddingVertical: 13, alignItems: 'center' }}>
-                  <AppText style={{ fontSize: 14.5, fontWeight: '800', color: '#FFF' }}>{isPortuguese ? 'Abrir Ajustes' : 'Open Settings'}</AppText>
+                  <AppText style={{ fontSize: 14.5, fontWeight: '800', color: '#FFF' }}>
+                    {Platform.OS === 'ios'
+                      ? (isPortuguese ? 'Abrir Ajustes' : 'Open Settings')
+                      : (isPortuguese ? 'Abrir Configurações' : 'Open Settings')}
+                  </AppText>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handleSkipPron} style={{ alignItems: 'center' }}>
                   <AppText style={{ fontSize: 13, color: C.navyLight, fontWeight: '600' }}>
@@ -2514,7 +2653,7 @@ export default function LearnSessionScreen() {
             ) : pronStatus === 'assessing' ? (
               <View style={{ alignItems: 'center', paddingVertical: 12 }}>
                 <ActivityIndicator color={accent} />
-                <AppText style={{ color: C.navyLight, fontSize: 13, marginTop: 6 }}>{isPortuguese ? 'Analisando…' : 'Assessing…'}</AppText>
+                <AppText style={{ color: C.navyLight, fontSize: 13, marginTop: 6 }}>{isPortuguese ? 'Processando sua fala…' : 'Processing your speech…'}</AppText>
               </View>
             ) : null
           )}
