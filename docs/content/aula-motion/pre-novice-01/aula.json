@@ -1,0 +1,79 @@
+{
+  "id": "pre-novice-01",
+  "level": "Pre-Novice",
+  "module": "PM01",
+  "unit": "PN01",
+  "title": "Oi!",
+  "subtitle": "Primeiros passos · Aula 1",
+  "source": "docs/pre-novice/PN01-oi.md, seção 1 (branch claude/pre-novice-85d846)",
+  "note": "Fonte única da aula. Texto entre chaves {assim} é inglês destacado na tela; a voz lê sem as chaves. Falas em inglês trazem a tradução em pt. Público: quem nunca estudou inglês; cada palavra em inglês é dita 2 vezes, mais devagar. Esta aula CONTA como atividade da unidade (decisão do Felipe, 21/11/2026).",
+  "speakers": {
+    "charlotte": { "name": "Charlotte", "engine": "charlotte-voice", "voice": "coral" },
+    "igor": { "name": "Igorfina", "engine": "character-voice", "voice": "9QtRgQhaZY2Ge2ttjy5x", "model": "eleven_multilingual_v2" }
+  },
+  "keys": [
+    { "id": "hi", "en": "hi", "pt": "oi" },
+    { "id": "hello", "en": "hello", "pt": "olá" },
+    { "id": "yes", "en": "yes", "pt": "sim" },
+    { "id": "no", "en": "no", "pt": "não" },
+    { "id": "ok", "en": "OK", "pt": "tá bom" },
+    { "id": "bye", "en": "bye", "pt": "tchau" }
+  ],
+  "lines": [
+    { "id": "l01", "speaker": "charlotte", "toCamera": true, "text": "Oi! Eu sou a Charlotte, sua tutora. Você não precisa saber nada de inglês para começar. Hoje você vai aprender suas primeiras palavras. Vem comigo!" },
+    { "id": "l02", "speaker": "charlotte", "text": "Sabia que você já fala inglês? {OK}, {pizza}, {hotel}: tudo isso é inglês. Agora vamos aprender mais." },
+    { "id": "l03", "speaker": "charlotte", "lang": "en", "text": "Hi, Igor!", "pt": "Oi, Igor!", "key": "hi" },
+    { "id": "l04", "speaker": "igor", "lang": "en", "text": "Hello, Charlotte!", "pt": "Olá, Charlotte!", "key": "hello" },
+    { "id": "l05", "speaker": "charlotte", "text": "{Hi} é \"oi\". {Hello} é \"olá\". Os dois começam com um sopro leve: em português o h é mudo, em inglês ele se pronuncia. {Hi}. {Hello}." },
+    { "id": "l06", "speaker": "charlotte", "text": "Sua vez! O Igor acena para você. O que você diz?", "checkpoint": "cp1" },
+    { "id": "l07", "speaker": "charlotte", "lang": "en", "text": "Coffee?", "pt": "Café?" },
+    { "id": "l08", "speaker": "igor", "lang": "en", "text": "Yes!", "pt": "Sim!", "key": "yes" },
+    { "id": "l09", "speaker": "charlotte", "lang": "en", "text": "Pizza?", "pt": "Pizza?" },
+    { "id": "l10", "speaker": "igor", "lang": "en", "text": "No!", "pt": "Não!", "key": "no" },
+    { "id": "l11", "speaker": "charlotte", "text": "{Yes} é \"sim\". {No} é \"não\". E {OK} você já sabe: é \"tá bom\". Repare: em {yes}, o y soa como i. {Yes}. {No}.", "key": "ok" },
+    { "id": "l12", "speaker": "charlotte", "text": "Sua vez! Eu pergunto: {Coffee?} Você quer café. O que você responde?", "checkpoint": "cp2" },
+    { "id": "l13", "speaker": "igor", "lang": "en", "text": "Bye, Charlotte!", "pt": "Tchau, Charlotte!", "key": "bye" },
+    { "id": "l14", "speaker": "charlotte", "lang": "en", "text": "Bye, Igor!", "pt": "Tchau, Igor!" },
+    { "id": "l15", "speaker": "charlotte", "text": "{Bye} é \"tchau\". Termina no som de \"ai\", sem \"ê\" no fim. {Bye}." },
+    { "id": "l16", "speaker": "charlotte", "toCamera": true, "text": "Agora é com você! Eu digo: {Hi! I'm Charlotte.} Diga oi para mim!", "checkpoint": "cp3" },
+    { "id": "l17", "speaker": "charlotte", "toCamera": true, "text": "Hoje você aprendeu: {hi}, {hello}, {yes}, {no}, {OK} e {bye}. Agora vamos praticar!" }
+  ],
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "mode": "tap",
+      "question": "O Igor acena para você. O que você diz?",
+      "options": ["Hi!", "Pizza!", "Hotel!"],
+      "answer": "Hi!",
+      "speak": ["hi", "hello", "hey", "hi igor", "hello igor", "hey igor"],
+      "feedback": {
+        "ok": { "id": "f1ok", "text": "Isso! {Hi!}" },
+        "no": { "id": "f1no", "text": "Quase! Para dizer oi, é: {Hi!}" }
+      }
+    },
+    {
+      "id": "cp2",
+      "mode": "tap",
+      "question": "A Charlotte pergunta: \"Coffee?\". Você quer café. O que você responde?",
+      "options": ["Yes!", "No!", "Hello!"],
+      "answer": "Yes!",
+      "speak": ["yes", "yeah", "yes please", "yes coffee"],
+      "feedback": {
+        "ok": { "id": "f2ok", "text": "Perfeito! {Yes}, sim!" },
+        "no": { "id": "f2no", "text": "Quase! Para dizer sim, é: {Yes!}" }
+      }
+    },
+    {
+      "id": "cp3",
+      "mode": "speak",
+      "question": "Diga oi para a Charlotte. Toque no microfone e fale.",
+      "options": ["Hi, Charlotte!", "Bye, Charlotte!", "No, Charlotte!"],
+      "answer": "Hi, Charlotte!",
+      "speak": ["hi", "hello", "hey", "hi charlotte", "hello charlotte", "hey charlotte"],
+      "feedback": {
+        "ok": { "id": "f3ok", "text": "Você acabou de falar inglês comigo! {Hi!}" },
+        "no": { "id": "f3no", "text": "Quase! Repita comigo: {Hi, Charlotte!}" }
+      }
+    }
+  ]
+}
