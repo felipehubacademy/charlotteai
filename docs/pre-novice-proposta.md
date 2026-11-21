@@ -9,7 +9,7 @@ Histórico: a versão 1 (17/11) e a versão 2 (21/11, com a avaliação pedagóg
 
 - O iniciante absoluto cai direto no N01 do Novice, que cobra antes de ensinar. O 1º exercício já é "_____ to meet you!", e nada avisa que dá para tocar na palavra para ver a tradução.
 - Erro na 1ª tentativa no N01 (produção, desde 20/10): 29% e 27% no banco de palavras, 57% em "corrigir o erro" e 34% em ler e responder. 30% saem entre a Gramática e o Listening & Speaking do N01.
-- Nenhuma tela pergunta quanto inglês o aluno sabe antes da 1ª lição. A fatia que faz o teste de nível (17,6% das contas novas em 60 dias) está sendo conferida pela sessão principal.
+- Nenhuma tela pergunta quanto inglês o aluno sabe antes da 1ª lição. Só 15% das contas novas fazem o teste de nível (226 de 1.537 nos últimos 30 dias).
 
 ## 2. O que entra: 10 unidades em 2 blocos, acima do M01 do Novice
 
@@ -132,5 +132,9 @@ Saíram o role-play roteirizado e a sugestão tocável no Chat. Entraram a integ
 
 ## 8. Ainda em aberto
 
-- O dado da fatia que faz o teste de nível está sendo conferido pela sessão principal. Ele não muda a recomendação de perguntar no onboarding.
+- ~~Fatia que faz o teste de nível~~ **Fechado (conferido em 21/11/2026):**
+  - Nos últimos 30 dias, 226 de 1.537 contas novas fizeram o teste de nível, ou 15%.
+  - O app não sugere o teste ao longo da trilha. O convite aparece só em dois momentos: uma vez, depois da 1ª atividade, e no fim do tópico da degustação.
+  - Desde 16/11, 29 alunos viram esse convite e 9 aceitaram (31%).
+  - Conclusão: o teste de nível não alcança o iniciante a tempo, e a pergunta no onboarding continua necessária.
 - A aprovação do roteiro e dos quadros da aula do PN01, que o agente de motion vai apresentar ao Felipe.
