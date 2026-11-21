@@ -1,9 +1,7 @@
 name: "Fila de e-mails (reenvio)"
 
 on:
-  schedule:
-    # A cada 5 minutos: reenvia os e-mails que falharam (lib/email-outbox).
-    - cron: '*/5 * * * *'
+  # Agendamento já está no Vercel Cron (apps/web/vercel.json); aqui fica só o disparo manual.
   workflow_dispatch: # permite rodar manualmente
 
 jobs:

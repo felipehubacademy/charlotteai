@@ -1,10 +1,7 @@
 name: "Alerta - capacidade do banco"
 
 on:
-  schedule:
-    # De hora em hora (pico dos anúncios). Só manda e-mail quando passa do limite de aviso, no máximo
-    # um a cada 12 horas.
-    - cron: '7 * * * *'
+  # Agendamento passou para o Vercel Cron (apps/web/vercel.json): o do GitHub atrasava horas.
   workflow_dispatch: # permite rodar manualmente
 
 jobs:

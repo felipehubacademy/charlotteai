@@ -2,8 +2,8 @@
 // antes do limite (para ligar o plano pago a tempo). Limites do gratuito: banco 500 MB, arquivos 1 GB.
 // O tráfego de saída (5 GB/mês) não é legível por aqui: o painel do banco mostra e avisa por e-mail.
 // POST { dryRun?: true }  header Authorization: Bearer <CRON_SECRET_TOKEN> ou x-admin-secret.
-// Agendado de hora em hora pelo GitHub Actions (.github/workflows/capacity-alert.yml); o e-mail sai no
-// máximo a cada 12 horas para não lotar a caixa enquanto o plano pago não é ligado.
+// Agendado de hora em hora pelo Vercel Cron (apps/web/vercel.json, GET); o e-mail sai no máximo a cada
+// 12 horas para não lotar a caixa enquanto o plano pago não é ligado.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
@@ -28,6 +28,16 @@ function authorized(req: NextRequest): boolean {
 export async function POST(req: NextRequest) {
   if (!authorized(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const body = await req.json().catch(() => ({}));
+  return run(body?.dryRun === true);
+}
+
+// Vercel Cron chama por GET com Authorization: Bearer CRON_SECRET (o agendamento do GitHub atrasava horas).
+export async function GET(req: NextRequest) {
+  if (!authorized(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  return run(false);
+}
+
+async function run(dryRun: boolean) {
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase.rpc('capacity_usage');
   if (error || !data) return NextResponse.json({ error: error?.message ?? 'sem dados' }, { status: 500 });
@@ -44,7 +54,7 @@ export async function POST(req: NextRequest) {
   if (pct.db >= WARN) alerts.push(`Banco em ${report.banco}.`);
   if (pct.storage >= WARN) alerts.push(`Arquivos em ${report.arquivos}.`);
   if (pct.conn >= 0.8) alerts.push(`Conexões em ${report.conexoes} no momento da checagem.`);
-  if (!alerts.length || body?.dryRun === true) return NextResponse.json({ alerts, report });
+  if (!alerts.length || dryRun) return NextResponse.json({ alerts, report });
 
   const ALERT_KEY = 'capacity-alert';
   const { count: recent } = await supabase.from('checkout_attempts').select('id', { count: 'exact', head: true })
