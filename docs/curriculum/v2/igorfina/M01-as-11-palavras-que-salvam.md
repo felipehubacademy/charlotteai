@@ -54,6 +54,7 @@
 ### 1. Grammar (10 exercises)
 
 1. **multiple_choice** — "_____! Can you help me?"
+   **Hint**: Cumprimento para puxar conversa com alguém (o "oi")
    **Options**: Hello / Sorry / Thanks
    **Answer**: Hello
    **Explanation**: Para começar a conversa com alguém, o primeiro passo é cumprimentar: "Hello". Dica do Igor: um "Hello" com sorriso abre qualquer porta.

@@ -48,11 +48,11 @@
           "sentence": "_____ to meet you!",
           "options": [
             "Nice",
-            "Good",
+            "Fine",
             "Happy"
           ],
           "answer": "Nice",
-          "explanation": "\"Nice to meet you\" é a saudação padrão ao conhecer alguém pela primeira vez. \"Good to meet you\" também existe mas é menos comum."
+          "explanation": "\"Nice to meet you\" é a saudação padrão ao conhecer alguém pela primeira vez (\"Good to meet you\" também existe). Já \"Fine to meet you\" não se usa: \"fine\" é para dizer como você está (\"I'm fine\")."
         },
         {
           "type": "multiple_choice",
@@ -67,13 +67,14 @@
         },
         {
           "type": "word_bank",
-          "sentence": "Good _____, everyone!",
+          "sentence": "It's 8 a.m. Good _____, everyone!",
           "choices": [
             "morning",
             "night",
             "noon",
             "lunch"
           ],
+          "hint": "São 8 da manhã e você chega cumprimentando o grupo",
           "answer": "morning",
           "explanation": "\"Good morning\" é a saudação da manhã (até por volta do meio-dia). \"Good night\" é só para se despedir antes de dormir, não para cumprimentar."
         },

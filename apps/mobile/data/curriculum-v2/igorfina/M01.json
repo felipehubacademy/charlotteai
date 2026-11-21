@@ -57,6 +57,7 @@
             "Sorry",
             "Thanks"
           ],
+          "hint": "Cumprimento para puxar conversa com alguém (o \"oi\")",
           "answer": "Hello",
           "explanation": "Para começar a conversa com alguém, o primeiro passo é cumprimentar: \"Hello\". Dica do Igor: um \"Hello\" com sorriso abre qualquer porta."
         },

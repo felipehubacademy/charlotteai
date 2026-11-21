@@ -44,16 +44,17 @@
 ### 1. Grammar (10 exercises)
 
 1. **multiple_choice** — "_____ to meet you!"
-   **Options**: Nice / Good / Happy
+   **Options**: Nice / Fine / Happy
    **Answer**: Nice
-   **Explanation**: "Nice to meet you" é a saudação padrão ao conhecer alguém pela primeira vez. "Good to meet you" também existe mas é menos comum.
+   **Explanation**: "Nice to meet you" é a saudação padrão ao conhecer alguém pela primeira vez ("Good to meet you" também existe). Já "Fine to meet you" não se usa: "fine" é para dizer como você está ("I'm fine").
 
 2. **multiple_choice** — "How _____ you today?"
    **Options**: are / is / am
    **Answer**: are
    **Explanation**: "How are you?" usa "are" porque o sujeito é "you" (segunda pessoa). É a forma do verbo "to be" com "you".
 
-3. **word_bank** — "Good _____, everyone!"
+3. **word_bank** — "It's 8 a.m. Good _____, everyone!"
+   **Hint**: São 8 da manhã e você chega cumprimentando o grupo
    **Choices**: morning / night / noon / lunch
    **Answer**: morning
    **Explanation**: "Good morning" é a saudação da manhã (até por volta do meio-dia). "Good night" é só para se despedir antes de dormir, não para cumprimentar.
