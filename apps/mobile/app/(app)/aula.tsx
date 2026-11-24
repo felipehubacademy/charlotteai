@@ -1,7 +1,9 @@
 // Aula em vídeo de um tópico (fase de teste, chave beta `aula_motion`; ver lib/aulas.ts).
 // O vídeo horizontal fica em cima. Nas pausas ele para, e a pergunta aparece logo abaixo: o aluno toca
 // na resposta (ou fala, onde houver reconhecimento de voz), ouve a correção da Charlotte e a aula continua.
-// Embaixo, a legenda da aula: tocar numa fala leva até ela. Não dá XP nem conta para o tópico.
+// Embaixo, a legenda da aula: tocar numa fala leva até ela. No Novice não dá XP nem conta para o tópico; nos
+// Primeiros passos (Pré-Novice) é a 1ª atividade da unidade: cada pausa acertada dá XP (tipo `aula`, só enquanto a
+// aula não foi concluída) e o fim da aula grava a atividade em learn_history_v2.
 //
 // O conteúdo (perguntas, correções, falas) é pedagógico e fica como está; os textos da tela seguem o
 // idioma do aparelho.
@@ -10,7 +12,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { View, ScrollView, TouchableOpacity, ActivityIndicator, Dimensions, Platform, StyleSheet, Animated, Easing, AppState } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { VideoView, useVideoPlayer } from 'expo-video';
 import { Image } from 'expo-image';
@@ -21,7 +23,10 @@ import { AppText } from '@/components/ui/Text';
 import { goBack } from '@/lib/goBack';
 import { systemIsPt } from '@/lib/systemLang';
 import { expandContractions } from '@/lib/grammarAnswer';
-import { getAula, aulaUrl, type AulaCheckpoint } from '@/lib/aulas';
+import { getAula, aulaUrl, aulaCounts, AULA_XP_PER_CHECKPOINT, type AulaCheckpoint } from '@/lib/aulas';
+import { useAuth } from '@/hooks/useAuth';
+import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
+import { supabase } from '@/lib/supabase';
 
 // Reconhecimento de voz no aparelho (mesmo módulo do Listening & Speaking). Sem ele, só toque.
 const ASR_AVAILABLE = !!ExpoSpeechRecognitionModule?.start;
@@ -93,6 +98,24 @@ export default function AulaScreen() {
   const t = (pt: string, en: string) => (systemIsPt ? pt : en);
   const { id } = useLocalSearchParams<{ id?: string }>();
   const aula = getAula(id ?? 'novice-01');
+  // Primeiros passos: a aula conta como atividade e dá XP.
+  const counts = aulaCounts(aula);
+  const { profile } = useAuth();
+  const userId = profile?.id;
+  const progress = useLearnProgressV2(counts ? userId : undefined, 'PreNovice');
+  const progressRef = useRef(progress);
+  progressRef.current = progress;
+  const [xpEarned, setXpEarned] = useState(0);
+  const aulaDone = () => !!(aula && progressRef.current.get(aula.moduleId, aula.unitId, 'aula')?.completed);
+  // Fim da aula: grava a atividade (nota = % de pausas acertadas; conclui com qualquer nota).
+  const finish = useRef<() => void>(() => {});
+  finish.current = () => {
+    if (!counts || !aula || !userId) return;
+    const total = aula.checkpoints.length;
+    const ok = aula.checkpoints.filter(c => resultsRef.current[c.id]?.ok).length;
+    progressRef.current.saveAttempt(aula.moduleId, aula.unitId, 'aula', total ? Math.round((ok / total) * 100) : 100, true)
+      .catch(() => { /* sem rede: a aula aparece como não concluída e pode ser refeita */ });
+  };
 
   const [started, setStarted] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -174,6 +197,7 @@ export default function AulaScreen() {
         if (status === 'error') setFailed(true);
       }),
       player.addListener('playToEnd', () => {
+        if (!endedRef.current) finish.current();
         endedRef.current = true;
         setEnded(true); setPlaying(false);
         // O cartão de fim fica no topo da lista: mostra ele mesmo se o aluno estava lendo a legenda.
@@ -287,6 +311,12 @@ export default function AulaScreen() {
   const answer = useCallback(async (cp: AulaCheckpoint, ok: boolean, chosen?: string, said?: string) => {
     if (!aula || resultsRef.current[cp.id]) return;
     setResults(r => ({ ...r, [cp.id]: { ok, chosen, heard: said } }));
+    // Primeiros passos: XP por pausa acertada, só enquanto a aula não foi concluída (rever não dá XP de novo).
+    if (counts && ok && userId && !aulaDone()) {
+      setXpEarned(x => x + AULA_XP_PER_CHECKPOINT);
+      supabase.from('charlotte_practices').insert({ user_id: userId, practice_type: 'aula', xp_earned: AULA_XP_PER_CHECKPOINT })
+        .then(({ error }) => { if (error) console.warn('[aula] XP não gravado', error.message); });
+    }
     // Sem o som padrão de acerto/erro do app: a correção é falada e os dois se misturavam.
     // Correção falada da Charlotte e, quando termina, a aula segue sozinha.
     try {
@@ -318,7 +348,7 @@ export default function AulaScreen() {
         if (quizRef.current?.id === cp.id) p.play();
       }, 350);
     } catch { /* sem áudio, o botão continua */ }
-  }, [aula, resume]);
+  }, [aula, resume, counts, userId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Fala: reconhecimento no aparelho, em inglês; para sozinho depois de uma pausa.
   useSpeechRecognitionEvent('result', (ev) => {
@@ -399,7 +429,7 @@ export default function AulaScreen() {
         </TouchableOpacity>
         <View style={{ flex: 1, minWidth: 0 }}>
           <AppText style={{ fontSize: 11, fontWeight: '700', color: K.volt, letterSpacing: 1, textTransform: 'uppercase' }}>
-            {t('Aula em vídeo', 'Video lesson')} · {aula.level} {aula.unitId}
+            {counts ? t('Primeiros passos', 'First steps') : `${t('Aula em vídeo', 'Video lesson')} · ${aula.level}`} · {aula.unitId}
           </AppText>
           <AppText display numberOfLines={1} style={{ fontSize: 20, fontWeight: '800', color: K.text }}>{aula.title}</AppText>
         </View>
@@ -557,13 +587,24 @@ export default function AulaScreen() {
           <View style={{ padding: 16, borderRadius: 20, backgroundColor: K.volt, gap: 10 }}>
             <AppText display style={{ fontSize: 20, fontWeight: '800', color: K.bg }}>{t('Aula concluída!', 'Lesson complete!')}</AppText>
             <AppText style={{ fontSize: 14, color: K.bg }}>
-              {t(`Você acertou ${right} de ${aula.checkpoints.length} perguntas. Agora pratique o tópico na trilha.`,
-                 `You got ${right} of ${aula.checkpoints.length} questions right. Now practice the topic on the trail.`)}
+              {counts
+                ? t(`Você acertou ${right} de ${aula.checkpoints.length} perguntas${xpEarned ? ` e ganhou ${xpEarned} XP` : ''}. Agora pratique as palavras.`,
+                    `You got ${right} of ${aula.checkpoints.length} questions right${xpEarned ? ` and earned ${xpEarned} XP` : ''}. Now practice the words.`)
+                : t(`Você acertou ${right} de ${aula.checkpoints.length} perguntas. Agora pratique o tópico na trilha.`,
+                    `You got ${right} of ${aula.checkpoints.length} questions right. Now practice the topic on the trail.`)}
             </AppText>
             <View style={{ flexDirection: 'row', gap: 10 }}>
-              <TouchableOpacity onPress={() => goBack()} activeOpacity={0.85}
+              <TouchableOpacity activeOpacity={0.85}
+                onPress={() => {
+                  // Primeiros passos: segue direto para Palavras (a 2ª atividade da unidade).
+                  if (counts) {
+                    router.replace({ pathname: '/(app)/learn-session', params: { v: 'v2', level: 'PreNovice', moduleId: aula.moduleId, unitId: aula.unitId, activity: 'both' } } as any);
+                    return;
+                  }
+                  goBack();
+                }}
                 style={{ flex: 1, paddingVertical: 13, borderRadius: 14, backgroundColor: K.bg, alignItems: 'center' }}>
-                <AppText display style={{ fontSize: 15, fontWeight: '800', color: K.volt }}>{t('Praticar agora', 'Practice now')}</AppText>
+                <AppText display style={{ fontSize: 15, fontWeight: '800', color: K.volt }}>{counts ? t('Praticar as palavras', 'Practice the words') : t('Praticar agora', 'Practice now')}</AppText>
               </TouchableOpacity>
               <TouchableOpacity onPress={play} activeOpacity={0.85} accessibilityLabel={t('Ver de novo', 'Watch again')}
                 style={{ paddingHorizontal: 16, paddingVertical: 13, borderRadius: 14, borderWidth: 2, borderColor: K.bg, alignItems: 'center', justifyContent: 'center' }}>

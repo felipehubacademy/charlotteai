@@ -1,0 +1,459 @@
+{
+  "_fonte": "Gerado de docs/content/aula-motion/pre-novice-01 (aula.json + timings.json) por scripts/aula-motion/app-json.mjs. Refez a aula? Gere de novo e publique os arquivos com nova versão (scripts/aula-motion/publicar.mjs).",
+  "id": "pre-novice-01",
+  "version": "v1",
+  "title": "Oi!",
+  "level": "PreNovice",
+  "moduleId": "M01",
+  "unitId": "PN01",
+  "duration": 107.261,
+  "speakers": {
+    "charlotte": "Charlotte",
+    "igor": "Igorfina"
+  },
+  "cues": [
+    {
+      "id": "l01",
+      "speaker": "charlotte",
+      "lang": "pt",
+      "text": "Oi! Eu sou a Charlotte, sua tutora. Você não precisa saber nada de inglês para começar. Hoje você vai aprender suas primeiras palavras. Vem comigo!",
+      "pt": null,
+      "start": 2.8,
+      "end": 13.75,
+      "words": [
+        2.8,
+        3.7,
+        4.02,
+        4.2,
+        4.36,
+        5.22,
+        5.36,
+        6.22,
+        6.54,
+        6.8,
+        7.18,
+        7.54,
+        7.84,
+        8.06,
+        8.26,
+        8.44,
+        9.64,
+        9.68,
+        9.98,
+        10.18,
+        10.42,
+        10.78,
+        11.16,
+        12.28,
+        12.3
+      ]
+    },
+    {
+      "id": "l02",
+      "speaker": "charlotte",
+      "lang": "pt",
+      "text": "Sabia que você já fala inglês? {OK}, {pizza}, {hotel}: tudo isso é inglês. Agora vamos aprender mais.",
+      "pt": null,
+      "start": 14.5,
+      "end": 23.2,
+      "words": [
+        14.5,
+        14.94,
+        15.5,
+        15.86,
+        16.12,
+        16.34,
+        17.46,
+        18.24,
+        18.46,
+        19.3,
+        19.4,
+        19.68,
+        19.84,
+        20.58,
+        21.08,
+        21.22,
+        21.56
+      ]
+    },
+    {
+      "id": "l03",
+      "speaker": "charlotte",
+      "lang": "en",
+      "text": "Hi, Igor!",
+      "pt": "Oi, Igor!",
+      "start": 24.1,
+      "end": 26.1,
+      "words": [
+        24.1,
+        25.1
+      ]
+    },
+    {
+      "id": "l04",
+      "speaker": "igor",
+      "lang": "en",
+      "text": "Hello, Charlotte!",
+      "pt": "Olá, Charlotte!",
+      "start": 26.15,
+      "end": 27.772,
+      "words": [
+        26.15,
+        26.69
+      ]
+    },
+    {
+      "id": "l05",
+      "speaker": "charlotte",
+      "lang": "pt",
+      "text": "{Hi} é \"oi\". {Hello} é \"olá\". Os dois começam com um sopro leve: em português o h é mudo, em inglês ele se pronuncia. {Hi}. {Hello}.",
+      "pt": null,
+      "start": 28.622,
+      "end": 40.072,
+      "words": [
+        28.62,
+        29.14,
+        29.7,
+        30.58,
+        30.96,
+        31.48,
+        32.28,
+        32.46,
+        32.74,
+        33.22,
+        33.48,
+        33.66,
+        33.74,
+        34.56,
+        34.62,
+        35.04,
+        35.24,
+        35.34,
+        35.5,
+        36.18,
+        36.18,
+        36.44,
+        36.64,
+        36.86,
+        37.28,
+        38.58
+      ]
+    },
+    {
+      "id": "l06",
+      "speaker": "charlotte",
+      "lang": "pt",
+      "text": "Sua vez! O Igor acena para você. O que você diz?",
+      "pt": null,
+      "start": 40.872,
+      "end": 45.972,
+      "words": [
+        40.87,
+        41.45,
+        42.31,
+        42.31,
+        42.55,
+        42.97,
+        43.19,
+        43.87,
+        44.03,
+        44.17,
+        44.47
+      ]
+    },
+    {
+      "id": "l07",
+      "speaker": "charlotte",
+      "lang": "en",
+      "text": "Coffee?",
+      "pt": "Café?",
+      "start": 48.972,
+      "end": 50.972,
+      "words": [
+        48.97
+      ]
+    },
+    {
+      "id": "l08",
+      "speaker": "igor",
+      "lang": "en",
+      "text": "Yes!",
+      "pt": "Sim!",
+      "start": 51.022,
+      "end": 52.272,
+      "words": [
+        51.02
+      ]
+    },
+    {
+      "id": "l09",
+      "speaker": "charlotte",
+      "lang": "en",
+      "text": "Pizza?",
+      "pt": "Pizza?",
+      "start": 52.372,
+      "end": 53.822,
+      "words": [
+        52.37
+      ]
+    },
+    {
+      "id": "l10",
+      "speaker": "igor",
+      "lang": "en",
+      "text": "No!",
+      "pt": "Não!",
+      "start": 53.872,
+      "end": 55.029,
+      "words": [
+        53.87
+      ]
+    },
+    {
+      "id": "l11",
+      "speaker": "charlotte",
+      "lang": "pt",
+      "text": "{Yes} é \"sim\". {No} é \"não\". E {OK} você já sabe: é \"tá bom\". Repare: em {yes}, o y soa como i. {Yes}. {No}.",
+      "pt": null,
+      "start": 55.879,
+      "end": 67.079,
+      "words": [
+        55.88,
+        56.44,
+        57,
+        58.26,
+        58.38,
+        58.78,
+        59.54,
+        59.6,
+        60.16,
+        60.3,
+        60.6,
+        61.06,
+        61.14,
+        61.3,
+        62.2,
+        62.46,
+        62.56,
+        63.12,
+        63.28,
+        63.48,
+        63.98,
+        64.3,
+        65.06,
+        65.88
+      ]
+    },
+    {
+      "id": "l12",
+      "speaker": "charlotte",
+      "lang": "pt",
+      "text": "Sua vez! Eu pergunto: {Coffee?} Você quer café. O que você responde?",
+      "pt": null,
+      "start": 67.879,
+      "end": 74.029,
+      "words": [
+        67.88,
+        68.42,
+        69.26,
+        69.26,
+        70.28,
+        70.56,
+        70.82,
+        70.96,
+        71.58,
+        71.72,
+        71.84,
+        72.12
+      ]
+    },
+    {
+      "id": "l13",
+      "speaker": "igor",
+      "lang": "en",
+      "text": "Bye, Charlotte!",
+      "pt": "Tchau, Charlotte!",
+      "start": 77.029,
+      "end": 78.361,
+      "words": [
+        77.03,
+        77.37
+      ]
+    },
+    {
+      "id": "l14",
+      "speaker": "charlotte",
+      "lang": "en",
+      "text": "Bye, Igor!",
+      "pt": "Tchau, Igor!",
+      "start": 78.411,
+      "end": 80.211,
+      "words": [
+        78.41,
+        79.21
+      ]
+    },
+    {
+      "id": "l15",
+      "speaker": "charlotte",
+      "lang": "pt",
+      "text": "{Bye} é \"tchau\". Termina no som de \"ai\", sem \"ê\" no fim. {Bye}.",
+      "pt": null,
+      "start": 81.061,
+      "end": 87.111,
+      "words": [
+        81.06,
+        81.6,
+        82.04,
+        83.08,
+        83.16,
+        83.36,
+        83.52,
+        83.92,
+        84.54,
+        84.64,
+        84.74,
+        85.14,
+        85.84
+      ]
+    },
+    {
+      "id": "l16",
+      "speaker": "charlotte",
+      "lang": "pt",
+      "text": "Agora é com você! Eu digo: {Hi! I'm Charlotte.} Diga oi para mim!",
+      "pt": null,
+      "start": 87.911,
+      "end": 93.811,
+      "words": [
+        87.91,
+        88.37,
+        88.65,
+        88.89,
+        89.71,
+        89.89,
+        90.87,
+        91.03,
+        91.37,
+        92.29,
+        92.33,
+        92.61,
+        92.79
+      ]
+    },
+    {
+      "id": "l17",
+      "speaker": "charlotte",
+      "lang": "pt",
+      "text": "Hoje você aprendeu: {hi}, {hello}, {yes}, {no}, {OK} e {bye}. Agora vamos praticar!",
+      "pt": null,
+      "start": 96.561,
+      "end": 104.061,
+      "words": [
+        96.56,
+        96.94,
+        97.34,
+        97.9,
+        98.94,
+        99.84,
+        100.44,
+        100.88,
+        101.28,
+        101.52,
+        102.14,
+        102.36,
+        102.68
+      ]
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "at": 45.972,
+      "mode": "tap",
+      "question": "O Igor acena para você. O que você diz?",
+      "options": [
+        "Hi!",
+        "Pizza!",
+        "Hotel!"
+      ],
+      "answer": "Hi!",
+      "speak": [
+        "hi",
+        "hello",
+        "hey",
+        "hi igor",
+        "hello igor",
+        "hey igor"
+      ],
+      "feedback": {
+        "ok": {
+          "id": "f1ok",
+          "text": "Isso! {Hi!}"
+        },
+        "no": {
+          "id": "f1no",
+          "text": "Quase! Para dizer oi, é: {Hi!}"
+        }
+      }
+    },
+    {
+      "id": "cp2",
+      "at": 74.029,
+      "mode": "tap",
+      "question": "Você quer café. O que você responde para a Charlotte?",
+      "options": [
+        "Yes!",
+        "No!",
+        "Hello!"
+      ],
+      "answer": "Yes!",
+      "speak": [
+        "yes",
+        "yeah",
+        "yes please",
+        "yes coffee"
+      ],
+      "feedback": {
+        "ok": {
+          "id": "f2ok",
+          "text": "Perfeito! {Yes}, sim!"
+        },
+        "no": {
+          "id": "f2no",
+          "text": "Quase! Para dizer sim, é: {Yes!}"
+        }
+      }
+    },
+    {
+      "id": "cp3",
+      "at": 93.811,
+      "mode": "speak",
+      "question": "Diga oi para a Charlotte. Toque no microfone e fale.",
+      "options": [
+        "Hi, Charlotte!",
+        "Bye, Charlotte!",
+        "No, Charlotte!"
+      ],
+      "answer": "Hi, Charlotte!",
+      "speak": [
+        "hi",
+        "hello",
+        "hey",
+        "hi charlotte",
+        "hello charlotte",
+        "hey charlotte"
+      ],
+      "feedback": {
+        "ok": {
+          "id": "f3ok",
+          "text": "Você acabou de falar inglês comigo! {Hi!}"
+        },
+        "no": {
+          "id": "f3no",
+          "text": "Quase! Repita comigo: {Hi, Charlotte!}"
+        }
+      }
+    }
+  ]
+}

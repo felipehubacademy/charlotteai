@@ -123,7 +123,7 @@ function main() {
 // lista aqui ao inves de require dinamico.
 function writeLoaderRegistry(manifest) {
   const loaderPath = path.join(REPO, 'apps/mobile/lib/curriculum-v2/loader.ts');
-  const levelMap = { Novice: 'novice', Inter: 'inter', Advanced: 'advanced', Igorfina: 'igorfina' };
+  const levelMap = { Novice: 'novice', Inter: 'inter', Advanced: 'advanced', Igorfina: 'igorfina', PreNovice: 'prenovice' };
   const blocks = Object.entries(levelMap).map(([level, dir]) => {
     const mods = (manifest.level[dir] ?? []).sort((a, b) => a.id.localeCompare(b.id));
     if (mods.length === 0) return `  ${level}: {},`;
@@ -177,7 +177,8 @@ export function listModuleSummaries(level: Level): Array<{
 function collectFiles() {
   const out = [];
   // igorfina = trilha do Igorfina (Manual do F#did@), explicações em PT como no Novice.
-  for (const level of ['novice', 'inter', 'advanced', 'igorfina']) {
+  // prenovice = Primeiros passos (Pré-Novice): aula em motion + Palavras, sem Role-play nem Guided Chat.
+  for (const level of ['novice', 'inter', 'advanced', 'igorfina', 'prenovice']) {
     const dir = path.join(SRC, level);
     if (!fs.existsSync(dir)) continue;
     for (const name of fs.readdirSync(dir).sort()) {
@@ -197,7 +198,7 @@ function write(f, mod) {
   // Inter/Advanced: strip PT fields (regra "zero PT visivel ao usuario+Inter").
   // Markdown source pode manter bilingue como orientacao; JSON entregue ao app
   // fica EN-only. Mobile ja faz fallback p/ label_en quando label_pt ausente.
-  const cleaned = (f.level === 'novice' || f.level === 'igorfina') ? mod : stripPortugueseFields(mod);
+  const cleaned = (f.level === 'novice' || f.level === 'igorfina' || f.level === 'prenovice') ? mod : stripPortugueseFields(mod);
   fs.writeFileSync(outFile, JSON.stringify(cleaned, null, 2) + '\n');
 }
 
@@ -239,10 +240,13 @@ function validate(mod, relPath) {
   for (const u of mod.units) {
     if (!u.grammar?.length)             throw new Error(`Unit ${u.id}: no grammar exercises`);
     if (!u.listening_speaking?.length)  throw new Error(`Unit ${u.id}: no L/S phrases`);
-    if (!u.roleplay)                    throw new Error(`Unit ${u.id}: missing role-play`);
-    if (!u.guided_chat)                 throw new Error(`Unit ${u.id}: missing guided-chat`);
-    if (!u.roleplay.objectives?.length) throw new Error(`Unit ${u.id} role-play: 0 objectives`);
-    if (!u.guided_chat.objectives?.length) throw new Error(`Unit ${u.id} guided-chat: 0 objectives`);
+    // Pré-Novice: só Palavras (+ a fala curta); a aula em motion vem de data/aulas.
+    if (mod.level !== 'PreNovice') {
+      if (!u.roleplay)                    throw new Error(`Unit ${u.id}: missing role-play`);
+      if (!u.guided_chat)                 throw new Error(`Unit ${u.id}: missing guided-chat`);
+      if (!u.roleplay.objectives?.length) throw new Error(`Unit ${u.id} role-play: 0 objectives`);
+      if (!u.guided_chat.objectives?.length) throw new Error(`Unit ${u.id} guided-chat: 0 objectives`);
+    }
     for (const ex of u.grammar) {
       if (ex.type !== 'short_write' && !ex.answer) {
         throw new Error(`Unit ${u.id}: grammar exercise missing answer (type=${ex.type})`);
@@ -601,6 +605,8 @@ function parseMarkers(s) {
 
 function extractLevel(s) {
   if (/Manual|Igorfina/i.test(s)) return 'Igorfina';
+  // Antes do Novice: "Pré-Novice" também casa com /Novice/.
+  if (/Pr[ée]-?\s*Novice|Primeiros passos/i.test(s)) return 'PreNovice';
   if (/Novice/i.test(s))   return 'Novice';
   if (/Inter/i.test(s))    return 'Inter';
   if (/Advanced/i.test(s)) return 'Advanced';

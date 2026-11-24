@@ -12,7 +12,9 @@
  */
 
 // ── Levels & blocks ───────────────────────────────────────────────
-export type Level = 'Novice' | 'Inter' | 'Advanced' | 'Igorfina';
+// PreNovice = Primeiros passos (fase de teste, chave beta aula_motion): fica no topo da trilha do Novice,
+// com aula em motion + Palavras. O nível do aluno no banco continua Novice.
+export type Level = 'Novice' | 'Inter' | 'Advanced' | 'Igorfina' | 'PreNovice';
 export type Block = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
 export type ModuleMarker = 'denso' | 'review' | 'bridge' | 'missing' | 'qform';
 

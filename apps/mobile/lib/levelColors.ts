@@ -14,6 +14,7 @@ export const LEVEL_ACCENT: Record<string, string> = {
   Inter:    '#6B4BFF',
   Advanced: '#08804A',
   Igorfina: '#B45309', // trilha do Igorfina (âmbar)
+  PreNovice: '#D12A64', // Primeiros passos: mesmas cores do Novice
 };
 
 export const LEVEL_VIVID: Record<string, string> = {
@@ -21,6 +22,7 @@ export const LEVEL_VIVID: Record<string, string> = {
   Inter:    '#8B73FF',
   Advanced: '#2BD97C',
   Igorfina: '#F59E0B',
+  PreNovice: '#FF4F8B',
 };
 
 export const LEVEL_ACCENT_BG: Record<string, string> = {
@@ -28,6 +30,7 @@ export const LEVEL_ACCENT_BG: Record<string, string> = {
   Inter:    '#F1EEFF',
   Advanced: '#E8FBF1',
   Igorfina: '#FEF3E2',
+  PreNovice: '#FFEEF4',
 };
 
 /** Cor de destaque do nível (fallback: Advanced, como nos ternários antigos). */

@@ -20,8 +20,9 @@ import { soundEngine } from '@/lib/soundEngine';
 import { getModule } from '@/lib/curriculum-v2/loader';
 import { noteTopicCompleted } from '@/lib/storeReview';
 
-export type V2Activity = 'grammar' | 'speaking' | 'roleplay' | 'chat';
-export type V2Level    = 'Novice' | 'Inter' | 'Advanced' | 'Igorfina';
+// 'aula' = aula em motion interativa, que conta como atividade só no Pré-Novice.
+export type V2Activity = 'grammar' | 'speaking' | 'roleplay' | 'chat' | 'aula';
+export type V2Level    = 'Novice' | 'Inter' | 'Advanced' | 'Igorfina' | 'PreNovice';
 
 interface V2Row {
   module_id:     string;
@@ -43,9 +44,15 @@ const THRESHOLD: Record<V2Activity, number> = {
   speaking: 60,
   roleplay: 0,
   chat:     0,
+  aula:     0,
 };
 
 const ACTIVITY_ORDER: V2Activity[] = ['grammar', 'speaking', 'roleplay', 'chat'];
+// Primeiros passos (Pré-Novice): a unidade tem a aula em motion e Palavras.
+const PRE_NOVICE_ACTIVITIES: V2Activity[] = ['aula', 'grammar'];
+export function unitActivities(level: V2Level): V2Activity[] {
+  return level === 'PreNovice' ? PRE_NOVICE_ACTIVITIES : ACTIVITY_ORDER;
+}
 
 export function meetsThreshold(activity: V2Activity, score: number): boolean {
   return score >= THRESHOLD[activity];
@@ -86,8 +93,8 @@ export function useLearnProgressV2(
   }, [get]);
 
   const isUnitComplete = useCallback((moduleId: string, unitId: string): boolean => {
-    return ACTIVITY_ORDER.every(a => isActivityComplete(moduleId, unitId, a));
-  }, [isActivityComplete]);
+    return unitActivities(level).every(a => isActivityComplete(moduleId, unitId, a));
+  }, [isActivityComplete, level]);
 
   /**
    * Activity unlock rule within a unit: each activity destrava só depois que
@@ -163,7 +170,7 @@ export function useLearnProgressV2(
     if (next.completed && !existing?.completed) {
       const done = (m: string, u: string, a: V2Activity) =>
         (m === moduleId && u === unitId && a === activity) || rows.some(r => r.module_id === m && r.unit_id === u && r.activity_type === a && r.completed);
-      const unitDone = (m: string, u: string) => ACTIVITY_ORDER.every(a => done(m, u, a));
+      const unitDone = (m: string, u: string) => unitActivities(level).every(a => done(m, u, a));
       if (unitDone(moduleId, unitId)) {
         const mod = getModule(level as any, moduleId);
         const moduleDone = !!mod && mod.units.every(u => unitDone(moduleId, u.id));

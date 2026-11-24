@@ -187,7 +187,11 @@ export default function LearnSessionScreen() {
   // gerada no servidor por `userLevel`) NÃO é afetado por esta flag.
   const isPortuguese = systemIsPt;
   // Trilhas extras (ex.: Igorfina) seguem as regras do Novice (pronúncia binária etc.).
-  const isNoviceLike = level === 'Novice' || !!extraTrack(level);
+  // Primeiros passos (Pré-Novice, chave beta aula_motion): Palavras + 1 fala curta no fim, sem reprovar.
+  const isPreNovice = (level as string) === 'PreNovice';
+  const isNoviceLike = level === 'Novice' || !!extraTrack(level) || isPreNovice;
+  // As APIs (Me ajuda, explicação do erro) não conhecem o Pré-Novice: vão como Novice.
+  const apiLevel = isPreNovice ? 'Novice' : level;
   const baseTotalXP = useTotalXP(userId);
   const insets      = useSafeAreaInsets();
   const bottomInset = useBottomInset();
@@ -255,7 +259,7 @@ export default function LearnSessionScreen() {
 
   // ── Build flat steps array ─────────────────────────────────
   const steps: SessionStep[] = [
-    ...((isFirstActivity ? topic?.grammar.slice(0, FIRST_ACTIVITY_EXERCISES) : topic?.grammar)?.map(ex => ({ kind: 'grammar' as const, exercise: ex })) ?? []),
+    ...((isFirstActivity && !isPreNovice ? topic?.grammar.slice(0, FIRST_ACTIVITY_EXERCISES) : topic?.grammar)?.map(ex => ({ kind: 'grammar' as const, exercise: ex })) ?? []),
     ...(topic?.pronunciation.map(ph => ({ kind: 'pronunciation' as const, phrase: ph })) ?? []),
   ];
   const totalSteps = steps.length;
@@ -568,7 +572,7 @@ export default function LearnSessionScreen() {
           userAnswer,
           correctAnswer: ex.answer ?? '',
           exerciseType: ex.type,
-          userLevel: level,
+          userLevel: apiLevel,
           mode: 'explain_error',
         }),
       });
@@ -966,8 +970,10 @@ export default function LearnSessionScreen() {
 
     let feedback: NonNullable<PronFeedback>;
     // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
+    // Pré-Novice: aceita o oi sem o nome (ou só o nome) e aprova na 2ª tentativa em que algo foi ouvido.
+    const preNovicePass = isPreNovice && (pct >= 50 || (stepFailsRef.current >= 1 && !!transcript));
     if (isNoviceLike) {
-      if (pct >= 70) {
+      if (pct >= 70 || preNovicePass) {
         feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage(hostName) : 'Nice! Pronunciation ok.' };
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         soundEngine.play('answer_correct').catch(() => {});
@@ -1413,13 +1419,13 @@ export default function LearnSessionScreen() {
           rawScore = Math.round(((totalSteps - sessionErrors) / totalSteps) * 100);
         }
         const finalScore = Math.max(0, Math.min(100, rawScore));
-        const threshold = isFirstActivity ? 0 : activityType === 'grammar' ? 70 : activityType === 'speaking' ? 60 : 100;
+        const threshold = isFirstActivity || isPreNovice ? 0 : activityType === 'grammar' ? 70 : activityType === 'speaking' ? 60 : 100;
         const prevRow = v2Progress.get(params.moduleId, params.unitId, activityType);
         const previous = typeof prevRow?.score === 'number' && (prevRow?.attempts ?? 0) > 0 ? prevRow.score : null;
         setCompletedActivityScore({ score: finalScore, threshold, activityType, previous });
         try {
           await v2Progress.saveAttempt(
-            params.moduleId, params.unitId, activityType, finalScore, isFirstActivity,
+            params.moduleId, params.unitId, activityType, finalScore, isFirstActivity || isPreNovice,
           );
         } catch (e) {
           console.warn('[v2Progress] save attempt failed', e);
@@ -1449,7 +1455,7 @@ export default function LearnSessionScreen() {
   if (isComplete) {
     const done = completedActivityScore;
     const passedNow = !!done && done.score >= done.threshold;
-    const nextLabel = isV2 && passedNow && !isTasteExtra
+    const nextLabel = isV2 && passedNow && !isTasteExtra && !isPreNovice
       ? (done!.activityType === 'grammar' ? 'Listening & Speaking' : done!.activityType === 'speaking' ? 'Role-play' : null)
       : null;
     const firstDay = !isTasteExtra && !!profile?.created_at && Date.now() - new Date(profile.created_at).getTime() < 24 * 3600000;
@@ -1609,6 +1615,8 @@ export default function LearnSessionScreen() {
                     setTimeout(() => openPaywall('taste_extra'), 400);
                     return;
                   }
+                  // Primeiros passos: Palavras é a última atividade da unidade; volta para a trilha.
+                  if (isPreNovice) { router.replace('/(app)/(tabs)' as any); return; }
                   if (isV2) {
                     const passed = c && c.score >= c.threshold;
                     if (passed && params.moduleId && params.unitId) {
@@ -2572,7 +2580,7 @@ export default function LearnSessionScreen() {
                             user_attempt:   userAnswer.trim() || undefined,
                             exercise_type:  ex.type,
                             options:        ex.options ?? ex.choices,
-                            level,
+                            level: apiLevel,
                             ...(userId ? { user_id: userId } : {}),
                           }),
                         });

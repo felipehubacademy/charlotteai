@@ -412,7 +412,14 @@
         "title": "Viagem sem grana",
         "file": "igorfina/M10.json"
       }
+    ],
+    "prenovice": [
+      {
+        "id": "M01",
+        "title": "Primeiros passos",
+        "file": "prenovice/M01.json"
+      }
     ]
   },
-  "generated_at": "2026-11-21T22:01:52.505Z"
+  "generated_at": "2026-11-24T23:39:09.611Z"
 }
