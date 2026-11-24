@@ -41,6 +41,7 @@ const LEVEL_SHORT: Record<Level, string> = {
   Inter:    'Inter',
   Advanced: 'Advanced',
   Igorfina: 'Igorfina',
+  PreNovice: 'Primeiros passos',
 };
 
 const LEVEL_COLOR = LEVEL_ACCENT;
@@ -71,7 +72,7 @@ interface Props {
   userId?:       string;
 }
 
-const LEVEL_ORDER: Record<Level, number> = { Novice: 0, Inter: 1, Advanced: 2, Igorfina: 0 };
+const LEVEL_ORDER: Record<Level, number> = { Novice: 0, Inter: 1, Advanced: 2, Igorfina: 0, PreNovice: 0 };
 
 export function LevelDropdown({ selectedLevel, currentLevel, onSelect, userId }: Props) {
   const [open, setOpen]         = useState(false);

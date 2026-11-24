@@ -23,6 +23,7 @@ const NEXT_LEVEL: Record<Level, Level | null> = {
   Inter:    'Advanced',
   Advanced: null,
   Igorfina: null, // trilha à parte: não promove para outro nível
+  PreNovice: null, // Primeiros passos: o aluno já é Novice no banco
 };
 
 const FULL_LEVEL_MODULE_COUNT = 22;

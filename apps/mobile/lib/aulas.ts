@@ -1,6 +1,7 @@
 // lib/aulas.ts — aulas em vídeo (motion) dos tópicos da trilha. Fase de teste: só para quem tem a
-// chave beta `aula_motion` (ligada no /admin > Usuários). A aula não trava a progressão, não dá XP
-// e não conta para o tópico concluído.
+// chave beta `aula_motion` (ligada no /admin > Usuários). No Novice, a aula não trava a progressão, não dá XP
+// e não conta para o tópico concluído. Nos Primeiros passos (Pré-Novice), ela é a 1ª atividade da unidade:
+// conta para concluir e dá XP (tipo `aula` no guard do banco, 10 por pausa acertada; nada ao rever).
 //
 // Os dados (falas, pausas, correções) vêm no app em data/aulas/<id>.json. O vídeo, o pôster e os
 // áudios das correções ficam no Storage, no bucket público `lesson-videos/<id>/<versão>/`
@@ -8,6 +9,8 @@
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const novice01 = require('@/data/aulas/novice-01.json');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const preNovice01 = require('@/data/aulas/pre-novice-01.json');
 
 export const AULA_BETA_KEY = 'aula_motion';
 
@@ -48,7 +51,16 @@ export interface Aula {
 
 const AULAS: Record<string, Aula> = {
   'novice-01': novice01 as Aula,
+  'pre-novice-01': preNovice01 as Aula,
 };
+
+/** XP por pausa acertada (teto do tipo `aula` no guard charlotte.guard_practice_insert). */
+export const AULA_XP_PER_CHECKPOINT = 10;
+
+/** Aula que conta como atividade da unidade (e dá XP): só nos Primeiros passos. */
+export function aulaCounts(aula: Aula | null | undefined): boolean {
+  return aula?.level === 'PreNovice';
+}
 
 const BASE = 'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/lesson-videos';
 

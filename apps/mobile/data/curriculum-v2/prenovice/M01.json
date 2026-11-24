@@ -1,0 +1,113 @@
+{
+  "id": "M01",
+  "title": "Primeiros passos",
+  "level": "PreNovice",
+  "block": "A1",
+  "units_range": "PN01",
+  "theme": "Primeiras palavras para quem está começando do zero",
+  "goal": "Aluno sai sabendo dizer oi e tchau, responder sim, não e tá bom, e usar a lição (tocar na palavra, ouvir, falar).",
+  "connects_to": "M01 do Novice (Olá, mundo), que retoma as mesmas palavras em frases maiores.",
+  "module_chunks": [
+    "Hi! / Hello!",
+    "Bye!",
+    "Yes / No / OK"
+  ],
+  "units": [
+    {
+      "id": "PN01",
+      "title": "Oi!",
+      "sub_cefr": "A1",
+      "grammar_focus": "Primeiras palavras",
+      "tense": "PRIMEIROS PASSOS",
+      "markers": [],
+      "real_life_context": "Você encontra alguém e quer dizer oi e tchau em inglês.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Hello! O que quer dizer hello?",
+          "options": [
+            "olá",
+            "tchau"
+          ],
+          "answer": "olá",
+          "explanation": "Hello é olá. Dica: sempre que quiser ver a tradução de uma palavra em inglês, toque nela."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Qual palavra você ouviu?",
+          "options": [
+            "hi",
+            "bye"
+          ],
+          "answer": "hi",
+          "explanation": "Você ouviu hi: oi. O h do começo se pronuncia, é um sopro leve.",
+          "listen": "hi"
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Como se diz tchau em inglês?",
+          "options": [
+            "bye",
+            "hi",
+            "yes"
+          ],
+          "answer": "bye",
+          "explanation": "Bye é tchau. Hi é oi."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Qual palavra você ouviu?",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes",
+          "explanation": "Você ouviu yes: sim. Em yes, o y soa como i.",
+          "listen": "yes"
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "O que quer dizer no?",
+          "options": [
+            "não",
+            "sim",
+            "tchau"
+          ],
+          "answer": "não",
+          "explanation": "No é não. Yes é sim."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "O que quer dizer OK?",
+          "options": [
+            "tá bom",
+            "olá",
+            "não"
+          ],
+          "answer": "tá bom",
+          "explanation": "OK é tá bom, igual no português."
+        },
+        {
+          "type": "word_order",
+          "sentence": "Oi! Tchau!",
+          "answer": "Hi! Bye!",
+          "explanation": "Primeiro o oi, depois o tchau. Você montou sua primeira frase em inglês!",
+          "context_pt": "Oi! Tchau!",
+          "words": [
+            "Bye!",
+            "Hi!"
+          ]
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Hi, Charlotte!",
+          "context": "A Charlotte disse: Hi! I'm Charlotte. Responda com um oi: Oi, Charlotte!"
+        }
+      ],
+      "roleplay": null,
+      "guided_chat": null
+    }
+  ],
+  "cross_unit_consolidation": []
+}

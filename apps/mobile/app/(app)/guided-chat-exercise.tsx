@@ -59,6 +59,7 @@ const GUIDED_CHAT_BUDGET_SEC: Record<V2Level, number> = {
   Inter:    420,
   Advanced: 600,
   Igorfina: 300,
+  PreNovice: 300, // Primeiros passos não tem Guided Chat; só fecha o tipo
 };
 
 const C = {

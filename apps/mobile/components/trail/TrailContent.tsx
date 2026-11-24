@@ -27,7 +27,7 @@ import { LEVEL_ACCENT } from '@/lib/levelColors';
 import { extraTrack, unitImpression } from '@/lib/tracks';
 import { TASTE_DAYS, tasteDayNumber, tasteFreeUnits } from '@/lib/tasteDays';
 import { ImpressionTag } from '@/components/trail/ImpressionTag';
-import { aulaForUnit, aulaLength } from '@/lib/aulas';
+import { aulaForUnit, aulaLength, getAula, AULA_BETA_KEY } from '@/lib/aulas';
 import { LEVEL_ACCENT_BG } from '@/lib/levelColors';
 import type { CharacterId, ImpressionId } from '@/lib/characters';
 
@@ -98,8 +98,12 @@ interface ModuleData {
   avgScore:       number | null; // média dos scores das lessons concluídas
   impression?:    ImpressionId;  // trilha do Igorfina: tópico com imitação (selo no cartão)
   paywall?:       boolean;       // travado só pela degustação: o toque abre a oferta
-  /** Aula em vídeo do tópico (só com a chave beta aula_motion). Fica fora das 4 atividades e da contagem. */
-  aula?:          { id: string; length: string };
+  /** Aula em vídeo do tópico (só com a chave beta aula_motion). No Novice fica fora das 4 atividades e da
+   *  contagem; nos Primeiros passos (aulaCounts) é a 1ª atividade da unidade. */
+  aula?:          { id: string; length: string; done?: boolean };
+  aulaCounts?:    boolean;
+  /** Selo do cartão no lugar do número (Primeiros passos). */
+  chipLabel?:     string;
 }
 
 // ── Score colors (lógica da marca: abaixo da meta = queizy, passou = crazy) ──
@@ -279,7 +283,7 @@ function LessonRow({
 }
 
 // ── Aula em vídeo (beta aula_motion) ─────────────────────────────────────────
-function AulaRow({ aula, isPt }: { aula: { id: string; length: string }; isPt: boolean }) {
+function AulaRow({ aula, isPt }: { aula: { id: string; length: string; done?: boolean }; isPt: boolean }) {
   return (
     <TouchableOpacity
       onPress={() => router.push({ pathname: '/(app)/aula' as any, params: { id: aula.id } })}
@@ -310,8 +314,8 @@ function AulaRow({ aula, isPt }: { aula: { id: string; length: string }; isPt: b
         borderWidth: 1, borderColor: C.borderMid,
         alignItems: 'center', justifyContent: 'center',
       }}>
-        <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navy }}>
-          {isPt ? 'Assistir' : 'Watch'}
+        <AppText style={{ fontSize: 11, fontWeight: aula.done ? '600' : '700', color: aula.done ? C.navyMid : C.navy }}>
+          {aula.done ? (isPt ? 'Rever' : 'Rewatch') : (isPt ? 'Assistir' : 'Watch')}
         </AppText>
       </View>
     </TouchableOpacity>
@@ -367,7 +371,13 @@ function ModuleCard({
       >
         {/* Head row */}
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-          <NumberChip n={data.idx + 1} state={data.state} accent={accent} />
+          {data.chipLabel ? (
+            <View style={{ minWidth: 34, height: 34, borderRadius: 12, paddingHorizontal: 6, backgroundColor: data.state === 'done' ? a(accent, 0.12) : accent, alignItems: 'center', justifyContent: 'center' }}>
+              <AppText style={{ fontSize: 12, fontWeight: '800', color: data.state === 'done' ? accent : '#FFF' }}>{data.chipLabel}</AppText>
+            </View>
+          ) : (
+            <NumberChip n={data.idx + 1} state={data.state} accent={accent} />
+          )}
 
           <View style={{ flex: 1, minWidth: 0 }}>
             <AppText style={{
@@ -412,7 +422,8 @@ function ModuleCard({
         </View>
 
         {/* Segmented progress bar */}
-        {!isLocked && <SegmentedProgress lessons={data.lessons} accent={accent} />}
+        {!isLocked && <SegmentedProgress accent={accent}
+          lessons={data.aulaCounts && data.aula ? [{ state: data.aula.done ? 'done' : 'next' } as Lesson, ...data.lessons] : data.lessons} />}
       </TouchableOpacity>
 
       {/* Expanded lessons list */}
@@ -536,6 +547,44 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
   useFocusEffect(useCallback(() => {
     v2Progress.refetch();
   }, [v2Progress.refetch])); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Primeiros passos (Pré-Novice), fase de teste: só na trilha do Novice e só com a chave beta aula_motion.
+  // Fica num cartão acima do M01, com a aula em motion e Palavras, sem travar nem mexer no resto do Novice.
+  const showPreNovice = level === 'Novice' && !isPreview && (profile?.beta_features ?? []).includes(AULA_BETA_KEY);
+  const preProgress = useLearnProgressV2(showPreNovice ? userId : undefined, 'PreNovice');
+  useFocusEffect(useCallback(() => {
+    if (showPreNovice) preProgress.refetch();
+  }, [showPreNovice, preProgress.refetch])); // eslint-disable-line react-hooks/exhaustive-deps
+  const [preExpanded, setPreExpanded] = useState(true);
+  const preNovice: ModuleData | null = useMemo(() => {
+    if (!showPreNovice) return null;
+    const mod = listV2Modules('PreNovice')[0];
+    const unit = mod?.units[0];
+    const aulaDef = getAula('pre-novice-01');
+    if (!mod || !unit || !aulaDef) return null;
+    const aulaDone = !!preProgress.get(mod.id, unit.id, 'aula')?.completed;
+    const row = preProgress.get(mod.id, unit.id, 'grammar');
+    const words: Lesson = {
+      key: 'pre_words', label: isPt ? 'Palavras' : 'Words', type: 'grammar',
+      state: row?.completed ? 'done' : 'next', hasContent: true, moduleIdx: -1, topicIdx: 0,
+      score: typeof row?.score === 'number' ? row.score : null,
+      v2ModuleId: mod.id, v2UnitId: unit.id, v2Activity: 'grammar',
+    };
+    const completedCount = (aulaDone ? 1 : 0) + (words.state === 'done' ? 1 : 0);
+    return {
+      idx: -1, title: unit.title, lessons: [words], completedCount, totalCount: 2,
+      pct: Math.round((completedCount / 2) * 100), state: completedCount === 2 ? 'done' : 'active',
+      avgScore: null, aula: { id: aulaDef.id, length: aulaLength(aulaDef), done: aulaDone }, aulaCounts: true,
+      chipLabel: unit.id,
+    };
+  }, [showPreNovice, preProgress.rows, isPt]); // eslint-disable-line react-hooks/exhaustive-deps
+  const startPreNovice = useCallback((lesson: Lesson) => {
+    if (!lesson.v2ModuleId || !lesson.v2UnitId) return;
+    router.push({
+      pathname: '/(app)/learn-session',
+      params: { v: 'v2', level: 'PreNovice', moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId, activity: 'both' },
+    });
+  }, []);
 
   // Build module data — cada unidade vira um card com as 4 atividades (Gramática, L&S, Role-play, Guided Chat).
   // Estado (locked/next/done) e nota vêm do useLearnProgressV2.
@@ -732,6 +781,26 @@ export function TrailContent({ userId, level, onCurrentTopicRef, onActiveModuleY
               : 'You are previewing this level. Complete the current level to unlock activities.'}
           </AppText>
         </View>
+      )}
+      {preNovice && (
+        <>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 4, marginBottom: 10, paddingHorizontal: 4 }}>
+            <View style={{ flex: 1, height: 1, backgroundColor: C.borderMid }} />
+            <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navyLight, letterSpacing: 1.2, textTransform: 'uppercase' }}>
+              {isPt ? 'Primeiros passos · beta' : 'First steps · beta'}
+            </AppText>
+            <View style={{ flex: 1, height: 1, backgroundColor: C.borderMid }} />
+          </View>
+          <ModuleCard
+            data={preNovice}
+            accent={accent}
+            expanded={preExpanded}
+            onToggle={() => setPreExpanded(v => !v)}
+            onStartLesson={startPreNovice}
+            isPt={isPt}
+            isCurrentModule={false}
+          />
+        </>
       )}
       {moduleData.map((m, i) => {
         const prevModId = i > 0 ? modules[i - 1]?._v2ModuleId : undefined;
