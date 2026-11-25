@@ -8,11 +8,12 @@
 // Sem números pedagógicos (lições, onde travaram): isso fica no Pedagógico.
 // As contas de alunos, atividades e cobranças ficam no banco (admin_overview_users e admin_overview_aggregates,
 // migração 20261106150000): aqui chegam só números e dias já agrupados, não as tabelas inteiras.
-import { countsInUnitCost } from '@/lib/unit-cost';
+import { countsInUnitCost, LTV_MAX_MONTHS, LTV_MIN_BASE } from '@/lib/unit-cost';
 import { cachedCost, openaiDaily } from '@/lib/provider-costs';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { lateSignupWelcomes } from '@/lib/signup-welcome';
 import { DAY, brtDay, dayKey, ms } from '@/lib/admin-subscriptions';
+import { TASTE_DAYS } from '@/lib/taste';
 
 type DbError = { message: string } | null;
 
@@ -70,6 +71,31 @@ export interface Breakeven {
 }
 const PNL_EXCLUDED = ['Impostos', 'Reembolsos e estornos'];
 
+// Aquisição e retorno (unit economics) do mês atual, com o mês anterior para comparar o CAC.
+//  - Gasto de aquisição = despesas de "Marketing e mídia" do mês no Financeiro (anúncios, influenciadores...).
+//  - Novos pagantes = contas com a 1ª cobrança no mês (mesma regra de Métricas, admin_metrics_accounts).
+//  - CAC = gasto de aquisição ÷ novos pagantes.
+//  - Margem por pagante (mês) = ticket líquido (preço médio - taxas - impostos) - custo de servir por pagante
+//    (custo por usuário sem as taxas de venda, que o ticket líquido já desconta).
+//  - Cancelamento mensal = pagantes que perderam o acesso nos últimos 30 dias ÷ pagantes no início da janela.
+//  - Vida média = 1 ÷ cancelamento mensal, com teto de LTV_MAX_MONTHS (sem cancelamento, a conta não tem fim).
+//  - LTV = margem por pagante × vida média; payback = CAC ÷ margem por pagante (meses para recuperar a aquisição).
+// LTV_MAX_MONTHS mora em lib/unit-cost (a tela, que roda no navegador, também usa).
+export interface AcquisitionMonth { label: string; marketing: number; newPayers: number; cac: number | null }
+export interface Acquisition {
+  current: AcquisitionMonth;
+  previous: AcquisitionMonth;
+  ticketNet: number | null;
+  servePerPayer: number | null;
+  marginPerPayer: number | null;
+  churn30d: { pct: number | null; lost: number; base: number; minBase: number };
+  lifetimeMonths: number | null; lifetimeCapped: boolean;
+  ltv: number | null;
+  ltvToCac: number | null;
+  paybackMonths: number | null;
+}
+const ACQUISITION_CATEGORY = 'Marketing e mídia';
+
 export interface Overview {
   generatedAt: string;
   today: string;
@@ -91,6 +117,7 @@ export interface Overview {
     cancelledWithAccess: { total: number; trial: number; paying: number };
     unitCost: UnitCost;
     pnl: { months: PnlMonth[]; breakeven: Breakeven };
+    acquisition: Acquisition;
   };
   engagement: {
     d1: { pct: number | null; retained: number; eligible: number };
@@ -124,6 +151,24 @@ type OverviewAgg = {
   practicedToday: number;
 };
 
+/** 1º dia do mês (offset em meses a partir de monthKey), 00h de Brasília, em ms. */
+function monthStartMs(monthKey: string, offset: number): number {
+  const [y, m] = monthKey.split('-').map(Number);
+  return Date.UTC(y, m - 1 + offset, 1, 3);
+}
+
+type AccountsWindow = { new_count: number; paying_at_start: number; churned_from_start: number };
+/** Contas pagantes numa janela, com as regras de Métricas (sem filtro de nível ou plano). */
+async function accountsWindow(fromMs: number, toMs: number, nowMs: number): Promise<AccountsWindow> {
+  const days = Math.max(1, Math.round((toMs - fromMs) / DAY));
+  const { data, error } = await getSupabaseAdmin().rpc('admin_metrics_accounts', {
+    p_from_ms: fromMs, p_to_ms: toMs, p_now_ms: nowMs, p_days: days, p_level: null, p_plan: null, p_taste_days: TASTE_DAYS,
+  });
+  if (error) throw new Error(error.message);
+  const u = (data as { users: Partial<AccountsWindow> }).users ?? {};
+  return { new_count: Number(u.new_count ?? 0), paying_at_start: Number(u.paying_at_start ?? 0), churned_from_start: Number(u.churned_from_start ?? 0) };
+}
+
 /** Usuários (sem a equipe) divididos em grupos que somam o total, contados no banco. */
 async function readUsersBlock(nowMs: number): Promise<UsersBlock> {
   const { data, error } = await getSupabaseAdmin().rpc('admin_overview_users', { p_now_ms: nowMs });
@@ -152,6 +197,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   const [
     usersBlock, aggRes, daily,
     weekConvs, openConvs, capacityRes, opsAlertsRes, opsErrorsRes, instagramDrafts, outboxStuckRes, welcome, financeRes,
+    accMonth, accPrevMonth, acc30d,
   ] = await Promise.all([
     readUsersBlock(nowMs),
     // Usuários, atividades (31 dias, sem resgates de recompensa), cobranças, testes iniciados e sequências.
@@ -172,6 +218,10 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     // Em páginas: o .limit(5000) não valia (máximo de 1.000 linhas por leitura).
     paged<FinRow>((a, b) => supabase.from('finance_entries').select('category, amount_brl, status, unit_cost, due_date, recurrence').eq('kind', 'expense').neq('status', 'canceled')
       .gte('due_date', pnlFrom).lt('due_date', nextMonthFirst).order('id').range(a, b)).then(data => ({ data })),
+    // Aquisição: novos pagantes do mês atual e do anterior e cancelamento dos últimos 30 dias (mesmas regras de Métricas).
+    accountsWindow(monthStartMs(monthKey, 0), nowMs, nowMs),
+    accountsWindow(monthStartMs(monthKey, -1), monthStartMs(monthKey, 0) - 1, nowMs),
+    accountsWindow(nowMs - 30 * DAY, nowMs, nowMs),
   ]);
 
   if (aggRes.error) throw new Error(aggRes.error.message);
@@ -291,6 +341,37 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     minConversionPct: payersNeeded != null && activeMonth ? Math.round((payersNeeded / activeMonth) * 1000) / 10 : null,
   };
 
+  // Aquisição e retorno (regras no comentário de Acquisition).
+  const acqMonth = (key: string, newPayers: number): AcquisitionMonth => {
+    const marketing = finRows.filter(e => e.category === ACQUISITION_CATEGORY).reduce((s, e) => s + shareIn(e, key), 0);
+    return {
+      label: new Date(Date.parse(`${key}-15T12:00:00Z`)).toLocaleDateString('pt-BR', { month: 'long', timeZone: 'UTC' }),
+      marketing: round2(marketing), newPayers, cac: newPayers > 0 ? round2(marketing / newPayers) : null,
+    };
+  };
+  const prevMonthKey = new Date(monthStartMs(monthKey, -1)).toISOString().slice(0, 7);
+  const acqCurrent = acqMonth(monthKey, accMonth.new_count);
+  const servePerPayer = usersBlock.paying ? (unitTotal - salesFees) / usersBlock.paying : null;
+  const marginPerPayer = ticketNet != null && servePerPayer != null ? ticketNet - servePerPayer : null;
+  // Com poucos pagantes no início da janela o cancelamento não diz nada (1 de 1 = 100%, 0 de 1 = vida sem fim): sem LTV.
+  const churnRate = acc30d.paying_at_start >= LTV_MIN_BASE ? acc30d.churned_from_start / acc30d.paying_at_start : null;
+  const rawLifetime = churnRate != null ? (churnRate > 0 ? 1 / churnRate : Infinity) : null;
+  const lifetimeMonths = rawLifetime != null ? Math.min(LTV_MAX_MONTHS, rawLifetime) : null;
+  const ltv = marginPerPayer != null && lifetimeMonths != null ? marginPerPayer * lifetimeMonths : null;
+  const acquisition: Acquisition = {
+    current: acqCurrent,
+    previous: acqMonth(prevMonthKey, accPrevMonth.new_count),
+    ticketNet: ticketNet != null ? round2(ticketNet) : null,
+    servePerPayer: servePerPayer != null ? round2(servePerPayer) : null,
+    marginPerPayer: marginPerPayer != null ? round2(marginPerPayer) : null,
+    churn30d: { pct: churnRate != null ? Math.round(churnRate * 1000) / 10 : null, lost: acc30d.churned_from_start, base: acc30d.paying_at_start, minBase: LTV_MIN_BASE },
+    lifetimeMonths: lifetimeMonths != null ? Math.round(lifetimeMonths * 10) / 10 : null,
+    lifetimeCapped: rawLifetime != null && rawLifetime > LTV_MAX_MONTHS,
+    ltv: ltv != null ? round2(ltv) : null,
+    ltvToCac: ltv != null && acqCurrent.cac ? Math.round((ltv / acqCurrent.cac) * 10) / 10 : null,
+    paybackMonths: acqCurrent.cac != null && marginPerPayer != null && marginPerPayer > 0 ? Math.round((acqCurrent.cac / marginPerPayer) * 10) / 10 : null,
+  };
+
   const money = {
     mrr: round2(mrr),
     renewing,
@@ -312,6 +393,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     },
     unitCost,
     pnl: { months: pnlMonths, breakeven },
+    acquisition,
   };
 
   // ── Engajamento ──────────────────────────────────────────────────────────
