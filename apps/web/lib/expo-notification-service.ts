@@ -617,14 +617,15 @@ async function sendExpoPush(
     try {
       const primaries = [...new Set(messages.map(m => m.to).filter(Boolean))];
       const extraByPrimary = new Map<string, string[]>();
-      for (let i = 0; i < primaries.length; i += 1000) {
-        const { data, error } = await supabase.rpc('push_extra_devices', { p_tokens: primaries.slice(i, i + 1000) });
-        if (error) throw new Error(error.message);
-        for (const r of (data ?? []) as Array<{ primary_token: string; token: string }>) {
-          const list = extraByPrimary.get(r.primary_token) ?? [];
-          list.push(r.token);
-          extraByPrimary.set(r.primary_token, list);
-        }
+      // Em lotes de tokens e paginado (a resposta para em 1.000 linhas).
+      const rows = await readIn<{ primary_token: string; token: string }>('aparelhos extras', primaries, chunk => supabase
+        .rpc('push_extra_devices', { p_tokens: chunk })
+        .order('primary_token')
+        .order('token'));
+      for (const r of rows) {
+        const list = extraByPrimary.get(r.primary_token) ?? [];
+        list.push(r.token);
+        extraByPrimary.set(r.primary_token, list);
       }
       if (extraByPrimary.size) {
         const extra: ExpoMessage[] = [];
@@ -639,7 +640,7 @@ async function sendExpoPush(
       }
     } catch (e) {
       // Sem a lista, o push sai só para o aparelho principal, como antes.
-      console.warn('⚠️ [Expo] outros aparelhos da conta não carregaram:', e);
+      console.warn('[Expo] outros aparelhos da conta não carregaram:', e);
     }
   }
 
@@ -742,7 +743,7 @@ async function sendExpoPush(
   if (supabase && invalidTokens.length > 0) {
     // Aparelhos extras mortos saem da lista da conta (o principal sai pelo gatilho ao zerar o token).
     const { error: forgetErr } = await supabase.rpc('push_forget_devices', { p_tokens: invalidTokens });
-    if (forgetErr) console.warn('⚠️ [Expo] limpeza dos aparelhos extras falhou:', forgetErr.message);
+    if (forgetErr) console.warn('[Expo] limpeza dos aparelhos extras falhou:', forgetErr.message);
     try {
       const { data: cleared, error } = await supabase
         .from('charlotte_users')

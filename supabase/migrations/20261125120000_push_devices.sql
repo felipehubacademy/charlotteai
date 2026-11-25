@@ -12,6 +12,7 @@ create table if not exists charlotte.push_devices (
   token        text primary key,
   user_id      uuid not null references charlotte.users(id) on delete cascade,
   platform     text,
+  language     text,
   last_seen_at timestamptz not null default now(),
   created_at   timestamptz not null default now()
 );
@@ -28,9 +29,11 @@ begin
     if new.expo_push_token is distinct from old.expo_push_token then
       update charlotte.users set expo_push_token = null where expo_push_token = new.expo_push_token and id <> new.id;
     end if;
-    insert into charlotte.push_devices (token, user_id, platform, last_seen_at)
-    values (new.expo_push_token, new.id, new.app_platform, now())
-    on conflict (token) do update set user_id = excluded.user_id, platform = coalesce(excluded.platform, charlotte.push_devices.platform), last_seen_at = now();
+    -- O app grava o token junto com o idioma do aparelho (app_language), na mesma atualização.
+    insert into charlotte.push_devices (token, user_id, platform, language, last_seen_at)
+    values (new.expo_push_token, new.id, new.app_platform, new.app_language, now())
+    on conflict (token) do update set user_id = excluded.user_id, platform = coalesce(excluded.platform, charlotte.push_devices.platform),
+      language = coalesce(excluded.language, charlotte.push_devices.language), last_seen_at = now();
   elsif old.expo_push_token is not null and new.expo_push_token is null then
     -- Token apagado (aparelho morto ou levado por outra conta): sai da lista desta conta.
     delete from charlotte.push_devices where token = old.expo_push_token and user_id = new.id;
@@ -42,14 +45,15 @@ drop trigger if exists trg_push_token_takeover on charlotte.users;
 create trigger trg_push_token_takeover after update of expo_push_token on charlotte.users for each row execute function charlotte.push_token_takeover();
 
 -- Aparelhos que já existem: o token atual de cada conta.
-insert into charlotte.push_devices (token, user_id, platform, last_seen_at)
-select u.expo_push_token, u.id, u.app_platform, coalesce(u.updated_at, now())
+insert into charlotte.push_devices (token, user_id, platform, language, last_seen_at)
+select u.expo_push_token, u.id, u.app_platform, u.app_language, coalesce(u.updated_at, now())
 from charlotte.users u
 where u.expo_push_token like 'ExponentPushToken[%'
 on conflict (token) do nothing;
 
 -- Para o envio: dado o token principal de cada aluno, os OUTROS aparelhos da mesma conta vistos nos
--- últimos 60 dias (aparelho parado há mais tempo provavelmente foi trocado). Só a chave do servidor executa.
+-- últimos 60 dias (aparelho parado há mais tempo provavelmente foi trocado) e no mesmo idioma do principal:
+-- o texto do push é gerado no idioma da conta, que é o do aparelho principal. Só a chave do servidor executa.
 create or replace function public.push_extra_devices(p_tokens text[])
 returns table (primary_token text, token text)
 language sql stable security definer set search_path = charlotte, public, pg_temp as $$
@@ -58,6 +62,7 @@ language sql stable security definer set search_path = charlotte, public, pg_tem
   join charlotte.push_devices d on d.user_id = p.user_id and d.token <> p.token
   where p.token = any(p_tokens)
     and d.last_seen_at > now() - interval '60 days'
+    and d.language is not distinct from p.language
 $$;
 revoke execute on function public.push_extra_devices(text[]) from public, anon, authenticated;
 grant execute on function public.push_extra_devices(text[]) to service_role;
