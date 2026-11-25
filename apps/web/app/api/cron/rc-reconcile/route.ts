@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { readAll } from '@/lib/db-batch';
 import { reconcileStoreSubscription, logRcEvent } from '@/lib/rc-subscription';
-import { reconcileLapsedSiteSubscriptions, closeSiteAfterStore } from '@/lib/asaas-reconcile';
+import { reconcileLapsedSiteSubscriptions, closeSiteAfterStore, followUpFailedCharges } from '@/lib/asaas-reconcile';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 120;
@@ -66,5 +66,8 @@ export async function POST(req: NextRequest) {
   // Mesma conferência para o site: assinatura com prazo vencido, perguntando ao processador.
   const site = await reconcileLapsedSiteSubscriptions().catch(e => ({ error: e instanceof Error ? e.message : 'erro' }));
   console.log('[rc-reconcile] site', site);
-  return NextResponse.json({ checked: ids.length, candidates: all.length, counts, changes, site });
+  // Cobrança recusada no site: lembretes, nova tentativa no 3º dia e limpeza do Pix abandonado.
+  const failed = await followUpFailedCharges().catch(e => ({ error: e instanceof Error ? e.message : 'erro' }));
+  console.log('[rc-reconcile] cobranças vencidas', failed);
+  return NextResponse.json({ checked: ids.length, candidates: all.length, counts, changes, site, failed });
 }

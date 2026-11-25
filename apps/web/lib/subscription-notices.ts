@@ -94,20 +94,25 @@ export async function sendPaymentReceipt(checkoutId: string, p: AsaasPayment, is
   await sendOrQueue({ kind: 'web_notice', to: u.email, subject, html });
 }
 
-/** Cartão recusado na cobrança (só assinaturas no cartão; Pix vencido sem pagar não é falha de cobrança). */
-export async function sendPaymentFailed(checkoutId: string, p: AsaasPayment): Promise<void> {
+/** Cartão recusado na cobrança (só assinaturas no cartão; Pix vencido sem pagar não é falha de cobrança).
+ *  stage: 'first' na recusa; 'reminder' 2 dias depois e 'last' 5 dias depois (lib/asaas-reconcile, followUpFailedCharges).
+ *  Cada etapa sai uma vez por cobrança. O botão leva à página do Asaas para pagar (outro cartão ou Pix). */
+export async function sendPaymentFailed(checkoutId: string, p: AsaasPayment, stage: 'first' | 'reminder' | 'last' = 'first'): Promise<boolean> {
   const r = await loadCk(checkoutId);
-  if (!r || r.method === 'annual_pix' || p.billingType === 'PIX') return;
-  if (!(await once(`failed_${p.id}`))) return;
+  if (!r || r.method === 'annual_pix' || p.billingType === 'PIX') return false;
+  if (!(await once(stage === 'first' ? `failed_${p.id}` : `failed_${p.id}_${stage}`))) return false;
   const u = await userOf(r.user_id);
-  if (!u?.email) return;
+  if (!u?.email) return false;
   const accessUntil = u.subscription_expires_at && new Date(u.subscription_expires_at).getTime() > Date.now() ? date(u.subscription_expires_at) : null;
-  const { subject, html } = webPaymentFailedTemplate({ name: u.name, plan: r.plan, value: brl(p.value), accessUntil });
+  const { subject, html } = webPaymentFailedTemplate({ name: u.name, plan: r.plan, value: brl(p.value), accessUntil, payUrl: p.invoiceUrl ?? null, stage });
   await sendOrQueue({ kind: 'web_notice', to: u.email, subject, html });
-  await sendSubscriptionPush(getSupabaseAdmin(), r.user_id, {
-    pt: { title: 'A cobrança da assinatura não passou', body: 'O cartão recusou a cobrança do Queizy. Confira com o seu banco ou responda o e-mail que mandamos.' },
-    en: { title: 'Your subscription payment failed', body: 'Your card declined the Queizy charge. Check with your bank or reply to the email we sent.' },
-  }, 'payment_failed');
+  const push = stage === 'first'
+    ? { pt: { title: 'A cobrança da assinatura não passou', body: 'O cartão recusou a cobrança do Queizy. Toque para pagar com outro cartão ou no Pix.' },
+        en: { title: 'Your subscription payment failed', body: 'Your card declined the Queizy charge. Tap to pay with another card or Pix.' } }
+    : { pt: { title: 'Seu acesso está pausado', body: 'Falta só o pagamento da assinatura. Toque para pagar com outro cartão ou no Pix e voltar a estudar.' },
+        en: { title: 'Your access is paused', body: 'Only the subscription payment is missing. Tap to pay with another card or Pix and get back to studying.' } };
+  await sendSubscriptionPush(getSupabaseAdmin(), r.user_id, push, stage === 'first' ? 'payment_failed' : `payment_failed_${stage}`);
+  return true;
 }
 
 /** Assinatura cancelada. No reembolso não manda (o acesso já terminou e a tela do app explica). */

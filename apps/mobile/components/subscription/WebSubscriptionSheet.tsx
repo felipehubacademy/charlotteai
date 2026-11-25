@@ -3,6 +3,8 @@
 // mostra a data da 1ª cobrança e só oferece cancelar (sem reembolso). Depois de pago, o reembolso
 // aparece só dentro dos 7 dias (o servidor informa o prazo e confere de novo no pedido).
 // Confirmações acontecem dentro da própria tela, sem alerta do sistema.
+// Cartão recusado: o servidor manda a cobrança pendente e a tela mostra "Pagar agora", que abre a página
+// do processador (outro cartão ou Pix). O acesso volta quando o pagamento é confirmado.
 import React, { useEffect, useRef, useState } from 'react';
 import { Modal, View, Animated, TouchableOpacity, Pressable, ActivityIndicator, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -10,6 +12,7 @@ import Constants from 'expo-constants';
 import { CreditCard, QrCode, CheckCircle, ArrowCounterClockwise } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
+import { openLink } from '@/lib/openLink';
 
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -20,7 +23,8 @@ const C = {
 };
 
 type Step = 'main' | 'refund' | 'cancel' | 'busy' | 'done';
-type Info = { found: boolean; inTrial?: boolean; firstChargeAt?: string | null; value?: number; refundableUntil?: string | null; refundPending?: boolean };
+type Info = { found: boolean; inTrial?: boolean; firstChargeAt?: string | null; value?: number; refundableUntil?: string | null; refundPending?: boolean;
+  pending?: { value: number; dueDate: string | null; payUrl: string } | null };
 
 interface Props {
   visible: boolean;
@@ -80,6 +84,15 @@ export function WebSubscriptionSheet({ visible, isPt, product, status, expiresAt
   const until = inTrial && trialEnd ? trialEnd : expiresAt ? fmt(expiresAt) : null;
   const refundUntil = info?.refundableUntil ? fmt(info.refundableUntil) : null;
   const price = info?.value ? info.value.toLocaleString(isPt ? 'pt-BR' : 'en-US', { style: 'currency', currency: 'BRL' }) : null;
+  const pending = info?.pending ?? null;
+  const pendingPrice = pending ? pending.value.toLocaleString(isPt ? 'pt-BR' : 'en-US', { style: 'currency', currency: 'BRL' }) : null;
+  const pendingDay = pending?.dueDate ? new Date(`${pending.dueDate}T12:00:00`).toLocaleDateString(isPt ? 'pt-BR' : 'en-US') : null;
+  const payNow = async () => {
+    if (!pending) return;
+    await openLink(pending.payUrl);
+    onChanged(); // ao voltar do pagamento, relê o perfil (o acesso volta quando o pagamento é confirmado)
+    onClose();
+  };
 
   const planName = isAnnual ? (isPt ? 'Plano Anual' : 'Annual Plan') : (isPt ? 'Plano Mensal' : 'Monthly Plan');
   const payName = isPix ? (isPt ? 'Pix à vista' : 'Pix, paid upfront') : isAnnual ? (isPt ? 'Cartão de crédito à vista' : 'Credit card, paid yearly') : (isPt ? 'Cartão de crédito, todo mês' : 'Credit card, monthly');
@@ -164,7 +177,17 @@ export function WebSubscriptionSheet({ visible, isPt, product, status, expiresAt
                 </View>
               </View>
               <Row label={isPt ? 'Pagamento' : 'Payment'} value={payName} />
-              {inTrial ? (
+              {pending ? (
+                <>
+                  <Row label={isPt ? 'Situação' : 'Status'} value={isPt ? 'Acesso pausado' : 'Access paused'} />
+                  <Row label={isPt ? 'Cobrança recusada' : 'Declined charge'} value={`${pendingPrice}${pendingDay ? ` · ${pendingDay}` : ''}`} />
+                  <AppText style={{ fontSize: 13, color: C.navyMid, lineHeight: 19, marginTop: 12 }}>
+                    {isPt
+                      ? 'O cartão recusou a cobrança. Pague com outro cartão ou no Pix e o acesso volta assim que o pagamento for confirmado, com todo o seu progresso.'
+                      : 'Your card declined the charge. Pay with another card or Pix and your access comes back as soon as the payment is confirmed, with all your progress.'}
+                  </AppText>
+                </>
+              ) : inTrial ? (
                 <>
                   {trialEnd && <Row label={isPt ? 'Teste grátis' : 'Free trial'} value={isPt ? `até ${trialEnd}` : `until ${trialEnd}`} />}
                   <Row label={isPt ? 'Primeira cobrança' : 'First charge'}
@@ -184,14 +207,15 @@ export function WebSubscriptionSheet({ visible, isPt, product, status, expiresAt
                 <View style={{ paddingVertical: 18, alignItems: 'center' }}><ActivityIndicator color={C.navy} /></View>
               ) : (
                 <>
-                  {!inTrial && refundUntil && <Btn label={isPt ? 'Pedir reembolso' : 'Request refund'} onPress={() => setStep('refund')} />}
+                  {pending && <Btn label={isPt ? 'Pagar agora' : 'Pay now'} kind="primary" onPress={payNow} />}
+                  {!inTrial && !pending && refundUntil && <Btn label={isPt ? 'Pedir reembolso' : 'Request refund'} onPress={() => setStep('refund')} />}
                   {!isPix && !cancelled && (
                     <Btn label={inTrial ? (isPt ? 'Cancelar assinatura' : 'Cancel subscription') : (isPt ? 'Cancelar renovação' : 'Cancel renewal')}
                       kind="danger" onPress={() => setStep('cancel')} />
                   )}
                 </>
               )}
-              <Btn label={isPt ? 'Fechar' : 'Close'} kind="primary" onPress={onClose} />
+              <Btn label={isPt ? 'Fechar' : 'Close'} kind={pending ? 'ghost' : 'primary'} onPress={onClose} />
             </>
           )}
 
