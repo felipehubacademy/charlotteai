@@ -1804,7 +1804,10 @@ export default function LearnSessionScreen() {
               {/* Instruction — bubble na cor do nível, sem avatar, centralizado */}
               <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center' }}>
                 <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
-                  {currentStep.exercise.type === 'multiple_choice' && currentStep.exercise.listen
+                  {currentStep.exercise.type === 'multiple_choice' && currentStep.exercise.tap && isPortuguese
+                    // Treino do toque (Primeiros passos): o aluno descobre que tocar na palavra mostra a tradução.
+                    ? `Toque em ${currentStep.exercise.tap} para ver a tradução. Depois, escolha a opção correta.`
+                    : currentStep.exercise.type === 'multiple_choice' && currentStep.exercise.listen
                     ? (isPortuguese ? 'Ouça e escolha a opção correta.' : 'Listen and choose the correct option.')
                     : currentStep.exercise.type === 'multiple_choice'
                     ? (() => {
@@ -1920,6 +1923,8 @@ export default function LearnSessionScreen() {
                               <AppText key={`post${i}`} style={[baseStyle, { marginTop: 2 }]}>{ln}</AppText>
                             ))}
                           </View>
+                        ) : currentStep.exercise.tap && isPortuguese ? (
+                          <TranslatableText text={sentence} style={baseStyle} />
                         ) : (
                           <AppText style={baseStyle}>{sentence}</AppText>
                         )}
@@ -2062,7 +2067,9 @@ export default function LearnSessionScreen() {
                             {String.fromCharCode(65 + i)}
                           </AppText>
                         </View>
-                        {isPortuguese
+                        {/* Primeiros passos: opção em inglês sem tradução ao toque quando ela entregaria a
+                            resposta ("Como se diz tchau em inglês?"). Nos de ouvir, a tradução não entrega. */}
+                        {isPortuguese && !(isPreNovice && !currentStep.exercise.listen)
                           ? <View style={{ flex: 1 }}><TranslatableText text={opt} style={{ fontSize: 15, fontWeight: '600', color: C.navy }} /></View>
                           : <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy, flex: 1 }}>{opt}</AppText>
                         }
@@ -2221,11 +2228,17 @@ export default function LearnSessionScreen() {
           )}
 
           {/* ── PRONUNCIATION — sem card, mesmo padrao do grammar (direto na lavanda) ── */}
-          {currentStep.kind === 'pronunciation' && (
+          {currentStep.kind === 'pronunciation' && (() => { const preNoviceReply = isPreNovice && isPortuguese && currentStep.phrase.type === 'repeat' && !!currentStep.phrase.focus; return (
             <View style={{ flex: 1 }}>
               {/* Bubble centralizada (sem avatar embedded) */}
               <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center', maxWidth: '100%' }}>
-                {currentStep.phrase.type === 'repeat' && (
+                {preNoviceReply && (
+                  // Primeiros passos: a fala final é uma resposta à Charlotte, com o contexto da unidade.
+                  <AppText style={{ fontSize: 15, color: accent, fontWeight: '800', textAlign: 'center', marginBottom: 2 }}>
+                    Responda em voz alta
+                  </AppText>
+                )}
+                {currentStep.phrase.type === 'repeat' && !preNoviceReply && (
                   // Título em destaque: é para REPETIR em voz alta. Alunos respondiam "I'm fine, thanks"
                   // a "Hi! How are you?" em vez de repetir a frase.
                   <AppText style={{ fontSize: 15, color: accent, fontWeight: '800', textAlign: 'center', marginBottom: 2 }}>
@@ -2235,7 +2248,9 @@ export default function LearnSessionScreen() {
                   </AppText>
                 )}
                 <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
-                  {currentStep.phrase.type === 'repeat'
+                  {preNoviceReply
+                    ? currentStep.phrase.focus
+                    : currentStep.phrase.type === 'repeat'
                     ? ((currentStep.phrase.text ?? '').trim().endsWith('?')
                       ? (isPortuguese ? `Diga igual ${hostTrack ? 'o' : 'a'} ${hostName}. Não é para responder.` : `Say it just like ${hostName}. Don't answer it.`)
                       : (isPortuguese ? `Ouça ${hostTrack ? 'o' : 'a'} ${hostName} e diga igual.` : `Listen to ${hostName} and say it the same way.`))
@@ -2518,7 +2533,7 @@ export default function LearnSessionScreen() {
               )}
 
             </View>
-          )}
+          ); })()}
         </ScrollView>
 
         {/* ── Bottom CTA — lavanda sem border-top, integral com o body

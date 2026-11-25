@@ -30,7 +30,8 @@
             "tchau"
           ],
           "answer": "olá",
-          "explanation": "Hello é olá. Dica: sempre que quiser ver a tradução de uma palavra em inglês, toque nela."
+          "explanation": "Hello é olá. Dica: sempre que quiser ver a tradução de uma palavra em inglês, toque nela.",
+          "tap": "hello"
         },
         {
           "type": "multiple_choice",
@@ -92,7 +93,6 @@
           "sentence": "Oi! Tchau!",
           "answer": "Hi! Bye!",
           "explanation": "Primeiro o oi, depois o tchau. Você montou sua primeira frase em inglês!",
-          "context_pt": "Oi! Tchau!",
           "words": [
             "Bye!",
             "Hi!"

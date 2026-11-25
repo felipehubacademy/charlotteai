@@ -27,6 +27,7 @@ Sem Role-play e sem Guided Chat. Conteúdo detalhado em `docs/pre-novice/PN01-oi
 ### 1. Grammar (7 exercises)
 
 1. **multiple_choice** — "Hello! O que quer dizer hello?"
+   **Tap**: hello
    **Options**: olá / tchau
    **Answer**: olá
    **Explanation**: Hello é olá. Dica: sempre que quiser ver a tradução de uma palavra em inglês, toque nela.
@@ -59,7 +60,6 @@ Sem Role-play e sem Guided Chat. Conteúdo detalhado em `docs/pre-novice/PN01-oi
    **Explanation**: OK é tá bom, igual no português.
 
 7. **word_order** — "Oi! Tchau!"
-   **Context PT**: Oi! Tchau!
    **Words**: Bye! / Hi!
    **Answer**: Hi! Bye!
    **Explanation**: Primeiro o oi, depois o tchau. Você montou sua primeira frase em inglês!
