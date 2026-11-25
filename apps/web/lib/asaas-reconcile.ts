@@ -117,8 +117,11 @@ export async function reconcileLapsedSiteSubscriptions(): Promise<{ checked: num
 //    "Pagar agora"); no 3º dia, uma única nova tentativa com o cartão salvo (token), quando o Asaas devolve o token.
 //    Se passar, o webhook de pagamento devolve o acesso (handlePaymentPaid). Só cobranças de até 7 dias: as mais
 //    antigas não recebem nada (evita uma leva de avisos atrasados).
-//  - Pix: QR code do Anual que a pessoa gerou e não pagou. Vencido há mais de 3 dias, é removido no Asaas
-//    (desistência do checkout, não é dívida) e sai da lista de vencidas.
+//  - Pix: QR code do Anual que a pessoa gerou no nosso checkout e não pagou (asaas_checkouts.pending_payment_id, sem
+//    pagamento). Vencido há mais de 3 dias, é removido no Asaas (desistência, não é dívida). A conta do processador é
+//    da empresa e pode ter outras cobranças: só sai o Pix que o checkout do Queizy criou.
+//  - Lê só as vencidas das últimas 2 semanas e para em 40 s; as travas (asaas_events) fazem a próxima rodada seguir
+//    de onde parou, mais antigas primeiro.
 const DAY_MS = 86400000;
 const brtDay = (t: number) => new Date(t - 3 * 3600000).toISOString().slice(0, 10);
 const daysSince = (day: string, nowMs: number) => Math.round((Date.parse(`${brtDay(nowMs)}T12:00:00Z`) - Date.parse(`${day.slice(0, 10)}T12:00:00Z`)) / DAY_MS);
@@ -131,13 +134,20 @@ async function onceKey(key: string): Promise<boolean> {
 export async function followUpFailedCharges(nowMs = Date.now()): Promise<{ overdue: number; reminders: number; retried: number; retryOk: number; noToken: number; pixRemoved: number; errors: number }> {
   const out = { overdue: 0, reminders: 0, retried: 0, retryOk: 0, noToken: 0, pixRemoved: 0, errors: 0 };
   const supabase = getSupabaseAdmin();
-  const overdue = await paymentsByStatus('OVERDUE');
+  const dueFrom = brtDay(nowMs - 14 * DAY_MS);
+  const overdue = (await paymentsByStatus('OVERDUE', { dueFrom })).sort((a, b) => (a.dueDate ?? '').localeCompare(b.dueDate ?? ''));
   out.overdue = overdue.length;
+  const started = Date.now();
   for (const p of overdue) {
+    if (Date.now() - started > 40_000) break; // o resto entra na próxima rodada
     try {
       const age = daysSince(p.dueDate ?? brtDay(nowMs), nowMs);
       if (p.billingType === 'PIX') {
-        if (!p.subscription && age > 3) { await deletePayment(p.id); out.pixRemoved++; }
+        if (p.subscription || age <= 3) continue;
+        const { data: pix } = await supabase.from('asaas_checkouts').select('id, status')
+          .eq('pending_payment_id', p.id).eq('sandbox', false).limit(1).maybeSingle();
+        if (!pix || (pix as { status: string }).status === 'paid') continue;
+        await deletePayment(p.id); out.pixRemoved++;
         continue;
       }
       if (p.billingType !== 'CREDIT_CARD' || !p.subscription || age < 2 || age > 7) continue;

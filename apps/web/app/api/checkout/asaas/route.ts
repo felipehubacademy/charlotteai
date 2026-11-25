@@ -87,7 +87,12 @@ async function mine(req: NextRequest) {
   if (r.asaas_subscription_id && !r.sandbox) {
     try {
       const payments = await subscriptionPayments(r.asaas_subscription_id);
-      const overdue = payments.find(p => p.status === 'OVERDUE' && p.invoiceUrl);
+      // Recusa pode ficar como PENDING até virar OVERDUE: com a conta já pausada (expired), a cobrança do dia ou
+      // anterior também conta.
+      const { data: me } = await supabase.from('charlotte_users').select('subscription_status').eq('id', user.id).maybeSingle();
+      const paused = (me as { subscription_status?: string } | null)?.subscription_status === 'expired';
+      const today = new Date(Date.now() - 3 * 3600000).toISOString().slice(0, 10);
+      const overdue = payments.find(p => p.invoiceUrl && (p.status === 'OVERDUE' || (paused && p.status === 'PENDING' && (p.dueDate ?? '9999') <= today)));
       const paidLater = overdue && payments.some(p => PAID_STATUSES.includes(p.status) && (p.dueDate ?? '') >= (overdue.dueDate ?? ''));
       if (overdue && !paidLater) pending = { value: Number(overdue.value), dueDate: overdue.dueDate ?? null, payUrl: String(overdue.invoiceUrl) };
     } catch { /* sem o processador agora: a tela segue sem o botão */ }

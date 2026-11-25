@@ -375,10 +375,11 @@ export async function paymentsOfSubscription(subscriptionId: string, sandbox: bo
 }
 
 /** Cobranças da conta num status (todas as páginas). Usado no "A receber" do Financeiro. */
-export async function paymentsByStatus(status: string): Promise<(AsaasPayment & { estimatedCreditDate?: string | null; creditDate?: string | null })[]> {
+export async function paymentsByStatus(status: string, opts: { dueFrom?: string } = {}): Promise<(AsaasPayment & { estimatedCreditDate?: string | null; creditDate?: string | null })[]> {
   const out: (AsaasPayment & { estimatedCreditDate?: string | null; creditDate?: string | null })[] = [];
+  const due = opts.dueFrom ? `&dueDate%5Bge%5D=${encodeURIComponent(opts.dueFrom)}` : '';
   for (let offset = 0; offset < 5000; offset += 100) {
-    const page = await asaas<{ data: typeof out; hasMore: boolean }>(`/payments?status=${encodeURIComponent(status)}&limit=100&offset=${offset}`);
+    const page = await asaas<{ data: typeof out; hasMore: boolean }>(`/payments?status=${encodeURIComponent(status)}${due}&limit=100&offset=${offset}`);
     out.push(...(page.data ?? []));
     if (!page.hasMore) break;
   }
