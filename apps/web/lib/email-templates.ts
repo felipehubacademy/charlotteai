@@ -419,16 +419,34 @@ export function webPaymentReceiptTemplate(opts: { name?: string | null; plan: 'm
 }
 
 /** Cobrança do cartão recusada (renovação ou 1ª depois do teste). */
-export function webPaymentFailedTemplate(opts: { name?: string | null; plan: 'monthly' | 'annual'; value: string; accessUntil: string | null }) {
+export function webPaymentFailedTemplate(opts: {
+  name?: string | null; plan: 'monthly' | 'annual'; value: string; accessUntil: string | null;
+  payUrl?: string | null;                 // página do Asaas para pagar (troca o cartão ou paga no Pix)
+  stage?: 'first' | 'reminder' | 'last';  // aviso na hora, lembrete (2 dias) e último lembrete (5 dias)
+}) {
   const first = firstName(opts.name);
   const planName = PLAN_NAME(opts.plan);
-  const subject = 'Não conseguimos cobrar a sua assinatura do Queizy';
+  const stage = opts.stage ?? 'first';
+  const subject = stage === 'first' ? 'Não conseguimos cobrar a sua assinatura do Queizy'
+    : stage === 'reminder' ? 'Seu acesso ao Queizy continua pausado'
+    : 'Último aviso: a cobrança do Queizy ainda não passou';
+  const title = stage === 'first' ? (first ? `${first}, a cobrança não passou` : 'A cobrança não passou')
+    : stage === 'reminder' ? (first ? `${first}, falta só o pagamento` : 'Falta só o pagamento')
+    : (first ? `${first}, seu acesso segue pausado` : 'Seu acesso segue pausado');
+  const intro = stage === 'first'
+    ? `Tentamos cobrar ${opts.value} do seu ${planName}, mas o cartão recusou. Isso costuma acontecer por falta de limite, cartão vencido ou bloqueio do banco.`
+    : `A cobrança de ${opts.value} do seu ${planName} ainda não passou, e o seu acesso ao Queizy está pausado.`;
+  const how = opts.payUrl
+    ? 'É só tocar no botão abaixo: dá para usar outro cartão ou pagar no Pix. O acesso volta assim que o pagamento for confirmado, com todo o seu progresso.'
+    : 'Confira o cartão com o seu banco e responda este e-mail: a gente te ajuda a regularizar ou trocar o cartão.';
   const html = base(`
-    ${h1(first ? `${first}, a cobrança não passou` : 'A cobrança não passou')}
-    ${p(`Tentamos cobrar ${opts.value} do seu ${planName}, mas o cartão recusou. Isso costuma acontecer por falta de limite, cartão vencido ou bloqueio do banco.`)}
-    ${p(`Seu acesso ao Queizy fica pausado até a cobrança passar. Confira o cartão com o seu banco e responda este e-mail: a gente te ajuda a regularizar ou trocar o cartão.`)}
-    ${btn('Falar com o suporte', 'mailto:suporte@queizy.com?subject=Cobran%C3%A7a%20da%20assinatura')}
-    ${note('Se preferir, assine de novo em queizy.com/assinar com o mesmo e-mail: o acesso continua na mesma conta.')}
+    ${h1(title)}
+    ${p(intro)}
+    ${p(how)}
+    ${opts.payUrl ? btn('Pagar agora', opts.payUrl) : btn('Falar com o suporte', 'mailto:suporte@queizy.com?subject=Cobran%C3%A7a%20da%20assinatura')}
+    ${note(opts.payUrl
+      ? 'Ficou alguma dúvida? Responda este e-mail que a gente ajuda.'
+      : 'Se preferir, assine de novo em queizy.com/assinar com o mesmo e-mail: o acesso continua na mesma conta.')}
   `);
   return { subject, html };
 }

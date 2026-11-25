@@ -4,7 +4,7 @@
 // handlePaymentPaid devolve o acesso. Se a pessoa tem assinatura válida na loja, vale a da loja e não sai o aviso.
 import { readAll } from '@/lib/db-batch';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { subscriptionPayments, cancelSubscription, deletePayment, PAID_STATUSES, type AsaasPayment } from '@/lib/asaas';
+import { subscriptionPayments, cancelSubscription, deletePayment, paymentsByStatus, getPayment, retryCardPayment, PAID_STATUSES, type AsaasPayment } from '@/lib/asaas';
 import { sendPaymentFailed } from '@/lib/subscription-notices';
 import { reconcileStoreSubscription, logRcEvent } from '@/lib/rc-subscription';
 
@@ -106,6 +106,87 @@ export async function reconcileLapsedSiteSubscriptions(): Promise<{ checked: num
     } catch (e) {
       out.errors++;
       console.warn('[asaas-reconcile]', id, e instanceof Error ? e.message : e);
+    }
+  }
+  return out;
+}
+
+// ── Cobrança recusada: lembretes, nova tentativa e limpeza do Pix abandonado ──
+// Roda com a conferência a cada 6 h (/api/cron/rc-reconcile), sobre as cobranças VENCIDAS no Asaas:
+//  - cartão: lembrete 2 dias depois da recusa e o último 5 dias depois (e-mail + push, uma vez cada, com o botão
+//    "Pagar agora"); no 3º dia, uma única nova tentativa com o cartão salvo (token), quando o Asaas devolve o token.
+//    Se passar, o webhook de pagamento devolve o acesso (handlePaymentPaid). Só cobranças de até 7 dias: as mais
+//    antigas não recebem nada (evita uma leva de avisos atrasados).
+//  - Pix: QR code do Anual que a pessoa gerou no nosso checkout e não pagou (asaas_checkouts.pending_payment_id, sem
+//    pagamento). Vencido há mais de 3 dias, é removido no Asaas (desistência, não é dívida). A conta do processador é
+//    da empresa e pode ter outras cobranças: só sai o Pix que o checkout do Queizy criou.
+//  - Lê só as vencidas das últimas 2 semanas e para em 40 s; as travas (asaas_events) fazem a próxima rodada seguir
+//    de onde parou, mais antigas primeiro.
+const DAY_MS = 86400000;
+const brtDay = (t: number) => new Date(t - 3 * 3600000).toISOString().slice(0, 10);
+const daysSince = (day: string, nowMs: number) => Math.round((Date.parse(`${brtDay(nowMs)}T12:00:00Z`) - Date.parse(`${day.slice(0, 10)}T12:00:00Z`)) / DAY_MS);
+
+async function onceKey(key: string): Promise<boolean> {
+  const { error } = await getSupabaseAdmin().from('asaas_events').insert({ id: `notice_${key}`, event: 'NOTICE', payload: { key } } as never);
+  return !error;
+}
+
+export async function followUpFailedCharges(nowMs = Date.now()): Promise<{ overdue: number; reminders: number; retried: number; retryOk: number; noToken: number; pixRemoved: number; errors: number }> {
+  const out = { overdue: 0, reminders: 0, retried: 0, retryOk: 0, noToken: 0, pixRemoved: 0, errors: 0 };
+  const supabase = getSupabaseAdmin();
+  const dueFrom = brtDay(nowMs - 14 * DAY_MS);
+  const overdue = (await paymentsByStatus('OVERDUE', { dueFrom })).sort((a, b) => (a.dueDate ?? '').localeCompare(b.dueDate ?? ''));
+  out.overdue = overdue.length;
+  const started = Date.now();
+  for (const p of overdue) {
+    if (Date.now() - started > 40_000) break; // o resto entra na próxima rodada
+    try {
+      const age = daysSince(p.dueDate ?? brtDay(nowMs), nowMs);
+      if (p.billingType === 'PIX') {
+        if (p.subscription || age <= 3) continue;
+        const { data: pix } = await supabase.from('asaas_checkouts').select('id, status')
+          .eq('pending_payment_id', p.id).eq('sandbox', false).limit(1).maybeSingle();
+        if (!pix || (pix as { status: string }).status === 'paid') continue;
+        await deletePayment(p.id); out.pixRemoved++;
+        continue;
+      }
+      if (p.billingType !== 'CREDIT_CARD' || !p.subscription || age < 2 || age > 7) continue;
+      const { data } = await supabase.from('asaas_checkouts').select('id, user_id, method, asaas_subscription_id')
+        .eq('asaas_subscription_id', p.subscription).eq('sandbox', false).order('created_at', { ascending: false }).limit(1).maybeSingle();
+      const ck = data as CheckoutLite | null;
+      if (!ck) continue;
+      // Quem já tem a assinatura da loja, cancelou ou pediu reembolso não recebe cobrança nem lembrete do site.
+      const { data: u } = await supabase.from('charlotte_users').select('subscription_product, subscription_status').eq('id', ck.user_id).maybeSingle();
+      const user = u as { subscription_product?: string; subscription_status?: string } | null;
+      if (!String(user?.subscription_product ?? '').startsWith('web_') || user?.subscription_status === 'cancelled') continue;
+      const { data: ckFull } = await supabase.from('asaas_checkouts').select('refunded_at, refund_requested_at').eq('id', ck.id).maybeSingle();
+      const refund = ckFull as { refunded_at?: string | null; refund_requested_at?: string | null } | null;
+      if (refund?.refunded_at || refund?.refund_requested_at) continue;
+      // A assinatura precisa seguir ativa no processador (cancelada lá não se cobra de novo).
+      const { data: subEvents } = await supabase.from('asaas_events').select('id')
+        .or(`id.eq.site_closed_${p.subscription},and(event.in.(SUBSCRIPTION_DELETED,SUBSCRIPTION_INACTIVATED),payload->subscription->>id.eq.${p.subscription})`).limit(1);
+      if ((subEvents ?? []).length) continue;
+
+      // 3º dia: uma nova tentativa com o cartão salvo.
+      if (age >= 3 && await onceKey(`retry_${p.id}`)) {
+        const full = await getPayment(p.id);
+        const token = full.creditCard?.creditCardToken;
+        if (!token) out.noToken++;
+        else {
+          out.retried++;
+          try {
+            const r = await retryCardPayment(p.id, token);
+            if (PAID_STATUSES.includes(r.status)) { out.retryOk++; continue; }
+          } catch (e) {
+            console.warn('[asaas-reconcile] nova tentativa recusada', p.id, e instanceof Error ? e.message : e);
+          }
+        }
+      }
+      const stage = age >= 5 ? 'last' : 'reminder';
+      if (await sendPaymentFailed(ck.id, p, stage)) out.reminders++;
+    } catch (e) {
+      out.errors++;
+      console.warn('[asaas-reconcile] cobrança vencida', p.id, e instanceof Error ? e.message : e);
     }
   }
   return out;

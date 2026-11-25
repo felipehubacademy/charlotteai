@@ -238,7 +238,7 @@ export const getCustomer = (id: string) => asaas<AsaasCustomer>(`/customers/${id
 
 export interface AsaasSubscription { id: string; customer: string; status: string; nextDueDate: string; value: number; cycle: string; externalReference?: string | null; checkoutSession?: string | null }
 export const getSubscription = (id: string) => asaas<AsaasSubscription>(`/subscriptions/${id}`);
-export interface AsaasSubscriptionPayment { id: string; status: string; value: number; dueDate: string; paymentDate?: string | null; confirmedDate?: string | null; billingType?: string; deleted?: boolean }
+export interface AsaasSubscriptionPayment { id: string; status: string; value: number; dueDate: string; paymentDate?: string | null; confirmedDate?: string | null; billingType?: string; deleted?: boolean; invoiceUrl?: string | null }
 /** Cobranças de uma assinatura (mais recentes primeiro). */
 export const subscriptionPayments = (id: string) => asaas<{ data: AsaasSubscriptionPayment[] }>(`/subscriptions/${id}/payments?limit=20`).then(r => r.data ?? []);
 /** Assinaturas ativas criadas para a conta (externalReference = id da conta). No checkout da página do
@@ -350,6 +350,7 @@ export interface AsaasPayment {
   id: string; customer: string; subscription?: string | null; installment?: string | null; installmentNumber?: number | null;
   status: string; value: number; netValue?: number | null; billingType?: string; dueDate?: string; paymentDate?: string | null;
   confirmedDate?: string | null; externalReference?: string | null; checkoutSession?: string | null;
+  invoiceUrl?: string | null; // página do Asaas onde o aluno paga a cobrança (troca o cartão ou paga no Pix)
 }
 export const PAID_STATUSES = ['CONFIRMED', 'RECEIVED', 'RECEIVED_IN_CASH'];
 
@@ -374,10 +375,11 @@ export async function paymentsOfSubscription(subscriptionId: string, sandbox: bo
 }
 
 /** Cobranças da conta num status (todas as páginas). Usado no "A receber" do Financeiro. */
-export async function paymentsByStatus(status: string): Promise<(AsaasPayment & { estimatedCreditDate?: string | null; creditDate?: string | null })[]> {
+export async function paymentsByStatus(status: string, opts: { dueFrom?: string } = {}): Promise<(AsaasPayment & { estimatedCreditDate?: string | null; creditDate?: string | null })[]> {
   const out: (AsaasPayment & { estimatedCreditDate?: string | null; creditDate?: string | null })[] = [];
+  const due = opts.dueFrom ? `&dueDate%5Bge%5D=${encodeURIComponent(opts.dueFrom)}` : '';
   for (let offset = 0; offset < 5000; offset += 100) {
-    const page = await asaas<{ data: typeof out; hasMore: boolean }>(`/payments?status=${encodeURIComponent(status)}&limit=100&offset=${offset}`);
+    const page = await asaas<{ data: typeof out; hasMore: boolean }>(`/payments?status=${encodeURIComponent(status)}${due}&limit=100&offset=${offset}`);
     out.push(...(page.data ?? []));
     if (!page.hasMore) break;
   }
@@ -389,3 +391,11 @@ export async function accountBalance(): Promise<number> {
   const r = await asaas<{ balance: number }>('/finance/balance');
   return Number(r.balance ?? 0);
 }
+
+/** Uma cobrança, com o cartão salvo (token) quando a tokenização está ligada na conta. */
+export const getPayment = (id: string) =>
+  asaas<AsaasPayment & { creditCard?: { creditCardToken?: string | null; creditCardNumber?: string | null } | null }>(`/payments/${encodeURIComponent(id)}`);
+
+/** Nova tentativa de cobrar uma cobrança recusada com o cartão já salvo (token). */
+export const retryCardPayment = (id: string, creditCardToken: string) =>
+  asaas<AsaasPayment>(`/payments/${encodeURIComponent(id)}/payWithCreditCard`, { method: 'POST', body: { creditCardToken } });

@@ -181,6 +181,15 @@ Se o código não for aceito, confira a grafia e se ele está valendo (cupons de
 `Sim. A assinatura fica na sua conta do Queizy: entrando com o mesmo e-mail e senha, ela vale no iPhone e no Android, seja qual for a loja em que você assinou (e também vale a assinatura feita pelo site).
 Cancelar, trocar de plano ou pedir reembolso continua sendo na loja onde você assinou: assinatura da App Store, pela Apple (num iPhone, iPad ou Mac, em Ajustes > seu nome > Assinaturas, ou em reportaproblem.apple.com para reembolso); assinatura do Google Play, pelo Google Play (também pelo navegador, em play.google.com/store/account/subscriptions, com a mesma conta Google da compra).
 Se você tocar em Perfil > Assinatura > Gerenciar assinatura no aparelho da outra loja, o app mostra um aviso com esse caminho.` },
+  { section: 'Planos e assinatura', question: 'O cartão recusou a cobrança da assinatura do site. E agora?', answer:
+`Quando o cartão recusa a cobrança da assinatura feita pelo site (queizy.com/assinar), o acesso fica pausado até o pagamento passar. Seu progresso continua guardado.
+Para resolver:
+- No app: Perfil > Assinatura > Gerenciar assinatura > Pagar agora. Abre a página segura de pagamento, onde dá para usar outro cartão ou pagar no Pix.
+- Pelo e-mail que mandamos: o botão Pagar agora leva à mesma página.
+O acesso volta assim que o pagamento for confirmado (no Pix, em instantes).
+A recusa costuma ser falta de limite, cartão vencido ou bloqueio do banco. Alguns dias depois fazemos uma nova tentativa no mesmo cartão e mandamos lembretes por e-mail e notificação.
+Se preferir não continuar, cancele em Perfil > Assinatura > Gerenciar assinatura > Cancelar renovação.
+Assinou pela App Store ou pelo Google Play? A própria loja avisa e tenta cobrar de novo: atualize a forma de pagamento na sua conta Apple ou Google.` },
   { section: 'Planos e assinatura', question: 'Assinei pelo site com o e-mail errado. E agora?', answer:
 `Logo depois do pagamento, a tela de confirmação do site mostra o e-mail da compra. Se ele estiver errado, toque em "Corrigir", escreva o e-mail certo e salve: mandamos para ele o link para criar a senha.
 Se você já saiu dessa tela, fale com o suporte (suporte@queizy.com ou WhatsApp) mandando o e-mail certo, o e-mail que foi digitado na compra (mesmo errado), o nome completo usado no pagamento e, se pagou no cartão, só os 4 últimos dígitos dele. Conferimos a compra e corrigimos na hora.

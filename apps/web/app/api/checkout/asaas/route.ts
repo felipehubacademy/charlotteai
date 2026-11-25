@@ -15,6 +15,7 @@ import {
   asaasConfigured, AsaasError, cancelSubscription, createCheckout, priceFor,
   WEB_TRIAL_DAYS, resolveCoupon, COUPON_ERROR_PT, type WebPlan,
   refundPayment, refundInstallment, REFUND_WINDOW_DAYS, disableCustomerNotifications, activeSubscriptionsOf,
+  subscriptionPayments, PAID_STATUSES,
 } from '@/lib/asaas';
 import { prepareWebCheckout, checkoutRowFields } from '@/lib/web-checkout';
 import { logOpsError } from '@/lib/ops-monitor';
@@ -76,12 +77,27 @@ async function mine(req: NextRequest) {
   const user = auth?.user;
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const { data } = await supabase.from('asaas_checkouts')
-    .select('created_at, trial_days, value_brl, paid_at, refunded_at, refund_requested_at, asaas_payment_id')
+    .select('created_at, trial_days, value_brl, paid_at, refunded_at, refund_requested_at, asaas_payment_id, asaas_subscription_id, sandbox')
     .eq('user_id', user.id).eq('status', 'paid').order('created_at', { ascending: false }).limit(1).maybeSingle();
-  const r = data as { created_at: string; trial_days: number; value_brl: number; paid_at: string | null; refunded_at: string | null; refund_requested_at: string | null; asaas_payment_id: string | null } | null;
+  const r = data as { created_at: string; trial_days: number; value_brl: number; paid_at: string | null; refunded_at: string | null; refund_requested_at: string | null; asaas_payment_id: string | null; asaas_subscription_id: string | null; sandbox: boolean | null } | null;
   if (!r) return NextResponse.json({ found: false });
   const DAY = 86400000;
-  const inTrial = r.trial_days > 0 && !r.asaas_payment_id;
+  // Cobrança do cartão recusada e ainda não paga: o app mostra "Pagar agora" (página do Asaas: outro cartão ou Pix).
+  let pending: { value: number; dueDate: string | null; payUrl: string } | null = null;
+  if (r.asaas_subscription_id && !r.sandbox) {
+    try {
+      const payments = await subscriptionPayments(r.asaas_subscription_id);
+      // Recusa pode ficar como PENDING até virar OVERDUE: com a conta já pausada (expired), a cobrança do dia ou
+      // anterior também conta.
+      const { data: me } = await supabase.from('charlotte_users').select('subscription_status').eq('id', user.id).maybeSingle();
+      const paused = (me as { subscription_status?: string } | null)?.subscription_status === 'expired';
+      const today = new Date(Date.now() - 3 * 3600000).toISOString().slice(0, 10);
+      const overdue = payments.find(p => p.invoiceUrl && (p.status === 'OVERDUE' || (paused && p.status === 'PENDING' && (p.dueDate ?? '9999') <= today)));
+      const paidLater = overdue && payments.some(p => PAID_STATUSES.includes(p.status) && (p.dueDate ?? '') >= (overdue.dueDate ?? ''));
+      if (overdue && !paidLater) pending = { value: Number(overdue.value), dueDate: overdue.dueDate ?? null, payUrl: String(overdue.invoiceUrl) };
+    } catch { /* sem o processador agora: a tela segue sem o botão */ }
+  }
+  const inTrial = r.trial_days > 0 && !r.asaas_payment_id && !pending;
   const firstChargeAt = r.trial_days > 0 ? new Date(new Date(r.created_at).getTime() + r.trial_days * DAY).toISOString() : null;
   const refundableUntil = r.paid_at && !r.refunded_at && !r.refund_requested_at
     ? new Date(new Date(r.paid_at).getTime() + REFUND_WINDOW_DAYS * DAY).toISOString() : null;
@@ -89,6 +105,7 @@ async function mine(req: NextRequest) {
     found: true, inTrial, firstChargeAt, value: Number(r.value_brl),
     refundableUntil: refundableUntil && new Date(refundableUntil).getTime() > Date.now() ? refundableUntil : null,
     refundPending: !!r.refund_requested_at && !r.refunded_at,
+    pending,
   });
 }
 
