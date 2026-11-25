@@ -115,7 +115,7 @@ A Charlotte olha para a câmera (o Igor já saiu do quadro); balão "Hi! I'm Cha
 - Pergunta: "Diga oi para a Charlotte. Toque no microfone e fale."
 - Aceita: hi, hello, hey, com ou sem "Charlotte".
 - Sem microfone (toque): **Hi, Charlotte!** / Bye, Charlotte! / No, Charlotte!
-- Correção: "Você acabou de falar inglês comigo! Hi!" / "Quase! Repita comigo: Hi, Charlotte!"
+- Correção: "Isso! Agora você já sabe dizer oi em inglês: Hi!" / "Quase! Repita comigo: Hi, Charlotte!"
 
 ### Cena 7 · Revisão (1:24) · tipografia
 As 6 palavras entram e acendem em Volt quando ditas, com a tradução embaixo.

@@ -72,7 +72,7 @@
       "answer": "Hi, Charlotte!",
       "speak": ["hi", "hello", "hey", "hi charlotte", "hello charlotte", "hey charlotte"],
       "feedback": {
-        "ok": { "id": "f3ok", "text": "Você acabou de falar inglês comigo! {Hi!}" },
+        "ok": { "id": "f3ok", "text": "Isso! Agora você já sabe dizer oi em inglês: {Hi!}" },
         "no": { "id": "f3no", "text": "Quase! Repita comigo: {Hi, Charlotte!}" }
       }
     }

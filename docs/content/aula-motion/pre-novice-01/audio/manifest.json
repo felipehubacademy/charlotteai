@@ -255,16 +255,16 @@
     "at": "2026-11-21T22:15:11.851Z"
   },
   "f3ok": {
-    "hash": "b787d739e391",
+    "hash": "54a979702d43",
     "speaker": "charlotte",
-    "text": "Você acabou de falar inglês comigo! Hi!",
+    "text": "Isso! Agora você já sabe dizer oi em inglês: Hi!",
     "model": "gpt-audio-mini",
     "calls": [
       "gpt-audio-mini"
     ],
     "credits": 0,
-    "usd": 0.00169,
-    "at": "2026-11-21T22:15:13.000Z"
+    "usd": 0.0023,
+    "at": "2026-11-25T02:55:01.247Z"
   },
   "f3no": {
     "hash": "27288135956b",
