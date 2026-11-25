@@ -117,7 +117,7 @@ export interface Overview {
     cancelledWithAccess: { total: number; trial: number; paying: number };
     unitCost: UnitCost;
     pnl: { months: PnlMonth[]; breakeven: Breakeven };
-    acquisition: Acquisition;
+    acquisition?: Acquisition; // ausente em leitura guardada antes do quadro existir
   };
   engagement: {
     d1: { pct: number | null; retained: number; eligible: number };

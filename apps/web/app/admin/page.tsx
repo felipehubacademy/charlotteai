@@ -417,7 +417,9 @@ export default function AdminOverviewPage() {
 
             {/* e2. Aquisição e retorno */}
             {(() => {
+              // Leitura guardada antes deste quadro existir (cache de até 30 min) não traz acquisition.
               const aq = data.money.acquisition;
+              if (!aq) return null;
               const months = (n: number | null) => (n == null ? '—' : `${n.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} ${n === 1 ? 'mês' : 'meses'}`);
               const ratioColor = aq.ltvToCac == null ? undefined : aq.ltvToCac >= 3 ? 'var(--ok)' : aq.ltvToCac >= 1 ? 'var(--warn)' : 'var(--err)';
               return (
