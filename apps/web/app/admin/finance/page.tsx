@@ -671,6 +671,57 @@ function PartnerReportModal({ canWrite, onClose }: { canWrite: boolean; onClose:
 }
 
 
+// ── A receber ───────────────────────────────────────────────────────────────
+type RecRow = { channel: string; label: string; period: string; net: number; charges: number; expected: string; expectedLabel: string; estimate: boolean };
+type RecData = { total: number; rows: RecRow[]; asaas: { available: boolean; balance: number | null; overdue: { count: number; net: number }; error?: string } };
+
+function ReceivablesPanel() {
+  const [d, setD] = useState<RecData | null>(null);
+  const [err, setErr] = useState('');
+  useEffect(() => {
+    fetch('/api/admin/finance?receivables=1').then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(setD).catch(() => setErr('Não foi possível carregar o que falta receber.'));
+  }, []);
+  const ref = (r: RecRow) => r.channel === 'site' ? `${r.charges} ${r.charges === 1 ? 'cobrança' : 'cobranças'} de cartão` : `vendas de ${monthLabel(r.period)} (${r.charges})`;
+  return (
+    <div className="adm-panel col-12">
+      <div className="adm-panel-hdr"><div className="adm-panel-title">A receber</div>
+        <div className="adm-panel-sub">Vendido e ainda não depositado. Lojas: estimativa pelo líquido de cada venda (o valor exato sai no relatório de pagamento de cada loja). Site: valores reais do Asaas.</div></div>
+      <div className="adm-panel-body" style={{ overflowX: 'auto' }}>
+        {err ? <div className="adm-empty-sub">{err}</div> : !d ? <div className="adm-empty-sub">Carregando…</div> : (
+          <>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 12, marginBottom: 16 }}>
+              <div className="kpi-card"><div className="kpi-label">Total a receber</div><div className="kpi-value num">{brl(d.total)}</div>
+                <div style={{ fontSize: 11.5, color: 'var(--t3)', marginTop: 4 }}>líquido, lojas + cartões do site</div></div>
+              <div className="kpi-card"><div className="kpi-label">Saldo no Asaas</div><div className="kpi-value num">{d.asaas.balance == null ? '—' : brl(d.asaas.balance)}</div>
+                <div style={{ fontSize: 11.5, color: 'var(--t3)', marginTop: 4 }}>{d.asaas.error ? 'Asaas indisponível agora' : 'já compensado, pronto para sacar'}</div></div>
+              {d.asaas.overdue.count > 0 && (
+                <div className="kpi-card"><div className="kpi-label">Cobranças vencidas no site</div><div className="kpi-value num" style={{ color: 'var(--warn)' }}>{brl(d.asaas.overdue.net)}</div>
+                  <div style={{ fontSize: 11.5, color: 'var(--t3)', marginTop: 4 }}>{d.asaas.overdue.count} {d.asaas.overdue.count === 1 ? 'cartão recusado' : 'cartões recusados'}, fora do total</div></div>
+              )}
+            </div>
+            {d.rows.length === 0 ? <div className="adm-empty-sub">Nada pendente.</div> : (
+              <table className="adm-table">
+                <thead><tr><th>Canal</th><th>Referente a</th><th>Previsão</th><th style={{ textAlign: 'right' }}>Líquido</th></tr></thead>
+                <tbody>
+                  {d.rows.map(r => (
+                    <tr key={`${r.channel}-${r.period}`}>
+                      <td>{r.label}</td>
+                      <td>{ref(r)}</td>
+                      <td>{r.expectedLabel} {fmtDate(r.expected)}</td>
+                      <td style={{ textAlign: 'right', fontWeight: 700 }} className="num">{r.estimate ? '≈ ' : ''}{brl(r.net)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Receita por canal + projeção ────────────────────────────────────────────
 type RevChannel = { channel: string; label: string; sales: number; refunds: number; gross: number; fees: number; net: number; feePct: number };
 type RevMonth = { month: string; gross: number; fees: number; net: number; renewals: number };
@@ -1100,6 +1151,7 @@ export default function FinancePage() {
 
           <PnlPanel />
 
+          <ReceivablesPanel />
           <RevenuePanel range={range} />
           <LtvPanel />
 

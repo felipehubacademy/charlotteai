@@ -9,7 +9,6 @@ import { RefreshCw, TriangleAlert, CircleCheck, ArrowRight, Check } from 'lucide
 import { useAdminMe, canArea } from '@/lib/admin-context';
 import AdminLoading from '@/components/admin/AdminLoading';
 import type { Overview, TodayMetric, DayPoint } from '@/lib/admin-overview';
-import { LTV_MAX_MONTHS } from '@/lib/unit-cost';
 
 // Usuários (consulta leve) a cada 5 s; o resto da tela (lê as atividades de 30 dias) a cada 60 s.
 const USERS_REFRESH_MS = 5_000;
@@ -436,14 +435,13 @@ export default function AdminOverviewPage() {
                       <div className="kpi-value" style={{ fontSize: '1.5rem', color: aq.marginPerPayer != null && aq.marginPerPayer < 0 ? 'var(--err)' : undefined }}>{aq.marginPerPayer == null ? '—' : brl(aq.marginPerPayer)}</div>
                       <div className="kpi-context">ticket líquido {aq.ticketNet == null ? '—' : brl(aq.ticketNet)} − custo de servir {aq.servePerPayer == null ? '—' : brl(aq.servePerPayer)}</div>
                     </div>
-                    <div title={`Margem por pagante × vida média. Vida média = 1 ÷ cancelamento mensal (pagantes que perderam o acesso nos últimos 30 dias ÷ pagantes no início da janela), com teto de ${LTV_MAX_MONTHS} meses.`}>
+                    <div title="O LTV do Financeiro (receita líquida que cada assinante deixa, pela renovação de cada plano) menos o custo de servir esse pagante pelos meses esperados de assinatura.">
                       <div className="kpi-label">Valor do pagante (LTV)</div>
-                      <div className="kpi-value" style={{ fontSize: '1.5rem' }}>{aq.ltv == null ? '—' : brl(aq.ltv)}</div>
+                      <div className="kpi-value" style={{ fontSize: '1.5rem', color: aq.ltv != null && aq.ltv < 0 ? 'var(--err)' : undefined }}>{aq.ltv == null ? '—' : brl(aq.ltv)}</div>
                       <div className="kpi-context">
-                        {aq.churn30d.base < aq.churn30d.minBase
-                          ? `precisa de ${int(aq.churn30d.minBase)} pagantes com 30 dias de casa para medir o cancelamento (hoje ${int(aq.churn30d.base)})`
-                          : <>vida média {months(aq.lifetimeMonths)}{aq.lifetimeCapped ? ' (teto)' : ''} · cancelamento {pctFmt(aq.churn30d.pct)} em 30 dias ({int(aq.churn30d.lost)} de {int(aq.churn30d.base)})</>}
+                        {aq.ltvNet == null ? 'sem pagantes ainda' : <>receita {brl(aq.ltvNet)} − custo de servir em {months(aq.lifetimeMonths)}</>}
                       </div>
+                      {aq.ltvUsesReference && <div className="kpi-context" style={{ marginTop: 2 }}>renovação de referência até termos amostra própria</div>}
                     </div>
                     <div title="LTV ÷ CAC: acima de 3 o marketing se paga com folga; abaixo de 1, cada pagante novo dá prejuízo. Payback = CAC ÷ margem por pagante.">
                       <div className="kpi-label">LTV ÷ CAC</div>

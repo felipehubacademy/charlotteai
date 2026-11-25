@@ -1,6 +1,7 @@
 // /api/admin/finance — lançamentos financeiros (entradas e saídas).
 //   GET              todos os lançamentos (o painel calcula gráficos no cliente)
 //   GET ?fx=USD      cotação atual da moeda em reais (AwesomeAPI)
+//   GET ?receivables=1  a receber: repasses previstos das lojas e cartões aguardando compensação no Asaas
 //   GET ?revenue=12  receita por canal (bruto, taxas, líquido) nos últimos N meses + projeção de 12 meses
 //   POST             cria lançamento
 //   PATCH            { id, ...campos } edita; ao pagar um recorrente, cria o próximo
@@ -11,6 +12,7 @@ import { readAll } from '@/lib/db-batch';
 import { requireAdmin, audit } from '@/lib/admin-auth';
 import { fxToBrl } from '@/lib/fx';
 import { revenueSummary } from '@/lib/finance-revenue';
+import { computeReceivables } from '@/lib/receivables';
 
 export const dynamic = 'force-dynamic';
 
@@ -83,6 +85,14 @@ export async function GET(req: NextRequest) {
     const rate = await fxToBrl(cur);
     if (!rate) return NextResponse.json({ error: 'Cotação indisponível' }, { status: 502 });
     return NextResponse.json({ rate: Math.round(rate * 10000) / 10000 });
+  }
+
+  if (req.nextUrl.searchParams.get('receivables')) {
+    try {
+      return NextResponse.json(await computeReceivables());
+    } catch (e) {
+      return NextResponse.json({ error: e instanceof Error ? e.message : String(e) }, { status: 500 });
+    }
   }
 
   const rev = req.nextUrl.searchParams.get('revenue');
