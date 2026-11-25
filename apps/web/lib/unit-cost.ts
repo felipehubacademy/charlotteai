@@ -6,3 +6,9 @@ export const unitCostByCategory = (category: string) => UNIT_COST_CATEGORIES.inc
 
 export const countsInUnitCost = (e: { category: string; unit_cost?: boolean | null }) =>
   e.unit_cost ?? unitCostByCategory(e.category);
+
+// LTV na Visão geral: vida média do pagante = 1 ÷ cancelamento mensal, limitada a este teto
+// (sem cancelamento recente, a conta não teria fim).
+export const LTV_MAX_MONTHS = 24;
+// Mínimo de pagantes no início da janela de 30 dias para medir o cancelamento e calcular o LTV.
+export const LTV_MIN_BASE = 20;
