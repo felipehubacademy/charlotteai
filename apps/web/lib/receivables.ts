@@ -2,7 +2,7 @@
 //
 //  - Site (Asaas): ao vivo pela API. Cobrança CONFIRMADA = cartão aprovado aguardando o prazo de compensação
 //    (data prevista de crédito do próprio Asaas); o saldo da conta é o que já compensou e pode ser sacado.
-//    VENCIDAS = cobranças que falharam e ainda podem ser pagas (não entram no total a receber).
+//    VENCIDAS = cobranças de cartão recusadas que ainda podem ser pagas (não entram no total a receber; Pix vencido fica de fora).
 //  - Google Play: o líquido do mês (revenue_events, calendário de Brasília) é pago por volta do dia 15 do mês seguinte.
 //  - App Store: a Apple paga o mês fiscal em até 45 dias depois do fim dele; o mês fiscal é próximo do mês do
 //    calendário, então a previsão usa o mês do calendário. Valor abaixo do mínimo de pagamento da Apple fica como
@@ -77,7 +77,9 @@ export async function computeReceivables(nowMs = Date.now()): Promise<Receivable
     try {
       const [confirmed, overdue, balance] = await Promise.all([paymentsByStatus('CONFIRMED'), paymentsByStatus('OVERDUE'), accountBalance()]);
       asaas.balance = round2(balance);
-      asaas.overdue = { count: overdue.length, net: round2(overdue.reduce((s, p) => s + Number(p.netValue ?? p.value ?? 0), 0)) };
+      // Só cartão: Pix vencido é QR code que a pessoa gerou e não pagou (desistência), não cobrança recusada.
+      const refused = overdue.filter(p => p.billingType === 'CREDIT_CARD');
+      asaas.overdue = { count: refused.length, net: round2(refused.reduce((s, p) => s + Number(p.netValue ?? p.value ?? 0), 0)) };
       const byDay = new Map<string, { net: number; charges: number }>();
       for (const p of confirmed) {
         const day = (p.estimatedCreditDate ?? p.creditDate ?? p.dueDate ?? today).slice(0, 10);
