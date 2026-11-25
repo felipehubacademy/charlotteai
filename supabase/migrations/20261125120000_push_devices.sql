@@ -23,6 +23,8 @@ revoke all on charlotte.push_devices from public, anon, authenticated;
 
 -- Substitui o gatilho de 30/10 (push_token_takeover) e passa a registrar o aparelho.
 create or replace function charlotte.push_token_takeover() returns trigger language plpgsql security definer set search_path = charlotte, public as $$
+declare
+  v_token text; v_language text; v_platform text;
 begin
   if new.expo_push_token like 'ExponentPushToken[%' then
     -- O token passou para esta conta: sai das outras.
@@ -37,6 +39,17 @@ begin
   elsif old.expo_push_token is not null and new.expo_push_token is null then
     -- Token apagado (aparelho morto ou levado por outra conta): sai da lista desta conta.
     delete from charlotte.push_devices where token = old.expo_push_token and user_id = new.id;
+    -- Se a conta tem outro aparelho ativo, ele vira o principal (senão a conta sairia de todos os envios
+    -- até abrir o app de novo). Esta atualização roda o gatilho outra vez, pelo ramo de cima.
+    select d.token, d.language, d.platform into v_token, v_language, v_platform
+    from charlotte.push_devices d
+    where d.user_id = new.id and d.last_seen_at > now() - interval '60 days'
+    order by d.last_seen_at desc limit 1;
+    if v_token is not null then
+      update charlotte.users set expo_push_token = v_token,
+        app_language = coalesce(v_language, app_language), app_platform = coalesce(v_platform, app_platform)
+      where id = new.id and expo_push_token is null;
+    end if;
   end if;
   return new;
 end $$;
