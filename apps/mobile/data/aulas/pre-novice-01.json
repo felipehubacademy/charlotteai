@@ -1,7 +1,7 @@
 {
   "_fonte": "Gerado de docs/content/aula-motion/pre-novice-01 (aula.json + timings.json) por scripts/aula-motion/app-json.mjs. Refez a aula? Gere de novo e publique os arquivos com nova versão (scripts/aula-motion/publicar.mjs).",
   "id": "pre-novice-01",
-  "version": "v1",
+  "version": "v2",
   "title": "Oi!",
   "level": "PreNovice",
   "moduleId": "M01",
@@ -447,7 +447,7 @@
       "feedback": {
         "ok": {
           "id": "f3ok",
-          "text": "Você acabou de falar inglês comigo! {Hi!}"
+          "text": "Isso! Agora você já sabe dizer oi em inglês: {Hi!}"
         },
         "no": {
           "id": "f3no",
