@@ -155,9 +155,17 @@ export async function followUpFailedCharges(nowMs = Date.now()): Promise<{ overd
         .eq('asaas_subscription_id', p.subscription).eq('sandbox', false).order('created_at', { ascending: false }).limit(1).maybeSingle();
       const ck = data as CheckoutLite | null;
       if (!ck) continue;
-      // Quem já tem a assinatura da loja não recebe cobrança do site.
-      const { data: u } = await supabase.from('charlotte_users').select('subscription_product').eq('id', ck.user_id).maybeSingle();
-      if (!String((u as { subscription_product?: string } | null)?.subscription_product ?? '').startsWith('web_')) continue;
+      // Quem já tem a assinatura da loja, cancelou ou pediu reembolso não recebe cobrança nem lembrete do site.
+      const { data: u } = await supabase.from('charlotte_users').select('subscription_product, subscription_status').eq('id', ck.user_id).maybeSingle();
+      const user = u as { subscription_product?: string; subscription_status?: string } | null;
+      if (!String(user?.subscription_product ?? '').startsWith('web_') || user?.subscription_status === 'cancelled') continue;
+      const { data: ckFull } = await supabase.from('asaas_checkouts').select('refunded_at, refund_requested_at').eq('id', ck.id).maybeSingle();
+      const refund = ckFull as { refunded_at?: string | null; refund_requested_at?: string | null } | null;
+      if (refund?.refunded_at || refund?.refund_requested_at) continue;
+      // A assinatura precisa seguir ativa no processador (cancelada lá não se cobra de novo).
+      const { data: subEvents } = await supabase.from('asaas_events').select('id')
+        .or(`id.eq.site_closed_${p.subscription},and(event.in.(SUBSCRIPTION_DELETED,SUBSCRIPTION_INACTIVATED),payload->subscription->>id.eq.${p.subscription})`).limit(1);
+      if ((subEvents ?? []).length) continue;
 
       // 3º dia: uma nova tentativa com o cartão salvo.
       if (age >= 3 && await onceKey(`retry_${p.id}`)) {
