@@ -62,7 +62,8 @@ export async function computeReceivables(nowMs = Date.now()): Promise<Receivable
   for (const [k, v] of byMonth) {
     const [channel, month] = k.split('|') as ['app_store' | 'play_store', string];
     const expected = channel === 'play_store' ? `${addMonths(month, 1)}-15` : plusDays(lastDayOf(month), 45);
-    if (expected < today || v.net <= 0.005) continue;
+    // Mês com mais estorno que venda fica negativo: a loja desconta do próximo repasse, então entra no total.
+    if (expected < today || Math.abs(v.net) <= 0.005) continue;
     rows.push({
       channel, label: channel === 'play_store' ? 'Google Play' : 'App Store', period: month,
       net: round2(v.net), charges: v.charges, expected,
