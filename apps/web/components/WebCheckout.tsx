@@ -23,7 +23,7 @@ type Plan = 'monthly' | 'annual';
 type AnnualPay = 'card' | 'pix';
 type Mode = 'hosted' | 'direct' | 'sandbox';
 type Pix = { image: string; payload: string; expiresAt: string };
-type Info = { enabled: boolean; direct?: boolean; trialDays: number; discountPct: number; prices: { monthly: number; annual: number };
+type Info = { enabled: boolean; direct?: boolean; trialDays: number; trialDaysByPlan?: { monthly: number; annual: number }; discountPct: number; prices: { monthly: number; annual: number };
   coupon: { ok: true; code: string; pct: number } | { ok: false; error: string } | null };
 
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -153,7 +153,8 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
 
   const monthly = info?.prices.monthly ?? 29.99;
   const annual = info?.prices.annual ?? 199.99;
-  const trial = info?.trialDays ?? 7;
+  const trialFor = (p: 'monthly' | 'annual') => info?.trialDaysByPlan?.[p] ?? info?.trialDays ?? 7;
+  const trial = trialFor(plan === 'monthly' ? 'monthly' : 'annual');
   const method = plan === 'monthly' ? 'monthly' : annualPay === 'card' ? 'annual' : 'annual_pix';
   const hasTrial = method === 'monthly' || method === 'annual';
   const disc = info?.discountPct ?? 0;
@@ -289,7 +290,7 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
             <span style={{ display: 'block', fontSize: 13, color: MID, marginTop: 2 }}>
               {p === 'annual' ? `${brl(annual / 12)}/mês · cartão ou Pix` : 'Cartão de crédito, renova todo mês'}
             </span>
-            {trial > 0 && <span style={{ display: 'block', fontSize: 13, color: GREEN, fontWeight: 700, marginTop: 4 }}>{trial} dias grátis</span>}
+            {trialFor(p) > 0 && <span style={{ display: 'block', fontSize: 13, color: GREEN, fontWeight: 700, marginTop: 4 }}>{trialFor(p)} dias grátis</span>}
           </span>
           <span style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
             <span style={{ display: 'block', fontWeight: 800, fontSize: 22 }}>{brl(p === 'annual' ? annual : monthly)}</span>

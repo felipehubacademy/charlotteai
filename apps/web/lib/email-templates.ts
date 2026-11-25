@@ -232,6 +232,54 @@ export function winbackTemplate(opts: { name?: string | null; unsubscribeUrl?: s
   return { subject, html };
 }
 
+// ── 6b2. Black Friday do Anual (27 a 29/11/2026): teaser, oferta e último dia ──────────
+// Cupom BLACK40 (40% só no 1º ano, cobra na hora: Pix ou cartão à vista, reembolso em até 7 dias).
+export const BLACK_FRIDAY = { code: 'BLACK40', pct: 40, full: 'R$ 199,99', price: 'R$ 119,99', perMonth: 'menos de R$ 10 por mês' } as const;
+const bfUrl = (stage: string) => `https://queizy.com/assinar?plano=anual&cupom=${BLACK_FRIDAY.code}&utm_source=email&utm_medium=campanha&utm_campaign=blackfriday_${stage}`;
+const bfPrice = () => `<p style="margin:4px 0 18px;text-align:center;font-size:15px;color:#8A8494;line-height:1.5;"><span style="text-decoration:line-through;">${BLACK_FRIDAY.full}</span><br><span style="font-size:30px;font-weight:800;color:#16131F;">${BLACK_FRIDAY.price}</span><br>no primeiro ano, ${BLACK_FRIDAY.perMonth}</p>`;
+const bfFeatures = () => features([
+  '<strong style="color:#16131F;">Conversa de verdade</strong> com a Charlotte, por texto ou voz, com correção na hora',
+  '<strong style="color:#16131F;">Trilha do seu nível</strong>: Gramática, Listening &amp; Speaking, Role-play e Guided Chat',
+  '<strong style="color:#16131F;">Família Queizy</strong>: o Igorfina e a trilha dele, o Manual do F#did@',
+]);
+const bfTerms = () => note('Oferta só pelo site, de 27 a 29/11 (até 23h59 de domingo), para quem ainda não assina. Pagamento na hora: Pix ou cartão à vista. Não gostou? Reembolso em até 7 dias. No cartão, a renovação do 2º ano é de R$ 199,99 e você cancela quando quiser; no Pix não renova sozinho.');
+
+export function blackFridayTemplate(stage: 'teaser' | 'offer' | 'last', opts: { name?: string | null; unsubscribeUrl?: string }) {
+  const first = (opts.name ?? '').trim().split(/\s+/)[0];
+  const ola = first ? `Oi, ${first}!` : 'Oi!';
+  const unsubscribe = opts.unsubscribeUrl
+    ? `<p style="margin:12px 0 0;font-size:12px;color:#8A8494;line-height:1.7;">Não quer mais receber novidades? <a href="${opts.unsubscribeUrl}" style="color:#8A8494;text-decoration:underline;">Descadastrar</a>.</p>`
+    : '';
+  let subject: string; let body: string;
+  if (stage === 'teaser') {
+    subject = 'Sexta tem Black Friday no Queizy';
+    body = `${h1('Sexta tem Black Friday.')}
+      ${p(`${ola}<br>De sexta a domingo, o <strong style="color:#16131F;">Plano Anual do Queizy sai com 40% de desconto</strong>: ${BLACK_FRIDAY.price} no primeiro ano, ${BLACK_FRIDAY.perMonth}.`)}
+      ${bfFeatures()}
+      ${p('Na sexta de manhã a gente te manda o link com o desconto já aplicado. Até lá, que tal um tópico da trilha?')}
+      ${btn('Abrir o Queizy', SMART_LINK)}`;
+  } else if (stage === 'offer') {
+    subject = 'Black Friday: Queizy Anual com 40% de desconto';
+    body = `${h1('Começou a Black Friday.')}
+      ${p(`${ola}<br>Até domingo, o Plano Anual do Queizy está com <strong style="color:#16131F;">40% de desconto</strong>:`)}
+      ${bfPrice()}
+      ${bfFeatures()}
+      ${btn('Garantir meu desconto', bfUrl('oferta'))}
+      ${bfTerms()}`;
+  } else {
+    subject = 'Último dia: Queizy Anual com 40% de desconto';
+    body = `${h1('Hoje é o último dia.')}
+      ${p(`${ola}<br>A Black Friday do Queizy acaba hoje, às 23h59. Depois, o Anual volta para ${BLACK_FRIDAY.full}.`)}
+      ${bfPrice()}
+      ${btn('Garantir meu desconto', bfUrl('ultimo_dia'))}
+      ${bfTerms()}`;
+  }
+  return { subject, html: base(body, unsubscribe) };
+}
+export const blackFridayTeaserTemplate = (o: { name?: string | null; unsubscribeUrl?: string }) => blackFridayTemplate('teaser', o);
+export const blackFridayOfferTemplate = (o: { name?: string | null; unsubscribeUrl?: string }) => blackFridayTemplate('offer', o);
+export const blackFridayLastTemplate = (o: { name?: string | null; unsubscribeUrl?: string }) => blackFridayTemplate('last', o);
+
 // ── 6c. Carrinho abandonado (assinatura pelo site): 3 lembretes ──────────────────────
 
 export function cartRecoveryTemplate(opts: {

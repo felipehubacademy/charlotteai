@@ -22,7 +22,7 @@ export type WebPlan = keyof typeof ASAAS_PRICES;
 const SITE = 'https://queizy.com';
 
 export type CouponResult =
-  | { ok: true; code: string; pct: number; kind: 'coupon' | 'affiliate'; plans: WebPlan[]; affiliateCode?: string; cycles?: number | null }
+  | { ok: true; code: string; pct: number; kind: 'coupon' | 'affiliate'; plans: WebPlan[]; affiliateCode?: string; cycles?: number | null; noTrial?: boolean }
   | { ok: false; error: 'not_found' | 'expired' | 'used_up' | 'inactive' | 'not_started' };
 
 /** Confere o cupom: primeiro cupom de campanha (tabela coupons), depois código de afiliado. */
@@ -32,7 +32,7 @@ export async function resolveCoupon(raw: unknown): Promise<CouponResult> {
   const { getSupabaseAdmin } = await import('@/lib/supabase-admin');
   const supabase = getSupabaseAdmin();
   const { data: c } = await supabase.from('coupons').select('*').eq('code', code).maybeSingle();
-  const row = c as { code: string; discount_pct: number; plans: string[]; active: boolean; starts_at: string | null; expires_at: string | null; max_uses: number | null; duration_cycles: number | null } | null;
+  const row = c as { code: string; discount_pct: number; plans: string[]; active: boolean; starts_at: string | null; expires_at: string | null; max_uses: number | null; duration_cycles: number | null; no_trial?: boolean | null } | null;
   if (row) {
     if (!row.active) return { ok: false, error: 'inactive' };
     if (row.starts_at && new Date(row.starts_at).getTime() > Date.now()) return { ok: false, error: 'not_started' };
@@ -42,7 +42,7 @@ export async function resolveCoupon(raw: unknown): Promise<CouponResult> {
       if ((count ?? 0) >= row.max_uses) return { ok: false, error: 'used_up' };
     }
     // duration_cycles: quantas cobranças levam o desconto (null = todas). Depois o webhook volta ao preço cheio.
-    return { ok: true, code, pct: row.discount_pct, kind: 'coupon', plans: (row.plans ?? ['monthly', 'annual']) as WebPlan[], cycles: row.duration_cycles ?? null };
+    return { ok: true, code, pct: row.discount_pct, kind: 'coupon', plans: (row.plans ?? ['monthly', 'annual']) as WebPlan[], cycles: row.duration_cycles ?? null, noTrial: !!row.no_trial };
   }
   const { data: a } = await supabase.from('affiliates').select('code, status, user_discount_pct').eq('code', code).maybeSingle();
   const aff = a as { code: string; status: string; user_discount_pct: number } | null;

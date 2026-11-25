@@ -105,9 +105,11 @@ export async function prepareWebCheckout(req: NextRequest, body: any): Promise<F
   // 7 dias grátis no cartão (mensal ou anual) e só para quem nunca teve teste nem assinatura.
   const { count: paidBefore } = await supabase.from('asaas_checkouts').select('id', { count: 'exact', head: true }).eq('user_id', u.id).eq('status', 'paid');
   const neverTried = (!u.subscription_status || u.subscription_status === 'none') && !u.trial_ends_at && !paidBefore;
-  const trialDays = methodHasTrial(method!) && neverTried ? WEB_TRIAL_DAYS : 0;
   const value = priceForMethod(method!, discountPct);
   const couponWins = couponPct > 0 && couponPct >= affPct && !!coupon?.ok;
+  // Cupom "cobra na hora" (ex.: Black Friday): sem os 7 dias grátis, a 1ª cobrança sai no ato.
+  const couponNoTrial = couponWins && coupon?.ok === true && !!coupon.noTrial;
+  const trialDays = methodHasTrial(method!) && neverTried && !couponNoTrial ? WEB_TRIAL_DAYS : 0;
   const recurring = method === 'monthly' || method === 'annual';
   const payer: PayerData | null = customerData ? {
     name, cpfCnpj: cpf, email, phone, postalCode: customerData.postalCode, address: customerData.address,
