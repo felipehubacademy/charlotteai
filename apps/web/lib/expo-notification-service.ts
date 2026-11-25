@@ -607,6 +607,41 @@ async function sendExpoPush(
   supabase?: any,
 ): Promise<{ sent: number; errors: number }> {
   if (messages.length === 0) return { sent: 0, errors: 0 };
+  const total = messages.length;
+
+  // Outros aparelhos da mesma conta (charlotte.push_devices): cada mensagem sai também para eles.
+  // As cópias não entram na contagem nem no registro: o registro e o limite de frequência seguem
+  // por aluno, pelo aparelho principal (expo_push_token).
+  const copies = new Set<ExpoMessage>();
+  if (supabase) {
+    try {
+      const primaries = [...new Set(messages.map(m => m.to).filter(Boolean))];
+      const extraByPrimary = new Map<string, string[]>();
+      for (let i = 0; i < primaries.length; i += 1000) {
+        const { data, error } = await supabase.rpc('push_extra_devices', { p_tokens: primaries.slice(i, i + 1000) });
+        if (error) throw new Error(error.message);
+        for (const r of (data ?? []) as Array<{ primary_token: string; token: string }>) {
+          const list = extraByPrimary.get(r.primary_token) ?? [];
+          list.push(r.token);
+          extraByPrimary.set(r.primary_token, list);
+        }
+      }
+      if (extraByPrimary.size) {
+        const extra: ExpoMessage[] = [];
+        for (const m of messages) {
+          for (const token of extraByPrimary.get(m.to) ?? []) {
+            const copy = { ...m, to: token };
+            copies.add(copy);
+            extra.push(copy);
+          }
+        }
+        messages = [...messages, ...extra];
+      }
+    } catch (e) {
+      // Sem a lista, o push sai só para o aparelho principal, como antes.
+      console.warn('⚠️ [Expo] outros aparelhos da conta não carregaram:', e);
+    }
+  }
 
   let sent = 0;
   let errors = 0;
@@ -616,7 +651,7 @@ async function sendExpoPush(
   if (ticketByMessage.size > 20000) ticketByMessage.clear();
   if (deadTicketByUser.size > 20000) deadTicketByUser.clear();
   const keep = (m: ExpoMessage | undefined, t: ExpoTicket) => {
-    if (m?.to) ticketByMessage.set(ticketKey(m.to, m.title), t);
+    if (m?.to && !copies.has(m)) ticketByMessage.set(ticketKey(m.to, m.title), t);
   };
 
   // Lote que caiu inteiro (rede, tempo esgotado, Expo fora): conta para o alerta da gestão.
@@ -655,7 +690,7 @@ async function sendExpoPush(
       if (!Array.isArray(result?.data)) {
         const msg = result?.errors?.[0]?.code ?? result?.errors?.[0]?.message ?? `HTTP ${httpStatus}`;
         console.error(`❌ [Expo] batch rejected: ${msg}`);
-        errors += batch.length;
+        errors += batch.filter(m => !copies.has(m)).length;
         batch.forEach(m => keep(m, { status: 'error', message: String(msg) }));
         return;
       }
@@ -664,10 +699,11 @@ async function sendExpoPush(
       // in the same order as the request batch.
       items.forEach((r: any, idx: number) => {
         keep(batch[idx], r);
+        const isCopy = copies.has(batch[idx]);
         if (r.status === 'ok') {
-          sent += 1;
+          if (!isCopy) sent += 1;
         } else {
-          errors += 1;
+          if (!isCopy) errors += 1;
           const token = batch[idx]?.to ?? '';
           const details = r.details ? ` details=${JSON.stringify(r.details)}` : '';
           console.error(`❌ [Expo] token=${token.slice(0, 30)} error="${r.message ?? 'unknown'}"${details}`);
@@ -680,8 +716,9 @@ async function sendExpoPush(
       });
     } catch (e) {
       console.error('❌ Expo Push batch error:', e);
-      errors += batch.length;
-      lostInRequest += batch.length;
+      const primaries = batch.filter(m => !copies.has(m)).length;
+      errors += primaries;
+      lostInRequest += primaries;
       batch.forEach(m => keep(m, { status: 'error', message: `request_failed: ${lastRequestError}`.slice(0, 200) }));
     }
   };
@@ -696,13 +733,16 @@ async function sendExpoPush(
   if (lostInRequest > 0) {
     await notifyAdmins({
       title: 'Pushes para os alunos não saíram',
-      body: `${lostInRequest} de ${messages.length} pushes falharam no envio, mesmo depois de 3 tentativas (${lastRequestError}). Exemplo: "${messages[0]?.title ?? ''}".`.slice(0, 300),
+      body: `${lostInRequest} de ${total} pushes falharam no envio, mesmo depois de 3 tentativas (${lastRequestError}). Exemplo: "${messages[0]?.title ?? ''}".`.slice(0, 300),
       url: '/admin/notifications', tag: 'push-failed', category: 'pushes',
     }).catch(e => console.warn('[Expo] alerta da gestão falhou:', e));
   }
 
   // Token cleanup — null out dead tokens so we stop trying to send to them.
   if (supabase && invalidTokens.length > 0) {
+    // Aparelhos extras mortos saem da lista da conta (o principal sai pelo gatilho ao zerar o token).
+    const { error: forgetErr } = await supabase.rpc('push_forget_devices', { p_tokens: invalidTokens });
+    if (forgetErr) console.warn('⚠️ [Expo] limpeza dos aparelhos extras falhou:', forgetErr.message);
     try {
       const { data: cleared, error } = await supabase
         .from('charlotte_users')
