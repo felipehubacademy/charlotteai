@@ -27,7 +27,7 @@ import { randomUUID } from 'crypto';
 // Email do projeto vai por Microsoft Graph (Office 365), o MESMO caminho do
 // reset de senha / signup / welcome. Template no padrao usual do projeto.
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
-import { releaseUpdateTemplate, familyGrowsTemplate, appUpdateTemplate, winbackTemplate, blackFridayTeaserTemplate, blackFridayOfferTemplate, blackFridayLastTemplate } from '@/lib/email-templates';
+import { releaseUpdateTemplate, familyGrowsTemplate, appUpdateTemplate, winbackTemplate, blackFridayTeaserTemplate, blackFridayOfferTemplate, blackFridaySatTemplate, blackFridayLastTemplate } from '@/lib/email-templates';
 import { WINBACK_ANSWERS, winbackAnswerUrl } from '@/lib/winback';
 import { unsubscribeUrl } from '@/lib/unsubscribe';
 
@@ -81,6 +81,12 @@ const CAMPAIGNS = {
     pushBody: 'Plano Anual com 40% de desconto: R$ 119,99 no primeiro ano. O link está no seu e-mail. Só até domingo.',
     template: blackFridayOfferTemplate,
   },
+  bf_sat: {
+    logType: 'bf_sat',
+    pushTitle: 'Ainda dá tempo',
+    pushBody: 'A Black Friday do Queizy vai até domingo: Anual com 40% de desconto, R$ 119,99 no primeiro ano. O link está no seu e-mail.',
+    template: blackFridaySatTemplate,
+  },
   bf_last: {
     logType: 'bf_last',
     pushTitle: 'Último dia de Black Friday',
@@ -95,7 +101,7 @@ const CAMPAIGNS = {
     template: blackFridayLastTemplate,
   },
 } as const;
-const BLACK_FRIDAY_CAMPAIGNS = ['bf_teaser', 'bf_offer', 'bf_last', 'bf_hours'];
+const BLACK_FRIDAY_CAMPAIGNS = ['bf_teaser', 'bf_offer', 'bf_sat', 'bf_last', 'bf_hours'];
 // Janela da campanha de volta (dias do calendário de Brasília: 20/10 a 27/10).
 const WINBACK_FROM = '2026-10-20T03:00:00Z';
 const WINBACK_TO   = '2026-10-28T03:00:00Z';
