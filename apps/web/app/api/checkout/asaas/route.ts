@@ -39,15 +39,17 @@ export async function GET(req: NextRequest) {
   const couponRaw = req.nextUrl.searchParams.get('coupon');
   const c = couponRaw ? await resolveCoupon(couponRaw) : null;
   const pctFor = (plan: WebPlan) => Math.max(d?.pct ?? 0, c?.ok && c.plans.includes(plan) ? c.pct : 0);
+  const noTrialWins = (plan: WebPlan) => !!(c?.ok && c.kind === 'coupon' && c.noTrial && c.plans.includes(plan) && c.pct > 0 && c.pct >= (d?.pct ?? 0));
   return NextResponse.json({
     enabled: asaasConfigured(),
     // Checkout próprio (cartão e Pix no queizy.com) ligado para todos. Enquanto não, só por ?checkout=novo.
     direct: process.env.CHECKOUT_DIRECT === '1',
     trialDays: WEB_TRIAL_DAYS,
     // Por plano: o cupom "cobra na hora" tira os 7 dias grátis só dos planos em que ele vale.
+    // Mesma precedência do checkout (web-checkout): só tira o teste se o cupom vence o desconto do afiliado.
     trialDaysByPlan: {
-      monthly: c?.ok && c.noTrial && c.plans.includes('monthly') ? 0 : WEB_TRIAL_DAYS,
-      annual: c?.ok && c.noTrial && c.plans.includes('annual') ? 0 : WEB_TRIAL_DAYS,
+      monthly: noTrialWins('monthly') ? 0 : WEB_TRIAL_DAYS,
+      annual: noTrialWins('annual') ? 0 : WEB_TRIAL_DAYS,
     },
     discountPct: Math.max(pctFor('monthly'), pctFor('annual')),
     coupon: c ? (c.ok ? { ok: true, code: c.code, pct: c.pct, plans: c.plans } : { ok: false, error: COUPON_ERROR_PT[c.error] }) : null,
