@@ -8,7 +8,8 @@
 // Sem números pedagógicos (lições, onde travaram): isso fica no Pedagógico.
 // As contas de alunos, atividades e cobranças ficam no banco (admin_overview_users e admin_overview_aggregates,
 // migração 20261106150000): aqui chegam só números e dias já agrupados, não as tabelas inteiras.
-import { countsInUnitCost, LTV_MAX_MONTHS, LTV_MIN_BASE } from '@/lib/unit-cost';
+import { countsInUnitCost } from '@/lib/unit-cost';
+import { computeLtv } from '@/lib/ltv';
 import { cachedCost, openaiDaily } from '@/lib/provider-costs';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { lateSignupWelcomes } from '@/lib/signup-welcome';
@@ -77,10 +78,9 @@ const PNL_EXCLUDED = ['Impostos', 'Reembolsos e estornos'];
 //  - CAC = gasto de aquisição ÷ novos pagantes.
 //  - Margem por pagante (mês) = ticket líquido (preço médio - taxas - impostos) - custo de servir por pagante
 //    (custo por usuário sem as taxas de venda, que o ticket líquido já desconta).
-//  - Cancelamento mensal = pagantes que perderam o acesso nos últimos 30 dias ÷ pagantes no início da janela.
-//  - Vida média = 1 ÷ cancelamento mensal, com teto de LTV_MAX_MONTHS (sem cancelamento, a conta não tem fim).
-//  - LTV = margem por pagante × vida média; payback = CAC ÷ margem por pagante (meses para recuperar a aquisição).
-// LTV_MAX_MONTHS mora em lib/unit-cost (a tela, que roda no navegador, também usa).
+//  - LTV = o mesmo do Financeiro (lib/ltv: líquido por cobrança × cobranças esperadas pela renovação de cada plano,
+//    com a referência publicada até termos amostra própria) − custo de servir por pagante × meses esperados.
+//  - Payback = CAC ÷ margem por pagante (meses para recuperar a aquisição).
 export interface AcquisitionMonth { label: string; marketing: number; newPayers: number; cac: number | null }
 export interface Acquisition {
   current: AcquisitionMonth;
@@ -88,9 +88,10 @@ export interface Acquisition {
   ticketNet: number | null;
   servePerPayer: number | null;
   marginPerPayer: number | null;
-  churn30d: { pct: number | null; lost: number; base: number; minBase: number };
-  lifetimeMonths: number | null; lifetimeCapped: boolean;
-  ltv: number | null;
+  ltvNet: number | null;         // LTV de receita líquida (Financeiro)
+  lifetimeMonths: number | null; // meses de assinatura esperados (mistura de planos)
+  ltvUsesReference: boolean;     // renovação ainda pela referência, não pelo dado próprio
+  ltv: number | null;            // LTV de margem = ltvNet − custo de servir × meses
   ltvToCac: number | null;
   paybackMonths: number | null;
 }
@@ -157,7 +158,7 @@ function monthStartMs(monthKey: string, offset: number): number {
   return Date.UTC(y, m - 1 + offset, 1, 3);
 }
 
-type AccountsWindow = { new_count: number; paying_at_start: number; churned_from_start: number };
+type AccountsWindow = { new_count: number };
 /** Contas pagantes numa janela, com as regras de Métricas (sem filtro de nível ou plano). */
 async function accountsWindow(fromMs: number, toMs: number, nowMs: number): Promise<AccountsWindow> {
   const days = Math.max(1, Math.round((toMs - fromMs) / DAY));
@@ -166,7 +167,7 @@ async function accountsWindow(fromMs: number, toMs: number, nowMs: number): Prom
   });
   if (error) throw new Error(error.message);
   const u = (data as { users: Partial<AccountsWindow> }).users ?? {};
-  return { new_count: Number(u.new_count ?? 0), paying_at_start: Number(u.paying_at_start ?? 0), churned_from_start: Number(u.churned_from_start ?? 0) };
+  return { new_count: Number(u.new_count ?? 0) };
 }
 
 /** Usuários (sem a equipe) divididos em grupos que somam o total, contados no banco. */
@@ -197,7 +198,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   const [
     usersBlock, aggRes, daily,
     weekConvs, openConvs, capacityRes, opsAlertsRes, opsErrorsRes, instagramDrafts, outboxStuckRes, welcome, financeRes,
-    accMonth, accPrevMonth, acc30d,
+    accMonth, accPrevMonth, ltvSummary,
   ] = await Promise.all([
     readUsersBlock(nowMs),
     // Usuários, atividades (31 dias, sem resgates de recompensa), cobranças, testes iniciados e sequências.
@@ -221,7 +222,7 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
     // Aquisição: novos pagantes do mês atual e do anterior e cancelamento dos últimos 30 dias (mesmas regras de Métricas).
     accountsWindow(monthStartMs(monthKey, 0), nowMs, nowMs),
     accountsWindow(monthStartMs(monthKey, -1), monthStartMs(monthKey, 0) - 1, nowMs),
-    accountsWindow(nowMs - 30 * DAY, nowMs, nowMs),
+    computeLtv(nowMs).catch(() => null),
   ]);
 
   if (aggRes.error) throw new Error(aggRes.error.message);
@@ -353,20 +354,19 @@ export async function computeOverview(nowMs = Date.now()): Promise<Overview> {
   const acqCurrent = acqMonth(monthKey, accMonth.new_count);
   const servePerPayer = usersBlock.paying ? (unitTotal - salesFees) / usersBlock.paying : null;
   const marginPerPayer = ticketNet != null && servePerPayer != null ? ticketNet - servePerPayer : null;
-  // Com poucos pagantes no início da janela o cancelamento não diz nada (1 de 1 = 100%, 0 de 1 = vida sem fim): sem LTV.
-  const churnRate = acc30d.paying_at_start >= LTV_MIN_BASE ? acc30d.churned_from_start / acc30d.paying_at_start : null;
-  const rawLifetime = churnRate != null ? (churnRate > 0 ? 1 / churnRate : Infinity) : null;
-  const lifetimeMonths = rawLifetime != null ? Math.min(LTV_MAX_MONTHS, rawLifetime) : null;
-  const ltv = marginPerPayer != null && lifetimeMonths != null ? marginPerPayer * lifetimeMonths : null;
+  const hasLtv = !!ltvSummary && ltvSummary.payingSubscribers > 0;
+  const ltvNet = hasLtv ? ltvSummary.blendedProjectedLtvNet : null;
+  const lifetimeMonths = hasLtv ? ltvSummary.blendedExpectedMonths : null;
+  const ltv = ltvNet != null && lifetimeMonths != null && servePerPayer != null ? ltvNet - servePerPayer * lifetimeMonths : null;
   const acquisition: Acquisition = {
     current: acqCurrent,
     previous: acqMonth(prevMonthKey, accPrevMonth.new_count),
     ticketNet: ticketNet != null ? round2(ticketNet) : null,
     servePerPayer: servePerPayer != null ? round2(servePerPayer) : null,
     marginPerPayer: marginPerPayer != null ? round2(marginPerPayer) : null,
-    churn30d: { pct: churnRate != null ? Math.round(churnRate * 1000) / 10 : null, lost: acc30d.churned_from_start, base: acc30d.paying_at_start, minBase: LTV_MIN_BASE },
+    ltvNet,
     lifetimeMonths: lifetimeMonths != null ? Math.round(lifetimeMonths * 10) / 10 : null,
-    lifetimeCapped: rawLifetime != null && rawLifetime > LTV_MAX_MONTHS,
+    ltvUsesReference: !!ltvSummary?.usesReference,
     ltv: ltv != null ? round2(ltv) : null,
     ltvToCac: ltv != null && acqCurrent.cac ? Math.round((ltv / acqCurrent.cac) * 10) / 10 : null,
     paybackMonths: acqCurrent.cac != null && marginPerPayer != null && marginPerPayer > 0 ? Math.round((acqCurrent.cac / marginPerPayer) * 10) / 10 : null,
