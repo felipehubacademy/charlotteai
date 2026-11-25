@@ -46,6 +46,8 @@ export interface GrammarExercise {
   example_answer?: string;
   /** Texto em inglês que o botão "Ouvir" toca (exercícios sobre som; sem símbolo fonético na escrita). */
   listen?: string;
+  /** Palavra em inglês do enunciado que o aluno toca para ver a tradução (treino do toque, Primeiros passos). */
+  tap?: string;
 }
 
 // ── Listening/Speaking ────────────────────────────────────────────

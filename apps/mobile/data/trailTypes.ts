@@ -25,6 +25,7 @@ export interface GrammarEx {
   prompt?:        string;   // the writing prompt/instruction
   example_answer?: string;  // model answer shown after submission
   listen?: string;          // texto que o botão "Ouvir" toca (exercícios sobre som)
+  tap?: string;             // palavra do enunciado que o aluno toca para ver a tradução (treino do toque)
 }
 
 export interface PronStep {
