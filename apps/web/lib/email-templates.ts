@@ -244,7 +244,7 @@ const bfFeatures = () => features([
 ]);
 const bfTerms = () => note('Oferta só pelo site, de 27 a 29/11 (até 23h59 de domingo), para quem ainda não assina. Pagamento na hora: Pix ou cartão à vista. Não gostou? Reembolso em até 7 dias. No cartão, a renovação do 2º ano é de R$ 199,99 e você cancela quando quiser; no Pix não renova sozinho.');
 
-export function blackFridayTemplate(stage: 'teaser' | 'offer' | 'last', opts: { name?: string | null; unsubscribeUrl?: string }) {
+export function blackFridayTemplate(stage: 'teaser' | 'offer' | 'sat' | 'last', opts: { name?: string | null; unsubscribeUrl?: string }) {
   const first = (opts.name ?? '').trim().split(/\s+/)[0];
   const ola = first ? `Oi, ${first}!` : 'Oi!';
   const unsubscribe = opts.unsubscribeUrl
@@ -266,6 +266,13 @@ export function blackFridayTemplate(stage: 'teaser' | 'offer' | 'last', opts: { 
       ${bfFeatures()}
       ${btn('Garantir meu desconto', bfUrl('oferta'))}
       ${bfTerms()}`;
+  } else if (stage === 'sat') {
+    subject = 'Ainda dá tempo: Queizy Anual com 40% de desconto';
+    body = `${h1('Ainda dá tempo.')}
+      ${p(`${ola}<br>A Black Friday do Queizy vai até amanhã, domingo, às 23h59. O Plano Anual segue com <strong style="color:#16131F;">40% de desconto</strong>:`)}
+      ${bfPrice()}
+      ${btn('Garantir meu desconto', bfUrl('sabado'))}
+      ${bfTerms()}`;
   } else {
     subject = 'Último dia: Queizy Anual com 40% de desconto';
     body = `${h1('Hoje é o último dia.')}
@@ -278,6 +285,7 @@ export function blackFridayTemplate(stage: 'teaser' | 'offer' | 'last', opts: { 
 }
 export const blackFridayTeaserTemplate = (o: { name?: string | null; unsubscribeUrl?: string }) => blackFridayTemplate('teaser', o);
 export const blackFridayOfferTemplate = (o: { name?: string | null; unsubscribeUrl?: string }) => blackFridayTemplate('offer', o);
+export const blackFridaySatTemplate = (o: { name?: string | null; unsubscribeUrl?: string }) => blackFridayTemplate('sat', o);
 export const blackFridayLastTemplate = (o: { name?: string | null; unsubscribeUrl?: string }) => blackFridayTemplate('last', o);
 
 // ── 6c. Carrinho abandonado (assinatura pelo site): 3 lembretes ──────────────────────
