@@ -35,7 +35,7 @@ const addMonths = (month: string, n: number) => { const [y, m] = month.split('-'
 const lastDayOf = (month: string) => new Date(Date.parse(`${addMonths(month, 1)}-01T12:00:00Z`) - 86400_000).toISOString().slice(0, 10);
 const plusDays = (day: string, n: number) => new Date(Date.parse(`${day}T12:00:00Z`) + n * 86400_000).toISOString().slice(0, 10);
 
-type Ev = { store: string; event_type: string; net_brl: number | null; purchased_at: string; product_id: string | null };
+type Ev = { store: string; event_type: string; net_brl: number | null; purchased_at: string; created_at: string; product_id: string | null };
 
 export async function computeReceivables(nowMs = Date.now()): Promise<Receivables> {
   const today = brtDayKey(nowMs);
@@ -43,13 +43,16 @@ export async function computeReceivables(nowMs = Date.now()): Promise<Receivable
 
   // Lojas: só os últimos meses podem estar pendentes (Apple paga em até 45 dias; Google no dia 15).
   const since = `${addMonths(today.slice(0, 7), -3)}-01T03:00:00Z`;
+  // Compras antigas estornadas agora: o estorno entra pelo created_at, então a leitura considera as duas datas.
   const events = await readAll<Ev>('receita das lojas', () => getSupabaseAdmin().from('revenue_events')
-    .select('store, event_type, net_brl, purchased_at, product_id').in('store', ['APP_STORE', 'MAC_APP_STORE', 'PLAY_STORE'])
-    .gte('purchased_at', since).order('purchased_at').order('id'));
+    .select('store, event_type, net_brl, purchased_at, created_at, product_id').in('store', ['APP_STORE', 'MAC_APP_STORE', 'PLAY_STORE'])
+    .or(`purchased_at.gte.${since},created_at.gte.${since}`).order('purchased_at').order('id'));
   const byMonth = new Map<string, { net: number; charges: number }>();
   for (const e of events) {
     const channel = e.store === 'PLAY_STORE' ? 'play_store' : 'app_store';
-    const month = brtDayKey(revenueAtMs(e as never)).slice(0, 7);
+    // Estorno desconta no repasse do mês em que aconteceu (created_at), não no mês da compra original.
+    const at = e.event_type === 'REFUND' ? Date.parse(e.created_at) : revenueAtMs(e as never);
+    const month = brtDayKey(at).slice(0, 7);
     const k = `${channel}|${month}`;
     const cur = byMonth.get(k) ?? { net: 0, charges: 0 };
     const v = Number(e.net_brl ?? 0);
