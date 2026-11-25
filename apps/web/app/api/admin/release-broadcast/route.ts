@@ -27,7 +27,7 @@ import { randomUUID } from 'crypto';
 // Email do projeto vai por Microsoft Graph (Office 365), o MESMO caminho do
 // reset de senha / signup / welcome. Template no padrao usual do projeto.
 import { sendEmail as graphSendEmail } from '@/lib/microsoft-graph-email-service';
-import { releaseUpdateTemplate, familyGrowsTemplate, appUpdateTemplate, winbackTemplate } from '@/lib/email-templates';
+import { releaseUpdateTemplate, familyGrowsTemplate, appUpdateTemplate, winbackTemplate, blackFridayTeaserTemplate, blackFridayOfferTemplate, blackFridayLastTemplate } from '@/lib/email-templates';
 import { WINBACK_ANSWERS, winbackAnswerUrl } from '@/lib/winback';
 import { unsubscribeUrl } from '@/lib/unsubscribe';
 
@@ -67,7 +67,35 @@ const CAMPAIGNS = {
     pushBody: 'Agora são 5 dias com 1 tópico novo grátis por dia. O de hoje já está liberado na sua trilha.',
     template: winbackTemplate,
   },
+  // Black Friday do Anual (27 a 29/11/2026, cupom BLACK40): só quem não assina hoje (ver isBlackFriday abaixo).
+  // O push só abre o app e aponta para o e-mail: o link de compra pelo site vai só no e-mail.
+  bf_teaser: {
+    logType: 'bf_teaser',
+    pushTitle: 'Sexta tem Black Friday no Queizy',
+    pushBody: 'De sexta a domingo, o Plano Anual sai com 40% de desconto. Na sexta a gente te avisa!',
+    template: blackFridayTeaserTemplate,
+  },
+  bf_offer: {
+    logType: 'bf_offer',
+    pushTitle: 'Começou a Black Friday do Queizy',
+    pushBody: 'Plano Anual com 40% de desconto: R$ 119,99 no primeiro ano. O link está no seu e-mail. Só até domingo.',
+    template: blackFridayOfferTemplate,
+  },
+  bf_last: {
+    logType: 'bf_last',
+    pushTitle: 'Último dia de Black Friday',
+    pushBody: 'Hoje é a última chance do Anual com 40% de desconto: R$ 119,99 no primeiro ano. O link está no seu e-mail.',
+    template: blackFridayLastTemplate,
+  },
+  // Domingo à noite, só push.
+  bf_hours: {
+    logType: 'bf_hours',
+    pushTitle: 'Faltam poucas horas',
+    pushBody: 'A Black Friday do Queizy acaba hoje às 23h59. Anual com 40% de desconto: o link está no seu e-mail.',
+    template: blackFridayLastTemplate,
+  },
 } as const;
+const BLACK_FRIDAY_CAMPAIGNS = ['bf_teaser', 'bf_offer', 'bf_last', 'bf_hours'];
 // Janela da campanha de volta (dias do calendário de Brasília: 20/10 a 27/10).
 const WINBACK_FROM = '2026-10-20T03:00:00Z';
 const WINBACK_TO   = '2026-10-28T03:00:00Z';
@@ -113,7 +141,9 @@ export async function POST(req: NextRequest) {
   const channels: string[] = Array.isArray(body?.channels) && body.channels.length
     ? body.channels
     : ['push', 'email'];
-  const campaignId: CampaignId = ['family', 'update', 'winback'].includes(body?.campaign) ? body.campaign : 'release';
+  const campaignId: CampaignId = ['family', 'update', 'winback', ...BLACK_FRIDAY_CAMPAIGNS].includes(body?.campaign) ? body.campaign : 'release';
+  const isBlackFriday = BLACK_FRIDAY_CAMPAIGNS.includes(campaignId);
+  if (campaignId === 'bf_hours') channels.splice(0, channels.length, 'push'); // lembrete da noite: só push
   const campaign = CAMPAIGNS[campaignId];
   const platform: Platform | null = body?.platform === 'ios' || body?.platform === 'android' ? body.platform : null;
   if (campaignId === 'update' && !platform) {
@@ -191,7 +221,7 @@ export async function POST(req: NextRequest) {
   try {
     data = await readAll('alunos da campanha', () => supabase
       .from('charlotte_users')
-      .select('id, name, email, expo_push_token, marketing_opt_out, email_bounced, app_version, app_platform, created_at, subscription_status, is_institutional')
+      .select('id, name, email, expo_push_token, marketing_opt_out, email_bounced, app_version, app_platform, created_at, subscription_status, subscription_expires_at, is_institutional')
       .order('id'));
   } catch (e) {
     return NextResponse.json({ error: `Falha ao buscar usuários: ${e instanceof Error ? e.message : String(e)}` }, { status: 500 });
@@ -217,13 +247,17 @@ export async function POST(req: NextRequest) {
     for (const k of returned) { const [uid, d] = k.split('|'); if (uid === r.id && d > d0) return true; }
     return false;
   };
-  const rows = ((data ?? []) as (Row & { created_at: string; subscription_status: string | null; is_institutional: boolean | null })[])
+  // Black Friday: só quem não tem acesso pago hoje (degustação, teste que acabou, expirado, cancelado sem acesso).
+  const hasAccess = (r: { subscription_status: string | null; subscription_expires_at: string | null }) =>
+    ['active', 'trial', 'cancelled'].includes(r.subscription_status ?? '') && !!r.subscription_expires_at && new Date(r.subscription_expires_at).getTime() > Date.now();
+  const rows = ((data ?? []) as (Row & { created_at: string; subscription_status: string | null; subscription_expires_at: string | null; is_institutional: boolean | null })[])
     .filter(r => !isTeam(r.email))
     .filter(r => !before || r.created_at < before)
     .filter(r => campaignId !== 'update' || (r.app_platform === platform && !!r.app_version && olderThan(r.app_version, latest!)))
     .filter(r => campaignId !== 'winback' || (
       (!r.subscription_status || r.subscription_status === 'none') && !r.is_institutional
-      && r.created_at >= WINBACK_FROM && r.created_at < WINBACK_TO && !cameBack(r)));
+      && r.created_at >= WINBACK_FROM && r.created_at < WINBACK_TO && !cameBack(r)))
+    .filter(r => !isBlackFriday || (!r.is_institutional && !hasAccess(r)));
 
   const pushRows = rows.filter(r => r.expo_push_token?.startsWith('ExponentPushToken['));
   // Marketing: exclui descadastrados (LGPD) e emails que ja deram bounce. Push nao e afetado.

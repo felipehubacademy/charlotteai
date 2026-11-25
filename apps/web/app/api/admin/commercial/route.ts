@@ -15,7 +15,7 @@ export const dynamic = 'force-dynamic';
 type Coupon = {
   code: string; discount_pct: number; plans: string[] | null; active: boolean;
   starts_at: string | null; expires_at: string | null; max_uses: number | null;
-  duration_cycles: number | null; note: string | null; created_at: string;
+  duration_cycles: number | null; no_trial?: boolean; note: string | null; created_at: string;
 };
 type Checkout = {
   id: string; user_id: string; plan: string; method: string | null; value_brl: number; status: string;
@@ -187,7 +187,7 @@ export async function POST(req: NextRequest) {
     }
     const row = {
       code, discount_pct: pct, plans, active: c.active !== false, starts_at: startsAt, expires_at: expiresAt,
-      max_uses: maxUses, duration_cycles: cycles, note: String(c.note ?? '').slice(0, 300) || null,
+      max_uses: maxUses, duration_cycles: cycles, no_trial: c.no_trial === true, note: String(c.note ?? '').slice(0, 300) || null,
     };
     const { error } = body.editing
       ? await supabase.from('coupons').update(row as never).eq('code', code)

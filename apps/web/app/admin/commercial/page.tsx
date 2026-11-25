@@ -12,7 +12,7 @@ import { useBulk, BulkBar, BulkCheckbox } from '@/components/admin/Bulk';
 type Coupon = {
   code: string; discount_pct: number; plans: string[] | null; active: boolean;
   starts_at: string | null; expires_at: string | null; max_uses: number | null;
-  duration_cycles: number | null; note: string | null; created_at: string;
+  duration_cycles: number | null; no_trial?: boolean; note: string | null; created_at: string;
   uses: number; revenue: number; state: 'live' | 'paused' | 'scheduled' | 'expired' | 'used_up';
 };
 type Checkout = {
@@ -56,7 +56,7 @@ function durationLabel(c: { duration_cycles: number | null }) {
   return c.duration_cycles === 1 ? 'Só a 1ª cobrança' : `${c.duration_cycles} cobranças`;
 }
 
-const EMPTY = { code: '', discount_pct: 20, monthly: true, annual: true, starts_at: '', expires_at: '', max_uses: '', duration: 'first' as 'first' | 'cycles' | 'forever', cycles: 3, note: '', editing: false };
+const EMPTY = { code: '', discount_pct: 20, monthly: true, annual: true, starts_at: '', expires_at: '', max_uses: '', duration: 'first' as 'first' | 'cycles' | 'forever', cycles: 3, noTrial: false, note: '', editing: false };
 type Form = typeof EMPTY;
 
 export default function CommercialAdmin() {
@@ -106,6 +106,7 @@ export default function CommercialAdmin() {
       expires_at: form.expires_at ? new Date(form.expires_at).toISOString() : null,
       max_uses: form.max_uses === '' ? null : Number(form.max_uses),
       duration_cycles: form.duration === 'forever' ? null : form.duration === 'first' ? 1 : Number(form.cycles),
+      no_trial: form.noTrial,
       note: form.note,
     };
     if (await post({ action: 'save_coupon', coupon, editing: form.editing })) { setForm(null); await load(); }
@@ -116,7 +117,7 @@ export default function CommercialAdmin() {
     annual: (c.plans ?? ['monthly', 'annual']).includes('annual'), starts_at: toLocalInput(c.starts_at), expires_at: toLocalInput(c.expires_at),
     max_uses: c.max_uses == null ? '' : String(c.max_uses),
     duration: !c.duration_cycles ? 'forever' : c.duration_cycles === 1 ? 'first' : 'cycles', cycles: c.duration_cycles && c.duration_cycles > 1 ? c.duration_cycles : 3,
-    note: c.note ?? '', editing: true,
+    noTrial: !!c.no_trial, note: c.note ?? '', editing: true,
   });
   const set = <K extends keyof Form>(k: K, v: Form[K]) => setForm(f => (f ? { ...f, [k]: v } : f));
 
@@ -171,7 +172,7 @@ export default function CommercialAdmin() {
                       <td style={{ color: COUPON_STATE[c.state].color, fontWeight: 700 }}>{COUPON_STATE[c.state].label}</td>
                       <td className="num">{c.discount_pct}%</td>
                       <td>{(c.plans ?? ['monthly', 'annual']).map(p => (p === 'monthly' ? 'Mensal' : 'Anual')).join(' e ')}</td>
-                      <td>{durationLabel(c)}</td>
+                      <td>{durationLabel(c)}{c.no_trial ? ' · cobra na hora' : ''}</td>
                       <td style={{ fontSize: 12 }}>{c.starts_at || c.expires_at ? `${day(c.starts_at)} a ${day(c.expires_at)}` : 'Sem prazo'}</td>
                       <td className="num">{c.uses}{c.max_uses != null ? ` / ${c.max_uses}` : ''}</td>
                       <td className="num">{brl(c.revenue)}</td>
@@ -334,6 +335,11 @@ export default function CommercialAdmin() {
                   <input className="adm-input" type="number" min={2} max={24} value={form.cycles} onChange={e => set('cycles', Number(e.target.value))} />
                 </div>
               )}
+              <div className="adm-field"><label>7 dias grátis</label>
+                <label style={{ display: 'flex', gap: 6, alignItems: 'center', height: 34, fontSize: 13 }}>
+                  <input type="checkbox" checked={form.noTrial} onChange={e => set('noTrial', e.target.checked)} /> Sem teste: cobra na hora
+                </label>
+              </div>
               <div className="adm-field"><label>Limite de usos</label>
                 <input className="adm-input" type="number" min={1} value={form.max_uses} onChange={e => set('max_uses', e.target.value)} placeholder="sem limite" />
               </div>

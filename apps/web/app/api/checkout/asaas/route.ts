@@ -44,6 +44,11 @@ export async function GET(req: NextRequest) {
     // Checkout próprio (cartão e Pix no queizy.com) ligado para todos. Enquanto não, só por ?checkout=novo.
     direct: process.env.CHECKOUT_DIRECT === '1',
     trialDays: WEB_TRIAL_DAYS,
+    // Por plano: o cupom "cobra na hora" tira os 7 dias grátis só dos planos em que ele vale.
+    trialDaysByPlan: {
+      monthly: c?.ok && c.noTrial && c.plans.includes('monthly') ? 0 : WEB_TRIAL_DAYS,
+      annual: c?.ok && c.noTrial && c.plans.includes('annual') ? 0 : WEB_TRIAL_DAYS,
+    },
     discountPct: Math.max(pctFor('monthly'), pctFor('annual')),
     coupon: c ? (c.ok ? { ok: true, code: c.code, pct: c.pct, plans: c.plans } : { ok: false, error: COUPON_ERROR_PT[c.error] }) : null,
     prices: {
