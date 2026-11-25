@@ -63,6 +63,7 @@ export async function GET(req: NextRequest) {
       monthly: limitedWins('monthly') ? priceFor('monthly', d?.pct ?? 0) : null,
       annual: limitedWins('annual') ? priceFor('annual', d?.pct ?? 0) : null,
     },
+    renewCycles: c?.ok && c.kind === 'coupon' ? c.cycles ?? null : null, // quantas cobranças levam o desconto
   });
 }
 

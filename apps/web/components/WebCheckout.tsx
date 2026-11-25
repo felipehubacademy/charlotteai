@@ -23,7 +23,7 @@ type Plan = 'monthly' | 'annual';
 type AnnualPay = 'card' | 'pix';
 type Mode = 'hosted' | 'direct' | 'sandbox';
 type Pix = { image: string; payload: string; expiresAt: string };
-type Info = { enabled: boolean; direct?: boolean; trialDays: number; renewPrices?: { monthly: number | null; annual: number | null }; trialDaysByPlan?: { monthly: number; annual: number }; discountPct: number; prices: { monthly: number; annual: number };
+type Info = { enabled: boolean; direct?: boolean; trialDays: number; renewPrices?: { monthly: number | null; annual: number | null }; renewCycles?: number | null; trialDaysByPlan?: { monthly: number; annual: number }; discountPct: number; prices: { monthly: number; annual: number };
   coupon: { ok: true; code: string; pct: number } | { ok: false; error: string } | null };
 
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -159,7 +159,10 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
   // Cupom só nas primeiras cobranças (ex.: Black Friday, só o 1º ano): avisa o preço da renovação.
   const renewAnnual = info?.renewPrices?.annual ?? null;
   const renewMonthly = info?.renewPrices?.monthly ?? null;
-  const annualRenewTxt = renewAnnual != null ? `${brl(annual)} no 1º ano, em 1x; depois renova por ${brl(renewAnnual)} por ano.` : `${brl(annual)} por ano, em 1x, e renova sozinho.`;
+  const cycles = info?.renewCycles ?? 1;
+  const firstYears = cycles > 1 ? `nos ${cycles} primeiros anos` : 'no 1º ano';
+  const firstMonths = cycles > 1 ? `nos ${cycles} primeiros meses` : 'no 1º mês';
+  const annualRenewTxt = renewAnnual != null ? `${brl(annual)} ${firstYears}, em 1x; depois renova por ${brl(renewAnnual)} por ano.` : `${brl(annual)} por ano, em 1x, e renova sozinho.`;
   const hasTrial = method === 'monthly' || method === 'annual';
   const disc = info?.discountPct ?? 0;
   const mode: Mode = urlMode ?? forceMode ?? (info?.direct ? 'direct' : 'hosted');
@@ -330,13 +333,13 @@ export default function WebCheckout({ initialPlan, notice, forceMode }: { initia
     ? (trial > 0
         ? `Grátis por ${trial} dias, depois ${brl(monthly)}/mês no cartão. Cancele antes do fim do teste e não paga nada. O teste vale para quem nunca assinou.`
         : renewMonthly != null
-        ? `${brl(monthly)} com desconto no cartão; depois ${brl(renewMonthly)}/mês. Cancele quando quiser.`
+        ? `${brl(monthly)}/mês no cartão ${firstMonths}; depois ${brl(renewMonthly)}/mês. Cancele quando quiser.`
         : `${brl(monthly)}/mês no cartão. Cancele quando quiser.`)
     : method === 'annual'
     ? (trial > 0
         ? `Grátis por ${trial} dias, depois ${brl(annual)} por ano no cartão, em 1x. Cancele antes do fim do teste e não paga nada. O teste vale para quem nunca assinou.`
         : renewAnnual != null
-        ? `${brl(annual)} no 1º ano, no cartão, em 1x. Depois renova por ${brl(renewAnnual)} por ano; cancele a renovação quando quiser.`
+        ? `${brl(annual)} ${firstYears}, no cartão, em 1x. Depois renova por ${brl(renewAnnual)} por ano; cancele a renovação quando quiser.`
         : `${brl(annual)} por ano no cartão, em 1x. Cancele a renovação quando quiser.`)
     : `Pagamento único de ${brl(annual)} no Pix, sem renovação automática. Teste por 7 dias: se não gostar, peça o reembolso no app ou por e-mail e devolvemos o valor.`;
 
