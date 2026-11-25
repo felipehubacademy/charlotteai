@@ -234,7 +234,7 @@ export function winbackTemplate(opts: { name?: string | null; unsubscribeUrl?: s
 
 // ── 6b2. Black Friday do Anual (27 a 29/11/2026): teaser, oferta e último dia ──────────
 // Cupom BLACK40 (40% só no 1º ano, cobra na hora: Pix ou cartão à vista, reembolso em até 7 dias).
-export const BLACK_FRIDAY = { code: 'BLACK40', pct: 40, full: 'R$ 199,99', price: 'R$ 119,99', perMonth: 'menos de R$ 10 por mês' } as const;
+export const BLACK_FRIDAY = { code: 'BLACK40', pct: 40, full: 'R$ 199,99', price: 'R$ 119,99', perMonth: 'cerca de R$ 10 por mês' } as const;
 const bfUrl = (stage: string) => `https://queizy.com/assinar?plano=anual&cupom=${BLACK_FRIDAY.code}&utm_source=email&utm_medium=campanha&utm_campaign=blackfriday_${stage}`;
 const bfPrice = () => `<p style="margin:4px 0 18px;text-align:center;font-size:15px;color:#8A8494;line-height:1.5;"><span style="text-decoration:line-through;">${BLACK_FRIDAY.full}</span><br><span style="font-size:30px;font-weight:800;color:#16131F;">${BLACK_FRIDAY.price}</span><br>no primeiro ano, ${BLACK_FRIDAY.perMonth}</p>`;
 const bfFeatures = () => features([

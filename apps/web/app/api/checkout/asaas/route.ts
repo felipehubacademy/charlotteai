@@ -39,6 +39,7 @@ export async function GET(req: NextRequest) {
   const couponRaw = req.nextUrl.searchParams.get('coupon');
   const c = couponRaw ? await resolveCoupon(couponRaw) : null;
   const pctFor = (plan: WebPlan) => Math.max(d?.pct ?? 0, c?.ok && c.plans.includes(plan) ? c.pct : 0);
+  const limitedWins = (plan: WebPlan) => !!(c?.ok && c.kind === 'coupon' && c.cycles && c.plans.includes(plan) && c.pct > 0 && c.pct >= (d?.pct ?? 0));
   const noTrialWins = (plan: WebPlan) => !!(c?.ok && c.kind === 'coupon' && c.noTrial && c.plans.includes(plan) && c.pct > 0 && c.pct >= (d?.pct ?? 0));
   return NextResponse.json({
     enabled: asaasConfigured(),
@@ -56,6 +57,13 @@ export async function GET(req: NextRequest) {
     prices: {
       monthly: priceFor('monthly', pctFor('monthly')), annual: priceFor('annual', pctFor('annual')),
     },
+    // Preço da renovação quando o cupom que vence vale só por algumas cobranças (ex.: Black Friday, só o 1º ano):
+    // depois dele volta ao preço com o desconto do afiliado, se houver (igual ao webhook). null = renova pelo mesmo preço.
+    renewPrices: {
+      monthly: limitedWins('monthly') ? priceFor('monthly', d?.pct ?? 0) : null,
+      annual: limitedWins('annual') ? priceFor('annual', d?.pct ?? 0) : null,
+    },
+    renewCycles: c?.ok && c.kind === 'coupon' ? c.cycles ?? null : null, // quantas cobranças levam o desconto
   });
 }
 
