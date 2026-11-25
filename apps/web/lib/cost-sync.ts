@@ -19,7 +19,7 @@ const PROVIDERS: Provider[] = [
     const r = c.value; return r && { amount: r.total, currency: r.currency, note: 'Valor real (Azure Cost Management).' };
   } },
   { vendor: 'Vercel', label: 'Vercel', category: 'Infraestrutura e hospedagem', read: async m => {
-    const r = await vercelReal(m); return r && { amount: r.total, currency: r.currency, note: 'Valor real (API de faturamento da Vercel).' };
+    const r = await vercelReal(m); return r && { amount: r.total, currency: r.currency, note: 'Valor real do uso acima do crédito do plano (API de faturamento da Vercel); o plano Pro fica na linha própria.' };
   } },
 ];
 

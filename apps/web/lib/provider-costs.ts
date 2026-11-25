@@ -120,6 +120,8 @@ export async function azureReal(month: string): Promise<Cost | null> {
 
 
 // Vercel: cobranças do mês pela API de faturamento (formato FOCUS, uma linha JSON por cobrança).
+// Só o uso (ChargeCategory "Usage"): o plano Pro ("Purchase") já está no Financeiro como despesa mensal
+// própria ("Vercel Pro (plano mensal)"); contar os dois punha o plano em dobro.
 // Precisa de VERCEL_BILLING_TOKEN (token de conta com acesso ao time) e VERCEL_TEAM_ID.
 export async function vercelReal(month: string): Promise<Cost | null> {
   const token = process.env.VERCEL_BILLING_TOKEN;
@@ -140,6 +142,7 @@ export async function vercelReal(month: string): Promise<Cost | null> {
   const lines = new Map<string, number>();
   for (const row of rows) {
     if (row.BillingCurrency) currency = String(row.BillingCurrency);
+    if (row.ChargeCategory === 'Purchase') continue;
     const name = String(row.ServiceName ?? row.ChargeDescription ?? 'Outros');
     lines.set(name, (lines.get(name) ?? 0) + Number(row.BilledCost ?? 0));
   }
