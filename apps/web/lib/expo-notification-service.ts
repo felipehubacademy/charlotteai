@@ -612,7 +612,8 @@ async function sendExpoPush(
   // Outros aparelhos da mesma conta (charlotte.push_devices): cada mensagem sai também para eles.
   // As cópias não entram na contagem nem no registro: o registro e o limite de frequência seguem
   // por aluno, pelo aparelho principal (expo_push_token).
-  const copies = new Set<ExpoMessage>();
+  // Cópia → token principal da mesma mensagem.
+  const copies = new Map<ExpoMessage, string>();
   if (supabase) {
     try {
       const primaries = [...new Set(messages.map(m => m.to).filter(Boolean))];
@@ -632,7 +633,7 @@ async function sendExpoPush(
         for (const m of messages) {
           for (const token of extraByPrimary.get(m.to) ?? []) {
             const copy = { ...m, to: token };
-            copies.add(copy);
+            copies.set(copy, m.to);
             extra.push(copy);
           }
         }
@@ -651,8 +652,14 @@ async function sendExpoPush(
   // Mensagens que nunca foram logadas não podem acumular para sempre.
   if (ticketByMessage.size > 20000) ticketByMessage.clear();
   if (deadTicketByUser.size > 20000) deadTicketByUser.clear();
+  // Cópias aceitas pelo Expo, pela chave da mensagem principal: se o principal falhar e uma cópia sair,
+  // o aluno recebeu, e o registro precisa dizer 'sent' para o limite de frequência não mandar de novo.
+  const copyAccepted = new Set<string>();
   const keep = (m: ExpoMessage | undefined, t: ExpoTicket) => {
-    if (m?.to && !copies.has(m)) ticketByMessage.set(ticketKey(m.to, m.title), t);
+    if (!m?.to) return;
+    const primary = copies.get(m);
+    if (primary === undefined) ticketByMessage.set(ticketKey(m.to, m.title), t);
+    else if (t.status === 'ok') copyAccepted.add(ticketKey(primary, m.title));
   };
 
   // Lote que caiu inteiro (rede, tempo esgotado, Expo fora): conta para o alerta da gestão.
@@ -731,6 +738,11 @@ async function sendExpoPush(
   await Promise.all(Array.from({ length: Math.min(4, batches.length) }, async () => {
     while (next < batches.length) await sendBatch(batches[next++]);
   }));
+  // Principal falhou e alguma cópia saiu: registra como enviado, sem ticket (o recibo da cópia não diz
+  // nada sobre o token principal, e um DeviceNotRegistered dela apagaria o token errado).
+  for (const key of copyAccepted) {
+    if (ticketByMessage.get(key)?.status === 'error') ticketByMessage.set(key, { status: 'ok' });
+  }
   if (lostInRequest > 0) {
     await notifyAdmins({
       title: 'Pushes para os alunos não saíram',
