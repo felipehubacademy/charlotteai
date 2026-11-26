@@ -11,6 +11,9 @@
 --    antes da próxima ligação.
 -- 3) Cobrança: primeiro o pool do mês, depois o bônus. A virada do mês é feita aqui, no fuso do aluno
 --    (padrão: Brasília). Degustação (sem assinatura) não renova.
+--    Sessão aberta num mês anterior (cobrada só no mês seguinte, ou ligação que passou da meia-noite da virada)
+--    é cobrada no mês em que começou: do que sobrou daquele pool e, passando dele, do bônus (como seria se
+--    tivesse fechado na hora). Nunca sai do pool novo do mês.
 -- Pools iguais ao app (apps/mobile/lib/liveVoiceUsage.ts): Premium/institucional 1 200 s, degustação 180 s, resto 300 s.
 begin;
 
@@ -66,10 +69,11 @@ alter table public.live_voice_sessions enable row level security;
 revoke all on public.live_voice_sessions from anon, authenticated;
 grant all on public.live_voice_sessions to service_role;
 
--- Início do mês no fuso do aluno (fuso inválido ou vazio: Brasília).
-create or replace function charlotte.live_voice_month_start(p_tz text) returns date
+-- Início do mês no fuso do aluno (fuso inválido ou vazio: Brasília), no instante p_at (padrão: agora).
+drop function if exists charlotte.live_voice_month_start(text);
+create or replace function charlotte.live_voice_month_start(p_tz text, p_at timestamptz default now()) returns date
 language sql stable set search_path = public, pg_temp as $$
-  select (date_trunc('month', now() at time zone
+  select (date_trunc('month', p_at at time zone
     case when nullif(p_tz, '') is not null and exists (select 1 from pg_timezone_names where name = p_tz)
          then p_tz else 'America/Sao_Paulo' end))::date;
 $$;
@@ -108,11 +112,14 @@ begin
 end $$;
 
 -- Desconta segundos (pool do mês primeiro, depois o bônus), com a virada do mês. p_seconds = 0 só faz a virada.
-create or replace function charlotte.live_voice_debit(p_user uuid, p_seconds integer) returns void
+-- p_started = início da sessão cobrada. Se for de um mês anterior ao atual, cobra no mês da sessão (o que sobrou
+-- daquele pool, depois o bônus) antes da virada, e o pool do mês atual fica intacto. Degustação: um pool só, sem mês.
+drop function if exists charlotte.live_voice_debit(uuid, integer);
+create or replace function charlotte.live_voice_debit(p_user uuid, p_seconds integer, p_started timestamptz default null) returns void
 language plpgsql security definer set search_path = public, pg_temp as $$
 declare
   u record; v_taster boolean; v_month date; v_used integer; v_reset date; v_pool integer; v_bonus integer;
-  v_secs integer := greatest(0, coalesce(p_seconds, 0)); v_from_month integer;
+  v_secs integer := greatest(0, coalesce(p_seconds, 0)); v_from_month integer; v_sess_month date;
 begin
   select subscription_status, is_institutional, timezone, live_voice_seconds_used, live_voice_reset_date, live_voice_bonus_seconds
     into u from charlotte.users where id = p_user for update;
@@ -121,11 +128,34 @@ begin
   v_month  := charlotte.live_voice_month_start(u.timezone);
   v_used   := coalesce(u.live_voice_seconds_used, 0);
   v_reset  := u.live_voice_reset_date;
+  v_pool   := charlotte.live_voice_pool(u.subscription_status, u.is_institutional);
+  v_bonus  := greatest(0, coalesce(u.live_voice_bonus_seconds, 0));
+  if not v_taster and p_started is not null then
+    v_sess_month := charlotte.live_voice_month_start(u.timezone, p_started);
+  end if;
+  if v_sess_month is not null and v_sess_month < v_month then
+    -- Sessão de mês anterior: cobra no mês dela (o que sobrou daquele pool, depois o bônus), antes da virada,
+    -- que vem na cobrança seguinte (live_voice_start faz logo depois). Conta já num mês posterior ao da sessão:
+    -- o uso daquele mês não está mais gravado e conta como zero; o uso do mês atual não muda.
+    if v_reset is null or v_reset < v_sess_month then
+      v_used := 0; v_reset := v_sess_month;
+    end if;
+    if v_reset = v_sess_month then
+      v_from_month := least(v_secs, greatest(0, v_pool - v_used));
+      v_used := v_used + v_from_month;
+    else
+      v_from_month := least(v_secs, v_pool);
+    end if;
+    update charlotte.users set
+      live_voice_seconds_used  = v_used,
+      live_voice_bonus_seconds = greatest(0, v_bonus - (v_secs - v_from_month)),
+      live_voice_reset_date    = v_reset
+    where id = p_user;
+    return;
+  end if;
   if not v_taster and (v_reset is null or v_reset < v_month) then
     v_used := 0; v_reset := v_month;
   end if;
-  v_pool  := charlotte.live_voice_pool(u.subscription_status, u.is_institutional);
-  v_bonus := greatest(0, coalesce(u.live_voice_bonus_seconds, 0));
   v_from_month := least(v_secs, greatest(0, v_pool - v_used));
   if v_from_month = 0 and v_secs = 0 and v_reset is not distinct from u.live_voice_reset_date then
     return;
@@ -148,7 +178,7 @@ language sql stable as $$
   from (select greatest(0, floor(extract(epoch from now() - p_started)))::integer as e) t;
 $$;
 
--- Nova ligação: cobra sessões abertas (nunca fechadas), faz a virada do mês e abre a sessão com o teto
+-- Nova ligação: cobra sessões abertas (nunca fechadas; a de mês anterior, no mês dela), faz a virada do mês e abre a sessão com o teto
 -- (saldo restante, no máximo p_cap). Sem saldo: { ok: false, error: 'monthly_pool_exhausted' }.
 create or replace function public.live_voice_start(p_user uuid, p_kind text, p_cap integer default 3600) returns jsonb
 language plpgsql security definer set search_path = public, pg_temp as $$
@@ -161,7 +191,7 @@ begin
            where user_id = p_user and closed_at is null for update loop
     v_charge := charlotte.live_voice_charge_of(s.started_at, s.max_seconds, null);
     update public.live_voice_sessions set closed_at = now(), close_reason = 'unclosed', charged_seconds = v_charge where id = s.id;
-    perform charlotte.live_voice_debit(p_user, v_charge);
+    perform charlotte.live_voice_debit(p_user, v_charge, s.started_at); -- no mês em que a sessão começou
   end loop;
   perform charlotte.live_voice_debit(p_user, 0);
   v_status := public.live_voice_status(p_user);
@@ -190,20 +220,20 @@ begin
     closed_at = now(), close_reason = case when p_failed then 'failed' else 'reported' end,
     reported_seconds = p_reported, charged_seconds = v_charge
   where id = s.id;
-  perform charlotte.live_voice_debit(p_user, v_charge);
+  perform charlotte.live_voice_debit(p_user, v_charge, s.started_at);
   return jsonb_build_object('closed', true, 'charged', v_charge);
 end $$;
 
 -- Só o servidor chama.
-revoke execute on function charlotte.live_voice_month_start(text) from public, anon, authenticated;
+revoke execute on function charlotte.live_voice_month_start(text, timestamptz) from public, anon, authenticated;
 revoke execute on function charlotte.live_voice_pool(text, boolean) from public, anon, authenticated;
-revoke execute on function charlotte.live_voice_debit(uuid, integer) from public, anon, authenticated;
+revoke execute on function charlotte.live_voice_debit(uuid, integer, timestamptz) from public, anon, authenticated;
 revoke execute on function charlotte.live_voice_charge_of(timestamptz, integer, integer) from public, anon, authenticated;
 revoke execute on function public.live_voice_status(uuid) from public, anon, authenticated;
 revoke execute on function public.live_voice_start(uuid, text, integer) from public, anon, authenticated;
 revoke execute on function public.live_voice_close(uuid, uuid, integer, boolean) from public, anon, authenticated;
-grant execute on function charlotte.live_voice_month_start(text), charlotte.live_voice_pool(text, boolean),
-  charlotte.live_voice_debit(uuid, integer), charlotte.live_voice_charge_of(timestamptz, integer, integer),
+grant execute on function charlotte.live_voice_month_start(text, timestamptz), charlotte.live_voice_pool(text, boolean),
+  charlotte.live_voice_debit(uuid, integer, timestamptz), charlotte.live_voice_charge_of(timestamptz, integer, integer),
   public.live_voice_status(uuid), public.live_voice_start(uuid, text, integer),
   public.live_voice_close(uuid, uuid, integer, boolean) to service_role;
 
