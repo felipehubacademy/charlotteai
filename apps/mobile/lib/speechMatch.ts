@@ -41,7 +41,10 @@ const INFORMAL: Record<string, string> = {
   ok: 'okay', mr: 'mister', mrs: 'missus', dr: 'doctor', vs: 'versus',
   tv: 'tv', 'a.m.': 'am', 'p.m.': 'pm',
   alright: 'all right', everyday: 'every day', anymore: 'any more',
-  // Contração escrita sem apóstrofo pelo reconhecimento ("Im fine", "dont worry").
+};
+// Contração escrita sem apóstrofo pelo reconhecimento ("Im fine", "dont worry"). Só no corretor novo
+// (lib/speechGrade); a comparação de antes (legacy) fica como era, para o relatório medir a diferença.
+const NO_APOSTROPHE: Record<string, string> = {
   im: 'i am', whats: 'what is', thats: 'that is', youre: 'you are', theyre: 'they are', ive: 'i have',
   dont: 'do not', didnt: 'did not', doesnt: 'does not', isnt: 'is not', arent: 'are not',
   wasnt: 'was not', werent: 'were not', cant: 'cannot', couldnt: 'could not', wouldnt: 'would not',
@@ -118,8 +121,9 @@ function expandMore(t: string): string {
 
 const HOMOPHONES: Record<string, string> = { where: 'were', wear: 'were' };
 
-function normalizeWith(text: string, sTo: 'is' | 'has', dTo: 'would' | 'had'): string {
-  let t = text.toLowerCase().replace(/[‘’`´]/g, "'").replace(/[“”„]/g, '"')
+function normalizeWith(text: string, sTo: 'is' | 'has', dTo: 'would' | 'had', legacy = false): string {
+  let t = text.toLowerCase().replace(/[‘’`´]/g, "'").replace(/[“”„]/g, '"');
+  if (!legacy) t = t
     // Sem acento (o reconhecimento às vezes escreve "Brasil", "Felipé", "café").
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     // "Whatsup" / "wassup" / "What's up" = "what is up".
@@ -145,7 +149,8 @@ function normalizeWith(text: string, sTo: 'is' | 'has', dTo: 'would' | 'had'): s
     .replace(/'s\b/g, 's')                        // possessivo: father's = fathers
     .replace(/'/g, '');
   // Homófonos que o reconhecimento troca: "Were you working?" vira "Where you working?".
-  const words = t.split(/\s+/).filter(Boolean).flatMap(w => (INFORMAL[w] ?? HOMOPHONES[w] ?? w).split(' '));
+  const words = t.split(/\s+/).filter(Boolean)
+    .flatMap(w => (INFORMAL[w] ?? (legacy ? undefined : NO_APOSTROPHE[w]) ?? HOMOPHONES[w] ?? w).split(' '));
   const raw: string[] = [];
   for (let i = 0; i < words.length; i++) {
     const w = words[i];
@@ -246,17 +251,18 @@ export interface SpeechMatch {
 }
 
 /** Melhor resultado entre as leituras do reconhecimento e as leituras das contrações ambíguas. */
-export function bestSpeechMatch(spoken: string | string[], reference: string): SpeechMatch {
+export function bestSpeechMatch(spoken: string | string[], reference: string, opts: { legacy?: boolean } = {}): SpeechMatch {
+  const legacy = !!opts.legacy;
   const alts = (Array.isArray(spoken) ? spoken : [spoken]).filter(s => s && s.trim());
   let best: SpeechMatch = { percent: 0, missing: [], transcript: alts[0] ?? '' };
   const variants: ['is' | 'has', 'would' | 'had'][] = [['is', 'would'], ['has', 'had']];
   for (const [sTo, dTo] of variants) {
-    const ref0 = normalizeWith(reference, sTo, dTo).split(' ').filter(Boolean);
+    const ref0 = normalizeWith(reference, sTo, dTo, legacy).split(' ').filter(Boolean);
     if (ref0.length === 0) continue;
     if (alts.length === 0) { if (best.missing.length === 0) best = { percent: 0, missing: ref0, transcript: "" }; continue; }
     for (const alt of alts) {
       for (const [sp1, dp1] of variants) {
-        const sp = normalizeWith(alt, sp1, dp1).split(' ').filter(Boolean);
+        const sp = normalizeWith(alt, sp1, dp1, legacy).split(' ').filter(Boolean);
         // Palavra com hífen falada junta ("push-ups" esperado, "pushups" falado): junta o par na frase esperada.
         const spSet = new Set(sp);
         const ref: string[] = [];

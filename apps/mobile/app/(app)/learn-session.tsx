@@ -983,7 +983,7 @@ export default function LearnSessionScreen() {
     const missLine = missing.length && transcript
       ? (isPortuguese ? ` Faltou: ${missing.join(', ')}.` : ` Missing: ${missing.join(', ')}.`) : '';
     // O corretor de antes (para o relatório mostrar o que o novo salvou ou deixou de aprovar).
-    const legacy = alts.length ? bestSpeechMatch(alts, phraseText).percent : 0;
+    const legacy = alts.length ? bestSpeechMatch(alts, phraseText, { legacy: true }).percent : 0;
     const legacyPassed = isNoviceLike
       ? (legacy >= 70 || (isPreNovice && (legacy >= 50 || (stepFailsRef.current >= 1 && alts.length > 0))))
       : legacy >= 85;
