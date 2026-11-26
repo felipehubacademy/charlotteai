@@ -16,7 +16,14 @@ export interface StuckItem {
 
 export interface StuckReport {
   since: string;
-  totals: { attempts: number; students: number; fails: number; skips: number; exits: number; asrErrors: number; micBlocked: number };
+  totals: {
+    attempts: number; students: number; fails: number; skips: number; exits: number; asrErrors: number; micBlocked: number;
+    /** Corretor novo da fala: pedidos de "fale de novo" (vazio/cortado), tentativas comparadas com o antigo,
+     *  aprovadas que o antigo reprovaria e reprovadas que o antigo aprovaria. */
+    retries: number; graded: number; graderSaved: number; graderLost: number;
+  };
+  /** Exemplos do que o corretor novo aprovou e o antigo reprovaria (frase, o que o app entendeu, vezes). */
+  graderSaved: { expected: string; answer: string; count: number }[];
   speaking: StuckItem[];
   grammar: StuckItem[];
   exits: { level: string; module: string | null; unit: string | null; activity: string; step: number | null; count: number; students: number }[];
@@ -70,6 +77,7 @@ interface StuckRow {
 
 interface StuckAggregates {
   totals: StuckReport['totals'];
+  graderSaved?: StuckReport['graderSaved'];
   stuck: StuckRow[];
   exits: StuckReport['exits'];
   failures: StuckReport['failures'];
@@ -139,7 +147,10 @@ export async function stuckReport(days: number): Promise<StuckReport> {
     totals: {
       attempts: agg.totals.attempts, students: agg.totals.students, fails: agg.totals.fails, skips: agg.totals.skips,
       exits: agg.totals.exits, asrErrors: agg.totals.asrErrors, micBlocked: agg.totals.micBlocked,
+      retries: agg.totals.retries ?? 0, graded: agg.totals.graded ?? 0,
+      graderSaved: agg.totals.graderSaved ?? 0, graderLost: agg.totals.graderLost ?? 0,
     },
+    graderSaved: (agg.graderSaved ?? []).map(g => ({ expected: g.expected, answer: g.answer, count: g.count })),
     speaking, grammar, exits, failures, alerts, alertGroups: groups,
   };
 }
