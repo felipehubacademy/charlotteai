@@ -1,7 +1,7 @@
 // /api/support/whatsapp-code — código curto que liga a conversa do WhatsApp ao aluno (Bearer do app).
 //   POST → { code: 'Q7F3K2' }
 // O botão "Falar no WhatsApp" põe o código na mensagem já escrita; o webhook troca o
-// código pelo aluno (lib/support-whatsapp.ts). Vale 7 dias; reaproveita o código vigente.
+// código pelo aluno (lib/support-whatsapp.ts). Vale 7 dias e uma vez só; reaproveita o código vigente ainda não usado.
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
@@ -24,9 +24,9 @@ export async function POST(req: NextRequest) {
   const user = auth?.user;
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  // Mais de 1 dia de validade ainda: reaproveita (não gera um código por toque).
+  // Mais de 1 dia de validade ainda e não usado: reaproveita (não gera um código por toque). O código é de uso único.
   const { data: current } = await supabase.from('support_link_codes').select('code, expires_at')
-    .eq('user_id', user.id).gte('expires_at', new Date(Date.now() + 86400000).toISOString())
+    .eq('user_id', user.id).is('used_at', null).gte('expires_at', new Date(Date.now() + 86400000).toISOString())
     .order('created_at', { ascending: false }).limit(1);
   if (current?.[0]) return NextResponse.json({ code: (current[0] as { code: string }).code });
 

@@ -4,12 +4,15 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { sendWhatsAppText, markWhatsAppRead, type IncomingWhatsApp } from '@/lib/whatsapp';
 import { runSupportAgent, type SupportTurn, type SupportUserContext } from '@/lib/support-agent';
 import { aiShouldStaySilent, findUserContext, upsertConversation, logMessage, setConversationStatus, escalate, ticketOpenedText, noteCancelReason } from '@/lib/support-service';
+import { recentHits, recordHit } from '@/lib/rate-hits';
 
 const NOT_TEXT = 'Por enquanto eu só consigo ler mensagens de texto. Pode escrever a sua dúvida?';
 const EMAIL_RE = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
 // Código do botão do app (ver /api/support/whatsapp-code): "Q" + 5 caracteres sem 0/O/1/I/L.
 const CODE_RE = /\bQ[2-9A-HJKMNP-Z]{5}\b/;
 const CODE_TEXT_RE = /\(?\s*(?:c[óo]digo|code):?\s*Q[2-9A-HJKMNP-Z]{5}\s*\)?/i;
+const HOUR = 3600000;
+const CODE_FAILS_PER_HOUR = 5;
 
 export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
   const supabase = getSupabaseAdmin();
@@ -28,12 +31,18 @@ export async function handleWhatsAppMessage(m: IncomingWhatsApp) {
   let verified = conv0?.user_verified ?? false;
   let emailNotFound: string | null = null;
   const code = m.text?.toUpperCase().match(CODE_RE)?.[0] ?? null;
-  if (code) {
-    const { data } = await supabase.from('support_link_codes').select('user_id')
-      .eq('code', code).gte('expires_at', new Date().toISOString()).maybeSingle();
-    if (data) {
-      userId = (data as { user_id: string }).user_id; verified = true;
-      await supabase.from('support_link_codes').update({ used_at: new Date().toISOString() } as never).eq('code', code);
+  // Código de uso único (marca used_at só se ainda estava livre, na mesma operação) e no máximo
+  // CODE_FAILS_PER_HOUR códigos errados ou vencidos por número: depois disso, nem confere.
+  if (code && (await recentHits('wa_link_code', m.from, HOUR)) < CODE_FAILS_PER_HOUR) {
+    const nowIso = new Date().toISOString();
+    const { data } = await supabase.from('support_link_codes').update({ used_at: nowIso } as never)
+      .eq('code', code).is('used_at', null).gte('expires_at', nowIso).select('user_id');
+    const row = (data as { user_id: string }[] | null)?.[0];
+    if (row) {
+      userId = row.user_id; verified = true;
+    } else if (!(conv0?.user_verified && conv0.user_id)) {
+      // Reenvio do mesmo código por quem já foi confirmado não conta como erro.
+      await recordHit('wa_link_code', m.from);
     }
   }
   const email = m.text?.match(EMAIL_RE)?.[0]?.toLowerCase() ?? null;
