@@ -3,6 +3,7 @@
 
 import { createClient } from '@supabase/supabase-js';
 import { SimpleEmailService } from './simple-email-service';
+import { escapeHtml } from './html-escape';
 
 // Supabase client (lazy, via getter)
 function getSupabase() {
@@ -63,7 +64,7 @@ export class EmailNotificationService {
           
           <div class="content">
             <div class="welcome-text">
-              Olá <strong>${nome}</strong>!<br><br>
+              Olá <strong>${escapeHtml(nome)}</strong>!<br><br>
               Que alegria ter você conosco! Seu teste grátis do Queizy já está ativo e você pode começar a praticar inglês imediatamente.
             </div>
 
@@ -71,7 +72,7 @@ export class EmailNotificationService {
               <div class="trial-title"> Seu Período de Teste</div>
               <div class="trial-desc">
                 • <strong>7 dias grátis</strong> com acesso completo<br>
-                • Nível configurado: <strong>${nivelIngles}</strong><br>
+                • Nível configurado: <strong>${escapeHtml(nivelIngles)}</strong><br>
                 • Sem necessidade de cartão de crédito<br>
                 • Cancele a qualquer momento
               </div>
@@ -189,7 +190,7 @@ Transformando o aprendizado de inglês com IA
           
           <div class="content">
             <div class="reminder-text">
-              Olá <strong>${nome}</strong>!<br><br>
+              Olá <strong>${escapeHtml(nome)}</strong>!<br><br>
               Você ainda tem tempo para aproveitar ao máximo seu teste grátis do Queizy!
             </div>
 
@@ -274,7 +275,7 @@ Queizy — Hub Academy
           
           <div class="content">
             <div class="expiration-text">
-              Olá <strong>${nome}</strong>!<br><br>
+              Olá <strong>${escapeHtml(nome)}</strong>!<br><br>
               Seu teste grátis de 7 dias do Queizy chegou ao fim. Esperamos que tenha gostado da experiência!
             </div>
 
@@ -367,7 +368,7 @@ Queizy — Hub Academy
           
           <div class="content">
             <div class="reset-text">
-              Olá <strong>${nome}</strong>!<br><br>
+              Olá <strong>${escapeHtml(nome)}</strong>!<br><br>
               Recebemos uma solicitação para redefinir a senha da sua conta no Queizy.
             </div>
 
