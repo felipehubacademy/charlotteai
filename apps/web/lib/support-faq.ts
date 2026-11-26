@@ -194,7 +194,7 @@ Se preferir não continuar, cancele em Perfil > Assinatura > Gerenciar assinatur
 Assinou pela App Store ou pelo Google Play? A própria loja avisa e tenta cobrar de novo: atualize a forma de pagamento na sua conta Apple ou Google.` },
   { section: 'Planos e assinatura', question: 'Assinei pelo site com o e-mail errado. E agora?', answer:
 `Logo depois do pagamento, a tela de confirmação do site mostra o e-mail da compra. Se ele estiver errado, toque em "Corrigir", escreva o e-mail certo e salve: mandamos para ele o link para criar a senha.
-Se você já saiu dessa tela, fale com o suporte (suporte@queizy.com ou WhatsApp) mandando o e-mail certo, o e-mail que foi digitado na compra (mesmo errado), o nome completo usado no pagamento e, se pagou no cartão, só os 4 últimos dígitos dele. Conferimos a compra e corrigimos na hora.
+Se você já saiu dessa tela, fale com o suporte (suporte@queizy.com ou WhatsApp) mandando o e-mail certo, o e-mail que foi digitado na compra (mesmo errado), o nome completo usado no pagamento e, se pagou no cartão, só os 4 últimos dígitos dele. Conferimos a compra e a nossa equipe confirma a troca do e-mail em seguida.
 A correção vale para contas criadas pela compra que ainda não foram usadas no app, em até 30 dias. Se o e-mail certo já tiver uma conta no Queizy, um atendente junta as duas.` },
   { section: 'Planos e assinatura', question: 'Como cancelar a assinatura?', answer:
 `O cancelamento é feito na loja (a Apple e o Google gerenciam a assinatura):

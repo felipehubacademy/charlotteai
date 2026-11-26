@@ -316,6 +316,7 @@ export async function aiShouldStaySilent(conversationId: string, text: string): 
 /** Pedido de cancelamento: guarda o motivo (e se a IA cancelou) como nota interna da conversa,
  *  para a equipe e os Insights verem por que as pessoas cancelam. Não entra no histórico da IA. */
 export async function noteCancelReason(conversationId: string, d: { intent: string; reason: string }): Promise<void> {
-  if (d.intent !== 'cancelamento' || !d.reason) return;
-  await logMessage({ conversationId, direction: 'out', author: 'system', body: d.reason, intent: 'cancelamento' }).catch(() => {});
+  // Cancelamento: motivo. E-mail errado: o que a IA conferiu (e o pedido de troca a aprovar no /admin/support).
+  if ((d.intent !== 'cancelamento' && d.intent !== 'email_errado') || !d.reason) return;
+  await logMessage({ conversationId, direction: 'out', author: 'system', body: d.reason, intent: d.intent }).catch(() => {});
 }

@@ -46,7 +46,7 @@ export const AUTO_INTENTS = new Set([
   'encerramento',   // aluno agradece ou diz que resolveu: despedida e encerra o atendimento
   'reembolso',      // só quando a FAQ tem o caminho (needsHuman=false); o resto escala
   'excluir_conta',  // a FAQ tem o passo a passo; se não deu certo, o modelo marca needsHuman
-  'email_errado',   // assinou pelo site com o e-mail errado: o código localiza, confere e corrige (lib/email-fix)
+  'email_errado',   // assinou pelo site com o e-mail errado: o código localiza e confere; a troca é aprovada por um atendente (lib/email-fix)
   'desinteresse',   // "não tenho mais interesse": agradece e pergunta o que faltou, sem insistir nem desligar nada
   'cancelamento',   // quer cancelar a PRÓPRIA assinatura: entende o motivo, uma tentativa de reverter e cancela (site) ou orienta (loja)
 ]);
@@ -277,11 +277,14 @@ export async function runSupportAgent(input: {
       correctEmail: f.correctEmail || input.contactEmail || null,
       wrongEmail: f.wrongEmail ?? null, fullName: f.fullName ?? null, cardLast4: f.cardLast4 ?? null,
     }).catch(e => ({ status: 'escalate' as const, reason: `Falha ao conferir: ${e instanceof Error ? e.message : String(e)}` }));
-    if (fix.status === 'fixed') {
-      needsHuman = false;
+    if (fix.status === 'pending_review') {
+      // Conferido, mas a troca de e-mail de conta paga passa por um atendente (aprova no /admin/support).
+      // O pedido (fix.requestId) vai na nota interna da conversa (noteCancelReason), onde fica o botão de aprovar.
+      needsHuman = true;
+      reason = `Troca de e-mail aguardando aprovação: de ${fix.from ?? '(sem e-mail)'} para ${fix.email}, nome${fix.cardChecked ? ' e 4 dígitos do cartão' : ''} conferido${fix.cardChecked ? 's' : ''} pela IA. Pedido ${fix.requestId}.`;
       reply = replyLang === 'en'
-        ? `Done! We found your purchase and changed your account email to ${fix.email}. We just sent the link to create your password to that address: then sign in to the app with this email.`
-        : `Pronto! Encontramos a sua compra e corrigimos o e-mail da conta para ${fix.email}. Acabamos de mandar para ele o link para criar a senha: depois é só entrar no app com esse e-mail.`;
+        ? `We found your purchase. Our team will confirm the change to ${fix.email} and get back to you here shortly.`
+        : `Encontramos a sua compra. A nossa equipe vai confirmar a troca para ${fix.email} e te avisa por aqui em breve.`;
     } else if (fix.status === 'need_info') {
       needsHuman = false;
       const askEmail = fix.missing.includes('correctEmail');
