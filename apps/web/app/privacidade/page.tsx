@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PublicHeader from '@/components/PublicHeader';
 import PublicFooter from '@/components/PublicFooter';
+import CookiePreferencesLink from '@/components/CookiePreferencesLink';
 
 export const metadata: Metadata = {
   title: 'Política de Privacidade — Queizy',
@@ -24,7 +25,7 @@ export default function PrivacidadePage() {
             Política de Privacidade
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, margin: 0 }}>
-            Última atualização: 19 de outubro de 2026
+            Última atualização: 26 de novembro de 2026
           </p>
         </div>
       </div>
@@ -52,8 +53,12 @@ export default function PrivacidadePage() {
             ['Dados de áudio', 'Gravações de voz em exercícios de pronúncia e conversas. Na pronúncia e nas ligações (Live Voice), o áudio é processado em tempo real e não é gravado. No Free Chat, os áudios das conversas (os seus e as respostas faladas) ficam guardados por 90 dias, num espaço privado, para você ouvir de novo; depois disso, fica só o texto.'],
 ['Dados de dispositivo', 'Token de notificações push, sistema operacional e versão do app (para lembretes de estudo).'],
             ['Dados de pagamento', 'Processados pela App Store ou Google Play ou, na assinatura pelo site, por um parceiro de pagamentos. Na assinatura pelo site, CPF, celular e endereço informados no formulário são repassados ao parceiro de pagamentos só para a cobrança, sem ficar guardados no Queizy. Não armazenamos dados de cartão nem bancários.'],
-            ['Cookies do site (queizy.com)', 'O pixel da Meta (Facebook e Instagram) e as tags do Google (Google Ads, pelo Google Tag Manager) medem visitas, início de assinatura e vendas que vieram de anúncios. A visita também é informada à Meta pelo nosso servidor (endereço IP e navegador), para a medição não depender do navegador. Na assinatura pelo site, também enviamos à Meta o seu e-mail criptografado (hash) para ligar a venda ao anúncio. Você pode bloquear ou apagar esses cookies nas configurações do seu navegador.'],
+            ['Cookies do site (queizy.com)', 'Essenciais, sempre ativos: fazem o site funcionar, como a confirmação da sua compra, o código de parceiro do link que você usou e a sua escolha sobre cookies. Medição e publicidade, só com o seu consentimento: se você tocar em "Aceitar" no aviso de cookies, usamos as ferramentas de medição das plataformas em que anunciamos (redes sociais e buscador) para saber quais anúncios trazem visitas, início de assinatura e vendas. Com o aceite, a visita também é informada a essas plataformas pelo nosso servidor (endereço IP, navegador e identificadores desses cookies) e, na assinatura pelo site, o seu e-mail criptografado (hash), para ligar a venda ao anúncio. Se você escolher "Só os essenciais", esses cookies não são gravados e nada disso é enviado.'],
           ]} />
+          <p style={{ marginTop: 16 }}>
+            <strong>Como mudar a sua escolha sobre cookies:</strong> o aviso de cookies aparece na primeira visita ao site e a escolha fica guardada por até 12 meses. Para mudar a qualquer momento, use o link{' '}
+            <CookiePreferencesLink style={{ color: '#6B4BFF', textDecoration: 'underline' }} />, que também fica no rodapé do site. Se você escolher &quot;Só os essenciais&quot; depois de ter aceitado, apagamos do seu navegador os cookies de medição do queizy.com. Você também pode bloquear ou apagar cookies nas configurações do navegador.
+          </p>
         </Section>
 
         <Section title="3. Como usamos seus dados">
@@ -71,8 +76,8 @@ export default function PrivacidadePage() {
         <Section title="4. Bases legais (LGPD)">
           <DataTable rows={[
             ['Execução de contrato (art. 7º, V)', 'Criação de conta, uso do app e pagamentos.'],
-            ['Consentimento (art. 7º, I)', 'Notificações push e acesso ao microfone/câmera.'],
-            ['Legítimo interesse (art. 7º, IX)', 'Segurança, personalização, melhoria do serviço e medição dos nossos anúncios no site.'],
+            ['Consentimento (art. 7º, I)', 'Notificações push, acesso ao microfone/câmera e cookies de medição e publicidade do site.'],
+            ['Legítimo interesse (art. 7º, IX)', 'Segurança, personalização e melhoria do serviço.'],
             ['Obrigação legal (art. 7º, II)', 'Quando exigido por lei ou autoridade competente.'],
           ]} />
         </Section>
@@ -85,6 +90,7 @@ export default function PrivacidadePage() {
             ['Inteligência artificial', 'Geração de respostas, explicações, exercícios e resumos. Suas mensagens são processadas para gerar a resposta e não são usadas para treinar modelos.'],
             ['Voz e fala', 'Síntese de voz das falas dos personagens, reconhecimento de fala, avaliação de pronúncia e as ligações ao vivo (áudio processado em tempo real, sem gravação de voz; a transcrição guardada pelo fornecedor é apagada em até 7 dias).'],
             ['Pagamentos e assinaturas', 'Gestão das assinaturas e processamento do pagamento pelo site.'],
+            ['Plataformas de anúncios', 'Medição dos anúncios no site (visitas, início de assinatura e vendas), só para quem aceitou os cookies de medição e publicidade.'],
             ['Apple / Google', 'Distribuição do app e compras in-app.'],
             ['Autoridades públicas', 'Quando exigido por lei ou ordem judicial.'],
           ]} />

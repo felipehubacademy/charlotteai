@@ -9,6 +9,7 @@ import {
   type PayMethod, validCpf, type CheckoutCustomerData, type PayerData, type CouponResult,
 } from '@/lib/asaas';
 import { lookupCep } from '@/lib/cep';
+import { CONSENT_COOKIE } from '@/lib/meta-pixel';
 
 // Proteção contra robôs: cada envio cria uma conta. Até 10 envios por endereço a cada 10 minutos
 // (folga para família ou empresa no mesmo Wi-Fi; robô passa disso em segundos).
@@ -124,18 +125,21 @@ export async function prepareWebCheckout(req: NextRequest, body: any): Promise<F
 /** Campos comuns da linha em asaas_checkouts (afiliado, cupom, aceite de cookies para a conversão). */
 export function checkoutRowFields(ctx: CheckoutContext, req: NextRequest) {
   const { coupon, couponWins, recurring, method, affPct } = ctx;
+  // LGPD (desde 26/11/2026): identificadores do navegador e campanha só com o aceite dos cookies
+  // (qz_consent=all). Sem aceite, consent: false e nada do navegador; lib/asaas-activation não envia conversão.
+  const consent = req.cookies.get(CONSENT_COOKIE)?.value === 'all';
   return {
     user_id: ctx.u.id, plan: ctx.plan, method, value_brl: ctx.value, trial_days: ctx.trialDays,
     affiliate_code: ctx.affiliate?.code ?? null, created_account: ctx.isNewAccount,
-    // Identificadores do navegador: base da conversão enviada pelo servidor (o site mede todas as visitas).
-    meta_tracking: {
-      consent: true,
+    // Identificadores do navegador: base da conversão enviada pelo servidor (só para quem aceitou os cookies).
+    meta_tracking: consent ? {
+      consent: true, consentAt: new Date().toISOString(),
       fbp: req.cookies.get('_fbp')?.value ?? null, fbc: req.cookies.get('_fbc')?.value ?? null,
       externalId: req.cookies.get('qz_vid')?.value ?? null, // mesma visita do pixel (lib/meta-pixel browserIds)
       ip: ctx.ip, ua: req.headers.get('user-agent'), url: req.headers.get('referer'),
       // Campanha do anúncio que trouxe a visita (cookie qz_utm, components/AdAttribution): teste A/B site x lojas.
       utm: (() => { try { return JSON.parse(decodeURIComponent(req.cookies.get('qz_utm')?.value ?? '')); } catch { return null; } })(),
-    },
+    } : { consent: false },
     coupon_code: couponWins && coupon?.ok ? coupon.code : null, discount_pct: ctx.discountPct,
     // Cupom com duração (ex.: só a 1ª cobrança): o webhook volta a assinatura para este valor
     // depois de N cobranças. Volta ao preço com o desconto do afiliado, se houver (esse é permanente).

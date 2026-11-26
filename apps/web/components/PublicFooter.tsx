@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CookiePreferencesLink from '@/components/CookiePreferencesLink';
 
 // Footer público padrão (igual à home). Usado em /faq, /privacidade, /termos.
 export default function PublicFooter() {
@@ -19,6 +20,7 @@ export default function PublicFooter() {
         <a href="/termos" style={{ fontSize: 12, color: '#8A8494' }}>Termos</a>
         <a href="/faq" style={{ fontSize: 12, color: '#8A8494' }}>Ajuda</a>
         <a href="mailto:contato@queizy.com" style={{ fontSize: 12, color: '#8A8494' }}>Contato</a>
+        <CookiePreferencesLink style={{ fontSize: 12, color: '#8A8494' }} />
       </div>
     </footer>
   );

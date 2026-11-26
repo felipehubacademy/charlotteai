@@ -3,6 +3,9 @@
 //   plans    = viu a seção de planos      checkout = abriu a página de assinatura
 //   form     = começou a preencher        submit   = tocou em pagar        error = o pagamento voltou com erro
 // Só nome de campanha, página de entrada e plataforma: nenhum dado pessoal.
+// LGPD (desde 26/11/2026): é medição de anúncios, então só conta com o aceite dos cookies.
+import { hasConsent } from '@/lib/meta-pixel';
+
 export type FunnelStep = 'plans' | 'checkout' | 'form' | 'submit' | 'error';
 
 function readUtm(): { c?: string; s?: string; lp?: string } | null {
@@ -18,6 +21,7 @@ function readUtm(): { c?: string; s?: string; lp?: string } | null {
 
 export function trackFunnel(step: FunnelStep) {
   try {
+    if (!hasConsent()) return; // sem aceite dos cookies: não mede
     const utm = readUtm();
     if (!utm?.c) return; // sem anúncio: fora do funil por campanha
     // 'error' pode repetir (cada tentativa recusada conta); os demais, uma vez por sessão.

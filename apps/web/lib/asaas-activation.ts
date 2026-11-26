@@ -41,17 +41,20 @@ export async function grantAccess(userId: string, plan: WebPlan, until: Date, me
 
 // Conversão para a Meta pelo servidor (só com aceite de cookies no checkout). Mesmo event_id do
 // pixel da tela de sucesso: ck_<checkout>_start (teste grátis) e ck_<checkout>_purchase (1ª cobrança).
+// LGPD (desde 26/11/2026): só envia quando o checkout gravou o aceite do aviso de cookies (consent + consentAt,
+// lib/web-checkout). Sem aceite, não vai nada para a Meta: nem e-mail, nem conta, nem dados do navegador.
+// Checkouts de antes do aviso (consent: true sem consentAt) também não enviam: ninguém tinha escolhido.
 async function metaConversion(row: CheckoutRow, event: 'StartTrial' | 'Purchase', value?: number): Promise<void> {
   if (row.sandbox) return;
   const supabase = getSupabaseAdmin();
-  const [{ data: ck }, { data: u }] = await Promise.all([
-    supabase.from('asaas_checkouts').select('meta_tracking').eq('id', row.id).maybeSingle(),
-    supabase.from('charlotte_users').select('email').eq('id', row.user_id).maybeSingle(),
-  ]);
+  const { data: ck } = await supabase.from('asaas_checkouts').select('meta_tracking').eq('id', row.id).maybeSingle();
+  const tracking = (ck as { meta_tracking: MetaTracking | null } | null)?.meta_tracking ?? null;
+  if (!tracking || tracking.consent !== true || !tracking.consentAt) return;
+  const { data: u } = await supabase.from('charlotte_users').select('email').eq('id', row.user_id).maybeSingle();
   await sendCapiEvent({
     event, eventId: `ck_${row.id}_${event === 'StartTrial' ? 'start' : 'purchase'}`,
     email: (u as { email: string | null } | null)?.email ?? null, userId: row.user_id,
-    value, currency: 'BRL', tracking: (ck as { meta_tracking: MetaTracking | null } | null)?.meta_tracking ?? null,
+    value, currency: 'BRL', tracking,
   }).catch(() => false);
 }
 
