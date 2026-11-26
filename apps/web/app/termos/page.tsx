@@ -24,7 +24,7 @@ export default function TermosPage() {
             Termos de Uso
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, margin: 0 }}>
-            Última atualização: 8 de outubro de 2026
+            Última atualização: 26 de novembro de 2026
           </p>
         </div>
       </div>
@@ -68,9 +68,23 @@ export default function TermosPage() {
           <DataTable rows={[
             ['Período de teste', 'O Queizy oferece 7 dias de acesso gratuito completo, sem necessidade de cartão de crédito. Não há cobrança automática nem conversão em assinatura sem a sua ação: ao término dos 7 dias, o acesso é interrompido e, para continuar, você escolhe um plano pago (Mensal ou Anual) dentro do app.'],
             ['Cobrança', 'Automática no início de cada período (mensal ou anual) até o cancelamento.'],
-            ['Cancelamento', 'A qualquer momento nas configurações da App Store ou Google Play. O acesso permanece ativo até o fim do período pago.'],
-            ['Reembolsos', 'Regidos pelas políticas da Apple ou Google. Solicite diretamente nas plataformas.'],
             ['Preços', 'Sujeitos a alteração com aviso prévio razoável.'],
+          ]} />
+
+          {/* REVISÃO JURÍDICA PENDENTE (26/11/2026): cancelamento, arrependimento (art. 49 do CDC) e reembolso
+              escritos para cobrir a venda direta pelo site (Pix e cartão). O Felipe precisa revisar com o jurídico
+              antes de considerar o texto final. Regras no código: lib/site-subscription.ts (cancelamento) e
+              app/api/checkout/asaas/route.ts (action 'refund', REFUND_WINDOW_DAYS = 7, contados do 1º pagamento). */}
+          <p style={{ marginTop: 22, marginBottom: 10, fontWeight: 700 }}>Cancelamento</p>
+          <List items={[
+            'Assinatura pela App Store ou pelo Google Play: cancele a qualquer momento nas configurações de assinaturas da loja (no app, Perfil > Assinatura > Gerenciar assinatura abre essa tela).',
+            'Assinatura pelo site (queizy.com): cancele a qualquer momento no app, em Perfil > Assinatura > Gerenciar assinatura, ou pelo e-mail suporte@queizy.com. O cancelamento interrompe as renovações futuras, e o acesso continua até o fim do período já pago. Se você cancelar durante os dias grátis, nada é cobrado. O plano Anual pago no Pix não renova sozinho.',
+          ]} />
+
+          <p style={{ marginTop: 22, marginBottom: 10, fontWeight: 700 }}>Direito de arrependimento e reembolso</p>
+          <List items={[
+            'Compras na App Store ou no Google Play: o reembolso segue as políticas da Apple ou do Google e é pedido diretamente na loja.',
+            'Compras pelo site (Pix ou cartão de crédito): você pode desistir da compra em até 7 (sete) dias, contados do pagamento ou, na assinatura que começa com dias grátis, da primeira cobrança, conforme o art. 49 do Código de Defesa do Consumidor. Devolvemos o valor integral pago, pelo mesmo meio de pagamento, e o acesso aos recursos da assinatura termina quando o reembolso é feito. Para pedir, use o app, em Perfil > Assinatura > Gerenciar assinatura > Pedir reembolso, ou escreva para suporte@queizy.com com o e-mail da sua conta. No cartão de crédito, o estorno é pedido à administradora do cartão em até 2 dias úteis e aparece na fatura conforme o prazo dela (em geral, em até duas faturas). No Pix, o valor volta para a mesma conta que fez o pagamento, em até 2 dias úteis (em geral, na hora).',
           ]} />
         </Section>
 

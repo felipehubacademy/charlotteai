@@ -1,12 +1,15 @@
 // POST /api/meta-pageview { eventId, url, fbc?, fbp?, vid? } — a visita também pelo servidor (API de Conversões da Meta),
 // com o mesmo event_id do pixel no navegador: conta quem tem bloqueador ou sai antes de o pixel carregar,
 // e a Meta junta os dois sem contar em dobro. Chamado pelo components/CookieConsent a cada página.
+// LGPD (desde 26/11/2026): só com o aceite dos cookies (qz_consent=all); sem ele, não envia nada.
 import { NextRequest, NextResponse } from 'next/server';
 import { sendCapiEvent } from '@/lib/meta-capi';
+import { CONSENT_COOKIE } from '@/lib/meta-pixel';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
+  if (req.cookies.get(CONSENT_COOKIE)?.value !== 'all') return NextResponse.json({ ok: false, consent: false });
   const b = await req.json().catch(() => ({})) as { eventId?: string; url?: string; fbc?: string; fbp?: string; vid?: string };
   const eventId = String(b.eventId ?? '').slice(0, 64);
   const url = String(b.url ?? '');

@@ -3,6 +3,7 @@ import { Bricolage_Grotesque } from 'next/font/google';
 import StoreCTA from '@/components/StoreCTA';
 import FunnelSectionWatch from '@/components/FunnelSectionWatch';
 import AffiliateCapture from '@/components/AffiliateCapture';
+import CookiePreferencesLink from '@/components/CookiePreferencesLink';
 import IgorAudioButton from '@/components/IgorAudioButton';
 
 // Fonte de títulos da marca (corte óptico 96, como no app).
@@ -384,6 +385,7 @@ export default function LandingPage({ variant }: { variant?: 'v1' | 'v2' }) {
             <a href="/termos">Termos</a>
             <a href="/faq">Ajuda</a>
             <a href="mailto:contato@queizy.com">Contato</a>
+            <CookiePreferencesLink />
           </div>
         </div>
       </footer>

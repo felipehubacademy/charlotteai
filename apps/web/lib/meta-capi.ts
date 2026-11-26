@@ -1,12 +1,13 @@
 // lib/meta-capi.ts — API de Conversões da Meta (servidor): a conversão chega mesmo quando o
-// navegador bloqueia o pixel. Vale para todas as visitas e checkouts (o site mede todo mundo desde 16/11/2026).
+// navegador bloqueia o pixel. Desde 26/11/2026 (LGPD), só para quem tocou em "Aceitar" no aviso de cookies:
+// /api/meta-pageview confere o cookie qz_consent e lib/asaas-activation confere o consentAt do checkout.
 // Mesmo event_id do pixel no navegador: a Meta junta os dois e não conta em dobro.
 // Precisa de META_CAPI_TOKEN (Gestor de Eventos > Pixel Queizy > Definições > API de Conversões);
 // sem ele, não envia nada.
 import { createHash } from 'crypto';
 import { META_PIXEL_ID } from '@/lib/meta-pixel';
 
-export type MetaTracking = { consent?: boolean; fbp?: string | null; fbc?: string | null; ip?: string | null; ua?: string | null; url?: string | null; externalId?: string | null };
+export type MetaTracking = { consent?: boolean; consentAt?: string | null; fbp?: string | null; fbc?: string | null; ip?: string | null; ua?: string | null; url?: string | null; externalId?: string | null };
 
 const sha = (v: string) => createHash('sha256').update(v.trim().toLowerCase()).digest('hex');
 
