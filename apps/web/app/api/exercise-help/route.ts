@@ -8,6 +8,7 @@
 
 import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
 import { logOpenAIUsage } from '@/lib/openai-usage';
@@ -64,6 +65,10 @@ export async function POST(request: NextRequest) {
     if ((body.level as string) === 'Igorfina') body.level = 'Novice';
     const lang = body.level === 'Novice' ? 'pt' : 'en';
     const prompt = buildPrompt(body, lang);
+    const userId = await requestUserId(request); // aluno do login
+    // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+    const denied = await checkAiAccess(userId, 'exercise-help');
+    if (denied) return denied;
 
     const completion = await openai.chat.completions.create({
       model:       'gpt-4o-mini',
@@ -79,7 +84,7 @@ export async function POST(request: NextRequest) {
       model:            'gpt-4o-mini',
       promptTokens:     completion.usage?.prompt_tokens,
       completionTokens: completion.usage?.completion_tokens,
-      userId:           (await requestUserId(request)) ?? undefined,
+      userId:           userId ?? undefined,
     });
 
     return NextResponse.json({ explanation, lang });

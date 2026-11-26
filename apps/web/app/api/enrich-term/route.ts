@@ -14,6 +14,7 @@
 
 import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import { createClient } from '@supabase/supabase-js';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
@@ -33,6 +34,9 @@ export async function GET(req: NextRequest) {
   const raw    = req.nextUrl.searchParams.get('term')?.trim();
   const level  = req.nextUrl.searchParams.get('level') ?? 'Inter';
   const userId = await requestUserId(req); // aluno do login
+  // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+  const denied = await checkAiAccess(userId, 'enrich-term');
+  if (denied) return denied;
   if (raw && raw.length > 80) return NextResponse.json({ error: 'Term too long' }, { status: 413 });
 
   if (!raw) {

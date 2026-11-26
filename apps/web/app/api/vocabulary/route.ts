@@ -4,6 +4,7 @@
 
 import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
 import { logOpenAIUsage } from '@/lib/openai-usage';
@@ -16,6 +17,9 @@ export async function POST(request: NextRequest) {
   try {
     const { term, level } = await request.json() as { term: string; level: string };
     const userId = await requestUserId(request);
+    // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+    const denied = await checkAiAccess(userId, 'vocabulary');
+    if (denied) return denied;
     if (typeof term === 'string' && term.length > 80) return NextResponse.json({ error: 'Term too long' }, { status: 413 });
     if (!term?.trim()) {
       return NextResponse.json({ error: 'term required' }, { status: 400 });

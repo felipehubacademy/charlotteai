@@ -7,6 +7,7 @@ import { AsyncLocalStorage } from 'node:async_hooks';
 import { grammarAnalysisService } from '@/lib/grammar-analysis';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { checkPracticeTaste } from '@/lib/taste';
+import { checkAiPlan } from '@/lib/entitlement';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 import { characterOf, impressionOf, applyCharacterToSystem, wholeConversationImpressionStyle, type Character, type Impression } from '@/lib/characters';
 import { pedagogicalLevel } from '@/lib/levels';
@@ -174,6 +175,9 @@ async function handleAssistantPOST(request: NextRequest, userId: string | null) 
 
     // ── Rate limit check ─────────────────────────────────────────────────────
     if (userId) {
+      // Sem assinatura ativa (vencida): 402 com o aviso (o app mostra no chat e abre a oferta).
+      const denied = await checkAiPlan(userId);
+      if (denied) return denied;
       const limit = await checkRateLimit(userId, userLevel, mode);
       if (limit) {
         return NextResponse.json(limit, { status: 429 });

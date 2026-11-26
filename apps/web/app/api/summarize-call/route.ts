@@ -4,6 +4,7 @@
 // Novice → PT-BR, Inter + Advanced → EN (regra global da app).
 
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
 import { createClient } from '@supabase/supabase-js';
@@ -38,6 +39,9 @@ export async function POST(request: NextRequest) {
     const { userLevel, transcript, durationSeconds, startedAt } = body;
     // Com prova de login, grava na conta da prova (o userId do corpo fica só para apps antigos).
     const userId = await requestUserId(request); // só o aluno do login
+    // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+    const denied = await checkAiAccess(userId, 'summarize-call');
+    if (denied) return denied;
 
     if (!userId || !userLevel || !transcript || typeof durationSeconds !== 'number' || !startedAt) {
       return NextResponse.json(

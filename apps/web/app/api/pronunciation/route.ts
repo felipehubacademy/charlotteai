@@ -2,6 +2,7 @@
 
 import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import OpenAI from 'openai';
 import { aiFetch, transcribeModel } from '@/lib/ai-models';
 import { assessPronunciationOfficial } from '@/lib/azure-speech-sdk';
@@ -109,6 +110,9 @@ export async function POST(request: NextRequest) {
     const audioFile = formData.get('audio') as File;
     const referenceText = formData.get('referenceText') as string;
     const userId = await requestUserId(request); // aluno do login
+    // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+    const denied = await checkAiAccess(userId, 'pronunciation');
+    if (denied) return denied;
 
     if (!audioFile) {
       return NextResponse.json({

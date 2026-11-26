@@ -14,6 +14,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { logElevenLabsUsage } from '@/lib/openai-usage';
+import { requestUserId } from '@/lib/request-user';
+import { checkAiAccess } from '@/lib/entitlement';
 
 export const dynamic = 'force-dynamic';
 
@@ -42,6 +44,10 @@ export async function GET(req: NextRequest) {
   if (term.length > 60 || !/^[A-Za-z0-9 '’.,?!-]+$/.test(term)) {
     return NextResponse.json({ error: 'Invalid term' }, { status: 400 });
   }
+
+  // Áudio pronto do vocabulário: liberado para todos os planos, com limite por aluno (lib/entitlement).
+  const denied = await checkAiAccess(await requestUserId(req), 'tts-cached');
+  if (denied) return denied;
 
   const normalizedTerm = term.toLowerCase().trim();
   const slug           = termToSlug(term);

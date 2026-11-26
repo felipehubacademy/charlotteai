@@ -7,6 +7,7 @@
 // usageSessionId; o app avisa o fim em /api/live-voice/usage. A chave do ElevenLabs nunca sai do servidor: o app recebe
 // só um token de conversa de curta duração.
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { buildCallSession, generateOpener, type CallLevel } from '@/lib/family-call';
 import { characterOf, tagPortuguese } from '@/lib/characters';
@@ -22,6 +23,9 @@ export async function POST(req: NextRequest) {
   if (!auth?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const key = process.env.ELEVENLABS_API_KEY;
   if (!key) return NextResponse.json({ error: 'Not configured' }, { status: 500 });
+  // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+  const denied = await checkAiAccess(auth.user.id, 'live-voice-token');
+  if (denied) return denied;
 
   const body = await req.json().catch(() => ({}));
   const { data: u } = await supabase.from('charlotte_users')

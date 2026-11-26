@@ -8,6 +8,7 @@
 
 import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import { startLiveVoiceSession, closeLiveVoiceSession } from '@/lib/live-voice-usage';
 
 const MODEL = 'gpt-realtime-2';
@@ -32,6 +33,9 @@ export async function POST(request: NextRequest) {
     if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
       return NextResponse.json({ error: 'pool_check_unavailable' }, { status: 503 });
     }
+    // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+    const denied = await checkAiAccess(userId, 'live-voice-token');
+    if (denied) return denied;
     // Sessão de minutos: cobra a anterior que o app não fechou, faz a virada do mês e confere o saldo.
     const usage = await startLiveVoiceSession(userId, 'charlotte');
     if (!usage.ok) {

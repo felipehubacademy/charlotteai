@@ -5,6 +5,7 @@
 
 import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import { logOpenAIUsage, logElevenLabsUsage } from '@/lib/openai-usage';
 import { characterOf, impressionOf, voiceFor, voiceSegments, concatMp3, withVocalTics } from '@/lib/characters';
 import { speak } from '@/lib/charlotte-voice';
@@ -41,6 +42,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { text, source, character, impression } = body as { text: string; source?: string; character?: string; impression?: string };
     const userId = await requestUserId(request); // aluno do login (o userId do corpo não vale)
+    // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+    const denied = await checkAiAccess(userId, 'tts');
+    if (denied) return denied;
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json({ error: 'Missing text field' }, { status: 400 });
