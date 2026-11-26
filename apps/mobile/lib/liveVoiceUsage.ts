@@ -4,9 +4,17 @@
 //   Premium / Institucional: 20 min (1 200 s)
 // Quem esgota: trial -> upsell (assine); premium/inst -> comprar minutos
 // avulsos (IAP, fase futura). Reset automático no 1º dia de cada mês.
+//
+// O uso é contado no SERVIDOR (/api/live-voice/usage): o token da ligação (/api/realtime-token ou
+// /api/family-call/session) abre uma sessão de minutos e devolve usageSessionId; no fim, o app avisa
+// os segundos e o servidor cobra (pool do mês, depois bônus) e faz a virada do mês. O app não grava
+// mais esses campos na conta (o banco ignora).
 
+import Constants from 'expo-constants';
 import { supabase } from './supabase';
 import { localMonthStartStr } from './dateUtils';
+
+const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
 // ── Constantes ──────────────────────────────────────────────────────────────
 
@@ -51,7 +59,8 @@ export interface LiveVoiceStatus {
 /**
  * Obtém o status atual do pool. O tamanho do pool agora vem da ASSINATURA
  * (trial 5 min · premium/institucional 20 min), não do nível.
- * Se o mês mudou desde o último uso, zera o contador automaticamente.
+ * Lê do servidor (que faz a virada do mês). Se o servidor não responder, lê a conta
+ * e calcula igual, sem gravar nada.
  * O parâmetro `level` é legado (ignorado no cálculo do pool).
  *
  * `userIdArg`: quando informado, evita o `supabase.auth.getUser()` (chamada de
@@ -60,6 +69,24 @@ export interface LiveVoiceStatus {
  * ele a tela caía num pool trial falso quando o getUser falhava.
  */
 export async function getLiveVoiceStatus(_level?: string, userIdArg?: string): Promise<LiveVoiceStatus> {
+  try {
+    const r = await fetch(`${API_BASE_URL}/api/live-voice/usage`);
+    if (r.ok) {
+      const j = await r.json();
+      if (typeof j?.secondsRemaining === 'number' && typeof j?.poolTotal === 'number') {
+        return {
+          secondsUsed:      Number(j.secondsUsed ?? 0),
+          secondsRemaining: j.secondsRemaining,
+          poolTotal:        j.poolTotal,
+          bonusSeconds:     Number(j.bonusSeconds ?? 0),
+          resetDate:        String(j.resetDate ?? localMonthStartStr()),
+        };
+      }
+    }
+  } catch (e) {
+    console.warn('[liveVoiceUsage] server status error:', e);
+  }
+
   let userId = userIdArg;
   if (!userId) {
     const {
@@ -83,24 +110,14 @@ export async function getLiveVoiceStatus(_level?: string, userIdArg?: string): P
   const poolTotal = getPoolForSubscription(data.subscription_status, data.is_institutional);
   const bonus     = data.live_voice_bonus_seconds ?? 0;
 
-  // Virou o mês → reset
-  // Degustação não renova: os 3 min são uma vez só. Ao assinar, a data vazia faz o reset e libera o mês cheio.
+  // Virou o mês → conta como zerado (quem grava a virada é o servidor).
+  // Degustação não renova: os 3 min são uma vez só.
   const taster = isTasteStatus(data.subscription_status) && !data.is_institutional;
   const needsReset = !taster && (
     !data.live_voice_reset_date ||
     data.live_voice_reset_date < thisMonth);
 
   if (needsReset) {
-    const { error: updErr } = await supabase
-      .from('charlotte_users')
-      .update({
-        live_voice_seconds_used: 0,
-        live_voice_reset_date:   thisMonth,
-      })
-      .eq('id', userId);
-
-    if (updErr) console.warn('[liveVoiceUsage] reset error:', updErr.message);
-
     return {
       secondsUsed:      0,
       secondsRemaining: poolTotal + bonus, // mensal cheio + bônus (bônus não zera)
@@ -120,46 +137,31 @@ export async function getLiveVoiceStatus(_level?: string, userIdArg?: string): P
   };
 }
 
+// Sessão de minutos da ligação em andamento (usageSessionId do token). Uma ligação por vez.
+let currentUsageSession: string | null = null;
+
+/** Guarda o usageSessionId devolvido por /api/realtime-token ou /api/family-call/session. */
+export function rememberLiveVoiceSession(sessionId: string | null | undefined): void {
+  currentUsageSession = typeof sessionId === 'string' && sessionId ? sessionId : null;
+}
+
 /**
- * Registra segundos consumidos na sessão atual.
+ * Registra segundos consumidos na sessão atual: avisa o servidor, que cobra e fecha a sessão.
+ * Com 0 segundos (ligação que não conectou), fecha a sessão para não ser cobrada depois.
+ * Sem sessão guardada (já avisada ou token não saiu), não faz nada.
  */
 export async function consumeLiveVoiceSeconds(seconds: number): Promise<void> {
-  if (seconds <= 0) return;
-  const rounded = Math.round(seconds);
+  const sessionId = currentUsageSession;
+  currentUsageSession = null; // lido antes de qualquer espera: a próxima ligação guarda a dela
+  if (!sessionId) return;
+  const rounded = Math.max(0, Math.round(Number(seconds) || 0));
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) return;
-
-  const { data, error: fetchErr } = await supabase
-    .from('charlotte_users')
-    .select('live_voice_seconds_used, live_voice_bonus_seconds, is_institutional, subscription_status')
-    .eq('id', user.id)
-    .single();
-
-  if (fetchErr || !data) {
-    console.warn('[liveVoiceUsage] fetch error:', fetchErr?.message);
-    return;
-  }
-
-  // Consome do pool MENSAL primeiro; o que passar sai do saldo BÔNUS comprado.
-  const poolTotal = getPoolForSubscription(data.subscription_status, data.is_institutional);
-  const current   = data.live_voice_seconds_used ?? 0;
-  const bonus     = data.live_voice_bonus_seconds ?? 0;
-  const monthlyAvail = Math.max(0, poolTotal - current);
-  const fromMonthly  = Math.min(rounded, monthlyAvail);
-  const fromBonus    = rounded - fromMonthly;
-
-  const { error: updErr } = await supabase
-    .from('charlotte_users')
-    .update({
-      live_voice_seconds_used:  current + fromMonthly,
-      live_voice_bonus_seconds: Math.max(0, bonus - fromBonus),
-    })
-    .eq('id', user.id);
-
-  if (updErr) console.warn('[liveVoiceUsage] consume error:', updErr.message);
+  const r = await fetch(`${API_BASE_URL}/api/live-voice/usage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sessionId, seconds: rounded }),
+  });
+  if (!r.ok) console.warn('[liveVoiceUsage] consume error:', r.status);
 }
 
 /** Formata segundos em 'MM min' para exibição no badge da home. */

@@ -189,7 +189,11 @@ export function FamilyCallModal({ character, impression = null, onClose, onLimit
       const seg = Math.round((Date.now() - segStartRef.current) / 1000);
       segStartRef.current = null;
       if (seg > 0) { usedRef.current += seg; consumeLiveVoiceSeconds(seg).catch(() => {}); }
+      else consumeLiveVoiceSeconds(0).catch(() => {});
       poolLeftRef.current = Math.max(0, limitRef.current - seg);
+    } else {
+      // Não chegou a conectar: fecha a sessão de minutos no servidor com 0 s.
+      consumeLiveVoiceSeconds(0).catch(() => {});
     }
   }, []);
 
@@ -322,6 +326,7 @@ export function FamilyCallModal({ character, impression = null, onClose, onLimit
         if (!alive) { convRef.current?.endSession?.(); }
       } catch (e: any) {
         CharlotteAudioSession.stopRingback().catch(() => {});
+        consumeLiveVoiceSeconds(0).catch(() => {}); // não conectou: fecha a sessão de minutos (se o token saiu)
         if (!alive) return;
         const code = String(e?.message ?? '');
         if (code === 'monthly_pool_exhausted') { setPoolOut(true); onLimitReached?.(); }

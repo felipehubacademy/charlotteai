@@ -1,28 +1,20 @@
 // app/api/realtime-token/route.ts
 // Cria uma ephemeral session token para o OpenAI Realtime API via WebRTC.
-// Valida o pool mensal de 20 min do usuário (mesmo valor do app, lib/liveVoiceUsage.ts) antes de emitir o token.
+// Abre a sessão de minutos no servidor (lib/live-voice-usage: pool do mês e bônus, mesmas regras do app) antes de
+// emitir o token; o app avisa o fim em /api/live-voice/usage com o usageSessionId devolvido aqui.
 // Os 30 min do pacote avulso (minutes30) entram em live_voice_bonus_seconds.
 // O client_secret retornado é de curta duração (~1 min) e usado apenas para
 // a troca de SDP — a API key nunca sai do servidor.
 
 import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
-import { isTasterRow, TASTE_LIVE_VOICE_SECONDS } from '@/lib/taste';
-import { createClient } from '@supabase/supabase-js';
+import { startLiveVoiceSession, closeLiveVoiceSession } from '@/lib/live-voice-usage';
 
 const MODEL = 'gpt-realtime-2';
-const POOL_SECONDS = 20 * 60; // 1 200 s — premium e institucional (igual a POOL_PREMIUM_SECONDS do app)
-
-function thisMonthFirstDayInTz(tz: string): string {
-  const parts = new Intl.DateTimeFormat('en-US', {
-    timeZone: tz, year: 'numeric', month: '2-digit',
-  }).formatToParts(new Date());
-  const y = parts.find(p => p.type === 'year')?.value ?? '';
-  const m = parts.find(p => p.type === 'month')?.value ?? '';
-  return `${y}-${m}-01`;
-}
 
 export async function POST(request: NextRequest) {
+  // Token não saiu (erro abaixo): fecha a sessão de minutos sem cobrar.
+  let cancelUsage: (() => Promise<unknown>) | null = null;
   try {
     if (!process.env.OPENAI_API_KEY) {
       console.error('❌ OPENAI_API_KEY not configured');
@@ -40,34 +32,20 @@ export async function POST(request: NextRequest) {
     if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
       return NextResponse.json({ error: 'pool_check_unavailable' }, { status: 503 });
     }
-    {
-      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
-      const { data, error: dbErr } = await supabase
-        .from('charlotte_users')
-        .select('live_voice_seconds_used, live_voice_reset_date, is_institutional, timezone, subscription_status, live_voice_bonus_seconds')
-        .eq('id', userId)
-        .single();
-      if (dbErr || !data) {
-        console.warn('⛔ Pool check failed for user:', userId, dbErr?.message);
-        return NextResponse.json({ error: 'pool_check_unavailable' }, { status: 503 });
-      }
-      // Institucional segue o mesmo limite do pago (20 min/mês).
-      const tz           = (data as any).timezone || 'UTC';
-      const thisMonth    = thisMonthFirstDayInTz(tz);
-      // Degustação (sem assinatura): 3 min uma vez só, sem a renovação do mês.
-      const taster       = isTasterRow(data as never);
-      const needsReset   = !taster && (!data.live_voice_reset_date || data.live_voice_reset_date < thisMonth);
-      const secondsUsed  = needsReset ? 0 : (data.live_voice_seconds_used ?? 0);
-      const pool         = taster ? TASTE_LIVE_VOICE_SECONDS : POOL_SECONDS;
-      const remaining    = Math.max(0, pool - secondsUsed) + Number((data as any).live_voice_bonus_seconds ?? 0); // degustação também usa o bônus (ex.: os 5 min da pesquisa de volta)
-      if (remaining <= 0) {
+    // Sessão de minutos: cobra a anterior que o app não fechou, faz a virada do mês e confere o saldo.
+    const usage = await startLiveVoiceSession(userId, 'charlotte');
+    if (!usage.ok) {
+      if (usage.error === 'monthly_pool_exhausted') {
         console.warn('⛔ Live Voice pool exhausted for user:', userId);
         return NextResponse.json(
           { error: 'monthly_pool_exhausted', message: 'Monthly Live Voice allowance used up.' },
           { status: 403 }
         );
       }
+      console.warn('⛔ Pool check failed for user:', userId, usage.error);
+      return NextResponse.json({ error: usage.error === 'no_user' ? 'Unauthorized' : 'pool_check_unavailable' }, { status: usage.error === 'no_user' ? 401 : 503 });
     }
+    cancelUsage = () => closeLiveVoiceSession(userId, usage.sessionId, 0, true).catch(e => console.warn('[realtime-token] cancel usage:', e));
 
     console.log('🔑 Creating Realtime ephemeral session for', userName, '/', userLevel);
 
@@ -95,6 +73,7 @@ export async function POST(request: NextRequest) {
     if (!sessionRes.ok) {
       const err = await sessionRes.text();
       console.error('❌ Failed to create realtime session:', err);
+      await cancelUsage?.();
       return NextResponse.json({ error: 'Failed to create session' }, { status: 500 });
     }
 
@@ -103,19 +82,24 @@ export async function POST(request: NextRequest) {
 
     if (!clientSecret) {
       console.error('❌ No client_secret in session response:', session);
+      await cancelUsage?.();
       return NextResponse.json({ error: 'No client_secret returned' }, { status: 500 });
     }
 
     console.log('✅ Ephemeral session created, expires_at:', session.expires_at);
+    cancelUsage = null;
 
     return NextResponse.json({
       clientSecret,
       userLevel,
       userName,
+      usageSessionId: usage.sessionId,
+      remainingSeconds: usage.remaining,
     });
 
   } catch (error: any) {
     console.error('❌ Realtime token error:', error);
+    await cancelUsage?.();
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

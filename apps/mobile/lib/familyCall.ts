@@ -9,6 +9,7 @@
 import { PixelRatio, Platform } from 'react-native';
 import Constants from 'expo-constants';
 import { supabase } from './supabase';
+import { rememberLiveVoiceSession } from './liveVoiceUsage';
 
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -70,6 +71,8 @@ function ensureStrategy() {
 export interface FamilyCallStart {
   token: string; agentId: string; prompt: string; firstMessage: string;
   characterName: string; remainingSeconds: number;
+  /** Sessão de minutos no servidor (o fim é avisado por consumeLiveVoiceSeconds). */
+  usageSessionId?: string;
 }
 
 /** Pede ao servidor a ligação (confere minutos e a liberação) — erro 'monthly_pool_exhausted' / 'not_available'. */
@@ -86,6 +89,7 @@ export async function requestFamilyCall(character: string, topic?: string | null
   });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(j.error || 'failed');
+  rememberLiveVoiceSession(j.usageSessionId);
   return j as FamilyCallStart;
 }
 
