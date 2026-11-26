@@ -224,8 +224,8 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **Answer**: bad
    **Explanation**: "My bad" = foi mal. Pedido de desculpas informal, para coisa pequena.
 
-4. **word_bank** — "A: Sorry I'm late! B: No _____, bro."
-   **Choices**: worries / problem of / worry / worrying
+4. **word_bank** — "A: Sorry I'm late! B: No _____, bro. It's all good."
+   **Choices**: worries / way / bad / real
    **Hint**: De boa (No ___), sempre no plural
    **Answer**: worries
    **Explanation**: "No worries" = de boa, sem problema. Primo do "no problem".
@@ -721,7 +721,7 @@ Igorfina fala (voz do Igor). Aluno repete; a pronúncia é avaliada.
    **Explanation**: "My bad" = foi mal. Para coisas pequenas.
 
 4. **word_bank** — "A: Sorry! B: No _____, bro. It happens."
-   **Choices**: worries / worry / worrying / way
+   **Choices**: worries / way / bad / real
    **Hint**: De boa (No ___), sempre no plural
    **Answer**: worries
    **Explanation**: "No worries" = de boa.

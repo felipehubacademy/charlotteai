@@ -328,12 +328,12 @@
         },
         {
           "type": "word_bank",
-          "sentence": "A: Sorry I'm late! B: No _____, bro.",
+          "sentence": "A: Sorry I'm late! B: No _____, bro. It's all good.",
           "choices": [
             "worries",
-            "problem of",
-            "worry",
-            "worrying"
+            "way",
+            "bad",
+            "real"
           ],
           "hint": "De boa (No ___), sempre no plural",
           "answer": "worries",
@@ -1097,9 +1097,9 @@
           "sentence": "A: Sorry! B: No _____, bro. It happens.",
           "choices": [
             "worries",
-            "worry",
-            "worrying",
-            "way"
+            "way",
+            "bad",
+            "real"
           ],
           "hint": "De boa (No ___), sempre no plural",
           "answer": "worries",
