@@ -10,6 +10,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { trialExpiringTemplate, subscriptionExpiredTemplate } from '@/lib/email-templates';
+import { bearerMatches } from '@/lib/secret-auth';
 
 const SUPABASE_URL     = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -27,9 +28,9 @@ function formatDatePT(iso: string): string {
 }
 
 export async function GET(req: NextRequest) {
-  // Aceita CRON_SECRET (Vercel) ou ADMIN_SECRET (chamada manual)
-  const bearer = (req.headers.get('authorization') ?? '').replace('Bearer ', '');
-  if (bearer !== CRON_SECRET && bearer !== ADMIN_SECRET) {
+  // Aceita CRON_SECRET (Vercel) ou ADMIN_SECRET (chamada manual). Segredo não configurado não vale
+  // (antes, sem os dois, um Bearer vazio passava).
+  if (!bearerMatches(req.headers.get('authorization'), CRON_SECRET, ADMIN_SECRET)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

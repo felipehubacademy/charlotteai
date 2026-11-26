@@ -4,6 +4,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
+import { safeEqual } from '@/lib/secret-auth';
 import {
   inviteTemplate,
   welcomeSubscriberTemplate,
@@ -27,7 +28,7 @@ function fillAuthTemplate(html: string): string {
 
 export async function POST(req: NextRequest) {
   const secret = req.headers.get('x-admin-secret') ?? '';
-  if (secret !== process.env.ADMIN_SECRET) {
+  if (!process.env.ADMIN_SECRET || !safeEqual(secret, process.env.ADMIN_SECRET)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

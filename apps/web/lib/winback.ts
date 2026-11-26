@@ -18,12 +18,14 @@ export const WINBACK_ANSWERS = [
 export type WinbackAnswer = typeof WINBACK_ANSWERS[number]['id'];
 export const isWinbackAnswer = (a: string): a is WinbackAnswer => WINBACK_ANSWERS.some(x => x.id === a);
 
+// Sem ADMIN_SECRET configurado não assina nem confere (antes a chave vazia deixava qualquer um gerar o link).
 export function winbackToken(userId: string): string {
+  if (!SECRET) return '';
   return crypto.createHmac('sha256', SECRET).update(`winback:${userId}`).digest('hex').slice(0, 32);
 }
 
 export function verifyWinback(userId: string, token: string): boolean {
-  if (!userId || !token) return false;
+  if (!SECRET || !userId || !token) return false;
   const expected = winbackToken(userId);
   if (token.length !== expected.length) return false;
   try { return crypto.timingSafeEqual(Buffer.from(token), Buffer.from(expected)); } catch { return false; }

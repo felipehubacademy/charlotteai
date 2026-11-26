@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { NotificationLogger } from '@/lib/notification-logger';
+import { bearerMatches } from '@/lib/secret-auth';
 
 /**
  * 📊 API para obter métricas de notificações
@@ -63,8 +64,9 @@ export async function POST(request: NextRequest) {
     console.log('🧹 [ANALYTICS API] Cleaning up old logs...');
     
     // Validação de autorização para operações de limpeza
-    const authHeader = request.headers.get('authorization');
-    if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    // Sem CRON_SECRET configurado, recusa (antes "Bearer undefined" passava).
+    const secret = process.env.CRON_SECRET;
+    if (!secret || !bearerMatches(request.headers.get('authorization'), secret)) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 

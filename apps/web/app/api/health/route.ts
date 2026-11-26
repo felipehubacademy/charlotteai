@@ -3,6 +3,7 @@
 // GET with CRON_SECRET: full check (GitHub Actions). GET without: basic ping.
 
 import { NextRequest, NextResponse } from 'next/server';
+import { bearerMatches } from '@/lib/secret-auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -59,7 +60,8 @@ async function checkTTS(): Promise<ServiceCheck> {
 
 export async function GET(request: NextRequest) {
   const authHeader = request.headers.get('authorization');
-  const isAuthed   = authHeader === `Bearer ${process.env.CRON_SECRET}`;
+  // Sem CRON_SECRET configurado, só o ping básico (antes "Bearer undefined" abria o check completo).
+  const isAuthed   = bearerMatches(authHeader, process.env.CRON_SECRET);
 
   // Without auth: basic ping only (Vercel uptime checks, etc.)
   if (!isAuthed) {

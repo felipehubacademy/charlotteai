@@ -50,6 +50,7 @@ import { syncProviderCosts } from '@/lib/cost-sync';
 import { runPushWatch } from '@/lib/push-watch';
 import { notifyAdmins } from '@/lib/admin-push';
 import type { PushShard } from '@/lib/expo-notification-service';
+import { bearerMatches } from '@/lib/secret-auth';
 
 const CRON_SECRET = process.env.CRON_SECRET ?? '';
 
@@ -57,12 +58,9 @@ type TaskType = 'daily' | 'praise' | 'streak' | 'goal' | 'weekly' | 'engagement'
 
 function isAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization') ?? '';
-  const userAgent  = request.headers.get('user-agent') ?? '';
-  if (CRON_SECRET && authHeader === `Bearer ${CRON_SECRET}`) return true;
-  // cron-job.org sends its UA even without CRON_SECRET matching — accept as fallback
-  // only if the secret is not configured (dev environments).
-  if (!CRON_SECRET && userAgent.includes('cron-job.org')) return true;
-  return false;
+  // Só com o CRON_SECRET. Antes, sem o segredo configurado, qualquer chamada com o user-agent do
+  // cron-job.org passava (o user-agent é escolhido por quem chama).
+  return bearerMatches(authHeader, CRON_SECRET);
 }
 
 const SHARD_SIZE = 5000;

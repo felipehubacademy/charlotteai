@@ -6,12 +6,14 @@ import crypto from 'crypto';
 const SECRET = process.env.ADMIN_SECRET ?? '';
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://charlotte.hubacademybr.com';
 
+// Sem ADMIN_SECRET configurado não assina nem confere (antes a chave vazia deixava qualquer um gerar o link).
 export function unsubToken(userId: string): string {
+  if (!SECRET) return '';
   return crypto.createHmac('sha256', SECRET).update(`unsub:${userId}`).digest('hex').slice(0, 32);
 }
 
 export function verifyUnsub(userId: string, token: string): boolean {
-  if (!userId || !token) return false;
+  if (!SECRET || !userId || !token) return false;
   const expected = unsubToken(userId);
   if (token.length !== expected.length) return false;
   try {
