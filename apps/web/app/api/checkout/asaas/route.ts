@@ -19,6 +19,7 @@ import {
 } from '@/lib/asaas';
 import { prepareWebCheckout, checkoutRowFields } from '@/lib/web-checkout';
 import { logOpsError } from '@/lib/ops-monitor';
+import { overLimit, clientIp } from '@/lib/rate-hits';
 import { sendRefundNotice } from '@/lib/subscription-notices';
 
 export const dynamic = 'force-dynamic';
@@ -38,7 +39,10 @@ export async function GET(req: NextRequest) {
   if (req.nextUrl.searchParams.get('mine') === '1') return mine(req);
   const d = await discountFor(cleanAffiliateCode(req.nextUrl.searchParams.get('aff')) || null);
   const couponRaw = req.nextUrl.searchParams.get('coupon');
-  const c = couponRaw ? await resolveCoupon(couponRaw) : null;
+  // Consulta de cupom: no máximo 30 a cada 10 min por IP (impede testar códigos em massa).
+  const ip = couponRaw ? clientIp(req.headers) : null;
+  const tooMany = !!ip && await overLimit('coupon_check', ip, 30, 10 * 60000);
+  const c = couponRaw && !tooMany ? await resolveCoupon(couponRaw) : null;
   const pctFor = (plan: WebPlan) => Math.max(d?.pct ?? 0, c?.ok && c.plans.includes(plan) ? c.pct : 0);
   const limitedWins = (plan: WebPlan) => !!(c?.ok && c.kind === 'coupon' && c.cycles && c.plans.includes(plan) && c.pct > 0 && c.pct >= (d?.pct ?? 0));
   const noTrialWins = (plan: WebPlan) => !!(c?.ok && c.kind === 'coupon' && c.noTrial && c.plans.includes(plan) && c.pct > 0 && c.pct >= (d?.pct ?? 0));
@@ -54,7 +58,8 @@ export async function GET(req: NextRequest) {
       annual: noTrialWins('annual') ? 0 : WEB_TRIAL_DAYS,
     },
     discountPct: Math.max(pctFor('monthly'), pctFor('annual')),
-    coupon: c ? (c.ok ? { ok: true, code: c.code, pct: c.pct, plans: c.plans } : { ok: false, error: COUPON_ERROR_PT[c.error] }) : null,
+    coupon: tooMany ? { ok: false, error: 'Muitas tentativas de cupom. Espere alguns minutos e tente de novo.' }
+      : c ? (c.ok ? { ok: true, code: c.code, pct: c.pct, plans: c.plans } : { ok: false, error: COUPON_ERROR_PT[c.error] }) : null,
     prices: {
       monthly: priceFor('monthly', pctFor('monthly')), annual: priceFor('annual', pctFor('annual')),
     },

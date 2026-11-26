@@ -1,7 +1,7 @@
 -- Limite de tentativas em pontos públicos sem login (lib/rate-hits.ts):
 --   wa_link_code  código do app errado ou vencido no WhatsApp do suporte (chave: telefone), 5 por hora
---   coupon_check  consulta de cupom no checkout do site (chave: IP)
---   rally_join    entrada em rally por código (chave: id do aluno)
+--   coupon_check  consulta de cupom no checkout do site (chave: IP), 30 a cada 10 min
+--   rally_join    código de competição (rally) que não existe (chave: id do aluno), 20 por hora
 -- Uma linha por tentativa; só a chave de servidor lê e grava. Linhas com mais de 2 dias são apagadas pelo próprio
 -- código de tempos em tempos.
 create table if not exists public.rate_hits (
