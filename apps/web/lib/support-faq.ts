@@ -13,6 +13,8 @@ export const SUPPORT_FAQ_SEED: FaqEntry[] = [
   { section: 'Sobre o app', question: 'O que é o Queizy?', answer:
 `O Queizy (antes chamado Charlotte AI) é um app para aprender e praticar inglês com IA, da Hub Academy. A tutora dentro do app se chama Charlotte.
 Recursos: trilha de estudos do básico ao avançado (Novice, Intermediate e Advanced), Live Voice (conversa por voz em tempo real com a Charlotte), Practice (conversa por texto, gramática e pronúncia) e Vocabulário com revisão.` },
+  { section: 'Sobre o app', question: 'Dá para estudar outros idiomas, como espanhol ou francês?', answer:
+`Por enquanto o Queizy tem inglês. Vamos incluir outros idiomas em breve, mas o espanhol já está no forno!` },
   { section: 'Sobre o app', question: 'Em que idioma fica o app?', answer:
 `Os botões, avisos e menus seguem o idioma do celular (português ou inglês), mas dá para escolher em Perfil > Idioma do app: Automático (do celular), Português ou English. O app reinicia no idioma escolhido.
 O conteúdo das lições segue o nível: o inglês dos exercícios é sempre em inglês; as explicações são em português na Novice e em inglês no Inter e no Advanced.` },
