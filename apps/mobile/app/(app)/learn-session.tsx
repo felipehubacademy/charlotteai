@@ -1288,9 +1288,12 @@ export default function LearnSessionScreen() {
       let level: number | undefined;
       try { level = recorder.getStatus().metering; } catch { /* sem nível */ }
       // Sem leitura de nível (aparelho que não informa): para só pelo tempo máximo ou pelo toque.
-      if (typeof level !== 'number' || !isFinite(level) || level <= -100) return;
-      floor = Math.min(floor, level);
-      const f = Math.min(Math.max(floor, -65), -35);
+      if (typeof level !== 'number' || Number.isNaN(level)) return;
+      // Silêncio total (o Android informa -160 quando a amplitude é zero): conta como silêncio, mas não
+      // entra no ruído de fundo (senão qualquer som baixo passaria a valer como fala).
+      if (!isFinite(level) || level <= -100) level = -100;
+      else floor = Math.min(floor, level);
+      const f = floor === Infinity ? -65 : Math.min(Math.max(floor, -65), -35);
       if (level > Math.max(f + 12, -50)) {
         speechMs += VAD.tickMs;
         quietSince = 0;
