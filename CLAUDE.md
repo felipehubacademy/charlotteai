@@ -77,4 +77,8 @@ e mudanças grandes. Ajustes de texto, de tela e urgências podem ir direto na `
 4. **Codex sem achados P0/P1 (ou todos corrigidos e revisados de novo): fazer o merge sozinho** (`gh pr merge N --squash`),
    sem pedir confirmação ao Felipe, e conferir o build da `main` na Vercel.
 
+**Todos os merges estão autorizados (Felipe, 2026-11-26).** Isso inclui aplicar no banco de produção a migration
+do próprio PR antes do merge: primeiro a migration (`supabase db query --linked`), depois o merge, depois conferir o
+build da `main`. A ordem importa porque o app novo grava nas colunas novas. Não é preciso pedir de novo.
+
 PRs e outras branches não geram build de prévia na Vercel (`apps/web/scripts/vercel-ignore.sh`); só a `main` builda.
