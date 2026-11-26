@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
   const level  = req.nextUrl.searchParams.get('level') ?? 'Inter';
   const userId = await requestUserId(req); // aluno do login
   // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-  const denied = await checkAiAccess(userId, 'enrich-term');
+  const denied = await checkAiAccess(userId, 'enrich-term', req.headers.get('x-lang'));
   if (denied) return denied;
   if (raw && raw.length > 80) return NextResponse.json({ error: 'Term too long' }, { status: 413 });
 

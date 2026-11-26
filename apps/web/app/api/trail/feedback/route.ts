@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
   const user = auth?.user;
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-  const denied = await checkAiAccess(user.id, 'trail-feedback');
+  const denied = await checkAiAccess(user.id, 'trail-feedback', req.headers.get('x-lang'));
   if (denied) return denied;
 
   const body = await req.json().catch(() => ({}));

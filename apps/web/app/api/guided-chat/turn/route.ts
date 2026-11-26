@@ -353,7 +353,7 @@ export async function POST(request: NextRequest) {
     }
     const userId = (await requestUserId(request)) ?? undefined; // aluno do login
     // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-    const denied = await checkAiAccess(userId, 'guided-chat');
+    const denied = await checkAiAccess(userId, 'guided-chat', request.headers.get('x-lang'));
     if (denied) return denied;
 
     const body = (await request.json()) as Payload & { user_id?: string };

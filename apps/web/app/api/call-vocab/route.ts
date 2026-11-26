@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
   if (!auth?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   if (!process.env.OPENAI_API_KEY) return NextResponse.json({ items: [] });
   // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-  const denied = await checkAiAccess(auth.user.id, 'call-vocab');
+  const denied = await checkAiAccess(auth.user.id, 'call-vocab', req.headers.get('x-lang'));
   if (denied) return denied;
 
   const body = await req.json().catch(() => ({}));

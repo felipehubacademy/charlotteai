@@ -176,7 +176,7 @@ async function handleAssistantPOST(request: NextRequest, userId: string | null) 
     // ── Rate limit check ─────────────────────────────────────────────────────
     if (userId) {
       // Sem assinatura ativa (vencida): 402 com o aviso (o app mostra no chat e abre a oferta).
-      const denied = await checkAiPlan(userId);
+      const denied = await checkAiPlan(userId, request.headers.get('x-lang'));
       if (denied) return denied;
       const limit = await checkRateLimit(userId, userLevel, mode);
       if (limit) {

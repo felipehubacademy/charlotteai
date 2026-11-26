@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
   const key = process.env.ELEVENLABS_API_KEY;
   if (!key) return NextResponse.json({ error: 'Not configured' }, { status: 500 });
   // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-  const denied = await checkAiAccess(auth.user.id, 'live-voice-token');
+  const denied = await checkAiAccess(auth.user.id, 'live-voice-token', req.headers.get('x-lang'));
   if (denied) return denied;
 
   const body = await req.json().catch(() => ({}));

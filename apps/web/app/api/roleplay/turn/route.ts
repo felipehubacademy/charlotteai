@@ -415,7 +415,7 @@ export async function POST(request: NextRequest) {
   try {
     const userId   = (await requestUserId(request)) ?? undefined; // aluno do login (o user_id do formulário não vale)
     // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-    const denied = await checkAiAccess(userId, 'roleplay');
+    const denied = await checkAiAccess(userId, 'roleplay', request.headers.get('x-lang'));
     if (denied) return denied;
     if (Number(request.headers.get('content-length') ?? 0) > MAX_AUDIO_BYTES + MAX_PAYLOAD_CHARS * 4) {
       return NextResponse.json({ error: 'Payload too large' }, { status: 413 });

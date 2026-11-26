@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     const { text, source, character, impression } = body as { text: string; source?: string; character?: string; impression?: string };
     const userId = await requestUserId(request); // aluno do login (o userId do corpo não vale)
     // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-    const denied = await checkAiAccess(userId, 'tts');
+    const denied = await checkAiAccess(userId, 'tts', request.headers.get('x-lang'));
     if (denied) return denied;
 
     if (!text || typeof text !== 'string') {

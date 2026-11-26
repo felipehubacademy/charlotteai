@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     const { term, level } = await request.json() as { term: string; level: string };
     const userId = await requestUserId(request);
     // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-    const denied = await checkAiAccess(userId, 'vocabulary');
+    const denied = await checkAiAccess(userId, 'vocabulary', request.headers.get('x-lang'));
     if (denied) return denied;
     if (typeof term === 'string' && term.length > 80) return NextResponse.json({ error: 'Term too long' }, { status: 413 });
     if (!term?.trim()) {

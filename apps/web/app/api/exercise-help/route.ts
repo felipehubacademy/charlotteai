@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
     const prompt = buildPrompt(body, lang);
     const userId = await requestUserId(request); // aluno do login
     // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-    const denied = await checkAiAccess(userId, 'exercise-help');
+    const denied = await checkAiAccess(userId, 'exercise-help', request.headers.get('x-lang'));
     if (denied) return denied;
 
     const completion = await openai.chat.completions.create({

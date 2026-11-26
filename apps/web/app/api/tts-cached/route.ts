@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
   }
 
   // Áudio pronto do vocabulário: liberado para todos os planos, com limite por aluno (lib/entitlement).
-  const denied = await checkAiAccess(await requestUserId(req), 'tts-cached');
+  const denied = await checkAiAccess(await requestUserId(req), 'tts-cached', req.headers.get('x-lang'));
   if (denied) return denied;
 
   const normalizedTerm = term.toLowerCase().trim();

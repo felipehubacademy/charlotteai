@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     const { text, userLevel: rawLevel } = body as { text?: string; userLevel?: string };
     const userId = await requestUserId(request);
     // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-    const denied = await checkAiAccess(userId, 'translate');
+    const denied = await checkAiAccess(userId, 'translate', request.headers.get('x-lang'));
     if (denied) return denied;
     if (typeof text === 'string' && text.length > 2000) return NextResponse.json({ error: 'Text too long' }, { status: 413 });
     const userLevel = pedagogicalLevel(rawLevel);

@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
     const audioFile = formData.get('audio') as File;
     const userId   = await requestUserId(request); // aluno do login
     // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-    const denied = await checkAiAccess(userId, 'transcribe');
+    const denied = await checkAiAccess(userId, 'transcribe', request.headers.get('x-lang'));
     if (denied) return denied;
     const hintNames = ((formData.get('names') as string | null) ?? '').replace(/[^\p{L}\p{N} ,'-]/gu, '').slice(0, 120).trim();
     // target (opcional): a frase que o aluno está treinando na trilha. Ajuda com sotaque e gíria ("No worries,

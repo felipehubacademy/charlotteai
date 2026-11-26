@@ -96,7 +96,7 @@ export async function POST(request: NextRequest) {
     const safeName = firstName?.trim() || 'there';
     const userId = await requestUserId(request);
     // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-    const denied = await checkAiAccess(userId, 'greeting');
+    const denied = await checkAiAccess(userId, 'greeting', request.headers.get('x-lang'));
     if (denied) return denied;
 
     // Destaque só com login verificado (nunca por userId vindo no corpo).

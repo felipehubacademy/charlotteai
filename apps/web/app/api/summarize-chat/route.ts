@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     const { sessionId, userLevel, lang } = body;
     const userId = await requestUserId(request); // só o aluno do login (o userId do corpo não vale)
     // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
-    const denied = await checkAiAccess(userId, 'summarize-chat');
+    const denied = await checkAiAccess(userId, 'summarize-chat', request.headers.get('x-lang'));
     if (denied) return denied;
 
     if (!sessionId || !userId || !userLevel) {

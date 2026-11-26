@@ -93,39 +93,46 @@ export type AiRoute =
   | 'summarize-call' | 'call-vocab' | 'trail-feedback' | 'greeting' | 'live-voice-token';
 
 export const SUBSCRIPTION_REQUIRED_PT = 'Sua assinatura não está ativa. Assine o Queizy para continuar usando a Charlotte.';
+export const SUBSCRIPTION_REQUIRED_EN = 'Your subscription is not active. Subscribe to Queizy to keep using Charlotte.';
 
-function subscriptionRequired(): NextResponse {
-  return NextResponse.json({ error: 'subscription_required', message: SUBSCRIPTION_REQUIRED_PT }, { status: 402 });
+/** Idioma do aviso: o app manda x-lang ('pt' ou 'en'); sem o cabeçalho, português. */
+const isEn = (lang?: string | null) => (lang ?? '').trim().toLowerCase().startsWith('en');
+
+function subscriptionRequired(lang?: string | null): NextResponse {
+  const message = isEn(lang) ? SUBSCRIPTION_REQUIRED_EN : SUBSCRIPTION_REQUIRED_PT;
+  return NextResponse.json({ error: 'subscription_required', message }, { status: 402 });
 }
 
 /**
  * Só o plano (para /api/assistant, que já tem o próprio limite em lib/rate-limit e a degustação do Practice em
  * lib/taste): sem assinatura ativa, 402. Devolve null para seguir.
+ * lang: o x-lang do pedido (com 'en' o aviso sai em inglês; sem ele, português). Vale também para checkAiAccess.
  */
-export async function checkAiPlan(userId: string | null | undefined): Promise<NextResponse | null> {
+export async function checkAiPlan(userId: string | null | undefined, lang?: string | null): Promise<NextResponse | null> {
   if (!userId) return null;
-  return (await userTier(userId)) === 'blocked' ? subscriptionRequired() : null;
+  return (await userTier(userId)) === 'blocked' ? subscriptionRequired(lang) : null;
 }
 
 /**
  * Confere plano e limite do aluno para a rota. Devolve a resposta de erro (402 sem assinatura, 429 acima do limite)
  * ou null para seguir. Sem aluno (rota sem login): null; o login é exigido no middleware.
  */
-export async function checkAiAccess(userId: string | null | undefined, route: AiRoute): Promise<NextResponse | null> {
+export async function checkAiAccess(userId: string | null | undefined, route: AiRoute, lang?: string | null): Promise<NextResponse | null> {
   if (!userId) return null;
   const rule: RouteRule = AI_ROUTE_RULES[route];
   const tier = (await userTier(userId)) ?? 'paid'; // leitura falhou: não bloqueia
   const limit = tier === 'paid' ? rule.paid : tier === 'taster' ? rule.taster : rule.blocked;
-  if (!limit) return subscriptionRequired();
+  if (!limit) return subscriptionRequired(lang);
   try {
     const { data, error } = await getSupabaseAdmin().rpc('api_rate_hit', { p_user: userId, p_route: route, p_hour_max: limit.hour, p_day_max: limit.day });
     if (error) { console.warn('[entitlement] limite falhou:', error.message); return null; }
     const r = (data ?? {}) as { ok?: boolean; scope?: 'hour' | 'day'; retry_after?: number };
     if (r.ok !== false) return null;
     const retry = Math.max(1, Number(r.retry_after ?? 3600));
+    const en = isEn(lang);
     const message = r.scope === 'day'
-      ? 'Você atingiu o limite de hoje para este recurso. Amanhã libera de novo.'
-      : `Muitos pedidos seguidos. Tente de novo em ${Math.ceil(retry / 60)} min.`;
+      ? (en ? "You've reached today's limit for this feature. It resets tomorrow." : 'Você atingiu o limite de hoje para este recurso. Amanhã libera de novo.')
+      : (en ? `Too many requests in a row. Try again in ${Math.ceil(retry / 60)} min.` : `Muitos pedidos seguidos. Tente de novo em ${Math.ceil(retry / 60)} min.`);
     return NextResponse.json(
       { error: 'rate_limited', type: r.scope === 'day' ? 'daily' : 'hourly', message, retry_after: retry, is_trial: tier !== 'paid' },
       { status: 429, headers: { 'Retry-After': String(retry) } },
